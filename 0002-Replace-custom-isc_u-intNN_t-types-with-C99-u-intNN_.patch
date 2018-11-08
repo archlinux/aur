@@ -1,0 +1,640 @@
+From cb6a185c692500ccd2c7901edef78729f3c23b72 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ond=C5=99ej=20Sur=C3=BD?= <ondrej@sury.org>
+Date: Wed, 28 Mar 2018 14:19:37 +0200
+Subject: [PATCH] Replace custom isc_u?intNN_t types with C99 u?intNN_t types
+
+---
+ contrib/dnsperf-2.1.0.0-1/dns.c     |  11 +--
+ contrib/dnsperf-2.1.0.0-1/dns.h     |   4 +-
+ contrib/dnsperf-2.1.0.0-1/dnsperf.c | 109 ++++++++++++++--------------
+ contrib/dnsperf-2.1.0.0-1/opt.c     |   9 ++-
+ contrib/dnsperf-2.1.0.0-1/os.c      |   5 +-
+ contrib/dnsperf-2.1.0.0-1/os.h      |   6 +-
+ contrib/dnsperf-2.1.0.0-1/resperf.c |  51 +++++++------
+ contrib/dnsperf-2.1.0.0-1/util.h    |   5 +-
+ 8 files changed, 103 insertions(+), 97 deletions(-)
+
+diff --git a/contrib/dnsperf-2.1.0.0-1/dns.c b/contrib/dnsperf-2.1.0.0-1/dns.c
+index d442deecec..5002e77bd2 100644
+--- a/contrib/dnsperf-2.1.0.0-1/dns.c
++++ b/contrib/dnsperf-2.1.0.0-1/dns.c
+@@ -34,6 +34,7 @@
+ 
+ #include <ctype.h>
+ #include <time.h>
++#include <inttypes.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+@@ -421,7 +422,7 @@ add_tsig(isc_buffer_t *packet, perf_dnstsigkey_t *tsigkey)
+ 	unsigned int rdlen, totallen;
+ 	unsigned char tmpdata[512];
+ 	isc_buffer_t tmp;
+-	isc_uint32_t now;
++	uint32_t now;
+ 	unsigned char digest[ISC_SHA256_DIGESTLENGTH];
+ 
+ 	hmac_init(tsigkey, &hmac);
+@@ -536,7 +537,7 @@ static isc_result_t
+ read_update_line(perf_dnsctx_t *ctx, const isc_textregion_t *line, char *str,
+ 		 dns_name_t *zname, int want_ttl, int need_type,
+ 		 int want_rdata, int need_rdata, dns_name_t *name,
+-		 isc_uint32_t *ttlp, dns_rdatatype_t *typep,
++		 uint32_t *ttlp, dns_rdatatype_t *typep,
+ 		 dns_rdata_t *rdata, isc_buffer_t *rdatabuf)
+ {
+ 	char *curr_str;
+@@ -647,11 +648,11 @@ build_update(perf_dnsctx_t *ctx, const isc_textregion_t *record,
+ 	int prereqs = 0;
+ 	dns_fixedname_t fzname, foname;
+ 	dns_name_t *zname, *oname;
+-	isc_uint32_t ttl;
++	uint32_t ttl;
+ 	dns_rdatatype_t rdtype;
+ 	dns_rdataclass_t rdclass;
+ 	dns_rdata_t rdata;
+-	isc_uint16_t rdlen;
++	uint16_t rdlen;
+ 	isc_result_t result;
+ 
+ 	/* Reset compression context */
+@@ -801,7 +802,7 @@ build_update(perf_dnsctx_t *ctx, const isc_textregion_t *record,
+ 
+ isc_result_t
+ perf_dns_buildrequest(perf_dnsctx_t *ctx, const isc_textregion_t *record,
+-		      isc_uint16_t qid,
++		      uint16_t qid,
+ 		      isc_boolean_t edns, isc_boolean_t dnssec,
+ 		      perf_dnstsigkey_t *tsigkey, isc_buffer_t *msg)
+ {
+diff --git a/contrib/dnsperf-2.1.0.0-1/dns.h b/contrib/dnsperf-2.1.0.0-1/dns.h
+index 3ac98a4e3c..5dab512f38 100644
+--- a/contrib/dnsperf-2.1.0.0-1/dns.h
++++ b/contrib/dnsperf-2.1.0.0-1/dns.h
+@@ -32,6 +32,8 @@
+  * OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#include <inttypes.h>
++
+ #include <isc/types.h>
+ 
+ #ifndef PERF_DNS_H
+@@ -59,7 +61,7 @@ perf_dns_destroyctx(perf_dnsctx_t **ctxp);
+ 
+ isc_result_t
+ perf_dns_buildrequest(perf_dnsctx_t *ctx, const isc_textregion_t *record,
+-		      isc_uint16_t qid,
++		      uint16_t qid,
+ 		      isc_boolean_t edns, isc_boolean_t dnssec,
+ 		      perf_dnstsigkey_t *tsigkey, isc_buffer_t *msg);
+ 
+diff --git a/contrib/dnsperf-2.1.0.0-1/dnsperf.c b/contrib/dnsperf-2.1.0.0-1/dnsperf.c
+index ba84de1a51..4c8ad39dc0 100644
+--- a/contrib/dnsperf-2.1.0.0-1/dnsperf.c
++++ b/contrib/dnsperf-2.1.0.0-1/dnsperf.c
+@@ -37,7 +37,6 @@
+  ***/
+ 
+ #include <inttypes.h>
+-
+ #include <errno.h>
+ #include <math.h>
+ #include <pthread.h>
+@@ -93,52 +92,52 @@ typedef struct {
+ 	int argc;
+ 	char **argv;
+ 	int family;
+-	isc_uint32_t clients;
+-	isc_uint32_t threads;
+-	isc_uint32_t maxruns;
+-	isc_uint64_t timelimit;
++	uint32_t clients;
++	uint32_t threads;
++	uint32_t maxruns;
++	uint64_t timelimit;
+ 	isc_sockaddr_t server_addr;
+ 	isc_sockaddr_t local_addr;
+-	isc_uint64_t timeout;
+-	isc_uint32_t bufsize;
++	uint64_t timeout;
++	uint32_t bufsize;
+ 	isc_boolean_t edns;
+ 	isc_boolean_t dnssec;
+ 	perf_dnstsigkey_t *tsigkey;
+-	isc_uint32_t max_outstanding;
+-	isc_uint32_t max_qps;
+-	isc_uint64_t stats_interval;
++	uint32_t max_outstanding;
++	uint32_t max_qps;
++	uint64_t stats_interval;
+ 	isc_boolean_t updates;
+ 	isc_boolean_t verbose;
+ } config_t;
+ 
+ typedef struct {
+-	isc_uint64_t start_time;
+-	isc_uint64_t end_time;
+-	isc_uint64_t stop_time;
++	uint64_t start_time;
++	uint64_t end_time;
++	uint64_t stop_time;
+ 	struct timespec stop_time_ns;
+ } times_t;
+ 
+ typedef struct {
+-	isc_uint64_t rcodecounts[16];
++	uint64_t rcodecounts[16];
+ 
+-	isc_uint64_t num_sent;
+-	isc_uint64_t num_interrupted;
+-	isc_uint64_t num_timedout;
+-	isc_uint64_t num_completed;
++	uint64_t num_sent;
++	uint64_t num_interrupted;
++	uint64_t num_timedout;
++	uint64_t num_completed;
+ 
+-	isc_uint64_t total_request_size;
+-	isc_uint64_t total_response_size;
++	uint64_t total_request_size;
++	uint64_t total_response_size;
+ 
+-	isc_uint64_t latency_sum;
+-	isc_uint64_t latency_sum_squares;
+-	isc_uint64_t latency_min;
+-	isc_uint64_t latency_max;
++	uint64_t latency_sum;
++	uint64_t latency_sum_squares;
++	uint64_t latency_min;
++	uint64_t latency_max;
+ } stats_t;
+ 
+ typedef ISC_LIST(struct query_info) query_list;
+ 
+ typedef struct query_info {
+-	isc_uint64_t timestamp;
++	uint64_t timestamp;
+ 	query_list *list;
+ 	char *desc;
+ 	int sock;
+@@ -169,16 +168,16 @@ typedef struct {
+ 	perf_dnsctx_t *dnsctx;
+ 
+ 	isc_boolean_t done_sending;
+-	isc_uint64_t done_send_time;
++	uint64_t done_send_time;
+ 
+ 	const config_t *config;
+ 	const times_t *times;
+ 	stats_t stats;
+ 
+-	isc_uint32_t max_outstanding;
+-	isc_uint32_t max_qps;
++	uint32_t max_outstanding;
++	uint32_t max_qps;
+ 
+-	isc_uint64_t last_recv;
++	uint64_t last_recv;
+ } threadinfo_t;
+ 
+ static threadinfo_t *threads;
+@@ -257,7 +256,7 @@ print_final_status(const config_t *config)
+ }
+ 
+ static double
+-stddev(isc_uint64_t sum_of_squares, isc_uint64_t sum, isc_uint64_t total)
++stddev(uint64_t sum_of_squares, uint64_t sum, uint64_t total)
+ {
+ 	double squared;
+ 
+@@ -269,9 +268,9 @@ static void
+ print_statistics(const config_t *config, const times_t *times, stats_t *stats)
+ {
+ 	const char *units;
+-	isc_uint64_t run_time;
++	uint64_t run_time;
+ 	isc_boolean_t first_rcode;
+-	isc_uint64_t latency_avg;
++	uint64_t latency_avg;
+ 	unsigned int i;
+ 
+ 	units = config->updates ? "Updates" : "Queries";
+@@ -543,7 +542,7 @@ query_move(threadinfo_t *tinfo, query_info *q, query_move_op op)
+ 	}
+ }
+ 
+-static inline isc_uint64_t
++static inline uint64_t
+ num_outstanding(const stats_t *stats)
+ {
+ 	return stats->num_sent - stats->num_completed - stats->num_timedout;
+@@ -567,7 +566,7 @@ do_send(void *arg)
+ 	stats_t *stats;
+ 	unsigned int max_packet_size;
+ 	isc_buffer_t msg;
+-	isc_uint64_t now, run_time, req_time;
++	uint64_t now, run_time, req_time;
+ 	char input_data[MAX_INPUT_DATA];
+ 	isc_buffer_t lines;
+ 	isc_region_t used;
+@@ -626,7 +625,7 @@ do_send(void *arg)
+ 
+ 		q = ISC_LIST_HEAD(tinfo->unused_queries);
+ 		query_move(tinfo, q, prepend_outstanding);
+-		q->timestamp = ISC_UINT64_MAX;
++		q->timestamp = UINT64_MAX;
+ 		q->sock = tinfo->socks[tinfo->current_sock++ % tinfo->nsocks];
+ 
+ 		UNLOCK(&tinfo->lock);
+@@ -690,7 +689,7 @@ do_send(void *arg)
+ }
+ 
+ static void
+-process_timeouts(threadinfo_t *tinfo, isc_uint64_t now)
++process_timeouts(threadinfo_t *tinfo, uint64_t now)
+ {
+ 	struct query_info *q;
+ 	const config_t *config;
+@@ -726,11 +725,11 @@ process_timeouts(threadinfo_t *tinfo, isc_uint64_t now)
+ 
+ typedef struct {
+ 	int sock;
+-	isc_uint16_t qid;
+-	isc_uint16_t rcode;
++	uint16_t qid;
++	uint16_t rcode;
+ 	unsigned int size;
+-	isc_uint64_t when;
+-	isc_uint64_t sent;
++	uint64_t when;
++	uint64_t sent;
+ 	isc_boolean_t unexpected;
+ 	isc_boolean_t short_response;
+ 	char *desc;
+@@ -741,12 +740,12 @@ recv_one(threadinfo_t *tinfo, int which_sock,
+ 	 unsigned char *packet_buffer, unsigned int packet_size,
+ 	 received_query_t *recvd, int *saved_errnop)
+ {
+-	isc_uint16_t *packet_header;
++	uint16_t *packet_header;
+ 	int s;
+-	isc_uint64_t now;
++	uint64_t now;
+ 	int n;
+ 
+-	packet_header = (isc_uint16_t *) packet_buffer;
++	packet_header = (uint16_t *) packet_buffer;
+ 
+ 	s = tinfo->socks[which_sock];
+ 	n = recv(s, packet_buffer, packet_size, 0);
+@@ -800,7 +799,7 @@ do_recv(void *arg)
+ 	unsigned int nrecvd;
+ 	int saved_errno;
+ 	unsigned char socketbits[MAX_SOCKETS / 8];
+-	isc_uint64_t now, latency;
++	uint64_t now, latency;
+ 	query_info *q;
+ 	unsigned int current_socket, last_socket;
+ 	unsigned int i, j;
+@@ -858,7 +857,7 @@ do_recv(void *arg)
+ 
+ 			q = &tinfo->queries[recvd[i].qid];
+ 			if (q->list != &tinfo->outstanding_queries ||
+-			    q->timestamp == ISC_UINT64_MAX ||
++			    q->timestamp == UINT64_MAX ||
+ 			    q->sock != recvd[i].sock)
+ 			{
+ 				recvd[i].unexpected = ISC_TRUE;
+@@ -940,11 +939,11 @@ do_interval_stats(void *arg)
+ {
+ 	threadinfo_t *tinfo;
+ 	stats_t total;
+-	isc_uint64_t now;
+-	isc_uint64_t last_interval_time;
+-	isc_uint64_t last_completed;
+-	isc_uint64_t interval_time;
+-	isc_uint64_t num_completed;
++	uint64_t now;
++	uint64_t last_interval_time;
++	uint64_t last_completed;
++	uint64_t interval_time;
++	uint64_t num_completed;
+ 	double qps;
+ 
+ 	tinfo = arg;
+@@ -982,7 +981,7 @@ cancel_queries(threadinfo_t *tinfo)
+ 			break;
+ 		query_move(tinfo, q, append_unused);
+ 
+-		if (q->timestamp == ISC_UINT64_MAX)
++		if (q->timestamp == UINT64_MAX)
+ 			continue;
+ 
+ 		tinfo->stats.num_interrupted++;
+@@ -994,10 +993,10 @@ cancel_queries(threadinfo_t *tinfo)
+ 	}
+ }
+ 
+-static isc_uint32_t
+-per_thread(isc_uint32_t total, isc_uint32_t nthreads, unsigned int offset)
++static uint32_t
++per_thread(uint32_t total, uint32_t nthreads, unsigned int offset)
+ {
+-	isc_uint32_t value;
++	uint32_t value;
+ 
+ 	value = total / nthreads;
+ 	if (value % nthreads > offset)
+@@ -1128,7 +1127,7 @@ main(int argc, char **argv)
+ 	if (config.timelimit > 0)
+ 		times.stop_time = times.start_time + config.timelimit;
+ 	else
+-		times.stop_time = ISC_UINT64_MAX;
++		times.stop_time = UINT64_MAX;
+ 	times.stop_time_ns.tv_sec = times.stop_time / MILLION;
+ 	times.stop_time_ns.tv_nsec = (times.stop_time % MILLION) * 1000;
+ 
+diff --git a/contrib/dnsperf-2.1.0.0-1/opt.c b/contrib/dnsperf-2.1.0.0-1/opt.c
+index 7fe46bade7..cd3bd59e69 100644
+--- a/contrib/dnsperf-2.1.0.0-1/opt.c
++++ b/contrib/dnsperf-2.1.0.0-1/opt.c
+@@ -17,6 +17,7 @@
+ 
+ #include <getopt.h>
+ #include <stdio.h>
++#include <inttypes.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+@@ -45,7 +46,7 @@ typedef struct {
+ 		char **stringp;
+ 		isc_boolean_t *boolp;
+ 		unsigned int *uintp;
+-		isc_uint64_t *uint64p;
++		uint64_t *uint64p;
+ 		double *doublep;
+ 		in_port_t *portp;
+ 	} u;
+@@ -115,11 +116,11 @@ perf_opt_usage(void)
+ 	}
+ }
+ 
+-static isc_uint32_t
++static uint32_t
+ parse_uint(const char *desc, const char *str,
+ 	   unsigned int min, unsigned int max)
+ {
+-	isc_uint32_t val;
++	uint32_t val;
+ 	isc_result_t result;
+ 
+ 	val = 0;
+@@ -132,7 +133,7 @@ parse_uint(const char *desc, const char *str,
+ 	return val;
+ }
+ 
+-static isc_uint64_t
++static uint64_t
+ parse_timeval(const char *desc, const char *str)
+ {
+ 	const char *s;
+diff --git a/contrib/dnsperf-2.1.0.0-1/os.c b/contrib/dnsperf-2.1.0.0-1/os.c
+index 99234b4c17..2c3eae7d27 100644
+--- a/contrib/dnsperf-2.1.0.0-1/os.c
++++ b/contrib/dnsperf-2.1.0.0-1/os.c
+@@ -17,6 +17,7 @@
+ 
+ #include <errno.h>
+ #include <signal.h>
++#include <inttypes.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+@@ -57,7 +58,7 @@ perf_os_handlesignal(int sig, void (*handler)(int))
+ }
+ 
+ isc_result_t
+-perf_os_waituntilreadable(int fd, int pipe_fd, isc_int64_t timeout)
++perf_os_waituntilreadable(int fd, int pipe_fd, int64_t timeout)
+ {
+ 	fd_set read_fds;
+ 	int maxfd;
+@@ -91,7 +92,7 @@ perf_os_waituntilreadable(int fd, int pipe_fd, isc_int64_t timeout)
+ 
+ isc_result_t
+ perf_os_waituntilanyreadable(int *fds, unsigned int nfds, int pipe_fd,
+-			     isc_int64_t timeout)
++			     int64_t timeout)
+ {
+ 	fd_set read_fds;
+ 	unsigned int i;
+diff --git a/contrib/dnsperf-2.1.0.0-1/os.h b/contrib/dnsperf-2.1.0.0-1/os.h
+index 6a75f4d479..1ca0b21bff 100644
+--- a/contrib/dnsperf-2.1.0.0-1/os.h
++++ b/contrib/dnsperf-2.1.0.0-1/os.h
+@@ -18,6 +18,8 @@
+ #ifndef PERF_OS_H
+ #define PERF_OS_H 1
+ 
++#include <inttypes.h>
++
+ void
+ perf_os_blocksignal(int sig, isc_boolean_t block);
+ 
+@@ -25,10 +27,10 @@ void
+ perf_os_handlesignal(int sig, void (*handler)(int));
+ 
+ isc_result_t
+-perf_os_waituntilreadable(int fd, int pipe_fd, isc_int64_t timeout);
++perf_os_waituntilreadable(int fd, int pipe_fd, int64_t timeout);
+ 
+ isc_result_t
+ perf_os_waituntilanyreadable(int *fds, unsigned int nfds, int pipe_fd,
+-			     isc_int64_t timeout);
++			     int64_t timeout);
+ 
+ #endif
+diff --git a/contrib/dnsperf-2.1.0.0-1/resperf.c b/contrib/dnsperf-2.1.0.0-1/resperf.c
+index 7744d32d65..00106f48c7 100644
+--- a/contrib/dnsperf-2.1.0.0-1/resperf.c
++++ b/contrib/dnsperf-2.1.0.0-1/resperf.c
+@@ -41,7 +41,6 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
+-#include <inttypes.h>
+ 
+ #include <sys/time.h>
+ 
+@@ -83,7 +82,7 @@ struct query_info;
+ typedef ISC_LIST(struct query_info) query_list;
+ 
+ typedef struct query_info {
+-	isc_uint64_t sent_timestamp;
++	uint64_t sent_timestamp;
+ 	/*
+ 	 * This link links the query into the list of outstanding
+ 	 * queries or the list of available query IDs.
+@@ -107,7 +106,7 @@ static isc_sockaddr_t local_addr;
+ static unsigned int nsocks;
+ static int *socks;
+ 
+-static isc_uint64_t query_timeout;
++static uint64_t query_timeout;
+ static isc_boolean_t edns;
+ static isc_boolean_t dnssec;
+ 
+@@ -118,24 +117,24 @@ double max_qps = 100000.0;
+ 
+ /* The time period over which we ramp up traffic */
+ #define DEFAULT_RAMP_TIME 60
+-static isc_uint64_t ramp_time;
++static uint64_t ramp_time;
+ 
+ /* How long to send constant traffic after the initial ramp-up */
+ #define DEFAULT_SUSTAIN_TIME 0
+-static isc_uint64_t sustain_time;
++static uint64_t sustain_time;
+ 
+ /* How long to wait for responses after sending traffic */
+-static isc_uint64_t wait_time = 40 * MILLION;
++static uint64_t wait_time = 40 * MILLION;
+ 
+ /* Total duration of the traffic-sending part of the test */
+-static isc_uint64_t traffic_time;
++static uint64_t traffic_time;
+ 
+ /* Total duration of the test */
+-static isc_uint64_t end_time;
++static uint64_t end_time;
+ 
+ /* Interval between plot data points, in microseconds */
+ #define DEFAULT_BUCKET_INTERVAL 0.5
+-static isc_uint64_t bucket_interval;
++static uint64_t bucket_interval;
+ 
+ /* The number of plot data points */
+ static int n_buckets;
+@@ -149,15 +148,15 @@ static double max_loss_percent = 100.0;
+ /* The maximum number of outstanding queries */
+ static unsigned int max_outstanding;
+ 
+-static isc_uint64_t num_queries_sent;
+-static isc_uint64_t num_queries_outstanding;
+-static isc_uint64_t num_responses_received;
+-static isc_uint64_t num_queries_timed_out;
+-static isc_uint64_t rcodecounts[16];
++static uint64_t num_queries_sent;
++static uint64_t num_queries_outstanding;
++static uint64_t num_responses_received;
++static uint64_t num_queries_timed_out;
++static uint64_t rcodecounts[16];
+ 
+-static isc_uint64_t time_now;
+-static isc_uint64_t time_of_program_start;
+-static isc_uint64_t time_of_end_of_run;
++static uint64_t time_now;
++static uint64_t time_of_program_start;
++static uint64_t time_of_end_of_run;
+ 
+ /*
+  * The last plot data point containing actual data; this can
+@@ -199,7 +198,7 @@ enum phase {
+ static enum phase phase = PHASE_RAMP;
+ 
+ /* The time when the sustain/wait phase began */
+-static isc_uint64_t sustain_phase_began, wait_phase_began;
++static uint64_t sustain_phase_began, wait_phase_began;
+ 
+ static perf_dnstsigkey_t *tsigkey;
+ 
+@@ -360,8 +359,8 @@ cleanup(void)
+ /* Find the ramp_bucket for queries sent at time "when" */
+ 
+ static ramp_bucket *
+-find_bucket(isc_uint64_t when) {
+-	isc_uint64_t sent_at = when - time_of_program_start;
++find_bucket(uint64_t when) {
++	uint64_t sent_at = when - time_of_program_start;
+ 	int i = (int) ((n_buckets * sent_at) / traffic_time);
+ 	/*
+ 	 * Guard against array bounds violations due to roundoff
+@@ -384,7 +383,7 @@ print_statistics(void) {
+ 	double max_throughput;
+ 	double loss_at_max_throughput;
+ 	isc_boolean_t first_rcode;
+-	isc_uint64_t run_time = time_of_end_of_run - time_of_program_start;
++	uint64_t run_time = time_of_end_of_run - time_of_program_start;
+ 
+ 	printf("\nStatistics:\n\n");
+ 
+@@ -528,14 +527,14 @@ enter_wait_phase(void) {
+ static void
+ try_process_response(unsigned int sockindex) {
+ 	unsigned char packet_buffer[MAX_EDNS_PACKET];
+-	isc_uint16_t *packet_header;
+-	isc_uint16_t qid, rcode;
++	uint16_t *packet_header;
++	uint16_t qid, rcode;
+ 	query_info *q;
+ 	double latency;
+ 	ramp_bucket *b;
+ 	int n;
+ 
+-	packet_header = (isc_uint16_t *) packet_buffer;
++	packet_header = (uint16_t *) packet_buffer;
+ 	n = recvfrom(socks[sockindex], packet_buffer, sizeof(packet_buffer),
+ 		     0, NULL, NULL);
+ 	if (n < 0) {
+@@ -596,7 +595,7 @@ retire_old_queries(void)
+ }
+ 
+ static inline int
+-num_scheduled(isc_uint64_t time_since_start)
++num_scheduled(uint64_t time_since_start)
+ {
+ 	if (phase == PHASE_RAMP) {
+ 		return 0.5 * max_qps *
+@@ -650,7 +649,7 @@ main(int argc, char **argv) {
+ 	current_sock = 0;
+ 	for (;;) {
+ 		int should_send;
+-		isc_uint64_t time_since_start = time_now -
++		uint64_t time_since_start = time_now -
+ 						time_of_program_start;
+ 		switch (phase) {
+ 		case PHASE_RAMP:
+diff --git a/contrib/dnsperf-2.1.0.0-1/util.h b/contrib/dnsperf-2.1.0.0-1/util.h
+index fdaa8eb5ae..4cf0794ee3 100644
+--- a/contrib/dnsperf-2.1.0.0-1/util.h
++++ b/contrib/dnsperf-2.1.0.0-1/util.h
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include <pthread.h>
++#include <inttypes.h>
+ #include <string.h>
+ 
+ #include <sys/time.h>
+@@ -27,7 +28,7 @@
+ #ifndef PERF_UTIL_H
+ #define PERF_UTIL_H 1
+ 
+-#define MILLION ((isc_uint64_t) 1000000)
++#define MILLION ((uint64_t) 1000000)
+ 
+ #define THREAD(thread, start, arg) do {					\
+ 	int __n = pthread_create((thread), NULL, (start), (arg));	\
+@@ -109,7 +110,7 @@
+ 		*res = ISC_TF(__n != 0);				\
+ 	} while (0)
+ 
+-static __inline__ isc_uint64_t
++static __inline__ uint64_t
+ get_time(void)
+ {
+ 	struct timeval tv;
+-- 
+2.19.1
+

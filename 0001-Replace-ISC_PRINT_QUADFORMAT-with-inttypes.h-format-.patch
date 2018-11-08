@@ -1,0 +1,92 @@
+From 64fe6bbaf2019f444475dfbf744eb6ea4e619c19 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ond=C5=99ej=20Sur=C3=BD?= <ondrej@sury.org>
+Date: Wed, 28 Mar 2018 14:56:40 +0200
+Subject: [PATCH] Replace ISC_PRINT_QUADFORMAT with inttypes.h format constants
+
+---
+ contrib/dnsperf-2.1.0.0-1/dnsperf.c | 12 +++++++-----
+ contrib/dnsperf-2.1.0.0-1/resperf.c |  9 +++++----
+ 2 files changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/contrib/dnsperf-2.1.0.0-1/dnsperf.c b/contrib/dnsperf-2.1.0.0-1/dnsperf.c
+index 67c5fc3ddb..ba84de1a51 100644
+--- a/contrib/dnsperf-2.1.0.0-1/dnsperf.c
++++ b/contrib/dnsperf-2.1.0.0-1/dnsperf.c
+@@ -36,6 +36,8 @@
+  ***	DNS Performance Testing Tool
+  ***/
+ 
++#include <inttypes.h>
++
+ #include <errno.h>
+ #include <math.h>
+ #include <pthread.h>
+@@ -278,16 +280,16 @@ print_statistics(const config_t *config, const times_t *times, stats_t *stats)
+ 
+ 	printf("Statistics:\n\n");
+ 
+-	printf("  %s sent:         %" ISC_PRINT_QUADFORMAT "u\n",
++	printf("  %s sent:         %" PRIu64 "\n",
+                units, stats->num_sent);
+-	printf("  %s completed:    %" ISC_PRINT_QUADFORMAT "u (%.2lf%%)\n",
++	printf("  %s completed:    %" PRIu64 " (%.2lf%%)\n",
+ 	       units, stats->num_completed,
+ 	       SAFE_DIV(100.0 * stats->num_completed, stats->num_sent));
+-	printf("  %s lost:         %" ISC_PRINT_QUADFORMAT "u (%.2lf%%)\n",
++	printf("  %s lost:         %" PRIu64 " (%.2lf%%)\n",
+ 	       units, stats->num_timedout,
+ 	       SAFE_DIV(100.0 * stats->num_timedout, stats->num_sent));
+ 	if (stats->num_interrupted > 0)
+-		printf("  %s interrupted:  %" ISC_PRINT_QUADFORMAT "u "
++		printf("  %s interrupted:  %" PRIu64 " "
+                        "(%.2lf%%)\n",
+ 		       units, stats->num_interrupted,
+ 		       SAFE_DIV(100.0 * stats->num_interrupted,
+@@ -303,7 +305,7 @@ print_statistics(const config_t *config, const times_t *times, stats_t *stats)
+ 			first_rcode = ISC_FALSE;
+ 		else
+ 			printf(", ");
+-		printf("%s %" ISC_PRINT_QUADFORMAT "u (%.2lf%%)",
++		printf("%s %" PRIu64 " (%.2lf%%)",
+ 		       perf_dns_rcode_strings[i], stats->rcodecounts[i],
+ 		       (stats->rcodecounts[i] * 100.0) / stats->num_completed);
+ 	}
+diff --git a/contrib/dnsperf-2.1.0.0-1/resperf.c b/contrib/dnsperf-2.1.0.0-1/resperf.c
+index e94528e802..7744d32d65 100644
+--- a/contrib/dnsperf-2.1.0.0-1/resperf.c
++++ b/contrib/dnsperf-2.1.0.0-1/resperf.c
+@@ -41,6 +41,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <inttypes.h>
+ 
+ #include <sys/time.h>
+ 
+@@ -387,11 +388,11 @@ print_statistics(void) {
+ 
+ 	printf("\nStatistics:\n\n");
+ 
+-	printf("  Queries sent:         %" ISC_PRINT_QUADFORMAT "u\n",
++	printf("  Queries sent:         %" PRIu64 "\n",
+                num_queries_sent);
+-	printf("  Queries completed:    %" ISC_PRINT_QUADFORMAT "u\n",
++	printf("  Queries completed:    %" PRIu64 "\n",
+                num_responses_received);
+-	printf("  Queries lost:         %" ISC_PRINT_QUADFORMAT "u\n",
++	printf("  Queries lost:         %" PRIu64 "\n",
+ 	       num_queries_sent - num_responses_received);
+ 	printf("  Response codes:       ");
+ 	first_rcode = ISC_TRUE;
+@@ -402,7 +403,7 @@ print_statistics(void) {
+ 			first_rcode = ISC_FALSE;
+ 		else
+ 			printf(", ");
+-		printf("%s %" ISC_PRINT_QUADFORMAT "u (%.2lf%%)",
++		printf("%s %" PRIu64 " (%.2lf%%)",
+ 		       perf_dns_rcode_strings[i], rcodecounts[i],
+ 		       (rcodecounts[i] * 100.0) / num_responses_received);
+ 	}
+-- 
+2.19.1
+

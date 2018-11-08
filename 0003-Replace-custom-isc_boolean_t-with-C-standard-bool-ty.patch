@@ -1,0 +1,704 @@
+From 994e656977b88516d76519c437b623ddb32b0769 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ond=C5=99ej=20Sur=C3=BD?= <ondrej@sury.org>
+Date: Tue, 17 Apr 2018 08:29:14 -0700
+Subject: [PATCH] Replace custom isc_boolean_t with C standard bool type
+
+---
+ contrib/dnsperf-2.1.0.0-1/datafile.c | 25 ++++++------
+ contrib/dnsperf-2.1.0.0-1/datafile.h |  4 +-
+ contrib/dnsperf-2.1.0.0-1/dns.c      | 45 +++++++++++-----------
+ contrib/dnsperf-2.1.0.0-1/dns.h      |  5 ++-
+ contrib/dnsperf-2.1.0.0-1/dnsperf.c  | 57 ++++++++++++++--------------
+ contrib/dnsperf-2.1.0.0-1/opt.c      | 13 ++++---
+ contrib/dnsperf-2.1.0.0-1/os.c       |  3 +-
+ contrib/dnsperf-2.1.0.0-1/os.h       |  3 +-
+ contrib/dnsperf-2.1.0.0-1/resperf.c  | 17 +++++----
+ contrib/dnsperf-2.1.0.0-1/util.h     |  5 ++-
+ 10 files changed, 94 insertions(+), 83 deletions(-)
+
+diff --git a/contrib/dnsperf-2.1.0.0-1/datafile.c b/contrib/dnsperf-2.1.0.0-1/datafile.c
+index b6274c0cdf..633d1d3eb1 100644
+--- a/contrib/dnsperf-2.1.0.0-1/datafile.c
++++ b/contrib/dnsperf-2.1.0.0-1/datafile.c
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include <fcntl.h>
++#include <stdbool.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
+@@ -38,14 +39,14 @@ struct perf_datafile {
+ 	pthread_mutex_t lock;
+ 	int pipe_fd;
+ 	int fd;
+-	isc_boolean_t is_file;
++	bool is_file;
+ 	size_t size;
+-	isc_boolean_t cached;
++	bool cached;
+ 	char databuf[BUFFER_SIZE + 1];
+ 	isc_buffer_t data;
+ 	unsigned int maxruns;
+ 	unsigned int nruns;
+-	isc_boolean_t read_any;
++	bool read_any;
+ };
+ 
+ static inline void
+@@ -70,12 +71,12 @@ perf_datafile_open(isc_mem_t *mctx, const char *filename)
+ 	dfile->mctx = mctx;
+ 	MUTEX_INIT(&dfile->lock);
+ 	dfile->pipe_fd = -1;
+-	dfile->is_file = ISC_FALSE;
++	dfile->is_file = false;
+ 	dfile->size = 0;
+-	dfile->cached = ISC_FALSE;
++	dfile->cached = false;
+ 	dfile->maxruns = 1;
+ 	dfile->nruns = 0;
+-	dfile->read_any = ISC_FALSE;
++	dfile->read_any = false;
+ 	isc_buffer_init(&dfile->data, dfile->databuf, BUFFER_SIZE);
+ 	if (filename == NULL) {
+ 		dfile->fd = STDIN_FILENO;
+@@ -84,7 +85,7 @@ perf_datafile_open(isc_mem_t *mctx, const char *filename)
+ 		if (dfile->fd < 0)
+ 			perf_log_fatal("unable to open file: %s", filename);
+ 		if (fstat(dfile->fd, &buf) == 0 && S_ISREG(buf.st_mode)) {
+-			dfile->is_file = ISC_TRUE;
++			dfile->is_file = true;
+ 			dfile->size = buf.st_size;
+ 		}
+ 	}
+@@ -162,7 +163,7 @@ read_more(perf_datafile_t *dfile)
+ 
+ 	if (dfile->is_file &&
+ 	    isc_buffer_usedlength(&dfile->data) == dfile->size)
+-		dfile->cached = ISC_TRUE;
++		dfile->cached = true;
+ 
+ 	return (ISC_R_SUCCESS);
+ }
+@@ -174,7 +175,7 @@ read_one_line(perf_datafile_t *dfile, isc_buffer_t *lines)
+ 	unsigned int length, curlen, nrem;
+ 	isc_result_t result;
+ 
+-	while (ISC_TRUE) {
++	while (true) {
+ 		/* Get the current line */
+ 		cur = isc_buffer_current(&dfile->data);
+ 		curlen = strcspn(cur, "\n");
+@@ -219,7 +220,7 @@ read_one_line(perf_datafile_t *dfile, isc_buffer_t *lines)
+ 
+ isc_result_t
+ perf_datafile_next(perf_datafile_t *dfile, isc_buffer_t *lines,
+-		   isc_boolean_t is_update)
++		   bool is_update)
+ {
+ 	const char *current;
+ 	isc_result_t result;
+@@ -246,10 +247,10 @@ perf_datafile_next(perf_datafile_t *dfile, isc_buffer_t *lines,
+ 	if (result != ISC_R_SUCCESS) {
+ 		goto done;
+ 	}
+-	dfile->read_any = ISC_TRUE;
++	dfile->read_any = true;
+ 
+ 	if (is_update) {
+-		while (ISC_TRUE) {
++		while (true) {
+ 			current = isc_buffer_used(lines);
+ 			result = read_one_line(dfile, lines);
+ 			if (result == ISC_R_EOF &&
+diff --git a/contrib/dnsperf-2.1.0.0-1/datafile.h b/contrib/dnsperf-2.1.0.0-1/datafile.h
+index 9e0edc6462..c810d28a42 100644
+--- a/contrib/dnsperf-2.1.0.0-1/datafile.h
++++ b/contrib/dnsperf-2.1.0.0-1/datafile.h
+@@ -18,6 +18,8 @@
+ #ifndef PERF_DATAFILE_H
+ #define PERF_DATAFILE_H 1
+ 
++#include <stdbool.h>
++
+ #include <isc/types.h>
+ 
+ typedef struct perf_datafile perf_datafile_t;
+@@ -36,7 +38,7 @@ perf_datafile_setpipefd(perf_datafile_t *dfile, int pipe_fd);
+ 
+ isc_result_t
+ perf_datafile_next(perf_datafile_t *dfile, isc_buffer_t *lines,
+-		   isc_boolean_t is_update);
++		   bool is_update);
+ 
+ unsigned int
+ perf_datafile_nruns(const perf_datafile_t *dfile);
+diff --git a/contrib/dnsperf-2.1.0.0-1/dns.c b/contrib/dnsperf-2.1.0.0-1/dns.c
+index 5002e77bd2..061a023666 100644
+--- a/contrib/dnsperf-2.1.0.0-1/dns.c
++++ b/contrib/dnsperf-2.1.0.0-1/dns.c
+@@ -35,6 +35,7 @@
+ #include <ctype.h>
+ #include <time.h>
+ #include <inttypes.h>
++#include <stdbool.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+@@ -119,7 +120,7 @@ struct perf_dnsctx {
+ };
+ 
+ perf_dnsctx_t *
+-perf_dns_createctx(isc_boolean_t updates)
++perf_dns_createctx(bool updates)
+ {
+ 	isc_mem_t *mctx;
+ 	perf_dnsctx_t *ctx;
+@@ -300,7 +301,7 @@ perf_dns_destroytsigkey(perf_dnstsigkey_t **tsigkeyp)
+  * Appends an OPT record to the packet.
+  */
+ static isc_result_t
+-add_edns(isc_buffer_t *packet, isc_boolean_t dnssec) {
++add_edns(isc_buffer_t *packet, bool dnssec) {
+ 	unsigned char *base;
+ 
+ 	if (isc_buffer_availablelength(packet) < EDNSLEN) {
+@@ -523,7 +524,7 @@ build_query(const isc_textregion_t *line, isc_buffer_t *msg)
+ 	return ISC_R_SUCCESS;
+ }
+ 
+-static isc_boolean_t
++static bool
+ token_equals(const isc_textregion_t *token, const char *str)
+ {
+ 	return (strlen(str) == token->length &&
+@@ -643,7 +644,7 @@ build_update(perf_dnsctx_t *ctx, const isc_textregion_t *record,
+ 	unsigned char rdataarray[MAX_RDATA_LENGTH];
+ 	isc_textregion_t token;
+ 	char *str;
+-	isc_boolean_t is_update;
++	bool is_update;
+ 	int updates = 0;
+ 	int prereqs = 0;
+ 	dns_fixedname_t fzname, foname;
+@@ -683,7 +684,7 @@ build_update(perf_dnsctx_t *ctx, const isc_textregion_t *record,
+ 	isc_buffer_putuint16(msg, dns_rdatatype_soa);
+ 	isc_buffer_putuint16(msg, dns_rdataclass_in);
+ 
+-	while (ISC_TRUE) {
++	while (true) {
+ 		input.base += strlen(input.base) + 1;
+ 		if (input.base >= record->base + record->length) {
+ 			perf_log_warning("warning: incomplete update");
+@@ -696,7 +697,7 @@ build_update(perf_dnsctx_t *ctx, const isc_textregion_t *record,
+ 		dns_rdata_init(&rdata);
+ 		rdlen = 0;
+ 		rdclass = dns_rdataclass_in;
+-		is_update = ISC_FALSE;
++		is_update = false;
+ 
+ 		token.base = input.base;
+ 		token.length = strcspn(token.base, WHITESPACE);
+@@ -705,42 +706,42 @@ build_update(perf_dnsctx_t *ctx, const isc_textregion_t *record,
+ 			break;
+ 		} else if (token_equals(&token, "add")) {
+ 			result = read_update_line(ctx, &input, str, zname,
+-						  ISC_TRUE,
+-						  ISC_TRUE, ISC_TRUE, ISC_TRUE,
++						  true,
++						  true, true, true,
+ 						  oname, &ttl, &rdtype,
+ 						  &rdata, &rdatabuf);
+ 			rdclass = dns_rdataclass_in;
+-			is_update = ISC_TRUE;
++			is_update = true;
+ 		} else if (token_equals(&token, "delete")) {
+ 			result = read_update_line(ctx, &input, str, zname,
+-						  ISC_FALSE,
+-						  ISC_FALSE, ISC_TRUE,
+-						  ISC_FALSE, oname, &ttl,
++						  false,
++						  false, true,
++						  false, oname, &ttl,
+ 						  &rdtype, &rdata, &rdatabuf);
+ 			if (isc_buffer_usedlength(&rdatabuf) > 0)
+ 				rdclass = dns_rdataclass_none;
+ 			else
+ 				rdclass = dns_rdataclass_any;
+-			is_update = ISC_TRUE;
++			is_update = true;
+ 		} else if (token_equals(&token, "require")) {
+ 			result = read_update_line(ctx, &input, str, zname,
+-						  ISC_FALSE,
+-						  ISC_FALSE, ISC_TRUE,
+-						  ISC_FALSE, oname, &ttl,
++						  false,
++						  false, true,
++						  false, oname, &ttl,
+ 						  &rdtype, &rdata, &rdatabuf);
+ 			if (isc_buffer_usedlength(&rdatabuf) > 0)
+ 				rdclass = dns_rdataclass_in;
+ 			else
+ 				rdclass = dns_rdataclass_any;
+-			is_update = ISC_FALSE;
++			is_update = false;
+ 		} else if (token_equals(&token, "prohibit")) {
+ 			result = read_update_line(ctx, &input, str, zname,
+-						  ISC_FALSE,
+-						  ISC_FALSE, ISC_FALSE,
+-						  ISC_FALSE, oname, &ttl,
++						  false,
++						  false, false,
++						  false, oname, &ttl,
+ 						  &rdtype, &rdata, &rdatabuf);
+ 			rdclass = dns_rdataclass_none;
+-			is_update = ISC_FALSE;
++			is_update = false;
+ 		} else {
+ 			perf_log_warning("invalid update command: %s",
+ 					 input.base);
+@@ -803,7 +804,7 @@ build_update(perf_dnsctx_t *ctx, const isc_textregion_t *record,
+ isc_result_t
+ perf_dns_buildrequest(perf_dnsctx_t *ctx, const isc_textregion_t *record,
+ 		      uint16_t qid,
+-		      isc_boolean_t edns, isc_boolean_t dnssec,
++		      bool edns, bool dnssec,
+ 		      perf_dnstsigkey_t *tsigkey, isc_buffer_t *msg)
+ {
+ 	unsigned int flags;
+diff --git a/contrib/dnsperf-2.1.0.0-1/dns.h b/contrib/dnsperf-2.1.0.0-1/dns.h
+index 5dab512f38..5d5583f9be 100644
+--- a/contrib/dnsperf-2.1.0.0-1/dns.h
++++ b/contrib/dnsperf-2.1.0.0-1/dns.h
+@@ -33,6 +33,7 @@
+  */
+ 
+ #include <inttypes.h>
++#include <stdbool.h>
+ 
+ #include <isc/types.h>
+ 
+@@ -54,7 +55,7 @@ void
+ perf_dns_destroytsigkey(perf_dnstsigkey_t **tsigkeyp);
+ 
+ perf_dnsctx_t *
+-perf_dns_createctx(isc_boolean_t updates);
++perf_dns_createctx(bool updates);
+ 
+ void
+ perf_dns_destroyctx(perf_dnsctx_t **ctxp);
+@@ -62,7 +63,7 @@ perf_dns_destroyctx(perf_dnsctx_t **ctxp);
+ isc_result_t
+ perf_dns_buildrequest(perf_dnsctx_t *ctx, const isc_textregion_t *record,
+ 		      uint16_t qid,
+-		      isc_boolean_t edns, isc_boolean_t dnssec,
++		      bool edns, bool dnssec,
+ 		      perf_dnstsigkey_t *tsigkey, isc_buffer_t *msg);
+ 
+ #endif
+diff --git a/contrib/dnsperf-2.1.0.0-1/dnsperf.c b/contrib/dnsperf-2.1.0.0-1/dnsperf.c
+index 4c8ad39dc0..5f86c32ad8 100644
+--- a/contrib/dnsperf-2.1.0.0-1/dnsperf.c
++++ b/contrib/dnsperf-2.1.0.0-1/dnsperf.c
+@@ -41,6 +41,7 @@
+ #include <math.h>
+ #include <pthread.h>
+ #include <signal.h>
++#include <stdbool.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -100,14 +101,14 @@ typedef struct {
+ 	isc_sockaddr_t local_addr;
+ 	uint64_t timeout;
+ 	uint32_t bufsize;
+-	isc_boolean_t edns;
+-	isc_boolean_t dnssec;
++	bool edns;
++	bool dnssec;
+ 	perf_dnstsigkey_t *tsigkey;
+ 	uint32_t max_outstanding;
+ 	uint32_t max_qps;
+ 	uint64_t stats_interval;
+-	isc_boolean_t updates;
+-	isc_boolean_t verbose;
++	bool updates;
++	bool verbose;
+ } config_t;
+ 
+ typedef struct {
+@@ -167,7 +168,7 @@ typedef struct {
+ 
+ 	perf_dnsctx_t *dnsctx;
+ 
+-	isc_boolean_t done_sending;
++	bool done_sending;
+ 	uint64_t done_send_time;
+ 
+ 	const config_t *config;
+@@ -184,9 +185,9 @@ static threadinfo_t *threads;
+ 
+ static pthread_mutex_t start_lock = PTHREAD_MUTEX_INITIALIZER;
+ static pthread_cond_t start_cond = PTHREAD_COND_INITIALIZER;
+-static isc_boolean_t started;
++static bool started;
+ 
+-static isc_boolean_t interrupted = ISC_FALSE;
++static bool interrupted = false;
+ 
+ static int threadpipe[2];
+ static int mainpipe[2];
+@@ -269,7 +270,7 @@ print_statistics(const config_t *config, const times_t *times, stats_t *stats)
+ {
+ 	const char *units;
+ 	uint64_t run_time;
+-	isc_boolean_t first_rcode;
++	bool first_rcode;
+ 	uint64_t latency_avg;
+ 	unsigned int i;
+ 
+@@ -296,12 +297,12 @@ print_statistics(const config_t *config, const times_t *times, stats_t *stats)
+ 	printf("\n");
+ 
+ 	printf("  Response codes:       ");
+-	first_rcode = ISC_TRUE;
++	first_rcode = true;
+ 	for (i = 0; i < 16; i++) {
+ 		if (stats->rcodecounts[i] == 0)
+ 			continue;
+ 		if (first_rcode)
+-			first_rcode = ISC_FALSE;
++			first_rcode = false;
+ 		else
+ 			printf(", ");
+ 		printf("%s %" PRIu64 " (%.2lf%%)",
+@@ -481,7 +482,7 @@ setup(int argc, char **argv, config_t *config)
+ 	perf_datafile_setmaxruns(input, config->maxruns);
+ 
+ 	if (config->dnssec)
+-		config->edns = ISC_TRUE;
++		config->edns = true;
+ 
+ 	if (tsigkey != NULL)
+ 		config->tsigkey = perf_dns_parsetsigkey(tsigkey, mctx);
+@@ -683,7 +684,7 @@ do_send(void *arg)
+ 		stats->total_request_size += length;
+ 	}
+ 	tinfo->done_send_time = get_time();
+-	tinfo->done_sending = ISC_TRUE;
++	tinfo->done_sending = true;
+ 	write(mainpipe[1], "", 1);
+ 	return NULL;
+ }
+@@ -730,12 +731,12 @@ typedef struct {
+ 	unsigned int size;
+ 	uint64_t when;
+ 	uint64_t sent;
+-	isc_boolean_t unexpected;
+-	isc_boolean_t short_response;
++	bool unexpected;
++	bool short_response;
+ 	char *desc;
+ } received_query_t;
+ 
+-static isc_boolean_t
++static bool
+ recv_one(threadinfo_t *tinfo, int which_sock,
+ 	 unsigned char *packet_buffer, unsigned int packet_size,
+ 	 received_query_t *recvd, int *saved_errnop)
+@@ -752,7 +753,7 @@ recv_one(threadinfo_t *tinfo, int which_sock,
+ 	now = get_time();
+ 	if (n < 0) {
+ 		*saved_errnop = errno;
+-		return ISC_FALSE;
++		return false;
+ 	}
+ 	recvd->sock = s;
+ 	recvd->qid = ntohs(packet_header[0]);
+@@ -760,10 +761,10 @@ recv_one(threadinfo_t *tinfo, int which_sock,
+ 	recvd->size = n;
+ 	recvd->when = now;
+ 	recvd->sent = 0;
+-	recvd->unexpected = ISC_FALSE;
+-	recvd->short_response = ISC_TF(n < 4);
++	recvd->unexpected = false;
++	recvd->short_response = (n < 4);
+ 	recvd->desc = NULL;
+-	return ISC_TRUE;
++	return true;
+ }
+ 
+ static inline void
+@@ -777,7 +778,7 @@ bit_set(unsigned char *bits, unsigned int bit)
+ 	bits[bit / 8] |= mask;
+ }
+ 
+-static inline isc_boolean_t
++static inline bool
+ bit_check(unsigned char *bits, unsigned int bit)
+ {
+ 	unsigned int shift;
+@@ -785,8 +786,8 @@ bit_check(unsigned char *bits, unsigned int bit)
+ 	shift = 7 - (bit % 8);
+ 
+ 	if ((bits[bit / 8] >> shift) & 0x01)
+-		return ISC_TRUE;
+-	return ISC_FALSE;
++		return true;
++	return false;
+ }
+ 
+ static void *
+@@ -860,7 +861,7 @@ do_recv(void *arg)
+ 			    q->timestamp == UINT64_MAX ||
+ 			    q->sock != recvd[i].sock)
+ 			{
+-				recvd[i].unexpected = ISC_TRUE;
++				recvd[i].unexpected = true;
+ 				continue;
+ 			}
+ 			query_move(tinfo, q, append_unused);
+@@ -975,7 +976,7 @@ cancel_queries(threadinfo_t *tinfo)
+ {
+ 	struct query_info *q;
+ 
+-	while (ISC_TRUE) {
++	while (true) {
+ 		q = ISC_LIST_TAIL(tinfo->outstanding_queries);
+ 		if (q == NULL)
+ 			break;
+@@ -1108,7 +1109,7 @@ main(int argc, char **argv)
+ 
+ 	perf_datafile_setpipefd(input, threadpipe[0]);
+ 
+-	perf_os_blocksignal(SIGINT, ISC_TRUE);
++	perf_os_blocksignal(SIGINT, true);
+ 
+ 	print_initial_status(&config);
+ 
+@@ -1132,16 +1133,16 @@ main(int argc, char **argv)
+ 	times.stop_time_ns.tv_nsec = (times.stop_time % MILLION) * 1000;
+ 
+ 	LOCK(&start_lock);
+-	started = ISC_TRUE;
++	started = true;
+ 	BROADCAST(&start_cond);
+ 	UNLOCK(&start_lock);
+ 
+ 	perf_os_handlesignal(SIGINT, handle_sigint);
+-	perf_os_blocksignal(SIGINT, ISC_FALSE);
++	perf_os_blocksignal(SIGINT, false);
+ 	result = perf_os_waituntilreadable(mainpipe[0], intrpipe[0],
+ 					   times.stop_time - times.start_time);
+ 	if (result == ISC_R_CANCELED)
+-		interrupted = ISC_TRUE;
++		interrupted = true;
+ 
+ 	times.end_time = get_time();
+ 
+diff --git a/contrib/dnsperf-2.1.0.0-1/opt.c b/contrib/dnsperf-2.1.0.0-1/opt.c
+index cd3bd59e69..9b1b0c31b9 100644
+--- a/contrib/dnsperf-2.1.0.0-1/opt.c
++++ b/contrib/dnsperf-2.1.0.0-1/opt.c
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include <getopt.h>
++#include <stdbool.h>
+ #include <stdio.h>
+ #include <inttypes.h>
+ #include <stdlib.h>
+@@ -44,7 +45,7 @@ typedef struct {
+ 	union {
+ 		void *valp;
+ 		char **stringp;
+-		isc_boolean_t *boolp;
++		bool *boolp;
+ 		unsigned int *uintp;
+ 		uint64_t *uint64p;
+ 		double *doublep;
+@@ -138,7 +139,7 @@ parse_timeval(const char *desc, const char *str)
+ {
+ 	const char *s;
+ 	char c;
+-	isc_boolean_t seen_dot = ISC_FALSE;
++	bool seen_dot = false;
+ 
+ 	s = str;
+ 	while (*s != 0) {
+@@ -146,7 +147,7 @@ parse_timeval(const char *desc, const char *str)
+ 		if (c == '.') {
+ 			if (seen_dot)
+ 				goto fail;
+-			seen_dot = ISC_TRUE;
++			seen_dot = true;
+ 		} else if (c < '0' || c > '9') {
+ 			goto fail;
+ 		}
+@@ -163,14 +164,14 @@ static double
+ parse_double(const char *desc, const char *str) {
+ 	char c;
+ 	int index = 0;
+-	isc_boolean_t seen_dot = ISC_FALSE;
++	bool seen_dot = false;
+ 
+ 	while (str[index] != 0) {
+ 		c = str[index];
+ 		if (c == '.') {
+ 			if (seen_dot)
+ 				goto fail;
+-			seen_dot = ISC_TRUE;
++			seen_dot = true;
+ 		} else if (c < '0' || c > '9') {
+ 			goto fail;
+ 		}
+@@ -215,7 +216,7 @@ perf_opt_parse(int argc, char **argv)
+ 			*opt->u.stringp = optarg;
+ 			break;
+ 		case perf_opt_boolean:
+-			*opt->u.boolp = ISC_TRUE;
++			*opt->u.boolp = true;
+ 			break;
+ 		case perf_opt_uint:
+ 			*opt->u.uintp = parse_uint(opt->desc, optarg,
+diff --git a/contrib/dnsperf-2.1.0.0-1/os.c b/contrib/dnsperf-2.1.0.0-1/os.c
+index 2c3eae7d27..7318cadb4e 100644
+--- a/contrib/dnsperf-2.1.0.0-1/os.c
++++ b/contrib/dnsperf-2.1.0.0-1/os.c
+@@ -18,6 +18,7 @@
+ #include <errno.h>
+ #include <signal.h>
+ #include <inttypes.h>
++#include <stdbool.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+@@ -31,7 +32,7 @@
+ #include "util.h"
+ 
+ void
+-perf_os_blocksignal(int sig, isc_boolean_t block)
++perf_os_blocksignal(int sig, bool block)
+ {
+ 	sigset_t sset;
+ 	int op;
+diff --git a/contrib/dnsperf-2.1.0.0-1/os.h b/contrib/dnsperf-2.1.0.0-1/os.h
+index 1ca0b21bff..56d756c6d4 100644
+--- a/contrib/dnsperf-2.1.0.0-1/os.h
++++ b/contrib/dnsperf-2.1.0.0-1/os.h
+@@ -19,9 +19,10 @@
+ #define PERF_OS_H 1
+ 
+ #include <inttypes.h>
++#include <stdbool.h>
+ 
+ void
+-perf_os_blocksignal(int sig, isc_boolean_t block);
++perf_os_blocksignal(int sig, bool block);
+ 
+ void
+ perf_os_handlesignal(int sig, void (*handler)(int));
+diff --git a/contrib/dnsperf-2.1.0.0-1/resperf.c b/contrib/dnsperf-2.1.0.0-1/resperf.c
+index 00106f48c7..a4f655542d 100644
+--- a/contrib/dnsperf-2.1.0.0-1/resperf.c
++++ b/contrib/dnsperf-2.1.0.0-1/resperf.c
+@@ -37,6 +37,7 @@
+  ***/
+ 
+ #include <errno.h>
++#include <stdbool.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -107,8 +108,8 @@ static unsigned int nsocks;
+ static int *socks;
+ 
+ static uint64_t query_timeout;
+-static isc_boolean_t edns;
+-static isc_boolean_t dnssec;
++static bool edns;
++static bool dnssec;
+ 
+ static perf_datafile_t *input;
+ 
+@@ -329,7 +330,7 @@ setup(int argc, char **argv)
+ 	input = perf_datafile_open(mctx, filename);
+ 
+ 	if (dnssec)
+-		edns = ISC_TRUE;
++		edns = true;
+ 
+ 	if (tsigkey_str != NULL)
+ 		tsigkey = perf_dns_parsetsigkey(tsigkey_str, mctx);
+@@ -382,7 +383,7 @@ print_statistics(void) {
+ 	int i;
+ 	double max_throughput;
+ 	double loss_at_max_throughput;
+-	isc_boolean_t first_rcode;
++	bool first_rcode;
+ 	uint64_t run_time = time_of_end_of_run - time_of_program_start;
+ 
+ 	printf("\nStatistics:\n\n");
+@@ -394,12 +395,12 @@ print_statistics(void) {
+ 	printf("  Queries lost:         %" PRIu64 "\n",
+ 	       num_queries_sent - num_responses_received);
+ 	printf("  Response codes:       ");
+-	first_rcode = ISC_TRUE;
++	first_rcode = true;
+ 	for (i = 0; i < 16; i++) {
+ 		if (rcodecounts[i] == 0)
+ 			continue;
+ 		if (first_rcode)
+-			first_rcode = ISC_FALSE;
++			first_rcode = false;
+ 		else
+ 			printf(", ");
+ 		printf("%s %" PRIu64 " (%.2lf%%)",
+@@ -462,7 +463,7 @@ do_one_line(isc_buffer_t *lines, isc_buffer_t *msg) {
+ 	isc_result_t result;
+ 
+ 	isc_buffer_clear(lines);
+-	result = perf_datafile_next(input, lines, ISC_FALSE);
++	result = perf_datafile_next(input, lines, false);
+ 	if (result != ISC_R_SUCCESS)
+ 		perf_log_fatal("ran out of query data");
+ 	isc_buffer_usedregion(lines, &used);
+@@ -580,7 +581,7 @@ retire_old_queries(void)
+ {
+ 	query_info *q;
+ 
+-	while (ISC_TRUE) {
++	while (true) {
+ 		q = ISC_LIST_TAIL(outstanding_list);
+ 		if (q == NULL ||
+ 		    (time_now - q->sent_timestamp) < query_timeout)
+diff --git a/contrib/dnsperf-2.1.0.0-1/util.h b/contrib/dnsperf-2.1.0.0-1/util.h
+index 4cf0794ee3..548a9af40a 100644
+--- a/contrib/dnsperf-2.1.0.0-1/util.h
++++ b/contrib/dnsperf-2.1.0.0-1/util.h
+@@ -17,6 +17,7 @@
+ 
+ #include <pthread.h>
+ #include <inttypes.h>
++#include <stdbool.h>
+ #include <string.h>
+ 
+ #include <sys/time.h>
+@@ -102,12 +103,12 @@
+ 
+ #define TIMEDWAIT(cond, mutex, when, timedout) do {			\
+ 	int __n = pthread_cond_timedwait((cond), (mutex), (when));	\
+-	isc_boolean_t *res = (timedout);				\
++	bool *res = (timedout);				\
+ 	if (__n != 0 && __n != ETIMEDOUT)				\
+ 		perf_log_fatal("pthread_cond_timedwait failed: %s",	\
+ 			       strerror(__n));				\
+ 	if (res != NULL)						\
+-		*res = ISC_TF(__n != 0);				\
++		*res = (__n != 0);					\
+ 	} while (0)
+ 
+ static __inline__ uint64_t
+-- 
+2.19.1
+
