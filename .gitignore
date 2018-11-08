@@ -1,4 +1,6 @@
 just-*.pkg.tar.xz
 just-*.tar.gz
+just-*.log
+PKGBUILD-namcap.log
 pkg/
 src/
