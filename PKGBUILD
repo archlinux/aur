@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=70.0.3538.77
+pkgver=71.0.3578.27
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
 arch=('x86_64')
@@ -15,10 +15,8 @@ makedepends=(
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
-  'chromium-FORTIFY_SOURCE-r2.patch'
 )
-sha512sums=('40817dfc1d27e8dc53c35bf45cdbb2a154b56ff2c288464759792fb2b37fe2af58bc7bf48bb8cb9c60a36513326874e77f9618c72d896c614870b85f6c6e8844'
-            '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c')
+sha512sums=('316657ff761e2d98aced62261d915d4073f466125b1095d471116bbe112ec622f4e7873097e0a686aef1cd96dc9ff81ae3c7a9c81a2e00f2a5d1b336b0040a1d')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -31,7 +29,6 @@ prepare() {
   mkdir "$srcdir/path"
   ln -s /usr/bin/python2 "$srcdir/path/python"
 
-  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r2.patch"
 }
 
 build() {
@@ -44,7 +41,7 @@ build() {
   #export CC="clang"
   #export CXX="clang++"
 
-  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true use_gnome_keyring=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=false clang_use_chrome_plugins=false is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false use_lld=false use_jumbo_build=false"
+  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true enable_ac3_eac3_audio_demuxing=true use_gnome_keyring=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=false clang_use_chrome_plugins=false is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false use_lld=false use_jumbo_build=false"
 
   #(
     #cd third_party/ffmpeg
