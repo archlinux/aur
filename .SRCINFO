@@ -27,7 +27,7 @@ pkgbase = email-securely-app-bin
 	conflicts = email-app-securely
 	source = https://github.com/vladimiry/email-securely-app/releases/download/v1.5.3/email-securely-app-1.5.3-linux.pacman
 	source = LICENSE
-	md5sums = 173388e1b6481dcbe25f10634213f87e
+	md5sums = e926948fd032c93e493145157b2cb0ab
 	md5sums = fc680045f40b19ce3c3e771aeb08bbd3
 
 pkgname = email-securely-app-bin

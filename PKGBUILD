@@ -13,7 +13,7 @@ conflicts=('email-app-securely')
 provides=('email-app-securely')
 install="${pkgname}.install"
 source=("https://github.com/vladimiry/email-securely-app/releases/download/v${pkgver}/email-securely-app-${pkgver}-linux.pacman" 'LICENSE')
-md5sums=('173388e1b6481dcbe25f10634213f87e' 'fc680045f40b19ce3c3e771aeb08bbd3')
+md5sums=('e926948fd032c93e493145157b2cb0ab' 'fc680045f40b19ce3c3e771aeb08bbd3')
 
 package() {
   cd "$srcdir"
