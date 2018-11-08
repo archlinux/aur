@@ -1,9 +1,9 @@
 # Maintainer: epitron <chris AT ill-logic.com>
 
 pkgname=mergerfs-git
-pkgver=2.24.2.r33.g47bf58e
+pkgver=2.25.0.r0.g606d9c4
 pkgrel=1
-pkgdesc='The best FUSE union filesystem'
+pkgdesc='Powerful FUSE UNION filesystem which gives fine control over how reads/writes are distributed, and allows underlying mounts/settings to be changed at runtime without remounting (using "magic" xattrs)'
 url='https://github.com/trapexit/mergerfs'
 arch=('i686' 'x86_64')
 options=('!emptydirs')

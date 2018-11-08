@@ -1,6 +1,6 @@
 pkgbase = mergerfs-git
-	pkgdesc = The best FUSE union filesystem
-	pkgver = 2.24.2.r33.g47bf58e
+	pkgdesc = Powerful FUSE UNION filesystem which gives fine control over how reads/writes are distributed, and allows underlying mounts/settings to be changed at runtime without remounting (using "magic" xattrs)
+	pkgver = 2.25.0.r0.g606d9c4
 	pkgrel = 1
 	url = https://github.com/trapexit/mergerfs
 	arch = i686
