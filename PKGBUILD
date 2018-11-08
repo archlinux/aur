@@ -4,18 +4,18 @@
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.4.1.14
-pkgrel=3
+pkgver=3.4.1.15
+pkgrel=1
 pkgdesc='A development tool that is primarily used to create graphical adventure games'
 arch=('x86_64')
 url='https://github.com/adventuregamestudio/ags'
 license=('Artistic2.0')
-depends=('dumb-a4' 'libtheora' 'libvorbis')
+depends=('dumb-a4' 'libtheora' 'freetype2')
 makedepends=('wxgtk')
 optdepends=('wine: for installing and configuring the game')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.$pkgver.tar.gz"
         'https://github.com/adventuregamestudio/ags/commit/44d954493bb5f3e95a11a4eddbb62bd6110b1b63.patch')
-sha256sums=('4ca76b919689c68a9fda4bd56bfb63268ab5326a539ce4d681ac4ed6a908b51c'
+sha256sums=('9ef4de9ebc417e1c466992c79631d884bfe8f6f1e0db79a7765ca1b438add38b'
             '6b7092e5794ae532f79c5c6ad5f5761c217b3ec874da43537152fb8e60b20019')
 
 prepare() {
@@ -27,7 +27,7 @@ prepare() {
         "$pkgname-$pkgver/Engine/Makefile-defs.linux"
 
     # avoid conflicts with glibc functions with the same names
-    patch -d "$pkgname-$pkgver" -p1 < ../44d954493bb5f3e95a11a4eddbb62bd6110b1b63.patch
+    patch -d "$pkgname-$pkgver" -p1 < "$srcdir/44d954493bb5f3e95a11a4eddbb62bd6110b1b63.patch"
 }
 
 build() {
