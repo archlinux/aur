@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2ef372018..34e65de25 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,8 +51,8 @@ option(ENABLE_JAVA_WRAPPER "Build the Java wrapper for Liblinphone." OFF)
+ option(ENABLE_JAVADOC "Add a target to generate documentation for Java API" NO)
+ option(ENABLE_LDAP "Enable LDAP support." NO)
+ option(ENABLE_LIME "Enable Instant Messaging Encryption." YES)
+-option(ENABLE_RELATIVE_PREFIX "Find resources relatively to the installation directory." NO)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_RELATIVE_PREFIX "Find resources relatively to the installation directory." YES)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ option(ENABLE_TOOLS "Turn on or off compilation of tools." YES)
+ option(ENABLE_TUNNEL "Turn on compilation of tunnel support." NO)
+ option(ENABLE_TUTORIALS "Enable compilation of tutorials." YES)
