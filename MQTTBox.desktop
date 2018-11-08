@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=MQTTBox
+GenericName=Developers helper program to create and test MQTT connectivity protocol
+Icon=mqttbox
+Exec=/usr/bin/MQTTBox
+Categories=Development
+Terminal=false

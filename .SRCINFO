@@ -1,0 +1,16 @@
+pkgbase = mqttbox
+	pkgdesc = Developers helper program to create and test MQTT connectivity protocol
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://workswithweb.com/mqttbox.html
+	arch = x86_64
+	license = apache
+	source = MQTTBox.desktop
+	source = MQTTBox.png
+	source = https://s3-us-west-2.amazonaws.com/workswithweb/mqttbox/latest/linux/MQTTBox.tar.gz
+	sha256sums = 04da099de5a9c38733cf9649e614c24780d3a3bbc2a8f2e7d38409bbd3adb876
+	sha256sums = f22b10da73d4146610d6bb7f305f6514380e760db9f7381092139abbabd06220
+	sha256sums = 0ea0566f40fdf544510090441faaba745816ad1d438f3efe72197eb630f0e1f7
+
+pkgname = mqttbox
+
