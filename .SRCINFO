@@ -1,0 +1,15 @@
+pkgbase = mpe
+	pkgdesc = Performance Visualization for Parallel Program
+	pkgver = 2.4.9b
+	pkgrel = 1
+	url = https://www.mcs.anl.gov/research/projects/perfvis/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-fortran
+	makedepends = openmpi
+	source = ftp://ftp.mcs.anl.gov/pub/mpi/mpe/mpe2-2.4.9b.tgz
+	md5sums = b2f66c2ed9628f13ef0b3cbe9734c543
+
+pkgname = mpe
+
