@@ -1,7 +1,7 @@
 # Maintainer: Attenuation <ouyangjun1999@gmail.com>
 pkgname=hexyl
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line hex viewer'
 arch=('x86_64')
 url='https://github.com/sharkdp/hexyl'
@@ -19,10 +19,5 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-
   install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 LICENSE-APACHE \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
-  install -Dm644 LICENSE-MIT \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 }
