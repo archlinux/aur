@@ -9,7 +9,7 @@ wl_project=${_pkgname}
 wl_component=Translations
 wl_dl="https://hosted.weblate.org/download/${wl_project}/${wl_component}"
 pkgname=${_pkgname,,}-git
-pkgver=6.3.r1270.c0adabe3
+pkgver=6.3.r1280.09242841
 pkgrel=1
 pkgdesc='GPS log file viewer and analyzer'
 arch=('i686' 'x86_64')
@@ -59,9 +59,13 @@ prepare() {
 
   sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
 
+  rename nb nb_NO lang/gpxsee_nb.ts
+
   find lang -name *.ts | \
     xargs basename -s .ts | \
     xargs -P 7 -I{} sh -c "curl -so lang/\$1.ts $wl_dl/\${1#${_pkgname,,}_}/" -- {}
+
+  rename nb_NO nb lang/gpxsee_nb_NO.ts
 }
 
 build() {
