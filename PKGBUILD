@@ -1,8 +1,8 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com 
 _hkgname=semigroups
 pkgname=haskell-semigroups
-pkgver=0.18.4
-pkgrel=2
+pkgver=0.18.5
+pkgrel=1
 pkgdesc="Anything that associates"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
