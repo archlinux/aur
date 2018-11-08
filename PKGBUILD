@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=gst-plugins-intel-msdk-git
-pkgver=1.3.3.rc9.r37.g54dbdec
+pkgver=1.3.3.rc9.r44.g1aae2ee
 pkgrel=1
 pkgdesc='GStreamer plugins for Intel Media SDK (MSDK) (git version)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("$pkgname"::'git+https://github.com/intel/gstreamer-media-SDK.git'
         'gst-plugins-intel-msdk-git-fix-intel-media-sdk-directories.patch'
         'gst-plugins-intel-msdk-git-fix-link-and-install.patch')
 sha256sums=('SKIP'
-            'd7c521d9308d2dbed770caff81031c663b4af384deb237fde8cf4b2c36759da5'
+            '9fd317b93395faa95eae10bb9bf77e1828d942b83f5b4ba768144c8a23f3cbec'
             'fc410ebcb456894e084b3705ddb5deceede0cb7977206e89cc7b86c29d011fe0')
 
 prepare() {
