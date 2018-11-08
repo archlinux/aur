@@ -1,17 +1,17 @@
 pkgbase = dropbox-cli
-	pkgdesc = Command line interface for dropbox
+	pkgdesc = Command line interface for Dropbox
 	pkgver = 2015.10.28
 	pkgrel = 3
 	url = http://www.dropbox.com
 	install = dropbox-cli.install
 	arch = any
 	license = GPL
-	depends = python2
 	depends = dropbox
-	source = https://linux.dropbox.com/packages/dropbox.py
-	source = dropbox-cli-arch.patch
+	depends = python2
+	source = dropbox-cli-2015.10.28.py::https://linux.dropbox.com/packages/dropbox.py
+	source = dropbox-cli.patch
 	sha256sums = 578bbcbb025db47581c962ddd95387b1078196857b3a76e9594b15b30325ae7d
-	sha256sums = 1fbaaf044393394e8d7a7457c1ae556e31fa41897219dc9cbe0b1bb6927b6c89
+	sha256sums = 962ce4bffb6b2a591c4e793dd311bd9bf16d583a324f80cde66677bdcd03ba48
 
 pkgname = dropbox-cli
 

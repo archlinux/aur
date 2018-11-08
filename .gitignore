@@ -1,0 +1,6 @@
+dropbox-cli-*.pkg.tar.xz
+dropbox-cli-*.py
+dropbox-cli-*.log
+PKGBUILD-namcap.log
+pkg/
+src/
