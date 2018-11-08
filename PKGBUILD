@@ -2,17 +2,17 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn-git
-pkgver=1.2.3.dev.r108.g96081a2
+pkgver=1.8.9.dev.r5.g8802a1f
 pkgrel=1
 pkgdesc='NetworkManager VPN plugin for OpenVPN - git checkout'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://www.gnome.org/projects/NetworkManager/'
-depends=('networkmanager-git' 'nm-connection-editor' 'openvpn' 'libsecret')
+depends=('libnm-gtk' 'openvpn' 'libsecret' 'libnma')
 makedepends=('git' 'intltool' 'python')
 provides=('networkmanager-openvpn')
 conflicts=('networkmanager-openvpn')
-source=('git://git.gnome.org/network-manager-openvpn')
+source=('git+https://gitlab.gnome.org/GNOME/network-manager-openvpn.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,11 +22,11 @@ pkgver() {
 		printf '%s.r%s.g%s' \
 			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
 			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	else
 		printf '0.r%s.g%s' \
 			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 build() {
@@ -47,3 +47,4 @@ package() {
 
 	make DESTDIR="${pkgdir}" install
 }
+
