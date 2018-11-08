@@ -1,6 +1,6 @@
 pkgbase = nextcloud-desktop
 	pkgdesc = Nextcloud desktop client (work-in-progress)
-	pkgver = 2.5.0rc1
+	pkgver = 2.5.0rc2
 	pkgrel = 1
 	epoch = 1
 	url = https://nextcloud.com/
@@ -28,8 +28,8 @@ pkgbase = nextcloud-desktop
 	optdepends = python2-nautilus: integration with Nautilus
 	optdepends = nemo-python: integration with Nemo
 	optdepends = kio: dolphin plugin
-	source = nextcloud-desktop-2.5.0-rc1.tar.gz::https://github.com/nextcloud/desktop/archive/v2.5.0-rc1.tar.gz
-	sha256sums = fbd455dc0a2dcd5c3df814cb783b71133f8971339de2f768044738ca622a0b5a
+	source = nextcloud-desktop-2.5.0-rc2.tar.gz::https://github.com/nextcloud/desktop/archive/v2.5.0-rc2.tar.gz
+	sha256sums = 835efaa1bff4462221930ab7c1dcf820d232e03beec1b8fecea8c7abd18e8687
 
 pkgname = nextcloud-desktop
 

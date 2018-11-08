@@ -2,8 +2,8 @@
 # Contributor: Tyler Dence <tyzoid@archlinux32.org>
 
 pkgname=nextcloud-desktop
-_pkgver=2.5.0-rc1
-pkgver=2.5.0rc1
+_pkgver=2.5.0-rc2
+pkgver=2.5.0rc2
 pkgrel=1
 epoch=1
 pkgdesc='Nextcloud desktop client (work-in-progress)'
@@ -19,7 +19,7 @@ optdepends=(
   'kio: dolphin plugin'
 )
 source=("$pkgname-$_pkgver.tar.gz"::"https://github.com/nextcloud/desktop/archive/v$_pkgver.tar.gz")
-sha256sums=('fbd455dc0a2dcd5c3df814cb783b71133f8971339de2f768044738ca622a0b5a')
+sha256sums=('835efaa1bff4462221930ab7c1dcf820d232e03beec1b8fecea8c7abd18e8687')
 
 prepare() {
   cd desktop-$_pkgver
