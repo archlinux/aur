@@ -3,14 +3,14 @@
 
 pkgname=creeper-world3
 pkgver=212
-pkgrel=3
+pkgrel=4
 pkgdesc="This is what happens when cellular automata takes over a strategy simulation."
 arch=('x86_64')
 url="http://knucklecracker.com/creeperworld3/cw3.php"
-license=('custom')
+license=('custom')  # Not distributed in the package.
 depends=('glu' 'gtk2')
 makedepends=('gendesk')
-source=("http://knucklecracker.com/creeperworld3/patches/CreeperWorld3PATCH-${pkgver}-linux.tgz"
+source=("https://knucklecracker.com/creeperworld3/patches/CreeperWorld3PATCH-${pkgver}-linux.tgz"
         "${pkgname}.sh")
 sha256sums=('78f1b45b4771114309abd23fbcbfd0ff6bf4ecdcbfbaf0da3213af48ce71672d'
             '8fc47f2d6736714e7444d9c10f427bc649a1f2b5fcb04e568600ce61cf575276')
@@ -18,7 +18,11 @@ sha256sums=('78f1b45b4771114309abd23fbcbfd0ff6bf4ecdcbfbaf0da3213af48ce71672d'
 PKGEXT='.pkg.tar'
 
 prepare() {
-    gendesk -n ../PKGBUILD
+    gendesk -n --pkgname="$pkgname" \
+        --name="Creeper World 3: Arc Eternal" \
+        --pkgdesc="$pkgdesc" \
+        --exec=/usr/bin/creeper-world3 \
+        --categories='Game'
 }
 
 package() {
