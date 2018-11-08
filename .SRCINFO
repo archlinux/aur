@@ -1,7 +1,7 @@
 pkgbase = skypeforlinux-stable-bin
 	pkgdesc = Skype for Linux - Stable/Release Version
 	pkgver = 8.33.0.41
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.skype.com
 	arch = x86_64
 	license = custom
