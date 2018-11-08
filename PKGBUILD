@@ -7,16 +7,16 @@ url="https://github.com/taiko2k/tauonmb"
 arch=('x86_64')
 license=('custom')
 
-pkgver=3.2.4
+pkgver=3.3.0
 pkgrel=1
 
 depends=('python3' 'noto-fonts' 'noto-fonts-emoji' 'sdl2_image' 'python-pillow' 'python-pylast' 'python-gobject' 'xdg-utils' 'python-beautifulsoup4' 'python-requests' 'python-cairo' 'python-stagger' 'python-hsaudiotag3k' 'python-flask' 'python-setproctitle')
 
 optdepends=('ffmpeg: File transcoding')
 
-source=('https://github.com/Taiko2k/tauonmb/releases/download/v3.2.4/Tauon.Music.Box.v3.2.4.Linux.Bass.64bit.zip')
+source=('https://github.com/Taiko2k/tauonmb/releases/download/v3.3.0/Tauon.Music.Box.v3.3.0.Linux.Bass.64bit.zip')
 
-sha1sums=('14d8e29a45f6333b57a0b881ceb2758b5ab533ac')
+sha1sums=('e85a8a78317371c87b74dd5a6c8eea1e9d3baaa1')
 
 package() {
 
