@@ -1,0 +1,17 @@
+pkgbase = emacs-maplev
+	pkgdesc = Emacs package for Maple developers
+	pkgver = 2.37
+	pkgrel = 1
+	url = https://github.com/JoeRiel/maplev
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = emacs
+	noextract = maplev-built.zip
+	source = https://github.com/JoeRiel/maplev/archive/release-2.37.tar.gz
+	source = https://github.com/JoeRiel/maplev/files/2046240/maplev-built.zip
+	sha256sums = 8dd16724c65a34293516fa498068edd609c4a13c0826763019327d8ed5f4f2ad
+	sha256sums = 1ef3264c6b33d846efccca6f4a807e821275f8b054857da33e1d06f32032aacb
+
+pkgname = emacs-maplev
+
