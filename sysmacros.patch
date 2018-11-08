@@ -1,0 +1,10 @@
+--- libproc/Psymtab.c	2018-08-10 15:32:48.000000000 -0700
++++ libproc/Psymtab-fix.c	2018-11-07 23:03:44.737430025 -0800
+@@ -23,6 +23,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/ptrace.h>
++#include <sys/sysmacros.h>
+ #include <port.h>
+ #include <setjmp.h>
+ 
