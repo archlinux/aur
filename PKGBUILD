@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-git
-pkgver=0.5.5.r27.bb23a110e
+pkgver=0.11.0.r120.75ca39f8c3
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -18,7 +18,7 @@ optdepends=("android-sdk"
             "perl"
             "python"
             "sh")
-makedepends=("git" "python")
+makedepends=("git" "python" "unzip")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("opt/${pkgname%-git}/packages/${pkgname%-git}_test/pubspec.yaml" "opt/${pkgname%-git}/packages/${pkgname%-git}/pubspec.yaml")
@@ -35,7 +35,7 @@ pkgver() {
   cd "${srcdir}/${pkgname%-git}"
   (
     set -o pipefail
-    git describe --long --tags 2> /dev/null | sed "s/^[a-Z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
+    git describe --long --tags 2> /dev/null | sed "s/^[A-Za-z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
     printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
   )
 }

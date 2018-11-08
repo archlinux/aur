@@ -1,4 +1,6 @@
 flutter-*.pkg.tar.xz
+flutter-*.log
+PKGBUILD-namcap.log
 flutter/
 pkg/
 src/
