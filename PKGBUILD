@@ -72,7 +72,6 @@ prepare() {
 
   # use pkgconfig
   sed -e 's|-lopenblas|$(shell pkg-config --libs openblas)|g' \
-      -e 's|-lcaffe|libcaffe.a|g' \
       -i Makefile.am
 
   # link static libcaffe
