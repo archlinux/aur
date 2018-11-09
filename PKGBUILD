@@ -7,7 +7,7 @@
 pkgname=lib32-libshout
 _pkgname=libshout
 pkgver=2.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for accessing a shoutcast/icecast server (32 bit)"
 arch=('x86_64')
 depends=('lib32-libvorbis' 'lib32-libtheora' 'lib32-speex' 'lib32-openssl' 'libshout')
