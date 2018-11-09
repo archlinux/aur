@@ -9,7 +9,7 @@ pkgbase = lua-luaossl
 	makedepends = lua51
 	makedepends = lua52
 	depends = openssl
-	source = https://github.com/wahern/luaossl/archive/rel-20181102.tar.gz
+	source = lua-luaossl-20181102.tar.gz::https://github.com/wahern/luaossl/archive/rel-20181102.tar.gz
 	md5sums = 66aa0e550cae993e4e406e8720aa0e60
 
 pkgname = lua-luaossl

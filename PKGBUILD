@@ -8,7 +8,7 @@ url='http://25thandclement.com/~william/projects/luaossl.html'
 license=('MIT')
 makedepends=('lua' 'lua51' 'lua52')
 depends=('openssl')
-source=(https://github.com/wahern/luaossl/archive/rel-$pkgver.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/wahern/luaossl/archive/rel-$pkgver.tar.gz")
 md5sums=('66aa0e550cae993e4e406e8720aa0e60')
 
 build() {
