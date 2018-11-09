@@ -5,18 +5,18 @@
 
 pkgname=ffmpeg-decklink
 _srcname=ffmpeg
-pkgver=4.0.2
-pkgrel=2
+pkgver=4.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('i686' 'x86_64')
-url='http://ffmpeg.org/'
+url='https://ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
 depends=('alsa-lib' 'aom' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
-         'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug' 'libomxil-bellagio'
-         'libpulse' 'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libvdpau' 'libwebp'
-         'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv' 'opencore-amr' 'openjpeg2'
-         'opus' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
+         'jack' 'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug'
+         'libomxil-bellagio' 'libpulse' 'libraw1394' 'libsoxr' 'libssh' 'libtheora'
+         'libvdpau' 'libwebp' 'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv'
+         'opencore-amr' 'openjpeg2' 'opus' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
          'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
          'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
          'libx264.so' 'libx265.so' 'libxvidcore.so')
@@ -28,12 +28,12 @@ makedepends=(
 )
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so' 'ffmpeg')
+          'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
+          'ffmpeg')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'LICENSE')
-sha256sums=('a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97'
+sha256sums=('a38ec4d026efb58506a99ad5cd23d5a9793b4bf415f2c4c2e9c1bb444acd1994'
             'SKIP'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
@@ -48,7 +48,6 @@ build() {
         --disable-debug \
         --disable-static \
         --disable-stripping \
-        --enable-avresample \
         --enable-fontconfig \
         --enable-gmp \
         --enable-gnutls \
@@ -62,6 +61,7 @@ build() {
         --enable-libfribidi \
         --enable-libgsm \
         --enable-libiec61883 \
+        --enable-libjack \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
