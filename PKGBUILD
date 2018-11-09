@@ -1,41 +1,30 @@
-# Maintainer: Det
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Contributor: Det
 
 pkgname=eglexternalplatform-git
-_pkgname=eglexternalplatform
-pkgver=r1.53bf47c
+pkgver=r4.7c8f8e2
 pkgrel=1
-pkgdesc="A work-in-progress specification of the EGL External Platform interface for modern window systems - Git"
+pkgdesc='EGL External Platform interface (git version)'
 arch=('any')
-url="https://github.com/NVIDIA/$_pkgname"
+url='https://github.com/NVIDIA/eglexternalplatform/'
 license=('MIT')
 makedepends=('git')
-conflicts=("$_pkgname")
-provides=("$_pkgname")
-source=("git+$url.git")
-md5sums=('SKIP')
+provides=('eglexternalplatform')
+conflicts=('eglexternalplatform')
+source=("$pkgname"::'git+https://github.com/NVIDIA/eglexternalplatform.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+    cd "$pkgname"
+    
+    # git, no tags available
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd $_pkgname
-  
-  # headers
-  install -Dm644 interface/eglexternalplatform.h \
-                 "$pkgdir"/usr/include/EGL/eglexternalplatform.h
-  install -Dm644 interface/eglexternalplatformversion.h \
-                 "$pkgdir"/usr/include/EGL/eglexternalplatformversion.h
-
-  # source
-  cp -r samples "$pkgdir"/usr/include/EGL/
-
-  # pkgconfig     
-  install -Dm644 eglexternalplatform.pc \
-                 "$pkgdir"/usr/lib/pkgconfig/eglexternalplatform.pc
+    cd "$pkgname"
+    
+    install -D -m644 interface/* -t "${pkgdir}/usr/include/EGL"
+    install -D -m644 *.pc -t "${pkgdir}/usr/share/pkgconfig"
+    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 } 
