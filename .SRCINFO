@@ -16,7 +16,7 @@ pkgbase = haskell-semigroups
 	depends = haskell-text
 	depends = haskell-unordered-containers
 	source = http://hackage.haskell.org/packages/archive/semigroups/0.18.5/semigroups-0.18.5.tar.gz
-	sha256sums = 589e3042329a6bcffb5c0e85834143586db22eb7a2aae094d492cd004f685d27
+	sha256sums = ab2a96af6e81e31b909c37ba65f436f1493dbf387cfe0de10b6586270c4ce29d
 
 pkgname = haskell-semigroups
 

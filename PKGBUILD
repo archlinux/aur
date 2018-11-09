@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 makedepends=(ghc)
 depends=('haskell-bytestring' 'haskell-deepseq' 'haskell-ghc-prim' 'haskell-containers' 'haskell-hashable' 'haskell-nats' 'haskell-text' 'haskell-unordered-containers')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-sha256sums=('589e3042329a6bcffb5c0e85834143586db22eb7a2aae094d492cd004f685d27')
+sha256sums=('ab2a96af6e81e31b909c37ba65f436f1493dbf387cfe0de10b6586270c4ce29d')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
