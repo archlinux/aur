@@ -8,7 +8,7 @@
 
 pkgname=lib32-smpeg
 pkgver=0.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc='SDL MPEG Player Library'
 arch=('x86_64')
 url='http://icculus.org/smpeg/'
