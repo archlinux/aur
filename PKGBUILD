@@ -1,7 +1,7 @@
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 pkgname=telepathy-logger
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Telepathy framework logging daemon"
 arch=(x86_64)
 url="http://telepathy.freedesktop.org/wiki/Logger"
