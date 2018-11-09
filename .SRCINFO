@@ -1,6 +1,6 @@
 pkgbase = xavs2-git
 	pkgdesc = Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard (git version)
-	pkgver = 1.0.r135.g1ff3ff8
+	pkgver = 1.0.r136.gdc1894c
 	pkgrel = 1
 	url = https://github.com/pkuvcl/xavs2/
 	arch = i686
@@ -14,7 +14,6 @@ pkgbase = xavs2-git
 	depends = liblsmash.so
 	provides = xavs2
 	provides = libxavs2-git
-	provides = libxavs2.so
 	conflicts = xavs2
 	conflicts = libxavs2-git
 	replaces = libxavs2-git
