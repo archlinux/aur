@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
 pkgver=0.0.5
-pkgrel=5
+pkgrel=6
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
@@ -22,7 +22,8 @@ source=("https://github.com/RPCS3/$pkgname/archive/v$pkgver.tar.gz"
     'asmjit.tar.gz::https://github.com/kobalicek/asmjit/archive/673dcefaa048c5f5a2bf8b85daf8f7b9978d018a.tar.gz'
     'llvm.tar.gz::https://github.com/llvm-mirror/llvm/archive/4423e351176a92975739dd4ea43c2ff5877236ae.tar.gz'
     'optional.tar.gz::https://github.com/akrzemi1/Optional/archive/f27e79084a9176672ed1eae50b3397fa8035d50d.tar.gz'
-    'git-version.h')
+    'git-version.h'
+    'rpcs3.patch')
 
 sha256sums=('a33a208076e7bc31e2a4023a270e4769c1ae13463fe16a4fcbe3ad7915fba7b0'
             '0699d2fbfff96f09b170c5d5d93a7d782bf028a4fbe3c7cc9c5edfedf1124b2d'
@@ -37,7 +38,8 @@ sha256sums=('a33a208076e7bc31e2a4023a270e4769c1ae13463fe16a4fcbe3ad7915fba7b0'
             '9c59802895a7812d6ce63f25abf9ad75fe651ab7b550d79cd266fee34bfedfeb'
             '16dc99ccbe614bba047f35f4338a23fc0f9e071d4fcca65dc4fd211ecf2a7254'
             '0e7fc73bf95be5a8fe92373c68dab07b09646fba7d9b76eb047a1b665f4e45c6'
-            '4602a47515c0a976da699931358a25e9b9f3c953d2abff9c862c6be9ba2708a6')
+            '4602a47515c0a976da699931358a25e9b9f3c953d2abff9c862c6be9ba2708a6'
+            '70bfa22539a9c5aa85ae4e23a9be7e933897d187518c5c20e35ec8938d517585')
 
 prepare()
 {
@@ -72,6 +74,8 @@ prepare()
     then
         mkdir build
     fi
+
+    patch -Np1 -i "${srcdir}/../rpcs3.patch"
 
     cd build
 
