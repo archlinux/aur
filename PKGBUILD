@@ -3,7 +3,7 @@
 pkgname=xscreensaver-backends
 _srcname=xscreensaver
 pkgver=5.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Screensavers from XScreenSaver for common frontends"
 arch=('i686' 'x86_64')
 url="http://www.jwz.org/xscreensaver/"
@@ -35,7 +35,6 @@ build() {
 
 package() {
   cd ${_srcname}-${pkgver}
-  install -d "${pkgdir}/etc/pam.d"
   make install_prefix="${pkgdir}" install
   install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   rm -r "${pkgdir}/usr/bin" "${pkgdir}/usr/share/locale" "${pkgdir}/usr/share/man/man1" "${pkgdir}/usr/share/X11"
