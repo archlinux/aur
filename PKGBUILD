@@ -1,7 +1,7 @@
 # Maintainer: Phil Hoffmann <phil dot hoffmann at zoho dot eu>
 
 pkgname=gm-companion
-pkgver=1.0.0.0
+pkgver=1.0.1.0
 pkgrel=1
 pkgdesc="A tool for rpg gamemasters."
 url="https://gm-companion.github.io/"
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('qt5-declarative>=5.10.0', 'qt5-multimedia>=5.10.0', 'qt5-networkauth>=5.10.0', 'qt5-quickcontrols2>=5.10.0', 'taglib')
 makedepends=('gendesk')
 conflicts=('gm-companion-git')
-source=("https://github.com/PhilInTheGaps/GM-Companion/archive/${pkgver}.tar.gz" "https://raw.githubusercontent.com/PhilInTheGaps/GM-Companion/ubuntu-build/data/share/gm-companion/icon256.png")
-md5sums=('f9c277a3814391ab2fd8b0e4648454d7'
+source=("https://github.com/PhilInTheGaps/GM-Companion/releases/download/${pkgver}/source_with_submodules.tar.xz" "https://raw.githubusercontent.com/PhilInTheGaps/GM-Companion/ubuntu-build/data/share/gm-companion/icon256.png")
+md5sums=('00fa26071011f19d4b5c2863b083519f'
          '877a226689a5edaee3ecfdaf767ded9d')
 
 prepare() {
@@ -19,7 +19,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/GM-Companion-${pkgver}"
+  cd "${srcdir}"
   qmake
   make PREFIX=/usr
   
@@ -27,7 +27,7 @@ build() {
 
 package() {
   # Install main binary
-  cd "${srcdir}/GM-Companion-${pkgver}"
+  cd "${srcdir}"
   make INSTALL_ROOT="$pkgdir" install 
   
   # Desktop Entry
