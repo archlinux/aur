@@ -10,7 +10,7 @@ license=('MIT')
 
 options=('!strip')
 source=("clever-tools-1.1.1_linux.tar.gz::https://clever-tools.cellar.services.clever-cloud.com/releases/1.1.1/clever-tools-1.1.1_linux.tar.gz")
-sha256sums=('e528feac72febd0c57228319935e634840fa938328c471d47fd89789c4697eea')
+sha256sums=('fdd7a43b3d5854fc0cf0799195c8a6714373feee76abc3cfa51fa45d90c2c900')
 
 package() {
   install -d "${pkgdir}/usr/bin"
