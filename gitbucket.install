@@ -1,7 +1,9 @@
 post_install()
 {
+	echo ""
 	echo "To start gitbucket, run: systemctl start gitbucket"
 	echo "To enable gitbucket at boot, run: systemctl enable gitbucket"
+	echo ""
 }
 
 post_upgrade()
