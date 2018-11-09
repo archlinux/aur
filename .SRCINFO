@@ -1,7 +1,7 @@
 #@IgnoreInspection BashAddShebang
 pkgbase = android-x86-64-system-image-28
 	pkgdesc = Android x86_64 system image, API 28
-	pkgver = 28_9.0.0_r01
+	pkgver = 28_9.0.0_r02
 	pkgrel = 1
 	url = https://developer.android.com/studio/index.html
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = android-x86-64-system-image-28
 	depends = android-platform-28
 	provides = android-x86-64-system-image
 	options = !strip
-	source = https://dl.google.com/android/repository/sys-img/android/x86_64-P_r01.zip
-	sha1sums = 1dc0be539a5dcc20a990ec475c7dc4dbb8e3748d
-	sha256sums = 9fbfa79bd317ccf074eb0575fb0409e19b6dded28a9a1c79c0be18bbc47cec0e
+	source = https://dl.google.com/android/repository/sys-img/android/x86_64-28_r02.zip
+	sha1sums = 57feae43c2042ae90016f572421b76d44fd317c4
+	sha256sums = 395faf838fe85c00f703f5f90d9ea5c2cf5f9b4ebbdcc651e2cd5d2091f6ab3c
 
 pkgname = android-x86-64-system-image-28
 
