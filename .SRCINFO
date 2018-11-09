@@ -1,5 +1,5 @@
 pkgbase = libssh-gnutls
-	pkgdesc = Library for accessing ssh client services through C libraries - compiled with gnutls (libgcrypt)
+	pkgdesc = Library for accessing ssh client services through C libraries - compiled with gnutls (libgcrypt), documentation for libssh
 	pkgver = 0.8.5
 	pkgrel = 1
 	url = http://www.libssh.org/
@@ -9,10 +9,6 @@ pkgbase = libssh-gnutls
 	makedepends = cmocka
 	makedepends = doxygen
 	makedepends = python
-	depends = libgcrypt
-	depends = zlib
-	provides = libssh
-	conflicts = libssh
 	source = https://www.libssh.org/files/0.8/libssh-0.8.5.tar.xz
 	source = https://www.libssh.org/files/0.8/libssh-0.8.5.tar.xz.asc
 	validpgpkeys = 8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D
@@ -20,9 +16,16 @@ pkgbase = libssh-gnutls
 	sha256sums = SKIP
 
 pkgname = libssh-gnutls
+	pkgdesc = Library for accessing ssh client services through C libraries - compiled with gnutls (libgcrypt)
+	arch = x86_64
+	depends = libgcrypt
+	depends = zlib
+	provides = libssh
+	conflicts = libssh
 
 pkgname = libssh-gnutls-docs
 	pkgdesc = Documentation for libssh
 	arch = any
-	depends = 
+	provides = libssh-docs
+	conflicts = libssh-docs
 
