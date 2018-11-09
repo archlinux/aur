@@ -1,14 +1,14 @@
 pkgbase = eglexternalplatform-git
 	pkgdesc = EGL External Platform interface (git version)
 	pkgver = r4.7c8f8e2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/eglexternalplatform/
 	arch = any
 	license = MIT
 	makedepends = git
 	provides = eglexternalplatform
 	conflicts = eglexternalplatform
-	source = eglexternalplatform-git::git+https://github.com/NVIDIA/eglexternalplatform.git
+	source = git+https://github.com/NVIDIA/eglexternalplatform.git
 	sha256sums = SKIP
 
 pkgname = eglexternalplatform-git
