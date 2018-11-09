@@ -1,6 +1,6 @@
 pkgbase = go-ecbpass
 	pkgdesc = A tool to generate pseudorandom, deterministic passwords.
-	pkgver = 1
+	pkgver = 1.01
 	pkgrel = 1
 	url = https://github.com/micromaomao/go-ecbpass
 	arch = x86_64

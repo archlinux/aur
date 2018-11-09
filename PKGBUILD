@@ -1,6 +1,6 @@
 # Maintainer: Mao Wtm <m@maowtm.org>
 pkgname=go-ecbpass
-pkgver=1
+pkgver=1.01
 pkgrel=1
 pkgdesc="A tool to generate pseudorandom, deterministic passwords."
 arch=(x86_64)
@@ -27,3 +27,4 @@ package() {
   install -s -DT go/bin/go-ecbpass $pkgdir/usr/bin/go-ecbpass
   install -DT go/src/github.com/micromaomao/go-ecbpass/doc/go-ecbpass.1 $pkgdir/usr/share/man/man1/go-ecbpass.1
 }
+
