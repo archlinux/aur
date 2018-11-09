@@ -1,6 +1,6 @@
 pkgbase = appeditor-git
 	pkgdesc = AppEditor allows you to edit application entries in the application menu.
-	pkgver = r43.bdf596f
+	pkgver = r65.4c7144a
 	pkgrel = 1
 	url = https://github.com/donadigo/appeditor
 	arch = i686
@@ -8,10 +8,11 @@ pkgbase = appeditor-git
 	license = GPL
 	makedepends = ninja
 	makedepends = git
-	depends = vala
-	depends = gtk3
+	makedepends = meson
+	makedepends = vala
 	depends = granite
-	depends = meson
+	provides = appeditor
+	conflicts = appeditor
 	source = git://github.com/donadigo/appeditor.git
 	md5sums = SKIP
 

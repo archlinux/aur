@@ -1,18 +1,15 @@
 # Maintainer: Ulrik Boll Djurtoft <ullebe1@gmail.com>
 pkgname=appeditor-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r48.ea4a7bd
+pkgver=r65.4c7144a
 pkgrel=1
 pkgdesc="AppEditor allows you to edit application entries in the application menu."
 arch=('i686' 'x86_64')
 url="https://github.com/donadigo/appeditor"
 license=('GPL')
-depends=(
-				 'vala'
-				 'gtk3'
-				 'granite'
-				 'meson'
-				)
-makedepends=('ninja' 'git')
+depends=('granite')
+makedepends=('ninja' 'git' 'meson' 'vala')
+provides=('appeditor')
+conflicts=('appeditor')
 source=("git://github.com/donadigo/appeditor.git")
 md5sums=('SKIP')
 
