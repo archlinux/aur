@@ -1,7 +1,7 @@
 # Maintainer: Alexis Rouillard <contact@arouillard.fr>
 
 pkgname=waybar-git
-pkgver=r128.28c65c64
+pkgver=r235.2d2fb88
 pkgrel=1
 pkgdesc='Highly customizable wayland bar for sway or wlroots based compositor.'
 arch=('x86_64')
@@ -25,7 +25,12 @@ source=("${pkgname}::git://github.com/Alexays/Waybar"
         'meson.build.patch')
 
 sha1sums=('SKIP'
-          '99b9da23d134953c04d6c3094f5ba7a435846a5e')
+          '48f912d7765d1ecc851254a282215f2981dd5792')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    set -o pipefail git describe --long 2>/dev/null | sed 's/([^-]*-g)/r\1/;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
     cd "${srcdir}/${pkgname}"

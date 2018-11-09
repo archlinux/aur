@@ -1,9 +1,12 @@
-7c7,8
-<         'buildtype=release'
----
->         'buildtype=release',
->         'default_library=static'
-29c30
-< fmt = dependency('fmt', fallback: ['fmtlib', 'fmt_dep'])
----
-> fmt = subproject('fmtlib').get_variable('fmt_dep')
+--- meson.build	2018-11-08 09:57:21.000000000 +0100
++++ meson.build.patch	2018-11-09 09:47:40.000000000 +0100
+@@ -32,7 +32,7 @@
+
+ thread_dep = dependency('threads')
+ libinput = dependency('libinput')
+-fmt = dependency('fmt', version : ['>=5.2.1'], fallback : ['fmt', 'fmt_dep'])
++fmt = subproject('fmt').get_variable('fmt_dep')
+ wayland_client = dependency('wayland-client')
+ wayland_cursor = dependency('wayland-cursor')
+ wayland_protos = dependency('wayland-protocols')
+ 
