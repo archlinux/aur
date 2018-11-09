@@ -3,12 +3,12 @@
 _srcname='chromaprint'
 pkgname=chromaprint-fftw
 pkgver=1.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Extracts fingerprints from any audio source (uses fftw for FFT calculations instead of ffmpeg)'
 arch=('i686' 'x86_64')
 url='https://acoustid.org/chromaprint'
 license=('MIT')
-makedepends=('cmake')
+makedepends=('cmake' 'gtest')
 depends=('fftw')
 provides=('chromaprint')
 conflicts=('chromaprint')
@@ -51,5 +51,5 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
