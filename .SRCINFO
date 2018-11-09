@@ -1,7 +1,7 @@
 pkgbase = python-flask-testing
 	pkgdesc = Flask unittest integration
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jarus/flask-testing
 	arch = any
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = python-flask-testing
 	makedepends = python-flask
 	makedepends = python2-flask
 	source = https://github.com/jarus/flask-testing/archive/v0.7.1.tar.gz
-	md5sums = 1f121dcc64ea4f3e1d3eeda180f6eafa
+	md5sums = 8f8a9ec996ca7be8b2317d3962a656b0
 
 pkgname = python-flask-testing
 	depends = python-flask
