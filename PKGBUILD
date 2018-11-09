@@ -2,7 +2,7 @@
 
 pkgname=vim-seti
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Colorscheme based on Jesse Weed's Seti theme for the Atom editor"
 arch=('any')
 url='https://github.com/trusktr/seti.vim'
