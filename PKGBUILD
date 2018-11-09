@@ -1,5 +1,5 @@
 pkgname=jackett
-pkgver=0.10.420
+pkgver=0.10.422
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('any')
@@ -12,7 +12,7 @@ source=("Jackett.Binaries.Mono-${pkgver}.tar.gz::https://github.com/Jackett/Jack
         "jackett.sysusers"
         "jackett.tmpfiles")
 
-sha256sums=('3672f3bfa88876e33d6d4a425f354b110e3f961605e41b5b27133535669156a4'
+sha256sums=('3208c04c747f1495078eea5d997e860f08554ec2f0bbe9491f46aa9bf5385028'
             '75837fe04f5afd30cdbdd3349bb27b43994dc672202f886382903f7fbc92dc89'
             'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1')
