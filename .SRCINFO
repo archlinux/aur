@@ -1,14 +1,14 @@
 pkgbase = interactive-diff-patch
-	pkgdesc = Allows you to apply diff hunks one at a time and preview them on the command line. On Windows this requires git to be installed.
-	pkgver = 0.0.7
+	pkgdesc = A terminal program that allows you to compare two folders of files and merge differences one at a time per each file and preview them interactivly.
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://gitlab.com/bixfliz/interactive-diff-patch
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = interactive-diff-patch-0.0.7.tgz
-	source = https://registry.npmjs.org/interactive-diff-patch/-/interactive-diff-patch-0.0.7.tgz
+	noextract = interactive-diff-patch-0.0.8.tgz
+	source = https://registry.npmjs.org/interactive-diff-patch/-/interactive-diff-patch-0.0.8.tgz
 	sha1sums = 7dfdeb429a38dc2e4fe87319ecca3d56c5a905d0
 
 pkgname = interactive-diff-patch
