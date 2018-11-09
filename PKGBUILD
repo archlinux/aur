@@ -83,7 +83,6 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-compiler-r7.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-webrtc-r0.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-ffmpeg-ebp-r1.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-harfbuzz-r0.patch'
          # Misc Patches
         'chromium-ffmpeg-clang.patch'
@@ -101,7 +100,6 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             # Patch form Gentoo
             '7fa727b29032577c70f5655b10a440599c12e53d6f52713e661defc1002cfa3a'
             'bcb2f4588cf5dcf75cde855c7431e94fdcc34bdd68b876a90f65ab9938594562'
-            '1bc5df96750e825a3ef01958df9497d4fbdeb3f25681a3a034e0d4a04b9c3479'
             '1b370d49c43e88acfe7c0b1f9517047e927f3407bd80b4a48bba32c001f80136'
             # Misc Patches
             '16741344288d200fadf74546855e00aa204122e744b4811a36155efd5537bd95'
@@ -332,7 +330,7 @@ _flags=(
         'linux_use_bundled_binutils=false'
         'treat_warnings_as_errors=false'
         'enable_nacl=true'
-        'enable_nacl_nonsfi=false' # https://bugs.chromium.org/p/chromium/issues/detail?id=837441
+        'enable_nacl_nonsfi=true' # https://bugs.chromium.org/p/chromium/issues/detail?id=837441
         'use_custom_libcxx=false'
         'use_jumbo_build=false' # https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
         'enable_vulkan=true'
@@ -446,7 +444,6 @@ prepare() {
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-compiler-r7.patch"
   patch -p1 -i "${srcdir}/chromium-webrtc-r0.patch"
-  patch -p1 -i "${srcdir}/chromium-ffmpeg-ebp-r1.patch"
   patch -p1 -i "${srcdir}/chromium-harfbuzz-r0.patch"
 
   # Misc patches
