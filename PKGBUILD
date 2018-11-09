@@ -1,5 +1,5 @@
 # Maintainer: Yauheni Kirylau <actionless dot loveless AT gmail.com>
-# shellcheck disable=SC2034,SC2154
+# shellcheck disable=SC2034,SC2148,SC2154,SC2164
 
 _pkgname=nohang
 pkgname=${_pkgname}-git
@@ -32,9 +32,9 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${pkgname}" || exit 2
-	make DESTDIR=${pkgdir} install
+	make DESTDIR="${pkgdir}" install
 
-	cd ${pkgdir}
+	cd "${pkgdir}"
 	mv usr/sbin usr/bin
 	mv lib usr/lib
 }
