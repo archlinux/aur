@@ -4,20 +4,17 @@
 
 pkgname=grantlee
 pkgver=5.1.0
-pkgrel=1
+pkgrel=4
 pkgdesc="A string template engine based on the Django template system and written in Qt5"
-arch=('x86_64')
-url="https://www.gitorious.org/grantlee/pages/Home"
-license=('LGPL3')
+arch=(x86_64)
+url="https://github.com/steveire/grantlee"
+license=(LGPL2.1)
 depends=('qt5-script')
-makedepends=('cmake' 'doxygen')
-conflicts=('grantlee-qt5')
-provides=('grantlee-qt5')
-replaces=('grantlee-qt5')
-source=("http://downloads.grantlee.org/grantlee-$pkgver.tar.gz"{,.asc}) # Stephen Kelly <steveire@gmail.com>
-md5sums=('57989ae9f7c113e682ef1713a6f1e92a'
-         'SKIP')
-validpgpkeys=(FCA530E51EE4331C2DF16637D264C7B1D02D6509)
+makedepends=(cmake doxygen graphviz)
+source=("http://downloads.grantlee.org/grantlee-$pkgver.tar.gz"{,.asc})
+sha256sums=('ea2e402466c74bb533eee2c7252209ec61cd93a5d236fecd625b4a0eb13a1478'
+            'SKIP')
+validpgpkeys=(FCA530E51EE4331C2DF16637D264C7B1D02D6509) # Stephen Kelly <steveire@gmail.com>
 
 prepare() {
   mkdir -p build
@@ -57,9 +54,11 @@ package_grantlee-qt4() {
 
   cd build-qt4
   make DESTDIR="${pkgdir}" install
+  make docs
 }
 
 package() {
   cd build
   make DESTDIR="$pkgdir" install
+  install -Dm644 apidox/* -t "$pkgdir"/usr/share/doc/$pkgname
 }
