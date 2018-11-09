@@ -53,8 +53,7 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
   make CONFIG=release \
-       IM=$_IM_VERSION \
-       #LIBS="-linotify"
+       IM=$_IM_VERSION
 }
 
 package() {
