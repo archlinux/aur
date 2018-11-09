@@ -2,8 +2,9 @@
 # Contributor: Det
 
 pkgname=egl-wayland-git
+_srcname=egl-wayland
 pkgver=1.1.0.r1.g0eb29d4
-pkgrel=1
+pkgrel=2
 pkgdesc='EGLStream-based Wayland external platform (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/NVIDIA/egl-wayland/'
@@ -12,13 +13,13 @@ depends=('wayland' 'eglexternalplatform')
 makedepends=('git' 'meson')
 provides=('egl-wayland')
 conflicts=('egl-wayland')
-source=("$pkgname"::'git+https://github.com/NVIDIA/egl-wayland.git'
+source=('git+https://github.com/NVIDIA/egl-wayland.git'
         '10_nvidia_wayland.json')
 sha256sums=('SKIP'
             '5cccf1905a266e8e34d5ad4aad4be85390e60b1a0850a29dd9d64adc641de412')
 
 prepare() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # add missing upstream tag
     # https://github.com/NVIDIA/egl-wayland/commit/1676d1d2bfe646fb3ecbba29a85db529dd399493
@@ -28,14 +29,14 @@ prepare() {
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     arch-meson . build
     
@@ -43,7 +44,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     DESTDIR="$pkgdir" meson install -C build
     
