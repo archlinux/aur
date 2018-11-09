@@ -7,7 +7,7 @@ index d658602..47fcae6 100644
  		Word16 N)                             /* (i) number of bits for position */
  {
 -	Word16 nb_pos, mask __unused, n_1, tmp;
-+	Word16 nb_pos, mask, __unused, n_1, tmp;
++	Word16 nb_pos, mask, n_1, tmp;
  	Word16 posA[4], posB[4];
  	Word32 i, j, k, index;
  
