@@ -26,6 +26,7 @@ pkgbase = auto-multiple-choice
 	depends = poppler
 	depends = poppler-glib
 	depends = perl-clone
+	depends = gtk3-perl
 	source = https://gitlab.com/jojo_boulix/auto-multiple-choice/uploads/e0b1a6a7541d2187aa230997c865f8b0/auto-multiple-choice_1.4.0-rc1_dist.tar.gz
 	source = amc.patch
 	md5sums = 8a2f871d67a9c194ce53e29455ded929

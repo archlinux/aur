@@ -17,7 +17,8 @@ depends=('perl' 'perl-glib-object-introspection'
  'perl-dbd-sqlite' 'perl-file-mimeinfo' 'ttf-linux-libertine'
   'perl-text-csv' 'perl-dbi' 'perl-archive-zip'
   'graphicsmagick' 'texlive-bin' 'texlive-core'
-  'gtk2-perl' 'netpbm' 'opencv' 'poppler' 'poppler-glib' 'perl-clone')
+  'gtk2-perl' 'netpbm' 'opencv' 'poppler' 'poppler-glib' 'perl-clone'
+  'gtk3-perl')
 
 source=('https://gitlab.com/jojo_boulix/auto-multiple-choice/uploads/e0b1a6a7541d2187aa230997c865f8b0/auto-multiple-choice_1.4.0-rc1_dist.tar.gz' 'amc.patch')  
 
