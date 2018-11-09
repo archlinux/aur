@@ -1,9 +1,9 @@
 pkgbase = deluge-git
 	pkgdesc = A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)
-	pkgver = 2.0.0b2.dev198.ge6c61c3f8
+	pkgver = 2.0.0b2.dev300.gab7f19fbb
 	pkgrel = 1
 	epoch = 1
-	url = http://deluge-torrent.org/
+	url = https://deluge-torrent.org/
 	arch = any
 	license = GPL3
 	makedepends = git

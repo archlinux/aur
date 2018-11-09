@@ -5,12 +5,12 @@
 # PKGBUILD based on extra\deluge's PKGBUILD, adapted for -git version by Berseker
 
 pkgname=deluge-git
-pkgver=2.0.0b2.dev198.ge6c61c3f8
+pkgver=2.0.0b2.dev300.gab7f19fbb
 pkgrel=1
 epoch=1
 pkgdesc="A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)"
 arch=('any')
-url='http://deluge-torrent.org/'
+url='https://deluge-torrent.org/'
 license=('GPL3')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'libtorrent-rasterbar'
         'python2-twisted' 'python2-pyasn1' 'python2-pyopenssl' 'python2-xdg'
