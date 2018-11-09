@@ -27,7 +27,7 @@ pkgver() {
 	cd "${srcdir}/${pkgname}" || exit 2
 	set -o pipefail
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || \
-		echo "r$(git log --oneline | wc -l).$(git describe --always | sed 's/^/g/')"
+		echo "r$(git log --oneline | wc -l).g$(git describe --always)"
 }
 
 package() {
