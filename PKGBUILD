@@ -6,7 +6,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r445024.5836a6061476
+pkgver=r445452.d3d642b62488
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -62,8 +62,6 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-ac_add_options --disable-dbus
-ac_add_options --disable-necko-wifi
 
 # Branding
 ac_add_options --enable-official-branding
@@ -84,8 +82,8 @@ ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-libvpx
-#ac_add_options --with-system-nspr
-#ac_add_options --with-system-nss
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
 ac_add_options --with-system-zlib
 
 # Features
