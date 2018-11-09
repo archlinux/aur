@@ -3,7 +3,7 @@
 
 pkgname=scratch
 pkgver=1.4.0.7
-pkgrel=6
+pkgrel=7
 pkgdesc="Create and share your own interactive stories, games, music and art"
 arch=('x86_64')
 url="https://scratch.mit.edu"
