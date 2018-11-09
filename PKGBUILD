@@ -4,7 +4,7 @@
 pkgbase=gtkmm
 pkgname=(gtkmm gtkmm-docs)
 pkgver=2.24.5+6+g85967ecc
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings for GTK+ 2"
 url="http://www.gtkmm.org/"
 arch=(x86_64)
