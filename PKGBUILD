@@ -330,7 +330,7 @@ _flags=(
         'linux_use_bundled_binutils=false'
         'treat_warnings_as_errors=false'
         'enable_nacl=true'
-        'enable_nacl_nonsfi=true' # https://bugs.chromium.org/p/chromium/issues/detail?id=837441
+        'enable_nacl_nonsfi=false' # https://bugs.chromium.org/p/chromium/issues/detail?id=837441
         'use_custom_libcxx=false'
         'use_jumbo_build=false' # https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
         'enable_vulkan=true'
