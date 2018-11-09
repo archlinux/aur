@@ -1,5 +1,7 @@
+# Maintainer: adlerweb <aur at adlerweb dot info>#Maintainer: 
+
 pkgname=php-dio
-pkgver=0.0.9
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="POSIX direct I/O functions for PHP"
 arch=('i686' 'x86_64')
@@ -8,7 +10,7 @@ license=('PHP')
 depends=('php' 'php-pear')
 makedepends=('autoconf')
 source=(http://pecl.php.net/get/dio-${pkgver}.tgz)
-sha512sums=('7bca34a50a1c6cc1f28f47e62392d5a71bccf2783e12f510cc0101949c68d753650e19dbf9ef8172ba23c02680d30959791738353d89762f806ac7ae72a20058')
+sha512sums=('6fca1c3f2d6247f5e0c52a27b49d80a6d13f9630772956ff7aa73ad45e445686502edd956346c43955cb2f858c0c0259af86c3f92b6f93309a2b90583ad8ea05')
 
 build() {
   cd $startdir/src/dio-${pkgver}
