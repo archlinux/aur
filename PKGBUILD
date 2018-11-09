@@ -3,7 +3,7 @@
 _pkgbasename=gettext
 pkgname=lib32-$_pkgbasename
 pkgver=0.19.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU internationalization library (32-bit)"
 arch=('x86_64')
 url="http://www.gnu.org/software/gettext/"
