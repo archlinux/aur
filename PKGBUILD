@@ -1,6 +1,6 @@
 pkgbase=python-flask-testing
 pkgname=('python-flask-testing' 'python2-flask-testing')
-pkgver=0.6.2
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Flask unittest integration"
 url="https://github.com/jarus/flask-testing"
