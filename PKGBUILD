@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=lbench  
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="Simple Linux multithread benchmarking tool"
 url="http://www.kornelix.net/lbench/lbench.html"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk3' 'gdk-pixbuf2' 'pango' 'lm_sensors')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-sha256sums=('2a2203743b6ab6413e15c9566fe53c0aeec28d2e197dbc6d41010c51aba8864f')
+sha256sums=('7d9db06ef1f40ec3298098afacba44f9209a34eba566e147a691e28f7f26ef59')
 
 prepare() {
   cd $pkgname-$pkgver
