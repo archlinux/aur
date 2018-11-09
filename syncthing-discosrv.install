@@ -8,9 +8,6 @@ post_install() {
   getent passwd syncthing | grep -q '/var/discosrv' \
     || printf '%s\n' 'WARNING: The syncthing user home is not /var/discosrv'
 
-  # Setup the systemd tmpfiles
-  systemd-tmpfiles --create syncthing-discosrv.conf
-
   printf '\n%s\n' 'Syncthing expects an SSL certificate and key located at'
   printf '%s\n\n' '/var/discosrv/cert.pem and /var/discosrv/key.pem'
   printf '%s\n' 'Move to /var/discosrv and run the following commands as root:'
