@@ -3,7 +3,7 @@
 
 pkgname=shhopt
 pkgver=1.1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for parsing command line options"
 arch=('x86_64')
 url="http://shh.thathost.com/pub-unix"
