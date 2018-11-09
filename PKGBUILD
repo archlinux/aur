@@ -75,7 +75,7 @@ package() {
   install -Dm644 contrib/debian/bitcoin-qt.desktop \
     "$pkgdir"/usr/share/applications/bitcoin.desktop
   install -Dm644 share/pixmaps/bitcoin-abc128.png \
-    "$pkgdir"/usr/share/pixmaps/bitcoin-abc128.png
+    "$pkgdir"/usr/share/pixmaps/bitcoin128.png
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname}"
