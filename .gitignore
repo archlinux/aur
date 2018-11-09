@@ -1,4 +1,6 @@
 skippy-xd-git-*.pkg.tar.xz
+skippy-xd-git-*.log
+PKGBUILD-namcap.log
 skippy-xd/
 pkg/
 src/

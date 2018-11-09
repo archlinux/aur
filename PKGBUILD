@@ -19,17 +19,17 @@ pkgver() {
   cd "${srcdir}/${pkgname%-git}"
   (
     set -o pipefail
-    git describe --long --tags 2> /dev/null | sed "s/^[a-Z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
+    git describe --long --tags 2> /dev/null | sed "s/^[A-Za-z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
     printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
   )
 }
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  make
+  make PREFIX=/usr
 }
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
 }
