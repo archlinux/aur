@@ -1,12 +1,12 @@
 pkgbase = amarok
 	pkgdesc = The powerful music player for KDE
-	pkgver = 2.9.0.r258.f632617d29
+	pkgver = 2.9.0.r259.a3971e4d47
 	pkgrel = 1
 	url = http://amarok.kde.org/
 	arch = x86_64
+	license = FDL
 	license = GPL2
 	license = LGPL2.1
-	license = FDL
 	makedepends = extra-cmake-modules
 	makedepends = gdk-pixbuf2
 	makedepends = git
@@ -25,6 +25,7 @@ pkgbase = amarok
 	depends = libmtp
 	depends = libmygpo-qt5
 	depends = libofa
+	depends = libssh-gnutls
 	depends = mariadb
 	depends = phonon-qt5
 	depends = qt5-webengine
@@ -32,7 +33,7 @@ pkgbase = amarok
 	depends = threadweaver
 	optdepends = ifuse: support for Apple iPod Touch and iPhone
 	optdepends = loudmouth: backend needed by mp3tunes for syncing
-	source = git://git.kde.org/amarok.git#commit=f632617d29a2e95b9c01f8d26a734a3ff23de212
+	source = git://git.kde.org/amarok.git#commit=a3971e4d47435adb30306e4428cf7ad7b90339c0
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
 	sha256sums = SKIP
 

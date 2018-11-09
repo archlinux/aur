@@ -1,4 +1,6 @@
 amarok-*.tar.xz
+amarok-*.log
+PKGBUILD-namcap.log
 amarok/
 pkg/
 src/
