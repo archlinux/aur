@@ -1,7 +1,7 @@
 pkgbase = libmysofa-git
 	pkgdesc = C library to read HRTFs if they are stored in the AES69-2015 SOFA format (git version)
 	pkgver = 0.6.r56.g5e1fc5b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hoene.github.io/libmysofa/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = libmysofa-git
 	depends = zlib
 	provides = libmysofa
 	conflicts = libmysofa
-	source = libmysofa-git::git+https://github.com/hoene/libmysofa.git
+	source = git+https://github.com/hoene/libmysofa.git
 	sha256sums = SKIP
 
 pkgname = libmysofa-git
