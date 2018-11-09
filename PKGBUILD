@@ -1,0 +1,20 @@
+# Maintainer: Michael Polidori <michaelapolidori@gmail.com>
+# Author: Lance Gin <gin.lance.inside@hotmail.com>
+
+pkgname=python-haishoku
+_name=${pkgname#python-}
+pkgver=1.1.7
+pkgrel=1
+pkgdesc="A development tool for grabbing the dominant color or representative color palette from an image."
+arch=(any)
+url="https://github.com/LanceGin/haishoku"
+license=(MIT)
+depends=("python" "python-pillow")
+source=("git+$url")
+md5sums=(SKIP)
+
+package() {
+  cd "$srcdir/$_name"
+  python setup.py install --root="${pkgdir}"
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
