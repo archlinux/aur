@@ -16,7 +16,7 @@ source=("${pkgname%-soapysdr-git}::git+https://github.com/AlbrechtL/${pkgname%-s
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "${pkgname%-soapysdr-git}"
+  cd "${srcdir}/${pkgname%-soapysdr-git}"
   (
     set -o pipefail
     git describe --long --tags 2> /dev/null | sed "s/^[A-Za-z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
@@ -36,7 +36,7 @@ package() {
 
   install -D -m 0644 "${srcdir}/${pkgname%-soapysdr-git}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname/%.io-soapysdr-git/-io}.png"
 
-  cd "${pkgname%-soapysdr-git}/build"
+  cd "${srcdir}/${pkgname%-soapysdr-git}/build"
   make DESTDIR=${pkgdir} install
 
   mv "${pkgdir}/usr/local/"* "${pkgdir}/usr/"
