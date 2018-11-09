@@ -3,7 +3,7 @@
 
 pkgname=pidgin-xmpp-receipts
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='This pidgin-plugin implements xmpp message delivery receipts (XEP-0184)'
 url='http://devel.kondorgulasch.de/pidgin-xmpp-receipts/'
 arch=('x86_64')
