@@ -1,4 +1,4 @@
-# Maintainer: Brandon Carrell <brandoncarrell@gmail.com>
+# Maintainer: Pierre-Yves Ritschard <pyr@spootnik.org>
 
 pkgname=exoscale-cli
 pkgver=1.0.3
