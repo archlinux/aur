@@ -3,8 +3,8 @@
 pkgname=py-todo
 _pkgname=todo
 _gitname=py-todo
-pkgver=1.1
-pkgrel=7
+pkgver=1.3.3
+pkgrel=1
 pkgdesc='A Lightweight Reminder / todo-list in cli.'
 arch=('any')
 url="https://github.com/aesophor/py-todo"
