@@ -22,7 +22,7 @@ pkgbase = haskell-gi
 	depends = haskell-gi-base
 	depends = haskell-directory
 	source = https://hackage.haskell.org/packages/archive/haskell-gi/0.21.5/haskell-gi-0.21.5.tar.gz
-	sha256sums = 5cb1b4ea8645b70da7ca3d4f64777adebc020ed773015b42e872828dde3d4b66
+	sha256sums = 12d116c6effae4da3f97afaad46faab6766f4a58be2c8fb434f8e0feea4a71e7
 
 pkgname = haskell-gi
 
