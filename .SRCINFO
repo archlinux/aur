@@ -1,5 +1,5 @@
 pkgbase = backintime-git
-	pkgver = 1.1.12.r440.gd0f9b844
+	pkgver = 1.1.24
 	pkgrel = 1
 	url = https://github.com/bit-team/backintime
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = backintime-git
 	makedepends = rsync
 	makedepends = systemd
 	makedepends = xorg-xdpyinfo
-	source = backintime::git://github.com/bit-team/backintime.git
+	source = backintime::git+https://github.com/bit-team/backintime.git
 	md5sums = SKIP
 
 pkgname = backintime-git
@@ -23,8 +23,8 @@ pkgname = backintime-git
 	depends = python-pyqt5
 	depends = xorg-xdpyinfo
 	optdepends = kompare: diff tool
-	optdepends = python-secretstorage: store passwords
 	optdepends = meld: diff tool
+	optdepends = python-secretstorage: store passwords
 	provides = backintime
 	conflicts = backintime
 

@@ -2,14 +2,13 @@
 
 _pkgname=backintime
 pkgname=($_pkgname-git $_pkgname-cli-git)
-pkgver=1.1.12.r440.gd0f9b844
+pkgver=1.1.24
 pkgrel=1
 url="https://github.com/bit-team/backintime"
 license=('GPL')
 arch=('any')
 makedepends=('git' 'openssh' 'python-dbus' 'python-keyring' 'rsync' 'systemd' 'xorg-xdpyinfo')
-#checkdepends=('gocryptfs')
-source=($_pkgname::git://github.com/bit-team/backintime.git)
+source=($_pkgname::git+https://github.com/bit-team/backintime.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -35,7 +34,7 @@ check() {
 package_backintime-cli-git() {
   pkgdesc="Simple backup/snapshot system inspired by Flyback and TimeVault. CLI version."
   depends=('cron' 'fuse2' 'openssh' 'python-dbus' 'python-keyring' 'rsync')
-  #'gocryptfs: encrypted filesystems'
+  #'ecryptfs-utils: verify home encryption'
   optdepends=('encfs: encrypted filesystems'
               'sshfs: remote filesystems')
   provides=($_pkgname-cli)
@@ -50,8 +49,8 @@ package_backintime-git() {
   #depends=('backintime-cli'    'libnotify' 'polkit' 'python-dbus' 'python-pyqt5' 'xorg-xdpyinfo')
   depends=('backintime-cli-git' 'libnotify' 'polkit' 'python-dbus' 'python-pyqt5' 'xorg-xdpyinfo')
   optdepends=('kompare: diff tool'
-              'python-secretstorage: store passwords'
-              'meld: diff tool')
+              'meld: diff tool'
+              'python-secretstorage: store passwords')
   provides=($_pkgname)
   conflicts=($_pkgname)
 
