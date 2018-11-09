@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=("ghc-libs" "gobject-introspection" 'haskell-base' 'haskell-safe' 'haskell-bytestring' 'haskell-mtl' 'haskell-regex-tdfa' "haskell-xdg-basedir" 'haskell-xml-conduit' 'haskell-transformers' 'haskell-pretty-show' 'haskell-process' 'haskell-gi-base' 'haskell-directory')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('5cb1b4ea8645b70da7ca3d4f64777adebc020ed773015b42e872828dde3d4b66')
+sha256sums=('12d116c6effae4da3f97afaad46faab6766f4a58be2c8fb434f8e0feea4a71e7')
 
 
 build() {
