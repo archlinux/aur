@@ -1,0 +1,6 @@
+global-*.pkg.tar.xz
+global-*.tar.gz
+global-*.log
+PKGBUILD-namcap.log
+pkg/
+src/
