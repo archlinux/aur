@@ -4,7 +4,7 @@
 
 pkgname=lib32-apitrace
 pkgver=7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphics API Tracing (32-bit)"
 arch=('x86_64')
 url="https://github.com/apitrace/apitrace"
