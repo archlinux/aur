@@ -2,7 +2,7 @@
 # Contributor: anonymous <https://gist.github.com/anonymous/2924244>
 _pkgname=swfmill
 pkgname=$_pkgname-git
-pkgver=r472.28d51a7
+pkgver=r543.53d7690
 pkgrel=1
 pkgdesc="xml2swf and swf2xml processor with import functionalities"
 arch=('i686' 'x86_64')
@@ -11,10 +11,8 @@ license=('GPL')
 depends=('libxslt' 'freetype2' 'libpng')
 provides=('swfmill')
 conflicts=('swfmill')
-source=("git+https://github.com/djcsdy/swfmill"
-	   swfmill.patch)
-md5sums=('SKIP'
-         '040743a3be51f078b64fbb855183ca60')
+source=("git+https://github.com/djcsdy/swfmill")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -23,8 +21,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-
-  patch --forward -p1 -i "$srcdir/$_pkgname.patch"
 }
 
 build() {
