@@ -6,13 +6,13 @@
 pkgname=godot2
 _pkgname=godot
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine. Legacy version."
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
 makedepends=('scons' 'clang' 'yasm')
-depends=('libxcursor' 'libxinerama' 'freetype2' 'alsa-lib' 'libxrandr' 'libxi' 'libglvnd')
+depends=('libxcursor' 'libxinerama' 'freetype2' 'alsa-lib' 'libxrandr' 'libxi' 'libglvnd' 'glu')
 _arch=''
 if test "$CARCH" == x86_64; then
     _arch=('64')
