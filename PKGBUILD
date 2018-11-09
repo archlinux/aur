@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-abc-qt
 pkgver=0.18.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin ABC with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoinabc.org"
@@ -22,7 +22,7 @@ sha256sums=('48db5fd2bdf2a7a719d5dec90187bcfae1becf00d808ccb895063a68344b652a'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
             '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679'
             '6db7458a85a0b469ab95ad78e431d0a5db078d8809a5f4340ee040f304a9dc0d'
-            '066694fb0eb9835ee37fab70aa6941b0a8b0ed6fecba8219ab7352abcc777660')
+            'd201f40404fbf4370329d19d9f0f4431b1872a5c761ac38a41f555841bc9a0eb')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-qt')
