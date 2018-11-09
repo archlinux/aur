@@ -1,6 +1,6 @@
 pkgbase = bitcoin-abc-qt
 	pkgdesc = Bitcoin ABC with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt
-	pkgver = 0.18.2
+	pkgver = 0.18.3
 	pkgrel = 2
 	url = https://bitcoinabc.org
 	install = bitcoin.install
@@ -28,7 +28,7 @@ pkgbase = bitcoin-abc-qt
 	conflicts = bitcoin-qt
 	backup = etc/bitcoin/bitcoin.conf
 	backup = etc/logrotate.d/bitcoin
-	source = https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v0.18.2.tar.gz
+	source = https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v0.18.3.tar.gz
 	source = bitcoin.conf
 	source = bitcoin.logrotate
 	source = bitcoin.service
