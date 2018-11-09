@@ -3,7 +3,7 @@
 pkgname=mxnet
 _gitname=incubator-mxnet
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Flexible and Efficient Library for Deep Learning"
 arch=('x86_64')
 url="http://mxnet.io/"
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('hdf5' 'cblas' 'lapack' 'python-numpy' 'python-requests' 'intel-tbb')
 optdepends=('cairo' 'cuda' 'cudnn' 'gtk3' 'gtkglext' 'python-graphviz' 'opencv' 'vtk' 'glew')
 makedepends=(${optdepends[@]} 'git' 'cython')
-source=("git+https://github.com/apache/$_gitname")
+source=("git+https://github.com/apache/$_gitname#tag=$pkgver")
 md5sums=('SKIP')
 
 prepare() {
