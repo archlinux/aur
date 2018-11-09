@@ -1,0 +1,60 @@
+diff -ura dolphin-18.08.3.orig/src/dolphinmainwindow.cpp dolphin-18.08.3.new/src/dolphinmainwindow.cpp
+--- dolphin-18.08.3.orig/src/dolphinmainwindow.cpp	2018-11-09 14:38:47.556089139 -0500
++++ dolphin-18.08.3.new/src/dolphinmainwindow.cpp	2018-11-09 14:45:24.522392872 -0500
+@@ -273,7 +273,7 @@
+     const int selectedUrlsCount = m_tabWidget->currentTabPage()->selectedItemsCount();
+ 
+     QAction* compareFilesAction = actionCollection()->action(QStringLiteral("compare_files"));
+-    if (selectedUrlsCount == 2) {
++    if (selectedUrlsCount == 2 || selectedUrlsCount == 3) {
+         compareFilesAction->setEnabled(isKompareInstalled());
+     } else {
+         compareFilesAction->setEnabled(false);
+@@ -705,7 +705,7 @@
+ void DolphinMainWindow::compareFiles()
+ {
+     const KFileItemList items = m_tabWidget->currentTabPage()->selectedItems();
+-    if (items.count() != 2) {
++    if (items.count() != 2 && items.count() != 3) {
+         // The action is disabled in this case, but it could have been triggered
+         // via D-Bus, see https://bugs.kde.org/show_bug.cgi?id=325517
+         return;
+@@ -714,12 +714,18 @@
+     QUrl urlA = items.at(0).url();
+     QUrl urlB = items.at(1).url();
+ 
+-    QString command(QStringLiteral("kompare -c \""));
++    QString command(QStringLiteral("meld \""));
+     command.append(urlA.toDisplayString(QUrl::PreferLocalFile));
+     command.append("\" \"");
+     command.append(urlB.toDisplayString(QUrl::PreferLocalFile));
+     command.append('\"');
+-    KRun::runCommand(command, QStringLiteral("Kompare"), QStringLiteral("kompare"), this);
++    if (items.count() == 3) {
++        QUrl urlC = items.at(2).url();
++        command.append(" \"");
++        command.append(urlC.toDisplayString(QUrl::PreferLocalFile));
++        command.append('\"');
++    }
++    KRun::runCommand(command, QStringLiteral("Meld"), QStringLiteral("meld"), this);
+ }
+ 
+ void DolphinMainWindow::toggleShowMenuBar()
+@@ -1181,7 +1187,7 @@
+ 
+     QAction* compareFiles = actionCollection()->addAction(QStringLiteral("compare_files"));
+     compareFiles->setText(i18nc("@action:inmenu Tools", "Compare Files"));
+-    compareFiles->setIcon(QIcon::fromTheme(QStringLiteral("kompare")));
++    compareFiles->setIcon(QIcon::fromTheme(QStringLiteral("meld")));
+     compareFiles->setEnabled(false);
+     connect(compareFiles, &QAction::triggered, this, &DolphinMainWindow::compareFiles);
+ 
+@@ -1576,7 +1582,7 @@
+     if (!initialized) {
+         // TODO: maybe replace this approach later by using a menu
+         // plugin like kdiff3plugin.cpp
+-        installed = !QStandardPaths::findExecutable(QStringLiteral("kompare")).isEmpty();
++        installed = !QStandardPaths::findExecutable(QStringLiteral("meld")).isEmpty();
+         initialized = true;
+     }
+     return installed;

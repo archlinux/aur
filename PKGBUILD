@@ -6,7 +6,7 @@
 
 _pkgname=dolphin
 pkgname=dolphin-meld
-pkgver=18.08.2
+pkgver=18.08.3
 pkgrel=1
 pkgdesc="KDE File Manager, using Meld rather than Kompare"
 arch=(x86_64)
@@ -21,17 +21,18 @@ optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video 
             'ruby: installing new service menus from KDE Store' 'kdegraphics-thumbnailers: PDF and PS thumbnails'
             'konsole: terminal panel' 'purpose: share context menu')
 groups=(kde-applications kdebase)
-source=("https://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('5d79d289735822dfc27917917ee7c92284d1f846696773ed66da2102617e9451'
-            'SKIP')
+source=("https://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig}
+        "dolphin-meld.patch")
+sha256sums=('2bb4560979f8b3fe970bfdebea51b784cc3088ee4c3919bc5d9bf5eb5dfd916c'
+            'SKIP'
+            '13107b72348bd7eea5665196dc4a37c21bff131bbc8457efe77ef8c3e9450c7b')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
 
 prepare() {
   mkdir -p build
-  cd $_pkgname-$pkgver/src
-  sed -i 's/kompare -c/meld/g' dolphinmainwindow.cpp
-  sed -i 's/findExecutable(QStringLiteral("kompare")).isEmpty()/findExecutable(QStringLiteral("meld")).isEmpty()/g' dolphinmainwindow.cpp
+  cd $_pkgname-$pkgver
+  patch -p1 -i ../$pkgname.patch
 }
 
 build() {
