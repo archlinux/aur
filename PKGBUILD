@@ -4,7 +4,7 @@
 
 pkgname=openfx-arena
 pkgver=2.3.14
-pkgrel=2
+pkgrel=3
 arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
@@ -46,13 +46,15 @@ prepare() {
   cd IOSupport/SequenceParsing
   git config submodule.tinydir.url $srcdir/tinydir
   git submodule update
+
+  patch $srcdir/$pkgname/Makefile.master $srcdir/../im7.patch
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  patch Makefile.master ../../im7.patch
   make CONFIG=release \
        IM=$_IM_VERSION \
+       #LIBS="-linotify"
 }
 
 package() {
