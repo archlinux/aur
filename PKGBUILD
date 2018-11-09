@@ -3,7 +3,7 @@
 
 pkgname=vim-indent-object
 pkgver=1.1.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Text objects based on indent levels'
 arch=(any)
 url='http://www.vim.org/scripts/script.php?script_id=3037'
