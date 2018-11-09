@@ -1,34 +1,61 @@
 # Maintainer: Amos Onn <amosonn at gmail dot com>
-pkgname=python-distributed
-pkgver=1.23.2
+pkgbase=python-distributed
+pkgname=('python-distributed' 'python2-distributed')
+_pkgname=distributed
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="A python library for distributed computation."
 arch=('any')
 url="http://distributed.readthedocs.org/en/stable/"
 license=('BSD-3-clause')
-depends=('python>=3.5' 'python-tornado>=4.5.1' 'python-toolz>=0.7.4'
-    'python-cloudpickle>=0.2.2' 'python-dask>=0.18.0' 'python-click>=6.6'
-    'python-psutil' 'python-zict>=0.1.3' 'python-sortedcontainers' 'python-six'
-    'python-tblib' 'python-msgpack' 'python-yaml')
-# For supporting other versions of python:
-# futures; python_version < '3.0'
-# singledispatch; python_version < '3.4'
-optdepends=(
+source=(https://codeload.github.com/dask/distributed/tar.gz/$pkgver)
+sha256sums=('25ede720cccf5bc3250a75d4a6a4fd6697f8bfda22d49a42a2c1268374ac4a17')
+
+prepare() {
+  cp -a $_pkgname-$pkgver{,-py2}
+}
+
+package_python-distributed() {
+  depends=('python>=3.5' 'python-click>=6.6' 'python-cloudpickle>=0.2.2' 
+    'python-dask>=0.18.0' 'python-msgpack' 'python-psutil' 'python-six'
+    'python-sortedcontainers>2.0.1' 'python-tblib' 'python-toolz>=0.7.4'
+    'python-tornado>=4.5.1' 'python-zict>=0.1.3' 'python-yaml')
+  # For supporting older versions of python 3:
+  # singledispatch; python_version < '3.4'
+  optdepends=(
     # dev-requirements.txt
     'python-joblib>=0.10.2' 'python-mock>=2.0.0' 'python-pandas>=0.19.2'
     'python-numpy>=1.11.0' 'python-bokeh>=0.12.3' 'python-requests>=2.12.4'
     'python-pyzmq>=16.0.2' 'ipython>=5.0.0' 'python-jupyter_client>=4.4.0'
     'python-ipykernel>=4.5.2' 'python-pytest>=3.0.5'
     # pytest.importorskip
-    'python-keras' 'python-lz4' 'python-netcdf4' 'python-h5py' 'python-paramiko'
-    'python-ipywidgets' # crick, hdfs-3
-)
-source=(https://codeload.github.com/dask/distributed/tar.gz/$pkgver)
-sha256sums=('2190a73b0a248aadf14119b111ca5d46c671a85d31088a56249cb103b9d2a721')
-
-package() {
-  cd $srcdir/distributed-$pkgver
+    'python-keras' 'python-lz4' 'python-netcdf4' 'python-h5py'
+    'python-paramiko' 'python-ipywidgets' # crick, hdfs-3
+  )
+  cd $srcdir/$_pkgname-$pkgver
   python setup.py install --root=$pkgdir || return 1
+  install -d $pkgdir/usr/share/licenses/$pkgname
+  install LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/COPYING
+}
+
+package_python2-distributed() {
+  depends=('python2' 'python2-click>=6.6' 'python2-cloudpickle>=0.2.2' 
+    'python2-dask>=0.18.0' 'python2-msgpack' 'python2-psutil' 'python2-six'
+    'python2-sortedcontainers>2.0.1' 'python2-tblib' 'python2-toolz>=0.7.4'
+    'python2-tornado>=4.5.1' 'python2-zict>=0.1.3' 'python2-yaml'
+    'python2-futures' 'python2-singledispatch')
+  optdepends=(
+    # dev-requirements.txt
+    'python2-joblib>=0.10.2' 'python2-mock>=2.0.0' 'python2-pandas>=0.19.2'
+    'python2-numpy>=1.11.0' 'python2-bokeh>=0.12.3' 'python2-requests>=2.12.4'
+    'python2-pyzmq>=16.0.2' 'ipython2>=5.0.0' 'python2-jupyter_client>=4.4.0'
+    'python2-ipykernel>=4.5.2' 'python2-pytest>=3.0.5'
+    # pytest.importorskip
+    'python2-keras' 'python2-lz4' 'python2-netcdf4' 'python2-h5py'
+    'python2-paramiko' 'python2-ipywidgets' # crick, hdfs-3
+  )
+  cd $srcdir/$_pkgname-$pkgver-py2
+  python2 setup.py install --root=$pkgdir || return 1
   install -d $pkgdir/usr/share/licenses/$pkgname
   install LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
