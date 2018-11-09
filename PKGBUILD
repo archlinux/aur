@@ -4,7 +4,7 @@
 pkgname=php-codesniffer
 _pkgname=PHP_CodeSniffer
 pkgver=3.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards."
 arch=('any')
 url="http://pear.php.net/package/PHP_CodeSniffer/"
