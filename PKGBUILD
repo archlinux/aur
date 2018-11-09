@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-git
-pkgver=20181106.20894
+pkgver=20181108.20917
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://launchpad.net/inkscape"
@@ -31,13 +31,9 @@ pkgver() {
 
 prepare() {
   cd "$_gitname"
-  sed -i 's|"python"|"python2"|g' src/main.cpp
   find share -type f -name "*.py" -exec \
        sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' {} \;
-  sed -i '1s|/usr/bin/env python3\>|/usr/bin/env python2|g' CMakeScripts/cmake_consistency_check.py
   sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
-  sed -i 's|"python"|"python2"|g' src/main.cpp
-  sed -i -e 's|GBool|bool|g' -e 's|gTrue|true|g' -e 's|gFalse|false|g' src/extension/internal/pdfinput/pdf-parser.{h,cpp}
 }
 
 build() {
@@ -48,7 +44,7 @@ build() {
   cmake .. \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=RELEASE \
-	-DWITH_DBUS=ON
+	-DWITH_DBUS=OFF
   make 
 }
 

@@ -1,6 +1,6 @@
 pkgbase = inkscape-git
 	pkgdesc = An Open Source vector graphics editor, using SVG file format, from git master
-	pkgver = 20181106.20894
+	pkgver = 20181108.20917
 	pkgrel = 1
 	url = https://launchpad.net/inkscape
 	arch = i686
