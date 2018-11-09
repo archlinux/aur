@@ -1,7 +1,7 @@
 pkgbase = davs2-git
 	pkgdesc = Open-Source decoder of AVS2-P2/IEEE1857.4 video coding standard (git version)
 	pkgver = 1.0.r139.gd997b79
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkuvcl/davs2/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = davs2-git
 	conflicts = davs2
 	conflicts = libdavs2-git
 	replaces = libdavs2-git
-	source = davs2-git::git+https://github.com/pkuvcl/davs2.git
+	source = git+https://github.com/pkuvcl/davs2.git
 	sha256sums = SKIP
 
 pkgname = davs2-git
