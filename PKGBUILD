@@ -2,7 +2,7 @@
 # Contributor: Chris Severance aur.severach AatT spamgourmet.com
 
 pkgname=python-sphinx-automodapi
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="Sphinx extension for generating API documentation."
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python-sphinx>=1.6')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/s/sphinx-automodapi/sphinx-automodapi-${pkgver}.tar.gz")
-sha256sums=('247d05ae5597ec86475e7954b788b379190a1ec0ee2f1bc60ae5086a3f29b16a')
+sha256sums=('71a69e1a7ab8d849f416d7431db854d7b1925f749ba6345bc7d88f288892871d')
 
 package() {
     cd ${srcdir}/sphinx-automodapi-${pkgver}
