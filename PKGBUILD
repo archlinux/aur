@@ -6,7 +6,7 @@
 
 pkgname=pidgin-otr
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Off-the-Record Messaging plugin for Pidgin.'
 arch=('x86_64')
 license=('GPL')
