@@ -1,3 +1,11 @@
+2018-11-09 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.4.0.7-1:
+    [!] Implemented extra logic to session validation code which has a potential to fix various request failures that people have reported recently. This was needed due to Steam change that rendered previous logic partially obsolete.
+    Added balance command (ref: #935).
+    Misc updates to ASF API, all Bot calls support botNames now, those that didn't before got their response type updated to accomodate this, refer to swagger for more details.
+    Misc updates to swagger, the frontend now allows you to use IPCPassword during execution of API calls.
+    ASF-ui updates with new features, improvements and bugfixes.
+    Usual amount of other code improvements, optimizations and bugfixes.
 2018-11-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.4.0.5-1:
     We've improved our update process according to feedback of users that encountered some problems. If something doesn't work, we recommend to download this release (or newer) manually and copy over config directory. Not a lot of people got affected by this problem, so if everything works for you, you don't need to do anything.
