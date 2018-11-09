@@ -6,7 +6,7 @@
 _pkgbasename=giflib
 pkgname=lib32-$_pkgbasename
 pkgver=5.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for reading and writing gif images (32-bit)"
 url="http://sourceforge.net/projects/giflib/"
 arch=('x86_64')
