@@ -4,7 +4,7 @@
 
 pkgname=lib32-portaudio
 pkgver=190600_20161030
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, cross-platform, open source, audio I/O library. (32 bit)'
 arch=('x86_64')
 url="http://www.portaudio.com/"
