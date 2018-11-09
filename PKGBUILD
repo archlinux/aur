@@ -5,19 +5,20 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-qsv-git
-pkgver=4.1.r92192.g57f312a34d
+_srcname=ffmpeg
+pkgver=4.2.r92394.g75625c555c
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with Intel Quick Sync Video hardware acceleration, git version)'
 arch=('x86_64')
-url='http://www.ffmpeg.org/'
+url='https://www.ffmpeg.org/'
 license=('GPL3')
 depends=(
     # official repositories:
         'alsa-lib' 'aom' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
-        'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug' 'libomxil-bellagio'
-        'libpulse' 'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libvdpau' 'libwebp'
-        'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv' 'opencore-amr' 'openjpeg2'
-        'opus' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
+        'jack' 'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug'
+        'libomxil-bellagio' 'libpulse' 'libraw1394' 'libsoxr' 'libssh' 'libtheora'
+        'libvdpau' 'libwebp' 'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv'
+        'opencore-amr' 'openjpeg2' 'opus' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
         'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
         'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
         'libx264.so' 'libx265.so' 'libxvidcore.so'
@@ -27,24 +28,28 @@ depends=(
 makedepends=('git' 'ffnvcodec-headers' 'ladspa' 'nasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so' 'ffmpeg' 'ffmpeg-qsv' 'ffmpeg-git')
+          'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
+          'ffmpeg' 'ffmpeg-qsv' 'ffmpeg-git')
 conflicts=('ffmpeg')
-source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git')
+source=('git://source.ffmpeg.org/ffmpeg.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
-    local _version="$(  git describe  --tags --long      | awk -F'-' '{ printf $1 }' | sed 's/^n//')"
-    local _revision="$( git describe  --tags --match 'N' | awk -F'-' '{ printf $2 }')"
-    local _shorthash="$(git rev-parse --short HEAD)"
+    local _version
+    local _revision
+    local _shorthash
+    
+    _version="$(  git describe  --tags --long      | awk -F'-' '{ printf $1 }' | sed 's/^n//')"
+    _revision="$( git describe  --tags --match 'N' | awk -F'-' '{ printf $2 }')"
+    _shorthash="$(git rev-parse --short HEAD)"
     
     printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/mediasdk/lib64/pkgconfig"
     
@@ -55,7 +60,6 @@ build() {
         --disable-debug \
         --disable-static \
         --disable-stripping \
-        --enable-avresample \
         --enable-fontconfig \
         --enable-gmp \
         --enable-gnutls \
@@ -69,6 +73,7 @@ build() {
         --enable-libfribidi \
         --enable-libgsm \
         --enable-libiec61883 \
+        --enable-libjack \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
@@ -94,14 +99,15 @@ build() {
         --enable-nvenc \
         --enable-omx \
         --enable-shared \
-        --enable-version3
+        --enable-version3 \
+        --enable-libmfx
         
     make
     make tools/qt-faststart
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     make DESTDIR="$pkgdir" install
     
