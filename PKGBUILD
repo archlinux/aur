@@ -3,7 +3,7 @@
 
 pkgname=inkscape-092-git
 pkgver=20181025.18310
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, from git branch 0.92.x"
 url="https://gitlab.com/inkscape/inkscape"
 arch=('i686' 'x86_64')
@@ -31,14 +31,9 @@ pkgver() {
 
 prepare() {
   cd "$_gitname"
-  #fix for inkscape to use python2 with the python 3 package installed.
-   sed -i 's|"python"|"python2"|g' src/main.cpp
   find share -type f -name "*.py" -exec \
        sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' {} \;
-  sed -i '1s|/usr/bin/env python3\>|/usr/bin/env python2|g' CMakeScripts/cmake_consistency_check.py
-  sed -i 's|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
   sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
-  sed -i 's|"python"|"python2"|g' src/main.cpp
   sed -i -e 's|GBool|bool|g' -e 's|gTrue|true|g' -e 's|gFalse|false|g' src/extension/internal/pdfinput/pdf-parser.{h,cpp}
 }
 
