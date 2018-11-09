@@ -1,12 +1,14 @@
 pkgbase = vyper
 	pkgdesc = Pythonic Smart Contract Language for the EVM
 	pkgver = 0.1.0_beta.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ethereum/vyper
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	depends = python-pycryptodome
+	depends = python-setuptools
 	source = https://github.com/ethereum/vyper/archive/v0.1.0-beta.4.tar.gz
 	md5sums = d74171e4ed78a1482320f3a8158e5eaa
 
