@@ -3,7 +3,7 @@
 
 pkgname=shhmsg
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for displaying messages"
 arch=('x86_64')
 url="http://shh.thathost.com/pub-unix"
