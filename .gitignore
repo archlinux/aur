@@ -1,4 +1,6 @@
 shashlik-bin-*.pkg.tar.xz
 shashlik-bin-*.deb
+shashlik-bin-*.log
+PKGBUILD-namcap.log
 pkg/
 src/
