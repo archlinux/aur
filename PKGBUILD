@@ -3,8 +3,8 @@
 
 _pkgname=nohang
 pkgname=${_pkgname}-git
-pkgver=r83ac238
-pkgrel=2
+pkgver=r150.g83ac238
+pkgrel=1
 pkgdesc="A highly configurable OOM preventer"
 arch=('any')
 url="https://github.com/hakavlad/nohang"
@@ -27,7 +27,7 @@ pkgver() {
 	cd "${srcdir}/${pkgname}" || exit 2
 	set -o pipefail
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || \
-		git describe --long --always | sed 's/^/r/'
+		echo "r$(git log --oneline | wc -l).$(git describe --always | sed 's/^/g/')"
 }
 
 package() {

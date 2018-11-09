@@ -1,7 +1,7 @@
 pkgbase = nohang-git
 	pkgdesc = A highly configurable OOM preventer
 	pkgver = r83ac238
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/hakavlad/nohang
 	arch = any
 	license = MIT
