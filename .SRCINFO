@@ -14,7 +14,7 @@ pkgbase = haskell-gi-base
 	depends = haskell-text
 	depends = haskell-transformers
 	source = https://hackage.haskell.org/packages/archive/haskell-gi-base/0.21.4/haskell-gi-base-0.21.4.tar.gz
-	sha256sums = 667cf211eb6ce1e3e84fc2126670847228b4cb4211dd7d7f4ae627ef6f15295d
+	sha256sums = ba6d345e9566ca7cda979a6c8eda3b786be77f6226b8ad8e5a8006cd3103346f
 
 pkgname = haskell-gi-base
 
