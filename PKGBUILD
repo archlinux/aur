@@ -3,7 +3,7 @@
 
 pkgname=libtiff4
 pkgver=3.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for manipulation of TIFF images'
 arch=('x86_64')
 url='http://www.remotesensing.org/libtiff/'
