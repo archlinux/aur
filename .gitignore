@@ -1,0 +1,6 @@
+m64py-*.pkg.tar.xz
+m64py-*.tar.gz
+m64py-*.log
+PKGBUILD-namcap.log
+pkg/
+src/

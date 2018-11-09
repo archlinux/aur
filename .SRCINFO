@@ -6,11 +6,11 @@ pkgbase = m64py
 	arch = any
 	license = GPL
 	makedepends = python-distribute
+	depends = desktop-file-utils
 	depends = libxkbcommon-x11
 	depends = mupen64plus
 	depends = python-pyqt5
 	depends = python-pysdl2
-	depends = sdl2
 	source = https://github.com/mupen64plus/mupen64plus-ui-python/releases/download/0.2.4/m64py-0.2.4.tar.gz
 	sha256sums = 38c175587f6bb1984586584f27faad72ac3db7fed4bbbbdf26b3c75bfd0a6ce4
 
