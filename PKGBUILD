@@ -1,7 +1,7 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=nbfc
-pkgver=1.6_beta1
+pkgver=1.6_beta2
 _pkgver=$(echo $pkgver | sed -r 's/_/-/g')
 _pkgname=nbfc-${_pkgver}
 pkgrel=1
@@ -18,7 +18,7 @@ makedepends=('nuget')
 source=("https://github.com/hirschmann/nbfc/archive/${_pkgver}.tar.gz"
         "nbfc"
         "ec-probe")
-md5sums=("1eee9e6e5a4cf2f6324e73000d5175f2"
+md5sums=("d2b890d4fcee961024aa61e14a61d741"
          "b8c7ecbe7816a43deeb91426b1ba3fbe"
          "be72ba56253695932458f7cddc4a2194")
 
