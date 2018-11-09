@@ -11,7 +11,7 @@
 
 _apilevel=28
 _sdkver='9.0.0'
-_rev='r03'
+_rev='r04'
 _image_arch='x86_64'
 _sdkver_char='P'
 pkgname="android-${_image_arch/x86_/x86-}-system-image-${_apilevel}"
@@ -28,8 +28,8 @@ depends=("android-platform-${_apilevel}")
 provides=("android-${_image_arch/x86_/x86-}-system-image")
 options=('!strip')
 source=("https://dl.google.com/android/repository/sys-img/android/${_image_arch}-${_apilevel}_${_rev}.zip")
-sha1sums=('f0c0fbcc6a73aeedc1934d5cb22285c526cf081c')
-sha256sums=('525f03c612409fbd04fcd1005206bc9ad90e5ca9b743cc8f27d624b6baa8067c')
+sha1sums=('d47a85c8f4e9fd57df97814ad8884eeb0f3a0ef0')
+sha256sums=('ff6ce81aa1424951a214da5f392f8e12382de46d33c08aeaa5d21caba6a39b62')
 
 package() {
 	_destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/default"
