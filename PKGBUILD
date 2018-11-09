@@ -4,7 +4,7 @@
 _pkgbasename=sdl_image
 pkgname=lib32-$_pkgbasename
 pkgver=1.2.12
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple library to load images of various formats as SDL surfaces (32-bit)"
 arch=('x86_64')
 url="http://www.libsdl.org/projects/SDL_image/"
