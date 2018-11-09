@@ -10,7 +10,7 @@
 
 pkgname='unreal-engine'
 install="$pkgname.install"
-pkgver=4.20.3
+pkgver=4.21.0
 # shellcheck disable=SC2034
 {
   pkgrel=1
@@ -42,6 +42,7 @@ pkgver=4.20.3
     'UnrealExporter-move.patch'
     'NiagaraScriptViewModel-self-assign-fix.patch'
     'Messages-move.patch'
+    'UnrealVersionSelector-fstring-compat.patch'
   )
 
 sha256sums=('SKIP'
@@ -52,7 +53,7 @@ sha256sums=('SKIP'
             '23f55f7dffc98f5a8ef84520c7ef82bc9cca447433ad0405e3f9a319a29301ef'
             '1dd876fa48c6fb4fcd4ccbdb8ed4ceccfa294685911e91be58bbc5e95726c279'
             '9654226ef3318389aa8fe15f3d4d14e7ac2113520ee5ebf2899d42273a2a6fb0'
-            'c1bb149410d6871a1858513d6253694452925a892d672f5705b2a7f96e5a1f36'
+            'eab5ba97327de2b8b17aea73ffd797a882fe0d1923ed2a8dc1709a8b00da63e4'
             '006bfc6dc6c4258b55768cac34a3c42f033a2777332272d8c47c340282bf400f'
             '3cee7cf7cb8c7b8fc65a423b4e51ea00c8b025784b21838e5def7c14fec60a0c'
             'babf3d0def1ae135f68c194124c7ba04f57de0bbe98c53304fabd2e434d1e99e'
@@ -63,7 +64,8 @@ sha256sums=('SKIP'
             '2557758219e0e8718652e102579d26a67f88ec45e61cc3457b2ebf0710bb036a'
             '83df14d25b75321f80c9132e72d99e7feafd294a78210f284101a5a8298aa38d'
             'a0abe52f6ffe9b85b934e85a7077121461fab56f615f1714bdbc12afce5b2e82'
-            '2f872c76f998f4e04c1eb221d022848686537e087413bfc016028e1f406e2830')
+            '2f872c76f998f4e04c1eb221d022848686537e087413bfc016028e1f406e2830'
+            'e8cedb798fb77200209e6315360bbfe13bb2660b61ba7a55a5164648fbe04d2a')
 
   # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
   options=(strip staticlibs)
@@ -74,7 +76,10 @@ prepare() {
   # shellcheck disable=SC2154
 
   ue4src="$srcdir/UnrealEngine/Engine/Source"
-  patch "$ue4src/Programs/UnrealVersionSelector/Private/UnrealVersionSelector.cpp" UnrealVersionSelector-register.patch
+  versionSelector="$ue4src/Programs/UnrealVersionSelector"
+  patch "$versionSelector/Private/UnrealVersionSelector.cpp" UnrealVersionSelector-register.patch
+  patch "$versionSelector/Private/UnrealVersionSelector.cpp" UnrealVersionSelector-fstring-compat.patch
+
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" ignore-clang50-install.patch
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/SetupMono.sh" use-arch-mono.patch
   patch "$srcdir/UnrealEngine/Setup.sh" recompile-version-selector.patch
