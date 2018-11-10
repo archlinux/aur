@@ -1,8 +1,9 @@
 # Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=caffe-cuda-git
+_srcname=caffe
 pkgver=1.0.r132.g99bd99795
-pkgrel=5
+pkgrel=6
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (with cuda, git version)'
 arch=('x86_64')
 url='https://caffe.berkeleyvision.org/'
@@ -24,24 +25,24 @@ depends=(
 makedepends=('git' 'gcc7' 'boost' 'doxygen' 'texlive-core')
 provides=('caffe' 'caffe-cuda')
 conflicts=('caffe')
-source=("$pkgname"::'git+https://github.com/BVLC/caffe.git'
+source=('git+https://github.com/BVLC/caffe.git'
         'Makefile.config')
 sha256sums=('SKIP'
             '40d725152bc78326ed230ab9598dc0aec90764cc82b66631ed6d2594ea7d7ae5')
 
 prepare() {
-    cp -af "${srcdir}/Makefile.config" "${srcdir}/${pkgname}"
+    cp -af "${srcdir}/Makefile.config" "${srcdir}/${_srcname}"
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     make all pycaffe
     rm -rf doxygen
@@ -49,12 +50,12 @@ build() {
 }
 
 check() {
-    cd "$pkgname"
+    cd "$_srcname"
     make test runtest
 }
 
 package() {
-    cd "${pkgname}/distribute"
+    cd "${_srcname}/distribute"
     
     local _pythonver
     _pythonver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
@@ -78,7 +79,7 @@ package() {
     # proto
     install -D -m644 proto/caffe.proto -t "${pkgdir}/usr/share/caffe"
     
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_srcname}"
     
     # docs
     cp -a doxygen/html "${pkgdir}/usr/share/doc/${pkgname}"
