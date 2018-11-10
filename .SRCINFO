@@ -1,0 +1,17 @@
+pkgbase = ttf-gabriola
+	pkgdesc = TTF Font Gabriola
+	pkgver = 1.0
+	pkgrel = 0
+	url = http://corefonts.sourceforge.net/
+	arch = any
+	license = custom:microsoft
+	makedepends = libarchive>=3.0.2
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	provides = ttf-font
+	source = ttf-gabriola-1.0.zip::http://legionfonts.com/download/gabriola
+	sha512sums = 00e24839e812d7cfd6fa38be6681520ad514f6fc23f3522f52aadf9ab3dba8aa0fe8dc8c2cb5444cb057b45b940d6145d4c82d5803296ae486da4b9108ba78b4
+
+pkgname = ttf-gabriola
+
