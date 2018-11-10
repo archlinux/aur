@@ -51,7 +51,7 @@ package() {
   install -d "$_appdir"
 
   install package.json "$_appdir"
-  cp -a {lib,build,generated,node_modules} "$_appdir"
+  cp -a {lib,generated,node_modules} "$_appdir"
   install -D assets/icon.png "$_appdir"/assets/icon.png
   install -D lib/gui/app/index.html "$_appdir"/lib/gui/app/index.html
 
