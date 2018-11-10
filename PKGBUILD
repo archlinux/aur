@@ -35,9 +35,14 @@ build() {
 
 package() {
     cd "${srcdir}/${_pkgbase}"
+    mkdir -p "${pkgdir}/usr/share/licenses/${_pkgbase}"
+    cp -vf COPYING "${pkgdir}/usr/share/licenses/${_pkgbase}"
+    strip --strip-debug ${_pkgbase}.ko
     make DESTDIR="${pkgdir}" PREFIX="/usr" install-utils install-man
     mkdir -p "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
     cp -ar * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+    cd "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+    make clean
 }
 
 # vim:set ts=4 sw=4 et:
