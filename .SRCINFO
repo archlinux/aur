@@ -1,0 +1,15 @@
+pkgbase = tztail-git
+	pkgdesc = tztail (TimeZoneTAIL) allows you to view logs in the timezone you want
+	pkgver = r16.ceea0a6
+	pkgrel = 1
+	url = https://github.com/thecasualcoder/tztail
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	provides = tztail
+	source = tztail::git+git://github.com/thecasualcoder/tztail#branch=master
+	sha256sums = SKIP
+
+pkgname = tztail-git
+
