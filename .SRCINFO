@@ -1,6 +1,6 @@
 pkgbase = openturns
 	pkgdesc = Uncertainty treatment library
-	pkgver = 1.12rc1
+	pkgver = 1.12
 	pkgrel = 1
 	url = http://www.openturns.org/
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = openturns
 	depends = nlopt
 	depends = r
 	backup = etc/openturns/openturns.conf
-	source = https://github.com/openturns/openturns/archive/v1.12rc1.tar.gz
-	sha256sums = 72585bfdefc493855bfe519d0c25d417713630a42b47e0830ed998f3a0871c57
+	source = https://github.com/openturns/openturns/archive/v1.12.tar.gz
+	sha256sums = e759085d85083a426dd8bf110f8849220603ae9cf1331bc4b75a15d4c18f2294
 
 pkgname = openturns
 
