@@ -12,7 +12,7 @@ url='http://www.gnupg.org'
 license=('LGPL')
 depends=('lib32-glibc' 'lib32-libgpg-error')
 replaces=('lib32-libgcrypt11')
-source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"{,.sig})
+source=("https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"{,.sig})
 sha256sums=('301826b5e521c867056fd630aad6f0a60e176d18a017da6bc24b1695df3abe79'
             'SKIP')
 validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
