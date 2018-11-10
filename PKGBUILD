@@ -2,16 +2,15 @@
 # Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=hashcat-git
-pkgver=3.40+48+g72071fba
+pkgver=5.0.0+52+g2aff01b2
 pkgrel=1
 pkgdesc='Multithreaded advanced password recovery utility'
 url='https://hashcat.net/hashcat'
-arch=('i686' 'x86_64')
-depends=('gmp' 'opencl-icd-loader')
-optdepends=('libxnvctrl: NVIDIA X driver configuration support')
+arch=('x86_64')
+depends=('ocl-icd' 'xxhash')
 makedepends=('git' 'opencl-headers')
 license=('MIT')
-provides=('hashcat')
+provides=('hashcat' 'libhashcat.so')
 conflicts=('hashcat')
 source=(${pkgname}::git+https://github.com/hashcat/hashcat)
 sha512sums=('SKIP')
@@ -23,13 +22,24 @@ pkgver() {
 
 build() {
   cd ${pkgname}
-  make PREFIX=/usr SHARED=1
+  rm -rf deps/{OpenCL-Headers,xxHash}
+  make \
+    PREFIX=/usr \
+    SHARED=1 \
+    USE_SYSTEM_XXHASH=1 \
+    USE_SYSTEM_OPENCL=1
 }
 
 package() {
   cd ${pkgname}
-  make DESTDIR="${pkgdir}" PREFIX=/usr SHARED=1 install
-  install -Dm 644 docs/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make \
+    DESTDIR="${pkgdir}" \
+    PREFIX=/usr \
+    SHARED=1 \
+    USE_SYSTEM_XXHASH=1 \
+    USE_SYSTEM_OPENCL=1 \
+    install
+  install -Dm 644 docs/license.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
