@@ -8,15 +8,15 @@ pkgname=wattman-gtk-git
 # shellcheck disable=SC2034
 pkgdesc="GTK GUI to view, monitor, and overclock a Radeon GPU on Linux"
 # shellcheck disable=SC2034
-pkgver=r28.8e3ede6
+pkgver=r91.d112ddc
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
 arch=('any')
 # shellcheck disable=SC2034
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 # shellcheck disable=SC2034
-depends=('python-gobject' 'python-matplotlib')
+depends=('python-gobject' 'python-matplotlib' 'python')
 # shellcheck disable=SC2034
 optdepends=()
 # shellcheck disable=SC2034
@@ -32,10 +32,9 @@ url="https://github.com/BoukeHaarsma23/WattmanGTK"
 # pulled from git so skip the verification check
 ##
 # shellcheck disable=SC2034
-source=("${_gitname}::git+${url}" "shim-launcher")
+source=("${_gitname}::git+${url}")
 # shellcheck disable=SC2034
-sha256sums=('SKIP'
-            '070b9a568564f2c1f59261d66e86f4af10de7f86577daa7e9500cfd6e4875daa')
+sha256sums=('SKIP')
 
 pkgver() {
   # shellcheck disable=SC2154
@@ -50,6 +49,16 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  # shellcheck disable=SC2154
+  cd "${srcdir}/${_gitname}" || {
+        msg "Failed to cd into ${srcdir}/${_gitname}"
+        return 1
+  }
+
+  python setup.py build
+}
+
 package() {
   # shellcheck disable=SC2154
   cd "${srcdir}/${_gitname}" || {
@@ -57,10 +66,7 @@ package() {
         return 1
   }
 
-  # Copy source files over
-  mkdir -p "${pkgdir}/opt/wattman-gtk"
-  cp *.py "${pkgdir}/opt/wattman-gtk"
-  cp *.ui "${pkgdir}/opt/wattman-gtk"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   # Copy license over
   mkdir -p "${pkgdir}/usr/share/wattman-gtk"
@@ -69,12 +75,4 @@ package() {
   # Copy README over
   mkdir -p "${pkgdir}/usr/share/doc/wattman-gtk"
   cp README.md "${pkgdir}/usr/share/doc/wattman-gtk"
-
-  # Copy launcher
-  mkdir -p "${pkgdir}/usr/bin"
-  cp ../shim-launcher "${pkgdir}/usr/bin/wattman-gtk"
-
-  # Mark executable
-  chmod 755 "${pkgdir}/opt/wattman-gtk/wattman.py"
-  chmod 755 "${pkgdir}/usr/bin/wattman-gtk"
 }
