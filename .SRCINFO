@@ -1,8 +1,8 @@
 pkgbase = mpv-full-git
 	pkgdesc = A free, open source, and cross-platform media player (git version with all possible libs)
-	pkgver = 0.29.1.r77.gba2dee38fb
+	pkgver = 0.29.1.r88.g317d3ac266
 	pkgrel = 1
-	url = http://mpv.io/
+	url = https://mpv.io/
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -50,7 +50,7 @@ pkgbase = mpv-full-git
 	provides = mpv-git
 	conflicts = mpv
 	options = !emptydirs
-	source = mpv-full-git::git+https://github.com/mpv-player/mpv.git
+	source = git+https://github.com/mpv-player/mpv.git
 	sha256sums = SKIP
 
 pkgname = mpv-full-git

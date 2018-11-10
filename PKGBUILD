@@ -1,12 +1,13 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.29.1.r77.gba2dee38fb
+_srcname=mpv
+pkgver=0.29.1.r88.g317d3ac266
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
-url='http://mpv.io/'
+url='https://mpv.io/'
 depends=(
     # official repositories:
         'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
@@ -25,11 +26,11 @@ optdepends=('youtube-dl: for video-sharing websites playback'
 provides=('mpv' 'mpv-git')
 conflicts=('mpv')
 options=('!emptydirs')
-source=("$pkgname"::'git+https://github.com/mpv-player/mpv.git')
+source=('git+https://github.com/mpv-player/mpv.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     local _version
     local _revision
@@ -43,7 +44,7 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     ./bootstrap.py
     
@@ -165,7 +166,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     ./waf install --destdir="$pkgdir"
     
