@@ -22,7 +22,7 @@ source=("$pkgname::git+https://github.com/balena-io/$_pkgname.git"
         'etcher-electron.desktop')
 sha256sums=('SKIP'
             'SKIP'
-            'a64f79fe894c4828b515844703b1795448a4818a654f5d42d4f567f4d80998d1'
+            '4499f316e4de865696312b31545f8df62850aad4492bcc9736cccb6d8eeb96ec'
             '89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4')
 
 pkgver() {
@@ -55,7 +55,7 @@ build() {
 package() {
   cd "$pkgname"
 
-  _appdir="$pkgdir"/usr/share/$_pkgname
+  _appdir="$pkgdir"/usr/lib/$_pkgname
   install -d "$_appdir"
 
   install package.json "$_appdir"
