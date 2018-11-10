@@ -3,7 +3,7 @@
 pkgbase=('python-ompython')
 pkgname=('python-ompython')
 _module='OMPython'
-pkgver='3.1.0'
+pkgver='3.1.2'
 pkgrel=1
 pkgdesc="OpenModelica-Python API Interface"
 url="http://openmodelica.org/"
@@ -12,8 +12,9 @@ makedepends=('python-setuptools')
 optdepends=('python-pyzmq')
 license=('OSMC-PL')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/o/ompython/OMPython-${pkgver}.tar.gz")
-md5sums=('fbeb864af4137eca522b47989c3c5e18')
+_name=OMPython
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+md5sums=('8f6484200cfecb2e7b0737300f963fd5')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
