@@ -65,11 +65,11 @@ _rev_override="n"
 
 pkgbase=linux-clear
 _major=4.18
-_minor=16
+_minor=18
 pkgver=${_major}.${_minor}
 _srcname=linux-${_major}
-pkgrel=7
-_clr=651
+pkgrel=1
+_clr=${_major}.16-651
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -80,7 +80,7 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar.sign"
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${pkgver}-${_clr}"
+  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   'https://downloadmirror.intel.com/28039/eng/microcode-20180807.tgz'
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   '60-linux.hook'  # pacman hook for depmod
@@ -337,7 +337,7 @@ done
 
 sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
             'SKIP'
-            '01b3e00f733f60e1aa30db2f007aac6abbb7ac28d15ac951ee2a95279ee498fe'
+            'e886822aa7e2fcd83374330255a49d9ff691632d2b43c63d174fbc006891d541'
             'SKIP'
             '29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
