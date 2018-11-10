@@ -36,15 +36,15 @@ package() {
     cd "${srcdir}/${_pkgbase}"
     mkdir -p "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
     cp -vf COPYING "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
-    mkdir -p "${pkgdir}/usr/share/licenses/akvcam"
-    cp -vf COPYING "${pkgdir}/usr/share/licenses/akvcam"
-    mkdir -p "${pkgdir}/etc/akvcam"
-    cp -vf share/config_example.ini "${pkgdir}/etc/akvcam"
+    mkdir -p "${pkgdir}/usr/share/licenses/${_pkgbase}"
+    cp -vf COPYING "${pkgdir}/usr/share/licenses/${_pkgbase}"
+    mkdir -p "${pkgdir}/etc/${_pkgbase}"
+    cp -vf share/config_example.ini "${pkgdir}/etc/${_pkgbase}"
     cd "${srcdir}/${_pkgbase}/src"
-    strip --strip-debug akvcam.ko
+    strip --strip-debug ${_pkgbase}.ko
     driver_dir="${pkgdir}/usr/lib/modules/"$(uname -r)"/extra"
     mkdir -p "${driver_dir}"
-    cp -vf akvcam.ko "${driver_dir}"
+    cp -vf ${_pkgbase}.ko "${driver_dir}"
     cp -ar * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
     cd "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
     make clean
