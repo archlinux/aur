@@ -4,7 +4,7 @@ pkgname=matrix-synapse-py3-git
 pkgver=0.33.8.r130.gdb5a1c059
 pkgrel=1
 
-pkgdesc="Matrix reference homeserver"
+pkgdesc="Matrix reference homeserver (python3 build)"
 url="https://github.com/matrix-org/synapse"
 arch=('any')
 license=('Apache')
