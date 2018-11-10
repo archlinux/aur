@@ -1,7 +1,8 @@
 pkgbase = screenrotator-git
 	pkgdesc = Automatic screen rotation daemon for X11
-	pkgver = 24b97f7367957857eb373d5b6d24781c386df16d
+	pkgver = r23.1a78a4b
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/GuLinux/ScreenRotator
 	arch = i686
 	arch = x86_64
@@ -14,7 +15,7 @@ pkgbase = screenrotator-git
 	depends = libxi
 	depends = libxrandr
 	depends = qt5-sensors
-	source = git+https://github.com/GuLinux/screenrotator.git
+	source = screenrotator-git::git+https://github.com/GuLinux/ScreenRotator
 	sha256sums = SKIP
 
 pkgname = screenrotator-git
