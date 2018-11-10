@@ -1,12 +1,11 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-# https://github.com/ValHue/AUR-PKGBUILDs
 #
 # Contributor: Jon Nordby <jononor@gmail.com>
 # Contributor: Alexandre Courbot <gnurou@gmail.com>
-
+#
 _pkgname="launchpadlib"
 pkgname="python2-${_pkgname}"
-pkgver="1.10.3"
+pkgver="1.10.6"
 pkgrel="1"
 pkgdesc="A free Python library for scripting Launchpad through its web services interface."
 arch=('i686' 'x86_64')
@@ -16,8 +15,8 @@ depends=('python>=2.5' 'python2-lazr-restful' 'python2-lazr-uri' 'python2-lazr-r
 makedepends=('python>=2.5')
 conflicts=("${_pkgname}")
 provides=("${pkgname}")
-source=("http://launchpad.net/${_pkgname}/trunk/${pkgver}/+download/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('741ca0080dfa8b307db2d89c6050c41d975d96160419b3292b19443ce656ef6b')
+source=("${url}/trunk/${pkgver}/+download/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('e4709c18214863d147c6e0415e695d5cfddefc0dbd6ea28eb03e6eada956ae8b')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -29,4 +28,4 @@ package() {
     python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim:set ts=4 sw=4 ft=sh et syn=sh ft=sh:
