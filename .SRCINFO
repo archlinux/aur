@@ -1,7 +1,7 @@
 pkgbase = popcorntime-ce-bin
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch. Repos of the original community edition.
 	pkgver = 0.4.0
-	pkgrel = 3
+	pkgrel = 2
 	url = http://www.popcorn-time.is/
 	install = popcorntime-ce.install
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = popcorntime-ce-bin
 	conflicts = popcorntime-ce
 	conflicts = popcorntime-ce-git
 	options = !strip
-	source = https://github.com/PopcornTimeCommunity/desktop/releases/download/v0.4.0-3/popcorn-time-community-v0.4.0-3-64bit.tar.xz
+	source = https://github.com/PopcornTimeCommunity/desktop/releases/download/v0.4.0-2/popcorn-time-community-v0.4.0-2-64bit.tar.xz
 	source = popcorntime-ce.install
 	source = popcorntime-ce.desktop
 	sha256sums = 24ae13d504dc8b7272b69fc01deb43099c2c05aef79cd25a62648665660c7486
