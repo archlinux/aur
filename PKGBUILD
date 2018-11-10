@@ -1,5 +1,6 @@
-# $Id$
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+
+# Maintainer: Vincent Grande <shoober420@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=sdl2-hg
 pkgver=2.0.9.r22.80f861112154
