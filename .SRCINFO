@@ -17,6 +17,7 @@ pkgbase = sdl2-hg
 	makedepends = fcitx
 	makedepends = libxss
 	makedepends = cmake
+	makedepends = jack
 	depends = glibc
 	depends = libxext
 	depends = libxrender
@@ -26,6 +27,7 @@ pkgbase = sdl2-hg
 	depends = libibus
 	optdepends = alsa-lib: ALSA audio driver
 	optdepends = libpulse: PulseAudio audio driver
+	optdepends = jack: JACK audio driver
 	provides = sdl2
 	conflicts = sdl2
 	source = hg+http://hg.libsdl.org/SDL#branch=default

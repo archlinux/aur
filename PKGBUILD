@@ -10,9 +10,10 @@ url="https://www.libsdl.org"
 license=('MIT')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'libibus')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
-             'wayland-protocols' 'ibus' 'fcitx' 'libxss' 'cmake')
+             'wayland-protocols' 'ibus' 'fcitx' 'libxss' 'cmake' 'jack')
 optdepends=('alsa-lib: ALSA audio driver'
-            'libpulse: PulseAudio audio driver')
+            'libpulse: PulseAudio audio driver'
+            'jack: JACK audio driver')
 source=("hg+http://hg.libsdl.org/SDL#branch=default")
 provides=(sdl2)
 conflicts=(sdl2)
