@@ -1,4 +1,5 @@
-# Maintainer: Francois Menning <f.menning@pm.me>
+# Maintainer: Sam Whited <sam@samwhited.com>
+# Contributor: Francois Menning <f.menning@pm.me>
 # Contributor: Anton Kudryavtsev <anton@anibit.ru>
 # Contributor: Frederik Schwan <frederik dot schwan at linux dot com>
 # Contributor: Thomas Fanninger <thomas@fanninger.at>
@@ -6,66 +7,68 @@
 # Contributor: Thomas Laroche <tho.laroche@gmail.com>
 
 _pkgname='gitea'
-_gourl='code.gitea.io'
 pkgname=gitea-git
+pkgver=v1.6.0_rc1_103_gd487a76ee284
 pkgrel=1
-pkgver=r6500.1675fc430
-pkgdesc='A painless self-hosted Git service.'
+pkgdesc='Painless self-hosted Git service. Community managed fork of Gogs.'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://gitea.io/'
 license=('MIT')
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-depends=('git' 'go')
-optdepends=('sqlite: SQLite support'
-            'mariadb: MariaDB support'
-            'postgresql: PostgreSQL support'
-            'pam: Authentication via PAM support'
-            'redis: Redis support'
+depends=('git')
+makedepends=('go' 'go-bindata')
+optdepends=('mariadb: MariaDB support'
             'memcached: MemCached support'
-            'openssh: GIT over SSH support')
+            'openssh: GIT over SSH support'
+            'pam: Authentication via PAM support'
+            'postgresql: PostgreSQL support'
+            'redis: Redis support'
+            'sqlite: SQLite support')
+backup=('etc/gitea/app.ini')
 conflicts=('gitea')
 provides=('gitea')
-options=('!strip' 'emptydirs')
-backup=('etc/gitea/app.ini')
-install=gitea.install
-source=('git://github.com/go-gitea/gitea.git'
-        '01-adjust-config.patch'
-        '02-adjust-service.patch'
-        'gitea.tmpfiles'
-)
+source=("git+https://github.com/go-gitea/gitea.git"
+        gitea.tmpfiles
+        gitea.service
+        gitea-repos.patch
+        gitea-ldflags.patch
+        gitea-disable-u2f.patch)
 sha512sums=('SKIP'
-            '3f96361a5135ea11b438e2cad29f2033221c63c11d1f260474d589c469e5db760fbf4da0718f9d015e106b72a13c02ad2899a8a90ac07365e20b935b59e95a6c'
-            '01d5cfe3e2967b680cce1a3980db6460db1aada82718316886e92d2f9ef30b66d37c6dbb7da7bbc3026b2f6985b65e07e5f8fd58904443155a81a1533eef1bc1'
-            '0c6c9729f8dfd5b5fe2badf998e89624b00800f87ae1b28a68acd52f2621f3434cc3930a578d2bb3e27005f8ffbb0f4a0e4e4d3d2e2371d0214d36c805d65573')
+            '0c58381f38fff0d029fd1b32f65536a7f96d0daa4aa1ee7c1c483f818c822c0088bfa980991800775eaece272e9d995faf5cadb7cfe648c75b6da579f38f3ed6'
+            '6487cd8a5de45e68bc842979197c442d1cbd8c79cf6781431e8965a2ef89cccadc20f75f3ee2e3403707ddb9f801ec782dec360fabc9d9dfc2ce2b1edd76482a'
+            '7bed1338af9d44de55964b9cf98816109da45a43c07b3260f51b7d517cf2e2d0c496c8ba5df44d57c9a8aa6aea18614a619ea14600a8f62d72c79485a74e6ab0'
+            '8d3024a17c8faae80b2af349457701c45695f70e2e5c5bf43f33c277bde8241f5e01ee08c534902fd5be976b49d85d0112bda7a2e6fb940179a99029d9e404fb'
+            '779869c10bcb37581cde6df38f0905618099d604f29b0281abc4fa4c2302b8063063d0e8b0efdd99897b127c45103d376ba4a121e66edd51944abaf0235ab834')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long | sed s/-/_/g
 }
 
 prepare() {
-  sed -i -e "s/\"main.Version.*$/\"main.Version=$(pkgver)\"/" "${srcdir}/${_pkgname}/Makefile"
-  patch -Np1 -i "${srcdir}/01-adjust-config.patch" "${srcdir}/${_pkgname}/custom/conf/app.ini.sample"
-  patch -Np1 -i "${srcdir}/02-adjust-service.patch" "${srcdir}/${_pkgname}/contrib/systemd/${_pkgname}.service"
+  cd ${srcdir}/${_pkgname}
+  # Change default repos path for ArchLinux
+  patch -Np1 -i ../../gitea-repos.patch
+  # Fix LDFLAGS not being respected by Go
+  patch -Np1 -i ../../gitea-ldflags.patch
+  # https://github.com/go-gitea/gitea/issues/4692
+  patch -Np1 -i ../../gitea-disable-u2f.patch
 
-  mkdir -p "${srcdir}/src/${_gourl}/${_pkgname}"
-  cp -r "${srcdir}/${_pkgname}" "${srcdir}/src/${_gourl}"
+  go mod init || true
 }
 
 build() {
-  cd "${srcdir}/src/${_gourl}/${_pkgname}"
-  PATH="${srcdir}/bin:$PATH" GOPATH="${srcdir}" make DESTDIR="${pkgdir}/" TAGS="sqlite pam" clean generate build
+  cd ${srcdir}/${_pkgname}
+  make generate
+  EXTRA_GOFLAGS="-gcflags all=-trimpath=${srcdir}/${_pkgname} -asmflags all=-trimpath=${srcdir}/${_pkgname}" \
+  make GOFLAGS="-v" TAGS="bindata sqlite pam" build
 }
 
 package() {
-  cd "${srcdir}/src/${_gourl}/${_pkgname}"
-
-  install -dm0750 "${pkgdir}/"{etc,var/log,var/lib}/${_pkgname}
-
-  cp -r {custom,public,options,templates} "${pkgdir}/var/lib/${_pkgname}"
-
-  install -Dm0755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm0644 "custom/conf/app.ini.sample" "${pkgdir}/etc/${_pkgname}/app.ini"
-  install -Dm0644 "contrib/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-  install -Dm0644 "${srcdir}/${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
-  install -Dm0644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -Dm755 ${_pkgname}/${_pkgname} -t "${pkgdir}"/usr/bin/
+  install -Dm644 ${_pkgname}/LICENSE -t "${pkgdir}"/usr/share/licenses/${_pkgname}/
+  install -Dm644 ${_pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
+  install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
+  install -D ${_pkgname}/custom/conf/app.ini.sample "${pkgdir}"/etc/gitea/app.ini
 }
+
+# vim: ts=2 sw=2 et:
