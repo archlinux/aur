@@ -3,11 +3,11 @@
 
 pkgname=ffmpeg-full
 _srcname=ffmpeg
-pkgver=4.0.2
-pkgrel=5
+pkgver=4.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
-url='http://www.ffmpeg.org/'
+url='https://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
 depends=(
     # official repositories:
@@ -15,17 +15,17 @@ depends=(
         'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass' 'aom'
         'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
         'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm'
-        'libiec61883' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio'
-        'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt'
-        'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
-        'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
-        'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz' 'openal' 'ocl-icd' 'libgl' 'sndio'
-        'sdl2' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm'
-        'libvdpau'
+        'libiec61883' 'lensfun' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus'
+        'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr'
+        'speex' 'srt' 'libssh' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
+        'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so'
+        'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
+        'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'libxv' 'libx11'
+        'libxext' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'codec2' 'flite1-patched' 'libilbc' 'kvazaar' 'openh264'
-        'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
-        'rockchip-mpp'
+        'chromaprint-fftw' 'codec2' 'davs2-git' 'flite1-patched' 'libilbc' 'libklvanc-git'
+        'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2-git'
+        'ndi-sdk' 'libmysofa' 'rockchip-mpp'
 )
 depends_x86_64=(
     # official repositories:
@@ -43,29 +43,16 @@ makedepends_x86_64=(
     # AUR:
         'vmaf'
 )
-provides=('ffmpeg' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
-          'libavfilter.so' 'libavresample.so' 'libswscale.so' 'libswresample.so'
-          'libpostproc.so')
+provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+          'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
+          'libswresample.so' 'ffmpeg')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'LICENSE')
-source_x86_64=('vmaf-1.3.9-fix.patch')
-sha256sums=('a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97'
+sha256sums=('a38ec4d026efb58506a99ad5cd23d5a9793b4bf415f2c4c2e9c1bb444acd1994'
             'SKIP'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
-sha256sums_x86_64=('4eab61257adfdae2233cf8e5a12bd4d1e551b69711c8b4d14cffdd0f2c85812b')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-
-prepare() {
-    cd "${_srcname}-${pkgver}"
-    
-    # fix build with vmaf 1.3.9 (x86_64 only)
-    [ "$CARCH" = 'x86_64' ] && patch -Np1 -i "${srcdir}/vmaf-1.3.9-fix.patch"
-    
-    # strictly specifying nvcc path is needed if package is installing
-    # cuda for the first time (nvcc path will be in $PATH only after relogin)
-    sed -i "s|^nvcc_default=.*|nvcc_default='/opt/cuda/bin/nvcc'|" configure
-}
 
 build() {
     cd "${_srcname}-${pkgver}"
@@ -104,6 +91,7 @@ build() {
         --enable-nonfree \
         --enable-shared \
         --disable-static \
+        --disable-stripping \
         --enable-gray \
         --enable-avresample \
         \
@@ -125,6 +113,7 @@ build() {
         --enable-libcelt \
         --enable-libcdio \
         --enable-libcodec2 \
+        --enable-libdavs2 \
         --enable-libdc1394 \
         --enable-libfdk-aac \
         --enable-libflite \
@@ -136,7 +125,9 @@ build() {
         --enable-libiec61883 \
         --enable-libilbc \
         --enable-libjack \
+        --enable-libklvanc \
         --enable-libkvazaar \
+        --enable-liblensfun \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore-amrnb \
@@ -157,6 +148,7 @@ build() {
         --enable-libspeex \
         --enable-libsrt \
         --enable-libssh \
+        --enable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
         --disable-libtls \
@@ -172,6 +164,7 @@ build() {
         --enable-libx264 \
         --enable-libx265 \
         --enable-libxavs \
+        --enable-libxavs2 \
         --enable-libxcb \
         --enable-libxcb-shm \
         --enable-libxcb-xfixes \
@@ -192,6 +185,7 @@ build() {
         --disable-openssl \
         --enable-sndio \
         --enable-sdl2 \
+        --enable-vapoursynth \
         --enable-xlib \
         --enable-zlib \
         \
