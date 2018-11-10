@@ -1,6 +1,6 @@
 # Maintainer: TrueRandom <rantruedom at gmail dot com>
 pkgname=iota-trinity-wallet
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="The IOTA Trinity Wallet"
 arch=(x86_64)
@@ -10,7 +10,7 @@ provides=(iota-trinity-wallet)
 options=('!strip')
 
 source_x86_64=("https://github.com/iotaledger/trinity-wallet/releases/download/$pkgver/trinity-desktop-$pkgver.AppImage"{,.asc})
-sha512sums_x86_64=('7a86469cc86ddb89446e7ed17537adfa3153132ceac4fc215833b3e5fa0de6d458a372e96de52d50e57f3498d1b0621900a9250b9c1ad416a050e094d87a2357'
+sha256sums_x86_64=('489f2e10180004741ef176f06a89ea70db022df9268faf886d7c8aaa34444a85'
                    'SKIP')
 
 source=("iota-trinity-wallet.desktop")
@@ -22,7 +22,7 @@ validpgpkeys=('466385BD0B40D9550F93C04746A440CCE5664A64')
 prepare() {
     # Extract Appimage
     chmod +x "${srcdir}/trinity-desktop-$pkgver.AppImage"
-    "${srcdir}/trinity-desktop-$pkgver.AppImage" --appimage-extract
+    "${srcdir}/trinity-desktop-$pkgver.AppImage" --appimage-extract > /dev/null 2>&1
     chmod -x "${srcdir}/trinity-desktop-$pkgver.AppImage"
 }
 
