@@ -10,11 +10,11 @@ _lib32=0
 
 pkgbase=nvidia-full-beta
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-egl-wayland-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
-pkgver=410.73
-pkgrel=2
+pkgver=415.13
+pkgrel=1
 pkgdesc="Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)"
 arch=('x86_64')
-url='http://www.nvidia.com/'
+url='https://www.nvidia.com/'
 license=('custom:NVIDIA')
 makedepends=('linux-headers')
 options=('!strip')
@@ -28,15 +28,15 @@ then
 fi
 
 # source
-source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
+source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-full-beta.sysusers'
         'linux-4.16.patch')
-sha256sums=('7d6b6c9931f8b89404149a5fdf7a580edae0cd567cc2d4ffe3823b1af02a705d'
+sha256sums=('77f06aefe03d74334da642a452a2986f6da02dbc6c5a8433635178be9dfae07d'
             '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
-[ "$_pkg" = "NVIDIA-Linux-${CARCH}-${pkgver}" ] && sha256sums[0]='bebc9cf781201beb5ec1a1dde7672db68609b8af0aa5ff32daa3ebb533c2ff1e'
+[ "$_pkg" = "NVIDIA-Linux-${CARCH}-${pkgver}" ] && sha256sums[0]='2ad26d77b848e12a72b6fece320cb867a07a36096bd2e21f4a0c8fa40a51645a'
 
 _eglver=1.1.0
 _extramodules=extramodules-ARCH
@@ -230,8 +230,7 @@ package_nvidia-utils-full-beta() {
     install -D -m755 "libnvidia-fatbinaryloader.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # TLS (Thread local storage) support for OpenGL libs
-    install -D -m755 "libnvidia-tls.so.${pkgver}"     -t "${pkgdir}/usr/lib"     # classic
-    install -D -m755 "tls/libnvidia-tls.so.${pkgver}" -t "${pkgdir}/usr/lib/tls" # new
+    install -D -m755 "libnvidia-tls.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # GPU monitoring and management (1/2)
     install -D -m755 "libnvidia-ml.so.${pkgver}" -t "${pkgdir}/usr/lib"
@@ -426,8 +425,7 @@ package_lib32-nvidia-utils-full-beta() {
     install -D -m755 "libnvidia-fatbinaryloader.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     
     # TLS (Thread local storage) support for OpenGL libs
-    install -D -m755 "libnvidia-tls.so.${pkgver}"     -t "${pkgdir}/usr/lib32" # classic
-    install -D -m755 "tls/libnvidia-tls.so.${pkgver}" -t "${pkgdir}/usr/lib32" # new
+    install -D -m755 "libnvidia-tls.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     
     # GPU monitoring and management
     install -D -m755 "libnvidia-ml.so.${pkgver}" -t "${pkgdir}/usr/lib32"
