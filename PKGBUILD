@@ -14,7 +14,7 @@ depends=('lib32-libvorbis' 'lib32-libtheora' 'lib32-speex' 'lib32-openssl' 'libs
 url="http://www.icecast.org/"
 options=('!emptydirs')
 license=('LGPL')
-source=("http://downloads.xiph.org/releases/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+source=("https://downloads.xiph.org/releases/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('89cebf8cb0197f639cde69c95177fe47')
 
 prepare() {
