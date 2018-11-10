@@ -1,11 +1,11 @@
 pkgbase = tootstream-git
 	pkgdesc = Text interface for the Mastodon social network
-	pkgver = 0.3.4.r3.gfef1e72
-	pkgrel = 5
+	pkgver = 0.3.6.r7.gf2f8b8d
+	pkgrel = 1
 	url = https://github.com/magicalraccoon/tootstream
 	arch = any
 	license = MIT
-	makedepends = python-distribute
+	makedepends = python-setuptools
 	makedepends = git
 	depends = python-mastodon
 	depends = python-humanize
