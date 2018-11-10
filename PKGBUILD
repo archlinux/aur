@@ -10,8 +10,9 @@
 _music='sc55' # (sc55/opl3) - update checksums if you change
 
 pkgbase=dxx-rebirth-git
+_srcname=dxx-rebirth
 pkgname=('d1x-rebirth-git' 'd2x-rebirth-git')
-pkgver=0.60.0.beta2.r201.g4d3612e45
+pkgver=0.60.0.beta2.r202.gf6352e795
 pkgrel=1
 pkgdesc='A source port of the Descent and Descent 2 engines (git version)'
 arch=('i686' 'x86_64')
@@ -19,7 +20,7 @@ url='https://www.dxx-rebirth.com/'
 license=('custom')
 depends=('sdl_mixer' 'physfs' 'glu' 'libpng')
 makedepends=('git' 'scons')
-source=("$pkgbase"::'git+https://github.com/dxx-rebirth/dxx-rebirth.git'
+source=('git+https://github.com/dxx-rebirth/dxx-rebirth.git'
         'https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa'
         "https://www.dxx-rebirth.com/download/dxx/res/d1xr-${_music}-music.dxa"
         "https://www.dxx-rebirth.com/download/dxx/res/d2xr-${_music}-music.dxa")
@@ -54,14 +55,14 @@ _d2x_opts=('d1x=0'
 )
 
 pkgver() {
-    cd "$pkgbase"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$pkgbase"
+    cd "$_srcname"
     
     scons "${_d1x_opts[@]}"
     scons "${_d2x_opts[@]}"
@@ -72,7 +73,7 @@ package_d1x-rebirth-git() {
     provides=('d1x-rebirth')
     conflicts=('d1x-rebirth')
     
-    cd "$pkgbase"
+    cd "$_srcname"
     
     scons install DESTDIR="$pkgdir" "${_d1x_opts[@]}"
     
@@ -95,7 +96,7 @@ package_d2x-rebirth-git() {
     provides=('d2x-rebirth')
     conflicts=('d2x-rebirth')
     
-    cd "$pkgbase"
+    cd "$_srcname"
     
     scons install DESTDIR="$pkgdir" "${_d2x_opts[@]}"
     
