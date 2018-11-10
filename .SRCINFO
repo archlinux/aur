@@ -9,7 +9,7 @@ pkgbase = interactive-diff-patch
 	depends = npm
 	noextract = interactive-diff-patch-0.0.8.tgz
 	source = https://registry.npmjs.org/interactive-diff-patch/-/interactive-diff-patch-0.0.8.tgz
-	sha1sums = 7dfdeb429a38dc2e4fe87319ecca3d56c5a905d0
+	sha1sums =cca09b80b5e03c0dda27d4c62dede94dc0f662d5 
 
 pkgname = interactive-diff-patch
 

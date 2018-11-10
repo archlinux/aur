@@ -11,7 +11,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(7dfdeb429a38dc2e4fe87319ecca3d56c5a905d0)
+sha1sums=(cca09b80b5e03c0dda27d4c62dede94dc0f662d5)
 
 package() {
   cd $srcdir
