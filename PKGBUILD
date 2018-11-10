@@ -4,11 +4,11 @@
 # Based on nvidia-beta: https://aur.archlinux.org/packages/nvidia-beta/
 
 pkgname=nvidia-beta-all
-pkgver=410.73
+pkgver=415.13
 pkgrel=1
 pkgdesc='NVIDIA drivers for all kernels on the system (beta)'
 arch=('x86_64')
-url='http://www.nvidia.com/'
+url='https://www.nvidia.com/'
 license=('custom:NVIDIA')
 depends=("nvidia-utils-beta>=${pkgver}" 'libgl')
 makedepends=('linux-headers')
@@ -16,9 +16,9 @@ provides=("nvidia=${pkgver}" "nvidia-beta=${pkgver}")
 conflicts=('nvidia')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
-source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
+source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'linux-4.16.patch')
-sha256sums=('7d6b6c9931f8b89404149a5fdf7a580edae0cd567cc2d4ffe3823b1af02a705d'
+sha256sums=('77f06aefe03d74334da642a452a2986f6da02dbc6c5a8433635178be9dfae07d'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
 prepare() {
