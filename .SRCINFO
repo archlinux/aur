@@ -1,7 +1,7 @@
 pkgbase = celestia-addon-sun
 	pkgdesc = Celestia addon: Sol: Texture Maps: Sun
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=1014
 	install = celestia-addon-sun.install
 	arch = any

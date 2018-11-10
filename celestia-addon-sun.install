@@ -6,7 +6,7 @@ post_install() {
 	echo "when you uninstall the celestia-addon-sun package."
 
 	mv --verbose "/usr/share/celestia/textures/medres/gstar.jpg" "/usr/share/celestia/textures/medres/gstar-original.jpg"
-	mv --verbose "/tmp/gstar.jpg" "/usr/share/celestia/textures/medres/"
+	mv --verbose "/usr/share/celestia/textures/medres/gstar_celestia-addon-sun.jpg" "/usr/share/celestia/textures/medres/gstar.jpg"
 }
 
 post_upgrade() {
