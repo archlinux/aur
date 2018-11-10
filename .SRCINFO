@@ -1,0 +1,18 @@
+pkgbase = unreal-speccy-portable-git
+	pkgdesc = Portable ZX Spectrum emulator based on UnrealSpeccy 0.37.3 by SMT
+	pkgver = 0.0.83.r1.ged823c7
+	pkgrel = 1
+	url = https://bitbucket.org/djdron/unrealspeccyp
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sdl
+	depends = curl
+	depends = mesa
+	provides = unreal-speccy-portable
+	conflicts = unreal-speccy-portable
+	source = git+https://bitbucket.org/djdron/unrealspeccyp
+	md5sums = SKIP
+
+pkgname = unreal-speccy-portable-git
+
