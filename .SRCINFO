@@ -8,7 +8,7 @@ pkgbase = auryo-bin
 	conflicts = auryo
 	conflicts = auryo-git
 	source = https://github.com/Superjo149/auryo/releases/download/v2.2.0/auryo-2.2.0.pacman
-	sha256sums = d8ef1f8b27b6d3fbedb278ec27a1002879deaf47f09ffe7eaadd36e93bc263e3
+	sha256sums = 921e8c8fc0400b7113f39c90a519e7be47277483feeba8f6a492118948127977
 
 pkgname = auryo-bin
 

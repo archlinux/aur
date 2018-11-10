@@ -10,7 +10,7 @@ license=("GPL-3.0")
 url="http://auryo.com"
 conflicts=('auryo' 'auryo-git')
 source=("https://github.com/Superjo149/auryo/releases/download/v${pkgver}/auryo-${pkgver}.pacman")
-sha256sums=("d8ef1f8b27b6d3fbedb278ec27a1002879deaf47f09ffe7eaadd36e93bc263e3")
+sha256sums=("921e8c8fc0400b7113f39c90a519e7be47277483feeba8f6a492118948127977")
 
 package() {
     cd "${srcdir}/"
