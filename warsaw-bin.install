@@ -9,19 +9,6 @@ post_install() {
 	update-desktop-database -q
 }
 
-post_upgrade() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-
-	echo "To use Warsaw, start its service using:"
-	echo "$ sudo warsaw start"
-
-	    if command -v systemctl > /dev/null 2>&1; then
-	      systemctl restart warsaw.service
-	    fi
-
-	update-desktop-database -q
-}
-
 pre_remove() {
 
 	    if command -v systemctl > /dev/null 2>&1; then
