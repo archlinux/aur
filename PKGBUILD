@@ -2,7 +2,7 @@
 # Co-Maintainer: Sneljo <jonas.snellinckx@gmail.com
 
 pkgname="auryo-bin"
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=2
 pkgdesc="A SoundCloud client for your desktop."
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("GPL-3.0")
 url="http://auryo.com"
 conflicts=('auryo' 'auryo-git')
 source=("https://github.com/Superjo149/auryo/releases/download/v${pkgver}/auryo-${pkgver}.pacman")
-sha256sums=("1312406a8308274582476d84def817fc4a3ceb20510332e7a52c356f922740c4")
+sha256sums=("6177299f113f5ce8f97be65e8fa7102fe82eb5124d91a0b6e07955e86aa9e4ce")
 
 package() {
     cd "${srcdir}/"
