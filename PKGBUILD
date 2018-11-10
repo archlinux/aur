@@ -30,7 +30,7 @@ prepare() {
 
   # electron --version does not work in a chroot
   # https://github.com/electron/electron/issues/12621
-  export _electron_version=$(pacman -Q electron | sed 's/.\+ \(.\+\)-.\+/\1/')
+  export _electron_version=$(tail -c +2 /usr/lib/electron/version)
   mv package.json{,.orig}
   jq '.devDependencies.electron |= env._electron_version' \
     package.json.orig > package.json
