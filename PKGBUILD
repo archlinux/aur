@@ -6,18 +6,18 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
-pkgver=410.73
-pkgrel=2
+pkgver=415.13
+pkgrel=1
 pkgdesc='NVIDIA driver utilities and libraries (beta version)'
 arch=('x86_64')
-url='http://www.nvidia.com/'
+url='https://www.nvidia.com/'
 license=('custom:NVIDIA')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
-source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
+source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-beta.sysusers')
-sha256sums=('7d6b6c9931f8b89404149a5fdf7a580edae0cd567cc2d4ffe3823b1af02a705d'
+sha256sums=('77f06aefe03d74334da642a452a2986f6da02dbc6c5a8433635178be9dfae07d'
             '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167')
 
@@ -198,8 +198,7 @@ package_nvidia-utils-beta() {
     install -D -m755 "libnvidia-fatbinaryloader.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # TLS (Thread local storage) support for OpenGL libs
-    install -D -m755 "libnvidia-tls.so.${pkgver}"     -t "${pkgdir}/usr/lib"     # classic
-    install -D -m755 "tls/libnvidia-tls.so.${pkgver}" -t "${pkgdir}/usr/lib/tls" # new
+    install -D -m755 "libnvidia-tls.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # GPU monitoring and management (1/2)
     install -D -m755 "libnvidia-ml.so.${pkgver}" -t "${pkgdir}/usr/lib"
