@@ -3,31 +3,32 @@
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Michel Brabants <michel.linux@tiscali.be>
 pkgname=vips
-pkgver=8.6.3
+pkgver=8.7.0
 pkgrel=1
 pkgdesc="A free image processing system"
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="https://jcupitt.github.io/libvips/"
 depends=('libxml2' 'fftw' 'imagemagick' 'orc' 'openexr' 'pango' 'libexif')
+makedepends=('gtk-doc' 'gobject-introspection' 'swig')
 optdepends=('python2: vipsprofile')
 # less used depends: 'libwebp' 'cfitsio'
 # optional makedepends: 'v4l-utils' 'python2'
 # minimal depends: 'libxml2'
 options=('!libtool')
-source=("https://github.com/jcupitt/libvips/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f85adbb9f5f0f66b34a40fd2d2e60d52f6e992831f54af706db446f582e10992')
+source=("${pkgname}-${pkgver}::https://github.com/jcupitt/libvips/archive/v${pkgver}.tar.gz")
+sha256sums=('79be1d48be6d7426ca41724f920ab6754721449b6bd4ec963ebc3fb4312216b4')
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/libvips-$pkgver
   
-  ./configure --prefix=/usr
+  ./autogen.sh --prefix=/usr
   
   make
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/libvips-$pkgver
 
   make DESTDIR="$pkgdir" install
 }
