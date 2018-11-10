@@ -5,13 +5,13 @@ pkgname=libcryptui
 pkgver=3.12.2+24+gd5e5bc5
 pkgrel=1
 pkgdesc="Library for OpenPGP prompts"
-url="https://git.gnome.org/browse/libcryptui"
+url="https://gitlab.gnome.org/GNOME/libcryptui"
 arch=(x86_64)
 license=(GPL)
 depends=(gtk3 gpgme dbus-glib libnotify gcr dconf libsm)
 makedepends=(intltool gobject-introspection gnome-common git)
 _commit=d5e5bc593dcbb21f5dd3b8f858368170d4947cf3  # master
-source=("git://git.gnome.org/libcryptui#commit=$_commit")
+source=("git+https://gitlab.gnome.org/GNOME/libcryptui.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
