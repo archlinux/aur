@@ -5,7 +5,7 @@
 
 pkgname=clutter
 pkgver=1.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit for creating fast, portable, compelling dynamic UIs"
 url="https://blogs.gnome.org/clutter/"
 arch=(x86_64)
