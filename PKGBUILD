@@ -3,7 +3,7 @@
 
 pkgname=libsigrok
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Client software that supports various hardware logic analyzers, core library'
 arch=(x86_64)
 url='https://www.sigrok.org/wiki/Libsigrok'
@@ -29,4 +29,6 @@ package() {
   cd libsigrok-$pkgver
   make DESTDIR="$pkgdir" PREFIX=/usr install
   install -m644 -D contrib/60-libsigrok.rules $pkgdir/usr/lib/udev/rules.d/60-libsigrok.rules
+  install -m644 -D contrib/61-libsigrok-plugdev.rules $pkgdir/usr/lib/udev/rules.d/61-libsigrok-plugdev.rules
+  install -m644 -D contrib/61-libsigrok-uaccess.rules $pkgdir/usr/lib/udev/rules.d/61-libsigrok-uaccess.rules
 }
