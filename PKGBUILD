@@ -41,10 +41,6 @@ package() {
     mkdir -p "${pkgdir}/etc/${_pkgbase}"
     cp -vf share/config_example.ini "${pkgdir}/etc/${_pkgbase}"
     cd "${srcdir}/${_pkgbase}/src"
-    strip --strip-debug ${_pkgbase}.ko
-    driver_dir="${pkgdir}/usr/lib/modules/"$(uname -r)"/extra"
-    mkdir -p "${driver_dir}"
-    cp -vf ${_pkgbase}.ko "${driver_dir}"
     cp -ar * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
     cd "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
     make clean
