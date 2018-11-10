@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Youtube TV
+Comment=Desktop version of Youtube TV
+Exec=youtube-tv-desktop
+StartupWMClass=youtube-tv-desktop
+Icon=youtube-tv
+Terminal=false
+Type=Application
+Categories=Network;AudioVideo;Internet;Video

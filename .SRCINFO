@@ -1,0 +1,24 @@
+pkgbase = youtube-tv-desktop
+	pkgdesc = Youtube TV app for desktop
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://youtube.com/tv
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = nodejs-nativefier
+	depends = alsa-lib
+	depends = gtk3
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	provides = youtube-tv-desktop
+	source = youtube-tv-desktop.png
+	source = youtube-tv-desktop.desktop
+	source = youtube-tv-desktop.sh
+	md5sums = 0d7a6391da8564eb1507c323822433c0
+	md5sums = dadc1766a52f86047432ac4cc59816e5
+	md5sums = afd7bf324e0108aa6091181b85b4db10
+
+pkgname = youtube-tv-desktop
+
