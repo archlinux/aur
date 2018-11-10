@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
 pkgver=5.1.7.55786
-pkgrel=1
+pkgrel=2
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
 license=('GPL')
@@ -47,7 +47,7 @@ package() {
   # File modes fix.
   find -type d -execdir chmod 755 "{}" \;
   find -type f -execdir chmod 644 "{}" \;
-  chmod 755 bin/* firestorm
+  chmod 755 bin/* firestorm etc/*
 
   # Install Desktop File
   install -D -m644 ../firestorm.desktop \
