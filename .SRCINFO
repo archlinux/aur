@@ -1,7 +1,7 @@
 pkgbase = python-ompython
 	pkgdesc = OpenModelica-Python API Interface
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openmodelica.org/
 	arch = any
 	license = OSMC-PL
