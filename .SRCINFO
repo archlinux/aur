@@ -1,0 +1,21 @@
+pkgbase = gnonograms-git
+	pkgdesc = Nonograms puzzle game written in Vala. Designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/jeremypw/gnonograms
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	provides = gnonograms
+	conflicts = gnonograms
+	source = git+https://github.com/jeremypw/gnonograms.git
+	md5sums = SKIP
+
+pkgname = gnonograms-git
+
