@@ -11,7 +11,7 @@ makedepends=('pkg-config' 'intltool' 'gnome-common' 'git')
 url="http://live.gnome.org/GnomeArt"
 conflicts=('lighthouse-gtk2' 'clearlooks-gtk2')
 replaces=('lighthouse-gtk2')
-source=('git://git.gnome.org/gtk-engines#commit=e23eb81ade8c815dcd4da026ab7a2b7307a4f326')
+source=('git+https://github.com/GNOME/gtk-engines.git#commit=e23eb81ade8c815dcd4da026ab7a2b7307a4f326')
 sha256sums=('SKIP')
 
 prepare() {
