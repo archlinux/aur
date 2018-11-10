@@ -9,17 +9,17 @@
 
 pkgbase=lib32-nvidia-utils-beta
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
-pkgver=410.73
-pkgrel=2
+pkgver=415.13
+pkgrel=1
 pkgdesc='NVIDIA driver utilities and libraries (beta version) (32-bit)'
 arch=('x86_64')
-url='http://www.nvidia.com/'
+url='https://www.nvidia.com/'
 makedepends=('nvidia-libgl-beta')  # to avoid conflict during installation in the build chroot
 license=('custom:NVIDIA')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
-source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run")
-sha256sums=('bebc9cf781201beb5ec1a1dde7672db68609b8af0aa5ff32daa3ebb533c2ff1e')
+source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run")
+sha256sums=('2ad26d77b848e12a72b6fece320cb867a07a36096bd2e21f4a0c8fa40a51645a')
 
 # create missing soname links
 _create_links() {
@@ -147,8 +147,7 @@ package_lib32-nvidia-utils-beta() {
     install -D -m755 "libnvidia-fatbinaryloader.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     
     # TLS (Thread local storage) support for OpenGL libs
-    install -D -m755 "libnvidia-tls.so.${pkgver}"     -t "${pkgdir}/usr/lib32"    # classic
-    install -D -m755 "tls/libnvidia-tls.so.${pkgver}" -t "${pkgdir}/usr/lib32/ts" # new
+    install -D -m755 "libnvidia-tls.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     
     # GPU monitoring and management
     install -D -m755 "libnvidia-ml.so.${pkgver}" -t "${pkgdir}/usr/lib32"
