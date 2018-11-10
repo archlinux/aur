@@ -6,6 +6,7 @@ pkgbase = dazzlie-git
 	arch = x86_64
 	license = MIT
 	makedepends = crystal
+	makedepends = shards
 	makedepends = git
 	depends = gc
 	depends = pcre

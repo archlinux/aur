@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/obskyr/dazzlie"
 license=(MIT)
 depends=(gc pcre libevent)
-makedepends=(crystal git)
+makedepends=(crystal shards git)
 source=(git+ssh://git@github.com/obskyr/dazzlie.git)
 sha1sums=(SKIP)
 
