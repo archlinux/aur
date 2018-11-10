@@ -1,11 +1,12 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=4.1.r92192.g57f312a34d
+_srcname=ffmpeg
+pkgver=4.2.r92394.g75625c555c
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
-url='http://www.ffmpeg.org/'
+url='https://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
 depends=(
     # official repositories:
@@ -21,9 +22,9 @@ depends=(
         'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'libxv' 'libx11'
         'libxext' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'codec2' 'davs2-git' 'flite1-patched' 'libilbc' 'kvazaar'
-        'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
-        'rockchip-mpp'
+        'chromaprint-fftw' 'codec2' 'dav1d-git' 'davs2-git' 'flite1-patched' 'libilbc'
+        'libklvanc-git' 'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc'
+        'xavs' 'xavs2-git' 'ndi-sdk' 'libmysofa' 'rockchip-mpp'
 )
 depends_x86_64=(
     # official repositories:
@@ -41,35 +42,31 @@ makedepends_x86_64=(
     # AUR:
         'vmaf'
 )
-provides=('ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'libavutil.so' 'libavcodec.so'
-          'libavformat.so' 'libavdevice.so' 'libavfilter.so' 'libavresample.so'
-          'libswscale.so' 'libswresample.so' 'libpostproc.so')
+provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+          'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
+          'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git')
 conflicts=('ffmpeg')
-source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git'
+source=('git://source.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
-prepare() {
-    cd "$pkgname"
-    
-    # strictly specifying nvcc path is needed if package is installing
-    # cuda for the first time (nvcc path will be in $PATH only after relogin)
-    sed -i "s|^nvcc_default=.*|nvcc_default='/opt/cuda/bin/nvcc'|" configure
-}
-
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
-    local _version="$(  git describe  --tags --long      | awk -F'-' '{ printf $1 }' | sed 's/^n//')"
-    local _revision="$( git describe  --tags --match 'N' | awk -F'-' '{ printf $2 }')"
-    local _shorthash="$(git rev-parse --short HEAD)"
+    local _version
+    local _revision
+    local _shorthash
+    
+    _version="$(  git describe  --tags --long      | awk -F'-' '{ printf $1 }' | sed 's/^n//')"
+    _revision="$( git describe  --tags --match 'N' | awk -F'-' '{ printf $2 }')"
+    _shorthash="$(git rev-parse --short HEAD)"
     
     printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # set x86_64 specific options
     if [ "$CARCH" = 'x86_64' ] 
@@ -105,6 +102,7 @@ build() {
         --enable-nonfree \
         --enable-shared \
         --disable-static \
+        --disable-stripping \
         --enable-gray \
         --enable-avresample \
         \
@@ -126,6 +124,7 @@ build() {
         --enable-libcelt \
         --enable-libcdio \
         --enable-libcodec2 \
+        --enable-libdav1d \
         --enable-libdavs2 \
         --enable-libdc1394 \
         --enable-libfdk-aac \
@@ -138,6 +137,7 @@ build() {
         --enable-libiec61883 \
         --enable-libilbc \
         --enable-libjack \
+        --enable-libklvanc \
         --enable-libkvazaar \
         --enable-liblensfun \
         --enable-libmodplug \
@@ -176,6 +176,7 @@ build() {
         --enable-libx264 \
         --enable-libx265 \
         --enable-libxavs \
+        --enable-libxavs2 \
         --enable-libxcb \
         --enable-libxcb-shm \
         --enable-libxcb-xfixes \
@@ -221,7 +222,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     make DESTDIR="$pkgdir" install
     
