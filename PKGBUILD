@@ -1,7 +1,8 @@
 # Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=caffe2-cuda-git
-pkgver=0.8.2.r14502.g7978ba45ba
+_srcname=pytorch
+pkgver=0.8.2.r14563.g4f622c26b9
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (with cuda, git version)'
 arch=('x86_64')
@@ -33,38 +34,38 @@ conflicts=('caffe2')
 options=('!emptydirs')
 source=(
     # main source:
-        'pytorch-git'::'git+https://github.com/pytorch/pytorch.git'
+        'git+https://github.com/pytorch/pytorch.git'
     # git submodules:
-        'caffe2-submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
-        'caffe2-submodule-cub'::'git+https://github.com/NVlabs/cub.git'
-        'caffe2-submodule-eigen'::'git+https://github.com/eigenteam/eigen-git-mirror.git'
-        'caffe2-submodule-googletest'::'git+https://github.com/google/googletest.git'
-        'caffe2-submodule-benchmark'::'git+https://github.com/google/benchmark.git'
-        'caffe2-submodule-protobuf'::'git+https://github.com/google/protobuf.git'
-        'caffe2-submodule-ios-cmake'::'git+https://github.com/Yangqing/ios-cmake.git'
-        'caffe2-submodule-NNPACK'::'git+https://github.com/Maratyszcza/NNPACK.git'
-        'caffe2-submodule-gloo'::'git+https://github.com/facebookincubator/gloo'
-        'caffe2-submodule-NNPACK_deps-pthreadpool'::'git+https://github.com/Maratyszcza/pthreadpool.git'
-        'caffe2-submodule-NNPACK_deps-FXdiv'::'git+https://github.com/Maratyszcza/FXdiv.git'
-        'caffe2-submodule-NNPACK_deps-FP16'::'git+https://github.com/Maratyszcza/FP16.git'
-        'caffe2-submodule-NNPACK_deps-psimd'::'git+https://github.com/Maratyszcza/psimd.git'
-        'caffe2-submodule-zstd'::'git+https://github.com/facebook/zstd.git'
-        'caffe2-submodule-cpuinfo'::'git+https://github.com/Maratyszcza/cpuinfo.git'
-        'caffe2-submodule-python-enum'::'git+https://github.com/PeachPy/enum34.git'
-        'caffe2-submodule-python-peachpy'::'git+https://github.com/Maratyszcza/PeachPy.git'
-        'caffe2-submodule-python-six'::'git+https://github.com/benjaminp/six.git'
-        'caffe2-submodule-ComputeLibrary'::'git+https://github.com/ARM-software/ComputeLibrary.git'
-        'caffe2-submodule-onnx'::'git+https://github.com/onnx/onnx.git'
-        'caffe2-submodule-onnx-tensorrt'::'git+https://github.com/onnx/onnx-tensorrt'
-        'caffe2-submodule-sleef'::'git+https://github.com/shibatch/sleef'
-        'caffe2-submodule-ideep'::'git+https://github.com/intel/ideep'
-        'caffe2-submodule-nccl'::'git+https://github.com/NVIDIA/nccl'
-        'caffe2-submodule-gemmlowp'::'git+https://github.com/google/gemmlowp.git'
-        'caffe2-submodule-QNNPACK'::'git+https://github.com/pytorch/QNNPACK'
-        'caffe2-submodule-neon2sse'::'git+https://github.com/intel/ARM_NEON_2_x86_SSE.git'
-        'caffe2-submodule-fbgemm'::'git+https://github.com/pytorch/fbgemm'
+        'git+https://github.com/pybind/pybind11.git'
+        'git+https://github.com/NVlabs/cub.git'
+        'git+https://github.com/eigenteam/eigen-git-mirror.git'
+        'git+https://github.com/google/googletest.git'
+        'git+https://github.com/google/benchmark.git'
+        'git+https://github.com/google/protobuf.git'
+        'git+https://github.com/Yangqing/ios-cmake.git'
+        'git+https://github.com/Maratyszcza/NNPACK.git'
+        'git+https://github.com/facebookincubator/gloo'
+        'git+https://github.com/Maratyszcza/pthreadpool.git'
+        'git+https://github.com/Maratyszcza/FXdiv.git'
+        'git+https://github.com/Maratyszcza/FP16.git'
+        'git+https://github.com/Maratyszcza/psimd.git'
+        'git+https://github.com/facebook/zstd.git'
+        'git+https://github.com/Maratyszcza/cpuinfo.git'
+        'git+https://github.com/PeachPy/enum34.git'
+        'git+https://github.com/Maratyszcza/PeachPy.git'
+        'git+https://github.com/benjaminp/six.git'
+        'git+https://github.com/ARM-software/ComputeLibrary.git'
+        'git+https://github.com/onnx/onnx.git'
+        'git+https://github.com/onnx/onnx-tensorrt'
+        'git+https://github.com/shibatch/sleef'
+        'git+https://github.com/intel/ideep'
+        'git+https://github.com/NVIDIA/nccl'
+        'git+https://github.com/google/gemmlowp.git'
+        'git+https://github.com/pytorch/QNNPACK'
+        'git+https://github.com/intel/ARM_NEON_2_x86_SSE.git'
+        'git+https://github.com/pytorch/fbgemm'
     # others:
-        'asmjit-git'::'git+https://github.com/asmjit/asmjit.git'
+        'git+https://github.com/asmjit/asmjit.git'
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -98,40 +99,42 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-    cd pytorch-git
+    cd "$_srcname"
     
     local _submodule
-    local _submodule_dir
-    
-    local _submodule_list="pybind11 cub eigen googletest benchmark protobuf ios-cmake \
-                           NNPACK gloo NNPACK_deps/pthreadpool NNPACK_deps/FXdiv \
-                           NNPACK_deps/FP16 NNPACK_deps/psimd zstd python-enum \
-                           python-peachpy python-six ComputeLibrary onnx onnx-tensorrt \
-                           sleef ideep QNNPACK neon2sse fbgemm"
+    local _submodule_list="pybind11 cub googletest benchmark protobuf ios-cmake \
+                           NNPACK gloo zstd ComputeLibrary onnx onnx-tensorrt \
+                           sleef ideep QNNPACK fbgemm"
                            
     git submodule init
     
-    git config --local 'submodule.third-party/cpuinfo.url' "${srcdir}/caffe2-submodule-cpuinfo"
+    # submodules which clone dir does not coincide with the submodule name
+    git config --local "submodule.third_party/eigen.url" "${srcdir}/eigen-git-mirror"
+    git config --local "submodule.third_party/NNPACK_deps/pthreadpool.url" "${srcdir}/pthreadpool"
+    git config --local "submodule.third_party/NNPACK_deps/FXdiv.url" "${srcdir}/FXdiv"
+    git config --local "submodule.third_party/NNPACK_deps/FP16.url" "${srcdir}/FP16"
+    git config --local "submodule.third_party/NNPACK_deps/psimd.url" "${srcdir}/psimd"
+    git config --local "submodule.third_party/python-enum.url" "${srcdir}/enum34"
+    git config --local "submodule.third_party/python-peachpy.url" "${srcdir}/PeachPy"
+    git config --local "submodule.third_party/python-six.url" "${srcdir}/six"
+    git config --local "submodule.third_party/neon2sse.url" "${srcdir}/ARM_NEON_2_x86_SSE"
+    git config --local "submodule.third_party/nccl/nccl.url" "${srcdir}/nccl"
+    git config --local "submodule.third_party/gemmlowp/gemmlowp.url" "${srcdir}/gemmlowp"
     
+    # submodules which clone dir coincide with the submodule name
     for _submodule in $_submodule_list
     do
-        _submodule_dir="caffe2-submodule-${_submodule/\//-}"
-        git config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule_dir}"
+        git config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule}"
     done
     
-    _submodule_list='nccl gemmlowp' # upstream names this submodules as nccl/nccl and gemmlowp/gemmlowp
-    
-    for _submodule in $_submodule_list
-    do
-        _submodule_dir="caffe2-submodule-${_submodule}"
-        git config --local "submodule.third_party/${_submodule}/${_submodule}.url" "${srcdir}/${_submodule_dir}"
-    done
+    # special case (upstream uses third.party instead of third_party)
+    git config --local 'submodule.third-party/cpuinfo.url' "${srcdir}/cpuinfo"
     
     git submodule update
 }
 
 pkgver() {
-    cd pytorch-git
+    cd "$_srcname"
     
     local _version
     local _revision
@@ -145,11 +148,11 @@ pkgver() {
 }
 
 build() {
-    cd pytorch-git
+    cd "$_srcname"
     
     export TORCH_CUDA_ARCH_LIST='Auto'
     local _pythonver
-    _pythonver="$(python --version | awk '{ print $2 }' | grep -o '^[0-9]*\.[0-9]*')"
+    _pythonver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     
     mkdir -p build
     cd build
@@ -162,7 +165,7 @@ build() {
         -DBUILD_PYTHON:BOOL='ON' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         \
-        -DBUILD_TEST:BOOL='OFF' \
+        -DBUILD_TEST:BOOL='ON' \
         \
         -DCMAKE_CXX_COMPILER='/usr/bin/g++-7' \
         -DCMAKE_C_COMPILER='/usr/bin/gcc-7' \
@@ -182,7 +185,7 @@ build() {
         -DGLOO_STATIC_OR_SHARED:STRING='STATIC' \
         \
         -DOpenCV_DIR:PATH='/usr/share/OpenCV' \
-        -DASMJIT_SRC_DIR:STRING="${srcdir}/asmjit-git" \
+        -DASMJIT_SRC_DIR:STRING="${srcdir}/asmjit" \
         \
         -DPYTHON_EXECUTABLE:FILEPATH="/usr/bin/python${_pythonver}" \
         -DPYTHON_INCLUDE_DIR:PATH="/usr/include/python${_pythonver}m" \
@@ -238,8 +241,14 @@ build() {
     make
 }
 
+check() {
+    cd "${_srcname}/build"
+    
+    make test
+}
+
 package() {
-    cd pytorch-git/build
+    cd "${_srcname}/build"
     
     make DESTDIR="$pkgdir" install
     
@@ -262,7 +271,7 @@ package() {
     done
     
     # license
-    cd "${srcdir}/pytorch-git"
+    cd "${srcdir}/${_srcname}"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
