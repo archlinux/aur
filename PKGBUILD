@@ -2,7 +2,7 @@
 # Maintainer: Parker Johansen <johansen.parker@gmail.com>
 pkgname=inkdrop
 _pkgname=inkdrop
-pkgver=3.22.4
+pkgver=3.23.0
 pkgrel=1
 pkgdesc="Note-taking App with Robust Markdown Editor"
 arch=('x86_64')
@@ -18,7 +18,7 @@ md5sums=(
     'af55c435a39d56a0b9e6ffe03683d340'
 )
 source_x86_64=(${_pkgname}-${pkgver}.zip::https://d3ip0rje8grhnl.cloudfront.net/v${pkgver}/Inkdrop-${pkgver}-Linux.zip)
-md5sums_x86_64=('66252bab2ab888cccd2af2c0ef16c297')
+md5sums_x86_64=('c26d23615c2a066780b1e097fbc41a4f')
 
 package() {
     mkdir -p ${pkgdir}/usr/lib/inkdrop ${pkgdir}/usr/share/pixmaps ${pkgdir}/usr/share/applications ${pkgdir}/usr/bin
