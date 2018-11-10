@@ -5,13 +5,13 @@
 
 _name=kickthemout
 pkgname=${_name}-git
-pkgver=0.1.r110.g0099733
-pkgrel=1
+pkgver=0.1.r151.g0f32988
+pkgrel=2
 pkgdesc="Kick devices off your network by performing an ARP Spoof attack."
 arch=('any')
 url="https://github.com/k4m4/${_name}"
 license=('MIT')
-depends=('python2' 'scapy' 'python2-nmap')
+depends=('python' 'kamene' 'python-nmap')
 makedepends=('git')
 source=("git+$url.git")
 md5sums=('SKIP')
