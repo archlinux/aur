@@ -10,13 +10,13 @@
 
 pkgname=rednotebook-git
 _gitname="rednotebook"
-pkgver=v2.3.r29.g4090d637
+pkgver=v2.7.r1.g3fed3868
 pkgrel=1
 pkgdesc="A simple desktop diary."
 arch=('any')
 url="http://rednotebook.sourceforge.net"
 license=('GPL2')
-depends=('python-yaml' 'webkit2gtk' 'hicolor-icon-theme' 'python-gobject')
+depends=('python-yaml' 'webkit2gtk' 'hicolor-icon-theme' 'python-gobject' 'gtksourceview3')
 optdepends=('python-pyenchant: for spellchecking')
 provides=('rednotebook')
 conflicts=('rednotebook')
