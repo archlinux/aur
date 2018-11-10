@@ -1,7 +1,7 @@
 # random
 #### A random number generator written in C.
 
-[![Build Status](https://travis-ci.org/fakeDeathBRX/random.svg?branch=master)](https://travis-ci.org/fakeDeathBRX/random)
+[![Build Status](https://travis-ci.org/joseivanchechen/random.svg?branch=master)](https://travis-ci.org/joseivanchechen/random)
 
 ----------
 
