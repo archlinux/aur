@@ -12,6 +12,7 @@ pkgbase = gnonograms-git
 	depends = gtk3
 	depends = vala
 	depends = granite
+	depends = appstream
 	provides = gnonograms
 	conflicts = gnonograms
 	source = git+https://github.com/jeremypw/gnonograms.git
