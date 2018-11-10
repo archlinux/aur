@@ -1,0 +1,21 @@
+pkgbase = iconoscope-git
+	pkgdesc = Explore the system's icon theme database written in Vala designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/santileortiz/Iconoscope
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	provides = iconoscope
+	conflicts = iconoscope
+	source = git+https://github.com/santileortiz/Iconoscope.git
+	md5sums = SKIP
+
+pkgname = iconoscope-git
+
