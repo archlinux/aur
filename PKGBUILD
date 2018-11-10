@@ -4,7 +4,7 @@
 
 pkgname=duplicati-latest
 pkgver=2.0.3.14
-pkgrel=1
+pkgrel=2
 _date=2018-11-08
 _branch=canary
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
@@ -16,7 +16,7 @@ source=(https://github.com/duplicati/duplicati/releases/download/v${pkgver}-${pk
 	duplicati.service
 	duplicati.sysusers
 	duplicati-cli)
-sha256sums=('826c8433f53a98289fcadf81830956e0fccf2d1d756a6046e032139d8a6bedb8'
+sha256sums=('a9c0fb929139a15b338a14e87776b26aadacb694356d02ce56d2ae2c188b1445'
             '2eb973cef79731d407bfbc83f754cef588c62ec83dae2112ac93f9c9f0baa403'
             '499eb63532bcad50b897c0874b723eebc6693816fcb9626532f367b5ff51da70'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
