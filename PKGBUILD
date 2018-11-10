@@ -2,7 +2,7 @@
 # Co-Maintainer: Sneljo <jonas.snellinckx@gmail.com
 
 pkgname="auryo-bin"
-pkgver=
+pkgver=2.1.2
 pkgrel=2
 pkgdesc="A SoundCloud client for your desktop."
 arch=("x86_64")
