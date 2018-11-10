@@ -5,11 +5,11 @@ _wafver=2.0.9
 
 pkgname=mpv-full
 pkgver=0.29.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
-url='http://mpv.io/'
+url='https://mpv.io/'
 depends=(
     # official repositories:
         'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
