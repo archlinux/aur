@@ -1,3 +1,9 @@
+2018-11-10 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
+
+  * 5.6.2-2:
+  fix for sunstone not being able to read main.js
+  change pid file location from legacy /var/run/one to /run/one
+
 2018-10-21 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
 
   * 5.6.2-1:

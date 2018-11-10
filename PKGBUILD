@@ -8,7 +8,7 @@
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
 pkgver=5.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
 url='http://docs.opennebula.org/stable'
@@ -105,21 +105,20 @@ source=("https://github.com/OpenNebula/one/archive/release-${pkgver}.tar.gz"
         'set_locations.patch'
         'fix_kvm_emulator.patch'
         'opennebula.install')
-md5sums=('3ef5bcdefad9f37ae444e8f5b86ddd06' #package
-            '6d4b3b7c89371c2bd086525a6b5a0027' #opennebula.service
-            'b576f9dd30d62dc4b3090878561ed3e6' #opennebula-scheduler.service
-            'c56b5f98dc9df8677761de70e0e6a1be' #opennebula-sunstone.service
-            'e0d276ff2a885679ac6a227e2e592509' #opennebula-econe.service
-            'bdccd7529afc2d87bcc3361c72259db2' #opennebula-oneflow.service
-            'cb945dde4dbabde055d63bb59bff4cd4' #opennebula-onegate.service
-            '3c38e24ef93de0982737f3dabbb9d251' #opennebula-novnc.service
-            '8cbcd7b189f191554e5722a087a4fa22' #opennebula.conf
-            '2f1c73538c52324c224684072ea7877b' #opennebula.logrotate
-            'cd272404aba91a27cf89ce22364e51b4' #chown_fix.patch
-            'bab6415dd2437c6dfdadad90efedeff3' #set_locations.patch
-            '680931b4555ea25a17ea8c20b382d175' #fix_kvm_emulator.patch
-            'ef157cdab2befdd7a38985297d2c5a23' #opennebula.install
-            )
+md5sums=('3ef5bcdefad9f37ae444e8f5b86ddd06'
+         '69c4374554ae689c44b0ef8c0a31b911'
+         '74bc0a908441063a44cb134449564db1'
+         'f207636bd04a621f20b14a37c6ad49b7'
+         '91d608d9576dc800a12597135ad0203d'
+         '773c9f257b8a367ad4b4ca7694294460'
+         '63b217d32a279adbb50b68106cc83578'
+         '3c38e24ef93de0982737f3dabbb9d251'
+         '05f58094a1d132f2164599e068158cd7'
+         '2f1c73538c52324c224684072ea7877b'
+         'cd272404aba91a27cf89ce22364e51b4'
+         'bab6415dd2437c6dfdadad90efedeff3'
+         '680931b4555ea25a17ea8c20b382d175'
+         '073b8bce1b12201658b9745ba7ad2e66')
 
 prepare() {
   cd "one-release-${pkgver}"

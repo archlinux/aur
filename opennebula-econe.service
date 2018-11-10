@@ -9,7 +9,7 @@ Group=cloud
 Type=simple
 
 ExecStart=/usr/bin/ruby /usr/lib/one/ruby/cloud/econe/econe-server.rb
-PIDFile=/var/run/one/econe-server.pid
+PIDFile=/run/one/econe-server.pid
 Restart=always
 
 [Install]

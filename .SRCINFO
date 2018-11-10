@@ -1,7 +1,7 @@
 pkgbase = opennebula
 	pkgdesc = Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)
 	pkgver = 5.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docs.opennebula.org/stable
 	install = opennebula.install
 	changelog = ChangeLog
@@ -99,19 +99,19 @@ pkgbase = opennebula
 	source = fix_kvm_emulator.patch
 	source = opennebula.install
 	md5sums = 3ef5bcdefad9f37ae444e8f5b86ddd06
-	md5sums = 6d4b3b7c89371c2bd086525a6b5a0027
-	md5sums = b576f9dd30d62dc4b3090878561ed3e6
-	md5sums = c56b5f98dc9df8677761de70e0e6a1be
-	md5sums = e0d276ff2a885679ac6a227e2e592509
-	md5sums = bdccd7529afc2d87bcc3361c72259db2
-	md5sums = cb945dde4dbabde055d63bb59bff4cd4
+	md5sums = 69c4374554ae689c44b0ef8c0a31b911
+	md5sums = 74bc0a908441063a44cb134449564db1
+	md5sums = f207636bd04a621f20b14a37c6ad49b7
+	md5sums = 91d608d9576dc800a12597135ad0203d
+	md5sums = 773c9f257b8a367ad4b4ca7694294460
+	md5sums = 63b217d32a279adbb50b68106cc83578
 	md5sums = 3c38e24ef93de0982737f3dabbb9d251
-	md5sums = 8cbcd7b189f191554e5722a087a4fa22
+	md5sums = 05f58094a1d132f2164599e068158cd7
 	md5sums = 2f1c73538c52324c224684072ea7877b
 	md5sums = cd272404aba91a27cf89ce22364e51b4
 	md5sums = bab6415dd2437c6dfdadad90efedeff3
 	md5sums = 680931b4555ea25a17ea8c20b382d175
-	md5sums = ef157cdab2befdd7a38985297d2c5a23
+	md5sums = 073b8bce1b12201658b9745ba7ad2e66
 
 pkgname = opennebula
 

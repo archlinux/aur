@@ -12,7 +12,7 @@ Type=simple
 PermissionsStartOnly=true
 
 ExecStart=/usr/bin/ruby /usr/lib/one/sunstone/sunstone-server.rb
-PIDFile=/var/run/one/sunstone.pid
+PIDFile=/run/one/sunstone.pid
 Restart=always
 
 [Install]

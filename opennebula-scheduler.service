@@ -10,7 +10,7 @@ Type=simple
 
 ExecStart=/usr/bin/mm_sched
 ExecStop=/bin/kill -TERM $MAINPID
-PIDFile=/var/run/one/sched.pid
+PIDFile=/run/one/sched.pid
 Restart=always
 
 [Install]

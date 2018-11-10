@@ -22,7 +22,7 @@ ExecStartPre=-/usr/bin/logrotate -s /tmp/logrotate.state -f /etc/logrotate.d/ope
 ExecStop=/bin/kill -TERM $MAINPID
 ExecStopPost=/usr/bin/rm -f /var/lock/one/one
 ExecStopPost=/usr/share/one/follower_cleanup
-PIDFile=/var/run/one/oned.pid
+PIDFile=/run/one/oned.pid
 Restart=always
 
 [Install]

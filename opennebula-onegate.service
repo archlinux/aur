@@ -9,7 +9,7 @@ Group=cloud
 Type=simple
 
 ExecStart=/usr/bin/ruby /usr/lib/one/onegate/onegate-server.rb
-PIDFile=/var/run/one/onegate.pid
+PIDFile=/run/one/onegate.pid
 Restart=always
 
 [Install]
