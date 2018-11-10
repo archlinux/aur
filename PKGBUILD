@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-abc-qt
 pkgver=0.18.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Bitcoin ABC with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoinabc.org"
@@ -16,7 +16,7 @@ source=(https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v$pkgver.tar.gz
         bitcoin-reindex.service
         bitcoin.install
         qt.patch)
-sha256sums=('48db5fd2bdf2a7a719d5dec90187bcfae1becf00d808ccb895063a68344b652a'
+sha256sums=('2c991b7a93669d38908fd5b346841bd23d8af58265c20a410f1403ec9e4cd48c'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
