@@ -9,12 +9,12 @@
 
 pkgname=rednotebook
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple desktop diary."
 arch=('any')
 url="http://rednotebook.sourceforge.net"
 license=('GPL2')
-depends=('python-yaml' 'webkit2gtk' 'hicolor-icon-theme' 'python-gobject')
+depends=('python-yaml' 'webkit2gtk' 'hicolor-icon-theme' 'python-gobject' 'gtksourceview3')
 optdepends=('python-pyenchant: for spellchecking')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('ea9ff2fb327b34eb3c6410144f80363eb24ea3dcbffd9b0674cc481953518dd3')
