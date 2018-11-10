@@ -1,6 +1,6 @@
 pkgbase = etcher-git
 	pkgdesc = Burn images to SD cards & USB drives, safe & easy (git version)
-	pkgver = 1.4.6.r0.g3f8d2e42
+	pkgver = 1.4.6.r9.g15951509
 	pkgrel = 1
 	url = https://www.balena.io/etcher/
 	arch = x86_64
