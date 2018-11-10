@@ -1,41 +1,41 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flatcc
-pkgver=0.4.3
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="FlatBuffers Compiler and Library in C for C"
 arch=('i686' 'x86_64')
-makedepends=('cmake' 'make')
+makedepends=('cmake')
 url="https://github.com/dvidelabs/flatcc"
 license=('Apache')
 options=('staticlibs')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/dvidelabs/$pkgname/tar.gz/v$pkgver)
-sha256sums=('c0e9e40ddf90caa0cfefc3f3ce73713e6b9ac5eba4b2e946ae20dee0a559f82e')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dvidelabs/flatcc/archive/v${pkgver}.tar.gz")
+sha256sums=('02dac93d3daf8d0a290aa8711a9b8a53f047436ec5331adb1972389061ec6615')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  msg2 'Building...'
-  mkdir -p build/install && cd build/install
+  mkdir -p build && cd build
+
   cmake \
-    ../.. \
     -DBUILD_SHARED_LIBS=on \
     -DFLATCC_ALLOW_WERROR=off \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DFLATCC_INSTALL=on
+    -DFLATCC_INSTALL=on \
+    ..
+
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  msg2 'Installing license...'
-  install -Dm 644 LICENSE NOTICE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  msg2 'Installing documentation...'
-  install -Dm 644 *.md doc/* -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 *.md doc/* -t "${pkgdir}/usr/share/doc/${pkgname}"
 
-  msg2 'Installing...'
-  make DESTDIR="$pkgdir" install -C build/install/
+  cd build
+  make DESTDIR="${pkgdir}" install
 }
