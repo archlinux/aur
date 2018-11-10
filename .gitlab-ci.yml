@@ -9,6 +9,7 @@ package:
   artifacts:
     paths:
     - pkg/
+    - godot2-*.tar.xz
     expire_in: 2 days
 
 
