@@ -3,7 +3,7 @@
 # Contributor: Mael Kerbiriou <mael.kerbiriouATfreeDOTfr>
 pkgname=pfstools
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of command line programs for reading, writing and manipulating high-dynamic range (HDR) images"
 arch=('i686' 'x86_64')
 url="http://pfstools.sourceforge.net/"
@@ -11,9 +11,8 @@ license=('LGPL2.1')
 depends=('gcc-libs')
 provides=('pfscalibration' 'pfstmo')
 conflicts=('pfscalibration' 'pfstmo')
-optdepends=('freeglut: OpenGL image viewer' 'glu: OpenGL image viewer' \
-            'qt4: Qt GUI' \
-            'opencv: pfsalign' \
+optdepends=('freeglut: OpenGL image viewer pfsglview' 'glu: OpenGL image viewer pfsglview' \
+            'opencv: pfsalign' 'gtk3: pfsalign' \
             'openexr: OpenEXR support' \
             'imagemagick: ImageMagick support' \
             'netpbm: PBM support' \
@@ -23,7 +22,7 @@ optdepends=('freeglut: OpenGL image viewer' 'glu: OpenGL image viewer' \
 makedepends=('cmake' \
              'openexr' 'libmagick6' 'libtiff' 'netpbm' \
              'gsl' 'fftw' 'libexif' 'opencv'
-             'freeglut' 'glu' 'qt4' 'gtkglext')
+             'freeglut' 'glu' 'gtkglext' 'gtk3')
 options=(!libtool)
 source=("http://downloads.sourceforge.net/pfstools/$pkgname-$pkgver.tgz"
         "opencv3.patch" "force_imagemagick6.patch")
