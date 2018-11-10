@@ -3,7 +3,7 @@
 
 _pkgname=etcher
 pkgname=etcher-git
-pkgver=1.4.6.r0.g3f8d2e42
+pkgver=1.4.6.r9.g15951509
 pkgrel=1
 pkgdesc='Burn images to SD cards & USB drives, safe & easy (git version)'
 arch=(x86_64)
@@ -59,7 +59,7 @@ package() {
   install -d "$_appdir"
 
   install package.json "$_appdir"
-  cp -a {lib,build,generated,node_modules} "$_appdir"
+  cp -a {lib,generated,node_modules} "$_appdir"
   install -D assets/icon.png "$_appdir"/assets/icon.png
   install -D lib/gui/app/index.html "$_appdir"/lib/gui/app/index.html
 
