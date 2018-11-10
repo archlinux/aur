@@ -1,7 +1,7 @@
 pkgbase = confu-git
 	pkgdesc = Cross-platform C/C++ configuration system (git version, uses python3)
 	pkgver = r41.5030e44
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Maratyszcza/confu/
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = confu-git
 	makedepends = python2-yaml
 	makedepends = python-ninja-syntax
 	makedepends = python2-ninja-syntax
-	source = confu-git::git+https://github.com/Maratyszcza/confu.git
+	source = git+https://github.com/Maratyszcza/confu.git
 	sha256sums = SKIP
 
 pkgname = confu-git

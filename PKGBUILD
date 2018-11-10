@@ -3,9 +3,8 @@
 pkgbase=confu-git
 pkgname=('confu-git' 'confu2-git')
 _srcname=confu
-_srcname2=confu2
 pkgver=r41.5030e44
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform C/C++ configuration system (git version, uses python3)'
 arch=('any')
 url='https://github.com/Maratyszcza/confu/'
@@ -18,15 +17,15 @@ makedepends=(
     # AUR:
         'python-ninja-syntax' 'python2-ninja-syntax'
 )
-source=("$pkgname"::'git+https://github.com/Maratyszcza/confu.git')
+source=('git+https://github.com/Maratyszcza/confu.git')
 sha256sums=('SKIP')
 
 prepare() {
-    cp -a "$pkgbase" "${pkgbase}-py2"
+    cp -a "$_srcname" "${_srcname}-py2"
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, no tags available
     printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -34,14 +33,14 @@ pkgver() {
 
 build() {
     printf '%s\n' '  -> Building for Python3...'
-    cd "${pkgname}"
+    cd "${_srcname}"
     python setup.py build
-    python setup.py build_sphinx --all-files --source-dir="${srcdir}/${pkgbase}/sphinx"
+    python setup.py build_sphinx --all-files --source-dir="${srcdir}/${_srcname}/sphinx"
     
     printf '%s\n' '  -> Building for Python2...'
-    cd "${srcdir}/${pkgname}-py2"
+    cd "${srcdir}/${_srcname}-py2"
     python2 setup.py build
-    python2 setup.py build_sphinx --all-files --source-dir="${srcdir}/${pkgbase}-py2/sphinx"
+    python2 setup.py build_sphinx --all-files --source-dir="${srcdir}/${_srcname}-py2/sphinx"
 }
 
 package_confu-git() {
@@ -52,12 +51,12 @@ package_confu-git() {
             'python-ninja-syntax'
     )
     
-    cd "$pkgbase"
+    cd "$_srcname"
     python setup.py install --root="$pkgdir" --optimize=1
     
     # doc
-    mkdir -p "${pkgdir}/usr/share/doc/${_srcname}"
-    cp -a "${srcdir}/${pkgbase}/build/sphinx/html/"* "${pkgdir}/usr/share/doc/${_srcname}"
+    mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+    cp -a "${srcdir}/${_srcname}/build/sphinx/html/"* "${pkgdir}/usr/share/doc/${pkgname}"
     
     # license
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -73,7 +72,7 @@ package_confu2-git() {
             'python2-ninja-syntax'
     )
     
-    cd "${pkgbase}-py2"
+    cd "${_srcname}-py2"
     python2 setup.py install --root="$pkgdir" --optimize=1
     mv "${pkgdir}/usr/bin/confu" "${pkgdir}/usr/bin/confu2"
     
@@ -81,8 +80,8 @@ package_confu2-git() {
     sed -i '1s/python$/python2/' "${pkgdir}/usr/lib/python2.7/site-packages/confu/recipes/"*.py
     
     # doc
-    mkdir -p "${pkgdir}/usr/share/doc/${_srcname2}"
-    cp -a "${srcdir}/${pkgbase}-py2/build/sphinx/html/"* "${pkgdir}/usr/share/doc/${_srcname2}"
+    mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+    cp -a "${srcdir}/${_srcname}-py2/build/sphinx/html/"* "${pkgdir}/usr/share/doc/${pkgname}"
     
     # license
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
