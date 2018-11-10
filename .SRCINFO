@@ -1,7 +1,7 @@
 pkgbase = sfgui
 	pkgdesc = Graphical user interface (GUI) library for programs that use SFML for rendering
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TankOs/SFGUI
 	arch = x86_64
 	license = ZLIB

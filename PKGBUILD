@@ -2,7 +2,7 @@
 
 pkgname=sfgui
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical user interface (GUI) library for programs that use SFML for rendering"
 arch=(x86_64)
 url="https://github.com/TankOs/SFGUI"
@@ -25,6 +25,9 @@ build() {
 package() {
     cd build
     make DESTDIR="$pkgdir/" install
+
+    # fix case mismatch issue on library name
+    mv $pkgdir/usr/lib/lib{${pkgname^^},${pkgname}}.so
 
     cd "../${pkgname^^}-$pkgver"
     install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE.md
