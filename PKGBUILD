@@ -1,26 +1,26 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: David Vogt <dave at winged dot ch>
 
 pkgname=rst2ctags
-pkgver=0.1.5
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="A simple script to help create ctags-compatible tag files for the sections within a reStructuredText document"
+pkgdesc='Generates ctags-compatible output for the sections of a reStructuredText document'
 arch=('any')
-depends=('python2')
-url="https://github.com/jszakmeister/rst2ctags"
+url=https://github.com/jszakmeister/rst2ctags
 license=('BSD')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/jszakmeister/$pkgname/tar.gz/v$pkgver)
-sha256sums=('6dc874684e04a81101ff2eda5341354f1b3134503d2d0153c1ee12e0beb6ff84')
+depends=('python')
+makedepends=('python-setuptools')
+source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha512sums=('feba8122592b962692b9cce321375b5807ba4e283404ae0876d2c4e429bef4b88753c7f55f8b483a05536347abefde8d6a6f6e93ef9999e920f02a5ae43d5b50')
+
+build() {
+  cd $pkgname-$pkgver
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Installing license...'
-  install -Dm 644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
-
-  msg2 'Installing documentation...'
-  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
-
-  msg2 'Installing...'
-  install -Dm 755 rst2ctags.py "$pkgdir/usr/bin/rst2ctags"
+  cd $pkgname-$pkgver
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
