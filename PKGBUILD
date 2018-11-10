@@ -1,18 +1,25 @@
-# Maintainer: Joel Teichroeb <joel@teichroeb.net>
+# Maintainer: Vincent Grande <shoober420@gmail.com>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Jan de Groot
 
 pkgname=libinput-git
-pkgver=1.9.1.r66.g43de03a0
+pkgver=1.12.3.r8.g51ffff36
 pkgrel=1
-pkgdesc='Input device management and event handling library'
-arch=(i686 x86_64)
-url='http://freedesktop.org/wiki/Software/libinput/'
-provides=("libinput=${pkgver}")
-license=('MIT')
+pkgdesc="Input device management and event handling library"
+url="https://www.freedesktop.org/wiki/Software/libinput/"
+arch=(x86_64)
+license=(custom:X11)
 depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
-makedepends=('git' 'meson' 'doxygen' 'graphviz' 'gtk3')
+provides=('libinput')
 conflicts=('libinput')
-source=(git://anongit.freedesktop.org/wayland/libinput)
-sha1sums=('SKIP')
+# upstream doesn't recommend building docs
+makedepends=('gtk3' 'meson') # 'doxygen' 'python-sphinx' 'python-recommonmark'
+optdepends=('gtk3: libinput debug-gui'
+            'python-pyudev: libinput measure'
+            'python-evdev: libinput measure')
+source=(git+https://gitlab.freedesktop.org/libinput/libinput)
+sha512sums=('SKIP')
+validpgpkeys=('SKIP') # Peter Hutterer (Who-T) <office@who-t.net>
 
 pkgver() {
 	cd libinput
@@ -20,17 +27,16 @@ pkgver() {
 }
 
 build() {
-	cd libinput
-	meson build --prefix=/usr \
-	      --buildtype=release \
-	      --libexecdir=/usr/lib \
-	      -Dtests=false
-	ninja -C build
+  arch-meson libinput build \
+    -Dudev-dir=/usr/lib/udev \
+    -Dtests=false \
+    -Ddocumentation=false
+  ninja -C build
 }
 
 package() {
-	cd libinput
-	DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build install
 
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dvm644 libinput/COPYING \
+    "$pkgdir/usr/share/licenses/libinput/LICENSE"
 }
