@@ -1,7 +1,7 @@
 pkgbase = ssb-patchwork
 	pkgdesc = A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)
-	pkgver = 3.11.3
-	pkgrel = 2
+	pkgver = 3.11.4
+	pkgrel = 1
 	url = https://github.com/ssbc/patchwork
 	arch = i686
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = ssb-patchwork
 	depends = nss
 	depends = electron
 	options = !strip
-	source = https://github.com/ssbc/patchwork/archive/v3.11.3.tar.gz
+	source = https://github.com/ssbc/patchwork/archive/v3.11.4.tar.gz
 	source = run.sh
 	source = ssb-patchwork.desktop
-	sha512sums = 09b9bb41e6b8fdd987051727225c9d24acae03f4e284b5495e7f3d85c69011d13f892f253bf8dad05f8c35edbcba3ae809931f74a5cf4d540d7b5604026d27bd
+	sha512sums = 19a0a73b059bed3ff57c10067455bcfd357fa4e56e763814650b7b2cd22f1992d53e9cade5a61ceb03bbbc031c436d7f307038aab0d1f6e7160c5e461709a47d
 	sha512sums = 0df1ea65d60742d82ef04bea84376380cad03d3cd4ffb326374578f9f9954ad326b19fc81162ae838c10ae45acdd236c37731b68ca535cbbe7ddf4b69266c33c
 	sha512sums = 09292ec2f7c02d741cbeb046bd99293f4d144314d0233252dd34a619e1aacbbbf28078677c0871d367240e29aa50d9197bbe0a35e5b14f7ff9a6288c386124f6
 
