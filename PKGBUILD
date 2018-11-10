@@ -3,7 +3,7 @@
 
 pkgname=t1lib
 pkgver=5.1.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Library for generating character- and string-glyphs from Adobe Type 1 fonts"
 arch=('x86_64')
 url="https://www.ibiblio.org/pub/Linux/libs/graphics/!INDEX.html"
