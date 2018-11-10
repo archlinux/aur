@@ -1,9 +1,10 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 # Contributor: Taran Lynn <taranlynn0@gmail.com>
+# Contributor: Derek Hawker <derekhawker+aur@gmail.com>
 _srcname=crawl
 pkgname=crawl-tiles
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Dungeon Crawl Stone Soup with graphical tiles and sound support"
 arch=('i686' 'x86_64')
@@ -28,14 +29,15 @@ source=("https://github.com/crawl/$_srcname/archive/$pkgver.tar.gz")
 md5sums=('097b897d53f42f0ed2aff13ff1746738')
 
 getCRAWLOPT() {
-	CRAWLOPT="
-	prefix=/usr
-	bin_prefix=bin
-	DESTDIR=$pkgdir
-	SAVEDIR='~/.crawl'
-	LUA_PACKAGE=lua51
-	TILES=y
-	SOUND=y"
+	CRAWLOPT=(
+		prefix=/usr
+		bin_prefix=bin
+		DESTDIR=$pkgdir
+		SAVEDIR='~/.crawl'
+		LUA_PACKAGE=lua51
+		TILES=y
+		SOUND=y
+	)
 }
 
 prepare() {
@@ -50,7 +52,7 @@ build() {
 	cd "$_srcname-$pkgver/crawl-ref/source"
 
 	getCRAWLOPT
-	make $CRAWLOPT
+	make "${CRAWLOPT[@]}"
 }
 
 # Tests cannot be run without a debug build.
@@ -66,7 +68,7 @@ package() {
 	cd "$_srcname-$pkgver/crawl-ref/source"
 
 	getCRAWLOPT
-	make install $CRAWLOPT
+	make install "${CRAWLOPT[@]}"
 	# Crawl now creates the save directory in /usr for some reason...
 	rm -rf $pkgdir/usr/\~/
 	install -Dm644 "dat/tiles/stone_soup_icon-32x32.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
