@@ -1,0 +1,14 @@
+pkgbase = sfgui
+	pkgdesc = Graphical user interface (GUI) library for programs that use SFML for rendering
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/TankOs/SFGUI
+	arch = x86_64
+	license = ZLIB
+	makedepends = cmake
+	depends = sfml
+	source = https://github.com/TankOs/SFGUI/archive/0.4.0.tar.gz
+	sha256sums = 2dfe95a2ecfed12ab2d4c591fbf6b10d16bbdedec2530545b4c2140ab01c05dc
+
+pkgname = sfgui
+
