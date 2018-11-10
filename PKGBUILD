@@ -2,7 +2,7 @@
 # Maintainer: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 
 pkgname=ckb-next-git
-pkgver=0.3.2.r1.g487d2d9
+pkgver=0.3.2.r13.g448f337
 pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, git master branch"
@@ -33,6 +33,7 @@ build() {
   cmake -H. -Bbuild                  \
     -DCMAKE_INSTALL_PREFIX="/usr"    \
     -DCMAKE_BUILD_TYPE="Release"     \
+    -DCMAKE_INSTALL_LIBDIR="lib"     \
     -DCMAKE_INSTALL_LIBEXECDIR="lib" \
     -DDISABLE_UPDATER=1
   cmake --build build --target all
