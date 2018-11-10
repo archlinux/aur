@@ -3,7 +3,7 @@
 
 pkgname=libcryptui
 pkgver=3.12.2+24+gd5e5bc5
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for OpenPGP prompts"
 url="https://gitlab.gnome.org/GNOME/libcryptui"
 arch=(x86_64)
