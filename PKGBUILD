@@ -3,7 +3,7 @@
 pkgname='popcorntime-ce-bin'
 _pkgname='popcorntime-ce'
 pkgver='0.4.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Stream movies from torrents. Skip the downloads. Launch, click, watch. Repos of the original community edition.'
 arch=('x86_64' 'i686')
 url='http://www.popcorn-time.is/'
@@ -14,9 +14,9 @@ provides=('popcorntime' 'popcorntime-ce')
 conflicts=('popcorntime-ce' 'popcorntime-ce-git')
 options=('!strip')
 install='popcorntime-ce.install'
-md5sums=('21693efbd20f41198b8ebb80e5e81588'
-         'b8996810c9862bd9b41880b82055073f'
-         '53367e600bad6229b200ed4478f8fcbb')
+sha256sums=('24ae13d504dc8b7272b69fc01deb43099c2c05aef79cd25a62648665660c7486'
+            '5e56fd2ee1cf723ef61e997c2e2152d9070c274e3fce2266f843d1aaf3176389'
+            'e1a4a20c34b3642cef77586195491b317e46a5452b9bbe7bc478f4da983812ce')
 
 _platform='64bit'
 
