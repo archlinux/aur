@@ -1,9 +1,9 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 # Contributor: 
 
+_author=tkashkin
 _gitname=GameHub
 _auxname=gamehub
-_author=tkashkin
 pkgname=("${_auxname}-git")
 pkgver=latest
 pkgrel=1
@@ -12,7 +12,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'vala' 'granite'
-         'glib2' 'libgee' 'libsoup' 'json-glib' 'sqlite' 'webkit2gtk')
+         'file-roller' 'glib2' 'libmanette' 'libgee' 'libsoup' 'libxtst' 
+         'libxml2' 'libx11' 'json-glib' 'sqlite' 'webkit2gtk')
 optdepends=('lib32-json-glib')
 makedepends=('git' 'meson' 'ninja')
 provides=("${_auxname}")
