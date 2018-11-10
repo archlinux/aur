@@ -6,10 +6,10 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=60.2.0
+pkgver=60.3.0
 _pkgver=${pkgver}-gnu1
 _pkgverbase=${pkgver%%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc="GNU version of the Firefox browser."
 arch=(i686 x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -29,18 +29,16 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 [ "$_CLANG" ] && [ "$_CLANG" -eq "1" ] && makedepends+=(clang)
 
 #source=(http://ftpmirror.gnu.org/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}
-#source=(https://ftp.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}      ## Main upstream download site
+source=(https://ftp.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}      ## Main upstream download site
 #source=(https://mirrors.kernel.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2      ## Good mirror
 #source=(http://jenkins.trisquel.info/icecat/${pkgname}-${_pkgver}.tar.bz2      ## Official developer (Ruben Rodriguez) site. Probably only has developer releases.
-source=(http://alpha.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}
-        icecat.desktop icecat-safe.desktop
-        0000-rust-1.29.patch)
+#source=(http://alpha.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2{,.sig}
+        icecat.desktop icecat-safe.desktop)
 
-sha256sums=('f40746f1c44b4ae3e5ae6da9d30efbdb78abb9d37864097320a9849ece3b1d53'
+sha256sums=('6145327092b4b195a4f63d0e86f4857eeba5607ffeb69b6f3bceb36e89a19645'
             'SKIP'
             'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
-            '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
-            'ce243b1e835651723d2186709fcd5218ad050ff56550c3ef25e23c718a69497b')
+            '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303')
 
 validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
@@ -52,11 +50,7 @@ prepare() {
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME)-devel;g' -i config/baseconfig.mk
 
-  # Bug 1479540 - Accept "triplet" strings with only two parts in moz.configure
-  # https://hg.mozilla.org/mozreview/gecko/rev/e820a3a4ce2284ecd2992dc827fedc357b75eeb7#index_header
-  patch -Np1 -i ../0000-rust-1.29.patch
-
-   printf '%b' "  \e[1;36m->\e[0m\033[1m Starting build...\n"
+  printf '%b' "  \e[1;36m->\e[0m\033[1m Starting build...\n"
   
   cat >.mozconfig <<END
 ac_add_options --enable-application=browser
