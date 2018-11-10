@@ -2,18 +2,18 @@
 
 pkgname=ufiformat
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="USB floppy disk format utility"
 arch=('i686' 'x86_64')
-url="http://www.geocities.jp/tedi_world/format_usbfdd_e.html"
+url="https://github.com/tedigh/ufiformat/"
 license=('GPL')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=()
 makedepends=()
 options=()
-source=('http://www.geocities.jp/tedi_world/ufiformat-0.9.9.tar.gz')
-md5sums=('18e41a189b81b1599a38ce8640698b7f')
+source=('https://github.com/tedigh/ufiformat/archive/v0.9.9.tar.gz')
+md5sums=('9a5766b70c469732624d6f7d7941be7d')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
