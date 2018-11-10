@@ -1,6 +1,6 @@
 # Maintainer: NexAdn <nexadn@yandex.com>
 pkgname=cef-minimal
-pkgver=3.3497.1829.g004ef91
+pkgver=3.3538.1850.ge710be4
 pkgrel=1
 pkgdesc="Chromium Embedded Framework minimal release"
 arch=("i686" "x86_64")
@@ -16,16 +16,16 @@ source_i686=(
 source_x86_64=(
     "http://opensource.spotify.com/cefbuilds/cef_binary_${pkgver}_linux64_minimal.tar.bz2"
 )
-sha1sums_i686=('849359ef8959c85cdcf63721651e55c6d54d6661')
-sha1sums_x86_64=('3117963ae1be963c1c7240556844666595148823')
+sha1sums_i686=('d25ea9991a7e585806d4e68fdbc06ba9a0eabcdf')
+sha1sums_x86_64=('545f15411be8aed4ce27a2ca98aae1dad5105723')
 [[ "$CARCH" = "i686" ]] && _arch="32"
 [[ "$CARCH" = "x86_64" ]] && _arch="64"
 build() {
     cd "$srcdir"/cef_binary_${pkgver}_linux${_arch}_minimal
-    sed '/^add_subdirectory[\(]tests[\/].*/d' -i CMakeLists.txt
+    sed -i 's/-Werror/#-Werror/g' cmake/cef_variables.cmake
     cmake .
     make clean
-    make -j4 libcef_dll_wrapper
+    make libcef_dll_wrapper
 }
 package() {
     mkdir -p "$pkgdir"/opt/cef/
