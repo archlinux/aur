@@ -1,64 +1,66 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Devaux Fabien <fdev31@gmail.com>
 
 pkgname=srt-git
-pkgver=1.3.0.r0.g5276995
-pkgrel=2
+_srcname=srt
+pkgver=1.3.1.r45.g4c3dccb
+pkgrel=1
 pkgdesc='Secure Reliable Transport - transport technology that optimizes streaming performance across unpredictable networks (git version)'
 arch=('i686' 'x86_64')
 url='https://www.srtalliance.org/'
 license=('MPL')
 depends=('openssl')
 makedepends=('git' 'cmake')
-provides=('srt' 'libsrt.so')
+provides=('srt')
 conflicts=('srt')
-source=("$pkgname"::'git+https://github.com/Haivision/srt.git')
+source=('git+https://github.com/Haivision/srt.git')
 sha256sums=('SKIP')
 
 prepare() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # remove insecure rpath
     sed -i '/set(FORCE_RPATH/d' CMakeLists.txt
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     mkdir -p build
     cd build
     
     cmake \
-        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
         -DCMAKE_INSTALL_BINDIR:PATH='bin' \
         -DCMAKE_INSTALL_INCLUDEDIR:PATH='include' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DENABLE_CXX11:BOOL='ON' \
-        -DENABLE_C_DEPS:BOOL='ON' \
-        -DENABLE_GETNAMEINFO:BOOL='OFF' \
-        -DENABLE_HEAVY_LOGGING:BOOL='OFF' \
-        -DENABLE_LOGGING:BOOL='ON' \
-        -DENABLE_PROFILE:BOOL='OFF' \
-        -DENABLE_SHARED:BOOL='ON' \
-        -DENABLE_STATIC:BOOL='OFF' \
-        -DENABLE_SUFLIP:BOOL='OFF' \
-        -DUSE_GNUTLS:BOOL='OFF' \
+        -DENABLE_TESTING='True' \
         -Wno-dev \
         ..
         
     make
 }
 
+check() {
+    cd "${_srcname}/build"
+    
+    ./utility-test
+}
+
 package() {
-    cd "${pkgname}/build"
+    cd "${_srcname}/build"
     
     make DESTDIR="$pkgdir" install
+    
+    rm "$pkgdir"/usr/bin/*-test
+    
+    # build tries this but fails when DESTDIR is set
+    ln -s srt-live-transmit "${pkgdir}/usr/bin/stransmit"
 }
