@@ -2,8 +2,8 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=libcryptui
-pkgver=3.12.2+24+gd5e5bc5
-pkgrel=2
+pkgver=3.12.2+41+gf29d1d37
+pkgrel=0
 pkgdesc="Library for OpenPGP prompts"
 url="https://gitlab.gnome.org/GNOME/libcryptui"
 arch=(x86_64)
