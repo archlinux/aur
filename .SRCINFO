@@ -1,7 +1,7 @@
 pkgbase = deluge-git
 	pkgdesc = A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)
 	pkgver = 2.0.0b2.dev300.gab7f19fbb
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://deluge-torrent.org/
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = deluge-git
 	optdepends = geoip: display peer locations
 	provides = deluge
 	conflicts = deluge
-	source = deluge-git::git://deluge-torrent.org/deluge.git#branch=develop
+	source = git://deluge-torrent.org/deluge.git#branch=develop
 	source = deluged.service
 	source = deluge-web.service
 	sha256sums = SKIP

@@ -5,8 +5,9 @@
 # PKGBUILD based on extra\deluge's PKGBUILD, adapted for -git version by Berseker
 
 pkgname=deluge-git
+_srcname=deluge
 pkgver=2.0.0b2.dev300.gab7f19fbb
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)"
 arch=('any')
@@ -33,8 +34,8 @@ optdepends=('librsvg: gtk ui'
             'geoip: display peer locations')
 provides=('deluge')
 conflicts=('deluge')
-source=("$pkgname"::'git://deluge-torrent.org/deluge.git#branch=develop'               # official repository
-        #"$pkgname"::'git+https://github.com/deluge-torrent/deluge.git#branch=develop' # mirror
+source=('git://deluge-torrent.org/deluge.git#branch=develop'               # official repository
+        #'git+https://github.com/deluge-torrent/deluge.git#branch=develop' # mirror
         'deluged.service'
         'deluge-web.service')
 sha256sums=('SKIP'
@@ -42,7 +43,7 @@ sha256sums=('SKIP'
             '26e4d01003804afb197c570175d44ed4dddd443cc1b88ab2d0230ceacfac90c5')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     local _internalver
     local _shorthash
@@ -54,13 +55,13 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     python2 setup.py build
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     python2 setup.py install --prefix='/usr' --root="$pkgdir" --optimize='1'
     
