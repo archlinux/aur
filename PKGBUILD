@@ -10,7 +10,7 @@ arch=(x86_64)
 license=(GPL)
 depends=(gtk3 gpgme dbus-glib libnotify gcr dconf libsm)
 makedepends=(intltool gobject-introspection gnome-common git)
-_commit=d5e5bc593dcbb21f5dd3b8f858368170d4947cf3  # master
+_commit=f29d1d37cb4553ecd82a67e63aa0f0888de9acc8  # master
 source=("git+https://gitlab.gnome.org/GNOME/libcryptui.git#commit=$_commit")
 sha256sums=('SKIP')
 
