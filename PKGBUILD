@@ -2,16 +2,16 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=seahorse-nautilus
-pkgver=3.11.92+17+gca04c23
+pkgver=3.11.92+57+g390364d
 pkgrel=1
 pkgdesc="PGP encryption and signing for nautilus"
 arch=(x86_64)
-url="https://git.gnome.org/browse/seahorse-nautilus/"
+url="https://gitlab.gnome.org/GNOME/seahorse-nautilus.git/"
 license=(GPL)
-depends=(libcryptui gcr nautilus)
-makedepends=(intltool gnome-common git libgnome-keyring)
-_commit=ca04c239f00cce931ccb8680bba528507a154368  # master
-source=("git+https://git.gnome.org/browse/seahorse-nautilus#commit=$_commit")
+depends=(libcryptui nautilus libgnome-keyring)
+makedepends=(meson git)
+_commit=390364db3bb09d7f6e07e3de90c872112584442a  # master
+source=("git+https://gitlab.gnome.org/GNOME/seahorse-nautilus.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,18 +21,13 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-              --disable-static --disable-schemas-compile
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  arch-meson $pkgname build
+  ninja -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
