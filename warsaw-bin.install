@@ -1,0 +1,54 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	echo "To use Warsaw, start its service using:"
+	echo "$ sudo warsaw start"
+	echo "To start Warsaw at system startup, use the command:"
+	echo "$ sudo systemctl enable warsaw"
+
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	echo "To use Warsaw, start its service using:"
+	echo "$ sudo warsaw start"
+
+	    if command -v systemctl > /dev/null 2>&1; then
+	      systemctl restart warsaw.service
+	    fi
+
+	update-desktop-database -q
+}
+
+pre_remove() {
+
+	    if command -v systemctl > /dev/null 2>&1; then
+	      systemctl stop warsaw.service
+	    fi
+
+	    if command -v warsaw > /dev/null 2>&1; then
+	      warsaw stop
+	    fi
+
+	    if command -v systemctl > /dev/null 2>&1; then
+	      systemctl disable warsaw.service
+	      systemctl daemon-reload
+	    fi
+
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	    if command -v rm > /dev/null 2>&1; then
+	      rm -rf /usr/local/etc/warsaw
+	    fi
+
+	    if command -v pkill > /dev/null 2>&1; then
+	      pkill wsatspi
+	    fi
+
+	update-desktop-database -q
+}
