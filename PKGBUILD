@@ -1,17 +1,15 @@
 # Maintainer: Michael J. Pento <mjpento@verizon.net>
-# Maintainer: Bennett Piater <bennett at piater dot name>
-# Former maintainer: Christopher Loen <christopherloen at gmail dot com>
+
 pkgname='ruby-plist'
 pkgver='3.4.0'
-pkgrel=3
+pkgrel=4
 pkgdesc='A library to manipulate Property List files'
 arch=('any')
 url='http://plist.rubyforge.org/'
 license=('MIT')
-depends=('ruby')
+depends=('ruby' 'ruby-rdoc')
 source=('https://rubygems.org/downloads/plist-3.4.0.gem')
 sha256sums=('341d1745fc3820d172c682d7faf5126a1fc786617c73f63ad6d79c9d889c47b8')
-
 
 package() {
 	cd "$srcdir"
