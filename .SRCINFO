@@ -1,22 +1,21 @@
 pkgbase = bookworm-git
 	pkgdesc = A simple user centric eBook reader which displays multiple eBooks formats uniformly
-	pkgver = 1.0.0.r20.ge6ff581
+	pkgver = 1.1.1.r16.g47dc971
 	pkgrel = 1
 	url = https://babluboy.github.io/bookworm
 	arch = x86_64
 	license = GPL3
-	makedepends = cmake
 	makedepends = git
+	makedepends = meson
 	makedepends = vala
 	depends = libgranite.so
 	depends = poppler-glib
-	depends = python2-html2text
 	depends = unarchiver
 	depends = unzip
 	depends = webkit2gtk
 	provides = bookworm
 	conflicts = bookworm
-	source = git+https://github.com/babluboy/bookworm.git
+	source = bookworm::git+https://github.com/babluboy/bookworm.git
 	sha256sums = SKIP
 
 pkgname = bookworm-git
