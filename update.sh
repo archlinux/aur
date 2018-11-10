@@ -4,7 +4,14 @@ AUR_NAME=tracktime
 PROJ_NAME=tracktime
 DESCRIPTION="Time tracking library with command line interface."
 URL=https://gitlab.com/sumner/tracktime
-DEPENDS=(python-pdfkit python-tabulate python-docutils python-requests python-yaml)
+DEPENDS=(
+    python-argcomplete
+    python-docutils
+    python-pdfkit
+    python-requests
+    python-tabulate
+    python-yaml
+)
 LICENSE='GPL3'
 ADDITIONAL=
 

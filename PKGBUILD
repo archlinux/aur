@@ -9,10 +9,11 @@ pkgdesc='Time tracking library with command line interface.'
 url='https://gitlab.com/sumner/tracktime'
 depends=(
     'python'
-    'python-pdfkit'
-    'python-tabulate'
+    'python-argcomplete'
     'python-docutils'
+    'python-pdfkit'
     'python-requests'
+    'python-tabulate'
     'python-yaml'
 )
 makedepends=('python-setuptools')
