@@ -1,6 +1,6 @@
 pkgbase = nip2
 	pkgdesc = A frontend to the vips image library
-	pkgver = 8.6.0
+	pkgver = 8.7.0
 	pkgrel = 1
 	url = https://github.com/jcupitt/nip2
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = nip2
 	depends = gsl
 	depends = gtk2
 	depends = desktop-file-utils
-	source = https://github.com/jcupitt/nip2/releases/download/v8.6.0/nip2-8.6.0.tar.gz
-	sha256sums = 1ed55f0890a626d7a45c513e4788058d99b45008b793072c3f7e80231a7c7186
+	source = https://github.com/jcupitt/nip2/releases/download/v8.7.0/nip2-8.7.0.tar.gz
+	sha256sums = 6ce935adfdc643e0ce32c544aea0efce64a102390170d6696c7d074b7473bd21
 
 pkgname = nip2
 
