@@ -4,7 +4,7 @@
 
 pkgname=lib32-sdl2_ttf
 pkgver=2.0.14
-pkgrel=2
+pkgrel=3
 pkgdesc='Library that allows you to use TrueType fonts in your SDL applications (Version 2) (32-bit)'
 url='https://www.libsdl.org/projects/SDL_ttf'
 arch=('x86_64')
