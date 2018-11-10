@@ -1,7 +1,7 @@
 pkgbase = tracktime
 	pkgdesc = Time tracking library with command line interface.
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/sumner/tracktime
 	arch = any
 	license = GPL3
