@@ -1,0 +1,23 @@
+pkgbase = palaura-git
+	pkgdesc = Find any word's definition with this handy dictionary. Designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/lainsce/palaura
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = json-glib
+	depends = libsoup
+	provides = palaura
+	conflicts = palaura
+	source = git+https://github.com/lainsce/palaura.git
+	md5sums = SKIP
+
+pkgname = palaura-git
+
