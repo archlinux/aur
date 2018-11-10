@@ -24,7 +24,7 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DUSE_SDL=Off -DUSE_SDL2=On \
-    -DSDL2_INCLUDE_DIRS="/usr/inlude" \
+    -DSDL2_INCLUDE_DIRS="/usr/include" \
     -DCMAKE_CXX_FLAGS="`sdl2-config --cflags`" \
     -DCMAKE_EXE_LINKER_FLAGS="`sdl2-config --libs`"
   make
