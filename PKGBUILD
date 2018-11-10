@@ -1,7 +1,7 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Omar Roth <omarroth@hotmail.com>
 
 pkgname=libmarpa
-pkgver=8.3.0
+pkgver=8.6.0
 pkgrel=1
 pkgdesc="Marpa parse engine C library"
 arch=('i686' 'x86_64')
