@@ -3,7 +3,7 @@
 
 pkgname=etcher
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Burn images to SD cards & USB drives, safe & easy'
 arch=(x86_64)
 url='https://www.balena.io/etcher/'
