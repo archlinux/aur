@@ -1,0 +1,19 @@
+pkgbase = gr-binviz-git
+	pkgdesc = A GNU Radio Companion out-of-tree module for visualization of char data types
+	pkgver = v5.10ff87e
+	pkgrel = 1
+	url = https://github.com/CBrunsch/BinViz/tree/master/gr-binviz
+	arch = any
+	license = unknown
+	makedepends = cmake
+	depends = gnuradio
+	depends = libosmocore
+	depends = boost
+	depends = swig
+	depends = cimg
+	provides = gr-binviz
+	source = git+https://github.com/CBrunsch/BinViz.git
+	sha1sums = SKIP
+
+pkgname = gr-binviz-git
+
