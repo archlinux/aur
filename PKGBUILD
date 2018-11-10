@@ -3,7 +3,7 @@
 pkgname=shfmt-bin
 _pkg=sh
 _name=shfmt
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Format shell programs (pre-compiled static binary)"
 url="https://github.com/mvdan/${_pkg}"
@@ -17,8 +17,8 @@ source_x86_64=(
 	"https://raw.githubusercontent.com/mvdan/sh/v${pkgver}/LICENSE"
 )
 sha256sums_x86_64=(
-	'37fd1f66d7bf9c48130bbc50a3747750c6e3b202c404ca4a5941f81b9efd9b97'
-	'SKIP'
+	'e582c3417f1b773598c219683a98cc1ce444ca04aef1fa8457c378ad00316b29'
+	'ce63850f77649f00d1394045e2794ffb09a5596beabac51c9548edd958845d7c'
 )
 
 package() {
