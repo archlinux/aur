@@ -1,6 +1,6 @@
 pkgbase = jgd-cobaltblue
 	pkgdesc = Cobalt Blue colored themes for GTK 3.20+ and Openbox.
-	pkgver = 10_23_18
+	pkgver = 11_09_18
 	pkgrel = 1
 	url = http://www.jasong-designs.com/2017/09/19/jgd-cobaltblue/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = jgd-cobaltblue
 	depends = gtk-engines
 	optdepends = openbox: optional window manager theme
 	optdepends = ttf-dejavu: font support
-	source = https://github.com/jgpws/jgd-cobalt-blue/raw/master/downloads/jgd-cobaltblue-10-23-18.tar.gz
-	md5sums = 69b23c7b6fa9515ab286d0afce852e52
+	source = https://github.com/jgpws/jgd-cobalt-blue/raw/master/downloads/jgd-cobaltblue-11-09-18.tar.gz
+	md5sums = 736bc5c80d29ede6f7f538246f74e9e7
 
 pkgname = jgd-cobaltblue
 
