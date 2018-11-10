@@ -1,40 +1,24 @@
-# Maintainer: Afri 5chdn <aur@5chdn.co>
-# Available from AUR: https://aur.archlinux.org/packages/solidity-git/
+# Maintainer: Daniel Kirchner <daniel.kirchner@ethereum.org>
+# Contributor: Afri 5chdn <aur@5chdn.co>
 
 pkgname=solidity-git
-pkgver=0.4.14.20170725.cfb11ff7
+pkgver=0.5.0.20181110.9709dfe04
 pkgrel=1
-pkgdesc="The Solidity Contract-Oriented Programming Language (Including solc, lllc; from latest unstable git version)"
-arch=('i686' 'x86_64')
-depends=(
-  'boost'
-  'boost-libs'
-  'glibc'
+pkgdesc="The Solidity Contract-Oriented Programming Language (latest unstable git version)"
+arch=('x86_64')
+depends=('gcc-libs' 'boost-libs')
+optdepends=(
+  'z3: SMTChecker support'
+  'cvc4: SMTChecker support'
 )
-makedepends=(
-  'autoconf'
-  'automake'
-  'cmake'
-  'gcc'
-  'gcc-libs'
-  'libtool'
-  'git'
-)
+makedepends=('cmake' 'git' 'boost')
 groups=('ethereum')
 url="https://github.com/ethereum/solidity"
 license=('GPL3')
 source=("${pkgname%-git}::git+https://github.com/ethereum/solidity#branch=develop")
 sha256sums=('SKIP')
-provides=(
-  'lll'
-  'lllc'
-  'liblll'
-  'solidity'
-  'solc'
-  'libsoldevcore'
-  'libsolevmasm'
-  'libsolidity'
-)
+provides=('solidity')
+conflicts=('solidity')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -42,24 +26,14 @@ pkgver() {
 }
 
 build() {
-  msg 'Updating...'
   cd ${pkgname%-git}
-  git submodule update --init --recursive
-
-  msg 'Building...'
-  mkdir -p build && pushd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  mkdir -p build
+  cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBoost_USE_STATIC_LIBS=OFF -DTESTS=OFF -DCMAKE_BUILD_TYPE=Release
   make
-  popd
 }
 
 package() {
   cd ${pkgname%-git}
-
-  msg 'Installing...'
   make DESTDIR="$pkgdir" install -C build
-
-  msg 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
