@@ -2,8 +2,9 @@
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=flif-git
-pkgver=0.3.r92.gb16d347
-pkgrel=2
+_srcname=FLIF
+pkgver=0.3.r96.g74ea92b
+pkgrel=1
 pkgdesc='Free Lossless Image Format (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/FLIF-hub/FLIF/'
@@ -18,11 +19,11 @@ optdepends=(
 )
 provides=('flif')
 conflicts=('flif')
-source=("$pkgname"::'git+https://github.com/FLIF-hub/FLIF.git')
+source=('git+https://github.com/FLIF-hub/FLIF.git')
 sha256sums=('SKIP')
 
 prepare() {
-    cd "${pkgname}/src"
+    cd "${_srcname}/src"
     
     # fix Makefile target install-pixbufloader
     sed -i 's|/usr/lib|$(PREFIX)/lib|' Makefile
@@ -35,21 +36,21 @@ prepare() {
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "${pkgname}/src"
+    cd "${_srcname}/src"
     
     make all decoder viewflif pixbufloader
     
 }
 
 package() {
-    cd "${pkgname}/src"
+    cd "${_srcname}/src"
     
     make PREFIX="${pkgdir}/usr" install{,-dev}
     make PREFIX="${pkgdir}/usr" install{-decoder,-viewflif,-pixbufloader}

@@ -1,7 +1,7 @@
 pkgbase = flif-git
 	pkgdesc = Free Lossless Image Format (git version)
-	pkgver = 0.3.r92.gb16d347
-	pkgrel = 2
+	pkgver = 0.3.r96.g74ea92b
+	pkgrel = 1
 	url = https://github.com/FLIF-hub/FLIF/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = flif-git
 	optdepends = apng-utils: for apng2flif tool
 	provides = flif
 	conflicts = flif
-	source = flif-git::git+https://github.com/FLIF-hub/FLIF.git
+	source = git+https://github.com/FLIF-hub/FLIF.git
 	sha256sums = SKIP
 
 pkgname = flif-git
