@@ -2,7 +2,7 @@
 
 _pkgbase=akvcam
 pkgname=${_pkgbase}-dkms-git
-pkgver=r145.03d8432
+pkgver=r146.706bf28
 pkgrel=1
 pkgdesc="Virtual camera for Linux"
 url="https://github.com/webcamoid/akvcam"
@@ -42,7 +42,9 @@ package() {
     cp -vf share/config_example.ini "${pkgdir}/etc/akvcam"
     cd "${srcdir}/${_pkgbase}/src"
     strip --strip-debug akvcam.ko
-    make DESTDIR="${pkgdir}/usr" install
+    driver_dir="${pkgdir}/usr/lib/modules/"$(uname -r)"/extra"
+    mkdir -p "${driver_dir}"
+    cp -vf akvcam.ko "${driver_dir}"
     cp -ar * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
     cd "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
     make clean
