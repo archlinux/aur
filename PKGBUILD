@@ -3,7 +3,7 @@
 
 pkgname=libofa
 pkgver=0.9.3
-pkgrel=7
+pkgrel=8
 pkgdesc="An open-source audio fingerprint by MusicIP"
 arch=('x86_64')
 url="https://github.com/tanob/libofa"
