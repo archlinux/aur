@@ -14,7 +14,9 @@ pkgbase = crawl-tiles
 	depends = sqlite
 	depends = glu
 	provides = crawl
+	provides = stone-soup
 	conflicts = crawl
+	conflicts = stone-soup
 	source = https://github.com/crawl/crawl/archive/0.22.1.tar.gz
 	md5sums = d73637467a621b5cbf7eecbc065c054f
 
