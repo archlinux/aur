@@ -1,6 +1,6 @@
 pkgbase = faf-ice-adapter-java
 	pkgdesc = A P2P connection proxy for Supreme Commander: Forged Alliance using ICE
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	epoch = 0
 	url = http://www.faforever.com/
