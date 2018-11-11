@@ -2,7 +2,7 @@
 # Contributor: shimi <shimi.chen@gmail.com>
 # Contributor: Gustavo Castro <gustawho at gmail dot com>
 pkgname=indicator-kdeconnect-git
-pkgver=r365.f9dcb09
+pkgver=r596.138ccfc
 pkgrel=1
 _gitname=indicator-kdeconnect
 pkgdesc="Integrate KDEConnect on desktop environments that use AppIndicators (e.g. Unity)"
@@ -12,7 +12,7 @@ license=('GPL')
 conflicts=('indicator-kdeconnect')
 provides=('indicator-kdeconnect')
 depends=('libappindicator-gtk3' 'kdeconnect' 'vala' 'python-requests-oauthlib' 'python-gobject')
-makedepends=('git' 'cmake')
+makedepends=('git' 'meson' 'ninja')
 source=('git://github.com/bajoja/indicator-kdeconnect.git')
 md5sums=('SKIP')
 
@@ -25,7 +25,6 @@ package() {
   cd indicator-kdeconnect
   mkdir build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  make
-  make DESTDIR="${pkgdir}" install
+  meson .. --prefix=/usr/  --libdir=/usr/lib/
+  ninja
 }
