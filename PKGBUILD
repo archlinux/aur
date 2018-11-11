@@ -13,7 +13,7 @@ sha512sums=('75ea06dd0542773d465a3aa4cc617f28a537dcb7c2acf87b30ea0845a0a59dcd361
 
 prepare() {
 cd $srcdir/$pkgname-$pkgver
-./configure --prefix=$pkgdir/usr
+./configure --prefix=/usr
 }
 
 build() {
@@ -23,6 +23,6 @@ make $MAKEFLAGS
 
 package() {
 cd $srcdir/$pkgname-$pkgver
-make install
+make DESTDIR=$pkgdir install
 }
 
