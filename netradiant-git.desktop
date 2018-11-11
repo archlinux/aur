@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=NetRadiant
-Comment=A Stabilized Q3 Map Editor
-Icon=/usr/share/pixmaps/netradiant-git.png
-Categories=Game;Development;
-Exec=netradiant
