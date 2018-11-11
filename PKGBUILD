@@ -1,12 +1,14 @@
+# Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
+
 pkgname=pgroonga
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast fulltext search on PostgreSQL."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/pgroonga/pgroonga"
-license=('PostgreSQL')
+license=('custom:PostgreSQL')
 source=("http://packages.groonga.org/source/pgroonga/$pkgname-$pkgver.tar.gz")
-depends=('groonga' 'postgresql' 'mecab' 'mecab-ipadic')
+depends=('groonga')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
@@ -16,6 +18,7 @@ build() {
 package() {
 	cd $srcdir/$pkgname-$pkgver
 	make DESTDIR="$pkgdir" install
+	install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
 	echo "-------------------------------------------------------------"
 	echo "After install this package,"
