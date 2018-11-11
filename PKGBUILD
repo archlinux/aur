@@ -2,7 +2,7 @@
   
   pkgname=fedora-firefox-wayland-bin
   pkgver=63.0.1
-  pkgrel=2
+  pkgrel=3
   pkgdesc="Fedora's firefox build wtih wayland enabled by default"
   arch=(x86_64)
   license=(MPL GPL LGPL)
@@ -20,7 +20,7 @@
   md5sums=('a4f5ef650ddb062de0a9031b79cb4979')  
   
   prepare() {
-    # remove a bit of fedora sutff (startpage)
+    # remove a bit of fedora's custom sutff 
     rm -f usr/lib64/firefox/browser/defaults/preferences/firefox-redhat-default-prefs.js
     # default to wayland
     sed -i -e 's:GDK_BACKEND=x11:GDK_BACKEND=wayland:' usr/bin/firefox
