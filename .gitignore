@@ -1,7 +1,5 @@
-!.gitignore
-
-/zfs
-/src
-/pkg
-*.pkg*
-*.orig
+*.tar.xz
+*.tar.gz
+*.sig
+*.log
+zfs/
