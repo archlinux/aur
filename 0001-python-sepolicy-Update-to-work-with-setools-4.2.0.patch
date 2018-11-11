@@ -1,0 +1,81 @@
+From e5f312667b8301b013533fd768e24d944b84c4b1 Mon Sep 17 00:00:00 2001
+From: Vit Mojzis <vmojzis@redhat.com>
+Date: Mon, 24 Sep 2018 11:05:49 +0200
+Subject: [PATCH 1/1] python/sepolicy: Update to work with setools-4.2.0
+
+Change in internal setools API causes sepolicy to crash when processing
+AVRules.
+
+    File "python/sepolicy/sepolicy/__init__.py", line 277, in _setools_rule_to_dict
+        if isinstance(rule, setools.policyrep.terule.AVRule):
+    AttributeError: module 'setools.policyrep' has no attribute 'terule'
+
+See https://github.com/SELinuxProject/setools/issues/8 for more details.
+
+Stop using internal setools API:
+
+- use AttributeError instead of setools specific exceptions
+- evaluate conditional expressions using conditional.evaluate() instead
+of qpol_symbol.is_enabled()
+
+Signed-off-by: Vit Mojzis <vmojzis@redhat.com>
+Signed-off-by: Nicolas Iooss <nicolas.iooss@m4x.org>
+---
+ python/sepolicy/sepolicy/__init__.py | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
+
+diff --git a/python/sepolicy/sepolicy/__init__.py b/python/sepolicy/sepolicy/__init__.py
+index 89346aba0b15..5d0535b9dd28 100644
+--- a/python/sepolicy/sepolicy/__init__.py
++++ b/python/sepolicy/sepolicy/__init__.py
+@@ -272,34 +272,38 @@ def _setools_rule_to_dict(rule):
+         'class': str(rule.tclass),
+     }
+ 
++    # Evaluate boolean expression associated with given rule (if there is any)
+     try:
+-        enabled = bool(rule.qpol_symbol.is_enabled(rule.policy))
++        # Get state of all booleans in the conditional expression
++        boolstate = {}
++        for boolean in rule.conditional.booleans:
++            boolstate[str(boolean)] = boolean.state
++        # evaluate if the rule is enabled
++        enabled = rule.conditional.evaluate(**boolstate) == rule.conditional_block
+     except AttributeError:
++        # non-conditional rules are always enabled
+         enabled = True
+ 
+-    if isinstance(rule, setools.policyrep.terule.AVRule):
+-        d['enabled'] = enabled
++    d['enabled'] = enabled
+ 
+     try:
+         d['permlist'] = list(map(str, rule.perms))
+-    except setools.policyrep.exception.RuleUseError:
++    except AttributeError:
+         pass
+ 
+     try:
+         d['transtype'] = str(rule.default)
+-    except setools.policyrep.exception.RuleUseError:
++    except AttributeError:
+         pass
+ 
+     try:
+         d['boolean'] = [(str(rule.conditional), enabled)]
+-    except (AttributeError, setools.policyrep.exception.RuleNotConditional):
++    except AttributeError:
+         pass
+ 
+     try:
+         d['filename'] = rule.filename
+-    except (AttributeError,
+-            setools.policyrep.exception.RuleNotConditional,
+-            setools.policyrep.exception.TERuleNoFilename):
++    except AttributeError:
+         pass
+ 
+     return d
+-- 
+2.19.1
+
