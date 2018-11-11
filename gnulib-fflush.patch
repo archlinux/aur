@@ -1,10 +1,35 @@
-Backport gnulib commit 4af4a4a71827c0bc5e0ec67af23edef4f15cee8e to fix
-compatibility with glibc 2.28.
+From 80cdfba079627e15129a926a133825b961d41e36 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Mon, 5 Mar 2018 10:56:29 -0800
+Subject: [PATCH] fflush: adjust to glibc 2.28 libio.h removal
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=commitdiff;h=4af4a4a71827c0bc5e0ec67af23edef4f15cee8e;hp=0404c9ae2845cbf93d71b295b67d6c8bd39382d8
+Problem reported by Daniel P. Berrangé in:
+https://lists.gnu.org/r/bug-gnulib/2018-03/msg00000.html
+* lib/fflush.c (clear_ungetc_buffer_preserving_position)
+(disable_seek_optimization, rpl_fflush):
+* lib/fpurge.c (fpurge):
+* lib/freadahead.c (freadahead):
+* lib/freading.c (freading):
+* lib/fseeko.c (fseeko):
+* lib/stdio-impl.h (_IO_IN_BACKUP) [_IO_EOF_SEEN]:
+Define if not already defined.
 
+Upstream-commit: 4af4a4a71827c0bc5e0ec67af23edef4f15cee8e
+Signed-off-by: Kamil Dudka <kdudka@redhat.com>
+---
+ gl/lib/fflush.c     | 6 +++---
+ gl/lib/fpurge.c     | 2 +-
+ gl/lib/freadahead.c | 2 +-
+ gl/lib/freading.c   | 2 +-
+ gl/lib/fseeko.c     | 4 ++--
+ gl/lib/stdio-impl.h | 6 ++++++
+ 6 files changed, 14 insertions(+), 8 deletions(-)
 
 diff --git a/gl/lib/fflush.c b/gl/lib/fflush.c
+index 5ae3e41..7a82470 100644
 --- a/gl/lib/fflush.c
 +++ b/gl/lib/fflush.c
 @@ -33,7 +33,7 @@
@@ -35,6 +60,7 @@ diff --git a/gl/lib/fflush.c b/gl/lib/fflush.c
    clear_ungetc_buffer_preserving_position (stream);
  
 diff --git a/gl/lib/fpurge.c b/gl/lib/fpurge.c
+index f313b22..ecdf82d 100644
 --- a/gl/lib/fpurge.c
 +++ b/gl/lib/fpurge.c
 @@ -62,7 +62,7 @@ fpurge (FILE *fp)
@@ -47,6 +73,7 @@ diff --git a/gl/lib/fpurge.c b/gl/lib/fpurge.c
    fp->_IO_write_ptr = fp->_IO_write_base;
    /* Avoid memory leak when there is an active ungetc buffer.  */
 diff --git a/gl/lib/freadahead.c b/gl/lib/freadahead.c
+index 094daab..3f8101e 100644
 --- a/gl/lib/freadahead.c
 +++ b/gl/lib/freadahead.c
 @@ -25,7 +25,7 @@
@@ -59,6 +86,7 @@ diff --git a/gl/lib/freadahead.c b/gl/lib/freadahead.c
      return 0;
    return (fp->_IO_read_end - fp->_IO_read_ptr)
 diff --git a/gl/lib/freading.c b/gl/lib/freading.c
+index 0512b19..8c48fe4 100644
 --- a/gl/lib/freading.c
 +++ b/gl/lib/freading.c
 @@ -31,7 +31,7 @@ freading (FILE *fp)
@@ -71,6 +99,7 @@ diff --git a/gl/lib/freading.c b/gl/lib/freading.c
            || ((fp->_flags & (_IO_NO_READS | _IO_CURRENTLY_PUTTING)) == 0
                && fp->_IO_read_base != NULL));
 diff --git a/gl/lib/fseeko.c b/gl/lib/fseeko.c
+index 1c65d2a..9026408 100644
 --- a/gl/lib/fseeko.c
 +++ b/gl/lib/fseeko.c
 @@ -47,7 +47,7 @@ fseeko (FILE *fp, off_t offset, int whence)
@@ -91,23 +120,8 @@ diff --git a/gl/lib/fseeko.c b/gl/lib/fseeko.c
        fp->_flags &= ~_IO_EOF_SEEN;
        fp->_offset = pos;
  #elif defined __sferror || defined __DragonFly__ || defined __ANDROID__
-diff --git a/gl/lib/mountlist.c b/gl/lib/mountlist.c
---- a/gl/lib/mountlist.c
-+++ b/gl/lib/mountlist.c
-@@ -37,6 +37,12 @@
- # include <sys/param.h>
- #endif
- 
-+#if MAJOR_IN_MKDEV
-+# include <sys/mkdev.h>
-+#elif MAJOR_IN_SYSMACROS
-+# include <sys/sysmacros.h>
-+#endif
-+
- #if defined MOUNTED_GETFSSTAT   /* OSF_1 and Darwin1.3.x */
- # if HAVE_SYS_UCRED_H
- #  include <grp.h> /* needed on OSF V4.0 for definition of NGROUPS,
 diff --git a/gl/lib/stdio-impl.h b/gl/lib/stdio-impl.h
+index 502d891..ea38ee2 100644
 --- a/gl/lib/stdio-impl.h
 +++ b/gl/lib/stdio-impl.h
 @@ -18,6 +18,12 @@
@@ -123,3 +137,6 @@ diff --git a/gl/lib/stdio-impl.h b/gl/lib/stdio-impl.h
  
  /* BSD stdio derived implementations.  */
  
+-- 
+2.16.2
+

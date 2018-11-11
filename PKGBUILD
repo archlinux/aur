@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer:
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 # SELinux Contributor: Timothée Ravier
@@ -9,25 +8,28 @@
 
 pkgname=findutils-selinux
 pkgver=4.6.0
-pkgrel=2
+pkgrel=4
 pkgdesc="GNU utilities to locate files with SELinux support"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL3')
 groups=('selinux')
 depends=('glibc' 'sh' 'libselinux')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
-url="http://www.gnu.org/software/findutils"
-source=(https://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.gz
-        gnulib-glibc2.28-compatibility.patch)
+url='https://www.gnu.org/software/findutils'
+source=("https://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.gz"
+        "gnulib-fflush.patch"
+        "gnulib-makedev.patch")
 sha1sums=('f18e8aaee3f3d4173a1f598001003be8706d28b0'
-          '089b2f56a7c4b24e03184c158f1352ade2b5d050')
-#validpgpkeys=('A15B725964A95EE5') # James Youngman <james@youngman.org>
+          '1bc1586f6a52083939c4cabc32f12e7aead97e61'
+          '051382a2b0039438c2b143f2f9e5dc4bea130a09')
+#validpgpkeys=('A15B725964A95EE5') # James Youngman <james@youngman.org>  - NOTE: PGP-2 key
 
 prepare() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
-  patch -Np1 -i ../gnulib-glibc2.28-compatibility.patch
+  patch -p1 -i "$srcdir"/gnulib-fflush.patch
+  patch -p1 -i "$srcdir"/gnulib-makedev.patch
 }
 
 build() {
@@ -37,6 +39,7 @@ build() {
   # which is a secure version of locate.
   sed -i '/^SUBDIRS/s/locate//' Makefile.in
 
+  autoreconf
   ./configure --prefix=/usr
   # don't build locate, but the docs want a file in there.
   make -C locate dblocation.texi
