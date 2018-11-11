@@ -2,7 +2,7 @@
 
 pkgname=beecrypt
 pkgver=4.2.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A strong and fast cryptography toolkit"
 arch=('i686' 'x86_64')
 url="http://beecrypt.sourceforge.net/"
@@ -10,8 +10,17 @@ license=('LGPL')
 depends=('icu')
 makedepends=('python2')
 options=('!libtool')
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('286f1f56080d1a6b1d024003a5fa2158f4ff82cae0c6829d3c476a4b5898c55d')
+source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz
+        $pkgname-$pkgver-icu-61.patch)
+sha256sums=('286f1f56080d1a6b1d024003a5fa2158f4ff82cae0c6829d3c476a4b5898c55d'
+            '172a878f04f94586fbf7506c9809f580ff6025cda9a4a97ba168ae363e72f8e3')
+
+prepare() {
+  cd "${srcdir}"/$pkgname-$pkgver
+
+  patch -Np1 -i "${srcdir}"/$pkgname-$pkgver-icu-61.patch
+}
+
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
