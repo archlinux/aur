@@ -1,16 +1,17 @@
 # Maintainer: William Gathoye <william + aur at gathoye dot be>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
+# Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost
 pkgver=5.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
 license=('AGPL' 'Apache')
 
-makedepends=('git' 'go' 'libpng' 'npm' 'python2')
+makedepends=('git' 'go-pie' 'libpng' 'npm' 'python2')
 # Experiencing issues with gifsicle and mozjpeg on non x64 architectures.
 if [ "$CARCH" != 'x86_64' ]; then
     makedepends+=('gifsicle' 'mozjpeg')
@@ -24,6 +25,7 @@ backup=("etc/webapps/${pkgname}/config.json")
 source=(
     ${pkgname}-server-${pkgver}.tar.gz::"https://github.com/${pkgname}/${pkgname}-server/archive/v${pkgver}.tar.gz"
     ${pkgname}-webapp-${pkgver}.tar.gz::"https://github.com/${pkgname}/${pkgname}-webapp/archive/v${pkgver}.tar.gz"
+    "mattermost-ldflags.patch"
     "${pkgname}.service"
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
@@ -31,6 +33,7 @@ source=(
 sha512sums=(
     '7c68ea6612826f7aa8f8202e50cdd672a3bab2ec2fdc697e30ef4745570a3281090ff448f39a1dff33b8e2f3affe7cff8b3462092b3d98ceff7641efa94c5e30'
     '53be781283b69335be19fbc7c6c50f37230677d51cda63b328a788b1d4e98843bbe6d202f280da13e343a7e7a5e75327f61c435e60c7818b5b9ad2319e953ec3'
+    'ac952eae873aa09ba7bdf1e7abc618f0dc6982fa85df298261ab71ccf71f66c95846dade400e05d731f2c5ee2c6f4332d6f78d737026c9f098f1e03f419bee00'
     'cd02b3da86869117554c3c53a657a4b46989ea533b7b47c24fb642ffbd182ce6ecfb16a8ddde3af4d5e8cff0ab41a932753129662e126994e1ad5912545e6eb4'
     'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
     'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9'
@@ -62,6 +65,10 @@ prepare() {
     ln -s "${srcdir}"/${pkgname}-server ${pkgname}-server
     ln -s "${srcdir}"/${pkgname}-webapp ${pkgname}-webapp
     cd ${pkgname}-server
+
+    # Pass Arch Linux's Go compilation flags to Mattermost in order to take
+    # into account advanced features like PIE.
+    patch < "${srcdir}"/mattermost-ldflags.patch
 
     # We are not using docker, no need to stop it.
     sed -r -i Makefile \
@@ -134,7 +141,6 @@ package() {
     install -dm755 \
         "${pkgdir}"/usr/bin \
         "${pkgdir}"/usr/share/webapps \
-        "${pkgdir}"/var/log/${pkgname} \
         "${pkgdir}"/etc/webapps \
         "${pkgdir}"/usr/share/doc/${pkgname}
 
