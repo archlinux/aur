@@ -2,7 +2,7 @@
 
 pkgname=miniflux
 pkgver=2.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalist Feed Reader'
 arch=('x86_64')
 url='https://miniflux.app'
@@ -31,7 +31,6 @@ prepare() {
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  GOPATH="${srcdir}" go get github.com/tdewolff/minify
   GOPATH="${srcdir}" PATH="${PATH}:${GOPATH}/bin/" make linux-amd64
 }
 
