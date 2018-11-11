@@ -2,13 +2,14 @@
 
 pkgname=pgroonga
 pkgver=2.1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast fulltext search on PostgreSQL."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/pgroonga/pgroonga"
 license=('custom:PostgreSQL')
 source=("http://packages.groonga.org/source/pgroonga/$pkgname-$pkgver.tar.gz")
-depends=('groonga' 'postgresql')
+depends=('groonga')
+makedepends=('postgresql')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
