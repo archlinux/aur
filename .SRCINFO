@@ -1,6 +1,6 @@
 pkgbase = teamdrive
 	pkgdesc = Keeps data synchronised between various computers automatically.
-	pkgver = 4.6.3.2168
+	pkgver = 4.6.4.2182
 	pkgrel = 1
 	url = http://www.teamdrive.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = teamdrive
 	options = !strip
 	source = teamdrive.desktop
 	sha256sums = 8cd967dbe70c0ca845c3a3075cac9ad2f7342d63a5e32d81eaa9c2bc20a59699
-	source_x86_64 = https://s3-eu-west-1.amazonaws.com/s3download.teamdrive.net/4.6.2168/TMDR/linux-x86_64/teamdrive-4.6.3_amd64.deb
-	sha256sums_x86_64 = 4eb563ba22dbff4f043c5a7a3d5bc554ca60f76ff700c7b4476ff0b2db159df3
+	source_x86_64 = https://s3-eu-west-1.amazonaws.com/s3download.teamdrive.net/4.6.2182/TMDR/linux-x86_64/teamdrive-4.6.4_amd64.deb
+	sha256sums_x86_64 = 4d36ed2f069626ecb73589b43910acaee5d13534b5fe3fb6ffeeb29ea81932a5
 
 pkgname = teamdrive
 
