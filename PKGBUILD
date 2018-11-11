@@ -1,13 +1,13 @@
 # Maintainer: Nanda Okitavera <codeharuka.yusa@gmail.com>
 pkgname=cornora-git
-pkgver=r24.487a335
-pkgrel=1
+pkgver=r27.8ea76dd
+pkgrel=2
 pkgdesc="Simple Hot Corner Launcher for X11"
 arch=('any')
 url="https://github.com/yuune/cornora"
 license=('MIT')
 makedepends=('git')
-depends=('bash' 'xdotool')
+depends=('bash' 'xdotool' 'xorg-xprop')
 source=("git+https://github.com/yuune/cornora.git")
 md5sums=('SKIP')
 
