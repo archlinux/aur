@@ -8,10 +8,10 @@ pkgrel=1
 pkgdesc="A frontend to the vips image library"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="https://github.com/jcupitt/nip2"
+url="https://github.com/libvips/nip2"
 # optional: graphviz
 depends=('vips' 'gsl' 'gtk2' 'desktop-file-utils')
-source=("https://github.com/jcupitt/nip2/releases/download/v${pkgver}/nip2-${pkgver}.tar.gz")
+source=("https://github.com/libvips/nip2/releases/download/v${pkgver}/nip2-${pkgver}.tar.gz")
 sha256sums=('6ce935adfdc643e0ce32c544aea0efce64a102390170d6696c7d074b7473bd21')
 
 build() {
