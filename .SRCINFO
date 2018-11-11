@@ -1,9 +1,8 @@
 pkgbase = ledger-plots-git
 	pkgdesc = Tool to make plots for ledger
-	pkgver = r124.e9283c4
+	pkgver = r134.d9672d7
 	pkgrel = 1
 	url = https://github.com/esovetkin/ledger-plots.git
-	install = usage.install
 	arch = i686
 	arch = x86_64
 	license = GPL

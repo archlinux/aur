@@ -1,5 +1,0 @@
-post_install() {
-	echo ""
-  echo "Run \"ledger-plots -u\" to install missing R-packages"
-  echo ""
-}

@@ -1,6 +1,6 @@
 # Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 pkgname=ledger-plots-git
-pkgver=r124.e9283c4
+pkgver=r134.d9672d7
 pkgrel=1
 pkgdesc="Tool to make plots for ledger"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('ledger-plots')
 replaces=()
 backup=()
 options=()
-install="usage.install"
+install=()
 source=('git+https://github.com/esovetkin/ledger-plots.git')
 noextract=()
 md5sums=('SKIP')
@@ -29,9 +29,11 @@ pkgver() {
 }
 
 package() {
+  mkdir -p ${pkgdir}/usr/lib/R/library
   cd "${srcdir}/${_gitname}"
 
-  install -vDm755 ledger-plots "${pkgdir}/usr/bin/ledger-plots"
+  R CMD INSTALL ledgerplots -l ${pkgdir}/usr/lib/R/library
+  install -vDm755 ${pkgdir}/usr/lib/R/library/ledgerplots/exec/ledger-plots "${pkgdir}/usr/bin/ledger-plots"
   install -vDm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
