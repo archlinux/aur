@@ -12,7 +12,7 @@ pkgbase = zfs-dkms-git
 	source = zfs-utils.initcpio.hook
 	sha256sums = SKIP
 	sha256sums = b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540
-	sha256sums = e33adabbe3f2f4866802c9d63c7810c7a42b4df2288d0cdd23376519b15b36e4
+	sha256sums = 335e309ebf5b74fd8956f5e8805939c37d4008b0bcc3b00be6e7ef1d5b7c1669
 	sha256sums = 290b18f538badce2eedd4ac4926a579535ec6c887436569fa6ff3685b55776bf
 
 pkgname = zfs-dkms-git
@@ -27,19 +27,4 @@ pkgname = zfs-dkms-git
 	conflicts = zfs-dkms
 	conflicts = spl-dkms-git
 	replaces = spl-dkms-git
-
-pkgname = zfs-utils-git
-	pkgdesc = Kernel module support files for the Zettabyte File System. (Git version)
-	install = zfs-utils.install
-	provides = zfs-utils
-	provides = spl-utils
-	conflicts = zfs-utils-dkms-git
-	conflicts = zfs-utils
-	conflicts = zfs-utils-common-git
-	conflicts = zfs-utils-common
-	conflicts = spl-utils-dkms-git
-	replaces = zfs-utils-dkms-git
-	replaces = spl-utils-dkms-git
-	backup = etc/zfs/zed.d/zed.rc
-	backup = etc/default/zfs
 

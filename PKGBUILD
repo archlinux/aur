@@ -2,7 +2,7 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgbase="zfs-dkms-git"
-pkgname=("zfs-dkms-git" "zfs-utils-git")
+pkgname=("zfs-dkms-git")
 pkgver=0.7.0_r1575_g93491c4bb
 pkgrel=1
 license=('CDDL')
@@ -41,7 +41,7 @@ build() {
     make
 }
 
-package_zfs-dkms-git() {
+package() {
     pkgdesc="Kernel modules for the Zettabyte File System. (Git version)"
     depends=("zfs-utils-git=${pkgver}-${pkgrel}" "dkms" "lsb-release")
     provides=("zfs" "spl")
@@ -58,28 +58,4 @@ package_zfs-dkms-git() {
     find . -name ".git*" -print0 | xargs -0 rm -fr --
     scripts/dkms.mkconf -v ${pkgver%%_*} -f dkms.conf -n zfs
     chmod g-w,o-w -R .
-}
-
-package_zfs-utils-git() {
-    pkgdesc="Kernel module support files for the Zettabyte File System. (Git version)"
-    provides=("zfs-utils" "spl-utils")
-    replaces=("zfs-utils-dkms-git" "spl-utils-dkms-git")
-    conflicts=("zfs-utils-dkms-git" "zfs-utils" "zfs-utils-common-git" "zfs-utils-common" "spl-utils-dkms-git")
-    install=zfs-utils.install
-    backup=('etc/zfs/zed.d/zed.rc' 'etc/default/zfs')
-
-    cd "${srcdir}/zfs"
-    make DESTDIR="${pkgdir}" install
-    # Remove uneeded files
-    rm -r "${pkgdir}"/etc/init.d
-    rm -r "${pkgdir}"/usr/lib/dracut
-    # Autoload the zfs module at boot
-    mkdir -p "${pkgdir}/etc/modules-load.d"
-    printf "%s\n" "zfs" > "${pkgdir}/etc/modules-load.d/zfs.conf"
-    # fix permissions
-    chmod 750 ${pkgdir}/etc/sudoers.d
-    # Install the support files
-    install -D -m644 "${srcdir}"/zfs-utils.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
-    install -D -m644 "${srcdir}"/zfs-utils.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
-    install -D -m644 "${srcdir}"/zfs-utils.bash-completion-r1 "${pkgdir}"/usr/share/bash-completion/completions/zfs
 }
