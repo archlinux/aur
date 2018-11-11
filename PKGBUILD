@@ -7,7 +7,7 @@
 # user having to install all kinds of weird things that are not in the AUR or in pacman.
 
 pkgname=chaskis
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A generic framework written in C# for making IRC Bots."
 arch=('any')
@@ -17,7 +17,7 @@ depends=('mono>=5.4.0') # https://docs.microsoft.com/en-us/dotnet/standard/net-s
 provides=('chaskis')
 conflicts=('chaskis')
 source=("https://files.shendrick.net/projects/chaskis/releases/$pkgver/linux/debian/chaskis.deb")
-sha256sums=('448130d6e84d43c1752be8be7d23497e11a3ef9458f3986633cceebae0a011d4')
+sha256sums=('dd0c10192d36d4b80534abb080f161af7900d326ca763366a722849d2df4fea6')
 validpgpkeys=()
 
 package() {
