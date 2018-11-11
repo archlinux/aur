@@ -1,0 +1,5 @@
+cli-*.tgz
+nodejs-nestjs-cli-*-any.pkg.tar.xz
+nodejs-nestjs-cli-*.src.tar.gz
+pkg
+src
