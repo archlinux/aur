@@ -6,9 +6,9 @@
 # http://github.com/archzfs/archzfs
 #
 pkgname="zfs-utils-git"
-_commit='d8244d34bdc3e7b864e0152b55477fa61dae3e90'
+_commit='0500bfd0b9f1393af5bae274551147c5b31e7ccc'
 
-pkgver=2018.11.07.r4820.gd8244d34b
+pkgver=2018.11.09.r4825.g0500bfd0b
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 makedepends=("git")
@@ -29,7 +29,7 @@ groups=("archzfs-linux-git")
 provides=("zfs-utils" "spl-utils")
 install=zfs-utils.install
 conflicts=("zfs-utils" "spl-utils")
-replaces=("spl-utils-common-git")
+replaces=("spl-utils-common-git" "zfs-utils-common-git")
 backup=('etc/zfs/zed.d/zed.rc' 'etc/default/zfs')
 
 build() {
