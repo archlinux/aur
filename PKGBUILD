@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 _pkgname=vulture
 pkgname=python-vulture
-pkgver=0.29
+pkgver=1.0
 pkgrel=1
 pkgdesc="Finds dead code in Python projects"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
 source=(https://github.com/jendrikseipp/$_pkgname/archive/v$pkgver.tar.gz)
-md5sums=('eb4ea5e4e5ad82e4ba6ca598135170d0')
+md5sums=('187065200c6393de45cba33a319a260a')
 
 build() {
   cd "${_pkgname}-$pkgver"
