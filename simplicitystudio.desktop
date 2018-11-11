@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=4
+Type=Application
+Terminal=false
+Exec=/usr/bin/simplicitystudio
+Name=Simplicity Studio
+Path=/opt/simplicitystudio
+Icon=/opt/simplicitystudio/icon.xpm
