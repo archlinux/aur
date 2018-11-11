@@ -22,14 +22,14 @@ _kernelver="4.14.79-1"
 _extramodules="4.14.79-1-lts"
 
 pkgver="${_splver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=2
+pkgrel=3
 makedepends=("linux-lts-headers=${_kernelver}")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_splver}/spl-${_splver}.tar.gz")
 sha256sums=("d6ddd225e7f464007c960f10134c8a48fb0de525f75ad05d5ddf36685b1ced67")
 license=("GPL")
-depends=("spl-utils-common=${_splver}" "kmod" "linux-lts=${_kernelver}")
+depends=("kmod" "linux-lts=${_kernelver}")
 
 build() {
     cd "${srcdir}/spl-${_splver}"
