@@ -3,7 +3,7 @@
 _name=importlab
 
 pkgname=python-importlab
-pkgver=0.3.1
+pkgver=0.4
 pkgrel=1
 pkgdesc="A library to calculate python dependency graphs."
 arch=('any')
@@ -12,8 +12,12 @@ license=('APACHE')
 depends=('python-networkx' 'python-six')
 makedepends=('python' 'python-setuptools')
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/89/f7/ef55882b6db6022ef476a4fbd8c843f3c25971d9d6e7766be9ae6f11146e/importlab-0.3.1.tar.gz")
-sha256sums=('b5fdb0e32c43192aa13869c9b14a8141ec5f73c406581fa544e57a12cda2ae53')
+source=(
+  'https://files.pythonhosted.org/packages/eb/0b/d3473b5719888a5bb889e9559ddc040a6cf7036dfcbbf72db180716cafdc/importlab-0.4.tar.gz'
+  )
+sha256sums=(
+  'de791a75fcf9f4b856e4bdb5c267c008f8cfb916543b34be78e331ed05ac6d36'
+  )
 
 build(){
   cd "${srcdir}/${_name}-${pkgver}"
@@ -23,6 +27,7 @@ build(){
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
   install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+  install -Dm644 CHANGELOG "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG"
   install -Dm644 CONTRIBUTING.md "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTING.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
