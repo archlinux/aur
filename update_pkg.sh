@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ver=$(curl -sL 'https://packages.ubuntu.com/bionic/amd64/chromium-codecs-ffmpeg-extra/download' |pup 'kbd text{}'|head -n1 | cut -d_ -f2)
-md5=$(curl -sL 'https://packages.ubuntu.com/bionic/amd64/chromium-codecs-ffmpeg-extra/download' |pup '#pdownloadmeta tr:nth-child(2) tt text{}'|head -n1)
+ver=$(curl -sL 'https://packages.ubuntu.com/cosmic/amd64/chromium-codecs-ffmpeg-extra/download' |pup 'kbd text{}'|head -n1 | cut -d_ -f2)
+md5=$(curl -sL 'https://packages.ubuntu.com/cosmic/amd64/chromium-codecs-ffmpeg-extra/download' |pup '#pdownloadmeta tr:nth-child(2) tt text{}'|head -n1)
 
 ver1=$(echo $ver | cut -d\- -f1)
 ver2=$(echo $ver | cut -d\- -f2)
