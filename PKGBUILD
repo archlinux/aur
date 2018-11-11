@@ -1,13 +1,13 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail: danielbermond >
 # Contributor: Rainmaker <rainmaker52@gmail.com>
 # Contributor: gary9872	<garysBoXatgeemale.com>
 # Contributor: khomutsky <bogdan@khomutsky.com>
 # Contributor: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=5.2.20
-_build=125813
-_rev=74845
+pkgver=5.2.22
+_build=126460
+_rev=75085
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBoxSDK-${pk
 source_i686=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_x86.run")
 source_x86_64=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_amd64.run")
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('d4ac4d314d22f49d3b2b4e9c2c9db661f13e37a99c1d126bf3582a9b6411007e'
+sha256sums=('b15fc5330d435834c1a683c63b4117feb7cb96a02a30a0c034b8c4c746c93259'
             '23e3e0e6abfaa69bf0aa046c0ee070d19435b97cb4bfbb16bba65a2783502154'
             '815f6e2e3ab687356aad0e6f59eef6e266514fb12a6b569d239d834e0a480f37'
             '99deff35d8a600f20223b96ba409451834e58ac21a589a989dd82a2d6fe006ae'
@@ -51,8 +51,8 @@ sha256sums=('d4ac4d314d22f49d3b2b4e9c2c9db661f13e37a99c1d126bf3582a9b6411007e'
             'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
             'e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801'
             '5112f0e1ba3bd0bd92ef2edb2d21024e265abb02841aa29aa05410526adc273f')
-sha256sums_i686=('2ac6ba596600100ac6cbf22fca834bd1fe093c05acb41cc7d7ac773e29302140')
-sha256sums_x86_64=('ce8d89cbfbfb0afeca835473349f37dc97620cab93430d68ac1d2c6c7c05e453')
+sha256sums_i686=('df4b30195b2fb25c30085349e8abf5bd8c286973bed933075b7963c52e2e767e')
+sha256sums_x86_64=('e48984cf0cc0dc0dd7035519fe747b77544e3fb6ac17cecbf934c7eef7224088')
 
 prepare() {
     [ "$CARCH" = 'i686'   ] && local _arch='x86'
