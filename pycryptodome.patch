@@ -1,0 +1,27 @@
+diff --git a/selfspy/__init__.py b/selfspy/__init__.py
+index b77b814..e93dacb 100755
+--- a/selfspy/__init__.py
++++ b/selfspy/__init__.py
+@@ -72,7 +72,7 @@ def make_encrypter(password):
+     if password == "":
+         encrypter = None
+     else:
+-        encrypter = Blowfish.new(hashlib.md5(password).digest())
++        encrypter = Blowfish.new(hashlib.md5(password).digest(), Blowfish.MODE_ECB)
+     return encrypter
+ 
+ 
+diff --git a/selfspy/stats.py b/selfspy/stats.py
+index 609b59f..a1dc0a3 100755
+--- a/selfspy/stats.py
++++ b/selfspy/stats.py
+@@ -551,7 +551,7 @@ def make_encrypter(password):
+     if password == "":
+         encrypter = None
+     else:
+-        encrypter = Blowfish.new(hashlib.md5(password).digest())
++        encrypter = Blowfish.new(hashlib.md5(password).digest(), Blowfish.MODE_ECB)
+     return encrypter
+ 
+ 
+
