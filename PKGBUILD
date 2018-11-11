@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/tjonjic/umps/archive/master
 md5sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-master"
   libtoolize --force
   aclocal
   autoreconf -vfi
@@ -24,11 +24,11 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-master"
 	make -k check
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-master"
 	make DESTDIR="$pkgdir/" install
 }
