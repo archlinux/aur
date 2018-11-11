@@ -22,14 +22,14 @@ _kernelver="4.18.16.zen1-1"
 _extramodules="${_kernelver/.zen/-zen}-zen"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=2
+pkgrel=3
 makedepends=("linux-zen-headers=${_kernelver}" "spl-linux-zen-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
 sha256sums=("4dff9ecce6e02061242d9435febe88c1250de83b96d392b712bccf31c459517a")
 license=("CDDL")
-depends=("kmod" 'spl-linux-zen' "zfs-utils-common=${_zfsver}" "linux-zen=${_kernelver}")
+depends=("kmod" 'spl-linux-zen' "zfs-utils=${_zfsver}" "linux-zen=${_kernelver}")
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
