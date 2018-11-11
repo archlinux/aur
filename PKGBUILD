@@ -8,7 +8,7 @@
 pkgname="spl-utils"
 
 pkgver=0.7.11
-pkgrel=2
+pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
 url="http://zfsonlinux.org/"
@@ -19,7 +19,7 @@ license=("GPL")
 provides=("spl-utils")
 makedepends=()
 conflicts=("spl-utils")
-replaces=("spl-utils-linux", "spl-utils-linux-lts")
+replaces=("spl-utils-linux", "spl-utils-linux-lts" "spl-utils-common")
 
 build() {
     cd "${srcdir}/spl-${pkgver}"
