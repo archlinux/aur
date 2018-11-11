@@ -7,13 +7,13 @@ microprocessor."
 arch=('x86_64')
 url="http://mps.sourceforge.net/"
 license=('GPL2')
-depends=('qt4' 'libelf' 'boost' 'libsigc++')
+depends=('qt4' 'libelf' 'boost' 'libsigc++' "cross-mipsel-linux-gnu-gcc")
 makedepends=('git' 'libtool' 'm4' 'automake' 'autoconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tjonjic/umps/archive/master.tar.gz")
 md5sums=('SKIP')
 
 build() {
-  cd "$pkgname-master"
+  cd ${srcdir}/"$pkgname-master"
   libtoolize --force
   aclocal
   autoreconf -vfi
@@ -24,11 +24,11 @@ build() {
 }
 
 check() {
-  cd "$pkgname-master"
+  cd ${srcdir}/"$pkgname-master"
 	make -k check
 }
 
 package() {
-  cd "$pkgname-master"
+  cd ${srcdir}/"$pkgname-master"
 	make DESTDIR="$pkgdir/" install
 }
