@@ -2,8 +2,8 @@
 # Contributor: Adam Harvey <adam@adamharvey.name>
 
 pkgname=apfs-fuse-git
-pkgver=r61.4a5bb16
-pkgrel=2
+pkgver=r68.c7036a3
+pkgrel=1
 pkgdesc="FUSE driver for APFS (Apple File System)"
 arch=('i686' 'x86_64')
 url="https://github.com/sgan81/apfs-fuse"
@@ -39,6 +39,6 @@ build() {
 package() {
   cd "${pkgname%-git}/build"
   for binary in apfs-dump apfs-dump-quick apfs-fuse ; do
-    install -Dm755 bin/$binary "$pkgdir/usr/bin/$binary"
+    install -Dm755 $binary "$pkgdir/usr/bin/$binary"
   done
 }
