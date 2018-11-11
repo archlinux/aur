@@ -33,11 +33,6 @@ pkgver() {
   python setup.py patch_version | sed -n '/^patching version to /{s///;s/+/./;p;Q0};${Q1}'
 }
 
-prepare() {
-  cd "$pkgname"
-  sed -i '/^\s*PyQt5\b.*/d' setup.cfg
-}
-
 build() {
   cd "$pkgname"
   python setup.py build
