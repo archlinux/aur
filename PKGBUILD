@@ -4,7 +4,7 @@
 
 pkgname=netradiant-git
 pkgver=r1754.7ce48a41
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GTKRadiant fork) - git version'
 url='https://gitlab.com/xonotic/netradiant'
@@ -27,12 +27,12 @@ build() {
 	cd "${srcdir}/${pkgname}/"
 
 	## Needs Internet; Downloads gamepacks
-	## Possible values for the GAMEPACKS_LICENSE filter are "free", "all" (free + proprietary) and "none"
-	## To only fetch Xonotic and Unvanquished gamepacks for example, use -DGAMEPACKS_LICENSE=none with -DGAMEPACKS_NAME="Xonotic Unvanquished"
+	## Possible values for the GAMEPACKS_LICENSE_LIST filter are "free", "all" (free + proprietary) and "none"
+	## To only fetch Xonotic and Unvanquished gamepacks for example, use -DGAMEPACKS_LICENSE_LIST=none with -DGAMEPACKS_NAME_LIST="Xonotic Unvanquished"
 	cmake -G 'Unix Makefiles' -H. -Bbuild -DCMAKE_BUILD_TYPE=Release \
 	-DDOWNLOAD_GAMEPACKS=ON \
-	-DGAMEPACKS_LICENSE=free \
-	-DGAMEPACKS_NAME=none
+	-DGAMEPACKS_LICENSE_LIST=free \
+	-DGAMEPACKS_NAME_LIST=none
 
 	cmake --build build --target install -- -j$(nproc)
 }
