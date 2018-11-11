@@ -1,10 +1,10 @@
 # Mantainer: Sean Anderson <seanga2@gamil.com>
 pkgname=proton
 # Upstream version
-_pkgver='3.7beta-20180824'
+_pkgver='3.16beta-20181031'
 # Version for arch
 #pkgver="${_pkgver//_/-}"
-pkgver=3.7_20180824_beta
+pkgver=3.16_20181031_beta
 pkgrel=1
 epoch=
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
@@ -15,10 +15,10 @@ groups=()
 depends=(
 	'python2'
 	'wine'
-#	'openvr'
+	#'openvr'
 )
 makedepends=(
-#	'vulkan-headers'
+	#'vulkan-headers'
 )
 checkdepends=()
 optdepends=()
@@ -31,7 +31,7 @@ install=
 changelog=
 source=("https://github.com/ValveSoftware/Proton/archive/$pkgname-$_pkgver.tar.gz")
 noextract=()
-md5sums=('1ee5c8c0f53bb5cf9d0d2375940a9f59')
+md5sums=('aa3ad16ebfc99296a2a280c58a692e9c')
 
 prepare() {
 	cd "Proton-$pkgname-$_pkgver"
@@ -80,7 +80,7 @@ package() {
 	install -d -m755 $pkgdir/usr/share/licenses/$pkgname
 	install -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	install -m644 LICENSE.proton $pkgdir/usr/share/licenses/$pkgname/LICENSE.proton
-	install -m644 dist.LICENSE.lin $pkgdir/usr/share/licenses/$pkgname/dist.LICENSE.lin
+	install -m644 dist.LICENSE $pkgdir/usr/share/licenses/$pkgname/dist.LICENSE
 
 	install -d -m755 $pkgdir/usr/share/doc/$pkgname
 	install -m644 README.md $pkgdir/usr/share/doc/$pkgname/README.md
