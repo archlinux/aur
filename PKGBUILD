@@ -5,7 +5,7 @@
 _pkgname=a52dec
 pkgname=lib32-a52dec
 pkgver=0.7.4
-pkgrel=8
+pkgrel=9
 pkgdesc="A free library for decoding ATSC A/52 streams"
 url="http://liba52.sourceforge.net/"
 arch=('x86_64')
