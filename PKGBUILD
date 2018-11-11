@@ -5,7 +5,7 @@ _pkgver='3.16beta-20181031'
 # Version for arch
 #pkgver="${_pkgver//_/-}"
 pkgver=3.16_20181031_beta
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
@@ -14,11 +14,11 @@ license=('BSD')
 groups=()
 depends=(
 	'python2'
-	'wine'
-	#'openvr'
+	'openvr'
+	'wine-valve'
 )
 makedepends=(
-	#'vulkan-headers'
+	'vulkan-headers'
 )
 checkdepends=()
 optdepends=()
@@ -35,7 +35,7 @@ md5sums=('aa3ad16ebfc99296a2a280c58a692e9c')
 
 prepare() {
 	cd "Proton-$pkgname-$_pkgver"
-	sed -i 's/openvr_v0.9.16//g' vrclient_x64/vrclient_x64/*
+	sed -i 's,wined3d-interop.h,wine/wined3d-interop.h,g' vrclient_x64/vrclient_x64/*
 }
 
 build() {
@@ -61,13 +61,23 @@ build() {
 	cd ../..
 
 	# Currently depends on the custom bundled wine
-	# Will be re-enabled after I can make a package for it
-	#mkdir -p build/vrclient.win32
-	#cp -a vrclient_x64/* build/vrclient.win32
-	#cd build/vrclient.win32/vrclient_x64
-	#winemaker $WINEMAKEFLAGS32 .
-	#CXXFLAGS="$CXXFLAGS --std=c++0x" make
-	#winebuild --dll --fake-module -E vrclient_64.spec -o vrclient.dll.fake
+	mkdir -p build/vrclient.win32
+	cp -a vrclient_x64/* build/vrclient.win32
+	rm -rf build/vrclient.win32/vrclient
+	mv build/vrclient.win32/vrclient_x64 build/vrclient.win32/vrclient
+	cd build/vrclient.win32/vrclient
+	mv -u vrclient_x64.spec vrclient.spec
+	winemaker -I.. $WINEMAKEFLAGS32 .
+	CXXFLAGS="$CXXFLAGS --std=c++0x" make
+	winebuild --dll --fake-module -E vrclient.spec -o vrclient.dll.fake
+	cd ../../..
+
+	mkdir -p build/vrclient.win64
+	cp -a vrclient_x64/* build/vrclient.win64
+	cd build/vrclient.win64/vrclient_x64
+	winemaker -I.. $WINEMAKEFLAGS .
+	CXXFLAGS="$CXXFLAGS --std=c++0x" make
+	winebuild --dll --fake-module -E vrclient_x64.spec -o vrclient_x64.dll.fake
 }
 
 check() {
@@ -87,11 +97,15 @@ package() {
 
 	install -d -m755 $pkgdir/usr/lib32/wine
 	install -m755 build/lsteamclient.win32/lsteamclient.dll.so $pkgdir/usr/lib32/wine/
-	#install build/vrclient.win32/vrclient.dll.so $pkgdir/usr/lib32/wine/
+	install -m755 build/vrclient.win32/vrclient/vrclient.dll.so $pkgdir/usr/lib32/wine/
 
-	#install -d $pkgdir/usr/lib32/wine/fakedlls
-	#install build/vrclient.win32/vrclient.dll.fake $pkgdir/lib/wine/fakedlls/vrclient.dll
+	install -d $pkgdir/usr/lib32/wine/fakedlls
+	install -m644 build/vrclient.win32/vrclient/vrclient.dll.fake $pkgdir/usr/lib32/wine/fakedlls/vrclient.dll
 
 	install -d -m755 $pkgdir/usr/lib/wine
 	install -m755 build/lsteamclient.win64/lsteamclient.dll.so $pkgdir/usr/lib/wine/
+	install -m755 build/vrclient.win64/vrclient_x64/vrclient_x64.dll.so $pkgdir/usr/lib/wine/
+
+	install -d $pkgdir/usr/lib/wine/fakedlls
+	install -m644 build/vrclient.win64/vrclient_x64/vrclient_x64.dll.fake $pkgdir/usr/lib32/wine/fakedlls/vrclient_x64.dll
 }
