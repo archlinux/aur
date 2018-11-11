@@ -22,14 +22,14 @@ _kernelver="4.14.79-1"
 _extramodules="4.14.79-1-lts"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=2
+pkgrel=3
 makedepends=("linux-lts-headers=${_kernelver}" "spl-linux-lts-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
 sha256sums=("4dff9ecce6e02061242d9435febe88c1250de83b96d392b712bccf31c459517a")
 license=("CDDL")
-depends=("kmod" 'spl-linux-lts' "zfs-utils-common=${_zfsver}" "linux-lts=${_kernelver}")
+depends=("kmod" 'spl-linux-lts' "zfs-utils=${_zfsver}" "linux-lts=${_kernelver}")
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
