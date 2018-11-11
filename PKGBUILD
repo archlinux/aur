@@ -2,7 +2,7 @@
 
 pkgname=ipython-7
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="IPython provides a rich toolkit to help you make the most of using Python interactively"
 url="https://ipython.readthedocs.io/en/stable/"
 arch=(any)
@@ -15,6 +15,7 @@ depends=(
     'python-pickleshare'
     'python-decorator'
     'python-jedi'
+    'python-backcall'
 )
 provides=('ipython' 'ipython-7')
 conflicts=('ipython')
