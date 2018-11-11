@@ -1,0 +1,15 @@
+pkgbase = bittorrent-tracker-editor-bin
+	pkgdesc = Software for add or remove tracker from torrent files
+	pkgver = 1.33.0.beta.5
+	pkgrel = 1
+	url = https://github.com/GerryFerdinandus/bittorrent-tracker-editor/
+	arch = x86_64
+	license = MIT
+	depends = gtk2
+	source = https://github.com/GerryFerdinandus/bittorrent-tracker-editor/releases/download/1.33.0.beta.5/trackereditor_linux_amd64.zip
+	source = LICENSE::https://raw.githubusercontent.com/GerryFerdinandus/bittorrent-tracker-editor/master/MIT_License.txt
+	md5sums = 9e165a8d8de75a99bd2c4109eefb707f
+	md5sums = 67fc79e3a495880245a6abd65c47320b
+
+pkgname = bittorrent-tracker-editor-bin
+
