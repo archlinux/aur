@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
     cd "${_gitname}/"
-    meson . _build --prefix=/usr
+    meson . _build --prefix=/usr --buildtype=debug -Ddistro=arch
     ninja -C _build
 }
 
