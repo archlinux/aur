@@ -1,7 +1,7 @@
 # Maintainer: Marcel Korpel <marcel[dot]korpel[at]gmail>
 
 _truepkgname=GemistDownloader
-pkgver=2.9.0.6
+pkgver=2.9.0.7
 pkgname=${_truepkgname,,}
 _pkgver=${pkgver//.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=('CCPL:by-nc-nd')
 depends=('gtk-sharp-2' 'ffmpeg' 'sh')
 source=(http://www.helpdeskweb.nl/mono_${_truepkgname}_${_pkgver}.zip
         ${pkgname}.sh)
-sha256sums=('bfef419d607a0e0d34168ff5f325a8b4e73e3e9d17c3f0a9d119be89280bcf2a'
+sha256sums=('7e1fc7b2cd848ca40872649bbbed213b5ef84a272067fadc17f148a1a23c99b1'
             '08fa204eec19b630837409c66bfe087a21bcebffa57f14919f1b88435f70da3a')
 
 package() {
