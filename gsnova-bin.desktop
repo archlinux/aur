@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Gsnova
+Exec=gsnova-bin
+Terminal=true
+Type=Application
+Icon=/opt/gsnova-bin/ic_launcher.png
