@@ -1,7 +1,7 @@
 pkgbase = simplicitystudio
 	pkgdesc = Design tools, documentation, software and support resources for EFM32™, EFM8™, 8051, Wireless MCUs and Wireless SoCs.
 	pkgver = 4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.silabs.com/products/development-tools/software/simplicity-studio
 	arch = x86_64
 	license = unknown
@@ -12,11 +12,9 @@ pkgbase = simplicitystudio
 	options = !strip
 	backup = opt/simplicitystudio/studio.ini
 	source = https://www.silabs.com/documents/login/software/SimplicityStudio-v4.tgz
-	source = gtk-version-2.patch
 	source = simplicitystudio.sh
 	source = simplicitystudio.desktop
 	sha256sums = ff58b0a78e9fb63cb12ce784b58c83ea62096981f21187c9b200edc0898216f9
-	sha256sums = 55445982b1940d3d6eb51ee5034313845c56d1540045ddd435649d51532eee66
 	sha256sums = bc844e45b04bd73f684206de38b67be186634b63a850cacd1e6ed374ae9c0579
 	sha256sums = c29c27fa0182b3c38e5be0830d634aca6ed6d88109695226471a5ef40165a622
 
