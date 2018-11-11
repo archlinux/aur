@@ -1,14 +1,14 @@
 pkgbase = keneric
 	pkgdesc = A generic thumbnailer for KDE
 	pkgver = 0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://kde-apps.org/content/show.php/?content=174485
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
 	depends = kio
-	source = https://dl.opendesktop.org/api/files/download/id/1460971625/s/03c3f47aeded4f412f204033f0c18540/t/1541527523/u//174485-keneric-0.3.tar.gz
+	source = https://dl.opendesktop.org/api/files/download/id/1460971625/s/3ec881e34ed7ecca06fd020fa4e475a79310fe214a1229fada9cebf695a145afab8ec89217a9bbecc3da122ad6b09cdbd915b749074c3c4bb395d656432ac16c/t/1541944963/u//174485-keneric-0.3.tar.gz
 	source = stripPicture
 	source = kenerickrita.desktop
 	source = kenericblend.desktop
