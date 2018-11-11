@@ -1,7 +1,7 @@
 pkgbase = ipython-7
 	pkgdesc = IPython provides a rich toolkit to help you make the most of using Python interactively
 	pkgver = 7.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ipython.readthedocs.io/en/stable/
 	arch = any
 	license = BSD
