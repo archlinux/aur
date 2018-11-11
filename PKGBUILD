@@ -1,6 +1,6 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com>
 pkgname=qdirstat
-pkgver=1.4
+pkgver=1.5
 pkgrel=2
 pkgdesc="Qt-based directory statistics (KDirStat/K4DirStat without any KDE - from the original KDirStat author)"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ options=()
 install=qdirstat.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shundhammer/qdirstat/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('7f9a0a7304c55ebfad1e50c7747ba762b07068f48304b3d3919bdb65ee037999')
+sha256sums=('5de21fb1ccc9f4df29b2969aa652237b4430e2cfbe37f6eda088482ed44bdbf5')
 
 
 build() {
