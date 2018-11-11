@@ -18,8 +18,8 @@ sha256sums=('b6bd6c2ac17d37bc425ffd4d92d1b8df67e47819b95ece1065a63a6998b6a453')
 prepare() {
   # remove unused sqlite binaries
   cd "${srcdir}/${pkgname}-${pkgver}/src/main/resources/org/sqlite/native"
-  find . -mindepth 1 -maxdepth 1 ! -name Linux -exec rm -r {} +
-  find Linux -mindepth 1 -maxdepth 1 ! -name "$CARCH" -exec rm -r {} +
+  find . ! -path "./Linux/$CARCH/*" -type f -delete
+  find . -type d -empty -delete
 }
 
 build() {
