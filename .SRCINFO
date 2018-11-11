@@ -1,0 +1,17 @@
+pkgbase = vim-closetag-git
+	pkgdesc = Auto close (X)HTML tags
+	pkgver = r45.6fe822a
+	pkgrel = 1
+	url = https://github.com/alvan/vim-closetag
+	arch = any
+	license = unknown
+	makedepends = git
+	optdepends = vim
+	optdepends = neovim
+	provides = vim-closetag
+	conflicts = vim-closetag
+	source = git+https://github.com/alvan/vim-closetag
+	md5sums = SKIP
+
+pkgname = vim-closetag-git
+
