@@ -1,15 +1,19 @@
 pkgbase = gsnova-bin
 	pkgdesc = Private Proxy Solution & Network Troubleshooting Tool.
 	pkgver = 0.34.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yinqiwen/gsnova
 	arch = x86_64
 	license = BSD
 	backup = opt/gsnova-bin/client.json
 	source = https://github.com/yinqiwen/gsnova/releases/download/0.34.0/gsnova_linux_amd64-0.34.0.tar.bz2
 	source = gsnova-bin
+	source = gsnova-bin.desktop
+	source = ic_launcher.png
 	md5sums = 2ac56445211043b595f4bcab990d7abf
 	md5sums = efcf0abd9fe1915af870121e3e209e1a
+	md5sums = 900764849fef642d922b73cab2c1a724
+	md5sums = 035eca5776ea3b108463709387f2c759
 
 pkgname = gsnova-bin
 
