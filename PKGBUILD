@@ -17,7 +17,7 @@ license=('GPL' 'MPL' 'LGPL')
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'ffmpeg'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'autoconf2.13'
-             'libpulse' 'gst-plugins-base-libs' 'inetutils' 'rust')
+             'libpulse' 'gst-plugins-base-libs' 'inetutils' 'rust' 'llvm')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'

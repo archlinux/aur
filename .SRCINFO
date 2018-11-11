@@ -20,6 +20,7 @@ pkgbase = icecat
 	makedepends = gst-plugins-base-libs
 	makedepends = inetutils
 	makedepends = rust
+	makedepends = llvm
 	depends = gtk3
 	depends = gtk2
 	depends = mozilla-common
