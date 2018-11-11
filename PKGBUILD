@@ -9,7 +9,8 @@ url="http://mps.sourceforge.net/"
 license=('GPL2')
 depends=('qt4' 'libelf' 'boost' 'libsigc++')
 makedepends=('git' 'libtool' 'm4' 'automake' 'autoconf')
-source=("git+https://github.com/tjonjic/umps")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/tjonjic/umps/archive/master.tar.gz")
+md5sums=('SKIP')
 
 build() {
   libtoolize --force
