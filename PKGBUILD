@@ -64,12 +64,12 @@ _rev_override="n"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-clear
-_major=4.18
-_minor=18
+_major=4.19
+_minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${_major}
 pkgrel=1
-_clr=${_major}.16-651
+_clr=654
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -77,10 +77,10 @@ makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
 options=('!strip')
 _gcc_more_v='20180509'
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar.xz"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
+  "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar.sign"
+  "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${pkgver}-${_clr}"
   'https://downloadmirror.intel.com/28039/eng/microcode-20180807.tgz'
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   '60-linux.hook'  # pacman hook for depmod
@@ -106,7 +106,7 @@ prepare() {
         echo "$_kernelname" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0500' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0501' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
@@ -335,9 +335,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('19d8bcf49ef530cd4e364a45b4a22fa70714b70349c8100e7308488e26f1eaf1'
+sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            'e886822aa7e2fcd83374330255a49d9ff691632d2b43c63d174fbc006891d541'
+            'bc426a43063b0bf5f9bc59be969338e34276e4a0dbbdb50914beae59a28a3fc1'
             'SKIP'
             '29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
