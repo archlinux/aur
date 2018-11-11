@@ -16,12 +16,7 @@ source=('SID::git+https://github.com/FigBug/SID.git'
                 'dRowAudio::git+https://github.com/FigBug/drowaudio.git#commit=3a1e6eb75681b166c055c501a2ed4a8df8a44df0'
                 'slCommon::git+https://github.com/FigBug/slCommon.git#commit=b49d31c4f2f131506fe5ac53f2ac6e47b3ee109b'
     'gin::git+https://github.com/FigBug/Gin'
-                'JUCE::git+https://github.com/WeAreROLI/JUCE.git#branch=develop')
-# Note: This package requires features in the develop branch of JUCE
-# This package can likely be moved to depend on the juce AUR package
-# after an upstream JUCE release.
-# FYI: This can be accomplished by symlinking /opt/JUCE to $srcdir/JUCE
-# in the future.
+                'JUCE::git+https://github.com/WeAreROLI/JUCE.git#tag=5.3.2')
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {

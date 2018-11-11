@@ -13,7 +13,7 @@ pkgbase = sid-vst-git
 	source = dRowAudio::git+https://github.com/FigBug/drowaudio.git#commit=3a1e6eb75681b166c055c501a2ed4a8df8a44df0
 	source = slCommon::git+https://github.com/FigBug/slCommon.git#commit=b49d31c4f2f131506fe5ac53f2ac6e47b3ee109b
 	source = gin::git+https://github.com/FigBug/Gin
-	source = JUCE::git+https://github.com/WeAreROLI/JUCE.git#branch=develop
+	source = JUCE::git+https://github.com/WeAreROLI/JUCE.git#tag=5.3.2
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
