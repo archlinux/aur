@@ -2,6 +2,7 @@
 # Contributor: Daniel Bermond <danielbermond@yahoo.com>
 # Contributor: Sidney Crestani <sidneycrestani@archlinux.net>
 # Contributor: sxe <sxxe@gmx.de>
+# Conttributor: xiretza <xiretza+aur@gmail.com>
 
 pkgname=wine-valve-git
 pkgver=3.16.r203.g174d487bf8
@@ -11,6 +12,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/wine-mirror/wine'
 license=('LGPL')
 _depends=(
+    'sdl2'                  'lib32-sdl2'
     'fontconfig'            'lib32-fontconfig'
     'lcms2'                 'lib32-lcms2'
     'libxml2'               'lib32-libxml2'

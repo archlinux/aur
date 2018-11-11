@@ -58,6 +58,8 @@ pkgbase = wine-valve-git
 	makedepends = samba
 	makedepends = opencl-headers
 	makedepends = vulkan-headers
+	makedepends = sdl2
+	makedepends = lib32-sdl2
 	makedepends = fontconfig
 	makedepends = lib32-fontconfig
 	makedepends = lcms2
@@ -146,6 +148,8 @@ pkgbase = wine-valve-git
 	sha256sums = 6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4
 
 pkgname = wine-valve-git
+	depends = sdl2
+	depends = lib32-sdl2
 	depends = fontconfig
 	depends = lib32-fontconfig
 	depends = lcms2
