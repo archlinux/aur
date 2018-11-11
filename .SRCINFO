@@ -1,6 +1,6 @@
 pkgbase = birdie-git
 	pkgdesc = Twitter client for Linux
-	pkgver = 1.1+git.95.g9d7e4e5
+	pkgver = 1.1+git.96.gee6112a
 	pkgrel = 1
 	url = http://birdieapp.github.io
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = birdie-git
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = vala
-	depends = granite-git
+	depends = granite
 	depends = libpurple
 	depends = gtksourceview3
 	depends = libdbusmenu-gtk3

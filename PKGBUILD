@@ -2,13 +2,13 @@
 # Contributor : Ivo Nunes <ivoavnunes at gmail dot com>
 _pkgname="birdie"
 pkgname="${_pkgname}-git"
-pkgver=1.1+git.95.g9d7e4e5
+pkgver=1.1+git.96.gee6112a
 pkgrel=1
 pkgdesc="Twitter client for Linux"
 arch=('i686' 'x86_64')
 url="http://birdieapp.github.io"
 license=('GPL3')
-depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'granite-git' 'libpurple' 'gtksourceview3' 'libdbusmenu-gtk3' 'webkit2gtk') 
+depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'granite' 'libpurple' 'gtksourceview3' 'libdbusmenu-gtk3' 'webkit2gtk') 
 makedepends=('git' 'desktop-file-utils' 'hicolor-icon-theme' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection' 'meson' 'ninja')
 options=('!libtool')
 conflicts=('birdie' 'birdie-bzr')
