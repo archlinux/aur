@@ -1,7 +1,7 @@
 pkgbase = networkd-dispatcher
 	pkgdesc = A dispatcher daemon for systemd-networkd events
-	pkgver = 1.7
-	pkgrel = 2
+	pkgver = 2.0
+	pkgrel = 1
 	url = https://gitlab.com/craftyguy/networkd-dispatcher
 	arch = any
 	license = GPL3
@@ -14,8 +14,8 @@ pkgbase = networkd-dispatcher
 	provides = networkd-dispatcher
 	conflicts = networkd-dispatcher
 	backup = etc/conf.d/networkd-dispatcher.conf
-	source = https://gitlab.com/craftyguy/networkd-dispatcher/-/archive/1.7/networkd-dispatcher-1.7.tar.bz2
-	sha512sums = 4381ce8357e4edf8c603ec036c3fe2553f844192d85863cc8191e5c3b9c425ea70d80468abeb4a09bad5ad2630e6791efcc41e8e213ff77cab60a128e2bf145d
+	source = https://gitlab.com/craftyguy/networkd-dispatcher/-/archive/2.0/networkd-dispatcher-2.0.tar.bz2
+	sha512sums = 20b5477b62dacb166704d8ce432b76436826baba9d31593b3dc4960d9ba27bac839eac12d8b90cd2420dc75dd00b117f20d008d5f1879cc5fdddfd83812bf0a5
 
 pkgname = networkd-dispatcher
 
