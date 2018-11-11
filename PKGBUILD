@@ -3,7 +3,7 @@
 pkgname=vaclist
 pkgver=r25.b45f2ce
 pkgrel=1
-pkgdesc='Add and check steam profiles to monitor profiles for bans'
+pkgdesc='Monitor steam profiles for bans'
 url='https://github.com/DNDEBUG/vaCLIst'
 license=('GPL3')
 arch=('any')
