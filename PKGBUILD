@@ -1,16 +1,20 @@
-# Maintainer: bugabinga <okrylow@gmail.com>
+# Contributor: bugabinga <okrylow@gmail.com>
+
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
 
 pkgname="brother-mfc-j4410dw"
 pkgver="3.0.1"
-pkgrel=1
-pkgdesc="LPR and CUPS driver for the Brother MFC-J4410DW"
+pkgrel=2
+pkgdesc='LPR and CUPS driver for the Brother MFC-J4410DW'
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
 depends=('cups')
+[[ $CARCH == x86_64 ]] && depends+=('lib32-gcc-libs')
 install="$pkgname.install"
-source=("http://www.brother.com/pub/bsc/linux/dlf/mfcj4410dwlpr-$pkgver-$pkgrel.i386.rpm"
-        "http://www.brother.com/pub/bsc/linux/dlf/mfcj4410dwcupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://www.brother.com/pub/bsc/linux/dlf/mfcj4410dwlpr-$pkgver-1.i386.rpm"
+        "http://www.brother.com/pub/bsc/linux/dlf/mfcj4410dwcupswrapper-$pkgver-1.i386.rpm"
         'cupswrapper-license.txt'
         'lpr-license.txt')
 md5sums=('ff42d0cf694f25e97dfe7a296a557d42'
