@@ -1,4 +1,4 @@
-pkgbase = umps-git
+pkgbase = umps
 	pkgdesc = Virtual machine simulator based around the MIPS R2/3000 microprocessor.
 	pkgver = 2.0.1
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = umps-git
 	depends = libsigc++
 	source = git+https://github.com/tjonjic/umps
 
-pkgname = umps-git
+pkgname = umps
 

@@ -1,6 +1,5 @@
 # Maintainer: Mattia Biondi <mattia dot biondi3 at studio dot unibo dot it>
-_pkgname=umps
-pkgname="$_pkgname"-git
+pkgname=umps
 pkgver=2.0.1
 pkgrel=1
 pkgdesc="Virtual machine simulator based around the MIPS R2/3000
