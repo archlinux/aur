@@ -1,0 +1,14 @@
+pkgbase = xcursor-pixelfun3
+	pkgdesc = Minimalistic cursor theme with a piece of old-school
+	pkgver = 1.3
+	pkgrel = 1
+	epoch = 1
+	url = https://www.gnome-look.org/p/1190830/
+	arch = any
+	license = unknown
+	makedepends = curl
+	source = xcursor-pixelfun3-1.3.tar.gz::https://dl.opendesktop.org/api/files/download/id/1505142083/s/179346e57f0597f8d26cef2add70500845b4f9af0d63cd73fdecffdf3fe4d023d836fd7cc7e7eecf28fd811164ed3139e960872316baddfa4a02682cf2034112/t/1541973798/u//168338-pixelfun3.tar.gz
+	sha256sums = 05cb3a14a2e32640c9e0fb9567df8c27b483d7e3cff72751720825a8266e5496
+
+pkgname = xcursor-pixelfun3
+
