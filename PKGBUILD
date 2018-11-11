@@ -5,7 +5,7 @@
 #
 # http://github.com/archzfs/archzfs
 #
-pkgname="spl-utils-common"
+pkgname="spl-utils"
 
 pkgver=0.7.11
 pkgrel=2

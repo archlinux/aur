@@ -1,4 +1,4 @@
-pkgbase = spl-utils-common
+pkgbase = spl-utils
 	pkgdesc = Solaris Porting Layer kernel module support files.
 	pkgver = 0.7.11
 	pkgrel = 2
@@ -13,5 +13,5 @@ pkgbase = spl-utils-common
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.11/spl-0.7.11.tar.gz
 	sha256sums = d6ddd225e7f464007c960f10134c8a48fb0de525f75ad05d5ddf36685b1ced67
 
-pkgname = spl-utils-common
+pkgname = spl-utils
 
