@@ -2,14 +2,14 @@
 
 pkgname=mattermost-git
 _pkgname="${pkgname%-git}"
-pkgver=5.1.0.r37.gf2c180390
+pkgver=5.1.0.r358.g7a758eae7
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://mattermost.com"
 license=('AGPL' 'Apache')
 
-makedepends=('git' 'go' 'libpng12' 'npm')
+makedepends=('git' 'go-pie' 'libpng12' 'npm')
 # Experiencing issues with gifsicle. Using system tool instead.
 if [ "$CARCH" != 'x86_64' ]; then
     makedepends+=('gifsicle')
@@ -32,12 +32,14 @@ source=(
     # https://wiki.archlinux.org/index.php/VCS_package_guidelines#VCS_sources
     "git+https://github.com/${_pkgname}/${_pkgname}-server"
     "git+https://github.com/${_pkgname}/${_pkgname}-webapp"
+    "mattermost-ldflags.patch"
     "${_pkgname}.service"
     "${_pkgname}.sysusers"
     "${_pkgname}.tmpfiles")
 sha512sums=(
     'SKIP'
     'SKIP'
+    'ac952eae873aa09ba7bdf1e7abc618f0dc6982fa85df298261ab71ccf71f66c95846dade400e05d731f2c5ee2c6f4332d6f78d737026c9f098f1e03f419bee00'
     'cd02b3da86869117554c3c53a657a4b46989ea533b7b47c24fb642ffbd182ce6ecfb16a8ddde3af4d5e8cff0ab41a932753129662e126994e1ad5912545e6eb4'
     'b95bf2c0d840d0e85baebc1051c872056fa4990d263334fecc7b11d96085cb65a69dd866f18889e209336028f17c02152c13a92d2be1c21848939f22203439f0'
     'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9')
@@ -71,6 +73,10 @@ prepare() {
     ln -s "$srcdir"/${_pkgname}-server ${_pkgname}-server
     ln -s "$srcdir"/${_pkgname}-webapp ${_pkgname}-webapp
     cd ${_pkgname}-server
+
+    # Pass Arch Linux's Go compilation flags to Mattermost in order to take
+    # into account advanced features like PIE.
+    patch < "${srcdir}"/mattermost-ldflags.patch
 
     # We are not using docker, no need to stop it.
     sed -r -i Makefile \
