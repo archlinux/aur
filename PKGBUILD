@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Tom Gundersen <teg@jklm.no>
 # Maintainer: Dave Reisner <dreisner@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
@@ -11,8 +10,8 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
-_pkgmajor=2.32
-pkgver=${_pkgmajor}.1
+_pkgmajor=2.33
+pkgver=${_pkgmajor}
 pkgrel=2
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
@@ -28,13 +27,15 @@ license=('GPL2')
 options=('strip')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgbase/-selinux}-$pkgver.tar."{xz,sign}
+        '0001-agetty-fix-output-of-escaped-characters.patch'
         pam-{login,common,su}
         'util-linux.sysusers'
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('86e6707a379c7ff5489c218cfaf1e3464b0b95acf7817db0bc5f179e356a67b2'
+sha256sums=('f261b9d73c35bfeeea04d26941ac47ee1df937bd3b0583e748217c1ea423658a'
             'SKIP'
+            'a20ab3b78eed0e143300476d059e55ab87720bc9fc66a4dcbbd5ae8c48f39bf4'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
             'fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20'
             '51eac9c2a2f51ad3982bba35de9aac5510f1eeff432d2d63c6362e45d620afc0'
@@ -43,22 +44,30 @@ sha256sums=('86e6707a379c7ff5489c218cfaf1e3464b0b95acf7817db0bc5f179e356a67b2'
             '8ccec10a22523f6b9d55e0d6cbf91905a39881446710aa083e935e8073323376'
             'a22e0a037e702170c7d88460cc9c9c2ab1d3e5c54a6985cd4a164ea7beff1b36')
 
+prepare() {
+  cd "${pkgbase/-selinux}-$pkgver"
+
+  # agetty: fix output of escaped characters
+  patch -Np1 < ../0001-agetty-fix-output-of-escaped-characters.patch
+}
+
 build() {
   cd "${pkgbase/-selinux}-$pkgver"
 
-  ./configure --prefix=/usr \
-              --libdir=/usr/lib \
-              --bindir=/usr/bin \
-              --localstatedir=/var \
-              --enable-fs-paths-extra=/usr/bin \
-              --enable-raw \
-              --enable-vipw \
-              --enable-newgrp \
-              --enable-chfn-chsh \
-              --enable-write \
-              --enable-mesg \
-              --with-selinux \
-              --with-python=3
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib \
+    --bindir=/usr/bin \
+    --localstatedir=/var \
+    --enable-fs-paths-extra=/usr/bin \
+    --enable-raw \
+    --enable-vipw \
+    --enable-newgrp \
+    --enable-chfn-chsh \
+    --enable-write \
+    --enable-mesg \
+    --with-selinux \
+    --with-python=3
 
   make
 }
@@ -71,7 +80,8 @@ package_util-linux-selinux() {
             "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
   depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux'
            'libsystemd-selinux' 'libcap-ng' 'libutil-linux-selinux')
-  optdepends=('python: python bindings to libmount')
+  optdepends=('python: python bindings to libmount'
+              'words: default dictionary for look')
   backup=(etc/pam.d/chfn
           etc/pam.d/chsh
           etc/pam.d/login
