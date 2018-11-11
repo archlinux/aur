@@ -1,7 +1,7 @@
 pkgbase = gobeansdb
 	pkgdesc = Yet anonther distributed key-value storage system from Douban Inc.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/douban/gobeansdb
 	arch = x86_64
 	license = BSD-3-Clause

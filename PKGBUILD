@@ -2,7 +2,7 @@
 
 pkgname=gobeansdb
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Yet anonther distributed key-value storage system from Douban Inc.'
 url='https://github.com/douban/gobeansdb'
 makedepends=('go>=1.11')
@@ -16,10 +16,12 @@ sha256sums=('8edcfb64efbdd43f581e7d8288df512238aec5bb107b8470ef0fea34ef881e3a')
 prepare() {
   cd "${srcdir}"
 
-  # Why read-only? :/
-  chmod -R u=rwX,go=rX "${srcdir}/goext"
+  if [[ -d "${srcdir}/goext" ]]; then
+    # Why read-only? :/
+    chmod -R u=rwX,go=rX "${srcdir}/goext"
 
-  rm -rf "${srcdir}/goext"
+    rm -rf "${srcdir}/goext"
+  fi
 }
 
 build() {
