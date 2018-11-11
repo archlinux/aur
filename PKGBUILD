@@ -1,5 +1,6 @@
 # Maintainer: Mattia Biondi <mattia dot biondi3 at studio dot unibo dot it>
-pkgname=umps
+_pkgname=umps
+pkgname="$_pkgname"-git
 pkgver=2.0.1
 pkgrel=1
 pkgdesc="Virtual machine simulator based around the MIPS R2/3000
@@ -9,7 +10,7 @@ url="http://mps.sourceforge.net/"
 license=('GPL2')
 depends=('qt4' 'libelf' 'boost' 'libsigc++')
 makedepends=('git' 'libtool' 'm4' 'automake' 'autoconf')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tjonjic/umps/archive/master.tar.gz")
+source=("git+https://github.com/tjonjic/umps")
 
 build() {
   libtoolize --force
