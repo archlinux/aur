@@ -1,5 +1,5 @@
 pkgbase = vaclist
-	pkgdesc = Add and check steam profiles to monitor profiles for bans
+	pkgdesc = Monitor steam profiles for bans
 	pkgver = r25.b45f2ce
 	pkgrel = 1
 	url = https://github.com/DNDEBUG/vaCLIst
