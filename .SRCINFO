@@ -1,6 +1,6 @@
 pkgbase = pytype
 	pkgdesc = Python type inferencer
-	pkgver = 2018.10.30
+	pkgver = 2018.11.06
 	pkgrel = 1
 	url = https://github.com/google/pytype
 	arch = any
@@ -11,22 +11,24 @@ pkgbase = pytype
 	makedepends = make
 	makedepends = gcc
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = bison>=3.0.2
 	makedepends = flex>=2.5.35
-	depends = python-importlab>=0.3.1
+	depends = python-importlab>=0.4
 	depends = python-yaml>=3.11
+	depends = ninja
 	optdepends = python36: Python versions > 3.6 of the target code are not yet supported
 	provides = pytype
 	options = !emptydirs
-	source = https://github.com/google/pytype/archive/2018.10.30.tar.gz
+	source = https://github.com/google/pytype/archive/2018.11.06.tar.gz
 	source = cpython-9734024.zip::https://github.com/python/cpython/archive/9734024ec65311e33936faa83fb1cb249ef0de9d.zip
 	source = googletest-e82d320.zip::https://github.com/google/googletest/archive/e82d320567a45db1a999f9109f2b9a733bc59bb1.zip
 	source = typeshed-9ee4582.zip::https://github.com/python/typeshed/archive/9ee458226c212acc2691f014d2a5575f33160d6d.zip
-	sha256sums = 6b1a03e0f73e7a390e161483bd22dae554b9f16722da6f63b5e57fdf5f5132b1
+	source = without-ninja-python-distributions.patch
+	sha256sums = 5dbb1ee60453f836d0592d719a3ea253fe7f359ab5057fad4d5bbe37aa824565
 	sha256sums = ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a
 	sha256sums = 891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7
 	sha256sums = 6e634f400fcbe30ac6f5f8e476eef8b3cb8ae7d801e01b81bab04826c6d2402e
+	sha256sums = 3bff9fe87a283d37b929cec814a384a723b8f7c805a79981869357323dcaebb7
 
 pkgname = pytype
 
