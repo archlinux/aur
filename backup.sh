@@ -1,14 +1,11 @@
 #!/bin/bash
+# Example backup script
 
 SERVER="/srv/craftbukkit"
-FILENAME="`date +%Y%m%d%H%M`.tar.bzip2"
+FILENAME="$(date +%Y%m%d%H%M).tar.bzip2"
 
-$SERVER/send_command.sh "save-off"
-$SERVER/send_command.sh "save-all"
-
-echo "Creating compressed file..."
-cd $SERVER
-tar -cjf $SERVER/backup/$FILENAME world world_nether world_the_end
-
-/srv/craftbukkit/send_command.sh "save-on"
-echo "Backup done."
+if [ ! -e "$SERVER/backup" ]; then
+  (umask 007 && mkdir "$SERVER/backup")
+fi
+craftbukkit-save tar -cjf "$SERVER/backup/$FILENAME" -C "$SERVER" \
+    world world_nether world_the_end

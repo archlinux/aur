@@ -1,39 +1,45 @@
 pkgbase = craftbukkit-spigot
 	pkgdesc = CraftBukkit & Spigot Minecraft servers
-	pkgver = 1.12.2
-	pkgrel = 3
+	pkgver = 1.12.2.20181110
+	pkgrel = 1
 	url = http://www.spigotmc.org/
 	install = craftbukkit-spigot.install
 	arch = any
-	license = BSD
-	depends = java-runtime-headless
+	license = GPL3
+	makedepends = git
+	depends = java-runtime-headless<=10
 	depends = fontconfig
-	depends = git
-	depends = mcrcon
+	optdepends = mcrcon: Notify users before shutdown and consistent backups
 	provides = craftbukkit=1.12.2
 	provides = minecraft-server=1.12.2
 	conflicts = bukkit
 	conflicts = craftbukkit
 	conflicts = craftbukkit-stable
-	noextract = BuildTools.jar
-	source = https://hub.spigotmc.org/jenkins/job/BuildTools/75/artifact/target/BuildTools.jar
+	noextract = BuildTools-81.jar
+	source = BuildTools-81.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/81/artifact/target/BuildTools.jar
 	source = minecraft.service
 	source = craftbukkit.service
 	source = spigot.service
-	source = send_command.sh
-	source = start_server.sh
-	source = stop_server.sh
+	source = craftbukkit-mcrcon.sh
+	source = craftbukkit-save.sh
 	source = backup.sh
+	source = init-rcon.sh
+	source = notify-shutdown.sh
+	source = start_server.sh
 	source = readme.md
-	md5sums = f9ad685c926b577869835a252d66410f
-	md5sums = ec1fa48d148fc3967e516772f6b7ca7b
-	md5sums = dd8955f7f9f19715ddfd6aefa697f845
-	md5sums = f9f56e25b7a31004a723ba1884e79c28
-	md5sums = f44a30a3e72aa138b40d02246e40c77b
-	md5sums = f09bc4db52eae9b41220c39a5dc9e429
-	md5sums = dc210f0284dff6865cafbca5990f0e2d
-	md5sums = a5978eb14131a6b02e566b4b6225659c
-	md5sums = 28ba7da9e8488c7da2fd25ec16512d4a
+	source = sysusers.conf
+	sha256sums = 9cee19aed800f7d5f14ed60bcd271e74d6a5269ad32ffe1809ba6e793e5ffb31
+	sha256sums = 5859dea11a273f1dd5b559a753c3bb2668e5b5b6d035f4d4c9a1025adcbf12e0
+	sha256sums = 0bc6e5f367fdf61ebc5cf3261c0f2bdfce39ef9c101dec67a6fafd59ea4e43aa
+	sha256sums = 6d6be0a6f067daf24a8edb75b74aa5fed114aeb49405808f73205bee8d41932c
+	sha256sums = b61231aabdb40efc21afbe5ed182cdfe01c78a55f19ac0e506e721992f967161
+	sha256sums = a42b86ab0c5562bd04a49b3c022e57b62dc81c56960fa48841b169285b30a7cb
+	sha256sums = 2b758beb056019daa92caf19a9d35f33ab2c90b4f422e5ab4f0791c72a3f7ed0
+	sha256sums = 2bec4ae313392326cf53c874557f94ff8060ddeb3de50d96c5a0cc0be2b2fb36
+	sha256sums = 9ef47ee95df1b4c3ef8852083b1be13ab197a9b4a05f3a24416d3f2ee0584fe3
+	sha256sums = 8252abe18ae5aac364bd210a9dd598ead0e3f81c67b6680a9c25b464c43d0465
+	sha256sums = 786d4cd9bb96a1a720ac43ffaf4c717e614ed40714c037d8600a4274f989a3ef
+	sha256sums = c30b180e2e571d1f052df0b82c51f261bc4e48dbaf8806c5bc897c07e939f575
 
 pkgname = craftbukkit-spigot
 
