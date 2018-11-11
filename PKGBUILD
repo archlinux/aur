@@ -1,3 +1,4 @@
+# Maintainer: Roman Vasilev <2rvasilev@live.ru>
 # Maintainer: max.bra <max dot bra at alice dot it>
 # Contributor: nadolph
 # Contributor: dcelasun
