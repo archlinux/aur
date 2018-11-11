@@ -1,8 +1,8 @@
-# Maintainer: Nbiba bedis <bedisnbiba@gmail.com>
+  # Maintainer: Nbiba bedis <bedisnbiba@gmail.com>
   
   pkgname=fedora-firefox-wayland-bin
   pkgver=63.0.1
-  pkgrel=1
+  pkgrel=2
   pkgdesc="Fedora's firefox build wtih wayland enabled by default"
   arch=(x86_64)
   license=(MPL GPL LGPL)
@@ -18,14 +18,16 @@
               'speech-dispatcher: Text-to-Speech')
   source=("https://kojipkgs.fedoraproject.org//packages/firefox/63.0.1/3.fc30/x86_64/firefox-63.0.1-3.fc30.x86_64.rpm")
   md5sums=('a4f5ef650ddb062de0a9031b79cb4979')  
+  
   prepare() {
-	# remove a bit of fedora sutff (startpage)
+    # remove a bit of fedora sutff (startpage)
     rm -f usr/lib64/firefox/browser/defaults/preferences/firefox-redhat-default-prefs.js
-	# default to wayland
-	sed -i -e 's:GDK_BACKEND=x11:GDK_BACKEND=wayland:' usr/bin/firefox
+    # default to wayland
+    sed -i -e 's:GDK_BACKEND=x11:GDK_BACKEND=wayland:' usr/bin/firefox
   }
+  
   package() {
-  	rm -rf usr/lib
+    rm -rf usr/lib
     mv usr/lib64 usr/lib
     cp  -r  usr/ $pkgdir/
   }
