@@ -267,7 +267,9 @@ package_llvm-svn() {
 package_llvm-libs-svn() {
     pkgdesc='The LLVM Compiler Infrastructure (runtime libraries)'
     depends=(
+        'libedit'
         'libffi'
+        'libxml2'
         'zlib'
     )
     groups=('llvm-toolchain-svn')
@@ -345,8 +347,6 @@ package_lldb-svn() {
     url='https://lldb.llvm.org/'
     depends=(
         "llvm-libs-svn=${pkgver}-${pkgrel}"
-        'libedit'
-        'libxml2'
         'python2-six'
     )
     groups=('llvm-toolchain-svn')
