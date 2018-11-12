@@ -1,7 +1,7 @@
 [Unit]
 Description=Battery Daemon (upi_ug31xx)
-Requires=oemcfg.mount
-After=oemcfg.mount
+Requires=me176c.mount
+After=me176c.mount
 
 [Service]
 ExecStart=/opt/asus/me176c/upi_ug31xx

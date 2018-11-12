@@ -1,8 +1,8 @@
 [Unit]
-Description=Mount OEM Config Partition
+Description=Mount ME176C Data Partition
 
 [Mount]
 What=/dev/disk/by-partlabel/config
-Where=/oemcfg
+Where=/me176c
 Type=ext4
 Options=nosuid,nodev,noatime,data=ordered

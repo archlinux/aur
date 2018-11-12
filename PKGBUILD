@@ -1,6 +1,6 @@
 # Maintainer: lambdadroid <lambdadroid@gmail.com>
 pkgname=me176c-battery
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Battery configuration files for the ASUS MeMO Pad 7 (ME176C/CX)"
 arch=(any)
@@ -9,20 +9,20 @@ license=('MIT')
 depends=('systemd' 'me176c-firmware')
 options=('!strip')
 source=(
-    'oemcfg.mount'
+    'me176c.mount'
     'upi_ug31xx.service'
     'upi_ug31xx.sysusers.conf'
     'upi_ug31xx.tmpfiles.conf'
     'upi_ug31xx.rules'
 )
-sha256sums=('3ffeedc559f9a664814e1d315db72c17eef658e66f4445f599a2a19015bca446'
-            '63094bda10ddc05344d05512c496ba6f9b78442ceda739510ef9b0f577870d2a'
-            '99d0acbc6ce120f047664d3c41449658e2addd69a869704530be1b4e7c7e92f4'
-            '9ae6f1934e403332eb50fb297155a0b837c4328ae1e157372ee759be666985dd'
+sha256sums=('48dcc4568d1346d2ab61319cca49480c055f8d96207d9ed667cca1770befafa9'
+            '100a67d7f90bf3a15b6287214f20a386d35383f4812e2c660783413d3636a030'
+            'def60f3eede943d6ea179f669f7173d75469368af6fa7dea0245e14fd629b9ff'
+            '1d2c114fa9e47e5c122c7c68afaca59b57d57ef3b12e7636c01239e849c00d19'
             '9bdfd9c1cd8e5805f040384f6ded15250cfc9714ae1b5997ba2cd830f6ea7fea')
 
 package() {
-    install -Dm644 oemcfg.mount "$pkgdir"/usr/lib/systemd/system/oemcfg.mount
+    install -Dm644 me176c.mount "$pkgdir"/usr/lib/systemd/system/me176c.mount
     install -Dm644 upi_ug31xx.service "$pkgdir"/usr/lib/systemd/system/upi_ug31xx.service
     install -Dm644 upi_ug31xx.sysusers.conf "$pkgdir"/usr/lib/sysusers.d/upi_ug31xx.conf
     install -Dm644 upi_ug31xx.tmpfiles.conf "$pkgdir"/usr/lib/tmpfiles.d/upi_ug31xx.conf
