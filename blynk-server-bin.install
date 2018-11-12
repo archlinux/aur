@@ -1,0 +1,32 @@
+_user="blynk"
+
+post_install() {
+	getent group "${_user}" &>/dev/null
+	if [ $? -ne 0 ]; then
+		echo -e "\e[34;1m==>\e[39;1m Adding ${_user} system group... \e[0m"
+		groupadd -r ${_user} 1>/dev/null
+	fi
+	getent passwd "${_user}" &>/dev/null
+	if [ $? -ne 0 ]; then
+		echo -e "\e[34;1m==>\e[39;1m Adding ${_user} system user... \e[0m"
+		useradd -r -g ${_user} -d /usr/share/blynk ${_user} 1>/dev/null
+	fi
+	post_upgrade
+}
+
+post_upgrade() {
+	chown -R ${_user}:${_user} /var/lib/blynk
+	chown -R ${_user}:${_user} /var/log/blynk
+	chown -R ${_user}:${_user} /usr/share/blynk
+}
+
+pre_remove() {
+	systemctl stop blynk.service
+	rm -rf /usr/share/blynk/static
+}
+
+post_remove() {
+	echo -e "\e[34;1m==>\e[39;1m Removing ${_user} user and group... \e[0m"
+	userdel ${_user}
+	echo -e "\e[34;1m==>\e[39;1m NOTE: Data folder /var/lib/blynk has been preserved. \e[0m"
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=Starts and stops the Blynk server daemon
+
+[Service]
+User=blynk
+Group=blynk
+Restart=on-failure
+RestartSec=10
+
+ExecStart=/usr/bin/java -jar /usr/share/blynk/blynk-server.jar -serverConfig /etc/blynk/server.properties
+
+[Install]
+WantedBy=multi-user.target
