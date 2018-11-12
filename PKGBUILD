@@ -23,9 +23,7 @@ validpgpkeys=('SKIP') # Sam Lantinga
 
 pkgver() {
   cd SDL
-  _tag=$(hg tags -q | sort -r | grep release- | head -n1)
-  _commits=$(hg log --template "{node}\n" -r $_tag:tip | wc -l)
-  echo "${_tag/release-}.r$_commits.$(hg identify -i)"
+  echo $(hg parents --template '{word(-1,latesttag,":")}').$(hg identify -n)
 }
 
 prepare() {
