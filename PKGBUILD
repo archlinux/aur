@@ -40,8 +40,6 @@ package_conversejs-git() {
   cp -r sounds "$pkgdir"/usr/share/webapps/converse.js/
   cp -r fonts "$pkgdir"/usr/share/webapps/converse.js/
 
-  install -dm755 "$pkgdir"/usr/share/webapps/converse.js/fonticons/fonts/
-  install -Dm644 fonticons/fonts/* "$pkgdir"/usr/share/webapps/converse.js/fonticons/fonts/
   install -Dm644 fullscreen.html "$pkgdir"/usr/share/webapps/converse.js/
 }
 
