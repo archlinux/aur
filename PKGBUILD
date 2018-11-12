@@ -15,7 +15,7 @@ pkgname="${pkgbase}"
 _branch=iris
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=18.3.0_devel.105928.2e1f61cafcb
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
@@ -57,7 +57,7 @@ build () {
        --libdir=/usr/lib32 \
        -D platforms=x11,wayland,drm,surfaceless \
        -D dri-drivers=i915,i965,r200,r100,nouveau \
-       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+       -D gallium-drivers=iris,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
        -D vulkan-drivers=amd,intel \
        -D dri3=true \
        -D egl=true \
