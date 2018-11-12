@@ -10,6 +10,7 @@ pkgbase = wattman-gtk-git
 	depends = python-gobject
 	depends = python-matplotlib
 	depends = python
+	depends = python-cairo
 	provides = wattman-gtk
 	conflicts = wattman-gtk
 	source = WattmanGTK::git+https://github.com/BoukeHaarsma23/WattmanGTK

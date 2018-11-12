@@ -1,29 +1,16 @@
-##
-# Maintainer: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
-##
+# Maintainer: Parker Reed <parker.l.reed@gmail.com>
 
 _gitname=WattmanGTK
-# shellcheck disable=SC2034
 pkgname=wattman-gtk-git
-# shellcheck disable=SC2034
 pkgdesc="GTK GUI to view, monitor, and overclock a Radeon GPU on Linux"
-# shellcheck disable=SC2034
-pkgver=r91.d112ddc
-# shellcheck disable=SC2034
+pkgver=r101.6360fab
 pkgrel=1
-# shellcheck disable=SC2034
 arch=('any')
-# shellcheck disable=SC2034
 makedepends=('git' 'python-setuptools')
-# shellcheck disable=SC2034
-depends=('python-gobject' 'python-matplotlib' 'python')
-# shellcheck disable=SC2034
+depends=('python-gobject' 'python-matplotlib' 'python' 'python-cairo')
 optdepends=()
-# shellcheck disable=SC2034
 provides=('wattman-gtk')
-# shellcheck disable=SC2034
 conflicts=('wattman-gtk')
-# shellcheck disable=SC2034
 license=('GPLv2')
 url="https://github.com/BoukeHaarsma23/WattmanGTK"
 
@@ -37,7 +24,6 @@ source=("${_gitname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  # shellcheck disable=SC2154
   cd "${srcdir}/${_gitname}" || {
         msg "Failed to cd into ${srcdir}/${_gitname}"
         return 1
@@ -50,7 +36,6 @@ pkgver() {
 }
 
 build() {
-  # shellcheck disable=SC2154
   cd "${srcdir}/${_gitname}" || {
         msg "Failed to cd into ${srcdir}/${_gitname}"
         return 1
@@ -60,7 +45,6 @@ build() {
 }
 
 package() {
-  # shellcheck disable=SC2154
   cd "${srcdir}/${_gitname}" || {
         msg "Failed to cd into ${srcdir}/${_gitname}"
         return 1
