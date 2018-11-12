@@ -10,11 +10,13 @@ _branch='discord'
 
 pkgname=discord-nocheck
 pkgver=0.0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure. With no checks"
 arch=('x86_64')
 url='https://discordapp.com/'
 license=('custom')
+conflicts=('discord')
+provides=('discord')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'libc++-nocheck')
 optdepends=(
   'libpulse: For pulseaudio support'

@@ -1,7 +1,7 @@
 pkgbase = discord-nocheck
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure. With no checks
 	pkgver = 0.0.5
-	pkgrel = 5
+	pkgrel = 6
 	url = https://discordapp.com/
 	install = Discord.install
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = discord-nocheck
 	optdepends = libpulse: For pulseaudio support
 	optdepends = noto-fonts-emoji: Google font for emoji support.
 	optdepends = ttf-symbola: Font for emoji support.
+	provides = discord
+	conflicts = discord
 	source = Discord.desktop
 	source = LICENSE
 	md5sums = c3f65649a26a7c761d3a529437493b80
