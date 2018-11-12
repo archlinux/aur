@@ -5,21 +5,19 @@
 
 pkgbase=mesa-noglvnd
 pkgname=('opencl-mesa-noglvnd' 'vulkan-intel-noglvnd' 'vulkan-radeon-noglvnd' 'libva-mesa-driver-noglvnd' 'mesa-vdpau-noglvnd' 'mesa-noglvnd' 'mesa-libgl-noglvnd')
-pkgver=18.1.3
+pkgver=18.2.4
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols'
-             'elfutils' 'llvm' 'libomxil-bellagio' 'libclc' 'clang' 'libunwind' 'lm_sensors' 'meson') # 'libglvnd')
+             'elfutils' 'llvm' 'libomxil-bellagio' 'libclc' 'clang' 'libunwind' 'lm_sensors' 'meson' 'libxrandr') # 'libglvnd')
 url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
-        LICENSE
-        0001-glvnd-fix-gl.pc.patch)
-sha512sums=('f6e5b81a80a309a36a04759d18364d3c71c48d1cb88f87b2f5432ef003092a22046e88ce2082031d5d52b60ba36f585d8df52e06ecc7a5158079936236f36887'
+        LICENSE)
+sha512sums=('088d43b087f4005752e4db75eaa6897e0fcb6de7b9a1f2d2b2ce3b5557d1dff829022e0092e8b1038ff01182c863ca0f26c97b9adde34bca462d3fa24502bfde'
             'SKIP'
-			'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7'
-			'2f40198eff47664c831c56e8a63f60a4d1b815cf697e6bdb0be39e6d9c5df043857f6264b7cd2ccf46c07626186c565144e80f4214b5f7936ef7024c47201437')
+            'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
               '946D09B5E4C9845E63075FF1D961C596A7203456'  # Andres Gomez <tanty@igalia.com>
               'E3E8F480C52ADD73B278EE78E1ECBE07D7D70895'  # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>"
@@ -29,18 +27,17 @@ validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l
 prepare() {
   cd ${srcdir}/mesa-${pkgver}
 
-  # glvnd support patches - from Fedora
-  # non-upstreamed ones
-  patch -Np1 -i ../0001-glvnd-fix-gl.pc.patch
 }
 
 build() {
+  #  -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr ### swr doesn't build https://bugs.freedesktop.org/show_bug.cgi?id=107865
+
   arch-meson mesa-$pkgver build \
     -D b_lto=false \
     -D b_ndebug=true \
     -D platforms=x11,wayland,drm,surfaceless \
     -D dri-drivers=i915,i965,r100,r200,nouveau \
-    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr \
+    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast \
     -D vulkan-drivers=amd,intel \
     -D swr-arches=avx,avx2 \
     -D dri3=true \
@@ -175,7 +172,7 @@ package_mesa-noglvnd() {
   _install fakeinstall/usr/lib/lib{gbm,glapi}.so*
   _install fakeinstall/usr/lib/libOSMesa.so*
   _install fakeinstall/usr/lib/libxatracker.so*
-  _install fakeinstall/usr/lib/libswrAVX*.so*
+  #_install fakeinstall/usr/lib/libswrAVX*.so*
 
 #   # in libglvnd
 #   rm -v fakeinstall/usr/lib/libGLESv{1_CM,2}.so*
@@ -184,8 +181,8 @@ package_mesa-noglvnd() {
   rm -rv fakeinstall/usr/include/vulkan
 
   # in wayland
-  rm -v fakeinstall/usr/lib/libwayland-egl.so*
-  rm -v fakeinstall/usr/lib/pkgconfig/wayland-egl.pc
+#   rm -v fakeinstall/usr/lib/libwayland-egl.so*
+#   rm -v fakeinstall/usr/lib/pkgconfig/wayland-egl.pc
 
   install -m755 -d ${pkgdir}/usr/lib/mesa
   # move libgl/EGL/glesv*.so to not conflict with blobs - may break .pc files ?
