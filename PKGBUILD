@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.14
+_version=2018.2.15
 _build=f1
-_randomstring=3262fb3b0716
+_randomstring=65e0713a5949
 _prefix=/opt/Unity
 
 pkgname=unity-editor-doc
@@ -14,7 +14,7 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor')
 source=("https://docs.unity3d.com/2018.2/Documentation/uploads/UnityDocumentation.zip")
-sha1sums=('0e583e0b88adf1824403f07c8d4f76cdf600691c')
+sha1sums=('8dbc8d124853ee9797aca29683c5d9086e28e29b')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
