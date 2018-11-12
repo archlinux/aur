@@ -8,7 +8,7 @@ arch=('any')
 url="https://conversejs.org/"
 license=('MPL2')
 makedepends=('git' 'npm' 'ruby-rdoc')
-source=('git+https://github.com/jcbrand/converse.js'
+source=('git+https://github.com/conversejs/converse.js'
         'launcher.sh'
         'launcher.desktop')
 sha256sums=('SKIP'
