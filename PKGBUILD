@@ -3,7 +3,7 @@
 pkgbase=moc_notify-git
 pkgname=$pkgbase
 pkgver=2.2
-pkgrel=1
+pkgrel=3
 _gitname=moc_notify
 _gittag="v.${pkgver}"
 
