@@ -1,7 +1,7 @@
 # Maintainer: Justin Milam <jsmilam at gmail dot com>
 pkgname=sngrep
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for displaying SIP call message flows from a terminal"
 arch=('x86_64' 'i386')
 url="https://github.com/irontec/sngrep"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 build() {
 	cd "$srcdir/${pkgname%}"
 	./bootstrap.sh
-	./configure --with-gnutls --with-pcre --enable-ipv6 --prefix=/usr
+	./configure --enable-unicode --enable-eep --with-gnutls --with-pcre --enable-ipv6 --prefix=/usr
 	make
 }
 
