@@ -1,5 +1,5 @@
 pkgbase = llvm-svn
-	pkgver = 8.0.0svn_r340523
+	pkgver = 8.0.0svn_r346644
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = i686
@@ -38,21 +38,23 @@ pkgbase = llvm-svn
 pkgname = llvm-svn
 	pkgdesc = The LLVM Compiler Infrastructure
 	groups = llvm-toolchain-svn
-	depends = llvm-libs-svn=8.0.0svn_r340523-1
+	depends = llvm-libs-svn=8.0.0svn_r346644-1
 	provides = llvm
 	conflicts = llvm
 
 pkgname = llvm-libs-svn
 	pkgdesc = The LLVM Compiler Infrastructure (runtime libraries)
 	groups = llvm-toolchain-svn
+	depends = libedit
 	depends = libffi
+	depends = libxml2
 	depends = zlib
 	provides = llvm-libs
 	conflicts = llvm-libs
 
 pkgname = llvm-ocaml-svn
 	pkgdesc = OCaml bindings for LLVM
-	depends = llvm-svn=8.0.0svn_r340523-1
+	depends = llvm-svn=8.0.0svn_r346644-1
 	depends = ocaml=4.07.0
 	depends = ocaml-ctypes
 	provides = llvm-ocaml
@@ -62,7 +64,7 @@ pkgname = lld-svn
 	pkgdesc = A linker from the LLVM project
 	url = https://lld.llvm.org/
 	groups = llvm-toolchain-svn
-	depends = llvm-libs-svn=8.0.0svn_r340523-1
+	depends = llvm-libs-svn=8.0.0svn_r346644-1
 	provides = lld
 	conflicts = lld
 
@@ -70,9 +72,7 @@ pkgname = lldb-svn
 	pkgdesc = Next generation, high-performance debugger
 	url = https://lldb.llvm.org/
 	groups = llvm-toolchain-svn
-	depends = llvm-libs-svn=8.0.0svn_r340523-1
-	depends = libedit
-	depends = libxml2
+	depends = llvm-libs-svn=8.0.0svn_r346644-1
 	depends = python2-six
 	provides = lldb
 	conflicts = lldb
@@ -81,7 +81,7 @@ pkgname = clang-svn
 	pkgdesc = C language family frontend for LLVM
 	url = https://clang.llvm.org/
 	groups = llvm-toolchain-svn
-	depends = llvm-svn=8.0.0svn_r340523-1
+	depends = llvm-svn=8.0.0svn_r346644-1
 	optdepends = clang-analyzer-svn: source code analysis for Clang, supporting C, C++, and Objective-C
 	optdepends = clang-compiler-rt-svn: sanitizer runtimes, builtins, profile library and BlocksRuntime
 	optdepends = clang-tools-extra-svn: standalone tools: syntax checking, formatting, refactoring, etc.
@@ -93,7 +93,7 @@ pkgname = clang-analyzer-svn
 	pkgdesc = Source code analysis tool for Clang, supporting C, C++, and Objective-C
 	url = https://clang-analyzer.llvm.org/
 	groups = llvm-toolchain-svn
-	depends = clang-svn=8.0.0svn_r340523-1
+	depends = clang-svn=8.0.0svn_r346644-1
 	depends = perl
 	depends = python2
 	provides = clang-analyzer
@@ -103,7 +103,7 @@ pkgname = clang-compiler-rt-svn
 	pkgdesc = The "compiler-rt" set of runtime libraries for Clang and LLVM
 	url = https://compiler-rt.llvm.org/
 	groups = llvm-toolchain-svn
-	depends = clang-svn=8.0.0svn_r340523-1
+	depends = clang-svn=8.0.0svn_r346644-1
 	provides = clang-compiler-rt
 	conflicts = clang-compiler-rt
 
@@ -111,7 +111,7 @@ pkgname = clang-tools-extra-svn
 	pkgdesc = Standalone tools for Clang: syntax checking, formatting, refactoring, etc.
 	url = https://clang.llvm.org/docs/ClangTools.html
 	groups = llvm-toolchain-svn
-	depends = clang-svn=8.0.0svn_r340523-1
+	depends = clang-svn=8.0.0svn_r346644-1
 	provides = clang-tools-extra
 	conflicts = clang-tools-extra
 
