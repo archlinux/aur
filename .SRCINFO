@@ -1,0 +1,14 @@
+pkgbase = hunspell-th
+	pkgdesc = Thai hunspell dictionary
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tafasu/aegisub-thai-dict
+	arch = any
+	license = LGPL2
+	makedepends = hunspell
+	optdepends = hunspell: the spell checking libraries and apps
+	source = https://github.com/tafasu/aegisub-thai-dict/archive/master.zip
+	sha256sums = 0e1e7081354669e8ee7158778099400a75a52528e067503fba0976d49cf83dbc
+
+pkgname = hunspell-th
+
