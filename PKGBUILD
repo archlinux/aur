@@ -2,7 +2,7 @@
 # Contributor: Milo Gilad <myl0gcontact@gmail.com>
 
 pkgname=bitwarden
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('nodejs' 'npm')
 depends=('alsa-lib' 'electron' 'gconf' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
 conflicts=('bitwarden-git' 'bitwarden-bin')
 options=('!strip' '!emptydirs')
-source=("${pkgname}-git-repo::git+https://github.com/bitwarden/desktop.git#tag=v${pkgver}"
+source=("${pkgname}-${pkgver}-git-repo::git+https://github.com/bitwarden/desktop.git#tag=v${pkgver}"
         'jslib-git-repo::git+https://github.com/bitwarden/jslib.git'
         "${pkgname}.sh"
         "${pkgname}.desktop")
@@ -22,14 +22,14 @@ sha512sums=('SKIP'
             '05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd')
 
 prepare() {
-  cd "${pkgname}-git-repo"
+  cd "${pkgname}-${pkgver}-git-repo"
   git submodule init
   git config submodule.jslib.url $srcdir/jslib-git-repo
   git submodule update
 }
 
 build() {
-  cd "${pkgname}-git-repo"
+  cd "${pkgname}-${pkgver}-git-repo"
   npm install
   npm run build
   npm run clean:dist
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-git-repo"
+  cd "${pkgname}-${pkgver}-git-repo"
 
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
   cp -r dist/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}/"
