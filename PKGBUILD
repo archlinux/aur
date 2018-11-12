@@ -27,6 +27,11 @@ build() {
   make dev
   make dist/converse.min.js
   make css/converse.min.css
+  rm -v css/converse.css
+  gzip -vk9 dist/converse.min.js \
+    css/converse.min.css \
+    css/images/*.svg \
+    locale/*/LC_MESSAGES/converse.json
 }
 
 package_conversejs-git() {
