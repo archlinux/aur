@@ -1,0 +1,23 @@
+pkgbase = gsignond-plugin-mail-git
+	pkgdesc = Mail plugin for gSSO
+	pkgver = r10.3a9503d
+	pkgrel = 1
+	url = https://01.org/gsso
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gsignond
+	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = libgsignond-common.so
+	provides = gsignond-plugin-mail
+	conflicts = gsignond-plugin-mail
+	source = gsignond-plugin-mail::git+https://gitlab.com/accounts-sso/gsignond-plugin-mail.git
+	sha256sums = SKIP
+
+pkgname = gsignond-plugin-mail-git
+
