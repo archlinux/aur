@@ -3,8 +3,8 @@
 pkgname=writefreely
 _shortpkgver=0.2
 pkgver=${_shortpkgver}.0
-pkgrel=1
-pkgdesc='Write.as GTK desktop app'
+pkgrel=2
+pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
 license=('AGPL3')
