@@ -1,21 +1,32 @@
-# Maintainer: Jacob Mourelos <jacob.mourelos@gmail.com>
-
 pkgname=hunspell-gl
-pkgver=20141115
+pkgver=18.07
 pkgrel=1
+epoch=2
 pkgdesc="Galician hunspell dictionaries. RAG/ILG normative"
 arch=(any)
 url="https://github.com/meixome/hunspell-gl"
 license=('GPL3')
 optdepends=('hunspell:  the spell checking libraries and apps')
-source=(http://sourceforge.net/projects/hunspell-gl/files/instantaneas/$pkgver/hunspell-gl-comunidade-$pkgver.tar.xz)
-md5sums=('5cec824e0a7411b0da6712b5826a0d22')
+makedepends=('scons' 'python2-pyicu')
+provides=($pkgname)
+conflicts=($pkgname)
+source=("${pkgname}.tar.gz::https://github.com/meixome/hunspell-gl/archive/${pkgver}.tar.gz")
+md5sums=('f997f11bcfc0eefd923af03d71c107ad')
+
+prepare() {
+  mkdir -p "$srcdir/$pkgname" && tar xfz "$pkgname.tar.gz" -C "$pkgname" --strip-components 1
+}
+
+build() {
+  cd "$srcdir/$pkgname"
+  scons aff=norma,trasno,unidades dic=comunidade,rag,iso639,iso4217,norma,trasno,unidades,uvigo,wikipedia,wiktionary rep=comunidade,rag,wikipedia code=gl_ES
+}
 
 package(){
     cd "$srcdir"
     install -dm755 ${pkgdir}/usr/share/hunspell
-    install -m644 gl_ES.dic gl_ES.aff $pkgdir/usr/share/hunspell
-    
+    install -m644 ${pkgname}/build/gl_ES.dic ${pkgname}/build/gl_ES.aff $pkgdir/usr/share/hunspell
+
     # myspell symlinks
     install -dm755 ${pkgdir}/usr/share/myspell/dicts
     pushd $pkgdir/usr/share/myspell/dicts
@@ -26,10 +37,5 @@ package(){
 
     # docs
     install -dm755 $pkgdir/usr/share/doc/$pkgname
-    install -m644 install.txt $pkgdir/usr/share/doc/$pkgname/INSTALL
-    install -m644 readme.txt $pkgdir/usr/share/doc/$pkgname/README
-
-    # licenses
-    install -D -m644 license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
