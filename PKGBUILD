@@ -1,17 +1,17 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 # Contributor: Thomas Mudrunka <harvie@@email..cz>
 # Contributer: Eric Belanger <eric@archlinux.org>
+# Contributor: Jakub Kądziołka <kuba@kadziolka.net>
 
-pkgname=xscreensaver-arch-logo
+pkgname=xscreensaver-arch-logo-nogdm
 pkgver=5.40
 pkgrel=1
 pkgdesc="Screen saver and locker for the X Window System with Arch Linux branding"
 arch=('x86_64')
 url="http://www.jwz.org/xscreensaver/"
 license=('BSD')
-depends=('libglade' 'libxmu' 'glu' 'xorg-appres' 'perl-libwww')
-makedepends=('bc' 'intltool' 'libxpm' 'gdm')
-optdepends=('gdm: for login manager support')
+depends=('libglade' 'libxmu' 'glu' 'xorg-appres' 'perl-libwww' 'pam')
+makedepends=('bc' 'intltool' 'libxpm')
 conflicts=('xscreensaver')
 provides=('xscreensaver')
 backup=('etc/pam.d/xscreensaver')
@@ -29,7 +29,7 @@ build() {
   install -Dm644 "$srcdir"/logo-180.xpm  "${srcdir}"/${pkgname%%-*}-${pkgver}/utils/images/logo-180.xpm
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib --with-x-app-defaults=/usr/share/X11/app-defaults \
-    --with-pam --with-login-manager --with-gtk --with-gl \
+    --with-pam --without-login-manager --with-gtk --with-gl \
     --without-gle --with-pixbuf --with-jpeg
   make
 }
