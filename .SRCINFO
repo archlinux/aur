@@ -1,20 +1,20 @@
 pkgbase = rakudo-star
 	pkgdesc = Rakudo Perl6 on MoarVM with additional modules
-	pkgver = 2018.06
+	pkgver = 2018.10
 	pkgrel = 2
 	url = http://rakudo.org/
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
 	makedepends = perl>=5.8
-	depends = nqp>=2018.04
+	depends = nqp>=2018.10
 	optdepends = zef
 	provides = rakudo-star
 	provides = rakudo-moarvm
 	conflicts = rakudo-star
 	conflicts = rakudo-moarvm
-	source = http://rakudo.org/downloads/star/rakudo-star-2018.04.tar.gz
-	sha512sums = b35290fa86b4d03287af2a33de949cfe363d36858a8f7a7591b92fcb7aa6ec2d99537ad26425e09bc01e818f4a3493d39f6d36e2dec0007efc48101be9cdb71a
+	source = http://rakudo.org/downloads/star/rakudo-star-2018.10.tar.gz
+	sha512sums = 36d6f81d8f2fed218edb606bd29a3265cd258ba86100e7e406cc98ae121a4b076cf1489121568ecf5ce9448756029ee1ce3f05cc0ff331eca4f5d9f065576280
 
 pkgname = rakudo-star
 
