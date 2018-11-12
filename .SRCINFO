@@ -1,0 +1,29 @@
+pkgbase = discord-nocheck
+	pkgdesc = All-in-one voice and text chat for gamers that's free and secure. With no checks
+	pkgver = 0.0.5
+	pkgrel = 5
+	url = https://discordapp.com/
+	install = Discord.install
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	depends = gconf
+	depends = libnotify
+	depends = libxss
+	depends = glibc
+	depends = alsa-lib
+	depends = nspr
+	depends = nss
+	depends = libc++-nocheck
+	optdepends = libpulse: For pulseaudio support
+	optdepends = noto-fonts-emoji: Google font for emoji support.
+	optdepends = ttf-symbola: Font for emoji support.
+	source = Discord.desktop
+	source = LICENSE
+	md5sums = c3f65649a26a7c761d3a529437493b80
+	md5sums = 26b3229c74488c64d94798e48bc49fcd
+	source_x86_64 = https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.tar.gz
+	md5sums_x86_64 = 18a8e7f86d26a1472dbfff060e1671e4
+
+pkgname = discord-nocheck
+

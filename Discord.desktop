@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Discord
+Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
+GenericName=Internet Messenger
+Exec=env PULSE_LATENCY_MSEC=30 /usr/bin/discord-nocheck
+Icon=discord-nocheck
+Type=Application
+StartupNotify=false
+Categories=Network;InstantMessaging;
+StartupWMClass=discord
