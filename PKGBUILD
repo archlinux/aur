@@ -1,9 +1,10 @@
-# Maintainer: Sam S. <smls75@gmail.com>
+# Maintainer: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
+# Contributor: Sam S. <smls75@gmail.com>
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 
 pkgname=mnemosyne
-pkgver=2.6
-pkgrel=2
+pkgver=2.6.1
+pkgrel=1
 pkgdesc="A flash-card tool with a sophisticated card review algorithm"
 arch=('i686' 'x86_64')
 url='http://www.mnemosyne-proj.org'
@@ -18,7 +19,7 @@ conflicts=('mnemosyne-bzr')
 install='mnemosyne.install'
 
 source=("http://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-${pkgver}.tar.gz")
-sha256sums=('e4e90cda5490dabe28a7c06a38c73e45f09f782f7b2eef59797ab955a62eeb2c')
+sha256sums=('6331241bc7caf26fed2e4d32c3c18da33116389b67af621da679a950f08c9c75')
 
 build() {
   cd "Mnemosyne-${pkgver}/"
@@ -30,3 +31,4 @@ package() {
   cd "Mnemosyne-${pkgver}/"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
+
