@@ -1,5 +1,5 @@
 pkgbase = docear
-	pkgdesc = ([Deprecated](https://aur.archlinux.org/packages/docear/#comment-640786)) Docear is an academic literature suite for searching, organizing and creating academic literature, built upon the mind mapping software Freeplane and the reference manager JabRef.
+	pkgdesc = [Deprecated]: https://aur.archlinux.org/packages/docear/#comment-640786 Docear is an academic literature suite for searching, organizing and creating academic literature, built upon the mind mapping software Freeplane and the reference manager JabRef.
 	pkgver = 1.2.0_stable
 	pkgrel = 5
 	url = http://www.docear.org/
