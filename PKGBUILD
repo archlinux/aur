@@ -4,7 +4,7 @@
 
 pkgname=sam2p
 pkgver=0.49.4
-pkgrel=5
+pkgrel=6
 pkgdesc="A bitmap-to-eps-or-pdf-converter that produces very small files"
 arch=('i686' 'x86_64')
 url="http://www.inf.bme.hu/~pts"
@@ -17,7 +17,7 @@ optdepends=('ghostscript: PS, EPS, PDF support'
 	    'png22pnm: for png support')
 # 'netpbm: PNG support'
 source=("https://github.com/pts/sam2p/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d23707b2405ca94e2a237cb81f62fb5916f5e4360cf9a705061479c8fa1dff5c')
+sha256sums=('5bc5b5a526bc798315da23b02564d6a1bfea51b364b8b03f76695a833f6d2bed')
 noextract=("$pkgname-$pkgver.tar.gz")
 
 prepare() {
