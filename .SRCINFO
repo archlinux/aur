@@ -1,0 +1,19 @@
+pkgbase = python-pygments-style-gruvbox-git
+	pkgdesc = gruvbox style for pygments
+	pkgver = r3.36ed771
+	pkgrel = 1
+	url = https://github.com/daveyarwood/gruvbox-pygments
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-pygments-style-gruvbox::git+https://github.com/daveyarwood/gruvbox-pygments.git
+	md5sums = SKIP
+
+pkgname = python-pygments-style-gruvbox-git
+	depends = python-pygments
+
+pkgname = python2-pygments-style-gruvbox-git
+	depends = python2-pygments
+
