@@ -1,0 +1,6 @@
+post_install() {
+  chown -R writefreely:writefreely /var/lib/writefreely
+
+  cd /var/lib/writefreely
+  sudo -u writefreely writefreely -gen-keys
+}

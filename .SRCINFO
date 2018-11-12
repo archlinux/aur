@@ -1,0 +1,23 @@
+pkgbase = writefreely
+	pkgdesc = Write.as GTK desktop app
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://writefreely.org/
+	install = writefreely.install
+	arch = x86_64
+	license = AGPL3
+	depends = mariadb
+	backup = etc/writefreely/config.ini
+	source = writefreely.tmpfiles
+	source = writefreely-sysusers.conf
+	source = writefreely.service
+	source = config.ini
+	source = https://github.com/writeas/writefreely/releases/download/v0.2.0/writefreely_0.2_linux_amd64.tar.gz
+	sha256sums = fe04838284663b3725d5bb1cd82ca8fbe180512d59200c88b0a5829f8e390b2d
+	sha256sums = 6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10
+	sha256sums = dbb332d30c49a8b9f8a1f926c0b3439c1487d395fbef979481f9e76e53a3bcaa
+	sha256sums = a3ef5fcb0ab3459b739245cd5667c478973efad7fc5a04a054edf7f6a6d2188b
+	sha256sums = 79c8a37f472e8563f2add3352b9302879f7ff81aa49268557dd1e0bd16ecfbf6
+
+pkgname = writefreely
+
