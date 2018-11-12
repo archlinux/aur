@@ -1,7 +1,7 @@
 # Maintainer: lambdadroid <lambdadroid@gmail.com>
 pkgname=me176c-firmware
 pkgver=12.10.1.36
-pkgrel=2
+pkgrel=3
 pkgdesc="Additional firmware files for the ASUS MeMO Pad 7 (ME176C/CX)"
 arch=(x86_64)
 url="https://github.com/me176c-dev/me176c-archlinux"
@@ -20,8 +20,8 @@ build() {
     ./unpackbootimg.py boot.img
     lsinitcpio -x ramdisk
 
-    # Replace /config with /oemcfg, /config is sometimes used for ConfigFS
-    sed -i 's@/config/@/oemcfg/@g' sbin/upi_ug31xx
+    # Replace /config with /me176c, /config is sometimes used for ConfigFS
+    sed -i 's@/config/@/me176c/@g' sbin/upi_ug31xx
 }
 
 package() {
