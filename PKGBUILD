@@ -2,7 +2,7 @@
 pkgbase=python-pygments-style-gruvbox-git
 pkgname=('python-pygments-style-gruvbox-git' 'python2-pygments-style-gruvbox-git')
 pkgver=r3.36ed771
-pkgrel=1
+pkgrel=2
 pkgdesc="gruvbox style for pygments"
 arch=('any')
 url="https://github.com/daveyarwood/gruvbox-pygments"
@@ -25,11 +25,11 @@ build() {
 package_python-pygments-style-gruvbox-git() {
     depends=('python-pygments')
     cd "${pkgbase%-git}"
-    python setup.py install --prefix=/usr --root="${pkgdir}" --skip-build
+    python setup.py install --root="${pkgdir}" --skip-build
 }
 
 package_python2-pygments-style-gruvbox-git() {
     depends=('python2-pygments')
     cd "${pkgbase%-git}"
-    python2 setup.py install --prefix=/usr --root="${pkgdir}" --skip-build
+    python2 setup.py install --root="${pkgdir}" --skip-build
 }
