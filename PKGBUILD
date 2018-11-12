@@ -1,10 +1,10 @@
 # Maintainer: Caesim404 <caesim404 at gmail dot com>
 
 pkgname="yatqa"
-_pkgver="3.9.4"
+_pkgver="3.9.5"
 pkgver="${_pkgver/-/}"
 epoch="1"
-pkgrel="2"
+pkgrel="1"
 pkgdesc="Tool for managing TeamSpeak 3 servers and instances"
 arch=("x86_64" "i686")
 url="http://yat.qa/"
@@ -17,11 +17,12 @@ source=("https://dl.yat.qa/stable/YaTQA-Setup_${_pkgver}.exe"
         "yatqa.desktop"
         "yatqa.install"
         "LICENSE")
-sha256sums=('6949d1fb85c4d0ed6a5d8d44c2bcb8e0270f20f898c7160276338a1f97fa6758'
+sha256sums=('a842d7f9253287b3500d02e2f16f54218af2701e1cd8502d5790958a3cd61a51'
             '57fcd761e93b6f5d8bd6f4e354aafc9174ecdeea0fe39ea89dc68245b3c9ce02'
             '98c8f8313858f9fd7a00f75001effcf298b8b1bc43e142ac3e361016f5be9c6f'
             '45fe54d9f4655abb6774a01c961ee547507a92c2499645164f14ea5b1dc1a55a'
-            'f2e3a5f026505316e61905695317531717e213b2d497132a351748efc861ce5f')
+            '252bc5cb7f5378f218d45cd1c27d59815074087f2c20314d68b4226730d417ad')
+
 build() {
     cd "${srcdir}"
     
