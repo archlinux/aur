@@ -1,14 +1,14 @@
 # Maintainer: Your name <bros at brocode dot sh>
 
 pkgname=fblog
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="command-line JSON Log viewer"
 arch=('x86_64')
 url="https://github.com/brocode/fblog"
 license=('WTFPL')
-source=('https://github.com/brocode/fblog/releases/download/1.0.0/fblog')
-sha256sums=('729d86e2dca809a3053cda171990d18604fe86612aed91ac3b6c9910088738c1')
+source=('https://github.com/brocode/fblog/releases/download/1.2.0/fblog')
+sha256sums=('a55d380133ca0520ca84fdcb0cce96e168e74536d73aac43bf7fe9d1ca802e5d')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
