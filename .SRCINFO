@@ -1,4 +1,5 @@
 pkgbase = libc++-nocheck
+	pkgdesc = Same as libc++ but with no checks
 	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://libcxx.llvm.org/
@@ -12,6 +13,8 @@ pkgbase = libc++-nocheck
 	makedepends = python
 	makedepends = libunwind
 	depends = gcc-libs
+	provides = libc++
+	conflicts = libc++
 	noextract = llvm-7.0.0.src.tar.xz
 	noextract = libcxx-7.0.0.src.tar.xz
 	noextract = libcxxabi-7.0.0.src.tar.xz
@@ -22,14 +25,20 @@ pkgbase = libc++-nocheck
 	sha512sums = 5ebf8418bc9d311c1744c257ab7a26cf2436a64a47451905df70ec64b12d25ec33acf99e1b9d552fd54ed850bed8f53dffde2ea20292ecd9976eaa31f144caf5
 	sha512sums = 95aa8f60477739e6d6eb6ba1e32c98928e1b8104d18d659336cf7f1c5bfd1ed505015077dfbe39329c0c9d2b5b428d853e5652b0106c0cde317d2d013ebd1cf0
 
-pkgname = libc++
+pkgname = libc++-nocheck
 	pkgdesc = LLVM C++ standard library.
-	depends = libc++abi=7.0.0-1
+	depends = libc++abi-nocheck=7.0.0-1
+	provides = libc++
+	conflicts = libc++
 
-pkgname = libc++abi
+pkgname = libc++abi-nocheck
 	pkgdesc = Low level support for the LLVM C++ standard library.
+	provides = libc++abi
+	conflicts = libc++abi
 
-pkgname = libc++experimental
+pkgname = libc++experimental-nocheck
 	pkgdesc = LLVM C++ experimental library.
 	depends = libc++=7.0.0-1
+	provides = libc++experimental
+	conflicts = libc++experimental
 

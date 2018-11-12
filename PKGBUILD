@@ -5,7 +5,7 @@
 
 pkgbase=libc++-nocheck
 _pkgrealname=libc++
-pkgname=(${_pkgrealname}{,abi,experimental})
+pkgname=(${_pkgrealname}{,abi,experimental}-nocheck)
 pkgdesc='Same as libc++ but with no checks'
 pkgver=7.0.0
 pkgrel=1
@@ -14,6 +14,8 @@ license=('MIT' 'custom:University of Illinois/NCSA Open Source License')
 arch=('i686' 'x86_64')
 depends=('gcc-libs')
 makedepends=('clang' 'cmake' 'ninja' 'python' 'libunwind')
+provides=('libc++')
+conflicts=('libc++')
 source=("https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz"
         "https://releases.llvm.org/$pkgver/libcxx-$pkgver.src.tar.xz"
         "https://releases.llvm.org/$pkgver/libcxxabi-$pkgver.src.tar.xz")
@@ -55,9 +57,11 @@ build() {
   ninja cxx cxx_experimental
 }
 
-package_libc++() {
+package_libc++-nocheck() {
   pkgdesc='LLVM C++ standard library.'
-  depends=("libc++abi=${pkgver}-${pkgrel}")
+  depends=("libc++abi-nocheck=${pkgver}-${pkgrel}")
+  provides=('libc++')
+  conflicts=('libc++')
   cd ${srcdir}/build
   DESTDIR="${pkgdir}" ninja install-libcxx
 
@@ -73,8 +77,10 @@ package_libc++() {
   install -Dm644 ${srcdir}/llvm/projects/libcxx/LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
  
-package_libc++abi() {
+package_libc++abi-nocheck() {
   pkgdesc='Low level support for the LLVM C++ standard library.'
+  provides=('libc++abi')
+  conflicts=('libc++abi')
   cd ${srcdir}/build
   DESTDIR="${pkgdir}" ninja install-libcxxabi
   install -Dm644 ${srcdir}/build/include/c++/v1/cxxabi.h "${pkgdir}/usr/include/c++/v1/cxxabi.h"
@@ -83,9 +89,11 @@ package_libc++abi() {
   install -Dm644 ${srcdir}/llvm/projects/libcxxabi/LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
  
-package_libc++experimental() {
+package_libc++experimental-nocheck() {
   depends=("libc++=$pkgver-$pkgrel")
   pkgdesc='LLVM C++ experimental library.'
+  provides=('libc++experimental')
+  conflicts=('libc++experimental')
   install -Dm644 ${srcdir}/build/lib/libc++experimental.a ${pkgdir}/usr/lib/libc++experimental.a
   install -Dm644 -t ${pkgdir}/usr/include/c++/v1/experimental ${srcdir}/build/include/c++/v1/experimental/*
   install -Dm644 ${srcdir}/llvm/projects/libcxx/CREDITS.TXT "${pkgdir}/usr/share/licenses/${pkgname}/CREDITS"
