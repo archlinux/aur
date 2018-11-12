@@ -3,7 +3,7 @@
 pkgname=aggregator-git
 _realname=aggregator
 _realname2=vendor
-pkgver=v.1.0
+pkgver=v1.0.r0.g5483835
 pkgrel=1
 pkgdesc="My fork of PoCC's BURST Miner Proxy"
 arch=('x86_64')
@@ -13,21 +13,37 @@ makedepends=(go dep git go)
 source=("git"+"https://github.com/RokyErickson/aggregator.git")
 sha256sums=('SKIP')
 pkgver() {
-        cd "${srcdir}/${pkgname}"
-        git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+        cd "${srcdir}"
+        git describe --always  --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+
+_importpath="github.com/RokyErickson/${_realname}"
+
+prepare() {
+  export GOPATH="${srcdir}/_go"
+  mkdir -p $(dirname "$GOPATH/src/${_importpath}/")
+  ln -sf "${srcdir}/${_realname}" "$GOPATH/src/${_importpath}"
+  cd "$GOPATH/src/${_importpath}"
+  dep ensure -v
+}
+
+check() {
+  export GOPATH="${srcdir}/_go"
+  cd "$GOPATH/src/${_importpath}"
+  # see https://github.com/snail007/goproxy/issues/156
+  #go test $(go list ./...)
 }
 
 build() {
-  	cd "${srcdir}/${pkgname}"
-	export GOPATH="${srcdir}/${_realname}"
-        dep ensure
-	go build
+  export GOPATH="${srcdir}/_go"
+  cd "$GOPATH/src/${_importpath}"
+  go build
 }
 
 package() {
-        cd "${srcdir}"/"${_realname}"
-        install -Dm755 "${_realname}" "${pkgdir}$/usr/bin/${_realname}"
-	cd "${srcdir}"/"${_realname}"
-        install -Dm755 "${_realname2}" "${pkgdir}$/usr/bin/${_realname2}"
+  export GOPATH="$srcdir/_go"
+  cd "$GOPATH/src/${_importpath}"
+  install -dm755 "$pkgdir/usr/bin"
+  install -m755 "${_realname}" "$pkgdir/usr/bin/${_realname}"
 }
-
