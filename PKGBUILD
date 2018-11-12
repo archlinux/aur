@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 _version=2018.3.0
-_build=b8
-_randomstring=fa755def4b97
+_build=b9
+_randomstring=a3326ae325b2
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta
@@ -39,7 +39,7 @@ source=("https://beta.unity3d.com/download/${_randomstring}/LinuxEditorInstaller
         'unity-editor-beta.desktop'
         'unity-editor-beta-icon.png'
         'eula.txt')
-sha1sums=('578bb8e8b5a8a83dbfbff2d135479449221e1b0c'
+sha1sums=('927b2ba967fc64b69cc8113788840d2ccccbb87b'
           'd61175685d0836a79b2d4582c09ea23ed5ee18e9'
           'c348f141232ec06c6558fd42b5cbf86a75e2d02d'
           'fddf4861974f88f0565de7f54f7418204e729894'
