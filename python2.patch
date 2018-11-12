@@ -1,0 +1,50 @@
+diff --git a/libvirt-blkstat b/libvirt-blkstat
+index 42ec1b4..f7ac712 100644
+--- a/libvirt-blkstat
++++ b/libvirt-blkstat
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # vim: set fileencoding=utf-8 :
+ #
+ # Munin plugin to show the I/O load of libvirt managed virtual machines
+diff --git a/libvirt-cputime b/libvirt-cputime
+index f2d658d..68a0cc6 100644
+--- a/libvirt-cputime
++++ b/libvirt-cputime
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # vim: set fileencoding=utf-8 :
+ #
+ # Munin plugin to show the percent of cputime of libvirt managed virtual
+diff --git a/libvirt-ifstat b/libvirt-ifstat
+index d0134fc..067c1da 100644
+--- a/libvirt-ifstat
++++ b/libvirt-ifstat
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # vim: set fileencoding=utf-8 :
+ #
+ # Munin plugin to show the network traffic of libvirt managed virtual machines
+diff --git a/libvirt-mem b/libvirt-mem
+index cf9bd6b..ef3a063 100644
+--- a/libvirt-mem
++++ b/libvirt-mem
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # vim: set fileencoding=utf-8 :
+ #
+ # Munin plugin to show the amount of memory used by libvirt managed virtual
+diff --git a/munin-libvirt-plugins-detect.in b/munin-libvirt-plugins-detect.in
+index 275c987..7226f8e 100644
+--- a/munin-libvirt-plugins-detect.in
++++ b/munin-libvirt-plugins-detect.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # vim: set fileencoding=utf-8 :
+ #
+ # Configure and enable munin libvirt plugins
