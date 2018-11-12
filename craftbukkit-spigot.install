@@ -21,8 +21,8 @@ post_upgrade() {
 
 >>> send_command.sh has become /usr/bin/craftbukkit-mcrcon
 
->>> The package no longer installs any files in /srv/craftbukkit/ and allows
-    using an alternate directory
+>>> The package no longer installs any necessary files in /srv/craftbukkit/ and
+    allows using an alternate directory
 
 >>> Documentation moved to /usr/share/doc/craftbukkit-spigot/readme.md
 

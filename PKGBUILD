@@ -7,7 +7,7 @@ _pkgver=1.12.2
 # Specify BuildTools version explicitly (instead of using
 # 'lastSuccessfulBuild') to let makepkg detect when needs to download an update
 _buildtoolver=81
-pkgrel=1
+pkgrel=2
 pkgdesc="CraftBukkit & Spigot Minecraft servers"
 arch=(any)
 url="http://www.spigotmc.org/"
@@ -49,6 +49,22 @@ pkgver() {
 }
 
 build() {
+  cat > old_send_command.sh <<EOF
+#!/bin/sh
+REPL="/usr/bin/craftbukkit-mcrcon"
+echo "This script is deprecated and will be removed." 2>&1
+echo "Use \$REPL instead" 2>&1
+echo
+exec "\$REPL" "\$@"
+EOF
+  cat > old_backup.sh <<EOF
+#!/bin/sh
+REPL="/usr/share/doc/$pkgname/backup.sh"
+echo "This script is deprecated and will be removed." 2>&1
+echo "Use \$REPL instead" 2>&1
+echo
+exec "\$REPL" "\$@"
+EOF
   MAVEN_OPTS="-Dmaven.repo.local=$srcdir/m2/repository" \
       java -jar "BuildTools-${_buildtoolver}.jar" --rev "$_pkgver"
 }
@@ -78,4 +94,6 @@ package() {
   install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
   install -dm755 "$pkgdir/srv/craftbukkit/"
+  install -m755 "$srcdir/old_backup.sh" "$pkgdir/srv/craftbukkit/backup.sh"
+  install -m755 "$srcdir/old_send_command.sh" "$pkgdir/srv/craftbukkit/send_command.sh"
 }

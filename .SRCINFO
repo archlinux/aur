@@ -1,7 +1,7 @@
 pkgbase = craftbukkit-spigot
 	pkgdesc = CraftBukkit & Spigot Minecraft servers
 	pkgver = 1.12.2.20181111
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.spigotmc.org/
 	install = craftbukkit-spigot.install
 	arch = any
