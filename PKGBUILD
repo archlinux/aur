@@ -181,6 +181,7 @@ package_lib32-llvm-libs-svn() {
     depends=(
         'lib32-gcc-libs'
         'lib32-libffi'
+        'lib32-libxml2'
         'lib32-ncurses'
         'lib32-zlib'
     )
