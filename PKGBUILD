@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=kolide-git
 _pkgname=kolide
-pkgver=r1038.60bd9157
+pkgver=2.0.0.r1.g510ec107
 pkgrel=1
 pkgdesc="osquery command and control"
 url="https://www.kolide.co/"
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
