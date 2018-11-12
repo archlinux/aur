@@ -2,8 +2,8 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs
-pkgver=2018.3
-pkgrel=2
+pkgver=2018.4
+pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -17,7 +17,7 @@ optdepends=('cuda: Nvidia GPU support'
 makedepends=('cmake' 'libxml2' 'hwloc' 'gcc7')
 options=('!libtool')
 source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha1sums=('f17d57b031d37f69981573dd4c70203d52863b61')
+sha1sums=('2ee68c3ef3176991238bb36445de0f48c34af78b')
 
 #With gcc7 currently there are less errors in the tests
 # also the compilation is possible in cuda capable machines
