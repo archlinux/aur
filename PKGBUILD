@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/elcalc/elcalc/"
 license=('MIT')
 depends=('xdg-utils')
-source_x86_64=("https://github.com/elcalc/elcalc/releases/download/5.0/elcalc_${pkgver}_amd64.deb")
+source_x86_64=("https://github.com/elcalc/elcalc/releases/download/${pkgver}/elcalc_${pkgver}_amd64.deb")
 source=($pkgname.desktop
         $pkgname.png)
 sha512sums=('b078f9108b73f79b5ead6bda9a7dacc1e7806413f549c8132fe6f37548c5e93a0a7505b3397cf49a6fe8c7827ba3430b4242c2fd67fcd722482dd4372891aa14'
