@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
 _version=2018.3.0
-_build=b8
-_randomstring=fa755def4b97
+_build=b9
+_randomstring=a3326ae325b2
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-language-ko
