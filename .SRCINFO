@@ -1,11 +1,12 @@
 pkgbase = python-git
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.8.0a0.r102398.81574b80e9
+	pkgver = 3.8.0a0.r102733.a9655b7f71
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
 	license = custom
+	checkdepends = ttf-font
 	makedepends = tk
 	makedepends = sqlite
 	makedepends = valgrind
