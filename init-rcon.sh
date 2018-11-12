@@ -39,7 +39,7 @@ fi
 
 (
   umask 007
-  cat > /run/craftbukkit/vars <<EOF
+  cat > "$RUNTIME_DIR/vars" <<EOF
 rcon=$rcon
 port=$port
 password="$password"

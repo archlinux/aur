@@ -1,13 +1,13 @@
 [Unit]
-Description=Minecraft server
+Description=Minecraft server for %f
 
 [Service]
 User=craftbukkit
 Group=craftbukkit
-RuntimeDirectory=craftbukkit
-WorkingDirectory=/srv/craftbukkit
-PIDFile=/run/craftbukkit/pid
-Environment=JAVA_ARGS=-Xmx1G RUNTIME_DIR=/run/craftbukkit
+RuntimeDirectory=craftbukkit@%i
+WorkingDirectory=%f
+PIDFile=/run/craftbukkit@%i/pid
+Environment=JAVA_ARGS=-Xmx1G RUNTIME_DIR=/run/craftbukkit@%i
 ExecStartPre=/usr/share/craftbukkit-spigot/init-rcon.sh
 ExecStart=/usr/share/craftbukkit-spigot/start_server.sh /usr/bin/java $JAVA_ARGS -jar /usr/share/java/craftbukkit-spigot/%p.jar
 ExecStop=/usr/share/craftbukkit-spigot/notify-shutdown.sh

@@ -165,3 +165,30 @@ And then write these contents into the editor systemctl opens:
 [Service]
 WorkingDirectory=/srv/spigot
 ```
+
+Alternatively, see the next section on running multiple servers. Setting the
+directory is more straight-forward with multiple servers, but then requires all
+interaction with the server to specify the directory. Thus the approach
+discussed in this section is generally preferred.
+
+### Running multiple servers ###
+Templated services are provided that allow running multiple servers
+simultaneously: minecraft@, craftbukkit@, and spigot@. The instance name should
+be the server directory to use, encoded as a systemd unit name path as
+performed by `systemd-escape -p`. Each running server must use a different
+directory.
+
+With multiple servers, you will need to begin passing the "-d" argument to
+craftbukkit-mcrcon and craftbukkit-save and specify the instance name when
+using systemctl.
+
+For example, to create a new spigot server:
+```
+$ sudo mkdir /srv/spigot
+$ sudo chown craftbukkit:craftbukkit /srv/spigot
+$ sudo cp /srv/craftbukkit/eula.txt /srv/spigot/eula.txt
+$ systemd-escape -p /srv/spigot
+srv-spigot
+$ sudo systemctl enable --now spigot@srv-spigot
+$ craftbukkit-mcrcon -d /srv/spigot icanhasbukkit
+```
