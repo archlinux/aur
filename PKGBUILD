@@ -2,8 +2,9 @@
 # Contributor: 
 
 pkgname=python-climin-git
-pkgver=1.0
+pkgver=r544.2215b1a
 pkgrel=1
+epoch=1
 pkgdesc="Optimizers for machine learning"
 arch=("any")
 license=("BSD")
@@ -22,4 +23,9 @@ package() {
     cd climin
     python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+pkgver() {
+  cd climin
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
