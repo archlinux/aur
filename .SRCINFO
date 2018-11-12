@@ -1,6 +1,6 @@
 pkgbase = wattman-gtk-git
 	pkgdesc = GTK GUI to view, monitor, and overclock a Radeon GPU on Linux
-	pkgver = r91.d112ddc
+	pkgver = r101.6360fab
 	pkgrel = 1
 	url = https://github.com/BoukeHaarsma23/WattmanGTK
 	arch = any
