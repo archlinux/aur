@@ -1,5 +1,6 @@
-# Maintainer: Virgil Dupras <hsoft@hardcoded.net>
+# Maintainer: fuan_k <rrkay at posteo dot net>
 # Maintainer: Bijaya Dangol <dangoldbj23@gmail.com>
+# Maintainer: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
 pkgver=4.0.3
 pkgrel=5
@@ -19,6 +20,17 @@ md5sums=(
 )
 provides=("dupeguru")
 conflicts=("dupeguru-se" "dupeguru-pe" "dupeguru-me")
+
+prepare(){
+  # Temporary fix for python3.7 handling of old syntax
+  cd "$srcdir"
+  sed -i '277 a\\            try:' src/hscommon/build.py
+  sed -i '279s/^/    /' src/hscommon/build.py
+  sed -i '280s/^/    /' src/hscommon/build.py
+  sed -i '281s/^/    /' src/hscommon/build.py
+  sed -i '281a\\            except StopIteration:' src/hscommon/build.py
+  sed -i '282a\\                return' src/hscommon/build.py
+}
 
 build() {
   cd "$srcdir"
