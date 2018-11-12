@@ -3,7 +3,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=('python-inotify' 'python2-inotify')
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Access inotify events via python (this is NOT related to python-pynotify!)"
 arch=( 'i686' 'x86_64' )
@@ -17,7 +17,7 @@ changelog=
 noextract=()
 source=("https://files.pythonhosted.org/packages/source/i/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "${_pkgname}-${pkgver}.tar.gz.sig")
-sha512sums=('d2a8e104c31b4c8f9aebcc948bc08780ccac229fe1f7a21e1edd950e6d3fefcc04239ff7fea8ec5ebf8fb97ff67ae4d683e8b0c053c2ccf6249787525d44c58e'
+sha512sums=('d6ec9acbf4f2317cfe6b8caf9b00386bcaf2da0263089618f6856cc05ca9ec4358206cb88ab8fe363a6f81e69e3c175b13d670ef317ffb2de7b7ab5b00303d27'
             'SKIP')
 
 package_python-inotify() {
