@@ -1,8 +1,8 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Austin Haedicke <austin.haedicke@gmail.com>
 # Contributor: spider-mario <spidermario@free.fr>
 
 pkgname=rakudo-git
-pkgver=20180430
+pkgver=20181111
 pkgrel=1
 pkgdesc="Perl6 on MoarVM"
 arch=('i686' 'x86_64')
@@ -38,5 +38,5 @@ package() {
   export RAKUDO_LOG_PRECOMP=1
   export RAKUDO_RERESOLVE_DEPENDENCIES=0
   make DESTDIR="$pkgdir" install
-  install -Dm 755 tools/install-dist.pl "$pkgdir/usr/bin/perl6-install-dist"
+  install -Dm 755 tools/install-dist.p6 "$pkgdir/usr/bin/perl6-install-dist"
 }
