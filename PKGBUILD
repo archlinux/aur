@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=heif
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='High Efficiency Image File Format'
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ url='https://nokiatech.github.io/heif/'
 license=('custom')
 makedepends=('cmake')
 source=("https://github.com/nokiatech/heif/archive/v${pkgver}.tar.gz")
-sha512sums=('4c9d118ab1b3ea96652e35e0e042ddd9fef035c99d7b58c99393c60bf6169ab1f69ef8541df59cc6fc00c0d2d78d900c2d30d41dcd60afd89c9170bd1305f50f')
+sha512sums=('e99540605279c70684809e642b5f6ee24689f59f49149e129811117b0137b6896f2aea2db3af2bf37ebfb1f8b41903eaf87bc60366b012a9099fd898ddf8387a')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/build/"
