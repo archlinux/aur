@@ -2,7 +2,7 @@
 
 _target=arm-frc-linux-gnueabi
 pkgname=$_target-gdb
-pkgver=8.1
+pkgver=8.2
 pkgrel=1
 pkgdesc="The GNU Debugger (${_target})"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ depends=(ncurses expat xz mpfr gdb-common)
 makedepends=(texinfo python guile2.0)
 options=(!emptydirs)
 source=(ftp://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz)
-sha256sums=('af61a0263858e69c5dce51eab26662ff3d2ad9aa68da9583e8143b5426be4b34')
+sha256sums=('c3a441a29c7c89720b734e5a9c6289c0a06be7e0c76ef538f7bbcef389347c39')
 
 build() {
   cd gdb-$pkgver
