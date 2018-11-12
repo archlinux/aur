@@ -4,7 +4,7 @@
 # Based on original tikzit-aur-package made by pippin
 
 pkgname=tikzit-git
-pkgver=2.0.5.g19a3a0f
+pkgver=2.0.8.g87b50b1
 pkgrel=1
 pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library - rewrite in QT and C++"
 arch=('i686' 'x86_64')
@@ -28,10 +28,10 @@ build() {
   qmake PREFIX=/usr \
     QMAKE_CFLAGS="${CFLAGS}" \
     QMAKE_CXXFLAGS="${CXXFLAGS}" tikzit.pro  
-  make -j1
+  make -j1 
 }
 
 package() {
   cd ${pkgname%-git}
- install -Dm755 tikzit "$pkgdir"/usr/bin/tikzit
+  make -j1 INSTALL_ROOT="$pkgdir" install 
 }
