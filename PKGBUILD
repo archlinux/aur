@@ -2,7 +2,7 @@
 
 pkgname=system76-io-dkms-git
 _pkgname=system76-io-dkms
-pkgver=13
+pkgver=15
 pkgrel=1
 pkgdesc="This DKMS driver provides airplane mode, keyboard backlight, and fan support for System76 laptops"
 arch=('x86_64')
