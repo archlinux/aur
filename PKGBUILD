@@ -2,13 +2,13 @@
 # Contributor: svalo <me@valo.space>
 
 pkgname=dino-git
-pkgver=r268.df8b5fc
+pkgver=r370.38b5320
 pkgrel=1
 pkgdesc="Simple and modern Jabber/XMPP client written in vala"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/dino/dino"
 license=('GPL3')
-depends=('glib2>=2.38' 'glib-networking' 'gtk3>=3.22' 'gpgme' 'libgee>=0.10' 'libgcrypt' 'libsoup' 'sqlite')
+depends=('glib2>=2.38' 'glib-networking' 'gtk3>=3.22' 'gpgme' 'libgee>=0.10' 'libgcrypt' 'libsoup' 'sqlite' 'qrencode')
 makedepends=('git' 'cmake' 'vala>=0.34' 'ninja')
 optdepends=('libcanberra: audio notification support')
 provides=("${pkgname%-git}")
