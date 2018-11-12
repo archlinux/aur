@@ -1,7 +1,7 @@
 pkgbase = python-pygments-style-gruvbox-git
 	pkgdesc = gruvbox style for pygments
 	pkgver = r3.36ed771
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daveyarwood/gruvbox-pygments
 	arch = any
 	license = unknown
