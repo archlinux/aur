@@ -4,7 +4,7 @@
 
 pkgname=code-git
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - git latest'
-pkgver=1.16.0.r18592.g02275f047b
+pkgver=1.16.0.r19258.g54fb49cdc5
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
@@ -22,8 +22,8 @@ source=("git+https://github.com/Microsoft/vscode"
 sha256sums=('SKIP'
             '64aca444a714dd67da6d5b71ab8d0255e767cb265918d556b3bf8194fca0a7ef'
             'df452e6f64f62081aa4a8da69a071b2c122095eea48dca409a7a851243b9ff36'
-            '90bd7da0af12f1ecd775ebf300350ed67f9ae08e7ea956269629a275ce05835c'
-            'eb639e59c4075220d42390a165e2eef55c3eaa180050989c346ebcec64a0aca4')
+            'ab3b08aac7e311d9bf5a0985067f2875bb3a1a0802bfa736489941887a0f05ba'
+            '69d5c743fad5466583eba81411792ef5f3cbb6d721de1ebd584ea4a5e2079065')
 
 case "$CARCH" in
     i686)

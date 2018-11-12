@@ -1,12 +1,12 @@
 diff -rupN a/product.json b/product.json
---- a/product.json	2018-09-13 18:58:04.308823247 -0700
-+++ b/product.json	2018-09-13 19:02:18.881574329 -0700
-@@ -17,5 +17,15 @@
- 	"win32ShellNameShort": "C&ode - OSS",
- 	"darwinBundleIdentifier": "com.visualstudio.code.oss",
- 	"reportIssueUrl": "https://github.com/Microsoft/vscode/issues/new",
--	"urlProtocol": "code-oss"
-+	"urlProtocol": "code-oss",
+--- a/product.json	2018-11-12 15:09:13.479207928 -0800
++++ b/product.json	2018-11-12 15:10:06.309792546 -0800
+@@ -20,5 +20,15 @@
+ 	"urlProtocol": "code-oss",
+ 	"extensionAllowedProposedApi": [
+ 		"ms-vscode.references-view"
+-	]
++	],
 +	"quality": "stable",
 +	"extensionsGallery": {
 +		"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
