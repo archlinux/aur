@@ -1,4 +1,4 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Austin Haedicke <austin.haedicke@gmail.com>
 # Contributor: Jonathon Fernyhough <jonathon@manjaro.org>
 
 pkgname=zef
