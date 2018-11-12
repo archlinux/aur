@@ -1,7 +1,7 @@
 pkgbase = denemo
 	pkgdesc = A music score editor
 	pkgver = 2.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.denemo.org
 	arch = x86_64
 	license = GPL
@@ -27,7 +27,7 @@ pkgbase = denemo
 	validpgpkeys = C66734FA5D60E4DDD882EF81AE6F83BB6C574235
 	sha256sums = d07d7c5bce5569e25fceb02727f5c8f4ff2f579947b612e2bf9b48573bd1eca3
 	sha256sums = SKIP
-	sha256sums = 0266e1c88f7829fbc0990dc3f3f7d55abdbea1f73d3b9a41728cc41682427eb5
+	sha256sums = dfc426927813c73bfb61a310147a33abe63f46a2cbd29ff54a99b67693079f76
 
 pkgname = denemo
 

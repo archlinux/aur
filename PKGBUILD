@@ -7,7 +7,7 @@
 
 pkgname=denemo
 pkgver=2.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A music score editor"
 arch=('x86_64')
 url="http://www.denemo.org"
@@ -20,7 +20,7 @@ validpgpkeys=('C66734FA5D60E4DDD882EF81AE6F83BB6C574235') # Jeremiah Benham, AE6
 source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig} no_portaudio.patch)
 sha256sums=('d07d7c5bce5569e25fceb02727f5c8f4ff2f579947b612e2bf9b48573bd1eca3'
             'SKIP'
-            '0266e1c88f7829fbc0990dc3f3f7d55abdbea1f73d3b9a41728cc41682427eb5')
+            'dfc426927813c73bfb61a310147a33abe63f46a2cbd29ff54a99b67693079f76')
 
 prepare() {
   cd "$srcdir"
@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
   [ -x configure ] || ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --disable-portaudio
+  ./configure --prefix=/usr --sysconfdir=/etc --disable-portaudio --disable-rpath
   make
 }
 
