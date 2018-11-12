@@ -1,6 +1,6 @@
 pkgbase = xtrkcad-ru
 	pkgdesc = Russian translate for XtrkCAD program.
-	pkgver = 5.1.1
+	pkgver = 5.1.2
 	pkgrel = 1
 	url = http://www.xtrkcad.org/
 	arch = x86_64
@@ -8,7 +8,8 @@ pkgbase = xtrkcad-ru
 	license = GPL2
 	makedepends = gettext
 	depends = xtrkcad
-	source = https://raw.githubusercontent.com/CupIvan/xtrkcad-ru/master/5.1.0/xtrkcad.po
+	source = https://raw.githubusercontent.com/CupIvan/xtrkcad-ru/master/5.1.2/xtrkcad.po
 	md5sums = SKIP
 
 pkgname = xtrkcad-ru
+
