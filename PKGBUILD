@@ -11,7 +11,7 @@ pkgdesc="AMD CodeXL is an OpenCL, Vulkan and OpenGL Debugger and Profiler, with 
 arch=('x86_64')
 url="http://gpuopen.com/compute-product/codexl/"
 license=('MIT')
-options=('staticlibs' 'libtool' '!upx')
+options=('staticlibs' 'libtool')
 groups=('amdapp')
 depends=('glu'
   'gtk2'
