@@ -1,3 +1,5 @@
+# Maintainer: Michal Donat <donny579@gmail.com>
+
 pkgname=supertuxkart-git
 pkgver=20233+17844
 pkgrel=1
@@ -36,10 +38,11 @@ pkgver() {
 
 build() {
     cd "${srcdir}/stk-code"
-    msg "Starting build..."
-
-    [ -d "cmake_build" ] && rm -rf cmake_build
-    mkdir cmake_build && cd cmake_build
+    if [ -d "cmake_build" ]; then
+        rm -rf cmake_build
+    fi
+    mkdir cmake_build
+    cd cmake_build
 
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     # -DBUILD_RECORDER=off     - disable in-game recorder (then you can remove the dependency `libopenglrecorder`)

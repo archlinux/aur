@@ -1,0 +1,6 @@
+pkg/
+src/
+
+stk-assets/
+stk-code/
+*.pkg.tar.xz
