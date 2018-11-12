@@ -7,7 +7,7 @@ pkgrel=1
 arch=('any')
 url="https://conversejs.org/"
 license=('MPL2')
-makedepends=('git' 'npm' 'ruby-rdoc')
+makedepends=('git' 'npm')
 source=('git+https://github.com/conversejs/converse.js'
         'launcher.sh'
         'launcher.desktop')
