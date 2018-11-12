@@ -3,7 +3,7 @@ pkgver=2.14.0
 _pkgname=IPMIView
 _pkgrev=180213
 _pkgver=${_pkgver}_${_pkgrev}
-pkgrel=1
+pkgrel=2
 pkgdesc="Supermicro IPMI tool"
 makedepends=('tar')
 depends=("glibc" "java-runtime=8")
@@ -25,6 +25,9 @@ sha256sums_i686=('37b6d1deb21960a75b077b6b87c640c211276dbc0fc8f217cf48dfba460c91
 
 package() {
     cd ${srcdir}/${_pkgname}_${pkgver}_build.${_pkgrev}_bundleJRE_Linux${_pkgarch}
+
+    # Remove bundled jre
+    rm -rf jre/
 
     mkdir -p ${pkgdir}/opt/${pkgname}
     mkdir -p ${pkgdir}/usr/bin
