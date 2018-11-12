@@ -6,11 +6,11 @@ pkgver=2.0.21
 pkgrel=1
 pkgdesc="A complete re-implementation of the HP-42S calculator and the HP-82240 printer"
 arch=('i686' 'x86_64')
-url="http://thomasokken.nl/free42/"
+url="http://thomasokken.com/free42/"
 license=('GPL')
 depends=('libxmu' 'gtk2')
 optdepends=('free42-skins: Additional skins')
-source=("http://thomasokken.nl/free42/upstream/$pkgname-nologo-$pkgver.tgz"
+source=("http://thomasokken.com/free42/upstream/$pkgname-nologo-$pkgver.tgz"
         "0001_makefile.patch"
         "0002_system-skins.patch")
 md5sums=('a3a4559961308313987e4929afa044f0'
