@@ -1,7 +1,7 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Nick Boughton (nicholboughton@gmail.com)
 
 pkgname=vue-cli
-pkgver=3.0.5
+pkgver=3.1.3
 pkgrel=2
 pkgdesc='Standard tooling for Vue.js development'
 arch=(i686 x86_64)
@@ -14,5 +14,5 @@ options=(!strip)
 
 package() {
   npm install -g --prefix="$pkgdir"/usr @vue/cli@$pkgver
-  find "$pkgdir"/usr -type d -exec chmod 755 {} +
+  chmod -R 755 "$pkgdir"/usr 
 }
