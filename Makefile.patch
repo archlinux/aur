@@ -1,0 +1,27 @@
+--- Makefile	2018-09-01 18:14:08.000000000 +0900
++++ Makefile.new	2018-11-12 10:45:11.440311195 +0900
+@@ -71,13 +71,13 @@
+ 
+ install: casl2 comet2 dumpword install-info
+ 	$(INSTALL) -d $(bindir)
+-	$(INSTALL) $(CMD) $(bindir)/
++	$(INSTALL) $(CMDFILES) $(bindir)/
+ 
+ install-info:
+ 	$(MAKE) -C doc install-info
+ 
+ uninstall: uninstall-info
+-	$(RM) $(prefix $(bindir)/,$(CMD))
++	$(RM) $(prefix $(bindir)/,$(CMDFILES))
+ 
+ version: $(VERSIONFILES)
+ 	@$(ECHO) "YACASL2 Version: $(VERSION)"
+@@ -93,7 +93,7 @@
+ clean: src-clean doc-clean doc_inner-clean
+ 
+ cmd-clean:
+-	$(RM) $(CMD)
++	$(RM) $(CMDFILES)
+ 
+ src-clean:
+ 	$(MAKE) -sC src clean
