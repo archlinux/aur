@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=aminal-git
-pkgver=r191.2907bb6
+pkgver=r216.13246ca
 _pkgname=aminal
 pkgrel=1
 pkgdesc="Golang terminal emulator from scratch"
