@@ -1,6 +1,6 @@
 --- SConstruct.orig
 +++ /RHVoice/SConstruct
-@@ -172,7 +172,7 @@
+@@ -178,7 +178,7 @@
              env.Tool("xp_compat")
      if "gcc" in env["TOOLS"]:
          env.MergeFlags("-pthread")
@@ -9,10 +9,10 @@
          env.AppendUnique(CFLAGS=["-std=c99"])
      if sys.platform=="win32":
          bits="64" if arch.endswith("64") else "32"
-@@ -225,7 +225,7 @@
-             env["audio_libs"].add("libao")
-         if conf.CheckPKG("portaudio-2.0"):
+@@ -234,7 +234,7 @@
              env["audio_libs"].add("portaudio")
+         if env["audio_libs"]:
+             CheckLibspeechdVersionH(conf)
 -#        has_giomm=conf.CheckPKG("giomm-2.4")
 +        has_giomm=conf.CheckPKG("giomm-2.4")
      if env["PLATFORM"]=="win32":

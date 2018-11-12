@@ -1,7 +1,7 @@
 pkgname=rhvoice-git
-pkgver=20180917
+pkgver=20181112
 pkgrel=1
-pkgdesc="Free and open source speech synthesizer for Russian and other languages"
+pkgdesc="Free and open source speech synthesizer for Russian and other languages. Git version with client/server enabled."
 arch=('i686' 'x86_64')
 url="https://github.com/Olga-Yakovleva/RHVoice"
 license=('GPL3')
@@ -29,7 +29,7 @@ build() {
 
     msg "GIT checkout done or server timeout"
 
-    msg2 "Patching source"
+    msg2 "Patching source, enable client/server capabilytis"
     cd "${srcdir}"
 	for p in ../*.patch; do
       msg2 "Applying patch: $p"
