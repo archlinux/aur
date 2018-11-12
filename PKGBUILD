@@ -3,7 +3,7 @@
 
 pkgname=xgrabcolor
 pkgver=1.4.6
-pkgrel=4
+pkgrel=4.1
 pkgdesc="A basic color picker"
 arch=('i686' 'x86_64')
 url="http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=xgrabcolor&full="
@@ -26,4 +26,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
-sha256sums=('11ac82a49c5686bc590ccc36a63c1fd893f38f67fe8bb0a1ce5a54c78f3c9554')
+
+sha256sums=('457b73f84f68cf90cf995e719a0bcc2a923bb67e7e459294935b82a346c0e638')
