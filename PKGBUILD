@@ -1,9 +1,9 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 # Contributor: Lucas Hermann Negri <lucashnegri at gmail dot com>
 pkgname=armadillo
-pkgver=9.200_4
+pkgver=9.200.4
 _pkgver=9.200.4                       # For use with RC releases, to replace the - with _
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ linear algebra library"
 arch=('i686' 'x86_64')
 url="http://arma.sourceforge.net/"
