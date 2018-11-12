@@ -1,17 +1,15 @@
 pkgbase = yices
 	pkgdesc = The Yices SMT Solver
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = http://yices.csl.sri.com/
 	arch = x86_64
 	license = custom
-	makedepends = gcc
 	makedepends = gperf
 	makedepends = gmp
-	makedepends = make
 	conflicts = yices-bin
-	source = http://yices.csl.sri.com/releases/2.6.0/yices-2.6.0-src.tar.gz
-	sha1sums = a53d0293d29d7f71a267b4e680e6214c02132b26
+	source = http://yices.csl.sri.com/releases/2.6.1/yices-2.6.1-src.tar.gz
+	sha1sums = 387f20480d38f7e0692260ea187d128cb65b2d07
 
 pkgname = yices
 

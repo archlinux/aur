@@ -2,16 +2,16 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 
 pkgname=yices
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="The Yices SMT Solver"
 arch=('x86_64')
 url="http://yices.csl.sri.com/"
 license=('custom')
 conflicts=('yices-bin')
-makedepends=('gcc' 'gperf' 'gmp' 'make')
+makedepends=('gperf' 'gmp')
 source=("http://yices.csl.sri.com/releases/${pkgver}/yices-${pkgver}-src.tar.gz")
-sha1sums=('a53d0293d29d7f71a267b4e680e6214c02132b26')
+sha1sums=('387f20480d38f7e0692260ea187d128cb65b2d07')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
