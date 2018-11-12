@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 _version=2018.3.0
-_build=b8
-_randomstring=fa755def4b97
+_build=b9
+_randomstring=a3326ae325b2
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-android
@@ -19,7 +19,7 @@ depends=('unity-editor-beta'
 optdepends=('android-ndk-13b: needed for IL2CPP builds')
 makedepends=('cpio')
 source=("https://beta.unity3d.com/download/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-${_version}${_build}.pkg")
-sha1sums=('a17efcecb84f1f9f58accd18de5f91b51c6a03b3')
+sha1sums=('51e306b646811b33bb046778ca1ca3a93c090128')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
