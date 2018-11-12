@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=mwic
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc='Misspelled Words In Context'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-pyenchant' 'python-regex')
 checkdepends=('aspell-en' 'python-nose')
 source=("$url/releases/download/$pkgver/mwic-$pkgver.tar.gz"{,.asc})
-sha512sums=('e22b66f5f79dff7276295e75f0fa3a418ef99ed25f193b22f5a9584ddfde60999613dab21e469e02e5e5c4b05e9804527dbee08bff2d284357caad261f30e217'
+sha512sums=('d28194fa832204552ee68a09ab2822f7380c7cbdd0d980455de2a06a973b5fd6a11d99363388f0b28c2d2256849bb03b497e039a40d6f7d79880a792f3d714f6'
             'SKIP')
 validpgpkeys=('CDB5A1243ACDB63009AD07212D4EB3A6015475F5') # Jakub Wilk
 
