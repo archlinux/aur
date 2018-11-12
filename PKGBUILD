@@ -8,7 +8,7 @@ url="https://github.com/open-iscsi/targetcli-fb"
 license=('Apache')
 groups=()
 depends=('python-rtslib-fb>=2.1.fb52' 'python-configshell-fb>=1.1.fb17'
-         'python-dbus')
+         'python-dbus' 'python-gobject')
 makedepends=('python-setuptools')
 optdepends=('python-ethtool')
 provides=('targetcli')

@@ -9,6 +9,7 @@ pkgbase = targetcli-fb
 	depends = python-rtslib-fb>=2.1.fb52
 	depends = python-configshell-fb>=1.1.fb17
 	depends = python-dbus
+	depends = python-gobject
 	optdepends = python-ethtool
 	provides = targetcli
 	source = https://github.com/open-iscsi/targetcli-fb/archive/v2.1.fb49.tar.gz
