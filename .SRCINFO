@@ -1,0 +1,35 @@
+pkgbase = libc++-nocheck
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://libcxx.llvm.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	makedepends = libunwind
+	depends = gcc-libs
+	noextract = llvm-7.0.0.src.tar.xz
+	noextract = libcxx-7.0.0.src.tar.xz
+	noextract = libcxxabi-7.0.0.src.tar.xz
+	source = https://releases.llvm.org/7.0.0/llvm-7.0.0.src.tar.xz
+	source = https://releases.llvm.org/7.0.0/libcxx-7.0.0.src.tar.xz
+	source = https://releases.llvm.org/7.0.0/libcxxabi-7.0.0.src.tar.xz
+	sha512sums = bdc9b851c158b17e1bbeb7ac5ae49821bfb1251a3826fe8a3932cd1a43f9fb0d620c3de67150c1d9297bf0b86fa917e75978da29c3f751b277866dc90395abec
+	sha512sums = 5ebf8418bc9d311c1744c257ab7a26cf2436a64a47451905df70ec64b12d25ec33acf99e1b9d552fd54ed850bed8f53dffde2ea20292ecd9976eaa31f144caf5
+	sha512sums = 95aa8f60477739e6d6eb6ba1e32c98928e1b8104d18d659336cf7f1c5bfd1ed505015077dfbe39329c0c9d2b5b428d853e5652b0106c0cde317d2d013ebd1cf0
+
+pkgname = libc++
+	pkgdesc = LLVM C++ standard library.
+	depends = libc++abi=7.0.0-1
+
+pkgname = libc++abi
+	pkgdesc = Low level support for the LLVM C++ standard library.
+
+pkgname = libc++experimental
+	pkgdesc = LLVM C++ experimental library.
+	depends = libc++=7.0.0-1
+
