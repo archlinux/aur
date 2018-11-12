@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 _version=2018.3.0
-_build=b8
-_randomstring=fa755def4b97
+_build=b9
+_randomstring=a3326ae325b2
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-ios
@@ -14,7 +14,7 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta')
 source=("https://beta.unity3d.com/download/${_randomstring}/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-${_version}${_build}.tar.xz")
-sha1sums=('d12d6f9c9443bfe48d5ae1672dbadc5814da207a')
+sha1sums=('d058ab39ac353331ce128e6c5623660118aa41cb')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
