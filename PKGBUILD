@@ -6,7 +6,7 @@
 # https://www.kernel.org/category/releases.html
 # 4.9 Greg Kroah-Hartman 2016-12-11 2023-01
 _LLL_VER=4.9
-_LLL_SUBVER=125
+_LLL_SUBVER=136
 
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU can actually run slower with NUMA enabled.
@@ -59,6 +59,7 @@ source=(
         #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         ${_CK_PATCH}
         'ck-patch-for-4.9.117+.patch'
+        'ck-patch-for-4.9.135+.patch'
         ${_UKSM_PATCH}
         ${_CJKTTY_PATCH}
         'linux-cjktty-patch-for-4.9.112+.patch'
@@ -74,9 +75,10 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            '32d94daf7f01d43a4774d6c4045b89655e6e975ddd6f6792553173c675aef299'
+            '9ca1d89c5997ab84b16bbe1e7dabe916751f934ab6e8cc0ad0743a7ea11c813d'
             '5b9d8f4ef73f87e8595de66ccc38bad86e290fd9453bd536b9cc950f5344b82d'
             '83083a6afc8be5504629049d6659beb6d2e8412a50db4caa4c1bec2a0d3ec2d7'
+            'a020096879c2a2b7f041cc34e4f4970fbb7af9fdad6903987fa80864bd00fcb3'
             '65fae53b7ac44a9f3ffdcf5722e70f248ffcc183583b686066a766d27f269e1d'
             '41acf07ce9316ec2d4149331e92223dc59d2f2090efb7b71cd96522a5ba9bf48'
             'afda821d57be33c5e93390e353b1aa99bd0bd41dff70feac90249097b9b44ea9'
@@ -102,6 +104,7 @@ prepare() {
   msg "Patching source with ck${_CK_VER} including BFS BFQ"
   cp "../patch-${_LLL_VER}-ck${_CK_VER}" "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
   patch -i ../ck-patch-for-4.9.117+.patch "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
+  patch -i ../ck-patch-for-4.9.135+.patch "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
   patch -Np1 -i "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
 
   msg "Patching source with uksm ${_UKSM_VER} patches"
