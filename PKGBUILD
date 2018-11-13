@@ -1,26 +1,24 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=acestream-launcher
-pkgver=1.3.2
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Acestream Launcher allows you to open Acestream links with a Media Player of your choice"
+pkgdesc="Python interface to interact with the AceStream Engine and the HTTP API"
 arch=("any")
 url="https://github.com/jonian/acestream-launcher"
 license=("GPL")
-depends=("python" "acestream-engine")
+depends=("python" "python-acestream" "acestream-engine")
 optdepends=("mpv" "libnotify")
-makedepends=("desktop-file-utils")
-provides=("acestream-launcher")
+makedepends=("python-setuptools")
+conflicts=("${pkgname}" "${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=("4a9f9532c072ebdfb27fac020791f40d")
+md5sums=("23884757a9f40cb1a69e66363bac427f")
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py build
+}
 
 package() {
-  install -d "$pkgdir/opt"
-  install -d "$pkgdir/usr/bin"
-  install -d "$pkgdir/usr/share/applications"
-
-  cp -a "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
-  ln -s "/opt/$pkgname/acestream_launcher.py" "$pkgdir/usr/bin/acestream-launcher"
-  mv -n "$pkgdir/opt/$pkgname/acestream-launcher.desktop" "$pkgdir/usr/share/applications/acestream-launcher.desktop"
-
-  update-desktop-database "$pkgdir/opt/$pkgname"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
