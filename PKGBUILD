@@ -1,12 +1,12 @@
 # Maintainer Denis Demidov <dennis.demidov@gmail.com>
 
 pkgname=hpx-git
-pkgrel=5
-pkgver=20160316
+pkgrel=6
+pkgver=20181113
 pkgdesc="A general purpose C++ runtime system for parallel and distributed applications of any scale"
 arch=("any")
 url="http://stellar-group.org/libraries/hpx"
-depends=("boost" "gperftools")
+depends=("boost" "hwloc" "gperftools")
 makedepends=("cmake")
 conflicts=("hpx")
 license=("boost")
