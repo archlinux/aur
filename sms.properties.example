@@ -1,0 +1,5 @@
+# Change to your Nexmo values
+# Once renamed to sms.properties, it will be automatically taken into account
+# after restarting the server.
+nexmo.api.key=
+nexmo.api.secret=

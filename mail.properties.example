@@ -1,0 +1,9 @@
+# Change to your Gmail values
+# Once renamed to mail.properties, it will be automatically taken into account
+# after restarting the server.
+mail.smtp.auth=true
+mail.smtp.starttls.enable=true
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=587
+mail.smtp.username=YOUR_EMAIL_HERE
+mail.smtp.password=YOUR_EMAIL_PASS_HERE

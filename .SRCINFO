@@ -1,7 +1,7 @@
 pkgbase = blynk-server-bin
 	pkgdesc = Blynk server for the Blynk IoT platform
 	pkgver = 0.41.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.blynk.cc/
 	install = blynk-server-bin.install
 	arch = any
@@ -9,14 +9,22 @@ pkgbase = blynk-server-bin
 	depends = java-runtime-headless>=10
 	noextract = server-0.41.0.jar
 	backup = etc/blynk/server.properties
+	backup = etc/blynk/mail.properties
+	backup = etc/blynk/sms.properties
 	source = server-0.41.0.jar::https://github.com/blynkkk/blynk-server/releases/download/v0.41.0/server-0.41.0.jar
+	source = server.properties::https://raw.githubusercontent.com/blynkkk/blynk-server/master/server/core/src/main/resources/server.properties
 	source = blynk.service
 	source = blynk-server-bin.install
-	source = server.properties
+	source = blynk-start.sh
+	source = mail.properties.example
+	source = sms.properties.example
 	sha256sums = 4283acf195ec75de6ba04ebb11d975f8dc3fb0cb72ed457c616443ad24de98ee
-	sha256sums = 9d3c4395d3a76fd26ae9c453ab89a54ea91f42fd06b9c7217c5b6f6f56f9530e
-	sha256sums = 220c68ca2f65904d66ab0791b726e733fcf9e9c7ad396b75678b96a4af9bb232
-	sha256sums = fc825817a90f2d4ec5bef5d10733957289ce478e67c9f5fff09682e1bff4c655
+	sha256sums = c99ade828ecfd9f3a71b6ac6d319bd8f898c97af754bb834b8f3ac88f4862b15
+	sha256sums = 298b02167fec72ac884541f63a660e3e5505afe220084bb72b032d24374a1846
+	sha256sums = 140aefbac5fbfe38c886353079ddca35fbc071d01b7895ea772e7a14fb02fdf0
+	sha256sums = be2d3b0201ad52baa2bfd4173dc7a6948d67b67e3531379bd92bc0cf390bd97b
+	sha256sums = 7f9c55179c35e4c5c81e068f104c977d2cdb728103a9fef6506780f306c563c1
+	sha256sums = 276644e9d2e68654ae947830b8c048b885d843d7d22c8520abb178e9caba8309
 
 pkgname = blynk-server-bin
 

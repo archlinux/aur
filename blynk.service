@@ -6,8 +6,7 @@ User=blynk
 Group=blynk
 Restart=on-failure
 RestartSec=10
-
-ExecStart=/usr/bin/java -jar /usr/share/blynk/blynk-server.jar -serverConfig /etc/blynk/server.properties
+ExecStart=/usr/bin/blynk-start.sh
 
 [Install]
 WantedBy=multi-user.target
