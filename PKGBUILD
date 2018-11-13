@@ -1,18 +1,20 @@
-# Maintainer Denis Demidov <dennis.demidov@gmail.com>
+# Maintainer: Mikael Simberg <mikael.simberg@iki.fi>
+# Contributor: Denis Demidov <dennis.demidov@gmail.com>
 pkgname=hpx
-pkgver=0.9.11
-pkgrel=6
+pkgver=1.2.0
+pkgrel=7
 pkgdesc="A general purpose C++ runtime system for parallel and distributed applications of any scale"
 arch=("any")
 url="http://stellar-group.org/libraries/hpx"
 depends=("boost" "hwloc" "gperftools")
+makedepends=("cmake")
 conflicts=("hpx-git")
 license=("boost")
 options=("staticlibs")
 
 source=("http://stellar.cct.lsu.edu/files/${pkgname}_${pkgver}.tar.bz2")
 
-md5sums=("86a71189fb6344d27bf53d6aa2b33122")
+md5sums=("9b2e34aedd8b237d6361fe035f1af0a3")
 
 build() {
     cd "${srcdir}/${pkgname}_${pkgver}"
