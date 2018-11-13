@@ -3,7 +3,7 @@
 pkgbase=magic-wormhole
 _pkgname='magic-wormhole'
 pkgname=('python2-magic-wormhole' 'python-magic-wormhole')
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Securely transfer data between computers"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python2-setuptools' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 conflicts=("wormhole" "wormhole-server")
 provides=("wormhole" "wormhole-server")
-md5sums=('7895fbef34c24b954e1c4b0196bc39f7')
+md5sums=('7de592965ead410d5fbd2a4c18d0a25d')
 
 prepare() {
   cp -a ${_pkgname}-${pkgver}{,-py2}
