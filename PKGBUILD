@@ -5,7 +5,7 @@
 
 _pkgname=librime
 pkgname=$_pkgname-git
-pkgver=1.3.1.r7.g99573e36
+pkgver=1.3.2.r0.gedf6a0be
 pkgrel=1
 pkgdesc="Rime input method engine"
 arch=('i686' 'x86_64')
