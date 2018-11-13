@@ -1,7 +1,7 @@
 # Maintainer: Phil Schaf <flying-sheep@web.de>
 
 pkgname=scanpy
-pkgver=1.2.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
@@ -9,7 +9,7 @@ provides=(scanpy python-scanpy)
 url='https://github.com/theislab/scanpy'
 license=(BSD)
 depends=(
-	'python-anndata>=0.6.2'
+	'python-anndata>=0.6.13'
 	'python-matplotlib>=2.2'
 	'python-pandas>=0.21'
 	python-scipy
@@ -21,15 +21,16 @@ depends=(
 	python-networkx
 	python-natsort
 	python-joblib
-	python-numba
+	'python-numba>=0.40.0'
 )
+
 optdepends=(
 	'python-multicoretsne: Fast t-SNE'
 	'python-louvain-igraph: Louvain clustering'
 )
 _wheel="$pkgname-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('0bf7f01f5a81cb2e900cc1a6854c19740b1a8de4c28781f5940cf3c0b86295c0')
+sha256sums=('35db9437d042441f75252a8e8dfaca4e6577fb7d6ace264ab9c57ccb5ce3e3bc')
 noextract=("$_wheel")
 
 package() {
