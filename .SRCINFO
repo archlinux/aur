@@ -1,0 +1,14 @@
+pkgbase = cmb
+	pkgdesc = combinatorics library
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://fraubsd.org/libcmb
+	arch = x86_64
+	license = BSD
+	makedepends = awk
+	depends = openssl
+	source = https://github.com/FrauBSD/pkgcenter
+	sha256sums = SKIP
+
+pkgname = libcmb
+
