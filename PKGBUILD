@@ -2,7 +2,7 @@
 # Co-maintainer: circle <az6980522@gmail.com>
 pkgname=ncsdk
 pkgver=2.08.01.02
-pkgrel=2
+pkgrel=3
 pkgdesc='Software Development Kit for the Intel® Movidius™ Neural Compute Stick'
 arch=('x86_64' 'armv7l')
 url='https://github.com/movidius/ncsdk/'
@@ -12,7 +12,7 @@ depends=(
   'cython'
   'opencv'
   'tensorflow'
-  'caffe-ssd'
+  'caffe'
   'python-markdown'
   'python-pillow'
   'python-pyaml'

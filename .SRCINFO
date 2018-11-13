@@ -1,7 +1,7 @@
 pkgbase = ncsdk
 	pkgdesc = Software Development Kit for the Intel® Movidius™ Neural Compute Stick
 	pkgver = 2.08.01.02
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/movidius/ncsdk/
 	arch = x86_64
 	arch = armv7l
@@ -13,7 +13,7 @@ pkgbase = ncsdk
 	depends = cython
 	depends = opencv
 	depends = tensorflow
-	depends = caffe-ssd
+	depends = caffe
 	depends = python-markdown
 	depends = python-pillow
 	depends = python-pyaml
