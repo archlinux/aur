@@ -1,10 +1,11 @@
 pkgbase = networkd-dispatcher
 	pkgdesc = A dispatcher daemon for systemd-networkd events
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/craftyguy/networkd-dispatcher
 	arch = any
 	license = GPL3
+	makedepends = asciidoc
 	depends = python
 	depends = python-dbus
 	depends = python-gobject

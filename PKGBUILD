@@ -1,11 +1,12 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=networkd-dispatcher
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A dispatcher daemon for systemd-networkd events"
 arch=('any')
 url="https://gitlab.com/craftyguy/networkd-dispatcher"
 license=('GPL3')
+makedepends=('asciidoc')
 depends=('python' 'python-dbus' 'python-gobject' 'dbus-glib')
 optdepends=('wireless_tools: for interacting with wlan interfaces', 'iw: for interacting with wlan interfaces')
 provides=("${pkgname}")
