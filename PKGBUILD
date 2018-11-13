@@ -16,7 +16,7 @@ install=$pkgname.install
 depends=('java-runtime>=8' 'fontconfig' 'chromaprint')
 makedepends=('unzip')
 provides=('filebot')
-conflicts=('filebot')
+conflicts=('filebot' 'filebot-git')
 
 [[ $CARCH == "i686" ]]   && _intarch=x86
 [[ $CARCH == "x86_64" ]] && _intarch=x86-64
