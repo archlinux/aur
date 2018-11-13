@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=drminfo-git
-pkgver=5.1+1.gbf13f4a
+pkgver=5.1+22.g06d9552df7
 pkgrel=1
 pkgdesc="print drm device information"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.kraxel.org/cgit/drminfo/"
 license=('GPLv2')
 source=('git://git.kraxel.org/drminfo')
 sha256sums=('SKIP')
-depends=('libdrm' 'mesa' 'libepoxy' 'cairo' 'pixman' 'gtk3')
+depends=('libdrm' 'mesa' 'libepoxy' 'pixman' 'gtk3')
 makedepends=('meson')
 conflicts=('drminfo')
 provides=("drminfo=${pkgver%+*}")
