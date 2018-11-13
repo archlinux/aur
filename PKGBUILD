@@ -1,6 +1,6 @@
 # Maintainer: bar0metr <admin@os-admin.ru>
 pkgname=squid4
-pkgver=4.3
+pkgver=4.4
 pkgrel=4
 pkgdesc='Full-featured Web proxy cache server with the support SSL, eCAP, iCAP-client. Include patches for normal work with cache, long url`s and CDN.'
 arch=('x86_64')
