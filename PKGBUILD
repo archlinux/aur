@@ -2,7 +2,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=astrometry.net
 pkgver=0.76
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
 url="http://astrometry.net/"
@@ -32,7 +32,7 @@ package() {
          EXAMPLE_INSTALL_DIR="${pkgdir}/usr/share/astrometry/examples" \
          DATA_INSTALL_DIR="${pkgdir}/usr/share/astrometry/data" \
          PY_BASE_INSTALL_DIR="${pkgdir}/usr/lib/python3.7/site-packages/astrometry" \
-         PY_BASE_LINK_DIR="../lib/python3.6/site-packages/astrometry" \
+         PY_BASE_LINK_DIR="../lib/python3.7/site-packages/astrometry" \
          install
 
     sed -e "s|${pkgdir}/usr/data|/usr/share/astrometry/data|" -i ${pkgdir}/etc/astrometry.cfg
