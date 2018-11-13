@@ -1,7 +1,7 @@
 # Maintainer: Raphael Scholer <rascholer@gmail.com>
 _pkgname='elementary-xfce'
 pkgname="${_pkgname}-icons-git"
-pkgver=0.13.r0.g39fd5429
+pkgver=0.13.1.r3.g4a4d7c9f
 pkgrel=1
 pkgdesc='Elementary icon-theme with improved Xfce support'
 arch=('any')
@@ -33,10 +33,12 @@ package() {
 
   # Remove unneeded files
   find "${pkgdir}/usr/share/icons" \
+  -type l \
   \( \
     -name 'AUTHORS' \
     -o -name 'CONTRIBUTORS' \
     -o -name 'LICENSE' \
+    -o -name 'README.md' \
   \) -delete
 }
 # vim:set ts=2 sw=2 et:
