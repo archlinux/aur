@@ -3,7 +3,7 @@ _pkgname=line_profiler
 pkgbase=python-line_profiler
 pkgname=(python{,2}-line_profiler)
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="line-by-line profiler for python"
 arch=('i686' 'x86_64')
 url="https://github.com/rkern/line_profiler"
@@ -31,6 +31,7 @@ package_python2-line_profiler() {
   depends=('python2' 'ipython2')
   cd "$srcdir/$_pkgname-$pkgver-py2"
   LANG=en_US.UTF-8 python2 setup.py install --root=$pkgdir --optimize=1 --skip-build
+  mv -v "$pkgdir/usr/bin/kernprof"{,2}
 }
 
 package_python-line_profiler() {
