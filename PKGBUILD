@@ -13,6 +13,7 @@ license=('BSD')
 depends=('glibc' 'gcc-libs')
 makedepends=('yasm' 'git')
 conflicts=('libvpx<1.7')
+provides=('libvpx=1.6')
 source=("libvpx-${pkgver}.tar.gz::https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz")
 sha256sums=('cda8bb6f0e4848c018177d3a576fa83ed96d762554d7010fe4cfb9d70c22e588')
 
