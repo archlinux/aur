@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw-dev
 pkgver=development
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
 arch=('x86_64')
@@ -25,7 +25,7 @@ validpgpkeys=()
 build() {
  	cd shadow-of-the-wyrm
 	premake4 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
-	make config=release
+	make LDFLAGS=-lpthread config=release
 	#make config=debug 
 }
 
