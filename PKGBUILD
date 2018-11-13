@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Maintainer: Devin Buhl <devin.kray@gmail.com>
 pkgname="radarr"
-pkgver="0.2.0.1120"
+pkgver="0.2.0.1217"
 pkgrel=1
 pkgdesc="Movie download automation for usenet and torrents."
 arch=(any)
@@ -18,12 +18,12 @@ optdepends=('sabnzbd: usenet downloader'
             'jackett: torrent indexer proxy'
             'libgdiplus: provides a gdi+ compatible api')
 
-source=("https://github.com/galli-leo/Radarr/releases/download/v${pkgver}/Radarr.develop.${pkgver}.linux.tar.gz"
+source=("https://github.com/Radarr/Radarr/releases/download/v${pkgver}/Radarr.v${pkgver}.linux.tar.gz"
         "radarr.service"
         "radarr.tmpfiles"
         "radarr.sysusers")
 
-sha512sums=('9d1370753a2156520a1254c6ef8d1b3245a110377461b9bd3d6f4ab5cb5081c948257f51f80b79318dee29ba7b3c04a5ecb3ca98dc99f41eacb6973d004298b3'
+sha512sums=('c659960be6a017cfdc3744bb2baf5bdc89490d78ae5a816974542f04ff9405762744b7cbd0b4f012a96b615c2bc3c41b150ef1d7d092da0cfcb4f76666ffc778'
             '4c064051c7592529a7ed41c4fdd6381b5e9ace938608f9e271aa4126194db456e85b7602d8e13718efcc4c40d66f82a338199cb6fd924177ad23154090e48da3'
             'e0d55353f0bf89f826eb7eb9ee26c3e3f38bd46a8884135139536ae220c0c531d5df486bc3b50f580679f9607bb4b7bfb9f29998609dc966fbfb8e1809834650'
             'c1ee3925eced182ea7fffa55a6dc2a4e099ccf18636fc237ef0a2fc9517a38cfc2a819ae5a7bc546b63e383506f9f47e89454a71e34106c579d7454d71b2299e')
