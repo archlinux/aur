@@ -1,0 +1,15 @@
+pkgbase = nostt
+	pkgdesc = Command line NOS Teletekst reader
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/sjmulder/nostt
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	depends = curl
+	depends = json-c
+	source = nostt-1.1.tar.gz::https://github.com/sjmulder/nostt/archive/1.1.tar.gz
+	sha256sums = 454afb4a6fc3ee31c207c310394bee2c5d2a2b1e32dc9fb5f7f5f53bf4dca9f9
+
+pkgname = nostt
+
