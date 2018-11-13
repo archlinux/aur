@@ -7,8 +7,8 @@
 pkgname=gtk-theme-arc-gruvbox-git
 _pkgname=arc-gruvbox-theme
 _pkgauthor=cyrinux
-pkgver=r2.868b0e3
-pkgrel=7
+pkgver=r6.8c60163
+pkgrel=1
 pkgdesc="A flat, grey gruvboxed theme with transparent elements for GTK 3, GTK 2 and gnome-shell. Latest commit from the master branch on Github."
 arch=('any')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
