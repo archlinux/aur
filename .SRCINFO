@@ -1,0 +1,15 @@
+pkgbase = json-yaml
+	pkgdesc = Convert JSON to YAML
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/sjmulder/json-yaml
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	depends = yajl
+	depends = libyaml
+	source = json-yaml-1.1.1.tar.gz::https://github.com/sjmulder/json-yaml/archive/1.1.1.tar.gz
+	sha256sums = 40d5e170ee29f3e27364581d9defd2080a4085359866e7007effae84e9111506
+
+pkgname = json-yaml
+
