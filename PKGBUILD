@@ -16,7 +16,7 @@ provides=("drminfo=${pkgver%+*}")
 
 pkgver() {
   cd drminfo
-  git describe --long | sed 's/^drminfo-//; s/-/./; s/-/+/; s/-/./'
+  git describe --long --abbrev=10 | sed 's/^drminfo-//; s/-/./; s/-/+/; s/-/./'
 }
 
 prepare() {
