@@ -1,0 +1,20 @@
+pkgbase = syspeek-vala-bzr
+	pkgdesc = A small system monitor indicator that displays CPU usage, memory usage, swap usage, disk usage and network traffic. Vala rewrite
+	pkgver = r10
+	pkgrel = 1
+	url = https://launchpad.net/syspeekv
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = bzr
+	makedepends = vala
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = glib2
+	depends = hicolor-icon-theme
+	provides = syspeek
+	source = bzr+lp:/syspeekv
+	md5sums = SKIP
+
+pkgname = syspeek-vala-bzr
+
