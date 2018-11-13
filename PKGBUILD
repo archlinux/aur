@@ -2,8 +2,7 @@
 # Contributor: Tyler Dence <tyzoid@archlinux32.org>
 
 pkgname=nextcloud-desktop
-_pkgver=2.5.0-rc2
-pkgver=2.5.0rc2
+pkgver=2.5.0
 pkgrel=1
 epoch=1
 pkgdesc='Nextcloud desktop client (work-in-progress)'
@@ -18,11 +17,11 @@ optdepends=(
   'nemo-python: integration with Nemo'
   'kio: dolphin plugin'
 )
-source=("$pkgname-$_pkgver.tar.gz"::"https://github.com/nextcloud/desktop/archive/v$_pkgver.tar.gz")
-sha256sums=('835efaa1bff4462221930ab7c1dcf820d232e03beec1b8fecea8c7abd18e8687')
+source=("$pkgname-$pkgver.tar.gz"::"https://github.com/nextcloud/desktop/archive/v$pkgver.tar.gz")
+sha256sums=('4d639f43e49fd4367cd1b99bf21aecb2eac3bd89a7b0d96c7d2a0975baad6528')
 
 prepare() {
-  cd desktop-$_pkgver
+  cd desktop-$pkgver
 
   # https://github.com/nextcloud/desktop/issues/699
   mv man/owncloud.1.rst man/nextcloud.1.rst
@@ -30,7 +29,7 @@ prepare() {
 }
 
 build() {
-  cd desktop-$_pkgver
+  cd desktop-$pkgver
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -44,7 +43,7 @@ build() {
 }
 
 package() {
-  cd desktop-$_pkgver
+  cd desktop-$pkgver
 
   make DESTDIR="$pkgdir" install
 }
