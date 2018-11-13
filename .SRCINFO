@@ -1,11 +1,12 @@
 pkgbase = cutelyst
 	pkgdesc = A Web Framework built on top of Qt, using the simple approach of Catalyst (Perl) framework.
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cutelyst.org
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
+	makedepends = pkgconf
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = graphviz
