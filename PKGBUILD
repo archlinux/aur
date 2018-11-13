@@ -38,11 +38,8 @@ prepare() {
 	msg "Preparing Squid..."
 	msg2 "Getting the client_side_request patch (for work with CDN)..."
 	wget https://raw.githubusercontent.com/bar0metr/squid/master/client_side_request.patch
-	msg2 "Patching Squid..."
-        msg2 "Getting the archive_mode patch (for cache's work)..."
-        wget http://os-admin.ru/files/archive_mode.patch
-        msg2 "Patching Squid..."
-	patch -p0 -i archive_mode.patch
+	msg2 "Patching Squid (client_side_request)"
+	patch -p0 -i client_side_request.patch
 	msg2 "Done!"
 }
 
