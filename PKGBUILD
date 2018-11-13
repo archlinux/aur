@@ -14,7 +14,7 @@ makedepends=('gcc')
 makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
 source=("$pkgname::git+https://github.com/FWGS/xash3d-fwgs.git"
         ${pkgname%%-git}
-        ${pkgname%%-git}.png
+        "https://raw.githubusercontent.com/FWGS/xash3d/master/game_launch/icon-xash-material.png"
 	${pkgname%%-git}.conf.d
         ${pkgname%%-git}.desktop
 )
@@ -42,11 +42,11 @@ package() {
 	install -Dm644 ../${pkgname%%-git}.conf.d $pkgdir/etc/conf.d/${pkgname%%-git}
 	install -Dm755 ../${pkgname%%-git} $pkgdir/usr/bin/${pkgname%%-git}
 	install -Dm644 ../${pkgname%%-git}.desktop $pkgdir/usr/share/applications/${pkgname%%-git}.desktop
-        install -Dm644 ../${pkgname%%-git}.png $pkgdir/usr/share/pixmaps/${pkgname%%-git}.png
+        install -Dm644 ../icon-xash-material.png $pkgdir/usr/share/pixmaps/${pkgname%%-git}.png
 }
 
 md5sums=('SKIP'
          'e2507dc0ca2fcd5de9c8d485fa0382ae'
-         'd55c1a1fcb5a8a36d80f61712a77f291'
+         'edb56dbd55309beef7d8e82298d48f4d'
          'f4475bb569ad292f6a3711b74ced7bab'
          '60d714544048b0383a7e79cfaed96d78')
