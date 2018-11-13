@@ -1,0 +1,17 @@
+pkgbase = grevis-git
+	pkgdesc = A simple game launcher
+	pkgver = r25.8444fec
+	pkgrel = 1
+	url = https://gitlab.gnome.org/dunon/grevis
+	arch = any
+	license = GPL3
+	makedepends = meson>=0.40
+	makedepends = ninja
+	makedepends = git
+	depends = python3
+	depends = gtk3>=3.14
+	source = grevis::git+https://gitlab.gnome.org/dunon/grevis.git
+	md5sums = SKIP
+
+pkgname = grevis-git
+
