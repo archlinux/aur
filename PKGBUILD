@@ -1,6 +1,7 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Vincent Grande <shoober420@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=(harfbuzz)
+#pkgbase=(harfbuzz)
 pkgname=(harfbuzz-git harfbuzz-icu-git)
 pkgver=2.1.1+174+g6c22f3fd
 pkgrel=1
@@ -15,17 +16,17 @@ source=("git+https://anongit.freedesktop.org/git/harfbuzz")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgbase
+  cd harfbuzz
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd $pkgbase
+  cd harfbuzz
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $pkgbase
+  cd harfbuzz
   ./configure \
     --prefix=/usr \
     --with-cairo \
@@ -49,7 +50,7 @@ package_harfbuzz-git() {
   provides=('harfbuzz')
   conflicts=('harfbuzz')
 
-  cd $pkgbase
+  cd harfbuzz
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/harfbuzz/COPYING"
 
@@ -68,5 +69,5 @@ package_harfbuzz-icu-git() {
 
   mv hb-icu/* "$pkgdir"
 
-  install -Dm644 $pkgbase/COPYING "$pkgdir/usr/share/licenses/harfbuzz-icu/COPYING"
+  install -Dm644 harfbuzz/COPYING "$pkgdir/usr/share/licenses/harfbuzz-icu/COPYING"
 }
