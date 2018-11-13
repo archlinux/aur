@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=slibtool-git
-pkgver=0.5.25+19.gd4bae56688da60febbf3
+pkgver=0.5.28+7.gca36f56b368ece9c0f3b
 pkgrel=1
 pkgdesc="Skinny libtool implementation, written in C"
 url='http://git.midipix.org/cgit.cgi/slibtool'
