@@ -107,6 +107,7 @@ plugins=(
 #    'http.realip'
 #    'http.reauth'
 #    'http.restic'
+#    'http.s3browser'
 #    'http.upload'
 #    'http.webdav'
 #    'net'
