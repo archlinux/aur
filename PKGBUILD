@@ -238,7 +238,7 @@ sha1sums=('5176f23bf434f5c51dacc0696982bcdbbd438ae8'
 package_xscreensaver-aerial-videos-1080() {
   pkgdesc='Apple TV4 HD aerial movies in 1080p'
   # This package is optional as the xscreensaver will stream the videos directly
-  # from apple which will save approx 11.3 GB of disk space but know that you
+  # from apple which will save approx 12.1 GB of disk space but know that you
   # will be using bandwidth every time your screensaver comes on which might
   # impact you if your ISP caps your bandwidth
   cd "$srcdir"
@@ -255,7 +255,7 @@ package_xscreensaver-aerial-videos-1080() {
 package_xscreensaver-aerial-videos-4k() {
   pkgdesc='Apple TV4 HD aerial movies in 4k'
   # This package is optional as the xscreensaver will stream the videos directly
-  # from apple which will save approx 12.6 GB of disk space but know that you
+  # from apple which will save approx 13.7 GB of disk space but know that you
   # will be using bandwidth every time your screensaver comes on which might
   # impact you if your ISP caps your bandwidth
   cd "$srcdir"
