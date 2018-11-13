@@ -1,0 +1,14 @@
+pkgbase = vopa
+	pkgdesc = Midi CC controllable LV2 plugin for Volume/Panning
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ycollet/vopa
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = lv2
+	source = git+https://github.com/ycollet/vopa.git#tag=1.0.0
+	sha256sums = SKIP
+
+pkgname = vopa
+
