@@ -1,0 +1,26 @@
+diff --git a/ncsdk-armv7l/tk/Controllers/Parsers/Caffe.py b/ncsdk-armv7l/tk/Controllers/Parsers/Caffe.py
+index 98a4140..ced1cfd 100644
+--- a/ncsdk-armv7l/tk/Controllers/Parsers/Caffe.py
++++ b/ncsdk-armv7l/tk/Controllers/Parsers/Caffe.py
+@@ -59,7 +59,7 @@ def protoConverterPath():
+     path, _ = os.path.split(path)
+ 
+     converter_path = ['build', 'tools', 'upgrade_net_proto_text']
+-    return os.path.join(path, *converter_path)
++    return '/usr/bin/upgrade_net_proto_text.bin'
+ 
+ 
+ def regularizeInPlaceOps(parsedLayers):
+diff --git a/ncsdk-x86_64/tk/Controllers/Parsers/Caffe.py b/ncsdk-x86_64/tk/Controllers/Parsers/Caffe.py
+index 98a4140..ced1cfd 100644
+--- a/ncsdk-x86_64/tk/Controllers/Parsers/Caffe.py
++++ b/ncsdk-x86_64/tk/Controllers/Parsers/Caffe.py
+@@ -59,7 +59,7 @@ def protoConverterPath():
+     path, _ = os.path.split(path)
+ 
+     converter_path = ['build', 'tools', 'upgrade_net_proto_text']
+-    return os.path.join(path, *converter_path)
++    return '/usr/bin/upgrade_net_proto_text.bin'
+ 
+ 
+ def regularizeInPlaceOps(parsedLayers):

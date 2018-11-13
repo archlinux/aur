@@ -2,9 +2,9 @@
 # Co-maintainer: circle <az6980522@gmail.com>
 pkgname=ncsdk
 pkgver=2.08.01.02
-pkgrel=1
+pkgrel=2
 pkgdesc='Software Development Kit for the Intel® Movidius™ Neural Compute Stick'
-arch=('x86_64')
+arch=('x86_64' 'armv7l')
 url='https://github.com/movidius/ncsdk/'
 license=('Apache')
 depends=(
@@ -12,7 +12,7 @@ depends=(
   'cython'
   'opencv'
   'tensorflow'
-  'caffe'
+  'caffe-ssd'
   'python-markdown'
   'python-pillow'
   'python-pyaml'
@@ -33,9 +33,16 @@ depends=(
 makedepends=('python' 'python-pip' 'unzip')
 options=('strip')
 source=("https://github.com/movidius/ncsdk/archive/v${pkgver}.tar.gz"
-        "https://downloadmirror.intel.com/28191/eng/NCSDK-${pkgver}.tar.gz")
+        "https://downloadmirror.intel.com/28191/eng/NCSDK-${pkgver}.tar.gz"
+        'fix-caffe-bin-path.patch')
 sha256sums=('055d71b696e14e44c411c88ead3ae1729d4e64e8202433dce2fc132c02a5e567'
-            '9c1fa5c2f9d4f43411932a987333768482174fd0dbb66d039fa288f186d969b3')
+            '9c1fa5c2f9d4f43411932a987333768482174fd0dbb66d039fa288f186d969b3'
+            'cd34127e3eaae1da86d3e9b0ada40e768f4ef5ed97f51e4505eb3879932f605f')
+
+prepare() {
+  cd $srcdir/NCSDK-${pkgver}
+  patch -Np1 -i ${srcdir}/fix-caffe-bin-path.patch
+}
 
 
 package() {
@@ -47,7 +54,7 @@ package() {
   install -dm755 ${pkgdir}/usr/lib/mvnc
 
   # install toolkit
-  sdk_dir="$srcdir/NCSDK-${pkgver}/ncsdk-x86_64"
+  sdk_dir="$srcdir/NCSDK-${pkgver}/ncsdk-${arch}"
   cp -drv --no-preserve=ownership ${sdk_dir}/tk ${pkgdir}/usr/bin/ncsdk
   ln -s ncsdk/mvNCCompile.py ${pkgdir}/usr/bin/mvNCCompile
   ln -s ncsdk/mvNCCheck.py ${pkgdir}/usr/bin/mvNCCheck

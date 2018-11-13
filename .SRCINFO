@@ -1,9 +1,10 @@
 pkgbase = ncsdk
 	pkgdesc = Software Development Kit for the Intel® Movidius™ Neural Compute Stick
 	pkgver = 2.08.01.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/movidius/ncsdk/
 	arch = x86_64
+	arch = armv7l
 	license = Apache
 	makedepends = python
 	makedepends = python-pip
@@ -12,7 +13,7 @@ pkgbase = ncsdk
 	depends = cython
 	depends = opencv
 	depends = tensorflow
-	depends = caffe
+	depends = caffe-ssd
 	depends = python-markdown
 	depends = python-pillow
 	depends = python-pyaml
@@ -32,8 +33,10 @@ pkgbase = ncsdk
 	options = strip
 	source = https://github.com/movidius/ncsdk/archive/v2.08.01.02.tar.gz
 	source = https://downloadmirror.intel.com/28191/eng/NCSDK-2.08.01.02.tar.gz
+	source = fix-caffe-bin-path.patch
 	sha256sums = 055d71b696e14e44c411c88ead3ae1729d4e64e8202433dce2fc132c02a5e567
 	sha256sums = 9c1fa5c2f9d4f43411932a987333768482174fd0dbb66d039fa288f186d969b3
+	sha256sums = cd34127e3eaae1da86d3e9b0ada40e768f4ef5ed97f51e4505eb3879932f605f
 
 pkgname = ncsdk
 
