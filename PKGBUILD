@@ -2,7 +2,7 @@
 # Maintainer: Rustem Shaykhutdinov <buzz.rustem@gmail.com>
 pkgname=ppp-eap-tls
 pkgver=2.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="EAP-TLS patched daemon which implements the Point-to-Point Protocol for dial-up networking."
 arch=(i686 x86_64) 
 url="http://www.samba.org/ppp/"
@@ -12,7 +12,7 @@ provides=('ppp')
 conflicts=('ppp')
 backup=(etc/ppp/{chap-secrets,pap-secrets,options,ip-up,ip-down,ip-down.d/00-dns.sh,ip-up.d/00-dns.sh,ipv6-up.d/00-iface-config.sh})
 source=(https://download.samba.org/pub/ppp/ppp-${pkgver}.tar.gz{,.asc}
-        "https://www.nikhef.nl/~janjust/ppp/ppp-2.4.7-eaptls-mppe-0.999.patch"
+        "https://www.nikhef.nl/~janjust/ppp/ppp-2.4.7-eaptls-mppe-1.101.patch"
         ppp-2.4.6-makefiles.patch
         options
         ip-up
@@ -25,10 +25,11 @@ source=(https://download.samba.org/pub/ppp/ppp-${pkgver}.tar.gz{,.asc}
         ppp.systemd
         CVE-2015-3310.patch
         ppp-build-fix.patch::"https://github.com/paulusmack/ppp/commit/50a2997b.patch"
+        ppp-openssl.patch::https://github.com/paulusmack/ppp/commit/3c7b86229f7bd2600d74db14b1fe5b3896be3875.patch
         LICENSE)
 sha256sums=('02e0a3dd3e4799e33103f70ec7df75348c8540966ee7c948e4ed8a42bbccfb30'
             'SKIP'
-            '51fec18a1df323eed8bf96f69c868fac4be28d0de1607a24c5b7b8d566871e99'
+            'f7efef8dcddb3492cb1b92ee8c11a12a3330a14816627c8e6af7532a755e3992'
             'f04f47318226c79594f45b8b75877c30710d22fe0fb1e2e17db3b4257dc4218c'
             '0933fecb9e0adaddd88ee1e049a5f3a0508e83b81dc1aa333df784e729ab4b6e'
             'ddef42b2cc5d49e81556dc9dbacf5ee3bf8dc32704f3670c2233eed42c4a4efd'
@@ -41,6 +42,7 @@ sha256sums=('02e0a3dd3e4799e33103f70ec7df75348c8540966ee7c948e4ed8a42bbccfb30'
             'eb8ab2e2d71c3bb9c4297cf847b6e9d52616a3fdbf2257c479cc43dff318c831'
             'f0fe7e7d9b35141c2565a09e39c4f66b475ed3fe8e2528d10faa4412f480e338'
             '94225c64e806e75d6f792649c4beb26a791c4994c2701dc6a47cfccf3d91e4bf'
+            '3f199d83d2632274dbbe7345e5369891469f64642f28e4afb471747a88888b62'
             '96fd35104e3d0ec472517afecead88419913ae73ae0189476d5dad9029c2be42')
 validpgpkeys=('631E179E370CD727A7F2A33A9E4295D605F66CE9') # Paul Mackerras (Signing key) <paulus@samba.org>
 
@@ -50,7 +52,8 @@ prepare() {
   patch -p1 -i "${srcdir}/ppp-2.4.6-makefiles.patch"
   patch -p1 -i "${srcdir}/CVE-2015-3310.patch"
   patch -p1 -i "${srcdir}/ppp-build-fix.patch"
-  patch -p1 -i "${srcdir}/ppp-2.4.7-eaptls-mppe-0.999.patch"
+  patch -p1 -i "${srcdir}/ppp-2.4.7-eaptls-mppe-1.101.patch"
+  patch -p1 -i "${srcdir}/ppp-openssl.patch"
 
   # enable active filter
   sed -i "s:^#FILTER=y:FILTER=y:" pppd/Makefile.linux
