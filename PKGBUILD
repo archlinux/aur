@@ -5,11 +5,11 @@
 _name="caddy"
 pkgname="$_name-bin"
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP/2 web server with automatic HTTPS'
 arch=('x86_64')
 url='https://caddyserver.com'
-license=('Apache')
+license=('custom')
 backup=('etc/caddy/caddy.conf')
 provides=("$_name")
 conflicts=("$_name")
@@ -28,6 +28,7 @@ sha512sums=('ae9502c86347a0b33ec9acfbfb3f5125c0bba6e76c02c7c302c27e14c5063179525
             'c329cfa66428287cc554274790130f94f13d53d60a2d4ffba44a229913805f8bcf50e2df0073808009e57f026f2f0962d412cc38723719e6c248d90aaa4fdd33')
 
 package() {
+    install -D -m 0644 EULA.txt "$pkgdir/usr/share/licenses/caddy/EULA.txt"
     install -D -m 0755 caddy "$pkgdir/usr/bin/caddy"
     install -D -m 0644 caddy-at-your-service-white.svg "$pkgdir/usr/share/caddy/caddy-at-your-service-white.svg"
     install -D -m 0644 index.html "$pkgdir/usr/share/caddy/index.html"
