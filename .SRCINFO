@@ -1,24 +1,17 @@
 pkgbase = tn40xx
-	pkgdesc = Tehuti Networks NIC driver for MV88X3120,QT2025,TLK10232 and AQR105 10GbE-Cards
-	pkgver = 0.3.6.13
-	pkgrel = 1
+	pkgdesc = Tehuti Networks NIC driver for MV88X3110, MV88E2010, QT2025, TLK10232 and AQR105 10-GbE-NICs
+	pkgver = 0.3.6.17
+	pkgrel = 2
 	url = http://www.tehutinetworks.net/
 	install = tn40xx.install
 	arch = x86_64
 	license = GPL2
-	makedepends = linux-lts-headers>=4.4
-	makedepends = linux-lts-headers<4.5
-	depends = linux-lts>=4.4
-	depends = linux-lts<4.5
-	options = !libtool
-	options = !strip
-	options = !makeflags
-	options = !buildflags
-	options = staticlibs
-	source = http://www.tehutinetworks.net/images/UL240756/tn40xx-0.3.6.13.tgz
+	makedepends = linux-headers>=2.6.32
+	depends = linux>=2.6.32
+	source = http://www.tehutinetworks.net/images/UL240756/tn40xx-0.3.6.17.tgz
 	source = tn40xx.install
-	sha256sums = eea50b8d312ed5b749c4ad68f01dc64d28e426ee3c87a48094da5498df49af13
-	sha256sums = 51c05ce99b2ccf347ef9150377920d638f85a451bfa4d50d9c9f5dc8b1800e14
+	sha512sums = 21d9eea582edb018b6a1a066cdb7018e89d1b6fba087615792f47fb6412fc2c7d89a489e4de6fcf56a85804d22275867d973c57fdc1b07e37bb526ce67ecbdda
+	sha512sums = 6647c472c0731fd079faf51e75e8b2b21fbc5b0cb98b019e7fda41c65d2cfc143539a69129ca8469e33ab9d3eb30b61e9ca4abdbcc41cd9410d67fafbfa6bc20
 
 pkgname = tn40xx
 
