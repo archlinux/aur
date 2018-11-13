@@ -1,0 +1,20 @@
+pkgbase = pteros
+	pkgdesc = C++ library for molecular modeling.
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://github.com/yesint/pteros
+	arch = any
+	license = Artistic License 2.0
+	makedepends = cmake
+	makedepends = git
+	depends = pybind11
+	depends = boost
+	depends = eigen
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = pteros::git+https://github.com/yesint/pteros.git#branch=master
+	sha1sums = SKIP
+
+pkgname = pteros
+
