@@ -2,7 +2,7 @@
 
 pkgname=shc-git
 _pkgname=shc
-pkgver=3.9.5.10.g379c501
+pkgver=3.9.8.25.ga03ce6a
 pkgrel=1
 pkgdesc="A generic shell script compiler."
 arch=('any')
@@ -20,6 +20,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
+  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
