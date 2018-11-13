@@ -22,8 +22,14 @@ sha512sums=('SKIP')
 validpgpkeys=('SKIP') # Sam Lantinga
 
 pkgver() {
-  cd SDL
-  echo $(hg parents --template '{word(-1,latesttag,":")}').$(hg identify -n)
+
+#thanks Kozeid
+
+  cd "SDL"
+  printf "%s.r%s.%s" \
+    "$(hg log -r . -T "{latesttag}" | sed 's/^release-//')" \
+    "$(hg identify -n)" \
+    "$(hg identify -i)"
 }
 
 prepare() {
