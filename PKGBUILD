@@ -5,9 +5,9 @@
 
 pkgname=snapd
 pkgdesc="Service and tools for management of snap packages."
-depends=('squashfs-tools' 'libseccomp' 'libsystemd')
+depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support')
-pkgver=2.36
+pkgver=2.36.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"
@@ -17,7 +17,7 @@ conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
 source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz")
-sha256sums=('65a54a4e21419394859063e926a012f07c04a9bfb1146a28a3f48c9221331d86')
+sha256sums=('5fd58ff77084a3a6ce8aab50fb81d1d4482daaada228c4bf87af1658de927a31')
 
 _gourl=github.com/snapcore/snapd
 
@@ -49,8 +49,8 @@ build() {
   # because argument expansion with quoting in bash is hard, and -ldflags=-extldflags='-foo'
   # is not exactly the same as -ldflags "-extldflags '-foo'" use the array trick
   # to pass exactly what we want
-  flags=(-buildmode=pie -ldflags "-extldflags '$LDFLAGS'")
-  staticflags=(-buildmode=pie -ldflags "-extldflags '$LDFLAGS -static'")
+  flags=(-buildmode=pie -ldflags "-s -extldflags '$LDFLAGS'")
+  staticflags=(-buildmode=pie -ldflags "-s -extldflags '$LDFLAGS -static'")
   # Build/install snap and snapd
   go build "${flags[@]}" -o "$GOPATH/bin/snap" "${_gourl}/cmd/snap"
   go build "${flags[@]}" -o "$GOPATH/bin/snapctl" "${_gourl}/cmd/snapctl"
@@ -89,7 +89,7 @@ package() {
 
   # Install bash completion
   install -Dm644 data/completion/snap \
-    "$pkgdir/usr/share/bash-completion/completion/snap"
+    "$pkgdir/usr/share/bash-completion/completions/snap"
   install -Dm644 data/completion/complete.sh \
     "$pkgdir/usr/lib/snapd/complete.sh"
   install -Dm644 data/completion/etelpmoc.sh \
