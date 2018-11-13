@@ -1,6 +1,6 @@
 # Maintainer: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
 pkgname=kismet-git
-pkgver=c4d58f0
+pkgver=20181113
 pkgrel=1
 pkgdesc="Current development version based on git repo, many crucial changes since official stable Release 2016_07_R1-1"
 arch=('x86_64')
@@ -11,13 +11,13 @@ optdepends=('hackrf: use with HackRF compatible software defined radio (SDR)')
 conflicts=('kismet')
 backup=('etc/kismet/kismet.conf' 'etc/kismet/kismet_alerts.conf' 'etc/kismet/kismet_httpd.conf' 'etc/kismet/kismet_logging.conf' 'etc/kismet/kismet_memory.conf' 'etc/kismet/kismet_storage.conf')
 install=kismet.install
-source=("${pkgname}-${pkgver}.zip::https://github.com/kismetwireless/kismet/archive/${pkgver}.zip"
+source=("https://github.com/kismetwireless/kismet/archive/master.zip"
         "${pkgname}-sysusers.conf")
-sha256sums=('351179b24e4772650b59addddb919e46fe2554344fddf60381160a8c84f3c037'
+sha256sums=('SKIP'
             '8b5b25bb6d9c611589ce0200da3cfeed2194bfa45aeed88e10c980c668383806')
 
 build() {
-    cd kismet-${pkgver}*
+    cd "kismet-master"
     ./configure --prefix=/usr \
                 --sysconfdir=/etc/kismet \
                 --disable-python-tools
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-    cd kismet-${pkgver}*
+    cd "kismet-master"
     make DESTDIR="$pkgdir/" install
     
     # install capture_tools setuid so that kismet can started as user and
