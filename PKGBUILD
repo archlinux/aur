@@ -14,8 +14,8 @@ install=pwngdb.install
 prepare() {
   cd ${pkgname}
   sed 's|~/peda/peda.py|/usr/share/peda/peda.py|g' -i .gdbinit
-  sed 's|~/pwngdb/pwngdb.py|/usr/share/pwngdb/pwngdb.py|g' -i .gdbinit
-  sed 's|~/pwngdb/angelheap/gdbinit.py|/usr/share/pwngdb/angelheap/gdbinit.py|g' -i .gdbinit
+  sed 's|~/Pwngdb/pwngdb.py|/usr/share/pwngdb/pwngdb.py|g' -i .gdbinit
+  sed 's|~/Pwngdb/angelheap/gdbinit.py|/usr/share/pwngdb/angelheap/gdbinit.py|g' -i .gdbinit
 }
 
 build() {
