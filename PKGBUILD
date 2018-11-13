@@ -1,8 +1,8 @@
 # Maintainer : Felix Yan <felixonmars@archlinux.org>
 
 pkgname=(python-repoze.profile python2-repoze.profile)
-pkgver=2.2
-pkgrel=3
+pkgver=2.3
+pkgrel=1
 pkgdesc="Aggregate profiling for WSGI requests"
 arch=('any')
 license=('custom:BSD')
@@ -10,7 +10,7 @@ url="http://docs.repoze.org/profile/"
 makedepends=('python-setuptools' 'python2-setuptools' 'pyprof2calltree' 'python2-pyprof2calltree')
 checkdepends=('python-nose' 'python2-nose')
 source=("https://pypi.io/packages/source/r/repoze.profile/repoze.profile-$pkgver.tar.gz")
-md5sums=('565bd64ae4930e41d3e0839b309081bd')
+md5sums=('65e87b8ef5ac7e6b2074decdb89a180b')
 
 prepare() {
   cp -a repoze.profile-$pkgver{,-py2}
