@@ -1,5 +1,5 @@
 pkgbase = python-frida-tools
-	pkgdesc = Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 3 version from PyPi.
+	pkgdesc = CLI tools for Frida. Python 3 version from PyPi.
 	pkgver = 1.2.2
 	pkgrel = 1
 	url = http://www.frida.re
