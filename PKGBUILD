@@ -1,4 +1,4 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
 _commit=b16a2c2b5b137f538f0992cd5553c83955257a3a
@@ -26,11 +26,8 @@ build() {
 
 package() {
   cd $pkgname-$_commit
-  install -Dm755 target/release/i3status-rs "$pkgdir"/usr/bin/i3status-rs
-  install -Dm644 example_config.toml "$pkgdir"/usr/share/doc/$pkgname/examples/example_config.toml
-  install -Dm644 example_icon.toml "$pkgdir"/usr/share/doc/$pkgname/examples/example_icon.toml
-  install -Dm644 example_theme.toml "$pkgdir"/usr/share/doc/$pkgname/examples/example_theme.toml
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -D target/release/i3status-rs "$pkgdir"/usr/bin/i3status-rs
+  install -Dm644 example_*.toml -t "$pkgdir"/usr/share/doc/$pkgname/examples
 }
 
 # vim:set ts=2 sw=2 et:
