@@ -35,8 +35,8 @@ _localmodcfg=
 pkgbase=linux-gc
 _srcver=4.19.1-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
-_pdsversion=099c
+pkgrel=2
+_pdsversion=099d
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
@@ -65,7 +65,7 @@ sha256sums=('1cb117acb43f4b17a2e55eedf564e69d3bfc217e219f9e4422deff584a0d97fa'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            'cc03f9ca477901716edee1c7aed2646cec3bb279350aea73b51f244a91c7c0ac')
+            '71ef0aa0dc0a0bdda677c1f2f708bc7a9834bcb7bbfe590fee5cebf52be6420a')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -114,15 +114,16 @@ prepare() {
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
   if [ -n "$_localmodcfg" ]; then
-    msg "If you have modprobed-db installed, running it in recall mode now"
+    msg "If you have modprobed-db installed, running Steven Rostedt's make localmodconfig with modprobed as input"
     if [ -e /usr/bin/modprobed-db ]; then
       [[ -x /usr/bin/sudo ]] || {
       echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-      exit 1; }
-      sudo /usr/bin/modprobed-db recall
+      exit 1;}
+      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+    else
+      msg "Running Steven Rostedt's make localmodconfig now"
+      make localmodconfig
     fi
-    msg "Running Steven Rostedt's make localmodconfig now"
-    make localmodconfig
   fi
 
   # do not run `make olddefconfig` as it sets default options
