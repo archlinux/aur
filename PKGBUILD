@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=slibtool-git
-pkgver=0.5.28+7.gca36f56b368ece9c0f3b
+pkgver=0.5.28+7.gca36f56b36
 pkgrel=1
 pkgdesc="Skinny libtool implementation, written in C"
 url='http://git.midipix.org/cgit.cgi/slibtool'
@@ -14,7 +14,7 @@ conflicts=('slibtool')
 
 pkgver() {
 	cd "$srcdir"/slibtool
-	git describe --long | sed 's/^v//; s/-/+/; s/-/\./'
+	git describe --long --abbrev=10 | sed 's/^v//; s/-/+/; s/-/\./'
 }
 
 build() {
