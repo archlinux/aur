@@ -5,7 +5,7 @@
 
 pkgname=star-meta
 pkgver=0.1
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Metapackage to install Perl6 modules included in Rakudo Star"
 arch=('any')
 depends=('zef')

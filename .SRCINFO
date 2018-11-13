@@ -1,7 +1,7 @@
 pkgbase = star-meta
 	pkgdesc = Metapackage to install Perl6 modules included in Rakudo Star
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/rakudo/star/blob/master/modules/MODULES.txt
 	install = star-meta.install
 	arch = any
