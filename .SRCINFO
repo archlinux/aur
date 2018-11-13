@@ -1,0 +1,17 @@
+pkgbase = async++-git
+	pkgdesc = Async++ is a lightweight concurrency framework for C++11.
+	pkgver = r171.2c852e5
+	pkgrel = 1
+	url = https://github.com/Amanieu/asyncplusplus
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = async++-git::git+https://github.com/Amanieu/asyncplusplus.git#branch=master
+	sha1sums = SKIP
+
+pkgname = async++-git
+
