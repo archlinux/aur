@@ -2,3 +2,4 @@
 *.jar
 src/
 pkg/
+server.properties
