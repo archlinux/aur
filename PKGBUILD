@@ -24,10 +24,14 @@ source=("hg+http://hg.libsdl.org/SDL#branch=default")
 sha512sums=('SKIP')
 
 pkgver() {
+
+#thanks Kozeid
+
   cd "SDL"
-  _tag=$(hg tags -q | sort -r | grep release- | head -n1)
-  _commits=$(hg log --template "{node}\n" -r $_tag:tip | wc -l)
-  echo "${_tag/release-}.r$_commits.$(hg identify -i)"
+  printf "%s.r%s.%s" \
+    "$(hg log -r . -T "{latesttag}" | sed 's/^release-//')" \
+    "$(hg identify -n)" \
+    "$(hg identify -i)"
 }
 
 prepare() {
