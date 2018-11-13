@@ -1,0 +1,76 @@
+# Patch from GPGTools/MacGPG2 repo
+# https://github.com/GPGTools/MacGPG2/blob/dev/patches/gnupg/scdaemon_shared-access.patch
+# Add the option "shared-access" to scdaemon.
+# If set, pcsc_connect is called with PCSC_SHARE_SHARED instead of PCSC_SHARE_EXCLUSIVE.
+
+
+--- a/scd/apdu.c
++++ b/scd/apdu.c
+@@ -793,7 +793,7 @@ connect_pcsc_card (int slot)
+
+   err = pcsc_connect (reader_table[slot].pcsc.context,
+                       reader_table[slot].rdrname,
+-                      PCSC_SHARE_EXCLUSIVE,
++                      opt.shared_access ? PCSC_SHARE_SHARED : PCSC_SHARE_EXCLUSIVE,
+                       PCSC_PROTOCOL_T0|PCSC_PROTOCOL_T1,
+                       &reader_table[slot].pcsc.card,
+                       &reader_table[slot].pcsc.protocol);
+--- a/scd/scdaemon.c
++++ b/scd/scdaemon.c
+@@ -99,6 +99,7 @@ enum cmd_and_opt_values
+   oDenyAdmin,
+   oDisableApplication,
+   oEnablePinpadVarlen,
++  oSharedAccess,
+   oListenBacklog
+ };
+
+@@ -157,6 +158,8 @@ static ARGPARSE_OPTS opts[] = {
+                 N_("use variable length input for pinpad")),
+   ARGPARSE_s_s (oHomedir,    "homedir",      "@"),
+
++  ARGPARSE_s_n (oSharedAccess, "shared-access", N_("use PCSC_SHARE_SHARED for pcsc_connect")),
++
+   ARGPARSE_end ()
+ };
+
+@@ -597,6 +598,8 @@ main (int argc, char **argv )
+
+         case oEnablePinpadVarlen: opt.enable_pinpad_varlen = 1; break;
+
++        case oSharedAccess: opt.shared_access = 1; break;
++
+         default:
+           pargs.err = configfp? ARGPARSE_PRINT_WARNING:ARGPARSE_PRINT_ERROR;
+           break;
+@@ -695,6 +695,7 @@ main (int argc, char **argv )
+       es_printf ("disable-pinpad:%lu:\n", GC_OPT_FLAG_NONE );
+       es_printf ("card-timeout:%lu:%d:\n", GC_OPT_FLAG_DEFAULT, 0);
+       es_printf ("enable-pinpad-varlen:%lu:\n", GC_OPT_FLAG_NONE );
++      es_printf ("shared-access:%lu:\n", GC_OPT_FLAG_NONE );
+
+       scd_exit (0);
+     }
+--- a/scd/scdaemon.h
++++ b/scd/scdaemon.h
+@@ -62,6 +62,8 @@ struct
+   strlist_t disabled_applications;  /* Card applications we do not
+                                        want to use. */
+   unsigned long card_timeout; /* Disconnect after N seconds of inactivity.  */
++
++  int shared_access;
+ } opt;
+
+
+--- a/tools/gpgconf-comp.c
++++ b/tools/gpgconf-comp.c
+@@ -648,6 +648,9 @@ static gc_option_t gc_options_scdaemon[] =
+    { "card-timeout", GC_OPT_FLAG_NONE|GC_OPT_FLAG_RUNTIME, GC_LEVEL_BASIC,
+      "gnupg", "|N|disconnect the card after N seconds of inactivity",
+      GC_ARG_TYPE_UINT32, GC_BACKEND_SCDAEMON },
++   { "shared-access", GC_OPT_FLAG_NONE|GC_OPT_FLAG_RUNTIME, GC_LEVEL_BASIC,
++     "gnupg", "use PCSC_SHARE_SHARED for pcsc_connect",
++     GC_ARG_TYPE_NONE, GC_BACKEND_SCDAEMON },
+
+    { "Debug",
+      GC_OPT_FLAG_GROUP, GC_LEVEL_ADVANCED,
