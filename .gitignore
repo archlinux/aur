@@ -3,3 +3,4 @@
 /rua/
 /target/
 /*.tar.gz
+*.pkg.tar.xz
