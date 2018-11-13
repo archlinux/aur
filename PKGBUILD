@@ -5,14 +5,14 @@
 
 pkgname=libvpx-1.6
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='VP8 and VP9 codec'
 arch=('x86_64')
 url='http://www.webmproject.org/'
 license=('BSD')
 depends=('glibc' 'gcc-libs')
 makedepends=('yasm' 'git')
-conflicts=('libvpx<1.7')
+conflicts=('libvpx=1.6')
 provides=('libvpx=1.6')
 source=("libvpx-${pkgver}.tar.gz::https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz")
 sha256sums=('cda8bb6f0e4848c018177d3a576fa83ed96d762554d7010fe4cfb9d70c22e588')
