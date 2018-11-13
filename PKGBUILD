@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-hyph
-pkgver=2018.08.25
+pkgver=2018.11.04
 pkgrel=1
 epoch=
 pkgdesc="Neatroff's hyphenation files (patterns, exceptions and mappings)."
