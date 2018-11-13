@@ -1,0 +1,13 @@
+pkgbase = within
+	pkgdesc = Run a command in other directories
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/sjmulder/within
+	arch = x86_64
+	license = AGPL3
+	depends = glibc
+	source = within-1.1.1.tar.gz::https://github.com/sjmulder/within/archive/1.1.1.tar.gz
+	sha256sums = 07fc63ff4ddb184d5ae9b90faf1764bc107ffdf9cc938618a6ce083989192882
+
+pkgname = within
+
