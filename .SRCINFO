@@ -1,0 +1,14 @@
+pkgbase = hangman-lite
+	pkgdesc = Simple CLI hangman game
+	pkgver = 1.1
+	pkgrel = 1
+	url = ganit44.github.io
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = words
+	source = http://ganit44.github.io/hangman-lite.tar.gz
+	md5sums = 207531afd681107f847753969cbd35be
+
+pkgname = hangman-lite
+
