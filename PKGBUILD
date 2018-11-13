@@ -19,8 +19,8 @@ build() {
 
 package() {
   cd diskus-$pkgver
-  install -Dm755 target/release/diskus "$pkgdir"/usr/bin/diskus
-  install -Dm644 LICENSE-MIT "$pkgdir"/usr/share/licenses/diskus/LICENSE-MIT
+  install -D target/release/diskus "$pkgdir"/usr/bin/diskus
+  install -Dm644 LICENSE-MIT "$pkgdir"/usr/share/licenses/diskus/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
