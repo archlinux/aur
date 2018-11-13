@@ -2,12 +2,12 @@
 
 pkgname=slit-git
 pkgver=1.2.0.r9.g7e3652e
-pkgrel=2
+pkgrel=3
 pkgdesc='A modern PAGER for viewing logs, get more than most in less time'
 arch=(x86_64)
 url='https://github.com/tigrawap/slit'
 license=(MIT)
-makedepends=(go)
+makedepends=(go dep)
 conflicts=(slit)
 provides=(slit)
 source=("${pkgname}::git+https://github.com/tigrawap/slit.git")
