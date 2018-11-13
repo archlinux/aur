@@ -1,17 +1,19 @@
 # Maintainer: Dario Giovannetti <dev at dariogiovannetti dot net>
 
-pkgname='python2-configfile'
-pkgver='1.2.2'
+_name='configfile'
+
+pkgname="python2-${_name}"
+pkgver='1.2.4'
 pkgrel=1
 pkgdesc="Python2 library for dynamically parsing and editing configuration files with support for subsections."
 arch=('any')
 url="https://kynikos.github.io/lib.py.configfile"
-license=('GPL3')
+license=('MIT')
 depends=('python2')
-source=("http://downloads.sourceforge.net/project/kynikos/lib.py.configfile/$pkgname-$pkgver.tar.bz2")
-sha256sums=('8bfd37f7e07cebd8305f2219b7a27cdcf45a94eb51de7b28cef1f4682f66d9b5')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('3cb441db800c7a1c3d265e8f63b0a568b0a55150479984e99561f6adb9268c51')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    cd "${srcdir}/${_name}-${pkgver}"
+    python2 setup.py install --root="${pkgdir}" --optimize=1
 }
