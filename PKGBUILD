@@ -2,7 +2,7 @@
 # Maintainer: Laszlo Papp <lpapp@kde.org>
 
 pkgname=('python-pyang' 'python2-pyang')
-pkgver=1.7.3
+pkgver=1.7.5
 pkgrel=1
 pkgdesc='A YANG (RFC 6020) validator and converter'
 url='https://pypi.python.org/pypi/pyang'
@@ -10,7 +10,7 @@ arch=('any')
 license=('custom:BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/mbj4668/pyang/archive/pyang-${pkgver}.tar.gz")
-sha256sums=('67131553cf54e6228aeda9ceb9878bc9ec870cc41cbe74e7764393ec9056b971')
+sha256sums=('94ea421ef66d79068446f99c121ec27a57638fa5d67cc10aab8fe47cd8285a5b')
 
 prepare() {
   cp -r "pyang-pyang-$pkgver" "python-pyang-$pkgver"
