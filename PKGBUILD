@@ -1,16 +1,25 @@
 # Maintainer: Betül Ünlü < betulunlu0018 ~at~ gmail ~dot~ com >
 
 pkgname=emojicode
-pkgver=0.6.0
-pkgrel=8
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
 license=("custom")
-depends=("ncurses")
-makedepends=("llvm60" "cmake>=3.5.1" "ninja" "gcc>=7.2" "python>=3.5.2")
+depends=(
+    "ncurses"
+    "zlib"
+)
+makedepends=(
+    "llvm6"
+    "cmake>=3.5.1"
+    "ninja"
+    "gcc>=7.2"
+    "python>=3.5.2"
+)
 checkdepends=("python>=3.5.2")
-source=("${pkgname}::git+https://github.com/emojicode/emojicode#tag=v0.6")
+source=("${pkgname}::git+https://github.com/emojicode/emojicode#tag=v${pkgver}")
 md5sums=("SKIP")
 
 build() {
@@ -48,10 +57,10 @@ package() {
     install -Dm644 "include/s/String.h" "${pkgdir}/usr/include/emojicode/s/String.h"
 
     install -Dm755 "packages/files/interface.emojii" "${pkgdir}/usr/lib/emojicode/files/interface.emojii"
-    install -Dm755 "packages/files/libfiles.a" "${pkgdir}/usr/lib/emojicode/files/libfiles.a"
-    install -Dm755 "packages/runtime/libruntime.a" "${pkgdir}/usr/lib/emojicode/runtime/libruntime.a"
+    install -Dm644 "packages/files/libfiles.a" "${pkgdir}/usr/lib/emojicode/files/libfiles.a"
+    install -Dm644 "packages/runtime/libruntime.a" "${pkgdir}/usr/lib/emojicode/runtime/libruntime.a"
     install -Dm755 "packages/s/interface.emojii" "${pkgdir}/usr/lib/emojicode/s/interface.emojii"
-    install -Dm755 "packages/s/libs.a" "${pkgdir}/usr/lib/emojicode/s/libs.a"
+    install -Dm644 "packages/s/libs.a" "${pkgdir}/usr/lib/emojicode/s/libs.a"
     install -Dm755 "packages/sockets/interface.emojii" "${pkgdir}/usr/lib/emojicode/sockets/interface.emojii"
-    install -Dm755 "packages/sockets/libsockets.a" "${pkgdir}/usr/lib/emojicode/sockets/libsockets.a"
+    install -Dm644 "packages/sockets/libsockets.a" "${pkgdir}/usr/lib/emojicode/sockets/libsockets.a"
 }
