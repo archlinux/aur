@@ -1,15 +1,15 @@
 pkgbase = blynk-server-bin
 	pkgdesc = Blynk server for the Blynk IoT platform
-	pkgver = 0.40.2
+	pkgver = 0.41.0
 	pkgrel = 1
 	url = https://www.blynk.cc/
 	install = blynk-server-bin.install
 	arch = any
 	license = GPL3
 	depends = java-runtime-headless>=10
-	noextract = server-0.40.2.jar
+	noextract = server-0.41.0.jar
 	backup = etc/blynk/server.properties
-	source = server-0.40.2.jar::https://github.com/blynkkk/blynk-server/releases/download/v0.40.2/server-0.40.2.jar
+	source = server-0.41.0.jar::https://github.com/blynkkk/blynk-server/releases/download/v0.41.0/server-0.41.0.jar
 	source = blynk.service
 	source = blynk-server-bin.install
 	source = server.properties
