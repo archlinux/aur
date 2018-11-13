@@ -6,8 +6,9 @@ pkgbase = bibata-cursor-theme
 	arch = any
 	license = GPL
 	makedepends = inkscape
-	makedepends = xorg-xcursorgen
+	makedepends = gnome-themes-standard
 	makedepends = gtk-engine-murrine
+	makedepends = xorg-xcursorgen
 	source = https://github.com/KaizIqbal/Bibata_Cursor/archive/v0.4.1.tar.gz
 	sha256sums = 01d06515f6139d796820cb4ca121185ee65a8789bfdd88e0600bcd749e3eea3b
 
