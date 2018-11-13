@@ -1,0 +1,14 @@
+pkgbase = trickle-pipe
+	pkgdesc = 600 baud pipe and terminal
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/sjmulder/trickle
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	conflicts = trickle
+	source = trickle-1.0.tar.gz::https://github.com/sjmulder/trickle/archive/1.0.tar.gz
+	sha256sums = b1029f75e43136cb0651ab61b23ec46e215cd4effd8294424961f7d70686ee59
+
+pkgname = trickle-pipe
+
