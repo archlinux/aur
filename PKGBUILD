@@ -5,7 +5,7 @@
 
 pkgname=libvpx-1.6
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VP8 and VP9 codec'
 arch=('x86_64')
 url='http://www.webmproject.org/'
