@@ -3,8 +3,8 @@
 # Contrubutor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-ck
-pkgver=410.66
-pkgrel=2
+pkgver=410.73
+pkgrel=1
 epoch=2
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck."
@@ -21,7 +21,7 @@ options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
 kernel-4.16.patch)
-sha256sums=('8fb6ad857fa9a93307adf3f44f5decddd0bf8587a7ad66c6bfb33e07e4feb217'
+sha256sums=('bebc9cf781201beb5ec1a1dde7672db68609b8af0aa5ff32daa3ebb533c2ff1e'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
 
 prepare() {
