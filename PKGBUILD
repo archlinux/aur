@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-catboost-gpu-git
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="CatBoost is an open-source gradient boosting on decision trees library with categorical features support out of the box."
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ package() {
     export YA_CACHE_DIR=/tmp/.ya
 
     cd $srcdir/catboost/catboost/python-package/catboost
-    ../../../ya make -r -DUSE_ARCADIA_PYTHON=no -DPYTHON_CONFIG=python3-config -DCUDA_ROOT=$CUDA_ROOT
+    ../../../ya make -r -DUSE_ARCADIA_PYTHON=no -DUSE_SYSTEM_PYTHON=3.7 -DPYTHON_CONFIG=python3-config -DCUDA_ROOT=$CUDA_ROOT
 
     cd ..
     python3 mk_wheel.py -DCUDA_ROOT=$CUDA_ROOT
