@@ -1,13 +1,13 @@
 pkgbase = zfs-utils
 	pkgdesc = Userspace utilities for the Zettabyte File System.
-	pkgver = 0.7.11
-	pkgrel = 2
+	pkgver = 0.7.12
+	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = i686
 	arch = x86_64
 	license = CDDL
 	makedepends = git
-	source = git+https://github.com/zfsonlinux/zfs.git#tag=zfs-0.7.11?signed
+	source = git+https://github.com/zfsonlinux/zfs.git#tag=zfs-0.7.12?signed
 	source = zfs.initcpio.install
 	source = zfs.initcpio.hook
 	validpgpkeys = 4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027

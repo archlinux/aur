@@ -2,8 +2,8 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=zfs-utils
-pkgver=0.7.11
-pkgrel=2
+pkgver=0.7.12
+pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=("i686" "x86_64")
 url="https://zfsonlinux.org/"
