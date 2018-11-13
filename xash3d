@@ -1,0 +1,4 @@
+#!/bin/sh
+. /etc/conf.d/xash3d
+/usr/lib32/xash3d/xash3d
+

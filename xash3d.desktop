@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Xash3D FWGS
+Comment=Fork of Xash3D engine that ported to Android. Allows play Half-Life out-of-box.
+Exec=/usr/bin/xash3d
+Icon=xash3d
+Terminal=false
+Categories=Game
+
