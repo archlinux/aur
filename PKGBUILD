@@ -4,25 +4,24 @@
 
 pkgname=pacman-static
 pkgver=5.1.1
-_cares_ver=1.14.0
-_nghttp2_ver=1.33.0
-_curlver=7.61.1
+_cares_ver=1.15.0
+_nghttp2_ver=1.34.0
+_curlver=7.62.0
 _sslver=1.1.1
 _xzver=5.2.4
 _bzipver=1.0.6
-_zstdver=1.3.6
+_zstdver=1.3.7
 _libarchive_ver=3.3.3
 _gpgerrorver=1.32
 _libassuanver=2.5.1
 _gpgmever=1.12.0
-_gnupgver=2.2.10
-pkgrel=5
+_gnupgver=2.2.11
+pkgrel=6
 pkgdesc="Statically-compiled pacman (to fix or install systems without libc)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
 depends=("pacman=${pkgver}")
-options=('staticlibs')
 
 # pacman
 source=("https://sources.archlinux.org/other/pacman/pacman-${pkgver}.tar.gz"{,.sig})
@@ -60,10 +59,10 @@ source+=("libarchive-${_libarchive_ver}.tar.gz::https://github.com/libarchive/li
 
 sha512sums=('7112025dbd3e263c16f5b0ab34c9db3e8d631a0801bb086b47a2252d1764172261be6a14df1f24598c62935dcdfd74c89fa9d116deea41efb9e0f53dcadeb61c'
             'SKIP'
-            'eeb0bf64fea115444c685c8a01c1017ce96be18adf88ffcdecad067de7012ca61c6b2b6a627b18e2572bba7bd77ec56a3ca4b1109f7a4b21220e8e28687b5b74'
-            '30cd3f8c4eea15f994b2ceb44d84e506858f69f624e651e39bb4db523fea9ad5e8906b75abf07131ae364be19172274ed4053059669091f21ce4463cdbb857bf'
+            '5ddc4ab443c51ce286a656d2013421172fc37608f14c0a7ea02fa9e5a0dd155e162d5602b55f34dacc69709525a9a8110dc4c42d92607bbad1951075d094c6a0'
+            'a1de6c5e7e1a6a13c926aae690e83d5caa51e7313d63da1cf2af6bc757c41d585aad5466bc3ba7b7f7793cb1748fa589f40972b196728851c8b059cfc8c3be50'
             'SKIP'
-            '6469a3ff27623826bf29a9256ba730ae0a5135c20b27377027554e19ed26be6d0225db0101b60e7f12aa22d55eccaa53f4015414ef5736ee6002c6d780ed513f'
+            'b254e6e8e7cff23b7a005da875c580cff98e50d227fa4809f899f625cb70e7f80f7f072594a1cde700359b258ff0ac2fdc03ee4a809b6dbcdf6004b2bf87c884'
             'SKIP'
             'c0284a4fe84bdf765ca5bc5148da4441ffc36392cfecaf9d372af00cf93b6de5681cab1248b6f8246474532155dc205da5ad49549ad7c61c07c917145e7c9c71'
             'SKIP'
@@ -71,7 +70,7 @@ sha512sums=('7112025dbd3e263c16f5b0ab34c9db3e8d631a0801bb086b47a2252d1764172261b
             'e5bf6eb88365d2dbdc774db49261fb9fae0544ed297891fc20f1ed223f4072cb0357cbd98146ac35b6d29410a12b6739bbd111cd57d4a225bef255ed46988578'
             'SKIP'
             '00ace5438cfa0c577e5f578d8a808613187eff5217c35164ffe044fbafdfec9e98f4192c02a7d67e01e5a5ccced630583ad1003c37697219b0f147343a3fdd12'
-            'f37c3f45ee7b0367c1fd48f572a1931ea4a664a1f5669c56a0f1883c5c9555c3d8b622c1d8bd8c074d157259b4eda24782670137c354c2e2633ec98b235b5625'
+            'fb9ac61b79b22a628e602e68f7c59c85a00020f7f25b8653076895da7589ca1203adc7fe3d9b865f36648bc30d765b9630cf0955f970596253da74c089b97af1'
             '0130af48fe81f4db401635757d22a330455aab5dc27edfffad44b7c7c5c439399e92d234c9e00f4d3a399646b52e06c95d53196ea19f5a166817e2032511cb20'
             'SKIP'
             'c8829925221780f175cee8c4084060b0d661229f583a50d400a1903ab7303b2724b99ff9c0fa242881d4c5d779036756e1da54d9143acc0fcd92f302ecb5882d'
@@ -175,7 +174,6 @@ build() {
     # curl
     cd "${srcdir}"/curl-${_curlver}
     # c-ares is not detected via pkg-config :(
-    # https:// support segfaults, disable ssl for now
     ./configure --prefix="${srcdir}"/temp/usr \
                 --disable-shared \
                 --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
@@ -217,7 +215,6 @@ build() {
     export PKG_CONFIG='pkg-config --static'
 
     # Finally, it's a pacman!
-    # TODO: figure out why any pacman action that attempts to download things, segfaults
     cd "${srcdir}"/pacman-${pkgver}
     ./configure --prefix=/usr \
                 --libdir=/usr/lib/pacman/lib \
@@ -230,8 +227,6 @@ build() {
                 --disable-doc
     make V=1 AM_LDFLAGS=-all-static
 }
-
-
 
 package() {
     cd "${srcdir}"/pacman-${pkgver}
