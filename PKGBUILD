@@ -18,6 +18,8 @@ license=('GPL')
 install=$pkgname.install
 depends=('java-openjfx' 'jre8-openjdk' 'fontconfig' 'chromaprint')
 makedepends=('ant' 'ivy')
+provides=('filebot')
+conflicts=('filebot47' 'filebot-git')
 
 [[ $CARCH == "i686" ]]   && _intarch=i686
 [[ $CARCH == "x86_64" ]] && _intarch=amd64
