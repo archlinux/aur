@@ -3,7 +3,7 @@
 
 pkgname=linuxcnc-sim
 pkgver=2.7.12
-pkgrel=2
+pkgrel=3
 pkgdesc="It can interpret G-code and simulate a CNC machine (formerly EMC2)."
 arch=('i686' 'x86_64')
 license=('GPL2')
