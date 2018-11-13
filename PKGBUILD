@@ -5,10 +5,10 @@
 pkgbase=linux-bld
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.18.18
+pkgver=4.18.19
 #_archlinux_linux_version=$pkgver-arch1
 _archlinux_linux_version=4.18.16-arch1
-_diff_file=linux_v4.18.16-v4.18.18.patch
+_diff_file=linux_v4.18.16-v4.18.19.patch
 _srcname=linux-4.18
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
@@ -21,7 +21,7 @@ _BLDpatch="BLD-${_srcname#*-}.patch"
 arch_config_trunk=bbd102b10ab31063993d61829be3dea000f85724
 
 source=("https://git.archlinux.org/linux.git/snapshot/linux-${_archlinux_linux_version}.tar.xz"
-        "${_diff_file}"
+        "${_diff_file}.gz"
         '60-linux.hook'  # pacman hook for depmod
 	'90-linux.hook'  # pacman hook for initramfs regeneration
         # standard config files for mkinitcpio ramdisk
@@ -33,11 +33,11 @@ source=("https://git.archlinux.org/linux.git/snapshot/linux-${_archlinux_linux_v
         )
 
 sha256sums=('3f64579d5584a85fb0b15fda1f9803cbc924dcd4007c7e17b1bb449bc653f5ec'
-            '38e863df7729d7d710119cc2ec34bdbaacf0191315909d3a8abf522af7a70d80'
+            'ddf39ea01942bcffe45ba1cd23a858b832754c48debd05e5be83249466647c59'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
-            '0e0d831763f080c65c07e06389007ada9f7d77f8148859ac5a2223263cc966e7'
+            '8a4cd4ce29da74ce7d465416a6224ab64614ca106682c7908e50196b36fbd4a9'
             '53c93e1b5c05a749a976ed4702daeab5524326d779c157f8878308125de2e68b')
 
 validpgpkeys=(
