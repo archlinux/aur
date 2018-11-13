@@ -1,6 +1,6 @@
 # Maintainer: Kovshov K.A. <kirillnow at gmail dot com>
-# Maintainer: Stuart Cardall <developer@it-offshore.co.uk>
-# Contributor: Stuart Cardall <developer@it-offshore.co.uk>
+# Maintainer: Stuart Cardall <developer at it-offshore dot co dot uk>
+# Contributor: Stuart Cardall <developer at it-offshore dot co dot uk>
 
 pkgname=secpwgen
 pkgver=1.3
