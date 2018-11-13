@@ -19,6 +19,7 @@ pkgver() {
 
 package() {
   cd $_pkgname
+
   install -m 755 -D $_pkgname "$pkgdir/usr/bin/$_pkgname"
   install -m 755 -D "simplecheck" "$pkgdir/usr/bin/simplecheck"
   install -m 755 -D "simplesearch" "$pkgdir/usr/bin/simplesearch"
