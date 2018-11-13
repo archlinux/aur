@@ -8,7 +8,7 @@ _USE_GNU_EFI="1"
 #######
 
 pkgname="refind-efi-bin"
-pkgver="0.11.3"
+pkgver="0.11.4"
 pkgrel="1"
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - Precompiled binary"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -36,7 +36,7 @@ if [[ "${_USE_GNU_EFI}" == "1" ]]; then
 	
 else
 	
-	pkgdesc="${pkgdesc} - Built with Tianocore UDK libs"
+	pkgdesc="${pkgdesc} - Built with TianoCore UDK libs"
 	source+=("https://downloads.sourceforge.net/project/refind/${pkgver}/refind-bin-${pkgver}.zip")
 	
 fi
