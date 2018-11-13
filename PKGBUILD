@@ -2,13 +2,12 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=zfs-dkms
-pkgver=0.7.11
-pkgrel=2
+pkgver=0.7.12
+pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
 arch=('any')
 url="https://zfsonlinux.org/"
 license=('CDDL')
-depends=("spl-dkms=${pkgver}" "zfs-utils=${pkgver}" 'dkms')
 makedepends=('git')
 provides=("${pkgname%-dkms}")
 source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-${pkgver}?signed"
@@ -34,6 +33,8 @@ prepare() {
 }
 
 package() {
+    depends=("spl-dkms=${pkgver}" "zfs-utils=${pkgver}" 'dkms')
+
     cd "${srcdir}"/${pkgname%-dkms}
 
     dkmsdir="${pkgdir}/usr/src/${pkgname%-dkms}-${pkgver}"
