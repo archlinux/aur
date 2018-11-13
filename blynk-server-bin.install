@@ -11,13 +11,13 @@ post_install() {
 		echo -e "\e[34;1m==>\e[39;1m Adding ${_user} system user... \e[0m"
 		useradd -r -g ${_user} -d /usr/share/blynk ${_user} 1>/dev/null
 	fi
-	post_upgrade
-}
-
-post_upgrade() {
 	chown -R ${_user}:${_user} /var/lib/blynk
 	chown -R ${_user}:${_user} /var/log/blynk
 	chown -R ${_user}:${_user} /usr/share/blynk
+}
+
+post_upgrade() {
+	echo -e "\e[34;1m==>\e[39;1m NOTE: Please restart blynk service to take the update into account. \e[0m"
 }
 
 pre_remove() {
@@ -28,5 +28,7 @@ pre_remove() {
 post_remove() {
 	echo -e "\e[34;1m==>\e[39;1m Removing ${_user} user and group... \e[0m"
 	userdel ${_user}
-	echo -e "\e[34;1m==>\e[39;1m NOTE: Data folder /var/lib/blynk has been preserved. \e[0m"
+	if [ -d /var/lib/blynk ]; then
+		echo -e "\e[34;1m==>\e[39;1m NOTE: Data folder /var/lib/blynk has been preserved. \e[0m"
+	fi
 }
