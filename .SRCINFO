@@ -1,0 +1,17 @@
+pkgbase = libcuckoo-git
+	pkgdesc = libcuckoo provides a high-performance, compact hash table that allows multiple concurrent reader and writer threads.
+	pkgver = r364.86d5ef0
+	pkgrel = 1
+	url = https://github.com/efficient/libcuckoo
+	arch = any
+	license = Apache License, Version 2.0
+	makedepends = cmake
+	makedepends = git
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = libcuckoo-git::git+https://github.com/efficient/libcuckoo.git#branch=master
+	sha1sums = SKIP
+
+pkgname = libcuckoo-git
+
