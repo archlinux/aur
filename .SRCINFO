@@ -7,7 +7,6 @@ pkgbase = python2-acestream
 	license = GPL
 	makedepends = python2-setuptools
 	depends = python2
-	optdepends = acestream-engine: AceStream local server
 	conflicts = python2-acestream
 	conflicts = python2-acestream-git
 	source = python2-acestream-0.1.3.tar.gz::https://github.com/jonian/python-acestream/archive/v0.1.3.tar.gz
