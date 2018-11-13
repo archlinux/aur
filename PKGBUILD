@@ -2,7 +2,7 @@
 
 pkgname=gnome-passwordsafe-git
 _gitname=PasswordSafe
-pkgver=3.31.1
+pkgver=3.31.2
 pkgrel=2
 pkgdesc="A password manager for GNOME - Git version"
 arch=('i686' 'x86_64')
