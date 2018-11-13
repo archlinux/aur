@@ -2,12 +2,12 @@
 
 pkgname=yubikey-manager-qt
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform application for configuring any YubiKey over all USB transports'
 arch=('x86_64')
 url='https://developers.yubico.com/yubikey-manager-qt/'
 license=('BSD')
-depends=('yubikey-manager' 'python' 'qt5-base' 'qt5-quickcontrols2' 'python-pyotherside')
+depends=('yubikey-manager' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'python-pyotherside')
 makedepends=('git') 
 replaces=('yubikey-neo-manager')
 validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3') # Dag Heyman <dag@yubico.com>
