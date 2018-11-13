@@ -1,69 +1,72 @@
-# Maintainer: Eric Bailey <nerflad@gmail.com>
-# Contributor: Kamran Mackey <kamranm1200@gmail.com>
-pkgbase=(harfbuzz-git)
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+
+pkgbase=(harfbuzz)
 pkgname=(harfbuzz-git harfbuzz-icu-git)
-pkgver=1.5.1.r76.g4f9a83ec
+pkgver=2.1.1+174+g6c22f3fd
 pkgrel=1
 pkgdesc="OpenType text shaping engine"
-arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
+arch=(x86_64)
 license=(MIT)
-makedepends=(ragel python2 glib2 freetype2 graphite cairo icu gobject-introspection)
-source=('git://github.com/behdad/harfbuzz.git')
+depends=(glib2 freetype2 graphite)
+makedepends=(cairo icu gobject-introspection ragel git python)
+checkdepends=(python-fonttools python-setuptools)
+source=("git+https://anongit.freedesktop.org/git/harfbuzz")
 sha256sums=('SKIP')
-_gitname=harfbuzz
 
 pkgver() {
-  cd "$_gitname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $pkgbase
+  git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  mkdir path
-  ln -s /usr/bin/python2 path/python
-
-  cd "$_gitname"
+  cd $pkgbase
+  NOCONFIGURE=1 ./autogen.sh
 }
 
-
 build() {
-  cd "$_gitname"
-  ./autogen.sh
-  ./configure --prefix=/usr \
-    --with-glib --with-freetype --with-cairo --with-icu --with-graphite2 \
-    --with-gobject
+  cd $pkgbase
+  ./configure \
+    --prefix=/usr \
+    --with-cairo \
+    --with-freetype \
+    --with-glib \
+    --with-gobject \
+    --with-graphite2 \
+    --with-icu \
+    --disable-gtk-doc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
-check() {
-  cd "$_gitname"
-  PATH="$srcdir/path:$PATH" make -k check || :
-}
+#check() {
+#  cd $pkgbase
+#  make check
+#}
 
 package_harfbuzz-git() {
-  depends=(glib2 freetype2 graphite)
   optdepends=('cairo: hb-view program')
-  conflicts=(harfbuzz)
-  provides=(harfbuzz)
+  provides=('harfbuzz')
+  conflicts=('harfbuzz')
 
-  cd "$_gitname"
+  cd $pkgbase
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/harfbuzz/COPYING"
 
-  # Split harfbuzz-icu
+# Split harfbuzz-icu
   mkdir -p ../hb-icu/usr/{include/harfbuzz,lib/pkgconfig}; cd ../hb-icu
   mv "$pkgdir"/usr/lib/libharfbuzz-icu* ./usr/lib
   mv "$pkgdir"/usr/lib/pkgconfig/harfbuzz-icu.pc ./usr/lib/pkgconfig
   mv "$pkgdir"/usr/include/harfbuzz/hb-icu.h ./usr/include/harfbuzz
 }
 
-package_harfbuzz-icu-git(){
+package_harfbuzz-icu-git() {
   pkgdesc="$pkgdesc (ICU integration)"
   depends=(harfbuzz icu)
-  conflicts=(harfbuzz-icu)
-  provides=(harfbuzz-icu)
+  provides=('harfbuzz-icu')
+  conflicts=('harfbuzz-icu')
 
   mv hb-icu/* "$pkgdir"
 
-  install -Dm644 $_gitname/COPYING "$pkgdir/usr/share/licenses/harfbuzz-icu/COPYING"
+  install -Dm644 $pkgbase/COPYING "$pkgdir/usr/share/licenses/harfbuzz-icu/COPYING"
 }
