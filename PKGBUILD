@@ -1,9 +1,8 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=writefreely
-_shortpkgver=0.2
-pkgver=${_shortpkgver}.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
@@ -15,12 +14,12 @@ source=('writefreely.tmpfiles'
         'writefreely-sysusers.conf'
         'writefreely.service'
         'config.ini'
-        "https://github.com/writeas/writefreely/releases/download/v${pkgver}/writefreely_${_shortpkgver}_linux_amd64.tar.gz")
+        "https://github.com/writeas/writefreely/releases/download/v${pkgver}/writefreely_${pkgver}_linux_amd64.tar.gz")
 sha256sums=('fe04838284663b3725d5bb1cd82ca8fbe180512d59200c88b0a5829f8e390b2d'
             '6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10'
             'dbb332d30c49a8b9f8a1f926c0b3439c1487d395fbef979481f9e76e53a3bcaa'
             'a3ef5fcb0ab3459b739245cd5667c478973efad7fc5a04a054edf7f6a6d2188b'
-            '79c8a37f472e8563f2add3352b9302879f7ff81aa49268557dd1e0bd16ecfbf6')
+            'b39f5ca5e959a30fd849fb92e5339530df9c169398fb6233b31c840b14e26a0a')
 
 package() {
   # -o writefreely -g writefreely
