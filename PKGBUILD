@@ -3,13 +3,13 @@
 pkgname=virtlyst
 _projectname=Virtlyst
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Web interface to manage virtual machines with libvirt"
 arch=('x86_64')
 url="https://github.com/cutelyst/Virtlyst"
 license=('AGPL3')
 depends=('cutelyst>=2.5.1' 'libvirt')
-makedepends=()
+makedepends=('cmake')
 optdepends=('nginx')
 source=("https://github.com/cutelyst/${_projectname}/archive/v${pkgver}.tar.gz"
     "nginx-example.conf"
