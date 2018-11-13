@@ -2,8 +2,8 @@
 
 name=watchghost
 pkgname=$name
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 epoch=1
 pkgdesc="Your invisible but loud monitoring pet"
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPLv3')
 depends=('python-tornado' 'python-aioftp' 'python-asyncssh' 'python-watchdog')
 makedepends=('python-setuptools')
 source=("https://gitlab.com/localg-host/watchghost/-/archive/${pkgver}/watchghost-${pkgver}.tar.gz")
-sha256sums=('3cd3de253a47f0bfc4225bd806156dd1d364aeae983153aca28391b2a8a39214')
+sha256sums=('94f6c05099bad2b8ee6d034a0b0cf04e91a0a81a58134b981b49b4b77d18b692')
 conflicts=('watchghost-git')
 install=watchghost.install
 backup=(
