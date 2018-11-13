@@ -1,7 +1,6 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=cmb
-pkgbase=cmb
 pkgver=1.4.1
 pkgrel=1
 pkgdesc="combinatorics utility"
