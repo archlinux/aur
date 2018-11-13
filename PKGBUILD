@@ -3,7 +3,7 @@
 
 _basename=imagemagick
 pkgname=lib32-imagemagick
-pkgver=7.0.8.12
+pkgver=7.0.8.14
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (32-bit)"
 url="https://www.imagemagick.org/"
@@ -16,10 +16,11 @@ checkdepends=(ttf-dejavu)
 _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 source=(https://www.imagemagick.org/download/releases/$_tarname.tar.xz{,.asc}
-        arch-fonts.diff)
-sha256sums=('48df5877fe85603940310fe5c811a89af416882b60379918a95dcd4de6582b55'
+        arch-fonts.diff IM7-GS-policy.patch)
+sha256sums=('70c3d8c800cfd0282c0e0d9930b83f472f9593a882adc77532aa82c0d7ca0bb1'
             'SKIP'
-            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
+            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73'
+            'f20c09860da65a4259ec9627ceeca7d993949b7460fa199c5ffd874633814cf6')
 validpgpkeys=(D8272EF51DA223E4D05B466989AB63D48277377A)  # Lexie Parsimoniae
 
 shopt -s extglob
@@ -28,7 +29,10 @@ prepare() {
     cd $_tarname
 
     # Fix up typemaps to match our packages, where possible
-    patch -Np1 -i ../arch-fonts.diff
+    patch -p1 -i ../arch-fonts.diff
+
+    # Work around ghostscript security issues https://bugs.archlinux.org/task/59778
+    patch -p1 -i ../IM7-GS-policy.patch
 }
 
 build() {
