@@ -1,7 +1,6 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=libcmb
-pkgbase=cmb
 pkgver=1.3.1
 pkgrel=1
 pkgdesc="combinatorics library"
