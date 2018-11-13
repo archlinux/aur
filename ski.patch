@@ -1,0 +1,43 @@
+--- src/dos.c	2008-02-05 05:11:38.000000000 +0100
++++ src/dos.c	2018-11-13 14:45:54.127222602 +0100
+@@ -49,9 +49,6 @@
+ # include <ulimit.h>
+ #endif /* !defined __linux */
+ #include <unistd.h>	/* Also #includes <utime.h> */
+-#if !defined(__FreeBSD__)
+-#include <ustat.h>
+-#endif
+ #include <sys/utsname.h>
+ #include <ctype.h>
+ #include "std.h"
+--- src/linux/syscall-linux.c	2008-02-05 05:11:38.000000000 +0100
++++ src/linux/syscall-linux.c	2018-11-13 14:45:41.900426839 +0100
+@@ -72,7 +72,6 @@
+ #include <sys/uio.h>
+ 
+ #include <linux/serial.h>
+-#include <asm/page.h>
+ #include <asm/unistd.h>
+ 
+ #include "std.h"
+@@ -2252,8 +2251,9 @@
+ 	case TIOCSERSETMULTI:	/* Set multiport config */
+ 	case TIOCMIWAIT:	/* wait for a change on serial input line(s) */
+ 	case TIOCGICOUNT:	/* read serial port inline interrupt counts */
+-	case TIOCGHAYESESP:	/* Get Hayes ESP configuration */
+-	case TIOCSHAYESESP:	/* Set Hayes ESP configuration */
++	// The following two are not recognized anymore...
++	//case TIOCGHAYESESP:	/* Get Hayes ESP configuration */
++	//case TIOCSHAYESESP:	/* Set Hayes ESP configuration */
+ 	case SIOCRTMSG:	/* call to routing system	*/
+ 	case SIOCSIFLINK:	/* set iface channel		*/
+ 	case SIOCGIFMEM:	/* get memory address (BSD)	*/
+@@ -2676,7 +2676,7 @@
+ 
+     case LIA64_uselib:
+       memBBRd (ADDPTR (arg0), buf, 0);
+-      *status = uselib ((char *) buf);
++      *status = -1; //uselib ((char *) buf);
+       setStatReturn (ret, status);
+       break;
+ 
