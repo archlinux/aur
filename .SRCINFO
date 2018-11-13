@@ -1,0 +1,13 @@
+pkgbase = ttv
+	pkgdesc = A command line tool for splitting files into test, train, and validation sets.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/sd2k/ttv
+	arch = x86_64
+	license = CUSTOM
+	makedepends = rust
+	source = ttv-0.2.1.tar.gz::https://github.com/sd2k/ttv/archive/v0.2.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = ttv
+
