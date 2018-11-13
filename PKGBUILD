@@ -2,8 +2,8 @@
 # Prev. Maintainer: orumin <dev at orum.in>
 
 pkgname=slack-term-bin
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Slack client for your terminal"
 arch=('x86_64')
 url="https://github.com/erroneousboat/slack-term"
@@ -15,7 +15,7 @@ provides=('slack-term')
 conflicts=('slack-term')
 options=()
 md5sums=('563e9d16dfa4d970c956ebc0e6e140dd'
-         '8db633b31bc1b2823da0155ab93e3427'
+         'ce0072e7dac2134606e00c6363953570'
          '9cdd35c2d48f6d899333ab3721a6464b')
 
 package() {
