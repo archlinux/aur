@@ -1,4 +1,5 @@
 # Maintainer: Victor Demonchy <demonchy.v@gmail.com>
+# Contributor: Wael Nasreddine <wael.nasreddine@gmail.com>
 
 pkgname=kubetail
 pkgver=1.6.5
