@@ -2,8 +2,8 @@
 # Prev. Maintainer: orumin <dev at orum.in>
 
 pkgname=slack-term
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Slack client for your terminal"
 arch=('x86_64')
 url="https://github.com/erroneousboat/slack-term"
@@ -14,7 +14,7 @@ license=('MIT')
 conflicts=('slack-term-bin')
 options=()
 makedepends=("go")
-md5sums=('d1fd4d15fa219c6c769d59b4ab55f83a'
+md5sums=('89093ccbe3935c492d5d4fbff2c8265d'
          '9cdd35c2d48f6d899333ab3721a6464b')
 
 
