@@ -1,7 +1,7 @@
 pkgbase = lib32-vgui
 	pkgdesc = Half Life 1 SDK
 	pkgver = f5566261
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FWGS/vgui-dev
 	arch = x86_64
 	license = CUSTOM
