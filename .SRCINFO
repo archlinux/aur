@@ -1,14 +1,14 @@
 pkgbase = lft
 	pkgdesc = A layer four traceroute implementing numerous other features
-	pkgver = 3.79
+	pkgver = 3.8
 	pkgrel = 1
 	url = http://pwhois.org/lft/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = libpcap
-	source = http://pwhois.org/dl/index.who?file=lft-3.79.tar.gz
-	md5sums = 746dc08f2e20d0e0240f28873b3bb244
+	source = http://pwhois.org/dl/index.who?file=lft-3.8.tar.gz
+	md5sums = 31b15aabc619707427a73657512560f8
 
 pkgname = lft
 
