@@ -6,14 +6,14 @@
 # Maintainer: Mattias Giese <mattiasgiese@posteo.net>
 
 pkgname=bitlbee-libpurple-git
-pkgver=3.5.1.r54.g246b98bb
+pkgver=3.5.1.r80.gc3599e03
 pkgrel=1
 pkgdesc='Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC'
 url='http://www.bitlbee.org/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-depends=('gnutls' 'glib2')
-makedepends=('git' 'libotr' 'python' 'libpurple')
+depends=('gnutls' 'glib2' 'libpurple' 'libotr')
+makedepends=('git' 'python' )
 optdepends=('skype4py: to use skyped'
             'libotr: for OTR encryption support')
 source=(
