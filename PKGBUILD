@@ -2,7 +2,7 @@
 
 pkgname=slibtool
 pkgver=0.5.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Skinny libtool implementation, written in C"
 url='http://git.midipix.org/cgit.cgi/slibtool'
 license=('MIT')
