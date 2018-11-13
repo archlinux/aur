@@ -19,7 +19,8 @@ package() {
   cd "$pkgdir"
   mkdir -p usr/share/licenses/coinmon
   mv usr/lib/node_modules/coinmon/LICENSE usr/share/licenses/coinmon/
-  rm usr/lib/node_modules/coinmon/{.,}* | true
+  rm usr/lib/node_modules/coinmon/{.,}* || true
+  chmod 755 usr/bin
   find usr/lib/node_modules -type d -exec chmod 755 {} +
 }
 
