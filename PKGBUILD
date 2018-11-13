@@ -7,7 +7,6 @@ arch=("any")
 url="https://github.com/jonian/python-acestream"
 license=("GPL")
 depends=("python")
-optdepends=("acestream-engine: AceStream local server")
 makedepends=("python-setuptools")
 conflicts=("${pkgname}" "${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
