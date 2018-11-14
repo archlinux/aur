@@ -46,21 +46,18 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-### Enable MQ scheduling 
-_mq_enable=
-
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
-_major=4.18
-_minor=16
-_rtver=9
+_major=4.19
+_minor=1
+_rtver=3
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
 _rtpatchver=rt${_rtver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -68,7 +65,7 @@ options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
 _bfq_sq_mq_path="bfq-sq-mq"
 _bfq_sq_mq_ver='v9r1'
-_bfq_sq_mq_rel='2K181101'
+_bfq_sq_mq_rel='2K181101-rc1'
 _bfq_sq_mq_patch="${_major}-bfq-sq-mq-${_bfq_sq_mq_ver}-${_bfq_sq_mq_rel}.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
@@ -388,20 +385,20 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('80305a7d1d47b1e3d476cddfe5d9104be15f5d325a984fa05bb5426b080f9c22628a23a43741e75c1379979a00b180e8cf9b93cdc96149c73b15615c2042ccfc'
+sha512sums=('46f77eb99faa596b673920d4c0fcba6490f03907c0114eb18751cc2011e0a775037f5d2be536747c5337b8ae59e795071127282966b90b8cb818898f854b3260'
             'SKIP'
-            '1473cfd044014b055d876c9c5e9cac46e998ff34ac324d5ff50a58dc46ea7241b8b6bc1195a857447d6399b24cb285dbea698b905df511762e8527fd4ba29bd1'
+            'fdf743ca200a2bdb1966009cf5388180031c28723d7b6601db5f5942e04d2ce4442b3a4782ad62c05109f9353d65c264d75f0f0d15ff8b970726c11a372972ca'
             'SKIP'
-            '450e786b2fc58205b685f1f7af52ed7ef6fae003a568af9d2e017c7c8bb454f6089fc136efef2cfdf424dca5ac94ac14024bd02f690e384e1a181eec7ea64840'
+            'e2d8e9bbea3f48415ea637c44bb90544575d5fccccec75d4956f3490d352add5dbd70901b07b4fc645885506ae555f0c3ce4b2e1d334d03949cce46cde891b1c'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            'f991f92e2ba19fbf0c5622e234ea79313298d108ba075d7d088c647297fe4a8db1354a6a909521dc8450d2904c2665c1fb5c3e3a512f594ec7ceb25edfe31ac0'
+            'fffd1e7a502c4503755cc01687daada98350c62ca43f23d1dda003bafd3a48eb240f4e86e38172e33112bc5ef79b26525b1357a47708681feb5f1a020002c7aa'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '83815065699580831677696b64c542c981f8b916c3abd72d4dcd7e114f98ef4da1fabbcdea32d20ea538f4ce95753aef0c5e8283dfcb11b92c7ad7ad938006e0')
+            '39c50e70d28ddaa2cca030f1050c3ead72d44d957a533d0d09a5a8b92d3743c5712fef1a60aacfcac8319346dd407247667e1c25a96cd2585e9d9b017ccd707c')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
