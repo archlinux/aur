@@ -21,7 +21,7 @@ build() {
 package() {
   cd rstcheck-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/rstcheck/LICENSE
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/rstcheck LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
