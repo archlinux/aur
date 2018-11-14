@@ -1,0 +1,13 @@
+[Unit]
+Description=Namecoin Core Daemon
+After=local-fs.target network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/namecoind
+ExecStop=/usr/bin/namecoin-cli stop
+
+[Install]
+WantedBy=default.target
+

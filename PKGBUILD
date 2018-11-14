@@ -6,21 +6,20 @@
 
 
 pkgname=namecoin-core-wallet
-pkgver=v0.16.3
-pkgrel=2
+pkgver=v0.17.0
+pkgrel=1
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1538009445
+epoch=1542235176
 
 
-# Release commit for 0.16.3
-_commit=6fdea2aedfbcf0e8c24ce1552f7f58950e5efb55
+# Release commit for 0.17.0
+_commit=00a5f525720a408fac2467a251ce11691d2699b4
 
 
-pkgdesc='This package provides the Namecoin Core GUI client and CLI daemon.'
-pkgdesc="$pkgdesc This package does not create a systemd service."
+pkgdesc='This package provides the Namecoin Core GUI client, CLI daemon, and daemon user service.'
 
 arch=('i686' 'x86_64')
 url='https://namecoin.org/'
@@ -34,11 +33,15 @@ conflicts=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon'
 source=('git://github.com/namecoin/namecoin-core'
         'namecoin.desktop'
         'namecoin1500x1500.png'
+        'namecoind.service'
+        'namecoind@.service'
         'patch.diff')
 sha256sums=('SKIP'
             '0226f5a570bbbde63f332d43d9d712287b316c726280f2ae9e21b1b365b3f0dc'
             'f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04'
-            '59367280936748c3f10fdea0eb7c21e2407b522617a9856dcd43ce7417e8d6a8')
+            '0a8cb03f33a895ccaed63fb9d946db69bee7188b7a9f41bc92879167c2718dcf'
+            '216bf1642feb5c37cc82a0801faf0717308f98e5aed86d75dac8fafd150a4b68'
+            'c1918615ac36cd265210fe3d6d1c76591aa740fbb8e359b47f5d73d7979896e1')
 
 
 prepare() {
@@ -95,7 +98,10 @@ package() {
     install -Dm644 "$srcdir/namecoin-core/COPYING" "$pkgdir/usr/share/licenses/namecoin/COPYING"
     install -Dm644 "$srcdir/tmp/usr/include/namecoinconsensus.h" "$pkgdir/usr/include/namecoinconsensus.h"
     install -Dm644 "$srcdir/tmp/usr/lib/libnamecoinconsensus.so.0.0.0" "$pkgdir/usr/lib/libnamecoinconsensus.so.0.0.0"
+    install -Dm644 "$srcdir/namecoind@.service" "$pkgdir/usr/lib/systemd/system/namecoind@.service"
+    install -Dm644 "$srcdir/namecoind.service" "$pkgdir/usr/lib/systemd/user/namecoind.service"
     cd "$pkgdir/usr/lib/"
     ln -s "libnamecoinconsensus.so.0.0.0" "libnamecoinconsensus.so.0"
     ln -s "libnamecoinconsensus.so.0.0.0" "libnamecoinconsensus.so"
 }
+
