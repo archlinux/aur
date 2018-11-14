@@ -22,7 +22,7 @@ check() {
 package() {
   cd mwic-$pkgver
   make PREFIX=/usr DESTDIR="$pkgdir" install
-  install -Dm644 doc/LICENSE "$pkgdir"/usr/share/licenses/mwic/LICENSE
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/mwic doc/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
