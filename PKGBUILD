@@ -25,7 +25,7 @@ check() {
 package() {
   cd xandikos-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 xandikos.1 "$pkgdir"/usr/share/man/man1/xandikos.1
+  install -Dm644 -t "$pkgdir"/usr/share/man/man1 xandikos.1
 }
 
 # vim:set ts=2 sw=2 et:
