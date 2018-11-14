@@ -9,7 +9,7 @@ pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
 pkgver=396.54.09
 _extramodules=extramodules-ARCH
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -20,11 +20,13 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("NVIDIA-Linux-x86_64-${pkgver}.run::https://developer.nvidia.com/linux-3965409"
         'nvidia-drm-outputclass.conf'
         'nvidia-vulkan-utils.sysusers'
-        'kernel-4.16.patch')
+        'kernel-4.16.patch'
+        'kernel-4.19.patch')
 sha512sums=('93a79b2c0432c8d4801162609a404b8eec3115ca1febe772cfea17ebbfb6265d9064c40f40ea8714969953ea7886aba1a5f1ba67e529b254e8ccd810085f1461'
             'c49d246a519731bfab9d22afa5c2dd2d366db06d80182738b84881e93cd697c783f16ee04819275c05597bb063451a5d6102fbc562cd078d2a374533a23cea48'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
-            'ad1185d998adbf89abf7aea300e5b3bbabe2296016f42592fbc232a6c3983f233df1103d37f35a041f12cc1c722d3edce813a4a1b215784a49c7f0e3e652b5af')
+            'ad1185d998adbf89abf7aea300e5b3bbabe2296016f42592fbc232a6c3983f233df1103d37f35a041f12cc1c722d3edce813a4a1b215784a49c7f0e3e652b5af'
+            '354c644794c9dcf7bb8d4afd720736f7b9760306e1cb9c1c98be209e0f30bdfe628b67aa371461e33ccf0e58a0efb084c7f7fc91f4351ae3df3edb991fc49e00')
 
 create_links() {
     # create soname links
@@ -43,6 +45,7 @@ prepare() {
     # Restore phys_to_dma support (still needed for 396.18)
     # https://bugs.archlinux.org/task/58074
     patch -Np1 -i ../kernel-4.16.patch
+    patch -Np1 -i ../kernel-4.19.patch
 
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
