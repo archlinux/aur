@@ -16,4 +16,8 @@ md5sums=('7d5581b973520048d238fe64efb15b20')
 
 package() {
   install -Dm755 "${srcdir}/exo" "${pkgdir}/usr/bin/exo"
+  install -d 755 "${pkgdir}/usr/share/bash-completion/completions"
+  install -Dm 644 "${srcdir}/bash_completion" "${pkgdir}/usr/share/bash-completion/completions/exo"
+  install -d 755 "${pkgdir}/usr/share/man/man1"
+  install -Dm 644 "${srcdir}/manpage/"* "${pkgdir}/usr/share/man/man1"
 }
