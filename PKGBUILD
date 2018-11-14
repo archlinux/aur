@@ -31,8 +31,8 @@ check() {
 
 package() {
   cd fcat
-  install -Dm644 LICENSE-MIT "$pkgdir"/usr/share/licenses/fcat-git/LICENSE-MIT
-  install -Dm755 target/release/fcat "$pkgdir"/usr/bin/fcat
+  install -Dm644 LICENSE-MIT "$pkgdir"/usr/share/licenses/fcat-git/LICENSE
+  install -Dt "$pkgdir"/usr/bin target/release/fcat
 }
 
 # vim:set ts=2 sw=2 et:
