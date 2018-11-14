@@ -1,3 +1,13 @@
+4.4.7 (2018-11-13 21:09:39)
+
+    Fixes an issue on some systems with empty windows.
+
+4.4.5 (2018-11-05 16:59:36)
+
+    Fixes a data corruption issue when saving (really) big documents,
+    Fixes graphical glitches at segment boundaries,
+    Improves detection of float parameters in the decompiler for some system functions.
+
 4.4.4 (2018-10-10 14:37:28)
 
     Fixes a crash on disassembling files written in Go,
