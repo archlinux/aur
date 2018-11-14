@@ -2,7 +2,7 @@
 pkgname=godot-bin
 pkgver=3.0.6
 pkgrel=1
-pkgdesc="Godot is an advanced, feature packed, multi-platform 2D and 3D game engine. It provides a huge set of common tools, so you can just focus on making your game without reinventing the wheel."
+pkgdesc="Godot is an advanced, feature packed, multi-platform 2D and 3D game engine"
 arch=("i686" "x86_64")
 url="http://www.godotengine.org"
 license=("MIT")
