@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 # imported from Arch Strike by GI_Jack
 # Original PKGBUILD: ArchStrike <team@archstrike.org>
 
