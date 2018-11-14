@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=libhtp
-pkgver=0.5.27
+pkgver=0.5.28
 pkgrel=1
 pkgdesc="HTP library - a security-aware parser for the HTTP protocol"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/OISF/libhtp"
 license=('GPL2')
 depends=('zlib')
 source=($pkgname-$pkgver.tar.gz::https://github.com/ironbee/$pkgname/archive/$pkgver.tar.gz)
-sha256sums=('3a44cde5bd982005834c4ec4d86cff701796dd337cb471dbc1bc417880eaa161')
+sha256sums=('4034a22e2ff02ea0be55bad128255527d733f285b6d3ff613ab75846bc5a0dab')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
