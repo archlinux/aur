@@ -1,6 +1,6 @@
 pkgbase = linux-drm-intel-next-queued-git
 	pkgdesc = Linux with patches for Intel graphics
-	pkgver = 4.20.784868.63ac3328f0d1
+	pkgver = 4.20.784880.745aa6cdee6b
 	pkgrel = 1
 	url = https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = linux-drm-intel-next-queued-git
 	source = linux.install
 	source = linux-drm-intel-next-queued-git.preset
 	sha256sums = SKIP
-	sha256sums = 7e34a24b784ba4e2d2ea8f095055cb085a4bb78cc10cea1170a5362d37fa578b
+	sha256sums = 45e1aba4e8388d4995f347150c7df583ebac49a4c6520ba3048910cf1c50fca5
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
