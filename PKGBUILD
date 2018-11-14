@@ -2,13 +2,13 @@
 
 pkgname=tkman
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="man page and info file browser"
 #epoch=0
 arch=(any)
 url="https://sourceforge.net/projects/tkman/"
 license=('Artistic License')
-depends=(polyglotman tk tcl bash)
+depends=(polyglotman tk tcl sh)
 makedepends=(dos2unix)
 source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"
         "gentoo.patch"
