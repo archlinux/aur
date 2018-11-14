@@ -25,7 +25,7 @@ check() {
 
 package() {
   cd $pkgname-$pkgver
-  install -D target/release/asciinema "$pkgdir"/usr/bin/asciinema
+  install -Dt "$pkgdir"/usr/bin target/release/asciinema
 }
 
 # vim:set ts=2 sw=2 et:
