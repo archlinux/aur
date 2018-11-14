@@ -2,14 +2,14 @@
 
 pkgname=polyphone
 pkgver=1.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Graphical user interface for editing sf2 and sfz files"
 arch=('i686' 'x86_64')
 url="http://polyphone-soundfonts.com/"
 license=('GPL3')
 depends=('libvorbis' 'qt5-svg' 'portaudio' 'stk')
 makedepends=('rtmidi')
-source=("https://github.com/davy7125/polyphone/raw/master/versions/polyphone-1.9-src.zip"
+source=("https://github.com/davy7125/polyphone/raw/d28bc6f0d6688f2ade50a54670cca17d114a53d7/versions/${pkgname}-${pkgver}-src.zip"
         "$pkgname-config-cpp.patch"
         "$pkgname.desktop"
         "$pkgname.mime")
@@ -19,20 +19,24 @@ sha256sums=('c034cd09084439a57e07a526a9674800668536add7609f4e4ab610f63b0538ca'
             '280f626c53aff264a2c735da4478a769b6b39440679360d775c9b5e549b890aa'
             '6456f6f458283054361b6e0bff6a0a6335201798984b17c259fe343d559de996')
 
+
 prepare() {
-  cd "$srcdir/trunk"
+  cd "${srcdir}/trunk"
+
   # https://github.com/davy7125/polyphone/issues/33
   patch -p1 -i "$srcdir/$pkgname-config-cpp.patch"
 }
 
 build() {
-  cd "$srcdir/trunk"
-  qmake
+  cd "${srcdir}/trunk"
+
+  qmake-qt5
   make
 }
 
 package() {
-  cd "$srcdir/trunk"
+  cd "${srcdir}/trunk"
+
   install -D RELEASE/polyphone "$pkgdir/usr/bin/$pkgname"
   install -Dm644 ressources/polyphone.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"

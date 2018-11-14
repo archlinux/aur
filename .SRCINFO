@@ -1,7 +1,7 @@
 pkgbase = polyphone
 	pkgdesc = Graphical user interface for editing sf2 and sfz files
 	pkgver = 1.9
-	pkgrel = 3
+	pkgrel = 4
 	url = http://polyphone-soundfonts.com/
 	changelog = ChangeLog
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = polyphone
 	depends = qt5-svg
 	depends = portaudio
 	depends = stk
-	source = https://github.com/davy7125/polyphone/raw/master/versions/polyphone-1.9-src.zip
+	source = https://github.com/davy7125/polyphone/raw/d28bc6f0d6688f2ade50a54670cca17d114a53d7/versions/polyphone-1.9-src.zip
 	source = polyphone-config-cpp.patch
 	source = polyphone.desktop
 	source = polyphone.mime
