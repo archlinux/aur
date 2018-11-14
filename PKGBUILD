@@ -24,7 +24,7 @@ check() {
 
 package() {
   cd textris-$pkgver
-  install -Dm755 target/release/textris "$pkgdir"/usr/bin/textris
+  install -Dt "$pkgdir"/usr/bin target/release/textris
 }
 
 # vim:set ts=2 sw=2 et:
