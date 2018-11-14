@@ -19,7 +19,7 @@ build() {
 
 package() {
   cd diskus-$pkgver
-  install -D target/release/diskus "$pkgdir"/usr/bin/diskus
+  install -Dt "$pkgdir"/usr/bin target/release/diskus
   install -Dm644 LICENSE-MIT "$pkgdir"/usr/share/licenses/diskus/LICENSE
 }
 
