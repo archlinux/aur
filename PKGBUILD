@@ -3,7 +3,7 @@
 
 _gitname=doctrina
 pkgname=${_gitname}-git
-pkgver=0.1.7.r0.ga24a4de
+pkgver=0.1.8.r0.gfe7774c
 pkgrel=1
 pkgdesc='The library of Software Peronista'
 arch=('x86_64')
