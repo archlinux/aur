@@ -262,7 +262,7 @@ package_lib32-opencl-nvidia-vulkan() {
     depends=('lib32-zlib' 'lib32-gcc-libs')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
     provides=('lib32-opencl-driver' "lib32-opencl-nvidia=${pkgver}")
-    conflicts=('lib32-opencl-nvidia')
+    conflicts=('lib32-opencl-nvidia' 'lib32-opencl-nvidia-390xx')
 
     cd "${_pkg}"/32
 

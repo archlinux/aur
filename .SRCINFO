@@ -91,4 +91,5 @@ pkgname = lib32-opencl-nvidia-vulkan
 	provides = lib32-opencl-driver
 	provides = lib32-opencl-nvidia=396.54.09
 	conflicts = lib32-opencl-nvidia
+	conflicts = lib32-opencl-nvidia-390xx
 
