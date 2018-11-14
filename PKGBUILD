@@ -1,5 +1,5 @@
 # Original AUR Contributor: Federico Quagliata (quaqo) <linux@quaqo.org>
-# Uploaded to AUR4:	    GI_Jack <iamjacksemail@hackermail.com>
+# Uploaded to AUR4:	    GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=secure-delete
 pkgver=3.1
