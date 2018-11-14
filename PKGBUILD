@@ -3,7 +3,7 @@
 
 pkgname=idevicerestore-git
 epoch=1
-pkgver=r574.707856d
+pkgver=r576.5b0eafc
 pkgrel=1
 pkgdesc="Restore/upgrade firmware of iOS devices"
 arch=('i686' 'x86_64')
