@@ -25,7 +25,7 @@ build() {
 
 package() {
   cd gitleaks-$pkgver
-  install -D gitleaks "$pkgdir"/usr/bin/gitleaks
+  install -Dt "$pkgdir"/usr/bin gitleaks
 }
 
 # vim:set ts=2 sw=2 et:
