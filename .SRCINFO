@@ -1,0 +1,28 @@
+pkgbase = freefilesync-bin
+	pkgdesc = Folder comparison and synchronization
+	pkgver = 10.6
+	pkgrel = 1
+	url = https://www.freefilesync.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	depends = lib32-fontconfig
+	depends = lib32-libx11
+	depends = libxxf86vm
+	depends = lib32-libsm
+	provides = freefilesync
+	conflicts = freefilesync
+	source = freefilesync-bin-10.6.tar.gz::https://freefilesync.org/download/FreeFileSync_10.6_Linux.tar.gz
+	source = FreeFileSync.desktop
+	source = FreeFileSync.png
+	source = RealTimeSync.desktop
+	source = RealTimeSync.png
+	sha256sums = dd1461f846ff71d66d418f26c59120ee6d895f2f01caaf99fc31838f69e8c8fc
+	sha256sums = 461f7deb9245bbcaf281160945ec800e54a703068220d0d239de6dddccad0de3
+	sha256sums = b2fac3b8c0badfbbbcf605ecad5b184f2c9918bd0dd14596e6c43df3f2a76a30
+	sha256sums = 36a6b962cb5c1cd2c453d1bddaab915b1764614b207ae7f5b3694acf5740940c
+	sha256sums = 23c68af45d34f41fdb76886067b71af4dd3fe14f2dd60f73193b2052dc333bf6
+
+pkgname = freefilesync-bin
+

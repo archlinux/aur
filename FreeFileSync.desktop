@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=FreeFileSync
+GenericName=File synchronization
+GenericName[de_DE]=Dateisynchronisation
+Comment=Folder comparison and synchronization
+Comment[de_DE]=Vergleich und Synchronisation von Verzeichnissen
+Path=/opt/freefilesync
+Exec=FreeFileSync %f
+Icon=/usr/share/pixmaps/FreeFileSync.png
+NoDisplay=false
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Utility;FileTools;GTK;
+StartupNotify=true
+X-KDE-SubstituteUID=false
+X-KDE-Username=

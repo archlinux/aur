@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=RealTimeSync
+GenericName=Automated Synchronization
+GenericName[de_DE]=Automatisierte Synchronisation
+Comment=Automated folder synchronization
+Comment[de_DE]=Automatisierte Verzeichnis-Synchronisation
+Path=/opt/freefilesync
+Exec=RealTimeSync %f
+Icon=/usr/share/pixmaps/RealTimeSync.png
+NoDisplay=false
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Utility;FileTools;GTK;
+StartupNotify=true
+X-KDE-SubstituteUID=false
+X-KDE-Username=
