@@ -17,7 +17,7 @@ package() {
     bsdtar xf ${pkgver}.tar.gz
 
     cd ${pkgname}-${pkgver}/build
-    ./install.sh
+    ./prepare.sh
 
     mkdir $pkgdir/usr
     cp -r yd-tools/usr/* $pkgdir/usr
