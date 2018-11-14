@@ -12,7 +12,8 @@ url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'vala' 'granite')
 optdepends=('')
-makedepends=('git' 'meson' 'ninja')
+makedepends=('git' 'meson' 'ninja'
+			'sassc')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=("git+${url}.git")

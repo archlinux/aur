@@ -9,6 +9,7 @@ pkgbase = lounge-gtk-theme-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = sassc
 	depends = gtk3
 	depends = vala
 	depends = granite
