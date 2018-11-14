@@ -2,7 +2,7 @@
 pkgname=cryptol-git
 _pkgname=cryptol
 
-pkgver=2.5.0.r254.g8c6af86
+pkgver=2.6.0.r31.g2e4adcc
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
@@ -13,11 +13,11 @@ pkgdesc="A domain-specific language for specifying cryptographic algorithms."
 url="http://www.cryptol.net"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=('cvc4')
-makedepends=('git' 'ghc' 'cabal-install>=1.20.0.0' 'alex' 'z3')
+depends=('z3')
+makedepends=('git' 'cabal-install')
 optdepends=('boolector: theorem proving'
             'mathsat-5: theorem proving'
-            'yices-bin: theorem proving')
+            'yices: theorem proving')
 conflicts=()
 replaces=()
 backup=()
@@ -29,17 +29,15 @@ source=("git://github.com/GaloisInc/cryptol.git")
 
 build() {
     cd $srcdir/${_pkgname}
-    cabal update
+    cabal new-update
     make
-    cabal install
 }
 
 package() {
-    cd $srcdir/$_pkgname 
+    cd $srcdir/$_pkgname
     mkdir -p $pkgdir/usr/bin
     mkdir -p $pkgdir/usr/share/cryptol
     mkdir -p $pkgdir/usr/share/licenses/$_pkgname/
-    cp .cabal-sandbox/bin/cryptol $pkgdir/usr/bin
-    cp -r lib/* $pkgdir/usr/share/cryptol
+    cp dist/build/cryptol/cryptol $pkgdir/usr/bin
     cp LICENSE $pkgdir/usr/share/licenses/$_pkgname/
 }
