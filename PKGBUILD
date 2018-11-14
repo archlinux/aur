@@ -7,8 +7,8 @@
 pkgname=gtk-theme-arc-gruvbox-git
 _pkgname=arc-gruvbox-theme
 _pkgauthor=cyrinux
-pkgver=r9.3f04b75
-pkgrel=2
+pkgver=r12.e5ea0ff
+pkgrel=1
 pkgdesc="A flat, grey gruvboxed theme with transparent elements for GTK 3, GTK 2 and gnome-shell. Latest commit from the master branch on Github."
 arch=('any')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    ./autogen.sh --prefix=/usr
+    ./autogen.sh --prefix=/usr --disable-darker --disable-dark --disable-cinnamon
 }
 
 package() {
