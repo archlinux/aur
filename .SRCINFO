@@ -1,5 +1,5 @@
 pkgbase = linux-next-git
-	pkgver = 20180608.0.g8a91a2caa8c1
+	pkgver = 20181114.r0.g0bc80e3cb0c1
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -8,7 +8,8 @@ pkgbase = linux-next-git
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
-	makedepends = git
+	makedepends = python-sphinx
+	makedepends = graphviz
 	options = !strip
 	source = git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
 	source = config
@@ -16,26 +17,28 @@ pkgbase = linux-next-git
 	source = 90-linux.hook
 	source = 99-linux.hook
 	source = linux.preset
-	md5sums = SKIP
-	md5sums = 7abf6e18a471519399d3cf45f3b2c457
-	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
-	md5sums = a85bfae59eb537b973c388ffadb281ff
-	md5sums = 44a27afc12a89b2269dd22d1ec4c30f7
-	md5sums = a329f9581060d555dc7358483de9760a
+	sha512sums = SKIP
+	sha512sums = 103d018daa010b0791e6d11018656e67d60e86f5322f4e8ca2196b946a6f7b73dfde9a7ced340a6cae520b5ebdd515cced8b161d1d91bb35efabca7fdecee9c0
+	sha512sums = 7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a
+	sha512sums = 4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44
+	sha512sums = 6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74
+	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
 
 pkgname = linux-next-git
 	pkgdesc = The Linux-next-git kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
-	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 	backup = etc/mkinitcpio.d/linux-next-git.preset
 
 pkgname = linux-next-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-next-git kernel
+	depends = linux-uksm
 
 pkgname = linux-next-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-next-git kernel
+	depends = linux-uksm
 

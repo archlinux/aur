@@ -1,17 +1,65 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor:  Timofey Titovets <nefelim4ag@gmail.com>
 
+### BUILD OPTIONS
+# Set these variables to ANYTHING that is not null to enable them
+
+### Tweak kernel options prior to a build via nconfig
+_makenconfig=
+
+### Tweak kernel options prior to a build via menuconfig
+_makemenuconfig=
+
+### Tweak kernel options prior to a build via xconfig
+_makexconfig=
+
+### Tweak kernel options prior to a build via gconfig
+_makegconfig=
+
+# NUMA is optimized for multi-socket motherboards.
+# A single multi-core CPU actually runs slower with NUMA enabled.
+# See, https://bugs.archlinux.org/task/31187
+_NUMAdisable=y
+
+# Compile ONLY probed modules
+# As of mainline 2.6.32, running with this option will only build the modules
+# that you currently have probed in your system VASTLY reducing the number of
+# modules built and the build time to do it.
+#
+# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD will call it directly to probe all the modules you have logged!
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed_db
+_localmodcfg=
+
+# Use the current kernel's .config file
+# Enabling this option will use the .config of the RUNNING kernel rather than
+# the ARCH defaults. Useful when the package gets updated and you already went
+# through the trouble of customizing your config options.  NOT recommended when
+# a new kernel is released, but again, convenient for package bumps.
+_use_current=
+
+### Running with a 1000 HZ tick rate 
+_1k_HZ_ticks=
+
+### Do not edit below this line unless you know what you're doing
+
 pkgbase=linux-next-git
-#pkgname=("${pkgbase}")
+pkgver=20181114.r0.g0bc80e3cb0c1
 _srcname=linux-next
-pkgver=20180608.0.g8a91a2caa8c1
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
-source=( git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
+
+source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -22,261 +70,307 @@ source=( git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
         '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
         'linux.preset')
-md5sums=('SKIP'
-         '7abf6e18a471519399d3cf45f3b2c457'
-         'ce6c81ad1ad1f8b333fd6077d47abdaf'
-         'a85bfae59eb537b973c388ffadb281ff'
-         '44a27afc12a89b2269dd22d1ec4c30f7'
-         'a329f9581060d555dc7358483de9760a')
 
 _kernelname=${pkgbase#linux}
-: ${_kernelname:=-ARCH} 
-
-#######
-# Set to e.g. menuconfig, xconfig or gconfig and etc.
-#
-# For a full list of supported commands, please have a look
-# at "Configuration targets" section of `make help`'s output
-# or the help target in scripts/kconfig/Makefile
-# https://kernel.org/doc/makehelp.txt
-#
-# If unset or set to an empty or space-only string, the
-# (manual) kernel configuration step will be skipped.
-#
-linux_next_git_config_cmd="${linux_next_git_config_cmd:-olddefconfig}"
-
-#######
-# Directory with patches
-# linux_next_git_patches_dir="path"
-
-#######
-# Use local config (non empty -> yes)
-# linux_next_git_local_config=1
-
-######
-# Reset to specified tag
-# linux_next_git_tag=""
+: ${_kernelname:=-next} 
 
 pkgver() {
   cd "${_srcname}"
-  git describe --long --tags | sed 's/next.//;s/-/./g'
+  git describe --long --tags |  sed -E 's/next.//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
 }
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+    cd ${_srcname}
 
-  if [ -n "${linux_next_git_tag}" ]; then
-    msg "Reset to git tag: ${linux_next_git_tag}"
-    git reset --hard ${linux_next_git_tag}
-  fi
+    ### Setting version
+        msg2 "Setting version..."
+        scripts/setlocalversion --save-scmversion
+        echo "-$pkgrel" > localversion.10-pkgrel
+        echo "$_kernelname" > localversion.20-pkgname
 
-  #################
-  # Apply patches #
-  #################
-  if [ -d "${linux_next_git_patches_dir}" ]; then
-    msg "Applying patches..."
-    for i in "${linux_next_git_patches_dir}"/*; do
-      [[ ${i##*/} =~ .*\.patch$ ]] && msg "Applying ${i##*/}..." && \
-      git apply "$i" || (error "Applying ${i##*/} failed" && return 1)
-      msg "---"
-    done
-  fi
+    ### Patching sources
+        local src
+        for src in "${source[@]}"; do
+            src="${src%%::*}"
+            src="${src##*/}"
+            [[ $src = *.patch ]] || continue
+        msg2 "Applying patch $src..."
+        patch -Np1 < "../$src"
+        done
 
-  # add upstream patch
-  # patch -p1 -i "${srcdir}/patch-${pkgver}"
+    ### Setting config
+        msg2 "Setting config..."
+        cp ../config .config
+        make olddefconfig
 
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+    ### Prepared version
+        make -s kernelrelease > ../version
+        msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+        
+    ### Optionally use running kernel's config
+	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
+	if [ -n "$_use_current" ]; then
+		if [[ -s /proc/config.gz ]]; then
+			msg2 "Extracting config from /proc/config.gz..."
+			# modprobe configs
+			zcat /proc/config.gz > ./.config
+		else
+			warning "You kernel was not compiled with IKCONFIG_PROC!"
+			warning "You cannot read the current config!"
+			warning "Aborting!"
+			exit
+		fi
+	fi    
 
-  cat ../config - >.config <<END
-CONFIG_LOCALVERSION="${_kernelname}"
-CONFIG_LOCALVERSION_AUTO=n
-END
+	
+    ### Optionally set tickrate to 1000 
+	if [ -n "$_1k_HZ_ticks" ]; then
+		msg2 "Setting tick rate to 1k..."
+		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
+                    -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
+                    -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' ./.config
+	fi
+	
+    ### Optionally disable NUMA for 64-bit kernels only
+        # (x86 kernels do not support NUMA)
+        if [ -n "$_NUMAdisable" ]; then
+            msg2 "Disabling NUMA from kernel config..."
+            sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+                -i -e '/CONFIG_AMD_NUMA=y/d' \
+                -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+                -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+                -i -e '/# CONFIG_NUMA_EMU is not set/d' \
+                -i -e '/CONFIG_NODES_SHIFT=6/d' \
+                -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+                -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
+                -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+                -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+        fi
 
-  if [ -n "${linux_next_git_local_config}" ]; then
-          [ -f /proc/config.gz ] && zcat /proc/config.gz > ./.config
-  fi
+    ### Optionally load needed modules for the make localmodconfig
+	# See https://aur.archlinux.org/packages/modprobed-db
+		if [ -n "$_localmodcfg" ]; then
+		msg2 "If you have modprobe-db installed, running it in recall mode now"
+		if [ -e /usr/bin/modprobed-db ]; then
+			[[ -x /usr/bin/sudo ]] || {
+                        echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
+                        exit 1; }
+			sudo /usr/bin/modprobed-db recall
+		fi
+		msg2 "Running Steven Rostedt's make localmodconfig now"
+		make localmodconfig
+	fi
 
-  # set extraversion to pkgrel and empty localversion
-        sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
-            -e "/^EXTRAVERSION =/aLOCALVERSION =" \
-            -i Makefile
+    ### Running make nconfig
+	
+	[[ -z "$_makenconfig" ]] ||  make nconfig
+	
+    ### Running make menuconfig
+	
+	[[ -z "$_makemenuconfig" ]] || make menuconfig
+	
+    ### Running make xconfig
+	
+	[[ -z "$_makexconfig" ]] || make xconfig
+	
+    ### Running make gconfig
+	
+	[[ -z "$_makegconfig" ]] || make gconfig
 
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  sed -i '2iexit 0' scripts/depmod.sh
-
-  # get kernel version
-  make prepare
-
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  # ... or manually edit .config
-
-  # rewrite configuration
-  yes "" | make config > /dev/null
-  make ${linux_next_git_config_cmd}
-  
-  # save configuration for later reuse
-  cat .config > "${startdir}/config.last"
+    ### Save configuration for later reuse
+	cat .config > "${startdir}/config.last"
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-  [ "${pkgbase}" = "linux" ] && groups=('base')
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-  optdepends=('crda: to set the correct wireless channels of your country')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  install=linux.install
+    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+    depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
+    optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    backup=("etc/mkinitcpio.d/$pkgbase.preset")
+    install=linux.install
 
-   cd "${srcdir}/${_srcname}"
+  local kernver="$(<version)"
 
-  # get kernel version
-    _kernver="$(make kernelrelease)"
-    _basekernel=${_kernver%%-*}
-    _basekernel=${_basekernel%.*}
+  cd $_srcname
 
-    mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
-    make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
-    cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  msg2 "Installing boot image..."
+  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
 
-    # make room for external modules
-    local _extramodules="extramodules-${_basekernel}${_kernelname}"
-    ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
+  msg2 "Installing modules..."
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  mkdir -p "$modulesdir"
+  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
-    # add real version for building modules and running depmod from hook
-    echo "${_kernver}" |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+  # a place for external modules,
+  # with version file for building modules and running depmod from hook
+  local extramodules="extramodules$_kernelname"
+  local extradir="$pkgdir/usr/lib/modules/$extramodules"
+  install -Dt "$extradir" -m644 ../version
+  ln -sr "$extradir" "$modulesdir/extramodules"
 
-    # remove build and source links
-    rm "${pkgdir}"/usr/lib/modules/${_kernver}/{source,build}
+  # remove build and source links
+  rm "$modulesdir"/{source,build}
 
-    # now we call depmod...
-    depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
+  msg2 "Installing hooks..."
 
-    # add vmlinux
-    install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
+  # sed expression for following substitutions
+  local subst="
+    s|%PKGBASE%|$pkgbase|g
+    s|%KERNVER%|$kernver|g
+    s|%EXTRAMODULES%|$extramodules|g
+  "
 
-    # sed expression for following substitutions
-    local _subst="
-        s|%PKGBASE%|${pkgbase}|g
-        s|%KERNVER%|${_kernver}|g
-        s|%EXTRAMODULES%|${_extramodules}|g
-    "
+  # hack to allow specifying an initially nonexisting install file
+  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
+  true && install=$install.pkg
 
-    # hack to allow specifying an initially nonexisting install file
-    sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
-    true && install=${install}.pkg
+  # fill in mkinitcpio preset and pacman hooks
+  sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
+    "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
+  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  sed "$subst" ../99-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/99-${pkgbase}.hook"  
 
-    # install mkinitcpio preset file
-    sed "${_subst}" ../linux.preset |
-        install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-    # install pacman hooks
-    sed "${_subst}" ../60-linux.hook |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
-    sed "${_subst}" ../90-linux.hook |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
-    sed "${_subst}" ../99-linux.hook |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"     
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
+
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+   depends=('linux-uksm')
 
-    cd "${srcdir}/${_srcname}"
-    local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    install -Dt "${_builddir}" -m644 Makefile .config Module.symvers
-    install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
+  cd $_srcname
 
-    mkdir "${_builddir}/.tmp_versions"
+  msg2 "Installing build files..."
+  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  cp -t "$builddir" -a scripts
 
-    cp -t "${_builddir}" -a include scripts
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-    install -Dt "${_builddir}/arch/x86" -m644 arch/x86/Makefile
-    install -Dt "${_builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+  # add xfs and shmem for aufs building
+  mkdir -p "$builddir"/{fs/xfs,mm}
 
-    cp -t "${_builddir}/arch/x86" -a arch/x86/include
+  # ???
+  mkdir "$builddir/.tmp_versions"
 
-    install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
-    install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
+  msg2 "Installing headers..."
+  cp -t "$builddir" -a include
+  cp -t "$builddir/arch/x86" -a arch/x86/include
+  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-    # http://bugs.archlinux.org/task/13146
-    install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-    # http://bugs.archlinux.org/task/20402
-    install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-    install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-    install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+  # http://bugs.archlinux.org/task/13146
+  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-    # add xfs and shmem for aufs building
-    mkdir -p "${_builddir}"/{fs/xfs,mm}
+  # http://bugs.archlinux.org/task/20402
+  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-    # copy in Kconfig files
-    find . -name Kconfig\* -exec install -Dm644 {} "${_builddir}/{}" \;
+  msg2 "Installing KConfig files..."
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-    # add objtool for external module building and enabled VALIDATION_STACK option
-    install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
+  msg2 "Removing unneeded architectures..."
+  local arch
+  for arch in "$builddir"/arch/*/; do
+    [[ $arch = */x86/ ]] && continue
+    echo "Removing $(basename "$arch")"
+    rm -r "$arch"
+  done
 
-    # remove unneeded architectures
-    local _arch
-    for _arch in "${_builddir}"/arch/*/; do
-        [[ ${_arch} == */x86/ ]] && continue
-        rm -r "${_arch}"
-    done
+  msg2 "Removing documentation..."
+  rm -r "$builddir/Documentation"
 
-    # remove files already in linux-uksml-docs package
-    rm -r "${_builddir}/Documentation"
-    
-    # remove now broken symlinks
-    find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
+  msg2 "Removing broken symlinks..."
+  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-    # Fix permissions
-    chmod -R u=rwX,go=rX "${_builddir}"
+  msg2 "Removing loose objects..."
+  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-    # strip scripts directory
-    local _binary _strip
-    while read -rd '' _binary; do
-        case "$(file -bi "${_binary}")" in
-        *application/x-sharedlib*)  _strip="${STRIP_SHARED}"   ;; # Libraries (.so)
-        *application/x-archive*)    _strip="${STRIP_STATIC}"   ;; # Libraries (.a)
-        *application/x-executable*) _strip="${STRIP_BINARIES}" ;; # Binaries
-        *) continue ;;
-        esac
-        /usr/bin/strip ${_strip} "${_binary}"
-    done < <(find "${_builddir}/scripts" -type f -perm -u+w -print0 2>/dev/null)
+  msg2 "Stripping build tools..."
+  local file
+  while read -rd '' file; do
+    case "$(file -bi "$file")" in
+      application/x-sharedlib\;*)      # Libraries (.so)
+        strip -v $STRIP_SHARED "$file" ;;
+      application/x-archive\;*)        # Libraries (.a)
+        strip -v $STRIP_STATIC "$file" ;;
+      application/x-executable\;*)     # Binaries
+        strip -v $STRIP_BINARIES "$file" ;;
+      application/x-pie-executable\;*) # Relocatable binaries
+        strip -v $STRIP_SHARED "$file" ;;
+    esac
+  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+  
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
+
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+    pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+    depends=('linux-uksm')
+  
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    cd "${srcdir}/${_srcname}"
+  cd $_srcname
 
-    local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
+  msg2 "Installing documentation..."
+  mkdir -p "$builddir"
+  cp -t "$builddir" -a Documentation
 
-    mkdir -p "${_builddir}"
-    cp -t "${_builddir}" -a Documentation
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
 
-    # Fix permissions
-    chmod -R u=rwX,go=rX "${_builddir}"
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/share/doc"
+  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
+
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
-for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    $(declare -f "_package${_p#${pkgbase}}")
-    _package${_p#${pkgbase}}
+
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
   }"
 done
 
-# vim:set ts=8 sts=2 sw=2 et:
+sha512sums=('SKIP'
+            '103d018daa010b0791e6d11018656e67d60e86f5322f4e8ca2196b946a6f7b73dfde9a7ced340a6cae520b5ebdd515cced8b161d1d91bb35efabca7fdecee9c0'
+            '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
+            '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
+            '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
