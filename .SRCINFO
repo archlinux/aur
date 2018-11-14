@@ -1,7 +1,7 @@
 pkgbase = kyocera_universal
-	pkgdesc = Kyocera Printing Package for many Kyocera printers (stripped of kdialog4).
-	pkgver = 4.0.0
-	pkgrel = 2
+	pkgdesc = Kyocera Printing Package for many Kyocera printers (stripped of kdialog5).
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://www.kyocera.com/
 	install = kyodialog-bin.install
 	arch = i686
@@ -21,10 +21,11 @@ pkgbase = kyocera_universal
 	depends = python2
 	depends = lib32-zlib
 	depends = lib32-libcups
-	source = https://cdn.kyostatics.net/dlc/de/driver/all/kyoceralinuxpackages-20160420-upd-v3.-downloadcenteritem-Single-File.downloadcenteritem.tmp/KyoceraLinux_Ph..._2017.06.15.zip
+	depends = lib32-libdbus
+	source = https://cdn.kyostatics.net/dlc/de/driver/all/kyoceralinuxpackages-20160420-upd-v3.-downloadcenteritem-Single-File.downloadcenteritem.tmp/KyoceraLinux_Phase5-2018.08.29
 	source = python2.patch
-	md5sums = b9f33db54d39d7d49b64564aae4ae559
-	md5sums = 531ee26ed3aed74140c99ca800f5c886
+	md5sums = 0fbc4ddc4ed392dd92f42a119d01072f
+	md5sums = 9a439ff46454c2b0f7c4d2411ba2237e
 
 pkgname = kyocera_universal
 
