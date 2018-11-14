@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@pm.me>
 
 pkgname=spdlog-git
-pkgver=1.0.0
+pkgver=1.2.1.r94.g11d8351
 pkgrel=1
 pkgdesc='Very fast, header only, C++ logging library'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('git' 'cmake>=3.1.0')
 conflicts=('spdlog')
 provides=('spdlog')
-source=('git+https://github.com/gabime/spdlog.git')
+source=('git+https://github.com/gabime/spdlog.git#branch=v1.x')
 sha512sums=('SKIP')
 
 pkgver() {
@@ -25,6 +25,8 @@ prepare() {
 build() {
   cd build
   cmake ../spdlog \
+    -DSPDLOG_BUILD_BENCH=OFF \
+    -DSPDLOG_BUILD_EXAMPLES=OFF \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
