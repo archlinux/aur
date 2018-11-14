@@ -9,7 +9,7 @@ url=https://tsl0922.github.io/ttyd/
 license=('MIT')
 depends=('json-c' 'libpcap' 'libwebsockets' 'zlib')
 makedepends=('cmake' 'vim') # vim needed for its xxd binary
-source=("ttyd-$pkgver.tar.gz::https://github.com/tsl0922/ttyd/archive/$pkgver.tar.gz")
+source=("https://github.com/tsl0922/ttyd/archive/$pkgver/ttyd-$pkgver.tar.gz")
 sha512sums=('0caff3d3602c5baa7b8f277d4190e1053e66dcfd6b4d62bcfb6fd78522734a4fbc1578cd159bee796c05bf67a4155ab0283ca4e17572e1bc8508b863adc803ed')
 
 build() {
@@ -23,7 +23,7 @@ package() {
   cd ttyd-$pkgver/build
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/ttyd/LICENSE
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/ttyd ../LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
