@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=python2-acestream
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to interact with the AceStream Engine and the HTTP API"
 arch=("any")
 url="https://github.com/jonian/python-acestream"
@@ -19,5 +19,5 @@ build() {
 
 package() {
   cd "${srcdir}/python-acestream-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
