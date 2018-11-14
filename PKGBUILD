@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-git
-pkgver=20181108.20917
+pkgver=20181113.20941
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://launchpad.net/inkscape"
@@ -19,7 +19,7 @@ optdepends=('python2-numpy: some extensions'
 makedepends=('cmake' 'boost' 'intltool' 'git' 'gettext' 'pango' 'python' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
-options=('!libtool' '!buildflags' '!makeflags')
+options=('!libtool' '!buildflags')
 source=('inkscape.git::git+https://gitlab.com/inkscape/inkscape')
 sha1sums=('SKIP')
 _gitname="inkscape.git"
