@@ -17,17 +17,17 @@
 #
 pkgbase="spl-linux"
 pkgname=("spl-linux" "spl-linux-headers")
-_splver="0.7.11"
-_kernelver="4.18.16.arch1-1"
+_splver="0.7.12"
+_kernelver="4.19.1.arch1-1"
 _extramodules="${_kernelver/.arch/-arch}-ARCH"
 
 pkgver="${_splver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=3
+pkgrel=1
 makedepends=("linux-headers=${_kernelver}")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_splver}/spl-${_splver}.tar.gz")
-sha256sums=("d6ddd225e7f464007c960f10134c8a48fb0de525f75ad05d5ddf36685b1ced67")
+sha256sums=("4709a06e913bbbeb634161a8b68c3f879e5b6040c6c0c09b1f51042b3178c274")
 license=("GPL")
 depends=("kmod" "linux=${_kernelver}")
 
