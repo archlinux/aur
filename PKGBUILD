@@ -15,7 +15,7 @@ depends=('haskell-base' 'ghc-libs' 'haskell-bytestring'
 'haskell-gi-base' 'haskell-gi-overloading' 'haskell-text' 'haskell-transformers')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('fba45854525ca43dc3e6ae8e9d91af24b7a27058187f1fd95669e8ce54909e91')
+sha256sums=('a12f75c45ac2349d5b2c31e6039ff57ff2b8fb9e4a1c2f6b7b4a3e5510b4dd50')
 
 
 build() {
