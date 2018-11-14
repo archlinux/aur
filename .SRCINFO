@@ -1,7 +1,7 @@
 pkgbase = gtk-theme-arc-gruvbox-git
 	pkgdesc = A flat, grey gruvboxed theme with transparent elements for GTK 3, GTK 2 and gnome-shell. Latest commit from the master branch on Github.
-	pkgver = r7.f1638c7
-	pkgrel = 2
+	pkgver = r9.3f04b75
+	pkgrel = 1
 	url = https://github.com/cyrinux/arc-gruvbox-theme
 	arch = any
 	license = GPL3
