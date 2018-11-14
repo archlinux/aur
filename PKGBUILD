@@ -19,7 +19,7 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -Dm755 target/release/named "$pkgdir"/usr/bin/named
+  install -Dt "$pkgdir"/usr/bin target/release/named
 }
 
 # vim:set ts=2 sw=2 et:
