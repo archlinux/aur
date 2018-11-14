@@ -2,7 +2,7 @@
 pkgname=saw-script-git
 _pkgname=saw-script
 
-pkgver=c3211c47
+pkgver=ef1f6549
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
@@ -14,7 +14,7 @@ url="http://saw.galois.com/"
 arch=('x86_64')
 license=('noncommercial')
 depends=('ncurses' 'z3')
-makedepends=('cabal-install')
+makedepends=('stack' 'perl')
 optdepends=()
 conflicts=()
 replaces=()
@@ -26,16 +26,15 @@ md5sums=('SKIP')
 source=('git://github.com/GaloisInc/saw-script.git')
 
 build() {
-    cd $srcdir/${_pkgname}
-    cabal update
-    git submodule update --init
-    cabal new-build
+  cd "$srcdir/${_pkgname}"
+  ln -sf stack.ghc-8.4.yaml stack.yaml
+  ./build.sh
 }
 
 package() {
-    mkdir -p $pkgdir/usr/share/licenses/$_pkgname
-    mkdir -p $pkgdir/usr/bin
-    cd $srcdir/$_pkgname
-    cp LICENSE $pkgdir/usr/share/licenses/$_pkgname
-    find dist-newstyle -name "saw" -type f -exec ls -latR {} + | head -n1 | perl -ne 'print ((split)[8])' | xargs -I{} cp {} $pkgdir/usr/bin
+  cd "$srcdir/$_pkgname"
+  mkdir -p $pkgdir/usr/bin
+  mkdir -p $pkgdir/usr/share/licenses/$_pkgname
+  cp bin/saw $pkgdir/usr/bin
+  cp LICENSE $pkgdir/usr/share/licenses/$_pkgname
 }
