@@ -25,8 +25,8 @@ build() {
 
 package() {
   cd weather-$pkgver
-  install -Dm755 weather "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -D weather "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
