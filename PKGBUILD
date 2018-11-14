@@ -31,8 +31,8 @@ check() {
 
 package() {
   cd ${pkgname%-git}
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm755 target/release/url-bot "$pkgdir"/usr/bin/url-bot
+  install -Dt "$pkgdir"/usr/bin target/release/url-bot
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
