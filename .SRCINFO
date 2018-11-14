@@ -1,6 +1,6 @@
 pkgbase = omnia
 	pkgdesc = Omnia is a Clojure REPL with almost all the power of a fully fledged editor, without being an editor
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/AvramRobert/omnia
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = omnia
 	depends = java-runtime
 	provides = omnia
 	conflicts = omnia
-	source = https://github.com/AvramRobert/omnia/releases/download/0.2.0/omnia-0.2.0.tar
-	md5sums = 84eea080cd31a9847d3f9c9a314ed110
+	source = https://github.com/AvramRobert/omnia/releases/download/0.2.1/omnia-0.2.1.tar
+	md5sums = 5d263ed854ab411a3172e644fa9c08c4
 
 pkgname = omnia
 

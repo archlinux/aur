@@ -1,7 +1,7 @@
 # Maintainer: Christian Meter <cmeter@gmail.com>
 
 pkgname=omnia
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Omnia is a Clojure REPL with almost all the power of a fully fledged editor, without being an editor"
 arch=('x86_64' 'armv7h')
@@ -12,11 +12,7 @@ conflicts=('omnia')
 depends=('java-runtime')
 
 source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar")
-md5sums=('84eea080cd31a9847d3f9c9a314ed110')
-
-# build() {
-#   tar xvf "${pkgname}-${pkgver}.tar"
-# }
+md5sums=('5d263ed854ab411a3172e644fa9c08c4')
 
 prepare() {
   cat << EOT >| start_omnia.sh
