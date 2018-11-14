@@ -1,6 +1,6 @@
 pkgbase = lain-git
 	pkgdesc = Layouts, asynchronous widgets and utilities for Awesome WM
-	pkgver = 1669.f6e032f
+	pkgver = 1671.448d0b1
 	pkgrel = 1
 	url = https://github.com/lcpz/lain
 	arch = any
