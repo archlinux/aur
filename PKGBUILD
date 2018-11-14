@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 # pls note, this is a binary package.
 
 # please note systemd .service file is experimental. If anyone knows how to
