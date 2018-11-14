@@ -2,7 +2,7 @@
 # Maintainer: Maddie Zhan <maddie@emzee.be>
 
 pkgname=overture
-pkgver=1.3.6.2
+pkgver=1.4
 pkgrel=1
 pkgdesc="A DNS upstream switcher written in Go in order to purify DNS records"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
@@ -16,7 +16,7 @@ backup=("etc/overture/config.json" "etc/overture/hosts" "etc/overture/china_ip_l
 install=${pkgname}.install
 
 _gourl=github.com/shawn1m/${pkgname}
-source=("git+https://github.com/shawn1m/${pkgname}.git#tag=$pkgver"
+source=("git+https://github.com/shawn1m/${pkgname}.git#tag=v${pkgver}"
         "china_ip_list.txt"
         "config.json"
         "gfwlist.txt"
@@ -24,9 +24,9 @@ source=("git+https://github.com/shawn1m/${pkgname}.git#tag=$pkgver"
         "overture.service")
 
 sha256sums=("SKIP"
-            "58e26e8037056729d27f37cd13852e13e9b9766146eaf0e736b6b0c00cdec279"
-            "a9a7000c665583c84252d0c589eab0ea3ba13997d14e7ac097c3b227e165d0ee"
-            "46c344510738143bd83057494273cf78095743070ad05d80a8d985098b2ff7ec"
+            "82948c5f5d806b384a4eda405fba0691c8df10cd1293d116a80d427ebe802e18"
+            "f98c3a568fe45533a12e3de99133d69999a064b64b2484d9c1b2d14c60d39f86"
+            "b9faeacafaf842f6643a81b6d85c60bf7d045132b661f787e6ced19318d4d049"
             "02c82a9ffce44f1517b0b64380e11ea41d15812267a0fbff97221b5a6921df50"
             "9529e60a7963fd284ad2afb99d28803af90f16db99a1ba662ac5c7fd52903d3f")
 
@@ -82,4 +82,9 @@ package() {
 
   # License
   install -Dm0644 "$srcdir/build/src/${_gourl}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+post_upgrade() {
+  echo "If you're upgrading from pre-1.4 versions, please make sure your config.json"
+  echo "is up to date with the v1.4 format, or else Overture might not start properly."
 }

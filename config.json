@@ -49,12 +49,17 @@
     }
   ],
   "OnlyPrimaryDNS": false,
-  "RedirectIPv6Record": true,
-  "IPNetworkFile": "/etc/overture/china_ip_list.txt",
-  "DomainFile": "/etc/overture/gfwlist.txt",
+  "IPv6UseAlternativeDNS": false,
+  "IPNetworkFile": {
+	  "Primary": "/etc/overture/china_ip_list.txt",
+	  "Alternative": ""
+  },
+  "DomainFile": {
+	  "Primary": "",
+	  "Alternative": "/etc/overture/gfwlist.txt"
+  },
   "HostsFile": "/etc/overture/hosts",
-  "DomainBase64Decode": true,
-  "CacheSize": 4096,
   "MinimumTTL": 0,
+  "CacheSize": 4096,
   "RejectQtype": [255]
 }
