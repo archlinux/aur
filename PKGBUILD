@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-asdf
 pkgname=(python-asdf 'python-asdf-doc')
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('python>=3.3'
              'python-matplotlib')
 checkdepends=('python-pytest' 'python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/a/asdf/asdf-${pkgver}.tar.gz")
-md5sums=('9430d9748aa06c133c4bf386a7a97296')
+md5sums=('9942cc2a4b5c37730ca5d9e53d72833f')
 
 prepare() {
     cd ${srcdir}/asdf-${pkgver}
