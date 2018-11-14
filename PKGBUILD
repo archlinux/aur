@@ -1,18 +1,40 @@
-# Maintainer: Angelo Haller <aur.archlinux@szanni.org>
-
+# Maintainer: Adrián Pérez de Castro
+pkgdesc='An UNIX shell with a simplified Scheme syntax'
 pkgname=esh
-pkgver=0.0.0
+pkgver=0.8.5
 pkgrel=1
-pkgdesc="embedded shell"
-arch=('any')
-url="http://szanni.org/esh"
-license=('ISC')
-source=($url/download/$pkgname-$pkgver.tar.xz)
-sha256sums=('3287f2ed6a2177e2700e1111af68e983fbba44e3b8bd7eabd744e27b97b940ce')
+license=(GPL2)
+arch=(x86_64)
+depends=(readline)
+install=esh.install
+source=("http://gentoo.inode.at/distfiles/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('2473cc2418f70533136305f47dfe59bee560206a8b58c080e2113297dd82483e867937bda1b015069a7220552b4d03346a3b71026a24a2795b0b499e355490a0')
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
+prepare () {
+	cd "${pkgname}"
+	make clean -k || true
+	sed -i \
+		-e 's|-g ||' \
+		-e 's|-DMEM_DEBUG ||' \
+		-e 's|^CFLAGS|&+|g' \
+		-e 's|$(CC) |&$(CFLAGS) $(LDFLAGS) |g' \
+		-e 's:-ltermcap::' \
+		Makefile
+}
 
-  make install PREFIX="/usr" DESTDIR="$pkgdir/"
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+build () {
+	cd "${pkgname}"
+	make CFLAGS="${CFLAGS} -I/usr/include/readline" LDFLAGS="${LDFLAGS}"
+}
+
+package () {
+	cd "${pkgname}"
+	install -D -m755 esh "${pkgdir}/usr/bin/esh"
+	install -D -m644 doc/esh.info "${pkgdir}/usr/share/info/esh.info"
+	install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
+		CHANGELOG CREDITS GC_README HEADER READLINE-HACKS TODO
+	install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}/html" \
+		doc/*.html
+	install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}/examples" \
+		examples/*
 }

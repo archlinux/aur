@@ -1,0 +1,11 @@
+post_install() {
+	grep -qe '^/usr/bin/esh$' etc/shells || echo '/usr/bin/esh' >> etc/shells
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	sed -ri '\|^/usr/bin/esh$|d' etc/shells
+}
