@@ -1,4 +1,5 @@
-# Maintainer: rHermes
+# Maintainer: rHermes <teodor_spaeren@riseup.net>
+# Contributor: PlusMinus
 # Contributor: rhabbachi
 
 pkgname=displaylink
