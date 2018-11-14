@@ -19,8 +19,8 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -Dm755 target/release/$pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 LICENSE-MIT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-MIT
+  install -Dt "$pkgdir"/usr/bin target/release/$pkgname
+  install -Dm644 LICENSE-MIT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
