@@ -3,15 +3,16 @@
 
 pkgname=mat2
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Metadata anonymisation toolkit"
 arch=('any')
 url="https://0xacab.org/jvoisin/mat2"
 license=('GPL3')
 makedepends=('python-setuptools')
 depends=('python' 'perl' 'perl-image-exiftool' 'python-mutagen' 'python-cairo' 'python-gobject')
+optdepends=('ffmpeg')
 source=(https://0xacab.org/jvoisin/mat2/-/archive/${pkgver}/mat2-${pkgver}.zip)
-sha256sums=('9769df6fd0575ba61cf76ebf00b59015f0deea3385934569bb1b8bddc08228a2')
+sha256sums=('04a9f7ebaee67f5bb88759ca00a4e63bb83eae5dc8f27e612b4209b58af7f2d1')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
