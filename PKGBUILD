@@ -3,10 +3,11 @@
 
 pkgname=rolldice
 pkgver=1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual dice roller"
 arch=(i686 x86_64)
-url="http://packages.debian.org/source/sid/rolldice"
+#url="http://packages.debian.org/source/sid/rolldice"
+url="https://github.com/sstrickl/rolldice"
 license=('GPL2')
 depends=('readline')
 source=("http://http.debian.net/debian/pool/main/r/rolldice/${pkgname}_${pkgver}.orig.tar.gz")
