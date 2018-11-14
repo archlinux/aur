@@ -20,7 +20,7 @@ optdepends=('alsa-utils: to cast with ALSA'
             'python-soco: Sonos support'
             'youtube-dl: YouTube support')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/muammar/$pkgname/archive/$pkgver.tar.gz"
+source=("https://github.com/muammar/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         'pychromecast_optional.patch::https://github.com/muammar/mkchromecast/commit/0070f9f2b505f1c5a1b6d63324ff337f2de09860.patch')
 sha512sums=('ee66450768f3221500f198bf618120f02b93108797209ca0d6c2be9f882eee36753d3e1038354e51b5d76d130c12d193c7d152b33f80776cb225347a3743f376'
             '2fa2fa3986075582ed7f1d881ec32660b97278e47afffadecbd7cfc1c58833a734f5a7d442d4699fc99582c00b18e3c43cf87f974c8a8ec3af4b8ebfea40435f')
@@ -35,13 +35,13 @@ package() {
   install -d "$pkgdir"/usr/bin
   ln -s /usr/share/$pkgname/$pkgname.py "$pkgdir"/usr/bin/$pkgname
 
-  install -Dm755 $pkgname.py "$pkgdir"/usr/share/$pkgname/$pkgname.py
+  install -Dt "$pkgdir"/usr/share/$pkgname $pkgname.py
   cp -a --parents images/google* $pkgname "$pkgdir"/usr/share/$pkgname
 
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
-  install -Dm644 images/$pkgname.xpm "$pkgdir"/usr/share/pixmaps/$pkgname.xpm
-  install -Dm644 man/$pkgname.1 "$pkgdir"/usr/share/man/man1/$pkgname.1
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
+  install -Dm644 -t "$pkgdir"/usr/share/applications $pkgname.desktop
+  install -Dm644 -t "$pkgdir"/usr/share/pixmaps images/$pkgname.xpm
+  install -Dm644 -t "$pkgdir"/usr/share/man/man1 man/$pkgname.1
 }
 
 # vim:set ts=2 sw=2 et:
