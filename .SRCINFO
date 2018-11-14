@@ -1,13 +1,13 @@
 pkgbase = scheme-9-from-empty-space
-	pkgdesc = S9fES is a mature, portable, and comprehensible interpreter for R4RS Scheme.
-	pkgver = 20181023
+	pkgdesc = S9fES Reimagined is a mature, portable, and comprehensible interpreter for R4RS Scheme.
+	pkgver = 20181113
 	pkgrel = 1
 	url = http://www.t3x.org/s9fes/
 	arch = x86_64
 	arch = i686
 	license = unknown
-	source = http://www.t3x.org/s9fes/s9fes-20181023.tgz
-	md5sums = 682021ed80f705feaa41fc0962fd7aaf
+	source = http://www.t3x.org/s9fes/s9fes-20181113.tgz
+	md5sums = 6c5635e55ab206ef847ed736e28cfc76
 
 pkgname = scheme-9-from-empty-space
 
