@@ -106,6 +106,7 @@ if [ -n "${_piver}" ]; then
   _opengl_variant="es2"
 fi
 
+_overwrite_mkspec=true
 case ${_piver} in
 1)
   _toolchain_name=armv6-rpi-linux-gnueabihf
@@ -133,7 +134,8 @@ case ${_piver} in
   _toolchain="/opt/gcc-linaro-7.1.1-2017.08-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
   #_toolchain="/opt/gcc-arm-8.2-2018.08-x86_64-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
   _use_mesa=true
-  _mkspec="linux-tinker-g++"
+  _mkspec="linux-tinkerboard-g++"
+  _overwrite_mkspec=false
 ;;
 esac
 
@@ -374,7 +376,7 @@ fi
   # enable reduce relocations
   sed -i '/error Symbolic function binding/d' ${_srcdir}/qtbase/configure.json
 
-if ! $_target_host; then
+if ! $_target_host && $_overwrite_mkspec; then
   # Get our mkspec
   rm -Rf $_mkspec_dir
   cp -r "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
