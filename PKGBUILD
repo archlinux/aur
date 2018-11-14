@@ -14,6 +14,7 @@ makedepends=('python2-setuptools' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 conflicts=("wormhole" "wormhole-server")
 provides=("wormhole" "wormhole-server")
+replaces=("wormhole" "wormhole-server")
 md5sums=('7de592965ead410d5fbd2a4c18d0a25d')
 
 prepare() {
