@@ -27,7 +27,7 @@ build() {
 package() {
   cd hangups-$pkgver
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/hangups/LICENSE
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/hangups LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
