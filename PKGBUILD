@@ -17,17 +17,17 @@
 #
 pkgbase="zfs-linux-lts"
 pkgname=("zfs-linux-lts" "zfs-linux-lts-headers")
-_zfsver="0.7.11"
-_kernelver="4.14.79-1"
-_extramodules="4.14.79-1-lts"
+_zfsver="0.7.12"
+_kernelver="4.14.80-1"
+_extramodules="4.14.80-1-lts"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=3
+pkgrel=1
 makedepends=("linux-lts-headers=${_kernelver}" "spl-linux-lts-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
-sha256sums=("4dff9ecce6e02061242d9435febe88c1250de83b96d392b712bccf31c459517a")
+sha256sums=("720e3b221c1ba5d4c18c990e48b86a2eb613575a0c3cc84c0aa784b17b7c2848")
 license=("CDDL")
 depends=("kmod" 'spl-linux-lts' "zfs-utils=${_zfsver}" "linux-lts=${_kernelver}")
 
