@@ -1,16 +1,15 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-# * No namcap warnings or errors
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=libcelero-headers
 _pkgname=Celero
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='C++ Benchmark Authoring Library/Framework (Developmental Headers)'
 arch=('any')
 url='https://github.com/DigitalInBlue/Celero'
 license=('custom:"Apache License, Version 2.0"')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/DigitalInBlue/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('11c933c1b2f0f7254ceac868416c91a4')
+source=("https://github.com/DigitalInBlue/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('dbbe80a06a203dcc3865879f51e4da0feffbc0cb953a91d4c798a5582962ec41')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
