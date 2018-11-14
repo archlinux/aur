@@ -4,13 +4,13 @@
 pkgname=shaderc
 pkgver=2018.0
 pkgrel=1
-pkgdesc='A collection of tools, libraries and tests for shader compilation'
+pkgdesc='Collection of tools, libraries and tests for shader compilation'
 arch=('x86_64')
 url=https://github.com/google/shaderc
 license=('Apache')
 depends=('gcc-libs' 'glslang' 'spirv-tools')
 makedepends=('asciidoctor' 'cmake' 'ninja' 'python2')
-source=("$url/archive/v$pkgver/shaderc-v$pkgver.tar.gz"
+source=("$url/archive/v$pkgver/shaderc-$pkgver.tar.gz"
         'fix-glslang-link-order.patch::https://github.com/google/shaderc/pull/463/commits/21c8be385b3fab5edcb934a6d99f69fd389c4e67.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/0b2433a05d9de287c93b7eab508643ffad676671/media-libs/shaderc/files/shaderc-2018.0-restore-NV_EXTENSIONS-guard.patch')
 sha512sums=('7a420fde73c9f2aae3f13558d538a1f4ae43bba19e2b4d2da8fbbd017e9e4f328ece5f330f1bbcb9fe84c91b7eb84b9158dc2e3d144c82939090a0fa6f5b4ef0'
@@ -50,5 +50,5 @@ build() {
 package() {
   cd build
   ninja install
-  install -Dm644 -t "$pkgdir"/usr/share/man/man1/ ../shaderc-$pkgver/glslc/glslc.1
+  install -Dm644 -t "$pkgdir"/usr/share/man/man1 ../shaderc-$pkgver/glslc/glslc.1
 }
