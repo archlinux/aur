@@ -9,7 +9,7 @@ url=https://github.com/gauteh/gmailieer
 license=('GPL3')
 depends=('python-oauth2client' 'python-google-api-python-client' 'python-tqdm')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha512sums=('9663799f9896dc48568febe00a7fb272b0176a86add680f5d5c9539c833aa6b471d0f5de9b644e9103191a6c85df6dbdcd64c55433ef573b37c837402de63c4c')
 
 build() {
