@@ -11,20 +11,23 @@ depends=('python'
          'python-arxiv2bib'
          'python-beautifulsoup4'
          'python-bibtexparser'
+         'python-chardet'
+         'python-click'
          'python-future'
+         'python-filetype'
          'python-habanero'
-         'python-magic-ahupp'
-         'python-papis-python-rofi'
-         'python-parse'
+         'python-isbnlib'
          'python-prompt_toolkit>=2.0.0'
          'python-pylibgen'
          'python-pyparser'
+         'python-pyparsing'
+         'python-pyaml'
          'python-slugify'
-         'python-unidecode'
-         'python-urwid'
-         'python-vobject'
+         'python-requests'
         )
-optdepends=()
+optdepends=(
+         'python-papis-python-rofi'
+)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('26e5a2715280d8ba44f7016c8f2ab5646989a41ea26b8d665271759bd1220235')
 noextract=()
