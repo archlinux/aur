@@ -2,7 +2,7 @@
 pkgname=devdocs-desktop
 pkgver=0.8.0
 pkgrel=3
-pkgdesc="DevDocs desktop application in GTK3. Multiple API documentations in a fast, organized, and searchable interface."
+pkgdesc="DevDocs GTK3 application for multiple API documentations in a fast searchable interface"
 arch=("any")
 url="https://github.com/hardpixel/devdocs-desktop"
 license=("GPL")
