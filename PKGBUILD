@@ -2,7 +2,7 @@
 pkgname=hivemind-bin
 pkgver=1.0.4
 pkgrel=1
-pkgdesc="Hivemind is a process manager for Procfile-based applications."
+pkgdesc="Hivemind is a process manager for Procfile-based applications"
 arch=("x86_64")
 url="https://github.com/DarthSim/hivemind"
 license=("MIT")
