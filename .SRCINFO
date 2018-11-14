@@ -1,0 +1,17 @@
+pkgbase = kismet-plugin-ubertooth
+	pkgdesc = Ubertooth plugin for Kismet
+	pkgver = 2018.08.R1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/ubertooth/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = ubertooth
+	depends = kismet
+	source = https://github.com/greatscottgadgets/ubertooth/releases/download/2018-08-R1/ubertooth-2018-08-R1.tar.xz
+	source = https://www.kismetwireless.net/code/kismet-2016-07-R1.tar.xz
+	md5sums = 41a5c192c1f0b5df0516f4abd08ac995
+	md5sums = 7fa6e86c5078a0e7d91fc9bf954c5107
+
+pkgname = kismet-plugin-ubertooth
+
