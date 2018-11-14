@@ -1,0 +1,18 @@
+pkgbase = passmate
+	pkgdesc = a cross-platform, open-source password manager
+	pkgver = v0.4.alpha
+	pkgrel = 1
+	url = https://github.com/TobiasKaiser/passmate
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	depends = libscrypt
+	depends = mbedtls
+	depends = wxgtk3
+	source = git+https://github.com/TobiasKaiser/passmate.git
+	md5sums = SKIP
+
+pkgname = passmate
+
