@@ -3,7 +3,7 @@
 pkgname=libshmfile
 _basename="shmfile"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Small shared library to use shared memory as a FILE* stream , with interprocess communication in mind"
 arch=('i686' 'x86_64')
 license=('apache')
@@ -11,7 +11,7 @@ url="http://github.com/kata198/shmfile"
 makedepends=('gcc' 'make')
 depends=('glibc')
 source=("https://github.com/kata198/${_basename}/archive/${pkgver}.tar.gz")
-sha512sums=("cd664545953bc11b800e8a4058591126f029e5dde025aefaee627cd6f3a2dfbbcd4a24692e7273af6926bad05317e33df8bc10e8db0652ea99961951408b567a")
+sha512sums=("60643388cf64b190c9bbbe0f8f0f254fdb05c43c5ab2d74cd43036149b865ff92c084659c912f0561be3a115023635597f91307d2d8aa55fced5f300cce7279a")
 
 build() {
   cd "${srcdir}/${_basename}-${pkgver}"
@@ -27,9 +27,6 @@ build() {
 package() {
   cd "${srcdir}/${_basename}-${pkgver}"
 
-  # Makefile expects this directory to exist
-  mkdir -p "${pkgdir}/usr/share/man/man3"
- 
   make install DESTDIR="${pkgdir}"
   make install_static DESTDIR="${pkgdir}"
 }
