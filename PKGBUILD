@@ -33,9 +33,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=4.19.1-arch1
+_srcver=4.19.2-arch1
 pkgver=${_srcver%-*}
-pkgrel=2
+pkgrel=1
 _pdsversion=099d
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
@@ -59,8 +59,8 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('1cb117acb43f4b17a2e55eedf564e69d3bfc217e219f9e4422deff584a0d97fa'
-            '7f88ab365948117d28018719ebe625c0baba13aef90ebe77b87bdf32806a37b8'
+sha256sums=('9703df34477ef1965b2c0f5aacb7f3d5e1212250ed04d9741e677b17914feacb'
+            '56b9ae636fa9c8494dbc569647d4cdfa0f0d1bc837008917d110eeb43a3bcaef'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -114,11 +114,8 @@ prepare() {
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
   if [ -n "$_localmodcfg" ]; then
-    msg "If you have modprobed-db installed, running Steven Rostedt's make localmodconfig with modprobed as input"
     if [ -e /usr/bin/modprobed-db ]; then
-      [[ -x /usr/bin/sudo ]] || {
-      echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-      exit 1;}
+      msg "Modprobed-db installed, running Steven Rostedt's make localmodconfig with modprobed as input"
       make LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       msg "Running Steven Rostedt's make localmodconfig now"
