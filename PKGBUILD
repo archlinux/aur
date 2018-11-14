@@ -2,7 +2,7 @@
 pkgname=acestream-launcher
 pkgver=2.0.0
 pkgrel=2
-pkgdesc="Python interface to interact with the AceStream Engine and the HTTP API"
+pkgdesc="Acestream Launcher allows you to open Acestream links with a Media Player of your choice"
 arch=("any")
 url="https://github.com/jonian/acestream-launcher"
 license=("GPL")
