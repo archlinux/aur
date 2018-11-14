@@ -2,7 +2,7 @@
 
 pkgname=pkgcloud-git
 pkgver=r62.3529b73
-pkgrel=1
+pkgrel=2
 pkgdesc="Talk to the packagecloud API, in Go"
 arch=(x86_64)
 url='https://github.com/tonylambiris/pkgcloud'
@@ -27,6 +27,7 @@ prepare() {
 build() {
 	cd "${srcdir}/go/src/github.com/tonylambiris/pkgcloud"
 
+	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
 	make
 }
 
