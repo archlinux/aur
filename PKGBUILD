@@ -20,7 +20,7 @@ build() {
 package() {
   cd pyspin-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
