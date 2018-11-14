@@ -26,8 +26,8 @@ build() {
 
 package() {
   cd $pkgname-$_commit
-  install -D target/release/i3status-rs "$pkgdir"/usr/bin/i3status-rs
-  install -Dm644 example_*.toml -t "$pkgdir"/usr/share/doc/$pkgname/examples
+  install -Dt "$pkgdir"/usr/bin target/release/i3status-rs
+  install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname/examples example_*.toml
 }
 
 # vim:set ts=2 sw=2 et:
