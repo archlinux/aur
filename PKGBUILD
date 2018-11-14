@@ -2,7 +2,7 @@
 pkgname=php-tcpdf
 pkgver=6.2.26
 pkgrel=1
-pkgdesc="PHP library for generating PDF documents on-the-fly."
+pkgdesc="PHP library for generating PDF documents on-the-fly"
 arch=("any")
 url="https://github.com/tecnickcom/TCPDF"
 license=("GPL")
