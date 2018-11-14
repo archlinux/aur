@@ -2,7 +2,7 @@
 
 pkgname=textosaurus
 epoch=1
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="Simple cross-platform text editor based on Qt and Scintilla"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
