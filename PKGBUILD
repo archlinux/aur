@@ -2,7 +2,7 @@
 pkgname=svgcleaner-bin
 pkgver=0.9.5
 pkgrel=4
-pkgdesc="SVG Cleaner CLI and the main GUI."
+pkgdesc="SVG Cleaner CLI and the main GUI"
 arch=("x86_64")
 url="https://github.com/RazrFalcon/svgcleaner-gui"
 license=("GPL")
