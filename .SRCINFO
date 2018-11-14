@@ -7,8 +7,8 @@ pkgbase = proton
 	license = BSD
 	makedepends = vulkan-headers
 	depends = python2
-	depends = openvr
-	depends = wine-valve
+	depends = openvr-git
+	depends = wine-valve-git
 	source = https://github.com/ValveSoftware/Proton/archive/proton-3.16beta-20181031.tar.gz
 	md5sums = aa3ad16ebfc99296a2a280c58a692e9c
 

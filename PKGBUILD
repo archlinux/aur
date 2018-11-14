@@ -14,8 +14,8 @@ license=('BSD')
 groups=()
 depends=(
 	'python2'
-	'openvr'
-	'wine-valve'
+	'openvr-git'
+	'wine-valve-git'
 )
 makedepends=(
 	'vulkan-headers'
