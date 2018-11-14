@@ -1,4 +1,4 @@
-From 7e7b8d7a0e74d0d4c74abee0334a771458a3ed79 Mon Sep 17 00:00:00 2001
+From 4b38af06b758979fd674096c0a64f7af49ce3022 Mon Sep 17 00:00:00 2001
 From: Serge Hallyn <serge.hallyn@canonical.com>
 Date: Fri, 31 May 2013 19:12:12 +0100
 Subject: [PATCH] add sysctl to disallow unprivileged CLONE_NEWUSER by
@@ -14,7 +14,7 @@ Signed-off-by: Daniel Micay <danielmicay@gmail.com>
  3 files changed, 30 insertions(+)
 
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 1b27babc4c78..a88dd3ccd31c 100644
+index f0b58479534f..8b2d927125c5 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -103,6 +103,11 @@
@@ -29,7 +29,7 @@ index 1b27babc4c78..a88dd3ccd31c 100644
  
  /*
   * Minimum number of threads to boot the kernel
-@@ -1624,6 +1629,10 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -1649,6 +1654,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -40,7 +40,7 @@ index 1b27babc4c78..a88dd3ccd31c 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -2420,6 +2429,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -2467,6 +2476,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -54,7 +54,7 @@ index 1b27babc4c78..a88dd3ccd31c 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index 2d9837c0aff4..eb5236c069fc 100644
+index cc02050fd0c4..ce2ad2b92897 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
 @@ -105,6 +105,9 @@ extern int core_uses_pid;
@@ -67,7 +67,7 @@ index 2d9837c0aff4..eb5236c069fc 100644
  extern int pid_max;
  extern int pid_max_min, pid_max_max;
  extern int percpu_pagelist_fraction;
-@@ -519,6 +522,15 @@ static struct ctl_table kern_table[] = {
+@@ -514,6 +517,15 @@ static struct ctl_table kern_table[] = {
  		.proc_handler	= proc_dointvec,
  	},
  #endif
@@ -84,7 +84,7 @@ index 2d9837c0aff4..eb5236c069fc 100644
  	{
  		.procname	= "tainted",
 diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index c3d7583fcd21..6ee37e516869 100644
+index e5222b5fb4fe..c941a66e51d1 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
 @@ -26,6 +26,9 @@
@@ -98,5 +98,5 @@ index c3d7583fcd21..6ee37e516869 100644
  static DEFINE_MUTEX(userns_state_mutex);
  
 -- 
-2.19.0.rc1
+2.19.1.542.gc4df23f792
 

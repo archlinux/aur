@@ -49,8 +49,8 @@ _CFQ_disable=
 ### Disable Kyber I/O scheduler
 _kyber_disable=
 
-### Enable MQ scheduling 
-_mq_enable=
+### Disable MQ scheduling 
+_mq_disable=
 
 ### Running with a 1000 HZ tick rate 
 _1k_HZ_ticks=
@@ -59,8 +59,8 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-_major=4.18
-pkgver=4.18.19
+_major=4.19
+pkgver=4.19.2
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
 pkgrel=1
@@ -70,13 +70,13 @@ license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
 options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
-_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.18"
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.18"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.19"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.19"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 _bfq_sq_mq_path="bfq-sq-mq"
 _bfq_sq_mq_ver='v9r1'
-_bfq_sq_mq_rel='2K181101'
+_bfq_sq_mq_rel='2K181101-rc1'
 _bfq_sq_mq_patch="${_major}-bfq-sq-mq-${_bfq_sq_mq_ver}-${_bfq_sq_mq_rel}.patch"
 
 source=(# mainline kernel patches
@@ -99,17 +99,17 @@ source=(# mainline kernel patches
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch')
 
-sha256sums=('7c66c4c3cdc4f7e5cce8592b17dc11129f282fc94b7f451229dfc413a45631bd'
+sha256sums=('c10c7f81019bd782ea77a25725f6d53e9affa4a0cfd3985c161f3a2a22f2df73'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
-            'd792142d2d354632695422f4f626242538846c3e9d84bf3eff155796609cde97'
+            '3ac265b7be567e628c073d64bd9a9090360c9d98e9c7b9f60ca206a86882932e'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '353fad0d0363c32c343dde215de4a22c38fbc748df70560b98c2f2c2e98b3c1c'
+            '027ffa702e78942b236987f5cd6dd7fa897192006ff08f88bcea2998fe09ab14'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             '5f6ba52aaa528c4fa4b1dc097e8930fad0470d7ac489afcb13313f289ca32184'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '51f20885376e96d9354e07cc96b18470bf23905f9745af6079c5f0c2583340ef')
+            '37c115ad797afc7e47615dc56c6416932b6645e16da097ddcfa401df41a31248')
 validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
@@ -223,11 +223,11 @@ prepare() {
         sed -i -e s'/CONFIG_MQ_IOSCHED_KYBER=y/# CONFIG_MQ_IOSCHED_KYBER is not set/' ./.config
         fi
   
-    ### Enable MQ scheduling
-        if [ -n "$_mq_enable" ]; then
-        msg "Enable MQ scheduling..."
-        sed -i -e s'/^# CONFIG_SCSI_MQ_DEFAULT is not set/CONFIG_SCSI_MQ_DEFAULT=y/' \
-            -i -e s'/^# CONFIG_DM_MQ_DEFAULT is not set/CONFIG_DM_MQ_DEFAULT=y/' ./.config
+    ### Disable MQ scheduling
+	if [ -n "$_mq_disable" ]; then
+		msg2 "Disabling MQ scheduling..."
+		sed -i -e s'/^CONFIG_SCSI_MQ_DEFAULT=y/# CONFIG_SCSI_MQ_DEFAULT is not set/' \
+		    -i -e s'/^CONFIG_DM_MQ_DEFAULT=y/# CONFIG_DM_MQ_DEFAULT is not set/' ./.config
         fi
 
 
