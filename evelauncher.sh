@@ -72,8 +72,10 @@ check_wine() {
 	    env WINEPREFIX=$WINEPREFIX "$WINEPATH/wine" reg add \
 		'HKEY_CURRENT_USER\Software\Wine\DllOverrides' \
 		/v winemenubuilder.exe /f >/dev/null
-	    env WINEPREFIX=$WINEPREFIX WINE="$WINEPATH/wine" \
-		$(which winetricks) -q winxp >/dev/null
+	    if [ $("$WINEPATH/wine" --version | grep -q 3.2 ;echo $?) != 0  ] ;then
+		env WINEPREFIX=$WINEPREFIX WINE="$WINEPATH/wine" \
+		    $(which winetricks) -q winxp >/dev/null
+	    fi
 	fi
     else
 	launcher_msg "ERROR: \"$CUSTOMWP\" in \"Custom Wine path\" not found!"
