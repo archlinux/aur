@@ -1,0 +1,13 @@
+pkgbase = circleci-cli
+	pkgdesc = Use CircleCI from the command line
+	pkgver = 0.1.4005
+	pkgrel = 1
+	url = https://github.com/CircleCI-Public/circleci-cli
+	arch = x86_64
+	license = Apache
+	depends = docker
+	source = https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.4005/circleci-cli_0.1.4005_linux_amd64.tar.gz
+	md5sums = 08f58c1a3db8c2629afa1d3788f6d7c0
+
+pkgname = circleci-cli
+
