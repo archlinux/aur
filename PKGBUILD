@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=acestream-launcher
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to interact with the AceStream Engine and the HTTP API"
 arch=("any")
 url="https://github.com/jonian/acestream-launcher"
@@ -20,5 +20,5 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }

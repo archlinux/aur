@@ -1,7 +1,7 @@
 pkgbase = acestream-launcher
 	pkgdesc = Python interface to interact with the AceStream Engine and the HTTP API
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonian/acestream-launcher
 	arch = any
 	license = GPL
