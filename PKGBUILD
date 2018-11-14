@@ -1,4 +1,4 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 # Contributor: Sibren Vasse <arch @ sibrenvasse dot nl>
 # Contributor: Preston Carpenter <APragmaticPlace@gmail.com>
 
@@ -23,9 +23,8 @@ pkgver() {
 
 package() {
   cd ${url##*/}
-  install -Dm755 ${pkgname%-*}.sh "$pkgdir"/usr/bin/${pkgname%-*}.sh
-  install -Dm755 spotify-wrapper.sh "$pkgdir"/usr/bin/spotify-wrapper.sh
-  install -Dm644 'Spotify (AdKiller).desktop' "$pkgdir"/usr/share/applications/'Spotify (AdKiller).desktop'
+  install -Dt "$pkgdir"/usr/bin ${pkgname%-*}.sh spotify-wrapper.sh
+  install -Dm644 -t "$pkgdir"/usr/share/applications 'Spotify (AdKiller).desktop'
 }
 
 # vim:set ts=2 sw=2 et:
