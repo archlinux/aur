@@ -2,15 +2,15 @@
 # Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 pkgname=emacs-git-timemachine
-pkgver=4.5
-pkgrel=2
+pkgver=4.8
+pkgrel=1
 pkgdesc="Step through historic versions of git controlled file using everyone's favourite editor"
 arch=('any')
 url="https://gitlab.com/pidu/git-timemachine.git"
 license=('GPL3')
 depends=('emacs')
 source=("https://gitlab.com/pidu/git-timemachine/-/archive/$pkgver/git-timemachine-$pkgver.tar.gz")
-sha256sums=('fe1713b455a4936a2cd39dbda39d26eb6386676778671ff4795a311b19062446')
+sha256sums=('0774d207bd9ba1399fc0d82a37763c99ff28e96429a77430a0edc7599c495a86')
 
 build() {
   cd ${pkgname#emacs-}-${pkgver}
