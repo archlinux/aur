@@ -7,7 +7,7 @@ arch=('i686' 'x86_64') # setup.py downloads pre-built binary components, so it d
 url="https://www.frida.re"
 license=('custom:wxWindows Library License, Version 3.1')
 depends=('python' 'python-pygments>=2.0.2' 'python-prompt_toolkit>=0.57' 'python-colorama>=0.2.7')
-source=("https://files.pythonhosted.org/packages/65/1a/1a3833416361c886cab9c09cc2783d362408d797c1332d5cfc93d72b4021/frida-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "COPYING")
 sha256sums=('3be2b664e3d656edf65254f7b36b7807666726cdf1903962997af8c670922421'
             '5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2')
