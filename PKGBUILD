@@ -2,7 +2,7 @@
 pkgname=overmind-bin
 pkgver=2.0.0.beta1
 pkgrel=1
-pkgdesc="Overmind is a process manager for Procfile-based applications and tmux."
+pkgdesc="Overmind is a process manager for Procfile-based applications and tmux"
 arch=("x86_64")
 url="https://github.com/DarthSim/overmind"
 license=("MIT")
