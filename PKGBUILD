@@ -2,8 +2,8 @@
 # Maintainer: Ivan Burmin <zirrald@yandex.ru>
 
 pkgname='yandex-disk-indicator'
-pkgver=1.10.5
-pkgrel=2
+pkgver=1.10.6
+pkgrel=1
 pkgdesc="Panel indicator (GUI) for YandexDisk CLI client for Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/slytomcat/${pkgname}/"
