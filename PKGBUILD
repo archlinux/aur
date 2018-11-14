@@ -18,9 +18,9 @@ build() {
 
 package() {
   cd ProcDump-for-Linux-$pkgver
-  install -Dt "$pkgdir"/usr/bin bin/$pkgname
-  install -Dm644 -t "$pkgdir"/usr/share/man/man1 $pkgname.1
-  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
+  install -Dt "$pkgdir"/usr/bin bin/procdump
+  install -Dm644 -t "$pkgdir"/usr/share/man/man1 procdump.1
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/procdump LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
