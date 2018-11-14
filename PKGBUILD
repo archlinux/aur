@@ -3,9 +3,9 @@
 
 pkgname='pop-gtk-theme-bin'
 pkgver='4.0.1'
-pkgrel=1
-_timestamp=1541524546
-_commit=041b2d4
+pkgrel=2
+_timestamp=1542064902
+_commit=19f98c0
 pkgdesc='System76 Pop GTK+ Theme'
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
@@ -31,7 +31,7 @@ optdepends=(
 	"ttf-roboto-slab: Recommended font for documents"
 )
 source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~${_timestamp}~18.10~${_commit}_all.deb")
-sha256sums=('05eceeb925a67a879a76df15cc66a9d77b94fdf34309b0863f1b6126018d7a04')
+sha256sums=('3518dea0e141ce6232e84fe96449cf10f81772600a1107605d1c12b0cc4f2d8d')
 
 package() {
   cd "${srcdir}"
