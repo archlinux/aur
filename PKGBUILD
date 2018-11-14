@@ -1,4 +1,5 @@
-# Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com
+# Maintainer: Shaoyu Tseng<zandimna@autistici.org>
+# Contributor: Daniel Egeberg <daniel.egeberg@gmail.com
 # Contributor: Sławomir Kowalski <suawekk+aur@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Timm Preetz <timm@preetz.us>
