@@ -25,7 +25,7 @@ check() {
 
 package() {
   cd rink-rs-$_commit
-  install -Dm755 target/release/rink "$pkgdir"/usr/bin/rink
+  install -Dt "$pkgdir"/usr/bin target/release/rink
 }
 
 # vim:set ts=2 sw=2 et:
