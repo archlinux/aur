@@ -2,7 +2,7 @@
 
 pkgname=tkman
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="man page and info file browser"
 #epoch=0
 arch=(any)
@@ -47,7 +47,7 @@ build()
 package()
 {
   cd "$srcdir/$pkgname-$pkgver"
-  install -d "$pkgdir"/usr/{share/$pkgname/doc,bin}
+  install -d "$pkgdir"/usr/{share/{$pkgname/doc,pixmaps},bin}
   install -m644 tkman "$pkgdir"/usr/share/$pkgname/$pkgname.tcl
   install -m755 tkman.sh "$pkgdir"/usr/bin/tkman
   #echo "bash /usr/share/$pkgname/$pkgname.tcl" >> "$pkgdir"/usr/bin/tkman
