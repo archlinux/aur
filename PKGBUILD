@@ -21,7 +21,7 @@ optdepends=('faac: AAC transcoding support'
             'opus-tools: OPUS transcoding support'
             'sox: WAV transcoding support'
             'vorbis-tools: OGG transcoding support')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('298f61d643c35449fbb0001efa69a1792e41518953f58506703f3568902da4457d0f4f9e52b9641df26fc6f978670dd29a7f5d786b99339bd2a71f5fa59dd7db')
 
 build() {
