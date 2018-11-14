@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=xandikos
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python-defusedxml' 'python-dulwich' 'python-icalendar' 'python-jinja')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/x/xandikos/xandikos-$pkgver.tar.gz")
-sha512sums=('8b081302c691003603c5787ad28107f750e04426939111eff93313b0e8aa4a4c24c23a3b448a9969ae53b7fba1c0fd1509724e60ebb0a84cd14f863cd09e581a')
+sha512sums=('52eb3d064690a3ca8bb99c90325485102600905def933939b5a79716409b7706fb8a8c977adaa59200ab6fb49ff2ba68fc1dab5f05bf43add7f72eaa9a18f40b')
 
 build() {
   cd xandikos-$pkgver
