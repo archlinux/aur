@@ -1,7 +1,7 @@
 # Maintainer: Marco von Rosenverg <codingmarco [at] gmail [dot] com>
 
 pkgname=glrpt
-pkgver=1.4.1
+pkgver=1.6
 pkgrel=1
 pkgdesc="Interactive GUI application for receiving, decoding and displaying LRPT images from the Russian Meteor-M type of weather satellites"
 arch=('x86_64')
