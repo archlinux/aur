@@ -7,7 +7,7 @@ pkgbase = marco-dev
 	arch = x86_64
 	groups = mate
 	license = GPL
-	makedepends = mate-common>=1.21
+	makedepends = mate-common>=1.20
 	makedepends = yelp-tools
 	depends = glib2
 	depends = libcanberra
