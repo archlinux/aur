@@ -3,7 +3,7 @@
 pkgname=pw-sat2-gs
 pkgsrc=pw-sat-gs
 pkgver="1.10"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Application dedicated to HAM amateur radios allowing for PW-Sat2 satellite frames collection and upload to webapp"
 arch=('x86_64')
 url="http://www.pw-sat.pl"
@@ -27,6 +27,10 @@ package() {
 
   install -Dm644 "$srcdir"/pw-sat-gs.desktop "$pkgdir"/usr/share/applications/pw-sat-gs.desktop
   install -Dm644 "$srcdir"/pw-sat-gs.png "$pkgdir"/usr/share/pixmaps/pw-sat-gs.png
+
+  # TODO: TOFIX:
+  # Right now the app just writes logs to /opt/$pkgname/...
+  chmod 777 opt/$pkgname/main/logs/
 
 }
 
