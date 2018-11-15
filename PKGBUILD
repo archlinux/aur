@@ -107,5 +107,5 @@ package() {
 	install -m755 build/vrclient.win64/vrclient_x64/vrclient_x64.dll.so $pkgdir/usr/lib/wine/
 
 	install -d $pkgdir/usr/lib/wine/fakedlls
-	install -m644 build/vrclient.win64/vrclient_x64/vrclient_x64.dll.fake $pkgdir/usr/lib32/wine/fakedlls/vrclient_x64.dll
+	install -m644 build/vrclient.win64/vrclient_x64/vrclient_x64.dll.fake $pkgdir/usr/lib/wine/fakedlls/vrclient_x64.dll
 }
