@@ -2,14 +2,14 @@
 # Maintainer: Eduard Toloza <edu4rdshl@securityhacklabs.net>
 
 pkgname='webhackshl'
-pkgver=9.ef1f3fb
+pkgver=10.1d9afd5
 pkgrel=1
 pkgdesc='Herramienta para hacking ético y auditorías en sitios web y servidores.'
 arch=('any')
 url='https://gitlab.com/sechacklabs/webhackshl'
 license=('GPL')
-depends=('nmap' 'fierce' 'sqlmap' 'dnsenum' 'nikto' 'whatweb' 'wpscan' 'ruby' 'git' 'curl' 'tor' 'gzip' 'john' 'python'  'python2-requests'  'python2-yaml'  'python2-flask')
-makedepends=('git' 'ruby-bundler')
+depends=('nmap' 'fierce' 'sqlmap' 'dnsenum' 'nikto' 'whatweb' 'wpscan' 'ruby' 'git' 'curl' 'tor' 'gzip' 'john' 'python'  'python2-requests'  'python2-yaml'  'python2-flask' 'ruby-bundler')
+makedepends=('git')
 source=('git+https://gitlab.com/sechacklabs/webhackshl.git')
 install='webhackshl.install'
 sha1sums=('SKIP')
@@ -26,18 +26,14 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/webhackshl"
 
-  #make DESTDIR="$pkgdir" install
-
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/webhackshl/LICENSE"
-
-  rm README.md LICENSE uninstall.sh update.sh install.sh
 
   cp -a * "$pkgdir/usr/share/webhackshl"
 
   cat > "$pkgdir/usr/bin/webhackshl" << EOF
 #!/bin/sh
 cd /usr/share/webhackshl
-exec python webhackshl "\${@}"
+exec python webhackshl "\$@"
 EOF
 
   chmod a+x "$pkgdir/usr/bin/webhackshl"

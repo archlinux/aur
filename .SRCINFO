@@ -1,13 +1,12 @@
 pkgbase = webhackshl
 	pkgdesc = Herramienta para hacking ético y auditorías en sitios web y servidores.
-	pkgver = 9.ef1f3fb
+	pkgver = 10.1d9afd5
 	pkgrel = 1
 	url = https://gitlab.com/sechacklabs/webhackshl
 	install = webhackshl.install
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = ruby-bundler
 	depends = nmap
 	depends = fierce
 	depends = sqlmap
@@ -25,6 +24,7 @@ pkgbase = webhackshl
 	depends = python2-requests
 	depends = python2-yaml
 	depends = python2-flask
+	depends = ruby-bundler
 	source = git+https://gitlab.com/sechacklabs/webhackshl.git
 	sha1sums = SKIP
 
