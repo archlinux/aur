@@ -1,0 +1,21 @@
+pkgbase = curam-git
+	pkgdesc = Provides maintenace functions for Arch Linux.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/MatthewRalston/curam
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = perl
+	depends = package-query
+	depends = rsync
+	depends = aws-cli
+	provides = curam
+	backup = etc/curam/curam.conf
+	backup = etc/curam/home_excludes.conf
+	backup = etc/curam/media_excludes.conf
+	backup = etc/curam/os_excludes.conf
+	backup = etc/curam/symlinks_check.conf
+
+pkgname = curam-git
+
