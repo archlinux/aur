@@ -1,7 +1,7 @@
 # Maintainer: liberodark
 
 pkgname=cudatext
-pkgver=1.65.0.0
+pkgver=1.66.0.0
 pkgrel=1
 pkgdesc="Cross-platform text editor"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=($pkgname.desktop
         $pkgname.png)
 sha512sums=('748cbc1af5ec9a11e1544a93f3e3768a2fd9b436360c69b03aa3e0f013d109ff4db76b14e5bd1900446f857cad4365ef41f8ce370020df10fa852e9d5a3d4cac'
          'bf6a4409b8462ac6b9c87cbc554cf1837a7b45ec8859b2cdcbb7b263143da9f6236d074d65aca2044dd2475290c9594e6946ccce1c4e58c1cc44dd5ec78ecfc4')
-sha512sums_x86_64=('895e34bfbabe939dd192270d5613d94ece53ce304840f2825c58ba60b04652d544f020f70023e67fcc6256f09341cbbdf013932decc80de4e61f5b6b41da2877')
+sha512sums_x86_64=('9a9b8b261074ad48a8dde4ce0c5d7143614e0537c022400cd3e9d126f6d16fdfdee4b365126fc3e16be664ea2c85263a63147722acc3e53a5c9aaecb2d38cb90')
         
 package() {
   cd $srcdir
