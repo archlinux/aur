@@ -7,7 +7,7 @@ pkgbase = python-caja-dev
 	arch = x86_64
 	groups = mate
 	license = GPL
-	makedepends = mate-common>=1.21
+	makedepends = mate-common>=1.20
 	depends = caja>=1.21
 	depends = python2-gobject
 	provides = python-caja

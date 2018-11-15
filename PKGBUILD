@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 groups=('mate')
 license=('GPL')
 depends=('caja>=1.21' 'python2-gobject')
-makedepends=('mate-common>=1.21')
+makedepends=('mate-common>=1.20')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('2643dcd863a8b0e9399b7a63472656f18dcc5fe9')
 
