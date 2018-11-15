@@ -1,6 +1,6 @@
 # Maintainer: Philipp Jonczyk <p dot jonczyk at posteo dot de>
 pkgname=python-signal-daemon
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A daemon to process input of signal-cli using the system dbus"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python'
          'python-pydbus')
 source=("signal-daemon.py")
 provides=("python-signal-daemon=$pkgver-$pkgrel")
-md5sums=('f8315834d00678a0ed44ab0387b1264a')
+md5sums=('94aa5ac4728dc002eb3e730ee6193ff2')
 source=("https://github.com/randomn4me/${pkgname#python-}/archive/${pkgver}.tar.gz")
 
 package() {
