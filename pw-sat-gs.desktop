@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=PWSat2 Ground Station
+Comment=PW Sat2 Ground Station
+Exec=pw-sat2-gs
+Icon=/usr/share/pixmaps/pw-sat-gs.png
+Terminal=false
+Type=Application
+Categories=Network;
+StartupNotify=false
