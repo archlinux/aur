@@ -1,19 +1,19 @@
 # Maintainer: Daniel Milde <daniel at milde dot cz>
 
 pkgname=container-diff
-pkgver=0.11.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Diff your Docker containers"
 arch=(x86_64)
 url="https://github.com/GoogleCloudPlatform/container-diff"
 license=('Apache')
 depends=('glibc')
-source=(https://storage.googleapis.com/container-diff/v${pkgver}/container-diff-linux-amd64)
-sha512sums=('5e8a5c9461a41d1f44a4eb5b5fdb0f06ae4f159e60a217dd1334dfa0532e056c7183ba0c4eb22920d8158a9984c36a382b854f7711e1f9da67836b585e776bad')
+source=(${pkgname}-${pkgver}::https://storage.googleapis.com/container-diff/v${pkgver}/container-diff-linux-amd64)
+sha512sums=('4b12abbd0fa2014bbae1153675a504f77e9c90e90a3a59e6d75dc35d60363efe4b34251305a8f9359e39606225fc042488f037167dccb06b635935d5ebf158b6')
 
 package() {
-  chmod +x container-diff-linux-amd64
-  install -D -m0755 container-diff-linux-amd64 "${pkgdir}/usr/bin/container-diff"
+  chmod +x ${pkgname}-${pkgver}
+  install -D -m0755 ${pkgname}-${pkgver} "${pkgdir}/usr/bin/container-diff"
 }
 
 
