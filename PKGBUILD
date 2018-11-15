@@ -1,12 +1,11 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-# https://github.com/ValHue/AUR-PKGBUILDs
 #
 # Contributor: satanselbow <igdfpm at gmail dot com>
 # Contributor: Artem Sereda <overmind88 at gmail dot com>
 
 pkgname="flacon"
-pkgver=4.1.0
-pkgrel=1
+pkgver="5.0.0"
+pkgrel="1"
 pkgdesc="Extracts individual tracks from one big audio file containing the \
  entire album of music and saves them as separate audio files."
 arch=('i686' 'x86_64')
@@ -21,12 +20,12 @@ optdepends=('flac: For FLAC support'
             'ttaenc: For TrueAudio support'
             'lame: For MP3 support'
             'mp3gain: For MP3 Replay Gain support'
-            'opus-tools: For OPUS support'   
+            'opus-tools: For OPUS support'
             'vorbisgain: For OGG Replay Gain support')
 conflicts=('flacon-git')
 provides=("${pkgname}")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('8e9b7e9b12b79d7dbe1b1e4f47d7561538a62a55ab752a7269736a77bf56dd70')
+sha256sums=('183d364fb47afa8b9e55803b77b99c9eba44d7031a28d4062b1a309b2a9f02b2')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -44,4 +43,4 @@ package() {
     make DESTDIR="${pkgdir}" install
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim:set ts=4 sw=4 ft=sh et:
