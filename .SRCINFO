@@ -1,6 +1,6 @@
 pkgbase = python-frida
 	pkgdesc = Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 3 version from PyPi
-	pkgver = 12.2.24
+	pkgver = 12.2.25
 	pkgrel = 1
 	url = https://www.frida.re
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = python-frida
 	depends = python-prompt_toolkit>=0.57
 	depends = python-colorama>=0.2.7
 	conflicts = python2-frida
-	source = https://files.pythonhosted.org/packages/source/f/frida/frida-12.2.24.tar.gz
+	source = https://files.pythonhosted.org/packages/source/f/frida/frida-12.2.25.tar.gz
 	source = COPYING
-	sha256sums = 3be2b664e3d656edf65254f7b36b7807666726cdf1903962997af8c670922421
+	sha256sums = a7b794cb50057177baeffb51e094090393e4b90f31006bc72a7c609bd7197ba3
 	sha256sums = 5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2
 
 pkgname = python-frida
