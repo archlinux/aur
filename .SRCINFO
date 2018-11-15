@@ -13,6 +13,7 @@ pkgbase = signal-desktop-beta-bin
 	depends = nss
 	depends = xdg-utils
 	depends = libxss
+	provides = signal-desktop
 	options = !strip
 	options = !emptydirs
 	source = https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop-beta/signal-desktop-beta_1.18.0-beta.7_amd64.deb

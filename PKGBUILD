@@ -8,6 +8,7 @@ license=('GPL3')
 depends=('gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
+provides=('signal-desktop')
 
 pkgver=1.18.0beta.7
 source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop-beta/signal-desktop-beta_1.18.0-beta.7_amd64.deb")
