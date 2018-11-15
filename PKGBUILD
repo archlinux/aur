@@ -1,5 +1,5 @@
 pkgname=mock-core-configs
-pkgver=29.2
+pkgver=29.3
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL2')
 depends=('distribution-gpg-keys')
 source=("$url/archive/$_pkgtag.tar.gz")
-md5sums=('063b0bfdd20427f509523b1c56355567')
+md5sums=('e860f0ea333c1d876fc9b1579435e6b9')
 
 prepare() {
 	mv "mock-$_pkgtag" "$pkgname-$pkgver"
