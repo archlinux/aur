@@ -7,7 +7,7 @@ pkgbase = mate-backgrounds-dev
 	groups = mate
 	groups = mate-gtk3
 	license = GPL
-	makedepends = mate-common>=1.21
+	makedepends = mate-common>=1.20
 	provides = mate-backgrounds
 	provides = mate-backgrounds-gtk3
 	conflicts = mate-backgrounds
