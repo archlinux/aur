@@ -7,8 +7,8 @@
 
 pkgname=mutter-781835-workaround
 _pkgname=mutter
-pkgver=3.30.1+8+g1abab3fe2
-pkgrel=3
+pkgver=3.30.2+5+g108380cc2
+pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -20,7 +20,7 @@ makedepends=(intltool gobject-introspection git egl-wayland)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=1abab3fe2ed2d07bafc9f3aabe188c4d1c05ee43 # gnome-3-30
+_commit=bcd6103c44ff74ebffd1737b8e0f3a952b83bd54  # tags/3.30.2^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         https://gitlab.gnome.org/vanvugt/mutter/commit/fc02b040f3b750b0513f812813351c09795950f6.patch
         startup-notification.patch
@@ -30,10 +30,10 @@ sha256sums=('SKIP'
             '00d5e77c94e83e1987cc443ed7c47303aa33367ce912b2f665bcd34f88890a17'
             '2d2e305e0a6cca087bb8164f81bdc0ae7a5ca8e9c13c81d7fd5252eb3563fc09')
 
-# pkgver() {
-#   cd $_pkgname
-#   # git describe --tags | sed 's/-/+/g'
-# }
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
   cd $_pkgname
@@ -56,21 +56,21 @@ prepare() {
 
   # Geometric (GPU-less) picking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
-  git cherry-pick 0fe913fe
-  git cherry-pick 955d9c07
+  git cherry-pick 0fe913fe^..955d9c07
 
   # Sync to the hardware refresh rate, not just 60.00Hz [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/171/commits
-  git cherry-pick d29a1c4a
-  git cherry-pick 7575c7fa
+  # Disabled as requires to solve conflicts 
+  #git cherry-pick cc28298c^..3947a4de || bash
 
   # clutter-actor: Add detail to captured-event signal [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/283/commits
-  git cherry-pick 544b95de
+  git cherry-pick c2404d16
 
-  # cogl-winsys-glx: Fix frame notification race/leak [performance]
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/216
-  git cherry-pick fc02b040
+
+  # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281/commits
+  git cherry-pick bd44e7d3^..b07f9b86
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
