@@ -9,7 +9,7 @@ pkgbase = mate-applets-dev
 	license = GPL
 	makedepends = docbook2x
 	makedepends = docbook-xsl
-	makedepends = mate-common>=1.21
+	makedepends = mate-common>=1.20
 	makedepends = yelp-tools
 	makedepends = gtksourceview3
 	makedepends = mate-panel>=1.21

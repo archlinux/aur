@@ -15,7 +15,7 @@ url="http://mate-desktop.org"
 license=('GPL')
 depends=('glib2' 'gtksourceview2' 'gtk-update-icon-cache' 'libgtop' 'libnotify'
          'mate-panel>=1.21' 'polkit' 'python2-dbus' 'python2-gobject' 'upower')
-makedepends=('docbook2x' 'docbook-xsl' 'mate-common>=1.21' 'yelp-tools' 'gtksourceview3' 'mate-panel>=1.21')
+makedepends=('docbook2x' 'docbook-xsl' 'mate-common>=1.20' 'yelp-tools' 'gtksourceview3' 'mate-panel>=1.21')
 optdepends=('fortune-mod: for displaying fortune cookies in the Wanda the Fish applet'
             'yelp: for reading MATE help documents')
 groups=('mate-extra')
