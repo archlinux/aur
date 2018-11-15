@@ -3,22 +3,20 @@
 
 pkgname=linuxcnc-sim
 pkgver=2.7.14
-pkgrel=1
+pkgrel=2
 pkgdesc="It can interpret G-code and simulate a CNC machine (formerly EMC2)."
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://linuxcnc.org/"
-depends=('bc' 'bwidget' 'tcl' 'tk' 'xorg-server' 'python2-imaging' 'tkimg' 'python2-gtkglext' 'tclx' 'boost' 'boost-libs' 'libtirpc')
+depends=('bc' 'bwidget' 'tcl' 'tk' 'xorg-server' 'python2-imaging' 'tkimg' 'python2-gtkglext' 'tclx' 'boost' 'boost-libs' 'libtirpc' 'procps-ng' 'psmisc')
 install=$pkgname.install
 _gitname='linuxcnc'
-source=($_gitname::"git://github.com/LinuxCNC/linuxcnc.git#tag=v$pkgver" 'boost.patch' 'image-to-gcode.patch' 'linuxcnc-sim.sh' 'libtirpc.patch')
+source=($_gitname::"git://github.com/LinuxCNC/linuxcnc.git#tag=v$pkgver" 'linuxcnc-sim.sh' 'libtirpc.patch')
 #source=($_gitname::'git://git.linuxcnc.org/git/linuxcnc.git#tag=739df958aca9d246daad36f439c82bfbeac681b9' 'boost.patch')
 md5sums=('SKIP'
-         'ba6948dc5dc155849f55039e454cdbd6'
-         'c31d34a7ba567bd664f362a52f8bb03b'
          '3fb3f231cfefdfe1fa4d600ecbf4a3cb'
          '42770a1aa791172358700e4d5af335ed')
-makedepends=('git')
+makedepends=('git' 'intltool')
 PKGEXT='.pkg.tar'
 
 #pkgver() {
@@ -29,24 +27,9 @@ PKGEXT='.pkg.tar'
 build () {
   find . -iname fixpaths.py -o -iname checkglade -o -iname update_ini|xargs perl -p -i -e "s/python/python2/"
   cd $srcdir/$_gitname/src
-#  patch -p0 <../../image-to-gcode.patch
-#  patch -p1 <../../boost.patch
-#  #This Makefile line fixes a seg fault due to changed CFLAGS
-# cp -PR $srcdir/Makefile $srcdir/$pkgname-$pkgver/src/Makefile
-#  #This fixes build for updated Python libraries
-#  cp -PR $srcdir/Submakefile $srcdir/$pkgname-$pkgver/src/hal/drivers/Submakefile
-#  #Another Python fix
-#  cd $srcdir/$pkgname-$pkgver
-#  patch -Np1 < $srcdir/jepler-modsilent.patch
 
   patch -Np2 -i $srcdir/libtirpc.patch
 
-#  cd $srcdir/$pkgname-$pkgver/src
-#  CFLAGS+=" -I/usr/include/tirpc/"
-  CXXFLAGS+=" -I/usr/include/tirpc/"
-  CPPFLAGS+=" -I/usr/include/tirpc/"
-  INCLUDE+=" -I/usr/include/tirpc/"
-  LDFLAGS+=" -ltirpc"
   ./autogen.sh
   ./configure --with-realtime=uspace --without-libmodbus --prefix=/usr --with-python=/usr/bin/python2.7 --enable-non-distributable=yes
   make
