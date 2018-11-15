@@ -17,6 +17,11 @@ build() {
   cargo build --release
 }
 
+check() {
+  cd $pkgname-$pkgver
+  cargo check --release
+}
+
 package() {
   cd $pkgname-$pkgver
   install -Dt "$pkgdir"/usr/bin target/release/named
