@@ -1,28 +1,32 @@
-# Maintainer: barcia <barcia@opmbx.org>
+# Maintainer: Shatur95 <genaloner@gmail.com>
 
-_gitname=Antu
-_pkgname=Antu
 pkgname=('antu-icon-theme-git')
-pkgver=r103.edf89e7
-pkgrel=2
-pkgdesc="An icon theme for Plasma Desktop"
+pkgver=0.8.r3.g4a801b4
+pkgrel=1
+pkgdesc="A smooth theme designed for Plasma Desktop"
 arch=('any')
-url="https://github.com/barcia/${_gitname}"
-license=('GPL3')
+url="https://github.com/fabianalexisinostroza/Antu-icons"
+license=('Creative Commons')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 options=('!strip')
-conflicts=('')
-source=("git+${url}.git")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
-pkgver(){
-    cd ${_gitname}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver() {
+  cd "$srcdir/${pkgname%}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/${pkgname%}"
+  rm LICENSE.md
+  rm README.md
+}
+
+
 package() {
-    install -d ${pkgdir}/usr/share/icons
-    cp -r ${srcdir}/${_gitname}/Icons/${_pkgname}* ${pkgdir}/usr/share/icons/
-    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
-    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
-    find ${pkgdir}/usr -type f -name '.directory' -delete
+  install -dm 755 "$pkgdir"/usr/share/icons/Antu
+  cp -r ${srcdir}/${pkgname%}/* ${pkgdir}/usr/share/icons/Antu/
 }
