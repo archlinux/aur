@@ -2,13 +2,14 @@
 
 pkgname=supercollider-git
 _name="supercollider"
-pkgver=3.10.0.beta2.r179.g937a2615bf
+pkgver=3.10.0.beta2.r210.g7f8e08a04f
 pkgrel=1
 pkgdesc="Environment and programming language for real time audio synthesis and algorithmic composition"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://supercollider.github.io/"
 license=('GPL3')
-depends=('boost-libs' 'desktop-file-utils' 'fftw' 'jack' 'qt5-svg' 'qt5-webengine' 'qt5-websockets' 'yaml-cpp')
+depends=('boost-libs' 'desktop-file-utils' 'fftw' 'jack' 'qt5-svg'
+'qt5-webengine' 'qt5-websockets' 'yaml-cpp')
 makedepends=('boost' 'cmake' 'emacs' 'git' 'qt5-tools')
 optdepends=('emacs: emacs interface'
             'gedit: gedit interface'
@@ -46,6 +47,10 @@ prepare() {
   # make sure system boost is used:
   # https://github.com/supercollider/supercollider/issues/4096
   rm -r external_libraries/boost
+  # removing math optimizations, leading to flaky behavior:
+  # https://github.com/supercollider/supercollider/issues/4116
+  sed -e 's/-ffast-math/-fno-math-errno -fno-signaling-nans/' \
+      -i CMakeLists.txt
   mkdir -p build
 }
 
