@@ -1,6 +1,6 @@
 # Building a custom waf binary
 
-Waf is primarily intended to be distributed with the project using it. The Arch Linux package makes waf usable directly, but also brings all files necessary to compose a custom binary for your project. To do so, create a temporary directory, link all the necessary resources together and build it.
+Waf is primarily intended to be distributed with the project using it. The Arch Linux package makes waf usable directly, but also brings all files necessary to compose a custom binary for your project. To do so, create a temporary directory, link all the resources together and build it.
 
 cd $(mktemp -d)
 ln -s /usr/share/waf/wscript .
