@@ -3,15 +3,16 @@
 
 pkgname='nextcloud-client'
 pkgver='2.5.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
 license=('GPL2')
-depends=('qt5-webengine' 'qtkeychain' 'kio')
-makedepends=('extra-cmake-modules' 'python-sphinx' 'qt5-tools' 'doxygen')
+depends=('qt5-webengine' 'qtkeychain')
+makedepends=('extra-cmake-modules' 'python-sphinx' 'qt5-tools' 'doxygen' 'kio')
 optdepends=('python2-nautilus: integration with Nautilus'
 	    'nemo-python: integration with Nemo'
+	    'kio: Resource and network access abstraction (KDE)'
 	    'libgnome-keyring: GNOME keyring client')
 conflicts=('owncloud-client')
 source=("https://github.com/nextcloud/desktop/archive/v${pkgver}.tar.gz")
@@ -26,10 +27,9 @@ build() {
   cd "${srcdir}/desktop-${pkgver}/build"
 
   cmake .. \
-  -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_INSTALL_LIBDIR=lib \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_INSTALL_SYSCONFDIR=/etc/${pkgname}
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_PREFIX=/usr
   make
   make doc-man
 }
