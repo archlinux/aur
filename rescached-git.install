@@ -1,6 +1,4 @@
 post_upgrade() {
-	## Remove old config
-	[[ -f /etc/rescached/rescached.cfg ]] && rm -f /etc/rescached/rescached.cfg
 	## Remove old cache
 	[[ -f /var/cache/rescached/rescached.vos ]] && rm -f /var/cache/rescached/rescached.vos
 }
