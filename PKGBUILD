@@ -1,29 +1,27 @@
 # Maintainer: Oliver Bandel < oliver _at_ first . in - berlin . de >
 # orig Contributor: Denis Wernert <denis@wernert.info>
 pkgname=ocaml-csv
-pkgver=1.5
-pkgrel=2
+pkgver=2.2
+pkgrel=1
 pkgdesc="OCaml CSV parsing library"
 arch=('i686' 'x86_64')
 url="https://github.com/Chris00/ocaml-csv"
 license=('GPL')
 depends=('ocaml')
-makedepends=('ocaml' 'ocaml-findlib' 'ocamlbuild')
+makedepends=('ocaml' 'ocaml-findlib' 'ocamlbuild' 'ocaml-lwt')
 builddepends=('ocaml')
-source=(https://github.com/Chris00/ocaml-csv/releases/download/$pkgver/csv-$pkgver.tar.gz)
-md5sums=('93fb7204e3a2d38184ddce545d03c2fb')
-sha256sums=('f6307634e5f5fe3d64b90fdf8841b3f50dac80ed45b40d390ee44490c62bf58f')
+source=(https://github.com/Chris00/ocaml-csv/archive/$pkgver.tar.gz)
+md5sums=('ce8f8fbf965b5a58cb3f92e98113a9ec')
+sha256sums=('ba9130c8a1a360d6f58f8206470b3be24b8e9626755335e0313922dc4cdea329')
 options=(!libtool !strip zipman)
 
 build() {
-  cd csv-$pkgver
-  sed -i s@/usr/local@$pkgdir/usr@g setup.ml
+  cd $pkgname-$pkgver
   make
 }
 
 package() {
-  cd csv-$pkgver
-  #SITE=$pkgdir`ocamlc -where`/site-lib
+  cd $pkgname-$pkgver
   SITE=$pkgdir`ocamlc -where`
   install -d $SITE -m 755
   OCAMLFIND_DESTDIR=$SITE make install
