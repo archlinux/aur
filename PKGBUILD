@@ -1,7 +1,7 @@
 _reponame=ldoce5viewer-pyqt5
 pkgname=$_reponame-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LDOCE5 viewer ported to PyQt5 for retina (HiDPI) support. "
 license=(GPL3)
 conflicts=(ldoce5viewer-git ldoce5viewer)
