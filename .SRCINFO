@@ -7,7 +7,7 @@ pkgbase = mate-settings-daemon-dev
 	arch = x86_64
 	groups = mate
 	license = GPL
-	makedepends = mate-common>=1.21
+	makedepends = mate-common>=1.20
 	makedepends = gtk3
 	makedepends = libmatekbd>=1.21
 	makedepends = mate-desktop>=1.21

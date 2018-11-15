@@ -15,7 +15,7 @@ license=('GPL')
 depends=('dbus-glib' 'dconf' 'fontconfig' 'glib2' 'gtk3' 'gtk-update-icon-cache'
          'libcanberra-pulse' 'libmatekbd>=1.21' 'libmatemixer>=1.21' 'libnotify'
          'libxt' 'mate-desktop>=1.21' 'nss' 'polkit')
-makedepends=('mate-common>=1.21' 'gtk3' 'libmatekbd>=1.21' 'mate-desktop>=1.21')
+makedepends=('mate-common>=1.20' 'gtk3' 'libmatekbd>=1.21' 'mate-desktop>=1.21')
 groups=('mate')
 replaces=("${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3" "${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
