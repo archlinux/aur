@@ -1,0 +1,18 @@
+# Installs the schema to the right folder so we can use the `gsettings`
+# commands to configure this plugin.
+
+post_install() {
+  recompile
+}
+
+post_upgrade() {
+  recompile
+}
+
+post_remove() {
+  recompile
+}
+
+recompile() {
+  /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+}

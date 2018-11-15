@@ -1,10 +1,11 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
+# Contributor: Daniel Pereira <daniel@garajau.com.br>
 # Contributor: Florian Mounier aka paradoxxxzero <paradoxxx.zero@gmail.com>
-# Contributor: Michael Schubert <mschu.dev at gmail> 
+# Contributor: Michael Schubert <mschu.dev at gmail>
 
+_reponame=gnome-shell-system-monitor-applet
 pkgname=gnome-shell-extension-system-monitor-git
-pkgver=877.751d557
-_gitname=gnome-shell-system-monitor-applet
+pkgver=884.21ae32a
 pkgrel=1
 pkgdesc="System monitor extension for Gnome-Shell (display mem swap cpu usage)"
 arch=('any')
@@ -15,16 +16,23 @@ makedepends=('git')
 provides=("system-monitor-applet" "gnome-shell-system-monitor-applet-git")
 replaces=("gnome-shell-system-monitor-applet-git")
 conflicts=("gnome-shell-system-monitor-applet-git")
+install="gschemas.install"
 source=('git+https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet.git')
 sha1sums=('SKIP')
 
 package() {
-    cd "$srcdir/$_gitname"
-    mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/"
-    cp -R "system-monitor@paradoxxx.zero.gmail.com" "$pkgdir/usr/share/gnome-shell/extensions"
+  cd "$srcdir/$_reponame"
+
+  # Install the extension
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/"
+  cp -R "system-monitor@paradoxxx.zero.gmail.com" "$pkgdir/usr/share/gnome-shell/extensions"
+
+  # Install the gschema
+  install -d "$pkgdir/usr/share/glib-2.0/schemas"
+  install -m 644 "system-monitor@paradoxxx.zero.gmail.com/schemas/org.gnome.shell.extensions.system-monitor.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/"
 }
 
 pkgver() {
-  cd $_gitname
+  cd $_reponame
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
