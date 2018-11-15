@@ -8,10 +8,13 @@
 
 pkgname=filebot-git
 _pkgname=filebot
-pkgver=4.8.4
+pkgver=4.8.4.r5846.20180828
+_pkgver=4.8.4
 pkgrel=1
 _jnaver=4.5.2
+
 _fixedcommit=b9572f4501ba9d5af9d445a792fa902274f37679
+
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://github.com/filebot/filebot"
@@ -46,6 +49,8 @@ optdepends=('libzen: Support for additional subtitle search engines (Sublight)'
 
 #noextract=($(for i in ${source[@]}; do basename $i; done))
 
+
+
 prepare() {
   cd "$srcdir/$_pkgname/"
   git checkout $_fixedcommit
@@ -56,6 +61,8 @@ prepare() {
   sed -i -E 's/tar.compression: xz/tar.compression: gzip/' app.properties
 
 cat <<EOT >> app.properties
+
+# Api Keys
 url.data: https://app.filebot.net/data
 
 apikey.fanart.tv: 780b986b22c35e6f7a134a2f392c2deb
@@ -68,8 +75,14 @@ apikey.opensubtitles: FileBot
 EOT
 }
 
+pkgver(){
+  cd "$srcdir/$_pkgname/"
+
+  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git log --date=format:%Y%m%d --pretty=%ad -1 HEAD)"
+}
+
 build() {
-  cd $_pkgname
+  cd "$srcdir/$_pkgname/"
 #  print('Set system '+$_jre+' to java-9-openjdk. Should be reverted after build')
   sudo archlinux-java set java-8-openjdk
   ant resolve
