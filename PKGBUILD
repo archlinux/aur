@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_jack@hackermail.com>
 
 # This program encrypts/decrypts Caeser, ROT13 and Vigenere ciphers.
 # These are classic pre-computer ciphers and while vignere is the most "secure".
