@@ -2,7 +2,7 @@
 # Maintainer: Aaron Baker <aa{last name}99{at}gmail{dt}org>
 
 pkgname=ngs
-pkgver=1.2.5
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="A new, domain-specific API for accessing reads, alignments and pileups produced from Next Generation Sequencing."
 arch=('x86_64')
@@ -11,7 +11,8 @@ depends=('java-environment' 'perl-file-copy-recursive' 'zlib')
 provides=('ngs')
 license=('custom:PublicDomain')
 source=("https://github.com/ncbi/ngs/archive/$pkgver.tar.gz" "$pkgname.patch")
-sha256sums=('2a32c30d1611f8ce68aba81e5b44369969c6d32bcebc37aa41be2cdbaa76c113' '004eb006e9bbd9f4368c54663e7d991833aeae3e9c6583e61566340cd04d5bb6')
+sha256sums=('d16cdf340f4c66e449cc490a222e54e9074cd15fe0938cb75b951a72985f757d'
+            '004eb006e9bbd9f4368c54663e7d991833aeae3e9c6583e61566340cd04d5bb6')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
@@ -22,10 +23,7 @@ prepare(){
 
 build(){
   cd "${pkgname}-${pkgver}"
-  ./configure --prefix="$pkgdir/usr/"
-  cd "ngs-java"
-  ./configure --prefix="$pkgdir/usr/"
-  cd ".."
+  ./configure --prefix="$pkgdir/usr/" --build-prefix="$srcdir/build"
   make
 }
 
@@ -38,7 +36,8 @@ package(){
   cd "$pkgname-$pkgver"
   # ncbi does not use autoconf/automake so there is no respect for DESTDIR
   #   but there is a ROOT(dir)
-  make "ROOT=$pkgdir" install
+  #make "ROOT=$pkgdir" install
+  make install
 
   # add license
   mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
