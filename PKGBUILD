@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 # This is the package build for the tools to build nban and the shuriken
 # This was originally developed for Ninja OS, but has been back ported to Arch
