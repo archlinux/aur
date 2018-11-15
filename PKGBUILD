@@ -8,8 +8,7 @@ pkgdesc='Plugin for Flake8 finding likely bugs and design problems in your progr
 arch=('any')
 url=https://github.com/PyCQA/flake8-bugbear
 license=('MIT')
-depends=('flake8' 'python-attrs')
-makedepends=('python-setuptools')
+depends=('flake8' 'python-attrs' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha512sums=('1951ffd3eed030c33378d925d6b5b36e30070a0ebe5c6315c484452adf7248a1bc4628f5e9fba8cb03c3e918e24aecb39df8ebb2198b66fb45f93bdfe2730550')
 
