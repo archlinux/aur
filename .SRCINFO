@@ -1,0 +1,16 @@
+pkgbase = keybase-zsh-completion-git
+	pkgdesc = ZSH completion for keybase
+	pkgver = r5.4ec76d5
+	pkgrel = 1
+	url = https://github.com/fnoris/keybase-zsh-completion
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	provides = keybase-zsh-completion-git
+	conflicts = keybase-zsh-completion-git
+	source = keybase-zsh-completion-git::git+https://github.com/fnoris/keybase-zsh-completion.git
+	md5sums = SKIP
+
+pkgname = keybase-zsh-completion-git
+
