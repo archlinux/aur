@@ -8,7 +8,7 @@ pkgbase = mate-session-manager-dev
 	groups = mate
 	license = GPL
 	license = LGPL
-	makedepends = mate-common>=1.21
+	makedepends = mate-common>=1.20
 	makedepends = xmlto
 	makedepends = xtrans
 	makedepends = gtk3

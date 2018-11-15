@@ -16,7 +16,7 @@ license=('GPL' 'LGPL')
 depends=('dbus-glib' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'libsm' 'libxtst'
          'mate-desktop>=1.21' 'mate-polkit>=1.21' 'mate-settings-daemon>=1.21'
          'ttf-dejavu' 'xdg-user-dirs')
-makedepends=('mate-common>=1.21' 'xmlto' 'xtrans' 'gtk3' 'mate-desktop>=1.21' 'mate-polkit>=1.21' 'mate-settings-daemon>=1.21')
+makedepends=('mate-common>=1.20' 'xmlto' 'xtrans' 'gtk3' 'mate-desktop>=1.21' 'mate-polkit>=1.21' 'mate-settings-daemon>=1.21')
 optdepends=('lightdm-gtk-greeter: A lightweight display manager'
             'onboard: On-screen keyboard useful for mobility impaired users'
             'orca: Screen reader for blind or visually impaired individuals'
