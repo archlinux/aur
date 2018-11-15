@@ -1,7 +1,7 @@
 # Maintainer: Tim Savannah <kata198@gmail.com>
 
 pkgname=rextract
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Powerful commandline tool to extract and manipulate strings using regular exressions"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://github.com/kata198/rextract"
 makedepends=('python-setuptools' 'python')
 depends=('python-setuptools' 'python')
 source=("https://github.com/kata198/rextract/archive/${pkgver}.tar.gz")
-sha512sums=("0f1934a3bf0e06ad365e2c7ece06f01f4229c24f553742a64b6ce63cfcdeffbc9a31b6d684d89a2e7aeb254cbdd7213fb35ec5b43e1cb1a320e50fd44b49982a")
+sha512sums=("0741e326df23b88cd5f80708a9d1db30fc7ce170f5b945cfb2f8120905782163239bea9f1e652fa0895386eed0e5ca8f5fe67fd9aa36b20299a91f83d6916a5c")
 
 build() {
   cd "$srcdir"/rextract-$pkgver
