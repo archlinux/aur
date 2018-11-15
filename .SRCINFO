@@ -1,6 +1,6 @@
 pkgbase = la-capitaine-icon-theme
 	pkgdesc = La Capitaine is an icon pack — designed to integrate with most desktop environments.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/keeferrourke/la-capitaine-icon-theme
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = la-capitaine-icon-theme
 	optdepends = breeze-icons
 	optdepends = gnome-icon-theme
 	conflicts = la-capitaine-icon-theme-git
-	source = https://github.com/keeferrourke/la-capitaine-icon-theme/archive/v0.6.0.tar.gz
-	sha256sums = 7126b24bb1d7b1d1cc9fd13c1b0cfd67e2bccbb9c20071240fe0d06f02c3c8b4
+	source = https://github.com/keeferrourke/la-capitaine-icon-theme/archive/v0.6.1.tar.gz
+	sha256sums = 9adb3123bf61464696400af43000b61de1825d2ce4b4ad4f21dd78091bd55e73
 
 pkgname = la-capitaine-icon-theme
 
