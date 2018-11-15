@@ -17,12 +17,12 @@ source=("https://github.com/MatthewRalston/curam/archive/v0.0.1.tar.gz")
 #autofill using updpkgsums
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir/src"
   make PREFIX=/usr docs
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/src"
 
   make DESTDIR="$pkgdir/" install
 }
