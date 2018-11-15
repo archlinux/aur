@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jackl@hackermail.com>
 # Based on PKGBUILD firefox-extension-httpseverywhere
 
 _plugin_name=user_agent_switcher
