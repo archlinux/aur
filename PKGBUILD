@@ -5,8 +5,8 @@
 
 pkgbase=termite-nocsd
 pkgname=('termite-nocsd')
-pkgver=13
-pkgrel=3
+pkgver=14
+pkgrel=1
 pkgdesc="A simple VTE-based terminal without GTK client side decorations. Perfect for wayland+sway users."
 url="https://github.com/thestinger/termite/"
 license=('LGPL')
@@ -15,7 +15,7 @@ provides=('termite')
 arch=('x86_64')
 depends=('gtk3' 'pcre2' 'gnutls' 'vte-common')
 makedepends=('git' 'ncurses' 'intltool' 'gperf' 'gtk-doc')
-_vtever=0.50.2.a
+_vtever=0.54.2.a
 source=("${pkgbase}::git+https://github.com/thestinger/termite#tag=v${pkgver}"
         "git+https://github.com/thestinger/vte-ng#tag=${_vtever}"
         "termite-util::git+https://github.com/thestinger/util"
@@ -50,7 +50,7 @@ build() {
     enable_vala=no \
     --disable-gtk-doc \
     --disable-glade-catalogue
-  make -C src sources install-exec install-data
+  make -C src sources install-exec install-data -j 1 # makefile bug does not allow -j
   make install-pkgconfigDATA
 
   cd "../${pkgbase}"

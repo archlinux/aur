@@ -1,7 +1,7 @@
 pkgbase = termite-nocsd
 	pkgdesc = A simple VTE-based terminal without GTK client side decorations. Perfect for wayland+sway users.
-	pkgver = 13
-	pkgrel = 3
+	pkgver = 14
+	pkgrel = 1
 	url = https://github.com/thestinger/termite/
 	arch = x86_64
 	license = LGPL
@@ -16,8 +16,8 @@ pkgbase = termite-nocsd
 	depends = vte-common
 	provides = termite
 	conflicts = termite
-	source = termite-nocsd::git+https://github.com/thestinger/termite#tag=v13
-	source = git+https://github.com/thestinger/vte-ng#tag=0.50.2.a
+	source = termite-nocsd::git+https://github.com/thestinger/termite#tag=v14
+	source = git+https://github.com/thestinger/vte-ng#tag=0.54.2.a
 	source = termite-util::git+https://github.com/thestinger/util
 	source = termite.patch
 	sha256sums = SKIP
