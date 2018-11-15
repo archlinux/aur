@@ -24,6 +24,7 @@
 
 #include <errno.h>
 #include <limits.h>
+#include <sched.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -33,10 +34,13 @@
 int usage (char **argv) {
   fprintf (stderr,
            "Protect process <pid> from the OOM killer by setting its "
-           "oom_score_adj to %d and its nice value to -20.\n"
+           "oom_score_adj to %d, its\n"
+           "nice value to -20, and its priority to realtime.\n"
            "(TL;DR: try to avoid that an attacker types Alt+SysRq+F "
            "repeatedly and ends up\n"
-           "with your logged-in session without the xscreensaver lock.)\n"
+           "with your logged-in session without the xscreensaver lock, "
+           "and give screen locking\n"
+           "utmost urgency.)\n"
            "Will fail with error code %d if the process does not run "
            "/usr/bin/xscreensaver.\n"
            "For more information and background, see\n"
@@ -86,6 +90,7 @@ int main (int argc, char **argv) {
   char xscreensaver_exe[PATH_MAX];
   int n;
   FILE *f;
+  struct sched_param sparam;
 
   if (argc != 2)
     return usage (argv);
@@ -112,6 +117,10 @@ int main (int argc, char **argv) {
   fclose (f);
 
   if (setpriority (PRIO_PROCESS, pid, INT_MIN) != 0)
+    return errno;
+
+  sparam.sched_priority = 99;
+  if (sched_setscheduler (pid, SCHED_FIFO, &sparam) != 0)
     return errno;
 
   return 0;

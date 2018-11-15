@@ -1,7 +1,7 @@
 # Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgname=xscreensaver-oom-protect
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Protect xscreensaver from the out-of-memory killer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('xscreensaver')
 source=(${pkgname}.c
         LICENSE
         xscreensaver.service)
-md5sums=('a4cc96966ac71a75bc841c0279957a2f'
+md5sums=('39a62edba8e363a511f201ebbfbb67b2'
          '8365d07beeb5f39d87e846dca3ae7b64'
          'bb945c067ae57367ddc6f041fd33dfa4')
 
