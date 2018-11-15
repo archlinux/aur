@@ -8,8 +8,8 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=rednotebook
-pkgver=2.7
-pkgrel=2
+pkgver=2.8
+pkgrel=1
 pkgdesc="A simple desktop diary."
 arch=('any')
 url="http://rednotebook.sourceforge.net"
@@ -17,7 +17,7 @@ license=('GPL2')
 depends=('python-yaml' 'webkit2gtk' 'hicolor-icon-theme' 'python-gobject' 'gtksourceview3')
 optdepends=('python-pyenchant: for spellchecking')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ea9ff2fb327b34eb3c6410144f80363eb24ea3dcbffd9b0674cc481953518dd3')
+sha256sums=('3bd4ede90d165e3e7e02818e3068118795964ad07da5a61f215dc738ff56258f')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
