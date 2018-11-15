@@ -4,7 +4,7 @@
 
 pkgname=waf
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose build system modelled after Scons'
 url='http://waf.io/'
 arch=('any')
@@ -17,10 +17,10 @@ source=("https://waf.io/${pkgname}-${pkgver}.tar.bz2"
         'building-waf.md')
 md5sums=('274855847a0a718e53555dd74042c693'
          'ff472805caa81e02cb15bcf87031f722'
-         '93fd94b3dc4616c35e9bf13adc63b23c')
+         '3cd6a727719e0984f2d4e1a4998c259d')
 sha256sums=('00e188d18b5d160c20eeffb6638254ad9eea8cdb53ae7cd0e63ef657871e3580'
             '432fb8e21fe31047e16ac068b761961f1a3965785e570bf54aca1c4c07d253f4'
-            '3103524b61ac3f3af9bb71f1ac8fcb836a1e67e2bfcf59150f08dbf70a595675')
+            'b51599dc1d56b2b89a45ec62a87b62955f34c594a381a36747c4a17171dd8414')
 
 prepare() {
   cd "$pkgname-$pkgver"
