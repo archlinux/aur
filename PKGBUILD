@@ -21,9 +21,15 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd ${url##*/}
+  sed -i 's/.sh//' spotify-wrapper.sh
+}
+
 package() {
   cd ${url##*/}
-  install -Dt "$pkgdir"/usr/bin ${pkgname%-*}.sh spotify-wrapper.sh
+  install -D ${pkgname%-*}.sh "$pkgdir"/usr/bin/${pkgname%-*}
+  install -D spotify-wrapper.sh "$pkgdir"/usr/bin/spotify-wrapper
   install -Dm644 -t "$pkgdir"/usr/share/applications 'Spotify (AdKiller).desktop'
 }
 
