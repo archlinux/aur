@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 # Contributor: Andrey Korobkov <korobkov@fryxell.info>
 
 pkgname=csprng
