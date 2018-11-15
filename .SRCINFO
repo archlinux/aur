@@ -7,7 +7,7 @@ pkgbase = libmatekbd-dev
 	arch = x86_64
 	groups = mate
 	license = LGPL
-	makedepends = mate-common>=1.21
+	makedepends = mate-common>=1.20
 	depends = dconf
 	depends = gtk3
 	depends = iso-codes
