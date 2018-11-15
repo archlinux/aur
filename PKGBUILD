@@ -1,8 +1,8 @@
-# Maintainer: smooz <https://github.com/smo0z>
-# Contributor: dunon <https://gitlab.gnome.org/dunon>
+# Maintainer: smooz
+# Contributor: Dunon <josep.oliver@tutanota.com>
 
 pkgname=grevis-git
-pkgver=r25.8444fec
+pkgver=0.1.0.r5.faed6aa
 pkgrel=1
 pkgdesc='A simple game launcher'
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --tags | sed 's/-/.r/; s/-g/./'
 }
 
 package() {
