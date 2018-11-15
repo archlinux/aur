@@ -1,0 +1,15 @@
+pkgbase = python-ueberzug
+	pkgdesc = ueberzug is an python script which aims to replace w3mimgdisplay
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/seebye/ueberzug
+	arch = any
+	license = GPL
+	makedepends = python
+	depends = python
+	depends = python-xlib
+	source = git+https://github.com/seebye/ueberzug
+	md5sums = SKIP
+
+pkgname = python-ueberzug
+
