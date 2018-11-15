@@ -1,4 +1,4 @@
-# Maintainer: Marco von Rosenverg <codingmarco [at] gmail [dot] com>
+# Maintainer: Marco von Rosenverg <codingmarco@gmail.com>
 
 pkgname=glrpt
 pkgver=1.6
@@ -29,4 +29,11 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
+	
+	# I have to do this here and not in a .install file because I need files from the srcdir directory
+	if [ -f ~/glrpt/glrptrc ]; then
+        mv ~/glrpt/glrptrc ~/glrpt/glrptrc.old-1.4.1
+    fi
+	cd "$srcdir/$pkgname-$pkgver"
+	cp glrpt/glrptrc ~/glrpt/
 }
