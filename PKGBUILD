@@ -5,7 +5,7 @@ _wafver=2.0.9
 
 pkgname=mpv-full
 pkgver=0.29.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -16,10 +16,10 @@ depends=(
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
-        'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader'
+        'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc'
         
     # AUR:
-        'mujs' 'rsound' 'shaderc-git' 'crossc'
+        'mujs' 'rsound' 'crossc'
 )
 makedepends=('mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
