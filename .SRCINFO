@@ -10,7 +10,7 @@ pkgbase = mate-user-share-dev
 	makedepends = caja>=1.21
 	makedepends = libcanberra
 	makedepends = libnotify
-	makedepends = mate-common>=1.21
+	makedepends = mate-common>=1.20
 	makedepends = yelp-tools
 	makedepends = libunique3
 	depends = dbus-glib
