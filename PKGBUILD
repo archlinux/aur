@@ -1,8 +1,9 @@
 # This is the PKGBUILD for ncbi-vdb
 # Maintainer: Aaron Baker <aa{last name}99{at}gmail{dt}org>
+# Maintainer: Georgios Amanakis <g_amanakis{at}yahoo{dt}com>
 
 pkgname=ncbi-vdb
-pkgver=2.7.0
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives."
 arch=('x86_64')
@@ -10,8 +11,10 @@ url="https://github.com/ncbi/ncbi-vdb"
 depends=('libxml2' 'ngs' 'hdf5')
 provides=('ncbi-vdb')
 license=('custom:PublicDomain')
+options=('!strip')
 source=("https://github.com/ncbi/ncbi-vdb/archive/$pkgver.tar.gz" "$pkgname.patch")
-sha256sums=('8e227b06dffb5894cac43c2a8d3fee50b23f4609cc6a7027951ef88d7a782c74' 'db379579bae63b67d1a58ead406e39123374d6f5ff195a7ab41bb4e10d6f98fb')
+sha256sums=('100a0a109bd62531725c5ae3b191897c8e0834cd5ad593d042be6043b54cb98e'
+            '62550416a3bd48ad8d8810a4fde593f1e6fdc6b091afbcf903842f8a43da9f58')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
@@ -22,7 +25,10 @@ prepare(){
 
 build(){
   cd "${pkgname}-${pkgver}"
-  ./configure --prefix="$pkgdir/usr/"
+  ./configure --prefix="$pkgdir/usr/" \
+	--build-prefix="$srcdir/build_dir" \
+	--with-ngs-sdk-prefix="/usr" \
+	--with-ngs-java-prefix=/usr/share/java/ngs/ngs-java.jar
   make
 }
 
@@ -35,13 +41,15 @@ package(){
   cd "$pkgname-$pkgver"
   # ncbi does not use autoconf/automake so there is no respect for DESTDIR
   #   but there is a ROOT(dir)
-  make "ROOT=$pkgdir" install
+#  make "ROOT=$pkgdir" install
+  make install
   mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
 
   # the source of this package is required by others
   # TODO is there somewhere to put this for namcap not to complain?
-  mkdir -p "$pkgdir/usr/src/${pkgname}-${pkgver}"
+  mkdir -p "$pkgdir/usr/src/${pkgname}-${pkgver}/build_dir"
   cp -r . "$pkgdir/usr/src/${pkgname}-${pkgver}"
+  cp -a "$srcdir/build_dir" "$pkgdir/usr/src/${pkgname}-${pkgver}"
 
   # add the license
   mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
@@ -49,7 +57,7 @@ package(){
 
   # TODO without this a link from libncbi-vdb-static.a -> libncbi-vdb.a is dead because 
   #   libncbi-vdb.a gets removed somehow??
-  cd "$pkgdir/usr/lib/"
-  ln -sf "libncbi-vdb.a.$pkgver" libncbi-vdb-static.a
-  ln -sf "libncbi-wvdb.a.$pkgver" libncbi-wvdb-static.a
+#  cd "$pkgdir/usr/lib/"
+#  ln -sf "libncbi-vdb.a.$pkgver" libncbi-vdb-static.a
+#  ln -sf "libncbi-wvdb.a.$pkgver" libncbi-wvdb-static.a
 }
