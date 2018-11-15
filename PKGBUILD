@@ -1,7 +1,7 @@
 # Maintainer: Quint Guvernator <quint@guvernator.net>
 
 pkgname="creddit-git"
-pkgver=r213.1a45df6f8291
+pkgver=r214.aa129b9c9b2a
 pkgrel=1
 pkgdesc='CLI Reddit client written in C.'
 arch=('x86_64' 'i686')
@@ -11,12 +11,16 @@ depends=('ncurses' 'curl')
 makedepends=('git' 'make' 'gcc')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$pkgname::git+http://github.com/Cotix/cReddit.git")
-md5sums=('SKIP')
+source=(
+    "$pkgname::git+http://github.com/Cotix/cReddit.git"
+    '01-ncursesw-is-default-ncurses.patch'
+)
+md5sums=('SKIP'
+         '9b475cc98d0319356772d8472b602c67')
 
 prepare() {
     # patch the location of the ncursesw library
-    patch -p1 -i '../01-ncursesw-is-default-ncurses.patch'
+    patch -p1 -i "$srcdir/01-ncursesw-is-default-ncurses.patch"
 }
 
 pkgver() {
