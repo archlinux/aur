@@ -2,18 +2,17 @@
 # Contributor: Pavel Merzlyakov <pavel.merzlyakov@gmail.com>
 
 pkgname=python-pytest-allure
-_pkgname=pytest-allure-adaptor
-pkgver=1.7.6
+_pkgname=allure-pytest
+pkgver=2.5.3
 pkgrel=1
-pkgdesc='Plugin for py.test to generate allure xml reports'
-arch=('i686' 'x86_64')
-url='https://pypi.python.org/pypi/pytest-allure-adaptor'
-depends=('python-pytest' 'python-lxml' 'python-six' 'python-namedlist')
-source=("https://pypi.python.org/packages/79/34/7fee1e62f5d99b58f1a6b4b23f0d99caa3e1294fdfa4672c6e6ec9e25b15/${_pkgname}-$pkgver.tar.gz" "fix001.diff")
-md5sums=('67d5cdb1c2ea53c227c876dec2f287ab' '3043cd64176a904888d950871984deb9')
+pkgdesc='Allure Pytest Plugin'
+arch=('any')
+url="https://github.com/allure-framework/allure-python/tree/master/$_pkgname"
+depends=('python-pytest>=3.3.0' "python-allure-commons=$pkgver")
+source=("git+https://github.com/allure-framework/allure-python.git#tag=$pkgver")
+md5sums=('SKIP')
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  patch -p0 -i ../fix001.diff
+  cd "$srcdir/allure-python/$_pkgname"
   python setup.py install --prefix=/usr --root="$pkgdir"
 }

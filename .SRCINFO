@@ -1,18 +1,13 @@
 pkgbase = python-pytest-allure
-	pkgdesc = Plugin for py.test to generate allure xml reports
-	pkgver = 1.7.6
+	pkgdesc = Allure Pytest Plugin
+	pkgver = 2.5.3
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/pytest-allure-adaptor
-	arch = i686
-	arch = x86_64
-	depends = python-pytest
-	depends = python-lxml
-	depends = python-six
-	depends = python-namedlist
-	source = https://pypi.python.org/packages/79/34/7fee1e62f5d99b58f1a6b4b23f0d99caa3e1294fdfa4672c6e6ec9e25b15/pytest-allure-adaptor-1.7.6.tar.gz
-	source = fix001.diff
-	md5sums = 67d5cdb1c2ea53c227c876dec2f287ab
-	md5sums = 3043cd64176a904888d950871984deb9
+	url = https://github.com/allure-framework/allure-python/tree/master/allure-pytest
+	arch = any
+	depends = python-pytest>=3.3.0
+	depends = python-allure-commons=2.5.3
+	source = git+https://github.com/allure-framework/allure-python.git#tag=2.5.3
+	md5sums = SKIP
 
 pkgname = python-pytest-allure
 
