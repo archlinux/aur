@@ -10,6 +10,7 @@ license=('Apache')
 depends=('gcc-libs' 'openssl')
 makedepends=('rust')
 provides=('asciinema')
+conflicts=('asciinema')
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha512sums=('59a786a6a82122c33200bc7eb30e96e38548e45eb478eae259fa8ccd601b0bd596d4d9066ce75a5dc95abdaa97554f4a05cc2218b4c228566a65ed510d35c600')
 
