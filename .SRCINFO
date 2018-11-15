@@ -15,7 +15,7 @@ pkgbase = cewe-fotoservice
 	conflicts = cewe-fotobuch
 	source = https://dls.photoprintit.com/download/Data/6822-de_DE/hps/setup_cewe-fotoservice_de.tgz
 	source = updater.pl
-	md5sums = 45e506c3de91d84f6117d9c2dbb9ee67
+	md5sums = 3869ff37218e4156cdeb46484b5bd725
 	md5sums = 11e395d7c48d7f340435eeb938bcb502
 
 pkgname = cewe-fotoservice

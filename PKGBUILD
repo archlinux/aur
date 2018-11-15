@@ -9,10 +9,11 @@ _lang='de_DE'
 pkgname=cewe-fotoservice
 conflicts=(cewe-fotobuch)
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners'
-md5sums=('45e506c3de91d84f6117d9c2dbb9ee67'
+md5sums=('8b828892b8de1476d2ea74eafb148aaf'
+# template start; name=cewe; version=6.4.1;
          '11e395d7c48d7f340435eeb938bcb502')
 
-pkgver=6.3.4
+pkgver=6.4.1
 pkgrel=1
 url="http://www.cewe.de/"
 license=("custom:eula")
@@ -80,3 +81,4 @@ package() {
 		$_installDir/.log/* $_installDir/.log &> /dev/null || true
 	echo
 }
+# template end;
