@@ -1,11 +1,12 @@
 pkgbase = hegemon
 	pkgdesc = A modular system monitor written in Rust
 	pkgver = 20181013.085336
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/p-e-w/hegemon
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = rust
+	depends = lm_sensors
 	source = hegemon::git+https://github.com/p-e-w/hegemon
 	sha256sums = SKIP
 
