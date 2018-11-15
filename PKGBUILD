@@ -14,7 +14,7 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('LGPL')
 depends=('gtk3' 'polkit' 'accountsservice')
-makedepends=('gobject-introspection' 'mate-common>=1.21')
+makedepends=('gobject-introspection' 'mate-common>=1.20')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('2e2a3ae287564944f14ca1e0728454550adffae8')
 
