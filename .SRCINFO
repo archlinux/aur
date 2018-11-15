@@ -16,6 +16,8 @@ pkgbase = curam-git
 	backup = etc/curam/media_excludes.conf
 	backup = etc/curam/os_excludes.conf
 	backup = etc/curam/symlinks_check.conf
+	source = https://github.com/MatthewRalston/curam/archive/v0.0.1.tar.gz
+	md5sums = d5e3961cc90b4113f3ca5e334fa470c8
 
 pkgname = curam-git
 
