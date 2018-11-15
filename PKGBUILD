@@ -1,15 +1,15 @@
 # Maintainer: Sedeer el-Showk <s.elshowk@netherrealm.net>
 
 pkgname=fastqc
-pkgver=0.11.5
-pkgrel=2
+pkgver=0.11.8
+pkgrel=1
 pkgdesc='A quality control tool for high throughput sequence data.'
 arch=('any')
 url="http://www.bioinformatics.babraham.ac.uk/projects/fastqc"
 license=('GPL3')
 depends=('perl' 'java-environment>=6' 'ttf-dejavu')
 source=("http://www.bioinformatics.babraham.ac.uk/projects/$pkgname/${pkgname}_v$pkgver.zip")
-md5sums=('3524f101c0ab0bae77c7595983170a76')
+md5sums=('bdaf3b9fe957681b3a12349fdfa1c6c0')
 
 package() {
   mkdir $pkgdir/opt/
