@@ -1,7 +1,7 @@
 pkgname="i3lock-color"
-pkgver=2.11
-pkgrel=4
-_version="2.11-c"
+pkgver=2.12
+pkgrel=1
+_version="2.12.c"
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
 url="https://github.com/PandorasFox/i3lock-color"
@@ -10,7 +10,7 @@ depends=('xcb-util-image' 'pam' 'libev' 'cairo' 'libxkbcommon-x11' 'libjpeg-turb
 provides=('i3lock' 'i3lock-color')
 conflicts=('i3lock')
 source=("https://github.com/PandorasFox/i3lock-color/archive/${_version}.tar.gz")
-sha256sums=('376122e9dd6fd4e3572cb5114ca59417a9da4a8c3d65c347f5bf36e3058d077e')
+sha256sums=('c2ba4cfa51fee3fd2cab439805d213d8614407d93cf8eecbd4e6fa5cb4c9b7a3')
 
 build() {
 	cd "${srcdir}/${pkgname}-${_version}"
