@@ -1,6 +1,6 @@
 pkgbase = ocaml-duppy
 	pkgdesc = OCaml asynchronous scheduler and monad for server-oriented programming
-	pkgver = 0.7.3
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-duppy
 	arch = i686
@@ -8,12 +8,11 @@ pkgbase = ocaml-duppy
 	license = LGPL2.1
 	makedepends = ocaml-findlib
 	depends = ocaml
-	depends = camlp4
 	depends = ocaml-pcre
 	depends = ocaml-ssl
 	options = !strip
-	source = https://github.com/savonet/ocaml-duppy/releases/download/0.7.3/ocaml-duppy-0.7.3.tar.gz
-	md5sums = e76fa658d5b4ec81fd341d041b9ca9df
+	source = https://github.com/savonet/ocaml-duppy/releases/download/0.8.0/ocaml-duppy-0.8.0.tar.gz
+	sha512sums = 1c855123679a16ad73941b3f7d5ba5667a6e8fc79898b666f59ff1ca01c7c6374c935d66214518fa0ee2b18a7acb14062c7f5bfb296377e37f018bf4f42f8de3
 
 pkgname = ocaml-duppy
 
