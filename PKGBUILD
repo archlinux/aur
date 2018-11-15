@@ -18,7 +18,7 @@ depends=('dbus-glib' 'dconf' 'desktop-file-utils' 'glib2' 'gsettings-desktop-sch
          'mate-settings-daemon>=1.21' 'marco>=1.21' 'libgtop' 
          'libmatekbd>=1.21' 'libunique3' 'librsvg' 'libxss' 'libxt'
          'shared-mime-info' 'startup-notification')
-makedepends=('docbook2x' 'mate-common>=1.21' 'yelp-tools' 'libmatekbd' 'libunique3'
+makedepends=('docbook2x' 'mate-common>=1.20' 'yelp-tools' 'libmatekbd' 'libunique3'
              'marco' 'mate-desktop>=1.21' 'mate-settings-daemon')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate')
