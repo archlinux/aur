@@ -28,11 +28,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <linux/oom.h>
+#include <sys/resource.h>
 
 int usage (char **argv) {
   fprintf (stderr,
            "Protect process <pid> from the OOM killer by setting its "
-           "oom_score_adj to %d.\n"
+           "oom_score_adj to %d and its nice value to -20.\n"
            "(TL;DR: try to avoid that an attacker types Alt+SysRq+F "
            "repeatedly and ends up\n"
            "with your logged-in session without the xscreensaver lock.)\n"
@@ -109,6 +110,9 @@ int main (int argc, char **argv) {
     return EPERM;
   fprintf (f, "%d", OOM_SCORE_ADJ_MIN);
   fclose (f);
+
+  if (setpriority (PRIO_PROCESS, pid, INT_MIN) != 0)
+    return errno;
 
   return 0;
 }
