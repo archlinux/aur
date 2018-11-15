@@ -13,8 +13,6 @@ md5sums=('SKIP')
 
 build() {
 	cd "${srcdir}/${_reponame}"
-	mv ldoce5viewer/qtgui/async.py ldoce5viewer/qtgui/async_.py
-	sed -i "s/from .async import AsyncFTSearcher/from .async_ import AsyncFTSearcher/g" ldoce5viewer/qtgui/main.py
 	sed -i "s/import sip/import PyQt5.sip as sip/g" ldoce5viewer/qtgui/__init__.py
 	make
 }
