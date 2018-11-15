@@ -6,20 +6,24 @@
 # Contributor: Kaurin <milos dot kaurin at gmail>
 # Contributor: Nathan Owe <ndowens04 at gmail>
 
-pkgname=filebot
-pkgver=4.8.4
-pkgrel=4
+pkgname=filebot-git
+_pkgname=filebot
+pkgver=4.8.4.r5846.20180828
+_pkgver=4.8.4
+pkgrel=1
 _jnaver=4.5.2
+
 _fixedcommit=b9572f4501ba9d5af9d445a792fa902274f37679
+
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://github.com/filebot/filebot"
 license=('GPL')
-install=$pkgname.install
+install=$_pkgname.install
 depends=('java-openjfx' 'jre8-openjdk' 'fontconfig' 'chromaprint')
 makedepends=('ant' 'ivy')
 provides=('filebot')
-conflicts=('filebot47' 'filebot-git')
+conflicts=('filebot47' 'filebot')
 
 [[ $CARCH == "i686" ]]   && _intarch=i686
 [[ $CARCH == "x86_64" ]] && _intarch=amd64
@@ -29,9 +33,9 @@ conflicts=('filebot47' 'filebot-git')
 
 _jre=$(archlinux-java get)
 
-source=("${pkgname}::git+https://github.com/filebot/filebot.git"
+source=("${_pkgname}::git+https://github.com/filebot/filebot.git"
         #https://github.com/java-native-access/jna/archive/$_jnaver.tar.gz
-        $pkgname-arch.sh $pkgname.svg $pkgname.desktop)
+        $_pkgname-arch.sh $_pkgname.svg $_pkgname.desktop)
 
 md5sums=('SKIP'
          '7c1128f94fcd9f4e29225a12eac83704'
@@ -45,8 +49,10 @@ optdepends=('libzen: Support for additional subtitle search engines (Sublight)'
 
 #noextract=($(for i in ${source[@]}; do basename $i; done))
 
+
+
 prepare() {
-  cd "$srcdir/$pkgname/"
+  cd "$srcdir/$_pkgname/"
   git checkout $_fixedcommit
 
   patch -p1 -i jdk8.patch
@@ -55,6 +61,8 @@ prepare() {
   sed -i -E 's/tar.compression: xz/tar.compression: gzip/' app.properties
 
 cat <<EOT >> app.properties
+
+# Api Keys
 url.data: https://app.filebot.net/data
 
 apikey.fanart.tv: 780b986b22c35e6f7a134a2f392c2deb
@@ -67,8 +75,14 @@ apikey.opensubtitles: FileBot
 EOT
 }
 
+pkgver(){
+  cd "$srcdir/$_pkgname/"
+
+  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git log --date=format:%Y%m%d --pretty=%ad -1 HEAD)"
+}
+
 build() {
-  cd $pkgname
+  cd "$srcdir/$_pkgname/"
 #  print('Set system '+$_jre+' to java-9-openjdk. Should be reverted after build')
   sudo archlinux-java set java-8-openjdk
   ant resolve
@@ -78,12 +92,12 @@ build() {
 }
 
 package() {
-  install -Dm644 $pkgname/lib/native/linux-$_intarch/libjnidispatch.so "$pkgdir/usr/share/java/$pkgname/libjnidispatch.so"
-  cp -dpr --no-preserve=ownership $pkgname/dist/lib/* "$pkgdir/usr/share/java/$pkgname/"
+  install -Dm644 $_pkgname/lib/native/linux-$_intarch/libjnidispatch.so "$pkgdir/usr/share/java/$_pkgname/libjnidispatch.so"
+  cp -dpr --no-preserve=ownership $_pkgname/dist/lib/* "$pkgdir/usr/share/java/$_pkgname/"
 
-  install -Dm755 $pkgname-arch.sh "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 $pkgname.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
-  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm755 $_pkgname-arch.sh "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 $_pkgname.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+  install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
   
   sudo archlinux-java set $_jre
 }
