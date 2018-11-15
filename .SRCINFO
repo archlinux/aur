@@ -1,6 +1,6 @@
 pkgbase = python-signal-daemon
 	pkgdesc = A daemon to process input of signal-cli using the system dbus
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/randomn4me/python-signal-daemon/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = python-signal-daemon
 	depends = python
 	depends = signal-cli
 	depends = python-pydbus
-	provides = python-signal-daemon=1.1-1
-	source = https://github.com/randomn4me/signal-daemon/archive/1.1.tar.gz
-	md5sums = 94aa5ac4728dc002eb3e730ee6193ff2
+	provides = python-signal-daemon=1.2-1
+	source = https://github.com/randomn4me/signal-daemon/archive/1.2.tar.gz
+	md5sums = 2b414c7c1c64862cf026816c4e95c6c9
 
 pkgname = python-signal-daemon
 
