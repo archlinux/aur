@@ -8,7 +8,7 @@ pkgbase = mate-user-guide-dev
 	groups = mate-gtk3
 	license = GPL
 	license = LGPL
-	makedepends = mate-common>=1.21
+	makedepends = mate-common>=1.20
 	makedepends = yelp-tools
 	depends = desktop-file-utils
 	depends = yelp
