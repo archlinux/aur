@@ -1,9 +1,10 @@
 # This is the PKGBUILD for ngs
 # Maintainer: Aaron Baker <aa{last name}99{at}gmail{dt}org>
+# Maintainer: Georgios Amanakis <g_amanakis{at}yahoo{dt}com>
 
 pkgname=ngs
 pkgver=2.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A new, domain-specific API for accessing reads, alignments and pileups produced from Next Generation Sequencing."
 arch=('x86_64')
 url="https://github.com/ncbi/ngs"
