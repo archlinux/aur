@@ -1,5 +1,6 @@
-# Maintainer: luckdragon <f41c0r [/at\] cyb3r DOT space>
-# Original maintainer from the AUR3 package: yugrotavele <yugrotavele at archlinux dot us>
+# Maintainer: Henry Tung <henryptung at gmail dot com>
+# Contributor: luckdragon <f41c0r [/at\] cyb3r DOT space>
+# Contributor: yugrotavele <yugrotavele at archlinux dot us>
 
 pkgname=jbidwatcher
 pkgver=2.99pre5
