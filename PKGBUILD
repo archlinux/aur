@@ -10,7 +10,7 @@ license=('APACHE' 'MIT')
 depends=('gcc-libs')
 provides=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-md5sums=('27abb9bfb6dd7c782fcbb95ad7ad9400')
+md5sums=('606fc30ee4d866fd21a6452b43e0a708')
 
 package() {
 	cd "$_pkgname-v$pkgver-$arch-unknown-linux-gnu"
@@ -19,4 +19,3 @@ package() {
 	install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE-APACHE"
 	install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE-MIT"
 }
-md5sums=('606fc30ee4d866fd21a6452b43e0a708')
