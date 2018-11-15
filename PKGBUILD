@@ -44,9 +44,6 @@
 
 # The next section: ... Now onto the real install ...
 
-# Edit PKGBUILD.local after the first run
-if [ ! -s 'PKGBUILD.local' ]; then
-  cat > 'PKGBUILD.local' << EOF
 # Set the mode for all created devices.
 _opt_defaultmode="0660" # default: 0600
 _opt_defaultgroup="uucp" # default: root
@@ -59,9 +56,8 @@ _opt_defaultgroup="uucp" # default: root
 _opt_RealPort='RealPort' # Can also be Realport
 
 _opt_DKMS=1           # This can be toggled between installs
-EOF
-fi
-source 'PKGBUILD.local'
+
+_opt_SSL10=1
 
 # Since the kernel module isn't loaded until you have a device
 # configured, these services are automatically enabled and started
@@ -107,15 +103,19 @@ source 'PKGBUILD.local'
 set -u
 pkgname='dgrp'
 #_pkgver='1.9-36'; _dl='81000137_X.tgz'
-_pkgver='1.9-38'; _dl='81000137_Y.tgz'
+#_pkgver='1.9-38'; _dl='81000137_Y.tgz'
+_pkgver='1.9-39'; _dl='40002086_Z.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='5'
+pkgrel='1'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
 url='https://www.digi.com/'
 license=('GPL' 'custom') # OpenSSL=Apache. Arch is always new enough to not need their version.
-depends=('openssl-1.0' 'grep' 'awk' 'systemd' 'procps-ng' 'psmisc' 'perl')
+depends=('grep' 'awk' 'systemd' 'procps-ng' 'psmisc' 'perl')
+if [ "${_opt_SSL10}" -ne 0 ]; then
+  depends+=('openssl-1.0')
+fi
 optdepends=(
   {tk,gksu}': Digi RealPort Manager GUI'
   'java-runtime: Digi Device Discovery Tool GUI'
@@ -124,7 +124,12 @@ optdepends=(
 backup=('etc/dgrp.backing.store')
 options=('!docs' '!emptydirs')
 install="${pkgname}-install.sh"
-_verwatch=('https://www.digi.com/support/includes/drivers.aspx?pid=1954&osvid=218' '<li>.*RealPort Driver for Linux ver\. \([0-9\.]\+\), tgz version.*' 'f')
+_vercheck() {
+  local _versed2="${_verwatch[1]//:/\\:}" # Escape the two things that the PKGBUILD is not permitted to do
+   _versed2="${_versed2//$/\\$}" # End of line (though sed doesn't seem to require this), and end of search
+  curl -s -l "${_verwatch[0]}" | sed -ne "s:^${_versed2}"'$:\1:p' | sed -e 's:-:.:g' | sort -V
+}
+_verwatch=('https://www.digi.com/support/includes/drivers.aspx?pid=1954&osvid=218' '<li>.*Realport Driver for Linux ver\. \([^,]\+\), tgz version.*' 'f')
 _mibs=(
   '40002014_a.mib' # DIGI Connectware Manager Notifications
   '40002194_H.mib' # Portserver TS MIB File
@@ -177,14 +182,14 @@ source=(
   'addp_perl-1.0.tgz::https://github.com/severach/addp/archive/f92a6fd2050c9f32a5a11cac18cd9def78138530.tar.gz'
   'ftp://ftp1.digi.com/support/utilities/AddpClient.zip'
   "${_mibs[@]/#/${_mibsrc}}"
-  '0000-Kernel-4-13-CLASS_ATTR_STRING.patch' # https://www.digi.com/support/forum/67157/realport-compile-error-with-fedora-27-kernel-4-14-14 https://www.digi.com/support/forum/65817/class_attr_driver_version-error-compiling-in-kernel-4-13
-  '0001-Kernel-4-15-timers.patch' # https://forum.blackmagicdesign.com/viewtopic.php?uid=16&f=3&t=68382&start=0
+  #'0000-Kernel-4-13-CLASS_ATTR_STRING.patch' # https://www.digi.com/support/forum/67157/realport-compile-error-with-fedora-27-kernel-4-14-14 https://www.digi.com/support/forum/65817/class_attr_driver_version-error-compiling-in-kernel-4-13
+  #'0001-Kernel-4-15-timers.patch' # https://forum.blackmagicdesign.com/viewtopic.php?uid=16&f=3&t=68382&start=0
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
 #source_x86_64=('http://ftp1.digi.com/support/utilities/40002889_A.tgz') # compiled i686 therefore worthless
 # addp and sddp are incomplete. I replaced them with addp.pl
-sha256sums=('e474518da5b3feddd1f4dd0083ac8125e34ba07da9884cbd3ebd1955006891d7'
+sha256sums=('0db5204cc7d7806fde39b5ea7b6a465b4310739c380d7330131956e63af0f137'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
             '9d79df8617e2bb1042a4b7d34311e73dc4afcdfe4dfa66703455ff54512427f5'
@@ -213,9 +218,7 @@ sha256sums=('e474518da5b3feddd1f4dd0083ac8125e34ba07da9884cbd3ebd1955006891d7'
             '731e05fc551367faa6ad5dc317eedf305388ab12db196c0a1361a3d01bd35279'
             'c471cafa43503a40d43b42acd8bc6ef49db29e55a74e0494c85f729ea45fe243'
             '5cac7ce2e6f043127f314b93694af021ae7820ffb5bf3de343da7a240d05e9c8'
-            '8654496d83c083e457e8bb9bae2b1e71804d156a38c284d89872d0125eba947d'
-            '61500188b388fd1eb52ec970150cf098d855b8ba09a8efb8192803eebefaba03'
-            '46a87449cd316a621271def4147ba781424dd524ae2332cd55dd07f2ac9ab456')
+            '8654496d83c083e457e8bb9bae2b1e71804d156a38c284d89872d0125eba947d')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -285,16 +288,6 @@ _fn_mibcheck() {
 prepare() {
   set -u
   cd "${_srcdir}"
-
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}
-  #diff -pNaru5 dgrp-1.9{.orig,} > '0000-Kernel-4-13-CLASS_ATTR_STRING.patch'
-  patch -Nup1 -i "${srcdir}/0000-Kernel-4-13-CLASS_ATTR_STRING.patch"
-  test ! -d "${srcdir}/${_srcdir}.orig-0000" || echo "${}"
-
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0001}
-  #diff -pNaru5 dgrp-1.9{.orig-0001,} > '0001-Kernel-4-15-timers.patch'
-  patch -Nup1 -i "${srcdir}/0001-Kernel-4-15-timers.patch"
-  test ! -d "${srcdir}/${_srcdir}.orig-0001" || echo "${}"
 
   # Version check
   if [ "${_pkgver}" != "$(grep -e 'TRUE_VERSION=' ./Makefile.inc | cut -d'"' -f2)" ]; then
@@ -366,10 +359,12 @@ prepare() {
   # Change insmod to modprobe
   sed -e 's:\${INSMOD}.*$:modprobe "${DGRP_DRIVER}" # &:g' -i 'config/dgrp_cfg_node'
 
-  # drpd makefile does not honor --with-ssl-dir. We convert the bogus folder to the one we need.
-  sed -e 's:/usr/local/ssl/include:/usr/include/openssl-1.0:g' \
-      -e 's:/usr/local/ssl/lib:/usr/lib/openssl-1.0:g' \
-    -i 'daemon/Makefile.in'
+  if [ "${_opt_SSL10}" -ne 0 ]; then
+    # drpd makefile does not honor --with-ssl-dir. We convert the bogus folder to the one we need.
+    sed -e 's:/usr/local/ssl/include:/usr/include/openssl-1.0:g' \
+        -e 's:/usr/local/ssl/lib:/usr/lib/openssl-1.0:g' \
+      -i 'daemon/Makefile.in'
+  fi
 
   # new folder in gcc 8
   sed -e 's/^clean:$/&\n\trm -f .cache.mk/g' -i driver/*/Makefile*
@@ -385,11 +380,15 @@ prepare() {
 _configure() {
   if [ ! -s 'Makefile' ]; then
     # this generates a harmless error as it tries to make a folder in /usr/lib/modules...
-    # --with-ssl-dir supplies to -I but mainly for configure. CFLAGS goes everywhere.
-    # --with-ssl-dir is supplied to -L too which is worthless. We amend with LDFLAGS.
-    CFLAGS="${CFLAGS} -I/usr/include/openssl-1.0" \
-    LDFLAGS="${LDFLAGS} -L/usr/lib/openssl-1.0" \
-    ./configure -q --sbindir='/usr/bin' --prefix='/usr' --mandir='/usr/share/man' --with-ssl-dir='/usr/include/openssl-1.0'
+    if [ "${_opt_SSL10}" -ne 0 ]; then
+      # --with-ssl-dir supplies to -I but mainly for configure. CFLAGS goes everywhere.
+      # --with-ssl-dir is supplied to -L too which is worthless. We amend with LDFLAGS.
+      CFLAGS="${CFLAGS} -I/usr/include/openssl-1.0" \
+      LDFLAGS="${LDFLAGS} -L/usr/lib/openssl-1.0" \
+      ./configure -q --sbindir='/usr/bin' --prefix='/usr' --mandir='/usr/share/man' --with-ssl-dir='/usr/include/openssl-1.0'
+    else
+      ./configure -q --sbindir='/usr/bin' --prefix='/usr' --mandir='/usr/share/man'
+    fi
   fi
 }
 
