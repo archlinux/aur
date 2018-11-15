@@ -1,7 +1,7 @@
 # Maintainer: Reto Brunner <brunnre8@gmail.com>
 pkgname=networkd-notify-git
-pkgver=r6.989affa
-pkgrel=2
+pkgver=r13.1294548
+pkgrel=1
 pkgdesc='Desktop notification integration for systemd-networkd'
 arch=('any')
 url='https://gitlab.com/wavexx/networkd-notify'
