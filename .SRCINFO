@@ -1,0 +1,15 @@
+pkgbase = python-allure-commons
+	pkgdesc = Commons of Allure python adaptors for python-based test frameworks
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = https://github.com/allure-framework/allure-python/tree/master/allure-python-commons
+	arch = any
+	depends = python
+	depends = python-pluggy>=0.4.0
+	depends = python-six>=1.9.0
+	depends = python-attrs>=16.0.0
+	source = git+https://github.com/allure-framework/allure-python.git#tag=2.5.3
+	md5sums = SKIP
+
+pkgname = python-allure-commons
+
