@@ -1,8 +1,8 @@
 pkgbase = networkd-notify-git
 	pkgdesc = Desktop notification integration for systemd-networkd
-	pkgver = r6.989affa
-	pkgrel = 2
-	url = https://github.com/wavexx/networkd-notify
+	pkgver = r13.1294548
+	pkgrel = 1
+	url = https://gitlab.com/wavexx/networkd-notify
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = networkd-notify-git
 	depends = wireless_tools
 	provides = networkd-notify
 	conflicts = networkd-notify
-	source = networkd-notify-git::git+https://github.com/wavexx/networkd-notify.git
+	source = networkd-notify-git::git+https://gitlab.com/wavexx/networkd-notify.git
 	sha256sums = SKIP
 
 pkgname = networkd-notify-git
