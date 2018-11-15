@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('psuinfo')
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.5
+pkgrel=1
 pkgdesc="A psutil-based command to display customizable system info, intended for Tint2 or other panels"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/psuinfo"
@@ -17,7 +17,7 @@ source=("https://github.com/nwg-piotr/psuinfo/raw/master/psuinfo"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/temp.svg"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/up.svg")
 
-md5sums=('60e166e395e46a42c49ae285260e3a02'
+md5sums=('b36b76849d452ec8e9f64431fbf30a14'
          'SKIP'
          'SKIP'
          'SKIP'
