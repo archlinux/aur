@@ -3,15 +3,15 @@
 
 pkgbase=pypy-appdirs
 pkgname=(pypy-appdirs pypy3-appdirs)
-pkgver=1.4.0
-pkgrel=5
+pkgver=1.4.3
+pkgrel=1
 pkgdesc='A small Python module for determining appropriate platform-specific dirs, e.g. a "user data dir".'
 arch=('any')
 url="https://github.com/ActiveState/appdirs"
 license=('MIT')
 makedepends=('pypy-setuptools' 'pypy3-setuptools')
 source=("https://pypi.io/packages/source/a/appdirs/appdirs-$pkgver.tar.gz")
-md5sums=('1d17b4c9694ab84794e228f28dc3275b')
+md5sums=('44c679904082a2133f5566c8a0d3ab42')
 
 prepare() {
   cp -a appdirs-$pkgver{,-py2}
