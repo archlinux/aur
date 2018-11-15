@@ -11,9 +11,9 @@ url="http://github.com/btpd/btpd"
 license=('custom')
 depends=('openssl')
 install="$pkgname.install"
-source=(http://cloud.github.com/downloads/$pkgname/$pkgname/$pkgname-$pkgver.tar.gz \
+source=(https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz \
         $pkgname.service)
-sha512sums=('719778762a90f62942ae235c4c3fcd92d859d0c7d977e9fb0d7f3149c4c35c649eadc0a648b8a79c547dae8060ff3dcde1afb38081d55d15ae618039acdafb0f'
+sha512sums=('90d7574dec98649fb03973ca802f9ab3f0c43ac42761db2eb22146c985f2a43825ff6a5463d151950a8871ace9d73df2256eb926228ef4321b726c89ec3412f3'
             '35f7abc7341b7a0705f09388460fd73d61afcb863a0cdcf9e5fcc8981aecae3348fb8f592cdb518654a4649563befaea8457853cb0427ce8391fe77109a54c37')
 
 build() {
