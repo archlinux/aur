@@ -10,7 +10,7 @@ depends=('xscreensaver')
 source=(${pkgname}.c
         LICENSE
         xscreensaver.service)
-md5sums=('43175fd1d4dc75bf02311b1cc6de467e'
+md5sums=('a4cc96966ac71a75bc841c0279957a2f'
          '8365d07beeb5f39d87e846dca3ae7b64'
          'bb945c067ae57367ddc6f041fd33dfa4')
 
