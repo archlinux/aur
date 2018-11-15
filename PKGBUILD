@@ -12,8 +12,8 @@ license=('GPL3')
 depends=('python2-chardet' 'python2-dbus' 'python2-docopt' 'python2-futures'
          'python2-gobject2' 'python2-lxml' 'python2-netifaces' 'python2-notify2'
          'python2-pip' 'python2-protobuf' 'python2-psutil'
-         'python2-requests' 'python2-setproctitle' 'python2-zeroconf')
-makedepends=('python2-setuptools')
+         'python2-requests' 'python2-setproctitle' 'python2-setuptools'
+         'python2-zeroconf')
 optdepends=('faac: AAC transcoding support'
             'ffmpeg: multiple formats support'
             'flac: FLAC transcoding support'
