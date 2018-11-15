@@ -8,7 +8,11 @@ pkgbase = hp15c
 	depends = tcl
 	depends = tk
 	source = hp15c-4.0.0.zip::https://drive.google.com/uc?export=download&id=1ewFXi6PPRsiPJESUq5A2Gp83NYSYVYKr
+	source = 01-hp15c-arch-docs.patch
+	source = hp15c_runner.sh
 	md5sums = c90cc630d9e5bdf70912f8cd754cc2cc
+	md5sums = cb4a8e759f94860744057c20f90244e4
+	md5sums = bdf3ff02949e3c716b782e8cec9ee8a1
 
 pkgname = hp15c
 

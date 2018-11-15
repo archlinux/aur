@@ -8,12 +8,18 @@ url="http://hp-15c.homepage.t-online.de/content_web.htm"
 arch=('any')
 license=('GPL3')
 depends=('tcl' 'tk')
-source=("$pkgname-$pkgver.zip::https://drive.google.com/uc?export=download&id=1ewFXi6PPRsiPJESUq5A2Gp83NYSYVYKr")
-md5sums=('c90cc630d9e5bdf70912f8cd754cc2cc')
+source=(
+    "$pkgname-$pkgver.zip::https://drive.google.com/uc?export=download&id=1ewFXi6PPRsiPJESUq5A2Gp83NYSYVYKr"
+    "01-hp15c-arch-docs.patch"
+    "hp15c_runner.sh"
+)
+md5sums=('c90cc630d9e5bdf70912f8cd754cc2cc'
+         'cb4a8e759f94860744057c20f90244e4'
+         'bdf3ff02949e3c716b782e8cec9ee8a1')
 
 prepare() {
     # patch location of help files to match Arch standards
-    patch -p1 -i '../01-hp15c-arch-docs.patch'
+    patch -p1 -i "$srcdir/01-hp15c-arch-docs.patch"
 }
 
 package() {
@@ -30,7 +36,7 @@ package() {
 
     # runs script in proper directory
     cp HP-15C.tcl -t "$pkgdir/usr/lib/$pkgname/"
-    install -D ../hp15c_runner.sh "$pkgdir/usr/bin/hp15c"
+    install -D "$srcdir/hp15c_runner.sh" "$pkgdir/usr/bin/hp15c"
 }
 
 # vim:set ts=4 sw=4 ft=sh et:
