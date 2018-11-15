@@ -3,12 +3,12 @@
 
 pkgname='nextcloud-client'
 pkgver='2.5.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
 license=('GPL2')
-depends=('qt5-webengine' 'qtkeychain')
+depends=('qt5-webengine' 'qt5-webkit' 'qtkeychain')
 makedepends=('extra-cmake-modules' 'python-sphinx' 'qt5-tools' 'doxygen' 'kio')
 optdepends=('python2-nautilus: integration with Nautilus'
 	    'nemo-python: integration with Nemo'
