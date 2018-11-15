@@ -2,16 +2,16 @@
 
 pkgbase=lightdm-guest
 pkgname=('lightdm-guest' 'liblightdm-qt4-guest' 'liblightdm-qt5-guest')
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 epoch=1
-pkgdesc='A lightweight display manager. With guest-session enabled'
-arch=('i686' 'x86_64')
+pkgdesc='A lightweight display manager. With guest-session enabled and other tweaks'
+arch=('x86_64')
 url='https://www.freedesktop.org/wiki/Software/LightDM/'
 license=('GPL3' 'LGPL3')
 makedepends=('gcc-libs' 'glib2' 'glibc' 'gobject-introspection' 'gtk-doc'
              'intltool' 'itstool' 'libgcrypt' 'libx11' 'libxcb' 'libxdmcp'
-             'libxklavier' 'pam' 'polkit' 'qt4' 'qt5-base' 'vala')
+             'libxklavier' 'pam' 'polkit' 'qt4' 'qt5-base' 'vala' 'yelp-tools')
 source=("lightdm-${pkgver}.tar.gz::https://github.com/CanonicalLtd/lightdm/archive/${pkgver}.tar.gz"
         'lightdm.service'
         'lightdm.sysusers'
@@ -23,7 +23,7 @@ source=("lightdm-${pkgver}.tar.gz::https://github.com/CanonicalLtd/lightdm/archi
         'Xsession'
         0001-guest-account-Add-default-GSettings-support.patch
 	0002-Fix-separator-error.patch)
-sha256sums=('831c61b598b2b27fa1ee89ae162382cb122ab7f9d865b9e8475895631dd8018a'
+sha256sums=('e76eb297ff9bf57d38f3480789b9cc0d99a939bd0b5f280c7309ff313d956784'
              SKIP
              SKIP
              SKIP
@@ -39,7 +39,7 @@ prepare() {
     cd "lightdm-${pkgver}"
 
     patch -p1 -i "${srcdir}"/lightdm-default-config.patch
-    patch -p1 -i "${srcdir}"/0002-Fix-separator-error.patch
+    # patch -p1 -i "${srcdir}"/0002-Fix-separator-error.patch
 
     # Do not use Ubuntu's language-tools
     sed -i '/04_language_handling.patch/d' debian/patches/series
@@ -73,6 +73,7 @@ build() {
     --sysconfdir='/etc' \
     --disable-static \
     --disable-tests \
+    --enable-gtk-doc \
     --with-greeter-user='lightdm' \
     --with-greeter-session='lightdm-gtk-greeter'
   make
@@ -83,7 +84,6 @@ package_lightdm-guest() {
            'libxklavier' 'pam' 'polkit')
   optdepends=('accountsservice: Enhanced user accounts handling'
               'lightdm-gtk-greeter: GTK greeter'
-              'lightdm-kde-greeter: Qt greeter'
               'xorg-server-xephyr: LightDM test mode'
               'bindfs: Used for guest session to avoid copying skeleton dotfiles')
     provides=(lightdm)
@@ -147,7 +147,7 @@ package_lightdm-guest() {
 }
 
 package_liblightdm-qt4-guest() {
-  pkgdesc='LightDM Qt client library'
+  pkgdesc='LightDM Qt client library. With guest-session enabled and other tweaks'
   depends=('gcc-libs' 'glibc' 'lightdm' 'qt4')
   options=('!emptydirs')
   provides=(liblightdm-qt4)
@@ -164,7 +164,7 @@ package_liblightdm-qt4-guest() {
 }
 
 package_liblightdm-qt5-guest() {
-  pkgdesc='LightDM Qt client library'
+  pkgdesc='LightDM Qt client library. With guest-session enabled and other tweaks'
   depends=('gcc-libs' 'glibc' 'lightdm' 'qt5-base')
   options=('!emptydirs')
   provides=(liblightdm-qt5)
@@ -179,4 +179,3 @@ package_liblightdm-qt5-guest() {
   find "${pkgdir}" -type f  -name *qt[!5]* -exec rm {} +
   find "${pkgdir}" -type l  -name *qt[!5]* -exec rm {} +
 }
-
