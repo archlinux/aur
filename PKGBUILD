@@ -4,7 +4,7 @@
 pkgbase='python-bokeh'
 pkgname=('python-bokeh' 'python2-bokeh')
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive Web Plotting for Python'
 arch=('any')
 url='http://bokeh.pydata.org/'
@@ -33,7 +33,8 @@ package_python-bokeh() {
 	 'python-pillow'
          'python-yaml'
          'python-tornado')
-  optdepends=('python-bkcharts: server')
+  optdepends=('python-bkcharts: server'
+	 'phantomjs: svg export')
 
   cd "${srcdir}"/bokeh-$pkgver
   python setup.py install --root="${pkgdir}" --optimize=1
@@ -49,7 +50,8 @@ package_python2-bokeh() {
 	 'python2-pillow'
          'python2-yaml'
          'python2-tornado')
-  optdepends=('python2-bkcharts: server')
+  optdepends=('python2-bkcharts: server'
+	 'phantomjs: svg export')
 
   cd "${srcdir}"/bokeh-$pkgver-py2
   python2 setup.py install --root="${pkgdir}" --optimize=1

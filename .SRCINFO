@@ -1,7 +1,7 @@
 pkgbase = python-bokeh
 	pkgdesc = Interactive Web Plotting for Python
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bokeh.pydata.org/
 	arch = any
 	license = BSD
@@ -37,6 +37,7 @@ pkgname = python-bokeh
 	depends = python-yaml
 	depends = python-tornado
 	optdepends = python-bkcharts: server
+	optdepends = phantomjs: svg export
 
 pkgname = python2-bokeh
 	depends = python2-numpy
@@ -49,4 +50,5 @@ pkgname = python2-bokeh
 	depends = python2-yaml
 	depends = python2-tornado
 	optdepends = python2-bkcharts: server
+	optdepends = phantomjs: svg export
 
