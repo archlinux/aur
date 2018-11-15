@@ -8,12 +8,12 @@
 
 pkgname=filebot-git
 _pkgname=filebot
-pkgver=4.8.4.r5846.20180828
+pkgver=4.8.4.r5853.20181001
 _pkgver=4.8.4
 pkgrel=1
 _jnaver=4.5.2
 
-_fixedcommit=b9572f4501ba9d5af9d445a792fa902274f37679
+_fixedcommit=7a73521ceed9e015bc23b32c1abab2545a47adeb
 
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
