@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-prime-util'
-pkgver='0.72'
+pkgver='0.73'
 pkgrel='1'
 pkgdesc="Math::Prime::Util - utilities related to prime numbers, including fast sieves and factoring (ntheory)"
 arch=('i686' 'x86_64')
@@ -35,8 +35,8 @@ provides=(
 )
 url='https://metacpan.org/release/Math-Prime-Util'
 source=("https://cpan.metacpan.org/authors/id/D/DA/DANAJ/Math-Prime-Util-$pkgver.tar.gz")
-md5sums=('4eb631e2be42061bd849a6caa5f5a92c')
-sha512sums=('ae9a780eb99f4d9ef66a05602dc02fd55f1fbd9cec9fc0ea51392774098e3d01a4387ab4ca93157846ce764edba892ab2798dcbbe9387572348b55ec88eea064')
+md5sums=('26496630990db586dfede6551de79cbe')
+sha512sums=('a772ba116b51c906e1f6d25d8bc1cbda93c01220998f9606aabc767fe8d0973b71a86f027b3a2a6cc75de026813a70ea825532f2070ecfadbe697834a025404e')
 _distdir="Math-Prime-Util-$pkgver"
 
 build() {
