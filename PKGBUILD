@@ -10,7 +10,7 @@ url=https://github.com/tdryer/hangups
 license=('MIT')
 depends=('python-aiohttp' 'python-appdirs' 'python-configargparse'
          'python-mechanicalsoup' 'python-protobuf' 'python-readlike'
-         'python-reparser' 'python-requests' 'python-urwid')
+         'python-reparser' 'python-requests' 'python-setuptools' 'python-urwid')
 source=("https://files.pythonhosted.org/packages/source/h/hangups/hangups-$pkgver.tar.gz")
 sha512sums=('643f9a5073a06a4dc85c582e9dac7503d4da74a6b87f09357623ad298c8b097071cb59f89ed32d54e1235c14605d36768b5abbd069d879b19b405c281d033bc8')
 
