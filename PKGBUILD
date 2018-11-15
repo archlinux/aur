@@ -1,7 +1,7 @@
 # Maintainer: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
 pkgname=crawl
-pkgver=0.21.0
-pkgrel=2
+pkgver=0.22.1
+pkgrel=1
 pkgdesc="Crawl stonesoup, curses version"
 url="http://crawl.develz.org/"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ replaces=()
 backup=()
 source=("https://github.com/crawl/$pkgname/archive/$pkgver.tar.gz")
 
-md5sums=('0780da66a5afe5af8e6d3013bf9d950c')
+md5sums=('d73637467a621b5cbf7eecbc065c054f')
 
 prepare() {
 
