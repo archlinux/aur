@@ -1,31 +1,38 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Omar Roth <omarroth@hotmail.com>
 
-# Maintainer: Andrew Kraut <akraut@gmail.com>
 pkgname=urbit
-pkgver=0.4
-pkgrel=2
-epoch=0
-pkgdesc="a secure peer-to-peer network of personal servers, built on a clean-slate system software stack"
+pkgver=0.6.0
+pkgrel=1
+pkgdesc="An operating function"
 arch=('i686' 'x86_64')
 url="https://urbit.org/"
 license=('MIT')
-depends=('libsigsegv' 'gmp' 'openssl' 'ncurses' 'curl')
-makedepends=('gcc' 'automake' 'autoconf' 'ragel' 'cmake' 're2c' 'libtool')
+depends=('libsigsegv' 'gmp' 'openssl' 'ncurses' 'curl' 'libuv' 'python')
+makedepends=('gcc' 'automake' 'autoconf' 'ragel' 'cmake' 're2c' 'libtool' 'meson' 'ninja')
 conflicts=('urbit-git')
-options=()
-source=("${pkgname}-${pkgver}.tar.gz::https://media.urbit.org/dist/src/${pkgname}-${pkgver}.tar.gz")
+source=($pkgname-$pkgver::git+https://github.com/urbit/urbit)
+sha256sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  
+  msg2 'Preparing distribution...'
+  ./scripts/bootstrap
+}
 
 build() {
-	cd "${pkgname}-${pkgver}"
-	make all
+  cd "${pkgname}-${pkgver}"
+
+  msg2 'Building...'
+  ./scripts/build
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-	install -D -m755 bin/urbit ${pkgdir}/usr/bin/urbit
-	install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd "${pkgname}-${pkgver}"
+
+  msg2 'Installing license...'
+  install -Dm644 LICENSE.txt -t "pkgdir/usr/share/licenses/urbit"
+
+  msg2 'Installing...'
+  install -Dm755 build/urbit ${pkgdir}/usr/bin/urbit
 }
-md5sums=('7a403e9a03e32c98ea2fa00654abf85a')
