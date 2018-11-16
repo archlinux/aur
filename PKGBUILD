@@ -17,13 +17,13 @@
 #
 pkgbase="zfs-linux-git"
 pkgname=("zfs-linux-git" "zfs-linux-git-headers")
-_commit='af2e8411dacbc694b1aaf9074e68a9d12270e74c'
-_zfsver="2018.11.12.r4829.gaf2e8411d"
+_commit='a10d50f999511d304f910852c7825c70c9c9e303'
+_zfsver="2018.11.15.r4830.ga10d50f99"
 _kernelver="4.19.1.arch1-1"
 _extramodules="${_kernelver/.arch/-arch}-ARCH"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=2
+pkgrel=1
 makedepends=("linux-headers=${_kernelver}" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
