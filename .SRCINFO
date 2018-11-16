@@ -1,6 +1,6 @@
 pkgbase = clight-git
 	pkgdesc = A C daemon that turns your webcam into a light sensor. It can also change display gamma temperature, dim your screen and set your dpms.
-	pkgver = r11.9a475a9
+	pkgver = r463.cbb3a40
 	pkgrel = 1
 	url = https://github.com/FedeDP/Clight
 	install = clight.install
