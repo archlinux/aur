@@ -1,6 +1,6 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 pkgname=camouflage
-_pkgver=0.4.0
+_pkgver=0.5.0
 pkgver=v${_pkgver}
 pkgrel=1
 pkgdesc="a mux+websocket+TLS proxy"
@@ -14,7 +14,7 @@ source=(
     "camouflage.install"
 )
 
-md5sums=('e7b05cc3f5565c6b4c9c7e4dc31ae4d6'
+md5sums=('ae6b8e23164260f4d2be39d8205f4c47'
          'd506ec62e984c89ddea0cec157292d42')
 
 backup=(
