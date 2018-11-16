@@ -13,5 +13,5 @@ noextract=("aws-iam-authenticator")
 sha256sums=("246f6d13b051bbfb12962edca074c8f67436930e84b2bec3a45a5d9242dc6f0c")
 
 package() {
-	install -Dm 755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm 755 "${srcdir}/aws-iam-authenticator" "${pkgdir}/usr/bin/aws-iam-authenticator"
 }
