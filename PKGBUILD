@@ -1,4 +1,5 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Eduard Wirch <wirch.eduard@gmail.com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=masterpassword-gui
 pkgver=2.7.10
