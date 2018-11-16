@@ -3,7 +3,7 @@
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-gcc
 pkgver=5.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -48,7 +48,7 @@ build() {
     --with-ld=/usr/bin/${_target}-ld \
     --with-cpu=cortex-a9 \
     --with-float=softfp \
-    --with-fpu=vfp \
+    --with-fpu=vfpv3 \
     --with-specs='%{save-temps: -fverbose-asm} %{funwind-tables|fno-unwind-tables|mabi=*|ffreestanding|nostdlib:;:-funwind-tables}' \
     --enable-lto \
     --with-pkgversion='GCC for FRC' \
