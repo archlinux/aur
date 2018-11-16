@@ -1,7 +1,7 @@
 .\" Copyright (C) 2011 Ben Dowling <http://www.coderholic.com/pyradio>
 .\" This manual is freely distributable under the terms of the GPL.
 .\"
-.TH PYRADIO 1 "May 2018"
+.TH PYRADIO 1 "November 2018"
 
 .SH NAME
 .PP
@@ -9,24 +9,45 @@ pyradio \- a console based Internet radio player
 
 .SH SYNOPSIS
 .PP
-\fBpyradio\fR [path/to/]stations.csv
+\fBpyradio\fR
+.RI \fI[OPTIONS]
+[path/to/]stations.csv
 
 .SH DESCRIPTION
 .PP
 .B pyradio
 is a command line internet radio player. 
 .PP
-It will use one of the following players: mpv, mplayer or vlc, detected in that order.
+It will use one of the following players: \fImpv\fR, \fImplayer\fR or \fIvlc\fR, detected in that order. If none of them is detected, \fBpyradio\fR will \fBsilently\ terminate\fR (use \fB-d\fR option to get a log file).
 .PP
-If mpv is detected, socat is required too.
+If \fImpv\fR is detected, \fIsocat\fR is required too.
 .PP
 It is possible to use 
-a custom stations list in ~/.pyradio/stations.csv.
+a custom stations list in \fB~/.pyradio/stations.csv.
 .PP
 If custom stations list is missing, \fBpyradio\fR would use a 
 default one.
 
-.SH Controls
+.SH OPTIONS
+
+.IP \fB-h\fR,\fB\ \--help            
+Show this help message and exit.
+.IP \fB-s\fR,\fB\ \--stations\ \fI[STATIONS]
+Use specified station CSV file.
+.IP \fB-p\fR,\fB\ \--play\ \fI\<PLAY\>
+Play station number \fI\<PLAY\>\fR. Select randome station if \fI\<PLAY\>\fR not specified.
+.IP \fB-r\fR,\fB\ \--random          
+Start and play a random station.
+.IP \fB-a\fR,\fB\ \--add             
+Add station to list.
+.IP \fB-l\fR,\fB\ \--list            
+List of added stations.
+.IP \fB-u\fR,\fB\ \--use-player\ \fI[USE_PLAYER]
+Specify which player to use (\fImpv\fR,\ \fImplayer\fR\ or\ \fIcvlc\fR).
+.IP \fB-d\fR,\fB\ \--debug           
+Debug mode (pyradio.log created). To be attached with any bug report.
+
+.SH CONTROLS
 
 .IP \fB\Up/Down/PgUp/PgDown     
 Change station selection
