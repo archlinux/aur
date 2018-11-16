@@ -3,7 +3,7 @@
 
 _pkgname=nohang
 pkgname=${_pkgname}-git
-pkgver=r150.g83ac238
+pkgver=r152.g37bb978
 pkgrel=1
 pkgdesc="A highly configurable OOM preventer"
 arch=('any')
@@ -22,6 +22,7 @@ depends=(
 optdepends=(
 )
 conflicts=("${_pkgname}")
+backup=('etc/nohang/nohang.conf')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}" || exit 2

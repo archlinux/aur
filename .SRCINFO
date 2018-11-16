@@ -1,7 +1,7 @@
 pkgbase = nohang-git
 	pkgdesc = A highly configurable OOM preventer
 	pkgver = r150.g83ac238
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hakavlad/nohang
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = nohang-git
 	depends = sudo
 	depends = procps-ng
 	conflicts = nohang
+	backup = etc/nohang/nohang.conf
 	source = nohang-git::git+https://github.com/hakavlad/nohang.git#branch=master
 	md5sums = SKIP
 
