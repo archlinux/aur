@@ -15,7 +15,7 @@ source=('git+https://evilpiepirate.org/git/bcachefs.git'
         # the main kernel config files
         'config'
         # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset")
+        "linux.preset")
 sha256sums=('SKIP'
             'SKIP'
             'b17122b4dcf0f1058bc7a00114bafecceadab3fcbfdc80275ecf1a27e8492dfa'
