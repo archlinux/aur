@@ -1,24 +1,26 @@
-# Maintainer: Vincent Grande <shoober420@gmail.com>
+# Maintainer: Amanoel Dawod <amanoel at outlook dot com>
 # Contributor: Yichao Yu <yyc1992@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Vincent Grande <shoober420@gmail.com>
 
 pkgname=fontconfig-git
-pkgver=2.11.94.r1772
+pkgver=2.13.1+20+g2bd559f
 pkgrel=1
-pkgdesc="A library for configuring and customizing font access"
+pkgdesc="A library for configuring and customizing font access (from git)"
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/fontconfig/"
 license=(custom)
 depends=(expat freetype2)
-makedepends=(git autoconf-archive gperf python-lxml python-six json-c)
+makedepends=(git autoconf-archive gperf python-lxml python-six docbook-utils docbook-sgml
+             perl-sgmls 'texlive-formatsextra>=2017' lynx json-c)
 conflicts=(fontconfig)
 provides=(fontconfig)
 install=fontconfig-git.install
 source=("git+https://anongit.freedesktop.org/git/fontconfig"
          fontconfig-git.hook)
 sha256sums=('SKIP'
-            'SKIP')
+            '672f6a1c5e164671955ce807e670306194142a1794ce88df653aa717a972e274')
 
 pkgver() {
   cd fontconfig
