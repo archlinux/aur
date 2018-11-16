@@ -10,7 +10,7 @@ license=('GPL3')
 depends=()
 conflicts=('nfs-ganesha-git')
 makedepends=('cmake' 'gcc' 'bison' 'flex')
-source=("$pkgname"::'https://github.com/nfs-ganesha/nfs-ganesha/archive/V$pkgver.tar.gz')
+source=("$pkgname"::'https://github.com/nfs-ganesha/nfs-ganesha/archive/V${pkgver}.tar.gz')
 sha256sums=('ebe4c5ee4caafe435b6beeee17cc587d7c3cb3473003f5e786f9101ac457342f')
 
 backup=(etc/ganesha/ganesha.conf etc/sysconfig/ganesha)
