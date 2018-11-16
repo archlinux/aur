@@ -1,8 +1,8 @@
 # Maintainer: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
 pkgname=kismet-git
-pkgver=20181113
+pkgver=20181116
 pkgrel=1
-pkgdesc="Current development version based on git repo, many crucial changes since official stable Release 2016_07_R1-1"
+pkgdesc="Current development version based on git repo"
 arch=('x86_64')
 url="https://www.kismetwireless.net/"
 license=('GPL')
@@ -38,6 +38,6 @@ package() {
     install -Dm 644 docs/dev/* "$pkgdir/usr/share/doc/$pkgname/"
 
     # create group kismet via sysusers
-    cd ../..
+    cd ..
     install -vDm 644 "${pkgname}-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }

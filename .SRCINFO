@@ -1,6 +1,6 @@
 pkgbase = kismet-git
-	pkgdesc = Current development version based on git repo, many crucial changes since official stable Release 2016_07_R1-1
-	pkgver = 20181113
+	pkgdesc = Current development version based on git repo
+	pkgver = 20181116
 	pkgrel = 1
 	url = https://www.kismetwireless.net/
 	install = kismet.install
