@@ -3,7 +3,7 @@
 pkgname='powershell-git'
 _pkgname='powershell'
 _binaryname='pwsh'
-pkgver=6.2.0.preview.1.54.g5d06fba36
+pkgver=6.2.0.preview.2.10.gdedddb6b5
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
@@ -14,13 +14,15 @@ depends=('icu' 'libunwind' 'openssl-1.0')
 provides=('powershell')
 conflicts=('powershell')
 source=($_pkgname::'git+https://github.com/PowerShell/PowerShell.git'
-'pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop'
-'googletest::git+https://github.com/google/googletest.git'
-build.sh)
+        'pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop'
+        'googletest::git+https://github.com/google/googletest.git'
+        build.sh
+        'dotnet-version.patch')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '70d89b489a4ae0198b9f8dbeb7bb9c40')
+         '70d89b489a4ae0198b9f8dbeb7bb9c40'
+         '17cf304cc89b323ea2a8c97de83267b2')
 install=powershell.install
 
 pkgver() {
@@ -35,6 +37,8 @@ prepare() {
   git config submodule.src/libpsl-native/test/googletest.url "$srcdir"/googletest
   git submodule update
   git clean -dfx
+
+  cat $srcdir/dotnet-version.patch | patch -p1
 }
 
 build() {
