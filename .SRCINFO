@@ -1,0 +1,17 @@
+pkgbase = lib32-pixman-git
+	pkgdesc = Pixman library (32-bit)
+	pkgver = 0.35.1.2348.489fa0d
+	pkgrel = 1
+	url = http://xorg.freedesktop.org
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	depends = pixman
+	provides = lib32-pixman
+	conflicts = lib32-pixman
+	source = git://anongit.freedesktop.org/pixman
+	sha1sums = SKIP
+
+pkgname = lib32-pixman-git
+
