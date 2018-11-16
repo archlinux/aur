@@ -1,12 +1,13 @@
-# Maintainer: David Manouchehri <manouchehri@riseup.net>
+# Maintainer: Arvedui <arvedui@posteo.de>
+# Contributor: David Manouchehri <manouchehri@riseup.net>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
 _gitname=cryptsetup
 pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=cryptsetup
-pkgver=v1.7.0.r318.gde2f07b
-pkgrel=2
+pkgver=v2.0.5.r8.g4f075a1
+pkgrel=1
 pkgdesc="Userspace setup tool for transparent encryption of block devices using dm-crypt"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('GPL')
@@ -49,7 +50,7 @@ package() {
   install -D -m644 "${srcdir}"/encrypt_hook "${pkgdir}"/usr/lib/initcpio/hooks/encrypt
   install -D -m644 "${srcdir}"/encrypt_install "${pkgdir}"/usr/lib/initcpio/install/encrypt
   install -D -m644 "${srcdir}"/sd-encrypt "${pkgdir}"/usr/lib/initcpio/install/sd-encrypt
-  install -D -m644 "${srcdir}"/"${_gitname}"/scripts/cryptsetup_tmpfiles.conf "${pkgdir}"/usr/lib/tmpfiles.d/cryptsetup.conf
+  install -D -m644 "${srcdir}"/"${_gitname}"/scripts/cryptsetup.conf "${pkgdir}"/usr/lib/tmpfiles.d/cryptsetup.conf
 }
 
 # vim:set et sw=2 sts=2 tw=80:
