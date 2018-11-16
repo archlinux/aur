@@ -1,38 +1,37 @@
-# Maintainer: pezcurrel <pezcurrel [at] tiscali.it>
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: pezcurrel <pezcurrel@tiscali.it>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
 pkgname=geeqie-lirc
-pkgver=1.3
-pkgrel=3
-pkgdesc="A lightweight image browser and viewer with remote support (LIRC)"
-_cpkgname="geeqie-1.3"
-arch=('i686' 'x86_64')
+_upstreampkgname=geeqie
+pkgver=1.4
+pkgrel=1
+pkgdesc="A lightweight image browser and viewer with LIRC support"
+arch=('x86_64')
 url="http://www.geeqie.org/"
 license=('GPL2')
-depends=('exiv2' 'gtk2' 'lcms2' 'lirc')
-makedepends=('intltool' 'doxygen' 'gnome-doc-utils')
+depends=('exiv2' 'gtk2' 'ffmpegthumbnailer' 'lirc')
+makedepends=('intltool' 'doxygen' 'gnome-doc-utils' 'python')
 optdepends=('librsvg: SVG rendering'
-	'fbida: for jpeg rotation')
+	    'fbida: for jpeg rotation')
 conflicts=('geeqie' 'geeqie-git')
-provides=('geeqie')
-source=("http://www.geeqie.org/${_cpkgname}.tar.xz" '0001-Work-around-changed-c-11-std-string-implementation.patch')
-sha1sums=('f991b44d8587f2f42d5793700c5f6882bed6abf9'
-          '45dea6145ab6d74ed69a81a6e5871300f51450eb')
+source=(http://www.geeqie.org/${_upstreampkgname}-${pkgver}.tar.xz geeqie-no-changelog.patch)
+sha256sums=('5c583a165573ec37874c278f9dc57e73df356b30e09a9ccac3179dd5d97e3e32'
+            'f6eb2725a47fc750d95455d4bbf4be5a0ae45307d3ada571937212a25b2b4301')
 
 prepare() {
-  cd "${srcdir}/${_cpkgname}"
-  patch -Np1 -i ../0001-Work-around-changed-c-11-std-string-implementation.patch
-  ./autogen.sh
+  cd $_upstreampkgname-$pkgver
+  patch -p1 -i ../geeqie-no-changelog.patch # Workaround missing changelog (Fedora)
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "${srcdir}/${_cpkgname}"
-  ./configure --prefix=/usr --enable-lirc --disable-gtk3
+  cd "${srcdir}/${_upstreampkgname}-${pkgver}"
+  ./configure --prefix=/usr --enable-lirc
   make
 }
 
 package(){
-  cd "${srcdir}/${_cpkgname}"
+  cd "${srcdir}/${_upstreampkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
