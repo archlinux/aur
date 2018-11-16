@@ -8,7 +8,7 @@ pkgbase = ccd-python-git
 	makedepends = git
 	depends = python>=3.6.0
 	source = https://github.com/pushsla/CuteCD
-	md5sums = 9ece0f2a171e08f370b9461e225cab4d
+	md5sums = 6dd2309a76aa7bd81aeb2bfb23f2c51e
 
 pkgname = ccd-python-git
 
