@@ -1,40 +1,36 @@
 # Maintainer: Mario Hros <m-aur@k3a.me>
 
-_userid=511
-_username=carbon
-
 pkgname=go-carbon
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Golang implementation of Graphite/Carbon server with classic architecture: Agent -> Cache -> Persister"
 arch=(i686 x86_64)
 url='https://github.com/lomik/go-carbon'
 license=('MIT')
-conflicts=("$_pkgname-git")
-options=('!strip')
 depends=(glibc)
 makedepends=('go>=1.8')
+backup=(etc/go-carbon/go-carbon.conf
+		etc/go-carbon/storage-{aggregation,schemas}.conf)
 source=($pkgname-$pkgver.tar.gz::https://github.com/lomik/go-carbon/archive/v$pkgver.tar.gz
-		go-carbon.conf.diff)
-sha256sums=('2661492a9b0209977548ef86340f606e29630ab9d5d971bdf745d4b30495875c'
-            '174654ee0dfc98b220fa5be85365fce3a07fb94400ae8aecf5ae79e8af620758')
+		go-carbon.conf.diff
+		go-carbon-dynamicuser.diff)
+sha256sums=('e04dd4817464667cad6c9873f06376d232149b0bc2f5475f74b0f693e13ce73e'
+            '174654ee0dfc98b220fa5be85365fce3a07fb94400ae8aecf5ae79e8af620758'
+            'dceef1378a24a7acf7677284ee52f86e197fadeeab87b3c289cc0ac5741add9d')
 
 build() {
 	cd "${srcdir}/$pkgname-$pkgver"
-	patch -p1 -i "${srcdir}/go-carbon.conf.diff" 
+	patch -p1 -i "${srcdir}/go-carbon.conf.diff"
 	make all package-tree BUILD="$pkgver"
+	(cd "build/root/lib/systemd/system" && patch -p1 <"${srcdir}/go-carbon-dynamicuser.diff")
 }
 
 package() {
 	cd "${srcdir}/$pkgname-$pkgver"
 
-	mkdir -p "${pkgdir}/usr/lib/sysusers.d" "${pkgdir}/usr/lib/tmpfiles.d"	
-	echo "u $_username $_userid \"$pkgname user\" /var/lib/graphite" > "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
-	echo "d /var/log/go-carbon 0750 $_username daemon - -"	> "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
-	echo "d /var/lib/graphite 0700 $_username - - -" >> "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
-
 	install -Dm0755 "./go-carbon" "${pkgdir}/usr/bin/go-carbon"
 	cp -rfa "./build/root"/etc "${pkgdir}/"
-	cp -rfa "./build/root"/lib "${pkgdir}/usr/lib"
+	cp -rfa "./build/root"/lib "${pkgdir}/usr/"
 }
 
+# vim:set ts=4 sw=4 noet:

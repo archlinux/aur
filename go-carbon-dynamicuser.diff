@@ -1,0 +1,37 @@
+--- a/go-carbon.service
++++ b/go-carbon.service
+@@ -4,8 +4,8 @@
+ After=network.target
+ 
+ [Service]
+-Type=forking
+-ExecStart=/usr/bin/go-carbon -config /etc/go-carbon/go-carbon.conf -pidfile /var/run/go-carbon.pid -daemon
++Type=simple
++ExecStart=/usr/bin/go-carbon -config /etc/go-carbon/go-carbon.conf
+ ExecReload=/bin/kill -HUP $MAINPID
+ KillSignal=USR2
+ Restart=on-failure
+@@ -14,5 +14,23 @@
+ LimitNOFILE=55555
+ LimitMEMLOCK=infinity
+ 
++User=carbon
++DynamicUser=true
++RuntimeDirectory=go-carbon
++StateDirectory=graphite
++LogsDirectory=go-carbon
++ConfigurationDirectory=go-carbon
++
++CapabilityBoundingSet=
++AmbientCapabilities=
++NoNewPrivileges=true
++ProtectSystem=strict
++ProtectHome=true
++PrivateDevices=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectControlGroups=true
++LockPersonality=true
++
+ [Install]
+ WantedBy=multi-user.target
