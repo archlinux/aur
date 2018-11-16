@@ -4,5 +4,5 @@ post_install() {
 }
 
 post_remove() {
-	echo "To remove kcptun and udp2raw binaries, run 'rm -r /usr/local/kcptun-plugin/bin' as root"
+	echo "To remove kcptun and udp2raw binaries, run 'rm -r /usr/share/kcptun-plugin/bin' as root"
 }
