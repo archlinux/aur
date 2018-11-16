@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.30.1+5+g905a90d9e
+pkgver=3.30.2+3+g6ff7805c0
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -21,7 +21,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell)
 conflicts=(gnome-shell)
-_commit=a3f5354abba4c88ff33ccdd495c4aa87add9a285 # tags/3.30.1^0
+_commit=2a36bf52cb61ac1a015bc2150807a8d47c7155e4 # tags/3.30.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -42,16 +42,9 @@ prepare() {
   git cherry-pick 6a3dd0fa || bash
   git cherry-pick 5aac3f0a || bash
 
-  # IconGrid: Defer and group animation cleanup
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/253
-  git cherry-pick a5e6dd52 || bash
-  # IconGrid: Keep icons reactive during pulse animation
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/261
-  git cherry-pick 1acdff82 || bash
-
   # js/ui: Use captured-event::instantaneous [performance] 
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/276
-  git cherry-pick 5453f3dd
+  git cherry-pick d12c86cf || bash
 
   # Move the plugin to our custom epiphany-only dir
   sed -i "s/'mozilla'/'epiphany'/g" meson.build
