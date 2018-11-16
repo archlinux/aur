@@ -3,9 +3,9 @@
 
 pkgname=powershell
 binaryname=pwsh
-_pkgver=6.1.0
+_pkgver=6.1.1
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
@@ -19,7 +19,7 @@ source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
 md5sums=('SKIP'
          'SKIP'
          '2ddd2c3b33c7df1c85f49fa6f7763566'
-         '5a1e613f80ee8b50c3650bc823298771')
+         '17cf304cc89b323ea2a8c97de83267b2')
 install=powershell.install
 
 prepare() {
