@@ -5,6 +5,8 @@ pkgbase = pwclient-git
 	url = https://patchwork.ozlabs.org/help/pwclient/
 	arch = any
 	license = GPL
+	makedepends = curl
+	makedepends = jq
 	source = https://github.com/getpatchwork/patchwork/tree/master/patchwork/bin/pwclient
 	sha256sums = SKIP
 

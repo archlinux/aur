@@ -9,6 +9,7 @@ arch=('any')
 license=('GPL')
 source=("https://github.com/getpatchwork/patchwork/raw/master/patchwork/bin/pwclient")
 sha256sums=('SKIP')
+makedepends=('curl' 'jq')
 
 pkgver() {
   api='https://api.github.com/repos/getpatchwork/patchwork'
