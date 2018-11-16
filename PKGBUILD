@@ -4,7 +4,7 @@
 
 pkgname='nitroshare'
 pkgver='0.3.4'
-pkgrel=1
+pkgrel=2
 pkgdesc='Network File Transfer Application'
 url='https://nitroshare.net'
 arch=('i686' 'x86_64')
@@ -18,8 +18,15 @@ optdepends=(
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/nitroshare/nitroshare-desktop/archive/$pkgver.tar.gz"
+    "qt-5.11.patch"
 )
-sha256sums=('29874e5909c29211a3c9e13f8c0f49b901ec2996e5d60d80af80d2fb80c3d7ec')
+sha256sums=('29874e5909c29211a3c9e13f8c0f49b901ec2996e5d60d80af80d2fb80c3d7ec'
+            'e2a8417f36a5df37c5fb34c1a371f86b0059f48bf6dd588fc776ca7c38a67cd5')
+
+prepare() {
+    cd "$pkgname-desktop-$pkgver"
+    patch -Np1 -i ../qt-5.11.patch
+}
 
 build() {
     cd "$pkgname-desktop-$pkgver"
