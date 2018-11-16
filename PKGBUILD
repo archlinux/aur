@@ -5,22 +5,19 @@
 ###########################################################################################################
 _vim="y"
 
-# neovim in Arch Linux seems to load vim extensions from /usr/share/vim/vimfiles by
-# default now, (or you can add 'set rtp^=/usr/share/vim/vimfiles/' to .vimrc)
-# but in any event, you may not need or want to set _neovim="y"
 _neovim="n"
 ###########################################################################################################
 
 _name='deoplete-jedi'
 pkgname="${_name}-git"
-pkgver=r319.4ffb3a5
+pkgver=r321.d1610a1
 pkgrel=1
 pkgdesc="jedi add-on for deoplete completion plugin for neovim"
 arch=('any')
 url="https://github.com/zchee/deoplete-jedi"
 license=('MIT')
 groups=()
-depends=('deoplete-git')
+depends=('deoplete')
 makedepends=('git') 
 provides=('deoplete-jedi')
 conflicts=('deoplete-jedi')
