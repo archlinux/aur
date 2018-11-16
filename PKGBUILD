@@ -4,7 +4,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-bcachefs-git
-pkgver=4.18.r15400.gadaaf1e4227f
+pkgver=4.19.2
 pkgrel=1
 arch=(x86_64)
 url="https://evilpiepirate.org/git/"
