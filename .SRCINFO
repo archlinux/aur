@@ -1,7 +1,7 @@
 pkgbase = kms-core
 	pkgdesc = Kurento core module
 	pkgver = 6.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kurento.org/
 	arch = any
 	license = LGPL v2.1

@@ -1,7 +1,7 @@
 # Maintainer: Alexander Susha <isushik94@gmail.com>
 pkgname=kms-core
 pkgver=6.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Kurento core module'
 arch=('any')
 url='http://www.kurento.org/'
@@ -33,7 +33,7 @@ build() {
     mkdir -p "build"
     cd "build"
 
-    cmake ${srcdir}/${pkgname}-${pkgver}/. -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations -Wno-catch-value"
+    cmake ${srcdir}/${pkgname}-${pkgver}/. -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_C_FLAGS="-Wno-deprecated-declarations" -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations -Wno-catch-value"
 }
 package() {
     make -C build DESTDIR="${pkgdir}" install
