@@ -13,7 +13,7 @@ options=('!strip')
 source=('git+https://evilpiepirate.org/git/bcachefs.git'
         'git+https://evilpiepirate.org/git/bcachefs-tools.git'
         # the main kernel config files
-        'config.x86_64'
+        'config'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'

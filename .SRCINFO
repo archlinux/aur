@@ -17,7 +17,7 @@ pkgbase = linux-bcachefs-git
 	options = !strip
 	source = git+https://evilpiepirate.org/git/bcachefs.git
 	source = git+https://evilpiepirate.org/git/bcachefs-tools.git
-	source = config.x86_64
+	source = config
 	source = linux-bcachefs-git.preset
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -44,5 +44,7 @@ pkgname = linux-bcachefs-git-docs
 	provides = linux-bcachefs-docs
 
 pkgname = linux-bcachefs-git-tools
+	pkgdesc = Bcachefs filesystem utilities
+	install = linux.install.pkg
 	provides = bcachefs-tools
 
