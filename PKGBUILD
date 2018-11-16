@@ -2,7 +2,7 @@
 
 pkgname=electron-ssr
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Shadowsocksr client using electron.'
 arch=('x86_64')
 conflicts=("electron-ssr-git")
@@ -19,7 +19,7 @@ source=('https://raw.githubusercontent.com/erguotou520/electron-ssr/master/LICEN
         'electron-ssr.desktop'
         'electron-ssr.patch')
 
-source_x86_64=("https://github.com/erguotou520/electron-ssr/archive/v$pkgver.tar.gz")
+source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/erguotou520/electron-ssr/archive/v$pkgver.tar.gz")
 
 sha256sums=('87561b47486c2485c76136172c87f0df16ee9dc4cb85be7d77ce274328f92735'
             '0d4372037676a0ee8f17f7cb875192923062a80ad61695dbe4548fde609d7698'
