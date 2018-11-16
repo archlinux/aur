@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://github.com/pushsla/CuteCD")
 noextract=()
-md5sums=('9ece0f2a171e08f370b9461e225cab4d')
+md5sums=('6dd2309a76aa7bd81aeb2bfb23f2c51e')
 validpgpkeys=()
 prepare() {
 	rm -rf "$pkgname-$pkgver"
