@@ -14,7 +14,6 @@ options=('!strip')
 _srcname=bcachefs
 source=(
   "$_srcname::git+https://evilpiepirate.org/git/bcachefs.git"
-  "git+https://evilpiepirate.org/git/bcachefs-tools.git"
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.19.2.xz"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
@@ -26,7 +25,6 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha512sums=('SKIP'
-            'SKIP'
             'd2e5fccf6fa63f903290cc976716d13c545f18aa3a18196ceaca1bd83b80307951fd6692437ea99cb5d91a10b0f395b343061c248544665e6a8767c895d68e29'
             'a559957b9b4403d2219bda15689454dc6ee8e95a47a19dbb3afa28d9574f14133456f7b9898543c4f02160fec3b3cf46ebd464b9c0853b746642b06a0bf5a208'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
@@ -35,12 +33,6 @@ sha512sums=('SKIP'
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
-
-pkgver() {
-  cd "${_srcname}"
-
-  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
-}
 
 prepare() {
   cd $_srcname
