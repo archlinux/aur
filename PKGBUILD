@@ -2,7 +2,7 @@
 # Contributor: alicewww <almw@protonmail.com>
 pkgname=mullvad-vpn
 pkgver=2018.5
-pkgrel=2
+pkgrel=3
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -15,9 +15,11 @@ backup=()
 install=
  
 source=(mullvad-daemon.service
+mullvad-vpn.desktop
 "https://github.com/mullvad/mullvadvpn-app/releases/download/${pkgver}/MullvadVPN-${pkgver}_${arch}.rpm")
 
 md5sums=('ed3a49275addbd5f2098a33bd605f1d3'
+         '9628b4f93e72f5cca0a47087ae10b0fd'
          '6bfc025b561423625cfb140a38f6f4cd')
 
 package() {
@@ -34,6 +36,11 @@ package() {
     # Main binary
     mkdir -p ${pkgdir}/usr/bin
     ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+
+    # Desktop Entry
+    install -d "${pkgdir}/usr/share/applications"
+    install ${pkgname}.desktop "${pkgdir}/usr/share/applications"
+    sed -i s%/usr/share%/opt% ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
     # CLI binary
     install -m755 "${srcdir}/usr/bin/mullvad" "${pkgdir}/usr/bin/mullvad"
