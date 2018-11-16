@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=pwclient-git
-pkgver=r753.0a0f9d5
+pkgver=r1446.2209369
 pkgrel=1
 pkgdesc="Command-line client for patchwork"
 url='https://patchwork.ozlabs.org/help/pwclient/'

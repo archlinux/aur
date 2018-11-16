@@ -1,6 +1,6 @@
 pkgbase = pwclient-git
 	pkgdesc = Command-line client for patchwork
-	pkgver = r753.0a0f9d5
+	pkgver = r1446.2209369
 	pkgrel = 1
 	url = https://patchwork.ozlabs.org/help/pwclient/
 	arch = any
