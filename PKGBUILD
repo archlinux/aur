@@ -3,7 +3,7 @@
 _name=XSStrike
 
 pkgname=xsstrike
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Most Advanced XSS Detection Suite"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python>=3.4' 'python-tld' 'python-fuzzywuzzy' 'python-requests')
 options=(!emptydirs)
 source=("https://github.com/s0md3v/XSStrike/archive/${pkgver}.tar.gz")
-sha256sums=('788280b05c638b4ba96dfd8850872efb153e6bd7a7a5cb150cdc17fd4d824cba')
+sha256sums=('e1e2e5ec056b7497f97fcbee705ea55dd53037701def3ec44e15273fb87d542e')
 
 prepare() {
   rm -rf "${pkgdir}/usr/lib/${pkgname}"
@@ -30,5 +30,6 @@ package() {
 
   cd "${srcdir}/${_name}-${pkgver}"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
