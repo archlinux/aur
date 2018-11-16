@@ -6,8 +6,8 @@ pkgbase = tortoisehg
 	arch = any
 	license = GPL
 	depends = python2
-	depends = mercurial>=4.6
-	depends = mercurial<4.8
+	depends = mercurial>=4.7
+	depends = mercurial<4.9
 	depends = python2-qscintilla-qt5
 	depends = python2-iniparse
 	depends = qt5-svg
