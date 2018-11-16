@@ -3,10 +3,10 @@
 
 pkgname=pybind11
 pkgver=2.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A lightweight header-only library that exposes C++ types in Python and vice versa'
 arch=('any')
-url='http://pybind11.readthedocs.org/'
+url='https://pybind11.readthedocs.org/'
 license=('BSD')
 optdepends=('python: to target bindings supporting python 3'
             'python2: to target bindings supporting python 2')
@@ -17,7 +17,7 @@ makedepends=(
     # AUR:
         'python-breathe'
 )
-checkdepends=('cmake' 'python-pytest' 'python-numpy')
+checkdepends=('boost' 'eigen' 'python-pytest' 'python-numpy' 'python-scipy')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pybind/pybind11/archive/v${pkgver}.tar.gz")
 sha256sums=('b69e83658513215b8d1443544d0549b7d231b9f201f6fc787a2b2218b408181e')
 
@@ -44,19 +44,18 @@ build () {
     make man
 }
 
-# uncomment this block to run the tests
-#check() {
-#    cd "${pkgname}-${pkgver}"
-#    python setup.py check
-#    
-#    mkdir -p build
-#    cd build
-#    make check
-#}
+check() {
+    cd "${pkgname}-${pkgver}"
+    python setup.py check
+    
+    mkdir -p build
+    cd build
+    make check
+}
 
 package() {
     local _pythonver
-    _pythonver="$(python --version | awk '{ print $2 }' | grep -o '^[0-9]*\.[0-9]*')"
+    _pythonver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     
     # python modules
     cd "${pkgname}-${pkgver}"
