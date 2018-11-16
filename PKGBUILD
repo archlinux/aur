@@ -270,6 +270,7 @@ if ! $_static_build && ! $_target_host; then
     "
 fi
 
+#-journald \
 _core_configure_options=" \
                  -prefix ${_installprefix} \
                  -opengl ${_opengl_variant} \
@@ -286,7 +287,6 @@ _core_configure_options=" \
                  -silent \
                  -release \
                  -pch \
-                 -journald \
                  -make libs \
                  -nomake tools \
                  -nomake examples \
