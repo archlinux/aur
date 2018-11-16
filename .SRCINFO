@@ -1,7 +1,7 @@
 pkgbase = nfs-ganesha
 	pkgdesc = NFS-Ganesha supports both the NFS and 9P protocols in user mode.
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nfs-ganesha.github.io/
 	arch = any
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = nfs-ganesha
 	conflicts = nfs-ganesha-git
 	backup = etc/ganesha/ganesha.conf
 	backup = etc/sysconfig/ganesha
-	source = nfs-ganesha::https://github.com/nfs-ganesha/nfs-ganesha/archive/V$pkgver.tar.gz
+	source = nfs-ganesha::https://github.com/nfs-ganesha/nfs-ganesha/archive/V${pkgver}.tar.gz
 	sha256sums = ebe4c5ee4caafe435b6beeee17cc587d7c3cb3473003f5e786f9101ac457342f
 
 pkgname = nfs-ganesha
