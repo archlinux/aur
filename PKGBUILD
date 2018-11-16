@@ -4,19 +4,19 @@
 _pkgname=pylote
 pkgname=$_pkgname-git
 pkgver=r160.e9d7678
-pkgrel=1
+pkgrel=2
 pkgdesc="Software making it possible to draw on the screen of the computer, like handling various instruments of geometry."
 url="http://pascal.peter.free.fr/$_pkgname.html"
 license=('GPL')
 arch=('any')
-depends=('pyqt')
+depends=(python-pyqt5 qt5-webkit)
 conflicts=($_pkgname)
 replaces=($_pkgname)
 source=(
     git+https://gitlab.com/edleh/$_pkgname.git
     $_pkgname.desktop)
 sha256sums=('SKIP'
-            '8557e071b14f22e5386715d4769aada56175fa8a266508ce42043363b30b0bd7')
+            'fc068a7425d00a6b8295ae04255cd1860df28f11055478d8d9b64e9d65671b17')
 
 pkgver() {
   cd "$_pkgname"
@@ -28,10 +28,10 @@ pkgver() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  mkdir -p "${pkgdir}/usr/share/"{$pkgname,applications}
+  cd "${srcdir}/${_pkgname}/${_pkgname}"
+  mkdir -p "${pkgdir}/usr/share/"{$_pkgname,applications}
   mkdir -p "${pkgdir}/usr/bin"
-  cp -R * "${pkgdir}/usr/share/$pkgname"
+  cp -R * "${pkgdir}/usr/share/$_pkgname"
   echo "#!/usr/bin/bash
         cd '/usr/share/$_pkgname/' && python $_pkgname.pyw" > "${pkgdir}/usr/bin/$_pkgname"
   chmod +x "${pkgdir}/usr/bin/$_pkgname"

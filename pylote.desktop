@@ -1,7 +1,7 @@
 [Desktop Entry]
 Exec=pylote
 Icon=/usr/share/pylote/images/icon.png
-Name=pylote
+Name=Pylote
 Categories=Education;
 StartupNotify=true
 Terminal=false
