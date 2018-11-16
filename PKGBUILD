@@ -27,7 +27,7 @@ prepare() {
 
 build() {
 	cd "${pkgname}"
-        cmake src/ -DUSE_9P=ON -DCMAKE_BUILD_TYPE=Release -DLIB_INSTALL_DIR=/usr/lib
+        cmake src/ -DUSE_9P=ON -DCMAKE_BUILD_TYPE=Maintainer -DBUILD_CONFIG=everything -DLIB_INSTALL_DIR=/usr/lib
         make
 }
 
@@ -37,8 +37,11 @@ package() {
         mv "$pkgdir"/var/run "$pkgdir"/run
         rmdir "$pkgdir"/var
         install -d "$pkgdir"/usr/lib/systemd/system "$pkgdir"/etc/sysconfig "$pkgdir"/usr/libexec/ganesha
+	install src/scripts/ganeshactl/org.ganesha.nfsd.conf "$pkgdir"/etc/dbus-1/system.d/
         install src/scripts/systemd/nfs-ganesha.service.el7 "$pkgdir"/usr/lib/systemd/system/nfs-ganesha.service
         install src/scripts/systemd/nfs-ganesha-config.service-in.cmake "$pkgdir"/usr/lib/systemd/system/nfs-ganesha-config.service
+        install src/scripts/systemd/nfs-ganesha-lock.service.el7 "$pkgdir"/usr/lib/systemd/system/nfs-ganesha-lock.service
         install src/scripts/systemd/sysconfig/nfs-ganesha "$pkgdir"/etc/sysconfig/ganesha
+        install src/scripts/systemd/tmpfiles.d/ganesha.conf "$pkgdir"/etc/tmpfiles.d/ganesha.conf
         install src/scripts/nfs-ganesha-config.sh "$pkgdir"/usr/libexec/ganesha
 }
