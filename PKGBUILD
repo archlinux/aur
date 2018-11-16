@@ -7,7 +7,7 @@
 
 pkgname=firefox-hg
 _pkgname=firefox
-pkgver=r445024.5836a6061476
+pkgver=r445243.63eb34f9b171
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -27,7 +27,8 @@ _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
 source=('mozilla-unified::hg+https://hg.mozilla.org/mozilla-central/'
-        $_pkgname.desktop firefox-symbolic.svg)
+        $_pkgname.desktop
+        firefox-symbolic.svg)
 sha256sums=('SKIP'
             '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
@@ -43,6 +44,9 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 # get your own set of keys. Feel free to contact heftig@archlinux.org for
 # more information.
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
+
+CFLAGS="-march=native -O2 -pipe -fstack-protector-strong -fno-plt"
+CXXFLAGS="-march=native -O2 -pipe -fstack-protector-strong -fno-plt"
 
 pkgver() {
   cd mozilla-unified
@@ -61,7 +65,7 @@ ac_add_options --enable-application=browser
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
-ac_add_options --enable-optimize
+#ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --disable-dbus
 ac_add_options --disable-necko-wifi
@@ -88,6 +92,7 @@ ac_add_options --with-system-libvpx
 #ac_add_options --with-system-nspr
 #ac_add_options --with-system-nss
 ac_add_options --with-system-zlib
+#ac_add_options --with-lto=full
 
 # Features
 ac_add_options --enable-alsa
@@ -102,13 +107,14 @@ END
 build() {
   cd mozilla-unified
 
+  export CC="gcc"
+  export CXX="g++"
+  #export MOZ_PGO=1
+  
   export MOZ_SOURCE_REPO="$_repo"
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 
-  # Do PGO
-  #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
-  #  MOZ_PGO=1 ./mach build
   ./mach build
   ./mach buildsymbols
 }
