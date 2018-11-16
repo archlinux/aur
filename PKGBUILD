@@ -3,7 +3,7 @@
 
 pkgname=pg_repack
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Reorganize tables in PostgreSQL databases with minimal locks (fork of pg_reorg)"
 arch=(i686 x86_64)
 url="http://reorg.github.com/pg_repack/"
