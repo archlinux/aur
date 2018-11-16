@@ -17,13 +17,13 @@
 #
 pkgbase="zfs-linux-hardened-git"
 pkgname=("zfs-linux-hardened-git" "zfs-linux-hardened-git-headers")
-_commit='af2e8411dacbc694b1aaf9074e68a9d12270e74c'
-_zfsver="2018.11.12.r4829.gaf2e8411d"
-_kernelver="4.18.17.a-1"
-_extramodules="4.18.17.a-1-hardened"
+_commit='a10d50f999511d304f910852c7825c70c9c9e303'
+_zfsver="2018.11.15.r4830.ga10d50f99"
+_kernelver="4.18.19.a-1"
+_extramodules="4.18.19.a-1-hardened"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=2
+pkgrel=1
 makedepends=("linux-hardened-headers=${_kernelver}" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
