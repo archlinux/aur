@@ -14,7 +14,7 @@ pkgbase = kcptun-plugin-git
 	source = kcptun-plugin.install
 	source = 0001-local_to_share.patch
 	sha256sums = SKIP
-	sha256sums = c82d867ca2d468855944e34df47336e007d06126beb169c409e58f1ce2402229
+	sha256sums = ba7135e5042e13f236402f7bdfb5e2fa9a170445233bdc1ff90e893f4caa7c78
 	sha256sums = 961c584fe20e340877bade0a012218157c2c4d4efe37a7b563174084e4ac48c9
 
 pkgname = kcptun-plugin-git

@@ -3,7 +3,7 @@
 _pkgname='kcptun-plugin'
 pkgname="${_pkgname}-git"
 pkgver=r27.30c848a
-pkgrel=2
+pkgrel=3
 pkgdesc='SIP003-compatible KCPTUN and UDP2RAW plugins for shadowsocks-libev'
 license=('custom:Unlicense')
 url='https://github.com/w1ndy/kcptun-plugins'
@@ -15,7 +15,7 @@ source=("${_pkgname}::git+${url}.git"
 		"0001-local_to_share.patch")
 install="${_pkgname}.install"
 sha256sums=('SKIP'
-			'c82d867ca2d468855944e34df47336e007d06126beb169c409e58f1ce2402229'
+			'ba7135e5042e13f236402f7bdfb5e2fa9a170445233bdc1ff90e893f4caa7c78'
 			'961c584fe20e340877bade0a012218157c2c4d4efe37a7b563174084e4ac48c9')
 
 pkgver() {
