@@ -1,0 +1,15 @@
+pkgbase = python-leidenalg
+	pkgdesc = The Leiden algorithm for community detection
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/vtraag/leidenalg
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-igraph
+	source = https://files.pythonhosted.org/packages/source/l/leidenalg/leidenalg-0.7.0.tar.gz
+	sha256sums = c1c92c5638ef0ccf67ea89ed311cf19116a82e67bf1a015a3e65f00653a3dc95
+
+pkgname = python-leidenalg
+
