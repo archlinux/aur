@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=masterpassword-gui
-pkgver=2.4
+pkgver=2.7.10
 pkgrel=1
 pkgdesc='Java GUI for Master Password'
 arch=('any')
@@ -10,10 +10,10 @@ license=('GPL3')
 depends=('java-runtime')
 source=("https://ssl.masterpasswordapp.com/$pkgname.jar"
         "${pkgname}.desktop" "${pkgname}.png" "${pkgname}.sh")
-md5sums=('a98dfaad5183f141b9af49466f3c5236'
-         'fe7c35c335000fff886e1aa97e44cd59'
-         'a6f72aca863785f8021305fe417675d2'
-         '6f0c67fd22697008c5f84561ecc42e1b')
+sha1sums=('5e1858a822d89e57b81112e088937a04facb4c50'
+          '663d645fe83358b8a5061de7260b3eed9c79bac3'
+          'cc3bb9d05c24db935f1bdd56a0c82ada42c724d1'
+          'cea8783054a993d5f18d71edb3ec991453f9c46c')
 noextract=("${pkgname}.jar")
 
 package() {
