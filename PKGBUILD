@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@ctrl-d.org>
 
 pkgname=shaderc-git
-pkgver=r498.196d38f.glslang_r2922
+pkgver=r507.eb743ec.glslang_r2989
 pkgrel=1
 pkgdesc="A collection of tools, libraries and tests for shader compilation"
 url="https://github.com/google/shaderc"
@@ -11,7 +11,7 @@ arch=("x86_64")
 makedepends=("git" "ninja" "cmake" "python2" "asciidoctor")
 depends=("gcc-libs")
 conflicts=("shaderc")
-provides=("shaderc" "glslc")
+provides=("shaderc" "glslc" "libshaderc_shared.so")
 
 source=("shaderc::git+https://github.com/google/shaderc.git"
         "glslang::git+https://github.com/google/glslang.git"
