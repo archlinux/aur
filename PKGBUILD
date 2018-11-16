@@ -2,11 +2,11 @@
 
 pkgname=kodi-addon-embyrepo
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='This repo contains the Kodi Emby addon along with compatible Kodi skins'
 _reponame=repository.emby.kodi
 arch=('any')
-url='http://superrepo.org/'
+url='https://github.com/MediaBrowser/plugin.video.emby/wiki/Emby-Repository'
 license=('GPL2')
 depends=('kodi')
 source=("http://kodi.emby.media/repository.emby.kodi-${pkgver}.zip")
