@@ -1,0 +1,14 @@
+pkgbase = bcachefs-tools-git
+	pkgdesc = bcachefs filesystem utilities
+	pkgver = 392
+	pkgrel = 1
+	url = https://evilpiepirate.org/git/bcachefs-tools.git/
+	arch = x86_64
+	license = GPL2
+	makedepends = libscrypt-git
+	provides = bcachefs-tools
+	source = git+http://evilpiepirate.org/git/bcachefs-tools.git
+	sha512sums = SKIP
+
+pkgname = bcachefs-tools-git
+
