@@ -1,29 +1,25 @@
-# Maintainer: aboe76 AT gmail DOT com>
-# Contributor: Timothée Ravier <tim@siosm.fr>
-# Contributor: EdwardXXIV
+# Maintainer: Vincent Grande <shoober420@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 
 pkgname=pixman-git
-_gitname=pixman
-pkgver=0.31.1.2145.fedd6b1
+pkgver=0.35.1.2348.489fa0d
 pkgrel=1
 pkgdesc="The pixel-manipulation library for X and cairo"
-arch=('i686' 'x86_64')
-url="http://pixman.org/"
-license=('MIT')
+arch=(x86_64)
+url="http://xorg.freedesktop.org"
+license=('custom')
 depends=('glibc')
-options=('!libtool')
+provides=('pixman')
 conflicts=('pixman')
-provides=("pixman=${pkgver}")
-makedepends=('git')
-source=("git://anongit.freedesktop.org/${_gitname}")
-md5sums=('SKIP')
+source=("git://anongit.freedesktop.org/pixman")
+sha1sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/${_gitname}"
-
-  for i in pixman_major pixman_minor pixman_micro; do
+pkgver () {
+	cd pixman
+	
+	 for i in pixman_major pixman_minor pixman_micro; do
     local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
   done
 
@@ -31,18 +27,19 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
+  cd pixman
   ./autogen.sh --prefix=/usr --disable-static
   make
 }
 
-check() {
-  cd "${srcdir}/${_gitname}"
-  make check
-}
+#check() {
+#  cd pixman
+#  make check
+#}
 
 package() {
-  cd "${srcdir}/${_gitname}"
+  cd pixman
   make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -m755 -d "${pkgdir}/usr/share/licenses/pixman"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/pixman"
 }
