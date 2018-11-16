@@ -101,7 +101,7 @@ __pkgconfigpath=${_sysroot}/usr/lib/pkgconfig
 __eglpkgconfigpath="${__pkgconfigpath}/egl.pc"
 __glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
 
-_opengl_variant="desktop"
+#_opengl_variant="desktop"
 if [ -n "${_piver}" ]; then
   _opengl_variant="es2"
 fi
@@ -126,7 +126,7 @@ case ${_piver} in
   _use_mesa=true
   _mkspec="linux-rpi${_piver}-g++"
   # just for projectmofo!
-  _opengl_variant="desktop"
+  #_opengl_variant="desktop"
 ;;
 4)
   # yuck; here lies tinkerboard until I find a better way of generalizing this
@@ -244,7 +244,6 @@ if $_uber_minimal; then
 
     _additional_configure_flags="$_additional_configure_flags $_exhaustive_uber_minimal_specific_configure_options"
     _additional_configure_flags="$_additional_configure_flags \
-        -opengl ${_opengl_variant} \
         -no-ico \
         -no-glib \
         -no-fontconfig \
@@ -273,6 +272,10 @@ fi
 
 _core_configure_options=" \
                  -prefix ${_installprefix} \
+                 -opengl ${_opengl_variant} \
+                 -no-xcb \
+                 -qpa eglfs \
+                 -egl \
                  -qt-sqlite \
                  -optimized-qmake \
                  -optimized-tools \
@@ -410,9 +413,6 @@ else
                  -sysroot ${_sysroot} \
                  -device ${_mkspec} \
                  -device-option CROSS_COMPILE=${_toolchain} \
-                 -no-xcb \
-                 -qpa eglfs \
-                 -egl \
                  ${_additional_configure_flags}"
 fi
   local _configure_line_fn=configure_line
