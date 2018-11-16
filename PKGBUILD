@@ -3,7 +3,7 @@
 
 pkgname=pybind11
 pkgver=2.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A lightweight header-only library that exposes C++ types in Python and vice versa'
 arch=('any')
 url='https://pybind11.readthedocs.org/'
@@ -12,66 +12,70 @@ optdepends=('python: to target bindings supporting python 3'
             'python2: to target bindings supporting python 2')
 makedepends=(
     # official repositories:
-        'cmake' 'python' 'python-setuptools' 'python-pytest' 'python-sphinx' 'doxygen'
-        'python2' 'python2-setuptools'
+        'cmake' 'boost' 'eigen' 'python' 'python-setuptools' 'python-pytest'
+        'python-sphinx' 'python2' 'python2-setuptools' 'python2-pytest'
     # AUR:
         'python-breathe'
 )
-checkdepends=('boost' 'eigen' 'python-pytest' 'python-numpy' 'python-scipy')
+checkdepends=('python-numpy' 'python-scipy' 'python2-numpy' 'python2-scipy')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pybind/pybind11/archive/v${pkgver}.tar.gz")
 sha256sums=('b69e83658513215b8d1443544d0549b7d231b9f201f6fc787a2b2218b408181e')
 
 prepare() {
-    cp -a "${pkgname}-${pkgver}" "${pkgname}-${pkgver}-py2"
+    cd "${pkgname}-${pkgver}"
+    
+    mkdir -p build-cmake{,-py2}
 }
 
 build () {
-    printf '%s\n' '  -> Building Python3 modules...'
+    local _pythonver
+    _pythonver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+    
+    # python modules
     cd "${pkgname}-${pkgver}"
     python setup.py build
     
-    printf '%s\n' '  -> Building Python2 modules...'
-    cd "${srcdir}/${pkgname}-${pkgver}-py2"
-    python2 setup.py build
+    # cmake files and tests
+    cd build-cmake
+    cmake \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DPYTHON_EXECUTABLE:FILEPATH="/usr/bin/python${_pythonver}" \
+        -Wno-dev \
+        ..
+    make all mock_install
+    cd "${srcdir}/${pkgname}-${pkgver}/build-cmake-py2"
+    cmake \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DPYTHON_EXECUTABLE:FILEPATH='/usr/bin/python2.7' \
+        -Wno-dev \
+        ..
+    make all mock_install
     
-    printf '%s\n' '  -> Building cmake files...'
-    cd "${srcdir}/${pkgname}-${pkgver}/build"
-    cmake ..
-    make mock_install
-    
-    printf '%s\n' '  -> Building manpage...'
+    # manpage
     cd "${srcdir}/${pkgname}-${pkgver}/docs"
     make man
 }
 
 check() {
     cd "${pkgname}-${pkgver}"
-    python setup.py check
     
-    mkdir -p build
-    cd build
-    make check
+   make -C build-cmake check     # python3 tests
+   make -C build-cmake-py2 check # python2 tests
 }
 
 package() {
+    cd "${pkgname}-${pkgver}"
+    
     local _pythonver
     _pythonver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     
     # python modules
-    cd "${pkgname}-${pkgver}"
-    python setup.py install_lib --install-dir="${pkgdir}/usr/lib/python${_pythonver}/site-packages" --optimize='1'
-    
-    # python2 modules
-    cd "${srcdir}/${pkgname}-${pkgver}-py2"
-    python2 setup.py install_lib --install-dir="${pkgdir}/usr/lib/python2.7/site-packages" --optimize='1'
-    
-    # C++ headers
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py install_headers --install-dir="${pkgdir}/usr/include/${pkgname}"
+    python setup.py install --root="$pkgdir" --install-headers='/usr/include/pybind11' --skip-build --optimize='1'
+    python2 setup.py install --root="$pkgdir" --install-headers='/usr/include/pybind11' --skip-build --optimize='1'
     
     # cmake files
     mkdir -p "${pkgdir}/usr/share/cmake/${pkgname}"
-    cd build/mock_install/share/cmake/pybind11
+    cd build-cmake/mock_install/share/cmake/pybind11
     install -m644 *.cmake "${pkgdir}/usr/share/cmake/${pkgname}"
     
     # manpage
