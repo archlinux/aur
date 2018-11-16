@@ -1,7 +1,8 @@
-# Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
+# Maintainer: ebiadsu <ebiadsu at posteo dot de>
+# Contributor: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
 
 _npmname=browser-sync
-_npmver=2.18.13
+_npmver=2.26.3
 pkgname="nodejs-${_npmname}"
 pkgver="${_npmver}"
 pkgrel=1
@@ -11,8 +12,8 @@ url="https://www.browsersync.io/"
 license=('Apache')
 depends=('nodejs' 'npm')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
+sha1sums=('1b59bd5935938a5b0fa73b3d78ef1050bd2bf912')
 noextract=("${_npmname}-${_npmver}.tgz")
-sha1sums=('c28dc3eb3be67c97a907082b772a37f915c14d7d')
 
 package() {
   cd "${srcdir}"
