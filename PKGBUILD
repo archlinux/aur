@@ -5,7 +5,7 @@
 pkgname=kubectl-bin
 pkgdesc="Kubernetes.io client binary"
 pkgver=1.12.2
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'aarch64')
 url="http://kubernetes.io"
 license=('apache')

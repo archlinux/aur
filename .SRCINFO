@@ -1,7 +1,7 @@
 pkgbase = kubectl-bin
 	pkgdesc = Kubernetes.io client binary
 	pkgver = 1.12.2
-	pkgrel = 1
+	pkgrel = 3
 	url = http://kubernetes.io
 	arch = i686
 	arch = x86_64
@@ -18,4 +18,3 @@ pkgbase = kubectl-bin
 	sha256sums_aarch64 = 40d218cee04db06af7976a7e6c81416bca4b814a55652f0b317c8feaddf6837f
 
 pkgname = kubectl-bin
-
