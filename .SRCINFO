@@ -1,0 +1,14 @@
+pkgbase = ccd-python-git
+	pkgdesc = Cute ChDir written on Python that finds directories
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/pushsla/CuteCD
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python>=3.6.0
+	source = https://github.com/pushsla/CuteCD
+	md5sums = 9ece0f2a171e08f370b9461e225cab4d
+
+pkgname = ccd-python-git
+
