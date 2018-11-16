@@ -2,13 +2,13 @@
 # orig Contributor: Denis Wernert <denis@wernert.info>
 pkgname=ocaml-csv
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml CSV parsing library"
 arch=('i686' 'x86_64')
 url="https://github.com/Chris00/ocaml-csv"
 license=('GPL')
 depends=('ocaml')
-makedepends=('ocaml' 'ocaml-findlib' 'ocamlbuild' 'ocaml-lwt')
+makedepends=('ocaml' 'ocaml-findlib' 'ocamlbuild' 'ocaml-lwt' 'opam')
 builddepends=('ocaml')
 source=(https://github.com/Chris00/ocaml-csv/archive/$pkgver.tar.gz)
 md5sums=('ce8f8fbf965b5a58cb3f92e98113a9ec')
