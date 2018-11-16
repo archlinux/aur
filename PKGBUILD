@@ -30,7 +30,7 @@ md5sums=('6dd2309a76aa7bd81aeb2bfb23f2c51e')
 validpgpkeys=()
 prepare() {
 	rm -rf "$pkgname-$pkgver"
-	git clone "$source -b master" "$pkgname-$pkgver"
+	git clone "$source" -b master "$pkgname-$pkgver"
 }
 package() {
 	cd "$pkgname-$pkgver"
