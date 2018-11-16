@@ -8,7 +8,8 @@
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk-git
-pkgver=2018.3.pre3.r77.g53c73e5
+_srcname=MediaSDK
+pkgver=2018.4.pre0.r97.ge9a39271
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
@@ -16,7 +17,7 @@ url='https://github.com/Intel-Media-SDK/MediaSDK/'
 license=('MIT')
 depends=(
     # official repositories:
-        'gcc-libs' 'libdrm' 'wayland' 'intel-media-driver'
+        'gcc-libs' 'libdrm' 'wayland' 'gmock' 'intel-media-driver'
     # AUR:
         'libva-git'
 )
@@ -24,28 +25,25 @@ makedepends=('git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb')
 provides=('intel-media-sdk' 'libmfx')
 conflicts=('intel-media-sdk')
 install="${pkgname}.install"
-source=('intel-media-sdk-git.conf'
+source=('git+https://github.com/Intel-Media-SDK/MediaSDK.git'
+        'intel-media-sdk-git.conf'
         'intel-media-sdk-git.sh')
-sha256sums=('63e76d28140486871a3ffc29ce19c84914583bf243201946c76943bf54df374a'
+sha256sums=('SKIP'
+            '63e76d28140486871a3ffc29ce19c84914583bf243201946c76943bf54df374a'
             '315ea6f304cf2b7b6a8aaabb0b8f71fcd480677c7fb9c8cbfa51c7830bb159bc')
 
+export GIT_LFS_SKIP_SMUDGE='1'
+
 prepare() {
-    # makepkg does not support cloning git-lfs repositories
-    if [ -d "$pkgname" ] 
-    then
-        printf '%s\n' "  -> Updating ${pkgname} git repo..."
-        cd "$pkgname"
-        git pull origin
-    else
-        printf '%s\n' "  -> Cloning ${pkgname} git repo..."
-        git lfs install
-        git clone https://github.com/Intel-Media-SDK/MediaSDK.git "$pkgname"
-        cd "$pkgname"
-    fi
+    cd "$_srcname"
+    
+    git lfs pull "${source[0]/git+/}"
+    
+    mkdir -p build
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     local _prefix='intel-mediasdk-'
     
@@ -54,17 +52,14 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
-    
-    mkdir -p build
-    cd build
+    cd "${_srcname}/build"
     
     cmake \
         -DBUILD_ALL:BOOL='ON' \
         -DBUILD_DISPATCHER:BOOL='ON' \
         -DBUILD_RUNTIME:BOOL='ON' \
         -DBUILD_SAMPLES:BOOL='ON' \
-        -DBUILD_TESTS:BOOL='OFF' \
+        -DBUILD_TESTS:BOOL='ON' \
         -DBUILD_TOOLS:BOOL='ON' \
         -DENABLE_ALL:BOOL='ON' \
         -DENABLE_ITT:BOOL='OFF' \
@@ -79,8 +74,14 @@ build() {
     make
 }
 
+check() {
+    cd "${_srcname}/build"
+    
+    make test
+}
+
 package() {
-    cd "${pkgname}/build"
+    cd "${_srcname}/build"
     
     make DESTDIR="$pkgdir" install
     
@@ -95,6 +96,6 @@ package() {
     install -D -m755 intel-media-sdk-git.sh   -t "${pkgdir}/etc/profile.d"
     
     # license
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_srcname}"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
