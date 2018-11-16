@@ -1,7 +1,7 @@
 # Maintainer: Betül Ünlü < betulunlu0018 ~at~ gmail ~dot~ com >
 
 pkgname=emojicode
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
