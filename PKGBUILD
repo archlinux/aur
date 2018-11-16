@@ -1,4 +1,5 @@
 # Maintainer: willemw <willemw12@gmail.com>
+# Contributor: sng
 # Contributor: aksr <aksr at t-com dot me>
 
 _pkgname=pyradio
