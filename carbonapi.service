@@ -8,5 +8,25 @@ Type=simple
 ExecStart=/usr/bin/carbonapi -config /etc/carbonapi.yaml
 Restart=on-failure
 
+DynamicUser=true
+
+CapabilityBoundingSet=
+AmbientCapabilities=
+NoNewPrivileges=true
+
+ProtectSystem=strict
+ProtectHome=true
+
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RemoveIPC=true
+
 [Install]
 WantedBy=multi-user.target
