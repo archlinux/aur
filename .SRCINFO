@@ -1,0 +1,23 @@
+pkgbase = copypastegrab-git
+	pkgdesc = A shell wrapper for youtube-dl that downloads videos from websites. Designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/cryptowyrm/copypastegrab
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = json-glib
+	depends = youtube-dl
+	provides = copypastegrab
+	conflicts = copypastegrab
+	source = git+https://github.com/cryptowyrm/copypastegrab.git
+	md5sums = SKIP
+
+pkgname = copypastegrab-git
+
