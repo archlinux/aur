@@ -1,35 +1,30 @@
-# Maintainer : June Tate-Gans <june@theonelab.com>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: June Tate-Gans <june@theonelab.com>
+
 pkgname=libfixposix
-pkgver='0.3.0'
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Thin wrapper over POSIX syscalls'
 arch=('i686' 'x86_64')
-url='https://github.com/sionescu/libfixposix'
+url="https://github.com/sionescu/libfixposix"
 license=('BSD')
-depends=(
-    'glibc'
-)
-makedepends=(
-    'autoconf'
-    'automake'
-    'libtool'
-    'pkg-config'
-    'git'
-    'make'
-)
-groups=('base-devel')
-source=("https://github.com/sionescu/libfixposix/archive/v0.3.0.tar.gz")
-md5sums=('049f0e855e50e2e4b423fb5edeb2630c')
+depends=('glibc')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/sionescu/libfixposix/archive/v${pkgver}.tar.gz")
+sha256sums=('78fe8bcebf496520ac29b5b65049f5ec1977c6bd956640bdc6d1da6ea04d8504')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  autoreconf -fiv
+}
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    autoreconf -i -f
-    ./configure --prefix=/usr
-    make
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir/" install
-    install -D -m644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
 }
