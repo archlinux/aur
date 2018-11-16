@@ -1,6 +1,6 @@
 pkgname=otrs
 pkgver=6.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
 options=("emptydirs")
@@ -42,16 +42,17 @@ sha256sums=("cb10dda941c7477880ae06362ef69fe0cfb1d06ad9ad1315cb7322d4dd65963e"
             "2be2c7949bc6371c3e285176341577d364a90298c7115d1e5744d9d771b4983d")
 
 prepare() {
-cat << EOL > "${srcdir}/${pkgname}-cron.service"
+cat << EOL > "${srcdir}/${pkgname}.service"
 [Unit]
-Description=OTRS Cron
-After=syslog.target network.target
+Description=OTRS Daemon
+After=network.target
 
 [Service]
 User=otrs
+Group=http
 Type=simple
-ExecStart=/usr/share/webapps/otrs/bin/Cron.sh start
-ExecStop=/usr/share/webapps/otrs/bin/Cron.sh stop
+ExecStart=/usr/share/webapps/otrs/bin/otrs.Daemon.pl start
+ExecStop=/usr/share/webapps/otrs/bin/otrs.Daemon.pl stop
 RemainAfterExit=yes
 
 [Install]
@@ -64,7 +65,7 @@ package() {
   install -dm 0755 "${pkgdir}/usr/share/webapps/${pkgname}"
 
   install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/Kernel/Config.pm.dist" "${pkgdir}/etc/webapps/${pkgname}/Config.pm"
-  install -Dm 0644 "${srcdir}/${pkgname}-cron.service"                    "${pkgdir}/usr/lib/systemd/system/${pkgname}-cron.service"
+  install -Dm 0644 "${srcdir}/${pkgname}.service"                         "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
   cp -ra ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/usr/share/webapps/${pkgname}/
 

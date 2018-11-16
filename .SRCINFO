@@ -1,7 +1,7 @@
 pkgbase = otrs
 	pkgdesc = OTRS is the leading open-source Help Desk and IT Service Management (ITSM)
 	pkgver = 6.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.otrs.com/
 	install = otrs.install
 	arch = any
