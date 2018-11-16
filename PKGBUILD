@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=python-sentry_sdk
 _pkgname=sentry-sdk
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('python-urllib3' 'python-certifi' 'python-flask')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/sentry-sdk-$pkgver.tar.gz"
         "LICENSE")
-md5sums=('061b6b520012ebf32cb6fbcfe0acca09'
+md5sums=('3793805bf4603745b6a84e91652e10b2'
          '0c79f8d3c91fc847350efd28bfe0a341')
 
 package() {
