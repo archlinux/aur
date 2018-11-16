@@ -4,10 +4,10 @@ pkgname=pwclient-git
 pkgver=r753.0a0f9d5
 pkgrel=1
 pkgdesc="Command-line client for patchwork"
-url='https://github.com/getpatchwork/patchwork'
+url='https://patchwork.ozlabs.org/help/pwclient/'
 arch=('any')
 license=('GPL')
-source=("$url/raw/master/patchwork/bin/pwclient")
+source=("https://github.com/getpatchwork/patchwork/raw/master/patchwork/bin/pwclient")
 sha256sums=('SKIP')
 
 pkgver() {
