@@ -7,7 +7,7 @@
 
 pkgname=mutter-781835-workaround
 _pkgname=mutter
-pkgver=3.30.2+5+g108380cc2
+pkgver=3.30.2+3+g73d0d5e11
 pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -15,7 +15,7 @@ arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
-         gnome-settings-daemon libgudev libinput pipewire gnome-shell) # or gnome-shell-performance=3.28.3+7+g721ce5403
+         gnome-settings-daemon libgudev libinput pipewire gnome-shell)
 makedepends=(intltool gobject-introspection git egl-wayland)
 provides=(mutter)
 conflicts=(mutter)
@@ -52,25 +52,28 @@ prepare() {
 
   # clutter: Fix offscreen-effect painting of clones
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/117/commits
-  git cherry-pick fb398c1c
+  # conflicts
+  # git cherry-pick 31a949de
 
   # Geometric (GPU-less) picking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
-  git cherry-pick 0fe913fe^..955d9c07
+  # conflicts too
+  # git cherry-pick 0fe913fe^..955d9c07
 
   # Sync to the hardware refresh rate, not just 60.00Hz [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/171/commits
-  # Disabled as requires to solve conflicts 
-  #git cherry-pick cc28298c^..3947a4de || bash
+  # Disabled as requires to solve conflicts
+  # git cherry-pick cc28298c || bash
+  # git cherry-pick 3947a4de || bash
 
   # clutter-actor: Add detail to captured-event signal [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/283/commits
   git cherry-pick c2404d16
 
-
   # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281/commits
-  git cherry-pick bd44e7d3^..b07f9b86
+  git cherry-pick 68af9783
+  git cherry-pick fa7125e6
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
