@@ -1,0 +1,17 @@
+pkgbase = vcprompt-git
+	pkgdesc = Version control information in your prompt
+	pkgver = 20170225.gbe91a3b
+	pkgrel = 1
+	url = https://github.com/powerman/vcprompt
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = sqlite
+	depends = perl
+	provides = vcprompt
+	conflicts = vcprompt
+	source = git://github.com/powerman/vcprompt.git
+	md5sums = SKIP
+
+pkgname = vcprompt-git
+
