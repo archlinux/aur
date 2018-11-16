@@ -1,10 +1,11 @@
 # Maintainer: robertfoster
 # Contributor: Sigmund Vestergaard <sigmundv at gmail dot com>
 # Contributor: Denis Wernert <denis@wernert.info>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ssl
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml SSL Library"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
@@ -24,10 +25,10 @@ package() {
 
     # Initialize OPAM, this should be removed once opam is “removed” from dune
     export OPAMROOT="${srcdir}"/opam
-    opam init -n
+    opam init --bare -n
 
     # Work around the install command
-    OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)" jbuilder install
+    OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)" jbuilder install --prefix=${pkgdir}/usr/share
     # Install LICENSE
     mkdir -p $pkgdir/usr/share/licenses/$pkgname/
     awk 'BEGIN{P=0} /License/ {P = 1;} {if (P) print}' README.md > $pkgdir/usr/share/licenses/$pkgname/license
