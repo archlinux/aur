@@ -1,5 +1,5 @@
 post_install() {
-	echo "Run 'kcptun-client-plugins upgrade' or 'kcptun-server-plugins upgrade' as root to download kcptun and udp2raw binaries"
+	echo "Run 'kcptun-client-plugin upgrade' or 'kcptun-server-plugin upgrade' as root to download kcptun and udp2raw binaries"
 	echo "You can only have one set of binaries installed"
 }
 

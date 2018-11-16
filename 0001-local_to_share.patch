@@ -1,0 +1,26 @@
+diff --git a/kcptun-client-plugin b/kcptun-client-plugin
+index f963d89..28bd3c5 100755
+--- a/kcptun-client-plugin
++++ b/kcptun-client-plugin
+@@ -3,7 +3,7 @@
+ set -e
+ 
+ if [ ! -f $(basename $0) ]; then
+-    cd /usr/local/kcptun_plugins;
++    cd /usr/share/kcptun_plugins;
+ fi
+ 
+ source ./lib
+diff --git a/kcptun-server-plugin b/kcptun-server-plugin
+index ea97668..cd3de6b 100755
+--- a/kcptun-server-plugin
++++ b/kcptun-server-plugin
+@@ -3,7 +3,7 @@
+ set -e
+ 
+ if [ ! -f $(basename $0) ]; then
+-    cd /usr/local/kcptun_plugins;
++    cd /usr/share/kcptun_plugins;
+ fi
+ 
+ source ./lib
