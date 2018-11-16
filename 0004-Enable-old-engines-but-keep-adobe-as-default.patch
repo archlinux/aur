@@ -1,0 +1,88 @@
+From 41bbf735a170d62e43ff399c28ae4a987a6ea21f Mon Sep 17 00:00:00 2001
+Message-Id: <41bbf735a170d62e43ff399c28ae4a987a6ea21f.1528102613.git.jan.steffens@gmail.com>
+In-Reply-To: <eb7f1fc4286d83dde4bf5ef60cebddeaa074d9f0.1528102613.git.jan.steffens@gmail.com>
+References: <eb7f1fc4286d83dde4bf5ef60cebddeaa074d9f0.1528102613.git.jan.steffens@gmail.com>
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Sat, 16 Dec 2017 23:08:02 +0100
+Subject: [PATCH 4/4] Enable old engines, but keep adobe as default
+
+---
+ include/freetype/config/ftoption.h | 4 ++--
+ src/cff/cffobjs.c                  | 4 ----
+ src/cid/cidobjs.c                  | 4 ----
+ src/type1/t1objs.c                 | 4 ----
+ 4 files changed, 2 insertions(+), 14 deletions(-)
+
+diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
+index f47155b83..fd24ac4b8 100644
+--- a/include/freetype/config/ftoption.h
++++ b/include/freetype/config/ftoption.h
+@@ -771,7 +771,7 @@ FT_BEGIN_HEADER
+    * the type1 driver module.
+    *
+    */
+-/* #define T1_CONFIG_OPTION_OLD_ENGINE */
++#define T1_CONFIG_OPTION_OLD_ENGINE
+ 
+ 
+   /*************************************************************************/
+@@ -815,7 +815,7 @@ FT_BEGIN_HEADER
+    * the cff driver module.
+    *
+    */
+-/* #define CFF_CONFIG_OPTION_OLD_ENGINE */
++#define CFF_CONFIG_OPTION_OLD_ENGINE
+ 
+ 
+   /*************************************************************************/
+diff --git a/src/cff/cffobjs.c b/src/cff/cffobjs.c
+index b3f0f99e3..f85fa180e 100644
+--- a/src/cff/cffobjs.c
++++ b/src/cff/cffobjs.c
+@@ -1162,11 +1162,7 @@
+ 
+ 
+     /* set default property values, cf. `ftcffdrv.h' */
+-#ifdef CFF_CONFIG_OPTION_OLD_ENGINE
+-    driver->hinting_engine = FT_HINTING_FREETYPE;
+-#else
+     driver->hinting_engine = FT_HINTING_ADOBE;
+-#endif
+ 
+     driver->no_stem_darkening = TRUE;
+ 
+diff --git a/src/cid/cidobjs.c b/src/cid/cidobjs.c
+index 91c4ed94a..6c6cff318 100644
+--- a/src/cid/cidobjs.c
++++ b/src/cid/cidobjs.c
+@@ -479,11 +479,7 @@
+ 
+ 
+     /* set default property values, cf. `ftt1drv.h' */
+-#ifdef T1_CONFIG_OPTION_OLD_ENGINE
+-    driver->hinting_engine = FT_HINTING_FREETYPE;
+-#else
+     driver->hinting_engine = FT_HINTING_ADOBE;
+-#endif
+ 
+     driver->no_stem_darkening = TRUE;
+ 
+diff --git a/src/type1/t1objs.c b/src/type1/t1objs.c
+index 568440d05..0bf329973 100644
+--- a/src/type1/t1objs.c
++++ b/src/type1/t1objs.c
+@@ -594,11 +594,7 @@
+ 
+ 
+     /* set default property values, cf. `ftt1drv.h' */
+-#ifdef T1_CONFIG_OPTION_OLD_ENGINE
+-    driver->hinting_engine = FT_HINTING_FREETYPE;
+-#else
+     driver->hinting_engine = FT_HINTING_ADOBE;
+-#endif
+ 
+     driver->no_stem_darkening = TRUE;
+ 
+-- 
+2.17.1
+
