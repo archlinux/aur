@@ -1,29 +1,48 @@
-# Maintainer: polyzen <polycitizen@gmail.com>
+# Maintainer: Ainola
+# Contributor: polyzen
 # Contributor: Army
 # Contributor: Dan Serban
 # Contributor: insanum
 # Contributor: Thomas Zervogiannis
 
 pkgname=gcalcli
-pkgver=3.4.0
+# We are using an alpha version because the ancient 3.4.0 stable version does
+# not work well with newer libraries:
+# - oauth2client > 1.4.12 renamed 'run' to 'run_flow'
+# - https://github.com/insanum/gcalcli/issues/279
+pkgver=4.0.0a4
 pkgrel=1
-pkgdesc='Google Calendar Command Line Interface'
+pkgdesc='Google calendar command line interface'
 arch=('any')
 url=https://github.com/insanum/gcalcli
-license=('MIT')
-depends=('python2-google-api-python-client' 'python2-dateutil' 'python2-gflags' 'python2-oauth2client1412')
-optdepends=('python2-vobject: for ics/vcal importing'
-            'python2-parsedatetime: for fuzzy dates/times like "now", "today",
-              "eod tomorrow", etc.')
-source=("gcalcli-$pkgver::https://raw.githubusercontent.com/insanum/gcalcli/v$pkgver/gcalcli")
-sha256sums=('9e833ae676bca4944cd9c34354f0d263ee196749fe888b235ca7aa3f200a2d59')
+# https://github.com/insanum/gcalcli/issues/390
+license=('unknown')  # https://github.com/insanum/gcalcli/issues/390
+makedepends=('python-setuptools')
+depends=(
+    'python-dateutil'
+    'python-google-api-python-client'
+    'python-httplib2'
+    'python-oauth2client'
+)
+optdepends=(
+    'python-vobject: for ics/vcal importing'
+    'python-parsedatetime: for fuzzy dates/times like "now", "today", etc.'
+)
+source=("gcalcli-$pkgver.tar.gz::https://github.com/insanum/gcalcli/archive/v$pkgver.tar.gz")
+sha256sums=('0f83f4c3ba9d46d34a412ce8f9311cbe1f1598e5425ec363c6390f0ffcbbd42a')
 
-prepare() {
-  sed -i -e '1s/$/2/' -e 's/oauth2client/oauth2client1412/' gcalcli-$pkgver
+build() {
+    cd "gcalcli-$pkgver"
+    python setup.py build
+}
+
+check() {
+    cd "gcalcli-$pkgver"
+    python setup.py test
 }
 
 package() {
-  install -Dm755 gcalcli-$pkgver "$pkgdir"/usr/bin/gcalcli
+    cd "gcalcli-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    install -Dm644 docs/* -t "$pkgdir/usr/share/docs/$pkgname"
 }
-
-# vim:set ts=2 sw=2 et:
