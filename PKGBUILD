@@ -4,7 +4,7 @@
 
 pkgname=firetable
 pkgver=5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool written in PHP to maintain IPtables firewalls under Linux"
 arch=('any')
 url="http://projects.leisink.net/Firetable/"
@@ -24,7 +24,7 @@ source=(
 )
 md5sums=(
   '778a59c129c87167a9f30fefb9283098'
-  'd5c398f94c2504e9b9fe1dc87f22e93f'
+  '64a49e485f646c75abe53d29736674e6'
   '0ff6c1ae205fe074ede25fa84ff8c988'
 )
 
@@ -50,5 +50,3 @@ package() {
   mv "$pkgdir"/usr/sbin/* "$pkgdir"/usr/bin/
   rm -rf "$pkgdir"/usr/sbin/
 }
-
-# vim:set ts=2 sw=2 et:

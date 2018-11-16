@@ -1,5 +1,6 @@
 [Unit]
 Description=Firetable firewall daemon
+After=network.target remote-fs.target nss-lookup.target
 
 [Service]
 Type=oneshot
@@ -8,4 +9,4 @@ ExecStop=/usr/bin/firetable stop
 RemainAfterExit=true
 
 [Install]
-WantedBy=network.target
+WantedBy=multi-user.target
