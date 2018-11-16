@@ -21,6 +21,7 @@ pkgbase = gnuradio-git
 	depends = fftw
 	depends = python
 	depends = python-numpy
+	depends = python-mako
 	depends = cppunit
 	depends = gsl
 	depends = blas
