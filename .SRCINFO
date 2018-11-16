@@ -1,0 +1,14 @@
+pkgbase = kodi-addon-embyrepobeta
+	pkgdesc = This repo contains the Kodi Emby addon along with compatible Kodi skins
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/MediaBrowser/plugin.video.emby/wiki/Emby-Repository
+	arch = any
+	license = GPL2
+	makedepends = unzip
+	depends = kodi
+	source = http://kodi.emby.media/repository.beta.emby.kodi-1.0.5.zip
+	sha256sums = c440c21c11bd8845e2ea44de8a10664f831f41cf3be8d72f0dd36d0d2e2d52da
+
+pkgname = kodi-addon-embyrepobeta
+
