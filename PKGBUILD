@@ -1,8 +1,8 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-tss-engine-git
-pkgver=r21.2be24c0
+pkgver=r24.8d19aba
 pkgrel=1
-pkgdesc='OpenSSL engine for TPM2 devices'
+pkgdesc='OpenSSL engine for Trusted Platform Module 2.0 devices'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tss-engine'
 license=('BSD')
@@ -42,9 +42,6 @@ check() {
 	tpm_server &
 	tpm_server_pid="$!"
 	tpm2_clear --tcti mssim
-
-	# https://github.com/tpm2-software/tpm2-tss-engine/issues/41
-	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$PWD/.libs"
 
 	make check
 
