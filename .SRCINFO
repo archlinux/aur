@@ -1,7 +1,7 @@
 pkgbase = nitroshare
 	pkgdesc = Network File Transfer Application
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nitroshare.net
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,9 @@ pkgbase = nitroshare
 	optdepends = qhttpengine: allow local applications access
 	optdepends = qmdnsengine: enable mDNS discovery
 	source = nitroshare-0.3.4.tar.gz::https://github.com/nitroshare/nitroshare-desktop/archive/0.3.4.tar.gz
+	source = qt-5.11.patch
 	sha256sums = 29874e5909c29211a3c9e13f8c0f49b901ec2996e5d60d80af80d2fb80c3d7ec
+	sha256sums = e2a8417f36a5df37c5fb34c1a371f86b0059f48bf6dd588fc776ca7c38a67cd5
 
 pkgname = nitroshare
 
