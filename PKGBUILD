@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=adaptagrams-git
-pkgver=r1181.0503f75
+pkgver=r1194.86b46ed
 pkgrel=1
 pkgdesc="A library of tools and reusable code for adaptive diagramming applications"
 arch=('i686' 'x86_64')
