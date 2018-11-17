@@ -2,7 +2,7 @@
 # Contributor: Bennett Piater <bennett at piater dot name>
 
 pkgname=doctl
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='A command line tool for DigitalOcean services'
 arch=('i686' 'x86_64')
@@ -31,4 +31,4 @@ package() {
 }
 
 # vim: set et sw=2 sts=2:
-sha256sums=('9e677563c57c330dcda26efa9f140dee83b982a53c0f9d4a11a34714866449b5')
+sha256sums=('6603f6c41b16893630b852e0d2f857d6e200f81788eed1cfd94299a5da07136f')
