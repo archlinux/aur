@@ -1,20 +1,15 @@
 pkgbase = vale
 	pkgdesc = A customizable, syntax-aware linter for prose.
-	pkgver = 1.0.6
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/errata-ai/vale
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = go
-	makedepends = ruby
-	makedepends = python-docutils
-	provides = vale
-	options = !emptydirs
-	source = https://github.com/errata-ai/vale/archive/v1.0.6.zip
-	source = enable_local_build.patch
-	sha256sums = 5fb8ceaa69653f902e5c04b38d0c199a1a853364d62075264e75e591df6c7a48
-	sha256sums = 0761d16f111f793d7388da7bb88fa59daa8ac5a51b2b737ad065226f51beec4b
+	makedepends = go-pie
+	makedepends = go-bindata
+	source = https://github.com/errata-ai/vale/archive/v1.2.6.zip
+	sha256sums = 71d4b21d415d3a17aa05f7f2636e9e6c14b508b07f60f9bc56c53aea116c7ea2
 
 pkgname = vale
 
