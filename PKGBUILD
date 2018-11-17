@@ -2,7 +2,9 @@
 _pkgbase='cubeb'
 pkgbase="$_pkgbase-git"
 pkgname="$_pkgbase-git"
-pkgver=r1214.b832dae
+provides=('cubeb')
+conflicts=('cubeb')
+pkgver=r1223.9a7a551
 pkgrel=1
 pkgdesc="A cross platform audio library"
 arch=('i686' 'x86_64')
@@ -38,7 +40,7 @@ build() {
 	  -DCMAKE_BUILD_TYPE=Release \
 	  -DBUILD_TESTS=False \
 	  -DBUILD_SHARED_LIBS=true \
-	  -DCMAKE_INSTALL_LIBDIR=lib \
+	  -DCMAKE_INSTALL_LIBDIR=/usr/lib \
 	  -DUSE_PULSE=true \
 	  -DUSE_ALSA=true \
 	  -DUSE_JACK=true \

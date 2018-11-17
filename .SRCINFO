@@ -1,6 +1,6 @@
 pkgbase = cubeb-git
 	pkgdesc = A cross platform audio library
-	pkgver = r1214.b832dae
+	pkgver = r1223.9a7a551
 	pkgrel = 1
 	url = https://github.com/kinetiknz/cubeb
 	arch = i686
@@ -16,6 +16,8 @@ pkgbase = cubeb-git
 	depends = alsa-lib
 	optdepends = libpulse: for PulseAudio support
 	optdepends = jack: for JACK support
+	provides = cubeb
+	conflicts = cubeb
 	source = cubeb::git+https://github.com/kinetiknz/cubeb
 	source = git+https://github.com/arsenm/sanitizers-cmake
 	md5sums = SKIP
