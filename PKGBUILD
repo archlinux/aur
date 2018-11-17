@@ -4,8 +4,8 @@ _pkgname=python-omemo
 _pkgname2=python2-omemo
 pkgbase=python-omemo-syndace-git
 pkgname=("python-omemo-syndace-git" "python2-omemo-syndace-git")
-pkgver=r32.26e16c6
-pkgrel=2
+pkgver=r47.0e48589
+pkgrel=1
 pkgdesc="An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol"
 url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
@@ -22,7 +22,6 @@ pkgver() {
 package_python-omemo-syndace-git() {
     depends=('python-pynacl'
              'python-cryptography'
-             'python-hkdf'
              'python-xeddsa-git'
              'python-doubleratchet-git'
              'python-x3dh-git'
@@ -37,7 +36,6 @@ package_python-omemo-syndace-git() {
 package_python2-omemo-syndace-git() {
     depends=('python2-pynacl'
              'python2-cryptography'
-             'python2-hkdf'
              'python2-xeddsa-git'
              'python2-doubleratchet-git'
              'python2-x3dh-git'
