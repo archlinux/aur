@@ -3,8 +3,8 @@
 pkgname=zedenv
 pkgver=0.3.3
 _version_suffix="beta"
-pkgrel=1
-pkgdesc="Utility to manage Boot Environments using ZFS"
+pkgrel=2
+pkgdesc="Utility to manage ZFS Boot Environments"
 arch=('any')
 url="http://github.com/johnramsden/zedenv"
 license=('BSD' 'custom:BSD 3 clause')
@@ -13,6 +13,7 @@ makedepends=('git' 'python-pip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johnramsden/${pkgname}/archive/v${pkgver}-${_version_suffix}.tar.gz")
 md5sums=('e0ec86f70ee2fa005dd82fce0b2f3ec3')
 conflicts=('zedenv-git')
+optdepends=('zedenv-grub: zedenv plugin for GRUB')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}-${_version_suffix}"
