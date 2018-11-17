@@ -1,7 +1,7 @@
 #Maintainer: Konrad Partas <konparta at gmail dot com>
 
 pkgname=foxaur
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Pacman wrapper and AUR helper to keep it simple."
 arch=('any')
