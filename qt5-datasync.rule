@@ -1,1 +1,1 @@
-qt5-base qt5-jsonserializer qt5-websockets qt5-scxml qt5-remoteobjects qt5-service qt5-declarative crypto++
+qt5-base{{^(\d+\.\d+\.\d+).*$}} qt5-jsonserializer{{^(\d+\.\d+\.\d+).*$}} qt5-websockets{{^(\d+\.\d+\.\d+).*$}} qt5-scxml{{^(\d+\.\d+\.\d+).*$}} qt5-remoteobjects{{^(\d+\.\d+\.\d+).*$}} qt5-service{{^(\d+\.\d+\.\d+).*$}} qt5-declarative{{^(\d+\.\d+\.\d+).*$}} crypto++{{^(\d+\.\d+\.\d+).*$}}
