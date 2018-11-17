@@ -12,6 +12,7 @@ Xlogin*greetFace:Terminus:foundry=xos4:pixelsize=28
 Xlogin*promptFace:Terminus:foundry=xos4:pixelsize=28
 Xlogin*face:Terminus:foundry=xos4:pixelsize=28
 Xlogin*failFace:Terminus:foundry=xos4:pixelsize=28
+Xlogin*inpColor:#2D2D2D
 Xlogin*shdColor:#2D2D2D
 Xlogin*hiColor:#2D2D2D
 Xlogin*greetColor:#D8D8D8
