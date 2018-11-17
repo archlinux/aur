@@ -2,8 +2,8 @@
 # Contributor: mustafagonul <mustafagonul@gmail..com>
 
 pkgname=create-react-app
-pkgver=1.5.2
-pkgrel=4
+pkgver=2.1.1
+pkgrel=1
 pkgdesc='Bootstrapping tool for React'
 arch=(any)
 url='https://github.com/facebookincubator/create-react-app'
@@ -13,9 +13,9 @@ makedepends=(npm)
 options=(!emptydirs !strip)
 source=(https://registry.npmjs.org/create-react-app/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha512sums=(be7608cec7d36aa6a2da5d3b3fdaadc61b198076f38ab0b6a26c4a99fd7ac2abe95daa3d08d0839a993e0426511258a1ec74e7fe6a4edeca1ef034d95780ec81)
+sha512sums=('6420f09348e8928e89a8ab1c58468d3ecdf61b2c554193885f16bb2a6cd9c27c6253259fb16a225df6e2bcae4ac8f9d44fc018ced7b1087f55234b414e2aa5b2')
 
 package() {
-  npm install -g --prefix $pkgdir/usr $srcdir/$pkgname-$pkgver.tgz
-  find $pkgdir/usr -type d -exec chmod 755 {} +
+  npm install -g --prefix "$pkgdir"/usr $pkgname-$pkgver.tgz
+  find "$pkgdir"/usr -type d -exec chmod 755 {} +
 }
