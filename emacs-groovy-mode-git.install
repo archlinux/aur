@@ -1,0 +1,11 @@
+post_install() {
+cat << EOF
+
+  If you want to use Emacs Groovy Mode you will likely need to put
+  these lines in your init file:
+
+  (autoload 'groovy-mode "groovy-mode" "Major mode for editing Groovy code." t)
+  (add-to-list 'auto-mode-alist '("\\.groovy\\'" . groovy-mode))
+
+EOF
+}

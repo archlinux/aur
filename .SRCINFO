@@ -1,0 +1,18 @@
+pkgbase = emacs-groovy-mode-git
+	pkgdesc = Emacs Mode for Groovy.
+	pkgver = 2.0.r44.gf80b679
+	pkgrel = 1
+	url = https://github.com/Groovy-Emacs-Modes/groovy-emacs-modes.git
+	install = emacs-groovy-mode-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = emacs-groovy-mode
+	source = emacs-groovy-mode-git::git+https://github.com/Groovy-Emacs-Modes/groovy-emacs-modes.git
+	md5sums = SKIP
+
+pkgname = emacs-groovy-mode-git
+	depends = emacs>=24.0.0
+	depends = emacs-s
+	depends = emacs-dash
+
