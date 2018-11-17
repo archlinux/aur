@@ -1,7 +1,7 @@
 # Maintainer: Markus Richter <mqus at disroot dot org>
 
 pkgname=bitwarden_rs-vault-git
-pkgver=v2.3.0.r3.g6399973
+pkgver=v2.5.0.r22.g1602c0ac
 pkgrel=1
 pkgdesc="Integrates the Vault Web-Interface into bitwarden_rs."
 arch=('any')
@@ -16,7 +16,7 @@ source=("git+https://github.com/bitwarden/web.git"
 	"0001-Set-Vault-BaseURL.patch"
 	"${pkgname%-git}.install")
 sha512sums=('SKIP'
-            '9a9885298fceb8de737aae0e616158ed5c41a15acbfc723048ed8d509cb40d0e32048e12b9aeb4a6a4c67485ba08f0b8e52ba7cb4d8d2036ae4dc19e39431961'
+            '3d676568a96ba08e5b5df31743472686f073c7677c470819a7a2decae86e5a85be032e573ff114024039138945633dd26bbc70faf212196b6dd065fc0cb0760d'
             '5265612afd40cb757e7d6550ca902f9c02c558e7d03607a181df923374efdf9eff85296c216db7c96d9987eb1fe0834a7eb90de7dcd988c9f7443dc69b9469b1')
 
 pkgver() {
@@ -38,6 +38,9 @@ build() {
 	cd "$srcdir/web"
 	npm install --cache "${srcdir}/npm-cache" 
 	npm run sub:init --cache "${srcdir}/npm-cache" 
+	# fix https://github.com/gulpjs/gulp/issues/2246
+	npm install natives@1.1.6 --cache "${srcdir}/npm-cache"
+	
 	npm run dist --cache "${srcdir}/npm-cache" 
 }
 
