@@ -2,6 +2,7 @@
 # Contributor: Jack Rosenthal
 # Contributor: David Florness <edwargix@gmail.com>
 pkgname=threelayout
+_keymap=3l
 pkgver=41.66f2e67
 pkgrel=1
 pkgdesc="Keyboard layout designed by Jack Rosenthal"
@@ -21,9 +22,8 @@ pkgver() {
 
 package() {
   mkdir -p $pkgdir/usr/share/X11/xkb/symbols
-  mkdir -p $pkgdir/usr/share/kbd/keymaps/i386/$pkgname
-  ckbcomp 3l | gzip -f - > $pkgname.map.gz
-  install -Dm644 $srcdir/3l $pkgdir/usr/share/X11/xkb/symbols/3l
-  install -Dm644 $srcdir/$pkgname.map.gz $pkgdir/usr/share/kbd/keymaps/i386/3l/3l.map.gz
+  mkdir -p $pkgdir/usr/share/kbd/keymaps/i386/$_keymap
+  ckbcomp -I$srcdir/$pkgname/linux/xkb/symbols $_keymap | gzip -f - > $_keymap.map.gz
+  install -Dm644 $srcdir/$pkgname/linux/xkb/symbols/$_keymap $pkgdir/usr/share/X11/xkb/symbols/$_keymap
+  install -Dm644 $srcdir/$_keymap.map.gz $pkgdir/usr/share/kbd/keymaps/i386/$_keymap/$_keymap.map.gz
 }
-
