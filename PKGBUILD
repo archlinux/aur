@@ -3,7 +3,7 @@
 
 pkgname=ttf-ubuntu-arabic
 pkgver=0.84+arabic
-pkgrel=1
+pkgrel=2
 pkgdesc="Public release of Arabic font to Ubuntu Xenial Xerus"
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/ubuntu-font-family-sources/0.84~mono0.83+arabicfontconfig-0ubuntu1"
