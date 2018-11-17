@@ -5,9 +5,14 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the patches!
 # https://github.com/mymedia2/tdesktop
 
+# Telegram API credentials. The defaults below are Telegram's test keys.
+# You may use you your own here for better API performance
+_api_id='17349'
+_api_hash='344583e45741c457fe1862106095a5eb'
+
 pkgname=telegram-desktop-systemqt-notoemoji
-pkgver=1.4.4
-pkgrel=2
+pkgver=1.4.7
+pkgrel=1
 pkgdesc='Official Telegram Desktop client (with noto emoji)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -83,6 +88,7 @@ build() {
     export CXXFLAGS="$CXXFLAGS $EXTRA_FLAGS"
     gyp \
         -Dbuild_defines=${GYP_DEFINES} \
+        -Dapi_id=${_api_id} -Dapi_hash=${_api_hash} \
         -Gconfig=Release \
         --depth=Telegram/gyp --generator-output=../.. -Goutput_dir=out Telegram/gyp/Telegram.gyp --format=cmake
     NUM=$((`wc -l < out/Release/CMakeLists.txt` - 2))
