@@ -11,33 +11,33 @@ _base16_cmt=d022b9daa5c233a08a8d3b94fd534a3041e3a8c1
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical application for generating different color variations of Numix/Materia/Arc theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
 url='https://github.com/themix-project/oomox'
 license=('GPL3')
 depends=(
-    'coreutils'
-    'bash'
-    'bc'
-    'findutils'
-    'gdk-pixbuf2'
-    'glib2'
-    'gtk-engine-murrine'
-    'gtk-engines'
-    'gtk3'
-    'imagemagick'
-    'inkscape'
-    'librsvg'
-    'optipng'
-    'parallel'
-    'polkit'
-    'python-gobject'
-    'python-pillow'
-    'sassc'
-    'sed'
-    'zip'
+	'gtk3'
+	'python-gobject'
+	'glib2'  # oomox, materia, arc
+	'gdk-pixbuf2'  # oomox, materia, arc
+	'gtk-engine-murrine'  # oomox, materia, arc
+	'gtk-engines'  # oomox, materia, arc
+	'gnome-themes-extra'  # materia
+	'sassc'  # oomox, materia, arc
+	'librsvg'  # oomox, gnome-colors
+	'sed'  # oomox, materia, arc, gnome-colors, archdroid
+	'findutils'  # oomox, materia, arc, gnome-colors, arch-droid
+	'grep'  # oomoxify, oomox, materia, arc, gnome-colors
+	'bc'  # oomoxify, oomox, materia, arc, gnome-colors
+	'zip'  # oomoxify
+	'polkit'  # oomoxify
+	'imagemagick'  # gnome-colors
+	'parallel'  # materia, arc
+	'optipng'  # materia, arc
+	'inkscape'  # materia, arc
+	'python-pillow'  # import_pil
 )
 optdepends=(
     'xorg-xrdb: for the `xresources` theme'
