@@ -1,12 +1,12 @@
 # Maintainer: Clayton Craft <clayton at craftyguy dot net>
 pkgname=py-spy
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Sampling profiler for Python programs"
 arch=('x86_64')
 license=('GPL3')
 url="https://github.com/benfred/py-spy"
-depends=('python' 'python-setuptools-rust' 'rust')
+depends=()
 makedepends=('rust' 'cargo')
 provides=('py-spy')
 conflicts=('py-spy')
