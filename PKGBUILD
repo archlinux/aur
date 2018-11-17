@@ -5,8 +5,8 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.18.6
-pkgrel=2
+pkgver=2.18.9
+pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/devscripts"
