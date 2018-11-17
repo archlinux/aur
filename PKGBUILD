@@ -1,9 +1,9 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.7.0.6
-_numix_ver=1.9.1
-_materia_ver=20180922
-_arc_cmt=7ff5b36c287fd50a5910a67a255a3d6bec58b679
+_oomox_ver=1.7.1
+_numix_ver=1.9.2
+_materia_ver=20181115
+_arc_cmt=e97206cf0772da5b07b982da67cc65d91884d48d
 _archdroid_ver=1.0.2
 _gnome_colors_ver=5.5.3
 _oomoxify_ver=1.0.1
@@ -59,10 +59,10 @@ source=(
     "oomoxify-${_oomoxify_ver}.tar.gz::https://github.com/themix-project/oomoxify/archive/${_oomoxify_ver}.tar.gz"
     "base16-builder-${_base16_cmt}.tar.gz::https://github.com/base16-builder/base16-builder/archive/${_base16_cmt}.tar.gz"
 )
-md5sums=('39ba21ea6ba52f3317da5066d80cae20'
-         'a9fdfe30b4ef19a591c943dfe5876eec'
-         'fc264476ff1b7a1763698e6c1892ca01'
-         'a0f38b1c341198a81408379907a0ca4b'
+md5sums=('1a503230665b6ee3ad4c865757ee03ce'
+         'bcc635f0dd06b0b0fae1f318d3271ec2'
+         '6fdcb1b5b44b972b9f5f04138230af59'
+         '19029e06b6fbda8a40eb047978c6a8ba'
          'cb669130685dcbf03a8f7f5738c71dc6'
          'ae3250f1dce9505dbaa60d92dcb9a239'
          '02f3cefaf6ce3b89b8a5cc6b8a7430b4'
