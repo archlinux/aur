@@ -2,7 +2,7 @@
 
 _name=qzdoom
 pkgname=${_name}-git
-pkgver=q2.2pre+282+g9670833f5
+pkgver=q2.2pre+905+ge2e0b0c15
 pkgrel=1
 pkgdesc='Advanced Doom source port with true color renderer (git version)'
 arch=('i686' 'x86_64')
