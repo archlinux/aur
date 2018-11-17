@@ -5,7 +5,7 @@ _gitname=e4rat-lite
 pkgdesc="An improved version of e4rat, a toolset to accelerate the boot process and application startups."
 url=https://github.com/ShyPixie/$_gitname
 pkgver=2.7.r87.0881c2e
-pkgrel=4
+pkgrel=5
 
 arch=(i686 x86_64)
 license=('GPL3')
@@ -18,11 +18,13 @@ conflicts=('ureadahead' 'e4rat-preload-lite' 'e4rat-preload-lite-git' 'e4rat-lit
 
 source=("git://github.com/ShyPixie/$_gitname.git"
         "$pkgname.install"
-        "e4rat-lite-git-update.hook")
+        "e4rat-lite-git-update.hook"
+	"sysmacros_h.patch")
 
 md5sums=('SKIP'
          'e0deb0fc92359da3a1970bbab467ffdf'
-         'b889cd20982a0d95fb694719174f5a11')
+         'b889cd20982a0d95fb694719174f5a11'
+         'd5fb93378ad2d9f887475ae30302192a')
          
 install=$pkgname.install
 backup=('etc/e4rat-lite.conf')
@@ -44,6 +46,10 @@ prepare() {
 	else
 		mkdir build
 	fi
+
+	cd "$srcdir"/$_gitname
+    	patch -p1 < ../sysmacros_h.patch
+
 }
 
 build() {
