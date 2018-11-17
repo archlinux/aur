@@ -789,3 +789,16 @@ Tue Oct 16 15:18:18 2018 +0200
      2018-10-16 3dde2905 actionless chore(plugins: materia): update submodule
      2018-10-09 99ecab1a actionless chore(plugins: oomox): update submodule
      2018-10-08 7dc8f6d3 actionless chore(colors): add new colorthemes
+
+
+Sat Nov 17 19:58:43 2018 +0100
+-------------------------------------------------
+1.7.1           Release 1.7.1
+    
+    Notable changes:
+     2018-11-17 d74b1eb2 feat(presets_list): don't show directory name in children items
+     2018-11-17 03e8c5f4 fix(preview): make it fit better with different font size and so on
+     2018-11-17 1b2f71d6 feat: remove section names from GUI
+     2018-11-17 679fcf89 chore(plugins: oomox): update submodule (missing popover outline)
+     2018-11-16 de5030b0 feat: add import dialogs for plugins and show imported formats separately from native themix colorschemes
+     2018-11-16 981758cd fix(plugins: materia): update symlinks to generated css
