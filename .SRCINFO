@@ -1,7 +1,7 @@
 pkgbase = bitcoin-abc
 	pkgdesc = Bitcoin ABC with bitcoind, bitcoin-tx, and bitcoin-cli
 	pkgver = 0.18.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitcoinabc.org
 	install = bitcoin.install
 	arch = i686
