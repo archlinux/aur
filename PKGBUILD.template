@@ -21,9 +21,9 @@ makedepends=('gpm' 'python2' 'python' 'ruby' 'libxt' 'lua' 'gawk' 'tcl')
 source=("vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz"
         'vimrc'
         'archlinux.vim')
-sha1sums=(''
-          ''
-          '')
+sha1sums=('use updpkgsums'
+          'use updpkgsums'
+          'use updpkgsums')
 
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor (X11 support, no GUI)'
 depends=("vim-runtime=${pkgver}-${_upstream_pkgrel}" 'gpm' 'acl')
