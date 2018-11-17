@@ -4,8 +4,8 @@
 _pkgbase=r8152
 pkgname=${_pkgbase}-dkms
 pkgver=2.10.0
-pkgrel=2
-pkgdesc="A kernel module for Realtek 8152 network adapters"
+pkgrel=3
+pkgdesc="A kernel module for Realtek RTL8152/RTL8153 Based USB Ethernet Adapters"
 url="http://www.realtek.com.tw"
 license=("GPL")
 arch=('i686' 'x86_64')
