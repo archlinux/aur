@@ -3,14 +3,14 @@
 # Contributor: madmack <ali at devasque dot com> (x-4.6)
 
 pkgname=asix-dkms
-pkgver=4.20.0
-pkgrel=2
-pkgdesc="Driver for USB ASIX Ethernet models AX88760 AX88772 AX88772A AX88772B AX88772C AX88178"
+pkgver=4.23.0
+pkgrel=1
+pkgdesc="A kernel module for ASIX AX88760 AX88772 AX88772A AX88772B AX88772C AX88178 USB 2.0 network adapters"
 arch=('i686' 'x86_64')
 
 # Browse the pages for USB-to-Ethernet devices and see which devices are
 # comatible with this driver.
-# http://asix.com.tw/products.php?op=ProductList&PLine=71&PSeries=100
+# https://www.asix.com.tw/download.php?sub=driverdetail&PItemID=84
 url="http://www.asix.com.tw/"
 license=('GPL')
 
@@ -18,24 +18,22 @@ depends=('dkms')
 provides=('asix-dkms' 'asix-module')
 conflicts=("asix-module")
 
-_filename="AX88772C_772B_772A_760_772_178_LINUX_DRIVER_v${pkgver}_Source"
+_filename="AX88772C_772B_772A_760_772_178_Linux_Driver_v${pkgver}_Source"
 source=(
-    "http://asix.com.tw/FrootAttach/driver/${_filename}.tar.gz"
+    "https://www.asix.com.tw/FrootAttach/driver/${_filename}.tar.bz2"
     'asix-dkms.conf'
 )
 sha512sums=(
-    '1c51cba49481b7a7273019c9ce6fdf988cfbeeb270cef78a5722439f8fd0e07e9e05bc4983b81998724413df803f3aabe5a75d0367a0423751115e4c2f64009d'
+    '7c43eed69e948f2d921b758c2dab1236540832c7ce48b7308b6e3fa5ee1e4f4bc9f190e1497ea85d7a953959bd86f00461ae81c0bbd710959c7dafba6c4c2688'
     'ded1bed08f61ce207e394fc4f49345f0ea50639f53fb797907402b3503feecc485ba85fb799f2b3bc9c22cd4a250509c5eb99d4b36d42228a9475a9e7d67b293'
 )
 
 package() {
     # We are in the source directory ./src/
     # Please note the source of the driver are in a subfolder:
-    # i.e.: src/AX88772C_772B_772A_760_772_178_LINUX_DRIVER_v<version>_Source/
-
-    installDir="$pkgdir/usr/src/${pkgname%-dkms}-${pkgver}"
-
-    install -dm755 "$installDir"
+    # i.e.: src/AX88772C_772B_772A_760_772_178_Linux_Driver_v<version>_Source/
+    installDir="${pkgdir}/usr/src/${pkgname%-dkms}-${pkgver}"
+    install -dm755 "${installDir}"
 
     # The kernel from kernel.org does provide an outdated module asix.
     # Arch Linux packages that module in their default kernel (normal + lts).
@@ -59,25 +57,25 @@ package() {
     sed -e "s/@PKGVER@/${pkgver}/" \
         -i "${installDir}/dkms.conf"
 
-    # Install module source
+    # Install module sources
     cd "${srcdir}/${_filename}"
 
-    # We could use a simple 'cp' here as even if we have a custom umask,
-    # makepkg is redefining his own umask value 0022.
+    # 'cp' would have the same effect as 'install' here, because, even if we
+    # had defined a custom umask in our shell startup scripts, makepkg is
+    # redefining his own umask value 0022.
     # src.: https://git.archlinux.org/pacman.git/tree/scripts/makepkg.sh.in?id=4f2fea240d3039294f6614003206a3dd1f67cfc5#n1255
-    # Also, if we were using a simple 'cp', we would have relied upon upstream
-    # providing a tar archive with the rights we want (755 for folders and 644
-    # for files). While this is currently the case for now, if upstream does
-    # not respect these rights, here, we are making sure we have the rights we
-    # want.
-    # And use a 'while' loop with 'read' and process substitution to harden
-    # this script when special chars are used.
+    # Also, if we were using a simple 'cp', we would have to rely on upstream
+    # providing the correct rights for us. While this is technically the case
+    # for now, using 'install' ensures we are using the correct rights even if
+    # upstream weren't.
+    # We are using a 'while' loop with 'read' and process substitution in order to harden this
+    # script in the event special chars were to be used.
     # src.: http://mywiki.wooledge.org/BashPitfalls#line-92
-    while IFS= read -r -d '' d; do
-        install -dm755 "${installDir}/$d"
+    while IFS= read -r -d '' directory; do
+        install -dm755 "${installDir}/${directory}"
     done < <(find . -type d -print0)
 
-    while IFS= read -r -d '' f; do
-        install -m644  "${srcdir}/${_filename}/$f" "${installDir}/$f"
+    while IFS= read -r -d '' file; do
+        install -m644  "${srcdir}/${_filename}/${file}" "${installDir}/${file}"
     done < <(find . -type f -print0)
 }
