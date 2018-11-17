@@ -2,13 +2,13 @@
 
 pkgname=wdt
 pkgver=1.27.1612021
-pkgrel=5
+pkgrel=6
 pkgdesc="Tool to transfer data between 2 systems as fast as possible over multiple TCP paths"
 arch=('i686' 'x86_64')
 url="https://github.com/facebook/wdt"
 license=('BSD')
-depends=('glibc' 'bash' 'gflags' 'google-glog' 'openssl-1.0')
-makedepends=('git' 'cmake' 'boost' 'double-conversion')
+depends=('glibc' 'bash' 'double-conversion' 'gflags' 'google-glog' 'openssl-1.0')
+makedepends=('git' 'cmake' 'boost')
 optdepends=('jemalloc')
 checkdepends=('gtest')
 source=("git+https://github.com/facebook/wdt.git")
