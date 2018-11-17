@@ -4,7 +4,8 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-bcachefs-git
-pkgver=4.19.2
+_srcver=4.19.2-arch1
+pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
 url="https://evilpiepirate.org/git/"
@@ -14,7 +15,6 @@ options=('!strip')
 _srcname=bcachefs
 source=(
   "$_srcname::git+https://evilpiepirate.org/git/bcachefs.git"
-  "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.19.2.xz"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -24,12 +24,11 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha512sums=('SKIP'
-            'd2e5fccf6fa63f903290cc976716d13c545f18aa3a18196ceaca1bd83b80307951fd6692437ea99cb5d91a10b0f395b343061c248544665e6a8767c895d68e29'
-            'a559957b9b4403d2219bda15689454dc6ee8e95a47a19dbb3afa28d9574f14133456f7b9898543c4f02160fec3b3cf46ebd464b9c0853b746642b06a0bf5a208'
-            '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
-            '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
+sha256sums=('SKIP'
+            'a00e8594a8937cdb9e7ee26b0b0530ec610d14f1f7008612b98739855a0daa75'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -37,7 +36,8 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd $_srcname
 
-  patch -Np1 < "../patch-4.19.2"
+  git remote add upstream-arch https://git.archlinux.org/linux.git
+  git pull upstream-arch v$_srcver
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -55,8 +55,7 @@ prepare() {
 
   msg2 "Setting config..."
   cp ../config .config
-  # do not run `make olddefconfig` as it sets default options
-  yes "" | make config >/dev/null
+  make olddefconfig
 
   make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
