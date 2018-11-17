@@ -1,0 +1,7 @@
+post_install() {
+	id kvmd-webterm &>/dev/null || useradd -r -m -c "Pi-KVM Web Terminal (GoTTY)" -s /bin/bash kvmd-webterm
+}
+
+post_remove() {
+	userdel -r kvmd-webterm &>/dev/null
+}
