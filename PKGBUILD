@@ -8,10 +8,12 @@ arch=(any)
 license=('unknown')
 depends=('bluez-tools' 'expect' 'perl')
 source=('20-bt-auto-enable-a2dp.rules' 'bt-auto-enable-a2dp')
-sha256sums=('4b91c08e4aed1eba608ebdcf5d96aa5f93f79a054bfd925f34a583e59a261d8b' 'e36a9247bc3dd72899cc5a6ed12bbc4721f0472449acf27168a44c2af3e31544')
+sha256sums=('2a7cf2b8570e75cabdc39ea50f6f9b49977e27bb75a48be9fb68a0af15cc0db5' 'e36a9247bc3dd72899cc5a6ed12bbc4721f0472449acf27168a44c2af3e31544')
  
 package() {
-	install -Dm0755 "$srcdir/bt-auto-enable-a2dp" "$pkgdir/usr/bin/bt-auto-enable-a2dp"
+	user=$(basename $HOME)
+	echo "Installing for $user"
+	install -o $user -Dm0755 "$srcdir/bt-auto-enable-a2dp" "$pkgdir/usr/local/bin/bt-auto-enable-a2dp"
 	install -Dm0644 "$srcdir/20-bt-auto-enable-a2dp.rules" "$pkgdir/etc/udev/rules.d/20-bt-auto-enable-a2dp.rules"
 }
 
