@@ -1,6 +1,6 @@
 # Maintainer: Allen Choong <allencch at hotmail dot com>
 pkgname=emoji-keyboard-git
-pkgver=r16.a273a8b
+pkgver=r27.afe17aa
 pkgrel=1
 pkgdesc="Virtual keyboard-like emoji picker for linux"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-
+  sed -i -e "78i\	return False" lib/emoji_shared.py
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
