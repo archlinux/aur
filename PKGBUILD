@@ -11,7 +11,7 @@ _cargo=0.30.0
 
 pkgname=mingw-w64-rust
 _prefix=usr
-pkgver=1.30.0
+pkgver=1.30.1
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ makedepends=('gdb'
              'nodejs'
              'cmake')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.gz"{,.asc}
+source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/${_date}/rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
         "https://static.rust-lang.org/dist/${_date}/rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
         "https://static.rust-lang.org/dist/${_date}/cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
@@ -38,7 +38,7 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.gz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.gz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.gz"
            "cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('cd0ba83fcca55b64c0c9f23130fe731dfc1882b73ae21bef96be8f2362c108ee'
+sha256sums=('76c824e26b6a554cd48f45993e42001816c2f515dd1b252e3c8315fe200155ae'
             'SKIP'
             '1fe9a0f354256483a354ee1b51c60bf9f3f48868581f7cb36d0cc51a82400605'
             'SKIP'
