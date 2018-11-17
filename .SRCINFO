@@ -1,7 +1,7 @@
 pkgbase = linux-zen-bcachefs-git
-	pkgver = 4.19.2.zen1
+	pkgver = 4.19.2
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v4.19.2-zen1
+	url = https://evilpiepirate.org/git/
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -13,14 +13,13 @@ pkgbase = linux-zen-bcachefs-git
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel#commit=9731135d7610a36bbe4cce0dbcd0d942e7436e94
+	source = bcachefs::git+https://evilpiepirate.org/git/bcachefs.git
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
 	sha256sums = 2b4b6828e6d3e81428afa37e9feda9b7244b414d26042fca68612e00d1458103
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21

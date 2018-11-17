@@ -4,18 +4,16 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-zen-bcachefs-git
-_srcver=4.19.2-zen1
-pkgver=${_srcver//-/.}
+pkgver=4.19.2
 pkgrel=1
 arch=(x86_64)
-url="https://github.com/zen-kernel/zen-kernel/commits/v$_srcver"
+url="https://evilpiepirate.org/git/"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
-_srcname=zen-kernel
+_srcname=bcachefs
 source=(
-  #"$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v$_srcver"
-  "$_srcname::git+https://github.com/zen-kernel/zen-kernel#commit=9731135d7610a36bbe4cce0dbcd0d942e7436e94"
+  "$_srcname::git+https://evilpiepirate.org/git/bcachefs.git"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -24,7 +22,6 @@ source=(
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
             '2b4b6828e6d3e81428afa37e9feda9b7244b414d26042fca68612e00d1458103'
@@ -38,8 +35,8 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd $_srcname
 
-  git remote add upstream-bcachefs https://evilpiepirate.org/git/bcachefs.git
-  git pull upstream-bcachefs master
+  git remote add upstream-zen https://github.com/zen-kernel/zen-kernel
+  git pull upstream-zen 9731135d7610a36bbe4cce0dbcd0d942e7436e94 #
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
