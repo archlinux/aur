@@ -1,13 +1,14 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Original Maintainer: Micael Dias
 
-_fragment="#tag=blendluxcore_v2.0"
+_fragment="#tag=blendluxcore_v2.1beta2"
+_pkgver=2.1.beta2
 _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 _name="luxcorerender"
 
 pkgname=blender-plugin-luxcorerender
-pkgver=2.0.r0.gbb9c5ee
-pkgrel=2
+pkgver=2.1.beta2.r275.g8c0faa4
+pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
 url="http://www.luxrender.net/"
@@ -20,7 +21,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd ${srcdir}/${_name}
-  git describe --long --tags | sed 's/^blendluxcore_v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf %s.r%s.g%s $_pkgver $(git rev-list blendluxcore_v2.0..HEAD --count) $(git log --pretty=format:'%h' -n 1)
 }
 
 package() {
