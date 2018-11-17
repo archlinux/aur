@@ -51,7 +51,7 @@ build() {
     mv "${srcdir}/${_pkgname}" "${srcdir}/.go/src/"
     cd "${srcdir}/.go/src/${_pkgname}/"
     # download and build main package and all dependencies
-    GOPATH="${srcdir}/.go" go get -u -v all && ./gorsync_build.sh
+    GOPATH="${srcdir}/.go" go get -u -v all && GOPATH="${srcdir}/.go" ./gorsync_build.sh
 }
 
 package() {
