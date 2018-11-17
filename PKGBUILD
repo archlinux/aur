@@ -4,8 +4,8 @@
 # Contributor: Vladimir Kutyavin <vlkut(AT)bk(DOT)ru>
 pkgname=xtables-addons-dkms
 pkgver=3.2
-pkgrel=1
-pkgdesc="Successor to patch-o-matic(-ng). Contains extensions that were not accepted in the main Xtables. DKMS flavor for kernels >= 4.15."
+pkgrel=2
+pkgdesc='DKMS for additional extensions for Xtables packet filter present in the Linux kernel'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://xtables-addons.sourceforge.net/"
@@ -15,10 +15,10 @@ optdepends=('perl-text-csv-xs: required for building GeoIP database'
 makedepends=()
 conflicts=(xtables-addons xtables-addons-git xtables-addons-multikernel)
 replaces=(xtables-addons xtables-addons-git xtables-addons-multikernel)
-source=(dkms.conf
-        https://sourceforge.net/projects/${pkgname%-dkms}/files/Xtables-addons/${pkgname%-dkms}-${pkgver}.tar.xz)
-sha256sums=('4183417465250d1f2b78cf347f36f2d52ca089f6b2f489f9ea9de36a736d8fc4'
-            '006f4e38bbf4b9a9069b90ca78c93b65800e9ebfd17332b713f1f80292420aaa')
+source=(https://sourceforge.net/projects/${pkgname%-dkms}/files/Xtables-addons/${pkgname%-dkms}-${pkgver}.tar.xz
+        dkms.conf)
+sha256sums=('006f4e38bbf4b9a9069b90ca78c93b65800e9ebfd17332b713f1f80292420aaa'
+            'fc96d577f8dd4404d4ae967d28e0595b4b0f6985bac55cde707ef14e9b10d68b')
 
 prepare() {
 	# go to builddir
