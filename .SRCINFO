@@ -1,0 +1,21 @@
+pkgbase = googletest-git
+	pkgdesc = Google's C++ test framework
+	pkgver = 1.8.1.r244.gd5932506
+	pkgrel = 1
+	url = https://github.com/google/googletest
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = sh
+	provides = gmock
+	provides = gtest
+	conflicts = gmock
+	conflicts = gtest
+	source = git+https://github.com/google/googletest.git
+	sha256sums = SKIP
+
+pkgname = googletest-git
+
