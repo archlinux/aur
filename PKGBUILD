@@ -24,7 +24,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('SKIP'
-            '2b4b6828e6d3e81428afa37e9feda9b7244b414d26042fca68612e00d1458103'
+            '6b281ab7860bf994a286c257b76c7afc3adc2eafa5fa282ff4219ca28fedf8e8'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -36,7 +36,7 @@ prepare() {
   cd $_srcname
 
   git remote add upstream-zen https://github.com/zen-kernel/zen-kernel
-  git pull upstream-zen 9731135d7610a36bbe4cce0dbcd0d942e7436e94 #
+  git pull upstream-zen 08a912f86372a9c8d12df37647e537c97507716d
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
