@@ -7,7 +7,7 @@
 
 pkgname=telegram-desktop-systemqt-notoemoji
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Telegram Desktop client (with noto emoji)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -18,7 +18,7 @@ optdepends=('libnotify: desktop notifications')
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 
-_emojiver="v1"
+_emojiver="v1.0"
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
@@ -27,7 +27,7 @@ source=(
     "GSL::git+https://github.com/Microsoft/GSL.git"
     "crl::git+https://github.com/telegramdesktop/crl.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
-    "https://s3.amazonaws.com/aur-telegram-desktop-notoemoji/noto-emoji-${_emojiver}.tar.xz"
+    "telegram-emoji-gen-${_emojiver}.tar.xz::https://github.com/aswild/telegram-emoji-gen/archive/${_emojiver}.tar.gz"
     "build-time-optimize.patch.in"
     "tg.protocol"
     "CMakeLists.inj"
@@ -42,7 +42,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '376a4860e37b0f60892f362e954f976a563c632579167003b4aacbb24b6fea6aabb4e6952baf6d1a546b961936935cc49cf0e0ce9570320245b6bb326cb149e5'
+            'c0983a175b5bab3c2fbc9717bd16233188fc7e6e60e0744682a17b7d41b748400924682811f6b04f88e2c0721754466a2496ccc595f7d34a45f69bd0063757f6'
             'fa7042f370ae4e2e14d083395743cdee25bfedc39ab5273b5d1ab12fb074757cf76dab065f2abcb44cad018920e711142fbf24a2b9cd30f517c5a5b46d6a6182'
             'b87414ceaae19185a8a5749cea1f6d9f3fc3c69b8dd729e3db8790cde00b987c3c827cd30baf0eac579d1884e34aa2f37bb90778c3c0bc9ca211d75a82891b9d'
             'b20674f61ff6378749d1f59a6a0da194d33ccc786bd783f6ed62027924a3a8a8d27c9763bf376480432d6536896b0c7eeb8c495c5b8cefff7cf5fe84da50947e'
@@ -71,9 +71,7 @@ prepare() {
     cd "Telegram/ThirdParty/libtgvoip"
     patch -Np1 -i "$srcdir/libtgvoip.patch"
 
-    for x in "" "_125x" "_150x" "_200x" "_250x"; do
-        cp -vf "$srcdir/noto-emoji-${_emojiver}/emoji$x.webp" "$srcdir/tdesktop/Telegram/Resources/art/emoji$x.webp"
-    done
+    cp -vf "$srcdir/telegram-emoji-gen-${_emojiver#v}/telegram-noto-emoji/"*.webp "$srcdir/tdesktop/Telegram/Resources/emoji"
 }
 
 build() {
