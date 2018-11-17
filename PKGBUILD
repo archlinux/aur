@@ -3,7 +3,7 @@
 
 
 pkgname=kvmd
-pkgver=0.99
+pkgver=0.100
 pkgrel=1
 pkgdesc="The main Pi-KVM daemon"
 url="https://github.com/pi-kvm/kvmd"
@@ -23,7 +23,7 @@ depends=(
 makedepends=(python-setuptools)
 source=("$url/archive/v$pkgver.tar.gz")
 md5sums=(SKIP)
-install=kvmd.install
+install=$pkgname.install
 
 
 build() {
