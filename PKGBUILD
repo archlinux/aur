@@ -8,7 +8,7 @@ pkgdesc='Extendable continuous integration server (lts)'
 arch=('any')
 url='https://jenkins.io'
 license=('MIT')
-depends=('jre8-openjdk-headless' 'ttf-dejavu' 'libcups')
+depends=('java-runtime-headless=8' 'ttf-dejavu' 'libcups')
 provides=('jenkins-ci')
 conflicts=('jenkins-ci')
 replaces=('jenkins-ci')

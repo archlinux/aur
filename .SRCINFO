@@ -6,7 +6,7 @@ pkgbase = jenkins-lts
 	install = jenkins.install
 	arch = any
 	license = MIT
-	depends = jre8-openjdk-headless
+	depends = java-runtime-headless=8
 	depends = ttf-dejavu
 	depends = libcups
 	provides = jenkins-ci
