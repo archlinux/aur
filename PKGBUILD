@@ -2,109 +2,119 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-minimal
-pkgver=0.20.21
+pkgver=0.21.3
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback through socket connection as user."
 url="https://www.musicpd.org/"
 license=('GPL')
 arch=('i686' 'x86_64' 'armv7h')
-depends=('alsa-lib' 'flac' 'icu' 'libmpdclient' 'sqlite' 'libsystemd')
-makedepends=('boost')
+depends=('alsa-lib' 'flac' 'icu' 'libmpdclient' 'libsystemd' 'zlib')
+makedepends=('boost' 'meson')
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('8322764dc265c20f05c8c8fdfdd578b0722e74626bef56fcd8eebfb01acc58dc' 'SKIP')
+sha256sums=('6cf60e644870c6063a008d833a6c876272b7679a400b83012ed209c15ce06e2a' 'SKIP')
 validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@musicpd.org>
 
-build() {
+prepare() {
     cd ${_pkgname}-${pkgver}
+    rm -rf build
+    install -d build
+}
 
-    ./configure \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --disable-bzip2 \
-        --disable-iso9660 \
-        --disable-zlib \
-        --disable-zzip \
-        --disable-ipv6 \
-        --disable-tcp \
-        --enable-un \
-        --disable-largefile \
-        --disable-nfs \
-        --disable-smbclient \
-        --disable-webdav \
-        --disable-aac \
-        --disable-adplug \
-        --disable-audiofile \
-        --disable-dsd \
-        --disable-ffmpeg \
-        --enable-flac \
-        --disable-fluidsynth \
-        --disable-gme \
-        --disable-mad \
-        --disable-mikmod \
-        --disable-modplug \
-        --disable-mpc \
-        --disable-mpg123 \
-        --disable-opus \
-        --disable-sidplay \
-        --disable-sndfile \
-        --disable-vorbis \
-        --disable-wavpack \
-        --disable-wildmidi \
-        --disable-id3 \
-        --disable-ao \
-        --enable-alsa \
-        --enable-fifo \
-        --disable-haiku \
-        --disable-httpd-output \
-        --disable-jack \
-        --disable-mms \
-        --disable-openal \
-        --disable-oss \
-        --disable-osx \
-        --disable-pipe-output \
-        --disable-pulse \
-        --disable-recorder-output \
-        --disable-roar \
-        --disable-shout \
-        --disable-sndio \
-        --disable-solaris-output \
-        --disable-cdio-paranoia \
-        --disable-cue \
-        --disable-curl \
-        --disable-soundcloud \
-        --disable-lame-encoder \
-        --disable-shine-encoder \
-        --disable-twolame-encoder \
-        --disable-vorbis-encoder \
-        --disable-wave-encoder \
-        --disable-lsr \
-        --disable-soxr \
-        --disable-neighbor-plugins \
-        --disable-upnp \
-        --disable-expat \
-        --disable-libwrap \
-        --disable-debug \
-        --disable-test \
-        --disable-documentation \
-        --disable-inotify \
-        --enable-libmpdclient \
-        --enable-database \
-        --enable-daemon \
-        --enable-sqlite \
-        --enable-icu \
-        --enable-systemd-daemon \
-        --with-systemduserunitdir=/usr/lib/systemd/user \
-        --without-systemdsystemunitdir \
-        --with-zeroconf=no
-    make
+build() {
+    cd ${_pkgname}-${pkgver}/build
+    _opts=('-Ddocumentation=false'
+           '-Dtest=false'
+           '-Dsyslog=disabled'
+           '-Dinotify=false'
+           '-Ddaemon=true'
+           '-Dsystemd=enabled'
+           '-Dtcp=false'
+           '-Dipv6=disabled'
+           '-Dlocal_socket=true'
+           '-Ddsd=false'
+           '-Ddatabase=true'
+           '-Dupnp=disabled'
+           '-Dlibmpdclient=enabled'
+           '-Dneighbor=false'
+           '-Dudisks=disabled'
+           '-Dwebdav=disabled'
+           '-Dcue=false'
+           '-Dcdio_paranoia=disabled'
+           '-Dcurl=disabled'
+           '-Dmms=disabled'
+           '-Dnfs=disabled'
+           '-Dsmbclient=disabled'
+           '-Dqobuz=disabled'
+           '-Dsoundcloud=disabled'
+           '-Dtidal=disabled'
+           '-Dbzip2=disabled'
+           '-Diso9660=disabled'
+           '-Dzzip=disabled'
+           '-Did3tag=disabled'
+           '-Dchromaprint=disabled'
+           '-Dadplug=disabled'
+           '-Daudiofile=disabled'
+           '-Dfaad=disabled'
+           '-Dffmpeg=disabled'
+           '-Dflac=enabled'
+           '-Dfluidsynth=disabled'
+           '-Dgme=disabled'
+           '-Dmad=disabled'
+           '-Dmikmod=disabled'
+           '-Dmodplug=disabled'
+           '-Dmpcdec=disabled'
+           '-Dmpg123=disabled'
+           '-Dopus=disabled'
+           '-Dsidplay=disabled'
+           '-Dsndfile=disabled'
+           '-Dvorbis=disabled'
+           '-Dwavpack=disabled'
+           '-Dwildmidi=disabled'
+           '-Dvorbisenc=disabled'
+           '-Dlame=disabled'
+           '-Dtwolame=disabled'
+           '-Dshine=disabled'
+           '-Dwave_encoder=false'
+           '-Dlibsamplerate=disabled'
+           '-Dsoxr=disabled'
+           '-Dalsa=enabled'
+           '-Dao=disabled'
+           '-Dfifo=true'
+           '-Dhttpd=false'
+           '-Djack=disabled'
+           '-Dopenal=disabled'
+           '-Doss=disabled'
+           '-Dpipe=false'
+           '-Dpulse=disabled'
+           '-Drecorder=false'
+           '-Dshout=disabled'
+           '-Dsndio=disabled'
+           '-Dsolaris_output=disabled'
+           '-Ddbus=disabled'
+           '-Dexpat=disabled'
+           '-Dicu=enabled'
+           '-Diconv=disabled'
+           '-Dlibwrap=disabled'
+           '-Dpcre=disabled'
+           '-Dsqlite=disabled'
+           '-Dyajl=disabled'
+           '-Dzlib=enabled'
+           '-Dzeroconf=disabled'
+    )
+
+    arch-meson .. ${_opts[@]}
+    ninja
 }
 
 package() {
-    cd ${_pkgname}-${pkgver}
-
-    make DESTDIR="${pkgdir}" install
+    cd ${_pkgname}-${pkgver}/build
+    DESTDIR="${pkgdir}" ninja install
+    install -Dm644 ../doc/mpdconf.example "${pkgdir}"/usr/share/doc/mpd/mpdconf.example
+    install -Dm644 ../doc/mpd.conf.5 "${pkgdir}"/usr/share/man/man5/mpd.conf.5
+    install -Dm644 ../doc/mpd.1 "${pkgdir}"/usr/share/man/man1/mpd.1
+    # Remove system services and clean user one
+    rm -rf "${pkgdir}"/usr/lib/systemd/system/
     sed -e 's/network.target //g' -e 's/AF_INET AF_INET6 AF_UNIX AF_NETLINK/AF_UNIX/g' -i "${pkgdir}"/usr/lib/systemd/user/mpd.service
-
 }
