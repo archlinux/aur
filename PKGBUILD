@@ -10,7 +10,7 @@ pkgname=filebot-git
 _pkgname=filebot
 pkgver=4.8.4.r5853.20181001
 _pkgver=4.8.4
-pkgrel=1
+pkgrel=2
 _jnaver=4.5.2
 
 _fixedcommit=7a73521ceed9e015bc23b32c1abab2545a47adeb
@@ -38,7 +38,7 @@ source=("${_pkgname}::git+https://github.com/filebot/filebot.git"
         $_pkgname-arch.sh $_pkgname.svg $_pkgname.desktop)
 
 md5sums=('SKIP'
-         '7c1128f94fcd9f4e29225a12eac83704'
+         'a4cc7024a9c593abeb22a2511c96aef1'
          '04f46be047049448dba3f0de29fe192d'
          'f37edd0bba7570904d28ab1681c7a7f3')
 
