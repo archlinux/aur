@@ -1,17 +1,18 @@
 pkgbase = python-uproot
 	pkgdesc = Minimalist CERN ROOT I/O in pure Python and Numpy
-	pkgver = 3.2.6
-	pkgrel = 2
+	pkgver = 3.2.12
+	pkgrel = 1
 	url = https://github.com/scikit-hep/uproot
 	arch = any
 	license = BSD
+	checkdepends = python2-pandas
+	checkdepends = python-pandas
 	makedepends = python2-setuptools
-	makedepends = python2-numpy
+	makedepends = python2-pytest-runner
 	makedepends = python-setuptools
-	makedepends = python-numpy
-	options = !emptydirs
-	source = https://github.com/scikit-hep/uproot/archive/3.2.6.zip
-	sha256sums = 26920383e5e23b7388a9a3c6c457090b239d324485b5204f01d52893ee06bb7a
+	makedepends = python-pytest-runner
+	source = https://github.com/scikit-hep/uproot/archive/3.2.12.zip
+	sha256sums = 84b7bddba5204711bbcce36a4af667b2aed66a91fa917e66e9a3fca2fbae2bef
 
 pkgname = python2-uproot
 	depends = python2-awkward
