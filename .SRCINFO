@@ -1,7 +1,7 @@
 pkgbase = gorsync-git
 	pkgdesc = GTK+ frontend for RSYNC console utility.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/d2r2/go-rsync
 	install = gorsync-git.install
 	arch = x86_64
