@@ -1,0 +1,12 @@
+post_install() {
+    /opt/camunda-modeler/support/xdg_register.sh
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    /opt/camunda-modeler/support/xdg_unregister.sh
+}
+

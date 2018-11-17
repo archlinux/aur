@@ -1,10 +1,11 @@
 pkgname=camunda-modeler
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated modeling solution for BPMN and DMN based on bpmn.io"
 arch=('x86_64')
 url="https://camunda.org/features/modeler/"
 license=('MIT')
+install=$pkgname.install
 
 source=("https://camunda.org/release/$pkgname/$pkgver/$pkgname-$pkgver-linux-x64.tar.gz"
         'camunda-modeler.sh'
@@ -20,17 +21,13 @@ sha256sums=('3ea1f9dd7a2210d4c96b54d509e4d63e6c7d3feb22aa39f6e63e5db2d37830c5'
             '6cb887a23bee04ae010937c1e25d4dd338d1b88a8f3fcc262c84ac1467d18350'
             '8480f436231efed6a5542024556b12532bf229cf000450d859a3bcaf3d59b3b1')
 
-depends=('libnotify')
+depends=('libnotify' 'gconf')
 
 package() {
-  cd "$srcdir"
-  install -dm 755 "$pkgdir/opt/$pkgname"
-  cp -af "$pkgname-$pkgver-linux-x64/." "$pkgdir/opt/$pkgname"
-  install -dm 755 "$pkgdir/usr/bin/"
-  install -Dm 775 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-  install -Dm 644 "$srcdir/camunda-modeler.desktop" "$pkgdir/usr/share/applications/camunda-modeler.desktop"
-  install -Dm 644 "$srcdir/camunda-modeler16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/camunda-modeler.png"
-  install -Dm 644 "$srcdir/camunda-modeler48.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/camunda-modeler.png"
-  install -Dm 644 "$srcdir/camunda-modeler128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/camunda-modeler.png"
+    cd "$srcdir"
+    install -dm 755 "$pkgdir/opt/$pkgname"
+    cp -af "$pkgname-$pkgver-linux-x64/." "$pkgdir/opt/$pkgname"
+    install -dm 755 "$pkgdir/usr/bin/"
+    install -Dm 775 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
 
