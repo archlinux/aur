@@ -1,0 +1,22 @@
+pkgbase = networkmanager-openvpn-ncp-disable-git
+	pkgdesc = NetworkManager VPN plugin for OpenVPN with ncp-disable patch - git checkout
+	pkgver = 0.r1245.g175585d
+	pkgrel = 1
+	url = http://www.gnome.org/projects/NetworkManager/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = python
+	depends = libnm-gtk
+	depends = openvpn
+	depends = libsecret
+	depends = libnma
+	provides = networkmanager-openvpn
+	conflicts = networkmanager-openvpn
+	source = git+https://github.com/cyrinux/network-manager-openvpn.git#branch=add-ncp-disable-support
+	sha256sums = SKIP
+
+pkgname = networkmanager-openvpn-ncp-disable-git
+
