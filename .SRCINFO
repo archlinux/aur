@@ -1,0 +1,12 @@
+pkgbase = simona-scripts
+	pkgdesc = Bash commands.
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = GPL2
+	depends = bash
+	source = simona-scripts-0.0.1.tar.gz
+	md5sums = 0e55f720e27ebb2791248a93f48ed8b6
+
+pkgname = simona-scripts
+
