@@ -4,7 +4,7 @@
 
 _pkgname=pyradio
 pkgname=$_pkgname-git
-pkgver=0.4.r137.g7aedcf1
+pkgver=0.4.r142.g882da1e
 pkgrel=1
 pkgdesc="Command line internet radio player"
 arch=('any')
@@ -18,7 +18,7 @@ conflicts=($_pkgname)
 source=($pkgname::git://github.com/coderholic/pyradio.git
         pyradio.1)
 md5sums=('SKIP'
-         '9225893b6b3e2d5f4aed289e0cc106b2')
+         '53460ef86b415aca61eba663ecc4240e')
 
 pkgver() {
   cd $pkgname

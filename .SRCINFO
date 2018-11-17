@@ -1,6 +1,6 @@
 pkgbase = pyradio-git
 	pkgdesc = Command line internet radio player
-	pkgver = 0.4.r137.g7aedcf1
+	pkgver = 0.4.r142.g882da1e
 	pkgrel = 1
 	url = http://www.coderholic.com/pyradio/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = pyradio-git
 	source = pyradio-git::git://github.com/coderholic/pyradio.git
 	source = pyradio.1
 	md5sums = SKIP
-	md5sums = 9225893b6b3e2d5f4aed289e0cc106b2
+	md5sums = 53460ef86b415aca61eba663ecc4240e
 
 pkgname = pyradio-git
 
