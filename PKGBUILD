@@ -6,7 +6,7 @@
 # Maintainer: push2001sla@gmail.com
 pkgname=ccd-python-git
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Cute ChDir written on Python that finds directories"
 arch=('any')
@@ -36,4 +36,5 @@ package() {
 	cd "$pkgname-$pkgver"
 	mkdir -p "$pkgdir/usr/bin/"
 	cp ccd-src.py "$pkgdir/usr/bin/ccd"
+	echo -e "\033[1mNote:\033[0m ccd reads config file. During first use it will be stored in $HOME/.config/ccd.pycfg"
 }
