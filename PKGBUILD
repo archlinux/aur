@@ -3,7 +3,7 @@
 # Contributor: boosterdev@linuxmail.org
 
 pkgname=flashplayer-standalone
-pkgver=31.0.0.122
+pkgver=31.0.0.148
 pkgrel=1
 pkgdesc="Adobe Flash Player Standalone (A.K.A. Adobe Flash Player Projector)"
 arch=("x86_64")
@@ -14,7 +14,7 @@ optdepends=('alsa-lib: for sound through alsa')
 makedepends=("gendesk")
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://fpdownload.macromedia.com/pub/${pkgname%-standalone}/updaters/${pkgver%%.*}/flash_player_sa_linux.${arch}.tar.gz")
-sha256sums=("5aa794f6098d3837821fa8f316678928501ebf7f33ff63c0c821f1de6e18703c")
+sha256sums=("6d8c7a3304da875b7c58205c96443eac0ae70197a9fe6f5c2bec718de3e0f848")
 
 prepare() {
   cd "${srcdir}"
@@ -30,12 +30,7 @@ prepare() {
 }
             
 package() {
-  msg2 "Installing license into /usr/share/licenses/${pkgname}/license.pdf"
   install -Dm644 "${srcdir}/license.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/license.pdf"
-
-  msg2 "Installing desktop file into /usr/share/applications/"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  
-  msg2 "Installing flasplayer into /usr/bin/"
   install -Dm755 "${srcdir}/${pkgname%-standalone}" "${pkgdir}/usr/bin/${pkgname%-standalone}"
 }
