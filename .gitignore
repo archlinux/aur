@@ -1,5 +1,5 @@
 *.xz
+*.gz
 bcachefs
-bcachefs-tools
 pkg
 src

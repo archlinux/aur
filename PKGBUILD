@@ -12,9 +12,11 @@ url="https://evilpiepirate.org/git/"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
+_gcc_more_v='20180509'
 _srcname=bcachefs
 source=(
   "$_srcname::git+https://evilpiepirate.org/git/bcachefs.git"
+  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -25,6 +27,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('SKIP'
+            '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             'a00e8594a8937cdb9e7ee26b0b0530ec610d14f1f7008612b98739855a0daa75'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -36,8 +39,13 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd $_srcname
 
+  msg2 "Adding patches from Arch Linux kernel repository..."
   git remote add upstream-arch https://git.archlinux.org/linux.git
   git pull upstream-arch v$_srcver
+  
+  # https://github.com/graysky2/kernel_gcc_patch
+  msg2 "Patching to enabled additional gcc CPU optimizatons..."
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
