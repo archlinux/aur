@@ -1,0 +1,17 @@
+pkgbase = mupen64plus-audio-sdl2
+	pkgdesc = Mupen64plus SDL2 audio plugin
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/m64p/mupen64plus-audio-sdl2
+	arch = x86_64
+	license = GPL2
+	makedepends = pkg-config
+	makedepends = sdl2
+	depends = gcc-libs
+	depends = mupen64plus
+	depends = sdl2
+	source = git+https://github.com/m64p/mupen64plus-audio-sdl2.git
+	md5sums = SKIP
+
+pkgname = mupen64plus-audio-sdl2
+
