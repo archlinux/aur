@@ -1,6 +1,6 @@
 pkgbase = courier-mta
 	pkgdesc = IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = http://courier-mta.org
 	install = courier-mta.install
@@ -42,7 +42,7 @@ pkgbase = courier-mta
 	backup = etc/courier/esmtpd.cnf
 	backup = etc/courier/pop3d.cnf
 	backup = etc/courier/esmtpauthclient
-	source = http://downloads.sourceforge.net/project/courier/courier/1.0.2/courier-1.0.2.tar.bz2
+	source = http://downloads.sourceforge.net/project/courier/courier/1.0.3/courier-1.0.3.tar.bz2
 	source = courier-imapd.service
 	source = courier-imapd-ssl.service
 	source = courier-pop3d.service
