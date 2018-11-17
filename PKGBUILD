@@ -1,7 +1,7 @@
 # Maintainer: Simona <simona.pisano[at]gmail[dot]com>
 pkgname=grub-custom-simona
-pkgver=0.0.1
-pkgrel=1
+pkgver=0.0.2
+pkgrel=2
 pkgdesc="Compile an alternative list of the usable kernels of the grub boot menu indicating the kernel relase, obtained from the output of the 'file' command, instead of the file name."
 url="https://github.com/simona70/grub-custom-simona"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('grub' 'bash')
 source=($pkgname-$pkgver.tar.gz)
 backup=('etc/default/grub-custom')
 #generate with 'makepkg -g'
-md5sums=('87fda850bd490f66965488d6ee523a3a')
+md5sums=('c7356d33163852bca20da96cb446cadf')
 
 package() {
   #install -m755 -d "${pkgdir}/etc/default"

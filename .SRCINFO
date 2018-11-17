@@ -1,15 +1,15 @@
 pkgbase = grub-custom-simona
 	pkgdesc = Compile an alternative list of the usable kernels of the grub boot menu indicating the kernel relase, obtained from the output of the 'file' command, instead of the file name.
-	pkgver = 0.0.1
-	pkgrel = 1
+	pkgver = 0.0.2
+	pkgrel = 2
 	url = https://github.com/simona70/grub-custom-simona
 	arch = any
 	license = GPL2
 	depends = grub
 	depends = bash
 	backup = etc/default/grub-custom
-	source = grub-custom-simona-0.0.1.tar.gz
-	md5sums = 87fda850bd490f66965488d6ee523a3a
+	source = grub-custom-simona-0.0.2.tar.gz
+	md5sums = c7356d33163852bca20da96cb446cadf
 
 pkgname = grub-custom-simona
 
