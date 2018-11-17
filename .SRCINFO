@@ -1,0 +1,15 @@
+pkgbase = true-combat-elite-bin
+	pkgdesc = Tactical 3D multiplayer 1st person shooter in the style of Counter Strike, Urban Terror based on Enemy Territory id3 engine.
+	pkgver = 0.49b
+	pkgrel = 1
+	url = http://www.truecombatelite.com/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = aria2
+	options = !strip
+	source = true-combat-elite-0.49b-linux.tar.xz.torrent
+	sha256sums = c539a709eae02ba9f967461fc3382f09dfc4fa8311903a725e73b0c99687a930
+
+pkgname = true-combat-elite-bin
+
