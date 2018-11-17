@@ -6,7 +6,6 @@ pkgver=0.4.3
 pkgrel=1
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
 arch=('any')
-makedepends=('python2-setuptools' 'python2-numpy')
 url="https://github.com/scikit-hep/awkward-array"
 license=('BSD')
 depends=('python2-numpy')
