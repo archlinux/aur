@@ -1,6 +1,6 @@
 pkgbase = gajimbo-git
 	pkgdesc = A fork of Gajim with various enhancements, written in Python with GTK+
-	pkgver = v1.0.99.0.g76758ffc9
+	pkgver = v1.1.9.1.0.gf823ab321
 	pkgrel = 1
 	url = https://gitlab.com/ao/gajimbo
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = gajimbo-git
 	depends = python-cairo
 	depends = python-keyring
 	depends = python-distro
+	depends = python-precis_i18n
 	optdepends = python-dbus: for gajim-remote and zeroconf support
 	optdepends = farstream: for video/voice support
 	optdepends = gst-plugins-good: for video/voice support

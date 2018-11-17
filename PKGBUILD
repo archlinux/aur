@@ -9,7 +9,7 @@
 
 _name=gajimbo
 pkgname="$_name-git"
-pkgver=v1.0.99.0.g76758ffc9
+pkgver=v1.1.9.1.0.gf823ab321
 pkgrel=1
 pkgdesc="A fork of Gajim with various enhancements, written in Python with GTK+"
 arch=('any')
@@ -17,7 +17,7 @@ url="https://gitlab.com/ao/gajimbo"
 license=('GPL3')
 depends=('python-gobject' 'python-pyopenssl' 'hicolor-icon-theme'
          'python-pyasn1' 'python-nbxmpp' 'python-cairo' 'python-keyring'
-         'python-distro')
+         'python-distro' 'python-precis_i18n')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-dbus: for gajim-remote and zeroconf support'
             'farstream: for video/voice support'
