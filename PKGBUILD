@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wdt-git
-pkgver=1.27.1612021.r95.g03936d5
+pkgver=1.27.1612021.r132.g1f43a96
 pkgrel=1
 pkgdesc="Tool to transfer data between 2 systems as fast as possible over multiple TCP paths"
 arch=('i686' 'x86_64')
 url="https://github.com/facebook/wdt"
 license=('BSD')
-depends=('glibc' 'bash' 'gflags' 'google-glog' 'openssl-1.0')
-makedepends=('git' 'cmake' 'boost' 'double-conversion')
+depends=('glibc' 'bash' 'double-conversion' 'gflags' 'google-glog' 'openssl')
+makedepends=('git' 'cmake' 'boost')
 optdepends=('jemalloc')
 checkdepends=('gtest')
 provides=('wdt')
