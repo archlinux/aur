@@ -1,6 +1,6 @@
 # Maintainer: Attenuation <ouyangjun1999@gmail.com>
 pkgname=pwngdb
-pkgver=r3220607
+pkgver=20181114.074301
 pkgrel=1
 pkgdesc='gdb for pwn'
 url='https://github.com/scwuaptx/pwngdb'

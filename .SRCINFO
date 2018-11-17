@@ -1,6 +1,6 @@
 pkgbase = pwngdb
 	pkgdesc = gdb for pwn
-	pkgver = r3220607
+	pkgver = 20181114.074301
 	pkgrel = 1
 	url = https://github.com/scwuaptx/pwngdb
 	install = pwngdb.install
