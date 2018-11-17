@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-hoppla-sa-git
 _pkgname=plasma5-applets-hoppla-sa
 _gitpkgname=hoppla-sa
-pkgver=r147.5866048
+pkgver=r156.d2cb0ad
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5 for controlling Phillips Hue lights"
 arch=('any')
