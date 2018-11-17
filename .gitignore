@@ -1,0 +1,6 @@
+*.tar.xz
+vim-nix/
+.MTREE
+.BUILDINFO
+.PKGINFO
+

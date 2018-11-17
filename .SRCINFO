@@ -1,0 +1,14 @@
+pkgbase = vim-nix-git
+	pkgdesc = Nix support for Vim
+	pkgver = r83.be0c6bb
+	pkgrel = 1
+	url = https://github.com/LnL7/vim-nix
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim
+	source = vim-nix::git+git://github.com/LnL7/vim-nix.git
+	sha256sums = SKIP
+
+pkgname = vim-nix-git
+
