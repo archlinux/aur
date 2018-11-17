@@ -1,6 +1,6 @@
 pkgbase = python36
 	pkgdesc = Major release 3.6 of the Python high-level programming language
-	pkgver = 3.6.6
+	pkgver = 3.6.7
 	pkgrel = 1
 	url = http://www.python.org/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = python36
 	optdepends = tk: for tkinter
 	optdepends = sqlite
 	options = !makeflags
-	source = http://www.python.org/ftp/python/3.6.6/Python-3.6.6.tar.xz
-	sha256sums = d79bc15d456e73a3173a2938f18a17e5149c850ebdedf84a78067f501ee6e16f
+	source = http://www.python.org/ftp/python/3.6.7/Python-3.6.7.tar.xz
+	sha256sums = 81fd1401a9d66533b0a3e9e3f4ea1c7c6702d57d5b90d659f971e6f1b745f77d
 
 pkgname = python36
 
