@@ -1,0 +1,6 @@
+*.run
+*75527*
+src
+pkg
+*.pkg.*
+*.zip

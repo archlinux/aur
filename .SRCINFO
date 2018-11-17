@@ -1,0 +1,69 @@
+pkgbase = virtualbox-beta-bin
+	pkgdesc = Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)
+	pkgver = 6.0.0.126642
+	pkgrel = 1
+	url = https://www.virtualbox.org/
+	install = virtualbox-beta-bin.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-headers
+	depends = dkms
+	depends = fontconfig
+	depends = gcc
+	depends = libgl
+	depends = libidl2
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxmu
+	depends = python
+	depends = sdl
+	optdepends = virtualbox-ext-oracle: for Oracle extensions
+	optdepends = linux-headers: build the module for Arch kernel
+	optdepends = linux-lts-headers: build the module for LTS Arch kernel
+	provides = virtualbox-beta
+	provides = virtualbox=6.0.0_BETA2
+	provides = virtualbox-sdk
+	provides = VIRTUALBOX-HOST-MODULES
+	provides = virtualbox-host-dkms
+	provides = virtualbox-guest-iso
+	conflicts = virtualbox
+	conflicts = virtualbox-sdk
+	conflicts = virtualbox-host-dkms
+	conflicts = virtualbox-host-modules-arch
+	replaces = virtualbox_bin
+	replaces = virtualbox-sun
+	noextract = VirtualBoxSDK-6.0.0_BETA2-126642.zip
+	options = !strip
+	options = !emptydirs
+	backup = etc/vbox/vbox.cfg
+	backup = etc/conf.d/vboxweb
+	source = https://download.virtualbox.org/virtualbox/6.0.0_BETA2/VirtualBoxSDK-6.0.0_BETA2-126642.zip
+	source = VBoxAuth-r75527.h::https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=75527
+	source = VBoxAuthPAM-r75527.c::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=75527
+	source = VBoxAuthSimple-r75527.cpp::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=75527
+	source = VBoxFixUSB
+	source = 10-vboxdrv.rules
+	source = vboxweb.rc
+	source = vboxweb.conf
+	source = do_dkms
+	source = dkms.conf
+	source = 009-include-path.patch
+	sha256sums = c818959c8310f3f323c75c29cacac86b749ca258373d48479efd41d26b2e4391
+	sha256sums = 23e3e0e6abfaa69bf0aa046c0ee070d19435b97cb4bfbb16bba65a2783502154
+	sha256sums = 815f6e2e3ab687356aad0e6f59eef6e266514fb12a6b569d239d834e0a480f37
+	sha256sums = 99deff35d8a600f20223b96ba409451834e58ac21a589a989dd82a2d6fe006ae
+	sha256sums = 0aebe22abab402ea6b6573af637a99d8056a904920a52d84fb97729219219c23
+	sha256sums = 69417a9e8855cab8e4878886abe138f559fd17ae487d4cd19c8a24974a8bbec2
+	sha256sums = 656905de981ffa24f6f921c920538854a235225053f44baedacc07b46ca0cf56
+	sha256sums = 12dbba3b59991f2b68cddeeeda20236aeff63e11b7e2d1b08d9d6a82225f6651
+	sha256sums = cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a
+	sha256sums = e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801
+	sha256sums = 5112f0e1ba3bd0bd92ef2edb2d21024e265abb02841aa29aa05410526adc273f
+	source_i686 = http://download.virtualbox.org/virtualbox/6.0.0_BETA2/VirtualBox-6.0.0_BETA2-126642-Linux_x86.run
+	sha256sums_i686 = 2db1e18d175561474e2dfdd1b674103b89c35ade732aaf8802e02969ca09b559
+	source_x86_64 = http://download.virtualbox.org/virtualbox/6.0.0_BETA2/VirtualBox-6.0.0_BETA2-126642-Linux_amd64.run
+	sha256sums_x86_64 = 3ed0e18aecbb03f63ca18938d4f019f4dff4b6cedfe2b0e88868e714592854a0
+
+pkgname = virtualbox-beta-bin
+
