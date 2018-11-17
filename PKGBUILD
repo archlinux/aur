@@ -2,13 +2,13 @@
 
 pkgname=libtas-git
 pkgver=1.3.2.r0.b8d3c31
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries"
 arch=('x86_64')
 url="https://github.com/clementgallet/libTAS"
 license=('GPL3')
 depends=('alsa-lib' 'ffmpeg' 'fontconfig' 'freetype2'
-         'libtar' 'qt5-base' 'xcb-util-cursor' 'zlib')
+         'qt5-base' 'xcb-util-cursor' 'zlib')
 makedepends=('cmake' 'extra-cmake-modules')
 conflicts=('libtas')
 source=("git+$url"
