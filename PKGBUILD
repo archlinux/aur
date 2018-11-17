@@ -47,7 +47,7 @@ source=("${_name}::git://github.com/raa-eruanna/${_name}.git"
         '0001-Fix-soundfont-search-path.patch')
 sha256sums=('SKIP'
             '0b3bcbe2cdebda2fed887b796f4ff0fa51f3d544e80cab16b3b1cbd7813b7e04'
-            'b0e621a39e0a050ce119fb4bea888afc7a02039ee9f37a2a5b518e4fe924b3f1')
+            '11323f98caadb086b35cce1697744eeba53c96a3f4f9a8c9184ed23e6fb1ea61')
 
 pkgver() {
     cd $_name
@@ -81,6 +81,10 @@ package() {
     make install DESTDIR="$pkgdir"
     install -D -m644 soundfonts/gzdoom.sf2 \
             "$pkgdir"/usr/share/$_name/soundfonts/gzdoom.sf2
+    install -D -m644 fm_banks/GENMIDI.GS.wopl \
+            "$pkgdir"/usr/share/$_name/fm_banks/GENMIDI.GS.wopl
+    install -D -m644 fm_banks/gs-by-papiezak-and-sneakernets.wopn \
+            "$pkgdir"/usr/share/$_name/fm_banks/gs-by-papiezak-and-sneakernets.wopn
 
     desktop-file-install --dir="$pkgdir"/usr/share/applications \
                          "$srcdir"/${_name}.desktop
