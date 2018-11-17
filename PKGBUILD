@@ -5,33 +5,32 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=63.0.1
+pkgver=63.0.3
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://aur.archlinux.org/packages/firefox-appmenu/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss hunspell-en_US sqlite ttf-font libpulse libvpx icu)
+         ffmpeg nss ttf-font libpulse sqlite libvpx icu)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
              python nodejs python2-psutil cbindgen)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech')
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English')
 provides=("firefox=$pkgver")
 conflicts=("firefox")
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         $_pkgname.desktop firefox-symbolic.svg
-        0001-Keep-mozilla-release-building-with-newer-cbindgen-ve.patch
         unity-menubar.patch)
 sha256sums=('SKIP'
             '2adca824b52ab5bc6e7e4fa486c1ecb47d283832bd4b75d10494b033f1cab911'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            'a1e523f830f28217e050991062358c91be254e21732a6391449a8c0e3e0de77f'
             '722324ef522f3e2452f49924e47a2e8a3a547e18aef32d7c1252113eb839451f')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -49,9 +48,6 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 prepare() {
   mkdir mozbuild
   cd mozilla-unified
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1503401
-  patch -Np1 -i ../0001-Keep-mozilla-release-building-with-newer-cbindgen-ve.patch
 
   # actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
