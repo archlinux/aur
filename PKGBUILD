@@ -2,11 +2,10 @@
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 # Contributor: Matthias Maennich <arch@maennich.net>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-
 pkgname=apiextractor-git
 pkgver=0.3.2.322.g744d018
 pkgrel=1
-pkgdesc="Collects information about libraries from its header files and merges it with user written files (typesystem) describing how the library should be exposed as a binding on the target language."
+pkgdesc="Collects annotated API information for language binding creation"
 url="http://www.pyside.org"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -35,5 +34,3 @@ package() {
     cd "$srcdir/$pkgname/build"
     make DESTDIR="$pkgdir" install
 }
-
-

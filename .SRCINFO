@@ -1,5 +1,5 @@
 pkgbase = apiextractor-git
-	pkgdesc = Collects information about libraries from its header files and merges it with user written files (typesystem) describing how the library should be exposed as a binding on the target language.
+	pkgdesc = Collects annotated API information for language binding creation
 	pkgver = 0.3.2.322.g744d018
 	pkgrel = 1
 	url = http://www.pyside.org
