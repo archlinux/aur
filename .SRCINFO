@@ -1,7 +1,7 @@
 pkgbase = python-x3dh-git
 	pkgdesc = A python implementation of the Extended Triple Diffie-Hellman key agreement protocol
-	pkgver = r38.8fe3233
-	pkgrel = 3
+	pkgver = r42.26a0997
+	pkgrel = 1
 	url = https://github.com/Syndace/python-x3dh
 	arch = any
 	license = MIT
@@ -11,13 +11,11 @@ pkgbase = python-x3dh-git
 	sha256sums = SKIP
 
 pkgname = python-x3dh-git
-	depends = python-hkdf
 	depends = python-xeddsa-git
 	provides = python-x3dh
 	conflicts = python-x3dh
 
 pkgname = python2-x3dh-git
-	depends = python2-hkdf
 	depends = python2-xeddsa-git
 	provides = python2-x3dh
 	conflicts = python2-x3dh

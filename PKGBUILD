@@ -4,8 +4,8 @@ _pkgname=python-x3dh
 _pkgname2=python2-x3dh
 pkgbase=${_pkgname}-git
 pkgname=("${_pkgname}-git" "${_pkgname2}-git")
-pkgver=r38.8fe3233
-pkgrel=3
+pkgver=r42.26a0997
+pkgrel=1
 pkgdesc="A python implementation of the Extended Triple Diffie-Hellman key agreement protocol"
 url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
@@ -20,8 +20,7 @@ pkgver() {
 }
 
 package_python-x3dh-git() {
-    depends=('python-hkdf'
-             'python-xeddsa-git')
+    depends=('python-xeddsa-git')
     provides=("${_pkgname}")
     conflicts=("${_pkgname}")
 
@@ -30,8 +29,7 @@ package_python-x3dh-git() {
 }
 
 package_python2-x3dh-git() {
-    depends=('python2-hkdf'
-             'python2-xeddsa-git')
+    depends=('python2-xeddsa-git')
     provides=("${_pkgname2}")
     conflicts=("${_pkgname2}")
 
