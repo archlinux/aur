@@ -1,7 +1,7 @@
-# Maintainer: Lalit Maganti <laitmaganti@gmail.com>
+# Maintainer: Kazuki Sawada <kazuki@6715.jp>
 
 pkgname=s3ql
-pkgver=2.28
+pkgver=2.32
 pkgrel=1
 pkgdesc="A full-featured file system for online data storage."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('python' 'python-apsw' 'python-crypto' 'python-defusedxml' 'python-dugo
 makedepends=('gcc')
 install="s3ql.install"
 source=(https://bitbucket.org/nikratio/s3ql/downloads/s3ql-$pkgver.tar.bz2)
-md5sums=('3533a5608ce009a6b834853c7fc4cae4')
+md5sums=('dcb8a8168c929074b1b36b4c3010b361')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
