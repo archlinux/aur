@@ -1,0 +1,1 @@
+SUBSYSTEM=="bluetooth", ACTION=="add", RUN+="/usr/bin/bt-auto-enable-a2dp"
