@@ -1,15 +1,16 @@
-# Maintainer: smooz
-# Contributor: Dunon <josep.oliver@tutanota.com>
+# Maintainer: smooz <smooz at mailbox dot org>
+# Contributor: Dunon <josep.oliver at tutanota dot com>
 
 pkgname=grevis-git
-pkgver=0.1.0.r5.faed6aa
+pkgver=0.1.1.r5.ffeabe3
 pkgrel=1
 pkgdesc='A simple game launcher'
 arch=('any')
 url='https://gitlab.gnome.org/dunon/grevis'
 license=('GPL3')
-depends=('python3' 'gtk3>=3.14')
-makedepends=('meson>=0.40' 'ninja' 'git')
+depends=('python' 'gtk3')
+makedepends=('meson' 'ninja' 'git')
+conflicts=('grevis')
 source=('grevis::git+https://gitlab.gnome.org/dunon/grevis.git')
 md5sums=('SKIP')
 
