@@ -36,7 +36,7 @@ prepare() {
   cd $_srcname
 
   git remote add upstream-zen https://github.com/zen-kernel/zen-kernel
-  git pull upstream-zen 08a912f86372a9c8d12df37647e537c97507716d
+  git pull upstream-zen 7950eb316adf792283cac5743dfe5a11e74833dc
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
