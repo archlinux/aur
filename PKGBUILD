@@ -1,4 +1,6 @@
 # Maintainer: Kazuki Sawada <kazuki@6715.jp>
+# Contributor: Lalit Maganti <laitmaganti@gmail.com>
+# Contributor: Brendan MacDonell <macdonellba at gmail dot com>
 
 pkgname=s3ql
 pkgver=2.32
