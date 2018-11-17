@@ -1,0 +1,4 @@
+*.vbox-extpack
+src
+pkg
+*.pkg.*

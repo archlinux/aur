@@ -1,0 +1,17 @@
+pkgbase = virtualbox-ext-oracle-beta
+	pkgdesc = Oracle VM VirtualBox Extension Pack
+	pkgver = 6.0.0_BETA2
+	pkgrel = 1
+	url = https://www.virtualbox.org/
+	install = virtualbox-ext-oracle-beta.install
+	arch = any
+	license = custom:PUEL
+	noextract = Oracle_VM_VirtualBox_Extension_Pack-6.0.0_BETA2.vbox-extpack
+	options = !strip
+	source = https://download.virtualbox.org/virtualbox/6.0.0_BETA2/Oracle_VM_VirtualBox_Extension_Pack-6.0.0_BETA2.vbox-extpack
+	sha256sums = 0257b99f306d24b2b9852de03dcbbe7b0f8054fb306274dceb7f401fdfecdc4e
+
+pkgname = virtualbox-ext-oracle-beta
+	depends = virtualbox-beta
+	optdepends = rdesktop: client to connect vm via RDP
+
