@@ -35,6 +35,7 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd $_srcname
 
+  msg2 "Adding patches from zen-kernel repository..."
   git remote add upstream-zen https://github.com/zen-kernel/zen-kernel
   git pull upstream-zen 9731135d7610a36bbe4cce0dbcd0d942e7436e94
 
