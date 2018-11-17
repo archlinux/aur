@@ -1,7 +1,7 @@
 pkgbase = scdoc
 	pkgdesc = tool for generating roff manual pages
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~sircmpwn/scdoc/
 	arch = any
 	license = MIT
