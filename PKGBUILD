@@ -1,8 +1,9 @@
 # Maintainer: Josh Hoffer <hoffer dot joshua at gmail dot com >
 # Contributor: Jack Rosenthal
+# Contributor: David Florness <edwargix@gmail.com>
 pkgname=threelayout
-pkgver=1.0
-pkgrel=3
+pkgver=41.66f2e67
+pkgrel=1
 pkgdesc="Keyboard layout designed by Jack Rosenthal"
 arch=(any)
 url="https://github.com/jackrosenthal/threelayout"
@@ -14,9 +15,9 @@ source=('git+https://github.com/jackrosenthal/threelayout.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	  cd "$pkgname"
-	  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-	}
+  cd "$srcdir/$pkgname"
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   mkdir -p $pkgdir/usr/share/X11/xkb/symbols
