@@ -2,7 +2,7 @@
 
 pkgname=crow-translate
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight translator that allows to translate and say selected text using Google and Yandex translate API"
 arch=('x86_64')
 url="https://github.com/Shatur95/crow-translate"
@@ -13,7 +13,7 @@ source=($pkgname.tar.gz::"https://github.com/Shatur95/crow-translate/archive/$pk
         QOnlineTranslator-submodule.tar.gz::"https://github.com/Shatur95/QOnlineTranslator/archive/1.0.0.tar.gz"
         QHotkey-submodule.tar.gz::"https://github.com/Skycoder42/QHotkey/archive/1.2.2.tar.gz"
         SingleApplication-submodule.tar.gz::"https://github.com/itay-grudev/SingleApplication/archive/v3.0.10.tar.gz")
-sha256sums=('e166985f734dc3cf4d0a54fbc06e1ee1e442d2e16b47a6d51caa4f6f4ab9ab35'
+sha256sums=('de823e7ee72d4a6e92014bacc9efdfd9785ead0b6556939a36a917b01acc2ee5'
             'b53ee9b78e19ba4e3f963085a7007a5cebfd5f39bf885f4f96852cba1f84e341'
             '1a5a6eb81738a8f232df2dd5c908839871077e10ca3b9a6437daf5fda53d86ad'
             '9c8ae7431ea008c4516456615558c433940d3d0a144dc549f5aac43193b4afc0')
@@ -34,4 +34,5 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     make INSTALL_ROOT="$pkgdir/" install
+	warning "After switching to version 2.0.0 from older ones, need to delete application settings (just remove ~/.config/crow)"
 } 
