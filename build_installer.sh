@@ -75,8 +75,7 @@ echo "done."
 
 printf "\nRepack evelauncher-$version.tar.gz..."
 cd ../
-tar czf evelauncher-$version.tar.gz evelauncher/
-mv evelauncher-$version.tar.gz evesetup/
+tar czf evesetup/evelauncher-$version.tar.gz evelauncher/
 rm -rf evelauncher/
 echo "done."
 

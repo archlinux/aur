@@ -54,11 +54,9 @@ check_wine() {
     fi
     if [ -x "$WINEPATH/wine" ] ;then
 	INSTWINE=$(cat $WINEPREFIX/.update-timestamp 2>/dev/null) || true
-	for CMD in wine wine64 wineserver ;do
-	    WINECMD=$(readlink -f "$WINEPATH/$CMD")
-	    WINEDATE=$(ls -l --time-style=+%s "$WINECMD" 2>/dev/null | cut -d' ' -f6)
-	    test "x$WINEDATE" = "x$INSTWINE" && break
-	done
+	WINEPATH=$(readlink -f "$CUSTOMWP")
+	WINECONF=$(find "${WINEPATH%/bin*}"/share -name 'wine.inf' 2>/dev/null) || true
+	WINEDATE=$(ls -l --time-style=+%s "$WINECONF" 2>/dev/null | cut -d' ' -f6)
 	if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
 	    launcher_msg "Preparing/Updating wine in $WINEPREFIX"
 	    env WINEARCH=win32 \
