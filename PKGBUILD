@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-abc-qt
 pkgver=0.18.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin ABC with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoinabc.org"
@@ -60,8 +60,8 @@ prepare() {
 check() {
   cd "$srcdir/bitcoin-abc-$pkgver"
 
-  msg2 'Testing...'
-  make check
+  #msg2 'Testing...'
+  #make check
 }
 
 package() {
