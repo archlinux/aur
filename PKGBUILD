@@ -1,6 +1,6 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r100.a5978c1
+pkgver=r103.02c49fd
 pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -80,6 +80,21 @@ package() {
 	install -m644 -D ${srcdir}/cros-sftp-conditions.conf \
 					 ${pkgdir}/usr/lib/systemd/system/cros-sftp.service.d/cros-sftp-conditions.conf
 
+	### cros-sommelier-config
+
+	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf \
+					 ${pkgdir}/usr/lib/systemd/user/sommelier@0.service.d/cros-sommelier-override.conf
+	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf \
+					 ${pkgdir}/usr/lib/systemd/user/sommelier@1.service.d/cros-sommelier-override.conf
+	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-low-density-override.conf \
+					 ${pkgdir}/usr/lib/systemd/user/sommelier@1.service.d/cros-sommelier-low-density-override.conf
+	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf \
+					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@0.service.d/cros-sommelier-x-override.conf
+	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf \
+					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@1.service.d/cros-sommelier-x-override.conf
+	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-low-density-override.conf \
+					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@1.service.d/cros-sommelier-low-density-override.conf
+
 	### cros-sommelier
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier/sommelierrc \
@@ -104,21 +119,6 @@ package() {
 	ln -sf ../sommelier-x@.service \
 		   ${pkgdir}/usr/lib/systemd/user/default.target.wants/sommelier-x@1.service
 
-	### cros-sommelier-config
-
-	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf \
-					 ${pkgdir}/usr/lib/systemd/user/sommelier@0.service.d/cros-sommelier-override.conf
-	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf \
-					 ${pkgdir}/usr/lib/systemd/user/sommelier@1.service.d/cros-sommelier-override.conf
-	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-low-density-override.conf \
-					 ${pkgdir}/usr/lib/systemd/user/sommelier@1.service.d/cros-sommelier-low-density-override.conf
-	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf \
-					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@0.service.d/cros-sommelier-x-override.conf
-	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf \
-					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@1.service.d/cros-sommelier-x-override.conf
-	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-low-density-override.conf \
-					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@1.service.d/cros-sommelier-low-density-override.conf
-
 	### cros-sudo-config
 
 	install -m440 -D ${srcdir}/${_pkgname}/cros-sudo-config/10-cros-nopasswd \
@@ -128,6 +128,8 @@ package() {
 	sed -i 's/%sudo/%wheel/1' ${pkgdir}/etc/sudoers.d/10-cros-nopasswd
 
 	### cros-systemd-overrides -> included into cros-container-guest-tools.install
+
+	### cros-tast-tests -> not applicable
 
 	### cross-ui-config
 
@@ -141,8 +143,6 @@ package() {
 				     ${pkgdir}/etc/dconf/profile/user
 	install -m644 -D ${srcdir}/${_pkgname}/cros-ui-config/Trolltech.conf \
 				     ${pkgdir}/etc/xdg/Trolltech.conf
-
-	### cros-unattended-upgrades -> not applicable
 
 	### cros-wayland
 
