@@ -1,17 +1,18 @@
 pkgbase = fatx
 	pkgdesc = XBox filesystem support for linux
-	pkgver = 1.14
-	pkgrel = 1
+	pkgver = 1.15
+	pkgrel = 2
 	url = http://sourceforge.net/projects/fatx/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	depends = fuse
 	depends = boost
 	depends = boost-libs
 	provides = fatx
-	source = http://downloads.sourceforge.net/project/fatx/fatx-1.14.tar.gz
-	sha256sums = 7fc2a877267218eaabc4a16318371774e85dfdc2c8d2962ce984c87146e81a4e
+	source = http://downloads.sourceforge.net/project/fatx/fatx-1.15.tar.gz
+	source = fatx.patch
+	sha256sums = bcdd90d37ff16c83ae5350273cf000064de698e2ddde3ba7aa1da3e6cfc4c455
+	sha256sums = f7a9cf753c130654dd3d5de109b562dc2f9b188688d961f57023e29eb2f89470
 
 pkgname = fatx
 

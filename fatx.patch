@@ -1,0 +1,12 @@
+diff -ura fatx-1.15.orig/fatx.cpp fatx-1.15.new/fatx.cpp
+--- fatx-1.15.orig/fatx.cpp	2018-02-15 12:27:26.000000000 -0500
++++ fatx-1.15.new/fatx.cpp	2018-11-16 19:52:12.000000000 -0500
+@@ -61,7 +61,7 @@
+ 			}
+ 			if(container.size() + vv.size() > capacity) {
+ 				typename container_type::right_iterator b = container.right.begin();
+-				advance(b, container.size() + vv.size() - capacity);
++                std::advance(b, container.size() + vv.size() - capacity);
+ 				#if defined DEBUG && defined DBG_CACHE
+ 					dbglog((format("Xx. fatbuf: reduce (%d)\n") % container.size()).str())
+ 				#endif
