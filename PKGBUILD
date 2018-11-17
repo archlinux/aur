@@ -1,16 +1,16 @@
 # Maintainer: Manuel Domínguez López <mdomlop at gmail dot com>
 
 _pkgver_year=2018
-_pkgver_month=01
-_pkgver_day=09
+_pkgver_month=11
+_pkgver_day=17
 
 pkgname=retrosmart-aurorae-themes
-pkgver=1.0b
+pkgver=1.1a
 pkgrel=1
 pkgdesc='A retrosmart look collection of themes for KDE Aurorae.'
-url=https://github.com/mdomlop/retrosmart-aurorae-themes
+url=https://github.com/mdomlop/$pkgname
 source=("https://github.com/mdomlop/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('17b7636af957356eb2936f62d422a20e')
+md5sums=('3076e697e96b386385c8177530e8340e')
 license=('GPL3')
 optdepends=('retrosmart-kvantum-theme: The corresponding theme for Kvantum'
             'retrosmart-qtcurve-theme: The corresponding theme for QtCurve'
