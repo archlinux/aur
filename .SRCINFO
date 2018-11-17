@@ -15,13 +15,8 @@ pkgbase = vte3-ng
 	depends = vte-common
 	depends = pcre2
 	provides = vte3=0.54.2
-	provides = vte3-select-text=0.54.2
 	provides = vte3-ng
 	conflicts = vte3
-	conflicts = vte3-select-text
-	conflicts = vte3-ng
-	replaces = vte3-select-text
-	replaces = vte3-ng
 	options = !emptydirs
 	source = https://github.com/thestinger/vte-ng/archive/0.54.2.a.tar.gz
 	sha256sums = 9da06c9e993da78f9a89298aa829ebc3e125e0532661d09520909c170017af5e

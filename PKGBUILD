@@ -11,9 +11,8 @@ makedepends=('intltool' 'gobject-introspection' 'gtk3' 'vala' 'gtk-doc' 'gperf')
 url="https://github.com/thestinger/vte-ng"
 source=(https://github.com/thestinger/vte-ng/archive/$pkgver.tar.gz)
 sha256sums=('9da06c9e993da78f9a89298aa829ebc3e125e0532661d09520909c170017af5e')
-provides=(vte3=$_basever vte3-select-text=$_basever vte3-ng)
-conflicts=(vte3 vte3-select-text vte3-ng)
-replaces=(vte3-select-text vte3-ng)
+provides=(vte3=$_basever vte3-ng)
+conflicts=(vte3)
 
 build() {
   cd "vte-ng-$pkgver"
