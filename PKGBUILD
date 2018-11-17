@@ -2,7 +2,7 @@
 # Maintainer: csicar
 # Contributor: csicar
 pkgname=mos-bin
-pkgver=mos_2.6.0+b997b0f
+pkgver=mos_2.8.1
 pkgrel=1
 pkgdesc="This package contains the Mongoose OS CLI tool."
 arch=('x86_64' 'i686')
@@ -11,10 +11,10 @@ license=('GLPv2')
 groups=('')
 depends=('libftdi-compat' 'libusb>=1.0.16')
 options=('!strip' '!emptydirs')
-source_x86_64=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.6.0+b997b0f~xenial0_amd64.deb")
-source_i686=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.6.0+b997b0f~xenial0_i386.deb")
-sha512sums_x86_64=('899405d4c0a55b6a35b49ab343bc087add655fb240ad784bcea96c436788ee496a8ae4c5214253e971c638999dcb318e910455dd0d536ed2a757a506f9d045f8')
-sha512sums_i686=('1bb6032838befdadf48011b1f1accd4ddac800ea89c042bdadf35157bc568d40f2e8e0d378fdb5f9c295af90ff5a3642a3a05ee43c6391f1287f361bb6253d27')
+source_x86_64=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.8.1+0fc1db0~xenial0_amd64.deb")
+source_i686=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.8.1+0fc1db0~xenial0_i386.deb")
+sha512sums_x86_64=('0dcb4e5a4db95ff6df40afacafddf057ea06f92247be3f0dffa3942f515753bb6adc8cc5fe987dbd2399d931440e30f521d1335adb1688254e37e6948f5d3f1b')
+sha512sums_i686=('bcb4db81a8cbd45930b9aca685ec9992b6e5e0ff058fd0d75e367122d7edb81eeb8c81da66a82c408cef4378e1a442014734e4f2198ece7060c435fb4a81abc1')
 
 package(){
 
