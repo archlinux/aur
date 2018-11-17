@@ -13,7 +13,7 @@ pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-resolvconf-selinux' 'sy
 # Can be from either systemd or systemd-stable
 _commit='25d1ba1173e4cce9dab8a2c2164ce60f63fc68a5'
 pkgver=239.300
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -78,16 +78,15 @@ sha512sums=('SKIP'
             '209b01b044877cc986757fa4009a92ea98f480306c2530075d153203c3cd2b3afccab6aacc1453dee8857991e04270572f1700310705d7a0f4d5bed27fab8c67')
 
 _backports=(
-  # Building with lz4-1.8.3 fails:
-  # https://github.com/systemd/systemd/issues/10259
-  # https://github.com/systemd/systemd/pull/10563
-  'e0a1d4b049e6991919a0eacd5d96f7f39dc6ddd1'
-  'ba17efce44e6a1e139c1671205e9a6ed3824af1b'
+  # journal: adapt for new improved LZ4_decompress_safe_partial()
   'e41ef6fd0027d3619dc1cf062100b2d224d0ee7e'
-  '029427043b2e0523a21f54374f872b23cf744350'
 )
 
 _reverts=(
+  # shared/sleep-config: add switches to kill specific sleep modes
+  '6ebddf92527b5de840f021b8672b2977c2a58af5'
+  # shared/sleep-config: forbid hibernation if resume= is not configured
+  '6789dca0a26df0c44ff8020f0a4206bf21e52a7a'
 )
 
 prepare() {
