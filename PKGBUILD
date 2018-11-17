@@ -6,8 +6,8 @@
 
 pkgname=xavs2-git
 _srcname=xavs2
-pkgver=1.0.r136.gdc1894c
-pkgrel=2
+pkgver=1.2.r109.g9a06546
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard (git version)'
 url='https://github.com/pkuvcl/xavs2/'
@@ -25,10 +25,6 @@ prepare() {
     
     # use gcc7 (it does not build with gcc8)
     sed -i 's/gcc/gcc-7/' build/linux/configure
-    
-    # must copy the entire source tree or it will not work
-    cd "$srcdir"
-    cp -af "$_srcname" build-8bit
 }
 
 pkgver() {
@@ -39,7 +35,7 @@ pkgver() {
 }
 
 build() {
-    cd build-8bit/build/linux
+    cd "${_srcname}/build/linux"
     
     ./configure \
         --prefix='/usr' \
@@ -57,5 +53,5 @@ build() {
 }
 
 package() {
-    make -C build-8bit/build/linux DESTDIR="$pkgdir" install-cli install-lib-shared
+    make -C "${_srcname}/build/linux" DESTDIR="$pkgdir" install-cli install-lib-shared
 }
