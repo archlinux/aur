@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.4.3
+pkgver=1.4.7
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -79,8 +79,11 @@ build() {
     export EXTRA_FLAGS="-Winvalid-pch"
     export CPPFLAGS="$CPPFLAGS $EXTRA_FLAGS"
     export CXXFLAGS="$CXXFLAGS $EXTRA_FLAGS"
+    # Using Telegram Destkop keys for now, in future using Arch/other ones
+    export API_FLAGS="-Dapi_id=17349 -Dapi_hash=344583e45741c457fe1862106095a5eb"
     gyp \
         -Dbuild_defines=${GYP_DEFINES} \
+        ${API_FLAGS} \
         -Gconfig=Release \
         --depth=Telegram/gyp --generator-output=../.. -Goutput_dir=out Telegram/gyp/Telegram.gyp --format=cmake
     NUM=$((`wc -l < out/Release/CMakeLists.txt` - 2))
