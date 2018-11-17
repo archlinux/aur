@@ -4,8 +4,8 @@ _pkgname=python-doubleratchet
 _pkgname2=python2-doubleratchet
 pkgbase=${_pkgname}-git
 pkgname=("${_pkgname}-git" "${_pkgname2}-git")
-pkgver=r27.9ccb6c6
-pkgrel=2
+pkgver=r30.352f0fd
+pkgrel=1
 pkgdesc="A python implementation of the Double Ratchet algorithm"
 url='https://github.com/Syndace/python-doubleratchet'
 license=('MIT')
@@ -21,8 +21,7 @@ pkgver() {
 
 package_python-doubleratchet-git() {
     depends=('python-pynacl'
-             'python-cryptography'
-             'python-hkdf')
+             'python-cryptography')
     provides=("${_pkgname}")
     conflicts=("${_pkgname}")
 
@@ -32,8 +31,7 @@ package_python-doubleratchet-git() {
 
 package_python2-doubleratchet-git() {
     depends=('python2-pynacl'
-             'python2-cryptography'
-             'python2-hkdf')
+             'python2-cryptography')
     provides=("${_pkgname2}")
     conflicts=("${_pkgname2}")
 
