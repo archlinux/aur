@@ -1,13 +1,13 @@
 pkgbase = asix-ax88179-dkms
-	pkgdesc = Driver for USB ASIX Ethernet model AX88179/AX88178A
+	pkgdesc = A kernel module for ASIX AX88178A AX88179 USB 3.0 network adapters
 	pkgver = 1.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.asix.com.tw/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = dkms
-	source = http://www.asix.com.tw/FrootAttach/driver/AX88179_178A_LINUX_DRIVER_v1.19.0_SOURCE.tar.bz2
+	source = https://www.asix.com.tw/FrootAttach/driver/AX88179_178A_LINUX_DRIVER_v1.19.0_SOURCE.tar.bz2
 	source = asix-ax88179-dkms.conf
 	source = 0001-No-date-time.patch
 	source = 0002-b2b128.patch
