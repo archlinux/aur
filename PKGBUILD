@@ -15,7 +15,7 @@ checkdepends=('cppunit')
 provides=('python2-xrootd' 'python2-pyxrootd'
           'python-xrootd' 'python-pyxrootd')
 source=("${url}/download/v${pkgver}/xrootd-${pkgver}.tar.gz")
-sha256sums=('d4d643fcccbadaac6220252ac313bcbcaa4a8aed7bf55affcba43d3408474faf')
+sha256sums=('42e4d2cc6f8b442135f09bcc12c7be38b1a0c623a005cb5e69ff3d27997bdf73')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
