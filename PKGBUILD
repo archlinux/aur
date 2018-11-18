@@ -3,7 +3,7 @@
 pkgname=chronoengine
 pkgver=3.0.0
 #fragment="#tag=${pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ library for physics simulation"
 license=('custom')
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=(cmake git boost glm glew glfw irrlicht glut openmpi)
 makedepends+=(python swig) # -DENABLE_MODULE_PYTHON requirement
 makedepends+=(blaze) # -DENABLE_MODULE_PARALLEL=ON requirement
 makedepends+=(cuda) # -DENABLE_MODULE_PARALLEL=ON optional
-makedepends+=(opencascade7) # -DENABLE_MODULE_CASCADE=ON required (version<=7.2)
+makedepends+=(opencascade) # -DENABLE_MODULE_CASCADE=ON required (version<=7.2)
 #makedepends+=(intel-mkl) # -DENABLE_MODULE_MKL=ON requirement
 optdepends=( 	 
 		"irrlicht: Runtime visualization with Irrlicht."
@@ -22,7 +22,7 @@ optdepends=(
 		"freeglut: Runtime visualization with OpenGL."
 		"python: Python bindings"
 		"nvidia-utils: CUDA support in PARALLEL module"
-		"opencascade7: add 3D CAD file support (STEP format)"
+		"opencascade: add 3D CAD file support (STEP format)"
 	)
 #optdepends+=("intel-mkl: This library is currently used in Chrono for its parallel direct solver (Pardiso)")
 #options=(!buildflags) # discard arch buildflags as -fno-plt is not supported by gcc5 (cuda host compiler)
@@ -31,14 +31,18 @@ optdepends=(
 #CFLAGS=${CXXFLAGS}
 
 source=("${pkgname}::git+https://github.com/projectchrono/chrono.git${fragment}"
+	"git+https://github.com/google/benchmark.git"
+	"git+https://github.com/google/googletest.git"
 	"chronoengine.sh"
 	"glm.patch"
 	"opencascade.patch"
 	)
 sha1sums=('SKIP'
-          '8d8cb3fc9324e50cec8f5bb5dbf8a78817a32b81'
-          '277e41186ff356fcc8c15153453d17ea61eca56a'
-          '884f16fc90b8d084d1a67672bf59493b867a71f0')
+		'SKIP'
+		'SKIP'
+		'8d8cb3fc9324e50cec8f5bb5dbf8a78817a32b81'
+		'277e41186ff356fcc8c15153453d17ea61eca56a'
+		'884f16fc90b8d084d1a67672bf59493b867a71f0')
 
 CMAKE_FLAGS=( 	-DENABLE_MODULE_POSTPROCESS=ON
 		-DENABLE_MODULE_VEHICLE=ON
@@ -64,6 +68,10 @@ CMAKE_FLAGS=( 	-DENABLE_MODULE_POSTPROCESS=ON
 
 prepare() {
   cd ${pkgname}
+  git submodule init
+  git config submodule.src/chrono_thirdparty/googlebenchmark.url ${srcdir}/benchmark
+  git config submodule.src/chrono_thirdparty/googletest.url ${srcdir}/googletest
+  git submodule update
   files=($(find -name CMakeLists.txt))
   files+=($(find -name \*.cmake\*))
   sed -i 's/lib64/lib/' ${files[@]}
