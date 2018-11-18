@@ -1,0 +1,7 @@
+name: Terminal
+description: Open terminal in a web browser
+icon: /apps/webterm/terminal.svg
+path: /apps/webterm/gotty
+keyboard_cap: true
+daemon: kvmd-webterm
+place: 10

@@ -1,8 +1,0 @@
-{
-	"name": "Terminal",
-	"description": "Open Pi-KVM terminal in a web browser",
-	"icon": "/apps/webterm/terminal.svg",
-	"path": "/apps/webterm/gotty",
-	"place": 10,
-	"keyboard_cap": true
-}
