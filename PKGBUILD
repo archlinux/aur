@@ -6,7 +6,7 @@
 pkgname=buildbot
 pkgdesc='The Continuous Integration Framework'
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -16,7 +16,7 @@ depends=(python-twisted python-jinja python-zope-interface python-future
 makedepends=(git)
 checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
               python-mock python-moto python-buildbot-pkg buildbot-worker
-              python-pip openssh)
+              python-buildbot-www python-pip openssh)
 optdepends=(
   'python-boto3: for AWS EC2 latent worker'
   'python-lz4: to compress logs using lz4'
