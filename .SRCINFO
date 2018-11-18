@@ -1,18 +1,18 @@
 pkgbase = emacs-goby
-	pkgdesc = a WYSIWYG presentation tool, which runs on Emacs 22 or later
+	pkgdesc = WYSIWYG presentation tool, which runs on Emacs
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mew.org/~kazu/proj/goby/en/index.html
 	install = emacs-goby.install
 	arch = any
-	license = BSD
+	license = custom:BSD
 	depends = emacs
 	optdepends = netpbm: for using images
-	optdepends = imagemagic: for making screen dumps
+	optdepends = imagemagic6: for making screen dumps
 	source = http://www.mew.org/~kazu/proj/goby/goby-1.1.tar.gz
 	source = LICENSE
-	md5sums = 4bbe196249fcfce034eb868741f6af68
-	md5sums = a774f696f08d52a017e391c578870c4d
+	sha256sums = 5050d9be02a8d466e3e46f35fce7e51263aa627519c9a16bea494aea542a47b6
+	sha256sums = 21d7b7a32535aa6cb0b3500f955f1cc3e9327c93c8e15e8310aa61b56f39e24a
 
 pkgname = emacs-goby
 

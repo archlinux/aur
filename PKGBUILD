@@ -4,32 +4,26 @@
 pkgname=emacs-goby
 _srcname=goby
 pkgver=1.1
-pkgrel=1
-pkgdesc="a WYSIWYG presentation tool, which runs on Emacs 22 or later"
+pkgrel=2
+pkgdesc="WYSIWYG presentation tool, which runs on Emacs"
 arch=('any')
 url="http://www.mew.org/~kazu/proj/goby/en/index.html"
-license=('BSD')
+license=('custom:BSD')
 depends=('emacs')
-optdepends=('netpbm: for using images' 'imagemagic: for making screen dumps')
+optdepends=('netpbm: for using images' 'imagemagic6: for making screen dumps')
 source=(http://www.mew.org/~kazu/proj/goby/$_srcname-$pkgver.tar.gz
         LICENSE)
-md5sums=('4bbe196249fcfce034eb868741f6af68'
-         'a774f696f08d52a017e391c578870c4d')
+sha256sums=('5050d9be02a8d466e3e46f35fce7e51263aa627519c9a16bea494aea542a47b6'
+            '21d7b7a32535aa6cb0b3500f955f1cc3e9327c93c8e15e8310aa61b56f39e24a')
 install=$pkgname.install
 
-prepare() {
-  cd "$srcdir/$_srcname-$pkgver"
-  sed -i 's/MKDIR   = mkdir/MKDIR   = install -d/' Makefile
-}
-
 build() {
-  cd "$srcdir/$_srcname-$pkgver"
+  cd $_srcname-$pkgver
   make 
 }
 
 package() {
-  cd "$srcdir/$_srcname-$pkgver"
-  install -Dm644 "$srcdir/LICENSE" \
-	  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  make PREFIX="$pkgdir/usr" install
+  cd /$_srcname-$pkgver
+  install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  make PREFIX="$pkgdir"/usr install
 }
