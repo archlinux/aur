@@ -12,7 +12,6 @@ depends=('linux' 'iptables')
 makedepends=('git' 'libtool' 'gcc' 'gzip' 'gawk' 'sed')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
-install="${pkgname}.install"
 # define 'lts' for linux-lts package
 _linux_custom="ARCH"
 # define '-lts' for linux-lts package
