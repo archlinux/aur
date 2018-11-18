@@ -6,9 +6,18 @@ pkgbase = kvmd-webterm
 	install = kvmd-webterm.install
 	arch = any
 	license = GPL
-	makedepends = go
-	depends = kvmd
-	depends = gotty
+	source = kvmd-webterm.install
+	source = kvmd-webterm.service
+	source = terminal.svg
+	source = http-ctx.conf
+	source = server-ctx.conf
+	source = manifest.json
+	md5sums = a8119b6f675ca954c71ecd241745df0c
+	md5sums = 64eb8202a52dbd8726c1ff282276d5e1
+	md5sums = 8310f16f1892706c6ee5d07d51393e00
+	md5sums = dc9e0d328cb2710ef2921737fded3229
+	md5sums = 0047a331249dd17f42563e39b610dce7
+	md5sums = 95fc71f20d695f31523a53bbaa57c43b
 
 pkgname = kvmd-webterm
 
