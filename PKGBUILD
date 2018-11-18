@@ -4,7 +4,7 @@
 
 pkgname=sam2p
 pkgver=0.49.4
-pkgrel=6
+pkgrel=7
 pkgdesc="A bitmap-to-eps-or-pdf-converter that produces very small files"
 arch=('i686' 'x86_64')
 url="http://www.inf.bme.hu/~pts"
@@ -32,7 +32,7 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -Dm755 sam2p $pkgdir/usr/bin/sam2p
-  install -Dm755 sam2p_pdf_scale.pl $pkgdir/usr/bin/sam2p_pdf_scale
+  install -Dm755 sam2p "$pkgdir"/usr/bin/sam2p
+  install -Dm755 sam2p_pdf_scale.pl "$pkgdir"/usr/bin/sam2p_pdf_scale
   install -Dm644 README "$pkgdir"/usr/share/sam2p/docs/README
 }
