@@ -1,7 +1,7 @@
 pkgbase = pahole-git
 	pkgdesc = Various DWARF utils
 	pkgver = 1.12.r7.g70ef8c7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary
 	arch = i686
 	arch = x86_64
