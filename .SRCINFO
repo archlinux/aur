@@ -1,0 +1,12 @@
+pkgbase = simona-kde-color-scheme-custom
+	pkgdesc = Custom pink theme for KDE Plasma 5.0 GUI
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = plasma-desktop>=5.12
+	source = simona-kde-color-scheme-custom.colors
+	md5sums = 8a0135d1a5b8a6029ed357604a473009
+
+pkgname = simona-kde-color-scheme-custom
+
