@@ -7,7 +7,7 @@ pkgbase=digikam
 pkgname=(digikam kipi-plugins)
 _pkgver=5.9.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
@@ -15,15 +15,18 @@ url="http://www.digikam.org/"
 makedepends=(extra-cmake-modules libkipi libksane liblqr opencv doxygen lensfun eigen boost kdoctools marble-common
              kfilemetadata akonadi-contacts qtav threadweaver kcalcore knotifyconfig libmediawiki libkvkontakte glu)
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
-        kdebug-395875.patch::"https://cgit.kde.org/digikam.git/patch/core?id=486e34a0")
+        kdebug-395875.patch::"https://cgit.kde.org/digikam.git/patch/core?id=486e34a0"
+        digikam-opencv4.patch)
 sha256sums=('660d32eedcfd6fe1a75170a651fab068ae62f7f092ae710771a2f32a1c550d1b'
-            '3910f0f36ef933649691fe6da47f205d86d79afa9b4f239f86dd540648b55731')
+            '3910f0f36ef933649691fe6da47f205d86d79afa9b4f239f86dd540648b55731'
+            '621faf691d081239d792616ea40bac7a1cc07c3adf1bc74b4adc9107eacb4232')
 
 prepare() {
   mkdir -p build
 
   cd $pkgbase-$pkgver
   patch -p1 -i ../kdebug-395875.patch   # Fix window state saving on close
+  patch -p1 -i ../digikam-opencv4.patch # fix build with openCV 4
 }
 
 build() {
