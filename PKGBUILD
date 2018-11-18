@@ -2,15 +2,15 @@
 # Co-Maintainer: jswenson
 # Packager: Chris Knepper <chris82thekid at gmail dot com>
 pkgname=android-messages-desktop
-pkgver=0.7.0
-pkgrel=3
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
 url="https://github.com/chrisknepper/android-messages-desktop"
 license=('MIT')
 depends=('electron' 'libnotify' 'libappindicator-gtk2' 'libappindicator-gtk3' 'libappindicator-sharp')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.pacman")
-md5sums=('d61810468879d8da2fa543448b84e251')
+md5sums=('48475181a68ba399008f297784e7e46c')
 
 package() {
     install -D -m644 "${srcdir}/opt/Android Messages/resources/app.asar" "${pkgdir}/usr/lib/${pkgname}/resources/app.asar"
