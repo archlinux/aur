@@ -13,13 +13,13 @@
 pkgbase=lib32-mesa-intel-iris-git
 pkgname="${pkgbase}"
 _branch=iris
-pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.3.0_devel.105928.2e1f61cafcb
-pkgrel=3
+pkgdesc="Mesa with Intel Iris (Gallium) Driver, 32bit git version"
+pkgver=19.0.0_devel.106266.34f698b975c
+pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
-             'mesa-intel-iris-git' 'lib32-llvm-libs-svn' 'lib32-libglvnd' 'wayland-protocols' 'lib32-wayland' 'meson')
+             'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libglvnd' 'wayland-protocols' 'lib32-wayland' 'meson' 'lib32-libva' 'lib32-libxrandr')
 depends=('mesa-intel-iris-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
          'lib32-llvm-libs-svn' 'lib32-libunwind' 'lib32-lm_sensors')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
@@ -93,7 +93,7 @@ package_lib32-mesa-intel-iris-git () {
   rm -rf "$pkgdir"/etc
   rm -rf "$pkgdir"/usr/include
   rm -rf "$pkgdir"/usr/share/glvnd/
-  rm "$pkgdir"/usr/share/drirc.d/00-mesa-defaults.conf
+  rm -rf "$pkgdir"/usr/share/drirc.d/
 
   # remove files present in lib32-libglvnd
   rm "$pkgdir"/usr/lib32/libGLESv{1_CM,2}.so*
