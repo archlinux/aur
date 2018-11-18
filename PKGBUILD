@@ -2,15 +2,15 @@
 
 pkgname=emacs-ess-git
 epoch=1
-pkgver=18.10.2.8077.c872688b
+pkgver=18.10.2.8085.58b011d7
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
 arch=('any')
 url="http://ess.r-project.org"
 license=('GPL')
-depends=('emacs-julia-mode' 'r')
-makedepends=('git' 'wget')
+depends=('r' 'emacs')
+makedepends=('git' 'wget' 'texlive-latexextra')
 provides=('ess' 'emacs-ess')
 conflicts=('emacs-ess' 'emacs-ess-svn')
 options=('docs' '!makeflags')
