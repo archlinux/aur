@@ -4,8 +4,8 @@
 pkgname='zeronet-git'
 _gitname='ZeroNet'
 _gitroot='https://github.com/HelloZeroNet/ZeroNet.git'
-pkgver=0.6.3
-pkgrel=3
+pkgver=0.6.4
+pkgrel=1
 arch=('any')
 url="https://zeronet.io/"
 depends=('python2' 'python2-gevent' 'python2-msgpack')
