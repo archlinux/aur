@@ -16,6 +16,7 @@ sha256sums=('2b87cc8c31874ecb01e0300bc99b30e4017714fc0d17690f637d8fa4d48560f3'
 
 build() {
   export PATH="/opt/mpich/bin:$PATH"
+  export LD_LIBRARY_PATH="/opt/mpich/lib:${LD_LIBRARY_PATH}"
   cd "${srcdir}/OpenCoarrays-${pkgver}"
   mkdir -p build
   cd build
@@ -30,6 +31,7 @@ build() {
 
 check() {
   export PATH="/opt/mpich/bin:$PATH"
+  export LD_LIBRARY_PATH="/opt/mpich/lib:${LD_LIBRARY_PATH}"
   cd "${srcdir}/OpenCoarrays-${pkgver}/build"
   make test
 }
