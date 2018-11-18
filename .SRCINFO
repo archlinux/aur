@@ -1,0 +1,12 @@
+pkgbase = xnufont
+	pkgdesc = XNU kernel font port to linux console
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/vladkorotnev/xnufont
+	arch = any
+	license = custom:APSL
+	source = https://github.com/vladkorotnev/xnufont/releases/download/1.0/Lat15-XNU8x16.psf
+	md5sums = SKIP
+
+pkgname = xnufont
+
