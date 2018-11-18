@@ -18,7 +18,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-  ./autogen.sh
+  autoreconf -fi
 	./configure --prefix=/usr --enable-aur-build
 	make
 }
