@@ -1,30 +1,30 @@
+# Contributor: Cody Schafer <aur at codyps com>
 # Maintainer: Chris <alostengineer at narmos org>
 # Contributor: Olivier EBLE <olivier.eble at gmail com>
 # Contributor: Laszlo Papp <djszapi2 at gmail com>
 pkgname=libftd2xx
-pkgver=1.4.6
+pkgver=1.4.8
 pkgrel=1
 pkgdesc="Library that allows a direct access to a USB FTDI2XX chip based device"
 arch=('i686' 'x86_64')
 url="http://www.ftdichip.com/"
-license=('GPL')
+license=('Proprietary')
 depends=('glibc' 'libusbx>=1.0.8')
 
-# Keep static lib
-options=(!strip staticlibs)
+source=(
+	55-ft2232.rules
+)
+sha384sums=('470dd4b34d9f62fa2e6d739804751fe2b635b84ef29312c02d20c572bc371c5f6369cd3bda739fc6987fd886766cd0fd')
+sha384sums_i686=('d9fcb395a7c69a1f4296d2ce41a8ca9a01ba5047db96a98d2f6b7256f886cf71eb5e024d434166a75b61236a7c2e9fbf')
+sha384sums_x86_64=('5643b681c549c18c8830fcaa1a55f0a27eac4e8ff87bbb32de1b1efaf3a926ab008444c416efc222a4d042b065c61fc7')
 
-# Separate packages for each architecture
-if [ "${CARCH}" == "i686" ]; then
-	source=(http://www.ftdichip.com/Drivers/D2XX/Linux/${pkgname}-i386-${pkgver}.tgz
-        	55-ft2232.rules)
-	md5sums=('af99e23216acda30ca137c558cd15864'
-	         '3a4d73379decfc351a00cfd22d74dbef')
-else
-	source=(http://www.ftdichip.com/Drivers/D2XX/Linux/${pkgname}-x86_64-${pkgver}.tgz
-        	55-ft2232.rules)
-	md5sums=('3140665d50b326a54e281cf1c465ca3c'
-	         '3a4d73379decfc351a00cfd22d74dbef')
-fi
+source_i686=(
+	http://www.ftdichip.com/Drivers/D2XX/Linux/${pkgname}-i386-${pkgver}.tgz
+)
+
+source_x86_64=(
+	http://www.ftdichip.com/Drivers/D2XX/Linux/${pkgname}-x86_64-${pkgver}.tgz
+)
 
 package() {
 	# Make required dirs
