@@ -3,7 +3,8 @@ Description=Prometheus exporter for machine metrics
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/prometheus_node_exporter
+EnvironmentFile=-/etc/conf.d/prometheus_node_exporter
+ExecStart=/usr/bin/prometheus_node_exporter $NODE_EXPORTER_OPTS
 User=nobody
 
 [Install]
