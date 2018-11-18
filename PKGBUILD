@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://gitlab.com/alextee/zrythm"
 license=('GPL')
 depends=('gtk3' 'lilv-git' 'suil-git' 'jack2' 'libsndfile' 'libsmf')
-makedepends=('git' 'coreutils')
+makedepends=('git' 'shtool')
 source=("$pkgname-$pkgver::git+https://gitlab.com/alextee/zrythm.git")
 md5sums=('SKIP')
 
