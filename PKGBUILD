@@ -1,26 +1,53 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Contributor: xRemaLx <anton.komolov@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=buildbot
-pkgver=0.8.12
+pkgdesc='The Continuous Integration Framework'
+pkgver=1.6.0
 pkgrel=1
-pkgdesc="A system to automate the compile/test cycle required by most software projects"
-arch=('any')
-url="http://buildbot.net"
-license=("GPL")
-depends=('python2-twisted' 'python2-jinja' 'python2-migrate'
-	 'python2-dateutil' 'python2-sqlparse')
-source=(https://pypi.python.org/packages/source/b/buildbot/buildbot-$pkgver.tar.gz
-	version-parse.patch)
-md5sums=('c61fa219942f8a1ed43cdbc1e4ef0187'
-         '61986f8b1d88ab74c8b290c49580152b')
+arch=(any)
+url='https://buildbot.net'
+license=(GPL2)
+depends=(python-twisted python-jinja python-zope-interface python-future
+         python-sqlalchemy-migrate python-dateutil python-txaio
+         python-autobahn python-pyjwt python-yaml)
+makedepends=(git)
+checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
+              python-mock python-moto python-buildbot-pkg buildbot-worker
+              python-pip openssh)
+optdepends=(
+  'python-boto3: for AWS EC2 latent worker'
+  'python-lz4: to compress logs using lz4'
+  'python-treq: for using HTTP requests as steps'
+  'python-txrequests: for using HTTP requests as steps'
+)
+source=(https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz{,.sig})
+sha256sums=('1d6dbab6cc3fa77cf709589d93bd86de030dc9bf244eebca1f16c388ed27d24a'
+            'SKIP')
+validpgpkeys=(
+  '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com>
+)
 
-prepare() {
-  cd "$srcdir"/buildbot-${pkgver/_/}
-  patch -p1 <"$srcdir"/version-parse.patch
+build() {
+  cd buildbot-$pkgver/master
+  python setup.py build
+}
+
+check() {
+  cd buildbot-$pkgver/master
+
+  # https://github.com/spulec/moto/issues/1924
+  export AWS_SECRET_ACCESS_KEY=foobar_secret
+  export AWS_ACCESS_KEY_ID=foobar_key
+
+  pip install --root="$srcdir"/tmp_install .
+
+  PYTHONPATH="$srcdir"/tmp_install/usr/lib/python3.7/site-packages TZ=UTC trial3 --rterrors buildbot
 }
 
 package() {
-  cd "$srcdir"/buildbot-${pkgver/_/}
-  python2 setup.py install --root="$pkgdir"
+  cd buildbot-$pkgver/master
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
