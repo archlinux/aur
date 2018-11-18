@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 0fed71c..1428b8f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@
+ 
+ CP = cp
+ JC = javac
+-JCFLAGS = -target 1.1 -source 1.2
++JCFLAGS = -target 1.1 -source 1.2 -Xlint:-options
+ JAR = jar
+ ARCHIVE = VncViewer.jar
+ MANIFEST = MANIFEST.MF

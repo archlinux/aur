@@ -1,0 +1,6 @@
+vncviewer-jar-*.pkg.tar.xz
+tightvnc-*_javasrc.tar.gz
+vncviewer-jar-*.log
+PKGBUILD-namcap.log
+pkg/
+src/
