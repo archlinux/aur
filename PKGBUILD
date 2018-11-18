@@ -2,13 +2,12 @@
 
 pkgname=digilent.adept.runtime
 pkgver=2.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Adept Runtime consists of the shared libraries, firmware images, and configuration files necessary to communicate with Digilent's devices."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://reference.digilentinc.com/reference/software/adept/start"
 license=('custom')
 depends=('libusb')
-conflicts=('libftd2xx')
 options=('!strip')
 backup=('etc/digilent-adept.conf' 'etc/ld.so.conf.d/digilent-adept-libraries.conf' 'etc/udev/rules.d/52-digilent-usb.rules')
 source_armv6h=("https://files.digilent.com/Software/Adept2+Runtime/${pkgver}/${pkgname}_${pkgver}-armhf.deb")
