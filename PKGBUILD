@@ -2,7 +2,7 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='mailfromd'
-pkgver='8.5'
+pkgver='8.6'
 pkgrel='1'
 pkgdesc='General-Purpose Mail Filter'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 source=("${pkgname}.service"
 	"ftp://download.gnu.org.ua/pub/release/${pkgname}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('26a380c1bfe964c1aaaf351f85504c72ca7be5dca199e7cd79252c83382a9ce0'
-            '7796223635ce8a912a649de566f9595432590c6b6d38db7c56d61ab6b86fbbc3')
+            '3f5e5855af8329b0bee3fec5fce2919d94631557aba5ba449d428a3f3941ca82')
 backup=('etc/mailfromd.mf')
 
 prepare() {
