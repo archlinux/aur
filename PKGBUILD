@@ -1,7 +1,7 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 
 pkgname='zeronet'
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 arch=('any')
 url="https://zeronet.io/"
@@ -33,6 +33,6 @@ package() {
    install -D -m644 "$srcdir/$_pkgarchive/LICENSE" "$pkgdir/usr/share/licenses/$_pkgarchive/LICENSE"
 }
 
-sha256sums=('030795e0c8bddd4c9ce01ab22765e8a0068349e0bc711f07062fc1516bcacf8a'
+sha256sums=('e37a2acb1313d4e170bab2e7b469288916630cb1d4717aec0e2a188f92721f57'
             'ea735e82dbb10a2c1fda7abfeb2f38c2429044d8254f9e2396c50cecb6f778f8'
             '46fcbaddf5346ba384539efd6873c26bef4e767e328c6543f9fd511022aea9e7')
