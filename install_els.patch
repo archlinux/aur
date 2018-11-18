@@ -1,0 +1,12 @@
+diff -Naur ess-18.10.2.orig/lisp/Makefile ess-18.10.2.new/lisp/Makefile
+--- ess-18.10.2.orig/lisp/Makefile	2018-11-10 10:41:11.000000000 +0100
++++ ess-18.10.2.new/lisp/Makefile	2018-11-18 03:38:41.325270246 +0100
+@@ -39,6 +39,8 @@
+ 
+ install: dist
+ 	-$(INSTALLDIR) $(LISPDIR)
++	$(INSTALL) $(ELS) $(LISPDIR)
++	$(INSTALL) ess-autoloads.el $(LISPDIR)
+ 	$(INSTALL) $(ELC) $(LISPDIR)
+ 	if [ -f /etc/debian_version -a -n "$(SITELISP)" -a ! -f "$(SITELISP)/ess-site.el" ] ; \
+ 	then \
