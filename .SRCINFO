@@ -9,8 +9,6 @@ pkgbase = kvmd-webterm
 	makedepends = go
 	depends = kvmd
 	depends = gotty
-	source = https://github.com/pi-kvm/kvmd-webterm/archive/v0.1.tar.gz
-	md5sums = SKIP
 
 pkgname = kvmd-webterm
 
