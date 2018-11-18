@@ -1,7 +1,7 @@
 pkgbase = indicator-kdeconnect-git
 	pkgdesc = Integrate KDEConnect on desktop environments that use AppIndicators (e.g. Unity)
 	pkgver = r599.070ebaa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bajoja/indicator-kdeconnect
 	arch = any
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = indicator-kdeconnect-git
 	depends = libgee
 	provides = indicator-kdeconnect
 	conflicts = indicator-kdeconnect
-	source = git://github.com/bajoja/indicator-kdeconnect.git
+	source = git+https://github.com/bajoja/indicator-kdeconnect.git
 	md5sums = SKIP
 
 pkgname = indicator-kdeconnect-git

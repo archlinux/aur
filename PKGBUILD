@@ -3,7 +3,7 @@
 # Contributor: Gustavo Castro <gustawho at gmail dot com>
 pkgname=indicator-kdeconnect-git
 pkgver=r599.070ebaa
-pkgrel=1
+pkgrel=2
 _gitname=indicator-kdeconnect
 pkgdesc="Integrate KDEConnect on desktop environments that use AppIndicators (e.g. Unity)"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('indicator-kdeconnect')
 provides=('indicator-kdeconnect')
 depends=('libappindicator-gtk3' 'kdeconnect' 'vala' 'python-requests-oauthlib' 'python-gobject' 'libgee')
 makedepends=('git' 'meson' 'ninja')
-source=('git://github.com/bajoja/indicator-kdeconnect.git')
+source=('git+https://github.com/bajoja/indicator-kdeconnect.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,11 +21,13 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  cd indicator-kdeconnect
-  mkdir build
-  cd build
-  meson .. --prefix=/usr/  --libdir=/usr/lib/
+build() {
+  mkdir build && cd build
+  meson ../$_gitname --prefix=/usr  --libdir=/usr/lib
   ninja
-  ninja install
+}
+
+package() {
+  cd build
+  DESTDIR=$pkgdir ninja install
 }
