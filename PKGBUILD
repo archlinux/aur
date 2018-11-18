@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=vtwm-git
-pkgver=5.5.0.rc8.15
-pkgrel=5
+pkgver=5.5.0.1
+pkgrel=1
 pkgdesc="A lightweight, customizable window manager with a virtual desktop"
 arch=('i686' 'x86_64')
 url="http://www.vtwm.org"
