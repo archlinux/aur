@@ -1,0 +1,28 @@
+diff -ura cputool-0.0.8_vanilla/doc/cputool.sgml cputool-0.0.8_docbookfix/doc/cputool.sgml
+--- cputool-0.0.8_vanilla/doc/cputool.sgml	2015-01-05 14:54:10.000000000 +0000
++++ cputool-0.0.8_docbookfix/doc/cputool.sgml	2018-11-18 21:02:46.330800823 +0000
+@@ -1,4 +1,5 @@
+-<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
++	"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+ 
+ <!-- Process this file with docbook-to-man to generate an nroff manual
+      page: `docbook-to-man manpage.sgml > manpage.1'.  You may view
+@@ -26,7 +27,7 @@
+   <!ENTITY dhsection   "<manvolnum>8</manvolnum>">
+   <!ENTITY dhemail     "<email>nkukard@lbsd.net</email>">
+   <!ENTITY dhusername  "nkukard">
+-  <!ENTITY dhucpackage "<refentrytitle>CPUTOOL</refentrytitle>">
++  <!ENTITY dhucpackage "<refentrytitle>cputool</refentrytitle>">
+   <!ENTITY dhpackage   "cputool">
+ 
+   <!ENTITY author      "Nigel Kukard">
+@@ -71,7 +72,7 @@
+           <arg>--pid <replaceable>PID</replaceable></arg>
+           <arg>--pid-pgrp <replaceable>PID</replaceable></arg>
+         </group>
+-        <arg><arg>--</arg> <arg rep=repeat choice=plain><replaceable>COMMAND</replaceable></arg></arg>
++        <arg><arg>--</arg> <arg rep="repeat" choice="plain"><replaceable>COMMAND</replaceable></arg></arg>
+       </group>
+     </cmdsynopsis>
+   </refsynopsisdiv>

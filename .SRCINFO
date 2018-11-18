@@ -1,0 +1,17 @@
+pkgbase = cputool
+	pkgdesc = CPUTool is a utility which can be used to control the CPU utilization of almost any process
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://gitlab.devlabs.linuxassist.net/cputool/cputool
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = docbook2x
+	source = https://download.allworldit.org/cputool/v0.0.8/cputool-0.0.8.tar.xz
+	source = https://download.allworldit.org/cputool/v0.0.8/cputool-0.0.8.tar.xz.asc
+	validpgpkeys = CF5D5BE37903E265E87DC78266438A5B0FEC558A
+	md5sums = 0e42fac9dabab44b4a5b52d980d5a01f
+	md5sums = SKIP
+
+pkgname = cputool
+
