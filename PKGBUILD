@@ -4,7 +4,7 @@
 _limit='ipt-ratelimit'
 pkgname='ipt_ratelimit'
 pkgver='0.2'
-pkgrel='8'
+pkgrel='9'
 pkgdesc='Rate Policer as netfilter extension.'
 arch=('any')
 url="https://github.com/aabc/${_limit}"
@@ -21,7 +21,6 @@ sha256sums=('feb9a9bf002175b7fd73a3bbbd65e5e8bbc65a7fce217a7d36ec172c315a56c5'
             '06cd7a1b902b9f4dfd98a1aa2114bdea5cc2e589bb395a69028d5effcaf655d2'
             '85684f4e86d13ea5f4997c2666d513c722630a0067d1191f132438b8ff2f6876'
             'fd824aae59f72b9ab738647bb1192ef7da155d19531e69e8e9e3bf19490a1b8c')
-install="${pkgname}.install"
 # define 'lts' for linux-lts package
 _linux_custom="ARCH"
 # define '-lts' for linux-lts package
