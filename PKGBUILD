@@ -6,7 +6,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=2.14.21
+pkgver=2.17.12
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -29,9 +29,8 @@ depends=('python'
          'python-requests>=2.16.3'
          'python-dateutil>=2.5.3'
          'python-jsonschema>=2.0'
-         'python-path>=8.1.1'
-         'python-pathlib>=1.0'
-         #'python-guessit' # feature disabled until upstream updates to latest API
+         'python-path.py'
+         'python-guessit'
          'python-rebulk'
          'python-apscheduler>=3.2.0'
          'python-terminaltables>=3.1.0'
@@ -66,7 +65,7 @@ changelog=ChangeLog
 prepare() {
   cd "${_pkgname}"-"${pkgver}"
 
-  #msg "Patching shebangs to point to python2"
+  #msg "Patching shebangs to point to python"
   sed -i '1s/python2/python/' flexget{,/ui}/__init__.py
 
   # Don't use the requirements.txt with pinned deps
@@ -81,6 +80,9 @@ prepare() {
 
   # zxcvbn-python has been renamed zxcvbn
   sed -i 's/zxcvbn-python/zxcvbn/' requirements.txt
+
+  # pathlib no longer required since python 3.4
+  sed -i 's/pathlib.*//' requirements.txt
 
   # disable this parser because python-guessit API changed and upstream
   # needs to be patched to support it.
@@ -100,7 +102,7 @@ package() {
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
 }
 
-sha256sums=('a4c5497278d48bc99d3bb545de6ef34d52491ecc2aa2cd37610a1b21badcebd7'
+sha256sums=('32354a5db0dc3fb3534b796d1f83001072636f23a71b880cefeda23025ff102d'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 # vim:set ts=2 sw=2 et:
