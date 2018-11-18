@@ -3,7 +3,7 @@
 
 
 pkgname=kvmd-webterm
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="Pi-KVM Web Terminal (GoTTY)"
 url="https://github.com/pi-kvm/kvmd-webterm"
@@ -16,8 +16,8 @@ source=(
 	$pkgname.install
 	kvmd-webterm.service
 	terminal.svg
-	http-ctx.conf
-	server-ctx.conf
+	nginx.http-ctx.conf
+	nginx.server-ctx.conf
 	manifest.yaml
 )
 md5sums=(
@@ -38,5 +38,5 @@ package() {
 	cp terminal.svg "$pkgdir/usr/share/kvmd/web/extras/webterm"
 
 	mkdir -p "$pkgdir/usr/share/kvmd/extras/webterm"
-	cp http-ctx.conf server-ctx.conf manifest.yaml "$pkgdir/usr/share/kvmd/extras/webterm"
+	cp nginx.*.conf manifest.yaml "$pkgdir/usr/share/kvmd/extras/webterm"
 }
