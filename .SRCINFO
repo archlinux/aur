@@ -1,0 +1,18 @@
+pkgbase = bitrot-git
+	pkgdesc = Bitrot audio plugins (LV2, VST2 and LADSPA)
+	pkgver = r8.66828d4
+	pkgrel = 1
+	url = https://github.com/grejppi/bitrot.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python
+	depends = gcc-libs
+	provides = bitrot
+	conflicts = bitrot
+	source = bitrot::git://github.com/grejppi/bitrot
+	md5sums = SKIP
+
+pkgname = bitrot-git
+
