@@ -5,8 +5,8 @@
 
 pkgname=i2c-tools-git
 _pkgname=i2c-tools
-pkgver=r317.1831b61
-pkgrel=2
+pkgver=r332.4b28579
+pkgrel=1
 pkgdesc="Heterogeneous set of I2C tools for Linux that used to be part of lm-sensors."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://git.kernel.org/pub/scm/utils/i2c-tools/i2c-tools.git/about/"
@@ -33,7 +33,7 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  make prefix="${pkgdir}/usr" sbindir="$pkgdir/usr/bin" install
+  make DESTDIR="${pkgdir}" PREFIX="/usr" sbindir="/usr/bin" install
   install -Dm755 eeprog/eeprog "${pkgdir}/usr/bin"
   install -Dm755 eeprog/eeprog.8 "${pkgdir}/usr/share/man/man8"
 }
