@@ -1,15 +1,16 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=linphone-desktop-all-git
-pkgver=4.1.1.r627.d8d0a99f
+pkgver=4.1.1.r630.cc9f2e84
 pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
 url="https://www.${pkgname%-desktop-all-git}.org/"
 license=("GPL2")
-depends=("alsa-utils" "desktop-file-utils" "glew" "libbsd" "qt5-graphicaleffects" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-svg" "qt5-tools" "v4l-utils")
+depends=("alsa-utils" "desktop-file-utils" "glew" "gsm" "java-runtime" "libbsd" "pulseaudio" "qt5-graphicaleffects" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-speech" "qt5-svg" "qt5-tools" "v4l-utils")
 makedepends=("cmake" "doxygen" "git" "graphviz" "ladspa" "nasm" "python-pystache" "yasm")
-conflicts=("${pkgname%-all-git}")
+provides=("${pkgname%-all-git}" "${pkgname%-git}")
+conflicts=("${pkgname%-desktop-all-git}" "${pkgname%-all-git}" "${pkgname%-git}")
 source=("${pkgname%-all-git}::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/${pkgname%-all-git}.git"
         "bcg729::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/bcg729.git"
         "bcmatroska2::git+https://gitlab.${pkgname%-desktop-all-git}.org/BC/public/bcmatroska2.git"
@@ -65,7 +66,7 @@ sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP
             "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP"
             "346d983f503873811b3a4f72772e5afe4990275526c9e15c1b5cde2ad69a0544"
             "e7574cdb0a5f8d334b1ed1d938fd6c7639e5785b80f01d39e81a682595af4171"
-            "2d174bd6b3d55fc9140b5a94a60bfb0274d0853e780ff0269125bcc6fd501922"
+            "88bc7f2f6ca9cf9ad54c1e4f42fe02597070aa2cb6c8d21c3b619739550a6651"
             "61a9a107267658971348343433a0709af7e1160d4227867faa8decd255f0289c"
             "4aa74b282d3696c722756b72f69ee1a3f0013364803374a698e7fd5998382520")
 
