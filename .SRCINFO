@@ -1,6 +1,6 @@
 pkgbase = ktouch-lesson-generator-git
 	pkgdesc = A script for automatically generating custom lessons for the typing tutor KTouch.
-	pkgver = 1
+	pkgver = 1.0.r0.gfb83fac
 	pkgrel = 1
 	url = https://github.com/simgunz/ktouch-lesson-generator
 	arch = any
