@@ -6,7 +6,7 @@
 
 pkgsubn=https-everywhere
 pkgname=${pkgsubn}-chrome-git
-pkgver=64130.792d6eb6a5
+pkgver=64806.7885b8871c
 pkgrel=1
 pkgdesc="Chrome/Chromium extension to use HTTPS whenever possible - git/dev"
 arch=('any')
@@ -28,5 +28,5 @@ build() {
 package() {
 	 mkdir -p "${pkgdir}/usr/share/${pkgname}"
 	 shopt -s dotglob
-	 cp -dr --no-preserve=ownership "${srcdir}/${pkgsubn}/pkg/crx"/* "${pkgdir}/usr/share/${pkgname}"
+	 cp -dr --no-preserve=ownership "${srcdir}/${pkgsubn}/pkg/crx-cws"/* "${pkgdir}/usr/share/${pkgname}"
 }
