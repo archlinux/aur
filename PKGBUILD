@@ -3,7 +3,7 @@
 pkgname=pahole-git
 pkgdesc="Various DWARF utils"
 pkgver=1.12.r7.g70ef8c7
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary"
 license=('GPL2')
@@ -32,11 +32,11 @@ build() {
   cd "$srcdir/$pkgname/build"
 
   cmake -G Ninja \
-   -D CMAKE_BUILD_TYPE=Release \
+   -D CMAKE_BUILD_TYPE=Plain \
    -D CMAKE_INSTALL_PREFIX=/usr \
    -D LIB_INSTALL_DIR=/usr/lib \
    ..
-  ninja
+  ninja -v
 }
 
 package() {
