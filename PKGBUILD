@@ -2,6 +2,7 @@
 # Contributor: Michael Goehler <somebody dot here at gmx dot de>
 # Contributor: Timothy Redaelli <timothy dot redaelli at gmail dot com>
 # Contributor: DonVla <donvla at users dot sourceforge dot net>
+# Contributor: Cengiz Can <cengizc at gmail dot com>
 
 pkgname=i2c-tools-git
 _pkgname=i2c-tools
