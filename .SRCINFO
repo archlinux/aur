@@ -1,0 +1,12 @@
+pkgbase = simona-konsole-colorscheme-custom
+	pkgdesc = Custom color-theme for Konsole
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = konsole>=17
+	source = simona-breezamod-white-on-black-custom.colorscheme
+	md5sums = c2ce3a8353b1444de7cb3471202cd0de
+
+pkgname = simona-konsole-colorscheme-custom
+
