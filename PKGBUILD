@@ -18,6 +18,7 @@ source=("$pkgname::git+https://github.com/FWGS/xash3d-fwgs.git"
 	${pkgname%%-git}.conf.d
 	${pkgname%%-git}.dedicated
 	${pkgname%%-git}.desktop
+	https://github.com/FWGS/xash-extras/releases/download/v0.19.2/extras.pak
 )
 
 pkgver() {
@@ -45,10 +46,12 @@ package() {
 	install -Dm755 ../${pkgname%%-git}.dedicated $pkgdir/usr/bin/${pkgname%%-git}-dedicated
 	install -Dm644 ../${pkgname%%-git}.desktop $pkgdir/usr/share/applications/${pkgname%%-git}.desktop
 	install -Dm644 game_launch/icon-xash-material.png $pkgdir/usr/share/pixmaps/${pkgname%%-git}.png
+	install -Dm644 ../extras.pak "$pkgdir"/usr/share/xash3d/extras.pak
 }
 
 md5sums=('SKIP'
-	'e2507dc0ca2fcd5de9c8d485fa0382ae'
-	'f4475bb569ad292f6a3711b74ced7bab'
-	'c44e1cb53d58f7691cec9a82a8e29289'
-'60d714544048b0383a7e79cfaed96d78')
+         'e2507dc0ca2fcd5de9c8d485fa0382ae'
+         'd82f1f869074b46ee8c5ac8053dcb275'
+         'c44e1cb53d58f7691cec9a82a8e29289'
+         '60d714544048b0383a7e79cfaed96d78'
+         '409462da6be03f004e84452cfcb93d6b')
