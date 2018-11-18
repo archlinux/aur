@@ -9,6 +9,7 @@ url="https://github.com/studio-ousia/mojimoji"
 arch=('x86_64' 'i686')
 license=('Apache')
 depends=('python')
+makedepends=('python-setuptools')
 source=("https://github.com/studio-ousia/${_pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('340e4d7ae35ecef95bdbcbce4ba5b5a49df2af2d1570667e30cf176482c9ff31e028fd911854c3d0362cfe26aeb43276d4129d084a7f06e6d821eb157c3252cc')
 
