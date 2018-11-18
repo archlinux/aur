@@ -1,7 +1,7 @@
 pkgbase = simonascripts
-	pkgdesc = Bash unique command for mount image files (iso, vms, crypto), detect pendrive device, list all kernels, list all i/o schedulers.
+	pkgdesc = Bash unique command for mount image files (iso, vms, crypto), detect pendrive device, list all kernels, list all io schedulers.
 	pkgver = 0.0.1
-	pkgrel = 5
+	pkgrel = 6
 	arch = any
 	license = GPL3
 	depends = bash

@@ -1,8 +1,8 @@
 # Maintainer: Simona <simona.pisano[at]gmail[dot]com>
 pkgname=simonascripts
 pkgver=0.0.1
-pkgrel=5
-pkgdesc="Bash unique command for mount image files (iso, vms, crypto), detect pendrive device, list all kernels, list all i/o schedulers."
+pkgrel=6
+pkgdesc="Bash unique command for mount image files (iso, vms, crypto), detect pendrive device, list all kernels, list all io schedulers."
 
 arch=('any')
 license=('GPL3')
