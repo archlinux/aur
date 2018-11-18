@@ -1,7 +1,7 @@
 pkgbase = rr
 	pkgdesc = Record and Replay framework: lightweight recording and deterministic debugging
 	pkgver = 5.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://rr-project.org/
 	arch = i686
 	arch = x86_64
@@ -9,14 +9,16 @@ pkgbase = rr
 	makedepends = git
 	makedepends = cmake
 	makedepends = gdb
-	makedepends = gcc-multilib
+	makedepends = ninja
 	depends = python2-pexpect
 	depends = gdb
 	depends = capnproto
 	source = https://github.com/mozilla/rr/archive/5.2.0.tar.gz
 	source = https://github.com/mozilla/rr/commit/53c5bd72bae089616a3ca626b8af240481d70e6f.patch
+	source = file://0001-avoid-overriding-external-opt-debug-flags.patch
 	sha1sums = 55040be15a87dd93012d7cdbeb8a3fc428ea4b6b
 	sha1sums = 9fcafcc3f4474b4352402b39002869a51e77f6df
+	sha1sums = SKIP
 
 pkgname = rr
 
