@@ -35,7 +35,7 @@ build() {
 		-DCMAKE_CXX_STANDARD=14 \
 		..
 
-	make
+	make VERBOSE=1
 }
 
 package() {
