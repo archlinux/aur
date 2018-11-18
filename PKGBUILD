@@ -1,5 +1,5 @@
 #Maintainer Robosky <fangyuhao0612@gmail.com>
-pkgname=mojave-gtk-theme
+pkgname=mojave-gtk-theme-git
 _pkgname=Mojave-gtk-theme
 pkgver=8.aaff41f
 pkgrel=1
