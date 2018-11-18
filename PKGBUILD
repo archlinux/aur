@@ -43,6 +43,8 @@ prepare() {
 
     echo "var GUI_VERSION = \"$pkgver\"" > version.js
     echo "var GUI_MONERO_VERSION = \"$_monerover\"" >> version.js
+
+    git pull --no-edit origin refs/pull/1743/head # link protobuf
 }
 
 build() {
