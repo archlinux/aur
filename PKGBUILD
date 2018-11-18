@@ -4,7 +4,7 @@
 pkgbase=('monero-git')
 pkgname=('monero-git' 'libmonero-wallet-git')
 _gitname='monero'
-pkgver=0.13.0.1~RC1.r6786.ga8589411
+pkgver=0.13.0.4
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
@@ -41,7 +41,6 @@ prepare() {
        #git remote add up $_upstream
        #git pull --no-edit up refs/pull/xxxx/head
 
-       git revert --no-edit cd5638f894954a8424af6bd22f4386b121e5dc8f # PR #4417 breaks build
        git pull --no-edit origin refs/pull/4159/head # fixes #4228
 }
 
@@ -110,7 +109,6 @@ package_monero-git() {
 	install -D -m755 "$srcdir/$_gitname/build/bin/monero-wallet-cli" "$pkgdir/usr/bin/monero-wallet-cli"
 	install -D -m755 "$srcdir/$_gitname/build/bin/monero-wallet-rpc" "$pkgdir/usr/bin/monero-wallet-rpc"
 
-	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-blackball" "$pkgdir/usr/bin/monero-blockchain-blackball"
 	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-import" "$pkgdir/usr/bin/monero-blockchain-import"
 	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-export" "$pkgdir/usr/bin/monero-blockchain-export"
 	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-usage" "$pkgdir/usr/bin/monero-blockchain-usage"
