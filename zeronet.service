@@ -6,6 +6,7 @@ User=zeronet
 Group=zeronet
 WorkingDirectory=/opt/zeronet
 ExecStart=/usr/bin/env python2 zeronet.py --config_file /etc/zeronet.conf
+SyslogIdentifier=zeronet
 Restart=on-failure
 
 [Install]

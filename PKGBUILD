@@ -18,9 +18,6 @@ conflicts=(zeronet)
 source=("git+https://github.com/HelloZeroNet/ZeroNet.git"
         "zeronet.conf"
         "zeronet.service")
-sha256sums=('SKIP'
-            'ea735e82dbb10a2c1fda7abfeb2f38c2429044d8254f9e2396c50cecb6f778f8'
-            'c47ee4434d9eb512b015b88bc5b121111431c08c9ad2aad91fae10d371b7e906')
 install="zeronet.install"
 backup=("etc/zeronet.conf")
 options=(!strip) # attempt to strip binaries fromA dependent libs fial
@@ -46,3 +43,6 @@ package() {
    # install license
    install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('SKIP'
+            'ea735e82dbb10a2c1fda7abfeb2f38c2429044d8254f9e2396c50cecb6f778f8'
+            '22dfda6233d0477a63247ae3ebb2ccd0b8a181f1628bd2969a9f979f0b9e7ca8')
