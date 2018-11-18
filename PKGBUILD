@@ -3,12 +3,14 @@
 
 
 pkgname=kvmd-webterm
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Pi-KVM Web Terminal (GoTTY)"
 url="https://github.com/pi-kvm/kvmd-webterm"
 license=(GPL)
 arch=(any)
+depends=(kvmd gotty)
+makedepends=(go)
 install=$pkgname.install
 source=(
 	$pkgname.install
