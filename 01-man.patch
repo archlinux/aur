@@ -1,0 +1,16 @@
+--- a/banner.1	2007-04-08 00:26:57.000000000 +0200
++++ b/banner.1	2011-12-01 04:16:43.677157180 +0100
+@@ -3,12 +3,10 @@
+ banner \- print large banner
+ .SH SYNOPSIS
+ .B banner
+-.I text
++.B [\fItext\fB]
+ .br
+ .SH "DESCRIPTION"
+ .B banner
+ prints out the first 10 characters of
+ .I text
+ in large letters.
+-.SH SEE ALSO
+-.BR banner "(6)."

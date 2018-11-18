@@ -1,0 +1,16 @@
+pkgbase = sysvbanner
+	pkgdesc = System-V banner clone
+	pkgver = 1.0.16
+	pkgrel = 1
+	url = https://tracker.debian.org/pkg/sysvbanner
+	arch = x86_64
+	license = custom
+	depends = glibc
+	conflicts = bsd-games
+	source = http://ftp.debian.org/debian/pool/main/s/sysvbanner/sysvbanner_1.0.16.tar.gz
+	source = 01-man.patch
+	sha512sums = 55987c3dbaf898e80476a08e755194480760a59b78eb879c3db11994b0ed6e11894ffc762a932ad0d95decf9dcb46dc9d905210788f1ce1dad14e00895654409
+	sha512sums = 14255d0a35be028728095921e3153861cd296612ab790e213413cc7f4da7690f60451ea76952f7877c17538c13cb44da71f353278c06f3700845656c9d98d609
+
+pkgname = sysvbanner
+
