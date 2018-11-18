@@ -4,7 +4,7 @@
 _netflow='ipt-netflow'
 pkgname='ipt_netflow'
 pkgver='2.3'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Netflow as netfilter extension.'
 arch=('any')
 url="https://github.com/aabc/${_netflow}"
@@ -12,9 +12,7 @@ license=('GPL')
 depends=('linux' 'iptables')
 makedepends=('gcc' 'gzip' 'gawk' 'sed')
 source=("${pkgname}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-
 sha256sums=('90d58ee6363177497c10c5a28c99c14be3b170c4be5492220a552ede9d79afef')
-install="${pkgname}.install"
 # define 'lts' for linux-lts package
 _linux_custom="ARCH"
 # define '-lts' for linux-lts package
