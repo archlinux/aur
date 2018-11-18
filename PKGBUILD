@@ -1,9 +1,9 @@
-# Maintainer: locked_sh <locked.shadow@openmailbox.org>
+# Maintainer: locked_sh <locked.sh@disroot.org>
 # Contributor: Nicholas Wang <me@nicho1as.wang>
 
 pkgname=emercoin
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Digital currency and blockchain service platform"
 arch=('i686' 'x86_64')
 url="https://emercoin.com/"
@@ -13,7 +13,7 @@ makedepends=('boost')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}emc.tar.gz"
         "Fix-missing-include.patch"
 )
-sha256sums=('bcd46d5773431c67d864ccb9fe4ab5757f2f85c142a5f36ded4f95018532922d'
+sha256sums=('b4ae47c2d9e9532d9122134f0566b687324e63ca3920a8e5b6011e002fc147c6'
             '75b1e7bebb53a48cf93f2b701bbd8d9a1e7005b45c63a804596b68b0e9343c87')
 prepare() {
 	cd "${pkgname}-${pkgver}emc"
