@@ -8,7 +8,7 @@ url="http://www.brother.com"
 license=('GPL')
 install="brother-pj723.install"
 arch=('x86_64')
-depends_x86_64=('lib32-glibc')
+depends=('lib32-glibc')
 md5sums=(
     'e63370dea8692176e7d257d810145e76'
     'f976c06d770c74b94d8d480d463260e0'
