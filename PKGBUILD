@@ -6,7 +6,6 @@ pkgdesc="Sampling profiler for Python programs"
 arch=('x86_64')
 license=('GPL3')
 url="https://github.com/benfred/py-spy"
-depends=()
 makedepends=('rust' 'cargo')
 provides=('py-spy')
 conflicts=('py-spy')
