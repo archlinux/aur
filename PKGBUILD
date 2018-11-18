@@ -1,9 +1,11 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com >
+# Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=wtftw-git
-pkgver=274.60cb3b4
+pkgver=1.2.r57.gebf5f9f
 pkgrel=1
+epoch=1
 pkgdesc='Window Tiling For The Win. A tiling window manager written in Rust'
 arch=('i686' 'x86_64')
 url="https://github.com/Kintaro/wtftw"
@@ -16,12 +18,12 @@ conflicts=('wtftw')
 install=wtftw.install
 source=('git+https://github.com/Kintaro/wtftw.git'
         'LICENSE')
-md5sums=('SKIP'
-         'c25c61c4abc29d3b8a4c973f7c3ca0b9')
+sha256sums=('SKIP'
+            'd2fff178c328ba155cf3eddcdf7533c9aca0b415a4f748a251ea1c32656700a1')
 
 pkgver() {
   cd wtftw
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -40,3 +42,4 @@ package() {
   install -D LICENSE \
     "${pkgdir}"/usr/share/licenses/wtftw/LICENSE
 }
+
