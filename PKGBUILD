@@ -4,7 +4,7 @@
 _pkgname=libmpcdec
 pkgname=lib32-${_pkgname}
 pkgver=0.1+r475
-pkgrel=1
+pkgrel=2
 epoch=1
 _rel=475
 pkgdesc="Musepack decoding library (32 bit)"
