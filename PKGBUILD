@@ -2,36 +2,37 @@
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
 pkgname=optimus-manager
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Management utility to handle GPU switching for Optimus laptops."
-arch=(any)
+arch=('any')
 url="https://github.com/Askannz/optimus-manager"
-license=(MIT)
-depends=('python3' 'bbswitch')
+license=('custom:MIT')
+depends=('python' 'bbswitch')
 makedepends=('python-setuptools')
-source=("optimus-manager::git+https://github.com/Askannz/optimus-manager.git#branch=master")
+source=("git+https://github.com/Askannz/optimus-manager.git#tag=v$pkgver")
 sha256sums=('SKIP')
+
+build() {
+
+  cd "${srcdir}/optimus-manager/"
+  python setup.py build
+
+}
+
 
 package() {
 
   cd "${srcdir}/optimus-manager/"
   
-  mkdir -p $pkgdir/etc/modprobe.d/
-  cp modules/optimus-manager.conf $pkgdir/etc/modprobe.d/
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 modules/optimus-manager.conf "$pkgdir/etc/modprobe.d/optimus-manager.conf"
+  install -Dm744 xorg/optimus-manager_Xsetup "$pkgdir/usr/bin/optimus-manager_Xsetup"
+  install -Dm644 systemd/optimus-manager.service "$pkgdir/usr/lib/systemd/system/optimus-manager.service"
+  install -Dm644 optimus-manager.conf "$pkgdir/usr/share/optimus-manager.conf"
+  install -Dm644 var/startup_mode "$pkgdir/var/lib/optimus-manager/startup_mode"
   
-  mkdir -p $pkgdir/usr/bin/
-  cp xorg/optimus-manager_Xsetup $pkgdir/usr/bin/
-  chmod +x $pkgdir/usr/bin/optimus-manager_Xsetup
-  
-  mkdir -p $pkgdir/etc/systemd/system/
-  cp systemd/optimus-manager.service $pkgdir/etc/systemd/system/
-  
-  mkdir -p $pkgdir/usr/share/
-  cp optimus-manager.conf $pkgdir/usr/share/
-  
-  mkdir -p $pkgdir/var/lib/optimus-manager/
-  cp var/startup_mode $pkgdir/var/lib/optimus-manager/
-  
-  python setup.py install --root="$pkgdir/"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
 }
 
+ 
