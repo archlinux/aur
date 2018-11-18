@@ -1,5 +1,5 @@
 pkgname=zapcc-git
-pkgver=r11.faccefa7
+pkgver=r57.9bd04e761
 pkgrel=1
 pkgdesc="caching C++ compiler based on clang, designed to perform faster compilations"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://www.zapcc.com/"
 provides=('zapcc')
 conflicts=('zapcc')
 depends=('ncurses' 'zlib')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'python')
 source=("git+https://github.com/yrnkrn/zapcc.git")
 sha256sums=('SKIP')
 
@@ -35,4 +35,6 @@ package() {
   do
     DESTDIR="$pkgdir" cmake -DCOMPONENT=${component} -P ./cmake_install.cmake
   done
+
+  ( cd "$pkgdir" && mv usr/lib/clang usr/lib/zapcc )
 }
