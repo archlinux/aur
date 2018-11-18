@@ -3,7 +3,7 @@
 
 pkgname=vncviewer-jar
 pkgver=1.3.10
-pkgrel=4
+pkgrel=5
 pkgdesc="VNC viewer java applet"
 arch=("any")
 url="http://www.tightvnc.com"
