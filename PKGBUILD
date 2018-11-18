@@ -11,8 +11,6 @@ license=(GPL)
 arch=(any)
 depends=(kvmd gotty)
 makedepends=(go)
-source=("$url/archive/v$pkgver.tar.gz")
-md5sums=(SKIP)
 install=$pkgname.install
 
 
