@@ -15,12 +15,8 @@ source=("https://download.kde.org/stable/${pkgname%-qt4}/$pkgver/${pkgname%-qt4}
 sha256sums=('e5a98df31aeffc22493afc8d6adbca5d6f0c27cc2eed73b3be05195321e08db7')
 #validpgpkeys=(CB9387521E1EE0127DA804843FDBB55084CC5D84) # Harald Sitter <sitter@kde.org>
 
-prepare() {
-  mkdir build
-}
-
 build() {
-  cd build
+  mkdir -p build && cd build
   cmake ../${pkgname%-qt4}-$pkgver \
     -DCMAKE_SKIP_RPATH=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
