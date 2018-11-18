@@ -4,7 +4,7 @@
 
 pkgname=marsyas
 pkgver=0.5.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Music Analysis, Retrieval and Synthesis for Audio Signals"
 arch=('x86_64')
 url="http://marsyas.info"
@@ -70,4 +70,6 @@ package() {
   # docs
   install -vDm 644 ../{AUTHORS,README,TODO} \
     -t "${pkgdir}/usr/share/doc/${pkgname}"
+  # rename sfinfo https://bugs.archlinux.org/task/60787
+  mv -v "${pkgdir}/usr/bin/sfinfo" "${pkgdir}/usr/bin/${pkgname}-sfinfo"
 }
