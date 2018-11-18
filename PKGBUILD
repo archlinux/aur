@@ -8,7 +8,7 @@ _productRename='dm Fotowelt'
 _lang='de_DE'
 
 pkgname=dm-fotowelt
-pkgdesc='an offline client for creating photobooks, greeting cards, posters and more, uploading and ordering them at fotowelt.de'
+pkgdesc='an offline client for creating photobooks, greeting cards, posters and more, uploading and ordering them at fotoparadies.de'
 md5sums=('4516223a4534eaddd34794c4c31e62bb')
 
 pkgver=6.4.1
@@ -62,7 +62,7 @@ package() {
 		[Desktop Entry]
 		Type=Application
 		Name=$_productRename
-		Comment=Offline client for fotowelt.de service
+		Comment=Offline client for fotoparadies.de service
 		Exec=$pkgname
 		Icon=hps-$_keyaccount-$pkgver
 		StartupNotify=true
