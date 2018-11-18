@@ -1,4 +1,5 @@
 # Contributor: judd <jvinet@zeroflux.org>
+# Contributor: GabMus <emaildigabry@gmail.com>
 
 _pkgbase=alsa-lib
 pkgname=alsa-lib-audacity-pulseaudio-fix
