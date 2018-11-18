@@ -10,7 +10,7 @@ pkgver() {
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-pkgrel=1
+pkgrel=2
 license=('BSD')
 depends=()
 pkgdesc='Painless installation of GHC toolchain'
