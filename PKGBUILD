@@ -63,7 +63,7 @@ _major=4.19
 pkgver=4.19.2
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -122,6 +122,7 @@ prepare() {
   
   ### Setting version
         msg2 "Setting version..."
+        sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
         scripts/setlocalversion --save-scmversion
         echo "-$pkgrel" > localversion.10-pkgrel
         echo "$_kernelname" > localversion.20-pkgname
