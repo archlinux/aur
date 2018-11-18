@@ -1,4 +1,4 @@
-# Maintainer: Jonathan Liu <net147@gmail.com>
+# Maintainer: Bailey Kasin <bailey@gingertechnology.net>
 pkgname=binfmt-qemu-static
 pkgver=20181118
 pkgrel=3
