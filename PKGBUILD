@@ -1,12 +1,12 @@
 # Maintainer: Stephen Gregoratto <themanhimself at sgregoratto dot me>
-
 pkgname=adlmidi-git
+pkgver=1.2.6.1.r0.8aa85de
+pkgrel=2
 pkgdesc="CLI MIDI player using OPL3 emulation"
-pkgrel=1
-pkgver=1.2.6
-arch=('i686' 'x86_64')
 url="https://bisqwit.iki.fi/source/adlmidi.html"
 license=('GPL3' 'GPL2+')
+arch=('i686' 'x86_64')
+depends=('sdl2')
 makedepends=('git')
 optdepends=('ffmpeg: recording output to video file')
 conflicts=(adlmidi)
