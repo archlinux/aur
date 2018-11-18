@@ -6,7 +6,6 @@ pkgbase = zrythm-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = shtool
 	depends = gtk3
 	depends = lilv-git
 	depends = suil-git
