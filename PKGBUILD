@@ -4,7 +4,7 @@
 _pkgname=libdc1394
 pkgname=lib32-${_pkgname}
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="High level programming interface to control IEEE 1394 based cameras (32 bit)"
 arch=('x86_64')
 license=('LGPL')
