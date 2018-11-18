@@ -1,7 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=openmvs-git
 pkgver=0.7.r47.g063e5cd
-pkgrel=1
+pkgrel=2
 pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic set of tools"
 arch=('i686' 'x86_64')
 url="http://cdcseacave.github.io/openMVS"
@@ -18,7 +18,7 @@ source=("${pkgname}::git+https://github.com/cdcseacave/openMVS.git"
         )
 md5sums=('SKIP'
          'SKIP'
-         'efe41a13e9dc7f6ea0e1296e2cae7d34')
+         '39aa2f1e8cb22bd52a3129539596e495')
 
 pkgver() {
   cd "$pkgname"
