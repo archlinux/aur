@@ -1,11 +1,12 @@
+# $Id: PKGBUILD 341654 2018-06-07 06:05:44Z felixonmars $
 # Maintainer: Sébastien Luttringer <seblu@archlinux.org>
 
 pkgname=sysvbanner
-pkgver=1.0.16
-pkgrel=1
+pkgver=1.0.15
+pkgrel=3
 pkgdesc='System-V banner clone'
 arch=('x86_64')
-url='https://tracker.debian.org/pkg/sysvbanner'
+url='http://packages.qa.debian.org/s/sysvbanner.html'
 depends=('glibc')
 conflicts=('bsd-games')
 license=('custom')
