@@ -12,7 +12,7 @@ license=('custom')
 depends=('python2-pexpect' 'gdb' 'capnproto')
 makedepends=('git' 'cmake' 'gdb' 'ninja')
 source=(
-	https://github.com/mozilla/${pkgname}/archive/${pkgver}.tar.gz
+	$pkgname-$pkgver.tar.gz::https://github.com/mozilla/${pkgname}/archive/${pkgver}.tar.gz
 	https://github.com/mozilla/rr/commit/53c5bd72bae089616a3ca626b8af240481d70e6f.patch
 	file://0001-avoid-overriding-external-opt-debug-flags.patch
 )
