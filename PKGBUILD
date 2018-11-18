@@ -4,7 +4,7 @@
 _name=tty-solitaire
 pkgname="${_name}-git"
 pkgver=v1.1.1.r0.g57c481f
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='An ncurses-based Klondike solitaire clone'
 arch=('i686' 'x86_64')
@@ -30,4 +30,5 @@ build() {
 package() {
   cd "${srcdir}/${_name}"
   make DESTDIR="${pkgdir}" PREFIX="/usr" install
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
