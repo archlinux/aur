@@ -1,7 +1,7 @@
 # Maintainer: Chris Simons < chris at simonsmail dot net >
 
 pkgname=("protonfixes")
-pkgver="1.0.9"
+pkgver="1.0.15"
 pkgrel="1"
 pkgdesc="A module for applying fixes at runtime to unsupported games with Steam Proton without changing game installation files"
 arch=("any")
@@ -10,9 +10,10 @@ license=("BSD")
 makedepends=("python-setuptools")
 optdepends=('wine: win32 proton prefix support'
             'winetricks: winetricks support'
-            'cefpython3: splash dialog support')
+            'cefpython3: splash dialog support'
+            'zenity: splash dialog support')
 source=("https://github.com/simons-public/protonfixes/archive/$pkgver.tar.gz")
-md5sums=('acb0587a3b22f405ec317a1816ab0f9b')
+md5sums=('249eecc55572fc072ffc6f37017bb80e')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,4 +23,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    mv ${pkgdir}/usr/static ${pkgdir}/usr/lib/python*/site-packages/protonfixes/
 }
