@@ -802,3 +802,12 @@ Sat Nov 17 19:58:43 2018 +0100
      2018-11-17 679fcf89 chore(plugins: oomox): update submodule (missing popover outline)
      2018-11-16 de5030b0 feat: add import dialogs for plugins and show imported formats separately from native themix colorschemes
      2018-11-16 981758cd fix(plugins: materia): update symlinks to generated css
+
+
+Sun Nov 18 22:19:29 2018 +0100
+-------------------------------------------------
+1.7.1.1         Release 1.7.1.1
+    
+    Notable changes:
+     2018-11-18 bdd4fa99 actionless chore(plugins: oomoxify): update submodule (apply ROUNDNESS from GTK theme)
+     2018-11-18 1417de68 actionless chore(plugins: pil): shorter plugin display_name
