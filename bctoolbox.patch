@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e14e502..187d55d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,7 +43,7 @@ option(ENABLE_SHARED "Build shared library." ON)
+ option(ENABLE_STATIC "Build static library." ON)
+ option(ENABLE_POLARSSL "Enable polarssl support" ON)
+ option(ENABLE_MBEDTLS "Enable mabedtls support" ON)
+-option(ENABLE_STRICT "Pass strict flags to the compiler" ON)
++option(ENABLE_STRICT "Pass strict flags to the compiler" OFF)
+ option(ENABLE_TESTS_COMPONENT "Enable compilation of tests helper library" ON)
+ option(ENABLE_TESTS "Enable compilation of tests" ON)
+ 

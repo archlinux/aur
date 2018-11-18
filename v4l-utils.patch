@@ -1,0 +1,24 @@
+diff --git a/lib/libv4lconvert/control/libv4lcontrol.c b/lib/libv4lconvert/control/libv4lcontrol.c
+index 85d312d..445e0b2 100644
+--- a/lib/libv4lconvert/control/libv4lcontrol.c
++++ b/lib/libv4lconvert/control/libv4lcontrol.c
+@@ -19,6 +19,7 @@
+ # Foundation, Inc., 51 Franklin Street, Suite 500, Boston, MA  02110-1335  USA
+  */
+ 
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/mman.h>
+ #include <fcntl.h>
+diff --git a/utils/libmedia_dev/get_media_devices.c b/utils/libmedia_dev/get_media_devices.c
+index 82d5108..d149f25 100644
+--- a/utils/libmedia_dev/get_media_devices.c
++++ b/utils/libmedia_dev/get_media_devices.c
+@@ -19,6 +19,7 @@
+ 
+ #include <stdio.h>
+ #include <unistd.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <string.h>

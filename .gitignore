@@ -1,0 +1,6 @@
+linphone-desktop-all-*.pkg.tar.xz
+*.tar.gz
+linphone-desktop-all-*.log
+PKGBUILD-namcap.log
+pkg/
+src/

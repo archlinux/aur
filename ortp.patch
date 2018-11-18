@@ -1,0 +1,14 @@
+diff --git a/src/logging.c b/src/logging.c
+index 203ec95..874ca7d 100644
+--- a/src/logging.c
++++ b/src/logging.c
+@@ -217,8 +217,7 @@ char * ortp_strcat_vprintf(char* dst, const char *fmt, va_list ap){
+ 	retlen = strlen(ret);
+ 
+ 	if ((dst = ortp_realloc(dst, dstlen+retlen+1)) != NULL){
+-		strncat(dst,ret,retlen);
+-		dst[dstlen+retlen] = '\0';
++		strcat(dst,ret);
+ 		ortp_free(ret);
+ 		return dst;
+ 	} else {

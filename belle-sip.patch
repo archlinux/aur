@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index df6d6ba..d332081 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,7 +37,7 @@ set(VERSION "${PACKAGE_VERSION}")
+ option(ENABLE_SHARED "Build shared library." YES)
+ option(ENABLE_STATIC "Build static library." YES)
+ option(ENABLE_RTP_MAP_ALWAYS_IN_SDP "Always include rtpmap in SDP." OFF)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ option(ENABLE_TUNNEL "Enable tunnel support" OFF)
+ option(ENABLE_TESTS "Enable compilation of tests" ON)
+ 

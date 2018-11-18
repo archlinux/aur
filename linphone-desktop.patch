@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 70ce2755..1eef487c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -80,6 +80,9 @@ endif ()
+ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DNDEBUG -DQT_NO_DEBUG")
+ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG")
+ 
++# Pointing RPATH to /opt/linphone-desktop/lib{,64} to be used when installing
++SET(CMAKE_INSTALL_RPATH "/opt/linphone-desktop/lib:/opt/linphone-desktop/lib64")
++
+ # ------------------------------------------------------------------------------
+ # Define packages, libs, sources, headers, resources and languages.
+ # ------------------------------------------------------------------------------

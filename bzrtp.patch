@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 299091b..0d3a62a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,7 +28,7 @@ project(bzrtp VERSION 1.0.6 LANGUAGES C CXX)
+ option(ENABLE_SHARED "Build shared library." YES)
+ option(ENABLE_STATIC "Build static library." YES)
+ option(ENABLE_ZIDCACHE "Turn on compilation of ZID cache, request sqlite" YES)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ option(ENABLE_TESTS "Enable compilation of unit tests." NO)
+ 
+ 

@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 98dc9d92..35f2a040 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -64,7 +64,7 @@ option(ENABLE_DOC "Enable documentation generation with Doxygen." YES)
+ option(ENABLE_FIXED_POINT "Turn on fixed point computations." ${ENABLE_FIXED_POINT_DEFAULT_VALUE})
+ option(ENABLE_NON_FREE_CODECS "Allow inclusion of non-free codecs in the build." NO)
+ option(ENABLE_PCAP "Enable PCAP support." NO)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ option(ENABLE_RELATIVE_PREFIX "Find resources relatively to the installation directory." NO)
+ option(ENABLE_TOOLS "Turn on or off compilation of tools." YES)
+ option(ENABLE_UNIT_TESTS "Enable compilation of unit tests." YES)
