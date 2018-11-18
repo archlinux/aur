@@ -1,7 +1,7 @@
 # Maintainer: Bryce <onyxdelta@hotmail.com>
 pkgname="trilium-bin"
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A hierarchical note taking application built on modern technologies."
 depends=('python' 'make' 'gconf' 'libxss' 'nss' 'lib32-gcc-libs' 'gtk3')
 arch=('x86_64')
@@ -26,11 +26,12 @@ package()
 	chmod +x "$pkgdir/usr/bin/trilium"
 	#Create .desktop file
 	echo -e "[Desktop Entry]
-Type=Application
 Name=Trilium
+GenericName=Note Taking Application
 Comment=A hierarchical note taking application built on modern technologies.
-Exec=trilium
+Exec=trilium %f
 Icon=/opt/trilium/resources/app/src/public/images/app-icons/win/icon.ico
 Terminal=false
+Type=Application
 Categories=Office" > "$pkgdir/usr/share/applications/trilium.desktop"
 }
