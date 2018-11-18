@@ -21,8 +21,8 @@ md5sums=('SKIP')
 source=('git://github.com/haskell/ghcup.git')
 
 package() {
-    mkdir -p $pkgdir/opt
     mkdir -p $pkgdir/usr/bin
-    cp -r $srcdir/ghcup $pkgdir/opt
-    ln -s /opt/ghcup/ghcup $pkgdir/usr/bin/ghcup
+    mkdir -p $pkgdir/usr/share
+    cp -r $srcdir/ghcup $pkgdir/usr/share
+    ln -s /usr/share/ghcup/ghcup $pkgdir/usr/bin/ghcup
 }
