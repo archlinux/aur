@@ -1,6 +1,6 @@
 pkgbase = freeminer-git
-	pkgver = 0.4.14.8.899.gc291133b9
-	pkgrel = 2
+	pkgver = 0.4.14.8.907.ga8e93bb6a
+	pkgrel = 1
 	url = http://freeminer.org/
 	arch = i686
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgname = freeminer-git
 	depends = libvorbis
 	depends = hicolor-icon-theme
 	depends = freetype2
-	provides = freeminer=0.4.14.8.899.gc291133b9
+	provides = freeminer=0.4.14.8.907.ga8e93bb6a
 	conflicts = freeminer
 
 pkgname = freeminer-server-git
@@ -60,12 +60,12 @@ pkgname = freeminer-server-git
 	depends = luajit
 	depends = enet
 	depends = jsoncpp
-	provides = freeminer-server=0.4.14.8.899.gc291133b9
+	provides = freeminer-server=0.4.14.8.907.ga8e93bb6a
 	conflicts = freeminer-server
 
 pkgname = freeminer-common-git
 	pkgdesc = Common data files for freeminer-git and freeminer-server-git
 	arch = any
-	provides = freeminer-common=0.4.14.8.899.gc291133b9
+	provides = freeminer-common=0.4.14.8.907.ga8e93bb6a
 	conflicts = freeminer-common
 

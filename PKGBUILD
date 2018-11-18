@@ -1,12 +1,13 @@
-# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Martin C. Doege <mdoege at compuserve dot com>
 # Contributor: kusakata <shohei atmark kusakata period com>
 
 _pkgbase=freeminer
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-git" "${_pkgbase}-server-git" "${_pkgbase}-common-git")
-pkgver=0.4.14.8.899.gc291133b9
-pkgrel=2
+pkgver=0.4.14.8.907.ga8e93bb6a
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://freeminer.org/'
 license=('GPL3' 'CCPL:cc-by-sa-3.0')
