@@ -1,13 +1,13 @@
 pkgbase = volctl
 	pkgdesc = Per-application volume control for GNU/Linux desktops
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://buzz.github.io/volctl/
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = python2
-	depends = python2-gobject
+	depends = python
+	depends = python-gobject
 	depends = pulseaudio
 	depends = desktop-file-utils
 	optdepends = pavucontrol: mixer support
