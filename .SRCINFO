@@ -11,7 +11,7 @@ pkgbase = grevis
 	depends = gtk3
 	conflicts = grevis-git
 	source = https://gitlab.gnome.org/dunon/grevis/-/archive/0.1.2/grevis-0.1.2.tar.gz
-	md5sums = 8cf6d10f97ee6e843efc19c90a343f83
+	md5sums = d66df43bb995e625009001a77bc329fc
 
 pkgname = grevis
 
