@@ -1,0 +1,16 @@
+pkgbase = goawk
+	pkgdesc = AWK interpreter written in go
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/benhoyt/goawk
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = go-pie
+	source = https://github.com/benhoyt/goawk/archive/v1.0.0.tar.gz
+	sha256sums = 727256152cceca2758d667143dbe18ab96243e7a7206ddf3beec60cd4ebbd3fa
+
+pkgname = goawk
+
