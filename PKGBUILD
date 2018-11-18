@@ -13,7 +13,7 @@ _neovim="n"
 
 _name='deoplete'
 pkgname="${_name}-git"
-pkgver=4.1.r17.g04ea041
+pkgver=r1493.04ea041
 pkgrel=1
 pkgdesc="deoplete completion plugin for neovim"
 arch=('any')
@@ -38,7 +38,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
