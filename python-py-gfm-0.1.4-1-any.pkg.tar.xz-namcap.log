@@ -1,0 +1,3 @@
+python-py-gfm W: File (usr/LICENSE) exists in a non-standard directory.
+python-py-gfm W: Dependency included and not needed ('python')
+python-py-gfm W: Dependency included and not needed ('python-markdown')
