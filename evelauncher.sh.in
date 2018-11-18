@@ -56,7 +56,7 @@ check_wine() {
     UCW=$(grep UseCustomWine $EVECONF | cut -d= -f2)
     if [ "x$UCW" = "xtrue" ] ;then
 	CUSTOMWP=$(grep CustomWinePath $EVECONF | cut -d= -f2)
-	WINEPATH="${CUSTOMWP%/*}"
+	WINEPATH=${CUSTOMWP%/*}
 	SHAREDIR=$(grep SharedCacheFolder $EVECONF | cut -d= -f2)
 	WINEPREFIX=${SHAREDIR}wineenv
     else
@@ -65,24 +65,24 @@ check_wine() {
     fi
     if [ -x "$WINEPATH/wine" ] ;then
 	INSTWINE=$(cat $WINEPREFIX/.update-timestamp 2>/dev/null) || true
-	WINEPATH=$(readlink -f "$CUSTOMWP")
-	WINECONF=$(find "${WINEPATH%/bin*}"/share -name 'wine.inf' 2>/dev/null) || true
-	WINEDATE=$(ls -l --time-style=+%s "$WINECONF" 2>/dev/null | cut -d' ' -f6)
+	WINEINFP=$(readlink -f $CUSTOMWP)
+	WINECONF=$(find ${WINEINFP%/bin*}/share -name 'wine.inf' 2>/dev/null) || true
+	WINEDATE=$(ls -l --time-style=+%s $WINECONF 2>/dev/null | cut -d' ' -f6)
 	if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
 	    launcher_msg "Preparing/Updating wine in $WINEPREFIX"
 	    env WINEARCH=win32 \
 		WINEPREFIX=$WINEPREFIX \
 		WINEDEBUG=-all \
 		WINEDLLOVERRIDES="mscoree,mshtml,winemenubuilder.exe=d" \
-		"$WINEPATH/wine" wineboot
-	    env WINEPREFIX=$WINEPREFIX "$WINEPATH/wine" reg delete \
+		$WINEPATH/wine wineboot
+	    env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg delete \
 		'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunServices' \
 		/v winemenubuilder /f >/dev/null || true
-	    env WINEPREFIX=$WINEPREFIX "$WINEPATH/wine" reg add \
+	    env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg add \
 		'HKEY_CURRENT_USER\Software\Wine\DllOverrides' \
 		/v winemenubuilder.exe /f >/dev/null
-	    if [ $("$WINEPATH/wine" --version | grep -q 3.2 ;echo $?) != 0  ] ;then
-		env WINEPREFIX=$WINEPREFIX WINE="$WINEPATH/wine" \
+	    if [ $($WINEPATH/wine --version | grep -q 3.2 ;echo $?) != 0 ] ;then
+		env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
 		    $(which winetricks) -q winxp >/dev/null
 	    fi
 	fi
