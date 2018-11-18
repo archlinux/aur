@@ -1,5 +1,5 @@
 pkgbase = linux-bfq-mq-git
-	pkgver = 4.18.0.g10bbaa12ceef
+	pkgver = 4.18.0.g8687d94c3344
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -38,19 +38,19 @@ pkgname = linux-bfq-mq-git
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq-git=4.18.0.g10bbaa12ceef
-	provides = linux=4.18.0.g10bbaa12ceef
+	provides = linux-bfq-mq-git=4.18.0.g8687d94c3344
+	provides = linux=4.18.0.g8687d94c3344
 	backup = etc/mkinitcpio.d/linux-bfq-mq-git.preset
 
 pkgname = linux-bfq-mq-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq-git kernel
-	depends = linux-bfq-mq-git=4.18.0.g10bbaa12ceef
-	provides = linux-bfq-mq-git-headers=4.18.0.g10bbaa12ceef
-	provides = linux-headers=4.18.0.g10bbaa12ceef
+	depends = linux-bfq-mq-git=4.18.0.g8687d94c3344
+	provides = linux-bfq-mq-git-headers=4.18.0.g8687d94c3344
+	provides = linux-headers=4.18.0.g8687d94c3344
 
 pkgname = linux-bfq-mq-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq-git kernel
-	depends = linux-bfq-mq-git=4.18.0.g10bbaa12ceef
-	provides = linux-bfq-mq-git-docs=4.18.0.g10bbaa12ceef
-	provides = linux-docs=4.18.0.g10bbaa12ceef
+	depends = linux-bfq-mq-git=4.18.0.g8687d94c3344
+	provides = linux-bfq-mq-git-docs=4.18.0.g8687d94c3344
+	provides = linux-docs=4.18.0.g8687d94c3344
 

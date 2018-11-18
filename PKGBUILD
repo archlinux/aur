@@ -60,7 +60,7 @@ _mq_enable=
 
 pkgbase=linux-bfq-mq-git
 _srcname=bfq-mq
-pkgver=4.18.0.g10bbaa12ceef
+pkgver=4.18.0.g8687d94c3344
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -113,6 +113,7 @@ prepare() {
   
   ### Setting version
         msg2 "Setting version..."
+        sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
         scripts/setlocalversion --save-scmversion
         echo "-$pkgrel" > localversion.10-pkgrel
         echo "$_kernelname" > localversion.20-pkgname
