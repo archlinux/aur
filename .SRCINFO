@@ -1,14 +1,12 @@
 pkgbase = py-spy
 	pkgdesc = Sampling profiler for Python programs
 	pkgver = 0.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/benfred/py-spy
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	makedepends = cargo
-	provides = py-spy
-	conflicts = py-spy
 	source = py-spy-0.1.8.tar.gz::https://github.com/benfred/py-spy/archive/v0.1.8.tar.gz
 	sha512sums = 68831d1c066887f3473e9eef1a773c0f9e1eb9252f929b0884b1d04faede90a72d7e3eb949d14e2e75c12e2645bf6b57ea5f94d5514491f46594231ad68ad1d1
 
