@@ -1,13 +1,13 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=coolvlviewer
-pkgver=1.26.22.22
-_pkgver=1262222
+pkgver=1.26.22.23
+_pkgver=1262223
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer'; built from source)"
 url="http://sldev.free.fr"
 license=('custom')
-depends=('apr-util' 'glib2>=2.32' 'libgl' 'libidn' 'mesa' 'sdl' 'glu' 'pangox-compat' 'gconf' 'libxss' 'libxrandr' 'libxcomposite' 'libgl' 'lib32-zlib' 'libcups' 'atk' 'lib32-util-linux' 'lib32-libidn' 'libxcursor' 'libxtst')
+depends=('apr-util' 'glib2>=2.32' 'libgl' 'libidn' 'mesa' 'sdl' 'glu' 'pangox-compat' 'gconf' 'libxss' 'libxrandr' 'libxcomposite' 'libgl' 'lib32-zlib' 'libcups' 'atk' 'lib32-util-linux' 'lib32-libsndfile' 'lib32-libidn' 'libxcursor' 'libxtst')
 optdepends=(
 	'libpulse: for PulseAudio support'
 	'alsa-lib: for ALSA support'
@@ -17,7 +17,8 @@ optdepends=(
 	'gst-plugins-good: for video support'
 	'gst-plugins-bad: for video support'
 	'gst-plugins-ugly: for video support'
-	'lib32-freealut: for OpenAL support')
+	'lib32-freealut: for OpenAL support'
+	'lib32-libidn11: for voice support')
 
 makedepends=("cmake" "bison" "flex" "python2" "make" "bzip2" "glibc" "libx11" "libgl" "libxrender" "libidn" "libxinerama")
 arch=('i686' 'x86_64')
@@ -26,7 +27,7 @@ install=coolvlviewer.install
 source=("http://sldev.free.fr/sources/CoolVLViewer-src-${_pkgver}.tar.bz2"
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-md5sums=('dd81ca2ee0aed2dd760baa38e5c6a6e8'
+md5sums=('fd7d16b360deb5b6983930814121f59d'
          '6d3ef4b59ce0c159c6a6d85a497c0249'
          'fd78de1f6c1333a5120ece89873515e0')
 
