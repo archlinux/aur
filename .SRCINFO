@@ -1,0 +1,22 @@
+pkgbase = clipped-git
+	pkgdesc = Clipboard Manager. Designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/davidmhewitt/clipped
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = libgee
+	depends = sqlite
+	provides = clipped
+	conflicts = clipped
+	source = git+https://github.com/davidmhewitt/clipped.git
+	md5sums = SKIP
+
+pkgname = clipped-git
+
