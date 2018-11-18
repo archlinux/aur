@@ -8,7 +8,7 @@ pkgname=(qemu-patched qemu-patched-headless qemu-patched-arch-extra qemu-patched
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
 pkgver=3.0.0
-pkgrel=5
+pkgrel=6
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
@@ -21,9 +21,9 @@ source=("$url/download/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         65-kvm.rules
         allow_elf64.patch
         cpu-pinning.patch::https://github.com/saveriomiroddi/qemu-pinning/commit/4bdb6d0e930f6dd8473d6833a0811169f43a9f0b.patch
-        pa-fixes.patch::https://gist.github.com/Vaporeon/c879636f9147bd696fb888321ffd5655/raw/57fe4b41a84d46b908fcb9d8e9756e27f3b75940/pa-fixes.patch
+        pa-fixes.patch::https://gist.githubusercontent.com/Vaporeon/c879636f9147bd696fb888321ffd5655/raw/57fe4b41a84d46b908fcb9d8e9756e27f3b75940/pa-fixes.patch
         fix_virtio.patch::https://github.com/qemu/qemu/commit/db812c4073c77c8a64db8d6663b3416a587c7b4a.patch
-        pcie-nasty.patch::https://gist.githubusercontent.com/gnif/e4c001b608347b0b86118a2647103378/raw/dd18eb6fe60f33c0609c7122d0635b666d7018b8/qemu-pcie-nasty.patch)
+        pcie-enhanced-link-speed-and-width.patch::https://gist.githubusercontent.com/Vaporeon/411acfbb8d5eb8ceb337924f1c04d1ef/raw/967414a2febb8ac692cfa095ea9ca80d7620854d/pcie-enhanced-link-speed-and-width.patch)
 sha256sums=('8d7af64fe8bd5ea5c3bdf17131a8b858491bcce1ee3839425a6d91fb821b5713'
             'SKIP'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
@@ -32,7 +32,7 @@ sha256sums=('8d7af64fe8bd5ea5c3bdf17131a8b858491bcce1ee3839425a6d91fb821b5713'
             '0769c55299606e897b16179ebf7bfd7dfb72a836d2a8bcebdccd8586f99d3166'
             '0fd49e734ee141b90d7d41d534f5635c175734a454e61c1c7e31b9fec3e19508'
             '9d176af4506f16f2798e772151fa8595620a770510241b688980fc7f0c6970b3'
-            '90b8e3965797d5239a73d3720348f18e81c30b548c98a800c6ea4ee121c34a3b')
+            '057d7bb01de2cbf68882124542c91d6cc473cb101c7fbf4b79c44805a61ce965')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
 case $CARCH in
@@ -52,8 +52,7 @@ prepare() {
   patch -p1 < ../fix_virtio.patch
   patch -p1 < ../cpu-pinning.patch
   patch -p1 < ../pa-fixes.patch
-  #uncomment for PCIe bus speed patch
-  #patch -p1 < ../pcie-nasty.patch
+  patch -p1 < ../pcie-enhanced-link-speed-and-width.patch
 }
 
 build() {
