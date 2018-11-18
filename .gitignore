@@ -2,6 +2,7 @@
 *
 
 # Whitelist:
+!.SRCINFO
 !.gitignore
 !PKGBUILD
-!.SRCINFO
+!Makefile.patch

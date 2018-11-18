@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index aa36a77..bd3735d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -46,10 +46,6 @@ install: all
+ 	cp -r $(filter-out deb, $(wildcard build/*)) $(DESTDIR)
+ 	cp -r $(MANS) $(DESTDIR)/$(MANDIR)
+ 
+-ifeq ($(OS),Linux)
+-	ldconfig
+-endif
+-
+ .PHONY: clean
+ clean:
+ 	rm -rf build
