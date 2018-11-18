@@ -1,0 +1,22 @@
+pkgbase = tranqil-git
+	pkgdesc = Relax to soothing sounds of nature. Designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/nick92/tranqil
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = gstreamer
+	provides = tranqil
+	conflicts = tranqil
+	source = git+https://github.com/nick92/tranqil.git
+	md5sums = SKIP
+
+pkgname = tranqil-git
+
