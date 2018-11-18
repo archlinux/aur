@@ -1,9 +1,9 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 
 pkgname='monero-wallet-qt'
-_monerover=0.12.3.0
+_monerover=0.13.0.4
 pkgver=${_monerover}
-pkgrel=2
+pkgrel=1
 arch=('x86_64' 'i686')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
@@ -11,7 +11,7 @@ license=('custom:Cryptonote')
 provides=('monero-wallet-qt')
 
 depends=("libmonero-wallet>=$_monerover"
-	'openssl' 'boost-libs>=1.45'  'libunwind' 'readline' 'unbound'
+	'openssl' 'boost-libs>=1.45'  'libunwind' 'readline' 'unbound' 'hidapi'
 	'qt5-base' 'qt5-declarative' 'qt5-graphicaleffects'
 	'qt5-location' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-tools' 'qt5-webchannel'
 	'qt5-webengine' 'qt5-x11extras' 'qt5-xmlpatterns')
@@ -45,4 +45,4 @@ package() {
     install -D -m644 "$srcdir/$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('ec2fc70babea7f838ab637e8932f55770f6992d92a10d8ddc2510a47a8de784d')
+sha256sums=('4c7c5bee1604ea052a83756fd2e67ad97ec059f58040d33356115426aa5adae9')
