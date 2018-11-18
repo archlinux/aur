@@ -1,6 +1,6 @@
 pkgbase = emacs-goby-git
 	pkgdesc = WYSIWYG presentation tool, which runs on Emacs
-	pkgver = 1.1.10.gfd44ba5
+	pkgver = 1.1.13.gea799f9
 	pkgrel = 1
 	url = http://www.mew.org/~kazu/proj/goby/en/index.html
 	install = emacs-goby.install
@@ -9,13 +9,13 @@ pkgbase = emacs-goby-git
 	makedepends = git
 	depends = emacs
 	optdepends = netpbm: for using images
-	optdepends = imagemagic: for making screen dumps
+	optdepends = imagemagic6: for making screen dumps
 	provides = emacs-goby
 	conflicts = emacs-goby
 	source = git+https://github.com/kazu-yamamoto/Goby.git
 	source = LICENSE
-	md5sums = SKIP
-	md5sums = a774f696f08d52a017e391c578870c4d
+	sha256sums = SKIP
+	sha256sums = 21d7b7a32535aa6cb0b3500f955f1cc3e9327c93c8e15e8310aa61b56f39e24a
 
 pkgname = emacs-goby-git
 
