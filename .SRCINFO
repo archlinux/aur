@@ -1,6 +1,6 @@
 pkgbase = sxlock-git
 	pkgdesc = Simple screen locker utility for X, fork of sflock. Uses PAM authentication, no suid needed.
-	pkgver = 1.1.r8.g1388c6e
+	pkgver = 1.1.r15.g76ac317
 	pkgrel = 1
 	url = https://github.com/lahwaacz/sxlock
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = sxlock-git
 	depends = libxext
 	depends = libxrandr
 	depends = pam
+	optdepends = xorg-fonts-misc: default font
 	source = git://github.com/lahwaacz/sxlock.git
 	md5sums = SKIP
 
