@@ -29,9 +29,12 @@ md5sums=(
 
 
 package() {
+	mkdir -p "$pkgdir/usr/lib/systemd/system"
 	install -Dm644 kvmd-webterm.service "$pkgdir/usr/lib/systemd/system/kvmd-webterm.service"
+
 	mkdir -p "$pkgdir/usr/share/kvmd/web/apps/webterm"
-	cp -r terminal.svg "$pkgdir/usr/share/kvmd/apps/webterm"
+	cp terminal.svg "$pkgdir/usr/share/kvmd/web/apps/webterm"
+
 	mkdir -p "$pkgdir/usr/share/kvmd/configs/nginx/apps/webterm"
-	cp -r http-ctx.conf server-ctx.conf manifest.json "$pkgdir/usr/share/kvmd/configs/nginx/apps/webterm"
+	cp http-ctx.conf server-ctx.conf manifest.json "$pkgdir/usr/share/kvmd/configs/nginx/apps/webterm"
 }
