@@ -1,0 +1,20 @@
+pkgbase = alsa-lib-audacity-pulseaudio-fix
+	pkgdesc = An alternative implementation of Linux sound support (with this patch: https://github.com/alsa-project/alsa-lib/commit/b420056604f06117c967b65d43d01536c5ffcbc9 to fix audacity not being able to acquire audio from pulseaudio)
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = http://www.alsa-project.org
+	arch = x86_64
+	license = LGPL
+	makedepends = python2
+	depends = glibc
+	optdepends = python2: for python smixer plugin
+	provides = alsa-lib=1.1.7
+	conflicts = alsa-lib
+	conflicts = alsa-lib-git
+	source = ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.1.7.tar.bz2
+	source = https://github.com/alsa-project/alsa-lib/commit/b420056604f06117c967b65d43d01536c5ffcbc9.patch
+	sha256sums = 9d6000b882a3b2df56300521225d69717be6741b71269e488bb20a20783bdc09
+	sha256sums = SKIP
+
+pkgname = alsa-lib-audacity-pulseaudio-fix
+
