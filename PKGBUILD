@@ -1,7 +1,8 @@
-# Maintainer: nic96
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com >
+# Contributor: nic96
 pkgname=fracplanet
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Fractal planet and terrain generator"
 url="http://sourceforge.net/projects/fracplanet/"
 license=('GPLv2')
@@ -10,22 +11,20 @@ depends=('boost' 'qt4' 'mesa')
 source=("http://ufpr.dl.sourceforge.net/project/fracplanet/fracplanet/$pkgver/fracplanet-$pkgver.tar.gz"
         "fracplanet.png"
         "fracplanet.desktop")
-md5sums=('270a0712c62adf58461cd5e7f7474aa0'
-         '5a473c1795840bbc6e4e1fa85627daed'
-         '49f4349bbcb693c0bae6c1f24a91f077')
+sha256sums=('435dd07e1798f810280260d09d2ee85e870eb466411e49b859eb1bef6f336ade'
+            '872c4c33c1db66b6ec606ab753cc02a7459d3f0188427d12d6374103d4ecef6f'
+            'a4b58ebcd5110b6ff99720aa166db0e3ca7e530f744659e1784cb3f349584ff0')
 
 build() {
-  cd "$srcdir/$pkgname"
-  sed -i '3,8 s/^/#/' "configure"
-  ./configure
-  sed -i '22 a\#include <GL/glu.h>' "triangle_mesh_viewer_display.cpp"
-  sed -i '/\<LIBS\>/ s/$/ -lGLU/' "Makefile"
+  cd "$srcdir/$pkgname-$pkgver"
+  qmake-qt4 "VERSION_NUMBER=$VERSION_NUMBER" fracplanet.pro
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  install -Dm755 "$srcdir"/"$pkgname"/fracplanet "$pkgdir"/usr/bin/fracplanet
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm755 "$srcdir"/"$pkgname-$pkgver"/fracplanet "$pkgdir"/usr/bin/fracplanet
   install -Dm644 "$srcdir"/fracplanet.desktop "$pkgdir"/usr/share/applications/fracplanet.desktop
   install -Dm644 "$srcdir"/fracplanet.png "$pkgdir"/usr/share/pixmaps/fracplanet.png
 }
+
