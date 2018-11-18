@@ -1,0 +1,29 @@
+pkgbase = dwm-keycodes
+	pkgdesc = A dynamic window manager for X - with keycodes patch
+	pkgver = 6.1
+	pkgrel = 1
+	url = https://dwm.suckless.org
+	install = dwm.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	depends = st
+	depends = dmenu
+	provides = dwm
+	conflicts = dwm
+	options = zipman
+	source = https://dl.suckless.org/dwm/dwm-6.1.tar.gz
+	source = dwm.desktop
+	source = config.h
+	source = https://dwm.suckless.org/patches/keycodes/dwm-keycodes-6.1.diff
+	md5sums = f0b6b1093b7207f89c2a90b848c008ec
+	md5sums = 939f403a71b6e85261d09fc3412269ee
+	md5sums = 948cb0fa3bc0c2fa0b90d654acda1827
+	md5sums = 8bebc6b37fc6229b9b08ded6babf3fd2
+
+pkgname = dwm-keycodes
+
