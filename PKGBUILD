@@ -1,6 +1,6 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-sphinx-astropy
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Sphinx extensions and configuration specific to the Astropy project"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('python-sphinx>=1.4' 'python-astropy-sphinx-theme' 'python-sphinx-automodapi' 'python-sphinx-gallery' 'python-numpydoc')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/s/sphinx-astropy/sphinx-astropy-${pkgver}.tar.gz")
-md5sums=('4d43b57e439a0e5c42536043a0ca69e8')
+md5sums=('31e01108a9f0dddccde29f4b46a46873')
 
 package() {
     cd ${srcdir}/sphinx-astropy-${pkgver}
