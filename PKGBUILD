@@ -2,7 +2,7 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-_USE_GNU_EFI='0'
+_USE_GNU_EFI='1'
 _PXE='0'
 
 #######
@@ -12,10 +12,10 @@ _PXE='0'
 
 _pkgname='refind'
 pkgname="${_pkgname}-efi-git"
-pkgver=0.11.2.2.r617.g7e9e438
+pkgver=0.11.4.2.r645.gcf9c8f8
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
-url='http://www.rodsbooks.com/refind/'
+url='https://www.rodsbooks.com/refind/'
 arch=('x86_64')
 license=('GPL3' 'custom')
 
@@ -36,7 +36,7 @@ provides=("${pkgname%-git}=${pkgver}")
 
 install="${pkgname%-git}.install"
 
-source=("refind::git+https://git.code.sf.net/p/refind/code#branch=master"
+source=('refind::git+https://git.code.sf.net/p/refind/code#branch=master'
         'refind_linux.conf')
 
 sha512sums=('SKIP'
@@ -94,8 +94,8 @@ _prepare_tianocore_sources() {
 	# Cleanup UDK config files
 	rm -rf "${_UDK_DIR}/Build/" || true
 	rm -rf "${_UDK_DIR}/Conf/" || true
-	mkdir -p "${_UDK_DIR}/Conf/"
-	mkdir -p "${_UDK_DIR}/Build/"
+	mkdir "${_UDK_DIR}/Conf/"
+	mkdir "${_UDK_DIR}/Build/"
 
 	# Disable build ID generation
 	sed 's|,--gc-sections|,--gc-sections,--build-id=none|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template"
