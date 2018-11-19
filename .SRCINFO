@@ -1,0 +1,19 @@
+pkgbase = haxm-git
+	pkgdesc = Intel® Hardware Accelerated Execution Manager - a hardware-assisted virtualization engine (git version)
+	pkgver = 1.0.0.r50.geda0250
+	pkgrel = 1
+	url = https://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager
+	install = haxm-git.install
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = linux-headers
+	depends = linux>4
+	depends = nasm>=2.11
+	provides = haxm
+	conflicts = haxm
+	source = haxm-git::git+https://github.com/intel/haxm.git
+	md5sums = SKIP
+
+pkgname = haxm-git
+
