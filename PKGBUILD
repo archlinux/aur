@@ -2,7 +2,7 @@
 
 _pkgname=helio-workstation
 pkgname="${_pkgname}-git"
-pkgver=r308.f8e4225
+pkgver=r643.24e031d
 pkgrel=1
 pkgdesc="A high-performance MIDI sequencer with a clean interface, version control, VST support and more"
 arch=('x86_64')
@@ -47,7 +47,5 @@ build() {
 
 package() {
   cd "$srcdir/${_pkgname}/Projects/"
-  install -Dm755 "LinuxMakefile/build/Helio" "$pkgdir/opt/helio_workstation/helio_workstation"
-  install -Dm755 "Installers/Linux/Helio-1.7-amd64/usr/bin/helio" "$pkgdir/usr/bin/helio"
-  cp -r "Installers/Linux/Helio-1.7-amd64/usr/" "$pkgdir/"
+  install -Dm755 "LinuxMakefile/build/Helio" "$pkgdir/usr/bin/helio_workstation"
 }

@@ -1,6 +1,6 @@
 pkgbase = helio-workstation-git
 	pkgdesc = A high-performance MIDI sequencer with a clean interface, version control, VST support and more
-	pkgver = r308.f8e4225
+	pkgver = r643.24e031d
 	pkgrel = 1
 	url = https://helioworkstation.com/
 	arch = x86_64
