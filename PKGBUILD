@@ -3,7 +3,7 @@
 pkgname=chromium-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content'
 pkgver=4.10.1196.0
-_chrome_ver=70.0.3538.102
+_chrome_ver=70.0.3538.110
 _license_date=$(curl -sI https://www.google.com/intl/en/chrome/privacy/eula_text.html | sed -n '/^last-modified/ s/.*: //p' | date +"%Y%m%d" -f -)
 _license_last=20181101
 pkgrel=2
@@ -15,7 +15,7 @@ options=('!strip')
 source=("chrome-eula_text-$_license_date.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html"
         "https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${_chrome_ver}-1_amd64.deb")
 sha256sums=('22e323091aab9730fc9431376e63d95fe03e3df08a1ab7d913b67bd16a6c159b'
-            '88979cf1d4c28deb079cf7fdb120b430d9b4b83f9eeeacf2b998c276ee342db6')
+            'efd6aa29f5d1ce80a3908ee40b0c6e71aa354ad8fcd9788b1ff6893bef92d0be')
 
 prepare() {
   bsdtar -x --strip-components 4 -f data.tar.xz opt/google/chrome/libwidevinecdm.so
