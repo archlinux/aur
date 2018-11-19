@@ -1,14 +1,14 @@
 pkgbase = python-frida-tools
 	pkgdesc = CLI tools for Frida. Python 3 version from PyPi.
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.frida.re
 	arch = i686
 	arch = x86_64
 	license = wxWindows Library License, Version 3.1
 	depends = python
 	depends = python-pygments>=2.02
-	depends = python-prompt_toolkit=1.0.15
+	depends = python-prompt_toolkit
 	depends = python-colorama>=0.2.7
 	depends = python-frida>=12.1.0
 	conflicts = python2-frida-tools

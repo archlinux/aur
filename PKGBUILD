@@ -3,12 +3,12 @@
 _pkgname=frida-tools
 pkgname=python-$_pkgname
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tools for Frida. Python 3 version from PyPi."
 arch=('i686' 'x86_64')
 url="http://www.frida.re"
 license=('wxWindows Library License, Version 3.1')
-depends=('python' 'python-pygments>=2.02' 'python-prompt_toolkit=1.0.15' 'python-colorama>=0.2.7' 'python-frida>=12.1.0')
+depends=('python' 'python-pygments>=2.02' 'python-prompt_toolkit' 'python-colorama>=0.2.7' 'python-frida>=12.1.0')
 source=("https://files.pythonhosted.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "COPYING")
 sha256sums=('d059760a06a4b01738685973502ea0655f1a49cc50305573c3264f06c1683942'
