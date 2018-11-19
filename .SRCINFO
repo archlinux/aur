@@ -1,13 +1,13 @@
 pkgbase = minepkg
 	pkgdesc = Installs and manages Minecraft mods with ease
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fiws/minepkg
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	optdepends = docker
-	source = https://github.com/fiws/minepkg/archive/v0.0.1-beta.tar.gz
+	source = https://github.com/fiws/minepkg/archive/v0.0.1.tar.gz
 	sha1sums = 67c59d7f04555b22a08e0bf611a91822ea817c9b
 
 pkgname = minepkg
