@@ -1,6 +1,6 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=howdoi
-pkgver=1.1.13
+pkgver=1.1.14
 pkgrel=1
 pkgdesc="A code search tool."
 arch=(any)
@@ -17,8 +17,8 @@ makedepends=(python-distribute)
 changelog=Changelog
 conflicts=(${pkgname}-git)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('2d4f9ae010d94a825a156bcb75503fff')
-sha256sums=('96f5e057fd45a84379d77e46233165d95211e6b3ea869cb5c0df172aa322b566')
+md5sums=('2dc1c4c17294d6edae7c5ac69f832694')
+sha256sums=('b85b8e551bf47ff157392660f0fc5b9eb3eacb78516a5823f7b774ec61955db5')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
