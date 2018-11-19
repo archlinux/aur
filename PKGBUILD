@@ -1,6 +1,6 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=packagecore
-pkgver=0.9.13
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Utility for building distribution specific Linux packages."
 arch=(any)
@@ -10,9 +10,9 @@ depends=(python)
 makedepends=('python-setuptools')
 provides=('packagecore-git')
 conflicts=('packagecore-git')
-source=("https://files.pythonhosted.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('eb7e4e96dbf4169e47afa20145d1dca9')
-sha256sums=('a105e9692f250e71e7211d14ce838976f897fee927c47a26b16d35459b7ac7f5')
+source=("https://github.com/BytePackager/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('f474bd655962ffdfbe8b964ac46ca5f2')
+sha256sums=('fa8a15462ec5d485a3ab725ea70971a19d15067bd4b544c8b56feca3f12e5461')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
