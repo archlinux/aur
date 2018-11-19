@@ -1,7 +1,7 @@
 # Maintainer: Bryce <onyxdelta@hotmail.com>
 pkgname="trilium-bin"
 pkgver=0.24.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A hierarchical note taking application built on modern technologies."
 depends=('python' 'make' 'gconf' 'libxss' 'nss' 'lib32-gcc-libs' 'gtk3')
 arch=('x86_64')
@@ -33,5 +33,6 @@ Exec=trilium %f
 Icon=/opt/trilium/resources/app/src/public/images/app-icons/win/icon.ico
 Terminal=false
 Type=Application
-Categories=Office" > "$pkgdir/usr/share/applications/trilium.desktop"
+Categories=Office
+StartupWMClass=trilium notes" > "$pkgdir/usr/share/applications/trilium.desktop"
 }
