@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-xelb-git
-pkgver=r133.aac6a74
+pkgver=r151.3226fe2
 pkgrel=1
 pkgdesc="emacs interface to xcb"
 arch=('any')
@@ -29,7 +29,7 @@ package() {
   cd $_gitname
   for _i in *.el
   do
-    install -Dm644 ${_i} $pkgdir/usr/share/emacs/site-lisp/xelb/${_i}
+    install -Dm644 ${_i} "$pkgdir"/usr/share/emacs/site-lisp/xelb/${_i}
   done
-  install -Dm644 README.md $pkgdir/usr/share/doc/emacs-xelb/README.md
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/emacs-xelb/README.md
 }
