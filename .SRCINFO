@@ -1,0 +1,15 @@
+pkgbase = toffee-gtk-theme-git
+	pkgdesc = A flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Budgie, etc.
+	pkgver = 40.35272de
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Toffee-gtk-theme
+	arch = any
+	license = GPL3
+	depends = gtk3
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	source = git+https://github.com/vinceliuice/Toffee-gtk-theme
+	md5sums = SKIP
+
+pkgname = toffee-gtk-theme-git
+
