@@ -1,19 +1,26 @@
 pkgbase = python-relatorio
 	pkgdesc = A templating library able to output odt and pdf files
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = http://relatorio.tryton.org/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
-	makedepends = python-distribute
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/r/relatorio/relatorio-0.8.1.tar.gz
+	sha512sums = 29b931b3de768375b9e736e4f2254faaf8757b1428efb8f3f1fcfca13a12649bbd07f56c000873c3544f203bf6c8e5bdd1e8851c24705cc504e853fa962fa721
+
+pkgname = python-relatorio
 	depends = python-genshi>=0.5
 	depends = python-lxml>=2.0
 	optdepends = python-pycha>=0.4.0: chart support
 	optdepends = python-yaml
 	optdepends = python-magic: fodt support
-	source = https://pypi.io/packages/source/r/relatorio/relatorio-0.8.0.tar.gz
-	md5sums = ba7061dfb512b57dfd54317a183f5278
 
-pkgname = python-relatorio
+pkgname = python2-relatorio
+	depends = python2-genshi>=0.5
+	depends = python2-lxml>=2.0
+	optdepends = python2-pycha>=0.4.0: chart support
+	optdepends = python2-yaml
+	optdepends = python2-magic: fodt support
 
