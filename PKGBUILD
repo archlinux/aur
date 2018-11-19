@@ -3,7 +3,7 @@
 
 pkgname='xtables-addons'
 pkgver='3.2'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Xtables-addons is a set of additional extensions for the Xtables packet filter that is present in the Linux kernel'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -33,7 +33,7 @@ prepare() {
     --mandir=/usr/share/man \
     --docdir=/usr/share/doc \
     --libexecdir=/usr/lib/iptables \
-    --with-xtlibdir=/usr/lib/iptables \
+    --with-xtlibdir=/usr/lib/xtables \
     --with-kbuild="${_kernver}build"
 }
 
