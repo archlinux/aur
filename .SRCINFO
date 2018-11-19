@@ -1,6 +1,6 @@
 pkgbase = sequencer64-next-git
 	pkgdesc = A live-looping MIDI sequencer. Development branch (unstable)
-	pkgver = 0.95.0.r34.g1e3526bc
+	pkgver = 0.96.0.r2.gb5809dd8
 	pkgrel = 1
 	url = https://github.com/ahlstromcj/sequencer64.git
 	arch = i686
@@ -8,11 +8,12 @@ pkgbase = sequencer64-next-git
 	license = GPL
 	makedepends = git
 	makedepends = autoconf-archive
-	depends = gtkmm
+	depends = qt5-base
 	depends = jack
+	depends = sqlite
 	provides = sequencer64
 	conflicts = sequencer64
-	source = sequencer64::git://github.com/ahlstromcj/sequencer64.git#branch=qt5_reconcile
+	source = sequencer64::git://github.com/ahlstromcj/sequencer64.git#branch=playlist
 	sha256sums = SKIP
 
 pkgname = sequencer64-next-git
