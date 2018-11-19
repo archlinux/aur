@@ -4,7 +4,7 @@
 
 pkgname=ums
 pkgver=7.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 8."
 arch=('i686' 'x86_64')
 url="http://www.universalmediaserver.com/"
@@ -54,7 +54,7 @@ package() {
             ${pkgdir}/opt/ums/debug.log \
             ${pkgdir}/opt/ums/database 
 
-  unzip -q -u -x ${srcdir}/ums-$pkgver/ums.jar -d ums_jar
+  unzip -q -u ${srcdir}/ums-$pkgver/ums.jar -x / /*.pom -d ums_jar
   install -d -m 755 ${pkgdir}/usr/share/pixmaps
   install -D -m 644 ${srcdir}/ums_jar/resources/images/logo.png ${pkgdir}/usr/share/pixmaps/ums.png
   install -D -m 644 ${srcdir}/ums.desktop ${pkgdir}/usr/share/applications/ums.desktop
