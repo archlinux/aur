@@ -1,12 +1,18 @@
 pkgbase = cointop
 	pkgdesc = An interactive, real-time cryptocurrency monitor
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/miguelmota/cointop
+	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
 	license = APACHE
-	source = https://github.com/miguelmota/cointop/releases/download/1.0.6/cointop_1.0.6_linux_amd64.tar.gz
-	sha256sums = 6da759bf9ad67b167cdf28de8bd86779a57297318fc914ab5957f8f60361b83b
+	makedepends = go-pie
+	makedepends = dep
+	makedepends = git
+	source = https://github.com/miguelmota/cointop/archive/1.0.6.tar.gz
+	sha256sums = 6188f21e7fcdfe686324a30a5ccc89a684e2a9acd81f2b042309ec0b28c26272
 
 pkgname = cointop
 
