@@ -26,22 +26,22 @@ _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _commit=f874dbfaac9344f25e2f363dd3064fbac25d1bbf
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
-        "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
+        "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.desktop"
         waterfox-install-dir.patch
         waterfoxproject-kde-56.2.0.patch
         "firefox-kde-$_patchrev.patch::$_patchurl/firefox-kde.patch"
         fix_waterfox_browser-kde_xul.patch
         pgo_fix_missing_kdejs.patch
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js"
-        "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/distribution.ini"
-        "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1"
+        "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/distribution.ini"
+        "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.1"
         jack-system-ports.patch
         "fix_crash_e10s_upload_cancel.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/fix_crash_e10s_upload_cancel.patch"
         no-plt.diff
         "unity-menubar-$pkgver.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox.xenial/download/1222/unitymenubar.patch-20130215095938-1n6mqqau8tdfqwhg-1/unity-menubar.patch"
         .gitignore)
 sha256sums=('SKIP'
-            '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
+            '6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '911e07ecb0095337c580c94f16b5414c243b26b1080cf0bfd2fac7f76c9a6a43'
             'f672e60e22869381e9c4cdd90353a053a0171778eca40d4664bc733822fd535f'
