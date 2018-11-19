@@ -1,15 +1,15 @@
 pkgbase = icu4j
 	pkgdesc = International Components for Unicode for Java
-	pkgver = 62.1
+	pkgver = 63.1
 	pkgrel = 1
 	url = http://site.icu-project.org/
 	arch = any
 	license = custom:icu
 	makedepends = apache-ant
-	makedepends = java-environment=8
+	makedepends = java-environment>=8
 	depends = java-environment
-	source = http://download.icu-project.org/files/icu4j/62.1/icu4j-62_1.tgz
-	sha256sums = 49b6ccc2fce95210022ed4d3fa6dea36c4156371f771f9b9b5696e20184c4ef0
+	source = http://download.icu-project.org/files/icu4j/63.1/icu4j-63_1.tgz
+	sha256sums = c4d502e94f5fb98ba3d06819a7244f3ca3303527316d141f6d3e6cd1dd697ed3
 
 pkgname = icu4j
 
