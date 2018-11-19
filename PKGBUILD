@@ -22,8 +22,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname/platforms/linux"
-
-  make modules
+  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+  _kdir="/lib/modules/${_kernver}/build"
+  make KVER="${_kernver}" KDIR="${_kdir}" modules
 }
 
 package() {
