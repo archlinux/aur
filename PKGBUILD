@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=elektra
-pkgver=0.8.24
-pkgrel=2
+pkgver=0.8.25
+pkgrel=1
 pkgdesc="A universal hierarchical configuration store"
 url="https://www.libelektra.org"
 license=('custom:BSD')
@@ -15,7 +15,7 @@ optdepends=('ruby: for ruby bindings'
 	    'lua: for lua bindings')
 makedepends=('docbook-xsl' 'cmake' 'doxygen' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ElektraInitiative/libelektra/archive/$pkgver.tar.gz")
-sha256sums=('35efad1e024acd2f7d9a85a42f308dd3cea01b70beec7ec8ebe0176b5a218ba3')
+sha256sums=('6aad314599a121ea3d545ce27fcdd6e5ccfc62ec7e80deb552ae56c758f7c7cf')
 
 build() {
   cd lib$pkgname-$pkgver
