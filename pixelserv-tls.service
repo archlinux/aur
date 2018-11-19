@@ -7,4 +7,4 @@ ExecStart=/bin/pixelserv-tls -f -z /var/cache/pixelserv
 Restart=always
 
 [Install]
-WantedBy=mutli-user.target
+WantedBy=multi-user.target
