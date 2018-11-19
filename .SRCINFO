@@ -9,8 +9,8 @@ pkgbase = stgit
 	makedepends = asciidoc
 	depends = python
 	depends = git
-	source = https://github.com/ctmarinas/stgit/archive/v0.19.tar.gz
-	sha256sums = 746f043c8a7caf5e675ef9d5c894a4a0a7d581ad4244747512f5efcccfbac5ff
+	source = git+https://github.com/ctmarinas/stgit.git#tag=v0.19
+	sha256sums = SKIP
 
 pkgname = stgit
 

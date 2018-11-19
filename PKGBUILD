@@ -13,9 +13,9 @@ license=('GPL')
 depends=('python' 'git')
 makedepends=('xmlto' 'asciidoc')
 source=(
-  "https://github.com/ctmarinas/stgit/archive/v${pkgver}.tar.gz"
+  "git+https://github.com/ctmarinas/stgit.git#tag=v${pkgver}"
 )
-sha256sums=('746f043c8a7caf5e675ef9d5c894a4a0a7d581ad4244747512f5efcccfbac5ff')
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
