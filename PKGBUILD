@@ -6,7 +6,7 @@
 # Maintainer: push2001sla@gmail.com
 pkgname=ccd-python-git
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Cute ChDir written on Python that finds directories"
 arch=('any')
@@ -29,7 +29,7 @@ noextract=()
 md5sums=('6dd2309a76aa7bd81aeb2bfb23f2c51e')
 validpgpkeys=()
 prepare() {
-	rm -rf "$pkgname-$pkgver"
+	#rm -rf "$pkgname-$pkgver"
 	git clone "$source" -b master "$pkgname-$pkgver"
 }
 package() {
