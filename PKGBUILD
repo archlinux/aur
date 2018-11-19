@@ -3,13 +3,13 @@
 
 pkgname=masterpassword-gui
 pkgver=2.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Java GUI for Master Password'
 arch=('any')
 url='http://masterpasswordapp.com/'
 license=('GPL3')
 depends=('java-runtime')
-source=("https://ssl.masterpasswordapp.com/$pkgname.jar"
+source=("https://ssl.masterpasswordapp.com/$pkgname-$pkgver.jar"
         "${pkgname}.desktop" "${pkgname}.png" "${pkgname}.sh")
 sha1sums=('5e1858a822d89e57b81112e088937a04facb4c50'
           '663d645fe83358b8a5061de7260b3eed9c79bac3'
