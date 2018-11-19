@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-chess-git  
-pkgver=850.5298bf5
+pkgver=852.99789e0
 pkgrel=1
 pkgdesc="Chess client written entirely in Emacs Lisp"
 arch=('any')
@@ -35,9 +35,9 @@ build() {
 package() {
   cd ${pkgname%-git}
   make DESTDIR="$pkgdir/" install
-  cp -r {pieces,sounds} $pkgdir/usr/share/emacs/site-lisp/
-  find $pkgdir -type d -name .git -exec rm -fr {} \;
-  cd $pkgdir/usr/share/emacs/site-lisp/pieces
+  cp -r {pieces,sounds} "$pkgdir"/usr/share/emacs/site-lisp/
+  find "$pkgdir" -type d -name .git -exec rm -fr {} \;
+  cd "$pkgdir"/usr/share/emacs/site-lisp/pieces
   for _i in  *.tar.xz
   do bsdtar xf $_i
      rm $_i

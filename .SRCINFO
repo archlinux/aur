@@ -1,6 +1,6 @@
 pkgbase = emacs-chess-git
 	pkgdesc = Chess client written entirely in Emacs Lisp
-	pkgver = 850.5298bf5
+	pkgver = 852.99789e0
 	pkgrel = 1
 	url = http://github.com/jwiegley/emacs-chess.git
 	install = advice.install
