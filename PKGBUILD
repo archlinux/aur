@@ -9,11 +9,11 @@ url="https://www.doorpi.org"
 license=('CC BY-NC 4.0')
 depends=(python python-requests)
 makedepends=(git python-setuptools)
-optdepends=('python-piface: Use Piface pins as event sources / actors'
+optdepends=('python-piface: Use Piface IO expander'
             'python-picamera: Take and mail snapshots; stream video'
-            'python-raspberry-gpio: Use GPIO header as event sources / actors'
-            'python-pyserial: Use serially connected peripherals like RFID as event sources / actors'
-            'python-watchdog: Use files as virtual event sources / actors')
+            'python-raspberry-gpio: Use onboard GPIO header'
+            'python-pyserial: Use serially connected peripherals like RFID'
+            'python-watchdog: Use files as virtual IO pins')
 backup=('etc/doorpi/doorpi.ini')
 # there aren't any binaries that could be stripped; skip searching for them
 options=(!strip)
