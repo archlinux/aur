@@ -1,7 +1,7 @@
 pkgbase = fontconfig-ubuntu
 	pkgdesc = A library for configuring and customizing font access (with Ubuntu patches)
 	pkgver = 2.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/ubuntu/+source/fontconfig
 	install = fontconfig-ubuntu.install
 	arch = i686
