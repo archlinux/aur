@@ -3,7 +3,7 @@
 
 pkgname=emscripten-git
 epoch=1
-pkgver=1.38.11.64.gc5a076bf0
+pkgver=1.38.19.16.g919d14b42
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -33,10 +33,6 @@ pkgver() {
 }
 
 prepare() {
-  # fix an upstream typo 
-  sed -i 's+intinsics_gen+intrinsics_gen+' \
-      "$srcdir"/${pkgname%-git}-fastcomp/lib/Bitcode/Writer/CMakeLists.txt
-
   cd ${pkgname%-git}
   
   # adapt config file template to use our custom environment variable and path
@@ -62,11 +58,13 @@ build() {
   cd ${pkgname%-git}-fastcomp/build
   cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_SKIP_RPATH=YES \
     -DLLVM_TARGETS_TO_BUILD="X86;JSBackend" \
     -DLLVM_BUILD_RUNTIME=OFF \
     -DLLVM_INCLUDE_EXAMPLES=OFF \
-    -DLLVM_INCLUDE_TESTS=OFF
-  RPATH="" make
+    -DLLVM_INCLUDE_TESTS=OFF \
+    -DCLANG_INCLUDE_TESTS=OFF 
+   make
 }
 
 package() {
@@ -85,7 +83,7 @@ package() {
   for i in em++ emar emcc em-config emconfigure emmake emranlib \
 		emrun emscons
   do
-    ln -s /usr/lib/${pkgname%-git}/$i "$pkgdir/usr/bin/$i"
+    ln -s /usr/lib/${pkgname%-git}/$i "$pkgdir"/usr/bin/$i
   done
   cd ..
   cp -R em* cmake/ site/ src/ system/ third_party/ tools/ \
