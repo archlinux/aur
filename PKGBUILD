@@ -47,6 +47,8 @@ prepare() {
 build() {
   cd "$pkgname"
 
+  # workaround for https://github.com/balena-io/scripts/issues/7
+  export AWS_ACCESS_KEY_ID='' AWS_SECRET_ACCESS_KEY=''
   make electron-develop
   make webpack
   npm prune --production
