@@ -5,16 +5,18 @@
 # Contributor:  Farid <farid at archlinux-br dot org>
 
 pkgname=pdfshuffler-git
-pkgver=r101.124f8e9
+_pkgname="pdfarranger"
+pkgver=r143.d5c91b8
 pkgrel=1
 pkgdesc="Combine and modify PDF documents and thier pages. Python3, GTK3 version."
 arch=('any')
 url="http://sourceforge.net/projects/pdfshuffler/"
 license=('GPL')
-depends=('gtk3' 'python-gobject' 'python-cairo' 'poppler-glib' 'python-pypdf2' 'ghostscript')
+depends=('gtk3' 'python-gobject' 'python-distutils-extra' 'python-cairo'
+         'poppler-glib' 'python-pypdf2' 'ghostscript')
 makedepends=('git')
 conflicts=('pdfshuffler')
-source=('pdfshuffler-git::git+https://github.com/jeromerobert/pdfshuffler')
+source=("pdfshuffler-git::git+https://github.com/jeromerobert/$_pkgname")
 md5sums=('SKIP')
 
 pkgver () {
@@ -31,13 +33,13 @@ package () {
     cd "$srcdir/$pkgname"
     python setup.py install --prefix=/usr --root="$pkgdir/"
     
-    rm -rf "$pkgdir/usr/share/pdfshuffler/icons"
+    # rm -rf "$pkgdir/usr/share/pdfshuffler/icons"
 
-    install -Dm 644 "data/hicolor/scalable/apps/pdfshuffler.svg" \
-                    "$pkgdir/usr/share/icons/hicolor/scalable/apps/pdfshuffler.svg"
+    # install -Dm 644 "data/hicolor/scalable/apps/pdfshuffler.svg" \
+    #                 "$pkgdir/usr/share/icons/hicolor/scalable/apps/pdfshuffler.svg"
 
-    for _size in "16x16" "32x32" "48x48" "256x256" ; do
-        install -Dm 644 "data/hicolor/$_size/apps/pdfshuffler.png" \
-                        "$pkgdir/usr/share/icons/hicolor/$_size/apps/pdfshuffler.png"
-    done
+    # for _size in "16x16" "32x32" "48x48" "256x256" ; do
+    #     install -Dm 644 "data/hicolor/$_size/apps/pdfshuffler.png" \
+    #                     "$pkgdir/usr/share/icons/hicolor/$_size/apps/pdfshuffler.png"
+    # done
 }

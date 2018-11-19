@@ -1,6 +1,6 @@
 pkgbase = pdfshuffler-git
 	pkgdesc = Combine and modify PDF documents and thier pages. Python3, GTK3 version.
-	pkgver = r101.124f8e9
+	pkgver = r143.d5c91b8
 	pkgrel = 1
 	url = http://sourceforge.net/projects/pdfshuffler/
 	arch = any
@@ -8,12 +8,13 @@ pkgbase = pdfshuffler-git
 	makedepends = git
 	depends = gtk3
 	depends = python-gobject
+	depends = python-distutils-extra
 	depends = python-cairo
 	depends = poppler-glib
 	depends = python-pypdf2
 	depends = ghostscript
 	conflicts = pdfshuffler
-	source = pdfshuffler-git::git+https://github.com/jeromerobert/pdfshuffler
+	source = pdfshuffler-git::git+https://github.com/jeromerobert/pdfarranger
 	md5sums = SKIP
 
 pkgname = pdfshuffler-git
