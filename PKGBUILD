@@ -32,7 +32,7 @@ md5sums=('6d34f431d79aa1951cb139bb28108b25')
 validpgpkeys=()
 
 prepare() {
-	rm -rf "$pkgname-$pkgver"
+	#rm -rf "$pkgname-$pkgver"
 	git clone https://github.com/AndrewCrewKuznetsov/xneur-devel "$pkgname-$pkgver"
 }
 
@@ -53,4 +53,5 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	echo -e "#!/bin/bash\n/opt/xneur/bin/xneur $@" > "$pkgdir/usr/bin/xneur"
 	chmod +x "$pkgdir/usr/bin/xneur"
+	
 }
