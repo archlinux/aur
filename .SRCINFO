@@ -1,14 +1,14 @@
 pkgbase = terraform-provider-hcloud
 	pkgdesc = Terraform provider for Hetzner Cloud
-	pkgver = 1.2.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/terraform-providers/terraform-provider-hcloud
 	arch = x86_64
 	license = MPL
 	makedepends = go
 	makedepends = git
-	source = https://github.com/terraform-providers/terraform-provider-hcloud/archive/v1.2.0.tar.gz
-	sha256sums = cf245e4616d66f56ba16cd03a5adcd2ed7d4ca87ec64cd7570593d85938abc76
+	source = https://github.com/terraform-providers/terraform-provider-hcloud/archive/v1.5.0.tar.gz
+	sha256sums = 25afc721b54f02c44128aebcd8ab63dc347921efbb6d3d727c8b38912fc8ff98
 
 pkgname = terraform-provider-hcloud
 
