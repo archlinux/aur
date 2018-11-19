@@ -7,7 +7,7 @@
 pkgname=pdfshuffler-git
 _pkgname="pdfarranger"
 pkgver=r143.d5c91b8
-pkgrel=1
+pkgrel=2
 pkgdesc="Combine and modify PDF documents and thier pages. Python3, GTK3 version."
 arch=('any')
 url="http://sourceforge.net/projects/pdfshuffler/"
@@ -33,13 +33,16 @@ package () {
     cd "$srcdir/$pkgname"
     python setup.py install --prefix=/usr --root="$pkgdir/"
     
+    sed -i 's|Name=pdfarranger|Name=pdfshuffler|' "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    sed -i 's|Icon=pdfarranger|Icon=pdfshuffler|' "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    
     # rm -rf "$pkgdir/usr/share/pdfshuffler/icons"
 
     # install -Dm 644 "data/hicolor/scalable/apps/pdfshuffler.svg" \
     #                 "$pkgdir/usr/share/icons/hicolor/scalable/apps/pdfshuffler.svg"
 
-    # for _size in "16x16" "32x32" "48x48" "256x256" ; do
-    #     install -Dm 644 "data/hicolor/$_size/apps/pdfshuffler.png" \
-    #                     "$pkgdir/usr/share/icons/hicolor/$_size/apps/pdfshuffler.png"
-    # done
+    for _size in "16x16" "32x32" "48x48" "256x256" ; do
+        mv "$pkgdir/usr/share/icons/hicolor/$_size/apps/$_pkgname.png" \
+           "$pkgdir/usr/share/icons/hicolor/$_size/apps/pdfshuffler.png"
+    done
 }
