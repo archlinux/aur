@@ -1,0 +1,19 @@
+pkgbase = python-prompt_toolkit1
+	pkgdesc = Library for building powerful interactive command lines in Python. Python 3 version from PyPi.
+	pkgver = 1.0.15
+	pkgrel = 1
+	url = https://github.com/jonathanslenders/python-prompt-toolkit
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-pygments
+	depends = python-six
+	depends = python-wcwidth
+	provides = python-prompt_toolkit1
+	conflicts = prompt_toolkit
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/p/prompt_toolkit/prompt_toolkit-1.0.15.tar.gz
+	sha256sums = 858588f1983ca497f1cf4ffde01d978a3ea02b01c8a26a8bbc5cd2e66d816917
+
+pkgname = python-prompt_toolkit1
+
