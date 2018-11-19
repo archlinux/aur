@@ -10,7 +10,8 @@ pkgdesc="Task and project manager, designed for Pantheon Shell"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
-depends=('gtk3' 'granite' 'libgee' 'libnotify' 'libunity' 'sqlite')
+depends=('gtk3' 'granite' 'libgee' 'libnotify' 'libunity' 'sqlite' 
+		 'wingpanel-indicator-datetime-git')
 optdepends=('')
 makedepends=('git' 'meson' 'ninja' 'vala')
 provides=("artegeek-${_gitname}" "planner-eos")
