@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgbuild at maximbaz dot com>
 
 pkgname=kak-lsp
-pkgver=5.9.1
+pkgver=5.10.0
 pkgrel=1
 pkgdesc='Kakoune Language Server Protocol Client'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
     'go-langserver-git: language server for Go'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ul/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b21fd5e92cf4bb33194b1eb71f79c50aab81f24be28a734794c33bd852d74bff')
+sha256sums=('71778e17a22a9d7196ae27c8e70728378cacfbddd291c3efa1b431fd236e44cf')
 
 build() {
     cd "$pkgname-$pkgver"
