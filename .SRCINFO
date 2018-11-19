@@ -1,6 +1,6 @@
 pkgbase = libpod
 	pkgdesc = A library used to create container pods.
-	pkgver = 0.11.1
+	pkgver = 0.11.1.1
 	pkgrel = 3
 	url = https://github.com/containers/libpod
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = libpod
 	makedepends = ostree
 	makedepends = python-setuptools
 	makedepends = runc
-	source = https://github.com/containers/libpod/archive/v0.11.1.tar.gz
-	sha256sums = 1bc077fa5f734b72f9efab60a06d413927b0f09851463868f074fcb082c6d84e
+	source = https://github.com/containers/libpod/archive/v0.11.1.1.tar.gz
+	sha256sums = c2ca01bfa31f8f6034c2b230a4187f0c9b4216da14f7ba2a4d2eece13de71683
 
 pkgname = libpod
 	depends = cri-o

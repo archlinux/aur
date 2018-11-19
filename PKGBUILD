@@ -7,7 +7,7 @@ pkgname=(
 	"libpod-networking"
 	"libpod-python"
 )
-pkgver=0.11.1
+pkgver=0.11.1.1
 pkgrel=3
 pkgdesc="A library used to create container pods."
 arch=("x86_64")
@@ -26,7 +26,7 @@ makedepends=(
 	"runc"
 )
 source=("https://github.com/containers/libpod/archive/v${pkgver}.tar.gz")
-sha256sums=('1bc077fa5f734b72f9efab60a06d413927b0f09851463868f074fcb082c6d84e')
+sha256sums=('c2ca01bfa31f8f6034c2b230a4187f0c9b4216da14f7ba2a4d2eece13de71683')
 
 prepare() {
 	export GOPATH="${srcdir}/go"
