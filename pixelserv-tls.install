@@ -16,12 +16,12 @@ cat << EOF
 
         2. import CA certificate
 
-            cp /var/cache/pixelserv/ca.crt /usr/share/ca-certificates/trust-source/anchors/ca.pixelserv.crt
-            trust extract-compat
+            sudo cp /var/cache/pixelserv/ca.crt /usr/share/ca-certificates/trust-source/anchors/ca.pixelserv.crt
+            sudo trust extract-compat
 
-    ... OR just run script as user "nobody":
+    ... OR just run script (as your current user!):
 
-        sudo -u nobody pixelserv-ca-init
+        pixelserv-ca-init
 
     ... THEN start/enable systemd service:
         sudo systemctl enable --now pixelserv-tls
