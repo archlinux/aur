@@ -1,0 +1,16 @@
+pkgbase = brother-hll2370dw
+	pkgdesc = Brother HL-L2370DW(XL) CUPS driver
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = i686
+	arch = x86_64
+	arch = armv7l
+	license = GPL
+	depends = cups
+	depends = perl
+	source = https://download.brother.com/welcome/dlf103582/hll2370dwpdrv-4.0.0-1.i386.rpm
+	sha256sums = 952ec6268bbc6a5cf331fd6f3b5d7a4537d515e12d92af7d2d2699ab778e33d6
+
+pkgname = brother-hll2370dw
+
