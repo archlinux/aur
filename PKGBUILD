@@ -1,6 +1,6 @@
 pkgname=nordvpn-bin
-pkgver=1.2.0
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64')
 url="https://nordvpn.com/download/linux/"
@@ -10,7 +10,7 @@ options=('!strip')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn')
 source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver}_amd64.deb")
-sha256sums=('386c4e36d42d2d5508d134e5640df9e5aaf7a8fd85fad66b4951296a2f393ff9')
+sha256sums=('7013e7d0c9e51cc604147eafc61b5c47c05a3e347c47ff556b3d5ec7f3717831')
 
 package() {
     bsdtar -O -xf "nordvpn_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
