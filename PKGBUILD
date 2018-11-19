@@ -1,21 +1,20 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=writefreely
-_shortpkgver=0.3
-pkgver=${_shortpkgver}.0
-pkgrel=1
+pkgver=0.3.0
+pkgrel=2
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
 license=('AGPL3')
 depends=('mariadb')
-backup=('etc/writefreely/config.ini')
+backup=('var/lib/writefreely/config.ini')
 install=writefreely.install
 source=('writefreely.tmpfiles'
         'writefreely-sysusers.conf'
         'writefreely.service'
         'config.ini'
-        "https://github.com/writeas/writefreely/releases/download/v${pkgver}/writefreely_${_shortpkgver}_linux_amd64.tar.gz")
+        "https://github.com/writeas/writefreely/releases/download/v${pkgver}/writefreely_${pkgver}_linux_amd64.tar.gz")
 sha256sums=('fe04838284663b3725d5bb1cd82ca8fbe180512d59200c88b0a5829f8e390b2d'
             '6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10'
             'dbb332d30c49a8b9f8a1f926c0b3439c1487d395fbef979481f9e76e53a3bcaa'
