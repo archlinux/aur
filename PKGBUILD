@@ -3,7 +3,9 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: push2001sla@gmail.com
+# Developer: andrewcrew@rambler.ru
+
 pkgname=xneur-devel-git
 pkgver=0.20.0
 pkgrel=1
