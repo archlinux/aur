@@ -12,9 +12,16 @@ makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://pypi.io/packages/source/r/relatorio/relatorio-$pkgver.tar.gz")
 sha512sums=('29b931b3de768375b9e736e4f2254faaf8757b1428efb8f3f1fcfca13a12649bbd07f56c000873c3544f203bf6c8e5bdd1e8851c24705cc504e853fa962fa721')
 
-build_python-relatorio() {
+prepare() {
+  cp -a relatorio-$pkgver{,-py2}
+}
+
+build() {
   cd $srcdir/relatorio-$pkgver
   python setup.py build
+
+  cd $srcdir/relatorio-$pkgver-py2
+  python2 setup.py build
 }
 
 package_python-relatorio() {
@@ -25,15 +32,10 @@ package_python-relatorio() {
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
-build_python2-relatorio() {
-  cd $srcdir/relatorio-$pkgver
-  python2 setup.py build
-}
-
 package_python2-relatorio() {
   depends=('python2-genshi>=0.5' 'python2-lxml>=2.0')
   optdepends=('python2-pycha>=0.4.0: chart support' 'python2-yaml' 'python2-magic: fodt support')
 
-  cd $srcdir/relatorio-$pkgver
+  cd $srcdir/relatorio-$pkgver-py2
   python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
