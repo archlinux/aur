@@ -1,7 +1,7 @@
 pkgbase = nwdiag
 	pkgdesc = Generate network-diagram image files from spec-text files.
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://blockdiag.com/en/nwdiag
 	changelog = Changelog
 	arch = any
@@ -13,8 +13,10 @@ pkgbase = nwdiag
 	optdepends = python-reportlab: to use the PDF output format
 	optdepends = python-docutils: to use the RST output format
 	conflicts = nwdiag-hg
-	source = http://pypi.python.org/packages/source/n/nwdiag/nwdiag-1.0.4.tar.gz
+	source = https://pypi.python.org/packages/source/n/nwdiag/nwdiag-1.0.4.tar.gz
 	md5sums = 0d2ff1348aeff53aaf08838d0fa2c001
+	sha1sums = 501c4a07f559cfd78b8f49b6949d79c2464b8818
+	sha256sums = 002565875559789a2dfc5f578c07abdf44269c3f7cdf78d4809bdc4bdc2213fa
 
 pkgname = nwdiag
 
