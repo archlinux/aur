@@ -3,12 +3,14 @@
 
 pkgname=gfxtablet-git
 pkgver=50.128060d
-pkgrel=1
+pkgrel=2
 pkgdesc="Android app to control a virtual Network Tablet on Linux"
 arch=('i686' 'x86_64')
 url="http://github.com/rfc2822/GfxTablet"
 license=('MIT')
 makedepends=('git')
+provides=('gfxtablet')
+conflicts=('gfxtablet')
 source=("$pkgname"::'git://github.com/rfc2822/GfxTablet.git'
         '99-uinput.rules')
 md5sums=('SKIP'
