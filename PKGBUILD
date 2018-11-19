@@ -1,8 +1,8 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=libtas-git
-pkgver=1.3.2.r0.b8d3c31
-pkgrel=2
+pkgver=1.3.2.r1.861bd6c
+pkgrel=1
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries"
 arch=('x86_64')
 url="https://github.com/clementgallet/libTAS"
@@ -11,10 +11,8 @@ depends=('alsa-lib' 'ffmpeg' 'fontconfig' 'freetype2'
          'qt5-base' 'xcb-util-cursor' 'zlib')
 makedepends=('cmake' 'extra-cmake-modules')
 conflicts=('libtas')
-source=("git+$url"
-        linTAS.desktop)
-sha512sums=(SKIP
-            '7002415aaa670e7cbee27ef8031bb0f61a6f3182212b435270e47a3567ff45fe0d98db92a7798fa1d3573a07627d224a8ba645c5503b7f03663f9eef545aab40')
+source=("git+$url")
+sha512sums=(SKIP)
 
 pkgver() {
   cd "libTAS"
@@ -34,5 +32,4 @@ package() {
   cd "libTAS/build"
 
   make DESTDIR="$pkgdir/" install
-  install -Dm644 "$srcdir/linTAS.desktop" "$pkgdir/usr/share/applications/linTAS.desktop"
 }
