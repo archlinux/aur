@@ -12,7 +12,7 @@ makedepends=(granite
              gtksourceview3
              meson
              vala)
-checkdepends=(vala-lint-git)
+#checkdepends=(vala-lint-git)
 provides=(akira)
 source=("git+https://github.com/Alecaddd/Akira.git")
 sha256sums=(SKIP)
@@ -32,10 +32,10 @@ build() {
   ninja
 }
 
-check() {
-  cd build
-  ninja test
-}
+#check() {
+#  cd build
+#  ninja test
+#}
 
 package() {
   cd build

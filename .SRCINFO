@@ -5,7 +5,6 @@ pkgbase = akira-git
 	url = https://github.com/Alecaddd/Akira
 	arch = x86_64
 	license = GPL3
-	checkdepends = vala-lint-git
 	makedepends = granite
 	makedepends = gtksourceview3
 	makedepends = meson
