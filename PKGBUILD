@@ -5,7 +5,7 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=1.0rc1
-pkgrel=4
+pkgrel=5
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -40,6 +40,7 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         "git+https://github.com/shibatch/sleef"
         "git+https://github.com/intel/ideep"
         12116.patch
+        opencv4.patch
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -68,12 +69,14 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2a2cd21dbdf7253185c8835a3f36b543a4b1655d837e01f7cfd27ab81819f2d5')
+            '2a2cd21dbdf7253185c8835a3f36b543a4b1655d837e01f7cfd27ab81819f2d5'
+            '8cf4226099f92315f14c83066f77e44443bc3d35aedf94d99b910f035cc9bc90')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
   patch -Np1 -i "${srcdir}"/12116.patch
+  patch -Np1 -i "${srcdir}"/opencv4.patch
 
   git submodule init
   git config submodule."third_party/catch".url "${srcdir}"/Catch2
