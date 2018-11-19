@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 # NOTE:
 # In order to build the package, you need to manually download the TensorRT
@@ -10,12 +10,12 @@
 _srcname=TensorRT
 _cudaver=10.0
 _cudnnver=7.3
-_graphsurgeonver=0.2.2
-_uffver=0.5.1
+_graphsurgeonver=0.3.2
+_uffver=0.5.5
 _ubuntuver=18.04.1
 
 pkgname=tensorrt
-pkgver=5.0.0.10
+pkgver=5.0.2.6
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference (needs registration at upstream URL and manual download)'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=('python2: for tensorflow python2 modules (python2 only)'
 makedepends=('poppler' 'unzip')
 options=('!strip')
 source=("file://${_srcname}-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_cudnnver}.tar.gz")
-sha256sums=('f48c0d8147c60beef82dbc2e6f4d19366906303b8395dfae72cf848dd351ff9d')
+sha256sums=('4310010d6bb2b613953a579a34c729efbf5d5defc49c68cf20969751962d901c')
 
 prepare() {
     cd "${_srcname}-${pkgver}/python"
@@ -80,7 +80,7 @@ package() {
     
     # documentation
     install -D -m644 doc/TensorRT-Developer-Guide.pdf -t "${pkgdir}/usr/share/doc/${pkgname}"
-    cp -a doc/{common,graphics,html,python} "${pkgdir}/usr/share/doc/${pkgname}"
+    cp -a doc/{html,python} "${pkgdir}/usr/share/doc/${pkgname}"
     
     # license
     install -D -m644 doc/TensorRT-License.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
