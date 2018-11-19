@@ -2,9 +2,9 @@
 # Contributor: Guillaume Friloux <guillaume@friloux.me>
 
 _pkgbase='movim'
-_tagname=v0.13
+_tagname=v0.14
 pkgname=movim
-pkgver=v0.13.63440788
+pkgver=v0.14.bbaa1e4f
 pkgrel=1
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')
@@ -23,9 +23,6 @@ source=("$_pkgbase::git+https://github.com/movim/movim#tag=$_tagname"
         movim.env
         movim.service)
 install=movim.install
-sha256sums=('SKIP'
-            '5dfff91dd4a54f3d3713530e204370a96d37898b670a61123d8cad42f92da306'
-            '793b85ca2080d92d9663af1750d0be9d1cbd20de9c828cb0ce0cc91ad5510f11')
 backup=("etc/webapps/$_pkgbase/db.inc.php"
         "etc/default/movim")
 
@@ -53,10 +50,11 @@ package() {
   # XXX: Symlinks created post_upgrade. Waiting for upstream to fix
   # https://github.com/movim/movim/issues/509.
 
-  cp -r app lib locales src themes vendor "$pkgdir/usr/share/webapps/$_pkgbase"
+  cp -r app database lib locales src themes vendor \
+    "$pkgdir/usr/share/webapps/$_pkgbase"
   install -Dm644 VERSION CHANGELOG.md INSTALL.md README.md index.php \
-    linker.php manifest.webapp "$pkgdir/usr/share/webapps/$_pkgbase"
-  install -Dm755 daemon.php mud.php "$pkgdir/usr/share/webapps/$_pkgbase"
+    linker.php phinx.php "$pkgdir/usr/share/webapps/$_pkgbase"
+  install -Dm755 daemon.php "$pkgdir/usr/share/webapps/$_pkgbase"
 
   # Configuration file
   install -m750 -d "$pkgdir/etc/webapps/$_pkgbase"
@@ -74,8 +72,7 @@ package() {
   install -m755 -d "$pkgdir/etc/default"
   install -g http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
   install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
-
-  # Easy access to mud.php
-  install -d "$pkgdir/usr/bin"
-  ln -s "/usr/share/webapps/$_pkgbase/mud.php" "$pkgdir/usr/bin/mud"
 }
+sha256sums=('SKIP'
+            '5dfff91dd4a54f3d3713530e204370a96d37898b670a61123d8cad42f92da306'
+            '793b85ca2080d92d9663af1750d0be9d1cbd20de9c828cb0ce0cc91ad5510f11')
