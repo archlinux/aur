@@ -1,8 +1,8 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libwebp
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-_commit=698b8844e38a0c5ca50bb20f866e71291bfc3b36  # tags/v1.0.0^0
+_commit=e85d3313d6d52b1e9c6c181b488fc0831a747de8  # tags/v1.0.1^0
 pkgdesc="WebP library and conversion tools (mingw-w64)"
 arch=(any)
 url="https://developers.google.com/speed/webp/"
