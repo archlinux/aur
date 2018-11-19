@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=20120214
+Name=j-Algo
+Comment=Visualize algorithms
+Exec=jalgo
+Icon=jalgo
+Terminal=false
+Categories=Education;Java
