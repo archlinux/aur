@@ -1,6 +1,6 @@
 pkgbase = pamac-tray-appindicator
 	pkgdesc = Tray icon using appindicator which feets better in KDE
-	pkgver = 7.2.2
+	pkgver = 7.3.0
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = pamac-tray-appindicator
 	depends = pamac
 	depends = libappindicator-gtk3
 	options = !emptydirs
-	source = pamac-7.2.2-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/v7.2.2/pamac-v7.2.2.tar.gz
-	sha256sums = ecc489782c34de37eee15fe65b2eacbb1a9403e030978303afd12221498d8a46
+	source = pamac-7.3.0-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/v7.3.0/pamac-v7.3.0.tar.gz
+	sha256sums = 3f105c88baa6db77fb3d83cc33c665036ccdb417d620bbedff8578f43ca71962
 
 pkgname = pamac-tray-appindicator
 
