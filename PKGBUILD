@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
@@ -10,7 +9,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=sudo-selinux
-_sudover=1.8.25p1
+_sudover=1.8.26
 pkgver=${_sudover/p/.p}
 pkgrel=1
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
@@ -26,7 +25,7 @@ backup=('etc/sudoers' 'etc/pam.d/sudo')
 install=${pkgname/-selinux}.install
 source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo.pam)
-sha256sums=('9dc99c7a7d37a0ab938410995c133e15d6afb970c2c66f9264fe36d20c89195b'
+sha256sums=('40da219a6f0341ccb22d04a98988e27f09b831d2561b14c6154067a49ef3fee2'
             'SKIP'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
 validpgpkeys=('59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB')
