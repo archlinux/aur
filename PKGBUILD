@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <andersan@tcd.ie>
 pkgname=trinnity
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ library of CNN primitive operations"
 arch=('any')
 url="https://bitbucket.org/STG-TCD/trinnity"
@@ -15,7 +15,8 @@ optdepends=('gsl>=2.3: GSL BLAS backend'
             'openblas-lapack>=0.2.19: OpenBLAS BLAS backend'
             'intel-mkl>=2017.17.0.1.1.132: Intel MKL BLAS backend'
             'clblas>=2.12: clBLAS BLAS backend'
-	    'cblas: Plain old CBLAS backend'
+            'cblas: Plain old CBLAS backend'
+            'openmp: OpenMP SIMD and SMP Support'
             )
 provides=()
 conflicts=()
