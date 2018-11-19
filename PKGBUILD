@@ -1,20 +1,20 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=python-privy-git
 pkgver=r67.624bb58
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy, fast lib to correctly password-protect your data"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/ofek/privy"
 license=('dual')
 depends=('python-cryptography' 'python-argon2_cffi')
 makedepends=('python-setuptools')
 provides=('python-privy')
-source=("$pkgname"::'git+https://github.com/ofek/privy.git'
-        "LICENSE-MIT"
-        "LICENSE-APACHE")
+source=("$pkgname"::"git+$url.git"
+        "$url/blob/master/LICENSE-MIT"
+        "$url/blob/master/LICENSE-APACHE")
 md5sums=('SKIP'
-         '388b1e32639feccde602f679e55f1e26'
-         'c095d68fd956360d26e013d3f3739e94')
+         'b7160396ff595e32809929d658725f44'
+         '97780513e711a2722777c45a835265d5')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
