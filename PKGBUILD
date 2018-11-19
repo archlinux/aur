@@ -38,7 +38,7 @@ check() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -Dm755 "iptables/lib${pkgname}.so" "${pkgdir}/usr/lib/iptables/lib${pkgname}.so"
+  install -Dm755 "iptables/lib${pkgname}.so" "${pkgdir}/usr/lib/xtables/lib${pkgname}.so"
   install -Dm644 "kernel/${pkgname}.ko.gz" "${pkgdir}${_kernver}/extra/${pkgname}.ko.gz"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
