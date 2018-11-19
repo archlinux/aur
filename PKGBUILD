@@ -2,17 +2,17 @@
 # Contributor: Joao Cordeiro <jlcordeiro at gmail dot com>
 
 pkgname=brogue
-pkgver=1.7.4
-pkgrel=2
+pkgver=1.7.5
+pkgrel=1
 pkgdesc="A 26-level dungeon crawl to the Amulet of Yendor."
 arch=('i686' 'x86_64')
 url="http://sites.google.com/site/broguegame/"
 license=('AGPL3')
 depends=('libtcod-151')
 install=brogue.install
-source=(https://sites.google.com/site/broguegame/brogue-1.7.4-linux-i386.tbz2
-      'brogue.sh')
-md5sums=('8ef1d4b985b4e73685f52db80200262c'
+source=("https://sites.google.com/site/broguegame/brogue-$pkgver-linux-amd64.tbz2"
+        'brogue.sh')
+md5sums=('6bbd27b1a8a21caf40900130b806dedc'
          '9de3fa32ba7fe562b0224417eaea5c26')
 
 build() {
