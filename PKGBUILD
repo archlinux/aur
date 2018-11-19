@@ -1,7 +1,7 @@
 pkgname=ttydisp-git
 _pkgname=ttydisp
-pkgver=0.0.1
-pkgrel=3
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="Play video in the terminal"
 arch=('i686' 'x86_64')
 license=('MIT')
