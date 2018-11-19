@@ -1,0 +1,27 @@
+pkgbase = alainm23-planner-git
+	pkgdesc = Task and project manager, designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/alainm23/planner
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = libgee
+	depends = libnotify
+	depends = libunity
+	depends = sqlite
+	provides = alainm23-planner
+	provides = planner-eos
+	conflicts = alainm23-planner
+	conflicts = planner-eos
+	source = git+https://github.com/alainm23/planner.git
+	md5sums = SKIP
+
+pkgname = alainm23-planner-git
+
