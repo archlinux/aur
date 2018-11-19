@@ -2,11 +2,11 @@
 _pkgname=perspektiv
 pkgname=${_pkgname}-git
 pkgver=r14.168db07
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon for creating popups when you change monitor brightness, volume, etc. "
 arch=("i686" "x86_64")
 url="https://github.com/henriklaxhuber/perspektiv"
-license=('MIT')
+license=('GPL-3.0')
 depends=('ttf-font-awesome-4')
 makedepends=('git' 'rust')
 source=('perspektiv-git::git+https://github.com/henriklaxhuber/perspektiv.git')
