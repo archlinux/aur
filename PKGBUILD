@@ -12,7 +12,6 @@ depends=('emacs')
 makedepends=('git')
 provides=('emacs-jabber')
 conflicts=('emacs-jabber')
-_gitname=emacs-jabber
 source=("git://${pkgname%-git}.git.sourceforge.net/gitroot/${pkgname%-git}/${pkgname%-git}")
 md5sums=('SKIP')
 
