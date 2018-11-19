@@ -9,13 +9,13 @@
 #
 # https://developer.android.com/ndk/downloads/revision_history
 
-android_arch=armeabi-v7a
+_android_arch=armeabi-v7a
 
 # Minimum Android platform based on:
 #
 # https://developer.android.com/about/dashboards/
 if [ -z "${ANDROID_MINIMUM_PLATFORM}" ]; then
-    export ANDROID_MINIMUM_PLATFORM=21
+    export ANDROID_MINIMUM_PLATFORM=22
 fi
 
 if [ -z "${ANDROID_NDK_ROOT}" ]; then
@@ -27,9 +27,9 @@ if [ -z "${ANDROID_SDK_ROOT}" ]; then
 fi
 
 _pkgname=android-qt5
-pkgname=${_pkgname}-${android_arch}
+pkgname=${_pkgname}-${_android_arch}
 pkgver=5.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
 url='https://www.qt.io'
@@ -51,7 +51,7 @@ depends=('java-runtime-headless>=7'
          'android-sdk-platform-tools')
 groups=('android-qt5')
 
-case "$android_arch" in
+case "$_android_arch" in
     arm*)
         optdepends=('android-google-apis-armv7a-eabi: AVD support'
                     'android-armv7a-eabi-system-image: AVD support')
@@ -79,6 +79,8 @@ source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkg
 md5sums=('152a8ade9c11fe33ff5bc95310a1bb64'
          '511eafcabe9e0c6210f1dc5e26daa5c8'
          '20d8bdd24102e9011b561b7361394728')
+
+_pref=/opt/android-libs/$_android_arch
 
 prepare() {
     cd ${_pkgfqn}
@@ -119,14 +121,15 @@ build() {
         export ANDROID_NDK_PLATFORM=android-$ANDROID_MINIMUM_PLATFORM
     fi
 
-    _pref=/opt/${_pkgname}/${android_arch}
-
     configue_opts="
         -confirm-license
         -opensource
         -silent
         -prefix ${_pref}
-        -docdir ${_pref}/doc
+        -archdatadir ${_pref}/lib/qt
+        -datadir ${_pref}/share/qt
+        -examplesdir ${_pref}/share/qt/examples
+        -testsdir ${_pref}/share/qt/tests
         -xplatform android-clang
         -nomake tests
         -nomake examples
@@ -140,11 +143,15 @@ build() {
         -no-pkg-config
         -qt-zlib
         -qt-freetype
-        -android-arch ${android_arch}
+        -android-arch ${_android_arch}
         -android-ndk-platform ${ANDROID_NDK_PLATFORM}"
 
+    [[ $ANDROID_DEBUG_BUILD ]] \
+        && configue_opts+=' -debug-and-release' \
+        || configue_opts+=' -release'
+
     # Platform specific patches
-    case "$android_arch" in
+    case "$_android_arch" in
         x86*)
              configue_opts+="
                  -no-sql-mysql
@@ -164,7 +171,7 @@ package() {
 
     make INSTALL_ROOT=${pkgdir} install
 
-    case "$android_arch" in
+    case "$_android_arch" in
         arm64-v8a)
             toolchain=aarch64-linux-android-4.9
             stripFolder=aarch64-linux-android
@@ -184,8 +191,9 @@ package() {
     esac
 
     STRIP=${ANDROID_NDK_ROOT}/toolchains/${toolchain}/prebuilt/linux-x86_64/${stripFolder}/bin/strip
-    find ${pkgdir}/opt/${_pkgname}/${android_arch}/lib -name 'lib*.so' -exec ${STRIP} {} \;
-    find ${pkgdir}/opt/${_pkgname}/${android_arch}/lib \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${STRIP} {} \;
-    find ${pkgdir}/opt/${_pkgname}/${android_arch}/plugins -name 'lib*.so' -exec ${STRIP} {} \;
-    sed -i '/QMAKE_PRL_BUILD_DIR/d' ${pkgdir}/opt/${_pkgname}/${android_arch}/lib/lib*.prl
+    find ${pkgdir}/${_pref}/bin ! -name '*.pl' -exec ${STRIP} {} \;
+    find ${pkgdir}/${_pref}/lib -name 'lib*.so' -exec ${STRIP} {} \;
+    find ${pkgdir}/${_pref}/lib \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${STRIP} {} \;
+    find ${pkgdir}/${_pref}/lib/qt/plugins -name 'lib*.so' -exec ${STRIP} {} \;
+    sed -i '/QMAKE_PRL_BUILD_DIR/d' ${pkgdir}/${_pref}/lib/lib*.prl
 }
