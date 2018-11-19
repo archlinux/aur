@@ -2,7 +2,7 @@
 
 pkgname=('la-capitaine-icon-theme')
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="La Capitaine is an icon pack — designed to integrate with most desktop environments."
 arch=('any')
 url="https://github.com/keeferrourke/$pkgname"
@@ -19,15 +19,15 @@ prepare() {
 
 package() {
   install -dm 755 "${pkgdir}"/usr/share/icons
-  cp -dr --no-preserve='ownership' $pkgname-$pkgver "${pkgdir}"/usr/share/icons/$pkgname-$pkgver
+  cp -dr --no-preserve='ownership' $pkgname-$pkgver "${pkgdir}"/usr/share/icons/la-capitaine
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
   find "${pkgdir}" -type f -exec chmod 644 {} +
   find ${pkgdir}/usr -type f -name '.directory' -delete
-  rm -rf "$pkgdir/usr/share/icons/$pkgname-$pkgver/.gitignore"
-  rm -rf "$pkgdir/usr/share/icons/$pkgname-$pkgver/.git"
-  rm -rf "$pkgdir/usr/share/icons/$pkgname-$pkgver/.github"
-  rm -rf "$pkgdir/usr/share/icons/$pkgname-$pkgver/.product"
+  rm -rf "$pkgdir/usr/share/icons/la-capitaine/.gitignore"
+  rm -rf "$pkgdir/usr/share/icons/la-capitaine/.git"
+  rm -rf "$pkgdir/usr/share/icons/la-capitaine/.github"
+  rm -rf "$pkgdir/usr/share/icons/la-capitaine/.product"
 }
 
 # vim: ts=2 sw=2 et:
