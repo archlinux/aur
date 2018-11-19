@@ -6,7 +6,7 @@
 
 pkgname=ffmpeg-qsv-git
 _srcname=ffmpeg
-pkgver=4.2.r92394.g75625c555c
+pkgver=4.2.r92486.g8f875a90c4
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with Intel Quick Sync Video hardware acceleration, git version)'
 arch=('x86_64')
@@ -31,7 +31,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg' 'ffmpeg-qsv' 'ffmpeg-git')
 conflicts=('ffmpeg')
-source=('git://source.ffmpeg.org/ffmpeg.git')
+source=('git+https://git.ffmpeg.org/ffmpeg.git')
 sha256sums=('SKIP')
 
 pkgver() {
