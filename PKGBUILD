@@ -45,7 +45,7 @@ check() {
 
 package() {
   cd "${srcdir}/${pkgname}/ndpi-netfilter"
-  install -Dm755 "ipt/libxt_ndpi.so" "${pkgdir}/usr/lib/iptables/libxt_ndpi.so"
+  install -Dm755 "ipt/libxt_ndpi.so" "${pkgdir}/usr/lib/xtables/libxt_ndpi.so"
   install -Dm644 "src/xt_ndpi.ko.gz" "${pkgdir}${_kernver}/extra/xt_ndpi.ko.gz"
   install -Dm644 "INSTALL" "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
