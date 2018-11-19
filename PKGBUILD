@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=bibtool-git
-pkgver=2.67
+pkgver=2.67.11.ga7f8b05
 pkgrel=1
 pkgdesc="Command line manipulation of BibTeX files - from git-repo"
 arch=('i686' 'x86_64')
@@ -13,22 +13,21 @@ conflicts=('bibtool')
 source=("git+https://github.com/ge-ne/bibtool")
 md5sums=('SKIP')
 options=('!makeflags')
-_gitname="bibtool"
 
 pkgver() {
-  cd "$srcdir"/"$_gitname"
+  cd ${pkgname%-git}
   git describe --tags | sed 's|[-_]|.|g' | cut -c9-
 }
 
 build() {
-  cd "$srcdir"/"$_gitname"
+  cd ${pkgname%-git}
   autoreconf
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname%-git}
   install -d "$pkgdir"/usr/bin
   make INSTALLPREFIX="$pkgdir/" install
 }
