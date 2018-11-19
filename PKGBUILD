@@ -6,7 +6,7 @@
 
 pkgbase=bind-rl
 pkgname=(bind-rl bind-rl-tools)
-_pkgver=9.13.2
+_pkgver=9.13.3
 pkgver=${_pkgver//-/.}
 pkgrel=1
 url='https://www.isc.org/software/bind/'
@@ -28,7 +28,7 @@ source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         'localhost.ip6.zone'
         '127.0.0.zone'
         'empty.zone')
-sha1sums=('bd9c44cd1a19aa100ebd1f9fe94ce47e47e0eca7'
+sha1sums=('eed41fd32887bd163935fe14b94afad4a8b287c2'
           'SKIP'
           'c5a2bcd9b0f009ae71f3a03fbdbe012196962a11'
           '9537f4835a1f736788d0733c7996a10db2d4eee4'
@@ -82,7 +82,7 @@ build() {
 }
 
 package_bind-rl() {
-  pkgdesc='The ISC DNS Server'
+  pkgdesc='The ISC DNS Server, with Response Rate Limit (RRL) enabled'
   provides=('dns-server')
   depends=('glibc' 'libxml2' 'libcap' 'libseccomp' 'openssl' 'geoip' 'json-c'
            'bind-tools')
