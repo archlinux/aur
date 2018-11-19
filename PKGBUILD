@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=auctex-git
-pkgver=12.1.12.g2d35adf6
+pkgver=12.1.102.gda4cb3dc
 pkgrel=1
 pkgdesc="TeX/LaTeX writing environment for Emacs - git checkout"
 arch=('any')
@@ -13,20 +13,19 @@ conflicts=('auctex')
 install=auctex.install
 source=('git://git.sv.gnu.org/auctex.git')
 md5sums=('SKIP')
-_gitname='auctex'
 
 pkgver() {
-  cd $srcdir/$_gitname
+  cd ${pkgname%-git}
   git describe --tags | cut -c9- | sed 's+[_-]+.+g'
 }
 
 prepare() {
-  cd $srcdir/$_gitname
+  cd ${pkgname%-git}
   cp ChangeLog.1 ChangeLog
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname%-git}
   ./autogen.sh
   ./configure --prefix=/usr --localstatedir=/var \
 	      --with-texmf-dir=$(dirname $(kpsewhich texmf.cnf))
@@ -34,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname%-git}
   make DESTDIR="$pkgdir" install
-  rm -rf $pkgdir/var/auctex
+  rm -rf "$pkgdir"/var/auctex
 }
