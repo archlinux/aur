@@ -6,6 +6,7 @@ pkgbase = vorta
 	arch = any
 	license = GPL
 	makedepends = python-pip
+	depends = borg
 	depends = python-appdirs
 	depends = python-apscheduler
 	depends = python-pyqt5
