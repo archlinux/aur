@@ -1,0 +1,5 @@
+*.swp
+*.xz
+pkg/
+src/
+tezos/
