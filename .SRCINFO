@@ -1,7 +1,7 @@
 pkgbase = python-privy-git
 	pkgdesc = An easy, fast lib to correctly password-protect your data
 	pkgver = r67.624bb58
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ofek/privy
 	arch = any
 	license = dual
@@ -10,11 +10,11 @@ pkgbase = python-privy-git
 	depends = python-argon2_cffi
 	provides = python-privy
 	source = python-privy-git::git+https://github.com/ofek/privy.git
-	source = https://github.com/ofek/privy/blob/master/LICENSE-MIT
-	source = https://github.com/ofek/privy/blob/master/LICENSE-APACHE
+	source = https://raw.githubusercontent.com/ofek/privy/master/LICENSE-MIT
+	source = https://raw.githubusercontent.com/ofek/privy/master/LICENSE-APACHE
 	md5sums = SKIP
-	md5sums = b7160396ff595e32809929d658725f44
-	md5sums = 97780513e711a2722777c45a835265d5
+	md5sums = 388b1e32639feccde602f679e55f1e26
+	md5sums = c095d68fd956360d26e013d3f3739e94
 
 pkgname = python-privy-git
 
