@@ -1,7 +1,7 @@
 # Maintainer: fatalis <fatalis@fatalis.pw>
 pkgname=ida-free
 pkgver=7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Freeware version of the world's smartest and most feature-full disassembler"
 arch=('x86_64')
 url='https://www.hex-rays.com/products/ida/'
@@ -12,7 +12,7 @@ _installer='idafree70_linux.run'
 source=("https://out7.hex-rays.com/files/${_installer}"
         'ida-free.desktop')
 sha256sums=('e38333d6cf844706ec48d154e64740b9b125c388f7b3a541104ba0a9a61321ab'
-            'SKIP')
+            '55f2ed3f165df6efb5f7975b17d8e53bee1d88cad33efb9d4422402213d17440')
 
 package() {
     install -d "${pkgdir}"/opt/${pkgname}
@@ -31,9 +31,9 @@ package() {
 
     # the installer needlessly makes a lot of files executable
     find "${pkgdir}"/opt/${pkgname} -type f -exec chmod -x {} \;
-    chmod +x "${pkgdir}"/opt/${pkgname}/ida64
+    chmod +x "${pkgdir}"/opt/${pkgname}/{ida64,assistant}
 
-    rm "${pkgdir}"/opt/${pkgname}/{uninstall*,Uninstall*,assistant}
+    rm "${pkgdir}"/opt/${pkgname}/{uninstall*,Uninstall*}
 
     install "${srcdir}"/ida-free.desktop "${pkgdir}"/usr/share/applications
     ln -s /opt/${pkgname}/appico64.png "${pkgdir}"/usr/share/icons/ida-free.png
