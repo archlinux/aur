@@ -6,6 +6,7 @@ pkgbase = xneur-devel-git
 	license = GPL
 	makedepends = git
 	depends = xosd
+	provides = xneur
 	source = https://github.com/AndrewCrewKuznetsov/xneur-devel
 	md5sums = 6d34f431d79aa1951cb139bb28108b25
 
