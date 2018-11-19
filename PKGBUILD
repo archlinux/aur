@@ -2,15 +2,15 @@
 pkgname=mikogo
 pkgver=4.5.120116
 _release=4.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Mikogo screen-sharing server'
 url=http://www.mikogo.com
 arch=(i686 x86_64)
 license=(unknown)
 if [ "$CARCH" = "x86_64" ]; then
-	depends=(lib32-dbus-core lib32-fontconfig lib32-gcc-libs lib32-glib2 lib32-glibc lib32-pcre lib32-libsm lib32-libxrender lib32-libxtst)
+	depends=(lib32-dbus lib32-fontconfig lib32-gcc-libs lib32-glib2 lib32-glibc lib32-pcre lib32-libsm lib32-libxrender lib32-libxtst)
 else
-	depends=(dbus-core fontconfig gcc-libs glib2 glibc pcre libsm libxrender libxtst)
+	depends=(dbus fontconfig gcc-libs glib2 glibc pcre libsm libxrender libxtst)
 fi
 options=(!strip)
 source=(http://download.mikogo4.com/mikogo.tar.gz)
