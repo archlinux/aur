@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-ugly-git
 	pkgdesc = GStreamer Multimedia Framework Ugly Plugins (git version)
-	pkgver = 1.15.0.1.r5492.gc5cddfce
+	pkgver = 1.15.0.1.r5505.g59d43105
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = i686
@@ -9,25 +9,20 @@ pkgbase = gst-plugins-ugly-git
 	makedepends = git
 	makedepends = python
 	makedepends = gtk-doc
-	makedepends = x264
 	makedepends = autoconf-archive
-	makedepends = valgrind
 	depends = libdvdread
-	depends = lame
 	depends = libmpeg2
 	depends = a52dec
 	depends = libsidplay
 	depends = libcdio
-	depends = libx264
-	depends = libx264-all
+	depends = x264
 	depends = opencore-amr
-	depends = mpg123
 	depends = gstreamer-git
 	depends = gst-plugins-base-git
 	provides = gst-plugins-ugly=1.15.0.1
 	conflicts = gst-plugins-ugly
-	source = gst-plugins-ugly-git::git://anongit.freedesktop.org/gstreamer/gst-plugins-ugly
-	source = submodule-gst-common::git://anongit.freedesktop.org/gstreamer/common
+	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-ugly.git
+	source = gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
