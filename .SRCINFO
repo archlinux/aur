@@ -1,0 +1,16 @@
+pkgbase = process-watcher-git
+	pkgdesc = Watch Linux processes and notify when they complete.
+	pkgver = r25.5d2037d
+	pkgrel = 1
+	url = https://github.com/arlowhite/process-watcher
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-dbus
+	optdepends = python-notify2: desktop notifications support
+	source = git+https://github.com/arlowhite/process-watcher.git
+	md5sums = SKIP
+
+pkgname = process-watcher-git
+
