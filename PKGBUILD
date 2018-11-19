@@ -1,7 +1,8 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=frei0r-plugins-git
-pkgver=1.6.1.r2.g410c43b
+_srcname=frei0r
+pkgver=1.6.1.r49.g07146e3
 pkgrel=1
 pkgdesc='A minimalistic plugin API for video effects (git version)'
 arch=('i686' 'x86_64')
@@ -12,18 +13,23 @@ makedepends=('git' 'opencv')
 optdepends=('opencv: for facebl0r and facedetect plugins')
 provides=('frei0r-plugins')
 conflicts=('frei0r-plugins')
-source=("$pkgname"::'git+https://github.com/dyne/frei0r.git')
+source=('git+https://github.com/dyne/frei0r.git')
 sha256sums=('SKIP')
 
+prepare() {
+    cd "$_srcname"
+    
+    ./autogen.sh
+}
+
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
+    
     printf '%s' "$(git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')"
 }
 
 build() {
-    cd "$pkgname"
-    
-    ./autogen.sh
+    cd "$_srcname"
     
     ./configure \
         --prefix='/usr' \
@@ -31,11 +37,14 @@ build() {
         --enable-shared='yes' \
         --enable-fast-install='yes' \
         --enable-cpuflags
+        
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     
     make
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
+    
     make DESTDIR="$pkgdir" install
 }
