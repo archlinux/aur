@@ -1,17 +1,17 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Richard Steinmetz <steinmetz.richard@googlemail.com>
 
 pkgname=taskbook
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Tasks, boards & notes for the command-line habitat'
 arch=(any)
-url=https://github.com/klauscfhq/taskbook
+url=https://github.com/klaussinani/taskbook
 license=(MIT)
 depends=(nodejs)
 makedepends=(npm)
 conflicts=(taskbook-git)
 source=($url/archive/v$pkgver.tar.gz)
-sha512sums=(5390f75890167ed18adcbab8af7763411ff7e66393b476928e24b0ae987dd2bde2e4ac68b69487b287d1f21abcc05fc22507156b91e4b03c2cbee0dbfbcadfb1)
+sha256sums=(c8abca6edf1284d0e374ce5e3abec5cb110a472d274c71d3de4ced58022ab893)
 
 build() {
   cd taskbook-$pkgver
