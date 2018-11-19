@@ -1,11 +1,11 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Richard Steinmetz <steinmetz.richard@googlemail.com>
 
 pkgname=taskbook-git
-pkgver=0.1.1+2+g9cc92e8
+pkgver=0.2.0+2+g8c39e15
 pkgrel=1
 pkgdesc='Tasks, boards & notes for the command-line habitat (git)'
 arch=(any)
-url=https://github.com/klauscfhq/taskbook
+url=https://github.com/klaussinani/taskbook
 license=(MIT)
 depends=(nodejs)
 makedepends=(git npm)
