@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=r3450.4b381787
+pkgver=r3882.88ad54aa
 pkgrel=1
 pkgdesc="A framework for high speed network packet I/O, using kernel bypass"
 arch=('any')
@@ -20,7 +20,7 @@ options=()
 install="netmap.install"
 source=("netmap.install" "git+https://github.com/luigirizzo/netmap")
 noextract=()
-md5sums=("62cbf2409535cf25cb4a185d4fa21525" "SKIP")
+md5sums=("af2eb6608bdad77d58616f7ef91d3b26" "SKIP")
 
 pkgver() {
         cd "$srcdir/${pkgname%-git}"
@@ -28,34 +28,40 @@ pkgver() {
 }
 
 build() {
-    msg "Downloading kernel sources..."
-    # Download and prepare kernel sources using asp, checking that the
-    # version is the same as the running kernel
-    mkdir -p $srcdir/asp
-    cd $srcdir/asp
-    asp update linux
-    asp export linux
-    NESTEDDIR="$srcdir/asp/linux"
-    cd $NESTEDDIR
-    grep "_srcver[ ]*=" PKGBUILD > .ksver
-    KSVER=$(sed 's|_srcver[ ]*=[ ]*||g' .ksver | sed 's|\([1-9]\.[0-9]\+\).*|\1|g')
-    rm .ksver
-    RKVER=$(uname -r | sed 's|\.[^.]*$||')
-    if [ "$KSVER" != "$RKVER" ]; then
-        msg "Kernel sources version ($KSVER) differs from running kernel version ($RKVER): Cannot continue"
+    readonly PKVER=$(pacman -Qi linux | grep Version | awk '{print $3}' | sed 's|\([1-9]\.[0-9]\+\).*|\1|g')
+    readonly RKVER=$(uname -r | sed 's|\.[^.]*$||')
+    if [ "$PKVER" != "$RKVER" ]; then
+        msg "Pacman kernel version ($PKVER) differs from running kernel version ($RKVER)."
+        msg "Please reboot the machine and try to rebuild this package."
         return 1
     fi
-    msg "Building on $KSVER"
 
-    echo "SRCDEST=$SRCDEST"
-    echo "SRCPKGDEST=$SRCPKGDEST"
-    echo "PKGDEST=$PKGDEST"
-    echo "BUILDDIR=$BUILDDIR"
-    # We force some makepkg variables, trying to ovverride yaourt default behaviour,
-    # which is to download sources in $srcdir/../linux instead of the place where
-    # makepkg is invoked
-    SRCDEST=$NESTEDDIR SRCPKGDEST=$NESTEDDIR PKGDEST=$NESTEDDIR BUILDDIR=$NESTEDDIR \
-                                        makepkg --nobuild --skippgpcheck
+    # Fetch the kernel sources corresponding to the running kernel.
+    msg "Downloading kernel sources (v${RKVER})..."
+    cd $srcdir
+    wget https://www.kernel.org/pub/linux/kernel/v${RKVER:0:1}.x/linux-${RKVER}.tar.gz
+    tar xzf linux-${RKVER}.tar.gz
+
+    # Prepare the kernel sources for building external modules.
+    cd linux-${RKVER}
+    readonly GCC_MAJOR_VERSION=$(echo '#include <stdio.h>
+void main() { printf("%u\n", __GNUC__); }' | gcc -x c - -o /tmp/getgccversion  && /tmp/getgccversion)
+    msg "GCC major version is ${GCC_MAJOR_VERSION}"
+    compiler_file=compiler-gcc${GCC_MAJOR_VERSION}.h
+    if [ ! -f include/linux/${compiler_file} -a ! -h include/linux/${compiler_file} ]
+    then
+        # Fix compilation of old kernels with recent GCC
+        pushd include/linux
+        if [ -f compiler-gcc5.h -a $GCC_MAJOR_VERSION -gt 5 ]
+        then
+            ln -sv compiler-gcc5.h ${compiler_file}
+        else
+            ln -sv compiler-gcc4.h ${compiler_file}
+        fi
+    popd
+    fi
+    make allmodconfig
+    make modules_prepare
     msg "Kernel sources are ready"
 
     # Build the netmap kernel module and all modified drivers, using the
@@ -71,15 +77,28 @@ build() {
     msg "Starting to build netmap and netmap applications"
     cd "$srcdir/netmap"
     msg "PREFIX=$pkgdir/usr"
-    msg "KERNEL-SOURCES=$NESTEDDIR/src/linux-$KSVER"
-    msg "INSTALL-MOD-PATH=$pkgdir"
-    ./configure --kernel-sources=$NESTEDDIR/src/linux-$KSVER \
-                --no-ext-drivers \
+    msg "KERNEL_SOURCES=$srcdir/linux-${RKVER}"
+    msg "INSTALL_MOD_PATH=$pkgdir"
+    ./configure --kernel-sources="$srcdir/linux-${RKVER}" \
+                --no-drivers=mlx5 \
                 --driver-suffix="_netmap" \
                 --install-mod-path="$pkgdir/usr" \
                 --prefix="$pkgdir/usr"
-    make || return 1
+    make
     msg "Build complete"
+}
+
+check() {
+    cd "$srcdir/netmap"
+    sudo rmmod netmap > /dev/null 2>&1 || true
+    sudo insmod netmap.ko || insmod_failed="1"
+    if [ -n "$insmod_failed" ]; then
+        msg "Error: Cannot load netmap to run unit tests."
+        msg "Please stop any running netmap applications or reboot the machine."
+        return 1
+    fi
+    sudo make unitest
+    sudo rmmod netmap
 }
 
 package() {

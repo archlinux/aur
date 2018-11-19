@@ -1,6 +1,5 @@
 post_common() {
-    depmod -a
-    KVER2=$(uname -r | sed 's/\.[0-9]\+-[0-9]\+//')
+    #depmod -a
     echo ">>> Netmap patched NIC drivers have been installed with"
     echo ">>> a '_netmap.ko' suffix, so that they don't replace the"
     echo ">>> official ones provided by the linux package."
