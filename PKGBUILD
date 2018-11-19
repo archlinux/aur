@@ -1,21 +1,24 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.22.3
+pkgver=1.23.3
 pkgrel=1
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
 license=(MPL2)
-depends=(gtk2 gtk3 libxt startup-notification dbus-glib nss libvpx libevent
-         hunspell hunspell-en_US)
-makedepends=(unzip zip diffutils python2 yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm libnotify gtk2 gtk3 wget pulseaudio)
+depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
+         ttf-font libpulse sqlite libvpx icu libevent)
+makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
+             inetutils xorg-server-xvfb autoconf2.13 rust clang llvm
+             jack gtk2 python nodejs python2-psutil cbindgen libnotify
+             wget pulseaudio)
+optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
-sha256sums=('09e6677fb109363a3d2fd6c676315ee831d8c5901dc420e351f10f0d797432bd')
-options=(!emptydirs !makeflags !strip)
+sha256sums=('635ec83abcda27f09b6203ec919ab8aa50548659a637986f099080926d756a3b')
+options=(!emptydirs !makeflags)
 
 prepare() {
   cd "$srcdir/${_pkgname}-$pkgver/mozilla-release"
@@ -73,18 +76,18 @@ ac_add_options --disable-tests
 ac_add_options --disable-parental-controls
 
 # System libraries
-ac_add_options --with-system-zlib
+ac_add_options --enable-pulseaudio
+ac_add_options --enable-system-ffi
+ac_add_options --enable-system-sqlite
 ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
+ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
+ac_add_options --with-system-png
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-libevent
-ac_add_options --with-system-png
-ac_add_options --enable-pulseaudio
-ac_add_options --enable-system-sqlite
-ac_add_options --enable-system-ffi
+ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --enable-startup-notification
@@ -105,6 +108,8 @@ build() {
 
   # Uncomment the following line to have a german build
   # export CQZ_BUILD_DE_LOCALIZATION=1
+
+  export MOZ_NOSPAM=1
 
   ./magic_build_and_package.sh
 }
