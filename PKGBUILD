@@ -3,7 +3,7 @@
 # Contributor: mezcal
 
 pkgname=rspamd
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=2
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
@@ -13,7 +13,8 @@ license=(BSD)
 depends=(file glib2 icu libevent luajit sqlite)
 makedepends=(cmake ragel ninja)
 
-backup=('etc/rspamd/2tld.inc'
+backup=('etc/logrotate.d/rspamd'
+		'etc/rspamd/2tld.inc'
 		'etc/rspamd/actions.conf'
 		'etc/rspamd/cgp.inc'
 		'etc/rspamd/common.conf'
@@ -85,6 +86,7 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/scores.d/statistics_group.conf'
 		'etc/rspamd/scores.d/subject_group.conf'
 		'etc/rspamd/scores.d/surbl_group.conf'
+		'etc/rspamd/scores.d/whitelist_group.conf'
 		'etc/rspamd/settings.conf'
 		'etc/rspamd/spf_dkim_whitelist.inc'
 		'etc/rspamd/statistic.conf'
@@ -103,7 +105,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/arc
 		"fixes-${pkgver}.diff"
 		)
 
-sha256sums=('cd25dab6fbd2b20b3bf0c871b133d08a5107696e012c798c6e93cd9e53537555'
+sha256sums=('6cacf6ea0cd72eebc085aa70acef9b3c928c100c9d05232e760b94fe41ac90df'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
             '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f'
             'e705cc908a8e081e4a830cfec5acfc38f00125c5281bb074c939ba3b4a7a8c8b'
