@@ -20,7 +20,7 @@ options=()
 install="netmap.install"
 source=("netmap.install" "git+https://github.com/luigirizzo/netmap")
 noextract=()
-md5sums=("af2eb6608bdad77d58616f7ef91d3b26" "SKIP")
+md5sums=("c3c8b895640a32f3085cc82c2c57a526" "SKIP")
 
 pkgver() {
         cd "$srcdir/${pkgname%-git}"
@@ -108,6 +108,8 @@ package() {
     make install
     mv "$pkgdir/usr/bin/bridge" "$pkgdir/usr/bin/netmap-bridge"
     mv "$pkgdir/usr/bin/bridge-b" "$pkgdir/usr/bin/netmap-bridge-b"
+    mv "$pkgdir/usr/share/man/man8/bridge.8" "$pkgdir/usr/share/man/man8/netmap-bridge.8"
+    rm ${pkgdir}/usr/lib/modules/`uname -r`/modules.*
 }
 
 # vim:set ts=2 sw=2 et:

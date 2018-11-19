@@ -19,7 +19,7 @@ pkgbase = netmap
 	depends = glibc
 	source = netmap.install
 	source = git+https://github.com/luigirizzo/netmap
-	md5sums = af2eb6608bdad77d58616f7ef91d3b26
+	md5sums = c3c8b895640a32f3085cc82c2c57a526
 	md5sums = SKIP
 
 pkgname = netmap
