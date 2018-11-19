@@ -4,7 +4,7 @@ pkgname='sat-libervia-hg'
 _realname=libervia
 _pyjamasname=pyjamas
 venv_pyjama='venv'
-pkgver=0.6.1.r1111.4d1c4bd4931a
+pkgver=0.6.1.r1134.28789926852a
 _version=0.6.1
 pkgrel=1
 url="http://salut-a-toi.org/"
@@ -29,11 +29,8 @@ pkgver() {
 }
 
 pyjamas_build(){
-    virtualenv $venv_pyjama -ppython2.7 --system-site-packages
     cd $_pyjamasname
-    source $srcdir/$venv_pyjama/bin/activate
     python2.7 bootstrap.py
-    deactivate
 }
 
 build() {
@@ -41,7 +38,13 @@ build() {
     cd "$srcdir/$_realname"
     PYJSBUILD_PATH="$srcdir/pyjamas/bin/"
     PATH=$PATH:$PYJSBUILD_PATH LIBERVIA_INSTALL=arch NO_PREINSTALL_OPT=nopreinstall SAT_INSTALL=nopreinstall python2 setup.py install --root="$srcdir/fakeinstall/" --prefix=/usr --optimize=1
-    cp -r $srcdir/$_realname/src/{browser,pages,common,server,twisted} $srcdir/fakeinstall/usr/lib/python2.7/site-packages/libervia
+	# Compile pyjs
+    mkdir -p html
+	mkdir -p build/tmp_dir
+	cd browser
+    $PYJSBUILD_PATH/pyjsbuild libervia_main.py  -d -I /usr/lib/python2.7/site-packages/ --no-compile-inplace -o ../html
+    $PYJSBUILD_PATH/pyjsbuild libervia_test.py -d -I /usr/lib/python2.7/site-packages/ --no-compile-inplace -o ../html
+    cp -r $srcdir/$_realname/{$_realname,browser,twisted} $srcdir/fakeinstall/usr/lib/python2.7/site-packages/libervia
 }
 
 package(){
@@ -54,15 +57,12 @@ package(){
     install -dm755 usr/share/doc
     install -dm755 usr/share/libervia
     install -dm755 usr/lib/python2.7/site-packages/twisted/plugins
-    # HTML destination
-    install -dm755 usr/share/libervia/html
     cd "$srcdir/fakeinstall"
-    cp "$srcdir/libervia/src/libervia.sh" "$pkgdir/usr/bin/libervia"
+    cp "$srcdir/$_realname/bin/libervia" "$pkgdir/usr/bin/libervia"
     mv -v usr/share/doc/libervia "$pkgdir/usr/share/doc/"
     mv -v usr/share/libervia "$pkgdir/usr/share/libervia/"
     mv -v usr/lib/python2.7/site-packages/libervia "$pkgdir/usr/lib/python2.7/site-packages/"
-    mv -v usr/lib/python2.7/site-packages/libervia-0.7.0a2.post1-py2.7.egg-info "$pkgdir/usr/lib/python2.7/site-packages/"
     mv -v usr/lib/python2.7/site-packages/twisted/plugins/* "$pkgdir/usr/lib/python2.7/site-packages/twisted/plugins/"
-    mv -v "$srcdir/libervia/html" "$pkgdir/usr/share/libervia/"
-    mv -v "$srcdir/libervia/themes" "$pkgdir/usr/share/libervia"
+    mv -v "$srcdir/$_realname/html" "$pkgdir/usr/share/libervia/"
+    mv -v "$srcdir/$_realname/themes" "$pkgdir/usr/share/libervia"
  }

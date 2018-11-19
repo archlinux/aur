@@ -1,5 +1,5 @@
 pkgbase = sat-libervia-hg
-	pkgver = 0.6.1.r1111.4d1c4bd4931a
+	pkgver = 0.6.1.r1134.28789926852a
 	pkgrel = 1
 	url = http://salut-a-toi.org/
 	install = sat-libervia-hg.install
