@@ -1,56 +1,58 @@
 # Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
-# NOTE:
-# This is a header-only library. No dependecy is needed and no build is necessary.
-# If you want to build the checks/tests, uncomment the blocks in checkdepends, build() and check().
-
 pkgname=fp16-git
+_srcname=FP16
 pkgver=r40.34d4bf0
-pkgrel=2
+pkgrel=3
 pkgdesc='Header-only library for conversion to/from half-precision floating point formats (git version)'
 arch=('any')
 url='https://github.com/Maratyszcza/FP16/'
 license=('MIT')
 makedepends=('git')
-#checkdepends=(
-#     official repositories:
-#        'python2' 'ninja'
-#     AUR:
-#        'confu2-git' 'python2-peachpy-git'
-#)
+checkdepends=(
+     # official repositories:
+        'python2' 'ninja'
+     # AUR:
+        'confu2-git' 'python2-peachpy-git'
+)
 provides=('fp16')
 conflicts=('fp16')
-source=("$pkgname"::'git+https://github.com/Maratyszcza/FP16.git')
+source=('git+https://github.com/Maratyszcza/FP16.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, no tags available
     printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-# uncomment this block to build and run the checks/tests
-#build() {
-#    cd "$pkgname"
-#    confu2 setup
-#    python2 ./configure.py
-#    sed -i '/peachpy[[:space:]]=[[:space:]]python/s/python/python2/' build.ninja # use python2
-#    ninja
-#}
-#
-#check() {
-#    cd "${pkgname}/bin"
-#    local _test
-#    for _test in *
-#    do
-#        printf '%s\n' "  -> Running test '${_test}'..."
-#        ./"$_test"
-#    done
-#}
+check() {
+    cd "$_srcname"
+    confu2 setup
+    python2 ./configure.py
+    sed -i '/peachpy[[:space:]]=[[:space:]]python/s/python/python2/' build.ninja # use python2
+    ninja
+    
+    cd bin
+    local _test
+    for _test in *
+    do
+        if [[ "$_test" = alt-to-fp32*-psimd ]] ||
+           [[ "$_test" = ieee-to-fp32*-psimd ]]
+        then
+            # skip broken tests
+            printf '%s\n' "  -> Skipping test '${_test}'..."
+            continue
+        else
+            printf '%s\n' "  -> Running test '${_test}'..."
+            ./"$_test"
+        fi
+    done
+}
 
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # headers
     mkdir -p "${pkgdir}/usr/include/fp16"
