@@ -1,8 +1,8 @@
 pkgbase = libpciaccess-git
 	pkgdesc = X11 PCI access library (git version)
-	pkgver = 0.14.r0.g13854f6
+	pkgver = 0.14.r1.g44f3dd0
 	pkgrel = 1
-	url = http://cgit.freedesktop.org/xorg/lib/libpciaccess/
+	url = https://cgit.freedesktop.org/xorg/lib/libpciaccess/
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = libpciaccess-git
 	depends = glibc
 	provides = libpciaccess
 	conflicts = libpciaccess
-	source = libpciaccess-git::git://anongit.freedesktop.org/xorg/lib/libpciaccess
+	source = git+https://anongit.freedesktop.org/git/xorg/lib/libpciaccess.git
 	sha256sums = SKIP
 
 pkgname = libpciaccess-git

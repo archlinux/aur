@@ -1,41 +1,46 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Det <nimetonmaili g-mail>
 # Contributor: Matt Parnell /ilikenwf <parwok@gmail.com>
 # Contributor: Jonathan <eyeswide@gmail.com>
 
 pkgname=libpciaccess-git
-pkgver=0.14.r0.g13854f6
+_srcname=libpciaccess
+pkgver=0.14.r1.g44f3dd0
 pkgrel=1
 pkgdesc='X11 PCI access library (git version)'
 arch=('i686' 'x86_64')
-url='http://cgit.freedesktop.org/xorg/lib/libpciaccess/'
+url='https://cgit.freedesktop.org/xorg/lib/libpciaccess/'
 license=('custom')
 depends=('glibc')
 makedepends=('git' 'xorg-util-macros')
 provides=('libpciaccess')
 conflicts=('libpciaccess')
-source=("$pkgname"::'git://anongit.freedesktop.org/xorg/lib/libpciaccess')
+source=('git+https://anongit.freedesktop.org/git/xorg/lib/libpciaccess.git')
 sha256sums=('SKIP')
 
+prepare() {
+    cd "$_srcname"
+    
+    autoreconf -fiv
+}
+
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^libpciaccess\.//;s/^v//'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
-    ./autogen.sh \
-        --prefix='/usr' \
-        --sysconfdir='/etc'
+    ./configure --prefix='/usr' --sysconfdir='/etc'
     
     make
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     make DESTDIR="$pkgdir" install
     
