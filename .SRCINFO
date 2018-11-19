@@ -9,11 +9,11 @@ pkgbase = doorpi
 	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
-	depends = python-pyserial
-	depends = python-watchdog
-	optdepends = python-piface: Use Piface pins as event sources / actors
+	optdepends = python-piface: Use Piface IO expander
 	optdepends = python-picamera: Take and mail snapshots; stream video
-	optdepends = python-raspberry-gpio: Use GPIO header as event sources / actors
+	optdepends = python-raspberry-gpio: Use onboard GPIO header
+	optdepends = python-pyserial: Use serially connected peripherals like RFID
+	optdepends = python-watchdog: Use files as virtual IO pins
 	options = !strip
 	backup = etc/doorpi/doorpi.ini
 	source = doorpi::git+https://github.com/Wuestengecko/DoorPi.git#tag=v3.0beta1
