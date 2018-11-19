@@ -23,12 +23,6 @@ build() {
   go build -v
 }
 
-check() {
-  cd src/${url#*//}
-  export GOPATH="$srcdir"
-  go test
-}
-
 package() {
   cd gitleaks-$pkgver
   install -Dt "$pkgdir"/usr/bin gitleaks
