@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://xash.su/"
 license=('GPL3')
 depends_i686=('freetype2' 'fontconfig' 'sdl2' 'vgui')
-depends_x86_64=('lib32-freetype2' 'lib32-fontconfig' 'lib32-sdl2' 'lib32-vgui')
+depends_x86_64=('lib32-freetype2' 'lib32-fontconfig' 'lib32-sdl2' 'lib32-vgui' 'xash3d-hlsdk')
 makedepends=('make' 'binutils' 'cmake')
 makedepends_i686=('gcc')
 makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
@@ -59,8 +59,8 @@ package() {
 }
 
 md5sums=('SKIP'
-    'e2507dc0ca2fcd5de9c8d485fa0382ae'
-    'd82f1f869074b46ee8c5ac8053dcb275'
-    'c44e1cb53d58f7691cec9a82a8e29289'
-    '60d714544048b0383a7e79cfaed96d78'
-'409462da6be03f004e84452cfcb93d6b')
+         '327d891deabd3c45f744a6d73919b9a0'
+         'd82f1f869074b46ee8c5ac8053dcb275'
+         'c44e1cb53d58f7691cec9a82a8e29289'
+         '60d714544048b0383a7e79cfaed96d78'
+         '409462da6be03f004e84452cfcb93d6b')

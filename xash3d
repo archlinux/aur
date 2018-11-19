@@ -1,4 +1,9 @@
 #!/bin/sh
 . /etc/conf.d/xash3d
-/usr/lib32/xash3d/xash3d
 
+if [ ! -f "$XASH3D_BASEDIR/valve/dlls/hl.so" ]; then
+	ln -sr /usr/lib32/valve/dlls/hl.so "$XASH3D_BASEDIR"/valve/dlls/hl.so
+	ln -sr /usr/lib32/valve/cl_dlls/client.so "$XASH3D_BASEDIR"/valve/cl_dlls/client.so
+fi
+
+/usr/lib32/xash3d/xash3d
