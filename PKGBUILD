@@ -1,7 +1,7 @@
 # Maintainer: Carlos Mogas da Silva <r3pek@r3pek.org>
 
 pkgname=docker-machine-driver-scaleway
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Scaleway driver for Docker Machine "
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('docker-machine')
 makedepends=('go' 'git')
 source=("https://github.com/scaleway/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('6531850db31c05caab7afdff1ca1d382e140a16cedc3e2750d82c4a03fafd542')
+sha256sums=('47fdd25c2439b2dcc26700b8dc833a768b6ab10c8dfe9964e9c0aa52ad574b2f')
 
 prepare() {
   mkdir -p "$srcdir/src/github.com/scaleway/"
