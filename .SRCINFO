@@ -1,6 +1,6 @@
 pkgbase = emacs-exwm-git
 	pkgdesc = Use emacs as windowmanager
-	pkgver = r367.87db8b4
+	pkgver = r425.786c2b4
 	pkgrel = 1
 	url = https://github.com/ch11ng/exwm.git
 	arch = any
