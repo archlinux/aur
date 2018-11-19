@@ -1,0 +1,13 @@
+pkgbase = xneur-devel-git
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/AndrewCrewKuznetsov/xneur-devel
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = xosd
+	source = https://github.com/AndrewCrewKuznetsov/xneur-devel
+	md5sums = 6d34f431d79aa1951cb139bb28108b25
+
+pkgname = xneur-devel-git
+
