@@ -3,7 +3,7 @@
 _pkgname=frida-tools
 pkgname=python2-$_pkgname
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="CLI tools for Frida. Python 2 version from PyPi."
 arch=('i686' 'x86_64')
 url="http://www.frida.re"
@@ -13,6 +13,12 @@ source=("https://files.pythonhosted.org/packages/source/f/${_pkgname}/${_pkgname
         "COPYING")
 sha256sums=('d059760a06a4b01738685973502ea0655f1a49cc50305573c3264f06c1683942'
             '5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2')
+
+prepare() {
+  cd "$srcdir/frida-tools-$pkgver"
+  find ./ -type f -exec sed -i -e 's/prompt_toolkit/prompt_toolkit1/g' {} \;
+  find ./ -type f -exec sed -i -e 's/prompt-toolkit/prompt-toolkit1/g' {} \;
+}
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
