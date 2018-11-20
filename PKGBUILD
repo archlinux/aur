@@ -76,7 +76,7 @@ sha256sums=('01bf70ce74da534a4e15ba0ae7e9856bfbb23d2f7ae315be83d71096615a16fb'
             '2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9'
             '9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67')
 
-# Conflicts with MFC-420CN
+# Conflicts with MFC-410CN
 # Must be same length as
 #         'Brother'
 _conflict='bmf420c'
@@ -233,7 +233,7 @@ package() {
 
   # Change lib name to prevent conflicts with other printers that use the same one
   local _f1='libbrcompij2'
-  local _f2="brother-${_brotherlnd}"
+  local _f2="${_f1}-${_brotherlnd}"
   local _fp='' # blank enables name change, pound sign # disables
 
   # Execute LPR POSTIN. These libs will probably cause a conflict with other printers.
@@ -243,24 +243,18 @@ package() {
     local _postin="${source[1]##*/}"
   fi
 
-  if [ -z "${_fp}" ]; then
-    install -d "${pkgdir}/usr/lib/${_f2}"
-  fi
-
   grep -ae '^ln -s' "${_postin}" | \
   sed -e 's:/usr/lib/::' \
       -e "s:/usr/lib/:${pkgdir}&:g" \
       -e '# Prevent lib conflicts with similar printers' \
-      -e "${_fp}s:${_f1}:${_f2}/${_f1}:g" \
-      -e "${_fp}s:${_f2}/${_f1}:${_f1}:" \
+      -e "${_fp}s:${_f1}:${_f2}:g" \
   | bash -e -u --
 
   if [ -z "${_fp}" ]; then
-    mv "${pkgdir}/usr/lib/${_f1}.so.1.0.2" "${pkgdir}/usr/lib/${_f2}/"
+    mv "${pkgdir}/usr/lib/${_f1}.so.1.0.2" "${pkgdir}/usr/lib/${_f2}.so.1.0.2"
     grep -aqFe "${_f1}.so.1" "${pkgdir}/usr/share/${_conflict}/lpd/rastertobrij2" || echo "${}"
-    # Without the full path ldd reports file not found
-    # It must not be in /usr/lib or ldconfig cache makes libbrcompij2.so.1 not owned by package
-    patchelf --replace-needed "${_f1}.so.1" "/usr/lib/${_f2}/${_f1}.so.1" "${pkgdir}/usr/share/${_conflict}/lpd/rastertobrij2"
+    patchelf --replace-needed "${_f1}.so.1" "${_f2}.so.1" "${pkgdir}/usr/share/${_conflict}/lpd/rastertobrij2"
+    patchelf --set-soname "${_f2}.so.1" "${pkgdir}/usr/lib/${_f2}.so.1.0.2"
   fi
 
   # Ensure we got a ppd and a filter for CUPS
