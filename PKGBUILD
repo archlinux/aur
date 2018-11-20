@@ -9,7 +9,7 @@ depends=('openvpn' 'net-tools')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn')
 source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver}_amd64.deb")
-sha256sums=('7013e7d0c9e51cc604147eafc61b5c47c05a3e347c47ff556b3d5ec7f3717831')
+sha256sums=('5fb4f832ce7997b34f90a0671bf3806b44d35c5c24a664d06b40234999dd97d4')
 
 package() {
     bsdtar -O -xf "nordvpn_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
