@@ -1,0 +1,21 @@
+pkgbase = dogcom-git
+	pkgdesc = Drcom-generic implementation in C.
+	pkgver = 1.6.2.r2.g6f5f550
+	pkgrel = 1
+	url = https://github.com/mchome/dogcom
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	provides = dogcom
+	conflicts = dogcom
+	source = dogcom-git::git+https://github.com/mchome/dogcom.git
+	source = dogcom-d.service
+	source = dogcom-p.service
+	md5sums = SKIP
+	md5sums = 4c0445b9e9bea563f95de7201d366a36
+	md5sums = 41cf29926b27c72c8cdead133e396900
+
+pkgname = dogcom-git
+

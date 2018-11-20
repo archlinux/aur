@@ -1,0 +1,11 @@
+[Unit]
+Description=dogcom
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dogcom -m dhcp -c /etc/dogcom.d/dhcp.conf -v
+
+[Install]
+WantedBy=multi-user.target
