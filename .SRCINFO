@@ -1,15 +1,15 @@
 pkgbase = sse-file-pc
-	pkgdesc = File encryption
-	pkgver = 12RF3Fc
-	pkgrel = 1
+	pkgdesc = Cross-platform java tool for file encryption
+	pkgver = 14R2C
+	pkgrel = 2
 	url = https://paranoiaworks.mobi/
 	arch = any
 	license = Apache
 	license = MIT
 	depends = java-runtime>=8
-	source = https://annimon.com/files/sse/SSEFilePC.zip
-	source = https://annimon.com/files/sse/icon.png
-	source = https://annimon.com/files/sse/sse.desktop
+	source = https://annimon.com/aur/sse/SSEFilePC.zip
+	source = https://annimon.com/aur/sse/icon.png
+	source = https://annimon.com/aur/sse/sse.desktop
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP

@@ -1,15 +1,15 @@
 # Maintainer: Senderman <doletov.fyodor@yandex.ru>
 pkgname=sse-file-pc
-pkgver=12RF3Fc
-pkgrel=1
-pkgdesc="File encryption"
+pkgver=14R2C
+pkgrel=2
+pkgdesc="Cross-platform java tool for file encryption"
 arch=('any')
 url="https://paranoiaworks.mobi/"
 license=('Apache' 'MIT')
 depends=('java-runtime>=8')
-source=("https://annimon.com/files/sse/SSEFilePC.zip"
-"https://annimon.com/files/sse/icon.png"
-"https://annimon.com/files/sse/sse.desktop"
+source=("https://annimon.com/aur/sse/SSEFilePC.zip"
+"https://annimon.com/aur/sse/icon.png"
+"https://annimon.com/aur/sse/sse.desktop"
 )
 md5sums=('SKIP' 'SKIP' 'SKIP')
 package() {
