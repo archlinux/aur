@@ -1,14 +1,15 @@
 # Maintainer: Mark E.A. <evalapply ``dot'' aur ``at'' airmail ``dot'' cc>
 
 pkgname=vlfeat
-pkgver=0.9.20
+pkgver=0.9.21
 pkgrel=1
 pkgdesc='An open source library of popular computer vision algorithms specializing in image understanding and local features extraction and matching'
 arch=('x86' 'x86_64')
 url='http://www.vlfeat.org'
 license=('BSD')
 source=("https://github.com/vlfeat/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d85945b05b782d612bd5208fdbc2d9f74ef2dcf138a17ad8ffc9864edb79ff54')
+sha256sums=('221d7fb5103f004cc90201307fd1acb080c0caf5c2c26435ba1d5307c07e8cce')
+sha512sums=('ba7f83392d778a4a8c121aed10ae98693d8d61ae127e627322324c245cd1984ab8c0c3e3afe743075e7c022b3efb78e7dfc653bc488c8f19c93b3aa0f87e803e')
 
 build() {
 	cd "$pkgname-$pkgver"
