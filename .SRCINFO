@@ -1,6 +1,6 @@
 pkgbase = linux-mainline
 	pkgver = 4.20rc3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.org/linux.git/log/?h=v
 	arch = x86_64
 	license = GPL2
