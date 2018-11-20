@@ -1,0 +1,223 @@
+#!/bin/bash
+
+#To use:
+#source simona-zshrc  #inside .zshrc
+#I think are required powerline specific fonts
+
+# -------------------------------------------------------------------------------------------
+# Tema agnoster modificato derivazione powerline oh-my-zsh/themes/agnoster-simona-zsh-theme
+# -------------------------------------------------------------------------------------------
+
+CURRENT_BG='NONE' #ok avvio sequenza gestione cambio colori
+#CURRENT_BG='white' #angolino bianco all'inzio
+#CURRENT_BG='black' #come none
+
+#CURRENT_FG='black' #ok ma non più usato
+#CURRENT_FG='white' #commentato fin dall'inizio
+
+# Special Powerline characters
+
+() {
+  local LC_ALL="" LC_CTYPE="en_US.UTF-8"
+  # NOTE: This segment separator character is correct.  In 2012, Powerline changed
+  # the code points they use for their special characters. This is the new code point.
+  # If this is not working for you, you probably have an old version of the
+  # Powerline-patched fonts installed. Download and install the new version.
+  # Do not submit PRs to change this unless you have reviewed the Powerline code point
+  # history and have new information.
+  # This is defined using a Unicode escape sequence so it is unambiguously readable, regardless of
+  # what font the user is viewing this source code in. Do not replace the
+  # escape sequence with a single literal character.
+  # Do not change this! Do not make it '\u2b80'; that is the old, wrong code point.
+
+  # 
+  SEGMENT_SEPARATOR=$'\ue0b0'
+  #SEGMENT_SEPARATOR=''
+  #SEGMENT_SEPARATOR='►' #windows
+}
+
+# ==============================================================================================================
+# TO-DO provare a cambiare ordine e scrivere il '>' dopo la scritta e non prima del sucessivo dato
+# ==============================================================================================================
+
+# Begin a segment
+# Takes two arguments, background and foreground. Both can be omitted,
+# rendering default background/foreground.
+prompt_segment() {
+  #legge colore di sfondo $1 e testo $2 per il testo da scrivere $3
+  local bg fg
+  [[ -n $1 ]] && bg="%K{$1}" || bg="%k" #carica colore sfondo da $n o predefinito (background)
+  [[ -n $2 ]] && fg="%F{$2}" || fg="%f" #carica colore caratteri da $n o predefinito (foreground)
+
+  # scrive separatore iniziale '>' #echo '\ue0b0' se cambia colore di sfondo
+  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
+    echo -n " %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} " #scrive separatore usando precedente colore di sfondo
+  else
+    echo -n "%{$bg%}%{$fg%} " #imposta colore (senza prima mettere separatore)
+  fi
+  CURRENT_BG=$1 #poiché la chiusura > verrà fatta all'inizio della riga successiva questo riporta il colore da usare
+
+  # scrive testo
+  [[ -n $3 ]] && echo -n $3 #scrive stringa dati e termina
+}
+
+# End the prompt, closing any open segments
+prompt_end() {
+  # scrive sepratore finale '>' #echo '\ue0b0'
+  if [[ -n $CURRENT_BG ]]; then
+    echo -n " %{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+  else
+    echo -n "%{%k%}"
+  fi
+  echo -n "%{%f%}"
+  CURRENT_BG='' #chiude storico colore prossima '>'
+}
+
+### Prompt components
+# Each component will draw itself, and hide itself if no information needs to be shown
+
+# Status:
+# - was there an error
+# - am I root
+# - are there background jobs?
+prompt_status() {
+
+  #crea lista simboli
+  local symbols
+  symbols=()
+  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
+  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡" #power user (root)
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
+
+  #[[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}$CROSS"
+  #[[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}$LIGHTNING"
+  #[[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}$GEAR"
+  #echo -e "\ue0a0\ue0a1\ue0a2\ue0b0\ue0b1\ue0b2"
+  #       
+  #echo "<2b80> ± <2b60> ➦ ✔ ✘ ⚡"
+  #<2b80> ± <2b60> ➦ ✔ ✘ ⚡
+  #  ✚ ● ⚙
+  # Characters
+  #SEGMENT_SEPARATOR="\ue0b0"
+  #PLUSMINUS="\u00b1"
+  #BRANCH="\ue0a0"
+  #DETACHED="\u27a6"
+  #CROSS="\u2718"
+  #LIGHTNING="\u26a1"
+  #GEAR="\u2699"
+  # ➙ ⬆ ⬇ ✱ ◷
+  #'\uE271'
+  #'\uF17C' 
+
+
+  #se lista simboli non vuota scrive qualcosa
+  [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
+}
+
+#autoload colors
+#print -P %F{red}ciao
+#echo ${(%):-%F{red}}ciao
+#typeset fg_bold
+#fg_bold=( [black]=$'\C-[[01;30m' [blue]=$'\C-[[01;34m' [cyan]=$'\C-[[01;36m' [default]=$'\C-[[01;39m' [green]=$'\C-[[01;32m' [grey]=$'\C-[[01;30m' [magenta]=$'\C-[[01;35m' [red]=$'\C-[[01;31m' [white]=$'\C-[[01;37m' [yellow]=$'\C-[[01;33m' )
+#typeset fg
+#fg=( [black]=$'\C-[[30m' [blue]=$'\C-[[34m' [cyan]=$'\C-[[36m' [default]=$'\C-[[39m' [green]=$'\C-[[32m' [grey]=$'\C-[[30m' [magenta]=$'\C-[[35m' [red]=$'\C-[[31m' [white]=$'\C-[[37m' [yellow]=$'\C-[[33m' )
+#echo ${(o)color}
+#00 01 02 03 04 05 07 08 22 23 24 25 27 28 30 30 30 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 39 39 40 40 41 42 43 44 45 46 47 49 bg-black bg-blue bg-cyan bg-default bg-green bg-magenta bg-red bg-white bg-yellow black blink blue bold conceal cyan default faint green magenta no-blink no-conceal none no-reverse normal no-standout no-underline red reverse standout underline white yellow
+#less $^fpath/colors(N)
+#which colors
+#lege contneuto funzioni definire
+
+prompt_shell() {
+  prompt_segment black green "zsh"
+  #prompt_segment black green "zsh"
+
+  #local st
+  #st=()
+  #st+="%{%F{red}%}"
+  #st+="${(%):-%F{red}%}zsh"
+  #st+="%{$fg_no_bold[red]%}zsh"
+  #st+="%{$fg_bold[red]%}zsh%{$reset_color%}"
+  #st+="%{$fg[green]zsh%{$reset_color%}zsh2"
+  #prompt_segment black green "$st"
+
+}
+
+# Context: user@hostname (who am I and where am I)
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+
+    #simona 2018-09-17
+    if [[ $UID -eq 0 ]]; then
+      prompt_segment red default "%(!.%{%F{white}%}.)$USER@%m"
+    else
+      prompt_segment magenta yellow "%(!.%{%F{yellow}%}.)$USER@%m"
+    fi
+
+    #RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE
+
+    #simona 2018-09-12
+    #prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@%m"
+    #prompt_segment yellow $CURRENT_FG "%(!.%{%F{yellow}%}.)$USER@%m"
+    #prompt_segment green $CURRENT_FG "%(!.%{%F{yellow}%}.)$USER@%m"
+
+    #prompt_segment green black "%(!.%{%F{yellow}%}.)$USER@%m"
+    #prompt_segment cyan black "%(!.%{%F{yellow}%}.)$USER@%m"
+    #prompt_segment magenta white "%(!.%{%F{yellow}%}.)$USER@%m"
+    #prompt_segment magenta yellow "%(!.%{%F{yellow}%}.)$USER@%m"
+  fi
+}
+
+# Virtualenv: current working virtualenv
+prompt_virtualenv() {
+  local virtualenv_path="$VIRTUAL_ENV"
+  if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
+    prompt_segment blue black "(`basename $virtualenv_path`)"
+  fi
+}
+
+#VOLTAGE_DROP=43
+#MAX_VOLTAGE=4202
+#MIN_VOLTAGE=3600
+#function batteryIndicator() {
+#  is_charging=$(cat /usr/lib/pocketchip-batt/charging)
+#  voltage=$(cat /usr/lib/pocketchip-batt/voltage)
+#  voltage_offset=$(bc <<< "$is_charging*$VOLTAGE_DROP")
+#  excess_voltage=$(bc <<< "$voltage-$voltage_offset-$MIN_VOLTAGE")
+#  max_excess_voltage=$(bc <<< "$MAX_VOLTAGE-$VOLTAGE_DROP-$MIN_VOLTAGE")
+#  percentage=$(bc <<< "scale=2; $excess_voltage/($max_excess_voltage/100)")
+#  battStatus="-" && [[ "$is_charging" == 1 ]] && battStatus="+"
+#  if (( $(bc <<< "$percentage < 20") ))
+#  then
+#    statusColor=red
+#  else
+#    statusColor=green
+#  fi
+#  echo "%B%F{${statusColor}}%}$percentage$battStatus"
+#}
+
+# Dir: current working directory
+prompt_dir() {
+  #simona 2018-09-12
+  #prompt_segment blue $CURRENT_FG '%~'
+  prompt_segment blue white '%~'
+  #prompt_segment blue lightblue '%~'
+}
+
+
+## Main prompt
+build_prompt() {
+  RETVAL=$?
+  prompt_status
+  prompt_shell
+  prompt_virtualenv
+  prompt_context
+  prompt_dir
+  prompt_end
+}
+
+prompt_powerline_simona() {
+  PROMPT='%{%f%b%k%}$(build_prompt) '
+  RPROMPT='[%F{yellow}%?%f]' #aggiunta mia di prova
+}
+
+prompt_powerline_simona

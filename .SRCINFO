@@ -1,0 +1,12 @@
+pkgbase = simona-prompt-powerline-zsh
+	pkgdesc = Custom zsh prompt (like powerline but more minimal style)
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = zsh
+	source = simona-prompt-powerline-zsh-zshrc
+	md5sums = f52c6856fa89973162a724d3f6107034
+
+pkgname = simona-prompt-powerline-zsh
+
