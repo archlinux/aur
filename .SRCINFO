@@ -1,6 +1,6 @@
 pkgbase = msi-perkeyrgb
 	pkgdesc = Configuration tool for SteelSeries per-key RGB keyboards on MSI laptops
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/Askannz/msi-perkeyrgb
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = msi-perkeyrgb
 	makedepends = python-setuptools
 	depends = python
 	depends = hidapi
-	source = msi-perkeyrgb::git+https://github.com/Askannz/msi-perkeyrgb.git#branch=master
+	source = git+https://github.com/Askannz/msi-perkeyrgb.git#tag=v1.3
 	sha256sums = SKIP
 
 pkgname = msi-perkeyrgb
