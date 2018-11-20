@@ -3,23 +3,23 @@
 pkgname=arcint-gtk-theme
 _pkgname=arcint-theme
 pkgdesc="My own version of horst3180's Arc theme"
-pkgver=20181027
+pkgver=20181121
 pkgrel=1
+arch=("any")
 provides=("arcint-gtk-theme")
 conflicts=("arcint-gtk-theme-git")
-arch=("any")
-url="https://git.entrenix.xyz/Popcorn/arcint-theme"
+url="https://gitgud.io/popcorn/arcint-theme"
 license=("GPL3")
 optdepends=("gnome-themes-standard: for gtk2 themes")
 makedepends=("gtk3" "sassc" "optipng" "inkscape")
-source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=("64b3b377706d305bcbafff7271c66a539966170ba5895e3f15bdca7c341a2ca03eba6bc2ac03e93de9a3c5c430fe91f4eb24c607e6efd0d0915f503470e9b49f")
+source=("${url}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=("abdf298514c1ad80e90cca2d9235ba052f6f1a8ee15ab041c396e726e339aebd6c275d6856b5e7f5627420cafdd35ed30efd0a152a07a7d6321c6754bf3f72fa")
 
 build() {
-    cd ${_pkgname}
+    cd "${_pkgname}-${pkgver}"
     ./autogen.sh --prefix=/usr
 }
 
 package() {
-    make -C "${srcdir}/${_pkgname}" DESTDIR="${pkgdir}" install
+    make -C "${srcdir}/${_pkgname}-${pkgver}" DESTDIR="${pkgdir}" install
 }
