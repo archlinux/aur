@@ -15,7 +15,7 @@ url='http://quassel-irc.org'
 license=('GPL')
 arch=('i686' 'x86_64' 'arm')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'hicolor-icon-theme'
-             'knotifyconfig' 'python' 'qca-qt5' 'qt5-base' 'qt5-script'
+             'knotifyconfig' 'python' 'qca' 'qt5-base' 'qt5-script'
              'qt5-tools' 'qt5-webkit')
 source=(
   'git+https://github.com/quassel/quassel.git'
@@ -103,7 +103,7 @@ package_quassel-client-light-git() {
 
 package_quassel-core-git() {
   pkgdesc='KDE/Qt-based distributed IRC client (core only)'
-  depends=('icu' 'qca-qt5' 'qt5-script')
+  depends=('icu' 'qca' 'qt5-script')
   provides=('quassel-core')
   conflicts=('quassel-core')
 
@@ -126,7 +126,7 @@ package_quassel-core-git() {
 
 package_quassel-git() {
   pkgdesc='KDE-based IRC client (monolithic version)'
-  depends=('hicolor-icon-theme' 'knotifyconfig' 'qca-qt5' 'qt5-base'
+  depends=('hicolor-icon-theme' 'knotifyconfig' 'qca' 'qt5-base'
            'qt5-script' 'qt5-webkit')
 
   _prepare_build
