@@ -1,7 +1,7 @@
 # Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
 
 pkgname=doorpi
-pkgver=3.0beta1.r0.a798ef1
+pkgver=3.0beta2
 pkgrel=1
 pkgdesc="VoIP-based door intercom station for Raspberry Pi"
 arch=(any)
@@ -17,14 +17,14 @@ optdepends=('python-piface: Use Piface IO expander'
 backup=('etc/doorpi/doorpi.ini')
 # there aren't any binaries that could be stripped; skip searching for them
 options=(!strip)
-source=("doorpi::git+https://github.com/Wuestengecko/DoorPi.git#tag=v${pkgver%.r*}"
-        "doorpiweb::git+https://github.com/Wuestengecko/DoorPiWeb.git#tag=v${pkgver%.r*}"
+source=("doorpi::git+https://github.com/Wuestengecko/DoorPi.git#tag=v$pkgver"
+        "doorpiweb::git+https://github.com/Wuestengecko/DoorPiWeb.git#tag=v$pkgver"
         "doorpi.ini"
         "0001-disable-gpio-group.diff")
 md5sums=('SKIP'
          'SKIP'
          '72bf97148a548a4b6c26a59495b0a251'
-         'cb902cd2ef0298fb854de7bd09ed0dcc')
+         'bae6571520c959d4ba0bd222365c9d88')
 
 pkgver() {
   cd "$srcdir/doorpi"

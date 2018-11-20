@@ -1,6 +1,6 @@
 pkgbase = doorpi
 	pkgdesc = VoIP-based door intercom station for Raspberry Pi
-	pkgver = 3.0beta1.r0.a798ef1
+	pkgver = 3.0beta2
 	pkgrel = 1
 	url = https://www.doorpi.org
 	arch = any
@@ -16,14 +16,14 @@ pkgbase = doorpi
 	optdepends = python-watchdog: Use files as virtual IO pins
 	options = !strip
 	backup = etc/doorpi/doorpi.ini
-	source = doorpi::git+https://github.com/Wuestengecko/DoorPi.git#tag=v3.0beta1
-	source = doorpiweb::git+https://github.com/Wuestengecko/DoorPiWeb.git#tag=v3.0beta1
+	source = doorpi::git+https://github.com/Wuestengecko/DoorPi.git#tag=v3.0beta2
+	source = doorpiweb::git+https://github.com/Wuestengecko/DoorPiWeb.git#tag=v3.0beta2
 	source = doorpi.ini
 	source = 0001-disable-gpio-group.diff
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 72bf97148a548a4b6c26a59495b0a251
-	md5sums = cb902cd2ef0298fb854de7bd09ed0dcc
+	md5sums = bae6571520c959d4ba0bd222365c9d88
 
 pkgname = doorpi
 
