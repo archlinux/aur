@@ -1,4 +1,4 @@
-# Maintainer: Alain Kalker <a.c.kalker@gmail.com>
+# Maintainer: Radostin Stoyanov  <rstoyanov1@gmail.com>
 pkgname=libvirt-sandbox
 pkgver=0.8.0
 pkgrel=2
