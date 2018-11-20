@@ -1,16 +1,16 @@
 pkgbase = koreader-appimage
 	pkgdesc = An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats
-	pkgver = 2018.07.29.beta
-	pkgrel = 2
+	pkgver = 2018.11
+	pkgrel = 1
 	url = http://koreader.rocks/
 	install = koreader-appimage.install
 	arch = x86_64
 	license = AGPL3
 	makedepends = p7zip
 	depends = zlib
-	noextract = koreader-appimage-x86_64-linux-gnu-v2015.11-1800-g0924b57_2018-07-29.AppImage
+	noextract = koreader-appimage-x86_64-linux-gnu-v2018.11.1.AppImage
 	options = !strip
-	source = https://github.com/koreader/koreader/releases/download/v2018.07.29-beta/koreader-appimage-x86_64-linux-gnu-v2015.11-1800-g0924b57_2018-07-29.AppImage
+	source = https://github.com/koreader/koreader/releases/download/v2018.11/koreader-appimage-x86_64-linux-gnu-v2018.11.1.AppImage
 	sha256sums = 796348d3742d05fe4955c10f398a75bc5534056407b87544ca4d60cce39feca7
 
 pkgname = koreader-appimage
