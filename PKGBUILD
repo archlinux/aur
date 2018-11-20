@@ -8,7 +8,7 @@
 
 pkgname=xneur-devel-git
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="X Neural Switcher detects the input language and corrects keyboard layout. Git version"
 arch=('any')
@@ -20,8 +20,8 @@ makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=('xneur')
-conflicts=()
-replaces=()
+conflicts=('xneur')
+replaces=('xneur')
 backup=()
 options=()
 install=
