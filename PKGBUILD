@@ -1,6 +1,6 @@
 # Maintainer: Alain Kalker <a.c.kalker@gmail.com>
 pkgname=libvirt-sandbox
-pkgver=0.6.0
+pkgver=0.8.0
 pkgrel=2
 pkgdesc="An application sandbox toolkit"
 arch=('i686' 'x86_64')
@@ -8,19 +8,15 @@ url="http://sandbox.libvirt.org/"
 license=('LGPL')
 depends=('libvirt-glib' 'libselinux' 'cpio')
 makedepends=('gobject-introspection' 'intltool')
-optdepends=('dhclient: for sandbox network configuration using DHCP'
-            'python2-gobject: for virt-sandbox-service')
+optdepends=('dhclient: for sandbox network configuration using DHCP')
 source=(http://libvirt.org/sources/sandbox/$pkgname-$pkgver.tar.gz{,.asc})
-md5sums=('546eb0caaa79d50a723adf58f32da87f'
-         '633854ecab0fb2a4f5f4ee958a731daf')
+md5sums=('c8b4393ec3ea78cd77af826e478f34f9'
+         'd714f9f47f4322d5e702694f0b9f2c19')
 validpgpkeys=('DAF3A6FDB26B62912D0E8E3FBE86EBB415104FDF')
 # Daniel P. Berrange <dan@berrange.com>
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # Use python2
-  sed -i -e '1s/python/&2/' bin/virt-sandbox-service
 }
 
 build() {
@@ -34,7 +30,7 @@ build() {
       --sysconfdir=/etc \
       --enable-introspection \
       --without-lzma
-  make
+  make -j4
 }
 
 check() {
