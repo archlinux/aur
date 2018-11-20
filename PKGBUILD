@@ -24,7 +24,7 @@ prepare() {
 }
 
 package_mendeleydesktop() {
-    depends=(qt5-webengine)
+    depends=('qt5-webengine' 'icu')
     cd "mendeley-native"
 
     # Using shared libraries so remove the bundled ones
