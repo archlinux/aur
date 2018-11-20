@@ -17,7 +17,7 @@ install='pg_stat_kcache-git.install'
 
 pkgver() {
    cd $_gitname
-   git describe --long --tags | sed 's/REL//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
+   git describe --long --tags | sed 's/REL//;s/debian\//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
