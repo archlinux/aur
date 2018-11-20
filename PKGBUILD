@@ -3,6 +3,12 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
+### BUILD OPTIONS
+# Set these variables to ANYTHING that is not null to enable them
+
+# Tweak kernel options prior to a build via nconfig
+_makenconfig=
+
 pkgbase=linux-bcachefs-git
 _srcver=4.19.2-arch1
 pkgver=${_srcver//-/.}
@@ -68,7 +74,7 @@ prepare() {
   make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 
-  make nconfig
+  [[ -z "$_makenconfig" ]] || make nconfig
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
