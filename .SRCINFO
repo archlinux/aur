@@ -1,6 +1,6 @@
 pkgbase = mandelbrot-gtk-git
 	pkgdesc = A multithreaded GTK3 application for rendering the mandelbrot and julia set.
-	pkgver = r56.fb1a4c6
+	pkgver = r60.9fbae58
 	pkgrel = 1
 	url = http://mandelbrot-gtk.sourceforge.net
 	arch = i686
