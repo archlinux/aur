@@ -2,7 +2,7 @@
 
 _name="ddev"
 pkgname="$_name-bin"
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='DDEV-Local: a local PHP development environment system'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("$_name")
 depends=('docker' 'docker-compose')
 optdepends=('bash-completion: subcommand completion support')
 source=("https://github.com/drud/ddev/releases/download/v$pkgver/ddev_linux.v$pkgver.tar.gz")
-sha256sums=('65c6d297b13808f6dd531a39f7f3cbf7d20d95c96b3da7f0f347a9384ae1ac77')
+sha256sums=('e96209f8a3b489d9a651f5c7b35b3d9e34c5ed1d986cfc2e499343211abb8645')
 
 package() {
 	install -D -m 0755 ddev "$pkgdir/usr/bin/ddev"
