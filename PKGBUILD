@@ -13,8 +13,8 @@ makedepends=('python-setuptools')
 url="https://github.com/jonathanslenders/python-prompt-toolkit"
 license=('BSD')
 options=(!emptydirs)
-provides=("$pkgname")
-conflicts=("python-${_pkgname}")
+provides=('python-prompt_toolkit')
+conflicts=('python-prompt_toolkit')
 source=("https://files.pythonhosted.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('858588f1983ca497f1cf4ffde01d978a3ea02b01c8a26a8bbc5cd2e66d816917')
 
