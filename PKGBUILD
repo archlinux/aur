@@ -1,7 +1,7 @@
 # Maintainer: xstaticxgpx (optimum.reflex<at>gmail<dot>com)
 
 pkgname=podman
-pkgver=0.10.1.3
+pkgver=0.11.1.1
 pkgrel=1
 pkgdesc="Utility for running OCI-based containers."
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=("https://github.com/containers/libpod/archive/v${pkgver}.tar.gz"
         "seccomp.json"
         "policy.json"
 )
-sha256sums=('6f34b05ca091d87bf700b2d3b60b80ce32738099b00ed8af3a2f71bcd3ac06eb'
+sha256sums=('c2ca01bfa31f8f6034c2b230a4187f0c9b4216da14f7ba2a4d2eece13de71683'
             'bf720633c4c9906e93665813bbf13a73a6cb0df2b412d81228c7673505513d1f'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             'c883cff9c50b01d71ad96403a9e12cab934490fa02b0dce01a602e9c9f720db7'
@@ -49,7 +49,7 @@ build() {
 
   # cni plugins
   cd "$GOPATH/src/github.com/containernetworking/plugins"
-  ./build.sh
+  ./build_linux.sh
 }
 package() {
   export GOPATH="$srcdir/go"
