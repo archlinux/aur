@@ -1,66 +1,204 @@
-model="l8610cdw"
-pkgname="brother-mfc-$model"
-pkgver="1.2.0"
-pkgrel=0
-_revision=0
-_revision_cups=0
-pkgdesc="LPR and CUPS driver for the Brother MFC-8950DW"
-url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: electricprism
+# Contributor: mrshannon Michael R. Shannon
+
+_opt_DEB=0
+
+set -u
+_brothern='8610'
+_brotheru="MFC-L${_brothern}CDW"
+_brotherl="${_brotheru,,}"     # mfc-0000dw
+_brotherlnd="${_brotherl//-/}" # mfc0000dw
+_brotherund="${_brotheru//-/}" # MFC0000DW
+pkgname="brother-${_brotherl}"
+_lprver='1.2.0_0'
+_cupver='1.3.0_0'
+pkgver="${_cupver}"
+pkgrel='1'
+pkgdesc="LPR and CUPS driver for the Brother ${_brotheru} printer"
 arch=('i686' 'x86_64')
-license=('unknown')
-# install="brother-mfc-${model}.install"
-depends=('rpmextract' 'a2ps' 'cups')
+url='https://support.brother.com/g/s/id/linux/en/index.html'
+license=('GPL' 'custom')
+depends=('cups' 'ghostscript' 'sed' 'grep')
 depends_x86_64=('lib32-glibc')
-source=("http://download.brother.com/welcome/dlf103214/mfc${model}lpr-${pkgver}-${_revision}.i386.rpm"
-        "http://download.brother.com/welcome/dlf103223/mfc${model}cupswrapper-${pkgver}-${_revision}.i386.rpm")
+# We look at the scripts and find these programs from which we decide on the depends above.
+# gs: lpr rendering
+# pdf2ps: cups rendering
+# a2ps: rendering ascii text files
+# pstops: pdf resizing
+# psnup: printing n-up pages
+# sed grep awk
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=670055
+# Printing a text file fails when Liberation is the only TrueType font available
+optdepends=(
+  'ttf-dejavu: printing text files from lpr'
+  'brscan4: Scanner support'
+)
+options=('!strip')
+#install="${pkgname}.install"
+#_dlf="http://www.brother.com/pub/bsc/linux/dlf"
+source=(
+  "https://download.brother.com/welcome/dlf103214/${_brotherlnd}lpr-${_lprver//_/-}.i386.rpm"
+  "https://download.brother.com/welcome/dlf103223/${_brotherlnd}cupswrapper-${_cupver//_/-}.i386.rpm"
+  #"${_dlf}/${_brotherlnd}lpr-${_lprver//_/-}.i386.rpm"
+  #"${_dlf}/${_brotherlnd}cupswrapper-${_cupver//_/-}.i386.rpm"
+  #"${_dlf}/${_brsource}.tar.gz"
+  'cupswrapper-license.txt'
+  'lpr-license.txt'
+)
+if [ "${_opt_DEB}" -ne 0 ]; then
+  noextract=(
+    "https://download.brother.com/welcome/dlf103240/${_brotherlnd}lpr-${_lprver//_/-}.i386.deb"
+    "https://download.brother.com/welcome/dlf103249/${_brotherlnd}cupswrapper-${_cupver//_/-}.i386.deb"
+  )
+  source[0]="${noextract[0]}"
+  source[1]="${noextract[1]}"
+  noextract=("${noextract[@]##*/}")
+fi
+md5sums=('6ea8b62f22f94f38ba2df13a19e15d1e'
+         '8af6a0c5eb4a23bdd91db500fcd32576'
+         'e42487a541573287fad544bafd1766c6'
+         '4f14b328317aac0d22c7f7f73c581628')
 sha256sums=('27211c779effea39d5622f0683629faf44d7f62a4fee48b7ef3cc1935a00cde9'
-            '124d1c07e0f7548ee01ad85fd650479b4f7040ac211df88a45bbc70c06c83736')
+            '0d54d2985bccf4c2790573d15ce0a38ea47e83d58aeffd4b05000e36dff64653'
+            '65de8004f8d44a96b62f874a26a80b285f7f6b9f37a8b6c628d094e7f1986b2a'
+            'b604def129534d245fa576f8cd7d01df1d2856b9bff6c1d2002404f77f7d4bb3')
 
-package() {
-    cp -rf $srcdir/usr/ $pkgdir/
-    cp -rf $srcdir/opt/ $pkgdir/
+prepare() {
+  set -u
 
-    install -m 755 -d $pkgdir/usr/lib/cups/filter
-    ln -s /opt/brother/Printers/mfcl8610cdw/cupswrapper/brother_lpdwrapper_mfcl8610cdw $pkgdir/usr/lib/cups/filter
-    install -m 755 -d $pkgdir/usr/lib32/cups/filter
-    ln -s /opt/brother/Printers/mfcl8610cdw/cupswrapper/brother_lpdwrapper_mfcl8610cdw $pkgdir/usr/lib32/cups/filter
-    install -m 755 -d $pkgdir/usr/libexec/cups/filter
-    ln -s /opt/brother/Printers/mfcl8610cdw/cupswrapper/brother_lpdwrapper_mfcl8610cdw $pkgdir/usr/libexec/cups/filter
-    install -m 755 -d $pkgdir/usr/share/cups/model
-    ln -s /opt/brother/Printers/mfcl8610cdw/cupswrapper/brother-mfcl8610cdw-printer-en.ppd $pkgdir/usr/share/cups/model
-    install -m 755 -d $pkgdir/usr/share/ppd/brother
-    ln -s /opt/brother/Printers/mfcl8610cdw/cupswrapper/brother-mfcl8610cdw-printer-en.ppd $pkgdir/usr/share/ppd/brother
+  shopt -s nullglob
+  local _deb
+  for _deb in *.deb; do
+    mkdir 'debextract'
+    bsdtar -C 'debextract' -xf "${_deb}"
+    bsdtar -xf debextract/data.tar.?z
+    rm -r 'debextract'
+  done
+  shopt -u nullglob
+
+  # Do not Install in '/usr/local'. Does not apply to all Brother models.
+  # This may modify binary blobs which only
+  # works when the old and new strings are exactly the same length.
+  if [ -d 'usr/local' ]; then
+    install -d 'usr/share'
+    mv 'usr/local/Brother' "usr/share/${_conflict}"
+    rmdir 'usr/local'
+    sed -e "s:/usr/local/Brother:/usr/share/${_conflict}:g" -i $(grep -lare '/usr/local/Brother' ./)
+  fi
+
+  # setup cups-directories, some installers create these for us
+  install -d 'usr/lib/cups/filter'
+  install -d 'usr/share/cups/model'
+  #install -dm755 "${srcdir}/usr/share/ppd" # For cups we don't need the ppd file here.
+
+  # /etc/printcap is managed by cups
+  find . -type 'f' -name 'setupPrintcap*' -delete
+
+  set +u
 }
 
-# prepare() {
-#     # cd $srcdir
-#     ls -lah
-#     #
-#     # deb2targz *.deb >/dev/null || return 1
-#     # rm -f *.deb || return 1
-#     # cd $srcdir || return 1
-#     # [ -d "mfc${model}" ] || (mkdir mfc${model} || return 1)
-#     # for i in *.tar.gz;do tar xfz $i -C mfc${model};done || return 1
-# }
+build() {
+  set -u
+  local _basedir="opt/brother/Printers/${_brotherlnd}"
+  local _wrapper_source="${_basedir}/cupswrapper/cupswrapper${_brotherlnd}"
+  test -s "${_wrapper_source}" || echo "${}"
 
-# package() {
-#     # cd $srcdir || return 1
-#     # cd mfc${model} || return 1
-#     # cd opt/brother/Printers/MFC${model^^} || return 1
-#     # perl -i -pe 's#/etc/init.d#/etc/rc.d#g' ./cupswrapper/brother_lpdwrapper_MFC${model^^} || return 1
-#     # perl -i -pe 's#printcap\.local#printcap#g' $srcdir/mfc${model}/opt/brother/Printers/MFC${model^^}/inf/setupPrintcap || return 1
-#     # cp -rf $srcdir/mfc${model}/usr/ $pkgdir/ || return 1
-#     # cp -rf $srcdir/mfc${model}/opt/ $pkgdir/ || return 1
-#     #
-#     # # symlinks 
-#     # install -m 755 -d $pkgdir/usr/lib/cups/filter
-#     # ln -s /opt/brother/Printers/MFC8950DW/cupswrapper/brother_lpdwrapper_MFC8950DW $pkgdir/usr/lib/cups/filter
-#     # install -m 755 -d $pkgdir/usr/lib32/cups/filter
-#     # ln -s /opt/brother/Printers/MFC8950DW/cupswrapper/brother_lpdwrapper_MFC8950DW $pkgdir/usr/lib32/cups/filter
-#     # install -m 755 -d $pkgdir/usr/libexec/cups/filter
-#     # ln -s /opt/brother/Printers/MFC8950DW/cupswrapper/brother_lpdwrapper_MFC8950DW $pkgdir/usr/libexec/cups/filter
-#     # install -m 755 -d $pkgdir/usr/share/cups/model
-#     # ln -s /opt/brother/Printers/MFC8950DW/cupswrapper/brother-MFC-8950DW-cups-en.ppd $pkgdir/usr/share/cups/model
-#     # install -m 755 -d $pkgdir/usr/share/ppd/brother
-#     # ln -s /opt/brother/Printers/MFC8950DW/cupswrapper/brother-MFC-8950DW-cups-en.ppd $pkgdir/usr/share/ppd/brother
-# }
+  # Some Brother installers create files here
+  mkdir -p 'var/tmp'
+
+  # This generated wrapper isn't used. We just want to run the install commands.
+
+  # Modify the installer so we can finish the install here in PKGBUILD.
+  #cp -p "${_wrapper_source}" "${_wrapper_source}.Arch" # debug: diff compare with Total Commander
+  sed -e '# Install to _srcdir. Some folders may not apply to this model.' \
+      -e '# quick fix for path that needs to be double quoted' \
+      -e "s:'/usr/share/ppd':"'"/usr/share/ppd":g' \
+      -e 's:/usr:"${_srcdir}"&:g' \
+      -e 's:/opt:"${_srcdir}"&:g' \
+      -e 's:/var:"${_srcdir}"&:g' \
+      -e 's:/etc:"${_srcdir}"&:g' \
+      -e '# Remove unwanted srcdir from the generated files' \
+      -e '/^cat <<ENDOFPPDFILE/,/^ENDOFPPDFILE/ s:"${_srcdir}"::g' \
+      -e '/^cat <<!ENDOFWFILTER/,/^!ENDOFWFILTER!/ s:"${_srcdir}"::g' \
+      -e '# Remove extra quotes where path was already quoted' \
+      -e 's:""\${_srcdir}":"${_srcdir}:g' \
+      -e '#s:/model/Brother:/model:g' \
+      -e "# Stop the Install script after the files are generated. cups doesn't require a reload to see the printer driver." \
+      -e 's:^sleep.*$:exit 0 # & #Arch Linux Compatible:g' \
+      -e '# not using set -u allows bugs like this to slip by' \
+      -e '#/Nup=/ s:`:\\`:g' \
+      -e '# Fix a forgotten escape script error' \
+      -e 's: \$errorcode: \\$errorcode:g' \
+      -e '# Fix symlinks' \
+      -e 's:^ldpwrapper="\${_srcdir}":ldpwrapper=:g' \
+    -i "${_wrapper_source}"
+  grep -lq "#Arch Linux Compatible$" "${_wrapper_source}" || echo "${}"
+  test -f "${_wrapper_source}.Arch" && echo "${}" # Halt for debugging
+  # Generate PPD and wrapper. Use sh -x to debug
+  # Possible bug: copying to /usr/share/ppd is disabled.
+  _srcdir="${srcdir}" \
+  sh -u -e "${_wrapper_source}" -i
+  local _ppdir='usr/share/cups/model/Brother'
+  chmod 644 "${_ppdir}"/*.ppd # Some installers make ppd executable
+  rm -rf 'var'
+
+  local _wrapgen="${_basedir}/cupswrapper/brother_lpdwrapper_${_brotherlnd}"
+  test -s "${_wrapgen}" || echo "${}"
+
+  # Remove srcdir from the generated wrapper file.
+  sed -e '# Remove the /home/... variety' \
+      -e "s:${srcdir}::" \
+    -i "${_wrapgen}"
+
+  # Ensure all paths were removed
+  grep -qFe $'${_srcdir}\n'"${srcdir}" "${_wrapgen}" && echo "${}"
+
+  # We did everything in the installer so we can get rid of it.
+  rm "${_wrapper_source}"
+
+  # Misnamed printer does not sort or autodetect properly
+  #sed -e "s:Brother ${_brotherund} :Brother ${_brotheru} :g" -i "${_ppdir}"/*.ppd
+
+  # Check to see if the lpd wrapper is referenced by the ppd
+  # Check to see if our compiled code is referenced by the lpd wrapper
+  local _nppdfound=0
+  #local _ncodefound=0
+  #local _lwrapper
+  for _lwrapper in 'usr/lib/cups/filter'/*; do
+    if grep -q "$(basename "${_lwrapper}")" "${_ppdir}"/*.ppd; then
+      _nppdfound=$((_nppdfound+1))
+    fi
+    #if grep -q "${_brcupsconf}" "${_lwrapper}"; then
+    #  _ncodefound=$((_ncodefound+1))
+    #fi
+  done
+  test "${_nppdfound}" -ne 0 || echo "${}"
+  #test "${_ncodefound}" -ne 0 || echo "${}"
+
+  set +u
+}
+
+package() {
+  set -u
+
+  local _dir
+  # /var/spool is not used anywhere in this package. Maybe it's needed for non cups lprng.
+  for _dir in 'usr' 'opt'; do # 'var'
+    if [ -d "${srcdir}/${_dir}" ]; then
+      cp -pR "${srcdir}/${_dir}" "${pkgdir}"
+    fi
+  done
+
+  # Ensure we got a ppd and a filter for CUPS
+  test ! -z "$(find "${pkgdir}/usr/share/cups/model" -type 'f' -name '*.ppd')" || echo "${}"
+  test ! -z "$(find "${pkgdir}/usr/lib/cups/filter/" '(' -type 'f' -o -type 'l' ')')" || echo "${}"
+
+  # Ensure there are no forbidden paths
+  ! grep -alqr "/sbin" "${pkgdir}" || echo "${}"
+  ! grep -alqr "/usr/tmp" "${pkgdir}" || echo "${}"
+
+  install -Dpm644 'cupswrapper-license.txt' 'lpr-license.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  set +u
+}
+set +u
