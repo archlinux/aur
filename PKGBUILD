@@ -6,7 +6,7 @@ pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS an
 arch=('i686' 'x86_64') # setup.py downloads pre-built binary components, so it doesn't work on ARM (yet).
 url="https://www.frida.re"
 license=('custom:wxWindows Library License, Version 3.1')
-depends=('python' 'python-pygments>=2.0.2' 'python-prompt_toolkit1=1.0.15' 'python-colorama>=0.2.7')
+depends=('python' 'python-pygments>=2.0.2' 'python-colorama>=0.2.7')
 source=("https://files.pythonhosted.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "COPYING")
 sha256sums=('a7b794cb50057177baeffb51e094090393e4b90f31006bc72a7c609bd7197ba3'

@@ -8,7 +8,6 @@ pkgbase = python-frida
 	license = custom:wxWindows Library License, Version 3.1
 	depends = python
 	depends = python-pygments>=2.0.2
-	depends = python-prompt_toolkit1=1.0.15
 	depends = python-colorama>=0.2.7
 	conflicts = python2-frida
 	source = https://files.pythonhosted.org/packages/source/f/frida/frida-12.2.25.tar.gz
