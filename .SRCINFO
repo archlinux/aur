@@ -3,14 +3,15 @@ pkgbase = pcg-cpp-git
 	pkgver = 0.98.1.r36.gb656278
 	pkgrel = 1
 	url = http://www.pcg-random.org/
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = Apache
 	license = MIT
 	makedepends = git
 	provides = pcg-cpp
+	source = fix-makefile.patch
 	source = git+https://github.com/imneme/pcg-cpp.git
-	md5sums = SKIP
+	sha256sums = 3867f1a75bf30b4aa73c2ab0b5e821fc8764a8d7bb20f6a44f12bc1b1477d361
+	sha256sums = SKIP
 
 pkgname = pcg-cpp-git
 
