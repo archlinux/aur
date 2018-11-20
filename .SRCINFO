@@ -7,6 +7,7 @@ pkgbase = zrythm-git
 	license = GPL
 	makedepends = git
 	depends = gtk3
+	depends = lv2-git
 	depends = lilv-git
 	depends = suil-git
 	depends = jack
