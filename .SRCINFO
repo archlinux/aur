@@ -1,6 +1,6 @@
 pkgbase = marp
 	pkgdesc = Markdown presentation writer, powered by Electron
-	pkgver = 0.0.13
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://github.com/yhatt/marp
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = marp
 	source = marp.desktop
 	md5sums = 095ab0c670c1d311be1b066e416efed3
 	md5sums = 734a3e3bd102ee9de4bc78d25008a92d
-	source_x86_64 = https://github.com/yhatt/marp/releases/download/v0.0.13/0.0.13-Marp-linux-x64.tar.gz
-	md5sums_x86_64 = 04cdc0d42c10a32289b5bafb4de694e9
-	source_i686 = https://github.com/yhatt/marp/releases/download/v0.0.13/0.0.13-Marp-linux-ia32.tar.gz
-	md5sums_i686 = 2eb5f02c2baef7bce4d6de90c6d2fe5f
+	source_x86_64 = https://github.com/yhatt/marp/releases/download/v0.0.14/0.0.14-Marp-linux-x64.tar.gz
+	md5sums_x86_64 = 142c5f0fc49e61fa36b9724d395a5c65
+	source_i686 = https://github.com/yhatt/marp/releases/download/v0.0.14/0.0.14-Marp-linux-ia32.tar.gz
+	md5sums_i686 = 5dcd7977698e1d891cc768468b513234
 
 pkgname = marp
 
