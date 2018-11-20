@@ -36,30 +36,31 @@ optdepends=(
 )
 options=('!strip')
 #install="${pkgname}.install"
-#_dlf="http://www.brother.com/pub/bsc/linux/dlf"
+_dlf="http://www.brother.com/pub/bsc/linux"
 source=(
-  "https://download.brother.com/welcome/dlf103214/${_brotherlnd}lpr-${_lprver//_/-}.i386.rpm"
-  "https://download.brother.com/welcome/dlf103223/${_brotherlnd}cupswrapper-${_cupver//_/-}.i386.rpm"
-  #"${_dlf}/${_brotherlnd}lpr-${_lprver//_/-}.i386.rpm"
-  #"${_dlf}/${_brotherlnd}cupswrapper-${_cupver//_/-}.i386.rpm"
+  "${_brotherlnd}.inf::${_dlf}/infs/${_brotherund}" # A crc change lets us know that the driver has been updated
+  "${_dlf}/packages/${_brotherlnd}lpr-${_lprver//_/-}.i386.rpm"
+  "${_dlf}/packages/${_brotherlnd}cupswrapper-${_cupver//_/-}.i386.rpm"
   #"${_dlf}/${_brsource}.tar.gz"
   'cupswrapper-license.txt'
   'lpr-license.txt'
 )
 if [ "${_opt_DEB}" -ne 0 ]; then
   noextract=(
-    "https://download.brother.com/welcome/dlf103240/${_brotherlnd}lpr-${_lprver//_/-}.i386.deb"
-    "https://download.brother.com/welcome/dlf103249/${_brotherlnd}cupswrapper-${_cupver//_/-}.i386.deb"
+    "${_dlf}/packages/${_brotherlnd}lpr-${_lprver//_/-}.i386.deb"
+    "${_dlf}/packages/${_brotherlnd}cupswrapper-${_cupver//_/-}.i386.deb"
   )
-  source[0]="${noextract[0]}"
-  source[1]="${noextract[1]}"
+  source[1]="${noextract[0]}"
+  source[2]="${noextract[1]}"
   noextract=("${noextract[@]##*/}")
 fi
-md5sums=('6ea8b62f22f94f38ba2df13a19e15d1e'
+md5sums=('1e2ab322f58952141132468b99d4cbe8'
+         '6ea8b62f22f94f38ba2df13a19e15d1e'
          '8af6a0c5eb4a23bdd91db500fcd32576'
          'e42487a541573287fad544bafd1766c6'
          '4f14b328317aac0d22c7f7f73c581628')
-sha256sums=('27211c779effea39d5622f0683629faf44d7f62a4fee48b7ef3cc1935a00cde9'
+sha256sums=('5a23a54cf9e71d2738240f7277e1192d06bd74cc6727f103ede956afef3461e5'
+            '27211c779effea39d5622f0683629faf44d7f62a4fee48b7ef3cc1935a00cde9'
             '0d54d2985bccf4c2790573d15ce0a38ea47e83d58aeffd4b05000e36dff64653'
             '65de8004f8d44a96b62f874a26a80b285f7f6b9f37a8b6c628d094e7f1986b2a'
             'b604def129534d245fa576f8cd7d01df1d2856b9bff6c1d2002404f77f7d4bb3')
