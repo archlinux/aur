@@ -1,0 +1,18 @@
+pkgbase = jp2a-git
+	pkgdesc = A small utility for converting JPG images to ASCII
+	pkgver = v1.0.7.r13.g61d205f
+	pkgrel = 1
+	url = https://github.com/cslarsen/jp2a
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	depends = curl
+	depends = libjpeg
+	provides = jp2a
+	conflicts = jp2a
+	source = git+https://github.com/cslarsen/jp2a
+	sha256sums = SKIP
+
+pkgname = jp2a-git
+
