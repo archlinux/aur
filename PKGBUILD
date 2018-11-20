@@ -1,7 +1,7 @@
 # Contributor: Calimero <calimeroteknik@free.fr>
 
 pkgname=lib_users
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc='Checks /proc for libraries being mapped but marked as deleted'
 arch=('any')
@@ -13,7 +13,7 @@ _python="python"
 
 depends=("$_python")
 source=("http://schwarzvogel.de/pkgs/${pkgname}-${pkgver}.tar.gz")
-md5sums=('93729682e6bbf166d7da63122f93fbb3')
+md5sums=('b75920a0466390d126467b692506bb7b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
