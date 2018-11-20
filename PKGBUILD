@@ -22,8 +22,7 @@ depends=(
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols')
-optdepends=('youtube-dl: for video-sharing websites playback'
-            'nvidia-utils: for hardware accelerated video decoding with CUDA')
+optdepends=('youtube-dl: for video-sharing websites playback')
 provides=('mpv' 'mpv-git')
 conflicts=('mpv')
 options=('!emptydirs')
