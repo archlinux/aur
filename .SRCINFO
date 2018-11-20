@@ -1,0 +1,16 @@
+pkgbase = vimclip-git
+	pkgdesc = A tiny script to spawn your favorite $EDITOR and leave what you typed in your clipboard
+	pkgver = r8.5a69162
+	pkgrel = 1
+	url = https://github.com/hrantzsch/vimclip
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = xsel
+	provides = vimclip
+	conflicts = vimclip
+	source = git+https://github.com/hrantzsch/vimclip
+	md5sums = SKIP
+
+pkgname = vimclip-git
+
