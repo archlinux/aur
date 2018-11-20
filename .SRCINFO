@@ -1,7 +1,7 @@
 pkgbase = ptpython
 	pkgdesc = Python REPL build on top of prompt_toolkit
 	pkgver = 2.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jonathanslenders/ptpython
 	arch = any
 	license = BSD
@@ -21,7 +21,7 @@ pkgname = ptpython
 pkgname = ptpython2
 	depends = python2-docopt
 	depends = python2-jedi>=0.9.0
-	depends = python2-prompt_toolkit-2>=2.0.6
+	depends = python2-prompt_toolkit>=2.0.6
 	depends = python2-pygments
 	optdepends = ipython2: ptipython2 (ptpython2 + ipython2)
 
