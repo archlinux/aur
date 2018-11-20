@@ -1,6 +1,6 @@
 pkgbase = phorward
 	pkgdesc = C library for parsing, lexing, regular expressions and more.
-	pkgver = 0.22.4
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://phorward.info
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = phorward
 	arch = aarch64
 	license = BSD
 	optdepends = txt2tags: Documentation generator
-	source = https://phorward.info/download/phorward/phorward-0.22.4.tar.gz
-	md5sums = 4a5590850b10e3f5f428b4c112ee3c9c
+	source = https://phorward.info/download/phorward/phorward-0.23.0.tar.gz
+	md5sums = 8ef64f742972962c85b5161627d6ed0c
 
 pkgname = phorward
 
