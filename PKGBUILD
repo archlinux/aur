@@ -235,7 +235,7 @@ package() {
 
   # Change lib name to prevent conflicts with other printers that use the same one
   local _f1='libbrcompij2'
-  local _f2="brother-${_brotherlnd}"
+  local _f2="${_f1}-${_brotherlnd}"
   local _fp='' # blank enables name change, pound sign # disables
 
   # Execute LPR POSTIN. These libs will probably cause a conflict with other printers.
@@ -245,24 +245,18 @@ package() {
     local _postin="${source[1]##*/}"
   fi
 
-  if [ -z "${_fp}" ]; then
-    install -d "${pkgdir}/usr/lib/${_f2}"
-  fi
-
   grep -ae '^ln -s' "${_postin}" | \
   sed -e 's:/usr/lib/::' \
       -e "s:/usr/lib/:${pkgdir}&:g" \
       -e '# Prevent lib conflicts with similar printers' \
-      -e "${_fp}s:${_f1}:${_f2}/${_f1}:g" \
-      -e "${_fp}s:${_f2}/${_f1}:${_f1}:" \
+      -e "${_fp}s:${_f1}:${_f2}:g" \
   | bash -e -u --
 
   if [ -z "${_fp}" ]; then
-    mv "${pkgdir}/usr/lib/${_f1}.so.1.0.2" "${pkgdir}/usr/lib/${_f2}/"
+    mv "${pkgdir}/usr/lib/${_f1}.so.1.0.2" "${pkgdir}/usr/lib/${_f2}.so.1.0.2"
     grep -aqFe "${_f1}.so.1" "${pkgdir}/usr/share/${_conflict}/lpd/rastertobrij2" || echo "${}"
-    # Without the full path ldd reports file not found
-    # It must not be in /usr/lib or ldconfig cache makes libbrcompij2.so.1 not owned by package
-    patchelf --replace-needed "${_f1}.so.1" "/usr/lib/${_f2}/${_f1}.so.1" "${pkgdir}/usr/share/${_conflict}/lpd/rastertobrij2"
+    patchelf --replace-needed "${_f1}.so.1" "${_f2}.so.1" "${pkgdir}/usr/share/${_conflict}/lpd/rastertobrij2"
+    patchelf --set-soname "${_f2}.so.1" "${pkgdir}/usr/lib/${_f2}.so.1.0.2"
   fi
 
   # Add MFC-425CN ppd
