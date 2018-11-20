@@ -1,6 +1,6 @@
 pkgbase = vala-panel-appmenu-common
 	pkgdesc = Common libraries and translations for Vala Panel Application Menu
-	pkgver = 0.6.94
+	pkgver = 0.7.1+1+6d30c29
 	pkgrel = 1
 	url = https://github.com/rilian-la-te/vala-panel-appmenu
 	arch = any
@@ -10,10 +10,12 @@ pkgbase = vala-panel-appmenu-common
 	conflicts = vala-panel-appmenu-mate-git
 	conflicts = vala-panel-appmenu-translations-git
 	conflicts = vala-panel-appmenu-valapanel-git
-	source = https://github.com/rilian-la-te/vala-panel-appmenu/releases/download/0.6.94/vala-panel-appmenu-0.6.94.tar.gz
+	source = git+https://github.com/rilian-la-te/vala-panel-appmenu.git#commit=6d30c2961a002789cbfe98827744edb2a9c2e3a1
+	source = git+https://github.com/rilian-la-te/cmake-vala.git#commit=1bce300e6995c055296a79122d19993bc5085b75
 	source = enable-only-common.diff
-	sha512sums = 9ba216b2760bd8f7999c0731e80f231af67d30fd2d44f3a906d2dde0784683bb3c348556144b2e18166d0b38d3b4583ca4dd9655463b0ded6e1b5f1a248af5f7
-	sha512sums = e4a9e5b4ebd2f601679f919f713e43030d6827d91ac0bbdb75dabb7dccecff87467b92fe8da70759c87730dedbe0092c62228f02b80395bfc8f721c9fbe4fc44
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = dbdc3293ff6e8cecdfb8b66d101cdc6254c8cf05e6352e3c03f7a02d8d7eb0c2
 
 pkgname = vala-panel-appmenu-common
 

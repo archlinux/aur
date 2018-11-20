@@ -1,33 +1,48 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _srcname=vala-panel-appmenu
+_gitcommit=6d30c2961a002789cbfe98827744edb2a9c2e3a1
+_cmakevala_gitcommit=1bce300e6995c055296a79122d19993bc5085b75
 
 pkgname=vala-panel-appmenu-common
-pkgver=0.6.94
+pkgver=0.7.1+1+6d30c29
 pkgrel=1
 pkgdesc="Common libraries and translations for Vala Panel Application Menu"
 url='https://github.com/rilian-la-te/vala-panel-appmenu'
 arch=('any')
 license=('LGPL3')
 makedepends=('cmake')
-conflicts=('vala-panel-appmenu-budgie-git'
-           'vala-panel-appmenu-mate-git'
-           'vala-panel-appmenu-translations-git'
-           'vala-panel-appmenu-valapanel-git')
+conflicts=(
+  'vala-panel-appmenu-budgie-git'
+  'vala-panel-appmenu-mate-git'
+  'vala-panel-appmenu-translations-git'
+  'vala-panel-appmenu-valapanel-git'
+)
 
-source=("https://github.com/rilian-la-te/vala-panel-appmenu/releases/download/${pkgver}/${_srcname}-${pkgver}.tar.gz"
-        enable-only-common.diff)
-sha512sums=('9ba216b2760bd8f7999c0731e80f231af67d30fd2d44f3a906d2dde0784683bb3c348556144b2e18166d0b38d3b4583ca4dd9655463b0ded6e1b5f1a248af5f7'
-            'e4a9e5b4ebd2f601679f919f713e43030d6827d91ac0bbdb75dabb7dccecff87467b92fe8da70759c87730dedbe0092c62228f02b80395bfc8f721c9fbe4fc44')
+source=(
+  "git+https://github.com/rilian-la-te/vala-panel-appmenu.git#commit=${_gitcommit}"
+  "git+https://github.com/rilian-la-te/cmake-vala.git#commit=${_cmakevala_gitcommit}"
+  enable-only-common.diff
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'dbdc3293ff6e8cecdfb8b66d101cdc6254c8cf05e6352e3c03f7a02d8d7eb0c2'
+)
 
 prepare() {
-  cd "${srcdir}/${_srcname}-${pkgver}/data"
-  patch -p0 -i ../../../enable-only-common.diff
+  rm -rf "${srcdir}/${_srcname}/cmake"
+  cd "${srcdir}/cmake-vala"
+  cp -r . "${srcdir}/${_srcname}/cmake"
+
+  cd "${srcdir}/${_srcname}"
+  patch -p0 -i ../enable-only-common.diff
+  mkdir -p build
 }
 
 build() {
-  cd "${srcdir}/${_srcname}-${pkgver}"
-  cmake ./ \
+  cd "${srcdir}/${_srcname}/build"
+  cmake ../ \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
@@ -44,7 +59,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_srcname}-${pkgver}"
+  cd "${srcdir}/${_srcname}/build"
 
   make -C "po" DESTDIR="${pkgdir}" install
   make -C "data" DESTDIR="${pkgdir}" install
