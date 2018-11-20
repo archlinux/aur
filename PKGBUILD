@@ -1,4 +1,5 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Original: Daniel Bermond < gmail-com: danielbermond > https://aur.archlinux.org/packages/ffmpeg-full-git
+# Maintainer: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=mpv-amd-full-git
 _srcname=mpv
