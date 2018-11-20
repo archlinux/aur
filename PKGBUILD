@@ -1,9 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=maxima-git
-pkgver=5.42.1.92.ga78af8eb7
+pkgver=5.42.1.155.ge553a837e
 pkgrel=1
-pkgdesc="a sophisticated computer algebra system - git-version"
+pkgdesc="Sophisticated computer algebra system - git-version"
 arch=('i686' 'x86_64')
 url="http://maxima.sourceforge.net"
 license=('GPL')
@@ -16,17 +16,16 @@ provides=('maxima')
 conflicts=('maxima')
 options=('!makeflags' '!zipman')
 source=('maxima::git://git.code.sf.net/p/maxima/code' 'maxima.desktop')
-md5sums=('SKIP'
-         '24aa81126fbb8b726854e5a80d4c2415')
-_gitname="maxima"
+sha256sums=('SKIP'
+            'd7ba38d5f35a6322b569e33a132eecf2fba36d4bc124ba75caa8e57f81753c20')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname%-git}
   git describe --always | sed 's+[_-]+.+g' | sed 's+base+1+' | cut -c8- 
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname%-git}
   ./bootstrap
   ./configure --prefix=/usr --mandir=/usr/share/man \
     --infodir=/usr/share/info  --libexecdir=/usr/lib \
@@ -35,11 +34,10 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname%-git}
   _pkgver=$(git describe --always | sed 's+-+_+g')
   make DESTDIR="$pkgdir/" \
        emacsdir=/usr/share/emacs/site-lisp/maxima install  
-  # install some freedesktop.org compatibility
-  install -Dm644 ${srcdir}/maxima.desktop \
-  	  ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  install -Dm644 "$srcdir"/maxima.desktop \
+  	  "$pkgdir"/usr/share/applications/${pkgname}.desktop
 }
