@@ -2,7 +2,7 @@
 
 _gonamespc='github.com/schollz/croc'
 pkgname=croc
-pkgver=3.0.7
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="Easily and securely send things from one computer to another."
 arch=('x86_64')
@@ -37,4 +37,4 @@ check() {
 package() {
 	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
-sha512sums=('e85a191a6c8e343cadcb4b98f9c23e4f194446c8efedbe93bc6d2cb103105fd41eb1be748176bce1835671d6b5f93c7f94a9ca674eacffa154c1bf2b05d240c3')
+sha512sums=('3d13611f2c61af9f68d46562811bcb7c412df1984666bc32f2889475cb42b3371aec7471bbc07a466eecad4e6cb00ce26053e3af49f35a68777ae4110a88b808')
