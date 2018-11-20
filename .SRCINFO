@@ -1,6 +1,6 @@
 pkgbase = matomo
 	pkgdesc = real time web analytics platform
-	pkgver = 3.6.1
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://matomo.org/
 	install = matomo.install
@@ -13,11 +13,11 @@ pkgbase = matomo
 	optdepends = geoip2-database: GeoIP database
 	replaces = piwik
 	backup = usr/share/webapps/matomo/piwik.js
-	source = https://builds.matomo.org/matomo-3.6.1.tar.gz
-	source = https://builds.matomo.org/matomo-3.6.1.tar.gz.asc
+	source = https://builds.matomo.org/matomo-3.7.0.tar.gz
+	source = https://builds.matomo.org/matomo-3.7.0.tar.gz.asc
 	validpgpkeys = 814E346FA01A20DBB04B6807B5DBD5925590A237
-	sha256sums = a5886697a3d2f37442f071c5c586e7f5aae97158d78b94851af4f73e701173d0
-	sha256sums = fe8034fd223de336bd4d89ce6eb51515a4c9590ec03640e09c112d15bad51443
+	sha256sums = 1876d4c3cf03b65e1ffbeda9e876e006dd4aedea6e86875f5c22ec9c3873afa5
+	sha256sums = 94ef554fc4af76090d0a38f135696c0cb55376cd77ed8895fa1f5d0c256ec91b
 
 pkgname = matomo
 

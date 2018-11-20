@@ -3,7 +3,7 @@
 # Co-Maintainer: Nils Czernia <nils at czserver dot de>
 
 pkgname=matomo
-pkgver=3.6.1
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="real time web analytics platform"
 arch=("any")
@@ -18,8 +18,8 @@ install="$pkgname.install"
 source=("https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz"
         "https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz.asc")
 backup=("usr/share/webapps/${pkgname}/piwik.js")
-sha256sums=("a5886697a3d2f37442f071c5c586e7f5aae97158d78b94851af4f73e701173d0"
-            "fe8034fd223de336bd4d89ce6eb51515a4c9590ec03640e09c112d15bad51443")
+sha256sums=("1876d4c3cf03b65e1ffbeda9e876e006dd4aedea6e86875f5c22ec9c3873afa5"
+            "94ef554fc4af76090d0a38f135696c0cb55376cd77ed8895fa1f5d0c256ec91b")
 
 validpgpkeys=("814E346FA01A20DBB04B6807B5DBD5925590A237")
 
@@ -54,7 +54,7 @@ package() {
   # as it is, chown the whole plugins directory in matomo.install, and wash our
   # hands of it.
 
-  # GeoLite2-City.mmdb is provided by geoip2-datbase, which is optdepends.
+  # GeoLite2-City.mmdb is provided by geoip2-database, which is optdepends.
   # I figure a dead symlink should be safe if it’s missing.
   ln -s "../../../../../usr/share/GeoIP/GeoLite2-City.mmdb" "${pkgdir}/usr/share/webapps/matomo/misc"
 }
