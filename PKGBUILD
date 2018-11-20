@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: solaraquarion <shlomochoina@gmial.com>
 pkgname=extraterm
-pkgver=0.37.3
+pkgver=0.37.4
 pkgrel=1
 pkgdesc="The swiss army chainsaw of terminal emulators."
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://github.com/sedwards2009/extraterm"
 license=("MIT")
 depends=("nodejs")
 source=("$url/releases/download/v$pkgver/extraterm-$pkgver-linux-x64.zip")
-sha256sums=('17ba4a67c528b533f55125467ad846527c894a7db90be23838350b56bc2850d2')
+sha256sums=('654442a1c4ddcda0bda5551febc06ebd491cacb266412560007185cf3a296cf7')
 
 prepare(){
 rm -rf "$srcdir/$pkgname-$pkgver"
