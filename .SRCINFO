@@ -1,19 +1,20 @@
 pkgbase = calibre-git
-	pkgdesc = Ebook management application, from git
-	pkgver = 3.27.1.r3.g10d61771fb
+	pkgdesc = Ebook management application
+	pkgver = 3.30.0.r18.g2447be653b
 	pkgrel = 1
 	url = https://calibre-ebook.com/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	checkdepends = xorg-server-xvfb
 	makedepends = git
 	makedepends = qt5-x11extras
 	makedepends = sip
 	makedepends = xdg-utils
 	makedepends = rapydscript-ng
-	makedepends = python2-sphinx
 	depends = chmlib
 	depends = icu
+	depends = jxrlib
 	depends = libmtp
 	depends = libusbx
 	depends = libwmf
@@ -51,7 +52,7 @@ pkgbase = calibre-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = be89d68cde2d996e82b813d83704ed6dceed5a86467285be6ed37f0a20bb65b4
-	sha256sums = 6e556d641df670fd74947776001d970216bf24f26389c1575bc11a10a92ee96d
+	sha256sums = b6da5e354a167f000462cf7964132c6e0749e16588249ef75ab31a62230561b8
 
 pkgname = calibre-git
 
