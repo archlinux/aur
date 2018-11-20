@@ -1,8 +1,8 @@
 # Maintainer: Nbiba bedis <bedisnbiba@gmail.com>
 
 pkgname=fedora-firefox-wayland-bin
-pkgver=63.0.1
-pkgrel=6
+pkgver=63.0.3
+pkgrel=1
 pkgdesc="Fedora's firefox build wtih wayland enabled by default"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -17,8 +17,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
-source=("https://kojipkgs.fedoraproject.org//packages/firefox/63.0.1/3.fc30/x86_64/firefox-63.0.1-3.fc30.x86_64.rpm")
-md5sums=('a4f5ef650ddb062de0a9031b79cb4979')  
+source=("https://kojipkgs.fedoraproject.org//packages/firefox/$pkgver/$pkgrel.fc30/x86_64/firefox-$pkgver-$pkgrel.fc30.x86_64.rpm")
+md5sums=('fb0d7e0ca334b8d0fabb4c85505cd378')
 
 prepare() {
   # remove a bit of fedora's custom sutff 
