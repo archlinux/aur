@@ -1,12 +1,11 @@
 pkgname=nordvpn-bin
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64')
 url="https://nordvpn.com/download/linux/"
 license=('custom')
-depends=('openvpn')
-options=('!strip')
+depends=('openvpn' 'net-tools')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn')
 source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver}_amd64.deb")
