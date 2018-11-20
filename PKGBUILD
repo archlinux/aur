@@ -2,7 +2,7 @@
 # Contributor: <craven@gmx.net>
 
 pkgname=foment-git
-pkgver=20171216
+pkgver=20180519
 pkgrel=1
 pkgdesc="Foment scheme"
 arch=('i686' 'x86_64')
@@ -27,6 +27,6 @@ build() {
 
 package() {
   cd foment
-  install -D unix/release/foment ${pkgdir}/usr/bin/foment
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENCE
+  install -D unix/release/foment "$pkgdir"/usr/bin/foment
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENCE
 }
