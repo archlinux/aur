@@ -5,6 +5,7 @@ pkgbase = fuse-overlayfs-git
 	url = https://github.com/containers/fuse-overlayfs
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = fuse3
 	source = fuse-overlayfs::git+https://github.com/containers/fuse-overlayfs.git
 	sha256sums = SKIP

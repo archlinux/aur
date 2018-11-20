@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/containers/fuse-overlayfs"
 license=('GPL3')
 depends=('fuse3')
+makedepends=('git')
 source=("${pkgname%-*}::git+https://github.com/containers/fuse-overlayfs.git")
 
 sha256sums=('SKIP')
