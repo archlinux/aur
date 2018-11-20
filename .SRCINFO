@@ -1,7 +1,7 @@
 pkgbase = etcher-bin
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily
 	pkgver = 1.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.etcher.io/
 	arch = x86_64
 	license = apache

@@ -1,8 +1,8 @@
-# Maintainer: Ali Molaei <frealgagu at gmail fot com>
+# Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=etcher-bin
 pkgver=1.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Flash OS images to SD cards & USB drives, safely and easily"
 arch=("x86_64")
 url="http://www.${pkgname%-bin}.io/"
@@ -18,7 +18,7 @@ sha256sums=("9cd871a8bf0928c7567fbfe3e6a1ee5e5221f120dcfd9079459d825ec9ec28d6")
 
 build() {
   cd "${srcdir}"
-  mkdir "${srcdir}/output"
+  mkdir -p "${srcdir}/output"
   tar -xvf "${srcdir}/data.tar.xz" -C "${srcdir}/output"
 }
 
