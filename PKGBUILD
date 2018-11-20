@@ -1,31 +1,25 @@
 # Contributor: vsilv <vsilv@posteo.eu>
-# Maintainer : vsilv <vsilv@posteo.eu>
+# Contributor: pancakes <aur@azz.am>
+
+_ghname=python3-krakenex
 pkgname=python-krakenex
-pkgver=v3.1.0.r0.g1d06fe5
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="Wrapper for krakenex"
-arch=('x86_64')
+pkgdesc="Exchange API for Kraken.com"
+arch=('any')
 url="https://github.com/veox/python3-krakenex"
-license=('LGPLv3')
-depends=('python>=3.6')
-makedepends=('git')
-provides=('python-krakenex')
-source=('python-krakenex::git+https://github.com/veox/python3-krakenex.git')
+license=('LGPL')
+makedepends=('python-setuptools')
+source=("https://github.com/veox/$_ghname/archive/v$pkgver.tar.gz")
+sha1sums=('de79e2b7b49cf370078374b116b389f313f3bc79')
 
-md5sums=('SKIP')
-_gitname='python-krakenex'
-
-pkgver() {
-  cd "$srcdir/$_gitname"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-build() {
-  cd "${srcdir}/${_gitname}"
-  python setup.py build
-}
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  python setup.py install --prefix=/usr --root=${pkgdir} -O1 --skip-build
+    cd $_ghname-$pkgver
+    cp LICENSE.txt LICENSE
+    python setup.py install --root="$pkgdir/" --optimize=1
+
+    mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
+    install -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname
 }
 
