@@ -5,7 +5,7 @@
 set -u
 _pkgname='littler'
 pkgname="${_pkgname}-git"
-pkgver=0.3.4.r0.g3c594e4
+pkgver=0.3.5.r3.g80b7970
 pkgrel=1
 pkgdesc='a hash-bang and simple command line pipe front end for GNU R'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ _giturl="https://github.com/eddelbuettel/${_pkgname}"
 source=("${_pkgname}-${pkgver}.tar.gz::${_giturl}/archive/${pkgver}.tar.gz")
 #source=("http://dirk.eddelbuettel.com/code/littler/${pkgname}_${pkgver}.tar.gz")
 #source=("http://http.debian.net/debian/pool/main/l/littler/littler_0.2.3.orig.tar.gz")
-sha256sums=('3adf3066decccbdd71a2afb41d4d9ebf0eb48c083a5c3188ac8d371477adfff0')
+sha256sums=('fd3596a988d55c96bab6a5ba89deee1599746ada6a78921bff873d6ac61df63d')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pkgname}"
@@ -27,7 +27,6 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _vcsprovides=("${pkgname%-git}=${pkgver%%.r*}")
   _vcsconflicts=("${pkgname%-git}")
   url="https://github.com/eddelbuettel/${_pkgname}"
-  _verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
   source=("${_srcdir}::${url//https:/git:}.git")
   :;sha256sums=('SKIP')
   provides=("${_pkgname}=${pkgver%%.r*}")
@@ -40,7 +39,7 @@ pkgver() {
 }
 else
   _srcdir="${pkgname}-${pkgver}"
-  _verwatch=("${url%.html}/" "${pkgname}[-_]\(.*\)\.tar\.gz" 'l')
+  _verwatch=("${_giturl}/releases.atom" "\s\+<title>littler \([^<]\+\)</title>" 'f') # RSS
 fi
 
 prepare() {
