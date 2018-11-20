@@ -1,0 +1,8 @@
+post_install() {
+	echo "Instructions on how to add uBlock Origin to you Chrome/Chromium browser can"
+    echo "be found at https://github.com/gorhill/uBlock/blob/master/dist/README.md."
+}
+
+post_upgrade() {
+	post_install
+}

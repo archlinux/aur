@@ -1,0 +1,6 @@
+# build/package dirs
+pkg
+src
+
+# downloaded package
+uBlock0.chromium.zip
