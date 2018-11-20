@@ -2,11 +2,12 @@
 
 pkgname=advent
 pkgver=0
-pkgrel=2
+pkgrel=3
 pkgdesc="WELCOME TO ADVENTURE!!"
 arch=('i686' 'x86_64')
 url='http://www.russotto.net/~mrussotto/ADVENT/'
 license=('none')
+optdepends=("bsd-games: for crowther and woods' adventure")
 source_i686=("https://archive.org/download/adv-0/advent-i686.tar.gz")
 source_x86_64=("https://archive.org/download/adv-0/advent-x86_64.tar.gz")
 md5sums_i686=('66e3565d19c67be525ff32affbd104af')
