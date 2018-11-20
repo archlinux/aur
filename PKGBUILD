@@ -9,7 +9,7 @@ pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS an
 arch=('i686' 'x86_64')
 url="http://www.frida.re"
 license=('wxWindows Library License, Version 3.1')
-depends=('python2' 'python2-pygments' 'python2-prompt_toolkit1>=1.0.15' 'python2-colorama')
+depends=('python2' 'python2-pygments' 'python2-colorama')
 source=("https://files.pythonhosted.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "COPYING")
 sha256sums=('a7b794cb50057177baeffb51e094090393e4b90f31006bc72a7c609bd7197ba3'
