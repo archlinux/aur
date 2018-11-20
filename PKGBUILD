@@ -6,7 +6,7 @@
 # Maintainer: push2001sla@gmail.com
 pkgname=ccd-python-git
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Cute ChDir written on Python that finds directories"
 arch=('any')
