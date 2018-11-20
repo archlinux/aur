@@ -1,2 +1,7 @@
 /.project
 helper.txt
+*.pkg.tar
+*.tar.gz
+*.deb
+pkg/
+src/
