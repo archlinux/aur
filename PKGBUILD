@@ -3,13 +3,13 @@
 pkgname=gnome-shell-extension-outta-space-git
 _pkgname=${pkgname%-git}
 
-pkgver=r1.5f9dfe8
+pkgver=r1.d3673ff
 pkgrel=1
 pkgdesc="GNOME Shell extension that will give you more space to work with."
 arch=('any')
 url='https://github.com/cookiengineer/gnome-shell-extension-outta-space'
 license=('GPL3')
-depends=('gnome-shell')
+depends=('gnome-shell' 'xorg-xprop')
 makedepends=('git')
 source=("git+https://github.com/cookiengineer/gnome-shell-extension-outta-space")
 md5sums=('SKIP')
