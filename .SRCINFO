@@ -1,7 +1,7 @@
-pkgbase = stack-client
-	pkgdesc = The STACK Client provides file sync to desktop clients.
+pkgbase = stack-cloud-client
+	pkgdesc = The STACK Client provides file sync to desktop clients. Renamed due to name clash with Haskell Tool Stack
 	pkgver = 2.4.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://www.transip.nl/stack/
 	arch = x86_64
 	license = GPL2
@@ -14,12 +14,15 @@ pkgbase = stack-client
 	optdepends = python2-nautilus: integration with Nautilus
 	optdepends = nemo-python: integration with Nemo
 	conflicts = stack-client-bin
+	conflicts = stack-client
 	source = client-v2.4.1.tar.gz::https://github.com/owncloud/client/archive/v2.4.1.tar.gz
 	source = http://mirror.transip.net/stack/software/source/stack-client-source-2.4.1.tar.gz
 	source = cmake_qt5.patch
+	source = rename.patch
 	sha256sums = 89a29ce91f49160cae4f04129a9d1e0757b665300db68d4449849c847627d337
 	sha256sums = 802b9032408118cff2852965f8c0ae87733205db86a8d386c2a4fb3c43e9a4d8
 	sha256sums = 25ab3c8010f5b031bad4b671d80487889506b43e42b3f16f2329e58bfabe5fae
+	sha256sums = 30188b01acf74ca4c32540e6c31a10e380fad6a0e3aecfbbf07c21fcba5252a7
 
-pkgname = stack-client
+pkgname = stack-cloud-client
 
