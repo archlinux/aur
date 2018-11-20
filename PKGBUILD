@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=mpv-prescalers-git
-pkgver=r76.4aaabcf
-pkgrel=4
+pkgver=r77.46b8193
+pkgrel=2
 pkgdesc="User shaders for prescaling in mpv"
 arch=('any')
 url="https://github.com/bjin/mpv-prescalers/tree/master"
@@ -22,14 +22,11 @@ pkgver() {
 #}
 
 package() {
-  cd "$srcdir"
-  install -Dm644 "$srcdir/mpv-prescalers/LICENSE" "$pkgdir/usr/share/licenses/mpv-prescalers/LICENSE"
-  install -Dm644 "$srcdir/mpv-prescalers/README.md" "$pkgdir/usr/share/doc/mpv-prescalers/README.md"
-  install -d "$pkgdir/usr/share/mpv-prescalers"
-  
-  for file in $(find "$srcdir/mpv-prescalers" -maxdepth 1 -type f -name "*.hook" | sed 's/.*\///'); do
-    install -Dm644 "$srcdir/mpv-prescalers/$file" "$pkgdir/usr/share/mpv-prescalers/$file"
-  done
-
+  install -Dm644 $srcdir/mpv-prescalers/LICENSE $pkgdir/usr/share/licenses/mpv-prescalers/LICENSE
+  install -Dm644 $srcdir/mpv-prescalers/README.md $pkgdir/usr/share/doc/mpv-prescalers/README.md
+  install -d $pkgdir/usr/share/mpv-prescalers
+  cp -r $srcdir/mpv-prescalers/* $pkgdir/usr/share/mpv-prescalers/
+  rm $pkgdir/usr/share/mpv-prescalers/LICENSE
+  rm $pkgdir/usr/share/mpv-prescalers/README.md
 }
 
