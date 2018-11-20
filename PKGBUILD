@@ -1,8 +1,8 @@
-# Contributor: Joyfulgirl <joyfulgirl (at) archlinux.us>
+# Contributor: Joyfulgirl <joyfulgirl (at) archlinux.us> a.k.a. escondida
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emms-git
-pkgver=20171215
+pkgver=5.1.0.g56d9ec2
 pkgrel=1
 pkgdesc="Emacs MultiMedia System -- git version"
 arch=('i686' 'x86_64')
@@ -20,30 +20,29 @@ conflicts=('emms')
 provides=('emms')
 source=('git://git.sv.gnu.org/emms.git')
 md5sums=('SKIP')
-_gitname="emms"
 
 pkgver() {
-  cd "$srcdir"/$_gitname
-  echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
+  cd emms
+  git describe --long | tr - .
 }
 
 prepare() {
-  cd "$srcdir"/$_gitname/lisp
+  cd emms/lisp
   sed -i '5s+$+ emms-setup.el+' Makefile
 }
   
 build() {
-    cd ${srcdir}/${_gitname} 
+    cd emms
     PREFIX=/usr make
     PREFIX=/usr make emms-print-metadata 
 }
 
 package() {
-  cd ${srcdir}/${_gitname}
-  install -d ${pkgdir}/usr/share/{emacs/site-lisp/emms,man/man1,info}
-  install -m 644 -t ${pkgdir}/usr/share/emacs/site-lisp/emms lisp/*.el
-  install -m 644 -t ${pkgdir}/usr/share/emacs/site-lisp/emms lisp/*.elc
-  install -m 644 -t ${pkgdir}/usr/share/info doc/emms.info 
-  install -m 644 -t ${pkgdir}/usr/share/man/man1 emms-print-metadata.1 
-  install -Dm755 src/emms-print-metadata ${pkgdir}/usr/bin/emms-print-metadata
+  cd emms
+  install -d "$pkgdir"/usr/share/{emacs/site-lisp/emms,man/man1,info}
+  install -m 644 -t "$pkgdir"/usr/share/emacs/site-lisp/emms lisp/*.el
+  install -m 644 -t "$pkgdir"/usr/share/emacs/site-lisp/emms lisp/*.elc
+  install -m 644 -t "$pkgdir"/usr/share/info doc/emms.info 
+  install -m 644 -t "$pkgdir"/usr/share/man/man1 emms-print-metadata.1 
+  install -Dm755 src/emms-print-metadata "$pkgdir"/usr/bin/emms-print-metadata
 }
