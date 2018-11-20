@@ -1,11 +1,13 @@
-# Maintainer: Acidhub <contact@acidhub.click>
+# Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
+# Contributor: Acidhub <contact@acidhub.click>
 
 pkgname=nullidentdmod-git
 pkgver=20180619.33.1d810ba
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal identd server with customizable userid"
 conflicts=('oidentd' 'nullidentd' 'pindetd' 'nullidentdmod')
 arch=('any')
+makedepends=('git')
 url="http://acidhub.click/NullidentdMod/"
 license=('GPL')
 source=("git+https://github.com/Acidhub/${pkgname%-*}")

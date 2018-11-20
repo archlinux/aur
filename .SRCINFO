@@ -1,10 +1,11 @@
 pkgbase = nullidentdmod-git
 	pkgdesc = Minimal identd server with customizable userid
 	pkgver = 20180619.33.1d810ba
-	pkgrel = 1
+	pkgrel = 2
 	url = http://acidhub.click/NullidentdMod/
 	arch = any
 	license = GPL
+	makedepends = git
 	conflicts = oidentd
 	conflicts = nullidentd
 	conflicts = pindetd
