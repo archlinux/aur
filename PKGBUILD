@@ -1,10 +1,10 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libjpeg-turbo
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 arch=(any)
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (mingw-w64)"
-license=("custom" "GPL")
+license=("custom")
 depends=(mingw-w64-crt)
 makedepends=(yasm mingw-w64-cmake)
 provides=(mingw-w64-libjpeg)
@@ -13,13 +13,13 @@ options=(staticlibs !strip !buildflags)
 url="http://libjpeg-turbo.virtualgl.org"
 source=("http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$pkgver.tar.gz")
 validpgpkeys=('7D6293CC6378786E1B5C496885C7044E033FDE16')
-sha256sums=('778876105d0d316203c928fd2a0374c8c01f755d0a00b12a1c8934aeccff8868')
+sha256sums=('e5f86cec31df1d39596e0cca619ab1b01f99025a27dafdfc97a30f3a12f866ff')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "$srcdir/libjpeg-turbo-$pkgver"
-	for _arch in ${_architectures}; do
+  for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DWITH_JPEG8=ON ..
     make
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-	for _arch in ${_architectures}; do
+  for _arch in ${_architectures}; do
     cd "$srcdir/libjpeg-turbo-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
     ${_arch}-strip "$pkgdir"/usr/${_arch}/bin/*.exe
