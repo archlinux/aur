@@ -1,7 +1,7 @@
 pkgbase = thunderbird-appmenu
 	pkgdesc = Thunderbird from extra with appmenu patch
 	pkgver = 60.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/thunderbird-appmenu/
 	arch = x86_64
 	license = MPL
