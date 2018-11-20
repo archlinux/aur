@@ -3,13 +3,13 @@
 # contributer: rob.til.freedman@googlemail.com
 
 pkgname=moonplayer
-pkgver=1.1.7.r208
+pkgver=2.2.r316
 pkgrel=1
 pkgdesc="A qt font-end for mplayer with the abilities of watching and downloading videos from chinese network"
 arch=('i686' 'x86_64')
 url="https://github.com/coslyk/moonplayer"
 license=('GPL')
-depends=('qt5-base' 'python' 'python2' 'mpv' 'qtermwidget')
+depends=('qt5-base' 'qt5-x11extras' 'python' 'python2' 'mpv' 'qtermwidget')
 makedepends=('git')
 source=(
 	"git+https://github.com/coslyk/moonplayer#branch=master"
@@ -26,7 +26,7 @@ build() {
 	find . -name '*.py' -exec sed -i \
 	's|#![ ]*/usr/bin/python$|&2|;s|#![ ]*/usr/bin/env python$|&2|' {} +
 
-	qmake-qt5 moonplayer.pro
+	qmake-qt5 PREFIX=/usr moonplayer.pro
 
 	make
 }
