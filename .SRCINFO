@@ -1,7 +1,7 @@
 pkgbase = fuego-svn
 	pkgdesc = A collection of C++ libraries for the game of Go
 	pkgver = 2033
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fuego.sourceforge.net/
 	arch = i686
 	arch = x86_64

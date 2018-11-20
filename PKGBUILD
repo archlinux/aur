@@ -3,7 +3,7 @@
 
 pkgname=fuego-svn
 pkgver=2033
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of C++ libraries for the game of Go"
 arch=('i686' 'x86_64')
 url="http://fuego.sourceforge.net/"
@@ -29,5 +29,5 @@ build() {
 
 package() {
   cd ${pkgname%-svn}-code
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
