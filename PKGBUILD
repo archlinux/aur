@@ -17,10 +17,10 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/relatorio-$pkgver
+  cd "$srcdir/relatorio-$pkgver"
   python setup.py build
 
-  cd $srcdir/relatorio-$pkgver-py2
+  cd "$srcdir/relatorio-$pkgver-py2"
   python2 setup.py build
 }
 
@@ -28,7 +28,7 @@ package_python-relatorio() {
   depends=('python-genshi>=0.5' 'python-lxml>=2.0')
   optdepends=('python-pycha>=0.4.0: chart support' 'python-yaml' 'python-magic: fodt support')
 
-  cd $srcdir/relatorio-$pkgver
+  cd "$srcdir/relatorio-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
@@ -36,6 +36,6 @@ package_python2-relatorio() {
   depends=('python2-genshi>=0.5' 'python2-lxml>=2.0')
   optdepends=('python2-pycha>=0.4.0: chart support' 'python2-yaml' 'python2-magic: fodt support')
 
-  cd $srcdir/relatorio-$pkgver-py2
+  cd "$srcdir/relatorio-$pkgver-py2"
   python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
