@@ -1,7 +1,7 @@
 pkgbase = netease-musicbox-git
 	pkgdesc = A sexy command line interface musicbox for NetEase based on Python
-	pkgver = r577.cdcbd50
-	pkgrel = 2
+	pkgver = r579.8ce4a7e
+	pkgrel = 1
 	url = https://github.com/darknessomi/musicbox
 	install = netease-musicbox-git.install
 	arch = any
@@ -21,12 +21,10 @@ pkgbase = netease-musicbox-git
 	conflicts = netease-musicbox
 	source = musicbox::git+https://github.com/darknessomi/musicbox
 	source = LICENSE::https://raw.githubusercontent.com/darknessomi/musicbox/master/LICENSE.txt
-	source = 0001-Remove_python_requests_cache_as_depends.patch
-	source = 0002-Replace_pyqt4_to_pyqt5_as_depends.patch
+	source = 0001-Fixed-Replace_pyqt4_to_pyqt5_as_depends.patch
 	sha256sums = SKIP
 	sha256sums = 50efc98142cfffe413d73c87c91f2687dfb774217af923f03dfdc8426c9d9552
-	sha256sums = 0faefb24ad158814cda0a5fd2262c2308182d22791587382d68da09922338052
-	sha256sums = f9c95f8441f43fc13c2cadb1f62b6e33658474f7671d11b3f0a66fe322e0a9e9
+	sha256sums = 55b4dd116b8b7a1b47854f52ce1e9f8422fb72702beb4c259bda388e23060484
 
 pkgname = netease-musicbox-git
 
