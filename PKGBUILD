@@ -5,7 +5,7 @@
 pkgbase="ptpython"
 pkgname=("ptpython" "ptpython2")
 pkgver="2.0.4"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Python REPL build on top of prompt_toolkit"
 arch=("any")
 url="https://github.com/jonathanslenders/ptpython"
@@ -29,7 +29,7 @@ package_ptpython() {
     depends=(
         "python-docopt"
         "python-jedi>=0.9.0"
-        "python-prompt_toolkit-2>=2.0.6"
+        "python-prompt_toolkit>=2.0.6"
         "python-pygments"
     )
     optdepends=(
