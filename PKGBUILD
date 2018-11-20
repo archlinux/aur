@@ -10,7 +10,7 @@ pkgdesc="A commercial solver for mathematical optimization problems."
 epoch=1
 _majver=8
 _minver=1
-pkgver=${_majver}.${_minver}.0.45
+pkgver=${_majver}.${_minver}.0.67
 pkgrel=1
 arch=('x86_64')
 _mosekarch=linux64x86
@@ -19,9 +19,9 @@ license=('custom')
 depends=('gcc-libs' 'openmp')
 options=('!strip')
 
-source=("http://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.bz2")
+source=("mosek-${pkgver}.tar.bz2::https://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.bz2")
 
-sha512sums=('064dec647bcffe443e34774825ae394dd9786dc4907271e9e7ba6497e7f06a771448afc1de3cd33fc3bc6d9a481ee35960513f11f2d3970bb80238cb5ed2d2fa')
+sha512sums=('9b51f6facf4993775e7bdb04a260c0478f3528195230a1907c5d00c002b61d56a7d423fb484aa010807c3d9465611cd0aa9ae43a8fe8b57289f9f4c6aa4d0591')
 
 package() {
 	# Install shared libraries.
