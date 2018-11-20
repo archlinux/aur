@@ -1,0 +1,14 @@
+pkgbase = gocho
+	pkgdesc = A local area network file-sharing application with nodes auto-discovery
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/donkeysharp/gocho.git
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	depends = glibc
+	source = https://github.com/donkeysharp/gocho/releases/download/0.1.0/gocho_0.1.0_linux64.zip
+	md5sums = 98ab0acdb74117ecea7403acc92782ac
+
+pkgname = gocho
+
