@@ -3,7 +3,7 @@
 pkgname="imapfetch"
 pkgdesc="Download all e-mails from an IMAP4 mailserver and store them locally in maildir format."
 
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 
 arch=('any')
@@ -17,7 +17,7 @@ provides=($pkgname)
 conflicts=($pkgname)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d1df16ddf4a8562db6fade24dbc2efd372b97a970242b3aba41935607f8cd1b0')
+sha256sums=('c9b4df13b5dc99fd5d4ca603c59a7966cedd21602ab83592d388315575b6a43c')
 
 package() {
   cd "$pkgname-$pkgver/"

@@ -1,6 +1,6 @@
 pkgbase = imapfetch
 	pkgdesc = Download all e-mails from an IMAP4 mailserver and store them locally in maildir format.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/ansemjo/imapfetch
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = imapfetch
 	depends = python
 	provides = imapfetch
 	conflicts = imapfetch
-	source = imapfetch-0.2.1.tar.gz::https://github.com/ansemjo/imapfetch/archive/0.2.1.tar.gz
-	sha256sums = d1df16ddf4a8562db6fade24dbc2efd372b97a970242b3aba41935607f8cd1b0
+	source = imapfetch-0.2.2.tar.gz::https://github.com/ansemjo/imapfetch/archive/0.2.2.tar.gz
+	sha256sums = c9b4df13b5dc99fd5d4ca603c59a7966cedd21602ab83592d388315575b6a43c
 
 pkgname = imapfetch
 
