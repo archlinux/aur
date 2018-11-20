@@ -1,7 +1,7 @@
 # Maintainer: Trent Palmer trenttdually at gmail
 _name='vim-hug-neovim-rpc'
 pkgname="${_name}-git"
-pkgver=r97.a8cdb6b
+pkgver=r104.a18bf1c
 pkgrel=1
 pkgdesc="trying to build a compatibility layer for neovim rpc client working on vim8"
 arch=('any')
