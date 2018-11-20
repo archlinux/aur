@@ -217,26 +217,16 @@ build() {
   test "${_nppdfound}" -ne 0 || echo "${}"
   test "${_ncodefound}" -ne 0 || echo "${}"
 
-  set  +u
+  set +u
 }
 
-package() {
-  set -u
-
-  local _dir
-  # /var/spool is not used anywhere in this package. Maybe it's needed for non cups lprng.
-  for _dir in 'usr' 'opt'; do # 'var'
-    if [ -d "${srcdir}/${_dir}" ]; then
-      cp -pR "${srcdir}/${_dir}" "${pkgdir}"
-    fi
-  done
-
+_fn_libconflict() {
   # Change lib name to prevent conflicts with other printers that use the same one
   local _f1='libbrcompij2'
   local _f2="${_f1}-${_brotherlnd}"
   local _fp='' # blank enables name change, pound sign # disables
 
-  # Execute LPR POSTIN. These libs will probably cause a conflict with other printers.
+  # Execute ln soname commands from postin
   if [ "${_opt_DEB}" -ne 0 ]; then
     local _postin='debextract.2/postinst'
   else
@@ -256,6 +246,20 @@ package() {
     patchelf --replace-needed "${_f1}.so.1" "${_f2}.so.1" "${pkgdir}/usr/share/${_conflict}/lpd/rastertobrij2"
     patchelf --set-soname "${_f2}.so.1" "${pkgdir}/usr/lib/${_f2}.so.1.0.2"
   fi
+}
+
+package() {
+  set -u
+
+  local _dir
+  # /var/spool is not used anywhere in this package. Maybe it's needed for non cups lprng.
+  for _dir in 'usr' 'opt'; do # 'var'
+    if [ -d "${srcdir}/${_dir}" ]; then
+      cp -pR "${srcdir}/${_dir}" "${pkgdir}"
+    fi
+  done
+
+  _fn_libconflict
 
   # Ensure we got a ppd and a filter for CUPS
   test ! -z "$(find "${pkgdir}/usr/share/cups/model" -type 'f' -name '*.ppd')" || echo "${}"
