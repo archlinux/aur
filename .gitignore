@@ -2,6 +2,6 @@
 /src/
 /pkg/
 etcher-bin-*.pkg.tar.xz
-etcher-electron_*.deb
+balena-etcher-electron_*.deb
 pkg/
 src/

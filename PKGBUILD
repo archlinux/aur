@@ -1,8 +1,7 @@
-# Maintainer: Fredy García <frealgagu at gmail fot com>
-# Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
+# Maintainer: Ali Molaei <frealgagu at gmail fot com>
 
 pkgname=etcher-bin
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc="Flash OS images to SD cards & USB drives, safely and easily"
 arch=("x86_64")
@@ -13,9 +12,9 @@ conflicts=("${pkgname%-bin}")
 depends=("alsa-lib" "gconf" "gtk2" "libxss" "libxtst" "nss")
 optdepends=("libnotify: for notifications"
             "speech-dispatcher: for text-to-speech")
-source=("https://github.com/resin-io/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-electron_${pkgver}_amd64.deb")
+source=("https://github.com/balena-io/${pkgname%-bin}/releases/download/v${pkgver}/balena-${pkgname%-bin}-electron_${pkgver}_amd64.deb")
 options=("!strip")
-sha256sums=("e4babb3b7a868c54d448e470b8405aa80b7eb77d80edc2805fd43f373239156d")
+sha256sums=("9cd871a8bf0928c7567fbfe3e6a1ee5e5221f120dcfd9079459d825ec9ec28d6")
 
 build() {
   cd "${srcdir}"
