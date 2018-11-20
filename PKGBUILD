@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde-bin
-pkgver=56.2.5
+pkgver=56.2.5.1
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -20,13 +20,12 @@ conflicts=('waterfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 source=("waterfox-kde-${pkgver}-0-x86_64.pkg.tar.xz::https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/Arch/x86_64/waterfox-kde-${pkgver}-0-x86_64.pkg.tar.xz")
-sha256sums=('67cc09df9888b86266dc06e4271cc35eb1d6d34111430175f1246b29b89fbba5')
+sha256sums=('866368fde1b8a9f4e88fc42503b1036e46f05715a0fa46c14d1d84767cd6f437')
 
 package() {
 mv $srcdir/usr/ $pkgdir/usr/
 # Settings file for language packs
 _settings=/usr/lib/waterfox/.installer/settings
-_i18n_ver=56.2.4
 
 if [ -f "$_settings" ]; then
 echo "Previous settings detected! Do you wish to load them?"
@@ -35,9 +34,9 @@ select yn in "Yes" "No"; do
                     Yes )
     if grep -q download_language=yes "$_settings"; then
     _chosen_language=$(grep -Po 'chosen_language=\K[^ ]+' $_settings)
-    wget -O $srcdir/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/Arch/x86_64/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz;
+    wget -O $srcdir/waterfox-i18n-${_chosen_language}-${pkgver}-0-x86_64.pkg.tar.xz https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/Arch/x86_64/waterfox-i18n-${_chosen_language}-${pkgver}-0-x86_64.pkg.tar.xz;
 	msg2 "Extracting locale..."
-    bsdtar -xf $srcdir/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz -C "$pkgdir/"
+    bsdtar -xf $srcdir/waterfox-i18n-${_chosen_language}-${pkgver}-0-x86_64.pkg.tar.xz -C "$pkgdir/"
     rm $pkgdir/.BUILDINFO
     rm $pkgdir/.MTREE
     rm $pkgdir/.PKGINFO
@@ -89,9 +88,9 @@ printf "Type language code of language you wish to download and install
 for example - for Polish, type pl): "
 read _chosen_language
 
-    wget -O $srcdir/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/Arch/x86_64/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz;
+    wget -O $srcdir/waterfox-i18n-${_chosen_language}-${pkgver}-0-x86_64.pkg.tar.xz https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/Arch/x86_64/waterfox-i18n-${_chosen_language}-${pkgver}-0-x86_64.pkg.tar.xz;
 	msg2 "Extracting locale..."
-    bsdtar -xf $srcdir/waterfox-i18n-${_chosen_language}-${_i18n_ver}-0-x86_64.pkg.tar.xz -C "$pkgdir/"
+    bsdtar -xf $srcdir/waterfox-i18n-${_chosen_language}-${pkgver}-0-x86_64.pkg.tar.xz -C "$pkgdir/"
     rm $pkgdir/.BUILDINFO
     rm $pkgdir/.MTREE
     rm $pkgdir/.PKGINFO
