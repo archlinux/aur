@@ -4,7 +4,7 @@ pkgbase=postgresql-src
 pkgname=('postgresql-src-libs' 'postgresql-src-docs' 'postgresql-src')
 pkgver=11.1
 _majorver=11.1
-pkgrel=8
+pkgrel=10
 CFLAGS=`echo $CFLAGS | sed s/-Ofast/-O3/`
 CFLAGS="${CFLAGS} -flto"
 CXXFLAGS=`echo $CXXFLAGS | sed s/-Ofast/-O3/`
@@ -42,7 +42,7 @@ build() {
     --with-uuid=e2fs \
     --enable-nls \
     --enable-thread-safety \
-    --with-jit
+    --with-llvm
 
   make world -j8
 }
