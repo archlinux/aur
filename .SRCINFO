@@ -1,7 +1,7 @@
 pkgbase = meteoio
 	pkgdesc = Make data access easy and safe for numerical simulations in environmental sciences
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://models.slf.ch/p/meteoio/
 	arch = x86_64
 	license = LGPL3
@@ -11,4 +11,6 @@ pkgbase = meteoio
 	sha256sums = 4e5e141c7d56f18b79644116337775c03648e3e011bc1f30bee657afc63fe3ba
 
 pkgname = meteoio
+
+pkgname = meteoio-examples
 
