@@ -6,7 +6,7 @@
 
 pkgname=davs2
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard'
 url='https://github.com/pkuvcl/davs2/'
@@ -16,10 +16,8 @@ makedepends=('gcc7' 'yasm')
 provides=('libdavs2')
 conflicts=('libdavs2')
 replaces=('libdavs2')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pkuvcl/${pkgname}/archive/${pkgver}.tar.gz"
-        'davs2-1.0-add-linux-support.patch')
-sha256sums=('de93800f016cbaf08cb40184a8069050dc625da5240a528155137052d1cf81c8'
-            '66166908defadbac7bbaab44a2eaab09af9f6b9ad37c035772e32a6a09c0b605')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pkuvcl/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('de93800f016cbaf08cb40184a8069050dc625da5240a528155137052d1cf81c8')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
