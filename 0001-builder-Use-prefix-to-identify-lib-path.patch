@@ -1,0 +1,65 @@
+From 82b90295c12f1081d2c790322db8eb72f58434e8 Mon Sep 17 00:00:00 2001
+From: Radostin Stoyanov <rstoyanov1@gmail.com>
+Date: Tue, 20 Nov 2018 16:53:34 +0000
+Subject: [PATCH 1/2] builder: Use prefix '=> /' to identify lib path
+
+The output of ldd might contain a fully qualified path on the left
+hand side of the '=>'. For example:
+
+(glibc 2.28)
+$ ldd /usr/libexec/libvirt-sandbox-init-common  | grep ld
+    /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007fcdceb96000)
+
+(glibc 2.27)
+$ ldd /usr/libexec/libvirt-sandbox-init-common | grep ld
+    /lib64/ld-linux-x86-64.so.2 (0x00007f18135eb000)
+
+Signed-off-by: Radostin Stoyanov <rstoyanov1@gmail.com>
+---
+ libvirt-sandbox/libvirt-sandbox-builder.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/libvirt-sandbox/libvirt-sandbox-builder.c b/libvirt-sandbox/libvirt-sandbox-builder.c
+index 0c43b62..bb49617 100644
+--- a/libvirt-sandbox/libvirt-sandbox-builder.c
++++ b/libvirt-sandbox/libvirt-sandbox-builder.c
+@@ -299,7 +299,7 @@ static gboolean gvir_sandbox_builder_copy_program(const char *program,
+     /* Loop over the output lines to get the path to the libraries to copy */
+     line = out;
+     while ((tmp = strchr(line, '\n'))) {
+-        gchar *start, *end;
++        gchar *start, *end, *tmp2;
+         *tmp = '\0';
+ 
+         /* Search the line for the library path */
+@@ -310,22 +310,20 @@ static gboolean gvir_sandbox_builder_copy_program(const char *program,
+             const gchar *newname = NULL;
+             *end = '\0';
+ 
++            if ((tmp2 = strstr(start, "=> ")))
++                start = tmp2 + 3;
++
+             /* There are countless different naming schemes for
+              * the ld-linux.so library across architectures. Pretty
+              * much the only thing in common is they start with
+-             * the two letters 'ld'. The LDD program prints it
+-             * out differently too - it doesn't include " => "
+-             * as this library is special - its actually a static
+-             * linked executable not a library.
++             * the two letters 'ld'.
+              *
+              * To make life easier for libvirt-sandbox-init-{qemu,lxc}
+              * we just call the file 'ld.so' when we copy it into our
+              * scratch dir, no matter what it was called on the host.
+              */
+-            if (!strstr(line, " => ") &&
+-                strstr(start, "/ld")) {
++            if (strstr(start, "/ld"))
+                 newname = "ld.so";
+-            }
+ 
+             if (!gvir_sandbox_builder_copy_file(start, dest, newname, error))
+                 goto cleanup;
+-- 
+2.19.1
+

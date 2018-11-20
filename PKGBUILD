@@ -9,14 +9,25 @@ license=('LGPL')
 depends=('libvirt-glib' 'libselinux' 'cpio')
 makedepends=('gobject-introspection' 'intltool')
 optdepends=('dhclient: for sandbox network configuration using DHCP')
-source=(http://libvirt.org/sources/sandbox/$pkgname-$pkgver.tar.gz{,.asc})
+source=(
+    http://libvirt.org/sources/sandbox/$pkgname-$pkgver.tar.gz{,.asc}
+    '0001-builder-Use-prefix-to-identify-lib-path.patch'
+    '0002-Use-boot-vmlinuz-linux-as-default-kernel-path.patch'
+)
+
 md5sums=('c8b4393ec3ea78cd77af826e478f34f9'
-         'd714f9f47f4322d5e702694f0b9f2c19')
+         'd714f9f47f4322d5e702694f0b9f2c19'
+         'f1b8ba0a173499b6fbe5ea24d542047b'
+         'd854d27d11b2d6cf8184667cae920839'
+)
+
 validpgpkeys=('DAF3A6FDB26B62912D0E8E3FBE86EBB415104FDF')
 # Daniel P. Berrange <dan@berrange.com>
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+  patch -Np1 -i "${srcdir}/0001-builder-Use-prefix-to-identify-lib-path.patch"
+  patch -Np1 -i "${srcdir}/0002-Use-boot-vmlinuz-linux-as-default-kernel-path.patch"
 }
 
 build() {

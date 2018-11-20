@@ -1,0 +1,54 @@
+From 418285dfc360c1fec6e1f46ac110ef8800432a3d Mon Sep 17 00:00:00 2001
+From: Radostin Stoyanov <rstoyanov1@gmail.com>
+Date: Tue, 20 Nov 2018 17:24:23 +0000
+Subject: [PATCH 2/2] Use "/boot/vmlinuz-linux" as default kernel path
+
+On some linux distributions "/boot/vmlinuz-linux" is set as default
+kernel path. If this file does not exist we fallback to the value
+"/boot/vmlinuz-$KERNEL-VERSION"
+
+Signed-off-by: Radostin Stoyanov <rstoyanov1@gmail.com>
+---
+ bin/virt-sandbox.c                                | 5 +++--
+ libvirt-sandbox/libvirt-sandbox-builder-machine.c | 4 ++++
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/bin/virt-sandbox.c b/bin/virt-sandbox.c
+index 6032562..930b85e 100644
+--- a/bin/virt-sandbox.c
++++ b/bin/virt-sandbox.c
+@@ -553,8 +553,9 @@ omitted, defaults to match the current running host version.
+ 
+ =item B<--kernpath=FILE-PATH>
+ 
+-Specify the path to the kernel binary. If omitted, defaults
+-to C</boot/vmlinuz-$KERNEL-VERSION>.
++Specify the path to the kernel binary. If omitted, defaults to
++C</boot/vmlinuz-linux> if exists, otherwise
++C</boot/vmlinuz-$KERNEL-VERSION> will be used.
+ 
+ =item B<--kmodpath=DIR-PATH>
+ 
+diff --git a/libvirt-sandbox/libvirt-sandbox-builder-machine.c b/libvirt-sandbox/libvirt-sandbox-builder-machine.c
+index b6f2218..4c1ac39 100644
+--- a/libvirt-sandbox/libvirt-sandbox-builder-machine.c
++++ b/libvirt-sandbox/libvirt-sandbox-builder-machine.c
+@@ -133,11 +133,15 @@ static gchar *gvir_sandbox_builder_machine_get_kernrelease(GVirSandboxConfig *co
+ static gchar *gvir_sandbox_builder_machine_get_kernpath(GVirSandboxConfig *config)
+ {
+     const gchar *kernpath = gvir_sandbox_config_get_kernpath(config);
++    const gchar *default_kernpath = "/boot/vmlinuz-linux";
+     gchar *kver;
+     gchar *ret;
+     if (kernpath)
+         return g_strdup(kernpath);
+ 
++    if (access(default_kernpath, F_OK ) != -1)
++        return g_strdup(default_kernpath);
++
+     kver = gvir_sandbox_builder_machine_get_kernrelease(config);
+     ret = g_strdup_printf("/boot/vmlinuz-%s", kver);
+     g_free(kver);
+-- 
+2.19.1
+
