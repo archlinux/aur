@@ -2,7 +2,7 @@
 # based on python-solid package
 
 pkgname=python-solid-git
-pkgver=r317.e322160
+pkgver=r324.a70eb06
 pkgrel=1
 pkgdesc="SolidPython: OpenSCAD for Python"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/SolidCode/SolidPython"
 makedepends=()
 provides=(python-solid)
 conflicts=(python-solid)
-depends=('python-euclid3' 'python-pypng' 'python-prettytable')
+depends=('python-euclid3' 'python-pypng' 'python-prettytable' 'python-regex')
 source=("git+https://github.com/SolidCode/SolidPython.git")
 md5sums=(SKIP)
 
