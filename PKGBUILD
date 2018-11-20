@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=70.0.3538.102
+pkgver=70.0.3538.110
 pkgrel=1
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -28,7 +28,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-widevine-r2.patch
         chromium-system-icu.patch
         chromium-skia-harmony.patch)
-sha256sums=('4da454035e271ee9bf4d65309191be5e3c589ba29c330cd0aa2721a63e1bac2a'
+sha256sums=('445ef88fcf283206c1eba4faeb1c186c805e053d8b4ffeac1fcb88187bc1942f'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'cd1e87bf3618b7897c5caf7b0f4213cfa5ce917acb0613ecd2ab3f830f0cbfbb'
             '1b370d49c43e88acfe7c0b1f9517047e927f3407bd80b4a48bba32c001f80136'
