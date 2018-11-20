@@ -1,6 +1,6 @@
 pkgbase = task-maker-git
 	pkgdesc = The new cmsMake!
-	pkgver = r730.df7419f
+	pkgver = r770.79f1d6f
 	pkgrel = 1
 	url = https://github.com/algorithm-ninja/task-maker
 	arch = i686

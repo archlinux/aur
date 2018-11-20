@@ -2,7 +2,7 @@
 # Co-maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker-git
-pkgver=r730.df7419f
+pkgver=r770.79f1d6f
 pkgrel=1
 pkgdesc="The new cmsMake!"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -31,4 +31,6 @@ build() {
 package() {
     cd "$srcdir/task-maker/build/python"
     python setup.py install --root="$pkgdir/" --optimize=1
+    install -Dm644 ../tools/autocomp/zsh/_task_maker "$pkgdir/usr/share/zsh/site-functions/_task_maker"
+    install -Dm644 ../tools/autocomp/zsh/_contest_maker "$pkgdir/usr/share/zsh/site-functions/_contest_maker"
 }
