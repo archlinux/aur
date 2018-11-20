@@ -15,8 +15,8 @@ pkgbase = libvirt-sandbox
 	source = http://libvirt.org/sources/sandbox/libvirt-sandbox-0.8.0.tar.gz
 	source = http://libvirt.org/sources/sandbox/libvirt-sandbox-0.8.0.tar.gz.asc
 	validpgpkeys = DAF3A6FDB26B62912D0E8E3FBE86EBB415104FDF
-	md5sums = 546eb0caaa79d50a723adf58f32da87f
-	md5sums = 633854ecab0fb2a4f5f4ee958a731daf
+	md5sums = c8b4393ec3ea78cd77af826e478f34f9
+	md5sums = d714f9f47f4322d5e702694f0b9f2c19
 
 pkgname = libvirt-sandbox
 
