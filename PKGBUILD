@@ -2,12 +2,12 @@
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
 pkgname=optimus-manager
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Management utility to handle GPU switching for Optimus laptops."
 arch=('any')
 url="https://github.com/Askannz/optimus-manager"
 license=('custom:MIT')
-depends=('python' 'bbswitch')
+depends=('python' 'bbswitch' 'xorg-xrandr')
 makedepends=('python-setuptools')
 source=("git+https://github.com/Askannz/optimus-manager.git#tag=v$pkgver")
 sha256sums=('SKIP')
