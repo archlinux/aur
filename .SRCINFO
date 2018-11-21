@@ -1,14 +1,14 @@
 pkgbase = fedora-icon-theme
 	pkgdesc = Set of icons based from Fedora and RedHat
-	pkgver = 1.0.0.23.fc28
+	pkgver = 1.0.0.24.fc29
 	pkgrel = 1
 	url = http://www.redhat.com/
 	arch = any
 	license = GPL3
 	makedepends = intltool
 	depends = mist-icon-theme
-	source = http://rpmfind.net/linux/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/fedora-icon-theme-1.0.0-23.fc28.src.rpm
-	sha256sums = 0c130038f21d7be62580b1b9db3bc44b98049218374aafd2583efd6c61d4e2f1
+	source = http://rpmfind.net/linux/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/fedora-icon-theme-1.0.0-24.fc29.src.rpm
+	sha256sums = 230cbd3eefc86de1141942a45a3ea8dc559bc0f52b25f9e48a6ac21106d0f318
 
 pkgname = fedora-icon-theme
 
