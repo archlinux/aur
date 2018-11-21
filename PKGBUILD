@@ -1,6 +1,6 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.7.1.1
+_oomox_ver=1.7.1.2
 _numix_ver=1.9.2
 _materia_ver=20181115
 _arc_cmt=e97206cf0772da5b07b982da67cc65d91884d48d
@@ -59,7 +59,7 @@ source=(
     "oomoxify-${_oomoxify_ver}.tar.gz::https://github.com/themix-project/oomoxify/archive/${_oomoxify_ver}.tar.gz"
     "base16-builder-${_base16_cmt}.tar.gz::https://github.com/base16-builder/base16-builder/archive/${_base16_cmt}.tar.gz"
 )
-md5sums=('8ffa3269e6132c9faea4931baacd8587'
+md5sums=('c4a9a117c2869d79dbe318952aa9e31f'
          'bcc635f0dd06b0b0fae1f318d3271ec2'
          '6fdcb1b5b44b972b9f5f04138230af59'
          '19029e06b6fbda8a40eb047978c6a8ba'
