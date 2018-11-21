@@ -1,6 +1,6 @@
 pkgbase = hyperfine-bin
 	pkgdesc = A command-line benchmarking tool - Precompiled binary from official repository
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/sharkdp/hyperfine
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = hyperfine-bin
 	license = MIT
 	provides = hyperfine
 	conflicts = hyperfine
-	source_x86_64 = https://github.com/sharkdp/hyperfine/releases/download/v1.3.0/hyperfine-v1.3.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = cc452ee2f2938860633694ff1e00041e5433194d242de599859bcae24f28e136
-	source_i686 = https://github.com/sharkdp/hyperfine/releases/download/v1.3.0/hyperfine-v1.3.0-i686-unknown-linux-gnu.tar.gz
-	sha256sums_i686 = 6164ce50d64e8a2e7b72366f1551006eac07490626ca11b2889a1f9117dc9355
+	source_x86_64 = https://github.com/sharkdp/hyperfine/releases/download/v1.4.0/hyperfine-v1.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1757885406d956df0357d68a204a2bdb32cd4f93358eb6f72c572135c5547325
+	source_i686 = https://github.com/sharkdp/hyperfine/releases/download/v1.4.0/hyperfine-v1.4.0-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = 17fbd0f50d35817ba4301386e419ceab100826aeb13b9062c2c72f255e4b8a3a
 
 pkgname = hyperfine-bin
 
