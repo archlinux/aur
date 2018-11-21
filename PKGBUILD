@@ -14,7 +14,7 @@ _srcname=$pkgbase
 _kernel_rel=4.20
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=4.20.796806.b17a689eaffa
+pkgver=4.20.796835.717c4191d3c3
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -29,7 +29,7 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
         "${pkgbase}.preset")
 
 sha256sums=('SKIP'
-            'cc6c763cf8c48ef9ea8b850e9a59a87f08ae360e5255d8ab1c1390ee7169b899'
+            '09ca50e0a548ac31c793b97c2c4fae41b9e019eafa9ab2be11dce6809313c601'
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
