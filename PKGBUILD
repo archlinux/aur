@@ -4,7 +4,7 @@ pkgrel=1
 epoch=
 pkgdesc="M32 Edit for Midas M32 mixer"
 arch=('x86_64')
-url="https://www.musictribe.com/Categories/Midas/Mixers/Digital/M32/"
+url="https://www.musictribe.com/Categories/Midas/Mixers/Digital/M32/p/P0B3I/downloads"
 license=('custom:proprietary')
 source=('https://downloads.music-group.com/software/behringer/M32/M32-Edit_LINUX_64bit_3.2.tar.gz'
         'm32-edit.desktop'
