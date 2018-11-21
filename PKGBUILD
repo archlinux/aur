@@ -4,7 +4,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-zen-bcachefs-git
-pkgver=4.19.2
+pkgver=4.19.3
 pkgrel=1
 arch=(x86_64)
 url="https://evilpiepirate.org/git/"
@@ -24,7 +24,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('SKIP'
-            '6b281ab7860bf994a286c257b76c7afc3adc2eafa5fa282ff4219ca28fedf8e8'
+            'bf827925f11a2a2b2e488dbfa2ac940e5749a1f34f991dc86ccc6b3e23837937'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
