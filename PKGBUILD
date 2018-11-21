@@ -2,7 +2,7 @@
 pkgbase=meteoio
 pkgname=('meteoio' 'meteoio-examples')
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Make data access easy and safe for numerical simulations in environmental sciences"
 arch=('x86_64')
 url="https://models.slf.ch/p/meteoio/"
@@ -21,6 +21,7 @@ build() {
   mkdir -p build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  make
 }
 
 package_meteoio() {
@@ -30,9 +31,9 @@ package_meteoio() {
 
 package_meteoio-examples() {
   cd "MeteoIO-$pkgver-src/doc/examples/build"
-  find -executable
+  install -vDm644 ../io.ini "$pkgdir/usr/share/meteoio/io.ini"
   for example in 2D_interpolations coordinates data_converter dem_reading grid2d_reading matrix meteo_reading sun time; do
-    install -Dm755 $example "$pkgdir/usr/bin/meteoio_$example"
+    install -vDm755 $example "$pkgdir/usr/bin/meteoio_$example"
   done
 }
 
