@@ -1,7 +1,7 @@
 pkgbase = nvtop
 	pkgdesc = An htop like monitoring tool for NVIDIA GPUs
-	pkgver = 0.2.3
-	pkgrel = 3
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/Syllo/nvtop
 	arch = x86_64
 	license = GPL3
@@ -9,8 +9,8 @@ pkgbase = nvtop
 	makedepends = cuda
 	depends = nvidia-utils
 	depends = ncurses
-	source = https://github.com/Syllo/nvtop/archive/0.2.0.tar.gz
-	sha256sums = 1b5db62c1a204ac83864c50c6dd68c2875ba9f81e32ac38c24286285299354e7
+	source = https://github.com/Syllo/nvtop/archive/0.3.0.tar.gz
+	sha256sums = 9b91ed2cf99035e90335078d425d6914b4f758dee7644fc9e91dcd01bbbbf104
 
 pkgname = nvtop
 
