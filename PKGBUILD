@@ -6,13 +6,13 @@
 
 pkgname=xavs2
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard'
 url='https://github.com/pkuvcl/xavs2/'
 license=('GPL')
 depends=('glibc' 'liblsmash.so')
-makedepends=('gcc7' 'yasm' 'l-smash')
+makedepends=('yasm' 'l-smash')
 provides=('libxavs2')
 conflicts=('libxavs2')
 replaces=('libxavs2')

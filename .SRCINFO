@@ -1,12 +1,11 @@
 pkgbase = xavs2
 	pkgdesc = Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pkuvcl/xavs2/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gcc7
 	makedepends = yasm
 	makedepends = l-smash
 	depends = glibc
