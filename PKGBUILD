@@ -6,7 +6,7 @@
 # Contributor: Moritz Bruder <muesli4 at gmail dot com>
 
 pkgname=monetdb
-pkgver=11.27.11
+pkgver=11.31.11
 pkgrel=1
 pkgdesc="MonetDB: an open source database system"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('r' 'python' 'libatomic_ops' 'snappy' 'unixodbc')
 depends=('r' 'python' 'libatomic_ops' 'snappy' 'unixodbc')
 install=monetdb.install
 source=("http://dev.monetdb.org/downloads/sources/Latest/MonetDB-$pkgver.tar.xz")
-sha256sums=('473b2ea245d8fe006aabe5b2ea3924ade0283f46cfd2edf6fce6aa786c191d0b')
+sha256sums=('169f78f6509241e63028adec3f5082fdcf9f8a1ae9d87a59dddf423f8e9f81d5')
 
 build() {
     cd "$srcdir/MonetDB-$pkgver"
