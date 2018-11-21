@@ -18,16 +18,16 @@ pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua (developme
 arch=('i686' 'x86_64' 'armv7h')
 url="https://prosody.im/"
 license=('MIT')
-depends=('lua51' 'lua51-socket' 'lua51-expat' 'lua51-filesystem' 'libidn'
+depends=('lua52' 'lua52-socket' 'lua52-expat' 'lua52-filesystem' 'libidn'
          'openssl')
 makedepends=('mercurial')
 checkdepends=('luacheck' 'shellcheck' 'lua52-posix' 'lua52-sec')
 conflicts=('prosody')
 provides=('prosody')
 optdepends=(
-'lua51-sec: TLS encryption support'
-'lua51-bitop: websocket support'
-'lua51-event: libevent support'
+'lua52-sec: TLS encryption support'
+'lua52-bitop: websocket support'
+'lua52-event: libevent support'
 )
 install=prosody.install
 backup=('etc/prosody/prosody.cfg.lua')
@@ -61,11 +61,11 @@ prepare() {
 build() {
   cd ${pkgname}
   ./configure --ostype=linux --prefix=/usr --sysconfdir=/etc/prosody \
-    --datadir=/var/lib/prosody --with-lua-include=/usr/include/lua5.1 \
+    --datadir=/var/lib/prosody --with-lua-include=/usr/include/lua5.2 \
     --cflags="${CFLAGS} -fPIC -Wall -Wextra -D_GNU_SOURCE" \
     --ldflags="${LDFLAGS} -shared" --no-example-certs \
-    --runwith=lua5.1 \
-    --lua-version=5.1
+    --runwith=lua5.2 \
+    --lua-version=5.2
   make
 }
 
