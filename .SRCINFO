@@ -1,0 +1,15 @@
+pkgbase = plasma5-applets-window-title-git
+	pkgdesc = Plasma 5 applet that shows the application title and icon for active window
+	pkgver = r31.c8b216a
+	pkgrel = 1
+	url = https://github.com/psifidotos/applet-window-title
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = plasma-workspace
+	conflicts = plasma5-applets-window-title
+	source = git+https://github.com/psifidotos/applet-window-title.git
+	sha256sums = SKIP
+
+pkgname = plasma5-applets-window-title-git
+
