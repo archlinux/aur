@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)
 	pkgver = 4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -46,7 +46,6 @@ pkgbase = ffmpeg-full
 	depends = librsvg
 	depends = rubberband
 	depends = rtmpdump
-	depends = smbclient
 	depends = snappy
 	depends = libsoxr
 	depends = speex
