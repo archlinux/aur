@@ -14,8 +14,8 @@ pkgbase=mesa-intel-iris-git
 pkgname="${pkgbase}"
 _branch=iris
 pkgdesc="Mesa with Intel Iris (Gallium) Driver, git version"
-pkgver=19.0.0_devel.106266.34f698b975c
-pkgrel=3
+pkgver=19.0.0_devel.106296.a46aebe02b4
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
