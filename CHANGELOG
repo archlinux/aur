@@ -811,3 +811,11 @@ Sun Nov 18 22:19:29 2018 +0100
     Notable changes:
      2018-11-18 bdd4fa99 actionless chore(plugins: oomoxify): update submodule (apply ROUNDNESS from GTK theme)
      2018-11-18 1417de68 actionless chore(plugins: pil): shorter plugin display_name
+
+
+Wed Nov 21 21:59:41 2018 +0100
+-------------------------------------------------
+1.7.1.2         Release 1.7.1.2
+    
+    Notable changes:
+     2018-11-21 2083151b actionless feat(plugins: pil): choose terminal colors (except for 0,7,8,15) from bright colors; improve GUI templates
