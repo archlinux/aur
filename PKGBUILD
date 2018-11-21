@@ -10,7 +10,7 @@ _lib32=0
 
 pkgbase=nvidia-full-beta
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-egl-wayland-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
-pkgver=415.13
+pkgver=415.18
 pkgrel=1
 pkgdesc="Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)"
 arch=('x86_64')
@@ -32,11 +32,11 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-full-beta.sysusers'
         'linux-4.16.patch')
-sha256sums=('77f06aefe03d74334da642a452a2986f6da02dbc6c5a8433635178be9dfae07d'
+sha256sums=('c90af3b6cc1f524799c75da99734f37dceeed2267afc3278a293367d21edc795'
             '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
-[ "$_pkg" = "NVIDIA-Linux-${CARCH}-${pkgver}" ] && sha256sums[0]='2ad26d77b848e12a72b6fece320cb867a07a36096bd2e21f4a0c8fa40a51645a'
+[ "$_pkg" = "NVIDIA-Linux-${CARCH}-${pkgver}" ] && sha256sums[0]='585d52015208b550170dce86d93657804ed52d7abab46510ae972fdf611e8650'
 
 _eglver=1.1.0
 _extramodules=extramodules-ARCH
