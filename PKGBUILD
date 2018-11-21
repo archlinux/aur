@@ -1,15 +1,16 @@
-# Maintainer: colemickens <cole.mickens@gmail.com>
+# Maintainer: Wes Jackson <icebal dot 7 at gmail dot com>
 # https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages
 
 pkgname=kubeadm-bin
 pkgdesc="Kubernetes.io kubeadm binary"
 pkgver=1.12.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
 license=('apache')
 depends=('kubelet-bin')
 conflicts=('kubernetes' 'kubernetes-bin')
+provides=('kubeadm')
 source_x86_64=(
   'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.2-00_amd64_${sha256sums_x86_64}.deb'
 )
