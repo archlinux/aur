@@ -4,7 +4,7 @@ pkgname='sat-libervia-hg'
 _realname=libervia
 _pyjamasname=pyjamas
 venv_pyjama='venv'
-pkgver=0.6.1.r1134.28789926852a
+pkgver=0.6.1.r1135.4426c328eb83
 _version=0.6.1
 pkgrel=1
 url="http://salut-a-toi.org/"
@@ -40,10 +40,12 @@ build() {
     PATH=$PATH:$PYJSBUILD_PATH LIBERVIA_INSTALL=arch NO_PREINSTALL_OPT=nopreinstall SAT_INSTALL=nopreinstall python2 setup.py install --root="$srcdir/fakeinstall/" --prefix=/usr --optimize=1
 	# Compile pyjs
     mkdir -p html
-	mkdir -p build/tmp_dir
+    mkdir -p ../build/tmp_dir
+    cp -r /usr/lib/python2.7/site-packages/sat_frontends/ build/tmp_dir
+    cp -r /usr/lib/python2.7/site-packages/sat build/tmp_dir
 	cd browser
-    $PYJSBUILD_PATH/pyjsbuild libervia_main.py  -d -I /usr/lib/python2.7/site-packages/ --no-compile-inplace -o ../html
-    $PYJSBUILD_PATH/pyjsbuild libervia_test.py -d -I /usr/lib/python2.7/site-packages/ --no-compile-inplace -o ../html
+    $PYJSBUILD_PATH/pyjsbuild libervia_main.py  -d -I ../build/tmp_dir/ --no-compile-inplace -o ../html
+    $PYJSBUILD_PATH/pyjsbuild libervia_test.py -d -I ../build/tmp_dir/ --no-compile-inplace -o ../html
     cp -r $srcdir/$_realname/{$_realname,browser,twisted} $srcdir/fakeinstall/usr/lib/python2.7/site-packages/libervia
 }
 
@@ -57,6 +59,8 @@ package(){
     install -dm755 usr/share/doc
     install -dm755 usr/share/libervia
     install -dm755 usr/lib/python2.7/site-packages/twisted/plugins
+    install -dm755 etc
+    cp ../../sat.conf etc/
     cd "$srcdir/fakeinstall"
     cp "$srcdir/$_realname/bin/libervia" "$pkgdir/usr/bin/libervia"
     mv -v usr/share/doc/libervia "$pkgdir/usr/share/doc/"
