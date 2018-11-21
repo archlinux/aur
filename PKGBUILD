@@ -6,7 +6,7 @@
 
 pkgname=xavs2
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard'
 url='https://github.com/pkuvcl/xavs2/'
@@ -16,14 +16,15 @@ makedepends=('gcc7' 'yasm' 'l-smash')
 provides=('libxavs2')
 conflicts=('libxavs2')
 replaces=('libxavs2')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pkuvcl/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8b985aeb4d5f60b5d8bc9a5e3897f2f4c5ed6546d48f06f87828ee12f6125a5f')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pkuvcl/${pkgname}/archive/${pkgver}.tar.gz"
+        'xavs2-1.2-gcc8-fix.patch')
+sha256sums=('8b985aeb4d5f60b5d8bc9a5e3897f2f4c5ed6546d48f06f87828ee12f6125a5f'
+            '5de344631d212d2d256d9bcad05e4fd7a08701ed6e0017460fa86e6d23a1e25b')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
     
-    # use gcc7 (it does not build with gcc8)
-    sed -i 's/gcc/gcc-7/' build/linux/configure
+    patch --binary -Np1 -i "${srcdir}/xavs2-1.2-gcc8-fix.patch"
 }
 
 build() {
