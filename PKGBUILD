@@ -5,13 +5,13 @@
 
 pkgname=alot
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
 license=(GPL)
 depends=(notmuch
-         python2-gpg
+         python2-gpgme
          python2-magic
          python2-configobj
          python2-urwid
