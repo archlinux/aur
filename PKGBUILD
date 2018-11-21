@@ -40,10 +40,10 @@ package() {
 
   install -d "$pkgdir/usr/share/bash-completion/completions" \
              "$pkgdir/usr/share/zsh/site-functions" \
-             "$pkgdir/usr/share/fish/vendor-completions.d"
+             "$pkgdir/usr/share/fish/vendor_completions.d"
   "$pkgdir/usr/bin/sn0int" completions bash > "$pkgdir/usr/share/bash-completion/completions/sn0int"
   "$pkgdir/usr/bin/sn0int" completions zsh > "$pkgdir/usr/share/zsh/site-functions/_sn0int"
-  "$pkgdir/usr/bin/sn0int" completions fish > "$pkgdir/usr/share/fish/vendor-completions.d/sn0int.fish"
+  "$pkgdir/usr/bin/sn0int" completions fish > "$pkgdir/usr/share/fish/vendor_completions.d/sn0int.fish"
 
   install -Dm644 docs/_build/man/sn0int.1 -t "$pkgdir/usr/share/man/man1/"
 }
