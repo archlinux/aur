@@ -3,7 +3,7 @@
 _distname='CBOR-XS'
 
 pkgname=perl-cbor-xs
-pkgver=1.7
+pkgver=1.71
 pkgrel=1
 pkgdesc='Concise Binary Object Representation'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ depends=('perl' 'perl-types-serialiser' 'perl-common-sense')
 url="https://metacpan.org/release/${_distname}"
 source=("https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/${_distname}-${pkgver}.tar.gz"
         "kill-canary.patch")
-sha512sums=('13f5a0db0e983929fe7a670caf23ef130ed18f1974cf471d77d20e9e5d78c8afcad9a3440f198906d8e30625da7f8cb1d3a8919fd896442101f3865f0af5614c'
+sha512sums=('20be0484c159431a52f4e3c7f7541c7739a86eedf5c4900df71efe693bf3c0367c8540b43d1e95849cbb4f0380d7b8140908b041fca1ed63e868203e1aa57c69'
             '930bea1d5cfad6bfdf09db9a6532ce4eb584adda3182d34d00f547bc918a0c9eb7cefbd2ace5a8eb7acda9275f4143961b0581747d6cc795988891e99c638ead')
 
 prepare() {
