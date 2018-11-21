@@ -6,8 +6,8 @@
 
 pkgname=xavs2-git
 _srcname=xavs2
-pkgver=1.2.r109.g9a06546
-pkgrel=2
+pkgver=1.2.r117.gf018e1d
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard (git version)'
 url='https://github.com/pkuvcl/xavs2/'
@@ -32,6 +32,7 @@ build() {
     
     ./configure \
         --prefix='/usr' \
+        --extra-ldflags='-Wl,-z,noexecstack' \
         --enable-shared \
         --bit-depth='8' \
         --chroma-format='all' \
