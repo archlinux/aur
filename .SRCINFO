@@ -1,0 +1,16 @@
+pkgbase = antu-classic-icon-theme-git
+	pkgdesc = Antü Classic Icon Theme by Fabián Alexis
+	pkgver = 1.0.8.g90645fd
+	pkgrel = 1
+	url = https://gitlab.com/froodo_alexis/Antu-classic/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk-update-icon-cache
+	provides = antu-classic-icon-theme
+	conflicts = antu-classic-icon-theme
+	source = git+https://gitlab.com/froodo_alexis/Antu-classic.git
+	sha256sums = SKIP
+
+pkgname = antu-classic-icon-theme-git
+
