@@ -1,7 +1,7 @@
 pkgbase = sn0int
 	pkgdesc = OSINT framework and package manager
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kpcyrd/sn0int
 	install = sn0int.install
 	arch = i686
