@@ -1,6 +1,6 @@
 pkgbase = pix
 	pkgdesc = Image viewer and browser based on gthumb. X-Apps Project.
-	pkgver = 1.8.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/linuxmint/pix
 	arch = i686
@@ -32,8 +32,8 @@ pkgbase = pix
 	optdepends = libchamplain: Map Viewer
 	provides = pix
 	conflicts = pix-git
-	source = pix-1.8.2.tar.gz::https://github.com/linuxmint/pix/archive/1.8.2.tar.gz
-	md5sums = fa7087395be6dde821e2d8dd778b8439
+	source = pix-2.0.0.tar.gz::https://github.com/linuxmint/pix/archive/2.0.0.tar.gz
+	md5sums = e9de0b7c88d3a2d35d9f4583534c809f
 
 pkgname = pix
 
