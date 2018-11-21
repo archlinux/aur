@@ -4,22 +4,20 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.0.375.g7d9a7bd
+pkgver=1.0.0.647.g5dfbf6c8
 pkgrel=1
 pkgdesc="C++ re-write of tablet notetaking app Xournal"
 arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL-2.0')
-makedepends=('git' 'cmake' 'gettext' 'boost')
-depends=('texlive-core' 'gtk2' 'boost-libs' 'glib2' 'libglade' 'poppler-glib' 'glibmm' 'desktop-file-utils')
+makedepends=('git' 'cmake' 'gettext' 'boost' 'python')
+depends=('texlive-core' 'gtk3' 'boost-libs' 'glib2' 'libglade' 'poppler-glib' 'glibmm' 'desktop-file-utils')
 conflicts=('xournalpp')
 install="xournalpp.install"
 source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git"
-        "https://github.com/xournalpp/xournalpp/commit/4be5b5a1eab4c1ac873db237bc13c1be783081a7.patch"
-        "https://github.com/swiftgeek/xournalpp/commit/12a409c8afc3c3ea8c8afebb67377c29e3d90035.patch")
+        "fixpoppler.patch")
 sha256sums=('SKIP'
-            '9d84d91c9d38eefc82a99fcd726b9b6e1225949fb5fdf4a07c7335da0f448d14'
-            '3739e3a5538e53becf8864cdaeaa320ecc520a8a530d498491afc8ddff5accc1')
+            '097a69c2bd861a2aa3d8838b371c31d68fe3c4173e069f447f86aeaae94f94fc')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}/"
@@ -28,13 +26,12 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}/"
-  patch -p1 < ${srcdir}/4be5b5a1eab4c1ac873db237bc13c1be783081a7.patch
-  patch -p1 < ${srcdir}/12a409c8afc3c3ea8c8afebb67377c29e3d90035.patch
+        patch -p1 < ${srcdir}/fixpoppler.patch
 
 	test -e "${srcdir}/${_pkgname}/build" || mkdir -p "${srcdir}/${_pkgname}/build"
 	cd "${srcdir}/${_pkgname}/build"
 
-	cmake -DENABLE_OS="OFF" -DENABLE_MATHTEX="ON" -DCMAKE_INSTALL_PREFIX="/usr/" ..
+	cmake -DENABLE_OS="OFF" -DENABLE_MATHTEX="ON" -DCMAKE_INSTALL_PREFIX="/usr/" -DBUILD_POPPLER="ON" -DPOPPLER_GIT_VER="0.69.0" ..
 }
 
 build() {
