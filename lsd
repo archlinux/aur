@@ -4,6 +4,7 @@
 rows=20;
 width=100;
 widthOffset=0;
+cringe=false;
 
 #	Initial clear
 printf "\033c"
@@ -29,6 +30,11 @@ while test $# -gt 0; do
 			shift
 			;;
 
+		-c | --cringe)
+			shift
+			cringe=true;
+			;;
+
 		*)
 			echo "$1 is not a recognized flag!"
 			exit 1;
@@ -38,15 +44,25 @@ while test $# -gt 0; do
 
 # An infinite loop.
 for((j=1; j<3;)); do
+
 	for((row=0; row<rows;  row++)) do
 
 		for((k=0; k<widthOffset; k++)); do
 			printf " ";
 		done
 
-		i=$((16 + RANDOM/256))
+		if ! $cringe ; then
+			i=$((16 + RANDOM/256))
+		fi
+		
 		for((k=0; k<width; k++)); do
+
+			# Add some cringe. 
+			if $cringe ; then
+				i=$((16 + RANDOM/256))
+			fi
 			
+			# Do the magic
 			printf "\e[48;5;${i}m " $i;
 			printf '\e[0m';
 			[ ! $((($i - 15) % 6)) -eq 0 ] && printf '';
@@ -55,12 +71,10 @@ for((j=1; j<3;)); do
 		printf '\n';
 	done
 
+	# Delay to print the colours.
 	sleep .001;
 
-	# clear screen || reset the curser to the first location
-	# for((row=0; row<rows; row++)) do
-	# 	printf '\e[A\e[K'
-	# done
-	printf "\033c"
+	# Resets the cursor to (1, 1). Much better than deleting the previous lines or clearing the screen.
+	printf "\033[1;1H"
 
 done

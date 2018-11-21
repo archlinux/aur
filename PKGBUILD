@@ -1,7 +1,7 @@
 # Maintainer: Aniket-Pradhan aniket17133@iiitd.ac.in
 
 pkgname=lsd
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A Cheap Psychedelic Simulator on Linux"
 arch=('i686' 'x86_64')
