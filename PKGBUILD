@@ -9,7 +9,7 @@
 
 pkgname=prosody-hg
 pkgrel=1
-pkgver=r9505+.5203b6fd34d4+
+pkgver=r9637+.b8301ba2c437+
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
@@ -21,7 +21,7 @@ license=('MIT')
 depends=('lua51' 'lua51-socket' 'lua51-expat' 'lua51-filesystem' 'libidn'
          'openssl')
 makedepends=('mercurial')
-checkdepends=('luacheck' 'shellcheck')
+checkdepends=('luacheck' 'shellcheck' 'lua52-posix' 'lua52-sec')
 conflicts=('prosody')
 provides=('prosody')
 optdepends=(
@@ -56,15 +56,6 @@ prepare() {
     echo "" >> prosody.cfg.lua.dist
     cat prosody.cfg.lua.old >> prosody.cfg.lua.dist
     rm prosody.cfg.lua.old
-
-
-  #sed -i 's|sock, err = socket.udp();|sock, err = (socket.udp4 or socket.udp)();|g' net/dns.lua
-}
-
-check() {
-  cd ${pkgname}
-
-  make lint
 }
 
 build() {
@@ -76,6 +67,12 @@ build() {
     --runwith=lua5.1 \
     --lua-version=5.1
   make
+}
+
+check() {
+  cd ${pkgname}
+
+  make lint
 }
 
 package() {
