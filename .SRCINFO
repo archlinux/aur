@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-readonly-beta
 	pkgdesc = The official GUI for MongoDB - Readonly Edition (beta version)
-	pkgver = 1.16.0beta.8
+	pkgver = 1.17.0beta.0
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = mongodb-compass-readonly-beta
 	depends = libxss
 	optdepends = gnome-keyring
 	optdepends = libgnome-keyring
-	source = https://downloads.mongodb.com/compass/beta/mongodb-compass-readonly-beta-1.16.0-beta.8.x86_64.rpm
-	md5sums = 4b684daec251ff02e92ab76eb010e0e9
+	source = https://downloads.mongodb.com/compass/beta/mongodb-compass-readonly-beta-1.17.0-beta.0.x86_64.rpm
+	md5sums = f715e782e8d70326ef3e8ae632b84b8e
 
 pkgname = mongodb-compass-readonly-beta
 
