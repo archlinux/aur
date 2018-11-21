@@ -8,7 +8,7 @@
 pkgname=mingw-w64-gtest
 pkgver=1.8.1
 pkgrel=1
-pkgdesc="Google Test - C++ testing utility based on the xUnit framework (like JUnit)"
+pkgdesc="Google Test - C++ testing utility based on the xUnit framework (like JUnit) (mingw-w64)"
 arch=(any)
 url="https://github.com/google/googletest"
 license=(custom:BSD3)
