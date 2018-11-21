@@ -7,7 +7,7 @@
 pkgname=xavs2-git
 _srcname=xavs2
 pkgver=1.2.r109.g9a06546
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard (git version)'
 url='https://github.com/pkuvcl/xavs2/'
@@ -19,13 +19,6 @@ conflicts=('xavs2' 'libxavs2-git')
 replaces=('libxavs2-git')
 source=('git+https://github.com/pkuvcl/xavs2.git')
 sha256sums=('SKIP')
-
-prepare() {
-    cd "$_srcname"
-    
-    # use gcc7 (it does not build with gcc8)
-    sed -i 's/gcc/gcc-7/' build/linux/configure
-}
 
 pkgver() {
     cd "$_srcname"
