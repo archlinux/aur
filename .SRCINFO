@@ -1,6 +1,6 @@
 pkgbase = m32-edit
 	pkgdesc = M32 Edit for Midas M32 mixer
-	pkgver = 3.2.466
+	pkgver = 3.2
 	pkgrel = 1
 	url = https://www.musictribe.com/Categories/Midas/Mixers/Digital/M32/
 	arch = x86_64

@@ -1,5 +1,5 @@
 pkgname=m32-edit
-pkgver=3.2.466
+pkgver=3.2
 pkgrel=1
 epoch=
 pkgdesc="M32 Edit for Midas M32 mixer"
