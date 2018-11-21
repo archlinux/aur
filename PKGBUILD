@@ -3,12 +3,12 @@
 
 pkgname=leela-zero-amd-git
 pkgver=0.16.r13.g8670a40
-pkgrel=1
+pkgrel=2
 pkgdesc="Go engine with no human-provided knowledge, modeled after the AlphaGo Zero paper. AMD version with OpenCL."
 arch=('x86_64')
 url="https://github.com/gcp/leela-zero"
 license=('GPLv3')
-depends=('glibc' 'zlib' 'libopenblas' 'boost' 'opencl-amd' 'qt5-base')
+depends=('glibc' 'zlib' 'openblas' 'boost' 'opencl-amd' 'qt5-base')
 makedepends=('git' 'opencl-headers' 'cmake' 'ocl-icd')
 conflicts=('leela-zero' 'leela-zero-git')
 provides=('leela-zero' 'leela-zero-git')
