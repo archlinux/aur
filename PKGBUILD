@@ -39,13 +39,13 @@ build() {
     PYJSBUILD_PATH="$srcdir/pyjamas/bin/"
     PATH=$PATH:$PYJSBUILD_PATH LIBERVIA_INSTALL=arch NO_PREINSTALL_OPT=nopreinstall SAT_INSTALL=nopreinstall python2 setup.py install --root="$srcdir/fakeinstall/" --prefix=/usr --optimize=1
 	# Compile pyjs
-    mkdir -p html
-    mkdir -p ../build/tmp_dir
-    cp -r /usr/lib/python2.7/site-packages/sat_frontends/ build/tmp_dir
-    cp -r /usr/lib/python2.7/site-packages/sat build/tmp_dir
-	cd browser
-    $PYJSBUILD_PATH/pyjsbuild libervia_main.py  -d -I ../build/tmp_dir/ --no-compile-inplace -o ../html
-    $PYJSBUILD_PATH/pyjsbuild libervia_test.py -d -I ../build/tmp_dir/ --no-compile-inplace -o ../html
+    mkdir -p $srcdir/$_realname/html
+    mkdir -p $srcdir/$_realname/build/tmp_dir
+    cp -r /usr/lib/python2.7/site-packages/sat_frontends $srcdir/$_realname/build/tmp_dir/sat_frontends
+    cp -r /usr/lib/python2.7/site-packages/sat $srcdir/$_realname/build/tmp_dir/sat
+    cd $srcdir/$_realname/browser
+    $PYJSBUILD_PATH/pyjsbuild libervia_main.py  -d -I $srcdir/$_realname/build/tmp_dir/ --no-compile-inplace -o ../html
+    $PYJSBUILD_PATH/pyjsbuild libervia_test.py -d -I $srcdir/$_realname/build/tmp_dir/ --no-compile-inplace -o ../html
     cp -r $srcdir/$_realname/{$_realname,browser,twisted} $srcdir/fakeinstall/usr/lib/python2.7/site-packages/libervia
 }
 
