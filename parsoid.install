@@ -13,11 +13,8 @@ note() {
 }
 
 _update() {
-    if ! getent passwd parsoid &>/dev/null; then
-        msg_blue "Adding user 'parsoid'"
-        useradd -m -r -U -d /usr/share/webapps/parsoid -s /bin/false parsoid &>/dev/null
-        chown -R parsoid /usr/share/webapps/parsoid
-	chgrp -R parsoid /usr/share/webapps/parsoid
+    if  getent passwd parsoid &>/dev/null; then
+        userdel -rf parsoid &>/dev/null
     fi
 }
 
@@ -27,15 +24,4 @@ post_install() {
     echo ">> Reference comments in this file for help ."
 }
 
-post_upgrade() {
-    _update
-    note "Parsoid now use 'config.yaml' as config file."
-}
-
-post_remove() {
-    if getent passwd parsoid &>/dev/null; then
-        msg_blue "Removing user 'parsoid'"
-        userdel -rf parsoid &>/dev/null
-    fi
-}
 
