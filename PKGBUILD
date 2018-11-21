@@ -6,8 +6,8 @@
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
 
 pkgname=tengine
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.3
+pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
@@ -30,7 +30,7 @@ source=($url/download/tengine-$pkgver.tar.gz
         service
         logrotate
        )
-sha256sums=('7ba9dabc17d68b43fd777c7bb3e4bf6a2296540d4bfe18e18f7fddf386fb2394'
+sha256sums=('8268d9637640e4bffcfa0817f9f16c5aa8a084104d9531e885911e0cb4ab2274'
             'bbc2a744fcc65b496549a312a19aba2ee87840ad36a523c2e6bc2a585861bbcd'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
 
