@@ -1,6 +1,6 @@
 pkgbase = sn0int
 	pkgdesc = OSINT framework and package manager
-	pkgver = 0.3.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/kpcyrd/sn0int
 	install = sn0int.install
@@ -8,11 +8,13 @@ pkgbase = sn0int
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
+	makedepends = python-sphinx
+	makedepends = make
 	depends = libcap
 	depends = sqlite
 	depends = libseccomp
-	source = https://github.com/kpcyrd/sn0int/archive/v0.3.0/sn0int-0.3.0.tar.gz
-	sha256sums = e85de54532db39cab0d55187c42eea97fbe7f1d5b9717cbc01aa1e72ddd33c98
+	source = https://github.com/kpcyrd/sn0int/archive/v0.5.0/sn0int-0.5.0.tar.gz
+	sha256sums = 28538d6bb69cfd34e302058c61b030ad527cb76c9f7476344f5f8dd5b4c338c5
 
 pkgname = sn0int
 
