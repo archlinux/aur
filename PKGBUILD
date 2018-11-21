@@ -2,7 +2,7 @@
 # Contributor: Gui||aume <michaudg@gmail.com>
 
 pkgname=rocketchat-client-bin
-pkgver=2.14.3
+pkgver=2.14.4
 pkgrel=1
 pkgdesc="The Ultimate Open Source Web Chat Platform"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtk3' 'nss' 'gconf' 'libxss')
 optdepends=('libnotify: For sending desktop notifications')
 source=("https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${pkgver}/rocketchat_${pkgver}_amd64.deb"
         'LICENSE')
-sha256sums=('b0b1abb6749c32c82d072e1b1f93119615bddcfd815bf0ade17623795f74498c'
+sha256sums=('6d2a1b227368e50496110e900de93495576cdff8fda03ff150c740eb00a6485b'
             'SKIP')
 
 package() {
