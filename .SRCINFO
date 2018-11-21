@@ -1,7 +1,7 @@
 pkgbase = kubernetes-bin
 	pkgdesc = Production-Grade Container Scheduling and Management - binary version.
 	pkgver = 1.12.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kubernetes.io/
 	install = kubernetes.install
 	arch = x86_64
@@ -16,11 +16,13 @@ pkgbase = kubernetes-bin
 	provides = kube-apiserver
 	provides = kube-controller-manager
 	provides = hyperkube
-	provides = kube=scheduler
+	provides = kube-scheduler
 	conflicts = kubernetes
 	conflicts = kubeadm-git
 	conflicts = kubectl
 	conflicts = kubectl-bin
+	conflicts = kubeadm-bin
+	conflicts = kubelet-bin
 	backup = etc/kubernetes/apiserver
 	backup = etc/kubernetes/config
 	backup = etc/kubernetes/controller-manager
