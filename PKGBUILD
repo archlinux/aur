@@ -6,8 +6,8 @@
 
 pkgname=davs2-git
 _srcname=davs2
-pkgver=1.6.r0.gef9a901
-pkgrel=2
+pkgver=1.6.r2.g00ef2c8
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source decoder of AVS2-P2/IEEE1857.4 video coding standard (git version)'
 url='https://github.com/pkuvcl/davs2/'
@@ -32,6 +32,7 @@ build() {
     
     ./configure \
         --prefix='/usr' \
+        --extra-ldflags='-Wl,-z,noexecstack' \
         --enable-shared \
         --disable-static \
         --bit-depth='8' \
