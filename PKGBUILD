@@ -7,7 +7,7 @@
 pkgname=davs2-git
 _srcname=davs2
 pkgver=1.6.r0.gef9a901
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source decoder of AVS2-P2/IEEE1857.4 video coding standard (git version)'
 url='https://github.com/pkuvcl/davs2/'
@@ -19,13 +19,6 @@ conflicts=('davs2' 'libdavs2-git')
 replaces=('libdavs2-git')
 source=('git+https://github.com/pkuvcl/davs2.git')
 sha256sums=('SKIP')
-
-prepare() {
-    cd "$_srcname"
-    
-    # use gcc7 (it does not build with gcc8)
-    sed -i 's/g++/g++-7/' build/linux/configure
-}
 
 pkgver() {
     cd "$_srcname"
