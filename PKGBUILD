@@ -2,19 +2,16 @@
 # Contributor: Tembleking <tembleking at gmail dot com>
 
 pkgname=python-gtts-token
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Token for gTTS"
 arch=('any')
 url="https://github.com/Boudewijn26/gTTS-token"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'unzip')
-source=("$pkgname::https://pypi.python.org/packages/4c/c8/dd58eba1464729095217d3acfc4f6581348c6f495ea3342ed7dbc9f9e133/gTTS-token-1.1.1.zip#md5=39f56680d81c3d553ccc663f013a48f8")
-
-prepare() {
-  unzip -o -V "$pkgname"
-}
+source=("$pkgname::https://files.pythonhosted.org/packages/5a/81/b54c771ee6a78bdb6aebc274d7a806ad1f8761462f3592f3781d5cd9046f/gTTS-token-1.1.2.tar.gz")
+md5sums=('9f0599bd1433551422427b4da6b2318f')
 
 build() {
   cd "$srcdir/gTTS-token-$pkgver"
@@ -27,4 +24,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('39f56680d81c3d553ccc663f013a48f8')
