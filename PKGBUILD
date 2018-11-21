@@ -2,7 +2,7 @@
 
 
 pkgname=blender-2.8-git
-pkgver=2.8_r78999.c86b5fa820d
+pkgver=2.8_r82468.ed1ee89288e
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -28,7 +28,6 @@ source=('git://git.blender.org/blender.git#branch=blender2.8' \
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git' \
         blender-2.8.desktop \
         SelectCudaComputeArch.patch \
-        ffmpeg.patch \
         )
 md5sums=('SKIP'
          'SKIP'
@@ -37,7 +36,7 @@ md5sums=('SKIP'
          'SKIP'
          'cd108dca1c77607c6a7cc45aa284ea97'
          '9454ff7e994f72ead5027356e227cbd2'
-         '9d4bfb5b3dd33e95b13cc6c7d9d2d2e1')
+          )
 
 # determine whether we can precompile CUDA kernels
 _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
@@ -54,11 +53,8 @@ pkgver() {
 prepare() {
   cd "$srcdir/blender"
   # update the submodules
-  git submodule update --init --recursive
-  git submodule foreach git checkout master
-  git submodule foreach git pull --rebase origin master
+  git submodule update --init --recursive --remote
   git apply ${srcdir}/SelectCudaComputeArch.patch
-  git apply ${srcdir}/ffmpeg.patch
 }
 
 build() {
