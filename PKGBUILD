@@ -18,10 +18,10 @@ conflicts=('dwm')
 install=${_pkgname}.install
 source=(https://dl.suckless.org/dwm/dwm-$pkgver.tar.gz dwm.desktop config.h
 https://dwm.suckless.org/patches/$patchname/${_pkgname}-$patchname-$patchver.diff)
-md5sums=('f0b6b1093b7207f89c2a90b848c008ec'
-         '939f403a71b6e85261d09fc3412269ee'
-         '948cb0fa3bc0c2fa0b90d654acda1827'
-         '8bebc6b37fc6229b9b08ded6babf3fd2')
+sha256sums=('c2f6c56167f0acdbe3dc37cca9c1a19260c040f2d4800e3529a21ad7cce275fe'
+            'bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81'
+            '9604eca891f80bcc24b6b543ad18b8f5f2b9e608b62d6c852146e3e19e30f9db'
+            '0f3cce6c8f9995f4f6a930ddb93e62cc74d6fa8d6db1387d458bab80ad8e32cf')
 
 prepare() {
 	cd $srcdir/${_pkgname}-$pkgver
