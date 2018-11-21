@@ -18,13 +18,15 @@ pkgver() {
 }
 
 package() {
+  _uuid="ds4battery@slie.ru"
+
   cd "$pkgname"
 
   mkdir -p ${pkgdir}/usr/share/gnome-shell/extensions
 
-  cp -r .  "${pkgdir}/usr/share/gnome-shell/extensions/$pkgname"
+  cp -r . "${pkgdir}/usr/share/gnome-shell/extensions/$_uuid"
 
-  chown -R 644 ${pkgdir}/usr/share/gnome-shell/extensions/$pkgname
+  chown -R 644 ${pkgdir}/usr/share/gnome-shell/extensions/$_uuid
 }
 
 
