@@ -1,6 +1,6 @@
 pkgbase = vorta
 	pkgdesc = A GUI for BorgBackup
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/borgbase/vorta
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = vorta
 	depends = python-keyring
 	depends = python-sentry_sdk
 	options = !emptydirs
-	source = https://pypi.io/packages/source/v/vorta/vorta-0.4.3.tar.gz
-	sha256sums = f5459100f58076269740b02987648ebb3ea8be90b2a0496f9e19cde7ef90c381
+	source = https://pypi.io/packages/source/v/vorta/vorta-0.4.4.tar.gz
+	sha256sums = ca92a12ddef9589b0dd5e5d427022f4471da3abf444b72adf072963f7b435f70
 
 pkgname = vorta
 
