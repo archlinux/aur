@@ -15,11 +15,8 @@ makedepends=('git' 'maven')
 provides=('lizzie')
 conflicts=('lizzie')
 source=("git+https://github.com/featurecat/lizzie.git"
-        "network.gz::http://zero.sjeng.org/best-network"
         "lizzie.desktop")
-noextract=("network.gz")
 md5sums=('SKIP'
-         'SKIP'
          '1fefb91214fd8fd2f1241de2b73f8701')
 
 pkgver() {
@@ -28,7 +25,8 @@ pkgver() {
 }
 
 build() {
-  mv network.gz lizzie/
+  # Use leela-zero-git's weights file instead of downloading a new one just for `mvn test`
+  ln -s /usr/share/leela-zero/networks/weights.txt lizzie/network.gz
   cd lizzie
   mvn package
 }

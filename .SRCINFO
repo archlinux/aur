@@ -12,11 +12,8 @@ pkgbase = lizzie-git
 	depends = leela-zero-git
 	provides = lizzie
 	conflicts = lizzie
-	noextract = network.gz
 	source = git+https://github.com/featurecat/lizzie.git
-	source = network.gz::http://zero.sjeng.org/best-network
 	source = lizzie.desktop
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 1fefb91214fd8fd2f1241de2b73f8701
 
