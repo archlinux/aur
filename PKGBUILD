@@ -6,7 +6,7 @@
 # Contributor: Cody Maloney <cmaloney@theoreticalchaos.com>
 
 pkgname=mingw-w64-gtest
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Google Test - C++ testing utility based on the xUnit framework (like JUnit)"
 arch=(any)
@@ -16,7 +16,7 @@ depends=(mingw-w64-crt)
 makedepends=(mingw-w64-cmake python2)
 options=(!buildflags staticlibs !strip)
 source=("https://github.com/google/googletest/archive/release-${pkgver}.tar.gz")
-sha512sums=('1dbece324473e53a83a60601b02c92c089f5d314761351974e097b2cf4d24af4296f9eb8653b6b03b1e363d9c5f793897acae1f0c7ac40149216035c4d395d9d')
+sha512sums=('e6283c667558e1fd6e49fa96e52af0e415a3c8037afe1d28b7ff1ec4c2ef8f49beb70a9327b7fc77eb4052a58c4ccad8b5260ec90e4bceeac7a46ff59c4369d7')
 
 _mingw_arch=(i686-w64-mingw32 x86_64-w64-mingw32)
 
@@ -44,11 +44,12 @@ package() {
     cd "googletest-release-${pkgver}/googletest"
 
     for _arch in "${_mingw_arch[@]}"; do
-        mkdir -pm 0755 "${pkgdir}/usr/${_arch}"/{bin,lib,include/gtest/internal,share/licenses/${pkgname},src/gtest/src,src/gtest/cmake}
+        mkdir -pm 0755 "${pkgdir}/usr/${_arch}"/{bin,lib,include/gtest/internal/custom,share/licenses/${pkgname},src/gtest/src,src/gtest/cmake}
         install -m 0644 "build_${_arch}"/libgtest{,_main}.dll "${pkgdir}/usr/${_arch}"/bin
         install -m 0644 "build_${_arch}"/libgtest{,_main}.dll.a "${pkgdir}/usr/${_arch}"/lib
         install -m 0644 include/gtest/*.h "${pkgdir}/usr/${_arch}"/include/gtest
         install -m 0644 include/gtest/internal/*.h "${pkgdir}/usr/${_arch}"/include/gtest/internal/
+        install -m 0644 include/gtest/internal/custom/*.h "${pkgdir}/usr/${_arch}"/include/gtest/internal/custom
         install -m 0644 LICENSE "${pkgdir}/usr/${_arch}"/share/licenses/${pkgname}/
         install -m 0644 fused-src/gtest/* "${pkgdir}/usr/${_arch}"/src/gtest/src/
         install -m 0644 CMakeLists.txt "${pkgdir}/usr/${_arch}"/src/gtest/
