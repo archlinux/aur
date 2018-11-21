@@ -1,0 +1,16 @@
+pkgbase = m32-edit
+	pkgdesc = M32 Edit for Midas M32 mixer
+	pkgver = 3.2.466
+	pkgrel = 1
+	url = https://www.musictribe.com/Categories/Midas/Mixers/Digital/M32/
+	arch = x86_64
+	license = custom:proprietary
+	source = https://downloads.music-group.com/software/behringer/M32/M32-Edit_LINUX_64bit_3.2.tar.gz
+	source = m32-edit.desktop
+	source = m32-edit.png
+	md5sums = cdbfdb6cfc1c14ad2e4be6fd4b7f639f
+	md5sums = d06fe10eeff0b1fd502c80110f1fb493
+	md5sums = 027a21ff0e8bda95fe62e97488b1c6e4
+
+pkgname = m32-edit
+
