@@ -1,10 +1,11 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=alock-git
-pkgver=2.3.r13.g0ffde00
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Simple transparent screen-lock"
 arch=('i686' 'x86_64')
-url="https://code.google.com/p/alock/"
+#url="https://code.google.com/p/alock/"
+url="https://github.com/Arkq/alock"
 license=('MIT')
 depends=('imlib2' 'pam' 'libxxf86misc' 'libxrender' 'libgcrypt')
 makedepends=('git' 'xmlto')
