@@ -39,6 +39,9 @@ check() {
 }
 
 package() {
+  sed -i 's/network.gz/\/usr\/share\/leela-zero\/networks\/weights.txt/g' "$_pkgname"/config.txt
+
   install -Dm644 "$_pkgname"/target/lizzie-"$_pkgver"-shaded.jar "$pkgdir"/usr/share/java/"$_pkgname"/"$_pkgname".jar
+  install -Dm644 "$_pkgname"/config.txt "$pkgdir"/usr/share/java/"$_pkgname"/config.txt
   install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
 }
