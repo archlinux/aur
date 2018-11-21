@@ -1,6 +1,6 @@
 pkgbase = wireguard-module
 	pkgdesc = Fast, modern, secure VPN tunnel (kernel module)
-	pkgver = 0.0.20181018
+	pkgver = 0.0.20181119
 	pkgrel = 1
 	url = https://www.wireguard.com/
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = wireguard-module
 	depends = linux>=3.10
 	provides = WIREGUARD-MODULE
 	conflicts = WIREGUARD-MODULE
-	source = https://git.zx2c4.com/WireGuard/snapshot/WireGuard-0.0.20181018.tar.xz
-	source = https://git.zx2c4.com/WireGuard/snapshot/WireGuard-0.0.20181018.tar.asc
+	source = https://git.zx2c4.com/WireGuard/snapshot/WireGuard-0.0.20181119.tar.xz
+	source = https://git.zx2c4.com/WireGuard/snapshot/WireGuard-0.0.20181119.tar.asc
 	validpgpkeys = AB9942E6D4A4CFC3412620A749FC7012A5DE03AE
-	sha256sums = af05824211b27cbeeea2b8d6b76be29552c0d80bfe716471215e4e43d259e327
+	sha256sums = 7d47f7996dd291069de4efb3097c42f769f60dc3ac6f850a4d5705f321e4406b
 	sha256sums = SKIP
 
 pkgname = wireguard-module
