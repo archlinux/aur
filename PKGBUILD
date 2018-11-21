@@ -37,7 +37,7 @@ build() {
     pyjamas_build
     cd "$srcdir/$_realname"
     PYJSBUILD_PATH="$srcdir/pyjamas/bin/"
-    PATH=$PATH:$PYJSBUILD_PATH LIBERVIA_INSTALL=arch NO_PREINSTALL_OPT=nopreinstall SAT_INSTALL=nopreinstall python2 setup.py install --root="$srcdir/fakeinstall/" --prefix=/usr --optimize=1
+    python2 setup.py install --root="$srcdir/fakeinstall/" --prefix=/usr --optimize=1
     # Compile pyjs
     mkdir -p $srcdir/$_realname/html
     mkdir -p $srcdir/$_realname/build/tmp_dir
