@@ -6,7 +6,7 @@
 
 pkgname=davs2
 pkgver=1.6
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard'
 url='https://github.com/pkuvcl/davs2/'
@@ -32,6 +32,7 @@ build() {
     
     ./configure \
         --prefix='/usr' \
+        --extra-ldflags='-Wl,-z,noexecstack' \
         --enable-shared \
         --disable-static \
         --bit-depth='8' \
