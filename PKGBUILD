@@ -1,7 +1,7 @@
 # Author: futpib <futpib@gmail.com>
 
 pkgname=pagraphcontrol-git
-pkgver=1.0.0.r6.g2ba9dbe
+pkgver=1.0.0.r9.g810c77c
 pkgrel=1
 pkgdesc="PulseAudio Graph Control"
 arch=('any')
@@ -37,7 +37,7 @@ package() {
     cp -r . "$pkgdir/$appdir"
 
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "$pkgdir/$appdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    ln -s "/$appdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
     install -Dm0644 -t "${pkgdir}/usr/share/applications" "$srcdir/$_pkgname/resources/pagraphcontrol.desktop"
 }
