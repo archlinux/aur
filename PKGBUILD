@@ -6,13 +6,13 @@
 
 pkgname=davs2
 pkgver=1.6
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard'
 url='https://github.com/pkuvcl/davs2/'
 license=('GPL')
 depends=('glibc')
-makedepends=('gcc7' 'yasm')
+makedepends=('yasm')
 provides=('libdavs2')
 conflicts=('libdavs2')
 replaces=('libdavs2')
