@@ -1,11 +1,15 @@
 pkgbase = vala-panel-appmenu-common
 	pkgdesc = Common libraries and translations for Vala Panel Application Menu
 	pkgver = 0.7.1+1+6d30c29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rilian-la-te/vala-panel-appmenu
 	arch = any
 	license = LGPL3
-	makedepends = cmake
+	makedepends = bamf>=0.5.0
+	makedepends = cmake>=3.6
+	makedepends = glib2>=2.50
+	makedepends = gtk3>=3.22
+	makedepends = vala>=0.34
 	conflicts = vala-panel-appmenu-budgie-git
 	conflicts = vala-panel-appmenu-mate-git
 	conflicts = vala-panel-appmenu-translations-git

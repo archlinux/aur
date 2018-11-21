@@ -6,12 +6,18 @@ _cmakevala_gitcommit=1bce300e6995c055296a79122d19993bc5085b75
 
 pkgname=vala-panel-appmenu-common
 pkgver=0.7.1+1+6d30c29
-pkgrel=1
+pkgrel=2
 pkgdesc="Common libraries and translations for Vala Panel Application Menu"
 url='https://github.com/rilian-la-te/vala-panel-appmenu'
 arch=('any')
 license=('LGPL3')
-makedepends=('cmake')
+makedepends=(
+  'bamf>=0.5.0'
+  'cmake>=3.6'
+  'glib2>=2.50'
+  'gtk3>=3.22'
+  'vala>=0.34'
+)
 conflicts=(
   'vala-panel-appmenu-budgie-git'
   'vala-panel-appmenu-mate-git'
