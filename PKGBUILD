@@ -20,7 +20,7 @@ backup=('etc/kubernetes/apiserver'
         'etc/kubernetes/proxy'
         'etc/kubernetes/scheduler')
 provides=('kubernetes')
-conflicts=('kubernetes', 'kubeadm-bin', 'kubeadm-git', 'kubectl', 'kubectl-bin', 'kubelet-bin')
+conflicts=('kubernetes' 'kubeadm-bin' 'kubeadm-git' 'kubectl' 'kubectl-bin' 'kubelet-bin')
 install=kubernetes.install
 sha256sums=('846426be9915a1935d23abc0c9c13588a740f842167883d95548fa85275e8fbf'
             'f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda'
