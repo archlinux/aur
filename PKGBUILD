@@ -1,13 +1,13 @@
 # Maintainer: Fedor Piecka <teplavoda at gmail dot com>
 
 pkgname=eidklient
-pkgver=2.0.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Slovak eID Client"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
 license=('custom')
-depends=("glibc" "qt4" "pcsclite" "qt5-imageformats" "ccid" "openssl" "chrpath" )
+depends=("glibc" "qt4" "pcsclite" "qt5-imageformats" "ccid" "openssl-1.0" "chrpath" "libcurl-openssl-1.0")
 source_i686=('https://eidas.minv.sk/TCTokenService/download/linux/debian/Aplikacia_pre_eID_i386_debian.tar.gz')
 source_x86_64=('https://eidas.minv.sk/TCTokenService/download/linux/debian/Aplikacia_pre_eID_amd64_debian.tar.gz')
 md5sums_i686=('SKIP')
@@ -28,15 +28,8 @@ pkgver() {
 package() {
 	ar p ${srcdir}/Aplikacia_pre_eID_${upstream_arch}_debian.deb data.tar.gz | tar -xz -C "${pkgdir}"
 	
-	# Upstream update script is for Debian. Use AUR for updates in Arch.
-	rm ${pkgdir}/usr/bin/eac_mw_klient-update
-
-	# I don't think the 2 files directly / are required
-	rm ${pkgdir}/{Aplikacia_pre_eID_amd64_debian.deb,eClientAppIntegrityGen}
-
-	# Move desktop file to the system-wide XDG Data directory
-	mkdir -p ${pkgdir}/usr/share/applications
-	mv ${pkgdir}/usr/lib/eac_mw_klient/EAC_MW_klient_launcher.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+        # Add LD_PRELOAD var to desktop entry to force OpenSSL 1.0 usage + older libcurl
+	sed -i 's/Exec=/Exec=env LD_PRELOAD=\/usr\/lib\/libcurl-openssl-1.0.so /' ${pkgdir}/usr/share/applications/aplikacia-pre-eid.desktop
 
 	# The application requires the libraries in a specific location
 	ln -sf /usr/lib/qt/plugins/imageformats/libqtga.so ${pkgdir}/usr/lib/eac_mw_klient/
