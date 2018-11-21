@@ -1,16 +1,16 @@
 # $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=f29-backgrounds
-pkgver=29.1.2
-pkgrel=2
-_rhver="${pkgver}-1.fc29"
+pkgver=29.1.3
+pkgrel=1
+_rhver="${pkgver}-1.fc30"
 pkgdesc="Fedora 29 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/F29_Artwork"
 license=("CC-BY-SA")
-_rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/29/Everything/source/tree/Packages"
+_rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('37cb8e8e1e67552d5fea7181d5a67c09d25b1e1f2ec765aaf3f2e016041d88aa')
+sha256sums=('052b7601b7d26a74cf7b536bdb322fa304e3b5731cd4a9d0f4c3e25b11305dfb')
 
 prepare()  {
   tar -xvJf ./${pkgname}-${pkgver}.tar.xz
