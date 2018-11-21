@@ -12,6 +12,8 @@ url="https://github.com/featurecat/lizzie"
 license=('GPLv3')
 depends=('bash' 'java-runtime' 'leela-zero-git')
 makedepends=('git' 'maven')
+provides=('lizzie')
+conflicts=('lizzie')
 source=("git+https://github.com/featurecat/lizzie.git"
         "network.gz::http://zero.sjeng.org/best-network"
         "lizzie.desktop")
