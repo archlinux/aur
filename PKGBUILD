@@ -9,10 +9,11 @@ _pkgname="idos-timetable-data-chaps-trains-europe-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2018_11_20
-pkgrel=1
+pkgrel=2
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: European trains."
 arch=(any)
-url="http://chaps.cz/eng/download/idos/zip#kotvatt"
+# url="http://chaps.cz/eng/download/idos/zip#kotvatt"
+url="http://chaps.cz/eng/download/idos-new/zip#kotvatt" # URL valid for the time when the timetable is still in the future.
 license=('custom')
 
 groups=(
