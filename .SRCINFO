@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-ds4battery-git
 	pkgdesc = Gnome Shell extensions battery indicator for Sony DS4 Controller
 	pkgver = 2ecf34d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/thankjura/ds4battery
 	arch = any
 	license = MIT
