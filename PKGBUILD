@@ -11,28 +11,28 @@ license=('apache')
 depends=('kubelet-bin')
 conflicts=('kubernetes')
 source_x86_64=(
-  'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.1-00_amd64_3caa0392444658082aa459418728abf81e440f439960963f54f08c6e6fdefbd3.deb'
+  'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.2-00_amd64_${sha256sums_x86_64}.deb'
 )
 source_armv7l=(
-  'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.1-00_armhf_9e791661bd57d71385255e0b985223799239e82aea4350c3ac22f992e86ea44e.deb'
+  'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.2-00_armhf_${sha256sums_armv7l}.deb'
 )
 source_armv7h=(
-  'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.1-00_armhf_9e791661bd57d71385255e0b985223799239e82aea4350c3ac22f992e86ea44e.deb'
+  'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.2-00_armhf_${sha256sums_armv7h}.deb'
 )
 source_aarch64=(
-  'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.1-00_arm64_ce3d4358838b5499e0eedd4880ee31ddd8bb3d9e8a4a4c5c68dfb6b47747c9c0.deb'
+  'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.2-00_arm64_${sha256sums_aarch64}.deb'
 )
 sha256sums_x86_64=(
-  '3caa0392444658082aa459418728abf81e440f439960963f54f08c6e6fdefbd3'
+  '777b8af5ad6ffb59d0ad4e6ea08061ae9714c3c86f11b31c945058d48ec98a44'
 )
 sha256sums_armv7l=(
-  '9e791661bd57d71385255e0b985223799239e82aea4350c3ac22f992e86ea44e'
+  '51f72a60b1d59b9fbcaa5f3cade0dd5d4fbc6edd6d53ceddb41e2baac665d13c'
 )
 sha256sums_armv7h=(
-  '9e791661bd57d71385255e0b985223799239e82aea4350c3ac22f992e86ea44e'
+  '51f72a60b1d59b9fbcaa5f3cade0dd5d4fbc6edd6d53ceddb41e2baac665d13c'
 )
 sha256sums_aarch64=(
-  'ce3d4358838b5499e0eedd4880ee31ddd8bb3d9e8a4a4c5c68dfb6b47747c9c0'
+  'af0d30160cdc07eac5fe2f7affd5b254d18657bd4d6e1bd256f0a2b26319c11a'
 )
 package() {
   tar -vxf data.tar.xz
