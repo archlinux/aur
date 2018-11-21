@@ -9,14 +9,14 @@ pkgname=("${pkgbase}-git"
          "${pkgbase}-core-git"
         )
 
-pkgver=0.14.pre.107.g95848fd9
+pkgver=0.14.pre.110.g7c0eb011
 pkgrel=1
 url='http://quassel-irc.org'
 license=('GPL')
 arch=('i686' 'x86_64' 'arm')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'hicolor-icon-theme'
              'knotifyconfig' 'python' 'qca' 'qt5-base' 'qt5-script'
-             'qt5-tools' 'qt5-webkit')
+             'qt5-tools' 'qt5-webkit' 'boost')
 source=(
   'git+https://github.com/quassel/quassel.git'
 )

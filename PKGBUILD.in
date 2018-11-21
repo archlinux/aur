@@ -16,7 +16,7 @@ license=('GPL')
 arch=('i686' 'x86_64' 'arm')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'hicolor-icon-theme'
              'knotifyconfig' 'python' 'qca' 'qt5-base' 'qt5-script'
-             'qt5-tools' 'qt5-webkit')
+             'qt5-tools' 'qt5-webkit' 'boost')
 source=(
   'git+https://github.com/quassel/quassel.git'
 )
