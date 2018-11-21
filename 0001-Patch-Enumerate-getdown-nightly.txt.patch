@@ -1,0 +1,41 @@
+From 988dab5e309316d608aea8b73b8db304de9f03ee Mon Sep 17 00:00:00 2001
+From: getzze <getzze@gmail.com>
+Date: Wed, 21 Nov 2018 23:46:48 +0000
+Subject: [PATCH] Patch Enumerate + getdown-nightly.txt
+
+---
+ ant-package.xml                                               | 2 +-
+ .../ui/components/tree/TmmTreeTextFilter.java                 | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/ant-package.xml b/ant-package.xml
+index 4591c57f..6b6fa1aa 100644
+--- a/ant-package.xml
++++ b/ant-package.xml
+@@ -6,7 +6,7 @@
+ 	<property name="dist.dir" value="target/dist" />
+ 
+ 	<!-- set as property to override in jenkins -->
+-	<property name="getdown" value="getdown.txt" />
++	<property name="getdown" value="getdown-nightly.txt" />
+ 
+ 	<path id="classpath.default">
+ 		<fileset dir="${lib.dir}">
+diff --git a/src/main/java/org/tinymediamanager/ui/components/tree/TmmTreeTextFilter.java b/src/main/java/org/tinymediamanager/ui/components/tree/TmmTreeTextFilter.java
+index 345acb5b..978a9096 100644
+--- a/src/main/java/org/tinymediamanager/ui/components/tree/TmmTreeTextFilter.java
++++ b/src/main/java/org/tinymediamanager/ui/components/tree/TmmTreeTextFilter.java
+@@ -112,8 +112,8 @@ public class TmmTreeTextFilter<E extends TmmTreeNode> extends EnhancedTextField
+     }
+ 
+     // second: parse all children too
+-    for (Enumeration<E> e = (Enumeration<E>) node.children(); e.hasMoreElements();) {
+-      if (accept(e.nextElement())) {
++    for (Enumeration<? extends javax.swing.tree.TreeNode> e = node.children(); e.hasMoreElements();) {
++      if (accept( (E) e.nextElement())) {
+         return true;
+       }
+     }
+-- 
+2.19.1
+

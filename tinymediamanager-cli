@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Command line interface for tinyMediaManager
+mkdir --parents "$HOME/.tiny-media-manager"
+cd "$HOME/.tiny-media-manager"
+ln --symbolic --force /usr/share/tinymediamanager/plugins/ ./
+
+java \
+  -Djava.net.preferIPv4Stack=true \
+  -Dappbase=https://www.tinymediamanager.org/ \
+  -Djna.nosys=true \
+  -Djava.awt.headless=true \
+  -Xms64m \
+  -Xmx512m \
+  -Xss512k \
+  -cp /usr/share/tinymediamanager/tmm.jar:/usr/share/tinymediamanager/lib/* \
+  org.tinymediamanager.TinyMediaManager \
+  "$@"
