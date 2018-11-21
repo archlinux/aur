@@ -3,7 +3,7 @@
 # Contributor: Dan Elkouby <streetwalrus@codewalr.us>
 
 pkgname=numix-themes-archblue
-pkgver=2.6.6.r50.5869b68
+pkgver=2.6.6.r51.b652b19
 pkgrel=1
 pkgdesc='A flat and light theme with a modern look and softer accents (GNOME, Openbox, Unity, Xfce) using the ArchLinux blue (#1793d1) and dark grey (#333333) colors'
 arch=('any')
