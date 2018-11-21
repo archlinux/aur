@@ -5,8 +5,8 @@
 _pkgname=idos-timetable-additionalinfo-chaps-mhd-pid
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2017_3_24
-pkgrel=5
+pkgver=2018_11_19
+pkgrel=1
 pkgdesc="Photographs of some stops within the PID (Praha region) public transport area, to be used with the timetable search engines by CHAPS."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
