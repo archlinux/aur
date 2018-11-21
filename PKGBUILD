@@ -15,9 +15,11 @@ makedepends=('git' 'maven')
 provides=('lizzie')
 conflicts=('lizzie')
 source=("git+https://github.com/featurecat/lizzie.git"
+        "lizzie.sh"
         "lizzie.desktop")
-md5sums=('SKIP'
-         '1fefb91214fd8fd2f1241de2b73f8701')
+sha256sums=('SKIP'
+            '58a4987ab4167aab557e1bcd2bb22daec252ce7c6397e76040c038516b74de70'
+            'cf5d1651023f04294e580243aa7ef05bc9ebedb468631f4035fd3d5ce0f212f0')
 
 pkgver() {
   cd lizzie
@@ -40,6 +42,7 @@ package() {
   sed -i 's/network.gz/\/usr\/share\/leela-zero\/networks\/weights.txt/g' "$_pkgname"/config.txt
 
   install -Dm644 "$_pkgname"/target/lizzie-"$_pkgver"-shaded.jar "$pkgdir"/usr/share/java/"$_pkgname"/"$_pkgname".jar
-  install -Dm644 "$_pkgname"/config.txt "$pkgdir"/usr/share/java/"$_pkgname"/config.txt
+  install -Dm644 "$_pkgname"/config.txt "$pkgdir"/usr/share/"$_pkgname"/config.txt
+  install -Dm755 "$_pkgname".sh "$pkgdir"/usr/bin/"$_pkgname"
   install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
 }

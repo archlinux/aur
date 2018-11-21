@@ -13,9 +13,11 @@ pkgbase = lizzie-git
 	provides = lizzie
 	conflicts = lizzie
 	source = git+https://github.com/featurecat/lizzie.git
+	source = lizzie.sh
 	source = lizzie.desktop
-	md5sums = SKIP
-	md5sums = 1fefb91214fd8fd2f1241de2b73f8701
+	sha256sums = SKIP
+	sha256sums = 58a4987ab4167aab557e1bcd2bb22daec252ce7c6397e76040c038516b74de70
+	sha256sums = cf5d1651023f04294e580243aa7ef05bc9ebedb468631f4035fd3d5ce0f212f0
 
 pkgname = lizzie-git
 
