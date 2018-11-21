@@ -2,14 +2,14 @@
 
 pkgname=miniserve
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to serve files via HTTP"
 arch=('x86_64')
 url="https://github.com/svenstaro/miniserve"
 license=(MIT)
 makedepends=(cargo)
 source=(https://github.com/svenstaro/miniserve/archive/v${pkgver}.tar.gz)
-sha512sums=('bfffcb2eddb1c821e388d07a4b28460d089a18ed399a60ee666c775f1d6740221c938ea4a894c54b8119e159b59b768ac4e89efd5644c4352f65de546bacd30a')
+sha512sums=('cf1f4abf30e9a79f9320c367b9652e843691b29020161d6d5787390e94f787c9c0eba170eea57fb80dbce446377c0d6c472b9667b6b9fa898e49359a649eefea')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
