@@ -3,26 +3,14 @@
 
 pkgname=kubeadm-bin
 pkgdesc="Kubernetes.io kubeadm binary"
-pkgver=1.12.1
-pkgrel=4
+pkgver=1.12.2
+pkgrel=2
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
 license=('apache')
 depends=('kubelet-bin')
 conflicts=('kubernetes' 'kubernetes-bin')
 provides=('kubeadm')
-source_x86_64=(
-  'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.2-00_amd64_${sha256sums_x86_64}.deb'
-)
-source_armv7l=(
-  'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.2-00_armhf_${sha256sums_armv7l}.deb'
-)
-source_armv7h=(
-  'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.2-00_armhf_${sha256sums_armv7h}.deb'
-)
-source_aarch64=(
-  'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.2-00_arm64_${sha256sums_aarch64}.deb'
-)
 sha256sums_x86_64=(
   '777b8af5ad6ffb59d0ad4e6ea08061ae9714c3c86f11b31c945058d48ec98a44'
 )
@@ -34,6 +22,18 @@ sha256sums_armv7h=(
 )
 sha256sums_aarch64=(
   'af0d30160cdc07eac5fe2f7affd5b254d18657bd4d6e1bd256f0a2b26319c11a'
+)
+source_x86_64=(
+  "https://packages.cloud.google.com/apt/pool/kubeadm_${pkgver}-00_amd64_${sha256sums_x86_64}.deb"
+)
+source_armv7l=(
+  "https://packages.cloud.google.com/apt/pool/kubeadm_${pkgver}-00_armhf_${sha256sums_armv7l}.deb"
+)
+source_armv7h=(
+  "https://packages.cloud.google.com/apt/pool/kubeadm_${pkgver}-00_armhf_${sha256sums_armv7h}.deb"
+)
+source_aarch64=(
+  "https://packages.cloud.google.com/apt/pool/kubeadm_${pkgver}-00_arm64_${sha256sums_aarch64}.deb"
 )
 package() {
   tar -vxf data.tar.xz
