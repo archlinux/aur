@@ -2,7 +2,7 @@
 pkgbase=meteoio
 pkgname=('meteoio' 'meteoio-examples' 'meteoio-docs')
 pkgver=2.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Make data access easy and safe for numerical simulations in environmental sciences"
 arch=('x86_64')
 url="https://models.slf.ch/p/meteoio/"
@@ -24,7 +24,7 @@ build() {
 }
 
 package_meteoio() {
-  cd "MeteoIO-$pkgver-src/build"
+  cd "MeteoIO-$pkgver-src"
   make DESTDIR="$pkgdir/" install
 }
 
