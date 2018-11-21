@@ -1,12 +1,12 @@
 pkgbase = masterpassword-gui
 	pkgdesc = Java GUI for Master Password
 	pkgver = 2.7.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://masterpasswordapp.com/
 	arch = any
 	license = GPL3
 	depends = java-runtime
-	noextract = masterpassword-gui.jar
+	noextract = masterpassword-gui-2.7.10.jar
 	source = https://ssl.masterpasswordapp.com/masterpassword-gui-2.7.10.jar
 	source = masterpassword-gui.desktop
 	source = masterpassword-gui.png
