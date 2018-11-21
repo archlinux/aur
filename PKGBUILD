@@ -3,7 +3,7 @@
 pkgname=yggdrasil-git
 _pkgname="yggdrasil"
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An experiment in scalable routing as an encrypted IPv6 overlay network"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/yggdrasil-network/yggdrasil-go"
@@ -23,5 +23,5 @@ package() {
 	install -Dm755 "yggdrasil" "${pkgdir}/usr/bin/yggdrasil"
 	install -Dm755 "yggdrasilctl" "${pkgdir}/usr/bin/yggdrasilctl"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-	install -Dm644 contrib/systemd/yggdrasil.service -t "${pkgdir}/usr/lib/systemd/user"
+	install -Dm644 contrib/systemd/yggdrasil.service -t "${pkgdir}/usr/lib/systemd/system"
 }
