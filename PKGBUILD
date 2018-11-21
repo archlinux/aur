@@ -1,5 +1,5 @@
 pkgname=picard-git
-pkgver=2.0.5dev1.r302.g49ebe344
+pkgver=2.0.5dev1.r304.gfa693041
 pkgrel=1
 pkgdesc="MusicBrainz tagging application"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver(){
 
 build() {
     cd "$srcdir/picard"
-    python setup.py build
+    python setup.py build --disable-autoupdate
 }
 
 check() {
