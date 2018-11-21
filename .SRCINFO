@@ -1,0 +1,15 @@
+pkgbase = saws
+	pkgdesc = Scientific Application Web server
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://bitbucket.org/saws/saws/wiki/Home
+	arch = x86_64
+	arch = i686
+	license = MIT
+	source = https://bitbucket.org/saws/saws/get/v0.1.0.tar.gz
+	source = tabs.patch
+	md5sums = 941a541bdf625856be18c9752249146d
+	md5sums = aad46c722f9ab1ce5f73bf0b70c87be3
+
+pkgname = saws
+
