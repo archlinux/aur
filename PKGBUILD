@@ -1,16 +1,14 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=ndi-sdk
 pkgver=3.20181005.r97672
-pkgrel=1
+pkgrel=2
 pkgdesc='NewTek NDI SDK'
 arch=('i686' 'x86_64')
 url='https://www.newtek.com/ndi/sdk/'
 license=('custom')
-depends=('glibc')
+depends=('glibc' 'avahi')
 makedepends=('poppler')
-provides=('libndi' 'libndi.so')
-conflicts=('libndi')
 options=('!strip')
 _srcfile="InstallNDISDK_v${pkgver}_Linux.sh"
 source=("$_srcfile"::"http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v${pkgver%%.*}_Linux.sh")
