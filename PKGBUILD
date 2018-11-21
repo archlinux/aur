@@ -23,4 +23,5 @@ package() {
 	install -Dm755 "yggdrasil" "${pkgdir}/usr/bin/yggdrasil"
 	install -Dm755 "yggdrasilctl" "${pkgdir}/usr/bin/yggdrasilctl"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+	install -Dm644 contrib/systemd/yggdrasil.service -t "${pkgdir}/usr/lib/systemd/user"
 }
