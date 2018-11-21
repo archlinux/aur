@@ -1,0 +1,22 @@
+pkgbase = lizzie-git
+	pkgdesc = Analysis interface for Leela Zero
+	pkgver = 0.6.r19.g6fa818e
+	pkgrel = 1
+	url = https://github.com/featurecat/lizzie
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = maven
+	depends = bash
+	depends = java-runtime
+	depends = leela-zero-git
+	noextract = network.gz
+	source = git+https://github.com/featurecat/lizzie.git
+	source = network.gz::http://zero.sjeng.org/best-network
+	source = lizzie.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 1fefb91214fd8fd2f1241de2b73f8701
+
+pkgname = lizzie-git
+
