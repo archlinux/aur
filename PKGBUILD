@@ -2,7 +2,7 @@
 
 pkgname=python-dash-core-components
 _pkgname=dash_core_components
-pkgver=0.30.2
+pkgver=0.38.0
 pkgrel=1
 pkgdesc="Dash UI core components suite"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python')
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('407f8c253c925de568b6572adb275e85fd75305694dcd4e263ca72a086790381')
+sha256sums=('2c28f4a5e2ec68d21c07105025a148bcdf62136dcdb8b3846cd6782d6d577a8d')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
