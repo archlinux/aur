@@ -1,7 +1,7 @@
 pkgbase = yed
 	pkgdesc = Very powerful graph editor written in java
-	pkgver = 3.18.1.1
-	pkgrel = 2
+	pkgver = 3.18.2
+	pkgrel = 1
 	epoch = 1
 	url = http://www.yworks.com/en/products_yed_about.html
 	install = yed.install
@@ -47,10 +47,10 @@ pkgbase = yed
 	depends = pcre
 	depends = pixman
 	depends = zlib
-	source = https://www.yworks.com/resources/yed/demo/yEd-3.18.1.1.zip
+	source = https://www.yworks.com/resources/yed/demo/yEd-3.18.2.zip
 	source = yed.desktop
 	source = yed
-	sha256sums = fe24fb59a537c2cc03e8a3d78d87f10c6d81714371be5ed40cc2d7295160804a
+	sha256sums = 1dd325347127b749cf7f6d84c086b24cf8ff86e26c2ba986916efc9337a97463
 	sha256sums = 245182a52896bdff3f2c995a066623619d600665630e789910c92d36725a0aca
 	sha256sums = 2752e6ccc5cb5e19f483e5fd5f3274e81c8ef32d77c92b0d18951c8325179abd
 
