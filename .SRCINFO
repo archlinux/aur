@@ -1,6 +1,6 @@
 pkgbase = arrow
 	pkgdesc = A columnar in-memory analytics layer for big data.
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://arrow.apache.org
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = arrow
 	makedepends = cmake
 	makedepends = boost
 	makedepends = brotli
+	makedepends = double-conversion
 	makedepends = flatbuffers-static
 	makedepends = google-glog-static
 	makedepends = lz4-static
@@ -21,8 +22,14 @@ pkgbase = arrow
 	depends = rapidjson
 	provides = parquet-cpp
 	conflicts = parquet-cpp
-	source = https://github.com/apache/arrow/archive/apache-arrow-0.11.0.tar.gz
-	sha256sums = 0ac629a7775d86108e403eb66d9f1a3d3bdd6b3a497a86228aa4e8143364b7cc
+	source = https://github.com/apache/arrow/archive/apache-arrow-0.11.1.tar.gz
+	source = 2928468ef665e106339fcc1161a9c1e1ebcfc2a3.patch
+	source = f4f62699e5d5b821e83dc2f902d486cf5c2b2755.patch
+	source = fix-linking.patch
+	sha256sums = 3219c4e87e7cf979017f0cc5bc5dd6a3611d0fc750e821911fab998599dc125b
+	sha256sums = d5170d6d7ad24cf850baa2c60e26a43e089c18046b13c01e071745a23c239d36
+	sha256sums = 4a839e1229e1c4369948ebb02e78a15bf77dcf1bd03ace3aa3002ba35c5cb659
+	sha256sums = ce8aab9d77bc2d8fe1e4fad0221fd19abe190e8139fbd73b939f7404ed6f1b43
 
 pkgname = arrow
 
