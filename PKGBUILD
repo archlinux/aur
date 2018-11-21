@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar Trifunović <akstrfn@gmail.com>
 
 pkgname=valhalla
-pkgver=2.6.3
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64')
@@ -10,15 +10,19 @@ license=('custom:MIT')
 depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'lua' 'libspatialite')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost' 'rapidjson')
 source=("${url}/archive/$pkgver.tar.gz")
-sha256sums=('42db5bc48409983b4ccfd0a152347016e0a6dd6aa1313b9ba6896d2346df9d0b')
+sha256sums=('84807a69b8e66f6edc47c14b4229f76eacbdf4883cf8d1d38e68c6ef3b0ecb1b')
 
 prepare() {
   cd "$pkgname-$pkgver"
   git clone https://github.com/scrosby/OSM-binary third_party/OSM-binary
   git clone https://github.com/valhalla/osmlr-tile-spec third_party/OSMLR
+  git clone https://github.com/tronkko/dirent third_party/dirent
+  git clone https://github.com/HowardHinnant/date third_party/date
 
-  cd "$srcdir/$pkgname-$pkgver"/third_party/OSM-binary && git checkout 4e32fa2
-  cd "$srcdir/$pkgname-$pkgver"/third_party/OSMLR && git checkout ae07abe
+  cd "$srcdir/$pkgname-$pkgver"/third_party/OSM-binary && git checkout 4e32fa2 -q
+  cd "$srcdir/$pkgname-$pkgver"/third_party/OSMLR && git checkout 0f4000e -q
+  cd "$srcdir/$pkgname-$pkgver"/third_party/dirent && git checkout 287ba92 -q
+  cd "$srcdir/$pkgname-$pkgver"/third_party/date && git checkout 3e82a52 -q
 
   cd "$srcdir/$pkgname-$pkgver"
 
@@ -27,6 +31,9 @@ prepare() {
   # https://groups.google.com/forum/#!topic/spatialite-users/YXnofHixXsM
   # https://github.com/valhalla/valhalla/issues/354
   sed -i 's/mod_spatialite/\/usr\/lib\/mod_spatialite/' src/mjolnir/admin.cc
+
+  # https://github.com/valhalla/valhalla/issues/1570
+  sed -i 's/GeometryFactory::unique_ptr gf = GeometryFactory::create();/GeometryFactory::Ptr gf = GeometryFactory::create();/' src/mjolnir/valhalla_build_admins.cc
 }
 
 build() {
@@ -40,7 +47,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_DATA_TOOLS=On \
     -DENABLE_PYTHON_BINDINGS=On \
+    -DENABLE_NODE_BINDINGS=Off \
     -DENABLE_SERVICES=On \
+    -DENABLE_CCACHE=Off \
+    -DENABLE_HTTP=On \
     -DBUILD_SHARED_LIBS=On
 
   cmake --build build
