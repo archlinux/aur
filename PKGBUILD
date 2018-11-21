@@ -38,7 +38,7 @@ build() {
     cd "$srcdir/$_realname"
     PYJSBUILD_PATH="$srcdir/pyjamas/bin/"
     PATH=$PATH:$PYJSBUILD_PATH LIBERVIA_INSTALL=arch NO_PREINSTALL_OPT=nopreinstall SAT_INSTALL=nopreinstall python2 setup.py install --root="$srcdir/fakeinstall/" --prefix=/usr --optimize=1
-	# Compile pyjs
+    # Compile pyjs
     mkdir -p $srcdir/$_realname/html
     mkdir -p $srcdir/$_realname/build/tmp_dir
     cp -r /usr/lib/python2.7/site-packages/sat_frontends $srcdir/$_realname/build/tmp_dir/sat_frontends
