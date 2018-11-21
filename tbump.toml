@@ -16,14 +16,14 @@ message_template = "Bump to {new_version}"
 src = "PKGBUILD"
 search = 'pkgver="{current_version}"'
 
-[[pre_push]]
+[[before_commit]]
 name = "Update source md5sum"
 cmd = "updpkgsums"
 
-[[pre_push]]
-name = "Check package build"
+[[before_commit]]
+name = "Check build"
 cmd = "extra-x86_64-build"
 
-[[pre_push]]
+[[before_commit]]
 name = "Generate .SRCINFO"
 cmd = "makepkg --printsrcinfo > .SRCINFO"
