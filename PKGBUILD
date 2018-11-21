@@ -4,12 +4,12 @@
 pkgname=kubeadm-bin
 pkgdesc="Kubernetes.io kubeadm binary"
 pkgver=1.12.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
 license=('apache')
 depends=('kubelet-bin')
-conflicts=('kubernetes''kubernetes-bin')
+conflicts=('kubernetes' 'kubernetes-bin')
 source_x86_64=(
   'https://packages.cloud.google.com/apt/pool/kubeadm_1.12.2-00_amd64_${sha256sums_x86_64}.deb'
 )
