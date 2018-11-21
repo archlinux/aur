@@ -7,7 +7,7 @@ pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
 license=('apache')
-conflicts=('kubernetes')
+conflicts=('kubernetes' 'kubernetes-bin')
 source_x86_64=(
   'https://packages.cloud.google.com/apt/pool/kubelet_1.12.1-00_amd64_ae75f76207874c43f7e20e8184265e6a9fe38ef0c93e61115362280227bed23f.deb'
 )
