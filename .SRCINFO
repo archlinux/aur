@@ -1,6 +1,6 @@
 pkgbase = ksmoothdock
 	pkgdesc = A cool desktop panel for KDE Plasma 5
-	pkgver = 5.9
+	pkgver = 5.10
 	pkgrel = 1
 	url = https://github.com/dangvd/ksmoothdock
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = ksmoothdock
 	makedepends = extra-cmake-modules
 	makedepends = python
 	depends = kxmlgui
-	source = ksmoothdock-5.9::https://github.com/dangvd/ksmoothdock/archive/v5.9.tar.gz
-	sha256sums = e6909a179fe1069a822d48acc423dcf34cdf2f45e4808c98aefb28bed25f8805
+	source = ksmoothdock-5.10::https://github.com/dangvd/ksmoothdock/archive/v5.10.tar.gz
+	sha256sums = debb6f00ee2462406d48bb8a4e255454edd91a0f7758e01d6625a97b9f5de54b
 
 pkgname = ksmoothdock
 
