@@ -1,12 +1,12 @@
 # Maintainer: Allen Choong <allencch at hotmail dot com>
 pkgname=emoji-keyboard-git
 pkgver=r27.afe17aa
-pkgrel=1
-pkgdesc="Virtual keyboard-like emoji picker for linux"
+pkgrel=2
+pkgdesc="Virtual keyboard-like emoji picker for linux (wayland disabled)"
 arch=('i686' 'x86_64')
 url="https://github.com/OzymandiasTheGreat/emoji-keyboard"
 license=('GPL3')
-depends=('python' 'python-xlib' 'libappindicator-gtk3' 'python-setuptools')
+depends=('python' 'python-xlib' 'libappindicator-gtk3' 'python-setuptools' 'python-evdev')
 makedepends=('git')
 provides=("emoji-keyboard")
 conflicts=("emoji-keyboard")
