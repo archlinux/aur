@@ -1,17 +1,18 @@
 pkgbase = budgie-vala-panel-appmenu-applet
 	pkgdesc = Vala Panel Application Menu for Budgie Desktop
 	pkgver = 0.7.1+1+6d30c29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rilian-la-te/vala-panel-appmenu
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	makedepends = bamf>=0.5.0
-	makedepends = cmake
+	makedepends = cmake>=3.6
 	makedepends = gobject-introspection
-	makedepends = gtk3
-	makedepends = libwnck3
-	makedepends = vala
+	makedepends = glib2>=2.50
+	makedepends = gtk3>=3.22
+	makedepends = libwnck3>=3.4.8
+	makedepends = vala>=0.34
 	depends = appmenu-gtk-module>=0.6.94
 	depends = budgie-desktop
 	depends = vala-panel-appmenu-common>=0.7.1
