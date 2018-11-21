@@ -6,7 +6,7 @@
 
 pkgname=davs2
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard'
 url='https://github.com/pkuvcl/davs2/'
@@ -16,14 +16,15 @@ makedepends=('gcc7' 'yasm')
 provides=('libdavs2')
 conflicts=('libdavs2')
 replaces=('libdavs2')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pkuvcl/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('de93800f016cbaf08cb40184a8069050dc625da5240a528155137052d1cf81c8')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pkuvcl/${pkgname}/archive/${pkgver}.tar.gz"
+        'davs2-1.6-gcc8-fix.patch')
+sha256sums=('de93800f016cbaf08cb40184a8069050dc625da5240a528155137052d1cf81c8'
+            '4bea78a55bf6a34591ae016cee800aa75c3c5b1706724534095cf2a0e9fc6e71')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
     
-    # use gcc7 (it does not build with gcc8)
-    sed -i 's/g++/g++-7/' build/linux/configure
+    patch --binary -Np1 -i "${srcdir}/davs2-1.6-gcc8-fix.patch"
 }
 
 build() {

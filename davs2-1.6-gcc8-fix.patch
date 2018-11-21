@@ -1,0 +1,180 @@
+From 00ef2c8062a7f7d7265d933676fb5cc60f1ea659 Mon Sep 17 00:00:00 2001
+From: Daniel Bermond <danielbermond@yahoo.com>
+Date: Tue, 20 Nov 2018 16:54:25 +0000
+Subject: [PATCH] Make AVX symbols to be strictly visible (fix build with gcc8)
+
+_mm256_insertf128_si256 and _mm256_castsi128_si256 are undeclared
+in the scope of source/common/vec/intrinsic.h, which seems to be
+strictly not permitted by gcc8.
+
+Fixes #9
+---
+ source/common/vec/intrinsic_deblock_avx2.cc    | 5 ++---
+ source/common/vec/intrinsic_idct_avx2.cc       | 6 +++---
+ source/common/vec/intrinsic_inter_pred.cc      | 6 +++---
+ source/common/vec/intrinsic_inter_pred_avx2.cc | 7 ++++---
+ source/common/vec/intrinsic_intra-pred_avx2.cc | 6 +++---
+ source/common/vec/intrinsic_pixel_avx.cc       | 6 +++---
+ source/common/vec/intrinsic_sao_avx2.cc        | 6 +++---
+ 7 files changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/source/common/vec/intrinsic_deblock_avx2.cc b/source/common/vec/intrinsic_deblock_avx2.cc
+index b87e472..ca9534e 100644
+--- a/source/common/vec/intrinsic_deblock_avx2.cc
++++ b/source/common/vec/intrinsic_deblock_avx2.cc
+@@ -30,15 +30,14 @@
+  *    For more information, contact us at sswang @ pku.edu.cn.
+  */
+ 
+-#include "../common.h"
+-#include "intrinsic.h"
+-
+ #include <mmintrin.h>
+ #include <emmintrin.h>
+ #include <tmmintrin.h>
+ #include <smmintrin.h>
+ #include <immintrin.h>
+ 
++#include "../common.h"
++#include "intrinsic.h"
+ 
+ #if !HIGH_BIT_DEPTH
+ __m128i c_0_128;
+diff --git a/source/common/vec/intrinsic_idct_avx2.cc b/source/common/vec/intrinsic_idct_avx2.cc
+index 0b40fde..ee5384d 100644
+--- a/source/common/vec/intrinsic_idct_avx2.cc
++++ b/source/common/vec/intrinsic_idct_avx2.cc
+@@ -30,15 +30,15 @@
+  *    For more information, contact us at sswang @ pku.edu.cn.
+  */
+ 
+-#include "../common.h"
+-#include "intrinsic.h"
+-
+ #include <mmintrin.h>
+ #include <emmintrin.h>
+ #include <tmmintrin.h>
+ #include <smmintrin.h>
+ #include <immintrin.h>
+ 
++#include "../common.h"
++#include "intrinsic.h"
++
+ /* disable warnings */
+ #pragma warning(disable:4127)  // warning C4127: 条件表达式是常量
+ 
+diff --git a/source/common/vec/intrinsic_inter_pred.cc b/source/common/vec/intrinsic_inter_pred.cc
+index 46c0da8..55ff6a0 100644
+--- a/source/common/vec/intrinsic_inter_pred.cc
++++ b/source/common/vec/intrinsic_inter_pred.cc
+@@ -30,15 +30,15 @@
+  *    For more information, contact us at sswang @ pku.edu.cn.
+  */
+ 
+-#include "../common.h"
+-#include "intrinsic.h"
+-
+ #include <mmintrin.h>
+ #include <emmintrin.h>
+ #include <tmmintrin.h>
+ #include <smmintrin.h>
+ #include <immintrin.h>
+ 
++#include "../common.h"
++#include "intrinsic.h"
++
+ #if !HIGH_BIT_DEPTH
+ /* ---------------------------------------------------------------------------
+  */
+diff --git a/source/common/vec/intrinsic_inter_pred_avx2.cc b/source/common/vec/intrinsic_inter_pred_avx2.cc
+index 6f35771..05f6957 100644
+--- a/source/common/vec/intrinsic_inter_pred_avx2.cc
++++ b/source/common/vec/intrinsic_inter_pred_avx2.cc
+@@ -30,14 +30,15 @@
+  *    For more information, contact us at sswang @ pku.edu.cn.
+  */
+ 
+-#include "../common.h"
+-#include "intrinsic.h"
+-
+ #include <mmintrin.h>
+ #include <emmintrin.h>
+ #include <tmmintrin.h>
+ #include <smmintrin.h>
+ #include <immintrin.h>
++
++#include "../common.h"
++#include "intrinsic.h"
++
+ #pragma warning(disable:4127)  // warning C4127: 条件表达式是常量
+ 
+ #if !HIGH_BIT_DEPTH
+diff --git a/source/common/vec/intrinsic_intra-pred_avx2.cc b/source/common/vec/intrinsic_intra-pred_avx2.cc
+index 6440929..1357bdb 100644
+--- a/source/common/vec/intrinsic_intra-pred_avx2.cc
++++ b/source/common/vec/intrinsic_intra-pred_avx2.cc
+@@ -30,15 +30,15 @@
+  *    For more information, contact us at sswang @ pku.edu.cn.
+  */
+ 
+-#include "../common.h"
+-#include "intrinsic.h"
+-
+ #include <mmintrin.h>
+ #include <emmintrin.h>
+ #include <tmmintrin.h>
+ #include <smmintrin.h>
+ #include <immintrin.h>
+ 
++#include "../common.h"
++#include "intrinsic.h"
++
+ #if !HIGH_BIT_DEPTH
+ 
+ void intra_pred_ver_avx(pel_t *src, pel_t *dst, int i_dst, int dir_mode, int bsx, int bsy)
+diff --git a/source/common/vec/intrinsic_pixel_avx.cc b/source/common/vec/intrinsic_pixel_avx.cc
+index 813a36f..fba7e46 100644
+--- a/source/common/vec/intrinsic_pixel_avx.cc
++++ b/source/common/vec/intrinsic_pixel_avx.cc
+@@ -30,15 +30,15 @@
+  *    For more information, contact us at sswang @ pku.edu.cn.
+  */
+ 
+-#include "../common.h"
+-#include "intrinsic.h"
+-
+ #include <mmintrin.h>
+ #include <emmintrin.h>
+ #include <tmmintrin.h>
+ #include <smmintrin.h>
+ #include <immintrin.h>
+ 
++#include "../common.h"
++#include "intrinsic.h"
++
+ /* ---------------------------------------------------------------------------
+  */
+ void *davs2_memzero_aligned_c_avx(void *dst, size_t n)
+diff --git a/source/common/vec/intrinsic_sao_avx2.cc b/source/common/vec/intrinsic_sao_avx2.cc
+index 11be4d3..bb0c4aa 100644
+--- a/source/common/vec/intrinsic_sao_avx2.cc
++++ b/source/common/vec/intrinsic_sao_avx2.cc
+@@ -30,15 +30,15 @@
+  *    For more information, contact us at sswang @ pku.edu.cn.
+  */
+ 
+-#include "../common.h"
+-#include "intrinsic.h"
+-
+ #include <mmintrin.h>
+ #include <emmintrin.h>
+ #include <tmmintrin.h>
+ #include <smmintrin.h>
+ #include <immintrin.h>
+ 
++#include "../common.h"
++#include "intrinsic.h"
++
+ #if !HIGH_BIT_DEPTH
+ #ifdef _MSC_VER
+ #pragma warning(disable:4244)  // TODO: 修正编译warning
