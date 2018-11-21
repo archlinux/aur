@@ -3,7 +3,7 @@
 _pkgname=repos
 
 pkgname=repos-git
-pkgver=r59.c945048
+pkgver=r66.443c6fb
 pkgrel=1
 pkgdesc="A simple command tool to manage local repositories"
 url="https://github.com/zhangkaizhao/repos"

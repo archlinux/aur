@@ -1,6 +1,6 @@
 pkgbase = repos-git
 	pkgdesc = A simple command tool to manage local repositories
-	pkgver = r59.c945048
+	pkgver = r66.443c6fb
 	pkgrel = 1
 	url = https://github.com/zhangkaizhao/repos
 	arch = x86_64
