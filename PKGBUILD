@@ -2,24 +2,24 @@
 
 pkgname=kubelet-bin
 pkgdesc="Kubernetes.io kubelet binary"
-pkgver=1.12.1
-pkgrel=3
+pkgver=1.12.2
+pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
 license=('apache')
 conflicts=('kubernetes' 'kubernetes-bin')
 provides=('kubelet')
 source_x86_64=(
-  'https://packages.cloud.google.com/apt/pool/kubelet_1.12.1-00_amd64_ae75f76207874c43f7e20e8184265e6a9fe38ef0c93e61115362280227bed23f.deb'
+  'https://packages.cloud.google.com/apt/pool/kubelet_${pkgver}-00_amd64_ae75f76207874c43f7e20e8184265e6a9fe38ef0c93e61115362280227bed23f.deb'
 )
 source_armv7l=(
-  'https://packages.cloud.google.com/apt/pool/kubelet_1.12.1-00_armhf_3cff3f2835af58883673a5f9d1f0bfa36856b607449bfd747e2038c619915780.deb'
+  'https://packages.cloud.google.com/apt/pool/kubelet_${pkgver}-00_armhf_3cff3f2835af58883673a5f9d1f0bfa36856b607449bfd747e2038c619915780.deb'
 )
 source_armv7h=(
-  'https://packages.cloud.google.com/apt/pool/kubelet_1.12.1-00_armhf_3cff3f2835af58883673a5f9d1f0bfa36856b607449bfd747e2038c619915780.deb'
+  'https://packages.cloud.google.com/apt/pool/kubelet_${pkgver}-00_armhf_3cff3f2835af58883673a5f9d1f0bfa36856b607449bfd747e2038c619915780.deb'
 )
 source_aarch64=(
-  'https://packages.cloud.google.com/apt/pool/kubelet_1.12.1-00_arm64_514170cb05c2ecda1e086c21660b65d22cdb6975fe4240503c6a0e02d6bbcde7.deb'
+  'https://packages.cloud.google.com/apt/pool/kubelet_${pkgver}-arm64_514170cb05c2ecda1e086c21660b65d22cdb6975fe4240503c6a0e02d6bbcde7.deb'
 )
 sha256sums_x86_64=(
   '62015ea9af675de7f785081d518110d4df18580ddf9d382d2616e389a196f3da'
