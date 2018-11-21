@@ -1,12 +1,11 @@
 # Maintainer: LambdAurora <aurora42lambda@gmail.com>
 pkgname=lambdacommon-git
-pkgver=v1.6.0
+pkgver=20181121
 pkgrel=1
 pkgdesc="A library written in C++ with common features."
-arch=('i686' 'x86_64' 'armv7h')
-url="https://github.com/AperLambda/lambdacommon"
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url="https://aperlambda.github.io/libraries/lambdacommon/"
 license=('MIT')
-depends=()
 makedepends=('cmake' 'git')
 provides=('lambdacommon')
 conflicts=('lambdacommon')
@@ -26,8 +25,6 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	#./autogen.sh
-	#./configure --prefix=/usr
 	cmake .\
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release
