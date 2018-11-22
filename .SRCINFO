@@ -1,50 +1,50 @@
 pkgbase = julia-git
 	pkgdesc = High-level, high-performance, dynamic programming language
-	pkgver = 0.7.0.DEV.r41074.g018fb61ff6
+	pkgver = 1.1.0.DEV.r43604.g36d0116774
 	pkgrel = 1
-	url = http://julialang.org
-	arch = i686
+	url = https://julialang.org
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
 	makedepends = gcc-fortran
-	makedepends = git
-	makedepends = arpack
-	makedepends = blas>=3.5.0
 	makedepends = gmp
-	makedepends = lapack>=3.5.0
+	makedepends = python2
+	makedepends = git
+	makedepends = cblas
+	makedepends = hicolor-icon-theme
 	makedepends = libgit2
 	makedepends = libunwind
+	makedepends = libutf8proc
 	makedepends = mbedtls
 	makedepends = mpfr
+	makedepends = openblas
 	makedepends = openlibm
 	makedepends = pcre2
 	makedepends = suitesparse
-	makedepends = patchelf
-	makedepends = hicolor-icon-theme
 	makedepends = xdg-utils
 	makedepends = desktop-file-utils
 	makedepends = gtk-update-icon-cache
-	options = !emptydirs
 	source = git://github.com/JuliaLang/julia.git#branch=master
 	source = Make.user
-	md5sums = SKIP
-	md5sums = 490d7e6f1a8829b5ad0232935f63ff2f
+	source = julia-makefile.patch
+	source = cblas.patch
+	sha256sums = SKIP
+	sha256sums = 89c7b3234cf87d132345b6c0194dae756836059d3793cc8a97cc6366203a6ae7
+	sha256sums = 29b68ecdaf91770585609f54e5559e571d6b57a6312a3e8335caa7d647a2d2ca
+	sha256sums = 5c346bf8ed9a5763cf3bf6478158297107f16bbc07052b43920f778f0018b77a
 
 pkgname = julia-git
-	depends = arpack
-	depends = blas>=3.5.0
-	depends = gmp
-	depends = lapack>=3.5.0
+	depends = cblas
+	depends = hicolor-icon-theme
 	depends = libgit2
 	depends = libunwind
-	depends = llvm39
+	depends = libutf8proc
 	depends = mbedtls
 	depends = mpfr
+	depends = openblas
 	depends = openlibm
 	depends = pcre2
 	depends = suitesparse
-	depends = patchelf
-	depends = hicolor-icon-theme
 	depends = xdg-utils
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
@@ -56,8 +56,9 @@ pkgname = julia-git
 	backup = etc/julia/juliarc.jl
 
 pkgname = julia-git-docs
-	pkgdesc = High-level, high-performance, dynamic programming language (Documentation and examples)
+	pkgdesc = Documentation and examples for Julia
 	arch = any
+	depends = julia
 	provides = julia-docs
 	conflicts = julia-docs
 	conflicts = julia-git-doc

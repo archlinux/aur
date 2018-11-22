@@ -1,0 +1,14 @@
+--- Makefile.orig	2017-10-28 17:06:53.003582943 +0000
++++ Makefile	2017-10-28 17:07:27.690408154 +0000
+@@ -316,8 +316,9 @@
+ 	$(build_depsbindir)/stringreplace $$(strings -t x - $1 | grep '$2' | awk '{print $$1;}') '$3' 255 "$(call cygpath_w,$1)"
+ endef
+ 
+-install: $(build_depsbindir)/stringreplace $(BUILDROOT)/doc/_build/html/en/index.html
+-	@$(MAKE) $(QUIET_MAKE) all
++docsindex: $(build_depsbindir)/stringreplace $(BUILDROOT)/doc/_build/html/en/index.html
++
++install:
+ 	@for subdir in $(bindir) $(datarootdir)/julia/stdlib/$(VERSDIR) $(docdir) $(man1dir) $(includedir)/julia $(libdir) $(private_libdir) $(sysconfdir); do \
+ 		mkdir -p $(DESTDIR)$$subdir; \
+ 	done

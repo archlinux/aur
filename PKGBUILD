@@ -5,24 +5,26 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
-pkgver=0.7.0.DEV.r41074.g018fb61ff6
+pkgver=1.1.0.DEV.r43604.g36d0116774
 pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language'
-arch=('i686' 'x86_64')
-url="http://julialang.org"
+arch=('x86_64')
+url="https://julialang.org"
 license=('MIT')
-makedepends=('gcc-fortran' 'git')
-makedepends+=('arpack' 'blas>=3.5.0' 'gmp' 'lapack>=3.5.0' 'libgit2'
-              'libunwind' 'mbedtls' 'mpfr' 'openlibm'
-              'pcre2' 'suitesparse' 'patchelf' 'hicolor-icon-theme'
-              'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'llvm39' 'utf8proc' (AUR) 'intel-mkl' (AUR)
+makedepends=('cmake' 'gcc-fortran' 'gmp' 'python2' 'git')
+makedepends+=('cblas' 'hicolor-icon-theme' 'libgit2' 'libunwind' 'libutf8proc'
+              'mbedtls' 'mpfr' 'openblas' 'openlibm' 'pcre2' 'suitesparse'
+              'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'llvm' 'patchelf' 'intel-mkl'
 # Needed if building the documentation
 #makedepends+=('juliadoc-git' 'texlive-langcjk' 'texlive-latexextra')
-options=('!emptydirs')
 source=(git://github.com/JuliaLang/julia.git#branch=master
-        Make.user)
-md5sums=('SKIP'
-         '490d7e6f1a8829b5ad0232935f63ff2f')
+        Make.user
+        julia-makefile.patch
+        cblas.patch)
+sha256sums=('SKIP'
+            '89c7b3234cf87d132345b6c0194dae756836059d3793cc8a97cc6366203a6ae7'
+            '29b68ecdaf91770585609f54e5559e571d6b57a6312a3e8335caa7d647a2d2ca'
+            '5c346bf8ed9a5763cf3bf6478158297107f16bbc07052b43920f778f0018b77a')
 
 
 pkgver() {
@@ -39,19 +41,21 @@ prepare() {
   git submodule init
   git submodule update
 
-  # For /etc/ld.so.conf.d/
-  echo '/usr/lib/julia' > julia.conf
-
   # Move the Make.user in place
   cp -v $srcdir/Make.user .
+
+  # make 'make install' really just install
+  patch -p0 -i ../julia-makefile.patch
+
+  # add and use option to build with system cblas
+  # https://github.com/JuliaLang/julia/pull/29540
+  patch -p1 --no-backup-if-mismatch -i ../cblas.patch
 }
 
 build() {
-  # SSE2 is a requirement for Julia on 32-bit x86
-  CFLAGS=${CFLAGS//-march=i686/-march=pentium4}
-  CXXFLAGS=${CXXFLAGS//-march=i686/-march=pentium4}
-
-  make -C $_pkgbase prefix=/usr sysconfdir=/etc
+  # See FS#57387 for why USE_SYSTEM_LLVM=0 is used, for now
+  # See FS#58221 for why USE_SYSTEM_ARPACK=0 is used, for now
+  env CFLAGS="$CFLAGS -w" CXXFLAGS="$CXXFLAGS -w" make -C "$_pkgbase"
 
   # Building doc
   cd $_pkgbase/doc
@@ -60,12 +64,20 @@ build() {
   #make info
 }
 
+check() {
+  cd "$_pkgbase/test"
+
+  # this is the make testall target, plus the --skip option from
+  # travis/appveyor/circleci (one test fails with DNS resolution errors)
+  ../julia --check-bounds=yes --startup-file=no ./runtests.jl all --skip Sockets
+  find ../stdlib \( -name \*.cov -o -name \*.mem \) -delete
+  rm -r depot/compiled
+}
+
 package_julia-git() {
-  backup=('etc/ld.so.conf.d/julia.conf' 'etc/julia/juliarc.jl')
-  depends=('arpack' 'blas>=3.5.0' 'gmp' 'lapack>=3.5.0' 'libgit2'
-           'libunwind' 'llvm39' 'mbedtls' 'mpfr' 'openlibm'
-           'pcre2' 'suitesparse' 'patchelf' 'hicolor-icon-theme'
-           'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
+  depends=('cblas' 'hicolor-icon-theme' 'libgit2' 'libunwind' 'libutf8proc'
+           'mbedtls' 'mpfr' 'openblas' 'openlibm' 'pcre2' 'suitesparse'
+           'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'llvm' 'patchelf' 'intel-mkl'
   optdepends=('openblas-lapack: multithreaded replacement for lapack'
               'fftw: If using the FFTW package from julia'
               'gnuplot: If using the Gaston Package from julia')
@@ -76,17 +88,12 @@ package_julia-git() {
   CFLAGS=${CFLAGS//-march=i686/-march=pentium4}
   CXXFLAGS=${CXXFLAGS//-march=i686/-march=pentium4}
 
-  cd $_pkgbase
-  make DESTDIR=$pkgdir prefix=/usr sysconfdir=/etc install
+  make -C "$_pkgbase" DESTDIR="$pkgdir" install
 
-  # For /etc/ld.so.conf.d, FS#41731
-  install -Dm644 julia.conf "$pkgdir/etc/ld.so.conf.d/julia.conf"
+  # Documentation and examples are in the julia-docs package
+  rm -rf "$pkgdir/usr/share/"{doc,julia/doc,julia/examples}
 
-  # Remove doc files
-  rm -r $pkgdir/usr/share/doc/julia
-
-  # Install license
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgbase/LICENSE.md"
+  install -Dm644 "$_pkgbase/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgbase/LICENSE.md"
 
   # Remove files that don't belong into the package
   find ${pkgdir} -name ".gitignore" -delete
@@ -94,23 +101,21 @@ package_julia-git() {
 
 package_julia-git-docs() {
   arch=('any')
-  pkgdesc+=" (Documentation and examples)"
+  pkgdesc='Documentation and examples for Julia'
+  depends=('julia')
   provides=('julia-docs')
   conflicts=('julia-docs' 'julia-git-doc')
 
-  # Source files and examples"
   install -d "$pkgdir/usr/share/doc"
-
-  cd "$srcdir/$_pkgbase"
-  cp -rv "doc" "$pkgdir/usr/share/doc/$_pkgbase"
-  cp -rv "examples" "$pkgdir/usr/share/doc/$_pkgbase/examples"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  cp -r "$_pkgbase/doc" "$pkgdir/usr/share/doc/$_pkgbase"
+  cp -r "$_pkgbase/examples" "$pkgdir/usr/share/doc/$_pkgbase/examples"
+  install -Dm644 "$_pkgbase/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgbase/LICENSE.md"
 
   # Remove double
-  rm -rv "$pkgdir/usr/share/doc/julia/man/"
+  rm -rf "$pkgdir/usr/share/doc/julia/man/"
 
   # Installing built docs. Adjust it accordingly to your changes in build()
-  cd doc/_build
+  cd "$_pkgbase/doc/_build"
   cp -dpr --no-preserve=ownership html $pkgdir/usr/share/doc/julia/
   #install -D -m644 man/julialanguage.1 $pkgdir/usr/share/man/man1/julialanguage.1
   #install -D -m644 texinfo/JuliaLanguage.info $pkgdir/usr/share/info/julialanguage.info
