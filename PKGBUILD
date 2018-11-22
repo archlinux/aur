@@ -5,7 +5,7 @@ pkgver=r268.23d9e4a
 pkgrel=1
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
-makedepends=("meson" "scdoc" "wayland-protocols")
+makedepends=("meson" "scdoc" "wayland-protocols" "git")
 depends=(
 	"pango"
 	"cairo"
