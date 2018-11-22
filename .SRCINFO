@@ -1,0 +1,22 @@
+pkgbase = formatter-git
+	pkgdesc = A simple device formatter built for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/djaler/formatter
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = cmake-modules-elementary-git
+	makedepends = git
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = debhelper
+	provides = formatter
+	conflicts = formatter
+	source = git+https://github.com/djaler/formatter.git
+	md5sums = SKIP
+
+pkgname = formatter-git
+
