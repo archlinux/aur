@@ -2,7 +2,7 @@
 pkgname=python-dbxfs
 _pkgname=dbxfs
 pkgver=1.0.39
-pkgrel=3
+pkgrel=4
 pkgdesc="User-space file system for Dropbox"
 arch=('i686' 'x86_64')
 url="https://github.com/rianhunter/dbxfs"
@@ -18,6 +18,7 @@ depends=('fuse2'
         'python-keyrings-alt>=3.1' #'python-keyrings-alt<4'
         'python-sentry_sdk>=0.3') #'python-sentry_sdk<1'
 makedepends=('python-setuptools')
+provides=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.patch")
 md5sums=('c128a0dbf1efeeb83cd566af7dcae08d'
@@ -31,5 +32,5 @@ prepare() {
 
 package() {
 	cd "$_pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/"
+	python setup.py install --root="$pkgdir/" --optimize=1
 }
