@@ -2,14 +2,16 @@
 # Contributor: Jaume <jaume@delclos.com>
 
 pkgname=rgbds-git
-pkgver=0.3.5.r23.g8744d36
+pkgver=0.3.7.r34.g5cb6c4a
 pkgrel=1
 pkgdesc="Rednex GameBoy Development System (development version)"
 arch=('i686' 'x86_64')
 url="https://github.com/rednex/rgbds/"
 license=('MIT')
-depends=('libpng')
+provides=('rgbds')
+conflicts=('rgbds')
 makedepends=('git')
+depends=('libpng')
 source=($pkgname::"git+https://github.com/rednex/rgbds")
 md5sums=("SKIP")
 
