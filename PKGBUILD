@@ -4,7 +4,7 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-x32
-_srcver=4.19.2-arch1
+_srcver=4.19.4-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -26,7 +26,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'ce0ebaba9614895e681195cec833acabe75f66330611ff0b01bc8f8cce2c01b1'
+            '0432c94268beab9d4279cd73b7a99888cbc84c14a7f569b8e62f446e05c7ac7b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -77,12 +77,17 @@ _package() {
   cd $_srcname
 
   msg2 "Installing boot image..."
-  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
+  local image="$pkgdir/boot/vmlinuz-$pkgbase"
+  install -Dm644 "$(make -s image_name)" "$image"
 
   msg2 "Installing modules..."
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
   mkdir -p "$modulesdir"
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  ln -sr "$image" "$modulesdir/vmlinuz"
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
