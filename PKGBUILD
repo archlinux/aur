@@ -3,20 +3,21 @@
 
 pkgname=gam
 pkgver=4.65
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily."
 arch=('any')
 url="https://github.com/jay0lee/GAM"
 license=('Apache')
 depends=(
     'python2'
+    'python2-gdata'
     'python2-google-api-python-client'
+    'python2-google-auth'
     'python2-google-auth-httplib2'
     'python2-httplib2'
-    'python2-simplejson'
-    'python2-gdata'
-    'python2-google-auth'
+    'python2-oauth2client'
     'python2-passlib'
+    'python2-simplejson'
 )
 
 source=(
