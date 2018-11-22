@@ -2,7 +2,7 @@
 # Contributor: scrawler@gmail.com
 
 pkgname=freeplane
-pkgver=1.6.15
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('unzip')
 depends=('java-runtime>7' 'desktop-file-utils')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_bin-${pkgver}.zip
         freeplane.desktop freeplane.run)
-sha256sums=('92681853bd60745426ebbc8c77c6292aa3962fa46c61bc73f66b0e0551fdce73'
+sha256sums=('37fd272765a4890622a56a612726c0a296dc6ac7036f46d7bc608e9979ce963c'
             'cae931ab1e7747e1b090a13d11c4cc0e0cb5ae62ab342f997c885973df24e4e7'
             'f8b95860fb87893b020eb2e1780a34ff4d9653ba553637a6471f6cb8bbdd4133')
 package() {
@@ -26,15 +26,16 @@ package() {
   mkdir -p "${pkgdir}/usr/share/freeplane/fwdir/perms"
   mkdir -p "${pkgdir}/usr/share/freeplane/fwdir/condperm"
   mkdir -p "${pkgdir}/usr/share/freeplane/scripts"
-  mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images"
+  mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images/{doc,mouse}"
+  mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images/other/workspace/output}"
 
   cd ${srcdir}/${pkgname}-${pkgver}
   # Copy plugins
   find plugins -type f | while read file ; do
     install -Dm644 "${file}" "${pkgdir}/usr/share/freeplane/${file}"
   done
-  # Copy docs
-  find doc -type f | while read file; do
+  # Copy docs (excluding API JavaDocs)
+  find doc -type f ! -path "*api*"| while read file; do
     install -Dm644 "${file}" "${pkgdir}/usr/share/freeplane/${file}"
   done
   # Copy various

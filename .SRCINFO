@@ -1,6 +1,6 @@
 pkgbase = freeplane
 	pkgdesc = A Java mindmapping tool
-	pkgver = 1.6.15
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = http://freeplane.sourceforge.net
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = freeplane
 	makedepends = unzip
 	depends = java-runtime>7
 	depends = desktop-file-utils
-	source = http://downloads.sourceforge.net/sourceforge/freeplane/freeplane_bin-1.6.15.zip
+	source = http://downloads.sourceforge.net/sourceforge/freeplane/freeplane_bin-1.7.2.zip
 	source = freeplane.desktop
 	source = freeplane.run
-	sha256sums = 92681853bd60745426ebbc8c77c6292aa3962fa46c61bc73f66b0e0551fdce73
+	sha256sums = 37fd272765a4890622a56a612726c0a296dc6ac7036f46d7bc608e9979ce963c
 	sha256sums = cae931ab1e7747e1b090a13d11c4cc0e0cb5ae62ab342f997c885973df24e4e7
 	sha256sums = f8b95860fb87893b020eb2e1780a34ff4d9653ba553637a6471f6cb8bbdd4133
 
