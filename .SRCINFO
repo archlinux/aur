@@ -1,0 +1,16 @@
+pkgbase = rust-mrustc
+	pkgdesc = Rust built with mrustc
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = https://github.com/thepowersgang/mrustc
+	arch = x86_64
+	license = MIT
+	depends = mrustc-git
+	provides = rust=$pkgver
+	source = https://static.rust-lang.org/dist/rustc-1.19.0-src.tar.gz
+	source = openssl.patch
+	sha256sums = 15231f5053fb72ad82be91f5abfd6aa60cb7898c5089e4f1ac5910a731090c51
+	sha256sums = 44d51a440ec2a0a052a64088fcbc95ccf6af62ea73feb76cc7269e2d0ff8f206
+
+pkgname = rust-mrustc
+
