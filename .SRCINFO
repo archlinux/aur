@@ -1,0 +1,35 @@
+pkgbase = edex-ui
+	pkgdesc = A science fiction desktop running everywhere. Awesome.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/GitSquared/edex-ui
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = npm
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libappindicator-gtk3
+	depends = libappindicator-sharp
+	provides = edex-ui
+	source = https://github.com/GitSquared/edex-ui/archive/v1.0.1.tar.gz
+	source = package.json.patch
+	sha256sums = 18840ed0b73806d70a9e33a9171f811245c692bba8c02aa44334c1ca5f9a14c7
+	sha256sums = 66752ffc06b44692892967689e320af41dcd1365cdfe578cddb3b6d1123888f2
+
+pkgname = edex-ui
+
