@@ -1,0 +1,12 @@
+pkgbase = pantheon
+	pkgdesc = Pantheon is an Apache 2.0 licensed, MainNet compatible, Ethereum client written in Java.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://pegasys.tech/
+	arch = any
+	license = Apache
+	depends = java-runtime>=8
+	source = https://bintray.com/consensys/pegasys-repo/download_file?file_path=pantheon-0.8.2.zip
+
+pkgname = pantheon
+
