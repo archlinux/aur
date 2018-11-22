@@ -1,6 +1,6 @@
 pkgbase = dqlite-git
 	pkgdesc = Distributed SQLite
-	pkgver = r295.d5d2584
+	pkgver = r336.9d8ea2e
 	pkgrel = 1
 	url = https://github.com/CanonicalLtd/dqlite
 	arch = x86_64

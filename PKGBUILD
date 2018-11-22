@@ -1,7 +1,7 @@
 # Maintainer: Thomas Hipp <thomashipp at gmail dot com>
 pkgname=dqlite-git
 _pkgname=dqlite
-pkgver=r308.dbb2203
+pkgver=r336.9d8ea2e
 pkgrel=1
 pkgdesc="Distributed SQLite"
 arch=('x86_64')
@@ -33,4 +33,5 @@ build() {
 package() {
 	cd "$_pkgname"
 	make DESTDIR="$pkgdir/" install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
