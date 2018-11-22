@@ -1,19 +1,19 @@
 pkgbase = emoji-keyboard-edam-git
 	pkgdesc = Virtual keyboard-like emoji picker for Linux (edam's fork).
 	pkgver = r38.af418a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/edam/emoji-keyboard
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-gobject
-	depends = libappindicator-gtk3
 	depends = python-evdev
 	depends = python-xlib
-	provides = emoji-keyboard-edam
-	conflicts = emoji-keyboard-edam
+	optdepends = libappindicator-gtk3: app indicator support (e.g. Unity, KDE, Systray)
+	provides = emoji-keyboard
+	conflicts = emoji-keyboard
+	conflicts = emoji-keyboard-git
 	source = emoji-keyboard-edam::git+https://github.com/edam/emoji-keyboard.git#branch=master
 	md5sums = SKIP
 

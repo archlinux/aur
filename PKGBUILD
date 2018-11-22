@@ -1,27 +1,22 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname='emoji-keyboard-edam-git'
 pkgver=r38.af418a0
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual keyboard-like emoji picker for Linux (edam's fork)."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/edam/emoji-keyboard"
 license=('GPL3')
-groups=()
-depends=('python-gobject' 'libappindicator-gtk3' 'python-evdev' 'python-xlib')
+depends=('python-gobject' 'python-evdev' 'python-xlib')
 makedepends=('git' 'python-setuptools')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
+optdepends=('libappindicator-gtk3: app indicator support (e.g. Unity, KDE, Systray)')
+provides=('emoji-keyboard')
+conflicts=('emoji-keyboard' 'emoji-keyboard-git')
 install=
 source=("${pkgname%-git}::git+https://github.com/edam/emoji-keyboard.git#branch=master")
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-# Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
