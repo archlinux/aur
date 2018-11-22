@@ -3,10 +3,11 @@ pkgbase = goldendict-enruen-content
 	pkgver = 1.1
 	pkgrel = 1
 	url = http://www.goldendict.org
+	install = goldendict-enruen-content.install
 	arch = any
 	license = GPL2
 	optdepends = goldendict: for using this dictionary,
-	optdepends = goldendict-gt5-git: for using this dictionary
+	optdepends = goldendict-qt5-git: for using this dictionary
 	source = http://downloads.sourceforge.net/goldendict/enruen-content-1.1.tar.bz2
 	md5sums = 4db1fd87067c603750c2f2741b90a359
 
