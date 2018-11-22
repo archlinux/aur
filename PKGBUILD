@@ -6,21 +6,19 @@
 # ==> WARNING: Package contains reference to $srcdir
 # usr/bin/iqtree
 
-pkgname=iqtree-latest
-pkgver=1.7
-pkgrel=2
+pkgname=iqtree
+pkgver=1.6.8
+pkgrel=1
 pkgdesc="Efficient phylogenomic software by maximum likelihood; multicore version (OMP)"
 arch=(x86_64)
 url="http://www.iqtree.org/"
 license=('GPL2')
 depends=('cmake' 'eigen' 'glibc' 'libstdc++5' 'zlib')
-# TODO: Remove beta2 string when possible.
-source=("https://github.com/Cibiv/IQ-TREE/archive/v${pkgver}-beta2.tar.gz")
-md5sums=('78f27d31d7a6a7f300793bed13237649')
+source=("https://github.com/Cibiv/IQ-TREE/archive/v${pkgver}.tar.gz")
+md5sums=('79fc917dce08677b1b4c1f3bc6aa2390')
 
 build() {
-  # TODO: Remove beta2 string when possible.
-  cd IQ-TREE-${pkgver}-beta2
+  cd IQ-TREE-${pkgver}
   mkdir -p build
   cd build
   cmake -DIQTREE_FLAGS=omp ..
@@ -28,7 +26,6 @@ build() {
 }
 
 package() {
-  # TODO: Remove beta2 string when possible.
-  cd IQ-TREE-${pkgver}-beta2
+  cd IQ-TREE-${pkgver}
   install -D -m 755 build/iqtree ${pkgdir}/usr/bin/iqtree
 }
