@@ -1,11 +1,12 @@
 
 # Contributor: chenxing <cxcxcxcx AT gmail DOT com>
 # Contributor: Michael Burkhard <Michael DOT Burkhard AT web DOT de>
-# Maintainer: alexmo82 <25396682 AT live DOT it>
+# Contributor: alexmo82 <25396682 AT live DOT it>
+# Maintainer: jooch <jooch AT gmx DOT com>
 
 pkgname=freefilesync
 pkgver=10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="http://www.freefilesync.org/"
