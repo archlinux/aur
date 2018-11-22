@@ -1,32 +1,40 @@
-# Maintainer: nariox <pedro(dot)nariyoshi(at)gmail(dot)com>
+# Maintainer: enno <elo-archlinux(dot)nerdworks.de>
 
-pkgname=rtl8821cu-dkms-git
+pkgname=rtl8821cu-raspberrypi-git
 _pkgbase=rtl8821cu
-pkgver=5.2.5.3_24795.20171031.r15.g0c0f555
+pkgver=5.2.5.3_24795.20171031.r18.g0278eaa
 pkgrel=1
 pkgdesc="rtl8821cu chipset driver"
-arch=('i686' 'x86_64')
+arch=('armv7h')
 url="https://github.com/whitebatman2/rtl8821CU"
 license=('GPL2')
-depends=('dkms' 'bc')
-makedepends=('git')
+depends=('bc')
+makedepends=('git' 'linux-raspberrypi-headers')
 conflicts=("${_pkgbase}")
-source=("git+https://github.com/whitebatman2/rtl8821CU"
-        'dkms.conf')
-sha256sums=('SKIP'
-	    '52eabdd7b4aaecaf3489877d79758129c39703110b803db70872d19b2e88947e')
+source=("git+https://github.com/whitebatman2/rtl8821CU")
+install="${_pkgbase}.install"
+sha256sums=('SKIP')
 pkgver() {
-    cd ${srcdir}/rtl8821CU
+    cd rtl8821CU
     printf '%s.r%s.g%s' '5.2.5.3_24795.20171031' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-        cd ${srcdir}/rtl8821CU
-        mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-        cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-        cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-        # Set name and version
-        sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
-                        -e "s/@PKGVER@/${pkgver}/" \
-                        -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+prepare() {
+        cd rtl8821CU
+        sed \
+		-e "s/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/" \
+		-e "s/CONFIG_PLATFORM_ARM_RPI = n/CONFIG_PLATFORM_ARM_RPI = y/" \
+                -i Makefile
 }
+
+build() {
+        cd rtl8821CU
+	make
+}
+
+package() {
+	mkdir -p "$pkgdir/usr/lib/modules/$(uname -r)/kernel/drivers/net/wireless"
+        cd rtl8821CU
+	install -p -m 644 8821cu.ko "$pkgdir/usr/lib/modules/$(uname -r)/kernel/drivers/net/wireless/8821cu.ko"
+}
+
