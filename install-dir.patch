@@ -1,0 +1,40 @@
+diff --git a/Source/CMake/BsEngineConfig.h.in b/Source/CMake/BsEngineConfig.h.in
+index 01a7db342..ff99fdedd 100644
+--- a/Source/CMake/BsEngineConfig.h.in
++++ b/Source/CMake/BsEngineConfig.h.in
+@@ -6,18 +6,9 @@
+ #define BS_PHYSICS_MODULE "@PHYSICS_MODULE_LIB@"
+ 
+ /** Path to the framework root when files haven't been packaged yet (e.g. running from debugger). */
+-static constexpr const char* RAW_APP_ROOT = "@APP_ROOT_DIR@/"; 
++static constexpr const char* RAW_APP_ROOT = "@CMAKE_INSTALL_PREFIX@/share/bsf/";
+ 
+ /** Secondary search path to use when looking for built-in assets (after the RAW_APP_ROOT). */
+ static constexpr const char* SECONDARY_APP_ROOT = "@SECONDARY_APP_ROOT_DIR@/"; 
+ 
+-/** Path to the binaries when files haven't been packaged yet (e.g. running from debugger). */
+-#if BS_CONFIG == BS_CONFIG_DEBUG
+-static constexpr const char* BINARIES_PATH = "@CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG@";
+-#elif BS_CONFIG == BS_CONFIG_RELWITHDEBINFO
+-static constexpr const char* BINARIES_PATH = "@CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO@";
+-#elif BS_CONFIG == BS_CONFIG_MINSIZEREL
+-static constexpr const char* BINARIES_PATH = "@CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL@";
+-#elif BS_CONFIG == BS_CONFIG_RELEASE
+-static constexpr const char* BINARIES_PATH = "@CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE@";
+-#endif
++static constexpr const char* BINARIES_PATH = "@CMAKE_INSTALL_PREFIX@/lib/";
+diff --git a/Source/CMakeLists.txt b/Source/CMakeLists.txt
+index 02ba71c5a..ebaac189c 100644
+--- a/Source/CMakeLists.txt
++++ b/Source/CMakeLists.txt
+@@ -193,8 +193,8 @@ check_and_update_builtin_assets(bsfCompiled ${BSF_SOURCE_DIR}/../Data Data ${COM
+ 
+ ## Install
+ install(
+-	DIRECTORY ../Data
+-	DESTINATION bin/
++	DIRECTORY ../Data/
++	DESTINATION share/bsf/
+ 	PATTERN "../Data/Raw" EXCLUDE
+ 	PATTERN ".version" EXCLUDE
+ 	PATTERN ".reqversion" EXCLUDE

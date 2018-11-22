@@ -1,0 +1,7 @@
+*~
+bsf/
+src/
+pkg/
+
+*.zip
+*.pkg.tar*
