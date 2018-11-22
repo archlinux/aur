@@ -1,31 +1,31 @@
-# Maintainer: Jonathan Steel <jsteel at aur.archlinux.org>
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Contributor: Jonathan Steel <jsteel at aur.archlinux.org>
 # Contributor: Sebastian Wolf < fatmike303 at gmail dot com >
-# Maintainer: Guilherme Calé <gui@cabritacale.eu>
+# Contributor: Guilherme Calé <gui@cabritacale.eu>
 
 pkgname=fs-uae
 pkgver=2.8.3
-pkgrel=1
-pkgdesc="Focuses on emulating Amiga games using the accurate emulation code from WinUAE"
+pkgrel=2
+pkgdesc='An Amiga emulator based on UAE/WinUAE with a focus on emulating games'
 arch=('i686' 'x86_64')
-url="http://fs-uae.net"
-license=('GPL')
-depends=('sdl2' 'openal' 'mesa' 'freetype2' 'gtk-update-icon-cache' 'glew'
-         'desktop-file-utils' 'shared-mime-info' 'libmpeg2')
-makedepends=('zip')
-install=$pkgname.install
-source=($url/stable/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('bb9096904619db0202370b1cc4dd1b55')
+url='https://fs-uae.net/'
+license=('GPL2')
+depends=('sdl2' 'glib2' 'libpng' 'openal' 'libx11' 'libmpeg2' 'zlib'
+         'shared-mime-info' 'desktop-file-utils' 'hicolor-icon-theme')
+makedepends=('freetype2' 'gettext' 'libxi' 'mesa' 'zip')
+source=("https://fs-uae.net/stable/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('e2d5414d07c8bd5b740716471183bc5516bec0ae2989449c3026374dc4b86292')
 
 build() {
-  cd $pkgname-$pkgver
-
-  ./configure --prefix=/usr
-
-  make 
+    cd "${pkgname}-${pkgver}"
+    
+    ./configure --prefix='/usr' --disable-jit
+    
+    make 
 }
 
 package() {
-  cd $pkgname-$pkgver
-
-  make DESTDIR="$pkgdir" install
+    cd "${pkgname}-${pkgver}"
+    
+    make DESTDIR="$pkgdir" install
 }
