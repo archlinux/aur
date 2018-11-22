@@ -1,6 +1,6 @@
 pkgbase = gnome-calendar-linuxmint
 	pkgdesc = Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. With Linux Mint patches
-	pkgver = 3.30.0
+	pkgver = 3.30.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Calendar
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = gnome-calendar-linuxmint
 	depends = libdazzle
 	provides = gnome-calendar
 	conflicts = gnome-calendar
-	source = git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=63ed4c48c84291ca70c747d6078090f8263088bf
+	source = git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=262dd7e3b03b3eacf3b62c616005119b64e0d35e
 	source = null-icaltime.diff
 	source = add_cinnamon_settings_online_support.patch
 	sha256sums = SKIP
