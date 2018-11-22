@@ -1,8 +1,8 @@
 # Maintainer: Jason Staten <jstaten07 gmail>
-# PKGBUILD Source: https://github.com/statianzo/PKGBUILD-cloud66-toolbelt
+# PKGBUILD Source: https://sr.ht/~statianzo/PKGBUILD-cloud66-toolbelt
 
 pkgname=cloud66-toolbelt
-pkgver=0.1.54
+pkgver=0.1.63
 pkgrel=1
 pkgdesc='Cloud66 Toolbelt'
 url='https://help.cloud66.com/toolbelt/toolbelt-introduction'
@@ -12,8 +12,8 @@ depends=()
 makedepends=()
 optdepends=()
 source=("http://downloads.cloud66.com/cx/cx_${pkgver}_linux_amd64.tar.gz")
-md5sums=('553004e455941138197c55a6475b0d96')
-sha256sums=('6175ba2dd484776cfb74f79f7f6dabff3e51f4ac6335655115df8e09d7a81918')
+md5sums=('dc1a2f1f917ff71a156974d25783cf8a')
+sha256sums=('202655d87452c1bb21a672036fcdd6a501ec6dfb9cff4c004848018c91104192')
 
 package() {
   cd "${srcdir}/cx_${pkgver}_linux_amd64/"
