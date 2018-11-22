@@ -3,7 +3,7 @@
 pkgname=caffe2-git
 _srcname=pytorch
 pkgver=0.8.2.r14826.gf79fb58744
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version)'
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ depends=(
 )
 makedepends=('git' 'cmake')
 provides=('caffe2' 'caffe2-cpu-git')
-conflicts=('caffe2' 'caffe2-cpu-git')
+conflicts=('caffe2' 'caffe2-cpu-git' 'python-pytorch')
 replaces=('caffe2-cpu-git')
 options=('!emptydirs')
 source=(
