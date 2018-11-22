@@ -1,6 +1,6 @@
 pkgbase = unity-editor-beta-language-ko
 	pkgdesc = Korean Language Pack (Preview)
-	pkgver = 2018.3.0b9
+	pkgver = 2018.3.0b11
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = unity-editor-beta-language-ko
 	depends = unity-editor-beta
 	options = !strip
 	source = https://new-translate.unity3d.jp/v1/live/54/2018.3/ko
-	sha1sums = f9bbdd24e3e2b495cbd06d335393eb18b0f637bf
+	sha1sums = 240b07c9b52464d82ef113a284ae499a1628a0ab
 
 pkgname = unity-editor-beta-language-ko
 
