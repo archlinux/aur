@@ -3,7 +3,7 @@
 pkgname=freefilesync-bin
 _pkgname=freefilesync
 pkgver=10.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
 url="https://www.freefilesync.org/"
@@ -20,9 +20,9 @@ source=(
 )
 sha256sums=(
     "dd1461f846ff71d66d418f26c59120ee6d895f2f01caaf99fc31838f69e8c8fc"
-    "461f7deb9245bbcaf281160945ec800e54a703068220d0d239de6dddccad0de3"
+    "d46ae777a53c6e1d8e4baa088af4ad2eb798ff9064c2b4bc3768b7192d400eea"
     "b2fac3b8c0badfbbbcf605ecad5b184f2c9918bd0dd14596e6c43df3f2a76a30"
-    "36a6b962cb5c1cd2c453d1bddaab915b1764614b207ae7f5b3694acf5740940c"
+    "11315b1735c4f6af91f3aaaf3b37800c54ce24f10a3e674d94f88048605e4da8"
     "23c68af45d34f41fdb76886067b71af4dd3fe14f2dd60f73193b2052dc333bf6"
 )
 DLAGENTS=("https::/usr/bin/curl -fLC - --retry 5 --retry-delay 3 -A Mozilla -o %o %u")
