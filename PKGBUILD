@@ -2,8 +2,8 @@
 # Contributor: Stijn Seghers (Procrat) <stijnseghers at gmail dot com>
 
 pkgname=pylama
-pkgver=7.4.3
-pkgrel=2
+pkgver=7.6.6
+pkgrel=1
 pkgdesc="Code audit tool for python"
 arch=('any')
 url="https://github.com/klen/pylama"
@@ -12,7 +12,7 @@ depends=('python-pycodestyle>=2.3.1' 'python-pydocstyle>=2.0.0' 'python-pyflakes
 optdepends=('pylama_pylint: pylint support'
             'python-radon: radon support')
 source=("https://github.com/klen/pylama/archive/$pkgver.tar.gz")
-sha256sums=('ec9a1bcf4c270e8cfeb1bce3c7f813465b8eb7baf88283df7ec8efa05463dda8')
+sha256sums=('e56060c68ab89cc746e10aa357168decbdb187e0d4714a9f5c670ee1e6413c4e')
 
 package() {
   cd "$pkgname-$pkgver"
