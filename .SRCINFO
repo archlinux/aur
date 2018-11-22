@@ -1,12 +1,12 @@
 pkgbase = station
 	pkgdesc = The one app to rule them all
-	pkgver = 1.29.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://getstation.com/
 	arch = x86_64
 	license = MIT
-	source = https://github.com/getstation/desktop-app-releases/releases/download/1.29.0/browserX-1.29.0-x86_64.AppImage
-	sha256sums = d469925a5e0c9ed7d4fa35469d5c97a4ef7af92023d977ea2565867bfb2f54c3
+	source = https://github.com/getstation/desktop-app-releases/releases/download/1.30.0/browserX-1.30.0-x86_64.AppImage
+	sha256sums = e4e97bdf8182c15da9d61faafea54dead04581090ad9857b790e30eaef23ef01
 
 pkgname = station
 
