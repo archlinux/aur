@@ -1,7 +1,7 @@
 # Maintainer: Aniket-Pradhan aniket17133@iiitd.ac.in
 
 pkgname=lsd
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A Cheap Psychedelic Simulator on Linux"
 arch=('i686' 'x86_64')
@@ -13,4 +13,4 @@ package() {
   install -D -t "$pkgdir/usr/bin" "$srcdir/lsd"
 }
 
-md5sums=('5be5254648451a818ab6ec6acd1f0efa')
+md5sums=('e067f14c79027a16a60ead31e116a45d')

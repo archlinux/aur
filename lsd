@@ -1,12 +1,19 @@
 #!/bin/bash
 
-#Global Variables
-rows=20;
-width=100;
+# Global Variables
+
+# Setting rows and width equal to the terminal size.
+
+# Decrementing $rows, as more number of rows cause the screen to scroll. Which we don't want.
+rows=`tput lines`;
+rows=`expr $rows - 1`;
+
+width=`tput cols`;
+
 widthOffset=0;
 cringe=false;
 
-#	Initial clear
+# Initial clear
 printf "\033c"
 
 # Take the user parameters. 
