@@ -9,7 +9,7 @@ pkgdesc='Geographic Information System (GIS) that supports vector, raster & data
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('qt5-tools' 'qt5-script' 'qtkeychain' 'qca-qt5' 'qt5-webkit' 'qt5-3d' 'qt5-serialport' 'proj' 'geos' 'sqlite' 'python-gdal' 'python-owslib' 'python-future' 'python-sip' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments' 'qwtpolar' 'expat' 'python-qscintilla-qt5' 'spatialindex' 'gsl' 'libzip' 'sip')
+depends=('qt5-tools' 'qt5-script' 'qtkeychain' 'qca-qt5' 'qt5-webkit' 'qt5-3d' 'qt5-serialport' 'proj' 'geos' 'sqlite' 'python-gdal' 'python-owslib' 'python-future' 'python-sip' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments' 'qwtpolar' 'expat' 'python-qscintilla-qt5' 'spatialindex' 'gsl' 'libzip' 'sip' 'exiv2')
 makedepends=('git' 'cmake' 'txt2tags')
 optdepends=('grass: for GRASS providers and plugin (6 or 7)'
 #            'gsl: for georeferencer'
