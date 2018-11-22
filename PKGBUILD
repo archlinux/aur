@@ -3,11 +3,11 @@
 
 pkgname=brisk-menu-git
 _gitname=brisk
-pkgver=v0.5.0.r23.g6892d32
+pkgver=v0.5.0.r25.ga28e660
 pkgrel=1
 pkgdesc='Modern, efficient menu for the MATE Desktop Environment - git version'
 arch=('i686' 'x86_64')
-url='https://github.com/solus-project/brisk-menu'
+url='https://github.com/getsolus/brisk-menu'
 license=('GPL2')
 groups=('mate')
 depends=('mate-panel' 'libnotify')
@@ -17,7 +17,7 @@ optdepends=('mozo: for menu edition'
 options=('!libtool' '!emptydirs')
 provides=('brisk-menu')
 conflicts=('brisk-menu')
-source=(git+https://github.com/solus-project/brisk-menu.git)
+source=(git+https://github.com/getsolus/brisk-menu.git)
 sha1sums=('SKIP')
 
 pkgver() {
