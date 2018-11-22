@@ -1,15 +1,15 @@
 pkgbase = optimus-manager
 	pkgdesc = Management utility to handle GPU switching for Optimus laptops.
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.3
+	pkgrel = 1
 	url = https://github.com/Askannz/optimus-manager
 	arch = any
-	license = custom:MIT
+	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = bbswitch
 	depends = xorg-xrandr
-	source = git+https://github.com/Askannz/optimus-manager.git#tag=v0.2
+	source = git+https://github.com/Askannz/optimus-manager.git#tag=v0.3
 	sha256sums = SKIP
 
 pkgname = optimus-manager
