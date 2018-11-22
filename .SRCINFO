@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgver = 4.19.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2

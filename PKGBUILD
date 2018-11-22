@@ -63,13 +63,13 @@ _rev_override="n"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgbase=linux-clear
 _major=4.19
 _minor=3
-pkgver=${_major}.${_minor}
 _srcname=linux-${_major}
-pkgrel=1
 _clr=${_major}.2-662
+pkgbase=linux-clear
+pkgver=${_major}.${_minor}
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -201,12 +201,17 @@ _package() {
     cd ${_srcname}
 
     msg2 "Installing boot image..."
-    install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
+    local image="$pkgdir/boot/vmlinuz-$pkgbase"
+    install -Dm644 "$(make -s image_name)" "$image"
 
     msg2 "Installing modules..."
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
     mkdir -p "$modulesdir"
     make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+
+    # systemd expects to find the kernel here to allow hibernation
+    # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+    ln -sr "$image" "$modulesdir/vmlinuz"
 
     # a place for external modules,
     # with version file for building modules and running depmod from hook
