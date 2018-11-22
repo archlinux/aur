@@ -1,7 +1,35 @@
 <a name="unreleased"></a>
 ## [Unreleased](https://github.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.3...HEAD)
+[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.4...HEAD)
 
+
+<a name="2.1.4"></a>
+## [2.1.4](https://github.com/langurmonkey/gaiasky/tree/2.1.3) (2018-11-22)
+[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.3...2.1.4)
+
+### Bug Fixes
+
+- german translation and locale initialisation [#320](https://github.com/langurmonkey/gaiasky/issues/320) 
+- do not preselect default dataset, only base data 
+- sizing of download manager window 
+- data download url log message 
+- null pointer when updating scroll focus, slash at end 
+- multiple scroll focus objects [#319](https://github.com/langurmonkey/gaiasky/issues/319) 
+- octree generator 
+- emission shader code 
+### Build system
+
+- add xorg-xrandr as dep in aur pkg 
+### Features
+
+- improve usability of download manager 
+- ensure correct java version before building 
+- dataset versioning [#318](https://github.com/langurmonkey/gaiasky/issues/318) [#316](https://github.com/langurmonkey/gaiasky/issues/316) 
+- STIL provider adds HIP indices 
+- name support and more for STIL loader 
+- script to query HIP names in simbad 
+- add optional output folder to csv process 
+- script to process dr2 csv files 
 
 <a name="2.1.3"></a>
 ## [2.1.3](https://github.com/langurmonkey/gaiasky/tree/2.1.2-vr) (2018-10-31)
