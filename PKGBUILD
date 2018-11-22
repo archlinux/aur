@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-dev
-pkgver=0.11.7
+pkgver=0.11.9
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -27,9 +27,9 @@ install="${pkgname%-dev}.install"
 source=("${pkgname%-dev}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/dev/linux/${pkgname%-dev}_linux_v${pkgver}-dev.tar.xz"
         "${pkgname%-dev}.sh"
         "${pkgname%-dev}.csh")
-sha256sums=('63cb1a86c636c31feeb372c3b0eee19d2e816994e5193a800c56c58249358d13'
-            '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
-            '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
+sha256sums=("202d3bfd0a9d1e0cd5175d8b6cfb23301c85a26b9de8314e30a40c1f18c6d4e4"
+            "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
+            "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f")
 
 build() {
   cd "${srcdir}/${pkgname%-dev}"
