@@ -1,3 +1,11 @@
+4.4.8 (2018-11-21 15:07:41)
+
+    Fixes a decompilation issue where a function call may disappear when used in an empty if / else statement,
+    Fixes an issue with the pseudo-code view after a rebase operation,
+    Initial support for 8 and 16 bits CPUs (but Intel 16 bits is NOT yet supported),
+    Initial support for MOS 6502 / 6510 CPU,
+    Initial support for C64 PRG files, and D64 disk images.
+
 4.4.7 (2018-11-13 21:09:39)
 
     Fixes an issue on some systems with empty windows.

@@ -1,21 +1,21 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_org>
 
-pkgname='hopper'
-_pkgname='hopperv4'
-pkgver='4.4.6'
-pkgrel='1'
-pkgdesc='Reverse engineering tool that lets you disassemble, decompile and debug your applications'
-arch=('x86_64')
-url='https://www.hopperapp.com/'
+pkgname=hopper
+_pkgname=hopperv4
+pkgver=4.4.8
+pkgrel=1
+pkgdesc="Reverse engineering tool that lets you disassemble, decompile and debug your applications"
+arch=(x86_64)
+url="https://www.hopperapp.com/"
 license=('Commercial')
 depends=('hicolor-icon-theme' 'libbsd' 'python2' 'qt5-base')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-${pkgver}-Linux.pkg.tar.xz"
         'LICENSE')
-sha1sums=('11acba0ed439feddbb5cc30091b9c98d1110c7d0'
+sha1sums=('ef4c1e82ecbb80f88cf5507921bc3d86a76002df'
           'c3f410d29524eb02a8bf3dc1b29aaeb82b1844e6')
-changelog='ChangeLog'
+changelog=ChangeLog
 
 package() {
   # Copy package content
