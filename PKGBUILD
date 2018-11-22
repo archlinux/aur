@@ -1,12 +1,13 @@
 # Maintainer: Anatol Pomozov <anatol dot pomozov at gmail>
 
 pkgname=adb-sync-git
-pkgver=r22.861eb4b
+pkgver=r23.b8813dc
 pkgrel=1
 pkgdesc='A tool to synchronize files between a PC and an Android device using the ADB'
 url='https://github.com/google/adb-sync'
 arch=(any)
 depends=(python)
+makedepends=(git)
 license=(Apache)
 source=(git+https://github.com/google/adb-sync)
 sha1sums=('SKIP')
