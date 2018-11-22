@@ -13,7 +13,7 @@ pkgver=0
 pkgrel=1
 url='http://quassel-irc.org'
 license=('GPL')
-arch=('i686' 'x86_64' 'arm')
+arch=('i686' 'x86_64' 'arm' 'aarch64')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'hicolor-icon-theme'
              'knotifyconfig' 'python' 'qca' 'qt5-base' 'qt5-script'
              'qt5-tools' 'qt5-webkit' 'boost')
