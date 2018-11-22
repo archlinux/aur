@@ -1,13 +1,13 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=alchemy-git
-pkgver=r596.93aeeb3
-pkgrel=2
+pkgver=r597.1a4ac99
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Nonorthodox painting software exploring and experimenting with alternative ways of drawing"
 url="http://al.chemy.org/"
 license=('GPL')
 conflicts=('alchemy')
-depends=('sh' 'java-environment=7' 'hicolor-icon-theme' 'libxrender' 'libxcomposite' 'libxtst' 'libxml2')
+depends=('sh' 'java-environment=8' 'hicolor-icon-theme' 'libxrender' 'libxcomposite' 'libxtst' 'libxml2')
 makedepends=('git' 'apache-ant' 'imagemagick')
 source=("${pkgname}::git+https://github.com/karldd/Alchemy.git"
 	"alchemy.desktop"
@@ -21,9 +21,9 @@ pkgver() {
 }
 
 build() {
-export PATH=/usr/lib/jvm/java-7-openjdk/jre/bin/:$PATH
+export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
 	cd ${pkgname}
-	ant
+	ant -Dnb.internal.action.name=build jar
 }
 
 package() {
@@ -36,7 +36,6 @@ package() {
 	echo -e "#!/bin/sh\nexec /opt/alchemy/AlchemyOpenGL" > ${pkgdir}/usr/bin/alchemy-opengl
 	chmod +x ${pkgdir}/usr/bin/*
 	install -dm755 ${pkgdir}/usr/share/doc/alchemy
-	cp -r -t ${pkgdir}/usr/share/doc/alchemy dist/javadoc/*
 	convert res/Alchemy.ico alchemy.png
 	install -Dm644 "alchemy-0.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/alchemy.png"
 	install -Dm644 "alchemy-0.png" "${pkgdir}/usr/share/pixmaps/alchemy.png"

@@ -1,7 +1,7 @@
 pkgbase = alchemy-git
 	pkgdesc = Nonorthodox painting software exploring and experimenting with alternative ways of drawing
-	pkgver = r596.93aeeb3
-	pkgrel = 2
+	pkgver = r597.1a4ac99
+	pkgrel = 1
 	url = http://al.chemy.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = alchemy-git
 	makedepends = apache-ant
 	makedepends = imagemagick
 	depends = sh
-	depends = java-environment=7
+	depends = java-environment=8
 	depends = hicolor-icon-theme
 	depends = libxrender
 	depends = libxcomposite
