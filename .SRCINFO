@@ -1,6 +1,6 @@
 pkgbase = libopenmpt
 	pkgdesc = A cross-platform C++ and C library to decode tracked music files (modules) into a raw PCM audio stream.
-	pkgver = 0.3.12
+	pkgver = 0.3.13
 	pkgrel = 1
 	url = http://lib.openmpt.org/
 	arch = i686
@@ -16,14 +16,14 @@ pkgbase = libopenmpt
 	depends = gcc-libs
 	depends = libvorbis
 	depends = mpg123
-	source = https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.3.12+release.makefile.tar.gz
-	sha256sums = f59f4e6368f0870423903a59cfa096bd8248a8298707167498ce1bc27e69b694
+	source = https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.3.13+release.makefile.tar.gz
+	sha256sums = ffbaebcbb1ccf6d3f68050f994afc6f97d1aa5d9c2505ba7d71e8f28a89e8d47
 
 pkgname = libopenmpt
 
 pkgname = openmpt123
 	pkgdesc = A cross-platform command-line or terminal based module file player.
-	depends = libopenmpt=0.3.12
+	depends = libopenmpt=0.3.13
 	depends = sdl2
 	depends = portaudio
 	depends = libsndfile
@@ -32,14 +32,14 @@ pkgname = openmpt123
 
 pkgname = openmpt123-minimal
 	pkgdesc = A cross-platform command-line or terminal based module file player (with minimal dependencies).
-	depends = libopenmpt=0.3.12
+	depends = libopenmpt=0.3.13
 	depends = sdl2
 	conflicts = openmpt123
 
 pkgname = libopenmpt-modplug
 	pkgdesc = libmodplug compat layer/bridge to libopenmpt
 	install = libopenmpt-modplug.install
-	depends = libopenmpt=0.3.12
+	depends = libopenmpt=0.3.13
 	provides = libmodplug
 	conflicts = libmodplug
 

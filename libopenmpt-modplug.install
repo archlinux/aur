@@ -4,6 +4,4 @@ post_install() {
   echo "   from legacy libmodplug to libopenmpt. The applications linking to"
   echo "   libmodplug need no modifications, the ABI is the same. Not all"
   echo "   features are supported, though."
-  echo "=> This package only provides the library, no header files."
-  echo "   Building new applications against this is not intended."
 }
