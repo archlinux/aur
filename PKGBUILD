@@ -2,7 +2,7 @@
 
 pkgname=nodejs-vmd
 _npmname=vmd
-pkgver=1.33.1
+pkgver=1.34.0
 pkgrel=1
 pkgdesc="Preview markdown files in a separate window. Markdown is formatted exactly the same as on GitHub."
 arch=("any")
@@ -11,7 +11,7 @@ license=('MIT')
 depends=("nodejs")
 makedepends=("npm")
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('b555da4be04305c290e317ef81f84ab0fad04a132c5d9d38bafda2ef9145d1be')
+sha256sums=('d53f1cc73038aa11b0fc8cba1b734272c3cfab7af92c82a1e9d71075e3aa27d3')
 
 package() {
 	npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
