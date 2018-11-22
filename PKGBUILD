@@ -1,4 +1,5 @@
-# Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
+# Maintainer: Chris Lane <aur at chrislane dot com>
+# Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname='emoji-keyboard-edam-git'
 pkgver=r38.af418a0
 pkgrel=2
