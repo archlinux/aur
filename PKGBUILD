@@ -1,5 +1,5 @@
 pkgname=pycharm-community-eap
-_buildver=183.4284.116
+_buildver=183.4284.139
 _pkgver=2018.3
 pkgver=$_pkgver.$_buildver
 pkgrel=1
@@ -12,8 +12,8 @@ license=(Apache)
 depends=(java-environment libdbusmenu-glib)
 provides=(pycharm-community)
 conflicts=(pycharm-community)
-source=("https://download.jetbrains.com/python/pycharm-community-$_buildver.tar.gz"{,.sha256})
-sha256sums=($(cut -f1 -d' ' "pycharm-community-$_buildver.tar.gz.sha256") SKIP)
+source=("https://download.jetbrains.com/python/pycharm-community-$_pkgver.tar.gz"{,.sha256})
+sha256sums=($(cut -f1 -d' ' "pycharm-community-$_pkgver.tar.gz.sha256") SKIP)
 PKGEXT=${PKGEXT:-'.pkg.tar'}
 
 build() {
