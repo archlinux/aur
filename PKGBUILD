@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2017.4.14
+_version=2017.4.15
 _build=f1
-_randomstring=b28150134d55
+_randomstring=5d485b4897a7
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-facebook
@@ -15,7 +15,7 @@ license=('custom')
 depends=('unity-editor-lts')
 makedepends=('cpio')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-${_version}${_build}.pkg")
-md5sums=('bbf4b7c4f97d97bc0044c9d442b755e7')
+md5sums=('6d71a0393c41cf78c6335219a6527e5f')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
