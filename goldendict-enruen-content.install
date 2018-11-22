@@ -1,0 +1,10 @@
+pre_install() {
+  echo
+  echo '    ********************************************************'
+  echo '    *           If your GoldenDict instance does not       *'
+  echo '    * recognise new dictionaries then add path in settings *'
+  echo '    *  or just close GoldenDict, make rm -rf ~/.goldendict *'
+  echo '    *                   and start it again                 *'
+  echo '    ********************************************************'
+  echo
+}

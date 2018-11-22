@@ -1,0 +1,14 @@
+pkgbase = goldendict-enruen-content
+	pkgdesc = English-Russian-English dictionaries for Goldendict with pronounces
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.goldendict.org
+	arch = any
+	license = GPL2
+	optdepends = goldendict: for using this dictionary,
+	optdepends = goldendict-gt5-git: for using this dictionary
+	source = http://downloads.sourceforge.net/goldendict/enruen-content-1.1.tar.bz2
+	md5sums = 4db1fd87067c603750c2f2741b90a359
+
+pkgname = goldendict-enruen-content
+
