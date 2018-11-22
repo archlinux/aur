@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gdb
-pkgver=8.1.1
+pkgver=8.2
 pkgrel=1
 pkgdesc="The GNU Debugger (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt' 'mingw-w64-expat' 'mingw-w64-zlib' 'mingw-w64-readline'
 makedepends=('mingw-w64-gcc' 'texinfo')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
-sha256sums=('97dcc3169bd430270fc29adb65145846a58c1b55cdbb73382a4a89307bdad03c')
+sha256sums=('c3a441a29c7c89720b734e5a9c6289c0a06be7e0c76ef538f7bbcef389347c39')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -36,6 +36,7 @@ package() {
     rm -rf "$pkgdir"/usr/${_arch}/share/{man,info,locale}
     rm -rf "$pkgdir"/usr/${_arch}/lib
     rm -rf "$pkgdir"/usr/${_arch}/include
-    ${_arch}-strip "$pkgdir"/usr/${_arch}/bin/*.exe
+    ${_arch}-strip "$pkgdir"/usr/${_arch}/bin/gdb.exe
+    ${_arch}-strip "$pkgdir"/usr/${_arch}/bin/gdbserver.exe
   done
 }
