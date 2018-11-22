@@ -1,41 +1,49 @@
 # Maintainer: Max Beck <rytonemail@gmail.com>
 pkgname=mpd-sidplay
 _pkgname=mpd
-pkgver=0.20.21
+pkgver=0.21.3
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music - built with sidplay support"
 url="https://www.musicpd.org/"
 license=("GPL")
 arch=("x86_64")
 depends=(
-    "libao"
-    "ffmpeg"
-    "libmodplug"
     "audiofile"
-    "libshout"
-    "libmad"
+    "avahi"
     "curl"
     "faad2"
-    "sqlite"
-    "jack"
-    "libmms"
-    "wavpack"
-    "avahi"
-    "libid3tag"
-    "yajl"
-    "libmpdclient"
+    "ffmpeg"
+    "fluidsynth"
     "icu"
-    "libupnp"
+    "jack"
+    "libao"
+    "libcdio-paranoia"
+    "libgme"
+    "libid3tag"
+    "libmad"
+    "libmikmod"
+    "libmms"
+    "libmodplug"
+    "libmpcdec"
+    "libmpdclient"
     "libnfs"
     "libsamplerate"
-    "libsoxr"
-    "smbclient"
-    "libgme"
-    "zziplib"
-    "libsystemd"
+    "libshout"
     "libsidplayfp"
+    "libsoxr"
+    "libsystemd"
+    "libupnp"
+    "mpg123"
+    "openal"
+    "smbclient"
+    "sqlite"
+    "twolame"
+    "wavpack"
+    "wildmidi"
+    "yajl"
+    "zziplib"
 )
-makedepends=("boost" "doxygen")
+makedepends=("boost" "meson" "python-sphinx")
 validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512')
 provides=("mpd=$pkgver")
 conflicts=("mpd")
@@ -46,40 +54,45 @@ source=(
     "sysusers.d"
     "mpd.conf"
 )
-sha256sums=(
-    "8322764dc265c20f05c8c8fdfdd578b0722e74626bef56fcd8eebfb01acc58dc" "SKIP"
-    "e09e38ab5fd6e8b3b3e6e5a48d837c164ad37aec7e6762a78810c34fe9abf3a1"
-    "2679014448e9352e20e85d8d76b021aeebe27bdf6100b24577afee2f37522a95"
-    "a30c2c43824b540300cc83505c146989b415189bd90f191aebaed6f13556e6d2"
-)
+sha256sums=('6cf60e644870c6063a008d833a6c876272b7679a400b83012ed209c15ce06e2a'
+            'SKIP'
+            'e09e38ab5fd6e8b3b3e6e5a48d837c164ad37aec7e6762a78810c34fe9abf3a1'
+            '2679014448e9352e20e85d8d76b021aeebe27bdf6100b24577afee2f37522a95'
+            'a30c2c43824b540300cc83505c146989b415189bd90f191aebaed6f13556e6d2')
 backup=("etc/mpd.conf")
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    ./configure \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --enable-jack \
-        --enable-libmpdclient \
-        --enable-pipe-output \
-        --enable-pulse \
-        --enable-soundcloud \
-        --enable-zzip \
-        --enable-sidplay \
-        --with-systemduserunitdir=/usr/lib/systemd/user \
-        --with-systemdsystemunitdir=/usr/lib/systemd/system \
-    
-    make
+    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+
+    _opts=(
+        "-Ddocumentation=true"
+        "-Dchromaprint=disabled"
+        "-Dsidplay=enabled"
+        "-Dlibwrap=disabled"
+        "-Dadplug=disabled"
+        "-Dsndio=disabled"
+        "-Dshine=disabled"
+    )
+    arch-meson .. ${_opts[@]}
+    ninja
+
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}/build"
 
-    make DESTDIR="${pkgdir}" install
-    install -Dm644 ../mpd.conf "${pkgdir}"/etc/mpd.conf
-    install -Dm644 ../tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
-    install -Dm644 ../sysusers.d "${pkgdir}"/usr/lib/sysusers.d/mpd.conf
+    DESTDIR="${pkgdir}" ninja install
 
-    sed '/\[Service\]/a User=mpd' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
-    sed '/WantedBy=/c WantedBy=default.target' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
+    install -Dm644 ../doc/mpdconf.example "${pkgdir}"/usr/shade/doc/mpd/mpdconf.example
+    install -Dm644 ../doc/mpd.conf.5 "${pkgdir}"/usr/share/man/man5/mpd.conf.5
+    install -Dm644 ../doc/mpd.1 "${pkgdir}"/usr/share/man1/mpd.1
+
+    install -Dm644 ../../tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
+    install -Dm644 ../../sysusers.d "${pkgdir}"/usr/lib/sysusers.d/mpd.conf
+    install -Dm644 ../../mpd.conf "${pkgdir}"/etc/mpd.conf
+
+    sed \
+        -e "/\[Service\]/a User=mpd" \
+        -e "/WantedBy=/c WantedBy=default.target" \
+        -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
 }
