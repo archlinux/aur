@@ -1,6 +1,6 @@
 pkgbase = unity-editor-beta-language-ja
 	pkgdesc = Japanese Language Pack (Preview)
-	pkgver = 2018.3.0b9
+	pkgver = 2018.3.0b11
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = unity-editor-beta-language-ja
 	depends = unity-editor-beta
 	options = !strip
 	source = https://new-translate.unity3d.jp/v1/live/54/2018.3/ja
-	sha1sums = 7a419b47d316d42dfb8a2ee4fdc28f859053d7fa
+	sha1sums = af3bea948418964ff373f17505689c8fbd1bd9b2
 
 pkgname = unity-editor-beta-language-ja
 

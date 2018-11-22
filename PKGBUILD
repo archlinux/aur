@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
 _version=2018.3.0
-_build=b9
-_randomstring=a3326ae325b2
+_build=b11
+_randomstring=45aaf16dbe1a
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-language-ja
@@ -14,7 +14,7 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta')
 source=("https://new-translate.unity3d.jp/v1/live/54/2018.3/ja")
-sha1sums=('7a419b47d316d42dfb8a2ee4fdc28f859053d7fa')
+sha1sums=('af3bea948418964ff373f17505689c8fbd1bd9b2')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
