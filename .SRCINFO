@@ -1,7 +1,7 @@
 pkgbase = wercker-cli
 	pkgdesc = Wercker CLI
 	pkgver = 1.0.1401
-	pkgrel = 1
+	pkgrel = 2
 	url = https://devcenter.wercker.com/development/cli/
 	arch = x86_64
 	license = unknown

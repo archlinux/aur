@@ -1,10 +1,10 @@
 # Maintainer: Jason Staten <jstaten07 gmail>
 # Co-maintainer: Thor K. Høgås <thor alfakrøll roht dott no>
-# PKGBUILD Source: https://sr.ht/~statianzo/pkgbuild-wercker-cli
+# PKGBUILD Source: https://git.sr.ht/~statianzo/pkgbuild-wercker-cli
 
 pkgname=wercker-cli
 pkgver=1.0.1401
-pkgrel=1
+pkgrel=2
 pkgdesc='Wercker CLI'
 url='https://devcenter.wercker.com/development/cli/'
 license=('unknown')
