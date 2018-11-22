@@ -1,10 +1,9 @@
-# Maintainer: Joaquin Garmendia <joaquingc123 at gmail dot com>
-
-# All my PKGBUILDs can be found in https://www.github.com/joaquingx/PKGBUILDs
+# Maintainer: Aniket Pradhan <aniket17133@iiitd.ac.in>
+# Owner/Cofntributer: Xinzhao Xu <z2d@jifangcheng.com>
 
 pkgname=annie
-pkgver=0.7.18
-pkgrel=1
+pkgver=0.8.4
+pkgrel=2
 arch=('x86_64' 'i686')
 pkgdesc="A fast, simple and clean video downloader written in Go"
 url="https://github.com/iawia002/annie"
@@ -12,23 +11,26 @@ license=("MIT")
 makedepends=("go")
 depends=("ffmpeg")
 conflicts=("annie")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/iawia002/annie/archive/${pkgver}.tar.gz")
-sha256sums=('43c4c7b793d292f5db65e3f76078e87d062c4d338df608f3abb0821ecc7995d8')
-
-prepare(){
-	mkdir -p "$srcdir/src/github.com/iawia002/annie"
-	cp -r "$srcdir/$pkgname-$pkgver/"{downloader,config,extractors,parser,request,static,utils,vendor} \
-		"$srcdir/src/github.com/iawia002/annie"
-}
-
+options=('!strip' '!emptydirs')
+_gourl=github.com/iawia002/annie
 
 build(){
-	cd "${pkgname}-${pkgver}"
-	GOPATH="$srcdir" go build
+	GOPATH="$srcdir" go get -v -u ${_gourl}/...
 }
 
-package(){
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package() {
+	mkdir -p "$pkgdir/usr/bin"
+	install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
+
+	mkdir -p "$pkgdir/$GOPATH"
+	cp -Rv --preserve=timestamps "$srcdir/"{src,pkg} "$pkgdir/$GOPATH"
+
+	for f in LICENSE COPYING LICENSE.* COPYING.*; do
+		if [ -e "$srcdir/src/$_gourl/$f" ]; then
+		install -Dm644 "$srcdir/src/$_gourl/$f" \
+		"$pkgdir/usr/share/licenses/$pkgname/$f"
+	fi
+	done
 }
 
+# vim:set ts=2 sw=2 et:
