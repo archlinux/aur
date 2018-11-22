@@ -2,7 +2,7 @@
 
 pkgname=reproc
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform library that simplifies working with external CLI applications from C and C++'
 arch=('x86_64')
 _url='https://github.com/DaanDeMeyer'
@@ -21,9 +21,10 @@ build() {
   cd "${pkgname}-${pkgver}/build"
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_SHARED_LIBS=ON \
-    -DREPROC_INSTALL=ON \
+    -REPROCXX=ON \
     -DREPROC_TESTS=ON \
     -DREPROC_BUILD_EXAMPLES=ON \
     ../
@@ -35,9 +36,8 @@ check() {
 }
 
 package() {
-  cmake --build "${pkgname}-${pkgver}/build" --target install
-
-  mv "${pkgdir}"/usr/lib64 "${pkgdir}"/usr/lib
+  cd "${pkgname}-${pkgver}/build"
+  make DESTDIR="${pkgdir}" install
   install -D --mode=644 "${srcdir}/${pkgname}-${pkgver}"/LICENSE \
     "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
