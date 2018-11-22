@@ -1,0 +1,15 @@
+--- a/qtlocation/src/plugins/geoservices/geoservices.pro	2018-08-31 09:50:06.000000000 -0300
++++ b/qtlocation/src/plugins/geoservices/geoservices.pro	2018-09-29 09:32:24.465419357 -0300
+@@ -7,12 +7,3 @@
+ qtConfig(geoservices_esri): SUBDIRS += esri
+ qtConfig(geoservices_itemsoverlay): SUBDIRS += itemsoverlay
+ qtConfig(geoservices_osm): SUBDIRS += osm
+-
+-qtConfig(geoservices_mapboxgl) {
+-    !exists(../../3rdparty/mapbox-gl-native/mapbox-gl-native.pro) {
+-        warning("Submodule mapbox-gl-native does not exist. Run 'git submodule update --init' on qtlocation.")
+-    } else {
+-        SUBDIRS += mapboxgl ../../3rdparty/mapbox-gl-native
+-        mapboxgl.depends = ../../3rdparty/mapbox-gl-native
+-    }
+-}
