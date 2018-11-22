@@ -7,6 +7,8 @@ pkgbase = adb-sync-git
 	license = Apache
 	makedepends = git
 	depends = python
+	depends = android-tools
+	depends = android-udev
 	source = git+https://github.com/google/adb-sync
 	sha1sums = SKIP
 
