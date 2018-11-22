@@ -8,7 +8,7 @@ license=('GPL2')
 install=$pkgname.install
 optdepends=(
 'goldendict: for using this dictionary',
-'goldendict-gt5-git: for using this dictionary'
+'goldendict-qt5-git: for using this dictionary'
 )
 url='http://www.goldendict.org'
 source=("http://downloads.sourceforge.net/goldendict/enruen-content-$pkgver.tar.bz2")
