@@ -31,7 +31,7 @@ _pytorchver=1.0rc1 # pytorch stable release version
 
 pkgname=caffe2-cuda
 pkgver="0.8.2.pytorch.${_pytorchver}"
-pkgrel=5
+pkgrel=6
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (with cuda)'
 arch=('x86_64')
 url='https://caffe2.ai/'
@@ -90,6 +90,8 @@ source=(
         "git+https://github.com/onnx/onnx-tensorrt.git#commit=${_onnx_tensorrt_commit}"
         "git+https://github.com/shibatch/sleef.git#commit=${_sleef_commit}"
         "git+https://github.com/intel/ideep.git#commit=${_ideep_commit}"
+    # patches:
+        'caffe2-1.0rc1-add-full-relro.patch'
 )
 sha256sums=('473cd4af032ddec4279cf3a90dd9508b6fa0be5cd89c842945f88b5a576a4231'
             'SKIP'
@@ -117,10 +119,11 @@ sha256sums=('473cd4af032ddec4279cf3a90dd9508b6fa0be5cd89c842945f88b5a576a4231'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'c41dd34bdf0bfbe62bba8527e950a14b356bef136edc53ea40c6469644502583')
 
 prepare() {
-    cd "${srcdir}/pytorch-${_pytorchver}/third_party"
+    cd "pytorch-${_pytorchver}/third_party"
     
     local _component
     local _thirdparty_list="pybind11 cub googletest nervanagpu benchmark \
@@ -142,6 +145,10 @@ prepare() {
         rm -rf "$_component"
         ln -sf "${srcdir}/${_component}" "${_component}"
     done
+    
+    # add full relro
+    cd "${srcdir}/pytorch-${_pytorchver}"
+    patch -Np1 -i "${srcdir}/caffe2-1.0rc1-add-full-relro.patch"
 }
 
 build() {
@@ -153,6 +160,9 @@ build() {
     
     mkdir -p build
     cd build
+    
+    # NOTE:
+    # skip install rpath to remove unneeded insecure rpath
     
     cmake \
         -DBLAS:STRING='Eigen' \
@@ -168,6 +178,8 @@ build() {
         -DCMAKE_C_COMPILER='/usr/bin/gcc-7' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        \
+        -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
         \
         -DCUDA_HOST_COMPILER:FILEPATH='/usr/bin/gcc-7' \
         -DCUDA_NVCC_EXECUTABLE:FILEPATH='/opt/cuda/bin/nvcc' \
@@ -251,17 +263,17 @@ package() {
     # remove unneeded files
     local _entry
     local _exclude_dirs
-    local _exclude_libs
     mapfile -t -d '' _exclude_dirs < <(find "${pkgdir}/usr/include" -mindepth 1 -maxdepth 1 -type d ! -name 'caffe*' -print0)
-    mapfile -t -d '' _exclude_libs < <(find -L "${pkgdir}/usr/lib" -maxdepth 1 -type f ! -name 'libcaffe*' -print0)
-    rm -f  "$pkgdir"/usr/bin/{protoc,unzstd,zstd{cat,mt,}}
-    rm -f  "$pkgdir"/usr/include/{*.h,*.py}
-    rm -rf "$pkgdir"/usr/lib/cmake/protobuf
-    rm -f  "$pkgdir"/usr/lib/pkgconfig/{protobuf-lite,protobuf}.pc
-    rm -rf "$pkgdir"/usr/share/pkgconfig
-    rm -rf "$pkgdir"/usr/share/{ATen,cmake/{ATen,ONNX}}
-    rm -f  "$pkgdir"/usr/share/man/man1/{unzstd,zstd{cat,}}.1
-    for _entry in "${_exclude_dirs[@]}" "${_exclude_libs[@]}"
+    rm    "$pkgdir"/usr/bin/{protoc,unzstd,zstd{cat,mt,}}
+    rm    "$pkgdir"/usr/include/{*.h,*.py}
+    rm    "$pkgdir"/usr/lib/*.a
+    rm    "$pkgdir"/usr/lib/lib{zstd,onnxifi}*
+    rm -r "$pkgdir"/usr/lib/cmake/protobuf
+    rm    "$pkgdir"/usr/lib/pkgconfig/{protobuf-lite,protobuf}.pc
+    rm    "$pkgdir"/usr/share/pkgconfig/libzstd.pc
+    rm -r "$pkgdir"/usr/share/{ATen,cmake/{ATen,ONNX}}
+    rm    "$pkgdir"/usr/share/man/man1/{unzstd,zstd{cat,}}.1
+    for _entry in "${_exclude_dirs[@]}"
     do
         rm -rf "$_entry"
     done
