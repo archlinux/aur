@@ -1,18 +1,22 @@
 pkgbase = thebeat
 	pkgdesc = Audio Player based on Phonon
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 0
 	url = https://github.com/vicr123/thebeat
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = discord-rpc-api
+	makedepends = qt5-tools
 	depends = libmusicbrainz5
 	depends = xdg-utils
 	depends = phonon-qt5
 	depends = qt5-base
 	depends = taglib
 	depends = the-libs
-	source = thebeat-1.0::git+https://github.com/vicr123/thebeat.git
+	depends = qt5-svg
+	optdepends = discord-rpc-api: for Discord Rich Presence integration
+	source = thebeat-2.0::git+https://github.com/vicr123/thebeat.git
 	md5sums = SKIP
 
 pkgname = thebeat
