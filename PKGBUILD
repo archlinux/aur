@@ -1,14 +1,14 @@
 # Maintainer: Skjnldsv <skjnldsv at protonmail com>
 
 pkgname=gnome-pomodoro-git
-pkgver=r1005.94fb344
+pkgver=r1007.4e7c274
 pkgrel=1
 _gitbranch='master'
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/codito/gnome-pomodoro/'
 license=('GPL3')
-depends=('gnome-desktop' 'libcanberra' 'gstreamer' 'gobject-introspection' 'libpeas' 'appstream-glib')
+depends=('gnome-desktop' 'libcanberra' 'gstreamer' 'gobject-introspection' 'libpeas' 'appstream-glib' 'gom')
 makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x' 'perl-xml-sax-expat' 'gom')
 conflicts=('gnome-pomodoro' 'gnome-shell-pomodoro')
 provides=('gnome-pomodoro')
