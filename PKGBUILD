@@ -1,9 +1,9 @@
 # Maintainer: E5ten
 
 pkgname=yadshot
-pkgver=0.2.02
-pkgrel=3
-pkgdesc="A GUI frontend for taking screenshots using imagemagick/slop and uploads files and pastes to teknik.io "
+pkgver=0.2.03
+pkgrel=1
+pkgdesc="GUI frontend for taking screenshots. Also uploads screenshots, files and pastes."
 arch=('x86_64')
 url='http://www.simonizor.net'
 license=('GPL')
@@ -17,5 +17,5 @@ md5sums=('5bb6c657935ae286818f03898f6d69df')
 
 package() {
 	cd $srcdir/$pkgname-$pkgver
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" install
 }
