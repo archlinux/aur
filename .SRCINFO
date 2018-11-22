@@ -1,15 +1,15 @@
 pkgbase = katarakt-git
 	pkgdesc = A simple PDF viewer with two layouts
-	pkgver = r231.1c6a826
+	pkgver = r234.e5b4caf
 	pkgrel = 1
-	url = http://git.informatik.uni-erlangen.de/?p=katarakt
+	url = https://wwwcip.cs.fau.de/~go18gomu/katarakt/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = asciidoc
 	depends = qt5-base
 	depends = poppler-qt5
-	source = git+https://git.informatik.uni-erlangen.de/katarakt
+	source = git+https://gitlab.cs.fau.de/Qui_Sum/katarakt.git
 	md5sums = SKIP
 
 pkgname = katarakt-git

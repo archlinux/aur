@@ -1,17 +1,17 @@
 # Contributor: thorsten w. <p@thorsten-wissmann.de>
 pkgname=katarakt-git
-pkgver=r231.1c6a826
+pkgver=r234.e5b4caf
 pkgrel=1
 pkgdesc="A simple PDF viewer with two layouts"
 arch=('i686' 'x86_64')
-url="http://git.informatik.uni-erlangen.de/?p=katarakt"
+url="https://wwwcip.cs.fau.de/~go18gomu/katarakt/"
 license=('BSD')
 depends=( qt5-base poppler-qt5 )
 optdepends=( )
 makedepends=( asciidoc )
 provides=( )
 backup=( )
-source=( git+https://git.informatik.uni-erlangen.de/katarakt )
+source=( git+https://gitlab.cs.fau.de/Qui_Sum/katarakt.git )
 md5sums=( SKIP )
 _gitname="katarakt"
 
