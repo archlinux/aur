@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://github.com/vicr123/the-libs"
 license=('GPL3')
 depends=('qt5-base')
-makedepends=('git')
+makedepends=('git' 'qt5-tools')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/the-libs#branch=master')
 md5sums=('SKIP')
 
