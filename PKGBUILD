@@ -31,7 +31,7 @@ _pytorchver=1.0rc1 # pytorch stable release version
 
 pkgname=caffe2
 pkgver="0.8.2.pytorch.${_pytorchver}"
-pkgrel=6
+pkgrel=7
 pkgdesc='A new lightweight, modular, and scalable deep learning framework'
 arch=('i686' 'x86_64')
 url='https://caffe2.ai/'
@@ -57,7 +57,7 @@ depends=(
 )
 makedepends=('git' 'cmake')
 provides=('caffe2-cpu')
-conflicts=('caffe2-cpu')
+conflicts=('caffe2-cpu' 'python-pytorch')
 replaces=('caffe2-cpu')
 options=('!emptydirs')
 source=(
