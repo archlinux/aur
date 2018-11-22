@@ -1,11 +1,13 @@
 pkgbase = parsoid
 	pkgdesc = A bidirectional wikitext parser and runtime
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mediawiki.org/wiki/Parsoid
 	install = parsoid.install
 	arch = any
 	license = GPL2
+	makedepends = git
+	makedepends = python2
 	depends = nodejs
 	depends = npm
 	optdepends = mediawiki: MediaWiki engine
