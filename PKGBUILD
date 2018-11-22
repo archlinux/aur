@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2017.4.14
+_version=2017.4.15
 _build=f1
-_randomstring=b28150134d55
+_randomstring=5d485b4897a7
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-ios
@@ -14,7 +14,7 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-lts')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-${pkgver}.tar.xz")
-md5sums=('794073ce041df268da6dadbaf5d9a045')
+md5sums=('4773f4e9e83261a1682fe298df384eab')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
