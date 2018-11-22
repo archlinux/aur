@@ -13,6 +13,8 @@ pkgbase = sn0int
 	depends = libcap
 	depends = sqlite
 	depends = libseccomp
+	depends = geoip2-database
+	depends = publicsuffix-list
 	source = https://github.com/kpcyrd/sn0int/archive/v0.5.0/sn0int-0.5.0.tar.gz
 	sha256sums = 28538d6bb69cfd34e302058c61b030ad527cb76c9f7476344f5f8dd5b4c338c5
 
