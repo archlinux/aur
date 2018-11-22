@@ -57,7 +57,7 @@ pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
 _rtpatchver=rt${_rtver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -219,12 +219,17 @@ _package() {
   cd $_srcname
 
   msg2 "Installing boot image..."
-  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
+  local image="$pkgdir/boot/vmlinuz-$pkgbase"
+  install -Dm644 "$(make -s image_name)" "$image"
 
   msg2 "Installing modules..."
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
   mkdir -p "$modulesdir"
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  ln -sr "$image" "$modulesdir/vmlinuz"
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
