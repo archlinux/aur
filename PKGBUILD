@@ -7,7 +7,7 @@
 
 pkgname=denemo
 pkgver=2.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A music score editor"
 arch=('x86_64')
 url="http://www.denemo.org"
