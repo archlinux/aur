@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=dbxfs
 pkgver=1.0.39
-pkgrel=1
+pkgrel=2
 pkgdesc="User-space file system for Dropbox"
 arch=('i686' 'x86_64')
 url="https://github.com/rianhunter/dbxfs"
@@ -29,7 +29,12 @@ prepare() {
     sed -i 's/"keyring>=15.1.0,<16",/"keyring>=15.1.0",/g' setup.py
 }
 
+build() {
+	cd "$pkgname-$pkgver"
+    python setup.py build
+}
+
 package() {
 	cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
