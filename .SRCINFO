@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve-studio
 	pkgdesc = Professional A/V post-production software suite
-	pkgver = 15.1.2
+	pkgver = 15.2
 	pkgrel = 0
 	url = https://www.blackmagicdesign.com/
 	install = davinci-resolve-studio.install
@@ -28,7 +28,7 @@ pkgbase = davinci-resolve-studio
 	options = !strip
 	source = local://DaVinci_Resolve_Studio_15.1.2_Linux.zip
 	source = davinci-resolve-studio.install
-	sha256sums = 3599569e0403131f13a5b7fa7237669b071f0ba80253e0b04b89c94ede62277a
+	sha256sums = c719aa837bc11692603892859a93befc868ae455af7990ed2cb0e474ca1beb85
 	sha256sums = ff105552fc59e7957e1d9ed19f4c4d41294459353e3525f57207ed43e882b508
 
 pkgname = davinci-resolve-studio
