@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-community-edition-jre
 	pkgdesc = Intellij Idea Community Edition with bundled JRE
-	pkgver = 2018.2.6
+	pkgver = 2018.3
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = intellij-idea-community-edition-jre
 	depends = libxtst
 	provides = jetbrains-idea-ce
 	conflicts = jetbrains-idea-ce
-	source = https://download.jetbrains.com/idea/ideaIC-2018.2.6.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIC-2018.3.tar.gz
 	source = jetbrains-idea-ce.desktop
-	md5sums = d5f8e0d9cb1c1603a9d0abfc4edcfb90
+	md5sums = eff11907e5266b548e1d75b2ec29b3dd
 	md5sums = 56d945e72cc22162d5be26af027999dd
 
 pkgname = intellij-idea-community-edition-jre
