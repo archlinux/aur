@@ -2,7 +2,7 @@
 
 pkgname=xplayer-git
 _pkgbasename=xplayer
-pkgver=1.8.1.r0.gfd15ecd
+pkgver=2.0.0.r0.gf73aa65
 pkgrel=1
 pkgdesc="Simple media player. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
@@ -28,11 +28,6 @@ pkgver() {
 
 build() {
     cd ${srcdir}/${pkgname}
-
-    # https://github.com/linuxmint/xplayer/issues/22
-    # No switch to disable grilo, so just bump the required
-    # version to something that obviously won't be satisfied.
-    sed -i 's/GRILO_REQS=0.2.0/GRILO_REQS=0.9.0/g' configure.ac
 
     ./autogen.sh ax_is_release="yes" \
         --prefix="/usr" \
