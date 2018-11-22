@@ -12,7 +12,6 @@ makedepends=('git' 'python-setuptools')
 optdepends=('libappindicator-gtk3: app indicator support (e.g. Unity, KDE, Systray)')
 provides=('emoji-keyboard')
 conflicts=('emoji-keyboard' 'emoji-keyboard-git')
-install=
 source=("${pkgname%-git}::git+https://github.com/edam/emoji-keyboard.git#branch=master")
 md5sums=('SKIP')
 
