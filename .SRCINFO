@@ -1,6 +1,6 @@
 pkgbase = freeplane-git
 	pkgdesc = A Java mindmapping tool
-	pkgver = 1.6.x.12084cd69
+	pkgver = 1.7.x.4044e36a3
 	pkgrel = 1
 	url = https://github.com/freeplane/freeplane.git
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = freeplane-git
 	depends = desktop-file-utils
 	provides = freeplane
 	conflicts = freeplane
-	source = git+https://github.com/freeplane/freeplane.git#branch=1.6.x
+	source = git+https://github.com/freeplane/freeplane.git#branch=1.7.x
 	source = freeplane.desktop
 	source = freeplane.run
 	sha256sums = SKIP
