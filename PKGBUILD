@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=feedreader-git
-pkgver=2.4.1.r2709
-pkgrel=2
+pkgver=2.4.1.r2724
+pkgrel=1
 pkgdesc="FeedReader is a modern desktop application designed to complement existing web-based RSS accounts."
 arch=('i686' 'x86_64')
 url="https://github.com/jangernert/FeedReader"
