@@ -13,7 +13,7 @@ arch=(x86_64)
 license=(GPL)
 url="http://www.digikam.org/"
 makedepends=(extra-cmake-modules libkipi libksane liblqr opencv doxygen lensfun eigen boost kdoctools marble-common
-             kfilemetadata akonadi-contacts qtav threadweaver kcalcore knotifyconfig libmediawiki libkvkontakte glu)
+             kfilemetadata akonadi-contacts qtav threadweaver kcalcore knotifyconfig libmediawiki libkvkontakte glu qt5-xmlpatterns)
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
         kdebug-395875.patch::"https://cgit.kde.org/digikam.git/patch/core?id=486e34a0"
         digikam-opencv4.patch)
@@ -65,7 +65,8 @@ package_kipi-plugins() {
   pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
   depends=(kio libkipi)
   optdepends=('libmediawiki: MediaWiki Export plugin'
-              'libkvkontakte: VKontakte.ru Exporter plugin')
+              'libkvkontakte: VKontakte.ru Exporter plugin'
+              'qt5-xmlpatterns: rajce.net plugin')
 
   cd build/extra
   make DESTDIR="$pkgdir" install
