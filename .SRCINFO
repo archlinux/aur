@@ -1,0 +1,20 @@
+pkgbase = unclutter-xfixes
+	pkgdesc = unclutter-xfixes is a rewrite of unclutter using the x11-xfixes extension
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/Airblader/unclutter-xfixes
+	arch = x86_64
+	license = MIT
+	makedepends = asciidoc
+	depends = libxi
+	depends = libx11
+	depends = libxfixes
+	depends = libev
+	provides = unclutter
+	conflicts = unclutter
+	conflicts = unclutter-patched
+	source = unclutter-xfixes-1.4.tar.gz::https://github.com/Airblader/unclutter-xfixes/archive/v1.4.tar.gz
+	sha256sums = f28cd690cfa184fddd3961dda49d14e114dccd5e70d9bac8ca5ebcd5124985b3
+
+pkgname = unclutter-xfixes
+
