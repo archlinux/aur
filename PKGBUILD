@@ -1,7 +1,7 @@
 # Maintainer: Bryce <onyxdelta@hotmail.com>
 pkgname="trilium-bin"
 pkgver=0.24.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A hierarchical note taking application built on modern technologies."
 depends=('python' 'make' 'gconf' 'libxss' 'nss' 'lib32-gcc-libs' 'gtk3')
 arch=('x86_64')
@@ -19,7 +19,7 @@ package()
 	mkdir -p "$pkgdir/usr/share/applications"
 	#Move main files
 	mv trilium-linux-x64/* "$pkgdir/opt/trilium"
-	chmod -R 0555 "$pkgdir/opt/trilium"
+	chmod -R 0755 "$pkgdir/opt/trilium"
 	#Write command and make executable
 	echo -e "#!/bin/sh
 /opt/trilium/trilium" > "$pkgdir/usr/bin/trilium"
