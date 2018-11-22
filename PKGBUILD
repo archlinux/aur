@@ -3,14 +3,14 @@
 
 pkgname=parsoid-git
 _pkgname=parsoid
-pkgver=v0.3.0.r2009.g6693ee4d1
+pkgver=v0.3.0.r2010.gc900a0c7d
 pkgrel=1
 pkgdesc="A bidirectional wikitext parser and runtime"
 arch=('any')
 url="https://www.mediawiki.org/wiki/Parsoid"
 license=('GPL2')
 depends=('nodejs')
-makedepends=('git' 'npm')
+makedepends=('git' 'python2' 'npm')
 optdepends=(
     'mediawiki: MediaWiki engine'
 )
@@ -38,6 +38,7 @@ pkgver() {
 }
 build() { 
     cd $srcdir/parsoid
+    alias python="python2"
     npm install
 }
 package() {
