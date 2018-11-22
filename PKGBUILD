@@ -12,5 +12,5 @@ sha256sums=('9636ecb0d559a179ffaec4c283a4bd00319c8d744e3b0a7d0db7deee809238f0')
 package() {
   cd "$pkgname-$pkgver"
   install -D -m644 -t "$pkgdir/usr/share/java/pantheon" lib/*
-  install -D -m755 "$srcdir/pantheon"  "$pkgdir/usr/bin/pantheon"
+  install -D -m755 "$srcdir/bin/pantheon"  "$pkgdir/usr/bin/pantheon"
 }
