@@ -1,0 +1,42 @@
+post_install() {
+  echo "If your backlight is very dim, please check /etc/modprobe.d/nvidia_bl.conf"
+  echo ""
+  
+  dkms_install $1
+}
+
+pre_upgrade() {
+  dkms_remove $2
+}
+
+post_upgrade() {
+  dkms_install $1
+}
+
+pre_remove() {
+  dkms_remove $1
+}
+
+post_remove() {
+  echo "Updating module dependencies. Please wait ..."
+  depmod $(uname -r)
+  echo ""
+}
+
+pre_remove() {
+  dkms_remove $1
+}
+
+dkms_remove() {
+
+  if [ -n "$(dkms status -m nvidia-bl -v ${1%%-*})" ]; then
+    dkms remove -m nvidia-bl -v ${1%%-*} --all || return 1
+  fi
+}
+
+dkms_install() {
+  dkms install -m nvidia-bl -v ${1%%-*} || return 1
+
+  sudo modprobe -r nvidia_bl
+  sudo modprobe nvidia_bl
+}

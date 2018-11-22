@@ -1,0 +1,25 @@
+pkgbase = nvidia-bl-dkms
+	pkgdesc = Driver to adjust display backlight on legacy mobile NVidia graphics adapters - DKMS edition.
+	pkgver = 18.11.0
+	pkgrel = 1
+	install = nvidia-bl-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	depends = linux>=3.8
+	conflicts = nvidia-bl
+	backup = etc/modprobe.d/nvidia_bl.conf
+	source = nvidia_bl.c
+	source = Makefile
+	source = nvidia_bl.conf
+	source = nvidia_bl_ml.conf
+	source = dkms.conf
+	md5sums = 52131bc4de928fbc13c00a44a3538486
+	md5sums = e6a6a05f27e49c53783243e278ad6551
+	md5sums = 897ee78c30e6b498d0e3ce07c06dabc5
+	md5sums = 5771d2ea826f76d8f27bd9fdcb78a76f
+	md5sums = b5547c594e8c2d72620e95888bd79d7f
+
+pkgname = nvidia-bl-dkms
+
