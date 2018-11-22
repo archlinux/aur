@@ -1,7 +1,7 @@
 # Maintainer: vimacs <https://vimacs.lcpu.club>
 
 pkgname=mrustc-git
-pkgver=0.0.3016
+pkgver=0.0.3195
 pkgrel=1
 pkgdesc='Alternative rust compiler written in C++'
 arch=('x86_64')
@@ -24,6 +24,7 @@ pkgver() {
 build() {
 	cd "$srcdir/mrustc"
 	patch -p1 -i "$srcdir/minicargo-use-system-mrustc.patch"
+	sed -i 's/x86_64-linux-gnu/x86_64-pc-linux-gnu/g' tools/common/target_detect.h src/trans/target.cpp
 	make
 	make -C tools/minicargo
 }
@@ -33,7 +34,7 @@ package() {
 	install -D bin/mrustc "$pkgdir/usr/bin/mrustc"
 	install -D tools/bin/minicargo "$pkgdir/usr/bin/minicargo"
 	install -d "$pkgdir/usr/share/mrustc"
-	cp -r script-overrides lib "$pkgdir/usr/share/mrustc/"
+	cp -r script-overrides lib run_rustc "$pkgdir/usr/share/mrustc/"
 
 	sed -e 's/bin\/mrustc/\/usr\/bin\/mrustc/g' \
 		-e 's/tools\/bin/\/usr\/bin/g' \
