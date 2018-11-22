@@ -10,10 +10,10 @@ pkgbase = mongoose-os
 	depends = libusb>=1.0.16
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+build/15669836/+files/mos_2.8.1+0fc1db0~bionic0_amd64.deb
-	sha512sums_x86_64 = 2236022a4f26ff043c157ac01e86a4d282ffc6810a4689c1fe9e7a5af3a3d9b3e725e7064b5e95e29b2cfc7ea268e6da9edea99c5245e100e6cb669da0c1d544
+	source_x86_64 = https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+build/15669833/+files/mos_2.8.1+0fc1db0~bionic0_amd64.deb
+	sha512sums_x86_64 = 9c7bf4e8d81fe94816db258ec03c2cdce5d87b928b78cdaf0a008a24a80f6d9f00723dea3aad600a3822dd273f119272ad87c8d4cc7b2b1e61d12db18018189a
 	source_i686 = https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+build/15669836/+files/mos_2.8.1+0fc1db0~bionic0_i386.deb
-	sha512sums_i686 = e595bc405f34c69331c4501b2f1959160a110c734f50d192d81d31a39b8d63f5d164727d29fe0df89cd8fc8b13ef290fca10c72140330d01d62f837a9970c4e0
+	sha512sums_i686 = 1504e3321024b43b50aa750c9d3d5cfd1a2c4d79e55655f9366629c744a7614f7702424b2b2a087ee529eb1d607185f638f6edd619c21a0660640f43b153766c
 
 pkgname = mongoose-os
 
