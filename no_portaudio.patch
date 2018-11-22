@@ -5,7 +5,7 @@ diff -Naur denemo-2.2.0.orig/src/audio/midi.c denemo-2.2.0.new/src/audio/midi.c
  
  #define SHAVING (0.01)          //seconds to shave off a note start time to ensure stopping before noteon is sent, and starting with noteon first note may depend of speed of machine??? FIXME
  
-+#ifndef HAVE_PORTAUDIO 
++#ifndef _HAVE_PORTAUDIO_ 
 +gdouble get_playback_speed (void) 
 +{ 
 + return 1.0; 
