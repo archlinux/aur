@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.15
+_version=2018.2.16
 _build=f1
-_randomstring=65e0713a5949
+_randomstring=39a4ac3d51f6
 _prefix=/opt/Unity
 
 pkgname=unity-editor-webgl
@@ -17,7 +17,7 @@ depends=('unity-editor'
          'gzip'
          'ncurses5-compat-libs')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/LinuxEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-${_version}${_build}.tar.xz")
-sha1sums=('4a82d4626183e8f293c9a76b1909a3c95dd1f88a')
+sha1sums=('f29ade037dcba459a6bb9afe7b9df069da0b51c7')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
