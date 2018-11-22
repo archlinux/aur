@@ -1,73 +1,40 @@
-#
-# PKGBUILD for fs-uae-launcher
-#
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Uffe Jakobsen <uffe@uffe.org>
-# Maintainer: Uffe Jakobsen <uffe@uffe.org>
-# Maintainer: Guilherme Calé <gui@cabritacale.eu>
-#
+# Contributor: Guilherme Calé <gui@cabritacale.eu>
+
 pkgname=fs-uae-launcher
 pkgver=2.8.3
-pkgrel=1
-epoch=
-pkgdesc=""
+pkgrel=2
+pkgdesc='Graphical user interface for the fs-uae Amiga emulator'
 arch=('any')
-url=http://fs-uae.net/launcher
-_pkgname=${pkgname}
-_pkgver=${pkgver}
-_pkgsrcdir=
-_pkgurl="http://fs-uae.net/fs-uae/stable/${_pkgver}/${_pkgname}-${_pkgver}.tar.gz"
+url='https://fs-uae.net/launcher/'
 license=('GPL2')
-groups=()
-license=("GPL2")
-#depends=("fs-uae" "python2-pyqt4" "python2-setuptools" "python2-six" "hicolor-icon-theme" "xdg-utils")
-depends=("fs-uae" "python-pyqt5" "python-setuptools" "python-six" "hicolor-icon-theme" "xdg-utils")
-makedepends=()
-checkdepends=()
-optdepends=("p7zip: for .7z zip support" "python-lhafile: for .lha file support")
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("${_pkgurl}" "remove_inbuilt_six.patch")
-#source=("${_pkgurl}")
-noextract=()
-
-md5sums=('6afb73337cdeaca9339264350e4a5d17'
-         '0ead6046d867517d42fb981a10d49d81')
+depends=('fs-uae' 'python' 'python-setuptools' 'python-pyqt5' 'python-six'
+         'hicolor-icon-theme')
+optdepends=('p7zip: for .7z file support'
+            'python-lhafile: for .lha file support')
+source=("https://fs-uae.net/fs-uae/stable/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        'remove_inbuilt_six.patch'
+        'fs-uae-launcher.patch')
+sha256sums=('8ce764031013516daab76e996eff9e9fdead6c0f00b4e497fc927f7719d8a233'
+            '4cdbcc3c522517cfa59d5296372afae7e22832673b94cd328bef151ec4db5f23'
+            'e151b62ce6b998e129fcd6881f50cf3f2c2cad76bd13e3cb09b219b6fd9617cd')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${_pkgver}/${_pkgsrcdir}"
+    cd "${pkgname}-${pkgver}"
+    
+    patch -Np0 -i "${srcdir}/remove_inbuilt_six.patch"
+    patch -Np0 -i "${srcdir}/fs-uae-launcher.patch"
 }
 
 build() {
-  # Patch to remove the packaged version of python-six
-  cd "${srcdir}/${_pkgname}-${_pkgver}/${_pkgsrcdir}"
-  patch -N -i ../../remove_inbuilt_six.patch
-  patch -N -i ../../fs-uae-launcher.patch
-  make all
-}
-
-check() {
-  cd "${srcdir}/${_pkgname}-${_pkgver}/${_pkgsrcdir}"
-  #make -k check
+    cd "${pkgname}-${pkgver}"
+    
+    make all
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${_pkgver}/${_pkgsrcdir}"
-  python3 setup.py install --root="${pkgdir}/" --install-lib=/usr/share/fs-uae-launcher --optimize=1
-  install -D -m644 ./share/applications/fs-uae-launcher.desktop "$pkgdir/usr/share/applications/fs-uae-launcher.desktop"
-  install -D -m644 ./share/fs-uae-launcher/share-dir "$pkgdir/usr/share/fs-uae-launcher/share-dir"
-  install -D -m644 ./share/icons/hicolor/16x16/apps/fs-uae-launcher.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/fs-uae-launcher.png"
-  install -D -m644 ./share/icons/hicolor/22x22/apps/fs-uae-launcher.png "$pkgdir/usr/share/icons/hicolor/22x22/apps/fs-uae-launcher.png"
-  install -D -m644 ./share/icons/hicolor/24x24/apps/fs-uae-launcher.png "$pkgdir/usr/share/icons/hicolor/24x24/apps/fs-uae-launcher.png"
-  install -D -m644 ./share/icons/hicolor/32x32/apps/fs-uae-launcher.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/fs-uae-launcher.png"
-  install -D -m644 ./share/icons/hicolor/48x48/apps/fs-uae-launcher.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/fs-uae-launcher.png"
-  install -D -m644 ./share/icons/hicolor/64x64/apps/fs-uae-launcher.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/fs-uae-launcher.png"
-  install -D -m644 ./share/icons/hicolor/128x128/apps/fs-uae-launcher.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/fs-uae-launcher.png"
-  install -D -m644 ./share/icons/hicolor/256x256/apps/fs-uae-launcher.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/fs-uae-launcher.png"
+    cd "${pkgname}-${pkgver}"
+    
+    make DESTDIR="$pkgdir" prefix='/usr' install
 }
-
-# EOF
