@@ -1,37 +1,49 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=xed
-pkgver=1.8.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A small and lightweight text editor. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('gtksourceview3' 'enchant' 'desktop-file-utils' 'libsm'
         'libpeas' 'xapps' 'gspell')
-makedepends=('gnome-common' 'iso-codes' 'gobject-introspection')
+makedepends=('gnome-common' 'iso-codes' 'gobject-introspection' 'meson')
 provides=($pkgname)
 conflicts=('xed-git' $_pkgname)
 url='https://github.com/linuxmint/xed'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('86ef2a748c2da27810e416bcb856e309')
+md5sums=('f9b3149e31226dcc759a8ecf3d236652')
 
 
 prepare() {
     cd ${srcdir}/${pkgname}-${pkgver}
-    # https://www.archlinux.org/todo/enchant-221-rebuild/
-    sed -i 's/, enchant/, enchant-2/' configure.ac
 }
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
-    ./autogen.sh --with-gtk=3.0 --prefix="/usr" \
-         --localstatedir="/var" \
-         --libexecdir="/usr/lib/xed"
-    make CFLAGS='-w -O2'
+
+    meson . build \
+        --prefix         /usr \
+        --libdir         /usr/lib \
+        --libexecdir     /usr/lib \
+        --bindir         /usr/bin \
+        --sbindir        /usr/bin \
+        --includedir     /usr/include \
+        --datadir        /usr/share \
+        --mandir         /usr/share/man \
+        --infodir        /usr/share/info \
+        --localedir      /usr/share/locale \
+        --sysconfdir     /etc \
+        --localstatedir  /var \
+        --sharedstatedir /var/lib
+
+    ninja -v -C build
 }
 
 package(){
     cd ${srcdir}/${pkgname}-${pkgver}
-    make DESTDIR="$pkgdir/" install
+
+    DESTDIR="$pkgdir/" ninja install -v -C build
 }
 
