@@ -1,6 +1,6 @@
 pkgbase = jabba
 	pkgdesc = Java Version Manager.
-	pkgver = 0.10.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/shyiko/jabba
 	arch = i686
@@ -8,14 +8,15 @@ pkgbase = jabba
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
-	license = ApacheV2
+	license = Apache
 	makedepends = git
 	makedepends = go
 	makedepends = glide
+	depends = glibc
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/shyiko/jabba/archive/0.10.1.tar.gz
-	sha256sums = 059d5f14a23eba8f3cedf047c99489173fe52fe9bda6484e4000afc9cb7dfb0a
+	source = https://github.com/shyiko/jabba/archive/0.11.0.tar.gz
+	sha256sums = 1eee1ac5a8bf74918b95e933f91037bffa320c28da2013d876888fcf19bc94f8
 
 pkgname = jabba
 
