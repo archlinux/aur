@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=battery-monitor-git
-pkgver=0.6.r15.g42d02b2
-pkgrel=2
+pkgver=0.6.r19.g8754ddf
+pkgrel=1
 pkgdesc='A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux.'
-arch=('x86_64')
+arch=('any')
 url="https://github.com/maateen/battery-monitor"
 license=('GPL3')
-depends=('acpi' 'python' 'python-setuptools' 'libnotify' 'libappindicator-gtk3')
+depends=('acpi' 'python' 'python-gobject' 'libnotify' 'libappindicator-gtk3')
+makedepends=('python-setuptools')
 conflicts=('battery-monitor' 'battery-monitor-devel-git')
 provides=('battery-monitor')
 source=("$pkgname"::'git+https://github.com/maateen/battery-monitor.git')
@@ -28,9 +29,14 @@ prepare() {
 
 }
 
+build() {
+	cd "$srcdir/${pkgname}"
+    python setup.py build
+}
+
 package() {
 	cd "$srcdir/${pkgname}"
-	python setup.py install --root="$pkgdir/"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm755 battery-monitor-autostart.desktop "${pkgdir}/etc/xdg/autostart/battery-monitor-autostart.desktop"
 	install -Dm755 battery-monitor.desktop "${pkgdir}/usr/share/applications/battery-monitor.desktop"
 	install -Dm644 battery_monitor/icons/icon.png "${pkgdir}/usr/share/pixmaps/battery-monitor.png"
