@@ -1,4 +1,5 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Mantainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: RunningDroid <runningdroid AT zoho.com>
 # Contributor: Sebastian Lindqvist <dunpin@gmail.com>
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
@@ -10,7 +11,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20180718
+pkgver=20181120
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -29,6 +30,7 @@ depends=('hicolor-icon-theme'
          'python-requests'
          'python-six'
          'python-websocket-client'
+	 'python-aiohttp_socks'
          'qt5-base')
 checkdepends=('python-tox')
 makedepends=('gettext'
