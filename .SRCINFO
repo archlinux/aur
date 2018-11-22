@@ -1,6 +1,6 @@
 pkgbase = sn0int-git
 	pkgdesc = OSINT framework and package manager
-	pkgver = 0.5.0.r1.gce1d1b3
+	pkgver = 0.5.1.r0.gcb97809
 	pkgrel = 1
 	url = https://github.com/kpcyrd/sn0int
 	install = sn0int.install
@@ -16,6 +16,8 @@ pkgbase = sn0int-git
 	depends = libcap
 	depends = sqlite
 	depends = libseccomp
+	depends = geoip2-database
+	depends = publicsuffix-list
 	provides = sn0int
 	conflicts = sn0int
 	source = git+https://github.com/kpcyrd/sn0int.git

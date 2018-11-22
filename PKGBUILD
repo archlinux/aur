@@ -2,11 +2,11 @@
 
 _gitname=sn0int
 pkgname=sn0int-git
-pkgver=0.5.0.r1.gce1d1b3
+pkgver=0.5.1.r0.gcb97809
 pkgrel=1
 pkgdesc="OSINT framework and package manager"
 url="https://github.com/kpcyrd/sn0int"
-depends=('libcap' 'sqlite' 'libseccomp')
+depends=('libcap' 'sqlite' 'libseccomp' 'geoip2-database' 'publicsuffix-list')
 makedepends=('cargo' 'git' 'python-sphinx' 'make')
 provides=('sn0int')
 conflicts=('sn0int')
