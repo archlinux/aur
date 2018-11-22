@@ -43,9 +43,10 @@ build() {
     mkdir -p $srcdir/$_realname/build/tmp_dir
     cp -r /usr/lib/python2.7/site-packages/sat_frontends $srcdir/$_realname/build/tmp_dir/sat_frontends
     cp -r /usr/lib/python2.7/site-packages/sat $srcdir/$_realname/build/tmp_dir/sat
+    cp -r $srcdir/$_realname/libervia $srcdir/$_realname/build/tmp_dir/libervia
     cd $srcdir/$_realname/browser
-    $PYJSBUILD_PATH/pyjsbuild libervia_main.py  -d -I $srcdir/$_realname/build/tmp_dir/ --no-compile-inplace -o ../html
-    $PYJSBUILD_PATH/pyjsbuild libervia_test.py -d -I $srcdir/$_realname/build/tmp_dir/ --no-compile-inplace -o ../html
+    $PYJSBUILD_PATH/pyjsbuild libervia_main.py  -d -I $srcdir/$_realname/build/tmp_dir/ --no-compile-inplace -o $srcdir/$_realname/html
+    $PYJSBUILD_PATH/pyjsbuild libervia_test.py -d -I $srcdir/$_realname/build/tmp_dir/ --no-compile-inplace -o $srcdir/$_realname/html
     cp -r $srcdir/$_realname/{$_realname,browser,twisted} $srcdir/fakeinstall/usr/lib/python2.7/site-packages/libervia
 }
 
