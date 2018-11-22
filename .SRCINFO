@@ -1,6 +1,6 @@
 pkgbase = yadshot
 	pkgdesc = GUI frontend for taking screenshots. Also uploads screenshots, files and pastes.
-	pkgver = 0.2.03
+	pkgver = 0.2.04
 	pkgrel = 1
 	url = http://www.simonizor.net
 	install = yadshot.install
@@ -13,8 +13,8 @@ pkgbase = yadshot
 	optdepends = ffmpeg: screenshot backend
 	optdepends = imagemagick: screenshot backend
 	optdepends = grabc: alternative colour picker
-	source = https://github.com/simoniz0r/yadshot/archive/0.2.03.tar.gz
-	md5sums = b63d7947e343c5511a1219bb16bedc5a
+	source = https://github.com/simoniz0r/yadshot/archive/0.2.04.tar.gz
+	md5sums = ca346e04657cfe56965eeaa37c14971e
 
 pkgname = yadshot
 

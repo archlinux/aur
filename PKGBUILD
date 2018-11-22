@@ -1,7 +1,7 @@
 # Maintainer: E5ten
 
 pkgname=yadshot
-pkgver=0.2.03
+pkgver=0.2.04
 pkgrel=1
 pkgdesc="GUI frontend for taking screenshots. Also uploads screenshots, files and pastes."
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('ffmpeg: screenshot backend'
 			'imagemagick: screenshot backend'
 			'grabc: alternative colour picker')
 source=("https://github.com/simoniz0r/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('1b47ab01445a7d4b86104098884dfcb0')
+md5sums=('ca346e04657cfe56965eeaa37c14971e')
 
 package() {
 	cd $srcdir/$pkgname-$pkgver
