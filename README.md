@@ -11,9 +11,9 @@ lsd is also available on the AUR, [here](https://aur.archlinux.org/packages/lsd/
 
 ### Parameters
 
-1. -r | --rows : It specifies how many rows of *trips* you want to print. Pick a suitable number for yourself, depending upon your screen size and resolution. Default is 20 units.
+1. -r | --rows : It specifies how many rows of *trips* you want to print. Pick a suitable number for yourself, depending upon your screen size and resolution.
 
-2. -w | --width : It specifies the width of the *trips*.  Pick a suitable number for yourself, depending upon your screen size and resolution. Default is 100 units.
+2. -w | --width : It specifies the width of the *trips*.  Pick a suitable number for yourself, depending upon your screen size and resolution.
 
 3. -o | --widthOffset : It specifies the offset of the *trips* (from where the trips start from).  Pick a suitable number for yourself, depending upon your screen size and resolution. Default is 0 units.
 
