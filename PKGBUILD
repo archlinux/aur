@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
 _version=2018.3.0
-_build=b9
-_randomstring=a3326ae325b2
+_build=b11
+_randomstring=45aaf16dbe1a
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-language-zh-cn
@@ -14,7 +14,7 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta')
 source=("https://new-translate.unity3d.jp/v1/live/54/2018.3/zh-cn")
-sha1sums=('a4c1220d7ab8de4f394d352634107098a72d6799')
+sha1sums=('01091f29c74b1dbfe35bccb5ad708d37c0ed3d56')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
