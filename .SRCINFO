@@ -1,6 +1,6 @@
 pkgbase = casync-git
 	pkgdesc = Content-Addressable Data Synchronization Tool
-	pkgver = 2.r152.ge4a3c5e
+	pkgver = 2.r156.g5f4540f
 	pkgrel = 1
 	url = https://github.com/systemd/casync
 	arch = x86
@@ -21,9 +21,7 @@ pkgbase = casync-git
 	provides = casync
 	conflicts = casync
 	source = casync-git::git+https://github.com/systemd/casync
-	source = renameat2-test-fix.patch
 	sha256sums = SKIP
-	sha256sums = 3fb0fc4965039d0fc5b51c8fe49bb7ad74108324ff921c6f5b74127036c28d51
 
 pkgname = casync-git
 
