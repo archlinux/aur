@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=libnpa
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -9,15 +9,8 @@ pkgdesc='Free library for manipulating Nitroplus game files'
 url='http://dev.pulsir.eu/krofna/'
 depends=('boost-libs' 'zlib')
 makedepends=('cmake' 'boost')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/FGRE/$pkgname/archive/v$pkgver.tar.gz"
-        "$pkgname-fix-flex-function-prototype.patch")
-sha256sums=('bd2235afcf51b383546497e6d073523c9de300260ca8f20d44147dd9ebf77644'
-            'bdfbbb54e27cda8c7ce1e4b9ad31eb224fa9e88e2e18166a55d348e606086834')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 < ../$pkgname-fix-flex-function-prototype.patch
-}
+source=($pkgname-$pkgver.tar.gz::"https://github.com/FGRE/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('5d8423b5e5e859a15cb84932005d7e33e93b463145d0570626ec8c67f6e803c8')
 
 build() {
   cd $pkgname-$pkgver
