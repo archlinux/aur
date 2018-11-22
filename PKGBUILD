@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.15
+_version=2018.2.16
 _build=f1
-_randomstring=65e0713a5949
+_randomstring=39a4ac3d51f6
 _prefix=/opt/Unity
 
 pkgname=unity-editor-android
@@ -19,7 +19,7 @@ depends=('unity-editor'
 makedepends=('cpio')
 optdepends=('android-ndk-13b: needed for IL2CPP builds')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-${_version}${_build}.pkg")
-sha1sums=('60b26e059b6b2ee96cf6639bcefb1f5a098e648a')
+sha1sums=('7dcd96adf5cef1aed7cab57a325df9cdec36be7d')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
