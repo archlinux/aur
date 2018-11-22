@@ -3,20 +3,20 @@
 # Contributor: zhuqin <zhuqin83@gmail.com>
 
 pkgname=gtk-engine-murrine-git
-pkgver=0.98.2.r406.2032a9b
+pkgver=0.98.2.r408.f96e446
 pkgrel=1
 pkgdesc="The marvelous gtk2 cairo engine (development version)"
 arch=('i686' 'x86_64')
 url="http://cimitan.com/murrine/"
-license=('LGPL')
+license=('LGPL3')
 depends=('gtk2')
 makedepends=('git' 'intltool')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}")
-source=("${pkgname%-*}"::"git+https://git.gnome.org/browse/murrine"
-        "newer-automakes.patch")
+source=("${pkgname%-*}"::"git+https://github.com/GNOME/murrine.git"
+        "fix-crasher.patch")
 sha256sums=('SKIP'
-            'f36037693603ca450a8bc7e2c0ba7269af18640123b87fc6dd2eb11b3e423be3')
+            'e33f76ea23e38eecd2921300c7c01ff06ca33f63b9c7810d83d95e47681fe7da')
 
 pkgver() {
   cd "${pkgname%-*}"
@@ -28,15 +28,15 @@ pkgver() {
 }
 
 prepare() {
-  cd "${pkgname%-*}"
-
-  patch -Nup1 < ../newer-automakes.patch
+  patch -d "${pkgname%-*}" -Nup1 < fix-crasher.patch
 }
 
 build() {
   cd "${pkgname%-*}"
 
-  ./autogen.sh --prefix=/usr --enable-animation --enable-animationrtl
+  intltoolize -c
+  autoreconf -i
+  ./configure --prefix=/usr --enable-animation --enable-animationrtl
   make
 }
 
