@@ -1,6 +1,6 @@
 pkgbase = caffe2-git
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (git version)
-	pkgver = 0.8.2.r14563.g4f622c26b9
+	pkgver = 0.8.2.r14826.gf79fb58744
 	pkgrel = 1
 	epoch = 1
 	url = https://caffe2.ai/
