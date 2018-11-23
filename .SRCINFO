@@ -1,13 +1,12 @@
 pkgbase = nnn-git
 	pkgdesc = A lightweight terminal file browser
-	pkgver = 1.8.r2.g7e300b9
+	pkgver = 2.1.r1.g9e974be
 	pkgrel = 1
 	url = https://github.com/jarun/nnn
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	depends = libncursesw.so
-	depends = libreadline.so
+	depends = bash
 	provides = nnn
 	conflicts = nnn
 	source = git+https://github.com/jarun/nnn.git
