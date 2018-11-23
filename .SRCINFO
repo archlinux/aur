@@ -13,7 +13,6 @@ pkgbase = parsoid
 	optdepends = mediawiki: MediaWiki engine
 	provides = parsoid
 	conflicts = parsoid-git
-	replaces = parsoid-git
 	options = !strip
 	backup = usr/share/webapps/parsoid/localsettings.js
 	backup = usr/share/webapps/parsoid/config.yaml
