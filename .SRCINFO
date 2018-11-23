@@ -1,6 +1,6 @@
 pkgbase = unclutter-xfixes-git
 	pkgdesc = unclutter-xfixes is a rewrite of unclutter using the x11-xfixes extension.
-	pkgver = v1.3.r0.gead5166
+	pkgver = v1.4.r1.g6d2142e
 	pkgrel = 1
 	url = https://github.com/Airblader/unclutter-xfixes
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = unclutter-xfixes-git
 	provides = unclutter
 	conflicts = unclutter
 	conflicts = unclutter-patched
+	conflicts = unclutter-xfixes
 	source = git://github.com/Airblader/unclutter-xfixes#branch=master
 	sha1sums = SKIP
 
