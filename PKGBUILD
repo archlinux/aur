@@ -4,7 +4,7 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgbase=hydrus
 pkgname=(hydrus)
-pkgver=330
+pkgver=331
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus')
-source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=80b5ae7cf1f4beff8ae2418561e937579e7d85cf"
+source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=c79292dc09c9300df43b1bed365a717e441634a5"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
