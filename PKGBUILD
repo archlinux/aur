@@ -3,8 +3,8 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile
-pkgver=6.2.5
-pkgrel=2
+pkgver=6.2.7
+pkgrel=1
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
@@ -15,19 +15,16 @@ makedepends=("vala" "intltool")
 conflicts=("seafile-server")
 source=("seafile-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "libseafile.in.patch"
-        "seaf-cli@.service"
-        curl-7.62.0.patch::"${url}/commit/44dfd2adfc4ec0e5bc57c57c1e701a25996c8221.patch")
-sha256sums=('0899981d43db96b465b3b945c160b62fc658556f90c8d426f6b8a4ea9edb2da8'
+        "seaf-cli@.service")
+sha256sums=('4988f576199a1b2f2aec29080026d591d1c9d98eb90613ac631b44861213038b'
             'a2d7f7cf0c59aba97650af62b3cefd0ceb71a1007c34d9369a88e5769c7f6076'
-            'c37510109c1de64c774896df39aece240c056b54414d2119fca01860211156ba'
-            '538433afb8bbdd7969b22b976308ba45e1925edb2c5022bbe2948a256e98a097')
+            'c37510109c1de64c774896df39aece240c056b54414d2119fca01860211156ba')
 provides=('seafile-client-cli')
 
 prepare () {
   cd "${srcdir}/seafile-${pkgver}"
 
   patch -p1 -i "${srcdir}/libseafile.in.patch"
-  patch -p1 -i "${srcdir}/curl-7.62.0.patch"
 
   # Fix all script's python 2 requirement
   grep -s -l -r '#!/usr/bin/env python' "${srcdir}/seafile-${pkgver}" \
