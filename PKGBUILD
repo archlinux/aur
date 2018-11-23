@@ -2,7 +2,7 @@
 # Contributer: Andrey Vihrov
 
 pkgname=xfce4-screensaver
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Screensaver for XFCE Desktop'
 url="https://www.xfce.org"
@@ -15,7 +15,7 @@ conflicts=('mate-screensaver-gtk3' 'mate-screensaver' 'gnome-screensaver')
 replaces=('mate-screensaver-gtk3' 'mate-screensaver' 'gnome-screensaver')
 source=("https://git.xfce.org/apps/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz" 
 	"xfce4-screensaver.pam")
-sha256sums=('ed07c2fc1e6e06fd7554a8d5b4d8dddd80c51cff5e1b6e5e3fe4c533cfca4c6e'
+sha256sums=('8ca6d27d00b907d84188ec8dbd5d66d6c8efe8a30d3b22ebf77bd838e5492574'
             'f8f58c56a2543a005b13271624bbeec43bd6fe4403a7a4b5e9d10e643cd46f37')
 
 build() {
