@@ -5,6 +5,7 @@
 _use_ppa=true
 
 pkgbase=gtk3-ubuntu-multilib
+<<<<<<< HEAD
 pkgname=({lib32-,}gtk3-ubuntu-multilib)
 _ubuntu_rel=1ubuntu2~ubuntu16.10.1
 pkgver=3.22.7
@@ -13,6 +14,16 @@ pkgdesc="GObject-based multi-platform toolkit"
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
 pkgdesc="GObject-based multi-platform toolkit (v3) from Ubuntu"
+=======
+#pkgname=({lib32-,}gtk3-ubuntu-multilib)
+_ubuntu_rel=1ubuntu2~ubuntu16.10.1
+pkgver=3.22.7
+pkgrel=2
+pkgdesc="Test package; do not install!"
+arch=(i686 x86_64)
+url="http://www.gtk.org/"
+#pkgdesc="GObject-based multi-platform toolkit (v3) from Ubuntu"
+>>>>>>> This is a test; this is likely to fail or break something.
 depends=(adwaita-icon-theme gtk-update-icon-cache desktop-file-utils shared-mime-info wayland-protocols)
 makedepends=(gobject-introspection gtk-doc)
 arch=(i686 x86_64)
@@ -102,6 +113,7 @@ build() {
   popd
 }
 
+<<<<<<< HEAD
 package_gtk3-ubuntu-multilib() {
   depends+=(at-spi2-atk atk cairo colord gdk-pixbuf2 
             json-glib pango rest wayland
@@ -158,3 +170,61 @@ package_lib32-gtk3-ubuntu-multilib() {
   done
 
 }
+=======
+#package_gtk3-ubuntu-multilib() {
+#  depends+=(at-spi2-atk atk cairo colord gdk-pixbuf2 
+#            json-glib pango rest wayland
+#            lib{cups,epoxy,rsvg,xcomposite,xcursor,xdamage,xi,xinerama,xkbcommon,xrandr})
+#  makedepends+=(libcanberra)
+#  optdepends=('libcanberra: gtk3-widget-factory demo')
+#  provides=(gtk3{,-ubuntu}=${pkgver})
+#  conflicts=('gtk3')
+#  install=gtk3-ubuntu.install
+#
+#  cd "gtk+-$pkgver/build-x86_64"
+#
+#  make DESTDIR="$pkgdir" install
+#  install -Dm644 ../../settings.ini "${pkgdir}"/usr/share/gtk-3.0/settings.ini
+#  install -Dm644 ../../gtk-query-immodules-3.0.hook "${pkgdir}"/usr/share/libalpm/hooks/gtk-query-immodules-3.0.hook
+#
+#  rm "${pkgdir}"/usr/bin/gtk-update-icon-cache
+#
+#  cd "$pkgdir"
+#  for _f in usr/lib/*/*/printbackends/*; do
+#      case $_f in
+#          *-file.so|*-lpr.so) continue ;;
+#          *) rm "${_f}" ;;
+#      esac
+#  done
+#}
+
+#package_lib32-gtk3-ubuntu-multilib() {
+#  pkgdesc+=" (32bit)"
+#  depends+=(lib32-{at-spi2-atk,atk,cairo,colord,gdk-pixbuf2,json-glib,pango,rest,wayland}
+#            lib32-lib{cups,epoxy,rsvg,xcomposite,xcursor,xdamage,xi,xinerama,xkbcommon,xrandr})
+#  makedepends+=(lib32-libcanberra)
+#  optdepends=('lib32-libcanberra: gtk3-widget-factory demo')
+#  provides=(lib32-gtk3{,-ubuntu}=${pkgver})
+#  conflicts=('lib32-gtk3')
+#  install=lib32-gtk3-ubuntu.install
+#
+#  cd "gtk+-$pkgver/build-i686"
+#
+#  make DESTDIR="$pkgdir" install
+#  install -Dm644 ../../lib32-gtk-query-immodules-3.0.hook "${pkgdir}"/usr/share/libalpm/hooks/lib32-gtk-query-immodules-3.0.hook
+#
+#  rm -rf "${pkgdir}"/{etc,usr/{share,include}} # needs bin/gtk-query-immodules-3.0-32
+#  find "$pkgdir/usr/bin" -type f -not -name gtk-query-immodules-3.0-32 -delete
+#
+#  #rm "${pkgdir}"/usr/bin/gtk-update-icon-cache-32
+#
+#  cd "$pkgdir"
+#  for _f in usr/lib32/*/*/printbackends/*; do
+#      case $_f in
+#          *-file.so|*-lpr.so) continue ;;
+#          *) rm "${_f}" ;;
+#      esac
+#  done
+#
+#}
+>>>>>>> This is a test; this is likely to fail or break something.
