@@ -14,8 +14,8 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=15.0.1
-_buildver=10737736
+pkgver=15.0.2
+_buildver=10952284
 _pkgver=${pkgver}_${_buildver}
 pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
@@ -93,7 +93,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '02fc07d01a1967547bee27aaa95b56e616342ae492aa0df94df40f891d013e89'
+  '22675343abd4d88a78399c9af8b271912161d28d58bbb58f0af0804a9957a96a'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -127,7 +127,7 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=11.0.1_10738065
+_vmware_fusion_ver=11.0.2_10952296
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 makedepends+=(
@@ -141,8 +141,8 @@ source+=(
   'unlocker.py'
 )
 sha256sums+=(
-  'f93b1f8f39bbbcea574d6fb7e6e5008113d1848f7abf24792da5d6da5f8b56eb'
-  'edd92784f182aae4b7f728fdbf18239261a7e0bfebfd066cfe39929b8f6b0288'
+  '02cc231902c9fc1b4faf2fc2664e7f3d2121ad4b8a92e18a759b044d20a7b724'
+  'f6b542320ae2aa33bf6c5cb7ccdda702ae5067c3e3ae2e55c1b876a2d65356a3'
   '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
 )
 
