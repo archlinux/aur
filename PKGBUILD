@@ -7,7 +7,7 @@ pkgdesc="Helmfile is declarative spec for deploying helm charts"
 url="https://github.com/roboll/helmfile"
 license=('MIT')
 arch=('x86_64')
-depends=('kubernetes-helm')
+depends=('kubernetes-helm-bin')
 
 source=("https://github.com/roboll/helmfile/releases/download/v$pkgver/helmfile_linux_amd64")
 sha256sums=('432c6a9e604e17808fb90008167547ebf883c6fbe2be06ea40c6e9936ebccd52')
