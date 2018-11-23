@@ -11,6 +11,8 @@ license=('GPL3')
 makedepends=('cargo')
 depends=('bubblewrap' 'git')
 
+#options+=(!strip)  # uncomment to have readable stack traces
+
 sha256sums=(6ae89998ab4e59b13815beabcd7c781ba7185e534da5ecdb77c0052233000f4e)
 
 build () {
