@@ -3,7 +3,7 @@
 
 _pkgname=nohang
 pkgname=${_pkgname}-git
-pkgver=r152.g37bb978
+pkgver=0.1.r2.ga8cde7c
 pkgrel=1
 pkgdesc="A highly configurable OOM preventer"
 arch=('any')
@@ -27,8 +27,7 @@ backup=('etc/nohang/nohang.conf')
 pkgver() {
 	cd "${srcdir}/${pkgname}" || exit 2
 	set -o pipefail
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || \
-		echo "r$(git log --oneline | wc -l).g$(git describe --always)"
+	git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
