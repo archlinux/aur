@@ -35,7 +35,7 @@ build() {
 
 	make -f /usr/share/mrustc/minicargo.mk rustc-$pkgver-src/build/bin/llvm-config
 	make -f /usr/share/mrustc/minicargo.mk -j1 output/rustc output/cargo
-	make -C run_rustc
+	make -C run_rustc -j1
 }
 
 package() {
