@@ -1,18 +1,18 @@
 pkgbase = poetry
 	pkgdesc = Python dependency management and packaging made easy.
-	pkgver = 0.12.9
+	pkgver = 0.12.10
 	pkgrel = 1
-	url = https://github.com/sdispater/poetry
+	url = https://poetry.eustace.io/
 	arch = any
 	license = MIT
 	depends = python>=3.4
 	conflicts = python-poetry
 	options = !emptydirs
-	source = https://github.com/sdispater/poetry/releases/download/0.12.9/poetry-0.12.9-linux.tar.gz
-	source = https://github.com/sdispater/poetry/archive/0.12.9.tar.gz
+	source = https://github.com/sdispater/poetry/releases/download/0.12.10/poetry-0.12.10-linux.tar.gz
+	source = https://github.com/sdispater/poetry/archive/0.12.10.tar.gz
 	source = poetry.py
-	sha256sums = 308cf7727d9daaa1467217fede1875f4ec9012ed78431755900af1df723d44b1
-	sha256sums = 9dcdb8e69b3ce705afdea80143f24109c6e50c86208e796a3728996763c86f91
+	sha256sums = b15bf7834dfcdab609b9ff2e2fe7c1ae48acc9bfe8ac865e6b53bdab92ffa2a0
+	sha256sums = 967866041224213e8ca9050938ff2ae3853b48c359ffbe42b6100ebef2ede66f
 	sha256sums = e9fee925c0fb42df53389bdfc8ebbe01bfd4f6146ed0a55786bd2ba741169c0c
 
 pkgname = poetry

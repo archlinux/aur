@@ -1,15 +1,13 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=poetry
-pkgver=0.12.9
+pkgver=0.12.10
 pkgrel=1
 pkgdesc="Python dependency management and packaging made easy."
 arch=('any')
-url="https://github.com/sdispater/poetry"
+url="https://poetry.eustace.io/"
 license=('MIT')
-depends=(
-  'python>=3.4'
-)
+depends=('python>=3.4')
 conflicts=('python-poetry')
 options=(!emptydirs)
 source=(
@@ -18,8 +16,8 @@ source=(
   "poetry.py"
 )
 sha256sums=(
-  '308cf7727d9daaa1467217fede1875f4ec9012ed78431755900af1df723d44b1'
-  '9dcdb8e69b3ce705afdea80143f24109c6e50c86208e796a3728996763c86f91'
+  'b15bf7834dfcdab609b9ff2e2fe7c1ae48acc9bfe8ac865e6b53bdab92ffa2a0'
+  '967866041224213e8ca9050938ff2ae3853b48c359ffbe42b6100ebef2ede66f'
   'e9fee925c0fb42df53389bdfc8ebbe01bfd4f6146ed0a55786bd2ba741169c0c'
 )
 
