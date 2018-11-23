@@ -1,8 +1,8 @@
 pkgbase = kdiff3-kf5-git
 	pkgdesc = A KDE file comparator/merge tool
-	pkgver = 20160423_2b7e23a
+	pkgver = 1.7.90_3029480
 	pkgrel = 1
-	url = https://quickgit.kde.org/?p=scratch%2Fthomasfischer%2Fkdiff3.git
+	url = https://cgit.kde.org/kdiff3.git
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,11 +11,12 @@ pkgbase = kdiff3-kf5-git
 	makedepends = git
 	makedepends = kdoctools
 	depends = kparts
+	depends = hicolor-icon-theme
 	conflicts = kdiff3
 	conflicts = kdiff3-git
 	conflicts = kdiff3-kf5
 	conflicts = kdiff3-qt
-	source = git://anongit.kde.org/scratch/thomasfischer/kdiff3.git#branch=kf5
+	source = git+https://github.com/KDE/kdiff3.git
 	sha512sums = SKIP
 
 pkgname = kdiff3-kf5-git

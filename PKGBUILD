@@ -3,21 +3,21 @@
 _basename=kdiff3
 _gitbranch=kf5
 pkgname=${_basename}-${_gitbranch}-git
-pkgver=20160423_2b7e23a
+pkgver=1.7.90_3029480
 pkgrel=1
 pkgdesc="A KDE file comparator/merge tool"
 arch=('i686' 'x86_64')
-url="https://quickgit.kde.org/?p=scratch%2Fthomasfischer%2Fkdiff3.git"
+url="https://cgit.kde.org/kdiff3.git"
 license=('GPL')
-depends=('kparts')
+depends=('kparts' 'hicolor-icon-theme')
 conflicts=("$_basename" "${_basename}-git" "${_basename}-${_gitbranch}" "${_basename}-qt")
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'kdoctools')
-source=("git://anongit.kde.org/scratch/thomasfischer/${_basename}.git#branch=${_gitbranch}")
+source=("git+https://github.com/KDE/kdiff3.git")
 sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_basename"
-  echo "$(git log -1 --format="%cd" --date=short | sed 's|-||g')_$(git rev-parse --short HEAD)"
+  git describe --always | sed "s/-/./g" | sed "s/^/1.7.90_/g"
 }
 
 prepare() {
@@ -26,8 +26,7 @@ prepare() {
 
 build() {
   cd "$srcdir/build"
-  # Strange source directory structure upstream, so "$srcdir/$_basename/$_basename" *is* correct
-  cmake "$srcdir/$_basename/$_basename"  \
+  cmake "$srcdir/$_basename"  \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
