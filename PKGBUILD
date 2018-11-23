@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgbase=('ecos')
 pkgname=('ecos')
-pkgver='2.0.6'
+pkgver='2.0.7'
 pkgrel=1
 pkgdesc="A lightweight conic solver for second-order cone programming."
 url="https://www.embotech.com/ECOS"
@@ -9,8 +9,8 @@ depends=()
 makedepends=()
 license=('GPL3')
 arch=('x86_64')
-source=("https://github.com/embotech/ecos/archive/v${pkgver}.tar.gz")
-sha256sums=('ffc4b44e813a5c68abd464b638d216f09385d9b6e40cf487ac384289e6a27988')
+source=("https://github.com/embotech/ecos/archive/${pkgver}.tar.gz")
+sha256sums=('bdb6a84f7d150820459bd0a796cb64ffbb019afb95dc456d22acc2dafb2e70e0')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
