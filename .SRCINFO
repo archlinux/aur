@@ -1,6 +1,6 @@
 pkgbase = dianara
 	pkgdesc = A Qt pump.io client
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = http://dianara.nongnu.org/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = dianara
 	depends = file
 	depends = qt5-base
 	depends = qoauth
-	source = http://download-mirror.savannah.gnu.org/releases/dianara/dianara-v1.4.1.tar.gz
-	sha256sums = 347d632dab989bfe3a2a611033e51568a73dd59e3dd76e9556351db21f054e81
+	source = https://download-mirror.savannah.gnu.org/releases/dianara/dianara-v1.4.2.tar.gz
+	sha256sums = e61b43d86759c5a941698f6f4e2dd769df08a32688acd9eaa09a67232acb93ba
 
 pkgname = dianara
 

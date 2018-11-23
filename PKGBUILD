@@ -1,26 +1,27 @@
-# Maintainer: Iván Ruvalcaba <mario.i.ruvalcaba[at]gmail[dot]com>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Iván Ruvalcaba <mario.i.ruvalcaba[at]gmail[dot]com>
 # Contributor: Eugenio M. Vigo <emvigo@gmail.com>
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=dianara
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A Qt pump.io client"
 arch=('i686' 'x86_64')
 url="http://dianara.nongnu.org/"
 license=('GPL')
 depends=('hicolor-icon-theme' 'file' 'qt5-base' 'qoauth')
-source=("http://download-mirror.savannah.gnu.org/releases/${pkgname}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('347d632dab989bfe3a2a611033e51568a73dd59e3dd76e9556351db21f054e81')
+source=("https://download-mirror.savannah.gnu.org/releases/${pkgname}/${pkgname}-v${pkgver}.tar.gz")
+sha256sums=('e61b43d86759c5a941698f6f4e2dd769df08a32688acd9eaa09a67232acb93ba')
 
 build() {
-  cd "${pkgname}-v${pkgver}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
   qmake Dianara.pro
   make
 }
 
 package() {
-  cd "${pkgname}-v${pkgver}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
 
   make INSTALL_ROOT="${pkgdir}" install
 
