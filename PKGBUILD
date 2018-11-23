@@ -11,7 +11,7 @@ _GRUB_EMU_BUILD="0"
 
 _GRUB_EXTRAS_COMMIT="f2a079441939eee7251bf141986cdd78946e1d20"
 
-_UNIFONT_VER="10.0.06"
+_UNIFONT_VER="11.0.02"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
@@ -19,16 +19,15 @@ _UNIFONT_VER="10.0.06"
 [[ "${CARCH}" == "x86_64" ]] && _EMU_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EMU_ARCH="i386"
 
-pkgname="grub"
-pkgdesc="GNU GRand Unified Bootloader (2)"
+pkgname='grub'
+pkgdesc='GNU GRand Unified Bootloader (2)'
 pkgver=2.02
-pkgrel=7
+pkgrel=8
 epoch=2
-url="https://www.gnu.org/software/grub/"
+url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
 license=('GPL3')
-backup=('boot/grub/grub.cfg'
-        'etc/default/grub'
+backup=('etc/default/grub'
         'etc/grub.d/40_custom')
 install="${pkgname}.install"
 options=('!makeflags')
@@ -68,13 +67,12 @@ source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig}
         '0008-Fix-packed-not-aligned-error-on-GCC-8.patch'
         '0009-xfs-Accept-filesystem-with-sparse-inodes.patch'
         '0010-relocation.patch'
-        'grub.default'
-        'grub.cfg')
+        'grub.default')
 
 sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             'SKIP'
             '2844601914cea6b1231eca0104853a93c4d67a5209933a0766f1475953300646'
-            '0d81571fc519573057b7641d26a31ead55cc0b02a931589fb346a3a534c3dcc1'
+            'a7ea9ca4f6dcb59377d978194835ede669457069256184f86d46ab5b863c56e6'
             'SKIP'
             'b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
@@ -84,8 +82,7 @@ sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             'e84b8de569c7e6b73263758c35cf95c6516fde85d4ed451991427864f6a4e5a8'
             'fcd5a626d4af33665d041ce42df813f1f198d8230ea186481b155a5b676f3b87'
             '51562fa1016c54567dbf42a86c0cfc902372ab579bbee17879a81aff09b76b99'
-            '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82'
-            'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
+            '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82')
 		
 _configure_options=(
 	FREETYPE="pkg-config freetype2"
@@ -280,9 +277,6 @@ _package_grub-common_and_bios() {
 
 	echo "Install /etc/default/grub (used by grub-mkconfig)..."
 	install -D -m0644 "${srcdir}/grub.default" "${pkgdir}/etc/default/grub"
-
-	echo "Install grub.cfg for backup array..."
-	install -D -m0644 "${srcdir}/grub.cfg" "${pkgdir}/boot/grub/grub.cfg"
 }
 
 _package_grub-efi() {
