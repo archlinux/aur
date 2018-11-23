@@ -30,13 +30,15 @@ _NUMAdisable=y
 # that you currently have probed in your system VASTLY reducing the number of
 # modules built and the build time to do it.
 #
-# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+# WARNING - ALL modules must be probed or loaded via a config file BEFORE you
+# begin making the pkg unless you're running modprobed-db (AUR) and building
+# this with makepkg as the user who is keeping the database.
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
 # This PKGBUILD will call it directly to probe all the modules you have logged!
 #
-# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed_db
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
 # Use the current kernel's .config file
@@ -57,7 +59,7 @@ pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
 _rtpatchver=rt${_rtver}
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -168,18 +170,16 @@ prepare() {
         fi
 
     ### Optionally load needed modules for the make localmodconfig
-	# See https://aur.archlinux.org/packages/modprobed-db
-		if [ -n "$_localmodcfg" ]; then
-		msg2 "If you have modprobe-db installed, running it in recall mode now"
-		if [ -e /usr/bin/modprobed-db ]; then
-			[[ -x /usr/bin/sudo ]] || {
-                        echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-                        exit 1; }
-			sudo /usr/bin/modprobed-db recall
-		fi
-		msg2 "Running Steven Rostedt's make localmodconfig now"
-		make localmodconfig
-	fi
+        # See https://aur.archlinux.org/packages/modprobed-db
+        if [ -n "$_localmodcfg" ]; then
+            if [ -f $HOME/.config/modprobed.db ]; then
+            msg2 "Found a modprobed-db database for Steven Rostedt's make localmodconfig"
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+        else
+            msg2 "Running Steven Rostedt's make localmodconfig now"
+            make localmodconfig
+            fi
+        fi
 
     ### Running make nconfig
 	
