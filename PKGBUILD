@@ -2,14 +2,14 @@
 
 pkgname=rust-mrustc
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Rust built with mrustc'
 arch=('x86_64')
 url='https://github.com/thepowersgang/mrustc'
 license=('MIT')
 depends=('mrustc-git')
 makedepends=()
-provides=('rust=$pkgver')
+provides=("rust=$pkgver")
 conflicts=()
 source=("https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz" 'openssl.patch')
 sha256sums=('15231f5053fb72ad82be91f5abfd6aa60cb7898c5089e4f1ac5910a731090c51'
