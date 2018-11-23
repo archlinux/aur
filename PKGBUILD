@@ -2,7 +2,7 @@
 pkgname=python-fusepyng
 _pkgname=fusepyng
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple ctypes bindings for FUSE"
 arch=('i686' 'x86_64')
 url="https://github.com/rianhunter/fusepyng"
@@ -15,8 +15,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/rianhunter/fusepyng/archive
 md5sums=('78cb2589907ce07b5ec0246098787f99'
          '62985e35bb52b272658f467939306759')
 
+build() {
+	cd "$_pkgname-$pkgver"
+    python setup.py build
+}
+
 package() {
 	cd "$_pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
