@@ -1,7 +1,7 @@
 pkgbase = emoji-keyboard-git
 	pkgdesc = Virtual keyboard-like emoji picker for linux (wayland disabled)
 	pkgver = r27.afe17aa
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OzymandiasTheGreat/emoji-keyboard
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = emoji-keyboard-git
 	depends = libappindicator-gtk3
 	depends = python-setuptools
 	depends = python-evdev
+	depends = python-gobject
 	provides = emoji-keyboard
 	conflicts = emoji-keyboard
 	source = git://github.com/OzymandiasTheGreat/emoji-keyboard.git
