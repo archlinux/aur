@@ -2,7 +2,7 @@
 
 pkgname=emacs-ess-git
 epoch=1
-pkgver=18.10.2.8085.58b011d7
+pkgver=8236.b07cfdf6.
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
