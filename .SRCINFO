@@ -1,0 +1,21 @@
+pkgbase = todour-git
+	pkgdesc = An application for handling todo.txt files.
+	pkgver = r56.d34867d
+	pkgrel = 1
+	url = https://nerdur.com/todour-pl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-base
+	depends = qt5-base
+	provides = todour
+	conflicts = todour
+	source = git://github.com/SverrirValgeirsson/todour.git
+	source = git://github.com/falceeffect/UGlobalHotkey.git
+	source = git://github.com/gamecreature/QtAwesome.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = todour-git
+
