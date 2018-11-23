@@ -3,7 +3,7 @@
 pkgname=rust-mrustc
 pkgver=1.19.0
 pkgrel=2
-pkgdesc='Rust built with mrustc'
+pkgdesc='Rust built with mrustc (does not work yet)'
 arch=('x86_64')
 url='https://github.com/thepowersgang/mrustc'
 license=('MIT')
