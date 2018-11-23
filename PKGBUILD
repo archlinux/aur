@@ -3,8 +3,15 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
+### BUILD OPTIONS
+# Set these variables to ANYTHING that is not null to enable them
+
+# Tweak kernel options prior to a build via nconfig
+_makenconfig=
+
 pkgbase=linux-zen-bcachefs-git
-pkgver=4.19.4
+_srcver=4.19.4-zen1
+pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
 url="https://evilpiepirate.org/git/"
@@ -37,7 +44,7 @@ prepare() {
 
   msg2 "Adding patches from zen-kernel repository..."
   git remote add upstream-zen https://github.com/zen-kernel/zen-kernel
-  git pull upstream-zen 4.19/master
+  git pull upstream-zen v$_srcver
   
   msg2 "Revert 4.19/muqss due to strange buggy interactions with bcachefs..."
   git revert -m 1 9731135d7610a36bbe4cce0dbcd0d942e7436e94
@@ -63,7 +70,7 @@ prepare() {
   make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 
-  make nconfig
+  [[ -z "$_makenconfig" ]] || make nconfig
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
