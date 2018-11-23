@@ -1,7 +1,7 @@
 # Maintainer: liberodark
 
 pkgname=quick-n-easy-web-builder-6
-pkgver=6.0.2
+pkgver=6.0.3
 pkgrel=1
 pkgdesc="An Web builder"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://www.quickandeasywebbuilder.com/"
 license=('Custom')
 depends=('xdg-utils')
 source_x86_64=("https://www.quickandeasywebbuilder.com/quick-n-easy-web-builder-6_${pkgver}_amd64.deb")
-sha512sums_x86_64=('d617f64381822a2593f0472b7f5e88f2f5ed2e70ea1857cf23d9723662176462e3af221766601c4ba0e81cedab995b410fcca916b2ec61c04610bcc2423e4166')
+sha512sums_x86_64=('58fb43d2f9c4a7b0bff45fffabfaf0315b2587f730b272d676e3d6059c9f986b7c54491ff0425dc3bed83f3dedd98cdb2f38faf0f6060b8b3e8e1cf19f082629')
         
 package() {
   cd $srcdir
