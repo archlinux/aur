@@ -1,8 +1,8 @@
-pkgbase = caffe-opencl-slim-git
-	pkgdesc = A slimmed-down build of Caffe based on caffe-opencl-git
+pkgbase = caffe-hrt-slim-git
+	pkgdesc = A slimmed-down build of Caffe-HRT based on caffe-opencl-git
 	pkgver = 1.0
-	pkgrel = 31
-	url = http://caffe.berkeleyvision.org/
+	pkgrel = 1
+	url = https://github.com/OAID/Caffe-HRT
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
@@ -32,7 +32,7 @@ pkgbase = caffe-opencl-slim-git
 	depends = opencl-headers
 	depends = openblas-lapack
 	depends = opencv
-	depends = viennacl
+	depends = aarch64-linux-gnu-armcl-opencl+neon
 	provides = caffe
 	conflicts = caffe
 	conflicts = caffe-git
@@ -45,10 +45,10 @@ pkgbase = caffe-opencl-slim-git
 	conflicts = caffe2-cpu
 	conflicts = caffe2-cpu-git
 	conflicts = caffe-opencl-git
-	source = caffe::git+https://github.com/andrew-wja/caffe
+	source = Caffe-HRT::git+https://github.com/OAID/Caffe-HRT.git
 	source = dependencies.patch
 	sha256sums = SKIP
 	sha256sums = 7ddb59109d7df3889641eaa4769e6b9e82f96f623b200ecfd8ade7ecfe04f95f
 
-pkgname = caffe-opencl-slim-git
+pkgname = caffe-hrt-slim-git
 

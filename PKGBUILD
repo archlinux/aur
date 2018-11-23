@@ -1,11 +1,11 @@
 # Maintainer: Andrew Anderson <aanderso at t c d dot ie>
-pkgname=caffe-opencl-slim-git
-_srcname=caffe
+pkgname=caffe-hrt-slim-git
+_srcname=Caffe-HRT
 pkgver=1.0
-pkgrel=31
-pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git"
+pkgrel=1
+pkgdesc="A slimmed-down build of Caffe-HRT based on caffe-opencl-git"
 arch=('x86_64')
-url="http://caffe.berkeleyvision.org/"
+url="https://github.com/OAID/Caffe-HRT"
 license=('BSD')
 depends=(
         'boost-libs' 'protobuf' 'google-glog' 'gflags' 'hdf5'
@@ -13,13 +13,13 @@ depends=(
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six' 'opencl-driver' 'ocl-icd' 'opencl-headers'
-        'openblas-lapack' 'opencv' 'viennacl'
+        'openblas-lapack' 'opencv' 'aarch64-linux-gnu-armcl-opencl+neon'
 )
 makedepends=('cmake')
 provides=('caffe')
 conflicts=('caffe' 'caffe-git' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git' 'caffe-cpu'
            'caffe2' 'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git' 'caffe-opencl-git')
-source=("${_srcname}"::"git+https://github.com/andrew-wja/${_srcname}"
+source=("${_srcname}"::"git+https://github.com/OAID/${_srcname}.git"
         'dependencies.patch')
 sha256sums=('SKIP'
             '7ddb59109d7df3889641eaa4769e6b9e82f96f623b200ecfd8ade7ecfe04f95f')
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
 prepare() {
     cd "${_srcname}"
 
-    git checkout opencl
+    git checkout master
 
     # This patch makes cmake find libboost_python3 (it normally only looks for libboost_python_py3 etc.)
     patch cmake/Dependencies.cmake < ../dependencies.patch
@@ -49,6 +49,7 @@ prepare() {
     -DUSE_INT_QUANT_64=OFF \
     -DUSE_CUDA=OFF \
     -DUSE_OPENCL=ON \
+    -DUSE_ACL=ON \
     -DUSE_HSA=OFF \
     -DUSE_HIP=OFF \
     -DFORCE_COMPILE_CU_AS_CPP=OFF \
