@@ -2,7 +2,7 @@
 
 pkgname=rua
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc='secure jailed AUR helper in rust'
 url='https://github.com/vn971/rua'
 source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
