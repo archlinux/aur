@@ -2,7 +2,7 @@
 
 pkgname=rtl88x2bu-dkms-git
 _pkgbase=rtl88x2bu
-pkgver=5.3.1+r8+49abff4
+pkgver=5.3.1.r8.49abff4
 _pkgver=5.3.1
 pkgrel=1
 pkgdesc="Kernel module for Realtek rtl88x2bu WiFi chipset"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/RTL88x2BU-Linux-Driver"
-    printf '%s+r%s+%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf '%s.r%s.%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
