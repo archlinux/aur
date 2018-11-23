@@ -6,7 +6,7 @@ pkgname='ros-melodic-moveit-core'
 pkgver='0.10.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-eigen-stl-containers
@@ -28,6 +28,7 @@ ros_makedepends=(ros-melodic-eigen-stl-containers
   ros-melodic-eigen-conversions
   ros-melodic-std-msgs
   ros-melodic-shape-msgs
+  ros-melodic-tf2-eigen
   ros-melodic-fcl
   ros-melodic-moveit-resources)
 makedepends=('cmake' 'ros-build-tools'
@@ -57,6 +58,7 @@ ros_depends=(ros-melodic-eigen-stl-containers
   ros-melodic-geometric-shapes
   ros-melodic-eigen-conversions
   ros-melodic-fcl
+  ros-melodic-tf2-eigen
   ros-melodic-moveit-resources)
 depends=(${ros_depends[@]}
   eigen
