@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Meiji wa Yuri
+Comment=
+Icon=meiji-wa-yuri.png
+Exec=/usr/bin/meiji-wa-yuri
+Terminal=false
+Categories=Application;Game;
