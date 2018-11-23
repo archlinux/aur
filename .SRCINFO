@@ -1,6 +1,6 @@
 pkgbase = venom
 	pkgdesc = a modern Tox client for the Linux desktop
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/naxuroqa/venom
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = venom
 	depends = gspell
 	depends = xdg-desktop-portal
 	depends = sqlcipher
-	source = https://github.com/naxuroqa/Venom/archive/0.5.0.tar.gz
-	sha512sums = baacfe3f0f28c1efd982f0fbc86d09650a704609daf929347a3673a9b51c73c9af19f6da58316e64489dc19562be3c5bdb61a7da7c5b2c7438fa2ad0da7662f3
+	source = https://github.com/naxuroqa/Venom/archive/0.5.1.tar.gz
+	sha512sums = 4426d9a2290d650590f23f54dc5afa77b3456d8d61a8a2409ea4c340818b151cc0e25d87f76ded6a0a0b6c873a1981433290eed97004273e85c9101fe0c5d55e
 
 pkgname = venom
 
