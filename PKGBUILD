@@ -2,7 +2,7 @@
 pkgname=python-block_tracing
 _pkgname=block_tracing
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Protect process memory"
 arch=('i686' 'x86_64')
 url="https://github.com/rianhunter/block_tracing"
@@ -13,7 +13,12 @@ makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/a2/30/6d445d512bf017620508752663dd1925f398f249ea01b5648fc5dca720bb/$_pkgname-$pkgver.tar.gz")
 md5sums=('25096864c88525a1897b256d27975c41')
 
+build() {
+	cd "$_pkgname-$pkgver"
+    python setup.py build
+}
+
 package() {
 	cd "$_pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
