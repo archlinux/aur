@@ -1,13 +1,8 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=mako-git
 _pkgname=mako
-<<<<<<< HEAD
-pkgver=r268.23d9e4a
+pkgver=r315.9c4fea7
 pkgrel=1
-=======
-pkgver=r59.4e4e960
-pkgrel=2
->>>>>>> Add git to makedeps
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
 makedepends=("meson" "scdoc" "wayland-protocols" "git")
