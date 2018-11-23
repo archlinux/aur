@@ -33,6 +33,8 @@ pkgver() {
 
 build() {
   cp "$srcdir/package.json" "$srcdir/${pkgname%-git}/"
+  cp "$srcdir/chat-favicon-new-non-notif-256dp.png" "$srcdir/${pkgname%-git}/assets/icon/icon.png"
+  cp "$srcdir/chat-favicon-new-non-notif-256dp.png" "$srcdir/${pkgname%-git}/assets/icon/icon@2x.png"
   cp "$srcdir/chat-favicon-new-non-notif-256dp.png" "$srcdir/${pkgname%-git}/assets/icon/"
   cd "$srcdir/${pkgname%-git}"
   npm install --production=false
