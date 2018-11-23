@@ -78,6 +78,9 @@ prepare() {
     -DUSE_ARM_CROSS_COMPILE=OFF \
     -DBLAS=Open \
     -D python_version=3 \
+    -DACL_INCLUDE=/usr/aarch64-linux-gnu/include \
+    -DACL_LIBRARIES=/usr/aarch64-linux-gnu/lib \
+    -DACL_CORE_LIBRARIES=/usr/aarch64-linux-gnu/lib \
     -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     ..
