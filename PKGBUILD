@@ -1,6 +1,6 @@
 # Maintainer: Attenuation <ouyangjun1999@gmail.com>
 pkgname=tztail
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='tztail (TimeZoneTAIL) allows you to view logs in the timezone you want '
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('rust')
 depends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('5adebc8cbc19e933ed8088682a75dd1b5a96f0c3d0e6c1976f3875afc04e45ab')
+sha256sums=('fa03e8f87705ae4b1a74167453ed3a3041548a49b8545d2800757560886b72c6')
 
 build() {
   cd "$pkgname-$pkgver"
