@@ -1,0 +1,15 @@
+pkgbase = tmm-git
+	pkgdesc = A simple console based mod manager for Linux.
+	pkgver = 1538281367
+	pkgrel = 1
+	url = https://github.com/9d8/tmm
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = tmm-git
+	conflicts = tmm
+	source = tmm-git::git+https://github.com/9d8/tmm.git
+	md5sums = SKIP
+
+pkgname = tmm-git
+
