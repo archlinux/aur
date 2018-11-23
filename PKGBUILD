@@ -9,6 +9,7 @@ license=('GPL3')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk2' 'libappindicator-gtk3' 'libappindicator-sharp')
 makedepends=('npm')
 provides=('edex-ui')
+install="edex-ui.install"
 source=("https://github.com/GitSquared/${pkgname}/archive/v${pkgver}.tar.gz"
 	"package.json.patch")
 sha256sums=('18840ed0b73806d70a9e33a9171f811245c692bba8c02aa44334c1ca5f9a14c7'
@@ -42,8 +43,4 @@ package() {
 	rm -f "${pkgdir}/.INSTALL" "${pkgdir}/.MTREE" "${pkgdir}/.PKGINFO"
 
 	chmod 755 "${pkgdir}/opt/eDEX-UI/edex-ui"
-
-	# Symlink the executable
-	mkdir -p "${pkgdir}/usr/local/bin"
-	ln -s "${pkgdir}/opt/eDEX-UI/edex-ui" "${pkgdir}/usr/local/bin/edex-ui"
 }
