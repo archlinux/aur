@@ -1,17 +1,19 @@
 pkgbase = hugo-git
 	pkgdesc = Fast and Flexible Static Site Generator in Go
-    pkgver = v0.44.r3.g2f2bc7ff
+	pkgver = v0.51.r20.ge82b2dc8c162
 	pkgrel = 1
-    url = https://gohugo.io
+	url = https://gohugo.io/
 	arch = x86_64
 	license = Apache
-    depends = glibc
-	makedepends = go-pie
+	makedepends = go
 	makedepends = git
+	depends = glibc
+	optdepends = pygmentize: syntax-highlight code snippets
 	provides = hugo
 	conflicts = hugo
 	options = !strip
 	source = git+https://github.com/gohugoio/hugo.git
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = hugo-git
+
