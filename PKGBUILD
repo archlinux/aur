@@ -2,13 +2,13 @@
 
 pkgname=uvicorn
 pkgver=0.3.21
-pkgrel=1
+pkgrel=2
 pkgdesc="The lightning-fast ASGI server."
 arch=('any')
 url="https://www.uvicorn.org/"
 license=('BSD')
 depends=('python>=3.5' 'python-click' 'python-h11'
-         'python-httptools' 'python-uvloop' 'python-websockets>=6.0')
+         'python-httptools>=0.0.11' 'python-uvloop' 'python-websockets>=6.0')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/encode/uvicorn/archive/${pkgver}.tar.gz")
