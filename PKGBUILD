@@ -1,9 +1,9 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=dav1d-git
-pkgver=r258.ce6f1f7
+pkgver=r525.70dc7bd
 pkgrel=1
-license=('custom:BSD')
+license=('BSD')
 pkgdesc='AV1 cross-platform Decoder, focused on speed and correctness'
 url='https://code.videolan.org/videolan/dav1d'
 arch=('x86_64')
@@ -18,15 +18,9 @@ pkgver () {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare () {
-    cd dav1d
-    meson build \
-        --prefix=/usr \
-        --buildtype=release
-}
-
 build () {
     cd dav1d
+    arch-meson build
     ninja -C build
 }
 
