@@ -14,15 +14,14 @@ options=('!libtool')
 options=('libtool')
 source=(git://github.com/SawfishWM/rep-gtk.git)
 md5sums=('SKIP')
-_gitname=rep-gtk
 
 pkgver() {
-  cd $_gitname
+  cd ${pkgname%-git}
   echo $(git describe --tags |sed 's/-/./g'|cut -c9-)
 }
 
 build() {
-  cd $_gitname
+  cd ${pkgname%-git}
 
   ./autogen.sh 
   ./configure --prefix=/usr 
@@ -30,6 +29,6 @@ build() {
 }
 
 package() {
-  cd $_gitname
-  make DESTDIR="${pkgdir}" install
+  cd ${pkgname%-git}
+  make DESTDIR="$pkgdir" install
 }
