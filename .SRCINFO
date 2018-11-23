@@ -1,6 +1,6 @@
 pkgbase = bcachefs-tools-git
 	pkgdesc = bcachefs filesystem utilities
-	pkgver = 392
+	pkgver = 394
 	pkgrel = 1
 	url = https://evilpiepirate.org/git/bcachefs-tools.git/
 	arch = x86_64
