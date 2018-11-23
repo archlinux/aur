@@ -22,6 +22,8 @@ build() {
 	cp -r /usr/share/mrustc/run_rustc "$WORK"
 	cd "$WORK"
 
+	sed -i 's/time//g' run_rustc/Makefile
+
 	cd rustc-1.19.0-src
 	patch -p1 -i "$srcdir/openssl.patch"
 
