@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-pkgname='nasc'
-pkgver='0.4.7'
-pkgrel='1'
+pkgname=nasc
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Do maths like a normal person.'
 arch=('i686' 'x86_64')
 url='https://parnold-x.github.io/nasc/'
@@ -11,7 +11,7 @@ optdepends=()
 makedepends=('vala' 'git' 'cmake')
 conflicts=('nasc-git' 'nasc-bzr')
 source=("https://github.com/parnold-x/nasc/archive/${pkgver}.tar.gz")
-sha512sums=('b8e72b9b7c1c063862c48daf7e5f2d98f61cf4d479453225e407ee0848a1a7ab98feab142a92d876c4dfd3d28b4c8738a03f94cfded3c91b13c5f7585ed6814b')
+sha512sums=('a49aefa40f3eb6581b0fddaf3726ae9070bf4e4f815c4dba07a5f12eed17db2f9c236a4337628a3844fb7d2fd3e876a5b1f790836e794c30b033c2962cdba46f')
 
 build () {
 	cd "${pkgname}-${pkgver}"
