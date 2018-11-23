@@ -1,16 +1,16 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-specutils
 pkgname=('python-specutils' 'python-specutils-doc')
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('i686' 'x86_64')
 url="http://specutils.readthedocs.io/en/latest/"
 license=('BSD')
 makedepends=('cython' 'python-numpy' 'python-scipy' 'python-six' 'python-astropy' 'python-astropy-helpers' 'python-sphinx' 'python-matplotlib' 'python-gwcs')
-checkdepends=('python-pytest-astropy')
+#checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/s/specutils/specutils-${pkgver}.tar.gz")
-md5sums=('26d71907fd86b2d1257fc0d6ffc5d982')
+md5sums=('19139234762d566853103d3b687a39b0')
 
 prepare() {
     cd ${srcdir}/specutils-${pkgver}
@@ -26,14 +26,15 @@ build() {
     python setup.py build_docs
 }
 
-check() {
-    cd ${srcdir}/specutils-${pkgver}
-    python setup.py test
-}
+#check() {
+#    cd ${srcdir}/specutils-${pkgver}
+#    python setup.py test
+#}
 
 package_python-specutils() {
     depends=('python' 'python-astropy')
-    optdepends=('python-specutils-doc: Documentation for Specutils')
+    optdepends=('python-specutils-doc: Documentation for Specutils'
+                'python-pytest-astropy: For testing')
     cd ${srcdir}/specutils-${pkgver}
 
 #   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
