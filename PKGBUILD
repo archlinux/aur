@@ -4,7 +4,7 @@
 
 pkgname=sawfish
 pkgver=1.12.90
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible window manager using a Lisp-based scripting language"
 arch=('i686' 'x86_64')
 url="http://sawfish.wikia.com/wiki/Main_Page"
@@ -17,21 +17,21 @@ options=('!libtool')
 
 
 prepare() {
-  cd "${srcdir}/${pkgname}_${pkgver}"
+  cd ${pkgname}_${pkgver}
   patch -p1 < "$srcdir"/arch_poweroff_defaults.patch
 }
 
 build() {
-  cd "${srcdir}/${pkgname}_${pkgver}"
+  cd ${pkgname}_${pkgver}
   ./autogen.sh
   ./configure --prefix=/usr --libexecdir=/usr/lib 
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}_${pkgver}"
+  cd ${pkgname}_${pkgver}
   make DESTDIR="${pkgdir}" install
-  install -Dm644 sawfish.el $pkgdir/usr/share/emacs/site-lisp/sawfish.el
+  install -Dm644 sawfish.el "$pkgdir"/usr/share/emacs/site-lisp/sawfish.el
   install -Dm644 lisp/sawfish/wm/tile/readme.org \
-    $pkgdir/usr/share/doc/$pkgname/readme.tiling.org
+    "$pkgdir"/usr/share/doc/$pkgname/readme.tiling.org
 }
