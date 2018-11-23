@@ -6,7 +6,7 @@ pkgname='ros-melodic-costmap-2d'
 pkgver='1.16.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-message-filters
@@ -16,6 +16,7 @@ ros_makedepends=(ros-melodic-message-filters
   ros-melodic-nav-msgs
   ros-melodic-message-generation
   ros-melodic-tf
+  ros-melodic-tf2-sensor-msgs
   ros-melodic-geometry-msgs
   ros-melodic-roscpp
   ros-melodic-std-msgs
@@ -35,6 +36,7 @@ ros_depends=(ros-melodic-message-filters
   ros-melodic-pcl-conversions
   ros-melodic-nav-msgs
   ros-melodic-tf
+  ros-melodic-tf2-sensor-msgs
   ros-melodic-geometry-msgs
   ros-melodic-roscpp
   ros-melodic-message-runtime
