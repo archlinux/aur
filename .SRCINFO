@@ -1,0 +1,22 @@
+pkgbase = kdiff3-git
+	pkgdesc = A KDE file comparator/merge tool
+	pkgver = 1.7.90_3029480
+	pkgrel = 1
+	url = https://cgit.kde.org/kdiff3.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	depends = kparts
+	depends = hicolor-icon-theme
+	conflicts = kdiff3
+	conflicts = kdiff3-kf5-git
+	conflicts = kdiff3-qt
+	source = git+https://github.com/KDE/kdiff3.git
+	sha512sums = SKIP
+
+pkgname = kdiff3-git
+
