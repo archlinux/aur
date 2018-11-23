@@ -1,7 +1,7 @@
 # Maintainer: Lucas Malandrino <lucas.malandrino@gmail.com>
 pkgname='edex-ui-git'
 _pkgname='edex-ui'
-pkgver=1.0.1.r24.g3fff3c5
+pkgver=1.0.1.r32.g7c3f3ef
 pkgrel=1
 pkgdesc="A science fiction desktop running everywhere. Awesome."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,6 +11,7 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'l
 makedepends=('npm' 'git')
 conflicts=('edex-ui')
 provides=('edex-ui')
+install="edex-ui.install"
 source=("git+https://github.com/GitSquared/edex-ui.git#branch=master")
 sha256sums=('SKIP')
 
@@ -43,8 +44,4 @@ package() {
 	rm -f "${pkgdir}/.INSTALL" "${pkgdir}/.MTREE" "${pkgdir}/.PKGINFO"
 
 	chmod 755 "${pkgdir}/opt/eDEX-UI/edex-ui"
-
-	# Symlink the executable
-	mkdir -p "${pkgdir}/usr/local/bin"
-	ln -s "${pkgdir}/opt/eDEX-UI/edex-ui" "${pkgdir}/usr/local/bin/edex-ui"
 }
