@@ -1,7 +1,7 @@
 pkgbase = electron-netease-cloud-music
 	pkgdesc = UNOFFICAL clinet for music.163.com. Powered by Electron and Vue
 	pkgver = 0.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rocket1184/electron-netease-cloud-music
 	arch = x86_64
 	license = GPL-3.0
