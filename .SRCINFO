@@ -1,5 +1,5 @@
 pkgbase = adcli-git
-	pkgdesc = DBus service for configuring kerberos and other online identities.
+	pkgdesc = Active Directory account management tool
 	pkgver = 0.8.2.r2.g8514680
 	pkgrel = 1
 	url = https://freedesktop.org/software/realmd/
