@@ -1,7 +1,7 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 
 pkgname=bcachefs-tools-git
-pkgver=392
+pkgver=394
 pkgrel=1
 pkgdesc="bcachefs filesystem utilities"
 url="https://evilpiepirate.org/git/bcachefs-tools.git/"
@@ -29,5 +29,5 @@ build() {
 package() {
     cd bcachefs-tools
 
-    make DESTDIR="${pkgdir}/usr" ROOT_SBINDIR=/bin install
+    make DESTDIR="${pkgdir}" PREFIX="/usr" ROOT_SBINDIR="/usr/bin" INITRAMFS_DIR="/etc/initcpio" install
 }
