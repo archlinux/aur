@@ -2,12 +2,12 @@
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
 pkgname=msi-perkeyrgb
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration tool for SteelSeries per-key RGB keyboards on MSI laptops"
 arch=('any')
 url="https://github.com/Askannz/msi-perkeyrgb"
 license=('MIT')
-depends=('python' 'hidapi')
+depends=('python' 'hidapi' 'python-setuptools')
 makedepends=('python-setuptools')
 source=("git+https://github.com/Askannz/msi-perkeyrgb.git#tag=v$pkgver")
 sha256sums=('SKIP')
