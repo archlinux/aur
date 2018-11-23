@@ -1,8 +1,9 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=gst-plugins-intel-msdk-git
+_srcname=gstreamer-media-SDK
 pkgver=1.3.3.rc9.r44.g1aae2ee
-pkgrel=1
+pkgrel=2
 pkgdesc='GStreamer plugins for Intel Media SDK (MSDK) (git version)'
 arch=('x86_64')
 url='https://github.com/intel/gstreamer-media-SDK/'
@@ -18,7 +19,7 @@ depends=(
 makedepends=('git' 'cmake')
 provides=('gst-plugins-intel-msdk')
 conflicts=('gst-plugins-intel-msdk')
-source=("$pkgname"::'git+https://github.com/intel/gstreamer-media-SDK.git'
+source=('git+https://github.com/intel/gstreamer-media-SDK.git'
         'gst-plugins-intel-msdk-git-fix-intel-media-sdk-directories.patch'
         'gst-plugins-intel-msdk-git-fix-link-and-install.patch')
 sha256sums=('SKIP'
@@ -26,7 +27,7 @@ sha256sums=('SKIP'
             'fc410ebcb456894e084b3705ddb5deceede0cb7977206e89cc7b86c29d011fe0')
 
 prepare() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     mkdir -p build
     
@@ -35,19 +36,18 @@ prepare() {
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/_/\./'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     cd build
     
     cmake \
-        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DMFX_DECODER='ON' \
         -DUSE_HEVC_DECODER='ON' \
@@ -76,7 +76,7 @@ build() {
 }
 
 package() {
-    cd "${pkgname}/build"
+    cd "${_srcname}/build"
     
     make DESTDIR="$pkgdir" install
 }
