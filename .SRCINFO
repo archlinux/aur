@@ -37,3 +37,7 @@ pkgbase = bsf-git
 
 pkgname = bsf-git
 
+pkgname = bsf-git-docs
+	arch = any
+	depends = 
+

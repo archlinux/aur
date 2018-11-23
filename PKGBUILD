@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=(bsf-git bsf-git-docs)
-pkgbase=bsf
+pkgbase=bsf-git
 _pkgname=bsf
 pkgver=r4575.54f5a3abc
 pkgrel=1
@@ -80,8 +80,8 @@ package_bsf-git() {
 
 	find "$pkgdir"/usr/lib -name "*.dbg" -delete
 
-	mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
-	install "$_pkgname"/LICENSE.md $pkgdir/usr/share/licenses/$pkgname/
+	mkdir -p "$pkgdir"/usr/share/licenses/$pkgbase
+	install "$_pkgname"/LICENSE.md $pkgdir/usr/share/licenses/$pkgbase/
 }
 
 package_bsf-git-docs() {
