@@ -1,0 +1,32 @@
+# Slightly modified to work better with makepkg :
+# - use "overide CFLAGS" to append to environment CFLAGS
+# - remove "-fomit-frame-pointer" which is enabled at -O3 anyway
+# - prepend "$DESTDIR" so "make install" will work as desired
+
+CC = gcc
+LD = gcc
+override CFLAGS += -O3 -Wall
+
+TARG_OBJEXTENSION = .o
+TARG_EXEXTENSION =
+
+HOST_OBJEXTENSION = $(TARG_OBJEXTENSION)
+HOST_EXEXTENSION = $(TARG_EXEXTENSION)
+
+# -------------------------------------------------------------------------
+# directories where binaries, includes, and manpages should go during
+# installation
+
+BINDIR = $(DESTDIR)/usr/bin
+INCDIR = $(DESTDIR)/usr/include/asl
+MANDIR = $(DESTDIR)/usr/share/man
+LIBDIR = $(DESTDIR)/usr/lib/asl
+DOCDIR = $(DESTDIR)/usr/share/doc/asl
+
+# -------------------------------------------------------------------------
+# character encoding to use (choose one of them)
+
+# CHARSET = CHARSET_ASCII7
+# CHARSET = CHARSET_IBM437
+CHARSET = CHARSET_UTF8
+# CHARSET = CHARSET_ISO8859_1
