@@ -3,8 +3,8 @@
 # Contributor: Edvinas Valatka <edacval@gmail.com>
 # Contributor: Adrian Hühn <adrian.huehn@web.de>
 
-pkgname='ccnet-server'
-pkgver='6.3.4'
+pkgname=ccnet-server
+pkgver=6.3.4
 pkgrel=1
 pkgdesc="Internal communication framework and user/group management for seafile server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
