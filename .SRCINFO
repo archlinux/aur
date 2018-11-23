@@ -1,23 +1,25 @@
 pkgbase = python-plotnine
 	pkgdesc = A grammar of graphics for python
-	pkgver = 0.3.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/has2k1/plotnine
 	arch = any
 	license = GPL2
 	makedepends = python-pip
 	depends = python
+	depends = python-mizani>=0.5.2
+	depends = python-matplotlib>=3.0.0
 	depends = python-numpy
-	depends = python-six
-	depends = python-matplotlib>=2.1.0
-	depends = python-mizani>=0.4.1
-	depends = python-pandas>=0.21.0
-	depends = python-patsy>=0.4.1
 	depends = python-scipy>=1.0.0
+	depends = python-patsy>=0.4.1
 	depends = python-statsmodels>=0.8.0
-	noextract = plotnine-0.3.0-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/p/plotnine/plotnine-0.3.0-py2.py3-none-any.whl
-	sha256sums = ed18a7e9f30b685f383f252dd844492a667cc567d06ebf5e9688b941316161ca
+	depends = python-pandas>=0.23.4
+	depends = python-descartes>=1.1.0
+	optdepends = python-scikit-learn: gaussian process smoothing, kernel density implementation
+	optdepends = python-scikit-misc: loess smooting
+	noextract = plotnine-0.5.1-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/p/plotnine/plotnine-0.5.1-py2.py3-none-any.whl
+	sha256sums = 0d8b44a6e433a9303231f2d402c5b898f50c04809a2fee8e393dc79a2d8d762d
 
 pkgname = python-plotnine
 
