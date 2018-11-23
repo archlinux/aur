@@ -1,14 +1,14 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('psuinfo')
-pkgver=0.0.7
-pkgrel=3
+pkgver=1.0
+pkgrel=1
 pkgdesc="A psutil-based command to display customizable system info, intended for Tint2 or other panels"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/psuinfo"
 license=('GPL3')
 depends=('python' 'python-psutil')
 
-source=("https://github.com/nwg-piotr/psuinfo/raw/master/psuinfo-0.0.7-3"
+source=("https://github.com/nwg-piotr/psuinfo/raw/master/psuinfo-1.0-1"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/cpu.svg"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/fan.svg"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/hdd.svg"
@@ -19,9 +19,15 @@ source=("https://github.com/nwg-piotr/psuinfo/raw/master/psuinfo-0.0.7-3"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/xfer.svg"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/xfer-b.svg"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/xfer-d.svg"
-	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/xfer-u.svg")
+	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/xfer-u.svg"
+	"https://github.com/nwg-piotr/psuinfo/raw/master/configs/psuinfo-bottom-icons.tint2rc"
+	"https://github.com/nwg-piotr/psuinfo/raw/master/configs/psuinfo-bottom-text-single.tint2rc"
+	"https://github.com/nwg-piotr/psuinfo/raw/master/configs/psuinfo-bottom-text.tint2rc")
 
-md5sums=('5e2e969978e581bcc5373fff24ea88f8'
+md5sums=('c87e9a8777f41693ce96231d1c29cd79'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -35,8 +41,9 @@ md5sums=('5e2e969978e581bcc5373fff24ea88f8'
          'SKIP')
 
 package() {
-  install -D -m 755 psuinfo-0.0.7-3 \
+  install -D -m 755 psuinfo-1.0-1 \
  	 "$pkgdir"/usr/bin/psuinfo
   install -D -t "$pkgdir/usr/share/$pkgname" *.svg
+  install -D -t "$pkgdir/usr/share/tint2" *.tint2rc
 }
 
