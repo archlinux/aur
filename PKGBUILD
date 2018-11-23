@@ -1,7 +1,7 @@
 # Maintainer: Attenuation <ouyangjun1999@gmail.com>
 pkgname=hegemon
-pkgver=20181013.085336
-pkgrel=2
+pkgver=20181118.063958
+pkgrel=1
 pkgdesc='A modular system monitor written in Rust '
 arch=('x86_64')
 url='https://github.com/p-e-w/hegemon'
