@@ -1,11 +1,11 @@
 pkgname=dnf
-pkgver=4.0.4
+pkgver=4.0.9
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2' 'GPL')
-depends=('libdnf>=0.22.0' 'libcomps>=0.1.8' 'libmodulemd>=1.4.0'
+depends=('libdnf>=0.22.3' 'libcomps>=0.1.8' 'libmodulemd>=1.4.0'
          'python' 'python-gpgme' 'python-iniparse'
          'rpm-org')
 makedepends=('bash-completion' 'cmake' 'python-sphinx')
@@ -13,7 +13,7 @@ checkdepends=('python-nose')
 backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf")
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('83acfa7d46e0d5a9c4ccacd93c44971f')
+md5sums=('ea60b8c74ce6f82c751202316401c758')
 
 prepare() {
 	cd "$pkgname-$pkgver"
