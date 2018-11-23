@@ -1,5 +1,6 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
-pkgname=bsf-git
+pkgname=(bsf-git bsf-git-docs)
+pkgbase=bsf
 _pkgname=bsf
 pkgver=r4575.54f5a3abc
 pkgrel=1
@@ -39,7 +40,7 @@ prepare() {
 	cp -r Data bsf/
 	cp -r Dependencies bsf/
 	cp -r Raw bsf/Data
-	
+
 	rm -rf "$_pkgname"/Dependencies/OpenAL
 	rm -rf "$_pkgname"/Dependencies/libFLAC
 	rm -rf "$_pkgname"/Dependencies/libICU
@@ -47,7 +48,7 @@ prepare() {
 	rm -rf "$_pkgname"/Dependencies/libvorbis
 	rm -rf "$_pkgname"/Dependencies/freetype
 	rm -rf "$_pkgname"/Dependencies/freeimg
-	
+
 	patch -d bsf -p1 < install-dir.patch
 }
 
@@ -67,12 +68,12 @@ build() {
 
 	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DUSE_BUNDLED_LIBRARIES=OFF -G Ninja
 	ninja
-	
+
 	cd ../Documentation/Doxygen
 	doxygen config.doxyconfig
 }
 
-package() {
+package_bsf-git() {
 	pushd "$_pkgname"/build
 	DESTDIR="$pkgdir"/ ninja install
 	popd > /dev/null
@@ -81,7 +82,12 @@ package() {
 
 	mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
 	install "$_pkgname"/LICENSE.md $pkgdir/usr/share/licenses/$pkgname/
+}
 
-# 	mkdir -p "$pkgdir"/usr/share/doc/$pkgname
-# 	cp -r "$_pkgname"/Documentation/Generated/html/* "$pkgdir"/usr/share/doc/$pkgname/
+package_bsf-git-docs() {
+	depends=()
+	arch=(any)
+
+	mkdir -p "$pkgdir"/usr/share/doc/$pkgbase
+	cp -r "$_pkgname"/Documentation/Generated/html/* "$pkgdir"/usr/share/doc/$pkgbase/
 }
