@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=ddos-deflate
-pkgver=v1.2.r0.g4425805
+pkgver=v1.2.r8.g60bf9e4
 pkgrel=1
 pkgdesc="Lightweight bash shell script designed to assist in the process of blocking a denial of service attack"
 arch=('any')
@@ -17,7 +17,9 @@ depends=(
   'bind-tools'
   'dsniff'
   'bash'
+  'iproute2'
   'grepcidr'
+  'iftop'
 )
 backup=(
   'etc/ddos/ddos.conf'
