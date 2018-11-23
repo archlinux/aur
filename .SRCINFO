@@ -1,0 +1,77 @@
+pkgbase = libreoffice-dev-alpha
+	pkgdesc = LibreOffice development branch alpha
+	pkgver = 6.2.0.0
+	pkgrel = 1
+	url = http://www.libreoffice.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = curl>=7.20.0
+	depends = hunspell>=1.2.8
+	depends = python>=3.5
+	depends = libwpd>=0.9.2
+	depends = libwps
+	depends = neon>=0.28.6
+	depends = pango
+	depends = nspr
+	depends = libjpeg
+	depends = libxrandr
+	depends = libgl
+	depends = dbus-glib
+	depends = libxslt
+	depends = redland
+	depends = hyphen
+	depends = lpsolve
+	depends = gcc-libs
+	depends = sh
+	depends = graphite
+	depends = lcms2
+	depends = poppler>=0.24.0
+	depends = libvisio
+	depends = libetonyek
+	depends = libodfgen
+	depends = libcdr
+	depends = libmspub
+	depends = harfbuzz-icu
+	depends = glew
+	depends = nss
+	depends = clucene
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	depends = glu
+	depends = libpagemaker
+	depends = libxinerama
+	depends = libabw
+	depends = libmwaw
+	depends = libe-book
+	depends = libcups
+	depends = gtk2
+	depends = liborcus
+	depends = liblangtag
+	depends = libexttextcat
+	depends = libcmis
+	optdepends = java-runtime: adds java support
+	optdepends = java-environment: required by extension-wiki-publisher and extension-nlpsolver
+	optdepends = pstoedit: translates PostScript and PDF graphics into other vector formats
+	optdepends = libmythes: for use in thesaurus
+	optdepends = beanshell: interactive java -- good for prototyping/macros
+	optdepends = libmspack: library for Microsoft compression formats for use in FontOOo
+	optdepends = libwpg: library for importing and converting WordPerfect Graphics format
+	optdepends = sane: for scanner access
+	optdepends = unixodbc: adds ODBC database support
+	optdepends = gst-plugins-base-libs: for multimedia content, e.g. in Impress
+	optdepends = libpaper: takes care of papersize
+	optdepends = postgresql-libs: for postgresql-connector
+	optdepends = coin-or-mp: required by the Calc solver
+	optdepends = gtk3: for GTK3 integration
+	optdepends = kdelibs: for KDE desktop integration
+	provides = libreoffice
+	provides = libreoffice-en-US
+	source_i686 = https://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOfficeDev_6.2.0.0.alpha1_Linux_x86_rpm.tar.gz
+	sha256sums_i686 = SKIP
+	source_x86_64 = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOfficeDev_6.2.0.0.alpha1_Linux_x86-64_rpm.tar.gz
+	sha256sums_x86_64 = SKIP
+
+pkgname = libreoffice-dev-alpha
+
