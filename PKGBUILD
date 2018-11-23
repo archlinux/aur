@@ -3,8 +3,8 @@
 
 pkgname='ivideon-server-headless'
 pkgver='3.7.0'
-pkgrel='2704'
-_rel='050cbcda1ad9'
+pkgrel='2706'
+_rel='fb8c4a26a16e'
 pkgdesc='Ivideon-server daemon'
 arch=('x86_64')
 url='https://ivideon.com'
@@ -20,8 +20,8 @@ source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgnam
 	"sysusers.conf"
 	"videoservertmp.conf")
 noextract=("ivideon-server-dahua-bin-module_${pkgver}-${pkgrel}~${_rel}_amd64.deb")
-sha256sums=('6ff01ba3e375c196f7f8eee3e5f924520eb640b79c8091f07741eb5a26d4d8ee'
-            '05968b29b35203f0581e17e29251eccc2a7f4534c1c8b550957df1268f5f0506'
+sha256sums=('087cdff0939b1744535710cc8a639d5392da4bda7b80a9fb0d670219c3096c31'
+            '6c44519e531ae8f68ba500b94abace764fffe76edd5c11aab5a0d5b9df0e3316'
             '7da74ca97c53669f95efea718bbf05ddd7b0d5b0b97dc93d2777ed8c64388254'
             '48cd5beedc9992a26448ee06c44460c8e9f3014154adcad0eee39aa985851071'
             'f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012'
