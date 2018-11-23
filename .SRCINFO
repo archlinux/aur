@@ -1,5 +1,5 @@
 pkgbase = zfs-linux-vfio-git
-	pkgver = 2018.11.15.r4830.ga10d50f99_4.18.5.arch1.1
+	pkgver = 2018.11.20.r4835.g8005ca4f7_4.18.5.arch1.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
@@ -7,9 +7,9 @@ pkgbase = zfs-linux-vfio-git
 	makedepends = linux-vfio-headers=4.18.5.arch1-1
 	makedepends = git
 	depends = kmod
-	depends = zfs-utils-git=2018.11.15.r4830.ga10d50f99
+	depends = zfs-utils-git=2018.11.20.r4835.g8005ca4f7
 	depends = linux-vfio=4.18.5.arch1-1
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=a10d50f999511d304f910852c7825c70c9c9e303
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=8005ca4f749f71397197292452ca539a25286b89
 	sha256sums = SKIP
 
 pkgname = zfs-linux-vfio-git
