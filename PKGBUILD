@@ -2,7 +2,7 @@
 
 pkgname=kubernetes-helmfile-bin
 pkgver=0.40.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Helmfile is declarative spec for deploying helm charts"
 url="https://github.com/roboll/helmfile"
 license=('MIT')
