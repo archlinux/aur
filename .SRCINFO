@@ -1,19 +1,18 @@
-pkgbase = brother-mfc-l8900cdw
-	pkgdesc = LPR and CUPS driver for the Brother MFC-L8900CDW
-	pkgver = 1.2.0
+pkgbase = brother-mfc-l9550cdw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-L9550CDW
+	pkgver = 1.0.0
 	pkgrel = 1
-	epoch = 2
+	epoch = 1
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = custom:Brother EULA
 	depends = cups
-	source = http://download.brother.com/welcome/dlf103216/mfcl8900cdwlpr-1.2.0-0.i386.rpm
-	source = http://download.brother.com/welcome/dlf103225/mfcl8900cdwcupswrapper-1.3.0-0.i386.rpm
-	sha256sums = 82cb8b3710523b546e40e1280275ecc1689b50294644d6b81a25cbffc385e8c4
-	sha256sums = d92bbb84b6b66aad097b705dd6b2a53d19cab79fde546ad7a25e4952ee4547fa
+	source = https://download.brother.com/welcome/dlf101098/mfcl9550cdwlpr-1.1.2-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf101099/mfcl9550cdwcupswrapper-1.1.3-1.i386.rpm
+	sha256sums = 648635ad4698bf1f57ca6009bc894ab7a49c2e595acbafc26018c0955d97495e
+	sha256sums = a0c1d127d106009368a4e62d83fc6b2d2c8e573e10d0a2399b15587a6238e472
 	depends_x86_64 = lib32-glibc
 
-pkgname = brother-mfc-l8900cdw
-
+pkgname = brother-mfc-l9550cdw
