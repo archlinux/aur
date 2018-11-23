@@ -1,7 +1,7 @@
 # Maintainer: Katie Wolfe <katie@dnaf.moe>
 pkgname=igdm
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application for Instagram DMs"
 arch=('x86_64' 'i686')
 url="https://github.com/ifedapoolarewaju/igdm"
@@ -33,7 +33,8 @@ package() {
 
 	# Install igdm to /opt/igdm
 	install -d "$pkgdir/opt/${pkgname}"
-	cp -a "igdm" "$pkgdir/opt/${pkgname}"
+	cd 'igdm'
+	cp -a '.' "$pkgdir/opt/${pkgname}"
 
 	# Install symlink /usr/bin/igdm -> /opt/igdm/igdm
 	install -d "$pkgdir/usr/bin"
