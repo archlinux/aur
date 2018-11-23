@@ -18,12 +18,12 @@ sha256sums=('SKIP')
 _gitname='librep'
 
 pkgver() {
-  cd "$_gitname"
+  cd ${pkgname%-git}
   echo $(git describe --always |sed 's/-/./g'|cut -c8-)
 }
 
 build() {
-  cd "$_gitname"
+  cd ${pkgname%-git}
   ./autogen.sh 
   ./configure --disable-static \
               --prefix=/usr \
@@ -36,6 +36,6 @@ build() {
 package() {
   cd $_gitname
   # create some directories or make install fails
-  install -d $pkgdir/usr/{share/aclocal,lib/pkgconfig}
-  make DESTDIR=$pkgdir install
+  install -d "$pkgdir"/usr/{share/aclocal,lib/pkgconfig}
+  make DESTDIR="$pkgdir" install
 } 
