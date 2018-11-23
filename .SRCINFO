@@ -1,6 +1,6 @@
 pkgbase = caffe-hrt-slim-git
 	pkgdesc = A slimmed-down build of Caffe-HRT based on caffe-opencl-git
-	pkgver = 1.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/OAID/Caffe-HRT
 	arch = x86_64

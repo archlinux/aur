@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso at t c d dot ie>
 pkgname=caffe-hrt-slim-git
 _srcname=Caffe-HRT
-pkgver=1.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A slimmed-down build of Caffe-HRT based on caffe-opencl-git"
 arch=('x86_64')
