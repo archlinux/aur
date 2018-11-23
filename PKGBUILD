@@ -1,5 +1,3 @@
-# Maintainer: Thomas Fischer <fischer@unix-ag.uni-kl.de>
-
 _basename=kdiff3
 _gitbranch=kf5
 pkgname=${_basename}-${_gitbranch}-git
