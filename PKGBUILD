@@ -1,11 +1,11 @@
 pkgname=dnf-plugins-core
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
-depends=('dnf>=3.7.0' 'python')
+depends=('dnf>=4.0.7' 'python')
 makedepends=('cmake' 'python-sphinx')
 checkdepends=('python-nose')
 optdepends=('createrepo_c: for local plugin')
@@ -16,7 +16,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('9f3ce79fc486c3393e084a7a4f21596d')
+md5sums=('5c2c4de4de65a6890e5e0d5b0ee7bdb6')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -47,6 +47,7 @@ package() {
 	rm "$pkgdir/usr/share/man/man1/debuginfo-install.1" \
 	   "$pkgdir/usr/share/man/man1/needs-restarting.1" \
 	   "$pkgdir/usr/share/man/man1/package-cleanup.1" \
+	   "$pkgdir/usr/share/man/man1/repodiff.1" \
 	   "$pkgdir/usr/share/man/man1/repo-graph.1" \
 	   "$pkgdir/usr/share/man/man1/repoclosure.1" \
 	   "$pkgdir/usr/share/man/man1/repomanage.1" \
