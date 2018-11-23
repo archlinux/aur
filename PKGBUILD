@@ -2,8 +2,8 @@
 # Contributor: Kyle Meyer <kyle@kyleam.com>
 
 pkgname=snakemake
-pkgver=5.2.2
-pkgrel=2
+pkgver=5.3.0
+pkgrel=1
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
 url='https://snakemake.readthedocs.io'
@@ -15,12 +15,12 @@ depends=(
 makedepends=(python-setuptools)
 optdepends=(
   'graphviz: For DAG visualization'
-  'python-jinja2: For report generation'
+  'python-jinja: For report generation'
   'python-networkx: For report generation'
 )
 license=(MIT)
 source=("snakemake-$pkgver.tar.gz::https://bitbucket.org/snakemake/snakemake/get/v$pkgver.tar.gz")
-sha256sums=('06caca4fa8615fccb2e1c4aa85299d32f985a6c53df670ea9b11665362ab1d62')
+sha256sums=('5afb2c6c2885e8d68856443e640c7924a9e1b6881a1af5624f7b15485921ee87')
 
 prepare() {
 	rm -rf "$srcdir/$pkgname-$pkgver"
