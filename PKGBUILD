@@ -6,7 +6,7 @@ pkgname='ros-melodic-moveit-ros-perception'
 pkgver='0.10.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-message-filters
@@ -21,6 +21,7 @@ ros_makedepends=(ros-melodic-message-filters
   ros-melodic-sensor-msgs
   ros-melodic-image-transport
   ros-melodic-tf-conversions
+  ros-melodic-tf2-geometry-msgs
   ros-melodic-rosconsole
   ros-melodic-catkin)
 makedepends=('cmake' 'ros-build-tools'
@@ -42,6 +43,7 @@ ros_depends=(ros-melodic-message-filters
   ros-melodic-sensor-msgs
   ros-melodic-image-transport
   ros-melodic-tf-conversions
+  ros-melodic-tf2-geometry-msgs
   ros-melodic-rosconsole)
 depends=(${ros_depends[@]}
   glut
