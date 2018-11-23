@@ -12,9 +12,9 @@ pkgbase = python-ecos
 	depends = python-scipy
 	depends = ecos
 	depends = suitesparse
-	source = https://github.com/embotech/ecos-python/archive/2.0.7rc2.tar.gz
+	source = https://github.com/embotech/ecos-python/archive/2.0.7.tar.gz
 	source = use_external_ecos.patch
-	sha256sums = aba90a898da8a3f679e6169ee02c8d604960e721a6ff591671d2695efc5bab20
+	sha256sums = 5cec19d5647b2bf8f07c7c06c7005d2113c44a911dd7832a4955b228af19982c
 	sha256sums = c929cbe71cf8a109a66cbc681c6c501c42517b44e63f88440c36e5c7ca9e3be9
 
 pkgname = python-ecos
