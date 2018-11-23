@@ -1,7 +1,7 @@
 pkgbase = lua-event
 	pkgdesc = libevent binding for Lua
-	pkgver = 0.4.4
-	pkgrel = 2
+	pkgver = 0.4.5
+	pkgrel = 1
 	url = https://github.com/harningt/luaevent
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = lua-event
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua
-	source = luaevent-0.4.4.tar.gz::https://github.com/harningt/luaevent/archive/v0.4.4.tar.gz
-	sha256sums = 242c95b9cacd87201aa35ba618eb1cd0b0e2a7d1a8fc6734c0bc06dd742e2455
+	source = luaevent-0.4.5.tar.gz::https://github.com/harningt/luaevent/archive/v0.4.5.tar.gz
+	sha256sums = b4fffe2628a310f3bfe231176f777c20598c4d9699acb16a8da097e6ec061cfd
 
 pkgname = lua-event
 	depends = libevent
