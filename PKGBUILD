@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 pkgname=trellis-git
-pkgver=r311.aa2b109
+pkgver=r424.7b84101
 pkgrel=1
 pkgdesc='Tools and scripts which allow you to document the bit-stream format of Lattice ECP5 series FPGAs'
 arch=('i686' 'x86_64')
@@ -43,5 +43,13 @@ package() {
 
   # nextpnr requires these files by they aren't installed by `make install`
   install -Dm644 pytrellis.so "$pkgdir/usr/share/trellis/libtrellis/pytrellis.so"
-  cp -R "$srcdir/trellis/util" "$pkgdir/usr/share/trellis"
+
+  install -d "$pkgdir/usr/share/trellis/timing/util"
+  cp -R "$srcdir/trellis/timing/util/"*.py "$pkgdir/usr/share/trellis/timing/util"
+
+  install -d "$pkgdir/usr/share/trellis/util/common"
+  cp -R "$srcdir/trellis/util/common/"*.py "$pkgdir/usr/share/trellis/util/common"
+
+  install -d "$pkgdir/usr/share/trellis/util/fuzz"
+  cp -R "$srcdir/trellis/util/fuzz/"*.py "$pkgdir/usr/share/trellis/util/fuzz"
 }
