@@ -38,6 +38,10 @@ validpgpkeys=()
 #}
 
 build() {
+	echo "New versions of enchant stores as /usr/include/enchant-2"
+	echo "So I must symlink it to /usr/include/enchant: "
+	sudo ln -s /usr/include/enchant-2 /usr/include/enchant &>/dev/null || echo
+
 	cd "$srcdir/xneur-devel/xneur"
 	# If you have xosd, why dont use it?
 	if test `pacman -Qs xosd`; then
@@ -49,9 +53,6 @@ build() {
 }
 
 package() {
-	# New versions of enchant stores at /usr/include/enchant-2
-	# So I must make symlink, like other packages f.e. enchant-pure
-	ln -s /usr/include/enchant-2 /usr/include/enchant || echo
 	mkdir -p "$pkgdir/usr/bin"	
 
 	cd "$srcdir/xneur-devel/xneur"
