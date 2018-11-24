@@ -3,10 +3,10 @@ pkgdesc="ROS - Components of MoveIt connecting to perception."
 url='http://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-perception'
-pkgver='0.10.1'
+pkgver='0.10.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-message-filters
@@ -59,7 +59,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="moveit-release-release-melodic-moveit_ros_perception-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_perception/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('23a32662bfd892b8b10f17d7ab32a1f5e4f8ae98de5110e502083f1fe0f85270')
+sha256sums=('23a77c1f2d5e35a7643206f5435f166e6c2de07c426b7af3ca0f3b099b04c798')
 
 prepare() {
   cd ${srcdir}
