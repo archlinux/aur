@@ -1,0 +1,33 @@
+pkgbase = linuxcnc
+	pkgdesc = It can interpret G-code and simulate a CNC machine (formerly EMC2).
+	pkgver = 2.7.14
+	pkgrel = 2
+	url = http://linuxcnc.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = intltool
+	depends = bc
+	depends = bwidget
+	depends = tcl
+	depends = tk
+	depends = xorg-server
+	depends = python2-imaging
+	depends = tkimg
+	depends = python2-gtkglext
+	depends = tclx
+	depends = boost
+	depends = boost-libs
+	depends = libtirpc
+	depends = procps-ng
+	depends = psmisc
+	source = ::git://github.com/LinuxCNC/linuxcnc.git#tag=v2.7.14
+	source = linuxcnc.sh
+	source = libtirpc.patch
+	sha256sums = 72e4dad9c929b00d2a73d125d86f18600dc1c852abadcd3947fa0a7cbc28c88e
+	sha256sums = c0f1ea0d8c20baa5d69d89a1d6eb3549bc57cc56ff1a0af3d5b9917cbc6211a7
+	sha256sums = 92f63a3f58173fa9463329f74cff7365bfefd937729a70bbdc52684d9252333f
+
+pkgname = linuxcnc
+
