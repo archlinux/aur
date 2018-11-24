@@ -13,43 +13,41 @@ optdepends=('sonnet: spell checking support'
             'libdbusmenu-qt5: dbus context menu for icon tray support')
 provides=('quassel-client')
 conflicts=('quassel-client')
-source=("$pkgname"::"git+https://github.com/quassel/quassel.git")
+source=("$pkgname"::"git+https://github.com/quassel/quassel")
 md5sums=('SKIP')
 
 _builddir="build"
-_cmakecache="CMakeCache.txt"
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_prepare_build() {
-    cd $srcdir/$pkgname
-    mkdir -p "$_builddir"
-    cd "$_builddir"
-}
+build() {
+  cd "$pkgname"
 
-_build() {
-    ninja
+  rm -rf "$_builddir"
+  mkdir -p "$_builddir" && cd "$_builddir"
 
-    DESTDIR="$pkgdir" ninja install
+  cmake -G Ninja                    \
+    -DWANT_MONO=OFF             \
+    -DWANT_CORE=OFF             \
+    -DWANT_QTCLIENT=ON          \
+    -DHAVE_SSL=ON               \
+    -DWITH_KDE=OFF              \
+    -DUSE_QT5=ON                \
+    -DWITH_WEBKIT=OFF           \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib  \
+    "$srcdir/$pkgname"
+
+  ninja
 }
 
 package() {
-    _prepare_build
+  cd "$pkgname/$_builddir"
 
-    cmake -G Ninja                    \
-        -DWANT_MONO=OFF             \
-        -DWANT_CORE=OFF             \
-        -DWANT_QTCLIENT=ON          \
-        -DHAVE_SSL=ON               \
-        -DWITH_KDE=OFF              \
-        -DUSE_QT5=ON                \
-        -DWITH_WEBKIT=OFF           \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib  \
-        "$srcdir/$pkgname"
-
-    _build
+  DESTDIR="$pkgdir" ninja install
 }
+
+# vim:set ts=2 sw=2 et:
