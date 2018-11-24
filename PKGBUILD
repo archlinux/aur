@@ -13,6 +13,7 @@ install=flexibee.install
 source=("http://download.flexibee.eu/download/$pkgbasever/$pkgver/flexibee-$pkgver.tar.gz"
         "flexibee")
 
+
 sha256sums=('48261dadc7a03a79b9f959242b9cb809b4d750a3559e4afcabc0ce03cfd721f1'
             '0aaf79ac30bfc5af5e9aba6d1b1189a76019551d3183621bcb9f2bdbe7ea39e3')
 
