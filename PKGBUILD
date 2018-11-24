@@ -2,12 +2,12 @@
 
 pkgname=zrythm-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free GNU/Linux music production system (DAW)"
 arch=('x86_64')
 url="https://gitlab.com/alextee/zrythm"
 license=('GPL')
-depends=('gtk3' 'lv2-git' 'lilv-git' 'suil-git' 'jack' 'libsndfile' 'libsmf')
+depends=('gtk3' 'lv2' 'lilv-git' 'suil-git' 'jack' 'libsndfile' 'libsmf')
 makedepends=('git')
 source=("$pkgname-$pkgver::git+https://gitlab.com/alextee/zrythm.git")
 md5sums=('SKIP')

@@ -1,13 +1,13 @@
 pkgbase = zrythm-git
 	pkgdesc = Free GNU/Linux music production system (DAW)
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/alextee/zrythm
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = gtk3
-	depends = lv2-git
+	depends = lv2
 	depends = lilv-git
 	depends = suil-git
 	depends = jack
