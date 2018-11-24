@@ -1,7 +1,7 @@
-# Maintainer: Marco von Rosenverg <codingmarco@gmail.com>
+# Maintainer: Marco von Rosenberg <codingmarco@gmail.com>
 
 pkgname=glrpt
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="Interactive GUI application for receiving, decoding and displaying LRPT images from the Russian Meteor-M type of weather satellites"
 arch=('x86_64')
@@ -29,11 +29,4 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
-	
-	# I have to do this here and not in a .install file because I need files from the srcdir directory
-	if [ -f ~/glrpt/glrptrc ]; then
-        mv ~/glrpt/glrptrc ~/glrpt/glrptrc.old-1.4.1
-    fi
-	cd "$srcdir/$pkgname-$pkgver"
-	cp glrpt/glrptrc ~/glrpt/
 }
