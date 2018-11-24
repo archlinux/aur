@@ -1,0 +1,16 @@
+pkgbase = nss-docker-git
+	pkgdesc = NSS module for finding Docker containers
+	pkgver = r64.45db418
+	pkgrel = 1
+	url = https://github.com/dex4er/nss-docker
+	install = nss-docker-git.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	provides = nss-docker
+	conflicts = nss-docker
+	source = git+https://github.com/dex4er/nss-docker.git
+	sha256sums = SKIP
+
+pkgname = nss-docker-git
+
