@@ -1,7 +1,7 @@
 # Maintainer: <clu@eeviac>
 
 pkgname=montage
-pkgver=5.0
+pkgver=6.0
 pkgrel=1
 pkgdesc="An astronomical image mosaic engine"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=()
 provides=()
 conflicts=()
 source=("http://montage.ipac.caltech.edu/download/Montage_v$pkgver.tar.gz")
-sha1sums=('c66d7ea01d3c11506b43759ade68c817092b120e')
+sha1sums=('2dce8874cafc2842574747477312aa43cb950c45')
 
 build() {
   cd $srcdir/Montage
@@ -26,6 +26,9 @@ package() {
   # have not included an install method in their Makefile
   mkdir -p $pkgdir/usr/bin
   install -Dm755 bin/* $pkgdir/usr/bin
+
+  # Provided by wcslib package...
+  rm $pkgdir/usr/bin/HPXcvt
 
   #custom license...
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
