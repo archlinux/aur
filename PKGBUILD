@@ -14,8 +14,8 @@ _srcname=$pkgbase
 _kernel_rel=4.20
 _branch=drm-intel-testing
 _kernelname=${pkgbase#linux}
-pkgver=4.20.785991.4767333069b2
-pkgrel=2
+pkgver=4.20.798032.98966a91be48
+pkgrel=1
 arch=('x86_64')
 url='https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html'
 license=('GPL2')
@@ -29,7 +29,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm-intel#branch=${_branc
         "${pkgbase}.preset")
 
 sha256sums=('SKIP'
-            '0c1159dcb2d081b35f485261ee16d580c5d574d25b3240e1a83abf3edf674440'
+            'd9cdf2f5043a30fb99c04e9e5b089465b0b37cafd640e4344711c9dcefa680b4'
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {

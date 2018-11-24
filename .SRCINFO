@@ -1,7 +1,7 @@
 pkgbase = linux-drm-intel-testing-git
 	pkgdesc = Linux kernel with patches for Intel graphics
-	pkgver = 4.20.785991.4767333069b2
-	pkgrel = 2
+	pkgver = 4.20.798032.98966a91be48
+	pkgrel = 1
 	url = https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html
 	arch = x86_64
 	license = GPL2
@@ -18,7 +18,7 @@ pkgbase = linux-drm-intel-testing-git
 	source = linux.install
 	source = linux-drm-intel-testing-git.preset
 	sha256sums = SKIP
-	sha256sums = 0c1159dcb2d081b35f485261ee16d580c5d574d25b3240e1a83abf3edf674440
+	sha256sums = d9cdf2f5043a30fb99c04e9e5b089465b0b37cafd640e4344711c9dcefa680b4
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
