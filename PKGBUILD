@@ -3,7 +3,7 @@ pkgdesc="ROS - Components of MoveIt connecting to MongoDB."
 url='http://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-warehouse'
-pkgver='0.10.1'
+pkgver='0.10.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-melodic-moveit_ros_warehouse-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_warehouse/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e30186d8deb48b4a5b6b2a533dc29c8210c24f4f8d346f09fb5fe35f5587b5e3')
+sha256sums=('694d47db226b4ba82961ed7288637c66bdddca468624e4104977afddc558b1fe')
 
 build() {
   # Use ROS environment variables
