@@ -3,7 +3,7 @@ pkgdesc="ROS - MoveIt interface to OMPL."
 url='http://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-planners-ompl'
-pkgver='0.10.1'
+pkgver='0.10.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -40,7 +40,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-melodic-moveit_planners_ompl-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_planners_ompl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d7e52fb1629e821e88592fcc549c93cc2d18ff66f94e561ac8bc5b7d7d75b810')
+sha256sums=('23438b7ebb2c574126aaf2a71efc0ce3e5b00ad96ab89b7d8dcf87df67f5bc44')
 
 prepare() {
   cd ${srcdir}
