@@ -3,12 +3,13 @@
 
 pkgname=doctl
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool for DigitalOcean services'
 arch=('i686' 'x86_64')
 url='https://github.com/digitalocean/doctl'
 license=('APACHE')
 makedepends=('go' 'git')
+conflicts=('doctl-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/digitalocean/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
