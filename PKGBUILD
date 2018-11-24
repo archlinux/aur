@@ -56,6 +56,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/mime/packages"
 	mkdir -p "${pkgdir}/usr/share/applications"
 	mkdir -p "${pkgdir}/usr/share/mimelnk/application"
+	mkdir -p "${pkgdir}/usr/share/thumbnailers"
 
 	install -D -m0644 "${srcdir}/${_pkgname}/desktop/xournal.xml" "${pkgdir}/usr/share/mime/packages"
 	install -D -m0644 "${srcdir}/${_pkgname}/desktop/xournalpp.desktop" "${pkgdir}/usr/share/applications"
