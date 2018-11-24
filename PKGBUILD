@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=bazarr
-pkgver=0.6.7.1
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
@@ -28,12 +28,12 @@ depends=('python2'
          'python2-webtest')
 
 makedepends=('git')
-source=("bazarr-${pkgver}.tar.gz::https://github.com/morpheus65535/bazarr/archive/V${pkgver}.tar.gz"
+source=("bazarr-${pkgver}.tar.gz::https://github.com/morpheus65535/bazarr/archive/v${pkgver}.tar.gz"
         'bazarr.service'
         'bazarr.sysusers'
         'bazarr.tmpfiles')
 
-sha256sums=('bef5b8aff7c579ca67ae67f37284250c0dff5e9fd802d0b70effa533e9c5f755'
+sha256sums=('2a760fbe7cf84c4fb46dd6cdabf52043daf42070ab53483fe0d7adfb2b39e250'
             'e3c57f1a1d9ddd87d097efe2df5148f10de79c445fe6eee158f64b4335f3e174'
             '92fd48cbd7e5fe3a0388bbe756a52098fc461ef2dc87d9e886452e4f15acdcdc'
             '7f75f2c2634524e90b1dea7649fceceb57949efa9db365cfa9e29e58690def4e')
