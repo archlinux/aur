@@ -1,11 +1,11 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=patator
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="A multi-purpose bruteforcer"
 arch=('any')
-url="http://code.google.com/p/patator/"
+url="https://github.com/lanjelot/patator"
 license=('GPL2')
 depends=('python2')
 optdepends=(
@@ -13,7 +13,6 @@ optdepends=(
   'python2-pycurl: HTTP'
   'openldap: LDAP'
   'impacket: SMB'
-  'cx_oracle: Oracle'
   'mysql-python: MySQL'
   'python2-psycopg2: PostgreSQL'
   'python2-crypto: VNC'
@@ -24,7 +23,7 @@ optdepends=(
   'unzip: zip archives'
 )
 source=("https://github.com/lanjelot/patator/archive/$pkgver.tar.gz")
-sha256sums=('7938aba21880f35e36f7ccf05524e0c34c611a5d60d6db02256111e5d6e9e435')
+sha256sums=('2c9867c500e47997fdd69064b22fd36ffd79c8e8df8aca305403419b5dca5af9')
 
 build() {
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|g' -i "$srcdir/${pkgname}-$pkgver/${pkgname}.py"
