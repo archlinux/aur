@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="264px" height="264px" viewBox="0 0 264 264" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Exodus_symbol</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#00BFFF" offset="0%"></stop>
+            <stop stop-color="#6619FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M185.06,132 L264,210.860016 L236.2,210.86 C231.423652,210.866409 226.840592,208.974187 223.46,205.6 L149.82,132 L223.46,58.34 C226.840592,54.9658127 231.423652,53.0735914 236.2,53.08 L264,53.0799838 L185.06,132 Z M40.52,58.34 C37.144311,54.9707143 32.5694193,53.0788959 27.8,53.08 L0,53.0799995 L78.92,132 L0,210.86 L27.8,210.86 C32.5694193,210.861104 37.144311,208.969286 40.52,205.6 L114.18,132 L40.52,58.34 Z M132,149.82 L58.34,223.48 C54.9707143,226.855689 53.0788959,231.430581 53.08,236.2 L53.0799995,264 L132,185.08 L210.92,264 L210.92,236.2 C210.915799,231.427712 209.01662,226.852417 205.64,223.48 L132,149.82 Z M132,114.18 L205.64,40.52 C209.01662,37.1475834 210.915799,32.5722884 210.92,27.8 L210.92,0 L132,78.92 L53.0799995,0 L53.08,27.8 C53.0788959,32.5694193 54.9707143,37.144311 58.34,40.52 L132,114.18 Z" id="Exodus_symbol" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+    </g>
+</svg>
