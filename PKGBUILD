@@ -11,13 +11,11 @@ arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL-2.0')
 makedepends=('git' 'cmake' 'gettext' 'boost' 'python')
-depends=('texlive-core' 'gtk3' 'boost-libs' 'glib2' 'libglade' 'poppler-glib' 'glibmm' 'desktop-file-utils')
+depends=('texlive-core' 'gtk3' 'boost-libs' 'glib2' 'libglade' 'glibmm' 'desktop-file-utils')
 conflicts=('xournalpp')
 install="xournalpp.install"
-source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git"
-        "fixpoppler.patch")
-sha256sums=('SKIP'
-            '097a69c2bd861a2aa3d8838b371c31d68fe3c4173e069f447f86aeaae94f94fc')
+source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}/"
@@ -26,7 +24,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}/"
-        patch -p1 < ${srcdir}/fixpoppler.patch
 
 	test -e "${srcdir}/${_pkgname}/build" || mkdir -p "${srcdir}/${_pkgname}/build"
 	cd "${srcdir}/${_pkgname}/build"
@@ -49,8 +46,12 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes"
 
 	install -D -m0644 "${srcdir}/${_pkgname}/ui/pixmaps/xournalpp.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/xournalpp.svg"
-	install -D -m0644 "${srcdir}/${_pkgname}/ui/pixmaps/xoj.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/xoj.svg"
-	ln -s "/usr/share/icons/hicolor/scalable/mimetypes/xoj.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/gnome-mime-application-x-xoj.svg"
+	install -D -m0644 "${srcdir}/${_pkgname}/ui/pixmaps/xopp.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/application-x-xopp.svg"
+	install -D -m0644 "${srcdir}/${_pkgname}/ui/pixmaps/xopt.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/application-x-xopt.svg"
+
+	ln -s "/usr/share/icons/hicolor/scalable/mimetypes/application-x-xopp.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/gnome-mime-application-x-xoj.svg"
+	ln -s "/usr/share/icons/hicolor/scalable/mimetypes/application-x-xopp.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/gnome-mime-application-x-xopp.svg"
+	ln -s "/usr/share/icons/hicolor/scalable/mimetypes/application-x-xopt.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/gnome-mime-application-x-xopt.svg"
 
 	mkdir -p "${pkgdir}/usr/share/mime/packages"
 	mkdir -p "${pkgdir}/usr/share/applications"
@@ -59,4 +60,9 @@ package() {
 	install -D -m0644 "${srcdir}/${_pkgname}/desktop/xournal.xml" "${pkgdir}/usr/share/mime/packages"
 	install -D -m0644 "${srcdir}/${_pkgname}/desktop/xournalpp.desktop" "${pkgdir}/usr/share/applications"
 	install -D -m0644 "${srcdir}/${_pkgname}/desktop/x-xoj.desktop" "${pkgdir}/usr/share/mimelnk/application"
+	# desktop/desktop_install.sh doesn't install those so far
+	#install -D -m0644 "${srcdir}/${_pkgname}/desktop/x-xopp.desktop" "${pkgdir}/usr/share/mimelnk/application"
+	#install -D -m0644 "${srcdir}/${_pkgname}/desktop/x-xopt.desktop.desktop" "${pkgdir}/usr/share/mimelnk/application"
+	install -D -m0644 "${srcdir}/${_pkgname}/desktop/xournalpp.thumbnailer" "${pkgdir}/usr/share/thumbnailers"
+	#install -D -m0755 "${srcdir}/${_pkgname}/utility/usr/local/bin/xopp-recording.sh" "${pkgdir}/usr/local/bin"
 }

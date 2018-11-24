@@ -17,14 +17,11 @@ pkgbase = xournalpp-git
 	depends = boost-libs
 	depends = glib2
 	depends = libglade
-	depends = poppler-glib
 	depends = glibmm
 	depends = desktop-file-utils
 	conflicts = xournalpp
 	source = xournalpp::git+https://github.com/xournalpp/xournalpp.git
-	source = fixpoppler.patch
 	sha256sums = SKIP
-	sha256sums = 097a69c2bd861a2aa3d8838b371c31d68fe3c4173e069f447f86aeaae94f94fc
 
 pkgname = xournalpp-git
 
