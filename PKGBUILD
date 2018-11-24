@@ -8,10 +8,10 @@ url="https://www.gitlab.com/DavidBittner/screens"
 license=('GPL3')
 depends=('gtk3' 'gtkmm3' 'libpng' 'libx11' 'curl' 'gstreamermm' 'glibmm')
 makedepends=('unzip')
-sha512sums=('0e808b4420894d7d852ad11441d59111968ac9c0822ba6d38c8e8a34c88f5d12f40a037a2f6167618c48d96d8db3a4038163fbdd52d820b54e61d452bd214dad')
+sha512sums=('44e6f2c43e97ca88f75a2a00f59d0bcefef4af4da3bb3779fa70e430897e9b505d31b1954545524a637e8ff15218d4de7cd3cd0700ced7600463162f03107192')
 provides=('screens')
 conflicts=('screens')
-source=('https://gitlab.com/davidbittner/Screens/-/jobs/83263641/artifacts/download.zip')
+source=('https://gitlab.com/davidbittner/Screens/-/jobs/125022991/artifacts/download')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
