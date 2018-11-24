@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 license=('LGPL3')
 url="https://www.libreoffice.org/"
 pkgdesc="LibreOffice development branch"
-depends=('gtk2' 'lpsolve' 'liborcus' 'neon' 'cucrl')
+depends=('gtk2' 'lpsolve' 'liborcus' 'neon' 'curl')
 optdepends=('java-runtime:          adds java support'
             'java-environment:      required by extension-wiki-publisher and extension-nlpsolver'
             'coin-or-mp:            required by the Calc solver'
@@ -25,9 +25,5 @@ sha256sums_i686=('4aebbc3de5bc6112545366a1c862f9dc3354e67d94919adc4bd8a8b674ed76
 sha256sums_x86_64=('da89c6b62e77f146dbc1ad43b0bcdebfcd86b85a8dc9cf67c0f15b6f526b956a')
 
 package() {
-	cd ${_pkgnamefmt}_${_LOver}*/RPMS
-
-	for rpm in *rpm ; do
-		bsdtar -x -f ${rpm} -C ${pkgdir}
-	done
+	find "${srcdir}/${_pkgnamefmt}_${_LOver}"*/RPMS/*rpm -exec bsdtar -x -f '{}' -C "${pkgdir}" \;
 }
