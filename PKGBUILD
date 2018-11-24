@@ -37,6 +37,7 @@ prepare() {
 }
 
 build() {
+	ln -s /usr/include/enchant-2 /usr/include/enchant
 	cd "$pkgname-$pkgver/xneur"
 	./autogen.sh --prefix=/opt/xneur
 	make
