@@ -1,6 +1,7 @@
 pkgbase = python-mediainfodll
+	pkgdesc = Python 2 & 3 library for reading metadata from media files -- shared library
 	pkgver = 18.08.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MediaArea/MediaInfoLib
 	arch = any
 	license = BSD 2-Clause
