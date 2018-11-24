@@ -12,7 +12,7 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.0.0_devel.105765.d031d5c999
+pkgver=19.0.0_devel.105871.d4e7d8b7f0
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -26,12 +26,11 @@ conflicts=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-r
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
-        'LICENSE'
+               'LICENSE'
 )
 
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-)
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
 
 pkgver() {
@@ -41,10 +40,13 @@ pkgver() {
 }
 
 build () {
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  export LLVM_CONFIG=/usr/bin/llvm-config32
+    export CC="gcc -m32"
+    export CXX="g++ -m32"
+    export PKG_CONFIG=/usr/bin/pkg-config-32  
+    export LLVM_CONFIG=/usr/bin/llvm-config32
+    # meson doesn't honor LLVM_CONFIG and 0.48.2 has no alternative
+    # 0.49 will probably have one
+    # https://bbs.archlinux.org/viewtopic.php?id=241990
 
       if [  -d _build ]; then
         rm -rf _build
