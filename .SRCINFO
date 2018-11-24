@@ -1,7 +1,7 @@
 pkgbase = iptables-fullcone-nat
 	pkgdesc = iptables with FULLCONENAT extension
-	pkgver = 1.8.0.r85.g0800d9b4
-	pkgrel = 2
+	pkgver = 1.8.2.r19.g2ed6c85f
+	pkgrel = 1
 	url = https://github.com/Chion82/netfilter-full-cone-nat
 	install = iptables-fullcone-nat.install
 	arch = i686
@@ -9,15 +9,18 @@ pkgbase = iptables-fullcone-nat
 	license = GPL2
 	makedepends = git
 	makedepends = linux-api-headers
-	depends = glibc
-	depends = libmnl
 	depends = libnftnl
 	depends = libpcap
+	depends = libnfnetlink
+	depends = libnetfilter_conntrack
+	depends = bash
 	depends = netfilter-full-cone-nat-dkms
 	provides = iptables
 	conflicts = iptables
 	source = file:///usr/src/netfilter-full-cone-nat-git+bc3fb32/libipt_FULLCONENAT.c
 	source = git://git.netfilter.org/iptables
+	source = arptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/arptables.service?h=packages/iptables
+	source = ebtables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ebtables.service?h=packages/iptables
 	source = empty-filter.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-filter.rules?h=packages/iptables
 	source = empty-mangle.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-mangle.rules?h=packages/iptables
 	source = empty-nat.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-nat.rules?h=packages/iptables
@@ -25,10 +28,10 @@ pkgbase = iptables-fullcone-nat
 	source = empty-security.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-security.rules?h=packages/iptables
 	source = empty.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty.rules?h=packages/iptables
 	source = ip6tables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip6tables.service?h=packages/iptables
-	source = iptables-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-flush?h=packages/iptables
+	source = iptables-legacy-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-legacy-flush?h=packages/iptables
 	source = iptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables.service?h=packages/iptables
 	source = simple_firewall.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/simple_firewall.rules?h=packages/iptables
-	source = iptables-fullcone-nat.install
+	sha256sums = 42c9f4c15c38e2b20e25a2089d530207d3d9e642de4c1c6d2b7b5a65532355ec
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -41,7 +44,7 @@ pkgbase = iptables-fullcone-nat
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 28c1f28f2e8b2b95b562ff807ac472134f27da350cb787f7e0f2d59f80d16ac0
+	sha256sums = SKIP
 
 pkgname = iptables-fullcone-nat
 
