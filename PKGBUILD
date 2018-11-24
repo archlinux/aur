@@ -8,7 +8,7 @@
 
 pkgname=xneur-devel-git
 pkgver=0.20.0
-pkgrel=10
+pkgrel=11
 epoch=
 pkgdesc="X Neural Switcher detects the input language and corrects keyboard layout. Git version"
 arch=('any')
@@ -26,9 +26,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/AndrewCrewKuznetsov/xneur-devel")
+source=()
 noextract=()
-md5sums=('SKIP')
+
 validpgpkeys=()
 
 prepare() {
@@ -55,6 +55,7 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	echo -e "#!/bin/bash\n/opt/xneur/bin/xneur $@" > "$pkgdir/usr/bin/xneur"
 	chmod +x "$pkgdir/usr/bin/xneur"
-	libtool --finish /opt/xneur/lib/xneur
+	echo -e "\033[1mRemember\033[0m to run 'libtool --finish /opt/xneur/lib/xneur'"
 	
 }
+
