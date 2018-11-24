@@ -1,28 +1,29 @@
-# Maintainer: Douglas Creager <dcreager@dcreager.net>
+# Maintainer: Sauyon Lee <arch@sauyon.com>
+# Contributor: Douglas Creager <dcreager@dcreager.net>
 pkgname=fdr
-pkgver=4.2.2
-pkgrel=2
+pkgver=4.2.3
+pkgrel=1
 pkgdesc="Refinement checker for CSP"
 arch=('x86_64')
 url="https://www.cs.ox.ac.uk/projects/fdr/"
 license=('custom')
 depends=('libtinfo5' 'openssl-1.0')
-source=("https://www.cs.ox.ac.uk/projects/fdr/downloads/fdr-3776-linux-x86_64.tar.gz")
-md5sums=('70c7e156380338e84d472e35a7018c09')
-sha1sums=('95818af0c131f1ee252518883629212e58afe541')
-sha256sums=('af5949d02f36b4fdb8df328dd0c3beb1d333793636ae5d1520dd2e9b794cee76')
+source=('https://www.cs.ox.ac.uk/projects/fdr/downloads/fdr-3789-linux-x86_64.tar.gz')
+sha256sums=('08c5a0a91e049ccab2930515d32df36722a4a03f79cc47b96abd540f59c45e58')
 
 package() {
-  mkdir -p "${pkgdir}/opt"
-  cp -R "${srcdir}/fdr" "${pkgdir}/opt/fdr"
+  install -d "${pkgdir}/opt/fdr"
+  cp -r "${srcdir}/fdr/"{bin,lib} "${pkgdir}/opt/fdr"
+  install -d "${pkgdir}/usr"
+  cp -r "${srcdir}/fdr/include" "${pkgdir}/usr"
 
-  mkdir -p "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/bin"
   for c in cspmchecker cspmcheckeri fdr4 refines; do
       ln -s "../../opt/fdr/bin/$c" "${pkgdir}/usr/bin"
   done
 
-  mkdir -p "${pkgdir}/usr/share/doc/fdr"
-  ln -s "../../../../opt/fdr/fdr-examples" "${pkgdir}/usr/share/doc/fdr/examples"
+  install -d "${pkgdir}/usr/share/doc/fdr"
+  cp -r "${srcdir}/fdr/fdr-examples" "${pkgdir}/usr/share/doc/fdr/examples"
 }
 
 # vim:set ts=2 sw=2 et:
