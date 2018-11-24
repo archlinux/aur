@@ -2,7 +2,7 @@
 
 pkgname=julia-compat
 _pkgname=Compat
-pkgver=1.1.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Compat Package for Julia.'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(julia)
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaLang/$_pkgname.jl/archive/v$pkgver.tar.gz)
-sha256sums=('02057ea68ea29e0bc8dbdac3a7d9ab16eca8d40172e9e5e014252df4f0de687f')
+sha256sums=('64913d7dbde5b5a64608a1a52dc127dd58c9089dfa68fa4d3584a0a38ac50e5e')
 
 package() {
 	cd $_pkgname.jl-$pkgver
