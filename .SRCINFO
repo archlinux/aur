@@ -1,6 +1,6 @@
 pkgbase = ssh-agent-filter
 	pkgdesc = Filtering proxy for ssh-agent meant to be forwarded to untrusted servers
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://git.tiwe.de/ssh-agent-filter.git
 	arch = x86_64
@@ -9,10 +9,12 @@ pkgbase = ssh-agent-filter
 	makedepends = boost
 	makedepends = help2man
 	makedepends = pandoc
+	makedepends = nettle
+	makedepends = gmp
 	depends = openssh
 	optdepends = dialog
-	source = https://git.tiwe.de/ssh-agent-filter.git/snapshot/ssh-agent-filter-0.5.1.tar.gz
-	sha512sums = 9105bfcca37f4cf0c25cf5037ce6ba90ae71361a7215ce396ba1b603d65f930ba3437d7c6f2b80d1e918edccc1a876636c6ffc60995351cb3a8bd3e53b91067d
+	source = https://git.tiwe.de/ssh-agent-filter.git/snapshot/ssh-agent-filter-0.5.2.tar.gz
+	sha512sums = 317049dc7fee62da1f31a54c7c75009cf26fc8041171426edbc12fdcc3fabf51b29efa400826654f2016e8053c5e543930e1ae62d72e611a20c427c5682037df
 
 pkgname = ssh-agent-filter
 
