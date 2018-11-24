@@ -6,7 +6,7 @@ pkgname='ros-melodic-moveit-ros-planning'
 pkgver='0.10.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core
@@ -15,6 +15,7 @@ ros_makedepends=(ros-melodic-moveit-core
   ros-melodic-moveit-ros-perception
   ros-melodic-actionlib
   ros-melodic-angles
+  ros-melodic-chomp-motion-planner
   ros-melodic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
@@ -25,6 +26,7 @@ ros_depends=(ros-melodic-moveit-core
   ros-melodic-dynamic-reconfigure
   ros-melodic-moveit-ros-perception
   ros-melodic-actionlib
+  ros-melodic-chomp-motion-planner
   ros-melodic-angles)
 depends=(${ros_depends[@]})
 
