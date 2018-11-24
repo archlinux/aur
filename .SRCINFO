@@ -25,9 +25,9 @@ pkgbase = google-chrome-dev
 	source = google-chrome-unstable_72.0.3610.2_amd64.deb::https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
 	source = eula_text.html
 	source = google-chrome-unstable.sh
-	md5sums = 4c7edfd2121ab7e7db361d9b9efc6ecb
-	md5sums = d50d8f0a6940791eabc41c4f64e6a3cf
-	md5sums = 11b55a3fec7279db32b63e3a0b97dc01
+	sha512sums = 1f60573f4b535e8d0488781424ace6ada48d9eb51ce2588acb34431e1c2cf22757af4aaf139f350deb3ca0bf878c865da3015df6d7ab9023e7d15fdd4ddeebe8
+	sha512sums = a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396
+	sha512sums = 5f716219456ec8de9df4e7ee5f94bc35cdc1b079d9d1d5dab0df8d4b6e6d0fd8775bb64d0c8ce9339837d7277614c55aa05adced6e8ad49931989823ed97863b
 
 pkgname = google-chrome-dev
 

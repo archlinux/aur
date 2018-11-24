@@ -1,4 +1,5 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: Knut Ahlers <knut at ahlers dot me>
+# Contributor: Det <nimetonmaili g-mail>
 # Contributors: t3ddy, Lex Rivera aka x-demon, ruario
 
 # Check for new Linux releases in: http://googlechromereleases.blogspot.com/search/label/Dev%20updates
@@ -26,9 +27,9 @@ _channel=unstable
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         'eula_text.html'
         "google-chrome-$_channel.sh")
-md5sums=('4c7edfd2121ab7e7db361d9b9efc6ecb'
-         'd50d8f0a6940791eabc41c4f64e6a3cf'
-         '11b55a3fec7279db32b63e3a0b97dc01')
+sha512sums=('1f60573f4b535e8d0488781424ace6ada48d9eb51ce2588acb34431e1c2cf22757af4aaf139f350deb3ca0bf878c865da3015df6d7ab9023e7d15fdd4ddeebe8'
+            'a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
+            '5f716219456ec8de9df4e7ee5f94bc35cdc1b079d9d1d5dab0df8d4b6e6d0fd8775bb64d0c8ce9339837d7277614c55aa05adced6e8ad49931989823ed97863b')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
 #source[0]="https://dl.google.com/linux/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_72.0.3608.4-1_amd64.deb"
