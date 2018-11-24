@@ -1,9 +1,8 @@
 post_install() {
     echo ""
-    echo "Example config.json file is located at:"
-    echo "  /usr/share/docs/xmrig-nvidia/config.json.example"
-    echo ""
-    echo "Don't forget to use \`--config' when using xmrig."
+    echo "Example config is located in: /usr/share/doc/xmrig-nvidia/config.json.example"
+    echo "You can place it into \`/etc/xmrig\` and use SystemD service to run it:"
+    echo "  \`systemctl start xmrig-nvidia@CONFIG.service\`"
     echo ""
 }
 

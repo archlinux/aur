@@ -1,0 +1,17 @@
+[Unit]
+Description=XMRig NVidia Daemon for config %i.json
+After=network.target
+
+[Service]
+User=xmrig
+Group=xmrig
+Type=forking
+ExecStart=/usr/bin/xmrig-nvidia -c %i.json -B
+WorkingDirectory=/etc/xmrig
+Restart=on-failure
+RestartSec=20s
+StartLimitInterval=30min
+StartLimitBurst=30
+
+[Install]
+WantedBy=multi-user.target
