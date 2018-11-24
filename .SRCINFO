@@ -1,0 +1,16 @@
+pkgbase = noto-fonts-all
+	pkgdesc = Meta package of all Noto fonts in the official repositories.
+	pkgver = 20181009
+	pkgrel = 1
+	url = https://www.google.com/get/noto/
+	arch = any
+	license = custom:SIL
+	depends = noto-fonts
+	depends = noto-fonts-cjk
+	depends = noto-fonts-emoji
+	depends = noto-fonts-extra
+	source = LICENSE
+	sha256sums = cb30d3086a8b3ce0b9e3690bf48d6620402b61160bc658076f95180ccd9e9dae
+
+pkgname = noto-fonts-all
+
