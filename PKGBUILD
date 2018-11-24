@@ -5,8 +5,8 @@
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=dropbox-cli
-pkgver=2015.10.28
-pkgrel=4
+pkgver=2018.11.08
+pkgrel=1
 pkgdesc="Command line interface for Dropbox"
 arch=("any")
 url="http://www.${pkgname%-cli}.com"
