@@ -29,7 +29,7 @@ build() {
   rm -rf "$_builddir"
   mkdir -p "$_builddir" && cd "$_builddir"
 
-  cmake -G Ninja                    \
+  cmake -G Ninja                \
     -DWANT_MONO=OFF             \
     -DWANT_CORE=OFF             \
     -DWANT_QTCLIENT=ON          \
