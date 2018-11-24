@@ -6,7 +6,7 @@ pkgname=('marble-git'
          'libastro-git'
          'marble-data-git'
 	 'marble-common-git')
-pkgver=18.07.80.10.g4476573c2
+pkgver=18.07.80.34.g65b3ac2b4
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
@@ -33,6 +33,9 @@ prepare() {
       -e '/Quick/d' \
       -e '/touch/d' \
       -i marble/src/apps/CMakeLists.txt
+  # fix an example
+  #sed -e 's/CV_RGB2BGR/CV_RGB/' \
+  #    -i 's/marble/examples/cpp/animation-video/main.cpp
 }
 
 build() {
@@ -43,7 +46,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DQT_PLUGINS_DIR=lib/qt/plugins \
     -DBUILD_TESTING=OFF \
-    -DBUILD_MARBLE_EXAMPLES=ON \
+    -DBUILD_MARBLE_EXAMPLES=OFF \
     -DBUILD_MARBLE_TOOLS=ON \
     -DBUILD_MARBLE_TESTS=OFF \
     -DMOBILE=OFF
