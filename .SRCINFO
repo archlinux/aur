@@ -7,8 +7,8 @@ pkgbase = ccd-python-git
 	license = unknown
 	makedepends = git
 	depends = python>=3.6.0
-	source = https://github.com/pushsla/CuteCD
-	md5sums = 6dd2309a76aa7bd81aeb2bfb23f2c51e
+	source = git+https://github.com/pushsla/CuteCD.git
+	md5sums = SKIP
 
 pkgname = ccd-python-git
 

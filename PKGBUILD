@@ -24,16 +24,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/pushsla/CuteCD")
+source=("git+https://github.com/pushsla/CuteCD.git")
 noextract=()
-md5sums=('6dd2309a76aa7bd81aeb2bfb23f2c51e')
+md5sums=('SKIP')
 validpgpkeys=()
-prepare() {
-	#rm -rf "$pkgname-$pkgver"
-	git clone "$source" -b master "$pkgname-$pkgver"
-}
+
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/CuteCD"
 	mkdir -p "$pkgdir/usr/bin/"
 	cp ccd-src.py "$pkgdir/usr/bin/ccd"
 	echo -e "\033[1mNote:\033[0m ccd reads config file. During first use it will be stored in $HOME/.config/ccd.pycfg"
