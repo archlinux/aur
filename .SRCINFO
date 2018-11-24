@@ -1,6 +1,6 @@
 pkgbase = iridium-deb
 	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Stable Channel)
-	pkgver = 67.0
+	pkgver = 71.0
 	pkgrel = 2
 	url = https://iridiumbrowser.de/
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = iridium-deb
 	options = !emptydirs
 	options = !strip
 	source = https://downloads.iridiumbrowser.de/ubuntu/iridium-browser_current_amd64.deb
-	sha256sums = 1e89367b3866682a55fb450c23318009cbf02b1ba423ec08482742328fdf46fb
-	sha384sums = 1b50c929eab384bf9411d21d157db5293dfef7247d4f42b3e932ac8eddd1ba1145a9656c0f3a8c8a79f74c23a8305ac7
-	sha512sums = e54418649add05348328300b39bfa0b094199aecac0d2eea3a27fb03df6aaa0f9fba3588558e26b2df8fc26ea34d095eaaffea2287141b53f2864d66232d1673
+	sha256sums = 4ec07d3844b64068dd7a062fa3f84629956ae65faa831533fa42aff60b5e4029
+	sha384sums = 752d46940f929e856b3902ab90cc13738e7e8fa405b9363767556e6346b78607dbeade5bc42ccab15a0eb099e9629ef8
+	sha512sums = cc1f9e742f24ae7afba7b144d72cd45b23392033676ed6fc8e5a522e0cee81598cbc5e54aca5f7ecfd3a9c2bc377c0e7acf48c48d8258f883bfc3a77adbf9376
 
 pkgname = iridium-deb
 
