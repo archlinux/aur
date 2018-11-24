@@ -29,4 +29,5 @@ build() {
 package() {
   cd "${pkgname}"
   make install DESTDIR=${pkgdir}
+  gtk-update-icon-cache -f /usr/share/icons/hicolor/
 }
