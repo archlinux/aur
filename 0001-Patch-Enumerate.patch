@@ -1,26 +1,12 @@
-From 988dab5e309316d608aea8b73b8db304de9f03ee Mon Sep 17 00:00:00 2001
+From ffcd02aeec50ae4003c057d3be85c2657f0fde1f Mon Sep 17 00:00:00 2001
 From: getzze <getzze@gmail.com>
-Date: Wed, 21 Nov 2018 23:46:48 +0000
-Subject: [PATCH] Patch Enumerate + getdown-nightly.txt
+Date: Wed, 21 Nov 2018 23:38:14 +0000
+Subject: [PATCH] Patch Enumerate
 
 ---
- ant-package.xml                                               | 2 +-
  .../ui/components/tree/TmmTreeTextFilter.java                 | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/ant-package.xml b/ant-package.xml
-index 4591c57f..6b6fa1aa 100644
---- a/ant-package.xml
-+++ b/ant-package.xml
-@@ -6,7 +6,7 @@
- 	<property name="dist.dir" value="target/dist" />
- 
- 	<!-- set as property to override in jenkins -->
--	<property name="getdown" value="getdown.txt" />
-+	<property name="getdown" value="getdown-nightly.txt" />
- 
- 	<path id="classpath.default">
- 		<fileset dir="${lib.dir}">
 diff --git a/src/main/java/org/tinymediamanager/ui/components/tree/TmmTreeTextFilter.java b/src/main/java/org/tinymediamanager/ui/components/tree/TmmTreeTextFilter.java
 index 345acb5b..978a9096 100644
 --- a/src/main/java/org/tinymediamanager/ui/components/tree/TmmTreeTextFilter.java

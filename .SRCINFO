@@ -1,7 +1,7 @@
 pkgbase = tiny-media-manager-git
 	pkgdesc = A multi-OS media managment tool
-	pkgver = 3.0.r3689.a12a7196
-	pkgrel = 1
+	pkgver = 3.0.r3690.41042a6b
+	pkgrel = 2
 	url = https://www.tinymediamanager.org
 	arch = any
 	license = Apache
@@ -15,12 +15,12 @@ pkgbase = tiny-media-manager-git
 	source = tinymediamanager.desktop
 	source = tinymediamanager
 	source = tinymediamanager-cli
-	source = 0001-Patch-Enumerate-getdown-nightly.txt.patch
+	source = 0001-Patch-Enumerate.patch
 	sha256sums = SKIP
 	sha256sums = e3d02ea65adf288daa76444957b6037281e752ab7eb4fef8c1797b866a3d407a
 	sha256sums = 7e26a713a1a7e2714c099106b42e3cbdcf6f7ee9a207d71247aa7a308ae2d622
 	sha256sums = cace0ed459a0d77449060e9f753bfc1b26e9f43ded038495615be46a370c8d3b
-	sha256sums = 9d183c5a6be7532f5cfbe011b4d083ff299eb43c707e53e059102e8026aba7a3
+	sha256sums = 9ccb9e55ab74da9dcc22b8ba3367e3279b5a70ccce9cda6f5acce644996e6996
 
 pkgname = tiny-media-manager-git
 
