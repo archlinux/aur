@@ -4,8 +4,8 @@
 
 pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git') 
 _pkgname=pamac
-pkgver=7.3.0.r2.gdc9740e
-_pkgver=7.3.0
+pkgver=7.3.1
+_pkgver=7.3.1
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -33,13 +33,13 @@ pkgver() {
 
 prepare() {
   # adjust version string
-  cd "$_pkgname"
+  cd $_pkgname
   sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" src/manager_window.vala
   # patches here
 }
 
 build() {
-  cd "$_pkgname"
+  cd $_pkgname
   mkdir -p builddir
   cd builddir
   meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true
@@ -52,7 +52,7 @@ package_pamac-aur-git() {
   conflicts=('pamac-aur')
   replaces=('pamac-aur')
   install=pamac.install
-  cd "$_pkgname"
+  cd $_pkgname
   cd builddir
   DESTDIR="$pkgdir" ninja install
   # removed pamac-mirrorlist-timer, useless for Archlinux
@@ -66,7 +66,7 @@ package_pamac-aur-tray-appindicator-git() {
   conflicts=('pamac-aur-tray-indicator')
   replaces=('pamac-aur-tray-indicator')
   depends=('pamac-aur-git' 'libappindicator-gtk3')
-  cd "$_pkgname"
+  cd $_pkgname
   install -Dm755 "builddir/src/pamac-tray-appindicator" "$pkgdir/usr/bin/pamac-tray-appindicator"
   install -Dm644 "data/applications/pamac-tray-appindicator.desktop" "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"
 }
