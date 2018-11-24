@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-amd-full-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)
-	pkgver = 4.2.r92486.g8f875a90c4
+	pkgver = 4.2.r92502.gd290bb0c54
 	pkgrel = 1
 	url = https://www.ffmpeg.org/
 	arch = i686
@@ -89,7 +89,7 @@ pkgbase = ffmpeg-amd-full-git
 	depends = chromaprint-fftw
 	depends = codec2
 	depends = dav1d-git
-	depends = davs2-git
+	depends = davs2
 	depends = flite1-patched
 	depends = libilbc
 	depends = libklvanc-git
