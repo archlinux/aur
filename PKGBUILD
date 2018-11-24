@@ -2,7 +2,7 @@
 
 pkgname=julia-json
 _pkgname=JSON
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='JSON parsing and printing for Julia'
 arch=(any)
@@ -16,7 +16,7 @@ depends=(julia
 )
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaIO/$_pkgname.jl/archive/v$pkgver.tar.gz)
-sha256sums=('b5e4445c0211cebf114c24b3d941f57948f453e2689fc3a6d7673f2cc70b3ce4')
+sha256sums=('1185a2d71ebbc0cce52ea5defb4722036f340b96c9e5719e495ca5c9b89c1f96')
 
 package() {
 	cd $_pkgname.jl-$pkgver
