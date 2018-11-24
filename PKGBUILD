@@ -38,7 +38,7 @@ prepare() {
 
 build() {
 	echo 'Possibly will request passwd to make /usr/include/enchant link'
-	sudo ln -s /usr/include/enchant-2 /usr/include/enchant
+	sudo ln -s /usr/include/enchant-2 /usr/include/enchant || echo "Don't mind..."
 	cd "$pkgname-$pkgver/xneur"
 	./autogen.sh --prefix=/opt/xneur
 	make
