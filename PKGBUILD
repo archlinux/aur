@@ -1,13 +1,14 @@
-# maintainer: Steve Holmes <steve.holmes88@gmail.com>
+# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
+# Contributor: Kyle <kyle@free2.ml>
+# Contributer: Steve Holmes <steve.holmes88@gmail.com>
 # Contributor: Alexander Jenisch <nt@divzero.at>
 # Contributor: Chris Brannon <cmbrannon@cox.net>
 # Contributor: Andreas Messer <andi@bupfen.de>
-# Contributor: Storm Dragon <stormdragon2976@gmail.com>
 
 pkgname=speech-dispatcher-git
-pkgver=0.8.r3.g9f40cd2
+pkgver=0.9.0.rc2.r7.gd25ed10d
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('armv7h' 'aarch64' 'i686' 'x86_64')
 pkgdesc="High-level device independent layer for speech synthesis interface (development version)."
 license=('GPL2' 'FDL')
 depends=('glib2' 'libao' 'python')
@@ -21,7 +22,7 @@ conflicts=('speech-dispatcher')
 options=('!libtool') 
 url="http://www.freebsoft.org/speechd"
 _gitname="speechd"
-source=(${_gitname}::'git://git.freebsoft.org/git/speechd.git'
+source=('git+https://github.com/brailcom/speechd.git'
         'speech-dispatcherd.service'
 	"speech-dispatcher-git.install")
 #source=("speechd.run" "speechd.sh" "speechd.logrotate")
@@ -46,6 +47,10 @@ backup=('etc/speech-dispatcher/clients/gnome-speech.conf'
 
 #_gitroot="git://git.freebsoft.org/git/speechd"
 #_gitname="speechd"
+
+sha512sums=('SKIP'
+            '73eb563003b03f4836b17af66335664050d1dc3bd8434be368cd09ff8933aa2adc4bd17c4ce5c1bbbd406a0b0880191426a679fa05eac0a30f4005eaeeb47340'
+            'c7dbb517526cfbaaf455ff974209a07749385e504175d9d3328d4020f47f9bcf4572848d909738b4b3a5534e9ad4b1e09bcdb51a44945b2c7aecd4cf8f718f8f')
 
 pkgver() {
   cd ${_gitname}
@@ -79,10 +84,3 @@ package() {
   #sed -i -e 's|# AudioOutputMethod "pulse"|AudioOutputMethod "alsa"|' speechd.conf
   #sed -i -e 's|# DisableAutoSpawn|DisableAutoSpawn|' speechd.conf
 }
-
-md5sums=('SKIP'
-         'd26f52e2e95a30eaa83560f0e63faca5'
-         '25a5d4002bf7949c0966b6a51242f81b')
-md5sums=('SKIP'
-         'd26f52e2e95a30eaa83560f0e63faca5'
-         '34841e928d2c7997d13e808887acb201')
