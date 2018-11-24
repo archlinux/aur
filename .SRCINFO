@@ -1,0 +1,18 @@
+pkgbase = slock-solarized-dark
+	pkgdesc = Simple X display locker.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://tools.suckless.org/slock/
+	arch = x86_64
+	license = MIT
+	depends = libxrandr
+	provides = slock
+	source = https://dl.suckless.org/tools/slock-1.4.tar.gz
+	source = config.h
+	source = solarized.patch
+	sha256sums = b53849dbc60109a987d7a49b8da197305c29307fd74c12dc18af0d3044392e6a
+	sha256sums = fd86100f2dd81fc41a4b4cb2a54a6076d393b08ab43d98b5e5ba7bbf1218fe71
+	sha256sums = 1d9b1dad24cd6bf51f7ce39b855634dcbb301ae22f79ddcf44fa09fad8dc4e79
+
+pkgname = slock-solarized-dark
+
