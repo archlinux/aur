@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Show CommonMark (a standardized Markdown dialect) documents on text terminals.'
 arch=('i686' 'x86_64')
@@ -10,11 +10,16 @@ depends=('oniguruma')
 conflicts=('mdcat-git')
 makedepends=('rust' 'cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha512sums=('35b041db8a4a5badcef579175a3744a95b27535a2eed6c798f0b3b1bfbe0ba9201af38b7b79245412ff39ddec50096f8916e421286ff89149f9d1f50dbea167c')
+sha512sums=('b300ae90be74750de4bfdf2a04ef292b2b59569169957b2638b518dc1d47c0ce5adf3a8e6dfd7b67d0b2ba2b284d3fdb62e93fc208efa671165ebf979fef03a5')
 
 build() {
   cd "$pkgname-$pkgname-$pkgver"
-  /usr/bin/cargo build --release
+  # Default features are iterm2 terminology and remote_resources. iterm2 is
+  # unecessary on Arch, remote_resources brings in a chain of depenedencies
+  # reqwest->native-tls->openssl. The version of the openssl crate that is
+  # selected does not recognise the version that Arch is using and results in
+  # the build failing so this feature is disabled.
+  /usr/bin/cargo build --release --no-default-features --features terminology
 }
 
 package() {
