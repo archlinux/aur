@@ -8,9 +8,11 @@ _opt_defaultmode='660' # default: 620
 # Todo: python tools should be updated to python3
 # Todo: nslinktool Config Driver needs an up down button to reorder entries
 # Todo: TUI firmware updater.
+# Todo: Firmware updater can't update unit set to DHCP.
 # Todo: Comtrol icons for nslinktool and the firmware updater
 # Todo: nslinktool set the mouse pointer to a spinning circle far too long after startup
 # Todo: rm /dev/ttySI* on rmmod nslink
+# Todo: When characters are held by RTS low, opening ttySI* raises RTS too soon and some characters are lost
 
 # Todo: nslinktool, HUB IP Admin, [Get] with SocketServer, error getting IP info, did not get ip6info reply
 
@@ -21,8 +23,8 @@ _opt_defaultmode='660' # default: 620
 
 set -u
 pkgname='nslink'
-pkgver='7.28'
-pkgrel='5'
+pkgver='7.34'
+pkgrel='1'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
@@ -34,24 +36,22 @@ optdepends=(
   'gksu: NS-Link Manager GUI'
 )
 backup=('etc/nslink.conf')
-options=('!zipman')
+options=('!zipman' '!strip')
 install="${pkgname}-install.sh"
 _verwatch=('http://downloads.comtrol.com/html/DM_PRO_RTS_SERIALHUB_drivers.htm' '.*/devicemaster-linux-\([0-9\.]\+\)\.tar\.gz' 'l')
 _srcdir="devicemaster-linux-${pkgver}"
 _srcdir2='DM-Firmware-Updater-1.06' # http://downloads.comtrol.com/html/DM_PRO_RTS_SERIALHUB_pvdx2.htm
-#source=("ftp://ftp.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-linux-${pkgver}.tar.gz")
-source=("http://downloads.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-linux-${pkgver}.tar.gz")
-#source+=('ftp://ftp.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
-source+=('http://downloads.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
-source+=('dmupdate.py.usage.patch')
-source+=('0000-Invalid-MKDEV-macro.patch')
-source+=('0001-kernel-4.18-proc_fops-to-proc_show.patch') # https://patchwork.kernel.org/patch/10349751/
-sha256sums=('900d0681a86d0732cf3e71e56a013456d5a77a68f7faa2afb955e275f73353fb'
+source=(
+  #"ftp://ftp.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-linux-${pkgver}.tar.gz"
+  #"http://downloads.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-linux-${pkgver}.tar.gz"
+  "http://downloads.comtrol.com/beta/dev_mstr/rts/drivers/linux/devicemaster-linux-${pkgver}.tar.gz"
+  #'ftp://ftp.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz'
+  'http://downloads.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz'
+  'dmupdate.py.usage.patch'
+)
+sha256sums=('4434d75078db4c4d8406fc3013bd76dbac2d11133062de9ee1cfff4db533773b'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
-            '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
-            '6968b10cd66d783f86f587a03584e78af4a2766d223b8d5c24c3ea4fe79f7230'
-            'b20f97b6627b2b804f73dc09178d01a92407a5a9e16fd89c84baedb38f9d007c'
-            '5c00939eb945c98336211cd61408b5a8623b01a7059356e663ccc638b0d159fb')
+            '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -59,41 +59,19 @@ else
   makedepends+=('linux-headers')
 fi
 
-_opt_LEGACY_VER=''
-# Install both versions so dkms gets the right version for each kernel
-if [ "${_opt_DKMS}" -ne 0 ]; then
-  # 7.26 supports Kernels 2.6.33 through 4.14.x
-  # 7.28 supports Kernels 4.15 through 4.17.x.
-  _opt_LEGACY_VER='7.26'
-  if [ "$(vercmp "${pkgver}" "${_opt_LEGACY_VER}")" -gt 0 ]; then
-    _srcalt="${_srcdir//${pkgver}/${_opt_LEGACY_VER}}"
-    source+=("http://downloads.comtrol.com/legacy/dev_mstr/rts/drivers/linux/${_opt_LEGACY_VER}/${_srcalt}.tar.gz")
-  else
-    _opt_LEGACY_VER=''
-  fi
-fi
-
-_fn_patch_km() {
-  set +u; msg2 "patch_km $1"; set -u
+prepare() {
+  set -u
+  cd "${_srcdir}"
 
   # Fix permissions
   find -type 'f' -perm '/111' -exec chmod 644 '{}' '+'
   chmod 755 *.sh *.py 'nslinktool'
 
-  #diff -pNau5 nslinkd.c{.orig,} > '0000-Invalid-MKDEV-macro.patch'
-  patch -Nbup0 -i "${srcdir}/0000-Invalid-MKDEV-macro.patch"
-
-  #diff -pNau5 nslink.c{.orig,} > '0001-kernel-4.18-proc_fops-to-proc_show.patch'
-  patch -Nbup0 -i "${srcdir}/0001-kernel-4.18-proc_fops-to-proc_show.patch"
-
-  # Fix namespace collision in 4.18
-  sed -e 's:\btcp_data_ready\b:nslink_&:g' -i 'nslink.c'
-
   # Version check
   local _ver
   _ver="$(sed -n -e 's:^#define\sSI_VERSION\s"\([^"]\+\).*$:\1:p' 'version.h')"
-  if [ "$1" != "${_ver}" ]; then
-    echo "Version mismatch $1 != ${_ver}"
+  if [ "${pkgver}" != "${_ver}" ]; then
+    echo "Version mismatch ${pkgver} != ${_ver}"
     set +u
     false
   fi
@@ -152,17 +130,6 @@ _fn_patch_km() {
       -e '#s:\(mode_t mode\) = [0-9]\+\(.*;\)'":\1 = ${_opt_defaultmode}\2:g" \
       -e "/mknod/ s:mode:0${_opt_defaultmode}:g" \
     -i 'nslinkd.c'
-}
-
-prepare() {
-  set -u
-  cd "${_srcdir}"
-  _fn_patch_km "${pkgver}"
-  if [ ! -z "${_opt_LEGACY_VER}" ]; then
-    pushd "${srcdir}/${_srcalt}" > /dev/null
-    _fn_patch_km "${_opt_LEGACY_VER}"
-    popd > /dev/null
-  fi
 
   # Fix up the firmware downloaders
   cd "${srcdir}/${_srcdir2}"
@@ -262,53 +229,15 @@ CLEAN[0]="make -j1 clean"
 DEST_MODULE_LOCATION[0]="/kernel/drivers/misc"
 EOF
     ) "${_dkms}/dkms.conf"
-_fn_dkmsinst() {
-    install -Dpm644 'nslink.h' 'nslink_int.h' 'version.h' 'nslink.c' 'Makefile' -t "$1"
-    #make -C "$1" clean
+    install -Dpm644 'nslink.h' 'nslink_int.h' 'version.h' 'nslink.c' 'Makefile' -t "${_dkms}"
+    #make -C "${_dkms}" clean
     sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
         -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
         -e 's:`uname -r`:$(KERNELRELEASE):g' \
         -e 's:$(KVER):$(KERNELRELEASE):g' \
         -e '# Get rid of make lines so make all makes the module' \
         -e 's:^\s\+make\s:#&:g' \
-       -i "$1/Makefile"
-}
-    if [ -z "${_opt_LEGACY_VER}" ]; then
-      _fn_dkmsinst "${_dkms}"
-    else
-      # It is not necessary to install files to ${_dkms} for pacman -Qo
-      # The cp does not happen in /usr/src but in /var/lib/dkms where dkms cleans everything up
-      _fn_dkmsinst "${_dkms}/${pkgver}"
-
-      # Install a custom make helper that selects source based on kernel version
-      sed -e "/^MAKE/ s:make :${_dkms#${pkgdir}}/makedkms.sh"' KERNELRELEASE=$kernelver :g' -i "${_dkms}/dkms.conf"
-      install -Dm744 <(cat << EOF
-#!/usr/bin/bash
-
-# Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# https://aur.archlinux.org/
-
-set -e
-set -u
-
-kv="\$*" # \$@ is not what we want here.
-kv="\${kv##*KERNELRELEASE=}"
-kv="\${kv%% *}"
-
-if [ "\$(vercmp "\${kv}" '4.15')" -lt 0 ]; then
-  cp -p '${_opt_LEGACY_VER}'/* .
-else
-  cp -p '${pkgver}'/* .
-fi
-make "\$@"
-EOF
-      ) "${_dkms}/makedkms.sh"
-
-      # Install legacy code
-      pushd "${srcdir}/${_srcdir//${pkgver}/${_opt_LEGACY_VER}}" > /dev/null
-      _fn_dkmsinst "${_dkms}/${_opt_LEGACY_VER}"
-      popd > /dev/null
-    fi
+       -i "${_dkms}/Makefile"
   fi
 
   # Install firmware updaters
@@ -330,7 +259,6 @@ Categories=Application;Utilities;
 MimeType=application/x-executable
 EOF
   ) "${pkgdir}/usr/share/applications/DM-Firmware-Updater.py.desktop"
-
   set +u
 }
 
