@@ -16,7 +16,7 @@ md5sums=('3934a16509185f1def5040099710fbc9'
          'cb882eef5bc51ae553fdc7c43d181544')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     composer install
     composer run-script parse-stubs
 }
@@ -26,6 +26,6 @@ package() {
     mkdir -p $path
     mkdir -p "$pkgdir/usr/bin"
     install -Dm755 php-language-server "$pkgdir/usr/bin/"
-	cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     cp -dr --no-preserve=ownership . "$path"
 }
