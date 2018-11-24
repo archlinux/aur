@@ -2,7 +2,7 @@
 
 pkgname=julia-conda
 _pkgname=Conda
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Use conda as a cross-platform binary provider for Julia'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(julia julia-compat)
 checkdepends=(julia-versionparsing)
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaPy/$_pkgname.jl/archive/v$pkgver.tar.gz)
-sha256sums=('66da41669da81d0978a76e8ddb9490911f758153b1b6a915aada5fc73fdc8ee0')
+sha256sums=('e506dc7be838432d5f92407db3bdfcb5f1716ff0d1e52015e93956f1eb206994')
 
 build() {
 	cd $_pkgname.jl-$pkgver/deps
