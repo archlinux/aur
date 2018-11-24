@@ -2,7 +2,7 @@
 
 pkgname=julia-ijulia
 _pkgname=IJulia
-pkgver=1.12.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='Julia-language backend combined with the Jupyter interactive environment'
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=(
 )
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaLang/$_pkgname.jl/archive/v$pkgver.tar.gz)
-sha256sums=('03ba7cbd482fc33905968a8aa261e49f235a5031ad165b5aa4e6d8812aed72c8')
+sha256sums=('d62c4949ddb2adf239e185de7ce3ccb59ab6491052b756a89e8e363672ce3e28')
 
 prepare() {
 	cd $_pkgname.jl-$pkgver/deps
