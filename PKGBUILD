@@ -5,8 +5,8 @@
 
 # Maintainer: Frank Fischer <frank-fischer@shadow-soft.de>
 pkgname=sailautossh
-_dirname=lyro-sailautossh-db101a93d7a1
-pkgver=1.3.3
+_dirname=lyro-sailautossh-cba5f700dcef
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Automatic SSH Tunneling tool"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=(mercurial)
 provides=('sailautossh')
 install=$pkgname.install
 source=("https://bitbucket.org/lyro/$pkgname/get/v$pkgver.tar.bz2")
-sha256sums=('cd2b63537941e1bef98f54f07e677bb3e2a9b6cedf844ba09a4dec3a3ff0e970')
+sha256sums=('f8bd11da5e6dcdbffd2a96b754c0dfd49765c92ced39d755a03963a99ed72201')
 
 build() {
   cd "${srcdir}/$_dirname"
