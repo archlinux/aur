@@ -6,7 +6,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=denemo-git
-pkgver=r10476
+pkgver=r10576
 pkgrel=1
 pkgdesc="A music score editor"
 arch=('x86_64')
@@ -16,6 +16,7 @@ depends=('aubio' 'lilypond' 'gtk3' 'libxml2' 'fftw' 'librsvg' 'fluidsynth'
 	 'libsmf' 'evince' 'gtksourceview3' 'portmidi' 'guile2.0')
 makedepends=('intltool' 'git' 'rubberband')
 source=("git://git.savannah.gnu.org/denemo.git")
+md5sums=('SKIP')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
@@ -24,15 +25,10 @@ pkgver() {
   printf r%s $(git rev-list --count HEAD)
 }
 
-# prepare() {
-#   cd ${pkgname%-git}	  
-#   patch -Np1 < "$srcdir"/no_portaudio.patch
-# }
-
 build() {
   cd ${pkgname%-git} 
   [ -x configure ] || ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --disable-portaudio
+  ./configure --prefix=/usr --sysconfdir=/etc --disable-rpath
   make
 }
 
@@ -40,4 +36,4 @@ package() {
   cd ${pkgname%-git}
   make DESTDIR="$pkgdir" install
 }
-md5sums=('SKIP')
+
