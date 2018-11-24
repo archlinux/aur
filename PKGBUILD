@@ -2,7 +2,7 @@
 
 pkgname=julia-offsetarrays
 _pkgname=OffsetArrays
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Provides Julia users with arrays that have arbitrary indices'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(julia julia-compat)
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaArrays/$_pkgname.jl/archive/v$pkgver.tar.gz)
-sha256sums=('837a56dad27d8e67073f89fede4bd213b8202c2aab509a5ee6d49862a3aea4c6')
+sha256sums=('2b540e5431dfa3bc09d5240585512f92718d7e052990bc3a53c88c775d374b9f')
 
 package() {
 	cd $_pkgname.jl-$pkgver
