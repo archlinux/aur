@@ -1,10 +1,11 @@
 # Maintainer : Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor : Mark Coolen <mark ddoott coolen aatt gmail ddoott ccoomm nniiccee!>
+# Contributor : Florian Freund <florian 88 freund aatt gmail ddoott ccoomm>
 
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.0.647.g5dfbf6c8
+pkgver=1.0.0.751.gaf912441
 pkgrel=1
 pkgdesc="C++ re-write of tablet notetaking app Xournal"
 arch=('i686' 'x86_64')
