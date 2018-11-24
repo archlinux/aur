@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname=torsocks-git
-pkgver=2.2.0.31.g8013dfb
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Torsocks allows you to use most socks-friendly applications in a safe way with Tor.'
 url='https://gitweb.torproject.org/torsocks.git'
@@ -14,7 +14,7 @@ provides=('torsocks')
 install='torsocks.install'
 options=(!strip)
 
-source=("git+https://git.torproject.org/torsocks.git")
+source=("git+https://git.torproject.org/torsocks.git#branch=master")
 md5sums=('SKIP')
 
 pkgver () {
