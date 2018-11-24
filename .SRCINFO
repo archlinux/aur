@@ -1,0 +1,27 @@
+pkgbase = quassel-client-lighter-git
+	pkgdesc = Qt-based distributed IRC client (client only) - minimal dependencies
+	pkgver = 0.14.pre.r110.g7c0eb011
+	pkgrel = 1
+	url = https://quassel-irc.org
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-base
+	makedepends = boost
+	depends = qt5-base
+	optdepends = sonnet: spell checking support
+	optdepends = hicolor-icon-theme: hicolor theme hierarchy support
+	optdepends = libdbusmenu-qt5: dbus context menu for icon tray support
+	provides = quassel-client
+	conflicts = quassel-client
+	source = quassel-client-lighter-git::git+https://github.com/quassel/quassel.git
+	md5sums = SKIP
+
+pkgname = quassel-client-lighter-git
+
