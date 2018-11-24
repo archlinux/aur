@@ -3,7 +3,7 @@
 # Contributer: Radu Potop <radu at wooptoo com>
 
 pkgname=nodejs-docs
-pkgver=11.1.0
+pkgver=11.2.0
 pkgrel=1
 pkgdesc="Node.js API documentation."
 arch=(any)
@@ -11,7 +11,7 @@ url="https://nodejs.org/en/docs/"
 license=('MIT')
 options=('docs')
 source=("https://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.gz")
-sha256sums=('3f53b5ac25b2d36ad538267083c0e603d9236867a936c22a9116d95fa10c60d5')
+sha256sums=('2766fea693bc7a4750feef16d3c109df44d4319d4763678d60a5e8f177d0fa9e')
 
 package() {
 	cd "node-v$pkgver"
