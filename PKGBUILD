@@ -23,4 +23,6 @@ build() {
 package() {
     cd "$_pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
+    mkdir -p $pkgdir/usr/share/licenses/$pkgname
+    head -n 33 $pkgdir/usr/include/console_bridge/console.h > $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
