@@ -29,7 +29,7 @@ fi
 
 _pkgname='adminer'
 pkgname="${_pkgname}-git"
-pkgver=4.6.3.r0.g3d84dcf8
+pkgver=4.7.0.r0.g85e6f2ac
 pkgrel=1
 pkgdesc='a web based SQL management tool supporting MySQL, PostgreSQL, SQLite, MS SQL, Oracle, Firebird, SimpleDB, Elasticsearch and MongoDB. Formerly phpMinAdmin.'
 arch=('any')
