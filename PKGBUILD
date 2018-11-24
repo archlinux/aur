@@ -1,4 +1,4 @@
-# Maintainer: Helnandorovitch lpanhirsch@gmail.com
+# Maintainer: lpanhirsch <lpanhirsch@gmail.com>
 pkgname=myftb-launcher
 pkgver=1.1.10
 pkgrel=1
