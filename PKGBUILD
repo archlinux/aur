@@ -2,7 +2,7 @@
 
 pkgname=clight-git
 _gitname=Clight
-pkgver=r463.cbb3a40
+pkgver=r484.0edbb8e
 pkgrel=1
 pkgdesc="A C daemon that turns your webcam into a light sensor. It can also change display gamma temperature, dim your screen and set your dpms."
 arch=('i686' 'x86_64')
@@ -10,9 +10,9 @@ url="https://github.com/FedeDP/${_gitname}"
 license=('GPL')
 backup=(etc/default/clight.conf)
 depends=('systemd>=221' 'popt' 'libconfig' 'gsl' 'clightd-git')
-makedepends=('git')
+makedepends=('git' 'cmake')
 optdepends=('geoclue2: to retrieve user location through geoclue2.'
-            'upower: to save energy by increasing timeouts between captures while on battery.')
+            'upower: to save energy by increasing timeouts between captures while on battery and to autocalibrate keyboard backlight.')
 source=("git://github.com/FedeDP/${_gitname}.git")
 install=clight.install
 sha256sums=("SKIP")
@@ -22,12 +22,23 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${srcdir}/${_gitname}"
+    mkdir -p build
+}
+
 build() {
-    cd $srcdir/$_gitname
+    cd "${srcdir}/${_gitname}/build"
+    cmake \
+        -G "Unix Makefiles" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_BUILD_TYPE="Release" \
+        ..
     make
 }
 
 package() {
-    cd $srcdir/$_gitname
+    cd "${srcdir}/${_gitname}/build"
     make DESTDIR="$pkgdir" install
 }
