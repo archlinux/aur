@@ -28,7 +28,7 @@ install=
 changelog=
 source=("https://github.com/AndrewCrewKuznetsov/xneur-devel")
 noextract=()
-md5sums=('6d34f431d79aa1951cb139bb28108b25')
+md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {

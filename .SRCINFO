@@ -16,7 +16,7 @@ pkgbase = xneur-devel-git
 	conflicts = xneur
 	replaces = xneur
 	source = https://github.com/AndrewCrewKuznetsov/xneur-devel
-	md5sums = 6d34f431d79aa1951cb139bb28108b25
+	md5sums = SKIP
 
 pkgname = xneur-devel-git
 
