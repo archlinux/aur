@@ -1,0 +1,25 @@
+pkgbase = adobe-source-pro-fonts
+	pkgdesc = Meta package of Adobe Source Pro fonts in the official repositories.
+	pkgver = 20181124
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/all-repository-fonts/
+	arch = any
+	license = custom:Public Domain
+	depends = adobe-source-code-pro-fonts
+	depends = adobe-source-han-sans-cn-fonts
+	depends = adobe-source-han-sans-jp-fonts
+	depends = adobe-source-han-sans-kr-fonts
+	depends = adobe-source-han-sans-otc-fonts
+	depends = adobe-source-han-sans-tw-fonts
+	depends = adobe-source-han-serif-cn-fonts
+	depends = adobe-source-han-serif-jp-fonts
+	depends = adobe-source-han-serif-kr-fonts
+	depends = adobe-source-han-serif-otc-fonts
+	depends = adobe-source-han-serif-tw-fonts
+	depends = adobe-source-sans-pro-fonts
+	depends = adobe-source-serif-pro-fonts
+	source = LICENSE
+	sha256sums = cb30d3086a8b3ce0b9e3690bf48d6620402b61160bc658076f95180ccd9e9dae
+
+pkgname = adobe-source-pro-fonts
+
