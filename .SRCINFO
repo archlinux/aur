@@ -7,7 +7,7 @@ pkgbase = xneur-devel-git
 	license = GPL
 	makedepends = git
 	depends = xosd
-	depends = enchant-pure
+	depends = enchant
 	depends = gtk2
 	depends = libnotify
 	depends = gstreamer>=1.2.4

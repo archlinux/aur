@@ -15,7 +15,7 @@ arch=('any')
 url="https://github.com/AndrewCrewKuznetsov/xneur-devel"
 license=('GPL')
 groups=()
-depends=('xosd' 'enchant-pure' 'gtk2' 'libnotify' 'gstreamer>=1.2.4')
+depends=('xosd' 'enchant' 'gtk2' 'libnotify' 'gstreamer>=1.2.4')
 makedepends=('git')
 checkdepends=()
 optdepends=('hunspell-<your_language>')
