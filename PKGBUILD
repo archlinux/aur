@@ -2,7 +2,7 @@
 
 pkgname=omp-git
 pkgver=0.0.19
-pkgrel=2
+pkgrel=1
 pkgdesc='Open Source GTK3 Music Player'
 url='https://openmusicplayer.com/'
 arch=(x86_64)
@@ -29,5 +29,4 @@ build() {
 package() {
   cd "${pkgname}"
   make install DESTDIR=${pkgdir}
-  gtk-update-icon-cache -f /usr/share/icons/hicolor/
 }
