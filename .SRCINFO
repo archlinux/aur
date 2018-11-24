@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-ros-benchmarks
 	pkgdesc = ROS - Enhanced tools for benchmarks in MoveIt!.
 	pkgver = 0.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://moveit.ros.org
 	arch = any
 	license = BSD
@@ -11,11 +11,13 @@ pkgbase = ros-melodic-moveit-ros-benchmarks
 	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-moveit-ros-planning
 	makedepends = ros-melodic-moveit-ros-warehouse
+	makedepends = ros-melodic-moveit-core
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-pluginlib
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-moveit-ros-planning
 	depends = ros-melodic-moveit-ros-warehouse
+	depends = ros-melodic-moveit-core
 	source = ros-melodic-moveit-ros-benchmarks-0.10.5-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_benchmarks/0.10.5-0.tar.gz
 	sha256sums = ad02fd89bea46b55060a0dee83406d7d65556006d831f376a4547ab8699df3b6
 

@@ -6,13 +6,14 @@ pkgname='ros-melodic-moveit-ros-benchmarks'
 pkgver='0.10.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-pluginlib
   ros-melodic-roscpp
   ros-melodic-moveit-ros-planning
   ros-melodic-moveit-ros-warehouse
+  ros-melodic-moveit-core
   ros-melodic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
@@ -20,7 +21,8 @@ makedepends=('cmake' 'ros-build-tools'
 ros_depends=(ros-melodic-pluginlib
   ros-melodic-roscpp
   ros-melodic-moveit-ros-planning
-  ros-melodic-moveit-ros-warehouse)
+  ros-melodic-moveit-ros-warehouse
+  ros-melodic-moveit-core)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
