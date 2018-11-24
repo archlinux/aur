@@ -1,6 +1,6 @@
 # Maintainer: Mopi <mopi@dotslashplay.it>
 pkgname=play.it
-pkgver=2.10.3
+pkgver=2.10.4
 pkgrel=2
 pkgdesc="Easy way to install games on Linux"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 	'unzip'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://framagit.org/vv221/play.it/-/archive/${pkgver}/play.it-${pkgver}.tar.gz")
-sha1sums=('8ade2e6b30e7fdd3ca4a1359bdce02c4de557be6')
+sha1sums=('c60b9dd5f06580244f6d39e855d892f5860ce3a8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
