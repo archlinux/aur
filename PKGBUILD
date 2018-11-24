@@ -3,7 +3,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.9.15
+pkgver=5.9.16
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -43,14 +43,12 @@ source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "use-libtirpc-headers.patch"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch"
-        "use-static-llvm40.patch"
-        "rem-sndlib-include.patch")
-sha256sums=('ba6459d1810ada9210b0904188f2ee47ba7965d5fe6e2da57e5d3cbdc5f641f8'
+        "use-static-llvm40.patch")
+sha256sums=('073d5b7fccda04cf633271656b791b896306d49881939fd41403888f27dae255'
             'f2596261f9ebd859f9850cbfc97edb7fd5d45cf8768ce47d0721cbf4b2d80c7e'
             '94de9befbe6530c721917445ee3a0c0202371e1b2229784b2ea6e0c0efaf7808'
             '75c606ed2c0f1f42449b2b2a7f6936c37be7a78e658ef4306f21edcd16eb2304'
-            'f4f35f6d0abb59f7db685f7e4e4d5e4c875fef83ed43672b4abad4da7f8989df'
-            'f1bcf6efd96af99c99f5f043a5e3400b0603a5c5facd609bd4dac300cd61f01a')
+            'f4f35f6d0abb59f7db685f7e4e4d5e4c875fef83ed43672b4abad4da7f8989df')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -69,9 +67,6 @@ prepare() {
   # https://github.com/kmatheussen/radium/issues/1068
   # https://users.notam02.no/~kjetism/radium/forum/viewtopic.php?f=7&t=39
   patch -p1 < "${srcdir}/use-static-llvm40.patch"
-
-  # https://github.com/kmatheussen/radium/issues/1161
-  patch -p1 < "${srcdir}/rem-sndlib-include.patch"
 }
 
 build() {
