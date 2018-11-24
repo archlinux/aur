@@ -24,7 +24,7 @@
 # TODO: Don't automatically enable php extensions. They cause warnings if already enabled and may interfere with web servers.
 
 set -u
-_pkgname='PHPExcel'     ; _vopt='' ; pkgver='1.8.1' ; pkgrel='1'
+_pkgname='PHPExcel'     ; _vopt='' ; pkgver='1.8.2' ; pkgrel='1'
 #_pkgname='PHPWord'      ; _vopt='v'; pkgver='0.12.1'; pkgrel='1'
 ####_pkgname='Common'       ; _vopt='' ; pkgver='0.2.2' ; pkgrel='1' # Don't install this one yet. It's incomplete and only needed for PHPPowerPoint.
 ####_pkgname='PHPPowerPoint'; _vopt='' ; pkgver='0.4.0' ; pkgrel='1'  # Doesn't work yet due to a missing file String in Common.
@@ -66,10 +66,11 @@ optdepends=()
 makedepends=()
 options=('!strip')
 install='php-office.install'
+_verwatch=("${url}/releases" "${url#*github.com}/archive/${_vopt}\(.*\)\.tar\.gz" 'l')
 # The git version of PHPExcel includes some documentation.
 source=("${_pkgname,,}-${pkgver}.tar.gz::${url}/archive/${_vopt}${pkgver}.tar.gz")
 #source=("${_pkgname}::${url//https:/git:}.git") # #tag=${_gittag}")
-sha256sums=('0c0effcbcf73a1b400597d04939795c9640d0dcdc5765d7d58b8c72ddacc8f41')
+sha256sums=('2598ca27212040435748301f967e1bbb2a6ed977a24706d1abf774dcc8d2690b')
 
 case "${_pkgname}" in
   PHPExcel)
@@ -275,7 +276,7 @@ package() {
   if [ "${_pkgname}" != 'Common' ]; then
     install -Dpm644 <(cat <<EOF
 ; Installed by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-; http://aur.archlinux.org/
+; https://aur.archlinux.org/
 extension=xsl.so
 extension=zip.so
 extension=gd.so
