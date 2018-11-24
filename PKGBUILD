@@ -8,7 +8,7 @@
 
 pkgname=xneur-devel-git
 pkgver=0.20.0
-pkgrel=9
+pkgrel=10
 epoch=
 pkgdesc="X Neural Switcher detects the input language and corrects keyboard layout. Git version"
 arch=('any')
@@ -37,7 +37,6 @@ prepare() {
 }
 
 build() {
-	ln -s /usr/include/enchant-2 /usr/include/enchant
 	cd "$pkgname-$pkgver/xneur"
 	./autogen.sh --prefix=/opt/xneur
 	make
@@ -54,5 +53,7 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	echo -e "#!/bin/bash\n/opt/xneur/bin/xneur $@" > "$pkgdir/usr/bin/xneur"
 	chmod +x "$pkgdir/usr/bin/xneur"
+	ln -s /usr/include/enchant-2 /usr/include/enchant
+
 	
 }
