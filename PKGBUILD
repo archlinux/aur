@@ -10,7 +10,7 @@ url="http://www.nand2tetris.org/"
 license=('GPL')
 depends=('java-runtime')
 makedepends=('unzip')
-source=(http://www.nand2tetris.org/software/nand2tetris.zip
+source=("https://doc-0k-6g-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/92bkuq5p9hkk3ahamuta2d4mqnbmvqnm/1543032000000/15832485136049799367/*/1KcFPj8KQ_QAHheFmLCqs5iqC_0NCndvs"
         n2tCPUEmulator.run
         n2tVMEmulator.run
         n2tJackCompiler.run
