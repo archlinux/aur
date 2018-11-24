@@ -2,7 +2,7 @@
 # Contributor:  Bruno Nova <brunomb.nova@gmail.com>
 
 pkgname=nautilus-admin
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Extension for Nautilus to do administrative operations"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('gedit: to use the "Edit as Administrator" action'
             'gnome-terminal: to use the "Run as Administrator" action')
 install="$pkgname.install"
 source=("https://github.com/brunonova/$pkgname/releases/download/v$pkgver/${pkgname}_$pkgver.tar.xz")
-sha256sums=('df5f2bb04ad9dc11378be7bc41cf03b0e6bf877624ddd3b7dd0c782821d3ba27')
+sha256sums=('c42c9dc11b48819727e3d868926568a7e2d3f88d2c2fce37c1aead69d5aea029')
 
 build() {
     cd "$srcdir"
