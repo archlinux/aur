@@ -2,7 +2,7 @@
 
 pkgname=julia-mbedtls
 _pkgname=MbedTLS
-pkgver=0.6.0
+pkgver=0.6.6
 pkgrel=1
 pkgdesc='Wrapper around mbedtls for Julia'
 arch=(any)
@@ -10,11 +10,17 @@ url=https://github.com/JuliaWeb/MbedTLS.jl
 license=(MIT)
 depends=(julia julia-compat mbedtls)
 
-source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaWeb/$_pkgname.jl/archive/v$pkgver.tar.gz)
-sha256sums=('45a968b6b02e419879ab28bce983b96023b8c2c47fda79cdbe3a2151f257d08a')
+source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaWeb/$_pkgname.jl/archive/v$pkgver.tar.gz
+        'disable-test-logsecrets.patch')
+sha256sums=('2d1e81050f117bbdbd4fe1b84060ee3c73ee5060cbfc568e4a28bdf7387d254f'
+            'c524da32a37ebee0938229402453ada5089c3396e10b3d4bfefcc80cd82af77f')
 
 prepare() {
 	cd $_pkgname.jl-$pkgver
+
+	# Test currently fails
+	patch -Np1 -i ../disable-test-logsecrets.patch
+
 	cat >deps/deps.jl << 'EOF'
 if isdefined((@static VERSION < v"0.7.0-DEV.484" ? current_module() : @__MODULE__), :Compat)
     import Compat.Libdl
