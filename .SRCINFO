@@ -1,7 +1,7 @@
-pkgbase = iptables
+pkgbase = iptables-fullcone-nat
 	pkgdesc = iptables with FULLCONENAT extension
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Chion82/netfilter-full-cone-nat
 	install = iptables-fullcone-nat.install
 	arch = i686

@@ -1,9 +1,8 @@
 # Maintainer: Edward Pacman <micro DOT fedora AT gmail DOT com>
 
-pkgbase=iptables
 pkgname=iptables-fullcone-nat
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="iptables with FULLCONENAT extension"
 arch=('i686' 'x86_64')
 url="https://github.com/Chion82/netfilter-full-cone-nat"
@@ -13,7 +12,7 @@ makedepends=('git' 'linux-api-headers')
 provides=('iptables')
 conflicts=('iptables')
 install=${pkgname}.install
-source=(https://www.netfilter.org/projects/iptables/files/$pkgbase-$pkgver.tar.bz2
+source=(https://www.netfilter.org/projects/iptables/files/iptables-$pkgver.tar.bz2
 		"file:///usr/src/netfilter-full-cone-nat-git+bc3fb32/libipt_FULLCONENAT.c"
 		"arptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/arptables.service?h=packages/iptables"
 		"ebtables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ebtables.service?h=packages/iptables"
@@ -44,7 +43,7 @@ sha1sums=('215c4ef4c6cd29ef0dd265b4fa5ec51a4f930c92'
 
 prepare() {
   mkdir build
-  cd $pkgbase-$pkgver
+  cd iptables-$pkgver
 
   cp ../libipt_FULLCONENAT.c extensions/
   # use system one
@@ -53,7 +52,7 @@ prepare() {
 
 build() {
   cd build
-  ../$pkgbase-$pkgver/configure \
+  ../iptables-$pkgver/configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
