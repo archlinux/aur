@@ -3,7 +3,6 @@ pkgbase = gnocky
 	pkgver = 0.0.7
 	pkgrel = 2
 	url = http://www.gnokii.org/
-	install = gnocky.install
 	arch = i686
 	arch = x86_64
 	license = GPL

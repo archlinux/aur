@@ -9,7 +9,6 @@ url='http://www.gnokii.org/'
 license=('GPL')
 depends=('libglade' 'gnokii>=0.6.26' 'libical')
 makedepends=('make' 'gcc')
-install='gnocky.install'
 source=("http://www.gnokii.org/download/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('607b25ee3bbfc0cee5664018c302d8e0')
 
@@ -21,6 +20,8 @@ build() {
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  make prefix=$pkgdir/usr/share/gnocky install
+  make prefix=$pkgdir/usr/share/${pkgname} install
+  mkdir -p $pkgdir/usr/bin/
+  ln -s "/usr/share/gnocky/bin/gnocky" "$pkgdir/usr/bin/gnocky"
 }
 
