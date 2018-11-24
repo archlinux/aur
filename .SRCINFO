@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-moveit-ros-manipulation
 	pkgdesc = ROS - Components of MoveIt used for manipulation.
-	pkgver = 0.10.1
+	pkgver = 0.10.5
 	pkgrel = 1
 	url = http://moveit.ros.org
 	arch = any
@@ -29,8 +29,8 @@ pkgbase = ros-melodic-moveit-ros-manipulation
 	depends = ros-melodic-moveit-ros-planning
 	depends = ros-melodic-actionlib
 	depends = ros-melodic-rosconsole
-	source = ros-melodic-moveit-ros-manipulation-0.10.1-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_manipulation/0.10.1-0.tar.gz
-	sha256sums = 6a1d0a44ffb53fa7e8de994bc0dc281d325a88f341872cd283394ced0436caf8
+	source = ros-melodic-moveit-ros-manipulation-0.10.5-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_manipulation/0.10.5-0.tar.gz
+	sha256sums = 4aac3ad955f08a1b6e0e202ab3f777ac928a832e83ac7679274b7c63e55ac222
 
 pkgname = ros-melodic-moveit-ros-manipulation
 
