@@ -37,6 +37,8 @@ prepare() {
 }
 
 build() {
+	echo 'will request sudo passwd for ln enchant'
+	sudo ln -s /usr/include/enchant-2 /usr/include/enchant
 	cd "$pkgname-$pkgver/xneur"
 	./autogen.sh --prefix=/opt/xneur
 	make
@@ -53,7 +55,7 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	echo -e "#!/bin/bash\n/opt/xneur/bin/xneur $@" > "$pkgdir/usr/bin/xneur"
 	chmod +x "$pkgdir/usr/bin/xneur"
-	ln -s /usr/include/enchant-2 /usr/include/enchant
+	
 
 	
 }
