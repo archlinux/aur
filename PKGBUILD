@@ -2,7 +2,7 @@
 
 pkgname=julia-zmq
 _pkgname=ZMQ
-pkgver=0.6.4
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Julia binding to the native API of ØMQ project'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(julia julia-compat zeromq)
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaInterop/$_pkgname.jl/archive/v$pkgver.tar.gz)
-sha256sums=('c7a88c94fb7a6c48d07cac152c36c8677c8a37b1f6c4e29ee65a51daaab1b9c3')
+sha256sums=('f8c3cc104b3e8dc7ae09da9787427fb2ca45f3e4b46c98a6c8eace78216b1333')
 
 prepare() {
 	cd $_pkgname.jl-$pkgver
