@@ -3,7 +3,7 @@ pkgdesc="ROS - A fake controller manager plugin for MoveIt."
 url='http://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-fake-controller-manager'
-pkgver='0.10.1'
+pkgver='0.10.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-melodic-moveit_fake_controller_manager-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_fake_controller_manager/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a6cebc7184ca3d934f128b96c1410256e8340f8bdc24b0efa4544d27feb56ceb')
+sha256sums=('35cceb4e53c89a82bf97925e8537ff3218afc7f3f82bdd4a1560bca472446e8a')
 
 build() {
   # Use ROS environment variables
