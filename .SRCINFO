@@ -1,12 +1,14 @@
 pkgbase = hydroxide-git
 	pkgdesc = A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge
-	pkgver = 0.0.1
+	pkgver = r1.05d0806
 	pkgrel = 1
 	url = https://github.com/emersion/hydroxide
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
+	source = git+https://github.com/emersion/hydroxide
+	md5sums = SKIP
 
 pkgname = hydroxide-git
 

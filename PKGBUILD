@@ -1,32 +1,29 @@
 # Maintainer: Cookie Engineer <@cookiengineer>
 
 pkgname=hydroxide-git
-pkgver=0.0.1
+pkgver=r1.05d0806
 pkgrel=1
 pkgdesc="A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge"
 arch=('x86_64')
 makedepends=('git' 'go')
 url="https://github.com/emersion/hydroxide"
 license=('MIT')
-_gourl="github.com/emersion/hydroxide"
+source=('git+https://github.com/emersion/hydroxide')
+md5sums=('SKIP')
 
-build() {
-	GOPATH="$srcdir" go get -fix -v -x ${_gourl}/cmd/hydroxide
+pkgver() {
+	cd "$srcdir/hydroxide"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-check() {
-	GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}/cmd/hydroxide
+build() {
+	cd "$srcdir/hydroxide";
+	go build "./cmd/hydroxide";
 }
 
 package() {
-
 	mkdir -p "$pkgdir/usr/bin"
-	install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
-
-	mkdir -p "$pkgdir/usr/lib/go"
-	cp -Rv --preserve=timestamps "$srcdir/src" "$pkgdir/usr/lib/go"
-
-	install -Dm644 "$srcdir/src/$_gourl/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
+	install -p -m755 "$srcdir/hydroxide/hydroxide" "$pkgdir/usr/bin"
+	install -Dm644 "$srcdir/hydroxide/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
