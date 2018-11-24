@@ -3,7 +3,7 @@ pkgdesc="ROS - The move_group node for MoveIt."
 url='http://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-move-group'
-pkgver='0.10.1'
+pkgver='0.10.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-melodic-moveit_ros_move_group-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_move_group/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d2e097c72ac551709740be2db48a7d05200e00dafe36d7380b15031919f1fbed')
+sha256sums=('505494c0f2cf8b458d42112c8b5aba2a09ae7ad17b48648dcbda67a61906d8bf')
 
 build() {
   # Use ROS environment variables
