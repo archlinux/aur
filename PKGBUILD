@@ -2,7 +2,7 @@
 
 pkgname=julia-fixedpointnumbers
 _pkgname=FixedPointNumbers
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Fixed point types for Julia'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(julia julia-compat)
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaMath/$_pkgname.jl/archive/v$pkgver.tar.gz)
-sha256sums=('05594e916740950a5a4ea436233d1009337033eaa9e99164d1ac87069b823933')
+sha256sums=('b24651e1f4e87cb1fae625cef50caabfff36dcf5b448a8c0d803eb6c06faa39d')
 
 package() {
 	cd $_pkgname.jl-$pkgver
