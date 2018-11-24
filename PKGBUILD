@@ -2,7 +2,7 @@
 
 pkgname=julia-datastructures
 _pkgname=DataStructures
-pkgver=0.11.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Julia implementation of Data structures'
 arch=(any)
@@ -11,7 +11,7 @@ license=(custom)
 depends=(julia julia-compat) # julia-primes) circular dependency for check()
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaCollections/$_pkgname.jl/archive/v$pkgver.tar.gz)
-sha256sums=('7c996c7737afeb91adb25813da9ade060c547cb4bded30aace3206091fb26725')
+sha256sums=('7934fd1fd78e9489cbafd73ee1a07381953035e675b3d5c6a7faa6cde1e4f087')
 
 package() {
 	cd $_pkgname.jl-$pkgver
