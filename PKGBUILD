@@ -3,9 +3,9 @@
 
 pkgname=balena-cli-git
 pkgdesc='balena.io command line interface, development version'
-pkgver=9.1.0.r0.g3a3cfbc
-pkgrel=2
-arch=('any')
+pkgver=9.3.0.r0.g759c2d4
+pkgrel=1
+arch=('x86_64')
 url='https://resin.io/'
 license=('APACHE')
 depends=('nodejs')
