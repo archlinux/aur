@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatcc-git
-pkgver=r340.3b04b7f
+pkgver=r345.f76cb7f
 pkgrel=1
 epoch=
 pkgdesc="A simple ARM/x86(_64) C compiler."
@@ -8,11 +8,11 @@ arch=('i686' 'x86_64')
 url="http://repo.or.cz/w/neatcc.git"
 license=('custom:BSD')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=('neatas-git: A small ARM assembler'
-            'neatlibc-git: A small ARM/x86(_64) libc'
-            'neatld-git: A simple ARM/x86(_64) static linker')
+            'neatlibc-git: A small ARM/x86/_64 libc'
+            'neatld-git: A simple ARM/x86/_64 static linker')
 checkdepends=()
 provides=()
 conflicts=()
