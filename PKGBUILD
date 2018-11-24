@@ -1,7 +1,8 @@
 # Maintainer: Edward Pacman <micro DOT fedora AT gmail DOT com>
 
+pkgbase=iptables
 pkgname=iptables-fullcone-nat
-pkgver=1.8.2.r19.g2ed6c85f
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="iptables with FULLCONENAT extension"
 arch=('i686' 'x86_64')
@@ -12,8 +13,8 @@ makedepends=('git' 'linux-api-headers')
 provides=('iptables')
 conflicts=('iptables')
 install=${pkgname}.install
-source=("file:///usr/src/netfilter-full-cone-nat-git+bc3fb32/libipt_FULLCONENAT.c"
-		"git://git.netfilter.org/iptables"
+source=(https://www.netfilter.org/projects/iptables/files/$pkgbase-$pkgver.tar.bz2
+		"file:///usr/src/netfilter-full-cone-nat-git+bc3fb32/libipt_FULLCONENAT.c"
 		"arptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/arptables.service?h=packages/iptables"
 		"ebtables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ebtables.service?h=packages/iptables"
 		"empty-filter.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-filter.rules?h=packages/iptables"
@@ -26,31 +27,33 @@ source=("file:///usr/src/netfilter-full-cone-nat-git+bc3fb32/libipt_FULLCONENAT.
 		"iptables-legacy-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-legacy-flush?h=packages/iptables"
 		"iptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables.service?h=packages/iptables"
 		"simple_firewall.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/simple_firewall.rules?h=packages/iptables")
-sha256sums=('42c9f4c15c38e2b20e25a2089d530207d3d9e642de4c1c6d2b7b5a65532355ec'
-            'SKIP'
-            'SKIP'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'SKIP')
+sha1sums=('215c4ef4c6cd29ef0dd265b4fa5ec51a4f930c92'
+          'SKIP'
+		  'SKIP'
+		  'SKIP'
+		  'SKIP'
+		  'SKIP'
+		  'SKIP'
+		  'SKIP'
+		  'SKIP'
+		  'SKIP'
+		  'SKIP'
+		  'SKIP'
+		  'SKIP'
+		  'SKIP')
 
-pkgver() {
-  cd "iptables"
+prepare() {
+  mkdir build
+  cd $pkgbase-$pkgver
+
   cp ../libipt_FULLCONENAT.c extensions/
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  # use system one
+  rm include/linux/types.h
 }
 
 build() {
-  cd "iptables"
-  ./autogen.sh
-  ./configure \
+  cd build
+  ../$pkgbase-$pkgver/configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
@@ -64,8 +67,13 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" make -C iptables install
-  
+  pkgdesc+=' (using legacy interface)'
+  _package legacy
+}
+
+_package() {
+  DESTDIR="$pkgdir" make -C build install
+
   for _x in {arp,eb,ip,ip6}tables{,-restore,-save} iptables-xml; do
     if [[ $1 = nft || $_x = ip* ]]; then
       ln -sf xtables-$1-multi "$pkgdir/usr/bin/$_x"
@@ -75,7 +83,7 @@ package() {
   done
 
   install -Dt "$pkgdir/usr/lib/systemd/system" -m644 {ip,ip6}tables.service
-  install -D iptables-legacy-flush "$pkgdir/usr/lib/systemd/scripts/iptables-flush"
+  install -D iptables-$1-flush "$pkgdir/usr/lib/systemd/scripts/iptables-flush"
 
   install -Dm644 empty.rules "$pkgdir/etc/iptables/iptables.rules"
   install -Dm644 empty.rules "$pkgdir/etc/iptables/ip6tables.rules"
