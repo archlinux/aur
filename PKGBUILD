@@ -5,7 +5,7 @@
 
 gitname=pdf.js
 pkgname=chromium-pdfjs-git
-pkgver=2.0.550.180.g8a4be2464
+pkgver=v2.0.943.70.g6ebdbb244
 pkgrel=1
 pkgdesc="PDF viewer in Javascript, packaged as a Chromium extension"
 arch=('any')
