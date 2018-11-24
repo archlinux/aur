@@ -6,15 +6,17 @@ pkgbase = xneur-devel-git
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = xosd
 	depends = enchant
 	depends = gtk2
 	depends = libnotify
-	depends = gstreamer>=1.2.4
-	optdepends = hunspell-<your_language>
+	depends = gstreamer>=1.14.4
+	optdepends = hunspell-YOUR-LANGUAGE
+	optdepends = xosd
 	provides = xneur
 	conflicts = xneur
 	replaces = xneur
+	source = git+http://github.com/AndrewCrewKuznetsov/xneur-devel.git
+	md5sums = SKIP
 
 pkgname = xneur-devel-git
 

@@ -15,10 +15,10 @@ arch=('any')
 url="https://github.com/AndrewCrewKuznetsov/xneur-devel"
 license=('GPL')
 groups=()
-depends=('xosd' 'enchant' 'gtk2' 'libnotify' 'gstreamer>=1.2.4')
+depends=('enchant' 'gtk2' 'libnotify' 'gstreamer>=1.14.4')
 makedepends=('git')
 checkdepends=()
-optdepends=('hunspell-<your_language>')
+optdepends=('hunspell-YOUR-LANGUAGE' 'xosd')
 provides=('xneur')
 conflicts=('xneur')
 replaces=('xneur')
@@ -26,36 +26,37 @@ backup=()
 options=()
 install=
 changelog=
-source=()
+source=("git+http://github.com/AndrewCrewKuznetsov/xneur-devel.git")
 noextract=()
+md5sums=('SKIP')
 
 validpgpkeys=()
 
-prepare() {
-	#rm -rf "$pkgname-$pkgver"
-	git clone https://github.com/AndrewCrewKuznetsov/xneur-devel "$pkgname-$pkgver"
-}
+#prepare() {
+#	#rm -rf "$pkgname-$pkgver"
+	#git clone https://github.com/AndrewCrewKuznetsov/xneur-devel "$pkgname-$pkgver" || echo
+#}
 
 build() {
-	echo 'Possibly will request passwd to make /usr/include/enchant link'
-	sudo ln -s /usr/include/enchant-2 /usr/include/enchant || echo "Don't mind..."
-	cd "$pkgname-$pkgver/xneur"
-	./autogen.sh --prefix=/opt/xneur
+	cd "$srcdir/xneur-devel/xneur"
+	# If you have xosd, why dont use it?
+	if test `pacman -Qs xosd`; then
+		./autogen.sh --prefix=/opt/xneur --with-gtk=gtk2
+	else
+		./autogen.sh --prefix=/opt/xneur --with-gtk=gtk2 --without-xosd
+	fi
 	make
 }
 
-#check() {
-#	cd "$pkgname-$pkgver/xneur"
-#	make -k check
-#}
-
 package() {
-	cd "$pkgname-$pkgver/xneur"
+	# New versions of enchant stores at /usr/include/enchant-2
+	# So I must make symlink, like other packages f.e. enchant-pure
+	ln -s /usr/include/enchant-2 /usr/include/enchant || echo
+	mkdir -p "$pkgdir/usr/bin"	
+
+	cd "$srcdir/xneur-devel/xneur"
 	make DESTDIR="$pkgdir/" install
-	mkdir -p "$pkgdir/usr/bin"
-	echo -e "#!/bin/bash\n/opt/xneur/bin/xneur $@" > "$pkgdir/usr/bin/xneur"
-	chmod +x "$pkgdir/usr/bin/xneur"
-	echo -e "\033[1mRemember\033[0m to run 'libtool --finish /opt/xneur/lib/xneur'"
+	ln -s /opt/xneur/bin/xneur $pkgdir/usr/bin/xneur
 	
 }
 
