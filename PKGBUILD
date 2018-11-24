@@ -8,17 +8,17 @@
 
 pkgname=xneur-devel-git
 pkgver=0.20.0
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="X Neural Switcher detects the input language and corrects keyboard layout. Git version"
 arch=('any')
 url="https://github.com/AndrewCrewKuznetsov/xneur-devel"
 license=('GPL')
 groups=()
-depends=('xosd' 'enchant')
+depends=('xosd' 'enchant' 'gtk2' 'libnotify' 'gstreaner>=1.2.4')
 makedepends=('git')
 checkdepends=()
-optdepends=()
+optdepends=('hunspell-your_language')
 provides=('xneur')
 conflicts=('xneur')
 replaces=('xneur')
