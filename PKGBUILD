@@ -4,7 +4,7 @@ _module="github3.py"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.2.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="a comprehensive wrapper around the GitHub API (v3)"
 arch=("any")
 url="https://github.com/sigmavirus24/${_module}"
@@ -28,14 +28,14 @@ check() {
 }
 
 package_python-github3.py() {
-    depends=("python" "python-requests" "python-uritemplate.py")
+    depends=("python" "python-requests" "python-uritemplate")
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 package_python2-github3.py() {
-    depends=("python2" "python2-requests" "python2-uritemplate.py")
+    depends=("python2" "python2-requests" "python2-uritemplate")
     cd "${srcdir}/${_module}-${pkgver}"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
