@@ -8,7 +8,7 @@ pkgbase = png2pos
 	arch = arm
 	license = MIT
 	makedepends = git
-	source = png2pos::git+https://github.com/petrkutalek/png2pos.git
+	source = png2pos::git+https://github.com/petrkutalek/png2pos.git#tag=v1.7.2
 	sha256sums = SKIP
 
 pkgname = png2pos
