@@ -1,15 +1,15 @@
 # Maintainer: architekton <architekton350@gmail.com>
 
 pkgname=amass
-pkgver=2.8.3
+pkgver=2.8.4
 pkgrel=1
 pkgdesc="In-depth subdomain enumeration written in Go"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/OWASP/Amass"
 license=('Apache')
 makedepends=('go' 'git')
 source=(Amass-$pkgver.tar.gz::https://github.com/OWASP/Amass/archive/${pkgver}.tar.gz)
-sha512sums=('2c20643c3d945c2f3ad6a47b7288ba3c34eb1ffadfd901bea200acd9ed63a7c84ce8ec029115875f13b9c12beced276ea354d3562d0200f00754cc33fcc95e9d')
+sha512sums=('2ce1b184777c0e6164ba3264cee44ab5c87768641d04080d48f4832cfbe7533c3aedd11ac0334f997513f08bb95420cd591c10d5647430b36127bfd0dea37e71')
 
 
 prepare() {
@@ -40,8 +40,14 @@ package() {
   export GOPATH="${srcdir}/gopath"
   cd "${GOPATH}/bin"
 
+  install -dm 755 "${pkgdir}/usr/share/${pkgname}"
+
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 "${pkgname}.netdomains" "${pkgdir}/usr/bin/${pkgname}.netdomains"
   install -Dm755 "${pkgname}.viz" "${pkgdir}/usr/bin/${pkgname}.viz"
   install -Dm755 "${pkgname}.db" "${pkgdir}/usr/bin/${pkgname}.db"
+
+  cp -a --no-preserve=ownership "$GOPATH/src/github.com/OWASP/Amass/"{wordlists/,examples/,snapcraft.yaml} "${pkgdir}/usr/share/${pkgname}"
+
+  chmod 644 "${pkgdir}/usr/share/${pkgname}/"{wordlists/*,examples/*}
 }
