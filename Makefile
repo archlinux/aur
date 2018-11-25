@@ -3,6 +3,7 @@
 
 export ROOTDIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 export VIRTUAL_ENV:=$(ROOTDIR)/venv
+export PATH:=$(VIRTUAL_ENV)/bin:$(PATH)
 
 ## Install all dependencies
 # Usage:
