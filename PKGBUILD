@@ -1,6 +1,6 @@
 # Author: Dominic Radermacher <blip@mockmoon-cybernetics.ch>
 pkgname=ptouch
-pkgver=v1.3.4.r10.g5014bf4
+pkgver=1.3.4.r10.g5014bf4
 pkgrel=2
 pkgdesc="Command line tool to print text or graphic labels on Brother P-touch printers like PT-2430PC"
 arch=('x86_64' 'i686' 'armv7h' 'armv6h')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/ptouch-print"
 	( set -o pipefail
-	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
 	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
