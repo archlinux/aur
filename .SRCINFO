@@ -11,6 +11,7 @@ pkgbase = afterwriting
 	noextract = afterwriting-1.11.0.tgz
 	source = https://registry.npmjs.org/afterwriting/-/afterwriting-1.11.0.tgz
 	source = LICENSE
+	validpgpkeys = 851BC52F8EA981155027C390BE9B03A8A1A2C4E2
 
 pkgname = afterwriting
 
