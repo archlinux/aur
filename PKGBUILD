@@ -4,8 +4,8 @@
 # Contributor: Richard Mathot <rim at odoo dot com>
 _pkgbase=r8152
 pkgname=${_pkgbase}-dkms
-pkgver=2.10.0
-pkgrel=3
+pkgver=2.10
+pkgrel=4
 pkgdesc="A kernel module for Realtek RTL8152/RTL8153 Based USB Ethernet Adapters"
 url="http://www.realtek.com.tw"
 license=("GPL")
@@ -14,18 +14,14 @@ depends=('glibc' 'dkms')
 conflicts=("${_pkgbase}")
 optdepends=('linux-headers: Build the module for Arch kernel'
 			'linux-lts-headers: Build the module for LTS Arch kernel')
-#install=$pkgname.install
 source=(
-    "https://fichiers.touslesdrivers.com/57037/${_pkgbase}.53-${pkgver}.tar.bz2"
+    "https://github.com/wget/realtek-r8152-linux/archive/v${pkgver}.tar.gz"
     'dkms.conf'
 )
-sha512sums=('ac4351dee651382fc4e8b842c592b1cd9af60bf3134d105d7d3ae865daeda55e72551844a6175fffcfed2d3da2799160bbd55e269d8d265a7f814afb18ffa6c7'
-            '2272d18f24a940fb878245849a0950d560b97ece8d492ebfe7ccf53f8ac6093b6b9da2b45c5ea3f99c77b36ffbd75337aa560cfd84428052f5436a9cda7c1605')
-
-prepare() {
-	cd "r8152-$pkgver"
-}
-
+sha512sums=(
+    'fe8dbb7c7888d273902e781ff093854cc0a2bfc7522fe4a7572fb427f535432c11ac01618f8e3b9f44907816d97026206bd4caefd9123d8c45e14bfc97d05228'
+    '2272d18f24a940fb878245849a0950d560b97ece8d492ebfe7ccf53f8ac6093b6b9da2b45c5ea3f99c77b36ffbd75337aa560cfd84428052f5436a9cda7c1605'
+)
 
 package() {
 	install -Dm644 dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
@@ -34,7 +30,5 @@ package() {
 		-e "s/@PKGVER@/${_pkgbase}/g" \
 		-i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 
-	#cd "${_pkgbase}-$pkgver"
-	#rm src/Makefile_linux24x
-	cp -dr --no-preserve='ownership' "${_pkgbase}-$pkgver" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/src"
+	cp -dr --no-preserve='ownership' "realtek-${_pkgbase}-linux-${pkgver}" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/src"
 }
