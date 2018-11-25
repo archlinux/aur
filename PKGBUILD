@@ -2,7 +2,7 @@
 
 _pkgname=understand
 pkgname=$_pkgname-bin
-_pkgbuild=956
+_pkgbuild=971
 pkgver=5.0.$_pkgbuild
 pkgrel=1
 pkgdesc="Static analysis tool for maintaining, measuring & analyzing critical or large code bases."
@@ -19,10 +19,10 @@ source_i686=("http://builds.scitools.com/all_builds/b$_pkgbuild/${_pkgname^}/${_
 source_x86_64=("http://builds.scitools.com/all_builds/b$_pkgbuild/${_pkgname^}/${_pkgname^}-$pkgver-Linux-64bit.tgz"
 "$_pkgname.desktop"
 "$_pkgname")
-md5sums_i686=('0370570bdc1095cfdd6828c509423fb8'
+md5sums_i686=('8c6e6d7ed564734c9794db71834f9b7a'
               '86ea741c38198d7291d5126ef0cd17f8'
               '2927bc21f24ff8776a1c601379c9f19f')
-md5sums_x86_64=('e1650e2d7471f1104683d3b59a3ce74f'
+md5sums_x86_64=('ebd9bc489dbb84dfa35ace09dc09a68b'
                 '86ea741c38198d7291d5126ef0cd17f8'
                 '2927bc21f24ff8776a1c601379c9f19f')
 
