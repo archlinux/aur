@@ -1,8 +1,8 @@
 # Maintainer: Simona <simona.pisano[at]gmail[dot]com>
 pkgname=simonascripts
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
-pkgdesc="Bash unique command for mount image files (iso, vms, crypto), detect pendrive device name, list all kernels, list all i/o schedulers."
+pkgdesc="Bash unique command for mount image files (iso, vms, crypto, squashfs), detect pendrive device name, list all kernels, list all i/o schedulers."
 
 arch=('any')
 license=('GPL3')
@@ -10,10 +10,11 @@ license=('GPL3')
 depends=('bash')
 optdepends=('qemu: for mount qemu image files'
             'fuseiso: another way to mount iso image files'
-            'cryptsetup: for mount crypto image files' )
+            'cryptsetup: for mount crypto image files'
+            'squashfs-tools: for squashfs image files' )
 
 source=($pkgname-$pkgver.tar.gz)
-md5sums=('aafaf5c9bed01bb5cc1bee82fdf7806d')
+md5sums=('23906d3498e65f43db0588fad50d880f')
 
 package() {
   cd "$srcdir"
