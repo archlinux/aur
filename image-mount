@@ -49,16 +49,38 @@ allow_formats_iso="iso nrg bin img mdf"
 allow_formats_crypto="tcrypt plain luks luks1 luks2 loopaes"
 
 if [[ $1 == "-h" || $1 == "--help" ]] ; then
-  echo "Sintax 1: image-mount [--help|-h]"
-  echo "Sintax 2: image-mount [path/]file-name.ext] [format | part#] [mount-path | part#] [--force-iso-stdmount]"
-  echo "           --force-iso-stdmount   -> forse in iso sudo mount 'mount -o loop' instead 'fuseiso'"
-  echo "Warning 1: part# in in format 0-9 with one integer value"
-  echo "Warning 2: format must be explicily specified if file extension do not say itself the correct format."
-  echo "Warning 3: all parameters are case sensitive."
-  echo "Default: image-mount image.raw raw 0 \${HOME}/mount/image"
-  echo "Minimal: image-mount file.ext"
-  echo "Typical: image-mount file.ext 2"
-  echo "Allowed formats: ${allow_formats} ${allow_formats_iso} ${allow_formats_crypto} sqhashfs"
+  cat << EOF
+image-mount command help
+
+Usage
+  image-mount [--help|-h]"
+  image-mount [path/]file-name.ext] [format | part#] [mount-path | part#] [--force-iso-stdmount]
+  --force-iso-stdmount   -> force in iso sudo mount 'mount -o loop' instead 'fuseiso'
+
+Warnings
+  1) part# in in format 0-9 with one integer value
+  2) format must be explicily specified if file extension do not say itself the correct format.
+  3) all parameters are case sensitive.
+
+Default pars:
+  image-mount image.raw raw 0 \${HOME}/mount/image
+Minimal usate:
+  image-mount file.ext
+Common usage:
+  image-mount file.ext 2
+
+Full allowed format list (with 'more partitions inside' supported)
+----------------------------------------------------------------------------------------------------
+Virtual images allowed ('qemu' for this function package required):
+  ${allow_formats}
+Iso images (fuse standard mount or optional 'fuseiso' package required):
+  ${allow_formats_iso}
+Crypto images ('cryptsetup' for this function package is required):
+  ${allow_formats_crypto}
+Squash readonly file (can ben modified, saved on umount) (package 'squashfs-tools' required):
+  sqhashfs
+EOF
+
   exit 0
 fi
 

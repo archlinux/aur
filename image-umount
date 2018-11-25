@@ -14,16 +14,28 @@ ERR="\E[31;40m[OK]${EchoReset}"
 [[ $1 == "" ]] && exit 0
 
 if [[ $1 == "-h" || $1 == "--help" ]] ; then
-  echo "Sintax 1: image-umount [--help|-h]"
-  echo "Sintax 2: image-umount reset [path] (try)"
-  echo "Sintax 3: image-umount image.ext [format] [mount-path] [--force-iso-stdmount]"
-  echo "        --force-iso-stdmount   -> force in iso mount 'mount -o loop' instead 'fuseiso'"
-  echo "Warning: format must be explicily specified if file extension do not say itself the correct format."
-  echo "Warning: all parameters are case sensitive."
-  echo "Default: image-umount image.raw raw 0 \$HOME/mount/image"
-  echo "Minimal: image-umount file.ext"
-  echo "Typical: image-umount file.ext 2"
-  echo "Allowed formats: $allow_formats $allow_formats_iso $allow_formats_crypto squashfs"
+  cat << EOF
+image-umount command help
+
+More details and supported formats are supplied inside 'image-mount -h' script.
+
+Usage
+  image-umount [--help|-h]
+  image-umount reset [path] (try)
+  image-umount image.ext [format] [mount-path] [--force-iso-stdmount]
+    --force-iso-stdmount   -> force in iso mount 'mount -o loop' instead 'fuseiso'
+
+Warning:
+  1) format must be explicily specified if file extension do not say itself the correct format.
+  2) Warning: all parameters are case sensitive.
+
+Default parameters:
+  image-umount image.raw raw 0 \$HOME/mount/image
+Minimal usage:
+  image-umount file.ext
+Typical usage:
+  image-umount file.ext 2
+EOF
   exit 0
 fi
 
