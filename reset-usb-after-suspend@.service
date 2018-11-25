@@ -1,0 +1,10 @@
+[Unit]
+Description="Reset a USB device after system resume"
+After=suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/usbreset-device %i
+
+[Install]
+WantedBy=suspend.target

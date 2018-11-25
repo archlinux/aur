@@ -1,0 +1,17 @@
+pkgbase = usbreset
+	pkgdesc = A tool to reset USB devices
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://marc.info/?l=linux-usb&m=121459435621262&w=2
+	arch = x86_64
+	license = unknown
+	optdepends = usbutils: Support for resetting USB devices by VID:PID instead of /dev/bus/usb/*
+	source = usbreset.c
+	source = usbreset-device
+	source = reset-usb-after-suspend@.service
+	sha256sums = 61b2a45152d4718c4b1962a872aba5f51cdd19e3b5d359004cc98f007fb7e556
+	sha256sums = 1f3136afdcfbe1d2792f5ac1835b7735f0a4fdffa74be523ec400ac4c313a590
+	sha256sums = 907933a2c78922f6680b4dd2af95cd367dd858a5cf10c90caad2ec53f9848745
+
+pkgname = usbreset
+

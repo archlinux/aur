@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+
+function usage()
+{
+    echo "Usage $0 DEVICE"
+    echo "DEVICE - USB VID:PID e.g. 0d8c:0102"
+    exit 1
+}
+
+[[ -z "$1" ]] && usage
+
+LSUSB_OUT=$(lsusb -d $1)
+if [[ $? != 0 ]]
+then
+    echo "Device with VID/PID $1 was not found"
+    exit 1
+fi
+
+BUS_PATH=$(sed -E 's!Bus ([0-9]{3}) Device ([0-9]{3}).*!/dev/bus/usb/\1/\2!' <<<"$LSUSB_OUT")
+if [[ -z "$BUS_PATH" ]]
+then
+    echo "Could not figure out devname for VID/PID $1"
+    exit 1
+fi
+
+usbreset "$BUS_PATH" 2>&1
