@@ -1,0 +1,13 @@
+pkgbase = julia-orderedcollections
+	pkgdesc = Julia implementation of associative containers that preserve insertion order
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/JuliaCollections/OrderedCollections.jl
+	arch = any
+	license = MIT
+	depends = julia
+	source = julia-orderedcollections-1.0.2.tar.gz::https://github.com/JuliaCollections/OrderedCollections.jl/archive/v1.0.2.tar.gz
+	sha256sums = 33d4e568f7cbffe9187d7548e86487f375ec0be07fa0da3743a2e008a8453707
+
+pkgname = julia-orderedcollections
+
