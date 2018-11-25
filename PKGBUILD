@@ -1,16 +1,19 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
 pkgname=quassel-client-lighter-git
 pkgver=0.14.pre.r110.g7c0eb011
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt-based distributed IRC client (client only) - minimal dependencies"
 url='https://quassel-irc.org'
 license=('GPL')
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 depends=('qt5-base')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'ninja' 'qt5-base' 'boost')
+makedepends=('git' 'extra-cmake-modules' 'ninja' 'qt5-base' 'boost')
 optdepends=('sonnet: spell checking support'
             'hicolor-icon-theme: hicolor theme hierarchy support'
-            'libdbusmenu-qt5: dbus context menu for icon tray support')
+            'libdbusmenu-qt5: dbus context menu for icon tray support'
+            'qt5-tools: translations support'
+            'qt5-multimedia: audio notification support'
+            'snorenotify: snorenotify notification framework support')
 provides=('quassel-client')
 conflicts=('quassel-client')
 source=("$pkgname"::"git+https://github.com/quassel/quassel")
