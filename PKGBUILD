@@ -7,12 +7,12 @@ _pkgbase=libindicator
 pkgbase=lib32-${_pkgbase}
 pkgname=("${pkgbase}-gtk"{2,3})
 pkgver=12.10.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Set of symbols and convenience functions for Ayatana indicators (32-bit)'
 url='https://launchpad.net/libindicator'
 arch=('x86_64')
 license=('GPL3')
-makedepends=("lib32-gtk"{2,3})
+makedepends=("lib32-gtk"{2,3} 'python')
 source=(https://launchpad.net/${_pkgbase}/${pkgver%.*}/${pkgver}/+download/${_pkgbase}-${pkgver}.tar.gz{,.asc})
 sha512sums=('d6d77d0309b15cf6b52539323920ab0c1594cb1c1cef8a8d67cd0f76f8ceeeac28eb6db6227563df1932e6f1fadcffac68d82982182b745257dfaf91f1c945af'
             'SKIP')
