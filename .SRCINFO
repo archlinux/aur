@@ -1,21 +1,15 @@
 pkgbase = python-image
 	pkgdesc = Django application that provides editing for images and videos.
-	pkgver = 1.5.24
-	pkgrel = 2
+	pkgver = 1.5.27
+	pkgrel = 1
 	url = https://github.com/francescortiz/image
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python-pillow
-	makedepends = python-requests
-	makedepends = python-django
 	makedepends = python2-setuptools
-	makedepends = python2-pillow
-	makedepends = python2-requests
-	makedepends = python2-django
 	optdepends = ffmpeg: For video thumbnails
-	source = python-image-1.5.24.tar.gz::https://files.pythonhosted.org/packages/source/i/image/image-1.5.24.tar.gz
-	sha256sums = cfe64396b45dd31ff0ea390c80d63728b1df5e311b7c4a907a42f1bdded85515
+	source = python-image-1.5.27.tar.gz::https://files.pythonhosted.org/packages/source/i/image/image-1.5.27.tar.gz
+	sha256sums = 3f0ea15fb523c68a08098153bb06f4a8913300277e11b61c5e71fdd57b243783
 
 pkgname = python-image
 	depends = python-pillow
