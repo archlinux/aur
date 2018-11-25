@@ -1,6 +1,6 @@
 # Maintainer: Petr Kutálek <petr@kutalek.cz>
 pkgname=png2pos
-pkgver=1.7.2
+pkgver=git
 pkgdesc='A utility to converter PNG images to ESC/POS'
 url='https://github.com/petrkutalek/png2pos'
 license=('MIT')
