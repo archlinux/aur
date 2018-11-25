@@ -1,6 +1,6 @@
 # Maintainer: Simona <simona.pisano[at]gmail[dot]com>
 pkgname=simonascripts
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Bash unique command for mount image files (iso, vms, crypto), detect pendrive device name, list all kernels, list all i/o schedulers."
 
@@ -13,7 +13,7 @@ optdepends=('qemu: for mount qemu image files'
             'cryptsetup: for mount crypto image files' )
 
 source=($pkgname-$pkgver.tar.gz)
-md5sums=('e8e997f96ddb9955545da09d1c76a65f')
+md5sums=('aafaf5c9bed01bb5cc1bee82fdf7806d')
 
 package() {
   cd "$srcdir"

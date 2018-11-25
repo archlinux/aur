@@ -1,6 +1,6 @@
 pkgbase = simonascripts
 	pkgdesc = Bash unique command for mount image files (iso, vms, crypto), detect pendrive device name, list all kernels, list all i/o schedulers.
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	arch = any
 	license = GPL3
@@ -8,8 +8,8 @@ pkgbase = simonascripts
 	optdepends = qemu: for mount qemu image files
 	optdepends = fuseiso: another way to mount iso image files
 	optdepends = cryptsetup: for mount crypto image files
-	source = simonascripts-0.0.2.tar.gz
-	md5sums = e8e997f96ddb9955545da09d1c76a65f
+	source = simonascripts-0.0.3.tar.gz
+	md5sums = aafaf5c9bed01bb5cc1bee82fdf7806d
 
 pkgname = simonascripts
 
