@@ -5,12 +5,12 @@ pkgdesc='A utility to converter PNG images to ESC/POS'
 url='https://github.com/petrkutalek/png2pos'
 license=('MIT')
 
-pkgrel=0
+pkgrel=1
 epoch=
 arch=('i686' 'x86_64' 'arm')
 makedepends=('git')
 source=(
-    "$pkgname"::"git+https://github.com/petrkutalek/png2pos.git#tag=v${pkgver}"
+    "$pkgname"::"git+https://github.com/petrkutalek/png2pos.git"
     )
 sha256sums=(
     'SKIP'
