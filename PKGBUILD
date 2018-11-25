@@ -1,7 +1,7 @@
 # Maintainer Swissky <swisskysec@protonmail.com>
 pkgname=payloadsallthethings-git
 pkgbase=payloadsallthethings
-pkgver=2.0
+pkgver=r232.928a454
 pkgrel=1
 pkgdesc="A list of useful payloads and bypass for Web Application Security and Pentest/CTF."
 arch=('any')
