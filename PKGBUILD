@@ -6,7 +6,7 @@
 
 pkgname=slic3r-git
 pkgver=a
-pkgrel=18
+pkgrel=19
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://slic3r.org/"
@@ -55,12 +55,12 @@ pkgver() {
   if grep -sq '#define SLIC3R_VERSION' ./xs/src/libslic3r/libslic3r.h; then
     # 6adc3477c9d08d2cfa0e6902b3d241a9193e50d4 intruduces libslic3r.h in that directory BUT
     # 8b6a8e63079978646cd98a96d6ad178b28f3067c introduces version in that header
-    _pkgver="$(awk -F'"' '/#define SLIC3R_VERSION/ {print $2};' ./xs/src/libslic3r/libslic3r.h).$(git rev-parse --short HEAD)"
+    _pkgver="$(awk -F'"' '/#define SLIC3R_VERSION/ {print $2};' ./xs/src/libslic3r/libslic3r.h).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
   elif grep -sq 'constexpr auto SLIC3R_VERSION' ./xs/src/libslic3r/libslic3r.h; then
     # 8250839fd5200bad9b180c056055acf515b0ad6f introduces another change
-    _pkgver="$(awk -F'"' '/constexpr auto SLIC3R_VERSION/ {print $2};' ./xs/src/libslic3r/libslic3r.h).$(git rev-parse --short HEAD)"
+    _pkgver="$(awk -F'"' '/constexpr auto SLIC3R_VERSION/ {print $2};' ./xs/src/libslic3r/libslic3r.h).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
   else
-    _pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
+    _pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
   fi
   _pkgver="${_pkgver//-/_}"
   echo "${_pkgver}"
