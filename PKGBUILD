@@ -1,17 +1,17 @@
 #Contributor:Andrea Tarocchi <valdar@email.it> 
 pkgname=wiiuse
-pkgver=0.14.0
+pkgver=0.15.2
 pkgrel=6
 pkgdesc="Library written in C that connects with several Nintendo Wii remotes" 
-arch=(i686 x86_64)
-url="https://github.com/rpavlik/wiiuse" 
+arch=('x86_64')
+url="https://github.com/wiiuse/wiiuse" 
 depends=('bluez-libs') 
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 license=('GPL3')
 install=wiiuse.install
 postfix=_src.tar.gz
-#source=("$pkgname-$pkgver.tar.gz::https://github.com/rpavlik/$pkgname/zipball/$pkgver")
-source=("git+https://github.com/rpavlik/wiiuse.git#tag=$pkgver")
+#source=("$pkgname-$pkgver.tar.gz::https://github.com/wiiuse/$pkgname/zipball/$pkgver")
+source=("git+https://github.com/wiiuse/wiiuse.git#tag=$pkgver")
 md5sums=('SKIP')
 
 build() {
@@ -19,8 +19,8 @@ build() {
 
   [[ ! -e build ]] && mkdir build
   cd build
-  cmake ..
-  make
+  ccmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO
+  #[-DCMAKE_INSTALL_PREFIX=/usr/local] 
 }
 
 package() {
