@@ -1,14 +1,17 @@
 # Maintainer: Robin Lange <robin dot langenc at gmail dot com>
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
 pkgname=optimus-manager
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc="Management utility to handle GPU switching for Optimus laptops."
 arch=('any')
 url="https://github.com/Askannz/optimus-manager"
 license=('MIT')
 depends=('python' 'python-setuptools' 'bbswitch' 'xorg-xrandr')
 makedepends=('python-setuptools')
+backup=('etc/optimus-manager/optimus-manager.conf'
+        'etc/optimus-manager/xorg-intel.conf'
+        'etc/optimus-manager/xorg-nvidia.conf')
 source=("git+https://github.com/Askannz/optimus-manager.git#tag=v$pkgver")
 sha256sums=('SKIP')
  
@@ -30,6 +33,10 @@ package() {
   install -Dm644 systemd/optimus-manager.service "$pkgdir/usr/lib/systemd/system/optimus-manager.service"
   install -Dm644 systemd/99-optimus-manager.conf "$pkgdir/usr/lib/systemd/system/display-manager.service.d/99-optimus-manager.conf"
   install -Dm644 optimus-manager.conf "$pkgdir/usr/share/optimus-manager.conf"
+  
+  install -Dm644 config/optimus-manager.conf "$pkgdir/etc/optimus-manager/optimus-manager.conf"
+  install -Dm644 config/xorg-intel.conf "$pkgdir/etc/optimus-manager/xorg-intel.conf"
+  install -Dm644 config/xorg-nvidia.conf "$pkgdir/etc/optimus-manager/xorg-nvidia.conf"
   
   mkdir -p "$pkgdir/var/lib/optimus-manager/"
  
