@@ -112,7 +112,7 @@ pkgver() {
 
 prepare() {
   cd ${_srcname}
-  
+
   ### Setting version
         msg2 "Setting version..."
         sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
@@ -146,7 +146,7 @@ prepare() {
             -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
             -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' ./.config
         fi
-  
+
     ### Enable fancontrol
         if [ -n "$_dell_fancontrol" ]; then
         msg "Enabling I8K for Dell..."
@@ -216,7 +216,7 @@ prepare() {
         msg "Disabling Kyber I/O scheduler..."
         sed -i -e s'/CONFIG_MQ_IOSCHED_KYBER=y/# CONFIG_MQ_IOSCHED_KYBER is not set/' ./.config
         fi
-  
+
     ### Enable MQ scheduling
         if [ -n "$_mq_enable" ]; then
         msg "Enable MQ scheduling..."
@@ -307,7 +307,7 @@ _package() {
   sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
     "$pkgdir/usr/share/libalpm/hooks/90-${pkgbase}.hook"
   sed "$subst" ../99-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/99-${pkgbase}.hook"  
+    "$pkgdir/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -391,7 +391,7 @@ _package-headers() {
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
-  
+
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
