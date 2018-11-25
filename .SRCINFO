@@ -1,0 +1,18 @@
+pkgbase = dgengine-physfs-git
+	pkgdesc = PhysicsFS with MPQ files support
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/dgengin/physfs
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	makedepends = cmake
+	makedepends = git
+	depends = zlib
+	provides = physfs
+	conflicts = physfs
+	source = dgengine-physfs-git::git+https://github.com/dgengin/physfs.git
+	sha1sums = SKIP
+
+pkgname = dgengine-physfs-git
+
