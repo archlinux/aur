@@ -3,7 +3,7 @@
 
 pkgname=freeplane
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java mindmapping tool"
 arch=('any')
 url="http://freeplane.sourceforge.net"
@@ -26,7 +26,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share/freeplane/fwdir/perms"
   mkdir -p "${pkgdir}/usr/share/freeplane/fwdir/condperm"
   mkdir -p "${pkgdir}/usr/share/freeplane/scripts"
-  mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images/{doc,mouse}"
+  mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images/doc"
+  mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images/mouse"
   mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images/other/workspace/output}"
 
   cd ${srcdir}/${pkgname}-${pkgver}

@@ -1,7 +1,7 @@
 pkgbase = freeplane
 	pkgdesc = A Java mindmapping tool
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freeplane.sourceforge.net
 	arch = any
 	license = GPL
