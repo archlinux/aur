@@ -1,7 +1,7 @@
 # Maintainer: Simona <simona.pisano[at]gmail[dot]com>
 pkgname=simonascripts
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash unique command for mount image files (iso, vms, crypto, squashfs), detect pendrive device name, list all kernels, list all i/o schedulers."
 
 #t does not need to be included in the source array
@@ -40,7 +40,7 @@ package() {
   install -Dm 755 "$srcdir/image-umount" "$pkgdir/usr/bin/image-umount"
   install -Dm 755 "$srcdir/boot-kernel-list" "$pkgdir/usr/bin/boot-kernel-list"
   install -Dm 755 "$srcdir/ioscheduler-list" "$pkgdir/usr/bin/ioscheduler-list"
-  install -Dm 644 "$srcdir/image-mount.1" "$pkgdir/usr/share/man1/image-mount.1"
+  install -Dm 644 "$srcdir/image-mount.1" "$pkgdir/usr/share/man/man1/image-mount.1"
 }
 
 
