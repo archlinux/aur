@@ -1,11 +1,12 @@
 # Maintainer: pancho horrillo <pancho at pancho dot name>
 # Maintainer: Bram Swenson <bram at amplified dot work>
 # Contributor: Marti Raudsepp <marti at juffo dot org>
+# Maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
 _pkgname='concourse-fly'
 pkgname="${_pkgname}-git"
-pkgver=3.12.1.rc.8.r0.gbb37e22
-pkgrel=2
+pkgver=4.2.1.r9287.gee3b4cf8b
+pkgrel=1
 pkgdesc='Command line interface to the Concourse continuous integration tool'
 arch=('x86_64')
 url='https://concourse-ci.org/fly.html'
@@ -19,33 +20,29 @@ source=("git+https://github.com/concourse/${_srcname}.git")
 sha512sums=('SKIP')
 
 prepare() {
-    cd "${_srcname}"
-    git submodule update --init --recursive
-    export GOPATH="$PWD"
-    go get github.com/onsi/ginkgo/ginkgo
+    cd "${srcdir}/${_srcname}"
+    git submodule update --init --recursive --jobs $(nproc) --recommend-shallow
 }
 
 pkgver() {
-    cd "${_srcname}"
-    cd src/github.com/concourse/fly
+    cd "${srcdir}/${_srcname}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${_srcname}"
+    cd "${srcdir}/${_srcname}/fly"
     export GOPATH="$PWD"
-    cd src/github.com/concourse/fly
     go build
 }
 
 check() {
-    cd "${_srcname}"
+    cd "${srcdir}/${_srcname}/fly"
     export GOPATH="$PWD"
-    cd src/github.com/concourse/fly
+    go get github.com/onsi/ginkgo/ginkgo
     "$GOPATH"/bin/ginkgo -r
 }
 
 package() {
-    cd "${_srcname}"
-    install -m 755 -D src/github.com/concourse/fly/fly "$pkgdir"/usr/bin/fly
+    cd "${srcdir}/${_srcname}/fly"
+    install -m 755 -D fly "$pkgdir"/usr/bin/fly
 }

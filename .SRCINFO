@@ -1,7 +1,7 @@
 pkgbase = concourse-fly-git
 	pkgdesc = Command line interface to the Concourse continuous integration tool
-	pkgver = 3.12.1.rc.8.r0.gbb37e22
-	pkgrel = 2
+	pkgver = 4.2.1.r9287.gee3b4cf8b
+	pkgrel = 1
 	url = https://concourse-ci.org/fly.html
 	arch = x86_64
 	license = Apache
