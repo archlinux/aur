@@ -2,8 +2,8 @@
 
 pkgname=caffe2-git
 _srcname=pytorch
-pkgver=0.8.2.r14826.gf79fb58744
-pkgrel=2
+pkgver=0.8.2.r14834.g60e7d04961
+pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version)'
 arch=('i686' 'x86_64')
@@ -67,6 +67,8 @@ source=(
         'git+https://github.com/pytorch/fbgemm'
     # others:
         'git+https://github.com/asmjit/asmjit.git'
+    # patches:
+        'caffe2-git-opencv4-fix.patch'
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -97,7 +99,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '3a9bb782dc77414ba2d86d222d30b6c33c8fc434e489eaf5958c108ab3565c06')
 
 prepare() {
     cd "$_srcname"
@@ -132,6 +135,9 @@ prepare() {
     git config --local 'submodule.third-party/cpuinfo.url' "${srcdir}/cpuinfo"
     
     git submodule update
+    
+    # opencv 4.0 fix
+    patch -Np1 -i "${srcdir}/caffe2-git-opencv4-fix.patch"
 }
 
 pkgver() {
