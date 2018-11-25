@@ -2,10 +2,10 @@
 # Contributor: Florian Hahn <flo@fhahn.com>
 
 pkgname=neovim-git
-pkgver=0.2.0.r612.g3b45f676c
+pkgver=0.3.1.r915.g8b39e4ec7
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='https://neovim.io'
 license=('custom:neovim')
 depends=('jemalloc' 'libtermkey' 'libuv' 'luajit' 'libvterm' 'msgpack-c' 'unibilium')
