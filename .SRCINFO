@@ -1,7 +1,7 @@
 pkgbase = mimeo
 	pkgdesc = Open files by MIME-type or file name using regular expressions.
-	pkgver = 2017.6.6
-	pkgrel = 3
+	pkgver = 2018.11
+	pkgrel = 1
 	url = https://xyne.archlinux.ca/projects/mimeo
 	arch = any
 	license = GPL
@@ -9,13 +9,13 @@ pkgbase = mimeo
 	depends = python-xdg
 	depends = python3
 	optdepends = MIME-types: for recognizing more MIME-types
-	source = https://xyne.archlinux.ca/projects/mimeo/src/mimeo-2017.6.6.tar.xz
-	source = https://xyne.archlinux.ca/projects/mimeo/src/mimeo-2017.6.6.tar.xz.sig
+	source = https://xyne.archlinux.ca/projects/mimeo/src/mimeo-2018.11.tar.xz
+	source = https://xyne.archlinux.ca/projects/mimeo/src/mimeo-2018.11.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
-	md5sums = fc0e1c73f6eb61762a8f29336116a6a5
-	md5sums = 7c719d139ce4515b8509733c5fc7b2fa
-	sha512sums = 16a379c45f3d56c9cb629e4950fa815242d4e7e5d9265573f808aa7e3199628807d50e7f3e485909d5705f59d436632229580f091d706ea9f436a643a4e1ec42
-	sha512sums = 8c4d1a2060056d9a79b6c3ea75b71c32553a2f84ea678539c7f72e1560d1cf679961ebb2ae7f7b10e49510af7485a9659e2f6733f0d595393ab82be3d9a54a92
+	md5sums = da56c93236eca558f1d3e2e700259d2c
+	md5sums = 71f12dad0ba512285fe2f90124bf275b
+	sha512sums = 94f1aecd35fdb3cb89c589a1f7f8eed73ba797f517f8f570c86d23de398c176dfe4fc4d79ec505cf7b6315ffce84352a7a56c6e97d2254c2f55f619322097d4f
+	sha512sums = 574e64ecb7cd72f38f69234b19042fe2e6d4bebaae7d88f8156a3be1ca9d166f4ca657e0e439e1b70a123bcafb6eeccf24fa7fef154eaa4b3a3aca1aded396b9
 
 pkgname = mimeo
 
