@@ -1,5 +1,5 @@
 pkgname=electrum-ltc-git
-pkgver=3.2.3.git20181014.64cb7c0
+pkgver=3.2.3.git20181122.25c5141
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
@@ -7,6 +7,8 @@ url=https://electrum-ltc.org/
 license=(MIT)
 depends=(desktop-file-utils
          libsecp256k1
+         python-aiohttp_socks
+         python-aiorpcx
          python-btchip
          python-dnspython
          python-ecdsa
@@ -16,7 +18,6 @@ depends=(desktop-file-utils
          python-pyaes
          python-pycryptodomex
          python-pyqt5
-         python-pysocks
          python-qrcode
          python-requests
          python-scrypt
@@ -49,7 +50,7 @@ build() {
 package() {
   cd electrum-ltc
 
-  ./setup.py install -O1 --root="$pkgdir"
+  ./setup.py install -O1 --root="$pkgdir" --skip-build
 
   install -Dm644 AUTHORS README.rst RELEASE-NOTES -t "$pkgdir"/usr/share/doc/electrum-ltc
 
