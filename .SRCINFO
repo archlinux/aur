@@ -1,12 +1,12 @@
 pkgbase = getmu
 	pkgdesc = A full-stack DevOps on AWS framework
-	pkgver = 1.5.8
+	pkgver = 1.5.10
 	pkgrel = 1
 	url = https://github.com/stelligent/mu
 	arch = x86_64
 	license = MIT
-	source_x86_64 = https://github.com/stelligent/mu/releases/download/v1.5.8/mu-linux-amd64
-	sha256sums_x86_64 = 0f5221d9e6eee56020b4a4c6a25f6e37e401dcf5e46a8a323e96baa8f7c0c23e
+	source_x86_64 = https://github.com/stelligent/mu/releases/download/v1.5.10/mu-linux-amd64
+	sha256sums_x86_64 = 8d9f97c0e15a876dda3e312bcb6a7fb13c56924ea0a8deb8c22019817bcefc21
 
 pkgname = getmu
 

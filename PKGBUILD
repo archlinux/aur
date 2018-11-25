@@ -1,14 +1,14 @@
 #Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgname=getmu
-pkgver=1.5.8
+pkgver=1.5.10
 pkgrel=1
 pkgdesc="A full-stack DevOps on AWS framework"
 arch=('x86_64')
 source_x86_64=("https://github.com/stelligent/mu/releases/download/v$pkgver/mu-linux-amd64")
 url="https://github.com/stelligent/mu"
 license=("MIT")
-sha256sums_x86_64=("0f5221d9e6eee56020b4a4c6a25f6e37e401dcf5e46a8a323e96baa8f7c0c23e")
+sha256sums_x86_64=("8d9f97c0e15a876dda3e312bcb6a7fb13c56924ea0a8deb8c22019817bcefc21")
 
 package() {
   _ARCH=""
