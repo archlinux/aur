@@ -2,12 +2,13 @@
 
 pkgname=python-snap7
 pkgver=0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="This is a ctypes based python wrapper for snap7."
 url="http://snap7.sourceforge.net/"
 license=("LGPL3")
 arch=('any')
 depends=("snap7")
+makedepends=("python-setuptools")
 source=("https://github.com/gijzelaerr/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('d5909496234da914d553c9f5a8d6d5ef7ac83d87fe1ec492bcdd91549a7993d2')
 
