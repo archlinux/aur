@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=texinfo-svn
-pkgver=7989
+pkgver=8441
 pkgrel=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('coreutils')
 makedepends=('subversion' 'help2man')
 provides=('texinfo')
 conflicts=('texinfo')
-source=("texinfo::svn://svn.sv.gnu.org/texinfo/trunk"
+source=("texinfo::svn://svn.sv.gnu.org/texinfo/trunk#revision=8441"
 	texinfo-install.hook
         texinfo-remove.hook)
 md5sums=('SKIP'
@@ -27,6 +27,7 @@ pkgver() {
 }
 
 build() {
+  export LANG=C
   cd "$srcdir"/"${_svnmod}"
   ./autogen.sh 
   ./configure --prefix=/usr --libexecdir=/usr/lib
