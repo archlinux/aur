@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index 4e00f2e..ff27357 100644
+--- a/Makefile
++++ b/Makefile
+@@ -41,8 +41,8 @@ build-server: | .prebuild
+ 		exit 1; \
+ 	fi
+ 
+-	$(GO) build $(GOFLAGS) ./...
+-	$(GO) install $(GOFLAGS) ./...
++	$(GO) build $(GOFLAGS) -ldflags "-linkmode external -extldflags '$(LDFLAGS)' -s -w" ./...
++	$(GO) install $(GOFLAGS) -ldflags "-linkmode external -extldflags '$(LDFLAGS)' -s -w" ./...
+ 
+ package:
+ 	@ echo Packaging push proxy

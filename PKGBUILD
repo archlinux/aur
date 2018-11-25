@@ -2,14 +2,14 @@
 # Contributor: Janne Heß <jannehess@gmail.com>
 
 pkgname=mattermost-push-proxy
-pkgver=4.10.1
+pkgver=5.4
 pkgrel=1
 pkgdesc='Mattermost Push Notifications Service'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mattermost/mattermost-push-proxy.git"
 license=("Apache")
 
-makedepends=('go')
+makedepends=('go-pie')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 backup=('etc/mattermost-push-proxy/config.json')
@@ -17,25 +17,35 @@ backup=('etc/mattermost-push-proxy/config.json')
 source=(
     "https://github.com/mattermost/${pkgname}/archive/v${pkgver}.tar.gz"
     "${pkgname}.service"
+    'mattermost-ldflags.patch'
 )
 sha512sums=(
-    'f97a75f45cd145a2261107b853accbd7c60821e96866e3b69518b7b37f5c41956d03320156d3e2fc065609736506c26c842ec016fc23ed5a028c76a88430cb5f'
+    '498cd563538cff338e63e160828eb9b15a3b7e33ea7ae153f96de77cb72db3256c48607ebe7793a5f565009364259a306fecfb022f960b61a26682cd19c597c0'
     '6d646673f10d2e291d37bbfa53c0314f076922bf76ceadcecad8febb7ac377fedc1bbbc82d118e161ad662e1f363fb5ca0b3750a0601eedf56bdb9c5e084ede4'
+    'SKIP'
 )
 install="${pkgname}.install"
 
-build() {
-	cd "${srcdir}"
-	mkdir -p gopath/src/github.com/mattermost
-	mv -Tn "mattermost-push-proxy-${pkgver}" gopath/src/github.com/mattermost/mattermost-push-proxy
+prepare() {
+    cd "${srcdir}"
+    mkdir -p src/github.com/mattermost
+    cd src/github.com/mattermost
+    ln -s "${srcdir}/mattermost-push-proxy-${pkgver}" "${pkgname}"
+    cd "${pkgname}"
 
-	cd $_
-	GOPATH="${srcdir}/gopath" make build-server
+    # Pass Arch Linux's Go compilation flags to Mattermost in order to take
+    # into account advanced features like PIE.
+    patch < "${srcdir}"/mattermost-ldflags.patch
+}
+
+build() {
+    cd "${srcdir}/src/github.com/mattermost/${pkgname}"
+    GOPATH="${srcdir}" make build-server
 }
 
 package() {
-	install -Dm755 "${srcdir}/gopath/bin/mattermost-push-proxy" "${pkgdir}/usr/bin/mattermost-push-proxy"
-	install -Dm644 "${srcdir}/gopath/src/github.com/mattermost/mattermost-push-proxy/config/mattermost-push-proxy.json" \
-		"${pkgdir}/etc/mattermost-push-proxy/config.json"
-	install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm755 "${srcdir}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/src/github.com/mattermost/${pkgname}/config/${pkgname}.json" \
+        "${pkgdir}/etc/${pkgname}/config.json"
+    install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }

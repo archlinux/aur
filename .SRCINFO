@@ -1,6 +1,6 @@
 pkgbase = mattermost-push-proxy
 	pkgdesc = Mattermost Push Notifications Service
-	pkgver = 4.10.1
+	pkgver = 5.4
 	pkgrel = 1
 	url = https://github.com/mattermost/mattermost-push-proxy.git
 	install = mattermost-push-proxy.install
@@ -11,13 +11,13 @@ pkgbase = mattermost-push-proxy
 	arch = armv7h
 	arch = aarch64
 	license = Apache
-	makedepends = go
+	makedepends = go-pie
 	provides = mattermost-push-proxy
 	conflicts = mattermost-push-proxy-git
 	backup = etc/mattermost-push-proxy/config.json
-	source = https://github.com/mattermost/mattermost-push-proxy/archive/v4.10.1.tar.gz
+	source = https://github.com/mattermost/mattermost-push-proxy/archive/v5.4.tar.gz
 	source = mattermost-push-proxy.service
-	sha512sums = f97a75f45cd145a2261107b853accbd7c60821e96866e3b69518b7b37f5c41956d03320156d3e2fc065609736506c26c842ec016fc23ed5a028c76a88430cb5f
+	sha512sums = 498cd563538cff338e63e160828eb9b15a3b7e33ea7ae153f96de77cb72db3256c48607ebe7793a5f565009364259a306fecfb022f960b61a26682cd19c597c0
 	sha512sums = 6d646673f10d2e291d37bbfa53c0314f076922bf76ceadcecad8febb7ac377fedc1bbbc82d118e161ad662e1f363fb5ca0b3750a0601eedf56bdb9c5e084ede4
 
 pkgname = mattermost-push-proxy
