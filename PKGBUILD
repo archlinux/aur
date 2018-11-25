@@ -93,7 +93,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch')
-        
+
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-rt-bfq}
 
@@ -103,7 +103,7 @@ prepare() {
     ### Add rt patch
         msg2 "Add rt patch"
         patch -Np1 -i ../patch-${_pkgver}-${_rtpatchver}.patch
-    
+
     ### Setting version
         msg2 "Setting version..."
         scripts/setlocalversion --save-scmversion
@@ -128,7 +128,7 @@ prepare() {
     ### Prepared version
         make -s kernelrelease > ../version
         msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
-        
+
     ### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
 	if [ -n "$_use_current" ]; then
@@ -142,7 +142,7 @@ prepare() {
 			warning "Aborting!"
 			exit
 		fi
-	fi    
+	fi
 
 	
     ### Optionally set tickrate to 1000 
@@ -262,7 +262,7 @@ _package() {
   sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
     "$pkgdir/usr/share/libalpm/hooks/90-${pkgbase}.hook"
   sed "$subst" ../99-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/99-${pkgbase}.hook"  
+    "$pkgdir/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -345,7 +345,7 @@ _package-headers() {
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
-  
+
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
@@ -404,7 +404,7 @@ sha512sums=('46f77eb99faa596b673920d4c0fcba6490f03907c0114eb18751cc2011e0a775037
             '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '39c50e70d28ddaa2cca030f1050c3ead72d44d957a533d0d09a5a8b92d3743c5712fef1a60aacfcac8319346dd407247667e1c25a96cd2585e9d9b017ccd707c')
-            
+
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
