@@ -1,0 +1,23 @@
+post_install () {
+    openssl req -newkey rsa:4096 -nodes -keyout /opt/FiSSH/key.pem -x509 -days 36500 -out /opt/FiSSH/certificate.pem -subj "/CN=FiSSH"
+
+    groupadd fissh
+    useradd -M -r -g fissh -s /sbin/nologin fissh
+
+    chown fissh:fissh /opt/FiSSH/key.pem
+    chmod 640 /opt/FiSSH/key.pem
+
+    chown fissh:fissh /opt/FiSSH/certificate.pem
+    chmod 640 /opt/FiSSH/certificate.pem
+
+    echo "!!! DO NOT FORGET !!!"
+    echo
+    echo "TO BE ABLE TO USE FiSSH YOU NEED TO ADD YOUR USER TO THE fissh GROUP!"
+    echo
+}
+
+post_remove () {
+    rm -rf /opt/FiSSH
+    userdel fissh
+    groupdel fissh
+}
