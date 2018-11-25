@@ -26,6 +26,7 @@ sha512sums=('99ae7ab9aa77f6de0779c9179e16dbccd36362adc710cd5d7289c473b6aff62d39a
 prepare() {
     cd "$srcdir/raccoon4-$pkgver"
     patch build.gradle ../build-on-linux.patch
+    sed -i "s/targetCompatibility = 1.7//g" build.gradle
 }
 
 build() {
