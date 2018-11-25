@@ -2,7 +2,7 @@
 
 pkgname=fedora-firefox-wayland-bin
 pkgver=63.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Fedora's firefox build wtih wayland enabled by default"
 arch=(x86_64)
 license=(MPL GPL LGPL)
