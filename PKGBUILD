@@ -11,7 +11,7 @@ license=('MIT')
 
 makedepends=('git')
 
-source=('https://github.com/petrkutalek/png2pos.git')
+source=('git+https://github.com/petrkutalek/png2pos.git')
 sha256sums=('SKIP')
 
 pkgver () {
