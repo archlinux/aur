@@ -3,10 +3,47 @@
 # simona-scripts
 # Libertamente utilizzabile sotto GPL v3
 
-echo "simona-scripts - GPL v3 license"
-echo "image-mount"
-echo "image-umount"
-echo "pendrive-detect   - detect a pendrive"
-echo "ioscheduler-list"
-echo "boot-kernel-list"
+if [[ $1 == "-h" || $1 == "--help" || $1 == "list" || $1 == "" ]] ; then
+  cat << EOF
+simona-scripts - GPL v3 license
+image-mount       - image    - mount a big amount of image file (use -h for a full list)
+image-umount      - imageu   - related to image-mount. umount all what mounted
+pendrive-detect   - pendrive - detect a pendrive, size, full device
+ioscheduler-list  - iosched  - list scheduler for all block devices
+boot-kernel-list  - boot     - list kernels inside /boot, extract version (lile uname -r), say what is used in recent boot
+EOF
+  exit
+fi
+
+case $1 in
+image|imageu|pendrive|ioched|boot)
+  case $1 in
+    image)    launch="image-mount" ;;
+    imageu)   launch="image-umount" ;;
+    pendrive) launch="pendrive-detect" ;;
+    ioched)   launch="ioscheduler-list" ;;
+    boot)     launch="boot-kernel-list" ;;
+    *) ;;
+  esac
+  ;;
+image-mount|image-umount|pendrive-detect|ioscheduler-list|boot-kernel-list)
+  launch=$1
+  ;;
+*)
+  echo "Sorry, but this one is not a known simonascript bash script."
+  launch=""
+  ;;
+esac
+
+if [[ $launch != "" ]] ; then
+  if [[ -r /bin/$launch ]] ; then
+    echo "Launch '$launch'..."
+    shift
+    #. "$launch"
+    exec "$launch" "$@"
+  else
+    echo "Installed package 'simona-script' is damaged. Script is unavailable. Please reinstall."
+  fi
+fi
+
 
