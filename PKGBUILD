@@ -6,7 +6,7 @@
 
 pkgname=slic3r-git
 pkgver=a
-pkgrel=17
+pkgrel=18
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://slic3r.org/"
@@ -197,8 +197,11 @@ package () {
   install -m 0644 "$srcdir/$_gitname/utils/zsh/functions/_slic3r" "$pkgdir/usr/share/zsh/site-functions/_slic3r.zsh"
 
   # Icons " current Build.PL is not really geared for installation "
-  install -d $pkgdir/usr/bin/vendor_perl/var
-  install -m 644 $srcdir/$_gitname/var/*  $pkgdir/usr/bin/vendor_perl/var/
+  install -d $pkgdir/usr/bin/vendor_perl/var/solarized
+  install -m 644 $srcdir/$_gitname/var/*.*  $pkgdir/usr/bin/vendor_perl/var/
+  if [ -d $srcdir/$_gitname/var/solarized ]; then
+    install -m 644 $srcdir/$_gitname/var/solarized/*.*  $pkgdir/usr/bin/vendor_perl/var/solarized
+  fi
 
   # Desktop icon
   install -d $pkgdir/usr/share/applications
