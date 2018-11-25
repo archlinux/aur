@@ -1,7 +1,7 @@
 # Maintainer: lazant <a.l.i.c.e at outlook.com>
 pkgname=python-buildozer
 _pkgname=buildozer
-pkgver=0.35
+pkgver=0.36
 pkgrel=1
 pkgdesc="Generic Python packager for Android / iOS and Desktop"
 arch=('any')
@@ -12,8 +12,8 @@ url="https://github.com/kivy/buildozer"
 license=('MIT')
 options=(!emptydirs)
 source=(https://github.com/kivy/$_pkgname/archive/$pkgver.tar.gz)
-md5sums=('0e09716ba6ebaa28e08423c48e98923d')
-sha256sums=('af99d9fa4b065b2821b8c7dfb0c9b9aca00be28ddbbf9482fd0f48e6579d8fa1')
+md5sums=('2ceefb2dce7a1ed7ee36975d5e680ecb')
+sha256sums=('dbdae8c6752b18bee4af6afd12244901174a0bcef271f9c7881ac99a5103e54c')
 provides=('buildozer' 'python-buildozer')
 conflicts=('buildozer')
 
