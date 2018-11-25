@@ -10,7 +10,7 @@ yellow="${bold}$(tput setaf 3)"
 
 post_install() {
     note "You will need to create a config file to use nfancurve."
-    note "An example config can be found at /usr/share/doc/nfancurve/config.sh.example"
+    note "An example config can be found at /usr/share/doc/nfancurve/config.example"
 }
 
 post_upgrade() {
