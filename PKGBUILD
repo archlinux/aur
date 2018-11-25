@@ -10,8 +10,8 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/afterwriting/-/$pkgname-$pkgver.tgz"
         "LICENSE")
-md256sums=('5f4d4d20c5029591a06c5f4636b4c5eb165ca1a852b778596519d2a16d12d5e7'
-           'abb42abaef9d2198f1d38b5b40c3c8accec9a8e8bdea7b0994270d75a3beb931')
+sha256sums=("5f4d4d20c5029591a06c5f4636b4c5eb165ca1a852b778596519d2a16d12d5e7"
+           "abb42abaef9d2198f1d38b5b40c3c8accec9a8e8bdea7b0994270d75a3beb931")
 noextract=("$pkgname-$pkgver.tgz")
 
 package() {
