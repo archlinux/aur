@@ -3,10 +3,12 @@ pkgbase = png2pos
 	pkgver = 1.7.2
 	pkgrel = 0
 	url = https://github.com/petrkutalek/png2pos
+	arch = i686
 	arch = x86_64
+	arch = arm
 	license = MIT
 	makedepends = git
-	source = git+https://github.com/petrkutalek/png2pos.git
+	source = png2pos::git+https://github.com/petrkutalek/png2pos.git
 	sha256sums = SKIP
 
 pkgname = png2pos
