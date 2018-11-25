@@ -1,0 +1,14 @@
+pkgbase = payloadsallthethings
+	pkgdesc = A list of useful payloads and bypass for Web Application Security and Pentest/CTF.
+	pkgver = r283.8ef8694
+	pkgrel = 1
+	url = https://github.com/swisskyrepo/PayloadsAllTheThings/
+	arch = any
+	license = unknown
+	makedepends = git
+	provides = payloadsallthethings-git
+	source = payloadsallthethings-git::git+https://github.com/swisskyrepo/PayloadsAllTheThings.git
+	md5sums = SKIP
+
+pkgname = payloadsallthethings-git
+
