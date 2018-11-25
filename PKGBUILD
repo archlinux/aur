@@ -55,8 +55,9 @@ set -u
 # Earlier versions of Advantech TTY were called ICOM
 # http://advdownload.advantech.com/productfile/Downloadfile1/1-NZ17GY/ICOM_LINUX_PSEUDO_TTY_DRIVER_V1.4.1.ZIP
 pkgname='advantech-vcom'
-#pkgver='2.1.0'; _dl='1-15OSOW4'
-pkgver='2.2.0'; _dl='1-1LPJPGD'
+#pkgver='2.1.0'; _dl='4/1-15OSOW4'
+#pkgver='2.2.0'; _dl='4/1-1LPJPGD'
+pkgver='2.2.1'; _dl='5/1-1NOKMCV'
 pkgrel='1'
 pkgdesc='tty driver for Advantech Adam EKI serial console terminal servers'
 _pkgdescshort="Advantech ${pkgname} TTY driver"
@@ -68,12 +69,12 @@ backup=('etc/advttyd.conf')
 install="${pkgname}-install.sh"
 _srcdir="VCOM_LINUX_${pkgver}.TAR.BZ2"
 _srcdir="${_srcdir,,}"
-source=("http://advdownload.advantech.com/productfile/Downloadfile4/${_dl}/${_srcdir}")
+source=("http://advdownload.advantech.com/productfile/Downloadfile${_dl}/${_srcdir}")
 #source=("${_srcdir,,}::http://downloadt.advantech.com/download/downloadsr.aspx?File_Id=${_dl}") # redirect works sooner but can be changed arbitrairly
 _srcdir="${_srcdir%\.tar*}"
 #source=("http://advdownload.advantech.com/productfile/Downloadfile4/${_dl}/${_srcdir}.rar")
 source+=('0000-advman.systemd.patch')
-sha256sums=('e06520654165888f1ef1f9409074482830e839d7fd55c09aba6a9a8a9ea9a9c8'
+sha256sums=('e5e313a1542e227a654fd1a497f8846ccb90df5490a888929826cb82becb5b0f'
             '02f504a23fbef07f666aaa595faba0513d9ffec5e99ebca7b7fe2299a0179e32')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
