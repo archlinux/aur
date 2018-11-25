@@ -1,0 +1,157 @@
+--- alerts.go.orig	2018-11-12 04:12:41.000000000 +0000
++++ alerts.go	2018-11-25 13:27:58.023329243 +0000
+@@ -14,18 +14,23 @@
+ )
+ 
+ var commandAlerts = cli.Command{
+-	Name:  "alerts",
+-	Usage: "Retrieve/Close alerts",
++	Name:      "alerts",
++	Usage:     "Retrieve/Close alerts",
++	ArgsUsage: "[--with-closed | -w] [--limit | -l]",
+ 	Description: `
+     Retrieve/Close alerts. With no subcommand specified, this will show all alerts.
+     Requests APIs under "/api/v0/alerts". See https://mackerel.io/api-docs/entry/alerts .
+ `,
+ 	Action: doAlertsRetrieve,
++	Flags: []cli.Flag{
++		cli.BoolFlag{Name: "with-closed, w", Usage: "Display open alert including close alert. default: false"},
++		cli.IntFlag{Name: "limit, l", Value: 100, Usage: "Set the number of alerts to display at once when withClosed is active. default: 100"},
++	},
+ 	Subcommands: []cli.Command{
+ 		{
+ 			Name:      "list",
+ 			Usage:     "list alerts",
+-			ArgsUsage: "[--service | -s <service>] [--host-status | -S <file>] [--color | -c]",
++			ArgsUsage: "[--service | -s <service>] [--host-status | -S <file>] [--color | -c] [--with-closed | -w] [--limit | -l]",
+ 			Description: `
+     Shows alerts in human-readable format.
+ `,
+@@ -42,6 +47,8 @@
+ 					Usage: "Filters alerts by status of each host. Multiple choices are allowed.",
+ 				},
+ 				cli.BoolTFlag{Name: "color, c", Usage: "Colorize output. default: true"},
++				cli.BoolFlag{Name: "with-closed, w", Usage: "Display open alert including close alert. default: false"},
++				cli.IntFlag{Name: "limit, l", Value: 100, Usage: "Set the number of alerts to display at once when withClosed is active. default: 100"},
+ 			},
+ 		},
+ 		{
+@@ -196,9 +203,11 @@
+ 	if colorize {
+ 		switch alert.Status {
+ 		case "CRITICAL":
+-			statusMsg = color.RedString("CRITICAL")
++			statusMsg = color.RedString("CRITICAL ")
+ 		case "WARNING":
+ 			statusMsg = color.YellowString("WARNING ")
++		case "OK":
++			statusMsg = color.GreenString("OK ")
+ 		case "UNKNOWN":
+ 			statusMsg = "UNKNOWN "
+ 		}
+@@ -231,10 +240,48 @@
+ 
+ func doAlertsRetrieve(c *cli.Context) error {
+ 	client := newMackerelFromContext(c)
++	withClosed := c.Bool("with-closed")
++	limit := c.Int("limit")
+ 
+-	alerts, err := client.FindAlerts()
+-	logger.DieIf(err)
+-	PrettyPrintJSON(alerts)
++	if withClosed {
++		alerts, err := client.FindWithClosedAlerts()
++		logger.DieIf(err)
++		if alerts.NextID != "" {
++			for {
++				if limit > len(alerts.Alerts) {
++					nextAlerts, err := client.FindWithClosedAlertsByNextID(alerts.NextID)
++					logger.DieIf(err)
++					alerts.Alerts = append(alerts.Alerts, nextAlerts.Alerts...)
++					alerts.NextID = nextAlerts.NextID
++					if alerts.NextID == "" {
++						break
++					}
++					time.Sleep(1 * time.Second)
++				} else {
++					break
++				}
++			}
++		}
++
++		PrettyPrintJSON(alerts.Alerts[:limit])
++	} else {
++		alerts, err := client.FindAlerts()
++		logger.DieIf(err)
++		if alerts.NextID != "" {
++			for {
++				nextAlerts, err := client.FindAlertsByNextID(alerts.NextID)
++				logger.DieIf(err)
++				alerts.Alerts = append(alerts.Alerts, nextAlerts.Alerts...)
++				alerts.NextID = nextAlerts.NextID
++				if alerts.NextID == "" {
++					break
++				}
++				time.Sleep(1 * time.Second)
++			}
++		}
++
++		PrettyPrintJSON(alerts.Alerts[:limit])
++	}
+ 	return nil
+ }
+ 
+@@ -242,11 +289,48 @@
+ 	filterServices := c.StringSlice("service")
+ 	filterStatuses := c.StringSlice("host-status")
+ 	client := newMackerelFromContext(c)
+-
+-	alerts, err := client.FindAlerts()
+-	logger.DieIf(err)
+-	joinedAlerts := joinMonitorsAndHosts(client, alerts)
+-
++	withClosed := c.Bool("with-closed")
++	limit := c.Int("limit")
++	var alert []*mkr.Alert
++
++	if withClosed {
++		alerts, err := client.FindWithClosedAlerts()
++		logger.DieIf(err)
++		if alerts.NextID != "" {
++			for {
++				if limit > len(alerts.Alerts) {
++					nextAlerts, err := client.FindWithClosedAlertsByNextID(alerts.NextID)
++					logger.DieIf(err)
++					alerts.Alerts = append(alerts.Alerts, nextAlerts.Alerts...)
++					alerts.NextID = nextAlerts.NextID
++					if alerts.NextID == "" {
++						break
++					}
++					time.Sleep(1 * time.Second)
++				} else {
++					break
++				}
++			}
++		}
++		alert = alerts.Alerts[:limit]
++	} else {
++		alerts, err := client.FindAlerts()
++		logger.DieIf(err)
++		if alerts.NextID != "" {
++			for {
++				nextAlerts, err := client.FindAlertsByNextID(alerts.NextID)
++				logger.DieIf(err)
++				alerts.Alerts = append(alerts.Alerts, nextAlerts.Alerts...)
++				alerts.NextID = nextAlerts.NextID
++				if alerts.NextID == "" {
++					break
++				}
++				time.Sleep(1 * time.Second)
++			}
++		}
++		alert = alerts.Alerts[:limit]
++	}
++	joinedAlerts := joinMonitorsAndHosts(client, alert)
+ 	for _, joinAlert := range joinedAlerts {
+ 		if len(filterServices) > 0 {
+ 			found := false
