@@ -353,7 +353,7 @@ _package-headers() {
 _package-docs() {
     pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
     depends=('linux-rt-bfq')
-  
+
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   cd $_srcname
