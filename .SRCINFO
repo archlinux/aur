@@ -1,0 +1,26 @@
+pkgbase = quassel-core-lighter-git
+	pkgdesc = Qt-based distributed IRC client (core only) - minimal dependencies
+	pkgver = 0.14.pre.r110.g7c0eb011
+	pkgrel = 1
+	url = https://quassel-irc.org
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-script
+	makedepends = boost
+	depends = qt5-script
+	optdepends = qca: encryption support
+	optdepends = libldap: LDAP support
+	optdepends = qt5-tools: translations support
+	provides = quassel-core
+	conflicts = quassel-core
+	source = quassel-core-lighter-git::git+https://github.com/quassel/quassel
+	md5sums = SKIP
+
+pkgname = quassel-core-lighter-git
+
