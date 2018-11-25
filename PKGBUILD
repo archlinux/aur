@@ -1,7 +1,7 @@
 # Maintainer: Petr Kutálek <petr@kutalek.cz>
 
 pkgname=png2pos
-pkgver=v1.7.2
+pkgver=1.7.2
 pkgrel=1
 
 pkgdesc='A utility to converter PNG images to ESC/POS'
@@ -11,12 +11,12 @@ license=('MIT')
 
 makedepends=('git')
 
-source=('git+https://github.com/petrkutalek/png2pos.git')
+source=('https://github.com/petrkutalek/png2pos.git')
 sha256sums=('SKIP')
 
 pkgver () {
     cd png2pos
-    printf '%s' "$(git tag -l -n1 | cut -f1 -d' ')"
+    printf '%s' "$(git tag -l -n1 | cut -f1 -d' ' | cut -c 2-)"
 }
 
 prepare () {
