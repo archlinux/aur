@@ -3,7 +3,7 @@
 pkgname=julia-json
 _pkgname=JSON
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='JSON parsing and printing for Julia'
 arch=(any)
 url=https://github.com/JuliaIO/JSON.jl
@@ -13,6 +13,7 @@ depends=(julia
   julia-datastructures
   julia-fixedpointnumbers
   julia-offsetarrays
+  julia-orderedcollections
 )
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaIO/$_pkgname.jl/archive/v$pkgver.tar.gz)
