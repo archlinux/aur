@@ -3,11 +3,11 @@
 
 pkgname=wl-clipboard
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line copy/paste utilities for Wayland"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/bugaevc/wl-clipboard"
-license=('GPL')
+license=('GPL3')
 depends=('wayland')
 optdepends=(
     'xdg-utils: for content type inference in wl-copy'
