@@ -4,12 +4,11 @@ pkgver=1.2
 pkgrel=1
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
-makedepends=("meson" "scdoc")
+makedepends=("meson" "scdoc" "wayland-protocols")
 depends=(
 	"pango"
 	"cairo"
 	"wayland"
-	"wayland-protocols"
 )
 arch=("i686" "x86_64")
 url='http://mako-project.org'

@@ -8,10 +8,10 @@ pkgbase = mako
 	license = MIT
 	makedepends = meson
 	makedepends = scdoc
+	makedepends = wayland-protocols
 	depends = pango
 	depends = cairo
 	depends = wayland
-	depends = wayland-protocols
 	source = mako-1.2.tar.gz::https://github.com/emersion/mako/archive/v1.2.tar.gz
 	md5sums = c4d0b66f92a28368a43d31b684acc6f9
 
