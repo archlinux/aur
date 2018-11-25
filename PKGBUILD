@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-hud
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Unity like HUD menu for the GNOME Desktop Environment"
 arch=("any")
@@ -19,7 +19,7 @@ optdepends=(
 makedepends=("python-setuptools")
 conflicts=("${pkgname}" "${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=("90282c7e28be7b360b21fc5a7a66f995")
+md5sums=("41e043fe29408d269a52e5d8a19da8b3")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
