@@ -121,7 +121,7 @@ _kernelname=${pkgbase#linux}
 
 prepare() {
   cd ${_srcname}
-  
+
   ### Setting version
         msg2 "Setting version..."
         sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
@@ -155,7 +155,7 @@ prepare() {
             -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
             -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' ./.config
         fi
-  
+
     ### Enable fancontrol
         if [ -n "$_dell_fancontrol" ]; then
         msg "Enabling I8K for Dell..."
@@ -225,7 +225,7 @@ prepare() {
         msg "Disabling Kyber I/O scheduler..."
         sed -i -e s'/CONFIG_MQ_IOSCHED_KYBER=y/# CONFIG_MQ_IOSCHED_KYBER is not set/' ./.config
         fi
-  
+
     ### Disable MQ scheduling
 	if [ -n "$_mq_disable" ]; then
 		msg2 "Disabling MQ scheduling..."
