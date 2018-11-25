@@ -3,7 +3,7 @@
 pkgname=simple-panorama-viewer
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Simple zeb based panorama viewer"
+pkgdesc="Simple web based panorama viewer"
 arch=(any)
 url="https://www.dalan.fr"
 license=('GPL')
