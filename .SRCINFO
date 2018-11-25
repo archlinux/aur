@@ -1,6 +1,6 @@
 pkgbase = veloren-git
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
-	pkgver = 0.1.0.r259.37af884
+	pkgver = 0.1.0.r375.e777671
 	pkgrel = 1
 	url = https://veloren.net/
 	arch = x86_64
@@ -11,13 +11,21 @@ pkgbase = veloren-git
 	depends = bash
 	provides = veloren-git
 	conflicts = veloren-git
-	noextract = veloren-voxygen
+	noextract = voxygen.desktop
+	noextract = voxygen.png
+	options = !strip
 	source = veloren-git::git+https://gitlab.com/veloren/game.git
-	source = assets::git+https://gitlab.com/veloren/assets/voxygen.git
+	source = assets_voxygen::git+https://gitlab.com/veloren/assets/voxygen.git
+	source = assets_world::git+https://gitlab.com/veloren/assets/world.git
+	source = voxygen.desktop
+	source = voxygen.png
 	source = veloren-voxygen
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 79950e7d39b1a14a7b218b0da9abe723dffc7a37421fb76e86446e1993e09bf037559803b4825a8c083d2fdb7a85c96c971f5e6eacf690fffec462673a6b24e7
+	sha512sums = b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94
+	sha512sums = 1387388591034f5084ddd495721dae9dde7cf480212fe805e0edceeb0a5f8ef0c394728f71b190f837a1cb3d27b3296f744b4bbc4aab3290bf70769e7ca1cb88
 
 pkgname = veloren-git
 
