@@ -74,7 +74,7 @@ pkgname=('linux-pf')
 pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=('GPL2')
@@ -315,7 +315,7 @@ _package() {
   _pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
   pkgdesc=${_pkgdesc}
   groups=('base')
-  depends=('coreutils' 'linux-firmware' 'kmod>=9-2' 'mkinitcpio>=0.7')
+  depends=('coreutils' 'linux-firmware' 'kmod>=9-2' 'mkinitcpio>=0.7' 'linux-pf-preset')
   optdepends=('linux-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.'
 	            'crda: to set the correct wireless channels of your country'
 	            'pm-utils: utilities and scripts for suspend and hibernate power management'
@@ -432,6 +432,8 @@ _package() {
 
   ### package_linux-pf
 
+  ### c/p from linux-ARCH
+
   cd "${srcdir}/linux-${_basekernel}"
 
   KARCH=x86
@@ -442,10 +444,15 @@ _package() {
   mkdir -p "${pkgdir}"/usr/lib/modules
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
 
-  msg2 "Installing boot image..."
-  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-${pkgbase}"
 
-  ### c/p from linux-ARCH
+  msg2 "Installing boot image..."
+  local image="$pkgdir/boot/vmlinuz-$pkgbase"
+  install -Dm644 "$(make -s image_name)" "$image"
+
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  ln -sr "$image" "${pkgdir}/usr/lib/modules/vmlinuz"
+
   
   # make room for external modules
   local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
