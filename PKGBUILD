@@ -145,7 +145,7 @@ prepare() {
 	fi
 
 	
-    ### Optionally set tickrate to 1000 
+    ### Optionally set tickrate to 1000
 	if [ -n "$_1k_HZ_ticks" ]; then
 		msg2 "Setting tick rate to 1k..."
 		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
