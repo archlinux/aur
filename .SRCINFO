@@ -1,7 +1,7 @@
 pkgbase = gnome-calendar-no-evolution
-	pkgdesc = Simple and beautiful calendar application designed to perfectly fit the GNOME desktop
+	pkgdesc = Gnome's calender application, now featuring nearly 100% less unnecessary gnome evolution
 	pkgver = 3.30.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Calendar
 	arch = x86_64
 	license = GPL
@@ -14,6 +14,8 @@ pkgbase = gnome-calendar-no-evolution
 	depends = gsettings-desktop-schemas
 	depends = gnome-control-center
 	depends = libdazzle
+	optdepends = evolution: to allow importing .ics files
+	conflicts = gnome-calendar
 	source = git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=262dd7e3b03b3eacf3b62c616005119b64e0d35e
 	source = null-icaltime.diff
 	sha256sums = SKIP
