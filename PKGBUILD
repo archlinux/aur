@@ -2,7 +2,7 @@
 # Contributor: Wyatt J. Brown <sushidudeteam@gmail.com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20181009
+pkgver=20181124
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -70,6 +70,7 @@ depends=('adobe-source-code-pro-fonts'
          'ttf-hack'
          'ttf-hanazono'
          'ttf-hannom'
+         'ttf-ibm-plex'
          'ttf-inconsolata'
          'ttf-indic-otf'
          'ttf-ionicons'
