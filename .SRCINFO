@@ -1,11 +1,12 @@
 pkgbase = monero-bin
 	pkgdesc = Monero: the secure, private, untraceable currency - CLI release version (includes daemon, wallet and miner)
 	pkgver = 0.13.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getmonero.org/
 	arch = x86_64
 	arch = i686
 	arch = armv7h
+	arch = aarch64
 	license = custom:Cryptonote
 	provides = monerod=0.13.0.4
 	provides = monero-blockchain-export=0.13.0.4
@@ -27,6 +28,8 @@ pkgbase = monero-bin
 	sha256sums_i686 = 3f02b0de407f944e524afc9d53d7e9ce92bf17ac6e6ef92cd3c22346afc2cb6c
 	source_armv7h = https://downloads.getmonero.org/cli/monero-linux-armv7-v0.13.0.4.tar.bz2
 	sha256sums_armv7h = 65e2ce5d0abf80ed3b4ecef5babc37445dc4f032457811aafa8a221af78f554a
+	source_aarch64 = https://downloads.getmonero.org/cli/monero-linux-armv8-v0.13.0.4.tar.bz2
+	sha256sums_aarch64 = 7158380839f41ef7b25f303d5c01cab0deeec96c26fde5bf4aaac6798d114bb9
 
 pkgname = monero-bin
 
