@@ -34,7 +34,6 @@ package() {
   install -Dm644 systemd/99-optimus-manager.conf "$pkgdir/usr/lib/systemd/system/display-manager.service.d/99-optimus-manager.conf"
   install -Dm644 optimus-manager.conf "$pkgdir/usr/share/optimus-manager.conf"
   
-  install -Dm644 config/optimus-manager.conf "$pkgdir/etc/optimus-manager/optimus-manager.conf"
   install -Dm644 config/xorg-intel.conf "$pkgdir/etc/optimus-manager/xorg-intel.conf"
   install -Dm644 config/xorg-nvidia.conf "$pkgdir/etc/optimus-manager/xorg-nvidia.conf"
   
