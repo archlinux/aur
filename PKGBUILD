@@ -16,6 +16,11 @@ sha256sums=(
     'SKIP'
     )
 
+pkgver () {
+    cd "$pkgname"
+    printf '%s' "$(git tag -l -n1 | cut -f1 -d' ' | cut -c 2-)"
+}
+
 prepare () {
     cd "$pkgname"
     git submodule init
