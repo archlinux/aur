@@ -3,7 +3,7 @@
 _distname='Unicode-EastAsianWidth'
 
 pkgname=perl-unicode-eastasianwidth
-pkgver=1.33
+pkgver=1.40
 pkgrel=1
 pkgdesc="Perl/CPAN Module ${_distname//-/::}"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://metacpan.org/release/${_distname}"
 depends=('perl')
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/${_distname}-${pkgver}.tar.gz")
-sha512sums=('c21e988f460534b370954d0448daec5bfb0a34ec816459f8422943ebe44ff17b5acb8a423d69daba81599111d7fa4aa33a3598e0ea4614eed25a587c1f5690eb')
+sha512sums=('a8eb27605020ef78e8ab281922501a06ba94e275ca705c098810468a737796e73932cb9ae43cf46abd45c1847d33622cbcfa0ff3d86bc5213c14d0b151cf6dc3')
 
 build() {
   cd "${srcdir}/${_distname}-${pkgver}"
