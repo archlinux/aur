@@ -1,0 +1,203 @@
+#!/bin/bash
+# Simona Pisano - 2018-11-18
+# simona-scripts
+# Libertamente utilizzabile sotto GPL v3
+#srun-umount-img() {
+
+EchoReset="\e[0m"
+echo -e -n "$EchoReset"
+OK="\E[32;40m[OK]${EchoReset}"
+WARN="\E[33;40m[OK]${EchoReset}"
+ERR="\E[31;40m[OK]${EchoReset}"
+#echo -e "$OK $WARN $ERR"
+
+[[ $1 == "" ]] && exit 0
+
+if [[ $1 == "-h" || $1 == "--help" ]] ; then
+  echo "Sintax 1: image-umount [--help|-h]"
+  echo "Sintax 2: image-umount reset [path] (try)"
+  echo "Sintax 3: image-umount image.ext [format] [mount-path] [--force-iso-stdmount]"
+  echo "        --force-iso-stdmount   -> force in iso mount 'mount -o loop' instead 'fuseiso'"
+  echo "Warning: format must be explicily specified if file extension do not say itself the correct format."
+  echo "Warning: all parameters are case sensitive."
+  echo "Default: image-umount image.raw raw 0 \$HOME/mount/image"
+  echo "Minimal: image-umount file.ext"
+  echo "Typical: image-umount file.ext 2"
+  echo "Allowed formats: $allow_formats $allow_formats_iso $allow_formats_crypto squashfs"
+  exit 0
+fi
+
+# ------------------------------------------------------------------------------------------------------------------------
+# RESET ------------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------------------------
+
+if [[ $1 == "reset" ]] ; then
+  mount_where="$HOME/mount/image" #default
+  [[ $2 != "" ]] && mount_where=$2
+  cd "$mount_where"
+  [[ $? -ne 0 ]] && echo -e "$WARN Fail 'cd \"$mount_where\"' cmd! Reset so don't Exit."
+  if [[ -r /bin/qemu-nbd ]] ; then
+    sudo qemu-nbd -d /dev/nbd0 >/dev/null
+    [[ $? -ne 0 ]] && echo -e "$WARN Fail undo 'qemu-nbd -d /dev/nbd0' cmd!" || echo -e "$OK qemu nbd stopped... success."
+  fi
+  if [[ -r /bin/fuseiso ]] ; then
+    for dir in "$mount_where" ; do
+      fusermount -u "$dir"
+      [[ $? -ne 0 ]] && echo -e "$WARN Fail undo 'fusemount -u \"$dir\"' cmd!" || echo -e "$OK fusemount success."
+    done
+  fi
+  if [[ -r /bin/cryptsetup ]] ; then
+    sudo cryptsetup close crypt-disk
+    [[ $? -ne 0 ]] && echo -e "$WARN Fail 'cryptsetup close crypt-disk' cmd!" || echo -e "$OK 'cryptsetup close crypt-disk' success."
+  fi
+  #if [[ -r /bin/mksquash ]] ; then
+    #TO-DO
+  #fi
+
+  for dir in "$mount_where" ; do
+    sudo umount "$dir"
+    [[ $? -ne 0 ]] && echo -e "$WARN Fail umount \"$dir\" !" || echo -e "$OK umount ok"
+  done
+  sudo umount "$mount_where"
+  [[ $? -ne 0 ]] && echo -e "$WARN Fail umount \"$mount_where\"' ! Reset so don't Exit." || echo -e "$OK umount success."
+  exit 0
+  echo "All done."
+fi
+
+# ------------------------------------------------------------------------------------------------------------------------
+# INPUT PARAMETER --------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------------------------
+
+allow_formats="raw qcow2 vdi blkdebug blklogwrites blkreplay blkverify bochs cloop copy-on-read dmg file ftp ftps gluster host_cdrom host_device http https iscsi iser luks nbd nfs null-aio null-co nvme parallels qcow qed quorum rbd replication sheepdog ssh throttle vhdx vmdk vpc vvfat"
+allow_formats_iso="iso nrg bin img mdf"
+allow_formats_crypto="tcrypt plain luks luks1 luks2 loopaes"
+
+#þarameter $1
+full_path_image="image.raw" #default
+par=$1
+if [[ $1 != "" && ${par:0:1} != "-" ]] ; then
+  full_path_image=$1
+else
+  echo "Default: 'image.raw' image file"
+fi
+image="${full_path_image##*/}" # estract substring: take only final string after last /
+ext="${image##*.}" #estract sbustring: take only final string aster last .
+
+#þarameter $2
+format="" #no default
+par=$2
+if [[ $2 != "" && ${par:0:1} != "-" ]] ; then
+  format=$2
+else
+  [[ $ext != "" ]] && format=$ext
+fi
+
+[[ $format == "" ]] && { echo "Parameter missing. Please insert format as second command parameter."; exit 1; }
+
+#þarameter $3
+mount_where="$HOME/mount/image" #default
+[[ $3 != "" ]] && mount_where=$3
+
+[[ ! -d "$mount_where/$image" ]] && { echo -e "$ERR Directory $mount_where/$image do not exist!! Exit."; exit 1; }
+
+forceIsoStdMount=false #default par
+while [ $# -ne 0 ] ; do
+  arg="$1"
+  case "$arg" in
+    --force-iso-stdmount) forceIsoStdMount=true ;;
+    *) ;;
+  esac
+  shift
+done
+
+# ------------------------------------------------------------------------------------------------------------------------
+# WORK -------------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------------------------
+
+#before exit for mounted directory if inside
+if [[ $PWD == "$mount_where/$image" ]] ; then
+  cd "$mount_where"
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail 'cd \"$mount_where\"' cmd! Exit."; exit 1; }
+fi
+
+# vm images -----------------------------------------------------------------------------------------------------------
+if [[ $allow_formats =~ $format ]] ; then
+
+  [[ ! -r /bin/qemu-nbd ]] && { echo -e "$ERR Missing qemu-nbd cmd (qemu pkg?)! Exit"; exit 1; }
+
+  sudo umount "$mount_where/$image"
+  [[ ! -d "$mount_where/$image" ]] && echo -e "$OK umount $mount_where/$image done." || echo -e "$WARN Fail umount $mount_where/$image!!"
+
+  sudo qemu-nbd -d /dev/nbd0 >/dev/null
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail 'qemu-nbd -d /dev/nbd0' cmd! Exit."; exit 1; } || echo -e "$OK qemu nbd stopped... success."
+
+# iso images ----------------------------------------------------------------------------------------------------------
+elif [[ $allow_formats_iso =~ $format ]] ; then
+
+  if [[ -r /bin/fuseiso && "$forceIsoStdMount" != true ]] ; then
+
+    fusermount -u "$mount_where/$image"
+    [[ $? -ne 0 ]] && { echo -e "$ERR Fail 'fusemount -u \"$mount_where/$image\"' cmd! Exit."; exit 1; }
+    echo-e "$OK umount (fusermount -u) $mount_where/$image success."
+  else
+
+    sudo umount "$mount_where/$image"
+    [[ $? -ne 0 ]] && { echo -e "$ERR Fail 'umount \"$mount_where/$image\"' cmd! Exit."; exit 1; }
+    echo -e "$OK umount (sudo umount loop) $mount_where/$image success."
+
+  fi
+
+# crypto images -------------------------------------------------------------------------------------------------------
+elif [[ $allow_formats_crypto =~ $format ]] ; then
+
+  [[ ! -r /bin/cryptsetup ]] && { echo -e "$ERR Missing cryptsetup cmd (cryptsetup pkg?)! Exit."; exit 1; }
+
+  sudo umount "$mount_where/$image"
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail 'umount \"$mount_where/$image\"' cmd! Exit."; exit 1; }
+
+  sudo cryptsetup close crypt-disk
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail 'cryptsetup close crypt-disk' cmd! Exit."; exit 1; }
+  echo -e "$OK Umount \"$mount_where/$image\"..."
+
+# sqhash images -------------------------------------------------------------------------------------------------------
+elif [[ "squashfs" =~ $format ]] ; then
+  [[ ! -r /bin/mksquash ]] && { echo -e "$ERR Missing mksquash cmd (squash-tool pkg?)! Exit"; exit 1; }
+
+  cd "$mount_where/$image"
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail 'cd $mount_where/$image' cmd!! Exit."; exit 1; }
+
+  sudo mksquash * $image
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail 'mksquash * $image' cmd!! Exit."; exit 1; } || echo -e "$OK mksquash success."
+
+  cp "$mount_where/$image/$image" "$full_path_image"
+  if [[ $? -ne 0 ]] ; then
+    echo -e "$WARN Fail copy update squashfs over original image! Check file '$mount_where/$image/$image' and remember to do 'rm -r $mount_where/$image'."
+    exit 1
+  else
+    echo -e "$OK Created new updated squash image file sucessfully."
+  fi
+
+  rm "$mount_where/$image/$image" #erase copy of sqhash filesystem image file
+  [ $? -ne 0 ] && echo -e "$WARN Fail removing image file dupe '$mount_where/$image/$image'!"
+
+else
+  [[ $format == "" ]] && detail="absent" || detail="unknown"
+  echo -e "$ERR Supplied format $format ${detail}. Exit."
+  exit 1
+fi
+
+for dir in $mount_where/$image/[0-9] ; do [[ -d "$dir" ]] && rmdir "$dir"; done
+rmdir "$mount_where/$image"
+if [[ $? -ne 0 ]] ; then
+  echo -e "$ERR Fail 'rmdir $mount_where/$image' cmd! Exit."
+  sudo rm -r "$mount_where/$image"
+  [[ $? -ne 0 ]] && echo -e "$WARN sudo rm -r $mount_where/$image fail!" || echo -e "$OK Sudo removed dir '$mount_where/$image' success."
+  exit 1
+else
+  echo -e "$OK Removed dir '$mount_where/$image' success."
+fi
+
+echo "All done."
+exit 0
+
+

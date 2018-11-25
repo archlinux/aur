@@ -1,7 +1,7 @@
 pkgbase = simonascripts
 	pkgdesc = Bash unique command for mount image files (iso, vms, crypto, squashfs), detect pendrive device name, list all kernels, list all i/o schedulers.
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL3
 	depends = bash
@@ -9,8 +9,18 @@ pkgbase = simonascripts
 	optdepends = fuseiso: another way to mount iso image files
 	optdepends = cryptsetup: for mount crypto image files
 	optdepends = squashfs-tools: for squashfs image files
-	source = simonascripts-0.0.4.tar.gz
-	md5sums = 23906d3498e65f43db0588fad50d880f
+	source = boot-kernel-list
+	source = image-mount
+	source = image-umount
+	source = ioscheduler-list
+	source = pendrive-detect
+	source = simona-scripts
+	md5sums = 3f5599c3588f01b625aa9feb0a0e8b99
+	md5sums = b36b71c82c7a8baf4eff72af67ed50be
+	md5sums = a874f35365c7c302c3db3cb8ba436a5b
+	md5sums = c58f5737bb41c8af2bff7dd24a3d2723
+	md5sums = 6379f2d72a7f197961f7d10bf428d667
+	md5sums = ef7511e134eb386162c3c0646d6c590a
 
 pkgname = simonascripts
 

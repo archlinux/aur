@@ -1,0 +1,12 @@
+#!/bin/bash
+# Simona Pisano - 2018-11-18 -
+# simona-scripts
+# Libertamente utilizzabile sotto GPL v3
+
+echo "simona-scripts - GPL v3 license"
+echo "image-mount"
+echo "image-umount"
+echo "pendrive-detect   - detect a pendrive"
+echo "ioscheduler-list"
+echo "boot-kernel-list"
+

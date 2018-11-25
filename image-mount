@@ -1,0 +1,279 @@
+#!/bin/bash
+# Simona Pisano - 2018-11-18 -
+# simona-scripts
+# Libertamente utilizzabile sotto GPL v3
+
+  #srun-mount-img() {
+
+  #to-do add sqash images
+  #to-do add input parameters
+  #echo -n "Continue? (Y/N): "; read confirm; [[ ! $confirm == [Yy]* ]] && echo "no" #exit 1
+  #echo -n "Continue? (Y/N): "; read ok; [[ ! $ok =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && echo "no" #exit 1
+
+#color	Foreground	Background
+#black	30	40
+#red	31	41
+#green	32	42
+#yellow	33	43
+#blue	34	44
+#magenta	35	45
+#cyan	36	46
+#white	37	47
+#
+#black='\E[30;47m'
+#red='\E[31;47m'
+#green='\E[32;47m'
+#yellow='\E[33;47m'
+#blue='\E[34;47m'
+#magenta='\E[35;47m'
+#cyan='\E[36;47m'
+#white='\E[37;47m'
+#"\e[1;39;41m" "\e[0m "
+#echo -e
+
+[[ $1 == "" ]] && exit 0
+
+EchoReset="\e[0m"
+echo -e -n "$EchoReset"
+OK="\E[32;40m[OK]${EchoReset}"
+WARN="\E[33;40m[OK]${EchoReset}"
+ERR="\E[31;40m[OK]${EchoReset}"
+#echo -e "$OK $WARN $ERR"
+
+# ------------------------------------------------------------------------------------------------------------------------
+# INPUT PARAMETER --------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------------------------
+
+allow_formats="raw qcow2 vdi blkdebug blklogwrites blkreplay blkverify bochs cloop copy-on-read dmg file ftp ftps gluster host_cdrom host_device http https iscsi iser luks nbd nfs null-aio null-co nvme parallels qcow qed quorum rbd replication sheepdog ssh throttle vhdx vmdk vpc vvfat"
+allow_formats_iso="iso nrg bin img mdf"
+allow_formats_crypto="tcrypt plain luks luks1 luks2 loopaes"
+
+if [[ $1 == "-h" || $1 == "--help" ]] ; then
+  echo "Sintax 1: image-mount [--help|-h]"
+  echo "Sintax 2: image-mount [path/]file-name.ext] [format | part#] [mount-path | part#] [--force-iso-stdmount]"
+  echo "           --force-iso-stdmount   -> forse in iso sudo mount 'mount -o loop' instead 'fuseiso'"
+  echo "Warning 1: part# in in format 0-9 with one integer value"
+  echo "Warning 2: format must be explicily specified if file extension do not say itself the correct format."
+  echo "Warning 3: all parameters are case sensitive."
+  echo "Default: image-mount image.raw raw 0 \${HOME}/mount/image"
+  echo "Minimal: image-mount file.ext"
+  echo "Typical: image-mount file.ext 2"
+  echo "Allowed formats: ${allow_formats} ${allow_formats_iso} ${allow_formats_crypto} sqhashfs"
+  exit 0
+fi
+
+# DEFAULTS -------------------------------------------------------------------------------------------------------------
+full_path_image="image.raw"
+n_part=0
+#n_part=2
+mount_where="$HOME/mount/image"
+format="" #something required (no default allowed)
+
+# PARS -----------------------------------------------------------------------------------------------------------------
+#parameter $1: name file used as image
+par=$1; [[ $1 != "" && ${par:0:1} != "-" ]] && full_path_image=$1
+image="${full_path_image##*/}" # estract substring: take only final part after last '/' char
+[[ ! -f "$full_path_image" ]] && { echo -e "$ERR File image '$full_path_image' not found!! Exit."; exit 1; }
+
+ext="${image##*.}" # extract substring: take only final part after last '.' char
+[[ $ext != "" ]] && format=$ext
+
+#parameter $2: format or partition number
+case $2 in
+  [0-9]* ) n_part=$2 ;;
+  [a-z]* ) format=$2 ;;
+esac
+
+#parameter $3: mount path or partition number
+case $3 in
+  [0-9]* ) n_part=$3 ;;
+  * ) par=$3; [[ $3 != "" && ${par:0:1} != "-" ]] && format=$3 ;;
+esac
+
+[[ $format == "" ]] && { echo "Parameter missing. Please insert format as second command parameter."; exit 1; }
+if [[ ! $allow_formats =~ $format &&
+      ! $allow_formats_iso =~ $format &&
+      ! $allow_formats_crypto =~ $format &&
+      ! "squashfs" =~ $format ]] ; then
+  echo -e "$ERR Format $format unknown or not supported. Sorry. Exit."
+  exit 1
+fi
+
+#parameter 4: mount path
+par=$4; [[ $4 != "" && ${par:0:1} != "-" ]] && mount_where=$4
+
+[[ ! -d $mount_where ]] && { echo "[TO-DO] Please create $mount_where with 'mkdir -p $mount_where'. Exit."; exit 1; }
+
+#display default
+#[[ $full_path_image == "image.raw" ]] && echo "Default: 'image.raw' image file"
+[[ $allow_formats =~ $format && $n_part == 0 ]] && echo "Default: partition number 0"
+[[ $mount_where == "$HOME/mount/image" ]] && echo "Default: '$HOME/mount/image' dir where mount image"
+
+[[ -d "$mount_where/$image" ]] && { echo -e "$ERR $image found. umount/rm -r \"$mount_where/$image\". Exit."; exit 1; }
+
+forceIsoStdMount=false #default par
+while [ $# -ne 0 ] ; do
+  arg="$1"
+  case "$arg" in
+    --force-iso-stdmount) forceIsoStdMount=true ;;
+    *) ;;
+  esac
+  shift
+done
+
+# ------------------------------------------------------------------------------------------------------------------------
+# WORK -------------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------------------------
+
+mkdir -p "$mount_where/$image"
+[[ $? -ne 0 ]] && { echo -e "$ERR Fail creation dir $mount_where/$image! Exit."; exit 1; }
+
+cd "$mount_where/$image"
+if [[ $? -ne 0 ]] ; then
+  echo -e "$ERR Fail 'cd \"$mount_where/$image\"' cmd! Exit."
+  rmdir "$mount_where/$image" #undo
+  [ $? -ne 0 ] && echo -e "$WARN Fail undo removing dir 'rmdir $mount_where/$image' cmd!"
+  exit 1
+fi
+echo "[OK] prepare success."
+
+# vm images -----------------------------------------------------------------------------------------------------------
+if [[ $allow_formats =~ $format ]] ; then
+
+  [[ ! -r /bin/qemu-nbd ]] && { echo -e "$ERR Missing qemu-nbd cmd (qemu pkg?)! Exit"; exit 1; }
+
+  sudo modprobe nbd max_part=63
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail 'modprobe nbd max_part=63' cmd! Exit."; exit 1; }
+  echo "[OK] nbd module prepared... success."
+
+  sudo qemu-nbd -c /dev/nbd0 --format=$format "$full_path_image"
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail 'qemu-nbd -c /dev/nbd0 --format=$format \"$full_path_image\"' cmd! Exit."; exit 1; }
+  echo -e "$OK qemu nbd started... success."
+
+  if [[ n_part -eq 0 ]] ; then
+    #ls /dev/nbd0p?
+    #echo -n "* "; for dev_part in /dev/nbd0p* ; do echo $dev_part; done
+    #echo -n "? "; for dev_part in /dev/nbd0p? ; do echo $dev_part; done
+    #echo -n "[0-9] "; for dev_part in /dev/nbd0p[0-9] ; do echo $dev_part; done
+    for dev_part in /dev/nbd0p[0-9] ; do
+      part=${dev_part:10:1} # estrae substring: dopo n-esimo carattere (0 based) per N caratteri
+      mkdir -p "$mount_where/$image/$part"
+      if [ $? -ne 0 ]; then
+        echo -e "$WARN Fail creation dir $mount_where/$image/$part and mount part $part..."
+      els
+        sudo mount $dev_part "$mount_where/$image/$part"
+        if [ $? -ne 0 ]; then
+          sudo qemu-nbd -d /dev/nbd0 >/dev/null #undo
+          [[ $? -ne 0 ]] && echo -e "$WARN Fail undo 'qemu-nbd -d /dev/nbd0' cmd!" || echo -e "$OK qemu nbd stopped... success."
+          #rmdir -r "$mount_where/$image" #undo
+          #[ $? -ne 0 ] && echo "Can't execute command 'rmdir $mount_where/$image'!"
+          echo -e "$ERR Fail'mount $dev_part $mount_where/\"$image/$part\"' cmd! Exit."
+          exit 1
+        fi
+      fi
+      echo -e "$OK Mount $dev_part ... [part# $part] on $mount_where/$image/$part success."
+    done
+  else
+    sudo mount /dev/nbd0p$n_part "$mount_where/$image"
+    if [ $? -ne 0 ]; then
+      sudo qemu-nbd -d /dev/nbd0 >/dev/null #undo
+      [[ $? -ne 0 ]] && echo -e "$WARN Fail undo 'qemu-nbd -d /dev/nbd0' cmd!" || echo -e "$OK qemu nbd stopped... success."
+      rmdir "$mount_where/$image" #undo
+      [ $? -ne 0 ] && echo -e "$WARN Fail undo removing dir 'rmdir $mount_where/$image' cmd!"
+      echo -e "$ERR Part num $n_part really exist? Fail mount /dev/nbd0p$n_part on $mount_where/\"$image\"'! Exit."
+      exit 1
+    fi
+    echo -e "$OK Mount /dev/nbd0p$n_part ... [partition $n_part] on $mount_where/$image success."
+  fi
+
+# iso images ----------------------------------------------------------------------------------------------------------
+elif [[ $allow_formats_iso =~ $format ]] ; then
+  iso_mount_type=""
+  if [[ -r /bin/fuseiso && "$forceIsoStdMount" != true ]] ; then
+
+    fuseiso "$full_path_image" "$mount_where/$image"
+    if [ $? -ne 0 ]; then
+      rmdir "$mount_where/$image" #undo
+      [ $? -ne 0 ] && echo -e "$WARN Fail undo removing dir 'rmdir $mount_where/$image' cmd!"
+      echo -e "$ERR Fail'fuseiso "$full_path_image" /mnt' cmd! Exit."
+      exit 1
+    fi
+    echo -e "$OK Mount (fuseiso) $mount_where/$image success."
+    iso_mount_type="fuseiso"
+  else
+
+    sudo mount -o loop "$full_path_image" "$mount_where/$image"
+    if [ $? -ne 0 ]; then
+      rmdir "$mount_where/$image" #undo
+      [ $? -ne 0 ] && echo -e "$WARN Fail undo removing dir 'rmdir $mount_where/$image' cmd!"
+      echo -e "$ERR Fail 'mount -o loop \"$full_path_image\" \"$mount_where/$image\"' cmd! Exit."
+      exit 1
+    fi
+
+    echo -e "$OK Mount (sudo mount loop) $mount_where/$image success."
+    iso_mount_type="mount-loop"
+
+  fi
+
+# crypto images -------------------------------------------------------------------------------------------------------
+elif [[ $allow_formats_crypto =~ $format ]] ; then
+
+  [[ ! -r /bin/cryptsetup ]] && { echo -e "$ERR Missing cryptsetup cmd (cryptsetup pkg?)! Exit"; exit 1; }
+
+  sudo cryptsetup open --type $format "$full_path_image" crypt-disk
+  if [ $? -ne 0 ]; then
+    rmdir "$mount_where/$image" #undo
+    [ $? -ne 0 ] && echo -e "$WARN Fail removing dir 'rmdir $mount_where/$image' cmd!"
+    echo -e "$ERR Fail 'cryptsetup open --type $format \"$full_path_image\" crypt-disk' cmd! Exit."
+    exit 1
+  fi
+  sudo mount -o uid=1000 /dev/mapper/crypt-disk "$mount_where/$image"
+  if [ $? -ne 0 ]; then
+    sudo cryptsetup close crypt-disk #undo
+    [ $? -ne 0 ] && echo -e "$WARN Fail 'cryptsetup close crypt-disk' cmd!"
+    rmdir "$mount_where/$image" #undo
+    [ $? -ne 0 ] && echo -e "$WARN Fail undo removing dir 'rmdir $mount_where/$image' cmd!"
+    echo -e "$ERR Fail 'mount -o uid=1000 /dev/mapper/crypt-disk \"$mount_where/$image\"' cmd! Exit."
+    exit 1
+  fi
+
+  echo -e "$OK Mount 'pwd-crypt..."
+
+# sqhash images -------------------------------------------------------------------------------------------------------
+elif [[ "squashfs" =~ $format ]] ; then
+  [[ ! -r /bin/mksquash ]] && { echo -e "$ERR Missing mksqhash cmd (squash-tool pkg?)! Exit"; exit 1; }
+
+  cp "$full_path_image" "$mount_where/$image/."
+  if [[ $? -ne 0 ]] ; then
+    echo -e "$ERR Fail copy squashfs image! Exit."
+    rmdir "$mount_where/$image" #undo
+    [ $? -ne 0 ] && echo -e "$WARN Fail undo removing dir 'rmdir $mount_where/$image' cmd!"
+    exit 1
+  fi
+
+  #sudo mount root.sqsh mnt -t squashfs -o loop #ok, but read only, because squash file cannot be modified
+  unsquashfs "$full_path_image"
+  if [[ $? -ne 0 ]] ; then
+    echo -e "$ERR Fail unsquash cmd! Exit."
+    rmdir "$mount_where/$image" #undo
+    [ $? -ne 0 ] && echo -e "$WARN Fail undo removing dir 'rmdir $mount_where/$image' cmd!"
+    exit 1
+  else
+    echo -e "$OK unsquash success."
+  fi
+
+  rm "$mount_where/$image/$image" #erase copy of sqhash filesystem image file (after decompressed)
+  [ $? -ne 0 ] && echo -e "$WARN Fail removing image file dupe '$mount_where/$image/$image'!"
+
+fi
+
+start_evid="\e[1;39;41m"
+stop_evid="\e[0m"
+exit_string="All done. [MEMO] Dont' forget to use ${start_evid}srun-umount-img \"${image}\""
+[[ $format != $ext ]] && exit_string="${exit_string} ${format}"
+[[ $iso_mount_type == "mount-loop" && "$forceIsoStdMount" == true ]] && exit_string="${exit_string} --force-iso-stdmount"
+exit_string="${exit_string}${stop_evid} when finished."
+echo -e "$exit_string"
+exit 0
+
+

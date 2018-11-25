@@ -1,0 +1,47 @@
+#!/bin/bash
+# Simona Pisano - 2018-11-18
+# simona-scripts
+# Libertamente utilizzabile sotto GPL v3
+
+  #sget-pendrive() {
+    n_found=0
+    #TO-DO
+    #for short_dev in `lsblk -ndlo NAME` ; do
+    #  drive="/dev/$short_dev"
+    #  #if [[ -b $drive ]] ; then
+    #  #short_dev="${drive##*/}" # estract substring: take only final part after last '/' char
+    for drive in /dev/sd?* /dev/nvme* ; do
+      if [[ -b $drive ]] ; then
+
+        letter=${drive:7:1}
+        short_dev="${drive##*/}" # estract substring: take only final part after last '/' char
+
+        #base search
+        udev=`udevadm info -q path -n $drive`
+        udev=`udevadm info -a -p $udev `
+
+        search=`echo KERNEL==\"$short_dev\"`
+        udev_info=`echo "$udev" | grep $search | tr -d ' ' `
+        [[ $udev_info != "KERNEL==\"$short_dev\"" ]] && continue #not correct device
+
+        udev_info=`echo "$udev" | grep 'SUBSYSTEM=="block"' | tr -d ' ' `
+        [[ $udev_info != "SUBSYSTEM==\"block\"" ]] && continue #not correct device
+
+        udev_info=`echo "$udev" | grep 'ATTR{events}=="media_change"' | tr -d ' ' `
+        [[ $udev_info != "ATTR{events}==\"media_change\"" ]] && continue #not correct device
+
+        #check > 0 per evitare device pur presenti ma senza memoria inserita
+        udev_info=`echo "$udev" | grep -E 'ATTR{size}=="[0-9]{1,}"' | tr -d ' ' `
+        [[ $udev_info != *"ATTR{size}=="* ]] && continue #not correct device
+        value=` echo "$udev_info" | cut -d "\"" -f2 | cut -d "\"" -f1 `
+        [[ $value -lt 1 ]] && continue #not correct device
+
+        echo -e "Pendrive \e[1;39;41m$drive\e[0m (size $(($value *512/1000/1000/1000 ))GBi) detected."
+        #break #uncomment to stop search after the first
+
+        n_found=$(( $n_found + 1 ))
+      fi
+    done
+    [[ $n_found -lt 1 ]] && echo "No pendrive found" || echo "$n_found pendrives total found."
+  #}
+
