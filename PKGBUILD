@@ -2,7 +2,7 @@
 
 pkgname=png2pos
 pkgver=1.7.2
-pkgrel=1
+pkgrel=0
 
 pkgdesc='A utility to converter PNG images to ESC/POS'
 url='https://github.com/petrkutalek/png2pos'

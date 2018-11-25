@@ -1,7 +1,7 @@
 pkgbase = png2pos
 	pkgdesc = A utility to converter PNG images to ESC/POS
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 0
 	url = https://github.com/petrkutalek/png2pos
 	arch = x86_64
 	license = MIT
