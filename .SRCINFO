@@ -1,7 +1,7 @@
 pkgbase = ghostwriter
 	pkgdesc = A cross-platform, aesthetic, distraction-free Markdown editor
 	pkgver = 1.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wereturtle/ghostwriter
 	arch = i686
 	arch = x86_64
