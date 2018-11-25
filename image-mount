@@ -2,13 +2,11 @@
 # Simona Pisano - 2018-11-18 -
 # simona-scripts
 # Libertamente utilizzabile sotto GPL v3
+#srun-mount-img() {
 
-  #srun-mount-img() {
+#to-do add input parameters
 
-  #to-do add sqash images
-  #to-do add input parameters
-  #echo -n "Continue? (Y/N): "; read confirm; [[ ! $confirm == [Yy]* ]] && echo "no" #exit 1
-  #echo -n "Continue? (Y/N): "; read ok; [[ ! $ok =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && echo "no" #exit 1
+[[ $1 == "" ]] && exit 0 #TO-DO attivare invece la richiesta dei parametri?
 
 #color	Foreground	Background
 #black	30	40
@@ -19,20 +17,6 @@
 #magenta	35	45
 #cyan	36	46
 #white	37	47
-#
-#black='\E[30;47m'
-#red='\E[31;47m'
-#green='\E[32;47m'
-#yellow='\E[33;47m'
-#blue='\E[34;47m'
-#magenta='\E[35;47m'
-#cyan='\E[36;47m'
-#white='\E[37;47m'
-#"\e[1;39;41m" "\e[0m "
-#echo -e
-
-[[ $1 == "" ]] && exit 0
-
 EchoReset="\e[0m"
 echo -e -n "$EchoReset"
 OK="\E[32;40m[OK]${EchoReset}"
@@ -54,8 +38,9 @@ image-mount command help
 
 Usage
   image-mount [--help|-h]"
-  image-mount [path/]file-name.ext] [format | part#] [mount-path | part#] [--force-iso-stdmount]
+  image-mount [path/]file-name[.format] [format | #partition] [path-where-mount | #partition] [--force-iso-stdmount]
   --force-iso-stdmount   -> force in iso sudo mount 'mount -o loop' instead 'fuseiso'
+  -y --ask-confirm       -> ask confirm
 
 Warnings
   1) part# in in format 0-9 with one integer value
@@ -81,6 +66,9 @@ Squash readonly file (can ben modified, saved on umount) (package 'squashfs-tool
   sqhashfs
 EOF
 
+  exit 0
+elseif [[ $1 == "--version" ]] ; then
+  echo "image-mount Version 0.0 (simonascripts package)"
   exit 0
 fi
 
@@ -134,14 +122,22 @@ par=$4; [[ $4 != "" && ${par:0:1} != "-" ]] && mount_where=$4
 [[ -d "$mount_where/$image" ]] && { echo -e "$ERR $image found. umount/rm -r \"$mount_where/$image\". Exit."; exit 1; }
 
 forceIsoStdMount=false #default par
+flagAskConfirm=false
 while [ $# -ne 0 ] ; do
-  arg="$1"
-  case "$arg" in
+  case $1 in
     --force-iso-stdmount) forceIsoStdMount=true ;;
+    -y|--ask-confirm) flagAskConfirm=true ;;
     *) ;;
   esac
   shift
 done
+
+echo "Now mounting image <$image> format <$format> on path <$mount_where>, partition number <$n_part>."
+if [[ "$flagAskConfirm" == true ]] ; then
+  echo -n "Continue? (Y/N): "; read ok
+  [[ ! $ok =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user."; exit 0; }
+fi
+
 
 # ------------------------------------------------------------------------------------------------------------------------
 # WORK -------------------------------------------------------------------------------------------------------------------

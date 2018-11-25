@@ -13,6 +13,9 @@ ioscheduler-list  - iosched  - list scheduler for all block devices
 boot-kernel-list  - boot     - list kernels inside /boot, extract version (lile uname -r), say what is used in recent boot
 EOF
   exit
+elseif [[ $1 == "--version" ]] ; then
+  echo "simona-scripts Version 0.0"
+  exit
 fi
 
 case $1 in

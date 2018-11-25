@@ -4,14 +4,14 @@
 # Libertamente utilizzabile sotto GPL v3
 #srun-umount-img() {
 
+[[ $1 == "" ]] && exit 0 #TO-DO attivare invece la richiesta dei parametri?
+
 EchoReset="\e[0m"
 echo -e -n "$EchoReset"
 OK="\E[32;40m[OK]${EchoReset}"
 WARN="\E[33;40m[OK]${EchoReset}"
 ERR="\E[31;40m[OK]${EchoReset}"
 #echo -e "$OK $WARN $ERR"
-
-[[ $1 == "" ]] && exit 0
 
 if [[ $1 == "-h" || $1 == "--help" ]] ; then
   cat << EOF
@@ -36,6 +36,9 @@ Minimal usage:
 Typical usage:
   image-umount file.ext 2
 EOF
+  exit 0
+elseif [[ $1 == "--version" ]] ; then
+  echo "image-umount Version 0.0 (simonascripts package)"
   exit 0
 fi
 

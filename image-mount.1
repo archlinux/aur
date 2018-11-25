@@ -1,0 +1,36 @@
+NAME
+image-mount - Bash script to mount image files (iso, vms, crypto, squashfs) inside simonascripts pkg
+SYNOPSIS
+image-mount image-mount [path/]file-name[.format] [format | #partition] [path-where-mount | #partition] [--force-iso-stdmount]
+DESCRIPTION
+Bash script to mount image files (iso, vms, crypto, squashfs) inside simonascripts pkg
+
+-h, --help
+    display this help and exit
+
+--force-iso-stdmount
+    force in iso sudo mount 'mount -o loop' instead 'fuseiso'
+
+-y, --ask-confirm
+    confirm before execute
+
+--version
+    output version information and exit
+
+
+AUTHOR
+Written by Simona Pisano.
+
+REPORTING BUGS
+Report to Simona <simona.pisano[at]gmail[dot]com>
+
+COPYRIGHT
+Copyright © 2018 Simona Pisano. License GPLv3: GNU GPL version 3 <https://gnu.org/licenses/gpl.html>.
+
+SEE ALSO
+image-umount, simona-scripts.
+
+This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law.
+SEE ALSO
+Full documentation at: <https://>
+
