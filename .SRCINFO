@@ -1,0 +1,17 @@
+pkgbase = phratch
+	pkgdesc = Phratch is a programming language that makes it easy to create your own interactive stories, animations, games, music, and art — and share your creations on the web. Port of Scratch on Pharo.
+	pkgver = 4.1
+	pkgrel = 1
+	url = http://www.phratch.com
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = pharo-vm
+	source = Phratch.zip::http://phratch.com/download/Phratch4.1-linux.zip
+	source = phratch.desktop
+	md5sums = aec0d828e291ebbe0a225d5b12576c80
+	md5sums = 97c22472ed23597881c547a67c8eee95
+
+pkgname = phratch
+

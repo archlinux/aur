@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.2
+Type=Application
+Name=Phratch
+Comment=Phratch is a programming language that makes it easy to create your own interactive stories, animations, games, music, and art — and share your creations on the web. Port of Scratch on Pharo.
+Exec=phratch
+Icon=phratch
+Terminal=false
+StartupNotify=false
+Categories=Application;Development;
