@@ -7,7 +7,7 @@ _pkgbase=libappindicator
 pkgbase=lib32-${_pkgbase}
 pkgname=("${pkgbase}-gtk"{2,3} "${pkgbase}-sharp")
 pkgver=12.10.0
-pkgrel=9
+pkgrel=10
 pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (32-bit)'
 url='https://launchpad.net/libappindicator'
 arch=('x86_64')
@@ -18,11 +18,13 @@ makedepends=('dbus-glib' 'gobject-introspection' 'gtk-doc' 'gtk-sharp-2'
 options=('!emptydirs')
 source=(http://launchpad.net/${_pkgbase}/${pkgver%.*}/${pkgver}/+download/${_pkgbase}-${pkgver}.tar.gz{,.asc}
         improved-plasma.patch
-        no-python.patch)
+        no-python.patch
+        incompatible_pointer_build_fix.patch)
 sha512sums=('317a22a23c8ed84e74207b64b2e9683992d1fb7208176637a051dfe925974f966d1cfa31e650b45eaf839ab61641dee8fbebc8a07882a09b0dd766d88b8d5b9a'
             'SKIP'
             'e2930b9942b800a7a14faf4c27d59073c166e24bb1675f8604a0b5ac3fbd101f3642f7221bc8f5219231c8f021a2a8c4aa203f971ea5f2f9225be83d807cb80e'
-            '891f5097c607770428460fe902214c70fb2a11de9fe1e6d6109ea859b22eda3d7057cab4c5b5444de5f6f3149348c186034dcde8f95c77800bcbd8abcdf7277b')
+            '891f5097c607770428460fe902214c70fb2a11de9fe1e6d6109ea859b22eda3d7057cab4c5b5444de5f6f3149348c186034dcde8f95c77800bcbd8abcdf7277b'
+            'bda93822c43dbc153202e7cd1e4b5c5fde5ca1ec35a1314bee37707f9cf4483c52ba79d3c808592f5e62470d45dc6a7b8eb5cfe60295a8e5446128b0643e36c5')
 validpgpkeys=('6FC05581A37D71FCECE165DB5BE41E162CD6358E')  # Charles Kerr <charles.kerr@canonical.com>
 
 prepare() {
@@ -31,6 +33,7 @@ prepare() {
     sed 's/example //g' -i Makefile.in
     patch -p1 < "${srcdir}/no-python.patch"
     patch -p1 < "${srcdir}/improved-plasma.patch"
+    patch -p1 -i ../incompatible_pointer_build_fix.patch # Build fix, Fedora patch
   )
   cp -ra ${_pkgbase}-${pkgver}{,-gtk2}
 }
