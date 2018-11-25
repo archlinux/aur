@@ -1,13 +1,15 @@
 pkgbase = lib32-libofa
 	pkgdesc = An open-source audio fingerprint by MusicIP (32 bit)
 	pkgver = 0.9.3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/tanob/libofa
 	arch = x86_64
 	license = GPL2
 	license = custom
-	depends = lib32-gcc-libs
+	makedepends = lib32-curl
+	makedepends = lib32-expat
 	depends = lib32-fftw
+	depends = lib32-gcc-libs
 	depends = libofa
 	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/musicip-libofa/libofa-0.9.3.tar.gz
 	source = libofa-gcc4.patch
