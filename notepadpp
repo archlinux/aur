@@ -1,32 +1,36 @@
 #!/usr/bin/env sh
 
-wineapp="notepadpp"
+appver="7.6-1"
+pkgdir="/usr/share/notepadpp"
+localdir="$HOME/.local/share/notepadpp"
 
-pkgdir="/usr/share/$wineapp"
-localdir="$HOME/.local/share/$wineapp"
+curr_ver="$(cat "$localdir/notepadpp.ver")"
 
 unset WINEPREFIX
 
-if [ ! -d "$localdir" ] ; then
-    mkdir -p "$localdir"
+if [ ! -d "$localdir" ]; then
+    mkdir -p "$localdir" || { echo "Can't create directory"; exit 1; }
 
-    cp -rs "$pkgdir/plugins" "$localdir/plugins"
-    cp -rs "$pkgdir/themes" "$localdir/themes"
-    cp -rs "$pkgdir/localization" "$localdir/localization"
-
-    cp -r "$pkgdir/contextMenu.xml" "$localdir/contextMenu.xml"
-    cp -r "$pkgdir/doLocalConf.xml" "$localdir/doLocalConf.xml"
-    cp -r "$pkgdir/functionList.xml" "$localdir/functionList.xml"
-    cp -r "$pkgdir/langs.model.xml" "$localdir/langs.model.xml"
-    cp -r "$pkgdir/shortcuts.xml" "$localdir/shortcuts.xml"
-    cp -r "$pkgdir/stylers.model.xml" "$localdir/stylers.model.xml"
+    cp "$pkgdir/contextMenu.xml" "$localdir/contextMenu.xml"
+    cp "$pkgdir/doLocalConf.xml" "$localdir/doLocalConf.xml"
+    cp "$pkgdir/functionList.xml" "$localdir/functionList.xml"
+    cp "$pkgdir/langs.model.xml" "$localdir/langs.model.xml"
+    cp "$pkgdir/shortcuts.xml" "$localdir/shortcuts.xml"
+    cp "$pkgdir/stylers.model.xml" "$localdir/stylers.model.xml"
 
     ln -s "$pkgdir/notepad++.exe" "$localdir/notepadpp"
     ln -s "$pkgdir/SciLexer.dll" "$localdir/SciLexer.dll"
 
     ln -s "$pkgdir/change.log" "$localdir/change.log"
     ln -s "$pkgdir/readme.txt" "$localdir/readme.txt"
+    touch "$localdir/notepadpp.ver"
+fi
+
+if [ ! "$appver" = "$curr_ver" ]; then
+    cp -rs "$pkgdir/plugins" "$localdir/plugins"
+    cp -rs "$pkgdir/themes" "$localdir/themes"
+    cp -rs "$pkgdir/localization" "$localdir/localization"
+    echo "$appver" > "$localdir/notepadpp.ver"
 fi
 
 WINEDEBUG=-all wine "$HOME/.local/share/notepadpp/notepadpp" "$@"
-
