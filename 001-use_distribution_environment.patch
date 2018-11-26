@@ -1,0 +1,232 @@
+--- a/fsl/etc/fslconf/fsl.sh	2014-05-19 16:54:10.000000000 +0200
++++ b/fsl/etc/fslconf/fsl.sh	2018-11-25 11:26:42.623047078 +0100
+@@ -26,8 +26,8 @@
+ # The following variables specify paths for programs and can be changed
+ #  or replaced by different programs ( e.g. FSLDISPLAY=open   for MacOSX)
+ 
+-FSLTCLSH=$FSLDIR/bin/fsltclsh
+-FSLWISH=$FSLDIR/bin/fslwish
++FSLTCLSH=/usr/bin/tclsh
++FSLWISH=/usr/bin/wish
+ 
+ export FSLTCLSH FSLWISH 
+ 
+--- a/fsl/etc/fslconf/fsl.csh	2014-05-19 16:54:10.000000000 +0200
++++ b/fsl/etc/fslconf/fsl.csh	2018-11-25 11:26:42.623047078 +0100
+@@ -25,8 +25,8 @@
+ # The following variables specify paths for programs and can be changed
+ #  or replaced by different programs ( e.g. FSLDISPLAY=open   for MacOSX)
+ 
+-setenv FSLTCLSH $FSLDIR/bin/fsltclsh
+-setenv FSLWISH $FSLDIR/bin/fslwish
++setenv FSLTCLSH /usr/bin/tclsh
++setenv FSLWISH /usr/bin/wish
+ 
+ # The following variables are used for running code in parallel across
+ #  several machines ( i.e. for FDT )
+--- a/fsl/etc/fslconf/fsl-devel.sh	2014-05-19 16:54:10.000000000 +0200
++++ b/fsl/etc/fslconf/fsl-devel.sh	2018-11-25 11:26:42.623047078 +0100
+@@ -26,8 +26,8 @@
+ # The following variables specify paths for programs and can be changed
+ #  or replaced by different programs ( e.g. FSLDISPLAY=open   for MacOSX)
+ 
+-FSLTCLSH=$FSLDIR/bin/fsltclsh
+-FSLWISH=$FSLDIR/bin/fslwish
++FSLTCLSH=/usr/bin/tclsh
++FSLWISH=/usr/bin/wish
+ 
+ export FSLTCLSH FSLWISH 
+ 
+--- a/fsl/extras/build	2016-11-15 15:30:21.000000000 +0100
++++ b/fsl/extras/build	2018-11-25 14:10:48.382885194 +0100
+@@ -96,21 +96,20 @@
+ 	BUILDICONV=1
+     fi
+ fi
+-PROJECTS="tcl tk"
++PROJECTS=""
+ if [ ${BUILDZLIB} -eq 1 ]; then
+-  PROJECTS="${PROJECTS} zlib"
++  PROJECTS="${PROJECTS}"
+ fi
+-PROJECTS="${PROJECTS} libpng"
++PROJECTS="${PROJECTS}"
+ if [ ${BUILDICONV} -eq 1 ]; then
+-  PROJECTS="${PROJECTS} libiconv"
++  PROJECTS="${PROJECTS}"
+ fi
+-PROJECTS="${PROJECTS} libgd libgdc libprob libcprob newmat cprob newran fftw"
+-PROJECTS="${PROJECTS} boost libxml2-2.9.2 libxml++-2.34.0 libsqlite libnlopt ../include/armawrap/dummy_newmat"
++PROJECTS="${PROJECTS} libgdc libprob libcprob cprob newran ../include/armawrap/dummy_newmat"
+ for projname in $PROJECTS; do
+     if [ -d $FSLESRCDIR/$projname ] ; then
+        buildIt $FSLESRCDIR $projname 1 
+     elif [ "$projname" = "boost" -a -d ${FSLEXTINC}/boost/boost ]; then
+-       buildIt $FSLEXTINC boost 0
++       buildIt $FSLEXTINC 0
+     fi
+ done
+ 
+--- a/fsl/src/mist-clean/Makefile	2018-10-17 13:00:28.000000000 +0200
++++ b/fsl/src/mist-clean/Makefile	2018-11-25 11:26:42.643047048 +0100
+@@ -2,15 +2,15 @@
+ 
+ NLOPT_INC = ${FSLEXTINC}
+ NLOPT_LIB = ${FSLEXTLIB}
+-SQLITE_INC = ${FSLEXTINC}/libsqlite
+-SQLITE_LIB = ${FSLEXTLIB}
++SQLITE_INC = /usr/include/libsqlite
++SQLITE_LIB = /usr/lib
+ 
+ PROJNAME = mist
+ 
+ XFILES = mist/mist
+ SCRIPTS = bin/mist_1_train bin/mist_2_fit bin/mist_FA_reg bin/mist_display bin/mist_mesh_utils
+ 
+-USRCXXFLAGS = -std=c++11
++USRCXXFLAGS = -std=c++11 -DBOOST_LOG_DYN_LINK
+ USRINCFLAGS = -I${FSLDIR}/include/newimage -I${INC_NEWMAT} -I${INC_ZLIB} -I${INC_GDC} -I${INC_GD} -I${SQLITE_INC} -I${NLOPT_INC} -I${VTKDIR_INC} -Icommon
+ USRLDFLAGS = -L${LIB_NEWMAT} -L${LIB_ZLIB} -L${LIB_BOOST} -L${LIB_GDC} -L${LIB_GD} -L${NLOPT_LIB} -L${VTKDIR_LIB}
+ 
+@@ -19,14 +19,14 @@
+         LIBRT = -lrt
+ endif
+ 
+-LDLIBS =	-lvtkIOLegacy${VTKSUFFIX} -lvtkIOCore${VTKSUFFIX} -lvtkFiltersModeling${VTKSUFFIX} -lvtkFiltersCore${VTKSUFFIX} \
++LDLIBS = 		-lsqlite3 -lvtkIOLegacy${VTKSUFFIX} -lvtkIOCore${VTKSUFFIX} -lvtkFiltersModeling${VTKSUFFIX} -lvtkFiltersCore${VTKSUFFIX} \
+ 			-lvtkCommonExecutionModel${VTKSUFFIX} -lvtkCommonDataModel${VTKSUFFIX} -lvtkCommonMisc${VTKSUFFIX} \
+ 			-lvtkCommonSystem${VTKSUFFIX} -lvtkCommonTransforms${VTKSUFFIX} -lvtkCommonMath${VTKSUFFIX} \
+ 			-lvtkCommonCore${VTKSUFFIX} -lvtksys${VTKSUFFIX} \
+ 			-lboost_log -lboost_log_setup -lboost_thread -lboost_filesystem -lboost_date_time -lboost_chrono \
+ 			-lboost_system -lboost_serialization -lboost_regex -lwarpfns -lbasisfield -lnewimage -lmiscmaths \
+ 			-lnewmat -lgdc -lgd -lpng -lNewNifti -lutils -lznz -lm -lz -lnlopt -lpthread -ldl \
+-			${SQLITE_LIB}/libsqlite3.a ${LIBRT}
++			${LIBRT}
+ 
+ HDRS = common/gibbsshapemodel.h common/mrfshapemodel.h common/mvnshapemodel.h common/plotting.h common/profilefilters.h common/profilemixtures.h common/profilemodel.h common/profilepriors.h common/serialisation.h common/shape.h common/shapemodel.h common/stats.h common/transformation.h mist/builddate.h
+ 
+--- a/fsl/config/_FSLMACHTYPE/externallibs.mk	2018-10-10 13:12:48.000000000 +0200
++++ b/fsl/config/_FSLMACHTYPE/externallibs.mk	2018-11-25 11:26:48.363038307 +0100
+@@ -7,26 +7,27 @@
+ FSLEXTBIN=${FSLDIR}/extras/bin
+ 
+ # GD library
+-LIB_GD = ${FSLEXTLIB}
+-INC_GD = ${FSLEXTINC}
++LIB_GD = /usr/lib
++INC_GD = /usr/include
+ 
+ # GDC library
+ LIB_GDC = ${FSLEXTLIB}
+ INC_GDC = ${FSLEXTINC}/libgdc
+ 
+ # LIBXML2 library
+-INC_XML2 = ${FSLEXTINC}/libxml2
++INC_XML2 = /usr/include/libxml2
+ 
+ # LIBXML++ library
+-INC_XML++ = ${FSLEXTINC}/libxml++-2.6
+-INC_XML++CONF = ${FSLEXTLIB}/libxml++-2.6/include
++INC_XML++ = /usr/include/libxml++-2.6
++INC_XML++CONF = /usr/lib/libxml++-2.6/include
++
+ # GSL library
+-LIB_GSL = ${FSLEXTLIB}
+-INC_GSL = ${FSLEXTINC}/gsl
++LIB_GSL = /usr/lib
++INC_GSL = /usr/include/gsl
+ 
+ # PNG library
+-LIB_PNG = ${FSLEXTLIB}
+-INC_PNG = ${FSLEXTINC}
++LIB_PNG = /usr/lib
++INC_PNG = /usr/include/libpng1.6
+ 
+ # PROB library
+ LIB_PROB = ${FSLEXTLIB}
+@@ -38,7 +39,9 @@
+ 
+ # NEWMAT library
+ #LIB_NEWMAT = ${FSLEXTLIB} -llapack -lblas or just -lopenblas
+-LIB_NEWMAT = ${FSLEXTLIB} -lopenblas
++#LIB_NEWMAT = /usr/lib/newmat
++#INC_NEWMAT = /usr/include/newmat
++LIB_NEWMAT = ${FSLEXTLIB} -llapack -lblas
+ INC_NEWMAT = ${FSLEXTINC}/armawrap/armawrap -DARMA_USE_LAPACK -DARMA_USE_BLAS -DARMA_64BIT_WORD
+ 
+ # NEWRAN library
+@@ -46,29 +49,29 @@
+ INC_NEWRAN = ${FSLEXTINC}/newran
+ 
+ # ZLIB library
+-LIB_ZLIB = /lib64
++LIB_ZLIB = /usr/lib
+ INC_ZLIB = /usr/include
+ 
+ # BOOST library
+-BOOSTDIR = ${FSLEXTINC}/boost
+-LIB_BOOST = ${BOOSTDIR}
+-INC_BOOST = ${BOOSTDIR}
++#BOOSTDIR = ${FSLEXTINC}/boost
++LIB_BOOST = /usr/lib
++INC_BOOST = /usr/include/boost
+ 
+ # QT library
+-QTDIR = /usr/lib/qt3
+-LIB_QT = ${QTDIR}/lib
+-INC_QT = ${QTDIR}/include
++#QTDIR = /usr/lib/qt5
++LIB_QT = /usr/lib
++INC_QT = ${QTDIR}/include/qt
+ 
+ # QWT library
+-QWTDIR = /usr/local/qwt
+-LIB_QWT = ${QWTDIR}/lib
+-INC_QWT = ${QWTDIR}/include
++#QWTDIR = /usr/local/qwt
++LIB_QWT = /usr/lib
++INC_QWT = /usr/include/qwt
+ 
+ # FFTW3 library
+-LIB_FFTW3 = ${FSLEXTLIB}
+-INC_FFTW3 = ${FSLEXTINC}/fftw3
++LIB_FFTW3 = /usr/lib
++INC_FFTW3 = /usr/include
+ 
+ # VTK library
+-VTKDIR_INC = /home/fs0/cowboy/var/caper_linux_64-gcc4.4/VTK7/include/vtk-7.0
+-VTKDIR_LIB = /home/fs0/cowboy/var/caper_linux_64-gcc4.4/VTK7/lib
+-VTKSUFFIX = -7.0
+\ No newline at end of file
++VTKDIR_INC = /usr/include/vtk
++VTKDIR_LIB = /usr/lib
++VTKSUFFIX =
+--- a/fsl/config/_FSLMACHTYPE/systemvars.mk	2017-09-04 14:09:26.000000000 +0200
++++ b/fsl/config/_FSLMACHTYPE/systemvars.mk	2018-11-25 11:26:48.363038307 +0100
+@@ -8,7 +8,7 @@
+ CP = /bin/cp
+ MV = /bin/mv
+ INSTALL = install -p
+-TCLSH = ${FSLDIR}/bin/fsltclsh
++TCLSH = /usr/bin/tclsh
+ RANLIB = echo
+ 
+ FSLML = ${FSLDIR}/bin/fslml
+@@ -30,14 +30,14 @@
+ 
+ DEPENDFLAGS = -MM
+ 
+-OPTFLAGS = -g -O3 -fexpensive-optimizations ${ARCHFLAGS}
++OPTFLAGS = -march=native -g -O3 -fexpensive-optimizations ${ARCHFLAGS}
+ MACHDBGFLAGS = -g
+-GNU_ANSI_FLAGS = -Wall -ansi -pedantic -Wno-long-long
++GNU_ANSI_FLAGS = -Wall -ansi -pedantic -std=c++11 -Wno-long-long
+ SGI_ANSI_FLAGS = -ansi -fullwarn
+ ANSI_FLAGS = ${GNU_ANSI_FLAGS}
+ 
+ # CUDA development environment
+-CUDA_INSTALLATION = /opt/cuda-7.5
++CUDA_INSTALLATION = /opt/cuda
+ GENCODE_FLAGS = $(shell ${FSLDIR}/config/common/supportedGencodes.sh ${CUDA_INSTALLATION})
+ LIB_CUDA = ${CUDA_INSTALLATION}/lib64
+ INC_CUDA = ${CUDA_INSTALLATION}/include

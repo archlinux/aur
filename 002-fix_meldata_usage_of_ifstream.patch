@@ -1,0 +1,11 @@
+--- a/fsl/src/melodic/meldata.cc	2018-10-23 18:49:51.000000000 +0200
++++ b/fsl/src/melodic/meldata.cc	2018-11-25 11:26:42.639047054 +0100
+@@ -1015,7 +1015,7 @@
+       Resels = 1.0;
+       
+       in.open(logger.appendDir("smoothest").c_str(), ios::in);
+-      if(in>0){
++      if(!!in){
+ 				for(int ctr=1; ctr<7; ctr++)
+ 					in >> str;
+ 				in.close();

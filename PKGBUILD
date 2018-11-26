@@ -1,117 +1,68 @@
+# Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 # Contributor: fishburn <frankthefishburn@gmail.com>
 
-# Note: As of 5.0.11 certain key scripts (imcp, imglob, immv) are no longer shipped by upstream
-# Their recommendation is to install fslpython, but this requires running an opaque installer and
-# doubles the package size with no additional obvious benefit than these 3 tiny scripts. So I 
-# have decided to just bundle the scripts from 5.0.10 with the package from now on.
-
 pkgname=fsl
-pkgver=5.0.11
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
 license=(custom)
-depends=(gd libxml2 libxml++2.6 gsl libpng nlopt newmat tcl tk zlib python glu boost-libs vtk6 sqlite)
+depends=(gd libxml2 libxml++2.6 gsl libpng nlopt newmat tcl tk zlib python glu boost-libs vtk sqlite python3 fslpy bc)
 makedepends=(boost fftw)
 optdepends=(cuda)
-sha1sums=('4e80fce7b9626c351766966ba3be5d428e1c27cc'
-          '7f9d1289887f6ff684599ce3d7a260f3d81011f2'
-          '679c65c90e79b7f748ad1c2d4b5abeebebf05dfd'
-          'db514c2eaa48ae924cb1c26d8b0b25d47a812876'
-          '2df550b126a6ec6022a164a18dddffe4e59962f9'
-          'e2d4cc873a23eedcea093715b49ace41fc6f6e1c'
-          'f6d6d0177561b0f036a7e1fae4443332becd134b'
-          'efb997fbaaffb5129eca2ea9388b45421e6e6de4')
-
 source=("http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
         "http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-feeds.tar.gz"
-	"systemvars.mk"
-	"externallibs.mk"
-	"fsl_exec.patch"
 	"imcp"
 	"imglob"
-	"immv")
+	"immv"
+	"001-use_distribution_environment.patch"
+	"002-fix_meldata_usage_of_ifstream.patch"
+	"003-fix_fsl_exec_empty_errorCode.patch")
+
+sha256sums=('94853ddd1c16d03050a0ef58b8801fd094a7b3636cc3cf35b36c576091143276'
+	    '0d41376add12a6dbf67da19c1875f18bb6fa05e24e8a43d97eff160c70881ad2'
+	    'c61f185fbe7e297c4518e96377aa5ff4852f90eda0dbb9ae8edc5e24735e14ad'
+	    '7a1039cdc38b4d728f14efce3b0fda0cadc7bfcd3432556c3f3113985bf2720a'
+	    'b6f61a6d5672b6684f19150f6e21ded1bd04ec6415dcf07a32291e4002bfa5d8'
+	    'd1dada74e7625ce3a9031af851ff1f3aed9a3f5600dc49a5db13f829cb8c41cb'
+	    '13d4cf35343e7a73bc2534c94b1b0d4db41c338d374e6982091e4cf7a421d420'
+	    '64b4ccefa63a3cf920b185dd52e94b918c24f2cedaebcec8efb767bd80a6418a')
 
 prepare() {
-	
 	cd "${srcdir}"
-
 	export FSLDIR="${srcdir}/fsl"
 	. "${FSLDIR}/etc/fslconf/fsl.sh"
-	export FSLMACHTYPE=`${FSLDIR}/etc/fslconf/fslmachtype.sh`
+	export FSLMACHTYPE=$(${FSLDIR}/etc/fslconf/fslmachtype.sh)
+	mkdir "${FSLDIR}/config/${FSLMACHTYPE}"
+	# Use config linux_64-gcc4.8 as template
+	cp "${FSLDIR}"/config/linux_64-gcc4.8/{externallibs.mk,systemvars.mk} "${FSLDIR}/config/${FSLMACHTYPE}"
+	sed -i "s/_FSLMACHTYPE/${FSLMACHTYPE}/g" "${srcdir}/001-use_distribution_environment.patch"
 
-	# Create new configuration
-	mkdir -p "${FSLDIR}/config/${FSLMACHTYPE}"
-	cp "${srcdir}/systemvars.mk" "${FSLDIR}/config/${FSLMACHTYPE}/"
-	cp "${srcdir}/externallibs.mk" "${FSLDIR}/config/${FSLMACHTYPE}/"
+	# Apply patches
+	patch -Np1 -i "${srcdir}/001-use_distribution_environment.patch"
+	patch -Np1 -i "${srcdir}/002-fix_meldata_usage_of_ifstream.patch"
+	# From https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=fsl;e8fa48c1.1501
+	patch -Np1 -i "${srcdir}/003-fix_fsl_exec_empty_errorCode.patch"
 
-	# Copy makepkg build flags into configuration
+	# Insert makepkg build flags into configuration
 	sed -i '0,/${AccumulatedIncFlags}/{s^${AccumulatedIncFlags}^& '"${CFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
 	sed -i '0,/${AccumulatedIncFlags}/{s^${AccumulatedIncFlags}^& '"${CPPFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
 	sed -i '1,/${AccumulatedIncFlags}/!{s^${AccumulatedIncFlags}^& '"${CXXFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
 	sed -i '1,/${AccumulatedIncFlags}/!{s^${AccumulatedIncFlags}^& '"${CPPFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
 	sed -i 's^LDFLAGS = .*$^& '"${LDFLAGS}"'^g' "${srcdir}/fsl/config/common/vars.mk"
-
-	# Fix 32-bit
-	if test "$CARCH" == i686; then
-	    sed -i "s^-m64^^g" "${FSLDIR}/config/${FSLMACHTYPE}/systemvars.mk"
-	fi
-
-	# Use system TCL/Tk
-	sed -i 's^$FSLDIR/bin/fsltclsh^/usr/bin/tclsh^g' "${FSLDIR}/etc/fslconf/fsl.sh"
-	sed -i 's^$FSLDIR/bin/fsltclsh^/usr/bin/tclsh^g' "${FSLDIR}/etc/fslconf/fsl-devel.sh"
-	sed -i 's^$FSLDIR/bin/fsltclsh^/usr/bin/tclsh^g' "${FSLDIR}/etc/fslconf/fsl.csh"
-	sed -i 's^$FSLDIR/bin/fslwish^/usr/bin/wish^g' "${FSLDIR}/etc/fslconf/fsl.sh"
-	sed -i 's^$FSLDIR/bin/fslwish^/usr/bin/wish^g' "${FSLDIR}/etc/fslconf/fsl-devel.sh"
-	sed -i 's^$FSLDIR/bin/fslwish^/usr/bin/wish^g' "${FSLDIR}/etc/fslconf/fsl.csh"
-
-	# Disable building of system libraries
-	sed -i 's/ libgd / /g' "${FSLDIR}/extras/build"
-	sed -i 's/ libxml2-2.9.2 / /g' "${FSLDIR}/extras/build"
-	sed -i 's/ libxml++-2.34.0 / /g' "${FSLDIR}/extras/build"
-	sed -i 's/ newmat / /g' "${FSLDIR}/extras/build"
-	sed -i 's/ boost / /g' "${FSLDIR}/extras/build"
-	sed -i 's/ libnlopt / /g' "${FSLDIR}/extras/build"
-	sed -i 's/ libpng"/"/g' "${FSLDIR}/extras/build"
-	sed -i 's/ libiconv"/"/g' "${FSLDIR}/extras/build"
-	sed -i 's/ zlib"/"/g' "${FSLDIR}/extras/build"
-	sed -i 's/ fftw"/"/g' "${FSLDIR}/extras/build"
-	sed -i 's/"tcl tk"/""/g' "${FSLDIR}/extras/build"
-
-	# Link mist-clean against system sqlite
-	sed -i 's^${SQLITE_LIB}/libsqlite3.a^-lsqlite3^g' "${srcdir}/fsl/src/mist-clean/Makefile"
-
-	# Fix Melodic use of ifstream
-	sed -i 's^if(in>0)^if(!!in)^g' "${FSLDIR}/src/melodic/meldata.cc"
-
-	# Add missing library directories
-	sed -i 's^-L${LIB_ZLIB}$^& -L${LIB_PROB}^g' "${FSLDIR}/src/asl_mfree/Makefile"
-	sed -i 's^-L${LIB_NEWMAT} $^&-L${LIB_PROB}^g' "${FSLDIR}/src/first/Makefile"
-	sed -i 's^-L${LIB_NEWMAT} $^&-L${LIB_PROB}^g' "${FSLDIR}/src/topup/Makefile"
-
-	# Fix problem w/ dynamically-linked boost
-	sed -i 's^USRCXXFLAGS = -std=c++11$^& -DBOOST_LOG_DYN_LINK^g' "${FSLDIR}/src/mist-clean/Makefile"
-
-	# Fix fsl_exec.tcl session issue (https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=fsl;e8fa48c1.1501)
-	patch -p0 < fsl_exec.patch
-
-	# Fix missing library path in Eddy makefile
-	sed -i 's^USRLDFLAGS=-L${LIB_NEWMAT}^USRLDFLAGS=-L${LIB_PROB} -L${LIB_NEWMAT}^g' "${FSLDIR}/src/eddy/Makefile"
-	
 }
 
 build() {
-
 	export FSLDIR="${srcdir}/fsl"
 	cd "${FSLDIR}"
 	./build
 
-	cp -v "${srcdir}"/{imcp,imglob,immv} "${srcdir}/fsl/bin"
+	# Install missing binaries, which are no longer shipped (depends on fslpy)	
+	/usr/bin/install -m 755 "${srcdir}"/{imcp,imglob,immv} "${srcdir}/fsl/bin"
 }
 
 check() {
-
 	export FSLDIR="${srcdir}/fsl"
 	export FEEDSDIR="${srcdir}/feeds"
 	. "${FSLDIR}/etc/fslconf/fsl.sh"
@@ -120,7 +71,6 @@ check() {
 }
 
 package() {
-
 	rm -rf "${srcdir}/fsl/src"
 	rm -rf "${srcdir}/fsl/extras/src"
 	rm -rf "${srcdir}/fsl/extras/include"
@@ -145,6 +95,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/licenses/fsl"
 	grep -v \< "${srcdir}/fsl/doc/fsl/licence.html" | cat -s > "${pkgdir}/usr/share/licenses/fsl/LICENSE"
 
+	# Fix permissions
 	find "${pkgdir}" -type f -exec chmod 644 {} \;
 	find "${pkgdir}" -type d -exec chmod 755 {} \;
 	find "${pkgdir}/opt/fsl/bin" -exec chmod 755 {} \;
@@ -154,7 +105,8 @@ package() {
 	mkdir -p "${pkgdir}/opt/fsl/feeds/results"
 	chmod -R 777 "${pkgdir}/opt/fsl/feeds/results"
 	chmod 755 "${pkgdir}/opt/fsl/feeds/RUN"
-	
+
+	# Clean up	
 	find "${pkgdir}" -empty -delete
 	find "${pkgdir}" -type f -exec sed -i 's^/usr/local/fsl^/opt/fsl^g' "{}" \;
 }
