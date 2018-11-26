@@ -1,4 +1,5 @@
-# Maintainer: liberodark
+# Maintainer: Hugo Barrera <hugo@barrera.io>
+# Contributor: liberodark
 
 pkgname=tusk
 pkgver=0.11.0
@@ -21,4 +22,7 @@ package() {
   cp -r opt $pkgdir
   install -vDm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
   install -vDm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
+
+  mkdir -p "$pkgdir/usr/bin/"
+  ln -sf "/opt/Tusk/tusk-app" "$pkgdir/usr/bin/tusk-app"
 }
