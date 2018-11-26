@@ -1,7 +1,7 @@
 # Maintainer: Roman Lisagor <rlisagor at gmail dot com>
 
 pkgname=cni-plugins
-pkgver=0.6.0
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Some standard networking plugins, maintained by the CNI team"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('go')
 optdepends=('cni')
 depends=('glibc')
 source=("https://github.com/containernetworking/plugins/archive/v${pkgver}.tar.gz")
-sha512sums=('4b3c1901154eb1af86dc35888fda7b7666ee88d2cf728fb09182df5385d32b747de34c5c01598e1f37ae1e3497dbf5af2bc6ad6f737e683ccfccf9c1860cf6dc')
+sha512sums=('2ffe18353b525d90679eca4950e96afcaadd7c387956ef5baaf4ce97c0550315fda63403161ab8f23df086955dc2a47da612fb8d0cdd30ccfe12649393e2242c')
 
 build() {
   cd "${srcdir}/plugins-${pkgver}"
