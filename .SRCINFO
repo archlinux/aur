@@ -1,7 +1,7 @@
 pkgbase = caffe
 	pkgdesc = A deep learning framework made with expression, speed, and modularity in mind (cpu only)
 	pkgver = 1.0
-	pkgrel = 13
+	pkgrel = 14
 	url = https://caffe.berkeleyvision.org/
 	arch = i686
 	arch = x86_64
@@ -43,8 +43,10 @@ pkgbase = caffe
 	replaces = caffe-cpu
 	source = caffe-1.0.tar.gz::https://github.com/BVLC/caffe/archive/1.0.tar.gz
 	source = Makefile.config
+	source = caffe-1.0-opencv4-fix.patch
 	sha256sums = 71d3c9eb8a183150f965a465824d01fe82826c22505f7aa314f700ace03fa77f
-	sha256sums = dfa45f0d358b75c28049602d68d6468478c39d45518d584290af76d4ef74738e
+	sha256sums = 78137e80f764f51c0d4eeed5ce566f3745614b572b481c50197199291d34e2cd
+	sha256sums = 2072c8ca1393b53ef280a15c43af940cc9bf1419ae32b3d8a6541b10b8cb50e9
 
 pkgname = caffe
 

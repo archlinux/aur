@@ -3,7 +3,7 @@
 
 pkgname=caffe
 pkgver=1.0
-pkgrel=13
+pkgrel=14
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (cpu only)'
 arch=('i686' 'x86_64')
 url='https://caffe.berkeleyvision.org/'
@@ -27,12 +27,18 @@ provides=('caffe-cpu')
 conflicts=('caffe-cpu')
 replaces=('caffe-cpu')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/BVLC/caffe/archive/${pkgver}.tar.gz"
-        'Makefile.config')
+        'Makefile.config'
+        'caffe-1.0-opencv4-fix.patch')
 sha256sums=('71d3c9eb8a183150f965a465824d01fe82826c22505f7aa314f700ace03fa77f'
-            'dfa45f0d358b75c28049602d68d6468478c39d45518d584290af76d4ef74738e')
+            '78137e80f764f51c0d4eeed5ce566f3745614b572b481c50197199291d34e2cd'
+            '2072c8ca1393b53ef280a15c43af940cc9bf1419ae32b3d8a6541b10b8cb50e9')
 
 prepare() {
     cp -af "${srcdir}/Makefile.config" "${srcdir}/${pkgname}-${pkgver}"
+    
+    # fix build with opencv 4.0
+    cd "${pkgname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/caffe-1.0-opencv4-fix.patch"
 }
 
 build() {
