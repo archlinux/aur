@@ -835,3 +835,11 @@ Mon Nov 26 02:05:34 2018 +0100
     Notable changes:
      2018-11-26 d37ac8a1 actionless feat(plugins: import colors from image): add optional support for colorz, colorthief and haishoku (if installed)
      2018-11-22 1b5336c4 actionless feat(terminal: generate_theme_from_full_palette): limit maximum brightness of colors
+
+
+Mon Nov 26 07:07:23 2018 +0100
+-------------------------------------------------
+1.7.2.1         Release 1.7.2.1
+    
+    Notable changes:
+     2018-11-26 dd67d644 actionless feat(plugins: import colors from image): add possibility to generate palette using all the available image analyzers
