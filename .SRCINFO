@@ -1,8 +1,8 @@
 pkgbase = afterwriting
-	pkgdesc = Post-processing for Fountain screenplays
+	pkgdesc = Afterwriting CLI is a command line tool that lets you generate PDF from your fountain script using node.js.
 	pkgver = 1.11.0
-	pkgrel = 1
-	url = https://github.com/ifrost/afterwriting-labs
+	pkgrel = 1.1
+	url = https://github.com/ifrost/afterwriting-labs/blob/master/docs/clients.md
 	arch = any
 	license = MIT
 	makedepends = npm

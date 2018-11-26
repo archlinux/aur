@@ -1,10 +1,10 @@
 # Maintainer: jolupa <jlpavon@me.com>
 pkgname=afterwriting
 pkgver=1.11.0
-pkgrel=1
-pkgdesc="Post-processing for Fountain screenplays"
+pkgrel=1.1
+pkgdesc="Afterwriting CLI is a command line tool that lets you generate PDF from your fountain script using node.js."
 arch=('any')
-url="https://github.com/ifrost/afterwriting-labs"
+url="https://github.com/ifrost/afterwriting-labs/blob/master/docs/clients.md"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
