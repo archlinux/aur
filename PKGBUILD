@@ -1,44 +1,48 @@
-# $Id$
-# Maintainer: Realex
-# Based on cinnamon-desktop PKGBUILD
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Alexandre Filgueria <alexfilgueira@antergos.com>
+# Contributor:  Jan de Groot <jan@archlinux.org>
 
-_pkgname=cinnamon-desktop
-pkgname=${_pkgname}-git
-pkgver=174.15af3e9
+pkgname=cinnamon-desktop-git
+pkgver=4.0.1.r0.g77b85b0
 pkgrel=1
 pkgdesc="Library with common API for various Cinnamon modules"
-arch=(i686 x86_64)
-license=(GPL LGPL)
-depends=('gtk3' 'libxkbfile')
-makedepends=('intltool' 'gobject-introspection' 'gnome-common' 'git' 'patch')
-url="https://github.com/linuxmint/cinnamon-desktop"
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-options=('!emptydirs')
-source=("git+https://github.com/linuxmint/${_pkgname}.git"
-	"fix_build.patch")
-sha512sums=("SKIP"
-	"6a58333fc2bd637c637aeb3823fa50c0f60492022927df086257d47a4e39c9afaa12196da60623c817b1fccb5d9c3a2b819df7904e930055452ebe9e5ba8f326")
-install="${pkgname}.install"
+arch=('i686' 'x86_64')
+url="https://github.com/linuxmint/${pkgname%-git}"
+license=('GPL' 'LGPL')
+depends=('accountsservice' 'gtk3' 'libxkbfile' 'libpulse')
+makedepends=('meson' 'gobject-introspection' 'intltool')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+${url}.git"
+        "config.diff")
+sha512sums=('SKIP'
+            '556e5d3781d985a031f0b08dd4e972ebc37058e0862fec5935df7dfbf7dfecebeccd10e78136e75d9fa5f184b8201cb0bc90154fca419861d9d33ac9645cf983')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+    cd "${srcdir}"/${pkgname%-git}
+
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd ${srcdir}/cinnamon-desktop
-  patch -Np1 -i ../fix_build.patch
+    cd "${srcdir}"/${pkgname%-git}
+
+    # Adjust configuration
+    patch -Np1 -i ../config.diff
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib/${_pkgname} --disable-static
-  make
+    mkdir -p "${srcdir}"/${pkgname%-git}/build
+    cd "${srcdir}"/${pkgname%-git}/build
+
+    meson --prefix=/usr --buildtype=plain ..
+    ninja
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
-  make DESTDIR="$pkgdir" install
+    cd "${srcdir}"/${pkgname%-git}/build
+
+    DESTDIR="${pkgdir}" ninja install
+    # rm legacy migration script (cinnamon 2.4) and its package dependency on python
+    rm -rf "${pkgdir}"/usr/bin
 }

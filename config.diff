@@ -1,0 +1,24 @@
+diff -Naur cinnamon-desktop-2.8.0.orig/schemas/org.cinnamon.desktop.background.gschema.xml.in.in cinnamon-desktop-2.8.0/schemas/org.cinnamon.desktop.background.gschema.xml.in.in
+--- cinnamon-desktop-2.8.0.orig/schemas/org.cinnamon.desktop.background.gschema.xml.in.in	2015-10-16 13:00:30.000000000 +0000
++++ cinnamon-desktop-2.8.0/schemas/org.cinnamon.desktop.background.gschema.xml.in.in	2015-11-20 19:04:16.543027956 +0000
+@@ -10,7 +10,7 @@
+       </_description>
+     </key>
+     <key name="picture-uri" type="s">
+-      <default>'file://@datadir@/themes/Adwaita/backgrounds/adwaita-timed.xml'</default>
++      <default>'file://@datadir@/backgrounds/gnome/adwaita-timed.xml'</default>
+       <_summary>Picture URI</_summary>
+       <_description>
+         URI to use for the background image. Not that the backend only supports
+diff -Naur cinnamon-desktop-2.8.0.orig/schemas/org.cinnamon.desktop.interface.gschema.xml.in.in cinnamon-desktop-2.8.0/schemas/org.cinnamon.desktop.interface.gschema.xml.in.in
+--- cinnamon-desktop-2.8.0.orig/schemas/org.cinnamon.desktop.interface.gschema.xml.in.in	2015-10-16 13:00:30.000000000 +0000
++++ cinnamon-desktop-2.8.0/schemas/org.cinnamon.desktop.interface.gschema.xml.in.in	2015-11-20 19:04:16.543027956 +0000
+@@ -97,7 +97,7 @@
+       </_description>
+     </key>
+     <key name="icon-theme" type="s">
+-      <default>'gnome'</default>
++      <default>'Adwaita'</default>
+       <_summary>Icon Theme</_summary>
+       <_description>
+         Icon theme to use for the panel, nautilus etc.
