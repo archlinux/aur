@@ -1,0 +1,15 @@
+pkgbase = dafny-bin
+	pkgdesc = Dafny is a verification-aware programming language
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/Microsoft/dafny
+	arch = x86_64
+	license = MIT
+	depends = mono
+	provides = dafny
+	conflicts = dafny
+	source = dafny-2.2.0.10923.zip::https://github.com/Microsoft/dafny/releases/download/v2.2.0/dafny-2.2.0.10923-x64-debian-8.5.zip
+	sha256sums = 4b13238739d04897517b87ee5300efd99589d6f9b7b59d811624fde8f2f9786d
+
+pkgname = dafny-bin
+
