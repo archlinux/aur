@@ -6,6 +6,7 @@ pkgbase = openocd-git
 	arch = i686
 	arch = x86_64
 	arch = arm
+	arch = aarch64
 	license = GPL
 	makedepends = git
 	makedepends = automake>=1.11
