@@ -4,7 +4,7 @@
 _pkggroup='keepass-plugin'
 _pkgname='otpkeyprov'
 pkgname="${_pkggroup}-${_pkgname}"
-pkgver='2.5'
+pkgver='2.6'
 pkgrel=1
 pkgdesc="A plugin that allows to use the YubiKey OTP functionality in Keepass."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('keepass>=2.35')
 optdepends=('yubikey-personalization: For configuring a YubiKey')
 source=("http://keepass.info/extensions/v2/${_pkgname}/OtpKeyProv-${pkgver}.zip")
-sha512sums=('7e0a470f2bc32b4b6f68a6eab90b01a42a85a309f1d0208c205011a0e1a8779c0953ac36b144e0d4245d3820201fc0dd00f698abf28ba7034ae847550e25001f')
+sha512sums=('0eace308bf07e2da3ac5c3d26ce13acd840b2a8a82fd55c74f9956881fc62bb7424e2ce847ffd5e0cd44e3be2f35bf6fe276cc546fbd19734aeb56b1f8f89b24')
 
 package() {
   cd "${srcdir}"
