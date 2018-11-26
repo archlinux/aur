@@ -14,9 +14,10 @@ replaces=()
 backup=()
 options=()
 install=()
-source=('git+https://github.com/esovetkin/ledger-plots.git')
+source=('git+https://github.com/esovetkin/ledger-plots.git' 'setup.R')
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+         'adb815b64f7eaf0f8f6df440e301a378')
 
 _gitroot=git://github.com/esovetkin/ledger-plots
 _gitname=ledger-plots
@@ -32,7 +33,8 @@ package() {
   mkdir -p ${pkgdir}/usr/lib/R/library
   cd "${srcdir}/${_gitname}"
 
-  R CMD INSTALL ledgerplots -l ${pkgdir}/usr/lib/R/library
+  Rscript --vanilla "${srcdir}/setup.R" "${pkgdir}/usr/lib/R/library"
+
   install -vDm755 ${pkgdir}/usr/lib/R/library/ledgerplots/exec/ledger-plots "${pkgdir}/usr/bin/ledger-plots"
   install -vDm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }

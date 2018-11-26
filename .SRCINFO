@@ -11,7 +11,9 @@ pkgbase = ledger-plots-git
 	optdepends = ledger: otherwise the script is useless
 	provides = ledger-plots
 	source = git+https://github.com/esovetkin/ledger-plots.git
+	source = setup.R
 	md5sums = SKIP
+	md5sums = adb815b64f7eaf0f8f6df440e301a378
 
 pkgname = ledger-plots-git
 
