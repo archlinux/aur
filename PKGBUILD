@@ -2,13 +2,14 @@
 pkgname=python-sentry_sdk
 _pkgname=sentry-sdk
 pkgver=0.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('i686' 'x86_64')
 url="https://github.com/getsentry/sentry-python"
 license=('BSD')
-depends=('python-urllib3' 'python-certifi' 'python-flask')
+depends=('python-urllib3' 'python-certifi')
 makedepends=('python-setuptools')
+optdepends=('python-flask')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/sentry-sdk-$pkgver.tar.gz"
         "LICENSE")
 md5sums=('3793805bf4603745b6a84e91652e10b2'
