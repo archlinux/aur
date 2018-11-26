@@ -1,13 +1,29 @@
 post_install() {
 	[ ! -f /srv/http/index.html ] && echo "<html><body><h2>Server online.</h2></body></html>" >/srv/http/index.html
 	[ ! -f /srv/http/index.php ] && echo "<?php phpinfo(); ?>" >/srv/http/index.php
+	if [ ! -f /etc/ssl/private/bozohttpd.crt ]; then
+		echo
+		openssl req -x509 -nodes -newkey rsa:2048 -sha256 -keyout /etc/ssl/private/bozohttpd.key -out /etc/ssl/private/bozohttpd.crt -days 3650 -subj "/C=AU/ST=Victoria/L=Essendon/O=Eterna Enterprises/CN=$(hostname -f)"
+		chmod 600 /etc/ssl/private/bozohttpd.*
+		echo
+		echo "A self-signed TLS certificate has been generated for your machine '$(hostname -f)'."
+		echo
+		echo "You can generate a new one with the following commands (as root):"
+		echo "openssl req -x509 -nodes -newkey rsa:2048 -sha256 -keyout /etc/ssl/private/bozohttpd.key -out /etc/ssl/private/bozohttpd.crt -days 365"
+		echo "chmod 600 /etc/ssl/private/bozohttpd.*"
+		echo
+		echo "Note: The Common Name (CN) should be exactly the FQDN of the server."
+		echo "The validity can be extended by increasing the '-days' parameter value."
+	fi
+
 	echo
 	echo "*** USAGE ***"
 	echo
 	echo "'systemctl start bozohttpd.service' starts the web server."
+	echo "'systemctl start bozohttpd_ssl.service' starts the web server in SSL mode."
 	echo "Web server root is /srv/http. CGI dir is /usr/lib/cgi-bin."
 	echo "To enable CGI, PHP, Lua and dir indexing, modify"
-	echo "/usr/lib/systemd/system/bozohttpd.service ."
+	echo "/usr/lib/systemd/system/bozohttpd.service or bozohttpd_ssl.service."
 	echo
 }
 

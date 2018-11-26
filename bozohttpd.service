@@ -11,16 +11,16 @@ StandardOutput=null
 ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid /srv/http
 #
 # Enable directory indexing:
-#ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -X /srv/http
+#ExecStart=/usr/bin/bozohttpd -b -f -s -X -U nobody -P /run/bozohttpd.pid /srv/http
 #
 # Enable CGI:
-#ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -c /usr/lib/cgi-bin /srv/http
+#ExecStart=/usr/bin/bozohttpd -b -f -s -c /usr/lib/cgi-bin -U nobody -P /run/bozohttpd.pid /srv/http
 #
 # Enable PHP and set default to index.php (instead of index.html):
-#ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -x index.php -C .php /usr/bin/php-cgi /srv/http
+#ExecStart=/usr/bin/bozohttpd -b -f -s -C .php /usr/bin/php-cgi -x index.php -U nobody -P /run/bozohttpd.pid /srv/http
 #
 # Enable Lua scripting:
-#ExecStart=/usr/bin/bozohttpd -L rest /usr/lib/cgi-bin/printenv.lua -b -f -s -U nobody -P /run/bozohttpd.pid /srv/http
+#ExecStart=/usr/bin/bozohttpd -b -f -s -L rest /usr/lib/cgi-bin/printenv.lua -U nobody -P /run/bozohttpd.pid /srv/http
 
 [Install]
 WantedBy=multi-user.target
