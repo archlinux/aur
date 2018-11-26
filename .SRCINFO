@@ -1,6 +1,6 @@
 pkgbase = diaspora-postgresql-git
 	pkgdesc = A distributed privacy aware social network (development head) (PostgreSQL)
-	pkgver = 0.7.7.1.r230.g5b0066a42
+	pkgver = 0.7.8.0.r157.g6824ef5ba
 	pkgrel = 1
 	url = https://diasporafoundation.org
 	install = diaspora.install
@@ -17,6 +17,7 @@ pkgbase = diaspora-postgresql-git
 	depends = gsfonts
 	depends = libtirpc
 	depends = postgresql-libs
+	optdepends = jemalloc: lower memory consumption
 	optdepends = postgresql: Database server
 	conflicts = diaspora-mysql
 	conflicts = diaspora-postgresql

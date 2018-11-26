@@ -1,13 +1,13 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql-git'
-pkgver=0.7.7.1.r230.g5b0066a42
+pkgver=0.7.8.0.r157.g6824ef5ba
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (PostgreSQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
 depends=('ruby2.3' 'ruby2.3-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'postgresql-libs')
-optdepends=('postgresql: Database server')
+optdepends=('jemalloc: lower memory consumption' 'postgresql: Database server')
 makedepends=('nodejs')
 conflicts=('diaspora-mysql' 'diaspora-postgresql' 'diaspora-mysql-git')
 options=(!strip)
