@@ -1,7 +1,7 @@
 pkgbase = ocaml-curses
 	pkgdesc = Objective Caml libs for curses
-	pkgver = 1.0.3
-	pkgrel = 8
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = http://www.nongnu.org/ocaml-tmk/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ocaml-curses
 	makedepends = ocaml
 	makedepends = ocaml-findlib
 	options = !strip
-	source = http://download.savannah.gnu.org/releases/ocaml-tmk/ocaml-curses-1.0.3.tar.gz
-	md5sums = 3c11b46b7c057f8fd110ace319589877
+	source = http://download.savannah.gnu.org/releases/ocaml-tmk/ocaml-curses-1.0.4.tar.gz
+	md5sums = d99dce720b60cfc7297ca77b5be4aa8d
 
 pkgname = ocaml-curses
 

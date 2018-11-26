@@ -3,8 +3,8 @@
 # Contributor: Thomas S Hatch <thatch45 (at) Gmail (dot) com>
 
 pkgname=ocaml-curses
-pkgver=1.0.3
-pkgrel=8
+pkgver=1.0.4
+pkgrel=1
 license=('LGPL')
 arch=('i686' 'x86_64')
 pkgdesc="Objective Caml libs for curses"
@@ -13,9 +13,10 @@ depends=()
 options=('!strip')
 makedepends=('ocaml' 'ocaml-findlib')
 source=("http://download.savannah.gnu.org/releases/ocaml-tmk/${pkgname}-${pkgver}.tar.gz")
-md5sums=('3c11b46b7c057f8fd110ace319589877')
+md5sums=('d99dce720b60cfc7297ca77b5be4aa8d')
 
 build() {
+  echo Warning: this package currently does not check the *.sig file
   cd "${srcdir}/${pkgname}-${pkgver}"
   autoreconf
   ./configure --enable-widec
