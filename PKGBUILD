@@ -1,4 +1,6 @@
 # Maintainer:  Andrew Shelyakov <andrew.shelyakov@ya.ru>
+# Contributor: Aleksey Vasilenko <aleksey.vasilenko@gmail.com>
+# Contributor: Iliya Ivanov <i.ivanov@proforge.org>
 
 _pkgbase='php'
 pkgbase="${_pkgbase}-zts"
@@ -21,7 +23,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.2.1
+pkgver=7.2.12
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
@@ -31,13 +33,13 @@ makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libso
 checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
-sha512sums=('2445f2cff20214b521c48592e5ab42b770c291702178d7cb2a84912c81b7e5d2cc45948a3a4a7830194fa444708d544c73efbaa8e90c95ab77937f7feffb2ffc'
+sha512sums=('bbeaed1278d0d2f1ecb2249dab1ebaab1489ef43be0797dac57d8b523d8e5d284166e6cbf52095f5d34eef447fbdeb0c6916caaa5770221a180ec064f4ffcad8'
             'SKIP'
-            '65ea5cb38c1fc1874b2a4d08bc52443f9ed5dcc92cf99023a74292c78f9074516296f56c768f7efa8a1f0838feac47b356d3da6fdb1199419bebec3a93204ae6'
+            '9909867cf8c11e6e150c1f10a7ea2257873d55482efaab9ee68f76be3fea13c0d5438a9f47a68d605ec470a5d56b38a776d4f538a8858d9142e42fe3d60b7a37'
             'eccbe1a0c7b2757ab3c982c871cc591a66ad70f085aaa0d44f93cacacedc7b8fd21b8d0c66471327ff070db1bab1ab83a802f6fa190f33bdd74c134975e3910e'
-            '87453c9f41204bc7a20cbf2a85ee44965f7754529e2c17fb60bdfe42ded7a894d6e7fcc30fe6c650ea5f92f95920161522ef3ce0f355686a2fed7f0857abdd5c'
+            'c9efb3f50770d6ddfa908b7f562355121f07ce528271e72ba188a4f1c788e264fc117c220053aaded42040825c03f3f17131a62a67d96cc91fd9da472e085deb'
             '824e9a0d10063283357d49a81ab49bf834afd24f098482bdbaa9ab60bbad2b0dea6f5879259b73717d437626b02fb4f2d3ef68b7bcbb26bee274a7b61144720f'
-            '1606178f55dee8ca6a3cf47c7db486dca0c261bfffbaf4f69450a3497643910c65f8ee1543839ae4213d8b396afc6e5f86141accac553545c35fe234a50f56e6')
+            '85000bcb4f5674bfcbac7f32aeb28c523904a23da716e7fd982ac225845843e0acb33c0b8552107c234b1dd106337ad0a6792253f200980b88a6f6239ec982d0')
 validpgpkeys=('B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F'
               '1729F83938DA44E27BA0F4D3DBDB397470D12172')
 

@@ -10,7 +10,7 @@
      fi
 --- configure.orig
 +++ configure
-@@ -7018,7 +7018,6 @@
+@@ -7019,7 +7019,6 @@
  
      fi
    else
@@ -18,3 +18,55 @@
      if test -n "$APACHE_THREADED_MPM"; then
  
    enable_maintainer_zts=yes
+@@ -30232,6 +30231,9 @@
+ 		if test -f $i/include/enchant/enchant.h; then
+ 			ENCHANT_DIR=$i
+ 			ENCHANT_INCDIR=$i/include/enchant
++		elif test -f $i/include/enchant-2/enchant.h; then
++			ENCHANT_DIR=$i
++			ENCHANT_INCDIR=$i/include/enchant-2
+ 		elif test -f $i/include/enchant.h; then
+ 			ENCHANT_DIR=$i
+ 			ENCHANT_INCDIR=$i/include
+@@ -34362,15 +34364,16 @@
+   if test "$PHP_FREETYPE_DIR" != "no"; then
+ 
+     for i in $PHP_FREETYPE_DIR /usr/local /usr; do
+-      if test -f "$i/bin/freetype-config"; then
+-        FREETYPE2_DIR=$i
+-        FREETYPE2_CONFIG="$i/bin/freetype-config"
++
++	if test -d "$i/include/freetype2"; then
++		FREETYPE2_DIR=$i/include/freetype2
++		FREETYPE2_CONFIG="pkg-config freetype2"
+         break
+       fi
+     done
+ 
+     if test -z "$FREETYPE2_DIR"; then
+-      as_fn_error $? "freetype-config not found." "$LINENO" 5
++		as_fn_error $? "freetype2 not found." "$LINENO" 5
+     fi
+ 
+     FREETYPE2_CFLAGS=`$FREETYPE2_CONFIG --cflags`
+@@ -36033,15 +36036,16 @@
+   if test "$PHP_FREETYPE_DIR" != "no"; then
+ 
+     for i in $PHP_FREETYPE_DIR /usr/local /usr; do
+-      if test -f "$i/bin/freetype-config"; then
+-        FREETYPE2_DIR=$i
+-        FREETYPE2_CONFIG="$i/bin/freetype-config"
++
++	if test -d "$i/include/freetype2"; then
++		FREETYPE2_DIR=$i/include/freetype2
++		FREETYPE2_CONFIG="pkg-config freetype2"
+         break
+       fi
+     done
+ 
+     if test -z "$FREETYPE2_DIR"; then
+-      as_fn_error $? "freetype-config not found." "$LINENO" 5
++		as_fn_error $? "freetype2 not found." "$LINENO" 5
+     fi
+ 
+     FREETYPE2_CFLAGS=`$FREETYPE2_CONFIG --cflags`
