@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=oomox-git
-pkgver=1.7.1.3
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Graphical application for generating different color variations
 of Oomox(Numix-based), Materia (ex-Flat-Plat) and Arc themes
@@ -63,6 +63,9 @@ optdepends=(
 	'xorg-xrdb: for the `xresources` theme'
 	'breeze-icons: more fallback icons'
 	'gksu: for applying Spotify theme from GUI without polkit'
+	'colorz: additional image analyzer for "Import colors from image" plugin'
+	'python-colorthief: additional image analyzer for "Import colors from image" plugin'
+	'python-haishoku: additional image analyzer for "Import colors from image" plugin'
 )
 options=(
 	'!strip'

@@ -826,3 +826,12 @@ Wed Nov 21 22:14:31 2018 +0100
 1.7.1.3         Hotfix release 1.7.1.3
     
     basic terminal template wasn't reverting correctly to dark/light colors
+
+
+Mon Nov 26 02:05:34 2018 +0100
+-------------------------------------------------
+1.7.2           Release 1.7.2
+    
+    Notable changes:
+     2018-11-26 d37ac8a1 actionless feat(plugins: import colors from image): add optional support for colorz, colorthief and haishoku (if installed)
+     2018-11-22 1b5336c4 actionless feat(terminal: generate_theme_from_full_palette): limit maximum brightness of colors
