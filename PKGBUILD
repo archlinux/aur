@@ -2,7 +2,7 @@
 
 _name=get_version
 pkgname=python-$_name
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='Automatically use the latest “vX.X.X” tag as version in your Python package'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=(python python-setuptools)
 _wheel="$_name-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
-sha256sums=('4bc0e529f9678eb8188265205924499e37e22054a29036ed4ca2437ff96ab7e5')
+sha256sums=('2405f53bbd15cc2f4f3f6548b2ac60331b6d68c5b94c95267d9286078f7c468e')
 noextract=("$_wheel")
 
 package() {
