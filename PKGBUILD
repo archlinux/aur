@@ -1,8 +1,8 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 
 pkgname=arm-linux-gnueabihf-armcl-opencl+neon
-pkgver=17.12
-pkgrel=0
+pkgver=18.08
+pkgrel=1
 
 epoch=
 pkgdesc="ARM Computer Vision and Machine Learning Library (armv7a OpenCL + NEON Backends)"
@@ -27,7 +27,7 @@ sha1sums=('SKIP')
 build() {
   cd "${srcdir}/ComputeLibrary"
   git checkout "v$pkgver"
-  scons -j2 \
+  scons -j`cat /proc/cpuinfo | grep -i "processor" | wc -l` \
   os=linux arch=armv7a build=cross_compile \
   Werror=0 debug=0 asserts=0 \
   neon=1 \
