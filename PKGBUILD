@@ -1,8 +1,8 @@
-# Maintainer: Spencer Harmon <spencer at rsitex dot com>
+# Maintainer: Spencer Harmon <spencer dot harmon at higher-state dot com>
 
 pkgname="ulam-git"
-pkgver=3.0.11.r0.g3744fabc
-pkgrel=3
+pkgver=3.0.12.r130.g0f2c4869
+pkgrel=4
 epoch=
 pkgdesc="Github version of ulam compiler and MFM simulator"
 arch=('any')
@@ -20,6 +20,7 @@ depends=('make'
 	'perl-crypt-openssl-rsa'
 	'perl-capture-tiny')
 makedepends=('git')
+optdepends=('perl-splat-git: Support for the SPLAT programming language')
 checkdepends=()
 optdepends=()
 provides=()
@@ -55,6 +56,7 @@ prepare() {
 
 	make -C MFM
 	make -C ULAM
+
 	perl ULAM/share/perl/extractDistro.pl bin . "$srcdir/ulam" ulam
 	perl ULAM/share/perl/extractDistro.pl src . "$srcdir/ulam" ulam
 }
@@ -65,6 +67,7 @@ build() {
 
 package() {
 	make -C "$srcdir/ulam" DESTDIR="$pkgdir/" install
+
 	mkdir -p "$pkgdir/usr/bin"
 	for f in `ls "$pkgdir/usr/lib/ulam/ULAM/bin"`; \
 		do ln -sf "/usr/lib/ulam/ULAM/bin/$f" "$pkgdir/usr/bin/";done
