@@ -2,7 +2,7 @@
 pkgname=metaio
 _pkgname=${pkgname}
 pkgver=8.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
 arch=(any)
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
