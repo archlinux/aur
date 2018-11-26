@@ -5,7 +5,7 @@
 pkgname=caffe-git
 _srcname=caffe
 pkgver=1.0.r132.g99bd99795
-pkgrel=6
+pkgrel=7
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (cpu only, git version)'
 arch=('i686' 'x86_64')
 url='https://caffe.berkeleyvision.org/'
@@ -29,12 +29,18 @@ provides=('caffe' 'caffe-cpu-git')
 conflicts=('caffe' 'caffe-cpu-git')
 replaces=('caffe-cpu-git')
 source=('git+https://github.com/BVLC/caffe.git'
-        'Makefile.config')
+        'Makefile.config'
+        'caffe-git-opencv4-fix.patch')
 sha256sums=('SKIP'
-            'dfa45f0d358b75c28049602d68d6468478c39d45518d584290af76d4ef74738e')
+            '78137e80f764f51c0d4eeed5ce566f3745614b572b481c50197199291d34e2cd'
+            '2072c8ca1393b53ef280a15c43af940cc9bf1419ae32b3d8a6541b10b8cb50e9')
 
 prepare() {
     cp -af "${srcdir}/Makefile.config" "${srcdir}/${_srcname}"
+    
+    # fix build with opencv 4.0
+    cd "$_srcname"
+    patch -Np1 -i "${srcdir}/caffe-git-opencv4-fix.patch"
 }
 
 pkgver() {
