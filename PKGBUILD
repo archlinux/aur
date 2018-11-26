@@ -3,7 +3,7 @@
 
 pkgname=mattermost-push-proxy
 pkgver=5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Mattermost Push Notifications Service'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mattermost/mattermost-push-proxy.git"
@@ -22,7 +22,7 @@ source=(
 sha512sums=(
     '498cd563538cff338e63e160828eb9b15a3b7e33ea7ae153f96de77cb72db3256c48607ebe7793a5f565009364259a306fecfb022f960b61a26682cd19c597c0'
     '6d646673f10d2e291d37bbfa53c0314f076922bf76ceadcecad8febb7ac377fedc1bbbc82d118e161ad662e1f363fb5ca0b3750a0601eedf56bdb9c5e084ede4'
-    'SKIP'
+    'bcc6deb1afd470bccc9bea39a13497fbdc91d8108138dfb7e62a5bcf3569bc4b810121403e0f877ba91245d9bf95c254d28d5e826777e292c0bc9b358a79ba80'
 )
 install="${pkgname}.install"
 
