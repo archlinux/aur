@@ -1,6 +1,6 @@
 # Maintainer: Lucas Malandrino <lucas.malandrino@gmail.com>
 pkgname='edex-ui'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A science fiction desktop running everywhere. Awesome."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('npm')
 provides=('edex-ui')
 install="edex-ui.install"
 source=("https://github.com/GitSquared/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('bcddefb20c9adb2154570af7a1aefcf08f099e1a702006fd1b5f9a7a2ea1e0e2')
+sha256sums=('78aabf062fef467ddfb730c4336c9446a1389efdf2b81240ba4fb4bc93abba8e')
 
 build() {
     cd "${pkgname}-${pkgver}"
