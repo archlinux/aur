@@ -22,7 +22,7 @@ _kernelver="4.14.82-1"
 _extramodules="4.14.82-1-lts"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=1
+pkgrel=2
 makedepends=("linux-lts-headers=${_kernelver}" "spl-linux-lts-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
@@ -47,7 +47,7 @@ package_zfs-linux-lts() {
     install=zfs.install
     provides=("zfs")
     groups=("archzfs-linux-lts")
-    conflicts=("zfs-dkms" "zfs-dkms-git" 'zfs-linux-lts-git')
+    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" 'zfs-linux-lts-git' 'zfs-linux-lts-rc')
     cd "${srcdir}/zfs-${_zfsver}"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
@@ -59,7 +59,7 @@ package_zfs-linux-lts() {
 package_zfs-linux-lts-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
     provides=("zfs-headers")
-    conflicts=("zfs-headers" "zfs-dkms" "zfs-dkms-git")
+    conflicts=("zfs-headers" "zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc")
     cd "${srcdir}/zfs-${_zfsver}"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
