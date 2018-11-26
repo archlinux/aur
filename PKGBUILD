@@ -3,8 +3,8 @@
 # Maintainer: Antoni Boucher <bouanto at zoho dot com>
 
 pkgname=('termite-bepo')
-pkgver=13
-pkgrel=3
+pkgver=14
+pkgrel=2
 pkgdesc="A simple VTE-based terminal (bépo version)"
 url="https://github.com/thestinger/termite/"
 license=('LGPL')
@@ -12,7 +12,7 @@ arch=('x86_64')
 depends=('gtk3' 'pcre2' 'gnutls' 'vte-common' 'termite-terminfo')
 makedepends=('git' 'ncurses' 'intltool' 'gperf' 'gtk-doc')
 conflicts=('termite')
-_vtever=0.50.2.a
+_vtever=0.54.2.a
 source=("git+https://github.com/antoyo/termite"
         "git+https://github.com/thestinger/vte-ng#tag=$_vtever"
         "termite-util::git+https://github.com/thestinger/util")
