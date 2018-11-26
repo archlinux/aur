@@ -1,7 +1,7 @@
 # Maintainer: Baudouin Feildel <baudouin_aur@feildel.fr>
 pkgname=pgpointcloud
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A PostgreSQL extension for storing point cloud (LIDAR) data"
 arch=('i686' 'x86_64')
 url="https://github.com/pgpointcloud/pointcloud"
