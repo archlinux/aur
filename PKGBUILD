@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop-git
 _pkgname=${pkgname%-git}
-pkgver=3.3.2872.r14.ge602498
+pkgver=3.4.2879.r6.gd0abc63f
 pkgrel=1
 pkgdesc='Modern, private messenger'
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop-bin' 'wire-desktop')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss' 'xdg-utils')
-makedepends=('cargo' 'npm' 'python2')
+makedepends=('cargo' 'npm' 'python2' 'yarn')
 optdepends=('hunspell-en: for English spellcheck support'
             'noto-fonts-emoji: for colorful emoji made by Google'
             'ttf-emojione: for colorful emoji made by EmojiOne')
@@ -26,8 +26,9 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  npm install
-  $(npm bin)/grunt 'linux-other'
+  yarn
+  yarn build:ts
+  npx grunt 'linux-other'
 }
 
 package() {

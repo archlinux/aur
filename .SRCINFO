@@ -1,6 +1,6 @@
 pkgbase = wire-desktop-git
 	pkgdesc = Modern, private messenger
-	pkgver = 3.3.2872.r14.ge602498
+	pkgver = 3.4.2879.r6.gd0abc63f
 	pkgrel = 1
 	url = https://wire.com/
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = wire-desktop-git
 	makedepends = cargo
 	makedepends = npm
 	makedepends = python2
+	makedepends = yarn
 	depends = alsa-lib
 	depends = gconf
 	depends = gtk2
