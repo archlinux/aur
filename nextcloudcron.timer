@@ -1,5 +1,5 @@
 [Unit]
-Description=Run Nextcloud cron.php every 15 minutes
+Description=Nextcloud cron.php
 
 [Timer]
 OnBootSec=5min

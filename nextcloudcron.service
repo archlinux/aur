@@ -1,5 +1,5 @@
 [Unit]
-Description=Nextcloud cron.php job
+Description=Nextcloud cron.php
 
 [Service]
 User=http

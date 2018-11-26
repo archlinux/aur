@@ -1,14 +1,18 @@
 pkgbase = nextcloud-systemd-cron
 	pkgdesc = Systemd service and timer for Nextcloud Cron background jobs (see Nextcloud Arch Wiki entry).
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	install = nextcloud-systemd-cron.install
 	arch = any
 	license = GPL
 	source = nextcloudcron.service
 	source = nextcloudcron.timer
-	md5sums = 95d8686b2480f1ab73ba5ccd7f672fae
-	md5sums = 762473fd2fa1ed27d878d39b94de736c
+	source = nextcloud-preview.service
+	source = nextcloud-preview.timer
+	md5sums = 78dbe72845222ad01aafb60f32f828e8
+	md5sums = c8fabd54720ad97c472a842a1d91f5b1
+	md5sums = a019ced938dc5a6c1cc59e05c5a88be3
+	md5sums = 435d1a3537471163e3cc1c304e4fae76
 
 pkgname = nextcloud-systemd-cron
 

@@ -1,0 +1,10 @@
+[Unit]
+Description=Nextcloud preview generation
+
+[Timer]
+OnBootSec=5min
+OnCalendar=weekly
+Persistent=True
+
+[Install]
+WantedBy=timers.target

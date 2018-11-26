@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schrempf <dominik.schrempf@gmail.com>
 pkgname=nextcloud-systemd-cron
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 epoch=
 pkgdesc="Systemd service and timer for Nextcloud Cron background jobs (see Nextcloud Arch Wiki entry)."
@@ -20,9 +20,13 @@ options=()
 install=nextcloud-systemd-cron.install
 changelog=
 source=("nextcloudcron.service"
-        "nextcloudcron.timer")
-md5sums=('95d8686b2480f1ab73ba5ccd7f672fae'
-         '762473fd2fa1ed27d878d39b94de736c')
+        "nextcloudcron.timer"
+        "nextcloud-preview.service"
+        "nextcloud-preview.timer")
+md5sums=('78dbe72845222ad01aafb60f32f828e8'
+         'c8fabd54720ad97c472a842a1d91f5b1'
+         'a019ced938dc5a6c1cc59e05c5a88be3'
+         '435d1a3537471163e3cc1c304e4fae76')
 noextract=()
 
 # prepare() {
@@ -46,6 +50,8 @@ package() {
   # make DESTDIR="$pkgdir/" install
   install -D -m 644 nextcloudcron.service $pkgdir/etc/systemd/system/nextcloudcron.service
   install -D -m 644 nextcloudcron.timer $pkgdir/etc/systemd/system/nextcloudcron.timer
+  install -D -m 644 nextcloud-preview.service $pkgdir/etc/systemd/system/nextcloud-preview.service
+  install -D -m 644 nextcloud-preview.timer $pkgdir/etc/systemd/system/nextcloud-preview.timer
 }
 
 # vim:set ts=2 sw=2 et:
