@@ -1,47 +1,42 @@
-# Maintainer: Ivan <kaptoxic at yahoo com>
+# Maintainer: Ashwin Vishnu <ashwinvis+arch at pm dot me>
+# Contributor: Ivan <kaptoxic at yahoo com>
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: Janne Haapsaari <haaja@iki.fi>
 
 pkgname=gnome-shell-pomodoro-git
-pkgver=r945.f002440
-pkgrel=3
-_gitbranch='gnome-3.26'
+pkgver=0.14.0.r1.g7654eb7
+pkgrel=1
+_gitbranch='gnome-3.30'
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
-url='https://github.com/codito/gnome-shell-pomodoro/'
+url="https://github.com/codito/gnome-pomodoro"
 license=('GPL3')
 depends=('gnome-desktop' 'libcanberra' 'gstreamer' 'gobject-introspection' 'libpeas' 'appstream-glib')
 makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x' 'perl-xml-sax-expat')
 conflicts=('gnome-shell-pomodoro')
 provides=('gnome-shell-pomodoro')
-source=("$pkgname"::"git+https://github.com/codito/gnome-shell-pomodoro.git#branch=${_gitbranch}")
+source=("${pkgname}"::"git+https://github.com/codito/gnome-pomodoro.git#branch=${_gitbranch}")
 sha256sums=('SKIP')
-install='gschemas.install'
+install=gschemas.install
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" \
-      "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${pkgname}"
+
+  # Get the version number.
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  # Fixes some build issues when 'docbook2x' package is installed
-  # Big thanks to user maus25 for the fix
-  #sed -i "s/docbook2man \$?/docbook2man --sgml \$?/g" man/Makefile.am
-
-  # https://github.com/codito/gnome-pomodoro/issues/332
-  sed -i "s/\[ \$datadir\/ = \/usr\/share\/\*/[ \"\$datadir\/\" = \"\/usr\/share\/\"/" configure.ac
-
+  cd "${srcdir}/${pkgname}"
   ./autogen.sh --prefix=/usr --datadir=/usr/share
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}" install
 }
