@@ -1,6 +1,6 @@
 pkgbase = arm-none-eabi-gcc53-linaro-alternative
 	pkgdesc = The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target.
-	pkgver = 5.3_2016.02
+	pkgver = 5.3_2018.11
 	pkgrel = 1
 	url = https://releases.linaro.org/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = arm-none-eabi-gcc53-linaro-alternative
 	options = zipman
 	options = docs
 	source = http://releases.linaro.org/components/toolchain/gcc-linaro/5.3-2016.02/gcc-linaro-5.3-2016.02.tar.xz
-	source = http://releases.linaro.org/15.01/components/toolchain/newlib-linaro/newlib-linaro-2.2.0-2015.01.tar.xz
+	source = http://releases.linaro.org/archive/15.01/components/toolchain/newlib-linaro/newlib-linaro-2.2.0-2015.01.tar.xz
 	source = 0100-gcc-fix-build-with-gcc-6.patch
 	source = 0200-gcc-no-exceptions.patch
 	source = 0300-gcc-multilib2.patch

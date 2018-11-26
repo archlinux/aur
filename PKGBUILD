@@ -10,7 +10,7 @@ _reldate=20${_relshortdate}
 _relverdate=${_relver}-${_reldate}
 # This is how I want to define the pkgver, but the AUR doesn't understand it, because multiple _ characters are not allowed
 #pkgver=${_relver}_${_reldate//-/_}
-pkgver=5.3_2016.02
+pkgver=5.3_2018.11
 pkgrel=1
 _newlibver=linaro-2.2.0-2015.01
 _newlibvershort=15.01
@@ -26,7 +26,7 @@ makedepends=('flex' 'bison')
 #conflicts=('arm-none-eabi-gcc' 'cross-arm-none-eabi-gcc')
 options=(staticlibs !libtool !emptydirs !strip zipman docs)
 source=(http://releases.linaro.org/components/toolchain/gcc-linaro/${_relverdate}/gcc-linaro-${_relverdate}.tar.xz
-        http://releases.linaro.org/${_newlibvershort}/components/toolchain/newlib-linaro/newlib-${_newlibver}.tar.xz
+        http://releases.linaro.org/archive/${_newlibvershort}/components/toolchain/newlib-linaro/newlib-${_newlibver}.tar.xz
         0100-gcc-fix-build-with-gcc-6.patch
         0200-gcc-no-exceptions.patch
         0300-gcc-multilib2.patch
