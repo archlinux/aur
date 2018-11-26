@@ -1,14 +1,13 @@
 pkgbase = openfoam
 	pkgdesc = The open source CFD toolbox
 	pkgver = 6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.openfoam.org
 	install = openfoam.install
 	arch = x86_64
 	license = GPL
 	makedepends = bash
 	depends = bzip2
-	depends = openmpi
 	depends = paraview
 	depends = parmetis
 	depends = scotch
