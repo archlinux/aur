@@ -1,24 +1,24 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: whisky <archlinux.cle(at)gmail.com>
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=scim-chewing
-pkgver=0.3.5
-pkgrel=4
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Traditional Chinese input method module for SCIM'
 url='http://chewing.im/'
 license=('GPL')
 arch=('x86_64')
 makedepends=('intltool')
 depends=('scim' 'libchewing')
-source=("https://github.com/chewing/scim-chewing/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2" 
-        scim-chewing-libchewing04.patch)
-sha256sums=('e7ae2356a6ca11c342795e3a14ad7667f76a0af4be23e01ea60acc6d4af72d64'
-            '0dd0ecc6b4f03b599dec97812a7c4534a9edca0243477222a87cd75da74d1c93')
+source=("$pkgname-$pkgver.tar.gz"::"https://github.com/chewing/scim-chewing/archive/v$pkgver.tar.gz")
+sha256sums=('491b127784fa38734f3062fd57ea57e54f5f44d37b551ab25aab10c565cf6ebb')
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  patch -p1 -i ../scim-chewing-libchewing04.patch # Fix build with libchewing 0.4 (Fedora)
+  # ChangeLog is deprecated, but autotool expects one.
+  touch ChangeLog
   autoreconf -vfi
   intltoolize --force
 }
