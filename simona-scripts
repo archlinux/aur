@@ -14,7 +14,7 @@ boot-kernel-list  - boot     - list kernels inside /boot, extract version (lile 
 uuid-change       - uuid     - change uuid of a volume
 EOF
   exit
-elseif [[ $1 == "--version" ]] ; then
+elseif [[ $1 == "--version" ]]
   echo "simona-scripts Version 0.0"
   exit
 fi
