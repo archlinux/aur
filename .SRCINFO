@@ -1,0 +1,16 @@
+pkgbase = recordurbate
+	pkgdesc = A Bot to automatically record Chaturbate live streams
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/maki-chan/Recordurbate
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = youtube-dl
+	depends = ffmpeg
+	source = git+https://github.com/maki-chan/Recordurbate.git#tag=1.2.0
+	sha256sums = SKIP
+
+pkgname = recordurbate
+
