@@ -1,0 +1,17 @@
+pkgbase = dafny-git
+	pkgdesc = Dafny is a verification-aware programming language
+	pkgver = v2.2.0.r19.g45af975d
+	pkgrel = 1
+	url = https://github.com/Microsoft/dafny.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = wget
+	depends = gcc-libs
+	provides = dafny
+	source = dafny-git::git+https://github.com/Microsoft/dafny.git
+	md5sums = SKIP
+
+pkgname = dafny-git
+
