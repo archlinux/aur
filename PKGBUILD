@@ -45,7 +45,7 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-### Running with a 1000 HZ tick rate 
+### Running with a 1000 HZ tick rate
 _1k_HZ_ticks=
 
 ### Do not edit below this line unless you know what you're doing
