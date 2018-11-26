@@ -23,7 +23,7 @@ build() {
   cd aGrUM-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    CXXFLAGS="-fno-strict-aliasing -fno-tree-vrp" ${_arch}-cmake -DBUILD_PYTHON=OFF ..
+    CXXFLAGS="-fno-strict-aliasing" ${_arch}-cmake -DBUILD_PYTHON=OFF ..
     make
     popd
   done
