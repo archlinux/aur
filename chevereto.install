@@ -1,0 +1,7 @@
+post_install () {
+    set-chevereto-perm
+}
+
+post_upgrade() {
+    set-chevereto-perm
+}
