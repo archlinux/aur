@@ -3,7 +3,7 @@
 pkgname=caffe-cuda
 _srcname=caffe
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (with cuda)'
 arch=('x86_64')
 url='https://caffe.berkeleyvision.org/'
@@ -26,12 +26,18 @@ makedepends=('gcc7' 'boost' 'doxygen' 'texlive-core')
 provides=('caffe')
 conflicts=('caffe')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/BVLC/caffe/archive/${pkgver}.tar.gz"
-        'Makefile.config')
+        'Makefile.config'
+        'caffe-1.0-opencv4-fix.patch')
 sha256sums=('71d3c9eb8a183150f965a465824d01fe82826c22505f7aa314f700ace03fa77f'
-            '40d725152bc78326ed230ab9598dc0aec90764cc82b66631ed6d2594ea7d7ae5')
+            'e3e294f15f46ff46b7243297cb562cd5a5b11d540231eb2874d2c21588ceaf54'
+            '2072c8ca1393b53ef280a15c43af940cc9bf1419ae32b3d8a6541b10b8cb50e9')
 
 prepare() {
     cp -af "${srcdir}/Makefile.config" "${srcdir}/${_srcname}-${pkgver}"
+    
+    # fix build with opencv 4.0
+    cd "${_srcname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/caffe-1.0-opencv4-fix.patch"
 }
 
 build() {
