@@ -2,7 +2,7 @@
 # https://code.alephobjects.com/w/cura-lulzbot/
 pkgname=cura-lulzbot
 pkgver=3.2.32
-pkgrel=1
+pkgrel=2
 pkgdesc='Cura LulzBot Edition for LulzBot 3D Printers by Aleph Objects, Inc.'
 arch=('x86_64')
 url='https://www.lulzbot.com/cura'
@@ -15,8 +15,8 @@ prepare() {
   # Unpack the tarball containing the 'usr/' directory,
   # where all the essentials reside within the debian package
   tar zxf "${srcdir}/data.tar".gz -C "${srcdir}"
-
-  sed -i 's;LD_LIBRARY_PATH=;LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/6.4.1:;' "${srcdir}/usr/bin/cura-lulzbot"
+  fortran_lib_dir=`dirname $(find /usr/lib/gcc/x86_64-pc-linux-gnu/ -name libgfortran.so.3)`
+  sed -i "s;LD_LIBRARY_PATH=;LD_LIBRARY_PATH=${fortran_lib_dir}:;" "${srcdir}/usr/bin/cura-lulzbot"
 }
 
 package() {
