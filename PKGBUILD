@@ -1,31 +1,47 @@
-# Maintainer: Jeroen Rijken <jeroen dot rijken at gmail dot com>
+# Maintainer: Marco Donadoni <marcodonadoni at live dot it>
+# Contributor: Jeroen Rijken <jeroen dot rijken at gmail dot com>
 pkgname=archi
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source, cross-platform tool and editor to create ArchiMate models."
 arch=('x86_64')
 url="http://www.archimatetool.com/"
 license=('MIT')
-depends=('java-runtime=8')
+depends=('java-runtime=8' 'bash')
 optdepends=('webkitgtk2: hints view support')
 provides=('archi')
-source=(https://archimatetool.com/downloads/root43/Archi-Linux64-$pkgver.tgz $pkgname.desktop)
-sha256sums=('e99ea065110b2c0b3906859c0ff4d2efd2242cc611465d52da55b57ccfba7c22'
-            'eb97e9fb2af5b15b710ddace817d08fe73055d27816aaf790a6cd6bf26643714')
+source=('https://www.archimatetool.com/downloads/4.3.0/Archi-Linux64-4.3.tgz'
+        "$pkgname.desktop"
+        "$pkgname-launcher.sh"
+        'LICENSE')
+md5sums=('5ba66c93f8d992f8adc7fcacb131eeef'
+         '7b9a0cf8e67790ff9ca1afc6578e3adc'
+         '7813e905142baeb290d396e349beeb13'
+         '66653b079752362c3e9fc7142027cb7e')
 
 package() {
-  cd $srcdir
-  install -d -m755 $pkgdir/{opt/,/usr/{,share/{pixmaps,applications,licenses/$pkgname,doc/$pkgname}}}
-  
-  install -m644 $srcdir/Archi/docs/* $pkgdir/usr/share/doc/$pkgname/
-  install -m644 $srcdir/Archi/README $pkgdir/usr/share/doc/$pkgname/
-  install -m644 $srcdir/Archi/icon.xpm $pkgdir/usr/share/pixmaps/$pkgname.xpm
-  install -m644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  
-  rm -R $srcdir/Archi/docs
-  rm $srcdir/Archi/icon.xpm $srcdir/Archi/README $srcdir/Archi/Archi-Ubuntu.sh
-  cp -R $srcdir/Archi/ $pkgdir/opt/$pkgname
+  cd "$srcdir"
 
-  chmod 755 $pkgdir/opt/$pkgname/Archi
+  # Docs
+  install -d "$pkgdir/usr/share/doc/$pkgname"
+  install -m644 Archi/docs/*       "$pkgdir/usr/share/doc/$pkgname/"
+  install -m644 Archi/README       "$pkgdir/usr/share/doc/$pkgname/"
+
+  # Icon and desktop file
+  install -Dm644 Archi/icon.xpm     "$pkgdir/usr/share/pixmaps/$pkgname.xpm"
+  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  # Launcher
+  install -Dm755 "$pkgname-launcher.sh" "$pkgdir/usr/bin/$pkgname"
+  
+  # Copy binaries
+  rm -R Archi/docs
+  rm Archi/icon.xpm Archi/README Archi/Archi-Ubuntu.sh
+  install -d "$pkgdir/opt"
+  cp -R Archi/ "$pkgdir/opt/$pkgname"
+  chmod 755 "$pkgdir/opt/$pkgname/Archi"
+
+  # Install license
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
