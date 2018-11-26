@@ -1,0 +1,20 @@
+pkgbase = perl-splat-git
+	pkgdesc = SPLAT programming language for the MFM simulator.
+	pkgver = 0
+	pkgrel = 1
+	url = https://www.github.com/daveackley/SPLAT
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = perl-file-sharedir-install
+	makedepends = git
+	depends = perl
+	depends = perl-file-sharedir
+	depends = ulam-git
+	options = !buildflags
+	options = !makeflags
+	source = git://www.github.com/daveackley/SPLAT
+	md5sums = SKIP
+
+pkgname = perl-splat-git
+
