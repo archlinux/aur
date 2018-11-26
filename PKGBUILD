@@ -69,7 +69,7 @@ _NUMAdisable=
 _localmodcfg=
 
 pkgbase=linux-zen-bcachefs-git
-_srcver=4.19.4-zen-bcachefs1
+_srcver=4.19.4-zen1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
