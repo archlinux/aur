@@ -4,7 +4,7 @@ _module="${_name}-sdk"
 _fullname="${_module}-python"
 pkgname=("python-${_name}" "python2-${_name}")
 pkgver="7.0.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Balena SDK for Python"
 arch=("any")
 url="https://github.com/balena-io/resin-sdk-python"
@@ -40,7 +40,7 @@ package_python2-balena() {
     depends=("python2-pyjwt>=1.5.0"
     "python2-twisted>=18.7.0"
     "python2-pyotp>=2.2.5"
-    "python2-pyopenssl==18.0.0"
+    "python2-pyopenssl>=18.0.0"
     "python2-service-identity"
     "python2-requests>=2.19.1")
     cd "${srcdir}/${_fullname}-${pkgver}-python2"
