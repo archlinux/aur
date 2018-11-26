@@ -1,0 +1,17 @@
+pkgbase = pkgparser
+	pkgdesc = A simple tool to parse pacman output into a dialog
+	pkgver = v0.00
+	pkgrel = 1
+	url = https://github.com/ssfdust/pkgparser
+	arch = any
+	license = GPL
+	depends = dialog
+	depends = xclip
+	optdepends = xsel
+	provides = pkgparser
+	conflicts = pkgparser
+	source = https://github.com/ssfdust/pkgparser/releases/download/v0.00/pkgparser
+	md5sums = ea303ebabc9624796c81ad40fdde6f2f
+
+pkgname = pkgparser
+
