@@ -2,7 +2,7 @@
 # Author: Carl Bordum Hansen <carl@bordum.dk>
 
 pkgname=manly
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A compliment to the man pages."
 url="https://github.com/carlbordum/manly"
