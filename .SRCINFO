@@ -1,7 +1,7 @@
 pkgbase = itk-snap
 	pkgdesc = ITK-SNAP is a software application used to segment structures in 3D medical images
 	pkgver = 3.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.itksnap.org
 	arch = x86_64
 	license = GPL3
@@ -15,6 +15,7 @@ pkgbase = itk-snap
 	depends = unixodbc
 	depends = netcdf
 	depends = glew
+	depends = openmpi
 	source = itk-snap::git+git://git.code.sf.net/p/itk-snap/src
 	source = itkKernelFunction.h
 	source = itksnap.png
