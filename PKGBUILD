@@ -1,5 +1,5 @@
 pkgname=crossftp-client
-pkgver=1.98.9
+pkgver=1.99.0
 pkgrel=1
 pkgdesc="Java based free FTP, Amazon S3, Amazon Glacier, and Google Storage client."
 url="http://www.crossftp.com"
@@ -7,7 +7,7 @@ arch=('any')
 license=('freeware')
 depends=('java-runtime-common')
 source=(http://www.crossftp.com/crossftp_${pkgver}.deb)
-sha256sums=('46621bb4edf1b36672b1fb481fd4928a13b1f79964b2b82aedfb07b976cefd4c')
+sha256sums=('edd1d16c01577da19e547a96e4c3c7262c4ed644e13b93a15a5feb80679e7fbc')
 install=.INSTALL
 
 build() {
