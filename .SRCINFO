@@ -13,7 +13,7 @@ pkgbase = ledger-plots-git
 	source = git+https://github.com/esovetkin/ledger-plots.git
 	source = setup.R
 	md5sums = SKIP
-	md5sums = adb815b64f7eaf0f8f6df440e301a378
+	md5sums = 7f575e353b2b8648faab4a19fb490b76
 
 pkgname = ledger-plots-git
 

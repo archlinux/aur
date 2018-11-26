@@ -17,7 +17,7 @@ install=()
 source=('git+https://github.com/esovetkin/ledger-plots.git' 'setup.R')
 noextract=()
 md5sums=('SKIP'
-         'adb815b64f7eaf0f8f6df440e301a378')
+         '7f575e353b2b8648faab4a19fb490b76')
 
 _gitroot=git://github.com/esovetkin/ledger-plots
 _gitname=ledger-plots
