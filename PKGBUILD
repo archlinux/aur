@@ -2,22 +2,22 @@
 # Contributor: Alexandre G <alex foo lecairn bar org>
 
 pkgname=figtree
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Graphical viewer of phylogenetic trees'
 arch=('any')
 url='http://tree.bio.ed.ac.uk/software/figtree'
 license=('GPL2')  # as stated in http://code.google.com/p/figtree/
 depends=('java-environment')
-source=("$pkgname-$pkgver.tar.gz::http://tree.bio.ed.ac.uk/download.php?id=96&num=3"
-        "${pkgname}.patch"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rambaut/$pkgname/releases/download/v$pkgver/FigTree_v$pkgver.tgz"
+        "fix_jar_path.patch"
         "${pkgname}.desktop")
-sha256sums=('f497d4dd3a6d220f6b62495b6f47a12ade50d87dbd8d6089f168e94d202f937b'
-            '8387f23770fed27566b01c9cf1b95f958cade55a90d63916bf7edee383c33321'
+sha256sums=('529b867657b29e369cf81cd361e6a76bd713d488a63b91932df2385800423aa8'
+            'f2aa0ebe18924d098f0380d7a5dba3d154c4049c53749be19ab12d77f2c7fccb'
             '93aaadf4db141c57c5a84fe6e9e875af5091c9fe468f41adb8ce6c02ed214ab3')
 
 prepare() {
-  patch -p1 -i "${srcdir}/${pkgname}.patch" "${srcdir}/FigTree_v${pkgver}/bin/figtree"
+  patch -p1 -i "${srcdir}/fix_jar_path.patch" "${srcdir}/FigTree_v${pkgver}/bin/figtree"
 }
 
 package() {
