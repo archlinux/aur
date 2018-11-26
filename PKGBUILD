@@ -55,7 +55,7 @@ _CFQ_disable=
 ### Disable Kyber I/O scheduler
 _kyber_disable=
 
-### Enable MQ scheduling 
+### Enable MQ scheduling
 _mq_enable=
 
 ### Do no edit below this line unless you know what you're doing
