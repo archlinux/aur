@@ -5,7 +5,7 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.0.751.gaf912441
+pkgver=1.0.0.793.gba6c6959
 pkgrel=1
 pkgdesc="C++ re-write of tablet notetaking app Xournal"
 arch=('i686' 'x86_64')
@@ -58,13 +58,14 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/applications"
 	mkdir -p "${pkgdir}/usr/share/mimelnk/application"
 	mkdir -p "${pkgdir}/usr/share/thumbnailers"
+	mkdir -p "${pkgdir}/usr/local/bin"
 
 	install -D -m0644 "${srcdir}/${_pkgname}/desktop/xournal.xml" "${pkgdir}/usr/share/mime/packages"
 	install -D -m0644 "${srcdir}/${_pkgname}/desktop/xournalpp.desktop" "${pkgdir}/usr/share/applications"
 	install -D -m0644 "${srcdir}/${_pkgname}/desktop/x-xoj.desktop" "${pkgdir}/usr/share/mimelnk/application"
 	# desktop/desktop_install.sh doesn't install those so far
-	#install -D -m0644 "${srcdir}/${_pkgname}/desktop/x-xopp.desktop" "${pkgdir}/usr/share/mimelnk/application"
+	install -D -m0644 "${srcdir}/${_pkgname}/desktop/x-xopp.desktop" "${pkgdir}/usr/share/mimelnk/application"
 	#install -D -m0644 "${srcdir}/${_pkgname}/desktop/x-xopt.desktop.desktop" "${pkgdir}/usr/share/mimelnk/application"
 	install -D -m0644 "${srcdir}/${_pkgname}/desktop/xournalpp.thumbnailer" "${pkgdir}/usr/share/thumbnailers"
-	#install -D -m0755 "${srcdir}/${_pkgname}/utility/usr/local/bin/xopp-recording.sh" "${pkgdir}/usr/local/bin"
+	install -D -m0755 "${srcdir}/${_pkgname}/utility/usr/local/bin/xopp-recording.sh" "${pkgdir}/usr/local/bin"
 }
