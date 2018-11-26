@@ -1,0 +1,99 @@
+#!/bin/bash
+# Simona Pisano - 2018-11-18
+# simona-scripts
+# Libertamente utilizzabile sotto GPL v3
+
+if [[ $1 == "-h" || $1 == "--help" ]] ; then
+  cat << EOF
+uuid-change command help
+
+If no new uuid is suppplied the command show only 'lsblk -f' output.
+
+Usage
+  uuid-change [--help|-h]
+  uuid-change [--version]
+  uuud-change [device (no /dev prefix required)]
+  uuud-change [device (no /dev prefix required)] [new_uuid]
+
+  --versione             -> version
+  -y|--ask-confirm       -> ask confirm before proceeed
+  --force-yes            -> required to change parameter for fat32 (very dangerous)
+
+EOF
+
+  exit 0
+elseif [[ $1 == "--version" ]]
+  echo "uuid-change Version 0.0 (simonascripts package)"
+  exit 0
+fi
+
+[[ $1 != "" ]] && device=$1 || { echo "Please insert device (no prefix '/dev/' required) as first command parameter!!"; exit 0; }
+[[ $2 != "" ]] && new_uuid=$2 || new_uuid=""
+
+flagAskConfirm=false
+flagForceYes=false
+while [ $# -ne 0 ] ; do
+  case $1 in
+    -y|--ask-confirm) flagAskConfirm=true ;;
+    --force-yes) flagForceYes=true ;;
+    *) ;;
+  esac
+  shift
+done
+
+[[ ! -r /bin/lsblk ]] && { echo "[ERR] Equired command 'lsblk' not found!! Can't operate. Sorry."; exit 1; }
+[[ ! -r /bin/awk ]] && { echo "[ERR] Equired command 'awk' not found!! Can't operate. Sorry."; exit 1; }
+
+#add /dev prefix
+if [[ ${device:0:1} == "/" ]] ; then
+  if [[ ${device:0:5} != "/dev/" ]] ; then
+    echo "[ERR] Only /dev prefix is accempted as device name. Sorry."
+    exit 1
+  fi
+else
+  device="/dev/$device"
+fi
+
+echo "device=$device" #debug
+
+echo "--------------------  This is the file system interested from command ------------------------"
+lsblk -f $device
+[[ $? -ne 0 ]] && { echo "[ERR] No device '$device' found!!!"; exit 1; } #fail
+echo "----------------------------------------------------------------------------------------------"
+
+[[ $new_uuid == "" ]] && { echo "New uuid not supplyed. Stop here. Bye."; exit 0; }
+
+filesystem=` lsblk -f -n $device | awk '{ print $2 }' `
+old_uuid=` lsblk -f -n $device | awk '{ print $4 }' `
+
+echo "Now changing device <$device> (file system detected <$filesystem>) old <$old_uuid> to new uuid <$new_uuid>..."
+
+if [[ "$flagAskConfirm" == true ]] ; then
+  echo -n "Continue? (Y/N): "; read ok
+  [[ ! $ok =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user."; exit 0; }
+fi
+
+if [[ $filesystem == "vfat" ]] ; then
+  echo -n "This is FAT32 file system. Command change UUID but also reset entire volume content. Are you sure to procede (Y/N): "
+  read ok
+  [[ ! $ok =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Secure exit forced by user."; exit 0; }
+fi
+
+[[ "$flagForceYes" == false && $filesystem == "vfat" ]] && { echo "Too dangerous: specify --force-yes as parameter."; exit 1; }
+
+case $filesystem in
+  ext4)
+    ;; [[ -r /bin/tune2fs ]] && sudo tune2fs -U $new_uuid $device || { echo "[ERR] 'tune2fs' not found!"; exit 1; } ;;
+  ntfs)
+    ;; [[ -r /bin/ntfslabel ]] && sudo ntfslabel --new-serial=$new_uuid $device || { echo "[ERR] 'tune2fs' not found!"; exit 1; } ;;
+  vfat)
+    ;; [[ -r /bin/mkdosfs ]] && sudo mkdosfs -i $new_uid $device || { echo "[ERR] 'mkdosfs' not found!"; exit 1; } ;;
+  btrfs)
+    ;; [[ -r /bin/btrfstune ]] && sudo btrfstune -U $new_uuid $device || { echo "[ERR] 'btrfstune' not found!"; exit 1; } ;;
+  swap) echo "Swap file... nonsense"; exit 1 ;;
+  *) echo "Unsupported file system"; exit 1 ;;
+esac
+
+[[ $? -ne 0 ]] && { echo "[ERR] Fail uuid change cmd!"; exit 1; } #fail
+exit 0;
+

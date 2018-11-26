@@ -40,7 +40,7 @@ Usage
   image-mount [--help|-h]"
   image-mount [path/]file-name[.format] [format | #partition] [path-where-mount | #partition] [--force-iso-stdmount]
   --force-iso-stdmount   -> force in iso sudo mount 'mount -o loop' instead 'fuseiso'
-  -y --ask-confirm       -> ask confirm
+  -y --ask-confirm       -> ask confirm before proceeed
 
 Warnings
   1) part# in in format 0-9 with one integer value

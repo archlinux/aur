@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.8] - 2018-11-26
+
+### Added
+- Added first release of command uuid-change to package
+
 ## [0.0.1] - 2018-11-18
 ## First Release
 

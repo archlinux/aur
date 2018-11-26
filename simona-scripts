@@ -11,6 +11,7 @@ image-umount      - imageu   - related to image-mount. umount all what mounted
 pendrive-detect   - pendrive - detect a pendrive, size, full device
 ioscheduler-list  - iosched  - list scheduler for all block devices
 boot-kernel-list  - boot     - list kernels inside /boot, extract version (lile uname -r), say what is used in recent boot
+uuid-change       - uuid     - change uuid of a volume
 EOF
   exit
 elseif [[ $1 == "--version" ]] ; then
@@ -26,10 +27,11 @@ image|imageu|pendrive|ioched|boot)
     pendrive) launch="pendrive-detect" ;;
     ioched)   launch="ioscheduler-list" ;;
     boot)     launch="boot-kernel-list" ;;
+    uuid)     launch="uuid-change" ;;
     *) ;;
   esac
   ;;
-image-mount|image-umount|pendrive-detect|ioscheduler-list|boot-kernel-list)
+image-mount|image-umount|pendrive-detect|ioscheduler-list|boot-kernel-list|uuid-change)
   launch=$1
   ;;
 *)
