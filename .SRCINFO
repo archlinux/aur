@@ -1,9 +1,8 @@
 pkgbase = gtk-gnutella
 	pkgdesc = A Gnutella server/client
 	pkgver = 1.1.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gtk-gnutella.sourceforge.net/
-	install = gtk-gnutella.install
 	arch = i686
 	arch = x86_64
 	license = GPL

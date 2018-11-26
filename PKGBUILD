@@ -6,14 +6,13 @@
 
 pkgname=gtk-gnutella
 pkgver=1.1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gnutella server/client"
 arch=('i686' 'x86_64')
 url="http://gtk-gnutella.sourceforge.net/"
 license=('GPL')
 makedepends=('pkg-config')
 depends=('gtk2' 'glib2' 'desktop-file-utils')
-install="$pkgname.install"
 source=(
 	"http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz"
 	"statx.patch"
