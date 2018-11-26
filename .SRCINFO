@@ -1,15 +1,15 @@
 pkgbase = python-get_version
 	pkgdesc = Automatically use the latest “vX.X.X” tag as version in your Python package
-	pkgver = 2.0.1
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://pypi.org/project/get_version
 	arch = any
 	license = GPL3
 	depends = python
 	depends = python-setuptools
-	noextract = get_version-2.0.1-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/g/get_version/get_version-2.0.1-py3-none-any.whl
-	sha256sums = e918b5ae0a724d94f0356d498036fcb51b257848149b90b6f8b6c9358f79fcee
+	noextract = get_version-2.0.3-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/g/get_version/get_version-2.0.3-py3-none-any.whl
+	sha256sums = 4bc0e529f9678eb8188265205924499e37e22054a29036ed4ca2437ff96ab7e5
 
 pkgname = python-get_version
 
