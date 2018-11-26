@@ -1,6 +1,6 @@
 pkgbase = spl-linux
 	pkgver = 0.7.12_4.19.4.arch1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
@@ -24,5 +24,6 @@ pkgname = spl-linux-headers
 	provides = spl-headers
 	conflicts = spl-dkms
 	conflicts = spl-dkms-git
+	conflicts = spl-dkms-rc
 	conflicts = spl-headers
 
