@@ -2,39 +2,34 @@
 pkgname=matterhorn-git
 _pkgname=matterhorn
 
-pkgver=30802.1.0
+pkgver=50200.0.0
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | cut -d- -f1
 }
 
-pkgrel=2
+pkgrel=1
 pkgdesc='A terminal-based chat client for MatterMost'
 arch=('x86_64')
 url="https://github.com/matterhorn-chat/matterhorn"
 license=('BSD')
-makedepends=('git' 'cabal-install' 'ghc' 'happy')
-source=("$_pkgname::git+https://github.com/matterhorn-chat/matterhorn.git"
-        "mattermost-api::git+https://github.com/matterhorn-chat/mattermost-api.git")
-md5sums=('SKIP'
-         'SKIP')
+makedepends=('git' 'cabal-install' 'ghc8.0')
+source=("$_pkgname::git+https://github.com/matterhorn-chat/matterhorn.git")
+sha1sums=('SKIP')
 provides=('matterhorn')
-conficts=('matterhorn')
+conflicts=('matterhorn' 'matterhorn-bin')
 
 build() {
   cd "$srcdir/$_pkgname"
-  cabal update
-  cabal sandbox init
-  cabal sandbox add-source "$srcdir/mattermost-api"
-  cabal install --force-reinstalls
-  cabal build $_pkgname
+  git submodule update --init
+  cabal new-update
+  cabal new-build -w /usr/bin/ghc-8.0
 }
 
 package() {
   cd "$srcdir/$_pkgname"
   mkdir -p $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/share/licenses/$_pkgname
-  cp dist/build/matterhorn/matterhorn $pkgdir/usr/bin
+  cp $(find . -name $_pkgname -type f) $pkgdir/usr/bin
   cp LICENSE $pkgdir/usr/share/licenses/$_pkgname
 }
-
