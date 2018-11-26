@@ -7,7 +7,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=y
+_makenconfig=
 
 # Compile ONLY probed modules
 # As of mainline 2.6.32, running with this option will only build the modules
