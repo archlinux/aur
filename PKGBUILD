@@ -1,6 +1,6 @@
 # Maintainer: Nikita Puzyryov <PuzyryovN@gmail.com>
 pkgname=zchunk-git
-pkgver=0.9.14
+pkgver=0.9.15.r7.g7bb2219
 pkgrel=1
 pkgdesc="A file format that allows easy deltas while maintaining good compression (git version)"
 arch=(x86 x86_64)
