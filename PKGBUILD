@@ -51,7 +51,7 @@ _CFQ_disable=
 ### Disable Kyber I/O scheduler
 _kyber_disable=
 
-### Disable MQ scheduling 
+### Disable MQ scheduling
 _mq_disable=
 
 ### Running with a 1000 HZ tick rate
