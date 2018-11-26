@@ -6,11 +6,11 @@
 
 pkgname=nvidia-bl-dkms
 pkgver=18.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver to adjust display backlight on legacy mobile NVidia graphics adapters - DKMS edition."
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('linux>=3.8')
+depends=('linux>=3.8' 'dkms')
 makedepends=('linux-headers')
 conflicts=('nvidia-bl')
 install=nvidia-bl-dkms.install
