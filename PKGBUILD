@@ -10,6 +10,8 @@ arch=('any')
 url='http://tree.bio.ed.ac.uk/software/figtree'
 license=('GPL2')  # as stated in http://code.google.com/p/figtree/
 depends=('java-environment')
+conflicts=('figtree')
+provides=('figtree')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/rambaut/$_pkgname/releases/download/v$pkgver/FigTree_v$pkgver.tgz"
         "fix_jar_path.patch"
         "${_pkgname}.desktop")
