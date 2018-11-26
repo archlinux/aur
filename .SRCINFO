@@ -1,7 +1,7 @@
 pkgbase = frogr
 	pkgdesc = A flickr remote organizer for GNOME
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Frogr
 	arch = i686
 	arch = x86_64

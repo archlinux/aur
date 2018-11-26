@@ -4,7 +4,7 @@
 #
 pkgname="frogr"
 pkgver="1.5"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A flickr remote organizer for GNOME"
 url="https://wiki.gnome.org/Apps/Frogr"
 arch=('i686' 'x86_64')
@@ -21,13 +21,16 @@ sha256sums=('874fab2cde9c56519c1675af377d5bd95b21fb7db686723b50da47e8f01907b1')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	./configure --prefix=/usr
-	make
+	mkdir -p build && cd build
+	arch-meson ..
+    ninja
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
+	install -d ${pkgdir}/usr/share/licenses/${pkgname}
+	install -m 644 ../COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	DESTDIR="${pkgdir}" ninja install
 }
 
 # vim:set ts=4 sw=4 ft=sh et syn=sh ft=sh:
