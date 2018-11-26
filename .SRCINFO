@@ -1,4 +1,4 @@
-pkgbase = figtree
+pkgbase = figtree-bin
 	pkgdesc = Graphical viewer of phylogenetic trees
 	pkgver = 1.4.4
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = figtree
 	sha256sums = f2aa0ebe18924d098f0380d7a5dba3d154c4049c53749be19ab12d77f2c7fccb
 	sha256sums = 93aaadf4db141c57c5a84fe6e9e875af5091c9fe468f41adb8ce6c02ed214ab3
 
-pkgname = figtree
+pkgname = figtree-bin
 
