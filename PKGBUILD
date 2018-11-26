@@ -1,8 +1,8 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=writefreely
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
@@ -18,8 +18,8 @@ source=('writefreely.tmpfiles'
 sha256sums=('fe04838284663b3725d5bb1cd82ca8fbe180512d59200c88b0a5829f8e390b2d'
             '6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10'
             'dbb332d30c49a8b9f8a1f926c0b3439c1487d395fbef979481f9e76e53a3bcaa'
-            'a3ef5fcb0ab3459b739245cd5667c478973efad7fc5a04a054edf7f6a6d2188b'
-            '4975b1ba58015bb3cd518ca373e920d0720ed3403fddf43c2a8c9a638de29298')
+            '3d36f7914c62d8c839807eaf30fb9efa43c95c1776fd441681fa9c9edaa3225b'
+            '6607d78c15c08174d3b43f1b124ba7d482a42413ef1e89cfb1a5d8f61bbb017d')
 
 package() {
   # -o writefreely -g writefreely
