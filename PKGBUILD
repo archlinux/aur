@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 
 pkgname=aarch64-linux-gnu-armcl-opencl+neon
-pkgver=17.12
+pkgver=18.08
 pkgrel=0
 
 epoch=
