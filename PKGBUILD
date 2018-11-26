@@ -2,7 +2,7 @@
 
 pkgname=musescore-dev
 _pkgname=MuseScore
-pkgver=r12962.396687ce6
+pkgver=r14182.f7005de53
 _branch=master
 pkgrel=1
 pkgdesc='Development branch of the sheet music editor MuseScore'
@@ -17,6 +17,7 @@ depends=('desktop-file-utils'
     'qt5-quickcontrols'
     'qt5-svg'
     'qt5-tools'
+    'qt5-webengine'
     'qt5-webkit'
     'shared-mime-info')
 makedepends=('cmake'
@@ -27,8 +28,15 @@ makedepends=('cmake'
 	'texlive-core')
 optdepends=('lame: MP3 export')
 install=musescore.install
-source=("git+$url.git#branch=$_branch")
-md5sums=('SKIP')
+source=("git+$url.git#branch=$_branch"
+    'fix_qt_install_path.patch')
+md5sums=('SKIP'
+         'cc54bc4072ace47c35af7c2478e0d1fc')
+
+prepare() {
+    cd $_pkgname
+    patch -p1 -i $srcdir/fix_qt_install_path.patch
+}
 
 pkgver() {
   cd $_pkgname
@@ -40,6 +48,7 @@ build() {
   make revision
   cmake -DCMAKE_BUILD_TYPE=DEBUG \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
+    -DQT_INSTALL_PREFIX="/usr/lib/qt" \
 	-DMSCORE_INSTALL_SUFFIX="-dev" \
 	-DMUSESCORE_LABEL="Development Build" \
 	-DBUILD_LAME="ON" \
