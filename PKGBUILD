@@ -5,14 +5,14 @@
 
 pkgname=openfoam
 pkgver=6
-pkgrel=2
+pkgrel=3
 pkgdesc="The open source CFD toolbox"
 _distpkgname=OpenFOAM
 _gitname=$_distpkgname-$pkgver
 arch=('x86_64')
 url="http://www.openfoam.org"
 license=("GPL")
-depends=('bzip2' 'openmpi' 'paraview' 'parmetis' 'scotch' 'boost' 'flex' 'cgal')
+depends=('bzip2' 'paraview' 'parmetis' 'scotch' 'boost' 'flex' 'cgal')
 makedepends=('bash')
 source=("https://github.com/OpenFOAM/$_gitname/archive/version-$pkgver.tar.gz" "${pkgname}.install")
 install="${pkgname}.install"
@@ -31,8 +31,6 @@ prepare() {
   echo "export WM_MPLIB=SYSTEMOPENMPI" >> ${srcdir}/prefs.sh
   echo "export ParaView_VERSION=${_pversion}" >> ${srcdir}/prefs.sh
   echo "export ParaView_MAJOR=${_pmajor}" >> ${srcdir}/prefs.sh
-  # https://www.cfd-online.com/Forums/openfoam-installation/148321-gcc-error-unrecognized-command-line-option-showme-link.html
-  echo "export export WM_MPLIB=OPENMPI" >> ${srcdir}/prefs.sh
   cp ${srcdir}/prefs.sh ${srcdir}/${_distpkgname}-${pkgver}/etc #|| return 1
 
   # Generate the scotch.sh file for arch
