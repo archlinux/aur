@@ -1,6 +1,6 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.7.1.3
+_oomox_ver=1.7.2
 _numix_ver=1.9.2
 _materia_ver=20181125
 _arc_cmt=e97206cf0772da5b07b982da67cc65d91884d48d
@@ -40,9 +40,12 @@ depends=(
 	'python-pillow'  # import_pil
 )
 optdepends=(
-    'xorg-xrdb: for the `xresources` theme'
-    'breeze-icons: more fallback icons'
-    'gksu: for applying Spotify theme from GUI without polkit'
+	'xorg-xrdb: for the `xresources` theme'
+	'breeze-icons: more fallback icons'
+	'gksu: for applying Spotify theme from GUI without polkit'
+	'colorz: additional image analyzer for "Import colors from image" plugin'
+	'python-colorthief: additional image analyzer for "Import colors from image" plugin'
+	'python-haishoku: additional image analyzer for "Import colors from image" plugin'
 )
 options=(
     '!strip'
@@ -59,7 +62,7 @@ source=(
     "oomoxify-${_oomoxify_ver}.tar.gz::https://github.com/themix-project/oomoxify/archive/${_oomoxify_ver}.tar.gz"
     "base16-builder-${_base16_cmt}.tar.gz::https://github.com/base16-builder/base16-builder/archive/${_base16_cmt}.tar.gz"
 )
-md5sums=('78455a1c3544933d3b8c491e14979feb'
+md5sums=('56208eaa65ea4500200e5d78f448e69f'
          'bcc635f0dd06b0b0fae1f318d3271ec2'
          'a6ecf1c694f437bf0c6c07834fdd0704'
          '19029e06b6fbda8a40eb047978c6a8ba'
