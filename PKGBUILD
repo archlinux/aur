@@ -8,7 +8,7 @@
 _localepurge=
 
 pkgname=sigil-git
-pkgver=0.9.10.r11.gf60e9d36
+pkgver=0.9.10.r40.g95c7c4de
 pkgrel=2
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
