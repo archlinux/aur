@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <andersan@tcd.ie>
 pkgname=trinnity
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="C++ library of CNN primitive operations"
 arch=('any')
 url="https://bitbucket.org/STG-TCD/trinnity"
@@ -25,10 +25,7 @@ backup=()
 options=()
 source=("https://bitbucket.org/STG-TCD/trinnity/get/v$pkgver.tar.bz2")
 
-sha512sums=("ddc229bbc52754b9e25c5a1c90011ae796873704ab810c483646d51ab4632f923291b971b2f8b873646d3a5430c234893a8816a2d999dc2081ace51c19a1312d")
-sha256sums=("50ead12c89aff9ebc5d6930a3b6391fad61586e2e83ab18d7ce3aecb9c24a1e2")
-sha1sums=("4dd92fbbce939bd99706286c917b07165111433e")
-md5sums=("fe8cd5c95ac23dbd99d1caaad6119922")
+sha512sums=("f7938fd81413e9e69a4154cf29e54f531a38d47ac66a40109366c43ab4fe390b4271eea785795f551b133b11a2c5afc7841d808b120b9ca97ebe0ed137af9f21")
 
 package() {
   make -C $srcdir/STG-* DESTDIR=$pkgdir doc
