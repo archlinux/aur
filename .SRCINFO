@@ -1,7 +1,7 @@
 pkgbase = termite-bepo
 	pkgdesc = A simple VTE-based terminal (bépo version)
-	pkgver = 13
-	pkgrel = 3
+	pkgver = 14
+	pkgrel = 2
 	url = https://github.com/thestinger/termite/
 	arch = x86_64
 	license = LGPL
@@ -17,7 +17,7 @@ pkgbase = termite-bepo
 	depends = termite-terminfo
 	conflicts = termite
 	source = git+https://github.com/antoyo/termite
-	source = git+https://github.com/thestinger/vte-ng#tag=0.50.2.a
+	source = git+https://github.com/thestinger/vte-ng#tag=0.54.2.a
 	source = termite-util::git+https://github.com/thestinger/util
 	sha256sums = SKIP
 	sha256sums = SKIP
