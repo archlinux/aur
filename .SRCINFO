@@ -1,0 +1,16 @@
+pkgbase = upycraft-git
+	pkgdesc = Qt IDE for micropython
+	pkgver = r69.68dfc44
+	pkgrel = 1
+	url = https://dfrobot.gitbooks.io/upycraft/
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python-qscintilla-qt4
+	provides = upycraft
+	conflicts = upycraft
+	source = upycraft::git+http://github.com/DFRobot/uPyCraft_src
+	md5sums = SKIP
+
+pkgname = upycraft-git
+
