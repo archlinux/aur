@@ -3,7 +3,7 @@
 
 _pkgname=evolution
 pkgname=$_pkgname-git
-pkgver=3.31.1.r049.g2e9459ff24
+pkgver=3.31.2.r011.gd31bb2efa7
 pkgrel=1
 pkgdesc="Manage your email, contacts and schedule - git version"
 arch=(i686 x86_64)
