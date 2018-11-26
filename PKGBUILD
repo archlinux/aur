@@ -4,7 +4,7 @@ _name=alice-vision
 #_fragment="#commit=eebc3e4f"
 _fragment="#branch=develop"
 pkgname=${_name}-git
-pkgver=2.0.0.r71.g7b5fcae4
+pkgver=2.0.0.r87.g6e8cc3b7
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
@@ -19,13 +19,12 @@ source=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragme
         "ute_lib::git+https://github.com/alicevision/uncertaintyTE.git"
         "geogram::git+https://github.com/alicevision/geogram.git"
         "submodule.patch"
-        "https://github.com/alicevision/AliceVision/pull/527.diff"
         )
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'eb62c8be5a0d7ce537a928314c9d0028'
-         '6cd19dc384b73f0767b1a48f281a4a77')
+        )
 
 _CMAKE_FLAGS=(
               -DCMAKE_INSTALL_PREFIX=/usr
@@ -55,7 +54,6 @@ prepare() {
 #  git config submodule.src/dependencies/osi_clp.url
   git submodule update
   git apply ${srcdir}/submodule.patch
-  git apply ${srcdir}/527.diff
 }
 
 
