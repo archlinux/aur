@@ -54,7 +54,7 @@ _kyber_disable=
 ### Disable MQ scheduling 
 _mq_disable=
 
-### Running with a 1000 HZ tick rate 
+### Running with a 1000 HZ tick rate
 _1k_HZ_ticks=
 
 ### Do no edit below this line unless you know what you're doing
