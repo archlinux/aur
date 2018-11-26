@@ -1,7 +1,7 @@
-# Maintainer: Kai Michaelis <seu@panopticon.re>
+# Maintainer: Kai Michaelis <kai@sequoia-pgp.org>
 pkgname=sequoia-git
-pkgver=r675.023f52c
-pkgrel=2
+pkgver=r1176.bc95696
+pkgrel=1
 pkgdesc="A modular OpenPGP library"
 arch=('x86_64' 'i686')
 url="https://sequoia-pgp.org/"
@@ -10,8 +10,10 @@ groups=()
 depends=(
   'nettle>=3'
   'sqlite>=3'
+  'capnproto'
   'openssl>=1.1')
 makedepends=(
+    'clang'
     'rust'
     'cargo'
     'git')
