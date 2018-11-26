@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=gtk-gnutella
-pkgver=1.1.13
+pkgver=1.1.14
 pkgrel=1
 pkgdesc="A Gnutella server/client"
 arch=('i686' 'x86_64')
@@ -14,11 +14,18 @@ license=('GPL')
 makedepends=('pkg-config')
 depends=('gtk2' 'glib2' 'desktop-file-utils')
 install="$pkgname.install"
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz")
-md5sums=('828733613d7134fefef842b8eeb36f1e')
+source=(
+	"http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz"
+	"statx.patch"
+)
+md5sums=(
+	'75414544a8a7bacd5c75b207e235de73'
+	'439c8fc20775eee946199aafccae56f7'
+)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 < ../statx.patch  
   ./build.sh --prefix=/usr
 }
 
