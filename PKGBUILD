@@ -1,41 +1,50 @@
 # Maintainer: Dan Beste <Dan.Ray.Beste@gmail.com>
+# Contributor: Bluewind
 
 pkgbase='python-pyzabbix'
 pkgname=('python-pyzabbix' 'python2-pyzabbix')
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc='Zabbix API Python interface'
 arch=('any')
 license=('LGPL2.1')
 url='https://github.com/lukecyca/pyzabbix'
 makedepends=(
-  'python' 'python-setuptools' 'python-requests'
-  'python2' 'python2-setuptools' 'python2-requests'
+  'python-setuptools' 'python-requests'
+  'python2-setuptools' 'python2-requests'
+)
+checkdepends=(
+  'python-pytest' 'python-httpretty'
+  'python2-pytest' 'python2-httpretty'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lukecyca/pyzabbix/archive/${pkgver}.tar.gz")
-sha256sums=('bd1866d5b1ba40b225eb9c63b9ad99925db7fdff3fd4d8e6ec97c7da1be7e47c')
+sha256sums=('0835b6c84d41cee2e0862c4e0c644f49f6aba9bf882945f2c13eff713dbc535e')
 
-build_python-pyzabbix() {
+build() {
+  cd "${pkgname#python-}-${pkgver}"
+  
+  python setup.py build
+  python2 setup.py build
+}
+
+check() {
   cd "${pkgname#python-}-${pkgver}"
 
-  # Python 3:
-  python setup.py build
-
-  # Python 2:
-  python2 setup.py build
+  python -m pytest
+  python2 -m pytest
 }
 
 package_python-pyzabbix() {
   depends=('python' 'python-requests')
-  cd "${pkgname#python-}-${pkgver}"
 
+  cd "${pkgname#python-}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-pyzabbix() {
   depends=('python2' 'python2-requests')
-  cd "${pkgname#python2-}-${pkgver}"
 
+  cd "${pkgname#python2-}-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
