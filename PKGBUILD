@@ -1,4 +1,4 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 # NOTE (1):
 # DPS (Display PostScript) feature is obsolete and thus not enabled.
@@ -6,79 +6,73 @@
 # http://www.x.org/releases/X11R7.7/doc/xorg-docs/graphics/dps.html
 
 # NOTE (2):
-# change font directories bellow to match yours:
-#   - deJaVu and GhostScript font directories provided bellow are
-#     the default ones
-#   - Windows font directory provided bellow is set according to
-#     the example in Arch Linux Wiki
-#   - this Windows font directory example is for people that
-#     copy/link fonts from a Windows installation. If you prefer,
-#     you can choose an AUR package that provides the Windows fonts
-#     as described in the Wiki and change the directory accordingly.
+# change font directories in build() to match yours:
+#   - deJaVu and GhostScript font directories are the default ones
+#   - Windows font directory is set according to a Wiki example
 
-_dejavu_font_dir='/usr/share/fonts/TTF'
-_gs_font_dir='/usr/share/fonts/gsfonts'
-_urw_font_dir='/usr/share/fonts/gsfonts'
-_windows_font_dir='/usr/share/fonts/WindowsFonts'
-_1st_apple_font_dir='/usr/share/fonts/TTF'
-_2nd_apple_font_dir='/usr/share/fonts/Type1'
 _commit='ba0aedf286650098de0d51a493c679adeb39a4ac'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
+_srcname=ImageMagick
 pkgver=7.0.8.14
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
-url='http://www.imagemagick.org/'
+url='https://www.imagemagick.org/'
 license=('custom')
 depends=(
     # official repositories:
-        'libltdl' 'lcms2' 'fontconfig' 'libxext' 'liblqr' 'libraqm' 'libpng' 'libxml2'
-        'ghostscript' 'gsfonts' 'ttf-dejavu' 'libraw' 'librsvg' 'libwebp' 'libwmf'
-        'ocl-icd' 'openexr' 'openjpeg2' 'pango'
-        'jemalloc' 'bzip2' 'libx11' 'libsm' 'libice' 'libxt' 'zlib' 'fftw' 'djvulibre'
-        'freetype2' 'libheif' 'graphviz' 'jbigkit' 'libjpeg-turbo' 'xz' 'libtiff'
+        'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
+        'libx11' 'bzip2' 'zlib' 'libltdl' 'jemalloc' 'djvulibre' 'libraw' 'graphviz'
+        'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango' 'cairo'
+        'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf' 'ocl-icd'
+        'gsfonts' 'ttf-dejavu'
     # AUR:
-        'libumem-git' 'autotrace-nomagick' 'flif' 'libfpx'
+        'pstoedit-nomagick' 'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
 )
-makedepends=('git' 'perl' 'opencl-headers' 'chrpath' 'glu' 'ghostpcl' 'ghostxps')
-source=("${pkgbase}-git"::"git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
+makedepends=('git' 'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
+             'zstd' 'chrpath')
+source=("git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
+        'imagemagick-full-security-fix.patch'
         'arch-fonts.diff')
 sha256sums=('SKIP'
+            'e2453381d283c33107194fa791d6b9b2c4c1856afb936d4fa010c05aaebe538e'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 
 prepare() {
-    cd "${pkgbase}-git"
+    cd "$_srcname"
+    
+    # 1) workaround for ghostscript security issues:
+    #      https://bugs.archlinux.org/task/59778
+    # 2) security fix:
+    #      https://www.imagemagick.org/discourse-server/viewtopic.php?f=4&t=29588
+    #      https://imagetragick.com/
+    patch -Np1 -i "${srcdir}/imagemagick-full-security-fix.patch"
+    
+    # fix up typemaps to match Arch Linux packages, where possible
+    patch -Np1 -i "${srcdir}/arch-fonts.diff"
     
     # fix for 'sh: gitversion.sh: command not found' during autoreconf
     sed -i 's|(gitversion|(./gitversion|' configure.ac
     
-    # fix up typemaps to match Arch Linux packages, where possible
-    patch -Np1 -i "${srcdir}/arch-fonts.diff"
+    autoreconf -fis
 }
 
 build() {
-    cd "${pkgbase}-git"
+    cd "$_srcname"
     
     export CFLAGS="${CFLAGS} -I/usr/include/FLIF"
-    
-    autoreconf -fis
     
     ./configure \
         --prefix='/usr' \
         --sysconfdir='/etc' \
         --enable-openmp \
         --enable-opencl \
-        --enable-largefile \
-        --enable-static='no' \
-        --enable-shared='yes' \
-        --enable-fast-install='yes' \
         --disable-delegate-build \
         --enable-cipher \
         --enable-hdri \
-        --enable-hugepages \
         --enable-docs \
         --with-threads \
         --with-modules \
@@ -91,6 +85,7 @@ build() {
         --with-bzlib \
         --with-x \
         --with-zlib \
+        --with-zstd \
         --with-autotrace \
         --without-dps \
         --with-fftw \
@@ -118,25 +113,40 @@ build() {
         --with-webp \
         --with-wmf \
         --with-xml \
-        --with-dejavu-font-dir="$_dejavu_font_dir" \
-        --with-gs-font-dir="$_gs_font_dir" \
-        --with-urw-base35-font-dir="$_urw_font_dir" \
-        --with-windows-font-dir="$_windows_font_dir" \
-        --with-apple-font-dir="$_1st_apple_font_dir" \
-        --with-fontpath="$_2nd_apple_font_dir" \
+        --with-dejavu-font-dir='/usr/share/fonts/TTF' \
+        --with-gs-font-dir='/usr/share/fonts/gsfonts' \
+        --with-urw-base35-font-dir='/usr/share/fonts/gsfonts' \
+        --with-windows-font-dir='/usr/share/fonts/WindowsFonts' \
+        --with-apple-font-dir='/usr/share/fonts/TTF' \
+        --with-fontpath='/usr/share/fonts/Type1' \
         PSDelegate='/usr/bin/gs' \
         XPSDelegate='/usr/bin/gxps' \
-        PCLDelegate='/usr/bin/gpcl6' \
-            
+        PCLDelegate='/usr/bin/gpcl6'
+        
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    
     make
 }
+
+check() (
+   cd "$_srcname"
+   
+   ulimit -n 4096
+   sed -e '/validate-formats/d' -i Makefile # these fail due to the security patch
+   
+   make check
+)
 
 package_libmagick-full() {
     local _majorver="${pkgver%%.*}"
     local _etcdir="ImageMagick-${_majorver}"
     
     pkgdesc+=' (library)'
-    backup=(etc/"$_etcdir"/{coder,colors,delegates,log,magic,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
+    optdepends=(
+        # AUR:
+            'ttf-mac-fonts: for Apple fonts support'
+    )
+    backup=(etc/"$_etcdir"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
     options=('!emptydirs' 'libtool')
     provides=('libmagick'
               "libMagickCore-${pkgver%%.*}.Q${_qdepth}HDRI.so"
@@ -144,40 +154,24 @@ package_libmagick-full() {
                 "libMagick++-${pkgver%%.*}.Q${_qdepth}HDRI.so")
     conflicts=('libmagick')
     
-    cd "${pkgbase}-git"
+    cd "$_srcname"
     make DESTDIR="$pkgdir" install
     
-    rm -f "$pkgdir"/usr/lib/*.la
+    rm "$pkgdir"/usr/lib/*.la
     
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
     
     rm -rf binpkg/* docpkg/*
-    
     mkdir -p binpkg/usr/lib {binpkg,docpkg}/usr/share
     
     # split 'imagemagick'
-    cd binpkg
-    mv -f "${pkgdir}/usr/bin"       usr/
-    mv -f "${pkgdir}/usr/lib/perl5" usr/lib/
-    mv -f "${pkgdir}/usr/share/man" usr/share/
+    mv "${pkgdir}/usr/bin"       binpkg/usr/
+    mv "${pkgdir}/usr/lib/perl5" binpkg/usr/lib/
+    mv "${pkgdir}/usr/share/man" binpkg/usr/share/
     
     # split docs
-    cd "${srcdir}/${pkgbase}-git/docpkg"
-    mv -f "${pkgdir}/usr/share/doc" usr/share/
-    
-    # security fix
-    # https://www.imagemagick.org/discourse-server/viewtopic.php?f=4&t=29588
-    # https://imagetragick.com/
-    sed -i '65i\  \<policy domain="coder" rights="none" pattern="EPHEMERAL" />' "${pkgdir}/etc/${_etcdir}/policy.xml"
-    sed -i '66i\  \<policy domain="coder" rights="none" pattern="URL" />'       "${pkgdir}/etc/${_etcdir}/policy.xml"
-    sed -i '67i\  \<policy domain="coder" rights="none" pattern="HTTPS" />'     "${pkgdir}/etc/${_etcdir}/policy.xml"
-    sed -i '68i\  \<policy domain="coder" rights="none" pattern="MVG" />'       "${pkgdir}/etc/${_etcdir}/policy.xml"
-    sed -i '69i\  \<policy domain="coder" rights="none" pattern="MSL" />'       "${pkgdir}/etc/${_etcdir}/policy.xml"
-    sed -i '70i\  \<policy domain="coder" rights="none" pattern="TEXT" />'      "${pkgdir}/etc/${_etcdir}/policy.xml"
-    sed -i '71i\  \<policy domain="coder" rights="none" pattern="SHOW" />'      "${pkgdir}/etc/${_etcdir}/policy.xml"
-    sed -i '72i\  \<policy domain="coder" rights="none" pattern="WIN" />'       "${pkgdir}/etc/${_etcdir}/policy.xml"
-    sed -i '73i\  \<policy domain="coder" rights="none" pattern="PLT" />'       "${pkgdir}/etc/${_etcdir}/policy.xml"
+    mv "${pkgdir}/usr/share/doc" docpkg/usr/share/
 }
 
 package_imagemagick-full() {
@@ -185,20 +179,19 @@ package_imagemagick-full() {
     optdepends=(
         # AUR:
             'imagemagick-full-doc: manual and API docs'
-            'ttf-mac-fonts: for Apple fonts support'
     )
-    options=('!emptydirs')
     provides=('imagemagick')
     conflicts=('imagemagick')
+    options=('!emptydirs')
     
-    cd "${pkgbase}-git"
+    cd "$_srcname"
     
-    mv -f binpkg/* "$pkgdir"
+    cp -a binpkg/* "$pkgdir"
     
     find "${pkgdir}/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
     
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_imagemagick-full-doc() {
@@ -208,10 +201,10 @@ package_imagemagick-full-doc() {
     provides=('imagemagick-doc')
     conflicts=('imagemagick-doc')
     
-    cd "${pkgbase}-git"
+    cd "$_srcname"
     
-    mv -f docpkg/* "$pkgdir"
+    cp -a docpkg/* "$pkgdir"
     
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
