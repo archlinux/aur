@@ -17,8 +17,8 @@
 #
 pkgbase="zfs-linux-zen-git"
 pkgname=("zfs-linux-zen-git" "zfs-linux-zen-git-headers")
-_commit='8005ca4f749f71397197292452ca539a25286b89'
-_zfsver="2018.11.20.r4835.g8005ca4f7"
+_commit='62ee31adcebe64a1b7cdf1225356108a924c595a'
+_zfsver="2018.11.26.r4836.g62ee31adc"
 _kernelver="4.19.4.zen1-1"
 _extramodules="${_kernelver/.zen/-zen}-zen"
 
@@ -48,7 +48,7 @@ package_zfs-linux-zen-git() {
     install=zfs.install
     provides=("zfs" "spl")
     groups=("archzfs-linux-zen-git")
-    conflicts=("zfs-dkms" "zfs-dkms-git" 'zfs-linux-zen' 'spl-linux-zen-git' 'spl-linux-zen' "spl-dkms" "spl-dkms-git")
+    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" 'zfs-linux-zen' 'spl-linux-zen-git' 'spl-linux-zen' "spl-dkms" "spl-dkms-git")
     replaces=("spl-linux-zen-git")
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
@@ -61,7 +61,7 @@ package_zfs-linux-zen-git() {
 package_zfs-linux-zen-git-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
     provides=("zfs-headers" "spl-headers")
-    conflicts=("zfs-headers" "zfs-dkms" "zfs-dkms-git" "spl-dkms" "spl-dkms-git" "spl-headers")
+    conflicts=("zfs-headers" "zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git" "spl-headers")
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
