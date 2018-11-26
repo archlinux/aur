@@ -31,8 +31,9 @@ package() {
   # Install executable.
   install -d "${pkgdir}/opt/bisq"
   cp -r "${srcdir}/${pkgname}/desktop/build/app/"* "${pkgdir}/opt/bisq"
+  cp "${srcdir}/${pkgname}/bisq-desktop" "${pkgdir}/opt/bisq/"
   install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/bisq/bin/bisq-desktop" "${pkgdir}/usr/bin/bisq-desktop"
+  ln -s "/opt/bisq/bisq-desktop" "${pkgdir}/usr/bin/bisq-desktop"
 
   # Install desktop launcher.
   install -Dm644 bisq.desktop "${pkgdir}/usr/share/applications/bisq.desktop"
