@@ -2,7 +2,7 @@
 pkgname=sequoia-git
 pkgver=r1176.bc95696
 pkgrel=1
-pkgdesc="A modular OpenPGP library"
+pkgdesc="A cool OpenPGP library"
 arch=('x86_64' 'i686')
 url="https://sequoia-pgp.org/"
 license=('GPL3')
