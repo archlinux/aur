@@ -2,7 +2,7 @@
 
 pkgname=aarch64-linux-gnu-armcl-opencl+neon
 pkgver=18.08
-pkgrel=0
+pkgrel=1
 
 epoch=
 pkgdesc="ARM Computer Vision and Machine Learning Library (arm64-v8a OpenCL + NEON Backends)"
@@ -27,7 +27,7 @@ sha1sums=('SKIP')
 build() {
   cd "${srcdir}/ComputeLibrary"
   git checkout "v$pkgver"
-  scons -j2 \
+  scons -j`cat /proc/cpuinfo | grep -i "processor" | wc -l` \
   os=linux arch=arm64-v8a build=cross_compile \
   Werror=0 debug=0 asserts=0 \
   neon=1 \
