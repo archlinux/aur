@@ -2,19 +2,20 @@
 
 pkgname=buildah-git
 _pkgname=buildah
-pkgver=r293.9327431
+pkgver=r1076.d5a3c52f
 pkgrel=1
 pkgdesc="A tool which facilitates building OCI images"
 arch=('x86_64' 'i686')
-url="https://github.com/projectatomic/buildah"
+url="https://github.com/containers/buildah"
 license=('Apache')
 makedepends=('go' 'git' 'bash-bats' 
              'btrfs-progs' 'device-mapper' 
              'gpgme' 'libassuan' 'bzip2' 
-             'go-md2man' 'runc' 'skopeo')
+             'go-md2man' 'runc' 'skopeo'
+             'libselinux')
 provides=("buildah")
 conflicts=("buildah")
-source=("git://github.com/projectatomic/buildah.git")
+source=("git://github.com/containers/buildah.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,13 +25,13 @@ pkgver() {
 
 prepare() {
   rm -rf "${srcdir}/src"
-  mkdir -p "${srcdir}"/src/github.com/projectatomic
-  ln -sf "${srcdir}/${_pkgname}" "${srcdir}/src/github.com/projectatomic/buildah"
+  mkdir -p "${srcdir}"/src/github.com/containers
+  ln -sf "${srcdir}/${_pkgname}" "${srcdir}/src/github.com/containers/buildah"
 }
 
 build() {
   export GOPATH="${srcdir}"
-  cd "${GOPATH}/src/github.com/projectatomic/buildah"
+  cd "${GOPATH}/src/github.com/containers/buildah"
   make PREFIX=/usr
 }
 
