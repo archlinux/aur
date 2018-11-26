@@ -22,7 +22,7 @@ _kernelver="4.14.82-1"
 _extramodules="4.14.82-1-lts"
 
 pkgver="${_splver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=1
+pkgrel=2
 makedepends=("linux-lts-headers=${_kernelver}")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
@@ -56,7 +56,7 @@ package_spl-linux-lts() {
 package_spl-linux-lts-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
     provides=("spl-headers")
-    conflicts=("spl-dkms" "spl-dkms-git" "spl-headers")
+    conflicts=("spl-dkms" "spl-dkms-git" "spl-dkms-rc" "spl-headers")
     cd "${srcdir}/spl-${_splver}"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
