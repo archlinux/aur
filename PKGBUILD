@@ -9,8 +9,67 @@
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
+# Optionally select a sub architecture by number if building in a clean chroot
+# Leaving this entry blank will require user interaction during the build 
+# which will cause a failure to build if using makechrootpkg. Note that the
+# generic (default) option is 26.
+#
+#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
+#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
+#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
+#  4. AMD Barcelona (MBARCELONA)
+#  5. AMD Bobcat (MBOBCAT)
+#  6. AMD Jaguar (MJAGUAR)
+#  7. AMD Bulldozer (MBULLDOZER)
+#  8. AMD Piledriver (MPILEDRIVER)
+#  9. AMD Steamroller (MSTEAMROLLER)
+#  10. AMD Excavator (MEXCAVATOR)
+#  11. AMD Zen (MZEN)
+#  12. Intel P4 / older Netburst based Xeon (MPSC)
+#  13. Intel Atom (MATOM)
+#  14. Intel Core 2 (MCORE2)
+#  15. Intel Nehalem (MNEHALEM)
+#  16. Intel Westmere (MWESTMERE)
+#  17. Intel Silvermont (MSILVERMONT)
+#  18. Intel Sandy Bridge (MSANDYBRIDGE)
+#  19. Intel Ivy Bridge (MIVYBRIDGE)
+#  20. Intel Haswell (MHASWELL)
+#  21. Intel Broadwell (MBROADWELL)
+#  22. Intel Skylake (MSKYLAKE)
+#  23. Intel Skylake X (MSKYLAKEX)
+#  24. Intel Cannon Lake (MCANNONLAKE)
+#  25. Intel Ice Lake (MICELAKE)
+#  26. Generic-x86-64 (GENERIC_CPU)
+#  27. Native optimizations autodetected by GCC (MNATIVE)
+_subarch=
+
+# NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
+# actually run slower with NUMA enabled. Most users will want to set this option
+# to enabled ... in other words, do not use NUMA on a single CPU system.
+#
+# It has been reported that users of CUDA require NUMA to be enabled, therefore
+# if you require CUDA support, be sure the variable below is set to a null
+# See: https://bbs.archlinux.org/viewtopic.php?id=239174
+_NUMAdisable=
+
+# Compile ONLY probed modules
+# As of mainline 2.6.32, running with this option will only build the modules
+# that you currently have probed in your system VASTLY reducing the number of
+# modules built and the build time to do it.
+#
+# WARNING - ALL modules must be probed or loaded via a config file BEFORE you
+# begin making the pkg unless you're running modprobed-db (AUR) and building
+# this with makepkg as the user who is keeping the database.
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD will call it directly to probe all the modules you have logged!
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
+
 pkgbase=linux-zen-bcachefs-git
-_srcver=4.19.4-zen1
+_srcver=4.19.4-zen-bcachefs1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -65,7 +124,42 @@ prepare() {
 
   msg2 "Setting config..."
   cp ../config .config
-  make olddefconfig
+
+  ### Optionally disable NUMA
+  if [ -n "$_NUMAdisable" ]; then
+    msg2 "Disabling NUMA from kernel config..."
+    sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+      -i -e '/CONFIG_AMD_NUMA=y/d' \
+      -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+      -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+      -i -e '/# CONFIG_NUMA_EMU is not set/d' \
+      -i -e '/CONFIG_NODES_SHIFT=6/d' \
+      -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+      -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
+      -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+      -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+  fi
+
+  if [ -n "$_subarch" ]; then
+    yes "$_subarch" | make oldconfig
+  else
+    make prepare
+  fi
+
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
+    if [ -n "$_localmodcfg" ]; then
+      if [ -f $HOME/.config/modprobed.db ]; then
+        msg "Found a modprobed-db database for Steven Rostedt's make localmodconfig"
+        make LSMOD=$HOME/.config/modprobed.db localmodconfig
+      else
+        msg "Running Steven Rostedt's make localmodconfig now"
+        make localmodconfig
+      fi
+    fi
+
+  # do not run `make olddefconfig` as it sets default options
+  yes "" | make config >/dev/null
 
   make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
