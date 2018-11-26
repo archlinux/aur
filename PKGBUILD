@@ -1,13 +1,13 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-mysql'
-pkgver=0.7.7.1
+pkgver=0.7.8.0
 pkgrel=5
 pkgdesc="A distributed privacy aware social network (MySQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
 depends=('ruby2.3' 'ruby2.3-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'libmariadbclient')
-optdepends=('mariadb: Database server')
+optdepends=('jemalloc: lower memory consumption' 'mariadb: Database server')
 makedepends=('nodejs')
 conflicts=('diaspora-postgresql' 'diaspora-mysql-git' 'diaspora-postgresql-git')
 options=(!strip)
@@ -55,7 +55,7 @@ build() {
   msg "Setup build directory"
   rm -rf $_builddir
   mkdir -p $_builddir
-  cp -Rf $srcdir/diaspora-0.7.7.1/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
+  cp -Rf $srcdir/diaspora-0.7.8.0/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
 
   cd $_builddir
 
@@ -133,7 +133,7 @@ package() {
   ln -sf /var/log/diaspora                     $pkgdir/usr/share/webapps/diaspora/log
 }
 
-sha256sums=('ae15c2ddc3e1e0df3567976903ffc5e4d5382fdd507319890fd84b682a836591'
+sha256sums=('50970a37470e61dfb3522c9e725856019fc1a13c94c04fe423b5e5246110177d'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             '2ac3ef6c4f0396b7738b18d07c56f57e0db5e5e194bf8b07ffd6ad790dd92e17'
             '7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408'
