@@ -174,7 +174,7 @@ set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
 pkgver='5.6.1'
-pkgrel='1'
+pkgrel='2'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
 arch=('i686' 'x86_64')
@@ -270,6 +270,9 @@ prepare() {
       -e 's:^#!/bin/sh$:#!/usr/bin/dash:g' \
     -i 'configure'
   test ! -s 'configure.Arch' || echo "${}"
+
+  # Ghostscript dropped Type1 from the font path.
+  sed -e 's:@FONTPATH@:/usr/share/fonts/Type1:g' -i $(grep -le '@FONTPATH@' *.in etc/*.in)
 
   # Eliminate all uses of /bin/sh which on Arch Linux is bash. configure gets 
   # some of them. dash is partly for performance on high volume fax servers 
