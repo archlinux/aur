@@ -1,10 +1,11 @@
 pkgbase = python-xmp-toolkit
 	pkgdesc = A library for working with XMP metadata
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://python-xmp-toolkit.readthedocs.org/
 	arch = any
 	license = custom
+	makedepends = python-setuptools
 	depends = python>=3.5
 	depends = exempi>=2.2.0
 	depends = python-pytz
