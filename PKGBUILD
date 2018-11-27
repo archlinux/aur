@@ -16,14 +16,16 @@ build()
 	echo "###############################################"
 	echo "No build requied, precompiled jar is avaliable,"
 	echo "standard values has been placed in config file."
-	echo "$ cd /opt/adbcontrol/ ;java -jar adbcontrol.jar"
 	echo "###############################################"
 	}	
 
 package()
 	{
 	mkdir -p "${pkgdir}"/opt/adbcontrol
+	mkdir -p "${pkgdir}"/usr/bin
 	echo -e 'adbCommand = /usr/bin/adb\nscreenshotDelay = 10\nlocalImageFilePath = /tmp/adbcontrol_screenshot.png\nphoneImageFilePath = /mnt/sdcard/adbcontrol_screenshot.png' > "${pkgdir}"/opt/adbcontrol/config.properties
+	echo -e '#!/bin/bash\ncd /opt/adbcontrol\njava -jar adbcontrol.jar' > "${pkgdir}"/usr/bin/adbcontrol
+	chmod +x "${pkgdir}"/usr/bin/adbcontrol
 	cp -a "${srcdir}"/src "${pkgdir}"/opt/adbcontrol/
 	install -Dm755 "${srcdir}"/adbcontrol.jar "${pkgdir}"/opt/adbcontrol/adbcontrol.jar
 	install -Dm755 "${srcdir}"/epl-v10.html "${pkgdir}"/opt/adbcontrol/epl-v10.html
