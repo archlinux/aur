@@ -3,14 +3,14 @@
 _llvm_branch='release_40'
 
 pkgname=intel-graphics-compiler-git
-pkgver=r749.5344403
+pkgver=r869.4128b9e
 pkgrel=1
 pkgdesc='Intel Graphics Compiler for OpenCL (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT')
 depends=('gcc-libs' 'ncurses' 'zlib')
-makedepends=('git' 'cmake' 'clang' 'flex' 'bison' 'python2')
+makedepends=('git' 'cmake' 'clang' 'python2')
 provides=('intel-graphics-compiler')
 conflicts=('intel-graphics-compiler' 'compute-runtime')
 options=('!emptydirs')
