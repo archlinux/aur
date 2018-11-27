@@ -3,7 +3,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.10.2
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -43,8 +43,10 @@ prepare() {
   _build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
 
   # force using python2
-  find ${srcdir} -name "*" -type f -exec \
-    sed -i 's#\(/usr/bin/env \|/usr/bin/\)python[2-3]*#\1python2#' {} \;
+  MATCH='\(/usr/bin/env\|/usr/bin/\)python[[:digit:].]*'
+  while IFS= read file; do
+    sed -i "s#$MATCH#\\1python2#" "$file"
+  done < <( find ${srcdir} -name "*" -type f -exec grep -le "$MATCH" \{\} + )
 
   # install external libraries in _build_dir instead of the prefix
   sed -i 's/self.publicInstall    = 1/self.publicInstall    = 0/' ${_build_dir}/config/BuildSystem/config/package.py
