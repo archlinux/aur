@@ -1,5 +1,5 @@
-# Maintainer: Michael Polidori <michaelapolidori@gmail.com>
-# Author: Carl Bordum Hansen <carl@bordum.dk>
+# Maintainer: Michael Polidori <michaelapolidori at gmail dot com>
+# Author: Carl Bordum Hansen <carl at bordum dot dk>
 
 pkgname=manly
 pkgver=0.4.0
