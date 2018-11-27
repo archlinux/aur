@@ -134,8 +134,8 @@ done
 
 echo "Now mounting image <$image> format <$format> on path <$mount_where>, partition number <$n_part>."
 if [[ "$flagAskConfirm" == true ]] ; then
-  echo -n "Continue? (Y/N): "; read ok
-  [[ ! $ok =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user."; exit 0; }
+  echo -n "Continue? (Y/N): "; read ask
+  [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user."; exit 0; }
 fi
 
 

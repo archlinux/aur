@@ -15,8 +15,10 @@ Usage
   uuud-change [device (no /dev prefix required)]
   uuud-change [device (no /dev prefix required)] [new_uuid]
 
+Optional parameters
+  --help -h              -> this help page
   --versione             -> version
-  -y|--ask-confirm       -> ask confirm before proceeed
+  -y --ask-confirm       -> ask confirm before proceeed
   --force-yes            -> required to change parameter for fat32 (very dangerous)
 
 EOF

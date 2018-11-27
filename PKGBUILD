@@ -1,6 +1,6 @@
 # Maintainer: Simona <simona.pisano[at]gmail[dot]com>
 pkgname=simonascripts
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Bash unique command for mount image files (iso, vms, crypto, squashfs), detect pendrive device name, list all kernels, list all i/o schedulers."
 
@@ -32,12 +32,12 @@ source=( "boot-kernel-list"
          "image-mount.1"     )
 
 md5sums=('3f5599c3588f01b625aa9feb0a0e8b99'
-         'c69213f34505e04530374e32dd1e2a61'
+         '8ff9ee29574328ad3ccc9cc4832a19a9'
          '717e3391e87f5cda39ebd9a2cc2e943d'
          'c58f5737bb41c8af2bff7dd24a3d2723'
-         '6379f2d72a7f197961f7d10bf428d667'
+         '40ef9e0d1831cc1865208bf52eaa2cef'
          'f471707d63f684636e2f0249fc815fad'
-         '77a45fb264ff62749291beb270d88740'
+         '3189eb5ae50a9ddce43c8820c35ba2b0'
          '7e4b85c6508890c6f5c88b3d886206a6')
 
 package() {
