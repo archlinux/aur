@@ -5,17 +5,17 @@
 _pkgname=firefox
 _channel=nightly
 _lang=zh-TW
-_pkgver=62.0a1
+_pkgver=65.0a1
 
 pkgname=${_pkgname}-${_channel}-${_lang/TW/tw}
-pkgver=62.0a1.20180514220126
+pkgver=65.0a1.20181126234942
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org, nightly build (zh-TW)'
 url='http://www.mozilla.org/projects/firefox'
 screenshot="http://people.mozilla.org/~shorlander/blog-images/australis-linux.png"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
-depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite3' 'dbus-glib')
+depends=('alsa-lib' 'libxt' 'libnotify' 'mailcap' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
 provides=("firefox=$_pkgver" "${_pkgname}-${_channel}")
 conflicts=("${_pkgname}-${_channel}")
 
