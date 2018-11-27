@@ -1,13 +1,14 @@
 pkgbase = gnome-hud
 	pkgdesc = Unity like HUD menu for the GNOME Desktop Environment
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hardpixel/gnome-hud
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = gtk3
 	depends = bamf
+	depends = libkeybinder3
 	depends = python
 	depends = python-gobject
 	depends = python-dbus

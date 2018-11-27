@@ -1,12 +1,12 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-hud
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unity like HUD menu for the GNOME Desktop Environment"
 arch=("any")
 url="https://github.com/hardpixel/gnome-hud"
 license=("GPL")
-depends=("gtk3" "bamf" "python" "python-gobject" "python-dbus" "python-fuzzysearch")
+depends=("gtk3" "bamf" "libkeybinder3" "python" "python-gobject" "python-dbus" "python-fuzzysearch")
 optdepends=(
   "rofi: Use rofi as menu dialog"
   "appmenu-gtk-module: AppMenu support for GTK2"
