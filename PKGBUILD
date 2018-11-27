@@ -1,5 +1,5 @@
-# Maintainer: Michael Polidori <michaelapolidori@gmail.com>
-# Author: Ethan Chan <metakirby5@gmail.com>
+# Maintainer: Michael Polidori <michaelapolidori at gmail dot com>
+# Author: Ethan Chan <metakirby5 at gmail dot com>
 
 pkgname=colorz
 pkgver=1.0.3
