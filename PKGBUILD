@@ -3,7 +3,7 @@
 pkgname=powerpanel
 pkgver=1.3.2
 _pkgverdl=132
-pkgrel=6
+pkgrel=7
 pkgdesc="CyberPower UPS daemon"
 arch=("x86_64" "i686")
 url="https://www.cyberpowersystems.com/product/software/powerpanel-for-linux/"
@@ -13,8 +13,7 @@ backup=(etc/powerpanel/pwrstatd-{powerfail,lowbatt,email}.sh
         etc/pwrstatd.conf)
 
 source=('pwrstatd.service')
-sha256sums=('255e5958346daa9d7c0e96ae3d86095afd3b3ec99880205d15d51b8f20a602df'
-            '265099590e82303fa1082a84dda02488d41762ca5b94f2bb7fd395c9b4ac1c36')
+sha256sums=('255e5958346daa9d7c0e96ae3d86095afd3b3ec99880205d15d51b8f20a602df')
 
 if [[ $CARCH = 'x86_64' ]]; then
   source+=("https://dl4jz3rbrsfum.cloudfront.net/software/powerpanel-$_pkgverdl-x86_64.tar.gz")
