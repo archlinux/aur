@@ -1,7 +1,7 @@
 pkgbase = python2-rcssmin
-	pkgdesc = RCSSmin is a CSS minifier written in python
+	pkgdesc = rCSSmin is a CSS minifier written in python
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ndparker/rcssmin
 	arch = i686
 	arch = x86_64
