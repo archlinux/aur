@@ -47,7 +47,9 @@ _subarch=27
 # that you currently have probed in your system VASTLY reducing the number of
 # modules built and the build time to do it.
 #
-# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+# WARNING - ALL modules must be probed or loaded via a config file BEFORE you
+# begin making the pkg unless you're running modprobed-db (AUR) and building
+# this with makepkg as the user who is keeping the database.
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
@@ -64,9 +66,9 @@ _rev_override="n"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=4
+_minor=5
 _srcname=linux-${_major}
-_clr=${_major}.3-663
+_clr=${_major}.4-663
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -106,7 +108,7 @@ prepare() {
         echo "$_kernelname" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0501|^Patch0123' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0501' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
@@ -162,15 +164,13 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
-            msg2 "If you have modprobe-db installed, running it in recall mode now"
-            if [ -e /usr/bin/modprobed-db ]; then
-                [[ -x /usr/bin/sudo ]] || {
-                echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-                exit 1; }
-                sudo /usr/bin/modprobed-db recall
-            fi
+            if [ -f $HOME/.config/modprobed.db ]; then
+            msg2 "Found a modprobed-db database for Steven Rostedt's make localmodconfig"
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+        else
             msg2 "Running Steven Rostedt's make localmodconfig now"
             make localmodconfig
+            fi
         fi
 
     ### Running make nconfig
@@ -342,7 +342,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            'c1f2c29e3a5b9cd0ec7184a5820cd8a4568e67b791373efa12bd28c29616de9b'
+            '31d7d1981b1a510e02d26ae09eee334d53df3964b7c49a92adb62fb5c22c6cc0'
             'SKIP'
             '29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
