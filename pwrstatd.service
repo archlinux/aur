@@ -2,6 +2,8 @@
 Description=PowerPanel for Linux software can be used with most CyberPower UPS products.
 
 [Service]
+Group=power
+UMask=0002
 ExecStart=/usr/bin/pwrstatd
 
 [Install]
