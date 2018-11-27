@@ -1,21 +1,40 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
-
-# Based on python-torchvision-git by Stephen Zhang
+# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Contributor: Jean Lucas <jean@4ray.co>
+# Based on python-torchvision-git; original contributors:
+# Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
 pkgname=python-torchvision
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=(any)
 url=https://pytorch.org
 license=(BSD)
-depends=(python python-pytorch)
+depends=(python-numpy python-pillow python-pytorch python-six)
 makedepends=(python-setuptools)
-source=(https://github.com/pytorch/vision/archive/v$pkgver.zip)
-sha512sums=(41fe2ea704cd4d7b43f1043a8666f2d7abd9480519c012321e2f0e3497f2815dc86118c2c57d0cd80f71b6a465521787f4e3c5a423268776009f4069582ab7b4)
+checkdepends=(python-pytest python-scipy)
+source=("torchvision-$pkgver.tar.gz"::"https://github.com/pytorch/vision/archive/v$pkgver.tar.gz"
+        fix-tests.patch::https://github.com/pytorch/vision/commit/4db0398a2b02aae790013efbc868f2d795eb2ef7.patch)
+sha512sums=('224a07c24b2d990a2b396a7d499975347e45eccf501fd75bf528e4d5d92bd4c8f06382b8f3012263378a5e72271d3f9df4bc40248ec7fa218d2913355ed96740'
+            '624bbb9e96ccab3e7884a362015ee7ce159cb24e3fbb1d62575097658f494a7f7c21c511dc4946f808ba42143e9ba7cef9640e6aec234d36a3b48217a69d873c')
+
+prepare() {
+  cd vision-$pkgver
+  patch -Np1 -i ../fix-tests.patch
+}
+
+build() {
+  cd vision-$pkgver
+  python setup.py build
+}
+
+check() {
+  cd vision-$pkgver
+  PYTHONPATH=. pytest -v test
+}
 
 package() {
-  cd $srcdir/vision-$pkgver
-  python setup.py install --root=$pkgdir --optimize=1
-  install -Dm 644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  cd vision-$pkgver
+  python setup.py install --root=$pkgdir --optimize=1 --skip-build
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
