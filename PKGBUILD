@@ -2,7 +2,7 @@
 
 pkgname=envoy-exporter-git
 _pkgbase=envoy-exporter
-pkgver=r3.f3293d9
+pkgver=r4.67d6f33
 pkgrel=1
 pkgdesc="Prometheus exporter for Enphase Envoy Gateway"
 arch=('x86_64')

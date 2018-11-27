@@ -1,6 +1,6 @@
 pkgbase = envoy-exporter-git
 	pkgdesc = Prometheus exporter for Enphase Envoy Gateway
-	pkgver = r3.f3293d9
+	pkgver = r4.67d6f33
 	pkgrel = 1
 	url = https://github.com/benalexau/envoy-exporter
 	install = envoy-exporter.install
