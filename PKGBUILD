@@ -1,18 +1,20 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Fredrick Brennan <copypaste@kittens.ph>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=mastodon
-pkgver=2.5.0
-pkgrel=3
+pkgver=2.6.2
+pkgrel=1
 pkgdesc='Free software social-network server based on ActivityPub and OStatus'
-arch=(i686 x86_64)
+arch=(x86_64)
 url=https://joinmastodon.org
 license=(AGPL3)
 depends=(ffmpeg
          imagemagick
+         libidn
          libpqxx
          libxml2
          libxslt
-         nodejs-lts-carbon
+         nodejs
          postgresql
          redis
          ruby-bundler
@@ -22,12 +24,13 @@ makedepends=(git npm python2)
 conflicts=(mastodon-git)
 backup=(etc/mastodon/environment)
 install=mastodon.install
+options=('!strip')
 source=(https://github.com/tootsuite/mastodon/archive/v$pkgver.tar.gz
         mastodon-web.service
         mastodon-sidekiq.service
         mastodon-streaming.service
         mastodon.target)
-sha512sums=('cfdf71808405263ac78960c3863850f4961a773f6a55e9e28fea45812db867ff6b13edffbfd8ecf985b123e9f853d251bb451b0580ededc357637c4abaa0d972'
+sha512sums=('768167f463b6f07606b95d9a30e63b1e78ebce2058368e7b7202eb3ab4c1c2a0d7e10b4a884b3ec729e6927082d707c52e104b028036c7d115c439ba9e33faf9'
             '532929aeeda9a0ccf72de0695a3381547cc389344e1e67f05ef1d7ce5c1ad57278b647423bb52d4a87069ad85479452533fbe3786e5e5c4b62730c6ef72ff267'
             '603a7877288c762855a29fd2399d3ff7d218a7f1b7d6378cad7f30048cdbfe2a13f2ed2b5c94cb683bdcaead8cd47243e564a2ae70d7f21fa33f295c5396f4f7'
             '90a0761b7709659bec6f29c366c503fdd348226cbb585cf4f6eaa065854e2027d08ab3b352eb13ad7c0e327d662f13bc00fb4163ea0c583ef55b1795ab2e0b31'
@@ -36,6 +39,7 @@ sha512sums=('cfdf71808405263ac78960c3863850f4961a773f6a55e9e28fea45812db867ff6b1
 build() {
   cd mastodon-$pkgver
   bundle install --deployment --without development test
+  yarn config set ignore-engines true
   yarn install --pure-lockfile
 }
 
