@@ -30,10 +30,10 @@ provides=('kubernetes'
 	  'kube-scheduler')
 conflicts=('kubernetes' 'kubeadm-git' 'kubectl' 'kubectl-bin' 'kubeadm-bin' 'kubelet-bin' )
 install=kubernetes.install
-sha256sums=('fb77c94c29c4be52c125a7b217c310fab426a1084d9054583aafdecb8cc6f63f'
-            'f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda'
-            'f40b4b14a71f8138de69021e967d993e8b14db2cebe66eee20c7e66839ad1fde')
-sha256sums_x86_64=('1f8c40510a10e46edcee39704235c7c4bf1ae6da036cd7a36804b8407b96c1de')
+sha512sums=('6c4ef50240626f97246ed71229463e3649f42674d64bca3a8171728f67807cd0509da9156f53d0e7a8d4967e081cff0f03e0e1469ce5c81313eff67201d49b72'
+            '51ab778583bd3d33a89d6fdfd17231ec8e1fe5983c043c21c03421d71403b8e76b52d86b05b05651ab8da1bdb5b47b8aa85f275badefe82344bac15b9d86cde6'
+            '19d70634252932e7835bb5db4af75c530fe843386ca688267caca0fb3b4fb1ad7019025ea9d59926ceac8817580e9dfad9396c327f2da955146a302f22b2d5ce')
+sha512sums_x86_64=('13363365457ff7527f92c4d371b6dedc6e77553f596e694bb8479511fded9ab8694ae4540752268f82acbc3485606bd07042e3677da45156c850cc9e75bbd2a1')
 
 package() {
     cd $srcdir/kubernetes-$pkgver
