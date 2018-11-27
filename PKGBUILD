@@ -9,7 +9,7 @@ _pkgver_base=${_pkgver%-*}
 pkgver=${_pkgver//-rc/.}
 pkgrel=1
 license=('CDDL')
-makedepends=("git" "spl-dkms-rc=${pkgver}")
+makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_pkgver}/zfs-${_pkgver}.tar.gz"
@@ -40,7 +40,7 @@ build() {
 
 package_zfs-dkms-rc() {
     pkgdesc="Kernel modules for the Zettabyte File System -- release candidates"
-    depends=("spl-dkms-rc=${pkgver}" "zfs-utils-rc=${pkgver}-${pkgrel}" "dkms")
+    depends=("zfs-utils-rc=${pkgver}-${pkgrel}" "dkms")
     provides=("zfs")
     conflicts=("zfs-git" "zfs-lts" "zfs-dkms")
 

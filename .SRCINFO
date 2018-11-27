@@ -6,7 +6,6 @@ pkgbase = zfs-dkms-rc
 	arch = x86_64
 	license = CDDL
 	makedepends = git
-	makedepends = spl-dkms-rc=0.8.0.2
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.0-rc2/zfs-0.8.0-rc2.tar.gz
 	source = zfs.bash-completion-r1
 	source = zfs.initcpio.install
@@ -18,7 +17,6 @@ pkgbase = zfs-dkms-rc
 
 pkgname = zfs-dkms-rc
 	pkgdesc = Kernel modules for the Zettabyte File System -- release candidates
-	depends = spl-dkms-rc=0.8.0.2
 	depends = zfs-utils-rc=0.8.0.2-1
 	depends = dkms
 	provides = zfs
