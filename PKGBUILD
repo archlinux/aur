@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=azcopy-10
-pkgver=10.0.2
+pkgver=10.0.4
 pkgrel=1
 pkgdesc="A command-line utility designed for copying data to/from Microsoft Azure"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go' 'dep')
 conflicts=('azcopy')
 source=("azcopy-${pkgver}.tar.gz::https://github.com/Azure/azure-storage-azcopy/archive/v${pkgver}.tar.gz")
-sha512sums=("7d9f2ed08bf252905975607bf250b526ef4e121bf0fb3a21ed72c27cc3b7352ad119c14b80859fce55751a6392952abe548da26d3190286fb042cb0c3c5c5d1f")
+sha512sums=("8fee7d7de9b7b9d4b1be6dedac31c11d5860b81af3ba3bcbc3be33d6c391f3cdc833f1d7b86da595c506338fba4841bec398f0ab03217cd61ce46b4f71b053fa")
 
 prepare() {
   mkdir -p "${srcdir}/src/github.com/Azure"
