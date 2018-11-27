@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=luabcrypt
-pkgver="2.1_3"
+pkgver="2.1_4"
 pkgrel=1
 pkgdesc="A Lua wrapper for bcrypt"
 arch=('i686' 'x86_64')
@@ -15,4 +15,4 @@ package() {
   rm -Rf "$pkgdir/usr/lib/luarocks"
 }
 
-sha256sums=('b5c6867abf140c3b016d72fb375861cd893cb67b28b85014a9d1629a60eb3cb2')
+sha256sums=('0201396e62960e11f8506dccd52b620ad0bff91904a2454ce92900799d129b92')
