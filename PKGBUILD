@@ -2,16 +2,16 @@
 # Contributor: bartus ( aur\at\bartus.33mail.com )
 
 pkgname=makepkg-optimize
-pkgver=4
-pkgrel=3
+pkgver=5
+pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
 url='https://wiki.archlinux.org/index.php/Makepkg-optimize'
-conflicts=(makepkg-optimize{,2})
-replaces=('makepkg-optimize2')
-depends=('pacman-buildenv_ext-git')
-optdepends=('upx' 'optipng' 'nodejs-svgo' 'graphite')
+conflicts=(makepkg-optimize{,2} pacman-buildenv_ext-git)
+replaces=('makepkg-optimize2' pacman-buildenv_ext-git)
+depends=('pacman-git')
+optdepends=('upx' 'optipng' 'nodejs-svgo')
 backup=(etc/makepkg-optimize.conf)
 _buildenv=({pgo,lto,graphite}.sh.in)
 _executable=({upx,optipng,svgo}-exec.sh.in)
@@ -63,22 +63,22 @@ prepare() {
   #Extra ricer LDFLAGS
   sed -i "/^LDFLAGS/r ldflags.conf" makepkg-optimize.conf
 
-  #Debugging flags for make
+  #Debugging flags for make (note, DEBUG_MAKEFLAGS isn't a real thing)
   sed -i "/^DEBUG_CXXFLAGS/r debug-makeflags.conf" makepkg-optimize.conf
 
-  #CMAKE IS A BUILD OBFUSCATION SYSTEM
+  #Cmake is a build obfuscation system
   sed -i "/^#DEBUG_MAKEFLAGS/r cmake-flags.conf" makepkg-optimize.conf
 
-  #Additional BUIDENV options
+  #Additional BUIDENV macros
   sed -i "/^#-- sign/r buildenv_ext.conf" makepkg-optimize.conf
 
-  #Additional ~~DEST directories
+  #Additional DEST directories
   sed -i "/^#*SRCPKGDEST=/r destdirs_ext.conf" makepkg-optimize.conf
 
-  #Additional OPTIONS options
+  #Additional OPTIONS macros
   sed -i "/^#-- debug/r pkgopts_ext.conf" makepkg-optimize.conf
 
-  #Additional OPTIONS options parameters
+  #Additional OPTIONS parameters
   sed -i "/^#*PURGE_TARGETS=/r pkgopts-param_ext.conf" makepkg-optimize.conf
 
   #Maximum COMPRESS parameters
