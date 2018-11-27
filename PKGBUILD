@@ -1,7 +1,8 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=isobmff-git
-pkgver=r132.fc315a1
+_srcname=ISOBMFF
+pkgver=r135.4f0e8e0
 pkgrel=1
 pkgdesc='Library for reading/parsing files in the ISO Base Media File Format (git version)'
 arch=('i686' 'x86_64')
@@ -14,11 +15,11 @@ depends=(
 makedepends=('git' 'clang')
 provides=('isobmff')
 conflicts=('isobmff')
-source=("$pkgname"::'git+https://github.com/DigiDNA/ISOBMFF.git'
-        'submodule-PIMPL'::'git+https://github.com/macmade/PIMPL.git'
-        'submodule-gmock-xcode'::'git+https://github.com/macmade/gmock-xcode.git'
-        'submodule-makelib'::'git+https://github.com/macmade/makelib.git'
-        'submodule-xcconfig'::'git+https://github.com/macmade/xcconfig.git')
+source=('git+https://github.com/DigiDNA/ISOBMFF.git'
+        'git+https://github.com/macmade/PIMPL.git'
+        'git+https://github.com/macmade/gmock-xcode.git'
+        'git+https://github.com/macmade/makelib.git'
+        'git+https://github.com/macmade/xcconfig.git')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -26,46 +27,46 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-    cd "$pkgname"
+    cd "$_srcname"
     
+    local _submodule
     local _submodule_list='PIMPL gmock-xcode makelib xcconfig'
     
     git submodule init
     
     for _submodule in $_submodule_list
     do
-        git config --local "submodule.Submodules/${_submodule}.url" "${srcdir}/submodule-${_submodule}"
+        git config --local "submodule.Submodules/${_submodule}.url" "${srcdir}/${_submodule}"
     done
     
-    unset _submodule
     git submodule update
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, no tags available
     printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
+    
     make
 }
 
 package() {
     # includes
-    cd "${pkgname}/ISOBMFF/include"
+    cd "${_srcname}/ISOBMFF/include"
     mkdir -p "${pkgdir}/usr/include/ISOBMFF"
     install -m644 *.hpp "${pkgdir}/usr/include"
-    cd ISOBMFF
-    install -m644 *.hpp "${pkgdir}/usr/include/ISOBMFF"
+    install -m644 ISOBMFF/*.hpp "${pkgdir}/usr/include/ISOBMFF"
     
     # library
-    cd "${srcdir}/${pkgname}/Build/Release/Products/${CARCH}"
-    install -D -m755 libISOBMFF.so "${pkgdir}/usr/lib/libISOBMFF.so"
+    cd "${srcdir}/${_srcname}/Build/Release/Products/${CARCH}"
+    install -D -m755 libISOBMFF.so -t "${pkgdir}/usr/lib"
     
     # license
-    cd "${srcdir}/${pkgname}"
-    install -D -m644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${srcdir}/${_srcname}"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
