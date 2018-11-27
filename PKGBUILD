@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.16
+_version=2018.2.17
 _build=f1
-_randomstring=39a4ac3d51f6
+_randomstring=88933597c842
 _prefix=/opt/Unity
 
 pkgname=unity-editor-language-ja
