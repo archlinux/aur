@@ -9,10 +9,10 @@
 pkgname=filebot
 pkgver=4.8.2
 pkgrel=1
-pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
+pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
-license=('GPL')
+license=('Commercial')
 install=$pkgname.install
 install=()
 depends=('java-openjfx' 'jre8-openjdk' 'fontconfig' 'chromaprint')
@@ -36,10 +36,10 @@ md5sums=('9e5ce2ba54b9e5ea0d6ca7446572c782'
          'f37edd0bba7570904d28ab1681c7a7f3'
          )
 
-optdepends=('libzen: Support for additional subtitle search engines (Sublight)'
-	    'libmediainfo: Episode naming / Sublight usage'
+optdepends=('libzen: Required by libmediainfo'
+	    'libmediainfo: Read media info such as video codec, resolution or duration'
 	    'java-p7zip-binding: Extract archives'
-	    'gvfs: gvfs backends')
+	    'gvfs: Drag-n-Drop from GVFS remote filesystems')
 
 prepare() {
   cd "$srcdir"
