@@ -1,6 +1,6 @@
 pkgbase = unity-editor-android
 	pkgdesc = Allows building your Unity projects for the Android platform
-	pkgver = 2018.2.16f1
+	pkgver = 2018.2.17f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = unity-editor-android
 	depends = android-udev
 	optdepends = android-ndk-13b: needed for IL2CPP builds
 	options = !strip
-	source = https://download.unity3d.com/download_unity/39a4ac3d51f6/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2018.2.16f1.pkg
-	sha1sums = 7dcd96adf5cef1aed7cab57a325df9cdec36be7d
+	source = https://download.unity3d.com/download_unity/88933597c842/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2018.2.17f1.pkg
+	sha1sums = 4a5683c4a7617883c131ccee58d609e1680264ed
 
 pkgname = unity-editor-android
 
