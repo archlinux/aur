@@ -6,13 +6,13 @@
 pkgbase=linux-pf-lts
 _major=4
 _minor=9
-_patchlevel=74
+_patchlevel=140
 _pfpatchlevel=22
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 _pfrel=6
-pkgrel=2
+pkgrel=1
 _kernelname=-pf
 #_pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 #_pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -44,7 +44,7 @@ license=('GPL2')
 makedepends=('git' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 # That voodoo that you do
-_incr=($(for i in $(seq -w ${_pfpatchlevel} $((_patchlevel-1)) ); do echo https://www.kernel.org/pub/linux/kernel/v${_major}.x/incr/patch-${_major}.${_minor}.$i-$((i+1)).xz; done))
+_incr=($(for i in $(seq ${_pfpatchlevel} $((_patchlevel-1)) ); do echo https://www.kernel.org/pub/linux/kernel/v${_major}.x/incr/patch-${_major}.${_minor}.$i-$((i+1)).xz; done))
 
 source=(https://www.kernel.org/pub/linux/kernel/v${_major}.x/${_srcname}.tar.{xz,sign}
         # the main kernel config files
@@ -122,7 +122,73 @@ sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             '055b24f318f21c483398d46fc98843b2a5262cd34b318ff1a8331caf1750c40c'
             '3375f046747f00a28605b4836251dd5edc22f8b45ef1dc49e33dd31ab4f1d3da'
             '11d14ea4b1c94da81192c06d4b8e0310d5545614d91a0c04282e6ea7a7d68c0d'
-            'db0eaabbc9ce2052397deb26fe6c072e804ab29514582c96add5664b795e6148')
+            'db0eaabbc9ce2052397deb26fe6c072e804ab29514582c96add5664b795e6148'
+            'f012b2fb5d9038b4295326b931a008a015ae916739dad2289b9de35634ada481'
+            'ff10fbd50439b86a4ac036842531c39a55f3779f89fa2a38e0166cabd114d6a2'
+            'f2eb68eb80dcf79cb7ffd9161580ed4dc69846c81a8d85519eaf97ee59718e56'
+            'a0ea1caf612fc7afe5c11bbbf131eb2116ae539044b5f7d8acc0e61cae324c7b'
+            'c43f2c351fa248c7b1f3e41eb1d5fb16b75870cbb44f9457b9f376e36698e6cf'
+            '0864da76365efcca1b8b731215cf0fc785cd0888e6c5c42bebfeb70426e6016d'
+            '6102c51dddcea3480de09f96bb93f0a49f3470da4c2e80d0d82ce97284e1e9a3'
+            'cda5838f7f78f69a4e2a1eb6c08e1e3df955afa026caf3ceb0d7d465579ae9a5'
+            'b3b8a6632c1173e17e8c8ed68fce22be165f660ccd5a4126731b0a028ca6d1d5'
+            '5c2b7ba0c2dbb294fef9a8e5cabc4e2ef9bf38dae62ee5430bad8b5e8de71c53'
+            '065eec3e8a53046e700fb601108ad3f98a586fb590b6fa4130494bba9ff20f18'
+            'e8e1577cb41675d4fd070212e11d8d25e8da626761733e4106ea364767119b6c'
+            '8f57e0ac37c8ba6254177df5e406e3872b3163e70c68aab4c684f1a5d8121e6c'
+            '61a5c76c670c23cc82f426a94316c5b8ab4e7d8224ce383cd064d37f89e30ea6'
+            '20a0033e5cc351c0943c67b5462f45d50f7e14d6de0b82aa36b7532a6608c8ab'
+            'bab9bb8e689d7a6af4b7b688bed7f5ccaaa472916ccaa475b4e2fb9d2e2137e1'
+            'dd933fd4552a6a2094ea1b1a4e1d8cc981937864dd60e8b9c77d5d7e22af2fb7'
+            '0affd8ef87fcd42bdfca94b39a81b63edf6c49cbe8f37750e579eb1010a0b8d7'
+            '7a5cfcdfccbb2cb0b07a02d08a210ba5ab07df4f2a2e21840ea68c20b34c3c38'
+            '84ece4c2eaa3dbb288606149f38411d001b0b383560752f88b1d2f345f6e25be'
+            '09edceefe0aba3008b3ce74326e5c6a376ffa7cbd6d6adb4d1652968ff1c10f9'
+            '5cb9ceeed3cba64142f8e51b2eb78c2a50d58d58137267d06eacadf9d9450c41'
+            '52483a28beae153c252681ec2334c4c3387d7d0aaeeac2ba2451d40282400ede'
+            '3e21d62011df0fbde62226c37b6231edab979f2b2ef7742e1428e6bddad65da0'
+            '8d5747fd1735e25ed15fd686458bb08e62dce928234dd2d0fb4e648ad2f11ec3'
+            'dc928662d7e6b150b282230621ce6e94ba91a3ff36be9f3a3829e302e507bac4'
+            '2606fae62e5139717bb349ec50af1d05e840c99c0a3f27d8885fe8007f1a7046'
+            'e140fafaba22d0bba40b49fa16a18dd66ddd2ef5f10c54ab5fbf9f45bcb58886'
+            'e56793fa19f6a98bf61ea6678d339e403bc68e81794e4e5203f8cb790bb24234'
+            '34f31aaf4cad298c29fd312a85c2f0b1088945d4d8d1a6c051857d22dc350a7e'
+            'd03dbd65f69ed749518f40d0fad2ac83a81ee299b2992db80b08fb629ddfe2fd'
+            '1a220d1bba7f168320ad01fb2a5f25576fb16a2b101bbfbf82f29f2156cfc51f'
+            '3483c3557088e781dd30cf0393d9f78165bb079dd44e683889d2cfd495c68225'
+            '9c2a312386021293d999d55e7f54244867f25e46759669d99a2e09a8b6c77e07'
+            '0089ec677d00e0568b8752450d628fd9fbc40cf5caf4e3602b5184ffabf34d5c'
+            '310979f45e65352cbab09577909b730d32b85ee557d440e7e7e4a693d41c8ba2'
+            'c0162302b2eb912206ce49296bec577bede1c83f3612775c7d9d61e010977591'
+            '889c0be6b667568c4aad100b5758466f1e21f3e77727d3558f94a40121ef340d'
+            'e4d412430a95e0812b96d99595e50cc51b6c857eb305905d66bddffc45cb9cbb'
+            '63e1d0d53c4f4a00b77c9a67af12e9c0e1eaa4b25b20be5a1fc645cf32f96eb9'
+            '7f6da7baab4a36e8dc81b38fc65ebde0e05e2bcc4ae949bd108541f4f8d0c459'
+            'c16aac87c0ec31244f9c4a39de2a3e4ef3de2d129d606208477aaa77dc620789'
+            '3317e459579afa571903998c6e897b95d6ac58ae4c9b8b864956f3b696369e4b'
+            '36c4728be1809312557ce2213cf9761d283cf828737340c87f05fad29f6daa27'
+            'bdb55ade9f2a0cfb7c8dc20210fa267a92c773738a52076d7dcf7c271c95c1b7'
+            '4335892bcc552007d0eaa8152e955ccfe92436941ebfb8c84f881faff537177f'
+            'a5f415aeed66814441fd89ec968115cdcab98984dda34e985460067eb523e7c6'
+            'bedc859ae73123362c8af42bff8a5582b567fb1fd35fa36098c508d0f0b65dbe'
+            '271d7be74d0931b258fefde09269727c11033034cc87ab1823debe17c8c0cd77'
+            '4606f8e8185a97462fadba12a656eb81bafc1bc99f52a0c4ca6519c1a92c8190'
+            '2fd4ce2d236cb4c0eba4dc15c083b0ebfd5c7cf2e4ca170260eb1c586be8f0fb'
+            '791f4dae9490edfec623ea750543c428729e8b8bcb432c95624b6b439fb32672'
+            '04e29a02ffcf0f341fa9b410388bedfc69749ad1a1f161ed6f386fade5edda78'
+            '97d6a6ff25935b647324306ba9fe26fce558c8d3a00d95492b27b394c6d1fa08'
+            'e3afb20e22c1448a7210d7851d2da1eebe23296e0f51ce8adeecd63990398c96'
+            '06f7c2034f6eb182a215f66ad29e5c069d1622abe6663c27edf26c29c982d9d5'
+            'debb278dfda898544f470c77df59ff7e9e1ad39b453d07978c314b44e0821894'
+            '8ce1d411c8a1af219d51ed606bff34824aa9cf94cff68cfeb3852c2f93c601d7'
+            'a9afa2853caef46499bd43f908b9653da8b99dee9c16b8cddf90aa4177b0735c'
+            'dc812cf8d112cebd766ebfa3dd0481962c84e7831cb9b2866f677dee03551bd9'
+            'dac4ffce329fda7a4f8e4d038fddd2acebe14ad28b03792acc4826be06ff47bf'
+            'c56bc60969300454ff066f44ceb072c09b10157a85cb8159939ef1911db6b15b'
+            'c5116f3a115acc142bc8c86ba21c311b512e309a3105ac3f05c7d6c158ce05ba'
+            'a5b4cc9696ea4cda9f24edad0553bd1d0d8a4465ab19840c6f308ddeecfb30fe'
+            'bf5afb109661ff00c463d528681a0883a504c4eb335d3a8a5aa6073b3547617c'
+            '55cb30ba244fd6497b9afdd4f81f5d7c8efaf2426d10e8edd2d20c5bce0db5ad')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
