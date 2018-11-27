@@ -1,6 +1,6 @@
 # Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=nfft-git
-pkgver=3.3.2rc2.r1.gf8a4df9
+pkgver=3.4.1.r129.g6ad552eb
 pkgrel=1
 pkgdesc="Library for computing Non-uniform Fast Fourier Transforms."
 arch=(i686 x86_64)
@@ -22,7 +22,7 @@ pkgver() {
 build() {
 	cd "$pkgname"
     ./bootstrap.sh
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --enable-all --enable-openmp
     make
 }
 
