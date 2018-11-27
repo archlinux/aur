@@ -1,16 +1,16 @@
 # Maintainer: Grey Christoforo <first name at last name dat net>
 
 pkgname=f-engrave
-pkgver=1.59
+pkgver=1.66
 pkgrel=1
 pkgdesc="Supports Engraving and V-Carving"
 url="http://www.scorchworks.com/Fengrave/fengrave.html"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPLv3')
 makedepends=('dos2unix')
 depends=('python')
 source=(http://www.scorchworks.com/Fengrave/F-Engrave-${pkgver}_src.zip arch.patch)
-md5sums=('08821a74f7e371c2f22f5ec5a0d9771d'
+md5sums=('63dbde2b6472d66a847438481208457e'
          'f1844c9323b52b92f8e12f922ff50965')
 
 prepare() {
