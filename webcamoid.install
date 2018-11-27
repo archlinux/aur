@@ -7,7 +7,7 @@ following groups to be installed for fully functioning.
 Capture backend:
 
     - v4l-utils (RECOMMENDED)
-    - libuvc-git
+    - libuvc
 
 Codec frameworks:
 
@@ -21,9 +21,15 @@ Audio playback:
     - jack
     - qt5-multimedia
 
+Virtual camera driver:
+
+    - akvcam-dkms-git (RECOMMENDED)
+    - v4l2loopback-dkms
+
 Virtual camera management:
 
-    - kde-cli-tools (RECOMMENDED)
+    - polkit (RECOMMENDED)
+    - kde-cli-tools
     - gksu
     - gtksu-git
     - kdesudo

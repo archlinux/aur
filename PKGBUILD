@@ -2,7 +2,7 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=8.1.0.r172.gcc8e582a
+pkgver=8.1.0.r264.g0985f0cd
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
@@ -12,6 +12,7 @@ depends=('qt5-quickcontrols'
          'qt5-quickcontrols2'
          'qt5-svg')
 optdepends=('v4l-utils: Extra formats support for webcams'
+            'akvcam-dkms-git: Virtual camera support (Recommended)'
             'v4l2loopback-dkms: Virtual camera support'
             'ffmpeg: Video playing/recording/conversion (Recommended)'
             'gst-plugins-base: Video playing/recording/conversion'
@@ -23,7 +24,8 @@ optdepends=('v4l-utils: Extra formats support for webcams'
             'jack: Audio playback'
             'qt5-multimedia: Audio playback'
             'libuvc: Camera capture'
-            'kde-cli-tools: Root privileges for virtual camera module (Recommended)'
+            'polkit: Root privileges for virtual camera module (Recommended)'
+            'kde-cli-tools: Root privileges for virtual camera module'
             'gksu: Root privileges for virtual camera module'
             'gtksu-git: Root privileges for virtual camera module'
             'kdesudo: Root privileges for virtual camera module')
