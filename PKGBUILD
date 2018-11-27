@@ -1,17 +1,17 @@
 # Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com> 
 pkgname=giseditor
-pkgver=0.26
-pkgrel=5
+pkgver=0.27
+pkgrel=1
 epoch=
 pkgdesc="A gis editor for .gpx .gdb and download maps source"
 arch=('any')
 url="https://github.com/dayanuyim/GisEditor"
 license=()
 groups=()
-depends=('gpsbabel' 'python-pmw' 'python-pillow' 'ttf-arphic-ukai' 'python-numpy' 'python-image' 'python-cycler' 'python-matplotlib' 'python-olefile' 'python-pyparsing' 'python-dateutil' 'python-pytz' 'python-six' 'python-timezonefinder' 'python-certifi')
+depends=('gpsbabel' 'python-pmw' 'python-pillow' 'python-numpy' 'python-cycler' 'python-matplotlib' 'python-olefile' 'python-pyparsing' 'python-dateutil' 'python-pytz' 'python-six' 'python-certifi' 'ttf-droid' 'python-image' 'python-timezonefinder')
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=('ttf-arphic-ukai' )
 provides=()
 conflicts=()
 replaces=()
@@ -20,12 +20,12 @@ options=()
 install=
 changelog=
 source=(
-    "https://github.com/dayanuyim/GisEditor/archive/v0.26.tar.gz"
+    "https://github.com/dayanuyim/GisEditor/archive/v0.27.tar.gz"
     "giseditor.sh"
 )
 noextract=()
 md5sums=(
-    "4c04ae03af817f3942cf2a6340e3f0a0"
+    "17c94da35f3990097e7e9609e41b1f0f"
     "f1896415d3e9488a9b3ff3545ae3911f"
 )
 validpgpkeys=()
@@ -51,5 +51,4 @@ package() {
     install -D -m644 $srcdir/GisEditor-$pkgver/install/linux/giseditor.desktop "${pkgdir}/usr/share/applications/GisEditor.desktop"
 
 	# TODO: update mime type gpx, gdb"
-
 }
