@@ -28,7 +28,14 @@ sha256sums_i686=('00f520be60a56148d2baf9ba454c3ba2fbcd4e25657353ec3410986cd7d3a2
 sha256sums_x86_64=('c6f9d993b02798c8f8bba6cf8c2458f2952d6f7e80890182b192e9cb1f496a42')
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    case "$CARCH" in
+        i686)
+            cd "${srcdir}/${_pkgname}-${pkgver}-linux-ia32"
+            ;;
+        x86_64)
+            cd "${srcdir}/${_pkgname}-${pkgver}-linux-x64"
+            ;;
+    esac
 
     install -d -m 755 "${pkgdir}"/usr/lib/mattermost
 
