@@ -3,7 +3,7 @@
 pkgname=termnote-git
 makedepends=("git" "cmake")
 pkgrel=1
-pkgver=1.0.0.r0.a89b052
+pkgver=0
 pkgdesc="Terminal Notes Application"
 arch=(x86_64)
 url="https://github.com/Terodom/termNote"
