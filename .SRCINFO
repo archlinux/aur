@@ -5,6 +5,7 @@ pkgbase = snapd
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
 	arch = x86_64
+	arch = i686
 	license = GPL3
 	makedepends = git
 	makedepends = go
