@@ -1,6 +1,6 @@
 # Maintainer: Mr. Outis <mroutis@protonmail.com>
 pkgname=dvc
-pkgver=0.20.8
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
@@ -27,7 +27,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'asciimatics-1.10.0::git+https://github.com/peterbrittain/asciimatics.git#branch=v1.10'
         )
 
-sha256sums=('16bddab7e90421ccf31ef3a9bbdf3bd22df065286bfcfb5002a3130e6a8be405'
+sha256sums=('1888d815e6ecd1de20df399e2902b797d4356935b94adcddc6630e6294324f33'
             '7471db231bd7338bc0035b16edf0dc0c900c82d23060f4b4d0c4304caedda6e4'
             '05c471281c45ae113f6103d1268ec7a4831a2e96aa80de45edc89b11fac4fbec'
             '50c058ce3371a819606ff29e914e6555c4d6c2527bff0cd0ed20af5947703118'
