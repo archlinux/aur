@@ -2,7 +2,7 @@
 
 pkgname=ha-glue
 pkgver=1.0.12
-pkgrel=1
+pkgrel=5
 pkgdesc="A set of libraries, tools and utilities suitable for the Heartbeat/Pacemaker cluster stack."
 arch=('i686' 'x86_64')
 url="http://linux-ha.org/wiki/Cluster_Glue"
@@ -28,28 +28,35 @@ build() {
 	_PREFIXETC=/etc
 	_PREFIXINIT=${_PREFIXETC}/rc.d
 	_PREFIXVAR=/var
-	_DGID=666
-	_DUID=666
+	_DGID=189
+	_DUID=189
 
-	#verify the cluster user and group
-	if ! getent group ${_CLUSTER_GROUP} >/dev/null;then
-		echo -e "\nBEFORE COMPILE THIS SOFTWARE YOU MUST CREATE A CLUSTER GROUP, EXECUTE AS ROOT:"
-		echo -e "groupadd -r -g ${_DGID} ${_CLUSTER_GROUP}\n"
-		_EXITCODE=1
-	fi
-	if ! getent passwd ${_CLUSTER_USER} >/dev/null;then
-		echo -e "\nBEFORE COMPILE THIS SOFTWARE YOU MUST CREATE A CLUSTER USER, EXECUTE AS ROOT:"
-		echo -e "useradd -r -g ${_CLUSTER_GROUP} -u ${_DUID} -d /var/lib/heartbeat/cores/hacluster -s /sbin/nologin -c \"cluster user\" ${_CLUSTER_USER}\n"
-		_EXITCODE=1
-	fi
-	if [[ $_EXITCODE -eq 1 ]] ;then
-		return 1 
-	fi
+#	#verify the cluster user and group
+#	if ! getent group ${_CLUSTER_GROUP} >/dev/null;then
+#		echo -e "\nBEFORE COMPILE THIS SOFTWARE YOU MUST CREATE A CLUSTER GROUP, EXECUTE AS ROOT:"
+#		echo -e "groupadd -r -g ${_DGID} ${_CLUSTER_GROUP}\n"
+#		_EXITCODE=1
+#	fi
+#	if ! getent passwd ${_CLUSTER_USER} >/dev/null;then
+#		echo -e "\nBEFORE COMPILE THIS SOFTWARE YOU MUST CREATE A CLUSTER USER, EXECUTE AS ROOT:"
+#		echo -e "useradd -r -g ${_CLUSTER_GROUP} -u ${_DUID} -d /var/lib/heartbeat/cores/hacluster -s /sbin/nologin -c \"cluster user\" ${_CLUSTER_USER}\n"
+#		_EXITCODE=1
+#	fi
+#	if [[ $_EXITCODE -eq 1 ]] ;then
+#		return 1 
+#	fi
 
 	cd "${srcdir}/Reusable-Cluster-Components-glue--glue-${pkgver}"
 	sed -i 's/<glib\/gtypes\.h>/<glib\.h>/g' include/clplumbing/cl_uuid.h
 	./autogen.sh
-	./configure  --sbindir=/usr/bin --libdir=/usr/lib --with-daemon-user=${_CLUSTER_USER} --with-daemon-group=${_CLUSTER_GROUP} --enable-fatal-warnings=no
+	./configure  --prefix=/usr \
+		--sbindir=/usr/bin \
+		--libdir=/usr/lib \
+		--localstatedir=/var \
+		--libexecdir=/usr/lib \
+		--with-daemon-user=${_CLUSTER_USER} \
+		--with-daemon-group=${_CLUSTER_GROUP} \
+		--enable-fatal-warnings=no
 	#sed -i 's/lib64\ //g' configure.ac
 	make
 }
@@ -57,6 +64,9 @@ build() {
 package() {
 	cd "${srcdir}/Reusable-Cluster-Components-glue--glue-${pkgver}"
 	make DESTDIR="${pkgdir}" install
+
+	# conflicts with pacemaker (which has a better version)
+	rm -f "$pkgdir/usr/bin/cibsecret"
 
 	#python path correction
 	for py in `grep -r -l "\#\!\/usr\/bin\/python" ${pkgdir}`;do
