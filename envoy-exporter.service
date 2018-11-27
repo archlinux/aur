@@ -1,0 +1,19 @@
+[Unit]
+Description=Prometheus exporter for Enphase Envoy Gateway
+Documentation=https://github.com/benalexau/envoy-exporter
+After=network.target
+
+[Service]
+User=envoy-exporter
+Group=envoy-exporter
+ExecStart=/usr/bin/envoy-exporter /etc/envoy-exporter.toml
+LimitNOFILE=64
+LimitNPROC=64
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

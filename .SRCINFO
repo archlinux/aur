@@ -1,0 +1,19 @@
+pkgbase = envoy-exporter-git
+	pkgdesc = Prometheus exporter for Enphase Envoy Gateway
+	pkgver = r3.f3293d9
+	pkgrel = 1
+	url = https://github.com/benalexau/envoy-exporter
+	install = envoy-exporter.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	backup = etc/envoy-exporter.toml
+	source = git+https://github.com/benalexau/envoy-exporter.git
+	source = envoy-exporter.install
+	source = envoy-exporter.service
+	sha512sums = SKIP
+	sha512sums = f0c8812f8304bf507a231e6911a2af97e17abb97d9d0c99e87c5b6b5d8ecdf0f153b67792fa16f559968ece6a0744ab9cb6ae82c54fe01a83deeec68ca3b843a
+	sha512sums = 1f433b995a72db7d45ff050cf9448d8c24329c19e183a999394157246edd31969802f8a803e2e0a12bd513cbb51cbcb855bc9e3a4f50a7b94811855578cf3817
+
+pkgname = envoy-exporter-git
+
