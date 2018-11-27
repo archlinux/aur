@@ -1,6 +1,6 @@
 pkgbase = sonnen-exporter-git
 	pkgdesc = Prometheus exporter for Sonnen battery systems
-	pkgver = r5.c90c5e1
+	pkgver = r6.1c2dca1
 	pkgrel = 1
 	url = https://github.com/benalexau/sonnen-exporter
 	install = sonnen-exporter.install

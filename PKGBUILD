@@ -2,7 +2,7 @@
 
 pkgname=sonnen-exporter-git
 _pkgbase=sonnen-exporter
-pkgver=r5.c90c5e1
+pkgver=r6.1c2dca1
 pkgrel=1
 pkgdesc="Prometheus exporter for Sonnen battery systems"
 arch=('x86_64')
