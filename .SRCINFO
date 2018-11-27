@@ -8,7 +8,6 @@ pkgbase = lib32-libxmp-git
 	license = GPL
 	makedepends = git
 	depends = glibc
-	optdepends = pulseaudio
 	provides = lib32-libxmp
 	conflicts = lib32-libxmp
 	source = lib32-libxmp-git::git+https://github.com/cmatsuoka/libxmp.git

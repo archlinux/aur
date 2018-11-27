@@ -1,4 +1,6 @@
-# Maintainer: Chromaryu <knight.ryu12@gmail.com>
+# Maintainer: Vincent Grande <shoober420@gmail.com>
+# Contributor: grimi <grimi at poczta dot fm>
+# Contributor: Chromaryu <knight.ryu12@gmail.com>
 pkgname=lib32-libxmp-git
 pkgver=4.4.1.r113.g19ad5b32
 pkgrel=1
@@ -7,7 +9,6 @@ arch=('i686' 'x86_64')
 url="http://xmp.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
-optdepends=('pulseaudio')
 makedepends=('git')
 conflicts=('lib32-libxmp')
 provides=('lib32-libxmp')
@@ -25,7 +26,6 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
 	cd "$srcdir/$pkgname"
-	autoconf
 	./configure --prefix=/usr --libdir=/usr/lib32
 	make
 }
