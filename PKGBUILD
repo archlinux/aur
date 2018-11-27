@@ -1,13 +1,13 @@
 # Contributor : Mathieu Pasquet <mathieuivi@gmail.com>
 pkgname=wmforkplop
 pkgver=0.9.3
-pkgrel=7
+pkgrel=8
 pkgdesc="A mixture between wmhdplop and the great wmtop."
 arch=('i686' 'x86_64')
 url="http://hules.free.fr/wmforkplop/"
 license=(GPL)
 depends=('imlib2' 'libgtop>=2')
-source="http://hules.free.fr/wmforkplop/$pkgname-$pkgver.tar.gz"
+source=("http://hules.free.fr/wmforkplop/$pkgname-$pkgver.tar.gz")
 md5sums=('acee135833a4a5be5d31b8d01a7435ea')
 
 prepare() {
