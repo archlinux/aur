@@ -1,5 +1,5 @@
-# Maintainer: Michael Polidori <michaelapolidori@gmail.com>
-# Author: Lance Gin <gin.lance.inside@hotmail.com>
+# Maintainer: Michael Polidori <michaelapolidori at gmail dot com>
+# Author: Lance Gin <gin.lance.inside at hotmail dot com>
 
 pkgname=python-haishoku
 _name=${pkgname#python-}
