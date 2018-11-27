@@ -15,7 +15,7 @@ source=("${url}/download/v${pkgver}/xrootd-${pkgver}.tar.gz")
 sha256sums=('42e4d2cc6f8b442135f09bcc12c7be38b1a0c623a005cb5e69ff3d27997bdf73')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgbase}-${pkgver}"
 
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/build"
@@ -32,7 +32,7 @@ prepare() {
           -DCPPUNIT_INCLUDE_DIRS=/usr/include \
           -DCPPUNIT_LIBRARIES=/usr/lib/libcppunit.so \
           -DXRD_PYTHON_REQ_VERSION=$( python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))' ) \
-          "${srcdir}/${pkgname}-${pkgver}"
+          "${srcdir}/${pkgbase}-${pkgver}"
 
     cd "${srcdir}"
     mv "${srcdir}/build" "${srcdir}/build-py3"
@@ -50,7 +50,7 @@ prepare() {
           -DCPPUNIT_INCLUDE_DIRS=/usr/include \
           -DCPPUNIT_LIBRARIES=/usr/lib/libcppunit.so \
           -DXRD_PYTHON_REQ_VERSION=$( python2 -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))' ) \
-          "${srcdir}/${pkgname}-${pkgver}"
+          "${srcdir}/${pkgbase}-${pkgver}"
     mv "${srcdir}/build/bindings/python"  "${srcdir}/build-py3/bindings/python2"
     cd "${srcdir}"
     rm -rf "${srcdir}/build"
