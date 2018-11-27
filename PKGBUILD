@@ -4,7 +4,7 @@
 pkgname=mattermost-desktop-bin
 _pkgname=mattermost-desktop
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Mattermost Desktop (Beta) for Linux (binary)"
 arch=('i686' 'x86_64')
 
@@ -17,8 +17,6 @@ optdepends=()
 
 conflicts=('mattermost-desktop')
 provides=("${_pkgname}")
-
-install=$pkgname.install
 
 source=(${_pkgname}.desktop)
 source_i686=("https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-ia32.tar.gz")

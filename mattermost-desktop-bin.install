@@ -1,3 +1,0 @@
-post_install() {
-    [[ -d /usr/share/licenses/mattermost-desktop-bin ]] && rm -rf /usr/share/licenses/mattermost-desktop-bin
-}
