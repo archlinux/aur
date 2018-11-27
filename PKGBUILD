@@ -1,4 +1,4 @@
-# Maintainer: Michael Polidori <michaelapolidori@gmail.com>
+# Maintainer: Michael Polidori <michaelapolidori at gmail dot com>
 # Author: Michael Polidori
 
 pkgname=pykgbuild
