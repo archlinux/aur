@@ -1,41 +1,37 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
-# NOTE:
-# libmfx defaults to build only the static library.
-
 pkgname=libmfx
-pkgver=1.23
-pkgrel=2
+pkgver=1.25
+pkgrel=1
 pkgdesc='Intel Media SDK dispatcher library'
 arch=('i686' 'x86_64')
 url='https://github.com/lu-zero/mfx_dispatch/'
 license=('BSD')
-makedepends=('libva')
-options=('staticlibs')
+depends=('libva')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/lu-zero/mfx_dispatch/archive/${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d84db51a9d3ec6b5282fc681fba6b2c721814a6154cfc35feb422903a8d4384b')
+sha256sums=('853c4555c800a262fedacc580d06c234c520a919e4497b50e555291d87579a42')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
     cd "${pkgname}-${pkgver}"
     
     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -s'|[^/]*/||'
+    
+    autoreconf -i
 }
 
 build() {
     cd "${pkgname}-${pkgver}"
     
-    autoreconf -i
-    
     ./configure \
         --prefix='/usr' \
-        --enable-static='yes' \
-        --enable-shared='no' \
-        --enable-fast-install='yes' \
+        --enable-shared='yes' \
         --with-libva_drm='yes' \
         --with-libva_x11='yes' \
         --with-pic
+        
+    make
 }
 
 package() {
@@ -43,5 +39,8 @@ package() {
     
     make DESTDIR="$pkgdir" install
     
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # fix version in pkg-config file
+    sed -i "/Version:/s/[0-9]\.[0-9]\{2\}/${pkgver}/" "${pkgdir}/usr/lib/pkgconfig/libmfx.pc"
+    
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

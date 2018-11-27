@@ -1,16 +1,15 @@
 pkgbase = libmfx
 	pkgdesc = Intel Media SDK dispatcher library
-	pkgver = 1.23
-	pkgrel = 2
+	pkgver = 1.25
+	pkgrel = 1
 	url = https://github.com/lu-zero/mfx_dispatch/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = libva
-	noextract = libmfx-1.23.tar.gz
-	options = staticlibs
-	source = libmfx-1.23.tar.gz::https://github.com/lu-zero/mfx_dispatch/archive/1.23.tar.gz
-	sha256sums = d84db51a9d3ec6b5282fc681fba6b2c721814a6154cfc35feb422903a8d4384b
+	depends = libva
+	noextract = libmfx-1.25.tar.gz
+	source = libmfx-1.25.tar.gz::https://github.com/lu-zero/mfx_dispatch/archive/1.25.tar.gz
+	sha256sums = 853c4555c800a262fedacc580d06c234c520a919e4497b50e555291d87579a42
 
 pkgname = libmfx
 
