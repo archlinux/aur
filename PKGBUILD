@@ -36,7 +36,8 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	PYTHONPATH=./plugins nosetests -s tests
+	# Tests fail with non-english locales
+	PYTHONPATH=./plugins LC_ALL=en_US.UTF-8 nosetests -s tests
 }
 
 package() {
