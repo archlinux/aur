@@ -1,7 +1,7 @@
 pkgbase = mattermost-desktop-bin
 	pkgdesc = Mattermost Desktop (Beta) for Linux (binary)
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mattermost/desktop
 	install = mattermost-desktop-bin.install
 	arch = i686
