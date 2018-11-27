@@ -3,7 +3,7 @@
 _srcname=IntelSEAPI
 pkgname=intel-seapi
 pkgver=17.01.28
-pkgrel=5
+pkgrel=6
 pkgdesc='Intel Single Event API (Intel SEAPI)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/IntelSEAPI/'
@@ -35,15 +35,14 @@ build() {
 package() {
     cd "${_srcname}-${pkgver}/build_linux/${_architecture}"
     
-    local _pythonver
-    
     make DESTDIR="$pkgdir" install
     
     # library
     mv "${pkgdir}/usr/bin/libIntelSEAPI${_architecture}.so" "${pkgdir}/usr/lib"
     
     # python
-    _pythonver="$(python --version | sed 's/^Python[[:space:]]//' | grep -o '^[0-9]*\.[0-9]*')"
+    local _pythonver
+    _pythonver="$(python -c 'import sys; print("%s.%s" % sys.version_info[:2])')"
     mkdir -p "${pkgdir}/usr/lib/python${_pythonver}/${pkgname}"
     mv "$pkgdir"/usr/runtool/* "${pkgdir}/usr/lib/python${_pythonver}/${pkgname}"
     
