@@ -5,7 +5,8 @@ pkgbase = kubernetes-bin
 	url = http://kubernetes.io/
 	install = kubernetes.install
 	arch = x86_64
-	arch = i686
+	arch = arm
+	arch = aarch64
 	license = APACHE
 	optdepends = etcd: etcd cluster required to run Kubernetes
 	provides = kubernetes
@@ -37,6 +38,10 @@ pkgbase = kubernetes-bin
 	sha512sums = 19d70634252932e7835bb5db4af75c530fe843386ca688267caca0fb3b4fb1ad7019025ea9d59926ceac8817580e9dfad9396c327f2da955146a302f22b2d5ce
 	source_x86_64 = https://dl.k8s.io/v1.12.3/kubernetes-server-linux-amd64.tar.gz
 	sha512sums_x86_64 = 13363365457ff7527f92c4d371b6dedc6e77553f596e694bb8479511fded9ab8694ae4540752268f82acbc3485606bd07042e3677da45156c850cc9e75bbd2a1
+	source_arm = https://dl.k8s.io/v1.12.3/kubernetes-server-linux-arm.tar.gz
+	sha512sums_arm = b73846110f47fb5bbb9861bc4bd9bfc12be1e1d2306426044e0b08e288d3f512ed1c4bec0e8e3d2d009cf92f94b5c0642d663d7d70055e47d2d1b1710674bbcf
+	source_aarch64 = https://dl.k8s.io/v1.12.3/kubernetes-server-linux-arm64.tar.gz
+	sha512sums_aarch64 = 88ce03ba915a05f64ba56b5e1fc8feb02c1dc9b2c5244e794c7bde7d32ccf55933337298680c9d57c8f481910dc6e052fe340a241374a2989c1db8e503227210
 
 pkgname = kubernetes-bin
 
