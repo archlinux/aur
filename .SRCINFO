@@ -31,12 +31,12 @@ pkgbase = kubernetes-bin
 	backup = etc/kubernetes/scheduler
 	source = https://github.com/kubernetes/kubernetes/archive/v1.12.3.tar.gz
 	source = https://github.com/kubernetes/contrib/archive/0.7.0.tar.gz
-	source = https://dl.k8s.io/v1.12.3/kubernetes-server-linux-amd64.tar.gz
 	source = kubernetes.install
 	sha256sums = fb77c94c29c4be52c125a7b217c310fab426a1084d9054583aafdecb8cc6f63f
 	sha256sums = f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda
-	sha256sums = 1f8c40510a10e46edcee39704235c7c4bf1ae6da036cd7a36804b8407b96c1de
 	sha256sums = f40b4b14a71f8138de69021e967d993e8b14db2cebe66eee20c7e66839ad1fde
+	source_x86_64 = https://dl.k8s.io/v1.12.3/kubernetes-server-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1f8c40510a10e46edcee39704235c7c4bf1ae6da036cd7a36804b8407b96c1de
 
 pkgname = kubernetes-bin
 
