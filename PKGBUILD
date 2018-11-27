@@ -1,7 +1,7 @@
 # Maintainer: Mikkel Oscar Lyderik Larsen <m@moscar.net>
 
 pkgname=kubernetes-bin
-pkgver=1.12.2
+pkgver=1.12.3
 _contribver=0.7.0
 pkgrel=3
 pkgdesc="Production-Grade Container Scheduling and Management - binary version."
@@ -30,9 +30,9 @@ provides=('kubernetes'
 	  'kube-scheduler')
 conflicts=('kubernetes' 'kubeadm-git' 'kubectl' 'kubectl-bin' 'kubeadm-bin' 'kubelet-bin' )
 install=kubernetes.install
-sha256sums=('846426be9915a1935d23abc0c9c13588a740f842167883d95548fa85275e8fbf'
+sha256sums=('fb77c94c29c4be52c125a7b217c310fab426a1084d9054583aafdecb8cc6f63f'
             'f04c0a90c20af6c7f4e448f2405938ea5c821b33d0f977d58598adc1e189bcda'
-            'e480f7ee546fc125c6ec71627aa54b8477ab5449c1953d3432e8243d39a225b3'
+            '1f8c40510a10e46edcee39704235c7c4bf1ae6da036cd7a36804b8407b96c1de'
             'f40b4b14a71f8138de69021e967d993e8b14db2cebe66eee20c7e66839ad1fde')
 
 package() {
