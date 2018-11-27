@@ -1,7 +1,7 @@
 pkgbase = trinnity
 	pkgdesc = C++ library of CNN primitive operations
 	pkgver = 0.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bitbucket.org/STG-TCD/trinnity
 	arch = any
 	license = BSD
@@ -13,6 +13,7 @@ pkgbase = trinnity
 	optdepends = clblas>=2.12: clBLAS BLAS backend
 	optdepends = cblas: Plain old CBLAS backend
 	optdepends = openmp: OpenMP SIMD and SMP Support
+	optdepends = mkl-dnn: OpenMP SIMD and SMP Support, MKLDNN wrapper layers
 	source = https://bitbucket.org/STG-TCD/trinnity/get/v0.5.tar.bz2
 	sha512sums = f7938fd81413e9e69a4154cf29e54f531a38d47ac66a40109366c43ab4fe390b4271eea785795f551b133b11a2c5afc7841d808b120b9ca97ebe0ed137af9f21
 
