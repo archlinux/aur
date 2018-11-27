@@ -1,7 +1,8 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=intel-gmmlib-git
-pkgver=18.3.r8.g3e602a8
+_srcname=gmmlib
+pkgver=18.3.r12.g10ad15a
 pkgrel=1
 pkgdesc='Intel Graphics Memory Management Library (git version)'
 arch=('i686' 'x86_64')
@@ -13,18 +14,18 @@ provides=('intel-gmmlib' 'gmmlib-git')
 conflicts=('intel-gmmlib' 'gmmlib-git')
 replaces=('gmmlib-git')
 options=('!emptydirs')
-source=("$pkgname"::'git+https://github.com/intel/gmmlib.git')
+source=('git+https://github.com/intel/gmmlib.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/^intel-gmmlib-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     mkdir -p build
     cd build
@@ -45,11 +46,11 @@ build() {
 }
 
 package() {
-    cd "${pkgname}/build"
+    cd "${_srcname}/build"
     
     make DESTDIR="$pkgdir" install
     
     # license
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_srcname}"
     install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

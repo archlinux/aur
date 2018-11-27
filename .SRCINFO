@@ -1,6 +1,6 @@
 pkgbase = intel-gmmlib-git
 	pkgdesc = Intel Graphics Memory Management Library (git version)
-	pkgver = 18.3.r8.g3e602a8
+	pkgver = 18.3.r12.g10ad15a
 	pkgrel = 1
 	url = https://github.com/intel/gmmlib/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = intel-gmmlib-git
 	conflicts = gmmlib-git
 	replaces = gmmlib-git
 	options = !emptydirs
-	source = intel-gmmlib-git::git+https://github.com/intel/gmmlib.git
+	source = git+https://github.com/intel/gmmlib.git
 	sha256sums = SKIP
 
 pkgname = intel-gmmlib-git
