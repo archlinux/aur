@@ -7,7 +7,7 @@ pkgdesc="A digital photo organizer designed for the GNOME desktop environment"
 arch=('x86_64')
 url="http://yorba.org/shotwell/"
 license=('LGPL2.1')
-depends=('libgee' 'webkit2gtk' 'libgexiv2' 'libraw' 'rest'
+depends=('libgee' 'webkit2gtk' 'libgexiv2-git' 'libraw' 'rest'
 	 'desktop-file-utils' 'dconf' 'hicolor-icon-theme' 'json-glib'
 	 'gst-plugins-base' 'libgphoto2' 'libgudev'
 	 'gcr' 'libgdata' 'opencv')
