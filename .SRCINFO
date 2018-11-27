@@ -15,7 +15,6 @@ pkgbase = netmap
 	makedepends = docbook-xsl
 	makedepends = patch
 	makedepends = bc
-	makedepends = asp
 	depends = glibc
 	source = netmap.install
 	source = git+https://github.com/luigirizzo/netmap
