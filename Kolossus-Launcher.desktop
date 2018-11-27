@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Game;
+Comment=To download the latest version of the IFSCL
+Exec="/opt/Kolossus-Launcher/Kolossus Launcher.x86_64"
+GenericName=
+Icon=/opt/Kolossus-Launcher/Kolossus Launcher_Data/Resources/UnityPlayer.png
+MimeType=
+Name=Kolossus Launcher
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
