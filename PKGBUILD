@@ -2,7 +2,7 @@
 pkgname=caffe-hrt-slim-git
 _srcname=Caffe-HRT
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A slimmed-down build of Caffe-HRT based on caffe-opencl-git"
 arch=('x86_64')
 url="https://github.com/OAID/Caffe-HRT"
@@ -13,7 +13,7 @@ depends=(
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six' 'opencl-driver' 'ocl-icd' 'opencl-headers'
-        'openblas-lapack' 'opencv' 'aarch64-linux-gnu-armcl-opencl+neon'
+        'openblas-lapack' 'opencv<4.0.0' 'aarch64-linux-gnu-armcl-opencl+neon'
 )
 makedepends=('cmake')
 provides=('caffe')

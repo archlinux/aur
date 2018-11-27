@@ -1,7 +1,7 @@
 pkgbase = caffe-hrt-slim-git
 	pkgdesc = A slimmed-down build of Caffe-HRT based on caffe-opencl-git
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OAID/Caffe-HRT
 	arch = x86_64
 	license = BSD
@@ -31,7 +31,7 @@ pkgbase = caffe-hrt-slim-git
 	depends = ocl-icd
 	depends = opencl-headers
 	depends = openblas-lapack
-	depends = opencv
+	depends = opencv<4.0.0
 	depends = aarch64-linux-gnu-armcl-opencl+neon
 	provides = caffe
 	conflicts = caffe
