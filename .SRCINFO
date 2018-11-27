@@ -1,7 +1,7 @@
 pkgbase = xrootd
 	pkgdesc = Software framework for fast, low latency, scalable and fault tolerant data access.
 	pkgver = 4.8.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://xrootd.org
 	arch = x86_64
 	license = LGPL3
@@ -9,15 +9,28 @@ pkgbase = xrootd
 	makedepends = ceph
 	makedepends = cmake
 	makedepends = python
-	depends = ceph
-	depends = python
-	depends = cppunit
-	provides = python2-xrootd
-	provides = python2-pyxrootd
-	provides = python-xrootd
-	provides = python-pyxrootd
 	source = http://xrootd.org/download/v4.8.5/xrootd-4.8.5.tar.gz
 	sha256sums = 42e4d2cc6f8b442135f09bcc12c7be38b1a0c623a005cb5e69ff3d27997bdf73
 
 pkgname = xrootd
+	pkgdesc = Software framework for fast, low latency, scalable and fault tolerant data access.
+	depends = ceph
+	depends = python
+	depends = cppunit
+
+pkgname = python-xrootd
+	pkgdesc = Python Client API for XRootD
+	depends = xrootd
+
+pkgname = python-pyxrootd
+	pkgdesc = Python bindings for XRootD
+	depends = python-xrootd
+
+pkgname = python2-xrootd
+	pkgdesc = Python2 Client API for XRootD
+	depends = xrootd
+
+pkgname = python2-pyxrootd
+	pkgdesc = Python2 bindings for XRootD
+	depends = python2-xrootd
 
