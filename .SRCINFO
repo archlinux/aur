@@ -1,7 +1,7 @@
 pkgbase = cairo-compmgr
 	pkgdesc = A Cairo based composite manager
 	pkgver = 0.3.1
-	pkgrel = 19
+	pkgrel = 20
 	epoch = 2
 	url = https://github.com/gandalfn/Cairo-Composite-Manager
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = cairo-compmgr
 	license = LGPL
 	makedepends = gettext
 	makedepends = gtk-doc
-	makedepends = intltool>=0.41
+	makedepends = intltool>=0.51
 	makedepends = git
 	depends = gtk2>=2.16.0
-	depends = vala>=0.38
+	depends = vala>=0.40
 	depends = libsm
 	depends = libgl
 	depends = gconf
