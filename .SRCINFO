@@ -1,7 +1,7 @@
 pkgbase = python2-rjsmin
 	pkgdesc = rJSmin is a javascript minifier written in python
 	pkgver = 1.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ndparker/rjsmin
 	arch = i686
 	arch = x86_64
