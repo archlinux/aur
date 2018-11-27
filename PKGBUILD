@@ -1,0 +1,21 @@
+# Maintainer: Chris Billington <chrisjbillington@gmail.com>
+pkgname=interminal
+pkgver=0.3.7
+pkgrel=1
+pkgdesc="Utility for launching commands in a GUI terminal"
+url="https://github.com/chrisjbillington/interminal"
+depends=('python' )
+license=('BSD')
+arch=('any')
+source=('https://files.pythonhosted.org/packages/b8/2c/d573df8367cd8f33f59a975ea652baaf913a63fc3253ede0b35569d783b4/interminal-0.3.7.tar.gz')
+sha256sums=('2eee41cae9cc5e2885c29be6eac9e175a5f5b44be8d17153862db09c087f37e0')
+
+build() {
+    cd $srcdir/interminal-0.3.7
+    python setup.py build
+}
+
+package() {
+    cd $srcdir/interminal-0.3.7
+    python setup.py install --root="$pkgdir" --optimize=1 
+}
