@@ -1,3 +1,150 @@
+2018-10-30 S. Thiell <sthiell@stanford.edu>
+
+	* Version 1.8.1 released. The main changes are listed below.
+
+	* Tree: support offline gateways (#260)
+
+	* CLI: added the following command line options (#336):
+		--conf to specify alternative clush.conf (clush only)
+		--groupsconf to specify alternative groups.conf (all CLIs)
+
+	* NodeSet: speed-up nodeset parsing (#370)
+
+	* EventHandler: reinstate ev_error and ev_timeout as deprecated (#377)
+
+	* nodeset/cluset CLI: allow litteral new line in -S, so both -S "\n"
+	and -S $'\n' will work
+
+	* nodeset/cluset CLI: handle multiline shell arguments in options (#394)
+
+2017-10-23 S. Thiell <sthiell@stanford.edu>
+
+	* Version 1.8 released.
+
+2017-10-18 S. Thiell <sthiell@stanford.edu>
+
+	* 1.8 RC1 (1.7.91) release.
+
+2017-10-14 S. Thiell <sthiell@stanford.edu>
+
+	* NodeSet.py: add node wildcard support (ticket #349).
+
+2017-10-02 S. Thiell <sthiell@stanford.edu>
+
+	* 1.8 beta2 (1.7.82) release.
+
+	* CLI: make color output legible on dark backgrounds (#334)
+	* Event API 2.0: new ev_* method signatures (#232)
+	* CLI/Clush.py: initialize logging earlier (#348)
+	* NodeUtils: ignore YAML group files with permission error (#348)
+	* CLI/Clush.py: fix mishandled broken pipe in Python 3
+	* CLI/Nodeset: display warning on misplaced set operation (#318)
+
+2017-09-01 S. Thiell <sthiell@stanford.edu>
+
+	* 1.8 beta1 (1.7.81) release.
+
+2017-08-09 S. Thiell <sthiell@stanford.edu>
+
+	* Added Python 3 support (#337).
+
+2017-07-27 S. Thiell <sthiell@stanford.edu>
+
+	* NodeUtils.py: fix external reverse node group upcall caching issue.
+
+2017-06-27 S. Thiell <sthiell@stanford.edu>
+
+	* CLI/Clush.py: add -n as an alias of --nostdin (#333).
+
+2017-04-29 S. Thiell <sthiell@stanford.edu>
+
+	* NodeSet.py: allow fully numeric node names (ticket #338).
+
+2017-02-21 S. Thiell <sthiell@stanford.edu>
+
+	* Worker/Tree.py: fix defect in file copying code when destination target
+	directory is provided (ticket #332).
+
+2016-12-20 S. Thiell <sthiell@stanford.edu>
+
+	* Version 1.7.3 released.
+
+	* conf/groups.conf.d: add an external group source example file for xCAT
+	static groups (xcat.conf.example).
+
+2016-12-18 S. Thiell <sthiell@stanford.edu>
+
+	* Clush.py: fix sorting issue with clush -L (ticket #326).
+
+2016-11-06 S. Thiell <sthiell@stanford.edu>
+
+	* cluset: add cluset command with doc to avoid a conflict with xCAT's
+	nodeset command (ticket #300).
+
+2016-10-12 All contributors
+
+	* Change license from "CeCILL-C V1" to "LGPL v2.1 or later".
+
+2016-10-04 S. Thiell <sthiell@stanford.edu>
+
+	* setup.py: remove scripts/*; use console_scripts instead.
+
+2016-10-02 S. Thiell <sthiell@stanford.edu>
+
+	* Tree.py: in copy mode, do not send tar data to local targets, but only
+	remote ones; this does fix broken pipe errors (ticket #319).
+
+	* Engine.py: implement basic per worker fanout (private), allowing the use
+	of fanout=1 in tree mode (ticket #322).
+
+2016-06-18 S. Thiell <sthiell@stanford.edu>
+
+	* Version 1.7.2 released.
+
+2016-06-07 D. Martinet  <dominique.martinet@cea.fr>
+
+	* Clush/Nodeset: add --pick N option (ticket #311).
+
+2016-05-22 S. Thiell <sthiell@stanford.edu>
+
+	* Tree.py: fix the tracking of gateway active targets (ticket #308).
+	* EngineClient.py: handle broken pipe on write() (ticket #196).
+
+2016-04-24 S. Thiell <sthiell@stanford.edu>
+
+	* NodeSet.py: allow empty string as valid argument for empty NodeSet
+	objects (ticket #294).
+
+2016-02-28 S. Thiell <sthiell@stanford.edu>
+
+	* Version 1.7.1 released.
+
+2016-02-27 S. Thiell <sthiell@stanford.edu>
+
+	* Worker/Tree.py: implement tree mode reverse copy using tar commands to
+	fix clush --rcopy (ticket #290).
+
+	* Communication.py: remove 76-char base64 encoding fixed length
+	restriction for tree XML payload communication. The default max length is
+	now 64K, which gives good results. The environment variable
+	'CLUSTERSHELL_GW_B64_LINE_LENGTH' is propagated to gateways and may be
+	used to override this value.
+
+2016-02-12 S. Thiell <sthiell@stanford.edu>
+
+	* RangeSet.py and NodeSet.py: fix bad 0-padding handling by RangeSetND or
+	NodeSet objects in nD (ticket #286).
+
+2016-02-09 S. Thiell <sthiell@stanford.edu>
+
+	* NodeSet.py: fix parser issue when brackets were used with nodeset
+	starting with a digit (ticket #284).
+
+2015-11-30 S. Thiell <sthiell@stanford.edu>
+
+	* CLI/Nodeset.py: fix --output-format / -O when folding (-f) by applying
+	the provided format to each node (ticket #277).
+
 2015-11-10 S. Thiell <sthiell@stanford.edu>
 
 	* Version 1.7 released.
@@ -563,7 +710,7 @@
 
 	* Version 1.4 released.
 
-	* NodeSet.py: Add docstring for NodeSet string arithmetics (, ! & ^),
+	* NodeSet.py: Add docstring for NodeSet string arithmetic (, ! & ^),
 	which is also called extended string pattern (trac ticket #127).
 
 2010-12-14 S. Thiell <stephane.thiell@cea.fr>
@@ -899,7 +1046,7 @@
 
 	* NodeSet.py: Added node group support with the help of the new NodeUtils
 	module (trac ticket #41). Improved parser to support basic node/nodegroups
-	arithmetics (trac ticket #44).
+	arithmetic (trac ticket #44).
 
 	* NodeUtils.py: New module that provides binding support to external node
 	group sources (trac ticket #43).
