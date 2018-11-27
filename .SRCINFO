@@ -1,11 +1,12 @@
 pkgbase = qactus-git
 	pkgdesc = A Qt-based OBS notifier application
-	pkgver = 0.9.9.r330.g4c12cf7
+	pkgver = 1.0.0.r4.g333bcf8
 	pkgrel = 1
 	url = https://github.com/javierllorente/qactus
 	arch = x86_64
 	license = GPL2
 	license = GPL3
+	makedepends = cmake
 	makedepends = git
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
@@ -13,7 +14,7 @@ pkgbase = qactus-git
 	provides = qactus
 	provides = libqobs.so
 	conflicts = qactus
-	source = git+https://github.com/javierllorente/qactus.git
+	source = qactus::git+https://github.com/javierllorente/qactus.git
 	md5sums = SKIP
 
 pkgname = qactus-git

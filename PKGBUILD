@@ -2,35 +2,33 @@
 # Contributor: 
 
 pkgname=qactus-git
-pkgver=0.9.9.r330.g4c12cf7
+pkgver=1.0.0.r4.g333bcf8
 pkgrel=1
 pkgdesc='A Qt-based OBS notifier application'
 arch=(x86_64)
 url='https://github.com/javierllorente/qactus'
 license=(GPL2 GPL3)
 depends=(desktop-file-utils gtk-update-icon-cache qtkeychain)
-makedepends=(git)
+makedepends=(cmake git)
 conflicts=(qactus)
 provides=(qactus libqobs.so)
-source=(git+https://github.com/javierllorente/qactus.git)
+source=("${pkgname%-*}::git+https://github.com/javierllorente/qactus.git")
 md5sums=(SKIP)
 
 pkgver() {
   cd qactus
-  version=$(grep 'VERSION =' src/defines.pri | awk '{print $3}')
-  printf "%s.r%s.g%s" "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  sed -i "s/lib64/lib/g" qactus/src/qobs/qobs.pro
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
   cd qactus
-  qmake-qt5 PREFIX=/usr qactus.pro
+  cmake . \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 
 package() {
-  make -C qactus INSTALL_ROOT="${pkgdir}" install
+  make -C qactus DESTDIR="${pkgdir}" install
 }
