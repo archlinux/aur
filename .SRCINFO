@@ -1,7 +1,7 @@
 pkgbase = isobmff-git
 	pkgdesc = Library for reading/parsing files in the ISO Base Media File Format (git version)
 	pkgver = r135.4f0e8e0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DigiDNA/ISOBMFF/
 	arch = i686
 	arch = x86_64

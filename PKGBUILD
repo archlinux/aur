@@ -3,7 +3,7 @@
 pkgname=isobmff-git
 _srcname=ISOBMFF
 pkgver=r135.4f0e8e0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for reading/parsing files in the ISO Base Media File Format (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/DigiDNA/ISOBMFF/'
@@ -52,7 +52,10 @@ pkgver() {
 build() {
     cd "$_srcname"
     
-    make
+    local _ldflags_orig
+    _ldflags_orig="$(grep 'CC_FLAGS_DYLIB_' Submodules/makelib/Platform/Linux.mk | awk -F':=' '{ print $2 }')"
+    
+    make CC_FLAGS_${CARCH}+="$CXXFLAGS" CC_FLAGS_DYLIB_${CARCH}="${LDFLAGS} ${_ldflags_orig}"
 }
 
 package() {
