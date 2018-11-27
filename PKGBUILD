@@ -48,7 +48,6 @@ build() {
   make revision
   cmake -DCMAKE_BUILD_TYPE=DEBUG \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
-    -DQT_INSTALL_PREFIX="/usr/lib/qt" \
 	-DMSCORE_INSTALL_SUFFIX="-dev" \
 	-DMUSESCORE_LABEL="Development Build" \
 	-DBUILD_LAME="ON" \
