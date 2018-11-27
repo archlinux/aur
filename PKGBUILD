@@ -3,7 +3,7 @@
 
 pkgname=wmnd
 pkgver=0.4.17
-pkgrel=2
+pkgrel=3
 pkgdesc="Dockapp for monitoring network interfaces."
 url="http://www.thregr.org/~wavexx/software/wmnd/"
 license=("GPL")
