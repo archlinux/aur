@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2017.4.15
+_version=2017.4.16
 _build=f1
-_randomstring=5d485b4897a7
+_randomstring=7f7bdd1ef02b
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-mac
@@ -15,7 +15,7 @@ license=('custom')
 depends=('unity-editor-lts')
 makedepends=('cpio')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Mac-Support-for-Editor-${_version}${_build}.pkg")
-md5sums=('bbc1aeba0242df4be79f6f232db3a742')
+md5sums=('39ee935603fcd7d8e059773f9eefb382')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
