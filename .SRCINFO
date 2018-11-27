@@ -1,0 +1,18 @@
+pkgbase = python-mss
+	pkgdesc = An ultra fast cross-platform multiple screenshots module in pure python using ctypes.
+	pkgver = 3.3.2
+	pkgrel = 1
+	url = https://github.com/BoboTiG/python-mss
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/m/mss/mss-3.3.2.tar.gz
+	md5sums = e9bc7dbd2551b56f4baeb58f5093d092
+
+pkgname = python-mss
+	depends = python
+
+pkgname = python2-mss
+	depends = python2
+
