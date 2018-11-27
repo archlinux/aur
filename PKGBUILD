@@ -2,7 +2,7 @@
 
 pkgname=musescore-dev
 _pkgname=MuseScore
-pkgver=r14182.f7005de53
+pkgver=r14198.795912da2
 _branch=master
 pkgrel=1
 pkgdesc='Development branch of the sheet music editor MuseScore'
