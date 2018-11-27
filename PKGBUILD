@@ -3,7 +3,7 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=1.890
+pkgver=1.900
 pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(x86_64)
@@ -132,7 +132,6 @@ options=(!strip !zipman)
 
 prepare() {
     cd "$srcdir"/$pkgname-$pkgver
-#    patch -p1 -i ../perl526.patch
 
     # remove modules that we do not support and stuff that is not needed
     rm -r {bsdexports,bsdfdisk,cpan,dfsadmin,format,grub,hpuxexports,inetd,ipfilter,ipfw,package-updates,rbac,sgiexports,smf,software,syslog-ng,zones}
@@ -172,7 +171,7 @@ package() {
 }
 
 
-sha256sums=('7330992bdd737659418d8e5010042332fc40b7f3978a2187f1bcb7d0e6fe3b6f'
+sha256sums=('f2f252b116ec3a063440b4efe77fe89996d8d743aa6857db013ae6a34be7c62d'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
