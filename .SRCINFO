@@ -1,6 +1,6 @@
 pkgbase = moc-svn
 	pkgdesc = A powerful & easy to use console audio player
-	pkgver = r2963
+	pkgver = r2992
 	pkgrel = 1
 	url = http://moc.daper.net
 	arch = i686
@@ -31,9 +31,7 @@ pkgbase = moc-svn
 	conflicts = moc
 	options = !libtool
 	source = moc::svn://daper.net/moc/trunk
-	source = moc-ffmpeg4.patch
 	sha1sums = SKIP
-	sha1sums = 007a0580ac754e1c318a0d0b6f0d403883797eaf
 
 pkgname = moc-svn
 
