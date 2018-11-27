@@ -23,6 +23,10 @@ pkgbase = python-serpent-ai-git
 	depends = python-pyautogui
 	depends = python-autobahn
 	depends = python-editdistance
+	depends = python-offshoot-git
+	depends = python-sneakysnek-git
+	depends = python-mss
+	depends = python-tesserocr
 	source = git://github.com/greyltc/SerpentAI.git
 	md5sums = SKIP
 
