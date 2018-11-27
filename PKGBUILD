@@ -1,9 +1,9 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 # PGP key is on keyservers
 pkgname=librepcb
-pkgver=0.1.0_rc2
+pkgver=0.1.0
 _pkgver=${pkgver/_/-}
-pkgrel=4
+pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards."
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
@@ -16,7 +16,7 @@ source=(
   "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip.asc"
 )
 sha256sums=(
-  '0299971bc18d3cc5659e92b466c1950cd7c3c2d993ca04bd2e493a2827aa55e6'
+  'bb8dc605ba4031aea7156a3294e99cec76b7a450ee8fb54ce74206fd38dfce29'
   'SKIP'
 )
 validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
