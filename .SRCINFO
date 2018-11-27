@@ -1,33 +1,30 @@
 pkgbase = slade
 	pkgdesc = SLADE3 Doom editor
-	pkgver = 3.1.2_b5
-	pkgrel = 2
+	pkgver = 3.1.2
+	pkgrel = 1
 	url = http://slade.mancubus.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = imagemagick
 	makedepends = p7zip
 	depends = bzip2
 	depends = curl
-	depends = desktop-file-utils
 	depends = fluidsynth
 	depends = freeimage
-	depends = freetype2
 	depends = ftgl
 	depends = glew>=2.1
 	depends = glew<2.2
-	depends = gtk2
+	depends = glu
+	depends = gtk3
 	depends = libgl
 	depends = sfml>=2.5
 	depends = sfml<2.6
-	depends = wxgtk2>=3.0
+	depends = webkit2gtk
+	depends = wxgtk3>=3.0
 	depends = zlib
-	source = https://github.com/sirjuddington/SLADE/archive/3.1.2_b5.tar.gz
-	source = slade.desktop
-	sha256sums = 3771605047be66d7de828b84aa41913d0c6723ccae034cc97af5413b9858eee2
-	sha256sums = e69d6e0da523c5d649bd51316fa827175b5858cb91b4ad311b2f0d0dedd8b9bb
+	source = https://github.com/sirjuddington/SLADE/archive/3.1.2.tar.gz
+	sha256sums = 213d8ac065e3ec06e7e7df39695a58296f7ca435c10244389b21d9f91ed49724
 
 pkgname = slade
 
