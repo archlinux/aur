@@ -1,0 +1,19 @@
+[Unit]
+Description=Prometheus exporter for Sonnen battery systems
+Documentation=https://github.com/benalexau/sonnen-exporter
+After=network.target
+
+[Service]
+User=sonnen-exporter
+Group=sonnen-exporter
+ExecStart=/usr/bin/sonnen-exporter /etc/sonnen-exporter.toml
+LimitNOFILE=64
+LimitNPROC=64
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

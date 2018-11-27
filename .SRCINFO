@@ -1,0 +1,19 @@
+pkgbase = sonnen-exporter-git
+	pkgdesc = Prometheus exporter for Sonnen battery systems
+	pkgver = r5.c90c5e1
+	pkgrel = 1
+	url = https://github.com/benalexau/sonnen-exporter
+	install = sonnen-exporter.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	backup = etc/sonnen-exporter.toml
+	source = git+https://github.com/benalexau/sonnen-exporter.git
+	source = sonnen-exporter.install
+	source = sonnen-exporter.service
+	sha512sums = SKIP
+	sha512sums = 18573308c195020a8e10451e12dc972a77ba546dfad9dabdd5e4cf04d36c34aea021dadbca66fcc7f8cc1e33760ce8ff8e22c8fb04c271cd4a168469b570cb36
+	sha512sums = 1fa76df3c744db87f0b704bc24d1d3e3712cf9ae6c6df710cbf1bc6285cf91fd8084358cecd55d10eecb0ca86e55729928f29574b24957749509170aeb6dd701
+
+pkgname = sonnen-exporter-git
+
