@@ -1,0 +1,15 @@
+pkgbase = python-offshoot-git
+	pkgdesc = Modern, elegant, minimalistic but powerful plugin system for Python 3.5+.
+	pkgver = r9.7906a95
+	pkgrel = 1
+	url = https://github.com/greyltc/offshoot
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	source = git://github.com/greyltc/offshoot.git
+	md5sums = SKIP
+
+pkgname = python-offshoot-git
+
