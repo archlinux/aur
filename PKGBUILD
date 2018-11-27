@@ -1,5 +1,5 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
-pkgname=luabcrypt5.1
+pkgname=luabcrypt5.2
 pkgver="2.1_4"
 pkgrel=1
 pkgdesc="A Lua wrapper for bcrypt"

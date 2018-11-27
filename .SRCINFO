@@ -1,4 +1,4 @@
-pkgbase = luabcrypt5.1
+pkgbase = luabcrypt5.2
 	pkgdesc = A Lua wrapper for bcrypt
 	pkgver = 2.1_4
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = luabcrypt5.1
 	source = https://luarocks.org/manifests/mikejsavage/bcrypt-2.1-4.src.rock
 	sha256sums = 0201396e62960e11f8506dccd52b620ad0bff91904a2454ce92900799d129b92
 
-pkgname = luabcrypt5.1
+pkgname = luabcrypt5.2
 
