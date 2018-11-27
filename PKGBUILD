@@ -2,7 +2,7 @@
 
 pkgname=rkdeveloptool
 pkgver=52
-pkgrel=1
+pkgrel=2
 pkgdesc='Development tool for Rockchip SOC'
 arch=('x86_64')
 url='https://github.com/rockchip-linux/rkdeveloptool'
