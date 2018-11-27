@@ -1,0 +1,24 @@
+pkgbase = circus-python35
+	pkgdesc = A program that will let you run and watch multiple processes and sockets.
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = http://circus.readthedocs.org
+	arch = any
+	license = Apache
+	makedepends = python-distribute
+	depends = python35
+	depends = python-iowait
+	depends = python-psutil
+	depends = python-pyzmq
+	depends = python-tornado
+	conflicts = circus
+	options = !emptydirs
+	source = https://github.com/circus-tent/circus/archive/0.15.0.tar.gz
+	source = circus.ini
+	source = circus.service
+	md5sums = 3af18359f75317c4d70d941e26bb8352
+	md5sums = 6ce050f557ad88cafcc476513e0578dc
+	md5sums = 94dcc7c18eb935c62699135c5d048a1a
+
+pkgname = circus-python35
+
