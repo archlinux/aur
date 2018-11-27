@@ -1,0 +1,5 @@
+sneakysnek/
+pkg/
+src/
+*.tar.gz
+*.tar.xz

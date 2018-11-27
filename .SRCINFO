@@ -1,0 +1,15 @@
+pkgbase = python-sneakysnek-git
+	pkgdesc = Dead simple cross-platform keyboard & mouse global input capture solution
+	pkgver = r11.8c760c5
+	pkgrel = 1
+	url = https://github.com/greyltc/sneakysnek
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-xlib
+	source = git://github.com/greyltc/sneakysnek.git
+	md5sums = SKIP
+
+pkgname = python-sneakysnek-git
+
