@@ -9,6 +9,7 @@ arch=(any)
 url="http://smc.org.in/fonts/"
 license=("OFL1.1")
 depends=(fontconfig xorg-font-utils)
+conflicts=(ttf-malayalam-font-manjari)
 source=(
 "https://smc.org.in/downloads/fonts/manjari/Manjari-Regular.otf"
 "https://smc.org.in/downloads/fonts/manjari/Manjari-Thin.otf"
