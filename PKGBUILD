@@ -59,7 +59,7 @@ pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
 _rtpatchver=rt${_rtver}
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -215,21 +215,18 @@ _package() {
     install=linux.install
 
   local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   cd $_srcname
 
   msg2 "Installing boot image..."
-  local image="$pkgdir/boot/vmlinuz-$pkgbase"
-  install -Dm644 "$(make -s image_name)" "$image"
-
-  msg2 "Installing modules..."
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-  mkdir -p "$modulesdir"
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
-
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  ln -sr "$image" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+
+  msg2 "Installing modules..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
@@ -400,8 +397,8 @@ sha512sums=('46f77eb99faa596b673920d4c0fcba6490f03907c0114eb18751cc2011e0a775037
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
             '57fd6ec32b5d0400da40fcc7b81390facb3a1c062b153801d42261847e635206ecc27185f924ac8f4b40e773bbfc9639b9a6983cad8775f0a06a4ae284546ec1'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
-            '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
-            '6346b66f54652256571ef65da8e46db49a95ac5978ecd57a507c6b2a28aee70bb3ff87045ac493f54257c9965da1046a28b72cb5abb0087204d257f14b91fd74'
+            '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
+            'b27d13a1e486de6a8500724d2aea3fc11b2f46698e6aa5e41b37b8c8bbf973763b3c5eca464522ea198305167bace2a20ce4d1c40b01ce6f82838c81f3135f48'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '39c50e70d28ddaa2cca030f1050c3ead72d44d957a533d0d09a5a8b92d3743c5712fef1a60aacfcac8319346dd407247667e1c25a96cd2585e9d9b017ccd707c')
 
