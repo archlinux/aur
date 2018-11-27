@@ -20,7 +20,7 @@ conflicts=('waterfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 source=("waterfox-kde-${pkgver}-0-x86_64.pkg.tar.xz::https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/Arch/x86_64/waterfox-kde-${pkgver}-0-x86_64.pkg.tar.xz")
-sha256sums=('866368fde1b8a9f4e88fc42503b1036e46f05715a0fa46c14d1d84767cd6f437')
+sha256sums=('bab3fc93238fce670f776a5cd96991de2831562b9ccdbd136be75a1f3b550880')
 
 package() {
 mv $srcdir/usr/ $pkgdir/usr/
