@@ -1,1 +1,1 @@
-telepresence 0.93
+telepresence 0.94
