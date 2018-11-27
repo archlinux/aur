@@ -1,19 +1,19 @@
 pkgbase = matterhorn
 	pkgdesc = A terminal-based chat client for MatterMost
-	pkgver = 40901.0.0
-	pkgrel = 3
+	pkgver = 50200.0.0
+	pkgrel = 1
 	url = https://github.com/matterhorn-chat/matterhorn
 	arch = any
 	license = BSD
 	makedepends = git
-	makedepends = cabal-static
-	makedepends = ghc-static
+	makedepends = cabal-install
+	makedepends = ghc8.2
 	depends = ncurses5-compat-libs
 	provides = matterhorn
 	conflicts = matterhorn-git
 	conflicts = matterhorn-bin
-	source = https://github.com/matterhorn-chat/matterhorn/archive/40901.0.0.tar.gz
-	sha1sums = 183fc10600066a1ad47d235fc29597300eb14ca3
+	source = https://github.com/matterhorn-chat/matterhorn/archive/50200.0.0.tar.gz
+	sha1sums = 85ffbff17f4e73b54302df74e69aa4a29083f3d9
 
 pkgname = matterhorn
 
