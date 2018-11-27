@@ -1,0 +1,16 @@
+pkgbase = interui-otf
+	pkgdesc = Inter UI is a typeface specially designed for user interfaces with focus on high legibility of small-to-medium sized text on computer screens.
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://rsms.me/inter/
+	arch = any
+	license = custom:SIL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/rsms/inter/releases/download/v3.1/Inter-UI-3.1.zip
+	source = https://raw.githubusercontent.com/rsms/inter/master/LICENSE.txt
+	sha256sums = 07e25f3e9a1a156db36a383213c0b753fb3099c55ee84f7b0eeddbd77a7c8eca
+	sha256sums = 40cc017183821b3163b4ab30c186019f05573323fdacb1cd9563c97098f8183c
+
+pkgname = interui-otf
+
