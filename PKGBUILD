@@ -8,12 +8,12 @@
 
 pkgname=filebot-git
 _pkgname=filebot
-pkgver=4.8.4.r5853.20181001
-_pkgver=4.8.4
-pkgrel=2
+pkgver=4.8.5.20181128
+_pkgver=4.8.5
+pkgrel=1
 _jnaver=4.5.2
 
-_fixedcommit=7a73521ceed9e015bc23b32c1abab2545a47adeb
+_fixedcommit=ca1b8c04400fc0e83cd04ad4c5d13361dbd855ea
 
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
@@ -78,7 +78,8 @@ EOT
 pkgver(){
   cd "$srcdir/$_pkgname/"
 
-  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git log --date=format:%Y%m%d --pretty=%ad -1 HEAD)"
+#  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git log --date=format:%Y%m%d --pretty=%ad -1 HEAD)"
+printf "$_pkgver.%s" "$(git log --date=format:%Y%m%d --pretty=%ad -1 HEAD)"
 }
 
 build() {
