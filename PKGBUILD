@@ -20,7 +20,7 @@ prepare() {
 
 package() {
   mkdir -p $pkgdir/opt/${pkgname} $pkgdir/usr/share/applications $pkgdir/usr/bin/
-  cp -Rf $srcdir/squashfs-root/app/* $pkgdir/opt/${pkgname}
+  find $srcdir/squashfs-root/* -path $srcdir/squashfs-root/usr -prune -o -prune -exec cp -Rf {} $pkgdir/opt/${pkgname} \;
   cp -Rf $srcdir/squashfs-root/usr/share/* $pkgdir/usr/share
   cp -fp  $srcdir/squashfs-root/staruml.desktop $pkgdir/usr/share/applications
   sed -i 's/AppRun/staruml/g' $pkgdir/usr/share/applications/staruml.desktop
