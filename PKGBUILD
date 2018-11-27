@@ -2,7 +2,7 @@
 
 pkgname=adbcontrol
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control your Android phone through adb"
 arch=(i686 x86_64)
 url="http://marian.schedenig.name/2014/07/03/remote-control-your-android-phone-through-adb/"
