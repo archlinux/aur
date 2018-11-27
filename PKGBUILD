@@ -26,6 +26,7 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
 	cd "$srcdir/$pkgname"
+	autoconf
 	./configure --prefix=/usr --libdir=/usr/lib32
 	make
 }
