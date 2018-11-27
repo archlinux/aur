@@ -1,7 +1,7 @@
 pkgbase = intel-seapi-git
 	pkgdesc = Intel Single Event API (Intel SEAPI) (git version)
 	pkgver = 17.01.28.r25.gf41831f
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/intel/IntelSEAPI/
 	arch = i686
 	arch = x86_64

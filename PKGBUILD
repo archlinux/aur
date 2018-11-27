@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
-_srcname=IntelSEAPI
 pkgname=intel-seapi-git
+_srcname=IntelSEAPI
 pkgver=17.01.28.r25.gf41831f
-pkgrel=4
+pkgrel=5
 pkgdesc='Intel Single Event API (Intel SEAPI) (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/intel/IntelSEAPI/'
@@ -44,15 +44,14 @@ build() {
 package() {
     cd "${_srcname}/build_linux/${_architecture}"
     
-    local _pythonver
-    
     make DESTDIR="$pkgdir" install
     
     # library
     mv "${pkgdir}/usr/bin/libIntelSEAPI${_architecture}.so" "${pkgdir}/usr/lib"
     
     # python
-    _pythonver="$(python --version | sed 's/^Python[[:space:]]//' | grep -o '^[0-9]*\.[0-9]*')"
+    local _pythonver
+    _pythonver="$(python -c 'import sys; print("%s.%s" % sys.version_info[:2])')"
     mkdir -p "${pkgdir}/usr/lib/python${_pythonver}/${pkgname%%-git}"
     mv "$pkgdir"/usr/runtool/* "${pkgdir}/usr/lib/python${_pythonver}/${pkgname%%-git}"
     
