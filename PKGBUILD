@@ -1,7 +1,7 @@
 # Maintainer: Lucas Malandrino <lucas.malandrino@gmail.com>
 pkgname='edex-ui-git'
 _pkgname='edex-ui'
-pkgver=1.1.1.r1.g5afea2d
+pkgver=1.1.1.r13.ge050021
 pkgrel=1
 pkgdesc="A science fiction desktop running everywhere. Awesome."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
