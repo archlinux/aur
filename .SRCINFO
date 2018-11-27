@@ -1,7 +1,7 @@
 pkgbase = nfft
 	pkgdesc = Library for computing Non-uniform Fast Fourier Transforms.
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www-user.tu-chemnitz.de/~potts/nfft/
 	arch = i686
 	arch = x86_64
