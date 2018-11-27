@@ -1,0 +1,16 @@
+--- cvmfs-2.5.1.orig/cvmfs/download.cc	2018-11-27 09:18:43.686991595 +0100
++++ cvmfs-2.5.1/cvmfs/download.cc	2018-11-27 09:19:46.637552552 +0100
+@@ -1266,13 +1266,6 @@
+                "X509_CERT_BUNDLE might point to the wrong location.");
+       info->error_code = kFailHostConnection;
+       break;
+-    case CURLE_SSL_CACERT:
+-      LogCvmfs(kLogDownload, kLogDebug | kLogSyslogErr, "SSL certificate cannot"
+-               " be authenticated with known CA certificates. "
+-               "X509_CERT_DIR and/or X509_CERT_BUNDLE might point to the wrong "
+-               "location.");
+-      info->error_code = kFailHostConnection;
+-      break;
+     case CURLE_PEER_FAILED_VERIFICATION:
+       LogCvmfs(kLogDownload, kLogDebug | kLogSyslogErr,
+                "invalid SSL certificate of remote host. "

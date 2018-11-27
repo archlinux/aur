@@ -24,10 +24,12 @@ pkgbase = cvmfs
 	source = settings.cmake
 	source = externals.patch
 	source = sqlite-scratch.patch
+	source = curl.patch
 	md5sums = 0c240a990d94d8fb1bade350f07de96f
 	md5sums = 20dc60c61077f4a3711463e8686d260d
 	md5sums = 3054d07ba4d5f96159a6c2c36244bda8
 	md5sums = 0ef4c858aa9648dcd46768991748eb06
+	md5sums = 2ec8fe3ee233d0934f288927c7a88e46
 
 pkgname = cvmfs
 

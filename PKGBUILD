@@ -17,11 +17,13 @@ options=('!emptydirs')
 source=("https://ecsft.cern.ch/dist/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
     'settings.cmake'
 	'externals.patch'
-	'sqlite-scratch.patch')
+	'sqlite-scratch.patch'
+    'curl.patch')
 md5sums=('0c240a990d94d8fb1bade350f07de96f'
          '20dc60c61077f4a3711463e8686d260d'
          '3054d07ba4d5f96159a6c2c36244bda8'
-         '0ef4c858aa9648dcd46768991748eb06')
+         '0ef4c858aa9648dcd46768991748eb06'
+         '2ec8fe3ee233d0934f288927c7a88e46')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -33,6 +35,9 @@ prepare() {
 
     # Sqlite deprecated the SCRATCH configuration option
     patch -Np1 -i "$srcdir/sqlite-scratch.patch"
+
+    # Error code aliases in cURL
+    patch -Np1 -i "$srcdir/curl.patch"
 }
 
 build() {
