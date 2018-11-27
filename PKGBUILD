@@ -1,13 +1,14 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=libgexiv2
+pkgname=libgexiv2-git
 pkgver=0.11
 pkgrel=1
 pkgdesc="GObject-based wrapper around the Exiv2 library"
 url="https://wiki.gnome.org/Projects/gexiv2"
 arch=(x86_64)
 license=(GPL2)
+conflicts=(libgexiv2)
 depends=(exiv2 glib2)
 makedepends=(python-gobject python2-gobject gobject-introspection vala git meson)
 source=("git+https://git.gnome.org/browse/gexiv2")
