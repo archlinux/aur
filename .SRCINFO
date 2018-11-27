@@ -1,0 +1,14 @@
+pkgbase = pydflatex
+	pkgdesc = A wrapper around pdflatex which produces a short, readable, coloured output
+	pkgver = r1.a466693d
+	pkgrel = 1
+	url = https://github.com/olivierverdier/pydflatex/
+	arch = any
+	license = BSD
+	depends = python
+	depends = texlive-bin
+	source = https://github.com/olivierverdier/pydflatex//archive/a466693d.zip
+	sha512sums = d48f90ecf1135bcd2654ded1c373abd64bd02d6e5582fac0cf9e30ba9dafd3cfc8b60346843dc8d34d609ec08e8a382c88d06c0aa3e171e447a0ecc266fd2613
+
+pkgname = pydflatex
+
