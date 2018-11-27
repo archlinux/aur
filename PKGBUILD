@@ -1,7 +1,7 @@
 # Maintainer: Dmitri Goutnik <dg@syrec.org>
 
 pkgname=sops
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Editor of encrypted files that supports YAML, JSON and BINARY formats'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MPL2')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('9be1ea2d21951e09b7c8da94e6fedd1fa0f3d848fd4ebc84928748819eb00a3e')
+sha256sums=('7063b15b8e4a1625e3f2a64d582c424e93ee0b7292de9891dd3918ab1596c8fe')
 
 prepare() {
   mkdir -p src/go.mozilla.org
