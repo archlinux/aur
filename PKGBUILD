@@ -2,8 +2,8 @@
 
 pkgname=lightdm-slick-greeter
 _pkgname=slick-greeter
-pkgver=1.2.2
-pkgrel=4
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="A slick-looking LightDM greeter"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/${_pkgname}"
@@ -22,16 +22,14 @@ makedepends=('gnome-common'
     'vala')
 backup=('etc/lightdm/slick-greeter.conf')
 install=slick-greeter.install
-source=("${_pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz"
-        "compile_new_vala.patch")
-sha256sums=('ea5e53e1beddda097fc6e0733bc5dc5c143341504b34f7165357e87ed7b7b52b'
-            'a651ca135c0250fa39e5893902e9b772bb19b1c126402afe93383b060649636d')
+source=("${_pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
+sha256sums=('05bd2af71c741336be60de7efb4f92be8b323fe33049a30bca6458129ca00059')
 
-prepare() {
-  cd ${_pkgname}-${pkgver}
+#prepare() {
+#  cd ${_pkgname}-${pkgver}
   #Allow compiling with newer versions of Vala
-  patch -Np0 -i ../compile_new_vala.patch
-}
+#  patch -Np0 -i ../compile_new_vala.patch
+#}
 
 build() {
     cd ${_pkgname}-${pkgver}
