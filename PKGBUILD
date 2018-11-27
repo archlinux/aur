@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2017.4.15
+_version=2017.4.16
 _build=f1
-_randomstring=5d485b4897a7
+_randomstring=7f7bdd1ef02b
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-standardassets
@@ -15,7 +15,7 @@ license=('custom')
 depends=('unity-editor-lts')
 makedepends=('cpio')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/MacStandardAssetsInstaller/StandardAssets.pkg")
-md5sums=('beb8b3f2473994c1068dca45d75c5a31')
+md5sums=('48909a289df931807e8b76232270404b')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
