@@ -1,5 +1,5 @@
 pkgname=angular-cli
-pkgver=7.0.3
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="CLI tool for Angular"
 arch=(any)
@@ -19,3 +19,4 @@ package() {
     # See https://github.com/npm/npm/issues/9359 for details.
     find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
+
