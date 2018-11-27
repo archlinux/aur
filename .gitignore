@@ -1,0 +1,7 @@
+goboy-*.pkg.tar.xz
+*.tar.gz
+goboy-*.log
+
+PKGBUILD-namcap.log
+pkg/
+src/
