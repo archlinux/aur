@@ -1,0 +1,36 @@
+pkgbase = goboy-git
+	pkgdesc = Multi-platform Nintendo Game Boy Color emulator written in go
+	pkgver = 0.4.2.r1.c35240e
+	pkgrel = 1
+	url = https://humpheh.github.io/goboy
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go-pie
+	depends = gtk2
+	depends = gtk3
+	source = goboy::git+https://github.com/Humpheh/goboy.git
+	source = glhf::git+https://github.com/faiface/glhf.git
+	source = mainthread::git+https://github.com/faiface/mainthread.git
+	source = pixel::git+https://github.com/faiface/pixel
+	source = gl::git+https://github.com/go-gl/gl
+	source = glfw::git+https://github.com/go-gl/glfw
+	source = mathgl::git+https://github.com/go-gl/mathgl
+	source = oto::git+https://github.com/hajimehoshi/oto
+	source = go-gtk::git+https://github.com/mattn/go-gtk
+	source = go-pointer::git+https://github.com/mattn/go-pointer
+	source = errors::git+https://github.com/pkg/errors
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = goboy-git
+

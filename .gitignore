@@ -1,0 +1,16 @@
+goboy-git-*.pkg.tar.xz
+goboy-git-*.log
+PKGBUILD-namcap.log
+errors/
+gl/
+glfw/
+glhf/
+go-gtk/
+go-pointer/
+goboy/
+mainthread/
+mathgl/
+oto/
+pixel/
+pkg/
+src/
