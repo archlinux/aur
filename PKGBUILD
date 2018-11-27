@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos < sam dot burgos1089 at gmail dot com >
 
 pkgname=lightdm-settings
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A configuration tool for the LightDM display manager"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('hicolor-icon-theme'
 makedepends=('desktop-file-utils' 
     'gettext')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha256sums=('4feecb2fb213bc1a5fe910907bff338cada4bb550d647d7eabd3d6c647d5be00')
+sha256sums=('7006c9d2a69294e6ed1278e2a060d6d5038ff146a5947391af989bcd9739ed5d')
 
 build() {
   cd $pkgname-$pkgver
