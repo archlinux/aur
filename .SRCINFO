@@ -1,6 +1,6 @@
 pkgbase = pmd
 	pkgdesc = An extensible cross-language static code analyzer.
-	pkgver = 6.6.0
+	pkgver = 6.9.0
 	pkgrel = 1
 	url = https://pmd.github.io/
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = pmd
 	license = Apache
 	makedepends = java-environment-common
 	makedepends = maven
-	depends = java-environment=10
-	source = https://github.com/pmd/pmd/releases/download/pmd_releases/6.6.0/pmd-src-6.6.0.zip
+	depends = java-environment=11
+	source = https://github.com/pmd/pmd/releases/download/pmd_releases/6.9.0/pmd-src-6.9.0.zip
 	source = pmdapp
-	sha256sums = 0bf965f084f6c19b83811eba8167165418b6b6e30b26118327b311f88d78b4b0
+	sha256sums = 9c89cb142d374c8fc4caab4230e215ddbd622bf5a87efb358ac19972a367d42c
 	sha256sums = b1a73343ba0435801ce18c7fc18e14b7fed6a9be7b0a5907b67730471c176fc8
 
 pkgname = pmd
