@@ -1,15 +1,15 @@
-# Contributor: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: ezzetabi <ezzetabi@gawab.com>
 pkgname=gfontview
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An outline font viewer for Linux."
 arch=(i686 x86_64)
 url="http://gfontview.sourceforge.net/"
 license=('GPL')
 groups=()
-depends=('giflib' 'gtk' 't1lib')
-makedepends=()
+depends=('giflib4' 'gtk' 't1lib')
+makedepends=('cups' 'patchelf')
 optdepends=()
 provides=()
 conflicts=()
@@ -65,7 +65,7 @@ build() {
    h;n;:1
    336!{N;b1}
    G;h;n;p;g;p'
-  CPPFLAGS= ./configure  --prefix=/usr --enable-gnome=no --disable-nls
+  CPPFLAGS="-I/usr/include/giflib4" LDFLAGS="-L/usr/lib/giflib4" ./configure  --prefix=/usr --enable-gnome=no --disable-nls
 
   #We inject the old freetype
   sed -i Makefile -e '/^gfontview_OBJECTS *=/ s_$_ freetype.o ftxerr18.o ftxkern.o ftxpost.o_'
@@ -76,6 +76,8 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" applicationsdir='${datadir}/applications' install
   install -m755 -d "$pkgdir"/usr/share/ghostscript/fonts
+  strip "$pkgdir"/usr/bin/gfontview
+  patchelf --set-rpath /usr/lib/giflib4 "$pkgdir"/usr/bin/gfontview
 }
 
 md5sums=('f06e0e9d67f7d8b3af251fa593e83eeb'

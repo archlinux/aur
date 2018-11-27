@@ -1,13 +1,15 @@
 pkgbase = gfontview
 	pkgdesc = An outline font viewer for Linux.
 	pkgver = 0.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gfontview.sourceforge.net/
 	changelog = ChangeLog
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = giflib
+	makedepends = cups
+	makedepends = patchelf
+	depends = giflib4
 	depends = gtk
 	depends = t1lib
 	options = !emptydirs
