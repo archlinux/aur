@@ -1,0 +1,17 @@
+pkgbase = osinfo-db-git
+	pkgdesc = Osinfo database of information about operating systems for virtualization provisioning tools
+	pkgver = v20181116.r14.gbb0fa57
+	pkgrel = 1
+	url = https://libosinfo.org/
+	arch = any
+	license = GPL
+	makedepends = osinfo-db-tools
+	makedepends = intltool
+	provides = osinfo-db
+	conflicts = osinfo-db
+	options = !emptydirs
+	source = osinfo-db-git::git+https://gitlab.com/libosinfo/osinfo-db.git#branch=master
+	sha256sums = SKIP
+
+pkgname = osinfo-db-git
+
