@@ -1,7 +1,7 @@
 pkgbase = zuki-themes
 	pkgdesc = Zuki themes for GNOME, Xfce and more.
 	pkgver = 3.28_3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lassekongo83/zuki-themes
 	arch = any
 	license = GPL3
