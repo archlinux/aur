@@ -2,7 +2,7 @@
 # Contributor: Siddhartha Das <https://github.com/babluboy, bablu.boy@gmail.com>
 
 pkgname=nutty-git
-pkgver=82.6877a87
+pkgver=120.8af2d4a
 pkgrel=1
 _gitname=nutty
 pkgdesc='A network utility for linux. Monitor the devices on your network and check bandwidth and speed details.'
@@ -11,7 +11,7 @@ url='https://github.com/babluboy/nutty'
 license=('GPL3')
 depends=('gtk3' 'granite' 'sqlite' 'libxml2' 'libnotify' 'libgee')
 optdepends=()
-makedepends=('vala' 'git' 'cmake')
+makedepends=('vala' 'git' 'meson')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
 install="${pkgname%-*}.install"
@@ -23,21 +23,21 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-build() {
-  cd $_gitname
+prepare() {
+  cd $srcdir/$_gitname
+  git submodule init; git submodule update
+}
 
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build && cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  make
+build() {
+  mkdir -p $srcdir/$_gitname/build
+  cd $srcdir/$_gitname/build
+  arch-meson
+  ninja
 }
 
 package() {
-  cd $_gitname/build
-
-  make DESTDIR="${pkgdir}" install
+  cd $srcdir/$_gitname/build
+  DESTDIR=${pkgdir} ninja install
 }
 
 # vim: ts=2 sw=2 et:

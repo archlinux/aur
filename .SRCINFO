@@ -1,6 +1,6 @@
 pkgbase = nutty-git
 	pkgdesc = A network utility for linux. Monitor the devices on your network and check bandwidth and speed details.
-	pkgver = 82.6877a87
+	pkgver = 120.8af2d4a
 	pkgrel = 1
 	url = https://github.com/babluboy/nutty
 	install = nutty.install
@@ -9,7 +9,7 @@ pkgbase = nutty-git
 	license = GPL3
 	makedepends = vala
 	makedepends = git
-	makedepends = cmake
+	makedepends = meson
 	depends = gtk3
 	depends = granite
 	depends = sqlite
