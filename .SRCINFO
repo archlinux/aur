@@ -1,0 +1,27 @@
+pkgbase = kyocera-ecosys-m552x-p502x
+	pkgdesc = PPD file for Kyocera ECOSYS M5521cdn/M5521cdw/M5526cdn/M5526cdw/P5021cdn/P5021cdw/P5026cdn/P5026cdw
+	pkgver = 8.1602
+	pkgrel = 1
+	url = https://www.kyocera.com
+	arch = any
+	license = other
+	depends = cups
+	source = Kyocera ECOSYS M5521cdn.PPD
+	source = Kyocera ECOSYS M5521cdw.PPD
+	source = Kyocera ECOSYS M5526cdn.PPD
+	source = Kyocera ECOSYS M5526cdw.PPD
+	source = Kyocera ECOSYS P5021cdn.PPD
+	source = Kyocera ECOSYS P5021cdw.PPD
+	source = Kyocera ECOSYS P5026cdn.PPD
+	source = Kyocera ECOSYS P5026cdw.PPD
+	sha256sums = 5866300b047028d16bcbb8e0dbb907256709d61430d58f38369b2308aca6b3a1
+	sha256sums = 5da4bee9e233b0e2e5c6d802bc0cc243335108a918f5aa1c49d30da807ef8806
+	sha256sums = a8a5bd2e6beaf8be8a09fe4fa85b0fe43943a57f7f915d83d2d906794d77d85e
+	sha256sums = 9cb0bd51082919f9980a076d6d324bf6ab7aefdd2be735d672268458315a34af
+	sha256sums = fd43692c231a7016ecbbe73981c76cb0a35befe109b9aedbb6e4fe821304e652
+	sha256sums = 340e9c420432647737e9ea1c831699fc80d02ccac94f20fa361604d80698845a
+	sha256sums = 04a8f45fd3fe81a235993e83fa30ec0dd71b7d8045e208d82b5b9a77c7d77779
+	sha256sums = c9cebca4a5cd243c52806d79154f4e04fcd831d9e2d95b96daafae213aa00970
+
+pkgname = kyocera-ecosys-m552x-p502x
+
