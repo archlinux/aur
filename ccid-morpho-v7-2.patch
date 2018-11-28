@@ -1,0 +1,4329 @@
+diff -NurBbw ccid-1.4.3/ChangeLog ccid-1.4.3-morpho/ChangeLog
+--- ccid-1.4.3/ChangeLog	2011-04-02 20:57:07.000000000 +0200
++++ ccid-1.4.3-morpho/ChangeLog	2011-06-21 17:50:48.000000000 +0200
+@@ -1,3 +1,19 @@
++2011-04-21 Dominique Sobczyk
++
++	* Initial patch to support Morpho CCID Token
++	* Removing all other supported VID/PID
++	* Adding compilation flag to support ppc on 10.6
++	* Adding ./MacOSX/configure.10.5 to support compilation with framework PCSC 10.5
++	* Added readers/supported_readers_morpho.txt to support only the token E2/EM
++	* Added src/Info.plist.src_morpho to use readers/supported_readers_morpho.txt
++	* Makefile.in, config.h.in, contrib/Kobil_mIDentity_switch/Makefile.in, contrib/Kobil_mIDentity_switch/Makefile.in, contrib/Makefile.in, contrib/RSA_SecurID/Makefile.in, examples/Makefile.in, m4/Makefile.in, readers/Makefile.am, readers/Makefile.in, src/Makefile.am, src/Makefile.in modified because of a new compilation option (--enable-mwpatch). This option only disables the get_data_rates command. src/Info.plist.src_morpho ise used instead of the default one.
++	* src/ccid.h modified to include a dwMorphoFeatures flag
++	* src/ccid.c modified to initialize ccid_descriptor with the dwMorphoFeatures
++	* src/ccid_usb.c modified to bypass the get_data_rate issue
++	* src/ccid_usb.h addind functions declaration
++	* src/commands.c, src/commands.h modified to patch the getslotstatus and to add some timings
++	* src/ifdhandler.c modified to get back to the condition ( IFD_COMMUNICATION_ERROR == IFDHICCPresence(Lun) && IFD_COMMUNICATION_ERROR == IFDHICCPresence(Lun) && IFD_COMMUNICATION_ERROR == IFDHICCPresence(Lun) instead of getslotstatus
++	
+ 2011-04-02  Ludovic Rousseau
+ 
+ 	* [r5688] README, configure.in: release 1.4.3
+diff -NurBbw ccid-1.4.3/MacOSX/configure ccid-1.4.3-morpho/MacOSX/configure
+--- ccid-1.4.3/MacOSX/configure	2010-10-01 17:19:39.000000000 +0200
++++ ccid-1.4.3-morpho/MacOSX/configure	2011-06-21 17:50:48.000000000 +0200
+@@ -52,7 +52,7 @@
+ CFLAGS="$CFLAGS -DRESPONSECODE_DEFINED_IN_WINTYPES_H"
+ 
+ # Build a Universal Binary
+-CFLAGS="$CFLAGS -isysroot /Developer/SDKs/MacOSX10.6.sdk -arch i386 -arch x86_64"
++CFLAGS="$CFLAGS -isysroot /Developer/SDKs/MacOSX10.6.sdk -arch i386 -arch x86_64 -arch ppc"
+ CONFIGURE_ARGS="--disable-dependency-tracking"
+ 
+ # do not build a static driver
+diff -NurBbw ccid-1.4.3/MacOSX/configure.10.5 ccid-1.4.3-morpho/MacOSX/configure.10.5
+--- ccid-1.4.3/MacOSX/configure.10.5	1970-01-01 01:00:00.000000000 +0100
++++ ccid-1.4.3-morpho/MacOSX/configure.10.5	2011-06-21 17:50:48.000000000 +0200
+@@ -0,0 +1,90 @@
++#! /bin/bash
++
++#    Copyright (C) 2007-2009  Ludovic Rousseau  <ludovic.rousseau@free.fr>
++#
++#    This program is free software; you can redistribute it and/or modify
++#    it under the terms of the GNU General Public License as published by
++#    the Free Software Foundation; either version 2 of the License, or
++#    (at your option) any later version.
++#
++#    This program is distributed in the hope that it will be useful,
++#    but WITHOUT ANY WARRANTY; without even the implied warranty of
++#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#    GNU General Public License for more details.
++#
++#    You should have received a copy of the GNU General Public License
++#    along with this program; if not, write to the Free Software
++#    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
++#    02110-1301 USA.
++
++# to use
++# ./MacOSX/configure
++# make
++# make install
++# the driver is installed in /usr/libexec/SmartCardServices/drivers
++
++# dom 22/05/2011
++# modified to compile under 10.5
++
++# Colors
++RED="\033[31m"
++NORMAL="\033[0m"
++
++# run this script as ./MacOSX/configure to configure for Mac OS X
++if [ ! -d MacOSX ]
++then
++	echo -e $RED
++	echo "ERROR!"
++	echo "run ./MacOSX/configure from the source top directory"
++	echo -e $NORMAL
++	exit;
++fi
++
++# find pcsc-lite header files in MacOSX/
++# use ${varname:-word} to return word only if varname is not already defined
++PCSC_CFLAGS=${PCSC_CFLAGS:--I$(pwd)/MacOSX}
++PCSC_LIBS=${PCSC_LIBS:--framework PCSC}
++
++# use libusb-1.0
++LIBUSB_CFLAGS=-I/usr/local/include/libusb-1.0
++LIBUSB_LIBS="/usr/local/lib/libusb-1.0.a -Wl,-framework -Wl,IOKit -Wl,-framework -Wl,CoreFoundation"
++
++# RESPONSECODE is already defined by PCSC/wintypes.h
++# define needed here to compile examples/scardcontrol.c since config.h is
++# not included
++CFLAGS="$CFLAGS -DRESPONSECODE_DEFINED_IN_WINTYPES_H"
++
++# Build a Universal Binary
++#CFLAGS="$CFLAGS -isysroot /Developer/SDKs/MacOSX10.5.sdk -arch i386 -arch x86_64 -arch ppc"
++# dom : x86_64 pcsc not included in 10.5 framework
++CFLAGS="$CFLAGS -isysroot /Developer/SDKs/MacOSX10.5.sdk -arch i386 -arch ppc"
++CONFIGURE_ARGS="--disable-dependency-tracking"
++
++# do not build a static driver
++# (building fails when linking statically with libusb)
++CONFIGURE_ARGS="$CONFIGURE_ARGS --disable-static"
++
++# do not use pcscd debug feature
++CONFIGURE_ARGS="$CONFIGURE_ARGS --disable-pcsclite"
++
++# simulate a composite device as multi slots
++CONFIGURE_ARGS="$CONFIGURE_ARGS --enable-composite-as-multislot"
++
++# use a specific bundle name to NOT overwrite the official CCID driver
++#CONFIGURE_ARGS="$CONFIGURE_ARGS --enable-bundle=ifd-ccid-foobar.bundle"
++
++set -x
++./configure \
++	CFLAGS="$CFLAGS" \
++	PCSC_CFLAGS="$PCSC_CFLAGS" \
++	PCSC_LIBS="$PCSC_LIBS" \
++	LIBUSB_CFLAGS="$LIBUSB_CFLAGS" \
++	LIBUSB_LIBS="$LIBUSB_LIBS" \
++	LDFLAGS="$LDFLAGS" \
++	--enable-usbdropdir=/usr/libexec/SmartCardServices/drivers \
++	$CONFIGURE_ARGS \
++	"$@"
++
++# force a regeneration of Info.plist
++rm -f src/Info.plist
++
+diff -NurBbw ccid-1.4.3/MacOSX/configure.10.7 ccid-1.4.3-morpho/MacOSX/configure.10.7
+--- ccid-1.4.3/MacOSX/configure.10.7	1970-01-01 01:00:00.000000000 +0100
++++ ccid-1.4.3-morpho/MacOSX/configure.10.7	2011-06-21 17:52:31.000000000 +0200
+@@ -0,0 +1,86 @@
++#! /bin/bash
++
++#    Copyright (C) 2007-2009  Ludovic Rousseau  <ludovic.rousseau@free.fr>
++#
++#    This program is free software; you can redistribute it and/or modify
++#    it under the terms of the GNU General Public License as published by
++#    the Free Software Foundation; either version 2 of the License, or
++#    (at your option) any later version.
++#
++#    This program is distributed in the hope that it will be useful,
++#    but WITHOUT ANY WARRANTY; without even the implied warranty of
++#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#    GNU General Public License for more details.
++#
++#    You should have received a copy of the GNU General Public License
++#    along with this program; if not, write to the Free Software
++#    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
++#    02110-1301 USA.
++
++# to use
++# ./MacOSX/configure
++# make
++# make install
++# the driver is installed in /usr/libexec/SmartCardServices/drivers
++
++# Colors
++RED="\033[31m"
++NORMAL="\033[0m"
++
++# run this script as ./MacOSX/configure to configure for Mac OS X
++if [ ! -d MacOSX ]
++then
++	echo -e $RED
++	echo "ERROR!"
++	echo "run ./MacOSX/configure from the source top directory"
++	echo -e $NORMAL
++	exit;
++fi
++
++# find pcsc-lite header files in MacOSX/
++# use ${varname:-word} to return word only if varname is not already defined
++# do not use space in directory or the path will produce an error on the default terminal
++PCSC_CFLAGS=${PCSC_CFLAGS:--I$(pwd)/MacOSX}
++PCSC_LIBS=${PCSC_LIBS:--framework PCSC}
++
++# use libusb-1.0
++LIBUSB_CFLAGS=-I/usr/local/include/libusb-1.0
++LIBUSB_LIBS="/usr/local/lib/libusb-1.0.a -Wl,-framework -Wl,IOKit -Wl,-framework -Wl,CoreFoundation"
++
++# RESPONSECODE is already defined by PCSC/wintypes.h
++# define needed here to compile examples/scardcontrol.c since config.h is
++# not included
++CFLAGS="$CFLAGS -DRESPONSECODE_DEFINED_IN_WINTYPES_H"
++
++# Build a Universal Binary
++CFLAGS="$CFLAGS -isysroot /Developer/SDKs/MacOSX10.7.sdk -arch i386 -arch x86_64"
++CONFIGURE_ARGS="--disable-dependency-tracking"
++
++# do not build a static driver
++# (building fails when linking statically with libusb)
++CONFIGURE_ARGS="$CONFIGURE_ARGS --disable-static"
++
++# do not use pcscd debug feature
++CONFIGURE_ARGS="$CONFIGURE_ARGS --disable-pcsclite"
++
++# simulate a composite device as multi slots
++CONFIGURE_ARGS="$CONFIGURE_ARGS --enable-composite-as-multislot"
++
++# use a specific bundle name to NOT overwrite the official CCID driver
++#CONFIGURE_ARGS="$CONFIGURE_ARGS --enable-bundle=ifd-ccid-foobar.bundle"
++
++set -x
++./configure \
++	CFLAGS="$CFLAGS" \
++	PCSC_CFLAGS="$PCSC_CFLAGS" \
++	PCSC_LIBS="$PCSC_LIBS" \
++	LIBUSB_CFLAGS="$LIBUSB_CFLAGS" \
++	LIBUSB_LIBS="$LIBUSB_LIBS" \
++	LDFLAGS="$LDFLAGS" \
++	--enable-usbdropdir=/usr/libexec/SmartCardServices/drivers \
++	$CONFIGURE_ARGS \
++	"$@"
++
++# force a regeneration of Info.plist
++rm -f src/Info.plist
++
+diff -NurBbw ccid-1.4.3/Makefile.in ccid-1.4.3-morpho/Makefile.in
+--- ccid-1.4.3/Makefile.in	2011-04-02 20:48:19.000000000 +0200
++++ ccid-1.4.3-morpho/Makefile.in	2011-06-21 17:50:48.000000000 +0200
+@@ -271,15 +271,15 @@
+ 	@for dep in $?; do \
+ 	  case '$(am__configure_deps)' in \
+ 	    *$$dep*) \
+-	      echo ' cd $(srcdir) && $(AUTOMAKE) --foreign'; \
+-	      $(am__cd) $(srcdir) && $(AUTOMAKE) --foreign \
++	      echo ' cd $(srcdir) && $(AUTOMAKE) --gnu'; \
++	      $(am__cd) $(srcdir) && $(AUTOMAKE) --gnu \
+ 		&& exit 0; \
+ 	      exit 1;; \
+ 	  esac; \
+ 	done; \
+-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign Makefile'; \
++	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu Makefile'; \
+ 	$(am__cd) $(top_srcdir) && \
+-	  $(AUTOMAKE) --foreign Makefile
++	  $(AUTOMAKE) --gnu Makefile
+ .PRECIOUS: Makefile
+ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
+ 	@case '$?' in \
+diff -NurBbw ccid-1.4.3/config.h.in ccid-1.4.3-morpho/config.h.in
+--- ccid-1.4.3/config.h.in	2011-04-02 20:48:17.000000000 +0200
++++ ccid-1.4.3-morpho/config.h.in	2011-06-21 17:50:48.000000000 +0200
+@@ -129,6 +129,9 @@
+    `char[]'. */
+ #undef YYTEXT_POINTER
+ 
++/* call to getdatarates disabled */
++#undef _MW_PATCH_
++
+ /* Define to empty if `const' does not conform to ANSI C. */
+ #undef const
+ 
+diff -NurBbw ccid-1.4.3/configure ccid-1.4.3-morpho/configure
+--- ccid-1.4.3/configure	2011-04-02 20:48:18.000000000 +0200
++++ ccid-1.4.3-morpho/configure	2011-06-21 17:50:48.000000000 +0200
+@@ -1,6 +1,6 @@
+ #! /bin/sh
+ # Guess values for system-dependent variables and create Makefiles.
+-# Generated by GNU Autoconf 2.67 for ccid 1.4.3.
++# Generated by GNU Autoconf 2.68 for ccid 1.4.3.
+ #
+ #
+ # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1998, 1999, 2000, 2001,
+@@ -89,6 +89,7 @@
+ IFS=" ""	$as_nl"
+ 
+ # Find who we are.  Look in the path if we contain no directory separator.
++as_myself=
+ case $0 in #((
+   *[\\/]* ) as_myself=$0 ;;
+   *) as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -214,11 +215,18 @@
+   # We cannot yet assume a decent shell, so we have to provide a
+ 	# neutralization value for shells without unset; and this also
+ 	# works around shells that cannot unset nonexistent variables.
++	# Preserve -v and -x to the replacement shell.
+ 	BASH_ENV=/dev/null
+ 	ENV=/dev/null
+ 	(unset BASH_ENV) >/dev/null 2>&1 && unset BASH_ENV ENV
+ 	export CONFIG_SHELL
+-	exec "$CONFIG_SHELL" "$as_myself" ${1+"$@"}
++	case $- in # ((((
++	  *v*x* | *x*v* ) as_opts=-vx ;;
++	  *v* ) as_opts=-v ;;
++	  *x* ) as_opts=-x ;;
++	  * ) as_opts= ;;
++	esac
++	exec "$CONFIG_SHELL" $as_opts "$as_myself" ${1+"$@"}
+ fi
+ 
+     if test x$as_have_required = xno; then :
+@@ -906,6 +914,7 @@
+ enable_pcsclite
+ enable_class
+ enable_embedded
++enable_mwpatch
+ '
+       ac_precious_vars='build_alias
+ host_alias
+@@ -1327,7 +1336,7 @@
+     $as_echo "$as_me: WARNING: you should use --build, --host, --target" >&2
+     expr "x$ac_option" : ".*[^-._$as_cr_alnum]" >/dev/null &&
+       $as_echo "$as_me: WARNING: invalid host type: $ac_option" >&2
+-    : ${build_alias=$ac_option} ${host_alias=$ac_option} ${target_alias=$ac_option}
++    : "${build_alias=$ac_option} ${host_alias=$ac_option} ${target_alias=$ac_option}"
+     ;;
+ 
+   esac
+@@ -1567,6 +1576,8 @@
+   --disable-class         remove the CCIDCLASSDRIVER from Info.plist
+   --enable-embedded       limit RAM and CPU ressources by disabling features
+                           (log)
++  --enable-mwpatch        enable the middleware patch where the getdatarates
++                          is not called)
+ 
+ Optional Packages:
+   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+@@ -1662,7 +1673,7 @@
+ if $ac_init_version; then
+   cat <<\_ACEOF
+ ccid configure 1.4.3
+-generated by GNU Autoconf 2.67
++generated by GNU Autoconf 2.68
+ 
+ Copyright (C) 2010 Free Software Foundation, Inc.
+ This configure script is free software; the Free Software Foundation
+@@ -1708,7 +1719,7 @@
+ 
+ 	ac_retval=1
+ fi
+-  eval $as_lineno_stack; test "x$as_lineno_stack" = x && { as_lineno=; unset as_lineno;}
++  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+   as_fn_set_status $ac_retval
+ 
+ } # ac_fn_c_try_compile
+@@ -1745,7 +1756,7 @@
+ 
+     ac_retval=1
+ fi
+-  eval $as_lineno_stack; test "x$as_lineno_stack" = x && { as_lineno=; unset as_lineno;}
++  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+   as_fn_set_status $ac_retval
+ 
+ } # ac_fn_c_try_cpp
+@@ -1791,7 +1802,7 @@
+   # interfere with the next link command; also delete a directory that is
+   # left behind by Apple's compiler.  We do this before executing the actions.
+   rm -rf conftest.dSYM conftest_ipa8_conftest.oo
+-  eval $as_lineno_stack; test "x$as_lineno_stack" = x && { as_lineno=; unset as_lineno;}
++  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+   as_fn_set_status $ac_retval
+ 
+ } # ac_fn_c_try_link
+@@ -1804,10 +1815,10 @@
+ ac_fn_c_check_header_mongrel ()
+ {
+   as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
+-  if eval "test \"\${$3+set}\"" = set; then :
++  if eval \${$3+:} false; then :
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $2" >&5
+ $as_echo_n "checking for $2... " >&6; }
+-if eval "test \"\${$3+set}\"" = set; then :
++if eval \${$3+:} false; then :
+   $as_echo_n "(cached) " >&6
+ fi
+ eval ac_res=\$$3
+@@ -1870,7 +1881,7 @@
+ esac
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $2" >&5
+ $as_echo_n "checking for $2... " >&6; }
+-if eval "test \"\${$3+set}\"" = set; then :
++if eval \${$3+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   eval "$3=\$ac_header_compiler"
+@@ -1879,7 +1890,7 @@
+ 	       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+ $as_echo "$ac_res" >&6; }
+ fi
+-  eval $as_lineno_stack; test "x$as_lineno_stack" = x && { as_lineno=; unset as_lineno;}
++  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+ 
+ } # ac_fn_c_check_header_mongrel
+ 
+@@ -1920,7 +1931,7 @@
+        ac_retval=$ac_status
+ fi
+   rm -rf conftest.dSYM conftest_ipa8_conftest.oo
+-  eval $as_lineno_stack; test "x$as_lineno_stack" = x && { as_lineno=; unset as_lineno;}
++  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+   as_fn_set_status $ac_retval
+ 
+ } # ac_fn_c_try_run
+@@ -1934,7 +1945,7 @@
+   as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $2" >&5
+ $as_echo_n "checking for $2... " >&6; }
+-if eval "test \"\${$3+set}\"" = set; then :
++if eval \${$3+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -1952,7 +1963,7 @@
+ eval ac_res=\$$3
+ 	       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+ $as_echo "$ac_res" >&6; }
+-  eval $as_lineno_stack; test "x$as_lineno_stack" = x && { as_lineno=; unset as_lineno;}
++  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+ 
+ } # ac_fn_c_check_header_compile
+ 
+@@ -1964,7 +1975,7 @@
+   as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $2" >&5
+ $as_echo_n "checking for $2... " >&6; }
+-if eval "test \"\${$3+set}\"" = set; then :
++if eval \${$3+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -2019,7 +2030,7 @@
+ eval ac_res=\$$3
+ 	       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+ $as_echo "$ac_res" >&6; }
+-  eval $as_lineno_stack; test "x$as_lineno_stack" = x && { as_lineno=; unset as_lineno;}
++  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+ 
+ } # ac_fn_c_check_func
+ 
+@@ -2032,7 +2043,7 @@
+   as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $2" >&5
+ $as_echo_n "checking for $2... " >&6; }
+-if eval "test \"\${$3+set}\"" = set; then :
++if eval \${$3+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   eval "$3=no"
+@@ -2073,7 +2084,7 @@
+ eval ac_res=\$$3
+ 	       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+ $as_echo "$ac_res" >&6; }
+-  eval $as_lineno_stack; test "x$as_lineno_stack" = x && { as_lineno=; unset as_lineno;}
++  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+ 
+ } # ac_fn_c_check_type
+ cat >config.log <<_ACEOF
+@@ -2081,7 +2092,7 @@
+ running configure, to aid debugging if configure makes a mistake.
+ 
+ It was created by ccid $as_me 1.4.3, which was
+-generated by GNU Autoconf 2.67.  Invocation command line was
++generated by GNU Autoconf 2.68.  Invocation command line was
+ 
+   $ $0 $@
+ 
+@@ -2477,7 +2488,7 @@
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for a BSD-compatible install" >&5
+ $as_echo_n "checking for a BSD-compatible install... " >&6; }
+ if test -z "$INSTALL"; then
+-if test "${ac_cv_path_install+set}" = set; then :
++if ${ac_cv_path_install+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -2654,7 +2665,7 @@
+ set dummy ${ac_tool_prefix}strip; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_STRIP+set}" = set; then :
++if ${ac_cv_prog_STRIP+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$STRIP"; then
+@@ -2694,7 +2705,7 @@
+ set dummy strip; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_STRIP+set}" = set; then :
++if ${ac_cv_prog_ac_ct_STRIP+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_STRIP"; then
+@@ -2747,7 +2758,7 @@
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for a thread-safe mkdir -p" >&5
+ $as_echo_n "checking for a thread-safe mkdir -p... " >&6; }
+ if test -z "$MKDIR_P"; then
+-  if test "${ac_cv_path_mkdir+set}" = set; then :
++  if ${ac_cv_path_mkdir+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -2798,7 +2809,7 @@
+ set dummy $ac_prog; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_AWK+set}" = set; then :
++if ${ac_cv_prog_AWK+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$AWK"; then
+@@ -2838,7 +2849,7 @@
+ $as_echo_n "checking whether ${MAKE-make} sets \$(MAKE)... " >&6; }
+ set x ${MAKE-make}
+ ac_make=`$as_echo "$2" | sed 's/+/p/g; s/[^a-zA-Z0-9_]/_/g'`
+-if eval "test \"\${ac_cv_prog_make_${ac_make}_set+set}\"" = set; then :
++if eval \${ac_cv_prog_make_${ac_make}_set+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   cat >conftest.make <<\_ACEOF
+@@ -2947,7 +2958,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking build system type" >&5
+ $as_echo_n "checking build system type... " >&6; }
+-if test "${ac_cv_build+set}" = set; then :
++if ${ac_cv_build+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_build_alias=$build_alias
+@@ -2981,7 +2992,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking host system type" >&5
+ $as_echo_n "checking host system type... " >&6; }
+-if test "${ac_cv_host+set}" = set; then :
++if ${ac_cv_host+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test "x$host_alias" = x; then
+@@ -3053,7 +3064,7 @@
+ set dummy ${ac_tool_prefix}gcc; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_CC+set}" = set; then :
++if ${ac_cv_prog_CC+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$CC"; then
+@@ -3093,7 +3104,7 @@
+ set dummy gcc; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_CC+set}" = set; then :
++if ${ac_cv_prog_ac_ct_CC+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_CC"; then
+@@ -3146,7 +3157,7 @@
+ set dummy ${ac_tool_prefix}cc; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_CC+set}" = set; then :
++if ${ac_cv_prog_CC+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$CC"; then
+@@ -3186,7 +3197,7 @@
+ set dummy cc; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_CC+set}" = set; then :
++if ${ac_cv_prog_CC+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$CC"; then
+@@ -3245,7 +3256,7 @@
+ set dummy $ac_tool_prefix$ac_prog; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_CC+set}" = set; then :
++if ${ac_cv_prog_CC+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$CC"; then
+@@ -3289,7 +3300,7 @@
+ set dummy $ac_prog; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_CC+set}" = set; then :
++if ${ac_cv_prog_ac_ct_CC+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_CC"; then
+@@ -3572,7 +3583,7 @@
+ ac_clean_files=$ac_clean_files_save
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for suffix of object files" >&5
+ $as_echo_n "checking for suffix of object files... " >&6; }
+-if test "${ac_cv_objext+set}" = set; then :
++if ${ac_cv_objext+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -3623,7 +3634,7 @@
+ ac_objext=$OBJEXT
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether we are using the GNU C compiler" >&5
+ $as_echo_n "checking whether we are using the GNU C compiler... " >&6; }
+-if test "${ac_cv_c_compiler_gnu+set}" = set; then :
++if ${ac_cv_c_compiler_gnu+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -3660,7 +3671,7 @@
+ ac_save_CFLAGS=$CFLAGS
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether $CC accepts -g" >&5
+ $as_echo_n "checking whether $CC accepts -g... " >&6; }
+-if test "${ac_cv_prog_cc_g+set}" = set; then :
++if ${ac_cv_prog_cc_g+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_save_c_werror_flag=$ac_c_werror_flag
+@@ -3738,7 +3749,7 @@
+ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $CC option to accept ISO C89" >&5
+ $as_echo_n "checking for $CC option to accept ISO C89... " >&6; }
+-if test "${ac_cv_prog_cc_c89+set}" = set; then :
++if ${ac_cv_prog_cc_c89+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_cv_prog_cc_c89=no
+@@ -3899,7 +3910,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking dependency style of $depcc" >&5
+ $as_echo_n "checking dependency style of $depcc... " >&6; }
+-if test "${am_cv_CC_dependencies_compiler_type+set}" = set; then :
++if ${am_cv_CC_dependencies_compiler_type+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -z "$AMDEP_TRUE" && test -f "$am_depcomp"; then
+@@ -4031,7 +4042,7 @@
+ fi
+ set dummy $CC; ac_cc=`$as_echo "$2" |
+ 		      sed 's/[^a-zA-Z0-9_]/_/g;s/^[0-9]/_/'`
+-if eval "test \"\${ac_cv_prog_cc_${ac_cc}_c_o+set}\"" = set; then :
++if eval \${ac_cv_prog_cc_${ac_cc}_c_o+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -4160,7 +4171,7 @@
+   CPP=
+ fi
+ if test -z "$CPP"; then
+-  if test "${ac_cv_prog_CPP+set}" = set; then :
++  if ${ac_cv_prog_CPP+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+       # Double quotes because CPP needs to be expanded
+@@ -4290,7 +4301,7 @@
+ $as_echo_n "checking whether ${MAKE-make} sets \$(MAKE)... " >&6; }
+ set x ${MAKE-make}
+ ac_make=`$as_echo "$2" | sed 's/+/p/g; s/[^a-zA-Z0-9_]/_/g'`
+-if eval "test \"\${ac_cv_prog_make_${ac_make}_set+set}\"" = set; then :
++if eval \${ac_cv_prog_make_${ac_make}_set+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   cat >conftest.make <<\_ACEOF
+@@ -4335,7 +4346,7 @@
+ set dummy $ac_prog; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_LEX+set}" = set; then :
++if ${ac_cv_prog_LEX+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$LEX"; then
+@@ -4405,7 +4416,7 @@
+   test $ac_status = 0; }
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking lex output file root" >&5
+ $as_echo_n "checking lex output file root... " >&6; }
+-if test "${ac_cv_prog_lex_root+set}" = set; then :
++if ${ac_cv_prog_lex_root+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+ 
+@@ -4424,7 +4435,7 @@
+ if test -z "${LEXLIB+set}"; then
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking lex library" >&5
+ $as_echo_n "checking lex library... " >&6; }
+-if test "${ac_cv_lib_lex+set}" = set; then :
++if ${ac_cv_lib_lex+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+ 
+@@ -4454,7 +4465,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether yytext is a pointer" >&5
+ $as_echo_n "checking whether yytext is a pointer... " >&6; }
+-if test "${ac_cv_prog_lex_yytext_pointer+set}" = set; then :
++if ${ac_cv_prog_lex_yytext_pointer+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   # POSIX says lex can declare yytext either as a pointer or an array; the
+@@ -4501,7 +4512,7 @@
+ set dummy ${ac_tool_prefix}pkg-config; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_path_PKG_CONFIG+set}" = set; then :
++if ${ac_cv_path_PKG_CONFIG+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   case $PKG_CONFIG in
+@@ -4544,7 +4555,7 @@
+ set dummy pkg-config; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_path_ac_pt_PKG_CONFIG+set}" = set; then :
++if ${ac_cv_path_ac_pt_PKG_CONFIG+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   case $ac_pt_PKG_CONFIG in
+@@ -4712,7 +4723,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for grep that handles long lines and -e" >&5
+ $as_echo_n "checking for grep that handles long lines and -e... " >&6; }
+-if test "${ac_cv_path_GREP+set}" = set; then :
++if ${ac_cv_path_GREP+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -z "$GREP"; then
+@@ -4775,7 +4786,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for egrep" >&5
+ $as_echo_n "checking for egrep... " >&6; }
+-if test "${ac_cv_path_EGREP+set}" = set; then :
++if ${ac_cv_path_EGREP+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if echo a | $GREP -E '(a|b)' >/dev/null 2>&1
+@@ -4842,7 +4853,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for ANSI C header files" >&5
+ $as_echo_n "checking for ANSI C header files... " >&6; }
+-if test "${ac_cv_header_stdc+set}" = set; then :
++if ${ac_cv_header_stdc+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -4970,7 +4981,7 @@
+ 
+ 
+ ac_fn_c_check_header_mongrel "$LINENO" "ifdhandler.h" "ac_cv_header_ifdhandler_h" "$ac_includes_default"
+-if test "x$ac_cv_header_ifdhandler_h" = x""yes; then :
++if test "x$ac_cv_header_ifdhandler_h" = xyes; then :
+ 
+ else
+   as_fn_error $? "$PCSC_ERROR_MSG" "$LINENO" 5
+@@ -4978,7 +4989,7 @@
+ 
+ 
+ ac_fn_c_check_header_mongrel "$LINENO" "reader.h" "ac_cv_header_reader_h" "$ac_includes_default"
+-if test "x$ac_cv_header_reader_h" = x""yes; then :
++if test "x$ac_cv_header_reader_h" = xyes; then :
+ 
+ else
+   as_fn_error $? "$PCSC_ERROR_MSG" "$LINENO" 5
+@@ -5016,7 +5027,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for a sed that does not truncate output" >&5
+ $as_echo_n "checking for a sed that does not truncate output... " >&6; }
+-if test "${ac_cv_path_SED+set}" = set; then :
++if ${ac_cv_path_SED+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+             ac_script=s/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/
+@@ -5098,7 +5109,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for fgrep" >&5
+ $as_echo_n "checking for fgrep... " >&6; }
+-if test "${ac_cv_path_FGREP+set}" = set; then :
++if ${ac_cv_path_FGREP+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if echo 'ab*c' | $GREP -F 'ab*c' >/dev/null 2>&1
+@@ -5229,7 +5240,7 @@
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for non-GNU ld" >&5
+ $as_echo_n "checking for non-GNU ld... " >&6; }
+ fi
+-if test "${lt_cv_path_LD+set}" = set; then :
++if ${lt_cv_path_LD+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -z "$LD"; then
+@@ -5269,7 +5280,7 @@
+ test -z "$LD" && as_fn_error $? "no acceptable ld found in \$PATH" "$LINENO" 5
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking if the linker ($LD) is GNU ld" >&5
+ $as_echo_n "checking if the linker ($LD) is GNU ld... " >&6; }
+-if test "${lt_cv_prog_gnu_ld+set}" = set; then :
++if ${lt_cv_prog_gnu_ld+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   # I'd rather use --version here, but apparently some GNU lds only accept -v.
+@@ -5296,7 +5307,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for BSD- or MS-compatible name lister (nm)" >&5
+ $as_echo_n "checking for BSD- or MS-compatible name lister (nm)... " >&6; }
+-if test "${lt_cv_path_NM+set}" = set; then :
++if ${lt_cv_path_NM+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$NM"; then
+@@ -5356,7 +5367,7 @@
+ set dummy $ac_tool_prefix$ac_prog; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_DUMPBIN+set}" = set; then :
++if ${ac_cv_prog_DUMPBIN+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$DUMPBIN"; then
+@@ -5400,7 +5411,7 @@
+ set dummy $ac_prog; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_DUMPBIN+set}" = set; then :
++if ${ac_cv_prog_ac_ct_DUMPBIN+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_DUMPBIN"; then
+@@ -5463,18 +5474,18 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking the name lister ($NM) interface" >&5
+ $as_echo_n "checking the name lister ($NM) interface... " >&6; }
+-if test "${lt_cv_nm_interface+set}" = set; then :
++if ${lt_cv_nm_interface+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   lt_cv_nm_interface="BSD nm"
+   echo "int some_variable = 0;" > conftest.$ac_ext
+-  (eval echo "\"\$as_me:5471: $ac_compile\"" >&5)
++  (eval echo "\"\$as_me:5483: $ac_compile\"" >&5)
+   (eval "$ac_compile" 2>conftest.err)
+   cat conftest.err >&5
+-  (eval echo "\"\$as_me:5474: $NM \\\"conftest.$ac_objext\\\"\"" >&5)
++  (eval echo "\"\$as_me:5486: $NM \\\"conftest.$ac_objext\\\"\"" >&5)
+   (eval "$NM \"conftest.$ac_objext\"" 2>conftest.err > conftest.out)
+   cat conftest.err >&5
+-  (eval echo "\"\$as_me:5477: output\"" >&5)
++  (eval echo "\"\$as_me:5489: output\"" >&5)
+   cat conftest.out >&5
+   if $GREP 'External.*some_variable' conftest.out > /dev/null; then
+     lt_cv_nm_interface="MS dumpbin"
+@@ -5487,7 +5498,7 @@
+ # find the maximum length of command line arguments
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking the maximum length of command line arguments" >&5
+ $as_echo_n "checking the maximum length of command line arguments... " >&6; }
+-if test "${lt_cv_sys_max_cmd_len+set}" = set; then :
++if ${lt_cv_sys_max_cmd_len+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+     i=0
+@@ -5679,7 +5690,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $LD option to reload object files" >&5
+ $as_echo_n "checking for $LD option to reload object files... " >&6; }
+-if test "${lt_cv_ld_reload_flag+set}" = set; then :
++if ${lt_cv_ld_reload_flag+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   lt_cv_ld_reload_flag='-r'
+@@ -5715,7 +5726,7 @@
+ set dummy ${ac_tool_prefix}objdump; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_OBJDUMP+set}" = set; then :
++if ${ac_cv_prog_OBJDUMP+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$OBJDUMP"; then
+@@ -5755,7 +5766,7 @@
+ set dummy objdump; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_OBJDUMP+set}" = set; then :
++if ${ac_cv_prog_ac_ct_OBJDUMP+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_OBJDUMP"; then
+@@ -5814,7 +5825,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking how to recognize dependent libraries" >&5
+ $as_echo_n "checking how to recognize dependent libraries... " >&6; }
+-if test "${lt_cv_deplibs_check_method+set}" = set; then :
++if ${lt_cv_deplibs_check_method+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   lt_cv_file_magic_cmd='$MAGIC_CMD'
+@@ -6030,7 +6041,7 @@
+ set dummy ${ac_tool_prefix}ar; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_AR+set}" = set; then :
++if ${ac_cv_prog_AR+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$AR"; then
+@@ -6070,7 +6081,7 @@
+ set dummy ar; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_AR+set}" = set; then :
++if ${ac_cv_prog_ac_ct_AR+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_AR"; then
+@@ -6135,7 +6146,7 @@
+ set dummy ${ac_tool_prefix}strip; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_STRIP+set}" = set; then :
++if ${ac_cv_prog_STRIP+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$STRIP"; then
+@@ -6175,7 +6186,7 @@
+ set dummy strip; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_STRIP+set}" = set; then :
++if ${ac_cv_prog_ac_ct_STRIP+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_STRIP"; then
+@@ -6234,7 +6245,7 @@
+ set dummy ${ac_tool_prefix}ranlib; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_RANLIB+set}" = set; then :
++if ${ac_cv_prog_RANLIB+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$RANLIB"; then
+@@ -6274,7 +6285,7 @@
+ set dummy ranlib; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_RANLIB+set}" = set; then :
++if ${ac_cv_prog_ac_ct_RANLIB+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_RANLIB"; then
+@@ -6391,7 +6402,7 @@
+ # Check for command to grab the raw symbol name followed by C symbol from nm.
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking command to parse $NM output from $compiler object" >&5
+ $as_echo_n "checking command to parse $NM output from $compiler object... " >&6; }
+-if test "${lt_cv_sys_global_symbol_pipe+set}" = set; then :
++if ${lt_cv_sys_global_symbol_pipe+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+ 
+@@ -6668,7 +6679,7 @@
+   ;;
+ *-*-irix6*)
+   # Find out which ABI we are using.
+-  echo '#line 6671 "configure"' > conftest.$ac_ext
++  echo '#line 6683 "configure"' > conftest.$ac_ext
+   if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_compile\""; } >&5
+   (eval $ac_compile) 2>&5
+   ac_status=$?
+@@ -6762,7 +6773,7 @@
+   CFLAGS="$CFLAGS -belf"
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether the C compiler needs -belf" >&5
+ $as_echo_n "checking whether the C compiler needs -belf... " >&6; }
+-if test "${lt_cv_cc_needs_belf+set}" = set; then :
++if ${lt_cv_cc_needs_belf+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_ext=c
+@@ -6838,7 +6849,7 @@
+ set dummy ${ac_tool_prefix}dsymutil; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_DSYMUTIL+set}" = set; then :
++if ${ac_cv_prog_DSYMUTIL+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$DSYMUTIL"; then
+@@ -6878,7 +6889,7 @@
+ set dummy dsymutil; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_DSYMUTIL+set}" = set; then :
++if ${ac_cv_prog_ac_ct_DSYMUTIL+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_DSYMUTIL"; then
+@@ -6930,7 +6941,7 @@
+ set dummy ${ac_tool_prefix}nmedit; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_NMEDIT+set}" = set; then :
++if ${ac_cv_prog_NMEDIT+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$NMEDIT"; then
+@@ -6970,7 +6981,7 @@
+ set dummy nmedit; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_NMEDIT+set}" = set; then :
++if ${ac_cv_prog_ac_ct_NMEDIT+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_NMEDIT"; then
+@@ -7022,7 +7033,7 @@
+ set dummy ${ac_tool_prefix}lipo; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_LIPO+set}" = set; then :
++if ${ac_cv_prog_LIPO+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$LIPO"; then
+@@ -7062,7 +7073,7 @@
+ set dummy lipo; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_LIPO+set}" = set; then :
++if ${ac_cv_prog_ac_ct_LIPO+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_LIPO"; then
+@@ -7114,7 +7125,7 @@
+ set dummy ${ac_tool_prefix}otool; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_OTOOL+set}" = set; then :
++if ${ac_cv_prog_OTOOL+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$OTOOL"; then
+@@ -7154,7 +7165,7 @@
+ set dummy otool; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_OTOOL+set}" = set; then :
++if ${ac_cv_prog_ac_ct_OTOOL+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_OTOOL"; then
+@@ -7206,7 +7217,7 @@
+ set dummy ${ac_tool_prefix}otool64; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_OTOOL64+set}" = set; then :
++if ${ac_cv_prog_OTOOL64+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$OTOOL64"; then
+@@ -7246,7 +7257,7 @@
+ set dummy otool64; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_ac_ct_OTOOL64+set}" = set; then :
++if ${ac_cv_prog_ac_ct_OTOOL64+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$ac_ct_OTOOL64"; then
+@@ -7321,7 +7332,7 @@
+ 
+     { $as_echo "$as_me:${as_lineno-$LINENO}: checking for -single_module linker flag" >&5
+ $as_echo_n "checking for -single_module linker flag... " >&6; }
+-if test "${lt_cv_apple_cc_single_mod+set}" = set; then :
++if ${lt_cv_apple_cc_single_mod+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   lt_cv_apple_cc_single_mod=no
+@@ -7350,7 +7361,7 @@
+ $as_echo "$lt_cv_apple_cc_single_mod" >&6; }
+     { $as_echo "$as_me:${as_lineno-$LINENO}: checking for -exported_symbols_list linker flag" >&5
+ $as_echo_n "checking for -exported_symbols_list linker flag... " >&6; }
+-if test "${lt_cv_ld_exported_symbols_list+set}" = set; then :
++if ${lt_cv_ld_exported_symbols_list+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   lt_cv_ld_exported_symbols_list=no
+@@ -7419,7 +7430,7 @@
+ do :
+   ac_fn_c_check_header_compile "$LINENO" "dlfcn.h" "ac_cv_header_dlfcn_h" "$ac_includes_default
+ "
+-if test "x$ac_cv_header_dlfcn_h" = x""yes; then :
++if test "x$ac_cv_header_dlfcn_h" = xyes; then :
+   cat >>confdefs.h <<_ACEOF
+ #define HAVE_DLFCN_H 1
+ _ACEOF
+@@ -7602,7 +7613,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for objdir" >&5
+ $as_echo_n "checking for objdir... " >&6; }
+-if test "${lt_cv_objdir+set}" = set; then :
++if ${lt_cv_objdir+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   rm -f .libs 2>/dev/null
+@@ -7710,7 +7721,7 @@
+   if test "$file_magic_cmd" = '$MAGIC_CMD'; then
+     { $as_echo "$as_me:${as_lineno-$LINENO}: checking for ${ac_tool_prefix}file" >&5
+ $as_echo_n "checking for ${ac_tool_prefix}file... " >&6; }
+-if test "${lt_cv_path_MAGIC_CMD+set}" = set; then :
++if ${lt_cv_path_MAGIC_CMD+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   case $MAGIC_CMD in
+@@ -7776,7 +7787,7 @@
+   if test -n "$ac_tool_prefix"; then
+     { $as_echo "$as_me:${as_lineno-$LINENO}: checking for file" >&5
+ $as_echo_n "checking for file... " >&6; }
+-if test "${lt_cv_path_MAGIC_CMD+set}" = set; then :
++if ${lt_cv_path_MAGIC_CMD+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   case $MAGIC_CMD in
+@@ -7913,7 +7924,7 @@
+ 
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking if $compiler supports -fno-rtti -fno-exceptions" >&5
+ $as_echo_n "checking if $compiler supports -fno-rtti -fno-exceptions... " >&6; }
+-if test "${lt_cv_prog_compiler_rtti_exceptions+set}" = set; then :
++if ${lt_cv_prog_compiler_rtti_exceptions+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   lt_cv_prog_compiler_rtti_exceptions=no
+@@ -7929,11 +7940,11 @@
+    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:7932: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:7944: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>conftest.err)
+    ac_status=$?
+    cat conftest.err >&5
+-   echo "$as_me:7936: \$? = $ac_status" >&5
++   echo "$as_me:7948: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s "$ac_outfile"; then
+      # The compiler can only warn and ignore the option if not recognized
+      # So say no if there are warnings other than the usual output.
+@@ -8252,7 +8263,7 @@
+ if test -n "$lt_prog_compiler_pic"; then
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking if $compiler PIC flag $lt_prog_compiler_pic works" >&5
+ $as_echo_n "checking if $compiler PIC flag $lt_prog_compiler_pic works... " >&6; }
+-if test "${lt_cv_prog_compiler_pic_works+set}" = set; then :
++if ${lt_cv_prog_compiler_pic_works+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   lt_cv_prog_compiler_pic_works=no
+@@ -8268,11 +8279,11 @@
+    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:8271: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:8283: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>conftest.err)
+    ac_status=$?
+    cat conftest.err >&5
+-   echo "$as_me:8275: \$? = $ac_status" >&5
++   echo "$as_me:8287: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s "$ac_outfile"; then
+      # The compiler can only warn and ignore the option if not recognized
+      # So say no if there are warnings other than the usual output.
+@@ -8311,7 +8322,7 @@
+ wl=$lt_prog_compiler_wl eval lt_tmp_static_flag=\"$lt_prog_compiler_static\"
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking if $compiler static flag $lt_tmp_static_flag works" >&5
+ $as_echo_n "checking if $compiler static flag $lt_tmp_static_flag works... " >&6; }
+-if test "${lt_cv_prog_compiler_static_works+set}" = set; then :
++if ${lt_cv_prog_compiler_static_works+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   lt_cv_prog_compiler_static_works=no
+@@ -8354,7 +8365,7 @@
+ 
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking if $compiler supports -c -o file.$ac_objext" >&5
+ $as_echo_n "checking if $compiler supports -c -o file.$ac_objext... " >&6; }
+-if test "${lt_cv_prog_compiler_c_o+set}" = set; then :
++if ${lt_cv_prog_compiler_c_o+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   lt_cv_prog_compiler_c_o=no
+@@ -8373,11 +8384,11 @@
+    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:8376: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:8388: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>out/conftest.err)
+    ac_status=$?
+    cat out/conftest.err >&5
+-   echo "$as_me:8380: \$? = $ac_status" >&5
++   echo "$as_me:8392: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s out/conftest2.$ac_objext
+    then
+      # The compiler can only warn and ignore the option if not recognized
+@@ -8409,7 +8420,7 @@
+ 
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking if $compiler supports -c -o file.$ac_objext" >&5
+ $as_echo_n "checking if $compiler supports -c -o file.$ac_objext... " >&6; }
+-if test "${lt_cv_prog_compiler_c_o+set}" = set; then :
++if ${lt_cv_prog_compiler_c_o+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   lt_cv_prog_compiler_c_o=no
+@@ -8428,11 +8439,11 @@
+    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:8431: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:8443: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>out/conftest.err)
+    ac_status=$?
+    cat out/conftest.err >&5
+-   echo "$as_me:8435: \$? = $ac_status" >&5
++   echo "$as_me:8447: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s out/conftest2.$ac_objext
+    then
+      # The compiler can only warn and ignore the option if not recognized
+@@ -10554,7 +10565,7 @@
+   # if libdl is installed we need to link against it
+     { $as_echo "$as_me:${as_lineno-$LINENO}: checking for dlopen in -ldl" >&5
+ $as_echo_n "checking for dlopen in -ldl... " >&6; }
+-if test "${ac_cv_lib_dl_dlopen+set}" = set; then :
++if ${ac_cv_lib_dl_dlopen+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+@@ -10588,7 +10599,7 @@
+ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_dl_dlopen" >&5
+ $as_echo "$ac_cv_lib_dl_dlopen" >&6; }
+-if test "x$ac_cv_lib_dl_dlopen" = x""yes; then :
++if test "x$ac_cv_lib_dl_dlopen" = xyes; then :
+   lt_cv_dlopen="dlopen" lt_cv_dlopen_libs="-ldl"
+ else
+ 
+@@ -10602,12 +10613,12 @@
+ 
+   *)
+     ac_fn_c_check_func "$LINENO" "shl_load" "ac_cv_func_shl_load"
+-if test "x$ac_cv_func_shl_load" = x""yes; then :
++if test "x$ac_cv_func_shl_load" = xyes; then :
+   lt_cv_dlopen="shl_load"
+ else
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for shl_load in -ldld" >&5
+ $as_echo_n "checking for shl_load in -ldld... " >&6; }
+-if test "${ac_cv_lib_dld_shl_load+set}" = set; then :
++if ${ac_cv_lib_dld_shl_load+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+@@ -10641,16 +10652,16 @@
+ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_dld_shl_load" >&5
+ $as_echo "$ac_cv_lib_dld_shl_load" >&6; }
+-if test "x$ac_cv_lib_dld_shl_load" = x""yes; then :
++if test "x$ac_cv_lib_dld_shl_load" = xyes; then :
+   lt_cv_dlopen="shl_load" lt_cv_dlopen_libs="-ldld"
+ else
+   ac_fn_c_check_func "$LINENO" "dlopen" "ac_cv_func_dlopen"
+-if test "x$ac_cv_func_dlopen" = x""yes; then :
++if test "x$ac_cv_func_dlopen" = xyes; then :
+   lt_cv_dlopen="dlopen"
+ else
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for dlopen in -ldl" >&5
+ $as_echo_n "checking for dlopen in -ldl... " >&6; }
+-if test "${ac_cv_lib_dl_dlopen+set}" = set; then :
++if ${ac_cv_lib_dl_dlopen+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+@@ -10684,12 +10695,12 @@
+ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_dl_dlopen" >&5
+ $as_echo "$ac_cv_lib_dl_dlopen" >&6; }
+-if test "x$ac_cv_lib_dl_dlopen" = x""yes; then :
++if test "x$ac_cv_lib_dl_dlopen" = xyes; then :
+   lt_cv_dlopen="dlopen" lt_cv_dlopen_libs="-ldl"
+ else
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for dlopen in -lsvld" >&5
+ $as_echo_n "checking for dlopen in -lsvld... " >&6; }
+-if test "${ac_cv_lib_svld_dlopen+set}" = set; then :
++if ${ac_cv_lib_svld_dlopen+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+@@ -10723,12 +10734,12 @@
+ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_svld_dlopen" >&5
+ $as_echo "$ac_cv_lib_svld_dlopen" >&6; }
+-if test "x$ac_cv_lib_svld_dlopen" = x""yes; then :
++if test "x$ac_cv_lib_svld_dlopen" = xyes; then :
+   lt_cv_dlopen="dlopen" lt_cv_dlopen_libs="-lsvld"
+ else
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for dld_link in -ldld" >&5
+ $as_echo_n "checking for dld_link in -ldld... " >&6; }
+-if test "${ac_cv_lib_dld_dld_link+set}" = set; then :
++if ${ac_cv_lib_dld_dld_link+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+@@ -10762,7 +10773,7 @@
+ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_dld_dld_link" >&5
+ $as_echo "$ac_cv_lib_dld_dld_link" >&6; }
+-if test "x$ac_cv_lib_dld_dld_link" = x""yes; then :
++if test "x$ac_cv_lib_dld_dld_link" = xyes; then :
+   lt_cv_dlopen="dld_link" lt_cv_dlopen_libs="-ldld"
+ fi
+ 
+@@ -10803,7 +10814,7 @@
+ 
+     { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether a program can dlopen itself" >&5
+ $as_echo_n "checking whether a program can dlopen itself... " >&6; }
+-if test "${lt_cv_dlopen_self+set}" = set; then :
++if ${lt_cv_dlopen_self+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   	  if test "$cross_compiling" = yes; then :
+@@ -10812,7 +10823,7 @@
+   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+   lt_status=$lt_dlunknown
+   cat > conftest.$ac_ext <<_LT_EOF
+-#line 10815 "configure"
++#line 10827 "configure"
+ #include "confdefs.h"
+ 
+ #if HAVE_DLFCN_H
+@@ -10899,7 +10910,7 @@
+       wl=$lt_prog_compiler_wl eval LDFLAGS=\"\$LDFLAGS $lt_prog_compiler_static\"
+       { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether a statically linked program can dlopen itself" >&5
+ $as_echo_n "checking whether a statically linked program can dlopen itself... " >&6; }
+-if test "${lt_cv_dlopen_self_static+set}" = set; then :
++if ${lt_cv_dlopen_self_static+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   	  if test "$cross_compiling" = yes; then :
+@@ -10908,7 +10919,7 @@
+   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+   lt_status=$lt_dlunknown
+   cat > conftest.$ac_ext <<_LT_EOF
+-#line 10911 "configure"
++#line 10923 "configure"
+ #include "confdefs.h"
+ 
+ #if HAVE_DLFCN_H
+@@ -11143,7 +11154,7 @@
+ # Checks for header files.
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for ANSI C header files" >&5
+ $as_echo_n "checking for ANSI C header files... " >&6; }
+-if test "${ac_cv_header_stdc+set}" = set; then :
++if ${ac_cv_header_stdc+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -11272,7 +11283,7 @@
+ # Checks for typedefs, structures, and compiler characteristics.
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for an ANSI C-conforming const" >&5
+ $as_echo_n "checking for an ANSI C-conforming const... " >&6; }
+-if test "${ac_cv_c_const+set}" = set; then :
++if ${ac_cv_c_const+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -11351,7 +11362,7 @@
+ fi
+ 
+ ac_fn_c_check_type "$LINENO" "size_t" "ac_cv_type_size_t" "$ac_includes_default"
+-if test "x$ac_cv_type_size_t" = x""yes; then :
++if test "x$ac_cv_type_size_t" = xyes; then :
+ 
+ else
+ 
+@@ -11363,7 +11374,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether time.h and sys/time.h may both be included" >&5
+ $as_echo_n "checking whether time.h and sys/time.h may both be included... " >&6; }
+-if test "${ac_cv_header_time+set}" = set; then :
++if ${ac_cv_header_time+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -11506,7 +11517,7 @@
+ set dummy libusb-config; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_LIBUSBCONFIG+set}" = set; then :
++if ${ac_cv_prog_LIBUSBCONFIG+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$LIBUSBCONFIG"; then
+@@ -11556,7 +11567,7 @@
+ set dummy libusb-config; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_LIBUSBCONFIG+set}" = set; then :
++if ${ac_cv_prog_LIBUSBCONFIG+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$LIBUSBCONFIG"; then
+@@ -11617,7 +11628,7 @@
+ 	for ac_header in libusb.h
+ do :
+   ac_fn_c_check_header_mongrel "$LINENO" "libusb.h" "ac_cv_header_libusb_h" "$ac_includes_default"
+-if test "x$ac_cv_header_libusb_h" = x""yes; then :
++if test "x$ac_cv_header_libusb_h" = xyes; then :
+   cat >>confdefs.h <<_ACEOF
+ #define HAVE_LIBUSB_H 1
+ _ACEOF
+@@ -11844,7 +11855,7 @@
+ set dummy pthread-config; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_acx_pthread_config+set}" = set; then :
++if ${ac_cv_prog_acx_pthread_config+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$acx_pthread_config"; then
+@@ -12000,7 +12011,7 @@
+ set dummy $ac_prog; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+-if test "${ac_cv_prog_PTHREAD_CC+set}" = set; then :
++if ${ac_cv_prog_PTHREAD_CC+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   if test -n "$PTHREAD_CC"; then
+@@ -12219,6 +12230,20 @@
+ 
+ fi
+ 
++# --enable-mwpatch
++# Check whether --enable-mwpatch was given.
++if test "${enable_mwpatch+set}" = set; then :
++  enableval=$enable_mwpatch;  use_mwpatch="${enableval}"
++fi
++
++
++if test x$use_mwpatch = xyes; then
++
++$as_echo "#define _MW_PATCH_ 1" >>confdefs.h
++
++fi
++
++
+ # Setup dist stuff
+ 
+ 
+@@ -12389,10 +12414,21 @@
+      :end' >>confcache
+ if diff "$cache_file" confcache >/dev/null 2>&1; then :; else
+   if test -w "$cache_file"; then
+-    test "x$cache_file" != "x/dev/null" &&
++    if test "x$cache_file" != "x/dev/null"; then
+       { $as_echo "$as_me:${as_lineno-$LINENO}: updating cache $cache_file" >&5
+ $as_echo "$as_me: updating cache $cache_file" >&6;}
+-    cat confcache >$cache_file
++      if test ! -f "$cache_file" || test -h "$cache_file"; then
++	cat confcache >"$cache_file"
++      else
++        case $cache_file in #(
++        */* | ?:*)
++	  mv -f confcache "$cache_file"$$ &&
++	  mv -f "$cache_file"$$ "$cache_file" ;; #(
++        *)
++	  mv -f confcache "$cache_file" ;;
++	esac
++      fi
++    fi
+   else
+     { $as_echo "$as_me:${as_lineno-$LINENO}: not updating unwritable cache $cache_file" >&5
+ $as_echo "$as_me: not updating unwritable cache $cache_file" >&6;}
+@@ -12456,7 +12492,7 @@
+ Usually this means the macro was only invoked conditionally." "$LINENO" 5
+ fi
+ 
+-: ${CONFIG_STATUS=./config.status}
++: "${CONFIG_STATUS=./config.status}"
+ ac_write_fail=0
+ ac_clean_files_save=$ac_clean_files
+ ac_clean_files="$ac_clean_files $CONFIG_STATUS"
+@@ -12557,6 +12593,7 @@
+ IFS=" ""	$as_nl"
+ 
+ # Find who we are.  Look in the path if we contain no directory separator.
++as_myself=
+ case $0 in #((
+   *[\\/]* ) as_myself=$0 ;;
+   *) as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -12864,7 +12901,7 @@
+ # values after options handling.
+ ac_log="
+ This file was extended by ccid $as_me 1.4.3, which was
+-generated by GNU Autoconf 2.67.  Invocation command line was
++generated by GNU Autoconf 2.68.  Invocation command line was
+ 
+   CONFIG_FILES    = $CONFIG_FILES
+   CONFIG_HEADERS  = $CONFIG_HEADERS
+@@ -12930,7 +12967,7 @@
+ ac_cs_config="`$as_echo "$ac_configure_args" | sed 's/^ //; s/[\\""\`\$]/\\\\&/g'`"
+ ac_cs_version="\\
+ ccid config.status 1.4.3
+-configured by $0, generated by GNU Autoconf 2.67,
++configured by $0, generated by GNU Autoconf 2.68,
+   with options \\"\$ac_cs_config\\"
+ 
+ Copyright (C) 2010 Free Software Foundation, Inc.
+@@ -13348,9 +13385,10 @@
+ # after its creation but before its name has been assigned to `$tmp'.
+ $debug ||
+ {
+-  tmp=
++  tmp= ac_tmp=
+   trap 'exit_status=$?
+-  { test -z "$tmp" || test ! -d "$tmp" || rm -fr "$tmp"; } && exit $exit_status
++  : "${ac_tmp:=$tmp}"
++  { test ! -d "$ac_tmp" || rm -fr "$ac_tmp"; } && exit $exit_status
+ ' 0
+   trap 'as_fn_exit 1' 1 2 13 15
+ }
+@@ -13358,12 +13396,13 @@
+ 
+ {
+   tmp=`(umask 077 && mktemp -d "./confXXXXXX") 2>/dev/null` &&
+-  test -n "$tmp" && test -d "$tmp"
++  test -d "$tmp"
+ }  ||
+ {
+   tmp=./conf$$-$RANDOM
+   (umask 077 && mkdir "$tmp")
+ } || as_fn_error $? "cannot create a temporary directory in ." "$LINENO" 5
++ac_tmp=$tmp
+ 
+ # Set up the scripts for CONFIG_FILES section.
+ # No need to generate them if there are no CONFIG_FILES.
+@@ -13385,7 +13424,7 @@
+   ac_cs_awk_cr=$ac_cr
+ fi
+ 
+-echo 'BEGIN {' >"$tmp/subs1.awk" &&
++echo 'BEGIN {' >"$ac_tmp/subs1.awk" &&
+ _ACEOF
+ 
+ 
+@@ -13413,7 +13452,7 @@
+ rm -f conf$$subs.sh
+ 
+ cat >>$CONFIG_STATUS <<_ACEOF || ac_write_fail=1
+-cat >>"\$tmp/subs1.awk" <<\\_ACAWK &&
++cat >>"\$ac_tmp/subs1.awk" <<\\_ACAWK &&
+ _ACEOF
+ sed -n '
+ h
+@@ -13461,7 +13500,7 @@
+ rm -f conf$$subs.awk
+ cat >>$CONFIG_STATUS <<_ACEOF || ac_write_fail=1
+ _ACAWK
+-cat >>"\$tmp/subs1.awk" <<_ACAWK &&
++cat >>"\$ac_tmp/subs1.awk" <<_ACAWK &&
+   for (key in S) S_is_set[key] = 1
+   FS = ""
+ 
+@@ -13493,7 +13532,7 @@
+   sed "s/$ac_cr\$//; s/$ac_cr/$ac_cs_awk_cr/g"
+ else
+   cat
+-fi < "$tmp/subs1.awk" > "$tmp/subs.awk" \
++fi < "$ac_tmp/subs1.awk" > "$ac_tmp/subs.awk" \
+   || as_fn_error $? "could not setup config files machinery" "$LINENO" 5
+ _ACEOF
+ 
+@@ -13527,7 +13566,7 @@
+ # No need to generate them if there are no CONFIG_HEADERS.
+ # This happens for instance with `./config.status Makefile'.
+ if test -n "$CONFIG_HEADERS"; then
+-cat >"$tmp/defines.awk" <<\_ACAWK ||
++cat >"$ac_tmp/defines.awk" <<\_ACAWK ||
+ BEGIN {
+ _ACEOF
+ 
+@@ -13539,8 +13578,8 @@
+ # handling of long lines.
+ ac_delim='%!_!# '
+ for ac_last_try in false false :; do
+-  ac_t=`sed -n "/$ac_delim/p" confdefs.h`
+-  if test -z "$ac_t"; then
++  ac_tt=`sed -n "/$ac_delim/p" confdefs.h`
++  if test -z "$ac_tt"; then
+     break
+   elif $ac_last_try; then
+     as_fn_error $? "could not make $CONFIG_HEADERS" "$LINENO" 5
+@@ -13660,7 +13699,7 @@
+     for ac_f
+     do
+       case $ac_f in
+-      -) ac_f="$tmp/stdin";;
++      -) ac_f="$ac_tmp/stdin";;
+       *) # Look for the file first in the build tree, then in the source tree
+ 	 # (if the path is not absolute).  The absolute path cannot be DOS-style,
+ 	 # because $ac_f cannot contain `:'.
+@@ -13695,7 +13734,7 @@
+     esac
+ 
+     case $ac_tag in
+-    *:-:* | *:-) cat >"$tmp/stdin" \
++    *:-:* | *:-) cat >"$ac_tmp/stdin" \
+       || as_fn_error $? "could not create $ac_file" "$LINENO" 5  ;;
+     esac
+     ;;
+@@ -13832,21 +13871,22 @@
+ s&@MKDIR_P@&$ac_MKDIR_P&;t t
+ $ac_datarootdir_hack
+ "
+-eval sed \"\$ac_sed_extra\" "$ac_file_inputs" | $AWK -f "$tmp/subs.awk" >$tmp/out \
+-  || as_fn_error $? "could not create $ac_file" "$LINENO" 5
++eval sed \"\$ac_sed_extra\" "$ac_file_inputs" | $AWK -f "$ac_tmp/subs.awk" \
++  >$ac_tmp/out || as_fn_error $? "could not create $ac_file" "$LINENO" 5
+ 
+ test -z "$ac_datarootdir_hack$ac_datarootdir_seen" &&
+-  { ac_out=`sed -n '/\${datarootdir}/p' "$tmp/out"`; test -n "$ac_out"; } &&
+-  { ac_out=`sed -n '/^[	 ]*datarootdir[	 ]*:*=/p' "$tmp/out"`; test -z "$ac_out"; } &&
++  { ac_out=`sed -n '/\${datarootdir}/p' "$ac_tmp/out"`; test -n "$ac_out"; } &&
++  { ac_out=`sed -n '/^[	 ]*datarootdir[	 ]*:*=/p' \
++      "$ac_tmp/out"`; test -z "$ac_out"; } &&
+   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: $ac_file contains a reference to the variable \`datarootdir'
+ which seems to be undefined.  Please make sure it is defined" >&5
+ $as_echo "$as_me: WARNING: $ac_file contains a reference to the variable \`datarootdir'
+ which seems to be undefined.  Please make sure it is defined" >&2;}
+ 
+-  rm -f "$tmp/stdin"
++  rm -f "$ac_tmp/stdin"
+   case $ac_file in
+-  -) cat "$tmp/out" && rm -f "$tmp/out";;
+-  *) rm -f "$ac_file" && mv "$tmp/out" "$ac_file";;
++  -) cat "$ac_tmp/out" && rm -f "$ac_tmp/out";;
++  *) rm -f "$ac_file" && mv "$ac_tmp/out" "$ac_file";;
+   esac \
+   || as_fn_error $? "could not create $ac_file" "$LINENO" 5
+  ;;
+@@ -13857,20 +13897,20 @@
+   if test x"$ac_file" != x-; then
+     {
+       $as_echo "/* $configure_input  */" \
+-      && eval '$AWK -f "$tmp/defines.awk"' "$ac_file_inputs"
+-    } >"$tmp/config.h" \
++      && eval '$AWK -f "$ac_tmp/defines.awk"' "$ac_file_inputs"
++    } >"$ac_tmp/config.h" \
+       || as_fn_error $? "could not create $ac_file" "$LINENO" 5
+-    if diff "$ac_file" "$tmp/config.h" >/dev/null 2>&1; then
++    if diff "$ac_file" "$ac_tmp/config.h" >/dev/null 2>&1; then
+       { $as_echo "$as_me:${as_lineno-$LINENO}: $ac_file is unchanged" >&5
+ $as_echo "$as_me: $ac_file is unchanged" >&6;}
+     else
+       rm -f "$ac_file"
+-      mv "$tmp/config.h" "$ac_file" \
++      mv "$ac_tmp/config.h" "$ac_file" \
+ 	|| as_fn_error $? "could not create $ac_file" "$LINENO" 5
+     fi
+   else
+     $as_echo "/* $configure_input  */" \
+-      && eval '$AWK -f "$tmp/defines.awk"' "$ac_file_inputs" \
++      && eval '$AWK -f "$ac_tmp/defines.awk"' "$ac_file_inputs" \
+       || as_fn_error $? "could not create -" "$LINENO" 5
+   fi
+ # Compute "$ac_file"'s index in $config_headers.
+diff -NurBbw ccid-1.4.3/configure.in ccid-1.4.3-morpho/configure.in
+--- ccid-1.4.3/configure.in	2011-04-02 20:47:15.000000000 +0200
++++ ccid-1.4.3-morpho/configure.in	2011-06-21 17:50:48.000000000 +0200
+@@ -247,6 +247,16 @@
+   AC_DEFINE(NO_LOG, 1, [Disable logging support])
+ fi
+ 
++# --enable-mwpatch
++AC_ARG_ENABLE(mwpatch,
++  AC_HELP_STRING([--enable-mwpatch], [enable the middleware patch where the getdatarates is not called)]),
++  [ use_mwpatch="${enableval}" ])
++
++if test x$use_mwpatch = xyes; then
++  AC_DEFINE(_MW_PATCH_, 1, [call to getdatarates disabled])
++fi
++
++
+ # Setup dist stuff
+ AC_SUBST(ac_aux_dir)
+ AC_SUBST(bundle)
+diff -NurBbw ccid-1.4.3/contrib/Kobil_mIDentity_switch/Makefile.in ccid-1.4.3-morpho/contrib/Kobil_mIDentity_switch/Makefile.in
+--- ccid-1.4.3/contrib/Kobil_mIDentity_switch/Makefile.in	2011-04-02 20:48:19.000000000 +0200
++++ ccid-1.4.3-morpho/contrib/Kobil_mIDentity_switch/Makefile.in	2011-06-21 17:50:48.000000000 +0200
+@@ -236,9 +236,9 @@
+ 	      exit 1;; \
+ 	  esac; \
+ 	done; \
+-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign contrib/Kobil_mIDentity_switch/Makefile'; \
++	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu contrib/Kobil_mIDentity_switch/Makefile'; \
+ 	$(am__cd) $(top_srcdir) && \
+-	  $(AUTOMAKE) --foreign contrib/Kobil_mIDentity_switch/Makefile
++	  $(AUTOMAKE) --gnu contrib/Kobil_mIDentity_switch/Makefile
+ .PRECIOUS: Makefile
+ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
+ 	@case '$?' in \
+diff -NurBbw ccid-1.4.3/contrib/Makefile.in ccid-1.4.3-morpho/contrib/Makefile.in
+--- ccid-1.4.3/contrib/Makefile.in	2011-04-02 20:48:19.000000000 +0200
++++ ccid-1.4.3-morpho/contrib/Makefile.in	2011-06-21 17:50:48.000000000 +0200
+@@ -242,9 +242,9 @@
+ 	      exit 1;; \
+ 	  esac; \
+ 	done; \
+-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign contrib/Makefile'; \
++	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu contrib/Makefile'; \
+ 	$(am__cd) $(top_srcdir) && \
+-	  $(AUTOMAKE) --foreign contrib/Makefile
++	  $(AUTOMAKE) --gnu contrib/Makefile
+ .PRECIOUS: Makefile
+ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
+ 	@case '$?' in \
+diff -NurBbw ccid-1.4.3/contrib/RSA_SecurID/Makefile.in ccid-1.4.3-morpho/contrib/RSA_SecurID/Makefile.in
+--- ccid-1.4.3/contrib/RSA_SecurID/Makefile.in	2011-04-02 20:48:19.000000000 +0200
++++ ccid-1.4.3-morpho/contrib/RSA_SecurID/Makefile.in	2011-06-21 17:50:48.000000000 +0200
+@@ -233,9 +233,9 @@
+ 	      exit 1;; \
+ 	  esac; \
+ 	done; \
+-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign contrib/RSA_SecurID/Makefile'; \
++	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu contrib/RSA_SecurID/Makefile'; \
+ 	$(am__cd) $(top_srcdir) && \
+-	  $(AUTOMAKE) --foreign contrib/RSA_SecurID/Makefile
++	  $(AUTOMAKE) --gnu contrib/RSA_SecurID/Makefile
+ .PRECIOUS: Makefile
+ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
+ 	@case '$?' in \
+diff -NurBbw ccid-1.4.3/examples/Makefile.in ccid-1.4.3-morpho/examples/Makefile.in
+--- ccid-1.4.3/examples/Makefile.in	2011-04-02 20:48:19.000000000 +0200
++++ ccid-1.4.3-morpho/examples/Makefile.in	2011-06-21 17:50:48.000000000 +0200
+@@ -233,9 +233,9 @@
+ 	      exit 1;; \
+ 	  esac; \
+ 	done; \
+-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign examples/Makefile'; \
++	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu examples/Makefile'; \
+ 	$(am__cd) $(top_srcdir) && \
+-	  $(AUTOMAKE) --foreign examples/Makefile
++	  $(AUTOMAKE) --gnu examples/Makefile
+ .PRECIOUS: Makefile
+ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
+ 	@case '$?' in \
+diff -NurBbw ccid-1.4.3/m4/Makefile.in ccid-1.4.3-morpho/m4/Makefile.in
+--- ccid-1.4.3/m4/Makefile.in	2011-04-02 20:48:19.000000000 +0200
++++ ccid-1.4.3-morpho/m4/Makefile.in	2011-06-21 17:50:48.000000000 +0200
+@@ -203,9 +203,9 @@
+ 	      exit 1;; \
+ 	  esac; \
+ 	done; \
+-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign m4/Makefile'; \
++	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu m4/Makefile'; \
+ 	$(am__cd) $(top_srcdir) && \
+-	  $(AUTOMAKE) --foreign m4/Makefile
++	  $(AUTOMAKE) --gnu m4/Makefile
+ .PRECIOUS: Makefile
+ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
+ 	@case '$?' in \
+diff -NurBbw ccid-1.4.3/readers/Makefile.am ccid-1.4.3-morpho/readers/Makefile.am
+--- ccid-1.4.3/readers/Makefile.am	2010-02-09 22:23:50.000000000 +0100
++++ ccid-1.4.3-morpho/readers/Makefile.am	2011-06-21 17:50:48.000000000 +0200
+@@ -1,3 +1,3 @@
+ # $Id: ccid-morpho-v7-2.patch,v 1.1 2011-08-19 08:41:45 MPH\gt218837 Exp $
+ 
+-EXTRA_DIST = supported_readers.txt
++EXTRA_DIST = supported_readers.txt supported_readers_morpho.txt
+diff -NurBbw ccid-1.4.3/readers/Makefile.in ccid-1.4.3-morpho/readers/Makefile.in
+--- ccid-1.4.3/readers/Makefile.in	2011-04-02 20:48:19.000000000 +0200
++++ ccid-1.4.3-morpho/readers/Makefile.in	2011-06-21 17:50:48.000000000 +0200
+@@ -190,7 +190,7 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ usbdropdir = @usbdropdir@
+-EXTRA_DIST = supported_readers.txt
++EXTRA_DIST = supported_readers.txt supported_readers_morpho.txt
+ all: all-am
+ 
+ .SUFFIXES:
+@@ -203,9 +203,9 @@
+ 	      exit 1;; \
+ 	  esac; \
+ 	done; \
+-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign readers/Makefile'; \
++	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu readers/Makefile'; \
+ 	$(am__cd) $(top_srcdir) && \
+-	  $(AUTOMAKE) --foreign readers/Makefile
++	  $(AUTOMAKE) --gnu readers/Makefile
+ .PRECIOUS: Makefile
+ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
+ 	@case '$?' in \
+diff -NurBbw ccid-1.4.3/readers/supported_readers_morpho.txt ccid-1.4.3-morpho/readers/supported_readers_morpho.txt
+--- ccid-1.4.3/readers/supported_readers_morpho.txt	1970-01-01 01:00:00.000000000 +0100
++++ ccid-1.4.3-morpho/readers/supported_readers_morpho.txt	2011-06-21 17:50:48.000000000 +0200
+@@ -0,0 +1,10 @@
++# list of readers supported by the CCID driver
++# $Id: ccid-morpho-v7-2.patch,v 1.1 2011-08-19 08:41:45 MPH\gt218837 Exp $
++#
++# Added dom : 3 usb token
++
++# Morpho 
++0x079B:0x008F:MORPHO TOKEN E2
++0x6767:0x0104:MORPHO TOKEN EM
++0x1A6F:0x0104:MORPHO TOKEN EM
++
+diff -NurBbw ccid-1.4.3/src/Info.plist.src_morpho ccid-1.4.3-morpho/src/Info.plist.src_morpho
+--- ccid-1.4.3/src/Info.plist.src_morpho	1970-01-01 01:00:00.000000000 +0100
++++ ccid-1.4.3-morpho/src/Info.plist.src_morpho	2011-06-21 17:50:48.000000000 +0200
+@@ -0,0 +1,123 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
++<plist version="1.0">
++<dict>
++	<key>CFBundleDevelopmentRegion</key>
++	<string>English</string>
++	<key>CFBundleExecutable</key>
++	<string>MAGIC_BUNDLE</string>
++	<key>CFBundleIdentifier</key>
++	<string>org.debian.alioth.pcsclite.smartcardccid</string>
++	<key>CFBundleInfoDictionaryVersion</key>
++	<string>6.0</string>
++	MAGIC_CLASS
++	<key>CFBundlePackageType</key>
++	<string>BNDL</string>
++	<key>CFBundleShortVersionString</key>
++	<string>MAGIC_VERSION</string>
++	<key>CFBundleSignature</key>
++	<string>????</string>
++	<key>CFBundleVersion</key>
++	<string>0.0.1d1</string>
++	<key>ifdCapabilities</key>
++	<string>0x00000000</string>
++
++	<!-- Possible values for ifdCapabilities bits
++	1: IFD_GENERATE_HOTPLUG
++	   plugging the reader calls pcscd \-\-hotplug
++
++	Default value is 0x00000000
++	-->
++
++	<key>ifdProtocolSupport</key>
++	<string>0x00000001</string>
++	<key>ifdVersionNumber</key>
++	<string>0x00000001</string>
++
++	<key>ifdLogLevel</key>
++	<string>0x0003</string>
++
++	<!-- Possible values for ifdLogLevel
++	1: CRITICAL  important error messages
++	2: INFO      informative messages like what reader was detected
++	4: COMM      a dump of all the bytes exchanged between the host and
++	             the reader
++	8: PERIODIC  periodic info when pcscd test if a card is present
++	             (every 1/10 of a second)
++
++	The final value is a OR of these values
++
++	Default value: 3 (CRITICAL + INFO)
++	-->
++
++	<key>ifdDriverOptions</key>
++	<string>0x0000</string>
++
++	<!-- Possible values for ifdDriverOptions
++	1: DRIVER_OPTION_CCID_EXCHANGE_AUTHORIZED
++		the CCID Exchange command is allowed. You can use it through
++		SCardControl(hCard, IOCTL_SMARTCARD_VENDOR_IFD_EXCHANGE, ...)
++
++	2: DRIVER_OPTION_GEMPC_TWIN_KEY_APDU
++		If set the GemPC Twin and GemPC Key readers with be configured
++		so that the T=1 TPDU protocol is done by the firmware instead of
++		the driver.
++		This switches the reader in APDU mode and also in EMV mode so
++		may not work with non EMV cards.
++
++	4: DRIVER_OPTION_USE_BOGUS_FIRMWARE
++		Some reader firmwares have bugs. By default the driver refuses
++		to work with such firmware versions. If your reader is rejected
++		because of the firmware (log message: "Firmware (x.y) is
++		bogus!") you can:
++		- upgrade your reader firmware (not all readers can do that)
++		or
++		- get another reader with a new/bugfree firmware
++		or
++		- activate this option but you will have problems depending on
++		  the bug
++
++	8: DRIVER_OPTION_RESET_ON_CLOSE
++		This option may be required on Linux 2.4 so that the
++		device reset if sequencial (bSeq) counter and can be
++		reused if pcscd restart. Otherwise the reader needs to
++		be unplugged/replugged.
++
++	bits 4 & 5: (values 0, 16, 32, 48)
++	  0: power on the card at 5V (default value)
++	 16: power on the card at 3V and then, if 3V fails use 5V
++	 32: power on the card at 1.8V, then 3V and then 5V
++	 48: let the reader decide
++
++	Default value: 0
++	-->
++
++	<key>CFBundleExecutable</key>
++	<string>MAGIC_TARGET</string>
++
++	<key>ifdManufacturerString</key>
++	<string>ypsID Morpho-eDocument (support@ypsid.com)</string>
++
++	<key>ifdProductString</key>
++	<string>Generic CCID driver 1.4.3 ypsID mod v7</string>
++
++	<key>ifdVendorID</key>
++	<array>
++		MAGIC_VENDOR
++	</array>
++
++	<key>ifdProductID</key>
++	<array>
++		MAGIC_PRODUCT
++	</array>
++
++	<key>ifdFriendlyName</key>
++	<array>
++		MAGIC_FRIENDLYNAME
++	</array>
++
++	<key>Copyright</key>
++	<string>This driver is protected by terms of the GNU Lesser General Public License version 2.1, or (at your option) any later version.</string>
++
++</dict>
++</plist>
+diff -NurBbw ccid-1.4.3/src/Makefile.am ccid-1.4.3-morpho/src/Makefile.am
+--- ccid-1.4.3/src/Makefile.am	2011-02-22 23:20:26.000000000 +0100
++++ ccid-1.4.3-morpho/src/Makefile.am	2011-06-21 17:50:48.000000000 +0200
+@@ -69,7 +69,7 @@
+ parse_LDADD = $(LIBUSB_LIBS)
+ parse_CFLAGS = $(PCSC_CFLAGS) $(LIBUSB_CFLAGS)
+ 
+-EXTRA_DIST = Info.plist.src create_Info_plist.pl reader.conf.in \
++EXTRA_DIST = Info.plist.src Info.plist.src_morpho create_Info_plist.pl reader.conf.in \
+ 	towitoko/COPYING towitoko/README openct/LICENSE \
+ 	convert_version.pl 92_pcscd_ccid.rules
+ 
+@@ -77,8 +77,8 @@
+ 
+ INSTALL_UDEV_RULE_FILE=@/bin/echo -e "\n\33[01;31m***************\n" ; echo "copy the src/92_pcscd_ccid.rules file in udev directory (/etc/udev/rules.d/)" ; /bin/echo -e "\n***************\n\33[0m"
+ 
+-Info.plist: Info.plist.src $(srcdir)/../readers/supported_readers.txt
+-	$(srcdir)/create_Info_plist.pl $(srcdir)/../readers/supported_readers.txt $(srcdir)/Info.plist.src --target=$(CCID_LIB) --version=$(VERSION) --bundle=$(CCID_BUNDLE) $(NOCLASS) > Info.plist
++Info.plist: Info.plist.src_morpho $(srcdir)/../readers/supported_readers_morpho.txt
++	$(srcdir)/create_Info_plist.pl $(srcdir)/../readers/supported_readers_morpho.txt $(srcdir)/Info.plist.src_morpho --target=$(CCID_LIB) --version=$(VERSION) --bundle=$(CCID_BUNDLE) $(NOCLASS) > Info.plist
+ 	
+ DISTCLEANFILES = tokenparser.c Info.plist
+ 
+diff -NurBbw ccid-1.4.3/src/Makefile.in ccid-1.4.3-morpho/src/Makefile.in
+--- ccid-1.4.3/src/Makefile.in	2011-04-02 20:48:19.000000000 +0200
++++ ccid-1.4.3-morpho/src/Makefile.in	2011-06-21 17:50:48.000000000 +0200
+@@ -361,7 +361,7 @@
+ parse_SOURCES = parse.c debug.c ccid_usb.c $(TOKEN_PARSER)
+ parse_LDADD = $(LIBUSB_LIBS)
+ parse_CFLAGS = $(PCSC_CFLAGS) $(LIBUSB_CFLAGS)
+-EXTRA_DIST = Info.plist.src create_Info_plist.pl reader.conf.in \
++EXTRA_DIST = Info.plist.src Info.plist.src_morpho create_Info_plist.pl reader.conf.in \
+ 	towitoko/COPYING towitoko/README openct/LICENSE \
+ 	convert_version.pl 92_pcscd_ccid.rules
+ 
+@@ -1004,8 +1004,8 @@
+ 
+ install: $(LIBS_TO_INSTALL)
+ 
+-Info.plist: Info.plist.src $(srcdir)/../readers/supported_readers.txt
+-	$(srcdir)/create_Info_plist.pl $(srcdir)/../readers/supported_readers.txt $(srcdir)/Info.plist.src --target=$(CCID_LIB) --version=$(VERSION) --bundle=$(CCID_BUNDLE) $(NOCLASS) > Info.plist
++Info.plist: Info.plist.src_morpho $(srcdir)/../readers/supported_readers_morpho.txt
++	$(srcdir)/create_Info_plist.pl $(srcdir)/../readers/supported_readers_morpho.txt $(srcdir)/Info.plist.src_morpho --target=$(CCID_LIB) --version=$(VERSION) --bundle=$(CCID_BUNDLE) $(NOCLASS) > Info.plist
+ 
+ install_ccid: libccid.la Info.plist
+ 	$(mkinstalldirs) $(DESTDIR)$(usbdropdir)/$(CCID_BUNDLE)/Contents/$(BUNDLE_HOST)/
+diff -NurBbw ccid-1.4.3/src/ccid.c ccid-1.4.3-morpho/src/ccid.c
+--- ccid-1.4.3/src/ccid.c	2011-03-26 20:20:49.000000000 +0100
++++ ccid-1.4.3-morpho/src/ccid.c	2011-06-21 17:50:48.000000000 +0200
+@@ -47,6 +47,14 @@
+ {
+ 	_ccid_descriptor *ccid_descriptor = get_ccid_descriptor(reader_index);
+ 
++
++    
++    if ( ccid_descriptor == NULL )
++    {
++
++        return -9;
++    }
++        
+ 	switch (ccid_descriptor->readerID)
+ 	{
+ 		case CARDMAN3121+1:
+@@ -64,15 +72,34 @@
+ 			(void)sleep(1);
+ 			ccid_descriptor->readTimeout = 60*1000; /* 60 seconds */
+ 			break;
++        case MORPHO_TOKEN_EM:
++        case MORPHO_TOKEN_EM2:
++        case MORPHO_TOKEN_E2:
++            ccid_descriptor->dwMorphoFeatures = 0;
++            ccid_descriptor->dwMorphoFeatures |= MORPHO_PRE_LOAD;
++            ccid_descriptor->dwMorphoFeatures |= MORPHO_BOGUS_GETDATARATES;   
++            ccid_descriptor->dwMorphoFeatures |= MORPHO_BOGUS_GETSLOTSTATUS;
++            break;
++        case MORPHO_READER_MS1350:
++        case MORPHO_READER_MSO350:
++            ccid_descriptor->dwMorphoFeatures = 0;
++            break;                        
+ 	}
+ 
+ 	/* CCID */
+ 	if ((PROTOCOL_CCID == ccid_descriptor->bInterfaceProtocol)
+ 		&& (3 == ccid_descriptor -> bNumEndpoints))
+ 	{
++/* This one produce a hardlock on the token */
+ #ifndef TWIN_SERIAL
++        /* because this produces dead lock */
++        if ( (ccid_descriptor->dwMorphoFeatures & MORPHO_PRE_LOAD) == 0 )
++        {
+ 		/* just wait for 100ms in case a notification is in the pipe */
++
+ 		(void)InterruptRead(reader_index, 100);
++
++        }
+ #endif
+ 	}
+ 
+@@ -120,8 +147,19 @@
+ {
+ 	_ccid_descriptor *ccid_descriptor = get_ccid_descriptor(reader_index);
+ 
++
++    
+ 	switch (ccid_descriptor->readerID)
+ 	{
++        case MORPHO_TOKEN_EM:
++        case MORPHO_TOKEN_EM2:
++        case MORPHO_TOKEN_E2:
++            ccid_descriptor->dwMorphoFeatures = 0;
++            ccid_descriptor->dwMorphoFeatures |= MORPHO_PRE_LOAD;
++            ccid_descriptor->dwMorphoFeatures |= MORPHO_BOGUS_GETDATARATES;   
++            ccid_descriptor->dwMorphoFeatures |= MORPHO_BOGUS_GETSLOTSTATUS;
++            break;
++            
+ 		case GEMPCKEY:
+ 		case GEMPCTWIN:
+ 			/* Reader announces TPDU but can do APDU (EMV in fact) */
+diff -NurBbw ccid-1.4.3/src/ccid.h ccid-1.4.3-morpho/src/ccid.h
+--- ccid-1.4.3/src/ccid.h	2011-03-26 20:20:49.000000000 +0100
++++ ccid-1.4.3-morpho/src/ccid.h	2011-06-21 17:50:48.000000000 +0200
+@@ -114,6 +114,13 @@
+ 	 */
+ 	int dwSlotStatus;
+ 
++    /* bStatus emulation for CCID reader that do not supports GetSlotStatus */
++    /* Software status management */
++    unsigned int  nInit;
++    unsigned int  nRes;
++    unsigned int  nLastCmd; /* 0 = the last set for the buffer was virtual, 1 = the last set was from hardware */
++    UCHAR         bRDR_to_PC[11];
++    DWORD         dwMorphoFeatures;
+ 	/*
+ 	 * bVoltageSupport (bit field)
+ 	 * 1 = 5.0V
+@@ -191,6 +198,20 @@
+ #define VEGAALPHA   0x09820008
+ #define HPSMARTCARDKEYBOARD 0x03F01024
+ 
++/* Morpho USB Tokens and Readers */
++# define MORPHO_TOKEN_E2         0x079B008F /* USB CLASS : 0x0B , USB SUBCLASS : 0x00 USB SUBPROTOCOL : 0x00 */
++# define MORPHO_TOKEN_EM         0x67670104 /* USB CLASS : 0x0B , USB SUBCLASS : 0x00 USB SUBPROTOCOL : 0x00 */
++# define MORPHO_TOKEN_EM2        0x1A6F0104 /* USB CLASS : 0x0B , USB SUBCLASS : 0x00 USB SUBPROTOCOL : 0x00 */
++# define MORPHO_READER_MS1350    0x079B0052 /* USB CLASS : 0x0B , USB SUBCLASS : 0x00 USB SUBPROTOCOL : 0x00 */
++# define MORPHO_READER_MSO350    0x079B0026 /* USB CLASS : 0x0B , USB SUBCLASS : 0x00 USB SUBPROTOCOL : 0x00 */
++# define MORPHO_FAKE_STATUS 0x00
++# define MORPHO_HW_STATUS 0x01
++
++/* Morpho features */
++# define MORPHO_BOGUS_GETDATARATES     0x00000001
++# define MORPHO_BOGUS_GETSLOTSTATUS    0x00000002
++# define MORPHO_PRE_LOAD               0x00000004
++
+ #define VENDOR_GEMALTO 0x08E6
+ #define GET_VENDOR(readerID) ((readerID >> 16) & 0xFFFF)
+ 
+diff -NurBbw ccid-1.4.3/src/ccid_usb.c ccid-1.4.3-morpho/src/ccid_usb.c
+--- ccid-1.4.3/src/ccid_usb.c	2011-03-26 18:03:30.000000000 +0100
++++ ccid-1.4.3-morpho/src/ccid_usb.c	2011-06-21 17:50:48.000000000 +0200
+@@ -187,8 +187,8 @@
+ 		/* format: usb:%04x/%04x, vendor, product */
+ 		if (strncmp("usb:", device, 4) != 0)
+ 		{
+-			DEBUG_CRITICAL2("device name does not start with \"usb:\": %s",
+-				device);
++			DEBUG_CRITICAL2("device name does not start with \"usb:\": %s", device);
++
+ 			return STATUS_UNSUCCESSFUL;
+ 		}
+ 
+@@ -227,7 +227,10 @@
+ 
+ 	rv = bundleParse(infofile, &plist);
+ 	if (rv)
++    {
++
+ 		return STATUS_UNSUCCESSFUL;
++    }
+ 
+ #define GET_KEY(key, values) \
+ 	rv = LTPBundleFindValueWithKey(&plist, key, &values); \
+@@ -235,6 +238,7 @@
+ 	{ \
+ 		DEBUG_CRITICAL2("Value/Key not defined for " key " in %s", infofile); \
+ 		bundleRelease(&plist); \
++			       \
+ 		return STATUS_UNSUCCESSFUL; \
+ 	} \
+ 	else \
+@@ -268,6 +272,7 @@
+ 	{ \
+ 		DEBUG_CRITICAL2("Value/Key not defined for " key " in %s", infofile); \
+ 		bundleRelease(&plist); \
++			       \
+ 		return STATUS_UNSUCCESSFUL; \
+ 	}
+ 
+@@ -302,8 +307,11 @@
+ 		{
+ 			struct libusb_device_descriptor desc;
+ 			struct libusb_config_descriptor *config_desc;
+-			uint8_t bus_number = libusb_get_bus_number(dev);
+-			uint8_t device_address = libusb_get_device_address(dev);
++			uint8_t bus_number      = 0;
++			uint8_t device_address  = 0;
++
++            bus_number      = libusb_get_bus_number(dev);
++			device_address  = libusb_get_device_address(dev);
+ 
+ 			int r = libusb_get_device_descriptor(dev, &desc);
+ 			if (r < 0)
+@@ -394,8 +402,7 @@
+ 
+ 						*usbDevice[reader_index].nb_opened_slots += 1;
+ 						usbDevice[reader_index].ccid.bCurrentSlotIndex++;
+-						usbDevice[reader_index].ccid.dwSlotStatus =
+-							IFD_ICC_PRESENT;
++						usbDevice[reader_index].ccid.dwSlotStatus = IFD_ICC_PRESENT;
+ 						DEBUG_INFO2("Opening slot: %d",
+ 							usbDevice[reader_index].ccid.bCurrentSlotIndex);
+ 						goto end;
+@@ -530,10 +537,21 @@
+ 				usbDevice[reader_index].ccid.bMaxSlotIndex = device_descriptor[4];
+ 				usbDevice[reader_index].ccid.bCurrentSlotIndex = 0;
+ 				usbDevice[reader_index].ccid.readTimeout = DEFAULT_COM_READ_TIMEOUT;
++# ifndef _MW_PATCH_
+ 				usbDevice[reader_index].ccid.arrayOfSupportedDataRates = get_data_rates(reader_index, config_desc, num);
++# else
++				usbDevice[reader_index].ccid.arrayOfSupportedDataRates = NULL;
++# endif
+ 				usbDevice[reader_index].ccid.bInterfaceProtocol = usb_interface->altsetting->bInterfaceProtocol;
+ 				usbDevice[reader_index].ccid.bNumEndpoints = usb_interface->altsetting->bNumEndpoints;
+ 				usbDevice[reader_index].ccid.dwSlotStatus = IFD_ICC_PRESENT;
++
++                memset ( usbDevice[reader_index].ccid.bRDR_to_PC, 0, sizeof(usbDevice[reader_index].ccid.bRDR_to_PC) );
++                usbDevice[reader_index].ccid.nInit  = 0;
++                usbDevice[reader_index].ccid.nRes   = IFD_SUCCESS;
++                usbDevice[reader_index].ccid.dwMorphoFeatures = 0;
++                usbDevice[reader_index].ccid.nLastCmd = MORPHO_FAKE_STATUS;
++                
+ 				usbDevice[reader_index].ccid.bVoltageSupport = device_descriptor[5];
+ 				usbDevice[reader_index].ccid.sIFD_serial_number = NULL;
+ 				if (desc.iSerialNumber)
+@@ -558,7 +576,11 @@
+ 		/* does not work for libusb <= 1.0.8 */
+ 		/* libusb_exit(ctx); */
+ 		if (claim_failed)
++        {
++
+ 			return STATUS_COMM_ERROR;
++        }        
++
+ 		return STATUS_NO_SUCH_DEVICE;
+ 	}
+ 
+@@ -601,7 +623,11 @@
+ 			usbDevice[reader_index].device_address, rv, strerror(errno));
+ 
+ 		if (ENODEV == errno)
++        {
++
+ 			return STATUS_NO_SUCH_DEVICE;
++        }
++        
+ 
+ 		return STATUS_UNSUCCESSFUL;
+ 	}
+@@ -619,18 +645,19 @@
+ 	unsigned char *buffer)
+ {
+ 	int rv;
+-	int actual_length;
++	int actual_length = 0;
+ 	char debug_header[] = "<- 121234 ";
+ 	_ccid_descriptor *ccid_descriptor = get_ccid_descriptor(reader_index);
+ 	int duplicate_frame = 0;
+ 
++
++    usleep ( 10 * 1000 );
++
+ read_again:
+ 	(void)snprintf(debug_header, sizeof(debug_header), "<- %06X ",
+ 		(int)reader_index);
+ 
+-	rv = libusb_bulk_transfer(usbDevice[reader_index].dev_handle,
+-		usbDevice[reader_index].bulk_in, buffer, *length,
+-		&actual_length, usbDevice[reader_index].ccid.readTimeout);
++	rv = libusb_bulk_transfer ( usbDevice[reader_index].dev_handle, usbDevice[reader_index].bulk_in, buffer, *length, &actual_length, usbDevice[reader_index].ccid.readTimeout );
+ 
+ 	if (rv < 0)
+ 	{
+@@ -640,7 +667,11 @@
+ 			usbDevice[reader_index].device_address, rv, strerror(errno));
+ 
+ 		if (ENODEV == errno)
++        {
++
+ 			return STATUS_NO_SUCH_DEVICE;
++        }
++        
+ 
+ 		return STATUS_UNSUCCESSFUL;
+ 	}
+@@ -674,9 +705,15 @@
+  ****************************************************************************/
+ status_t CloseUSB(unsigned int reader_index)
+ {
++    
++
++
+ 	/* device not opened */
+ 	if (usbDevice[reader_index].dev_handle == NULL)
++    {
++
+ 		return STATUS_UNSUCCESSFUL;
++    }
+ 
+ 	DEBUG_COMM3("Closing USB device: %d/%d",
+ 		usbDevice[reader_index].bus_number,
+@@ -730,6 +767,25 @@
+ 	return &usbDevice[reader_index].ccid;
+ } /* get_ccid_descriptor */
+ 
++/*****************************************************************************
++ *
++ *					get_ccid_bulkin
++ *
++ ****************************************************************************/
++int get_ccid_bulkin(unsigned int reader_index)
++{
++	return usbDevice[reader_index].bulk_in;
++} /* get_ccid_bulkin */
++
++/*****************************************************************************
++ *
++ *					get_ccid_interface
++ *
++ ****************************************************************************/
++int get_ccid_interface(unsigned int reader_index)
++{
++	return usbDevice[reader_index].interface;
++} /* get_ccid_interface */
+ 
+ /*****************************************************************************
+  *
+@@ -742,8 +798,13 @@
+ 	uint8_t last_endpoint;
+ #endif
+ 
++
++       
+ 	if (54 == usb_interface->altsetting->extra_length)
++    {
++
+ 		return usb_interface->altsetting->extra;
++    }
+ 
+ 	if (0 != usb_interface->altsetting->extra_length)
+ 	{
+@@ -762,7 +823,10 @@
+ 	 */
+ 	last_endpoint = usb_interface->altsetting->bNumEndpoints-1;
+ 	if (usb_interface->altsetting->endpoint[last_endpoint].extra_length == 54)
++    {
++
+ 		return usb_interface->altsetting->endpoint[last_endpoint].extra;
++    }
+ #else
+ 	DEBUG_CRITICAL2("Extra field has a wrong length: %d",
+ 		usb_interface->altsetting->extra_length);
+@@ -982,6 +1046,19 @@
+ 	if (requesttype & 0x80)
+ 		DEBUG_XXD("receive: ", bytes, ret);
+ 
++
++	return ret;
++} /* ControlUSB */
++
++int ControlUSBWithIdx(int reader_index, int requesttype, int request, int value, int index,
++                      unsigned char *bytes, unsigned int size)
++{
++	int ret;
++       
++	ret = libusb_control_transfer(usbDevice[reader_index].dev_handle,
++                                  requesttype, request, value, index,
++                                  bytes, size, usbDevice[reader_index].ccid.readTimeout);
++
+ 	return ret;
+ } /* ControlUSB */
+ 
+@@ -1013,13 +1090,18 @@
+ 	DEBUG_PERIODIC2("before (%d)", reader_index);
+ 
+ 	transfer = libusb_alloc_transfer(0);
++
++    
+ 	if (NULL == transfer)
++    {
++
+ 		return LIBUSB_ERROR_NO_MEM;
++    }
+ 
+-	libusb_fill_bulk_transfer(transfer,
+-		usbDevice[reader_index].dev_handle,
++	libusb_fill_bulk_transfer ( transfer, usbDevice[reader_index].dev_handle, 
+ 		usbDevice[reader_index].interrupt, buffer, sizeof(buffer),
+ 		bulk_transfer_cb, &completed, timeout);
++
+ 	transfer->type = LIBUSB_TRANSFER_TYPE_INTERRUPT;
+ 
+ 	ret = libusb_submit_transfer(transfer);
+@@ -1037,11 +1119,20 @@
+ 		{
+ 			if (ret == LIBUSB_ERROR_INTERRUPTED)
+ 				continue;
++
+ 			libusb_cancel_transfer(transfer);
++
+ 			while (!completed)
+-				if (libusb_handle_events(ctx) < 0)
++            {
++                int ll_nResult = libusb_handle_events(ctx);
++                if ( ll_nResult < 0)
++                {
+ 					break;
++                }
++            }
++            
+ 			libusb_free_transfer(transfer);
++
+ 			return ret;
+ 		}
+ 	}
+diff -NurBbw ccid-1.4.3/src/ccid_usb.h ccid-1.4.3-morpho/src/ccid_usb.h
+--- ccid-1.4.3/src/ccid_usb.h	2011-01-19 12:21:21.000000000 +0100
++++ ccid-1.4.3-morpho/src/ccid_usb.h	2011-06-21 17:50:48.000000000 +0200
+@@ -40,9 +40,13 @@
+ 	struct libusb_config_descriptor *desc, int *num);
+ 
+ const unsigned char *get_ccid_device_descriptor(const struct libusb_interface *usb_interface);
++int get_ccid_bulkin(unsigned int reader_index);
++int get_ccid_interface(unsigned int reader_index);
+ 
+ int ControlUSB(int reader_index, int requesttype, int request, int value,
+ 	unsigned char *bytes, unsigned int size);
++int ControlUSBWithIdx(int reader_index, int requesttype, int request, int value, int index,
++                      unsigned char *bytes, unsigned int size);
+ 
+ int InterruptRead(int reader_index, int timeout);
+ void InterruptStop(int reader_index);
+diff -NurBbw ccid-1.4.3/src/commands.c ccid-1.4.3-morpho/src/commands.c
+--- ccid-1.4.3/src/commands.c	2011-02-22 23:20:26.000000000 +0100
++++ ccid-1.4.3-morpho/src/commands.c	2011-06-21 17:50:48.000000000 +0200
+@@ -58,6 +58,8 @@
+ #define BSWAP_32(x) ((BSWAP_16(x) << 16) | BSWAP_16((x) >> 16))
+ #endif
+ 
++# define MyInitWait 100
++
+ /* internal functions */
+ static RESPONSECODE CmdXfrBlockAPDU_extended(unsigned int reader_index,
+ 	unsigned int tx_length, unsigned char tx_buffer[], unsigned int *rx_length,
+@@ -78,6 +80,12 @@
+ static void i2dw(int value, unsigned char *buffer);
+ static unsigned int bei2i(unsigned char *buffer);
+ 
++/* RDR_to_PC_Status          MESSAGETYPE    MESSAGELENGTH               SLOT    SEQUENCE NUMBER     STATUS  ERROR   CLOCKSTATUS */
++UCHAR DummyRDR_to_PC_STATUS[10] = { 0x81,   0x00, 0x00, 0x00, 0x00,     0x00,   0x00,               0x00,   0x00,   0x00 };
++
++/* RDR_to_PC_DataBlock       MESSAGETYPE    MESSAGELENGTH               SLOT    SEQUENCE NUMBER     STATUS  ERROR   CHAINPARAMETER  DATA */
++UCHAR DummyRDR_to_PC_DATABK[11] = { 0x80,   0x00, 0x00, 0x00, 0x01,     0x00,   0x00,               0x00,   0x00,   0x00,           0x00 };
++
+ 
+ /*****************************************************************************
+  *
+@@ -89,10 +97,15 @@
+ {
+ 	unsigned char cmd[10];
+ 	status_t res;
+-	int length, count = 1;
++    int length = 0;
++	int count = 1;
+ 	unsigned int atr_len;
+ 	RESPONSECODE return_value = IFD_SUCCESS;
+ 	_ccid_descriptor *ccid_descriptor = get_ccid_descriptor(reader_index);
++    int l_nTries = 0;
++    
++last_chance_try:
++    usleep ( 250 * 1000 );    
+ 
+ #ifndef TWIN_SERIAL
+ 	if (PROTOCOL_ICCD_A == ccid_descriptor->bInterfaceProtocol)
+@@ -103,12 +116,19 @@
+ 		/* first power off to reset the ICC state machine */
+ 		r = CmdPowerOff(reader_index);
+ 		if (r != IFD_SUCCESS)
+-			return r;
++        {
++            return_value = r;
+ 
++			return r;
++        }
+ 		/* wait for ready */
+ 		r = CmdGetSlotStatus(reader_index, pcbuffer);
+ 		if (r != IFD_SUCCESS)
++        {
++            return_value = r;
++
+ 			return r;
++        }
+ 
+ 		/* Power On */
+ 		r = ControlUSB(reader_index, 0xA1, 0x62, 0, buffer, *nlength);
+@@ -117,6 +137,8 @@
+ 		if (r < 0)
+ 		{
+ 			DEBUG_INFO2("ICC Power On failed: %s", strerror(errno));
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
+@@ -133,7 +155,11 @@
+ 		/* first power off to reset the ICC state machine */
+ 		r = CmdPowerOff(reader_index);
+ 		if (r != IFD_SUCCESS)
++        {
++            return_value = r;
++
+ 			return r;
++        }
+ 
+ 		/* Power On */
+ 		r = ControlUSB(reader_index, 0x21, 0x62, 1, NULL, 0);
+@@ -142,6 +168,8 @@
+ 		if (r < 0)
+ 		{
+ 			DEBUG_INFO2("ICC Power On failed: %s", strerror(errno));
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
+@@ -152,6 +180,8 @@
+ 		if (r < 0)
+ 		{
+ 			DEBUG_INFO2("ICC Data Block failed: %s", strerror(errno));
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
+@@ -162,6 +192,8 @@
+ 			/* Status Information? */
+ 			if (0x40 == tmp[0])
+ 				ccid_error(tmp[2], __FILE__, __LINE__, __FUNCTION__);
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
+@@ -170,6 +202,9 @@
+ 			*nlength = r-1;
+ 		memcpy(buffer, tmp+1, *nlength);
+ 
++        return_value = IFD_SUCCESS;
++
++
+ 		return IFD_SUCCESS;
+ 	}
+ #endif
+@@ -203,6 +238,13 @@
+ 	}
+ 
+ again:
++    return_value = IFD_SUCCESS;
++
++    if ( (ccid_descriptor->dwMorphoFeatures & MORPHO_BOGUS_GETSLOTSTATUS) != 0 )
++    {
++        CmdPowerOff(reader_index);
++    }
++    
+ 	cmd[0] = 0x62; /* IccPowerOn */
+ 	cmd[1] = cmd[2] = cmd[3] = cmd[4] = 0;	/* dwLength */
+ 	cmd[5] = ccid_descriptor->bCurrentSlotIndex;	/* slot number */
+@@ -212,19 +254,55 @@
+ 
+ 	res = WritePort(reader_index, sizeof(cmd), cmd);
+ 	if (res != STATUS_SUCCESS)
++    {
++        if ( (ccid_descriptor->dwMorphoFeatures & MORPHO_BOGUS_GETSLOTSTATUS) != 0 )
++        {
++            if ( ccid_descriptor->nInit != 1 )
++            {
++                usleep ( MyInitWait * 1000 );
++
++                ccid_descriptor->nInit   = 1;
++            }
++            ccid_descriptor->nLastCmd = MORPHO_HW_STATUS;
++            ccid_descriptor->nRes     = res;
++            return_value = IFD_COMMUNICATION_ERROR;
++
++        }
+ 		return IFD_COMMUNICATION_ERROR;
++    }
++
++    usleep ( 250 * 1000 );     
+ 
+ 	/* reset available buffer size */
+ 	/* needed if we go back after a switch to ISO mode */
+ 	*nlength = length;
+ 
+ 	res = ReadPort(reader_index, nlength, buffer);
++    
++    if ( (ccid_descriptor->dwMorphoFeatures & MORPHO_BOGUS_GETSLOTSTATUS) != 0 )
++    {
++        /* Patch for a Buggy GetSlotStatus 
++         * updating the fake Status
++         */
++        if ( ccid_descriptor->nInit != 1 )
++        {
++            ccid_descriptor->nInit   = 1;
++        }
++        ccid_descriptor->nLastCmd = MORPHO_HW_STATUS;
++        ccid_descriptor->nRes     = res;
++        memcpy ( ccid_descriptor->bRDR_to_PC, buffer, min(*nlength,sizeof(ccid_descriptor->bRDR_to_PC)) );
++    }        
++    
+ 	if (res != STATUS_SUCCESS)
++    {
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	if (*nlength < STATUS_OFFSET+1)
+ 	{
+ 		DEBUG_CRITICAL2("Not enough data received: %d bytes", *nlength);
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
+ 	}
+ 
+@@ -242,8 +320,10 @@
+ 
+ 			if ((return_value = CmdEscape(reader_index, cmd_tmp,
+ 				sizeof(cmd_tmp), res_tmp, &res_length)) != IFD_SUCCESS)
+-				return return_value;
++            {
+ 
++				return return_value;
++            }
+ 			/* avoid looping if we can't switch mode */
+ 			if (count--)
+ 				goto again;
+@@ -262,6 +342,8 @@
+ 			goto again;
+ 		}
+ 
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
+ 	}
+ 
+@@ -272,8 +354,15 @@
+ 	else
+ 		*nlength = atr_len;
+ 
++
++    
++    if ( atr_len <= 0 )
++        goto again;
++    
+ 	memmove(buffer, buffer+10, atr_len);
+ 
++
++    
+ 	return return_value;
+ } /* CmdPowerOn */
+ 
+@@ -293,6 +382,11 @@
+ 	_ccid_descriptor *ccid_descriptor = get_ccid_descriptor(reader_index);
+ 	int old_read_timeout;
+ 	RESPONSECODE ret;
++   	RESPONSECODE return_value = IFD_SUCCESS;
++
++
++
++
+ 
+ 	pvs = (PIN_VERIFY_STRUCTURE *)TxBuffer;
+ 	cmd[0] = 0x69;	/* Secure */
+@@ -308,12 +402,16 @@
+ 	if (TxLength > 19+CMD_BUF_SIZE) /* command too large? */
+ 	{
+ 		DEBUG_INFO3("Command too long: %d > %d", TxLength, 19+CMD_BUF_SIZE);
++        return_value = IFD_NOT_SUPPORTED;
++
+ 		return IFD_NOT_SUPPORTED;
+ 	}
+ 
+ 	if (TxLength < 19+4 /* 4 = APDU size */)	/* command too short? */
+ 	{
+ 		DEBUG_INFO3("Command too short: %d < %d", TxLength, 19+4);
++        return_value = IFD_NOT_SUPPORTED;
++
+ 		return IFD_NOT_SUPPORTED;
+ 	}
+ 
+@@ -334,6 +432,8 @@
+ 	if (dw2i(TxBuffer, 15) + 19 != TxLength) /* ulDataLength field coherency */
+ 	{
+ 		DEBUG_INFO3("Wrong lengths: %d %d", dw2i(TxBuffer, 15) + 19, TxLength);
++        return_value = IFD_NOT_SUPPORTED;
++
+ 		return IFD_NOT_SUPPORTED;
+ 	}
+ 
+@@ -451,17 +551,20 @@
+ 		/* case 1 APDU */
+ 		&& (4 == TxBuffer[15]))
+ 	{
+-		RESPONSECODE return_value;
++		RESPONSECODE return_value2;
+ 		unsigned char cmd_tmp[] = { 0x80, 0x02, 0x00 };
+ 		unsigned char res_tmp[1];
+ 		unsigned int res_length = sizeof(res_tmp);
+ 
+ 		/* the SPR532 will append the PIN code without any padding */
+-		return_value = CmdEscape(reader_index, cmd_tmp, sizeof(cmd_tmp),
++		return_value2 = CmdEscape(reader_index, cmd_tmp, sizeof(cmd_tmp),
+ 			res_tmp, &res_length);
+-		if (return_value != IFD_SUCCESS)
+-			return return_value;
++		if (return_value2 != IFD_SUCCESS)
++        {
++            return_value = return_value2;
+ 
++			return return_value2;
++        }
+ 		/* we need to set bSeq again to avoid a "Duplicate frame detected"
+ 		 * error since the bSeq of CmdEscape is now greater than bSeq set at
+ 		 * the beginning of this function */
+@@ -505,6 +608,8 @@
+ 
+ end:
+ 	ccid_descriptor -> readTimeout = old_read_timeout;
++    return_value = ret;
++
+ 	return ret;
+ } /* SecurePINVerify */
+ 
+@@ -524,6 +629,7 @@
+ 	_ccid_descriptor *ccid_descriptor = get_ccid_descriptor(reader_index);
+ 	int old_read_timeout;
+ 	RESPONSECODE ret;
++   	RESPONSECODE return_value = IFD_SUCCESS;
+ #ifdef BOGUS_PINPAD_FIRMWARE
+ 	int bNumberMessages = 0; /* for GemPC Pinpad */
+ #endif
+@@ -542,12 +648,16 @@
+ 	if (TxLength > 24+CMD_BUF_SIZE) /* command too large? */
+ 	{
+ 		DEBUG_INFO3("Command too long: %d > %d", TxLength, 24+CMD_BUF_SIZE);
++        return_value = IFD_NOT_SUPPORTED;
++
+ 		return IFD_NOT_SUPPORTED;
+ 	}
+ 
+ 	if (TxLength < 24+4 /* 4 = APDU size */) /* command too short? */
+ 	{
+ 		DEBUG_INFO3("Command too short: %d < %d", TxLength, 24+4);
++        return_value = IFD_NOT_SUPPORTED;
++
+ 		return IFD_NOT_SUPPORTED;
+ 	}
+ 
+@@ -569,6 +679,8 @@
+ 	if (dw2i(TxBuffer, 20) + 24 != TxLength) /* ulDataLength field coherency */
+ 	{
+ 		DEBUG_INFO3("Wrong lengths: %d %d", dw2i(TxBuffer, 20) + 24, TxLength);
++        return_value = IFD_NOT_SUPPORTED;
++
+ 		return IFD_NOT_SUPPORTED;
+ 	}
+ 
+@@ -577,6 +689,8 @@
+ 	if ((TxBuffer[11] > 3) && (TxBuffer[11] != 0xFF))
+ 	{
+ 		DEBUG_INFO2("Wrong bNumberMessage: %d", TxBuffer[11]);
++        return_value = IFD_NOT_SUPPORTED;
++
+ 		return IFD_NOT_SUPPORTED;
+ 	}
+ 
+@@ -750,6 +864,10 @@
+ 
+ end:
+ 	ccid_descriptor -> readTimeout = old_read_timeout;
++
++    return_value = ret;
++
++	
+ 	return ret;
+ } /* SecurePINModify */
+ 
+@@ -880,9 +998,13 @@
+ 		if (r < 0)
+ 		{
+ 			DEBUG_INFO2("ICC Power Off failed: %s", strerror(errno));
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
++        return_value = IFD_SUCCESS;
++
+ 		return IFD_SUCCESS;
+ 	}
+ 
+@@ -898,6 +1020,8 @@
+ 		if (r < 0)
+ 		{
+ 			DEBUG_INFO2("ICC Power Off failed: %s", strerror(errno));
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
+@@ -908,9 +1032,13 @@
+ 		if (r < 0)
+ 		{
+ 			DEBUG_INFO2("ICC SlotStatus failed: %s", strerror(errno));
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
++        return_value = IFD_SUCCESS;
++
+ 		return IFD_SUCCESS;
+ 	}
+ #endif
+@@ -923,16 +1051,55 @@
+ 
+ 	res = WritePort(reader_index, sizeof(cmd), cmd);
+ 	if (res != STATUS_SUCCESS)
++    {
++        if ( (ccid_descriptor->dwMorphoFeatures & MORPHO_BOGUS_GETSLOTSTATUS) != 0 )
++        {
++            if ( ccid_descriptor->nInit != 1 )
++            {
++                usleep ( MyInitWait * 1000 );
++
++                ccid_descriptor->nInit   = 1;
++            }
++            ccid_descriptor->nLastCmd = MORPHO_HW_STATUS;
++            ccid_descriptor->nRes     = res;
++        }
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	length = sizeof(cmd);
+ 	res = ReadPort(reader_index, &length, cmd);
++
++    if ( ccid_descriptor->dwMorphoFeatures & MORPHO_BOGUS_GETSLOTSTATUS )
++    {
++        /* Patch for a Buggy GetSlotStatus 
++         * updating the fake Status
++         */
++        if ( ccid_descriptor->nInit != 1 )
++        {
++            usleep ( MyInitWait * 1000 );
++
++            ccid_descriptor->nInit   = 1;
++        }
++
++        ccid_descriptor->nLastCmd = MORPHO_HW_STATUS;
++        ccid_descriptor->nRes     = res;
++        memcpy ( ccid_descriptor->bRDR_to_PC, cmd, min(length,sizeof(ccid_descriptor->bRDR_to_PC)) );
++    }        
++    
+ 	if (res != STATUS_SUCCESS)
++    {
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	if (length < STATUS_OFFSET+1)
+ 	{
+ 		DEBUG_CRITICAL2("Not enough data received: %d bytes", length);
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
+ 	}
+ 
+@@ -940,8 +1107,11 @@
+ 	{
+ 		ccid_error(cmd[ERROR_OFFSET], __FILE__, __LINE__, __FUNCTION__);    /* bError */
+ 		return_value = IFD_COMMUNICATION_ERROR;
++
++		return_value = IFD_COMMUNICATION_ERROR;
+ 	}
+ 
++
+ 	return return_value;
+ } /* CmdPowerOff */
+ 
+@@ -959,6 +1129,13 @@
+ 	RESPONSECODE return_value = IFD_SUCCESS;
+ 	_ccid_descriptor *ccid_descriptor = get_ccid_descriptor(reader_index);
+ 
++    int r_token;
++    unsigned char buffer_tmp_token[2];
++
++
++
++
++        
+ #ifndef TWIN_SERIAL
+ 	if (PROTOCOL_ICCD_A == ccid_descriptor->bInterfaceProtocol)
+ 	{
+@@ -974,7 +1151,15 @@
+ 		{
+ 			DEBUG_INFO2("ICC Slot Status failed: %s", strerror(errno));
+ 			if (ENODEV == errno)
++            {
++                return_value = IFD_NO_SUCH_DEVICE;
++
++
+ 				return IFD_NO_SUCH_DEVICE;
++            }
++            return_value = IFD_COMMUNICATION_ERROR;
++
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
+@@ -997,6 +1182,9 @@
+ 		/* store the status for CmdXfrBlockCHAR_T0() */
+ 		buffer[0] = status[0];
+ 
++        return_value = IFD_SUCCESS;
++
++        
+ 		return IFD_SUCCESS;
+ 	}
+ 
+@@ -1014,7 +1202,14 @@
+ 		{
+ 			DEBUG_INFO2("ICC Slot Status failed: %s", strerror(errno));
+ 			if (ENODEV == errno)
++            {
++                return_value = IFD_NO_SUCH_DEVICE;
++
++                
+ 				return IFD_NO_SUCH_DEVICE;
++            }
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
+@@ -1031,10 +1226,146 @@
+ 			case 3:
+ 				buffer[7] = CCID_ICC_ABSENT;
+ 		}
++        return_value = IFD_SUCCESS;
++
+ 		return IFD_SUCCESS;
+ 	}
+ #endif
+ 
++    {
++        /* Get Status 
++         * Device       : 0x80 -> 0x00          : OK -> always 0x02 0x00
++         * Interface    : 0x81 -> Interface     : NOT WORKING -> stall
++         * Endpoint     : 0x82 -> EndPoint      : NOT WORKING -> stall
++         *
++         bulk_in = get_ccid_bulkin ( reader_index );
++         interface = get_ccid_interface ( reader_index );       
++         */
++        r_token = ControlUSB(reader_index, 0x80, 0x00, 0, buffer_tmp_token, sizeof(buffer_tmp_token) );
++
++    }
++        
++
++
++    
++    if ( (ccid_descriptor->dwMorphoFeatures & MORPHO_BOGUS_GETSLOTSTATUS) != 0 )
++    {
++        /* Patch for a Buggy GetSlotStatus */
++        if ( ccid_descriptor->nInit != 1 )
++        {
++            /* First time we get in there, issue a sleep to improve the hotplug stuff */
++            /* usleep ( 3000 * 1000 ); */
++            usleep ( MyInitWait * 1000 );
++            
++            ccid_descriptor->nInit      = 1;
++            ccid_descriptor->nRes       = STATUS_SUCCESS;
++            ccid_descriptor->nLastCmd   = MORPHO_FAKE_STATUS;
++            memcpy ( ccid_descriptor->bRDR_to_PC, DummyRDR_to_PC_STATUS, min(sizeof(ccid_descriptor->bRDR_to_PC),sizeof(DummyRDR_to_PC_STATUS)) );
++
++
++
++
++
++        }
++        else
++        {
++            /* Probably a problem with the device, setting to absent */
++            if ( r_token < 0 )
++            {
++
++                ccid_descriptor->nLastCmd       = MORPHO_FAKE_STATUS;
++                ccid_descriptor->nRes           = r_token;
++                ccid_descriptor->bRDR_to_PC[7]  = CCID_ICC_ABSENT;
++
++
++
++
++
++            }
++            else /* Device is here, doing the magical stuffs */
++            {
++
++                /* The last time the status was set was with an hw call */
++                if ( ccid_descriptor->nLastCmd == MORPHO_HW_STATUS )
++                {
++
++                    res = ccid_descriptor->nRes;
++                    if ( res == STATUS_SUCCESS )
++                    {
++                        memcpy ( buffer, ccid_descriptor->bRDR_to_PC, min(SIZE_GET_SLOT_STATUS,sizeof(ccid_descriptor->bRDR_to_PC)) );
++                    }
++                    
++                    ccid_descriptor->nLastCmd = MORPHO_FAKE_STATUS;
++
++
++
++
++
++                }
++                else
++                {
++
++                    usleep( 10 * 1000 );
++
++                    /* The last time the status was set was with a fake status */
++                    
++                    /* Everything was fine, don't change anything, let a hardware call change the status */
++                    
++                    /* Something was wrong, trying to get back to normal */
++                    if ( ccid_descriptor->nRes != STATUS_SUCCESS )
++                    {
++
++                        /* faking the status with the Get Status Device call */
++                        ccid_descriptor->nRes = STATUS_SUCCESS;
++                        memcpy ( ccid_descriptor->bRDR_to_PC, DummyRDR_to_PC_STATUS, min(sizeof(ccid_descriptor->bRDR_to_PC),sizeof(DummyRDR_to_PC_STATUS)) );
++                        /* simulate a CCID bStatus */
++                        switch (buffer_tmp_token[1] & 0x03)
++                        {
++                            case 0:
++                                ccid_descriptor->bRDR_to_PC[7] = CCID_ICC_PRESENT_ACTIVE;
++                                break;
++                            case 1:
++                                ccid_descriptor->bRDR_to_PC[7] = CCID_ICC_PRESENT_INACTIVE;
++                                break;
++                            case 2:
++                            case 3:
++                                ccid_descriptor->bRDR_to_PC[7] = CCID_ICC_ABSENT;
++                                break;
++                            default:
++                                ccid_descriptor->bRDR_to_PC[7] = CCID_ICC_ABSENT;
++                                break;
++                        }
++
++
++
++
++
++                    }
++                    else
++                    {
++                        memcpy ( ccid_descriptor->bRDR_to_PC, DummyRDR_to_PC_STATUS, sizeof(DummyRDR_to_PC_STATUS) );
++                        /* dom : We suppose we already powered the token */
++                        ccid_descriptor->bRDR_to_PC[7] = CCID_ICC_PRESENT_ACTIVE;
++                        ccid_descriptor->nRes = STATUS_SUCCESS;
++
++
++
++
++
++                    }
++                    
++                }
++            }            
++        }
++        
++        length      = SIZE_GET_SLOT_STATUS;
++        memcpy ( buffer, ccid_descriptor->bRDR_to_PC, min(length,sizeof(ccid_descriptor->bRDR_to_PC)) );
++        res         = ccid_descriptor->nRes;
++    }
++    else
++    {
++
++
+ 	cmd[0] = 0x65; /* GetSlotStatus */
+ 	cmd[1] = cmd[2] = cmd[3] = cmd[4] = 0;	/* dwLength */
+ 	cmd[5] = ccid_descriptor->bCurrentSlotIndex;	/* slot number */
+@@ -1045,18 +1376,42 @@
+ 	if (res != STATUS_SUCCESS)
+ 	{
+ 		if (STATUS_NO_SUCH_DEVICE == res)
++            {
++                return_value = IFD_NO_SUCH_DEVICE;
++
++                
+ 			return IFD_NO_SUCH_DEVICE;
++            }
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
+ 	}
+ 
+ 	length = SIZE_GET_SLOT_STATUS;
+ 	res = ReadPort(reader_index, &length, buffer);
++    }        
++    
++
++
++
++
++
++
++    
+ 	if (res != STATUS_SUCCESS)
++    {
++
++        return_value = IFD_COMMUNICATION_ERROR;
++
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	if (length < STATUS_OFFSET+1)
+ 	{
+ 		DEBUG_CRITICAL2("Not enough data received: %d bytes", length);
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
+ 	}
+ 
+@@ -1140,6 +1495,11 @@
+ 	unsigned char cmd[10+CMD_BUF_SIZE];	/* CCID + APDU buffer */
+ 	_ccid_descriptor *ccid_descriptor = get_ccid_descriptor(reader_index);
+ 	status_t ret;
++	RESPONSECODE return_value = IFD_SUCCESS;
++
++
++
++
+ 
+ #ifndef TWIN_SERIAL
+ 	if (PROTOCOL_ICCD_A == ccid_descriptor->bInterfaceProtocol)
+@@ -1154,9 +1514,13 @@
+ 		if (r < 0)
+ 		{
+ 			DEBUG_INFO2("ICC Xfr Block failed: %s", strerror(errno));
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
++        return_value = IFD_SUCCESS;
++
+ 		return IFD_SUCCESS;
+ 	}
+ 
+@@ -1177,9 +1541,13 @@
+ 		if (r < 0)
+ 		{
+ 			DEBUG_INFO2("ICC Xfr Block failed: %s", strerror(errno));
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
++        return_value = IFD_SUCCESS;
++
+ 		return IFD_SUCCESS;
+ 	}
+ #endif
+@@ -1196,6 +1564,8 @@
+ 	if (tx_length > CMD_BUF_SIZE)
+ 	{
+ 		DEBUG_CRITICAL2("TX Length too big: %d", tx_length);
++        return_value = IFD_NOT_SUPPORTED;
++
+ 		return IFD_NOT_SUPPORTED;
+ 	}
+ 
+@@ -1203,9 +1573,20 @@
+ 
+ 	ret = WritePort(reader_index, 10+tx_length, cmd);
+ 	if (STATUS_NO_SUCH_DEVICE == ret)
++    {
++        return_value = IFD_NO_SUCH_DEVICE;
++
+ 		return IFD_NO_SUCH_DEVICE;
++    }
++
+ 	if (ret != STATUS_SUCCESS)
++    {
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
++    
++    return_value = IFD_SUCCESS;
+ 
+ 	return IFD_SUCCESS;
+ } /* CCID_Transmit */
+@@ -1223,9 +1604,18 @@
+ 	unsigned int length;
+ 	RESPONSECODE return_value = IFD_SUCCESS;
+ 	status_t ret;
++	_ccid_descriptor *ccid_descriptor = get_ccid_descriptor(reader_index);
+ 
++    if ( (ccid_descriptor->dwMorphoFeatures & MORPHO_BOGUS_GETSLOTSTATUS) != 0 )
++    {
++        if ( ccid_descriptor->nInit != 1 )
++        {
++            usleep ( MyInitWait * 1000 );
++
++            ccid_descriptor->nInit   = 1;
++        }
++    }    
+ #ifndef TWIN_SERIAL
+-	_ccid_descriptor *ccid_descriptor = get_ccid_descriptor(reader_index);
+ 
+ 	if (PROTOCOL_ICCD_A == ccid_descriptor->bInterfaceProtocol)
+ 	{
+@@ -1238,12 +1628,16 @@
+ 		if (r < 0)
+ 		{
+ 			DEBUG_INFO2("ICC Data Block failed: %s", strerror(errno));
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
+ 		/* we need to store returned value */
+ 		*rx_length = r;
+ 
++        return_value = IFD_SUCCESS;
++
+ 		return IFD_SUCCESS;
+ 	}
+ 
+@@ -1278,6 +1672,8 @@
+ 		if (r < 0)
+ 		{
+ 			DEBUG_INFO2("ICC Data Block failed: %s", strerror(errno));
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
+@@ -1299,6 +1695,8 @@
+ 			case 0x40:
+ 				/* Status Information */
+ 				ccid_error(rx_buffer[2], __FILE__, __LINE__, __FUNCTION__);
++                return_value = IFD_COMMUNICATION_ERROR;
++
+ 				return IFD_COMMUNICATION_ERROR;
+ 
+ 			case 0x80:
+@@ -1328,12 +1726,16 @@
+ 
+ 			default:
+ 				DEBUG_CRITICAL2("Unknown bResponseType: 0x%02X", rx_buffer[0]);
++                return_value = IFD_COMMUNICATION_ERROR;
++
+ 				return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
+ 		memmove(rx_buffer, rx_buffer+1, r-1);
+ 		*rx_length = r-1;
+ 
++        return_value = IFD_SUCCESS;
++
+ 		return IFD_SUCCESS;
+ 	}
+ #endif
+@@ -1341,16 +1743,43 @@
+ time_request:
+ 	length = sizeof(cmd);
+ 	ret = ReadPort(reader_index, &length, cmd);
++
++    if ( (ccid_descriptor->dwMorphoFeatures & MORPHO_BOGUS_GETSLOTSTATUS) != 0 )
++    {
++        /* Patch for a Buggy GetSlotStatus 
++         * updating the fake Status
++         */
++        if ( ccid_descriptor->nInit != 1 )
++        {
++            usleep ( MyInitWait * 1000 );
++
++            DEBUG_INFO2("bStatus set to %d", 1 );
++            ccid_descriptor->nInit   = 1;
++        }
++        
++        ccid_descriptor->nLastCmd = MORPHO_HW_STATUS;
++        ccid_descriptor->nRes     = ret;
++        memcpy ( ccid_descriptor->bRDR_to_PC, cmd, min(length,sizeof(ccid_descriptor->bRDR_to_PC)) );
++    }
++    
+ 	if (ret != STATUS_SUCCESS)
+ 	{
+ 		if (STATUS_NO_SUCH_DEVICE == ret)
++        {
++            return_value = IFD_NO_SUCH_DEVICE;
++
+ 			return IFD_NO_SUCH_DEVICE;
++        }
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
+ 	}
+ 
+ 	if (length < STATUS_OFFSET+1)
+ 	{
+ 		DEBUG_CRITICAL2("Not enough data received: %d bytes", length);
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
+ 	}
+ 
+@@ -1365,6 +1794,8 @@
+ 				rx_buffer[0]= 0x64;
+ 				rx_buffer[1]= 0x01;
+ 				*rx_length = 2;
++                return_value = IFD_SUCCESS;
++
+ 				return IFD_SUCCESS;
+ 
+ 			case 0xF0:	/* timeout */
+@@ -1373,12 +1804,18 @@
+ 				rx_buffer[0]= 0x64;
+ 				rx_buffer[1]= 0x00;
+ 				*rx_length = 2;
++                return_value = IFD_SUCCESS;
++
+ 				return IFD_SUCCESS;
+ 
+ 			case 0xFD:	/* Parity error during exchange */
++                return_value = IFD_PARITY_ERROR;
++
+ 				return IFD_PARITY_ERROR;
+ 
+ 			default:
++                return_value = IFD_COMMUNICATION_ERROR;
++
+ 				return IFD_COMMUNICATION_ERROR;
+ 		}
+ 	}
+@@ -1394,6 +1831,9 @@
+ 	{
+ 		DEBUG_CRITICAL3("Can't read all data (%d out of %d expected)",
+ 			length-10, dw2i(cmd, 1));
++
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return_value = IFD_COMMUNICATION_ERROR;
+ 	}
+ 
+@@ -1405,6 +1845,8 @@
+ 		DEBUG_CRITICAL2("overrun by %d bytes", length - *rx_length);
+ 		length = *rx_length;
+ 		return_value = IFD_ERROR_INSUFFICIENT_BUFFER;
++
++		return_value = IFD_ERROR_INSUFFICIENT_BUFFER;
+ 	}
+ 
+ 	/* Kobil firmware bug. No support for chaining */
+@@ -1412,6 +1854,8 @@
+ 	{
+ 		DEBUG_CRITICAL2("Nul block expected but got %d bytes", length);
+ 		return_value = IFD_COMMUNICATION_ERROR;
++
++		return_value = IFD_COMMUNICATION_ERROR;
+ 	}
+ 	else
+ 		memcpy(rx_buffer, cmd+10, length);
+@@ -1476,7 +1920,10 @@
+ 	return_value = CCID_Transmit(reader_index, local_tx_length, tx_buffer,
+ 		chain_parameter, 0);
+ 	if (return_value != IFD_SUCCESS)
++    {
++
+ 		return return_value;
++    }
+ 
+ 	sent_length += local_tx_length;
+ 	tx_buffer += local_tx_length;
+@@ -1488,7 +1935,10 @@
+ 	/* read a nul block */
+ 	return_value = CCID_Receive(reader_index, &local_rx_length, NULL, NULL);
+ 	if (return_value != IFD_SUCCESS)
++    {
++
+ 		return return_value;
++    }
+ 
+ 	/* size of the next block */
+ 	if (tx_length - sent_length > local_tx_length)
+@@ -1526,7 +1976,10 @@
+ 	}
+ 
+ 	if (return_value != IFD_SUCCESS)
++    {
++
+ 		return return_value;
++    }
+ 
+ 	/* advance in the reiceiving buffer */
+ 	rx_buffer += local_rx_length;
+@@ -1555,7 +2008,10 @@
+ 			 * expected in the next RDR_to_PC_DataBlock. */
+ 			return_value = CCID_Transmit(reader_index, 0, NULL, 0x10, 0);
+ 			if (return_value != IFD_SUCCESS)
++            {
++
+ 				return return_value;
++            }
+ 
+ 			goto receive_next_block;
+ 	}
+@@ -1566,6 +2022,9 @@
+ 	if (buffer_overflow)
+ 		(*rx_length)++;
+ 
++    return_value = IFD_SUCCESS;
++
++
+ 	return IFD_SUCCESS;
+ } /* CmdXfrBlockAPDU_extended */
+ 
+@@ -1599,6 +2058,9 @@
+ 		{
+ 			DEBUG_CRITICAL3("Command too long (%d bytes) for max: %d bytes",
+ 				tx_length, ccid_descriptor->dwMaxCCIDMessageLength-10);
++
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 	}
+@@ -1608,14 +2070,24 @@
+ 	{
+ 		DEBUG_CRITICAL3("Command too long (%d bytes) for max: %d bytes",
+ 				tx_length, CMD_BUF_SIZE);
++
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
+ 	}
+ 
+ 	return_value = CCID_Transmit(reader_index, tx_length, tx_buffer, 0, 0);
+ 	if (return_value != IFD_SUCCESS)
++    {
++
+ 		return return_value;
++    }
++
++    return_value = CCID_Receive(reader_index, rx_length, rx_buffer, NULL);
++    
++
+ 
+-	return CCID_Receive(reader_index, rx_length, rx_buffer, NULL);
++	return return_value;
+ } /* CmdXfrBlockTPDU_T0 */
+ 
+ 
+@@ -1627,6 +2099,10 @@
+ static RESPONSECODE T0CmdParsing(unsigned char *cmd, unsigned int cmd_len,
+ 	/*@out@*/ unsigned int *exp_len)
+ {
++	RESPONSECODE return_value = IFD_SUCCESS;
++
++
++	
+ 	*exp_len = 0;
+ 
+ 	/* Ref: 7816-4 Annex A */
+@@ -1647,10 +2123,17 @@
+ 			if (cmd_len > 5 && cmd_len == (unsigned int)(cmd[4] + 5))
+ 				*exp_len = 2; /* SW1 and SW2 only */
+ 			else
++            {
++                return_value = IFD_COMMUNICATION_ERROR;
++
+ 				return IFD_COMMUNICATION_ERROR;	/* situation not supported */
++            }
+ 			break;
+ 	}
+ 
++    return_value = IFD_SUCCESS;
++
++
+ 	return IFD_SUCCESS;
+ } /* T0CmdParsing */
+ 
+@@ -1686,6 +2169,9 @@
+ 				*rcv_len += proc_len;
+ 				*in_len -= proc_len;
+ 
++                return_value = IFD_SUCCESS;
++
++                
+ 				return IFD_SUCCESS;
+ 			}
+ 			else
+@@ -1708,6 +2194,8 @@
+ 		if (*in_len != 0)
+ 		{
+ 			DEBUG_CRITICAL("*in_len != 0");
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 
+@@ -1721,20 +2209,30 @@
+             ret_len = 1;
+             return_value = CCID_Transmit(reader_index, 0, *snd_buf, ret_len, 0);
+             if (return_value != IFD_SUCCESS)
++            {
++
+                 return return_value;
++            }
+             return_value = CCID_Receive(reader_index, &ret_len, tmp_buf, NULL);
+             if (return_value != IFD_SUCCESS)
+-                return return_value;
++            {
+ 
++                return return_value;
++            }
+             ret_len = remain_len - 1;
+             return_value = CCID_Transmit(reader_index, 0, *snd_buf, ret_len, 0);
+             if (return_value != IFD_SUCCESS)
++            {
++
+                 return return_value;
++            }
+             return_value = CCID_Receive(reader_index, &ret_len, &tmp_buf[1],
+ 				NULL);
+             if (return_value != IFD_SUCCESS)
+-                return return_value;
++            {
+ 
++                return return_value;
++            }
+             ret_len += 1;
+         }
+         else
+@@ -1743,12 +2241,18 @@
+ 			ret_len = remain_len;
+ 			return_value = CCID_Transmit(reader_index, 0, *snd_buf, ret_len, 0);
+ 			if (return_value != IFD_SUCCESS)
++            {
++
+ 				return return_value;
++            }
+ 
+ 			return_value = CCID_Receive(reader_index, &ret_len, tmp_buf, NULL);
+ 			if (return_value != IFD_SUCCESS)
++            {
++
+ 				return return_value;
+ 		}
++		}
+ 		memcpy(*rcv_buf, tmp_buf, remain_len);
+ 		*rcv_buf += remain_len, *rcv_len += remain_len;
+ 
+@@ -1756,6 +2260,8 @@
+ 		if (ret_len != remain_len)
+ 		{
+ 			DEBUG_CRITICAL("ret_len != remain_len");
++            return_value = IFD_COMMUNICATION_ERROR;
++
+ 			return IFD_COMMUNICATION_ERROR;
+ 		}
+ 	}
+@@ -1764,14 +2270,21 @@
+ 
+ 		return_value = CCID_Transmit(reader_index, proc_len, *snd_buf, 1, 0);
+ 		if (return_value != IFD_SUCCESS)
++        {
++
+ 			return return_value;
++        }
+ 
+ 		*snd_len -= proc_len;
+ 		*snd_buf += proc_len;
+ 	}
+ 
++    
+ 	DEBUG_COMM("Exit");
+ 
++    return_value = IFD_SUCCESS;
++
++
+ 	return IFD_SUCCESS;
+ } /* T0ProcACK */
+ 
+@@ -1803,14 +2316,18 @@
+ 	{
+ 		return_value = CCID_Transmit(reader_index, 0, rcv_buf, 1, 0);
+ 		if (return_value != IFD_SUCCESS)
+-			return return_value;
++        {
+ 
++			return return_value;
++        }
+ 		in_len = 1;
+ 
+ 		return_value = CCID_Receive(reader_index, &in_len, tmp_buf, NULL);
+ 		if (return_value != IFD_SUCCESS)
+-			return return_value;
++        {
+ 
++			return return_value;
++        }
+ 		in_buf = tmp_buf;
+ 	}
+ 	sw2 = *rcv_buf = *in_buf;
+@@ -1879,12 +2396,18 @@
+ 		/* at most 5 bytes */
+ 		return_value = CCID_Transmit(reader_index, 5, cmd, 0, 0);
+ 		if (return_value != IFD_SUCCESS)
++        {
++
+ 			return return_value;
++        }
+ 
+ 		/* wait for ready */
+ 		return_value = CmdGetSlotStatus(reader_index, pcbuffer);
+ 		if (return_value != IFD_SUCCESS)
++        {
++
+ 			return return_value;
++        }
+ 
+ 		if (0x10 == pcbuffer[0])
+ 		{
+@@ -1894,21 +2417,30 @@
+ 				return_value = CCID_Transmit(reader_index, snd_len, snd_buf,
+ 					0, 0);
+ 				if (return_value != IFD_SUCCESS)
++                {
++
+ 					return return_value;
+ 			}
++			}
+ 			else
+ 			{
+ 				/* read apdu data */
+ 				return_value = CCID_Receive(reader_index, rcv_len, rcv_buf,
+ 						NULL);
+ 				if (return_value != IFD_SUCCESS)
++                {
++
+ 					return return_value;
+ 			}
+ 		}
++		}
+ 
+ 		return_value = CmdGetSlotStatus(reader_index, pcbuffer);
+ 		if (return_value != IFD_SUCCESS)
++        {
++
+ 			return return_value;
++        }
+ 
+ 		/* SW1-SW2 available */
+ 		if (0x20 == pcbuffer[0])
+@@ -1939,6 +2471,8 @@
+ 	if (return_value != IFD_SUCCESS)
+ 	{
+ 		DEBUG_CRITICAL("T0CmdParsing failed");
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
+ 	}
+ 
+@@ -1968,12 +2502,17 @@
+ 		(ins & 0xF0) == 0x90)
+ 	{
+ 		DEBUG_CRITICAL2("fatal: INS (0x%02X) = 0x6X or 0x9X", ins);
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
+ 	}
+ 
+ 	return_value = CCID_Transmit(reader_index, 5, cmd, 1, 0);
+ 	if (return_value != IFD_SUCCESS)
++    {
++
+ 		return return_value;
++    }
+ 
+ 	while (1)
+ 	{
+@@ -1993,6 +2532,8 @@
+ 			/* Suppose we should be able to get data.
+ 			 * If not, error. Set the time-out error */
+ 			DEBUG_CRITICAL("error: in_len = 0");
++            return_value = IFD_RESPONSE_TIMEOUT;
++
+ 			return IFD_RESPONSE_TIMEOUT;
+ 		}
+ 
+@@ -2003,7 +2544,10 @@
+ 			return_value = CCID_Transmit(reader_index, 0, cmd, 1, 0);
+ 
+ 			if (return_value != IFD_SUCCESS)
++            {
++
+ 				return return_value;
++            }
+ 
+ 			continue;
+ 		}
+@@ -2031,16 +2575,22 @@
+ 				&rcv_buf, rcv_len, &in_buf, &in_len, 1, is_rcv);
+ 
+ 			if (return_value != IFD_SUCCESS)
++            {
++
+ 				return return_value;
++            }
+ 
+ 			continue;
+ 		}
+ 		else if ((*in_buf & 0xF0) == 0x60 || (*in_buf & 0xF0) == 0x90)
+-			/* SW1 */
+-			return T0ProcSW1(reader_index, rcv_buf, rcv_len, in_buf, in_len);
++        {   /* SW1 */
++            return_value = T0ProcSW1(reader_index, rcv_buf, rcv_len, in_buf, in_len);
+ 
++			return return_value;
++        }
+ 		/* Error, unrecognized situation found */
+ 		DEBUG_CRITICAL2("Unrecognized Procedure byte (0x%02X) found!", *in_buf);
++
+ 		return return_value;
+ 	}
+ 
+@@ -2084,6 +2634,11 @@
+ {
+ 	unsigned char cmd[10+CMD_BUF_SIZE];	/* CCID + APDU buffer */
+ 	_ccid_descriptor *ccid_descriptor = get_ccid_descriptor(reader_index);
++    RESPONSECODE return_value = IFD_SUCCESS;
++    
++
++
++
+ 
+ 	DEBUG_COMM2("length: %d bytes", length);
+ 
+@@ -2096,20 +2651,34 @@
+ 
+ 	/* check that the command is not too large */
+ 	if (length > CMD_BUF_SIZE)
++    {
++        return_value = IFD_NOT_SUPPORTED;
++
+ 		return IFD_NOT_SUPPORTED;
++    }
+ 
+ 	memcpy(cmd+10, buffer, length);
+ 
+ 	if (WritePort(reader_index, 10+length, cmd) != STATUS_SUCCESS)
++    {
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	length = sizeof(cmd);
+ 	if (ReadPort(reader_index, &length, cmd) != STATUS_SUCCESS)
++    {
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	if (length < STATUS_OFFSET+1)
+ 	{
+ 		DEBUG_CRITICAL2("Not enough data received: %d bytes", length);
++        return_value = IFD_COMMUNICATION_ERROR;
++
+ 		return IFD_COMMUNICATION_ERROR;
+ 	}
+ 
+@@ -2117,14 +2686,29 @@
+ 	{
+ 		ccid_error(cmd[ERROR_OFFSET], __FILE__, __LINE__, __FUNCTION__);    /* bError */
+ 		if (0x00 == cmd[ERROR_OFFSET])	/* command not supported */
++        {
++            return_value = IFD_NOT_SUPPORTED;
++
+ 			return IFD_NOT_SUPPORTED;
++        }
+ 		else
+ 			if ((cmd[ERROR_OFFSET] >= 1) && (cmd[ERROR_OFFSET] <= 127))
+ 				/* a parameter is not changeable */
++            {
++                return_value = IFD_SUCCESS;
++
+ 				return IFD_SUCCESS;
++            }
+ 			else
++            {
++                return_value = IFD_COMMUNICATION_ERROR;
++
+ 				return IFD_COMMUNICATION_ERROR;
+ 	}
++	}
++
++    return_value = IFD_SUCCESS;
++
+ 
+ 	return IFD_SUCCESS;
+ } /* SetParameters */
+diff -NurBbw ccid-1.4.3/src/commands.h ccid-1.4.3-morpho/src/commands.h
+--- ccid-1.4.3/src/commands.h	2010-06-04 14:31:15.000000000 +0200
++++ ccid-1.4.3-morpho/src/commands.h	2011-06-21 17:50:48.000000000 +0200
+@@ -15,6 +15,11 @@
+ 	You should have received a copy of the GNU Lesser General Public License
+ 	along with this library; if not, write to the Free Software Foundation,
+ 	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++     
++*/
++
++/*
++ * dom ( gt220035 ) avril 2011 : modification pour compatibilité token EM
+ */
+ 
+ /*
+@@ -26,6 +31,47 @@
+ #define ERROR_OFFSET 8
+ #define CHAIN_PARAMETER_OFFSET 9
+ 
++# define OFFSET_MESSAGETYPE         0
++# define OFFSET_MESSAGELENGTH       1
++# define OFFSET_SLOT                5
++# define OFFSET_SEQUENCENUMBER      6
++# define OFFSET_STATUS              7
++# define OFFSET_ERROR               8
++# define OFFSET_CLOCKSTATUS         9
++# define OFFSET_CHAINPARAMETER      9
++
++/*  Status Bitmap 
++ *    IccStatus                             CommandStatus
++ *  | b0 b1                 | b2 b3 b4 b5 | b6 b7           |
++ *   0 = PRESENT_ACTIVE
++ *   1 = PRESENT_INACTIVE
++ *   2 = NOT_PRESENT
++ *   3 = RFU
++ *                              RFU
++ *                                          0 = Processed without error
++ *                                          1 = Failed, error condition given by ERROR
++ *                                          2 = Time extension requested
++ *                                          3 = RFU
++ */
++
++/*  Error
++ *  ICC_MUTE    -2  0xFE        No answer from USB-ICC or no ATR
++ *  XFR_OVERRUN -4  0xFC        Buffer overflow on received data
++ *  HW_ERROR    -5  0xFB        hardware error
++ *              (-64)-(-127)    user defined errors range
++ *              0xC0 to 0x81
++ *              
++ *              -3  0xFD                Shall not be used by USB-ICC
++ *              (-8)-(-14) 0xF8 to 0xF2 idem
++ *              -16 0xF0                idem
++ *              -17 0xEF                idem
++ *              -32 0xE0                idem
++ *
++ *              all others              RFU
++ *              positive                offset of the problem in the response (e.g. if bSlot is set to 0x01, this is an error and bError = 0x05 )
++ *              0                       the command is not supported
++ */
++
+ RESPONSECODE CmdPowerOn(unsigned int reader_index, unsigned int * nlength,
+ 	/*@out@*/ unsigned char buffer[], int voltage);
+ 
+@@ -62,3 +108,5 @@
+ 
+ int isCharLevel(int reader_index);
+ 
++RESPONSECODE CmdIccClock(unsigned int reader_index, 
++			 /* @out@ */ unsigned char buffer[]);
+diff -NurBbw ccid-1.4.3/src/ifdhandler.c ccid-1.4.3-morpho/src/ifdhandler.c
+--- ccid-1.4.3/src/ifdhandler.c	2011-02-25 18:15:31.000000000 +0100
++++ ccid-1.4.3-morpho/src/ifdhandler.c	2011-06-21 17:50:48.000000000 +0200
+@@ -60,10 +60,8 @@
+ static void init_driver(void);
+ static void extra_egt(ATR_t *atr, _ccid_descriptor *ccid_desc, DWORD Protocol);
+ static char find_baud_rate(unsigned int baudrate, unsigned int *list);
+-static unsigned int T0_card_timeout(double f, double d, int TC1, int TC2,
+-	int clock_frequency);
+-static unsigned int T1_card_timeout(double f, double d, int TC1, int BWI,
+-	int CWI, int clock_frequency);
++static unsigned int T0_card_timeout(double f, double d, int TC1, int TC2,int clock_frequency);
++static unsigned int T1_card_timeout(double f, double d, int TC1, int BWI,int CWI, int clock_frequency);
+ static int get_IFSC(ATR_t *atr, int *i);
+ 
+ 
+@@ -73,13 +71,21 @@
+ 	int reader_index;
+ 	status_t ret;
+ 
++
++    
+ 	if (! DebugInitialized)
++    {
++
+ 		init_driver();
++    }
+ 
+ 	DEBUG_INFO3("lun: %X, device: %s", Lun, lpcDevice);
+ 
+ 	if (-1 == (reader_index = GetNewReaderIndex(Lun)))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	/* Reset ATR buffer */
+ 	CcidSlots[reader_index].nATRLength = 0;
+@@ -127,9 +133,14 @@
+ 		 * restarted with the reader already connected. We get some
+ 		 * "usb_bulk_read: Resource temporarily unavailable" on the first
+ 		 * few tries. It is an empirical hack */
+-		if ((IFD_COMMUNICATION_ERROR == CmdGetSlotStatus(reader_index, pcbuffer))
++
++		/*		if ((IFD_COMMUNICATION_ERROR == CmdGetSlotStatus(reader_index, pcbuffer))
+ 			&& (IFD_COMMUNICATION_ERROR == CmdGetSlotStatus(reader_index, pcbuffer))
+ 			&& (IFD_COMMUNICATION_ERROR == CmdGetSlotStatus(reader_index, pcbuffer)))
++		*/
++		if ( IFD_COMMUNICATION_ERROR == IFDHICCPresence(Lun) 
++		     && IFD_COMMUNICATION_ERROR == IFDHICCPresence(Lun) 
++		     && IFD_COMMUNICATION_ERROR == IFDHICCPresence(Lun) )
+ 		{
+ 			DEBUG_CRITICAL("failed");
+ 			return_value = IFD_COMMUNICATION_ERROR;
+@@ -194,13 +205,21 @@
+ 	RESPONSECODE return_value = IFD_SUCCESS;
+ 	int reader_index;
+ 
++
++    
+ 	if (! DebugInitialized)
++    {
++
+ 		init_driver();
++    }
+ 
+ 	DEBUG_INFO2("lun: %X", Lun);
+ 
+ 	if (-1 == (reader_index = GetNewReaderIndex(Lun)))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	/* Reset ATR buffer */
+ 	CcidSlots[reader_index].nATRLength = 0;
+@@ -244,9 +263,15 @@
+ 		 * restarted with the reader already connected. We get some
+ 		 * "usb_bulk_read: Resource temporarily unavailable" on the first
+ 		 * few tries. It is an empirical hack */
++		/*
+ 		if ((IFD_COMMUNICATION_ERROR == CmdGetSlotStatus(reader_index, pcbuffer))
+ 			&& (IFD_COMMUNICATION_ERROR == CmdGetSlotStatus(reader_index, pcbuffer))
+ 			&& (IFD_COMMUNICATION_ERROR == CmdGetSlotStatus(reader_index, pcbuffer)))
++		*/
++		if ( IFD_COMMUNICATION_ERROR == IFDHICCPresence(Lun) 
++		     && IFD_COMMUNICATION_ERROR == IFDHICCPresence(Lun) 
++		     && IFD_COMMUNICATION_ERROR == IFDHICCPresence(Lun) 
++		     )
+ 		{
+ 			DEBUG_CRITICAL("failed");
+ 			return_value = IFD_COMMUNICATION_ERROR;
+@@ -287,8 +312,13 @@
+ 	 */
+ 	int reader_index;
+ 
++
++    
+ 	if (-1 == (reader_index = LunToReaderIndex(Lun)))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	DEBUG_INFO3("%s (lun: %X)", CcidSlots[reader_index].readerName, Lun);
+ 
+@@ -321,16 +351,24 @@
+ static RESPONSECODE IFDHPolling(DWORD Lun, int timeout)
+ {
+ 	int reader_index;
++    status_t return_value;
++    
++
+ 
+ 	if (-1 == (reader_index = LunToReaderIndex(Lun)))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	/* log only if DEBUG_LEVEL_PERIODIC is set */
+ 	if (LogLevel & DEBUG_LEVEL_PERIODIC)
+ 		DEBUG_INFO4("%s (lun: %X) %d ms", CcidSlots[reader_index].readerName,
+ 			Lun, timeout);
+ 
+-	return InterruptRead(reader_index, timeout);
++    return_value = InterruptRead(reader_index, timeout);
++
++    return return_value;
+ }
+ 
+ /* on an ICCD device the card is always inserted
+@@ -339,8 +377,13 @@
+ {
+ 	int reader_index;
+ 
++
++    
+ 	if (-1 == (reader_index = LunToReaderIndex(Lun)))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	DEBUG_INFO4("%s (lun: %X) %d ms", CcidSlots[reader_index].readerName, Lun,
+ 		timeout);
+@@ -360,8 +403,13 @@
+ {
+ 	int reader_index;
+ 
++
++    
+ 	if (-1 == (reader_index = LunToReaderIndex(Lun)))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	DEBUG_INFO3("%s (lun: %X)", CcidSlots[reader_index].readerName, Lun);
+ 
+@@ -394,11 +442,15 @@
+ 	int reader_index;
+ 	RESPONSECODE return_value = IFD_SUCCESS;
+ 
++
++    
+ 	if (-1 == (reader_index = LunToReaderIndex(Lun)))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+-	DEBUG_INFO4("tag: 0x%X, %s (lun: %X)", Tag,
+-		CcidSlots[reader_index].readerName, Lun);
++	DEBUG_INFO4("tag: 0x%X, %s (lun: %X)", Tag, CcidSlots[reader_index].readerName, Lun);
+ 
+ 	switch (Tag)
+ 	{
+@@ -651,8 +703,13 @@
+ 
+ 	int reader_index;
+ 
++
++    
+ 	if (-1 == (reader_index = LunToReaderIndex(Lun)))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	DEBUG_INFO4("tag: 0x%X, %s (lun: %X)", Tag,
+ 		CcidSlots[reader_index].readerName, Lun);
+@@ -693,11 +750,15 @@
+ 	CcidDesc *ccid_slot;
+ 	_ccid_descriptor *ccid_desc;
+ 
++
++    
+ 	if (-1 == (reader_index = LunToReaderIndex(Lun)))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+-	DEBUG_INFO4("protocol T=%d, %s (lun: %X)", Protocol-SCARD_PROTOCOL_T0,
+-		CcidSlots[reader_index].readerName, Lun);
++	DEBUG_INFO4("protocol T=%d, %s (lun: %X)", Protocol-SCARD_PROTOCOL_T0, CcidSlots[reader_index].readerName, Lun);
+ 
+ 	/* Set to zero buffer */
+ 	memset(pps, 0, sizeof(pps));
+@@ -713,8 +774,16 @@
+ 		goto end;
+ 
+ 	/* Get ATR of the card */
+-	(void)ATR_InitFromArray(&atr, ccid_slot->pcATRBuffer,
+-		ccid_slot->nATRLength);
++	(void)ATR_InitFromArray(&atr, ccid_slot->pcATRBuffer, ccid_slot->nATRLength );
++
++
++
++
++
++
++
++
++
+ 
+ 	/* Apply Extra EGT patch for bogus cards */
+ 	extra_egt(&atr, ccid_desc, Protocol);
+@@ -725,7 +794,10 @@
+ 		if (SCARD_PROTOCOL_T1 == Protocol)
+ 			pps[1] |= ATR_PROTOCOL_TYPE_T1;
+ 		else
++        {
++
+ 			return IFD_PROTOCOL_NOT_SUPPORTED;
++        }
+ 
+ 	/* TA2 present -> specific mode */
+ 	if (atr.ib[1][ATR_INTERFACE_BYTE_TA].present)
+@@ -829,9 +901,12 @@
+ 					 * only the baud rate specified in TA1 but reader does not
+ 					 * support this value. Reject the card. */
+ 					if (atr.ib[1][ATR_INTERFACE_BYTE_TA].present)
++                    {
++
+ 						return IFD_COMMUNICATION_ERROR;
+ 				}
+ 			}
++			}
+ 			else
+ 			{
+ 				/* the card is too fast for the reader */
+@@ -901,7 +976,10 @@
+ 		int default_protocol;
+ 
+ 		if (ATR_MALFORMED == ATR_GetDefaultProtocol(&atr, &default_protocol))
++        {
++
+ 			return IFD_PROTOCOL_NOT_SUPPORTED;
++        }
+ 
+ 		/* if the requested protocol is not the default one
+ 		 * or a TA1/PPS1 is present */
+@@ -934,7 +1012,10 @@
+ 	/* specific mode and implicit parameters? (b5 of TA2) */
+ 	if (atr.ib[1][ATR_INTERFACE_BYTE_TA].present
+ 		&& (atr.ib[1][ATR_INTERFACE_BYTE_TA].value & 0x10))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	/* T=1 */
+ 	if (SCARD_PROTOCOL_T1 == Protocol)
+@@ -1016,9 +1097,22 @@
+ 		DEBUG_COMM2("Timeout: %d ms", ccid_desc->readTimeout);
+ 
+ 		ret = SetParameters(reader_index, 1, sizeof(param), param);
++
++
++
++
++
++
++
++
++
++		
+ 		if (IFD_SUCCESS != ret)
++        {
++
+ 			return ret;
+ 	}
++	}
+ 	else
+ 	/* T=0 */
+ 	{
+@@ -1058,8 +1152,11 @@
+ 
+ 		ret = SetParameters(reader_index, 0, sizeof(param), param);
+ 		if (IFD_SUCCESS != ret)
++        {
++
+ 			return ret;
+ 	}
++	}
+ 
+ 	/* set IFSC & IFSD in T=1 */
+ 	if (SCARD_PROTOCOL_T1 == Protocol)
+@@ -1079,8 +1176,11 @@
+ 		{
+ 			DEBUG_COMM2("Negociate IFSD at %d", ccid_desc -> dwMaxIFSD);
+ 			if (t1_negotiate_ifsd(t1, 0, ccid_desc -> dwMaxIFSD) < 0)
++            {
++
+ 				return IFD_COMMUNICATION_ERROR;
+ 		}
++		}
+ 		(void)t1_set_param(t1, IFD_PROTOCOL_T1_IFSD, ccid_desc -> dwMaxIFSD);
+ 
+ 		DEBUG_COMM3("T=1: IFSC=%d, IFSD=%d", t1->ifsc, t1->ifsd);
+@@ -1144,8 +1244,13 @@
+ 	/* By default, assume it won't work :) */
+ 	*AtrLength = 0;
+ 
++
++    
+ 	if (-1 == (reader_index = LunToReaderIndex(Lun)))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	DEBUG_INFO4("action: %s, %s (lun: %X)", actions[Action-IFD_POWER_UP],
+ 		CcidSlots[reader_index].readerName, Lun);
+@@ -1189,8 +1294,7 @@
+ 			ccid_descriptor->readTimeout = 60*1000;
+ 
+ 			nlength = sizeof(pcbuffer);
+-			return_value = CmdPowerOn(reader_index, &nlength, pcbuffer,
+-				PowerOnVoltage);
++			return_value = CmdPowerOn(reader_index, &nlength, pcbuffer, PowerOnVoltage);
+ 
+ 			/* set back the old timeout */
+ 			ccid_descriptor->readTimeout = oldReadTimeout;
+@@ -1274,8 +1378,13 @@
+ 
+ 	(void)RecvPci;
+ 
++
++    
+ 	if (-1 == (reader_index = LunToReaderIndex(Lun)))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	DEBUG_INFO3("%s (lun: %X)", CcidSlots[reader_index].readerName, Lun);
+ 
+@@ -1313,9 +1422,14 @@
+ 	int reader_index;
+ 	_ccid_descriptor *ccid_descriptor;
+ 
++
++    
+ 	reader_index = LunToReaderIndex(Lun);
+ 	if ((-1 == reader_index) || (NULL == pdwBytesReturned))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	ccid_descriptor = get_ccid_descriptor(reader_index);
+ 
+@@ -1377,8 +1491,10 @@
+ 
+ 		/* we need room for up to five records */
+ 		if (RxLength < 5 * sizeof(PCSC_TLV_STRUCTURE))
+-			return IFD_ERROR_INSUFFICIENT_BUFFER;
++        {
+ 
++			return IFD_ERROR_INSUFFICIENT_BUFFER;
++        }
+ 		/* We can only support direct verify and/or modify currently */
+ 		if (ccid_descriptor -> bPINSupport & CCID_CLASS_PIN_VERIFY)
+ 		{
+@@ -1589,8 +1705,13 @@
+ 	_ccid_descriptor *ccid_descriptor;
+ 	unsigned int oldReadTimeout;
+ 
++
++    
+ 	if (-1 == (reader_index = LunToReaderIndex(Lun)))
++    {
++
+ 		return IFD_COMMUNICATION_ERROR;
++    }
+ 
+ 	DEBUG_PERIODIC3("%s (lun: %X)", CcidSlots[reader_index].readerName, Lun);
+ 
+@@ -1622,7 +1743,10 @@
+ 	LogLevel = oldLogLevel;
+ 
+ 	if (return_value != IFD_SUCCESS)
++    {
++
+ 		return return_value;
++    }
+ 
+ 	return_value = IFD_COMMUNICATION_ERROR;
+ 	switch (pcbuffer[7] & CCID_ICC_STATUS_MASK)	/* bStatus */
+@@ -1737,7 +1861,10 @@
+ 
+ 	rv = bundleParse(infofile, &plist);
+ 	if (rv)
++    {
++
+ 		return;
++    }
+ 
+ 	/* Log level */
+ 	rv = LTPBundleFindValueWithKey(&plist, "ifdLogLevel", &values);
+@@ -1819,16 +1946,24 @@
+ 	double f, d;
+ 	int i;
+ 
++
++    
+ 	/* if TA1 not present */
+ 	if (! atr->ib[0][ATR_INTERFACE_BYTE_TA].present)
++    {
++
+ 		return;
++    }
+ 
+ 	(void)ATR_GetParameter(atr, ATR_PARAMETER_D, &d);
+ 	(void)ATR_GetParameter(atr, ATR_PARAMETER_F, &f);
+ 
+ 	/* may happen with non ISO cards */
+ 	if ((0 == f) || (0 == d))
++    {
++
+ 		return;
++    }
+ 
+ 	/* Baudrate = f x D/F */
+ 	card_baudrate = (unsigned int) (1000 * ccid_desc->dwDefaultClock * d / f);
+@@ -1838,7 +1973,10 @@
+ 
+ 	/* TA1 > 11? */
+ 	if (card_baudrate <= default_baudrate)
++    {
++
+ 		return;
++    }
+ 
+ 	/* Current EGT = 0 or FF? */
+ 	if (atr->ib[0][ATR_INTERFACE_BYTE_TC].present &&
+@@ -1895,8 +2033,12 @@
+ 		 * is an approximative result, computed from the d/f float result.
+ 		 */
+ 		if ((baudrate < list[i] + 2) && (baudrate > list[i] - 2))
++        {
++
+ 			return TRUE;
+ 	}
++	}
++
+ 
+ 	return FALSE;
+ } /* find_baud_rate */
+@@ -1932,7 +2074,10 @@
+ 
+ 	/* may happen with non ISO cards */
+ 	if ((0 == f) || (0 == d) || (0 == clock_frequency))
++    {
++
+ 		return 60;	/* 60 seconds */
++    }
+ 
+ 	/* EGT */
+ 	/* see ch. 6.5.3 Extra Guard Time, page 12 of ISO 7816-3 */
+@@ -1977,7 +2122,10 @@
+ 
+ 	/* may happen with non ISO cards */
+ 	if ((0 == f) || (0 == d) || (0 == clock_frequency))
++    {
++
+ 		return 60;	/* 60 seconds */
++    }
+ 
+ 	/* see ch. 6.5.2 Transmission factors F and D, page 12 of ISO 7816-3 */
+ 	etu = f / d / clock_frequency;
