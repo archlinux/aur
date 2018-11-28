@@ -6,11 +6,11 @@ pkgbase = piwigo
 	install = piwigo.install
 	arch = any
 	license = GPL
-	makedepends = wget
 	makedepends = unzip
 	depends = php
 	depends = php-gd
 	depends = mariadb
+	optdepends = php-apache: to use the Apache web server
 	options = emptydirs
 	backup = etc/webapps/piwigo/apache.conf
 	source = http::http://piwigo.org/download/dlcounter.php?code=latest
