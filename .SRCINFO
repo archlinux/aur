@@ -1,0 +1,16 @@
+pkgbase = qsopcast
+	pkgdesc = Qt front-end for p2p TV sopcast
+	pkgver = 0.3.8.1
+	pkgrel = 3
+	url = https://code.google.com/archive/p/qsopcast/
+	arch = x86_64
+	license = GPL2
+	makedepends = gendesk
+	makedepends = imagemagick
+	depends = qt4
+	depends = sopcast
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/qsopcast/qsopcast-0.3.8.1-qt4.tar.bz2
+	sha256sums = 59ebca822102e7c3af1d5a39368457a3bb659ceba74cdd9aa9034fb68a8af8fc
+
+pkgname = qsopcast
+
