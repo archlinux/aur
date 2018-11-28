@@ -9,13 +9,20 @@
 
 ## arg 1:  the new package version
 post_install() {
-	# do something here
-  echo "Activate the timer with"
-  echo '$ systemctl daemon-reload'
-  echo '$ systemctl start nextcloudcron.timer'
-  echo '$ systemctl enable nextcloudcron.timer'
-  echo 'Check if timer is activated with'
-  echo '$ systemctl list-timers'
+	  # do something here
+    echo 'Reload systemd daemon.'
+    echo '$ systemctl daemon-reload'
+    echo "Activate Cron timer with"
+    echo '$ systemctl start nextcloud-cron.timer'
+    echo '$ systemctl enable nextcloud-cron.timer'
+    echo "Activate periodic file scans with"
+    echo '$ systemctl start nextcloud-filescan.timer'
+    echo '$ systemctl enable nextcloud-filescan.timer'
+    echo "Activate periodic preview generation with"
+    echo '$ systemctl start nextcloud-preview.timer'
+    echo '$ systemctl enable nextcloud-preview.timer'
+    echo 'Check if wanted timers are activated with'
+    echo '$ systemctl list-timers'
 }
 
 ## arg 1:  the new package version
