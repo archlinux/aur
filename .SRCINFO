@@ -1,6 +1,6 @@
 pkgbase = webstorm
 	pkgdesc = JavaScript IDE and HTML editor.
-	pkgver = 2018.2.6
+	pkgver = 2018.3
 	pkgrel = 1
 	url = https://www.jetbrains.com/webstorm/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = webstorm
 	license = Commercial
 	makedepends = rsync
 	options = !strip
-	source = https://download.jetbrains.com/webstorm/WebStorm-2018.2.6.tar.gz
+	source = https://download.jetbrains.com/webstorm/WebStorm-2018.3.tar.gz
 	source = jetbrains-webstorm.desktop
-	sha512sums = d4a4769b04972140ffcda313dc10e11813d09ff88e147e92aab47965ee5991ce2aab93ab2c29452bb5cf551ddb1cc3e20aebf6d046b8886ac883d02ef3c44570
+	sha512sums = 96949d606f3e3e3a908cb04c0b356d1f568e869761a49c0f0b67e49582bea14f11d3d673c8ef07c150a17d22f64c2c789f54f999c9631b5f503504eba4efbd55
 	sha512sums = e261eb9b7fe61518d3399874492c94b642cb8268861c246692887ef3027380af06b7e692d6733340deebb629a3c8d095364cb6def4071cd5af31cfbfe9ec6b68
 
 pkgname = webstorm
