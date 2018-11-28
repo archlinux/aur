@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-jansson
 	pkgdesc = C library for encoding, decoding and manipulating JSON data (mingw-w64)
-	pkgver = 2.11
+	pkgver = 2.12
 	pkgrel = 1
 	url = http://www.digip.org/jansson/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-jansson
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://www.digip.org/jansson/releases/jansson-2.11.tar.gz
-	sha512sums = 0ae77cf7ec264536313639458ba20b66e221078cddd209df3ce45c895b897799954abc1ca4b0d5993b974135652804be6bede2825503469d56303470888382f8
+	source = http://www.digip.org/jansson/releases/jansson-2.12.tar.gz
+	sha512sums = e40bdafdfa1fa663f71e00c06d7bfc98cff4ed3581a147894e5272e50fa5f9b9a7af6aaca41ff423a2ddd2554a192b36efcc32f6a3c98c727e9f819b955357cb
 
 pkgname = mingw-w64-jansson
 
