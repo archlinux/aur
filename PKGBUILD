@@ -4,7 +4,7 @@
 
 pkgname=ksysguard
 pkgver=5.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Track and control the processes running in your system'
 arch=(x86_64)
 url='https://userbase.kde.org/KSysGuard'
