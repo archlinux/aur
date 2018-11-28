@@ -1,12 +1,12 @@
 pkgname=mingw-w64-udis86
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalistic disassembler library"
 arch=('i686' 'x86_64')
 url="http://udis86.sourceforge.net/"
 license=("BSD")
-makedepends=(mingw-w64-gcc mingw-w64-pkg-config)
-depends=('python2')
+makedepends=(mingw-w64-gcc mingw-w64-pkg-config python)
+depends=()
 options=(!strip !buildflags staticlibs)
 source=("http://downloads.sourceforge.net/udis86/udis86-${pkgver}.tar.gz")
 sha1sums=('f55dec2d5319aac9d0a7ae2614ddcc7aa73d3744')
