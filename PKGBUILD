@@ -2,7 +2,7 @@
 # Maintainer: Chee Sing Lee <cheesinglee@gmail.com>
 
 pkgname=ttf-tangut-yinchuan
-pkgver=9.001
+pkgver=11.001
 pkgrel=1
 pkgdesc="BabelStone Font for Unicode Tangut Script characters"
 url="http://www.babelstone.co.uk/Fonts/Yinchuan.html"
