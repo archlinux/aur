@@ -1,7 +1,7 @@
 pkgbase = watchman-git
 	pkgdesc = Watches files and records, or triggers actions, when they change.
 	pkgver = v4.9.0.r535.gc12ab4ca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://facebook.github.io/watchman/
 	arch = i686
 	arch = x86_64
