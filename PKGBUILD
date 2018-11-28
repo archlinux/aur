@@ -1,8 +1,8 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 
 pkgname=armcl-opencl
-pkgver=18.08
-pkgrel=3
+pkgver=18.11
+pkgrel=0
 
 epoch=
 pkgdesc="ARM Computer Vision and Machine Learning Library (x86_64 OpenCL Backend)"
