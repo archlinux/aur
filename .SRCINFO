@@ -1,0 +1,13 @@
+pkgbase = git-remind
+	pkgdesc = A command line tool that prevent you to forget git-commit and git-push.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/suin/git-remind
+	arch = x86_64
+	license = GPL
+	provides = git-remind
+	source = git-remind-1.1.1.tar.gz::https://github.com/suin/git-remind/releases/download/v1.1.1/git-remind_1.1.1_Linux_x86_64.tar.gz
+	sha256sums = abdeefe18c5bc074e9dd3766996a956d32eb33fcc22c456ea1f4fc2df00cb17b
+
+pkgname = git-remind
+
