@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('t2ec')
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A package of scripts to display system icons and controls in Tint2 panel"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
@@ -23,6 +23,8 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/arch-update.py"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/zenity-box.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/help.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/menu-template.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/menu-update.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-empty-charging.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-empty.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-full-charging.svg"
@@ -56,12 +58,14 @@ md5sums=('8a02b12a94a553f860cb91ac14a55324'
          '921064d0eb82b775080872a5507e820d'
          '1dae806f7c7b0eb34cda8468b4631474'
          '5019cebbf405090d789c1ef5469478b4'
-         'd693e8d32cc19ce1128ac4c2af42459b'
+         'fadd6fb960d661f50e6f888833bc191b'
          '63a955c04f03451a13fd4a5f3ea1bbf3'
          '4d5efb2581959b68db65a0964e1c26b9'
-         'c6ca68e09a73a7a6a34afa6943d70004'
+         '607482e19bdcd53454b4e2b077760ef8'
          'f9a82c34f8f4228c5dc194b0fb7b37a0'
          '316a161692a5699761e73e624adb723b'
+         'e789b2a73b09b4889669e25168217718'
+         '80dc7aef3a27d256676857b6ae925a2a'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -113,5 +117,9 @@ package() {
  	 "$pkgdir"/usr/lib/$pkgname/zenity-box.sh
   install -D -m 755 help.sh \
  	 "$pkgdir"/usr/lib/$pkgname/help.sh
+  install -D -m 755 menu-template.sh \
+ 	 "$pkgdir"/usr/lib/$pkgname/menu-template.sh
+  install -D -m 755 menu-update.sh \
+ 	 "$pkgdir"/usr/lib/$pkgname/menu-update.sh
   install -D -t "$pkgdir/usr/share/$pkgname" *.svg
 }
