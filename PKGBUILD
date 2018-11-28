@@ -1,52 +1,43 @@
-# Maintainer: Ivelin Velkov <ivelin dot velkov at gmail dot com>
+# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: Ivelin Velkov <ivelin dot velkov at gmail dot com>
 
 pkgname=teams-for-linux
-pkgver=0.0.7
-pkgrel=3
-pkgdesc='Unofficial Microsoft Teams client for Linux using Electron.'
-arch=('any')
-url='https://github.com/ivelkov/teams-for-linux'
-license=('GPLv3')
-depends=( 'nodejs' 'xdg-utils' 'electron' )
-makedepends=( 'npm' )
-provides=("${teams-for-linux}-${pkgver}")
-conflicts=("${teams-for-linux}-${pkgver}")
-source=("https://github.com/ivelkov/$pkgname/archive/v$pkgver.tar.gz")
-
-sha1sums=('SKIP')
-
-prepare() {
-    cat > "${pkgname}.desktop" << EOF
-[Desktop Entry]
-Type=Application
-Name=Teams
-Comment=Unofficial Microsoft Teams client for Linux.
-Exec=/usr/bin/${pkgname}
-Icon=/usr/share/icons/hicolor/1024x1024/apps/teams-for-linux.png
-Categories=Network;InstantMessaging;Application;
-Terminal=false
-StartupNotify=true
-Version=${pkgver}
-EOF
-
-    cat > "${pkgname}" << EOF
-#!/usr/bin/env sh
-electron /usr/share/${pkgname}/app \$*
-EOF
-}
+pkgver=0.1.9
+pkgrel=1
+pkgdesc="Unofficial Microsoft Teams client for Linux using Electron."
+arch=("aarch64" "armv7h" "i686" "x86_64")
+url="https://github.com/IsmaelMartinez/${pkgname}"
+license=("GPL3")
+depends=("gtk3" "libxss" "nss")
+makedepends=("yarn")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/IsmaelMartinez/${pkgname}/archive/v${pkgver}.tar.gz"
+        "${pkgname}.desktop")
+sha256sums=("9bd286226e25753365850a50c69d574ad5789105c062b3332c88dc62e6d0e0e7"
+            "f33ab4997c329567bbe172fe77ee6cbced5c5d4354e12ef52a89dd702422fded")
 
 build() {
-    cd "$pkgname-$pkgver"
-    npm install --production && (cd app && npm install --production)
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
+  if [[ ${CARCH} == "aarch64" ]]; then
+    yarn build --arm64 --linux dir
+  elif [[ ${CARCH} == "armv7h" ]]; then
+    yarn build --armv7l --linux dir
+  elif [[ ${CARCH} == "i686" ]]; then
+    yarn build --ia32 --linux dir
+  elif [[ ${CARCH} == "x86_64" ]]; then
+    yarn build --x64 --linux dir
+  fi
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-
-    install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    cp -r --preserve=mode . "${pkgdir}/usr/share/${pkgname}"
-    
-    install -Dm644 "build/icons/1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/teams-for-linux.png"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -dm755 "${pkgdir}/opt" "${pkgdir}/usr/bin"
+  cp -r --preserve=mode "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked" "${pkgdir}/opt/${pkgname}"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  for _file in "${srcdir}/${pkgname}-${pkgver}/build/icons/"*.png
+  do
+    _filename="$(basename ${_file})"
+    install -Dm644 "${_file}" "${pkgdir}/usr/share/icons/hicolor/${_filename%.png}/apps/${pkgname}.png"
+  done
+  ln -sf "/opt/${pkgname}/${pkgname%-for-linux}" "${pkgdir}/usr/bin/${pkgname}"
 }
