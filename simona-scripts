@@ -4,6 +4,7 @@
 # Libertamente utilizzabile sotto GPL v3
 
 if [[ $1 == "-h" || $1 == "--help" || $1 == "list" || $1 == "" ]] ; then
+
   cat << EOF
 simona-scripts - GPL v3 license
 image-mount       - image    - mount a big amount of image file (use -h for a full list)
@@ -14,6 +15,7 @@ boot-kernel-list  - boot     - list kernels inside /boot, extract version (lile 
 uuid-change       - uuid     - change uuid of a volume
 macinstall                   - install id files (commanded by config file)
 EOF
+
   exit
 elseif [[ $1 == "--version" ]]
   echo "simona-scripts Version 0.0"

@@ -3,7 +3,9 @@
 # simona-scripts
 # Libertamente utilizzabile sotto GPL v3
 
-if [[ $1 == "-h" || $1 == "--help" || $1 == "list" || $1 == "" ]] ; then
+
+if [[ $1 == "-h" || $1 == "--help" ]] ; then
+
   cat << EOF
 macinstall command help
 
@@ -13,7 +15,7 @@ Directory /etc/macinstall.d contains all alternative install files related.
 Usage
   macinstall [--help|-h]
   macinstall [--version]
-  macinstall [name-install]
+  macinstall name-install [local-import]
 
 
 Optional parameters
@@ -23,23 +25,43 @@ Optional parameters
   ---this-is-not-an-exercise -> force real work without this none i really done. this is a secure check.
 
 Required
-  sed
+  sed sudo
 
 Cfg file
   /etc/macinstall.d/macinstall.conf
 Propname (wold before '=' char) can't contain spaces but file name accept '"' and delimiter and single '\' (before space)
 
 EOF
-  exit
+
+  exit 0
 elseif [[ $1 == "--version" ]]
   echo "macinstall Version 0.0"
-  exit
+  exit 0
 fi
+
+#
+## who am I
+#
+path_prefix_system_semaphore="/etc/macinstall.d/CurrentSystem-"
+#path_prefix_system_semaphore="/home/simona/My Work/my-pkg simonascripts/root-test/etc/CurrentSystem-"
+
+numSem=`ls "$path_prefix_system_semaphore"* 2> /dev/null | wc -l`
+case $numSem in
+ 1) currSystem=`ls -1 "$path_prefix_system_semaphore"* 2> /dev/null`
+    currSystem="${currSystem:${#path_prefix_system_semaphore}:${#currSystem}-${#path_prefix_system_semaphore}}"
+    echo "I am $currSystem"
+    ;;
+ 0) echo "Can't detect current system."
+    ;;
+ *) echo "Ambiguous CurrentSystem ($numSem)!!!"
+    ;;
+esac
 
 [[ ! -r /bin/sed ]] && { echo -e "$ERR Missing sed utility! Exit"; exit 1; }
 [[ ! -r /bin/sudo ]] && { echo -e "$ERR Missing sudo utility! Exit"; exit 1; }
 
-[[ $1 != "" ]] && install_macname=$1 || { echo "Please insert install name as first command parameter!!"; exit 0; }
+[[ $1 != "" ]] && install_macname=$1 || exit 0
+#[[ $1 != "" ]] && install_macname=$1 || { echo "Please insert install name as first command parameter!!"; exit 0; }
 
 runLocalImport=false
 [[ $2 == "local-import" ]] && runLocalImport=true
@@ -71,16 +93,23 @@ WARN="\E[33;40m[WARN]${EchoReset}"
 ERR="\E[31;40m[ERR]${EchoReset}"
 #echo -e "$OK $WARN $ERR"
 
+#path_cfg must be '/' terminated
 #path_cfg="../etc-macinstall.d/"
 path_cfg="/etc/macinstall.d/"
+#if last char is not '/' add it
+[[ ${path_cfg:${#path_cfg}-1:1} != "/" ]] && path_cfg="$path_cfg/"
+
+
 filename_cfg="macinstall.conf"
 
-path_dest="/home/simona/My Work/my-pkg simonascripts/root-test/"
-#path_dest="$HOME/test"
+#path_dest must be '/' terminated
+#path_dest="/home/simona/My Work/my-pkg simonascripts/root-test/"
+path_dest="$HOME/test/"
 #path_dest="/"
+#if last char is not '/' add it
+[[ ${path_dest:${#path_dest}-1:1} != "/" ]] && path_dest="$path_dest/"
 
-#path_prefix_system_semaphore="/etc/CurrentSystem-"
-path_prefix_system_semaphore="/home/simona/My Work/my-pkg simonascripts/root-test/etc/CurrentSystem-"
+
 
 postfix_bak_file_name=".bak"
 
@@ -100,6 +129,7 @@ if [[ ! -r $path_cfg$filename_cfg ]] ; then
   touch $path_cfg$filename_cfg
   [[ $? -ne 0 ]] && { echo -e "$ERR Fail '$path_cfg$filename_cfg' touch cmd creation !!"; exit 1; }
 fi
+
 if [[ ! -d $path_dest ]] ; then
   mkdir -p $path_dest
   [[ $? -ne 0 ]] && { echo -e "$ERR Fail $path_dest mkdir cmd creation !!"; exit 1; }
@@ -166,6 +196,7 @@ if [[ $number_directories -gt 0 ]] ; then
   done
 fi
 
+
 # ------------------------------------------------------------------------------------------------------------------------
 # WORK -------------------------------------------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------------------------------------------------
@@ -181,7 +212,17 @@ fi
 #legge macchina corrente su file semaforo, legge macchina corrente da parametro (devono corrispondere)
 # e va ricopiarsi tutti i files elencati sulla macchina (se presente) nella cartella giusta (è un fresh dei files di install)
 if [[ $runLocalImport == true ]] ; then
-  echo "TO-DO"
+
+  #if current install exist but it is not the one current i can't proceede
+  numSem=$(ls "$path_prefix_system_semaphore"* 2> /dev/null | wc -l)
+  if [[ numSem -gt 0 ]] ; then
+    if [[ ! -r "$path_prefix_system_semaphore$install_macname" ]] ; then
+      echo -e "$ERR Another install. Can't work"
+      exit 1
+    fi
+  fi
+
+  #
 
   exit 0
 fi
