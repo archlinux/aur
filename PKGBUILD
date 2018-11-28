@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('lib32-glibc')
 makedepends=()
 source=("https://github.com/kergoth/tslib/releases/download/$pkgver/$_pkgname-$pkgver.tar.xz")
-sha384sums=('aa835333c2c6c54b63211956c0bdee88e45ab9c9160f0f1033c5b96ce4f1bed0de829bf32242594b080af2abd2bbce8f')
+sha384sums=('SKIP')
 
 build() {
   cd $_pkgname-$pkgver
