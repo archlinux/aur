@@ -7,7 +7,7 @@ pkgname="${_pkgname}-svn"
 # _pkgver=2.9j
 epoch=1
 pkgver=2.9j+svn2242
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -47,6 +47,7 @@ _svnurl="http://gedanken.org.uk/svn/wwwoffle/trunk"
 source=(
   # "http://www.gedanken.org.uk/software/wwwoffle/download/${_pkgname}-${_pkgver}.tgz"
   "${_pkgname}::svn+${_svnurl}"
+  'certificates.c.diff'
   'conf_d_wwwoffle'
   'initscript_openrc'
   'initscript_systemd'
@@ -57,6 +58,7 @@ source=(
 sha256sums=(
             # 'e6341a4ec2631dc22fd5209c7e5ffe628a5832ad191d444c56aebc3837eed2ae' # Main source, release
             'SKIP'                                                             # Main source, SVN
+            'aadd6ded716dff0210040f57bcb92c8f71df8a45b6183d2148ba0f89a65b8c3c' # certificates.c.diff
             '5491ffc23ae113db4b46167883594b5bcb6f1bbd0ce11432bc45047efbd635d2' # conf_d_wwwoffle
             'd9451db92f979a6573cecbab23c26b6ca8ea026ef61b22ec4b61c0c9051142e9' # initscript_openrc
             '03bebce87a0da1b383666ab7a95b9810e15f2a024c0954f09c959d342c5d9c87' # initscript_systemd
@@ -129,7 +131,12 @@ pkgver() {
 
 prepare() {
   _unpackeddir="${srcdir}/${_pkgname}"
+
   cd "${_unpackeddir}"
+
+  ### Apply patches.
+  msg2 "Applying a patch to handle certificate related problems ..."
+  patch -N -p0 --follow-symlinks --verbose -i "${srcdir}/certificates.c.diff"
 
   ### Update version.h to the actual version.
   _ver="$(_pgmver)"
