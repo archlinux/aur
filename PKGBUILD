@@ -9,10 +9,10 @@ wl_project=${_pkgname}
 wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_pkgname,,}-git
 pkgver=6.3.r1296.5b21d550
-pkgrel=1
+pkgrel=2
 pkgdesc='GPS log file viewer and analyzer'
 arch=('i686' 'x86_64')
-url='http://www.gpxsee.org/'
+url='https://www.gpxsee.org/'
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
@@ -60,19 +60,18 @@ wl_update() {
 }
 
 prepare() {
-  cd ${_pkgname}-${_branch}/lang
+  cd ${_pkgname}-${_branch}
 
+  sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
+
+  cd lang
   rename nb nb_NO *_nb.ts
-
   wl_update Translations ${_pkgname,,}_
-
   rename nb_NO nb *_nb_NO.ts
 }
 
 build() {
   cd ${_pkgname}-${_branch}
-
-  sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
 
   lrelease gpxsee.pro
   qmake gpxsee.pro
