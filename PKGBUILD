@@ -2,8 +2,10 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.13.2.20181128
+pkgver=1.13.2.1969
 _pkgver=1.13.2
+_build="$(echo "$pkgver" | awk -F \. '{print $4}')"
+_build="${_build//_/-}"
 # Specify BuildTools version explicitly (instead of using
 # 'lastSuccessfulBuild') to let makepkg detect when needs to download an update
 _buildtoolver=82
@@ -43,9 +45,9 @@ sha256sums=('273cb9ca052ac5b892bdcda46f9dfd57b413f40769a2490b2f278b3d7010c858'
             'c30b180e2e571d1f052df0b82c51f261bc4e48dbaf8806c5bc897c07e939f575')
 
 pkgver() {
-  # BuildTools downloads updates from multiple git repositories, so we include
-  # the current date in the version.
-  date "+${_pkgver}.%Y%m%d"
+  _build="$(curl "https://hub.spigotmc.org/versions/$_pkgver.json" 2> /dev/null | \
+           grep '"name"' | sed 's/.*: "\([^"]*\)",/\1/')"
+  echo "$_pkgver.${_build//-/_}"
 }
 
 build() {
@@ -66,7 +68,7 @@ echo
 exec "\$REPL" "\$@"
 EOF
   MAVEN_OPTS="-Dmaven.repo.local=$srcdir/m2/repository" \
-      java -jar "BuildTools-${_buildtoolver}.jar" --rev "$_pkgver"
+      java -jar "BuildTools-${_buildtoolver}.jar" --rev "$_build"
 }
 
 package() {
