@@ -5,6 +5,7 @@ pkgdesc="Chevereto is an image hosting script that allows you to create a beauti
 arch=(any)
 url="https://chevereto.com/free"
 license=("AGPL")
+optdepends=('php-apache: to use the Apache web server')
 depends=("php" "php-gd" "mariadb")
 install=chevereto.install
 options=(emptydirs)
@@ -13,6 +14,12 @@ source=(https://github.com/Chevereto/Chevereto-Free/archive/${pkgver}.tar.gz
        chevereto.perm.sh)
 md5sums=('694fa397ea504e8eb018c5b8392a7c84'
          'e7add39512c475948c6709a0a6a9c309')
+
+
+pkgver() {
+    curl -Is https://github.com/Chevereto/Chevereto-Free/releases/latest | awk -F'/' '/^Location/ {print $NF}' |  sed 's/[^[:print:]]//'
+
+}
 
 
 

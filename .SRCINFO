@@ -9,6 +9,7 @@ pkgbase = chevereto
 	depends = php
 	depends = php-gd
 	depends = mariadb
+	optdepends = php-apache: to use the Apache web server
 	options = emptydirs
 	source = https://github.com/Chevereto/Chevereto-Free/archive/1.1.0.tar.gz
 	source = chevereto.perm.sh
