@@ -1,0 +1,19 @@
+pkgbase = gsopcast
+	pkgdesc = GTK front-end of p2p TV sopcast
+	pkgver = 0.4.0
+	pkgrel = 8
+	url = https://code.google.com/archive/p/gsopcast/
+	arch = x86_64
+	license = GPL
+	makedepends = addinclude
+	makedepends = perl-xml-parser
+	makedepends = pkgconfig
+	depends = alsa-lib
+	depends = gtk2
+	depends = sopcast
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gsopcast/gsopcast-0.4.0.tar.bz2
+	md5sums = 65e4f09d714455df809a58c12a76749f
+	sha256sums = be90eee9e31ce4232511bc6555c8dde75ed813efa97a483bb6fa5c20c3ebb155
+
+pkgname = gsopcast
+
