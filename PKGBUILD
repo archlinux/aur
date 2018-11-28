@@ -1,29 +1,26 @@
 # Maintainer: Brent Carmer <bcarmer@gmail.com>
+# Co-maintainer: Alex J. Malozemoff <amaloz@galois.com>
+
 pkgname=saw-script-git
 _pkgname=saw-script
 
-pkgver=ef1f6549
+pkgver=r2688.75c7fd76
 pkgver() {
-    cd "$_pkgname"
-    git describe --long --tags --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 pkgrel=1
-pkgdesc="The SAW scripting language."
-url="http://saw.galois.com/"
+pkgdesc="The Software Analysis Workbench"
+url="https://saw.galois.com/"
 arch=('x86_64')
 license=('noncommercial')
 depends=('ncurses' 'z3')
 makedepends=('stack' 'perl')
-optdepends=()
-conflicts=()
-replaces=()
-backup=()
 conflicts=('saw-script')
 provides=('saw-script')
-md5sums=('SKIP')
-
 source=('git://github.com/GaloisInc/saw-script.git')
+sha1sums=('SKIP')
 
 build() {
   cd "$srcdir/${_pkgname}"

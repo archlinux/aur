@@ -1,8 +1,8 @@
 pkgbase = saw-script-git
-	pkgdesc = The SAW scripting language.
-	pkgver = ef1f6549
+	pkgdesc = The Software Analysis Workbench
+	pkgver = r2688.75c7fd76
 	pkgrel = 1
-	url = http://saw.galois.com/
+	url = https://saw.galois.com/
 	arch = x86_64
 	license = noncommercial
 	makedepends = stack
@@ -12,7 +12,7 @@ pkgbase = saw-script-git
 	provides = saw-script
 	conflicts = saw-script
 	source = git://github.com/GaloisInc/saw-script.git
-	md5sums = SKIP
+	sha1sums = SKIP
 
 pkgname = saw-script-git
 
