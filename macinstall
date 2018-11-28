@@ -20,7 +20,7 @@ Optional parameters
   --help -h                  -> this help page
   --versione                 -> version
   -y --ask-confirm           -> ask confirm before proceeed
-  ---this-is-not-an-exercise -> force real work
+  ---this-is-not-an-exercise -> force real work without this none i really done. this is a secure check.
 
 Required
   sed
@@ -37,6 +37,7 @@ elseif [[ $1 == "--version" ]]
 fi
 
 [[ ! -r /bin/sed ]] && { echo -e "$ERR Missing sed utility! Exit"; exit 1; }
+[[ ! -r /bin/sudo ]] && { echo -e "$ERR Missing sudo utility! Exit"; exit 1; }
 
 [[ $1 != "" ]] && install_macname=$1 || { echo "Please insert install name as first command parameter!!"; exit 0; }
 
@@ -70,8 +71,8 @@ WARN="\E[33;40m[WARN]${EchoReset}"
 ERR="\E[31;40m[ERR]${EchoReset}"
 #echo -e "$OK $WARN $ERR"
 
-path_cfg="../etc-macinstall.d/"
-#path_cfg="/etc/macinstall.d/"
+#path_cfg="../etc-macinstall.d/"
+path_cfg="/etc/macinstall.d/"
 filename_cfg="macinstall.conf"
 
 path_dest="/home/simona/My Work/my-pkg simonascripts/root-test/"
@@ -227,8 +228,11 @@ if [[ $number_files -gt 0 ]] ; then
             echo -e "$WARN Fail generating backup file '$path_dest$backup$postfix_bak_file_name'. Ask User."
             echo -n "Continue? (Y/N): "; read ask
             [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user with error."; exit 1; }
+          else
+            echo -e "$OK Generation of backup file [1] '$path_dest$backup' as '$path_dest$backup$postfix_bak_file_name'"
           fi
-          echo -e "$OK Generation of backup file '$path_dest$backup' as '$path_dest$backup$postfix_bak_file_name'"
+        else
+          echo -e "$OK Generation of backup file [2] '$path_dest$backup' as '$path_dest$backup$postfix_bak_file_name'"
         fi
       else
         echo -e "$OK [Simulated] Generation of backup file '$path_dest$backup' as '$path_dest$backup$postfix_bak_file_name'"
@@ -243,8 +247,17 @@ if [[ $number_directories -gt 0 ]] ; then
   for (( counter=1; counter <= $number_directories; counter++ )) ; do
     backup=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_dir_copy$counter[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
     [[ ${backup:0:1} == "/" ]] && backup=${backup:1:${#backup}-1} #remove starting '/' if exist
-    if [[ -d $path_dest$backup ]] ; then
+    if [[ -d "$path_dest$backup" ]] ; then
       if [[ "$flagForceRealWork" == true ]] ; then
+        #if bak directory alrrady exist to not create a new ssh dir inside it....
+        if [[ -d "$path_dest$backup$postfix_bak_file_name" ]] ; then
+          rm -r -f "$path_dest$backup$postfix_bak_file_name"
+          if [[ $? -ne 0 ]] ; then
+            sudo rm -r -f "$path_dest$backup$postfix_bak_file_name"
+            [[ $? -ne 0 ]] && echo -e "$WARN Fail removing old backup directory.'$path_dest$backup$postfix_bak_file_name'."
+          fi
+        fi
+        #do work
         mv -f "$path_dest$backup" "$path_dest$backup$postfix_bak_file_name"
         if [[ $? -ne 0 ]] ; then
           sudo mv -f "$path_dest$backup" "$path_dest$backup$postfix_bak_file_name"
@@ -252,8 +265,11 @@ if [[ $number_directories -gt 0 ]] ; then
             echo -e "$WARN Fail generating backup directory '$path_dest$backup$postfix_bak_file_name'. Ask User."
             echo -n "Continue? (Y/N): "; read ask
             [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user with error."; exit 1; }
+          else
+            echo -e "$OK Generation [1] of backup directory '$path_dest$backup$postfix_bak_file_name'"
           fi
-          echo -e "$OK Generation of backup directory '$path_dest$backup$postfix_bak_file_name'"
+        else
+          echo -e "$OK Generation [2] of backup directory '$path_dest$backup$postfix_bak_file_name'"
         fi
       else
         echo -e "$OK [Simulated] Generation of backup directory '$path_dest$backup$postfix_bak_file_name'"
