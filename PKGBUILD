@@ -28,7 +28,7 @@ fi
 
 pkgname=android-${_android_arch}-qt5
 pkgver=5.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
 url='https://www.qt.io'
@@ -78,10 +78,12 @@ options=('!strip'
 _pkgfqn="qt-everywhere-src-${pkgver}"
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "0001-Fix-clang-build.patch"
-        "0002-Disable-mapbox.patch")
+        "0002-Disable-mapbox.patch"
+        "0003-Fix-androiddeployqt-search-paths.patch")
 md5sums=('152a8ade9c11fe33ff5bc95310a1bb64'
          '511eafcabe9e0c6210f1dc5e26daa5c8'
-         '20d8bdd24102e9011b561b7361394728')
+         '20d8bdd24102e9011b561b7361394728'
+         '549cf284d0cea4d618ad2d49532ea2db')
 
 _pref=/opt/android-libs/$_android_arch
 
@@ -91,6 +93,11 @@ prepare() {
     # Platform specific patches.
     patch -Np1 -i "../0001-Fix-clang-build.patch"
     patch -Np1 -i "../0002-Disable-mapbox.patch"
+    patch -Np1 -i "../0003-Fix-androiddeployqt-search-paths.patch"
+    sed -i "s/android-16/android-$ANDROID_MINIMUM_PLATFORM/g" qtbase/mkspecs/features/android/sdk.prf
+    sed -i "s/android-16/android-$ANDROID_MINIMUM_PLATFORM/g" qtbase/src/android/jar/jar.pro
+    sed -i "s/android-16/android-$ANDROID_MINIMUM_PLATFORM/g" qtgamepad/src/plugins/gamepads/android/jar/jar.pro
+    sed -i "s/android-16/android-$ANDROID_MINIMUM_PLATFORM/g" qtbase/configure.pri
 }
 
 get_last() {
@@ -209,9 +216,10 @@ package() {
     esac
 
     STRIP=${ANDROID_NDK_ROOT}/toolchains/${toolchain}/prebuilt/linux-x86_64/${stripFolder}/bin/strip
-    find ${pkgdir}/${_pref}/bin ! -name '*.pl' -exec ${STRIP} {} \;
-    find ${pkgdir}/${_pref}/lib -name 'lib*.so' -exec ${STRIP} {} \;
-    find ${pkgdir}/${_pref}/lib \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${STRIP} {} \;
-    find ${pkgdir}/${_pref}/lib/qt/plugins -name 'lib*.so' -exec ${STRIP} {} \;
+    find ${pkgdir}/${_pref}/bin -type f ! -name '*.pl' -exec strip {} \;
+    find ${pkgdir}/${_pref}/lib -type f -name 'lib*.so' -exec ${STRIP} {} \;
+    find ${pkgdir}/${_pref}/lib -type f \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${STRIP} {} \;
+    find ${pkgdir}/${_pref}/lib/qt/plugins -type f -name 'lib*.so' -exec ${STRIP} {} \;
     sed -i '/QMAKE_PRL_BUILD_DIR/d' ${pkgdir}/${_pref}/lib/lib*.prl
+    sed -i 's/\"plugins\//\"lib\/qt\/plugins\//g' ${pkgdir}/${_pref}/lib/*-android-dependencies.xml
 }
