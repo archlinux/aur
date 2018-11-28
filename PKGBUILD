@@ -3,7 +3,7 @@
 
 pkgname=lizzie
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Analysis interface for Leela Zero"
 arch=('x86_64')
 url="https://github.com/featurecat/lizzie"
@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd $srcdir/$pkgname-$pkgver
 
-  mvn package
+  mvn package -DskipTests
 }
 
 check() {
