@@ -1,5 +1,5 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
-# Contributor: 
+# Contributor:
 
 _gitname=planner
 _author=alainm23
@@ -10,8 +10,7 @@ pkgdesc="Task and project manager, designed for Pantheon Shell"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
-depends=('gtk3' 'granite' 'libgee' 'libnotify' 'libunity' 'sqlite' 
-		 'wingpanel-indicator-datetime-git')
+depends=('gtk3' 'granite' 'libgee' 'libnotify' 'libunity' 'sqlite' )
 optdepends=('')
 makedepends=('git' 'meson' 'ninja' 'vala')
 provides=("artegeek-${_gitname}" "planner-eos")

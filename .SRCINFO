@@ -16,7 +16,6 @@ pkgbase = artegeek-planner-git
 	depends = libnotify
 	depends = libunity
 	depends = sqlite
-	depends = wingpanel-indicator-datetime-git
 	provides = artegeek-planner
 	provides = planner-eos
 	conflicts = artegeek-planner
