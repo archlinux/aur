@@ -1,11 +1,12 @@
 pkgbase = range-v3-git
 	pkgdesc = Eric Niebler' C++ ranges library.
-	pkgver = 0.3.0.r5.gfc333d91
+	pkgver = 0.4.0.r34.ga50fa8c5
 	pkgrel = 1
 	url = https://github.com/ericniebler/range-v3
 	arch = any
 	license = custom
 	makedepends = git
+	makedepends = cmake
 	source = git+https://github.com/ericniebler/range-v3.git
 	md5sums = SKIP
 
