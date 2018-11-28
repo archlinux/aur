@@ -5,4 +5,4 @@ if [[ ! -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y)  ]]; then
     FLAG="--no-sandbox"
 fi
 
-exec "/usr/lib/brave-dev-bin/brave" "$FLAG" -- "$@"
+exec "/usr/lib/brave-dev-bin/brave" "$BRAVE_FLAGS" "$FLAG" -- "$@"
