@@ -1,13 +1,13 @@
 # Maintainer: Mykola Dimura <mykola.dimura@gmail.com>
 
 pkgname=mingw-w64-spdlog-git
-pkgver=0.16.3.r1362.c336470
-pkgrel=2
+pkgver=1.3.0.r2057.486b693
+pkgrel=1
 pkgdesc='Very fast, header only, C++ logging library'
 arch=('any')
 url='https://github.com/gabime/spdlog/'
 license=('MIT')
-makedepends=('git' 'cmake>=3.1.0')
+makedepends=('git' 'mingw-w64-cmake')
 source=("${pkgname%-git}::git://github.com/gabime/spdlog.git")
 sha512sums=('SKIP')
 
