@@ -10,7 +10,7 @@
 
 pkgname=mono-tools
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="collection of testing and development tools for use with mono (including monodoc browser)"
 arch=(x86_64)
 license=('GPL')
@@ -27,6 +27,8 @@ sha256sums=('104f7a7e98202c44cd4f025ab8a922bd193e83ce874a48e50ffb401128ca73a8'
 prepare() {
   cd $pkgname-$pkgver
   mv configure.in configure.ac
+
+  sed -e 's/-warnaserror+//' -i gendarme/options.make # Fix build with newer mono
 }
 
 build() {
