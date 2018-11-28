@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('t2ec')
-pkgver=0.1
-pkgrel=9
+pkgver=0.2
+pkgrel=1
 pkgdesc="A package of scripts to display system icons and controls in Tint2 panel"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
@@ -9,7 +9,8 @@ license=('GPL3')
 depends=('python' 'acpi' 'xorg-xbacklight' 'alsa-utils' 'wireless_tools')
 optdepends=('light-git: for machines not handling xbacklight'
 	    'rof-git: for running mouse events commands as single instances'
-	    'zenity: for volume and brightness slider box')
+	    'zenity: for volume and brightness slider box'
+	    'jgmenu: to attach menus to icons')
 
 source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/battery-icon.sh"
@@ -55,7 +56,7 @@ md5sums=('8a02b12a94a553f860cb91ac14a55324'
          '921064d0eb82b775080872a5507e820d'
          '1dae806f7c7b0eb34cda8468b4631474'
          '5019cebbf405090d789c1ef5469478b4'
-         '5193ce4ee5ab775c709410df111717b0'
+         'd693e8d32cc19ce1128ac4c2af42459b'
          '63a955c04f03451a13fd4a5f3ea1bbf3'
          '4d5efb2581959b68db65a0964e1c26b9'
          'c6ca68e09a73a7a6a34afa6943d70004'
