@@ -3,10 +3,10 @@ _orgname=OpenOrienteering
 _pkgname=mapper
 pkgname=${_orgname,,}-${_pkgname}
 pkgver=0.8.3
-pkgrel=1
-pkgdesc="Map drawing program from OpenOrienteering"
+pkgrel=2
+pkgdesc='Map drawing program from OpenOrienteering'
 arch=('i686' 'x86_64')
-url="http://www.openorienteering.org/apps/mapper/"
+url='https://www.openorienteering.org/apps/mapper/'
 license=('GPL3')
 depends=('qt5-base>=5.3' 'polyclipping>=6.1.3a' 'proj>=4.9.2' 'gdal')
 makedepends=('cmake>=3.1' 'qt5-tools>=5.3' 'doxygen' 'libcups')
