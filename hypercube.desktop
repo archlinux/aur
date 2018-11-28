@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Hypercube
+Comment=Graph visualization tool
+Comment[cz]=Nástroj na vizualizaci grafů
+Comment[ru]=Инструмент для визуализации графов
+Exec=hypercube %F
+Icon=hypercube
+Terminal=false
+Type=Application
+Categories=Graphics;Viewer;Qt;
