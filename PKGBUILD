@@ -1,7 +1,7 @@
 # Maintainer: Schrottfresse <schrottfresse@gmx.de>
 pkgname=libspatialindex-git
-pkgver=r460.0f5f2d0
-pkgrel=1
+pkgver=r500.e4a15b6
+pkgrel=2
 pkgdesc="C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API "
 arch=('i686' 'x86_64')
 url="http://libspatialindex.github.com/"
