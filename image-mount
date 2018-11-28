@@ -67,7 +67,7 @@ Squash readonly file (can ben modified, saved on umount) (package 'squashfs-tool
 EOF
 
   exit 0
-elseif [[ $1 == "--version" ]] ; then
+elseif [[ $1 == "--version" ]]
   echo "image-mount Version 0.0 (simonascripts package)"
   exit 0
 fi
