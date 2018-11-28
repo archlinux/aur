@@ -1,14 +1,14 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-tss-engine-git
-pkgver=r24.8d19aba
+pkgver=r33.c9061a7
 pkgrel=1
 pkgdesc='OpenSSL engine for Trusted Platform Module 2.0 devices'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tss-engine'
 license=('BSD')
-depends=('tpm2-tss' 'openssl')
+depends=('openssl' 'tpm2-tss')
 makedepends=('git' 'autoconf-archive' 'pandoc')
-checkdepends=('ibm-sw-tpm2' 'tpm2-tools-git')
+checkdepends=('expect' 'ibm-sw-tpm2' 'tpm2-tools-git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
@@ -41,7 +41,7 @@ check() {
 	# Start TPM simulator
 	tpm_server &
 	tpm_server_pid="$!"
-	tpm2_clear --tcti mssim
+	tpm2_clear --tcti=mssim
 
 	make check
 
