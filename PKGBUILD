@@ -1,4 +1,5 @@
 # Maintainer: Michael Clayfield <me@michaelclayfield.com>
+# Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname=icingaweb2-module-director
 pkgver=1.5.2
