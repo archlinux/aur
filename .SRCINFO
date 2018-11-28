@@ -6,6 +6,7 @@ pkgbase = mingw-w64-fmilib
 	arch = any
 	license = BSD
 	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-wine
 	depends = mingw-w64-crt
 	depends = mingw-w64-expat
 	depends = mingw-w64-minizip
