@@ -1,0 +1,14 @@
+pkgbase = vault2env
+	pkgdesc = Small utility to transfer fields of a key in Vault into the environment
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Luzifer/vault2env
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = vault2env-2.0.0.tar.gz::https://github.com/Luzifer/vault2env/archive/v2.0.0.tar.gz
+	sha512sums = 49d85e30035c982d9a4b537675c93c1000227f45c3d945b927107b4fc4e238de086c7a6fb033eec6b2a459c088b4572c6b90621edc0c147e39ef743e96927541
+
+pkgname = vault2env
+
