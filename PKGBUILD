@@ -1,8 +1,8 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 
 pkgname=aarch64-linux-gnu-armcl-opencl+neon
-pkgver=18.08
-pkgrel=4
+pkgver=18.11
+pkgrel=0
 
 epoch=
 pkgdesc="ARM Computer Vision and Machine Learning Library (arm64-v8a OpenCL + NEON Backends)"
