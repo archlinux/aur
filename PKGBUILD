@@ -4,11 +4,11 @@ _pkgname=GPXLab
 _branch=master
 _use_gh_api=true
 pkgname=${_pkgname,,}-git
-pkgver=0.5.0.r37.052ad530
+pkgver=0.5.0.r39.ced9bb91
 pkgrel=1
 pkgdesc='Program to show and manipulate GPS tracks'
 arch=('i686' 'x86_64')
-url="https://bourgeoislab.wordpress.com/gpxlab/"
+url='https://bourgeoislab.wordpress.com/gpxlab/'
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
@@ -31,12 +31,12 @@ pkgver() {
 
   if [ "${_use_gh_api}" = true ]; then
     api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
-    base="30fb6d1"
-    head=$(curl -s "$api_url/git/refs/heads/${_branch}" | \
+    base='30fb6d1'
+    head=$(curl -s "${api_url}/git/refs/heads/${_branch}" | \
       python -c "import sys, json; print(json.load(sys.stdin)['object']['sha'][:8])")
-    count=$(curl -s "$api_url/compare/${base}...${head}" | \
+    count=$(curl -s "${api_url}/compare/${base}...${head}" | \
       python -c "import sys, json; print(json.load(sys.stdin)['total_commits'] + 1)")
-    release=$(curl -s "$api_url/tags" | \
+    release=$(curl -s "${api_url}/tags" | \
       python -c "import sys, json; r = json.load(sys.stdin)[0]; print(r['name'])")
   else
     release="$(git describe --tags $(git rev-list --tags --max-count=1))"
@@ -65,15 +65,11 @@ build() {
 package() {
   cd ${_pkgname}-${_branch}
 
-  install -d 755 ${pkgdir}/usr/bin
-  install -d 755 ${pkgdir}/usr/share/applications
-  install -d 755 ${pkgdir}/usr/share/pixmaps
-  install -d 755 ${pkgdir}/usr/share/mime/packages
-  install -d 755 ${pkgdir}/usr/share/${pkgname//-git}/translations
-
-  install -m 755 bin/GPXLab ${pkgdir}/usr/bin/${pkgname//-git}
-  install -m 644 GPXLab/locale/*.qm ${pkgdir}/usr/share/${pkgname//-git}/translations
-  install -m 644 doc/gpxlab.png ${pkgdir}/usr/share/pixmaps/${pkgname//-git}.png
-  install -m 644 pkg/gpxlab.desktop ${pkgdir}/usr/share/applications/${pkgname//-git}.desktop
-  install -m 644 pkg/gpxlab.xml ${pkgdir}/usr/share/mime/packages/${pkgname//-git}.xml
+  install -dm755 ${pkgdir}/usr/share/${pkgname//-git}/translations
+  install -Dm755 bin/GPXLab ${pkgdir}/usr/bin/${pkgname//-git}
+  install -Dm644 GPXLab/locale/*.qm ${pkgdir}/usr/share/${pkgname//-git}/translations
+  install -Dm644 doc/gpxlab.png ${pkgdir}/usr/share/pixmaps/${pkgname//-git}.png
+  install -Dm644 pkg/gpxlab.desktop ${pkgdir}/usr/share/applications/${pkgname//-git}.desktop
+  install -Dm644 pkg/gpxlab.xml ${pkgdir}/usr/share/mime/packages/${pkgname//-git}.xml
+  install -Dm644 pkg/appdata.xml ${pkgdir}/usr/share/metainfo/${pkgname//-git}.appdata.xml
 }
