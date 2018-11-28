@@ -1,34 +1,27 @@
-# Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
+
 
 pkgname=lychee
-pkgver=3.1.4
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="Lychee is an easy to use and great looking photo-management-system."
 arch=('any')
 url="http://lychee.electerious.com/"
 license=('MIT')
-#depends=('exif' 'php-gd')
-optdepends=('php-apache: to use the Apache web server'
-	    'php-sqlite: to use the SQLite database backend'
-	    'php-pgsql: to use the PostgreSQL database backend'
-	    'mariadb: to use the MySQL database backend')
+depends=('php' 'php-gd' 'mariadb')
+optdepends=('php-apache: to use the Apache web server')
 makedepends=()
-options=('!strip')
+options=('!strip' emptydirs)
 backup=('etc/webapps/lychee/apache.example.conf')
-source=("$pkgname-$pkgver.tar.gz::https://github.com//electerious/Lychee/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/electerious/Lychee/archive/v$pkgver.tar.gz"
 	'apache.example.conf')
-sha256sums=('501d1ebf21b868660e128882aa992449e77bc460682d038a8e5e616af502c8c8'
-	    'fe1400a1be9b60c4c8b6759b588638536188a73307cd061789877cd5fd491557')
+sha256sums=('721087e3b451300445f3845d39e5921541ea0a8e7ab0462a2ea24942869ab1b1'
+            'fe1400a1be9b60c4c8b6759b588638536188a73307cd061789877cd5fd491557')
 
-prepare() {
-  cd $srcdir/Lychee-$pkgver
-  find . -type f -name .gitattributes -delete
-  find . -type f -name .gitkeep -delete
-  find . -type f -name .gitignore -delete
-  find . -type f -name .gitmodules -delete
-  find . -type f -name .travis.yml -delete
-  find . -type d -name .git -exec rm -rf {} \;
+pkgver() {
+    curl -Is https://github.com/electerious/Lychee/releases/latest | awk -F'/' '/^Location/ {print $NF}' | sed 's/v//' |sed 's/[^[:print:]]//'
+
 }
+
 
 package() {
   # install project
