@@ -8,7 +8,7 @@ arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-gst-plugins-base-git')
-makedepends=('mingw-w64-configure' 'yasm')
+makedepends=('mingw-w64-configure' 'yasm' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-libav')
 
