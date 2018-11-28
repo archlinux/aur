@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('git' 'gtest')
 provides=('libspatialindex')
 conflicts=('libspatialindex')
-source=('git://github.com/libspatialindex/libspatialindex.git')
+source=('git+https://github.com/libspatialindex/libspatialindex.git')
 md5sums=('SKIP')
 
 _gitname=libspatialindex
