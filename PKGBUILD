@@ -2,8 +2,8 @@
 
 pkgname=onivim-git
 _reponame=oni
-pkgver=0.3.7.beta2.r28.gc64f92926
-pkgrel=3
+pkgver=0.3.7.beta2.r29.gf77d4f026
+pkgrel=1
 pkgdesc="Modern modal editing, powered by Neovim"
 arch=(x86_64)
 conflicts=("oni")
@@ -11,7 +11,7 @@ provides=("oni")
 url="https://github.com/onivim/oni"
 license=("MIT")
 depends=("neovim" "nodejs-lts-carbon" "gconf" "libxss")
-makedepends=("tar" "rsync" "yarn")
+makedepends=("tar" "rsync" "yarn" "npm")
 source=("git+https://github.com/onivim/$_reponame.git"
         "LICENSE::https://raw.githubusercontent.com/onivim/oni/master/LICENSE"
         "oni.desktop"
