@@ -3,10 +3,10 @@ _orgname=BourgeoisLab
 _pkgname=GPXLab
 pkgname=${_pkgname,,}
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Program to show and manipulate GPS tracks'
 arch=('i686' 'x86_64')
-url="https://bourgeoislab.wordpress.com/gpxlab/"
+url='https://bourgeoislab.wordpress.com/gpxlab/'
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
@@ -26,15 +26,11 @@ build() {
 package() {
   cd ${_pkgname}-${pkgver}
 
-  install -d 755 ${pkgdir}/usr/bin
-  install -d 755 ${pkgdir}/usr/share/applications
-  install -d 755 ${pkgdir}/usr/share/pixmaps
-  install -d 755 ${pkgdir}/usr/share/mime/packages
-  install -d 755 ${pkgdir}/usr/share/${pkgname}/translations
-
-  install -m 755 bin/GPXLab ${pkgdir}/usr/bin/${pkgname}
-  install -m 644 GPXLab/locale/*.qm ${pkgdir}/usr/share/${pkgname}/translations
-  install -m 644 doc/gpxlab.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
-  install -m 644 pkg/gpxlab.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-  install -m 644 pkg/gpxlab.xml ${pkgdir}/usr/share/mime/packages/${pkgname}.xml
+  install -dm755 ${pkgdir}/usr/share/${pkgname}/translations
+  install -Dm755 bin/GPXLab ${pkgdir}/usr/bin/${pkgname}
+  install -Dm644 GPXLab/locale/*.qm ${pkgdir}/usr/share/${pkgname}/translations
+  install -Dm644 doc/gpxlab.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  install -Dm644 pkg/gpxlab.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  install -Dm644 pkg/gpxlab.xml ${pkgdir}/usr/share/mime/packages/${pkgname}.xml
+  install -Dm644 pkg/appdata.xml ${pkgdir}/usr/share/metainfo/${pkgname}.appdata.xml
 }
