@@ -1,19 +1,24 @@
 pkgbase = lizzie
 	pkgdesc = Analysis interface for Leela Zero
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/featurecat/lizzie
 	arch = x86_64
 	license = GPLv3
 	makedepends = git
 	makedepends = maven
+	makedepends = curl
 	depends = bash
 	depends = java-runtime
-	depends = leela-zero-git
-	source = lizzie::git+https://github.com/apetresc/lizzie#tag=v0.5-apetresc
+	depends = leela-zero
+	source = https://github.com/featurecat/lizzie/archive/0.6.tar.gz
+	source = winrate.patch::https://github.com/featurecat/lizzie/commit/d50f73a2cfb14b8f79c315f4057de8350bd5cfe5.patch
+	source = lizzie.sh
 	source = lizzie.desktop
-	md5sums = SKIP
-	md5sums = 1fefb91214fd8fd2f1241de2b73f8701
+	sha256sums = 0bc244914d80d7fecab1ef22e6ad2a540992019734e4081138bb9cf757bc79cd
+	sha256sums = babc24f1bdd9e5c6315aff72eb6881489ec6ea0cae8bf277285a019c918dd665
+	sha256sums = 58a4987ab4167aab557e1bcd2bb22daec252ce7c6397e76040c038516b74de70
+	sha256sums = cf5d1651023f04294e580243aa7ef05bc9ebedb468631f4035fd3d5ce0f212f0
 
 pkgname = lizzie
 
