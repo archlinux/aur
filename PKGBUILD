@@ -3,12 +3,12 @@
 pkgname=freefem++
 pkgver=3.61.1
 _pkgver=3.61-1
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDE oriented language using the finite element method'
 arch=('x86_64')
-url="http://www.freefem.org/ff++/index.htm"
+url="https://freefem.org/index.html"
 license=('LGPL')
-depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-openmpi' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
+depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-openmpi' 'gsl' 'openmpi' 'lapack' 'arpack' 'parmetis' 'python')
 makedepends=('texlive-core')
 source=("http://www.freefem.org/ff++/ftp/$pkgname-${_pkgver}.tar.gz" gcc8.patch)
 sha256sums=('1f225c5b5d3081df157794174a1a31037a622d111051258ad979ec9d52a48c67'
