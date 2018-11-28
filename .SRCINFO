@@ -1,14 +1,14 @@
 pkgbase = python-aioconsole
 	pkgdesc = Asynchronous console and interfaces for asyncio
-	pkgver = 0.1.10
-	pkgrel = 2
+	pkgver = 0.1.11
+	pkgrel = 1
 	url = https://github.com/vxgmichel/aioconsole
 	arch = any
 	license = GPLv3
 	depends = python
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/c0/a2/e67a62f735d60a8e433db212446c1010861d44ff0080fb758a604b79dde7/aioconsole-0.1.10.tar.gz
-	md5sums = cc383663a6b132bafbdcc21fb5c56ec3
+	source = https://files.pythonhosted.org/packages/source/a/aioconsole/aioconsole-0.1.11.tar.gz
+	md5sums = 019845651ddd50d119c3222a5d20e142
 
 pkgname = python-aioconsole
 
