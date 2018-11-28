@@ -7,7 +7,7 @@ pkgver=3.0.6.r657.6a5b1d4
 pkgrel=1
 pkgdesc='Stardict tools'
 arch=('i686' 'x86_64')
-url='http://stardict.org/'
+url='http://www.huzheng.org/stardict/'
 license=('GPLv3')
 depends=('gtk3' 'glib2' 'libmariadbclient')
 makedepends=('git' 'intltool')
@@ -17,13 +17,16 @@ source=("${_pkgname}::git://github.com/${_orgname}/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  REVISION="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-  printf "%s.r%s" "${_basever}" "${REVISION}"
+  cd ${_pkgname}
+
+  count="$(git rev-list --count HEAD)"
+  head="$(git rev-parse --short HEAD)"
+
+  printf "%s.r%s.%s" "${_basever}" "${count}" "${head}"
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}
+  cd ${_pkgname}
 
   ./autogen.sh
   ./configure --prefix=/usr --disable-dict
@@ -32,7 +35,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
+  cd ${_pkgname}
 
   make DESTDIR=$pkgdir/ install
   find $pkgdir/usr/bin/ -not -name 'stardict-*' -type f | sed 'p;s#usr/bin/#usr/bin/stardict-#' | xargs -n2 mv
