@@ -14,7 +14,7 @@ pkgbase=lib32-mesa-intel-iris-git
 pkgname="${pkgbase}"
 _branch=iris
 pkgdesc="Mesa with Intel Iris (Gallium) Driver, 32bit git version"
-pkgver=19.0.0_devel.106633.8bb88415c94
+pkgver=19.0.0_devel.106639.5b8d36d8f95
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -32,8 +32,7 @@ source=("mesa::git+https://gitlab.freedesktop.org/kwg/mesa.git#branch=${_branch}
 )
 
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-)
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
 
 pkgver() {
@@ -43,10 +42,10 @@ pkgver() {
 }
 
 build () {
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  export LLVM_CONFIG=/usr/bin/llvm-config32
+    export CC="gcc -m32"
+    export CXX="g++ -m32"
+    export PKG_CONFIG=/usr/bin/pkg-config-32
+    export LLVM_CONFIG=/usr/bin/llvm-config32
 
     meson setup mesa _build \
        -D b_ndebug=true \
