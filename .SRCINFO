@@ -1,6 +1,6 @@
 pkgbase = fcitx5-git
 	pkgdesc = Next generation of fcitx
-	pkgver = r407.7ccf3f6
+	pkgver = r408.984f3f2
 	pkgrel = 1
 	url = https://gitlab.com/fcitx/fcitx5
 	arch = i686
@@ -24,7 +24,9 @@ pkgbase = fcitx5-git
 	depends = libxkbfile
 	depends = gdk-pixbuf2
 	source = git+https://gitlab.com/fcitx/fcitx5.git
-	sha512sums = SKIP
+	source = en_dict-20121020.tar.gz::http://download.fcitx-im.org/data/en_dict-20121020.tar.gz
+	sha256sums = SKIP
+	sha256sums = c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb
 
 pkgname = fcitx5-git
 
