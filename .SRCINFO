@@ -1,12 +1,14 @@
 pkgbase = arduino-adafruitst7735library-git
 	pkgdesc = A library for Adafruit tft displays.
-	pkgver = 20140905
+	pkgver = 1.2.5.r3.g75c67ea
 	pkgrel = 1
 	url = https://github.com/adafruit/Adafruit-ST7735-Library
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = arduino
+	optdepends = arduino
+	source = git+https://github.com/adafruit/Adafruit-ST7735-Library.git
+	md5sums = SKIP
 
 pkgname = arduino-adafruitst7735library-git
 
