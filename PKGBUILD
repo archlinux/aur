@@ -12,7 +12,7 @@ depends=('gtk-update-icon-cache'
 optdepends=('mint-x-icons: enable additional icons to inheritage')
 conflicts=("mint-y-icons-git")
 source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('e327656780492de93804e7e0ec5e16893bd2e948709328ad6f2bab781738361d')
+sha256sums=('064245e55b123744d44024a64a4fbcfbfb107f6c7e68cb21cde71c2a69d0e069')
 
 package() {
   cd "${srcdir}"/"${pkgname}"
