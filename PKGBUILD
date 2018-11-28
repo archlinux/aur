@@ -2,17 +2,17 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.12.2.20181111
-_pkgver=1.12.2
+pkgver=1.13.2.20181128
+_pkgver=1.13.2
 # Specify BuildTools version explicitly (instead of using
 # 'lastSuccessfulBuild') to let makepkg detect when needs to download an update
 _buildtoolver=82
-pkgrel=2
+pkgrel=1
 pkgdesc="CraftBukkit & Spigot Minecraft servers"
 arch=(any)
 url="http://www.spigotmc.org/"
 license=("GPL3")
-depends=("java-runtime-headless<=10" fontconfig)
+depends=("java-runtime-headless<=11" fontconfig)
 makedepends=(git)
 optdepends=("mcrcon: Notify users before shutdown and consistent backups")
 conflicts=(bukkit craftbukkit craftbukkit-stable)
