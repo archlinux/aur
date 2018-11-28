@@ -2,7 +2,7 @@
 
 pkgname=armcl-opencl
 pkgver=18.08
-pkgrel=0
+pkgrel=1
 
 epoch=
 pkgdesc="ARM Computer Vision and Machine Learning Library (x86_64 OpenCL Backend)"
@@ -51,4 +51,5 @@ package() {
 
   mkdir -p ${pkgdir}/usr/include/arm_compute/
   cp -r arm_compute/* ${pkgdir}/usr/include/arm_compute/
+  cp -r support ${pkgdir}/usr/include/arm_compute/
 }
