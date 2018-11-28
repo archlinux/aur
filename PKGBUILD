@@ -4,8 +4,8 @@
 _pkgname=doctrina
 _prefix=mingw-w64
 pkgname=${_prefix}-${_pkgname}
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 pkgdesc='The library of Software Peronista'
 arch=('x86_64')
 license=('GPL3')
@@ -13,7 +13,7 @@ url='https://git.softwareperonista.com.ar/cdp/doctrina'
 depends=("${_prefix}-glib2" "${_prefix}-sqlite")
 makedepends=("${_prefix}-meson" "vala")
 source=("https://git.softwareperonista.com.ar/cdp/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('11c180ff683e183ba6779fde3e287711f47b5fa942080f3e34460a6721138151')
+sha256sums=('c2a5424f7e45c53c4580f86c4033fad3e703d058e231791a8645c21bfa044b27')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
