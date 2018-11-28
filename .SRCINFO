@@ -1,30 +1,41 @@
 pkgbase = pythia
 	pkgdesc = High-energy physics events generator.
 	pkgver = 8.2.35
-	pkgrel = 5
+	pkgrel = 6
 	url = http://home.thep.lu.se/Pythia/
-	install = pythia.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = boost
-	depends = boost-libs
+	makedepends = python
+	makedepends = fastjet
+	makedepends = hepmc
+	makedepends = lhapdf>=6.2
+	makedepends = root
+	depends = python
+	source = http://home.thep.lu.se/~torbjorn/pythia8/pythia8235.tgz
+	source = pythia.sh
+	source = change_to_python2.patch
+	source = fix_lhapdf_build.patch
+	source = respect_lib_suffix.patch
+	sha256sums = e82f0d6165a8250a92e6aa62fb53201044d8d853add2fdad6d3719b28f7e8e9d
+	sha256sums = cb9773da0774a3ec9e0c1d345321770121504b223ab634ba74ed82901d3eee12
+	sha256sums = bae1a65399cd2ee599db1758d60da2a1c93335ec4dbd30e323250c156f491086
+	sha256sums = f7c70b069b350005ac7e9028617713dece9b82c1e8b0dc5fb1f2870abec1d94c
+	sha256sums = 4eb15725cfb5e287fdd9520cb4211b88ebc38a690b7522690ba0664d50bc8669
+
+pkgname = pythia
+	pkgdesc = High-energy physics events generator.
 	depends = python
 	optdepends = fastjet: fast jet finding in pp and e+e- collisions
 	optdepends = hepmc: storing collisions from Monte Carlo
 	optdepends = lhapdf: evaluate PDFs from discretised data files
 	optdepends = root: integrate with CERN ROOT data analysis framework
-	provides = pythia
-	provides = pythia8
-	options = !emptydirs
-	source = http://home.thep.lu.se/~torbjorn/pythia8/pythia8235.tgz
-	source = pythia.sh
-	source = pythia.install
-	source = respect_lib_suffix.patch
-	sha256sums = e82f0d6165a8250a92e6aa62fb53201044d8d853add2fdad6d3719b28f7e8e9d
-	sha256sums = 12fabaa56db80537b94a89de18f688f1258f467ed01b1ee6595efe75cde801d2
-	sha256sums = f1796729b0403026382bca43329692f5356c8ec46fc2c09f799a8b3d12d49a6f
-	sha256sums = 4eb15725cfb5e287fdd9520cb4211b88ebc38a690b7522690ba0664d50bc8669
 
-pkgname = pythia
+pkgname = python-pythia
+	pkgdesc = Python bindings for Pythia.
+	depends = pythia
+
+pkgname = python2-pythia
+	pkgdesc = Python2 bindings for Pythia.
+	depends = pythia
 
