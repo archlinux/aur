@@ -13,7 +13,7 @@ _neovim="n"
 
 _name='deoplete'
 pkgname="${_name}-git"
-pkgver=r1530.7cc5da2
+pkgver=r1531.acae373
 pkgrel=1
 pkgdesc="deoplete completion plugin for neovim"
 arch=('any')
