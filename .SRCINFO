@@ -1,7 +1,7 @@
 pkgbase = icingaweb2-module-director
 	pkgdesc = Manage Icinga 2 configuration from Icinga Web 2
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.icinga.org
 	arch = any
 	license = GPL

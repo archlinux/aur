@@ -3,7 +3,7 @@
 
 pkgname=icingaweb2-module-director
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage Icinga 2 configuration from Icinga Web 2"
 license=('GPL')
 arch=('any')
@@ -19,7 +19,7 @@ package() {
   mkdir -p "$pkgdir/etc/icingaweb2/modules/director"
   mkdir -p "$pkgdir/usr/share/webapps/icingaweb2/modules/director"
 
-  cp -r application doc library public schema test \
+  cp -r application contrib doc library public schema test \
     configuration.php module.info run.php \
     "$pkgdir/usr/share/webapps/icingaweb2/modules/director"
 
