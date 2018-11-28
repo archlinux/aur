@@ -1,15 +1,15 @@
 pkgname=digitemp
-pkgver=3.7.1
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="reading values from 1-wire devices"
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv7h)
 url="https://www.digitemp.com/software.shtml"
 license=('GPL')
 depends=()
 makedepends=('libusb-compat')
 optdepends=('libusb-compat: for digitemp_DS2490')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bcl/digitemp/archive/v$pkgver.tar.gz")
-sha256sums=('6fa4d965350d5501b6ca73ee8a09276ca4f65b6d85dae62f0a796239bae5000e')
+sha256sums=('683df4ab5cc53a45fe4f860c698f148d34bcca91b3e0568a342f32d64d12ba24')
 
 build() {
 	cd "$pkgname-$pkgver"
