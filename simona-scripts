@@ -12,6 +12,7 @@ pendrive-detect   - pendrive - detect a pendrive, size, full device
 ioscheduler-list  - iosched  - list scheduler for all block devices
 boot-kernel-list  - boot     - list kernels inside /boot, extract version (lile uname -r), say what is used in recent boot
 uuid-change       - uuid     - change uuid of a volume
+macinstall                   - install id files (commanded by config file)
 EOF
   exit
 elseif [[ $1 == "--version" ]]

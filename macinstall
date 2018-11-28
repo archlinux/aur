@@ -1,0 +1,335 @@
+#!/bin/bash
+# Simona Pisano - 2018-11-27
+# simona-scripts
+# Libertamente utilizzabile sotto GPL v3
+
+if [[ $1 == "-h" || $1 == "--help" || $1 == "list" || $1 == "" ]] ; then
+  cat << EOF
+macinstall command help
+
+Use this command to change local installation.
+Directory /etc/macinstall.d contains all alternative install files related.
+
+Usage
+  macinstall [--help|-h]
+  macinstall [--version]
+  macinstall [name-install]
+
+
+Optional parameters
+  --help -h                  -> this help page
+  --versione                 -> version
+  -y --ask-confirm           -> ask confirm before proceeed
+  ---this-is-not-an-exercise -> force real work
+
+Required
+  sed
+
+Cfg file
+  /etc/macinstall.d/macinstall.conf
+Propname (wold before '=' char) can't contain spaces but file name accept '"' and delimiter and single '\' (before space)
+
+EOF
+  exit
+elseif [[ $1 == "--version" ]]
+  echo "macinstall Version 0.0"
+  exit
+fi
+
+[[ ! -r /bin/sed ]] && { echo -e "$ERR Missing sed utility! Exit"; exit 1; }
+
+[[ $1 != "" ]] && install_macname=$1 || { echo "Please insert install name as first command parameter!!"; exit 0; }
+
+runLocalImport=false
+[[ $2 == "local-import" ]] && runLocalImport=true
+
+flagForceRealWork=false
+flagAskConfirm=false
+while [ $# -ne 0 ] ; do
+  case $1 in
+    -y|--ask-confirm) flagAskConfirm=true ;;
+    ---this-is-not-an-exercise) flagForceRealWork=true;;
+    *) ;;
+  esac
+  shift
+done
+
+#color	Foreground	Background
+#black	30	40
+#red	31	41
+#green	32	42
+#yellow	33	43
+#blue	34	44
+#magenta	35	45
+#cyan	36	46
+#white	37	47
+EchoReset="\e[0m"
+echo -e -n "$EchoReset"
+OK="\E[32;40m[OK]${EchoReset}"
+WARN="\E[33;40m[WARN]${EchoReset}"
+ERR="\E[31;40m[ERR]${EchoReset}"
+#echo -e "$OK $WARN $ERR"
+
+path_cfg="../etc-macinstall.d/"
+#path_cfg="/etc/macinstall.d/"
+filename_cfg="macinstall.conf"
+
+path_dest="/home/simona/My Work/my-pkg simonascripts/root-test/"
+#path_dest="$HOME/test"
+#path_dest="/"
+
+#path_prefix_system_semaphore="/etc/CurrentSystem-"
+path_prefix_system_semaphore="/home/simona/My Work/my-pkg simonascripts/root-test/etc/CurrentSystem-"
+
+postfix_bak_file_name=".bak"
+
+#cfg related
+prop_cfg_file_copy_num="CopyFilesNum"
+prop_cfg_dir_copy_num="CopyDirectoriesNum"
+prop_cfg_file_copy="CopyFile"
+prop_cfg_dir_copy="CopyDirectory"
+prop_cfg_write_sem="WriteSemaphore"
+prop_cfg_read_sem="AllowOnlyIfPreviousMacIs"
+
+if [[ ! -d $path_cfg ]] ; then
+  mkdir -p $path_cfg
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail '$path_cfg' mkdir cmd creation !!"; exit 1; }
+fi
+if [[ ! -r $path_cfg$filename_cfg ]] ; then
+  touch $path_cfg$filename_cfg
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail '$path_cfg$filename_cfg' touch cmd creation !!"; exit 1; }
+fi
+if [[ ! -d $path_dest ]] ; then
+  mkdir -p $path_dest
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail $path_dest mkdir cmd creation !!"; exit 1; }
+fi
+
+if [[ "$flagAskConfirm" == true ]] ; then
+  echo -n "Continue? (Y/N): "; read ask
+  [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user."; exit 0; }
+fi
+
+number_files=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_file_copy_num[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+number_directories=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_dir_copy_num[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+
+ok_write_semaphore=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_write_sem[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+[[ $ok_write_semaphore == "" ]] && ok_write_semaphore="yes" #default
+[[ $ok_write_semaphore != "yes" && $ok_write_semaphore != "no" ]] && ok_write_semaphore="yes" #default
+
+#Check cfg file integrity
+if [[ $number_files -lt 1 && $number_directories -lt 1 ]] ; then
+  echo -e "$ERR $filename_cfg: None to do!!! 'CopyFilesNum' and 'CopyDirectoriesNum' not correctly defined. Please modify cfg."
+  exit 1
+fi
+
+if [[ $number_files -gt 0 ]] ; then
+  for (( counter=1; counter <= $number_files; counter++ )) ; do
+    dupe=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_file_copy$counter[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+    [[ $dupe == "" ]] && { echo -e "$ERR $filename_cfg: '$prop_cfg_file_copy$counter' not found inside cfg. Fix cfg!!"; exit 1; }
+    [[ ! -r $path_cfg$install_macname$dupe ]] && { echo -e "$ERR File '$path_cfg$install_macname$dupe' defined in config but not found!"; exit 1; }
+    #remove starting '/' if exist
+    [[ ${dupe:0:1} == "/" ]] && dupe=${dupe:1:${#dupe}-1}
+    # extract path from $dupe and mkdir -p it
+    dupeFilename=${dupe##*/} #extract froms tring all is over last '/' (filename)
+    dupePath=${dupe:0:${#dupe}-${#dupeFilename}} #extract path (remove filename cutting string)
+    #echo "filename=$dupeFilename path=$path_dest$dupePath" #debug
+    if [[ ! -d "$path_dest$dupePath" ]] ; then
+      mkdir -p "$path_dest$dupePath"
+      if [[ $? -ne 0 ]] ; then
+        sudo mkdir -p "$path_dest$dupePath"
+        [[ $? -ne 0 ]] && { echo -e "$WARN Fail generating directory '$path_dest$dupePath'. Exit."; exit 1; }
+      fi
+    fi
+  done
+fi
+
+if [[ $number_directories -gt 0 ]] ; then
+  for (( counter=1; counter <= $number_directories; counter++ )) ; do
+    dupe=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_dir_copy$counter[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+    [[ $dupe == "" ]] && { echo -e "$ERR $filename_cfg: '$prop_cfg_dir_copy$counter' not found inside cfg. Fix cfg!!"; exit 1; }
+    [[ ! -d $path_cfg$install_macname$dupe ]] && { echo -e "$ERR Directory '$path_cfg$install_macname$dupe' defined in config but not found!"; exit 1; }
+    #remove starting '/' if exist
+    [[ ${dupe:0:1} == "/" ]] && dupe=${dupe:1:${#dupe}-1}
+    #remove ending '/' if exist
+    [[ ${dupe:${#dupe}-1:1} == "/" ]] && dupe=${dupe:0:${#dupe}-1}
+    # extract path from $dupe and mkdir -p it
+    dupeFoldername=${dupe##*/} #extract froms tring all is over last '/' (foldername)
+    dupePath=${dupe:0:${#dupe}-${#dupeFoldername}} #extract path (remove filename cutting string)
+    if [[ ! -d "$path_dest$dupePath" ]] ; then
+      mkdir -p "$path_dest$dupePath"
+      if [[ $? -ne 0 ]] ; then
+        sudo mkdir -p "$path_dest$dupePath"
+        [[ $? -ne 0 ]] && { echo -e "$WARN Fail generating directory '$path_dest$dupePath'. Exit."; exit 1; }
+      fi
+    fi
+  done
+fi
+
+# ------------------------------------------------------------------------------------------------------------------------
+# WORK -------------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------------------------
+
+if [[ "$flagForceRealWork" == true ]] ; then
+  echo -e "$WARN Warning: using REAL path. This is not a simulation. I can damage system."
+  echo "Dest dir used is '$path_dest'. (absolute path starting with '/' are fixed removing it)."
+  echo -n "Continue? (Y/N): "; read ask
+  [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user."; exit 0; }
+fi
+
+#TO-DO local-import come secondo parametro
+#legge macchina corrente su file semaforo, legge macchina corrente da parametro (devono corrispondere)
+# e va ricopiarsi tutti i files elencati sulla macchina (se presente) nella cartella giusta (è un fresh dei files di install)
+if [[ $runLocalImport == true ]] ; then
+  echo "TO-DO"
+
+  exit 0
+fi
+
+#?????
+#echo "1"
+#sed -nr "/^\[$install_macname\]/ { :l /^ciccia[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg
+#sed -nr "/^\[$install_macname\]/ { :l /^AllowOnlyIfPreviousMacIs[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg
+
+
+#
+## Verify semaphore file (opzional)
+#
+AllowOnlyIfPreviousMacIs=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_read_sem[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+if [[ $AllowOnlyIfPreviousMacIs != "" ]] ; then
+  echo " Found in cfg: AllowOnlyIfPreviousMacIs=$AllowOnlyIfPreviousMacIs"
+
+  if [[ ! -r "$path_prefix_system_semaphore$AllowOnlyIfPreviousMacIs" ]] ; then
+    echo -e "$ERR Missing semaphore '$path_prefix_system_semaphore$AllowOnlyIfPreviousMacIs'. Previous install required but not verified. Stop."
+    exit 1
+  else
+    flag_old_mac_to_erase="$AllowOnlyIfPreviousMacIs"
+  fi
+
+else
+  echo -e "$WARN Warning: control of previous installed machine disabled."
+  echo -n "Continue? (Y/N): "; read ask
+  [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user."; exit 0; }
+fi
+
+#
+##  Backup old files
+#
+if [[ $number_files -gt 0 ]] ; then
+  for (( counter=1; counter <= $number_files; counter++ )) ; do
+    backup=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_file_copy$counter[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+    [[ ${backup:0:1} == "/" ]] && backup=${backup:1:${#backup}-1} #remove starting '/' if exist
+    if [[ -r $path_dest$backup ]] ; then
+      if [[ "$flagForceRealWork" == true ]] ; then
+        cp -f "$path_dest$backup" "$path_dest$backup$postfix_bak_file_name"
+        if [[ $? -ne 0 ]] ; then
+          sudo cp -f "$path_dest$backup" "$path_dest$backup$postfix_bak_file_name"
+          if [[ $? -ne 0 ]] ; then
+            echo -e "$WARN Fail generating backup file '$path_dest$backup$postfix_bak_file_name'. Ask User."
+            echo -n "Continue? (Y/N): "; read ask
+            [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user with error."; exit 1; }
+          fi
+          echo -e "$OK Generation of backup file '$path_dest$backup' as '$path_dest$backup$postfix_bak_file_name'"
+        fi
+      else
+        echo -e "$OK [Simulated] Generation of backup file '$path_dest$backup' as '$path_dest$backup$postfix_bak_file_name'"
+      fi
+    else
+      echo -e "$WARN File '$path_dest$backup' to backup not present. Ignoring backup."
+    fi
+  done
+fi
+
+if [[ $number_directories -gt 0 ]] ; then
+  for (( counter=1; counter <= $number_directories; counter++ )) ; do
+    backup=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_dir_copy$counter[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+    [[ ${backup:0:1} == "/" ]] && backup=${backup:1:${#backup}-1} #remove starting '/' if exist
+    if [[ -d $path_dest$backup ]] ; then
+      if [[ "$flagForceRealWork" == true ]] ; then
+        mv -f "$path_dest$backup" "$path_dest$backup$postfix_bak_file_name"
+        if [[ $? -ne 0 ]] ; then
+          sudo mv -f "$path_dest$backup" "$path_dest$backup$postfix_bak_file_name"
+          if [[ $? -ne 0 ]] ; then
+            echo -e "$WARN Fail generating backup directory '$path_dest$backup$postfix_bak_file_name'. Ask User."
+            echo -n "Continue? (Y/N): "; read ask
+            [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user with error."; exit 1; }
+          fi
+          echo -e "$OK Generation of backup directory '$path_dest$backup$postfix_bak_file_name'"
+        fi
+      else
+        echo -e "$OK [Simulated] Generation of backup directory '$path_dest$backup$postfix_bak_file_name'"
+      fi
+    else
+      echo -e "$WARN Directory '$path_dest$backup' to backup not present. Ignoring backup."
+    fi
+  done
+fi
+
+#
+## Copia nuovi files
+#
+if [[ $number_files -gt 0 ]] ; then
+  for (( counter=1; counter <= $number_files; counter++ )) ; do
+    dupe=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_file_copy$counter[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+    [[ ${dupe:0:1} == "/" ]] && dupe=${dupe:1:${#dupe}-1} #remove starting '/' if exist
+    if [[ "$flagForceRealWork" == true ]] ; then
+      cp -f "$path_cfg$install_macname/$dupe" "$path_dest$dupe"
+      if [[ $? -ne 0 ]] ; then
+        sudo cp -f "$path_cfg$install_macname/$dupe" "$path_dest$dupe"
+        if [[ $? -ne 0 ]] ; then
+          echo -e "$ERR Fail copyng file over destination from <$install_macname> to '$path_dest$dupe'. Ask User."
+          echo -n "Continue? (Y/N): "; read ask
+          [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user with error."; exit 1; }
+        fi
+      fi
+      echo -e "$OK Copied file from <$install_macname> '$path_dest$dupe'."
+    else
+      echo -e "$OK [Simulated] Copied file from '$path_cfg$install_macname/$dupe' to '$path_dest$dupe'."
+    fi
+  done
+fi
+
+if [[ $number_directories -gt 0 ]] ; then
+  for (( counter=1; counter <= $number_directories; counter++ )) ; do
+    dupe=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_dir_copy$counter[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+    [[ ${dupe:0:1} == "/" ]] && dupe=${dupe:1:${#dupe}-1} #remove starting '/' if exist
+    [[ ${dupe:${#dupe}-1:1} == "/" ]] && dupe=${dupe:0:${#dupe}-1} #remove ending '/' if exist
+    if [[ "$flagForceRealWork" == true ]] ; then
+      cp -f -r "$path_cfg$install_macname/$dupe" "$path_dest$dupe"
+      if [[ $? -ne 0 ]] ; then
+        sudo cp -f -r "$path_cfg$install_macname/$dupe" "$path_dest$dupe"
+        if [[ $? -ne 0 ]] ; then
+          echo -e "$ERR Fail copyng directory over destination from <$install_macname> to '$path_dest$dupe'. Ask User."
+          echo -n "Continue? (Y/N): "; read ask
+          [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user with error."; exit 1; }
+        fi
+      fi
+      echo -e "$OK Copied directory <$install_macname> '$path_dest$dupe'."
+    else
+      echo -e "$OK [Simulated] Copied directory from '$path_cfg$install_macname/$dupe' to '$path_dest$dupe'."
+    fi
+  done
+fi
+
+#
+## Write new semaphore (can be disabled)
+#
+if [[ $ok_write_semaphore == "yes" ]] ; then
+  if [[ -r $path_prefix_system_semaphore$flag_old_mac_to_erase ]] ; then
+    #if [[ "$flagForceRealWork" == true ]] ; then
+    rm "$path_prefix_system_semaphore$flag_old_mac_to_erase"
+    if [[ $? -ne 0 ]] ; then
+      sudo rm "$path_prefix_system_semaphore$flag_old_mac_to_erase"
+      [[ $? -ne 0 ]] && echo -e "$WARN All was OK but I can't remove '$path_prefix_system_semaphore$flag_old_mac_to_erase' !!"
+    fi
+    touch "$path_prefix_system_semaphore$install_macname"
+    if [[ $? -ne 0 ]] ; then
+      sudo touch "$path_prefix_system_semaphore$install_macname"
+      [[ $? -ne 0 ]] && echo -e "$WARN All OK EXCEPT creation of blank file '$path_prefix_system_semaphore$install_macname' !!"
+    fi
+  fi
+fi
+
+exit 0;
+
+
+
