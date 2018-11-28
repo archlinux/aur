@@ -1,7 +1,7 @@
 # Maintainer: razer <razer[at]neuf[dot]fr>
 pkgname=python-adafruit_dht
 _pypi_pkgname=Adafruit_DHT
-pkgver=1.3.4
+pkgver=1.4.0
 pkgrel=0
 pkgdesc="Python library to read the DHT series of humidity and temperature sensors on a Raspberry Pi or Beaglebone Black."
 url="https://github.com/adafruit/Adafruit_Python_DHT"
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 install=()
 source=("https://pypi.io/packages/source/A/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('7af8a7683a5e45c715dc373bbdf6d23f50195b159948fde7c6c37f2add0cab82')
+sha256sums=('e927f2232eff5335cb9d8a2cca6dcad4625e61f205b12e31ef04198ea6dec830')
 
 package() {
   cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
