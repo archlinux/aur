@@ -2,7 +2,7 @@
 
 pkgname=aarch64-linux-gnu-armcl-opencl+neon
 pkgver=18.08
-pkgrel=1
+pkgrel=2
 
 epoch=
 pkgdesc="ARM Computer Vision and Machine Learning Library (arm64-v8a OpenCL + NEON Backends)"
@@ -51,4 +51,5 @@ package() {
 
   mkdir -p ${pkgdir}/usr/aarch64-linux-gnu/include/arm_compute/
   cp -r arm_compute/* ${pkgdir}/usr/aarch64-linux-gnu/include/arm_compute/
+  cp -r support ${pkgdir}/usr/include/arm_compute/
 }
