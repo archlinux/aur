@@ -2,9 +2,8 @@
 Description=Nextcloud preview generation
 
 [Timer]
-OnBootSec=5min
-OnCalendar=weekly
-Persistent=True
+OnBootSec=10min
+OnUnitActiveSec=15min
 
 [Install]
 WantedBy=timers.target

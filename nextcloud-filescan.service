@@ -1,0 +1,9 @@
+[Unit]
+Description=Nextcloud file scan
+
+[Service]
+User=http
+ExecStart=/usr/share/webapps/nextcloud/occ files:scan
+
+[Install]
+WantedBy=basic.target

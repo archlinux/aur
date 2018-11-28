@@ -4,7 +4,6 @@ Description=Nextcloud cron.php
 [Timer]
 OnBootSec=5min
 OnUnitActiveSec=15min
-Unit=nextcloudcron.service
 
 [Install]
 WantedBy=timers.target
