@@ -2,7 +2,7 @@
 
 pkgname=lib32-tslib
 _pkgname=tslib
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc="Touchscreen Access Library (32-bit)"
 arch=('x86_64')
