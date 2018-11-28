@@ -9,7 +9,7 @@ url='http://25thandclement.com/~william/projects/libarena.html'
 license=('MIT')
 depends=()
 options=()
-source=('http://25thandclement.com/~william/projects/releases/libarena-0.3.7.tgz')
+source=("http://25thandclement.com/~william/projects/releases/${pkgname}-${pkgver}.tgz")
 md5sums=('99339b429a34f32267be833a882008b9')
 
 build() {
