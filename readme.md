@@ -26,20 +26,30 @@ sudo usermod -a -G craftbukkit "$USER"
 What does this package do?
 --------------------------
 
-This package installs 2 popular Minecraft servers and their tools: *craftbukkit* and *Spigot*. They can be used alternatively.
+This package installs 2 popular Minecraft servers and their tools:
+*craftbukkit* and *Spigot*. They can be used alternatively.
 
 ### Craftbukkit ###
-Craftbukkit is a Minecraft server that implements the *Bukkit* API. Bukkit is a free, open-source, software project that provides the means to extend the popular Minecraft multiplayer server with plugins. The collection of plugins is huge and many of them are available in AUR.
+Craftbukkit is a Minecraft server that implements the *Bukkit* API. Bukkit is a
+free, open-source, software project that provides the means to extend the
+popular Minecraft multiplayer server with plugins. The collection of plugins is
+huge and many of them are available in AUR.
 
 * [Bukkit Home Page](http://bukkit.org/)
 * [List of available Bukkit plugins](http://www.curse.com/bukkit-plugins/minecraft)
 
 ### Spigot ###
-Spigot is just a modification of CraftBukkit, made more efficient. It is a huge collection of various tweaks to help increase performance, and make it more flexible as a server. Fortunately for you, this also means most CraftBukkit plugins are reverse-compatible with Spigot! Not only that, this project may also be the source of zero-day patches designed to fix critical issues before they are applied to the mainline CraftBukkit.
+Spigot is just a modification of CraftBukkit, made more efficient. It is a huge
+collection of various tweaks to help increase performance, and make it more
+flexible as a server. Fortunately for you, this also means most CraftBukkit
+plugins are reverse-compatible with Spigot! Not only that, this project may
+also be the source of zero-day patches designed to fix critical issues before
+they are applied to the mainline CraftBukkit.
 
 * [Spigot Home Page](http://www.spigotmc.org/)
 
-**So you should try to run Spigot first and if you encounter compatibility issues with your plugins, you can fall back to using Craftbukkit**.
+**So you should try to run Spigot first and if you encounter compatibility
+issues with your plugins, you can fall back to using Craftbukkit**.
 
 How to use it?
 --------------
@@ -62,7 +72,9 @@ or
 sudo systemctl start craftbukkit
 ```
 
-NOTE: Spigot and Craftbukkit can't be run simultaneously. if you try start one server while the other is already running, the one that is running will be shut down before the other one starts.
+NOTE: Spigot and Craftbukkit can't be run simultaneously. if you try start one
+server while the other is already running, the one that is running will be shut
+down before the other one starts.
 
 If you want the server to start automatically when the server boots up, use:
 ```
@@ -81,16 +93,22 @@ sudo systemctl stop spigot
 ```
 sudo systemctl stop craftbukkit
 ```
-Players that are in game when the stop command is being issued will see a 10 sec countdown in the chat before shutdown.
+Players that are in game when the stop command is being issued will see a 10
+sec countdown in the chat before shutdown.
 
 ### Making backups ###
 A simple backup script is provided that does not take any argument. Just run
 `/usr/share/craftbukkit-spigot/backup.sh`. The script can be considered an
 example, so feel free to copy it and modify it for your own backup preferences.
 
-The script temporarily suspends the automatic saving of world chunks on the running server and makes a compressed copy of the directories `world`, `world_nether` and `world_the_end` into the `/srv/craftbukkit/backup` folder. The resulting `.tar.bzip2` file is named with a date/time stamp.
+The script temporarily suspends the automatic saving of world chunks on the
+running server and makes a compressed copy of the directories `world`,
+`world_nether` and `world_the_end` into the `/srv/craftbukkit/backup` folder.
+The resulting `.tar.bzip2` file is named with a date/time stamp.
 
-To restore a specific backup you first need to stop the server. Then change the current working directory to where the server resides and untar the backup image. For example:
+To restore a specific backup you first need to stop the server. Then change the
+current working directory to where the server resides and untar the backup
+image. For example:
 ```
 cd /srv/craftbukkit
 tar -xjf 201503211347.tar.bzip2
@@ -99,7 +117,12 @@ Once it is done you can restart the server.
 
 Additional notes
 ----------------
-This package is generated using Spigot build tools. These tools fetch the official Minecraft server, patches and modification files from their git repositories and assemble the modified servers on your machine locally. As no modified Minecraft server is being distributed, these build tools and this package are therefore not subject to the DMCA notice that has hit the craftbukkit "binary" packages.
+This package is generated using Spigot build tools. These tools fetch the
+official Minecraft server, patches and modification files from their git
+repositories and assemble the modified servers on your machine locally. As no
+modified Minecraft server is being distributed, these build tools and this
+package are therefore not subject to the DMCA notice that has hit the
+craftbukkit "binary" packages.
 
 This package makes it easy to communicate with the server instance using
 *mcrcon*. Install the mcrcon package and then all valid bukkit commands can be
@@ -113,7 +136,9 @@ craftbukkit-mcrcon "say Hello World!"
 ```
 Will display the text `[rcon] Hello World!` in the in-game chat.
 
-Finally, If nothing else works, a vanilla minecraft server is also provided as part of the package. It is managed in the same way as descibed above. The service is called `minecraft` and it can be started with:
+Finally, If nothing else works, a vanilla minecraft server is also provided as
+part of the package. It is managed in the same way as descibed above. The
+service is called `minecraft` and it can be started with:
 ```
 sudo systemctl start minecraft
 ```
