@@ -1,7 +1,7 @@
 pkgbase = leela-zero
 	pkgdesc = Go engine with no human-provided knowledge, modeled after the AlphaGo Zero paper.
 	pkgver = 0.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gcp/leela-zero
 	install = leela-zero.install
 	arch = x86_64
@@ -12,11 +12,17 @@ pkgbase = leela-zero
 	makedepends = ocl-icd
 	depends = glibc
 	depends = zlib
-	depends = libopenblas
+	depends = openblas
 	depends = boost
 	depends = opencl-nvidia
 	depends = qt5-base
 	source = leela-zero::git+https://github.com/gcp/leela-zero#tag=v0.16
+	source = git+https://github.com/google/googletest.git
+	source = git+https://github.com/eigenteam/eigen-git-mirror
+	source = weights.txt.gz::http://zero.sjeng.org/best-network
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = leela-zero
