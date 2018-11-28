@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=mothur
-pkgver=1.41.0
+pkgver=1.41.1
 pkgrel=1
 pkgdesc='A bioinformatics program for analyzing microbial communities.'
 arch=('x86_64')
@@ -11,17 +11,17 @@ license=('GPL3')
 depends=('boost-libs')
 makedepends=('boost' 'hdf5')
 options=('!buildflags')
-source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b54b71e46f96ff2604ba8e3b33f95c067e6921cbb212b603365e6483d05574f1')
+source=("https://github.com/${pkgname}/${pkgname}/archive/v.${pkgver}.tar.gz")
+sha256sums=('09185acb00b424d079ecb7f0d1862d214539654dec116417aa2740f68f17b80f')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-v.${pkgver}"
 
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-v.${pkgver}"
 
   install -Dm755 mothur "${pkgdir}/usr/bin/mothur"
   install -Dm755 uchime "${pkgdir}/usr/bin/uchime"
