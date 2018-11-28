@@ -1,0 +1,19 @@
+pkgbase = python2-socksipy-branch-1.01
+	pkgdesc = Version 1.01 of SocksiPy, for compatibility reasons.
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://code.google.com/archive/p/socksipy-branch/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-socksipy=1.01
+	provides = python2-socksipy-branch=1.01
+	conflicts = python2-socksipy
+	conflicts = python2-socksipy-branch
+	options = !emptydirs
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/socksipy-branch/SocksiPy-branch-1.01.tar.gz
+	sha256sums = 8331732ed0fcacc84e7c33c07f5e3902f0869a215b3a56f0a8845d2fafbfd504
+
+pkgname = python2-socksipy-branch-1.01
+
