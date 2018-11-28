@@ -1,7 +1,7 @@
 # Maintainer: Xaver Hellauer <software@hellauer.bayern>
 # Contributor: Stephen Lester <stephen@lester.codes>
 pkgname=wire-desktop-bin
-pkgver=3.3.2872
+pkgver=3.4.2879
 pkgrel=1
 pkgdesc='Modern communication, full privacy.'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 # https://wire-app.wire.com/linux/debian/pool/main/wire_2.15.2751_amd64.deb
 source_i686=("https://wire-app.wire.com/linux/debian/pool/main/wire_${pkgver}_i386.deb")
 source_x86_64=("https://wire-app.wire.com/linux/debian/pool/main/wire_${pkgver}_amd64.deb")
-sha256sums_i686=('0ba392aca71d85cce5465e1431eb6c35c8f0609e598c485cc67177a99827bc99')
-sha256sums_x86_64=('fca2cabdd934dca956525b60f97dd2712120499c7f10b10259fe4701439ada13')
+sha256sums_i686=('9780c8cc0cc97783fe769f947499f872851270daa29760ac0136904798335457')
+sha256sums_x86_64=('2d95f2aa0eac6d55cbcc3851e39e708f310d229c75d5ea919767e1bd075f67b4')
 options=(!strip)
 
 package() {
