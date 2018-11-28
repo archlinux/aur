@@ -1,6 +1,32 @@
+diff -ru --no-dereference -x .git FreeDoko-orig/data/Makefile FreeDoko/data/Makefile
+--- FreeDoko-orig/data/Makefile	2018-11-28 21:40:33.335108068 +0100
++++ FreeDoko/data/Makefile	2018-11-28 21:42:11.934615301 +0100
+@@ -32,8 +32,7 @@
+ 	for d in cardsets iconsets backgrounds sounds; do \
+ 	  $(MAKE) -C $$d install; \
+ 	done
+-	-chgrp games $(DESTDIR)$(DATA_DIRECTORY) && chgrp -R games $(DESTDIR)$(DATA_DIRECTORY)
+-	chmod -R o-rwx,g+rX,g-w $(DESTDIR)$(DATA_DIRECTORY)
++	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(DATA_DIRECTORY)
+ endif
+ 
+ ifeq ($(SHELLTYPE), sh)
+diff -ru --no-dereference -x .git FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefile
+--- FreeDoko-orig/doc/Makefile	2018-11-28 21:40:34.299008167 +0100
++++ FreeDoko/doc/Makefile	2018-11-28 21:42:11.934615301 +0100
+@@ -34,8 +34,7 @@
+ 	fi
+ 	cp -a Bugs GPL Roadmap hpux.required_libs-ia64.txt $(DESTDIR)$(HELP_DIRECTORY)/
+ 	for d in de en; do $(MAKE) -C $$d install; done
+-	-chgrp games $(DESTDIR)$(HELP_DIRECTORY) && chgrp -R games $(DESTDIR)$(HELP_DIRECTORY)
+-	chmod -R o-rwx,g+rX,g-w $(DESTDIR)$(HELP_DIRECTORY)
++	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(HELP_DIRECTORY)
+ 	cd $(DESTDIR)$(DATA_DIRECTORY) && ln -sf $(HELP_DIRECTORY)/ doc
+ endif
+ 
 diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
---- FreeDoko-orig/Makefile	2018-01-09 11:35:40.845184810 +0100
-+++ FreeDoko/Makefile	2018-01-09 11:37:02.943311456 +0100
+--- FreeDoko-orig/Makefile	2018-11-28 21:40:33.094966765 +0100
++++ FreeDoko/Makefile	2018-11-28 21:42:11.931277709 +0100
 @@ -316,8 +316,7 @@
  	echo "Kopiere das Programm"
  	mkdir -p $(DESTDIR)$(BIN_DIRECTORY)
@@ -30,8 +56,8 @@ diff -ru --no-dereference -x .git FreeDoko-orig/Makefile FreeDoko/Makefile
  	echo "Kopiere den Desktop-Starter"
  	mkdir -p "$(DESTDIR)$(DESKTOP_FILE_DIRECTORY)"
 diff -ru --no-dereference -x .git FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.directories
---- FreeDoko-orig/Makefile.install.directories	2018-01-09 11:35:40.845184810 +0100
-+++ FreeDoko/Makefile.install.directories	2018-01-09 11:37:27.016100663 +0100
+--- FreeDoko-orig/Makefile.install.directories	2018-11-28 21:40:33.094966765 +0100
++++ FreeDoko/Makefile.install.directories	2018-11-28 21:42:11.931277709 +0100
 @@ -4,14 +4,14 @@
  # the different directories for the files
  
@@ -78,36 +104,10 @@ diff -ru --no-dereference -x .git FreeDoko-orig/Makefile.install.directories Fre
  
  # Void Linux
  #MAIN_DIRECTORY         = /usr
-diff -ru --no-dereference -x .git FreeDoko-orig/data/Makefile FreeDoko/data/Makefile
---- FreeDoko-orig/data/Makefile	2018-01-09 11:35:41.508502890 +0100
-+++ FreeDoko/data/Makefile	2018-01-09 11:35:59.458090895 +0100
-@@ -32,8 +32,7 @@
- 	for d in cardsets iconsets backgrounds sounds; do \
- 	  $(MAKE) -C $$d install; \
- 	done
--	-chgrp games $(DESTDIR)$(DATA_DIRECTORY) && chgrp -R games $(DESTDIR)$(DATA_DIRECTORY)
--	chmod -R o-rwx,g+rX,g-w $(DESTDIR)$(DATA_DIRECTORY)
-+	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(DATA_DIRECTORY)
- endif
- 
- ifeq ($(SHELLTYPE), sh)
-diff -ru --no-dereference -x .git FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefile
---- FreeDoko-orig/doc/Makefile	2018-01-09 11:35:42.411815455 +0100
-+++ FreeDoko/doc/Makefile	2018-01-09 11:36:17.161019281 +0100
-@@ -34,8 +34,7 @@
- 	fi
- 	cp -a Bugs GPL Roadmap hpux.required_libs-ia64.txt $(DESTDIR)$(HELP_DIRECTORY)/
- 	for d in de en; do $(MAKE) -C $$d install; done
--	-chgrp games $(DESTDIR)$(HELP_DIRECTORY) && chgrp -R games $(DESTDIR)$(HELP_DIRECTORY)
--	chmod -R o-rwx,g+rX,g-w $(DESTDIR)$(HELP_DIRECTORY)
-+	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(HELP_DIRECTORY)
- 	cd $(DESTDIR)$(DATA_DIRECTORY) && ln -sf $(HELP_DIRECTORY)/ doc
- endif
- 
 diff -ru --no-dereference -x .git FreeDoko-orig/src/Makefile FreeDoko/src/Makefile
---- FreeDoko-orig/src/Makefile	2018-02-03 13:08:27.308068751 +0100
-+++ FreeDoko/src/Makefile	2018-02-03 13:17:38.273976791 +0100
-@@ -264,7 +264,6 @@
+--- FreeDoko-orig/src/Makefile	2018-11-28 21:40:34.689237244 +0100
++++ FreeDoko/src/Makefile	2018-11-28 21:42:11.934615301 +0100
+@@ -262,7 +262,6 @@
  		-DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' \
  		-DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
  	  $(PROGRAM)
