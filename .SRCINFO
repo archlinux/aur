@@ -9,6 +9,7 @@ pkgbase = authenticator
 	makedepends = ninja
 	makedepends = gobject-introspection
 	makedepends = gnome-common
+	makedepends = git
 	depends = python>=3.3.0
 	depends = gtk3>=3.16.0
 	depends = python-pyotp
