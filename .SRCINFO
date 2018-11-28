@@ -16,7 +16,6 @@ pkgbase = python-serpent-ai-git
 	depends = python-scikit-learn
 	depends = tesseract
 	depends = tesseract-data-eng
-	depends = python-async-timeout
 	depends = python-redis
 	depends = redis
 	depends = python-aioredis
