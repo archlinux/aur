@@ -1,12 +1,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-git
-pkgver=3.61.2r20180912
+pkgver=3.61.2r20181125
 epoch=1
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method from git'
 arch=('x86_64')
-url="http://www.freefem.org/ff++/index.htm"
+url="https://freefem.org/index.html"
 license=('LGPL')
 depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-openmpi' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
 makedepends=('git' 'texlive-core')
