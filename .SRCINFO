@@ -1,0 +1,18 @@
+pkgbase = nodejs-afterwriting
+	pkgdesc = Afterwriting CLI is a command line tool that lets you generate PDF from your fountain script using node.js.
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/ifrost/afterwriting-labs/blob/master/docs/clients.md
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	noextract = afterwriting-1.11.0.tgz
+	source = https://registry.npmjs.org/afterwriting/-/afterwriting-1.11.0.tgz
+	source = LICENSE
+	sha256sums = 5f4d4d20c5029591a06c5f4636b4c5eb165ca1a852b778596519d2a16d12d5e7
+	sha256sums = abb42abaef9d2198f1d38b5b40c3c8accec9a8e8bdea7b0994270d75a3beb931
+
+pkgname = nodejs-afterwriting
+
