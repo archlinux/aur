@@ -3,14 +3,14 @@
 
 pkgname=wire-desktop
 pkgver=3.4.2879
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop-bin')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss' 'xdg-utils')
-makedepends=('cargo' 'npm' 'patch' 'python2' 'git' 'yarn')
+makedepends=('cargo' 'npm' 'python2' 'git' 'yarn')
 optdepends=('hunspell-en: for English spellcheck support'
             'noto-fonts-emoji: for colorful emoji made by Google'
             'ttf-emojione: for colorful emoji made by EmojiOne')
