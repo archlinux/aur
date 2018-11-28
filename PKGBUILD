@@ -8,7 +8,7 @@ pkgname=ipwaiter-git
 # shellcheck disable=SC2034
 pkgdesc="ipwaiter serves iptables"
 # shellcheck disable=SC2034
-pkgver=r90.3511c07
+pkgver=r97.a647dbc
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -58,6 +58,6 @@ package() {
         return 1
   }
 
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
 
