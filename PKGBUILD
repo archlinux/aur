@@ -1,17 +1,16 @@
-# $Id$
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-threadripper
+pkgbase=linux-threadripper  # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=4.18.3-arch1
+_srcver=4.19.4-arch1
 pkgver=${_srcver//-/.}
-pkgrel=1
+pkgrel=3
 arch=(x86_64)
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git)
+makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
@@ -28,11 +27,11 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'bb700544d499a92dab141a218cc1eac62fdff0b67682748cb827035269c02a55'
+            'e7fa30bb2de12d1a2488423e27c00f26d55668e310e69aaf93673c1afd89dbaf'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '8ccbf4cc0ea5e093ff77eb36e514c6a54a2da055ab31e1381f147192f42496cd')
+            '924652ea02de0288e115429c90c8c803306bd5e4205448721c6e2d05d6556a05')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -64,7 +63,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
@@ -80,12 +79,17 @@ _package() {
   cd $_srcname
 
   msg2 "Installing boot image..."
-  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
+  local image="$pkgdir/boot/vmlinuz-$pkgbase"
+  install -Dm644 "$(make -s image_name)" "$image"
 
   msg2 "Installing modules..."
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
   mkdir -p "$modulesdir"
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  ln -sr "$image" "$modulesdir/vmlinuz"
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
@@ -194,6 +198,10 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
@@ -208,6 +216,22 @@ _package-docs() {
   msg2 "Installing documentation..."
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
+
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
+
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
+
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/share/doc"
+  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
