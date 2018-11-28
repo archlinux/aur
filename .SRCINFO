@@ -1,11 +1,11 @@
 pkgbase = mingw-w64-doctrina
 	pkgdesc = The library of Software Peronista
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.softwareperonista.com.ar/cdp/doctrina
 	arch = x86_64
 	license = GPL3
-	makedepends = meson
+	makedepends = mingw-w64-meson
 	makedepends = vala
 	depends = mingw-w64-glib2
 	depends = mingw-w64-sqlite
