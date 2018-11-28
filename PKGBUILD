@@ -3,10 +3,10 @@ _orgname=openstreetmap
 _pkgname=osmembrane
 pkgname=${_pkgname}
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='OSMembrane is a frontend to the Osmosis data processing tool'
 arch=(any)
-url="http://osmembrane.de"
+url='https://github.com/openstreetmap/OSMembrane'
 license=('GPL3')
 depends=('java-runtime' 'osmosis')
 optdepends=('josm')
@@ -17,6 +17,11 @@ sha256sums=('38d2414152a97b26fa60008d3190c42330af86b3ba221bbba12b373af2df2973')
 
 prepare() {
   cd ${pkgname}-${pkgver}
+
+  cat << EOF > ${pkgname}
+#!/bin/sh
+exec /usr/bin/java -jar '/usr/share/java/${pkgname}/OSMembrane.jar' "\$@"
+EOF
 
   cd src/main/java/de/osmembrane/resources
   sed -i "s#\"resources/pdf/manual.pdf\"#\"/usr/share/${pkgname}/resources/pdf/manual.pdf\"#" Constants.java
@@ -33,15 +38,7 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
 
-  install -d 755 ${pkgdir}/usr/bin
-  install -d 755 ${pkgdir}/usr/share
-  install -d 755 ${pkgdir}/usr/share/java
-  install -d 755 ${pkgdir}/usr/share/java/${pkgname}
-  install -d 755 ${pkgdir}/usr/share/${pkgname}
-  install -d 755 ${pkgdir}/usr/share/${pkgname}/resources
-  install -d 755 ${pkgdir}/usr/share/${pkgname}/resources/pdf
-
-  install -m 755 ../../${pkgname} ${pkgdir}/usr/bin
-  install -m 644 build/libs/OSMembrane.jar ${pkgdir}/usr/share/java/${pkgname}
-  install -m 644 manual/manual.pdf ${pkgdir}/usr/share/${pkgname}/resources/pdf
+  install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  install -Dm644 build/libs/OSMembrane.jar ${pkgdir}/usr/share/java/${pkgname}/OSMembrane.jar
+  install -Dm644 manual/manual.pdf ${pkgdir}/usr/share/${pkgname}/resources/pdf/manual.pdf
 }
