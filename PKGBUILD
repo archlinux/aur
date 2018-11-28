@@ -2,7 +2,7 @@
 
 pkgname=cli11
 _pkgname=CLI11
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Command line parser for C++11'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/CLIUtils/CLI11'
 license=('CUSTOM')
 makedepends=('cmake')
 source=("https://github.com/CLIUtils/CLI11/archive/v${pkgver}.zip")
-sha256sums=('a16e0ada7cad7c3346b4bd75e70995f6291f8d315f632ed251ff9d386bc34efe')
+sha256sums=('36bd9b4bad0f3dc21917e1b852ea13f1e417240efdd7187cef24f5f8700f92ff')
 
 build() {
     cd "${_pkgname}-${pkgver}"
