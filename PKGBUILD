@@ -22,8 +22,8 @@ prepare() {
 
     # LDFLAGS="${LDFLAGS} -pthread -Wl,--no-undefined" \  # fails to compile tests
     CFLAGS="${CFLAGS}" \
-    CXXFLAGS="${CXXFLAGS} -pthread" \
-    LDFLAGS="${LDFLAGS} -pthread" \
+    CXXFLAGS="${CXXFLAGS}" \
+    LDFLAGS="${LDFLAGS}" \
     cmake -DCMAKE_BUILD_TYPE:STRING=Release \
           -DCMAKE_INSTALL_LIBDIR:PATH=lib \
           -DCMAKE_INSTALL_PREFIX:PATH=/usr \
@@ -39,9 +39,9 @@ prepare() {
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/build"
     # LDFLAGS="${LDFLAGS} -pthread -Wl,--no-undefined" \  # fails to compile tests
-    CFLAGS="${CFLAGS} -pthread" \
-    CXXFLAGS="${CXXFLAGS} -pthread" \
-    LDFLAGS="${LDFLAGS} -pthread" \
+    CFLAGS="${CFLAGS}" \
+    CXXFLAGS="${CXXFLAGS}" \
+    LDFLAGS="${LDFLAGS}" \
     cmake -DCMAKE_BUILD_TYPE:STRING=Release \
           -DCMAKE_INSTALL_LIBDIR:PATH=lib \
           -DCMAKE_INSTALL_PREFIX:PATH=/usr \
