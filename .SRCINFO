@@ -1,6 +1,6 @@
 pkgbase = quickdocs
 	pkgdesc = GTK app for reading Valadoc and DevDocs
-	pkgver = 2.2.3
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://github.com/mdh34/quickDocs
 	arch = x86_64
@@ -22,9 +22,11 @@ pkgbase = quickdocs
 	depends = webkit2gtk
 	depends = devhelp
 	depends = libarchive
+	depends = libgee
+	depends = granite
 	options = !libtool
-	source = https://github.com/mdh34/quickdocs/archive/2.2.3.tar.gz
-	sha256sums = 87bd99ef6902092a49ce5532b687664eabc6e88018df188eb132b6e45977f31d
+	source = https://github.com/mdh34/quickdocs/archive/2.2.4.tar.gz
+	sha256sums = aeb40ba282faacfb6cd061867767a287e131e17e54e79ff4d5ab9866172cdf4f
 
 pkgname = quickdocs
 
