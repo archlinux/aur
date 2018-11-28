@@ -8,9 +8,9 @@ wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_orgname,,}-${_pkgname}-git
 pkgver=0.9.git.6e288c3pre.r4703.aef74609
 pkgrel=1
-pkgdesc="Map drawing program from OpenOrienteering"
+pkgdesc='Map drawing program from OpenOrienteering'
 arch=('i686' 'x86_64')
-url="http://www.openorienteering.org/apps/mapper/"
+url='https://www.openorienteering.org/apps/mapper/'
 license=('GPL3')
 depends=('qt5-base>=5.6' 'polyclipping>=6.1.3a' 'proj>=4.9.2' 'gdal')
 makedepends=('cmake>=3.2' 'qt5-tools>=5.6' 'doxygen' 'libcups')
@@ -35,7 +35,7 @@ pkgver() {
 
   if [ "${_use_gh_api}" = true ]; then
     api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
-    base="8a8986ec"
+    base='8a8986ec'
     head=$(curl -s "$api_url/git/refs/heads/${_branch}" | \
       python -c "import sys, json; print(json.load(sys.stdin)['object']['sha'][:8])")
     count=$(curl -s "$api_url/compare/${base}...${head}" | \
