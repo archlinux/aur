@@ -48,9 +48,7 @@ prepare() {
 
 _lua_iup_build_helper() {
   # $1 ... Lua version ("5.1", "5.2" or "5.3")
-
-  _lua_ver=$1
-  _lua_ver_nodot=`echo $1 | cut -c1,3`
+  _lua_ver="$1"
 
   make \
     iuplua5 \
@@ -61,14 +59,14 @@ _lua_iup_build_helper() {
     IM_LIB=/usr/lib \
     CD_INC=/usr/include/cd \
     CD_LIB=/usr/lib \
-    IMLUA_LIB=/usr/lib/lua/${_lua_ver} \
-    CDLUA_LIB=/usr/lib/lua/${_lua_ver} \
+    IMLUA_LIB="/usr/lib/lua/${_lua_ver}" \
+    CDLUA_LIB="/usr/lib/lua/${_lua_ver}" \
     ZLIB_LIB=/usr/lib \
     USE_GTK3=Yes \
-    USE_LUA${_lua_ver_nodot}=Yes \
+    "USE_LUA${_lua_ver//.}"=Yes \
     LUA_INC=/usr/include/lua${_lua_ver} \
     LUA_LIB=/usr/lib \
-    LUA_SFX=${_lua_ver}
+    LUA_SFX="${_lua_ver}"
 }
 
 build() {
@@ -99,29 +97,25 @@ build() {
     ZLIB_LIB=/usr/lib \
     USE_GTK3=Yes
 
-  msg2 'Building iup Lua bindings for Lua 5.3'
   _lua_iup_build_helper "5.3"
 
-  msg2 'Building iup Lua bindings for Lua 5.1'
   _lua_iup_build_helper "5.1"
 
-  msg2 'Building iup Lua bindings for Lua 5.2'
   _lua_iup_build_helper "5.2"
 }
 
 _lua_iup_package_helper() {
   # $1 ... Lua version ("5.1", "5.2", "5.3", ... or "none")
-
-  _lua_ver=$1
-  _lua_ver_nodot=`echo $1 | cut -c1,3`
+  _lua_ver="$1"
+  _lua_ver_nodot="${_lua_ver//.}"
 
   # install files
-  install -m755 -d "$pkgdir"/usr/bin
-  install -m755 "$srcdir"/iup/bin/Linux*_??/Lua${_lua_ver_nodot}/* "$pkgdir"/usr/bin
-  install -d "$pkgdir"/usr/lib/lua/${_lua_ver}/
-  install -Dm755 "$srcdir"/iup/lib/Linux*_??/Lua${_lua_ver_nodot}/*.so "$pkgdir"/usr/lib/lua/${_lua_ver}/
-  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
-  install -m644 "$srcdir"/iup/COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname
+  install -m755 -d "${pkgdir}/usr/bin"
+  install -m755 "${srcdir}/iup/bin/Linux*_??/Lua${_lua_ver_nodot}/*" "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/lib/lua/${_lua_ver}/"
+  install -Dm755 "${srcdir}/iup/lib/Linux*_??/Lua${_lua_ver_nodot}/*.so" "${pkgdir}/usr/lib/lua/${_lua_ver}/"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 "${srcdir}/iup/COPYRIGHT" "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # create symlinks required for Lua modules
   for name in \
@@ -138,8 +132,8 @@ _lua_iup_package_helper() {
     iuplua_plot \
     iuplua_scintilla \
     iupluascripterdlg ; do
-      _lib=lib${name}${_lua_ver_nodot}.so
-      ln -s /usr/lib/lua/${_lua_ver}/${_lib} "${pkgdir}"/usr/lib/lua/${_lua_ver}/${name}.so
+      _lib="lib${name}${_lua_ver_nodot}.so"
+      ln -s "/usr/lib/lua/${_lua_ver}/${_lib}" "${pkgdir}/usr/lib/lua/${_lua_ver}/${name}.so"
   done
 }
 
