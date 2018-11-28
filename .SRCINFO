@@ -1,0 +1,15 @@
+pkgbase = musique-bin
+	pkgdesc = A finely crafted music player
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://flavio.tordini.org/musique
+	arch = x86_64
+	license = custom
+	depends = phonon-qt5
+	depends = taglib
+	depends = hicolor-icon-theme
+	source = musique-1.5.deb::http://flavio.tordini.org/files/musique/musique.deb
+	sha256sums = b964f90acb765b853417316dbe391eef4942781eed89fb59629d61fc6cbd9a94
+
+pkgname = musique-bin
+
