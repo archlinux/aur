@@ -30,7 +30,8 @@ prepare() {
 	      --prefix=/usr \
 	      --sysconfdir=/etc \
 	      --enable-download \
-	      --disable-mumps
+	      --disable-mumps \
+	      --disable-hpddm
   find . -name Makefile -exec sed -i 's+^gcc+gcc =+' {} \;
   find . -name Makefile -exec sed -i 's+^dir+dir =+' {} \;
 }
