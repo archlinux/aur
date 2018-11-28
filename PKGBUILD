@@ -7,9 +7,9 @@
 
 pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
-pkgver=396.54.09
+pkgver=415.18.02
 _extramodules=extramodules-ARCH
-pkgrel=3
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -17,16 +17,14 @@ makedepends=('libglvnd' 'linux' 'linux-headers>=4.19' 'linux-headers<4.20')
 license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
-source=("NVIDIA-Linux-x86_64-${pkgver}.run::https://developer.nvidia.com/linux-3965409"
+source=("NVIDIA-Linux-x86_64-${pkgver}.run::https://developer.nvidia.com/vulkan-beta-4151802-linux"
         'nvidia-drm-outputclass.conf'
         'nvidia-vulkan-utils.sysusers'
-        'kernel-4.16.patch'
-        'kernel-4.19.patch')
-sha512sums=('93a79b2c0432c8d4801162609a404b8eec3115ca1febe772cfea17ebbfb6265d9064c40f40ea8714969953ea7886aba1a5f1ba67e529b254e8ccd810085f1461'
+        'kernel-4.16.patch')
+sha512sums=('e42316db82b34bd6c7d0826466e85d08c47c0b16e0e3299be89a218fe9ca92fe1d4cc7f65743e1ea1198f54d66fa2fb506b482d9b6ff2c7eb63947dbfd221193'
             'c49d246a519731bfab9d22afa5c2dd2d366db06d80182738b84881e93cd697c783f16ee04819275c05597bb063451a5d6102fbc562cd078d2a374533a23cea48'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
-            'ad1185d998adbf89abf7aea300e5b3bbabe2296016f42592fbc232a6c3983f233df1103d37f35a041f12cc1c722d3edce813a4a1b215784a49c7f0e3e652b5af'
-            '354c644794c9dcf7bb8d4afd720736f7b9760306e1cb9c1c98be209e0f30bdfe628b67aa371461e33ccf0e58a0efb084c7f7fc91f4351ae3df3edb991fc49e00')
+            'ad1185d998adbf89abf7aea300e5b3bbabe2296016f42592fbc232a6c3983f233df1103d37f35a041f12cc1c722d3edce813a4a1b215784a49c7f0e3e652b5af')
 
 create_links() {
     # create soname links
@@ -45,7 +43,6 @@ prepare() {
     # Restore phys_to_dma support (still needed for 396.18)
     # https://bugs.archlinux.org/task/58074
     patch -Np1 -i ../kernel-4.16.patch
-    patch -Np1 -i ../kernel-4.19.patch
 
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
@@ -148,13 +145,15 @@ package_nvidia-vulkan-utils() {
     install -D -m755 nvidia_drv.so "${pkgdir}/usr/lib/xorg/modules/drivers/nvidia_drv.so"
 
     # GLX extension module for X
-    install -D -m755 "libglx.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglx.so.${pkgver}"
-    ln -s "libglx.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglx.so.1"	# X doesn't find glx otherwise
-    ln -s "libglx.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglx.so"	# X doesn't find glx otherwise
+    install -D -m755 "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.${pkgver}"
+    # Ensure that X finds glx
+    ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.1"
+    ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so"
+
+    # X wrapped software rendering
+    install -D -m755 "libnvidia-wfb.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-wfb.so.${pkgver}"
 
     install -D -m755 "libGLX_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/libGLX_nvidia.so.${pkgver}"
-    # now in mesa driver
-    #ln -s "libGLX_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/libGLX_indirect.so.0"
 
     # OpenGL libraries
     install -D -m755 "libEGL_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/libEGL_nvidia.so.${pkgver}"
@@ -173,7 +172,6 @@ package_nvidia-vulkan-utils() {
     install -D -m755 "libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-encode.so.${pkgver}"
     install -D -m755 "libnvidia-cfg.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-cfg.so.${pkgver}"
     install -D -m755 "libnvidia-ml.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ml.so.${pkgver}"
-    install -D -m755 "libnvidia-wfb.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-wfb.so.${pkgver}"
     install -D -m755 "libnvidia-glvkspirv.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-glvkspirv.so.${pkgver}"
 
     # Vulkan ICD
@@ -184,7 +182,6 @@ package_nvidia-vulkan-utils() {
 
     # nvidia-tls library
     install -D -m755 "libnvidia-tls.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-tls.so.${pkgver}"
-    install -D -m755 "tls/libnvidia-tls.so.${pkgver}" "${pkgdir}/usr/lib/tls/libnvidia-tls.so.${pkgver}"
 
     # CUDA
     install -D -m755 "libcuda.so.${pkgver}" "${pkgdir}/usr/lib/libcuda.so.${pkgver}"
@@ -195,6 +192,11 @@ package_nvidia-vulkan-utils() {
 
     # Fat (multiarchitecture) binary loader
     install -D -m755 "libnvidia-fatbinaryloader.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-fatbinaryloader.so.${pkgver}"
+
+    # raytracing
+    install -D -m755 "libnvoptix.so.${pkgver}" "${pkgdir}/usr/lib/libnvoptix.so.${pkgver}"
+    install -D -m755 "libnvidia-rtcore.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-rtcore.so.${pkgver}"
+    install -D -m755 "libnvidia-cbl.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-cbl.so.${pkgver}"
 
     # DEBUG
     install -D -m755 nvidia-debugdump "${pkgdir}/usr/bin/nvidia-debugdump"
@@ -310,7 +312,6 @@ package_lib32-nvidia-vulkan-utils() {
 
     # nvidia-tls library
     install -D -m755 "libnvidia-tls.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-tls.so.${pkgver}"
-    install -D -m755 "tls/libnvidia-tls.so.${pkgver}" "${pkgdir}/usr/lib32/tls/libnvidia-tls.so.${pkgver}"
 
     # CUDA
     install -D -m755 "libcuda.so.${pkgver}" "${pkgdir}/usr/lib32/libcuda.so.${pkgver}"
