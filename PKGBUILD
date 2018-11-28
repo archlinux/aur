@@ -5,7 +5,7 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=amarok
-pkgver=2.9.0.r259.a3971e4d47
+pkgver=2.9.0.r266.ca14210f3b
 pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=("x86_64")
@@ -15,20 +15,20 @@ depends=("kcmutils" "kdnssd" "kirigami2" "knewstuff" "ktexteditor" "libgpod" "li
 makedepends=("extra-cmake-modules" "gdk-pixbuf2" "git" "knotifyconfig" "libgpod" "libmtp" "libmygpo-qt5" "loudmouth")
 optdepends=("ifuse: support for Apple iPod Touch and iPhone"
             "loudmouth: backend needed by mp3tunes for syncing")
-_commit=a3971e4d47435adb30306e4428cf7ad7b90339c0
-#source=("http://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
+_commit=ca14210f3b0d417e06bb9410d9ab5db08dd3fcf1
+#source=("http://download.kde.org/stable/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.xz"{,.sig})
 source=("git://git.kde.org/amarok.git#commit=$_commit")
 
 sha256sums=("SKIP")
 validpgpkeys=("D81C0CB38EB725EF6691C385BB463350D6EF31EF") # Heiko Becker <heirecka@exherbo.org>
 
 prepare() {
-  mkdir -p "${srcdir}/build"
+  mkdir -p "${srcdir}/${pkgname}/build"
 }
 
 build() {
-  cd "${srcdir}/build"
-  cmake "../${pkgname}" \
+  cd "${srcdir}/${pkgname}/build"
+  cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
@@ -36,6 +36,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/build"
+  cd "${srcdir}/${pkgname}/build"
   make DESTDIR="${pkgdir}" install
 }
