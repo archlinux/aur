@@ -9,27 +9,89 @@ if [[ $1 == "-h" || $1 == "--help" ]] ; then
   cat << EOF
 macinstall command help
 
-Use this command to change local installation.
-Directory /etc/macinstall.d contains all alternative install files related.
+Imagine you want install arch linux one time and that clone on all disk
+ad pc you have. But you should have some different file that differ from
+one installation to another. This command help you to manage this.
 
-Usage
-  macinstall [--help|-h]
-  macinstall [--version]
-  macinstall name-install [local-import]
+Imagine you have your /etc/macinstall.d/yourpc* with all files/folder
+like:
+  /etc/macinstall.d/yourpc1/etc/fstab
+  /etc/macinstall.d/yourpc1/boot/grug/grub.cfg
+  /etc/macinstall.d/yourpc1/etc/machine-id
+  /etc/macinstall.d/yourpc1/etc/hostname
+  /etc/macinstall.d/yourpc1/etc/ssh/host_*
+  /etc/macinstall.d/yourpc1/..
+A second install like
+  /etc/macinstall.d/yourpc2/etc/fstab
+  /etc/macinstall.d/yourpc2/boot/grug/grub.cfg
+  /etc/macinstall.d/yourpc2/etc/machine-id
+  /etc/macinstall.d/yourpc2/etc/hostname
+  /etc/macinstall.d/yourpc2/etc/ssh/host_*
+  /etc/macinstall.d/yourpc2/etc/..
+A config file with sessione [yourpc1] and [yourpc2] (edit yourself
+macinstall.conf)
+  /etc/macinstall.d/macinstall.conf
+with:
+  [yourpc1]
+  CopyFilesNum=5
+  CopyFile1=/etc/fstab
+  CopyFile2=/boot/grub/grub.cfg
+  CopyFile3=/etc/grub.d/40_custom
+  CopyFile4=/etc/hostname
+  CopyFile5=/etc/machine-id
+  CopyDirectoriesNum=1
+  CopyDirectory1=/etc/ssh
+  WriteSemaphore=yes
+  AllowOnlyIfPreviousMacIs=yourpc2
+and
+  [yourpc2]
+  CopyFilesNum=5
+  CopyFile1=/etc/fstab
+  CopyFile2=/boot/grub/grub.cfg
+  CopyFile3=/etc/grub.d/40_custom
+  CopyFile4=/etc/hostname
+  CopyFile5=/etc/machine-id
+  CopyDirectoriesNum=1
+  CopyDirectory1=/etc/ssh
+  WriteSemaphore=yes
+  AllowOnlyIfPreviousMacIs=yourpc1
+And finally a command like to switch from one system to another
+  macinstall yourpc1 ---this-is-not-an-exercise
+  macinstall yourpc2 ---this-is-not-an-exercise
+And a semaphore file like
+  /etc/macinstall.d/CurrentSystem-yourpc1
+or
+  /etc/macinstall.d/CurrentSystem-yourpc2
 
+Summary usage
+  macinstall [-i --info none] [--help|-h] [--version] name-install
+    [local-import]
 
-Optional parameters
-  --help -h                  -> this help page
-  --versione                 -> version
-  -y --ask-confirm           -> ask confirm before proceeed
-  ---this-is-not-an-exercise -> force real work without this none i really done. this is a secure check.
+Option parameters
+  --help -h                    -> this help page
+  -i --info or blank           -> who am i looking semaphore file
+  --version                    -> version
+  -y --ask-confirm             -> ask confirm before proceeed
+  ---this-is-not-an-exercise   -> force real work. without this
+                                  none is really done. this is a
+                                  secure check.
 
-Required
+Path used
+  /etc/macinstall.d                       -> contains all single
+     install related files (example fstab grub.cfg machine-id...)
+  /usr/bin/macinstall                     -> this command itself
+  /etc/macinstall-d/CurrentSystem-pcname  -> semaphore of installed
+     system (touch bank file)
+
+Example
+  A file /etc/macinstall.d/macinstall.conf with some demo config
+  is already supplyed.
+
+Packages required
   sed sudo
 
-Cfg file
+Cfg file used
   /etc/macinstall.d/macinstall.conf
-Propname (wold before '=' char) can't contain spaces but file name accept '"' and delimiter and single '\' (before space)
 
 EOF
 
@@ -44,18 +106,19 @@ fi
 #
 path_prefix_system_semaphore="/etc/macinstall.d/CurrentSystem-"
 #path_prefix_system_semaphore="/home/simona/My Work/my-pkg simonascripts/root-test/etc/CurrentSystem-"
-
-numSem=`ls "$path_prefix_system_semaphore"* 2> /dev/null | wc -l`
-case $numSem in
- 1) currSystem=`ls -1 "$path_prefix_system_semaphore"* 2> /dev/null`
-    currSystem="${currSystem:${#path_prefix_system_semaphore}:${#currSystem}-${#path_prefix_system_semaphore}}"
-    echo "I am $currSystem"
-    ;;
- 0) echo "Can't detect current system."
-    ;;
- *) echo "Ambiguous CurrentSystem ($numSem)!!!"
-    ;;
-esac
+if [[ $1 == "" || $1 == "-i" || $1 == "--info" ]] ; then
+  numSem=`ls "$path_prefix_system_semaphore"* 2> /dev/null | wc -l`
+  case $numSem in
+   1) currSystem=`ls -1 "$path_prefix_system_semaphore"* 2> /dev/null`
+      currSystem="${currSystem:${#path_prefix_system_semaphore}:${#currSystem}-${#path_prefix_system_semaphore}}"
+      echo "I am $currSystem"
+      ;;
+   0) echo "Can't detect current system."
+      ;;
+   *) echo "Ambiguous CurrentSystem ($numSem)!!!"
+      ;;
+  esac
+fi
 
 [[ ! -r /bin/sed ]] && { echo -e "$ERR Missing sed utility! Exit"; exit 1; }
 [[ ! -r /bin/sudo ]] && { echo -e "$ERR Missing sudo utility! Exit"; exit 1; }

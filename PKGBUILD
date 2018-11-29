@@ -1,6 +1,6 @@
 # Maintainer: Simona <simona.pisano[at]gmail[dot]com>
 pkgname=simonascripts
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 pkgdesc="Bash unique command for mount image files (iso, vms, crypto, squashfs), detect pendrive device name, list all kernels, list all i/o schedulers, copy install files."
 
@@ -31,7 +31,8 @@ source=( "boot-kernel-list"
          "uuid-change"
          "macinstall"
          "macinstall.conf"
-         "image-mount.1"     )
+         "image-mount.1"
+         "macinstall.1"      )
 
 md5sums=('3f5599c3588f01b625aa9feb0a0e8b99'
          'a66639338ea804997cc38af80d9249ea'
@@ -40,9 +41,10 @@ md5sums=('3f5599c3588f01b625aa9feb0a0e8b99'
          '40ef9e0d1831cc1865208bf52eaa2cef'
          '331e7dbdd1adbed7beaad5975a368d91'
          '3189eb5ae50a9ddce43c8820c35ba2b0'
-         'bc20a49e5498bd02c9bf6e126db8ca74'
+         '0da0f06f52839ae85aa79d3e2a2bd069'
          '895210bbf0e6c16c6df7437eb3489ac1'
-         '7e4b85c6508890c6f5c88b3d886206a6')
+         '7e4b85c6508890c6f5c88b3d886206a6'
+         'b43048da4fc73e25202f2c12c4732259')
 
 package() {
   cd "$srcdir"
@@ -56,6 +58,8 @@ package() {
   install -Dm 755 "$srcdir/macinstall" "$pkgdir/usr/bin/macinstall"
   install -Dm 755 "$srcdir/macinstall.conf" "$pkgdir/etc/macinstall.d/macinstall.conf"
   install -Dm 644 "$srcdir/image-mount.1" "$pkgdir/usr/share/man/man1/image-mount.1"
+  install -Dm 644 "$srcdir/macinstall.1" "$pkgdir/usr/share/man/man1/macinstall.1"
+
 }
 
 

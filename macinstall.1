@@ -1,0 +1,112 @@
+.\" Manpage for image-mount.
+.\" Contact Simona <simona.pisano[at]gmail[dot]com> to correct errors or typos.
+.TH man 1 "29 Nov 2018" "1.0" "macinstall man page"
+.SH NAME
+macinstall \- Bash script to manage different install files (if you clone smae install on more pcs)
+.SH SYNOPSIS
+macinstall macinstall [-i --info none] [--help|-h] [--version] name-install [local-import]
+.SH DESCRIPTION
+Bash script to manage different install files (if you clone smae install on more pcs)
+.SH OPTIONS
+--help, -h
+     this help page
+
+-i --info or blank
+     who am i looking semaphore file
+
+--version
+     version
+
+-y --ask-confirm
+     ask confirm before proceeed
+
+---this-is-not-an-exercise
+     force real work. without this none is really done. this is a secure check.
+
+-h, --help
+    display this help and exit
+
+--force-iso-stdmount
+    force in iso sudo mount 'mount -o loop' instead 'fuseiso'
+
+-y, --ask-confirm
+    confirm before execute
+
+--version
+    output version information and exit
+.SH PATH USED
+/etc/macinstall.d
+    contains all single install related files (example fstab grub.cfg machine-id...)
+
+/usr/bin/macinstall
+    this command itself
+
+/etc/macinstall-d/CurrentSystem-pcname
+    semaphore of installed system (touch bank file)
+
+.SH PACKAGE REQUIRED
+sed sudo
+
+.SH EXAMPLES
+Imagine you want install arch linux one time and that clone on all disk
+ad pc you have. But you should have some different file that differ from
+one installation to another. This command help you to manage this.
+
+Imagine you have your /etc/macinstall.d/yourpc* with all files/folder
+like:
+  /etc/macinstall.d/yourpc1/etc/fstab
+  /etc/macinstall.d/yourpc1/boot/grug/grub.cfg
+  /etc/macinstall.d/yourpc1/etc/machine-id
+  /etc/macinstall.d/yourpc1/etc/hostname
+  /etc/macinstall.d/yourpc1/etc/ssh/host_*
+  /etc/macinstall.d/yourpc1/..
+A second install like
+  /etc/macinstall.d/yourpc2/etc/fstab
+  /etc/macinstall.d/yourpc2/boot/grug/grub.cfg
+  /etc/macinstall.d/yourpc2/etc/machine-id
+  /etc/macinstall.d/yourpc2/etc/hostname
+  /etc/macinstall.d/yourpc2/etc/ssh/host_*
+  /etc/macinstall.d/yourpc2/etc/..
+A config file with sessione [yourpc1] and [yourpc2] (edit yourself
+macinstall.conf)
+  /etc/macinstall.d/macinstall.conf
+with:
+  [yourpc1]
+  CopyFilesNum=5
+  CopyFile1=/etc/fstab
+  CopyFile2=/boot/grub/grub.cfg
+  CopyFile3=/etc/grub.d/40_custom
+  CopyFile4=/etc/hostname
+  CopyFile5=/etc/machine-id
+  CopyDirectoriesNum=1
+  CopyDirectory1=/etc/ssh
+  WriteSemaphore=yes
+  AllowOnlyIfPreviousMacIs=yourpc2
+and
+  [yourpc2]
+  CopyFilesNum=5
+  CopyFile1=/etc/fstab
+  CopyFile2=/boot/grub/grub.cfg
+  CopyFile3=/etc/grub.d/40_custom
+  CopyFile4=/etc/hostname
+  CopyFile5=/etc/machine-id
+  CopyDirectoriesNum=1
+  CopyDirectory1=/etc/ssh
+  WriteSemaphore=yes
+  AllowOnlyIfPreviousMacIs=yourpc1
+And finally a command like to switch from one system to another
+  macinstall yourpc1 ---this-is-not-an-exercise
+  macinstall yourpc2 ---this-is-not-an-exercise
+And a semaphore file like
+  /etc/macinstall.d/CurrentSystem-yourpc1
+or
+  /etc/macinstall.d/CurrentSystem-yourpc2
+
+.SH SEE ALSO
+simona-scripts
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Simona Pisano (simona.pisano[at]gmail[dot]com)
+.SH COPYRIGHT
+Copyright © 2018 Simona Pisano. License GPLv3: GNU GPL version 3 <https://gnu.org/licenses/gpl.html>.
