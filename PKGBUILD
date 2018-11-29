@@ -1,37 +1,42 @@
-# Maintainer: Maxime Poulin <maxpoulin64@gmail.com>
+# Contributor: David Runge <dave@sleepmap.de>
 # Contributor: Arnaud Taffanel <dev@taffanel.org>
-# Contributor: Victor Häggqvist <victor@snilius.com>
-pkgname=solaar-git
-pkgver=r985.b852903
-pkgrel=1
-pkgdesc="Linux devices manager for the Logitech Unifying Receiver."
-arch=('any')
-url="http://pwr.github.io/Solaar/"
-license=('GPL2')
+# Contributor: Victor Häggqvist <aur a snilius d com>
 
-depends=('python' 'python-pyudev' 'python-gobject' 'pygtk' 'python-six')
-optdepends=('libappindicator-gtk3')
-makedepends=('git')
-provides=('solaar')
-conflicts=('solaar')
-install='solaar.install'
-source=('git+https://github.com/pwr/Solaar.git' 'solaar.install')
-md5sums=('SKIP' '4057d7179fe2ae9718b8aac4607a2c47')
+_name=Solaar
+pkgname=solaar-git
+pkgver=0.9.2.r247.gb852903
+pkgrel=1
+pkgdesc="Device manager for Logitech's Unifying receiver peripherals"
+url="https://pwr.github.com/Solaar/"
+license=('GPL2')
+arch=('any')
+provides=("solaar")
+conflicts=("solaar")
+depends=('gtk3' 'libnotify' 'python-dbus' 'python-gobject' 'python-pyudev')
+source=("${pkgname}::git+https://github.com/pwr/Solaar.git")
+sha512sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/Solaar"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${pkgname}"
+  python setup.py build
 }
 
 package() {
-	cd "$srcdir/Solaar"
-	python3 setup.py install --root="$pkgdir/" --optimize=1
-	install -D -m0644 rules.d/42-logitech-unify-permissions.rules \
-		"$pkgdir/etc/udev/rules.d/42-logitech-unify-permissions.rules"
+  cd "${pkgname}"
+  python setup.py install --skip-build \
+    --optimize=1 \
+    --prefix=/usr \
+    --root="${pkgdir}/"
+  # udev
+  install -vDm 644 rules.d/42-logitech-unify-permissions.rules \
+    "${pkgdir}/usr/lib/udev/rules.d/42-logitech-unify-permissions.rules"
+  # docs
+  install -vDm 644 {ChangeLog,README.md} \
+    -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
-
-post_install() {
-	xdg-icon-resource forceupdate
-	update-desktop-database -q
-}
-
+# vim:set ts=2 sw=2 et:
