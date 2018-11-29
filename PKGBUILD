@@ -1,39 +1,38 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=kodi-addon-pvr-mythtv
-pkgver=4.15.3
-_kodiver=17.5
+pkgver=4.18.1
+_kodiminver=6
+_kodicname=Krypton
 pkgrel=1
 pkgdesc='MythTV PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
 url="http://janbar.github.io/pvr.mythtv/"
 license=('GPL')
-makedepends=('cmake' 'kodi-platform' 'git')
+makedepends=('cmake' 'kodi-platform')
 depends=("kodi")
-source=("https://github.com/janbar/pvr.mythtv/archive/${pkgver}.tar.gz"
-        "https://github.com/xbmc/xbmc/archive/${_kodiver}-Krypton.tar.gz")
-sha256sums=('fd60aba0dac25ab5885371495a5dfca53308c1fa23215299b0f62997c7391e1e'
-            '84c64acc270b9e845a67fbbe481ae5ddeb9b4568d76e42f2d5f9160fe0ce2de2')
+source=("https://github.com/janbar/pvr.mythtv/archive/${pkgver}-${_kodicname}.tar.gz")
+sha256sums=('742a4a4f8749966c8e25a02154ff49a8a2f25bb958cb2ca80daa6f5052f1fdc2')
+
+prepare() {
+  mkdir -p "${srcdir}/build"
+}
 
 build() {
-  mkdir -p "pvr.mythtv-${pkgver}/build"
-  cd "pvr.mythtv-${pkgver}/build"
+  cd "build"
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_SHARED_LIBS=1 \
-    -DADDONS_TO_BUILD=pvr.mythtv \
-    -DADDONS_SRC_PREFIX=../.. \
-    ../../xbmc-${_kodiver}-Krypton/project/cmake/addons
+    -DPACKAGE_ZIP=OFF \
+    -DAPP_VERSION_MINOR=${_kodiminver} \
+    ../pvr.mythtv-${pkgver}-${_kodicname}
   make
 }
 
 package() {
-  cd "pvr.mythtv-${pkgver}/build"
-  install -d "${pkgdir}/usr"
-  mv .install/lib "${pkgdir}/usr/"
-  mv .install/share "${pkgdir}/usr/"
+  cd "build"
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:
