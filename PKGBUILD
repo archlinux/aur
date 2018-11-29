@@ -8,7 +8,7 @@
 #    Maintainer: Ray Rashif <schiv@archlinux.org>
 #    Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgbase=opencv
+pkgbase=opencv-with-python2-support
 pkgname=(opencv-with-python2-support opencv-with-python2-support-samples)
 pkgver=4.0.0
 pkgrel=4
@@ -24,7 +24,7 @@ optdepends=('opencv-samples: samples'
             'hdf5: support for HDF5 format'
             'opencl-icd-loader: For coding with OpenCL'
             'python-numpy: Python interface')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
+source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
 sha256sums=('86fd08fc02893e05e2944fa7b0daa7d02643232450f020b475e1b2f24587b99a'
             '4fb0681414df4baedce6e3f4a01318d6f4fcde6ee14854d761fd4e397a397763')
@@ -44,7 +44,7 @@ build() {
   # cmake's FindLAPACK doesn't add cblas to LAPACK_LIBRARIES, so we need to specify them manually
   _python3path=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
   _python2path=`python2 -c "from sysconfig import get_path; print(get_path('platlib'))"`
-  cmake ../$pkgbase-$pkgver \
+  cmake ../opencv-$pkgver \
     -DWITH_OPENCL=ON \
     -DWITH_OPENGL=ON \
     -DWITH_TBB=ON \
@@ -78,15 +78,15 @@ package_opencv-with-python2-support() {
   make DESTDIR="$pkgdir" install
 
   # install license file
-  install -Dm644 "$srcdir"/$pkgbase-$pkgver/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgbase
+  install -Dm644 "$srcdir"/opencv-$pkgver/LICENSE -t "$pkgdir"/usr/share/licenses/opencv
 
   # separate samples package
   cd "$pkgdir"/usr/share
-  mv opencv4/samples "$srcdir"/$pkgbase-samples
+  mv opencv4/samples "$srcdir"/opencv-samples
 
   # install missing headers https://github.com/opencv/opencv/issues/13201
   for _module in imgcodecs videoio photo; do
-    cp -r "$srcdir"/$pkgbase-$pkgver/modules/$_module/include/opencv2/$_module/legacy \
+    cp -r "$srcdir"/opencv-$pkgver/modules/$_module/include/opencv2/$_module/legacy \
       "$pkgdir"/usr/include/opencv4/opencv2/$_module
   done
 }
@@ -104,5 +104,5 @@ package_opencv-with-python2-support-samples() {
   chmod 755 "$pkgdir"/usr/share/opencv/samples/*
 
   # install license file
-  install -Dm644 "$srcdir"/opencv-$pkgver/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgbase-samples
+  install -Dm644 "$srcdir"/opencv-$pkgver/LICENSE -t "$pkgdir"/usr/share/licenses/opencv-samples
 }
