@@ -7,6 +7,7 @@ pkgbase = python-serpent-ai-git
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	depends = xdotool
 	depends = opencv
 	depends = python-scikit-image
 	depends = python-xlib
