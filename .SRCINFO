@@ -1,6 +1,6 @@
 pkgbase = linux-amd-wip-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 4.21.797559.6be068c27b29
+	pkgver = 4.21.797584.ccfcfeb195a5
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = linux-amd-wip-git
 	source = linux.install
 	source = linux-amd-wip-git.preset
 	sha256sums = SKIP
-	sha256sums = 424408ba67ce972816da69c3b4a8904a9071b171697a2753b70710379f5be68a
+	sha256sums = f1266dd56e164fa1788132a801f5092dce7086e9e6b614f68a65cbd2fd091ea5
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
