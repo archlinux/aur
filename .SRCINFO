@@ -1,0 +1,15 @@
+pkgbase = aenker
+	pkgdesc = Authenticated encryption on the commandline using a chunked construction and elliptic curve keys.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/ansemjo/aenker
+	arch = any
+	license = MIT
+	makedepends = go
+	provides = aenker
+	conflicts = aenker
+	source = aenker-0.5.2.tar.gz::https://github.com/ansemjo/aenker/archive/0.5.2.tar.gz
+	sha256sums = 55ae760af8f2cc4cc3e780e7db692e6957ff341f0076919cf4dae3170664512c
+
+pkgname = aenker
+
