@@ -1,23 +1,27 @@
 pkgbase = termplay
 	pkgdesc = Play an image/video in your terminal!
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.5
+	pkgrel = 1
 	url = https://github.com/jD91mZM2/termplay
 	arch = x86_64
 	license = MIT
-	license = custom
 	makedepends = rust
 	makedepends = openal
 	makedepends = libsndfile
 	makedepends = gstreamer
 	makedepends = gst-plugins-base
 	makedepends = gst-plugins-bad
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-ugly
+	depends = gst-plugins-bad
 	depends = libsixel
 	optdepends = ffmpeg: Video support
 	optdepends = maim: Screen-mirroring support
 	optdepends = youtube-dl: YouTube support
-	source = https://github.com/jD91mZM2/termplay/archive/2.0.0.tar.gz
-	sha256sums = 26140b14e93336b606c457e03e7c5bcbb243373cf1e0a2cd2d0a0197d3cf9394
+	source = termplay-2.0.5.tar.gz::https://github.com/jD91mZM2/termplay/archive/2.0.5.tar.gz
+	sha512sums = 0d8e14301137c01e51294ab571507310d77cd1aa7c51fb47b85a637edc9110cce2466da7b5bfc43271d92560df65fe5bac8585be24021be98396056adf410fbb
 
 pkgname = termplay
 
