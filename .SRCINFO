@@ -1,0 +1,15 @@
+pkgbase = bwbasic
+	pkgdesc = Bywater BASIC
+	pkgver = 3.20
+	pkgrel = 2
+	url = https://sourceforge.net/projects/bwbasic
+	arch = armv6h
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = dos2unix
+	source = https://sourceforge.net/projects/bwbasic/files/bwbasic/version%203.20/bwbasic-3.20.zip
+	md5sums = fd4bf69515e62d1c92aa3f47038d034b
+
+pkgname = bwbasic
+
