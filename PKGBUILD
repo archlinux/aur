@@ -42,7 +42,7 @@ build(){
                                       -DCMAKE_INSTALL_PREFIX="/usr" \
                                       -DCMAKE_INSTALL_LIBDIR="lib" \
                                       -DARROW_JEMALLOC=ON \
-                                      -DARROW_ORC=ON \
+                                      -DARROW_ORC=OFF \
                                       -DARROW_PLASMA=ON \
                                       -DARROW_TENSORFLOW=ON \
                                       -DARROW_USE_SSE=ON
