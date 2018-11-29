@@ -70,11 +70,12 @@ Summary usage
 Option parameters
   --help -h                    -> this help page
   -i --info or blank           -> who am i looking semaphore file
-  --version                    -> version
+  --version                    -> output version information and exit
   -y --ask-confirm             -> ask confirm before proceeed
   ---this-is-not-an-exercise   -> force real work. without this
                                   none is really done. this is a
                                   secure check.
+  ---no-test                   -> use dest / instead $USER/test
 
 Path used
   /etc/macinstall.d                       -> contains all single
@@ -129,12 +130,14 @@ fi
 runLocalImport=false
 [[ $2 == "local-import" ]] && runLocalImport=true
 
+flagNoTest=false
 flagForceRealWork=false
 flagAskConfirm=false
 while [ $# -ne 0 ] ; do
   case $1 in
     -y|--ask-confirm) flagAskConfirm=true ;;
     ---this-is-not-an-exercise) flagForceRealWork=true;;
+    ---no-test) flagNoTest=true;;
     *) ;;
   esac
   shift
@@ -168,11 +171,9 @@ filename_cfg="macinstall.conf"
 #path_dest must be '/' terminated
 #path_dest="/home/simona/My Work/my-pkg simonascripts/root-test/"
 path_dest="$HOME/test/"
-#path_dest="/"
+[[ "$flagForceRealWork" == true ]] && { echo "$WARN Using real path / for destination..."; path_dest="/"; }
 #if last char is not '/' add it
 [[ ${path_dest:${#path_dest}-1:1} != "/" ]] && path_dest="$path_dest/"
-
-
 
 postfix_bak_file_name=".bak"
 
@@ -266,7 +267,7 @@ fi
 
 if [[ "$flagForceRealWork" == true ]] ; then
   echo -e "$WARN Warning: using REAL path. This is not a simulation. I can damage system."
-  echo "Dest dir used is '$path_dest'. (absolute path starting with '/' are fixed removing it)."
+  echo "Dest dir used is '$path_dest'."
   echo -n "Continue? (Y/N): "; read ask
   [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user."; exit 0; }
 fi

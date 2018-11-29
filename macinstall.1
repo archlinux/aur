@@ -15,7 +15,7 @@ Bash script to manage different install files (if you clone smae install on more
      who am i looking semaphore file
 
 --version
-     version
+     output version information and exit
 
 -y --ask-confirm
      ask confirm before proceeed
@@ -23,17 +23,15 @@ Bash script to manage different install files (if you clone smae install on more
 ---this-is-not-an-exercise
      force real work. without this none is really done. this is a secure check.
 
+---no-test
+     use dest / instead $USER/test
+
 -h, --help
     display this help and exit
-
---force-iso-stdmount
-    force in iso sudo mount 'mount -o loop' instead 'fuseiso'
 
 -y, --ask-confirm
     confirm before execute
 
---version
-    output version information and exit
 .SH PATH USED
 /etc/macinstall.d
     contains all single install related files (example fstab grub.cfg machine-id...)
