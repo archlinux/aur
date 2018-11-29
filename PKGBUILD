@@ -1,18 +1,17 @@
-# Maintainer: Your Name <binaryplease@gmail.com >
-pkgname=vcal  
-pkgver=2.2
-pkgrel=1
+# Maintainer: Pablo Ovelleiro Corral <pablo1+aur@mailbox.org>
+pkgname=vcal
+pkgver=2.8
+pkgrel=2
 pkgdesc="Display the data in a vcalendar or icalendar file"
 arch=('any')
-url="http://tewok.com/software/vcal-2.2"
-license=('unknown')
+url="https://waynemorrison.com/software/vcal"
+license=('apache 2.0')
 depends=('perl')
-source=("http://tewok.com/software/$pkgname-$pkgver")
-md5sums=('5c63e5371e3390d6e5af000cb02d64c8')
-validpgpkeys=()
+source=("https://waynemorrison.com/software/$pkgname")
+md5sums=('77040295f692a73cbb9c0def34ab0ee5')
 
 package() {
     mkdir -p ${pkgdir}/usr/bin
-    chmod +x ${pkgname}-${pkgver}
-    cp ${pkgname}-${pkgver} ${pkgdir}/usr/bin/vcal
+    chmod +x ${pkgname}
+    cp ${pkgname} ${pkgdir}/usr/bin/vcal
 }
