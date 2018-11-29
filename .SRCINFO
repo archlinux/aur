@@ -1,0 +1,17 @@
+pkgbase = openmarkov
+	pkgdesc = Open source tool designed to compute Probabilistic Graphical Models.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://www.openmarkov.org
+	arch = i686
+	arch = x86_64
+	license = EULP
+	depends = java-environment
+	noextract = openmarkov.jar
+	source = openmarkov.jar::http://www.openmarkov.org/openmarkov-0.2.0.jar
+	source = openmarkov.sh
+	md5sums = 60336ad11f8e1c1423606c277b2c789d
+	md5sums = 1f295616d246e47aa34e518ff5de07c2
+
+pkgname = openmarkov
+
