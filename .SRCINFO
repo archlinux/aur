@@ -1,6 +1,6 @@
 pkgbase = python-serpent-ai-git
 	pkgdesc = Game Agent Framework. Helping you create AIs / Bots to play any game you own!
-	pkgver = r260.0e95c90
+	pkgver = r210.973af1a
 	pkgrel = 1
 	url = https://github.com/greyltc/SerpentAI
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-serpent-ai-git
 	depends = python-mss
 	depends = python-tesserocr
 	depends = cython
-	source = git+file:///home/grey/git/SerpentAI
+	source = git://github.com/greyltc/SerpentAI.git
 	md5sums = SKIP
 
 pkgname = python-serpent-ai-git
