@@ -1,12 +1,13 @@
 # Maintainer: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=gog-unreal-tournament-goty
 pkgver=2.0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Unreal Tournament (99): Game of the Year Edition. GOG Version."
 arch=('x86_64')
 url="https://www.gog.com/game/unreal_tournament_goty"
 license=('custom')
-depends=('lib32-sdl')
+depends=('lib32-sdl'
+         'lib32-libgl')
 makedepends=('innoextract')
 source=("setup_ut_goty_$pkgver.exe::gogdownloader://unreal_tournament_goty/en1installer0"
         "https://www.dotslashplay.it/ressources/unreal-tournament/ut99v451-linux.tar.gz"
