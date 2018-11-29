@@ -9,7 +9,7 @@ pkgdesc="Linux Kernel-Mode Rootkit Hunter for 4.4.0-31+."
 arch=('i686' 'x86_64')
 url="https://github.com/nbulischeck/tyton/"
 license=('GPL3')
-depends=('dkms' 'linux-headers' 'gcc' 'make' 'libnotify' 'pkgconfig' 'gtk3' 'libsystemd')
+depends=('dkms' 'linux-headers' 'gcc' 'make')
 source=("git+https://github.com/nbulischeck/tyton.git")
 sha1sums=('SKIP')
 
