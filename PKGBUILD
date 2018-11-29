@@ -1,16 +1,16 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=or-tools
-pkgver=6.9.1
+pkgver=6.10
 pkgrel=1
 pkgdesc="Google's Operations Research tools."
 arch=('x86_64')
 url="https://github.com/google/or-tools"
 license=('Apache')
-depends=(gcc-libs)
-makedepends=('cmake')
+depends=('gcc-libs')
+makedepends=('cmake' 'git')
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-sha256sums=('c6fa58741addf9fa59dd990fa933a8137eea7e8e2775b09c430cc7f71dbfd564')
+sha256sums=('d1131ca6d7c2388400493c774dfd0b5d5c270a8a9645391876400a194354cfd6')
 conflicts=('python-or-tools') # because it copies libortools.so to usr/lib
 
 build() {
@@ -42,7 +42,6 @@ package() {
     cd "$pkgdir/usr/"
     rm -rf bin share/man share/pkgconfig
     rm lib/*.a
-    rm lib/libortools_examples.so
     rm lib/libz*
     rm -rf lib/pkgconfig
     rm -rf lib/cmake/{Cbc,gflags,glog,protobuf,ZLIB}
