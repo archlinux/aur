@@ -5,7 +5,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=5.1.1.r51.gb5d62d2c
+pkgver=5.1.1.r75.g5fc3056e
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('archlinux-keyring' 'bash' 'curl' 'gpgme' 'libarchive'
          'pacman-mirrorlist')
 optdepends=('pacman-contrib: various helper utilities')
-makedepends=('git' 'asciidoc')
+makedepends=('git' 'asciidoc' 'meson')
 checkdepends=('python' 'fakechroot')
 provides=("pacman=${pkgver%.*.*}")
 conflicts=('pacman')
@@ -34,39 +34,34 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd pacman
+
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd pacman
-
-  ./autogen.sh
-}
-
 build() {
-  cd "pacman"
+  mkdir -p pacman/build
+  cd pacman/build
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --enable-doc \
-    --enable-git-version \
-    --enable-debug \
-    --with-scriptlet-shell=/usr/bin/bash \
-    --with-ldconfig=/usr/bin/ldconfig
-
-  make
+  meson --prefix=/usr \
+        --buildtype=plain \
+        -Ddoc=enabled \
+        -Duse-git-version=true \
+        -Dscriptlet-shell=/usr/bin/bash \
+        -Dldconfig=/usr/bin/ldconfig \
+        ..
+  ninja
 }
 
 check() {
-  make -C "pacman" check
+  cd pacman/build
+
+  ninja test
 }
 
 package() {
-  cd "pacman"
+  cd pacman/build
 
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja install
 
   # install Arch specific stuff
   install -dm755 "$pkgdir/etc"
