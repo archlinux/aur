@@ -1,0 +1,15 @@
+pkgbase = python-spritex
+	pkgdesc = A simple tool for extracting sprites from full frames. Useful for AI projects.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/codetorex/spritex
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/spritex/spritex-0.1.3.tar.gz
+	md5sums = 6ba03731f5e48b1864bd696c886921cc
+
+pkgname = python-spritex
+	depends = python
+
