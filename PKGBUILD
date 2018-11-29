@@ -2,12 +2,12 @@
 
 pkgname=emma-git
 pkgver=r93.4437721
-pkgrel=1
+pkgrel=2
 pkgdesc="A platform-independent mysql administrator frontend using python and gtk+ (git version with various fixes)"
 arch=('i686' 'x86_64')
 url="https://github.com/seeschloss/emma"
 license=("GPL")
-depends=('python2' 'pygtk' 'mysql-python')
+depends=('python2' 'pygtk' 'mysql-python' 'python2-pyparsing')
 makedepends=('git')
 optdepends=('python2-sqlparse: pretty formatting')
 provides=('emma')
