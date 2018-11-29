@@ -1,3 +1,4 @@
+# Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 # Contributor: Markus Hovorka <m.hovorka@live.de>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Jelle van der Waa <jelle@vdwaa.nl>
