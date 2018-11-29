@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-dlna
 	pkgdesc = Small DLNA server which brings DLNA/UPnP support to PulseAudio
 	pkgver = 0.5.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/masmu/pulseaudio-dlna
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,6 @@ pkgbase = pulseaudio-dlna
 	depends = python2-lxml
 	depends = python2-netifaces
 	depends = python2-notify2
-	depends = python2-pip
 	depends = python2-protobuf
 	depends = python2-psutil
 	depends = python2-requests
