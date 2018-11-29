@@ -1,0 +1,17 @@
+pkgbase = python2-crossplane
+	pkgdesc = Quick and reliable way to convert NGINX configurations into JSON and back.
+	pkgver = 0.4.12
+	pkgrel = 1
+	url = https://github.com/nginxinc/${_modulename}.git
+	arch = any
+	license = Apache
+	makedepends = python2
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-requests
+	depends = python2-dateutil
+	source = https://github.com/nginxinc/crossplane/archive/v0.4.12.tar.gz
+	md5sums = a85ec248042c618027a5c57b5cd67f14
+
+pkgname = python2-crossplane
+
