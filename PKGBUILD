@@ -3,17 +3,22 @@
 pkgname=powerpanel
 pkgver=1.3.2
 _pkgverdl=132
-pkgrel=7
+pkgrel=8
 pkgdesc="CyberPower UPS daemon"
 arch=("x86_64" "i686")
 url="https://www.cyberpowersystems.com/product/software/powerpanel-for-linux/"
 license=("custom:CyberPower")
 depends=('libusb')
 backup=(etc/powerpanel/pwrstatd-{powerfail,lowbatt,email}.sh
+        etc/powerpanel/{hibernate,shutdown}.sh
         etc/pwrstatd.conf)
 
-source=('pwrstatd.service')
-sha256sums=('255e5958346daa9d7c0e96ae3d86095afd3b3ec99880205d15d51b8f20a602df')
+source=('pwrstatd.service'
+        'hibernate.sh'
+        'shutdown.sh')
+sha256sums=('255e5958346daa9d7c0e96ae3d86095afd3b3ec99880205d15d51b8f20a602df'
+            'c710ea7765a24fb469adf601f44c8d3857634336bdfc263434ce86c3d67a4a80'
+            '10badc96b0ac990959ddc53d1d1cbba6b904e648b54d0eea085194e48d6a0998')
 
 if [[ $CARCH = 'x86_64' ]]; then
   source+=("https://dl4jz3rbrsfum.cloudfront.net/software/powerpanel-$_pkgverdl-x86_64.tar.gz")
@@ -48,6 +53,14 @@ package() {
 
   # Script command for e-mail notification
   install -Dm755 script/pwrstatd-email.sh "${pkgdir}/etc/powerpanel/pwrstatd-email.sh"
+
+  # Script for hibernate support
+  install -Dm755 "${srcdir}/hibernate.sh" "${pkgdir}/etc/powerpanel/hibernate.sh"
+  ln -s powerpanel/hibernate.sh "${pkgdir}/etc/hibernate.sh"
+
+  # Script for shutdown support
+  install -Dm755 "${srcdir}/shutdown.sh" "${pkgdir}/etc/powerpanel/shutdown.sh"
+  ln -s powerpanel/shutdown.sh "${pkgdir}/etc/shutdown.sh"
 
   # Systemd unit
   install -Dm644 "${srcdir}/pwrstatd.service" "${pkgdir}/usr/lib/systemd/system/pwrstatd.service"
