@@ -21,30 +21,33 @@ prepare() {
 
 build() {
   cd "$srcdir/spotifyd-$pkgver"
-  cargo build --release --locked
-  # Compile any remaining libraries features
-  cargo build --release --locked --features pulseaudio_backend,dbus_mpris
+  # Compile all variants. Compilation for later features can reuse
+  # previous build artifacts, so little overhead.
+  for feature in "" pulseaudio_backend dbus_mpris; do
+    cargo build --release --locked --features "$feature"
+  done
 }
 
-package_spotifyd() {
+_package_feature() {
+  # Create a package for a particular feature.
   cargo install --locked --root "$pkgdir/usr" --path "$srcdir/$pkgbase-$pkgver"
   rm "$pkgdir/usr/.crates.toml"
   install -D -m 644 "$srcdir/$pkgbase-$pkgver/contrib/spotifyd.service" "$pkgdir/usr/lib/systemd/user/spotifyd.service"
+}
+
+package_spotifyd() {
+  _package_feature "" # no features
 }
 
 package_spotifyd-pulseaudio() {
   depends=(libpulse)
   conflicts=(spotifyd)
   pkgdesc="$pkgdesc, with pulseaudio support"
-  cargo install --locked --root "$pkgdir/usr" --path "$srcdir/$pkgbase-$pkgver" --features pulseaudio_backend
-  rm "$pkgdir/usr/.crates.toml"
-  install -D -m 644 "$srcdir/$pkgbase-$pkgver/contrib/spotifyd.service" "$pkgdir/usr/lib/systemd/user/spotifyd.service"
+  _package_feature pulseaudio_backend
 }
 
 package_spotifyd-dbus-mpris() {
   conflicts=(spotifyd)
   pkgdesc="$pkgdesc, with D-Bus MPRIS"
-  cargo install --locked --root "$pkgdir/usr" --path "$srcdir/$pkgbase-$pkgver" --features dbus_mpris
-  rm "$pkgdir/usr/.crates.toml"
-  install -D -m 644 "$srcdir/$pkgbase-$pkgver/contrib/spotifyd.service" "$pkgdir/usr/lib/systemd/user/spotifyd.service"
+  _package_feature dbus_mpris
 }
