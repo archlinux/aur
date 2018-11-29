@@ -4,7 +4,7 @@
 pkgname=monodevelop-stable-bin
 _pkgname=monodevelop
 pkgver=7.8.0.338
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDE primarily designed for C# and other .NET languages"
 arch=('x86_64' 'i686')
 url="http://www.monodevelop.com"
@@ -16,7 +16,7 @@ provides=('monodevelop' 'monodevelop-debugger-gdb')
 conflicts=('monodevelop')
 options=(!makeflags)
 optdepends=('xsp: To run ASP.NET pages directly from monodevelop')
-source=(https://github.com/doctorzeus1aonly/archlinux-monodevelop-stable-bin/archive/$pkgver.tar.gz)
+source=(https://github.com/TechtonicSoftware/archlinux-monodevelop-stable-bin/archive/$pkgver.tar.gz)
 sha256sums=('a203089952c9ee73cda25ff25f64099a0592d33cc86a91b50d98a9f64dd4d85c')
 
 package() {
