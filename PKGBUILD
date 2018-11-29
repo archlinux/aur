@@ -5,14 +5,16 @@ pkgrel=1
 pkgdesc="Use CircleCI from the command line"
 arch=(x86_64)
 url="https://github.com/CircleCI-Public/circleci-cli"
-license=(Apache)
+license=(MIT)
 depends=(docker)
-source=("https://github.com/CircleCI-Public/circleci-cli/releases/download/v$pkgver/${pkgname}_${pkgver}_linux_amd64.tar.gz")
-md5sums=('9a843c4ef2d6c458e898b2f9e5609521')
+source=(
+	"https://github.com/CircleCI-Public/circleci-cli/releases/download/v$pkgver/${pkgname}_${pkgver}_linux_amd64.tar.gz"
+	"https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/v$pkgver/LICENSE"
+)
+md5sums=('9a843c4ef2d6c458e898b2f9e5609521'
+         '50602d065f853eeb672e50dd157e7ad3')
 
 package() {
-	cd "${pkgname}_${pkgver}_linux_amd64"
-
-	install -m 755 -D -t "$pkgdir/usr/bin" circleci
-	install -m 644 -D -t "$pkgdir/usr/share/licenses/$pkgname" client/LICENSE
+	install -m 755 -D -t "$pkgdir/usr/bin" "${pkgname}_${pkgver}_linux_amd64/circleci"
+	install -m 644 -D -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
