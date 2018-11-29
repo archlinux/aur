@@ -4,7 +4,7 @@
 _commit=0fc8499ca1c01448d4a65047a0df2d91e37fe287  # tags=v2.16.5
 pkgname=librealsense
 pkgver=v2.16.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300)"
 arch=('x86_64')
 url="https://github.com/IntelRealSense/librealsense"
@@ -22,8 +22,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   mkdir -p build && cd build
-  CFLAGS="${CFLAGS} -Wformat" \
-  CXXFLAGS="${CXXFLAGS} -Wformat" \
+  CFLAGS="${CFLAGS} -Wformat -pthread" \
+  CXXFLAGS="${CXXFLAGS} -Wformat -pthread" \
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
@@ -34,7 +34,7 @@ build() {
     -DBUILD_WITH_STATIC_CRT=off \
     -DBUILD_WITH_OPENMP=on \
     -DBUILD_EXAMPLES=true \
-    -DBUILD_WITH_TM2=false
+    -DBUILD_WITH_TM2=true
   make
 }
 
