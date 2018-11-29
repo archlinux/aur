@@ -1,19 +1,21 @@
 pkgbase = python-root_numpy
 	pkgdesc = The interface between ROOT and NumPy
 	pkgver = 4.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://scikit-hep.org/root_numpy/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = python2-setuptools
-	makedepends = python-setuptools
+	checkdepends = python2-nose
+	checkdepends = python-nose
+	checkdepends = root
 	makedepends = cython2
+	makedepends = python-numpy
+	makedepends = python2-setuptools
 	makedepends = cython
 	makedepends = python2-numpy
-	makedepends = python-numpy
+	makedepends = python-setuptools
 	makedepends = root
-	options = !emptydirs
 	source = https://github.com/scikit-hep/root_numpy/archive/4.7.3.zip
 	sha256sums = 62f467ffad6608566c943b8dffea212e12caccc96155e81ba451a1034adf1f33
 
