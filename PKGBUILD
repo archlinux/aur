@@ -2,12 +2,13 @@
 _pkgname=console-solarized
 pkgname=console-solarized-git
 pkgver=r4.gb1fe625
-pkgrel=2
+pkgrel=3
 pkgdesc="A Solarized colorscheme for the Linux console"
 arch=('any')
 url='https://github.com/adeverteuil/console-solarized'
 license=('MIT')
-backup=('etc/systemd/system/getty@.service.d/solarized.conf')
+backup=('etc/systemd/system/getty@.service.d/solarized.conf'
+        'etc/console-solarized.conf')
 install="${_pkgname}.install"
 source=("${_pkgname}::git+https://github.com/adeverteuil/console-solarized.git")
 md5sums=('SKIP')
@@ -37,4 +38,6 @@ package() {
 
     mkdir -p "${pkgdir}/etc/systemd/system/getty@.service.d"
     cp solarized.conf "${pkgdir}/etc/systemd/system/getty@.service.d"
+
+    cp console-solarized.conf "${pkgdir}/etc"
 }
