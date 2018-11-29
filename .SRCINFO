@@ -1,7 +1,7 @@
 pkgbase = tyton-dkms-git
 	pkgdesc = Linux Kernel-Mode Rootkit Hunter for 4.4.0-31+.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nbulischeck/tyton/
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,6 @@ pkgbase = tyton-dkms-git
 	depends = linux-headers
 	depends = gcc
 	depends = make
-	depends = libnotify
-	depends = pkgconfig
-	depends = gtk3
 	source = git+https://github.com/nbulischeck/tyton.git
 	sha1sums = SKIP
 
