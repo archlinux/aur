@@ -1,17 +1,41 @@
 pkgname=uberwriter
-pkgdesc="A simple Markdown editor that offers a lot of features."
-pkgver=15.05.01
-pkgrel=2
-arch=('i686' 'x86_64')
-url="http://uberwriter.wolfvollprecht.de/"
-license=('GPL')
-source=(http://ppa.launchpad.net/w-vollprecht/ppa/ubuntu/pool/main/u/uberwriter/uberwriter_$pkgver-publicubuntu4_all.deb)
-md5sums=('SKIP')
-depends=('python-gtkspellcheck' 'python-gobject' 'ttf-ubuntu-font-family' 'pandoc' 'dconf' 'desktop-file-utils' 'gnome-web-photo' 'hicolor-icon-theme' 'python' 'python-cairo' 'python-levenshtein' 'python-pyenchant' 'yelp' 'python-regex')
-# I got the above dependencies from debtap
+_pkgname=uberwriter
+pkgver=2.1.3
+pkgrel=1
+pkgdesc='A distraction free Markdown editor for GNU/Linux made with GTK+'
+arch=('any')
+url='http://uberwriter.github.io/uberwriter/'
+license=('GPL3')
+depends=('gtk3' 'pandoc' 'python-gtkspellcheck')
+makedepends=('python-setuptools')
+optdepends=('texlive-core' 'otf-fira-mono: Recommended font')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=('git+https://github.com/UberWriter/uberwriter.git')
+sha256sums=('SKIP')
+
+pkgver() {
+    cd $_pkgname
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+    cd $_pkgname
+    python setup.py build
+}
 
 package() {
-	mkdir data
-	tar xf data.tar.xz --directory data/
-	cp -r data/* ${pkgdir}
+    cd $_pkgname
+    python setup.py install --skip-build --root="$pkgdir" --optimize=1
 }
+
+post_install() {
+    /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+}
+post_upgrade() {
+    /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+}
+post_remove() {
+    /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+}
+
