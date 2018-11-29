@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=1.0.17.r0.g1fb1030
+pkgver=1.1.3b.r0.g64fc059
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam."
 arch=('x86_64')
@@ -15,11 +15,9 @@ options=('!strip' 'staticlibs')
 
 source=("git+https://github.com/ValveSoftware/openvr.git"
         'https://github.com/ValveSoftware/openvr/commit/0fa21ba17748efcca1816536e27bdca70141b074.patch'
-        'https://github.com/ValveSoftware/openvr/commit/4f9149928e29e9f92e6d8dc39f984d1a557a42b3.patch'
         '0001-also-add-pragma-pack-around-VRControllerState_t.patch')
 md5sums=('SKIP'
          '7350517830b1a0038d30c6ad33b4bb39'
-         'dfb4306bb93633e467862cd8990e6e79'
          '8a9379f8cdf9a38f21942f46378714a5')
 
 pkgver() {
@@ -32,7 +30,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/openvr"
   git apply ../0fa21ba17748efcca1816536e27bdca70141b074.patch #https://github.com/ValveSoftware/openvr/pull/594
-  git apply ../4f9149928e29e9f92e6d8dc39f984d1a557a42b3.patch #https://github.com/ValveSoftware/openvr/pull/805 
   git apply ../0001-also-add-pragma-pack-around-VRControllerState_t.patch
 }
 
