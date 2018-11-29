@@ -1,5 +1,5 @@
 pkgbase = mod_itk
-	pkgdesc = Apache module that allows you to run each of your vhost under a separate uid and gid
+	pkgdesc = Apache mpm itk module that allows you to run each of your vhost under a separate uid and gid
 	pkgver = 2.4.7.r04
 	pkgrel = 1
 	url = http://mpm-itk.sesse.net/
