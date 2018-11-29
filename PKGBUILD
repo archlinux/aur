@@ -1,9 +1,8 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 # Contributor: Hugo Osvaldo Barrera <hugo@osvaldobarrera.com.ar>
 # Contributor: Matthias Maennich <arch@maennich.net>
-
 pkgname=shiboken-git
-pkgver=0.4.0.1373.g9536f13
+pkgver=1.2.4
 pkgrel=1
 _pyver=2.7
 pkgdesc="Support library for Python bindings"
@@ -11,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://www.pyside.org"
 depends=("python2>=${_pyver}" "qt4>=4.8" 'openssl')
-optdepends=("python-sphinx: Documentation")
+optdepends=("python2-sphinx: Documentation")
 makedepends=('cmake' 'automoc4' 'generatorrunner-git')
 conflicts=("shiboken")
 provides=("shiboken")
@@ -49,4 +48,3 @@ package() {
         "$pkgdir/usr/lib/cmake/Shiboken-$pkgver/"
     install -Dm755 ../data/shiboken.pc "$pkgdir/usr/lib/pkgconfig"
 }
-

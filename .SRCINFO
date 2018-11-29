@@ -1,6 +1,6 @@
 pkgbase = shiboken-git
 	pkgdesc = Support library for Python bindings
-	pkgver = 0.4.0.1373.g9536f13
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = http://www.pyside.org
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = shiboken-git
 	depends = python2>=2.7
 	depends = qt4>=4.8
 	depends = openssl
-	optdepends = python-sphinx: Documentation
+	optdepends = python2-sphinx: Documentation
 	provides = shiboken
 	conflicts = shiboken
 	source = shiboken-git::git+https://github.com/PySide/Shiboken.git
