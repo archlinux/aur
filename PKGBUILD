@@ -4,13 +4,13 @@
 
 pkgname=vimb
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 epoch=
 arch=('i686' 'x86_64')
 pkgdesc="The vim like browser"
 url="http://fanglingsu.github.io/vimb"
 license=('GPLv3')
-depends=('webkit2gtk>=2.8')
+depends=('webkit2gtk>=2.8', 'pkgconf')
 provides=('vimb')
 conflicts=('vimb2' 'vimb-gtk2' 'vimb-git')
 source=('vimb-3.3.0.tar.gz::https://github.com/fanglingsu/vimb/archive/3.3.0.tar.gz')

@@ -1,12 +1,13 @@
 pkgbase = vimb
 	pkgdesc = The vim like browser
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fanglingsu.github.io/vimb
 	arch = i686
 	arch = x86_64
 	license = GPLv3
-	depends = webkit2gtk>=2.8
+	depends = webkit2gtk>=2.8,
+	depends = pkgconf
 	provides = vimb
 	conflicts = vimb2
 	conflicts = vimb-gtk2
