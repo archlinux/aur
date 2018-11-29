@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('t2ec')
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A package of scripts to display system icons and controls in Tint2 panel"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
@@ -25,6 +25,7 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/help.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/menu-template.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/menu-update.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/menus.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-empty-charging.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-empty.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-full-charging.svg"
@@ -53,19 +54,20 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/arch-icon-notify.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/arch-update48.svg")
 
-md5sums=('8a02b12a94a553f860cb91ac14a55324'
+md5sums=('df88efa83e480abb9029028a09c9d1a2'
          'b86f03023ea9a927c90a50e12c51d05b'
          '921064d0eb82b775080872a5507e820d'
          '1dae806f7c7b0eb34cda8468b4631474'
-         '5019cebbf405090d789c1ef5469478b4'
+         '87b0cfeab8a467db470922e60a6ec187'
          'fadd6fb960d661f50e6f888833bc191b'
          '63a955c04f03451a13fd4a5f3ea1bbf3'
          '4d5efb2581959b68db65a0964e1c26b9'
          '607482e19bdcd53454b4e2b077760ef8'
          'f9a82c34f8f4228c5dc194b0fb7b37a0'
-         '316a161692a5699761e73e624adb723b'
-         'e789b2a73b09b4889669e25168217718'
+         '36418d374a2cf33abba5e40915d0911e'
+         'a44810558d11b2a695e7fde1baf5dc8a'
          '80dc7aef3a27d256676857b6ae925a2a'
+         '81c7f9f8c45544cc66d8e0d8fa10bee9'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -121,5 +123,7 @@ package() {
  	 "$pkgdir"/usr/lib/$pkgname/menu-template.sh
   install -D -m 755 menu-update.sh \
  	 "$pkgdir"/usr/lib/$pkgname/menu-update.sh
+  install -D -m 755 menus.sh \
+ 	 "$pkgdir"/usr/lib/$pkgname/menus.sh
   install -D -t "$pkgdir/usr/share/$pkgname" *.svg
 }
