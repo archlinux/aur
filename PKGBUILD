@@ -1,4 +1,5 @@
-# Maintainer:   Nascher <kevin at nascher dot org>
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com >
+# Contributor:  Nascher <kevin at nascher dot org>
 # Contributor:  Menche <menche_mt at yahoo dot com>
 
 # For the src directory
@@ -7,7 +8,7 @@ _pkgcommit=bd31b6d6d0808aa64b6985da99d3d1f7b414b17d
 pkgname=voxelands
 pkgver=1709.00
 _pkgver="v${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of Minetest, an Infiniminer/Minecraft inspired game"
 url="http://voxelands.com"
 arch=('i686' 'x86_64')
