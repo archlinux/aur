@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 optdepends=('texlive-core' 'otf-fira-mono: Recommended font')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=('git+https://github.com/UberWriter/uberwriter.git')
+source=('git+https://github.com/UberWriter/uberwriter.git#tag=v2.1.3')
 sha256sums=('SKIP')
 
 pkgver() {
