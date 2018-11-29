@@ -1,8 +1,8 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=minishift
-pkgver=1.24.0
-pkgrel=2
+pkgver=1.27.0
+pkgrel=1
 pkgdesc="Run OpenShift locally"
 url="https://github.com/minishift/minishift"
 license=('APACHE')
@@ -11,7 +11,7 @@ makedepends=(go git)
 optdepends=('virtualbox: to use minishift with VirtualBox virtualization'
             'docker-machine-kvm: to use minishisft with KVM virtualization')
 source=(https://github.com/minishift/minishift/archive/v${pkgver}.tar.gz)
-sha512sums=('0783a4822eba641dd1c85c41df68863df6abfa6cde70908ef35dd97cf910e37b5c0516f44c73ef46470339bda158ab41b5f0a2526b1074d566bcb0d33af3c369')
+sha512sums=('ae52088fb186d58f5574cd4465ce2b66e9239fcd284335d5a103d8dc4d6c1ebdf194b77eb80d6ccd0c6d80b6411e85030e18da9fb849c6ecf0a36d97b6fc1565')
 
 build() {
   mkdir -p work/{bin,pkg,src/github.com/minishift}
