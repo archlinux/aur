@@ -4,7 +4,7 @@ _lua_version=5.3
 
 pkgname=fennel-git
 pkgver=r343.bb85b0c
-pkgrel=2
+pkgrel=3
 pkgdesc="A Lua Lisp language"
 arch=('x86_64')
 url="https://github.com/bakpakin/Fennel"
@@ -18,7 +18,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname-git}::git+https://github.com/bakpakin/Fennel.git")
+source=("${pkgname%-git}::git+https://github.com/bakpakin/Fennel.git")
 noextract=()
 md5sums=('SKIP')
 
