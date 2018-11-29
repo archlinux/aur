@@ -1,5 +1,5 @@
 # Maintainer: Ada Joule <ada dot fulmina at gmail dot com>
-pkgname=refind-dreary-git
+pkgname=refind-theme-dreary-git
 pkgver=r8.cdbabad
 pkgrel=1
 pkgdesc="A gloomy rEFInd theme based on evanpurkhiser/rEFInd-minimal and lukechilds/refind-ambience"

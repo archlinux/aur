@@ -1,4 +1,4 @@
-pkgbase = refind-dreary-git
+pkgbase = refind-theme-dreary-git
 	pkgdesc = A gloomy rEFInd theme based on evanpurkhiser/rEFInd-minimal and lukechilds/refind-ambience
 	pkgver = r8.cdbabad
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = refind-dreary-git
 	source = git+https://github.com/stairmast0r/refind-dreary.git
 	md5sums = SKIP
 
-pkgname = refind-dreary-git
+pkgname = refind-theme-dreary-git
 
