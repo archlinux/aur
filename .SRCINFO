@@ -1,6 +1,6 @@
 pkgbase = libcint
 	pkgdesc = General GTO integrals for quantum chemistry
-	pkgver = 3.0.13
+	pkgver = 3.0.14
 	pkgrel = 1
 	url = http://wiki.sunqm.net/libcint
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = libcint
 	license = BSD
 	makedepends = cmake
 	depends = blas
-	provides = libcint=3.0.13
+	provides = libcint=3.0.14
 	conflicts = libcint-cint3
-	source = https://github.com/sunqm/libcint/archive/v3.0.13.tar.gz
-	md5sums = c29262391f4eccf7b86d18964038eff5
+	source = https://github.com/sunqm/libcint/archive/v3.0.14.tar.gz
+	sha256sums = 2952d59203f011680c2039ddb1d7337cd669b12632386496ce2ba2afdafbfcad
 
 pkgname = libcint
 
