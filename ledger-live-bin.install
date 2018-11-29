@@ -2,7 +2,7 @@ post_install() {
 	udevfile="/etc/udev/rules.d/20-hw1.rules"
 	if [ -f "$udevfile" ]
 	then 
-		"Udev file exists - not overwriting. Check your udev rules if you have trouble connecting"
+		echo "Udev file exists - not overwriting. Check your udev rules if you have trouble connecting"
 	else
 		echo "Installing udev rules for Ledger"
 		echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"1b7c\",  TAG+=\"uaccess\"" > $udevfile
@@ -22,7 +22,7 @@ post_upgrade() {
         udevfile="/etc/udev/rules.d/20-hw1.rules"
         if [ -f "$udevfile" ]
         then
-                "Udev file exists - not overwriting. Check your udev rules if you have trouble connecting"
+                echo "Udev file exists - not overwriting. Check your udev rules if you have trouble connecting"
         else
                 echo "Installing udev rules for Ledger"
                 echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"1b7c\",  TAG+=\"uaccess\"" > $udevfile
