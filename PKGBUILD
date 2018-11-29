@@ -1,4 +1,6 @@
-# Maintainer: jD91mZM2 <me@krake.one>
+# Maintainer: architekton <architekton350 at gmail.com>
+# Contributor: jD91mZM2 <me@krake.one>
+
 pkgname=termplay
 pkgver=2.0.5
 pkgrel=1
