@@ -9,17 +9,18 @@ pkgdesc="System monitoring tools for custom desktop environments"
 url="https://gitlab.com/william.belanger/${pkgname%-git}"
 arch=("any")
 license=("GPL3")
-depends=("python>=3.6" "python-setuptools" "python-pyqt5" "qt5-svg" "qt5-multimedia" "alsa-utils" "pulseaudio-alsa")
+depends=("python" "python-setuptools" "python-pyqt5" "qt5-svg" "qt5-multimedia")
+optdepends=('alsa-utils: sound module'
+            'pulseaudio-alsa: sound module'
+            'systemd: lid switch inhibit'
+            'xorg-xbacklight: brightness module')
 source=("git+https://gitlab.com/william.belanger/${pkgname%-git}.git")
 md5sums=("SKIP")
 
 pkgver()
 {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package()
