@@ -9,6 +9,7 @@ pkgbase = python-serpent-ai-git
 	depends = python
 	depends = xdotool
 	depends = opencv
+	depends = python-spritex
 	depends = python-scikit-image
 	depends = python-xlib
 	depends = python-numpy
