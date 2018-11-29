@@ -1,7 +1,7 @@
 pkgbase = enpass-beta-bin
 	pkgdesc = A multiplatform password manager
 	pkgver = 6.0.0.197
-	pkgrel = 1
+	pkgrel = 2
 	url = http://enpass.io/
 	install = enpass-beta-bin.install
 	arch = x86_64

@@ -1,7 +1,7 @@
 pkgname='enpass-beta-bin'
 _pkgname='enpass'
 pkgver=6.0.0.197
-pkgrel=1
+pkgrel=2
 pkgdesc='A multiplatform password manager'
 arch=('x86_64')
 url='http://enpass.io/'
@@ -26,7 +26,7 @@ package() {
 
     # Symlink "runenpass.sh" to "/usr/bin" so it is accessible via cli
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s '/opt/enpass-beta/Enpass6' "${pkgdir}/usr/bin/enpass-beta"
+    ln -s '/opt/enpass/Enpass' "${pkgdir}/usr/bin/enpass"
 }
 
 
