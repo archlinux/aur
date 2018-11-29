@@ -1,3 +1,5 @@
-fselect-git
-pkg
-src
+*.tar.xz
+*.tar.gz
+src/
+pkg/
+fselect-git/
