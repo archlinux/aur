@@ -2,11 +2,11 @@
 _lang=deu-eng
 _pkgname=dict-freedict-${_lang}
 pkgname=${_pkgname}-svn
-pkgver=r1775
-pkgrel=2
+pkgver=r1788
+pkgrel=1
 pkgdesc="German -> English dictionary for dictd et al. from Freedict.org"
 arch=('any')
-url="http://www.freedict.org/"
+url="https://freedict.org/"
 license=('GPL')
 optdepends=('dictd: dict client and server')
 makedepends=('subversion' 'dictd' 'freedict-tools')
