@@ -1,0 +1,14 @@
+pkgbase = eliza
+	pkgdesc = TELL ME YOUR PROBLEMS
+	pkgver = 1969
+	pkgrel = 3
+	url = http://elizagen.org
+	arch = any
+	license = CCPL
+	depends = clisp
+	options = !strip
+	source = https://raw.githubusercontent.com/jeffshrager/elizagen/master/coselleliza1969and1972.lisp
+	md5sums = 910d23d6230f7e608a6d2622aecfb1cb
+
+pkgname = eliza
+
