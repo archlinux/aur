@@ -1,0 +1,46 @@
+post_install() {
+	udevfile="/etc/udev/rules.d/20-hw1.rules"
+	if [ -f "$udevfile" ]
+	then 
+		"Udev file exists - not overwriting. Check your udev rules if you have trouble connecting"
+	else
+		echo "Installing udev rules for Ledger"
+		echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"1b7c\",  TAG+=\"uaccess\"" > $udevfile
+		echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"2b7c\",  TAG+=\"uaccess\"" >> $udevfile
+		echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"3b7c\",  TAG+=\"uaccess\"" >> $udevfile
+		echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"4b7c\",  TAG+=\"uaccess\"" >> $udevfile
+		echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"1807\",  TAG+=\"uaccess\"" >> $udevfile
+		echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"1808\",  TAG+=\"uaccess\"" >> $udevfile
+		echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2c97\", ATTRS{idProduct}==\"0000\",  TAG+=\"uaccess\"" >> $udevfile
+		echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2c97\", ATTRS{idProduct}==\"0001\",  TAG+=\"uaccess\"" >> $udevfile
+	fi
+	udevadm trigger
+	udevadm control --reload-rules
+}
+
+post_upgrade() {
+        udevfile="/etc/udev/rules.d/20-hw1.rules"
+        if [ -f "$udevfile" ]
+        then
+                "Udev file exists - not overwriting. Check your udev rules if you have trouble connecting"
+        else
+                echo "Installing udev rules for Ledger"
+                echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"1b7c\",  TAG+=\"uaccess\"" > $udevfile
+                echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"2b7c\",  TAG+=\"uaccess\"" >> $udevfile
+                echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"3b7c\",  TAG+=\"uaccess\"" >> $udevfile
+                echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"4b7c\",  TAG+=\"uaccess\"" >> $udevfile
+                echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"1807\",  TAG+=\"uaccess\"" >> $udevfile
+                echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2581\", ATTRS{idProduct}==\"1808\",  TAG+=\"uaccess\"" >> $udevfile
+                echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2c97\", ATTRS{idProduct}==\"0000\",  TAG+=\"uaccess\"" >> $udevfile
+                echo "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2c97\", ATTRS{idProduct}==\"0001\",  TAG+=\"uaccess\"" >> $udevfile
+        fi
+        udevadm trigger
+        udevadm control --reload-rules
+}
+
+post_remove() {
+	echo "Removing udev rules"
+	rm /etc/udev/rules.d/20-hw1.rules
+	udevadm trigger
+	udevadm control --reload-rules
+}
