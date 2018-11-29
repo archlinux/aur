@@ -1,0 +1,41 @@
+# Maintainer: Katie Wolfe <katie@dnaf.moe>
+
+_lua_version=5.3
+
+pkgname=fennel-git
+pkgver=r343.bb85b0c
+pkgrel=1
+pkgdesc="A Lua Lisp language"
+arch=('x86_64')
+url="https://github.com/bakpakin/Fennel"
+license=('MIT')
+groups=()
+depends=('lua')
+makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('git+https://github.com/bakpakin/Fennel.git')
+noextract=()
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/Fennel"
+
+# TODO: once tagged releases exist, switch to this
+#	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+	cd "$srcdir/Fennel"
+
+	install -Dm644 "fennel.lua" "fennelview.fnl" \
+		-t "${pkgdir}/usr/lib/lua/${_lua_version}"
+	
+	install -Dm755 "fennel" \
+		"${pkgdir}/usr/bin/fennel"
+}
