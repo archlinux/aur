@@ -1,3 +1,3 @@
 #!/bin/sh
 
-electron /usr/lib/cozy-desktop/resources/app.asar "$@"
+electron2 /usr/lib/cozy-desktop/resources/app.asar "$@"
