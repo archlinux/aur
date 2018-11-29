@@ -1,0 +1,12 @@
+post_install() {
+  echo "Removing bad locale lightning"
+  filename="{e2fda1a4-762b-4020-b5ad-a41df1933103}.xpi"
+  rm -f /usr/lib/thunderbird/distribution/extensions/$filename
+  rm -f /home/*/.thunderbird/*.default/extensions/$filename
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim: ts=2 sw=2 et:

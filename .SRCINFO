@@ -1,0 +1,15 @@
+pkgbase = lightning-i18n-fr
+	pkgdesc = French translation for lightning extension
+	pkgver = 6.2.3.1
+	pkgrel = 1
+	url = https://www.thunderbird.net
+	install = lightning.install
+	arch = any
+	license = GPL3
+	depends = thunderbird
+	depends = thunderbird-i18n-fr
+	source = https://tnv.wascardev.com/{e2fda1a4-762b-4020-b5ad-a41df1933103}.xpi
+	sha256sums = 73dca07a2bae3e34b78445dfcfaa2b86714a494c57d95947cab8f8ca96496552
+
+pkgname = lightning-i18n-fr
+
