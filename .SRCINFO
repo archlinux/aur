@@ -1,0 +1,17 @@
+pkgbase = trachet-git
+	pkgdesc = Tell you what is happening on your terminal
+	pkgver = r313.cd2be17
+	pkgrel = 1
+	url = https://github.com/saitoha/trachet
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	source = git+https://github.com/saitoha/trachet
+	source = git+https://github.com/saitoha/tff
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = trachet-git
+
