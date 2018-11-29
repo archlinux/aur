@@ -1,4 +1,4 @@
-pkgbase = caja-extensions
+pkgbase = caja-gksu
 	pkgdesc = Allows you to open files with administration privileges using the context menu when browsing your files with Caja.
 	pkgver = 1.20.1
 	pkgrel = 1

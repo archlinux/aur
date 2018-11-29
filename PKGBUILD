@@ -2,7 +2,7 @@
 #
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
-pkgbase="caja-extensions"
+_pkgbase="caja-extensions"
 pkgname="caja-gksu"
 pkgver="1.20.1"
 pkgrel="1"
@@ -14,11 +14,11 @@ license=('GPL')
 groups=('mate-extra')
 depends=('caja' 'caja-extensions-common' 'gksu')
 makedepends=('intltool' 'python')
-source=("https://pub.mate-desktop.org/releases/${pkgver%.*}/$pkgbase-$pkgver.tar.xz")
+source=("https://pub.mate-desktop.org/releases/${pkgver%.*}/${_pkgbase}-${pkgver}.tar.xz")
 sha256sums=('7610931d4a3135f2f3b88551652907e4ef25c48b3f18c8e83ecd65c3df606706')
 
 build() {
-    cd ${pkgbase}-${pkgver}
+    cd "${_pkgbase}-${pkgver}"
     PYTHON=/usr/bin/python2 ./configure \
         --prefix=/usr \
 
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-    cd ${pkgbase}-${pkgver}
+    cd "${_pkgbase}-${pkgver}"
     make -C gksu DESTDIR="${pkgdir}" install
 }
 
