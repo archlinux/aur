@@ -1,0 +1,16 @@
+pkgbase = python2-xvfbman
+	pkgdesc = A python module for managing Xvfb sessions / ensuring DISPLAY through a simple interface
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://github.com/kata198/xvfbman
+	arch = any
+	license = LGPLv2
+	makedepends = python2-setuptools
+	makedepends = python2
+	depends = python2-setuptools
+	depends = python2
+	source = https://github.com/kata198/xvfbman/archive/1.0.0.tar.gz
+	sha512sums = d9a25d1dba493b68523a8c43c181fc61d49de7658e2eb9484d33ef9a193d3a269b8ced65e0586a87f5e73a2d38e31cfeb91393d9073402ba367f2f5054aeade4
+
+pkgname = python2-xvfbman
+
