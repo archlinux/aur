@@ -1,6 +1,5 @@
 # Maintainer: Bruno Silva <brunofernandes at ua dot pt>
-# Please Download latest version directly from Omnet++ Website since no direct access is possible (Captcha Protection Enable) and place it next to PKBBUILD.
-# Current link to download: https://www.omnetpp.org/component/jdownloads/summary/31-release-test-versions/2328-omnetpp60-pre2
+
 pkgname='omnetpp-qt'
 pkgver=6.0pre2
 _pkgver=6-0pre2
@@ -18,7 +17,7 @@ conflicts=('omnetpp')
 
 source=(OMNeT++.desktop
 	omnetpp.sh
-	omnetpp-${pkgver}-src-linux.tgz::https://www.omnetpp.org/component/jdownloads/summary/31-release-test-versions/2328-omnetpp60-pre2)
+	omnetpp-${pkgver}-src-linux.tgz::https://ipfs.omnetpp.org/release/test/omnetpp-6.0pre2-src-linux.tgz)
 
 sha512sums=('a5772a605592ed2db839609f8298d1d71fb9141eb1b30dac584b788414dfe49b250ba803351a3a84f90c6b89f8e09e7b129a037af17c9b94c22dff2003a5edd8'
 'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1'
