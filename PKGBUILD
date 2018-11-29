@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=minetime
-pkgver=1.4.9
+pkgver=1.4.10
 pkgrel=1
 pkgdesc='MineTime is a modern, intuitive and smart calendar application.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('libsecret' 'libxss')
 source=(${url}/releases/download/v${pkgver}/MineTime_${pkgver}_amd64.deb
         minetime)
-sha512sums=('3ca8fd8152da4cb8c3fd1b74bd5ea079d920dd5044b1938b33a0231ab511d671956cb512f619a362745f848c62bcbb691c7858ed310d2d33059b2b0116bd091a'
+sha512sums=('95655fb2d807093d0c733f95b32072ccbe1edf4384d3e216af40b8dc27134de83c437fea71c1bbbf40187c945833db877cd59b4b0b04a08a48ecdfd25049a15f'
             'deec4ce019c404b59b7cbad520e837bbb086dc3286a326fe8b07ddd46162a81747269f0be05b8b5ba08621ecc9ed90df436ae6844cf8f3074f4576f0a098efa3')
 
 package() {
