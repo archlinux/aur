@@ -1,0 +1,284 @@
+pkgbase = lightning-i18n
+	pkgdesc = Language Pack for lightning extension
+	pkgver = 6.2.3.1
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	noextract = thunderbird-60.3.1-ar.tar.bz2
+	noextract = thunderbird-60.3.1-ast.tar.bz2
+	noextract = thunderbird-60.3.1-be.tar.bz2
+	noextract = thunderbird-60.3.1-bg.tar.bz2
+	noextract = thunderbird-60.3.1-br.tar.bz2
+	noextract = thunderbird-60.3.1-ca.tar.bz2
+	noextract = thunderbird-60.3.1-cs.tar.bz2
+	noextract = thunderbird-60.3.1-cy.tar.bz2
+	noextract = thunderbird-60.3.1-da.tar.bz2
+	noextract = thunderbird-60.3.1-de.tar.bz2
+	noextract = thunderbird-60.3.1-dsb.tar.bz2
+	noextract = thunderbird-60.3.1-el.tar.bz2
+	noextract = thunderbird-60.3.1-en-GB.tar.bz2
+	noextract = thunderbird-60.3.1-en-US.tar.bz2
+	noextract = thunderbird-60.3.1-es-AR.tar.bz2
+	noextract = thunderbird-60.3.1-es-ES.tar.bz2
+	noextract = thunderbird-60.3.1-et.tar.bz2
+	noextract = thunderbird-60.3.1-eu.tar.bz2
+	noextract = thunderbird-60.3.1-fi.tar.bz2
+	noextract = thunderbird-60.3.1-fr.tar.bz2
+	noextract = thunderbird-60.3.1-fy-NL.tar.bz2
+	noextract = thunderbird-60.3.1-ga-IE.tar.bz2
+	noextract = thunderbird-60.3.1-gd.tar.bz2
+	noextract = thunderbird-60.3.1-gl.tar.bz2
+	noextract = thunderbird-60.3.1-he.tar.bz2
+	noextract = thunderbird-60.3.1-hr.tar.bz2
+	noextract = thunderbird-60.3.1-hsb.tar.bz2
+	noextract = thunderbird-60.3.1-hu.tar.bz2
+	noextract = thunderbird-60.3.1-hy-AM.tar.bz2
+	noextract = thunderbird-60.3.1-id.tar.bz2
+	noextract = thunderbird-60.3.1-is.tar.bz2
+	noextract = thunderbird-60.3.1-it.tar.bz2
+	noextract = thunderbird-60.3.1-ja.tar.bz2
+	noextract = thunderbird-60.3.1-ko.tar.bz2
+	noextract = thunderbird-60.3.1-lt.tar.bz2
+	noextract = thunderbird-60.3.1-nb-NO.tar.bz2
+	noextract = thunderbird-60.3.1-nl.tar.bz2
+	noextract = thunderbird-60.3.1-nn-NO.tar.bz2
+	noextract = thunderbird-60.3.1-pl.tar.bz2
+	noextract = thunderbird-60.3.1-pt-BR.tar.bz2
+	noextract = thunderbird-60.3.1-pt-PT.tar.bz2
+	noextract = thunderbird-60.3.1-rm.tar.bz2
+	noextract = thunderbird-60.3.1-ro.tar.bz2
+	noextract = thunderbird-60.3.1-ru.tar.bz2
+	noextract = thunderbird-60.3.1-si.tar.bz2
+	noextract = thunderbird-60.3.1-sk.tar.bz2
+	noextract = thunderbird-60.3.1-sl.tar.bz2
+	noextract = thunderbird-60.3.1-sq.tar.bz2
+	noextract = thunderbird-60.3.1-sr.tar.bz2
+	noextract = thunderbird-60.3.1-sv-SE.tar.bz2
+	noextract = thunderbird-60.3.1-tr.tar.bz2
+	noextract = thunderbird-60.3.1-uk.tar.bz2
+	noextract = thunderbird-60.3.1-vi.tar.bz2
+	noextract = thunderbird-60.3.1-zh-CN.tar.bz2
+	noextract = thunderbird-60.3.1-zh-TW.tar.bz2
+	source = thunderbird-60.3.1-ar.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//ar/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-ast.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//ast/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-be.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//be/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-bg.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//bg/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-br.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//br/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-ca.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//ca/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-cs.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//cs/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-cy.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//cy/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-da.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//da/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-de.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//de/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-dsb.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//dsb/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-el.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//el/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-en-GB.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//en-GB/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-en-US.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//en-US/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-es-AR.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//es-AR/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-es-ES.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//es-ES/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-et.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//et/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-eu.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//eu/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-fi.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//fi/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-fr.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//fr/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-fy-NL.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//fy-NL/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-ga-IE.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//ga-IE/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-gd.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//gd/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-gl.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//gl/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-he.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//he/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-hr.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//hr/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-hsb.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//hsb/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-hu.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//hu/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-hy-AM.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//hy-AM/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-id.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//id/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-is.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//is/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-it.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//it/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-ja.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//ja/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-ko.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//ko/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-lt.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//lt/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-nb-NO.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//nb-NO/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-nl.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//nl/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-nn-NO.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//nn-NO/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-pl.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//pl/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-pt-BR.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//pt-BR/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-pt-PT.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//pt-PT/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-rm.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//rm/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-ro.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//ro/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-ru.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//ru/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-si.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//si/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-sk.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//sk/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-sl.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//sl/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-sq.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//sq/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-sr.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//sr/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-sv-SE.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//sv-SE/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-tr.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//tr/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-uk.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//uk/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-vi.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//vi/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-zh-CN.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//zh-CN/thunderbird-60.3.1.tar.bz2
+	source = thunderbird-60.3.1-zh-TW.tar.bz2::https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.1/linux-x86_64//zh-TW/thunderbird-60.3.1.tar.bz2
+	sha256sums = 3851b7e64434bc423c82d1be0901fc363f87a953955730aeaceda1c507b8574f
+	sha256sums = caf63d7bb9d5752fe4386d35770b4e37aa2d7420c07ca87c89e85efe55eba5e6
+	sha256sums = 80fe291c607d9a378b25f95a6bf4ca9e066d8d3350cafb960c907f8cc314360f
+	sha256sums = b619d657608e7b1efde768fe073e2985c4c18838f9485919e4ca65893a76275c
+	sha256sums = 3b2af9848f12ec05da177e01c18eb52f456554c54de8f44a483c6a248d2f5672
+	sha256sums = 670e95b9eec44b62b435ab29907b52363eb39ff0ab350798ee12200f8cc0126b
+	sha256sums = ed51d4a063fd33c91cddf5f55f9d37d83c31cb503a1c5527ac784a420b802cfd
+	sha256sums = 07654ac5dd933bf9fab587f9d7976c951ffd525cb5db8eb0fc1952d4f38534ec
+	sha256sums = 8595443b004f25f0cd8d4fa2721a3f0246325b2d047dee654a1a00942f2cf930
+	sha256sums = 47aaa9f8f0370fa409a5999a5e4d2c9c1ef3f1c72c0ecf54368b4e7425537afd
+	sha256sums = 5d24cf08d2c816a7955cea34128fdf28ee2f346ee9778cc5cd1def2ee741c7f1
+	sha256sums = 87647cca93d7e5d7bd7012e1ea398c6a67d5374a9eb57281e3ee0fdbdc951ddc
+	sha256sums = eafd0bb3343d477049f6b386c3fa5d6547e7626ba4aac547b16fd2d8d5c5be46
+	sha256sums = 11c9471b775a7137da4a2a3bb9c9017766dd6a2a4c5472d26147ca2cf2cbf915
+	sha256sums = 4a38a07221c8c23aeae0e3588ffb5b87e00a6adccfa25928ef7fbb8f10118771
+	sha256sums = 9df2fad4c5983057595a7c5d2df3045147c76959b1ed7533dc2eb887948389af
+	sha256sums = 70efe6eeb79a3dc535834e3f33c6c5ee7ba10230b09d32a15f33ee2750d0a4c3
+	sha256sums = c9efe9625654e37124bf6673158da754e690cbb08a986775534a240dcc6dc77d
+	sha256sums = 3f4b3a827b9eed5429d761d49553ad4eb2278ad661ae2bbe951bc14c97bfee1e
+	sha256sums = 291d32420d5c707d98a41958b172701436dba1206ddd7f9de0deb64edfb4d42c
+	sha256sums = 24f83d30799fdc607c3d1b05ca0bcd76a968275b19eb8d5a484a958f112d4b89
+	sha256sums = d425b5200f3605243a6dabfeaadf6ed3978b8c0ed7ded63895a495174f7a41d3
+	sha256sums = 5e60f0c49207845aa4651fdc06a6147b11b04dbf9737095b461e233c500460c8
+	sha256sums = 00a04c816cf1f15c648a890c14a88770c589ae6d7d15c17c8e047d299d243529
+	sha256sums = d34bf363ff35772d49b8dd3eb4ea4d0d00a32960c3a641d1267edbf44e404611
+	sha256sums = 159b331602df241cd9492df9df58af8d1ea9ea46ebbb4625711725e5b4dcd15f
+	sha256sums = 6ef8f4c0296ac82ba224b8d11bd85795149a3c74cf3bea51d786b97769527746
+	sha256sums = 4ee7579c963469bed8ab8398dcc16639769a11534c25765d02058c290b7aa4e3
+	sha256sums = 0dde48b33cc948aaee683c69c854b1e13d7f2b5a8c88c131f4f4864b36a9021a
+	sha256sums = c17cdbfbd83ee1e2536feec75446dac765e61e6047efd3158871b3ca76d4d31a
+	sha256sums = a166548b99d333b2ac682c68e9e6782ccd9ad6a5951dc560c732427e5f8450a5
+	sha256sums = 0a32ae6c62aaf51ea1215f717174f067b3f8799dad0e971908583b0cf4b69d66
+	sha256sums = 6c37b178b6f3db8e1915ce78562204676a2307a621282dfb91d2dc454c672a81
+	sha256sums = aed40ae709b315c2bd4045539a98db2de12321c66779c28939855c31d6c99763
+	sha256sums = 2638fad35ff05da264f2add7516a6f83ba80fcdc8d3f4ddc8ce1d99f04ac99de
+	sha256sums = ca86d3ba870731f2fd0dba88ba0d6a6a74d1b3fd48d7c5860d7ddbbd67a6c2ae
+	sha256sums = 1b75d184229ece53a933924fe1e23b4e72ddc522b1258fa8812b3f584093fbeb
+	sha256sums = 2770913cf7280686eb8e191da185c2b9e98323aa5777714ef3709e1460dd9e4a
+	sha256sums = 073f2f8827a96022fc4feace62713d3ea31e0efe6921e7805d1dda0eebd4ab92
+	sha256sums = d3c7e2673012ee1b84a52d845b6ad430039dae3d742c92de560c6484d638ed44
+	sha256sums = 8ba739c50d1d639f8a8afa4a8065eb6957cb68445b868056badb5ef44ef78b11
+	sha256sums = c875a3cc64b4a4982f87c7222537d021f0b51b61ef2d9815be0d84429dcb0916
+	sha256sums = a6d74d9f6d6e370b981e24b31a167df2811672b68ce50abf3217140a46e07cc9
+	sha256sums = d4211f4913c93341773edf54fb367f5d54c193342a290f72f921bcf76e604232
+	sha256sums = a800f83eaa61fd7b2f3c0264bdaf8b14662503df85f14aedbfd7575feb2008cb
+	sha256sums = 752b2b777bd05e20dc505a0845c73e2631f7f0f979a3f5710171f8d3a873c4d9
+	sha256sums = bde5b705b195abc3b105ff57b281b3293909e9ffa5cae004cc2341e0b390a7ff
+	sha256sums = d283b7f2c1df2f13f51affb6c115fefcb0ac8dd90e9ca3e4bde5b669d4ef4638
+	sha256sums = 091ec3df4291a4161380c67f25578c3f1d13ee362361f9742eaa3e34456ce0d5
+	sha256sums = d64bd1253cb442f574b4af81959851ad189f575cd012ed70ffa7415d1428dff6
+	sha256sums = bae33e2d2da2d8adbc1718f37426ccec38ed989f7ff239c8eb166a664e96f34f
+	sha256sums = bdfeea4e0ff1f8a53d60c3d48c1643757d838178bb48c6c1db2a0e4820434c4b
+	sha256sums = 022b7fad4cc65fca5f882b4298730714a193e9f19c366b471e033a8a0a91716a
+	sha256sums = aa91334b4bffa0afc2d7c07258dec47320ddeb41c8ce7559e26f0dc310b5f30b
+	sha256sums = 7d18444a94b903842591be121658d2e7ffbf84c2ad607da03e17f64cb7650dab
+
+pkgname = lightning-i18n-ar
+
+pkgname = lightning-i18n-ast
+
+pkgname = lightning-i18n-be
+
+pkgname = lightning-i18n-bg
+
+pkgname = lightning-i18n-br
+
+pkgname = lightning-i18n-ca
+
+pkgname = lightning-i18n-cs
+
+pkgname = lightning-i18n-cy
+
+pkgname = lightning-i18n-da
+
+pkgname = lightning-i18n-de
+
+pkgname = lightning-i18n-dsb
+
+pkgname = lightning-i18n-el
+
+pkgname = lightning-i18n-en-gb
+
+pkgname = lightning-i18n-en-us
+
+pkgname = lightning-i18n-es-ar
+
+pkgname = lightning-i18n-es-es
+
+pkgname = lightning-i18n-et
+
+pkgname = lightning-i18n-eu
+
+pkgname = lightning-i18n-fi
+
+pkgname = lightning-i18n-fr
+
+pkgname = lightning-i18n-fy-nl
+
+pkgname = lightning-i18n-ga-ie
+
+pkgname = lightning-i18n-gd
+
+pkgname = lightning-i18n-gl
+
+pkgname = lightning-i18n-he
+
+pkgname = lightning-i18n-hr
+
+pkgname = lightning-i18n-hsb
+
+pkgname = lightning-i18n-hu
+
+pkgname = lightning-i18n-hy-am
+
+pkgname = lightning-i18n-id
+
+pkgname = lightning-i18n-is
+
+pkgname = lightning-i18n-it
+
+pkgname = lightning-i18n-ja
+
+pkgname = lightning-i18n-ko
+
+pkgname = lightning-i18n-lt
+
+pkgname = lightning-i18n-nb-no
+
+pkgname = lightning-i18n-nl
+
+pkgname = lightning-i18n-nn-no
+
+pkgname = lightning-i18n-pl
+
+pkgname = lightning-i18n-pt-br
+
+pkgname = lightning-i18n-pt-pt
+
+pkgname = lightning-i18n-rm
+
+pkgname = lightning-i18n-ro
+
+pkgname = lightning-i18n-ru
+
+pkgname = lightning-i18n-si
+
+pkgname = lightning-i18n-sk
+
+pkgname = lightning-i18n-sl
+
+pkgname = lightning-i18n-sq
+
+pkgname = lightning-i18n-sr
+
+pkgname = lightning-i18n-sv-se
+
+pkgname = lightning-i18n-tr
+
+pkgname = lightning-i18n-uk
+
+pkgname = lightning-i18n-vi
+
+pkgname = lightning-i18n-zh-cn
+
+pkgname = lightning-i18n-zh-tw
+
