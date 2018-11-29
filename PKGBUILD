@@ -2,7 +2,7 @@
 _pkgname=console-solarized
 pkgname=console-solarized-git
 pkgver=r4.gb1fe625
-pkgrel=1
+pkgrel=2
 pkgdesc="A Solarized colorscheme for the Linux console"
 arch=('any')
 url='https://github.com/adeverteuil/console-solarized'
@@ -21,8 +21,7 @@ package() {
     cd "${_pkgname}"
 
     mkdir -p "${pkgdir}/usr/share/licenses/${_pkgname}"
-    sed -n '/^Copying$/ { s///; :a; n; p; ba; }' README.rst | tail -n +3 \
-        > "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+    cp COPYING "${pkgdir}/usr/share/licenses/${_pkgname}"
 
     mkdir -p "${pkgdir}/usr/bin"
     cp console-solarized "${pkgdir}/usr/bin"
