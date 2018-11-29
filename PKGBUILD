@@ -71,7 +71,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=4.19.4-arch1
+_srcver=4.19.5-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -96,11 +96,11 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('a38f5606bba1f5611c798541f6c3d43267b8599d9e3167471d4b662e33ff47aa'
+sha256sums=('8c839ec29cce7eb0e8ef7eaa10d1eb9d84d2be2521e352fb4f9414e76856ef75'
             'SKIP'
             'e296d89203a7688d69ec94d0c31e95ab83094a6f24f3c53104b3f19954d9e7dc'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
+            'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             '77863d16a08e1b3c726b6c965f1bb7c672bd7317776810121062b73f9ea26780'
@@ -201,21 +201,18 @@ _package() {
   #groups=('ck-generic')
 
   local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   cd linux-${pkgver}
 
   msg2 "Installing boot image..."
-  local image="$pkgdir/boot/vmlinuz-$pkgbase"
-  install -Dm644 "$(make -s image_name)" "$image"
-
-  msg2 "Installing modules..."
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-  mkdir -p "$modulesdir"
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
-
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  ln -sr "$image" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+
+  msg2 "Installing modules..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # a place for external modules,
   # with version file for building modules and running depmod from hook
