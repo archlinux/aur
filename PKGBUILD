@@ -1,7 +1,7 @@
 # Maintainer: Ariel AxionL <axionl@aosc.io>
 pkgname=gcsf
 pkgver=0.1.18
-pkgrel=1
+pkgrel=2
 pkgdesc="a FUSE file system based on Google Drive (Written by Rust)"
 arch=('x86_64')
 depends=('fuse2' 'openssl')
@@ -18,7 +18,6 @@ sha256sums=('0753bf3de49af4f0983b65681f6755b6602875300a168dd0abc54884ecb7986d'
             '379c996c9cf50bfffdd381d1f9f99695b1af5bab17b0ccd14006999d6e0351c1')
 build() {
     cd $pkgname-$pkgver
-    cargo fmt --all -- --check
     cargo build --release
 }
 
