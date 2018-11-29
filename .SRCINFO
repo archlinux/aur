@@ -1,0 +1,14 @@
+pkgbase = hobbit
+	pkgdesc = The Hobbit by Veronica Megler & Philip Mitchell
+	pkgver = 1.2
+	pkgrel = 4
+	arch = any
+	depends = fuse-emulator-sdl
+	options = !strip
+	source = https://archive.org/download/zx_Hobbit_The_v1.0_1982_Melbourne_House/Hobbit_The_v1.0_1982_Melbourne_House.z80
+	source = https://archive.org/download/zx_Hobbit_The_v1.2_1982_Melbourne_House/Hobbit_The_v1.2_1982_Melbourne_House.z80
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = hobbit
+
