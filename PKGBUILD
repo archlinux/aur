@@ -1,6 +1,6 @@
 # Maintainer: Simona <simona.pisano[at]gmail[dot]com>
 pkgname=simonascripts
-pkgver=0.0.15
+pkgver=0.0.16
 pkgrel=1
 pkgdesc="Bash unique command for mount image files (iso, vms, crypto, squashfs), detect pendrive device name, list all kernels, list all i/o schedulers, copy install files."
 
@@ -44,7 +44,7 @@ md5sums=('3f5599c3588f01b625aa9feb0a0e8b99'
          '0da0f06f52839ae85aa79d3e2a2bd069'
          '895210bbf0e6c16c6df7437eb3489ac1'
          '7e4b85c6508890c6f5c88b3d886206a6'
-         'b43048da4fc73e25202f2c12c4732259')
+         'f0216369fd6e6f9856e56b6f1332a581')
 
 package() {
   cd "$srcdir"

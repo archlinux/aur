@@ -1,6 +1,6 @@
 pkgbase = simonascripts
 	pkgdesc = Bash unique command for mount image files (iso, vms, crypto, squashfs), detect pendrive device name, list all kernels, list all i/o schedulers, copy install files.
-	pkgver = 0.0.15
+	pkgver = 0.0.16
 	pkgrel = 1
 	changelog = simonascripts.changelog
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = simonascripts
 	md5sums = 0da0f06f52839ae85aa79d3e2a2bd069
 	md5sums = 895210bbf0e6c16c6df7437eb3489ac1
 	md5sums = 7e4b85c6508890c6f5c88b3d886206a6
-	md5sums = b43048da4fc73e25202f2c12c4732259
+	md5sums = f0216369fd6e6f9856e56b6f1332a581
 
 pkgname = simonascripts
 

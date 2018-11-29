@@ -54,12 +54,14 @@ one installation to another. This command help you to manage this.
 
 Imagine you have your /etc/macinstall.d/yourpc* with all files/folder
 like:
+
   /etc/macinstall.d/yourpc1/etc/fstab
   /etc/macinstall.d/yourpc1/boot/grug/grub.cfg
   /etc/macinstall.d/yourpc1/etc/machine-id
   /etc/macinstall.d/yourpc1/etc/hostname
   /etc/macinstall.d/yourpc1/etc/ssh/host_*
   /etc/macinstall.d/yourpc1/..
+
 A second install like
   /etc/macinstall.d/yourpc2/etc/fstab
   /etc/macinstall.d/yourpc2/boot/grug/grub.cfg
@@ -67,9 +69,10 @@ A second install like
   /etc/macinstall.d/yourpc2/etc/hostname
   /etc/macinstall.d/yourpc2/etc/ssh/host_*
   /etc/macinstall.d/yourpc2/etc/..
-A config file with sessione [yourpc1] and [yourpc2] (edit yourself
-macinstall.conf)
+
+A config file with sessione [yourpc1] and [yourpc2] (edit yourself macinstall.conf)
   /etc/macinstall.d/macinstall.conf
+
 with:
   [yourpc1]
   CopyFilesNum=5
@@ -82,6 +85,7 @@ with:
   CopyDirectory1=/etc/ssh
   WriteSemaphore=yes
   AllowOnlyIfPreviousMacIs=yourpc2
+
 and
   [yourpc2]
   CopyFilesNum=5
@@ -94,9 +98,11 @@ and
   CopyDirectory1=/etc/ssh
   WriteSemaphore=yes
   AllowOnlyIfPreviousMacIs=yourpc1
+
 And finally a command like to switch from one system to another
   macinstall yourpc1 ---this-is-not-an-exercise
   macinstall yourpc2 ---this-is-not-an-exercise
+
 And a semaphore file like
   /etc/macinstall.d/CurrentSystem-yourpc1
 or
