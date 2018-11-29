@@ -6,8 +6,7 @@
 
 pkgbase=shiboken2-git
 pkgname=(python{2,}-shiboken2-git shiboken2-git)
-_upver=5.11.2
-pkgver=5.11.2.r5903.ae51319f
+pkgver=5.11.3.r5913.08a99cb6
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -19,6 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgbase"
+    _upver="$(python sources/shiboken2/shiboken_version.py | cut -d';' -f-3 | tr ';' '.')"
     printf "%s.r%s.%s" "$_upver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -59,6 +59,7 @@ package_shiboken2-git() {
     rm -rf "$pkgdir/usr/lib/python"*
     rm -rf "$pkgdir/usr/lib/libshiboken2"*
     rm -rf "$pkgdir/usr/lib/pkgconfig/"
+    _upver="${pkgver%%.r*}"
     rm "$pkgdir"/usr/lib/cmake/Shiboken2-$_upver/Shiboken2Config*python*.cmake
 }
 
@@ -74,6 +75,7 @@ package_python2-shiboken2-git() {
     mv "$pkgdir"/usr/lib/pkgconfig/shiboken2{,-py2}.pc
 
     rm -rf "$pkgdir"/usr/{include,bin,share}
+    _upver="${pkgver%%.r*}"
     rm "$pkgdir/usr/lib/cmake/Shiboken2-$_upver/Shiboken2ConfigVersion.cmake"
     rm "$pkgdir/usr/lib/cmake/Shiboken2-$_upver/Shiboken2Config.cmake"
 }
@@ -88,6 +90,7 @@ package_python-shiboken2-git() {
     make DESTDIR="$pkgdir" install
 
     rm -rf "$pkgdir"/usr/{include,bin,share}
+    _upver="${pkgver%%.r*}"
     rm "$pkgdir/usr/lib/cmake/Shiboken2-$_upver/Shiboken2ConfigVersion.cmake"
     rm "$pkgdir/usr/lib/cmake/Shiboken2-$_upver/Shiboken2Config.cmake"
 }

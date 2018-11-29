@@ -1,5 +1,5 @@
 pkgbase = shiboken2-git
-	pkgver = 5.11.2.r5903.ae51319f
+	pkgver = 5.11.3.r5913.08a99cb6
 	pkgrel = 1
 	url = http://www.pyside.org
 	arch = i686
