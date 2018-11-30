@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-redis2
 pkgver=0.14
-pkgrel=17
+pkgrel=18
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.15.6
