@@ -3,24 +3,23 @@
 # Contributor: PelPix <kylebloss@pelpix.info>
 # Contributor: DrZaius <lou[at]fakeoutdoorsman[dot]com>
 
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
 pkgname=mingw-w64-libfdk-aac
-pkgver=0.1.6
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='Fraunhofer FDK AAC codec library(mingw-w64)'
+pkgdesc="Fraunhofer FDK AAC codec library (mingw-w64)"
 arch=('any')
-url='https://sourceforge.net/projects/opencore-amr/'
+url="https://sourceforge.net/projects/opencore-amr/"
 license=('custom')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
-options=(staticlibs !strip !buildflags)
+options=('!strip' 'staticlibs' '!buildflags')
 source=("https://downloads.sourceforge.net/opencore-amr/fdk-aac-${pkgver}.tar.gz")
-sha256sums=('aab61b42ac6b5953e94924c73c194f08a86172d63d39c5717f526ca016bed3ad')
-
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+sha256sums=('f7d6e60f978ff1db952f7d5c3e96751816f5aef238ecf1d876972697b85fd96c')
 
 build() {
   cd "${srcdir}/fdk-aac-${pkgver}"
-
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure
@@ -31,17 +30,15 @@ build() {
 
 package () {
   cd "${srcdir}/fdk-aac-${pkgver}"
-
   for _arch in ${_architectures}; do
     pushd "build-${_arch}"
-    make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip -x
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
+    make DESTDIR="${pkgdir}" install
+    find "${pkgdir}/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip -x
+    find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
     popd
   done
-  
   install -dm 755 "${pkgdir}"/usr/share/licenses/${pkgname}
   install -m 644 NOTICE "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
