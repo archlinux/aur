@@ -8,12 +8,12 @@ pkgbase = jdk11-openj9-bin
 	depends = java-environment-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=11.0.1
-	provides = java-environment-openjdk=11.0.1
-	provides = java-runtime=11.0.1
-	provides = java-runtime-openjdk=11.0.1
-	provides = java-runtime-headless=11.0.1
-	provides = java-runtime-headless-openjdk=11.0.1
+	provides = java-environment=11
+	provides = java-environment-openjdk=11
+	provides = java-runtime=11
+	provides = java-runtime-openjdk=11
+	provides = java-runtime-headless=11
+	provides = java-runtime-headless-openjdk=11
 	source = https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.1%2B13/OpenJDK11U-jdk_x64_linux_openj9_jdk-11.0.1_13_openj9-0.11.0_11.0.1_13.tar.gz
 	sha256sums = ef9bf07cba79082285a9d426ea4eb3e8df57561ce2afe07cc5f299a8fa203279
 
