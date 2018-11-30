@@ -3,9 +3,9 @@
 # Contributor: Jonathon Fernyhough <jonathon_at manjaro_dotorg>
 
 pkgname=mkl-dnn
-pkgver=0.16
+pkgver=0.17.1
 pkgrel=1
-_mklmlver=2019.0.20180710
+_mklmlver=2019.0.1.20180928
 pkgdesc="Intel® Math Kernel Library for Deep Neural Networks"
 arch=(x86_64)
 url=https://github.com/intel/mkl-dnn
@@ -15,8 +15,8 @@ optdepends=('intel-mkl: Intel MKL small library for Intel OpenMP linking'
             'intel-compiler-base: Intel OpenMP runtime linking')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/intel/$pkgname/archive/v$pkgver.tar.gz"
         "https://github.com/intel/$pkgname/releases/download/v$pkgver/mklml_lnx_$_mklmlver.tgz")
-sha256sums=('7557f820d6801dbe7741627199c0165fe9e651245b9c1c744d615f576da1098a'
-            'e2233534a9d15c387e22260997af4312a39e9f86f791768409be273b5453c4e6')
+sha256sums=('75777735458c9e03434d9b1b111b92bca4230427b8de890dd694039dc34480ed'
+            'f00dc3b142a5be399bdeebd7e7ea369545a35d4fb84c86f98b6b048d72685295')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
