@@ -6,7 +6,7 @@ _majorver=11.0.1
 _buildver=13
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
-pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_majorver}"
+pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk11"
 arch=('x86_64')
 url="https://adoptopenjdk.net/index.html?variant=openjdk11-openj9"
 license=('GPL2')
