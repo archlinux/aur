@@ -1,5 +1,6 @@
 # Maintainer: Tom Nguyen <tom81094@gmail.com>
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -97,7 +98,7 @@ sha256sums=('SKIP'
             '353fad0d0363c32c343dde215de4a22c38fbc748df70560b98c2f2c2e98b3c1c'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            '9a8584660c399a6f0c62fc47572ea3f801c08aac50caab2557ce094119ba4195'
+            'ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 _kernelname=${pkgbase#linux}
