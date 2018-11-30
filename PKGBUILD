@@ -1,7 +1,7 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=shotgun
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal X screenshot utility"
 arch=('x86_64')
 url="https://github.com/neXromancers/$pkgname"
