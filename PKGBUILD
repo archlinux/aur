@@ -26,7 +26,8 @@ sha256sums=('f0ef7debe2ce49624c9fed63f5338267195430577afe1e97bdfb14bb35a325b1'
 prepare() {
   install -d usr/share/cups/model usr/lib/cups/filter
   wrapper=opt/brother/Printers/mfc${_model}/cupswrapper/cupswrappermfc${_model}
-  perl -i -0777spe 's/^sleep(?s:.)*//gm;s#/(usr|opt)#$srcdir/$1#g;s#/model/Brother#/model#g;s/^lpadmin//gm' -- -srcdir="$srcdir" "$wrapper"
+  sed -i '/^ *lpadmin/d;/^sleep/Q' "$wrapper"
+  perl -i -spe 's#/(usr|opt)#$srcdir/$1#g;s#/model/Brother#/model#g' -- -srcdir="$srcdir" "$wrapper"
   ./"$wrapper"
   rm "$wrapper"
   perl -i -spe 's/$srcdir//' -- -srcdir="$srcdir" usr/lib/cups/filter/*lpdwrapper*
