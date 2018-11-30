@@ -6,16 +6,16 @@ pkgbin=ledger-live-desktop
 license=('MIT')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 package="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
+depends=('btchip-udev')
 makedepends=('gendesk')
 options=(!strip)
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${package}"
 )
 sha512sums_x86_64=(765616f55b6f93b3ca840e04cde52e3d9cd977225ddfcaf080340e52f56060a7381479e4decaec894f627d67c0a2095920ae3b127888a810ee5cf24720704e96)
-install=ledger-live-bin.install
 
 prepare() {
 	gendesk -f -n \
