@@ -1,14 +1,14 @@
 pkgbase = fracplanet
 	pkgdesc = Fractal planet and terrain generator
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/fracplanet/
 	arch = i686
 	arch = x86_64
-	license = GPLv2
+	license = GPL2
 	depends = boost
 	depends = qt4
-	depends = mesa
+	depends = glu
 	source = http://ufpr.dl.sourceforge.net/project/fracplanet/fracplanet/0.5.1/fracplanet-0.5.1.tar.gz
 	source = fracplanet.png
 	source = fracplanet.desktop
