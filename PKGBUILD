@@ -4,17 +4,18 @@
 
 _gemname=method_source
 pkgname=ruby-$_gemname
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 pkgdesc='retrieve the sourcecode for a method'
 arch=(any)
 url='http://banisterfiend.wordpress.com'
 license=()
-depends=(ruby ruby-rdoc)
+depends=(ruby)
+makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('f0286dc6f0e77c3622a37c385c8638270063210c')
+sha1sums=('2cb7d76fc3b895ad0cd8c69c2ca1db63c9ad78d6')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
