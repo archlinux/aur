@@ -10,7 +10,7 @@ makedepends=('python-setuptools' 'python-pycryptodomex')
 options=(!strip)
 source=("fuse-3ds-${pkgver}-src.zip::https://github.com/ihaveamac/fuse-3ds/releases/download/v${pkgver}/fuse-3ds-${pkgver}-src.zip")
 sha256sums=('8243f64fdabb536b07e9a4fbf152a35e9350f58ae8c49938c115d607a46911d0')
-noextract=('fuse-3ds-${pkgver}-src.zip')
+noextract=("fuse-3ds-${pkgver}-src.zip")
 
 build() {
 	unzip "${srcdir}/fuse-3ds-${pkgver}-src.zip" -d "${srcdir}/fuse-3ds"
