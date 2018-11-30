@@ -1,21 +1,23 @@
 pkgbase = brother-mfc-9340cdw
 	pkgdesc = LPR and CUPS driver for the Brother MFC-9340CDW
-	pkgver = 1.1.4
-	pkgrel = 1
+	pkgver = 1.1.2_1
+	pkgrel = 2
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
 	install = brother-mfc-9340cdw.install
 	arch = i686
 	arch = x86_64
-	license = unknown
-	depends = tcsh
-	depends = deb2targz
-	depends = perl
+	license = custom:Brother commercial license
+	license = GPL2
+	depends = cups
+	depends = ghostscript
 	depends = a2ps
-	depends = lib32-libcups
-	source = http://download.brother.com/welcome/dlf007027/mfc9340cdwlpr-1.1.2-1.i386.deb
-	source = http://download.brother.com/welcome/dlf007029/mfc9340cdwcupswrapper-1.1.4-0.i386.deb
-	sha256sums = 0591020f391dd904680e2a3beb9664e404cac144d5848f7091c9246b44bc8dfe
-	sha256sums = 7ba2bd88eec76e7f278a220e1a8e32a3f4404280723c299bcdc4613b2bbb9c36
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc9340cdwlpr-1.1.2-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf007028/mfc9340cdwcupswrapper-1.1.4-0.i386.rpm
+	source = lpr-license.txt
+	sha256sums = f0ef7debe2ce49624c9fed63f5338267195430577afe1e97bdfb14bb35a325b1
+	sha256sums = 4290e37fa83cf2ad31e83fdf1a44e22fd7df4149fbda994bc930f201c1457e05
+	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
+	depends_x86_64 = lib32-glibc
 
 pkgname = brother-mfc-9340cdw
 
