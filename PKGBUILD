@@ -1,12 +1,12 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=yzis-git
-pkgver=r2887.cea35396
+pkgver=r2905.7807cb8e
 pkgrel=1
 pkgdesc='Vi-like editor with frontends for Qt5 and NCurses'
 arch=('i686' 'x86_64')
 url='https://github.com/sandsmark/yzis'
-license=('LGPL')
+license=('LGPL' 'GPL')
 depends=('qt5-base' 'qt5-xmlpatterns' 'lua51' 'ncurses' 'gettext' 'perl')
 makedepends=('cmake' 'git' 'doxygen')
 conflicts=(yzis)
