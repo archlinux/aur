@@ -6,7 +6,7 @@ pkgname=(yaru-sound-theme-git
          yaru-gtk-theme-git
          yaru-gnome-shell-theme-git
          yaru-icon-theme-git)
-pkgver=18.10.6.r7.g8b3f63d6
+pkgver=18.10.7.r143.g4f9e8a41
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -76,6 +76,7 @@ package_yaru-gnome-shell-theme-git() {
     rm -r "$pkgdir/usr/share/sounds"
     rm -r "$pkgdir/usr/share/themes/Yaru/gtk-2.0"
     rm -r "$pkgdir/usr/share/themes/Yaru/gtk-3.0"
+    rm -r "$pkgdir/usr/share/themes/Yaru/gtk-3.20"
     rm -r "$pkgdir/usr/share/themes/Yaru/index.theme"
     rm -r "$pkgdir/usr/share/themes/Yaru-dark"
 }
