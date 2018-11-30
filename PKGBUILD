@@ -4,8 +4,8 @@ _branch=0.17
 ## Build from latest tag
 #_tag=$(git ls-remote -t --refs https://github.com/bitcoin/bitcoin.git | awk '{print $2}' | LC_ALL=C sort -bfV | sed  '/rc[0-9]/d' | tail -n1 | sed -n -e 's/^.*tags\///p')
 pkgname=bitcoin-gui-git
-pkgver=v0.17.0.r1.g5b47b8efd4
-pkgrel=3
+pkgver=v0.17.0.1.r44.gd8bc0ce1da
+pkgrel=1
 pkgdesc='Most recent stable branch, UPNP disabled, w/ Bitcoin binaries, dev tools, GUI, and wallet'
 arch=('i686' 'x86_64')
 url="https://bitcoin.org/en/download"
@@ -18,27 +18,18 @@ conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
 source=("git+https://github.com/bitcoin/bitcoin.git#branch=${_branch}"
         "git+https://github.com/bitcoin-core/packaging.git"
-				'bitcoin-qt.install'
-        'bitcoin-officialSSLfix.patch')
+				'bitcoin-qt.install')
 sha256sums=('SKIP'
             'SKIP'
-            'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c'
-            '400cf501e193595529d46e4a3570a3d0c69e6c87bcc00e25fe24711a59f1109c')
+            'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c')
 sha512sums=('SKIP'
             'SKIP'
-            '67383fa1dd2f9576cc3c282f3a9b8c5f2d3eaa13799a6a7eb9eb2969face0ddaf6bb82c286c928b89397d8d2c9ba2efe9a603442f4bf6ed6d89ae9323c169375'
-            '7455471d945c9da94fdb07d72c620d9aaadbd827e95e8f565de4aa6facd8fe2cb570bcbb3852093888e2ac2c08fb8fd0b0702a90d18b961f2cac926ad50525bf')
+            '67383fa1dd2f9576cc3c282f3a9b8c5f2d3eaa13799a6a7eb9eb2969face0ddaf6bb82c286c928b89397d8d2c9ba2efe9a603442f4bf6ed6d89ae9323c169375')
 
 pkgver() {
 	cd "$srcdir/bitcoin"
   git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
-
-prepare() {
-  cd "$srcdir/bitcoin"
-  patch -p1 < "$srcdir/bitcoin-officialSSLfix.patch"
-}
-
 
 build() {
   cd "$srcdir/bitcoin"
