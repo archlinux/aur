@@ -1,13 +1,13 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=kaidan-git
-pkgver=r493.ab2c4ab
+pkgver=r547.11c1c98
 pkgrel=1
 pkgdesc="Simple and user-friendly Jabber/XMPP client for every device"
 arch=('i686' 'x86_64')
 url="https://github.com/KaidanIM/Kaidan"
 license=('GPL3')
-depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'kirigami2' 'gloox')
+depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'kirigami2' 'qxmpp')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 source=("kaidan::git+https://github.com/KaidanIM/Kaidan")
 sha256sums=('SKIP')
