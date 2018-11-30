@@ -1,7 +1,7 @@
 pkgbase = t2ec
 	pkgdesc = A package of scripts to display system icons and controls in Tint2 panel
 	pkgver = 0.2
-	pkgrel = 5
+	pkgrel = 7
 	url = https://github.com/nwg-piotr/tint2-executors
 	arch = x86_64
 	license = GPL3
@@ -60,7 +60,7 @@ pkgbase = t2ec
 	md5sums = 921064d0eb82b775080872a5507e820d
 	md5sums = 1dae806f7c7b0eb34cda8468b4631474
 	md5sums = 87b0cfeab8a467db470922e60a6ec187
-	md5sums = 77a867395a44bdfc94b3d93dfa5d0d1a
+	md5sums = 5cd32fd7b74fa5d1bd45fad09472fd16
 	md5sums = 63a955c04f03451a13fd4a5f3ea1bbf3
 	md5sums = 4d5efb2581959b68db65a0964e1c26b9
 	md5sums = 607482e19bdcd53454b4e2b077760ef8

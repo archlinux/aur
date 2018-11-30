@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('t2ec')
 pkgver=0.2
-pkgrel=5
+pkgrel=7
 pkgdesc="A package of scripts to display system icons and controls in Tint2 panel"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
@@ -59,7 +59,7 @@ md5sums=('df88efa83e480abb9029028a09c9d1a2'
          '921064d0eb82b775080872a5507e820d'
          '1dae806f7c7b0eb34cda8468b4631474'
          '87b0cfeab8a467db470922e60a6ec187'
-         '77a867395a44bdfc94b3d93dfa5d0d1a'
+         '5cd32fd7b74fa5d1bd45fad09472fd16'
          '63a955c04f03451a13fd4a5f3ea1bbf3'
          '4d5efb2581959b68db65a0964e1c26b9'
          '607482e19bdcd53454b4e2b077760ef8'
