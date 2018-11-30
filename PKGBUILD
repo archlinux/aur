@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=dbxfs
-pkgver=1.0.39
-pkgrel=2
+pkgver=1.0.40
+pkgrel=1
 pkgdesc="User-space file system for Dropbox"
 arch=('i686' 'x86_64')
 url="https://github.com/rianhunter/dbxfs"
@@ -20,7 +20,7 @@ makedepends=('python-setuptools')
 replaces=('python-dbxfs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.patch")
-md5sums=('c128a0dbf1efeeb83cd566af7dcae08d'
+md5sums=('b61dc4327bbf48266d23ba44bb1fc6ba'
          '3bf993bef07b19ff2bafec3eeb4ff72a')
 
 prepare() {
