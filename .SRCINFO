@@ -1,16 +1,17 @@
-pkgbase = dict-freedict-eng-deu
+pkgbase = dict-freedict-eng-swe
 	pkgdesc = English -> German dictionary for dictd et al. from Freedict.org
-	pkgver = 0.3.7
-	pkgrel = 3
+	pkgver = 0.2
+	pkgrel = 2
 	url = https://freedict.org/
-	install = dict-freedict-eng-deu.install
+	install = dict-freedict-eng-swe.install
+	changelog = ChangeLog
 	arch = any
 	license = GPL
 	makedepends = dictd
 	makedepends = freedict-tools
 	optdepends = dictd: dict client and server
-	source = https://download.freedict.org/dictionaries/eng-deu/0.3.7/freedict-eng-deu-0.3.7.src.tar.xz
-	sha512sums = 4608ee6a985ec3151037c35bc8016b6262bde86d881af6d4f36b387d8116344a6fabb79b7cf192b7eedb412c70abc216df38549e7bf2c35355b0005db992ca96
+	source = https://download.freedict.org/dictionaries/eng-swe/0.2/freedict-eng-swe-0.2.src.tar.xz
+	sha512sums = 16bde111c5a4b8842fd6d3f7687d3e520a9f3d1da9fc5dbdf21d1b843056212e672fdb148d8b3af8cf9cd777421ee3bb31f05db8c0e8daa9055ce60adf4fbd1b
 
-pkgname = dict-freedict-eng-deu
+pkgname = dict-freedict-eng-swe
 

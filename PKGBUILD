@@ -1,8 +1,9 @@
-# Maintainer: Einhard Leichtfuß <alguien@respiranto.de>
-_lang=eng-deu
+# Maintainer : Ashwin Vishnu <ashwinvis+arch At protonmail DoT cOm>
+# Contributor : Einhard Leichtfuß <alguien@respiranto.de>
+_lang=eng-swe
 pkgname=dict-freedict-${_lang}
-pkgver=0.3.7
-pkgrel=3
+pkgver=0.2
+pkgrel=2
 pkgdesc="English -> German dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="https://freedict.org/"
@@ -11,7 +12,13 @@ optdepends=('dictd: dict client and server')
 makedepends=('dictd' 'freedict-tools')
 install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.src.tar.xz")
-sha512sums=('4608ee6a985ec3151037c35bc8016b6262bde86d881af6d4f36b387d8116344a6fabb79b7cf192b7eedb412c70abc216df38549e7bf2c35355b0005db992ca96')
+sha512sums=('16bde111c5a4b8842fd6d3f7687d3e520a9f3d1da9fc5dbdf21d1b843056212e672fdb148d8b3af8cf9cd777421ee3bb31f05db8c0e8daa9055ce60adf4fbd1b')
+changelog="ChangeLog"
+
+prepare()
+{
+        cp -f ${_lang}/ChangeLog ..
+}
 
 build()
 {

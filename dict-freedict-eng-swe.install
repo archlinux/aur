@@ -1,4 +1,4 @@
-basename=eng-deu
+basename=eng-swe
 pkgname=dict-freedict-$basename
 dictd_conf=/etc/dict/dictd.conf
 datadir=/usr/share/dictd
