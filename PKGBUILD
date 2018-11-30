@@ -27,7 +27,7 @@ _bldtype=Release
 # http://zipcloud.ibsnet.co.jp/
 #*************************************************************
 
-_zipcoderel=201810
+_zipcoderel=201811
 _mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 
 pkgbase=mozc
@@ -42,13 +42,13 @@ makedepends=('python2' 'git' 'ninja' 'clang' 'qt5-base')
 #source=("${_svndir}/${_svnmod}::svn+${_svntrunk}"
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
-  http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-${_zipcoderel}.zip
-  http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
+  https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcoderel}.zip
+  https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcoderel}.zip
   https://gist.githubusercontent.com/MightyPork/6b93f56b404e526268ac133f1a783afd/raw/40b3b9569d4b0741d78c511b247b26d2b1e7a2ae/mozc.patch
 )
 sha1sums=('SKIP'
-          '14537a8dbc99a7a86f39008e5f4ad072616c16eb'
-          '924c0f07f27481af98c023c72e81be567a427937'
+          'c274abcc6d259dae8dae121408c25fff19052585'
+          '6187d52063d5ddf8cb7ed060cfff03cf91ed45cf'
           'a366077418ae6f235aecf374256354a40dc5b37a')
 
 
