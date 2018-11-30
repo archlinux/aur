@@ -39,8 +39,5 @@ post_upgrade() {
 }
 
 post_remove() {
-	echo "Removing udev rules"
-	rm /etc/udev/rules.d/20-hw1.rules
-	udevadm trigger
-	udevadm control --reload-rules
+	echo "Udev rules have been left in place. Please remove /etc/udev/rules.d/20-hw1.rules if required"
 }
