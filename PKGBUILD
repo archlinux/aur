@@ -1,6 +1,6 @@
 # Maintainer : Ashwin Vishnu <ashwinvis+arch At protonmail DoT cOm>
 # Contributor : Einhard Leichtfuß <alguien@respiranto.de>
-_lang=eng-swe
+_lang=swe-eng
 pkgname=dict-freedict-${_lang}
 pkgver=0.2
 pkgrel=3
@@ -12,7 +12,7 @@ optdepends=('dictd: dict client and server')
 makedepends=('dictd' 'freedict-tools')
 install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.src.tar.xz")
-sha512sums=('16bde111c5a4b8842fd6d3f7687d3e520a9f3d1da9fc5dbdf21d1b843056212e672fdb148d8b3af8cf9cd777421ee3bb31f05db8c0e8daa9055ce60adf4fbd1b')
+sha512sums=('f6333261e2b666f6cff71973444600d46c37f9f5d855bf5338cbd281aa88bebb8183c0f8534daa9571e5fab96985b5e3435b41466d132591f4b476ac2fcd3410')
 changelog="ChangeLog"
 
 prepare()
