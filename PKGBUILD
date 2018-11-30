@@ -2,7 +2,7 @@
 
 pkgname=supercollider-git
 _name="supercollider"
-pkgver=3.10.0.beta2.r210.g7f8e08a04f
+pkgver=3.10.0.r218.g794a842c86
 pkgrel=1
 pkgdesc="Environment and programming language for real time audio synthesis and algorithmic composition"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,18 +11,21 @@ license=('GPL3')
 depends=('boost-libs' 'desktop-file-utils' 'fftw' 'jack' 'qt5-svg'
 'qt5-webengine' 'qt5-websockets' 'yaml-cpp')
 makedepends=('boost' 'cmake' 'emacs' 'git' 'qt5-tools')
+checkdepends=('xorg-server-xvfb')
 optdepends=('emacs: emacs interface'
             'gedit: gedit interface'
             'sc3-plugins: additional extension plugins for scsynth')
 conflicts=('supercollider')
 provides=('supercollider')
 source=("git+https://github.com/${_name}/${_name}.git#branch=develop"
+        "use-system-boost.patch"
         "git+https://github.com/timblechmann/nova-simd.git"
         "git+https://github.com/timblechmann/nova-tt.git"
         "git+https://github.com/${_name}/hidapi.git"
         "git+https://github.com/${_name}/portaudio.git"
         "git+https://github.com/${_name}/yaml-cpp.git")
 sha512sums=('SKIP'
+            '0126a81b410c40bcbfaaaf07ecc8ce292b8eaf5d814eb5ad7c36c76e24b1a39d7b5bd607833b6082f92dd5a9aded7d8360b86a77021ead4a1860f548607e80bf'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -46,11 +49,7 @@ prepare() {
   git submodule update
   # make sure system boost is used:
   # https://github.com/supercollider/supercollider/issues/4096
-  rm -r external_libraries/boost
-  # removing math optimizations, leading to flaky behavior:
-  # https://github.com/supercollider/supercollider/issues/4116
-  sed -e 's/-ffast-math/-fno-math-errno -fno-signaling-nans/' \
-      -i CMakeLists.txt
+  patch -Np1 -i ../use-system-boost.patch
   mkdir -p build
 }
 
@@ -112,8 +111,14 @@ build() {
           ..
     ;;
   esac
-  make
+  make VERBOSE=1
 }
+
+check() {
+  cd "${_name}/build"
+  xvfb-run make test ARGS="-V" || warning "Known failing tests: https://github.com/supercollider/supercollider/issues/3555"
+}
+
 
 package() {
   cd "${_name}/build"

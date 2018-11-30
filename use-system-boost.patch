@@ -1,0 +1,160 @@
+diff --git c/CMakeLists.txt w/CMakeLists.txt
+index 063028774..be3e0aebc 100644
+--- c/CMakeLists.txt
++++ w/CMakeLists.txt
+@@ -253,14 +253,15 @@ if (NOT WIN32)
+ endif()
+ 
+ if(SYSTEM_BOOST)
+-  set(Boost_USE_MULTITHREADED      ON)
+-  find_package( Boost 1.50.0 COMPONENTS  thread system filesystem program_options regex test_exec_monitor )
+-endif()
+-
+-if (Boost_FOUND)
+-	link_directories(${Boost_LIBRARY_DIRS})
+-else()
+-	message(STATUS "building boost libraries manually")
++    set(Boost_USE_MULTITHREADED ON)
++    find_package( Boost 1.50.0 COMPONENTS  thread system filesystem program_options regex test_exec_monitor )
++    if (Boost_FOUND)
++    	  link_directories(${Boost_LIBRARY_DIRS})
++    else()
++        set(SYSTEM_BOOST OFF)
++        set(Boost_USE_MULTITHREADED OFF)
++        message(WARNING "Not using SYSTEM_BOOST because none was found.")
++    endif()
+ endif()
+ 
+ if(SYSTEM_YAMLCPP)
+diff --git c/editors/sc-ide/CMakeLists.txt w/editors/sc-ide/CMakeLists.txt
+index 50059bc2f..ba30f857f 100644
+--- c/editors/sc-ide/CMakeLists.txt
++++ w/editors/sc-ide/CMakeLists.txt
+@@ -219,7 +219,6 @@ endif()
+ include_directories(${CMAKE_SOURCE_DIR}/include/common)
+ include_directories(${CMAKE_SOURCE_DIR}/common)
+ include_directories(${CMAKE_SOURCE_DIR}/include/plugin_interface)
+-include_directories(${CMAKE_SOURCE_DIR}/external_libraries/boost)
+ include_directories(${YAMLCPP_INCLUDE_DIR})
+ # For QtCollider headers:
+ include_directories(${CMAKE_SOURCE_DIR})
+@@ -299,11 +298,12 @@ target_link_libraries( SuperCollider
+     oscpack
+ )
+ 
+-if(Boost_FOUND)
++if(${SYSTEM_BOOST})
+     target_link_libraries( SuperCollider ${Boost_SYSTEM_LIBRARY} ${Boost_FILESYSTEM_LIBRARY} )
+ else()
+     # in-house-built boost system
+     target_link_libraries( SuperCollider boost_system boost_filesystem )
++    include_directories(${CMAKE_SOURCE_DIR}/external_libraries/boost)
+ endif()
+ 
+ if(APPLE)
+diff --git c/external_libraries/CMakeLists.txt w/external_libraries/CMakeLists.txt
+index df33dc6f1..b850657eb 100644
+--- c/external_libraries/CMakeLists.txt
++++ w/external_libraries/CMakeLists.txt
+@@ -2,7 +2,8 @@ if (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/nova-simd/vec.hpp)
+ 	message(FATAL_ERROR "nova-simd submodule is missing: please run `git submodule init && git submodule update' from the toplevel of your git working tree")
+ endif()
+ 
+-if(NOT Boost_FOUND) # we compile boost ourselves
++if(NOT SYSTEM_BOOST) # we compile boost ourselves
++	message(STATUS "building boost libraries manually")
+ 	# boost thread
+ 	aux_source_directory(boost/libs/thread/src/ boost_thread_src )
+ 
+@@ -84,10 +85,10 @@ set_property(TARGET tlsf PROPERTY POSITION_INDEPENDENT_CODE TRUE)
+ 
+ #oscpack
+ add_library(oscpack STATIC EXCLUDE_FROM_ALL "oscpack_build.cpp")
+-target_include_directories(oscpack PRIVATE boost)
++target_include_directories(oscpack
++  PRIVATE $<IF:$<STREQUAL:${SYSTEM_BOOST},"ON">,${Boost_INCLUDE_DIRS},${CMAKE_SOURCE_DIR}/external_libraries/boost>)
+ target_include_directories(oscpack INTERFACE oscpack_1_1_0 )
+ 
+-
+ if(LTO)
+ 	set_property(TARGET oscpack tlsf
+ 				 APPEND PROPERTY COMPILE_FLAGS "-flto -flto-report")
+@@ -104,7 +105,11 @@ if(NOT YAMLCPP_FOUND)
+   CREATE_FINAL_FILE(${CMAKE_CURRENT_BINARY_DIR}/libyamlcpp.cpp ${yaml_src})
+ 
+   add_library(yaml STATIC EXCLUDE_FROM_ALL ${CMAKE_CURRENT_BINARY_DIR}/libyamlcpp.cpp)
+-  target_include_directories(yaml PUBLIC ${CMAKE_SOURCE_DIR}/external_libraries/yaml-cpp/include boost)
++  if(SYSTEM_BOOST)
++    target_include_directories(yaml PUBLIC ${Boost_INCLUDE_DIRS})
++  else()
++    target_include_directories(yaml PUBLIC ${CMAKE_SOURCE_DIR}/external_libraries/yaml-cpp/include boost)
++  endif()
+   set_property( TARGET yaml PROPERTY FOLDER 3rdparty )
+   set(YAMLCPP_LIBRARY yaml)
+   set(YAMLCPP_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/external_libraries/yaml-cpp/include)
+diff --git c/lang/CMakeLists.txt w/lang/CMakeLists.txt
+index c68b32fdc..ca4f7a4f1 100644
+--- c/lang/CMakeLists.txt
++++ w/lang/CMakeLists.txt
+@@ -202,7 +202,7 @@ if(SC_HIDAPI)
+   endif()
+ endif()
+ 
+-if (Boost_FOUND)
++if (SYSTEM_BOOST)
+ 	target_include_directories(libsclang PUBLIC ${Boost_INCLUDE_DIRS})
+ 	target_link_libraries(libsclang ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${Boost_REGEX_LIBRARY} ${Boost_FILESYSTEM_LIBRARY})
+ else()
+diff --git c/server/CMakeLists.txt w/server/CMakeLists.txt
+index 2622b4e36..ba28c9b49 100644
+--- c/server/CMakeLists.txt
++++ w/server/CMakeLists.txt
+@@ -12,7 +12,7 @@ include_directories(${CMAKE_SOURCE_DIR}/external_libraries
+ 					${CMAKE_SOURCE_DIR}/external_libraries/nova-tt
+ 					)
+ 
+-if (Boost_FOUND)
++if(SYSTEM_BOOST)
+ 	include_directories(${Boost_INCLUDE_DIRS})
+ else()
+ 	include_directories(${CMAKE_SOURCE_DIR}/external_libraries/boost)
+diff --git c/server/scsynth/CMakeLists.txt w/server/scsynth/CMakeLists.txt
+index 17c09f262..d95378c54 100644
+--- c/server/scsynth/CMakeLists.txt
++++ w/server/scsynth/CMakeLists.txt
+@@ -176,7 +176,7 @@ elseif(AUDIOAPI STREQUAL coreaudio)
+ 	target_link_libraries(libscsynth "-framework CoreAudio")
+ endif()
+ 
+-if (Boost_FOUND)
++if (SYSTEM_BOOST)
+ 	target_link_libraries(libscsynth ${Boost_SYSTEM_LIBRARY} ${Boost_FILESYSTEM_LIBRARY} )
+ else()
+ 	target_link_libraries(libscsynth boost_system boost_filesystem)
+diff --git c/server/supernova/CMakeLists.txt w/server/supernova/CMakeLists.txt
+index cfe128880..59e5a444a 100644
+--- c/server/supernova/CMakeLists.txt
++++ w/server/supernova/CMakeLists.txt
+@@ -147,7 +147,7 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+ endif()
+ 
+ 
+-if(Boost_FOUND)
++if(SYSTEM_BOOST)
+     target_link_libraries(libsupernova ${Boost_SYSTEM_LIBRARY} ${Boost_FILESYSTEM_LIBRARY} ${Boost_PROGRAM_OPTIONS_LIBRARY})
+     target_include_directories(libsupernova PUBLIC ${Boost_INCLUDE_DIRS})
+ else()
+diff --git c/testsuite/server/CMakeLists.txt w/testsuite/server/CMakeLists.txt
+index 38ce4b486..9c611a9ad 100644
+--- c/testsuite/server/CMakeLists.txt
++++ w/testsuite/server/CMakeLists.txt
+@@ -5,4 +5,8 @@ if (SUPERNOVA)
+ endif()
+ 
+ add_library(boost_test STATIC boost_test.cpp)
+-target_include_directories(boost_test PUBLIC ${CMAKE_SOURCE_DIR}/external_libraries/boost)
++if (SYSTEM_BOOST)
++  target_include_directories(boost_test PUBLIC ${Boost_INCLUDE_DIRS})
++else()
++  target_include_directories(boost_test PUBLIC ${CMAKE_SOURCE_DIR}/external_libraries/boost)
++endif()
