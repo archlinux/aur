@@ -2,7 +2,7 @@
 # Maintainer: Andrey Melentyev <andrey.melentyev@protonmail.com>
 _pkgbase=macbook12-spi-driver
 pkgname=(${_pkgbase}-dkms)
-pkgver=0+git.163
+pkgver=0+git.190
 pkgrel=1
 pkgdesc="Driver for the keyboard, touchpad and touchbar found in newer MacBook (Pro) models"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=()
 source=(git+https://github.com/roadrunner2/macbook12-spi-driver.git#branch=touchbar-driver-hid-driver
         dkms.conf)
 sha256sums=('SKIP'
-            'aae0191e7e7dcc851e61667be5d9a249f36e931ed1e4f2c34dc9eab1501a94fd')
+            'e42243352d015a78e5d13260361d3052d0b84c4105bcb89191a319f2249cc47b')
 
 pkgver() {
     cd $_pkgbase
