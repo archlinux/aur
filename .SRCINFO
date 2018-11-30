@@ -1,6 +1,6 @@
 pkgbase = shotgun
 	pkgdesc = Minimal X screenshot utility
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/neXromancers/shotgun
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = shotgun
 	makedepends = cargo
 	depends = libx11
 	depends = libxrandr
-	source = https://github.com/neXromancers/shotgun/archive/v2.0.0.tar.gz
-	md5sums = 067163146481d75a08d31e973f72199a
+	source = https://github.com/neXromancers/shotgun/archive/v2.0.1.tar.gz
+	md5sums = aee633e4316354e6dde55ea9a3dfe674
 
 pkgname = shotgun
 

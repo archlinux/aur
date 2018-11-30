@@ -1,6 +1,6 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=shotgun
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Minimal X screenshot utility"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MPL2')
 depends=('libx11' 'libxrandr')
 makedepends=('cargo')
 source=("https://github.com/neXromancers/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('067163146481d75a08d31e973f72199a')
+md5sums=('aee633e4316354e6dde55ea9a3dfe674')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
