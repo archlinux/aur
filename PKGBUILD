@@ -2,7 +2,7 @@
 
 pkgname=trisquel-icewm-theme
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='This IceWM theme is inspired by the default theme of Trisquel GNU/Linux.'
 arch=('any')
 url='https://www.box-look.org/p/1018259'
