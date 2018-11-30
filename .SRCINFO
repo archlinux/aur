@@ -1,7 +1,7 @@
 pkgbase = mate-screensaver-hacks
 	pkgdesc = Enable screensavers from xscreensaver for MATE.
-	pkgver = 5.38
-	pkgrel = 2
+	pkgver = 5.40
+	pkgrel = 1
 	url = http://www.jwz.org/xscreensaver/
 	arch = any
 	license = BSD

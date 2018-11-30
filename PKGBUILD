@@ -2,8 +2,8 @@
 # Contributor: Martin Wimpress <code@flexion.org>
 
 pkgname=mate-screensaver-hacks
-pkgver=5.38
-pkgrel=2
+pkgver=5.40
+pkgrel=1
 pkgdesc="Enable screensavers from xscreensaver for MATE."
 arch=('any')
 url="http://www.jwz.org/xscreensaver/"
