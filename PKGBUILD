@@ -8,7 +8,7 @@ pkgver=${_majorver}b${_buildver}
 pkgrel=1
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk11"
 arch=('x86_64')
-url="https://adoptopenjdk.net/index.html?variant=openjdk11-openj9"
+url="https://adoptopenjdk.net/index.html?variant=openjdk11&jvmVariant=openj9"
 license=('GPL2')
 depends=('java-environment-common' 'ca-certificates-utils' 'nss')
 provides=(
