@@ -1,0 +1,4 @@
+pkg/
+src/
+hamster-sidejack/
+*.pkg.tar.xz

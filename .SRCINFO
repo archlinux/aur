@@ -1,0 +1,14 @@
+pkgbase = hamster-sidejack
+	pkgdesc = A sidejacking proxy server
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://pkg.kali.org/pkg/hamster-sidejack
+	arch = x86_64
+	arch = x64
+	license = GPL
+	makedepends = git
+	source = git://git.kali.org/packages/hamster-sidejack.git
+	md5sums = SKIP
+
+pkgname = hamster-sidejack
+
