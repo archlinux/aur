@@ -1,0 +1,19 @@
+diff --git a/src/qt/bitcoin.cpp b/src/qt/bitcoin.cpp
+index d8a61bd1e..d60fbcb1a 100644
+--- a/src/qt/bitcoin.cpp
++++ b/src/qt/bitcoin.cpp
+@@ -562,9 +562,14 @@ int main(int argc, char *argv[])
+ #if QT_VERSION >= 0x050500
+     // Because of the POODLE attack it is recommended to disable SSLv3 (https://disablessl3.com/),
+     // so set SSL protocols to TLS1.0+.
++    QSslSocket::sslLibraryVersionString();
++    Q_ASSERT( QSslSocket::supportsSsl() );
++    
+     QSslConfiguration sslconf = QSslConfiguration::defaultConfiguration();
+     sslconf.setProtocol(QSsl::TlsV1_0OrLater);
+     QSslConfiguration::setDefaultConfiguration(sslconf);
++    
++    Q_ASSERT(QSslConfiguration::defaultConfiguration().protocol() == QSsl::TlsV1_0OrLater);
+ #endif
+ 
+     // Register meta types used for QMetaObject::invokeMethod
