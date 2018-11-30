@@ -51,14 +51,6 @@ prepare() {
   # Extract license part of uim-mozc
   head -n 32 unix/uim/mozc.cc > unix/uim/LICENSE
 
-  # sed -i.bak \
-  #     -e 's/make_pair/std::make_pair/g' \
-  #     unix/uim/key_translator.cc \
-  #     unix/uim/mozc.cc
-  # sed -i.bak \
-  #     -e 's/typedef map</typedef std::map</g' \
-  #     -e 's/ pair</ std::pair</g' \
-  #     unix/uim/key_translator.h
 }
 
 
