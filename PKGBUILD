@@ -9,7 +9,6 @@ url="https://github.com/linuxmint/folder-color-switcher"
 license=('GPL')
 optdepends=('nemo-python>=3.9.0: Nemo extension'
             'python2-caja: Caja extension')
-makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::http://packages.linuxmint.com/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.gz")
 
 sha256sums=('32052dfdb13737887f21c6ec228175b65939ac9df46ea77009e323ed6c3568ed')
