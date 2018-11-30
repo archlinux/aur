@@ -1,7 +1,7 @@
 # Maintainer: Ruben De Smet <me at rubdos dot be>
 
 pkgname='artifact'
-pkgver="1.0.1"
+pkgver="2.0.1"
 pkgrel=1
 pkgdesc='The design doc tool made for developers'
 url='http://vitiral.github.io/artifact/'
@@ -12,7 +12,7 @@ license=(
 source=(
  "https://github.com/vitiral/artifact/archive/${pkgver}.tar.gz"
 )
-sha512sums=('4af07f3a360f534b4c19bfded10cc488584d56877f87341e6a59404cf6f6a5b491a8aaa680dbce51f4039b58222e2439ead04ddfb8a8788b91a6ddaa6bced811')
+sha512sums=('a81afe2b38a33a85b4b319aaabbf50b5e76bf8878cf412a0495cf900ccab9c2edc35d70572c21938978184ab3a2c8ff669abaf411dc8e28a1c31f3b36c2b823d')
 arch=(
  'x86_64'
  'i686'
@@ -24,13 +24,17 @@ depends=(
 makedepends=(
  'rust'
  'cargo'
+ 'cargo-web'
+ 'mdbook'
 )
 
 build() {
  pushd "artifact-${pkgver}"
  if [[ $(command -v rustup) ]]; then
+   rustup run stable cargo update # 2.0.1 has openssl 0.9 which is too old
    rustup run stable cargo build --release
  else
+   rustup run stable cargo update
    cargo build --release
  fi
  popd
