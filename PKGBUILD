@@ -2,7 +2,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=coreboot-utils-git
-pkgver=4.8.r1420.g401f8c59bd9
+pkgver=4.8.r2370.gaaced4a932d
 pkgrel=1
 pkgdesc='Tools and utilities to work with coreboot firmware'
 url='https://www.coreboot.org/'
@@ -14,12 +14,10 @@ makedepends=(git)
 source=(git+https://review.coreboot.org/coreboot
         # vboot provides vb2_api.h needed by cbfstool
         git+https://review.coreboot.org/vboot
-        autoport-tool-paths.patch
-	buff_size_fix.patch)
+        autoport-tool-paths.patch)
 sha256sums=('SKIP'
             'SKIP'
-            '5136f8ae6c690501b483243a33b91dc978971cf23bcf48c27bdca845db53bdb1'
-            '0ab673cf5cfba4678cf7a7d567745742121cd921c4ab86081d4a9583ed679753')
+            '5136f8ae6c690501b483243a33b91dc978971cf23bcf48c27bdca845db53bdb1')
 
 BUILD_AUTOPORT=y
 
@@ -39,8 +37,6 @@ prepare() {
   git config -f .gitmodules 'submodule.vboot.url' "$srcdir/vboot"
   git submodule sync -- 3rdparty/vboot
   git submodule update -- 3rdparty/vboot
-
-  patch -p1 < ../buff_size_fix.patch
 }
 
 build() {
