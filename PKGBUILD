@@ -2,11 +2,11 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=java-openjdk-ea-bin
-_majorver=11
-_buildver=28
+_majorver=12
+_buildver=22
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
-pkgdesc="Java OpenJDK ${_majorver} Early-Access Build from Oracle."
+pkgdesc="Java OpenJDK ${_majorver} Early-Access Build."
 arch=('x86_64')
 url="http://jdk.java.net/${_majorver}"
 license=('GPL2')
@@ -19,10 +19,10 @@ provides=(
   "java-runtime-headless=${_majorver}"
   "java-runtime-headless-openjdk=${_majorver}"
 )
-source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}+${_buildver}_linux-x64_bin.tar.gz")
-sha256sums=('3784cfc4670f0d4c5482604c7c513beb1a92b005f569df9bf100e8bef6610f2e')
+source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-x64_bin.tar.gz")
+sha256sums=('757a759e3aa2f341b8e261e00e826e3014b9c68a35ce6baf2867ea7cba98b62c')
 
-_jvmdir=usr/lib/jvm/java-${_majorver}-openjdk-ea
+_jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
 package() {
   # Install
@@ -33,12 +33,12 @@ package() {
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
   # Legal
-  install -d "${pkgdir}/usr/share/licenses/java${_majorver}-openjdk-ea"
-  cp -a legal "${pkgdir}/usr/share/licenses/java${_majorver}-openjdk-ea/"
-  ln -s /usr/share/licenses/java${_majorver}-openjdk-ea "${pkgdir}/${_jvmdir}/legal"
+  install -d "${pkgdir}/usr/share/licenses/java${_majorver}-openjdk"
+  cp -a legal "${pkgdir}/usr/share/licenses/java${_majorver}-openjdk/"
+  ln -s /usr/share/licenses/java${_majorver}-openjdk "${pkgdir}/${_jvmdir}/legal"
   # Conf
   install -d "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/java${_majorver}-openjdk-ea"
-  ln -s /etc/java${_majorver}-openjdk-ea "${pkgdir}/${_jvmdir}/conf"
+  cp -r conf "${pkgdir}/etc/java${_majorver}-openjdk"
+  ln -s /etc/java${_majorver}-openjdk "${pkgdir}/${_jvmdir}/conf"
 }
 # vim:set ts=2 sw=2 et:
