@@ -6,7 +6,7 @@
 # - Desktop entries are ran through desktop-file-validate.
 
 pkgname='lucas-simpsons-hit-and-run-mod-launcher'
-pkgver='1.18'
+pkgver='1.19'
 pkgrel='1'
 pkgdesc="Mod launcher for The Simpsons: Hit & Run."
 arch=(
@@ -32,7 +32,7 @@ depends=(
 )
 source=(
     # Official mod launcher download for the current release.
-    "$pkgname.zip::https://donutteam.com/apps/\
+    "$pkgname.zip::https://cdn.donutteam.com/Downloads/Tools/\
 Lucas'%20Simpsons%20Hit%20&%20Run%20Mod%20Launcher%20${pkgver}.zip"
     # Unofficial mod launcher Linux launcher download for the latest master branch.
     "$pkgname-linux-launcher.zip::https://github.com/CodingKoopa/\
