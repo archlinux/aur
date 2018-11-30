@@ -2,8 +2,8 @@
 
 pkgname=envrun
 pkgver=0.6.0
-pkgrel=1
-pkgdesc="Small utility to transfer fields of a key in Vault into the environment"
+pkgrel=2
+pkgdesc="Helper utility to inject environment variables stored in a file into processes"
 arch=('i686' 'x86_64')
 url="https://github.com/Luzifer/$pkgname"
 license=('Apache')

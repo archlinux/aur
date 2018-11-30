@@ -1,7 +1,7 @@
 pkgbase = envrun
-	pkgdesc = Small utility to transfer fields of a key in Vault into the environment
+	pkgdesc = Helper utility to inject environment variables stored in a file into processes
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Luzifer/envrun
 	arch = i686
 	arch = x86_64
