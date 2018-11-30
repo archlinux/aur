@@ -3,8 +3,8 @@
 _lang=eng-swe
 pkgname=dict-freedict-${_lang}
 pkgver=0.2
-pkgrel=2
-pkgdesc="English -> German dictionary for dictd et al. from Freedict.org"
+pkgrel=3
+pkgdesc="English -> Swedish dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="https://freedict.org/"
 license=('GPL')
