@@ -1,11 +1,11 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-passenger
-pkgver=5.3.5
+pkgver=6.0.0
 pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.15.5
+_nginxver=1.15.7
 
 pkgdesc="Fast and robust web server and application server for Ruby, Python and Node.js (module for mainline nginx)"
 arch=('i686' 'x86_64')
@@ -23,9 +23,9 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
+sha256sums=('8f22ea2f6c0e0a221b6ddc02b6428a3ff708e2ad55f9361102b1c9f4142bdf93'
             'SKIP'
-            '63cbff2a60769e1f20f000afa5232afda2ac888a37bfe080a84ff97714895a18')
+            'b36e71a42e6ddd3f9dd0596c78a8a04e56720da4bf70b54b746a3e3f016ec5fe')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
