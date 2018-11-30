@@ -4,7 +4,7 @@
 pkgname='strichliste'
 pkgdesc="strichliste is a tool to replace a tally sheet inside a hackerspace, this module is the api for the strichliste"
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/hackerspace-bootstrap/strichliste"
 license=('MIT')
