@@ -2,12 +2,12 @@
 
 pkgname=telegram-desktop-aarch64-bin
 pkgver=1.4.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Telegram Desktop aarch64 binaries from Debian"
 arch=('aarch64' 'x86_64')
 url="https://desktop.telegram.org"
 license=('GPL3')
-depends=('desktop-file-utils' 'glib2' 'hicolor-icon-theme' 'libdbus' 'libx11' 'openal' 'minizip' 'xxhash' 'qt5-base')
+depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats' 'openssl')
 makedepends=('chrpath')
 optdepends=('libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)'
             'libappindicator-gtk3: to hide Telegram in the tray bar (GTK3-based desktop environment)'
