@@ -2,14 +2,14 @@
 
 pkgname=icesimple-icewm-theme
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="IceSimple is an IceWM port of the 'Simple' Metacity theme."
 arch=('any')
 url="https://www.box-look.org/p/1018247/"
 license=('GPLv2+')
 depends=('icewm')
-source=("https://dl.opendesktop.org/api/files/download/id/1460770096/59839-IceSimple.tar.gz")
-sha256sums=('041f02b07d3e788d357a6800b48678976dec9671ff54f55840643522a5775975')
+source=("https://cloudflare-ipfs.com/ipfs/QmdcTreEhLPgdykDuiW9q7WBwKaMV5Qk6KJpfnMFFuAeVG/59839-IceSimple.tar.gz")
+sha512sums=('561c3ebfd6b0f1518319c917a29eac975271f069d1db63fbfc07095f10822e1ca5df34e4e4dd6543353267341fdf657ba679a82621b088470ac079e6e5731a65')
 
 package() {
 	mkdir -p "${pkgdir}/usr/share/icewm/themes"
