@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-naxsi
 	pkgdesc = Nginx Anti XSS & SQL Injection (module for mainline nginx)
 	pkgver = 0.56
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nbs-system/naxsi
 	arch = i686
 	arch = x86_64
