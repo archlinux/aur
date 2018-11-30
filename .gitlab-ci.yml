@@ -1,0 +1,8 @@
+jobs:
+  image: martynas/archlinux:latest
+  script:
+  - namcap PKGBUILD
+  - makepkg --syncdeps --noconfirm
+  - namcap coursier-*
+  - pacman -Qip coursier-*
+  - pacman -Qlp coursier-*

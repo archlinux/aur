@@ -1,7 +1,7 @@
-# Package build description for coursier [![travis-badge][]][travis]
+# Package build description for coursier [![ci-badge][]][ci]
 
-[travis]:          https://travis-ci.org/2m/coursier-pkgbuild
-[travis-badge]:    https://travis-ci.org/2m/coursier-pkgbuild.svg?branch=master
+[ci]:         https://circleci.com/gh/2m/coursier-pkgbuild 
+[ci-badge]:   https://circleci.com/gh/2m/coursier-pkgbuild.svg?style=shield
 
 This repository holds instructions for building an Arch Linux package for [coursier](http://get-coursier.io/).
 
