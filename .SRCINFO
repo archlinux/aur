@@ -1,6 +1,6 @@
 pkgbase = mkl-dnn
 	pkgdesc = Intel® Math Kernel Library for Deep Neural Networks
-	pkgver = 0.16
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/intel/mkl-dnn
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = mkl-dnn
 	makedepends = graphviz
 	optdepends = intel-mkl
 	optdepends = intel-compiler-base
-	source = mkl-dnn-0.16.tar.gz::https://github.com/intel/mkl-dnn/archive/v0.16.tar.gz
-	source = https://github.com/intel/mkl-dnn/releases/download/v0.16/mklml_lnx_2019.0.20180710.tgz
-	sha256sums = 7557f820d6801dbe7741627199c0165fe9e651245b9c1c744d615f576da1098a 
-	sha256sums = e2233534a9d15c387e22260997af4312a39e9f86f791768409be273b5453c4e6
+	source = mkl-dnn-0.16.tar.gz::https://github.com/intel/mkl-dnn/archive/v0.17.1.tar.gz
+	source = https://github.com/intel/mkl-dnn/releases/download/v0.17.1/mklml_lnx_2019.0.1.20180928.tgz
+	sha256sums = 75777735458c9e03434d9b1b111b92bca4230427b8de890dd694039dc34480ed
+	sha256sums = f00dc3b142a5be399bdeebd7e7ea369545a35d4fb84c86f98b6b048d72685295
 
 pkgname = mkl-dnn
 
