@@ -1,34 +1,40 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-# https://github.com/ValHue/AUR-PKGBUILDs
-
+#
+# Contributor: uastasi <uastasi at archlinux dot us>
+#
 _pkgname="frogr"
 pkgname="${_pkgname}-git"
-pkgver=1.4.1.gd873ecb
+pkgver=1.5.2.g9df2571
 pkgrel=1
 pkgdesc="A flickr remote organizer for GNOME"
 url="https://wiki.gnome.org/Apps/Frogr"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('desktop-file-utils' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'json-glib' 'libexif' 'libsoup')
+depends=('desktop-file-utils' 'gstreamer' 'gtk3' 'hicolor-icon-theme' \
+         'json-glib' 'libexif' 'libsoup')
 makedepends=('intltool' 'git' 'gnome-common' 'meson' 'yelp-tools')
 optdepends=('gst-libav: To support common video formats like .3gp and .MP4')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("git://git.gnome.org/${_pkgname}")
-md5sums=('SKIP')
+source=("git+https://gitlab.gnome.org/GNOME/frogr.git#branch=master")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}
-  git describe --always | sed 's|-|.|g' | sed 's|_|.|g' | cut -d'.' -f2-
+    cd "${_pkgname}"
+    git describe --always | sed 's|-|.|g' | sed 's|_|.|g' | cut -d'.' -f2-
 }
 
 build() {
     cd "${_pkgname}"
-    ./configure --prefix=/usr
-    make
+    mkdir -p build && cd build
+    arch-meson ..
+    ninja
 }
 
 package() {
-    cd "${_pkgname}"
-    make DESTDIR="${pkgdir}" install
+    cd "${_pkgname}/build"
+    install -Dm 644 ../COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    DESTDIR="${pkgdir}" ninja install
 }
+
+# vim:set ts=4 sw=4 ft=sh et syn=sh ft=sh:
