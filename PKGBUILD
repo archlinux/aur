@@ -4,7 +4,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=70.0.3538.110
-pkgrel=2
+pkgrel=3
 _launcher_ver=6
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-harfbuzz-2.0.patch)
 sha256sums=('445ef88fcf283206c1eba4faeb1c186c805e053d8b4ffeac1fcb88187bc1942f'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'f2af2c33feadf94c5f04895af0af04387a5a4225e13a5ed8190cbd39cba036b5'
+            '6c25448f34bb1fab434a2b14aedb8fe706e9f1a2f2d8b5895afac3bfc0c0dc30'
             'bad4d4a3065f1432d5f9189e29c6bf1d7fe1d365b6c7c4ff51b294569b20e962')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
