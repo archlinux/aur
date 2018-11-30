@@ -2,12 +2,12 @@
 
 pkgname=telegram-desktop-aarch64-bin
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Telegram Desktop aarch64 binaries from Debian"
 arch=('aarch64' 'x86_64')
 url="https://desktop.telegram.org"
 license=('GPL3')
-depends=('desktop-file-utils' 'glib2' 'hicolor-icon-theme' 'libdbus' 'libx11')
+depends=('desktop-file-utils' 'glib2' 'hicolor-icon-theme' 'libdbus' 'libx11' 'openal' 'minizip' 'xxhash' 'qt5-base')
 makedepends=('chrpath')
 optdepends=('libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)'
             'libappindicator-gtk3: to hide Telegram in the tray bar (GTK3-based desktop environment)'
@@ -41,6 +41,10 @@ package() {
 	# Desktop launcher
 	install -Dm644 "$srcdir/usr/share/icons/hicolor/256x256/apps/telegram.png" "$pkgdir/usr/share/pixmaps/telegram.png"
 	install -Dm644 "$srcdir/usr/share/applications/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
+
+	# KDE4 protocol file
+	install -d "$pkgdir/usr/share/kde4/services"
+	install -m644 "$srcdir/usr/share/kde4/services/tg.protocol" "$pkgdir/usr/share/kde4/services/tg.protocol"
 
 	# Icons
 	local icon_size icon_dir
