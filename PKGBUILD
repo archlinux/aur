@@ -19,7 +19,7 @@ provides=("mingw-w64-libmariadbclient=$pkgver")
 depends=('mingw-w64-crt' 'mingw-w64-openssl' 'mingw-w64-zlib')
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://downloads.mariadb.org/interstitial/connector-c-${pkgver}/mariadb-connector-c-${pkgver}-src.tar.gz"
+source=("http://archive.mariadb.org/connector-c-$pkgver/mariadb-connector-c-$pkgver-src.tar.gz"
         '0001-Fix-libnames-for-mingw-w64.patch'
         '0002-Fix-_SIZE_T_DEFINED-under-mingw-w64.patch'
         '0003-Use-fopen-rather-than-fopen_s-for-XP-compatibility.patch')
