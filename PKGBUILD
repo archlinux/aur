@@ -5,7 +5,7 @@
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=dropbox-cli
-pkgver=2018.11.08
+pkgver=2018.11.28
 pkgrel=1
 pkgdesc="Command line interface for Dropbox"
 arch=("any")
@@ -15,7 +15,7 @@ depends=("${pkgname%-cli}" "python2")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.py::https://linux.${pkgname%-cli}.com/packages/${pkgname%-cli}.py"
         "${pkgname}.patch")
-sha256sums=("5441fae95e1028cf2a7e10dd9b4f45bd7a181ddc5a35b4cdd108bd4b879bec04"
+sha256sums=("73148121d1ef67b4793c04cee1dd2689d6fcbc42f744a5cf350cd9c2080f3e3c"
             "63c653b19dd8ec1c72d4debcaded8be1c996effb79b1372ca0fb7bb24a8a2c1e")
 
 prepare() {
