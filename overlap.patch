@@ -1,0 +1,116 @@
+diff -rupN pdfposter.orig/pdftools/pdfposter/cmd.py pdfposter.patched/pdftools/pdfposter/cmd.py
+--- pdfposter.orig/pdftools/pdfposter/cmd.py	2018-11-30 13:35:53.713023093 +0100
++++ pdfposter.patched/pdftools/pdfposter/cmd.py	2018-11-30 13:36:22.433571014 +0100
+@@ -25,7 +25,7 @@ __author__ = "Hartmut Goebel <h.goebel@c
+ __copyright__ = "Copyright 2008-2018 by Hartmut Goebel <h.goebel@crazy-compilers.com>"
+ __licence__ = "GNU General Public License version 3 (GPL v3)"
+ 
+-from . import main, __version__, DEFAULT_MEDIASIZE, papersizes, DecryptionError
++from . import main, __version__, DEFAULT_OVERLAP_PERCENT, DEFAULT_MEDIASIZE, papersizes, DecryptionError
+ import re
+ import PyPDF2.utils
+ import argparse
+@@ -167,6 +167,8 @@ def run(args=None):
+                      help='Specify the poster size (defaults to media size). ')
+     group.add_argument('-s', '--scale', type=float,
+                      help='Specify a linear scaling factor to produce the poster.')
++    group.add_argument('-O', '--overlap-percent', type=float, default = DEFAULT_OVERLAP_PERCENT,
++                     help='Image overlap (default: %g).' % DEFAULT_OVERLAP_PERCENT)
+ 
+     parser.add_argument('infilename', metavar='InputFile')
+     parser.add_argument('outfilename', metavar='OutputFile')
+diff -rupN pdfposter.orig/pdftools/pdfposter/__init__.py pdfposter.patched/pdftools/pdfposter/__init__.py
+--- pdfposter.orig/pdftools/pdfposter/__init__.py	2018-11-30 13:35:53.713023093 +0100
++++ pdfposter.patched/pdftools/pdfposter/__init__.py	2018-11-30 13:36:10.546634666 +0100
+@@ -33,6 +33,7 @@ from logging import log
+ import math
+ 
+ DEFAULT_MEDIASIZE = 'a4'
++DEFAULT_OVERLAP_PERCENT = 0
+ 
+ mm = 72 / 25.4
+ 
+@@ -141,17 +142,17 @@ def rotate2portrait(box, which):
+         log(18, 'Rotating %s specs to portrait format', which)
+         return True
+ 
+-def decide_num_pages(inbox, mediabox, posterbox, scale=None):
++def decide_num_pages(inbox, mediabox, posterbox, scale=None, overlap=0.01*DEFAULT_OVERLAP_PERCENT):
+     """decide on number of pages"""
+     # avoid changing original posterbox when handling multiple pages
+     # (if --scale, posterbox is None)
+     posterbox = posterbox and posterbox.copy()
+-    cutmargin   = {'x': 0, 'y': 0} # todo
+     whitemargin = {'x': 0, 'y': 0} # todo
+     # media and image sizes (inbox) are fixed already
+     # available drawing area per sheet
+-    drawable_x = mediabox['width' ] - 2*cutmargin['x']
+-    drawable_y = mediabox['height'] - 2*cutmargin['y']
++    drawable_x = mediabox['width' ] * (1-2*overlap)
++    drawable_y = mediabox['height'] * (1-2*overlap)
++    log(17, 'drawable dimensions: %.2f %.2f (calculated)', drawable_x, drawable_y)
+ 
+     rotate = False
+ 
+@@ -259,12 +260,13 @@ def _scale_pdf_page(outpdf, page, factor
+     page[NameObject('/Contents')] = outpdf._addObject(content)
+ 
+ 
+-def posterize(outpdf, page, mediabox, posterbox, scale, use_ArtBox=False):
++def posterize(outpdf, page, mediabox, posterbox, scale, use_ArtBox=False, overlap=0.01*DEFAULT_OVERLAP_PERCENT):
+     """
+     page: input page
+     mediabox : size secs of the media to print on
+     posterbox: size secs of the resulting poster
+     scale: scale factor (to be used instead of posterbox)
++    overlap: proportion of expected overlap per output page
+     """
+     if use_ArtBox:
+         inbox = rectangle2box(page.artBox)
+@@ -273,7 +275,7 @@ def posterize(outpdf, page, mediabox, po
+     _clip_pdf_page(page, inbox['offset_x'], inbox['offset_y'],
+                    inbox['width'], inbox['height'])
+     ncols, nrows, scale, rotate = decide_num_pages(inbox, mediabox,
+-                                                   posterbox, scale)
++                                                   posterbox, scale, overlap)
+     mediabox = mediabox.copy()
+     _scale_pdf_page(outpdf, page, scale)
+     if rotate:
+@@ -281,7 +283,7 @@ def posterize(outpdf, page, mediabox, po
+         rotate_box(inbox)
+         rotate_box(mediabox)
+     # area to put on each page (allows for overlay of margin)
+-    h_step = mediabox['width']  - mediabox['offset_x']
++    h_step = mediabox['width'] - mediabox['offset_x'] 
+     v_step = mediabox['height'] - mediabox['offset_y']
+ 
+     if use_ArtBox:
+@@ -291,7 +293,7 @@ def posterize(outpdf, page, mediabox, po
+     h_pos = float(trimbox['offset_x'])
+     h_max, v_max = float(trimbox['width']), float(trimbox['height'])
+     for col in range(ncols):
+-        v_pos = float(trimbox['offset_y']) + (nrows-1) * v_step
++        v_pos = float(trimbox['offset_y']) + (nrows-1) * v_step * (1-2*overlap)
+         for row in range(nrows):
+             log(17, 'Creating page with offset: %.2f %.2f' % (h_pos, v_pos))
+             newpage = copyPage(page)
+@@ -306,8 +308,8 @@ def posterize(outpdf, page, mediabox, po
+                                                min(v_max, v_pos + v_step)))
+             newpage.artBox = newpage.trimBox
+             outpdf.addPage(newpage)
+-            v_pos -= v_step
+-        h_pos += h_step
++            v_pos -= v_step*(1-2*overlap)
++        h_pos += h_step*(1-2*overlap)
+ 
+ def password_hook():
+     import getpass
+@@ -344,7 +346,7 @@ def main(opts, infilename, outfilename,
+         page = inpdf.getPage(i)
+         log(19, '---- processing page %i -----', i+1)
+         posterize(outpdf, page, opts.media_size, opts.poster_size, opts.scale,
+-                  opts.use_ArtBox)
++                  opts.use_ArtBox, opts.overlap_percent/100.0)
+ 
+     if not opts.dry_run:
+         outpdf.write(open(outfilename, 'wb'))
