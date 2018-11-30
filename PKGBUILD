@@ -4,8 +4,8 @@ _gitname=telepathy-tank
 pkgname=telepathy-tank-git
 pkgver=r10.5312a42
 pkgrel=1
-pkgdesc="Matrix connection operator for the Telepathy framework. WIP git branch"
-arch=(i686 x86_64 armv7 aarch64)
+pkgdesc="Matrix connection operator for the Telepathy framework"
+arch=(i686 x86_64 armv7h aarch64)
 url="https://telepathy.freedesktop.org/"
 license=(GPL)
 depends=('telepathy-qt-git' 'qt5-matrixclient-git>=r1102.98c4168')
