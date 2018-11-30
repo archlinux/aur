@@ -2,7 +2,7 @@
 pkgbase=python-asdf
 pkgname=(python-asdf 'python-asdf-doc')
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('i686' 'x86_64')
 url="https://asdf.readthedocs.io/en/latest/"
@@ -16,7 +16,8 @@ makedepends=('python>=3.3'
              'python-astropy-helpers'
              'python-semantic-version>=2.3.1'
              'python-sphinx'
-             'python-matplotlib')
+             'python-matplotlib'
+             'graphviz')
 checkdepends=('python-pytest' 'python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/a/asdf/asdf-${pkgver}.tar.gz")
 md5sums=('42fc008b3ae6fe4327a91f6a39bad3a6')
