@@ -1,6 +1,6 @@
 pkgbase=fuse-3ds-git
 pkgname=(fuse-3ds-git fuse-3ds-gui-git)
-pkgver=1.2.r16.gea9dc98
+pkgver=1.3.1.r0.gd45e106
 pkgrel=1
 pkgdesc="FUSE Filesystem Python scripts for Nintendo 3DS files"
 arch=($CARCH)
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd fuse-3ds
-	git describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build() {
