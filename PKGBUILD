@@ -4,7 +4,7 @@ pkgname=pi-hole-ftl
 _pkgname=FTL
 _servicename=pihole-FTL
 pkgver=4.0
-pkgrel=9
+pkgrel=10
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
@@ -19,17 +19,21 @@ source=("https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
 	"$pkgname.tmpfile"
 	"$pkgname.service"
 	"$pkgname.db"
+  "00-fix_writeout_on_exit.patch::https://patch-diff.githubusercontent.com/raw/pi-hole/FTL/pull/378.patch"
 	"$pkgname.conf")
 md5sums=('923cc5cc17f57bb9a59407c1685d70aa'
          '5faa64558cc0a5888923fcf77c299fa7'
          'f3e42ec6f04180c6d6972998bf172a41'
          '0495c002b7d5dce303d451e4cd2fede5'
+         'b4a15995e3d7d64bd495f686ff37c7a3'
          '40b1c4174198eacd7d12eb9b356aced0')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
 
   cd "$srcdir"/"$_pkgname"-"$pkgver"
+
+  patch -Np1 -i ../00-fix_writeout_on_exit.patch
 
   # makefile disable static linking
   sed -n "/LIBS=-pthread -Wl,/w $_ssc" "$srcdir"/$_pkgname-$pkgver/Makefile
