@@ -1,6 +1,43 @@
 Version history
 ===============
 
+0.9.22
+------
+
+2018-11-30
+
+Include xmas2018: a new singleplayer pack with 24 holiday-themed levels.
+
+Fix #350: In singleplayer, the splat ruler button tooltip claimed falsely
+that this button also pings hatches and exits, but it does that only in
+multiplayer. Fixed this tooltip. (Issue #301 remains: In multiplayer, this
+button should be functionally split into two buttons.)
+
+Support 64-bit Windows builds with LDC >= 1.13.0-beta2. I encourage all
+Windows users to choose the 64-bit build over the 32-bit build, hoping to
+avoid the out-of-RAM crashes on large maps.
+
+Binary downloads are now hosted on github, not on Lix's homepage.
+
+Binary download archives carry a version number in their filename and unpacked
+Lix directory. With self-contained Lix (i.e., not installed system-wide via a
+Linux package manager), you should still update existing self-contained Lix as
+usual by copying your user files, custom levels, and replays from the old
+directory into the new.
+
+Fix #369: When you build from source and choose a debugging version instead
+of a release version, Lix will start windowed by default, not with software
+fullscreen. User options can override this as usual.
+
+Updated the DAllegro5 bindings to 4.0.4+5.2.0 and removed Lix's allegro-color
+dependency on all platforms.
+
+Many refactorings in the source code for physics updates. No physics changes.
+This will be useful in case I manage efficient skill blueprints a.k.a. skill
+shadows.
+
+
+
 0.9.21
 ------
 
