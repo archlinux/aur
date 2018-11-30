@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-geoip2
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 
 _modname="ngx_http_geoip2_module"
 _nginxver=1.15.6
