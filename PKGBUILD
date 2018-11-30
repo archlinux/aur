@@ -1,5 +1,6 @@
 # Maintainer: Tom Nguyen <tom81094@gmail.com>
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
@@ -65,7 +66,7 @@ _major=4.19
 pkgver=4.19.5
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -109,7 +110,7 @@ sha256sums=('8c839ec29cce7eb0e8ef7eaa10d1eb9d84d2be2521e352fb4f9414e76856ef75'
             '1baeb84a779bde01ebf748fc7a86a3643df264a3edf22eac333e880877ab40fc'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            '9a8584660c399a6f0c62fc47572ea3f801c08aac50caab2557ce094119ba4195'
+            'ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '37c115ad797afc7e47615dc56c6416932b6645e16da097ddcfa401df41a31248')
 validpgpkeys=(
