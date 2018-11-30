@@ -3,7 +3,7 @@
 pkgname=nginx-mainline-mod-brotli
 epoch=1
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 
 _modname="ngx_${pkgname#nginx-mainline-mod-}"
 _nginxver=1.15.6
