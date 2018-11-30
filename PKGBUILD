@@ -5,13 +5,13 @@
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=nanoc
-pkgver=4.9.6
+pkgver=4.10.3
 pkgrel=1
 pkgdesc='A simple, flexible static site generator written in Ruby.'
 arch=(any)
 url='http://nanoc.ws'
 license=(MIT)
-depends=(ruby-addressable ruby-cri ruby-ddmemoize ruby-ddmetrics ruby-ddplugin ruby-hamster ruby-parallel ruby-ref ruby-slow_enumerator_tools ruby-tomlrb)
+depends=(ruby-addressable ruby-cri ruby-ddmemoize ruby-ddmetrics ruby-ddplugin ruby-hamster ruby-json_schema ruby-parallel ruby-ref ruby-slow_enumerator_tools ruby-tomlrb)
 makedepends=(rubygems)
 optdepends=(
   "adsf: Provides 'nanoc view' command."
@@ -26,7 +26,7 @@ conflicts=(ruby-nanoc3 ruby-nanoc)
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nanoc/nanoc/archive/${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.gem")
-sha256sums=('8612ad187f49d83daa91170d2fa67f9e1368dfcebfbfe66b2c0165641410d643')
+sha256sums=('c53f3cfb7acb67ef1ff8f3911739688d0c8f1c8a55cb412979af55082cbd56ef')
 
 build() {
   # create gem
