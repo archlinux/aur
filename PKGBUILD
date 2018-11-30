@@ -1,7 +1,7 @@
 # Maintainer: Ainola
 
 pkgname=wlroots
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 license=('custom:MIT')
 pkgdesc='Modular Wayland compositor library'
@@ -11,7 +11,7 @@ depends=('opengl-driver' 'xcb-util-errors'
          'xcb-util-image' 'xcb-util-wm' 'pixman' 'libinput' 'libxkbcommon')
 makedepends=('meson' 'ninja' 'wayland-protocols')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/swaywm/wlroots/archive/$pkgver.tar.gz")
-sha256sums=('cff055bc141eefea6fb1aa410d166890f1e6666d3fd321d70403a543494a6a84')
+sha256sums=('0b690c5db5a1f11051a28f0349655322fe54d92f7c2dc8d3c6e5559b1098bfd8')
 
 build() {
     arch-meson "$pkgname-$pkgver" build \
