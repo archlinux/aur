@@ -1,4 +1,5 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
@@ -53,13 +54,13 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=4.19
-_minor=1
-_rtver=3
+_minor=5
+_rtver=4
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
 _rtpatchver=rt${_rtver}
-pkgrel=5
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -387,9 +388,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('46f77eb99faa596b673920d4c0fcba6490f03907c0114eb18751cc2011e0a775037f5d2be536747c5337b8ae59e795071127282966b90b8cb818898f854b3260'
+sha512sums=('ee460800a071aeae966078d3e7dc525e1e8e9cbb406fe878438c55da4ea42d10f50c0ebfcf3ee4c792f3cc984ee8d8d3acdb8ca6bc11536fa6a4391de58643fb'
             'SKIP'
-            'fdf743ca200a2bdb1966009cf5388180031c28723d7b6601db5f5942e04d2ce4442b3a4782ad62c05109f9353d65c264d75f0f0d15ff8b970726c11a372972ca'
+            '648728f4088ca3ccb4f297500cba4c96d48dc73667df67dc08aa683fa3e6d8f300868754e88582894210e7d98d06f878c4bb149f31859aa3e6aa441ce9508cb9'
             'SKIP'
             'e2d8e9bbea3f48415ea637c44bb90544575d5fccccec75d4956f3490d352add5dbd70901b07b4fc645885506ae555f0c3ce4b2e1d334d03949cce46cde891b1c'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
@@ -398,7 +399,7 @@ sha512sums=('46f77eb99faa596b673920d4c0fcba6490f03907c0114eb18751cc2011e0a775037
             '57fd6ec32b5d0400da40fcc7b81390facb3a1c062b153801d42261847e635206ecc27185f924ac8f4b40e773bbfc9639b9a6983cad8775f0a06a4ae284546ec1'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
-            'b27d13a1e486de6a8500724d2aea3fc11b2f46698e6aa5e41b37b8c8bbf973763b3c5eca464522ea198305167bace2a20ce4d1c40b01ce6f82838c81f3135f48'
+            '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '39c50e70d28ddaa2cca030f1050c3ead72d44d957a533d0d09a5a8b92d3743c5712fef1a60aacfcac8319346dd407247667e1c25a96cd2585e9d9b017ccd707c')
 
