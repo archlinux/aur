@@ -2,7 +2,7 @@
 
 _pkgname=dumb-mp3-streamer
 pkgname="$_pkgname-git"
-pkgver=20180303.fb4bcb2
+pkgver=20181130.60d4a9c
 pkgrel=1
 pkgdesc='Stream mp3 from stdin'
 arch=('x86_64')

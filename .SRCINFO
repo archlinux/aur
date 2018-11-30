@@ -1,6 +1,6 @@
 pkgbase = dumb-mp3-streamer-git
 	pkgdesc = Stream mp3 from stdin
-	pkgver = 20180303.fb4bcb2
+	pkgver = 20181130.60d4a9c
 	pkgrel = 1
 	url = https://github.com/ugjka/dumb-mp3-streamer
 	arch = x86_64
