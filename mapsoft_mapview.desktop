@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Mapsoft MapView
+Comment=View and edit maps and geodata
+Exec=mapsoft_mapview %F
+Terminal=false
+Type=Application
+Categories=Graphics;Viewer;
