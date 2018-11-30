@@ -10,8 +10,8 @@
 
 pkgname=davinci-resolve-studio
 _pkgname=resolve
-pkgver=15.2
-pkgrel=0
+pkgver=15.2.1
+pkgrel=1
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -36,7 +36,7 @@ if [ ! -f ${pkgdir}/DaVinci_Resolve_Studio_${pkgver}_Linux.zip ]; then
 fi
 
 source=("local://DaVinci_Resolve_Studio_${pkgver}_Linux.zip" "davinci-resolve-studio.install")
-sha256sums=('c719aa837bc11692603892859a93befc868ae455af7990ed2cb0e474ca1beb85' 'ff105552fc59e7957e1d9ed19f4c4d41294459353e3525f57207ed43e882b508')
+sha256sums=('8ee1c9c38099b8bd7758ccbf4549ba5162de47c7e470dfa51d64beded4e3d17e' 'ff105552fc59e7957e1d9ed19f4c4d41294459353e3525f57207ed43e882b508')
 
 package() {
 
