@@ -1,15 +1,19 @@
 pkgbase = antibody
 	pkgdesc = A shell plugin manager.
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://getantibody.github.io/
 	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = go
-	makedepends = dep
-	source = https://github.com/getantibody/antibody/archive/v4.0.1.tar.gz
-	sha256sums = 644a2217c444731f4a438a2ca2bb3e3179c13934139bc14abb5ddbd65a08b20a
+	depends = git
+	source = https://github.com/getantibody/antibody/archive/v4.0.2.tar.gz
+	sha256sums = 3f0a4d0d877189545127ea3b5ccf5370af9dd79a0fbae1d4c8e8cf1dac1afdc6
 
 pkgname = antibody
 

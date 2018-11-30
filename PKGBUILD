@@ -1,15 +1,16 @@
 # Maintainer: Bryn Edwards <bryn@protonmail.ch>
 
 pkgname=antibody
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="A shell plugin manager."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://getantibody.github.io/"
 license=('MIT')
-makedepends=('go' 'dep')
+depends=('git')
+makedepends=('go')
 source=("https://github.com/getantibody/antibody/archive/v${pkgver}.tar.gz")
-sha256sums=('644a2217c444731f4a438a2ca2bb3e3179c13934139bc14abb5ddbd65a08b20a')
+sha256sums=('3f0a4d0d877189545127ea3b5ccf5370af9dd79a0fbae1d4c8e8cf1dac1afdc6')
 _repodir=(".go/src")
 
 prepare() {
@@ -18,8 +19,7 @@ prepare() {
 	ln -snf "$srcdir/$pkgname-$pkgver" \
           "$srcdir/$_repodir/$pkgname"
 	cd "$srcdir/$_repodir/$pkgname"
-	sed -i "24s/dev/$pkgver/" "main.go"
-	dep ensure
+	sed -i "25s/dev/$pkgver/" "main.go"
 }
 
 build() {
@@ -28,11 +28,11 @@ build() {
 	make build
 }
 
-# check() {
-# 	export GOPATH="$srcdir/.go"
-# 	cd "$srcdir/$_repodir/$pkgname"
-# 	make test
-# }
+check() {
+	export GOPATH="$srcdir/.go"
+	cd "$srcdir/$_repodir/$pkgname"
+	make test
+}
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
