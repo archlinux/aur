@@ -1,5 +1,6 @@
-# Maintainer: Det
-# Contributors: josephgbr
+# Maintainer: ebiadsu
+# Contributor: Det
+# Contributor: josephgbr
 
 _pkgname=jre
 pkgname=bin32-jre
@@ -8,7 +9,7 @@ _minor=192
 _build=b12
 _hash=750e1c8617c5452694857ad95c3ee230
 pkgver=${_major}u${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java $_major Runtime Enviroment (32-bit)"
 arch=('x86_64')
 url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
@@ -82,7 +83,12 @@ package() {
     # Fix .desktop paths
     sed -e "s|Exec=|Exec=$_jvmdir/bin/|" \
         -e "s|.png|32-$_jname.png|" \
-    -i lib/desktop/applications/*
+		-i lib/desktop/applications/*
+
+	# Make JavaWS version visible to end user
+	sed -e "s|Name=JavaWS|Name=JavaWS 8 (32-bit)|" \
+		-e "s|Comment=JavaWS|Comment=Java Web Start 8 (32-bit)|" \
+		-i lib/desktop/applications/sun-javaws32-jre8.desktop
 
     # Move .desktops + icons to /usr/share
     mv lib/desktop/* "$pkgdir"/usr/share/

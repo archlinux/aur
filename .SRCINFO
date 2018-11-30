@@ -1,7 +1,7 @@
 pkgbase = bin32-jre
 	pkgdesc = Oracle Java 8 Runtime Enviroment (32-bit)
 	pkgver = 8u192
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = bin32-jre.install
 	arch = x86_64
