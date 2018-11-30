@@ -3,13 +3,13 @@
 pkgname=python-xwiimote-git
 _pkgname=xwiimote-bindings
 pkgver=20131028
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Nintendo Wii Remote Linux Device Driver (Python Bindings)"
 url="http://dvdhrm.github.io/xwiimote"
 license=('MIT')
 arch=('i686' 'x86_64')
 depends=('xwiimote')
-makedepends=('git')
+makedepends=('git' 'swig')
 source=('git://github.com/dvdhrm/xwiimote-bindings.git')
 md5sums=('SKIP')
 
