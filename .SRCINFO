@@ -1,12 +1,13 @@
 pkgbase = pythia
 	pkgdesc = High-energy physics events generator.
 	pkgver = 8.2.35
-	pkgrel = 6
+	pkgrel = 7
 	url = http://home.thep.lu.se/Pythia/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = python
+	makedepends = python2
 	makedepends = fastjet
 	makedepends = hepmc
 	makedepends = lhapdf>=6.2

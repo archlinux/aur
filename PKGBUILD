@@ -6,13 +6,13 @@ pkgbase=pythia
 pkgname=('pythia' 'python-pythia' 'python2-pythia')
 pkgver=8.2.35
 _pkgid="${pkgbase}${pkgver//./}"
-pkgrel=6
+pkgrel=7
 pkgdesc="High-energy physics events generator."
 arch=('i686' 'x86_64')
 url="http://home.thep.lu.se/Pythia/"
 license=('GPL')
 depends=('python')
-makedepends=('python' 'fastjet' 'hepmc' 'lhapdf>=6.2' 'root')
+makedepends=('python' 'python2' 'fastjet' 'hepmc' 'lhapdf>=6.2' 'root')
 source=("http://home.thep.lu.se/~torbjorn/pythia8/${_pkgid}.tgz"
         'pythia.sh'
         'change_to_python2.patch'
@@ -34,15 +34,17 @@ get_py2ver () {
 prepare() {
     _inc=/usr/include/
     _lib=/usr/lib/
+    _share=/usr/share/pythia
+
+    cd "${srcdir}/${_pkgid}"
+    patch -p1 -i "${srcdir}/respect_lib_suffix.patch"
+    patch -p1 -i "${srcdir}/fix_lhapdf_build.patch"
 
     cd "${srcdir}"
     cp -r "${_pkgid}" "${_pkgid}-py2"
 
     # with Python3
     cd "${srcdir}/${_pkgid}"
-    patch -p1 -i "${srcdir}/respect_lib_suffix.patch"
-    patch -p1 -i "${srcdir}/fix_lhapdf_build.patch"
-
     # # no such package yet
     # --with-evtgen \
     # --with-evtgen-include=${_inc} \
@@ -62,6 +64,7 @@ prepare() {
     ./configure --prefix="/usr" \
                 --prefix-include=${_inc} \
                 --prefix-lib=${_lib} \
+                --prefix-share=${_share} \
                 --cxx-common="${CXXFLAGS} -fPIC" \
                 --cxx-shared="-shared ${LDFLAGS} -ldl" \
                 --enable-shared \
@@ -89,10 +92,7 @@ prepare() {
 
     # with Python2
     cd "${srcdir}/${_pkgid}-py2"
-    patch -p1 -i "${srcdir}/respect_lib_suffix.patch"
-    patch -p1 -i "${srcdir}/fix_lhapdf_build.patch"
     patch -p1 -i "${srcdir}/change_to_python2.patch"
-
     # # no such package yet
     # --with-evtgen \
     # --with-evtgen-include=${_inc} \
@@ -112,6 +112,7 @@ prepare() {
     ./configure --prefix="/usr" \
                 --prefix-include=${_inc} \
                 --prefix-lib=${_lib} \
+                --prefix-share=${_share} \
                 --cxx-common="${CXXFLAGS} -fPIC" \
                 --cxx-shared="-shared ${LDFLAGS} -ldl" \
                 --enable-shared \
