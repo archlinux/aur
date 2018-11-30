@@ -1,3 +1,0 @@
-d /etc/webapps/librenms/ 0750 librenms http
-d /usr/share/webapps/librenms/ 0755 librenms http
-d /var/log/librenms/ 0775 librenms http

@@ -1,59 +1,147 @@
-# Maintainer: Nils Czernia <nils[at]czserver[dot]de>
+# Maintainer: David Runge <dave@sleepmap.de>
+# Contributor: Nils Czernia <nils[at]czserver[dot]de>
 pkgname=librenms
-pkgver=1.43
+pkgver=1.48.1
 pkgrel=1
-pkgdesc='Autodiscovering PHP/MySQL-based network monitoring system.'
+pkgdesc='Autodiscovering PHP/MySQL/SNMP based network monitoring'
 arch=('any')
-url='https://www.librenms.org/'
+url="https://www.librenms.org/"
 license=('GPL3')
-depends=(
-    'php' 'php-intl' 'php-gd' 'php-net-ipv4' 'php-net-ipv6' 'net-snmp'
-    'graphviz' 'php-snmp' 'php-mcrypt' 'fping' 'imagemagick' 'whois' 'nmap'
-    'rrdtool' 'git' 'mysql-python'
-)
-backup=("etc/webapps/${pkgname}/config.php")
-source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
-    "librenms.logrotate"
-    "librenms.sysusers"
-    "librenms.tmpfile"
-    "apache.example.conf"
-    "nginx.example.conf"
-)
-sha256sums=('6f5fc969eae766d894715f703628534b35420ba3b77cc25988abfd522f14cb6c'
-            '4189c171e4edb55ff11c80b313fed6ff4226ddb38f1e7c97e741e59e1c83afb8'
-            'ee2a2d465e01b65863a603406d2bee8858ec488546cb84d5c4fdb3166cc062a3'
-            'ad83d03b8459e87ecd77f9ffebe56ccb9cc2dff1d52ce1151ef79a1e26653361'
-            'aed1a35b2d84f3b40e0d519ccdb56a5929896ae7cfedd3766f5df4b51fac3319'
-            'e1722c586e61e320c2382b2322150e176c61523dccb81eeec6c3d4618819110c')
+depends=('fping' 'graphviz' 'imagemagick' 'nmap' 'php-intl' 'php-gd' 'php-snmp'
+'python-memcached' 'python-mysqlclient' 'rrdtool' 'whois')
+makedepends=('composer' 'git' 'unzip')
+optdepends=('cronie: running librenms cron jobs'
+            'mariadb: use a local SQL server'
+            'python-dotenv: for librenms service'
+            'python-redis: for distributed librenms service')
+backup=("etc/webapps/${pkgname}/config.php"
+        "etc/webapps/${pkgname}/.env"
+        "etc/php/conf.d/${pkgname}.ini"
+        "etc/cron.d/${pkgname}")
+# TODO: add uwsgi example
+source=("${pkgname}.sysusers"
+        "${pkgname}.tmpfiles"
+        "apache.example.conf"
+        "nginx.example.conf")
+sha512sums=('19fa542b7597adeccdb94add97102a86ba4a238ba44e999c6e8d186cb7d5ed0523893559719e0b8036acd90cdc1a908497c3027ed49b028fba729ed61ad34052'
+            'e462785a695a19ee4104b48ef321e5d597f6e7469c15f362062d8a4eebe2eddca5584e4739046655a448caa7c4402625d88479fae562be859ed3a6e7d4766b23'
+            '150aa9912d25502d9397f0c4a6831363c79c1603ff65151d4efc0061516ee19586f3cc38f08f9e60530176c103c845d0cc1a46f685cb22c1a8a7cb8db4ab6274'
+            'cde868416a13353290e4063c937e13b029e616abe3416e4e7c906bbd8000f871429546335470bbc2b219c1bcc95d6ee0f79481ee765c7351bbed6487ad42fee4')
 
-prepare() {
-    cd "$srcdir"/${pkgname}-${pkgver}
-
-    sed -i 's/\/opt\/librenms/\/usr\/share\/webapps\/librenms/g' librenms.nonroot.cron
-    sed -i 's/\/opt\/librenms/\/usr\/share\/webapps\/librenms/g' librenms.cron
-
-    # move logs to /var/log
-    rm -rf logs
-    ln -sf /var/log/${pkgname} logs
+build(){
+  php -d 'extension=gd' /usr/bin/composer create-project --no-dev -n ${pkgname}/${pkgname} ${pkgname}-${pkgver} ${pkgver}
+  cd "${pkgname}-${pkgver}"
+  # make cron jobs compatible with package locations
+  # disable daily.sh (update job)
+  sed -e 's|/opt/librenms|/usr/share/webapps/librenms|g' \
+      -e '/daily.sh/s/^/# /' \
+      -i *.cron
+  # make logrotate file compatible with package locations
+  sed -e 's|/opt/librenms/logs/|/var/log/librenms/|g' -i "misc/${pkgname}.logrotate"
+  # make services comptible with package locations
+  sed -e 's|/opt/librenms|/usr/share/webapps/librenms|g' \
+      -i "misc/${pkgname}"*.service
+  # make helper scripts compatible with package locations
+  sed -e 's|/opt/librenms|/usr/share/webapps/librenms|g' \
+      -i scripts/watchmaillog/* \
+      -i scripts/Migration/{Standard_Conversion,XML_Conversion}/*
+  # create (commented!) open_basedir settings for php
+  # TODO: This actually needs to be massively extended to allow access to required applications
+  echo '# open_basedir = ${open_basedir}:/usr/share/webapps/librenms:/etc/webapps/librenms:/proc' > ../"${pkgname}.ini"
+  # enfore file permissions
+  find {LibreNMS,app,doc,html,includes,mibs,resources,tests} -type f -exec chmod 644 {} +
+  find {LibreNMS,app,doc,html,includes,mibs,resources,tests} -type d -exec chmod 755 {} +
 }
 
 package() {
-    install -d "$pkgdir"/{{etc,usr/share}/webapps/$pkgname,var/log/$pkgname}
-    install -dm0755 "$pkgdir"/etc/logrotate.d
-
-    cp -R ${pkgname}-${pkgver}/. "$pkgdir"/usr/share/webapps/${pkgname}/
-
-    install -Dm644 ${pkgname}-${pkgver}/config.php.default "$pkgdir"/etc/webapps/${pkgname}/config.php
-    ln -s /etc/webapps/${pkgname}/config.php "$pkgdir"/usr/share/webapps/${pkgname}/config.php
-
-    install -D -m644 "${srcdir}"/${pkgname}.logrotate "$pkgdir"/etc/logrotate.d/${pkgname}
-    install -dm0775 "$pkgdir"/usr/share/webapps/${pkgname}/rrd
-
-    # php.ini
-    install -dm0755 "$pkgdir"/etc/php/conf.d/
-    echo 'open_basedir = ${open_basedir}:/usr/share/webapps/librenms:/etc/webapps/librenms:/proc' > "$pkgdir"/etc/php/conf.d/${pkgname}.ini
-
-    install -D -m644 "$srcdir"/${pkgname}.sysusers "$pkgdir/usr/lib/sysusers.d/${pkgname}.conf"
-    install -D -m644 "$srcdir"/${pkgname}.tmpfile "$pkgdir/usr/lib/tmpfiles.d/${pkgname}.conf"
+  cd "${pkgname}-${pkgver}"
+  # docs
+  install -vDm 644 {AUTHORS,CHANGELOG,CODE_OF_CONDUCT,CONTRIBUTING,README}.md \
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
+  # examples
+  install -vDm 644 snmp*.example ../{apache,nginx}.example.conf \
+    -t "${pkgdir}/usr/share/doc/${pkgname}/examples"
+  # cron.d
+  install -vDm 644 "${pkgname}.nonroot.cron" "${pkgdir}/etc/cron.d/${pkgname}"
+  # services
+  install -vDm 644 "misc/${pkgname}"*.service \
+    -t "${pkgdir}/usr/lib/systemd/system/"
+  # files
+  install -vDm 644 bootstrap/*.php \
+    -t "${pkgdir}/usr/share/webapps/${pkgname}/bootstrap"
+  install -vDm 644 config/*.php \
+    -t "${pkgdir}/usr/share/webapps/${pkgname}/config"
+  install -vDm 644 contrib/*.php \
+    -t "${pkgdir}/usr/share/webapps/${pkgname}/contrib"
+  install -vDm 644 database/factories/*.php \
+    -t "${pkgdir}/usr/share/webapps/${pkgname}/database/factories"
+  install -vDm 644 database/migrations/*.php \
+    -t "${pkgdir}/usr/share/webapps/${pkgname}/database/migrations"
+  install -vDm 644 database/seeds/*.php \
+    -t "${pkgdir}/usr/share/webapps/${pkgname}/database/seeds"
+  install -vDm 644 misc/*.{json,yaml,conf,rss,xml} \
+    -t "${pkgdir}/usr/share/webapps/${pkgname}/misc"
+  install -vDm 644 routes/*.php \
+    -t "${pkgdir}/usr/share/webapps/${pkgname}/routes"
+  install -vDm 644 sql-schema/*.sql\
+    -t "${pkgdir}/usr/share/webapps/${pkgname}/sql-schema"
+  cp -av LibreNMS "${pkgdir}/usr/share/webapps/${pkgname}/"
+  cp -av app "${pkgdir}/usr/share/webapps/${pkgname}/"
+  cp -av doc "${pkgdir}/usr/share/doc/${pkgname}/"
+  cp -av html "${pkgdir}/usr/share/webapps/${pkgname}/"
+  cp -av includes "${pkgdir}/usr/share/webapps/${pkgname}/"
+  cp -av mibs "${pkgdir}/usr/share/webapps/${pkgname}/"
+  cp -av resources "${pkgdir}/usr/share/webapps/${pkgname}/"
+  cp -av scripts "${pkgdir}/usr/share/webapps/${pkgname}/"
+  cp -av tests "${pkgdir}/usr/share/webapps/${pkgname}/"
+  cp -av vendor "${pkgdir}/usr/share/webapps/${pkgname}/"
+  # application config
+  install -vDm 644 config.php.default \
+    "${pkgdir}/etc/webapps/${pkgname}/config.php"
+  ln -sv "/etc/webapps/${pkgname}/config.php" \
+    "${pkgdir}/usr/share/webapps/${pkgname}/config.php"
+  install -vDm 644 .env \
+    "${pkgdir}/etc/webapps/${pkgname}/.env"
+  ln -sv "/etc/webapps/${pkgname}/.env" \
+    "${pkgdir}/usr/share/webapps/${pkgname}/.env"
+  # logrotate.d
+  install -vDm 644 "misc/${pkgname}.logrotate" \
+    "${pkgdir}/etc/logrotate.d/${pkgname}"
+  # php conf.d
+  install -vDm 644 "../${pkgname}.ini" -t "${pkgdir}/etc/php/conf.d/"
+  # sysusers.d
+  install -vDm 644 ../${pkgname}.sysusers \
+    "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  # tmpfiles.d
+  install -vDm 644 ../${pkgname}.tmpfiles \
+    "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  # logs
+  ln -sv "/var/log/${pkgname}" "${pkgdir}/usr/share/webapps/${pkgname}/logs"
+  # cache
+  ln -sv "/var/cache/${pkgname}" "${pkgdir}/usr/share/webapps/${pkgname}/cache"
+  # rrd
+  ln -sv "/var/lib/${pkgname}/rrd" "${pkgdir}/usr/share/webapps/${pkgname}/rrd"
+  # bootstrap cache
+  ln -sv "/var/lib/${pkgname}/bootstrap/cache" \
+    "${pkgdir}/usr/share/webapps/${pkgname}/bootstrap/cache"
+  # storage
+  ln -sv "/var/lib/${pkgname}/storage" \
+    "${pkgdir}/usr/share/webapps/${pkgname}/storage"
+  # top-level (cron-related) scripts that require executable bit
+  install -vDm 755 cronic daily.sh {poller,discovery}-wrapper.py \
+    {discovery,alerts,poll-billing,billing-calculate,check-services}.php \
+    -t "${pkgdir}/usr/share/webapps/${pkgname}"
+  # scripts that also need executable bit for bizarre reasons (being called
+  # directly from within the application)
+  install -vDm 755 {build-base,irc,poller}.php \
+    {librenms-service,services-wrapper,snmp-scan}.py \
+    {pbin.sh,lnms} \
+    -t "${pkgdir}/usr/share/webapps/${pkgname}"
+  # top-level scripts/files, that don't require executable bit
+  install -vDm 644 {add{host,user},config_to_json,daily,delhost,dist-pollers,ping,renamehost,syslog,validate}.php \
+    build.sql mkdocs.yml webpack.mix.js \
+    -t "${pkgdir}/usr/share/webapps/${pkgname}"
+  # removing unneeded git related files and folders
+  find "${pkgdir}/usr/share/webapps/${pkgname}/vendor" \
+    -iname "*.git*" -exec rm -rvf {} +
 }
