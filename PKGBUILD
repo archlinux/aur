@@ -20,10 +20,16 @@ prepare() {
 
 build() {
   mkdir -p ${srcdir}/build
+  cd ${srcdir}/build
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=ON \
+    -DENABLE_SHARED_LIBS=ON \
+    -DENABLE_MPI=On \
     -DENABLE_OPENMP=On \
+    -DENABLE_FORTRAN=On \
+    -DENABLE_GMOCK=On \
     -DENABLE_TBB=On \
     -DRAJA_USE_FLOAT=On \
     -DRAJA_USE_COMPLEX=On \
@@ -32,10 +38,12 @@ build() {
 }
 
 check() {
+  cd ${srcdir}/build
   make test
 }
 
 package() {
+  cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
 }
 
