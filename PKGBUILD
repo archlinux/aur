@@ -8,8 +8,8 @@ url="https://github.com/neXromancers/$pkgname"
 license=('MPL2')
 depends=('libx11' 'libxrandr')
 makedepends=('cargo')
-source=("https://github.com/neXromancers/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('aee633e4316354e6dde55ea9a3dfe674')
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/neXromancers/$pkgname/archive/v$pkgver.tar.gz")
+md5sums=('354e424aee7952531df3ebed7d208e42')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"

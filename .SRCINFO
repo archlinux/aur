@@ -8,8 +8,8 @@ pkgbase = shotgun
 	makedepends = cargo
 	depends = libx11
 	depends = libxrandr
-	source = https://github.com/neXromancers/shotgun/archive/v2.0.1.tar.gz
-	md5sums = aee633e4316354e6dde55ea9a3dfe674
+	source = shotgun-v2.0.1.tar.gz::https://github.com/neXromancers/shotgun/archive/v2.0.1.tar.gz
+	md5sums = 354e424aee7952531df3ebed7d208e42
 
 pkgname = shotgun
 
