@@ -1,6 +1,6 @@
 pkgbase = ckan-bin
 	pkgdesc = The Comprehensive Kerbal Archive Network
-	pkgver = 1.25.3
+	pkgver = 1.25.4
 	pkgrel = 1
 	url = https://github.com/ksp-ckan/ckan/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ckan-bin
 	depends = mono>=5.0.1
 	provides = ckan
 	conflicts = ckan
-	source = ckan_1.25.3_all.deb::https://github.com/ksp-ckan/ckan/releases/download/v1.25.3/ckan_1.25.3_all.deb
-	sha256sums = 7bb0929f6077d1eaadd30a64514419d93e455972d427ad5a41c5ed37d1517106
+	source = ckan_1.25.4_all.deb::https://github.com/ksp-ckan/ckan/releases/download/v1.25.4/ckan_1.25.4_all.deb
+	sha256sums = 8e644cbfa07db403f1c1d0c4876a0815ddc9d6a881482d299f5be16a40c79cbc
 
 pkgname = ckan-bin
 
