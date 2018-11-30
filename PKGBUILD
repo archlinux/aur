@@ -1,8 +1,10 @@
 # Maintainer: Austin Haedicke <austin.haedicke@gmail.com>
+#             GitHub:  https://github.com/savagezen/pkgbuild
+#             Telegram:  https://t.me/savagezen_aur
 # Contributor: spider-mario <spidermario@free.fr>
 
 pkgname=rakudo-git
-pkgver=20181111
+pkgver=20181129
 pkgrel=1
 pkgdesc="Perl6 on MoarVM"
 arch=('i686' 'x86_64')
