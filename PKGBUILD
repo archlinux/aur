@@ -4,7 +4,7 @@
 
 _gemname=concurrent-ruby
 pkgname=ruby-$_gemname
-pkgver=1.0.5
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Modern concurrency tools for Ruby. Inspired by Erlang, Clojure, Scala, Haskell, F#, C#, Java, and classic concurrency patterns.'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('8ee1206d0145a51f9ebdf735e4b5d6a957e085323b9db32e9b04f557dcd774a0')
+sha256sums=('6b4bf154eb36502635143198425c35fc3262b3c088d7df179704bb5beed409a3')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
