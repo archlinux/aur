@@ -9,7 +9,7 @@ pkgbase = shotgun
 	depends = libx11
 	depends = libxrandr
 	source = shotgun-v2.0.1.tar.gz::https://github.com/neXromancers/shotgun/archive/v2.0.1.tar.gz
-	md5sums = 354e424aee7952531df3ebed7d208e42
+	md5sums = e7e4b3f41eec5553bb229376940227fe
 
 pkgname = shotgun
 
