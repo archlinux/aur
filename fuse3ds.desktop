@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=fuse-3ds
-Comment=Mount Nintendo 3DS contents
-Exec=python3 -mfuse3ds gui
-Terminal=true
-Type=Application
-Icon=fuse3ds
-Categories=Utility;
