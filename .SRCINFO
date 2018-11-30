@@ -1,7 +1,7 @@
 pkgbase = fuse-3ds
 	pkgdesc = FUSE Filesystem Python scripts for Nintendo 3DS files
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ihaveamac/fuse-3ds
 	arch = x86_64
 	license = MIT
@@ -10,11 +10,27 @@ pkgbase = fuse-3ds
 	noextract = fuse-3ds-${pkgver}-src.zip
 	options = !strip
 	source = fuse-3ds-1.3-src.zip::https://github.com/ihaveamac/fuse-3ds/releases/download/v1.3/fuse-3ds-1.3-src.zip
+	source = fuse3ds.desktop
+	source = https://raw.githubusercontent.com/ihaveamac/fuse-3ds/cbbd3fbd1a5524ebdc9264bdb24c72f70bc9a85c/fuse3ds/data/16x16.png
+	source = https://raw.githubusercontent.com/ihaveamac/fuse-3ds/cbbd3fbd1a5524ebdc9264bdb24c72f70bc9a85c/fuse3ds/data/32x32.png
+	source = https://raw.githubusercontent.com/ihaveamac/fuse-3ds/cbbd3fbd1a5524ebdc9264bdb24c72f70bc9a85c/fuse3ds/data/64x64.png
+	source = https://raw.githubusercontent.com/ihaveamac/fuse-3ds/cbbd3fbd1a5524ebdc9264bdb24c72f70bc9a85c/fuse3ds/data/128x128.png
+	source = https://raw.githubusercontent.com/ihaveamac/fuse-3ds/cbbd3fbd1a5524ebdc9264bdb24c72f70bc9a85c/fuse3ds/data/1024x1024.png
 	sha256sums = 796bd5581a17985d48b5afc8f5074200b3eff1ba28218b403d36bc3a94a80111
+	sha256sums = 0019bc6ee6bb74a3b6a19db56973dea86abeb17612c515ea83d7f143f3885f90
+	sha256sums = a5e4a01dbcd71c4430beb078918595c0715125effb98293bb67d32377389b01a
+	sha256sums = 7e108b969a0b143fc378bdee5dfe24a401f4e0962426e25ed0d30a8afd0eb0fd
+	sha256sums = 28f72bc37cae618d1ae249cd5db2d0c2cbdc88a67b61d19bfddb01944898f13d
+	sha256sums = 23443b4f76c6a8cab7ba1f9f9d7281ddb4c1059cf646d2c4f274a965fe86357a
+	sha256sums = dc22a4a371ddc5282ce65f07bba76e571b14ce82b28874aa848d398ab9dce263
 
 pkgname = fuse-3ds
 	depends = python>=3.6.1
 	depends = python-pycryptodomex
 	depends = fuse2
-	optdepends = python-appjar: For fuse-3DS GUI
+
+pkgname = fuse-3ds-gui
+	install = Fuse3DSGUI.install
+	depends = fuse-3ds=1.3-2
+	depends = python-appjar
 
