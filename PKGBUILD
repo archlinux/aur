@@ -37,6 +37,8 @@ prepare() {
   git config -f .gitmodules 'submodule.vboot.url' "$srcdir/vboot"
   git submodule sync -- 3rdparty/vboot
   git submodule update -- 3rdparty/vboot
+
+  patch -p1 -i "$srcdir/autoport-tool-paths.patch"
 }
 
 build() {
