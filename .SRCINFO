@@ -1,0 +1,18 @@
+pkgbase = zipios++
+	pkgdesc = Small C++ library for reading and writing zip files (old version)
+	pkgver = 0.1.5.9+cvs.2007.04.28
+	pkgrel = 10
+	url = http://zipios.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cppunit
+	depends = zlib
+	conflicts = zipios-git
+	source = orig::https://deb.debian.org/debian/pool/main/z/zipios++/zipios++_0.1.5.9+cvs.2007.04.28.orig.tar.gz
+	source = debian(compressed)::https://deb.debian.org/debian/pool/main/z/zipios++/zipios++_0.1.5.9+cvs.2007.04.28-10.debian.tar.xz
+	md5sums = cb321973d3ab5f39ee0df77ef0af7929
+	md5sums = ceff9b8060538f806571cd9cc489a71a
+
+pkgname = zipios++
+
