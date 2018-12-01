@@ -3,7 +3,7 @@
 
 _pkgname=nohang
 pkgname=${_pkgname}-git
-pkgver=0.1.r2.ga8cde7c
+pkgver=0.1.r23.g14ea665
 pkgrel=1
 pkgdesc="A highly configurable OOM preventer"
 arch=('any')
@@ -34,7 +34,13 @@ package() {
 	cd "${srcdir}/${pkgname}" || exit 2
 	make DESTDIR="${pkgdir}" install
 
+	# Realign files in Arch packaging style:
+
 	cd "${pkgdir}"
-	mv usr/sbin usr/bin
-	mv lib usr/lib
+
+	mv usr/sbin/* usr/bin
+	rm -r usr/sbin
+
+	mv lib/* usr/lib
+	rm -r lib
 }
