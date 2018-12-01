@@ -2,9 +2,10 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=luatex-git
+epoch=1
 pkgrel=1
 pkgdesc="The LuaTeX engine, current git master, standalone binary"
-pkgver=20180828
+pkgver=1.09.0.svn6998
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.luatex.org"
 depends=('glibc')
@@ -16,12 +17,12 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
+  git describe --tags | tr - .
 }
 
 build() {
   cd ${pkgname%-git}
-  ./build.sh --debug --parallel
+  ./build.sh --parallel
 }
 
 package() {
