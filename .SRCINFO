@@ -1,5 +1,5 @@
 pkgbase = linux-zen-bcachefs-git
-	pkgver = 4.19.5.zen1
+	pkgver = 4.19.6.zen1
 	pkgrel = 1
 	url = https://evilpiepirate.org/git/
 	arch = x86_64
