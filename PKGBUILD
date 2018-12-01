@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Lenz <nicolas@eisfunke.com>
 
 pkgname=haskell-mock
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Great Haskell tool to transform text"
 url="https://git.eisfunke.com/software/mock"
@@ -10,7 +10,7 @@ arch=("x86_64")
 depends=("haskell-base" "haskell-random" "haskell-time")
 makedepends=("ghc")
 source=("${pkgname}-${pkgver}.tar.gz::https://git.eisfunke.com/software/mock/archive/v${pkgver}.tar.gz")
-sha256sums=("1cca686ec8ea2712dbc6522a9dd94454c779c995c05cd9f7154d359d75388e6b")
+sha256sums=("dd31e931d6de0f16727e935ca8201d5e3d5bea610a3ac959b298b9ce95f37c05")
 
 
 build() {
