@@ -1,0 +1,29 @@
+pkgbase = libzypp
+	pkgdesc = Package, Patch, Pattern, and Product Management
+	pkgver = 17.10.1
+	pkgrel = 1
+	url = https://github.com/openSUSE/libzypp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = dejagnu
+	makedepends = graphviz
+	makedepends = libxml2
+	makedepends = expat
+	makedepends = gnupg
+	makedepends = rpm-org
+	makedepends = libproxy
+	makedepends = asciidoc
+	depends = libsolv
+	depends = openssl
+	depends = curl
+	depends = libsystemd
+	provides = libzypp
+	source = https://github.com/openSUSE/libzypp/archive/17.10.1.tar.gz
+	md5sums = 3f9bee95c62b82fcf68a009ed9716a90
+
+pkgname = libzypp
+
