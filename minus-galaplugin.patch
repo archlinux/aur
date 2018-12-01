@@ -9,3 +9,13 @@
  if (BUILD_SAMPLE)
    add_subdirectory (sample)
  endif ()
+--- src/wingpanel/meson.build	2018-12-02 05:28:40.983643676 +0900
++++ src/wingpanel/meson.build.new	2018-12-02 05:29:34.203643745 +0900
+@@ -38,7 +38,6 @@
+ subdir('lib')
+ subdir('schemas')
+ subdir('src')
+-subdir('wingpanel-interface')
+ if get_option('example')
+     subdir('sample')
+ endif
