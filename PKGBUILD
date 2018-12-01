@@ -4,7 +4,7 @@
 _pkgname=nohang
 pkgname=${_pkgname}-git
 pkgver=0.1.r23.g14ea665
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly configurable OOM preventer"
 arch=('any')
 url="https://github.com/hakavlad/nohang"
@@ -43,4 +43,7 @@ package() {
 
 	mv lib/* usr/lib
 	rm -r lib
+
+	mkdir -p usr/lib/systemd
+	mv usr/lib/system usr/lib/systemd/
 }
