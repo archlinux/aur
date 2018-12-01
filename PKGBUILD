@@ -1,5 +1,5 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
-# Maintainer: Maxim Baz <$pkgbuild at maximbaz dot com>
+# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 _pkgauthor=GoogleContainerTools
 _commit=9eb0dfc1bf634b97462c66b4dfb80e4cea378ade
