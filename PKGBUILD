@@ -2,7 +2,7 @@
 
 pkgname=cpprestsdk
 pkgver=2.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/Microsoft/cpprestsdk/"
@@ -23,9 +23,6 @@ build() {
   cmake ../Release \
     -DBUILD_TESTS=OFF \
     -DBUILD_SAMPLES=OFF \
-    -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 \
-    -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so \
-    -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   make  -j`nproc`
