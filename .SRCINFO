@@ -1,15 +1,15 @@
 pkgbase = casile-git
 	pkgdesc = Caleb's SILE publishing toolkit
-	pkgver = 0.0.0.r319.g3650731
-	pkgrel = 4
+	pkgver = 0.0.0.r592.g6e4f35d
+	pkgrel = 1
 	url = https://github.com/alerque/casile/
 	arch = any
 	license = LGPL3
 	makedepends = git
 	depends = cpdf
 	depends = entr
-	depends = haskell-pandoc
-	depends = imagemagick7
+	depends = pandoc
+	depends = imagemagick>=7.0
 	depends = inkscape
 	depends = kindlegen
 	depends = otf-libertinus

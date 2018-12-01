@@ -2,9 +2,9 @@
 
 pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit"
-pkgver=0.0.0.r319.g3650731
+pkgver=0.0.0.r592.g6e4f35d
 _branch='master'
-pkgrel=4
+pkgrel=1
 arch=(any)
 url='https://github.com/alerque/casile/'
 license=('LGPL3')
@@ -15,8 +15,8 @@ sha512sums=('SKIP')
 makedepends=('git')
 depends=('cpdf'
         'entr'
-        'haskell-pandoc'
-        'imagemagick7'
+        'pandoc'
+        'imagemagick>=7.0'
         'inkscape'
         'kindlegen'
         'otf-libertinus'
