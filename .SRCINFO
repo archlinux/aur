@@ -1,0 +1,18 @@
+pkgbase = stempel-git
+	pkgdesc = Loop Kernel Analysis and Performance Modeling Toolkit
+	pkgver = r232
+	pkgrel = 1
+	url = https://github.com/RRZE-HPC/stempel
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = python
+	depends = kerncraft-git
+	provides = stempel
+	provides = stempel-analysis
+	source = git+https://github.com/RRZE-HPC/stempel.git
+	sha256sums = SKIP
+
+pkgname = stempel-git
+
