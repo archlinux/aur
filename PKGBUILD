@@ -2,7 +2,7 @@
 
 # zipios++ has been rebranded to zipios
 pkgname=zipios-git
-pkgver=2.1.7.git20181201
+pkgver=2.1.7+cvs.2018.12.01
 _pkgver=2.1.7
 pkgrel=1
 pkgdesc="Small C++ library for reading and writing zip files, similar to java.util.zip and the standard iostreams library"
@@ -17,8 +17,8 @@ source=("git+https://github.com/Zipios/Zipios.git")
 md5sums=('SKIP')
 
 pkgver() {
-  _last_commit_date=$( git log -1 --date=short --pretty=format:%cd | sed s/-//g )
-  echo $_pkgver.git$_last_commit_date
+  _last_commit_date=$( git log -1 --date=short --pretty=format:%cd | sed s/-/./g )
+  echo $_pkgver+cvs.$_last_commit_date
 }
 
 build() {
