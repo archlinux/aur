@@ -5,9 +5,9 @@
 
 pkgbase=linux-x205ta
 
-_srcver=4.19.2-arch1
+_srcver=4.19.4-arch1
 pkgver=${_srcver//-/.}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=(GPL2)
@@ -33,7 +33,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '6779154b939132e5be9f24158c6dec58203af398a99960cfee3087765f4d4ae4'
+            '6d9d394a76d3e1fee4ea575aa38e2cd4b0e288d5deb8a502233a0e593018337a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -88,7 +88,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with harryharryharry's patches for the ASUS x205ta."
   [[ $pkgbase = linux ]] && groups=(base)
   depends=(coreutils linux-firmware kmod mkinitcpio)
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -142,7 +142,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel with harryharryharry's patches for the ASUS x205ta."
 
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
@@ -223,7 +223,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel with harryharryharry's patches for the ASUS x205ta."
 
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
