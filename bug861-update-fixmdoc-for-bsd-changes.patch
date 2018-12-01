@@ -1,0 +1,131 @@
+
+# HG changeset patch
+# User Todd C. Miller <Todd.Miller@sudo.ws>
+# Date 1542980543 25200
+# Node ID 7ddfb74781a152904ba61cf42f8ce030e5a29554
+# Parent  f5531294813905cb6dca04082287c8ae0209da54
+Update fixmdoc.sh to match the BSD -> .Bx changes in the manuals.
+Bug #861
+
+diff -r f55312948139 -r 7ddfb74781a1 doc/fixmdoc.sh
+--- a/doc/fixmdoc.sh	Sun Nov 18 07:45:43 2018 -0700
++++ b/doc/fixmdoc.sh	Fri Nov 23 06:42:23 2018 -0700
+@@ -35,7 +35,7 @@
+ 	if [ X"$BAMAN" != X"1" ]; then
+ 		BA_FLAG='/^.*\n\.Op Fl a Ar type/{;N;/^.*\n\.Ek$/d;};'
+ 		cat >>"$OUTFILE" <<-'EOF'
+-			/^\.It Fl a Ar type/,/BSD authentication\.$/d
++			/^\.It Fl a Ar type/,/\.Bx authentication \.$/d
+ 		EOF
+ 	fi
+ 
+@@ -44,11 +44,11 @@
+ 	if [ X"$LCMAN" != X"1" ]; then
+ 		LC_FLAG='/^.*\n\.Op Fl c Ar class/{;N;/^.*\n\.Ek$/d;};'
+ 		cat >>"$OUTFILE" <<-'EOF'
+-			/^\.It Fl c Ar class/,/BSD login classes\.$/d
++			/^\.It Fl c Ar class/,/\.Bx login classes \.$/d
+ 			/^\.Xr login_cap 3 ,$/d
+-			/^BSD login class$/ {
++			/^\.Bx login class$/ {
+ 				N
+-				/^BSD login class\n\.It$/d
++				/^\.Bx login class\n\.It$/d
+ 			}
+ 		EOF
+ 	fi
+@@ -110,7 +110,7 @@
+ 	# BSD login class
+ 	if [ X"$LCMAN" != X"1" ]; then
+ 		cat >>"$OUTFILE" <<-'EOF'
+-			/^On BSD systems/,/\.$/d
++			/^\.No On Bx systems/,/\.$/d
+ 			/^\.It use_loginclass$/,/^by default\./d
+ 		EOF
+ 	fi
+diff -r f55312948139 -r 7ddfb74781a1 doc/sudo.mdoc.in
+--- a/doc/sudo.mdoc.in	Sun Nov 18 07:45:43 2018 -0700
++++ b/doc/sudo.mdoc.in	Fri Nov 23 06:42:23 2018 -0700
+@@ -18,7 +18,7 @@
+ .\" Agency (DARPA) and Air Force Research Laboratory, Air Force
+ .\" Materiel Command, USAF, under agreement number F39502-99-1-0512.
+ .\"
+-.Dd October 27, 2018
++.Dd November 23, 2018
+ .Dt SUDO @mansectsu@
+ .Os Sudo @PACKAGE_VERSION@
+ .Sh NAME
+@@ -173,8 +173,7 @@
+ will exit with an error.
+ .It Fl a Ar type , Fl -auth-type Ns = Ns Ar type
+ Use the specified
+-.Bx
+-authentication
++.Bx authentication
+ .Ar type
+ when validating the user, if allowed by
+ .Pa /etc/login.conf .
+@@ -184,8 +183,7 @@
+ entry in
+ .Pa /etc/login.conf .
+ This option is only available on systems that support
+-.Bx
+-authentication.
++.Bx authentication .
+ .It Fl b , -background
+ Run the given command in the background.
+ Note that it is not possible to use shell job control to manipulate
+@@ -234,8 +232,7 @@
+ settings, such as the umask and environment variables, will
+ be applied, if present.
+ This option is only available on systems with
+-.Bx
+-login classes.
++.Bx login classes .
+ .It Fl E , -preserve-env
+ Indicates to the security policy that the user wishes to
+ preserve their existing environment variables.
+@@ -658,7 +655,7 @@
+ .It
+ Solaris privileges
+ .It
+-.Bx No login class
++.Bx login class
+ .It
+ scheduling priority (aka nice value)
+ .El
+diff -r f55312948139 -r 7ddfb74781a1 doc/sudoers.mdoc.in
+--- a/doc/sudoers.mdoc.in	Sun Nov 18 07:45:43 2018 -0700
++++ b/doc/sudoers.mdoc.in	Fri Nov 23 06:42:23 2018 -0700
+@@ -18,7 +18,7 @@
+ .\" Agency (DARPA) and Air Force Research Laboratory, Air Force
+ .\" Materiel Command, USAF, under agreement number F39502-99-1-0512.
+ .\"
+-.Dd October 27, 2018
++.Dd November 23, 2018
+ .Dt SUDOERS @mansectform@
+ .Os Sudo @PACKAGE_VERSION@
+ .Sh NAME
+@@ -282,9 +282,7 @@
+ contents of the
+ .Pa /etc/environment
+ file.
+-On
+-.Bx
+-systems, if the
++.No On Bx systems , if the
+ .Em use_loginclass
+ option is enabled, the environment is initialized
+ based on the
+@@ -472,9 +470,7 @@
+ .Pa /etc/environment
+ are also
+ included.
+-On
+-.Bx
+-systems, if the
++.No On Bx systems , if the
+ .Em use_loginclass
+ flag is
+ enabled, the
+
