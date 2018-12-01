@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.com/solarus-games/$pkgname/archive/v$pkgver.tar.gz")
+source=("https://gitlab.com/solarus-games/$pkgname/-/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=("fc72b5945c0dec121e82defc94281aad")
+md5sums=("a51f909e4ac8d3e22c477cae24e23062")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

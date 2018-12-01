@@ -12,8 +12,8 @@ pkgbase = solarus-quest-editor
 	depends = solarus
 	depends = qt5-base
 	depends = qt5-tools
-	source = https://gitlab.com/solarus-games/solarus-quest-editor/archive/v1.5.3.tar.gz
-	md5sums = fc72b5945c0dec121e82defc94281aad
+	source = https://gitlab.com/solarus-games/solarus-quest-editor/-/archive/v1.5.3.tar.gz
+	md5sums = a51f909e4ac8d3e22c477cae24e23062
 
 pkgname = solarus-quest-editor
 
