@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=you-get
-pkgver=0.4.1167
+pkgver=0.4.1181
 pkgrel=1
 pkgdesc="A YouTube/Youku/Niconico video downloader written in Python 3."
 url="http://www.soimort.org/you-get/"
@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 depends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/soimort/you-get/archive/v$pkgver.tar.gz")
-sha512sums=('fcef7ae7a631564f8da82e4ad477c09720717fc5cb0f1c4c196a035b890656bad97b537ff043ab8f29aa314afba0836ed36f8e2733ba09a85b613a890f98b5ab')
+sha512sums=('ff09765fb4754157d1278b8fefe2041ea4c20ffefa95a9c78a0c53aa0e041a954242892a0f83e22cb5505b7fb6e0404146e6b989b70b14e1a65ef719dbb0c0fa')
 
 build() {
   cd you-get-$pkgver
