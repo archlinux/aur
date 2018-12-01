@@ -1,4 +1,4 @@
-pkgbase = aspera-git
+pkgbase = aspera
 	pkgdesc = My fork of PoCC's BURST aspera
 	pkgver = v1.0
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = aspera-git
 	source = git+https://github.com/RokyErickson/Aspera.git
 	sha256sums = SKIP
 
-pkgname = aspera-git
+pkgname = aspera
 

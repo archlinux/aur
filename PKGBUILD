@@ -1,6 +1,6 @@
 # Maintainer: 13floorelevators <the13thfloorelevators@protonmail.com> <BURST-737A-XKSG-M424-67UVT>
 
-pkgname=aspera-git
+pkgname=aspera
 _realname=Aspera
 pkgver=v1.0
 pkgrel=1
