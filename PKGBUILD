@@ -2,7 +2,8 @@
 
 # zipios++ has been rebranded to zipios
 pkgname=zipios-git
-pkgver=2.1.7
+pkgver=2.1.7.git20181201
+_pkgver=2.1.7
 pkgrel=1
 pkgdesc="Small C++ library for reading and writing zip files, similar to java.util.zip and the standard iostreams library"
 arch=('i686' 'x86_64')
@@ -15,15 +16,9 @@ checkdepends=('catch2' 'zip')
 source=("git+https://github.com/Zipios/Zipios.git")
 md5sums=('SKIP')
 
-#pkgver() {
-# there's no good way to do it currently, as upstream uses no tags
-#}
-
-# catch version 2's files are in a subdirectory
-prepare() {
-  cd Zipios
-  sed -i 's;/usr/include$;/usr/include/catch2;' cmake/FindCatch.cmake
-  sed -i 's;/usr/local/include$;/usr/local/include/catch2;' cmake/FindCatch.cmake
+pkgver() {
+  _last_commit_date=$( git log -1 --date=short --pretty=format:%cd | sed s/-//g )
+  echo $_pkgver.git$_last_commit_date
 }
 
 build() {
