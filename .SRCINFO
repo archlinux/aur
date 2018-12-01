@@ -1,6 +1,6 @@
 pkgbase = opencv-git
 	pkgdesc = Open Source Computer Vision Library
-	pkgver = 3.4.3.r121.gc331a214d0
+	pkgver = 4.0.0.r81.g197285d12a
 	pkgrel = 1
 	url = https://opencv.org/
 	arch = i686
@@ -9,12 +9,14 @@ pkgbase = opencv-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = python-numpy
-	makedepends = python2-numpy
+	makedepends = python-setuptools
 	makedepends = mesa
 	makedepends = eigen
 	makedepends = hdf5
 	makedepends = lapacke
 	makedepends = gtk3
+	makedepends = vtk
+	makedepends = glew
 	depends = intel-tbb
 	depends = openexr
 	depends = gst-plugins-base
@@ -23,19 +25,18 @@ pkgbase = opencv-git
 	depends = lapack
 	depends = libgphoto2
 	depends = jasper
+	depends = ffmpeg
 	optdepends = opencv-samples: samples
 	optdepends = gtk3: for the HighGUI module
 	optdepends = hdf5: Support for HDF5 format
 	optdepends = opencl-icd-loader: For coding with OpenCL
 	optdepends = python-numpy: Python 3 interface
-	optdepends = python2-numpy: Python 2 interface
-	provides = opencv=3.4.3.r121.gc331a214d0
+	provides = opencv=4.0.0.r81.g197285d12a
 	conflicts = opencv
-	source = git+https://github.com/opencv/opencv.git#branch=3.4
-	source = git+https://github.com/opencv/opencv_contrib.git#branch=3.4
+	source = git+https://github.com/opencv/opencv.git
+	source = git+https://github.com/opencv/opencv_contrib.git
 	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = opencv-git
-	options = staticlibs
 
