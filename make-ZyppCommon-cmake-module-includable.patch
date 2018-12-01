@@ -1,0 +1,27 @@
+Description: Find ZyppCommon on multi-arch systems without having to set ZYPP_PREFIX
+Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+Forwarded: https://github.com/openSUSE/zypper/issues/52
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,8 +3,19 @@
+ SET( PACKAGE "zypper" )
+ 
+ # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
++IF (DEFINED ZYPP_PREFIX)
++  SET( CMAKE_MODULE_PATH
++    ${ZYPP_PREFIX}/${LIB}/cmake/Zypp/
++    ${CMAKE_MODULE_PATH}
++  )
++ELSE (DEFINED ZYPP_PREFIX)
++  SET( CMAKE_MODULE_PATH
++    ${CMAKE_INSTALL_PREFIX}/${LIB}/cmake/Zypp/
++    ${CMAKE_MODULE_PATH}
++  )
++ENDIF (DEFINED ZYPP_PREFIX)
++
+ SET( CMAKE_MODULE_PATH
+-  ${ZYPP_PREFIX}/share/cmake/Modules
+   ${ZYPPER_SOURCE_DIR}/cmake/modules
+   ${CMAKE_MODULE_PATH}
+ )

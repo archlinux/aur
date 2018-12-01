@@ -1,0 +1,27 @@
+pkgbase = zypper
+	pkgdesc = Command line software manager using libzypp
+	pkgver = 1.14.17
+	pkgrel = 1
+	url = https://github.com/openSUSE/zypper
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = asciidoc
+	depends = libzypp
+	depends = libxml2
+	depends = procps
+	depends = readline
+	depends = augeas
+	provides = zypper
+	provides = apt
+	conflicts = apt
+	source = https://github.com/openSUSE/zypper/archive/1.14.17.tar.gz
+	source = make-ZyppCommon-cmake-module-includable.patch
+	sha256sums = 9a1f74b4700e5bc547c22eb9351fb09017f9153ce987084f4664bface096e844
+	sha256sums = f5cdd85109c58d786f1124fa3cab1c5431a93a8d87a59117eac257c6e4698ae7
+
+pkgname = zypper
+
