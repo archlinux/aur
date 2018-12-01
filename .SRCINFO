@@ -1,14 +1,14 @@
 pkgbase = cargo-release
 	pkgdesc = Cargo subcommand "release": everything about releasing a rust crate.
-	pkgver = 0.10.4
+	pkgver = 0.10.5
 	pkgrel = 1
 	url = https://github.com/sunng87/cargo-release
 	arch = x86_64
 	license = MIT
 	license = APACHE
 	makedepends = rust
-	source = https://github.com/sunng87/cargo-release/archive/0.10.4.tar.gz
-	sha256sums = 45ea73f91c9989298eb02f640f886eb48dbad2e33af8334355d43d27d088868f
+	source = https://github.com/sunng87/cargo-release/archive/0.10.5.tar.gz
+	sha256sums = 36629b5b43f16d9507acbdd9386b5edf600ba47524148eb9a7b06583d41384fe
 
 pkgname = cargo-release
 
