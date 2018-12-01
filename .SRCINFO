@@ -1,4 +1,4 @@
-pkgbase = stempel-git
+pkgbase = python-stempel-git
 	pkgdesc = Loop Kernel Analysis and Performance Modeling Toolkit
 	pkgver = r232
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = stempel-git
 	source = git+https://github.com/RRZE-HPC/stempel.git
 	sha256sums = SKIP
 
-pkgname = stempel-git
+pkgname = python-stempel-git
 

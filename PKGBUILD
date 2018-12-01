@@ -1,6 +1,6 @@
 # Maintainer: Julian Hornich <julianhornich@googlemail.com>
 
-pkgname=stempel-git
+pkgname=python-stempel-git
 pkgrel=1
 pkgver=r232
 pkgdesc="Loop Kernel Analysis and Performance Modeling Toolkit"
