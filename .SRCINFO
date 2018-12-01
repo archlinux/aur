@@ -18,7 +18,7 @@ pkgbase = linux-amd-git
 	source = linux.install
 	source = linux-amd-git.preset
 	sha256sums = SKIP
-	sha256sums = 4cfed6076fb5394f2afe202fd079631d125698750a24b002855399f71e5b20ed
+	sha256sums = 220149dc3bc952ba055a3eed8d365281087045597865dfa984dd5ed8fa9bac14
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
