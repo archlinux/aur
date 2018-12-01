@@ -1,16 +1,20 @@
 pkgbase = kerncraft-git
 	pkgdesc = Loop Kernel Analysis and Performance Modeling Toolkit
-	pkgver = r200
+	pkgver = r803
 	pkgrel = 1
 	url = https://github.com/RRZE-HPC/kerncraft
 	arch = i686
 	arch = x86_64
 	license = GPLv3
 	makedepends = git
-	depends = python2>=2.7
-	depends = python2-yaml
-	depends = likwid-git
-	depends = iaca
+	depends = python
+	depends = python-yaml
+	depends = python-pycachesim-git
+	depends = python-sympy
+	depends = python-pylru
+	depends = python-numpy
+	depends = python-pycparser
+	depends = likwid
 	optdepends = intel-compiler-base
 	optdepends = gcc
 	optdepends = python2-matplotlib
