@@ -2,14 +2,14 @@
 pkgname=cliqz
 _pkgname=browser-f
 pkgver=1.23.3
-pkgrel=1
+pkgrel=2
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
 license=(MPL2)
 depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
-         ttf-font libpulse sqlite libvpx icu libevent)
+         ttf-font libpulse sqlite libvpx icu)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
              inetutils xorg-server-xvfb autoconf2.13 rust clang llvm
              jack gtk2 python nodejs python2-psutil cbindgen libnotify
@@ -64,7 +64,6 @@ END
 # Archlinux specific additions
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --prefix=/usr
-ac_add_options --enable-linker=gold
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
@@ -82,7 +81,6 @@ ac_add_options --enable-system-sqlite
 ac_add_options --with-system-bz2
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
-ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-png
 ac_add_options --with-system-nspr
@@ -94,9 +92,6 @@ ac_add_options --enable-startup-notification
 ac_add_options --disable-updater
 ac_add_options --disable-gconf
 END
-
-  # Symbols are build only for windows. Have them back now
-  sed -i '/^.\/mach build$/ a ./mach buildsymbols' ../magic_build_and_package.sh
 }
 
 build() {
@@ -110,6 +105,9 @@ build() {
   # export CQZ_BUILD_DE_LOCALIZATION=1
 
   export MOZ_NOSPAM=1
+
+  export ENABLE_CCACHE=0
+  export MOZ_USING_CCACHE=0
 
   ./magic_build_and_package.sh
 }
