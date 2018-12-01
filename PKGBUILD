@@ -5,7 +5,7 @@
 
 set -u
 pkgname='pmacct'
-pkgver='1.7.1'
+pkgver='1.7.2'
 pkgrel='1'
 pkgdesc='Accounting and aggregation toolsuite for IPv4 and IPv6 able to collect data through libpcap, Netlink/ULOG, Netflow and sFlow'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("${url}${pkgname}-${pkgver}.tar.gz"
         'nfacctd.rc.d' \
         'sfacctd.rc.d' \
         'uacctd.rc.d')
-sha256sums=('03c3f561522d0a876b96d1303b760b111fbf9f9ef3672c4f7756a45924605c23'
+sha256sums=('970b98c53fa97171371337dcd327ccb588613a3e9e100099eaa61d9aaa249201'
             '504b31e1a3ccc6ab9fd56960800e6146cae69c479d1a87a5f491042c382e4384'
             '143e7b83d15df723e2668383efb108e458818b47fdd62a6201b159a5430379e7'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
@@ -60,7 +60,7 @@ package() {
   # documentation
   install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/sql"/README.* -t "${pkgdir}/usr/share/doc/pmacct/"
   install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/docs"/* -t "${pkgdir}/usr/share/doc/pmacct/"
-  cp -p 'AUTHORS' 'ChangeLog' 'CONFIG-KEYS' 'COPYING' 'QUICKSTART' 'FAQS' 'TOOLS' 'UPGRADE' -t "${pkgdir}/usr/share/doc/pmacct/"
+  cp -p 'AUTHORS' 'ChangeLog' 'CONFIG-KEYS' 'COPYING' 'QUICKSTART' 'FAQS' 'UPGRADE' -t "${pkgdir}/usr/share/doc/pmacct/"
   cp -p 'KNOWN-BUGS' 'README' 'TODO' -t "${pkgdir}/usr/share/doc/pmacct/" || :
   # EXAMPLES changed to QUICKSTART
   set +u
