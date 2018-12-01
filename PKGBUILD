@@ -2,7 +2,7 @@
 
 _pkgname=pyzfscmds
 pkgname="python-${_pkgname}"
-pkgver=0.1.3
+pkgver=0.1.4
 _version_suffix="beta"
 pkgrel=1
 pkgdesc="ZFS CLI wrapper library"
@@ -12,7 +12,7 @@ license=('BSD' 'custom:BSD 3 clause')
 depends=('zfs' 'python' 'python-setuptools')
 makedepends=('git' 'python-pip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johnramsden/${_pkgname}/archive/v${pkgver}-${_version_suffix}.tar.gz")
-md5sums=('21ab3507144f375cead655d085dc72ab')
+md5sums=('fb93df37ddd2ab3f313ca75608ab209e')
 conflicts=('python-pyzfscmds-git')
 
 build() {

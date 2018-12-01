@@ -1,6 +1,6 @@
 pkgbase = python-pyzfscmds
 	pkgdesc = ZFS CLI wrapper library
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = http://github.com/johnramsden/pyzfscmds
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-pyzfscmds
 	depends = python
 	depends = python-setuptools
 	conflicts = python-pyzfscmds-git
-	source = python-pyzfscmds-0.1.3.tar.gz::https://github.com/johnramsden/pyzfscmds/archive/v0.1.3-beta.tar.gz
-	md5sums = 21ab3507144f375cead655d085dc72ab
+	source = python-pyzfscmds-0.1.4.tar.gz::https://github.com/johnramsden/pyzfscmds/archive/v0.1.4-beta.tar.gz
+	md5sums = fb93df37ddd2ab3f313ca75608ab209e
 
 pkgname = python-pyzfscmds
 
