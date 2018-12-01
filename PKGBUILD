@@ -3,7 +3,7 @@
 
 pkgname=darkplaces-git
 _gitname=darkplaces
-pkgver=r9370.f5e4d03
+pkgver=r9549.d65ddd94
 pkgrel=1
 pkgdesc="An advanced Quake 1 game engine (git-latest)"
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ package() {
 
   cd $srcdir/$_gitname
   install -d $pkgdir/usr/bin
-  install -m755 darkplaces-{dedicated,glx,sdl} $pkgdir/usr/bin
+  install -m755 darkplaces-{dedicated,sdl} $pkgdir/usr/bin
 
   for i in 16 24 32 48 64 72; do
     install -Dm644 darkplaces${i}x${i}.png $pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/darkplaces.png
