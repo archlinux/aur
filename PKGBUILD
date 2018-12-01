@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-specutils
 pkgname=('python-specutils' 'python-specutils-doc')
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=('cython' 'python-numpy' 'python-scipy' 'python-six' 'python-astropy' 'python-astropy-helpers' 'python-sphinx' 'python-matplotlib' 'python-gwcs')
 #checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/s/specutils/specutils-${pkgver}.tar.gz")
-md5sums=('19139234762d566853103d3b687a39b0')
+md5sums=('544f8613f9e2812350fcd27f7b38c6de')
 
 prepare() {
     cd ${srcdir}/specutils-${pkgver}
