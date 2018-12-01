@@ -14,7 +14,7 @@ run_hook() {
 
     # TPM device
     [ -z $tpmdev ] && tpmdev="/dev/tpmrm0"
-    export TPM2TOOLS_ENV_TCTI="device:${tpmdev}"
+    export TPM2TOOLS_TCTI="device:${tpmdev}"
     export TPM2TOOLS_TCTI_NAME="device"
     export TPM2TOOLS_DEVICE_FILE="$tpmdev"
 
