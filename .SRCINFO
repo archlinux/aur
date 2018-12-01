@@ -1,6 +1,6 @@
 pkgbase = linux-clear
-	pkgver = 4.19.5
-	pkgrel = 2
+	pkgver = 4.19.6
+	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -14,8 +14,8 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.19.5.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.19.4-664
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.19.6.xz
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=4.19.5-665
 	source = https://downloadmirror.intel.com/28039/eng/microcode-20180807.tgz
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = 60-linux.hook
@@ -26,13 +26,13 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1
 	sha256sums = SKIP
-	sha256sums = 31d7d1981b1a510e02d26ae09eee334d53df3964b7c49a92adb62fb5c22c6cc0
+	sha256sums = ee9d269d924fe798d481f122287a93e63b012ae3ffcf44c1f4ae672fc6d0bbfb
 	sha256sums = SKIP
 	sha256sums = 29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
-	sha256sums = 9a8584660c399a6f0c62fc47572ea3f801c08aac50caab2557ce094119ba4195
+	sha256sums = ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-clear

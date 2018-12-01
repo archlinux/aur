@@ -66,12 +66,12 @@ _rev_override="n"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=5
+_minor=6
 _srcname=linux-${_major}
-_clr=${_major}.4-664
+_clr=${_major}.5-665
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -202,10 +202,10 @@ _package() {
     cd ${_srcname}
 
     msg2 "Installing boot image..."
-   # systemd expects to find the kernel here to allow hibernation
-   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-   install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+    # systemd expects to find the kernel here to allow hibernation
+    # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+    install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+    install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
     msg2 "Installing modules..."
     make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
@@ -339,13 +339,13 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '31d7d1981b1a510e02d26ae09eee334d53df3964b7c49a92adb62fb5c22c6cc0'
+            'ee9d269d924fe798d481f122287a93e63b012ae3ffcf44c1f4ae672fc6d0bbfb'
             'SKIP'
             '29f9e8dc27e6c9b6488cecd7fe2394030307799e511db2d197d9e6553a7f9e40'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            '9a8584660c399a6f0c62fc47572ea3f801c08aac50caab2557ce094119ba4195'
+            'ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 validpgpkeys=(
