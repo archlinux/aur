@@ -1,0 +1,4 @@
+/src
+/pkg
+/miktex
+*.pkg.tar.xz
