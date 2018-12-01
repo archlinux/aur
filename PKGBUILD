@@ -3,8 +3,8 @@
 _gitname=CoreFreq
 pkgname=corefreq-git
 realname=corefreq
-pkgver=1.37
-pkgrel=0.3
+pkgver=1.38
+pkgrel=0.4
 pkgdesc="CoreFreq, a processor monitoring software with a kernel module inside."
 arch=('x86_64')
 url='https://github.com/cyring/CoreFreq'
@@ -17,10 +17,15 @@ install=${realname}.install
 
 package() {
 	cd ${srcdir}/${_gitname}
-	make DESTDIR=${pkgdir} dkms_install service_install
-}
-
-pkgver() {
-   cd "${srcdir}/${_gitname}"
-   echo "$(sed -nE 's/#define\s+COREFREQ_VERSION\s+"([0-9\.]+)"/\1/p' coretypes.h).r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+	BINDIR=${pkgdir}/bin
+	SRCTREE=${pkgdir}/usr/src
+	DRVTREE=${SRCTREE}/corefreqk-${pkgver}
+	# dkms setup
+	install -Dm 0644 Makefile ${DRVTREE}/Makefile
+	install -Dm 0644 dkms.conf ${DRVTREE}/dkms.conf
+	install -Dm 0755 scripter.sh ${DRVTREE}/scripter.sh
+	install -m 0644 *.c *.h ${DRVTREE}/
+	# systemd setup
+	install -Dm 0644 corefreqd.service \
+		${pkgdir}/usr/lib/systemd/system/corefreqd.service
 }
