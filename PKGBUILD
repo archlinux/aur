@@ -1,7 +1,7 @@
 # Maintainer: Betül Ünlü < betulunlu0018 ~at~ gmail ~dot~ com >
 
 pkgname=emojicode
-pkgver=0.6.4
+pkgver=0.7
 pkgrel=1
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ build() {
 }
 
 check() {
-    read -p "Do you want to run checks? [y/N] > " runchecks
+    read -p "Do you want to run checks? [y/N] " runchecks
 
     if [[ "$runchecks" == y* ]] || [[ "$runchecks" == Y* ]]; then
         cd "${srcdir}/${pkgname}/build"
