@@ -1,6 +1,6 @@
 pkgbase = skim-git
 	pkgdesc = Fuzzy Finder in rust!
-	pkgver = r450.45bbc69
+	pkgver = r452.9b8f32f
 	pkgrel = 1
 	url = https://github.com/lotabout/skim
 	arch = x86_64
@@ -8,16 +8,14 @@ pkgbase = skim-git
 	makedepends = git
 	makedepends = rust
 	depends = bash
-	optdepends = vim: Vi Improved, a highly configurable, improved version of the vi text editor.
-	optdepends = zsh: A very advanced and programmable command interpreter (shell) for UNIX
-	optdepends = zsh-completions: Additional completion definitions for Zsh
-	optdepends = bash-completion: Programmable completion for the bash shell
+	optdepends = fish: fish keybindings
+	optdepends = tmux: fzf-tmux script for launching fzf in a tmux pane
+	optdepends = vim: plugin
+	optdepends = zsh: zsh keybindings
 	provides = skim
 	conflicts = skim
 	source = skim-git::git+https://github.com/lotabout/skim
-	source = https://raw.githubusercontent.com/lotabout/skim/master/LICENSE
 	sha256sums = SKIP
-	sha256sums = 97b46715104924e7ceb1f9061c21bcc13d61322f306d6b119cd47ccbf86b22ea
 
 pkgname = skim-git
 
