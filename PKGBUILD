@@ -9,8 +9,8 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=56.0.3051.116
-pkgrel=1
+pkgver=57.0.3098.76
+pkgrel=2
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
 options=(!strip !zipman)
@@ -19,7 +19,7 @@ backup=("etc/$pkgname/default")
 arch=('x86_64')
 depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libcups' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 optdepends=(
-    'opera-ffmpeg-codecs: playback of proprietary video/audio (AUR)'
+    'opera-ffmpeg-codecs: playback of proprietary video/audio'
     'pepper-flash: flash support'
     'upower: opera battery save'
 )
@@ -31,7 +31,7 @@ source=(
     'terms.html'
     'privacy.html'
 )
-sha512sums=('80998a94db5891dc553a39a62220c3db2b2c0054577f1a86779b5766fb62be71fd7fd6f7802f674a4dec2f6927cede631c1634b789a00e58af873ea11f752c21'
+sha512sums=('0d0cff148d801deb4f7eb90aad6dffb995a97a37c036b3c2a41eae46a13aaa046d7a5c059f3fd713ce485d7414a00990bb4929e709b7d01fc1009367d5c249a6'
             '7e854e4c972785b8941f60117fbe4b88baeb8d7ca845ef2e10e8064043411da73821ba1ab0068df61e902f242a3ce355b51ffa9eab5397ff3ae3b5defd1be496'
             'ddb1773877fcfd7d9674e63263a80f9dd5a3ba414cda4cc6c411c88d49c1d5175eede66d9362558ddd53c928c723101e4e110479ae88b8aec4d2366ec179297f'
             '285a0633e5863ec9c9af99138ff0b59da155a2dd72a340e784e53de3e801029eb6ca2e4b38846592b85b9f8b99dcb6f6eedbed273057a9216abe31c396d9f28a'
