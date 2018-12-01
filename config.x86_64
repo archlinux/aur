@@ -4,7 +4,7 @@
 #
 
 #
-# Compiler: gcc (GCC) 8.2.1 20180831
+# Compiler: gcc (GCC) 8.2.1 20181127
 #
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=80201

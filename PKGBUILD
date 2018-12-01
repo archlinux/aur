@@ -29,7 +29,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm-intel#branch=${_branc
         "${pkgbase}.preset")
 
 sha256sums=('SKIP'
-            'd9cdf2f5043a30fb99c04e9e5b089465b0b37cafd640e4344711c9dcefa680b4'
+            '27719dd24f7ef6151e6f1017d3b0c12dd063079a87825877a91acf254258e864'
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
