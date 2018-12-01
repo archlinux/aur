@@ -7,26 +7,24 @@
 
 pkgname=libicns
 pkgver=0.8.1
-pkgrel=3
-pkgdesc='Library for manipulating Mac OS X icon files'
-arch=('i686' 'x86_64')
-url='http://icns.sourceforge.net'
-license=('LGPL' 'GPL')
+pkgrel=4
+pkgdesc='Library for manipulating icns/IconFamily files'
+arch=('x86_64')
+url='https://icns.sourceforge.io/'
+license=('LGPL' 'GPL2')
 depends=('libpng' 'jasper')
 provides=("icns2png=$pkgver")
 conflicts=('icns2png')
-replaces=('icns2png')
-options=(!libtool)
-source=("http://downloads.sf.net/icns/${pkgname}-${pkgver}.tar.gz")
-md5sums=('7a9b74b84ce08c5b11bdee3cad296dd3')
+source=("https://downloads.sf.net/icns/$pkgname-$pkgver.tar.gz")
+sha256sums=('335f10782fc79855cf02beac4926c4bf9f800a742445afbbf7729dab384555c2')
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
-  make
+    cd "$pkgname-$pkgver"
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  make DESTDIR="$pkgdir" install
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" install
 }
