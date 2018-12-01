@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 
 pkgname=ipython-7
-pkgver=7.1.1
+pkgver=7.2.0
 pkgrel=3
 pkgdesc="IPython provides a rich toolkit to help you make the most of using Python interactively"
 url="https://ipython.readthedocs.io/en/stable/"
@@ -21,7 +21,7 @@ provides=('ipython' 'ipython-7')
 conflicts=('ipython')
 makedepends=('python-setuptools')
 source=("https://github.com/ipython/ipython/releases/download/$pkgver/ipython-$pkgver.tar.gz")
-md5sums=('4e1f459a7592101736d695751403bd4c')
+md5sums=('fedcf768627799b7bc39b5d83bfa3df7')
 
 build() {
     cd "${srcdir}/ipython-$pkgver"
