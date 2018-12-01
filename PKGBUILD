@@ -4,8 +4,8 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2018.1123.1
-pkgrel=2
+pkgver=2018.1201.0
+pkgrel=1
 pkgdesc="The new open source version of osu!, the free-to-win rhythm game"
 arch=('x86_64')
 license=('MIT' 'custom:CC-BY-NC 4.0')
