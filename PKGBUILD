@@ -6,11 +6,11 @@ pkgname=kafka
 # against as explained on https://kafka.apache.org/downloads.html
 # but do not remove the Scala jar as the Kafka tarball is compiled against it
 # and __not__ against the one from the Scala package
-_scalaver=2.11
-_appver=1.1.1
+_scalaver=2.12
+_appver=2.1.0
 pkgver=${_scalaver}_${_appver}
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=0
 pkgdesc='A high-throughput distributed messaging system'
 arch=('any')
 url='https://kafka.apache.org/'
@@ -39,7 +39,7 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_kafka.conf
         systemd_tmpfiles.d_kafka.conf)
 
-sha256sums=('93b6f926b10b3ba826266272e3bd9d0fe8b33046da9a2688c58d403eb0a43430'
+sha256sums=('a70b44a682f5082f5c69182d4596e7ded2df38629f09b50a629070ddb1ef4f86'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
             'e1a5ad12c4f0873740f4c34817bd6733a9b1541c68f2bb3aab3ac1be591f1fde'
             'dc1f3f94662339bcfb5cd4d058c06431f0e3d37e59f8c66a870e8fb02d9b5079'
