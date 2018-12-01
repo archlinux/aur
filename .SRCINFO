@@ -1,0 +1,15 @@
+pkgbase = vivid
+	pkgdesc = LS_COLORS manager with multiple themes
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/sharkdp/vivid
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = https://github.com/sharkdp/vivid/archive/v0.3.0/vivid-v0.3.0.tar.gz
+	sha512sums = cbf9f5cad9f6c68c889da61ea7184bc9c61c45e49c8346533591409dcabb6c8943d0516e0fc06ceac330fe85c0cbf013f995e62b4eb77c02b7518a3f9699d063
+
+pkgname = vivid
+
