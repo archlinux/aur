@@ -3,8 +3,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-git-wrapper'
-pkgver='0.047'
-pkgrel='2'
+pkgver='0.048'
+pkgrel='1'
 pkgdesc="Wrap git(7) command-line interface"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -13,10 +13,9 @@ depends=('git' 'perl-file-chdir>=0' 'perl-sort-versions>=0')
 makedepends=('perl-devel-checkbin')
 checkdepends=('perl-test-deep>=0' 'perl-test-exception>=0')
 url='https://metacpan.org/release/Git-Wrapper'
-source=('http://search.cpan.org/CPAN/authors/id/G/GE/GENEHACK/Git-Wrapper-0.047.tar.gz')
-md5sums=('58ab70ecfd306a0fd678d405b15715e9')
-sha512sums=('9a2c9bf30a9b803170adfeae9bbe41e1b0fc9e67fe477d4fdf1d20a57917c69c1c6be2a90fbc382f85cf83a209b39a9a3431276b33a6e7655b8cd240d1a68e78')
-_distdir="Git-Wrapper-0.047"
+source=('https://cpan.metacpan.org/authors/id/G/GE/GENEHACK/Git-Wrapper-0.048.tar.gz')
+md5sums=('8dcb01a160c400b655c0ba69f57f054f')
+_distdir="Git-Wrapper-0.048"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
