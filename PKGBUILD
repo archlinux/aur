@@ -3,8 +3,8 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=alsa-lib-x205ta
-pkgver=1.1.6
-pkgrel=2
+pkgver=1.1.7
+pkgrel=1
 pkgdesc="An alternative implementation of Linux sound support, with UCM files for the ASUS x205ta."
 arch=('x86_64')
 url="http://www.alsa-project.org"
@@ -18,7 +18,7 @@ source=(ftp://ftp.alsa-project.org/pub/lib/${pkgname%-x205ta}-$pkgver.tar.bz2
 	https://raw.githubusercontent.com/plbossart/UCM/c8b344ca650a62aa809242b0c9ba908eac963125/chtrt5645/chtrt5645.conf
 	https://raw.githubusercontent.com/plbossart/UCM/c7405e6f03eb2404edb38b495c27225364bf16f4/sof-chtrt5645/HiFi.conf
 	)
-sha256sums=('5f2cd274b272cae0d0d111e8a9e363f08783329157e8dd68b3de0c096de6d724'
+sha256sums=('9d6000b882a3b2df56300521225d69717be6741b71269e488bb20a20783bdc09'
             '8d0ede122c8b881978af8a3cbae194129675fed59eda584931489e95b3d27f0b'
             'f206ed6bdba1c0e0266953ef76b677fa825a3965ab4b0eb265fcd1a5c629f9d7')
 
