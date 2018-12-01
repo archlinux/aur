@@ -4,7 +4,7 @@
 # Contributor: Tony Lambiris <tony@critialstack.com>
 
 pkgname=apt
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Command-line package manager used on Debian-based systems"
 arch=('i686' 'x86_64')
