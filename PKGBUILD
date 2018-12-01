@@ -1,7 +1,7 @@
 # Maintainer: Maxs <max dot van dot den dot branden @t gmail dot com>
 pkgname="solarus-quest-editor"
 pkgver="1.5.3"
-pkgrel="1"
+pkgrel="2"
 epoch=
 pkgdesc="A graphical user interface to create and modify quests for the Solarus engine."
 arch=("i686" "x86_64")
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/solarus-games/$pkgname/archive/v$pkgver.tar.gz")
+source=("https://gitlab.com/solarus-games/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
 md5sums=("fc72b5945c0dec121e82defc94281aad")
 
