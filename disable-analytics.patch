@@ -1,0 +1,11 @@
+diff -ura src/buckaroo-1.5.0/src/main/resources/com.loopperfect.buckaroo/DefaultConfig.txt src.new/buckaroo-1.5.0/src/main/resources/com.loopperfect.buckaroo/DefaultConfig.txt
+--- src/buckaroo-1.5.0/src/main/resources/com.loopperfect.buckaroo/DefaultConfig.txt	2018-11-09 16:02:51.000000000 +0100
++++ src.new/buckaroo-1.5.0/src/main/resources/com.loopperfect.buckaroo/DefaultConfig.txt	2018-12-01 20:41:44.525516188 +0100
+@@ -4,6 +4,5 @@
+       "name": "buckaroo-recipes",
+       "url": "https://github.com/LoopPerfect/buckaroo-recipes.git"
+     }
+-  ],
+-  "analytics": "https://analytics.buckaroo.pm"
++  ]
+ }
