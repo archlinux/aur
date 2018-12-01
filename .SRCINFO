@@ -1,0 +1,16 @@
+pkgbase = aspera-git
+	pkgdesc = My fork of PoCC's BURST aspera
+	pkgver = v1.0
+	pkgrel = 1
+	url = https://github.com/RokyErickson/Aspera
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = dep
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/RokyErickson/Aspera.git
+	sha256sums = SKIP
+
+pkgname = aspera-git
+
