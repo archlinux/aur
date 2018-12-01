@@ -1,7 +1,7 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 
 pkgname=bcachefs-tools-git
-pkgver=394
+pkgver=395
 pkgrel=1
 pkgdesc="bcachefs filesystem utilities"
 url="https://evilpiepirate.org/git/bcachefs-tools.git/"
@@ -11,8 +11,8 @@ license=("GPL2")
 provides=("bcachefs-tools")
 makedepends=("git" "libscrypt" "libsodium" "attr" "libutil-linux" "keyutils" "pkgconf" "zlib" "liburcu")
 
-source=("git+http://evilpiepirate.org/git/bcachefs-tools.git")
-sha512sums=("SKIP")
+source=("git+https://evilpiepirate.org/git/bcachefs-tools")
+sha512sums=('SKIP')
 
 pkgver() {
     cd bcachefs-tools
@@ -22,6 +22,9 @@ pkgver() {
 
 build() {
     cd bcachefs-tools
+
+    #export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt"
+    #export CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt"
 
     make
 }

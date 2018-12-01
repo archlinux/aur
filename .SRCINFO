@@ -1,6 +1,6 @@
 pkgbase = bcachefs-tools-git
 	pkgdesc = bcachefs filesystem utilities
-	pkgver = 394
+	pkgver = 395
 	pkgrel = 1
 	url = https://evilpiepirate.org/git/bcachefs-tools.git/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = bcachefs-tools-git
 	makedepends = zlib
 	makedepends = liburcu
 	provides = bcachefs-tools
-	source = git+http://evilpiepirate.org/git/bcachefs-tools.git
+	source = git+https://evilpiepirate.org/git/bcachefs-tools
 	sha512sums = SKIP
 
 pkgname = bcachefs-tools-git
