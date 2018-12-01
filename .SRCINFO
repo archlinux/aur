@@ -1,0 +1,20 @@
+pkgbase = zipios-git
+	pkgdesc = Small C++ library for reading and writing zip files, similar to java.util.zip and the standard iostreams library
+	pkgver = 2.1.7
+	pkgrel = 1
+	url = http://zipios.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	checkdepends = catch2
+	checkdepends = zip
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = zlib
+	conflicts = zipios++
+	source = git+https://github.com/Zipios/Zipios.git
+	md5sums = SKIP
+
+pkgname = zipios-git
+
