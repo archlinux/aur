@@ -26,7 +26,7 @@ _makenconfig=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver=4.19.5-arch1
+_srcver=4.19.6-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
