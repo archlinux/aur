@@ -17,8 +17,8 @@
 #
 pkgbase="zfs-archiso-linux"
 pkgname=("zfs-archiso-linux" "zfs-archiso-linux-headers")
-_zfsver="0.7.11"
-_kernelver="4.18.16.arch1-1"
+_zfsver="0.7.12"
+_kernelver="4.19.4.arch1-1"
 _extramodules="${_kernelver/.arch/-arch}-ARCH"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -27,7 +27,7 @@ makedepends=("linux-headers=${_kernelver}" "spl-archiso-linux-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
-sha256sums=("4dff9ecce6e02061242d9435febe88c1250de83b96d392b712bccf31c459517a")
+sha256sums=("720e3b221c1ba5d4c18c990e48b86a2eb613575a0c3cc84c0aa784b17b7c2848")
 license=("CDDL")
 depends=("kmod" 'spl-archiso-linux' "zfs-utils=${_zfsver}" "linux=${_kernelver}")
 
@@ -47,7 +47,7 @@ package_zfs-archiso-linux() {
     install=zfs.install
     provides=("zfs")
     groups=("archzfs-archiso-linux")
-    conflicts=("zfs-dkms" "zfs-dkms-git")
+    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc")
     cd "${srcdir}/zfs-${_zfsver}"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
@@ -59,7 +59,7 @@ package_zfs-archiso-linux() {
 package_zfs-archiso-linux-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
     provides=("zfs-headers")
-    conflicts=("zfs-headers" "zfs-dkms" "zfs-dkms-git")
+    conflicts=("zfs-headers" "zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc")
     cd "${srcdir}/zfs-${_zfsver}"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
