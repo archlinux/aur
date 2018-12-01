@@ -2,7 +2,7 @@
 pkgname=(bsf-git bsf-git-docs)
 pkgbase=bsf-git
 _pkgname=bsf
-pkgver=r4594.92bfc5c51
+pkgver=r4602.b5807447c
 pkgrel=1
 epoch=
 pkgdesc="A C++ library that aims to provide a unified foundation for the development of real-time graphical applications, whether games, engines or tools"
@@ -71,7 +71,7 @@ build() {
 
 package_bsf-git() {
 	provides=(bsf)
-	replaces=(bsf)
+	conflicts=(bsf)
 	depends=(libutil-linux libx11 icu libxcursor libxrandr libxi libgl openal flac libvorbis snappy freeimage freetype2)
 	arch=(x86_64)
 
