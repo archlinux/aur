@@ -1,7 +1,7 @@
 pkgbase = phoronix-test-suite-milestone
 	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux, milestone version
-	pkgver = 8.2.0m2
-	pkgrel = 2
+	pkgver = 8.4.0m3
+	pkgrel = 1
 	url = http://www.phoronix-test-suite.com/
 	install = phoronix-test-suite-milestone.install
 	arch = any
@@ -18,9 +18,8 @@ pkgbase = phoronix-test-suite-milestone
 	optdepends = openmpi: required for universe-cli test suite
 	provides = phoronix-test-suite
 	conflicts = phoronix-test-suite
-	conflicts = phoronix-test-suite-milestone
-	source = phoronix-test-suite-milestone-8.2.0m2.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v8.2.0m2.tar.gz
-	sha256sums = 0ab4fef495e9b28d3eca91bd216f6a9e3a281a66fa8fc966b12f0d46cefa0798
+	source = phoronix-test-suite-milestone-8.4.0m3.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v8.4.0m3.tar.gz
+	sha256sums = 9d5c258022bff641f39e72df2de8ce92b0d39b157b030b76cbc2121e3387cd21
 
 pkgname = phoronix-test-suite-milestone
 

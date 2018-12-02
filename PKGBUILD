@@ -3,13 +3,13 @@
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 
 pkgname=phoronix-test-suite-milestone
-pkgver=8.2.0m2
-pkgrel=2
+pkgver=8.4.0m3
+pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux, milestone version"
-arch=('any')
-license=('GPL3')
+arch=(any)
+license=(GPL3)
 url="http://www.phoronix-test-suite.com/"
-depends=('php')
+depends=(php)
 optdepends=('php-gd'
             'sqlite3: required when running a Phoromatic server.'
             'gcc-fortran: required for universe-cli test suite'
@@ -19,11 +19,11 @@ optdepends=('php-gd'
             'unzip: required for universe-cli test suite'
             'mesa-demos: required for universe-cli test suite'
             'openmpi: required for universe-cli test suite')
-provides=('phoronix-test-suite')
-conflicts=('phoronix-test-suite' 'phoronix-test-suite-milestone')
+provides=(phoronix-test-suite)
+conflicts=(phoronix-test-suite)
 install=${pkgname}.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v${pkgver}.tar.gz")
-sha256sums=('0ab4fef495e9b28d3eca91bd216f6a9e3a281a66fa8fc966b12f0d46cefa0798')
+sha256sums=('9d5c258022bff641f39e72df2de8ce92b0d39b157b030b76cbc2121e3387cd21')
 
 package() {
   cd "${srcdir}/phoronix-test-suite-${pkgver}"
