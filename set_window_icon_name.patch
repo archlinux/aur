@@ -1,6 +1,6 @@
 --- src/gcal-window.c
 +++ src/gcal-window.c
-@@ -1571,6 +1571,8 @@
+@@ -1574,6 +1574,8 @@
    gcal_window_add_accelerator (app, "win.change-view(3)",    "<Ctrl>3");
    gcal_window_add_accelerator (app, "win.toggle-search-bar", "<Ctrl>f");
    gcal_window_add_accelerator (app, "app.quit", "<Ctrl>q");

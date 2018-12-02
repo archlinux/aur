@@ -27,7 +27,7 @@ source=("git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=$_commit"
 sha256sums=('SKIP'
             'c1aa738a4ff275f725d0aa5406312600503b2b59270448a9e6b30b82a924dc27'
             '2445f754a044dd1ccb8c948b5d5b43248b61ec3570fc76416f74148abc5abf4d'
-            'd0c4affaa3edcb0c44ff1ef06a4e78951b7b5820becdbfdf7d41d90d523f3c08')
+            '8395252849da14ce048d03a53f17cffad06e345e8b1b47f8fc3681fd7e23345d')
 
 pkgver() {
   cd $_pkgname
