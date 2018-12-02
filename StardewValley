@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cd "$(dirname "$0")"
+
+if [[ -f mcs ]]; then
+  ./StardewValley.bin.x86_64 "${@}"
+fi

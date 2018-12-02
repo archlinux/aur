@@ -7,7 +7,7 @@
 #       - https://github.com/Sude-/lgogdownloader
 
 pkgname='gog-stardew-valley'
-pkgver=1.3.28
+pkgver=1.3.32
 pkgrel=1
 # Fix upstream versioning shenanigans:
 epoch=1
@@ -18,12 +18,14 @@ arch=('x86_64')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
-  "file://stardew_valley_en_1_3_28_22957.sh"
+  'file://stardew_valley_1_3_32_25307.sh'
+  'StardewValley'
 )
 sha256sums=(
   'bb34c68f0f161ef9f55c211f08b4d9391c763be7f99b9521dd966241c9d70036'
   'ca0fe151f73f5e8b594b226e1b0539655a2d95a7848eb0e43961cb6daa0de2ff'
-  'd65d8c2183f989aa076cd8a24cf5eca337bdb91bae6e56181fe3edb77eba5f51'
+  '4245c5063442a57852c11a5867e5dfb6db558953c6b85b198cab0b1765fbdfc8'
+  '0c6826084d72917748e54f9308b7395f8d3780b4a745860839203e2af428d202'
 )
 
 package() {
@@ -55,6 +57,14 @@ package() {
   install -m 644                   \
     "${srcdir}/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  # Workarounds for upstream silliness:
+  cd "${pkgdir}/opt/gog-stardew-valley/game"
+  # Unless i686 is requested, I am only going to support machines that I can
+  # test with:
+  ln -s mcs.bin.x86_64 mcs
+  # Simplified "bootstrapping" script:
+  install -m 755 "${srcdir}/StardewValley" StardewValley
 }
 
 # vim: ts=2 sw=2 et:
