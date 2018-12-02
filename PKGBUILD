@@ -3,11 +3,11 @@
 #
 pkgname=gn-git
 pkgdesc='Meta-build system which generates Ninja build files'
-pkgver=r1491.df15af47
+pkgver=r1498.13ac6ca4
 pkgrel=1
 license=('BSD')
 arch=('x86_64' 'i686')
-conflicts=('gn-bin')
+conflicts=('gn-bin' 'gn')
 provides=('gn')
 depends=('gcc-libs')
 makedepends=('python2' 'ninja' 'git')

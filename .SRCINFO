@@ -1,6 +1,6 @@
 pkgbase = gn-git
 	pkgdesc = Meta-build system which generates Ninja build files
-	pkgver = r1491.df15af47
+	pkgver = r1498.13ac6ca4
 	pkgrel = 1
 	url = https://gn.googlesource.com/gn
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = gn-git
 	depends = gcc-libs
 	provides = gn
 	conflicts = gn-bin
+	conflicts = gn
 	source = gn::git+https://gn.googlesource.com/gn
 	source = gcc-support.patch
 	sha512sums = SKIP
