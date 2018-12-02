@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('t2ec')
-pkgver=0.2
-pkgrel=7
+pkgver=1.0
+pkgrel=1
 pkgdesc="A package of scripts to display system icons and controls in Tint2 panel"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
@@ -52,6 +52,7 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-muted.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/arch-icon.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/arch-icon-notify.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/refresh.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/arch-update48.svg")
 
 md5sums=('df88efa83e480abb9029028a09c9d1a2'
@@ -62,12 +63,13 @@ md5sums=('df88efa83e480abb9029028a09c9d1a2'
          '5cd32fd7b74fa5d1bd45fad09472fd16'
          '63a955c04f03451a13fd4a5f3ea1bbf3'
          '4d5efb2581959b68db65a0964e1c26b9'
-         '607482e19bdcd53454b4e2b077760ef8'
+         '07d2698ef2d2a9fe02e42f2766105981'
          'f9a82c34f8f4228c5dc194b0fb7b37a0'
          '36418d374a2cf33abba5e40915d0911e'
          'a44810558d11b2a695e7fde1baf5dc8a'
          '80dc7aef3a27d256676857b6ae925a2a'
          '81c7f9f8c45544cc66d8e0d8fa10bee9'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
