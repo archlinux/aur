@@ -1,6 +1,6 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=emos
-pkgver=4.5.5
+pkgver=4.5.7
 pkgrel=1
 pkgdesc="ECMWF Interpolation Library"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=()
 makedepends=(eccodes boost git cmake)
 options=('staticlibs')
 source=(https://software.ecmwf.int/wiki/download/attachments/3473472/libemos-${pkgver}-Source.tar.gz)
-md5sums=('86c17f1d09187e0840d1d112afd7bd27')
+md5sums=('23a16b2229f9c67997a964926f42d213')
 
 build() {
   cd ${srcdir}/lib${pkgname}-${pkgver}-Source
