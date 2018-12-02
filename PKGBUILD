@@ -1,7 +1,7 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=mullvad-tray
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Mullvad VPN connection status in system tray."
 arch=('any')
@@ -27,4 +27,4 @@ package() {
 }
 
 md5sums=('466284059b279f7e570ed13a7c4fd82c'
-         '2572cc0647bd5835beb37054d8d3b2fb')
+         '07a290233d6a992eaa61c0e146a34064')
