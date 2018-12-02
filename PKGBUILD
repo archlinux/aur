@@ -7,7 +7,7 @@ pkgname="${_pkgname}-svn"
 # _pkgver=2.9j
 epoch=1
 pkgver=2.9j+svn2249
-pkgrel=1
+pkgrel=3
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, subscription, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -132,12 +132,12 @@ prepare() {
 
   cd "${_unpackeddir}"
 
-  ### Update version.h to the actual version.
+  ### Update version.h to the actual version + SVNrevision
   _ver="$(_pgmver)"
   _rev="$(_svnrelease)"
   msg2 "Updating version in src/version.h to ${_ver}+svn${_rev} ..."
   sed -i 's|^\([[:space:]]*#define[[:space:]]*WWWOFFLE_VERSION[[:space:]]*\).*$|/*+ +*/\n/*+ The following line was automatically upgraded by the Arch Linux PKGBUILD (package build script) +*/\n/*+ in order to match the version as in conf/wwwoffle.conf.template and the SVN revision. +*/\n\1"'"${_ver}+svn${_rev}"'"|' \
-    "${_unpackeddir}/src/version.h"
+   "${_unpackeddir}/src/version.h"
 
   msg2 "Generating svn commit messages file ..."
   svn log > "${_svnlog}"
