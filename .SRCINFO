@@ -1,5 +1,5 @@
 pkgbase = acarsdec-git
-	pkgver = 3.4.r91.ac7f7a2
+	pkgver = 3.4.r124.de0c5ae
 	pkgrel = 1
 	url = https://github.com/TLeconte/acarsdec
 	arch = x86_64

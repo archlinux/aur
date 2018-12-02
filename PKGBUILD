@@ -2,7 +2,7 @@
 
 pkgbase=acarsdec-git
 pkgname=("$pkgbase-airspy" "$pkgbase-rtl-sdr")
-pkgver=3.4.r91.ac7f7a2
+pkgver=3.4.r124.de0c5ae
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/TLeconte/acarsdec"
@@ -22,13 +22,17 @@ pkgver() {
 build() {
   cd "$pkgbase"
 
-  make -f Makefile.air
-  cp acarsdec acarsdec-airspy
-  make -f Makefile.air clean
+  mkdir -p build-airspy
+  cd build-airspy
+  cmake .. -Dairspy=ON
+  make
+  cd ..
 
-  make -f Makefile.rtl
-  cp acarsdec acarsdec-rtl-sdr
-  make -f Makefile.rtl clean
+  mkdir -p build-rtl
+  cd build-rtl
+  cmake .. -Drtl=ON
+  make
+  cd ..
 }
 
 package_acarsdec-git-airspy() {
@@ -36,7 +40,7 @@ package_acarsdec-git-airspy() {
   depends=('airspy' 'libusb')
 
   cd "$pkgbase"
-  install -Dm755 acarsdec-airspy "$pkgdir/usr/bin/acarsdec"
+  install -Dm755 build-airspy/acarsdec "$pkgdir/usr/bin/acarsdec"
 }
 
 package_acarsdec-git-rtl-sdr() {
@@ -44,5 +48,5 @@ package_acarsdec-git-rtl-sdr() {
   depends=('rtl-sdr')
 
   cd "$pkgbase"
-  install -Dm755 acarsdec-rtl-sdr "$pkgdir/usr/bin/acarsdec"
+  install -Dm755 build-rtl/acarsdec "$pkgdir/usr/bin/acarsdec"
 }
