@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
 url="https://nncli.org"
-license=('MIT')
+license=('MIT' 'BSD')
 depends=('python'
          'python-urwid'
          'python-requests'
