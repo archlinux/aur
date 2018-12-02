@@ -2,7 +2,7 @@
 # Previous Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=latex-beamer
-pkgver=3.54
+pkgver=3.55
 pkgrel=1
 pkgdesc='Beamer is a LaTeX class for creating slides for presentations.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL2')
 install='latex-beamer.install'
 depends=('texlive-core')
 source=("${pkgname}-${pkgver}::https://github.com/josephwright/beamer/archive/v${pkgver}.tar.gz")
-sha256sums=('39949b28c6ed995ecbd1cd2e18b2b22f0197538f6b8e9740425115f17e99a091')
+sha256sums=('506228c911995944c2280fe455cacb045e32a674022731c5468d90011f3ae52f')
 
 
 package() {
