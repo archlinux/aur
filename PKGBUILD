@@ -1,6 +1,6 @@
 pkgname=nautilus-send-to-bluetooth
-pkgver=1.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Adds 'Send to bluetooth device' to nautilus right-click menu"
 arch=('any')
 url='https://github.com/alireza6677/nautilus-send-to-bluetooth'
