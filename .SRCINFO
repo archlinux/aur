@@ -1,7 +1,7 @@
 pkgbase = cura-lulzbot
 	pkgdesc = Cura LulzBot Edition for LulzBot 3D Printers by Aleph Objects, Inc.
 	pkgver = 3.2.32
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.lulzbot.com/cura
 	arch = x86_64
 	license = AGPLv3
