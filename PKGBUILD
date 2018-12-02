@@ -2,9 +2,9 @@
 
 pkgname=clightd-git
 _gitname=Clightd
-pkgver=r199.39e82d7
+pkgver=r205.525b4bc
 pkgrel=1
-pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
+pkgdesc="Bus interface to change screen brightness and capture frames from webcam. Devel version."
 arch=('i686' 'x86_64')
 url="https://github.com/FedeDP/${_gitname}"
 license=('GPL')
