@@ -2,14 +2,14 @@
 
 pkgname=ipython-7
 pkgver=7.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="IPython provides a rich toolkit to help you make the most of using Python interactively"
 url="https://ipython.readthedocs.io/en/stable/"
 arch=(any)
 license=('BSD')
 depends=(
     'python'
-    'python-prompt_toolkit-2'
+    'python-prompt_toolkit'
     'python-pygments'
     'python-traitlets'
     'python-pickleshare'

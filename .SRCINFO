@@ -1,13 +1,13 @@
 pkgbase = ipython-7
 	pkgdesc = IPython provides a rich toolkit to help you make the most of using Python interactively
 	pkgver = 7.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ipython.readthedocs.io/en/stable/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	depends = python-prompt_toolkit-2
+	depends = python-prompt_toolkit
 	depends = python-pygments
 	depends = python-traitlets
 	depends = python-pickleshare
