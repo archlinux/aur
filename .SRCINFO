@@ -1,0 +1,17 @@
+pkgbase = rtl-entropy-git
+	pkgdesc = An entropy generator using SDR peripherals, including rtl-sdr and BladeRF
+	pkgver = 0.1.2.r80.9f1768c
+	pkgrel = 1
+	url = https://github.com/pwarren/rtl-entropy
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkgconfig
+	depends = openssl
+	depends = rtl-sdr
+	source = master::git+https://github.com/pwarren/rtl-entropy
+	sha512sums = SKIP
+
+pkgname = rtl-entropy-git
+
