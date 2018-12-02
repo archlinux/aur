@@ -1,0 +1,13 @@
+pkgbase = mnimi
+	pkgdesc = A simple note taking application written in python.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/ymber/mnimi
+	arch = any
+	license = MIT
+	depends = python
+	source = https://gitlab.com/ymber/mnimi/-/archive/1.0.0/mnimi-1.0.0.tar.bz2
+	sha256sums = a790567adafddc88c2bc83dacab0deda0cf82f77c445d2ab791e476a12e6c6d4
+
+pkgname = mnimi
+
