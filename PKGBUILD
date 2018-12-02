@@ -8,7 +8,10 @@ arch=('x86_64')
 url="https://nimiq.com"
 license=('Apache')
 groups=('base-devel')
-depends=('npm')
+depends=(
+  'nodejs'
+  'npm'
+)
 source=(
   "https://repo.nimiq.com/rpm/stable/${arch}/nimiq-${pkgver}-${pkgrel}.${arch}.rpm"
 )
