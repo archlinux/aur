@@ -1,8 +1,9 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Michael Duell <mail at akurei ddot me>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Peter Reschenhofer <peter.reschenhofer@gmail.com>
 
 pkgname=gocryptfs-git
-pkgver=20161206
+pkgver=20181117
 pkgrel=1
 pkgdesc="Encrypted overlay filesystem written in Go"
 arch=('i686' 'x86_64')
