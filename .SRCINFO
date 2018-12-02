@@ -28,7 +28,7 @@ pkgbase = linux-cx2072x
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-cx2072x
-	pkgdesc = The Linux-cx2072x kernel and modules
+	pkgdesc = The Linux-cx2072x kernel and modules with Conexant 2072x codec support
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
