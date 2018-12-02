@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='mongodb-compass-community'
-pkgver='1.16.1'
+pkgver='1.16.3'
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Community Edition'
 arch=('x86_64')
@@ -8,8 +8,8 @@ url='https://www.mongodb.com/products/compass'
 license=('custom')
 depends=('nss' 'gconf' 'libxtst' 'alsa-lib' 'gtk2' 'libsecret' 'gcc-libs-multilib' 'libxss')
 optdepends=('gnome-keyring' 'libgnome-keyring')
-source=('https://downloads.mongodb.com/compass/mongodb-compass-community-1.16.1.x86_64.rpm')
-md5sums=('79a3ab424d70eda8c5ceae0e43532c8b')
+source=('https://downloads.mongodb.com/compass/mongodb-compass-community-1.16.3.x86_64.rpm')
+md5sums=('01f799fcfe9f315d4d68718a20032684')
 
 package() {
 	rm -r "$srcdir/usr/share/doc/"
