@@ -9,7 +9,7 @@ post_install() {
 
 post_remove() {
     echo "------------- 卸载说明/Uninstall Note -------------"
-    echo "删除用户配置请执行： rm -r $HOME/.FeelUOwn"
-    echo "删除应用启动图标请执行： rm $HOME/.local/share/applications/feeluown.desktop"
+    echo "删除用户配置请执行： rm -r ~/.FeelUOwn"
+    echo "删除应用启动图标请执行： rm ~/.local/share/applications/feeluown.desktop"
     echo "--------------------------------------------------"
 }

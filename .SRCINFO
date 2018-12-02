@@ -1,17 +1,19 @@
 pkgbase = feeluown
 	pkgdesc = 一个符合 Unix 哲学的跨平台的音乐播放器
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cosven/FeelUOwn
 	install = feeluown.install
 	arch = any
 	license = GPL3
+	makedepends = python-setuptools
 	depends = python-quamash>=0.5.5
 	depends = python-fuocore
 	depends = python-requests
 	depends = python-pyqt5
 	depends = qt5-multimedia
 	depends = qt5-webkit
+	depends = python-pycrypto>=2.6.1
 	source = https://files.pythonhosted.org/packages/af/3d/5b7b89a00c62b20af9b548107a05b4ac27d29417bd707c6853621a4b2f14/feeluown-2.1.1.tar.gz
 	sha256sums = d1688978a02c4528fb5cdf3b308661840b0fbb487af0bd84e30a6c382ea391df
 
