@@ -1,0 +1,19 @@
+pkgbase = sqlclient
+	pkgdesc = A client for the Music Player Daemon (MPD)
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://github.com/gnustep/libs-sqlclient
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	groups = gnustep-libs
+	license = GPL
+	makedepends = gcc-objc
+	makedepends = gnustep-make
+	depends = gnustep-base
+	depends = performance
+	source = https://github.com/gnustep/libs-sqlclient/archive/sqlclient-1_7_3.tar.gz
+	sha256sums = 79eba1fef438fdc6b72bc3801e5058787d08915e251a6dcc55c1369f72ce61e1
+
+pkgname = sqlclient
+
