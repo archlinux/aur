@@ -1,0 +1,15 @@
+pkgbase = nimiq-bin
+	pkgdesc = Nimiq core
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://nimiq.com
+	arch = x86_64
+	groups = base-devel
+	license = Apache
+	depends = npm
+	noextract = nimiq-1.4.0-1.x86_64.rpm
+	source = https://repo.nimiq.com/rpm/stable/x86_64/nimiq-1.4.0-1.x86_64.rpm
+	sha256sums = 26dcfb2f6299a274f812dae1576b926acb04336e7dada7d8571ece93d8668cff
+
+pkgname = nimiq-bin
+
