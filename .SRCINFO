@@ -1,0 +1,22 @@
+pkgbase = connman-gtk-git
+	pkgdesc = Tray menu and GUI for connman
+	pkgver = v1.1.1.r11.gb72c6ab
+	pkgrel = 1
+	url = https://github.com/jgke/connman-gtk
+	install = connman-gtk-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = meson
+	makedepends = git
+	makedepends = openconnect
+	depends = glib2
+	depends = gtk3
+	optdepends = openconnect: Easier authentication to AnyConnect VPNs
+	conflicts = connman-gtk
+	source = git+https://github.com/jgke/connman-gtk.git
+	sha256sums = SKIP
+
+pkgname = connman-gtk-git
+
