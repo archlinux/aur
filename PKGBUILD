@@ -7,12 +7,12 @@
 
 pkgname=subsonic
 pkgver=6.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="http://subsonic.org/"
 license=('custom')
-depends=('java-runtime-headless')
+depends=('java-runtime-headless<=8')
 conflicts=('subsonic')
 backup=('var/lib/subsonic/db' 'var/lib/subsonic/subsonic.properties' 'var/lib/subsonic/subsonic.sh')
 install=$pkgname.install
