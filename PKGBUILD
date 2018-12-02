@@ -45,11 +45,11 @@ package() {
   install -Dm644 pytrellis.so "$pkgdir/usr/share/trellis/libtrellis/pytrellis.so"
 
   install -d "$pkgdir/usr/share/trellis/timing/util"
-  cp -R "$srcdir/trellis/timing/util/"*.py "$pkgdir/usr/share/trellis/timing/util"
+  install -m644 "$srcdir/trellis/timing/util/"*.py "$pkgdir/usr/share/trellis/timing/util"
 
   install -d "$pkgdir/usr/share/trellis/util/common"
-  cp -R "$srcdir/trellis/util/common/"*.py "$pkgdir/usr/share/trellis/util/common"
+  install -m644 "$srcdir/trellis/util/common/"*.py "$pkgdir/usr/share/trellis/util/common"
 
   install -d "$pkgdir/usr/share/trellis/util/fuzz"
-  cp -R "$srcdir/trellis/util/fuzz/"*.py "$pkgdir/usr/share/trellis/util/fuzz"
+  install -m644 "$srcdir/trellis/util/fuzz/"*.py "$pkgdir/usr/share/trellis/util/fuzz"
 }
