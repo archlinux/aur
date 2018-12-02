@@ -1,6 +1,7 @@
-# Maintainer: Streetwalrus <streetwalrus@codewalr.us>
+# Maintainer: Justin Vreeland <vreeland.justin@gmail.com>
+# Contributor: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=sam-ba
-pkgver=3.2.0
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Atmel SAM Boot Assistant"
 arch=('i686' 'x86_64')
@@ -10,16 +11,20 @@ depends=('qt5-base' 'qt5-serialport' 'qt5-declarative')
 makedepends=('qt5-tools')
 source=("https://github.com/atmelcorp/sam-ba/archive/v$pkgver.tar.gz"
         "0001-Dont-install-thirdparty-libs.patch"
-        "0002-Dont-rely-on-applicationDirPath.patch")
-md5sums=('45050cb8efabf12581524de76a2d9e40'
+        "0002-Dont-rely-on-applicationDirPath.patch"
+        "0003-Use-newer-qt-version.patch"
+        )
+md5sums=('dc116aab099685b01653f00aa6a6ac00'
          '6b29a65bbc96b608d7628e8a25ae1f50'
-         '2218a4d3c49cdfe9965da98840939926')
+         '1fd871ae02809fcbc3095c169f59ce01'
+         'dc451b95c0d86788d11dab17a813a863')
 
 prepare() {
   cd "${srcdir}/sam-ba-$pkgver"
 
   patch -Np1 -i ../0001-Dont-install-thirdparty-libs.patch
   patch -Np1 -i ../0002-Dont-rely-on-applicationDirPath.patch
+  patch -Np1 -i ../0003-Use-newer-qt-version.patch
   sed -i -e "s/ jlink//" src/plugins/connection/connection.pro
 }
 
@@ -53,6 +58,9 @@ package() {
 
   mkdir -p ${pkgdir}/usr/share/sam-ba
   cp -r metadata ${pkgdir}/usr/share/sam-ba
+
+  echo -e "\n \033[1;31m The qt library that this package uses has been updated past what
+  the upstream project supports. Please keep that in mind when reporting issues. \033[0m\n"
 }
 
 # vim:set ts=2 sw=2 et:

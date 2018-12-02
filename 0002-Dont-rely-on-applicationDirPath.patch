@@ -1,7 +1,7 @@
-diff --git a/src/sambacommon/sambaengine.cpp b/src/sambacommon/sambaengine.cpp
+diff --git a/src/tools/sambaengine.cpp b/src/tools/sam-ba/sambaengine.cpp
 index 8f36080..2fda3c2 100644
---- a/src/sambacommon/sambaengine.cpp
-+++ b/src/sambacommon/sambaengine.cpp
+--- a/src/tools/sam-ba/sambaengine.cpp
++++ b/src/tools/sam-ba/sambaengine.cpp
 @@ -26,9 +26,6 @@ SambaEngine::SambaEngine(QObject *parent)
  	QObject::connect(&m_qmlEngine, &QQmlEngine::warnings,
  					 this, &SambaEngine::engineWarnings);
@@ -12,10 +12,10 @@ index 8f36080..2fda3c2 100644
  	// create metadata object
  	m_metadata = new SambaMetadata(this);
  }
-diff --git a/src/sambacommon/sambametadata.cpp b/src/sambacommon/sambametadata.cpp
+diff --git a/src/tools/sam-ba/sambametadata.cpp b/src/tools/sambametadata.cpp
 index 1c65370..577303d 100644
---- a/src/sambacommon/sambametadata.cpp
-+++ b/src/sambacommon/sambametadata.cpp
+--- a/src/tools/sam-ba/sambametadata.cpp
++++ b/src/tools/sam-ba/sambametadata.cpp
 @@ -122,7 +122,7 @@ void SambaMetadata::loadAllMetadata()
  #endif
  		paths = QString::fromLatin1(envImportPath).split(pathSep, QString::SkipEmptyParts);
