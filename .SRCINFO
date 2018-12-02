@@ -1,0 +1,26 @@
+pkgbase = texinfo-git
+	pkgdesc = GNU documentation system for on-line information and printed output
+	pkgver = r8408.7ed10a17c
+	pkgrel = 1
+	url = http://www.gnu.org/software/texinfo/
+	arch = i686
+	arch = x86_64
+	groups = base
+	groups = base-devel
+	license = GPL
+	makedepends = git
+	makedepends = help2man
+	depends = coreutils
+	provides = texinfo
+	conflicts = texinfo
+	options = !makeflags
+	options = libtool
+	source = texinfo-git::git://git.savannah.gnu.org/texinfo.git
+	source = texinfo-install.hook
+	source = texinfo-remove.hook
+	sha256sums = SKIP
+	sha256sums = 66ab7eab5ecdd7757081a743f94e6f4d2e783b61db5024344450748bf1bf8eb9
+	sha256sums = 7300f03ac56e32564fb508b0dd07839d2428a422dcf13fd3246863f7ccb1965e
+
+pkgname = texinfo-git
+
