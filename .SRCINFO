@@ -1,7 +1,7 @@
 pkgbase = phoronix-test-suite
 	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux
-	pkgver = 8.2.0
-	pkgrel = 2
+	pkgver = 8.4.0
+	pkgrel = 1
 	url = http://www.phoronix-test-suite.com/
 	install = phoronix-test-suite.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = phoronix-test-suite
 	optdepends = unzip: required for universe-cli test suite
 	optdepends = mesa-demos: required for universe-cli test suite
 	optdepends = openmpi: required for universe-cli test suite
-	source = phoronix-test-suite-8.2.0.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v8.2.0.tar.gz
+	source = phoronix-test-suite-8.4.0.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v8.4.0.tar.gz
 	sha256sums = cb92231040fd09a98a97d6620bc98758774731372f8a41b58b85357c0449904c
 
 pkgname = phoronix-test-suite

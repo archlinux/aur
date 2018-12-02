@@ -5,13 +5,13 @@
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 
 pkgname=phoronix-test-suite
-pkgver=8.2.0
-pkgrel=2
+pkgver=8.4.0
+pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
-arch=('any')
-license=('GPL3')
+arch=(any)
+license=(GPL3)
 url="http://www.phoronix-test-suite.com/"
-depends=('php')
+depends=(php)
 optdepends=('php-gd'
             'sqlite3: required when running a Phoromatic server.'
             'gcc-fortran: required for universe-cli test suite'
@@ -44,6 +44,5 @@ package() {
   install -D "${srcdir}/phoronix-test-suite-${pkgver}"/pts-core/external-test-dependencies/xml/generic-packages.xml \
              "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/xml/generic-packages.xml
 
-  sed -i "s#--noconfirm#--noconfirm --asdeps#" ${pkgdir}/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/scripts/install-arch-packages.sh
   sed -e "s/^export PTS_DIR=.*/export PTS_DIR=\/usr\/share\/phoronix-test-suite/g" -i ${pkgdir}/usr/bin/phoronix-test-suite
 }
