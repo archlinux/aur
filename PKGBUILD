@@ -3,7 +3,7 @@
 pkgbase="python-prompt_toolkit-2"
 pkgname=("python-prompt_toolkit-2" "python2-prompt_toolkit-2")
 pkgver=2.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for building powerful interactive command line applications in Python"
 url="https://github.com/jonathanslenders/python-prompt-toolkit"
 arch=(any)
@@ -29,7 +29,7 @@ package_python-prompt_toolkit-2() {
         'python-six>=1.9.0'
         'python-wcwidth'
     )
-    provides=('python-prompt_toolkit-2')
+    provides=('python-prompt_toolkit')
     conflicts=('python-prompt_toolkit')
     cd "${srcdir}/python-prompt-toolkit-${pkgver}"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
@@ -43,7 +43,7 @@ package_python2-prompt_toolkit-2() {
         'python2-setuptools'
         'python2-wcwidth'
     )
-    provides=('python2-prompt_toolkit-2')
+    provides=('python2-prompt_toolkit')
     conflicts=('python2-prompt_toolkit')
     cd "${srcdir}/python2-prompt-toolkit-${pkgver}"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
