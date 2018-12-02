@@ -160,20 +160,27 @@ ERR="\E[31;40m[ERR]${EchoReset}"
 #echo -e "$OK $WARN $ERR"
 
 #path_cfg must be '/' terminated
-#path_cfg="../etc-macinstall.d/"
-path_cfg="/etc/macinstall.d/"
-#if last char is not '/' add it
-[[ ${path_cfg:${#path_cfg}-1:1} != "/" ]] && path_cfg="$path_cfg/"
-
-
 filename_cfg="macinstall.conf"
+path_cfg="/etc/macinstall.d/"
+[[ ${path_cfg:${#path_cfg}-1:1} != "/" ]] && path_cfg="$path_cfg/" #if last char is not '/' add it
+if [[ ! -d $path_cfg ]] ; then
+  mkdir -p $path_cfg
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail '$path_cfg' mkdir cmd creation !!"; exit 1; }
+fi
+if [[ ! -r $path_cfg$filename_cfg ]] ; then
+  touch $path_cfg$filename_cfg
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail '$path_cfg$filename_cfg' touch cmd creation !!"; exit 1; }
+fi
 
 #path_dest must be '/' terminated
-#path_dest="/home/simona/My Work/my-pkg simonascripts/root-test/"
 path_dest="$HOME/test/"
-[[ "$flagForceRealWork" == true ]] && { echo "$WARN Using real path / for destination..."; path_dest="/"; }
-#if last char is not '/' add it
-[[ ${path_dest:${#path_dest}-1:1} != "/" ]] && path_dest="$path_dest/"
+[[ "$flagNoTest" == true ]] && { echo "$WARN Using real path / for destination..."; path_dest="/"; }
+[[ ${path_dest:${#path_dest}-1:1} != "/" ]] && path_dest="$path_dest/" #if last char is not '/' add it
+if [[ ! -d $path_dest ]] ; then
+  [[ ${path_dest:0:5} == "/home" && ! -d "/home" ]] && { echo "$ERR Path '/home' missing. (For / use) Exit."; exit 1; }
+  mkdir -p $path_dest
+  [[ $? -ne 0 ]] && { echo -e "$ERR Fail $path_dest mkdir cmd creation !!"; exit 1; }
+fi
 
 postfix_bak_file_name=".bak"
 
@@ -184,20 +191,6 @@ prop_cfg_file_copy="CopyFile"
 prop_cfg_dir_copy="CopyDirectory"
 prop_cfg_write_sem="WriteSemaphore"
 prop_cfg_read_sem="AllowOnlyIfPreviousMacIs"
-
-if [[ ! -d $path_cfg ]] ; then
-  mkdir -p $path_cfg
-  [[ $? -ne 0 ]] && { echo -e "$ERR Fail '$path_cfg' mkdir cmd creation !!"; exit 1; }
-fi
-if [[ ! -r $path_cfg$filename_cfg ]] ; then
-  touch $path_cfg$filename_cfg
-  [[ $? -ne 0 ]] && { echo -e "$ERR Fail '$path_cfg$filename_cfg' touch cmd creation !!"; exit 1; }
-fi
-
-if [[ ! -d $path_dest ]] ; then
-  mkdir -p $path_dest
-  [[ $? -ne 0 ]] && { echo -e "$ERR Fail $path_dest mkdir cmd creation !!"; exit 1; }
-fi
 
 if [[ "$flagAskConfirm" == true ]] ; then
   echo -n "Continue? (Y/N): "; read ask
