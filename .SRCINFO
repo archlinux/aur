@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod
-	pkgver = 4.19.4
+	pkgver = 4.19.6
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -9,20 +9,22 @@ pkgbase = linux-xanmod
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
+	makedepends = python-sphinx
+	makedepends = graphviz
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/4.19.4-xanmod3.tar.gz
+	source = https://github.com/xanmod/linux/archive/4.19.6-xanmod4.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-xanmod.preset
 	source = choose-gcc-optimization.sh
-	source = patches-from-archlinux-stable-git.patch
-	sha256sums = b4f47c125aff211c4e8b248d1856d01b9c780dfe50ea8348fca6fb353d40cd3d
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+	sha256sums = 7c945a49388840a388aafb903e492258d9cf4b287c1292f9adbe05c6ea367a5d
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
+	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 9d2623553e79fae8420fff03175614b29dd566e8280b294b53ab318a0eebeb50
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-	source_x86_64 = config_1d6806a0676a04c8dc6b3327204a58996420a15f::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=1d6806a0676a04c8dc6b3327204a58996420a15f
+	sha256sums = 112b16c247dae8ff44066fd0268012f9c623d5da349ebd66896e54257b3404a5
+	source_x86_64 = config_c64696ecf1075e3ad6ab1c0c74e043f8fdf5b3c1::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=c64696ecf1075e3ad6ab1c0c74e043f8fdf5b3c1
 	sha256sums_x86_64 = e7fa30bb2de12d1a2488423e27c00f26d55668e310e69aaf93673c1afd89dbaf
 
 pkgname = linux-xanmod
@@ -31,7 +33,7 @@ pkgname = linux-xanmod
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.7
+	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
 	provides = linux
 	provides = linux-xanmod-git
@@ -45,8 +47,4 @@ pkgname = linux-xanmod-headers
 	provides = linux-xanmod-git-headers
 	conflicts = linux-xanmod-git-headers
 	replaces = linux-xanmod-git-headers
-
-pkgname = linux-xanmod-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel
-	provides = linux-docs
 
