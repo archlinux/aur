@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=feeluown
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="一个符合 Unix 哲学的跨平台的音乐播放器"
 arch=('any')
