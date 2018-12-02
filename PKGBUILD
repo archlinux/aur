@@ -3,7 +3,7 @@
 pkgname=gnome-calendar-linuxmint
 _pkgname=gnome-calendar
 pkgver=3.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. With Linux Mint patches"
 url="https://wiki.gnome.org/Apps/Calendar"
 arch=('x86_64')
@@ -22,10 +22,12 @@ conflicts=("${_pkgname}")
 _commit=262dd7e3b03b3eacf3b62c616005119b64e0d35e  # tags/3.30.1^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=$_commit"
         "null-icaltime.diff"
-        "add_cinnamon_settings_online_support.patch")
+        "add_cinnamon_settings_online_support.patch"
+        "set_window_icon_name.patch")
 sha256sums=('SKIP'
             'c1aa738a4ff275f725d0aa5406312600503b2b59270448a9e6b30b82a924dc27'
-            '2445f754a044dd1ccb8c948b5d5b43248b61ec3570fc76416f74148abc5abf4d')
+            '2445f754a044dd1ccb8c948b5d5b43248b61ec3570fc76416f74148abc5abf4d'
+            'd0c4affaa3edcb0c44ff1ef06a4e78951b7b5820becdbfdf7d41d90d523f3c08')
 
 pkgver() {
   cd $_pkgname
@@ -34,11 +36,14 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  #Set datetime to NULL in case there is no available date
+  # Set datetime to NULL in case there is no available date
   patch -Np1 -i ../null-icaltime.diff
   
-  #Add support so that gnome-calendar can call this when run within Cinnamon by calling cinnamon-settings online-accounts 
+  # Add support so that gnome-calendar can call this when run within Cinnamon by calling cinnamon-settings online-accounts 
   patch -Np0 -i ../add_cinnamon_settings_online_support.patch
+  
+  # Fix: Set window icon name
+  patch -Np0 -i ../set_window_icon_name.patch 
 }
 
 build() {
