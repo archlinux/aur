@@ -1,6 +1,6 @@
 pkgbase = ipwm
 	pkgdesc = PWM frequency configuration tool for i915
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/kitsunyan/ipwm
 	install = ipwm.install
@@ -9,8 +9,8 @@ pkgbase = ipwm
 	license = GPL3
 	conflicts = intelpwm-udev
 	backup = etc/ipwm.conf
-	source = ipwm-1.0.tar.gz::https://github.com/kitsunyan/ipwm/archive/1.0.tar.gz
-	sha256sums = fd3a1d914bacb78642b669ff27995817997d03359f8511707e7b7bdcdc458617
+	source = ipwm-1.1.tar.gz::https://github.com/kitsunyan/ipwm/archive/1.1.tar.gz
+	sha256sums = 2c8a72cc2fa238a5fea92f263b8eab81c2a882228c10cb2f00b184ee6e360f75
 
 pkgname = ipwm
 
