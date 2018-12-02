@@ -1,3 +1,5 @@
+# Maintainer: Davide Depau <davide@depau.eu>
+
 pkgname=ant-dracula-gtk-theme
 pkgver=1.2.0
 pkgrel=1
