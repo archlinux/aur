@@ -17,7 +17,7 @@
 # 'perl-xml-libxml' 'perl-xml-sax-expat' in makedepends
 
 pkgname=conky-cairo
-pkgver=1.10.8
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='conky - built for tolua++_5.3 in AUR - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.'
 url='https://github.com/brndnmtthws/conky'
@@ -78,7 +78,6 @@ build() {
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D BUILD_WLAN=ON \
 		-D BUILD_CURL=ON \
-		-D BUILD_RSS=ON \
 		-D BUILD_XDBE=ON \
 		-D BUILD_XSHAPE=ON \
 		-D BUILD_IMLIB2=ON \
