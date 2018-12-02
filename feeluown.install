@@ -1,0 +1,15 @@
+post_install() {
+    echo "------------- 安装说明/Install Note -------------"
+    echo "安装完成后手动使用普通用户权限执行命令安装应用图标："
+    echo "Manually run the following command to setup the application icon after installation:"
+    echo "------------------------------------------------"
+    echo "feeluown-genicon"
+    echo "------------------------------------------------"
+}
+
+post_remove() {
+    echo "------------- 卸载说明/Uninstall Note -------------"
+    echo "删除用户配置请执行： rm -r $HOME/.FeelUOwn"
+    echo "删除应用启动图标请执行： rm $HOME/.local/share/applications/feeluown.desktop"
+    echo "--------------------------------------------------"
+}
