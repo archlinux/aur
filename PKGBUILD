@@ -8,7 +8,7 @@ arch=('any')
 url="https://nncli.org"
 provides=('nncli')
 conflicts=('nncli')
-license=('MIT')
+license=('MIT' 'BSD')
 depends=('python'
   'python-urwid'
   'python-requests'

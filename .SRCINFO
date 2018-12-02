@@ -5,6 +5,7 @@ pkgbase = nncli-git
 	url = https://nncli.org
 	arch = any
 	license = MIT
+	license = BSD
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-mock
