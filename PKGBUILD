@@ -1,7 +1,7 @@
 pkgname=auracle-git
 _pkgname=auracle
 pkgver=r192.ad01c04
-pkgrel=1
+pkgrel=2
 pkgdesc='A flexible client for the AUR'
 arch=('x86_64' 'i686')
 url="https://github.com/falconindy/auracle.git"
@@ -28,7 +28,11 @@ build () {
     action=configure
   fi
 
-  meson "$action" build --buildtype=plain --default-library=static
+  meson "$action" build \
+    --prefix=/usr \
+    --buildtype=plain \
+    --default-library=static
+
   ninja -C build
 }
 
