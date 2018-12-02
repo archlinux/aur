@@ -52,4 +52,7 @@ package() {
 
   install -d "$pkgdir/usr/share/trellis/util/fuzz"
   install -m644 "$srcdir/trellis/util/fuzz/"*.py "$pkgdir/usr/share/trellis/util/fuzz"
+
+  # used by the examples to convert the bitstreams to SVF files for programming
+  install -D "$srcdir/trellis/tools/bit_to_svf.py" "$pkgdir/usr/share/trellis/tools/bit_to_svf.py"
 }
