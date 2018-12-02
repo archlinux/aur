@@ -1,6 +1,6 @@
 pkgname=guile-reader-git
 _gitname=guile-reader
-pkgver=v0.6.1.r12.gb692569
+pkgver=v0.6.1.r15.g506a51b
 pkgrel=1
 pkgdesc="a simple framework for building readers for GNU Guile"
 url="http://www.nongnu.org/guile-reader"
@@ -10,8 +10,8 @@ depends=(guile)
 provides=(guile-reader)
 conflicts=(guile-reader)
 makedepends=(gperf git)
-source=(git://git.sv.gnu.org/guile-reader.git register.patch)
-md5sums=(SKIP 577ee71c71dda2ac1fdd942dd18adc82)
+source=(git://git.sv.gnu.org/guile-reader.git)
+md5sums=(SKIP)
 
 pkgver() {
   cd "$_gitname"
@@ -20,7 +20,6 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  patch -p1 < ../../register.patch
   # avoid "configure.ac:109: error: required file 'build-aux/config.rpath' not found"
   mkdir -p build-aux && touch build-aux/config.rpath
   # recreate configure and make files
