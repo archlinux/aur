@@ -1,16 +1,17 @@
 pkgbase = vlmcsd-svn
 	pkgdesc = KMS activation using vlmcs.
-	pkgver = svn1111
+	pkgver = svn1112
 	pkgrel = 1
 	url = http://forums.mydigitallife.info/threads/50234-Emulated-KMS-Servers-on-non-Windows-platforms
 	install = vlmcsd.install
 	arch = any
 	license = unknown
 	makedepends = p7zip
-	depends = glibc
 	conflicts = vlmcsd
 	replaces = vlmcsd
+	source = http://rgho.st/download/7pwJPNKJb/4b37e7872fa564219b51016e31ba6e3759e2f1fe/4b37e7872fa564219b51016e31ba6e3759e2f1fe/vlmcsd-1112-Hotbird64-Source-only.7z
 	source = vlmcsd.service
+	sha256sums = bf56987924dd4a27bccec79d0983efdb041a3302191ab943d5b61c7e9969ba53
 	sha256sums = c145194521ebf5eadc858d89b77a468f878c9a6e1699130ff9822e133ba6917f
 
 pkgname = vlmcsd-svn
