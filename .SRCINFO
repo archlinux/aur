@@ -1,7 +1,7 @@
 pkgbase = guile-reader
 	pkgdesc = a simple framework for building readers for GNU Guile
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/guile-reader
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = guile-reader
 	depends = guile
 	options = !strip
 	source = http://download.savannah.nongnu.org/releases/guile-reader/guile-reader-0.6.2.tar.gz
-	source = reader_flag.patch
-	md5sums = 4491d6c601c151b48bcdb0b30c919a99
-	md5sums = 577ee71c71dda2ac1fdd942dd18adc82
+	source = gperf3.1.patch
+	sha256sums = fdcda586d8b5b15976df26b674fc4b2b9b4623db8e301a39aef85685b4d02215
+	sha256sums = 8e30fbd77f98d38d430a3641458b789714575117375a93fbbc50fad719383b06
 
 pkgname = guile-reader
 

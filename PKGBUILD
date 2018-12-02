@@ -3,39 +3,31 @@
 pkgname=guile-reader
 _gitname=guile-reader
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple framework for building readers for GNU Guile"
 url="http://www.nongnu.org/guile-reader"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('guile')
 makedepends=('gperf' 'git')
-source=("http://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz" reader_flag.patch)
-md5sums=('4491d6c601c151b48bcdb0b30c919a99'
-         '577ee71c71dda2ac1fdd942dd18adc82')
+source=("http://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz" gperf3.1.patch)
+sha256sums=('fdcda586d8b5b15976df26b674fc4b2b9b4623db8e301a39aef85685b4d02215'
+            '8e30fbd77f98d38d430a3641458b789714575117375a93fbbc50fad719383b06')
 options=('!strip')
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -Np1 < $srcdir/reader_flag.patch
+  patch -Np1 < "$srcdir"/gperf3.1.patch
 }
 
 build() {
   cd $pkgname-$pkgver
-  # avoid autoreconf failure
-  [[ -d  build-aux ]] || mkdir -p build-aux
-  touch build-aux/config.rpath
-  # recreate configure and make files
   autoreconf -i --force --verbose
-  # configure
-  CFLAGS= CPPFLAGS= LDFLAGS= GUILE_SITE=/usr/share/guile/site ./configure \
-	--prefix=/usr --with-guilemoduledir=/usr/share/guile/site
-  # compile
+  CFLAGS= CPPFLAGS= LDFLAGS=  ./configure --prefix=/usr 
   make
 }
 
 package() {
   cd $pkgname-$pkgver
-  make DESTDIR=$pkgdir install
-  rm $pkgdir/usr/share/info/dir
+  make DESTDIR="$pkgdir" install
 }
