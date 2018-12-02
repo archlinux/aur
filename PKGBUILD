@@ -4,13 +4,11 @@ pkgrel=1
 pkgdesc="open-source implementation of the FMI open standard"
 arch=('i686' 'x86_64')
 url="http://www.jmodelica.org/FMILibrary"
-makedepends=('cmake' 'subversion')
+makedepends=('cmake')
 depends=('minizip' 'expat')
 license=('BSD')
-#source=("http://www.jmodelica.org/downloads/FMIL/FMILibrary-${pkgver}-src.zip")
-#sha256sums=('4cc21f9e2c4114a6f4e303f82ca897ec9aa1eb6f7f09fef85979ea5fca309d9a')
-source=("FMILibrary-${pkgver}::svn+https://svn.jmodelica.org/FMILibrary/tags/${pkgver}/")
-sha256sums=('SKIP')
+source=("https://jmodelica.org/FMILibrary/FMILibrary-${pkgver}-src.zip")
+sha256sums=('4cc21f9e2c4114a6f4e303f82ca897ec9aa1eb6f7f09fef85979ea5fca309d9a')
 
 prepare() {
   cd "$srcdir"/FMILibrary-${pkgver}
