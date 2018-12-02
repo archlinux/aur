@@ -1,8 +1,9 @@
-# Maintainer: boosterdev@linuxmail.org
+# Maintainer: robertfoster
+# Contributor: boosterdev@linuxmail.org
 
 _pkgname=validictory
 pkgname=python2-$_pkgname
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="General purpose python data validator"
 arch=('any')
@@ -11,10 +12,10 @@ license=('MIT')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jamesturk/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('39e07c1040f0d3adb73d0ffc93d65c38c72fad810c76789850475072335e7fb0')
 
 package() {
     cd "${_pkgname}-${pkgver}"
     python2 setup.py install --root="$pkgdir" --optimize=1
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+md5sums=('8440c2550e61b4cce3d5155e45e51dca')
