@@ -1,7 +1,7 @@
 # Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=pgi-compilers
-_release='18.4'
+_release='18.10'
 _REL_VERSION='2018'
 pkgver=${_release}
 pkgrel=1
@@ -14,8 +14,8 @@ makedepends=('bash')
 source=("file://pgilinux-${_REL_VERSION}-${_release//./}-x86-64.tar.gz"
         "https://www.pgroup.com/doc/LICENSE.txt"
         "pgi-compilers.sh")
-sha256sums=('81e0dcf6000b026093ece180d42d77854c23269fb8409cedcf51c674ca580a0f'
-            '78abb626ddb93482b9169e2b6da205067702c8da40a201f9b1a557c261c47270'
+sha256sums=('4cc24b1c7c7a1e4b3a72f3dc3318367fe75502f93585997f2cdd0c8cc7616fd7'
+            'aa957920d152a0a778739c6da538fb01f6245e6d28655a3c144f2d42dffbfcff'
             '4aa862aece1c4df8a67b6677837fd4827d576619c67fed80af1578346c11f497')
 options=(!strip)
 
