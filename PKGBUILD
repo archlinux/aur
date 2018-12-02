@@ -1,16 +1,15 @@
 # Maintainer: Robin Lange <robin dot langenc at gmail dot com>
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
 pkgname=optimus-manager
-pkgver=0.4
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="Management utility to handle GPU switching for Optimus laptops."
 arch=('any')
 url="https://github.com/Askannz/optimus-manager"
 license=('MIT')
-depends=('python' 'python-setuptools' 'bbswitch' 'xorg-xrandr')
+depends=('python' 'python-setuptools' 'nvidia' 'mesa-demos' 'bbswitch' 'xorg-xrandr')
 makedepends=('python-setuptools')
-backup=('etc/optimus-manager/optimus-manager.conf'
-        'etc/optimus-manager/xorg-intel.conf'
+backup=('etc/optimus-manager/xorg-intel.conf'
         'etc/optimus-manager/xorg-nvidia.conf')
 source=("git+https://github.com/Askannz/optimus-manager.git#tag=v$pkgver")
 sha256sums=('SKIP')
