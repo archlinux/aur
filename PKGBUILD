@@ -4,7 +4,7 @@
 
 _pkgname=onedrive
 pkgname=$_pkgname-abraunegg-git
-pkgver=2.1.3.r2.gd1d3c8a
+pkgver=2.2.0.r4.gc24e4b0
 pkgrel=1
 epoch=1
 pkgdesc="Free OneDrive client written in D - abraunegg's fork"
