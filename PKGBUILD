@@ -14,7 +14,7 @@ url="https://stockfishchess.org/"
 license=('GPL3')
 depends=('glibc')
 source=("https://${pkgname}.s3.amazonaws.com/${pkgname}-${pkgver}-src.zip")
-sha512sums=('e198a9193d6ac3c16fcb2243d162ab67e6033ab85d900bb9fee8494b91c0608525269cf708bdbc3376c3812b0700df8cccbcddde582079c5e03680cb02dc900d')
+sha512sums=('959c4f3c497ba3108884dabc38de824f11781ae57b4ab5fdf25daf9a7fc0326e663adb1c081b8c8d57a7bf5f2e941369502a50a0c93135a001c6bd1af360d0f8')
 
 build() {
     cd "$srcdir/src"
