@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 _version=2018.3.0
-_build=b11
-_randomstring=45aaf16dbe1a
+_build=b12
+_randomstring=77f6238a7ced
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-webgl
@@ -17,7 +17,7 @@ depends=('unity-editor-beta'
          'gzip'
          'ncurses5-compat-libs')
 source=("https://beta.unity3d.com/download/${_randomstring}/LinuxEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-${_version}${_build}.tar.xz")
-sha1sums=('b8453e8a515bf534ae5421638c2dd330549f40c8')
+sha1sums=('bfaa2b21129be2e38927926b86ad9e75c9c4f7ff')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
