@@ -13,6 +13,9 @@ source=(
   "https://repo.nimiq.com/rpm/stable/${arch}/nimiq-${pkgver}-${pkgrel}.${arch}.rpm"
 )
 noextract=("${source[@]##*/}")
+backup=(
+  "etc/nimiq/nimiq.conf"
+)
 sha256sums=(
   '26dcfb2f6299a274f812dae1576b926acb04336e7dada7d8571ece93d8668cff'
 )
