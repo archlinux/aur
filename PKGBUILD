@@ -1,7 +1,7 @@
 # Maintainer: Dominik Schrempf <dominik.schrempf@gmail.com>
 pkgname=nextcloud-systemd-timers
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Systemd services and timers for Nextcloud background jobs (see Nextcloud Arch Wiki entry)."
 arch=('any')
@@ -56,12 +56,15 @@ noextract=()
 package() {
   # cd "$srcdir/$pkgname-$pkgver"
   # make DESTDIR="$pkgdir/" install
-  install -D -m 644 nextcloud-cron.service $pkgdir/etc/systemd/system/nextcloud-cron.service
-  install -D -m 644 nextcloud-cron.timer $pkgdir/etc/systemd/system/nextcloud-cron.timer
-  install -D -m 644 nextcloud-preview.service $pkgdir/etc/systemd/system/nextcloud-preview.service
-  install -D -m 644 nextcloud-preview.timer $pkgdir/etc/systemd/system/nextcloud-preview.timer
-  install -D -m 644 nextcloud-filescan.service $pkgdir/etc/systemd/system/nextcloud-filescan.service
-  install -D -m 644 nextcloud-filescan.timer $pkgdir/etc/systemd/system/nextcloud-filescan.timer
+  install -D -t $pkgdir/etc/systemd/system -m 644 \
+          nextcloud-cron.service \
+          nextcloud-cron.timer \
+          nextcloud-files-scan-all.service \
+          nextcloud-files-scan-all.timer \
+          nextcloud-preview-generate-all.service \
+          nextcloud-preview-generate-all.timer \
+          nextcloud-preview-pre-generate.service \
+          nextcloud-preview-pre-generate.timer
 }
 
 # vim:set ts=2 sw=2 et:
