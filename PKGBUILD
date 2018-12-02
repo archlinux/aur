@@ -4,7 +4,7 @@ _pkgbase="nimiq"
 pkgname=${_pkgbase}-bin
 pkgver=1.4.0
 _orig_pkgrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nimiq core"
 arch=('x86_64')
 url="https://nimiq.com"
@@ -34,6 +34,7 @@ package() {
   #install sysusers.conf
   install -Dm644 "${srcdir}/${_pkgbase}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
   bsdtar -xvf "${srcdir}/nimiq-${pkgver}-${_orig_pkgrel}.${arch}.rpm"
+  rm -rvf "usr/lib/.build-id"
   rm -rvf "etc/yum.repos.d"
   rm -rvf "etc/pki"
 }

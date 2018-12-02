@@ -1,4 +1,4 @@
 pkg/
 src/
-nimiq-1.4.0-1.x86_64.rpm
-nimiq-bin-1.4.0-1-x86_64.pkg.tar.xz
+*.rpm
+*.pkg.tar.xz
