@@ -58,7 +58,7 @@ pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
 _rtpatchver=rt${_rtver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -79,6 +79,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         "${_lucjanpath}/${_bfq_sq_mq_path}/${_bfq_sq_mq_patch}"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
+        "${_lucjanpath}/bfq-paolo/0001-block-bfq-mq-fix-num_active_groups-update.patch"
         "${_gcc_path}/${_gcc_patch}"
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
          # the main kernel config files
@@ -393,6 +394,7 @@ sha512sums=('ee460800a071aeae966078d3e7dc525e1e8e9cbb406fe878438c55da4ea42d10f50
             'SKIP'
             'e2d8e9bbea3f48415ea637c44bb90544575d5fccccec75d4956f3490d352add5dbd70901b07b4fc645885506ae555f0c3ce4b2e1d334d03949cce46cde891b1c'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
+            'c39a50af4f0f31ae887f46845af7a8a4cd325dfb67795b365ceb86eff3b27bedc8a6965286df94c33f15e5b33c069256b3c4f99cd289cb3bc3b8d34955f2fbdc'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
             '57fd6ec32b5d0400da40fcc7b81390facb3a1c062b153801d42261847e635206ecc27185f924ac8f4b40e773bbfc9639b9a6983cad8775f0a06a4ae284546ec1'
