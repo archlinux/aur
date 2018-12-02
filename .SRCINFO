@@ -1,6 +1,6 @@
 pkgbase = mnimi-git
 	pkgdesc = A simple note taking application written in python. Notes are stored in JSON and can be parsed by other utilities.
-	pkgver = 14
+	pkgver = 1.0.0.r0.gd42ce1c
 	pkgrel = 1
 	url = https://gitlab.com/ymber/mnimi
 	arch = any
