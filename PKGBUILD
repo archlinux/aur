@@ -2,12 +2,13 @@
 
 pkgname='pass-import'
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A pass extension for importing data from most of the existing password manager.'
 arch=('any')
 url='https://github.com/roddhjav/pass-import'
 license=('GPL3')
 depends=('pass' 'python' 'python-defusedxml')
+makedepends=('python-setuptools')
 source=(https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz
         https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc)
 sha512sums=('0d8c2f640540338d99c7b931c158d2f2be7bff802fb13587c7a3476a0ce941cd220bbfc1ffccb19e82913e555c2db048b1876b57bdc659bb0cb9afff4c15f7d7'
