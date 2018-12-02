@@ -1,7 +1,7 @@
 # Maintainer: Matthew Taylor <mtaylor1252dev@gmail.com>
 
 pkgname=mnimi-git
-pkgver=14
+pkgver=1.0.0.r0.gd42ce1c
 pkgrel=1
 pkgdesc="A simple note taking application written in python. Notes are stored in JSON and can be parsed by other utilities."
 arch=("any")
@@ -14,7 +14,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd mnimi
-  git rev-list --count HEAD
+  git describe --long | sed "s/-/.r/;s/-/./"
 }
 
 package() {
