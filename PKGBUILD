@@ -3,7 +3,7 @@
 pkgname=rocketchat-desktop
 pkgver=2.14.4
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
@@ -14,10 +14,12 @@ conflicts=('rocketchat-client-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/$pkgver.tar.gz"
         fix-linux-target.patch
         fix-gulp-release.patch
+        fix-electron-updater-dependency.patch
         rocketchat-desktop.desktop)
 sha512sums=('12ec5b11d10865068ce6ed1ae4ea9a16c2a68f25c186e2dc8a3b8c3bddd0b44899a5edb9283992c9bcc839c0732f7a3b2f681b3f2ccd78885f614e7464da722b'
             '31e0b1d7d9a5fefa4ad4d186df2b3eb8849d7dee9dd3fa14fff6741006ef31191575a23ba62a86f53cf9fc692d138db6a380e2ad860077bc3d854c5a9083b716'
             '796a2a56a1facc2519d65955bb39d78733c13b5993c4b03cd2af11b83aa9c6132c0fbf9e7160146c6c87bc91cb04c4e66932fe891449d031c787284b5ce9d72a'
+            'fd2c076e1c87077762994996debe935e6f29ad78ccb545eff2a8da53ef2bb5c7134d192139da6bbb4d62ddf1d7604c1aaaeffb88ece3eb652e9d6e3261be2933'
             'd87664b9bdf30eac3011393d094962e0d568a94b5eaf4c8e5f17529442dcba905cea7341527066102a97a07a981acd6ce045b8737eb78a7d81a2a2d05023fe26')
 if [[ $CARCH == "i686" ]]; then
     _releasename="release:linux-ia32"
@@ -30,11 +32,16 @@ fi
 prepare() {
     patch -p1 -d "$_srcname" < fix-linux-target.patch
     patch -p1 -d "$_srcname" < fix-gulp-release.patch
+    # remove when #1024 fixed
+    patch -p1 -d "$_srcname" < fix-electron-updater-dependency.patch
 }
 
 build() {
     cd "$srcdir/$_srcname"
-    yarn install --non-interactive --pure-lockfile --cache-folder "$srcdir/yarn-cache"
+    # https://github.com/RocketChat/Rocket.Chat.Electron/issues/1024
+    # using --no-lockfile as a workaround for broken dependencies
+    # revert to --pure-lockfile once resolved!
+    yarn install --non-interactive --no-lockfile --cache-folder "$srcdir/yarn-cache"
     yarn build --env=production "$_releasename"
 }
 
