@@ -1,16 +1,14 @@
-# Maintainer: Severen Redwood <severen@shrike.me>
-# Report all package issues to `https://github.com/SShrike/pkgbuilds`
-# Report all application issues to `https://github.com/SShrike/confmacs`
+# Contributor: Severen Redwood <severen@shrike.me>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-_gemname='confmacs'
 pkgname='confmacs-git'
-pkgver=r49.6c19333
+pkgver=r51.bf27611
 pkgrel=1
 pkgdesc='An Emacs configuration switcher.'
 arch=('any')
 license=('GPL3')
 url='https://github.com/SShrike/confmacs'
-makedepends=('git' 'ruby')
+makedepends=('git' 'rake' 'ruby-bundler')
 depends=('ruby-thor>=0.19.1' 'ruby-colorize>=0.7.3' 'ruby-highline>=1.7.2')
 conflicts=('confmacs')
 provides=('confmacs')
@@ -19,23 +17,18 @@ md5sums=('SKIP')
 noextract=("$pkgname.gem")
 
 pkgver() {
-  cd 'confmacs'
-  git checkout 'origin/develop'
+  cd ${pkgname%-git}
   echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd 'confmacs'
+  cd ${pkgname%-git}
   rake build
-  cd 'pkg'
-  mv *.gem "$pkgname.gem"
 }
 
 package() {
-  cd 'confmacs'
+  cd ${pkgname%-git}
   local _gemdir=$(ruby -e 'puts Gem.default_dir')
   echo $pkgdir$_gemdir
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "pkg/$pkgname.gem"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "pkg/${pkgname%-git}.gem"
 }
-
-# vim:set ts=2 sw=2 et:
