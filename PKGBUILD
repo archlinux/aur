@@ -8,10 +8,8 @@ depends=('mingw-w64-crt' 'mingw-w64-expat' 'mingw-w64-minizip')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('!buildflags' 'staticlibs' '!strip')
 license=('BSD')
-#source=("http://www.jmodelica.org/downloads/FMIL/FMILibrary-${pkgver}-src.zip")
-#sha1sums=('901de5765ebabb67a3b3b29eef20b6a26c80fc5c')
-source=("FMILibrary-${pkgver}::svn+https://svn.jmodelica.org/FMILibrary/tags/${pkgver}/")
-sha256sums=(SKIP)
+source=("https://jmodelica.org/FMILibrary/FMILibrary-${pkgver}-src.zip")
+sha256sums=('4cc21f9e2c4114a6f4e303f82ca897ec9aa1eb6f7f09fef85979ea5fca309d9a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

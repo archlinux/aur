@@ -13,8 +13,8 @@ pkgbase = mingw-w64-fmilib
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = FMILibrary-2.0.3::svn+https://svn.jmodelica.org/FMILibrary/tags/2.0.3/
-	sha256sums = SKIP
+	source = https://jmodelica.org/FMILibrary/FMILibrary-2.0.3-src.zip
+	sha256sums = 4cc21f9e2c4114a6f4e303f82ca897ec9aa1eb6f7f09fef85979ea5fca309d9a
 
 pkgname = mingw-w64-fmilib
 
