@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2018.2.17
+_version=2018.2.18
 _build=f1
-_randomstring=88933597c842
+_randomstring=4550892b6062
 _prefix=/opt/Unity
 
 pkgname=unity-editor-mac
@@ -15,7 +15,7 @@ license=('custom')
 depends=('unity-editor')
 makedepends=('cpio')
 source=("https://download.unity3d.com/download_unity/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-${_version}${_build}.pkg")
-sha1sums=('e3323adb15f8bcdd9f907273e338a12c0b8c0f12')
+sha1sums=('726627cd3d56f10db86ab0d098043ee14669b80c')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
