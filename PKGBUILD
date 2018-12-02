@@ -1,6 +1,6 @@
 pkgname=auracle-git
 _pkgname=auracle
-pkgver=r190.1f245b6
+pkgver=r192.ad01c04
 pkgrel=1
 pkgdesc='A flexible client for the AUR'
 arch=('x86_64' 'i686')
@@ -23,7 +23,12 @@ pkgver() {
 build () {
   cd "$_pkgname"
 
-  arch-meson build --default-library=static
+  local action=setup
+  if [[ -d build ]]; then
+    action=configure
+  fi
+
+  meson "$action" build --buildtype=plain --default-library=static
   ninja -C build
 }
 
