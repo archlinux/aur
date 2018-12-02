@@ -1,5 +1,5 @@
 pkgname=gmt-dcw
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="The Digital Chart of the World Polygon data for the Generic Mapping Tools."
 arch=('any')
@@ -9,7 +9,7 @@ depends=()
 makedepends=()
 provides=()
 source=(ftp://ftp.soest.hawaii.edu/gmt/dcw-gmt-${pkgver}.tar.gz)
-md5sums=('57b9bf8f6c266fbc379ebe75ce78c3d4')
+md5sums=('4f30857a8b12af0f910222fceb591538')
 
 build() {
   echo "Nothing to build."
