@@ -2,7 +2,7 @@
 
 pkgname="python-aletheia"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fight fake news with cryptography & human nature"
 _name=${pkgname#python-}
 arch=('any')
@@ -14,6 +14,7 @@ depends=('ffmpeg'
 'python'
 'python-setuptools'
 'python-cryptography'
+'python-dnspython'
 'python-magic'
 'python-requests'
 'python-termcolor')

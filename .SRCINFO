@@ -1,7 +1,7 @@
 pkgbase = python-aletheia
 	pkgdesc = Fight fake news with cryptography & human nature
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/aletheia/
 	arch = any
 	license = AGPL3
@@ -11,6 +11,7 @@ pkgbase = python-aletheia
 	depends = python
 	depends = python-setuptools
 	depends = python-cryptography
+	depends = python-dnspython
 	depends = python-magic
 	depends = python-requests
 	depends = python-termcolor
