@@ -2,18 +2,18 @@
 
 pkgname=js8call
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for ragchewing and message-passing based on WSJT-X"
 arch=('i686' 'x86_64')
 url="https://groups.io/g/js8call"
 license=('GPL-3')
 makedepends=(cmake asciidoc asciidoctor)
 depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat gcc-fortran libpulse libpng fftw)
-source=($pkgname-$pkgver.tar.gz::https://bitbucket.org/widefido/wsjtx/get/v$pkgver.tar.gz)
-md5sums=('04e27a931a85c844e935c3c09c9089ac')
+source=($pkgname-$pkgver.tar.gz::https://bitbucket.org/widefido/js8call/get/v$pkgver.tar.gz)
+md5sums=('a7e8b127297663809fde7764a3b4205a')
 
 build() {
-    mv $srcdir/widefido-wsjtx* $srcdir/$pkgname-$pkgver
+    mv $srcdir/widefido-js8call* $srcdir/$pkgname-$pkgver
     mkdir -p $srcdir/build
     cd $srcdir/build
     cmake -Wno-dev -Dhamlib_LIBRARY_DIRS=/usr/lib/ -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr -DCMAKE_BUILD_TYPE=Release $srcdir/$pkgname-$pkgver
