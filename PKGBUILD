@@ -1,14 +1,13 @@
-# Maintainer: Severen Redwood <severen@shrike.me>
-# Report all package issues to `https://github.com/SShrike/pkgbuilds`
-# Report all application issues to `https://github.com/SShrike/confmacs`
+# Contributor: Severen Redwood <severen@shrike.me>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='confmacs'
 pkgver='0.2.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='An Emacs configuration switcher.'
 arch=('any')
 license=('GPL3')
-makedepends=('ruby')
+makedepends=('rake')
 depends=('ruby-thor>=0.19.1' 'ruby-colorize>=0.7.3' 'ruby-highline>=1.7.2')
 url='https://github.com/SShrike/confmacs'
 source=("http://rubygems.org/downloads/$pkgname-$pkgver.gem")
@@ -20,5 +19,3 @@ package() {
   local _gemdir=$(ruby -e 'puts Gem.default_dir')
   gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$pkgname-$pkgver.gem"
 }
-
-# vim:set ts=2 sw=2 et:
