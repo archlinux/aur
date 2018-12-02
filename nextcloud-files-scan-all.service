@@ -1,5 +1,5 @@
 [Unit]
-Description=Nextcloud file scan
+Description=Nextcloud; scan all files
 
 [Service]
 User=http

@@ -1,5 +1,5 @@
 [Unit]
-Description=Nextcloud preview generation
+Description=Nextcloud; generate previews for new files only
 
 [Service]
 User=http

@@ -1,5 +1,5 @@
 [Unit]
-Description=Nextcloud cron.php
+Description=Nextcloud; run cron.php
 
 [Service]
 User=http
