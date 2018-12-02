@@ -1,3 +1,4 @@
+# Maintainer: Igor <f2404@yandex.ru>
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Original package: Ionut Biru <ibiru@archlinux.org>
 
@@ -5,27 +6,27 @@ _gitname=vte
 _realname=vte3
 pkgname=$_realname-git
 
-pkgver=0.39.91.3401.f2c40ef
+pkgver=0.55.1.4490.53690d5c
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget for use with GTK3"
 arch=('i686' 'x86_64')
 license=('LGPL')
 options=('!emptydirs')
-makedepends=('intltool' 'gobject-introspection' 'gtk3' 'gtk-doc' 'gperf')
+makedepends=('intltool' 'gobject-introspection' 'vala' 'gtk-doc' 'gperf')
 url="http://www.gnome.org"
-depends=('gtk3' 'vte-common' 'glibc')
+depends=('gtk3' 'vte-common' 'glibc' 'pcre2')
 
 provides=(vte3=$pkgver vte-common)
 conflicts=($_realname vte-common)
 
-source=(git://git.gnome.org/vte)
+source=("git+https://gitlab.gnome.org/GNOME/$_gitname.git")
 md5sums=("SKIP")
 
 subver() {
   PREFIX="m4_define(\[version_$1\],"
   echo $(grep $PREFIX configure.ac | eval sed "'s/$PREFIX//'" | sed 's/)//')
 }
- 
+
 pkgver() {
   cd $_gitname
   major=$(subver major)
