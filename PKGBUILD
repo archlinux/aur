@@ -1,6 +1,6 @@
 # Maintainer: Daniel Moch <daniel@danielmoch.com>
 pkgname=nncli
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="NextCloud Notes Command Line Interface"
 arch=('any')
@@ -20,7 +20,7 @@ checkdepends=('python-pytest'
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz.asc")
 validpgpkeys=('72A97F7072DDCE28058DEF30323C9F1784BDDD43')
-sha256sums=('df2f6a857f86fe69da0d59d4c8dc40a5457ffd81ab7496dbbd06f106b9a431d3'
+sha256sums=('d8ffc69501401119c4c8c088466a56dd46a85d4724dc05d60e521d3c99ec6d4c'
             'SKIP')
 
 build()
