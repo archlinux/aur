@@ -1,0 +1,16 @@
+pkgbase = rss-notify
+	pkgdesc = A tray applet that notifies you of new rss and atom news items via notifications
+	pkgver = 0.4
+	pkgrel = 5
+	url = https://launchpad.net/rssn/
+	arch = any
+	license = GPL3
+	depends = python2
+	optdepends = notify-osd: OSD integration
+	provides = rssn
+	replaces = rssn
+	source = http://launchpad.net/rssn/0.4/0.4/+download/rss-notify_0.4-0ubuntu0~ppa1~jaunty.tar.gz
+	sha1sums = 531deceb28e634b7d7290fd1ecec4d870996a174
+
+pkgname = rss-notify
+
