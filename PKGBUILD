@@ -1,6 +1,6 @@
 # Maintainer: Julian Thonhauser <julthon@gmail.com>
 pkgname=macos-sierra-ct-icon-theme
-_upstream_version=0.8.5
+_upstream_version=0.8.6.1
 pkgver="v$_upstream_version"
 pkgrel=1
 pkgdesc="macOs Sierra icon pack by zayronxio"
@@ -9,7 +9,7 @@ license=("GPL3")
 arch=(any)
 depends=()
 source=("$pkgname-$pkgver.zip::https://github.com/zayronxio/Macos-sierra-CT/archive/$pkgver.zip")
-sha512sums=('003f796b450f987cb4342fea1d1d7a7e1168eb2a63c4a4882528370b230c9a7b106c55d76c9cf2b4320fb31c5e1c8909bf54a34bb9c2f766ea4570b4d83a7fa9')
+sha512sums=('12cbdeb808c5e58001082df1367738eeb929e6b5df63b3e377c97f3d62961aa78b18b86b836e452abb009fe94cdf000ad7cdf4bbfd71a746e7ac4119335a9870')
 
 package() {
   _instdir="$pkgdir/usr/share/icons"
