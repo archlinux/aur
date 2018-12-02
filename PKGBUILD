@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-ess-git
-epoch=1
-pkgver=8236.b07cfdf6.
+epoch=2
+pkgver=18.10.2.git.8269.25e40029
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf "%s.%s.%s" $(awk '/defvar ess-version/ {print $3}' lisp/ess-custom.el|sed s+-beta++|tr -d \"|tr - .) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  printf "%s.%s.%s" $(cat VERSION|tr -d \"|tr - .) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
