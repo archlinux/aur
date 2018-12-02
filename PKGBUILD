@@ -23,7 +23,7 @@ optdepends=('php-gd'
             'openmpi: required for universe-cli test suite')
 install=${pkgname}.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v${pkgver}.tar.gz")
-sha256sums=('cb92231040fd09a98a97d6620bc98758774731372f8a41b58b85357c0449904c')
+sha256sums=('10d8a7e37b41719b81ae5c24c15762d0080cfb2abf34bbd079096d6194a53285')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
