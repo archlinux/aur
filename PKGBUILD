@@ -25,9 +25,7 @@ _NUMAdisable=y
 # that you currently have probed in your system VASTLY reducing the number of
 # modules built and the build time to do it.
 #
-# WARNING - ALL modules must be probed or loaded via a config file BEFORE you
-# begin making the pkg unless you're running modprobed-db (AUR) and building
-# this with makepkg as the user who is keeping the database.
+# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
@@ -66,7 +64,7 @@ _major=4.19
 pkgver=4.19.6
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -239,11 +237,12 @@ prepare() {
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
-            if [ -f $HOME/.config/modprobed.db ]; then
-            msg2 "Found a modprobed-db database for Steven Rostedt's make localmodconfig"
-            make LSMOD=$HOME/.config/modprobed.db localmodconfig
-        else
-            msg2 "Running Steven Rostedt's make localmodconfig now"
+        msg2 "If you have modprobed-db installed, running it in recall mode now"
+            if [ -e /usr/bin/modprobed-db ]; then
+            [[ -x /usr/bin/sudo ]] || {
+            echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
+            exit 1; }
+            sudo /usr/bin/modprobed-db recall
             make localmodconfig
             fi
         fi

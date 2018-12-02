@@ -1,6 +1,6 @@
 pkgbase = linux-bfq-mq
 	pkgver = 4.19.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
 	license = GPL2
