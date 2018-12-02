@@ -1,8 +1,8 @@
 pkgbase = next-browser-git
-	pkgdesc = Keyboard-oriented, Common Lisp extensible web-browser, inspired by Emacs
-	pkgver = 0.08.36.g6564e3c
-	pkgrel = 2
-	url = http://next.atlas.engineer
+	pkgdesc = Keyboard-oriented, Common Lisp extensible web-browser
+	pkgver = 1.0.0.56.g824f25d
+	pkgrel = 1
+	url = https://next.atlas.engineer
 	arch = i686
 	arch = x86_64
 	license = BSD-3
@@ -21,11 +21,7 @@ pkgbase = next-browser-git
 	conflicts = next-browser
 	options = !strip
 	options = !makeflags
-	source = next-browser::git+https://github.com/atlas-engineer/next
-	source = git+https://github.com/atlas-engineer/cl-webkit
-	source = https://beta.quicklisp.org/quicklisp.lisp
+	source = next-browser::git+https://source.atlas.engineer/public/next
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 4a7a5c2aebe0716417047854267397e24a44d0cce096127411e9ce9ccfeb2c17
 
 pkgname = next-browser-git
