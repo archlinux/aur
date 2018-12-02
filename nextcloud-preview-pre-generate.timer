@@ -1,5 +1,5 @@
 [Unit]
-Description=Nextcloud; periodically generate previews for new files only
+Description=Nextcloud; generate previews for new files only periodically
 
 [Timer]
 OnBootSec=10min

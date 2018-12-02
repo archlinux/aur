@@ -1,5 +1,5 @@
 [Unit]
-Description=Nextcloud; weekly scan all files
+Description=Nextcloud; scan all files weekly
 
 [Timer]
 OnBootSec=15min

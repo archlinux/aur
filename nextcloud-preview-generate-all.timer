@@ -1,5 +1,5 @@
 [Unit]
-Description=Nextcloud; weekly generate previews for all files
+Description=Nextcloud; generate previews for all files weekly
 
 [Timer]
 OnBootSec=20min
