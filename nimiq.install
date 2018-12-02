@@ -1,0 +1,7 @@
+post_install() {
+  # We don't know uid and gid at runtime. So we invoke systemd-sysusers here.
+  systemd-sysusers nimiq.conf
+  chown -R nimiq:nimiq var/lib/nimiq
+  chgrp -R nimiq etc/nimiq
+  chmod -R g+r etc/nimiq
+}
