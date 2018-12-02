@@ -2,7 +2,7 @@
 pkgbase=python-hookmeup
 pkgname=('python-hookmeup' 'python2-hookmeup')
 _name=${pkgname#python-}
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A Git hook to automate your Pipenv and Django workflow'
 arch=('any')
@@ -20,7 +20,7 @@ checkdepends=('python-pytest'
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         "${_name}-${pkgver}.tar.gz.asc::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz.asc")
 validpgpkeys=('72A97F7072DDCE28058DEF30323C9F1784BDDD43')
-sha256sums=('4dab750646c6d99fe65f85d9468a267210ffb843dc39bca119fec25bff01de87'
+sha256sums=('4a7f1be5b0ab20e1209235cebe14b18f08b2239abd56a7b94566fc1c9ab94d8a'
             'SKIP')
 
 prepare() {
