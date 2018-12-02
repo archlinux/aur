@@ -3,6 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Contributor: Cirrus <nailzuk at gmail dot com>
 
 pkgname=mp3blaster
 pkgver=3.2.6
