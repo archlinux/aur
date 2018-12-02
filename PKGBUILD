@@ -7,7 +7,7 @@
 #       - https://github.com/Sude-/lgogdownloader
 
 pkgname='gog-hollow-knight'
-pkgver=1.4.2.4
+pkgver=1.4.3.2
 pkgrel=1
 # Fix upstream versioning shenanigans:
 epoch=1
@@ -19,12 +19,12 @@ arch=('x86_64')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
-  'file://hollow_knight_en_1_4_2_4_23173.sh'
+  'file://hollow_knight_1_4_3_2_23987.sh'
 )
 sha256sums=(
   '987b0c0e32895d0a4214650d0afb2f3c2359b049212e13860dc9ae67553c48b4'
   '8860a0daf52181f78711c2b1099d7a09a30ba09331c68e8aae71182a996a0acd'
-  'a6dcc0d0078cb2598f81176b59541a81b2c9955a5288761086475f12d3d2f8cc'
+  '483414118634692276b2ac50ebc87c2d2b1e4ca445cc3a7c901b2af9ab59e0a5'
 )
 
 prepare() {
