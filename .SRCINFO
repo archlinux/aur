@@ -1,6 +1,6 @@
 pkgbase = unity-editor-beta-doc
 	pkgdesc = Unity User Manual and Scripting API Reference.
-	pkgver = 2018.3.0b11
+	pkgver = 2018.3.0b12
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = unity-editor-beta-doc
 	depends = unity-editor-beta
 	options = !strip
 	source = https://docs.unity3d.com/2018.3/Documentation/uploads/UnityDocumentation.zip
-	sha1sums = aeb5933b19ad8410ef9057c0074552f3c36ac892
+	sha1sums = SKIP
 
 pkgname = unity-editor-beta-doc
 
