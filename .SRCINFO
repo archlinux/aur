@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-intel-iris-git
 	pkgdesc = Mesa with Intel Iris (Gallium) Driver, 32bit git version
-	pkgver = 19.0.0_devel.106734.10c70843f23
+	pkgver = 19.0.0_devel.106736.b09a81bcffd
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
