@@ -16,7 +16,8 @@ pkgbase = pdfarranger-git
 	depends = ghostscript
 	conflicts = pdfshuffler
 	conflicts = pdfshuffler-git
-	source = pdfarranger-git::git+https://github.com/jeromerobert/pdfarranger#commit=
+	conflicts = pdfarranger
+	source = pdfarranger-git::git+https://github.com/jeromerobert/pdfarranger
 	md5sums = SKIP
 
 pkgname = pdfarranger-git

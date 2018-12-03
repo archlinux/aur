@@ -1,9 +1,4 @@
 # Maintainer:  Alois Nespor <alium at artixlinux.org>
-# Contributor:  M.Reynolds <blackboxnetworkproject@gmail.com>
-# Contributor:  speps <speps at aur dot archlinux dot org>
-# Contributor:  Anton Bazhenov <anton.bazhenov at gmail>
-# Contributor:  Tuan Nguyen
-# Contributor:  Farid <farid at archlinux-br dot org>
 
 pkgname=pdfarranger-git
 pkgver=r157.66f1463
@@ -14,9 +9,8 @@ url="https://github.com/jeromerobert/pdfarranger"
 license=('GPL3')
 depends=('gtk3' 'python-gobject' 'python-cairo' 'poppler-glib' 'python-pypdf2' 'ghostscript' )
 makedepends=('git' 'python-distutils-extra' 'python-setuptools')
-conflicts=('pdfshuffler' 'pdfshuffler-git')
-source=($pkgname::"git+https://github.com/jeromerobert/pdfarranger#commit=${_gitcommit}")
-_gitcommit=66f1463057b0a4a547a97369e926cc0bd474687a
+conflicts=('pdfshuffler' 'pdfshuffler-git' 'pdfarranger')
+source=($pkgname::"git+https://github.com/jeromerobert/pdfarranger")
 md5sums=('SKIP')
 
 pkgver () {
@@ -32,7 +26,7 @@ build () {
 package () {
     cd "$srcdir/$pkgname"
     python setup.py install --prefix=/usr --root="$pkgdir/"
-    
+
     rm -rf "$pkgdir/usr/share/pdfshuffler/icons"
 
     install -Dm 644 "data/icons/scalable/apps/pdfarranger.svg" \
