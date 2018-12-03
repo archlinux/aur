@@ -1,0 +1,11 @@
+--- a/libs/ecrypt/submissions/cryptmt/v3/sse2.c	2007-01-05 16:58:34.000000000 +0100
++++ b/libs/ecrypt/submissions/cryptmt/v3/sse2.c	2018-12-03 14:26:46.745581453 +0100
+@@ -157,7 +157,7 @@
+     	       cipher, plain, N / 2);
+ }
+ 
+-#if defined(__GNUC__)
++#if 0
+ static int is_simd_cpu(void)
+ {
+     int sse2;
