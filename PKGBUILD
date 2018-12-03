@@ -1,5 +1,5 @@
-# Maintainers: Drew DeVault <sir@cmpwn.com>
-# Current Maintainer: Bruce Zhang <zttt183525594@gmail.com>
+# Contributor(s): Drew DeVault <sir@cmpwn.com>
+# Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 
 pkgname='python-pycrypto'
 _pkgname='pycrypto'
