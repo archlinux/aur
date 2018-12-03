@@ -1,12 +1,13 @@
 # Maintainer: Gergely Imreh <imrehg@gmail.com>
 # Contributor: Gergely Imreh <imrehg@gmail.com>
+# Contributor: Matthew McGinn <mamcgi@gmail.com>
 
 pkgname=balena-cli-git
 pkgdesc='balena.io command line interface, development version'
-pkgver=9.3.0.r0.g759c2d4
+pkgver=9.3.5.r0.g6070ee0
 pkgrel=1
 arch=('x86_64')
-url='https://resin.io/'
+url='https://balena.io/'
 license=('APACHE')
 depends=('nodejs')
 makedepends=('npm' 'git' 'python2')
