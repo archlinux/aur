@@ -3,7 +3,7 @@
 # shellcheck disable=2148
 
 pkgname=mill
-pkgver=0.3.3
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="shiny new Scala build tool"
 arch=(any)
@@ -14,7 +14,7 @@ depends=('bash' 'java-environment<9')
 source=("$pkgname-$pkgver.sh::https://github.com/lihaoyi/mill/releases/download/$pkgver/$pkgver"
         "$pkgname-LICENSE::https://raw.githubusercontent.com/lihaoyi/mill/$pkgver/LICENSE")
 
-md5sums=('9be013e9a1fb3677518eda8b221f9f39'
+md5sums=('5ebf7a9aeed62e089c8dc8c506ffbee8'
          '08a3c7271d440a2388964b1d9289507a')
 
 package() {
