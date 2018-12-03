@@ -1,7 +1,7 @@
 pkgbase = crossc
 	pkgdesc = Portable C wrapper for SPIRV-Cross
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rossy/crossc/
 	arch = i686
 	arch = x86_64
