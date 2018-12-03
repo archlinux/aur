@@ -1,4 +1,5 @@
 # Maintainer: Jan Peter Koenig <public@janpeterkoenig.com>
+pkgbase=decpwd
 pkgname=decpwd-git
 pkgver=r7.21b5f75
 pkgrel=1

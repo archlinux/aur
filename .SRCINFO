@@ -1,4 +1,4 @@
-pkgbase = decpwd-git
+pkgbase = decpwd
 	pkgdesc = Very simple password manager to use over ssh
 	pkgver = r7.21b5f75
 	pkgrel = 1
