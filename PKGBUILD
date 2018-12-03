@@ -1,7 +1,7 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=libzypp-git
-pkgver=17.10.1.1.g5d59a317e
+pkgver=17.10.1.2.g273735c3b
 pkgrel=1
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
