@@ -34,7 +34,7 @@ optdepends=('libretro-overlays-git: Collection of overlays'
 	    'retroarch-assets-xmb: XMB menu assets'
 	    'retroarch-autoconfig-udev-git: udev joypad autoconfig (git latest)'
 	    'xdg-utils-git: Includes updated screensaver suspend fixes'
-            'qt5-base: For the new WIMP interface')
+	    'qt5-base: For the new WIMP interface')
 backup=('etc/retroarch.cfg')
 source=('git+https://github.com/libretro/RetroArch.git'
         'git+https://github.com/KhronosGroup/glslang.git'
