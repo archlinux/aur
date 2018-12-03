@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/menu3"
 license=('GPL')
 depends=('python')
+makedepends=('python' 'python-setuptools')
 _pkgname=menu3
 provides=("python-menu3")
 #conflicts=("python-menu3")
