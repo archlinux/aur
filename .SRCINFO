@@ -1,0 +1,15 @@
+pkgbase = meson-cmake-wrapper-git
+	pkgdesc = Build system wrapper that provides Meson integration in CMake IDE's.
+	pkgver = r106.d09f2b0
+	pkgrel = 1
+	url = https://github.com/prozum/meson-cmake-wrapper
+	arch = any
+	license = MIT
+	depends = python
+	depends = meson
+	depends = cmake
+	source = git://github.com/prozum/meson-cmake-wrapper.git
+	sha256sums = SKIP
+
+pkgname = meson-cmake-wrapper-git
+
