@@ -3,13 +3,12 @@
 pkgname=yggdrasil-git
 _pkgname="yggdrasil"
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="An experiment in scalable routing as an encrypted IPv6 overlay network"
 arch=('aarch64' 'armv6l' 'armv7h' 'armv7l' 'i686' 'x86_64')
 url="https://github.com/yggdrasil-network/yggdrasil-go"
 license=('LGPLv3')
-depends=('git')
-makedepends=('go')
+makedepends=('git' 'go')
 source=("yggdrasil::git+https://github.com/yggdrasil-network/yggdrasil-go.git#branch=master")
 md5sums=("SKIP")
 
