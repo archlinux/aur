@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Filebot
-Comment=TV renamer/subtitle downloader/sfv validator
-Exec=filebot
-Icon=filebot
-Categories=AudioVideo;
