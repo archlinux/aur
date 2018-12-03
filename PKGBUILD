@@ -6,7 +6,7 @@ _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 pkgname=mingw-w64-gcc
 pkgver=8.2.0
 _islver=0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross GCC for the MinGW-w64 cross-compiler"
 arch=('x86_64')
 url="http://gcc.gnu.org"
@@ -16,7 +16,6 @@ depends=('zlib' 'libmpc'
 	 'mingw-w64-crt' 'mingw-w64-binutils' 'mingw-w64-winpthreads'
 	 'mingw-w64-headers')
 makedepends=("gcc-ada")
-#checkdepends=('dejagnu') # Windows executables could run on Arch through bin_mft and Wine
 optdepends=()
 provides=('mingw-w64-gcc-base')
 replaces=()
@@ -24,17 +23,24 @@ backup=()
 options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
 #source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-       "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2")
+       "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+       bz86593.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
 sha256sums=('196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080'
             'SKIP'
-            'd59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8')
+            'd59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8'
+            '5e8e3819f493749e5fac1a786661e014c9e1d7819796092b5768d2fc37778476')
 
 prepare() {
   ln -sf gcc-${pkgver/+/-} gcc
-  cd "$srcdir"/gcc
+  cd gcc
+
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=86593
+  rm -f gcc/testsuite/g++.dg/pr86593.C
+  patch -p1 -i "$srcdir/bz86593.patch"
+
   # link isl for in-tree builds
   ln -sf ../isl-${_islver} isl
 }
