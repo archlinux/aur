@@ -1,10 +1,10 @@
 pkgbase = zork
 	pkgdesc = MDL Zork!
 	pkgver = 0
-	pkgrel = 3
+	pkgrel = 4
 	arch = any
 	license = none
-	depends = mdli
+	depends = confusion
 	depends = unzip
 	noextract = zork-mdl.zip
 	source = https://web.archive.org/web/20060618164309/http://simh.trailing-edge.com/games/zork-mdl.zip

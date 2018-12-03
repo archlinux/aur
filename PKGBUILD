@@ -2,11 +2,11 @@
 
 pkgname=zork
 pkgver=0
-pkgrel=3
+pkgrel=4
 pkgdesc="MDL Zork!"
 arch=('any')
 license=('none')
-depends=('mdli' 'unzip')
+depends=('confusion' 'unzip')
 source=('https://web.archive.org/web/20060618164309/http://simh.trailing-edge.com/games/zork-mdl.zip'
 	'https://web.archive.org/web/20140926035425/https://www.ifarchive.org/if-archive/programming/mdl/interpreters/confusion/confusion_mdlzork.tgz'
 	'https://web.archive.org/web/20170801114137/http://eris.club/pit/madadv.diff')
