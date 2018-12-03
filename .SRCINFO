@@ -1,7 +1,7 @@
 pkgbase = system76-io-dkms
 	pkgdesc = This DKMS driver controls System76 Io devices
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/system76-io-dkms
 	arch = x86_64
 	license = GPL3

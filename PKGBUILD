@@ -1,9 +1,10 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 
 pkgname=system76-io-dkms
+_modname=system76-io
 pkgver=0.0.1
 _commit="d7ec9914ea0aee4af22ff7ace5cba697a95309aa"
-pkgrel=1
+pkgrel=2
 pkgdesc="This DKMS driver controls System76 Io devices"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-io-dkms"
@@ -16,7 +17,7 @@ sha256sums=("5791cd88485da3ac714ebf069eafe68266c46f87be911500cab2308e34436941"
 
 package() {
   # Installation directory
-  local install_dir="${pkgdir}/usr/src/${pkgname}-${pkgver}"
+  local install_dir="${pkgdir}/usr/src/${_modname}-${pkgver}"
 
   cd ${srcdir}/${pkgname}-${_commit}
 
