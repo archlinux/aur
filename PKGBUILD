@@ -2,7 +2,7 @@
 
 pkgname=reproc
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Cross-platform library that simplifies working with external CLI applications from C and C++'
 arch=('x86_64')
 _url='https://github.com/DaanDeMeyer'
@@ -24,7 +24,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_SHARED_LIBS=ON \
-    -REPROC++=ON \
+    -DREPROC++=ON \
     -DREPROC_TESTS=ON \
     -DREPROC_EXAMPLES=ON \
     ../
