@@ -12,6 +12,7 @@ arch=('any')
 url="https://github.com/kbandla/dpkt"
 license=('custom')
 depends=('python2')
+makedepends=('python2' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/d/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
 	"${_pkgname}-${pkgver}.tar.gz.sig")
 sha512sums=('fc18907e4420249c5e8da21f630a24af6bee3e96545a58866170811c15802591a3bd6f7cf816ccb65e3437c0f451a1dc321fc46ac8a63cb8e8a06e0021e15f7f'
