@@ -9,8 +9,8 @@ post_install() {
   echo "  cd '${_folder}'"
   echo '  sudo ./Linux.sh'
   echo
-  echo 'Warning: This reboots your server immediately for the BIOS to perform the upgrade.'
-  echo 'Do NOT run during production! Stop important services before updating.'
+  echo 'Warning: This safe reboots your server immediately for the BIOS to perform the upgrade.'
+  echo 'Do NOT run during production!'
   echo 'In some cases the BIOS halts at a checksum error so this should not be done'
   echo 'without physical access or equivalent to the machine.'
   echo 'Due to many unexplained lockups shortly after BIOS upgrades, power down the system'

@@ -2,8 +2,6 @@
 
 # Tested: x86_64, i686, ts140, Linux 4.6.2-1
 
-# TODO: Stop rebooting automatically.
-
 # References
 # http://hargrave.info/articles/afulnx.html
 # https://github.com/romanhargrave/amifldrv
@@ -20,7 +18,8 @@ set -u
 pkgname='bios-lenovo-thinkserver-ts140'
 #pkgver='20180221.CVA'
 #pkgver='20180315.CWA'
-pkgver='20180711.CZA'
+#pkgver='20180711.CZA'
+pkgver='20181016.D0A'
 pkgrel='1'
 pkgdesc='BIOS update for Lenovo ThinkServer ts140 ts440' # ts240 ts540 The website claims less models than the enclosed readme
 arch=('i686' 'x86_64')
@@ -44,9 +43,9 @@ _ver="${_ver,,}"
 source=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux32.txt")
 source_i686=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux32.tgz")
 source_x86_64=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux64.tgz")
-sha256sums=('dcc2c69afcafb5dab8af3d3b1154f43a165d4b66b3c88342475fcdde9d2aba4b')
-sha256sums_i686=('5aeeb48a01c7bb01a0d9e8f919e24e6bb9746bb5f8b438260c88b9f787d46ba9')
-sha256sums_x86_64=('e1d943157d91548e3165b1230806755286a7748e1d91117b070ccbfce46fc051')
+sha256sums=('6b8b8daa1726f76b96fd14535b209716ba9b157e9df7e6d5c30633e712ea87b5')
+sha256sums_i686=('7b61d232697e2e13abeae3ba8e6f897ab31c760ea30c1757f8ab5ad0c3ac5375')
+sha256sums_x86_64=('a29580667511cb45fdd9591cbb7883193251c2274058bbf085e5d73baf2ae159')
 
 declare -gA _srcdir=(['i686']='BIOSLinux32' ['x86_64']='BIOSLinux64')
 declare -gA _exe=(['i686']='afulnx_26_32' ['x86_64']='afulnx_26_64')
@@ -69,6 +68,8 @@ EOF
   sed -e '1i #!/usr/bin/sh' \
       -e "1i cp -p '/usr/lib/${pkgname}/ArchOpts' '/tmp/'" \
       -e 's:^\(\s\+\)\./afulnx_26_64:\1sync\n&:g' \
+      -e '# Prevent auto reboot. This stops the reboot but if you dont autoreboot the updgrade doesnt happen.' \
+      -e '#s: /defans::g' \
     -i "${_sh[${CARCH}]}"
   set +u
 }
