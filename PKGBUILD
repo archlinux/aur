@@ -2,7 +2,7 @@
 
 _pkgname=curv
 pkgname="$_pkgname-git"
-pkgver=0.3.r67.g3655a99
+pkgver=0.3.r162.gf71c453
 pkgrel=1
 pkgdesc="a language for making art using mathematics"
 url="https://github.com/doug-moen/curv"
