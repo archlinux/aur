@@ -17,6 +17,7 @@ pkgbase = android-studio-beta
 	source = https://dl.google.com/dl/android/studio/ide-zips/3.3.0.17/android-studio-ide-182.5138683-linux.zip
 	source = android-studio-beta.desktop
 	sha256sums = 670936864a2a3337879c287bda7a36823f513b260d14f9dce6933f428d29ec2a
+	sha256sums = 368b5287efcfd2b421bdd10e1bdd39a8bffeb84500745c4a88729609c841bcf7
 
 pkgname = android-studio-beta
 
