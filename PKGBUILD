@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=linphone-desktop-all-git
-pkgver=4.1.1.r630.cc9f2e84
+pkgver=4.1.1.r640.f923ab1a
 pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
@@ -58,8 +58,7 @@ source=("${pkgname%-all-git}::git+https://gitlab.${pkgname%-desktop-all-git}.org
         "${pkgname%-desktop-all-git}.desktop"
         "${pkgname%-all-git}.patch"
         "${pkgname%-desktop-all-git}.patch"
-        "soci.patch"
-        "vo-amrwbenc.patch")
+        "soci.patch")
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP"
             "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP"
             "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP"
@@ -67,8 +66,7 @@ sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP
             "346d983f503873811b3a4f72772e5afe4990275526c9e15c1b5cde2ad69a0544"
             "e7574cdb0a5f8d334b1ed1d938fd6c7639e5785b80f01d39e81a682595af4171"
             "88bc7f2f6ca9cf9ad54c1e4f42fe02597070aa2cb6c8d21c3b619739550a6651"
-            "61a9a107267658971348343433a0709af7e1160d4227867faa8decd255f0289c"
-            "4aa74b282d3696c722756b72f69ee1a3f0013364803374a698e7fd5998382520")
+            "61a9a107267658971348343433a0709af7e1160d4227867faa8decd255f0289c")
 
 prepare() {
   cd "${srcdir}/${pkgname%-all-git}"
@@ -132,13 +130,14 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/${pkgname%-desktop-all-git}.patch"
 
-  cd "${srcdir}/${pkgname%-all-git}/${pkgname%-desktop-all-git}-sdk/external/vo-amrwbenc"
-
-  patch -Np1 -i "${srcdir}/vo-amrwbenc.patch"
-
   cd "${srcdir}/${pkgname%-all-git}/${pkgname%-desktop-all-git}-sdk/external/soci"
 
   patch -Np1 -i "${srcdir}/soci.patch"
+  
+  #Temporal fix
+  cd "${srcdir}/${pkgname%-all-git}/${pkgname%-desktop-all-git}-sdk/external/opencore-amr"
+  
+  git checkout 6e799838855bca868ef50a0953f0c771924321c3
 }
 
 pkgver() {
