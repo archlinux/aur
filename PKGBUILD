@@ -2,11 +2,11 @@
 
 pkgname=mdli-bin
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A MDL interpreter"
 arch=('x86_64')
 conflicts=('mdli')
-provides=('mdli')
+provides=('confusion')
 url='http://www.russotto.net/git/mrussotto/confusion'
 license=('GPL')
 source=("http://eel.sdf.org/pit/confusion-0.2.tgz")
