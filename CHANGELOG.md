@@ -1,14 +1,49 @@
 <a name="unreleased"></a>
 ## [Unreleased](https://github.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.4...HEAD)
+[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.5...HEAD)
 
+
+<a name="2.1.5"></a>
+## [2.1.5](https://github.com/langurmonkey/gaiasky/tree/2.1.4) (2018-12-03)
+[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.4...2.1.5)
+
+### Bug Fixes
+
+- null pointer when unloading stars [#322](https://github.com/langurmonkey/gaiasky/issues/322) 
+### Build system
+
+- remove rpm deps as they depend on distro 
+- update build scripts to install4j 7.0.8 
+- update to libgdx 1.9.9 
+- update data with new dr2-verylarge catalog 
+### Code Refactoring
+
+- regular textures to tex/base 
+- cleaned up logger situation 
+### Documentation
+
+- update changelog 
+- update rpm install command [#317](https://github.com/langurmonkey/gaiasky/issues/317) 
+### Features
+
+- LMC, SMC, datasets can require min gs version 
+- add support for nebulae 
+- non-jsonloader autoload files 
+- billboard galaxies 
+- passive update notifier [#321](https://github.com/langurmonkey/gaiasky/issues/321) 
+- add download speed and progress in downloaded/total to download manager 
+- add progress MB data to downloader 
+### Style
+
+- fix info message 
 
 <a name="2.1.4"></a>
-## [2.1.4](https://github.com/langurmonkey/gaiasky/tree/2.1.3) (2018-11-22)
+## [2.1.4](https://github.com/langurmonkey/gaiasky/tree/2.1.3) (2018-11-23)
 [Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.3...2.1.4)
 
 ### Bug Fixes
 
+- locale index overflow 
 - german translation and locale initialisation [#320](https://github.com/langurmonkey/gaiasky/issues/320) 
 - do not preselect default dataset, only base data 
 - sizing of download manager window 
@@ -30,6 +65,9 @@
 - script to query HIP names in simbad 
 - add optional output folder to csv process 
 - script to process dr2 csv files 
+### Style
+
+- wee reformatting 
 
 <a name="2.1.3"></a>
 ## [2.1.3](https://github.com/langurmonkey/gaiasky/tree/2.1.2-vr) (2018-10-31)
@@ -70,6 +108,18 @@
 - heap sizes in build script 
 - macOS -XstartOnFirstThread flag 
 - macos builds tweaks 
+- heap sizes in build script 
+- macOS -XstartOnFirstThread flag 
+- assets location in install4j template 
+- macos builds tweaks 
+- heap sizes in build script 
+- macOS -XstartOnFirstThread flag 
+- macos builds tweaks 
+- macos builds tweaks 
+- heap sizes in build scripts 
+- heap sizes in build script 
+- macOS -XstartOnFirstThread flag 
+- macOS -XstartOnFirstThread flag 
 - global key bindings affect invisible GUIs [#311](https://github.com/langurmonkey/gaiasky/issues/311) 
 - fix `p` double-mapping [#310](https://github.com/langurmonkey/gaiasky/issues/310) 
 ### Build system
@@ -77,7 +127,16 @@
 - installer detects and removes previous versions 
 - new gradle 5 compile dep format 
 - update to lwjgl 3.2.3 
+- update to lwjgl 3.2.3 
 - missing flag in rund, fix caps in ruler 
+- new gradle 5 compile dep format 
+- update to lwjgl 3.2.3 
+- update to lwjgl 3.2.3 
+- new gradle 5 compile dep format 
+- update to lwjgl 3.2.3 
+- new gradle 5 compile dep format 
+- update to lwjgl 3.2.3 
+- update to lwjgl 3.2.3 
 - add javadoc generator and publisher 
 ### Code Refactoring
 
@@ -91,7 +150,17 @@
 ### Features
 
 - update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
 - cosmic ruler [#296](https://github.com/langurmonkey/gaiasky/issues/296) 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
+- update to lwjgl3 backend 
 - API calls to disable and enable the GUI [#312](https://github.com/langurmonkey/gaiasky/issues/312) 
 ### Style
 
