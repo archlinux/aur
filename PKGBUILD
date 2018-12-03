@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=flutter
-pkgver=0.11.12
+pkgver=0.11.13
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -26,9 +26,9 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/${pkgname}_linux_v${pkgver}-beta.tar.xz"
         "${pkgname}.sh"
         "${pkgname}.csh")
-sha256sums=('6c9a2efc13ca03ac2713c447ab9acb216ba5e1257ba5fef79422128adf6a0240'
-            '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
-            '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
+sha256sums=("13c41d9aa4ccae5b96a9e068ed630183c5496d047e3db55d902b5c21d6408622"
+            "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
+            "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f")
 
 build() {
   cd "${srcdir}/${pkgname}"
@@ -39,9 +39,11 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
   install -Dm755 "${srcdir}/${pkgname}.csh" "${pkgdir}/etc/profile.d/${pkgname}.csh"
-  install -d "${pkgdir}/opt/${pkgname}/"
+  install -dm755 "${pkgdir}/opt/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
   cp -ra "${srcdir}/${pkgname}" "${pkgdir}/opt/"
   find "${pkgdir}/opt/${pkgname}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname}" -type f -exec chmod a+r {} +
   chmod a+rw "${pkgdir}/opt/${pkgname}/bin/cache/lockfile" "${pkgdir}/opt/${pkgname}/version"
+  ln -s "/opt/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
