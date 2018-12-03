@@ -4,7 +4,7 @@ pkgname=heketi-client
 _pname=${pkgname%%-client}
 _shortname=${_pname}-cli
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RESTful based volume management framework for GlusterFS (client)"
 arch=('x86_64')
 url="https://github.com/heketi/heketi"
@@ -22,6 +22,7 @@ package() {
     install -dm755 "$pkgdir"/usr/{bin,share}
     install -dm755 "$pkgdir"/usr/share/"$pkgname"/{kubernetes,openshift}
     install -dm755 "$pkgdir"/usr/share/"$pkgname"/openshift/templates
+    install -m755 bin/"$_shortname" "$pkgdir"/usr/bin/"$_shortname"
     for target in kubernetes openshift; do
         [[ "$target" == "openshift" ]] && tpl="templates/"
         install -m755 share/"$_pname"/"$target"/"$tpl"* \
