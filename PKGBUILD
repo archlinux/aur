@@ -13,7 +13,7 @@ arch=( 'i686' 'x86_64' )
 url="https://pypi.python.org/pypi/validators"
 license=( 'custom' )
 depends=( 'python' 'python-decorator' )
-makedepends=( 'python' )
+makedepends=('python' 'python-setuptools')
 _pkgname=validators
 
 install=
