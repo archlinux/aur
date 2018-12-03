@@ -1,15 +1,15 @@
 pkgbase = c-lolcat
 	pkgdesc = High-performance implementation of lolcat
-	pkgver = r40.ceb4d66
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://github.com/jaseg/lolcat
 	arch = i686
 	arch = x86_64
 	license = WTFPL
 	conflicts = lolcat
 	conflicts = pyhton-lolcat
-	source = c-lolcat::git+https://github.com/jaseg/lolcat.git
-	sha256sums = SKIP
+	source = https://github.com/jaseg/lolcat/archive/v1.0.tar.gz
+	sha256sums = 77ebfecde6afdf24447dd834507ea8bc550ee89b0e1211e7d3866a4824a6ee1d
 
 pkgname = c-lolcat
 
