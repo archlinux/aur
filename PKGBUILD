@@ -13,6 +13,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/moxie0/chapcrack"
 license=("GPL3")
 depends=('python2' 'python2-dpkt' 'python2-m2crypto' 'python2-passlib')
+makedepends=('python2' 'python2-setuptools')
 source=('git+https://github.com/moxie0/chapcrack.git')
 sha512sums=('SKIP')
 
