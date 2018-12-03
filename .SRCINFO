@@ -1,9 +1,8 @@
 pkgbase = leagueoflegends-git
 	pkgdesc = League Of Legends: Install/Run wrapper
-	pkgver = 0.13.r14.g243a74d
+	pkgver = 0.13.r24.g08f238a
 	pkgrel = 1
 	url = https://github.com/Nefelim4ag/League-Of-Legends
-	install = leagueoflegends-git.install
 	arch = any
 	license = GPL3
 	depends = wine
@@ -11,12 +10,11 @@ pkgbase = leagueoflegends-git
 	depends = bash
 	depends = lib32-gnutls
 	depends = lib32-libldap
+	depends = lib32-openal
+	depends = lib32-libpulse
 	depends = wget
-	optdepends = lib32-libpulse: for audio
-	optdepends = wine-staging: can work better
 	conflicts = leagueoflegends
-	backup = etc/leagueoflegends.conf
-	source = leagueoflegends-git::git://github.com/Nefelim4ag/League-Of-Legends.git#branch=master
+	source = leagueoflegends-git::git+https://github.com/Nefelim4ag/League-Of-Legends.git#branch=master
 	md5sums = SKIP
 
 pkgname = leagueoflegends-git
