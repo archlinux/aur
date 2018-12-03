@@ -3,8 +3,8 @@
 # Contributor: mezcal
 
 pkgname=rspamd
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.3
+pkgrel=1
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=(x86_64 i686 armv7h)
@@ -105,7 +105,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/arc
 		"fixes-${pkgver}.diff"
 		)
 
-sha256sums=('6cacf6ea0cd72eebc085aa70acef9b3c928c100c9d05232e760b94fe41ac90df'
+sha256sums=('09ad1808e8b56db954b29622976efca54785223beaa7b859b2cdb900408de8d7'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
             '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f'
             'e705cc908a8e081e4a830cfec5acfc38f00125c5281bb074c939ba3b4a7a8c8b'
