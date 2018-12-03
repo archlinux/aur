@@ -1,0 +1,14 @@
+pkgbase = zafiro-icon-theme-git
+	pkgdesc = Icon pack flat with light colors
+	pkgver = v0.7.3.r0.g8c5fc90
+	pkgrel = 1
+	url = https://github.com/zayronxio/Zafiro-icons
+	arch = any
+	license = GPL3
+	provides = zafiro-icon-theme
+	conflicts = zafiro-icon-theme
+	source = zafiro-icon-theme-git::git+https://github.com/zayronxio/Zafiro-icons
+	sha256sums = SKIP
+
+pkgname = zafiro-icon-theme-git
+
