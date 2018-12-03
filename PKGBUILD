@@ -2,12 +2,13 @@
 
 pkgname=key-bin
 pkgver=2.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Java Software Verification Tool"
 arch=(any)
 url="https://www.key-project.org/"
 license=('GPL')
 depends=("java-runtime")
+optdepends=("z3")
 source=("https://formal.iti.kit.edu/key/releases/2.6.3/key-2.6.3_7d3deab0763c88edee4f7a08e604661e0dbdd450.zip"
         "key.desktop"
         "key.sh")
