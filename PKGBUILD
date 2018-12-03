@@ -1,4 +1,4 @@
-# Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
+# Maintainer: Parker Reed <parker.l.reed@gmail.com>
 # Generate new listing of cores: 
 # pacaur -s libretro | sed 's/aur\///' | sed 'N;s/\n/ /' | awk '{print $1}'
 # This package tracks the latest source code on GitHub
@@ -10,7 +10,7 @@
 #        'git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=5c24d99')
 
 pkgname=retroarch-git
-pkgver=1.7.3.r281.a4144dfe9b
+pkgver=1.7.5.r364.fa904de2f2
 pkgrel=1
 #epoch=1
 _gitname=RetroArch
