@@ -4,8 +4,8 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=firefox-wayland
-pkgver=63.0.1
-pkgrel=2
+pkgver=63.0.3
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with Wayland support enabled"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -13,23 +13,20 @@ url="https://www.mozilla.org/firefox/"
 provides=('firefox')
 conflicts=('firefox')
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib 
-         ffmpeg nss hunspell-en_US sqlite ttf-font libpulse libvpx icu)
+         ffmpeg nss ttf-font libpulse sqlite libvpx icu)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
              python nodejs python2-psutil cbindgen)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech')
-options=(!emptydirs !makeflags !strip)
+            'speech-dispatcher: Text-to-Speech',
+            'hunspell-en_US: Spell checking, American English')
+options=(!emptydirs !makeflags)
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
-        0001-Keep-mozilla-release-building-with-newer-cbindgen-ve.patch
-        0002-dont-delete-clipboard-data-after-focus-out.patch
         firefox.desktop firefox-symbolic.svg)
 sha256sums=('SKIP'
-            'a1e523f830f28217e050991062358c91be254e21732a6391449a8c0e3e0de77f'
-            '3f43a57857c0d130fd31f56086398b21b0a445364830e2ed3128db270196899f'
             '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
@@ -48,12 +45,6 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 prepare() {
   mkdir mozbuild
   cd mozilla-unified
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1503401
-  patch -Np1 -i ../0001-Keep-mozilla-release-building-with-newer-cbindgen-ve.patch
-  
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1504689
-  patch -Np1 -i ../0002-dont-delete-clipboard-data-after-focus-out.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
