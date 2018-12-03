@@ -1,7 +1,7 @@
 pkgbase = laptop-mode-tools
 	pkgdesc = Power Saving tool for Linux
 	pkgver = 1.72.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rickysarraf/laptop-mode-tools/
 	arch = any
 	license = GPL

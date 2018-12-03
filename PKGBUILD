@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 # Contributor: Aaditya Bagga <aaditya_gnulinux@zoho.com>
@@ -7,7 +7,7 @@
 
 pkgname=laptop-mode-tools
 pkgver=1.72.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Power Saving tool for Linux'
 arch=('any')
 url='https://github.com/rickysarraf/laptop-mode-tools/'
@@ -58,7 +58,7 @@ package() {
     
     # use '/bin' instead of '/sbin'
     mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
-    find "$pkgdir" -type f -exec sed -i 's|sbin/laptop_mode|bin/laptop_mode|g' '{}' ';'
+    find "$pkgdir" -type f -exec sed -i 's|sbin/laptop_mode|bin/laptop_mode|g' {} +
     
     install -D -m755 gui/LMT.py "${pkgdir}/usr/bin/lmt-gui"
     
