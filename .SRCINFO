@@ -1,66 +1,60 @@
 pkgbase = webkitgtk
 	pkgdesc = Legacy Web content engine
 	pkgver = 2.4.11
-	pkgrel = 14
+	pkgrel = 15
 	epoch = 3
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
+	arch = armv7h
 	arch = i686
 	arch = x86_64
-	arch = armv7h
 	license = custom
-	makedepends = gtk3
-	makedepends = gtk2
-	makedepends = gperf
 	makedepends = gobject-introspection
-	makedepends = python2
+	makedepends = gperf
+	makedepends = gtk2
+	makedepends = gtk3
 	makedepends = mesa
+	makedepends = python2
 	makedepends = ruby
-	depends = libxt
-	depends = libxslt
-	depends = sqlite
-	depends = libsoup
 	depends = enchant>=2.2
-	depends = libgl
 	depends = geoclue2
 	depends = gst-plugins-base-libs
+	depends = harfbuzz-icu
+	depends = libgl
 	depends = libsecret
 	depends = libwebp
-	depends = harfbuzz-icu
-	depends = icu>=61
+	depends = libxslt
+	depends = libxt
+	optdepends = gst-libav: nonfree media decoding
 	optdepends = gst-plugins-base: free media decoding
 	optdepends = gst-plugins-good: media decoding
-	optdepends = gst-libav: nonfree media decoding
 	options = !emptydirs
 	source = https://webkitgtk.org/releases/webkitgtk-2.4.11.tar.xz
 	source = webkitgtk-2.4.9-abs.patch
-	source = icu59.patch
 	source = enchant-2.x.patch
+	source = icu59.patch
 	source = pkgconfig-enchant-2.patch
 	sha256sums = 588aea051bfbacced27fdfe0335a957dca839ebe36aa548df39c7bbafdb65bf7
-	sha256sums = ec294bbb5588a1802a68e3615c6718486b22f922645c5fef686d3d103014bf70
-	sha256sums = a1118b3c9317806438c1e2f46f17e15556aae34665f739ca72b94b10b16ae422
-	sha256sums = 8db282f3b7f0e21ff51121c2579466c3194475a20d35c4fbd0e53f35b5639919
-	sha256sums = df8284004f25d189184aab1009df696c915212e0e439a555dbd0dbec06111e2e
+	sha256sums = e40f1e08665e1646ebc490141678f26c9c4a2792207fdf7c05978547eae9f61c
+	sha256sums = 7e37e059f071aaef93e387675de1a0c6a3dcf61ef67a3221a078caca69e22079
+	sha256sums = 4e94e35b036f8a87a64e02d747d4103c0553dfe637fda372785c2b95211445ca
+	sha256sums = a1e2f24b28273746b2fbaecef42495f6314c76b16a446c22dc123e6a3afb58c8
 
 pkgname = webkitgtk
 	pkgdesc = Legacy Web content engine for GTK+ 3
-	depends = libxt
-	depends = libxslt
-	depends = sqlite
-	depends = libsoup
 	depends = enchant>=2.2
-	depends = libgl
 	depends = geoclue2
 	depends = gst-plugins-base-libs
+	depends = harfbuzz-icu
+	depends = libgl
 	depends = libsecret
 	depends = libwebp
-	depends = harfbuzz-icu
-	depends = icu>=61
+	depends = libxslt
+	depends = libxt
 	depends = gtk3
+	optdepends = gst-libav: nonfree media decoding
 	optdepends = gst-plugins-base: free media decoding
 	optdepends = gst-plugins-good: media decoding
-	optdepends = gst-libav: nonfree media decoding
 	optdepends = gtk2: Netscape plugin support
 	provides = webkitgtk3=2.4.11
 	provides = libwebkit3=2.4.11
@@ -71,18 +65,15 @@ pkgname = webkitgtk
 
 pkgname = webkitgtk2
 	pkgdesc = Legacy Web content engine for GTK+ 2
-	depends = libxt
-	depends = libxslt
-	depends = sqlite
-	depends = libsoup
 	depends = enchant>=2.2
-	depends = libgl
 	depends = geoclue2
 	depends = gst-plugins-base-libs
+	depends = harfbuzz-icu
+	depends = libgl
 	depends = libsecret
 	depends = libwebp
-	depends = harfbuzz-icu
-	depends = icu>=61
+	depends = libxslt
+	depends = libxt
 	depends = gtk2
 	provides = libwebkit=2.4.11
 	conflicts = libwebkit
