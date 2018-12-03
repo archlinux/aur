@@ -4,13 +4,13 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=('python-inotify' 'python2-inotify')
 pkgver=0.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Access inotify events via python (this is NOT related to python-pynotify!)"
 arch=( 'i686' 'x86_64' )
 url="https://pypi.python.org/pypi/inotify"
 license=( 'GPL2' )
 depends=( 'python' 'python2' )
-makedepends=( 'python' 'python2' )
+makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 _pkgname=inotify
 install=
 changelog=
