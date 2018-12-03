@@ -1,19 +1,26 @@
 pkgbase = hop
 	pkgdesc = Software Development Kit for the Web
-	pkgver = 3.2.0_pre1
-	pkgrel = 11
+	pkgver = 3.1.0
+	pkgrel = 1
+	epoch = 1
 	url = http://hop.inria.fr
 	install = hop.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
+	makedepends = git
 	depends = bigloo
+	depends = gmp
+	depends = libunistring
+	depends = libuv
+	depends = avahi
+	depends = sqlite
+	provides = hop
+	conflicts = hop
 	options = !makeflags
-	source = ftp://ftp-sop.inria.fr/indes/fp/Hop/hop-3.2.0-pre1.tar.gz
-	source = hop
-	sha256sums = 8606ad2b805d3d5c5e4ffe11e9bd87ccf7fb49d545594cb434386186a1d88a52
-	sha256sums = d1b40876e3a3d06c32f17c2a50dc950ab8c6ec68d7eea0754fe284ca4c226e5b
+	source = git+https://github.com/manuel-serrano/hop.git#commit=b4c4c3f98c2b4af4f87c4ea5270b09323d50211c
+	md5sums = SKIP
 
 pkgname = hop
 
