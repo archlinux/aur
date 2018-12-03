@@ -11,9 +11,9 @@ pkgrel=5
 pkgdesc="A python library and CLI tool that simplifies chroot handling"
 arch=( 'i686' 'x86_64' )
 url="https://pypi.python.org/pypi/pychroot/"
-license=( 'BSD' )
-depends=( 'python' 'python-snakeoil' )
-makedepends=( 'python' 'python-snakeoil' )
+license=('BSD')
+depends=('python' 'python-snakeoil')
+makedepends=('python' 'python-snakeoil' 'python-setuptools')
 _pkgname=pychroot
 
 install=
