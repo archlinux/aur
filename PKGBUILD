@@ -2,15 +2,16 @@
 
 pkgname=vim-makejob
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal, asynchronous quickfix commands for Vim 8.0"
 arch=('any')
-url="https://github.com/djmoch/vim-makejob"
+url="https://git.danielmoch.com/vim-makejob.git"
 license=('MIT')
-groups=('vim-plugins')
 depends=('vim')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/djmoch/$pkgname/archive/v${pkgver}.tar.gz")
-sha512sums=('67c0cffa905d652f696ae89c6906ca38b7f34af28a1b7e47c5cdf22a06f8a694f7bb1fae1ec2928e4dd813ac224071f9369563031688da31cda6fd903ab09440')
+source=("${url}/snapshot/${pkgname}-${pkgver}.tar.gz"{,.asc})
+validpgpkeys=('72A97F7072DDCE28058DEF30323C9F1784BDDD43')
+sha512sums=('67c0cffa905d652f696ae89c6906ca38b7f34af28a1b7e47c5cdf22a06f8a694f7bb1fae1ec2928e4dd813ac224071f9369563031688da31cda6fd903ab09440'
+            'SKIP')
 
 package() {
   cd $pkgname-$pkgver
