@@ -3,12 +3,13 @@
 
 pkgname=packup
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple Pacman backup and restore script."
 arch=('any')
 url="https://github.com/ghost1227/packup"
 license=('GPL')
 makedepends=('git')
+optdepends=('yaourt')
 depends=('dialog')
 source=(git://github.com/ghost1227/packup)
 md5sums=('SKIP')
