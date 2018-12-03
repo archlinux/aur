@@ -1,7 +1,7 @@
 # Maintainer: Kristof Vannotten <kristof@vannotten.be>
 pkgname=pcd
 _pkgname=pcd
-pkgver=v0.5.2
+pkgver=v0.6.0
 pkgrel=1
 pkgdesc="cli podcatcher writter in go"
 arch=('i686' 'x86_64')
