@@ -1,6 +1,6 @@
 pkgbase = i3-git
 	pkgdesc = An improved dynamic tiling window manager
-	pkgver = 4.16.r5.g07e5747c
+	pkgver = 4.16.r44.g52d785fb
 	pkgrel = 1
 	url = http://i3wm.org/
 	arch = i686
