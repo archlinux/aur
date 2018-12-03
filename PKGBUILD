@@ -10,7 +10,7 @@ license=('GPL2')
 depends_i686=('lzo' 'bzip2' 'zlib' 'openssl')
 depends_x86_64=('lib32-lzo' 'lib32-bzip2' 'lib32-zlib' 'lib32-openssl' 'lib32-gcc-libs')
 makedepends_x86_64=('gcc-multilib')
-source=("quickbms_${pkgver}.zip::http://aluigi.altervista.org/papers/quickbms_src.zip")
+source=("https://aluigi.altervista.org/papers/quickbms_src_$pkgver.zip")
 sha512sums=('b61bede331e808faec5c7c653cb4ece91835319dce59b8a9bdd31b542814a4de85d27aec18d8661cef87e2a170ba88e651c5266bc5e5b823f333b5f94aff1ab9')
 
 build() {
