@@ -19,7 +19,7 @@ backup=()
 options=()
 install=install
 changelog=
-source=(https://github.com/Microsoft/team-explorer-everywhere/releases/download/${pkgver}/TEE-CLC-${pkgver}.zip)
+source=(https://github.com/Microsoft/team-explorer-everywhere/releases/download/v${pkgver}/TEE-CLC-${pkgver}.zip)
 sha256sums=('af4b7123a09475ff03a3f5662df3de614df2f4acc33df16cdab307b5fb6d7dc7')
 
 package() {
