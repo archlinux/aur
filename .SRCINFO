@@ -1,0 +1,17 @@
+pkgbase = nodejs-nodekey
+	pkgdesc = A Simple interactive CLI password manager, store and generator based on scrypt
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gitlab.com/xoria/nodekey/
+	arch = any
+	license = GPL3
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	source = https://registry.npmjs.org/nodekey/-/nodekey-1.1.0.tgz
+	md5sums = b20ef5cd6fd9dbc981cc52af23d4586a
+	sha1sums = 3e35e7619ba265a292b423ef2131c5d17d4af6c6
+	sha256sums = 091de898fcf8eaa0501878967455d2c444996f86ea623e1aedcabb9b0f5260fb
+
+pkgname = nodejs-nodekey
+
