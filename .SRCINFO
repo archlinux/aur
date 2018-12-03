@@ -1,6 +1,6 @@
 pkgbase = simpleaur-git
 	pkgdesc = simpleaur, a AUR helper that does not require extra dependences.
-	pkgver = 56.3a6420b
+	pkgver = 57.14b708a
 	pkgrel = 1
 	url = https://gitlab.com/edu4rdshl/simpleaur
 	arch = any
