@@ -1,14 +1,14 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cilium-git
-pkgver=1.3.0rc5.r189.g3c1c2b614
+pkgver=1.3.0rc5.r496.gfad721332
 pkgrel=1
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
 url="https://cilium.io/"
 license=('Apache')
 depends=('docker' 'iproute2' 'clang')
-makedepends=('go' 'lib32-glibc' 'bazel' 'ninja')
+makedepends=('go' 'lib32-glibc' 'bazel' 'ninja' 'docker')
 optdepends=('consul' 'etcd')
 conflicts=()
 source=("${pkgname}::git+https://github.com/cilium/cilium" "cilium.sysusers")
@@ -43,8 +43,16 @@ build() {
 
 	export PKG_BUILD=1
 
+	export CC="/usr/bin/gcc"
+	export CXX="/usr/bin/g++"
+
 	make -C daemon apply-bindata
-	make V=1 proxylib plugins bpf cilium daemon monitor cilium-health bugtool tools
+	make V=1 proxylib plugins bpf cilium daemon monitor cilium-health bugtool tools operator
+
+	cd envoy
+
+	unset PKG_BUILD
+	make BINDIR="${PWD}" install
 }
 
 package() {
@@ -53,6 +61,8 @@ package() {
 	export PKG_BUILD=1
 
 	make DESTDIR="${pkgdir}" install
+
+	install -Dm755 envoy/cilium-envoy "${pkgdir}/usr/bin"
 
 	install -Dm644 "$srcdir/cilium.sysusers" \
 		"$pkgdir/usr/lib/sysusers.d/cilium.conf"
