@@ -8,12 +8,12 @@
 
 pkgname=filebot-git
 _pkgname=filebot
-pkgver=4.8.5.20181128
+pkgver=4.8.5.20181202
 _pkgver=4.8.5
 pkgrel=1
 pkgdesc="The ultimate TV and Movie Renamer"
 _jnaver=4.5.2
-_fixedcommit=ca1b8c04400fc0e83cd04ad4c5d13361dbd855ea
+_fixedcommit=f6efdbced839f96f9685640345b2e4eee30f61b6
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 license=('Commercial')
 url="https://github.com/filebot/filebot"
@@ -33,12 +33,13 @@ _jre=$(archlinux-java get)
 
 source=("${_pkgname}::git+https://github.com/filebot/filebot.git"
         #https://github.com/java-native-access/jna/archive/$_jnaver.tar.gz
-        $_pkgname-arch.sh $_pkgname.svg $_pkgname.desktop)
+        $_pkgname-arch.sh
+        #$_pkgname.svg
+        #$_pkgname.desktop
+        )
 
 md5sums=('SKIP'
-         'a4cc7024a9c593abeb22a2511c96aef1'
-         '04f46be047049448dba3f0de29fe192d'
-         'f37edd0bba7570904d28ab1681c7a7f3')
+         'a1f708b2a17a1a548f910ea0c53a9f54')
 
 optdepends=('libzen: Required by libmediainfo'
 	    'libmediainfo: Read media info such as video codec, resolution or duration'
@@ -91,12 +92,27 @@ build() {
 }
 
 package() {
+  mkdir -p $pkgdir/usr/share/{java/$_pkgname,applications,icons}
+
   install -Dm644 $_pkgname/lib/native/linux-$_intarch/libjnidispatch.so "$pkgdir/usr/share/java/$_pkgname/libjnidispatch.so"
   cp -dpr --no-preserve=ownership $_pkgname/dist/lib/* "$pkgdir/usr/share/java/$_pkgname/"
 
   install -Dm755 $_pkgname-arch.sh "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 $_pkgname.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
-  install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
+  # install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
   
+  cd "$srcdir/$_pkgname/"
+
+  # copy .desktop files
+  cp -dpr --no-preserve=ownership installer/deb/share/applications/* "$pkgdir/usr/share/applications/"
+  
+  # copy MIME types
+  cp -dpr --no-preserve=ownership installer/deb/share/mime "$pkgdir/usr/share/mime"
+  sed -i "s/@{license.mimetype}/application\/x-filebot-license/g; s/@{license.description}/FileBot License File/g; s/@{package.name}/$_pkgname/g; s/@{license.extension}/psm/g" $pkgdir/usr/share/mime/packages/$_pkgname.xml
+
+  # copy Icons
+  # install -Dm644 $_pkgname.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+  install -Dm644 installer/icons/$_pkgname.svg "$pkgdir/usr/share/icons/$_pkgname.svg"
+
   sudo archlinux-java set $_jre
 }
