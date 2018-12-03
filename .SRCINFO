@@ -1,6 +1,6 @@
 pkgbase = python-deap-git
 	pkgdesc = Distributed Evolutionary Algorithms in Python (GIT-version)
-	pkgver = 1.0.1.r1801.dd7bf38
+	pkgver = 1.2.2.r1972.82f774d
 	pkgrel = 1
 	url = https://github.com/DEAP/deap
 	arch = any

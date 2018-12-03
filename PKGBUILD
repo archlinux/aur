@@ -1,7 +1,7 @@
-# Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
+# Maintainer: Shi Liang <shilianggoo@gmail.com>
 
 pkgname=python-deap-git
-pkgver=1.0.1.r1801.dd7bf38
+pkgver=1.2.2.r1972.82f774d
 pkgrel=1
 pkgdesc="Distributed Evolutionary Algorithms in Python (GIT-version)"
 arch=('any')
