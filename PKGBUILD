@@ -1,15 +1,21 @@
-# Maintainer: Jonathan Sumner Evans <sumner.evans98@gmail.com>
+# Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
 
-pkgname="zsh-you-should-use"
-pkgver=0.5.0
+pkgbase=('zsh-you-should-use')
+pkgname=('zsh-you-should-use')
+_module='zsh-you-should-use'
+pkgver='0.6.0'
 pkgrel=1
-pkgdesc="ZSH plugin that reminds you to use existing aliases for commands you just typed"
-url="https://github.com/MichaelAquilina/zsh-you-should-use"
-arch=("any")
-license=("GPL3")
-source=("https://github.com/MichaelAquilina/${pkgname}/archive/${pkgver}.tar.gz")
+pkgdesc='ZSH plugin that reminds you to use existing aliases for commands you just typed'
+url='https://github.com/MichaelAquilina/zsh-you-should-use'
+depends=(
+)
+makedepends=()
+arch=('any')
+license=('GPL3')
+source=('https://github.com/MichaelAquilina/zsh-you-should-use/archive/0.6.0.tar.gz')
 install="${pkgname}.install"
-sha256sums=("d41f1cbfba03d6f446d2e19f7b758fe81e154dd9287415699c2438c450c144c3")
+sha256sums=('c1c16c0bc339c6212748798528c1c62703dce86cd0381ef2ec6e115abc45e6fc')
+
 
 package() {
     install -d "${pkgdir}/usr/share/zsh/plugins/${pkgname}"
