@@ -1,0 +1,16 @@
+pkgbase = btrfs-sync
+	pkgdesc = Smart and easy sync of BTRFS snapshots, locally or through SSH.
+	pkgver = 16
+	pkgrel = 1
+	url = https://github.com/nachoparker/btrfs-sync
+	arch = any
+	license = GPL3
+	depends = btrfs-progs
+	optdepends = openssh: for openssh support.
+	optdepends = pv: allows a user to see the progress of data through a pipeline.
+	optdepends = pbzip2: parallel bzip2 file compression.
+	source = git+https://github.com/nachoparker/btrfs-sync.git
+	md5sums = SKIP
+
+pkgname = btrfs-sync
+
