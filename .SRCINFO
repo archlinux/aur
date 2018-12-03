@@ -1,16 +1,17 @@
 pkgbase = ruby-tty-spinner
 	pkgdesc = A terminal spinner for tasks that have non-deterministic time frame.
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = http://github.com/piotrmurach/tty-spinner
 	arch = any
 	license = MIT
 	depends = ruby
-	depends = ruby-tty-cursor>=0.5
-	noextract = tty-spinner-0.8.0.gem
+	depends = ruby-tty-cursor>=0.6
+	depends = ruby-tty-cursor<0.7
+	noextract = tty-spinner-0.9.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/tty-spinner-0.8.0.gem
-	sha1sums = 2b469319e91b83962c1634d96d5289f6d4102fb4
+	source = https://rubygems.org/downloads/tty-spinner-0.9.0.gem
+	sha1sums = 76df112351f79560493a0aa6bf695954e6353908
 
 pkgname = ruby-tty-spinner
 
