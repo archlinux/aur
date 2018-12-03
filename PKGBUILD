@@ -1,4 +1,5 @@
-# Maintainer: hacker1024 <jleivenzon at gmail dot com>
+# Maintainer:  Wynne Plaga <rwplaga.linux@gmail dot com>
+# Contributor: hacker1024 <jleivenzon at gmail dot com>
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
 # Contributor: tilal6991 <lalitmaganti@gmail.com>
 # Contributor: danyf90 <daniele.formichelli@gmail.com>
@@ -8,9 +9,9 @@
 # Contributor: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
 
 pkgname=android-studio-beta
-pkgver=3.3.0.16
+pkgver=3.3.0.17
 pkgrel=1
-_build=182.5114240
+_build=182.5138683
 pkgdesc="The Official Android IDE (Beta branch)"
 arch=('i686' 'x86_64')
 url="http://tools.android.com/"
@@ -22,8 +23,7 @@ optdepends=('gtk2: GTK+ look and feel'
 options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-ide-$_build-linux.zip"
         "$pkgname.desktop")
-sha256sums=('02369c3ae059091d7593546d072a70307be13b7f6db276b9a78507b6a9e5ff89'
-            '368b5287efcfd2b421bdd10e1bdd39a8bffeb84500745c4a88729609c841bcf7')
+sha256sums=('670936864a2a3337879c287bda7a36823f513b260d14f9dce6933f428d29ec2a')
 
 if [ "$CARCH" = "i686" ]; then
     depends+=('java-environment')
