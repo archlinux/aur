@@ -1,14 +1,14 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=visual-studio-code-insiders
-pkgver=1533299529
+pkgver=1543817840
 pkgrel=1
 pkgdesc="Editor for building and debugging modern web and cloud applications (insiders version)"
 arch=('x86_64' 'i686')
 url="https://code.visualstudio.com/"
 license=('custom: commercial')
 provides=('vscode' 'visualstudiocode')
-depends=(fontconfig libxtst gtk3 python cairo alsa-lib gconf nss gcc-libs libnotify libxss gvfs)
+depends=(fontconfig libxtst gtk3 python cairo alsa-lib gconf nss gcc-libs libnotify libxss gvfs lsof)
 source_x86_64=(code_x64_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-x64/insider
                ${pkgname}.desktop
                )
