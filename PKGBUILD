@@ -6,17 +6,17 @@
 # Contributor:  Farid <farid at archlinux-br dot org>
 
 pkgname=pdfarranger-git
-pkgver=r131.4dcb5ef
+pkgver=r157.66f1463
 pkgrel=1
 pkgdesc="Helps merge or split pdf documents and rotate, crop and rearrange pages."
 arch=('any')
 url="https://github.com/jeromerobert/pdfarranger"
 license=('GPL3')
-depends=('gtk3' 'python-gobject' 'python-cairo' 'poppler-glib' 'python-pypdf2' 'ghostscript')
-makedepends=('git')
+depends=('gtk3' 'python-gobject' 'python-cairo' 'poppler-glib' 'python-pypdf2' 'ghostscript' )
+makedepends=('git' 'python-distutils-extra' 'python-setuptools')
 conflicts=('pdfshuffler' 'pdfshuffler-git')
 source=($pkgname::"git+https://github.com/jeromerobert/pdfarranger#commit=${_gitcommit}")
-_gitcommit=4dcb5ef8873ff9ff3936d3cb0d49b8fb4f2ca3cf
+_gitcommit=66f1463057b0a4a547a97369e926cc0bd474687a
 md5sums=('SKIP')
 
 pkgver () {
@@ -35,11 +35,11 @@ package () {
     
     rm -rf "$pkgdir/usr/share/pdfshuffler/icons"
 
-    install -Dm 644 "data/hicolor/scalable/apps/pdfarranger.svg" \
+    install -Dm 644 "data/icons/scalable/apps/pdfarranger.svg" \
                     "$pkgdir/usr/share/icons/hicolor/scalable/apps/pdfarranger.svg"
 
     for _size in "16x16" "32x32" "48x48" "256x256" ; do
-        install -Dm 644 "data/hicolor/$_size/apps/pdfarranger.png" \
+        install -Dm 644 "data/icons/$_size/apps/pdfarranger.png" \
                         "$pkgdir/usr/share/icons/hicolor/$_size/apps/pdfarranger.png"
     done
 }
