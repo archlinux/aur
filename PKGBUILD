@@ -64,7 +64,7 @@ _major=4.19
 pkgver=4.19.6
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -88,7 +88,6 @@ source=(# mainline kernel patches
         # bfq-mq patch
         "${_lucjanpath}/${_bfq_sq_mq_path}/${_bfq_sq_mq_patch}"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
-        "${_lucjanpath}/bfq-paolo/0001-block-bfq-mq-fix-num_active_groups-update.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -106,7 +105,6 @@ sha256sums=('644e61beb66211c0c5c13f91d96de1725055e6eea4cda7bb37ce9929ba8f09c3'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             '3ac265b7be567e628c073d64bd9a9090360c9d98e9c7b9f60ca206a86882932e'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '24cb65676c000dcd038282a62070425bca45dfc428620cb0aaf754ca4303702f'
             '1baeb84a779bde01ebf748fc7a86a3643df264a3edf22eac333e880877ab40fc'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
