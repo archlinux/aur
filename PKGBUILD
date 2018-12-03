@@ -1,4 +1,6 @@
+# Contributor(s): xgdgsc <xgdgsc@gmail.com>
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
+
 pkgname=feeluown
 pkgver=2.2
 pkgrel=2
