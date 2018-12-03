@@ -3,7 +3,7 @@
 pkgname=crossc-git
 _srcname=crossc
 pkgver=1.6.0.r0.g98689d7
-pkgrel=2
+pkgrel=3
 pkgdesc='Portable C wrapper for SPIRV-Cross (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/rossy/crossc/'
@@ -41,5 +41,25 @@ build() {
 package() {
     cd "$_srcname"
     
+    local _file
+    local _lib
+    local _soname
+    local _somaj
+    local _sover
+    
     make DESTDIR="$pkgdir" prefix='/usr' install
+    
+    cd "${pkgdir}/usr/lib"
+    
+    # create missing symbolic link
+    while read -rd '' _file
+    do
+        _lib="${_file##*/}"
+        _soname="${_lib%%.*}"
+        _sover="${_lib##*.so.}"
+        _somaj="${_sover%%.*}"
+        
+        ln -s "${_lib}" "${_soname}.so.${_somaj}"
+        
+    done < <(find . -type f -name 'lib*.so.*.*.*' -print0)
 }
