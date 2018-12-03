@@ -2,30 +2,27 @@
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=qactus
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A Qt-based OBS notifier application'
 arch=(x86_64)
 url='https://github.com/javierllorente/qactus'
 license=(GPL2 GPL3)
 depends=(desktop-file-utils gtk-update-icon-cache qtkeychain)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/javierllorente/qactus/archive/v$pkgver.tar.gz"
-        0001-Fix-issue-4-Protocol-is-unknown-during-login.patch)
-sha256sums=('5a4b748983b4c45653e2298a6282b53ff81766502f841f1709ffbe1b8f7db976'
-            'a1264c32f4ceb91343b3e70dbae39e0e9300740351899088d588ae45bffbbc31')
-
-prepare() {
-  cd qactus-$pkgver
-  sed -i "s/lib64/lib/g" src/qobs/qobs.pro
-  patch -Np1 -i ../0001-Fix-issue-4-Protocol-is-unknown-during-login.patch
-}
+makedepends=(cmake)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/javierllorente/qactus/archive/v$pkgver.tar.gz")
+sha256sums=('6ad205715f377bb95c3b01f141eef588b0f5a939030478df4be4d2912c8673a4')
 
 build() {
-  cd qactus-$pkgver
-  qmake-qt5 PREFIX=/usr qactus.pro
-  make
+    cd $pkgname-$pkgver
+    cmake . \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib
+    make
 }
 
 package() {
-  make -C qactus-$pkgver INSTALL_ROOT="${pkgdir}" install
+    cd $pkgname-$pkgver
+    make DESTDIR="${pkgdir}" install
 }
