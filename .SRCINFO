@@ -1,0 +1,16 @@
+pkgbase = decpwd-git
+	pkgdesc = Very simple password manager to use over ssh
+	pkgver = r7.21b5f75
+	pkgrel = 1
+	url = https://github.com/suthernfriend/decpwd
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = qt5-base
+	provides = decpwd
+	conflicts = decpwd
+	source = git+https://github.com/suthernfriend/decpwd.git
+	md5sums = SKIP
+
+pkgname = decpwd-git
+
