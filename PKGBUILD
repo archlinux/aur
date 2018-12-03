@@ -7,7 +7,7 @@ url="https://github.com/ripple/rippled"
 license=('custom:ISC')
 backup=("etc/opt/ripple/rippled.cfg" "etc/opt/ripple/validators.txt")
 depends=('protobuf' 'boost-libs')
-makedepends=('cmake' 'boost' 'clang' 'doxygen')
+makedepends=('git' 'cmake' 'boost' 'clang' 'doxygen')
 source=("https://github.com/ripple/rippled/archive/$pkgver.zip")
 sha256sums=('SKIP')
 
