@@ -3,8 +3,8 @@
 # This PKGBUILD is managed at https://github.com/sudoforge/pkgbuilds
 
 pkgname=wee-slack-git
-pkgver=2.1.1.r23.g469535e
-pkgrel=2
+pkgver=2.2.0.r1.g5146b1f
+pkgrel=1
 pkgdesc="A WeeChat plugin for slack"
 arch=('any')
 url="https://github.com/wee-slack/${pkgname%-git}"
