@@ -1,6 +1,6 @@
 # Maintainer: David Rodriguez <dissonant.tech@gmail.com>
 pkgname=tee-clc
-pkgver=14.134.0
+pkgver=14.114.0
 pkgrel=1
 epoch=
 pkgdesc="Team Explorer Everywhere Plug-in for Eclipse and Cross-platform Command-line Client for Team Foundation Server"
