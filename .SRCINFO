@@ -43,6 +43,7 @@ pkgbase = retroarch-git
 	optdepends = retroarch-assets-xmb: XMB menu assets
 	optdepends = retroarch-autoconfig-udev-git: udev joypad autoconfig (git latest)
 	optdepends = xdg-utils-git: Includes updated screensaver suspend fixes
+	optdepends = qt5-base: For the new WIMP interface
 	provides = retroarch
 	conflicts = retroarch
 	backup = etc/retroarch.cfg
