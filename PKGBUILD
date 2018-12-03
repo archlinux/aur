@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=gotop-git
-pkgver=1.5.0.r6.gd44be12
+pkgver=1.6.0.r0.g1ab25d0
 pkgrel=1
 pkgdesc='A terminal based graphical activity monitor inspired by gtop and vtop'
 arch=(x86_64)
@@ -29,7 +29,10 @@ prepare() {
 build() {
 	cd "$srcdir/go/src/github.com/cjbassi/gotop"
 
-	GOPATH="$srcdir/go" make dist/gotop
+	export GOPATH="$srcdir/go"
+
+	go get -v github.com/cjbassi/gotop 
+	make dist/gotop
 }
 
 package() {
