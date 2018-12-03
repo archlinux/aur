@@ -1,6 +1,6 @@
 pkgbase = xf86-video-intel-git
 	pkgdesc = X.org Intel i810/i830/i915/945G/G965+ video drivers
-	pkgver = 2.99.917+855+g746ab3bb
+	pkgver = 2.99.917+856+ge5ff8e18
 	pkgrel = 1
 	epoch = 1
 	url = https://01.org/linuxgraphics
