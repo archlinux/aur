@@ -46,5 +46,5 @@ package() {
   find "${pkgdir}/opt/${pkgname%-dev}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname%-dev}" -type f -exec chmod a+r {} +
   chmod a+rw "${pkgdir}/opt/${pkgname%-dev}/bin/cache/lockfile" "${pkgdir}/opt/${pkgname%-dev}/version"
-  ln -rTsf "/opt/${pkgname%-dev}/bin/${pkgname%-dev}" "${pkgdir}/usr/bin/${pkgname%-dev}"
+  ln -s "/opt/${pkgname%-dev}/bin/${pkgname%-dev}" "${pkgdir}/usr/bin/${pkgname%-dev}"
 }
