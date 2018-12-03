@@ -1,37 +1,19 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
-
-_digest='http://www.imagemagick.org/download/delegates/digest.rdf'
-_srcver=$(curl -s "$_digest" | grep -o 'libfpx-.*\.tar\.xz' | sed 's/[^0-9\.-]*//g' | sed -r 's/.//;s/.{2}$//')
-_srcver_regex=$(printf '%s' "$_srcver" | sed 's/\./\\\./g') # translate $_srcver to a regular expression
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=libfpx
-pkgver="$(printf '%s' "$_srcver"| tr '-' '.')" # there is no download archive of all previous versions
-pkgrel=1
+pkgver=1.3.1.10
+_srcver="$(printf '%s' "$pkgver" | sed -E s'/(\.)([0-9]*)$/-\2/')"
+pkgrel=2
 pkgdesc='FlashPIX OpenSource Toolkit'
 arch=('i686' 'x86_64')
-url='http://www.imagemagick.org/download/delegates/'
+url='https://www.imagemagick.org/download/delegates/'
 license=('custom')
 depends=('gcc-libs')
-makedepends=('curl')
-provides=('libfpx.so')
-source=("http://www.imagemagick.org/download/delegates/${pkgname}-${_srcver}.tar.xz")
-sha256sums=("$(curl -s "$_digest" | grep -A5 "${pkgname}-${_srcver_regex}\.tar\.xz" |
-                                    grep 'sha256'                                   |
-                                    grep -oE '>[[:alnum:]]*?<'                      |
-                                    sed 's/[><]//g')")
+source=("https://www.imagemagick.org/download/delegates/${pkgname}-${_srcver}.tar.xz")
+sha256sums=('491b55535580d27355669c45fe995446bd34df5dbcdc15312e58c3ebecc6a455')
 
-build() {
+prepare() {
     cd "${pkgname}-${_srcver}"
-    ./configure \
-        --prefix='/usr' \
-        --enable-static='no' \
-        --enable-shared='yes'
-    make
-}
-
-package() {
-    cd "${pkgname}-${_srcver}"
-    make DESTDIR="$pkgdir" install
     
     # create a "LICENSE" file (note: license is in the file 'flashpix.h')
     cp -af flashpix.h LICENSE
@@ -40,6 +22,29 @@ package() {
     sed -i '1s/^.\{,3\}//'    LICENSE
     sed -i '2,79s/^.\{,2\}//' LICENSE
     sed -i '80s/^.\{,3\}//'   LICENSE
+}
+
+build() {
+    cd "${pkgname}-${_srcver}"
     
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ./configure \
+        --prefix='/usr' \
+        --enable-static='no' \
+        --enable-shared='yes'
+        
+    make
+}
+
+check() {
+    cd "${pkgname}-${_srcver}"
+    
+    make check
+}
+
+package() {
+    cd "${pkgname}-${_srcver}"
+    
+    make DESTDIR="$pkgdir" install
+    
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
