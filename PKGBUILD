@@ -1,6 +1,6 @@
 # Maintainer: J. Scheurich <mufti11@web.de>
 pkgname=white_dune
-pkgver=0.99pl1200
+pkgver=0.99pl1202
 pkgrel=1
 epoch=
 pkgdesc="white_dune X3D/VRML97 tool"
