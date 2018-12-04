@@ -16,7 +16,7 @@ pkgbase = fotoxx
 	optdepends = hugin: for panorama photos
 	options = !makeflags
 	source = http://www.kornelix.net/downloads/tarballs/fotoxx-19.0.tar.gz
-	sha512sums = 5e3c3e46565f915bbc2461e1b6ef4914c2117cf7e0d0d4005e3b70440c21a3ccfc575f8e72405c98f764619b3e65c4064d5043e3b32ce6b1f1eb4be751757817
+	sha512sums = a1d5f85227da92901adaff33ee223f363c509b9115b01701a81e3ef831bfdbb148d475af0e08e7600f38a0f5c22b809d6f87d149bf77a070df5db8c3689b6984
 
 pkgname = fotoxx
 
