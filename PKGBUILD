@@ -1,7 +1,7 @@
 # Maintainer: Lucas Malandrino <lucas.malandrino@gmail.com>
 pkgname='edex-ui-git'
 _pkgname='edex-ui'
-pkgver=1.1.1.r13.ge050021
+pkgver=1.1.2.r2.gdd521f8
 pkgrel=1
 pkgdesc="A science fiction desktop running everywhere. Awesome."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -40,7 +40,7 @@ package() {
 
     # Extract the package made by electron-builder
     # It's not pretty but blame electron
-    tar xf ./dist/eDEX-UI-linux.pacman -C "${pkgdir}"
+    tar xf ./dist/eDEX-UI-linux-*.pacman -C "${pkgdir}"
     cd "${pkgdir}"
 
     # Garbage made by electron-builder
