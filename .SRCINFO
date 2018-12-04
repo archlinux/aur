@@ -1,6 +1,6 @@
 pkgbase = threelayout
 	pkgdesc = Keyboard layout designed by Jack Rosenthal
-	pkgver = 41.66f2e67
+	pkgver = 45.d3c9798
 	pkgrel = 1
 	url = https://github.com/jackrosenthal/threelayout
 	install = threelayout.install

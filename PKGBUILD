@@ -3,7 +3,7 @@
 # Contributor: David Florness <edwargix@gmail.com>
 pkgname=threelayout
 _keymap=3l
-pkgver=41.66f2e67
+pkgver=45.d3c9798
 pkgrel=1
 pkgdesc="Keyboard layout designed by Jack Rosenthal"
 arch=(any)
