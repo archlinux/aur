@@ -6,7 +6,7 @@ pkgbase = bisq
 	arch = any
 	license = AGPL3
 	makedepends = maven
-	makedepends = jdk8-openjdk
+	makedepends = jdk10-openjdk
 	makedepends = protobuf
 	depends = java-openjfx
 	source = bisq::git+https://github.com/bisq-network/bisq-desktop.git#tag=v0.9.0

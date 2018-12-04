@@ -8,7 +8,7 @@ arch=('any')
 url="https://bisq.network"
 license=('AGPL3')
 depends=('java-openjfx')
-makedepends=('maven' 'jdk8-openjdk' 'protobuf')
+makedepends=('maven' 'jdk10-openjdk' 'protobuf')
 source=("${pkgname}::git+https://github.com/bisq-network/bisq-desktop.git#tag=v${pkgver}"
         "bisq.desktop")
 sha256sums=('SKIP'
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
 build() {
   cd "${srcdir}/${pkgname}" || exit
   msg2 "Building bisq..."
-  ./gradlew build
+  ./gradlew build -Dorg.gradle.java.home=/usr/lib/jvm/java-10-openjdk
 }
 
 package() {
