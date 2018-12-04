@@ -12,11 +12,11 @@ sha256sums=('SKIP')
 
 build() {
     cd $srcdir/$pkgname
-	cargo build --release
+    cargo build --release
 }
 
 package() {
     cd $srcdir/$pkgname
-	install -D -m755 target/release/$pkgname $pkgdir/usr/bin/$pkgname
+    install -D -m755 target/release/$pkgname $pkgdir/usr/bin/$pkgname
 }
 
