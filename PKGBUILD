@@ -2,7 +2,7 @@
 # Contributor: Dunon <josep.oliver at tutanota dot com>
 
 pkgname=grevis-git
-pkgver=0.1.1.r5.ffeabe3
+pkgver=0.1.6.r2.a319aec
 pkgrel=1
 pkgdesc='A simple game launcher'
 arch=('any')

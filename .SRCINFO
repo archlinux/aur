@@ -1,6 +1,6 @@
 pkgbase = grevis-git
 	pkgdesc = A simple game launcher
-	pkgver = 0.1.1.r5.ffeabe3
+	pkgver = 0.1.6.r2.a319aec
 	pkgrel = 1
 	url = https://gitlab.gnome.org/dunon/grevis
 	arch = any
