@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=2ping
-pkgver=4.2
+pkgver=4.3
 pkgrel=1
 pkgdesc="a bi-directional ping utility"
 arch=('any')
@@ -10,7 +10,7 @@ license=("GPL2")
 depends=("python" "python-dnspython" "python-netifaces" "python-pycryptodome")
 makedepends=("python-setuptools")
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/rfinnie/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('121cebb25c7bbd54ff94097188f5b3580bcf9ecd413ea876a4fef4aecdb35a73')
+sha256sums=('d729c021ed5bcd29137da520a465632e19cf4c4339e0426546593379a570327e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

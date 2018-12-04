@@ -1,6 +1,6 @@
 pkgbase = 2ping
 	pkgdesc = a bi-directional ping utility
-	pkgver = 4.2
+	pkgver = 4.3
 	pkgrel = 1
 	url = https://www.finnie.org/software/2ping/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = 2ping
 	depends = python-dnspython
 	depends = python-netifaces
 	depends = python-pycryptodome
-	source = 2ping-4.2.tar.gz::https://github.com/rfinnie/2ping/archive/v4.2.tar.gz
-	sha256sums = 121cebb25c7bbd54ff94097188f5b3580bcf9ecd413ea876a4fef4aecdb35a73
+	source = 2ping-4.3.tar.gz::https://github.com/rfinnie/2ping/archive/v4.3.tar.gz
+	sha256sums = d729c021ed5bcd29137da520a465632e19cf4c4339e0426546593379a570327e
 
 pkgname = 2ping
 
