@@ -1,7 +1,7 @@
 # Maintainer: Skjnldsv <skjnldsv at protonmail com>
 
 pkgname=gnome-pomodoro-git
-pkgver=r1007.4e7c274
+pkgver=r1010.7654eb7
 pkgrel=1
 _gitbranch='master'
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
