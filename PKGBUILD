@@ -1,7 +1,8 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=libopenshot-audio-git
-pkgver=0.1.7.r0.g21e092d
+_srcname=libopenshot-audio
+pkgver=0.1.7.r3.g3861a2c
 pkgrel=1
 pkgdesc='A high-quality audio editing and playback library used by libopenshot (git version)'
 arch=('i686' 'x86_64')
@@ -11,18 +12,18 @@ depends=('alsa-lib' 'freetype2' 'libxcursor' 'libxinerama' 'libxrandr')
 makedepends=('git' 'cmake' 'doxygen')
 provides=('libopenshot-audio')
 conflicts=('libopenshot-audio')
-source=("$pkgname"::'git+https://github.com/OpenShot/libopenshot-audio.git')
+source=('git+https://github.com/OpenShot/libopenshot-audio.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     mkdir -p build
     cd build
@@ -36,7 +37,7 @@ build() {
 }
 
 package() {
-    cd "${pkgname}/build"
+    cd "${_srcname}/build"
     
     make DESTDIR="$pkgdir" install
 }
