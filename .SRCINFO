@@ -1,0 +1,13 @@
+pkgbase = perkeep-bin
+	pkgdesc = Perkeep (née Camlistore) is a set of open source formats, protocols, and software for modeling, storing, searching, sharing and synchronizing data in the post-PC era
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://perkeep.org/
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	source = https://perkeep.org/dl/perkeep-0.10.1-linux.tar.gz
+	sha256sums = 96a9832efccad5f8037d75870287539382b22dfa5795f113551bd9386def8f88
+
+pkgname = perkeep-bin
+
