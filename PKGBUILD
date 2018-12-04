@@ -5,7 +5,7 @@
 
 pkgname=lxd-git
 _pkgname=lxd
-pkgver=3.4.r8.7f82f4fa
+pkgver=3.7.r103.34fd1ba2
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
@@ -34,8 +34,14 @@ md5sums=('ad8ad313898fac0487fcf9a3b9b926ea'
 prepare() {
   export GOPATH="${srcdir}/go"
   mkdir -p "${GOPATH}"
-  # download the go package along with all of its go dependencies
-  go get -d -v "${_lxd}/lxd"
+  if [ ! -f "${GOPATH}/src/${_lxd}/Makefile" ]; then
+    # download the go package along with all of its go dependencies
+    go get -d -v "${_lxd}/lxd"
+  else
+    # or update the existing packages
+    cd "${GOPATH}/src/${_lxd}"
+    make update
+  fi
 }
 
 pkgver() {
