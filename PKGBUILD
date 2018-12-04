@@ -2,7 +2,7 @@
 
 pkgname=libtirpc-compat
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Transport Independent RPC library (SunRPC replacement, backwards compatible links)"
 arch=('x86_64')
 url="http://libtirpc.sourceforge.net/"
@@ -16,9 +16,11 @@ build() {
 
 package() {
   mkdir -p "${pkgdir}"/usr/include/rpc
-  cd "${pkgdir}"/usr/include/rpc
-  for ii in $(ls /usr/include/tirpc/*); do
-    ln -s ../tirpc/rpc/$ii .
+  for ii in $(cd /usr/include/tirpc/ && ls *.h); do
+    ln -s /usr/include/tirpc/$ii "${pkgdir}"/usr/include/rpc/$ii
+  done
+  for ii in $(cd /usr/include/tirpc/rpc/ && ls *.h); do
+    ln -s /usr/include/tirpc/rpc/$ii "${pkgdir}"/usr/include/rpc/$ii
   done
 }
 
