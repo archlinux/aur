@@ -2,7 +2,7 @@
 
 _gitname=telepathy-tank
 pkgname=telepathy-tank-git
-pkgver=r10.5312a42
+pkgver=r26.4d41a98
 pkgrel=1
 pkgdesc="Matrix connection operator for the Telepathy framework"
 arch=(i686 x86_64 armv7h aarch64)
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../telepathy-tank \
+  cmake ../$_gitname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib/telepathy \
