@@ -1,6 +1,6 @@
 pkgbase = grevis
 	pkgdesc = A simple game launcher
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://gitlab.gnome.org/dunon/grevis
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = grevis
 	depends = python
 	depends = gtk3
 	conflicts = grevis-git
-	source = https://gitlab.gnome.org/dunon/grevis/-/archive/0.1.5/grevis-0.1.5.tar.gz
-	md5sums = 2782f0a208b573257126599f5a3ac9fd
+	source = https://gitlab.gnome.org/dunon/grevis/-/archive/0.1.6/grevis-0.1.6.tar.gz
+	md5sums = c630a863df72568429fa2671ab036047
 
 pkgname = grevis
 
