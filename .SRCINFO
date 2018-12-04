@@ -1,14 +1,18 @@
 pkgbase = tpm2-pkcs11-git
 	pkgdesc = A PKCS#11 interface for TPM2 hardware
-	pkgver = r16.2f1283b
+	pkgver = r111.e04d114
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-pkcs11
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = gnulib-git
 	depends = tpm2-tools-git
-	depends = python-werkzeug
+	depends = sqlite
+	depends = python-cryptography
+	depends = python-yaml
 	source = git+https://github.com/tpm2-software/tpm2-pkcs11.git
 	sha256sums = SKIP
 

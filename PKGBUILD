@@ -1,14 +1,14 @@
 # Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=tpm2-pkcs11-git
-pkgver=r16.2f1283b
+pkgver=r111.e04d114
 pkgrel=1
 pkgdesc="A PKCS#11 interface for TPM2 hardware"
 arch=('i686' 'x86_64')
 url="https://github.com/tpm2-software/tpm2-pkcs11"
 license=('BSD')
-depends=('tpm2-tools-git' 'python-werkzeug')
-makedepends=('git')
+depends=('tpm2-tools-git' 'sqlite' 'python-cryptography' 'python-yaml')
+makedepends=('git' 'autoconf-archive' 'gnulib-git')
 source=("git+https://github.com/tpm2-software/tpm2-pkcs11.git")
 sha256sums=('SKIP')
 
@@ -20,7 +20,7 @@ pkgver() {
 build() {
   cd $srcdir/tpm2-pkcs11
 
-  ./bootstrap
+  ./bootstrap --include=/usr/share/gnulib-git/m4
   ./configure --prefix /usr
   make
 }
