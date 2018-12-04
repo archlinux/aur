@@ -19,9 +19,11 @@ pkgbase = gnome-calendar-linuxmint
 	source = git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=262dd7e3b03b3eacf3b62c616005119b64e0d35e
 	source = null-icaltime.diff
 	source = add_cinnamon_settings_online_support.patch
+	source = set_window_icon_name.patch
 	sha256sums = SKIP
 	sha256sums = c1aa738a4ff275f725d0aa5406312600503b2b59270448a9e6b30b82a924dc27
 	sha256sums = 2445f754a044dd1ccb8c948b5d5b43248b61ec3570fc76416f74148abc5abf4d
+	sha256sums = 8711fb95c39d1f4c34ca537a4dfa8a07736c92c3f4411b1b974ca78b6ed36e5b
 
 pkgname = gnome-calendar-linuxmint
 

@@ -22,12 +22,12 @@ conflicts=("${_pkgname}")
 _commit=262dd7e3b03b3eacf3b62c616005119b64e0d35e  # tags/3.30.1^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=$_commit"
         "null-icaltime.diff"
-        "add_cinnamon_settings_online_support.patch")
-        #"set_window_icon_name.patch")
+        "add_cinnamon_settings_online_support.patch"
+        "set_window_icon_name.patch")
 sha256sums=('SKIP'
             'c1aa738a4ff275f725d0aa5406312600503b2b59270448a9e6b30b82a924dc27'
-            '2445f754a044dd1ccb8c948b5d5b43248b61ec3570fc76416f74148abc5abf4d')
-            #'8395252849da14ce048d03a53f17cffad06e345e8b1b47f8fc3681fd7e23345d')
+            '2445f754a044dd1ccb8c948b5d5b43248b61ec3570fc76416f74148abc5abf4d'
+            '8711fb95c39d1f4c34ca537a4dfa8a07736c92c3f4411b1b974ca78b6ed36e5b')
 
 pkgver() {
   cd $_pkgname
@@ -43,7 +43,7 @@ prepare() {
   patch -Np0 -i ../add_cinnamon_settings_online_support.patch
   
   # Fix: Set window icon name
-  # patch -Np0 -i ../set_window_icon_name.patch 
+  patch -Np0 -i ../set_window_icon_name.patch 
 }
 
 build() {

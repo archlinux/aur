@@ -1,9 +1,9 @@
 --- src/gcal-window.c
 +++ src/gcal-window.c
-@@ -1574,6 +1574,8 @@
+@@ -1570,7 +1570,9 @@
+   gcal_window_add_accelerator (app, "win.change-view(2)",    "<Ctrl>2");
    gcal_window_add_accelerator (app, "win.change-view(3)",    "<Ctrl>3");
    gcal_window_add_accelerator (app, "win.toggle-search-bar", "<Ctrl>f");
-   gcal_window_add_accelerator (app, "app.quit", "<Ctrl>q");
 +
 +  gtk_window_set_icon_name (self, "org.gnome.Calendar");
  }
