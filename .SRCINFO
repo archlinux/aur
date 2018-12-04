@@ -1,0 +1,12 @@
+pkgbase = libtirpc-compat
+	pkgdesc = Transport Independent RPC library (SunRPC replacement, backwards compatible links)
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://libtirpc.sourceforge.net/
+	arch = x86_64
+	license = BSD
+	makedepends = libtirpc
+	depends = libtirpc
+
+pkgname = libtirpc-compat
+
