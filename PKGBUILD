@@ -3,7 +3,7 @@
 # Contributor: George Eleftheriou <eleftg>
 
 pkgname=mpich
-pkgver=3.2.1
+pkgver=3.3
 pkgrel=1
 pkgdesc="An improved implementation of the Message Passing Interface."
 url="https://mpich.org"
@@ -16,7 +16,7 @@ optdepends=("java-environment")
 install="${pkgname}.install"
 source=("http://www.mpich.org/static/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	    "mpich.profile")
-sha256sums=('5db53bf2edfaa2238eb6a0a5bc3d2c2ccbfbb1badd79b664a1a919d2ce2330f1'
+sha256sums=('329ee02fe6c3d101b6b30a7b6fb97ddf6e82b28844306771fa9dd8845108fa0b'
             'b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284')
 options=('!libtool')
 
@@ -36,10 +36,9 @@ build() {
   mkdir -p build
   cd build
 
-  ../configure --prefix=/opt/mpich --enable-shared --enable-sharedlibs=gcc \
-    --enable-error-checking=runtime --enable-error-messages=all \
-    --enable-timer-type=clock_gettime \
-    --with-python=python2
+  ../configure --prefix=/opt/mpich \
+               --enable-error-checking=runtime --enable-error-messages=all \
+               CC=gcc CXX=g++ FC=gfortran
 
   make
   make mandoc
