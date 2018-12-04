@@ -1,0 +1,100 @@
+diff --git a/config/amanda/amanda_configure.m4 b/config/amanda/amanda_configure.m4
+index 5b427ae..f90810f 100644
+--- a/config/amanda/amanda_configure.m4
++++ b/config/amanda/amanda_configure.m4
+@@ -18,7 +18,6 @@ AC_PREREQ(2.64)
+ # Take care of some early Amanda-specific setup
+ #
+ AMANDA_CONFIGURE_ARGS
+-AMANDA_INIT_SUMMARY
+ AMANDA_SNAPSHOT_STAMP
+ AMANDA_SPLIT_VERSION
+ AMANDA_CONFIG_LOCAL
+diff --git a/config/amanda/components.m4 b/config/amanda/components.m4
+index f2a07db..7628453 100644
+--- a/config/amanda/components.m4
++++ b/config/amanda/components.m4
+@@ -186,7 +186,21 @@ AC_DEFUN([AMANDA_WITHOUT_NDMP], [
+ 	    n | no) WANT_NDMP=false;;
+ 	    *) AC_MSG_ERROR([You must not supply an argument to --with-ndmp option.]) ;;
+ 	    esac
+-	])
++    ])
++    AC_CHECK_HEADERS(rpc/rpc.h, HAVE_RPC_RPC_H=1)
++    if test x"$WANT_NDMP" = x"true"; then
++	if test x"$HAVE_RPC_RPC_H" = x"1"; then
++	    WANT_NDMP=true
++	else
++	    AMANDA_CHECK_TIRPC
++	    if test x"$HAVE_RPC_RPC_H" = x"1"; then
++		WANT_NDMP=true
++	    else
++		WANT_NDMP=false
++		AMANDA_MSG_WARN([Disabling NDMP because rpc/rpc.h is not found])
++	    fi
++	fi
++   fi
+ ])
+ 
+ # SYNOPSIS
+diff --git a/config/amanda/libs.m4 b/config/amanda/libs.m4
+index 0388c9b..a640557 100644
+--- a/config/amanda/libs.m4
++++ b/config/amanda/libs.m4
+@@ -183,6 +183,44 @@ AC_DEFUN([AMANDA_CHECK_GLIB], [
+     AMANDA_ADD_LIBS($GLIB_LIBS)
+ ])
+ 
++# SYNOPSIS
++#
++#   AMANDA_CHECK_TIRPC
++#
++# OVERVIEW
++#
++#   Search for tirpc.
++#
++AC_DEFUN([AMANDA_CHECK_TIRPC],
++[
++    AC_PATH_PROG(PKG_CONFIG, pkg-config, [], $LOCSYSPATH:/opt/csw/bin:/usr/local/bin:/opt/local/bin)
++
++    tirpc_ld_flags=`$PKG_CONFIG libtirpc --libs-only-L 2>/dev/null`
++    tirpc_lib_flags=`$PKG_CONFIG libtirpc --libs-only-l --libs-only-other 2>/dev/null`
++    tirpc_cppflags=`$PKG_CONFIG libtirpc --cflags-only-I 2>/dev/null`
++    tirpc_cflags=`$PKG_CONFIG libtirpc --cflags-only-other 2>/dev/null`
++
++    _libtirpc_save_cppflags=$CPPFLAGS
++    CPPFLAGS="$CPPFLAGS $tirpc_cppflags"
++    _libtirpc_save_libs=$LIBS
++    LIBS="$LIBS $tirpc_lib_flags"
++
++    unset HAVE_RPC_RPC_H
++    unset ac_cv_header_rpc_rpc_h
++    AC_CHECK_HEADERS(rpc/rpc.h, HAVE_RPC_RPC_H=1)
++
++    CPPFLAGS=$_libtirpc_save_cppflags
++    LIBS=$_libtirpc_save_libs
++
++    if test x"$HAVE_RPC_RPC_H" = x"1"; then
++	AMANDA_ADD_LDFLAGS($tirpc_ld_flags)
++	AMANDA_ADD_LIBS($tirpc_lib_flags)
++
++	AMANDA_ADD_CPPFLAGS($tirpc_cppflags)
++	AMANDA_ADD_CFLAGS($tirpc_cflags)
++    fi
++])
++
+ # LIBCURL_CHECK_CONFIG is from the libcurl
+ # distribution and licensed under the BSD license:
+ # Copyright (c) 1996 - 2007, Daniel Stenberg, <daniel@haxx.se>.
+diff --git a/configure.ac b/configure.ac
+index 89c4890..8d325b7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -13,6 +13,7 @@ AMANDA_VERSION
+ gl_EARLY
+ gl_INIT
+ 
++AMANDA_INIT_SUMMARY
+ AMANDA_CONFIGURE
+ 
+ AC_DEFINE([USE_GETTEXT], 1, [Define to 1 if files will be processed with gettextize])

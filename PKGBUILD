@@ -66,7 +66,7 @@ set -u
 pkgname='amanda'
 #pkgver='3.3.9'
 pkgver='3.5.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Advanced Maryland Automatic Network Disk Archiver network backup for Linux Windows clients, supports SSH, AES, GPG, encryption, tape, RAIT, mirror, changers, Amazon S3, ipv6, DVD, NDMP, VTL, advanced scripting'
 arch=('i686' 'x86_64')
 url='http://www.amanda.org'
@@ -113,6 +113,7 @@ depends+=(
   # From manual install
   #'perl-extutils-embed' # developers only
 )
+depends+=('libtirpc') # 0000-fedora-patch-tirpc.patch
 optdepends=(
   'sudo: run commands as amanda user'
   'gnuplot: amplot pictures'
@@ -147,10 +148,19 @@ install="${pkgname}.install"
 _tapetypes=('tapetypes.txt')
 _verwatch=('http://www.amanda.org/download.php' '\([0-9\.]\+\)' 't')
 _srcdir="${pkgname}-${pkgver}"
-source=("https://prdownloads.sourceforge.net/amanda/amanda-${pkgver}.tar.gz" "xinetd.${pkgname}".{udp,tcp} "${_tapetypes[@]}")
+source=(
+  "https://prdownloads.sourceforge.net/amanda/amanda-${pkgver}.tar.gz"
+  "xinetd.${pkgname}".{udp,tcp}
+  '0000-fedora-patch-tirpc.patch' # https://src.fedoraproject.org/rpms/amanda/tree/master
+  "${_tapetypes[@]}"
+  # https://bugs.gentoo.org/663182
+  # https://bugs.gentoo.org/656340
+  # https://fedoraproject.org/wiki/Changes/SunRPCRemoval
+)
 sha256sums=('88ce1ac62f8c30b8d607786a3ca335444a4249ae976baf083956e943b3b409f1'
             '3db294c9d7c610e9c0d531dcc2725dbddf1213fad64f04bc7cf9b1b9c30e9803'
             '46446a8dc4ee8ec39ed0a3e2636fb02a198565e8111abe8392c456da56a007ce'
+            'ae51f305b49bd7c94e854c2784ee4b58dabf74bc43bfe9a738d3d03322938861'
             'c368e7f9d6d1df703619476e0fcf06e841a7ec86a5a7b86dc499821fbb0a137e')
 
 if [ ! -z "${_opt_bsd}" ]; then
@@ -200,6 +210,8 @@ prepare() {
     set +u
     false
   fi
+
+  patch -Nup1 -i "${srcdir}/0000-fedora-patch-tirpc.patch"
 
   # rm -r 'packaging' # cleaner path listings, crashes make
   # grep -shroe '/[a-z][a-z/]*/' | grep -e 'etc\|usr\|var' | sort -u
@@ -259,6 +271,7 @@ build() {
   _install_check
 
   if [ ! -s 'Makefile' ]; then
+    autoreconf # 0000-fedora-patch-tirpc.patch
     local _opts=()
     if [ ! -z "${_opt_bsd}" ]; then
       _opts+=("--with-bsd${_opt_bsd}-security")
