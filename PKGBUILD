@@ -1,9 +1,9 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=sealcrypto
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple Encrypted Arithmetic Library'
-arch=('any')
+arch=('x86_64')
 url="https://sealcrypto.org/"
 license=('MIT')
 makedepends=('cmake')
@@ -12,20 +12,22 @@ sha1sums=('09a066ba97c58f2abd5d4e5d0955d29224d563e5')
 provides=('sealcrypto')
 
 build() {
-  cd "${srcdir}"
-  tar xf "SEAL_3.0.tar.gz"
-  cd "SEAL_3.0/SEAL"
+  cd ${srcdir}
+  tar xf ${pkgver}.tar.gz
+  cd SEAL-${pkgver}/src
   cmake . -DSEAL_USE_MSGSL=OFF
   make
 }
 
 package() {
-  cd "${srcdir}/SEAL_3.0"
-  mkdir -p "${pkgdir}/usr/lib"
-  mkdir -p "${pkgdir}/usr/include/seal/util"
-  cp "lib/libseal.a" ${pkgdir}/usr/lib
-  sed -i 's/#include "\(.*\)"/#include <\1>/g' SEAL/seal/*.h
-  cp SEAL/seal/*.h ${pkgdir}/usr/include/seal
-  sed -i 's/#include "\(.*\)"/#include <\1>/g' SEAL/seal/util/*.h
-  cp SEAL/seal/util/*.h ${pkgdir}/usr/include/seal/util
+  cd ${srcdir}/SEAL-${pkgver}
+  mkdir -p ${pkgdir}/usr/lib
+  mkdir -p ${pkgdir}/usr/include/seal/util
+  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
+  cp lib/libseal.a ${pkgdir}/usr/lib
+  sed -i 's/#include "\(.*\)"/#include <\1>/g' src/seal/*.h
+  cp src/seal/*.h ${pkgdir}/usr/include/seal
+  sed -i 's/#include "\(.*\)"/#include <\1>/g' src/seal/util/*.h
+  cp src/seal/util/*.h ${pkgdir}/usr/include/seal/util
+  cp LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
 }
