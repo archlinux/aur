@@ -10,7 +10,7 @@ _srcname=Amlogic_s905-kernel
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1, Armbian source"
 pkgver=4.19.6
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://github.com/isjerryxiao/Amlogic_s905-kernel"
 license=('GPL2')
@@ -21,7 +21,7 @@ source=("git+https://github.com/isjerryxiao/Amlogic_s905-kernel.git#branch=linux
         'linux.preset'
         '99-linux.hook')
 md5sums=('SKIP'
-         '420e318730ff296285f708904b33ca5a'
+         'd46b8f99dc5f6b34a963a43ccd04a5b9'
          'f6ee374f560e1b9df6a7de2399027d1b'
          'd1c40c7367a7081f3b4c03264780f9d4')
 
