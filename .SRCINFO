@@ -1,6 +1,6 @@
 pkgbase = conan
 	pkgdesc = A distributed, open source, C/C++ package manager.
-	pkgver = 1.9.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://conan.io
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = conan
 	depends = python-requests>=2.7.0
 	depends = python-colorama>=0.3.3
 	depends = python-yaml>=3.11
-	depends = python-patch=1.16
+	depends = python-patch>=1.16
 	depends = python-fasteners>=0.14.1
 	depends = python-six>=1.10.0
-	depends = python-node-semver>=0.2.0
+	depends = python-node-semver>=0.6.1
 	depends = python-bottle>=0.12.8
 	depends = python-distro>=1.0.2
 	depends = python-pluginbase>=0.5
@@ -23,10 +23,10 @@ pkgbase = conan
 	depends = python-astroid>=1.6.5
 	depends = python-deprecation>=2.0
 	depends = python-tqdm>=4.28.1
-	source = https://github.com/conan-io/conan/archive/1.9.2.tar.gz
+	source = https://github.com/conan-io/conan/archive/1.10.0.tar.gz
 	source = arch-reqs.patch
-	md5sums = d07da86de8bf916ef9cfadd9d75a6e1e
-	md5sums = f2ece2c0347cb9cdf72344e61361c470
+	md5sums = 0f6dfbc495d3b78cc531a1d8e8361f2f
+	md5sums = a916d69a8cfbd40151065bc29a0d0d03
 
 pkgname = conan
 
