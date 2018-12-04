@@ -33,10 +33,10 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=4.19.4-arch1
+_srcver=4.19.6-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
-_pdsversion=099e
+_pdsversion=099f
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
@@ -59,13 +59,13 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('26e9ff5f256eb775241b4cfae88a6fefe95de09c39a875fcee874dbb114e5895'
+sha256sums=('c2f2b105232a7b5d15daa3cd824b2232f39f2b76a930f5a89b75690b395f1eb9'
             'fdb0aff5728261d6121ca29a0458b3a179d395c4e7deca6b3595b427044fd857'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '648711f29f5dbeb7586e32de0831c445a7cf441245aa3a5a187d20e5a0587bc9')
+            '4092b02faf07da8dca3c135512d2424113ead125ac49450b8ad3a763b280c0d2')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -114,11 +114,12 @@ prepare() {
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
   if [ -n "$_localmodcfg" ]; then
+    msg "If you have modprobed-db installed, running it in recall mode now"
     if [ -e /usr/bin/modprobed-db ]; then
-      msg "Modprobed-db installed, running Steven Rostedt's make localmodconfig with modprobed as input"
-      make LSMOD=$HOME/.config/modprobed.db localmodconfig
-    else
-      msg "Running Steven Rostedt's make localmodconfig now"
+      [[ -x /usr/bin/sudo ]] || {
+      echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
+      exit 1; }
+      sudo /usr/bin/modprobed-db recall
       make localmodconfig
     fi
   fi
@@ -149,15 +150,17 @@ _package() {
   install=linux.install
 
   local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   cd $_srcname
 
   msg2 "Installing boot image..."
-  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   msg2 "Installing modules..."
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-  mkdir -p "$modulesdir"
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # a place for external modules,
