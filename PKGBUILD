@@ -1,28 +1,25 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=libmfx
+_srcname=mfx_dispatch
 pkgver=1.25
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Media SDK dispatcher library'
 arch=('i686' 'x86_64')
 url='https://github.com/lu-zero/mfx_dispatch/'
 license=('BSD')
 depends=('libva')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/lu-zero/mfx_dispatch/archive/${pkgver}.tar.gz")
-noextract=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=('853c4555c800a262fedacc580d06c234c520a919e4497b50e555291d87579a42')
 
 prepare() {
-    mkdir -p "${pkgname}-${pkgver}"
-    cd "${pkgname}-${pkgver}"
-    
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -s'|[^/]*/||'
+    cd "${_srcname}-${pkgver}"
     
     autoreconf -i
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_srcname}-${pkgver}"
     
     ./configure \
         --prefix='/usr' \
@@ -35,7 +32,7 @@ build() {
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_srcname}-${pkgver}"
     
     make DESTDIR="$pkgdir" install
     
