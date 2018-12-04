@@ -4,8 +4,8 @@ _pkgbase=faudio-wrappers
 _gitname=FAudio
 pkgbase=${_pkgbase}-git
 pkgname=("${_pkgbase}-win32-git" "${_pkgbase}-win64-git")
-pkgver=r949.acc1aaa
-pkgrel=1
+pkgver=r950.5893b35
+pkgrel=2
 pkgdesc="Accuracy-focused XAudio reimplementation for open platforms"
 arch=('i686' 'x86_64')
 url='https://github.com/FNA-XNA/FAudio'
@@ -15,7 +15,7 @@ makedepends=('git' 'mingw-w64-gcc' 'mingw-w64-sdl2' 'mingw-w64-ffmpeg')
 source=('git+https://github.com/FNA-XNA/FAudio'
         'setup_faudio_aur.verb')
 sha256sums=('SKIP'
-            '0fd64206dad7f7e255f1097eb50e1b2c770a6832adfa32549797accc44610b65')
+            '2ddaebc61ad13e26625da6a7252f67a914aaf3cb3a31e34e332562b6a4238aae')
 
 pkgver() {
   cd "$srcdir/${_gitname}"
@@ -63,7 +63,11 @@ _package_faudio-wrappers() {
 
   find "${pkgdir}/usr/share/${_pkgname}" -name '*.dll' -exec ${_mingw}-strip --strip-unneeded {} \;
 
-  sed -i "s/SYSTEM32/SYSTEM${_arch}/g" "${pkgdir}/usr/share/${_pkgname}/setup_faudio_aur.verb"
+  if [ "${_arch}" = "64" ]; then
+    sed -e 's/${W_SYSTEM32_DLLS}/${W_SYSTEM64_DLLS}/g' \
+        -e 's/${W_SYSTEM32_DLLS_WIN}/${W_SYSTEM64_DLLS_WIN64}/g' \
+        -i "${pkgdir}/usr/share/${_pkgname}/setup_faudio_aur.verb"
+  fi
 
   ( echo "#!/bin/sh"
     echo "winetricks --force /usr/share/${_pkgname}/setup_faudio_aur.verb"

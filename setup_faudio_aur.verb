@@ -38,41 +38,41 @@ w_metadata setup_faudio_aur dlls \
   file33='avcodec-58.dll' \
   file34='avutil-56.dll' \
   file35='swresample-3.dll' \
-  installed_file1="$W_SYSTEM32_DLLS_WIN/xaudio2_0.dll" \
-  installed_file2="$W_SYSTEM32_DLLS_WIN/xaudio2_1.dll" \
-  installed_file3="$W_SYSTEM32_DLLS_WIN/xaudio2_2.dll" \
-  installed_file4="$W_SYSTEM32_DLLS_WIN/xaudio2_3.dll" \
-  installed_file5="$W_SYSTEM32_DLLS_WIN/xaudio2_4.dll" \
-  installed_file6="$W_SYSTEM32_DLLS_WIN/xaudio2_5.dll" \
-  installed_file7="$W_SYSTEM32_DLLS_WIN/xaudio2_6.dll" \
-  installed_file8="$W_SYSTEM32_DLLS_WIN/xaudio2_7.dll" \
-  installed_file9="$W_SYSTEM32_DLLS_WIN/xaudio2_8.dll" \
-  installed_file10="$W_SYSTEM32_DLLS_WIN/xaudio2_9.dll" \
-  installed_file11="$W_SYSTEM32_DLLS_WIN/x3daudio1_3.dll" \
-  installed_file12="$W_SYSTEM32_DLLS_WIN/x3daudio1_4.dll" \
-  installed_file13="$W_SYSTEM32_DLLS_WIN/x3daudio1_5.dll" \
-  installed_file14="$W_SYSTEM32_DLLS_WIN/x3daudio1_6.dll" \
-  installed_file15="$W_SYSTEM32_DLLS_WIN/x3daudio1_7.dll" \
-  installed_file16="$W_SYSTEM32_DLLS_WIN/xactengine3_0.dll" \
-  installed_file17="$W_SYSTEM32_DLLS_WIN/xactengine3_1.dll" \
-  installed_file18="$W_SYSTEM32_DLLS_WIN/xactengine3_2.dll" \
-  installed_file19="$W_SYSTEM32_DLLS_WIN/xactengine3_3.dll" \
-  installed_file20="$W_SYSTEM32_DLLS_WIN/xactengine3_4.dll" \
-  installed_file21="$W_SYSTEM32_DLLS_WIN/xactengine3_5.dll" \
-  installed_file22="$W_SYSTEM32_DLLS_WIN/xactengine3_6.dll" \
-  installed_file23="$W_SYSTEM32_DLLS_WIN/xactengine3_7.dll" \
-  installed_file24="$W_SYSTEM32_DLLS_WIN/xapofx1_1.dll" \
-  installed_file25="$W_SYSTEM32_DLLS_WIN/xapofx1_2.dll" \
-  installed_file26="$W_SYSTEM32_DLLS_WIN/xapofx1_3.dll" \
-  installed_file27="$W_SYSTEM32_DLLS_WIN/xapofx1_4.dll" \
-  installed_file28="$W_SYSTEM32_DLLS_WIN/xapofx1_5.dll" \
-  installed_file29="$W_SYSTEM32_DLLS_WIN/FAudio.dll" \
-  installed_file30="$W_SYSTEM32_DLLS_WIN/SDL2.dll" \
-  installed_file31="$W_SYSTEM32_DLLS_WIN/libwinpthread-1.dll" \
-  installed_file32="$W_SYSTEM32_DLLS_WIN/libiconv-2.dll" \
-  installed_file33="$W_SYSTEM32_DLLS_WIN/avcodec-58.dll" \
-  installed_file34="$W_SYSTEM32_DLLS_WIN/avutil-56.dll" \
-  installed_file35="$W_SYSTEM32_DLLS_WIN/swresample-3.dll" \
+  installed_file1="${W_SYSTEM32_DLLS_WIN}/xaudio2_0.dll" \
+  installed_file2="${W_SYSTEM32_DLLS_WIN}/xaudio2_1.dll" \
+  installed_file3="${W_SYSTEM32_DLLS_WIN}/xaudio2_2.dll" \
+  installed_file4="${W_SYSTEM32_DLLS_WIN}/xaudio2_3.dll" \
+  installed_file5="${W_SYSTEM32_DLLS_WIN}/xaudio2_4.dll" \
+  installed_file6="${W_SYSTEM32_DLLS_WIN}/xaudio2_5.dll" \
+  installed_file7="${W_SYSTEM32_DLLS_WIN}/xaudio2_6.dll" \
+  installed_file8="${W_SYSTEM32_DLLS_WIN}/xaudio2_7.dll" \
+  installed_file9="${W_SYSTEM32_DLLS_WIN}/xaudio2_8.dll" \
+  installed_file10="${W_SYSTEM32_DLLS_WIN}/xaudio2_9.dll" \
+  installed_file11="${W_SYSTEM32_DLLS_WIN}/x3daudio1_3.dll" \
+  installed_file12="${W_SYSTEM32_DLLS_WIN}/x3daudio1_4.dll" \
+  installed_file13="${W_SYSTEM32_DLLS_WIN}/x3daudio1_5.dll" \
+  installed_file14="${W_SYSTEM32_DLLS_WIN}/x3daudio1_6.dll" \
+  installed_file15="${W_SYSTEM32_DLLS_WIN}/x3daudio1_7.dll" \
+  installed_file16="${W_SYSTEM32_DLLS_WIN}/xactengine3_0.dll" \
+  installed_file17="${W_SYSTEM32_DLLS_WIN}/xactengine3_1.dll" \
+  installed_file18="${W_SYSTEM32_DLLS_WIN}/xactengine3_2.dll" \
+  installed_file19="${W_SYSTEM32_DLLS_WIN}/xactengine3_3.dll" \
+  installed_file20="${W_SYSTEM32_DLLS_WIN}/xactengine3_4.dll" \
+  installed_file21="${W_SYSTEM32_DLLS_WIN}/xactengine3_5.dll" \
+  installed_file22="${W_SYSTEM32_DLLS_WIN}/xactengine3_6.dll" \
+  installed_file23="${W_SYSTEM32_DLLS_WIN}/xactengine3_7.dll" \
+  installed_file24="${W_SYSTEM32_DLLS_WIN}/xapofx1_1.dll" \
+  installed_file25="${W_SYSTEM32_DLLS_WIN}/xapofx1_2.dll" \
+  installed_file26="${W_SYSTEM32_DLLS_WIN}/xapofx1_3.dll" \
+  installed_file27="${W_SYSTEM32_DLLS_WIN}/xapofx1_4.dll" \
+  installed_file28="${W_SYSTEM32_DLLS_WIN}/xapofx1_5.dll" \
+  installed_file29="${W_SYSTEM32_DLLS_WIN}/FAudio.dll" \
+  installed_file30="${W_SYSTEM32_DLLS_WIN}/SDL2.dll" \
+  installed_file31="${W_SYSTEM32_DLLS_WIN}/libwinpthread-1.dll" \
+  installed_file32="${W_SYSTEM32_DLLS_WIN}/libiconv-2.dll" \
+  installed_file33="${W_SYSTEM32_DLLS_WIN}/avcodec-58.dll" \
+  installed_file34="${W_SYSTEM32_DLLS_WIN}/avutil-56.dll" \
+  installed_file35="${W_SYSTEM32_DLLS_WIN}/swresample-3.dll" \
   homepage='https://github.com/FNA-XNA/FAudio'
 
 FAUDIO_ROOT_DIR=$(dirname "$(readlink -f $1)")
@@ -91,7 +91,7 @@ load_setup_faudio_aur() {
            "$file19" "$file20" "$file21" "$file22" "$file23" "$file24" \
            "$file25" "$file26" "$file27" "$file28" "$file29" "$file30" \
            "$file31" "$file32" "$file33" "$file34" "$file35"; do
-    w_try ln -fs "$FAUDIO_ROOT_DIR/$f" "$W_SYSTEM32_DLLS/$f"
+    w_try ln -fs "$FAUDIO_ROOT_DIR/$f" "${W_SYSTEM32_DLLS}/$f"
   done
 
   w_override_dlls native \
