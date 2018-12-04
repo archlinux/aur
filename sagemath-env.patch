@@ -79,13 +79,12 @@
  
  # The compilers are set in order of priority by
  # 1) environment variables
-@@ -296,8 +296,9 @@
+@@ -296,8 +296,8 @@
  export SAGE_SPKG_INST="$SAGE_LOCAL/var/lib/sage/installed"
  export SAGE_SPKG_SCRIPTS="$SAGE_LOCAL/var/lib/sage/scripts"
  export SAGE_LOGS="$SAGE_ROOT/logs/pkgs"
 -export SAGE_SRC="$SAGE_ROOT/src"
 -export SAGE_DOC_SRC="$SAGE_SRC/doc"
-+export GAP_ROOT_DIR="/usr/lib/gap-4.8"
 +export SAGE_SRC="$SAGE_LOCAL/lib/python2.7/site-packages"
 +export SAGE_DOC_SRC="$SAGE_SHARE/doc/sage"
  export SAGE_DOC="$SAGE_SHARE/doc/sage"
