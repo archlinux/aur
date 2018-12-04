@@ -1,15 +1,15 @@
 pkgbase = doclifter
 	pkgdesc = translate troff requests into docbook
-	pkgver = 2.17
-	pkgrel = 4
+	pkgver = 2.18
+	pkgrel = 1
 	url = http://www.catb.org/~esr/doclifter/
 	arch = any
 	license = BSD
 	depends = python2
 	source = .AURINFO
 	source = http://www.catb.org/~esr/doclifter/doclifter-2.17.tar.gz
-	sha256sums = 6e3e0640bb32b1b3bd23b7362ea101cfafa24172004c9bf9a62d2178b4a959e1
-	sha256sums = bb4e34e5fda1bf5ad7180ebb0332090ab4c8330bf54c8213adec734497741ed5
+	sha256sums = 03e9ab825876fa602f3882ef680317dedd2cf2c90f3e24bcf6d6e5a7f3c0c7ab
+	sha256sums = ce95fedd0a3ace1468e7b50645dd5970872c7216197a40dac3a9ff5856a4f36b
 
 pkgname = doclifter
 
