@@ -2,7 +2,7 @@
 
 _basename=egl-wayland
 pkgname="lib32-$_basename"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="EGLStream-based Wayland external platform (32-bit)"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('lib32-wayland' 'eglexternalplatform' "$_basename")
 makedepends=('meson' 'git')
 options=(!emptydirs)
-_commit=1676d1d2bfe646fb3ecbba29a85db529dd399493  # master
+_commit=59ff78fcf874c28a11361acc9d07a3d5e17e1664  # tags/1.1.1
 source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
 
