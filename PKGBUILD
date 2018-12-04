@@ -2,7 +2,7 @@
 
 pkgname=nordic-theme-git
 _pkgname=Nordic
-pkgver=10.5f31988
+pkgver=11.5a5e6e6
 pkgrel=1
 pkgdesc="Dark Gtk3.20+ theme created using the awesome Nord color pallete."
 arch=("any")
@@ -23,20 +23,38 @@ pkgver() {
 build() {
   	cd "${srcdir}/${_pkgname}"
 
+	export THEME_FONT_FACE="${THEME_FONT_FACE:-Roboto}"
+	export THEME_FONT_SIZE="${THEME_FONT_SIZE:-10}"
+
 	msg2 "To customize the font size for gnome-shell, build this pacakge"
-	msg2 "with the variable DEFAULT_FONT_SIZE set to the desired pt size"
+	msg2 "with the variables below set to the desired font family and size"
+	msg2 "- THEME_FONT_FACE (default font family is Roboto)"
+	msg2 "- THEME_FONT_SIZE (default font point size is 10)"
 	msg2 ""
 	msg2 "Continuing build in 5 seconds..."; sleep 5
-	msg2 "Setting gnome-shell font size to ${DEFAULT_FONT_SIZE}pt"
+	msg2 "Setting gnome-shell font face to ${THEME_FONT_FACE}"
+	msg2 "Setting gnome-shell font size to ${THEME_FONT_SIZE}"
 
-	export DEFAULT_FONT_SIZE="${DEFAULT_FONT_SIZE:-10}"
-	sed -i -re "s/font-size: 10pt/font-size: ${DEFAULT_FONT_SIZE:-10}pt/" \
-		"${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
+	if [ "${THEME_FONT_FACE}" != "Roboto" ]; then
+		sed -i -re "s/font-family: (.*);/font-family: ${THEME_FONT_FACE}, \1;/" \
+			"${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
+	fi
+
+	if [ "${THEME_FONT_SIZE}" != "10" ]; then
+		sed -i -re "s/font-size: (.*);/font-size: ${THEME_FONT_SIZE}pt;/" \
+			"${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
+	fi
 
 	msg2 "Rendering assets, please wait"
-	cd src
+	pushd gtk-2.0
+	while read $line; do echo -n "."; done < \
+		<(./render-assets.sh; ); echo
+	popd
+
+	pushd src
 	while read $line; do echo -n "."; done < \
 		<(./render-gtk3-assets.py; ./render-gtk3-assets-hidpi.py); echo
+	popd
 	msg2 "Done!"
 }
 
