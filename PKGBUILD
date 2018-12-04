@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=xtables-geoip-db
 pkgver=0.1
-pkgrel=9
+pkgrel=10
 pkgdesc="GeoIP Database for xtables."
 arch=('any')
 license=('BSD' 'GPL')
@@ -15,11 +15,11 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-        sh /usr/lib/iptables/xtables-addons/xt_geoip_dl
+        sh /usr/lib/xtables/xtables-addons/xt_geoip_dl
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"/GeoLite2-Country-CSV_*
 	install -d -m 755 "${pkgdir}/usr/share/xt_geoip"
-	perl /usr/lib/iptables/xtables-addons/xt_geoip_build -D "${pkgdir}/usr/share/xt_geoip"
+	perl /usr/lib/xtables/xtables-addons/xt_geoip_build -D "${pkgdir}/usr/share/xt_geoip"
 }
