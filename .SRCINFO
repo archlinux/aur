@@ -1,5 +1,5 @@
 pkgbase = gnome-pass-search-provider-git
-	pkgdesc = Gnome Shell search provider for the pass (passwordstore.org) password manager that sends passwords to clipboard (with facultative GPaste integration)
+	pkgdesc = Gnome Shell search provider for zx2c4/pass (passwordstore.org) that sends passwords to clipboard (or GPaste)
 	pkgver = r9.bed2f59
 	pkgrel = 1
 	url = https://github.com/jle64/gnome-pass-search-provider
@@ -9,6 +9,7 @@ pkgbase = gnome-pass-search-provider-git
 	depends = python-gobject
 	depends = python-dbus
 	depends = pass
+	depends = python-fuzzywuzzy
 	optdepends = gpaste
 	provides = gnome-pass-search-provider
 	conflicts = gnome-pass-search-provider
