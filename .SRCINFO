@@ -1,6 +1,6 @@
 pkgbase = amarok
 	pkgdesc = The powerful music player for KDE
-	pkgver = 2.9.0.r267.3be247f8a1
+	pkgver = 2.9.0.r271.82018b9fcf
 	pkgrel = 1
 	url = http://amarok.kde.org/
 	arch = x86_64
