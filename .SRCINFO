@@ -1,19 +1,19 @@
 pkgbase = breeze-plymouth
 	pkgdesc = Breeze theme for plymouth
-	pkgver = 5.14.3
+	pkgver = 5.14.4
 	pkgrel = 1
 	url = https://projects.kde.org/breeze-plymouth
 	arch = any
 	license = LGPL
 	makedepends = extra-cmake-modules
 	depends = plymouth
-	source = http://download.kde.org/stable/plasma/5.14.3/breeze-plymouth-5.14.3.tar.xz
-	source = http://download.kde.org/stable/plasma/5.14.3/breeze-plymouth-5.14.3.tar.xz.sig
+	source = http://download.kde.org/stable/plasma/5.14.4/breeze-plymouth-5.14.4.tar.xz
+	source = http://download.kde.org/stable/plasma/5.14.4/breeze-plymouth-5.14.4.tar.xz.sig
 	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = fd51b203aac7379e993d04f26291885f0d02ad4a893ba8921d2dc3c96169a839
+	sha256sums = 67724c35f16cd96390194756620b3c8ca8f39540718f27e7a8a8e66c522b3fe1
 	sha256sums = SKIP
 
 pkgname = breeze-plymouth
