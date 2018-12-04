@@ -1,6 +1,6 @@
 # Maintainer: Danny Holman <dholman@gymli.org>
 pkgname=mingw-w64-tmxparser-git
-pkgver=git
+pkgver=185.da62e19
 pkgrel=1
 pkgdesc="Library for parsing TMX files (Tiled Maps) using TinyXML's DOM interface. (mingw-w64)"
 arch=('i686' 'x86_64')
