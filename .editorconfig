@@ -1,0 +1,29 @@
+# EditorConfig is awesome: http://EditorConfig.org
+# EditorConfig properties: https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+# should be equivalent to
+#  vim:ts=2:sw=2:et
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+tab_width = 2
+spaces_around_operators = true
+spaces_around_brackets = true
+
+[Makefile]
+indent_style = tab
+indent_size = 2
+
+# https://github.com/wilmoore/go-userdir/blob/master/.editorconfig
+# https://github.com/gogits/gogs/blob/master/.editorconfig
+[*.go]
+indent_style = tab
