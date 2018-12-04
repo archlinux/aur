@@ -5,7 +5,7 @@
 pkgname=libx11-threadsafe
 pkgver=1.6.7
 pkgrel=1
-pkgdesc="X11 client-side library"
+pkgdesc="X11 client-side library - threadsafe patches by Jacek Caban"
 arch=(x86_64)
 url="https://xorg.freedesktop.org/"
 depends=('libxcb' 'xproto' 'kbproto')

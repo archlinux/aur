@@ -1,5 +1,5 @@
 pkgbase = libx11-threadsafe
-	pkgdesc = X11 client-side library
+	pkgdesc = X11 client-side library - threadsafe patches by Jacek Caban
 	pkgver = 1.6.7
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
