@@ -2,7 +2,7 @@
 # Contributor: Sébastien Luttringer
 pkgname=virtualbox-ext-oracle-beta
 pkgver=6.0.0_BETA3
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle VM VirtualBox Extension Pack'
 arch=('any')
 url='https://www.virtualbox.org/'
@@ -22,7 +22,7 @@ prepare() {
 }
 
 package() {
-  depends=('virtualbox-beta')
+  depends=('virtualbox-beta-bin')
   optdepends=('rdesktop: client to connect vm via RDP')
   install -Dm 644 shrunk.vbox-extpack \
     "$pkgdir/usr/share/virtualbox/extensions/Oracle_VM_VirtualBox_Extension_Pack-${pkgver}.vbox-extpack"
