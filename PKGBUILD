@@ -4,7 +4,7 @@
 # Contributor: Vladimir Kutyavin <vlkut(AT)bk(DOT)ru>
 pkgname=xtables-addons-dkms
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='DKMS for additional extensions for Xtables packet filter present in the Linux kernel'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -44,8 +44,8 @@ build() {
         --libdir=/usr/lib \
         --mandir=/usr/share/man \
         --docdir=/usr/share/doc \
-        --libexecdir=/usr/lib/iptables \
-        --with-xtlibdir=/usr/lib/iptables \
+        --libexecdir=/usr/lib/xtables \
+        --with-xtlibdir=/usr/lib/xtables \
 		--without-kbuild
 
 	make

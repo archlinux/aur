@@ -1,7 +1,7 @@
 pkgbase = xtables-addons-dkms
 	pkgdesc = DKMS for additional extensions for Xtables packet filter present in the Linux kernel
 	pkgver = 3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xtables-addons.sourceforge.net/
 	arch = i686
 	arch = x86_64
