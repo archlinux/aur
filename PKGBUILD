@@ -6,7 +6,7 @@
 # Contributor: Gatekeeper <cool_work@yahoo.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mlterm
-pkgver=3.8.6
+pkgver=3.8.7
 pkgrel=1
 pkgdesc="Multi Lingual TERMinal emulator on X"
 url="http://mlterm.sourceforge.net/"
@@ -16,11 +16,11 @@ depends=('gtk2' 'gtk3' 'm17n-lib' 'libutempter')
 makedepends=('intltool' 'librsvg' 'ncurses')
 options=(!libtool)
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz $pkgname.desktop)
-md5sums=('e78766fbeb55d2d90ebfd43f61c33e11'
+md5sums=('2243de3747ef75c91b1e4e44e7183eb5'
          'd019c571f28c7b765610e219d9e52e35')
-sha1sums=('b05b79be27e09364359c62a887df5ee430700d76'
+sha1sums=('040363ea4428fbdbeaa49cf402f71f41b8dbaea7'
           '6a2c46265b0751ccf016e7521fdf48d1f9ac459f')
-sha256sums=('6dc7ca3ab38bc93cf45d4ea5fff63cff949609d99b6698ce4e9a2068e3a2fe1b'
+sha256sums=('7412cb5b3efae155a64e3b527bfc3e30dcf960571525146837683233f3c14782'
             'b254755e320a94a05d3d745cd582a5b91f5ed33fd69396feca0511cf5c6b3ce0')
 
 build() {
