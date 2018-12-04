@@ -6,9 +6,8 @@ pkgdesc="A terminal password manager written in Rust."
 arch=("x86_64")
 url="https://gitlab.com/thacoon/cpass.git"
 license=('MIT')
-depends=('rust' 'cargo' 'git')
-makedepends=('git')
-source=("git+https://gitlab.com/thacoon/cpass.git")
+depends=('rust' 'cargo' 'gcc-libs')
+source=("git+https://gitlab.com/thacoon/cpass.git?ref=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
@@ -20,3 +19,4 @@ package() {
     cd $srcdir/$pkgname
 	install -D -m755 target/release/$pkgname $pkgdir/usr/bin/$pkgname
 }
+

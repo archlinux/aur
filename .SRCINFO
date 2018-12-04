@@ -5,11 +5,10 @@ pkgbase = cpass
 	url = https://gitlab.com/thacoon/cpass.git
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	depends = rust
 	depends = cargo
-	depends = git
-	source = git+https://gitlab.com/thacoon/cpass.git
+	depends = gcc-libs
+	source = git+https://gitlab.com/thacoon/cpass.git?ref=v0.0.1
 	sha256sums = SKIP
 
 pkgname = cpass
