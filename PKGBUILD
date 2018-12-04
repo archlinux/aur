@@ -6,28 +6,26 @@
 buildarch=8
 
 pkgbase=linux-phicomm-n1-armbian-git
-_srcname=linux-4.19
+_srcname=Amlogic_s905-kernel
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1, Armbian source"
 pkgver=4.19.4
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
-url="https://github.com/Jerry981028/Amlogic_s905-kernel"
+url="https://github.com/isjerryxiao/Amlogic_s905-kernel"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-source=("git+https://github.com/Jerry981028/Amlogic_s905-kernel.git"
+source=("git+https://github.com/isjerryxiao/Amlogic_s905-kernel.git#branch=linux-4.19.y"
         'config'
         'linux.preset'
         '99-linux.hook')
 md5sums=('SKIP'
-         '2c6a2fd7cf6791a851eafd3d51eeaebf'
+         '3a0668c93071d08bed6228d269d1dff4'
          'f6ee374f560e1b9df6a7de2399027d1b'
          'd1c40c7367a7081f3b4c03264780f9d4')
 
 prepare() {
-  cd "${srcdir}"
-  ln -sf "Amlogic_s905-kernel" "${_srcname}"
   cd "${srcdir}/${_srcname}"
 
   # reset to a certain version

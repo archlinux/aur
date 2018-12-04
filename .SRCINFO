@@ -1,7 +1,7 @@
 pkgbase = linux-phicomm-n1-armbian-git
 	pkgver = 4.19.4
-	pkgrel = 1
-	url = https://github.com/Jerry981028/Amlogic_s905-kernel
+	pkgrel = 2
+	url = https://github.com/isjerryxiao/Amlogic_s905-kernel
 	arch = aarch64
 	license = GPL2
 	makedepends = xmlto
@@ -14,12 +14,12 @@ pkgbase = linux-phicomm-n1-armbian-git
 	makedepends = vboot-utils
 	makedepends = dtc
 	options = !strip
-	source = git+https://github.com/Jerry981028/Amlogic_s905-kernel.git
+	source = git+https://github.com/isjerryxiao/Amlogic_s905-kernel.git#branch=linux-4.19.y
 	source = config
 	source = linux.preset
 	source = 99-linux.hook
 	md5sums = SKIP
-	md5sums = 2c6a2fd7cf6791a851eafd3d51eeaebf
+	md5sums = 3a0668c93071d08bed6228d269d1dff4
 	md5sums = f6ee374f560e1b9df6a7de2399027d1b
 	md5sums = d1c40c7367a7081f3b4c03264780f9d4
 
