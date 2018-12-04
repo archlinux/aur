@@ -1,0 +1,34 @@
+pkgbase = lrad-git
+	pkgver = 0.1.0.74.g1eebb17
+	pkgrel = 1
+	url = https://github.com/sameer/lrad
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = openssl
+	makedepends = curl
+	source = lrad::git+https://github.com/sameer/lrad.git
+	sha256sums = SKIP
+
+pkgname = lrad-git
+	pkgdesc = An update framework CLI tool for applications running on hobbyist systems
+	depends = git
+	depends = openssl
+	depends = go-ipfs
+	depends = curl
+	provides = lrad
+	conflicts = lrad
+
+pkgname = lrad-daemon-git
+	pkgdesc = Daemon for the lrad update framework to be run on target systems
+	depends = git
+	depends = docker
+	depends = openssl
+	depends = go-ipfs
+	provides = lrad-daemon
+	conflicts = lrad-daemon
+
