@@ -1,7 +1,7 @@
 # Maintainer: Daniel Ruiz de Alegria <daniruizdealegria@gmail.com>
 
 pkgname="flat-remix-git"
-pkgver=r186.f65efbf3
+pkgver=r188.615bec93
 pkgrel=1
 pkgdesc="Flat remix is a pretty simple icon theme inspired on material design."
 arch=('any')
@@ -11,13 +11,13 @@ source=("${pkgname}::git+https://github.com/daniruiz/flat-remix.git")
 sha256sums=('SKIP')
 
 pkgver () {
-  cd "${srcdir}/${pkgname}/"
-  printf "r% s.% s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${srcdir}/${pkgname}/"
+	printf "r% s.% s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
 	cd "${srcdir}/${pkgname}/"
 	install -dm755 "${pkgdir}/usr/share/icons"
 	cp -a "Flat-Remix"* "${pkgdir}/usr/share/icons/"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
