@@ -23,8 +23,8 @@ pkgver() {
 
 prepare() {
   cd ${url##*/}
-  sed -i 's/.sh//' spotify-wrapper.sh
-  sed -i 's/.sh//' 'Spotify (AdKiller).desktop'
+  sed -i 's/\.sh//' spotify-wrapper.sh
+  sed -i 's/\.sh//' 'Spotify (AdKiller).desktop'
 }
 
 package() {
