@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bisq-git
-pkgver=0.8.0.r614.g926744c96
+pkgver=0.9.0.r1.g1e5cddd71
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
