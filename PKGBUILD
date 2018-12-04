@@ -1,6 +1,6 @@
 pkgname=('lrad-git' 'lrad-daemon-git')
 _pkgname='lrad'
-pkgver=0.1.0.74.g1eebb17
+pkgver=0.1.0.76.g1255f83
 pkgrel=1
 arch=('any')
 url='https://github.com/sameer/lrad'
@@ -36,4 +36,8 @@ package_lrad-daemon-git() {
 	cd $_pkgname
 
 	install -D -m755 "$srcdir/$_pkgname/target/release/lrad-daemon" "$pkgdir/usr/bin/lrad-daemon"
+	mkdir -p "$pkgdir/etc/lrad"
+	install -D -m644 "$srcdir/$_pkgname/lrad-daemon/lrad-daemon.toml" "$pkgdir/etc/lrad/lrad-daemon.toml"
+	install -D -m644 "$srcdir/$_pkgname/lrad-daemon/lrad-daemon.service" "$pkgdir/etc/systemd/system/lrad-daemon.service"
+	systemctl daemon-reload
 }

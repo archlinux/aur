@@ -1,5 +1,5 @@
 pkgbase = lrad-git
-	pkgver = 0.1.0.74.g1eebb17
+	pkgver = 0.1.0.76.g1255f83
 	pkgrel = 1
 	url = https://github.com/sameer/lrad
 	arch = any
