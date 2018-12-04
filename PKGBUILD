@@ -1,8 +1,8 @@
 # Maintainer: Can Altıparmak (c6parmak) <can6parmak <AT> gmail <DOT> com>
 
 pkgname=tmxparser-git
-pkgver=124.9aa25dd
-pkgrel=2
+pkgver=185.da62e19
+pkgrel=1
 pkgdesc="Library for parsing TMX files (Tiled Maps) using TinyXML's DOM interface."
 url='https://github.com/andrewrk/tmxparser'
 license=('BSD')
@@ -21,9 +21,9 @@ pkgver() {
 
 build() {
     cd $pkgname
-    mkdir build
+    mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake .. -DCMAKE_BUILD_TYPE='Release' -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_INSTALL_LIBDIR='/usr/lib'
     make
 }
 

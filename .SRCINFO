@@ -1,7 +1,7 @@
 pkgbase = tmxparser-git
 	pkgdesc = Library for parsing TMX files (Tiled Maps) using TinyXML's DOM interface.
-	pkgver = 124.9aa25dd
-	pkgrel = 2
+	pkgver = 185.da62e19
+	pkgrel = 1
 	url = https://github.com/andrewrk/tmxparser
 	arch = i686
 	arch = x86_64
