@@ -3,14 +3,14 @@
 
 
 pkgname=bdchapters
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Command Line Chapter Extractor for Blu-ray Disc"
 arch=(any)
 license=('GPL3')
 url="https://github.com/Booloki/bdchapters"
 source=(https://github.com/Booloki/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('e516dd0c01a0346e3eaff2de4f92b7c3')
+md5sums=('27fb70c869bdb9b08146911caa95e4ac')
 
 
 package() {
