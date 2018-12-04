@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-tmxparser-git
 	pkgdesc = Library for parsing TMX files (Tiled Maps) using TinyXML's DOM interface. (mingw-w64)
-	pkgver = git
+	pkgver = 185.da62e19
 	pkgrel = 1
 	url = https://github.com/sainteos/tmxparser.git
 	arch = i686
