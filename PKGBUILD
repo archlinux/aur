@@ -1,9 +1,10 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=libraqm-git
-pkgver=0.3.0.r1.ge046b04
+_srcname=libraqm
+pkgver=0.5.0.r27.gb51b28b
 pkgrel=1
-pkgdesc='A library that encapsulates the logic for complex text layout'
+pkgdesc='A library that encapsulates the logic for complex text layout (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/HOST-Oman/libraqm/'
 license=('MIT')
@@ -11,18 +12,24 @@ depends=('freetype2' 'harfbuzz' 'fribidi')
 makedepends=('git' 'gtk-doc')
 provides=('libraqm' 'libraqm.so')
 conflicts=('libraqm')
-source=("$pkgname"::'git+https://github.com/HOST-Oman/libraqm.git')
+source=('git+https://github.com/HOST-Oman/libraqm.git')
 sha256sums=('SKIP')
 
+prepare() {
+    cd "$_srcname"
+    
+    ./autogen.sh
+}
+
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
+    
+    #git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$pkgname"
-    
-    ./autogen.sh
+    cd "$_srcname"
     
     ./configure \
         --prefix='/usr' \
@@ -37,9 +44,9 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
 
     make DESTDIR="$pkgdir" install
     
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
