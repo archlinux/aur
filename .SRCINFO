@@ -1,16 +1,19 @@
 pkgbase = trang
 	pkgdesc = Converts between different schema languages for XML
-	pkgver = 20151127
-	pkgrel = 4
+	pkgver = 20181204
+	pkgrel = 1
 	url = https://github.com/relaxng/jing-trang
 	arch = any
-	license = GPL
-	makedepends = java-environment
+	license = custom
 	depends = java-runtime
-	source = trang-20151127.tar.gz::https://github.com/relaxng/jing-trang/archive/V20151127.tar.gz
+	depends = bash
+	source = https://github.com/relaxng//releases/download/V20181204/trang-20181204.zip
+	source = https://github.com/relaxng//releases/download/V20181204/trang-20181204.zip.asc
 	source = trang
-	sha256sums = 04cdf589abc5651d40f44fbc3415cb094672cb3c977770b2d9f6ea33e6d8932b
-	sha256sums = bba2c24e1ba844b8646ac1159c30889a6d38e864b1ddc5066a7fc6851a9ec78d
+	validpgpkeys = D4875856415E63964D87445187D17477BC3A4B95
+	sha1sums = 8afb99be3479e9057eb9df9772b2fa006ca44879
+	sha1sums = SKIP
+	sha1sums = e82e3548351db44b0c36ab9d586a61b943b339be
 
 pkgname = trang
 

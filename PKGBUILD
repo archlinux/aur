@@ -2,35 +2,31 @@
 # Previously: Jonathan Schaeffer <Joschaeffer@gmail.com>
 
 pkgname=trang
-_pkgname="jing-trang"
-pkgver=20151127
-pkgrel=4
+_pkgname=jing-trang
+pkgver=20181204
+pkgrel=1
 pkgdesc="Converts between different schema languages for XML"
 url="https://github.com/relaxng/jing-trang"
 arch=('any')
-license=('GPL')
-depends=(java-runtime)
-makedepends=(java-environment)
+license=('custom')
+depends=(java-runtime bash)
+validpgpkeys=('D4875856415E63964D87445187D17477BC3A4B95')
 source=(
-	"${pkgname}-${pkgver}.tar.gz::https://github.com/relaxng/${_pkgname}/archive/V${pkgver}.tar.gz"
+	"https://github.com/relaxng/${_pkgname}/releases/download/V${pkgver}/${pkgname}-${pkgver}.zip"
+	"https://github.com/relaxng/${_pkgname}/releases/download/V${pkgver}/${pkgname}-${pkgver}.zip.asc"
 	trang
 )
 
-build() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  ./ant
-}
-
-check() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  ./ant test
-}
+# Upstream provides sha1sums, so that's what we use.
+sha1sums=('8afb99be3479e9057eb9df9772b2fa006ca44879'
+          'SKIP'
+          '12e0dc12ff808162eb8bcedde3b55b3e5ea4119a')
 
 package() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  install -D -m644 -t "$pkgdir/usr/share/java/$pkgname" build/trang.jar build/jing.jar build/dtdinst.jar
-  install -D -m755 "$srcdir/trang" "$pkgdir/usr/bin/trang"
-}
+	cd "$srcdir/${pkgname}-${pkgver}"
 
-sha256sums=('04cdf589abc5651d40f44fbc3415cb094672cb3c977770b2d9f6ea33e6d8932b'
-            'bba2c24e1ba844b8646ac1159c30889a6d38e864b1ddc5066a7fc6851a9ec78d')
+	install -D -m644 trang.jar "${pkgdir}/usr/share/java/${pkgname}/trang.jar"
+	install -D -m644 copying.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 trang-manual.html "${pkgdir}/usr/share/doc/${pkgname}/trang-manual.html"
+	install -D -m755 "${srcdir}/trang" "${pkgdir}/usr/bin/trang"
+}

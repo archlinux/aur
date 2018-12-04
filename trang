@@ -2,12 +2,14 @@
 
 if [ "$1" = "classpath" ]
 then
-  CP="$2"
+  CLASSPATH="$2"
   shift 2
 fi
 
-for jar in /usr/share/java/trang/*.jar; do
-	CP="$CP:$jar"
-done
+JAVACLASSES=/usr/share/java/trang
+CLASSPATH="${CLASSPATH:-.}:$JAVACLASSES/trang.jar"
 
-exec java -cp "$CP" com.thaiopensource.relaxng.translate.Driver "$@"
+export CLASSPATH
+
+exec java com.thaiopensource.relaxng.translate.Driver "$@"
+
