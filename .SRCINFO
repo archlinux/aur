@@ -1,14 +1,16 @@
 pkgbase = hop-git
 	pkgdesc = Software Development Kit for the Web
-	pkgver = 3.1.0r3937.0ad65718
+	pkgver = 3.2.0r5061.be86efe4
 	pkgrel = 1
+	epoch = 1
 	url = http://hop.inria.fr
 	install = hop.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	depends = bigloo-devel
+	makedepends = git
+	depends = bigloo
 	depends = gmp
 	depends = libunistring
 	depends = libuv
@@ -17,7 +19,7 @@ pkgbase = hop-git
 	provides = hop
 	conflicts = hop
 	options = !makeflags
-	source = git+https://github.com/manuel-serrano/hop.git
+	source = git+https://github.com/manuel-serrano/hop.git#branch=3.2.x
 	md5sums = SKIP
 
 pkgname = hop-git

@@ -3,30 +3,33 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=hop-git
-pkgver=3.1.0r3937.0ad65718
+epoch=1
+pkgver=3.2.0r5061.be86efe4
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-depends=('bigloo-devel' 'gmp' 'libunistring' 'libuv' 'avahi' 'sqlite')
+depends=('bigloo' 'gmp' 'libunistring' 'libuv' 'avahi' 'sqlite')
+makedepends=('git')
 conflicts=('hop')
 provides=('hop')
 install=hop.install
 url='http://hop.inria.fr'
-source=("git+https://github.com/manuel-serrano/hop.git")
+source=("git+https://github.com/manuel-serrano/hop.git#branch=3.2.x")
 md5sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf "%sr%s.%s" "3.1.0" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  . .hoprelease
+  printf "%sr%s.%s" $major "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd ${pkgname%-git}
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
 	      --disable-ssl --bigloobindir=/usr/bin \
-	      --bigloolibdir=/usr/lib/bigloo/4.3b 
+	      --bigloolibdir=/usr/lib/bigloo/4.3d
   make
   make doc
 }
