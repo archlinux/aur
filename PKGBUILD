@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bisq
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
@@ -23,11 +23,12 @@ build() {
 package() {
   # Install executable.
   install -d "${pkgdir}/opt/bisq"
-  cp -r "${srcdir}/${pkgname}/build/app/"/* "${pkgdir}/opt/bisq"
+  cp -r "${srcdir}/${pkgname}/desktop/build/app/"* "${pkgdir}/opt/bisq"
+  cp -r "${srcdir}/${pkgname}/bisq-desktop" "${pkgdir}/opt/bisq/"
   install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/bisq/bin/bisq-desktop" "${pkgdir}/usr/bin/bisq-desktop"
+  ln -s "/opt/bisq/bisq-desktop" "${pkgdir}/usr/bin/bisq-desktop"
 
   # Install desktop launcher.
   install -Dm644 bisq.desktop "${pkgdir}/usr/share/applications/bisq.desktop"
-  install -Dm644 "${srcdir}/${pkgname}/package/linux/icon.png" "${pkgdir}/usr/share/pixmaps/bisq.png"
+  install -Dm644 "${srcdir}/${pkgname}/desktop/package/linux/icon.png" "${pkgdir}/usr/share/pixmaps/bisq.png"
 }
