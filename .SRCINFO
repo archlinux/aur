@@ -1,0 +1,18 @@
+pkgbase = imgurbash2-git
+	pkgdesc = A shell script that uploads/deletes images to/from IMGUR
+	pkgver = r57.7669636
+	pkgrel = 1
+	url = https://github.com/ram-on/imgurbash2
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = curl
+	optdepends = xsel: automatically putting the URL on the X selection for easy pasting
+	optdepends = xclip: an alternative to xsel
+	provides = imgurbash2
+	conflicts = imgurbash2
+	source = git+https://github.com/ram-on/imgurbash2
+	md5sums = SKIP
+
+pkgname = imgurbash2-git
+
