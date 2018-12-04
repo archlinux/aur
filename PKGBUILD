@@ -1,14 +1,14 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=sealcrypto
-pkgver=3.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Simple Encrypted Arithmetic Library'
 arch=('any')
 url="https://sealcrypto.org/"
-license=('MSR-LA')
+license=('MIT')
 makedepends=('cmake')
-source=("https://download.microsoft.com/download/B/3/7/B3720F6B-4F4A-4B54-9C6C-751EF194CBE7/SEAL_3.0.tar.gz")
-sha1sums=('106914a237262a51a97ae9b87b0a35402978ea79')
+source=("https://github.com/Microsoft/SEAL/archive/${pkgver}.tar.gz")
+sha1sums=('09a066ba97c58f2abd5d4e5d0955d29224d563e5')
 provides=('sealcrypto')
 
 build() {
