@@ -1,6 +1,6 @@
 pkgbase = mpich
 	pkgdesc = An improved implementation of the Message Passing Interface.
-	pkgver = 3.2.1
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://mpich.org
 	install = mpich.install
@@ -17,9 +17,9 @@ pkgbase = mpich
 	optdepends = java-environment
 	replaces = mpich2
 	options = !libtool
-	source = http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz
+	source = http://www.mpich.org/static/downloads/3.3/mpich-3.3.tar.gz
 	source = mpich.profile
-	sha256sums = 5db53bf2edfaa2238eb6a0a5bc3d2c2ccbfbb1badd79b664a1a919d2ce2330f1
+	sha256sums = 329ee02fe6c3d101b6b30a7b6fb97ddf6e82b28844306771fa9dd8845108fa0b
 	sha256sums = b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284
 
 pkgname = mpich
