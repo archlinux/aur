@@ -58,7 +58,7 @@ install=
 changelog=
 source=("$url")
 noextract=()
-md5sums=('0db3c16d83b0b4f76bf0261731799e07')
+md5sums=('150d6c48145568ed779d31f60ed605f0')
 validpgpkeys=()
 
 prepare() {
