@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=xfpt
-pkgver=0.09
-pkgrel=2
+pkgver=0.10
+pkgrel=1
 epoch=
 pkgdesc="A program for turning a simple plain text markup into DocBook XML."
 arch=('i686' 'x86_64')
@@ -22,9 +22,9 @@ changelog=
 source=("ftp://ftp.csx.cam.ac.uk/pub/software/wordprocessing/unix/$pkgname/$pkgname-$pkgver.tar.bz2")
 noextract=()
 options=()
-md5sums=('35ba1521dc89e68600456ff598463b4f')
-sha1sums=('f556d54b9e4491dedcb5ece7b45244b13c09cce1')
-sha256sums=('ecb3f10b8c5bc8c7b53325fbe1de0b1e6990da11335d4a217dccca5fac97f492')
+md5sums=('142094238168add3462bab446fbce520')
+sha1sums=('f685afa9f1d3be473e23ca529ddc452f1dc87b8c')
+sha256sums=('513dd655750d0bd8439c1a77bcfdcd95d0282004d8325834742c2caa658f2656')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
