@@ -1,0 +1,15 @@
+pkgbase = mcfly
+	pkgdesc = Fly through your shell history
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/cantino/mcfly
+	install = mcfly.install
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/cantino/mcfly/archive/v0.2.2.tar.gz
+	sha256sums = 01b620d79c1ad3caf54519bca4d7375a7b981dde20a5ccdffddd53dc942744e7
+
+pkgname = mcfly
+
