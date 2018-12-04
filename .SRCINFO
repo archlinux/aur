@@ -1,0 +1,24 @@
+pkgbase = cvechecker-git
+	pkgdesc = a local CVE checker tool
+	pkgver = v3.9.r10.ge5a9969
+	pkgrel = 1
+	url = https://github.com/sjvermeu/cvechecker
+	install = cvechecker.install
+	arch = i686
+	arch = x86_64
+	groups = system
+	license = GPL
+	makedepends = autoconf
+	makedepends = make
+	makedepends = gcc
+	depends = libconfig>=1.3
+	depends = sqlite3
+	depends = wget
+	depends = libxslt
+	provides = cvechecker
+	conflicts = cvechecker
+	source = cvechecker-git::git+https://github.com/sjvermeu/cvechecker.git
+	md5sums = SKIP
+
+pkgname = cvechecker-git
+
