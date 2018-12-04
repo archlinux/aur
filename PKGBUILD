@@ -1,6 +1,6 @@
 # Maintainer: Lucas Malandrino <lucas.malandrino@gmail.com>
 pkgname='edex-ui'
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A science fiction desktop running everywhere. Awesome."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('npm')
 provides=('edex-ui')
 install="edex-ui.install"
 source=("https://github.com/GitSquared/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('78aabf062fef467ddfb730c4336c9446a1389efdf2b81240ba4fb4bc93abba8e')
+sha256sums=('10430772194a43efcaf4b3c8b1a0ca0f40bc3241d033ab8e70b035c3d3c8873d')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -32,7 +32,7 @@ package() {
 
     # Extract the package made by electron-builder
     # It's not pretty but blame electron
-    tar xf ./dist/eDEX-UI-linux.pacman -C "${pkgdir}"
+    tar xf ./dist/eDEX-UI-linux-*.pacman -C "${pkgdir}"
     cd "${pkgdir}"
 
     # Garbage madeby electron-builder
