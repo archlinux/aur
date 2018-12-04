@@ -1,0 +1,28 @@
+pkgbase = faudio-wrappers-git
+	pkgdesc = Accuracy-focused XAudio reimplementation for open platforms
+	pkgver = r949.acc1aaa
+	pkgrel = 1
+	url = https://github.com/FNA-XNA/FAudio
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-sdl2
+	makedepends = mingw-w64-ffmpeg
+	depends = wine
+	depends = winetricks
+	source = git+https://github.com/FNA-XNA/FAudio
+	source = setup_faudio_aur.verb
+	sha256sums = SKIP
+	sha256sums = 0fd64206dad7f7e255f1097eb50e1b2c770a6832adfa32549797accc44610b65
+
+pkgname = faudio-wrappers-win32-git
+	arch = i686
+	arch = x86_64
+	provides = faudio-wrappers-win32
+
+pkgname = faudio-wrappers-win64-git
+	arch = x86_64
+	provides = faudio-wrappers-win64
+
