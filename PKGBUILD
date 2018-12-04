@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ivy-git
-pkgver=r279.8c30a21
+pkgver=r306.3dd8a2d
 pkgrel=1
 epoch=
 pkgdesc="An APL-like calculator."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/robpike/ivy"
 license=('BSD')
 groups=()
-depends=('')
+depends=()
 makedepends=('git' 'go>=1.5')
 optdepends=()
 checkdepends=()
