@@ -1,3 +1,9 @@
+4.4.9 (2018-12-03 15:25:27)
+
+    Fixes a compatibility issue with Cylance,
+    Fixes an issue where custom debug servers were not properly saved,
+    Improve C preprocessor parsing.
+
 4.4.8 (2018-11-21 15:07:41)
 
     Fixes a decompilation issue where a function call may disappear when used in an empty if / else statement,
