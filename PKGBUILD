@@ -6,8 +6,8 @@
 
 pkgname=deluge-git
 _srcname=deluge
-pkgver=2.0.0b2.dev300.gab7f19fbb
-pkgrel=2
+pkgver=2.0.0b2.dev313.gb2e19561e
+pkgrel=1
 epoch=1
 pkgdesc="A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)"
 arch=('any')
@@ -16,10 +16,11 @@ license=('GPL3')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'libtorrent-rasterbar'
         'python2-twisted' 'python2-pyasn1' 'python2-pyopenssl' 'python2-xdg'
         'python2-chardet' 'python2-six' 'python2-setproctitle'
-        'python2-zope-interface' 'python2-service-identity' 'xdg-utils')
+        'python2-zope-interface' 'python2-service-identity'
+        'python2-rencode' 'python2-setuptools' 'xdg-utils')
 makedepends=(
     # binary repositories:
-        'git' 'intltool' 'librsvg' 'pygtk' 'python2-mako' 'python2-setuptools'
+        'git' 'intltool' 'librsvg' 'pygtk' 'python2-mako'
     # AUR:
         'slimit2'
 )
