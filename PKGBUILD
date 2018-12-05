@@ -1,7 +1,7 @@
 # Maintainer: Max Chesterfield <`echo Y2hlc3RtMDA3QGhvdG1haWwuY29tCg== | base64 -d`>
 
 
-pkgname=python-cassandra-driver
+pkgname=python-cassandra-driver-git
 pkgdesc="DataStax Python Driver for Apache Cassandra"
 pkgver=3.16.0
 pkgrel=1
