@@ -7,7 +7,7 @@ pkgdesc="A tool for manipulating and utilizing two dimensional gaussian beams wi
 arch=('i686' 'x86_64')
 url="https://github.com/radio-astro-tools/radio-beam"
 license=('BSD')
-makedepends=('cython' 'cython2' 'python-astropy' 'python-astropy-helpers' 'python2-astropy-helpers' 'python-sphinx' 'python-matplotlib')
+makedepends=('cython' 'cython2' 'python-astropy' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-sphinx' 'python-sphinx-astropy')
 #checkdepends=('python-pytest-astropy' 'python2-pytest' 'python2-astropy')
 source=("https://files.pythonhosted.org/packages/source/r/radio_beam/radio_beam-${pkgver}.tar.gz")
 md5sums=('8b8f9bf2e476f4c13c529be4fa626e89')
@@ -19,7 +19,7 @@ prepare() {
     cp -a ${srcdir}/radio_beam-${pkgver}{,-py2}
 }
 
-build () {
+build() {
     msg "Building Python2"
     cd ${srcdir}/radio_beam-${pkgver}-py2
     python2 setup.py build --use-system-libraries --offline
@@ -32,11 +32,11 @@ build () {
     python setup.py build_docs
 }
 
-#check(){
-#    cd $srcdir/radio_beam-${pkgver}
+#check() {
+#    cd ${srcdir}/radio_beam-${pkgver}
 #    python setup.py test
 #
-#    cd $srcdir/radio_beam-${pkgver}-py2
+#    cd ${srcdir}/radio_beam-${pkgver}-py2
 #    python2 setup.py test
 #}
 
@@ -64,7 +64,7 @@ package_python-radio_beam() {
 
 package_python-radio_beam-doc() {
     pkgdesc="Documentation for Python Radio Beam module"
-    cd ${srcdir}/radio_beam-${pkgver}/build/sphinx
+    cd ${srcdir}/radio_beam-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
