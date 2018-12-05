@@ -1,9 +1,9 @@
 # Maintainer: Sherlock Holo <sherlockya(at)gmail.com>
 pkgname=dns-over-https
 _pkgver=1.4.2
-pkgver=v$_pkgver
+pkgver=$_pkgver
 _pkgname=$pkgname
-pkgrel=1
+pkgrel=2
 pkgdesc="Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol"
 url="https://github.com/m13253/dns-over-https"
 arch=('i686' 'x86_64' 'armv7h')
