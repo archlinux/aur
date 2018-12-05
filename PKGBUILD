@@ -2,7 +2,7 @@
 # Contributor: Slashbunny <demodevil5[at]yahoo>
 
 pkgname=prometheus-node-exporter-bin
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Prometheus exporter for machine metrics (binary, not built from source)"
 arch=('x86_64' 'armv7h')
@@ -17,9 +17,9 @@ source_x86_64=( 'prometheus-node-exporter.service'
 source_armv7h=( 'prometheus-node-exporter.service'
 "https://github.com/prometheus/node_exporter/releases/download/v${pkgver}/node_exporter-${pkgver}.linux-armv7.tar.gz")
 sha256sums_x86_64=('df4ef8a34999ac2acedead7a48e67da31e0b65a29e4570d3075cd8ca663cf1d0'
-                   'e92a601a5ef4f77cce967266b488a978711dabc527a720bea26505cba426c029')
+                   'd2e00d805dbfdc67e7291ce2d2ff151f758dd7401dd993411ff3818d0e231489')
 sha256sums_armv7h=('df4ef8a34999ac2acedead7a48e67da31e0b65a29e4570d3075cd8ca663cf1d0'
-                   'b8bf44c025ec2c5210bdda185f8e72b29ccd3eb9be339b8dbf96835d4fc1965d')
+                   '052292878a664b02f464c85c2936decce600f73cf0ae8138dd026da532bcc352')
 
 package() {
     case "$CARCH" in
