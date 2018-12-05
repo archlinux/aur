@@ -7,7 +7,7 @@ pkgdesc="Python replacements for functions that are part of the IDL built-in lib
 arch=('i686' 'x86_64')
 url="http://pydl.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'cython2' 'python-astropy' 'python-astropy-helpers' 'python2-astropy-helpers' 'python-sphinx' 'python-numpydoc' 'python-matplotlib')
+makedepends=('cython' 'cython2' 'python-astropy' 'python-astropy-helpers' 'python2-astropy-helpers' 'python-sphinx' 'python-sphinx-astropy')
 #checkdepends=('python-pytest-astropy' 'python2-pytest' 'python2-astropy')
 source=("https://files.pythonhosted.org/packages/source/p/pydl/pydl-${pkgver}.tar.gz")
 md5sums=('4c024738a89e4229bfa4ce2beb3f4f14')
@@ -19,7 +19,7 @@ prepare() {
     cp -a ${srcdir}/pydl-${pkgver}{,-py2}
 }
 
-build () {
+build() {
     msg "Building Python2"
     cd ${srcdir}/pydl-${pkgver}-py2
     python2 setup.py build --use-system-libraries --offline
@@ -32,11 +32,11 @@ build () {
     python setup.py build_docs
 }
 
-#check(){
-#    cd $srcdir/pydl-${pkgver}
+#check() {
+#    cd ${srcdir}/pydl-${pkgver}
 #    python setup.py test
 #
-#    cd $srcdir/pydl-${pkgver}-py2
+#    cd ${srcdir}/pydl-${pkgver}-py2
 #    python2 setup.py test
 #}
 
