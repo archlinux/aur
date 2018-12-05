@@ -1,14 +1,34 @@
 # Maintainer: DanManN <dnahimov@gmail.com>
+
 pkgname=python-qiskit-sdk-git
-pkgver=0.7.0
-pkgrel=5
+pkgver=0.7.0.r2162.2fa71f56
+pkgrel=6
 pkgdesc="Python software development kit for writing quantum computing experiments, programs, and applications."
 arch=('any')
 url="http://www.qiskit.org"
 license=('Apache-2.0')
 groups=('QISKit')
-depends=('python' 'python-psutil' 'python-jsonschema' 'python-networkx' 'python-ply' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pillow' 'python-sympy' 'python-qiskit-api')
-makedepends=('git' 'cmake' 'python-setuptools' 'python-pylint' 'python-pycodestyle' 'python-sphinx' 'python-sphinxcontrib-fulltoc' 'python-coverage' 'python-better-apidoc' 'python-wheel')
+depends=('python'
+         'python-psutil'
+         'python-jsonschema'
+         'python-networkx'
+         'python-ply'
+         'python-numpy'
+         'python-scipy'
+         'python-matplotlib'
+         'python-pillow'
+         'python-sympy'
+         'python-qiskit-api')
+makedepends=('git'
+             'cmake'
+             'python-setuptools'
+             'python-pylint'
+             'python-pycodestyle'
+             'python-sphinx'
+             'python-sphinxcontrib-fulltoc'
+             'python-coverage'
+             'python-better-apidoc'
+             'python-wheel')
 provides=('python-qiskit-sdk')
 conflicts=('python-qiskit-sdk')
 source=("git+https://github.com/QISKit/qiskit-terra.git")
@@ -16,7 +36,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd qiskit-terra
-  cat qiskit/VERSION.txt || git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "%s.r%s.%s" "$(cat qiskit/VERSION.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

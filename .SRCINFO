@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-sdk-git
 	pkgdesc = Python software development kit for writing quantum computing experiments, programs, and applications.
-	pkgver = 0.7.0
-	pkgrel = 5
+	pkgver = 0.7.0.r2162.2fa71f56
+	pkgrel = 6
 	url = http://www.qiskit.org
 	arch = any
 	groups = QISKit
