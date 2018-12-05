@@ -7,8 +7,8 @@ pkgdesc="A python package for managing the World Coordinate System (WCS) of astr
 arch=('i686' 'x86_64')
 url="http://gwcs.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'python-astropy' 'python-astropy-helpers' 'python-sphinx' 'python-matplotlib')
-checkdepends=('python-asdf' 'python-pytest-astropy')
+makedepends=('cython' 'python-astropy' 'python-astropy-helpers>=3.1' 'python-sphinx' 'python-sphinx-astropy')
+#checkdepends=('python-asdf' 'python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-${pkgver}.tar.gz")
 md5sums=('87d9f0aa1a7434da10f4ee3bd3dae201')
 
@@ -18,7 +18,7 @@ prepare() {
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 }
 
-build () {
+build() {
     cd ${srcdir}/gwcs-${pkgver}
     python setup.py build --use-system-libraries --offline
 
@@ -26,14 +26,15 @@ build () {
     python setup.py build_docs
 }
 
-check(){
-    cd ${srcdir}/gwcs-${pkgver}
-    python setup.py test
-}
+#check() {
+#    cd ${srcdir}/gwcs-${pkgver}
+#    python setup.py test
+#}
 
 package_python-gwcs() {
     depends=('python' 'python-numpy>=1.7' 'python-astropy>=1.2' 'python-asdf')
-    optdepends=('python-gwcs-doc: Documentation for Python-GWCS')
+    optdepends=('python-gwcs-doc: Documentation for Python-GWCS'
+                'python-pytest-astropy: For testing')
     cd ${srcdir}/gwcs-${pkgver}
 
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
@@ -44,7 +45,7 @@ package_python-gwcs() {
 
 package_python-gwcs-doc() {
     pkgdesc="Documentation for Python GWCS module"
-    cd ${srcdir}/gwcs-${pkgver}/build/sphinx
+    cd ${srcdir}/gwcs-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
