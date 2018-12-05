@@ -5,6 +5,7 @@ pkgname=('python-pybgpstream' 'python2-pybgpstream')
 _pkgname='pybgpstream'
 pkgver=1.2.1
 pkgrel=1
+pkgdesc="python bindings for libbgpstream"
 arch=('x86_64')
 license=('GPL')
 url="https://bgpstream.caida.org/"
