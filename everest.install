@@ -1,0 +1,15 @@
+_update() {
+    update-desktop-database -q
+}
+
+post_install() {
+    _update
+}
+
+post_upgrade() {
+    _update
+}
+
+post_remove() {
+    _update
+}

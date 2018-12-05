@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Everest
+GenericName=REST client
+Comment=A beautiful, cross-platform REST client
+TryExec=everest
+Exec=everest
+Icon=everest
+Categories=Office;
