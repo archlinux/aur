@@ -1,13 +1,20 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
-pkgbase=python-astroplan
-pkgname=('python-astroplan' 'python-astroplan-doc')
+#pkgbase=python-astroplan
+pkgname=('python-astroplan')
+#'python-astroplan-doc')
 pkgver=0.4
 pkgrel=4
 pkgdesc="A python package to help astronomers plan observations"
 arch=('i686' 'x86_64')
 url="https://astroplan.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'python-astropy>=1.3' 'python-pytz' 'python-astropy-helpers' 'python-sphinx' 'python-matplotlib' 'python-astroquery')
+makedepends=('cython'
+             'python-astropy>=1.3'
+             'python-pytz'
+             'python-astropy-helpers')
+#            'python-sphinx'
+#            'python-matplotlib'
+#            'python-astroquery')
 #checkdepends=('python-matplotlib' 'python-pytest-mpl')
 source=("https://files.pythonhosted.org/packages/source/a/astroplan/astroplan-${pkgver}.tar.gz"
         'python-astroplan.patch')
@@ -20,15 +27,15 @@ prepare() {
     patch -Np1 -i "${srcdir}/python-astroplan.patch"
 }
 
-build () {
+build() {
     cd ${srcdir}/astroplan-${pkgver}
     python setup.py build --use-system-libraries --offline
 
-    msg "Building Docs"
-    python setup.py build_docs
+#   msg "Building Docs"
+#   python setup.py build_docs
 }
 
-#check(){
+#check() {
 #    cd ${srcdir}/astroplan-${pkgver}
 #
 #    python setup.py test
@@ -38,8 +45,8 @@ package_python-astroplan() {
     depends=('python>=3.5' 'python-numpy>=1.10' 'python-astropy>=1.3' 'python-pytz')
     optdepends=('python-matplotlib: Plotting support'
                 'python-pytest-mpl: Testing the plot function'
-                'python-astroquery: Astroquery support'
-                'python-astroplan-doc: Documentation for astroplan')
+                'python-astroquery: Astroquery support')
+#               'python-astroplan-doc: Documentation for astroplan')
     cd ${srcdir}/astroplan-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -48,10 +55,10 @@ package_python-astroplan() {
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-libraries --offline
 }
 
-package_python-astroplan-doc() {
-    pkgdesc="Documentation for Python astroplan module"
-    cd ${srcdir}/astroplan-${pkgver}/build/sphinx
-
-    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-}
+#package_python-astroplan-doc() {
+#    pkgdesc="Documentation for Python astroplan module"
+#    cd ${srcdir}/astroplan-${pkgver}/build/sphinx
+#
+#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+#}
