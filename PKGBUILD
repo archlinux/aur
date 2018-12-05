@@ -6,7 +6,7 @@ pkgdesc="Documentation for APLpy"
 arch=('i686' 'x86_64')
 url="http://aplpy.github.io/"
 license=('MIT')
-makedepends=('python-aplpy' 'python-astropy-helpers')
+makedepends=('python-aplpy' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy')
 source=("https://files.pythonhosted.org/packages/source/A/APLpy/APLpy-${pkgver}.tar.gz")
 md5sums=('634422c006dcd366d5504af3349e9d10')
 
