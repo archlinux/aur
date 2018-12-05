@@ -1,0 +1,15 @@
+pkgbase = digsighost
+	pkgdesc = This application is intended for all users of software solutions, which use Comtrade DigSig component for digital signing of documents.
+	pkgver = 2.0.98.0
+	pkgrel = 1
+	url = http://comtradedigital.com/digital-banking-security/#E-signature-and-PKI
+	install = digsighost.install
+	arch = any
+	license = GPL
+	options = !strip
+	options = !emptydirs
+	source = https://edavki.durs.si/EdavkiPortal/[120]/OpenPortal/Controls/ESignDocControls/digsighost.deb
+	sha512sums = 30d88c579c9c2fe13254ea1422742b14442b9d767862059c82e64c8e7d1489571fe7ed15c450306883a2a7596353577ced1084d7d29fc64f68ef792a602cfb5a
+
+pkgname = digsighost
+

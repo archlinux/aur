@@ -1,0 +1,35 @@
+post_install() {
+
+	manifest=com.comtrade.banking.security.digsighost.json
+	manifest_dir=/opt/comtrade/digsighost/conf
+	chrome_nmh=/etc/opt/chrome/native-messaging-hosts
+	chromium_nmh=/etc/chromium-browser/native-messaging-hosts
+	mozilla_nmh=/usr/lib/mozilla/native-messaging-hosts
+
+	mkdir -p ${chrome_nmh}
+	cp -p ${manifest_dir}/${manifest}.chrome ${chrome_nmh}/${manifest}
+
+	mkdir -p ${chromium_nmh}
+	cp -p ${manifest_dir}/${manifest}.chrome ${chromium_nmh}/${manifest}
+
+	mkdir -p ${mozilla_nmh}
+	cp -p ${manifest_dir}/${manifest}.mozilla ${mozilla_nmh}/${manifest}
+
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+	manifest=com.comtrade.banking.security.digsighost.json
+	chrome_nmh=/etc/opt/chrome/native-messaging-hosts
+	chromium_nmh=/etc/chromium-browser/native-messaging-hosts
+	mozilla_nmh=/usr/lib/mozilla/native-messaging-hosts
+
+	rm -f ${chrome_nmh}/${manifest}
+	rm -f ${chromium_nmh}/${manifest}
+	rm -f ${mozilla_nmh}/${manifest}
+
+}
