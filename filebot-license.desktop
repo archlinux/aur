@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=FileBot License
+Comment=Import FileBot License File
+Exec=filebot --license %F
+Icon=filebot
+Terminal=false
+StartupNotify=true
+Categories=AudioVideo;Video;Utility;FileTools;
+MimeType=application/x-psm;application/x-filebot-license;
+NoDisplay=true

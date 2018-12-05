@@ -1,7 +1,7 @@
 pkgbase = filebot-git
 	pkgdesc = The ultimate TV and Movie Renamer
 	pkgver = 4.8.5.20181202
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/filebot/filebot
 	install = filebot.install
 	arch = i686
@@ -26,8 +26,12 @@ pkgbase = filebot-git
 	conflicts = filebot
 	source = filebot::git+https://github.com/filebot/filebot.git
 	source = filebot-arch.sh
+	source = filebot.desktop
+	source = filebot-license.desktop
 	md5sums = SKIP
 	md5sums = a1f708b2a17a1a548f910ea0c53a9f54
+	md5sums = 8cea85b074146c6057913488a1247fd8
+	md5sums = b49cf931217ed3cfbc8be1cf3133d7e0
 
 pkgname = filebot-git
 

@@ -10,7 +10,7 @@ pkgname=filebot-git
 _pkgname=filebot
 pkgver=4.8.5.20181202
 _pkgver=4.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate TV and Movie Renamer"
 _jnaver=4.5.2
 _fixedcommit=f6efdbced839f96f9685640345b2e4eee30f61b6
@@ -35,11 +35,14 @@ source=("${_pkgname}::git+https://github.com/filebot/filebot.git"
         #https://github.com/java-native-access/jna/archive/$_jnaver.tar.gz
         $_pkgname-arch.sh
         #$_pkgname.svg
-        #$_pkgname.desktop
+        filebot.desktop
+        filebot-license.desktop
         )
 
 md5sums=('SKIP'
-         'a1f708b2a17a1a548f910ea0c53a9f54')
+         'a1f708b2a17a1a548f910ea0c53a9f54'
+         '8cea85b074146c6057913488a1247fd8'
+         'b49cf931217ed3cfbc8be1cf3133d7e0')
 
 optdepends=('libzen: Required by libmediainfo'
 	    'libmediainfo: Read media info such as video codec, resolution or duration'
@@ -99,13 +102,13 @@ package() {
 
   install -Dm755 $_pkgname-arch.sh "$pkgdir/usr/bin/$_pkgname"
 
+  # copy .desktop files
+  cp -dpr --no-preserve=ownership *.desktop "$pkgdir/usr/share/applications/"
+
   # install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
   
   cd "$srcdir/$_pkgname/"
 
-  # copy .desktop files
-  cp -dpr --no-preserve=ownership installer/deb/share/applications/* "$pkgdir/usr/share/applications/"
-  
   # copy MIME types
   cp -dpr --no-preserve=ownership installer/deb/share/mime "$pkgdir/usr/share/mime"
   sed -i "s/@{license.mimetype}/application\/x-filebot-license/g; s/@{license.description}/FileBot License File/g; s/@{package.name}/$_pkgname/g; s/@{license.extension}/psm/g" $pkgdir/usr/share/mime/packages/$_pkgname.xml

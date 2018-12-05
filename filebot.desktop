@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=FileBot
+Comment=The ultimate TV and Movie Renamer
+Exec=filebot %F
+Icon=filebot
+Terminal=false
+StartupNotify=true
+Categories=AudioVideo;Video;Utility;FileTools;
+MimeType=inode/directory;video/*;audio/*;text/*;application/*;
