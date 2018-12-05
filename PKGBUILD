@@ -3,8 +3,8 @@
 
 _fnt_name=chunk
 pkgname=ttf-${_fnt_name}
-pkgver=20160215
-pkgrel=3
+pkgver=20180627
+pkgrel=1
 pkgdesc="An ultra-bold slab serif typeface that is reminiscent of old American Western woodcuts, broadsides, and newspaper headlines. Used mainly for display, the fat block lettering is unreserved yet refined for contemporary use."
 arch=('any')
 url="http://theleagueofmoveabletype.com/${_fnt_name}"
@@ -12,7 +12,7 @@ license=('custom:OFL')
 groups=('lmt-fonts')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/${_fnt_name}/archive/master.zip")
-md5sums=('96287d88f72c475a3006031b80dcdc5e')
+sha256sums=('f38062c4b6ecf42e0cc0b4ec3c8d6976c040ac2e87777f44cec6b1047470d949')
 
 package() {
   install -d ${pkgdir}/usr/share/fonts/OTF
