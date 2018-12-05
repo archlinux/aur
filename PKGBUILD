@@ -1,29 +1,30 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=libvpx-full-git
-pkgver=1.7.0.r1254.ga4e70f1808
+_srcname=libvpx
+pkgver=1.7.0.r1445.g5039d2d82b
 pkgrel=1
 pkgdesc='VP8 and VP9 video codecs (with all possible options, git version)'
 arch=('i686' 'x86_64')
-url='http://www.webmproject.org/code/'
+url='https://www.webmproject.org/code/'
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('git' 'yasm')
 provides=('libvpx' 'libvpx-git' 'libvpx.so')
 conflicts=('libvpx')
-source=("$pkgname"::'git+https://chromium.googlesource.com/webm/libvpx') # official repo
-#source=("$pkgname"::'git+https://github.com/webmproject/libvpx.git') # mirror
+source=('git+https://chromium.googlesource.com/webm/libvpx') # official repo
+#source=('git+https://github.com/webmproject/libvpx.git') # mirror
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     ./configure \
         --prefix='/usr' \
@@ -82,7 +83,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     make DESTDIR="$pkgdir" install
     
