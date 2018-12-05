@@ -187,8 +187,12 @@ postfix_bak_file_name=".bak"
 #cfg related
 prop_cfg_file_copy_num="CopyFilesNum"
 prop_cfg_dir_copy_num="CopyDirectoriesNum"
+prop_cfg_rm_num="RmNum"
+
 prop_cfg_file_copy="CopyFile"
 prop_cfg_dir_copy="CopyDirectory"
+prop_cfg_rm="Rm"
+
 prop_cfg_write_sem="WriteSemaphore"
 prop_cfg_read_sem="AllowOnlyIfPreviousMacIs"
 
@@ -199,14 +203,15 @@ fi
 
 number_files=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_file_copy_num[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
 number_directories=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_dir_copy_num[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+number_rm=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_rm_num[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
 
 ok_write_semaphore=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_write_sem[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
 [[ $ok_write_semaphore == "" ]] && ok_write_semaphore="yes" #default
 [[ $ok_write_semaphore != "yes" && $ok_write_semaphore != "no" ]] && ok_write_semaphore="yes" #default
 
 #Check cfg file integrity
-if [[ $number_files -lt 1 && $number_directories -lt 1 ]] ; then
-  echo -e "$ERR $filename_cfg: None to do!!! 'CopyFilesNum' and 'CopyDirectoriesNum' not correctly defined. Please modify cfg."
+if [[ $number_files -lt 1 && $number_directories -lt 1 && $number_rm -lt 1 ]] ; then
+  echo -e "$ERR $filename_cfg: None to do!!! 'CopyFilesNum' or 'CopyDirectoriesNum' or 'RmNum' not correctly defined. Please modify cfg."
   exit 1
 fi
 
@@ -215,6 +220,8 @@ if [[ $number_files -gt 0 ]] ; then
     dupe=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_file_copy$counter[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
     [[ $dupe == "" ]] && { echo -e "$ERR $filename_cfg: '$prop_cfg_file_copy$counter' not found inside cfg. Fix cfg!!"; exit 1; }
     [[ ! -r $path_cfg$install_macname$dupe ]] && { echo -e "$ERR File '$path_cfg$install_macname$dupe' defined in config but not found!"; exit 1; }
+
+    #prepare destination creatinf directory if required
     #remove starting '/' if exist
     [[ ${dupe:0:1} == "/" ]] && dupe=${dupe:1:${#dupe}-1}
     # extract path from $dupe and mkdir -p it
@@ -236,6 +243,8 @@ if [[ $number_directories -gt 0 ]] ; then
     dupe=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_dir_copy$counter[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
     [[ $dupe == "" ]] && { echo -e "$ERR $filename_cfg: '$prop_cfg_dir_copy$counter' not found inside cfg. Fix cfg!!"; exit 1; }
     [[ ! -d $path_cfg$install_macname$dupe ]] && { echo -e "$ERR Directory '$path_cfg$install_macname$dupe' defined in config but not found!"; exit 1; }
+
+    #prepare destination creating directory if required
     #remove starting '/' if exist
     [[ ${dupe:0:1} == "/" ]] && dupe=${dupe:1:${#dupe}-1}
     #remove ending '/' if exist
@@ -250,6 +259,14 @@ if [[ $number_directories -gt 0 ]] ; then
         [[ $? -ne 0 ]] && { echo -e "$WARN Fail generating directory '$path_dest$dupePath'. Exit."; exit 1; }
       fi
     fi
+  done
+fi
+
+if [[ $number_rm -gt 0 ]] ; then
+  for (( counter=1; counter <= $number_rm; counter++ )) ; do
+    dupe=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_rm$counter[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+    [[ $dupe == "" ]] && { echo -e "$ERR $filename_cfg: '$prop_cfg_rm$counter' not found inside cfg. Fix cfg!!"; exit 1; }
+    [[ ! -d $path_cfg$install_macname$dupe ]] && { echo -e "$ERR File/dir '$path_cfg$install_macname$dupe' defined in config but not found!"; exit 1; }
   done
 fi
 
@@ -288,7 +305,6 @@ fi
 #echo "1"
 #sed -nr "/^\[$install_macname\]/ { :l /^ciccia[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg
 #sed -nr "/^\[$install_macname\]/ { :l /^AllowOnlyIfPreviousMacIs[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg
-
 
 #
 ## Verify semaphore file (opzional)
@@ -378,6 +394,10 @@ if [[ $number_directories -gt 0 ]] ; then
   done
 fi
 
+if [[ $number_rm -gt 0 ]] ; then
+  echo -e "$WARN Attention! Backup of remove ($number_rm) not done."
+fi
+
 #
 ## Copia nuovi files
 #
@@ -423,6 +443,28 @@ if [[ $number_directories -gt 0 ]] ; then
     fi
   done
 fi
+
+if [[ $number_rm -gt 0 ]] ; then
+  for (( counter=1; counter <= $number_rm; counter++ )) ; do
+    dupe=`sed -nr "/^\[$install_macname\]/ { :l /^$prop_cfg_rm$counter[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $path_cfg$filename_cfg`
+    [[ ${dupe:0:1} == "/" ]] && dupe=${dupe:1:${#dupe}-1} #remove starting '/' if exist
+    if [[ "$flagForceRealWork" == true ]] ; then
+      rm -f "$path_dest$dupe"
+      if [[ $? -ne 0 ]] ; then
+        sudo rm -f "$path_dest$dupe"
+        if [[ $? -ne 0 ]] ; then
+          echo -e "$ERR Fail removing file '$path_dest$dupe'. Ask User."
+          echo -n "Continue? (Y/N): "; read ask
+          [[ ! $ask =~ ^(yes|y|YES|y|s|S|si|SI|sì)$ ]] && { echo "Exit forced by user with error."; exit 1; }
+        fi
+      fi
+      echo -e "$OK Removed file <$install_macname> '$path_dest$dupe'."
+    else
+      echo -e "$OK [Simulated] Removed file '$path_dest$dupe'."
+    fi
+  done
+fi
+
 
 #
 ## Write new semaphore (can be disabled)
