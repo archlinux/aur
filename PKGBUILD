@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=flutter
-pkgver=0.11.13
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -26,7 +26,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/${pkgname}_linux_v${pkgver}-beta.tar.xz"
         "${pkgname}.sh"
         "${pkgname}.csh")
-sha256sums=("13c41d9aa4ccae5b96a9e068ed630183c5496d047e3db55d902b5c21d6408622"
+sha256sums=("3d52bc8fefe427bf245c12b4d4dd5179b894e174db5d98554fc9d853bd567013"
             "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
             "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f")
 
