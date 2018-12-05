@@ -4,7 +4,7 @@
 
 pkgname=tokyocabinet
 pkgver=1.4.48
-pkgrel=1
+pkgrel=2
 pkgdesc="a modern implementation of DBM"
 arch=('i686' 'x86_64')
 url="http://fallabs.com/tokyocabinet/"
@@ -14,9 +14,17 @@ depends=('zlib' 'bzip2')
 source=("http://fallabs.com/tokyocabinet/${pkgname}-${pkgver}.tar.gz")
 md5sums=('fd03df6965f8f56dd5b8518ca43b4f5e')
 
+prepare() {
+  cd $pkgname-$pkgver
+
+  # get rid of references to $HOME
+  sed -i 's|LDENV = .*|LDENV = |' Makefile.in
+  sed -i 's|$HOME|/usr|' configure
+}
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --enable-off64 --enable-fastest
+  ./configure --prefix=/usr --libexecdir="/usr/lib/$pkgname" --enable-off64 --enable-fastest
   make
 }
 

@@ -1,7 +1,7 @@
 pkgbase = tokyocabinet
 	pkgdesc = a modern implementation of DBM
 	pkgver = 1.4.48
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fallabs.com/tokyocabinet/
 	arch = i686
 	arch = x86_64
