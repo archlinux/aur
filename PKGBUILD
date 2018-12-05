@@ -3,8 +3,8 @@
 
 pkgname=qgis-ltr3
 _pkgname=qgis
-pkgver=3.4.1_final
-_pkgver=3.4.1_final
+pkgver=3.4.2_final.r51894.5645791992
+_pkgver=3.4.2_final
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Latest Long Term Release version'
 url='http://qgis.org/'
@@ -31,7 +31,7 @@ pkgver(){
 
 prepare() {
   cd $_pkgname
-  git checkout tags/final-3_4_1
+  git checkout tags/final-3_4_2
 
   # Fix desktop file for /usr/bin/qgis-github
   

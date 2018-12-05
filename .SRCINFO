@@ -1,6 +1,6 @@
 pkgbase = qgis-ltr3
 	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats - Latest Long Term Release version
-	pkgver = 3.4.1_final
+	pkgver = 3.4.2_final.r51894.5645791992
 	pkgrel = 1
 	url = http://qgis.org/
 	arch = i686
