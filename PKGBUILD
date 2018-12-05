@@ -45,9 +45,6 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 # more information.
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
-CFLAGS="-march=native -O2 -pipe -fstack-protector-strong -fno-plt"
-CXXFLAGS="-march=native -O2 -pipe -fstack-protector-strong -fno-plt"
-
 pkgver() {
   cd mozilla-unified
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
@@ -65,7 +62,7 @@ ac_add_options --enable-application=browser
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
-#ac_add_options --enable-optimize
+ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 
 # Branding
