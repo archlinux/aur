@@ -22,7 +22,7 @@ package_lrad-git() {
 
 	cd $_pkgname
 
-	env CARGO_INCREMENTAL=0 cargo build --release
+	env cargo +nightly build --release
 
 	install -D -m755 "$srcdir/$_pkgname/target/release/lrad-cli" "$pkgdir/usr/bin/lrad"
 }
