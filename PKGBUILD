@@ -7,7 +7,7 @@
 pkgname=libsvm
 pkgver=3.23
 _srcver="${pkgver/./}"
-pkgrel=5
+pkgrel=6
 pkgdesc='A library for Support Vector Machines classification (includes binaries and bindings for python and java)'
 arch=('i686' 'x86_64')
 url='https://www.csie.ntu.edu.tw/~cjlin/libsvm/'
@@ -17,19 +17,23 @@ makedepends=('qt5-base' 'python')
 optdepends=('qt5-base: for Qt5 interface with svm-toy'
             'python: for python modules and python CLI tools'
             'python2: for python2 modules'
+            'gnuplot: for using svm-easy.py'
             'java-runtime: for java bindings')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cjlin1/libsvm/archive/v${_srcver}.tar.gz"
         '001-libsvm-fix-qt-headers-path.patch'
-        '002-libsvm-use-archlinux-flags.patch')
+        '002-libsvm-use-archlinux-flags.patch'
+        '003-libsvm-fix-tools-path.patch')
 sha256sums=('7a466f90f327a98f8ed1cb217570547bcb00077933d1619f3cb9e73518f38196'
             '01d28d48ca955921cff3ee39e6235fbcbe6f13587c056b05797388afc0c45432'
-            'ba986c03199445ec0a9d1d113f54753e61f691ad4c66cad80b1f7d6ccf0c2d17')
+            'ba986c03199445ec0a9d1d113f54753e61f691ad4c66cad80b1f7d6ccf0c2d17'
+            '58338a8eac252459c665eb6f1f03f4b86cd541b2c6942357329be022f3bb6fce')
 
 prepare() {
     cd "${pkgname}-${_srcver}"
     
     patch -Np1 -i "${srcdir}/001-libsvm-fix-qt-headers-path.patch"
     patch -Np1 -i "${srcdir}/002-libsvm-use-archlinux-flags.patch"
+    patch -Np1 -i "${srcdir}/003-libsvm-fix-tools-path.patch"
 }
 
 build() {
@@ -67,19 +71,20 @@ package() {
     install -D -m644 svm.h -t "${pkgdir}/usr/include/libsvm"
     
     # python modules
-    ## NOTE: 'svm-grid.py' can be used either as a python module or a CLI/tool
+    ## NOTE: 'grid.py' can be used either as a python module or a CLI/tool
     ## https://github.com/cjlin1/libsvm/blob/v323/tools/README#L163-L164
     cd "${srcdir}/${pkgname}-${_srcver}/python"
-    install -D -m644 commonutil.py    "${pkgdir}/usr/lib/python${_pyver}/svm-commonutil.py"
-    install -D -m644 commonutil.py    "${pkgdir}/usr/lib/python2.7/svm-commonutil.py"
-    install -D -m644 svm.py        -t "${pkgdir}/usr/lib/python${_pyver}"
-    install -D -m644 svm.py        -t "${pkgdir}/usr/lib/python2.7"
-    install -D -m644 svmutil.py    -t "${pkgdir}/usr/lib/python${_pyver}"
-    install -D -m644 svmutil.py    -t "${pkgdir}/usr/lib/python2.7"
+    install -D -m644 commonutil.py -t "${pkgdir}/usr/lib/python${_pyver}/libsvm"
+    install -D -m644 commonutil.py -t "${pkgdir}/usr/lib/python2.7/libsvm"
+    install -D -m644 svm.py        -t "${pkgdir}/usr/lib/python${_pyver}/libsvm"
+    install -D -m644 svm.py        -t "${pkgdir}/usr/lib/python2.7/libsvm"
+    install -D -m644 svmutil.py    -t "${pkgdir}/usr/lib/python${_pyver}/libsvm"
+    install -D -m644 svmutil.py    -t "${pkgdir}/usr/lib/python2.7/libsvm"
     cd "${srcdir}/${pkgname}-${_srcver}/tools"
-    install -D -m644 grid.py     "${pkgdir}/usr/lib/python${_pyver}/svm-grid.py"
-    install -D -m644 grid.py     "${pkgdir}/usr/lib/python2.7/svm-grid.py"
-    sed -i '1s/python$/python2/' "${pkgdir}/usr/lib/python2.7/"{svm-{commonutil,grid},svm,svmutil}.py
+    install -D -m644 grid.py  -t "${pkgdir}/usr/lib/python${_pyver}/libsvm"
+    install -D -m644 grid.py  -t "${pkgdir}/usr/lib/python2.7/libsvm"
+    sed -i '1s/python$/python2/' "${pkgdir}/usr/lib/python2.7/libsvm/"{commonutil,grid,svm,svmutil}.py
+    printf '' | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/python2.7/libsvm/__init__.py"
     
     # python CLI/tools
     install -D -m755 checkdata.py "${pkgdir}/usr/bin/svm-checkdata.py"
