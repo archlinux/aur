@@ -1,17 +1,18 @@
 # Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
+# Contributor: Zezadas
 
 _pkgname=john
 pkgname=john-git
-pkgver=1.8.0.jumbo.1.r5618.ga666e7e38
+pkgver=1.8.0.jumbo.1.r7035.gedcbeda1f
 pkgrel=1
 pkgdesc="fast password cracker (using the git repository of the jumbo patch)"
 arch=('i686' 'x86_64')
 url="http://www.openwall.com/$_pkgname/"
 license=('GPL2' 'custom')
-depends=('openssl')
-makedepends=('git' 'libgsf' 'libxml2' 'nss' 'opencl-headers')
+depends=('openssl-1.0' 'gmp' 'libpcap' 'openmpi' 'gcc-libs' 'opencl-icd-loader')
+makedepends=('git' 'libgsf' 'libxml2' 'nss' 'opencl-headers' 'pkg-config')
 optdepends=("perl: for executing some of the scripts at /usr/share/john"
             "ruby: for executing some of the scripts at /usr/share/john"
             "python: for executing some of the scripts at /usr/share/john"
@@ -23,10 +24,8 @@ conflicts=('john')
 backup=('etc/john/john.conf')
 install=john.install
 options=('!strip')
-source=("$_pkgname::git+https://github.com/magnumripper/JohnTheRipper.git"
-        "params.h.patch")
-md5sums=('SKIP'
-         'f69ed632eba8fb9e45847a4b4a323787')
+source=("$_pkgname::git+https://github.com/magnumripper/JohnTheRipper.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -37,97 +36,105 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/$_pkgname/src"
-
-	patch -p0 -i ${srcdir}/params.h.patch
+  cd "$srcdir/$_pkgname/"
+  sed 's|env python|env python2|' -i run/*.py
+  sed 's|/usr/bin/python|/usr/bin/python2|' -i run/*.py
+  sed 's|"x$enable_native_tests" = xyes -a "x$PKG_CONFIG"|"x$PKG_CONFIG"|' -i src/configure
 }
 
 build() {
   cd "$srcdir/$_pkgname/src"
+  
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+  local JOHN_CFG_FULL_NAME="" #"-DCFG_FULL_NAME='\"/etc/john/john.conf\"'"
+  local JOHN_SYSTEMWIDE_FLAGS="" #"-DJOHN_SYSTEMWIDE_EXEC='\"/usr/lib/john\"' -DJOHN_SYSTEMWIDE_HOME='\"/etc/john\"'"
+  local JOHN_FLAGS="-DJOHN_SYSTEMWIDE=1 ${JOHN_SYSTEMWIDE_FLAGS} -DCPU_FALLBACK ${JOHN_CFG_FULL_NAME}"
+  local CFLAGS="${CFLAGS} ${JOHN_FLAGS}"
+  local CONFIGURE_FLAGS="--prefix=/usr --disable-native-tests --enable-openmp --enable-mpi --enable-native-march"
+  CONFIGURE_FLAGS+=" --enable-opencl --enable-pkg-config --enable-pcap"
 
-  ./configure --with-systemwide
-
-  make clean
-
-  make
+  if [[ "${CARCH}" == "x86_64" ]]; then
+    ./configure ${CONFIGURE_FLAGS} CFLAGS="${CFLAGS}"
+    make clean; make
+    mv ../run/john{,-non-avx}
+    ./configure ${CONFIGURE_FLAGS} CFLAGS="${CFLAGS} -mavx"
+    make clean; make
+    mv ../run/john{,-non-xop}
+    ./configure ${CONFIGURE_FLAGS} CFLAGS="${CFLAGS} -mxop"
+    make clean; make
+  elif [[ "${CARCH}" == "i686" ]]; then
+    ./configure ${CONFIGURE_FLAGS} CFLAGS="${CFLAGS}"
+    make clean; make
+    mv ../run/john{,-non-mmx}
+    ./configure ${CONFIGURE_FLAGS} CFLAGS="${CFLAGS} -mmmx"
+    make clean; make
+    mv ../run/john{,-non-sse}
+    ./configure ${CONFIGURE_FLAGS} CFLAGS="${CFLAGS} -msse2"
+    make clean; make
+    mv ../run/john{,-non-avx}
+    ./configure ${CONFIGURE_FLAGS} CFLAGS="${CFLAGS} -mavx"
+    make clean; make
+    mv ../run/john{,-non-xop}
+    ./configure ${CONFIGURE_FLAGS} CFLAGS="${CFLAGS} -mxop"
+    make clean; make
+  else
+    ./configure ${CONFIGURE_FLAGS} CFLAGS="${CFLAGS}"
+    make clean; make
+  fi
+    
 }
 
 package() {
+    cd ${srcdir}/$_pkgname/
 	# config file
 	sed -i 's|$JOHN/john.local.conf|/etc/john/john.local.conf|g' ${srcdir}/$_pkgname/run/john.conf
-	sed -i 's|$JOHN|/usr/share/john|g' ${srcdir}/$_pkgname/run/john.conf
-	install -Dm644 ${srcdir}/$_pkgname/run/john.conf ${pkgdir}/etc/john/john.conf
+	sed -i 's|$JOHN|/etc/john|g' ${srcdir}/$_pkgname/run/john.conf
+	install -Dm644 ${srcdir}/$_pkgname/run/john.conf ${pkgdir}/etc/john/john.conf	
 
+	# opencl
+    install -Dm 644 run/kernels/* -t "${pkgdir}/usr/share/john/kernels"
+	
+	# rules
+    install -Dm 644 run/rules/* -t "${pkgdir}/usr/share/john/rules"
+	
 	# docs
 	install -d ${pkgdir}/usr/share/doc/john
 	install -m644 ${srcdir}/$_pkgname/doc/* ${pkgdir}/usr/share/doc/john/
 	install -Dm644 ${srcdir}/$_pkgname/doc/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
 
-	# install password list, charset files
-	install -d ${pkgdir}/usr/share/john/
-	install -m644 ${srcdir}/$_pkgname/run/password.lst ${pkgdir}/usr/share/john/
-	install -m644 ${srcdir}/$_pkgname/run/dictionary.rfc2865 ${pkgdir}/usr/share/john/
-	install -m644 ${srcdir}/$_pkgname/run/stats ${pkgdir}/usr/share/john/
-	install -m644 ${srcdir}/$_pkgname/run/*.chr \
-			${pkgdir}/usr/share/john/
-	install -m644 ${srcdir}/$_pkgname/run/{best64,dumb16,dumb32,dynamic,dynamic_flat_sse_formats,korelogic,regex_alphabets,repeats16,repeats32,hybrid}.conf \
-			${pkgdir}/usr/share/john/
-	install -d ${pkgdir}/usr/share/john/kernels/
-	install -m644 ${srcdir}/$_pkgname/run/kernels/* ${pkgdir}/usr/share/john/kernels/
+	# completion
+   install -Dm 644 run/john.bash_completion "${pkgdir}/usr/share/bash-completion/completions/john"
+   install -Dm 644 run/john.zsh_completion "${pkgdir}/usr/share/zsh/site-functions/_john"
+	
+	####
+    install -Dm644 ${srcdir}/$_pkgname/run/*.conf ${pkgdir}/usr/share/john/
 
-	# install scripts
-	john_scripts=(benchmark-unify \
-		cracf2john.py \
-		genincstats.rb \
-		ikescan2john.py \
-		ldif2john.pl \
-		lion2john-alt.pl \
-		lion2john.pl \
-		netntlm.pl \
-		netscreen.py \
-		odf2john.py \
-		pass_gen.pl \
-		radius2john.pl \
-		sap2john.pl \
-		sha-dump.pl \
-		sha-test.pl \
-		sipdump2john.py)
-	for john_script in "${john_scripts[@]}"; do
-		install -m755 ${srcdir}/$_pkgname/run/${john_script} \
-			${pkgdir}/usr/share/john
-	done
-
-	install -m644 ${srcdir}/$_pkgname/run/dynamic.conf ${pkgdir}/etc/john/
-	install -Dm644 ${srcdir}/$_pkgname/run/john.bash_completion \
-		${pkgdir}/etc/bash_completion.d/john
-
-	# install binaries
-	install -Dm755 ${srcdir}/$_pkgname/run/john ${pkgdir}/usr/bin/john
-	install -Dm755 ${srcdir}/$_pkgname/run/calc_stat ${pkgdir}/usr/bin/calc_stat
-	install -Dm755 ${srcdir}/$_pkgname/run/genmkvpwd ${pkgdir}/usr/bin/genmkvpwd
-	install -Dm755 ${srcdir}/$_pkgname/run/mkvcalcproba ${pkgdir}/usr/bin/mkvcalcproba
-	install -Dm755 ${srcdir}/$_pkgname/run/relbench ${pkgdir}/usr/bin/relbench
-	install -Dm755 ${srcdir}/$_pkgname/run/tgtsnarf ${pkgdir}/usr/bin/tgtsnarf
-	install -Dm755 ${srcdir}/$_pkgname/run/mailer ${pkgdir}/usr/bin/john-mailer
-	install -Dm755 ${srcdir}/$_pkgname/run/raw2dyna ${pkgdir}/usr/bin/raw2dyna
-	install -Dm755 ${srcdir}/$_pkgname/run/office2john.py ${pkgdir}/usr/bin/office2john
-
-	# create links
-	cd ${pkgdir}/usr/bin
-	ln -s john hccap2john
-	ln -s john keepass2john
-	ln -s john mozilla2john
-	ln -s john pdf2john
-	ln -s john pfx2john
-	ln -s john pwsafe2john
-	ln -s john racf2john
-	ln -s john rar2john
-	ln -s john ssh2john
-	ln -s john unafs
-	ln -s john unique
-	ln -s john unshadow
-	ln -s john undrop
-	ln -s john zip2john
+	# binaries
+    install -Dm 755 run/john -t "${pkgdir}/usr/bin"
+    install -Dm 755 run/john-non-* -t "${pkgdir}/usr/lib/john"||true
+    local john_bins=(calc_stat cprepair  genmkvpwd   mkvcalcproba raw2dyna \
+                     relbench  tgtsnarf  uaf2john   wpapcap2john vncpcap2john SIPdump)
+    for bin in "${john_bins[@]}"; do
+      install -Dm 755 run/${bin} -t "${pkgdir}/usr/bin"
+    done
+    #TODO luks2john.py
+    # scripts
+    install -Dm 755 run/*.py run/*.pl run/*.rb run/{mailer,benchmark-unify} -t "${pkgdir}/usr/lib/john"
+    
+    # data
+    install -Dm 644 run/*.chr run/*.lst run/dictionary* run/stats -t "${pkgdir}/usr/share/john"
+    
+	# syminks
+    cd "${pkgdir}/usr/bin"
+    local john_links=(base64conv    dmg2john       gpg2john      hccap2john    \
+                      keepass2john  keychain2john  keyring2john  keystore2john \
+                      kwallet2john  pfx2john       putty2john    pwsafe2john   \
+                      racf2john     rar2john       ssh2john      unique        \
+                      unshadow      zip2john       unafs         undrop        \
+                      truecrypt_volume2john)
+    for link in "${john_links[@]}"; do
+      ln -s john ${link}
+    done
 }
 
 # vim:set ts=2 sw=2 et:
