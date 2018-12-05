@@ -9,7 +9,7 @@ license=('MIT')
 url="https://gitlab.com/Emersont1/chesspp"
 depends=('ncurses')
 makedepends=('git' 'cmake' 'ninja')
-source=('chesspp::git+https://gitlab.com/Emersont1/chesspp.git#branch=master')
+source=('chesspp-git::git+https://gitlab.com/Emersont1/chesspp.git#branch=master')
 md5sums=('SKIP')
 #install=robco-terminal.install
 
