@@ -1,7 +1,7 @@
 pkgbase = lambdacommon
 	pkgdesc = A library written in C++ with common features.
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aperlambda.github.io/libraries/lambdacommon/
 	arch = i686
 	arch = x86_64
