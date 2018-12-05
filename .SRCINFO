@@ -1,0 +1,15 @@
+pkgbase = python-cassandra-driver
+	pkgdesc = DataStax Python Driver for Apache Cassandra
+	pkgver = 3.16.0
+	pkgrel = 1
+	url = https://github.com/datastax/python-driver
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	source = git+https://github.com/datastax/python-driver#tag=3.16.0
+	md5sums = SKIP
+
+pkgname = python-cassandra-driver
+
