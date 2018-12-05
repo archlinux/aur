@@ -1,7 +1,7 @@
-From 4b38af06b758979fd674096c0a64f7af49ce3022 Mon Sep 17 00:00:00 2001
+From a1535c25955d82556da3bf06db7735b4267369e8 Mon Sep 17 00:00:00 2001
 From: Serge Hallyn <serge.hallyn@canonical.com>
 Date: Fri, 31 May 2013 19:12:12 +0100
-Subject: [PATCH] add sysctl to disallow unprivileged CLONE_NEWUSER by
+Subject: [PATCH 1/2] add sysctl to disallow unprivileged CLONE_NEWUSER by
  default
 
 Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
@@ -84,7 +84,7 @@ index cc02050fd0c4..ce2ad2b92897 100644
  	{
  		.procname	= "tainted",
 diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index e5222b5fb4fe..c941a66e51d1 100644
+index 923414a246e9..6b9dbc257e34 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
 @@ -26,6 +26,9 @@
@@ -98,5 +98,5 @@ index e5222b5fb4fe..c941a66e51d1 100644
  static DEFINE_MUTEX(userns_state_mutex);
  
 -- 
-2.19.1.542.gc4df23f792
+2.20.0.rc2.7.g965798d1f2
 
