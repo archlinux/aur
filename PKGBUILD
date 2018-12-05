@@ -1,7 +1,7 @@
 # Maintainer: Andreas Bolka <a AT bolka DOT at>
 
 pkgname=visidata-git
-pkgver=1.1.gfbc1f2f
+pkgver=1.5.ga2e8717
 pkgrel=1
 pkgdesc='A console spreadsheet tool for discovering and arranging data'
 arch=('any')
@@ -21,12 +21,12 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   local PYVER=$(python setup.py --version)
-  local GITID=$(git describe --always --long)
+  local GITID=$(git rev-parse --short HEAD)
   echo "$PYVER.g$GITID"
 }
 
 package() {
   cd "$srcdir/$pkgname"
   python setup.py -q install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE"
+  install -Dm644 LICENSE.gpl3 "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE"
 }
