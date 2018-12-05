@@ -1,6 +1,6 @@
 pkgbase = dnsblock-git
 	pkgdesc = get a list of servers to block ads using your dns
-	pkgver = r346.3522917
+	pkgver = r347.7fb2872
 	pkgrel = 1
 	url = https://github.com/jyn-n/dnsblock
 	arch = any
