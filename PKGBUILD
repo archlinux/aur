@@ -3,7 +3,7 @@
 
 pkgname=youtube-dl
 pkgver=2018.12.03
-pkgrel=1
+pkgrel=2
 pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
 url="http://rg3.github.io/youtube-dl/"
@@ -12,7 +12,7 @@ depends=('python' 'python-setuptools')
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files'
-            'python-cryptodome: for hlsnative downloader')
+            'python-pycryptodome: for hlsnative downloader')
 source=(http://youtube-dl.org/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz{,.sig})
 sha256sums=('7ff247c0d2518d5def8dc7df9cff4c87a1c348fabca7238a8166d217772cd536'
             'SKIP')
