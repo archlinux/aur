@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-webglplugin
-_qtver=5.11.2
+_qtver=5.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(qt5-websockets qt5-declarative)
 groups=(qt qt5)
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('16682ba6aeeef0420bcf3149be9792d0f82e734d6f9f730f66f7e1907dfa5f6d')
+sha256sums=('65223ad13a46e38343a621459a60ea25bc9e74d6549bf62a2d54d839c66b652e')
 
 prepare() {
   mkdir -p build
