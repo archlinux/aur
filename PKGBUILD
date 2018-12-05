@@ -11,7 +11,7 @@ depends=(
   ruby-nokogiri
 )
 makedepends=(rubygems)
-url="http://reverse_markdown.org/"
+url="https://github.com/xijo/reverse_markdown"
 noextract=($_gemname-$pkgver.gem)
 license=("WTFPL")
 options=(!emptydirs)
