@@ -1,0 +1,74 @@
+--- build_config.py	2018-12-05 19:05:52.848580011 +0300
++++ build_config.py	2018-12-05 19:04:58.499308161 +0300
+@@ -9,7 +9,7 @@
+ #Sets the install location of pdb2pqr.
+ #This defaults to ~/pdb2pqr
+ 
+-#PREFIX="~/pdb2pqr"
++PREFIX="/opt/pdb2pqr"
+ 
+ 
+ #Website URL
+@@ -17,28 +17,28 @@
+ #This defaults to http://<COMPUTER NAME>/pdb2pqr/
+ # where <COMPUTER NAME> is the network name of the computer.
+ 
+-#URL="http://<COMPUTER NAME>/pdb2pqr/"
++URL="http://nbcr-222.ucsd.edu/pdb2pqr_2.1.1/"
+ 
+ 
+ #APBS binary
+ #Change this to specify the location of the APBS binary if installed.
+ #This is used for the web interface to pdb2pqr. Provide an absolute path. Relative paths and ~ usually will not work correctly.
+ 
+-#APBS=""
++APBS="/usr/bin/apbs"
+ 
+ 
+ #OPAL service URL
+ #Set this value to use an opal service for processing
+ # pdb2pqr jobs for the web front end.
+ 
+-#OPAL="http://nbcr-222.ucsd.edu/opal2/services/pdb2pqr_1.8"
++OPAL="http://nbcr-222.ucsd.edu/opal2/services/pdb2pqr_2.1.1"
+ 
+ 
+ #APBS_OPAL service URL
+ #Set this value to use an opal service for processing
+ # apbs jobs for the web front end.
+ 
+-#APBS_OPAL="http://nbcr-222.ucsd.edu/opal2/services/apbs_1.3"
++APBS_OPAL="http://nbcr-222.ucsd.edu/opal2/services/apbs_1.4.2.1"
+ 
+ 
+ #MAX_ATOMS
+@@ -52,19 +52,19 @@
+ #Set to False to skip building ligand and pdb2pka support. Requires numpy.
+ # Defaults to True
+ 
+-#BUILD_PDB2PKA=False
++BUILD_PDB2PKA=True
+ 
+ #DEBUG
+ #Set to True to build compiled extentions with debug headers.
+ #Defaults to False
+ 
+-#DEBUG=True
++DEBUG=False
+ 
+ #CXXFLAGS
+ #Set to add extra CXX flags to the build.
+ #Defaults to ""
+ 
+-#EXTRA_CXXFLAGS="-fPIC"
++EXTRA_CXXFLAGS="-fPIC"
+ 
+ #EXTRA_LINKFLAGS
+ #Set to add extra CXX flags to the build.
+@@ -78,4 +78,4 @@
+ # Requires swig on the the user path.
+ # Defaults to False
+ 
+-#REBUILD_SWIG=True
+\ В конце файла нет новой строки
++REBUILD_SWIG=True
