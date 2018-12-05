@@ -5,7 +5,7 @@
 
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=ideamaker
-pkgver=2.6.0
+pkgver=3.3.0.2343
 pkgrel=1
 epoch=
 pkgdesc="Fast and user friendly 3D slicer for FDM printers"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://s3.amazonaws.com/ideamaker/linux/ideaMaker_${pkgver}-ubuntu_amd64.deb")
 noextract=()
-md5sums=('fdd940067eca434cf43e608368789452')
+sha256sums=('2a6cc2856b7ee8aa00f7f2aa57de3d2fc35a5c69e6a3b6c9ffd4572d2ff0c37d')
 validpgpkeys=()
 
 package() {
