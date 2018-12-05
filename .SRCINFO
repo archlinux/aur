@@ -1,6 +1,6 @@
 pkgbase = libva-git
 	pkgdesc = Video Acceleration (VA) API for Linux (git version)
-	pkgver = 2.2.1.pre1.20180831.r0.gb6c50da
+	pkgver = 2.2.1.pre1.20180921.r6.gcf11abe
 	pkgrel = 1
 	url = https://01.org/linuxmedia/vaapi/
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = libva-git
 	provides = libva-x11.so
 	provides = libva.so
 	conflicts = libva
-	source = libva-git::git+https://github.com/intel/libva.git
+	source = git+https://github.com/intel/libva.git
 	sha256sums = SKIP
 
 pkgname = libva-git

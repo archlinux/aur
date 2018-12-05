@@ -1,7 +1,8 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=libva-git
-pkgver=2.2.1.pre1.20180831.r0.gb6c50da
+_srcname=libva
+pkgver=2.2.1.pre1.20180921.r6.gcf11abe
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux (git version)'
 arch=('i686' 'x86_64')
@@ -14,25 +15,25 @@ optdepends=('libva-vdpau-driver: backend for Nvidia and AMD cards'
 provides=('libva' 'libva-drm.so' 'libva-glx.so' 'libva-wayland.so'
           'libva-x11.so' 'libva.so')
 conflicts=('libva')
-source=("$pkgname"::'git+https://github.com/intel/libva.git')
+source=('git+https://github.com/intel/libva.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^libva\.//;s/^v//'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
   
     arch-meson . build
     ninja -C build
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     DESTDIR="$pkgdir" ninja -C build install
     
