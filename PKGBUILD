@@ -1,6 +1,6 @@
 # Maintainer: Michael William Le Nguyen <michael at mail dot ttp dot codes>
 pkgname=rke
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="An extremely simple, lightning fast Kubernetes installer that works everywhere."
 arch=('x86_64')
@@ -13,7 +13,7 @@ noextract=(
 	"rke-${pkgver}"
 )
 sha256sums=(
-	"e5d730d37e7d98092f8576f5c56996a14e0ed6033ff8eec8d02484b061773199"
+	"09717b40e464034ad34d78e722f9e8c1b9556cea3064c82b36305989eab9cf5b"
 )
 package() {
 	install -D -m755 "rke-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
