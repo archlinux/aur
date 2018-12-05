@@ -5,7 +5,7 @@ pkgrel=1
 arch=('any')
 url='https://github.com/sameer/lrad'
 license=('MIT')
-makedepends=('rust' 'cargo' 'cmake' 'gcc' 'git' 'openssl' 'curl')
+makedepends=('rust-nightly' 'cargo-nightly' 'cmake' 'gcc' 'git' 'openssl' 'curl')
 source=("$_pkgname::git+https://github.com/sameer/lrad.git")
 sha256sums=('SKIP')
 
