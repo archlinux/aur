@@ -1,10 +1,10 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=libtorrent-rasterbar-git
-pkgver=1.1.4.r1269.g1d9b10a32
+pkgver=1.2.RC2.r32.g3e582100d
 pkgrel=1
-pkgdesc="A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git version)"
-url="http://www.rasterbar.com/products/libtorrent/"
+pkgdesc='A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git version)'
+url='https://www.rasterbar.com/products/libtorrent/'
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('boost-libs')
@@ -13,52 +13,63 @@ optdepends=('python2: for python2 bindings'
             'python: for python3 bindings')
 provides=('libtorrent-rasterbar')
 conflicts=('libtorrent-rasterbar')
-source=("$pkgname"::"git+https://github.com/arvidn/libtorrent.git")
+source=('libtorrent-rasterbar'::'git+https://github.com/arvidn/libtorrent.git')
 sha256sums=('SKIP')
 
+prepare() {
+    cd libtorrent-rasterbar
+    
+    mkdir -p py2 py3
+    
+    # avoid depending on newer processors
+    sed -i 's/-msse4.2//' configure.ac
+    
+    ./autotool.sh
+}
+
 pkgver() {
-    cd "$pkgname"
+    cd libtorrent-rasterbar
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g;s/^libtorrent\.//'
 }
 
-build() {
-    cd "$pkgname"
-    ./autotool.sh
+_build() {
+    cd "${srcdir}/libtorrent-rasterbar/py${1}"
+    
+    printf '%s\n' "Building for python${1}..."
+    
+    # FS#50745
+    [ "$1" -eq '2' ] && local _boost='boost_python'
+    [ "$1" -eq '3' ] && local _boost='boost_python3'
     
     # force C++11 mode (needed by qBittorrent)
     # https://github.com/qbittorrent/qBittorrent/issues/5265#issuecomment-220007436
-    CXXFLAGS="${CXXFLAGS} -std=c++11" \
-    ./configure \
-        --prefix=/usr \
-        --enable-shared=yes \
-        --enable-static=no \
-        --enable-fast-install=yes \
-        --enable-largefile \
-        --enable-logging \
-        --disable-debug \
-        --enable-dht \
-        --enable-encryption \
-        --enable-deprecated-functions \
-        --enable-examples \
-        --disable-tests \
-        --enable-python-binding \
-        --with-libiconv
-    make
+    export CXXFLAGS="${CXXFLAGS} -std=c++11"
     
-    # build python2 bindings (python3 bindings are built during 'make')
-    python2 setup.py build
+    export PYTHON="/usr/bin/python${1}"
+    
+    ../configure \
+        --prefix='/usr' \
+        --enable-python-binding \
+        --enable-examples \
+        --disable-static \
+        --with-libiconv \
+        --with-boost-python="${_boost}"
+        
+    make
+}
+
+build() {
+    _build 2
+    _build 3
 }
 
 package() {
-    cd "$pkgname"
+    cd libtorrent-rasterbar
     
-    # standard install
-    make DESTDIR="$pkgdir" install
-    
-    # python2 bindings (python3 bindings are installed during 'make install')
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    make -C py2 DESTDIR="$pkgdir" install
+    make -C py3 DESTDIR="$pkgdir" install
     
     # license
     install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
