@@ -29,7 +29,7 @@ package_lrad-git() {
 
 package_lrad-daemon-git() {
 	pkgdesc='Daemon for the lrad update framework to be run on target systems'
-	depends=('git' 'docker' 'openssl' 'go-ipfs')
+	depends=('git' 'docker' 'openssl' 'go-ipfs' 'systemd')
 	provides=('lrad-daemon')
 	conflicts=('lrad-daemon')
 
@@ -38,6 +38,5 @@ package_lrad-daemon-git() {
 	install -D -m755 "$srcdir/$_pkgname/target/release/lrad-daemon" "$pkgdir/usr/bin/lrad-daemon"
 	mkdir -p "$pkgdir/etc/lrad"
 	install -D -m644 "$srcdir/$_pkgname/lrad-daemon/lrad-daemon.toml" "$pkgdir/etc/lrad/lrad-daemon.toml"
-	install -D -m644 "$srcdir/$_pkgname/lrad-daemon/lrad-daemon.service" "$pkgdir/etc/systemd/system/lrad-daemon.service"
-	systemctl daemon-reload
+	install -D -m644 "$srcdir/$_pkgname/lrad-daemon/lrad-daemon.service" "$pkgdir/usr/lib/systemd/system/lrad-daemon.service"
 }

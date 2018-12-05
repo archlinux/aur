@@ -29,6 +29,7 @@ pkgname = lrad-daemon-git
 	depends = docker
 	depends = openssl
 	depends = go-ipfs
+	depends = systemd
 	provides = lrad-daemon
 	conflicts = lrad-daemon
 
