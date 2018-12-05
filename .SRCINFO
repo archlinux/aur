@@ -16,7 +16,6 @@ pkgbase = cronograph-conky
 	options = !strip
 	options = !docs
 	options = !emptydirs
-	options = !optipng
 	options = !debug
 	source = https://github.com/drxspace/cronoconky/releases/download/8.5.170621/v8.5.170621.tar.gz
 	sha1sums = c25bb9998163271fa4b5502e8dca0f05c5afd636

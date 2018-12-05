@@ -15,7 +15,7 @@ optdepends=('hddtemp: https://wiki.archlinux.org/index.php/Hddtemp')
 source=("https://github.com/drxspace/cronoconky/releases/download/${pkgver}/v${pkgver}.tar.gz")
 sha1sums=('c25bb9998163271fa4b5502e8dca0f05c5afd636')
 install='cronograph-conky.install'
-options=(!strip !docs !emptydirs !optipng !debug)
+options=(!strip !docs !emptydirs !debug)
 
 package() {
 	install -dm 755 "${pkgdir}"/opt
