@@ -1,0 +1,15 @@
+pkgbase = inkscape-inkcut
+	pkgdesc = Inkscape extension for inkcut.
+	pkgver = 273.gb32347a
+	pkgrel = 1
+	url = https://github.com/codelv/inkcut/
+	arch = any
+	license = GPLv3
+	depends = python
+	depends = inkscape
+	depends = inkcut
+	source = git+https://github.com/codelv/inkcut
+	sha256sums = SKIP
+
+pkgname = inkscape-inkcut
+
