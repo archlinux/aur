@@ -1,35 +1,32 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=libumem-git
+_srcname=portableumem
 pkgver=1.0.r15.g3fc772c
-pkgrel=3
+pkgrel=4
 pkgdesc='A port of the Solaris libumem memory allocator'
 arch=('i686' 'x86_64')
 url='https://github.com/omniti-labs/portableumem/'
 license=('custom')
+depends=('glibc')
 makedepends=('git')
-provides=('libumem' 'libumem.so')
-source=('libumem-git'::'git+https://github.com/omniti-labs/portableumem.git'
+provides=('libumem')
+conflicts=('libumem')
+source=('git+https://github.com/omniti-labs/portableumem.git'
         'portableumem-various-cleanups.diff')
 sha256sums=('SKIP'
             '78688c528903a154edb956e9058e37144a9f2b0e0818b3167d94d3a643ee2ccf')
 
 prepare() {
-    cd "$pkgname"
+    cd "$_srcname"
     
-    # Restore the git tree to its git origin state, without patches
-    #+(necessary for reapllying the patches in succedent builds,
-    #+otherwise the patches will fail to be reapplied)
-    printf '%s\n' '  -> Cleaning the git source code tree...'
-    git reset --hard HEAD      # Restore tracked files
-    git clean -d -x -f         # Delete untracked files
+    git apply --index "${srcdir}/portableumem-various-cleanups.diff"
     
-    printf '%s\n' '  -> Applying patches to fix building...'
-    patch -Np1 -i ../portableumem-various-cleanups.diff
+    ./autogen.sh
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     local _version
     local _revision
@@ -43,22 +40,25 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
-    
-    ./autogen.sh
+    cd "$_srcname"
     
     ./configure \
         --prefix='/usr' \
         --enable-shared='yes' \
         --enable-static='no' \
-        --enable-fast-install='yes' \
         --with-pic='yes'
         
     make
 }
 
+check() {
+    cd "$_srcname"
+    
+    make check
+}
+
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     make DESTDIR="$pkgdir" install
     
