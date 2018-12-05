@@ -1,7 +1,7 @@
 # Maintainer: LambdAurora <aurora42lambda@gmail.com>
 pkgname=lambdacommon
 pkgver=1.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A library written in C++ with common features."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://aperlambda.github.io/libraries/lambdacommon/"
@@ -16,7 +16,7 @@ validpgpkeys=()
 
 build() {
 	cd "$pkgname-$pkgver"
-	git submodule update --init
+	git clone https://github.com/AperLambda/LambdaCMakeModules.git cmake
 	cmake .\
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release
