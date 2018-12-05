@@ -1,8 +1,8 @@
 # Maintainer: Peter Taylot <info at emersont1 dot co dot uk>
 
 pkgname=chesspp-git
-pkgver=0.0.0
-pkgrel=1
+pkgver=0.0.1
+pkgrel=2
 pkgdesc="a swiss chess algorithm implementation, using an SQLITE database"
 arch=('x86_64' 'i686')
 license=('MIT')

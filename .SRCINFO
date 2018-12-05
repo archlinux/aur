@@ -1,7 +1,7 @@
 pkgbase = chesspp-git
 	pkgdesc = a swiss chess algorithm implementation, using an SQLITE database
-	pkgver = 0.0.0
-	pkgrel = 1
+	pkgver = 0.0.1
+	pkgrel = 2
 	url = https://gitlab.com/Emersont1/chesspp
 	arch = x86_64
 	arch = i686
@@ -14,4 +14,3 @@ pkgbase = chesspp-git
 	md5sums = SKIP
 
 pkgname = chesspp-git
-
