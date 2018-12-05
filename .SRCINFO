@@ -1,0 +1,16 @@
+pkgbase = openjml-bin
+	pkgdesc = Java Software Verification Tool
+	pkgver = 0.8.40
+	pkgrel = 2
+	url = https://www.openjml.org/
+	arch = any
+	license = unknown
+	depends = java-runtime
+	optdepends = z3
+	source = http://jmlspecs.sourceforge.net/openjml.zip
+	source = openjml.sh
+	sha256sums = e2f23ef1ba8a7661b7e248953c58a342adcf3e2554e04ed22351d6b02ad79f36
+	sha256sums = ab8579e7d6b0b04542e1fd45c267eca55c9d26dfe2a43b0d8ece0e74eb819aca
+
+pkgname = openjml-bin
+
