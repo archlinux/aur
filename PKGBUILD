@@ -41,6 +41,7 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
+  ext4-corruption-patch.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -51,7 +52,8 @@ sha256sums=('SKIP'
             '66bb9855500368f9fe2c29cf2cdc2660dff376f80eae8786691da95cf50fe6dc'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+            'e0048bd7c614b3f31adba295b67263df0e7859a1587fac614df266a204b154f9')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}

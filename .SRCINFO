@@ -19,6 +19,7 @@ pkgbase = linux-bcachefs-git
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
+	source = ext4-corruption-patch.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = SKIP
@@ -27,6 +28,7 @@ pkgbase = linux-bcachefs-git
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = e0048bd7c614b3f31adba295b67263df0e7859a1587fac614df266a204b154f9
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux-bcachefs-git kernel and modules
