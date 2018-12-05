@@ -1,0 +1,14 @@
+pkgbase = violentmonkey-chromium-git
+	pkgdesc = Chrome/Chromium extension for Violentmonkey - git/dev
+	pkgver = 1085.08aa50a
+	pkgrel = 1
+	url = https://github.com/violentmonkey/violentmonkey
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	source = git+https://github.com/violentmonkey/violentmonkey.git
+	sha512sums = SKIP
+
+pkgname = violentmonkey-chromium-git
+
