@@ -12,7 +12,7 @@ depends=('libxcb' 'xproto' 'kbproto')
 makedepends=('xorg-util-macros' 'xextproto' 'xtrans' 'inputproto')
 provides=("libx11=${pkgver}")
 conflicts=("libx11=${pkgver}")
-license=('custom')
+license=('custom:XFREE86')
 source=(${url}/releases/individual/lib/libX11-${pkgver}.tar.bz2{,.sig}
         threadsafe.patch)
 sha256sums=('910e9e30efba4ad3672ca277741c2728aebffa7bc526f04dcfa74df2e52a1348'
@@ -23,23 +23,23 @@ validpgpkeys+=('C41C985FDCF1E5364576638B687393EE37D128F8') # Matthieu Herrb <mat
 validpgpkeys+=('3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
 
 prepare() {
-  cd 'libX11-1.6.7'
+  cd "libX11-${pkgver}"
   patch -Np1 <../threadsafe.patch
 }
 
 build() {
-  cd "${srcdir}/libX11-${pkgver}"
+  cd "libX11-${pkgver}"
   ./configure --prefix=/usr --disable-static --disable-xf86bigfont
   make
 }
 
 check() {
-  cd "${srcdir}/libX11-${pkgver}"
+  cd "libX11-${pkgver}"
   make check
 }
 
 package() {
-  cd "${srcdir}/libX11-${pkgver}"
+  cd "libX11-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
