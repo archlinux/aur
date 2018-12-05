@@ -3,9 +3,7 @@ Description=Moonfire NVR
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/moonfire-nvr run \
-  --db-dir=/var/lib/moonfire-nvr/db \
-  --http-addr=0.0.0.0:8080
+ExecStart=/usr/bin/moonfire-nvr run --ui-dir=/usr/lib/moonfire-nvr/ui
 Environment=TZ=:/etc/localtime
 Environment=MOONFIRE_FORMAT=google-systemd
 Environment=MOONFIRE_LOG=info

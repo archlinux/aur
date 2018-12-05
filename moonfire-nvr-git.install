@@ -12,6 +12,8 @@ $ sudo -u moonfire-nvr moonfire-nvr config 2>debug-log
 Start and enable the daemon:
 $ sudo systemctl enable --now moonfire-nvr
 
+Access the WebUI at <http://localhost:8080>.
+
 More details available at <https://github.com/scottlamb/moonfire-nvr/blob/master/guide/install.md>.
 EOF
 }

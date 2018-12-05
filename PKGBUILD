@@ -3,7 +3,7 @@
 _pkgname=moonfire-nvr
 pkgname=moonfire-nvr-git
 pkgver=r302.35e6891
-pkgrel=1
+pkgrel=2
 pkgdesc='Security camera network video recorder'
 arch=('x86_64')
 url=https://github.com/scottlamb/moonfire-nvr
@@ -38,7 +38,7 @@ package() {
 
   cd $_pkgname
   install -Dt "$pkgdir"/usr/bin target/release/$_pkgname
-  install -dm644 "$pkgdir"/usr/lib/moonfire-nvr
+  mkdir -p "$pkgdir"/usr/lib/moonfire-nvr
   cp -R ui-dist "$pkgdir"/usr/lib/moonfire-nvr/ui
 }
 
