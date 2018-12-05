@@ -1,0 +1,14 @@
+pkgbase = inkcut
+	pkgdesc = An application for controlling 2D plotters, cutters, engravers, and CNC machines.
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = https://github.com/codelv/inkcut/
+	arch = any
+	license = GPLv3
+	makedepends = python3
+	depends = python
+	source = https://files.pythonhosted.org/packages/b2/a9/33c48c576d32c9bf833cb41e3f73c063ffcb3c55efb91ef1a970f61ae082/inkcut-2.0.6.tar.gz
+	md5sums = 8c430ba2539bb4f0496cd6d6341251ee
+
+pkgname = inkcut
+
