@@ -1,0 +1,27 @@
+diff --git a/Makefile b/Makefile
+index 928f737..0c9f44c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -36,11 +36,11 @@ CC=gcc
+ 
+ ARCH?=-m32
+ USER_FLAGS=
+-CFLAGS=-Wint-to-pointer-cast $(USER_FLAGS)
++CFLAGS+=-Wint-to-pointer-cast $(USER_FLAGS)
+ 
+ # Link math library on Linux
+ ifeq ($(OS),Linux)
+-	CFLAGS+=-lm
++	LDLIBS+=-lm
+ endif
+ 
+ ifeq ($(ARCH),-m32)
+@@ -75,7 +75,7 @@ STUDIOMDL_DEFINES=-DSTUDIOMDL
+ 
+ TARGETS?=studiomdl
+ 
+-OPTS=$(ARCH) $(CFLAGS) $(PLATFORM_FLAGS)
++OPTS=$(ARCH) $(CFLAGS) $(PLATFORM_FLAGS) $(LDLIBS) $(LDFLAGS)
+ 
+ STUDIOMDLDIRS=$(BUILD_DIR)$(PATHSEP)common
+ 

@@ -1,0 +1,22 @@
+diff --git a/src/cmdlib.c b/src/cmdlib.c
+index b01ba07..adf30b8 100644
+--- a/src/cmdlib.c
++++ b/src/cmdlib.c
+@@ -4,6 +4,8 @@
+ 
+ #ifdef WIN32
+ #include <direct.h>
++#else
++#include <unistd.h>
+ #endif
+ 
+ #ifdef NeXT
+@@ -233,7 +235,7 @@ void Q_getwd (char *out)
+    _getcwd (out, 256);
+    strcat (out, "\\");
+ #else
+-   getwd (out);
++   getcwd (out, 256);
+ #endif
+ }
+ 

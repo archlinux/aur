@@ -1,0 +1,24 @@
+pkgbase = studiomdl-git
+	pkgdesc = A cross-platform compatible version of studiomdl for Half-Life.
+	pkgver = v0.1.0.r0.g90a285a
+	pkgrel = 1
+	url = https://github.com/fnky/studiomdl
+	arch = i686
+	arch = x86_64
+	license = custom:Half Life 1 SDK
+	makedepends = git
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	provides = studiomdl
+	conflicts = studiomdl
+	source = git+https://github.com/fnky/studiomdl.git
+	source = fix_getcwd.patch
+	source = fix_memmove.patch
+	source = fix_makefile.patch
+	sha256sums = SKIP
+	sha256sums = a8c8f5d240c841282d037e5662b797227d702695bb88c543066d5c3df40afaea
+	sha256sums = 8ec92522fb9013233e729fa98bec03fada44a5676adca49ac71c70edff967a86
+	sha256sums = ff86f788e6961c29b572f91724b073e7708482a3911db877287bdd1f5121899c
+
+pkgname = studiomdl-git
+

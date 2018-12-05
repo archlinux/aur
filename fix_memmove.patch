@@ -1,0 +1,12 @@
+diff --git a/src/bmpread.c b/src/bmpread.c
+index 3b237a1..7a32027 100644
+--- a/src/bmpread.c
++++ b/src/bmpread.c
+@@ -6,6 +6,7 @@
+ #if !defined( _WIN32 )
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ typedef int LONG;
+ typedef unsigned long ULONG;
