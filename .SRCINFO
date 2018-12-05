@@ -1,0 +1,15 @@
+pkgbase = python-future-fstrings
+	pkgdesc = A backport of fstrings to python<3.6
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/asottile/future-fstrings
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	noextract = future_fstrings-0.4.4-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/f/future-fstrings/future_fstrings-0.4.4-py2.py3-none-any.whl
+	sha256sums = ee4a9e4b8de317b1d43c01765d505a533d0d22d8e504bfa51c782ab1ababa5da
+
+pkgname = python-future-fstrings
+
