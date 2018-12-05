@@ -42,6 +42,7 @@ prepare() {
 build() {
 	export GOPATH="${srcdir}/go"
 	cd "${GOPATH}/src/github.com/containers/${pkgbase}"
+	sed -i 's/$(GO) build -i/$(GO) build/' Makefile
 
 	make install.tools
 	make all
