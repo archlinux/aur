@@ -8,8 +8,6 @@ pkgdesc="A cross-platform file change monitor with multiple backends: Apple OS X
 arch=("i686" "x86_64")
 url="https://emcrisostomo.github.io/fswatch/"
 license=('GPLv3')
-depends=()
-makedepends=()
 source=("https://github.com/emcrisostomo/fswatch/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('44d5707adc0e46d901ba95a5dc35c5cc282bd6f331fcf9dbf9fad4af0ed5b29d')
 
