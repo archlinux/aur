@@ -1,0 +1,8 @@
+# emacs lock files
+.#*
+tmp/
+src
+pkg
+kubeless
+!kubeless/
+*pkg.tar.xz
