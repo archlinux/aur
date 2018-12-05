@@ -6,7 +6,7 @@
 
 pkgname=conky-nvidia
 _pkgname=conky
-pkgver=1.10.8
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Lightweight system monitor for X'
 provides=('conky')
@@ -17,14 +17,14 @@ arch=('i686' 'x86_64')
 makedepends=('cmake' 'docbook2x' 'docbook-xml' 'man-db' 'perl-xml-libxml' 'perl-xml-sax-expat' 'docbook-xsl')
 depends=('glib2' 'curl' 'lua' 'wireless_tools' 'libxml2' 'libxft' 'libxdamage' 'libxinerama' 'imlib2' 'libxnvctrl')
 source=("https://github.com/brndnmtthws/conky/archive/v${pkgver}.tar.gz"
-	'lua53.patch')
+	'nvidia.patch')
 
-md5sums=('b02bc92e4b02d4f18259ab3a26c8c5ba'
-         '44cdadfe92266e99698e5424b7c6e265')
+md5sums=('85a6c7f03e81b3df999915425d893156'
+         '592eea47fae37862d687abb4dd389f88')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	patch -p1 -i ../lua53.patch # lua_gettable returns an int in lua-5.3
+	patch -p1 -i ../nvidia.patch
 }
 
 build() {
