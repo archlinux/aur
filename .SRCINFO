@@ -6,6 +6,7 @@ pkgbase = python-cassandra-driver-git
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = libev
 	depends = python
 	depends = python-six
 	source = git+https://github.com/datastax/python-driver#tag=3.16.0

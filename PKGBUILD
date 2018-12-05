@@ -8,7 +8,7 @@ pkgrel=1
 arch=('any')
 license=('Apache')
 depends=('python' 'python-six')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'libev')
 url="https://github.com/datastax/python-driver"
 source=("git+https://github.com/datastax/python-driver#tag=$pkgver")
 md5sums=('SKIP')
