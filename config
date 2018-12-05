@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 4.19.6-2 Kernel Configuration
+# Linux/arm64 4.19.6-3 Kernel Configuration
 #
 
 #
@@ -3082,10 +3082,8 @@ CONFIG_DRM_FBDEV_EMULATION=y
 CONFIG_DRM_FBDEV_OVERALLOC=100
 CONFIG_DRM_LOAD_EDID_FIRMWARE=y
 # CONFIG_DRM_DP_CEC is not set
-CONFIG_DRM_TTM=y
 CONFIG_DRM_GEM_CMA_HELPER=y
 CONFIG_DRM_KMS_CMA_HELPER=y
-CONFIG_DRM_SCHED=y
 
 #
 # I2C encoder or helper chips
@@ -3171,7 +3169,7 @@ CONFIG_DRM_MESON_DW_HDMI=y
 # CONFIG_DRM_TINYDRM is not set
 # CONFIG_DRM_PL111 is not set
 # CONFIG_DRM_XEN is not set
-CONFIG_DRM_LIMA=y
+# CONFIG_DRM_LIMA is not set
 # CONFIG_DRM_LEGACY is not set
 CONFIG_DRM_PANEL_ORIENTATION_QUIRKS=y
 
