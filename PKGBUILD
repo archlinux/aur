@@ -17,7 +17,7 @@ source=("git+$url.git"
         'moonfire-nvr.service'
         'moonfire-nvr.sysusers.conf')
 sha512sums=('SKIP'
-            '0214fe2f816456d85a8b2a4366feb8b22b61af8845fc4fcd90d6eb17151482bf07e890dd939d64960dd0f6dbe1c6c615d81efe68a738df40edd0007ea3c1df16'
+            'b074b9902f4b7a4b0229b647f0a8268915c637d02157df43927d0a05335822ada256b54d0babdb2d429f80dc746015249ebce3a80ca8d3d4e7b70125b38c45c5'
             '4e5be3c260bea782e2a4b226a1a375f97e9fd2e8ec0c1f4dc32176681b50db7fc17bacb77c5f2b8ae3d49f3d400ccbda3ad25dc32832e8042807e2d61fe3f15d')
 
 pkgver() {
