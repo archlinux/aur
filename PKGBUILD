@@ -6,11 +6,11 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8
-pkgver=6.9.427.31
+pkgver=7.1.302.29
 pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
-url="https://code.google.com/p/v8/"
+url="https://v8.dev"
 license=('BSD')
 depends=('readline' 'icu')
 makedepends=('clang' 'clang-tools-extra' 'python2' 'python2-colorama' 'python2-pylint' 'python2-lazy-object-proxy' 'python2-singledispatch' 'python2-wrapt' 'ninja' 'git' 'wget')
@@ -159,6 +159,13 @@ package() {
   install -Dm755 $OUTFLD/d8 ${pkgdir}/usr/lib/v8/d8
 
   install -Dm755 $OUTFLD/libc++.so ${pkgdir}/usr/lib/v8/libc++.so
+
+  if [ $V8_I18N_SUPPORT == "true" ]
+  then
+    install -Dm755 $OUTFLD/libicui18n.so ${pkgdir}/usr/lib/v8/libicui18n.so
+    install -Dm755 $OUTFLD/libicuuc.so ${pkgdir}/usr/lib/v8/libicuuc.so
+  fi
+  
   install -Dm755 $OUTFLD/libv8_for_testing.so ${pkgdir}/usr/lib/libv8_for_testing.so
   install -Dm755 $OUTFLD/libv8_libbase.so ${pkgdir}/usr/lib/libv8_libbase.so
   install -Dm755 $OUTFLD/libv8_libplatform.so ${pkgdir}/usr/lib/libv8_libplatform.so
