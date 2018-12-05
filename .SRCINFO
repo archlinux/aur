@@ -1,28 +1,25 @@
 pkgbase = gnome-podcasts
 	pkgdesc = A Podcast Client for the GNOME Desktop written in Rust
-	pkgver = 0.4.2
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/podcasts
 	arch = x86_64
+	arch = i686
 	license = GPL3
-	makedepends = gtk3
 	makedepends = rust
-	makedepends = pkg-config
-	makedepends = git
 	makedepends = meson
-	depends = openssl
 	depends = sqlite
 	depends = gtk3
 	depends = gstreamer
-	depends = gst-plugins-bad
 	depends = gst-plugins-base
-	depends = gst-plugins-ugly
 	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
 	depends = gst-libav
 	depends = gspell
-	noextract = archive.tar.gz
-	source = https://gitlab.gnome.org/World/podcasts/repository/0.4.2/archive.tar.gz
-	sha256sums = a8163d7880c389b356d409423ff73b339501e51a639f9c88cf6e94229fa6dd82
+	depends = libhandy
+	source = https://gitlab.gnome.org/World/podcasts/-/archive/0.4.6/podcasts-0.4.6.tar.gz
+	sha256sums = 953c63e8184ca1f748418d8a8262d40eaa41047f81e2d2c874a3035d9d9d0e4a
 
 pkgname = gnome-podcasts
 
