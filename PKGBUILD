@@ -2,9 +2,9 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-virtualkeyboard
-_qtver=5.11.2
+_qtver=5.12.0
 pkgver=${_qtver/-/}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url='http://qt-project.org/'
 license=('GPL3')
@@ -13,16 +13,11 @@ depends=('qt5-declarative' 'qt5-svg' 'hunspell')
 makedepends=()
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        qt-virtualkeyboard-keylogging.patch::"http://code.qt.io/cgit/qt/qtvirtualkeyboard.git/patch/?id=c7a94110")
-sha256sums=('2709500071e7e98ca6f6eecef0f5c80d19ae22aba562293352debd516633b197'
-            'd6604ea9a73dd16cdc0788214ccd346571a2f5c2f7da7759d71511d3cb6e67e8')
+source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('db93b89ba13ec1a688850f456be9f10037033cebf7b4deb151ed9f5322d0d6da')
 
 prepare() {
   mkdir -p build
-
-  cd ${_pkgfqn}
-  patch -p1 -i ../qt-virtualkeyboard-keylogging.patch # don't log all keypresses
 }
 
 build() {
