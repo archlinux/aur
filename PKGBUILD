@@ -38,11 +38,12 @@ source=("${pkgname}::git+https://github.com/projectchrono/chrono.git${fragment}"
 	"opencascade.patch"
 	)
 sha1sums=('SKIP'
-		'SKIP'
-		'SKIP'
-		'8d8cb3fc9324e50cec8f5bb5dbf8a78817a32b81'
-		'277e41186ff356fcc8c15153453d17ea61eca56a'
-		'884f16fc90b8d084d1a67672bf59493b867a71f0')
+          'SKIP'
+          'SKIP'
+          '8d8cb3fc9324e50cec8f5bb5dbf8a78817a32b81'
+          '277e41186ff356fcc8c15153453d17ea61eca56a'
+          '95fa0215ee6d29075dcf01c297b88f8f88864d38'
+	)
 
 CMAKE_FLAGS=( 	-DENABLE_MODULE_POSTPROCESS=ON
 		-DENABLE_MODULE_VEHICLE=ON
