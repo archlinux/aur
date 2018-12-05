@@ -1,6 +1,6 @@
 pkgbase = doctrina-git
 	pkgdesc = The library of Software Peronista
-	pkgver = 0.1.8.r0.gfe7774c
+	pkgver = 0.1.9.r0.g35ce7a6
 	pkgrel = 1
 	url = https://git.softwareperonista.com.ar/cdp/doctrina
 	arch = x86_64
