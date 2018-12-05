@@ -4,9 +4,9 @@
 
 pkgname=ghextris
 pkgver=0.9.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Tetris-like game on a hexagonal grid'
-arch=('x86_64')
+arch=('any')
 # the https certificate is invalid
 url='http://mjr.iki.fi/software/ghextris'
 license=('GPL')
