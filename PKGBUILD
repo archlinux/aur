@@ -6,8 +6,8 @@
 # Contributor: J. W. Birdsong <jwbirdsong@gmail.com>
 
 pkgname=luakit
-pkgver=2017.08.10
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc='Browser framework based on Webkit and Lua'
 arch=('x86_64')
 url='https://luakit.github.io/'
@@ -21,7 +21,7 @@ backup=('etc/xdg/luakit/globals.lua'
         'etc/xdg/luakit/webview_wm.lua'
         'etc/xdg/luakit/window.lua')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/luakit/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('23d98b6b51b66c85b6823cd287e161e1093b80639f06f1da9b0a7290b0859d37')
+sha256sums=('ecbfa23316712f444714387b2ffd846626dab6e40b444d3def4475c145d56f26')
 
 build() {
   cd $pkgname-$pkgver
