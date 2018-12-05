@@ -4,7 +4,7 @@
 _limit='ipt-ratelimit'
 pkgname='ipt_ratelimit'
 pkgver='0.2'
-pkgrel='9'
+pkgrel='10'
 pkgdesc='Rate Policer as netfilter extension.'
 arch=('any')
 url="https://github.com/aabc/${_limit}"
@@ -54,7 +54,7 @@ check() {
 
 package() {
   cd "${srcdir}/${_limit}-${pkgver}"
-  install -Dm755 "libxt_ratelimit.so" "${pkgdir}/usr/lib/iptables/libxt_ratelimit.so"
+  install -Dm755 "libxt_ratelimit.so" "${pkgdir}/usr/lib/xttables/libxt_ratelimit.so"
   install -Dm644 "xt_ratelimit.ko.gz" "${pkgdir}${_kdir}/extra/xt_ratelimit.ko.gz"
   install -Dm644 "README" "${pkgdir}/usr/share/doc/${pkgname}/README"
   install -Dm644 "CREDITS" "${pkgdir}/usr/share/licenses/${pkgname}/CREDITS"
