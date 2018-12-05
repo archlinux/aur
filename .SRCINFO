@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgver = 4.19.6.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://evilpiepirate.org/git/
 	arch = x86_64
 	license = GPL2
