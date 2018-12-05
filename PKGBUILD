@@ -7,7 +7,7 @@ pkgdesc="Derivation of non-thermal particle distributions through MCMC spectral 
 arch=('i686' 'x86_64')
 url="https://naima.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'cython2' 'python-astropy' 'python-astropy-helpers' 'python2-astropy-helpers' 'python-sphinx' 'python-matplotlib' 'python-emcee')
+makedepends=('cython' 'cython2' 'python-astropy' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-sphinx' 'python-sphinx-astropy' 'python-emcee')
 checkdepends=('python-pytest-astropy' 'python2-pytest' 'python2-astropy' 'python-corner' 'python2-corner' 'python-emcee' 'python2-emcee')
 source=("https://files.pythonhosted.org/packages/source/n/naima/naima-${pkgver}.tar.gz")
 md5sums=('3970fed9996826054774fe770a959736')
@@ -63,7 +63,7 @@ package_python-naima() {
 
 package_python-naima-doc() {
     pkgdesc="Documentation for Python Naima module"
-    cd ${srcdir}/naima-${pkgver}/build/sphinx
+    cd ${srcdir}/naima-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
