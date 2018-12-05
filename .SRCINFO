@@ -1,7 +1,7 @@
 pkgbase = blynk-server-bin
 	pkgdesc = Blynk server for the Blynk IoT platform
 	pkgver = 0.41.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.blynk.cc/
 	install = blynk-server-bin.install
 	arch = any

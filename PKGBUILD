@@ -2,7 +2,7 @@
 # Contributor: Bertrand Ciroux <bertrand.ciroux@gmail.com>
 pkgname=blynk-server-bin
 pkgver=0.41.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Blynk server for the Blynk IoT platform"
 arch=('any')
 url="https://www.blynk.cc/"
@@ -31,6 +31,11 @@ sha256sums=("4283acf195ec75de6ba04ebb11d975f8dc3fb0cb72ed457c616443ad24de98ee"
             "be2d3b0201ad52baa2bfd4173dc7a6948d67b67e3531379bd92bc0cf390bd97b"
             "7f9c55179c35e4c5c81e068f104c977d2cdb728103a9fef6506780f306c563c1"
             "276644e9d2e68654ae947830b8c048b885d843d7d22c8520abb178e9caba8309")
+
+prepare() {
+    sed -ri 's#^(data.folder=).*$#\1/var/lib/blynk#' server.properties 
+    sed -ri 's#^(logs.folder=).*$#\1/var/log/blynk#' server.properties 
+}
 
 package() {
     install -d ${pkgdir}/{etc,usr/share,var/lib,var/log}/blynk
