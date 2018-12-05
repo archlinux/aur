@@ -1,6 +1,6 @@
 pkgbase = pjproject
 	pkgdesc = Open source SIP stack and media stack
-	pkgver = 2.7.2
+	pkgver = 2.8
 	pkgrel = 1
 	url = http://www.pjsip.org/
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = pjproject
 	optdepends = alsa-lib
 	optdepends = e2fsprogs
 	optdepends = python
-	source = http://www.pjsip.org/release/2.7.2/pjproject-2.7.2.tar.bz2
-	sha256sums = 9c2c828abab7626edf18e04b041ef274bfaa86f99adf2c25ff56f1509e813772
+	source = http://www.pjsip.org/release/2.8/pjproject-2.8.tar.bz2
+	sha256sums = 503d0bd7f9f13dc1492ac9b71b761b1089851fbb608b9a13996edc3c42006f79
 
 pkgname = pjproject
 
