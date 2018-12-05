@@ -1,9 +1,5 @@
 # Maintainer: Aleksej Komarov <stylemistake@gmail.com>
-# Maintainer: MKzero <info[at]linux-web-development[dot]de>
 # Upstream: Bitwig GmbH <support@bitwig.com>
-
-# If you find problems with the package, create an issue on Github:
-# https://github.com/stylemistake/bitwig-studio-aur
 
 pkgname='bitwig-studio'
 pkgver='2.4.3'
