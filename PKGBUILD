@@ -2,12 +2,12 @@
 
 pkgname=emacs-sly-git
 pkgver=2.21.40.g710d4be4
-pkgrel=1
+pkgrel=2
 pkgdesc="Common Lisp IDE for Emacs. Fork of slime."
 arch=('any')
 url="https://github.com/joaotavora/sly"
 license=('custom')
-depends=('emacs' 'gawk')
+depends=('emacs' 'gawk' 'common-lisp')
 makedepends=('git')
 provides=('sly' 'emacs-sly')
 conflicts=('sly' 'emacs-sly')
