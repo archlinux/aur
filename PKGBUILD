@@ -2,7 +2,7 @@
 
 pkgname=vim-razer-git
 pkgver=v1.2.r5.g4802fbe
-pkgrel=1
+pkgrel=2
 pkgdesc="Makes RGB Razer keyboards change key colors to complement what you do in vim."
 arch=('any')
 url='https://github.com/DanManN/vim-razer'
