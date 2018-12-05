@@ -2,7 +2,7 @@
 # Contributor: Flaviu Tamas <aur@flaviutamas.com>
 
 pkgname=fswatch
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="A cross-platform file change monitor with multiple backends: Apple OS X File System Events API, *BSD kqueue, Linux inotify, Microsoft Windows and a stat-based backend"
 arch=("i686" "x86_64")
@@ -11,7 +11,7 @@ license=('GPLv3')
 depends=()
 makedepends=()
 source=("https://github.com/emcrisostomo/fswatch/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('90bcf0e02fa586251aa3233cb805ca4087e81de2c5960150a0676cc42f8534bb')
+sha256sums=('44d5707adc0e46d901ba95a5dc35c5cc282bd6f331fcf9dbf9fad4af0ed5b29d')
 
 build() {
 	cd "$pkgname-$pkgver"
