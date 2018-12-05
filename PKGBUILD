@@ -1,10 +1,11 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Former Maintainer: sundar_ima <feedback.multibootusb@gmail.com>
-# Maintainer: Angel_Caido <geussepe at gmail dot com>>
+# Former Maintainer: Angel_Caido <geussepe at gmail dot com>
+# Maintainer: Zack Emmert <zemmert@fastmail.com>
 
 pkgname=multibootusb
 pkgver=9.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Boot multiple live Linux distros from a usb flash drive."
 arch=("any")
 url="http://multibootusb.org"
@@ -18,4 +19,5 @@ package () {
     cd "$srcdir/$pkgname-$pkgver"
     chmod 755 "$srcdir/$pkgname-$pkgver/data/multibootusb.desktop"
     python3 setup.py install --root="$pkgdir/" --optimize=1
+    sed -i 's/\/usr\/local\/bin/\/usr\/bin/' "$pkgdir/usr/share/polkit-1/actions/org.debian.pkexec.run-multibootusb.policy"
 }
