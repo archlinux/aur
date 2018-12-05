@@ -14,17 +14,17 @@ source=("https://github.com/emcrisostomo/fswatch/releases/download/$pkgver/$pkgn
 sha256sums=('44d5707adc0e46d901ba95a5dc35c5cc282bd6f331fcf9dbf9fad4af0ed5b29d')
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+    cd "$pkgname-$pkgver"
+    ./configure --prefix=/usr
+    make
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	make -k check
+    cd "$pkgname-$pkgver"
+    make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
 }
