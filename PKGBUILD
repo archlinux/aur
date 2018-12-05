@@ -3,7 +3,7 @@
 # Contributor: scan
 
 pkgname=obsidian-2-theme
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="Obsidian 2 Theme GNOME 3.22+"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.xz::https://github.com/madmaxms/theme-obsidian-2/releases/download/v${pkgver}/obsidian-2-theme.tar.xz"
 )
 sha256sums=(
-	'8ad3a3baa8fee396f85dab1f57db56095801ae1138459f4c3cc82f370979a6c8'
+	'ba1e7b688b17139fe5d006d7b5d89cecfeeb773420aa3a65e3772d92bebde66b'
 )
 
 package() {
