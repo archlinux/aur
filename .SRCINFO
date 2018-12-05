@@ -1,0 +1,16 @@
+pkgbase = hawkmoth
+	pkgdesc = Sphinx autodoc C extension
+	pkgver = latest
+	pkgrel = 1
+	url = https://gitlab.com/bms-contrib/hawkmoth
+	arch = i686
+	arch = x86_64
+	license = BSD2
+	depends = python-sphinx
+	depends = clang
+	optdepends = python-sphinx_rtd_theme: Read The Docs theme is used for documentation by default
+	source = git+https://gitlab.com/bms-contrib/hawkmoth#branch=unrot
+	md5sums = SKIP
+
+pkgname = hawkmoth
+
