@@ -1,3 +1,16 @@
+2018-12-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.4.1.4-1:
+    [!] Added MatchActively feature to bot's TradingPreferences. Visit wiki for more info.
+    Added nickname to API bot output.
+    Added level command (ref: #946).
+    BGR now also supports keys-only structure for import.
+    Fixed wrong process start time on generic-netf variant ran with mono.
+    Further web session-related improvements.
+    Our swagger IPC API documentation now uses OpenAPI 3.0 standard (previously: 2.0).
+    Removed loot& command as it was deemed entirely unnecessary.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    [Deprecation] Features deprecated in V3.4.0.4 have entered stage 2 and got removed.
 2018-11-09 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.4.0.7-1:
     [!] Implemented extra logic to session validation code which has a potential to fix various request failures that people have reported recently. This was needed due to Steam change that rendered previous logic partially obsolete.
