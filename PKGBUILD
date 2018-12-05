@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-scxml
-_qtver=5.11.2
+_qtver=5.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('d625cb2149f5bfef5747b1d40b22327fd36132307c8b76d358f235d5422ff7a4')
+sha256sums=('dc6ece52669976836844b0d9bcf4910bca7b5d2c446c6755d7b9f79bfa1add6b')
 
 prepare() {
   mkdir -p build
