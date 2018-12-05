@@ -1,7 +1,7 @@
 pkgbase = everest
 	pkgdesc = A beautiful, cross-platform REST client.
 	pkgver = a1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RohitAwate/Everest
 	install = everest.install
 	arch = any

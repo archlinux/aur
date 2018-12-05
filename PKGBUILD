@@ -4,7 +4,7 @@ _pkgname='Everest'
 pkgname='everest'
 _pkgver=Alpha-1.3
 pkgver=a1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A beautiful, cross-platform REST client."
 arch=('any')
 url="https://github.com/RohitAwate/Everest"
@@ -32,7 +32,6 @@ build() {
 
 check() {
     cd "${srcdir}/${_pkgname}-${_pkgver}"
-    export GOPATH="$PWD"
     mvn test
 }
 
