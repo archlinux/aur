@@ -22,6 +22,7 @@ package_lrad-git() {
 
 	cd $_pkgname
 
+	env rustup toolchain install nightly
 	env cargo +nightly build --release
 
 	install -D -m755 "$srcdir/$_pkgname/target/release/lrad-cli" "$pkgdir/usr/bin/lrad"
