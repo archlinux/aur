@@ -1,0 +1,19 @@
+pkgbase = fcitx5-m17n-git
+	pkgdesc = m17n input method for fcitx5
+	pkgver = r95.02b11e7
+	pkgrel = 1
+	url = https://gitlab.com/fcitx/fcitx5-m17n
+	arch = x86_64
+	license = LGPL 2.1+
+	makedepends = cmake
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = fcitx5-git
+	depends = m17n-db
+	depends = m17n-lib
+	provides = fcitx5-anthy
+	source = git+https://gitlab.com/fcitx/fcitx5-m17n.git
+	sha512sums = SKIP
+
+pkgname = fcitx5-m17n-git
+
