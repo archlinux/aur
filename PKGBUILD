@@ -4,12 +4,17 @@ _name='flask-restinpeace'
 
 pkgname="python-${_name}"
 pkgver='1.2.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Create Flask REST APIs in peace."
 arch=('any')
 url="https://github.com/kynikos/lib.py.flask-rip"
 license=('MIT')
-depends=('python-flask-marshmallow' 'python-apispec')
+depends=('python-flask-marshmallow'
+         'python-apispec'
+         # python-yaml is a python-apispec optdepend, but it seems required
+         # to use this module?
+         # TODO: Report a bug?
+         'python-yaml')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('4c585d271c270dfad1848c0fe157ff8b7d75dce4291414c817607219d0ea92c7')
