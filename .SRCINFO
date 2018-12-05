@@ -1,14 +1,14 @@
 pkgbase = lzma_alone
 	pkgdesc = An algorithm used to perform lossless data compression
 	pkgver = 18.05
-	pkgrel = 1
-	url = http://www.7-zip.org/sdk.html
+	pkgrel = 2
+	url = https://www.7-zip.org/sdk.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = gcc-libs
 	noextract = lzma1805.7z
-	source = http://www.7-zip.org/a/lzma1805.7z
+	source = https://www.7-zip.org/a/lzma1805.7z
 	sha256sums = d4ad382070d20edde117a8e544e7149ab6c84fdedd220aafe75454056a924732
 
 pkgname = lzma_alone

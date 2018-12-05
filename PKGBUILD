@@ -1,19 +1,19 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=lzma_alone
 pkgver=18.05
 _srcver="${pkgver/./}"
-pkgrel=1
+pkgrel=2
 pkgdesc='An algorithm used to perform lossless data compression'
 arch=('i686' 'x86_64')
-url='http://www.7-zip.org/sdk.html'
+url='https://www.7-zip.org/sdk.html'
 license=('custom')
 depends=('gcc-libs')
-source=("http://www.7-zip.org/a/lzma${_srcver}.7z")
+source=("https://www.7-zip.org/a/lzma${_srcver}.7z")
 noextract=("lzma${_srcver}.7z")
 sha256sums=('d4ad382070d20edde117a8e544e7149ab6c84fdedd220aafe75454056a924732')
 
-prepare(){
+prepare() {
     mkdir -p "lzma-sdk-${pkgver}"
     
     cd "lzma-sdk-${pkgver}"
@@ -23,6 +23,10 @@ prepare(){
     # fix build: do not treat warnings as errors
     cd "${srcdir}/lzma-sdk-${pkgver}/CPP/7zip/Bundles/LzmaCon"
     sed -i '/CXX_C[[:space:]]=/s/[[:space:]]-Werror//' makefile.gcc
+    
+    # create a LICENSE file
+    cd "${srcdir}/lzma-sdk-${pkgver}/DOC"
+    sed -n '27,41p' lzma-sdk.txt > LICENSE
 }
 
 build() {
@@ -33,11 +37,8 @@ build() {
 
 package() {
     cd lzma-sdk-"${pkgver}/CPP/7zip/Bundles/LzmaCon"
-    
     install -D -m755 lzma "${pkgdir}/usr/bin/lzma_alone"
     
-    # create a LICENSE file
     cd "${srcdir}/lzma-sdk-${pkgver}/DOC"
-    sed -n '27,41p' lzma-sdk.txt > LICENSE
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
