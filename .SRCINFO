@@ -1,11 +1,12 @@
 pkgbase = powder-player-bin
 	pkgdesc = Hybrid between a Torrent Client and a Player (torrent streaming)
 	pkgver = 1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://powder.media/
 	install = powder-player.install
 	arch = x86_64
 	license = LGPL3
+	depends = gconf
 	provides = powder-player
 	conflicts = powder-player
 	options = !strip

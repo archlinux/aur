@@ -3,13 +3,12 @@
 _pkgname=powder-player
 pkgname=${_pkgname}-bin
 pkgver=1.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Hybrid between a Torrent Client and a Player (torrent streaming)"
 arch=('x86_64')
 url="http://powder.media/"
 license=('LGPL3')
-depends=()
-optdepends=()
+depends=('gconf')
 provides=('powder-player')
 conflicts=('powder-player')
 options=('!strip')
