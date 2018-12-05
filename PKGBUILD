@@ -13,10 +13,10 @@ makedepends=('python>=3.3'
              'python-jsonschema>=2.3.0'
              'python-yaml>=3.10'
              'python-six>=1.9.0'
-             'python-astropy-helpers'
+             'python-astropy-helpers>=3.1'
              'python-semantic-version>=2.3.1'
              'python-sphinx'
-             'python-matplotlib'
+             'python-sphinx-astropy'
              'graphviz')
 checkdepends=('python-pytest' 'python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/a/asdf/asdf-${pkgver}.tar.gz")
@@ -56,7 +56,7 @@ package_python-asdf() {
 
 package_python-asdf-doc() {
     pkgdesc="Documentation for Python ASDF module"
-    cd ${srcdir}/asdf-${pkgver}/build/sphinx
+    cd ${srcdir}/asdf-${pkgver}/docs/_build/
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
