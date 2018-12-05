@@ -2,21 +2,26 @@
 
 _npmname=postcss-cli
 pkgname=nodejs-$_npmname
-pkgver=2.4.1
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Traditional CLI for postcss."
 arch=('any')
 url="https://github.com/code42day/postcss-cli"
 license=('MIT')
-depends=('nodejs' 'npm')
+depends=('nodejs')
+makedepends=(npm)
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('528c7445fc091724bee1177b3acd823d0669d7fb441344a164fc18c41ca7fce0')
+sha256sums=('28eaf135eb187f880198bf2422e54321d15759af10c65734a6fff460de5c7cc2')
 
 package() {
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p "$_npmdir"
-  cd "$_npmdir"
-  npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+  npm install \
+    --user root --global \
+    --prefix "$pkgdir/usr" \
+    "$srcdir"/$_npmname-$pkgver.tgz
+
+  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
+
+  install -Dm0644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
