@@ -61,10 +61,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _major=4.19
-pkgver=4.19.6
+pkgver=4.19.7
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=5
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -99,9 +99,10 @@ source=(# mainline kernel patches
         '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch')
+        '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
+        '0002-blk-mq-fix-corruption-with-direct-issue.patch')
 
-sha256sums=('644e61beb66211c0c5c13f91d96de1725055e6eea4cda7bb37ce9929ba8f09c3'
+sha256sums=('84d7aa436e10690b53165b9d59ec20548e6a4ce3324b135c5019fb0f7dd2a2d2'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             '3ac265b7be567e628c073d64bd9a9090360c9d98e9c7b9f60ca206a86882932e'
@@ -112,7 +113,8 @@ sha256sums=('644e61beb66211c0c5c13f91d96de1725055e6eea4cda7bb37ce9929ba8f09c3'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '37c115ad797afc7e47615dc56c6416932b6645e16da097ddcfa401df41a31248')
+            '37c115ad797afc7e47615dc56c6416932b6645e16da097ddcfa401df41a31248'
+            'c4512061dbbc349f13f0001f8ebea9e311cdbe53a7bda40f444aaea33fcdd14f')
 validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
