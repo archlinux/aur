@@ -1,0 +1,19 @@
+pkgbase = python-ccm-git
+	pkgdesc = A library to create, launch and remove an Apache Cassandra cluster on localhost.
+	pkgver = 3.1.5
+	pkgrel = 1
+	url = https://github.com/riptano/ccm/
+	arch = any
+	license = Apache
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	depends = ant
+	depends = python-yaml
+	depends = python-psutil
+	source = git+https://github.com/riptano/ccm/#commit=3476c80
+	md5sums = SKIP
+
+pkgname = python-ccm-git
+
