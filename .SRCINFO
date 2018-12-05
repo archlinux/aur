@@ -1,7 +1,7 @@
 pkgbase = libpod
 	pkgdesc = A library used to create container pods.
 	pkgver = 0.11.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/containers/libpod
 	arch = x86_64
 	license = Apache
