@@ -7,7 +7,7 @@ pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('i686' 'x86_64')
 url="http://specutils.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'python-numpy' 'python-scipy' 'python-six' 'python-astropy' 'python-astropy-helpers' 'python-sphinx' 'python-matplotlib' 'python-gwcs')
+makedepends=('cython' 'python-numpy' 'python-scipy' 'python-six' 'python-astropy' 'python-astropy-helpers>=3.1' 'python-sphinx' 'python-sphinx-astropy' 'python-gwcs')
 #checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/s/specutils/specutils-${pkgver}.tar.gz")
 md5sums=('544f8613f9e2812350fcd27f7b38c6de')
@@ -45,7 +45,7 @@ package_python-specutils() {
 
 package_python-specutils-doc() {
     pkgdesc="Documentation for Python Specutils module"
-    cd ${srcdir}/specutils-${pkgver}/docs/docs/_build
+    cd ${srcdir}/specutils-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
