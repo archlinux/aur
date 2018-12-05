@@ -8,7 +8,7 @@ pkgname=(
 	"libpod-python"
 )
 pkgver=0.11.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A library used to create container pods."
 arch=("x86_64")
 url="https://github.com/containers/libpod"
