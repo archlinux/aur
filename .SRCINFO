@@ -1,15 +1,15 @@
 pkgbase = everest
 	pkgdesc = A beautiful, cross-platform REST client.
 	pkgver = a1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RohitAwate/Everest
 	install = everest.install
 	arch = any
 	license = Apache
-	makedepends = java-environment
+	makedepends = java-environment>=8
 	makedepends = java-openjfx
 	makedepends = maven
-	depends = java-runtime
+	depends = java-runtime>=8
 	provides = everest
 	conflicts = everest-git
 	source = https://github.com/RohitAwate/Everest/archive/Alpha-1.3.tar.gz

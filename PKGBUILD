@@ -4,15 +4,15 @@ _pkgname='Everest'
 pkgname='everest'
 _pkgver=Alpha-1.3
 pkgver=a1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, cross-platform REST client."
 arch=('any')
 url="https://github.com/RohitAwate/Everest"
 license=('Apache')
-makedepends=('java-environment'
+depends=('java-runtime>=8')
+makedepends=('java-environment>=8'
              'java-openjfx'
              'maven')
-depends=('java-runtime')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 install="${pkgname}.install"
