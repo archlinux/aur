@@ -1,11 +1,12 @@
 pkgbase = visidata-git
 	pkgdesc = A console spreadsheet tool for discovering and arranging data
 	pkgver = 1.5.ga2e8717
-	pkgrel = 1
+	pkgrel = 2
 	url = http://visidata.org/
 	arch = any
 	license = GPLv3
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	optdepends = python-dateutil: for converting string column to datetime
 	optdepends = python-openpyxl: for opening .xlsx files
