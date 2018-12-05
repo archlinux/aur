@@ -1,13 +1,13 @@
 pkgbase = ruplacer
 	pkgdesc = Find and replace text in source files
 	pkgver = 0.3.0
-	pkgrel = 1
-	url = http://github.com/supertanker/ruplacer
+	pkgrel = 2
+	url = http://github.com/TankerHQ/ruplacer
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = ruplacer-0.3.0.tar.gz::http://github.com/supertanker/ruplacer/archive/v0.3.0.tar.gz
+	source = ruplacer-0.3.0.tar.gz::http://github.com/TankerHQ/ruplacer/archive/v0.3.0.tar.gz
 	md5sums = 46472ebcad033da4f2cc46dedef8e1e7
 
 pkgname = ruplacer

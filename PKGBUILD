@@ -1,8 +1,8 @@
 pkgname=ruplacer
 pkgver="0.3.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Find and replace text in source files"
-url="http://github.com/supertanker/ruplacer"
+url="http://github.com/TankerHQ/ruplacer"
 arch=('x86_64')
 license=('MIT')
 depends=('gcc-libs')
