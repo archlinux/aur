@@ -1,7 +1,8 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=libva-intel-driver-git
-pkgver=2.2.0.pre1.r7.gd805098c
+_srcname=intel-vaapi-driver
+pkgver=2.2.0.r15.gecfb0dbc
 pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family (git version)'
 arch=('i686' 'x86_64')
@@ -17,11 +18,11 @@ makedepends=('git' 'meson')
 provides=('libva-intel-driver')
 conflicts=('libva-intel-driver')
 replaces=('libva-driver-intel')
-source=("$pkgname"::'git+https://github.com/intel/intel-vaapi-driver.git')
+source=('git+https://github.com/intel/intel-vaapi-driver.git')
 sha256sums=('SKIP')
 
 prepare() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # Only relevant if intel-gpu-tools is installed,
     # since then the shaders will be recompiled
@@ -29,21 +30,21 @@ prepare() {
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     arch-meson . build
     ninja -C build
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     DESTDIR="$pkgdir" ninja -C build install
     
