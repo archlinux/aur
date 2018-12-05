@@ -2,7 +2,7 @@
 # Contributor: James Clark <s1127853@sms.ed.ac.uk>
 pkgname=opencoarrays
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A transport layer for coarray Fortran compilers."
 url="http://www.opencoarrays.org/"
 arch=('x86_64')
