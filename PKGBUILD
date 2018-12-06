@@ -24,9 +24,9 @@ _makenconfig=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver=4.19.6-arch1
+_srcver=4.19.7-arch1
 pkgver=${_srcver//-/.}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url="https://evilpiepirate.org/git/"
 license=(GPL2)
@@ -49,7 +49,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '66bb9855500368f9fe2c29cf2cdc2660dff376f80eae8786691da95cf50fe6dc'
+            '39b2ed85194f47682843ef0f2027b2e801fd4abedda420905f1a5215c3d78111'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
