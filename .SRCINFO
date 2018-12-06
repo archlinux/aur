@@ -1,0 +1,22 @@
+pkgbase = antlr3-3.1.2
+	pkgdesc = ANTLR3 version 3.1.2. A parser generator for reading, processing, executing, or translating structured text or binary files.
+	pkgver = 3.1.2
+	pkgrel = 3
+	url = https://www.antlr3.org/index.html
+	arch = any
+	license = BSD
+	depends = java-environment>=6
+	optdepends = python2-antlr3=3.1.2: For the corresponding python2 runtime.
+	provides = antlr=3.1.2
+	provides = antlr3=3.1.2
+	conflicts = antlr3
+	noextract = antlr-3.1.2-complete.jar
+	source = https://www.antlr3.org/download/antlr-3.1.2.jar
+	source = antlr3
+	source = https://www.antlr3.org/download/Python/antlr_python_runtime-3.1.2.tar.gz
+	sha256sums = 0f0c07c499a2ab95ebc71b8e3140f2041cd524dcebfe220321e07c864a3e24bd
+	sha256sums = ede2ad1581b2e15edb2f96ecf33bbcc5372d24baa051c24c68cf5ebddf302268
+	sha256sums = d838ce44d24e8815c9dcd123af045161d7db7157873907b85b1c7fe9f1c2d5db
+
+pkgname = antlr3-3.1.2
+

@@ -1,0 +1,2 @@
+#!/bin/sh
+java -classpath /usr/share/java/antlr3.jar org.antlr.Tool "$@"
