@@ -3,25 +3,25 @@
 
 pkgname=perl-net-arp
 _realname=Net-ARP
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="Perl Module: Extension for creating ARP Packets" 
 arch=(i686 x86_64)
 license=('PerlArtistic')
 url="http://search.cpan.org/dist/${_realname}/"
 depends=('perl>=5.10.0')
 source=(http://cpan.metacpan.org/authors/id/C/CR/CRAZYDJ/${_realname}-${pkgver}.tgz)
-sha1sums=('be5e6123d50446a43bb4e8f90c4e45049c96634f')
+sha1sums=('bd8067ec9cae6693e9c038df35e3c7415eedfaf4')
 
 build() {
-  cd ${srcdir}/${_realname}-${pkgver}
+  cd ${srcdir}/${_realname}
   # install module in vendor directories.
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package() {
-  cd ${srcdir}/${_realname}-${pkgver}
+  cd ${srcdir}/${_realname}
   make install DESTDIR=${pkgdir}
 
   # remove perllocal.pod and .packlist
