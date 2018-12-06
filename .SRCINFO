@@ -1,0 +1,18 @@
+pkgbase = pro_office_calc
+	pkgdesc = A completely normal office calculator.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = http://proofficecalculator.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	checkdepends = gtest
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = tinyxml2
+	source = https://github.com/RobJinman/pro_office_calc/archive/v1.0.6.tar.gz
+	md5sums = 92eb7de2705ea6f4a183df0c21616fb5
+
+pkgname = pro_office_calc
+
