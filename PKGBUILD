@@ -2,7 +2,7 @@
 
 _pkgname='audible-activator'
 pkgname="${_pkgname}-git"
-pkgver=0.2.rgb9bfe32
+pkgver=0.2.rg2e97c84
 pkgrel=1
 pkgdesc="A script to retrieve your activation data (activation_bytes) from Audible servers. Use it to play your aax or aax+ files downloaded from amazon audible. Needs chrome or chromium."
 url='http://github.com/inAudible-NG/audible-activator'
