@@ -5,7 +5,7 @@
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 
 pkgname=midori
-pkgver=6.0
+pkgver=7.0
 pkgrel=1
 pkgdesc='Lightweight web browser'
 arch=('x86_64')
@@ -19,8 +19,8 @@ optdepends=('gst-plugins-base: HTML5 OGG videos support'
             'gst-plugins-good: HTML5 H264 and WebM videos support'
             'gst-libav: HTML5 H264 videos support')
 options=('!emptydirs')
-source=("$pkgname::git+https://github.com/\
-midori-browser/core.git#tag=v${pkgver%.0}")
+source=("$pkgname::git+https://github.com/midori-browser/core.git#\
+tag=v${pkgver%.0}")
 md5sums=('SKIP')
 
 build() {
