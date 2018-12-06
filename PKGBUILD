@@ -1,7 +1,7 @@
 # Maintainer: Florijan Hamzic <fh@infinicode.de>
 
 pkgname='sphinx-bin'
-pkgver=3.0.3
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='Closed Source SQL full-text search engine.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("sphinx")
 install='sphinx.install'
 
 source=(
-    "http://sphinxsearch.com/files/sphinx-${pkgver}-facc3fb-linux-amd64.tar.gz"
+    'http://sphinxsearch.com/files/sphinx-3.1.1-612d99f-linux-amd64.tar.gz'
     'sphinx.conf.d'
     'sphinx.install'
     'sphinx.service')
@@ -41,7 +41,7 @@ package() {
   install -Dm644 "${srcdir}/sphinx.service" "${pkgdir}/usr/lib/systemd/system/sphinx.service"
 }
 
-md5sums=('3635a44114e136776ecdc2ddacc046de'
+md5sums=('95342708882fb9417c1bafe6efa81bbd'
          '48e3e1857919d26d5104a48caffb531b'
          'a5968e77e1c2f7e69cd7431a78d37ae3'
          'fe06a8aff0520a6f75596ee43d2e5935')
