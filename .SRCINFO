@@ -1,7 +1,7 @@
 pkgbase = synology-note-station
 	pkgdesc = Note Station for desktop connects you with Note Station on your Synology NAS. You can manage all the notes/to-do list offline, right from your local computer.
-	pkgver = 2.1.2_245
-	pkgrel = 1
+	pkgver = 2.1.4_245
+	pkgrel = 2
 	url = https://www.synology.com/support/download/
 	arch = i686
 	arch = x86_64
