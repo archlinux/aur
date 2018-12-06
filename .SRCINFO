@@ -1,7 +1,7 @@
 pkgbase = python-imagemounter
 	pkgdesc = CLI utility and Python package for (un)mounting forensic disk images.
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ralphje/imagemounter
 	arch = any
 	license = MIT
@@ -23,6 +23,7 @@ pkgbase = python-imagemounter
 	optdepends = qemu: mounting Qcow2 disk images
 	optdepends = sleuthkit: covers various tasks
 	optdepends = squashfs-tools: mounting SquashFS volumes
+	optdepends = testdisk: carving images for deleted files
 	optdepends = util-linux: locating/printing block device attributes
 	optdepends = vmfs-tools: mounting VMFS volumes
 	optdepends = vmware-workstation: mounting VMWare disk images

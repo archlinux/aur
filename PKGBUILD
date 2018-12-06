@@ -2,7 +2,7 @@
 
 pkgname=python-imagemounter
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI utility and Python package for (un)mounting forensic disk images."
 arch=(any)
 url="https://github.com/ralphje/imagemounter"
@@ -24,6 +24,7 @@ optdepends=('afflib: mounting AFF disk images'
 		'qemu: mounting Qcow2 disk images'
 		'sleuthkit: covers various tasks'
 		'squashfs-tools: mounting SquashFS volumes'
+		'testdisk: carving images for deleted files'
 		'util-linux: locating/printing block device attributes'
 		'vmfs-tools: mounting VMFS volumes'
 		'vmware-workstation: mounting VMWare disk images'
