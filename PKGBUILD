@@ -2,15 +2,16 @@
 _basename=jemalloc
 pkgname=mingw-w64-jemalloc
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose scalable concurrent malloc implementation (mingw-w64)'
 arch=('i686' 'x86_64')
 license=('BSD')
 url='http://www.canonware.com/jemalloc/'
 options=(staticlibs !strip !buildflags)
+depends=(mingw-w64-crt)
+makedepends=(mingw-w64-configure)
 source=("https://github.com/jemalloc/jemalloc/releases/download/${pkgver}/${_basename}-${pkgver}.tar.bz2")
 sha256sums=('5396e61cc6103ac393136c309fae09e44d74743c86f90e266948c50f3dbb7268')
-
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
