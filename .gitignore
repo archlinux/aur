@@ -3,3 +3,5 @@ pkg/
 *.pkg.tar.xz
 *.xz
 *.asc
+.project
+.settings
