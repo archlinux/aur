@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-4.19
-_stable=4.19.6
-_patchver=4.19.7
+_stable=4.19.7
+_patchver=4.19.8
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -16,8 +16,8 @@ license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
-  https://www.kernel.org/pub/linux/kernel/v4.x/linux-$_stable.tar.{xz,sign}
   https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v4.x/linux-$_stable.tar.{xz,sign}
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -29,9 +29,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('644e61beb66211c0c5c13f91d96de1725055e6eea4cda7bb37ce9929ba8f09c3'
+sha256sums=('341ff26f8dda1f2fef3ec1d076ede63476bd8da2d07b2e12a6b610bf103cfc35'
             'SKIP'
-            '173f3058b5ecb7b5eff1e3984f60dc8076e94901be3670b1c4704db0db8ad780'
+            '84d7aa436e10690b53165b9d59ec20548e6a4ce3324b135c5019fb0f7dd2a2d2'
             'SKIP'
             'e7fa30bb2de12d1a2488423e27c00f26d55668e310e69aaf93673c1afd89dbaf'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
