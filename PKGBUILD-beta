@@ -4,7 +4,7 @@
 
 pkgname=dbeaver-ee
 # beta
-pkgver=5.2.5
+pkgver=5.3.0
 # release
 #pkgver=5.2.0
 pkgrel=1
@@ -24,8 +24,8 @@ source_x86_64=(http://dbeaver.com/files/ea/dbeaver-ee-${pkgver}-linux.gtk.x86_64
 #source_x86_64=(http://dbeaver.com/files/${pkgver}/dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz)
 sha256sums=('453912912ae8377b16ef74a3e7d93ea588792ee8f7054a573e9fe9b93cd9265f'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_i686=('e6d50b57042cf0f59015fff803f137f18b83ae5c5466e7e08b06c2aad8a07cad')
-sha256sums_x86_64=('c4acce365563142c8032a99e52dc8596b469c1e0e3fb6eabb31be4303d66b4f1')
+sha256sums_i686=('f3ea85afde99261db5d5501b2661957bf9b5581b16a765e0e70bb49c22e673a9')
+sha256sums_x86_64=('960645b76c2d202d2db74a5f5414290f7731626ce057e1aaa18623db06d4a5e4')
 
 noextract=("dbeaver-ee-${pkgver}-linux.gtk.x86.tar.gz"
            "dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz")
