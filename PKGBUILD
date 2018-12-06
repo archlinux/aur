@@ -4,7 +4,7 @@ _pkgname=python2-antlr3
 pkgname="${_pkgname}"
 pkgdesc='ANTLR3 runtime for Python'
 pkgver=3.1.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://www.antlr3.org/"
 license=('BSD')
@@ -38,6 +38,4 @@ package() {
   done
 
   _cmd install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  #install -d "${pkgdir}"/usr/share/licenses
-  #ln -s /usr/share/licenses/antlr2 "${pkgdir}"/usr/share/licenses/${pkgname}
 }
