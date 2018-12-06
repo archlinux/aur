@@ -315,10 +315,10 @@ sha256sums=('17644b3bec83fa0effc6410c117c27b7783a415b7634121e40f5e0d19b93e752'
             '829f64622deee5f4703df63ba390cba4e0bb6c46970ae97b63f52dab9e882c75')
 
 package() {
-  install -dm755 $pkgdir/usr/share/fonts/{TTF,OTF}
-  find "$srcdir" -name "*.ttf" -exec install {} $pkgdir/usr/share/fonts/TTF \;
-  find "$srcdir" -name "*.otf" -exec install {} $pkgdir/usr/share/fonts/OTF \;
+  install -dm755 "$pkgdir"/usr/share/fonts/{TTF,OTF}
+  find "$srcdir" -name "*.ttf" -exec install {} "$pkgdir"/usr/share/fonts/TTF \;
+  find "$srcdir" -name "*.otf" -exec install {} "$pkgdir"/usr/share/fonts/OTF \;
 
-  install -d ${pkgdir}/usr/share/licenses/"${pkgname}"
-  install "$srcdir"/LICENCE.md ${pkgdir}/usr/share/licenses/"${pkgname}"/LICENCE.md
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install "$srcdir"/LICENCE.md "$pkgdir/usr/share/licenses/$pkgname"/LICENCE.md
 }
