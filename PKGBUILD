@@ -2,12 +2,12 @@
 
 _name=taskell
 pkgname="${_name}-bin"
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='A command line kanban board/task manager written in Haskell'
 arch=('x86_64')
 url="https://github.com/smallhadroncollider/${_name}"
-license=('')
+license=('Custom')
 options=('!strip' '!emptydirs')
 conflicts=("${_name}")
 replaces=("${_name}")
@@ -18,7 +18,7 @@ source=(
   "${url}/releases/download/${pkgver}/${_pkgfile}"
   LICENSE
 )
-sha256sums=('0c969b2fd7baa86148ccdeee9e9f49f109d4d8e6deb800af01b982429bb96039'
+sha256sums=('6168be41b40b80964df7ac212591f9955925f08cab497304dbae5ad39bb133f1'
             '04dc83953b60b17ab28cbc37ad3188e1c632db38dd423885af7507460f461d29')
 
 package() {
@@ -39,4 +39,4 @@ package() {
   # install -Dm0755 taskell "${pkgdir}"/usr/bin/taskell
 }
 
-# vim:set ft=sh ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
