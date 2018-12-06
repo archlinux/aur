@@ -1,7 +1,7 @@
 # Maintainer: Elrondo46 TuxnVape <elrond94@hotmail.com>
 
 pkgname=amar-installer
-pkgver=1.9.9.b1
+pkgver=1.9.9.b2
 pkgrel=1
 pkgdesc="Install AMAR repository"
 arch=('x86_64')

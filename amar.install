@@ -6,4 +6,9 @@ post_upgrade() {
   post_install
 }
 
+post_remove() {
+  sed -i '/amar/d' /etc/pacman.conf
+  sed -i '/AMAR/d' /etc/pacman.conf
+}
+
 # vim: ts=2 sw=2 et:
