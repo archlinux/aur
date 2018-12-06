@@ -1,13 +1,13 @@
 # maintainer: x2416 <x2416x at gmail dot com>
-
+#
 # Most of this sourced from PKGBUILD found here -- https://gist.github.com/georgyo/d5c82709ec944a785976/revisions
-
+#
 # This is based heavily on work found posted four years ago 
 # on github by georgyo (George Shammas) but updated to use current version found 
 # on startechs website. Enjoy!
-
+#
 # This works on notecons02 and notecons01.
-
+#
 # ---------------------------------------------------
 # Defines
 # ---------------------------------------------------
