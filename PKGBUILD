@@ -23,7 +23,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.2.12
+pkgver=7.3.0
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
