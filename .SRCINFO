@@ -2,14 +2,14 @@ pkgbase = cornora-git
 	pkgdesc = Simple Hot Corner Launcher for X11
 	pkgver = r27.8ea76dd
 	pkgrel = 2
-	url = https://github.com/yuune/cornora
+	url = https://github.com/okitavera/cornora
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = bash
 	depends = xdotool
 	depends = xorg-xprop
-	source = git+https://github.com/yuune/cornora.git
+	source = git+https://github.com/okitavera/cornora.git
 	md5sums = SKIP
 
 pkgname = cornora-git
