@@ -1,0 +1,15 @@
+pkgbase = python2-antlr3
+	pkgdesc = ANTLR3 runtime for Python
+	pkgver = 3.1.3
+	pkgrel = 1
+	url = http://www.antlr3.org/
+	arch = any
+	license = BSD
+	depends = antlr3
+	depends = python2
+	provides = python-antlr=3.1.3
+	source = https://www.antlr3.org/download/Python/antlr_python_runtime-3.1.3.tar.gz
+	sha256sums = e6ac1e5aaae4e2d9ead03d13142cca61447bdfa6a66c7552cb884c43e688532c
+
+pkgname = python2-antlr3
+
