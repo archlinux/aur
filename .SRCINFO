@@ -12,7 +12,7 @@ pkgbase = bisq
 	source = bisq::git+https://github.com/bisq-network/bisq-desktop.git#tag=v0.9.0
 	source = bisq.desktop
 	sha256sums = SKIP
-	sha256sums = 20d24db040983a6139e3300db7824b08b3e106150cb155480409b1ab7de68d17
+	sha256sums = 3560a5cfd097c644874af634725f6063674ffc93ac48118846cc693490cee6bc
 
 pkgname = bisq
 

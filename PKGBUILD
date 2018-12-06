@@ -12,7 +12,7 @@ makedepends=('maven' 'jdk10-openjdk' 'protobuf')
 source=("${pkgname}::git+https://github.com/bisq-network/bisq-desktop.git#tag=v${pkgver}"
         "bisq.desktop")
 sha256sums=('SKIP'
-            '20d24db040983a6139e3300db7824b08b3e106150cb155480409b1ab7de68d17')
+            '3560a5cfd097c644874af634725f6063674ffc93ac48118846cc693490cee6bc')
 
 build() {
   cd "${srcdir}/${pkgname}" || exit

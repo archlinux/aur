@@ -2,7 +2,7 @@
 Name=Bisq
 GenericName=P2P Bitcoin Exchange
 Comment=Bisq is a cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges
-Exec=/usr/bin/bisq-desktop
+Exec=env JAVA_HOME=/usr/lib/jvm/java-10-openjdk /usr/bin/bisq-desktop
 Icon=bisq
 Terminal=false
 Type=Application
