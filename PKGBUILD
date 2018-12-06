@@ -7,8 +7,8 @@
 
 pkgname=('gurobi')
 _basename=gurobi
-pkgver=8.0.1
-pkgrel=2
+pkgver=8.1.0
+pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
 url="http://www.gurobi.com/products/gurobi-optimizer"
@@ -22,11 +22,11 @@ optdepends=(
 )
 source=(
 #  "${_basename}${pkgver}_linux64.tar.gz::file://${_basename}${pkgver}_linux64.tar.gz"
-  "https://packages.gurobi.com/8.0/gurobi8.0.1_linux64.tar.gz"
+  "https://packages.gurobi.com/8.1/gurobi8.1.0_linux64.tar.gz"
   "gurobi.sh"
   "gurobi_setup.m"
 )
-sha256sums=('28c028b8708869c27a93edc2769b645db4906dc7c80a4d283ed6db672b587478'
+sha256sums=('bf0d8369ab5fb69b2fb027c41814c8b8e6d1de32a39960aa9c52126cf15f58fa'
             '30d535f7100627195dbe8d1c9a5ce603ed645b93eb8869984eb8a15e8db6d1c8'
             'fd328dc00b276258e7828b301c93574f9aa8e6f143caf5428a648851a6ecf93c')
 
@@ -70,13 +70,11 @@ package_gurobi() {
   # Programming interfaces
   install lib/*.so* "${pkgdir}/usr/lib/"
   install -m644 lib/*.a "${pkgdir}/usr/lib/"
-  ln -sf ./libgurobi.so.8.0.1 "${pkgdir}/usr/lib/libgurobi80.so"
+  ln -sf ./libgurobi.so.8.1.0 "${pkgdir}/usr/lib/libgurobi810.so"
   ln -sf ./libgurobi_g++5.2.a "${pkgdir}/usr/lib/libgurobi_c++.a"
 
-  python2 setup.py install --root="$pkgdir" --optimize=1
-  python3.6 setup.py install --root="$pkgdir" --optimize=1
-  install -D "lib/python2.7_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python2.7/site-packages/gurobipy/"
-  install -D "lib/python3.6_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python3.6/site-packages/gurobipy/"
+  python3.7 setup.py install --root="$pkgdir" --optimize=1
+  install -D "lib/python3.7_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python3.7/site-packages/gurobipy/"
 
   install -D -m644 lib/gurobi.jar "${pkgdir}/usr/share/java/${_basename}/gurobi.jar"
 
