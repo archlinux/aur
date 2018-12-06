@@ -10,7 +10,6 @@ url="https://spacy.io/"
 license=("MIT")
 depends=("cython"
         "python-numpy"
-        "python-msgpack-numpy-git"
         "python-cymem"
         "python-preshed"
         "python-thinc"
@@ -22,7 +21,6 @@ depends=("cython"
         "python-requests"
         "python-pytest"
         "python-mock"
-        "python-pathlib"
 )
 makedepends=("python-wheel")
 provides=('python-spacy')
