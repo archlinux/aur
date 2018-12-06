@@ -13,7 +13,6 @@ pkgdesc='A collection of free fonts including Helvetica, Futura, and Gotham'
 arch=('any')
 url='http://www.ephifonts.com'
 license=('custom')
-install='install'
 
 source=('http://www.ephifonts.com/downloads/helvetica-black.otf.zip'
         'http://www.ephifonts.com/downloads/helvetica-black-oblique.otf.zip'

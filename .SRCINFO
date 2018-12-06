@@ -3,7 +3,6 @@ pkgbase = ephifonts
 	pkgver = 20180416
 	pkgrel = 2
 	url = http://www.ephifonts.com
-	install = install
 	arch = any
 	license = custom
 	source = http://www.ephifonts.com/downloads/helvetica-black.otf.zip
