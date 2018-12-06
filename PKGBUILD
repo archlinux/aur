@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fslpy
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="The fslpy package is a collection of utilities and data abstractions used by FSLeyes."
 arch=('any')
@@ -14,11 +14,11 @@ provides=()
 conflicts=()
 replaces=()
 source=($pkgname-$pkgver.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fslpy/repository/archive.tar.gz?ref=$pkgver)
-sha256sums=('ab9179afa246c5f85602b3371c0a1c13f8e405ce6d58419f9966b11095382eed')
+sha256sums=('f1f10d742b96f25357d6890c91e4cc13f7c18a44fd1c64e90601ef9be6ccff64')
 
 package() {
   cd "$srcdir/${pkgname#fsleyes-}-$pkgver-"*
-  # "Patching for deprecation 2.x support
+  # "Patching" for deprecation 2.x support
   sed -i 's/deprecation>=1\.\*,<=2\.\*/deprecation>=1\.\*/g' requirements.txt
   python setup.py install --root="$pkgdir/" --optimize=1
 }
