@@ -33,7 +33,7 @@ makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libso
 checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
-sha512sums=('bbeaed1278d0d2f1ecb2249dab1ebaab1489ef43be0797dac57d8b523d8e5d284166e6cbf52095f5d34eef447fbdeb0c6916caaa5770221a180ec064f4ffcad8'
+sha512sums=('d991101eb833d3a47833aa930341e75c56f26c4cb0249896728ebe209c6c02af1704fccc3052128d8f9fdffc60dcef0ece38a532697131141946898d8b1abcda'
             'SKIP'
             '9909867cf8c11e6e150c1f10a7ea2257873d55482efaab9ee68f76be3fea13c0d5438a9f47a68d605ec470a5d56b38a776d4f538a8858d9142e42fe3d60b7a37'
             'eccbe1a0c7b2757ab3c982c871cc591a66ad70f085aaa0d44f93cacacedc7b8fd21b8d0c66471327ff070db1bab1ab83a802f6fa190f33bdd74c134975e3910e'
@@ -182,7 +182,7 @@ package_php-zts() {
 	backup=('etc/php/php.ini')
 
 	cd ${srcdir}/build
-	make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
+	make INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
 	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
 	install -d -m755 ${pkgdir}/etc/php/conf.d/
 
@@ -202,7 +202,7 @@ package_php-zts-cgi() {
 	provides=("${_pkgbase}-cgi=${pkgver}")
 
 	cd ${srcdir}/build
-	make -j1 INSTALL_ROOT=${pkgdir} install-cgi
+	make INSTALL_ROOT=${pkgdir} install-cgi
 }
 
 package_php-zts-apache() {
@@ -227,7 +227,7 @@ package_php-zts-fpm() {
 	options=('!emptydirs')
 
 	cd ${srcdir}/build
-	make -j1 INSTALL_ROOT=${pkgdir} install-fpm
+	make INSTALL_ROOT=${pkgdir} install-fpm
 	install -D -m644 sapi/fpm/php-fpm.service ${pkgdir}/usr/lib/systemd/system/php-fpm.service
 	install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/php-fpm.conf
 }
@@ -241,7 +241,7 @@ package_php-zts-embed() {
 	options=('!emptydirs')
 
 	cd ${srcdir}/build
-	make -j1 INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
+	make INSTALL_ROOT=${pkgdir} PHP_SAPI=embed install-sapi
 }
 
 package_php-zts-phpdbg() {
@@ -253,7 +253,7 @@ package_php-zts-phpdbg() {
 	options=('!emptydirs')
 
 	cd ${srcdir}/build-phpdbg
-	make -j1 INSTALL_ROOT=${pkgdir} install-phpdbg
+	make INSTALL_ROOT=${pkgdir} install-phpdbg
 }
 
 package_php-zts-dblib() {
