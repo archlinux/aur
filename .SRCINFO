@@ -1,17 +1,19 @@
 pkgbase = mingw-w64-lua51
-  pkgdesc = LUA 5.1
-  pkgver = 5.1.5
-  pkgrel = 1
-  url = http://www.lua.org/
-  arch = x86_64
-  license = MIT
-  makedepends = mingw-w64-gcc
-  depends = mingw-w64-crt
-  options = !strip
-  options = !buildflags
-  source = http://www.lua.org/ftp/lua-5.1.5.tar.gz
-  source = luacpp.patch
-  md5sums = 2e115fe26e435e33b0d5c022e4490567
-  md5sums = 71a8472a0116a7639ce6c157b7f13d57
+	pkgdesc = LUA 5.1
+	pkgver = 5.1.5
+	pkgrel = 2
+	url = http://www.lua.org/
+	arch = x86_64
+	license = MIT
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://www.lua.org/ftp/lua-5.1.5.tar.gz
+	source = luacpp.patch
+	md5sums = 2e115fe26e435e33b0d5c022e4490567
+	md5sums = 71a8472a0116a7639ce6c157b7f13d57
 
 pkgname = mingw-w64-lua51
+

@@ -1,14 +1,14 @@
 # Maintainer: edub4rt <edub4rt@gmail.com>
 pkgname=mingw-w64-lua51
 pkgver=5.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='LUA 5.1'
 arch=('x86_64')
 url='http://www.lua.org/'
 depends=('mingw-w64-crt')
 makedepends=("mingw-w64-gcc")
 license=('MIT')
-options=(!strip !buildflags)
+options=(!strip !buildflags staticlibs)
 source=("http://www.lua.org/ftp/lua-$pkgver.tar.gz"
   luacpp.patch)
 
