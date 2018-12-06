@@ -2,7 +2,7 @@
 
 pkgname='python-pandas_market_calendars'
 _pkgname=${pkgname#python-}
-pkgver=0.20.1
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="Market and exchange trading calendars for pandas"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 url="https://github.com/rsheftel/$_pkgname"
 license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('1b766acce9448df4e0c9a53d3744f3aea394adafdd8a285978d6e2c701c7c11a')
+sha256sums=('9ddec4988e57f0167a374120833742ca2f89ded901697626aacde41e2b10c048')
 
 build() {
   cd $_pkgname-$pkgver
