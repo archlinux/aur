@@ -2,7 +2,7 @@
 pkgname=caffe-cuda-slim-git
 _srcname=caffe
 pkgver=1.0
-pkgrel=13
+pkgrel=14
 pkgdesc="A slimmed-down build of Caffe based on caffe-opencl-git (CUDA version)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -13,7 +13,7 @@ depends=(
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six'
-        'openblas-lapack' 'opencv<4.0.0' 'cuda' 'nccl'
+        'openblas-lapack' 'opencv>=4.0.0' 'cuda' 'nccl'
 )
 makedepends=('cmake')
 provides=('caffe')
