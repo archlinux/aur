@@ -1,8 +1,8 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgbase=yaru
-pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-icon-theme')
+pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-icon-theme' 'yaru-session')
 pkgver=18.10.7
-pkgrel=1
+pkgrel=2
 _tag=18.10.7
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -13,16 +13,8 @@ makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 
 
-source=("git+https://github.com/ubuntu/${pkgbase}#tag=${_tag}"
-  "0001-gnome-shell-fix-install-dir.patch")
-sha256sums=('SKIP'
-  'c84e9720c47fc86eaf89ebc647bb656b13a3e79aa0b01c46734c5db013e42bc5')
-
-prepare() {
-  cd "${pkgbase}"
-
-  patch -Np1 < ../0001-gnome-shell-fix-install-dir.patch
-}
+source=("git+https://github.com/ubuntu/${pkgbase}#tag=${_tag}")
+sha256sums=('SKIP')
 
 build() {
   arch-meson ${pkgbase} build
@@ -38,6 +30,7 @@ package_yaru-sound-theme() {
   rm -r "$pkgdir/usr/share/wayland-sessions"
   rm -r "$pkgdir/usr/share/icons"
   rm -r "$pkgdir/usr/share/themes"
+  rm -r "$pkgdir/usr/share/gnome-shell"
 }
 
 package_yaru-gtk-theme() {
@@ -48,14 +41,14 @@ package_yaru-gtk-theme() {
   rm -r "$pkgdir/usr/share/glib-2.0"
   rm -r "$pkgdir/usr/share/xsessions"
   rm -r "$pkgdir/usr/share/wayland-sessions"
-  rm -r "$pkgdir/usr/share/themes/Yaru/gnome-shell"
   rm -r "$pkgdir/usr/share/icons"
   rm -r "$pkgdir/usr/share/sounds"
+  rm -r "$pkgdir/usr/share/gnome-shell"
 }
 
 package_yaru-gnome-shell-theme() {
   pkgdesc="Yaru default ubuntu gnome shell theme"  
-  depends=("gnome-shell")
+  depends=("gnome-shell" "yaru-session")
   
   DESTDIR="$pkgdir" ninja -C build install
   rm -r "$pkgdir/usr/share/glib-2.0"
@@ -63,10 +56,7 @@ package_yaru-gnome-shell-theme() {
   rm -r "$pkgdir/usr/share/wayland-sessions"
   rm -r "$pkgdir/usr/share/icons"
   rm -r "$pkgdir/usr/share/sounds"
-  rm -r "$pkgdir/usr/share/themes/Yaru/gtk-2.0"
-  rm -r "$pkgdir/usr/share/themes/Yaru/gtk-3.0"
-  rm -r "$pkgdir/usr/share/themes/Yaru/index.theme"
-  rm -r "$pkgdir/usr/share/themes/Yaru-dark"
+  rm -r "$pkgdir/usr/share/themes"
 }
 
 package_yaru-icon-theme() {
@@ -79,6 +69,19 @@ package_yaru-icon-theme() {
   rm -r "$pkgdir/usr/share/wayland-sessions"
   rm -r "$pkgdir/usr/share/sounds"
   rm -r "$pkgdir/usr/share/themes"
+  rm -r "$pkgdir/usr/share/gnome-shell"
 }
+
+package_yaru-session() {
+  pkgdesc="Yaru session"
+  depends=("gnome-shell")
+
+  DESTDIR="$pkgdir" ninja -C build install
+  rm -r "$pkgdir/usr/share/sounds"
+  rm -r "$pkgdir/usr/share/themes"
+  rm -r "$pkgdir/usr/share/gnome-shell"
+  rm -r "$pkgdir/usr/share/icons"
+}
+
 
 # vim: ts=2 sw=2 et:
