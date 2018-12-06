@@ -1,6 +1,6 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=vorta
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="A GUI for BorgBackup"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('borg' 'python-appdirs' 'python-apscheduler' 'python-pyqt5' 'python-pee
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=(https://pypi.io/packages/source/v/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('b025c8bc851465ef5e1e52cdf7f45ec05df669dcb0904d76eb6d8a24689ba131')
+sha256sums=('378154b31ef1ea5611ac9995e3159a57b0af1a756bfa9e5668a7ca3d339e724e')
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
