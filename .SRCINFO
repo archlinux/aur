@@ -2,14 +2,14 @@ pkgbase = clearine-git
 	pkgdesc = Beautiful Logout UI for X11 window manager
 	pkgver = 0.5.r0.g1032bed
 	pkgrel = 4
-	url = https://github.com/yuune/clearine
+	url = https://github.com/okitavera/clearine
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python-gobject
 	depends = python-cairo
 	backup = etc/clearine.conf
-	source = clearine-git::git+https://github.com/yuune/clearine.git
+	source = clearine-git::git+https://github.com/okitavera/clearine.git
 	md5sums = SKIP
 
 pkgname = clearine-git

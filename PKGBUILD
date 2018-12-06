@@ -4,12 +4,12 @@ pkgver=0.5.r0.g1032bed
 pkgrel=4
 pkgdesc="Beautiful Logout UI for X11 window manager"
 arch=('any')
-url="https://github.com/yuune/clearine"
+url="https://github.com/okitavera/clearine"
 license=('MIT')
 depends=('python-gobject' 'python-cairo')
 makedepends=('git')
 backup=('etc/clearine.conf')
-source=("clearine-git::git+https://github.com/yuune/clearine.git")
+source=("clearine-git::git+https://github.com/okitavera/clearine.git")
 md5sums=('SKIP')
 
 pkgver() {
