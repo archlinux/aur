@@ -1,0 +1,18 @@
+diff -ura openvpn-2.4.6.orig/src/openvpn/forward.c openvpn-2.4.6.new/src/openvpn/forward.c
+--- openvpn-2.4.6.orig/src/openvpn/forward.c	2018-04-24 03:12:55.000000000 -0400
++++ openvpn-2.4.6.new/src/openvpn/forward.c	2018-12-06 01:28:13.969419538 -0500
+@@ -1152,12 +1152,11 @@
+     if (drop)
+     {
+         struct gc_arena gc = gc_new();
+-
+         c->c2.buf.len = 0;
+-
+-        msg(D_LOW, "Recursive routing detected, drop tun packet to %s",
++        msg(D_STREAM_ERRORS, "Hi! I'm the RRF patch! Terminating due to recursive routing -- packet destined for: %s",
+             print_link_socket_actual(c->c2.to_link_addr, &gc));
+         gc_free(&gc);
++        openvpn_exit(OPENVPN_EXIT_STATUS_ERROR);
+     }
+ }
+ 
