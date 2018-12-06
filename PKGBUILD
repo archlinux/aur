@@ -6,8 +6,8 @@
 pkgbase=python-gensim
 pkgname=('python-gensim' 'python2-gensim')
 _pkgname=gensim
-pkgver=3.5.0
-pkgrel=2
+pkgver=3.6.0
+pkgrel=1
 pkgdesc="Library for topic modelling, document indexing and similarity retrieval with large corpora"
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
@@ -19,7 +19,7 @@ provides=("")
 conflicts=("")
 replaces=("")
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/RaRe-Technologies/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('ee1899a234e30981e8b2422a4a1461926fa8bf9e9f72075f38afdad4a1c0f0ef819d9e18f17ff679546acd696f852edaef3827a5c014dd3e664b42db24586f01')
+sha512sums=('704bd9d473a40b68a9a62cf7b4694634093011f1dfa3d3d4b5fb7dc77a7334b7f5a5b9106a7bb2ebec791350e80ee42a2411ba6b868552353d49daeb6fc356e6')
 
 prepare() {
 	cp -a "${srcdir}/${_pkgname}-${pkgver}"{,-py2}
