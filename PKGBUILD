@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=mcfly
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 epoch=
 pkgdesc="Fly through your shell history"
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('rust' 'cargo')
 install=mcfly.install
 source=("https://github.com/cantino/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('01b620d79c1ad3caf54519bca4d7375a7b981dde20a5ccdffddd53dc942744e7')
+sha256sums=('c0bcfa7f6395907f6cfb8bff379919de5bee17d4b7888e0308f15414e93f046b')
 
 build() {
 	cd "${pkgname}-${pkgver}"
