@@ -6,6 +6,7 @@ pkgbase = python-qiskit-sdk-git
 	arch = any
 	groups = QISKit
 	license = Apache-2.0
+	checkdepends = python-vcrpy
 	makedepends = git
 	makedepends = cmake
 	makedepends = python-setuptools

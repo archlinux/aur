@@ -29,10 +29,16 @@ makedepends=('git'
              'python-coverage'
              'python-better-apidoc'
              'python-wheel')
+checkdepends=('python-vcrpy')
 provides=('python-qiskit-sdk')
 conflicts=('python-qiskit-sdk')
 source=("git+https://github.com/QISKit/qiskit-terra.git")
 md5sums=('SKIP')
+
+prepare() {
+  cd qiskit-terra
+  git checkout $(curl https://api.github.com/repos/QISKit/qiskit-terra/releases/latest | grep tag_name| cut -d '"' -f4)
+}
 
 pkgver() {
   cd qiskit-terra
