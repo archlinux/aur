@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/Mayccoll/Gogh"
 #license=('MIT')
 depends=('dconf')
+makedepends=('git')
 source=("git+https://github.com/Mayccoll/Gogh.git")
 md5sums=('SKIP')
 

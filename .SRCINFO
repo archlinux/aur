@@ -4,6 +4,7 @@ pkgbase = gogh-git
 	pkgrel = 1
 	url = https://github.com/Mayccoll/Gogh
 	arch = any
+	makedepends = git
 	depends = dconf
 	source = git+https://github.com/Mayccoll/Gogh.git
 	md5sums = SKIP
