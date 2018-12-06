@@ -1,8 +1,9 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=luxcorerender
 pkgver=2.1
-_rel="beta1"
-pkgrel=3
+_rel="beta3"
+[ -n ${_rel} ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}"
+pkgrel=4
 pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
@@ -14,16 +15,16 @@ makedepends=(git doxygen cmake python-pyside-tools opencl-headers)
 conflicts=(luxrays-hg)
 provides=(luxrays)
 options=('!buildflags')
-source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${pkgver}${_rel}.tar.gz"
+source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${_pkgver}.tar.gz"
         "python.patch"
         "glfw.patch"
         )
-md5sums=('ac04f8dea232ebafc619afed152dad56'
+md5sums=('2a31b72365744ae84eaffd677840aa9b'
          '21b963e5f66d2c8c6a50bebcf9f0fe07'
          '624f2be4cb431f6a4cfcc968d6263ac2')
 
 prepare() {
-  cd ${srcdir}/LuxCore-${pkgname}_v${pkgver}${_rel}
+  cd ${srcdir}/LuxCore-${pkgname}_v${_pkgver}
   msg "python.patch"
   patch -Np1 < ../python.patch
   msg "glfw.patch"
@@ -31,19 +32,20 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/LuxCore-${pkgname}_v${pkgver}${_rel}
+  cd ${srcdir}/LuxCore-${pkgname}_v${_pkgver}
   mkdir -p build && cd build
   cmake -DPYTHON_V=3 ..
   make
 }
 
 package() {
-  cd ${srcdir}/LuxCore-${pkgname}_v${pkgver}${_rel}/build
+  cd ${srcdir}/LuxCore-${pkgname}_v${_pkgver}/build
 
   install -d -m755 ${pkgdir}/usr/{bin,include,lib}
   install -m755 bin/* ${pkgdir}/usr/bin
   install -m644 lib/* ${pkgdir}/usr/lib
   cp -a ../include ${pkgdir}/usr
+  for file in ${pkgdir}/usr/include/*/*.in; do mv $file ${file%.in}; done
 
   # install pyluxcore to the Python search path
   #  _pypath=`pacman -Ql python | sed -n '/\/usr\/lib\/python[^\/]*\/$/p' | cut -d" " -f 2`
