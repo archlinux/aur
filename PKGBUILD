@@ -1,4 +1,5 @@
-# Maintainer: John Lane <archlinux at jelmail dot com>
+# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Contributor: John Lane <archlinux@jelmail.com>
 
 # A collection of free fonts from www.ephifonts.com
 # Some are OTF and some are TTF
@@ -8,7 +9,7 @@
 pkgname=ephifonts
 pkgver=20180416
 pkgrel=2
-pkgdesc='A collection of free fonts including Helvetica, Futura and Gotham (ephifonts.com)'
+pkgdesc='A collection of free fonts including Helvetica, Futura, and Gotham'
 arch=('any')
 url='http://www.ephifonts.com'
 license=('custom')
@@ -205,7 +206,7 @@ sha256sums=('17644b3bec83fa0effc6410c117c27b7783a415b7634121e40f5e0d19b93e752'
             '538e6818365a52b9029540c0d58db7197d5a15a0efc669f250d3f63a28ef52e2'
             'c6a6594f4af102557cdef33c4040afff02f2ac0f524d5426c1931890c109c20c'
             '18a0f72d67b52a582cd1ce2d6748745789be78d5c1428e384ceced9877da31a9'
-	    'e673d57b8b72681299804ce4dfad2e7be770bb2f434a7c2c9aa389c4a9588830'
+            'e673d57b8b72681299804ce4dfad2e7be770bb2f434a7c2c9aa389c4a9588830'
             'dec0b16baf977d16532aaf2b91265c0158163da76361a6712782dd76a08db8be'
             '540ceb8c5c34c67b0fbef92c4c9b4d12705127e94d3b986b2093e56bce51113b'
             '5f61c3b43b03c4092e5310866ceda7448d5b576b28a14d360de368849e033175'
@@ -221,22 +222,22 @@ sha256sums=('17644b3bec83fa0effc6410c117c27b7783a415b7634121e40f5e0d19b93e752'
             '06020bd0f7b7f258628d51ed259cc11cc436f3ef72c3a84633b985a0846c325b'
             '1ec1366ddc7536f6aec0ed6087938421778e1bf7a814867b50c59cfc0924a9cc'
             '2848065dadfe6ec1d266547ed07352a4d52ae5d954d4b2bb943f36448b4efefb'
-	    'dbe62deb3baed90e63cd251d7b49370cdcec152649e7dbac6a631e5a66c50b4a'
-	    'eb9a1886839857cec1c5c4b54e30f1d795f123aec482411cf7e079c380a0bc0e'
+            'dbe62deb3baed90e63cd251d7b49370cdcec152649e7dbac6a631e5a66c50b4a'
+            'eb9a1886839857cec1c5c4b54e30f1d795f123aec482411cf7e079c380a0bc0e'
             '54fca9a784e62fb6f3b1fbeede08821a8de449a46c7281e3b70762a692f324c0'
             'ae413046c89a9373af86bf2bd78ee3c2e828e2cc04087a86954dd06796afa2f8'
             '8a381fa96dba7fbd7c069b7e2496ba7cabb0a72362ff0308345d10523a0bdf4b'
             'ffee2f32a919636e77e1130eab96a21f93da8fc1ce054372bc5b81ae90afb6ea'
             'bdb9fdac1428c71a4a087937088c149c6c4d2272e07f4ac965735edcd453ed0a'
-	    '2f2c2e3e829622c4a844764207896b4e4cae90015b6c4d6b1df10373a91662d9'
-	    '6b31bf2d2656e7a3ea92d2732d8dab505bc3d9524085abb04a8d78c1182cf89c'
-	    'eb2fccf3db7698e7895f3da73aeb3e2c0eb5477e4c5a6bfa1bcb5ea9eaf29df7'
-	    '454b77fd9aa5a6ed61d1f2fe473e12c4d9ace1a06388ee9a128a66c36a5c7920'
-	    '272841799607e6f072f56f49d4fab370447c5466c0153f3b8b8943c7c490129f'
-	    'e2c09cb3d5cf688d820f1076524745a54f94042984366b3ec86326361ddd81c5'
-	    '6dc733c82a764fda2df1b7158070037bfa68967a2a9305579353ef81f0ef4c58'
-	    '6f0b81066fbcd82e320aefd937b074ecc72f165039a54823db1add7e85f10df0'
-	    'dad0d0c2bb285fd8e4f7eaa0cfa7d5c9d547065fb6aea033bbf8b16b115dd86a'
+            '2f2c2e3e829622c4a844764207896b4e4cae90015b6c4d6b1df10373a91662d9'
+            '6b31bf2d2656e7a3ea92d2732d8dab505bc3d9524085abb04a8d78c1182cf89c'
+            'eb2fccf3db7698e7895f3da73aeb3e2c0eb5477e4c5a6bfa1bcb5ea9eaf29df7'
+            '454b77fd9aa5a6ed61d1f2fe473e12c4d9ace1a06388ee9a128a66c36a5c7920'
+            '272841799607e6f072f56f49d4fab370447c5466c0153f3b8b8943c7c490129f'
+            'e2c09cb3d5cf688d820f1076524745a54f94042984366b3ec86326361ddd81c5'
+            '6dc733c82a764fda2df1b7158070037bfa68967a2a9305579353ef81f0ef4c58'
+            '6f0b81066fbcd82e320aefd937b074ecc72f165039a54823db1add7e85f10df0'
+            'dad0d0c2bb285fd8e4f7eaa0cfa7d5c9d547065fb6aea033bbf8b16b115dd86a'
             'd248aad513cac2913c210f0ce20f948083c37c88c6224e01f42dbf396ddb7a05'
             '5bef2e60d95a94bd75627330a386ffae83fad592b915a2e1169f7be2e260b570'
             'f00f56593ed3304851657436a6342a0a0ccffd79f8298616c0e593a6825ca87b'

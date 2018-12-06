@@ -1,5 +1,5 @@
 pkgbase = ephifonts
-	pkgdesc = A collection of free fonts including Helvetica, Futura and Gotham (ephifonts.com)
+	pkgdesc = A collection of free fonts including Helvetica, Futura, and Gotham
 	pkgver = 20180416
 	pkgrel = 2
 	url = http://www.ephifonts.com
