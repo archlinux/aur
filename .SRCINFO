@@ -1,0 +1,18 @@
+pkgbase = python-picamera-git
+	pkgdesc = A pure Python interface for the Raspberry Pi camera module.
+	pkgver = r926.93a0808
+	pkgrel = 1
+	url = http://picamera.readthedocs.io/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = git://github.com/waveform80/picamera.git
+	md5sums = SKIP
+
+pkgname = python-picamera-git
+	depends = python
+
+pkgname = python2-picamera-git
+	depends = python2
+
