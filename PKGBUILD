@@ -1,6 +1,6 @@
 # Maintainer: Gertjan Halkes <arch at ghalkes dot nl>
 pkgname=libtranscript
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A character set conversion library."
 arch=('x86_64' 'i686')
@@ -18,16 +18,15 @@ install=''
 changelog=
 source=("http://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('89e5249cc73be7e72e0c99a2d8ac81f0')
+md5sums=('3f453d6f7e932598ac9737dfa655d8b6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr --with-ucm2ltc CFLAGS="-O2 -D_POSIX_C_SOURCE=200809L"
+  ./configure --prefix=/usr --with-ucm2ltc
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/share/doc/$pkgname/API"
 }
