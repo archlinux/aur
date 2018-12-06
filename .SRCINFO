@@ -1,15 +1,19 @@
 pkgbase = mingw-w64-gperftools
-  pkgdesc = Fast, multi-threaded malloc and nifty performance analysis tools (mingw-w64)
-  pkgver = 2.5
-  pkgrel = 1
-  url = http://code.google.com/p/gperftools/
-  arch = i686
-  arch = x86_64
-  license = BSD
-  depends = perl
-  options = !strip
-  options = !buildflags
-  source = git+https://github.com/gperftools/gperftools#tag=gperftools-2.5
-  sha256sums = SKIP
+	pkgdesc = Fast, multi-threaded malloc and nifty performance analysis tools (mingw-w64)
+	pkgver = 2.7
+	pkgrel = 1
+	url = http://code.google.com/p/gperftools/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = mingw-w64-configure
+	depends = perl
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/gperftools/gperftools#tag=gperftools-2.7
+	sha256sums = SKIP
 
 pkgname = mingw-w64-gperftools
+

@@ -1,14 +1,15 @@
 # Maintainer: edubart <edub4rt@gmail.com>
 _basename=gperftools
 pkgname=mingw-w64-gperftools
-pkgver=2.5
+pkgver=2.7
 pkgrel=1
 pkgdesc="Fast, multi-threaded malloc and nifty performance analysis tools (mingw-w64)"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/gperftools/"
 license=('BSD')
-depends=('perl')
-options=(!strip !buildflags)
+depends=('perl' 'mingw-w64-crt')
+options=(!strip !buildflags staticlibs)
+makedepends=(mingw-w64-configure)
 source=("git+https://github.com/gperftools/gperftools#tag=$_basename-$pkgver")
 sha256sums=('SKIP')
 
