@@ -1,3 +1,8 @@
+# maintainer: x2416 <x2416x at gmail dot com>
+
+# This is based heavily on work found posted four years ago 
+# on github by georgyo but updated to use current version found 
+# on startechs website. Enjoy!
 pkgname=startech-usb-crash-cart-adapter
 pkgver=20150921
 pkgrel=1
