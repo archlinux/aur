@@ -1,7 +1,7 @@
 # Maintainer: Mckol <mckol363@gmail.com>
 
 pkgname=veloren-git
-pkgver=0.1.0.r377.be1d911
+pkgver=0.1.0.r380.8c6b5ab
 pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
@@ -45,7 +45,7 @@ prepare() {
 build() {
     rustup toolchain install nightly
     _original_toolchain="$(rustup show active-toolchain)"
-    rustup default nightly
+    rustup default nightly-2018-12-02
     cd "$srcdir/$pkgname/voxygen"
     VELOREN_ASSETS=/usr/share/veloren/assets/ VOXYGEN_SHADERS=/usr/share/veloren/shaders/ cargo build --release
     cd "$srcdir/$pkgname/server-cli"
