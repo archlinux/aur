@@ -1,13 +1,14 @@
 pkgbase = epub2txt
 	pkgdesc = Extract text from EPUB documents
-	pkgver = 0.1.4
+	pkgver = 12.4f1cc12
 	pkgrel = 1
-	url = https://github.com/kevinboone/epub2txt
+	url = https://github.com/kevinboone/epub2txt2
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = https://github.com/kevinboone/epub2txt/archive/0.1.4.zip
-	md5sums = 3132e2d025244c03e636622a25686bbc
+	makedepends = git
+	source = git+https://github.com/kevinboone/epub2txt2.git
+	sha256sums = SKIP
 
 pkgname = epub2txt
 
