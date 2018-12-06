@@ -1,12 +1,12 @@
 # Maintainer: danielpinto8zz6 <danielpinto8zz6@gmail.com>
 
 pkgname=budgie-network-applet
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="Network applet for Budgie Desktop"
 arch=('i686' 'x86_64')
 license=('GPL2')
-sha256sums=('beab85c6542ef4e98add32036f623fb30a3531cd8af54c9c9fced7ab49c01eb6')
+sha256sums=('12378120362d32894b047a57b00f9e9139c21640733d8ad90eea993998811fc2')
 depends=('libpeas' 'budgie-desktop' 'libnm' 'libnma' 'libgee') 
 makedepends=('gobject-introspection' 'meson' 'ninja' 'vala')
 source=(https://github.com/danielpinto8zz6/${pkgname}/archive/${pkgver}.tar.gz)
