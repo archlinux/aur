@@ -1,7 +1,7 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('python-axelrod')
 pkgver=4.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Research tool for the Iterated Prisoner's Dilemma"
 arch=('any')
 url='https://github.com/Axelrod-Python/Axelrod'
@@ -13,15 +13,15 @@ depends=('python-dask'
          'python-tqdm')
 options=(!emptydirs)
 sha256sums=('1f8f8386ab292877e9c063aa371e0d5709a969cce9cba828ee95567be1858c7e'
-            '4d9d11b7d8ccd2074295b92b4961fd76b25e3948cb8e9836acd0123a5b6166f2')
+            'd7497624ecafa3f9f57e0be82c8f88f3a12e34c1727266fbbbf2e66fd67ce370')
 source=("$url/archive/v$pkgver.tar.gz"
-        "$url/commit/8dba4c0.patch")
+        "$url/commit/0a7a1b0.patch")
 
 prepare() {
   cd "$srcdir/Axelrod-$pkgver"
 
-  # Reverse the 8dba4c0 commit as we have prompt_toolkit v2, not v1
-  patch -Rp1 < "$srcdir/8dba4c0.patch"
+  # Apply the 0a7a1b0 commit as we have prompt_toolkit v2, not v1
+  patch -p1 < "$srcdir/0a7a1b0.patch"
 
   # Avoid installing optional/unrequired dependencies
   echo > "requirements.txt"
