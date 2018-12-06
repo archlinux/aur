@@ -1,6 +1,11 @@
+The atari-small.bdf is from
+http://hea-www.harvard.edu/~fine/Tech/x11fonts.html
+ 
+The license is like this
+ 
 The following fonts are available for free, to use as you please.
 The minimal license is included in the header of each font.
-
+  
 Copyright (c) 1999, Thomas A. Fine
 
 License to copy, modify, and distribute for both commercial and
@@ -14,5 +19,5 @@ Produced with bdfedit, a tcl/tk font editing program
 written by Thomas A. Fine
 
 The atari-small.sfd is a fontforge native font created by me.
-Copyright (C) 2007 Gurkan Sengun
+Copyright (C) 2007-2016 Gurkan Myczko
 Released under the same license as the original font.
