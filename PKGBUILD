@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/vinceliuice/Toffee-gtk-theme'
 depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
 optdepends=('glib2: to use the GDM theme')
-license=('GPL3')
+license=('GPL2')
 source=("git+https://github.com/vinceliuice/${_gitname}"
 	"${pkgname}.install")
 install="${pkgname}.install"
