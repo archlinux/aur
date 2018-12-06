@@ -1,7 +1,7 @@
 pkgbase = libt3config
 	pkgdesc = A library for reading and writing configuration files.
 	pkgver = 0.2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://os.ghalkes.nl/t3/libt3config.html
 	arch = x86_64
 	arch = i686
