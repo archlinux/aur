@@ -3,7 +3,7 @@
 pkgname=python-spacy-git
 _origpkgname=spaCy
 pkgver=2.0.18.r8888.ae5601be
-pkgrel=1
+pkgrel=2
 pkgdesc="A free open-source library for Natural Language Processing in Python"
 arch=("x86_64")
 url="https://spacy.io/"
