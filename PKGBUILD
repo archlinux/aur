@@ -5,7 +5,7 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=1.0rc1
-pkgrel=5
+pkgrel=6
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -40,8 +40,7 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         "git+https://github.com/shibatch/sleef"
         "git+https://github.com/intel/ideep"
         12116.patch
-        opencv4.patch
-        )
+        opencv4.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
