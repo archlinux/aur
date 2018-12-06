@@ -1,0 +1,17 @@
+pkgbase = korla-icon-theme
+	pkgdesc = Korla icon theme suitable for every desktop environment made by tarma
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://www.opendesktop.org/p/1256209/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = gtk-update-icon-cache
+	optdepends = breeze-icons: fallback Breeze icon theme
+	optdepends = gnome-icon-theme: fallback Gnome icon theme
+	optdepends = hicolor-icon-theme: fallback Freedesktop.org Hicolor icon theme
+	source = https://dl.opendesktop.org/api/files/download/id/1544012871/s/8b017ca4e585bb4298ffeac86fd6443143b8c8ff7223dfbfd32392ff62aee634fc2a30b5c70aeb4c80409460488813c77cab4bf82ae28e2178a785fa8524407d/t/1544125932//korla%200-7-6.zip
+	md5sums = SKIP
+
+pkgname = korla-icon-theme
+
