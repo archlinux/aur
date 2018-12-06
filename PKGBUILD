@@ -14,7 +14,7 @@ _srcname=$pkgbase
 _kernel_rel=4.21
 _branch=drm-fixes
 _kernelname=${pkgbase#linux}
-pkgver=4.21.797495.ebcdcef30333
+pkgver=4.21.797959.e594a5e349dd
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm'
@@ -29,7 +29,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
         "${pkgbase}.preset")
 
 sha256sums=('SKIP'
-            '4717c8df937598fcbea04bdc80bb216a74f70c568d02affad6b30ed954a26511'
+            '43d21037b4e742b8ae40332d61c0ede20dcb520e50108fa7cfd60ce293da23c4'
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {

@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.20.0-rc4 Kernel Configuration
+# Linux/x86 4.20.0-rc5 Kernel Configuration
 #
 
 #
@@ -100,6 +100,7 @@ CONFIG_TASK_DELAY_ACCT=y
 CONFIG_TASK_XACCT=y
 CONFIG_TASK_IO_ACCOUNTING=y
 CONFIG_PSI=y
+CONFIG_PSI_DEFAULT_DISABLED=y
 CONFIG_CPU_ISOLATION=y
 
 #
