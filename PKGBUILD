@@ -23,6 +23,8 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  
+  autoreconf -f -i
 
   ./configure --prefix=/usr \
               --with-cupsfilterdir=/usr/lib/cups/filter \
