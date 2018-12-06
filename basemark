@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-LD_PRELOAD=/usr/lib/libcurl.so.4.0.0 /opt/basemark/BasemarkGPULauncher
+LD_PRELOAD=/usr/lib/libcurl.so.4.0.0 /opt/basemark/basemarkgpu

@@ -1,35 +1,30 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 
 pkgname=basemark
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Basemark GPU - Graphics performance evaluation tool"
 arch=('x86_64')
 url="https://www.basemark.com/products/basemark-gpu/"
 license=('custom')
 depends=("libxinerama" "libxi" "xdg-utils" "hicolor-icon-theme" "freetype2" "libgl" "libxrandr" "libxcursor" "libcurl-compat")
 optdepends=("vulkan-icd-loader")
-source=(http://downloads.basemark.com/BasemarkGPUFree_${pkgver}.deb
-        ${pkgname})
-sha256sums=('06e30c8083b5d16f5c2038cf530a87cd246bb85b156868cfca9f07bc1dff3a91'
-            '66b75839f19e17ef109eeb0e4be02c17427cb72b70eb39bcc98053cdc16174d7')
+source=(http://downloads.basemark.com/BasemarkGPU-linux-${pkgver}.tar.gz
+        ${pkgname} ${pkgname}.desktop ${pkgname}.png license.txt)
+sha256sums=('4c6267b53a30845ec89b8d658c55a7f9b2238486b96197f66eaed4b73ee3bd33'
+            'e45b53aec5d376cc2b26af49f640242251300a3b354661851c49094c520b3265'
+            '99b4e6df0c45fd3ed71bd38c7de041d08bab45daf1e8cee183ccc070ae4b686f'
+            '0f49324d4e1c761d1ef92e350a1ca667262659ecf98909c8b1d902f67dbad72b'
+            '9a9228a9d95c67e0bbe22a73edd3f2087cc386d9e4df74ce18aa7b23172aeef9')
 
 package() {
-  cd "${srcdir}"
-  tar -xzf data.tar.gz -C "${pkgdir}"
+  mkdir -p "${pkgdir}/opt/${pkgname}"
+  mv "${srcdir}/BasemarkGPU-linux-Free/"* "${pkgdir}/opt/${pkgname}"
 
-  # Name cleanup
-  mv "${pkgdir}"/opt/{BasemarkGPU,${pkgname}}
-  mv "${pkgdir}"/usr/share/applications/{BasemarkGPU,${pkgname}}.desktop
-  sed -i 's|/opt/BasemarkGPU/BasemarkGPULauncher|/usr/bin/basemark|' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  sed -i 's|/basemarkgpu/|/basemark/|' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  find "${pkgdir}" -type d -exec chmod 0755 {} \;
-  find "${pkgdir}" -type f -exec chmod 0644 {} \;
-  find "${pkgdir}/usr/share/icons" -name "basemarkgpu.png" -exec mv {} basemark.png \;
+  chmod +x "${pkgdir}/opt/${pkgname}/basemarkgpu"
 
-  chmod +x "${pkgdir}/opt/${pkgname}/BasemarkGPULauncher"
-  find "${pkgdir}"/opt/${pkgname}/binaries -type f -exec chmod +x {} \;
-
-  install -m644 -D "${pkgdir}/opt/${pkgname}/EULA.txt/EULA_Free.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 -D "${srcdir}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 -D "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+  install -m644 -D "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -m755 -D "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
