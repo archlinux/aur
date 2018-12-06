@@ -7,8 +7,8 @@
 # These are FREE fonts, but see the disclaimer at http://www.ephifonts.com/disclaimer
 
 pkgname=ephifonts
-pkgver=20180416
-pkgrel=2
+pkgver=20181206
+pkgrel=1
 pkgdesc='A collection of free fonts including Helvetica, Futura, and Gotham'
 arch=('any')
 url='http://www.ephifonts.com'
@@ -321,8 +321,4 @@ package() {
 
   install -d ${pkgdir}/usr/share/licenses/"${pkgname}"
   install "$srcdir"/LICENCE.md ${pkgdir}/usr/share/licenses/"${pkgname}"/LICENCE.md
-}
-
-pkgver() {
-  date +%Y%m%d
 }
