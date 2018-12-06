@@ -2,15 +2,12 @@
 # Contributor: Rich Li <rich@dranek.com>
 pkgname=python-cartopy
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cartographic python library with matplotlib support for visualisation"
 url="https://scitools.org.uk/cartopy/docs/latest/"
-depends=('python-numpy' 'python-six' 'python-shapely' 'python-pyshp' 'python-pyproj')
+depends=('python-numpy' 'python-six' 'python-shapely' 'python-pyshp' 'python-pyproj' 'python-matplotlib' 'python-pillow' 'python-scipy')
 optdepends=('python-fiona: faster shapefile reading'
-            'python-matplotlib: generate plots'
             'python-gdal: for use with SRTM data'
-            'python-pillow'
-            'python-scipy'
             'python-owslib: access OGC clients')
 makedepends=('python-setuptools' 'cython')
 checkdepends=('python-pytest' 'python-filelock')
