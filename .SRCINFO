@@ -1,0 +1,24 @@
+pkgbase = procalc-git
+	pkgdesc = There is more to Pro Office Calculator than meets the eye. Look for subtle clues to unlock its secrets. You may be surprised how deep the rabbit hole goes.
+	pkgver = v1.0.6.r21.g4f204c6
+	pkgrel = 1
+	url = https://github.com/RobJinman/pro_office_calc
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = qt5-base
+	makedepends = qt5-multimedia
+	makedepends = tinyxml2
+	makedepends = chrpath
+	makedepends = patchelf
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = tinyxml2
+	source = git+https://github.com/RobJinman/pro_office_calc.git
+	sha256sums = SKIP
+
+pkgname = procalc-git
+
