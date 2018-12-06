@@ -1,0 +1,33 @@
+pkgbase = python-thinc
+	pkgdesc = Practical Machine Learning for NLP
+	pkgver = 7.0.0.dev6.r2716.f26cb395
+	pkgrel = 1
+	url = https://github.com/explosion/thinc
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = cython
+	depends = python-numpy
+	depends = python-murmurhash
+	depends = python-cymem
+	depends = python-preshed
+	depends = python-wrapt
+	depends = python-plac
+	depends = python-tqdm
+	depends = python-srsly
+	depends = python-wasabi
+	depends = python-six
+	depends = python
+	depends = python-hypothesis
+	depends = python-pytest
+	depends = python-mock
+	depends = python-blis
+	depends = flake8
+	optdepends = python-spacy: examples
+	provides = python-thinc
+	conflicts = python-thinc
+	source = git+https://github.com/explosion/thinc.git
+	md5sums = SKIP
+
+pkgname = python-thinc
+
