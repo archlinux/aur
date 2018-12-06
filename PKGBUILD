@@ -1,8 +1,9 @@
-# Maintainer: Det <nimetonmaili gmail a-dot com>
+# Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: Det <nimetonmaili gmail a-dot com>
 
 pkgname=biglybt
 pkgver=1.7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64')
 url="https://www.biglybt.com/"
@@ -11,7 +12,7 @@ depends=('desktop-file-utils' 'java-runtime>=9')
 options=('!strip')
 install=$pkgname.install
 source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
-md5sums=('75635369c4272bdc82be062a3cde367e')
+sha256sums=('d8024c3620cd1090ac04b5907d05cd4f2667668a4e7ff5af363713f180c3af3f')
 
 package() {
   if [[ ! -f /usr/bin/javac ]]; then
@@ -27,6 +28,11 @@ package() {
   export app_java_home="/usr/lib/jvm/default"
   sh GitHub_BiglyBT_Installer_$pkgver.sh -q -dir "$srcdir"/$pkgname
 
+  # Remove local .desktop file only if it was just created by the Java installer
+  # (which creates it a) in the wrong place and b) with wrong paths, therefore
+  # preventing the start of the program via the launcher)
+  find ~/.local/share/applications -name $pkgname.desktop -cmin -1 -exec rm {} +
+
   cd "$srcdir"/$pkgname
 
   msg2 "Creating directory structure..."
@@ -36,6 +42,10 @@ package() {
   install -d "$pkgdir"/usr/share/licenses/$pkgname/
   install -d "$pkgdir"/usr/share/pixmaps/
 
+  msg2 "Fixing paths..."
+  sed -i "s|#PROGRAM_DIR=.*|PROGRAM_DIR=\"/opt/$pkgname\"|" $pkgname
+  sed -i -e "s|Exec=.*|Exec=$pkgname %U|" -e "s|Icon=.*|Icon=$pkgname|" $pkgname.desktop
+  
   msg2 "Moving stuff in place..."
   # Launchers
   mv $pkgname "$pkgdir"/usr/bin/
@@ -55,9 +65,4 @@ package() {
 
   msg2 "Installing to /opt..."
   mv * "$pkgdir"/opt/$pkgname/
-  
-  msg2 "Fixing paths..."
-  sed -i "s|#PROGRAM_DIR=.*|PROGRAM_DIR=\"/opt/$pkgname\"|" "$pkgdir"/usr/bin/$pkgname
-  sed -e "s|Exec=.*|Exec=$pkgname %U|" -e "s|Icon=.*|Icon=$pkgname|" \
-      -i "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
