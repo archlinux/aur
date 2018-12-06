@@ -1,13 +1,13 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes
-pkgver=0.26.6
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="FSLeyes is the FSL image viewer"
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
 license=('Apache')
 groups=()
-depends=('python' 'python-setuptools' 'python-sphinx' 'python-six' 'python-numpy' 'python-matplotlib' 'python-nibabel' 'python-jinja' 'python-pillow' 'python-opengl' 'python-pyparsing' 'python-scipy' 'python-opengl-accelerate' 'python-wxpython>=4.0.1-2' 'fsl' 'fslpy>=1.12.0' 'fsleyes-widgets>=0.7.2' 'fsleyes-props>=1.6.4-2' 'python-wxnatpy>=0.3.1-2' 'python-indexed-gzip>=0.8.7')
+depends=('python' 'python-setuptools' 'python-sphinx' 'python-six' 'python-numpy' 'python-matplotlib' 'python-nibabel' 'python-jinja' 'python-pillow' 'python-opengl' 'python-pyparsing' 'python-scipy' 'python-opengl-accelerate' 'python-wxpython>=4.0.1-2' 'fsl' 'fslpy>=1.13.2' 'fsleyes-widgets>=0.7.2' 'fsleyes-props>=1.6.4-2' 'python-wxnatpy>=0.3.1-2' 'python-indexed-gzip>=0.8.7')
 makedepends=()
 provides=()
 conflicts=()
@@ -15,7 +15,7 @@ replaces=()
 source=("${pkgname}-${pkgver}.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/repository/archive.tar.gz?ref=${pkgver}"
         "${pkgname}.png::https://git.fmrib.ox.ac.uk/uploads/-/system/group/avatar/85/icon_512x512.png"
         "${pkgname}.desktop")
-sha256sums=('cf7ba050a81a76da95e51b1fe42d26b9227ae48f9ac70b9661ceb4ba944e0109'
+sha256sums=('ce86317e1fa17450cd6dea875fab25c3b2d4aea789d78ed41408c2efabb710e4'
             'c7211ee624483a272f280b3aa772046ec9226d838f9c3023450888abddf9d71a'
             '6e91e88eb74602f8da7cda6575245dbaaf4577022bffe15c0efedb33106139fb')
 
@@ -24,7 +24,8 @@ prepare() {
   # "Patching" for Pillow>=5.0 support
   sed -i 's/Pillow>=3\.2\.0,<5\.0/Pillow>=3\.2\.0/g' requirements.txt
   # "Patching" for matplotlib>3.0.0 support
-  sed -i 's/matplotlib>=1\.5\.1,<3\.0\.0/matplotlib>=1.5.1/g' requirements.txt
+  sed -i 's/matplotlib>=1\.5\.1,<3\.0/matplotlib>=1.5.1/g' requirements.txt
+
 }
 
 package() {
