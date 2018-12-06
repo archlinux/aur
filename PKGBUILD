@@ -5,11 +5,11 @@
 
 pkgbase="sqlite-replication"
 pkgname=('sqlite-replication' 'sqlite-replication-tcl' 'sqlite-replication-doc' 'sqlite-replication-analyzer')
-_srcver=3250300
+_srcver=3260000
 _docver=${_srcver}
 #_docver=3080001
-pkgver=3.25.3
-pkgrel=2
+pkgver=3.26.0
+pkgrel=1
 pkgdesc="A C library that implements an SQL database engine"
 arch=('x86_64')
 license=('custom:Public Domain')
@@ -20,10 +20,10 @@ source=(https://www.sqlite.org/2018/sqlite-src-${_srcver}.zip
         license.txt
         replication.patch)
 options=('!emptydirs' '!makeflags') # json extensions breaks parallel build
-sha1sums=('d1af2883bb800852946f9bf8ab6055e7698e18ee'
-          'd507a77b344d30b13a8bb72afd5272cb60a95e50'
+sha1sums=('a05429d6a8337d60ddc7c6381b49941059a55f68'
+          '13c48e0396d15f3f4978214e144445031a23d509'
           'f34f6daa4ab3073d74e774aad21d66878cf26853'
-          '2aa1749d474f5bba4dae3a4faf869b9c11247f52')
+          '163f9030b71267e08fdc63749de18b4e7d204ea5')
 
 prepare() {
   cd sqlite-src-$_srcver
