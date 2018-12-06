@@ -1,6 +1,6 @@
 pkgbase = uberwriter
 	pkgdesc = A distraction free Markdown editor for GNU/Linux made with GTK+
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = http://uberwriter.github.io/uberwriter/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = uberwriter
 	optdepends = otf-fira-mono: Recommended font
 	provides = uberwriter
 	conflicts = uberwriter
-	source = git+https://github.com/UberWriter/uberwriter.git
+	source = git+https://github.com/UberWriter/uberwriter.git#tag=v2.1.4
 	sha256sums = SKIP
 
 pkgname = uberwriter

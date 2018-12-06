@@ -1,6 +1,6 @@
 pkgname=uberwriter
 _pkgname=uberwriter
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='A distraction free Markdown editor for GNU/Linux made with GTK+'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 optdepends=('texlive-core' 'otf-fira-mono: Recommended font')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=('git+https://github.com/UberWriter/uberwriter.git#tag=v2.1.3')
+source=('git+https://github.com/UberWriter/uberwriter.git#tag=v2.1.4')
 sha256sums=('SKIP')
 
 pkgver() {
