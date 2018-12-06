@@ -35,14 +35,15 @@ source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
 sha512sums=('d991101eb833d3a47833aa930341e75c56f26c4cb0249896728ebe209c6c02af1704fccc3052128d8f9fdffc60dcef0ece38a532697131141946898d8b1abcda'
             'SKIP'
-            '9909867cf8c11e6e150c1f10a7ea2257873d55482efaab9ee68f76be3fea13c0d5438a9f47a68d605ec470a5d56b38a776d4f538a8858d9142e42fe3d60b7a37'
+            'f3b7de6c18798ee8f1eb323de2da2553c0ee734a0beaac7ccb15d0f8e464a7c0e0b4da8a7da9b0b52d263fcd2e7bf8b067b00b9febb940f3252f0d930ede6604'
             'eccbe1a0c7b2757ab3c982c871cc591a66ad70f085aaa0d44f93cacacedc7b8fd21b8d0c66471327ff070db1bab1ab83a802f6fa190f33bdd74c134975e3910e'
             'c9efb3f50770d6ddfa908b7f562355121f07ce528271e72ba188a4f1c788e264fc117c220053aaded42040825c03f3f17131a62a67d96cc91fd9da472e085deb'
             '824e9a0d10063283357d49a81ab49bf834afd24f098482bdbaa9ab60bbad2b0dea6f5879259b73717d437626b02fb4f2d3ef68b7bcbb26bee274a7b61144720f'
-            '85000bcb4f5674bfcbac7f32aeb28c523904a23da716e7fd982ac225845843e0acb33c0b8552107c234b1dd106337ad0a6792253f200980b88a6f6239ec982d0')
+            'b3bc5defd4877016663c9051518bb67acc8ebcf32206b93df824de1ee0c4b724e6151fce4c6dd11b917361a3aa96c426d542b025e124b6b6cb625ddcc590ad78')
 validpgpkeys=('B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F'
-              '1729F83938DA44E27BA0F4D3DBDB397470D12172',
-              'CBAF69F173A0FEA4B537F470D66C9593118BCCB6')
+              '1729F83938DA44E27BA0F4D3DBDB397470D12172'
+              'CBAF69F173A0FEA4B537F470D66C9593118BCCB6'
+             )
 
 prepare() {
 	cd ${srcdir}/${_pkgbase}-${pkgver}

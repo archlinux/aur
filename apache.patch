@@ -1,6 +1,6 @@
 --- sapi/apache2handler/config.m4.orig
 +++ sapi/apache2handler/config.m4
-@@ -122,7 +122,6 @@
+@@ -113,7 +113,6 @@
        PHP_BUILD_THREAD_SAFE
      fi
    else
@@ -10,7 +10,7 @@
      fi
 --- configure.orig
 +++ configure
-@@ -7019,7 +7019,6 @@
+@@ -6877,7 +6877,6 @@
  
      fi
    else
@@ -18,7 +18,7 @@
      if test -n "$APACHE_THREADED_MPM"; then
  
    enable_maintainer_zts=yes
-@@ -30232,6 +30231,9 @@
+@@ -30550,6 +30549,9 @@
  		if test -f $i/include/enchant/enchant.h; then
  			ENCHANT_DIR=$i
  			ENCHANT_INCDIR=$i/include/enchant
@@ -28,7 +28,7 @@
  		elif test -f $i/include/enchant.h; then
  			ENCHANT_DIR=$i
  			ENCHANT_INCDIR=$i/include
-@@ -34362,15 +34364,16 @@
+@@ -34679,15 +34681,16 @@
    if test "$PHP_FREETYPE_DIR" != "no"; then
  
      for i in $PHP_FREETYPE_DIR /usr/local /usr; do
@@ -49,7 +49,7 @@
      fi
  
      FREETYPE2_CFLAGS=`$FREETYPE2_CONFIG --cflags`
-@@ -36033,15 +36036,16 @@
+@@ -36350,15 +36353,16 @@
    if test "$PHP_FREETYPE_DIR" != "no"; then
  
      for i in $PHP_FREETYPE_DIR /usr/local /usr; do
