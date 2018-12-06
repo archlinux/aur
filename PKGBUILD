@@ -35,5 +35,5 @@ Terminal=false
 Categories=Application;Network;
 Type=Application' > ${pkgname}.desktop
   install -Dm 644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-  install -Dm 644 logo.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/proxyee-down.png
+  install -Dm 644 logo.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
 }
