@@ -2,7 +2,7 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=libt3highlight
-pkgver=0.4.2
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="A syntax highlighting library."
 arch=('x86_64' 'i686')
@@ -20,16 +20,15 @@ install=''
 changelog=
 source=("http://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('663778fd88d279491d22ffff3e7a198b')
+md5sums=('2e71be6d0cd564c3201c760261495b16')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr CFLAGS="-O2 -D_POSIX_C_SOURCE=200809L"
+  ./configure --prefix=/usr
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/share/doc/$pkgname/API"
 }
