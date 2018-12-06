@@ -1,7 +1,7 @@
 # Maintainer: Florijan Hamzic <fh@infinicode.de>
 
 pkgname='manticoresearch'
-pkgver=2.6.4
+pkgver=2.7.5
 pkgrel=1
 pkgdesc='Manticore Search is a fork of Sphinx, a fast, stable and powerful open source full-text search solution'
 arch=('x86_64')
@@ -10,6 +10,7 @@ license=('GPL')
 backup=('etc/conf.d/sphinx')
 conflicts=('sphinx' 'sphinx-bin')
 install='sphinx.install'
+depends=('unixodbc' 'expat' 'libmariadbclient' 'postgresql-libs')
 
 source=(
     "https://github.com/manticoresoftware/manticoresearch/archive/${pkgver}.tar.gz"
@@ -66,7 +67,7 @@ package() {
   install -Dm644 "${srcdir}/sphinx.service" "${pkgdir}/usr/lib/systemd/system/sphinx.service"
 }
 
-md5sums=('9a4d1f21bd9436ddeedef07e1af13b3b'
+md5sums=('e7a941b7fb85eb12b072374882517201'
          '48e3e1857919d26d5104a48caffb531b'
          '7a2c3709978d7e904a5b541baf255a90'
          'fe06a8aff0520a6f75596ee43d2e5935')
