@@ -1,63 +1,75 @@
-#!usr/bin/env/ python
-# coding: utf-8
-"""
-Projet AMAR
-Remerciements : Baba, Fredo, Rhylx, Francky, hRF, Pepito...
-Date : 14 Oct 2K17,
-       1.0.1 : 19 Nov 2017
-version :  1.0.1
-gksudo -s python amar.py
-"""
+#!/usr/bin/python
+#Created by Baoréla alias..... SOON
+#Old parts of code Fredo, Rhylx, Francky, hRF, Pepito
 
-import os
 import sys
-from PIL import Image
-import subprocess
-from tkinter import *
+import os
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
 
-if sys.version_info[0] == 3:
-    from tkinter import messagebox
-else:
-    import tkMessageBox as messagebox
+class Handler:
+    def onDestroy(self, *args):
+        Gtk.main_quit()
 
-os.system("xrdb -load /dev/null") #chargement des données avec xrdb
+    def onClickActive(self, button):
+        pressActive()
+        Gtk.main()
+    def onClickDesactive(self, button):
+        pressDesactive()
+        Gtk.main()
+
+amarpath = "/usr/share/amar/amar.glade"
+builder = Gtk.Builder()
+builder.add_from_file(amarpath)
+builder.connect_signals(Handler())
+
+os.system("xrdb -load /dev/null")
 
 pacmanfichier = "/etc/pacman.conf"
+amarfinalstate = builder.get_object("amarfinalstate")
+buttonactive = builder.get_object("buttonActive")
+buttondesactive = builder.get_object("buttonDesactive")
 
 try:
-    #On suppose d'abord qu'AMAR est désactivé. On met donc etatamar = 0 au départ.
     etatamar = 0
-    with open(pacmanfichier, 'r') as searchfile:
-        for line in searchfile:
-            #Si la chaîne '[AMAR]' est écrit quelque part dans pacman.conf, alors le dépôt est activé et on met etatamar = 1.
-            if 'amar.conf' in line:
-                etatamar = 1
+    searchfile = open(pacmanfichier, "r")
+    for line in searchfile:
+        if "amar.conf" in line:
+            etatamar = 1
     searchfile.close()
+
 except OSError:
     print("pacman.conf non acessible, donnez le chemin vers votre fichier")
     sys.exit(1)
 
 configamar = "\n#Do not disable AMAR manually if you use the app\nInclude = /etc/pacman.d/amar.conf\n"
 
-def pressA():
-    A.config(state=DISABLED)
-    B.config(state=ACTIVE)
+def errorButtons():
+
+    dialog = Gtk.MessageDialog(None, 0, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, "ERREUR")
+    dialog.format_secondary_text("Fichier pacman.conf non accessible en écriture\nVérifiez vos droit et relancer"
+                                       " le script\nVérifier aussi que vous ne faite une mise à jours en même temps")
+    dialog.run()
+    dialog.destroy()
+
+def pressActive():
+    buttonactive.set_sensitive(False)
+    buttondesactive.set_sensitive(True)
     try:
         with open(pacmanfichier, "a") as ecrire:
             ecrire.write(configamar)
             ecrire.close()
-            os.system("sudo pacman -Syy")
-            INFO.config(text="Actif", fg="green")  # on active le depot AMAR, donc on ecrit sur le fichier.
+            os.system("pacman -Syy")
+            amarfinalstate.set_markup('<span foreground="blue" face="sans">ACTIF</span>')
             etatamar = 1
             ecrire.close()
     except OSError:
-        messagebox.showerror("Erreur", "Ficher pacman.conf non accessible en écrture\nVérifier vos droit et relancer"
-                                       " le script\nVérifier aussi que vous ne faite une mise à jours en même temps")
+        errorButtons()
 
-
-def pressB():
-    A.config(state=ACTIVE)
-    B.config(state=DISABLED)
+def pressDesactive():
+    buttonactive.set_sensitive(True)
+    buttondesactive.set_sensitive(False)
     try:
         with open((pacmanfichier), "r") as f:
             lines = f.readlines()
@@ -66,54 +78,29 @@ def pressB():
         with open((pacmanfichier), "w") as new_f:
             for line in lines:
                 new_f.write(line)
-        os.system ("sudo pacman -Syy")
-        INFO.config(text="Inactif", fg="red")  # on active le depot AMAR, donc on ecrit sur le fichier.
+        os.system ("pacman -Syy")
+        amarfinalstate.set_markup('<span foreground="red" face="sans">INACTIF</span>')
         etatamar = 0
         f.close()
         new_f.close()
     except OSError:
-        messagebox.showerror("Erreur", "Ficher pacman.conf non accessible en écrture\nVérifier vos droit et relancer"
-                                       " le script\nVérifier aussi que vous ne faite une mise à jours en même temps")
+        errorButtons()
 
 
-win = Tk()
-win.title("TNV A.M.A.R - Configuration")
-win.geometry("620x280")
-tux = PhotoImage(file="/usr/share/icons/amar.png")  # lien vers l'icone de la fenetre
-win.tk.call('wm', 'iconphoto', win._w, tux)  # application de la fenetre
-
-TEXTE = Label(win, text='TNV AMAR', fg="blue")
-TEXTE2 = Label(win, text="Le dépôt AMAR (Arch/Manjaro Alternate Repository) est un dépôt tiers donnant\n"
-                           "accès à des logiciels supplémentaires non-accessibles via les dépôts officiels."
-                           "\n\nCe dépôt a été créé afin de pouvoir donner accès simplement à des logiciels dont"
-                           " l'installation\nvia AUR est problématique ou des logiciels qui ne concernent que"
-                           " Manjaro\net qui sont expulsés d'AUR pour cette raison.", fg="purple")
-TEXTE.pack(side=TOP, padx=5, pady=3)  # Titre de l'application de texte
-TEXTE2.pack(side=TOP, padx=5, pady=10)  # Titre de l'application de texte
-
-A = Button(win, text='ACTIVER', height=2, width=30, command=pressA)
-B = Button(win, text='DESACTIVER', height=2, width=30, command=pressB)
-
-INFO = Label(win, text='', fg="black")  # Informations qui changent en fonction du bouton appuyé par l'utilisateur
-MESSAGE = Label(win, text='ETAT DU DEPÔT', fg="blue")
-
-INFO.pack(side=BOTTOM)  # on ferme les boutons en décidant de leur amplacement
-MESSAGE.pack(side=BOTTOM)
-
-if etatamar:
-    A.pack()
-    A.config(state=DISABLED)
-    B.pack()
-    B.config(state=ACTIVE)
+print(etatamar)
+if etatamar == 0:
+    buttonactive.set_sensitive(True)
+    buttondesactive.set_sensitive(False)
 else:
-    A.pack()
-    A.config(state=ACTIVE)
-    B.pack()
-    B.config(state=DISABLED)
+    buttondesactive.set_sensitive(True)
+    buttonactive.set_sensitive(False)
 
 if etatamar == 0:
-    INFO.config(text="Inactif", fg="red")  # on active le depot AMAR, donc on ecrit sur le fichier.
+    amarfinalstate.set_markup('<span foreground="red" face="sans">INACTIF</span>')  # on active le depot AMAR, donc on ecrit sur le fichier.
 else:
-    INFO.config(text="Actif", fg="green")  # on active le depot AMAR, donc on ecrit sur le fichier.
+    amarfinalstate.set_markup('<span foreground="blue" face="sans">ACTIF</span>')  # on active le depot AMAR, donc on ecrit sur le fichier.
 
-win.mainloop()
+window = builder.get_object("mainWindow")
+window.show_all()
+
+Gtk.main()
