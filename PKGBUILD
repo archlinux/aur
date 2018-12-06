@@ -2,13 +2,13 @@
 
 _prgname=vim-razer
 pkgname=neo${_prgname}-git
-pkgver=1.1.r8.g019f1a5
-pkgrel=1
+pkgver=v1.2.r5.g4802fbe
+pkgrel=2
 pkgdesc="Makes RGB Razer keyboards change key colors to complement what you do in neovim."
 arch=('any')
 url='https://github.com/DanManN/vim-razer'
 license=('GNU GPLv3')
-depends=('neovim' 'python-neovim' 'openrazer-meta')
+depends=('neovim' 'python-neovim' 'python-openrazer')
 makedepends=('git')
 optdepends=('polychromatic')
 conflicts=('neovim-razer')
@@ -19,7 +19,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_prgname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 package() {
