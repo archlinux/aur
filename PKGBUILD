@@ -1,6 +1,6 @@
 # Maintainer: DanManN <dnahimov@gmail.com>
 # Python package author: Matthew Honnibal <matt@explosion.ai>
-pkgname=python-thinc
+pkgname=python-thinc-git
 _origpkgname=thinc
 pkgver=7.0.0.dev6.r2716.f26cb395
 pkgrel=1

@@ -1,4 +1,4 @@
-pkgbase = python-thinc
+pkgbase = python-thinc-git
 	pkgdesc = Practical Machine Learning for NLP
 	pkgver = 7.0.0.dev6.r2716.f26cb395
 	pkgrel = 1
@@ -29,5 +29,5 @@ pkgbase = python-thinc
 	source = git+https://github.com/explosion/thinc.git
 	md5sums = SKIP
 
-pkgname = python-thinc
+pkgname = python-thinc-git
 
