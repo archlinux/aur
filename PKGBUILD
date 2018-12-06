@@ -53,7 +53,7 @@ sha256sums=('SKIP'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'e0048bd7c614b3f31adba295b67263df0e7859a1587fac614df266a204b154f9')
+            'c8b380f0237ba848615ca85964b8dd33366b234242a33d361f297e9347f1c0f4')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
