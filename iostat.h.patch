@@ -1,0 +1,10 @@
+--- lizardfs-3.12.0/src/chunkserver/iostat.h.orig	2018-12-06 21:07:22.147629984 +0000
++++ lizardfs-3.12.0/src/chunkserver/iostat.h	2018-12-06 21:07:41.183716453 +0000
+@@ -44,6 +44,7 @@
+ #else
+ #include <cstdio>
+ #include <ctime>
++#include <sys/sysmacros.h>
+ #include <sys/vfs.h>
+ 
+ class IoStat {
