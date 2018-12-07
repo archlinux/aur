@@ -9,7 +9,7 @@ pkgdesc='A cross-platform automation and configuration tool/framework (git versi
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
-makedepends=('git' 'cmake' 'dotnet-sdk>=2.0' 'patch')
+makedepends=('git' 'cmake' 'dotnet-sdk>=2.0')
 depends=('icu' 'libunwind' 'openssl-1.0')
 provides=('powershell')
 conflicts=('powershell')

@@ -9,7 +9,6 @@ pkgbase = powershell-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = dotnet-sdk>=2.0
-	makedepends = patch
 	depends = icu
 	depends = libunwind
 	depends = openssl-1.0
