@@ -9,7 +9,7 @@ arch=('any')
 depends=('python2')
 url="https://github.com/jszakmeister/markdown2ctags"
 license=('BSD3')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/jszakmeister/$pkgname/tar.gz/v$pkgver)
+source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/jszakmeister/$pkgname/tar.gz/v$pkgver")
 sha256sums=('bc49bf3edc454630074429369a67243bcae71efd413fcbb69346b2654efd1178')
 
 package() {
