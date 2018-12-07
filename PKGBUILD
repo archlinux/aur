@@ -16,8 +16,8 @@ fi
 license=('custom:"Super Micro Computer"')
 url="http://www.supermicro.com/products/nfo/ipmi.cfm"
 source=("ipmiview.desktop")
-source_i686=("ftp://ftp.supermicro.com/utility/IPMIView/Linux/${_pkgname}_${pkgver}_build.${_pkgrev}_bundleJRE_Linux.tar.gz")
-source_x86_64=("ftp://ftp.supermicro.com/utility/IPMIView/Linux/${_pkgname}_${pkgver}_build.${_pkgrev}_bundleJRE_Linux_x64.tar.gz")
+source_i686=("https://www.supermicro.com/wftp/IPMIView/Linux/${_pkgname}_${pkgver}_build.${_pkgrev}_bundleJRE_Linux.tar.gz")
+source_x86_64=("https://www.supermicro.com/wftp/IPMIView/Linux/${_pkgname}_${pkgver}_build.${_pkgrev}_bundleJRE_Linux_x64.tar.gz")
 
 sha256sums=('41d5fa089912ee10d476a0f6aa3c12765861c1a71cf4f811efaf2e47c4ce9351')
 sha256sums_x86_64=('90f08a8ccb38b4ccc048010dd93f73cc3360cc259331d08b589a567d2a17e2f2')
