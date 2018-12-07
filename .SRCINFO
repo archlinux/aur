@@ -1,16 +1,26 @@
 pkgbase = libfiber-git
 	pkgdesc = A User Space Threading Library Supporting Multi-Core Systems
-	pkgver = r212.198c70e
-	pkgrel = 1
+	pkgver = r215.111db17
+	pkgrel = 3
 	url = https://github.com/brianwatling/libfiber
-	arch = i686
 	arch = x86_64
-	license = Not
-	license = specified
-	makedepends = git
+	license = custom:ISC
+	checkdepends = time
 	makedepends = cmake
-	source = git://github.com/brianwatling/libfiber
-	sha1sums = SKIP
+	makedepends = git
+	makedepends = libev
+	depends = gcc-libs
+	depends = glibc
+	provides = libfiber
+	conflicts = libfiber
+	source = git+https://github.com/brianwatling/libfiber
+	source = 0002-dist-libev.diff
+	source = 0003-no-work-stealing.diff
+	source = libfiber.pc
+	sha256sums = SKIP
+	sha256sums = e36b02fc439e1185a734db2a312a4650e803acb3eeef1105e40ffdc65726ae5d
+	sha256sums = 88ac1ea4517e6d73a571d243ffd51711a2e4ba2c45b92136968489f9c1979b62
+	sha256sums = eb8f429c6705a23aec697990271e724541815d8b43aafcb36d21fd7186dacacd
 
 pkgname = libfiber-git
 

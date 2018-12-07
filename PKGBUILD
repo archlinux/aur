@@ -1,25 +1,44 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Maintainer: Tinu Weber <http://ayekat.ch>
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=libfiber-git
-pkgver=r212.198c70e
-pkgrel=1
+pkgver=r215.111db17
+pkgrel=3
+arch=(x86_64)
+
 pkgdesc='A User Space Threading Library Supporting Multi-Core Systems'
-arch=(i686 x86_64)
 url='https://github.com/brianwatling/libfiber'
-license=(Not specified)
-makedepends=(git cmake)
-source=(git://github.com/brianwatling/libfiber)
-sha1sums=('SKIP')
+license=(custom:ISC)
+
+depends=(gcc-libs glibc)
+makedepends=(cmake git libev)
+checkdepends=(time)
+
+provides=(libfiber)
+conflicts=(libfiber)
+
+source=('git+https://github.com/brianwatling/libfiber'
+        '0002-dist-libev.diff'
+        '0003-no-work-stealing.diff'
+        'libfiber.pc')
+sha256sums=(SKIP
+            e36b02fc439e1185a734db2a312a4650e803acb3eeef1105e40ffdc65726ae5d
+            88ac1ea4517e6d73a571d243ffd51711a2e4ba2c45b92136968489f9c1979b62
+            eb8f429c6705a23aec697990271e724541815d8b43aafcb36d21fd7186dacacd)
 
 pkgver() {
   cd libfiber
-  # repo does not have any git tags yet
-  echo r$(git rev-list --count master).$(git rev-parse --short master)
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd libfiber
-  sed -e 's/ time / /g' -i Makefile
+
+  # use downstream (distribution) libev
+  patch -p1 -i "$srcdir"/0002-dist-libev.diff
+
+  # don't use work stealing
+  patch -p1 -i "$srcdir"/0003-no-work-stealing.diff
 }
 
 build() {
@@ -34,6 +53,17 @@ check() {
 
 package() {
   cd libfiber
-  mkdir -p "$pkgdir/usr/lib"
-  install libfiber.so "$pkgdir/usr/lib"
+
+  # library
+  install -Dm0755 libfiber.so "$pkgdir"/usr/lib/libfiber.so
+
+  # headers
+  install -dm0755 "$pkgdir"/usr/include
+  install -m0644 include/*.h "$pkgdir"/usr/include/
+
+  # pkg-config
+  install -Dm0644 "$srcdir"/libfiber.pc "$pkgdir"/usr/lib/pkgconfig/libfiber.pc
+
+  # misc
+  install -Dm0644 LICENSE.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.txt
 }

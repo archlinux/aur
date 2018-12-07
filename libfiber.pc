@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libfiber
+Description: A User Space Threading Library Supporting Multi-Core Systems
+Version: 0
+Cflags: -I${includedir} -DARCH_x86_64 -m64
+Libs: -L${libdir} -lfiber

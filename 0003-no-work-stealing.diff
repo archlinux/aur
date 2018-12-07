@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -17,7 +17,7 @@ CFILES = \
+     hazard_pointer.c \
+     work_stealing_deque.c \
+     work_queue.c \
+-    fiber_scheduler_wsd.c \
++    fiber_scheduler_dist.c \
+ 
+ USE_NATIVE_EVENTS ?= 1
+ ifeq ($(USE_NATIVE_EVENTS),1)
