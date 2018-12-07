@@ -2,8 +2,8 @@
 pkgname=encpipe-git
 _pkgnamenogit=encpipe
 pkgver=0.4.r4.gc8cd6a1
-pkgrel=1
-pkgdesc="The dum^H^H^Hsimplest encryption tool in the world."
+pkgrel=2
+pkgdesc="Encrypt data from stdin to stdout with libhydrogen."
 url="https://github.com/jedisct1/encpipe"
 arch=('x86_64' 'i686')
 license=('ISC')
