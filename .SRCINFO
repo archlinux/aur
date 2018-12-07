@@ -1,7 +1,7 @@
 pkgbase = snakemake
 	pkgdesc = Python-based language and execution environment for GNU Make-like workflows
 	pkgver = 5.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://snakemake.readthedocs.io
 	arch = any
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = snakemake
 	optdepends = python-jinja: For report generation
 	optdepends = python-networkx: For report generation
 	optdepends = python-biopython: For GenBank/NCBI Entrez support
-	optdepends = python-python-easywebdav: For WebDAV support
+	optdepends = python-easywebdav: For WebDAV support
 	optdepends = python-pysftp: For SFTP support
 	optdepends = python-boto3: For AWS support
 	optdepends = python-moto: For AWS support

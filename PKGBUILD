@@ -3,7 +3,7 @@
 
 pkgname=snakemake
 pkgver=5.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
 url='https://snakemake.readthedocs.io'
@@ -18,7 +18,7 @@ optdepends=(
 	'python-jinja: For report generation'
 	'python-networkx: For report generation'
 	'python-biopython: For GenBank/NCBI Entrez support'
-	'python-python-easywebdav: For WebDAV support'
+	'python-easywebdav: For WebDAV support'
 	'python-pysftp: For SFTP support'
 	'python-boto3: For AWS support'
 	'python-moto: For AWS support'
