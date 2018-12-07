@@ -2,7 +2,7 @@
 
 pkgname=x11remote
 pkgver=0.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Simple mouse and keyboard remote control as touchscreen HTML5 web-app'
 url="http://github.com/apirogov/${pkgname}"
 license=('MIT')
