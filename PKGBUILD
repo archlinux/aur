@@ -7,7 +7,6 @@ pkgdesc='Firmware for Silead touchscreen controllers'
 arch=('i686' 'x86_64')
 url="https://github.com/onitake/gsl-firmware"
 license=('custom')
-depends=('alsa-lib')
 makedepends=('git')
 source=("gsl::git://github.com/onitake/gsl-firmware.git")
 sha512sums=('SKIP')

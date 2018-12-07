@@ -7,7 +7,6 @@ pkgbase = gsl-firmware-git
 	arch = x86_64
 	license = custom
 	makedepends = git
-	depends = alsa-lib
 	source = gsl::git://github.com/onitake/gsl-firmware.git
 	sha512sums = SKIP
 
