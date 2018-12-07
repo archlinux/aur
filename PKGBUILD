@@ -2,12 +2,12 @@
 
 pkgname=keeweb
 pkgver=1.6.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/keeweb/keeweb"
 license=('MIT')
-depends=('electron')
+depends=('electron2')
 makedepends=(
 	'asar'
 	'npm'
@@ -17,12 +17,12 @@ optdepends=('xdotool: for auto-type')
 conflicts=('keeweb-desktop')
 source=(
 	"https://github.com/keeweb/keeweb/archive/v${pkgver}.tar.gz"
-	'keeweb'
+	'keeweb.sh'
 	'package.json.patch.js'
 )
 
 sha1sums=('75c054b23aa4f0f6fd067174623549f65ebe740a'
-          'a2ab033d06abfe7616d2615d8edf7931f29efc96'
+          'a8d1efc9faf9c9f38d1499ff3eda4e219c394eef'
           'ffcb2e59ef756c1ddb9d6cdb97e1e387598dc6b1')
 
 prepare() {
@@ -69,8 +69,8 @@ build() {
 package() {
 	cd "${pkgname}-${pkgver}"
 
+	install -Dm0755 ../keeweb.sh "${pkgdir}/usr/bin/keeweb"
 	install -Dm0644 -t "${pkgdir}/usr/lib/keeweb" ../keeweb.asar
-	install -Dm0755 -t "${pkgdir}/usr/bin"        ../keeweb
 
 	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE DEPS-LICENSE
 
