@@ -67,13 +67,11 @@ conflicts=('flexget')
 source=('git+https://github.com/Flexget/Flexget'
         'flexget.service'
         'flexget@.service'
-        'https://patch-diff.githubusercontent.com/raw/Flexget/Flexget/pull/2264.diff'
         )
 
 sha256sums=('SKIP'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
-            '5fca3a1b6be282c0914754bbfdeef21005d936fba3d2698801bba18369e1321a'
-            '3275a1dbf789b7c282f762a3c3c4a70d06e4e3daa69731fca156fb87401e2e1c')
+            '5fca3a1b6be282c0914754bbfdeef21005d936fba3d2698801bba18369e1321a')
 
 pkgver() {
   cd Flexget
