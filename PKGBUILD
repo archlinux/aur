@@ -1,7 +1,8 @@
 # Maintainer: Dan McCurry <dan.mc at protonmail dot com>
+# Maintainer: Ethan Best <ethan at totalsecond dot com>
 
 pkgname=libsdrplay
-pkgver=2.11.1
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="Modules for the SDRplay receiver"
 arch=('i686' 'x86_64')
@@ -9,7 +10,7 @@ url="http://www.sdrplay.com"
 license=('custom:EULA')
 depends=('libusb>=1.0')
 source=("http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-${pkgver}.run")
-md5sums=('d5d14dcb7d5212cf5a026e47c32a269b')
+sha256sums=('e2320b9eafffa3cb5d49e956207af2521ccf098aacc1fd9abecc8fb96b364522')
 
 prepare() {
 	cd ${srcdir}
