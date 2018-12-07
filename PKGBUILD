@@ -1,8 +1,8 @@
 # Maintainer: Florent Thiéry <fthiery@gmail.com>
 
 pkgname=cockpit-minimal
-pkgver=179
-pkgrel=1
+pkgver=183
+pkgrel=0
 pkgdesc='A systemd web based user interface for Linux servers (minimal setup with system graphs, journalctl, storage, network, user accounts, systemd services and terminal)'
 arch=(i686 x86_64 armv6h armv7h)
 url='http://www.cockpit-project.org/'
@@ -16,8 +16,8 @@ makedepends=(git intltool python2-pyscss gtk-doc perl-javascript-minifier-xs gob
 source=(https://github.com/cockpit-project/cockpit/releases/download/${pkgver}/cockpit-${pkgver}.tar.xz
 	https://github.com/cockpit-project/cockpit/releases/download/${pkgver}/cockpit-cache-${pkgver}.tar.xz)
 noextract=(cockpit-${pkgver}.tar.xz)
-sha1sums=('d00685a01f10c025574da54cd9a1bb686c868dea'
-          '5e72543bdd8c42b3f1f3d8cde6998c33a9712895')
+sha1sums=('97697f8d00665d3577ae889f4df99c8d3375d77d'
+          'a28e0f8ae1815b6869618f6cb85b9cb76914a030')
 
 prepare() {
   cd $srcdir
@@ -37,7 +37,7 @@ package() {
   make DESTDIR="$pkgdir" install
   cd $pkgdir
   rm usr/lib/firewalld/services/cockpit.xml  # owned by firewalld
-  for d in ovirt pcp playground realmd sosreport ssh subscriptions; do
+  for d in docker kubernetes tuned kdump selinux ovirt pcp playground realmd sosreport subscriptions; do
       rm -r usr/share/cockpit/$d;
       rm -rf usr/src/debug/usr/share/cockpit/$d;
   done
