@@ -1,22 +1,36 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Jerry Lin <jerry73204 at gmail dot com>
 
-pkgname=python-pyyaml
-pkgver=3.11
+pkgname=('python-pyyaml' 'python2-pyyaml')
+pkgver=3.13
 pkgrel=1
-pkgdesc="YAML parser and emitter for Python"
-arch=('i686' 'x86_64')
-depends=('libyaml' 'python')
-makedepends=('python-setuptools')
-url="http://pyyaml.org/wiki/PyYAML"
+pkgdesc='PyYAML is a full-featured YAML framework for the Python programming language'
+arch=('any')
+url="https://pyyaml.org/"
 license=('MIT')
-options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/P/PyYAML/PyYAML-$pkgver.tar.gz)
-md5sums=('f50e08ef0fe55178479d3a618efe21db')
-sha256sums=('c36c938a872e5ff494938b33b14aaa156cb439ec67548fcab3535bb78b0846e8')
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("http://pyyaml.org/download/pyyaml/PyYAML-${pkgver}.tar.gz")
+sha256sums=('3ef3092145e9b70e3ddd2c7ad59bdd0252a94dfe3949721633e41344de00a6bf')
 
-package() {
-  cd "$srcdir/PyYAML-$pkgver"
+_dirname="PyYAML-${pkgver}"
 
-  msg 'Installing...'
+build_python-pyyaml() {
+  cd "${srcdir}/${_dirname}"
+  python setup.py build
+}
+
+build_python2-pyyaml() {
+  cd "${srcdir}/${_dirname}"
+  python2 setup.py build
+}
+
+package_python-pyyaml() {
+  depends=('python' 'pyyaml')
+  cd "${srcdir}/${_dirname}"
   python setup.py install --root="$pkgdir" --optimize=1
+}
+
+package_python2-pyyaml() {
+  depends=('python2' 'pyyaml')
+  cd "${srcdir}/${_dirname}"
+  python2 setup.py install --root="$pkgdir" --optimize=1
 }

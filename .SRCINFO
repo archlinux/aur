@@ -1,18 +1,20 @@
 pkgbase = python-pyyaml
-	pkgdesc = YAML parser and emitter for Python
-	pkgver = 3.11
+	pkgdesc = PyYAML is a full-featured YAML framework for the Python programming language
+	pkgver = 3.13
 	pkgrel = 1
-	url = http://pyyaml.org/wiki/PyYAML
-	arch = i686
-	arch = x86_64
+	url = https://pyyaml.org/
+	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = libyaml
-	depends = python
-	options = !emptydirs
-	source = https://pypi.python.org/packages/source/P/PyYAML/PyYAML-3.11.tar.gz
-	md5sums = f50e08ef0fe55178479d3a618efe21db
-	sha256sums = c36c938a872e5ff494938b33b14aaa156cb439ec67548fcab3535bb78b0846e8
+	makedepends = python2-setuptools
+	source = http://pyyaml.org/download/pyyaml/PyYAML-3.13.tar.gz
+	sha256sums = 3ef3092145e9b70e3ddd2c7ad59bdd0252a94dfe3949721633e41344de00a6bf
 
 pkgname = python-pyyaml
+	depends = python
+	depends = pyyaml
+
+pkgname = python2-pyyaml
+	depends = python2
+	depends = pyyaml
 
