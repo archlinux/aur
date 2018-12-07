@@ -1,13 +1,13 @@
 pkgbase = claws-mail-theme-basicsvg
 	pkgdesc = Claws-mail icon theme BasicSVG
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = http://rame.altervista.org/cmbasicsvg/
 	arch = any
 	license = GPL
 	depends = claws-mail
-	source = http://rame.altervista.org/dl.php?fp=cmbasicsvg/BasicSVG-0.6.3.tar.gz
-	sha256sums = e50cbbd70dab85f60fb36346a60ecf84f153a1bdcc9d2daa8dcdf6889e6c92e6
+	source = http://rame.altervista.org/dl.php?fp=cmbasicsvg/BasicSVG-0.6.4.tar.gz
+	sha256sums = 6136910b431bc39496557d9cf5786607c4c95473e8d9eac2d3f8d91f0a0dee3b
 
 pkgname = claws-mail-theme-basicsvg
 
