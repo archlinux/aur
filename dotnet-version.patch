@@ -1,9 +1,0 @@
---- a/global.json
-+++ b/global.json
-@@ -1,5 +1,5 @@
- {
-   "sdk": {
--    "version": "2.1.403"
-+    "version": "2.1.500"
-   }
- }
