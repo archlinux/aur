@@ -1,6 +1,6 @@
 # with fixes by 0xAA <0xaa@dmg.sx>
-pkgname="radare2-git"
-pkgver=2.4.0.r229.g405c67d77
+pkgname=radare2-git
+pkgver=3.1.3.r18.gb9651f764
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
@@ -16,7 +16,8 @@ md5sums=('SKIP')
 
 pkgver () {
 	cd ${pkgname}
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	sed -nE '/^VERSION\ [0-9.]*(-git|)$/p' configure.acr|grep -o '[0-9.]*'|tr -d '\n'
+	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -42,5 +43,4 @@ package() {
 	cd ${srcdir}/${pkgname}
 	make DESTDIR=${pkgdir} install
 	install -D -m644 man/* "${pkgdir}/usr/share/man/man1" 
-	rm -rf ${srcdir}/${pkgname}
 }
