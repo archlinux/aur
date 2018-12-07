@@ -4,7 +4,8 @@
 _hkgname=rate-limit
 
 pkgname=haskell-${_hkgname}
-pkgver=1.4.0
+pkgver=1.4.1
+
 pkgrel=1
 license=(BSD-3-Clause)
 pkgdesc="Basic rate-limiting library" 
@@ -16,7 +17,7 @@ depends=("haskell-stm"
 "haskell-time-units")
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 
-sha256sums=('8b46c325004b45df4572fa17a39070f67fb69c21c66c23df9d13a463adb30b5c')
+sha256sums=('e221932261acfeefd25bd1514eaedbde70a79be918cffa96c6d1a6736295a53e')
 
 # PKGBUILD functions
 
