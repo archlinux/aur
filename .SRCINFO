@@ -1,0 +1,17 @@
+pkgbase = vmware-openrc
+	pkgdesc = OpenRC vmware init script
+	pkgver = 20181207
+	pkgrel = 0
+	url = https://github.com/artix-linux/packages-galaxy
+	arch = any
+	groups = openrc-galaxy
+	license = GPL2
+	depends = openrc
+	depends = vmware-workstation
+	provides = openrc-vmware
+	conflicts = systemd-sysvcompat
+	source = vmware.initd
+	md5sums = fc873a8f04cc9c67813f370484df0b21
+
+pkgname = vmware-openrc
+
