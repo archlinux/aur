@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='An implementation of the MPRIS protocol for MPD.'
 arch=('any')
 url='https://github.com/natsukagami/mpd-mpris'
-depends=('go>=1.9' 'git')
+makedepends=('go>=1.9' 'git')
 source=("https://github.com/natsukagami/mpd-mpris/archive/v$pkgver.tar.gz")
 md5sums=('df27a14eb754e236d0bea6ae21995366')
 
