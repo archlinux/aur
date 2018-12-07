@@ -1,7 +1,7 @@
 pkgbase = boram
 	pkgdesc = Cross-platform WebM converter
 	pkgver = 0.5.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Kagami/boram
 	arch = x86_64
 	license = CC0-1.0
