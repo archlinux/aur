@@ -6,7 +6,7 @@
 # Contributor: Jonhoo <jon at thesquareplanet.com>
 pkgname=signal
 pkgver=1.18.1
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
 depends=('electron2' 'openssl-1.0')
