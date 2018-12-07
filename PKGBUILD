@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=libpdfium-nojs
-pkgver=3538.r3.13b08aa11d
+pkgver=3578.r4.4a3dddbfe8
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -23,7 +23,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          '7fbbe2baf9a1fed80ad74278e901fa0e'
-         'a57e7180e3931d74b60f05d653b6bbe3')
+         '126d768d83a44217ce6d702cc64939e8')
 
 pkgver() {
 
