@@ -1,6 +1,6 @@
 pkgbase = kairosdb
 	pkgdesc = a fast distributed scalable time series database written on top of Cassandra.
-	pkgver = 0.9.6
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/kairosdb/kairosdb
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = kairosdb
 	makedepends = deb2targz
 	depends = cassandra
 	provides = kairosdb
-	source = https://github.com/kairosdb/kairosdb/releases/download/v0.9.4/kairosdb_0.9.4-6_all.deb
+	source = https://github.com/kairosdb/kairosdb/releases/download/v1.2.2/kairosdb-1.2.2-1.tar.gz
 	source = kairosdb.service
 	source = kairosdb
-	md5sums = f0f656f58b0b3b0b9cb26d3c573b98fb
+	md5sums = 269076a61419397b22bc35c6dfa0af17
 	md5sums = 3f957c6bfc4e1206dba09c049baa10a0
 	md5sums = ab930d18b8f13ee662a1f7d6380573a0
 
