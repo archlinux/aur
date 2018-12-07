@@ -1,12 +1,12 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('t2ec')
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A package of scripts to display system icons and controls in Tint2 panel"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
 license=('GPL3')
-depends=('python' 'acpi' 'xorg-xbacklight' 'alsa-utils' 'wireless_tools')
+depends=('python' 'acpi' 'xorg-xbacklight' 'alsa-utils' 'wireless_tools' 'wmctrl')
 optdepends=('light-git: for machines not handling xbacklight'
 	    'rof-git: for running mouse events commands as single instances'
 	    'zenity: for volume and brightness slider box'
@@ -58,7 +58,7 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/configs/t2ec-top-text.tint2rc")
 
 md5sums=('df88efa83e480abb9029028a09c9d1a2'
-         'b86f03023ea9a927c90a50e12c51d05b'
+         '64c9f038441b78b13f26f53f0b3eac66'
          '921064d0eb82b775080872a5507e820d'
          '1dae806f7c7b0eb34cda8468b4631474'
          '87b0cfeab8a467db470922e60a6ec187'
