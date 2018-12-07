@@ -1,7 +1,7 @@
 pkgbase = x11remote
 	pkgdesc = Simple mouse and keyboard remote control as touchscreen HTML5 web-app
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/apirogov/x11remote
 	arch = i686
 	arch = x86_64
