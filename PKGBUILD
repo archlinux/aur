@@ -2,13 +2,13 @@
 _gitname=vnstat-ui
 pkgname=vnstatui
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Basic web UI that displays traffic graphs from vnstat"
 arch=('any')
 url="http://bitbucket.org/instarch/vnstat-ui"
 license=('BSD')
 depends=('vnstat')
-makedepends=('go' 'glide' 'make' 'python-docutils')
+makedepends=('go' 'go-bindata' 'glide' 'make' 'python-docutils')
 backup=(
   'etc/default/vnstatui'
 )
@@ -17,9 +17,20 @@ source=(
 )
 md5sums=('SKIP')
 
-build() {
-  cd "${srcdir}/${_gitname}"
+prepare() {
+  export GOPATH="${srcdir}/go"
+
+  mkdir -p "${GOPATH}/src/bitbucket.org/instarch"
+  ln -Tsf "${srcdir}/${_gitname}" "${GOPATH}/src/bitbucket.org/instarch/vnstat-ui"
+
+  cd "${GOPATH}/src/bitbucket.org/instarch/vnstat-ui/"
   make deps
+}
+
+build() {
+  export GOPATH="${srcdir}/go"
+
+  cd "${GOPATH}/src/bitbucket.org/instarch/vnstat-ui/"
   make build
 }
 
