@@ -1,10 +1,10 @@
 # Maintainer: Erich Eckner <arch at eckner dot net>
 
-_nginxver=1.14.1
+_nginxver=1.14.2
 
 pkgname=nginx-mod-ipscrub
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='IP address anonymizer for nginx log files'
 
 arch=('i686' 'x86_64' 'armv7h')
@@ -20,7 +20,7 @@ source=(
     ${pkgname}-${pkgver}.tar.gz::https://github.com/masonicboom/ipscrub/archive/v${pkgver}.tar.gz
 )
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
-sha512sums=('906c9f44462c0a6b3d9d968641038511012de2662d8490bdb863e540988c2fb15f5cf8a8172e65267dab525e5edf2e9945d7da42a0aa2de5ac81de33fadcd9f3'
+sha512sums=('d8362dbd86435657d6b13156bd6ad1b251d2ab10bc11cdda959b142dd6120b087e4b314f0025d9bbcc88529cb4b9407fb4df1cfae5d081b7ea1db51ccfc2dbe7'
             'SKIP'
             '71d376c8d26d1f697ded361675186a2bd44b56afbfe6a2db3bee82d83402876e7ac685bd1e1318d9b2143ee9f85196e60c828af62b2685e8b1165dcaa025d196')
 
