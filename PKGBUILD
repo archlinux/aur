@@ -5,7 +5,7 @@ set -u
 pkgbase="linux-lts49"
 #pkgbase=linux-lts-custom
 _srcname="linux-4.9"
-pkgver="4.9.142"
+pkgver="4.9.143"
 pkgrel='1'
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -13,21 +13,23 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
 _verwatch=('https://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/' '.*"patch-\(4\.9\.[0-9]\+\)\.xz.*' 'f')
-source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
-        https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
-        # the main kernel config files
-        'config'
-        # pacman hook for initramfs regeneration
-        '90-linux.hook'
-        # standard config files for mkinitcpio ramdisk
-        linux-lts.preset
-        change-default-console-loglevel.patch)
+source=(
+  "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  # the main kernel config files
+  'config'
+  # pacman hook for initramfs regeneration
+  '90-linux.hook'
+  # standard config files for mkinitcpio ramdisk
+  'linux-lts.preset'
+  'change-default-console-loglevel.patch'
+)
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            '1dc77ae6eda3e7c77b11fafc449948218b913a5f21353313ae715ded12350ef5'
+            'bb2b633a70baad9d98eec03e495c57595bcec317814aa22b88db69df9c3665d4'
             '4ba80ad6778ac7666ff63484243b56fee6e134adf1f20c1edd04828c65b341b1'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
@@ -35,21 +37,20 @@ sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
 
 _kernelname=${pkgbase#linux}
 
-_CC=()
-_CCx=''
-#_CCx='-7'
-if [ ! -z "${_CCx}" ]; then
-  _CC=(HOSTCC="gcc${_CCx}" HOSTCXX="g++${_CCx}" CC="gcc${_CCx}")
-  makedepends+=("gcc${_CCx#-}")
-fi
-unset _CCx
+# CFLAGS CXXFLAGS are not used at all.
+# LDFLAGS only works on the make command line. It is not used from the environment.
+_makeopts=(
+  #CC='gcc-7' CXX='g++-7' HOSTCC='gcc-7' HOSTCXX='g++-7'
+)
+#makedepends+=('gcc7')
 
 prepare() {
   set -u
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -Nup1 -i "${srcdir}/patch-${pkgver}"
+  set +u; msg2 "Complete: patch-${pkgver}"; set -u
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -57,15 +58,16 @@ prepare() {
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+  patch -Nup1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  cat "${srcdir}/config" > ./.config
-
+  declare -A _config=([x86_64]='config')
+  cat "${srcdir}/${_config[${CARCH}]}" > './.config'
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
-  cp ./.config "${srcdir}/config.cmp"
+  cp './.config' "${srcdir}/config.cmp"
+  rm -f "${startdir}/${_config[${CARCH}]}.new"
 
   # set extraversion to pkgrel
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
@@ -74,13 +76,19 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   set +u; msg2 'get kernel version'; set +u
-  make -s -j1 prepare "${_CC[@]}"
-  if ! diff -u5 "${srcdir}/config.cmp" ./.config; then
+  set -x
+  make -s -j1 prepare "${_makeopts[@]}"
+  set +x
+
+  if ! diff -pNau5 "${srcdir}/config.cmp" './.config'; then
+    ln -s "${PWD}/.config" "${startdir}/${_config[${CARCH}]}.new"
+    rm "${srcdir}/config.cmp"
     set +u
-    echo "Some changes were made. Please merge for automation."
+    echo 'Some changes were made. Please merge for automation.'
     false
+  else
+    rm "${srcdir}/config.cmp"
   fi
-  rm "${srcdir}/config.cmp"
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
@@ -91,7 +99,9 @@ prepare() {
   # ... or manually edit .config
 
   set +u; msg2 'rewrite configuration'; set +u
-  yes "" | make -j1 config "${_CC[@]}" >/dev/null
+  set -x
+  yes "" | make -j1 config "${_makeopts[@]}" >/dev/null
+  set +x
   set +u
 }
 
@@ -105,14 +115,18 @@ build() {
     _mflags+=('-j' "${_nproc}")
   fi
 
-  nice make -s "${_mflags[@]}" ${MAKEFLAGS} LOCALVERSION= bzImage modules "${_CC[@]}"
+  rm -f vmlinux vmlinux.o # force relink, for debugging binutils 2.31.1
+
+  set -x
+  nice make -s "${_makeopts[@]}" "${_mflags[@]}" ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  set +x
   set +u
 }
 
 _package() {
   set -u
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-  [ "${pkgbase}" = "linux" ] && groups=('base')
+  #[ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
@@ -124,12 +138,12 @@ _package() {
   KARCH=x86
 
   # get kernel version
-  _kernver="$(make -j1 LOCALVERSION= kernelrelease)"
+  _kernver="$(make -j1 "${_makeopts[@]}" LOCALVERSION= kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make -j1 LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
+  make -j1 "${_makeopts[@]}" LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # set correct depmod command for install
