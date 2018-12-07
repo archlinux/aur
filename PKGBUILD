@@ -2,7 +2,7 @@
 
 pkgname=('python-pyyaml' 'python2-pyyaml')
 pkgver=3.13
-pkgrel=1
+pkgrel=2
 pkgdesc='PyYAML is a full-featured YAML framework for the Python programming language'
 arch=('any')
 url="https://pyyaml.org/"
@@ -24,13 +24,11 @@ build_python2-pyyaml() {
 }
 
 package_python-pyyaml() {
-  depends=('python' 'pyyaml')
   cd "${srcdir}/${_dirname}"
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-pyyaml() {
-  depends=('python2' 'pyyaml')
   cd "${srcdir}/${_dirname}"
   python2 setup.py install --root="$pkgdir" --optimize=1
 }

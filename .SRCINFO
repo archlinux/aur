@@ -1,7 +1,7 @@
 pkgbase = python-pyyaml
 	pkgdesc = PyYAML is a full-featured YAML framework for the Python programming language
 	pkgver = 3.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyyaml.org/
 	arch = any
 	license = MIT
@@ -11,10 +11,6 @@ pkgbase = python-pyyaml
 	sha256sums = 3ef3092145e9b70e3ddd2c7ad59bdd0252a94dfe3949721633e41344de00a6bf
 
 pkgname = python-pyyaml
-	depends = python
-	depends = pyyaml
 
 pkgname = python2-pyyaml
-	depends = python2
-	depends = pyyaml
 
