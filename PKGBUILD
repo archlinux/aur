@@ -9,25 +9,24 @@ license=('MIT')
 arch=('i686' 'x86_64')
 depends=('xdotool' 'xorg-xmodmap')
 
-makedepends=('git' 'ghc' 'cabal-install')
+makedepends=('git') #this also needs stack, but usually stack is installed locally
 source=("git+https://github.com/apirogov/${pkgname}.git")
 md5sums=('SKIP')
 
 # PKGBUILD functions
+prepare() {
+  cd ${srcdir}/${pkgname}
+  stack install --only-snapshot
+
+}
 
 build() {
    cd ${srcdir}/${pkgname}
-
-   cabal update
-
-   cabal sandbox init
-   cabal install --only-dependencies
-   cabal configure -O --prefix=/usr
-   cabal build
+   stack build
 }
 
 package() {
    cd ${srcdir}/${pkgname}
-   cabal copy --destdir=${pkgdir}
+   stack install --local-bin-path=${pkgdir}
 }
 
