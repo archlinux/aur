@@ -47,7 +47,7 @@ _write_grub_cfg() {
 #!/bin/sh
 
 cat <<EOF
-if [ "\$grub_platform" = "efi" ]; then
+if [ "\\\$grub_platform" = "efi" ]; then
 	menuentry "Memtest86" {
 		search --set=root --no-floppy --fs-uuid $uuid
 		chainloader /EFI/memtest86/memtest$ARCH.efi
@@ -55,6 +55,7 @@ if [ "\$grub_platform" = "efi" ]; then
 fi
 EOF
 FOE
+	chmod 755 "/etc/grub.d/86_memtest"
 }
 
 _write_systemd_boot_cfg() {
@@ -266,6 +267,11 @@ about() {
 	echo -e "MemTest86 is a stand alone memory testing software, it cannot be run under an operating system."
 	echo -e "$PRGNAME is a script which helps you to easily use MemTest86 with your UEFI, as an EFI application."
 }
+
+if [[ -z $ARCH ]]; then
+	echo -e "${CE} Unsupported ARCH: $(uname -m). Aborted.${CR}" > /dev/stderr
+	exit -1
+fi
 
 case "$1" in
 	-i|--install) warn; checkuid; install; exit 0;;
