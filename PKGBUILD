@@ -4,15 +4,11 @@ pkgver=1.1.1
 pkgrel=2
 pkgdesc="Netease cloud music player"
 arch=('x86_64')
-depends=(
-	"gconf" "gdk-pixbuf2" "expat" "gtk2"
-	"libpulse" "nss" "vlc" "libxcomposite"
-	"libxdamage" "libxrandr" "libxss"
-)
+depends=("gtk2" "gtk3" "vlc" "qt5-multimedia" "qcef")
 license=('custom')
 url="https://github.com/innoob/netease-cloud-music"
 source=(
-	"https://github.com/innoob/${_pkgname}/releases/download/${pkgver}%2Brebuild.release-${pkgrel}/${_pkgname}_${pkgver}+rebuild.release-${pkgrel}_amd64.deb"
+	"https://github.com/innoob/${_pkgname}/releases/download/${pkgver}%2Brebuild.release-2/${_pkgname}_${pkgver}+rebuild.release-2_amd64.deb"
 	"http://music.163.com/html/web2/service.html"
 )
 md5sums=(
