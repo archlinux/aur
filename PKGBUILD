@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.14.20.r13224.81a7c7ae2
+pkgver=2.17.18.r13346.69216697d
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -31,7 +31,7 @@ depends=('python'
          'python-jsonschema>=2.0'
          'python-path>=8.1.1'
          'python-pathlib>=1.0'
-         'python-guessit<=2.1.4'
+         'python-guessit=3.0.3'
          'python-rebulk=0.9.0'
          'python-apscheduler>=3.2.0'
          'python-terminaltables>=3.1.0'
@@ -39,7 +39,7 @@ depends=('python'
          'python-cherrypy>=3.7.0'
          'python-flask>=0.7'
          'python-flask-restful>=0.3.3'
-         'python-flask-restplus=0.10.1'
+         'python-flask-restplus=0.11.0'
          'python-flask-compress>=1.2.1'
          'python-flask-login>=0.4.0'
          'python-flask-cors>=2.1.2'
@@ -67,15 +67,13 @@ conflicts=('flexget')
 source=('git+https://github.com/Flexget/Flexget'
         'flexget.service'
         'flexget@.service'
-        'https://patch-diff.githubusercontent.com/raw/Flexget/Flexget/pull/2162.diff'
-        'https://patch-diff.githubusercontent.com/raw/Flexget/Flexget/pull/2193.diff'
+        'https://patch-diff.githubusercontent.com/raw/Flexget/Flexget/pull/2264.diff'
         )
 
 sha256sums=('SKIP'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             '5fca3a1b6be282c0914754bbfdeef21005d936fba3d2698801bba18369e1321a'
-            '9f69f4ea23aea830ceef992b444d73088ccf4c38f243df5105eb0f676b8b8d6d'
-            '9d1c4847888c997881451252fd3660c547ae08108100c3f1f3b18dd52c265254')
+            '3275a1dbf789b7c282f762a3c3c4a70d06e4e3daa69731fca156fb87401e2e1c')
 
 pkgver() {
   cd Flexget
@@ -85,13 +83,12 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
 
-  patch -p1 < ../2162.diff
-  patch -p1 < ../2193.diff
   #pip-compile --output-file requirements.txt requirements.in
   #pip-compile give too stricts requirements...
   cp requirements.in requirements.txt
   #flexget works fine with newer versions of requests
-  sed -i 's!requests~=2.16.3!requests>=2.16.3!' requirements.txt
+  sed -i 's!flask-restplus==0.10.1!flask-restplus==0.11.0!' requirements.txt
+  sed -i 's!rpyc==3.3.0!rpyc>=4.0.2!' requirements.txt
   #zxcvbn-python has been renamed zxcvbn
   sed -i 's!zxcvbn-python!zxcvbn!' requirements.txt
 }
@@ -120,7 +117,7 @@ package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # Make sure the perms allow reading by all
-  chmod ugo+r ${pkgdir}/usr/lib/python3.7/site-packages/FlexGet-2.14.*.dev0-py3.7.egg-info/*
+  chmod ugo+r ${pkgdir}/usr/lib/python3.7/site-packages/FlexGet-*.*.*.dev0-py3.*.egg-info/*
 
   # install systemd user unit
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
