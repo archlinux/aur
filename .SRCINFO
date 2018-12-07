@@ -1,0 +1,16 @@
+pkgbase = cqlsh
+	pkgdesc = CQL shell for apache cassandra
+	pkgver = 3.11.3
+	pkgrel = 1
+	url = https://github.com/apache/cassandra
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	makedepends = cython2
+	depends = python2
+	depends = python2-cassandra-driver
+	source = git+https://github.com/apache/cassandra/#tag=cassandra-3.11.3
+	md5sums = SKIP
+
+pkgname = cqlsh
+
