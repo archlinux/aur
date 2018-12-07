@@ -9,7 +9,7 @@ pkgbase = python-cassandra-driver-git
 	makedepends = libev
 	depends = python
 	depends = python-six
-	provides = python-cassandra-driver=3.16.0
+	provides = python-cassandra-driver
 	source = git+https://github.com/datastax/python-driver#tag=3.16.0
 	md5sums = SKIP
 
