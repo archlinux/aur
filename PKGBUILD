@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://www.peak-system.com/fileadmin/media/linux/index.htm'
 license=('GPL2')
 depends=('dkms')
-makedepends=('linux-headers')
 source=(
     "https://www.peak-system.com/fileadmin/media/linux/files/${pkgname}-${pkgver}.tar.gz"
     "dkms.conf"

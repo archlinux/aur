@@ -5,7 +5,6 @@ pkgbase = peak-linux-driver
 	url = https://www.peak-system.com/fileadmin/media/linux/index.htm
 	arch = x86_64
 	license = GPL2
-	makedepends = linux-headers
 	depends = dkms
 	source = https://www.peak-system.com/fileadmin/media/linux/files/peak-linux-driver-8.7.0.tar.gz
 	source = dkms.conf
