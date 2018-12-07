@@ -1,0 +1,21 @@
+pkgbase = python-hbmqtt
+	pkgdesc = Python client for Apache Kafka
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/mikeboers/PyAV/tree/master
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = python-transitions
+	depends = python-websockets
+	depends = python-passlib
+	depends = python-docopt
+	depends = python-pyyaml
+	source = https://github.com/beerfactory/hbmqtt/archive/0.9.5.tar.gz
+	sha256sums = 8afe70008fbe213ae9aff6d66d6db845b41b36d9f89f711657478ec3aa428790
+
+pkgname = python-hbmqtt
+	depends = python
+	depends = hbmqtt
+
