@@ -1,11 +1,13 @@
-# Maintainer: Rastislav Barlik <barlik.arch at gmx dot com>
+# Maintainer: Jose Riha <jose 1711 gmail com>
+# Contributor: zierf
+# Contributor: Rastislav Barlik <barlik.arch at gmx dot com>
 # Contributor: Michał Szymański <smiszym at gmail dot com>
 # Contributor: Tom Vincent <http://www.tlvince.com/contact/>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=jack_mixer
 pkgver=10
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK based Jack audio mixer"
 url="http://home.gna.org/jackmixer/"
 arch=('i686' 'x86_64')
@@ -15,7 +17,7 @@ optdepends=('lash: session support'
             'python2-gconf: gconf support')
 options=('!libtool')
 install="$pkgname.install"
-source=("http://download.gna.org/jackmixer/$pkgname-$pkgver.tar.gz")
+source=("http://http.debian.net/debian/pool/main/j/jack-mixer/jack-mixer_${pkgver}.orig.tar.gz")
 md5sums=('d45cf4665689cc83ccee8b25a41faf91')
 
 build() {
