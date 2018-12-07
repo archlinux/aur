@@ -8,7 +8,7 @@ arch=('any')
 url="https://sourceforge.net/projects/mcomix/"
 license=('GPL')
 depends=('pygtk' 'python2-pillow' 'xdg-utils' 'python2' \
-         'desktop-file-utils' 'hicolor-icon-theme' 'python2-setuptools')
+         'desktop-file-utils' 'hicolor-icon-theme' 'python2-setuptools python2-gobject')
 makedepends=('gettext' 'intltool')
 optdepends=('libunrar: for rar compressed comics' \
             'p7zip: for 7z compressed comics' \
