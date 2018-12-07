@@ -2,8 +2,8 @@
 
 pkgname=python-pytesseract-git
 _pkgname=pytesseract
-pkgver=c68f978
-pkgrel=2
+pkgver=a50fbea
+pkgrel=1
 pkgdesc="A Python wrapper for Google Tesseract"
 arch=('any')
 url="https://github.com/madmaze/pytesseract"
