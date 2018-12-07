@@ -1,0 +1,12 @@
+pkgbase = dynfilefs
+	pkgdesc = Fuse filesystem for dynamically-enlarged file (to be mounted as loop)
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/Tomas-M/dynfilefs
+	arch = x86_64
+	license = GPL3
+	source = git+https://github.com/Tomas-M/dynfilefs
+	sha256sums = SKIP
+
+pkgname = dynfilefs
+
