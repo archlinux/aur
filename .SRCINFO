@@ -8,7 +8,7 @@ pkgbase = cqlsh
 	makedepends = python2-setuptools
 	makedepends = cython2
 	depends = python2
-	depends = python2-cassandra-driver
+	depends = python2-cassandra-driver-git
 	source = git+https://github.com/apache/cassandra/#tag=cassandra-3.11.3
 	md5sums = SKIP
 

@@ -7,7 +7,7 @@ pkgver=3.11.3
 pkgrel=1
 arch=('any')
 license=('Apache')
-depends=('python2' 'python2-cassandra-driver')
+depends=('python2' 'python2-cassandra-driver-git')
 makedepends=('python2-setuptools' 'cython2')
 url="https://github.com/apache/cassandra"
 source=("git+https://github.com/apache/cassandra/#tag=cassandra-$pkgver")
