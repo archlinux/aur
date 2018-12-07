@@ -11,7 +11,7 @@
 
 pkgname=courier-mta
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -50,7 +50,7 @@ sha1sums=('2488e2e3481951b9850099868a647ebf7749091f'
           '20e07d4995d6028ef0a99333b31cc53d202ee6e9'
           'feb094c689a0c37c68f3b0c7e2b88eb5d572209f'
           '7c6e687d1cefe3139274b39c659351a503a3adb3'
-          'ecd2a51d62c038cff16558e6377c09f94f201146'
+          '7f4dd31cab51636983966d7c97df5e384b0ca3c1'
           '24d07f37ba5150b08f68dc73c0a5e53ae50ee9d5'
           'ba376789c8c5db6a709d2c4657b5bcf090417221')
 

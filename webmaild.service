@@ -7,7 +7,7 @@ After=authdaemond.service
 Type=forking
 ExecStart=/usr/sbin/webmaild start
 ExecStop=/usr/sbin/webmaild stop
-PIDFile=/run/courier/webmaild.pid
+PIDFile=/run/courier/sqwebmaild.pid
 
 [Install]
 WantedBy=multi-user.target

@@ -1,7 +1,7 @@
 pkgbase = courier-mta
 	pkgdesc = IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://courier-mta.org
 	install = courier-mta.install
 	arch = i686
@@ -68,7 +68,7 @@ pkgbase = courier-mta
 	sha1sums = 20e07d4995d6028ef0a99333b31cc53d202ee6e9
 	sha1sums = feb094c689a0c37c68f3b0c7e2b88eb5d572209f
 	sha1sums = 7c6e687d1cefe3139274b39c659351a503a3adb3
-	sha1sums = ecd2a51d62c038cff16558e6377c09f94f201146
+	sha1sums = 7f4dd31cab51636983966d7c97df5e384b0ca3c1
 	sha1sums = 24d07f37ba5150b08f68dc73c0a5e53ae50ee9d5
 	sha1sums = ba376789c8c5db6a709d2c4657b5bcf090417221
 
