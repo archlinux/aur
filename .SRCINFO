@@ -1,7 +1,7 @@
 pkgbase = netease-cloud-music-rebuild
 	pkgdesc = Netease cloud music player
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 2.1
 	url = https://github.com/innoob/netease-cloud-music
 	arch = x86_64
 	license = custom

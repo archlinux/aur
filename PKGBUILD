@@ -1,7 +1,7 @@
 pkgname=netease-cloud-music-rebuild
 _pkgname=netease-cloud-music
 pkgver=1.1.1
-pkgrel=2
+pkgrel=2.1
 pkgdesc="Netease cloud music player"
 arch=('x86_64')
 depends=("gtk2" "gtk3" "vlc" "qt5-multimedia" "qcef")
