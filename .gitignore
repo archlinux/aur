@@ -2,5 +2,7 @@ skaffold-*.pkg.tar.xz
 skaffold-*.tar.gz
 skaffold-*.log
 PKGBUILD-namcap.log
+skaffold-*-index.html
+skaffold-*-index.pdf
 pkg/
 src/
