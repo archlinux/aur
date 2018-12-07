@@ -1,20 +1,20 @@
 pkgbase = nutstore
 	pkgdesc = a cloud service that lets you sync and share files anywhere.
-	pkgver = 3.4.5
+	pkgver = 4.1.4
 	pkgrel = 1
 	url = https://jianguoyun.com/
 	arch = x86_64
 	license = custom
-	depends = gtk2
-	depends = java-runtime
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = python-gobject
 	optdepends = nautilus-nutstore: Nautilus plugin
-	optdepends = python2-notify: desktop notification
 	source = nutstore
 	source = license
 	sha256sums = 3091740b20ddd31ba4407b8daba1077c4677040cdc47bccfab2f7f3947676384
 	sha256sums = f3d2861ff48f2d193a4eced23a02b4eba9fab4c1d3f727e934ed7c59f38f0f7e
 	source_x86_64 = https://www.jianguoyun.com/static/exe/installer/nutstore_linux_dist_x64.tar.gz
-	sha256sums_x86_64 = fac9773875a5391a047f342414e988dd0df7f7938f14833f4b1352d3e4c64a00
+	sha256sums_x86_64 = 5227d45f6bfb221e39a9f36575a197be41ba152720baad5d51360939f1e0b1c1
 
 pkgname = nutstore
 

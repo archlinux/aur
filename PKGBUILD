@@ -1,30 +1,25 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=nutstore
-pkgver=3.4.5
+pkgver=4.1.4
 pkgrel=1
 pkgdesc='a cloud service that lets you sync and share files anywhere.'
 arch=(x86_64)
 url='https://jianguoyun.com/'
 license=(custom)
-depends=(gtk2 java-runtime)
-optdepends=(
-    'nautilus-nutstore: Nautilus plugin'
-    'python2-notify: desktop notification'
-)
+depends=(libappindicator-gtk3 libnotify python-gobject)
+optdepends=('nautilus-nutstore: Nautilus plugin')
 source=(nutstore license)
 source_x86_64=('https://www.jianguoyun.com/static/exe/installer/nutstore_linux_dist_x64.tar.gz')
 #source_i686=('https://www.jianguoyun.com/static/exe/installer/nutstore_linux_dist_x86.tar.gz')
 sha256sums=('3091740b20ddd31ba4407b8daba1077c4677040cdc47bccfab2f7f3947676384'
             'f3d2861ff48f2d193a4eced23a02b4eba9fab4c1d3f727e934ed7c59f38f0f7e')
-sha256sums_x86_64=('fac9773875a5391a047f342414e988dd0df7f7938f14833f4b1352d3e4c64a00')
-#sha256sums_i686=('48de3e2f062f47ff48980422115102e4460f5be38643d14e91e4e7e82cabf64e')
+sha256sums_x86_64=('5227d45f6bfb221e39a9f36575a197be41ba152720baad5d51360939f1e0b1c1')
+#sha256sums_i686=('4318110648ca28e33d20b9ba9190dd4e1b2eb34258429aa67cdcc74f0b19fc98')
 
 build()
 {
-    cd $srcdir
-    sed -i '1s/python/python2/' bin/nutstore-pydaemon.py
-    cd gnome-config
+    cd $srcdir/gnome-config
     sed -i '/Exec=/s|~/\.nutstore/dist/bin/nutstore-pydaemon.py|/usr/bin/nutstore|' menu/nutstore-menu.desktop
     sed -i '/Exec=/s|~/\.nutstore/dist|/opt/nutstore|' autostart/nutstore-daemon.desktop
 }
