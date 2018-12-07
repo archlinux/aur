@@ -1,0 +1,4 @@
+## arg 1:  the new package version
+post_install() {
+    echo ">> You have to re-login or source /etc/profile.d/tsduck.sh or else things won't work."
+}
