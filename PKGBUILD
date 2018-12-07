@@ -3,7 +3,7 @@
 pkgname=libpcanbasic
 pkgver=4.2.2
 pkgrel=1
-pkgdesc='Linux driver for PEAK CAN adapter'
+pkgdesc='API for the development of applications with PEAK CAN connection for Linux '
 arch=('x86_64')
 url='https://www.peak-system.com/PCAN-USB.199.0.html'
 license=('LGPL')
