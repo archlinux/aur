@@ -3,7 +3,7 @@
 pkgname='powershell-git'
 _pkgname='powershell'
 _binaryname='pwsh'
-pkgver=6.2.0.preview.2.10.gdedddb6b5
+pkgver=6.2.0.preview.2.60.gb55dc807c
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
@@ -16,13 +16,11 @@ conflicts=('powershell')
 source=($_pkgname::'git+https://github.com/PowerShell/PowerShell.git'
         'pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop'
         'googletest::git+https://github.com/google/googletest.git'
-        build.sh
-        'dotnet-version.patch')
+        build.sh)
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '70d89b489a4ae0198b9f8dbeb7bb9c40'
-         '17cf304cc89b323ea2a8c97de83267b2')
+         '70d89b489a4ae0198b9f8dbeb7bb9c40')
 install=powershell.install
 
 pkgver() {
@@ -38,7 +36,7 @@ prepare() {
   git submodule update
   git clean -dfx
 
-  cat $srcdir/dotnet-version.patch | patch -p1
+  rm global.json
 }
 
 build() {
