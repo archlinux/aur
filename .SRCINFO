@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-community-edition-no-jre
 	pkgdesc = Intellij Idea Community Edition without bundled JRE
-	pkgver = 2018.3
+	pkgver = 2018.3.1
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = intellij-idea-community-edition-no-jre
 	depends = java-environment
 	provides = jetbrains-idea-ce
 	conflicts = jetbrains-idea-ce
-	source = https://download.jetbrains.com/idea/ideaIC-2018.3-no-jdk.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIC-2018.3.1-no-jdk.tar.gz
 	source = jetbrains-idea-ce.desktop
-	md5sums = ee0faaf68c7cac2871f7a4cbcdea2279
+	md5sums = 0c124ba0d4aec6b73a92e50e3764b3d4
 	md5sums = 56d945e72cc22162d5be26af027999dd
 
 pkgname = intellij-idea-community-edition-no-jre
