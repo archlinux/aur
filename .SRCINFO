@@ -8,6 +8,7 @@ pkgbase = dafny-git
 	license = MIT
 	makedepends = git
 	makedepends = wget
+	makedepends = msbuild
 	depends = gcc-libs
 	provides = dafny
 	source = dafny-git::git+https://github.com/Microsoft/dafny.git
