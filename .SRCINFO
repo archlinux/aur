@@ -1,6 +1,6 @@
 pkgbase = thunderbird-exchangecalendar-alpha
 	pkgdesc = Thunderbird Addon/Extension and Provider for Microsoft Exchange 2007/2010/2013 Calendar, Tasks, Contacts and Global Address List (GAL)
-	pkgver = 5.0.0_alpha1
+	pkgver = 5.0.0_alpha2
 	pkgrel = 0
 	url = https://github.com/ExchangeCalendar/exchangecalendar
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = thunderbird-exchangecalendar-alpha
 	makedepends = zip
 	depends = thunderbird>=60
 	depends = thunderbird<61
-	provides = exchangecalendar=5.0.0_alpha1
+	provides = exchangecalendar=5.0.0_alpha2
 	conflicts = thunderbird-exchangecalendar-git
 	conflicts = thunderbird-exchangecalendar
 	conflicts = thunderbird-exchangecalendar-beta
@@ -17,8 +17,8 @@ pkgbase = thunderbird-exchangecalendar-alpha
 	options = !libtool
 	options = !staticlibs
 	options = !docs
-	source = thunderbird-exchangecalendar-alpha-5.0.0_alpha1.xpi::https://github.com/ExchangeCalendar/exchangecalendar/releases/download/v5.0.0-alpha1/exchangecalendar-v5.0.0-alpha1.xpi
-	sha256sums = bc92e97afdc80814090c28b569ed4a4d77c8bbbfcebe4462c7492f9269fa2e0a
+	source = thunderbird-exchangecalendar-alpha-5.0.0_alpha2.xpi::https://github.com/ExchangeCalendar/exchangecalendar/releases/download/v5.0.0-alpha2/exchangecalendar-v5.0.0-alpha2.xpi
+	sha256sums = df33fb2305ab85d70e7d3f5b95ba8965be8e8813ff99d54eab40c7b7057c9cdd
 
 pkgname = thunderbird-exchangecalendar-alpha
 
