@@ -3,7 +3,7 @@
 
 pkgname=obs-studio
 pkgver=22.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -16,8 +16,17 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'luajit: scripting support'
             'python: scripting support'
             'vlc: VLC Media Source support')
-source=($pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz)
-md5sums=('8c63cdc08a4510f288d174c65b252544')
+source=($pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
+        https://github.com/obsproject/obs-studio/commit/cf73fa6da19f798ce04907781d6dc00484820b77.patch)
+md5sums=('8c63cdc08a4510f288d174c65b252544'
+         'b67d1e5922852c080c4fefdfa04f3cd6')
+
+prepare() {
+  cd $pkgname-$pkgver
+
+  # libfdk-aac 2.0.0
+  patch -Np1 -i ../cf73fa6da19f798ce04907781d6dc00484820b77.patch
+}
 
 build() {
   cd $pkgname-$pkgver
