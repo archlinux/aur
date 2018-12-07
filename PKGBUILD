@@ -1,10 +1,10 @@
-# Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
-# Generator  : CPANPLUS::Dist::Arch 1.32
+# Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
+# Generator : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-linux-desktopfiles'
 pkgver='0.25'
-pkgrel='1'
-pkgdesc="A very fast Perl module for parsing the Linux desktop files."
+pkgrel='2'
+pkgdesc="Linux::DesktopFiles - a very fast Perl module for parsing the Linux desktop files."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
@@ -40,6 +40,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
+  rm -r "$pkgdir/usr/lib"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
