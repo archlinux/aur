@@ -1,7 +1,7 @@
 pkgbase = netease-cloud-music-rebuild
 	pkgdesc = Netease cloud music player
 	pkgver = 1.1.1
-	pkgrel = 2.1
+	pkgrel = 2.2
 	url = https://github.com/innoob/netease-cloud-music
 	arch = x86_64
 	license = custom
@@ -14,8 +14,8 @@ pkgbase = netease-cloud-music-rebuild
 	conflicts = netease-cloud-music
 	source = https://github.com/innoob/netease-cloud-music/releases/download/1.1.1%2Brebuild.release-2/netease-cloud-music_1.1.1+rebuild.release-2_amd64.deb
 	source = http://music.163.com/html/web2/service.html
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = a0808e03504b8d9259693af2e8ba8c89
+	md5sums = a8bda1128eee0f6da45f37767a4bba29
 
 pkgname = netease-cloud-music-rebuild
 

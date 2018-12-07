@@ -1,7 +1,7 @@
 pkgname=netease-cloud-music-rebuild
 _pkgname=netease-cloud-music
 pkgver=1.1.1
-pkgrel=2.1
+pkgrel=2.2
 pkgdesc="Netease cloud music player"
 arch=('x86_64')
 depends=("gtk2" "gtk3" "vlc" "qt5-multimedia" "qcef")
@@ -11,10 +11,8 @@ source=(
 	"https://github.com/innoob/${_pkgname}/releases/download/${pkgver}%2Brebuild.release-2/${_pkgname}_${pkgver}+rebuild.release-2_amd64.deb"
 	"http://music.163.com/html/web2/service.html"
 )
-md5sums=(
-	'SKIP'
-	'SKIP'
-)
+md5sums=('a0808e03504b8d9259693af2e8ba8c89'
+         'a8bda1128eee0f6da45f37767a4bba29')
 provides=("netease-cloud-music")
 conflicts=("netease-cloud-music")
 
