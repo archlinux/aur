@@ -9,6 +9,7 @@ pkgbase = kairosdb
 	makedepends = deb2targz
 	depends = cassandra
 	provides = kairosdb
+	noextract = kairosdb-1.2.2-1.tar.gz
 	source = https://github.com/kairosdb/kairosdb/releases/download/v1.2.2/kairosdb-1.2.2-1.tar.gz
 	source = kairosdb.service
 	source = kairosdb
