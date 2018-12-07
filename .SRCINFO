@@ -1,0 +1,25 @@
+pkgbase = spectrasuite
+	pkgdesc = Spectrometer operating software for Ocean Optics spectrometers. (discontinued by manufacturer)
+	pkgver = 2.0.162
+	pkgrel = 1
+	url = https://oceanoptics.com
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = libxp
+	depends = libxtst
+	depends = libusb-compat
+	depends = lib32-libglvnd
+	depends = libxt
+	depends = java-runtime
+	depends = libnet
+	depends = alsa-lib
+	source_x86_64 = http://files.oceanoptics.com/downloads/SpectraSuite/SpectraSuiteSetup_Linux64.bin
+	depends_x86_64 = lib32-libglvnd
+	md5sums_x86_64 = 83937d114944d638f535d3a144773d43
+	source_i686 = http://files.oceanoptics.com/downloads/SpectraSuite/SpectraSuiteSetup_Linux32.bin
+	depends_i686 = libglvnd
+	md5sums_i686 = af233c40fde1cfb903b52443883d89d1
+
+pkgname = spectrasuite
+
