@@ -2,12 +2,11 @@
 
 pkgname=sane-epson-perfection-firmware
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Firmware binaries for Epson Perfection 1670/2480/2580/3490/3590"
 arch=('any')
 url="http://www.epson.com/cgi-bin/Store/support/SupportIndex.jsp"
 license=('custom')
-depends=('')
 makedepends=('cabextract')
 optdepends=('sane: scanner backend')
 options=(!strip staticlibs)
