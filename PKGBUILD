@@ -1,8 +1,8 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=bashate
-pkgver=0.5.1
-pkgrel=3
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A pep8 equivalent for bash scripts"
 arch=('any')
 makedepends=('python-setuptools')
@@ -11,8 +11,8 @@ depends=('python'
          'python-babel')
 url="https://github.com/openstack-dev/${pkgname}"
 license=('Apache')
-source=("https://pypi.python.org/packages/22/3c/10efc0119b59e77c74e94eb9768f409b4ba25238a0e3082203bc5386793f/$pkgname-$pkgver.tar.gz")
-sha256sums=('bcb2911c013f5d6d27413624e062079b7a6ec056581960b4a81cea72975d8434')
+source=("https://files.pythonhosted.org/packages/d1/24/dff6f791b3e3873960cb4471212d67be1338702c96711e81ae6d208ed5ab/$pkgname-$pkgver.tar.gz")
+sha256sums=('f01822a7295f1dfd197f67b4385c683d2eea293fa101ad15cf5e8572c0d45755')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
