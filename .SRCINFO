@@ -1,0 +1,12 @@
+pkgbase = peak-linux-headers
+	pkgdesc = Linux headers for PEAK CAN adapter
+	pkgver = 8.7.0
+	pkgrel = 1
+	url = https://www.peak-system.com/fileadmin/media/linux/index.htm
+	arch = x86_64
+	license = GPL2
+	source = https://www.peak-system.com/fileadmin/media/linux/files/peak-linux-driver-8.7.0.tar.gz
+	sha256sums = 6d1ad9e6feb75719feb926bf1c78caeaa84663855945866e749d92cc83758b73
+
+pkgname = peak-linux-headers
+
