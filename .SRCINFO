@@ -1,0 +1,16 @@
+pkgbase = rundaemon
+	pkgdesc = Simple program to daemonize anything
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://github.com/aswild/rundaemon
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = custom:Unlicense
+	source = rundaemon-1.0.tar.gz::http://github.com/aswild/rundaemon/archive/v1.0.tar.gz
+	sha256sums = 877929d346f9a088c2f85da1cabe1f45f5c61d1f2edf73712c06c9ff8e27e17c
+
+pkgname = rundaemon
+
