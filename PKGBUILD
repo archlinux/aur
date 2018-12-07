@@ -4,7 +4,7 @@
 pkgbase='dns-over-https'
 pkgname=('dns-over-https-client' 'dns-over-https-server')
 pkgver=1.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol"
 url="https://github.com/m13253/dns-over-https"
 arch=('x86_64' 'i686' 'armv7h')
@@ -25,6 +25,9 @@ prepare() {
 }
 
 build() {
+    export GOPATH="${srcdir}/build"
+    export BUILDPATH="${srcdir}/build/src/github.com/m13253"
+
     cd ${BUILDPATH}/${pkgbase}/doh-client
     go get -v -gcflags "-trimpath $GOPATH/src"
 
