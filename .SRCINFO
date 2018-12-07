@@ -1,11 +1,12 @@
 pkgbase = snakemake
 	pkgdesc = Python-based language and execution environment for GNU Make-like workflows
-	pkgver = 5.3.0
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://snakemake.readthedocs.io
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-gitpython
 	depends = python
 	depends = python-requests
 	depends = python-wrapt
@@ -19,8 +20,8 @@ pkgbase = snakemake
 	optdepends = graphviz: For DAG visualization
 	optdepends = python-jinja: For report generation
 	optdepends = python-networkx: For report generation
-	source = snakemake-5.3.0.tar.gz::https://bitbucket.org/snakemake/snakemake/get/v5.3.0.tar.gz
-	sha256sums = 5afb2c6c2885e8d68856443e640c7924a9e1b6881a1af5624f7b15485921ee87
+	source = snakemake-5.3.1.tar.gz::https://bitbucket.org/snakemake/snakemake/get/v5.3.1.tar.gz
+	sha256sums = 54a77bf98397a58dd5ec40c89120cf9015888351356454fe7f2cc89e0c7c685a
 
 pkgname = snakemake
 
