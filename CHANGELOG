@@ -843,3 +843,15 @@ Mon Nov 26 07:07:23 2018 +0100
     
     Notable changes:
      2018-11-26 dd67d644 actionless feat(plugins: import colors from image): add possibility to generate palette using all the available image analyzers
+
+
+Fri Dec 7 03:16:25 2018 +0100
+-------------------------------------------------
+1.7.2.2         Release 1.7.2.2
+    
+    Notable changes:
+     2018-12-07 8e477764 actionless chore(colors: popart): add bojack theme
+     2018-12-07 d96b3a13 actionless chore(colors): add Christmas theme
+     2018-12-07 e6298d2d actionless fix(plugins: pil): ignore haishoku exceptions when using 'all' preset
+     2018-12-07 a3121469 poison.vm34 Add and fix some of the color palettes
+     2018-12-07 fbb6dc39 actionless chore(colors): update to use newer theming capabilities
