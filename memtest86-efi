@@ -8,6 +8,7 @@ PRGNAME=$(basename $0)
 CONFDIR="/etc/memtest86-efi"
 CONFFILE="$CONFDIR/memtest86-efi.conf"
 source "$CONFFILE" || exit 127
+shopt -s extglob
 [[ "$(uname -m)" == "i686" ]]   && ARCH="ia32"
 [[ "$(uname -m)" == "x86_64" ]] && ARCH="x64"
 
@@ -30,13 +31,39 @@ checkcommand() {
 }
 
 _common_install() {
-	efidir="$esp/EFI/memtest86"
-	efifile="$efidir/memtest$ARCH.efi"
+	efidir="$1"
+	efifile="$2"
 
-	echo -e "MemTest86 will be installed in ${CB}$efidir/${CR}."
+	echo -e "MemTest86 is installed into ${CB}$efidir/${CR} directory."
 	mkdir -pv "$efidir"
-	cp -v "$MEMTEST86_PATH/"*     "$efidir/" # Move files in memtest ESP directory
-	mv -v "$efidir/boot$ARCH.efi" "$efifile" # Rename .efi file
+	cp -v "$MEMTEST86_PATH/"!(*.efi) "$efidir/" # Move files in memtest ESP directory
+	cp -v "$MEMTEST86_PATH/boot$ARCH.efi" "$efidir/$efifile" # Copy and rename .efi file
+}
+
+_write_grub_cfg() {
+	uuid="$1"
+
+	cat > "/etc/grub.d/86_memtest" <<FOE
+#!/bin/sh
+
+cat <<EOF
+if [ "\$grub_platform" = "efi" ]; then
+	menuentry "Memtest86" {
+		search --set=root --no-floppy --fs-uuid $uuid
+		chainloader /EFI/memtest86/memtest$ARCH.efi
+	}
+fi
+EOF
+FOE
+}
+
+_write_systemd_boot_cfg() {
+	systemdbootdir="$1"
+
+	cat > "$systemdbootdir/memtest86-efi.conf" <<FOE
+title MemTest86
+efi   /EFI/memtest86/memtest$ARCH.efi
+FOE
 }
 
 install() {
@@ -86,16 +113,13 @@ install() {
 
 	case $choice in
 		1) # Install MemTest86 in $esp/
-			echo -e "MemTest86 will be installed in ${CB}$esp/${CR}."
-			efifile="$esp/shell$ARCH.efi"
 			[[ -f "$esp/shell$ARCH.efi" ]] && mv -v "$esp/shell$ARCH.efi" "$esp/shell$ARCH.efi.bak" # Backup if exist
-			cp -v "$MEMTEST86_PATH/"*               "$esp/" # Move files in ESP root
-			mv -v "$esp/boot$ARCH.efi"              "$efifile" # Rename .efi file
+			_common_install "$esp" "shell$ARCH.efi"
 		;;
 
 		2) # Install MemTest86 in $esp/EFI/memtest86/ & add an EFI boot entry
 			checkcommand efibootmgr
-			_common_install
+			_common_install "$esp/EFI/memtest86" "memtest$ARCH.efi"
 			echo -e "\nAdd a new EFI boot entry..."
 			efibootmgr -c -d ${device} -p ${partnumber} -w -L "MemTest86" -l "\EFI\memtest86\memtest$ARCH.efi" # Manage efi entry
 		;;
@@ -106,22 +130,21 @@ install() {
 				echo -e "${CE}GRUB2 seems not installed on your system. Aborted.${CR}" > /dev/stderr
 				exit 2
 			fi
-			_common_install
+			_common_install "$esp/EFI/memtest86" "memtest$ARCH.efi"
 			echo -e "\nAdd a new configuration file for GRUB..."
-			/bin/install -Dvm755 "$CONFDIR/grub.conf" "/etc/grub.d/86_memtest"
 			uuid=$(blkid $partition -s UUID -o value)
-			sed -i "s|@UUID@|$uuid|g"                 "/etc/grub.d/86_memtest"
-			sed -i "s|@ARCH@|$ARCH|g"                 "/etc/grub.d/86_memtest"
+			_write_grub_cfg "$uuid"
 			grub-mkconfig -o "/boot/grub/grub.cfg"
 		;;
 
 		4) # Install MemTest86 in $esp/EFI/memtest86/ & add a file for systemd-boot
-			_common_install
+			checkcommand bootctl
+			_common_install "$esp/EFI/memtest86" "memtest$ARCH.efi"
 			echo -e "\nAdd a new configuration file for systemd-boot..."
 			systemdbootdir="$esp/loader/entries"
 			mkdir -pv "$systemdbootdir"
-			/bin/install -Dvm644 "$CONFDIR/systemd-boot.conf" "$systemdbootdir/memtest86-efi.conf"
-			sed -i "s|@ARCH@|$ARCH|g"                         "$systemdbootdir/memtest86-efi.conf"
+			_write_systemd_boot_cfg "$systemdbootdir"
+			bootctl --path="$esp" update
 		;;
 
 		*) # Do nothing and quit
@@ -147,15 +170,11 @@ update() {
 
 	case $choice in
 		1) # Update files in $esp/
-			echo -e "MemTest86 will be updated in ${CB}$esp/${CR}."
-			cp -fv "$MEMTEST86_PATH/"*  "$esp/"
-			mv -fv "$esp/boot$ARCH.efi" "$esp/shell$ARCH.efi"
+			_common_install "$esp" "shell$ARCH.efi"
 		;;
 
 		2|3|4) # Update files in $esp/EFI/memtest86/
-			echo -e "MemTest86 will be updated in ${CB}$esp/EFI/memtest86/${CR}."
-			cp -fv "$MEMTEST86_PATH/"*                "$esp/EFI/memtest86/"
-			mv -fv "$esp/EFI/memtest86/boot$ARCH.efi" "$esp/EFI/memtest86/memtest$ARCH.efi"
+			_common_install "$esp/EFI/memtest86" "memtest$ARCH.efi"
 		;;
 	esac
 
@@ -171,7 +190,7 @@ remove() {
 	case $choice in
 		1) # Remove files in $esp/
 			echo -e "MemTest86 will be removed from ${CB}$esp/${CR}."
-			rm -v "$esp/mt86.png" "$esp/shell$ARCH.efi"
+			rm -v "$esp/shell$ARCH.efi" "$esp/blacklist.cfg" "$esp/mt86.png" "$esp/unifont.bin"
 			[[ -f "$esp/shell$ARCH.efi.bak" ]] && mv -v "$esp/shell$ARCH.efi.bak" "$esp/shell$ARCH.efi"
 		;;
 
