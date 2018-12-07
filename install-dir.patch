@@ -27,7 +27,7 @@ diff --git a/Source/CMakeLists.txt b/Source/CMakeLists.txt
 index 02ba71c5a..ebaac189c 100644
 --- a/Source/CMakeLists.txt
 +++ b/Source/CMakeLists.txt
-@@ -193,8 +193,8 @@ check_and_update_builtin_assets(bsfCompiled ${BSF_SOURCE_DIR}/../Data Data ${COM
+@@ -195,8 +195,8 @@ check_and_update_builtin_assets(bsfCompiled ${BSF_SOURCE_DIR}/../Data Data ${COM
  
  ## Install
  install(
