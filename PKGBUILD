@@ -5,15 +5,14 @@ _hkgname=OneTuple
 
 pkgname=haskell-onetuple
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 license=(BSD-3-Clause)
 pkgdesc="Singleton Tuple." 
 url="http://hackage.haskell.org/package/${_hkgname}"
 arch=('x86_64')
 makedepends=("ghc")
 depends=("haskell-base")
-source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz"
-)
+source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 
 sha256sums=('d82e702485bcbdefbda0d12b6a250d318a269572ee58d63b60eee531e56624dc')
 
