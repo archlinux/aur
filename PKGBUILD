@@ -5,21 +5,19 @@ pkgname=powershell
 binaryname=pwsh
 _pkgver=6.1.1
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
-makedepends=('git' 'cmake' 'dotnet-sdk>=2.0' 'patch')
+makedepends=('git' 'cmake' 'dotnet-sdk>=2.0')
 depends=('icu' 'openssl-1.0')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
         googletest::git+https://github.com/google/googletest.git
-        build.sh
-        dotnet-version.patch)
+        build.sh)
 md5sums=('SKIP'
          'SKIP'
-         '2ddd2c3b33c7df1c85f49fa6f7763566'
-         '17cf304cc89b323ea2a8c97de83267b2')
+         '2ddd2c3b33c7df1c85f49fa6f7763566')
 install=powershell.install
 
 prepare() {
@@ -29,7 +27,7 @@ prepare() {
   git submodule update
   git clean -dfx
 
-  cat $srcdir/dotnet-version.patch | patch -p1
+  rm global.json
 }
 
 build() {
