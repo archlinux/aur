@@ -4,7 +4,7 @@
 # Contributor : Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-libdrm-git
-pkgver=2.4.93.r0.g87fdbfb6
+pkgver=2.4.96.r9.gb28b8237
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(i686 x86_64)
@@ -30,7 +30,7 @@ pkgver() {
 build() {
     export CC="gcc -m32"
     export CXX="g++ -m32"
-    export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+    export PKG_CONFIG=/usr/bin/pkg-config-32
     if [  -d _build ]; then
         rm -rf _build
     fi
