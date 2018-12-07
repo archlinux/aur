@@ -3,7 +3,7 @@
 
 pkgname=snakemake
 pkgver=5.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
 url='https://snakemake.readthedocs.io'
@@ -47,6 +47,6 @@ package() {
 	local pyver=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
 	
 	install -d "$pkgdir/etc/bash_completion.d"
-	PYTHONPATH="$PKGDIR/usr/lib/python$pyver/site-packages:$PYTHONPATH" \
+	PYTHONPATH="$pkgdir/usr/lib/python$pyver/site-packages:$PYTHONPATH" \
 		"$pkgdir/usr/bin/snakemake" --bash-completion >"$pkgdir/etc/bash_completion.d/snakemake"
 }
