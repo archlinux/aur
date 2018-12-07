@@ -2,11 +2,11 @@
 
 pkgname=('python-hbmqtt')
 pkgver=0.9.5
-pkgrel=1
-pkgdesc='Python client for Apache Kafka'
+pkgrel=2
+pkgdesc='MQTT client/broker using Python asynchronous I/O'
 arch=('x86_64')
-url="https://github.com/mikeboers/PyAV/tree/master"
-license=('Apache')
+url="https://github.com/beerfactory/hbmqtt"
+license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 depends=('python-transitions' 'python-websockets' 'python-passlib' 'python-docopt' 'python-pyyaml')
 source=("https://github.com/beerfactory/hbmqtt/archive/${pkgver}.tar.gz")
