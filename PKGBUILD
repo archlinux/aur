@@ -5,7 +5,7 @@
 
 pkgname=firefox-extension-greasemonkey
 _file=965808
-pkgver=4.4
+pkgver=4.7
 pkgrel=1
 pkgdesc="Customize the way a web page displays or behaves, by using small bits of JavaScript."
 arch=('any')
@@ -26,3 +26,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+
