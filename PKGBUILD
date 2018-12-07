@@ -1,4 +1,4 @@
-# Maintainer: Gabriel-Andrew Pollo Guilbert <gabriel14_wii@hotmail.com>
+# Maintainer: Gabriel-Andrew Pollo-Guilbert <gabrielpolloguilbert@gmail.com>
 
 pkgname=peak-linux-driver
 pkgver=8.7.0
