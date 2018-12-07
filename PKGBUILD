@@ -12,11 +12,16 @@ url="http://hackage.haskell.org/package/${_hkgname}"
 arch=('x86_64')
 makedepends=("ghc")
 depends=("haskell-base")
-source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
+source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz"
+)
 
 sha256sums=('d82e702485bcbdefbda0d12b6a250d318a269572ee58d63b60eee531e56624dc')
 
 # PKGBUILD functions
+prepare() {
+    cd $_hkgname-$pkgver
+    sed -id s/4.12/4.13/ OneTuple.cabal
+}
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
