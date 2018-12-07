@@ -47,3 +47,4 @@ package() {
   mv $pkgdir/usr/lib64/* $pkgdir/usr/lib/
   rmdir $pkgdir/usr/lib64
 }
+
