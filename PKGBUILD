@@ -8,7 +8,6 @@ pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://expressvpn.com"
 license=('custom')
-makedepends=('chrpath') # Needed to strip out insecure RPATH
 # net-tools is needed for old skool ifconfig
 depends=('net-tools')
 _date=$(date +%Y%m%d)
