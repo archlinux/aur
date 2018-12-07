@@ -1,7 +1,7 @@
-diff -aur --no-dereference radium-5.8.9.pristine/check_dependencies.sh radium-5.8.9.new/check_dependencies.sh
---- radium-5.8.9.pristine/check_dependencies.sh	2018-09-12 17:40:04.000000000 +0100
-+++ radium-5.8.9.new/check_dependencies.sh	2018-09-15 08:13:53.091842255 +0100
-@@ -181,11 +181,6 @@
+diff -aur --no-dereference radium-5.9.19.pristine/check_dependencies.sh radium-5.9.19.new/check_dependencies.sh
+--- radium-5.9.19.pristine/check_dependencies.sh	2018-12-05 23:25:50.000000000 +0000
++++ radium-5.9.19.new/check_dependencies.sh	2018-12-07 00:22:17.516036072 +0000
+@@ -211,11 +211,6 @@
      exit 5
  fi
  
@@ -13,10 +13,10 @@ diff -aur --no-dereference radium-5.8.9.pristine/check_dependencies.sh radium-5.
  
  
  if [[ $4 == "test_build" ]] ; then
-diff -aur --no-dereference radium-5.8.9.pristine/Makefile.Qt radium-5.8.9.new/Makefile.Qt
---- radium-5.8.9.pristine/Makefile.Qt	2018-09-12 17:40:04.000000000 +0100
-+++ radium-5.8.9.new/Makefile.Qt	2018-09-15 08:13:53.091842255 +0100
-@@ -235,7 +235,7 @@
+diff -aur --no-dereference radium-5.9.19.pristine/Makefile.Qt radium-5.9.19.new/Makefile.Qt
+--- radium-5.9.19.pristine/Makefile.Qt	2018-12-05 23:25:50.000000000 +0000
++++ radium-5.9.19.new/Makefile.Qt	2018-12-07 00:22:17.516036072 +0000
+@@ -240,7 +240,7 @@
  
  FLAGOPTS = $(DEFINES) -DGUIISQT -DUSE_GFX_OP_QUEUE -DFULL_VERSION=$(FULL_VERSION) -DIS_LITTLE_ENDIAN=1 -DUSE_OPENGL=1 $(VISUAL) $(REQTYPE_TYPE) $(MENU_TYPE)
  
@@ -25,15 +25,15 @@ diff -aur --no-dereference radium-5.8.9.pristine/Makefile.Qt radium-5.8.9.new/Ma
  #-Wstrict-overflow=4 -Wsuggest-attribute=format -Wstringop-overflow=4
  #-Wsuggest-final-types -Wsuggest-final-methods
  
-diff -aur --no-dereference radium-5.8.9.pristine/pluginhost/Builds/Linux/Makefile radium-5.8.9.new/pluginhost/Builds/Linux/Makefile
---- radium-5.8.9.pristine/pluginhost/Builds/Linux/Makefile	2018-09-12 17:40:04.000000000 +0100
-+++ radium-5.8.9.new/pluginhost/Builds/Linux/Makefile	2018-09-15 08:13:53.091842255 +0100
+diff -aur --no-dereference radium-5.9.19.pristine/pluginhost/Builds/Linux/Makefile radium-5.9.19.new/pluginhost/Builds/Linux/Makefile
+--- radium-5.9.19.pristine/pluginhost/Builds/Linux/Makefile	2018-12-05 23:25:50.000000000 +0000
++++ radium-5.9.19.new/pluginhost/Builds/Linux/Makefile	2018-12-07 00:23:36.009367093 +0000
 @@ -8,7 +8,7 @@
    CONFIG=Debug
  endif
  
--COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -Wno-class-memaccess
-+COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I /usr/include/vst36 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -Wno-class-memaccess
+-COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -Wno-class-memaccess -mfpmath=sse -msse2
++COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I /usr/include/vst36 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -Wno-class-memaccess -mfpmath=sse -msse2
  
  ifeq ($(CONFIG),Debug)
    BINDIR := build
