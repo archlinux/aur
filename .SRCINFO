@@ -9,7 +9,6 @@ pkgbase = spectrasuite
 	depends = libxp
 	depends = libxtst
 	depends = libusb-compat
-	depends = lib32-libglvnd
 	depends = libxt
 	depends = java-runtime
 	depends = libnet

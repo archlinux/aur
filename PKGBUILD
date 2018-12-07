@@ -15,7 +15,6 @@ license=('custom')
 depends=('libxp'
 	'libxtst'
 	'libusb-compat'
-	'lib32-libglvnd'
 	'libxt'
 	'java-runtime'
 	'libnet'
