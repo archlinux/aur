@@ -1,6 +1,6 @@
 # Maintainer: Šarūnas Gliebus <ssharunas at yahoo.co.uk>
 pkgname=boram
-pkgver=0.5.0
+pkgver=0.5.3
 pkgrel=2
 pkgdesc="Cross-platform WebM converter"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 	"git+https://github.com/Kagami/boram.git#tag=v$pkgver"
 )
 md5sums=(
-	'48c3bbd87c6409d0c244b2808546de95'
+	'ed269b39bcc5b19caaebb24a61b60e76'
 	'SKIP'
 	'SKIP'
 )
@@ -27,13 +27,15 @@ build() {
 	rm -f ./python
 	ln -s /usr/bin/python2 ./python	 #nacl needs python2 as python
 	export PATH="$(pwd):$PATH"
+
+	#ca-check is incompatable with openssl 1.1.1
+	sed -i '20s/^/  #/' sdk_tools/download.py
+
 	./naclsdk update
 	export NACL_SDK_ROOT="$(pwd)/pepper_49"
 
-	# Then we will need to build it with nody-gyp
+	# Now we need to build boram with nody-gyp for the libboram.so, so that video preview would work
 	cd "$srcdir/boram"
-	# Now we want to remove target ffmpeg57, because it does not compile and we have target ffmpeg58
-	sed -i -e '52,56d' binding.gyp
 	node-gyp rebuild
 }
 

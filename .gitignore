@@ -3,3 +3,5 @@ pkg
 src
 *.xz
 *.7z
+boram
+nacl_sdk
