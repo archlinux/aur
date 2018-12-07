@@ -1,7 +1,7 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy.nl>
 
 pkgname=ticcltools
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Tools for TICCL: A spelling normalisation engine"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ options=(!libtool)
 _gituser="LanguageMachines"
 _gitname="ticcltools"
 url="https://github.com/LanguageMachines/ticcltools"
-source=(https://github.com/LanguageMachines/ticcltools/archive/v0.5.tar.gz)
-md5sums=(af2b54f07d1edf4691fae1b95760e571)
+source=(https://github.com/LanguageMachines/ticcltools/archive/v0.6.tar.gz)
+md5sums=(1adc2bb24f75038f6034ee742cdb4f10)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
