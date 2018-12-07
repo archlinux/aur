@@ -1,13 +1,13 @@
 # Contributor: Darko82 <darko 82 (hat) gmail dotcom>
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=photoflow-git
-pkgver=r2352.ee4b2f45
+pkgver=r2461.3b63cfa7
 pkgrel=1
 pkgdesc="Non-destructive, layer-based photo retouching including RAW image development"
 arch=('i686' 'x86_64')
 url="http://aferrero2707.github.io/PhotoFlow"
 license=('GPL3')
-depends=('exiv2' 'vips>=8.5.1' 'gtkmm' 'pugixml' 'libjpeg-turbo')
+depends=('exiv2' 'vips-8.6.5' 'gtkmm' 'pugixml' 'libjpeg-turbo')
 makedepends=('git' 'gobject-introspection' 'cmake')
 provides=('photoflow')
 conflicts=('photoflow')
@@ -18,12 +18,10 @@ md5sums=("SKIP")
 pkgver() {
   cd ${pkgname%-*}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd ${srcdir}/${pkgname%-*}
-	sed -i 's/-Werror//' src/external/rawspeed/CMakeLists.txt
     mkdir -p build
     cd build
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_PREFIX=/usr -DBUNDLED_GEXIV2=OFF ..
