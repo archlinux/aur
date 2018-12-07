@@ -1,0 +1,27 @@
+pkgbase = netease-cloud-music-rebuild
+	pkgdesc = Netease cloud music player
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = https://github.com/innoob/netease-cloud-music
+	arch = x86_64
+	license = custom
+	depends = gconf
+	depends = gdk-pixbuf2
+	depends = expat
+	depends = gtk2
+	depends = libpulse
+	depends = nss
+	depends = vlc
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxrandr
+	depends = libxss
+	provides = netease-cloud-music
+	conflicts = netease-cloud-music
+	source = https://github.com/innoob/netease-cloud-music/releases/download/1.1.1%2Brebuild.release-2/netease-cloud-music_1.1.1+rebuild.release-2_amd64.deb
+	source = http://music.163.com/html/web2/service.html
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = netease-cloud-music-rebuild
+
