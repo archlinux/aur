@@ -3,12 +3,12 @@
 # Maintainer: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
 pkgver=4.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Find duplicate files on your system"
 arch=(any)
 url="https://dupeguru.voltaicideas.net/"
 license=('BSD')
-depends=('python' 'python-pyqt5' 'libxkbcommon-x11' 'python-polib' 'python-send2trash' 'python-hsaudiotag3k')
+depends=('python' 'python-pyqt5' 'libxkbcommon-x11' 'python-polib' 'python-send2trash')
 makedepends=(
     python-sphinx
 )
@@ -34,9 +34,11 @@ prepare(){
 
 build() {
   cd "$srcdir"
+  # Instead of doing the full ./bootstrap.sh
   python3 -m venv env --system-site-packages
   source env/bin/activate
-  python -m pip install --no-index --find-links=deps -r requirements.txt
+  #python -m pip install --no-index --find-links=deps -r requirements.txt
+  ./env/bin/pip install -r requirements.txt
   source env/bin/activate
   msg "Starting build..."
   python build.py --clean
