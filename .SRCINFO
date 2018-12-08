@@ -1,0 +1,17 @@
+pkgbase = ruby-activejob
+	pkgdesc = Job framework with pluggable queues.
+	pkgver = 5.2.2
+	pkgrel = 1
+	url = http://rubyonrails.org
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-activesupport
+	depends = ruby-globalid
+	noextract = activejob-5.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/activejob-5.2.2.gem
+	sha1sums = 800107e5495af75b1f37d655f616c0c443a01d79
+
+pkgname = ruby-activejob
+
