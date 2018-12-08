@@ -1,0 +1,39 @@
+pkgbase = trinnity-caffe-git
+	pkgdesc = Caffe 1.0 with triNNity extensions
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://bitbucket.org/STG-TCD/trinnity-caffe
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = boost-libs
+	depends = protobuf
+	depends = google-glog
+	depends = gflags
+	depends = hdf5
+	depends = python
+	depends = boost
+	depends = cython
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = ipython
+	depends = python-networkx
+	depends = python-nose
+	depends = python-pandas
+	depends = python-dateutil
+	depends = python-protobuf
+	depends = python-gflags
+	depends = python-yaml
+	depends = python-pillow
+	depends = python-six
+	depends = openblas-lapack
+	depends = opencv>=4.0.0
+	provides = trinnity-caffe
+	source = trinnity-caffe::git+https://bitbucket.org/STG-TCD/trinnity-caffe.git
+	source = dependencies.patch
+	sha256sums = SKIP
+	sha256sums = 7ddb59109d7df3889641eaa4769e6b9e82f96f623b200ecfd8ade7ecfe04f95f
+
+pkgname = trinnity-caffe-git
+
