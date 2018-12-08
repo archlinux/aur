@@ -4,13 +4,13 @@
 
 pkgname=meandmyshadow-git
 _gitname=meandmyshadow
-pkgver=v0.5.devel002.r287.gc929975
+pkgver=v0.5.beta.r213.ga82cbf0
 pkgrel=1
 pkgdesc="Puzzle/platform game in which you try to reach the exit by solving puzzles. Forked by Jz Pan (acmepjz)."
 arch=('i686' 'x86_64')
 url="https://github.com/acmepjz/meandmyshadow"
 license=('GPL3')
-depends=('sdl_gfx' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'curl' 'libarchive' 'hicolor-icon-theme' 'libgl')
+depends=('sdl2_gfx' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'curl' 'libarchive' 'hicolor-icon-theme' 'libgl')
 makedepends=('make' 'cmake' 'git')
 provides=("meandmyshadow")
 conflicts=("meandmyshadow")
