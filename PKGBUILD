@@ -20,8 +20,8 @@ md5sums=(SKIP
          '2a3ccb8cbbb4c45c5b634efce189bcaa'  ## updater.pl
          '82baecba5be4c2af0cccf0f5bc0e00c7') ## $pkgname.install
 
-pkgver=6.2.6
-pkgrel=2
+pkgver=6.3.7
+pkgrel=1
 url="http://www.livrephoto-cewe.fr/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget' 'gstreamer0.10-base-plugins' 'snappy')
