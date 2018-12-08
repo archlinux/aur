@@ -1,5 +1,5 @@
 _pkgbase=libc++
-pkgnase=${_pkgbase}-rpm
+pkgbase=${_pkgbase}-rpm
 pkgname=(${_pkgbase}{,abi}-rpm)
 pkgver=7.0.0
 pkgrel=1
@@ -20,7 +20,7 @@ sha256sums=(
 '8575d56cc65944fc9baff708246ee8b6cb7bdc4a98b6e2108d7ec6f69828b94d'
 '0baae7fe03f6734ad5bae35a3b108eed11f22d3c28c27990d8f0a84629e8628b'
 )
- 
+
 package_libc++-rpm() {
   pkgdesc='LLVM C++ standard library. (from Fedora rawhide)'
   depends=("libc++abi-rpm=${pkgver}-${pkgrel}")
@@ -34,7 +34,7 @@ package_libc++-rpm() {
   rm -rf lib
   mv lib64 lib
 }
- 
+
 package_libc++abi-rpm() {
   pkgdesc='Low level support for the LLVM C++ standard library. (from Fedora rawhide)'
   conflicts=('libc++abi')
@@ -47,4 +47,4 @@ package_libc++abi-rpm() {
   rm -rf lib
   mv lib64 lib
 }
- 
+
