@@ -1,0 +1,52 @@
+diff --git a/share/qtcreator/themes/dark.creatortheme b/share/qtcreator/themes/dark.creatortheme
+index 57b0849170..5da67fa236 100644
+--- a/share/qtcreator/themes/dark.creatortheme
++++ b/share/qtcreator/themes/dark.creatortheme
+@@ -9,7 +9,7 @@ text=ffe7e7e7
+ textDisabled=7fffffff
+ textHighlighted=ffe7e7e7
+ hoverBackground=18ffffff
+-selectedBackground=aa1f75cc
++selectedBackground=66000000
+ selectedBackgroundText=aa1f75cc
+ normalBackground=ff333333
+ alternateBackground=ff515151
+diff --git a/share/qtcreator/themes/flat-dark.creatortheme b/share/qtcreator/themes/flat-dark.creatortheme
+index 89c54e943f..9c713b4202 100644
+--- a/share/qtcreator/themes/flat-dark.creatortheme
++++ b/share/qtcreator/themes/flat-dark.creatortheme
+@@ -13,7 +13,7 @@ toolBarItemDisabled=60a4a6a8
+ fancyBarsNormalTextColor=ffd0d0d0
+ fancyBarsBoldTextColor=b6fbfdff
+ hoverBackground=22ffffff
+-selectedBackground=aa1f75cc
++selectedBackground=66000000
+ selectedBackgroundText=aa1f75cc
+ normalBackground=ff2E2F30
+ alternateBackground=ff353637
+diff --git a/share/qtcreator/themes/flat-light.creatortheme b/share/qtcreator/themes/flat-light.creatortheme
+index 27fbbb2866..5932ae86dc 100644
+--- a/share/qtcreator/themes/flat-light.creatortheme
++++ b/share/qtcreator/themes/flat-light.creatortheme
+@@ -11,7 +11,7 @@ toolBarItemDisabled=38000000
+ fancyBarsNormalTextColor=ff000000
+ fancyBarsBoldTextColor=a0010508
+ hoverBackground=1a000000
+-selectedBackground=55000000
++selectedBackground=a8ffffff
+ normalBackground=ffffffff
+ alternateBackground=ff515151
+ stop_error=ffec7373
+diff --git a/share/qtcreator/themes/flat.creatortheme b/share/qtcreator/themes/flat.creatortheme
+index 10a60c1aad..ab0189528f 100644
+--- a/share/qtcreator/themes/flat.creatortheme
++++ b/share/qtcreator/themes/flat.creatortheme
+@@ -11,7 +11,7 @@ toolBarItemDisabled=60a4a6a8
+ fancyBarsNormalTextColor=ffffffff
+ fancyBarsBoldTextColor=b6fbfdff
+ hoverBackground=22ffffff
+-selectedBackground=ff1f75cc
++selectedBackground=66000000
+ normalBackground=ffffffff
+ alternateBackground=ff515151
+ error=ffdf4f4f

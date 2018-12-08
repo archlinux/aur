@@ -1,0 +1,136 @@
+diff --git a/share/qtcreator/themes/dark.creatortheme b/share/qtcreator/themes/dark.creatortheme
+index 5da67fa236..ef19fc9fa6 100644
+--- a/share/qtcreator/themes/dark.creatortheme
++++ b/share/qtcreator/themes/dark.creatortheme
+@@ -7,10 +7,8 @@ DefaultTextEditorColorScheme=dark.xml
+ shadowBackground=ff232323
+ text=ffe7e7e7
+ textDisabled=7fffffff
+-textHighlighted=ffe7e7e7
+ hoverBackground=18ffffff
+ selectedBackground=66000000
+-selectedBackgroundText=aa1f75cc
+ normalBackground=ff333333
+ alternateBackground=ff515151
+ error=ffd84044
+@@ -120,7 +118,7 @@ SplitterColor=splitterColor
+ TextColorDisabled=textDisabled
+ TextColorError=ffff4040
+ TextColorHighlight=ffff0000
+-TextColorHighlightBackground=7a6f1c
++TextColorHighlightBackground=555500
+ TextColorLink=textColorLink
+ TextColorLinkVisited=textColorLinkVisited
+ TextColorNormal=text
+@@ -145,7 +143,7 @@ OutputPanes_TestWarnTextColor=ffc8c800
+ OutputPanes_TestFatalTextColor=ffb42828
+ OutputPanes_TestDebugTextColor=ff329696
+ OutputPaneButtonFlashColor=error
+-OutputPaneToggleButtonTextColorChecked=textHighlighted
++OutputPaneToggleButtonTextColorChecked=text
+ OutputPaneToggleButtonTextColorUnchecked=text
+ 
+ Debugger_LogWindow_LogInput=ff00acac
+@@ -206,9 +204,9 @@ PaletteText=text
+ PaletteButtonText=text
+ PaletteButtonTextDisabled=textDisabled
+ PaletteToolTipBase=selectedBackground
+-PaletteHighlight=selectedBackgroundText
++PaletteHighlight=selectedBackground
+ PaletteDark=shadowBackground
+-PaletteHighlightedText=textHighlighted
++PaletteHighlightedText=ffffffff
+ PaletteToolTipText=text
+ PaletteLink=textColorLink
+ PaletteLinkVisited=textColorLinkVisited
+diff --git a/share/qtcreator/themes/flat-dark.creatortheme b/share/qtcreator/themes/flat-dark.creatortheme
+index 9c713b4202..0c01aa1707 100644
+--- a/share/qtcreator/themes/flat-dark.creatortheme
++++ b/share/qtcreator/themes/flat-dark.creatortheme
+@@ -7,14 +7,12 @@ DefaultTextEditorColorScheme=creator-dark.xml
+ shadowBackground=ff404244
+ text=ffd0d0d0
+ textDisabled=60a4a6a8
+-textHighlighted=ffd0d0d0
+ toolBarItem=b6fbfdff
+ toolBarItemDisabled=60a4a6a8
+ fancyBarsNormalTextColor=ffd0d0d0
+ fancyBarsBoldTextColor=b6fbfdff
+ hoverBackground=22ffffff
+ selectedBackground=66000000
+-selectedBackgroundText=aa1f75cc
+ normalBackground=ff2E2F30
+ alternateBackground=ff353637
+ error=ffdf4f4f
+@@ -124,7 +122,7 @@ SplitterColor=splitter
+ TextColorDisabled=textDisabled
+ TextColorError=ffff4040
+ TextColorHighlight=ffff0000
+-TextColorHighlightBackground=7a6f1c
++TextColorHighlightBackground=8a7f2c
+ TextColorLink=textColorLink
+ TextColorLinkVisited=textColorLinkVisited
+ TextColorNormal=text
+@@ -149,7 +147,7 @@ OutputPanes_TestWarnTextColor=ffc8c800
+ OutputPanes_TestFatalTextColor=ffc82828
+ OutputPanes_TestDebugTextColor=ff329696
+ OutputPaneButtonFlashColor=error
+-OutputPaneToggleButtonTextColorChecked=textHighlighted
++OutputPaneToggleButtonTextColorChecked=fancyBarsNormalTextColor
+ OutputPaneToggleButtonTextColorUnchecked=fancyBarsNormalTextColor
+ 
+ Debugger_LogWindow_LogInput=ff00acac
+@@ -224,9 +222,9 @@ PaletteText=text
+ PaletteButtonText=text
+ PaletteButtonTextDisabled=textDisabled
+ PaletteToolTipBase=selectedBackground
+-PaletteHighlight=selectedBackgroundText
++PaletteHighlight=selectedBackground
+ PaletteDark=shadowBackground
+-PaletteHighlightedText=textHighlighted
++PaletteHighlightedText=ffffffff
+ PaletteToolTipText=text
+ PaletteLink=textColorLink
+ PaletteLinkVisited=textColorLinkVisited
+diff --git a/share/qtcreator/themes/flat-light.creatortheme b/share/qtcreator/themes/flat-light.creatortheme
+index 5932ae86dc..29edca63fd 100644
+--- a/share/qtcreator/themes/flat-light.creatortheme
++++ b/share/qtcreator/themes/flat-light.creatortheme
+@@ -145,7 +145,7 @@ OutputPanes_TestWarnTextColor=ffd0bb00
+ OutputPanes_TestFatalTextColor=ff640000
+ OutputPanes_TestDebugTextColor=ff329696
+ OutputPaneButtonFlashColor=ffff0000
+-OutputPaneToggleButtonTextColorChecked=ffffffff
++OutputPaneToggleButtonTextColorChecked=fancyBarsNormalTextColor
+ OutputPaneToggleButtonTextColorUnchecked=fancyBarsNormalTextColor
+ 
+ Debugger_LogWindow_LogInput=ff00acac
+diff --git a/src/plugins/coreplugin/locator/locatorwidget.cpp b/src/plugins/coreplugin/locator/locatorwidget.cpp
+index 2421bd776a..7276685d20 100644
+--- a/src/plugins/coreplugin/locator/locatorwidget.cpp
++++ b/src/plugins/coreplugin/locator/locatorwidget.cpp
+@@ -87,7 +87,6 @@ public:
+     LocatorModel(QObject *parent = nullptr)
+         : QAbstractListModel(parent)
+         , mBackgroundColor(Utils::creatorTheme()->color(Utils::Theme::TextColorHighlightBackground))
+-        , mForegroundColor(Utils::creatorTheme()->color(Utils::Theme::TextColorNormal))
+     {}
+ 
+     void clear();
+@@ -101,7 +100,6 @@ private:
+     mutable QList<LocatorFilterEntry> mEntries;
+     bool hasExtraInfo = false;
+     QColor mBackgroundColor;
+-    QColor mForegroundColor;
+ };
+ 
+ class CompletionDelegate : public HighlightingItemDelegate
+@@ -226,8 +224,6 @@ QVariant LocatorModel::data(const QModelIndex &index, int role) const
+     }
+     case int(HighlightingItemRole::Background):
+         return mBackgroundColor;
+-    case int(HighlightingItemRole::Foreground):
+-        return mForegroundColor;
+     }
+ 
+     return QVariant();
