@@ -1,0 +1,15 @@
+pkgbase = python-language-server-black
+	pkgdesc = Black plugin for the Python Language Server.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/rupert/pyls-black
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-language-server
+	makedepends = python-black
+	source = python-language-server-black-0.3.0.tar.gz::https://github.com/rupert/pyls-black/archive/v0.3.0.tar.gz
+	sha256sums = 5c5a9221f1176ac75e8bf9ec3676114096e33f8a8dd587f4cf58679ebf2ce550
+
+pkgname = python-language-server-black
+
