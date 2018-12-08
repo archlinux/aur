@@ -1,6 +1,6 @@
 pkgbase = rocksdb
 	pkgdesc = Embedded key-value store for fast storage
-	pkgver = 5.15.10
+	pkgver = 5.17.2
 	pkgrel = 1
 	url = http://rocksdb.org
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = rocksdb
 	depends = lz4
 	depends = snappy
 	depends = zlib
-	source = https://github.com/facebook/rocksdb/archive/v5.15.10.zip
-	sha256sums = 16356771775376b50e5cd4e7a185e84f398493183d375ff14cd6d396cdae6ea0
+	source = https://github.com/facebook/rocksdb/archive/v5.17.2.zip
+	sha256sums = 269c266c1fc12d1e73682ed1a05296588e8482d188e6d56408a29de447ce87d7
 
 pkgname = rocksdb
 
