@@ -1,19 +1,20 @@
-# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
+# Maintainer: andrewwja <aanderso [at] tcd [DOt] ie>
+# Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: Jiaxi Hu <sftrytry _AT_ gmail _DOT_ com>
 # Contributor: Giuseppe Borzi <gborzi _AT_ ieee _DOT_ org>
 
-pkgname=openblas-lapack
+pkgname=openblas-lapack-openmp
 _PkgName=OpenBLAS
 _pkgname=openblas
 pkgver=0.3.3
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.8.0
-pkgrel=1
+pkgrel=0
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
 license=('BSD')
-depends=('gcc-libs')
+depends=('gcc-libs' 'openmp')
 makedepends=('perl' 'gcc-fortran')
 provides=('openblas' "blas=${_lapackver}" "lapack=${_lapackver}" "cblas=${_lapackver}" "lapacke=${_lapackver}")
 conflicts=('openblas' 'blas' 'lapack' 'cblas' 'lapacke')
@@ -30,7 +31,7 @@ _config="FC=gfortran USE_OPENMP=0 USE_THREAD=1 \
 build(){
   cd "${srcdir}/${_PkgName}-${pkgver}"
 
-  make ${_config} libs netlib shared
+  make ${_config} USE_OPENMP=1 libs netlib shared
 }
 
 check(){
