@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Caffe 1.0 with triNNity extensions"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -13,7 +13,7 @@ depends=(
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six'
-        'openblas-lapack' 'opencv>=4.0.0'
+        'openblas' 'opencv>=4.0.0'
 )
 makedepends=('cmake')
 provides=('caffe')

@@ -1,7 +1,7 @@
 pkgbase = trinnity-caffe-git
 	pkgdesc = Caffe 1.0 with triNNity extensions
 	pkgver = 1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://bitbucket.org/STG-TCD/trinnity-caffe
 	arch = x86_64
 	license = BSD
@@ -27,7 +27,7 @@ pkgbase = trinnity-caffe-git
 	depends = python-yaml
 	depends = python-pillow
 	depends = python-six
-	depends = openblas-lapack
+	depends = openblas
 	depends = opencv>=4.0.0
 	provides = caffe
 	source = trinnity-caffe::git+https://bitbucket.org/STG-TCD/trinnity-caffe.git
