@@ -18,7 +18,7 @@ makedepends=('python2>=2.7'
              'python2-astropy-helpers'
              'python2-semantic-version'
              'python2-sphinx')
-checkdepends=('python2-pytest')
+#checkdepends=('python2-pytest')
 source=("https://files.pythonhosted.org/packages/source/a/asdf/asdf-${pkgver}.tar.gz")
 md5sums=('669966205938a85dd28ced78633d400b')
 
@@ -27,7 +27,7 @@ prepare() {
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 }
 
-build () {
+build() {
     cd ${srcdir}/asdf-${pkgver}
     python2 setup.py build --use-system-libraries --offline
 
@@ -35,15 +35,16 @@ build () {
     python2 setup.py build_docs
 }
 
-check(){
-    cd ${srcdir}/asdf-${pkgver}
-    python2 setup.py test
-}
+#check() {
+#    cd ${srcdir}/asdf-${pkgver}
+#    python2 setup.py test
+#}
 
 package_python2-asdf() {
     depends=('python2>=2.7' 'python2-numpy>=1.6' 'python2-jsonschema>=2.3.0' 'python2-yaml>=3.10' 'python2-six>=1.9.0' 'python2-semantic-version')
     optdepends=('python2-astropy>=1.1: Support for units, time, transform, wcs, or running the tests'
-                'python2-asdf-doc: Documentation for Python-ASDF')
+                'python2-asdf-doc: Documentation for Python-ASDF'
+                'python2-pytest<3.7: For testing')
     cd ${srcdir}/asdf-${pkgver}
 
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
@@ -54,7 +55,7 @@ package_python2-asdf() {
 
 package_python2-asdf-doc() {
     pkgdesc="Documentation for Python ASDF module"
-    cd ${srcdir}/asdf-${pkgver}/build/sphinx
+    cd ${srcdir}/asdf-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
