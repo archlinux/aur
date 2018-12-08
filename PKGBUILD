@@ -25,7 +25,7 @@ prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
 	git submodule init
-	git config submodule.pybind11.url ${srcdir}/pybind11
+	git config submodule.pybind11.url "${srcdir}/pybind11"
 	git submodule update
 }
 
