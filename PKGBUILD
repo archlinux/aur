@@ -2,7 +2,7 @@
 # Maintainer: Alexandre Bolelli <semeion7@hotmail.com>
 
 pkgname=handshake-cracker
-pkgver=53.cf345a2
+pkgver=54.3b187fb
 pkgrel=1
 pkgdesc="Handshake capture with aircrack-ng, test with pyrit, crack with john the ripper using self-builted wordlists."
 arch=('any')
