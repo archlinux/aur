@@ -182,10 +182,9 @@ sanitizers = false
 # Build the profiler runtime
 profiler = false
 
-# Indicates whether the OpenSSL linked into Cargo will be statically linked or
-# not. If static linkage is specified then the build system will download a
-# known-good version of OpenSSL, compile it, and link it to Cargo.
-openssl-static = false
+# Indicates whether the native libraries linked into Cargo will be statically
+# linked or not.
+cargo-native-static = true
 
 # Run the build with low priority, by setting the process group's "nice" value
 # to +10 on Unix platforms, and by using a "low priority" job object on Windows.
@@ -243,18 +242,35 @@ localstatedir = "/var/lib"
 # =============================================================================
 [rust]
 
-# Indicates that the build should be optimized for debugging Rust. Note that
-# this is typically not what you want as it takes an incredibly large amount of
-# time to have a debug-mode rustc compile any code (notably libstd). If this
-# value is set to `true` it will affect a number of configuration options below
-# as well, if unconfigured.
-debug = false
-
-# Whether or not to optimize the compiler and standard library
+# Whether or not to optimize the compiler and standard library.
+#
 # Note: the slowness of the non optimized compiler compiling itself usually
 #       outweighs the time gains in not doing optimizations, therefore a
-#       full bootstrap takes much more time with optimize set to false.
+#       full bootstrap takes much more time with `optimize` set to false.
 optimize = true
+
+# Indicates that the build should be configured for debugging Rust. A
+# `debug`-enabled compiler and standard library will be somewhat
+# slower (due to e.g. checking of debug assertions) but should remain
+# usable.
+#
+# Note: If this value is set to `true`, it will affect a number of
+#       configuration options below as well, if they have been left
+#       unconfigured in this file.
+#
+# Note: changes to the `debug` setting do *not* affect `optimize`
+#       above. In theory, a "maximally debuggable" environment would
+#       set `optimize` to `false` above to assist the introspection
+#       facilities of debuggers like lldb and gdb. To recreate such an
+#       environment, explicitly set `optimize` to `false` and `debug`
+#       to `true`. In practice, everyone leaves `optimize` set to
+#       `true`, because an unoptimized rustc with debugging
+#       enabled becomes *unusably slow* (e.g. rust-lang/rust#24840
+#       reported a 25x slowdown) and bootstrapping the supposed
+#       "maximally debuggable" environment (notably libstd) takes
+#       hours to build.
+#
+debug = false
 
 # Number of codegen units to use for each compiler invocation. A value of 0
 # means "the number of cores on this machine", and 1+ is passed through to the
@@ -322,6 +338,7 @@ debuginfo-tests = false
 
 # Flag indicating whether codegen tests will be run or not. If you get an error
 # saying that the FileCheck executable is missing, you may want to disable this.
+# Also see the target's llvm-filecheck option.
 codegen-tests = true
 
 # Flag indicating whether git info will be retrieved from .git automatically.
@@ -416,6 +433,10 @@ linker = "cc"
 # target.
 #llvm-config = "../path/to/llvm/root/bin/llvm-config"
 
+# Normally the build system can find LLVM's FileCheck utility, but if
+# not, you can specify an explicit file name for it.
+#llvm-filecheck = "/path/to/FileCheck"
+
 # Path to the custom jemalloc static library to link into the standard library
 # by default. This is only used if jemalloc is still enabled above
 #jemalloc = "/path/to/jemalloc/libjemalloc_pic.a"
@@ -470,6 +491,10 @@ linker = "i686-w64-mingw32-cc"
 # target.
 #llvm-config = "../path/to/llvm/root/bin/llvm-config"
 
+# Normally the build system can find LLVM's FileCheck utility, but if
+# not, you can specify an explicit file name for it.
+#llvm-filecheck = "/path/to/FileCheck"
+
 # Path to the custom jemalloc static library to link into the standard library
 # by default. This is only used if jemalloc is still enabled above
 #jemalloc = "/path/to/jemalloc/libjemalloc_pic.a"
@@ -523,6 +548,10 @@ linker = "x86_64-w64-mingw32-cc"
 # against. Note that if this is specified we don't compile LLVM at all for this
 # target.
 #llvm-config = "../path/to/llvm/root/bin/llvm-config"
+
+# Normally the build system can find LLVM's FileCheck utility, but if
+# not, you can specify an explicit file name for it.
+#llvm-filecheck = "/path/to/FileCheck"
 
 # Path to the custom jemalloc static library to link into the standard library
 # by default. This is only used if jemalloc is still enabled above
@@ -584,3 +613,7 @@ crt-static = true
 # as the one built on Windows will contain backslashes in paths causing problems
 # on linux
 #src-tarball = true
+#
+
+# Whether to allow failures when building tools
+#missing-tools = false
