@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=OpenSkyscraper
+Comment=A SimTower clone
+Exec=openskyscraper
+Categories=Application;Game;
+Icon=openskyscraper
+Terminal=false
+Type=Application
