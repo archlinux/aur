@@ -1,7 +1,7 @@
 pkgbase = freefilesync-bin
 	pkgdesc = Folder comparison and synchronization
 	pkgver = 10.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.freefilesync.org/
 	arch = i686
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = freefilesync-bin
 	source = FreeFileSync.png
 	source = RealTimeSync.desktop
 	source = RealTimeSync.png
-	sha256sums = dd1461f846ff71d66d418f26c59120ee6d895f2f01caaf99fc31838f69e8c8fc
-	sha256sums = 461f7deb9245bbcaf281160945ec800e54a703068220d0d239de6dddccad0de3
+	sha256sums = b4ee79bce386dd00c39b089a43f305d5941a1eef92a1e175428e760e188086c0
+	sha256sums = d46ae777a53c6e1d8e4baa088af4ad2eb798ff9064c2b4bc3768b7192d400eea
 	sha256sums = b2fac3b8c0badfbbbcf605ecad5b184f2c9918bd0dd14596e6c43df3f2a76a30
-	sha256sums = 36a6b962cb5c1cd2c453d1bddaab915b1764614b207ae7f5b3694acf5740940c
+	sha256sums = 11315b1735c4f6af91f3aaaf3b37800c54ce24f10a3e674d94f88048605e4da8
 	sha256sums = 23c68af45d34f41fdb76886067b71af4dd3fe14f2dd60f73193b2052dc333bf6
 
 pkgname = freefilesync-bin

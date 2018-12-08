@@ -3,7 +3,7 @@
 pkgname=freefilesync-bin
 _pkgname=freefilesync
 pkgver=10.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
 url="https://www.freefilesync.org/"
@@ -19,7 +19,7 @@ source=(
     RealTimeSync.png
 )
 sha256sums=(
-    "dd1461f846ff71d66d418f26c59120ee6d895f2f01caaf99fc31838f69e8c8fc"
+    "b4ee79bce386dd00c39b089a43f305d5941a1eef92a1e175428e760e188086c0"
     "d46ae777a53c6e1d8e4baa088af4ad2eb798ff9064c2b4bc3768b7192d400eea"
     "b2fac3b8c0badfbbbcf605ecad5b184f2c9918bd0dd14596e6c43df3f2a76a30"
     "11315b1735c4f6af91f3aaaf3b37800c54ce24f10a3e674d94f88048605e4da8"
