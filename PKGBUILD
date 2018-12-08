@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=photoflare-git
-pkgver=1.5.5.r0.g943259f
+pkgver=1.5.6.1.r4.gc352ba5
 pkgrel=1
 pkgdesc="Quick, simple but powerful Cross Platform image editor."
 arch=('x86_64')
