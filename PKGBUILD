@@ -8,8 +8,8 @@ _use_gh_api=true
 wl_project=${_pkgname}
 wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_pkgname,,}-git
-pkgver=6.3.r1296.5b21d550
-pkgrel=2
+pkgver=7.0.r1297.9f0fcdc1
+pkgrel=1
 pkgdesc='GPS log file viewer and analyzer'
 arch=('i686' 'x86_64')
 url='https://www.gpxsee.org/'
@@ -81,11 +81,10 @@ build() {
 package() {
   cd ${_pkgname}-${_branch}
 
-  install -dm755 ${pkgdir}/usr/share/${pkgname//-git}/{csv,maps,translations}
   install -Dm755 GPXSee ${pkgdir}/usr/bin/${pkgname//-git}
-  install -Dm644 pkg/csv/* ${pkgdir}/usr/share/${pkgname//-git}/csv
-  install -Dm644 pkg/maps/* ${pkgdir}/usr/share/${pkgname//-git}/maps
-  install -Dm644 lang/*.qm ${pkgdir}/usr/share/${pkgname//-git}/translations
+  install -Dm644 pkg/csv/* -t ${pkgdir}/usr/share/${pkgname//-git}/csv
+  install -Dm644 pkg/maps/* -t ${pkgdir}/usr/share/${pkgname//-git}/maps
+  install -Dm644 lang/*.qm -t ${pkgdir}/usr/share/${pkgname//-git}/translations
   install -Dm644 icons/gpxsee.png ${pkgdir}/usr/share/pixmaps/${pkgname//-git}.png
   install -Dm644 pkg/gpxsee.desktop ${pkgdir}/usr/share/applications/${pkgname//-git}.desktop
   install -Dm644 pkg/gpxsee.xml ${pkgdir}/usr/share/mime/packages/${pkgname//-git}.xml
