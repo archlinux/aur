@@ -69,7 +69,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=4.19.6-arch1
+_srcver=4.19.8-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -87,22 +87,26 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
-  "http://ck.kolivas.org/patches/4.0/4.19/4.19-ck${_ckpatchversion}/${_ckpatchname}.xz"
+  "http://ck.kolivas.org/patches/4.0/4.19/4.19-ck${_ckpatchversion}/4.19-ck1-broken-out.tar.xz"
+  https://gist.githubusercontent.com/graysky2/dc820c1b41c5eeb63d2de7a2e72499f4/raw/3d2b3be40df7e538db4ef9a69b438e00e5575e2d/unfuck-pre.patch
+  "unfuck-post.patch::https://pastebin.com/raw/v618N2xd"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('644e61beb66211c0c5c13f91d96de1725055e6eea4cda7bb37ce9929ba8f09c3'
+sha256sums=('d540d066f307f13f0cfe7e097373cd1af2cc4866b5e36a503775b4e69167e171'
             'SKIP'
-            'e296d89203a7688d69ec94d0c31e95ab83094a6f24f3c53104b3f19954d9e7dc'
+            '7193e2041168571a6e09a77838b18f7bdc301e64918c594cbb4f972641bf7f7a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '77863d16a08e1b3c726b6c965f1bb7c672bd7317776810121062b73f9ea26780'
-            '112b16c247dae8ff44066fd0268012f9c623d5da349ebd66896e54257b3404a5')
+            '61431037fd487f4eff135a3fcf5962270913af9fd95c31e27a2f9d4124bd3d3b'
+            'b57666e47574edcb0b12c3a4fbddf2a37b1badf3591c76344aae0e8f91452915'
+            'd761a320bade7e16dfaf4ae87a9ee1280b96068b11ac5691beb4d55edb0bada2'
+            '0810e9a099c3ec5fc18f8d8c636e424999b9aff71453dab6ffc3c26110189444')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -115,20 +119,50 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
 
+  # array defines CK1 broken out
+  # we need to modify 0001 to fix for 4.19.7+
+  _CKArr=(
+  0001-MultiQueue-Skiplist-Scheduler-version-v0.180.patch
+  0002-Fix-Werror-build-failure-in-tools.patch
+  0003-Make-preemptible-kernel-default.patch
+  0004-Expose-vmsplit-for-our-poor-32-bit-users.patch
+  0005-Create-highres-timeout-variants-of-schedule_timeout-.patch
+  0006-Special-case-calls-of-schedule_timeout-1-to-use-the-.patch
+  0007-Convert-msleep-to-use-hrtimers-when-active.patch
+  0008-Replace-all-schedule-timeout-1-with-schedule_min_hrt.patch
+  0009-Replace-all-calls-to-schedule_timeout_interruptible-.patch
+  0010-Replace-all-calls-to-schedule_timeout_uninterruptibl.patch
+  0011-Don-t-use-hrtimer-overlay-when-pm_freezing-since-som.patch
+  0012-Make-hrtimer-granularity-and-minimum-hrtimeout-confi.patch
+  0013-Make-threaded-IRQs-optionally-the-default-which-can-.patch
+  0014-Reinstate-default-Hz-of-100-in-combination-with-MuQS.patch
+  0015-Swap-sucks.patch
+  0016-Add-ck1-version.patch
+  )
+  
+  cd ../patches
+  
   # fix naming schema in EXTRAVERSION of ck patch set
-  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatchname}"
+  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" 0016-Add-ck1-version.patch
 
-  msg2 "Patching with ck patchset..."
-  patch -Np1 -i "$srcdir/${_ckpatchname}"
+  # unfuck 0001-MultiQueue-Skiplist-Scheduler-version-v0.180.patch
+  # http://ck-hack.blogspot.com/2018/11/linux-419-ck1-muqss-version-0180-for.html?showComment=1544055404401#c6971461776340355351
+  
+  patch -Np1 -i "$srcdir/unfuck-pre.patch"
 
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
-    patch -Np1 < "../$src"
+  cd ../linux-${pkgver}
+  
+  msg2 "Applying ck patchset..."
+  local ckp
+  for ckp in "${_CKArr[@]}"; do
+    patch -Np1 < "../patches/$ckp"
   done
+
+  patch -Np1 < "../unfuck-post.patch"
+
+  # now Arch patch
+  msg2 "Applying 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+  patch -Np1 < "../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
 
   msg2 "Setting config..."
   cp ../config .config
@@ -149,7 +183,7 @@ prepare() {
   fi
 
   # https://github.com/graysky2/kernel_gcc_patch
-  msg2 "Patching to enabled additional gcc CPU optimizatons..."
+  msg2 "Applying enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+ patch..."
   patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
   if [ -n "$_subarch" ]; then
