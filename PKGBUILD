@@ -37,7 +37,7 @@ package() {
 
   #install sysusers.conf
   install -Dm644 "${srcdir}/${_pkgbase}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
-  bsdtar -xvf "${srcdir}/nimiq-${pkgver}${_pkgrel}.${arch}.rpm"
+  bsdtar -xf "${srcdir}/nimiq-${pkgver}${_pkgrel}.${arch}.rpm"
   rm -rvf "usr/lib/.build-id"
   rm -rvf "etc/yum.repos.d"
   rm -rvf "etc/pki"
