@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Caffe 1.0 with triNNity extensions"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -88,5 +88,5 @@ build() {
 package() {
     cd build
     make install
-    install -m644 ../LICENSE ${pkgdir}/usr/share/Caffe
+    install -m644 LICENSE ${pkgdir}/usr/share/Caffe
 }
