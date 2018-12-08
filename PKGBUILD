@@ -1,24 +1,24 @@
-# Maintainer: Leonardo Santana Vieira <leosanvieira at gmail dot com>
+# Contributor: Leonardo Santana Vieira <leosanvieira at gmail dot com>
 
 pkgname=imagescan
 _pkgname=utsushi
-pkgver=3.48.0
-_pkgver=0.48.0
+pkgver=3.49.0
+_pkgver=0.49.0
 pkgrel=1
-_fedrel=28
+_fedrel=29
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=("GPL3")
-depends=("sane" "gtkmm" "graphicsmagick" "libtiff")
+depends=("sane" "gtkmm" "graphicsmagick" "libtiff" "boost-libs")
 makedepends=("boost")
 optdepends=("tesseract: OCR support")
 source=("http://support.epson.net/linux/src/scanner/imagescanv3/fedora/${pkgname}-${pkgver}-1epson4fedora${_fedrel}.src.rpm"
-        "utsushi-scan-gtkmm.desktop"
+        "utsushi.desktop"
         "utsushi.conf")
-md5sums=('6b5ce092ad34634154d235b88eb4f9cd'
-         '34907cc33aa800c54ff83abb0eac3fc4'
-         '65872f825a1787db89faa0a68611ed81')
+sha256sums=('3ff5ed6d00f1232be2401751e345a722cb039a7a6cdbb151fecd9135fd2c79b5'
+            '3d5f75594e29f4b077da1b890523cd263accf9a5dad2e78fea969026ea63f796'
+            '0ab6b133215ced70a673d708c5bf08f956b8077c5fc97296f0dca92be9b7765b')
 backup=("etc/utsushi/utsushi.conf")
 
 prepare() {
@@ -27,7 +27,6 @@ prepare() {
   cd ${_pkgname}-${_pkgver}
   sed -i -e 's/FATAL/DEBUG/' -e 's/NOTHING/ALL/' lib/log.cpp
   sed -i 's/ACTION!="add"/ACTION!="add|bind"/g' drivers/esci/utsushi-esci.rules
-  sed -i 's/libusb_set_debug (ctx_, 3)/libusb_set_option (ctx_, LIBUSB_OPTION_LOG_LEVEL, 3)/g' connexions/usb.cpp
 }
 
 build() {
@@ -51,6 +50,6 @@ build() {
 package() {
   cd $srcdir/${_pkgname}-${_pkgver}
   make DESTDIR=${pkgdir} install
-  install -Dm644 ${srcdir}/utsushi-scan-gtkmm.desktop $pkgdir/usr/share/applications/utsushi-scan-gtkmm.desktop
+  install -Dm644 ${srcdir}/utsushi.desktop $pkgdir/usr/share/applications/utsushi.desktop
   install -Dm644 ${srcdir}/utsushi.conf $pkgdir/etc/utsushi/utsushi.conf
 }
