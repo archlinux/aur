@@ -2,11 +2,11 @@
 
 pkgname=korla-icon-theme
 pkgver=0.7.7
-pkgrel=1
-pkgdesc='Korla icon theme suitable for every desktop environment made by tarma'
+pkgrel=2
+pkgdesc='Korla icon theme suitable for every desktop environment – made by tarma'
 arch=('any')
-url='https://www.opendesktop.org/p/1256209/'
-license=('GPL')
+url='https://www.opendesktop.org/c/1535111112'
+license=('GPL3')
 depends=('gtk-update-icon-cache')
 optdepends=('breeze-icons: fallback Breeze icon theme'
     'gnome-icon-theme: fallback Gnome icon theme'
@@ -17,7 +17,8 @@ makedepends=('unzip')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p" | head -n2))
 
-source=("https://dl.opendesktop.org/api/files/download/id/1544012871/s/$_s/t/$_t/korla%200-7-7.zip")
+#source=("https://dl.opendesktop.org/api/files/download/id/1544012871/s/$_s/t/$_t/korla%200-7-7.zip")
+source=("https://dl.opendesktop.org/api/files/download/id/1544208378/s/$_s/t/$_t/u//korla%200-7-7.zip")
 md5sums=('SKIP')
 
 package() {
