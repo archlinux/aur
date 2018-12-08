@@ -1,0 +1,15 @@
+pkgbase = workbox
+	pkgdesc = Utility to help create Progressive Web Apps
+	pkgver = 3.6.3
+	pkgrel = 1
+	url = https://developers.google.com/web/tools/workbox/modules/workbox-cli
+	arch = any
+	license = Apache
+	depends = nodejs
+	depends = npm
+	noextract = workbox-cli-3.6.3.tgz
+	source = https://registry.npmjs.org/workbox-cli/-/workbox-cli-3.6.3.tgz
+	sha512sums = 97dece678b069e71f3947b2a1c23ae2b4b36861ece8d94cf84fdf0ea22aacc3f6e47625cb57bd407b801d8c983d348a10f7913c9a47c1cb0a6108dae642ce46f
+
+pkgname = workbox
+
