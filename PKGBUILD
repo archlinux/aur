@@ -1,15 +1,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=27.0.50.r134090
+pkgver=27.0.50.r134774
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
-depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'm17n-lib' 'libxrandr'
+depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'm17n-lib' 'libxrandr' 'acl'
 	 'libxinerama' 'librsvg' 'gnutls' 'xaw3d' 'libdbus' 'libxfixes'
-	 'jansson' 'libmagick6')
+	 'jansson' 'libmagick6' 'desktop-file-utils')
 makedepends=('git' 'texlive-core')
 conflicts=('emacs')
 options=('docs' '!emptydirs')
@@ -42,7 +42,8 @@ build() {
     --with-imagemagick \
     --without-xwidgets \
     --without-pop \
-    --with-gameuser=:games
+    --with-gameuser=:games \
+    --disable-build-details 
   make
   make pdf
 }
