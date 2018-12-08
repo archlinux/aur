@@ -1,7 +1,7 @@
 # Maintainer: livix <gatti.oliver@gmail.com>
 pkgname=gazie
-pkgver=7.10
-pkgrel=2
+pkgver=7.11
+pkgrel=1
 pkgdesc="Multicompany finance application written in PHP using a MySql database backend for small to medium enterprise."
 arch=('any')
 url="http://gazie.devincentiis.it/"
@@ -10,7 +10,7 @@ depends=('mysql-clients' 'php')
 backup=(etc/webapps/gazie/gconfig.php)
 install=gazie.install
 source=(http://freefr.dl.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname$pkgver.zip)
-md5sums=('d0081b7998e029a2632421945b5ce7af')
+md5sums=('62dcb029af6d8cd26bc493911af7ce99')
 
 package() {
 	_instdir="$pkgdir"/usr/share/webapps/gazie
