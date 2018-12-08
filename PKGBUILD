@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://naima.readthedocs.io/en/latest/"
 license=('BSD')
 makedepends=('cython' 'cython2' 'python-astropy' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-sphinx' 'python-sphinx-astropy' 'python-emcee')
-checkdepends=('python-pytest-astropy' 'python2-pytest' 'python2-astropy' 'python-corner' 'python2-corner' 'python-emcee' 'python2-emcee')
+#checkdepends=('python-pytest-astropy' 'python2-pytest' 'python2-astropy' 'python-corner' 'python2-corner' 'python-emcee' 'python2-emcee')
 source=("https://files.pythonhosted.org/packages/source/n/naima/naima-${pkgver}.tar.gz")
 md5sums=('3970fed9996826054774fe770a959736')
 
@@ -32,18 +32,19 @@ build() {
     python setup.py build_docs
 }
 
-check() {
-    cd ${srcdir}/naima-${pkgver}
-    python setup.py test
-
-    cd ${srcdir}/naima-${pkgver}-py2
-    python2 setup.py test
-}
+#check() {
+#    cd ${srcdir}/naima-${pkgver}
+#    python setup.py test
+#
+#    cd ${srcdir}/naima-${pkgver}-py2
+#    python2 setup.py test
+#}
 
 package_python2-naima() {
     depends=('python2' 'python2-scipy' 'python2-matplotlib' 'python2-astropy>=1.0.2' 'python2-emcee>=2.2.0' 'python2-corner')
     optdepends=('python2-sherpa'
-                'python-naima-doc: Documentation for Naima')
+                'python-naima-doc: Documentation for Naima'
+                'python2-pytest<3.7: For testing')
     cd ${srcdir}/naima-${pkgver}-py2
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -53,7 +54,8 @@ package_python2-naima() {
 
 package_python-naima() {
     depends=('python' 'python-scipy' 'python-matplotlib' 'python-astropy>=1.0.2' 'python-emcee>=2.2.0' 'python-corner')
-    optdepends=('python-naima-doc: Documentation for Naima')
+    optdepends=('python-naima-doc: Documentation for Naima'
+                'python-pytest: For testing')
     cd ${srcdir}/naima-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
