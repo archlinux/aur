@@ -1,0 +1,33 @@
+diff --git a/src/plugins/cppeditor/cppuseselectionsupdater.cpp b/src/plugins/cppeditor/cppuseselectionsupdater.cpp
+index fc6123b94b..d78b33f17e 100644
+--- a/src/plugins/cppeditor/cppuseselectionsupdater.cpp
++++ b/src/plugins/cppeditor/cppuseselectionsupdater.cpp
+@@ -168,6 +168,12 @@ CppUseSelectionsUpdater::toExtraSelections(const CursorInfo::Ranges &ranges,
+                                            TextEditor::TextStyle style)
+ {
+     CppUseSelectionsUpdater::ExtraSelections selections;
++
++    // Skip if unset
++    const TextEditor::Format &format = m_editorWidget->textDocument()->fontSettings().formatFor(style);
++    if (!format.background().isValid())
++        return selections;
++
+     selections.reserve(ranges.size());
+ 
+     for (const CursorInfo::Range &range : ranges) {
+diff --git a/src/plugins/qmljseditor/qmljseditor.cpp b/src/plugins/qmljseditor/qmljseditor.cpp
+index bb9c70f768..74ec2c58e1 100644
+--- a/src/plugins/qmljseditor/qmljseditor.cpp
++++ b/src/plugins/qmljseditor/qmljseditor.cpp
+@@ -338,6 +338,11 @@ void QmlJSEditorWidget::updateUses()
+     if (m_qmlJsEditorDocument->isSemanticInfoOutdated()) // will be updated when info is updated
+         return;
+ 
++    // Skip if unset
++    const Format &format = textDocument()->fontSettings().formatFor(C_OCCURRENCES);
++    if (!format.background().isValid())
++        return;
++
+     QList<QTextEdit::ExtraSelection> selections;
+     foreach (const AST::SourceLocation &loc,
+              m_qmlJsEditorDocument->semanticInfo().idLocations.value(wordUnderCursor())) {
