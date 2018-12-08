@@ -1,14 +1,14 @@
 # Maintainer: Matthias Reitinger <reima at edenprime dot de>
 
 pkgname=leocad-git
-pkgver=18.02.r75.91c421e6
+pkgver=18.02.r92.19680a19
 pkgrel=1
 pkgdesc="A CAD program for creating virtual LEGO models."
 arch=('i686' 'x86_64')
-url="http://www.leocad.org/"
+url="https://www.leocad.org/"
 license=('GPL2')
 depends=('qt4')
-optdepends=('ldraw-parts-library')
+optdepends=('ldraw-parts-library: LEGO parts library')
 makedepends=('git')
 provides=('leocad')
 conflicts=('leocad')
