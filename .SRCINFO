@@ -1,14 +1,13 @@
 pkgbase = openblas-lapack-openmp
 	pkgdesc = Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)
 	pkgver = 0.3.3
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.openblas.net/
 	arch = any
 	license = BSD
 	makedepends = perl
 	makedepends = gcc-fortran
 	depends = gcc-libs
-	depends = openmp
 	provides = openblas
 	provides = blas=3.8.0
 	provides = lapack=3.8.0

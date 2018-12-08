@@ -9,12 +9,12 @@ _pkgname=openblas
 pkgver=0.3.3
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.8.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
 license=('BSD')
-depends=('gcc-libs' 'openmp')
+depends=('gcc-libs')
 makedepends=('perl' 'gcc-fortran')
 provides=('openblas' "blas=${_lapackver}" "lapack=${_lapackver}" "cblas=${_lapackver}" "lapacke=${_lapackver}")
 conflicts=('openblas' 'blas' 'lapack' 'cblas' 'lapacke')
