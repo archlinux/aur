@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.17.18.r13346.69216697d
+pkgver=2.17.19.r13348.86932916b
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -67,11 +67,17 @@ conflicts=('flexget')
 source=('git+https://github.com/Flexget/Flexget'
         'flexget.service'
         'flexget@.service'
+        'https://patch-diff.githubusercontent.com/raw/Flexget/Flexget/pull/2225.diff'
+        'https://patch-diff.githubusercontent.com/raw/Flexget/Flexget/pull/2266.diff'
+        'https://patch-diff.githubusercontent.com/raw/Flexget/Flexget/pull/2268.diff'
         )
 
 sha256sums=('SKIP'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
-            '5fca3a1b6be282c0914754bbfdeef21005d936fba3d2698801bba18369e1321a')
+            '5fca3a1b6be282c0914754bbfdeef21005d936fba3d2698801bba18369e1321a'
+            '5a22b446a33fda2174c7540c983f328797e37bd2e0ddff8342ea682dd4adce79'
+            '8a8964a0773c4db98830a7a34ab1d6f39b2e6c9feb071d98a653c3742c1fc07c'
+            'ab7378a209b815b493bc85728279d0e344db864ba394409be6d62b768f279951')
 
 pkgver() {
   cd Flexget
@@ -80,7 +86,13 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
+  sed -i 's!rpyc==4.0.1!rpyc==3.3.0!' requirements.txt
+  sed -i 's!pyyaml==3.13!pyyaml==3.12!' requirements.txt
+  sed -i 's!requests==2.20.1!requests==2.16.5!' requirements.txt
 
+  patch -p1 < ../2225.diff
+  patch -p1 < ../2266.diff
+  patch -p1 < ../2268.diff
   #pip-compile --output-file requirements.txt requirements.in
   #pip-compile give too stricts requirements...
   cp requirements.in requirements.txt
