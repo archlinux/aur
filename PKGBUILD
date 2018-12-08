@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('obhud')
-pkgver=0.2.1
-pkgrel=4
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Script for handling laptop-specific keys and events in Openbox"
 arch=('i686' 'x86_64')
 url="https://github.com/nwg-piotr/obhud"
@@ -9,12 +9,12 @@ license=('GPL3')
 depends=('xorg-xbacklight' 'xorg-xrandr' 'libxrandr' 'alsa-utils' 'python' 'python-pmw'
 'python-pillow' 'xf86-input-synaptics' 'ffmpeg' 'python-lxml' 'python-setuptools')
 optdepends=('light-git: For machines not handling xbacklight')
-source=("https://github.com/nwg-piotr/obhud/raw/master/dist/obhud-0.2.1.tar.gz"
+source=("https://github.com/nwg-piotr/obhud/raw/master/dist/obhud-0.2.2.tar.gz"
 "https://github.com/nwg-piotr/obhud/raw/master/dist/obhud"
 "https://github.com/nwg-piotr/obhud/raw/master/dist/obhud.conf"
 "https://github.com/nwg-piotr/obhud/raw/master/dist/timer.sh")
 
-md5sums=('9a673a72241a44c0c889542bc16a6595'
+md5sums=('832120fbd0b012c3691104a94b3ae466'
          '89995467e1d46692720d5331b8d444ac'
          '8f3afd928dd1cdbfa5252cf614e392a4'
          '6c9b537c6f32d3047a2b691d8ef600a7')
