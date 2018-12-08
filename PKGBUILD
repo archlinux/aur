@@ -8,8 +8,9 @@ url="http://www.stsci.edu/resources/software_hardware/stsci_python"
 license=('BSD')
 depends=('python2>=2.7' 'python2-numpy>=1.5.0' 'qd>=2.3.7' 'python2-astropy>=0.3')
 makedepends=('cython2' 'python2-astropy-helpers')
-checkdepends=('python2-pytest')
-optdepends=('python-spherical_geometry-doc: Documentation for Spherical Geometry Toolkit')
+#checkdepends=('python2-pytest')
+optdepends=('python-spherical_geometry-doc: Documentation for Spherical Geometry Toolkit'
+            'python2-pytest<3.7: For testing')
 source=("https://files.pythonhosted.org/packages/source/s/spherical_geometry/spherical_geometry-${pkgver}.tar.gz")
 md5sums=('bf33af71561a69231c9d5e1238e557c5')
 
@@ -18,15 +19,15 @@ prepare() {
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 }
 
-build () {
+build() {
     cd ${srcdir}/spherical_geometry-${pkgver}
     python2 setup.py build --use-system-libraries --offline
 }
 
-check(){
-    cd ${srcdir}/spherical_geometry-${pkgver}
-    python2 setup.py test
-}
+#check() {
+#    cd ${srcdir}/spherical_geometry-${pkgver}
+#    python2 setup.py test
+#}
 
 package() {
     cd ${srcdir}/spherical_geometry-${pkgver}
