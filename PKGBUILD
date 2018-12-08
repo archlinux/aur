@@ -2,7 +2,7 @@
 
 pkgname=php-memcache
 pkgver=3.0.8
-pkgrel=6
+pkgrel=7
 _commit=fdbd46bbc6f53ed6e024521895e142cbfc9b3340
 pkgdesc="Memcache module for PHP"
 arch=('x86_64')
@@ -14,11 +14,16 @@ checkdepends=('memcached')
 backup=('etc/php/conf.d/memcache.ini')
 install=php-memcache.install
 #source=(https://pecl.php.net/get/memcache-$pkgver.tgz)
-source=("git+https://github.com/websupport-sk/pecl-memcache.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://github.com/websupport-sk/pecl-memcache.git#commit=$_commit"
+        php73.patch)
+sha256sums=('SKIP'
+            '4192de8fde7e69ce8d14053d1e0842d61239da4ca9a1317a9451075c4188be0f')
 
 prepare() {
   cd "$srcdir/pecl-memcache"
+
+  # https://github.com/php/php-src/blob/php-7.3.0RC1/UPGRADING.INTERNALS#L90-L96
+  patch -Np1 -i ../php73.patch
 
   # Disable UDP tests
   sed -i "s|^\(\$udpPort2\? =\) .*|\1 0;|" tests/connect.inc
