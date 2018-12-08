@@ -35,13 +35,13 @@ package() {
   sed 's%^Icon=flashpeak-slimjet%Icon=slimjet%g' -i "usr/share/applications/slimjet.desktop"
   mv "opt/slimjet" "usr/share/slimjet"
   rm -rf "opt"
-  printf "#\!/bin/sh
+  printf '#!/bin/sh
 xhost + &>/dev/zero
-su - slim-root -c '#\!/bin/sh
+su - slim-root -c "#\!/bin/sh
 export FLASHPEAK=/usr/share/slimjet/flashpeak-slimjet
-export DISPLAY=:0'
-\${FLASHPEAK} \$@
-'
+export DISPLAY=:0
+\${FLASHPEAK} $@
+"'
 " > "usr/bin/slimjet-browser"
   chmod 0755 "usr/bin/slimjet-browser"
   msg2 "Moving sanitized file-tree to package-directory ..."
