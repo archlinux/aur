@@ -1,5 +1,5 @@
 diff --git a/share/qtcreator/themes/dark.creatortheme b/share/qtcreator/themes/dark.creatortheme
-index 5da67fa236..57b0849170 100644
+index 5da67fa236..6b1f2fba96 100644
 --- a/share/qtcreator/themes/dark.creatortheme
 +++ b/share/qtcreator/themes/dark.creatortheme
 @@ -9,7 +9,7 @@ text=ffe7e7e7
@@ -11,8 +11,17 @@ index 5da67fa236..57b0849170 100644
  selectedBackgroundText=aa1f75cc
  normalBackground=ff333333
  alternateBackground=ff515151
+@@ -205,7 +205,7 @@ PaletteBrightText=ffff0000
+ PaletteText=text
+ PaletteButtonText=text
+ PaletteButtonTextDisabled=textDisabled
+-PaletteToolTipBase=selectedBackground
++PaletteToolTipBase=66000000
+ PaletteHighlight=selectedBackgroundText
+ PaletteDark=shadowBackground
+ PaletteHighlightedText=textHighlighted
 diff --git a/share/qtcreator/themes/flat-dark.creatortheme b/share/qtcreator/themes/flat-dark.creatortheme
-index 9c713b4202..89c54e943f 100644
+index 9c713b4202..ba1978586c 100644
 --- a/share/qtcreator/themes/flat-dark.creatortheme
 +++ b/share/qtcreator/themes/flat-dark.creatortheme
 @@ -13,7 +13,7 @@ toolBarItemDisabled=60a4a6a8
@@ -24,6 +33,15 @@ index 9c713b4202..89c54e943f 100644
  selectedBackgroundText=aa1f75cc
  normalBackground=ff2E2F30
  alternateBackground=ff353637
+@@ -223,7 +223,7 @@ PaletteBrightText=ffff3333
+ PaletteText=text
+ PaletteButtonText=text
+ PaletteButtonTextDisabled=textDisabled
+-PaletteToolTipBase=selectedBackground
++PaletteToolTipBase=66000000
+ PaletteHighlight=selectedBackgroundText
+ PaletteDark=shadowBackground
+ PaletteHighlightedText=textHighlighted
 diff --git a/share/qtcreator/themes/flat-light.creatortheme b/share/qtcreator/themes/flat-light.creatortheme
 index 5932ae86dc..27fbbb2866 100644
 --- a/share/qtcreator/themes/flat-light.creatortheme

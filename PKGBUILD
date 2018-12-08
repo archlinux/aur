@@ -38,7 +38,7 @@ source=("http://download.qt.io/official_releases/qtcreator/${pkgver%.*}/$pkgver/
 sha256sums=('aec7b4595e17f5536eb2eef4331057f2d0fa4ba0a46f4968cc06959a1d589b43'
             '6f19fc9d83964a5460d224b3d44ce580553847960181fe0364e2ce26e1efd2e6'
             'a7b87219de0ee3e18754749a057535c04357acc2478dcb3fca6bc4b1ba8a8178'
-            '472e5206799953178f6fb8054e667a43cf895acd6f101d0363ff84b2b7ea6b9e')
+            '514d9ff2989b0c865ead40b62df79f46871cbc1840ca552c64947b2e6c7d7d18')
 
 prepare() {
   mkdir -p build
