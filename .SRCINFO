@@ -1,0 +1,22 @@
+pkgbase = elements-git
+	pkgdesc = A periodic table designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/FreeeRadicals/elements
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = glib2
+	provides = elements
+	conflicts = elements
+	source = git+https://github.com/FreeeRadicals/elements.git
+	md5sums = SKIP
+
+pkgname = elements-git
+
