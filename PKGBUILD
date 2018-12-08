@@ -9,7 +9,7 @@ _pkgname=openblas
 pkgver=0.3.3
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -25,7 +25,7 @@ sha256sums=('49d88f4494ae780e3d7fa51769c00d982d7cdb73e696054ac3baa81d42f13bab')
 # Add the following line to the _config variable if you want to set the number of make jobs
 #  MAKE_NB_JOBS=2 \
 
-_config="FC=gfortran USE_OPENMP=1 USE_THREAD=0 \
+_config="FC=gfortran USE_OPENMP=1 USE_THREAD=1 \
   USE_COMPILER_TLS=0 \
   NO_LAPACK=0 BUILD_LAPACK_DEPRECATED=1"
 
