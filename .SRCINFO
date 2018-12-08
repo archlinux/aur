@@ -1,7 +1,7 @@
-pkgbase = nimiq
+pkgbase = nimiq-bin
 	pkgdesc = Nimiq core
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nimiq.com
 	install = nimiq.install
 	arch = x86_64
