@@ -1,7 +1,7 @@
 # Maintainer: Lettier <gifcurry_aur a@@at@t lettier dd.ot..t ccommm>
 
 _name=gifcurry
-_ver=4.0.0.0
+_ver=5.0.0.0
 _xrev=0
 
 pkgname=${_name}
@@ -15,7 +15,7 @@ makedepends=()
 depends=("gtk3" "imagemagick" "gstreamer" "gst-plugins-base-libs" "gst-plugins-base" "gst-plugins-good")
 options=()
 source=("https://www.github.com/lettier/${_name}/releases/download/${_ver}/${_name}-linux-${_ver}.tar.gz")
-md5sums=('88580edce54b0d94dbd4829208f4edc1')
+md5sums=('95eff42e29aa1e7719b9da33b8ede226')
 
 package() {
   cd "${srcdir}/${_name}-linux-${_ver}"
