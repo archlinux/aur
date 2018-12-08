@@ -8,8 +8,9 @@ pkgdesc="Handshake capture with aircrack-ng, test with pyrit, crack with john th
 arch=('any')
 url='https://github.com/semeion/handshake-cracker'
 license=('GPL3')
-depends=('aircrack-ng' 'wireshark-cli' 'cowpatty' 'mdk3' 'xterm' 'ncurses' 'psmisc' 'gawk' 'macchanger' 
-         'coreutils' 'glibc' 'sed' 'gzip' 'bzip2' 'unzip' 'wget' 'sudo' 'less' 'john' 'python2' 'python2-lxml')
+depends=('aircrack-ng' 'hcxtools' 'hashcat' 'wireshark-cli' 'cowpatty' 'mdk3' 'xterm' 'ncurses' 'psmisc' 'gawk'
+         'macchanger' 'coreutils' 'glibc' 'sed' 'gzip' 'bzip2' 'unzip' 'wget' 'sudo' 'less' 'john' 'python2' 'python2-lxml')
+#optdepends=('hcxdumptool')
 makedepends=('git')
 source=('git+https://github.com/semeion/handshake-cracker.git')
 sha256sums=('SKIP') # use 'updpkgsums' if you want
@@ -22,14 +23,12 @@ pkgver() {
 package()
 {
     cd "${srcdir}/${pkgname}"
-
     # Install script
     install -D -m755 crack "${pkgdir}/usr/bin/crack"
     install -D -m755 crawler-dicionarioinformal "${pkgdir}/usr/bin/crawler-dicionarioinformal"
     install -D -m755 crawler-dictionary "${pkgdir}/usr/bin/crawler-dictionary"
     install -D -m755 handshake "${pkgdir}/usr/bin/handshake"
     install -D -m755 wordlist "${pkgdir}/usr/bin/wordlist"
-
     # Install john config with custom rules
     install -D -m644 john.conf.custom "${pkgdir}/etc/john/john.conf.custom"
 }
