@@ -1,8 +1,8 @@
 pkgbase = xf86-video-mga
 	pkgdesc = X.org mga video driver
-	pkgver = 1.6.5+8+g2998868
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = http://xorg.freedesktop.org/
+	url = https://wiki.freedesktop.org/xorg/
 	arch = x86_64
 	groups = xorg-drivers
 	groups = xorg
