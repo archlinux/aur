@@ -1,6 +1,6 @@
 pkgbase = bitcoin-core-git
 	pkgdesc = Bitcoin Core headless P2P node
-	pkgver = 20180616
+	pkgver = 20181207
 	pkgrel = 1
 	url = https://github.com/bitcoin/bitcoin
 	install = bitcoin.install
@@ -23,6 +23,7 @@ pkgbase = bitcoin-core-git
 	depends = boost
 	depends = boost-libs
 	depends = zeromq
+	depends = libevent
 	provides = bitcoin-cli
 	provides = bitcoin-core
 	provides = bitcoin-daemon

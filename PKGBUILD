@@ -1,24 +1,15 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-git
-pkgver=20180616
+pkgver=20181207
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/bitcoin/bitcoin"
-depends=('boost'
-         'boost-libs'
-         'zeromq')
+depends=('boost' 'boost-libs' 'zeromq' 'libevent')
 checkdepends=('python')
-makedepends=('autoconf'
-             'automake'
-             'binutils'
-             'git'
-             'libtool'
-             'm4'
-             'make'
-             'pkg-config'
-             'systemd')
+makedepends=('autoconf' 'automake' 'binutils' 'git' 'libtool' 'm4' 'make' 'pkg-config' 'systemd')
 license=('MIT')
 source=(git+https://github.com/bitcoin/bitcoin
         bitcoin.conf
