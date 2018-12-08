@@ -1,9 +1,8 @@
 pkgbase = gorm
-	pkgdesc = GNUstep's easy-to-use interface designer.
-	pkgver = 1.2.20
+	pkgdesc = GNUstep's easy-to-use interface designer
+	pkgver = 1.2.23
 	pkgrel = 1
 	url = http://www.gnustep.org/experience/Gorm.html
-	install = gorm.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,10 +10,8 @@ pkgbase = gorm
 	makedepends = gnustep-make
 	depends = gnustep-base
 	depends = gnustep-gui
-	source = ftp://ftp.gnustep.org/pub/gnustep/dev-apps/gorm-1.2.20.tar.gz
-	source = gorm.install
-	sha256sums = 1428bee51999e1915017a1d283a6ad73a94cabdddb7a0d5ad0e9f79bec92d6c0
-	sha256sums = f703f8de14eb277dc72cc837086fbd55f5d772049a44200686c8ae76348f6614
+	source = ftp://ftp.gnustep.org/pub/gnustep/dev-apps/gorm-1.2.23.tar.gz
+	sha256sums = cbd25abbbc85d81d50111be75da14aabce368337694948c95b68b6fdf74eeea2
 
 pkgname = gorm
 
