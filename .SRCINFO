@@ -1,7 +1,7 @@
-pkgbase = trinnity-caffe-git
-	pkgdesc = Caffe 1.0 with triNNity extensions
+pkgbase = trinnity-caffe-cuda-git
+	pkgdesc = Caffe 1.0 with triNNity extensions (CUDA backend)
 	pkgver = 1.0
-	pkgrel = 6
+	pkgrel = 0
 	url = https://bitbucket.org/STG-TCD/trinnity-caffe
 	arch = x86_64
 	license = BSD
@@ -29,11 +29,13 @@ pkgbase = trinnity-caffe-git
 	depends = python-six
 	depends = openblas-lapack
 	depends = opencv>=4.0.0
+	depends = cuda
+	depends = nccl
 	provides = caffe
 	source = trinnity-caffe::git+https://bitbucket.org/STG-TCD/trinnity-caffe.git
 	source = dependencies.patch
 	sha256sums = SKIP
 	sha256sums = 7ddb59109d7df3889641eaa4769e6b9e82f96f623b200ecfd8ade7ecfe04f95f
 
-pkgname = trinnity-caffe-git
+pkgname = trinnity-caffe-cuda-git
 

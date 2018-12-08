@@ -1,9 +1,9 @@
 # Maintainer: Andrew Anderson <aanderso at t c d dot ie>
-pkgname=trinnity-caffe-git
+pkgname=trinnity-caffe-cuda-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=6
-pkgdesc="Caffe 1.0 with triNNity extensions"
+pkgrel=0
+pkgdesc="Caffe 1.0 with triNNity extensions (CUDA backend)"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
 license=('BSD')
@@ -13,7 +13,7 @@ depends=(
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six'
-        'openblas-lapack' 'opencv>=4.0.0'
+        'openblas-lapack' 'opencv>=4.0.0' 'cuda' 'nccl'
 )
 makedepends=('cmake')
 provides=('caffe')
@@ -33,11 +33,15 @@ prepare() {
 
     mkdir -p build
     cd build
+    PATH+=":/opt/cuda/bin/" \
+    CC=gcc-7 \
+    CXX=g++-7 \
     CMAKE_BUILD_TYPE="Release" \
     CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` \
     cmake \
-    -DCPU_ONLY=ON \
-    -DUSE_NCCL=OFF \
+    -DCPU_ONLY=OFF \
+    -DUSE_CUDA=ON \
+    -DUSE_NCCL=ON \
     -DBUILD_tools=OFF \
     -DBUILD_SHARED_LIBS=OFF \
     -DBUILD_python=ON \
@@ -59,7 +63,7 @@ prepare() {
 
 build() {
     cd build
-    make -j`grep processor /proc/cpuinfo | wc -l` clean caffe pycaffe
+    PATH+=":/opt/cuda/bin" CC=gcc-7 CXX=g++-7 make -j`grep processor /proc/cpuinfo | wc -l` clean caffe pycaffe
     cp ${srcdir}/${_srcname}/LICENSE .
 }
 
