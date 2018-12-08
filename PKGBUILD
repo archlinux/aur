@@ -2,7 +2,7 @@
 
 _pkgname=aurafetch
 pkgname=${_pkgname}-git
-pkgver=r37.1582bc5
+pkgver=r39.038dc0b
 pkgrel=1
 pkgdesc="A super-minimal info script written in bash"
 arch=("any")
@@ -10,7 +10,7 @@ arch=("any")
 url="https://gitlab.com/LionessAlana/aurafetch"
 license=("GPL3")
 
-depends=("bash" "pacman" "xorg-xprop")
+depends=("xorg-xprop" "grep" "awk")
 makedepends=("git")
 conflicts=("${_pkgname}")
 

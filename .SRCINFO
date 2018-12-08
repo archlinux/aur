@@ -1,14 +1,14 @@
 pkgbase = aurafetch-git
 	pkgdesc = A super-minimal info script written in bash
-	pkgver = r37.1582bc5
+	pkgver = r39.038dc0b
 	pkgrel = 1
 	url = https://gitlab.com/LionessAlana/aurafetch
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = bash
-	depends = pacman
 	depends = xorg-xprop
+	depends = grep
+	depends = awk
 	conflicts = aurafetch
 	source = aurafetch::git+https://gitlab.com/LionessAlana/aurafetch.git
 	sha512sums = SKIP
