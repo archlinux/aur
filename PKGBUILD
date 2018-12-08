@@ -2,9 +2,8 @@
 
 _pkgbase="nimiq"
 pkgname=${_pkgbase}-bin
-pkgver=1.4.0
-_orig_pkgrel=1
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Nimiq core"
 arch=('x86_64')
 url="https://nimiq.com"
@@ -14,8 +13,13 @@ depends=(
   'nodejs'
   'npm'
 )
+_pkgrel=""
+if [ ${pkgrel} -gt 0 ]
+then
+  _pkgrel="-${pkgrel}"
+fi
 source=(
-  "https://repo.nimiq.com/rpm/stable/${arch}/nimiq-${pkgver}-${_orig_pkgrel}.${arch}.rpm"
+  "https://repo.nimiq.com/rpm/stable/${arch}/nimiq-${pkgver}${_pkgrel}.${arch}.rpm"
   "${_pkgbase}.sysusers"
 )
 noextract=("${source[@]##*/}")
@@ -23,7 +27,7 @@ backup=(
   "etc/nimiq/nimiq.conf"
 )
 sha256sums=(
-  '26dcfb2f6299a274f812dae1576b926acb04336e7dada7d8571ece93d8668cff'
+  'fc01ccb1ce46d8a155de3c84adcaef5cdd4c0db8581f9c4714be1d3b7c90e531'
   'bcccf6e33e8c5f73342a1a73422f48269af1f332a3151cec9c304b05dec74303'
 )
 install="${_pkgbase}.install"
@@ -33,7 +37,7 @@ package() {
 
   #install sysusers.conf
   install -Dm644 "${srcdir}/${_pkgbase}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
-  bsdtar -xvf "${srcdir}/nimiq-${pkgver}-${_orig_pkgrel}.${arch}.rpm"
+  bsdtar -xvf "${srcdir}/nimiq-${pkgver}${_pkgrel}.${arch}.rpm"
   rm -rvf "usr/lib/.build-id"
   rm -rvf "etc/yum.repos.d"
   rm -rvf "etc/pki"
