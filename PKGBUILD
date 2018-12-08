@@ -2,9 +2,9 @@
 # <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=6.8.3
-_pkgtimestamp=1525200006683
-_pkgbuild=951
+pkgver=6.9.0
+_pkgtimestamp=1525200006690
+_pkgbuild=820
 pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
@@ -14,10 +14,10 @@ depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gconf' 'gtk3' 'libxss')
 makedepends=('cpio')
 conflicts=('crashplan')
 install=crashplan-pro.install
-source=(https://web-lbm-msp.crashplanpro.com/client/installers/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
+source=(https://www.crashplanpro.com/client/installers/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('bc942df5ce525984f99e0eb275c8d8e6613c829ab1fded00138b188a6930ab24'
+sha256sums=('3f60150a1b8767f2b6211bd157ffdab825cec0ed874f2e70c0b38b41d2597d27'
             'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
             'fd4c80dbd2ea3dcfc9966832a599f1bb310f705f813474d1900c1867ea55155c')
 
