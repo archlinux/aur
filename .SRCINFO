@@ -1,0 +1,16 @@
+pkgbase = hashpump
+	pkgdesc = A tool to exploit the hash length extension attack in various hashing algorithms
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/bwall/HashPump
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = openssl
+	provides = hashpump
+	conflicts = hashpump-git
+	source = https://github.com/bwall/HashPump/archive/v1.2.0.tar.gz
+	md5sums = a2e82942ecf4bce4797bc851cb77eb02
+
+pkgname = hashpump
+
