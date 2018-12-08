@@ -3,7 +3,7 @@
 pkgbase=python-deluge-client
 pkgname=('python-deluge-client' 'python2-deluge-client')
 _pkgname=deluge-client
-pkgver=1.0.5
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Simple python Deluge Client"
 url="https://pypi.python.org/pypi/deluge-client"
@@ -11,7 +11,7 @@ license=('MIT')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/JohnDoee/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('7089b8661b7b8158c2945eb2e9bedb229df55ac9d3233133b8f98b575e142558')
+sha256sums=('b34056a1007ce5ecd9efc90e84f74d7c0a1bcc3049fdcbbd7890610c04e0fc1e')
 
 prepare() {
   cp -a ${_pkgname}-${pkgver}{,-python2}
