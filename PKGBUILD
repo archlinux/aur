@@ -1,7 +1,7 @@
 # Maintainer: Giusy Margarita <kurmikon at libero dot it>
 
 pkgname=korla-icon-theme
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc='Korla icon theme suitable for every desktop environment made by tarma'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('unzip')
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p" | head -n2))
 
-source=("https://dl.opendesktop.org/api/files/download/id/1544012871/s/$_s/t/$_t//korla%200-7-6.zip")
+source=("https://dl.opendesktop.org/api/files/download/id/1544012871/s/$_s/t/$_t/korla%200-7-7.zip")
 md5sums=('SKIP')
 
 package() {
