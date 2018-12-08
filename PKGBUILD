@@ -1,20 +1,22 @@
 # Maintainer: Cody P Schafer <archlinux at codyps.com>
+# Contributor: Martchus <martchus@gmx.net>
+
 _bpn=paho-mqtt-c
 pkgname=${_bpn}-git
-pkgver=1.3.0.r0.g9f715d0
+pkgver=1.3.0.r4.g26c6c99
 pkgrel=1
-pkgdesc="a fully fledged MQTT client written in ANSI standard C"
+pkgdesc="A fully fledged MQTT client written in ANSI standard C"
 arch=(any)
 url="https://www.eclipse.org/paho/clients/c/"
 license=('EPL')
 groups=()
 depends=()
-makedepends=(git)
+makedepends=(git doxygen)
 provides=(${_bpn})
 conflicts=(${_bpn})
 replaces=()
 backup=()
-options=(!emptydirs)
+options=(!emptydirs !makeflags)
 install=
 source=(
   "git+https://github.com/eclipse/paho.mqtt.c.git"
