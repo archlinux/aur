@@ -1,0 +1,25 @@
+pkgbase = nimiq
+	pkgdesc = Nimiq core
+	pkgver = 1.4.1
+	pkgrel = 0
+	url = https://nimiq.com
+	install = nimiq.install
+	arch = x86_64
+	groups = base-devel
+	license = Apache
+	makedepends = yarn
+	makedepends = gulp
+	makedepends = gcc
+	makedepends = make
+	depends = nodejs>=8.0.0
+	depends = npm
+	noextract = core.git#tag=v1.4.1
+	noextract = nimiq.sysusers
+	backup = etc/nimiq/nimiq.conf
+	source = nimiq-core.git::git+https://github.com/nimiq-network/core.git#tag=v1.4.1
+	source = nimiq.sysusers
+	sha256sums = SKIP
+	sha256sums = bcccf6e33e8c5f73342a1a73422f48269af1f332a3151cec9c304b05dec74303
+
+pkgname = nimiq
+
