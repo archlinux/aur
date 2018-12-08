@@ -2,8 +2,8 @@
 
 pkgname=msiklm-git
 _pkgname=msiklm
-pkgver=20160421.04fd5ad
-pkgrel=2
+pkgver=20180823.a284db0
+pkgrel=1
 pkgdesc='A simple backlighting manager for MSI steelseries keyboards'
 arch=('i686' 'x86_64')
 license=('GPL3')

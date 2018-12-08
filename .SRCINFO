@@ -1,6 +1,6 @@
 pkgbase = msiklm-git
 	pkgdesc = A simple backlighting manager for MSI steelseries keyboards
-	pkgver = 20160417.d3f15b9
+	pkgver = 20180823.a284db0
 	pkgrel = 1
 	url = https://github.com/Gibtnix/MSIKLM
 	arch = i686
