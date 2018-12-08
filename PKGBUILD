@@ -1,4 +1,4 @@
-# Maintainer: me
+# Maintainer: Cardflip
 
 pkgname=plata-theme-minimal
 pkgver=0.4.7.1
