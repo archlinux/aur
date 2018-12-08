@@ -4,12 +4,12 @@
 
 pkgname=meandmyshadow
 pkgver=0.5a
-pkgrel=1
+pkgrel=2
 pkgdesc="Puzzle/platform game in which you try to reach the exit by solving puzzles."
 arch=('i686' 'x86_64')
 url="http://meandmyshadow.sourceforge.net/"
 license=('GPL3')
-depends=('sdl_gfx' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'curl' 'libarchive' 'hicolor-icon-theme' 'libgl')
+depends=('sdl2_gfx' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'curl' 'libarchive' 'hicolor-icon-theme' 'libgl')
 makedepends=('make' 'cmake')
 source=("https://sourceforge.net/projects/meandmyshadow/files/$pkgver/meandmyshadow-$pkgver-src.tar.gz")
 md5sums=('314cf2df805e2d094c00eca601a05642')
