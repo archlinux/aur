@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Caffe 1.0 with triNNity extensions"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -37,25 +37,6 @@ prepare() {
     CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` \
     cmake \
     -DCPU_ONLY=ON \
-    -DUSE_INDEX_64=OFF \
-    -DUSE_HALF=OFF \
-    -DUSE_SINGLE=ON \
-    -DUSE_DOUBLE=OFF \
-    -DUSE_INT_QUANT_8=OFF \
-    -DUSE_INT_QUANT_16=OFF \
-    -DUSE_INT_QUANT_32=OFF \
-    -DUSE_INT_QUANT_64=OFF \
-    -DUSE_CUDA=OFF \
-    -DUSE_OPENCL=OFF \
-    -DUSE_HSA=OFF \
-    -DUSE_HIP=OFF \
-    -DFORCE_COMPILE_CU_AS_CPP=OFF \
-    -DDISABLE_DEVICE_HOST_UNIFIED_MEMORY=OFF \
-    -DUSE_LIBDNN=OFF \
-    -DUSE_CLBLAS=OFF \
-    -DUSE_CLBLAST=OFF \
-    -DUSE_ISAAC=OFF \
-    -DUSE_CUDNN=OFF \
     -DUSE_NCCL=OFF \
     -DBUILD_tools=OFF \
     -DBUILD_SHARED_LIBS=OFF \
@@ -69,11 +50,6 @@ prepare() {
     -DUSE_HDF5=ON \
     -DALLOW_LMDB_NOLOCK=OFF \
     -DUSE_OPENMP=OFF \
-    -DUSE_FFT=OFF \
-    -DUSE_SQLITE=OFF \
-    -DUSE_GEMMLOWP=OFF \
-    -DUSE_NATIVE_MARCH=ON \
-    -DUSE_ARM_CROSS_COMPILE=OFF \
     -DBLAS=Open \
     -D python_version=3 \
     -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr \
