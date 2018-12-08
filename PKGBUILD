@@ -4,12 +4,12 @@
 
 pkgname='concourse-fly'
 pkgver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A command line interface that runs a build in a container with ATC."
 arch=(x86_64)
 url="https://concourse-ci.org/fly.html"
 license=('Apache')
-makedepends=('go')
+makedepends=('go-pie')
 source=("git+https://github.com/concourse/concourse.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 provides=('fly')
@@ -25,7 +25,9 @@ build() {
     cd "${srcdir}/concourse"
     export GOPATH="$PWD"
     cd src/github.com/concourse/fly
-    go build
+    go build -gcflags "all=-trimpath=${PWD}" \
+             -asmflags "all=-trimpath=${PWD}" \
+             -ldflags "-extldflags ${LDFLAGS}"
 }
 
 check() {
