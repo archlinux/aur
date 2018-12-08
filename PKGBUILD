@@ -4,7 +4,7 @@
 # Contributor: Michael Eckert <michael.eckert@linuxmail.org>
 
 pkgname=makedumpfile
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="A tool to generate smaller dumpfiles from kdump memory dumps"
 license=('GPL2')
@@ -12,7 +12,7 @@ depends=('perl' 'elfutils')
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/makedumpfile"
 source=("https://netcologne.dl.sourceforge.net/project/makedumpfile/makedumpfile/${pkgver}/makedumpfile-${pkgver}.tar.gz")
-sha256sums=('7e06f72d5f291fcab9e92975f405a76e37d4f7fc8fa4172f199636398ae812b1')
+sha256sums=('5d4f1d6ded8dca6951eeabcf4bb1ebf6575288fee947529397103c040eb5c760')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
