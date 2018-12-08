@@ -2,7 +2,7 @@
 
 _name=taskell
 pkgname="${_name}-bin"
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='A command line kanban board/task manager written in Haskell'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "${url}/releases/download/${pkgver}/${_pkgfile}"
   LICENSE
 )
-sha256sums=('6168be41b40b80964df7ac212591f9955925f08cab497304dbae5ad39bb133f1'
+sha256sums=('343426c71255d7148d85ea3adaf68c1ab0622f73f2eb72e50c288d73e982b6a5'
             '04dc83953b60b17ab28cbc37ad3188e1c632db38dd423885af7507460f461d29')
 
 package() {
