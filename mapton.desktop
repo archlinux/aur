@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Mapton
+Comment=Some kind of map application
+Exec=mapton
+Icon=gnome-maps
+Terminal=false
+Categories=Application;Education;
+StartupNotify=true
