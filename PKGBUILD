@@ -8,6 +8,7 @@ url="https://github.com/bwall/HashPump"
 license=('MIT')
 depends=('openssl')
 provides=("$pkgname")
+makedepends=('gcc')
 conflicts=("$pkgname-git")
 source=("https://github.com/bwall/HashPump/archive/v$pkgver.tar.gz")
 md5sums=('a2e82942ecf4bce4797bc851cb77eb02')
