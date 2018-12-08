@@ -9,7 +9,7 @@ wl_project=${_pkgname}
 wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_pkgname,,}-git
 pkgver=7.0.r1297.9f0fcdc1
-pkgrel=1
+pkgrel=2
 pkgdesc='GPS log file viewer and analyzer'
 arch=('i686' 'x86_64')
 url='https://www.gpxsee.org/'
@@ -21,7 +21,8 @@ if [ "${_use_gh_api}" = true ]; then
 else
   makedepends+=('git')
 fi
-optdepends=('qt5-imageformats: Support for TIFF')
+optdepends=('qt5-imageformats: Support for GeoTIFF images'
+            'qt5-pbfimageplugin: Support for PBF vector maps')
 provides=("${pkgname//-git}=${pkgver}")
 conflicts=(${pkgname//-git})
 if [ "${_use_gh_api}" = true ]; then
