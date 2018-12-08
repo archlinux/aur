@@ -6,6 +6,7 @@ pkgbase = hashpump
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = gcc
 	depends = openssl
 	provides = hashpump
 	conflicts = hashpump-git
