@@ -1,18 +1,19 @@
-#Maintainer: Yan Burdonsky <psyrccio@gmail.com>
+#Maintainer: Alexander Adler <alexadler1@protonmail.com>
 #Contributor: Yan Burdonsky <psyrccio@gmail.com>
 pkgname=anoise
-pkgver=0.0.25
-pkgrel=3
+pkgver=0.0.29
+pkgrel=1
 pkgdesc="Ambient Noise Player. Relax or concentrate with a noise"
 arch=('any')
 license=('GPL3')
 url="https://code.launchpad.net/anoise"
 options=()
 conflicts=()
+makedeps=('bison' 'flex')
 depends=('anoise-media' 'python-distutils-extra' 'gstreamer0.10' 'gstreamer0.10-python')
 optdepends=()
 source=("https://launchpad.net/~costales/+archive/ubuntu/anoise/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('7d6215cfcbce1c5a9a48c61d62a2851f142dac21b818f8820aed37ab84a6f2a0')
+sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}"
