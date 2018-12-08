@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/getzola/zola"
 makedepends=(cargo cmake)
 license=('MIT')
-source=("https://github.com/getzola/zola/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/getzola/zola/archive/v${pkgver}.tar.gz")
 sha256sums=('718aaec6e0db6c0e6fb310d8a1ef3978f41a173e39b1c2515ca7365690b09cff')
 
 build() {
