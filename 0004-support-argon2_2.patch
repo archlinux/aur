@@ -1,0 +1,52 @@
+---
+ include/grub/types.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/include/grub/types.h b/include/grub/types.h
+index 0a3ff1591..13b0c46b3 100644
+--- a/include/grub/types.h
++++ b/include/grub/types.h
+@@ -153,6 +153,7 @@ typedef grub_int32_t        grub_ssize_t;
+ #define GRUB_SHRT_MAX 0x7fff
+ #define GRUB_SHRT_MIN (-GRUB_SHRT_MAX - 1)
+ #define GRUB_UINT_MAX 4294967295U
++#define GRUB_UINT32_MAX 4294967295U
+ #define GRUB_INT_MAX 0x7fffffff
+ #define GRUB_INT_MIN (-GRUB_INT_MAX - 1)
+ #define GRUB_INT32_MAX 2147483647
+@@ -174,6 +175,13 @@ typedef grub_int32_t       grub_ssize_t;
+ #define GRUB_TYPE_U_MAX(type) ((unsigned long long)((typeof (type))(~0)))
+ #define GRUB_TYPE_U_MIN(type) 0ULL
+
++# define GRUB_UINT32_C(x) x ## U
++# if GRUB_ULONG_MAX >> 31 >> 31 >> 1 == 1
++#  define GRUB_UINT64_C(x) x##UL
++# elif 1
++#  define GRUB_UINT64_C(x) x##ULL
++# endif
++
+ typedef grub_uint64_t grub_properly_aligned_t;
+
+ #define GRUB_PROPERLY_ALIGNED_ARRAY(name, size) grub_properly_aligned_t name[((size) + sizeof (grub_properly_aligned_t) - 1) / sizeof (grub_properly_aligned_t)]
+--
+2.32.0
+
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEF9hrgiFbCdvenl/rVbJhu7ckPpQFAmEP4xcACgkQVbJhu7ck
+PpTcrA/+PqtqzLX54L1VYNehv8ilsLbLPLLJp6ov/sjDbKzFt/50Y1LGguTG81hF
+DMjqk2NtF6FGZS494GzZyZDpNMzfEFTxEZdOsSzoq9EbuDILUZ/2UMCwmTbYX9Bd
+2pZaI+ZeI+H7hI78CKAIAYRRz4dUuH0f7xnlpNzjk4XqE/2kkNwzbiwK+zhAb4Xw
+zD9BfPnPqSF1YoOMGJ5nNYwEKaqRg9XRq+zim1ADQDIydt/qS3GFudlLddC2x5UR
+umbP6EltWqn7jthHyK8aD924PvkiuVWlHa9kbn6ePkrkWpiXMYQyrfzlBjcoVRfw
+wHE2X7LzBKTf0vgB8uCNY9rxpy44dBFXxEqknwLn1heLx7NbaRaylzdRmeDCSsDR
+VlR8mF45BvLZwv4LrIT9Ok4cR3vGbYQjWs3eqCklH5R/GwDnlZnc6SwN1tdxZLk2
+om2cdTS/cfz/5qodKKQGjk9rZqOV4dHAi9SwxzpafmXFRUPEJOHuDoIGIeuAofLz
+4RsiSDBVAYCq+qWdkye38Ei37WlzFBJvz3DHMDUAqsjw+IWorFJBeWAerL1viCNj
+SDFBAT+QuLYJS0F2h3IIzCgVJAnXMKrCLEuruhoSw4duYjOQw0fMlXgrYX30VCx6
+xkdfrzE5Bh9jqr+igqqglaTD8OpF+dFMSWHTU9Ew+CtpbiLzN5c=
+=YqYY
+-----END PGP SIGNATURE-----
+
+

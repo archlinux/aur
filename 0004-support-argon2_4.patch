@@ -1,0 +1,71 @@
+---
+ grub-core/disk/luks2.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/grub-core/disk/luks2.c b/grub-core/disk/luks2.c
+index 371a53b83..02822c777 100644
+--- a/grub-core/disk/luks2.c
++++ b/grub-core/disk/luks2.c
+@@ -40,6 +40,7 @@ GRUB_MOD_LICENSE ("GPLv3+");
+ enum grub_luks2_kdf_type
+ {
+   LUKS2_KDF_TYPE_ARGON2I,
++  LUKS2_KDF_TYPE_ARGON2ID,
+   LUKS2_KDF_TYPE_PBKDF2
+ };
+ typedef enum grub_luks2_kdf_type grub_luks2_kdf_type_t;
+@@ -92,7 +93,7 @@ struct grub_luks2_keyslot
+ 	grub_int64_t time;
+ 	grub_int64_t memory;
+ 	grub_int64_t cpus;
+-      } argon2i;
++      } argon2;
+       struct
+       {
+ 	const char   *hash;
+@@ -162,10 +163,11 @@ luks2_parse_keyslot (grub_luks2_keyslot_t *out, const grub_json_t *keyslot)
+     return grub_error (GRUB_ERR_BAD_ARGUMENT, "Missing or invalid KDF");
+   else if (!grub_strcmp (type, "argon2i") || !grub_strcmp (type, "argon2id"))
+     {
+-      out->kdf.type = LUKS2_KDF_TYPE_ARGON2I;
+-      if (grub_json_getint64 (&out->kdf.u.argon2i.time, &kdf, "time") ||
+-	  grub_json_getint64 (&out->kdf.u.argon2i.memory, &kdf, "memory") ||
+-	  grub_json_getint64 (&out->kdf.u.argon2i.cpus, &kdf, "cpus"))
++      out->kdf.type = !grub_strcmp (type, "argon2i")
++		      ? LUKS2_KDF_TYPE_ARGON2I : LUKS2_KDF_TYPE_ARGON2ID;
++      if (grub_json_getint64 (&out->kdf.u.argon2.time, &kdf, "time") ||
++	  grub_json_getint64 (&out->kdf.u.argon2.memory, &kdf, "memory") ||
++	  grub_json_getint64 (&out->kdf.u.argon2.cpus, &kdf, "cpus"))
+ 	return grub_error (GRUB_ERR_BAD_ARGUMENT, "Missing Argon2i parameters");
+     }
+   else if (!grub_strcmp (type, "pbkdf2"))
+@@ -445,6 +447,7 @@ luks2_decrypt_key (grub_uint8_t *out_key,
+   switch (k->kdf.type)
+     {
+       case LUKS2_KDF_TYPE_ARGON2I:
++      case LUKS2_KDF_TYPE_ARGON2ID:
+ 	ret = grub_error (GRUB_ERR_BAD_ARGUMENT, "Argon2 not supported");
+ 	goto err;
+       case LUKS2_KDF_TYPE_PBKDF2:
+--
+2.32.0
+
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEF9hrgiFbCdvenl/rVbJhu7ckPpQFAmEP4x8ACgkQVbJhu7ck
+PpQ/1g/9EM6PVsjbyTdgy3rNWWEuk2VJrjagm4+qwr2Nt1d69NvsyQIzGw4wTnI3
+ZgDQW3ddn4KhWioBusD8XOgZEySc3Q0wOh2tbjGVV235bmxUTu22Z6vhnj34BN/2
+0sOFjSjRtRNh5LmfR+7HP39id2ZppljDaDNzDeRZzCEXUymt3xKtGNlASAe1IW6G
+PKIYkols3GsYp406P/Fjqvu8YRJuAGv6VyrS4QineAR1Iv70pBWkQTtE7JgWBmv4
++cCs+MD88kSwxf40DEo5o0AVjrsAv6VqMp89yi3z8TRbDTtMERPr0zP5hWCkkuXd
+st8FqPCunHv+afEk3q8Xn9LlJ65wXJ7XflIwbBEsdSf4cL03rx3WgPGu1sK+s8o+
+JxjkYKH+GJUbDZ+uw7ngcNKUnsWNxe0Lpu+zEakkJmoWQ/GIhFf93G2yJag7mKMP
+q0A/oh6+z6L2+pg91jPwAatisICYks1S5MpWKiNP+EnEGHrr2dnjfOEWq9W0Qghx
+ixJtltwfVh3EIcLwitGrRhQykL1E1DG8yJyjWzsaf+6moF9uvZSHN/7JxEw3oOtB
+9NQi7m4okMe3ACqLAp2z2VcvVZ1hVCp7HlTp5tK6j2FCQJYsku8tuaxuYrJ/qThz
+iOraDrwHv/wo84K5J20na/xEroQYZvVudRJZj/cjBdgzjzqFAUA=
+=wl50
+-----END PGP SIGNATURE-----
+
+
