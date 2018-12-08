@@ -117,5 +117,5 @@ package() {
   # install -Dm644 $_pkgname.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
   install -Dm644 installer/icons/$_pkgname.svg "$pkgdir/usr/share/icons/$_pkgname.svg"
 
-  sudo archlinux-java set $_jre
+  # sudo archlinux-java set $_jre
 }
