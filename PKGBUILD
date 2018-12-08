@@ -37,8 +37,8 @@ source=("http://download.qt.io/official_releases/qtcreator/${pkgver%.*}/$pkgver/
         qtcreator-dark-and-flat-selection-fixes.patch)
 sha256sums=('aec7b4595e17f5536eb2eef4331057f2d0fa4ba0a46f4968cc06959a1d589b43'
             '6f19fc9d83964a5460d224b3d44ce580553847960181fe0364e2ce26e1efd2e6'
-            '9daa35cd105b9b7cf1e3d07daa45aaff509265bf72209a15f4624854582ba186'
-            'f67ac674c54fc2a05d4a01c46adab8271fe5b0e40cb1cd1772e76810e295a038')
+            'a7b87219de0ee3e18754749a057535c04357acc2478dcb3fca6bc4b1ba8a8178'
+            '472e5206799953178f6fb8054e667a43cf895acd6f101d0363ff84b2b7ea6b9e')
 
 prepare() {
   mkdir -p build
