@@ -1,8 +1,8 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=opengv-git
-pkgver=r91.0b2017d
-pkgrel=2
+pkgver=r144.306a54e
+pkgrel=1
 pkgdesc="An efficient C++ library for calibrated camera pose computation using geometric computer vision algorithms."
 arch=('i686' 'x86_64')
 url="https://laurentkneip.github.io/opengv/"
@@ -12,12 +12,9 @@ makedepends=('boost' 'cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/laurentkneip/opengv.git"
-        "https://github.com/laurentkneip/opengv/pull/61.patch"
-        "https://github.com/laurentkneip/opengv/pull/76.patch")
+        "git+https://github.com/pybind/pybind11.git")
 sha256sums=('SKIP'
-            'SKIP'
-	    'SKIP')
-
+            'SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
@@ -27,16 +24,15 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
-	patch -p1 < ../61.patch
-	patch -p1 < ../76.patch
-
-	[ ! -d build ] || rm -r build
+	git submodule init
+	git config submodule.pybind11.url ${srcdir}/pybind11
+	git submodule update
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
 
-	mkdir build
+	mkdir -p build
 	cd build
 	cmake .. \
 		-DCMAKE_INSTALL_PREFIX=/usr \
