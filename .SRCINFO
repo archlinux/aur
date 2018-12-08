@@ -7,7 +7,7 @@ pkgbase = zola
 	license = MIT
 	makedepends = cargo
 	makedepends = cmake
-	source = https://github.com/getzola/zola/archive/v0.5.0.tar.gz
+	source = zola-0.5.0.tar.gz::https://github.com/getzola/zola/archive/v0.5.0.tar.gz
 	sha256sums = 718aaec6e0db6c0e6fb310d8a1ef3978f41a173e39b1c2515ca7365690b09cff
 
 pkgname = zola
