@@ -14,7 +14,7 @@ _node_version="v8.11.3"
 
 pkgname=wechat-devtools
 pkgver=${_wechat_devtools_ver}
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="WeChat Devtools Linux version."
 arch=("x86_64")
@@ -28,7 +28,7 @@ source=("nwjs.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk
         "logo.svg")
 md5sums=(82f20fe9081201db81652eb066c29f9b
          b13ece83c9f09094f863c762a6b4c41e
-         8ce0ac4c3dd29535290970145cd919ae
+         053311e215658614cb885b81ff5d746d
          de6f2f282e6d813100474d75d8abfeb9)
 options=('!strip')
 
