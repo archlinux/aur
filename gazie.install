@@ -7,7 +7,7 @@ post_install() {
     Now visit http://localhost/gazie page."
 }
 
-post_upgrade {
+post_upgrade() {
 	chmod -R g+w /usr/share/webapps/gazie/data/files
 	chmod -R g+w /usr/share/webapps/gazie/library/tcpdf/cache
 	echo "  Please visit http://localhost/gazie/SETUP.html page."
