@@ -3,7 +3,7 @@
 
 pkgname=biglybt
 pkgver=1.7.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64')
 url="https://www.biglybt.com/"
@@ -28,10 +28,11 @@ package() {
   export app_java_home="/usr/lib/jvm/default"
   sh GitHub_BiglyBT_Installer_$pkgver.sh -q -dir "$srcdir"/$pkgname
 
-  # Remove local .desktop file only if it was just created by the Java installer
-  # (which creates it a) in the wrong place and b) with wrong paths, therefore
+  # Remove local .desktop files (only if they were just created by the Java installer
+  # which creates them a) in the wrong place and b) with wrong paths, therefore
   # preventing the start of the program via the launcher)
   find ~/.local/share/applications -name $pkgname.desktop -cmin -1 -exec rm {} +
+  find ~/Desktop -name $pkgname.desktop -cmin -1 -exec rm -f {} +
 
   cd "$srcdir"/$pkgname
 
