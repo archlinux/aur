@@ -5,6 +5,8 @@ pkgbase = toot
 	url = https://github.com/ihabunek/toot
 	arch = any
 	license = GPL3
+	depends = python-requests
+	depends = python-beautifulsoup4
 	source = https://files.pythonhosted.org/packages/source/t/toot/toot-0.19.0.tar.gz
 	sha256sums = 857adc08ed2531c934a69d64efc78cd96bca80dd0a2b41e9033bdd61a50d6ffd
 

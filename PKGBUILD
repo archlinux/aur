@@ -3,6 +3,7 @@ _name=toot
 pkgver=0.19.0
 pkgrel=1
 pkgdesc="a Mastodon CLI client"
+depends=('python-requests' 'python-beautifulsoup4')
 license=('GPL3')
 arch=('any')
 url="https://github.com/ihabunek/toot"
