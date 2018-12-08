@@ -3,8 +3,8 @@
 # Maintainer of forked PHP package: Marc Cousin <cousinmarc@gmail.com>
 
 pkgname='php-32bits-fixes'
-pkgver=7.2.11
-pkgrel=1
+pkgver=7.2.13
+pkgrel=2
 arch=('x86' 'armv7h')
 license=('PHP')
 url='http://www.php.net'
@@ -14,7 +14,7 @@ checkdepends=('procps-ng')
 source=("https://php.net/distributions/php-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'enchant-2.patch' 'freetype.patch')
-sha512sums=('0cd8578147d17d612e013dfc22b73977719177058b39c7b61dd0bfdfb8c2441aba78af49f58c824f7e66c89b5ad201c36fafb89ccf1e2d20f19b79d6a8fed7e5'
+sha512sums=('9df1d43e9cd701db10281811b328721b85cb90c6c8dae1842b0fd848cb5388328918b3040bbad7634b340550d82b93746ea479ed45f4d8a80e8a316e6324115d'
             'SKIP'
             'bb9abfc51c41e1de180ef09244691c909ee64feebd9749978e1ecb7f576466a37232d9c6e97c1a01a96b8413a33c4818a91dc79f63078dc1946f56dad516bb05'
             'eccbe1a0c7b2757ab3c982c871cc591a66ad70f085aaa0d44f93cacacedc7b8fd21b8d0c66471327ff070db1bab1ab83a802f6fa190f33bdd74c134975e3910e'
