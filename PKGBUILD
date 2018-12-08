@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Caffe 1.0 with triNNity extensions"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -16,7 +16,7 @@ depends=(
         'openblas-lapack' 'opencv>=4.0.0'
 )
 makedepends=('cmake')
-provides=('trinnity-caffe')
+provides=('caffe')
 conflicts=()
 source=("${_srcname}"::"git+https://bitbucket.org/STG-TCD/trinnity-caffe.git"
         'dependencies.patch')
@@ -33,7 +33,9 @@ prepare() {
 
     mkdir -p build
     cd build
-    CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` cmake \
+    CMAKE_BUILD_TYPE="Release" \
+    CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` \
+    cmake \
     -DCPU_ONLY=ON \
     -DUSE_INDEX_64=OFF \
     -DUSE_HALF=OFF \
