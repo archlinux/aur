@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20180323.11047
+pkgver=20181208.11311
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
@@ -19,10 +19,10 @@ optdepends=('transfig: convert images using fig2ps'
             'aspell: spell checking')
 makedepends=('ghostscript' 'cmake')
 source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
-        "0001-Sage-plugin-fix-which-not-found.patch"
+        "0001-Fix-sage.patch"
         )
 sha1sums=('SKIP'
-          '8a6e4f423a56a870136c1b2357b0e6cbd46e6d51')
+          '31252d8a147c7414f683d168873bccfac9d2ad6c')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')
@@ -38,7 +38,7 @@ prepare() {
 
   cd ${_pkgname}-build
 
-  patch -Np1 -i ../0001-Sage-plugin-fix-which-not-found.patch
+  patch -Np1 -i ../0001-Fix-sage.patch
 
   sed -i 's/env python/env python2/' \
     plugins/{mathematica/bin/realpath.py,python/bin/tm_python,sage/bin/tm_sage} \
