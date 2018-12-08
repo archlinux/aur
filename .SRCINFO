@@ -1,7 +1,7 @@
 pkgbase = gsl-firmware-git
 	pkgdesc = Firmware for Silead touchscreen controllers
 	pkgver = r184.4c39712
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/onitake/gsl-firmware
 	arch = i686
 	arch = x86_64
