@@ -3,11 +3,11 @@ _orgname=tumic0
 _pkgname=QtPBFImagePlugin
 pkgname=qt5-pbfimageplugin
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt image plugin for displaying Mapbox vector tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/tumic0/QtPBFImagePlugin'
-license=('GPL3')
+license=('LGPL3')
 depends=('qt5-base' 'protobuf')
 makedepends=('qt5-tools')
 provides=("${pkgname}=${pkgver}")
