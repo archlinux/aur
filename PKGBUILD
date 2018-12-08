@@ -2,7 +2,7 @@
 
 pkgname=fotoxx
 pkgver=19.0
-pkgrel=11
+pkgrel=12
 pkgdesc="A program for improving image files made with a digital camera"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('rawtherapee: for raw image processing'
 	    'dvd+rw-tools: for burning CDs,DVDs or BlueRays'
 	    'hugin: for panorama photos')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-sha512sums=('a1d5f85227da92901adaff33ee223f363c509b9115b01701a81e3ef831bfdbb148d475af0e08e7600f38a0f5c22b809d6f87d149bf77a070df5db8c3689b6984')
+sha512sums=('eb64a2719d9b08e6f2acbddf85951561073191381af5a136ac6062ea8b21ae80755e52f47a7a532d6f27c2ab999eea16e2c28ade44a691569ed0f2ecd40683e7')
 options=('!makeflags')
 
 build() {
