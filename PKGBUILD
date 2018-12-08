@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
  cd ${srcdir}/gsl
- install -Dm 644 ./firmware/linux/silead/* ${pkgdir}/usr/lib/firmware/silead/
+ install -Dm 644 ./firmware/linux/silead/* -t "${pkgdir}/usr/lib/firmware/silead/"
 }
