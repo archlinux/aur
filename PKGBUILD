@@ -1,10 +1,11 @@
-# Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
+# Maintainer: Yuanji <self@gimo.me>
+# Contributor: Bhanupong Petchlert <bpetlert@gmail.com>
 
 pkgname=howdoi-git
 _pkgname="howdoi"
-pkgver=1.1.7.218.5926d69
+pkgver=1.1.14.329.807894b
 pkgrel=1
-pkgdesc="A code search tool. (from git, build for python 3)"
+pkgdesc="Instant coding answers via the command line."
 arch=(any)
 url="https://github.com/gleitz/howdoi"
 license=('MIT')
@@ -17,8 +18,9 @@ depends=(
   'python-requests-cache'
   'python-pygments'
 )
+makedepends=('git')
 conflicts=('python2-howdoi' 'howdoi')
-source=("${_pkgname}::git+https://github.com/gleitz/howdoi.git")
+source=("${_pkgname}::git+https://github.com/gleitz/howdoi.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
