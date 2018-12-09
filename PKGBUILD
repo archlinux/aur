@@ -3,7 +3,7 @@
 
 pkgname=oomox-git
 pkgver=1.7.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical application for generating different color variations
 of Oomox(Numix-based), Materia (ex-Flat-Plat) and Arc themes
 (GTK2, GTK3, Cinnamon, GNOME, Openbox, Xfwm),
@@ -23,8 +23,12 @@ source=(
 	"git+https://github.com/themix-project/gnome-colors-icon-theme.git#branch=master"
 	"git+https://github.com/themix-project/oomoxify.git#branch=master"
 	"git+https://github.com/base16-builder/base16-builder#branch=master"
+	"git+https://github.com/numixproject/numix-icon-theme.git#branch=master"
+	"git+https://github.com/numixproject/numix-folders.git#branch=master"
 )
 md5sums=(
+	"SKIP"
+	"SKIP"
 	"SKIP"
 	"SKIP"
 	"SKIP"
@@ -86,6 +90,8 @@ prepare(){
 	git config submodule.gnome-colors-icon-theme.url $srcdir/gnome-colors-icon-theme
 	git config submodule.oomoxify.url $srcdir/oomoxify
 	git config submodule.base16-builder.url $srcdir/base16-builder
+	git config submodule.numix-folders.url $srcdir/numix-folders
+	git config submodule.numix-icon-theme.url $srcdir/numix-icon-theme
 	git submodule update
 }
 
