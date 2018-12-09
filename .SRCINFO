@@ -9,6 +9,7 @@ pkgbase = sid-vst-git
 	license = LGPL
 	makedepends = git
 	depends = mesa
+	depends = ttf-ms-fonts
 	source = SID::git+https://github.com/FigBug/SID.git
 	source = dRowAudio::git+https://github.com/FigBug/drowaudio.git#commit=3a1e6eb75681b166c055c501a2ed4a8df8a44df0
 	source = slCommon::git+https://github.com/FigBug/slCommon.git#commit=b49d31c4f2f131506fe5ac53f2ac6e47b3ee109b
