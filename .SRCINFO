@@ -1,0 +1,17 @@
+pkgbase = rustup-toolchain-install-master-git
+	pkgdesc = Install a rustc master toolchain usable from rustup
+	pkgver = 1.5.0.45.g15a2bb5
+	pkgrel = 1
+	url = https://github.com/kennytm/rustup-toolchain-install-master
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	depends = rustup
+	provides = rustup-toolchain-install-master
+	conflicts = rustup-toolchain-install-master
+	source = rustup-toolchain-install-master-git::git+https://github.com/kennytm/rustup-toolchain-install-master
+	sha256sums = SKIP
+
+pkgname = rustup-toolchain-install-master-git
+
