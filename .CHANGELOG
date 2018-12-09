@@ -1,6 +1,23 @@
 Version history
 ===============
 
+0.9.23
+------
+
+2018-12-09
+
+xmas2018: Fixed backroutes in Home Time for Santa, Snow Cat Love,
+Decorate the Tree, Past the Xmas Tree.
+
+ClamLix: Time is Running Out, decorated the steel with a steel hourglass.
+
+Fix #371: Miners throw a pickaxe again when they cancel on steel. Diggers
+won't throw pickaxes anymore by mistake when they cancel on steel.
+
+Added a manpage for Linux package maintainers: doc/lix.6, thanks to tarzeau.
+
+
+
 0.9.22
 ------
 

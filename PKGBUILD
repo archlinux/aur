@@ -2,14 +2,14 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.22
+pkgver=0.9.23
 pkgrel=1
 changelog=.CHANGELOG
 source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
 _pkgname=${pkgname}
-# template start; name=lix; version=1.2;
+# template start; name=lix; version=1.3;
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
@@ -36,7 +36,7 @@ source+=(   "${_pkgname}-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
             "${_pkgname}.desktop"
             )
 sha512sums+=(   '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425'
-                '52d49562cd9be4eec76b464153af1cce2211fdbd6113a6a60df042f7e8f7e6a8f1942df883dfaaa6c1bbfea004c4154d884dfa767e25fa3fadf9c58be1103fe6'
+                '375b1439d9398371a3f58a92bfc0901b86bd89140aae431c7d9405bd2fb36ebcdb22b2686fea72d88b23a4ab94b138b4d742d8fd2965d8ec0542d2f8f64ed0c2'
                 )
 source+=(   "allegro::git+https://github.com/SiegeLord/DAllegro5.git#tag=v${_dubv[0]}"
             "bolts::git+https://github.com/aliak00/bolts.git#tag=v${_dubv[1]}"
@@ -143,6 +143,13 @@ package()
             "doc/copying.txt" \
         `# DSTFILE:` \
             "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+
+    # install man page
+    install -Dm644 \
+        `# SRCFILE:` \
+            "doc/lix.6" \
+        `# DSTFILE:` \
+            "${pkgdir}/usr/share/man/man6/lix.6.gz"
 
     # install binary
     install -Dm755 \
