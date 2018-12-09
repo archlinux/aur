@@ -2,7 +2,7 @@
 
 _gitname=applet-window-title
 pkgname=plasma5-applets-window-title-git
-pkgver=r31.c8b216a
+pkgver=0.2.r1.g58c4fc9
 pkgrel=1
 pkgdesc="Plasma 5 applet that shows the application title and icon for active window"
 arch=(x86_64)
@@ -14,9 +14,9 @@ conflicts=(plasma5-applets-window-title)
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
-pkgver(){
-    cd ${_gitname}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver() {
+  cd ${_gitname}
+  git describe --long | sed 's/^[v-]//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
