@@ -4,8 +4,8 @@
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
-pkgver=1.0rc1
-pkgrel=6
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -38,9 +38,7 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         "git+https://github.com/USCILab/cereal"
         "git+https://github.com/onnx/onnx-tensorrt"
         "git+https://github.com/shibatch/sleef"
-        "git+https://github.com/intel/ideep"
-        12116.patch
-        opencv4.patch)
+        "git+https://github.com/intel/ideep")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -67,15 +65,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '2a2cd21dbdf7253185c8835a3f36b543a4b1655d837e01f7cfd27ab81819f2d5'
-            '8cf4226099f92315f14c83066f77e44443bc3d35aedf94d99b910f035cc9bc90')
+            'SKIP')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-
-  patch -Np1 -i "${srcdir}"/12116.patch
-  patch -Np1 -i "${srcdir}"/opencv4.patch
 
   git submodule init
   git config submodule."third_party/catch".url "${srcdir}"/Catch2
@@ -114,6 +107,8 @@ prepare() {
 build() {
   # Uncomment and modify the following line to enable Intel MKL and magma support
   # export CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
+  export CC=gcc-7
+  export CXX=g++-7
 
   echo "Building without cuda"
   export NO_CUDA=1
@@ -125,15 +120,15 @@ build() {
   python setup.py build
 
   echo "Building with cuda"
-  export CC=gcc-7
-  export CXX=g++-7
   export NO_CUDA=0
   export WITH_CUDNN=1
   export CUDAHOSTCXX=g++-7
   export CUDA_HOME=/opt/cuda
   export CUDNN_LIB_DIR=/opt/cuda/lib64
   export CUDNN_INCLUDE_DIR=/opt/cuda/include
-  export TORCH_CUDA_ARCH_LIST="3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
+  export TORCH_CUDA_ARCH_LIST="3.5 5.2 6.0 6.1 7.0+PTX"
+  export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
+  # export TORCH_CUDA_ARCH_LIST="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
 
   cd "$srcdir/${_pkgname}-${pkgver}-cuda"
   python setup.py build
