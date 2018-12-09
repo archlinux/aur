@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
 _version=2018.3.0
-_build=b12
-_randomstring=77f6238a7ced
+_build=f1
+_randomstring=f023c421e164
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-windows
@@ -15,7 +15,7 @@ license=('custom')
 depends=('unity-editor-beta')
 makedepends=('cpio')
 source=("https://beta.unity3d.com/download/${_randomstring}/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-${_version}${_build}.pkg")
-sha1sums=('d44f2fca9b5948a51ee680f25657979c31038a5e')
+sha1sums=('9509ff3501a73b0a7d59807ce56467bd5eeda0e5')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
