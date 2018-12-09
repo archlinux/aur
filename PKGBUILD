@@ -2,7 +2,7 @@
 # Contributor : enckse <enckse [at] gmail [dot] com>
 pkgname=kxstitch
 pkgver=2.1.1
-pkgrel=9
+pkgrel=10
 pkgdesc="The program that lets you create cross stitch patterns and charts."
 arch=('i686' 'x86_64')
 depends=('plasma-workspace' 'libmagick')
@@ -17,9 +17,9 @@ source=("https://download.kde.org/stable/${pkgname}/${pkgver}/${pkgname}-${pkgve
        "color-find.patch::${_patches}26f7fce0508a149aefb9e9256f682abe87211760")
 sha1sums=('6f712bca3173b90149b67640fb1b63d02725c9ef'
           '8e58ce0776eff7ef29394a2f7a089191a4af0b1d'
-          'd1a904efd34eca16d839d6d54356cb01abaa15a7'
+          'ea1531ae76c79d124bbddb70db85d76062424f66'
           '59dc498eb3e555b0f85a717f0588b3a217f8cbbb'
-          '04bb2d31e235da33df2853242d32ce43005cf1c7')
+          '757f0f2c32846d32bfe2d060d0c4e88a1027cb70')
 install=${pkgname}.install
 
 build() {
