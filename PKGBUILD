@@ -1,19 +1,19 @@
 # Maintainer: gls < ghostlovescorebg at gmail dot com >
 
 pkgname=rompr
-pkgver=1.08
+pkgver=1.24
 pkgrel=1
 pkgdesc="Web frontend to MPD"
 arch=('any')
-url="http://sourceforge.net/projects/rompr/"
+url="https://github.com/fatg3erman/RompR/releases"
 license=('custom')
 depends=('mpd' 'imagemagick' 'php')
 optdepends=('apache'
 'lighttpd'
 'nginx'
 'php-jsonreader-git: Low Memory Mode')
-source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.zip)
-md5sums=('7ca71757561a912c8b8268e0dfc69109')
+source=(${url}/download/${pkgver}/${pkgname}-${pkgver}.zip)
+md5sums=('d451aa27a00eab5ac378c8252022b970')
 
 build () {
 
