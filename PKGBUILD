@@ -12,7 +12,7 @@ license=('custom')
 depends=('pyqt5-common' 'python-pyqt5' 'mpv' 'qt5-multimedia' 'ffmpeg' 'youtube-dl') 
 
 source=("${pkgname}_${_pkgver}.deb::https://docs.google.com/uc?id=1_FGSxInNkx2KmxVxNFf-ADAF7hANiYUB")
-md5sums=('SKIP')
+md5sums=('bdd989265546d5f8a109d154695a2995')
 
 package() {
   cd "${srcdir}"
