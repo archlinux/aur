@@ -5,14 +5,14 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.0.882.gcdfa37ec
+pkgver=1.0.0.1028.gf7f18684
 pkgrel=1
 pkgdesc="C++ re-write of tablet notetaking app Xournal"
 arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL-2.0')
 makedepends=('git' 'cmake' 'gettext' 'boost' 'python')
-depends=('texlive-core' 'gtk3' 'boost-libs' 'glib2' 'libglade' 'glibmm' 'desktop-file-utils')
+depends=('texlive-core' 'gtk3' 'boost-libs' 'glib2' 'libglade' 'glibmm' 'desktop-file-utils' 'poppler-glib')
 conflicts=('xournalpp')
 install="xournalpp.install"
 source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git")
@@ -29,7 +29,7 @@ prepare() {
 	test -e "${srcdir}/${_pkgname}/build" || mkdir -p "${srcdir}/${_pkgname}/build"
 	cd "${srcdir}/${_pkgname}/build"
 
-	cmake -DENABLE_OS="OFF" -DENABLE_MATHTEX="ON" -DCMAKE_INSTALL_PREFIX="/usr/" -DBUILD_POPPLER="ON" -DPOPPLER_GIT_VER="0.69.0" ..
+	cmake -DENABLE_OS="OFF" -DENABLE_MATHTEX="ON" -DCMAKE_INSTALL_PREFIX="/usr/"  ..
 }
 
 build() {

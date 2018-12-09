@@ -1,6 +1,6 @@
 pkgbase = xournalpp-git
 	pkgdesc = C++ re-write of tablet notetaking app Xournal
-	pkgver = 1.0.0.882.gcdfa37ec
+	pkgver = 1.0.0.1028.gf7f18684
 	pkgrel = 1
 	url = https://github.com/xournalpp/xournalpp
 	install = xournalpp.install
@@ -19,6 +19,7 @@ pkgbase = xournalpp-git
 	depends = libglade
 	depends = glibmm
 	depends = desktop-file-utils
+	depends = poppler-glib
 	conflicts = xournalpp
 	source = xournalpp::git+https://github.com/xournalpp/xournalpp.git
 	sha256sums = SKIP
