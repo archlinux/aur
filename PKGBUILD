@@ -15,13 +15,13 @@ source=("${pkgname%-git}::git+${url}#branch=master"
     "${pkgname%-git}.desktop"
     "${pkgname%-git}.sh"
     "package.json"
-    "chat-favicon-new-non-notif-256dp.png")
+    "chat-favicon-no-new-256dp.png")
 
 sha256sums=('SKIP'
     'e65b8b9b0556dded2521aa12b6d8e87c59f08a79b9e8cbee4273a7a659f72a6a'
     'd23052d27c870090987d1844e7c82bc42b878afa42c8af9a363d8414560ea34d'
     '25b73ffc5ea40317faffaa277243617b1a2daed5bec7ddfb39e31274c5a88a79'
-    '807fa77054d1b9ebeccaabfe5200e9e52c2dc603bdba3647c2da7c0cc34c2a83')
+    '573cfc3e46a33c24b1caeb324d83e9557bf982326f0e63efc2d0b01f491fa5dc')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -33,9 +33,9 @@ pkgver() {
 
 build() {
   cp "$srcdir/package.json" "$srcdir/${pkgname%-git}/"
-  cp "$srcdir/chat-favicon-new-non-notif-256dp.png" "$srcdir/${pkgname%-git}/assets/icon/icon.png"
-  cp "$srcdir/chat-favicon-new-non-notif-256dp.png" "$srcdir/${pkgname%-git}/assets/icon/icon@2x.png"
-  cp "$srcdir/chat-favicon-new-non-notif-256dp.png" "$srcdir/${pkgname%-git}/assets/icon/"
+  cp "$srcdir/chat-favicon-no-new-256dp.png" "$srcdir/${pkgname%-git}/assets/icon/icon.png"
+  cp "$srcdir/chat-favicon-no-new-256dp.png" "$srcdir/${pkgname%-git}/assets/icon/icon@2x.png"
+  cp "$srcdir/chat-favicon-no-new-256dp.png" "$srcdir/${pkgname%-git}/assets/icon/"
   cd "$srcdir/${pkgname%-git}"
   npm install --production=false
 }
