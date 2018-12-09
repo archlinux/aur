@@ -8,7 +8,7 @@ pkgname=(
     'samsung-unified-driver'
 )
 pkgver=1.00.39
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Unified Linux Driver for Samsung printers and scanners.'
 arch=('i686' 'x86_64')
@@ -55,6 +55,7 @@ package_samsung-unified-driver-printer()
     mkdir -p "$pkgdir"/usr/lib/cups/filter
     cp "$srcdir"/uld/$_arch/pstosecps "$pkgdir"/usr/lib/cups/filter
     cp "$srcdir"/uld/$_arch/rastertospl "$pkgdir"/usr/lib/cups/filter
+    ln -s rastertospl "$pkgdir"/usr/lib/cups/filter/rastertosplc
 
     mkdir -p "$pkgdir"/usr/share/ppd/suld
     for ppd in "$srcdir"/uld/noarch/share/ppd/*.ppd; do
