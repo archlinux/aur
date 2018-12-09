@@ -27,7 +27,7 @@
 
 #######################################################################################################################
 #                                                                                                                     #
-#  If you're upgrading from v1.30.4 or earlier:                                                                       #
+#  If you're upgrading from a version older than 1.32.0:                                                                       #
 #                                                                                                                     #
 #  Due to the many breaking changes in this release (both upstream and in the packaging), it's recommended to backup  #
 #  any existing ZoneMinder databases and perform a clean installation. Failure to do so may have very weird results.  #
@@ -37,8 +37,8 @@
 
 
 pkgname=zoneminder
-pkgver=1.32.2
-pkgrel=3
+pkgver=1.32.3
+pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('x86_64')
 url='https://zoneminder.com/'
@@ -76,15 +76,15 @@ source=("https://github.com/ZoneMinder/ZoneMinder/archive/$pkgver.tar.gz"
         "zoneminder.service"
         "zoneminder-tmpfile.conf"
         "fcgiwrap-multiwatch.service")
-sha256sums=('cf72cbd45d91ef0232c123dac5f908993f8941a62b9ae96975c4e6043bd4b9a9'
+sha256sums=('9a7e61c529a6269ff0344403369b160b8c8da48615c4172377c465da0b0074b1'
             '55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3'
             'dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44'
             # zoneminder-nginx.conf
-            'b9d5694e12db2d79701769cb93a178e99d1a4c52c1c98ecdc7edaf8ede4b6820'
+            'be503e5cedf42383122a1f96a6e00e25d473f8c1c536c000db748dbde12c88b0'
             # zoneminder-httpd.conf
-            '1944e27db3b17edac152209b2b35e914ed9700a2ffe0255b012661197a328178'
+            '9657fd9fdbdb4a96e3c31c9453610200258711f5ae2f6e46d3eeb9676ae857a6'
             # zoneminder-php.ini
-            '7905ceddbb049de0f9bf4f1eb58779dfe310a65c4d2ec44854d592d4f31b6a72'
+            '479f290d3c92938cd929020ad140d613814b912b4302c2758be6446ebfb8a4ac'
             # zoneminder.service
             '3e4de227e3154dffa887f2286c339ab3cf456f6d74a400b2786192b7e2b129c0'
             # zoneminder-tmpfile.conf
@@ -138,9 +138,9 @@ package() {
     install -dm775 -o http -g http      $pkgdir/var/lib/$pkgname/{cache,events,images}
     
     # Link ZM_CGIDIR and ZM_CACHEDIR inside ZM_WEBDIR and set correct permissions
-    ln -sf /srv/$pkgname/cgi-bin         $pkgdir/srv/$pkgname/www
-    ln -sf /var/lib/$pkgname/cache       $pkgdir/srv/$pkgname/www
-    chown -Rh http:http                  $pkgdir/srv/$pkgname
+    ln -sf /srv/$pkgname/cgi-bin        $pkgdir/srv/$pkgname/www
+    ln -sf /var/lib/$pkgname/cache      $pkgdir/srv/$pkgname/www
+    chown -Rh http:http                 $pkgdir/srv/$pkgname
     
     # Link ZM_WEBDIR/api/app/tmp to ZM_TMPDIR
     ln -sf /var/tmp/$pkgname            $pkgdir/srv/$pkgname/www/api/app/tmp
@@ -169,7 +169,7 @@ package() {
     install -Dm644 $srcdir/$pkgname-tmpfile.conf            $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
     
     # Install fcgiwrap-multiwatch service
-    install -Dm644 $srcdir/fcgiwrap-multiwatch.service     $pkgdir/usr/lib/systemd/system/fcgiwrap-multiwatch.service
+    install -Dm644 $srcdir/fcgiwrap-multiwatch.service      $pkgdir/usr/lib/systemd/system/fcgiwrap-multiwatch.service
     
     # Install logrotate conf file
     install -Dm644 misc/logrotate.conf                      $pkgdir/etc/logrotate.d/$pkgname
