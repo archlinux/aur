@@ -1,12 +1,12 @@
-#
+# Maintainer: basigur
 
 pkgname=neru-icon-newyear-theme
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Christmas theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-newyear-theme/"
-license=('LGPLv3')
+license=('LGPL3')
 depends=()
 replaces=(neru-icon-newyear-theme)
 conflicts=()
@@ -15,11 +15,25 @@ sha512sums=('bccacbdd05de2ee4fd50c6bd842c8266ccae3fc120d624aae7bbdebd9b3f5ac7ca8
 
 
 package() {
-tar -xzf v${pkgver}.tar.gz -C ${srcdir}
+	tar -xzf v${pkgver}.tar.gz
 	cd "$srcdir"/"${pkgname}-${pkgver}"
 	install -d "$pkgdir/usr/share/icons"
 	install -d "$pkgdir/usr/share/doc/${pkgname}"
 	install -d "$pkgdir/usr/share/licenses/${pkgname}"
+
+	ln -s document-viewer.svg neru-newyear-light/medium/apps/graphics-viewer-document.svg
+	ln -s document-viewer.svg neru-newyear-light/medium/apps/org.gnome.Evince.svg
+	ln -s document-viewer.svg neru-newyear-light/medium/apps/xpdf9.svg
+	ln -s document-viewer.svg neru-newyear-light/medium/apps/accessories-document-viewer.svg
+
+	ln -s document-viewer.svg neru-newyear-dark/medium/apps/graphics-viewer-document.svg
+	ln -s document-viewer.svg neru-newyear-dark/medium/apps/org.gnome.Evince.svg
+	ln -s document-viewer.svg neru-newyear-dark/medium/apps/xpdf9.svg
+	ln -s document-viewer.svg neru-newyear-dark/medium/apps/accessories-document-viewer.svg
+
+	gtk-update-icon-cache neru-newyear-light/
+	gtk-update-icon-cache neru-newyear-dark/
+
 
 	cp -r {'neru-newyear-dark','neru-newyear-light'} "$pkgdir"/usr/share/icons/
 
