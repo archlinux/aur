@@ -3,7 +3,7 @@
 # Contributor: therealfarfetchd
 pkgname='ripcord'
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt-based Discord and Slack client'
 arch=('x86_64')
 depends=('fuse2')
@@ -45,5 +45,7 @@ package() {
   mv squashfs-root/* "$pkgdir"/usr/lib/ripcord/
   ln -s /usr/lib/ripcord/Ripcord "$pkgdir"/usr/bin/ripcord
 
-  rm {'..','.'}/"$_file"{'','.asc'}
+  # cleanup
+  rm "$SRCDEST"/"$_file"{'','.asc'}
+  rm -rf "$srcdir"
 }
