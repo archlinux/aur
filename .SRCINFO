@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-window-appmenu-git
 	pkgdesc = Plasma 5 applet in order to show the window appmenu
-	pkgver = r32.ff6ec9f
+	pkgver = 0.2.r10.g761a33a
 	pkgrel = 1
 	url = https://github.com/psifidotos/applet-window-appmenu
 	arch = x86_64

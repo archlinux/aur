@@ -2,7 +2,7 @@
 
 _gitname=applet-window-appmenu
 pkgname=plasma5-applets-window-appmenu-git
-pkgver=r32.ff6ec9f
+pkgver=0.2.r10.g761a33a
 pkgrel=1
 pkgdesc="Plasma 5 applet in order to show the window appmenu"
 arch=(x86_64)
@@ -14,9 +14,9 @@ conflicts=(plasma5-applets-window-appmenu)
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
-pkgver(){
-    cd ${_gitname}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver() {
+  cd ${_gitname}
+  git describe --long | sed 's/^[v-]//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
