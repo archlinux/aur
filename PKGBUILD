@@ -3,8 +3,8 @@
 pkgbase='flask-babelex'
 pkgname=('python-flask-babelex' 'python2-flask-babelex')
 _module='Flask-BabelEx'
-pkgver='0.9.3'
-pkgrel='1'
+pkgver=0.9.3
+pkgrel=2
 pkgdesc='Adds i18n/l10n support to Flask applications'
 arch=('any')
 url='http://pypi.python.org/pypi/Flask-BabelEx/'

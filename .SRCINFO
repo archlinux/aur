@@ -1,7 +1,7 @@
 pkgbase = flask-babelex
 	pkgdesc = Adds i18n/l10n support to Flask applications
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/Flask-BabelEx/
 	arch = any
 	license = BSD
@@ -11,22 +11,18 @@ pkgbase = flask-babelex
 	sha1sums = 37e50950f6e12407c4e3fb88cc4366fcc2a91765
 
 pkgname = python-flask-babelex
-	depends = 
 	depends = python
 	depends = python-flask
 	depends = python-babel
 	depends = python-speaklater
 	depends = python-jinja
-	provides = 
 	provides = python-flask-babel
 
 pkgname = python2-flask-babelex
-	depends = 
 	depends = python2
 	depends = python2-flask
 	depends = python2-babel
 	depends = python2-speaklater
 	depends = python2-jinja
-	provides = 
 	provides = python2-flask-babel
 
