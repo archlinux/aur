@@ -2,7 +2,7 @@
 # Contributor: Samadi van Koten
 
 pkgname=umoci
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Umoci Modifies Open Container Images"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=()
 provides=()
 options=()
 source=("https://github.com/openSUSE/$pkgname/releases/download/v$pkgver/umoci.tar.xz")
-sha256sums=('98d481d620c3d52b8fe1a2db07515c319fd2688253acd40bf09525ad599705e7')
+sha256sums=('c97b95a410b64bcf3b31386c0812134eb9ab231533137ef128a1888f347bc3c3')
 
 _repo_name="github.com/openSUSE/$pkgname"
 
