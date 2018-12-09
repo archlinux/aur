@@ -2,7 +2,7 @@
 
 _pkgname=aurafetch
 pkgname=${_pkgname}-git
-pkgver=r39.038dc0b
+pkgver=r40.7ad1275
 pkgrel=1
 pkgdesc="A super-minimal info script written in bash"
 arch=("any")

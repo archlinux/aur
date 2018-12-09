@@ -1,6 +1,6 @@
 pkgbase = aurafetch-git
 	pkgdesc = A super-minimal info script written in bash
-	pkgver = r39.038dc0b
+	pkgver = r40.7ad1275
 	pkgrel = 1
 	url = https://gitlab.com/LionessAlana/aurafetch
 	arch = any
