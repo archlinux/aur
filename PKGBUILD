@@ -2,13 +2,13 @@
 
 pkgname=ttf-lacartoonerie
 pkgver=2007.04.23
-pkgrel=2
+pkgrel=3
 pkgdesc="Fancy cartoon style font created by laCartoonerie.com."
 arch=('any')
 url="http://www.lacartoonerie.com/"
 license=('Free for personal use')
 depends=('fontconfig' 'xorg-font-utils')
-source=('http://img.dafont.com/dl/?f=lacartoonerie')
+source=("$pkgname-$pkgver.zip::http://img.dafont.com/dl/?f=lacartoonerie")
 
 package() {
   install -Dm644 "${srcdir}/laCartoonerie.TTF" "${pkgdir}/usr/share/fonts/TTF/laCartoonerie.TTF"
