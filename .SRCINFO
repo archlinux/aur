@@ -1,0 +1,17 @@
+pkgbase = original-awk
+	pkgdesc = The original awk described in 'The AWK Programming Language'
+	pkgver = 2012_12_20_6
+	pkgrel = 1
+	url = https://packages.debian.org/stretch/original-awk
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://deb.debian.org/debian/pool/main/o/original-awk/original-awk_2012-12-20.orig.tar.gz
+	source = http://deb.debian.org/debian/pool/main/o/original-awk/original-awk_2012-12-20-6.debian.tar.xz
+	source = archlinux-makefile.patch
+	sha256sums = 8dc092165c5a4e1449f964286483d06d0dbfba4b0bd003cb5dab30de8f6d9b83
+	sha256sums = e51ed5f2357f5bf74c46784893c57105e28e63f2aed41b36b2a87dc5691b9b43
+	sha256sums = f5ae27bd179276093f31a0f24b57fffa0f2f9f8f4699b7ca86c1eb61f9f06506
+
+pkgname = original-awk
+

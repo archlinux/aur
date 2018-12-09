@@ -1,0 +1,25 @@
+--- a/makefile	2018-12-09 14:56:14.827262650 +0200
++++ b/makefile	2018-12-09 14:57:18.787297831 +0200
+@@ -32,10 +32,12 @@
+ CC = gcc -O4 -Wall -pedantic -fno-strict-aliasing
+ 
+ YACC = bison -d -y
+-YACC = yacc -d -S
++YACC = yacc -d
+ #YFLAGS = -d -S
+ 		# -S uses sprintf in yacc parser instead of sprint
+ 
++LDFLAGS = -Wl,-z,relro,-z,now
++
+ OFILES = b.o main.o parse.o proctab.o tran.o lib.o run.o lex.o
+ 
+ SOURCE = awk.h ytab.c ytab.h proto.h awkgram.y lex.c b.c main.c \
+@@ -48,7 +50,7 @@
+ 	 awk.1
+ 
+ a.out:	ytab.o $(OFILES)
+-	$(CC) ytab.o $(OFILES) $(ALLOC)  -lm
++	$(CC) $(LDFLAGS) ytab.o $(OFILES) $(ALLOC)  -lm
+ 
+ $(OFILES):	awk.h ytab.h proto.h
+ 
