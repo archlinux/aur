@@ -11,8 +11,6 @@ arch=('i686' 'x86_64')
 url='https://gitlab.com/bms-contrib/hawkmoth'
 license=('BSD2')
 depends=('python-sphinx' 'clang')
-makedepends=()
-optdepends=('python-sphinx_rtd_theme: Read The Docs theme is used for documentation by default')
 source=('git+https://gitlab.com/bms-contrib/hawkmoth#branch=unrot')
 md5sums=('SKIP')
 

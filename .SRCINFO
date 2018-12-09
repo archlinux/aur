@@ -8,7 +8,6 @@ pkgbase = hawkmoth
 	license = BSD2
 	depends = python-sphinx
 	depends = clang
-	optdepends = python-sphinx_rtd_theme: Read The Docs theme is used for documentation by default
 	source = git+https://gitlab.com/bms-contrib/hawkmoth#branch=unrot
 	md5sums = SKIP
 
