@@ -1,18 +1,12 @@
 pkgbase = ttf-lato
-	pkgdesc = a sanserif type­face family
+	pkgdesc = A sanserif typeface family bearing the Polish name of "Summer"
 	pkgver = 2.015
-	pkgrel = 1
-	url = http://www.latofonts.com/lato-free-fonts/
-	install = install
+	pkgrel = 2
+	url = https://www.latofonts.com/lato-free-fonts/
 	arch = any
 	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = ttf-lato-2.015::http://www.latofonts.com/download/Lato2OFL.zip
-	source = install
+	source = ttf-lato-2.015.zip::https://www.latofonts.com/download/Lato2OFL.zip
 	sha256sums = 42b54e96c07e299d967fc3227c7bd63a20d6cfb1dc8fd6dae83628091e20a5b8
-	sha256sums = c98e5a09e552c01b479c22aafa101ea3e3237d3727fcad4629730762bdf4afa1
 
 pkgname = ttf-lato
 
