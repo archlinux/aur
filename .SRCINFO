@@ -22,5 +22,5 @@ pkgbase = broadcom-bt-firmware-git
 	source = git+https://github.com/winterheart/broadcom-bt-firmware.git
 	sha256sums = SKIP
 
-pkgname = broadcom-bt-firmware
+pkgname = broadcom-bt-firmware-git
 
