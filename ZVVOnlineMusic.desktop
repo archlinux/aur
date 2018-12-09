@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=zvvonlinemusic
+Type=Application
+Name=ZVVOnlineMusic
+Icon=/usr/share/ZVVOnlineMusic/icons/music.png
+Categories=AudioVideo;Audio;Player;GTK;
+Name[en_US]=ZVVOnlineMusic
