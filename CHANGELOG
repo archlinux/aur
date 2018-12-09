@@ -855,3 +855,13 @@ Fri Dec 7 03:16:25 2018 +0100
      2018-12-07 e6298d2d actionless fix(plugins: pil): ignore haishoku exceptions when using 'all' preset
      2018-12-07 a3121469 poison.vm34 Add and fix some of the color palettes
      2018-12-07 fbb6dc39 actionless chore(colors): update to use newer theming capabilities
+
+
+Sun Dec 9 02:05:53 2018 +0100
+-------------------------------------------------
+1.7.2.3         Release 1.7.2.3
+    
+    Notable changes:
+     2018-12-09 e164b762 actionless chore(packaging: ubuntu): add control file with deps for Ubuntu 18.10
+     2018-12-08 17d0f99f actionless chore(plugins: materia): update submodule (fix theme generation)
+     2018-12-07 8fe5141b poison.vm34 Move and rename color palette
