@@ -3,7 +3,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.2.679.r1212
+pkgver=1.2.679.r1432
 _gwtver=2.8.1
 _ginver=2.1.2
 _qtver=5.10.1
@@ -12,41 +12,36 @@ pkgdesc="A powerful and productive integrated development environment (IDE) for 
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('boost-libs>=1.63' 'r>=2.11.1' hicolor-icon-theme shared-mime-info pango hunspell mathjax pandoc clang qt5-base qt5-declarative qt5-location qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns)
-makedepends=(git 'cmake>=2.8' 'boost>=1.63' java-environment apache-ant unzip openssl libcups pam patchelf wget)
+depends=('boost-libs>=1.63' 'r>=2.11.1' hicolor-icon-theme shared-mime-info pango hunspell-en_US mathjax pandoc clang qt5-base qt5-declarative qt5-location qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns)
+makedepends=(git 'cmake>=2.8' 'boost>=1.63' jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget)
 optdepends=('git: for git support'
             'subversion: for subversion support'
             'openssh-askpass: for a git ssh access')
 provides=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview')
 conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview')
-install="${pkgname}.install"
-
 source=("git+https://github.com/rstudio/rstudio.git"
         "https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
         "https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
         "https://s3.amazonaws.com/rstudio-buildtools/QtSDK-${_qtver}-x86_64.tar.gz"
-        "https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip"
         "rstudio.sh")
-md5sums=('SKIP'
-         'e2617189fe5c138945b8cc95f26bd476'
-         'ddd572887957fd5cdfde3469bd8c1102'
-         'a07084d60807d4643738d8bdee87117b'
-         '0e03798b8e53096c4a906bde05e32378'
-         '625896d99d6f3367304e728da34d33eb')
+sha256sums=('SKIP'
+            'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
+            '0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7'
+            'ae03692654882dea9ea428340731dd13ee1e2c7b3c89744e855d5424f7b941ee'
+            '7bfb6c3ab47a52e49b9dce07623b277f7caee4be17031db423fc4b6045fe52f1')
+noextract=("gin-${_ginver}.zip")
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
-     git describe --long --tags | sed 's/^v//;s/\([^-]*\)-g.*/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*\)-g.*/r\1/;s/-/./g'
 }
 
 prepare() {
     msg "Extracting dependencies..."
     cd "${srcdir}/${_gitname}/src/gwt"
-    install -d dictionaries
     install -d lib/{gin,gwt}
     install -d lib/gin/${_ginver}
     install -d lib/gwt/${_gwtver}
-    unzip -qo "${srcdir}/core-dictionaries.zip" -d dictionaries
     unzip -qo "${srcdir}/gin-${_ginver}.zip" -d lib/gin/${_ginver}
     cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
 
