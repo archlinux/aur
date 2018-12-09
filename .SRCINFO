@@ -1,0 +1,15 @@
+pkgbase = python2-pylast
+	pkgdesc = A Python interface to Last.fm and Libre.fm (for python2)
+	pkgver = 2.4.0
+	pkgrel = 2
+	url = https://github.com/pylast/pylast
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2-six
+	source = git+https://github.com/pylast/pylast.git#tag=2.4.0
+	sha256sums = SKIP
+
+pkgname = python2-pylast
+
