@@ -1,6 +1,6 @@
 pkgbase = lix-git
 	pkgdesc = An action-puzzle game inspired by Lemmings
-	pkgver = 0.9.21.r1539962567.2a2610e5
+	pkgver = 0.9.23.r1544388479.29585ea7
 	pkgrel = 1
 	url = http://www.lixgame.com/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = lix-git
 	source = lix::git+https://github.com/SimonN/lix-unstable.git
 	source = lix-music-1.zip::http://www.lixgame.com/dow/lix-music.zip
 	source = lix.desktop
-	source = allegro::git+https://github.com/SiegeLord/DAllegro5.git#tag=v4.0.3+5.2.0
+	source = allegro::git+https://github.com/SiegeLord/DAllegro5.git#tag=v4.0.4+5.2.0
 	source = bolts::git+https://github.com/aliak00/bolts.git#tag=v0.7.1
 	source = derelict-enet::git+https://github.com/DerelictOrg/DerelictENet.git#tag=v4.1.0
 	source = derelict-util::git+https://github.com/DerelictOrg/DerelictUtil.git#tag=v3.0.0-beta.2
@@ -26,11 +26,11 @@ pkgbase = lix-git
 	source = optional::git+https://github.com/aliak00/optional.git#tag=v0.6.3
 	source = sdlang-d::git+https://github.com/Abscissa/SDLang-D.git#tag=v0.10.4
 	source = silly::git+https://github.com/ohdatboi/silly.git#tag=v0.8.0
-	source = taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v0.10.11
+	source = taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v0.10.12
 	source = unit-threaded::git+https://github.com/atilaneves/unit-threaded.git#tag=v0.7.52
 	sha512sums = SKIP
 	sha512sums = 37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425
-	sha512sums = 52d49562cd9be4eec76b464153af1cce2211fdbd6113a6a60df042f7e8f7e6a8f1942df883dfaaa6c1bbfea004c4154d884dfa767e25fa3fadf9c58be1103fe6
+	sha512sums = 375b1439d9398371a3f58a92bfc0901b86bd89140aae431c7d9405bd2fb36ebcdb22b2686fea72d88b23a4ab94b138b4d742d8fd2965d8ec0542d2f8f64ed0c2
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
