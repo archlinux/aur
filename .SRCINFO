@@ -1,7 +1,7 @@
 pkgbase = trinnity-optimizer-git
 	pkgdesc = The triNNity DNN optimizer
 	pkgver = 0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bitbucket.org/STG-TCD/trinnity-optimizer
 	arch = any
 	license = BSD
