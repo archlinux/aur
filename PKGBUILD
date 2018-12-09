@@ -1,17 +1,18 @@
-# Maintainer : Michael DeGuzis <mdeguzis@gmail.com>
+# Maintainer : Bumsik Kim <k.bumsik@gmail.com>
 # Contributor: Det <aur.archlinux.org/account/Det>
 # Contributor: Nick Shvelidze <captain@pirrate.me>
 # Contributor: Justin Dray <justin@dray.be>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: K. Hampf <khampf@users.sourceforge.net>
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
+# Contributor: Kristóf Marussy <kris7topher@gmail.com>
 
 # Build notes:
 # http://wiki.playonlinux.com/index.php/Building_PlayOnLinux_5
 
 _pkgname=playonlinux5
 pkgname=${_pkgname}-git
-pkgver=r2087.a75aee42
+pkgver=r2160.1c7cad3c
 pkgrel=1
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -120,8 +121,8 @@ package() {
   
   # Extract
   install -d "${pkgdir}/opt/"
-  bsdtar -xf "${_pkgname}/phoenicis-dist/target/phoenicis-dist.zip"
-  cp -r phoenicis-dist/ "${pkgdir}/opt/${_pkgname}/"
+  bsdtar -xf "${_pkgname}/phoenicis-dist/target/phoenicis.zip"
+  cp -r phoenicis/ "${pkgdir}/opt/${_pkgname}/"
 
   # Launcher
   install -Dm755 "PlayOnLinux.sh"  "${pkgdir}/usr/bin/${_pkgname}"
