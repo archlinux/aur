@@ -1,0 +1,16 @@
+pkgbase = input-modifier
+	pkgdesc = uinput based key bindings and macros tool
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/tildearrow/input-modifier
+	install = imod.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = udev
+	source = https://github.com/tildearrow/input-modifier/archive/v1.3.1.tar.gz
+	sha256sums = 9f0f35b15af6f171ffa7ab23909c4b6fcc1acf92f83ef070d9b02123f34ae419
+
+pkgname = input-modifier
+

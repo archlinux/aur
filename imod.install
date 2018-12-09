@@ -1,0 +1,23 @@
+post_install() {
+  INSEXTRAFAIL=0
+  { udevadm control --reload-rules && udevadm trigger; } || INSEXTRAFAIL=1
+  sleep 1
+  modprobe uinput || INSEXTRAFAIL=1
+  if [ -e /dev/uinput ]
+    then chmod 660 /dev/uinput || INSEXTRAFAIL=1
+         chown root:input /dev/uinput || INSEXTRAFAIL=1
+         touch /dev/uinput
+         sleep 0.25
+         UISTAT=$(stat -c %a /dev/uinput)
+         if [ $UISTAT == "600" ]
+           then INSEXTRAFAIL=1
+         fi
+    else INSEXTRAFAIL=1
+  fi
+  echo "add yourself to the input group in order to be able to use the program:"
+  echo "sudo usermod -a -G input <username>"
+
+  if [ $INSEXTRAFAIL -eq 1 ]
+    then echo "additionally, you may have to reboot... :("
+  fi
+}
