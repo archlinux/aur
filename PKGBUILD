@@ -2,7 +2,7 @@
 
 pkgname=yggdrasil
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An experiment in scalable routing as an encrypted IPv6 overlay network"
 arch=('aarch64' 'armv6l' 'armv7h' 'armv7l' 'i686' 'x86_64')
 url="https://github.com/yggdrasil-network/yggdrasil-go"
@@ -14,7 +14,7 @@ sha512sums=('614551c7af176f29e219878c5b73fe10d242bd9df427e0019a1305cf46fa7b94802
 
 build() {
 	cd "${pkgname}-go-${pkgver}"
-	./build
+	PKGNAME="${pkgname}" PKGVER="${pkgver}" ./build
 }
 
 package() {
