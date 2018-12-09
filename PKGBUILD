@@ -1,8 +1,8 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=spirv-headers
-pkgver=1.3
-pkgrel=3
+pkgver=1.3.51
+pkgrel=1
 pkgdesc='SPIR-V header files'
 arch=('any')
 url='https://www.khronos.org/registry/spir-v/'
@@ -19,6 +19,20 @@ sha1sums=('b24d1c325d84466900a78425af6764e7cea3a9dc'
           'fdf5f4e36ce2752d0408efae3edc4194937b0836'
           '52590721a4be88dcd10000d4b723694f70ebb301'
           'c2608bbbb93ed17f122855d150bea9699181b8eb')
+
+# Workaround until Khronos starts tagging their releases
+# Inspired by VoidLinux's solution:
+# https://github.com/void-linux/void-packages/pull/3170
+pkgver() {
+  api='https://api.github.com/repos/KhronosGroup/SPIRV-Headers'
+  first='02ffc719aa9f9c1dce5ce05743fb1afe6cbf17ea' # first version of 1.3
+  last_json=$(curl -s "$api/commits?per_page=1")
+  last=$(echo "$last_json" | jq -r '.[0].sha')
+  compare_json=$(curl -s "$api/compare/${first}...${last}")
+  ahead_by=$(echo "$compare_json" | jq -r '.ahead_by')
+  num=$((ahead_by+1))
+  printf '1.3.%d' $num
+}
 
 prepare() {
   cd "${srcdir}"
