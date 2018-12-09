@@ -4,8 +4,8 @@ _pkgbase=faudio-wrappers
 _gitname=FAudio
 pkgbase=${_pkgbase}-git
 pkgname=("${_pkgbase}-win32-git" "${_pkgbase}-win64-git")
-pkgver=r950.5893b35
-pkgrel=2
+pkgver=r979.a98be73
+pkgrel=1
 pkgdesc="Accuracy-focused XAudio reimplementation for open platforms"
 arch=('i686' 'x86_64')
 url='https://github.com/FNA-XNA/FAudio'
@@ -15,7 +15,7 @@ makedepends=('git' 'mingw-w64-gcc' 'mingw-w64-sdl2' 'mingw-w64-ffmpeg')
 source=('git+https://github.com/FNA-XNA/FAudio'
         'setup_faudio_aur.verb')
 sha256sums=('SKIP'
-            '2ddaebc61ad13e26625da6a7252f67a914aaf3cb3a31e34e332562b6a4238aae')
+            '2d8825fd34496d903666580f166396da8f6c792efa6a15b5247f69f953d10dc8')
 
 pkgver() {
   cd "$srcdir/${_gitname}"
@@ -23,25 +23,24 @@ pkgver() {
 }
 
 _build_faudio-wrappers() {
-  cd "$srcdir/${_gitname}"
-
   _mingw=$1
 
-  export PATH=/usr/${_mingw}/bin:${PATH}
-  export CC=${_mingw}-gcc
-  export CXX=${_mingw}-g++
-  export AR=${_mingw}-ar
-  export DLLTOOL=${_mingw}-dlltool
+  _builddir="${srcdir}/${_gitname}/build-${_mingw}"
+  _installdir="${srcdir}/${_gitname}/install-${_mingw}"
+
+  mkdir -p "${_builddir}"
+  cd "${_builddir}"
+
   unset LDFLAGS
 
-  export DISABLE_XNASONG=1
-  export FAUDIO_RELEASE=1
-  export FAUDIO_FFMPEG=1
-  export FAUDIO_FFMPEG_PREFIX=/usr/${_mingw}
+  ${_mingw}-cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="${_installdir}" \
+    -DFFMPEG=ON \
+    -DBUILD_CPP=ON \
+    -DINSTALL_MINGW_DEPENDENCIES=ON
 
-  make clean
   make
-  make -C cpp
 }
 
 build() {
@@ -50,15 +49,20 @@ build() {
 }
 
 _package_faudio-wrappers() {
-  cd "$srcdir/${_gitname}"
-
   _arch=$1
   _mingw=$2
-  _pkgname="${_pkgbase}-win${_arch}"
 
-  install -D -t "${pkgdir}/usr/share/${_pkgname}" "cpp/build_win${_arch}"/*.dll
-  install -D -m644 -t "${pkgdir}/usr/share/${_pkgname}" ../setup_faudio_aur.verb
-  install -D -m644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" LICENSE
+  _pkgname="${_pkgbase}-win${_arch}"
+  _builddir="${srcdir}/${_gitname}/build-${_mingw}"
+  _installdir="${srcdir}/${_gitname}/install-${_mingw}"
+
+  cd "${_builddir}"
+
+  make install
+
+  install -D -t "${pkgdir}/usr/share/${_pkgname}" "${_installdir}/bin"/*.dll
+  install -D -m644 -t "${pkgdir}/usr/share/${_pkgname}" ../../setup_faudio_aur.verb
+  install -D -m644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" ../LICENSE
   install -d "${pkgdir}/usr/bin"
 
   find "${pkgdir}/usr/share/${_pkgname}" -name '*.dll' -exec ${_mingw}-strip --strip-unneeded {} \;

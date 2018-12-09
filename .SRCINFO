@@ -1,7 +1,7 @@
 pkgbase = faudio-wrappers-git
 	pkgdesc = Accuracy-focused XAudio reimplementation for open platforms
-	pkgver = r950.5893b35
-	pkgrel = 2
+	pkgver = r979.a98be73
+	pkgrel = 1
 	url = https://github.com/FNA-XNA/FAudio
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = faudio-wrappers-git
 	source = git+https://github.com/FNA-XNA/FAudio
 	source = setup_faudio_aur.verb
 	sha256sums = SKIP
-	sha256sums = 2ddaebc61ad13e26625da6a7252f67a914aaf3cb3a31e34e332562b6a4238aae
+	sha256sums = 2d8825fd34496d903666580f166396da8f6c792efa6a15b5247f69f953d10dc8
 
 pkgname = faudio-wrappers-win32-git
 	arch = i686

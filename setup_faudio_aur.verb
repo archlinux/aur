@@ -34,10 +34,9 @@ w_metadata setup_faudio_aur dlls \
   file29='FAudio.dll' \
   file30='SDL2.dll' \
   file31='libwinpthread-1.dll' \
-  file32='libiconv-2.dll' \
-  file33='avcodec-58.dll' \
-  file34='avutil-56.dll' \
-  file35='swresample-3.dll' \
+  file32='avcodec-58.dll' \
+  file33='avutil-56.dll' \
+  file34='swresample-3.dll' \
   installed_file1="${W_SYSTEM32_DLLS_WIN}/xaudio2_0.dll" \
   installed_file2="${W_SYSTEM32_DLLS_WIN}/xaudio2_1.dll" \
   installed_file3="${W_SYSTEM32_DLLS_WIN}/xaudio2_2.dll" \
@@ -69,10 +68,9 @@ w_metadata setup_faudio_aur dlls \
   installed_file29="${W_SYSTEM32_DLLS_WIN}/FAudio.dll" \
   installed_file30="${W_SYSTEM32_DLLS_WIN}/SDL2.dll" \
   installed_file31="${W_SYSTEM32_DLLS_WIN}/libwinpthread-1.dll" \
-  installed_file32="${W_SYSTEM32_DLLS_WIN}/libiconv-2.dll" \
-  installed_file33="${W_SYSTEM32_DLLS_WIN}/avcodec-58.dll" \
-  installed_file34="${W_SYSTEM32_DLLS_WIN}/avutil-56.dll" \
-  installed_file35="${W_SYSTEM32_DLLS_WIN}/swresample-3.dll" \
+  installed_file32="${W_SYSTEM32_DLLS_WIN}/avcodec-58.dll" \
+  installed_file33="${W_SYSTEM32_DLLS_WIN}/avutil-56.dll" \
+  installed_file34="${W_SYSTEM32_DLLS_WIN}/swresample-3.dll" \
   homepage='https://github.com/FNA-XNA/FAudio'
 
 FAUDIO_ROOT_DIR=$(dirname "$(readlink -f $1)")
