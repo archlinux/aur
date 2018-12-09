@@ -1,11 +1,11 @@
-# Maintainer: Вячеслав Зубик
+# Maintainer: Slava Zubik
 pkgname=zvvonlinetv
 _pkgname=ZVVOnlineTV
 pkgver=3.2
 _pkgver=3_2
 pkgfix=fix
-pkgrel=3
-pkgdesc="TV | IPTV | youtube player"
+pkgrel=1
+pkgdesc="TV, IPTV & youtube player"
 arch=('i386' 'x86_64')
 url="https://zvvubuntu.blogspot.com"
 license=('custom')
@@ -17,6 +17,4 @@ md5sums=('SKIP')
 package() {
   cd "${srcdir}"
   bsdtar -xf data.tar.xz -C "$pkgdir"
-  #install -Dm755 $pkgname $pkgdir/usr/bin/$pkgname
-  #install -Dm755 $_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
 }
