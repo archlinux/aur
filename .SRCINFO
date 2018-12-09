@@ -1,0 +1,13 @@
+pkgbase = grapebite-git
+	pkgdesc = Scripts for managing Windows games under Arch
+	pkgver = r2.dfd0e53
+	pkgrel = 1
+	url = https://github.com/vanyasem/grapebite
+	arch = any
+	depends = wine
+	depends = winetricks
+	source = git://github.com/vanyasem/grapebite
+	sha256sums = SKIP
+
+pkgname = grapebite-git
+
