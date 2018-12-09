@@ -5,12 +5,12 @@ pkgname=${_pkgname}-bin
 _pkgver=6.8+47+gitdf6c956-3+b1
 _pkgver_tmp="${_pkgver//\+/\.}"
 pkgver="${_pkgver_tmp//-/\.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source High-Performance Computational Chemistry (Debian binary build)"
 arch=("x86_64")
 url="http://www.nwchem-sw.org"
 license=("custom:ECL2.0" "GPL3")
-depends=("lapack" "python2" "openmpi" "nwchem-data" "libgfortran6" "scalapack")
+depends=("lapack" "python2" "openmpi" "nwchem-data" "scalapack")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=("!strip" "libtool" "staticlibs")
@@ -28,4 +28,8 @@ package() {
   rm "${pkgdir}"/usr/share/doc/nwchem/changelog.*
   rm "${pkgdir}"/usr/share/doc/nwchem/TODO.Debian
   rm -r "${pkgdir}"/usr/share/lintian
+
+  # Don't modify the scalapack PKGBUILD.
+  mkdir -p "${pkgdir}"/usr/lib
+  ln -fsv /usr/lib/libscalapack.so "${pkgdir}"/usr/lib/libscalapack-openmpi.so.2.0
 }
