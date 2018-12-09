@@ -1,7 +1,7 @@
 # Contributor: dorkster <jajdorkster@gmail.com>
 
 pkgname=flare-engine-git
-pkgver=v1.08.r44.g24395e82
+pkgver=v1.09.r0.ga73beab5
 pkgrel=1
 pkgdesc="Free/Libre Action Roleplaying Engine - Git version"
 url="http://www.flarerpg.org/"
