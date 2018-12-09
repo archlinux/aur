@@ -18,14 +18,16 @@ options=()
 install=
 changelog=
 
-source=("https://github.com/skypjack/entt/archive/v$pkgver.tar.gz")
+source=("https://github.com/skypjack/entt/archive/v$pkgver.tar.gz"
+        "https://github.com/skypjack/entt/commit/7c5019c30fc463c13c8a20f54c894aac908ebd56.patch")
 noextract=()
-sha256sums=('81227bc7170d6d03371059f0a5167e706831459b72bbc35022fe87cb36854faa')
+sha256sums=('81227bc7170d6d03371059f0a5167e706831459b72bbc35022fe87cb36854faa'
+            '7f29e54eb89343dce32a7c929a57501f55d4a01456d8aaf2a74c53f05de10406')
 validpgpkeys=()
 
-# prepare() {
-# 
-# }
+prepare() {
+	patch -d $pkgname-$pkgver -p1 < 7c5019c30fc463c13c8a20f54c894aac908ebd56.patch
+}
 
 # pkgver() {
 # 	cd "$_pkgname"
