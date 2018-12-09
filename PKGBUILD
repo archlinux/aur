@@ -8,7 +8,7 @@
 # Contributor: Jason Chu <jason@archlinux.org>
 
 pkgname=python-git
-pkgver=3.8.0a0.r102733.a9655b7f71
+pkgver=3.8.0a0.r102932.25648d05ac
 pkgrel=1
 _pybasever=3.8
 pkgdesc="Next generation of the python high-level scripting language"
@@ -23,10 +23,8 @@ optdepends=('sqlite'
             'xz: for lzma'
             'tk: for tkinter')
 source=("git+https://github.com/python/cpython#branch=master"
-        dont-make-libpython-readonly.patch
         0001-compileall-Fix-ddir-when-recursing.patch)
 sha512sums=('SKIP'
-            '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4'
             'ebd04c3b6d41321b1f0d439d356e0ce463760db55dc64109854c70d017cf56608aa19de9fc4a21bf840795ff202b4703444f9af8074b661780798c17e03089ff')
 
 pkgver() {
@@ -39,9 +37,6 @@ pkgver() {
 
 prepare() {
   cd cpython
-
-  # FS#45809
-  patch -p1 -i ../dont-make-libpython-readonly.patch
 
   # FS#59997
   patch -p1 -i ../0001-compileall-Fix-ddir-when-recursing.patch
@@ -69,7 +64,6 @@ build() {
               --enable-shared \
               --with-threads \
               --with-computed-gotos \
-              --enable-optimizations \
               --with-lto \
               --enable-ipv6 \
               --with-system-expat \
@@ -96,7 +90,7 @@ check() {
 
   LD_LIBRARY_PATH="${srcdir}/cpython":${LD_LIBRARY_PATH} \
   LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" -a -n "$servernum" \
-    "${srcdir}/cpython/python" -m test.regrtest -v -uall -x test_ttk_guionly
+    "${srcdir}/cpython/python" -m test.regrtest -w -uall -x test_ttk_guionly -j -1
 }
 
 package() {
