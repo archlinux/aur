@@ -62,6 +62,7 @@ build() {
     mkdir "${srcdir}/${_gitname}/build"
     cd "${srcdir}/${_gitname}/build"
     export QT_SDK_DIR="${srcdir}/Qt${_qtver}"
+    export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:${PATH}
     cmake -DRSTUDIO_TARGET=Desktop \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio \
