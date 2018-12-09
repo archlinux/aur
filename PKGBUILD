@@ -3,13 +3,12 @@
 
 pkgname=ttf-lastwaerk
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="A clean, legible sans serif font."
 arch=('any')
 url="http://aajohan.deviantart.com/art/Lastwaerk-font-137804536"
 license=('CCPL')
 depends=('fontconfig' 'xorg-font-utils')
-install=ttf.install
 source=("http://fc04.deviantart.net/fs50/f/2009/264/1/9/Lastwaerk___font_by_aajohan.zip")
 md5sums=('7b2d6a3ef2d86e1ed1a3a42d46d79bba')
 

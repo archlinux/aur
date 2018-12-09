@@ -1,9 +1,8 @@
 pkgbase = ttf-lastwaerk
 	pkgdesc = A clean, legible sans serif font.
 	pkgver = 1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://aajohan.deviantart.com/art/Lastwaerk-font-137804536
-	install = ttf.install
 	arch = any
 	license = CCPL
 	depends = fontconfig
