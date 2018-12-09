@@ -1,0 +1,14 @@
+pkgbase = trinnity-optimizer-git
+	pkgdesc = The triNNity DNN optimizer
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://bitbucket.org/STG-TCD/trinnity-optimizer
+	arch = any
+	license = BSD
+	makedepends = stack
+	optdepends = pbqp: PBQP solver backend
+	source = git+https://bitbucket.org/STG-TCD/trinnity-optimizer
+	sha512sums = SKIP
+
+pkgname = trinnity-optimizer-git
+
