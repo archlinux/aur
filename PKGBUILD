@@ -2,7 +2,7 @@
 
 pkgname=rtl8723bs-bluetooth-firmware-git
 pkgver=r12.09eb91f
-pkgrel=1
+pkgrel=2
 pkgdesc='Bluetooth Firmware for RTL8723bs'
 arch=('any')
 url="https://github.com/lwfinger/rtl8723bs_bt"
@@ -21,6 +21,6 @@ pkgver() {
 
 package() {
  cd "${srcdir}/rtl8723bs_bt"
- install -Dm 644 ./rtlbt_fw "${pkgdir}/lib/firmware/rtl_bt/rtl8723bs_fw.bin"
- install -Dm 644 ./rtlbt_config "${pkgdir}/lib/firmware/rtl_bt/rtl8723bs_config"
+ install -Dm 644 ./rtlbt_fw "${pkgdir}/usr/lib/firmware/rtl_bt/rtl8723bs_fw.bin"
+ install -Dm 644 ./rtlbt_config "${pkgdir}/usr/lib/firmware/rtl_bt/rtl8723bs_config"
 }
