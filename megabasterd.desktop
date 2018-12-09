@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=MegaBasterd
+Icon=megabasterd
+TryExec=megabasterd
+Exec=megabasterd
+Terminal=false
+Categories=Application;Network;
+StartupWMClass=jd-Main
