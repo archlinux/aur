@@ -5,6 +5,7 @@ pkgbase = bisq
 	url = https://bisq.network
 	arch = any
 	license = AGPL3
+	makedepends = git
 	makedepends = maven
 	makedepends = jdk10-openjdk
 	makedepends = java-openjfx
