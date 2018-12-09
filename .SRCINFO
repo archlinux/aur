@@ -1,6 +1,6 @@
 pkgbase = slic3r-prusa3d
 	pkgdesc = Updated Slic3r by Prusa3D with many bugfixes and new features
-	pkgver = 1.41.1
+	pkgver = 1.41.2
 	pkgrel = 1
 	url = http://www.prusa3d.com/
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = slic3r-prusa3d
 	optdepends = perl-net-dbus: notifications support via any dbus-based notifier
 	optdepends = perl-net-bonjour: support for autodiscovery of printers on network (octoprint)
 	optdepends = perl-class-xsaccessor: creating faster accessor methods
-	source = git+https://github.com/prusa3d/Slic3r.git#tag=version_1.41.1
+	source = git+https://github.com/prusa3d/Slic3r.git#tag=version_1.41.2
 	source = Move-Slic3r-data-to-usr-share-slic3r.patch
 	source = https://raw.githubusercontent.com/PointCloudLibrary/pcl/79c184cc4dbe82d296bb37390064e4a0149234ec/cmake/Modules/FindQhull.cmake
 	source = slic3r.desktop
