@@ -1,14 +1,14 @@
 pkgbase = hawkmoth
 	pkgdesc = Sphinx autodoc C extension
 	pkgver = latest
-	pkgrel = 1
-	url = https://gitlab.com/bms-contrib/hawkmoth
+	pkgrel = 2
+	url = https://github.com/jnikula/hawkmoth
 	arch = i686
 	arch = x86_64
 	license = BSD2
 	depends = python-sphinx
 	depends = clang
-	source = git+https://gitlab.com/bms-contrib/hawkmoth#branch=unrot
+	source = git+https://github.com/jnikula/hawkmoth
 	md5sums = SKIP
 
 pkgname = hawkmoth
