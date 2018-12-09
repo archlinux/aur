@@ -56,14 +56,14 @@ _htmldocs_enable=
 ### Do not edit below this line unless you know what you're doing
 
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
-_major=4.18
+_major=4.19
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=28
+_lqxpatchrel=1
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
-pkgver=4.18.20_3
-pkgrel=3
+pkgver=4.19.8_1
+pkgrel=1
 arch=('x86_64')
 url="http://liquorix.net/"
 license=('GPL2')
@@ -394,9 +394,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('950eb85ac743b291afe9f21cd174d823e25f11883ee62cecfbfff8fe8c5672aae707654b1b8f29a133b1f2e3529e63b9f7fba4c45d6dacccc8000b3a9a9ae038'
+sha512sums=('ab67cc746b375a8b135e8b23e35e1d6787930d19b3c26b2679787d62951cbdbc3bb66f8ededeb9b890e5008b2459397f9018f1a6772fdef67780b06a4cb9f6f4'
             'SKIP'
-            '93b1471a5a261b4c573a9fa5b0e009629273457d73649ab1cceabfe072cf7665712b074bc8687eec9c9d75fe70e03c8d2f1e3414cf1f8f024b48d5c9b580aa1a'
+            'a797078ac4d70df510a0afb071de4544beb8ff4e25b2f35bc7644111bee62f490b10d0c19b34ff59c525178fe44d8fca47d167d5334541081eb1bbc5e6fbaa25'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
