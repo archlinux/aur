@@ -1,7 +1,7 @@
 # Maintainer: alcubierre-drive
 pkgname=backlight-tooler
-pkgver=r5.826f027
 pkgrel=1
+pkgver=r9.51dbdaa
 pkgdesc="A collection of tools to control backlight via webcam."
 arch=('any')
 url="https://github.com/alcubierre-drive/backlight-tooler"
@@ -10,6 +10,7 @@ depends=('systemd' 'glibc')
 makedepends=('git' 'gcc' 'make')
 source=("git://github.com/alcubierre-drive/${pkgname}.git")
 md5sums=('SKIP')
+backup=('etc/BacklightTooler.conf')
 
 pkgver() {
     cd "$pkgname"
