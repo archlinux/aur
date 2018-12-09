@@ -1,14 +1,16 @@
 pkgbase = luksmeta
 	pkgdesc = Library for storing metadata in the LUKSv1 header
 	pkgver = 9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/latchset/luksmeta
 	arch = x86_64
 	license = LGPL
 	makedepends = asciidoc
 	depends = cryptsetup
 	source = https://github.com/latchset/luksmeta/releases/download/v9/luksmeta-9.tar.bz2
+	source = Relax-content-tests-in-test-suite.patch
 	sha512sums = eeecc3de9d621c380d29b2f2ca6ce715f09c20aac8ffc6a3d3cc7dc30c5dc46df686e61928d0accf7e7281ad9baa6ee59a0cf5b58635a311769d8e08c5cc94bd
+	sha512sums = 145f6ceb7bad2090067c5e994bb0f89ce6388cc3c5b3e27a48704c3ae33615a81dcf309b54aa0d0004782890f9260560a24f274d442b3a397a352f5bac5b638e
 
 pkgname = luksmeta
 
