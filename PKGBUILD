@@ -3,16 +3,16 @@
 
 pkgname=php-pear
 epoch=1
-pkgver=1.10.5
-pkgrel=2
+pkgver=1.10.7
+pkgrel=1
 arch=('any')
 pkgdesc='PHP Extension and Application Repository'
-url='http://pear.php.net/'
+url='https://pear.php.net/'
 depends=('php')
 license=('PHP')
 source=('https://pear.php.net/install-pear-nozlib.phar')
 backup=('etc/php/pear.conf')
-md5sums=('746dc5b681063e792152730770b36d21')
+sha256sums=('b6720f79742324c745ea61d4fe412949b98aa81ea59e0875e72dc2e57a12dcd1')
 
 package() {
 	PHP_PEAR_SYSCONF_DIR=/etc/php \
