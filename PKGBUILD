@@ -2,13 +2,13 @@
 
 pkgname=ttf-philosopher-google
 pkgver=20110831
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal font inspired by Agfa Rotis and ITC Binary. Extended by Google-fonts."
 arch=(any)
 license=(OFL)
 url='https://fonts.google.com/specimen/Philosopher'
 depends=()
-source=("https://fonts.google.com/download?family=Philosopher")
+source=("Philosopher-$pkgver.zip::https://fonts.google.com/download?family=Philosopher")
 md5sums=('87df65b81843f479c7f3577d7ea2b918')
 
 package() {
