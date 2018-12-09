@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Ethr is a Network Performance Measurement Tool for TCP, UDP & HTTP"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Microsoft/Ethr"
-license=('GPL')
+license=('MIT')
 makedepends=(
   'go'
   'git'
