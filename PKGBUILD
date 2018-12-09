@@ -2,7 +2,7 @@
 
 pkgname=gsl-firmware-git
 pkgver=r184.4c39712
-pkgrel=2
+pkgrel=3
 pkgdesc='Firmware for Silead touchscreen controllers'
 arch=('i686' 'x86_64')
 url="https://github.com/onitake/gsl-firmware"
@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
  cd ${srcdir}/gsl
- install -Dm 644 ./firmware/linux/silead/* -t "${pkgdir}/lib/firmware/silead/"
+ install -Dm 644 ./firmware/linux/silead/* -t "${pkgdir}/usr/lib/firmware/silead/"
 }
