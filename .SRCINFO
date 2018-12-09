@@ -1,7 +1,7 @@
 pkgbase = xsecurelock
 	pkgdesc = X11 screen lock utility with security in mind
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/google/xsecurelock
 	arch = any
 	license = APACHE
@@ -15,8 +15,8 @@ pkgbase = xsecurelock
 	optdepends = pamtester: for the auth_pamtester module
 	optdepends = xorg-xset: for the saver_blank module
 	optdepends = xscreensaver: for the saver_xscreensaver module
-	source = https://github.com/google/xsecurelock/archive/v1.1.tar.gz
-	md5sums = 8b4ec8d8f6445db68a8c176927c547c6
+	source = https://github.com/google/xsecurelock/archive/v1.2.tar.gz
+	md5sums = adfdbfca57a0b3a9f1e54b4f81970560
 
 pkgname = xsecurelock
 
