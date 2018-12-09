@@ -1,0 +1,22 @@
+From 0a5a75babfbd8049be0cd3814df461f73880e0a7 Mon Sep 17 00:00:00 2001
+From: ubinix-warun <warun@ubinix.com>
+Date: Thu, 4 Oct 2018 11:39:07 +0700
+Subject: [PATCH] FIX: libusb.h => <libusb-1.0/libusb.h>
+
+---
+ dependencies/usb-modeswitch/usb_modeswitch.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dependencies/usb-modeswitch/usb_modeswitch.h b/dependencies/usb-modeswitch/usb_modeswitch.h
+index 69532c2..92503be 100644
+--- a/dependencies/usb-modeswitch/usb_modeswitch.h
++++ b/dependencies/usb-modeswitch/usb_modeswitch.h
+@@ -23,7 +23,7 @@
+ */
+ 
+ #include <stdlib.h>
+-#include <libusb.h>
++#include <libusb-1.0/libusb.h>
+ 
+ void readConfigFile(const char *configFilename);
+ void printConfig();
