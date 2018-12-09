@@ -1,4 +1,5 @@
 # Maintainer: Ave Ozkal <aurpub@ave.zone>
+# Contributor: Nikos Fytilis <n-fit@live.com>
 
 _name=fusee-nano
 pkgname="$_name-git"
@@ -9,8 +10,10 @@ arch=('any')
 url="https://github.com/DavidBuchanan314/fusee-nano"
 license=('mit')
 makedepends=('git')
-source=("$_name::git+https://github.com/DavidBuchanan314/fusee-nano")
-md5sums=('SKIP')
+source=("$_name::git+https://github.com/DavidBuchanan314/fusee-nano"
+'wrapper.sh')
+md5sums=(SKIP
+SKIP)
 
 pkgver() {
   cd $_name
@@ -24,7 +27,10 @@ build() {
 
 package() {
   cd $_name
-  mkdir -p "$pkgdir/usr/bin"
-  cp fusee-nano "$pkgdir/usr/bin"
+  mkdir -p $pkgdir/usr/share/$_name/{bin,share}
+  mkdir -p $pkgdir/usr/bin
+  cp -r files "$pkgdir/usr/share/$_name/share"
+  install -m 755 fusee-nano "${pkgdir}/usr/share/$_name/bin/fusee-nano"
+  install -m 755 $srcdir/wrapper.sh "${pkgdir}/usr/bin/fusee-nano"
 }
 

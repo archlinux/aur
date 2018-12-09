@@ -7,6 +7,8 @@ pkgbase = fusee-nano-git
 	license = mit
 	makedepends = git
 	source = fusee-nano::git+https://github.com/DavidBuchanan314/fusee-nano
+	source = wrapper.sh
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = fusee-nano-git
