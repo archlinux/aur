@@ -3,15 +3,15 @@
 _pkgname=faudio
 _gitname=FAudio
 pkgname=${_pkgname}-git
-pkgver=r949.acc1aaa
-pkgrel=2
+pkgver=r979.a98be73
+pkgrel=1
 pkgdesc="Accuracy-focused XAudio reimplementation for open platforms"
 arch=('i686' 'x86_64')
 url='https://github.com/FNA-XNA/FAudio'
 license=('custom')
 provides=("${_pkgname}")
 depends=('sdl2' 'ffmpeg')
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=('git+https://github.com/FNA-XNA/FAudio'
         'faudio.pc')
 sha256sums=('SKIP'
@@ -23,17 +23,28 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/${_gitname}"
-  FAUDIO_RELEASE=1 FAUDIO_FFMPEG=1 make
+  mkdir -p "$srcdir/${_gitname}/build"
+  cd "$srcdir/${_gitname}/build"
+
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
+    -DFFMPEG=ON
+
+  make
 }
 
 package() {
-  cd "$srcdir/${_gitname}"
-  _tmpdir="${pkgdir}/temp"
-  FAUDIO_RELEASE=1 FAUDIO_FFMPEG=1 INSTALL_PREFIX="${_tmpdir}" make install
-  install -D -t "${pkgdir}/usr/lib" "${_tmpdir}/lib"/*
-  install -D -m644 -t "${pkgdir}/usr/include/${_gitname}" "${_tmpdir}/include"/*
-  install -D -m644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" LICENSE
-  install -D -m644 -t "${pkgdir}/usr/lib/pkgconfig" ../faudio.pc
-  rm -rf "${_tmpdir}"
+  cd "$srcdir/${_gitname}/build"
+
+  make install
+
+  mkdir "${pkgdir}/usr/include/FAudio"
+  mv "${pkgdir}/usr/include"/*.h "${pkgdir}/usr/include/FAudio"
+
+  sed -i 's!"${_IMPORT_PREFIX}/include"!"${_IMPORT_PREFIX}/include/FAudio"!' \
+    "${pkgdir}/usr/lib/cmake/FAudio/FAudio-targets.cmake"
+
+  install -D -m644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" ../LICENSE
+  install -D -m644 -t "${pkgdir}/usr/lib/pkgconfig" ../../faudio.pc
 }
