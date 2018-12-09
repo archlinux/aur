@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <andersan@tcd.ie>
 pkgname=trinnity-optimizer-git
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The triNNity DNN optimizer"
 arch=('any')
 url="https://bitbucket.org/STG-TCD/trinnity-optimizer"
@@ -29,5 +29,5 @@ package() {
   mkdir -p ${pkgdir}/usr/bin
   install -ma=rx $BUILTBIN ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/usr/share/bash-completion/completions/
-  ${pkgdir}/usr/bin/triNNity-optimizer --bash-completion-script ${pkgdir}/usr/bin/triNNity-optimizer > ${pkgdir}/usr/share/bash-completion/completions/triNNity-optimizer
+  ${pkgdir}/usr/bin/triNNity-optimizer --bash-completion-script "/usr/bin/triNNity-optimizer" > ${pkgdir}/usr/share/bash-completion/completions/triNNity-optimizer
 }
