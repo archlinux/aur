@@ -1,7 +1,7 @@
 pkgbase = flask-table
 	pkgdesc = HTML tables for use with the Flask micro-framework
 	pkgver = 0.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://pypi.python.org/pypi/Flask-Table/
 	arch = any
 	license = BSD
@@ -11,13 +11,11 @@ pkgbase = flask-table
 	sha1sums = f7bc8047150fa201002063fa87295d1329ceb301
 
 pkgname = python-flask-table
-	depends = 
 	depends = python
 	depends = python-flask
 	depends = python-flask-babelex
 
 pkgname = python2-flask-table
-	depends = 
 	depends = python2
 	depends = python2-flask
 	depends = python2-flask-babelex

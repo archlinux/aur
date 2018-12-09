@@ -3,8 +3,8 @@
 pkgbase='flask-table'
 pkgname=('python-flask-table' 'python2-flask-table')
 _module='flask_table'
-pkgver='0.5.1'
-pkgrel='3'
+pkgver=0.5.1
+pkgrel=4
 pkgdesc='HTML tables for use with the Flask micro-framework'
 arch=('any')
 url='http://pypi.python.org/pypi/Flask-Table/'
