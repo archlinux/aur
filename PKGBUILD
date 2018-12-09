@@ -1,6 +1,6 @@
 # Maintainer: Florian Pelz <pelzflorian at pelzflorian.de>
 pkgname=haunt
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Static site generator written in Guile Scheme"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('guile-reader: Skribe support'
             'guile-commonmark: CommonMark support')
 makedepends=('guile-reader' 'guile-commonmark')
 source=("https://files.dthompson.us/haunt/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('a45ff725cf1cff841b66510baf072792f139c255266e3ccfcaf1439af56c33a554c124b3b0837922fd10ec40e66d08b3572251dca886b7cc5872877f85bfc17c')
+sha512sums=('b705a3d842488bd1149901058be858d7194be60a7ca68db21904e550ae1a7cf34275c67c260555dd9686a15e605794966757f793df5882e44f54a4c08e5ca87a')
 
 build() {
   cd "$pkgname"-"$pkgver"
