@@ -2,13 +2,13 @@
 
 _pkgname='grapebite'
 pkgname='grapebite-git'
-pkgver=r5.c3377d3
+pkgver=r6.2a701aa
 pkgrel=1
 pkgdesc='Scripts for managing Windows games under Arch'
 url='https://github.com/vanyasem/grapebite'
 arch=('any')
 makedepents=(git)
-depends=(wine winetricks dxvk-win64-bin dxvk-win32-bin)
+depends=(wine winetricks dxvk-win64-bin dxvk-win32-bin wget)
 source=('git://github.com/vanyasem/grapebite')
 sha256sums=('SKIP')
 
