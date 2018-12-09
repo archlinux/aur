@@ -1,0 +1,15 @@
+pkgbase = freebsd-mk
+	pkgdesc = FreeBSD makefile templates for bmake
+	pkgver = 10.3_svn296373_6
+	pkgrel = 1
+	url = https://packages.debian.org/stable/freebsd-mk
+	arch = any
+	license = bsd
+	depends = bmake
+	source = http://deb.debian.org/debian/pool/main/f/freebsd-buildutils/freebsd-buildutils_10.3~svn296373.orig.tar.xz
+	source = http://deb.debian.org/debian/pool/main/f/freebsd-buildutils/freebsd-buildutils_10.3~svn296373-6.debian.tar.xz
+	sha256sums = 1b16981e42765813be3811b1eda802dccb673de1c4542ed6476f467b0b21e804
+	sha256sums = 050399c35a6fb66dc92723e08161b3023f577189556168e5c3eb0eceed08afc4
+
+pkgname = freebsd-mk
+
