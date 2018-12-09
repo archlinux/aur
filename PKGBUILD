@@ -3,7 +3,7 @@
 # Contributor: Duncan Ferguson <duncan_ferguson@users.sourceforge.net>
 
 pkgname=clusterssh
-pkgver=4.13.2
+pkgver=4.13.2_01
 pkgrel=1
 pkgdesc="Control multiple open terminal windows with connections to specified hosts and an administration console"
 arch=('any')
@@ -17,24 +17,24 @@ checkdepends=('perl-cpan-changes' 'perl-file-slurp' 'perl-file-which' 'perl-read
 makedepends=('perl-module-build')
 options=('!emptydirs')
 changelog=$pkgname.changelog
-source=($pkgname-$pkgver.tar.gz::https://github.com/duncs/clusterssh/archive/release-4.13.2.tar.gz)
-sha256sums=('02fec755beafe07a9b08aa0ed72149742e8d9ff0d2c75e424b9d97ddd20edb84')
+source=($pkgname-$pkgver.tar.gz::https://github.com/duncs/$pkgname/archive/v$pkgver.tar.gz)
+sha256sums=('be6da42d448d925485d24c060f93215980e4e603476d61e18e79e219facea65a')
 
 build() {
-  cd "${srcdir}"/$pkgname-release-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
   perl Build.PL installdirs=vendor
   ./Build
 }
 
 check() {
-  cd "${srcdir}"/$pkgname-release-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
 #  ./Build test
 }
 
 package() {
-  cd "${srcdir}"/$pkgname-release-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
 
   ./Build install destdir="${pkgdir}"
 
