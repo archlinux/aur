@@ -1,9 +1,7 @@
 # Maintainer: Slava Zubik
 
 pkgname=zvvonlinemusic
-#_pkgname=ZVVOnlineMusic
 pkgver=0.5
-#_pkgver=0_5
 pkgrel=1
 pkgdesc="Online music player"
 arch=('i386' 'x86_64')
