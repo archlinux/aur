@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <andersan@tcd.ie>
 pkgname=trinnity-optimizer-git
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="The triNNity DNN optimizer"
 arch=('any')
 url="https://bitbucket.org/STG-TCD/trinnity-optimizer"
@@ -20,8 +20,7 @@ source=("git+https://bitbucket.org/STG-TCD/trinnity-optimizer")
 sha512sums=("SKIP")
 
 build() {
-  cd ${srcdir}
-  stack build
+  cd ${srcdir} && stack build
 }
 
 package() {
