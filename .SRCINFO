@@ -1,0 +1,13 @@
+pkgbase = rtl8723bs-bluetooth-firmware-git
+	pkgdesc = Bluetooth Firmware for RTL8723bs
+	pkgver = r12.09eb91f
+	pkgrel = 1
+	url = https://github.com/lwfinger/rtl8723bs_bt
+	arch = any
+	license = custom
+	makedepends = git
+	source = git+https://github.com/lwfinger/rtl8723bs_bt.git
+	sha512sums = SKIP
+
+pkgname = rtl8723bs-bluetooth-firmware-git
+
