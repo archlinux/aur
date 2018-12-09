@@ -1,9 +1,8 @@
 pkgbase = ttf-montepetrum
 	pkgdesc = A very tall, narrow, thin, sans serif font.
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://aajohan.deviantart.com/art/Montepetrum-Font-151870278
-	install = ttf.install
 	arch = any
 	license = CCPL
 	depends = fontconfig

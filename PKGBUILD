@@ -3,13 +3,12 @@
 
 pkgname=ttf-montepetrum
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="A very tall, narrow, thin, sans serif font."
 arch=('any')
 url="http://aajohan.deviantart.com/art/Montepetrum-Font-151870278"
 license=('CCPL')
 depends=('fontconfig' 'xorg-font-utils')
-install=ttf.install
 source=("http://fc01.deviantart.net/fs70/f/2010/027/f/5/Montepetrum___Font_by_aajohan.zip")
 md5sums=('d631b527bec723d6fbd4324943672b13')
 
