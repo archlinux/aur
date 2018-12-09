@@ -1,0 +1,7 @@
+post_install() {
+  chown -R xmppwebhook:xmppwebhook /etc/xmpp-webhook.env
+
+  echo "Configure using environment variables in /etc/xmpp-webhook.env"
+}
+
+# vim: ts=2 sw=2 et:
