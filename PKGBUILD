@@ -1,6 +1,6 @@
 pkgname=python-u2flib-host
-pkgver=3.0.2
-pkgrel=4
+pkgver=3.0.3
+pkgrel=1
 pkgdesc='Python-based U2F host library by Yubico'
 arch=(any)
 url='https://github.com/Yubico/python-u2flib-host'
