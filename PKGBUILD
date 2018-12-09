@@ -5,7 +5,7 @@
 
 pkgbase='auto-multiple-choice'
 pkgname='auto-multiple-choice'
-pkgver='1.4.0~rc1'
+pkgver='1.4.0~rc2'
 pkgrel='1'
 pkgdesc="AMC est un ensemble d'utilitaires permettant de créer, gérer et corriger automatiquement des questionnaires à choix multiples (QCM)"
 arch=('i686' 'x86_64')
@@ -18,23 +18,24 @@ depends=('perl' 'perl-glib-object-introspection'
   'perl-text-csv' 'perl-dbi' 'perl-archive-zip'
   'graphicsmagick' 'texlive-bin' 'texlive-core'
   'gtk2-perl' 'netpbm' 'opencv' 'poppler' 'poppler-glib' 'perl-clone'
-  'perl-gtk3')
+  'perl-gtk3'
+  'glew' 'dblatex' 'vtk' 'hdf5')
 
-source=('https://gitlab.com/jojo_boulix/auto-multiple-choice/uploads/e0b1a6a7541d2187aa230997c865f8b0/auto-multiple-choice_1.4.0-rc1_dist.tar.gz' 'amc.patch')  
+source=('https://gitlab.com/jojo_boulix/auto-multiple-choice/-/archive/1.4.0-rc2/auto-multiple-choice-1.4.0-rc2.zip'
+'amc.patch')  
 
-md5sums=('8a2f871d67a9c194ce53e29455ded929'
-    'd3e490a6785f4df9a26424ee52e7100b')
+md5sums=('0584e43f9605720206e0385451d26da5'
+    'a85fe857b879d4e8ad73253eae4db078')
 
 build() {
   #cd "$srcdir"/$pkgbase-$pkgver
-  cd auto-multiple-choice-1.4.0~rc1
+  cd auto-multiple-choice-1.4.0-rc2
   patch -p 1 < $srcdir"/amc.patch"
-  #make all_precomp|| return 1
-  make PERLDIR=/usr/share/per5/vendor_perl
+  make all || return 1
 }
 
 package_auto-multiple-choice(){
   install='amc.install'
-  cd auto-multiple-choice-1.4.0~rc1
+  cd auto-multiple-choice-1.4.0-rc2
   make DESTDIR="$pkgdir/" install
 }
