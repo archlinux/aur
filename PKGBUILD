@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=far2l-git
-pkgver=r816.3f8f764
+pkgver=r1127.4c12ff1
 pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
@@ -9,10 +9,10 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 source=('git+https://github.com/elfmz/far2l'
         'git+https://github.com/cycleg/far-gvfs#commit=7ea1a87fbe3e0c6cc42a4c2e7067d04758587894'
-        'far2l.patch')
+        'far2l-add-gvfs.patch')
 sha256sums=('SKIP'
             'SKIP'
-            '7d340146a96a8e0822ff87833766997a5dc83f9e2d232bd6539f5cfb6bbacbe6'
+            'd75dcd5ac96d0b7d2b7964620191d9e81733380ddf47dedf8b5aef1255686fd7'
            )
 makedepends=('git' 'cmake')
 depends=('wxgtk' 'gtkmm3' 'openssl-1.0')
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
   cd "$srcdir"/far2l
 
-  patch -p1 -i "$srcdir"/far2l.patch
+  patch -p1 -i "$srcdir"/far2l-add-gvfs.patch
 }
 
 package() {
