@@ -1,0 +1,16 @@
+pkgbase = brother-dcpl2550dn
+	pkgdesc = Brother DCP-L2550DN lpr driver and CUPS wrapper
+	pkgver = 4.0.0_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadend.aspx?c=eu_ot&lang=en&prod=dcpl2550dn_eu&os=127&dlid=dlf103519_000&flang=4&type3=10282
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:brother
+	depends = cups
+	optdepends = brscan4: scanner support.
+	source = https://download.brother.com/welcome/dlf103519/dcpl2550dnpdrv-4.0.0-1.i386.rpm
+	sha256sums = 88a2aa9fa5e9b441166983a032cb5e63681d4956b3ee6b84a1f777f76065b575
+
+pkgname = brother-dcpl2550dn
+
