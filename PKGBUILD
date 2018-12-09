@@ -26,5 +26,6 @@ package() {
   tar -xJf data.tar.xz -C "${pkgdir}"
 
   install -d -m755 "${pkgdir}/usr/"
-
+  rm ${pkgdir}/usr/share/anoise/preferences.py
+  cp ../preferences.py ${pkgdir}/usr/share/anoise/
 }
