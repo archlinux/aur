@@ -3,22 +3,28 @@
 
 # TODO: See if MFC-425CN autodetects properly
 
-# This has not been tested with non cups lprng.
-
-# NOTE 1: Remember to add user to lp group using
-# gpasswd -a USER lp
-# NOTE 2: Remember to logout after adding groups
-# NOTE 3: Set each printer default Media Size to Letter with
-# lpadmin -p BR7360 -o media=Letter
+_brinf=(
+[MFC-410CN]
+PRN_CUP_RPM=cupswrapperMFC410CN-1.0.0-1.i386.rpm
+PRN_CUP_DEB=cupswrapperMFC410CN-1.0.2-3.i386.deb
+PRN_LPD_RPM=MFC410CNlpr-1.0.2-1.i386.rpm
+PRN_LPD_DEB=mfc410cnlpr-1.0.2-1.i386.deb
+PRINTERNAME=MFC410CN
+SCANNER_DRV=brscan2
+SCANKEY_DRV=brscan-skey
+)
+_brinf+=(
+REQUIRE32LIB=yes
+)
 
 _opt_DEB=0
 
 set -u
-_brothern='410'
-_brotheru="MFC-${_brothern}CN"
+_brotheru='MFC-410CN'
 _brotherl="${_brotheru,,}"     # mfc-0000dw
 _brotherlnd="${_brotherl//-/}" # mfc0000dw
 _brotherund="${_brotheru//-/}" # MFC0000DW
+_brotherxnd="${_brotherund}"   # upper or lower as required by scripts
 pkgname="brother-${_brotherl}"
 _lprver='1.0.2_1'
 _cuprpmver='1.0.0_1'
@@ -31,7 +37,6 @@ url='https://support.brother.com/g/s/id/linux/en/'
 license=('GPL' 'custom')
 depends=('cups' 'ghostscript' 'psutils' 'a2ps' 'sed' 'grep')
 depends+=('tcsh')
-depends_x86_64=('lib32-glibc')
 # We look at the scripts and find these programs from which we decide on the depends above.
 # gs: lpr rendering
 # pdf2ps: cups rendering
@@ -41,47 +46,117 @@ depends_x86_64=('lib32-glibc')
 # sed grep awk
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=670055
 # Printing a text file fails when Liberation is the only TrueType font available
+# depends+=('perl') # cupswrapper
 optdepends=(
   'ttf-dejavu: printing text files from lpr'
-  'brscan2: Scanner support'
 )
-makedepends=('patchelf')
 options=('!strip')
 #install="${pkgname}.install"
-#_brsource="brmfc-src-${pkgver//_/-}.i386" # fax driver, cups driver source not available
-_dlf="http://www.brother.com/pub/bsc/linux"
+_dlf='http://www.brother.com/pub/bsc/linux'
+_inf="${_brotherlnd}-${pkgver}.inf"
 source=(
-  "${_brotherlnd}.inf::${_dlf}/infs/${_brotherund}" # A crc change lets us know that the driver has been updated
-  "${_dlf}/packages/${_brotherund}lpr-${_lprver//_/-}.i386.rpm"
-  "${_dlf}/packages/cupswrapper${_brotherund}-${_cuprpmver//_/-}.i386.rpm"
-  #"${_dlf}/dlf/${_brsource}.tar.gz"
   'cupswrapper-license.txt'
+  "${_inf}::${_dlf}/infs/${_brotherund}"
   'lpr-license.txt'
 )
-if [ "${_opt_DEB}" -ne 0 ]; then
-  noextract=(
-    "${_dlf}/packages/${_brotherlnd}lpr-${_lprver//_/-}.i386.deb"
-    "${_dlf}/packages/cupswrapper${_brotherund}-${_cupdebver//_/-}.i386.deb"
-  )
-  source[1]="${noextract[0]}"
-  source[2]="${noextract[1]}"
-  noextract=("${noextract[@]##*/}")
-fi
-md5sums=('af51f85b9a7486a77cd4c24f416487f4'
-         'f1737ee46cba72e81f29fe78965de409'
+md5sums=('97ad0cffd216059e9d1d3121899d8646'
+         'af51f85b9a7486a77cd4c24f416487f4'
+         '5e87a3dc0f3e3438c088eda0f3565f0d'
          'db76c8d73506c3585e77e6c72e525a09'
-         '97ad0cffd216059e9d1d3121899d8646'
-         '5e87a3dc0f3e3438c088eda0f3565f0d')
-sha256sums=('08a52a4aeb38dabe69b8611c3ad13538eac74889c7356108870a8332db133842'
-            '66ca35f65411dc269710c5d84827cae183569884f9aa07358b33eee40da4a6e1'
+         'f1737ee46cba72e81f29fe78965de409')
+sha256sums=('2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9'
+            '08a52a4aeb38dabe69b8611c3ad13538eac74889c7356108870a8332db133842'
+            '9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67'
             '51a9d92231b114015c4011941d01e73d557d357b0b5b5befd03baeff95846694'
-            '2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9'
-            '9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67')
+            '66ca35f65411dc269710c5d84827cae183569884f9aa07358b33eee40da4a6e1')
 
-# Conflicts with MFC-420CN
+_mismatch=0
+_brverchk() {
+  local _ver="$1"
+  _ver="${_ver%.*}"
+  _ver="${_ver%.*}"
+  local _vb="${_ver%-*}"
+  _vb="${_vb%-*}-"
+  _ver="${_ver#${_vb}}"
+  local _pv="$2"
+  if [ -z "${_pv}" ]; then
+    _pv="$3"
+  fi
+  if [ -z "${_pv}" ]; then
+    _pv="$4"
+  fi
+  if [ "${_ver}" != "${_pv//_/-}" ]; then
+    echo "Version mismatch: ${_ver} ${_pv//_/-}" 1>&2
+    _mismatch=$((_mismatch+1))
+  fi
+}
+
+_procinf() {
+  local _fd _fvar _fval
+  for _fd in "${_brinf[@]}"; do
+    _fvar="${_fd%%=*}="
+    _fval="${_fd##*=}"
+    if [ ! -z "${_fval}" ]; then
+      case "${_fvar}" in
+      '['*);;
+      PRN_CUP_RPM=)
+        _brverchk "${_fval}" "${_cuprpmver:-}" "${_cupver:-}" "${pkgver}"
+        if [ "${_opt_DEB}" -eq 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_CUP_DEB=)
+        _brverchk "${_fval}" "${_cupdebver:-}" "${_cupver:-}" "${pkgver}"
+        if [ "${_opt_DEB}" -ne 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_LPD_RPM=)
+        _brverchk "${_fval}" "${_lprrpmver:-}" "${_lprver:-}" "${pkgver}"
+        if [ "${_opt_DEB}" -eq 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_LPD_DEB=)
+        _brverchk "${_fval}" "${_lprdebver:-}" "${_lprver:-}" "${pkgver}"
+        if [ "${_opt_DEB}" -ne 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_DRV_RPM=)
+        _brverchk "${_fval}" "" "" "${pkgver}"
+        if [ "${_opt_DEB}" -eq 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_DRV_DEB=)
+        _brverchk "${_fval}" "" "" "${pkgver}"
+        if [ "${_opt_DEB}" -ne 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      REQUIRE32LIB=)
+        if [ "${_fval}" = 'yes' ]; then
+          depends_x86_64+=('lib32-glibc')
+        fi
+      ;;
+      PRINTERNAME=);;
+      SCANNER_DRV=)optdepends+=("${_fval}: Scanner support");;
+      SCANKEY_DRV=)optdepends+=("${_fval}: Scanner button support");;
+      *) echo "Unrecognized line: ${_fd}" 1>&2; exit 1;;
+      esac
+    fi
+  done
+  test "${_mismatch}" -eq 0 || exit 1
+}
+_procinf
+unset -f _procinf _brverchk
+unset _mismatch _brinf
+
 # Must be same length as
 #         'Brother'
-_conflict='bmf410c'
+#_conflict='brother'
+_conflict='bmf410c' # Conflicts with MFC-420CN
 
 prepare() {
   set -u
@@ -113,7 +188,7 @@ prepare() {
   # setup cups-directories, some installers create these for us
   install -d 'usr/lib/cups/filter'
   install -d 'usr/share/cups/model'
-  #install -dm755 "${srcdir}/usr/share/ppd" # For cups we don't need the ppd file here.
+  #install -d 'usr/share/ppd' # For cups we don't need the ppd file here.
 
   # /etc/printcap is managed by cups
   find . -type 'f' -name 'setupPrintcap*' -delete
@@ -124,12 +199,16 @@ prepare() {
 build() {
   set -u
 
-  #local _basedir="opt/brother/Printers/${_brotherlnd}"
+  #local _basedir="opt/brother/Printers/${_brotherxnd}"
   local _basedir="usr/share/${_conflict}"
-  local _wrapper_source=(${_basedir}/cupswrapper/cupswrapper${_brotherund}*)
+  #local _basedir="usr/share/${_conflict}/Printer/${_brotherxnd}"
+  shopt -s nullglob
+  local _wrapper_source=("${_basedir}/cupswrapper/cupswrapper${_brotherxnd}"*)
+  shopt -u nullglob
   test "${#_wrapper_source[@]}" -eq 1 || echo "${}"
   _wrapper_source="${_wrapper_source[0]}"
-  test -s "${_wrapper_source}" || echo "${}"
+  test -x "${_wrapper_source}" || echo "${}"
+  echo "Wrapper source: ${_wrapper_source}"
 
   # Some Brother installers create files here
   #mkdir -p 'var/tmp'
@@ -154,7 +233,7 @@ build() {
   # Fix page shifted off center that affects some printers
   # Letter prints off center shifted down and right with PaperType=A4
   # I can only test printing A4 on Letter paper. A4 appears to print correctly with PaperType=Letter
-  #sed -e 's:^\(PaperType\)=.\+$:\1=Letter:g' -i "${_basedir}/inf/br${_brotherund}rc"
+  #sed -e 's:^\(PaperType\)=.\+$:\1=Letter:g' -i "${_basedir}/inf/br${_brotherxnd}rc"
 
   # Modify the installer so we can finish the install here in PKGBUILD.
   #cp -p "${_wrapper_source}" "${_wrapper_source}.Arch" # debug: diff compare with Total Commander
@@ -190,8 +269,8 @@ build() {
   chmod 644 "${_ppdir}"/*.ppd # Some installers make ppd executable
   rm -rf 'var'
 
-  #local _wrapgen="${_basedir}/cupswrapper/brother_lpdwrapper_${_brotherlnd}"
-  local _wrapgen="usr/lib/cups/filter/brlpdwrapper${_brotherund}"
+  #local _wrapgen="${_basedir}/cupswrapper/brother_lpdwrapper_${_brotherxnd}"
+  local _wrapgen="usr/lib/cups/filter/brlpdwrapper${_brotherxnd}"
   test -s "${_wrapgen}" || echo "${}"
 
   # Ensure all paths were removed
@@ -209,7 +288,7 @@ build() {
   local _ncodefound=0
   local _lwrapper
   for _lwrapper in 'usr/lib/cups/filter'/*; do
-    if grep -q "$(basename "${_lwrapper}")" 'usr/share/cups/model'/*.ppd; then
+    if grep -q "$(basename "${_lwrapper}")" "${_ppdir}"/*.ppd; then
       _nppdfound=$((_nppdfound+1))
     fi
     if grep -q "${_brcupsconf##*/}" "${_lwrapper}"; then
@@ -222,6 +301,7 @@ build() {
   set +u
 }
 
+makedepends=('patchelf')
 _fn_libconflict() {
   # Change lib name to prevent conflicts with other printers that use the same one
   local _f1='libbrcompij2'
@@ -269,7 +349,9 @@ package() {
     fi
   done
 
-  _fn_libconflict
+  if [ "${_conflict}" != 'brother' ]; then
+    _fn_libconflict
+  fi
   _fn_mfc425cn
 
   # Ensure we got a ppd and a filter for CUPS
