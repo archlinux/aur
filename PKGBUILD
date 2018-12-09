@@ -3,15 +3,15 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=4.0
-pkgrel=9
+pkgver=4.1
+pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=4.0
+_wwwpkgver=4.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('EUPL-1.1')
 url="https://github.com/pi-hole/pi-hole"
-depends=('pi-hole-ftl' 'bc' 'perl' 'net-tools' 'iproute2' 'logrotate')
+depends=('pi-hole-ftl' 'bc' 'perl' 'net-tools' 'iproute2' 'logrotate' 'bind-tools')
 optdepends=(
 'lighttpd: a secure, fast, compliant and very flexible web-server'
 'php-cgi: CGI and FCGI SAPI for PHP needed only for lighttpd'
