@@ -2,14 +2,28 @@
 # Contributor: electricprism
 # Contributor: mrshannon Michael R. Shannon
 
+_brinf=(
+[MFC-L8610CDW]
+PRN_CUP_RPM=mfcl8610cdwcupswrapper-1.3.0-0.i386.rpm
+PRN_CUP_DEB=mfcl8610cdwcupswrapper-1.3.0-0.i386.deb
+PRN_LPD_RPM=mfcl8610cdwlpr-1.2.0-0.i386.rpm
+PRN_LPD_DEB=mfcl8610cdwlpr-1.2.0-0.i386.deb
+PRINTERNAME=MFCL8610CDW
+SCANNER_DRV=brscan4
+SCANKEY_DRV=brscan-skey
+)
+_brinf+=(
+REQUIRE32LIB=yes
+)
+
 _opt_DEB=0
 
 set -u
-_brothern='8610'
-_brotheru="MFC-L${_brothern}CDW"
+_brotheru='MFC-L8610CDW'
 _brotherl="${_brotheru,,}"     # mfc-0000dw
 _brotherlnd="${_brotherl//-/}" # mfc0000dw
 _brotherund="${_brotheru//-/}" # MFC0000DW
+_brotherxnd="${_brotherlnd}"   # upper or lower as required by scripts
 pkgname="brother-${_brotherl}"
 _lprver='1.2.0_0'
 _cupver='1.3.0_0'
@@ -17,64 +31,143 @@ pkgver="${_cupver}"
 pkgrel='1'
 pkgdesc="LPR and CUPS driver for the Brother ${_brotheru} printer"
 arch=('i686' 'x86_64')
-url='https://support.brother.com/g/s/id/linux/en/index.html'
+url='https://support.brother.com/g/s/id/linux/en/'
 license=('GPL' 'custom')
 depends=('cups' 'ghostscript' 'sed' 'grep')
-depends_x86_64=('lib32-glibc')
 # We look at the scripts and find these programs from which we decide on the depends above.
 # gs: lpr rendering
 # pdf2ps: cups rendering
-# a2ps: rendering ascii text files
-# pstops: pdf resizing
-# psnup: printing n-up pages
+# (no) a2ps: rendering ascii text files
+# (no) pstops: pdf resizing
+# (no) psnup: printing n-up pages
 # sed grep awk
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=670055
 # Printing a text file fails when Liberation is the only TrueType font available
+depends+=('perl') # cupswrapper
 optdepends=(
   'ttf-dejavu: printing text files from lpr'
-  'brscan4: Scanner support'
 )
 options=('!strip')
 #install="${pkgname}.install"
-_dlf="http://www.brother.com/pub/bsc/linux"
+_dlf='http://www.brother.com/pub/bsc/linux'
+_inf="${_brotherlnd}-${pkgver}.inf"
 source=(
-  "${_brotherlnd}.inf::${_dlf}/infs/${_brotherund}" # A crc change lets us know that the driver has been updated
-  "${_dlf}/packages/${_brotherlnd}lpr-${_lprver//_/-}.i386.rpm"
-  "${_dlf}/packages/${_brotherlnd}cupswrapper-${_cupver//_/-}.i386.rpm"
-  #"${_dlf}/${_brsource}.tar.gz"
   'cupswrapper-license.txt'
+  "${_inf}::${_dlf}/infs/${_brotherund}"
   'lpr-license.txt'
 )
-if [ "${_opt_DEB}" -ne 0 ]; then
-  noextract=(
-    "${_dlf}/packages/${_brotherlnd}lpr-${_lprver//_/-}.i386.deb"
-    "${_dlf}/packages/${_brotherlnd}cupswrapper-${_cupver//_/-}.i386.deb"
-  )
-  source[1]="${noextract[0]}"
-  source[2]="${noextract[1]}"
-  noextract=("${noextract[@]##*/}")
-fi
-md5sums=('1e2ab322f58952141132468b99d4cbe8'
-         '6ea8b62f22f94f38ba2df13a19e15d1e'
+md5sums=('e42487a541573287fad544bafd1766c6'
+         '1e2ab322f58952141132468b99d4cbe8'
+         '4f14b328317aac0d22c7f7f73c581628'
          '8af6a0c5eb4a23bdd91db500fcd32576'
-         'e42487a541573287fad544bafd1766c6'
-         '4f14b328317aac0d22c7f7f73c581628')
-sha256sums=('5a23a54cf9e71d2738240f7277e1192d06bd74cc6727f103ede956afef3461e5'
-            '27211c779effea39d5622f0683629faf44d7f62a4fee48b7ef3cc1935a00cde9'
+         '6ea8b62f22f94f38ba2df13a19e15d1e')
+sha256sums=('65de8004f8d44a96b62f874a26a80b285f7f6b9f37a8b6c628d094e7f1986b2a'
+            '5a23a54cf9e71d2738240f7277e1192d06bd74cc6727f103ede956afef3461e5'
+            'b604def129534d245fa576f8cd7d01df1d2856b9bff6c1d2002404f77f7d4bb3'
             '0d54d2985bccf4c2790573d15ce0a38ea47e83d58aeffd4b05000e36dff64653'
-            '65de8004f8d44a96b62f874a26a80b285f7f6b9f37a8b6c628d094e7f1986b2a'
-            'b604def129534d245fa576f8cd7d01df1d2856b9bff6c1d2002404f77f7d4bb3')
+            '27211c779effea39d5622f0683629faf44d7f62a4fee48b7ef3cc1935a00cde9')
+
+_mismatch=0
+_brverchk() {
+  local _ver="$1"
+  _ver="${_ver%.*}"
+  _ver="${_ver%.*}"
+  local _vb="${_ver%-*}"
+  _vb="${_vb%-*}-"
+  _ver="${_ver#${_vb}}"
+  local _pv="$2"
+  if [ -z "${_pv}" ]; then
+    _pv="$3"
+  fi
+  if [ -z "${_pv}" ]; then
+    _pv="$4"
+  fi
+  if [ "${_ver}" != "${_pv//_/-}" ]; then
+    echo "Version mismatch: ${_ver} ${_pv//_/-}" 1>&2
+    _mismatch=$((_mismatch+1))
+  fi
+}
+
+_procinf() {
+  local _fd _fvar _fval
+  for _fd in "${_brinf[@]}"; do
+    _fvar="${_fd%%=*}="
+    _fval="${_fd##*=}"
+    if [ ! -z "${_fval}" ]; then
+      case "${_fvar}" in
+      '['*);;
+      PRN_CUP_RPM=)
+        _brverchk "${_fval}" "${_cuprpmver:-}" "${_cupver:-}" "${pkgver}"
+        if [ "${_opt_DEB}" -eq 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_CUP_DEB=)
+        _brverchk "${_fval}" "${_cupdebver:-}" "${_cupver:-}" "${pkgver}"
+        if [ "${_opt_DEB}" -ne 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_LPD_RPM=)
+        _brverchk "${_fval}" "${_lprrpmver:-}" "${_lprver:-}" "${pkgver}"
+        if [ "${_opt_DEB}" -eq 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_LPD_DEB=)
+        _brverchk "${_fval}" "${_lprdebver:-}" "${_lprver:-}" "${pkgver}"
+        if [ "${_opt_DEB}" -ne 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_DRV_RPM=)
+        _brverchk "${_fval}" "" "" "${pkgver}"
+        if [ "${_opt_DEB}" -eq 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_DRV_DEB=)
+        _brverchk "${_fval}" "" "" "${pkgver}"
+        if [ "${_opt_DEB}" -ne 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      REQUIRE32LIB=)
+        if [ "${_fval}" = 'yes' ]; then
+          depends_x86_64+=('lib32-glibc')
+        fi
+      ;;
+      PRINTERNAME=);;
+      SCANNER_DRV=)optdepends+=("${_fval}: Scanner support");;
+      SCANKEY_DRV=)optdepends+=("${_fval}: Scanner button support");;
+      *) echo "Unrecognized line: ${_fd}" 1>&2; exit 1;;
+      esac
+    fi
+  done
+  test "${_mismatch}" -eq 0 || exit 1
+}
+_procinf
+unset -f _procinf _brverchk
+unset _mismatch _brinf
+
+# Must be same length as
+#         'Brother'
+_conflict='brother'
 
 prepare() {
   set -u
 
   shopt -s nullglob
   local _deb
+  local _debn=1
   for _deb in *.deb; do
-    mkdir 'debextract'
-    bsdtar -C 'debextract' -xf "${_deb}"
-    bsdtar -xf debextract/data.tar.?z
-    rm -r 'debextract'
+    local _dx="debextract.${_debn}"
+    mkdir "${_dx}"
+    bsdtar -C "${_dx}" -xf "${_deb}"
+    bsdtar -C "${_dx}" -xf "${_dx}"/control.tar.?z
+    bsdtar -xf "${_dx}"/data.tar.?z
+    rm "${_dx}"/*.tar.?z
+    _debn=$((_debn+1))
   done
   shopt -u nullglob
 
@@ -91,7 +184,7 @@ prepare() {
   # setup cups-directories, some installers create these for us
   install -d 'usr/lib/cups/filter'
   install -d 'usr/share/cups/model'
-  #install -dm755 "${srcdir}/usr/share/ppd" # For cups we don't need the ppd file here.
+  #install -d 'usr/share/ppd' # For cups we don't need the ppd file here.
 
   # /etc/printcap is managed by cups
   find . -type 'f' -name 'setupPrintcap*' -delete
@@ -101,9 +194,17 @@ prepare() {
 
 build() {
   set -u
-  local _basedir="opt/brother/Printers/${_brotherlnd}"
-  local _wrapper_source="${_basedir}/cupswrapper/cupswrapper${_brotherlnd}"
-  test -s "${_wrapper_source}" || echo "${}"
+
+  local _basedir="opt/brother/Printers/${_brotherxnd}"
+  #local _basedir="usr/share/${_conflict}"
+  #local _basedir="usr/share/${_conflict}/Printer/${_brotherxnd}"
+  shopt -s nullglob
+  local _wrapper_source=("${_basedir}/cupswrapper/cupswrapper${_brotherxnd}"*)
+  shopt -u nullglob
+  test "${#_wrapper_source[@]}" -eq 1 || echo "${}"
+  _wrapper_source="${_wrapper_source[0]}"
+  test -x "${_wrapper_source}" || echo "${}"
+  echo "Wrapper source: ${_wrapper_source}"
 
   # Some Brother installers create files here
   mkdir -p 'var/tmp'
@@ -134,7 +235,7 @@ build() {
       -e '# Fix symlinks' \
       -e 's:^ldpwrapper="\${_srcdir}":ldpwrapper=:g' \
     -i "${_wrapper_source}"
-  grep -lq "#Arch Linux Compatible$" "${_wrapper_source}" || echo "${}"
+  grep -lqe '#Arch Linux Compatible$' "${_wrapper_source}" || echo "${}"
   test -f "${_wrapper_source}.Arch" && echo "${}" # Halt for debugging
   # Generate PPD and wrapper. Use sh -x to debug
   # Possible bug: copying to /usr/share/ppd is disabled.
@@ -144,13 +245,10 @@ build() {
   chmod 644 "${_ppdir}"/*.ppd # Some installers make ppd executable
   rm -rf 'var'
 
-  local _wrapgen="${_basedir}/cupswrapper/brother_lpdwrapper_${_brotherlnd}"
+  local _wrapgen="${_basedir}/cupswrapper/brother_lpdwrapper_${_brotherxnd}"
+  #local _wrapgen="usr/lib/cups/filter/brlpdwrapper${_brotherxnd}"
+  #local _wrapgen="usr/lib/cups/filter/brother_lpdwrapper_${_brotherxnd}"
   test -s "${_wrapgen}" || echo "${}"
-
-  # Remove srcdir from the generated wrapper file.
-  sed -e '# Remove the /home/... variety' \
-      -e "s:${srcdir}::" \
-    -i "${_wrapgen}"
 
   # Ensure all paths were removed
   grep -qFe $'${_srcdir}\n'"${srcdir}" "${_wrapgen}" && echo "${}"
@@ -170,7 +268,7 @@ build() {
     if grep -q "$(basename "${_lwrapper}")" "${_ppdir}"/*.ppd; then
       _nppdfound=$((_nppdfound+1))
     fi
-    #if grep -q "${_brcupsconf}" "${_lwrapper}"; then
+    #if grep -q "${_brcupsconf##*/}" "${_lwrapper}"; then
     #  _ncodefound=$((_ncodefound+1))
     #fi
   done
