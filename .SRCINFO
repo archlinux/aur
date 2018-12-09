@@ -5,9 +5,11 @@ pkgbase = bisq-git
 	url = https://bisq.network
 	arch = any
 	license = AGPL3
+	makedepends = git
 	makedepends = maven
 	makedepends = jdk10-openjdk
 	makedepends = protobuf
+	depends = jdk10-openjdk
 	depends = java-openjfx
 	source = bisq-git::git+https://github.com/bisq-network/bisq.git#branch=master
 	source = bisq.desktop
