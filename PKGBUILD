@@ -1,8 +1,8 @@
-# Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
-# Co-Maintainer: Dylan Morrison <dylanjmorrison611 at gmail.com>
+# Original AUR Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
+# Current Maintainer: Dylan Morrison <dylanjmorrison611 at gmail.com>
 
 pkgname=megazeux
-pkgver=2.91g
+pkgver=2.91i
 pkgrel=1
 pkgdesc="Game creation system"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=(libvorbis libpng sdl2)
 makedepends=()
 _base=mzx${pkgver/.}
 _filename=${_base}src.tar.xz
-_sha256sum=fac0dfe1d0a6568e4338a6d9825db4d266033addfde50029feb68ad7bd5d7c4e
+_sha256sum=50e567bf3152d994d8befce7952ca9e613b56f2fc3544529cdedaaeea8e69eed
 
 ##old version
 #source=("${_filename}::http://vault.digitalmzx.net/download.php?rid=2197&f=${_sha256sum}")
