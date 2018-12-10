@@ -1,7 +1,7 @@
 pkgbase = blender-2.8-bin
 	pkgdesc = A fully integrated 3D graphics creation suite
 	pkgver = 2.80.181210.168a6a4bfc1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.blender.org
 	arch = i686
 	arch = x86_64
