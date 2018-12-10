@@ -1,0 +1,14 @@
+pkgbase = donjon-painter
+	pkgdesc = Graphical map translator for donjon's Random Dungeon Generator TSV files.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/Blackflighter/donjon-painter
+	arch = any
+	license = GPL3
+	makedepends = python
+	depends = python-pillow
+	source = https://files.pythonhosted.org/packages/source/d/donjon-painter/donjon-painter-0.9.2.tar.gz
+	sha256sums = 766edb62aab1a8d603b941d09b88e2562a0ff92617aee557801b27402b7b85fc
+
+pkgname = donjon-painter
+
