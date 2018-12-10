@@ -1,9 +1,10 @@
-# Maintainer: Joel Teichroeb <joel@teichroeb.net>
+# Maintainer: Emanuel Fernandes <efernandes@tektorque.com>
+# Contributor: Joel Teichroeb <joel@teichroeb.net>
 # Contributor: atie H. <atie.at.matrix@gmail.com>
 # Contributor: alesko <askondro@gmail.com>
 
 pkgname=clutter-git
-pkgver=1.26.0.r34.g19c48d6de
+pkgver=1.26.2.r81.g3e3901c0a
 pkgrel=1
 pkgdesc="A toolkit for creating fast, portable, compelling dynamic UIs"
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ depends=(gtk3 cogl libinput)
 makedepends=(git gobject-introspection gtk-doc)
 provides=("clutter=${pkgver}")
 conflicts=('clutter')
-source=('git://git.gnome.org/clutter')
+source=('git+https://gitlab.gnome.org/GNOME/clutter.git')
 md5sums=('SKIP')
 
 pkgver() {
