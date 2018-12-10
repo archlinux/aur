@@ -6,8 +6,8 @@
 # Contributors: robozman
 
 pkgname=subsonic
-pkgver=6.1.4
-pkgrel=2
+pkgver=6.1.5
+pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="http://subsonic.org/"
@@ -32,6 +32,5 @@ package() {
     cp $srcdir/subsonic.service $pkgdir/usr/lib/systemd/system
     chmod +x $pkgdir/var/lib/subsonic/subsonic.sh
 }
-
-md5sums=('93d41e6c0e6f5e49a15611942e18ed2f'
+md5sums=('16f7854c342389f1cc8a8067cb3823fb'
          '7cbbb9c8357992385c929e9f05be00be')
