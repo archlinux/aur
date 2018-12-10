@@ -12,7 +12,7 @@ pkgbase = idos-timetable-data-chaps-trains-common-latest
 	provides = idos-timetable-data-chaps-trains-common=2018_11_29
 	provides = idos-timetable-data-trains-common=2018_11_29
 	conflicts = idos-timetable-data-chaps-trains-common
-	source = vlak18c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK18C.ZIP
+	source = vlak19c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK19C.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
