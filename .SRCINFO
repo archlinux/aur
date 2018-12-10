@@ -1,0 +1,32 @@
+pkgbase = idos-timetable-data-chaps-trains-idol-2019-latest
+	pkgdesc = 2018/2019 Timetable data for the timetable search engines by CHAPS: Trains in Liberec public transport reagion (IDOL). Note that this timetable needs the purchased version of IDOS to run.
+	pkgver = 2018_12_7
+	pkgrel = 1
+	epoch = 0
+	url = http://chaps.cz/eng/download/idos/zip#kotvatt
+	arch = any
+	groups = idos-timetable
+	license = custom
+	makedepends = wget
+	depends = idos-timetable-data-trains-common
+	optdepends = idos-timetable-tariff-mhd-idol: For showing prices.
+	optdepends = idos-timetable-maps-mhd-idol: For displaying routes on maps.
+	optdepends = idos-timetable-additionalinfo-mhd-idol: For additional information.
+	optdepends = idos-timetable-browser-license: To use this timetable.
+	provides = idos-timetable-data-chaps-trains-idol-2019=2018_12_7
+	provides = idos-timetable-data=2018_12_7
+	provides = idos-timetable-data-trains=2018_12_7
+	provides = idos-timetable-data-trains-idol=2018_12_7
+	provides = idos-timetable-data-trains-idol-2019=2018_12_7
+	conflicts = idos-timetable-data-chaps-trains-idol-2019
+	replaces = idos-timetable-data-chaps-trains-europe-latest
+	replaces = idos-timetable-data-chaps-trains-idol-2019<=2018_12_7
+	source = vlakidol19.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAKIDOL19.ZIP
+	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
+	source = license-dummy.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4
+
+pkgname = idos-timetable-data-chaps-trains-idol-2019-latest
+
