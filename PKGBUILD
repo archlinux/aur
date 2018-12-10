@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2017-12-17.
+# PKGBUILD last time manually edited: At least on 2018-12-10.
 
 _year='18'
 _prevyear="$(( ${_year} - 1 ))"
@@ -8,7 +8,7 @@ _prevyear="$(( ${_year} - 1 ))"
 _pkgname="idos-timetable-data-chaps-trains-odis-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2018_11_29
+pkgver=2018_12_9
 pkgrel=1
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: Trains in Ostrava public transport reagion (ODIS). Note that this timetable needs the purchased version of IDOS to run."
 arch=(any)
