@@ -1,18 +1,20 @@
 pkgbase = libgee-git
-	pkgdesc = GObject collection library
-	pkgver = 0.12.0.428.f71b18a
+	pkgdesc = A collection library providing GObject-based interfaces and classes for commonly used data structures
+	pkgver = 0.20.1.r0.g57e4c8a
 	pkgrel = 1
-	url = http://live.gnome.org/Libgee
+	url = https://git.gnome.org/browse/libgee
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = gobject-introspection
 	makedepends = vala
-	makedepends = gnome-common
+	makedepends = autoconf-archive
+	makedepends = git
+	makedepends = valadoc
 	depends = glib2
-	provides = libgee=0.12.0.428.f71b18a
+	provides = libgee
 	conflicts = libgee
-	source = git+git://git.gnome.org/libgee
+	source = git+https://git.gnome.org/browse/libgee
 	sha256sums = SKIP
 
 pkgname = libgee-git
