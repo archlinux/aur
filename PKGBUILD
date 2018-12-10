@@ -19,10 +19,10 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	make -k check
+	make check
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" install
 }
