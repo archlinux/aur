@@ -9,7 +9,7 @@ pkgbase = tbftss-the-pandoran-war-git
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = sdl2_ttf
-	source = tbftss-git::git+https://github.com/stephenjsweeney/tbftss#branch=develop
+	source = tbftss-git::git+https://github.com/stephenjsweeney/tbftss.git
 	sha256sums = SKIP
 
 pkgname = tbftss-the-pandoran-war-git
