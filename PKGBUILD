@@ -3,7 +3,7 @@
 
 pkgname=inboxer
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial, free and open-source Google Inbox desktop app"
 arch=(any)
 url="https://denysdovhan.com/inboxer/"
