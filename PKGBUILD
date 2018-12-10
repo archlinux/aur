@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=easyssh-git
-pkgver=1.3.4.r5.g75b6765
-pkgrel=2
+pkgver=1.4.5.r6.ga0ea112
+pkgrel=1
 pkgdesc="SSH connection manager for Pantheon"
 arch=(x86_64)
 url="https://github.com/muriloventuroso/easyssh"
@@ -11,21 +11,21 @@ depends=(libgranite.so gtk3)
 makedepends=(vala meson ninja git)
 provides=(easyssh)
 conflicts=(easyssh)
-source=("${pkgname}::git+${url}.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "$srcdir/${pkgname/-git/}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname}"
+  cd "$srcdir/${pkgname/-git/}"
   meson build --prefix=/usr -D libunity=false -D ubuntu-bionic-patched-vte=false
   ninja -C build
 }
 
 package() {
-  cd "${pkgname}"
+  cd "$srcdir/${pkgname/-git/}"
   DESTDIR="${pkgdir}" ninja -C build install
 }
