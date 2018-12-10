@@ -3,7 +3,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-me176c         # Build kernel with a different name
 pkgver=4.19.8
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/me176c-dev/me176c-archlinux"
 license=(GPL2)
@@ -25,7 +25,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            '1c2a47b06897a1a0a95d2be09f387f6e3b7f779f9edb75437efdefc3156151e1'
+            'f808fce9c88497fb7cabfffb44bc640a60b49fad3a27037008350c0d553bfc9c'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
