@@ -2,7 +2,7 @@
 
 pkgname=arm-linux-gnueabihf-armcl-neon
 pkgver=18.11
-pkgrel=0
+pkgrel=1
 
 epoch=
 pkgdesc="ARM Computer Vision and Machine Learning Library (armv7a NEON Backend)"
@@ -11,7 +11,7 @@ url="https://github.com/ARM-software/ComputeLibrary"
 license=('MIT')
 groups=()
 depends=()
-makedepends=( 'scons>=2.3' 'git' 'doxygen>=1.8.5' 'arm-linux-gnueabihf-gcc' )
+makedepends=( 'scons>=2.3' 'git' 'doxygen>=1.8.5' )
 checkdepends=()
 optdepends=()
 provides=()
