@@ -8,21 +8,21 @@ url="https://www.battleforthesolarsystem.com/"
 arch=('x86_64')
 license=('GPL2')
 depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
-source=("${_pkgname}-${pkgver}.tar.gz::git+https://github.com/stephenjsweeney/${_pkgname}#branch=develop")
+source=("${_pkgname}-git::git+https://github.com/stephenjsweeney/${_pkgname}#branch=develop")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-git"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-git"
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-git"
   make DESTDIR="${pkgdir}" install
 }
 
