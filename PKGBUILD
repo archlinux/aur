@@ -1,17 +1,15 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=phockup
-pkgver=1.5.3
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Media sorting tool to organize photos and videos from your camera in folders by year, month and day."
-arch=('any')
+arch=(any)
 url="https://github.com/ivandokov/phockup"
 license=(MIT)
-depends=('python' 'perl-image-exiftool')
-provides=('phockup')
-conflicts=('phockup' 'phockup-git')
-source=("https://github.com/ivandokov/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('b082cc04cdc3b57aa1e6d59ca6ce5d6c')
+depends=(python perl-image-exiftool)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ivandokov/phockup/archive/${pkgver}.tar.gz")
+md5sums=('319d941229d9806cebbb2a4237bf2a4d')
 
 package() {
 
