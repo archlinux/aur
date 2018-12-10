@@ -1,6 +1,6 @@
 pkgbase = lua-penlight-git
 	pkgdesc = A set of pure Lua libraries focusing on input data handling, functional programming, and OS path management
-	pkgver = 1.5.2.r0.g3f8aaa8
+	pkgver = 1.5.4.r43.gee381b7
 	pkgrel = 1
 	url = https://github.com/stevedonovan/Penlight
 	arch = any
