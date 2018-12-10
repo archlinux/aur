@@ -1,14 +1,14 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
  
 pkgname=mauikit-git
-pkgver=r75.8e325f8
+pkgver=r210.32b20e6
 pkgrel=1
 pkgdesc='Utilities and "templated" controls based on Kirigami and QCC2 that follow the ongoing work on the Maui HIG'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://mauikit.org/"
-license=(unknown) # GPL3 ?
+license=(GPL3)
 depends=(qt5-base qt5-declarative qt5-svg qt5-quickcontrols2 kio)
-makedepends=(git cmake extra-cmake-modules)
+makedepends=(git cmake extra-cmake-modules qt5-webengine)
 provides=(mauikit)
 conflicts=(mauikit)
 source=("${pkgname}::git+https://github.com/maui-project/mauikit")
