@@ -1,7 +1,7 @@
 pkgbase = brackets-bin
 	pkgdesc = A code editor for HTML, CSS and JavaScript.
-	pkgver = 1.13
-	pkgrel = 1
+	pkgver = 1.12
+	pkgrel = 2
 	url = http://brackets.io
 	install = brackets-bin.install
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = brackets-bin
 	optdepends = ruby: to enable LiveDevelopment Inspector
 	optdepends = desktop-file-utils: for update-desktop-database
 	optdepends = hicolor-icon-theme: for hicolor theme hierarchy
-	provides = brackets=1.13
+	provides = brackets=1.12
 	conflicts = brackets
 	conflicts = brackets-git
-	source = https://github.com/adobe/brackets/releases/download/release-1.13/Brackets.Release.1.13.64-bit.deb
+	source = https://github.com/adobe/brackets/releases/download/release-1.12/Brackets.Release.1.12.64-bit.deb
 	sha512sums = SKIP
 
 pkgname = brackets-bin

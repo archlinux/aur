@@ -4,8 +4,8 @@
 
 pkgname=brackets-bin
 _pkgname=brackets
-pkgver=1.13
-pkgrel=1
+pkgver=1.12
+pkgrel=2
 pkgdesc="A code editor for HTML, CSS and JavaScript. "
 arch=("x86_64")
 url="http://brackets.io"
@@ -21,7 +21,7 @@ provides=("brackets=$pkgver")
 conflicts=('brackets' 'brackets-git')
 install=$pkgname.install
 
-source=("https://github.com/adobe/brackets/releases/download/release-1.13/Brackets.Release.1.13.64-bit.deb")
+source=("https://github.com/adobe/brackets/releases/download/release-1.12/Brackets.Release.1.12.64-bit.deb")
 sha512sums=('SKIP')
 
  
