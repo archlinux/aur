@@ -1,11 +1,19 @@
-04.06.2015
+06.03.2018
+
+MikroLock 1.2
+
+-GUI: added checkbox to show the passphrase
+
+---
+04.06.2016
 
 MikroLock 1.1
 
 -added Argon2 as possible key derivation function (--kdf)
 -changed wording of miniLock-ID to Lock-ID
 -GUI: added --portable command line option to save config files in the current
-   working directory instead of the user directory
+   working directory instead of the user directory 
+-GUI W32: shows progress in task bar (Windows 7 and later)
 
 ---
 27.08.2015
@@ -15,3 +23,155 @@ MikroLock 1.0
 -GUI: added translation hints
 -GUI: drag and drop disabled if multiple files are dragged
 -CLI: ignores own miniLock ID also in recipient list if -x is set
+
+---
+08.07.2015
+
+MikroLock 0.15
+
+-GUI: ignores own miniLock ID also in recipient list if "Omit my ID" is checked
+
+---
+02.07.2015
+
+MikroLock 0.14
+
+-name changed to MikroLock
+-minor documentation fixes
+
+---
+12.06.2015
+
+mlock 0.13
+
+-number of recipient IDs no longer restricted
+-GUI: fixed minor issues
+
+---
+04.06.2015
+
+mlock 0.12
+
+-increased allowed recipient ID count to 128
+-CLI: added --list option
+-GUI: fixed minor issues
+
+---
+18.05.2015
+
+mlock 0.11
+
+Most bugs + suggestions sent by Bene
+
+-GUI: changed bad mail format icon
+-GUI: fixed layout issues
+-GUI: added drag and drop icon
+-GUI: save out dir and encryption options
+-GUI: fixed threading issue
+-W32 CLI: fixed hash progress output
+-W32 CLI: fixed stripping of destination filename
+
+---
+14.05.2015
+
+mlock 0.10
+
+Bugs + suggestions sent by Bene
+
+-CLI: added -R option
+-GUI: added random output filename checkbox
+-GUI: added recipient list tooltips
+-GUI: fixed statusbar update issues
+-GUI: allows drag and drop only in the input/output screen
+-GUI: added browse destination directory button
+
+---
+05.05.2015
+
+mlock 0.9
+
+Bugs + suggestions sent by Bene & A. Sturthe
+
+-new errors if input file is empty or if output file exists
+-GUI: updated passphrase tooltips
+-GUI: fixed passphrase security notification
+-GUI: fixed encryption prompt after changing out directory
+-GUI: fixed diceware.com link clickability
+-GUI: added ID text file import and clear ID buttons
+-GUI: updated manual
+
+---
+01.05.2015
+
+mlock 0.8.1
+
+-Linux: fixed file open mode (thanks to Bene)
+
+---
+27.04.2015
+
+mlock 0.8
+
+-added README_DE and more icons/desktop integration files
+-CLI: added passphrase security hint
+-GUI: fixed UTF8 file path handling
+-GUI: added passphrase security notification icon
+-GUI: added manual
+-W32: added installer 
+
+---
+17.04.2015
+
+mlock 0.7
+
+-CLI: fixed error message if passphrase or salt prevents decryption
+-GUI: replaced QML application by a new Widgets interface
+-GUI: mlock-gui may be invoked with a filename as first argument
+
+---
+02.04.2015
+
+mlock 0.6
+
+-fixed library linking order in src/makefile
+-CLI: added --quiet option
+-CLI: added hashing progress output
+
+---
+09.03.2015
+
+mlock 0.5
+
+-CLI: fixed progress output
+-GUI: added German translation, improved responsiveness
+
+---
+23.02.2015
+
+mlock 0.4
+
+-replaced crypto_scrypt call by libsodium's crypto_pwhash_scryptsalsa208sha256_ll
+-removed OpenSSL lib dependency
+
+---
+12.02.2015
+
+mlock 0.3
+
+-added optional QML GUI
+
+---
+21.11.2014
+
+mlock 0.2
+
+-added progress info output
+-replaced ftell by ftello and fseek by fseeko
+-added --pinentry flag
+
+---
+11.11.2014
+
+mlock 0.1
+
+-initial release
