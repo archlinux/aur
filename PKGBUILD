@@ -1,7 +1,7 @@
 # Maintainer: lambdadroid <lambdadroid@gmail.com>
 pkgname=me176c-battery
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Battery configuration files for the ASUS MeMO Pad 7 (ME176C/CX)"
 arch=(any)
 url="https://github.com/me176c-dev/me176c-archlinux"
@@ -15,7 +15,7 @@ source=(
     'upi_ug31xx.tmpfiles.conf'
     'upi_ug31xx.rules'
 )
-sha256sums=('48dcc4568d1346d2ab61319cca49480c055f8d96207d9ed667cca1770befafa9'
+sha256sums=('fab463ceeed2d92f7c6dcd1a9333e5c008f6e51cf9d4c40b4bfce8a51e7d7936'
             '100a67d7f90bf3a15b6287214f20a386d35383f4812e2c660783413d3636a030'
             'def60f3eede943d6ea179f669f7173d75469368af6fa7dea0245e14fd629b9ff'
             '1d2c114fa9e47e5c122c7c68afaca59b57d57ef3b12e7636c01239e849c00d19'

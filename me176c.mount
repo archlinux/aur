@@ -1,5 +1,5 @@
 [Unit]
-Description=Mount ME176C Data Partition
+Description=ME176C Data Partition
 
 [Mount]
 What=/dev/disk/by-partlabel/config
