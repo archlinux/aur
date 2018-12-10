@@ -23,7 +23,7 @@ md5sums=('d4fbf97885f431ca97d5ff9a59b274db')
 sha512sums=('6fa9dc14288a623236b8148488b554ef8aa65a300fba3685b9dc02d5904517a50af08edec71957bdbf5939688517f4d7af62c69906523480e3e4a26f458c3209')
 build() {
   cd "$pkgname"
-  sudo npm install -g electron-packager
+  npm install -g electron-packager
   ./build.sh
 }
 
