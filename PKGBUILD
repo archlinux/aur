@@ -30,6 +30,7 @@ prepare() {
 build() {
  export GOPATH="$srcdir/go"
  export PATH="$PATH:$srcdir/go/bin/"
+ export GO111MODULE="on"
  cd "$srcdir/go/src/github.com/sachaos/$_pkgname"
  make install
 }
