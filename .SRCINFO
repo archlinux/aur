@@ -1,6 +1,6 @@
 pkgbase = thunderbird-appmenu
 	pkgdesc = Thunderbird from extra with appmenu patch
-	pkgver = 60.3.2
+	pkgver = 60.3.3
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/thunderbird-appmenu/
 	arch = x86_64
@@ -37,14 +37,14 @@ pkgbase = thunderbird-appmenu
 	depends = libvpx
 	depends = icu
 	optdepends = libcanberra: sound support
-	provides = thunderbird=60.3.2
+	provides = thunderbird=60.3.3
 	conflicts = thunderbird
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.2/source/thunderbird-60.3.2.source.tar.xz
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/60.3.3/source/thunderbird-60.3.3.source.tar.xz
 	source = thunderbird.desktop
 	source = unity-menubar.patch
-	sha256sums = 979707651662ed3654a327e9c568dac5894e73a40d2776bb94ed2950dab4e041
+	sha256sums = 8524dd3f2b78b639fdebcf91170c3c2d8ec812ba7c407cae636c3e88ddc4b196
 	sha256sums = 3534ea85d8e0e35dba5f40a7a07844df19f3a480e1358fc50c2502f122dab789
 	sha256sums = c6082f9ab534cdc67c53fa1685df628f03b0674390522f32fe640ce92f1b15ab
 
