@@ -6,18 +6,18 @@ pkgdesc='Automated Encryption Framework'
 arch=('x86_64')
 url='https://github.com/latchset/clevis'
 license=('GPL3')
-depends=('jose' 'bash')
+depends=('bash' 'jose')
 makedepends=('git' 'meson'
              # Optional components, must be present during build to enable corresponding features
              'asciidoc' # man page support
              'bash-completion' # Bash completion support
-             'luksmeta' 'libpwquality' # LUKS unlocker support'
+             'libpwquality' 'luksmeta' # LUKS unlocker support'
              'tpm2-tools' # TPM pin support
              'udisks2') # UDisks2 unlocker support
 checkdepends=('tang')
-optdepends=('luksmeta: LUKS and UDisks2 unlocker support'
+optdepends=('curl: Tang pin support'
             'libpwquality: LUKS unlocker support'
-            'curl: Tang pin support'
+            'luksmeta: LUKS and UDisks2 unlocker support'
             'tpm2-tools: TPM2 pin support'
             'udisks2: UDisks2 unlocker support')
 provides=("${pkgname%-git}")
@@ -32,7 +32,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname%-git}"
-	arch-meson build
+	meson --prefix=/usr --libexecdir=/usr/lib --buildtype=plain build
 	ninja -C build
 }
 
@@ -43,5 +43,5 @@ check() {
 
 package() {
 	cd "${pkgname%-git}"
-	DESTDIR="$pkgdir/" ninja -C build install
+	DESTDIR="$pkgdir" ninja -C build install
 }
