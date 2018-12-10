@@ -1,7 +1,7 @@
 pkgbase = ib-tws
 	pkgdesc = Electronic trading platform from discount brokerage firm Interactive Brokers
 	pkgver = 974.4e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://interactivebrokers.com/
 	arch = any
 	license = custom
@@ -9,7 +9,7 @@ pkgbase = ib-tws
 	makedepends = imagemagick
 	makedepends = unzip
 	depends = bash
-	optdepends = ffmpeg2.8
+	optdepends = ffmpeg
 	backup = etc/ib-tws.conf
 	backup = etc/ib-gw.conf
 	source = LICENSE
