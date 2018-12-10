@@ -1,7 +1,7 @@
 # Maintainer: alcubierre-drive
 pkgname=backlight-tooler
 pkgrel=2
-pkgver=r15.1a63461
+pkgver=r16.bf5a405
 pkgdesc="A collection of tools to control backlight via webcam."
 arch=('any')
 url="https://github.com/alcubierre-drive/backlight-tooler"
