@@ -7,7 +7,7 @@ pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/resources/software_hardware/stsci_python"
 license=('BSD')
-makedepends=('cython' 'qd>=2.3.7' 'python-astropy>=3.0' 'python-astropy-helpers' 'python-sphinx' 'python-matplotlib')
+makedepends=('cython' 'qd>=2.3.7' 'python-astropy>=3.0' 'python-astropy-helpers>=3.1' 'python-sphinx' 'python-sphinx-astropy')
 #checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/s/spherical_geometry/spherical_geometry-${pkgver}.tar.gz"
         'spherical_geometry.patch')
@@ -20,7 +20,7 @@ prepare() {
     patch -Np1 -i "${srcdir}/spherical_geometry.patch"
 }
 
-build () {
+build() {
     cd ${srcdir}/spherical_geometry-${pkgver}
     python setup.py build --use-system-libraries --offline
 
@@ -28,7 +28,7 @@ build () {
     python setup.py build_docs
 }
 
-#check(){
+#check() {
 #    cd ${srcdir}/spherical_geometry-${pkgver}
 #
 #    python setup.py test
@@ -48,7 +48,7 @@ package_python-spherical_geometry() {
 
 package_python-spherical_geometry-doc() {
     pkgdesc="Documentation for Python Spherical Geometry Toolkit"
-    cd ${srcdir}/spherical_geometry-${pkgver}/build/sphinx
+    cd ${srcdir}/spherical_geometry-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
