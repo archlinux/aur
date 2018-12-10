@@ -7,7 +7,7 @@ pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
 url="https://github.com/yakyak/yakyak"
 license=('MIT')
-depends=('electron>=1.4.0')
+depends=('electron>=3.0.10')
 optdepends=('emojione-color-font: Emoji support')
 makedepends=('nodejs' 'npm')
 
