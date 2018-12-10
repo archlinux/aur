@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+generateHostKeys()
+{
+	local keySize
+	local configPath="/etc/ssh-initrd"
+
+	for keyType in rsa ecdsa ed25519; do
+		case ${keyType} in
+			rsa)
+				keySize=4096
+				;;
+			ecdsa)
+				keySize=521
+				;;
+			ed25519)
+				keySize="9000"
+				;;
+		esac
+
+		local keyPath="${configPath}/ssh_host_${keyType}_key"
+
+		if [ ! -f ${keyPath} ]; then
+			ssh-keygen -t ${keyType} -b ${keySize} -N "" -f ${configPath}/ssh_host_${keyType}_key
+		fi
+	done
+}
+
+setPermissions()
+{
+	chmod 700 /etc/ssh-initrd
+	chmod 600 /etc/ssh-initrd/*
+}
+
+post_install()
+{
+	generateHostKeys
+	setPermissions
+}
+
+post_upgrade()
+{
+	post_install
+}

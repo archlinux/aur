@@ -1,0 +1,13 @@
+pkgbase = mkinitcpio-openssh
+	pkgdesc = openssh mkinitcpio hook
+	pkgver = 0.0.1
+	pkgrel = 1
+	install = mkinitcpio-openssh.install
+	arch = any
+	license = GPLv3
+	depends = openssh
+	conflicts = mkinitcpio-tinyssh
+	conflicts = mkinitcpio-dropbear
+
+pkgname = mkinitcpio-openssh
+
