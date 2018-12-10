@@ -1,6 +1,6 @@
 pkgbase = flare-game
-	pkgdesc = Fantasy action RPG using the FLARE engine - Git version
-	pkgver = 1.08
+	pkgdesc = Fantasy action RPG using the FLARE engine
+	pkgver = 1.09
 	pkgrel = 1
 	url = http://www.flarerpg.org/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = flare-game
 	license = CCPL:cc-by-sa
 	makedepends = cmake
 	depends = flare-engine
-	source = https://sourceforge.net/projects/flare-game/files/Linux/flare-game-v1.08.tar.gz
-	sha1sums = c9400ed0fe1e3677e87d826fb954d02f8ae819ea
+	source = flare-game-1.09::https://github.com/flareteam/flare-game/archive/v1.09.tar.gz
+	sha1sums = f78e23f28c97127880d500ac1aad77c777a6f963
 
 pkgname = flare-game
 
