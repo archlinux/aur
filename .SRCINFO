@@ -1,7 +1,7 @@
 pkgbase = trinnity-caffe-git
 	pkgdesc = Caffe 1.0 with triNNity extensions
 	pkgver = 1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://bitbucket.org/STG-TCD/trinnity-caffe
 	arch = x86_64
 	license = BSD

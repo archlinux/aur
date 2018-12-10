@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Caffe 1.0 with triNNity extensions"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -62,7 +62,7 @@ prepare() {
 
 build() {
     cd build
-    make -j`grep processor /proc/cpuinfo | wc -l` clean caffe pycaffe
+    make -j`grep processor /proc/cpuinfo | wc -l` clean caffe caffeproto pycaffe
     cp ${srcdir}/${_srcname}/LICENSE .
 }
 
