@@ -1,11 +1,6 @@
-#!/bin/sh
+#/usr/bin/bash
 SUR_MODEL="$(dmidecode | grep "Product Name" -m 1 | xargs | sed -e 's/Product Name: //g')"
 SUR_SKU="$(dmidecode | grep "SKU Number" -m 1 | xargs | sed -e 's/SKU Number: //g')"
-
-echo "Tweaking the system..."
-cp -Rbv /opt/%PKGBASE%-tweaks/* /
-chmod a+x /usr/lib/systemd/system-sleep/sleep
-
 if [ "$SUR_MODEL" = "Surface Pro 3" ]; then
 	echo "Installing i915 firmware for Surface Pro 3..."
 	mkdir -p "/lib/firmware/i915"
@@ -38,17 +33,6 @@ if [ "$SUR_MODEL" = "Surface Pro 2017" ]; then
 	mkdir -p "/lib/firmware/i915"
 	unzip -o /usr/share/%PKGBASE%/firmware/i915_firmware_kbl.zip -d "/lib/firmware/i915/"
 fi
-
-if [ "$SUR_MODEL" = "Surface Pro 6" ]; then
-	echo "\nInstalling IPTS firmware for Surface Pro 6...\n"
-	mkdir -p "/lib/firmware/intel/ipts"
-	unzip -o /usr/share/%PKGBASE%/firmware/ipts_firmware_v102.zip -d "/lib/firmware/intel/ipts/"
-
-	echo "\nInstalling i915 firmware for Surface Pro 6...\n"
-	mkdir -p "/lib/firmware/i915"
-	unzip -o /usr/share/%PKGBASE%/firmware/i915_firmware_kbl.zip -d "/lib/firmware/i915/"
-fi
-
 if [ "$SUR_MODEL" = "Surface Laptop" ]; then
 	echo "Installing IPTS firmware for Surface Laptop..."
 	mkdir -p "/lib/firmware/intel/ipts"
@@ -83,12 +67,6 @@ if [ "$SUR_MODEL" = "Surface Book 2" ]; then
 	echo "Installing nvidia firmware for Surface Book 2..."
 	mkdir -p "/lib/firmware/nvidia/gp108"
 	unzip -o /usr/share/%PKGBASE%/firmware/nvidia_firmware_gp108.zip -d "/lib/firmware/nvidia/gp108/"
-fi
-
-if [ "$SUR_MODEL" = "Surface Go" ]; then
-	echo "\nInstalling ath10k firmware for Surface Go...\n"
-	mkdir -p "/lib/firmware/ath10k"
-	unzip -o /usr/share/%PKGBASE%/firmware/ath10k_firmware.zip -d "/lib/firmware/ath10k/"
 fi
 
 echo "Install marvell firmware..."

@@ -4,7 +4,7 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-surface4       # Build kernel with a different name
-_srcver=4.18.16
+_srcver=4.18.8
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -21,8 +21,12 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  linux.install
-  "https://github.com/jakeday/linux-surface/archive/f72425b3246d2f50eec185b6aea0d78a8f206560.zip"
+  ipts.patch
+  keyboards_and_covers.patch
+  sdcard_reader.patch
+  surfacedock.patch
+  wifi.patch
+  "https://github.com/czheji/linux-surface/raw/master/firmware.zip"
 
 )
 validpgpkeys=(
@@ -30,21 +34,24 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('beba14e2f07259a545baa1dce5afdaf9f470cdadc8b378ac269e7c8a289c52e6'
-            'SKIP'
-            '1deee286c1622dbfa838d975982bb48cab4d99b28c728860929bb67dfd3b6b9e'
+sha256sums=('f1551bad69ab617708fa8cf3f94545ae03dd350bdeb3065fbcf39c1a7df85494'
+            'd193b48d601b649720ac8a68d811f5b679b683b87f7a35322d295a81498615f5'
+            '44adcf5a8394d747aacc93bee1fe843cc0c9875ec3f854afb7acb212f4fa0c18'
             '0c19f6558c6b651350ff4155bbe00e5cfa7b22bbf88e3c8040dd7fd020c86114'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '8f800bc951e6c55571e75c7e528739193a83838b3b2e4c9892ac71d5acdea9e0'
-            'fed658c4cc27ed30c53176e7d38909f21c03316515662b4b7d2cf90861047370')
+            'a6a40cb4781ae8d31ec4a6580f3e0a1c6f3bb20c5b8a5103f7fff279bce37e40'
+            '5f51ddfd49f581aed02141ff11ffaa556d4737d34b9958d342a84c0149c5bba6'
+            '7b58bf7bf2d61fea106af24b37ee4e2c5faf7e4ffa55be5769a1b1d0c5fb04af'
+            'cbad22346c934a52a42716c8af604154b52c21dccc938e22a40eb51f9179ae0e'
+            '0526f56347aa4c7f8b604c614300baff1da3dddb2930b4c2b8890622c6e99e82'
+            '75c9db69d7e7e5d90683a797347b1c9d19f27f80be25e57f4110ff2b9e1e9e5b')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
 
 prepare() {
-  mv linux-surface-f72425b3246d2f50eec185b6aea0d78a8f206560 resources
   cd $_srcname
 
   msg2 "Setting version..."
@@ -52,16 +59,13 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
 
-  msg2 "Patching source..."
-  local resources
-  resources="resources/patches/4.18"
   local src
-  for src in resources; do
+  for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
     msg2 "Applying patch $src..."
-    patch -Np1 < "$resources/$src"
+    patch -Np1 < "../$src"
   done
 
   msg2 "Setting config..."
@@ -74,7 +78,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make -j2 bzImage modules htmldocs
 }
 
 _package() {
@@ -116,7 +120,7 @@ _package() {
   "
 
   # hack to allow specifying an initially nonexisting install file
-  sed "$subst" "../$install" > "../$install.pkg"
+  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
   true && install=$install.pkg
 
   # fill in mkinitcpio preset and pacman hooks
@@ -127,17 +131,27 @@ _package() {
   sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
     "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
-  msg2 "Install i915 & ipts firmware..."
+  msg2 "Intall i915 & ipts firmware..."
   sed "$subst" ../update-firmware.sh | install -Dm755 /dev/stdin \
     "$pkgdir/usr/bin/$pkgbase-firmware"
-  mkdir -p "$pkgdir/usr/share/${pkgbase}/firmware/"
-  cp -pu ../resources/firmware/*.zip "$pkgdir/usr/share/${pkgbase}/firmware/"
+  install -Dm64 ../i915_firmware_bxt.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_bxt.zip"
+  install -Dm64 ../i915_firmware_cfl.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_cfl.zip"
+  install -Dm64 ../i915_firmware_cnl.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_cnl.zip"
+  install -Dm64 ../i915_firmware_glk.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_glk.zip"
+  install -Dm64 ../i915_firmware_kbl.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_kbl.zip"
+  install -Dm64 ../i915_firmware_skl.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_skl.zip"
+  install -Dm64 ../ipts_firmware_v101.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v101.zip"
+  install -Dm64 ../ipts_firmware_v102.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v102.zip"
+  install -Dm64 ../ipts_firmware_v103.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v103.zip"
+  install -Dm64 ../ipts_firmware_v137.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v137.zip"
+  install -Dm64 ../ipts_firmware_v76.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v76.zip"
+  install -Dm64 ../ipts_firmware_v78.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v78.zip"
+  install -Dm64 ../ipts_firmware_v79.zip "$pkgdir/usr/share/${pkgbase}/firmware/ipts_firmware_v79.zip"
+  install -Dm64 ../nvidia_firmware_gp108.zip "$pkgdir/usr/share/${pkgbase}/firmware/nvidia_firmware_gp108.zip"
+  install -Dm64 ../mrvl_firmware.zip "$pkgdir/usr/share/${pkgbase}/firmware/mrvl_firmware.zip"
 
-  msg2 "Prepare system tweaks..."
-  mkdir -p "$pkgdir/opt/${pkgbase}-tweaks/"
-  cp -r ../resources/root/* "$pkgdir/opt/${pkgbase}-tweaks/"
-  mkdir -p "$pkgdir/opt/${pkgbase}-tweaks/usr/"
-  mv "$pkgdir/opt/${pkgbase}-tweaks/lib" "$pkgdir/opt/${pkgbase}-tweaks/usr/lib"
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
