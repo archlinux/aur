@@ -1,7 +1,7 @@
 pkgbase = kubelet-bin
 	pkgdesc = Kubernetes.io kubelet binary
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kubernetes.io
 	arch = x86_64
 	arch = armv7l
