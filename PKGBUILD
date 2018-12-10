@@ -1,4 +1,4 @@
-# Maintainer: Korvin Roganov <qualimerjudith@gmail.com>
+# Maintainer: Korvin Roganov <korvinagor@vivaldi.net>
 
 pkgname=donjon-painter
 pkgver=0.9.2
