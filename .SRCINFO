@@ -1,13 +1,13 @@
 pkgbase = tutanota-electron-git
 pkgdesc = A secure email client
-pkgver = 0.0.3
+pkgver = 0.0.4
 pkgrel = 1
-url = https://bitbucket.org/Thesilentdrifter/tutanota-electron
+url = https://gitlab.com/TheSilentDrifter/Tutanota-Electron
 arch = x86_64
 depends = gconf
 depends = gulp-cli
 depends = npm
-source = https://bitbucket.org/Thesilentdrifter/tutanota-electron/raw/9d6c55637db9cf4349307a146674004d67c0ee5c/tutanota-electron-git.tar.gz
+source = https://gitlab.com/TheSilentDrifter/Tutanota-Electron/raw/master/tutanota-electron-git.tar.gz
 md5sums = d4fbf97885f431ca97d5ff9a59b274db
 sha512sums = 6fa9dc14288a623236b8148488b554ef8aa65a300fba3685b9dc02d5904517a50af08edec71957bdbf5939688517f4d7af62c69906523480e3e4a26f458c3209
 pkgname = tutanota-electron-git
