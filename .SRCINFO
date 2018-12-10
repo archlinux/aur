@@ -1,0 +1,17 @@
+pkgbase = vimv-git
+	pkgdesc = Batch-rename files using Vim
+	pkgver = r21.f011fe5
+	pkgrel = 1
+	url = https://github.com/thameera/vimv
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = git
+	provides = vimv
+	conflicts = vimv
+	source = vimv-git::git://github.com/thameera/vimv.git
+	md5sums = SKIP
+
+pkgname = vimv-git
+
