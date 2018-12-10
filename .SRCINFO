@@ -1,22 +1,22 @@
 pkgbase = pgagent
-	pkgdesc = Job scheduler for PostgreSQL
-	pkgver = 3.4.0
+	pkgdesc = Job scheduler for PostgreSQL which may be managed using pgAdmin
+	pkgver = 4.0.0
 	pkgrel = 1
-	url = http://www.pgadmin.org
+	url = https://www.pgadmin.org/docs/pgadmin4/3.x/pgagent.html
+	install = pgagent.install
 	arch = x86_64
 	arch = i686
 	license = custom
 	makedepends = cmake
-	depends = wxgtk
 	depends = postgresql-libs
+	depends = boost
 	backup = etc/conf.d/pgagent@localhost
-	source = http://ftp.postgresql.org/pub/pgadmin3/release/pgagent/pgAgent-3.4.0-Source.tar.gz
+	source = https://ftp.postgresql.org/pub/pgadmin/pgagent/pgAgent-4.0.0-Source.tar.gz
 	source = pgagent@localhost
 	source = pgagent@.service
-	sha256sums = 0da0ac8f453cf34ab6f708eee036bed0fd0e5fa311de283b92d2ff06600bbb3d
+	sha256sums = 57bd047401629533ac6c5238bc94026f0ea0bf9f1f33a2bccc754b27132ea7e8
 	sha256sums = 27621bcd7b0f9c5ce5a3680e3df5b7696c3573add25a5ae5730ee6cdbd57e759
 	sha256sums = 4bded1fb970358ff7c98d38b28be1568967f22055bc98cb23f9ae4e3385e3610
 
 pkgname = pgagent
-	install = pgagent.install
 
