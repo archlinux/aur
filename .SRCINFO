@@ -1,20 +1,20 @@
 pkgbase = tpm2-tools-git
-	pkgdesc = TPM (Trusted Platform Module) 2.0 tools based on TPM2.0-TSS
-	pkgver = 3.0.2.r692.8f14189c
+	pkgdesc = Trusted Platform Module 2.0 tools based on tpm2-tss
+	pkgver = 3.0.2.r735.161fee77
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-tools
 	arch = x86_64
 	license = BSD
-	checkdepends = cmocka>=1.0.0
-	checkdepends = tpm2-abrmd>=2.0.0
+	checkdepends = cmocka
 	checkdepends = ibm-sw-tpm2
 	checkdepends = python-yaml
+	checkdepends = tpm2-abrmd
 	checkdepends = vim
 	makedepends = git
 	makedepends = autoconf-archive
 	makedepends = pandoc
-	depends = tpm2-tss>=2.0.0
 	depends = curl
+	depends = tpm2-tss
 	optdepends = tpm2-abrmd: user space resource manager to swap objects in and out of the limited TPM memory
 	provides = tpm2-tools
 	conflicts = tpm2-tools
