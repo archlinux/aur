@@ -1,9 +1,9 @@
 pkgbase = idos-timetable-data-chaps-trains-cz-2019-latest
 	pkgdesc = 2018/2019 Timetable data for the timetable search engines by CHAPS: Czech trains.
 	pkgver = 2018_11_29
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
-	url = http://chaps.cz/eng/download/idos-new/zip#kotvatt
+	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
 	groups = idos-timetable
 	license = custom
