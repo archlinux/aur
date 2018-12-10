@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 130904 2015-04-07 21:21:18Z bisson $
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=pari-git
