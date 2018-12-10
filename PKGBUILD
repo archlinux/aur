@@ -19,23 +19,23 @@ source=("https://github.com/google/xsecurelock/archive/v${pkgver}.tar.gz")
 md5sums=('adfdbfca57a0b3a9f1e54b4f81970560')
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     # until https://github.com/google/xsecurelock/issues/59 is fixed
     echo 'const char *const git_version = "";' > version.c
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	sh autogen.sh
-	./configure --prefix=/usr \
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    sh autogen.sh
+    ./configure --prefix=/usr \
               --libexecdir=/usr/lib \
               --with-pam-service-name=system-auth
-	make
+    make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}/" install
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}/" install
 }
 
 
