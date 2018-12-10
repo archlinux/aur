@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
-	autoreconf -if
+	autoreconf --install --force
 }
 
 build() {
@@ -31,10 +31,10 @@ build() {
 
 check() {
 	cd "${pkgname%-git}"
-	make -k check
+	make check
 }
 
 package() {
 	cd "${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" install
 }
