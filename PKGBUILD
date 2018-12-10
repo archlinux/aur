@@ -1,11 +1,15 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 # Contributor: François M. <francois5537 @ gmail.com>
 
+## Dynamically retrieve the download url
+_manager_source=$(wget -o /dev/null http://www.manager.io/desktop/download/ -O - \
+    | grep -o -P 'https://.*manager-accounting\.zip'
+)
+
 pkgname=manager-accounting
-pkgver=`wget -o /dev/null http://www.manager.io/desktop/download/ -O - \
-    | grep -o -P 'https://.*\.zip' \
-    | grep -o -P '[0-9]+\.[0-9]+\.[0-9]+' \
-    | head -1`
+pkgver=$(echo "${_manager_source}" \
+    | grep -o -P '[0-9]+\.[0-9]+\.[0-9]+'
+)
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
@@ -17,7 +21,7 @@ install=manager-accounting.install
 options=('!makeflags')
 source=(
   "LICENSE"
-  "https://mngr.s3.amazonaws.com/${pkgver}/manager-accounting.zip"
+  "${_manager_source}"
   "https://raw.githubusercontent.com/ericsink/SQLitePCL.raw/02ae6a75ba254fe1f6bf27495545b5eac79456ac/sqlite3/sqlite3.c"
 )
 sha256sums=(
