@@ -2,7 +2,7 @@
 
 _pkgbase=tbsecp3-driver-git
 pkgname=${_pkgbase}-dkms
-pkgver=r20181008.010103.c442df2
+pkgver=r20181210.201654.cc92c52
 pkgrel=1
 pkgdesc="TBSECP3 driver - standalone version (DKMS)"
 arch=('i686' 'x86_64')
