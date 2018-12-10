@@ -14,6 +14,11 @@ install=${pkgname}.install
 source=("https://github.com/felixsinger/mkinitcpio-openssh.git")
 sha512sums=('SKIP')
 
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
 	install -m700 -d "${pkgdir}/etc/ssh-initrd"
 
