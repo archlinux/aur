@@ -1,16 +1,16 @@
 # Maintainer: Chan Beom Park <cbpark@gmail.com>
 
 pkgname=pmix
-pkgver=2.1.1
-pkgrel=3
+pkgver=3.0.2
+pkgrel=1
 pkgdesc='Process Management Interface Exascale'
 url='https://pmix.github.io/pmix/'
 arch=('x86_64')
 license=('custom:OpenMPI')
 conflicts=('openmpi')
 depends=('gcc-libs' 'libevent' 'zlib' 'munge')
-source=(https://github.com/pmix/pmix/releases/download/v2.1.1/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('1530a40d76474ebdd98581d2c6d4be57c928e69a2b86e11afc4643fde2a667e0')
+source=(https://github.com/pmix/pmix/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2)
+sha1sums=('3a1c253cb078a9088e9a0a513f3a40e2f7f29cb8')
 
 build() {
   cd ${pkgname}-${pkgver}
