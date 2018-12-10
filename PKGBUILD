@@ -1,9 +1,9 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tss-git
-pkgver=2.0.0.r121.76ede3d2
+pkgver=2.0.0.r137.5a5f298f
 pkgrel=1
-pkgdesc='TPM (Trusted Platform Module) 2.0 Software Stack (TSS)'
+pkgdesc='Implementation of the Trusted Platform Module 2.0 Software Stack (TSS2)'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tss'
 license=('BSD')
