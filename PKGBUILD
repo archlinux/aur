@@ -30,7 +30,7 @@ build() {
 package_python2-magic-wormhole() {
   pkgdesc="Securely transfer data between computers"
   depends=('python2-click' 'python2-cffi' 'python2-autobahn' 'python2-tqdm' 'python2-hkdf' 'python2-pynacl' 'python2-spake2' 'python2-idna' 'python2-service-identity' 'python2-ipaddress' 'python2-txtorcon')
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"-py2
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
