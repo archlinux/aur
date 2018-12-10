@@ -2,24 +2,24 @@
 
 pkgname=kubelet-bin
 pkgdesc="Kubernetes.io kubelet binary"
-pkgver=1.12.2
-pkgrel=3
+pkgver=1.13.0
+pkgrel=0
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
 license=('apache')
 conflicts=('kubernetes' 'kubernetes-bin')
 provides=('kubelet')
 sha256sums_x86_64=(
-  '62015ea9af675de7f785081d518110d4df18580ddf9d382d2616e389a196f3da'
+  'c1f5d00d11a393159bcacbc9182922a0d6f5a16385d2f947c38b5200dc5a6f07'
 )
 sha256sums_armv7l=(
-  '3cff3f2835af58883673a5f9d1f0bfa36856b607449bfd747e2038c619915780'
+  'ba5e091a1e004dbebd83ca5e6b65ca6e17e3a959141799218c264bc4e20d4473'
 )
 sha256sums_armv7h=(
-  '3cff3f2835af58883673a5f9d1f0bfa36856b607449bfd747e2038c619915780'
+  'ba5e091a1e004dbebd83ca5e6b65ca6e17e3a959141799218c264bc4e20d4473'
 )
 sha256sums_aarch64=(
-  '479b88b22a5a7dcc20c2befe1d21e7a1e83c2d475c3066c6ea544b93d8eb5dfd'
+  '3e7d7fcb80f27b5ff26bde3cea5d7130f14feb2a186dc92f61d0a2d19a05d957'
 )
 source_x86_64=(
   "https://packages.cloud.google.com/apt/pool/kubelet_${pkgver}-00_amd64_${sha256sums_x86_64}.deb"
@@ -31,7 +31,7 @@ source_armv7h=(
   "https://packages.cloud.google.com/apt/pool/kubelet_${pkgver}-00_armhf_${sha256sums_armv7h}.deb"
 )
 source_aarch64=(
-  "https://packages.cloud.google.com/apt/pool/kubelet_${pkgver}-arm64_${sha256sums_aarch64}.deb"
+  "https://packages.cloud.google.com/apt/pool/kubelet_${pkgver}-00_arm64_${sha256sums_aarch64}.deb"
 )
 
 package() {
