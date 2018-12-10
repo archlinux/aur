@@ -1,15 +1,14 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: Hexchain Tong <i at hexchain dot org>
-
 pkgname=tpm2-tools
 pkgver=3.1.3
 pkgrel=1
-pkgdesc='TPM (Trusted Platform Module) 2.0 tools based on TPM2.0-TSS'
+pkgdesc='Trusted Platform Module 2.0 tools based on tpm2-tss'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tools'
 license=('BSD')
-depends=('tpm2-tss>=2.0.0' 'curl')
-checkdepends=('cmocka>=1.0.0')
+depends=('curl' 'tpm2-tss')
+checkdepends=('cmocka')
 optdepends=('tpm2-abrmd: user space resource manager to swap objects in and out of the limited TPM memory')
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"{,.asc})
 sha512sums=('37edf59e47168c42ffc66e948722753334ae3e00f3e258d9e801dffd259a763a1bf4f63b3feecf7728b4dade69ca5da15d631e1a606f68e10f7d314a1a757bdc'
@@ -27,11 +26,11 @@ build() {
 check() {
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr --enable-unit
-	make -k check
+	make check
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
