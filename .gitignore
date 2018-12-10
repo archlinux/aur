@@ -1,0 +1,6 @@
+*.gz
+*.xz
+/pkg
+/src
+0008-Allow-overriding-USE_COMPILER_TLS-formerly-HAS_COMPI.patch
+*.log*
