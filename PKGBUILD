@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname%-git}"
-	arch-meson build
+	meson --prefix=/usr --buildtype=plain build
 	ninja -C build
 }
 
@@ -31,5 +31,5 @@ check() {
 
 package() {
 	cd "${pkgname%-git}"
-	DESTDIR="$pkgdir/" ninja -C build install
+	DESTDIR="$pkgdir" ninja -C build install
 }
