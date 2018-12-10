@@ -5,7 +5,7 @@ pkgbase = dkgpg
 	url = http://www.nongnu.org/dkgpg/
 	arch = x86_64
 	license = GPL2
-	depends = libtmcg>=1.3.15
+	depends = libtmcg>=1.3.16
 	depends = libgcrypt>=1.6.0
 	depends = gmp
 	depends = zlib
