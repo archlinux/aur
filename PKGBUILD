@@ -12,8 +12,8 @@ source=("${_pkgname}-${pkgver}.tar.gz::git+https://github.com/stephenjsweeney/${
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
