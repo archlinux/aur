@@ -1,7 +1,7 @@
 pkgbase = backlight-tooler
 	pkgdesc = A collection of tools to control backlight via webcam.
-	pkgver = r11.f5769e7
-	pkgrel = 1
+	pkgver = r15.1a63461
+	pkgrel = 2
 	url = https://github.com/alcubierre-drive/backlight-tooler
 	arch = any
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = backlight-tooler
 	makedepends = make
 	depends = systemd
 	depends = glibc
+	backup = etc/backlight-tooler.conf
 	backup = etc/BacklightTooler.conf
 	source = git://github.com/alcubierre-drive/backlight-tooler.git
 	md5sums = SKIP
