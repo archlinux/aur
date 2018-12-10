@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=imageburner
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Image burner for Pantheon, developed by Artem Anufrij"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(libgranite.so gtk3)
 makedepends=(vala meson ninja)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/artemanufrij/imageburner/archive/${pkgver}.tar.gz")
-sha256sums=('fc04ce6d56b8470f397097b81c9860178466743d81b29375318d8aef283c84d8')
+sha256sums=('97143eb0330d8156bbb55153d33e7abead105b4647067347de01f32dbafddc5d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
