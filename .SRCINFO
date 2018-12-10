@@ -1,6 +1,6 @@
 pkgbase = kitty-git
 	pkgdesc = A modern, hackable, featureful, OpenGL based terminal emulator
-	pkgver = 0.11.0.r45.g49b065cb
+	pkgver = 0.13.1.r0.g1ba7b5f5
 	pkgrel = 1
 	url = https://github.com/kovidgoyal/kitty
 	arch = i686
@@ -22,11 +22,11 @@ pkgbase = kitty-git
 	depends = fontconfig
 	depends = wayland
 	depends = libx11
+	depends = libgl
 	optdepends = imagemagick: viewing images with icat
 	provides = kitty
 	conflicts = kitty
-	conflicts = kitty-git
-	source = kitty-git::git+https://github.com/kovidgoyal/kitty.git
+	source = git+https://github.com/kovidgoyal/kitty.git
 	md5sums = SKIP
 
 pkgname = kitty-git
