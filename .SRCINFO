@@ -1,10 +1,10 @@
 pkgbase = inxi
 	pkgdesc = Full featured CLI system information tool
-	pkgver = 3.0.28
+	pkgver = 3.0.29
 	pkgrel = 1
 	url = https://github.com/smxi/inxi
 	arch = any
-	license = GPL
+	license = GPL3
 	depends = coreutils
 	depends = pciutils
 	depends = perl
@@ -31,8 +31,8 @@ pkgbase = inxi
 	optdepends = xorg-xprop: inxi -S desktop data
 	optdepends = xorg-xrandr: inxi -G single screen resolution
 	options = zipman
-	source = inxi-3.0.28.tar.gz::https://github.com/smxi/inxi/archive/3.0.28-1.tar.gz
-	sha256sums = 345abdeac58791d8ba40824ca4b9deed0984591fee862de58763e88e308a997d
+	source = inxi-3.0.29.tar.gz::https://github.com/smxi/inxi/archive/3.0.29-1.tar.gz
+	sha256sums = f6037e668933f2028b67ce12e80ea662dec3d3c20d260d26dc1d9ab86f75803c
 
 pkgname = inxi
 
