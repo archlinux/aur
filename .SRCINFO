@@ -1,6 +1,6 @@
 pkgbase = linux-bfq-mq
 	pkgver = 4.19.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
 	license = GPL2
@@ -28,7 +28,7 @@ pkgbase = linux-bfq-mq
 	sha256sums = 9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178
 	sha256sums = bd5fa32445dcd1127ddaca3d3189436557e195090998d5c9b6d1d1a801b56978
 	sha256sums = eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531
-	sha256sums = 1baeb84a779bde01ebf748fc7a86a3643df264a3edf22eac333e880877ab40fc
+	sha256sums = 431c8b4ebc34d86c815d6af071d728a02872db9f5f6cc5e6542b0431264532ff
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37
