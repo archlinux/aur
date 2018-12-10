@@ -1,14 +1,14 @@
 pkgbase = computecpp
 	pkgdesc = Accelerates Complex C++ Applications on Heterogeneous Compute Systems using Open Standards
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://www.codeplay.com/products/computesuite/computecpp
 	arch = x86_64
 	license = EULA
 	depends = ncurses5-compat-libs
 	options = !strip
-	source = https://computecpp.codeplay.com/downloads/computecpp-ce/1.0.2/ubuntu-16.04-64bit.tar.gz
-	sha256sums = cbe9f0729640795dde475ea0ea292d3db736c83693573ba55e6d5901e3defb78
+	source = https://computecpp.codeplay.com/downloads/computecpp-ce/1.0.3/ubuntu-16.04-64bit.tar.gz
+	sha256sums = 03026e37065cf7d3a86e2b1caf50cd2d6f308cf62f3592c7761df4698a84119d
 
 pkgname = computecpp
 
