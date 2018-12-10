@@ -3,7 +3,7 @@
 pkgname=tpm2-abrmd
 pkgver=2.0.3
 pkgrel=1
-pkgdesc='TPM2 Access Broker & Resource Management Daemon'
+pkgdesc='Trusted Platform Module 2.0 Access Broker and Resource Management Daemon'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-abrmd'
 license=('BSD')
