@@ -1,6 +1,6 @@
 pkgbase = libinput-gestures
 	pkgdesc = Actions gestures on your touchpad using libinput
-	pkgver = 2.40
+	pkgver = 2.41
 	pkgrel = 1
 	url = https://github.com/bulletmark/libinput-gestures
 	install = install.sh
@@ -14,8 +14,8 @@ pkgbase = libinput-gestures
 	conflicts = libinput-gestures-git
 	replaces = libinput-gestures-git
 	backup = etc/libinput-gestures.conf
-	source = libinput-gestures-2.40.tar.gz::https://github.com/bulletmark/libinput-gestures/archive/2.40.tar.gz
-	md5sums = 39554b8baab87b80bbd9ef71f7a6a23c
+	source = libinput-gestures-2.41.tar.gz::https://github.com/bulletmark/libinput-gestures/archive/2.41.tar.gz
+	md5sums = 24c0b02a216e5d335d894154f409ec4c
 
 pkgname = libinput-gestures
 
