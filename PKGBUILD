@@ -1,29 +1,17 @@
 # Maintainer: Jozef Riha <jose1711 at gmail dot com>
 
 pkgname=hedgewars-hg
-pkgver=r12150.bbefbd1a3b0a
+pkgver=r14415+.06672690d71b+
 pkgrel=1
 pkgdesc="Free Worms-like turn based strategy game (development version - mercurial)"
 arch=('i686' 'x86_64')
 url="http://hedgewars.org"
 license=('GPL' 'custom')
-depends=('qt4' 'sdl_mixer' 'sdl_image' 'sdl_net' 'sdl_ttf' 'lua51' 'physfs' 'ffmpeg')
-makedepends=('fpc' 'cmake' 'mercurial'
-'ghc'
-'haskell-network'
-'haskell-bytestring-show'
-'haskell-utf8-string'
-'haskell-hslogger'
-'haskell-vector'
-'haskell-entropy'
-'haskell-sha'
-'haskell-zlib'
-'haskell-random'
-'haskell-base-compat'
-'haskell-sandi'
-'haskell-regex-compat-tdfa'
-'sdl2_net'
-'sdl2_ttf')
+depends=('qt5-base' 'sdl2' 'sdl2_mixer' 'sdl2_image' 'sdl2_net' 'sdl2_ttf' 'lua51' 'ffmpeg' 'glut'
+         'physfs' 'ghc-libs' 'haskell-entropy' 'haskell-sha' 'haskell-random' 'haskell-regex-tdfa'
+         'haskell-sandi' 'haskell-hslogger' 'haskell-utf8-string' 'haskell-vector')
+makedepends=('fpc' 'cmake' 'qt5-tools' 'ghc' 'haskell-network' 'haskell-bytestring-show'
+             'haskell-zlib' 'haskell-base-prelude' 'imagemagick' 'mesa')
 source=("${pkgname}"::'hg+https://hg.hedgewars.org/hedgewars' \
 	hedgewars.desktop \
         hedgewars.png)
@@ -39,27 +27,35 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/${pkgname}
-  sed -i 's|instance NFData (Chan a)$|instance NFData (Chan a) where rnf x = seq x ()|' gameServer/CoreTypes.hs
+  sed -i 's|set(ghc_flags|set(ghc_flags -dynamic|' gameServer/CMakeLists.txt
 }
 
 build() {
   cd ${srcdir}/${pkgname}
   mkdir -p $srcdir/bin
-  #cmake -DCMAKE_INSTALL_PREFIX=/usr -DDATA_INSTALL_DIR=/usr/share -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake -DQT_MOC_EXECUTABLE=/usr/bin/moc || return 1
-  ln -sf /usr/bin/lrelease-qt4 $srcdir/bin/Qt4::lrelease
-  export PATH=$srcdir/bin:$PATH
   cmake \
 	-DCMAKE_BUILD_TYPE="Release" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DDATA_INSTALL_DIR=/usr/share/hedgewars \
 	-DNOSERVER=0 .
   make
+
+  # resize icon
+  for _size in 16 32 48 64 128 256; do
+    convert +set date:create +set date:modify misc/hedgewars.png -resize ${_size}x${_size} hedgewars_${_size}.png
+  done
 }
 
 package() {
   cd ${srcdir}/${pkgname}
   make DESTDIR=$pkgdir install
   install -D -m644 Fonts_LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/Fonts_LICENSE.txt
-  install -D -m644 $srcdir/hedgewars.png $pkgdir/usr/share/pixmaps/hedgewars.png
   install -D -m644 $srcdir/hedgewars.desktop $pkgdir/usr/share/applications/hedgewars.desktop
+
+  # install icons
+  install -D -m644 misc/hedgewars.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/hedgewars.png
+  for _size in 16 32 48 64 128 256; do
+    install -D -m644 hedgewars_${_size}.png "$pkgdir"/usr/share/icons/hicolor/${_size}x${_size}/apps/hedgewars.png
+  done
+  rm -rf "$pkgdir"/usr/share/pixmaps
 }
