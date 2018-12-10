@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=hashit-git
-pkgver=0.1.11.r8.g875cf36
+pkgver=1.0.0.r2.gaee4f09
 pkgrel=1
 pkgdesc="Checksum tool for Pantheon, developed by Artem Anufrij"
 arch=('x86_64')
@@ -17,6 +17,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  install -d build
 }
 
 build() {
