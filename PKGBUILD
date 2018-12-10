@@ -5,14 +5,14 @@ pkgver=0.0.1
 pkgrel=1
 pkgdesc="openssh mkinitcpio hook"
 arch=('any')
-url=""
+url="https://github.com/felixsinger/mkinitcpio-openssh"
 license=('GPL3')
 depends=('openssh')
 optdepends=()
 conflicts=('mkinitcpio-tinyssh' 'mkinitcpio-dropbear')
 install=${pkgname}.install
-source=()
-sha512sums=()
+source=("https://github.com/felixsinger/mkinitcpio-openssh.git")
+sha512sums=('SKIP')
 
 package() {
 	install -m700 -d "${pkgdir}/etc/ssh-initrd"
