@@ -2,7 +2,7 @@
 
 pkgname="perl-splat-git"
 _realname="SPLAT"
-pkgver=0
+pkgver=1.004.r0.g266d711
 pkgrel=1
 epoch=
 pkgdesc="SPLAT programming language for the MFM simulator."
@@ -29,11 +29,10 @@ source=("git://www.github.com/daveackley/SPLAT")
 noextract=()
 md5sums=('SKIP')
 
-#initial commit without auto versioning since upstram repo doesn't have tags. Uncomment to enable.
-#pkgver(){
-#	cd $srcdir/${_realname}
-#	git describe --long | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-#}
+pkgver(){
+	cd $srcdir/${_realname}
+	git describe --long | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
 	pushd ${_realname}
