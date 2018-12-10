@@ -2,7 +2,7 @@
 
 pkgname=zulip-electron-bin
 pkgver=2.3.82
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for Zulip. Available for Mac, Linux and Windows."
 arch=('x86_64')
 url="https://github.com/zulip/zulip-electron"
@@ -11,6 +11,7 @@ source=("https://github.com/zulip/zulip-electron/releases/download/v${pkgver}/Zu
 sha512sums=('ffcfba431aad0e576b7025e1175f1dd4a87950e181357ff31c7ab2d31c249e12a9e9df313a9ba39c17c009e349950a3a943c760732e7c60877721a28674c6237')
 
 conflicts=('zulip-desktop')
+depends=('gconf')
 
 package() {
     install -d "$pkgdir"/opt
