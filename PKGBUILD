@@ -3,8 +3,8 @@
 pkgname=shellex
 pkgdesc='zsh/urxvt based program launcher'
 url='https://github.com/Merovius/shellex/blob/master/doc/autoresize.txt'
-pkgver=0.1
-pkgrel=3
+pkgver=0.3
+pkgrel=1
 arch=('i686' 'x86_64')
 license=(BSD)
 depends=(
@@ -12,8 +12,19 @@ depends=(
 	rxvt-unicode
 	perl-x11-protocol
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Merovius/shellex/archive/$pkgver.tar.gz")
-sha512sums=('31546b13090af9c64c9c5879f9b9a2ac21c54934b8ddb83646e9154a8d5aaa9f32629ef386f11cab5db56d80f0bc8e416618b9b7abb8e863c089fb343343c173')
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/Merovius/shellex/archive/$pkgver.tar.gz"
+	"conf.mk.patch"
+)
+sha512sums=(
+	'6c98a982ffcb13ecb7d2ef883799512644ef0c3ba38105caae4206eb163bb587c2fa876963c3313ab8419919c4722bbddc0168a258986ca9913a400e996a2bd6'
+	'a38b6e9104aa2bcf28e16ea495eb440a201c00145044910e0ec55201a3fe983df18eeb17fb2c1f4e668d9e27aa8bcf7f6d46e7394f4bf49abb65aaaec8a1b0cc'
+)
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+	patch < "$srcdir/conf.mk.patch"
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

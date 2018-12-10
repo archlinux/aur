@@ -1,0 +1,11 @@
+--- conf.mk	2018-12-11 00:21:24.967043397 +0100
++++ conf.mk.b	2018-12-11 00:12:16.247585901 +0100
+@@ -24,6 +24,8 @@
+ install-rc: conf/shellexrc
+ 	echo "[INSTALL] $@"
+ 	$(INSTALL) -m 0644 conf/shellexrc $(DESTDIR)$(PREFIX)$(LIBDIR)/shellex/shellexrc
++
++	mkdir -p $(DESTDIR)$(SYSCONFDIR)
+ 	[ -e $(DESTDIR)$(SYSCONFDIR)/shellexrc ] || ln -s $(PREFIX)$(LIBDIR)/shellex/shellexrc $(DESTDIR)$(SYSCONFDIR)/shellexrc
+ 
+ clean-shellexrc:
