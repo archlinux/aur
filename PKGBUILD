@@ -16,7 +16,7 @@ optdepends=(
   'jack: A low-latency audio server'
   'ladspa-plugins: A set of ladspa plugins'
 )
-provides=("t7-daw=${pkgver}")
+provides=("t7-daw=${pkgver}" "tracktion-7=${pkgver}")
 options=('!emptydirs' '!strip')
 install=${pkgname}.install
 replaces=("tracktion-7-free-daw")

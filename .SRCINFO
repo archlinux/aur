@@ -18,6 +18,7 @@ pkgbase = t7-daw
 	optdepends = jack: A low-latency audio server
 	optdepends = ladspa-plugins: A set of ladspa plugins
 	provides = t7-daw=7.2.1
+	provides = tracktion-7=7.2.1
 	replaces = tracktion-7-free-daw
 	options = !emptydirs
 	options = !strip
