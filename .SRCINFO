@@ -1,14 +1,14 @@
 pkgbase = unity-editor-lts-ios
 	pkgdesc = Allows building your Unity projects for the iOS platform
-	pkgver = 2017.4.16f1
+	pkgver = 2017.4.17f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
 	license = custom
 	depends = unity-editor-lts
 	options = !strip
-	source = https://download.unity3d.com/download_unity/7f7bdd1ef02b/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2017.4.16f1.tar.xz
-	md5sums = 2527aa912c1c9520f77ee8321045f839
+	source = https://download.unity3d.com/download_unity/05307cddbb71/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2017.4.17f1.tar.xz
+	md5sums = 75be4f0b4aad416dcf7a1c7e10818431
 
 pkgname = unity-editor-lts-ios
 
