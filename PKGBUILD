@@ -3,17 +3,17 @@
 pkgname=kubernetes-bin
 pkgver=1.12.3
 _contribver=0.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Production-Grade Container Scheduling and Management - binary version."
 optdepends=('etcd: etcd cluster required to run Kubernetes')
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 source=("https://github.com/kubernetes/kubernetes/archive/v$pkgver.tar.gz"
     "https://github.com/kubernetes/contrib/archive/$_contribver.tar.gz"
     "kubernetes.install")
-source_x86_64=("https://dl.k8s.io/v$pkgver/kubernetes-server-linux-amd64.tar.gz")
-source_armv7l=("https://dl.k8s.io/v$pkgver/kubernetes-server-linux-arm.tar.gz")
-source_armv7h=("https://dl.k8s.io/v$pkgver/kubernetes-server-linux-arm.tar.gz")
-source_aarch64=("https://dl.k8s.io/v$pkgver/kubernetes-server-linux-arm64.tar.gz")
+source_x86_64=("$pkgname-$pkgver.tar.gz::https://dl.k8s.io/v$pkgver/kubernetes-server-linux-amd64.tar.gz")
+source_armv7l=("$pkgname-$pkgver.tar.gz::https://dl.k8s.io/v$pkgver/kubernetes-server-linux-arm.tar.gz")
+source_armv7h=("$pkgname-$pkgver.tar.gz::https://dl.k8s.io/v$pkgver/kubernetes-server-linux-arm.tar.gz")
+source_aarch64=("$pkgname-$pkgver.tar.gz::https://dl.k8s.io/v$pkgver/kubernetes-server-linux-arm64.tar.gz")
 url="http://kubernetes.io/"
 license=("APACHE")
 backup=('etc/kubernetes/apiserver'
