@@ -1,6 +1,6 @@
 # Maintainer: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=wl-clipboard-git
-pkgver=r71.069f049
+pkgver=r80.48c2aed
 pkgrel=1
 pkgdesc="Command-line copy/paste utilities for Wayland"
 arch=('i686' 'x86_64')
