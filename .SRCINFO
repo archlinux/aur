@@ -1,6 +1,6 @@
 pkgbase = mathpix-snipping-tool
 	pkgdesc = Mathpix Snipping Tool
-	pkgver = 00.00.0057
+	pkgver = 01.00.0007
 	pkgrel = 1
 	url = https://snapcraft.io/mathpix-snipping-tool
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = mathpix-snipping-tool
 	makedepends = squashfs-tools
 	depends = qt5-x11extras
 	depends = qt5-webkit
-	source = https://api.snapcraft.io/api/v1/snaps/download/jnlZEYdmdXGhh6oJTtMsawNGZzEWmMhk_19.snap
-	md5sums = bbafafe6622ee76da6de0eb336c955bd
+	source = https://api.snapcraft.io/api/v1/snaps/download/jnlZEYdmdXGhh6oJTtMsawNGZzEWmMhk_25.snap
+	md5sums = 56bb5327c4db481a8f927aa578ba370b
 
 pkgname = mathpix-snipping-tool
 
