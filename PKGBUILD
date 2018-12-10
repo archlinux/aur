@@ -1,10 +1,10 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=10.4.2
-_pkgver=10.04.p02
+pkgver=10.5
+_pkgver=10.05
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
-depends=('cmake>=2.8.2'
+depends=('cmake>=3.3'
          'xerces-c'
          'qt5-base'
          'glu'
@@ -15,16 +15,19 @@ optdepends=('java-environment: for histogram visualizations and
 analysis'
   'tcsh: for C Shell support'
   'python: for G4Python support'
-  'geant4-abladata: Data files for nuclear shell effects in INCL/ABLA hadronic mode'
-  'geant4-ensdfstatedata: Nuclei properties from the Evaluated Nuclear Structure Data Files'
+  'geant4-neutronhpdata: Neutron data files with thermal cross sections'
   'geant4-ledata: Data files for low energy electromagnetic processes'
   'geant4-levelgammadata: Data files for photon evaporation'
-  'geant4-neutronhpdata: Neutron data files with thermal cross sections'
-  'geant4-neutronxsdata: Data files for evaluated neutron cross sections on natural composition of elements'
-  'geant4-piidata: Data files for shell ionisation cross sections'
   'geant4-radioactivedata: Data files for radioactive decay hadronic processes'
+  'geant4-particlexsdata: Data files for evaluated p, d, t, He3, He4 and gamma cross sections, replaces geant4-neutronxsdata'
+  'geant4-piidata: Data files for shell ionisation cross sections'
   'geant4-realsurfacedata: Data files for measured optical surface reflectance'
-  'geant4-saiddata: Data files from evaluated cross-sections in SAID data-base')
+  'geant4-saiddata: Data files from evaluated cross-sections in SAID data-base'
+  'geant4-abladata: Data files for nuclear shell effects in INCL/ABLA hadronic mode'
+  'geant4-incdata: Data files for proton and neutron density profiles'
+  'geant4-ensdfstatedata: Nuclei properties from the Evaluated Nuclear Structure Data Files'
+  'geant4-particlehpdata: Data files for protons, deuterons, tritons, He3 and alphas for use with ParticleHP'
+)
 url="http://geant4.cern.ch/"
 arch=('x86_64')
 license=('custom: http://geant4.cern.ch/license/')
@@ -32,8 +35,8 @@ options=('!emptydirs')
 install="${pkgname}.install"
 source=("http://cern.ch/geant4-data/releases/${pkgname}.${_pkgver}.tar.gz"
   "${pkgname}.install")
-md5sums=('b0a201c7b8ab1e45a07371b5cd3b09b0'
-         'bfe6791027de966cad240d8584c6b657')
+sha256sums=('4b05b4f7d50945459f8dbe287333b9efb772bd23d50920630d5454ec570b782d'
+            '36e2d2bff5fc753e8abaa1a5da10710c030512b926d33c1977687d7b47672bd4')
 
 ## Remove this if you want to keep an even smaller package
 ## No need to wait for compression when just installing it.
@@ -80,16 +83,19 @@ package() {
 
   msg "Removing 'wrongly' set environment variables"
 
-  variables=("G4NEUTRONHPDATA" \
-                 "G4LEDATA" \
-                 "G4LEVELGAMMADATA" \
-                 "G4RADIOACTIVEDATA" \
-                 "G4NEUTRONXSDATA" \
-                 "G4PIIDATA" \
-                 "G4REALSURFACEDATA" \
-                 "G4SAIDXSDATA" \
-                 "G4ABLADATA" \
-                 "G4ENSDFSTATEDATA")
+  variables=(  "G4NEUTRONHPDATA" \
+               "G4LEDATA" \
+               "G4LEVELGAMMADATA" \
+               "G4RADIOACTIVEDATA" \
+               "G4PARTICLEXSDATA" \
+               "G4PIIDATA" \
+               "G4REALSURFACEDATA" \
+               "G4SAIDXSDATA" \
+               "G4ABLADATA" \
+               "G4INCLDATA" \
+               "G4ENSDFSTATEDATA" \
+               "G4PARTICLEHPDATA" \  # not included by default anyway
+            )
 
   for _varname in ${variables[*]}
   do
