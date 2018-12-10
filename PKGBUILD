@@ -2,14 +2,14 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=inxi-git
-pkgver=3.0.10.r0.g23646291
+pkgver=3.0.29.r0.gb1194550
 pkgrel=1
 pkgdesc="script to get system information (git version)"
-arch=('any')
+arch=(any)
 url="https://github.com/smxi/inxi"
-license=('GPL')
-depends=('coreutils' 'pciutils' 'perl' 'procps-ng')
-makedepends=('git')
+license=(GPL3)
+depends=(coreutils pciutils perl procps-ng)
+makedepends=(git)
 optdepends=(
   "bind-tools: -i wlan IP"
   "dmidecode: inxi -M if no sys machine data"
@@ -33,19 +33,19 @@ optdepends=(
   "xorg-xprop: inxi -S desktop data"
   "xorg-xrandr: inxi -G single screen resolution"
 )
-provides=('inxi')
-conflicts=('inxi')
-options=('zipman')
-source=("${pkgname}::git+${url}.git")
+provides=(inxi)
+conflicts=(inxi)
+options=(zipman)
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/${pkgname/-git/}"
   git describe --long --tags | sed 's/1-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    cd "${pkgname}"
-    install -Dm755 "${pkgname/-git/}"   "${pkgdir}/usr/bin/${pkgname/-git/}"
-    install -Dm644 "${pkgname/-git/}.1" "${pkgdir}/usr/share/man/man1/${pkgname/-git/}.1"
+  cd "$srcdir/${pkgname/-git/}"
+  install -Dm755 "${pkgname/-git/}"   "${pkgdir}/usr/bin/${pkgname/-git/}"
+  install -Dm644 "${pkgname/-git/}.1" "${pkgdir}/usr/share/man/man1/${pkgname/-git/}.1"
 }

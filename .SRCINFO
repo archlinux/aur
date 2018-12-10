@@ -1,10 +1,10 @@
 pkgbase = inxi-git
 	pkgdesc = script to get system information (git version)
-	pkgver = 3.0.10.r0.g23646291
+	pkgver = 3.0.29.r0.gb1194550
 	pkgrel = 1
 	url = https://github.com/smxi/inxi
 	arch = any
-	license = GPL
+	license = GPL3
 	makedepends = git
 	depends = coreutils
 	depends = pciutils
@@ -34,7 +34,7 @@ pkgbase = inxi-git
 	provides = inxi
 	conflicts = inxi
 	options = zipman
-	source = inxi-git::git+https://github.com/smxi/inxi.git
+	source = git+https://github.com/smxi/inxi.git
 	sha256sums = SKIP
 
 pkgname = inxi-git
