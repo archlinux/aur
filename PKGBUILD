@@ -1,13 +1,13 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=loop
-pkgver=d6ef3c5
+pkgver=598ccc8
 pkgrel=1
 pkgdesc="UNIX's missing loop command"
 arch=('any')
 url="https://github.com/Miserlou/Loop"
 license=('UNKNOWN')
 provides=("loop")
-makedepends=('cargo' 'git' 'asciidoc')
+makedepends=('cargo')
 conflicts=('loop')
 source=("$pkgname::git+https://github.com/Miserlou/Loop")
 sha1sums=('SKIP')

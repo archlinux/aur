@@ -1,13 +1,11 @@
 pkgbase = loop
 	pkgdesc = UNIX's missing loop command
-	pkgver = d6ef3c5
+	pkgver = 598ccc8
 	pkgrel = 1
 	url = https://github.com/Miserlou/Loop
 	arch = any
 	license = UNKNOWN
 	makedepends = cargo
-	makedepends = git
-	makedepends = asciidoc
 	provides = loop
 	conflicts = loop
 	source = loop::git+https://github.com/Miserlou/Loop
