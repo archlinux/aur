@@ -1,7 +1,7 @@
 pkgbase = pythonqt
 	pkgdesc = A dynamic Python binding for Qt applications
 	pkgver = 3.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://pythonqt.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = pythonqt
 	depends = qt5-svg
 	depends = qt5-webkit
 	depends = qt5-declarative
+	depends = qt5-xmlpatterns
 	conflicts = pythonqt-svn
 	conflicts = pythonqt-for-screencloud
 	conflicts = qt5-python27-git
