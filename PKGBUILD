@@ -1,13 +1,13 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=koio
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 license=('MIT')
 pkgdesc='tool & small library for embedding files in C programs'
 arch=("any")
 url='https://git.sr.ht/~sircmpwn/koio/'
-source=("https://git.sr.ht/~sircmpwn/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.xz")
-sha512sums=('1f28377542e35793be71bb53c9375f23e65531c9a314d5404d6c89345b5afd0a8b0a356c22675a7b093878179237704c761e4d4cb12f6bc27ced1fa6be286540')
+source=("https://git.sr.ht/~sircmpwn/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('0b3a22c3deb4f7591748b60ffecfca6ca7b63cd9e914d34a537cc1f7a0ba5ea887c9bdec62558dbe29b3c553d75936781e6afc5d3a0252aab8cbcc521f1f9602')
 makedepends=('meson' 'ninja')
 
 build() {
