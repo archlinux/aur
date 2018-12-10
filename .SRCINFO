@@ -1,6 +1,6 @@
 pkgbase = dkgpg
 	pkgdesc = The Distributed Privacy Guard (DKGPG) implements Distributed Key Generation (DKG) and Threshold Cryptography for OpenPGP.
-	pkgver = 1.0.9
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://www.nongnu.org/dkgpg/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = dkgpg
 	depends = gmp
 	depends = zlib
 	depends = bzip2
-	source = https://download.savannah.gnu.org/releases/dkgpg/dkgpg-1.0.9.tar.gz
-	source = https://download.savannah.gnu.org/releases/dkgpg/dkgpg-1.0.9.tar.gz.sig
+	source = https://download.savannah.gnu.org/releases/dkgpg/dkgpg-1.1.0.tar.gz
+	source = https://download.savannah.gnu.org/releases/dkgpg/dkgpg-1.1.0.tar.gz.sig
 	validpgpkeys = 76F73011329D27DB8D7C3F974F584EB8FB2BE14F
-	sha256sums = b58fd6fa71ead230f702b90f33f53dd04453943525eecf94bc8bb2bb937a8bf9
+	sha256sums = c420cfae557b4d30a482d1921c6d5e4d49d52f4777b20fa59699f5d1f5a6117f
 	sha256sums = SKIP
 
 pkgname = dkgpg
