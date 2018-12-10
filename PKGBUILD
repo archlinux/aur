@@ -25,6 +25,6 @@ package() {
 	touch "${pkgdir}/etc/ssh-initrd/authorized_keys"
 	chmod 600 "${pkgdir}/etc/ssh-initrd/authorized_keys"
 
-	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/openssh.hook" "${pkgdir}/usr/lib/initcpio/hooks/openssh"
-	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/openssh.install" "${pkgdir}/usr/lib/initcpio/install/openssh"
+	install -D -m644 "${srcdir}/${pkgname}/openssh.hook" "${pkgdir}/usr/lib/initcpio/hooks/openssh"
+	install -D -m644 "${srcdir}/${pkgname}/openssh.install" "${pkgdir}/usr/lib/initcpio/install/openssh"
 }
