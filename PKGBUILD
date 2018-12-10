@@ -1,7 +1,7 @@
 # Maintainer: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-2.8-bin
 pkgver=2.80.181210.168a6a4bfc1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('i686' 'x86_64')
 url="https://www.blender.org"
@@ -18,22 +18,23 @@ conflicts=("${pkgname%-bin}")
 source=("https://builder.blender.org/download")
 md5sums=('SKIP')
 
-prepare() {
+_setvars() {
 	cd "$srcdir"
 	local regex="blender-(2.8[^-]*)-([^-]*)-linux-[^-]*-$CARCH.tar.bz2" && [[ $(cat download) =~ $regex ]]
-	export _full=${BASH_REMATCH[0]}
-	export _upstreamversion=${BASH_REMATCH[1]}
+	_full=${BASH_REMATCH[0]}
+	_upstreamversion=${BASH_REMATCH[1]}
 	_commit=${BASH_REMATCH[2]}
 	local regex="$_full.*?<small>([[:alnum:] ]+), ([[:digit:]:]+) - $_commit" && [[ $(cat download) =~ $regex ]]
 	_date=$(date --date="${BASH_REMATCH[1]} ${BASH_REMATCH[2]}" "+%y%m%d")
-	echo $_full
 }
 
 pkgver() {
+	_setvars
 	printf "$_upstreamversion.$_date.$_commit"
 }
 
 build() {
+	_setvars
 	cd "$srcdir"
 	wget -O- "https://builder.blender.org/download//$_full" | tar xj
 	cd "${_full%.tar.bz2}"
@@ -52,6 +53,7 @@ MimeType=application/x-blender;
 }
 
 package() {
+	_setvars
 	cd "$srcdir/${_full%.tar.bz2}"
 	install -Dm644 blender.desktop "$pkgdir/usr/share/applications/blender-2.8.desktop"
 	install -Dm644 blender.thumbnailer "$pkgdir/usr/share/thumbnailers/blender-2.8.thumbnailer"
