@@ -1,0 +1,17 @@
+pkgbase = arm-linux-gnueabihf-openblas-lapack-openmp
+	pkgdesc = Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://www.openblas.net/
+	arch = any
+	license = BSD
+	makedepends = perl
+	depends = gcc-libs
+	provides = arm-linux-gnueabihf-openblas
+	provides = arm-linux-gnueabihf-cblas=3.8.0
+	options = !emptydirs
+	source = OpenBLAS-0.3.3.tar.gz::https://github.com/xianyi/OpenBLAS/archive/v0.3.3.tar.gz
+	sha256sums = 49d88f4494ae780e3d7fa51769c00d982d7cdb73e696054ac3baa81d42f13bab
+
+pkgname = arm-linux-gnueabihf-openblas-lapack-openmp
+
