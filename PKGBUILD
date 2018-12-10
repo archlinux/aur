@@ -1,10 +1,9 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=terminus-terminal-bin
 _pkgname=terminus
-_pkgver=1.0.0
-pkgver=1.0.0.54
+_pkgver=1.0.1
+pkgver=1.0.1
 pkgrel=1
-alpha=54
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
 url="https://github.com/Eugeny/terminus"
@@ -14,12 +13,10 @@ depends=('nodejs')
 provides=("terminus-terminal")
 conflicts=("terminus-terminal")
 replaces=('terminus-terminal')
-source=("$url/releases/download/v${_pkgver}-alpha.${alpha}/${_pkgname}-${_pkgver}-alpha.${alpha}-linux-amd64.deb")
-sha256sums=('4157ca050e3ef02bbea317553f9abb2bb41dbcf372e42a5834471d9eb36cd424')
+source=("$url/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
+sha256sums=('5c4ca3ea8b3c315eb24fe7aa88e68fd1fe697d6525088ca0099df2b8ab5618ec')
 
-pkgver(){
-  echo ${_pkgver}.${alpha}
-}
+
 package() {
   cd "$srcdir/"
   tar -xf data.tar.xz
