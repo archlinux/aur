@@ -1,0 +1,13 @@
+pkgbase = sgfutils
+	pkgdesc = Collection of command line utilities that help working with SGF files
+	pkgver = 0.25
+	pkgrel = 1
+	url = https://homepages.cwi.nl/~aeb/go/sgfutils/
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	source = https://homepages.cwi.nl/~aeb/go/sgfutils/sgfutils-0.25.tgz
+	sha256sums = 4b26b321fbe255722f1d7e57233614da89a4da5bab031ae4ef7118ae3c7436a2
+
+pkgname = sgfutils
+
