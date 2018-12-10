@@ -1,6 +1,6 @@
 pkgbase = wwplot
 	pkgdesc = Plotting Tool for Experimental Physics Classes
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/wwmm/wwplot
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = wwplot
 	depends = python-scipy
 	depends = python-matplotlib
 	options = !emptydirs
-	source = wwplot-0.0.2::https://github.com/wwmm/wwplot/archive/v0.0.2.tar.gz
-	md5sums = c1d3a9ef93fb03873db53678962c71ab
+	source = wwplot-0.0.3::https://github.com/wwmm/wwplot/archive/v0.0.3.tar.gz
+	sha256sums = 8111ca35bf696901945ba6163c0d253e222c5e540fee835915ac40ed088c752c
 
 pkgname = wwplot
 
