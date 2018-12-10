@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-openssh
 	pkgdesc = openssh mkinitcpio hook
-	pkgver = 0.0.1
+	pkgver = r3.0c952c0
 	pkgrel = 1
 	url = https://github.com/felixsinger/mkinitcpio-openssh
 	install = mkinitcpio-openssh.install
@@ -9,7 +9,7 @@ pkgbase = mkinitcpio-openssh
 	depends = openssh
 	conflicts = mkinitcpio-tinyssh
 	conflicts = mkinitcpio-dropbear
-	source = https://github.com/felixsinger/mkinitcpio-openssh.git
+	source = git+https://github.com/felixsinger/mkinitcpio-openssh.git
 	sha512sums = SKIP
 
 pkgname = mkinitcpio-openssh

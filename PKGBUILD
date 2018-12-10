@@ -1,7 +1,7 @@
 # Maintainer: Felix Singer
 
 pkgname="mkinitcpio-openssh"
-pkgver=0.0.1
+pkgver=r3.0c952c0
 pkgrel=1
 pkgdesc="openssh mkinitcpio hook"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('openssh')
 optdepends=()
 conflicts=('mkinitcpio-tinyssh' 'mkinitcpio-dropbear')
 install=${pkgname}.install
-source=("https://github.com/felixsinger/mkinitcpio-openssh.git")
+source=("git+https://github.com/felixsinger/mkinitcpio-openssh.git")
 sha512sums=('SKIP')
 
 pkgver() {
