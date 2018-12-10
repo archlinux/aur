@@ -1,0 +1,12 @@
+pkgbase = meson-cross-x86-linux-gnu
+	pkgdesc = Meson cross file for x86 Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Oxalin/meson-cross-x86-linux-gnu
+	arch = any
+	depends = meson
+	source = git://github.com/Oxalin/meson-cross-x86-linux-gnu.git#tag=1.0.0
+	sha256sums = SKIP
+
+pkgname = meson-cross-x86-linux-gnu
+
