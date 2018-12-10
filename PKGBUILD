@@ -52,7 +52,8 @@ build() {
   # Don't make a release build since it's experimental and we would need debug/info/warning messages
   # Add -DCMAKE_BUILD_TYPE=Release if you're an adventurer
   cmake "../Clementine" \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_SPOTIFY_BLOB=off
   make
 }
 
