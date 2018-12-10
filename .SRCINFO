@@ -1,16 +1,16 @@
 pkgbase = korla-icon-theme
 	pkgdesc = Korla icon theme suitable for every desktop environment – made by bikass
-	pkgver = 0.7.7
-	pkgrel = 3
+	pkgver = 0.7.8
+	pkgrel = 1
 	url = https://github.com/bikass/korla
 	arch = any
 	license = custom:CC BY-SA 4.0
 	depends = gtk-update-icon-cache
+	optdepends = hicolor-icon-theme: fallback Freedesktop.org Hicolor icon theme
 	optdepends = breeze-icons: fallback Breeze icon theme
 	optdepends = gnome-icon-theme: fallback Gnome icon theme
-	optdepends = hicolor-icon-theme: fallback Freedesktop.org Hicolor icon theme
-	source = https://github.com/bikass/korla/archive/v0.7.7.tar.gz
-	md5sums = 4e239bd25167badcdf0078224edcf0ec
+	source = https://github.com/bikass/korla/archive/v0.7.8.tar.gz
+	md5sums = 6acf720b05a2addf92ea44e9e7cda7d1
 
 pkgname = korla-icon-theme
 
