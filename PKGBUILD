@@ -1,7 +1,7 @@
 # Maintainer: Korvin Roganov <korvinagor@vivaldi.net>
 
 pkgname=donjon-painter
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Graphical map translator for donjon's Random Dungeon Generator TSV files."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-pillow')
 makedepends=('python')
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('766edb62aab1a8d603b941d09b88e2562a0ff92617aee557801b27402b7b85fc')
+sha256sums=('0ce7bb6e9ef47c799e74b1d9a00287b1cc7b13c9028b241a3a7ffbe143e04235')
 
 build() {
 	cd "$pkgname-$pkgver"
