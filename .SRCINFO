@@ -1,7 +1,7 @@
 pkgbase = trinnity-caffe-cudnn-git
 	pkgdesc = Caffe 1.0 with triNNity extensions (CUDNN backend)
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/STG-TCD/trinnity-caffe
 	arch = x86_64
 	license = BSD

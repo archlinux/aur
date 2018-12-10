@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-cudnn-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Caffe 1.0 with triNNity extensions (CUDNN backend)"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -43,7 +43,6 @@ prepare() {
     CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` \
     cmake \
     -DCPU_ONLY=OFF \
-    -DUSE_CUDA=OFF \
     -DUSE_NCCL=ON \
     -DUSE_CUDNN=ON \
     -DBUILD_tools=OFF \
@@ -67,7 +66,7 @@ prepare() {
 
 build() {
     cd build
-    PATH+=":/opt/cuda/bin" CC=gcc-7 CXX=g++-7 make -j`grep processor /proc/cpuinfo | wc -l` clean caffe pycaffe
+    PATH+=":/opt/cuda/bin" CC=gcc-7 CXX=g++-7 make -j`grep processor /proc/cpuinfo | wc -l` clean caffe caffeproto pycaffe
     cp ${srcdir}/${_srcname}/LICENSE .
 }
 
