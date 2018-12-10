@@ -1,0 +1,5 @@
+*.deb
+pkg/
+src/
+/.project
+t7-daw*.pkg*

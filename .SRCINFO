@@ -1,0 +1,28 @@
+pkgbase = t7-daw
+	pkgdesc = The world's best, fully featured, completely unlimited free daw for all music creators.
+	pkgver = 7.2.1
+	pkgrel = 4
+	url = https://www.tracktion.com/products/t7-daw
+	install = t7-daw.install
+	arch = x86_64
+	depends = alsa-lib
+	depends = libgl
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	depends = curl
+	depends = libx11
+	depends = libxext
+	depends = libxinerama
+	depends = freetype2
+	depends = libcurl-gnutls
+	optdepends = jack: A low-latency audio server
+	optdepends = ladspa-plugins: A set of ladspa plugins
+	provides = t7-daw=7.2.1
+	replaces = tracktion-7-free-daw
+	options = !emptydirs
+	options = !strip
+	source = TracktionInstall_7_Linux_64Bit_latest.deb::https://cdn.tracktion.com/file/tracktiondownload/t7/TracktionInstall_7_Linux_64Bit_latest.deb
+	sha256sums = 904b120c2d597a2f504854a3a61883ca2b1f1066fb921aca423fdb42976d8db0
+
+pkgname = t7-daw
+
