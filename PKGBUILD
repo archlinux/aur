@@ -1,6 +1,6 @@
 # Maintainer: Johannes Sjölund <j dot sjolund at gmail dot com>
 pkgname=truestudio
-pkgver=9.1.0
+pkgver=9.2.0
 pkgrel=1
 pkgdesc="A flexible and extensible Arm development and debugging IDE by Atollic."
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://atollic.com/truestudio/"
 license=(custom)
 depends=('java-runtime' 'lib32-glibc' 'libusb' 'ncurses5-compat-libs' 'webkit2gtk' 'jlink-software-and-documentation')
 options=(!strip)
-source=(http://download.atollic.com/TrueSTUDIO/installers/Atollic_TrueSTUDIO_for_STM32_linux_x86_64_v${pkgver}_20181011-1241.tar.gz)
-sha256sums=('58b539efe3d8f1f2e4f679926d59f77ae1a5bae08b785eb04c6b6d6108ef6a59')
+source=(http://download.atollic.com/TrueSTUDIO/installers/Atollic_TrueSTUDIO_for_STM32_linux_x86_64_v${pkgver}_20181203-0921.tar.gz)
+sha256sums=('7488d87336d80d783df62a65e629c7eabfa003365520c9f99bc26489f66fc2a0')
 
 prepare(){
 	msg2 'Unpacking TrueSTUDIO'
