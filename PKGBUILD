@@ -1,8 +1,8 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 
-_version=2017.4.16
+_version=2017.4.17
 _build=f1
-_randomstring=7f7bdd1ef02b
+_randomstring=05307cddbb71
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-doc
