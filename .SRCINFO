@@ -1,7 +1,7 @@
 pkgbase = obs-studio-vaapi
 	pkgdesc = Free, open source software for live streaming and recording
 	pkgver = 22.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://obsproject.com
 	arch = x86_64
 	license = GPL2
@@ -32,8 +32,10 @@ pkgbase = obs-studio-vaapi
 	conflicts = obs-studio-git
 	source = obs-studio-22.0.2.tar.gz::https://github.com/jp9000/obs-studio/archive/22.0.2.tar.gz
 	source = https://github.com/obsproject/obs-studio/commit/a64ae11bce8ed9a7c8f1deba3338f77595dba903.patch
+	source = https://github.com/obsproject/obs-studio/commit/cf73fa6da19f798ce04907781d6dc00484820b77.patch
 	sha256sums = 8712becf41f6e4b801aeaea0ab2c3ec98da3356c60853971d0a9730d3281cebe
 	sha256sums = 0afe5444e5ab5514905f93b2758d525233e48b80463a51fabf44a5821265a6cd
+	sha256sums = 23e19b7ce9c1492f27e7a1961dad7047bd93417706f57f0f64292353b67be845
 
 pkgname = obs-studio-vaapi
 
