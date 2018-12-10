@@ -8,7 +8,7 @@ pkgbase = yakyak
 	license = MIT
 	makedepends = nodejs
 	makedepends = npm
-	depends = electron>=1.4.0
+	depends = electron>=3.0.10
 	optdepends = emojione-color-font: Emoji support
 	source = yakyak-1.5.3.tar.gz::https://github.com/yakyak/yakyak/archive/v1.5.3.tar.gz
 	source = yakyak.desktop
