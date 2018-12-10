@@ -31,7 +31,7 @@ sha256sums=('8712becf41f6e4b801aeaea0ab2c3ec98da3356c60853971d0a9730d3281cebe'
 prepare() {
   cd $_srcname-$pkgver
 
-  // VA-API patch
+  # VA-API patch
   patch -Np1 -i "${srcdir}/a64ae11bce8ed9a7c8f1deba3338f77595dba903.patch"
 
   # libfdk-aac 2.0.0
