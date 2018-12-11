@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=xed
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A small and lightweight text editor. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,7 +13,7 @@ provides=($pkgname)
 conflicts=('xed-git' $_pkgname)
 url='https://github.com/linuxmint/xed'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('e527e2d3dd364d8a9be9657b1ca6b0f5')
+md5sums=('209c38ed4001774ee085387aa7e72292')
 
 
 prepare() {
