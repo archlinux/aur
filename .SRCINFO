@@ -24,7 +24,7 @@ pkgbase = firefox-beta-bin
 	source = https://ftp.mozilla.org/pub/firefox/releases/65.0b3/linux-x86_64/en-US/firefox-65.0b3.tar.bz2
 	source = firefox-beta.sh
 	source = firefox-beta-bin.desktop
-	sha256sums = 81a169d7541735059645b4021c3ab2332af016214d3726be58fcd376b601755f
+	sha256sums = c7633f43bbdadfc016a0dc1fe1e50a12f08abf8b53fc91b986942e0d6eaa3959
 	sha256sums = 367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842
 	sha256sums = 05dafb94c7dbe7a1fcc1e7555f350aebf7fd7bdc2459819273ac00d3ca5f028e
 
