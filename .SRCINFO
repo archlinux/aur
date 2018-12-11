@@ -12,7 +12,7 @@ pkgbase = gifcurry
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	source = https://www.github.com/lettier/gifcurry/releases/download/5.0.0.0/gifcurry-linux-5.0.0.0.tar.gz
-	md5sums = 95eff42e29aa1e7719b9da33b8ede226
+	md5sums = 70a176ed398a957ded0297eb73004c45
 
 pkgname = gifcurry
 
