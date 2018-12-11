@@ -6,9 +6,9 @@
 # Contributor: M0Rf30
 
 pkgname=virtualbox-beta-bin
-pkgver=6.0.0.127054
-_pkgver=6.0.0_BETA3
-_build=127054
+pkgver=6.0.0.127378
+_pkgver=6.0.0_RC1
+_build=127378
 _rev=75527
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
@@ -42,7 +42,7 @@ source=("https://download.virtualbox.org/virtualbox/${_pkgver}/VirtualBoxSDK-${_
 source_i686=("http://download.virtualbox.org/virtualbox/${_pkgver}/VirtualBox-${_pkgver}-${_build}-Linux_x86.run")
 source_x86_64=("http://download.virtualbox.org/virtualbox/${_pkgver}/VirtualBox-${_pkgver}-${_build}-Linux_amd64.run")
 noextract=("VirtualBoxSDK-${_pkgver}-${_build}.zip")
-sha256sums=('70649e2ba0c5db18a8445d963aff381b36db4c2fb19cb3e196858071ce34bf11'
+sha256sums=('550f83ee2ee3844fdf4718ac4aa1f36fd22ac2fa7658779a1911060cf5aa9326'
             '23e3e0e6abfaa69bf0aa046c0ee070d19435b97cb4bfbb16bba65a2783502154'
             '815f6e2e3ab687356aad0e6f59eef6e266514fb12a6b569d239d834e0a480f37'
             '99deff35d8a600f20223b96ba409451834e58ac21a589a989dd82a2d6fe006ae'
@@ -53,8 +53,8 @@ sha256sums=('70649e2ba0c5db18a8445d963aff381b36db4c2fb19cb3e196858071ce34bf11'
             'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
             'e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801'
             '5112f0e1ba3bd0bd92ef2edb2d21024e265abb02841aa29aa05410526adc273f')
-sha256sums_i686=('d5e6e19d765a8a40df8180b2420cc6df8d198bd0a8bf7118714b96256739f436')
-sha256sums_x86_64=('6d5cb6f9b880a64a137c75f2a61725f3d4d05b07a8e9f724b3e9b4ffb523ac09')
+sha256sums_i686=('beb78333278ac38d219b343c2606da4053cfd0977e16375488d928df20eae9c0')
+sha256sums_x86_64=('74b2c17c33e48ec90a505046e10710b79906488ef1e2cf4f3427504762686f61')
 
 prepare() {
     [ "$CARCH" = 'i686'   ] && local _arch='x86'
@@ -91,7 +91,7 @@ package() {
     #                 unsupported $ORIGIN/.. in VBoxC.so and make sure the
     #                 directory is only writable by the user (paranoid)
     cd "${pkgdir}/${_installdir}"
-    chmod 4511 VirtualBox VBox{SDL,Headless,NetDHCP,NetNAT,NetAdpCtl,VolInfo}
+    chmod 511 VirtualBox VBox{SDL,Headless,NetDHCP,NetNAT,NetAdpCtl,VolInfo}
     for _lib in VBox{VMM,RT}.so
     do
         ln -s "${_installdir}/${_lib}" "components/${_lib}"
