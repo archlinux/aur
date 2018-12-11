@@ -1,5 +1,5 @@
 pkgname=libjwt
-pkgver=1.7.4
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="JWT C Library"
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/benmcollins/libjwt"
 license=('GPL')
 depends=('check' 'jansson')
 source=("https://github.com/benmcollins/libjwt/archive/v$pkgver.tar.gz")
-sha256sums=('23686834f815855bcf1bb9578677b16887edc749b77d9b56d8594fbf65a9d61f')
+sha256sums=('cc694dfc3abe17d1f5cde4bf6714e39dc17f7cbad352a85ffb0fe6418c584076')
 
 build() {
   cd "$pkgname-$pkgver"
