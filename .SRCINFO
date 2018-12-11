@@ -1,8 +1,8 @@
 pkgbase = nutstore
 	pkgdesc = a cloud service that lets you sync and share files anywhere.
 	pkgver = 4.1.4
-	pkgrel = 2
-	url = https://jianguoyun.com/
+	pkgrel = 3
+	url = https://www.jianguoyun.com/
 	arch = x86_64
 	license = custom
 	depends = libappindicator-gtk3
@@ -13,7 +13,7 @@ pkgbase = nutstore
 	source = license
 	sha256sums = 3091740b20ddd31ba4407b8daba1077c4677040cdc47bccfab2f7f3947676384
 	sha256sums = f3d2861ff48f2d193a4eced23a02b4eba9fab4c1d3f727e934ed7c59f38f0f7e
-	source_x86_64 = https://www.jianguoyun.com/static/exe/installer/nutstore_linux_dist_x64.tar.gz
+	source_x86_64 = https://www.jianguoyun.com/static/exe/st/4.1.4/nutstore_client-4.1.4-linux-x64-public.tar.gz
 	sha256sums_x86_64 = b0ec672174b7f3d100d41bb6ab8768d45cfb36aef47b5e80a3560bec8842bf84
 
 pkgname = nutstore
