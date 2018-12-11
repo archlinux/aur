@@ -1,0 +1,16 @@
+--- ppl/ppl_user.cc
++++ ppl/ppl_user.cc
+@@ -320,7 +320,12 @@
+       exact = false;
+     }
+     /* singleton */
+-    else r.insert(Constraint(Variable(i)==temp));
++    else {
++      /* integerness check */
++      mpz_class temp2 = mpz_class(temp);
++      if (temp==temp2) r.insert(Constraint(Variable(i)==temp2));
++      else exact = false;
++    }
+   }
+   return exact;
+ }

@@ -1,0 +1,22 @@
+pkgbase = apron
+	pkgdesc = APRON numerical abstract domain library
+	pkgver = 0.9.10
+	pkgrel = 1
+	url = http://apron.cri.ensmp.fr/library/
+	arch = i686
+	arch = x86_64
+	license = LGPL2
+	makedepends = sed
+	depends = gmp>=5
+	depends = mpfr>=3
+	depends = ppl
+	provides = apron
+	source = http://apron.cri.ensmp.fr/library/apron-0.9.10.tgz
+	source = 0001-Remove-strdup-implementation.patch
+	source = 0002-Fix-invalid-operands-to-binary-expression.patch
+	sha256sums = b108de2f4a8c4ecac1ff76a6d282946fd3bf1466a126cf5344723955f305ec8e
+	sha256sums = fe8d85b1f2db6dad149209324b32a8e81deab6868147e71bcfe4c8df57303fc9
+	sha256sums = f624c2152ac6c621f92d1cbb58a891701e938d44dc0fde6a1b80b4a7d3c8ba43
+
+pkgname = apron
+

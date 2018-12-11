@@ -1,0 +1,20 @@
+--- apron/ap_config.h	2009-09-11 11:00:27.000000000 -0700
++++ apron/ap_config.h	2018-12-10 20:40:51.914905968 -0800
+@@ -23,17 +23,6 @@
+ static const bool true  = 1;
+ #endif
+ 
+-#if !(defined __USE_SVID || defined __USE_BSD || defined __USE_XOPEN_EXTENDED || defined __APPLE__ || defined __CYGWIN__)
+-
+-static inline char* strdup(const char* s){
+-  char* s2;
+-
+-  s2 = malloc(strlen(s)+1);
+-  strcpy(s2,s);
+-  return s2;
+-}
+-#endif
+-
+ #ifdef __cplusplus
+ }
+ #endif
