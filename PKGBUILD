@@ -6,7 +6,7 @@ _use_gh_api=true
 wl_project=${_orgname}
 wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_orgname,,}-${_pkgname}-git
-pkgver=0.9.git.6e288c3pre.r4703.aef74609
+pkgver=0.9.git.6e288c3pre.r4724.b2c883d9
 pkgrel=1
 pkgdesc='Map drawing program from OpenOrienteering'
 arch=('i686' 'x86_64')
@@ -86,11 +86,17 @@ build() {
     -DMapper_PACKAGE_NAME=${pkgname//-git} \
     -DMapper_VERSION_DISPLAY=${pkgver} \
     -Wno-dev
-  make
+  cmake --build .
+}
+
+check() {
+  cd ${_pkgname}-${_branch}/build
+
+  cmake --build . --target test
 }
 
 package() {
   cd ${_pkgname}-${_branch}/build
 
-  make DESTDIR=${pkgdir}/ install
+  DESTDIR=${pkgdir}/ cmake --build . --target install
 }
