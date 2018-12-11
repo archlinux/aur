@@ -7,7 +7,7 @@
 # Contributor: Nathan Owe <ndowens04 at gmail>
 
 pkgname=filebot
-pkgver=4.8.2
+pkgver=4.8.5
 pkgrel=1
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
@@ -26,15 +26,15 @@ conflicts=('filebot47' 'filebot-git')
 [[ $CARCH == "armv7h" ]] && _intarch=armv7l
 [[ $CARCH == "aarch64" ]] && _intarch=armv8
 
-source=("https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-portable.tar.xz"
-        $pkgname-arch.sh $pkgname.svg $pkgname.desktop
+source=(#"https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-portable.tar.xz"
+        "https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur.tar.xz"
+        $pkgname-arch.sh
+        #$pkgname.svg
+        #$pkgname.desktop
         )
 
-md5sums=('9e5ce2ba54b9e5ea0d6ca7446572c782'
-         '7c1128f94fcd9f4e29225a12eac83704'
-         '04f46be047049448dba3f0de29fe192d'
-         'f37edd0bba7570904d28ab1681c7a7f3'
-         )
+md5sums=('91827d5a16358316c475e58ee86b552e'
+         '7c1128f94fcd9f4e29225a12eac83704')
 
 optdepends=('libzen: Required by libmediainfo'
 	    'libmediainfo: Read media info such as video codec, resolution or duration'
@@ -51,12 +51,24 @@ build() {
 
 package() {
   mkdir -p $pkgdir/usr/share/java/$pkgname/
-
-  install -Dm644 lib/Linux-$CARCH/libjnidispatch.so "$pkgdir/usr/share/java/$pkgname/libjnidispatch.so"
-  cp -dpr --no-preserve=ownership jar/* "$pkgdir/usr/share/java/$pkgname/"
-
+  
   install -Dm755 $pkgname-arch.sh "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 $pkgname.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
-  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  cd "$srcdir/usr/share"
+
+  install -Dm644 $pkgname/lib/$CARCH/libjnidispatch.so "$pkgdir/usr/share/java/$pkgname/libjnidispatch.so"
+  cp -dpr --no-preserve=ownership $pkgname/jar/* "$pkgdir/usr/share/java/$pkgname/"
+
+  cp -dpr --no-preserve=ownership icons/* "$pkgdir/usr/share/icons/"
+
+  #install -Dm644 $pkgname.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+  #install -Dm644 icons/hicolor/scalable/apps/$pkgname.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+
+  #install -Dm644 applications/*.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  mkdir -p $pkgdir/usr/share/applications/
+  cp -dpr --no-preserve=ownership applications/* "$pkgdir/usr/share/applications/"
+
+  mkdir -p $pkgdir/usr/share/mime/packages/
+  cp -dpr --no-preserve=ownership mime/* "$pkgdir/usr/share/mime/"
   
 }
