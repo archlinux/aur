@@ -15,7 +15,6 @@ pkgbase = unclutter-xfixes-git
 	provides = unclutter
 	conflicts = unclutter
 	conflicts = unclutter-patched
-	conflicts = unclutter-xfixes
 	source = git://github.com/Airblader/unclutter-xfixes#branch=master
 	sha1sums = SKIP
 
