@@ -1,27 +1,27 @@
-# Maintainer: Eric Le Lay <contact at elelay dot fr>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Eric Le Lay <contact at elelay dot fr>
+
 pkgname=ansifilter
-pkgver=2.11
-pkgrel=0
+pkgver=2.12
+pkgrel=1
 pkgdesc="remove or convert ANSI codes to another format"
 arch=('i686' 'x86_64')
-url='http://www.andre-simon.de/doku/ansifilter/en/ansifilter.php'
+url="http://www.andre-simon.de/doku/ansifilter/en/ansifilter.php"
 license=('GPL3')
-depends=(gcc-libs)
-makedepends=()
-optdepends=()
-source=("http://www.andre-simon.de/zip/$pkgname-$pkgver.tar.bz2")
-sha256sums=('51e79ea56ba0e5a6cd564bd66e050f366be0e61c71a2b5800a3a213f8b39a9ca')
+depends=('gcc-libs')
+source=("http://www.andre-simon.de/zip/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('a01c36f515711019a0cdf495056ea68ab500d4325cf5d66fd28182d443615b6b')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   make all
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir/" install
-  rm "$pkgdir/usr/share/doc/ansifilter/COPYING" \
-     "$pkgdir/usr/share/doc/ansifilter/INSTALL"
+  make DESTDIR="${pkgdir}" install
+  rm "${pkgdir}/usr/share/doc/ansifilter/COPYING" \
+     "${pkgdir}/usr/share/doc/ansifilter/INSTALL"
 }
