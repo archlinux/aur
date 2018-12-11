@@ -11,8 +11,8 @@ pkgbase = ninja-kitware
 	depends = gcc-libs
 	provides = ninja
 	conflicts = ninja
-	source = ninja-1.8.2.g3bbbe.kitware.dyndep-1.jobserver-1.zip::https://github.com/Kitware/ninja/archive/v1.8.2.g3bbbe.kitware.dyndep-1.jobserver-1.zip
-	md5sums = 3bb7477df90f4a388ead79a917902710
+	source = ninja-1.8.2.g81279.kitware.dyndep-1.jobserver-1.zip::https://github.com/Kitware/ninja/archive/v1.8.2.g81279.kitware.dyndep-1.jobserver-1.zip
+	md5sums = 35cf0d20b0d79c664f9637b1cf145cd2
 
 pkgname = ninja-kitware
 
