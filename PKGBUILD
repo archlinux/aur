@@ -3,7 +3,7 @@
 pkgname=php-imagick
 _extname=imagick
 pkgver=3.4.3
-pkgrel=4
+pkgrel=5
 pkgdesc="PHP extension for IMagick"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://pecl.php.net/package/${_extname}"
