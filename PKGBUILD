@@ -7,7 +7,7 @@ pkgdesc="Data files for low energy electromagnetic processes"
 url="http://geant4.cern.ch/"
 arch=('any')
 license=('GPL')
-depends=('geant4>=10.5.0')
+depends=('geant4>=10.5')
 #it cannot be optdepend since we require the geant4.sh file to exist
 #to setup the environment variable
 install="${pkgname}.install"
