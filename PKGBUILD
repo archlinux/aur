@@ -3,9 +3,9 @@
 
 pkgname=mingw-w64-wxmsw3.1
 epoch=1
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.1.2
 _shortver=3.1
+pkgrel=1
 pkgdesc="Win32 implementation of wxWidgets API for GUI (development branch, mingw-w64)"
 arch=(any)
 url="http://wxwidgets.org"
@@ -14,7 +14,7 @@ makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt mingw-w64-expat mingw-w64-libpng mingw-w64-libjpeg-turbo mingw-w64-libtiff)
 options=(staticlibs !strip !buildflags)
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
-sha256sums=('c925dfe17e8f8b09eb7ea9bfdcfcc13696a3e14e92750effd839f5e10726159e')
+sha256sums=('4cb8d23d70f9261debf7d6cfeca667fc0a7d2b6565adb8f1c484f9b674f1f27a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
