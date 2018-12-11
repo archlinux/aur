@@ -1,7 +1,7 @@
 pkgbase = ikos
-	pkgdesc = A static analyzer for C and C++ developed by NASA
-	pkgver = 2.0
-	pkgrel = 2
+	pkgdesc = Static analyzer for C and C++ developed by NASA
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://github.com/nasa-sw-vnv/ikos
 	arch = i686
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = ikos
 	depends = python
 	depends = python-pygments
 	depends = sqlite
-	depends = llvm40
-	depends = llvm40-libs
-	depends = clang40
-	depends = apron-ppl-svn
-	source = https://github.com/nasa-sw-vnv/ikos/releases/download/v2.0/ikos-2.0.tar.gz
-	sha256sums = 03a93794651e51e639c47b8ef821f923f7951a11669a7ad3230a68f5f27e1c5f
+	depends = llvm
+	depends = llvm-libs
+	depends = clang
+	depends = apron
+	source = https://github.com/nasa-sw-vnv/ikos/releases/download/v2.1/ikos-2.1.tar.gz
+	sha256sums = bd5e75a2a94fafc3d1cd01eb6541da458a10c7674e7ae29eb211642c526f1407
 
 pkgname = ikos
 
