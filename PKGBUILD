@@ -4,7 +4,7 @@
 
 pkgname='apron-svn'
 pkgver=0.9.11.r1104
-pkgrel=1
+pkgrel=2
 pkgdesc='APRON numerical abstract domain library'
 arch=('i686' 'x86_64')
 url='http://apron.cri.ensmp.fr/library/'
@@ -42,6 +42,14 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make APRON_PREFIX="$pkgdir"/usr install
-  rm "$pkgdir"/usr/bin/*test* # remove test binaries
-  rm "$pkgdir"/usr/lib/*.idl # remove ocaml stuff
+
+  # fix include/ permissions
+  find "$pkgdir"/usr/include -type d -exec chmod 755 '{}' ';'
+  find "$pkgdir"/usr/include -type f -exec chmod 644 '{}' ';'
+
+  # remove test binaries
+  rm "$pkgdir"/usr/bin/*test*
+
+  # remove ocaml stuff
+  rm "$pkgdir"/usr/lib/*.idl
 }
