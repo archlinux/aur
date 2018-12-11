@@ -1,7 +1,7 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 pkgname=tidb
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A distributed HTAP database compatible with the MySQL protocol'
 makedepends=('go' 'make')
 arch=('x86_64')
