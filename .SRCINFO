@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-sensors
 	pkgdesc = Provides access to sensor hardware and motion gesture recognition (mingw-w64)
-	pkgver = 5.11.2
+	pkgver = 5.12.0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = mingw-w64-qt5-sensors
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.11/5.11.2/submodules/qtsensors-everywhere-src-5.11.2.tar.xz
-	sha256sums = 0e27c38824f7a1deb506f6195156eed79b80aa7034356272c3be0611667d63c7
+	source = https://download.qt.io/official_releases/qt/5.12/5.12.0/submodules/qtsensors-everywhere-src-5.12.0.tar.xz
+	sha256sums = c53132847a1f70d5a4c5fe689a9943d8afae3f3648bf5b0d824015093addc5a6
 
 pkgname = mingw-w64-qt5-sensors
 
