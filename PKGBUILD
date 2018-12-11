@@ -19,28 +19,28 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=4.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('custom: nonfree and unredistributable')
-depends=('alsa-lib' 'aom' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2' 'fontconfig'
+depends=('alsa-lib' 'aom' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2' 'davs2' 'fontconfig'
          'ffnvcodec-headers' 'frei0r-plugins' 'fribidi' 'glibc' 'gsm' 'jack' 'kvazaar'
-         'ladspa' 'lame' 'libass' 'libavc1394' 'libbluray' 'libbs2b' 'libcaca'
+         'ladspa' 'lame' 'lensfun' 'libass' 'libavc1394' 'libbluray' 'libbs2b' 'libcaca'
          'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'libgme' 'libiec61883'
          'libilbc' 'libmodplug' 'libomxil-bellagio' 'libmysofa' 'libpulse' 
          'librsvg' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libxcb'
          'libxext' 'libwebp' 'libxml2' 'libxv' 'lilv' 'libgl' 'lv2' 'ndi-sdk' 'openal'
          'opencore-amr' 'opencl-driver' 'opencl-icd-loader' 'openh264'
-         'openjpeg2' 'libopenmpt-svn' 'opus' 'rockchip-mpp' 'rubberband'
-         'rtmpdump' 'sdl2' 'speex' 'srt' 'shine' 'tesseract'
-         'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc' 'xvidcore' 'xz' 'wavpack'
-         'zeromq' 'zimg' 'zlib' 'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
-         'libx264.so' 'libx265.so' 'snappy' 'sndio' 'xavs')
+         'openjpeg2' 'libklvanc-git' 'libopenmpt-svn' 'opus' 'rockchip-mpp' 'rubberband'
+         'rtmpdump' 'sdl2' 'speex' 'srt' 'shine' 'tensorflow' 'tesseract'
+         'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vo-amrwbenc' 'xavs2-git'
+         'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi' 'libvorbisenc.so' 
+         'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so' 'snappy' 'sndio' 'xavs')
 depends_x86_64=('cuda')
 makedepends=('flite' 'ffnvcodec-headers' 'libmfx' 'libvdpau' 'nasm' 'opencl-headers')
-### makedepends_x86_64=('vmaf')
+makedepends_x86_64=('vmaf')
 optdepends=('avxsynth-git: for Avisynth support'
             'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
@@ -61,7 +61,7 @@ build() {
   # Add x86_64 (opt)depends to the build
   if [ "$CARCH" = "x86_64" ]
   then
-      local _libvmaf='--disable-libvmaf'
+      local _libvmaf='--enable-libvmaf'
       local _cudasdk='--enable-cuda-sdk'
       local _libnpp='--enable-libnpp'
       local _cflags='-I/opt/cuda/include'      
@@ -96,6 +96,7 @@ build() {
     --enable-version3 \
     --enable-nonfree \
     --disable-static \
+    --disable-stripping \
     --enable-shared \
     --enable-swresample \
     \
@@ -135,6 +136,7 @@ build() {
     --enable-libcdio \
     --enable-libcelt \
     --enable-libcodec2 \
+    --enable-libdavs2 \
     --enable-libdc1394 \
     --enable-libfdk-aac \
     --enable-libfreetype \
@@ -144,7 +146,9 @@ build() {
     --enable-libiec61883 \
     --enable-libilbc \
     --enable-libjack \
+    --enable-libklvanc \
     --enable-libkvazaar \
+    --enable-liblensfun \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libmysofa \
@@ -166,6 +170,7 @@ build() {
     --enable-libspeex \
     --enable-libsrt \
     --enable-libssh \
+    --enable-libtensorflow \
     --enable-libtesseract \
     --enable-libtheora \
     --enable-libtwolame \
@@ -180,6 +185,7 @@ build() {
     --enable-libx264 \
     --enable-libx265 \
     --enable-libxavs \
+    --enable-libxavs2 \
     --enable-libxcb \
     --enable-libxcb-shm \
     --enable-libxcb-xfixes \
@@ -198,6 +204,7 @@ build() {
     --enable-rkmpp \
     --enable-sndio \
     --enable-sdl2 \
+    --enable-vapoursynth \
     --enable-v4l2-m2m \
     --enable-vaapi \
     --enable-vdpau \
@@ -214,6 +221,6 @@ build() {
 package() {
   cd "$_pkgbasename-$pkgver"
   make DESTDIR="$pkgdir" install install-man
-  install -Dm 755 tools/qt-faststart "${pkgdir}"/usr/bin/
-  install -Dm 644 "$srcdir"/UNREDISTRIBUTABLE.txt "$pkgdir/usr/share/licenses/$pkgname/UNREDISTRIBUTABLE.txt"
+  install -Dm 755 tools/qt-faststart "${pkgdir}/usr/bin"
+  install -Dm 644 "$srcdir"/UNREDISTRIBUTABLE.txt "$pkgdir/usr/share/licenses/${pkgname}"
 }
