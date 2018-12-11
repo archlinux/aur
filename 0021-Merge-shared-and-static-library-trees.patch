@@ -1,4 +1,4 @@
-From 12168d6839249e51586f3e63e666bd68e1363905 Mon Sep 17 00:00:00 2001
+From c14a296d3385a7d2aafbe793c7c1e49aa48d1b66 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 21/33] Merge shared and static library trees
@@ -13,10 +13,10 @@ Allow installation of shared and static build in the same prefix
  5 files changed, 51 insertions(+), 6 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index 6e7f6b76a4..8d6af2fb81 100644
+index 64ed6b9ed8..2cc54d15a2 100644
 --- a/configure.pri
 +++ b/configure.pri
-@@ -1259,3 +1259,12 @@ defineTest(createConfigStatus) {
+@@ -1312,3 +1312,12 @@ defineTest(createConfigStatus) {
  
  QMAKE_POST_CONFIGURE += \
      "createConfigStatus()"
@@ -30,7 +30,7 @@ index 6e7f6b76a4..8d6af2fb81 100644
 +    CONFIG += no_smart_library_merge
 +}
 diff --git a/mkspecs/features/default_post.prf b/mkspecs/features/default_post.prf
-index 9eba5bcf00..0f8d03eb2c 100644
+index fbf1f3b8df..c261c46e72 100644
 --- a/mkspecs/features/default_post.prf
 +++ b/mkspecs/features/default_post.prf
 @@ -1,5 +1,16 @@
@@ -51,10 +51,10 @@ index 9eba5bcf00..0f8d03eb2c 100644
  
  !have_target:!force_qt: CONFIG -= qt
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index b57afcf72d..6eebd068f1 100644
+index d16b3cf1be..2c4d6cd97e 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
-@@ -259,6 +259,23 @@ for(ever) {
+@@ -268,6 +268,23 @@ for(ever) {
              !isEmpty(MODULE_WINRT_CAPABILITIES_DEVICE): \
                  WINRT_MANIFEST.capabilities_device_default += $$MODULE_WINRT_CAPABILITIES_DEVICE
          }
@@ -101,10 +101,10 @@ index 51ea3a8321..275e080ae4 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index 412278c8c6..dd86df8b91 100644
+index a7f1285c26..879410afef 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -3200,6 +3200,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
+@@ -3206,6 +3206,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
      if (project->isActiveConfig("debug")) {
          ret += "d";
      }
@@ -114,7 +114,7 @@ index 412278c8c6..dd86df8b91 100644
      ret += Option::pkgcfg_ext;
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
-@@ -3373,9 +3376,9 @@ MakefileGenerator::writePkgConfigFile()
+@@ -3380,9 +3383,9 @@ MakefileGenerator::writePkgConfigFile()
      t << endl;
  
      // requires
@@ -128,5 +128,5 @@ index 412278c8c6..dd86df8b91 100644
  
      t << endl;
 -- 
-2.19.0
+2.19.2
 

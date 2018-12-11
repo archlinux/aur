@@ -1,4 +1,4 @@
-From f9d1c593895a0698db00b96ed42c2ba6db464fcf Mon Sep 17 00:00:00 2001
+From c1e7b9eb36751d29aac541ac008f3a14e4d28931 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 20:59:54 +0100
 Subject: [PATCH 27/33] Ignore errors about missing feature static
@@ -10,10 +10,10 @@ Not sure why this error occurs, let's hope for the best
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/mkspecs/features/qt_build_config.prf b/mkspecs/features/qt_build_config.prf
-index 021036e4f9..16e8aa631d 100644
+index 0c6c10dded..54c4b568c1 100644
 --- a/mkspecs/features/qt_build_config.prf
 +++ b/mkspecs/features/qt_build_config.prf
-@@ -140,5 +140,5 @@ defineTest(qtConfig) {
+@@ -141,5 +141,5 @@ defineTest(qtConfig) {
          contains(QT.$${module}.disabled_features, $$1): \
              return(false)
      }
@@ -32,5 +32,5 @@ index 1903e509c8..1fcb597fa3 100644
 +    !equals($$1, "static"): error("Could not find feature $${1}.")
  }
 -- 
-2.19.0
+2.19.2
 

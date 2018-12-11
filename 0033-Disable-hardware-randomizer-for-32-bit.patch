@@ -1,4 +1,4 @@
-From 244213d3b887fcd16d345f0797fb1b8c8414cd46 Mon Sep 17 00:00:00 2001
+From c26a40fd24523774bba4f4edd58f68eede33c7b5 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 May 2018 03:47:14 +0200
 Subject: [PATCH 33/33] Disable hardware randomizer for 32-bit
@@ -19,7 +19,7 @@ during RTL pass: ira
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/corelib/global/qrandom.cpp b/src/corelib/global/qrandom.cpp
-index ebf9864b15..2fb04ab12a 100644
+index 23e5e499b2..12030eba08 100644
 --- a/src/corelib/global/qrandom.cpp
 +++ b/src/corelib/global/qrandom.cpp
 @@ -90,7 +90,7 @@ DECLSPEC_IMPORT BOOLEAN WINAPI SystemFunction036(PVOID RandomBuffer, ULONG Rando
@@ -45,5 +45,5 @@ index 917a91098e..c770a3e19b 100644
  #else
      return false;
 -- 
-2.19.0
+2.19.2
 
