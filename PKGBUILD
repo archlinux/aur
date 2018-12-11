@@ -12,7 +12,7 @@
 pkgname=qtcreator-fixed-themes
 pkgver=4.8.0
 _clangver=7.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight, cross-platform integrated development environment, with fixes applied for various themes'
 arch=(x86_64)
 url='http://qt-project.org'
@@ -44,7 +44,7 @@ sha256sums=('aec7b4595e17f5536eb2eef4331057f2d0fa4ba0a46f4968cc06959a1d589b43'
             '514d9ff2989b0c865ead40b62df79f46871cbc1840ca552c64947b2e6c7d7d18'
 			'f938a72cc79c9ed8de07da8af79b170f67448a74dbd3228dd3de7e4855ed633d'
 			'ba6a48156cc14935a0dea12e8282bdfb1936e0c67216c660eef41bd5b5a44d4b'
-			'f934f743f30cd15744cb29642c3f9a1936a16aac6bc6e824c20869879c6df66e')
+			'12dad35519cfc62119b0af21b31a96149081ae1ee6d6e7cb65ee80f3774ff06f')
 
 prepare() {
   mkdir -p build

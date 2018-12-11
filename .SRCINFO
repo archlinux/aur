@@ -1,7 +1,7 @@
 pkgbase = qtcreator-fixed-themes
 	pkgdesc = Lightweight, cross-platform integrated development environment, with fixes applied for various themes
 	pkgver = 4.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://qt-project.org
 	arch = x86_64
 	license = LGPL
@@ -41,7 +41,7 @@ pkgbase = qtcreator-fixed-themes
 	sha256sums = 514d9ff2989b0c865ead40b62df79f46871cbc1840ca552c64947b2e6c7d7d18
 	sha256sums = f938a72cc79c9ed8de07da8af79b170f67448a74dbd3228dd3de7e4855ed633d
 	sha256sums = ba6a48156cc14935a0dea12e8282bdfb1936e0c67216c660eef41bd5b5a44d4b
-	sha256sums = f934f743f30cd15744cb29642c3f9a1936a16aac6bc6e824c20869879c6df66e
+	sha256sums = 12dad35519cfc62119b0af21b31a96149081ae1ee6d6e7cb65ee80f3774ff06f
 
 pkgname = qtcreator-fixed-themes
 
