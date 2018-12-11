@@ -6,7 +6,7 @@ pkgbase=xorg-server-dev
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev'
          'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
 pkgver=1.20.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -205,8 +205,8 @@ package_xorg-server-xwayland-dev() {
   pkgdesc="run X clients under wayland - bleeding edge version"
   depends=(libxfont2 libepoxy libunwind libsystemd libgl pixman xorg-server-common-dev
            nettle libtirpc)
-  provides=("xorg-server-wayland=${pkgver}")
-  conflicts=('xorg-server-wayland')
+  provides=("xorg-server-xwayland=${pkgver}")
+  conflicts=('xorg-server-xwayland')
 
   _install fakeinstall/usr/bin/Xwayland
 
