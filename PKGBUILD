@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=terminus-terminal-git
 _pkgname=Terminus
-pkgver=v1.0.0.alpha.52.r15.3f8f87a
+pkgver=v1.0.65.r0.17bac5a
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -32,6 +32,7 @@ build() {
   yarn install
   node ./scripts/build-native
   node ./scripts/vars
+  yarn run build
   node ./scripts/prepackage-plugins
   node ./scripts/build-linux
 }
