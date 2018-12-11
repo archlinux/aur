@@ -24,8 +24,9 @@ sha512sums=('d11862b21e32dd4d7b5800c4bb4148e332e07aa369080259c5fe619de6b3f5cd7bf
 
 package() {
   cd "$pkgname"
-  npm install -g --user root --prefix "${pkgdir}"/usr electron-packager --cache
+  npm install -g --user root --prefix "${pkgdir}"/usr electron-packager --cache "${pkgdir}"/electron-packager-cache
   ./build.sh
+  npm uninstall -g --user root --prefix "${pkgdir}"/usr electron-packager --cache "${pkgdir}"/electron-packager-cache
   mkdir -p "${pkgdir}/opt/$pkgname/"
   mkdir -p "${pkgdir}/usr/bin"
   cp -r "${srcdir}/${pkgname}/releases/tutanota-linux-x64/" "${pkgdir}/opt/$pkgname"
