@@ -2,7 +2,7 @@
 
 _pkgname=lsd
 pkgname=lsdeluxe
-pkgver=0.7.12
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A ls command with a lot of pretty colors."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo')
 provides=("${_pkgname}")
 conflicts=("${pkgname}-git")
 source=("https://github.com/Peltoche/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('4f7f2dd6f57264dfc9f6d65c0cced4529e8a33e4c0028033c8453b1b4c823121')
+sha256sums=('39013508758d3bf21d7db096bfc6c14092a001cdf6daa73cf63f6606c8e979b8')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
