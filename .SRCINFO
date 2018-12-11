@@ -1,7 +1,7 @@
 pkgbase = mxnet
 	pkgdesc = Flexible and Efficient Library for Deep Learning
-	pkgver = 1.3.0
-	pkgrel = 3
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = http://mxnet.io/
 	arch = x86_64
 	license = Apache
@@ -31,9 +31,11 @@ pkgbase = mxnet
 	optdepends = opencv
 	optdepends = vtk
 	optdepends = glew
-	source = git+https://github.com/apache/incubator-mxnet#tag=1.3.0
+	source = git+https://github.com/apache/incubator-mxnet#tag=1.3.1
+	source = 13559.patch
 	source = cuda_call.patch
 	md5sums = SKIP
+	md5sums = 74b7b068f126e34633f82319cc801b4c
 	md5sums = 77a777e6971e568177e0ea3aeecb401c
 
 pkgname = mxnet
