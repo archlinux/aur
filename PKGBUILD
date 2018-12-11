@@ -1,9 +1,9 @@
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 
 _gitname=pacman-contrib
 pkgname=pacman-contrib-git
-pkgver=1.0.0.r0.ge741857
+pkgver=1.1.0.r10.g0c260d3
 pkgrel=1
 pkgdesc='pacman contributions (Git version)'
 url=https://git.archlinux.org/pacman-contrib.git
