@@ -1,0 +1,13 @@
+diff --git a/appinfo/info.xml b/appinfo/info.xml
+index 00b6ffc..7dedede 100644
+--- a/appinfo/info.xml
++++ b/appinfo/info.xml
+@@ -17,7 +17,7 @@
+ 	<screenshot>https://raw.githubusercontent.com/nextcloud/twofactor_u2f/4e0542d888236b7f212bed0b536244d08803466f/screenshots/settings.png</screenshot>
+ 
+ 	<dependencies>
+-		<php min-version="7.0" max-version="7.2"></php>
++		<php min-version="7.0" max-version="7.3"></php>
+ 		<nextcloud min-version="15" max-version="15" />
+ 	</dependencies>
+ 
