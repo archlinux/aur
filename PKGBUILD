@@ -9,7 +9,7 @@
 
 _qt_module=qt3d
 pkgname="mingw-w64-qt5-webglplugin"
-pkgver=5.11.2
+pkgver=5.12.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('7f72c823ec10a2effba95d08d9439215472d2cb1e3229de50a6b3d2523c8f962')
+sha256sums=('a12adc9c14ffa18ff5c4951efb41914d4840a0c2a88486eb8d39a4833e4631da')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
