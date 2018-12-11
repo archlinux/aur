@@ -1,0 +1,15 @@
+pkgbase = ruby-bacon
+	pkgdesc = a small RSpec clone
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://github.com/chneukirchen/bacon
+	arch = any
+	makedepends = ruby-rdoc
+	depends = ruby
+	noextract = bacon-1.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/bacon-1.2.0.gem
+	sha1sums = 85b19b68a33f1dc0e147ff08bad66f7cfc52de36
+
+pkgname = ruby-bacon
+
