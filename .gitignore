@@ -1,4 +1,4 @@
 src
 pkg
-*x86_64.pkg.tar.xz
+*-any.pkg.tar.xz
 Encode-Detect-*.tar.gz
