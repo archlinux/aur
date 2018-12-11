@@ -4,6 +4,7 @@ pkgbase = python-spacy-nl_core_news_sm
 	pkgrel = 1
 	url = https://spacy.io/models/nl#section-nl_core_news_sm
 	arch = any
+	license = CC BY-SA 3.0
 	makedepends = python-setuptools
 	source = https://github.com/explosion/spacy-models/releases/download/nl_core_news_sm-2.0.0/nl_core_news_sm-2.0.0.tar.gz
 	sha256sums = 1f79eedcb397f9bfdce88b771369ba576664daba111411e750bd65746530bd58
