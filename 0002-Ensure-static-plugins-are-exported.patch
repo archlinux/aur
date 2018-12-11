@@ -1,4 +1,4 @@
-From 026bfb5c650fc8e4306dd70bfcc857f45b883b31 Mon Sep 17 00:00:00 2001
+From 3dd645e6d2c9b68df74f78ec62339a744333c438 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 23 Oct 2016 01:18:13 +0200
 Subject: [PATCH 2/3] Ensure static plugins are exported
@@ -18,5 +18,5 @@ index 9ddb9885c..9775d85e0 100644
  foreach(_other_plugin ${_qt5qml_other_plugins})
      include(${_other_plugin} OPTIONAL)
 -- 
-2.19.0
+2.19.2
 
