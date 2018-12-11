@@ -11,7 +11,7 @@
 
 _qt_module=qtvirtualkeyboard
 pkgname="mingw-w64-qt5-virtualkeyboard"
-pkgver=5.11.2
+pkgver=5.12.0
 pkgrel=1
 arch=('any')
 pkgdesc="Virtual keyboard framework (translations, mingw-w64)"
@@ -23,7 +23,7 @@ license=('GPL3')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('2709500071e7e98ca6f6eecef0f5c80d19ae22aba562293352debd516633b197')
+sha256sums=('db93b89ba13ec1a688850f456be9f10037033cebf7b4deb151ed9f5322d0d6da')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -33,7 +33,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
-_fix_deps_of_static_3rdparty_libs='s:\(.\)-lqt\(openwnn\|pinyin\|tcime\)\(d*\)\(.*\)\(-lQt5Core\)*:\1-lqt\2\3\4\1-lQt5Core\3:g'
+_fix_deps_of_static_3rdparty_libs='s:\(-l.*\)-lqt\(openwnn\|pinyin\|tcime\)\(d*\)\(.*\):-lqt\2\3 \1 \4:g'
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
@@ -46,9 +46,11 @@ build() {
 
       # fix dependency order for libqtopenwnn and other static 3rdparty libraries which depend Qt5Core and hence need
       # it subsequent on the linker line
-      # (Not sure why qmake isn't smart enough to put it in the right order itself.)
+      # (Not sure why qmake isn't smart enough to put it in the right order itself. It also appears that in Qt 5.12
+      #  the order is messed in a different way than in Qt 5.11. Now it also seems to update the Makefile again unless
+      #  touched to a date in the past.)
       make qmake_all
-      find . \( -type f -name 'Makefile.*' -o -name '*.prl' \) -exec sed -i "$_fix_deps_of_static_3rdparty_libs" {} \;
+      find . \( -type f -name 'Makefile.*' -o -name '*.prl' \) -exec sed -i "$_fix_deps_of_static_3rdparty_libs" {} \; -exec touch -d 170101 {} \;
 
       make
       popd
