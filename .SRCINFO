@@ -1,0 +1,25 @@
+pkgbase = android-aarch64-openssl
+	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (Android, aarch64)
+	pkgver = 1.1.1.a
+	pkgrel = 1
+	url = https://www.openssl.org
+	arch = any
+	license = custom:BSD
+	depends = android-sdk
+	depends = android-ndk
+	conflicts = android-openssl-arch-arm64
+	replaces = android-openssl-arch-arm64
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.openssl.org/source/openssl-1.1.1a.tar.gz
+	source = https://www.openssl.org/source/openssl-1.1.1a.tar.gz.asc
+	source = setenv-android.sh
+	validpgpkeys = 8657ABB260F056B1E5190839D9C4D26D0E604491
+	sha256sums = fc20130f8b7cbd2fb918b2f14e2f429e109c31ddd0fb38fc5d71d9ffed3f9f41
+	sha256sums = SKIP
+	sha256sums = 0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e
+
+pkgname = android-aarch64-openssl
+
