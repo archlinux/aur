@@ -16,10 +16,10 @@
 -        echo "ERROR"
 -        return 1
 +    if [[ "$1" == "pi-hole" ]]; then
-+        echo "{{corever}}"
++        echo "4.1"
      else
 -        echo "Untagged"
-+        echo "{{webver}}"
++        echo "4.1"
      fi
      return 0
  }
