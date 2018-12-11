@@ -5,6 +5,7 @@ pkgname=mingw-w64-wxmsw3.1
 epoch=1
 pkgver=3.1.1
 pkgrel=2
+_shortver=3.1
 pkgdesc="Win32 implementation of wxWidgets API for GUI (development branch, mingw-w64)"
 arch=(any)
 url="http://wxwidgets.org"
@@ -80,10 +81,10 @@ package() {
     find "${pkgdir}/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
     find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
 
-    ln -s "/usr/${_arch}/lib/wx/config/${_arch}-msw-unicode-${pkgver%.*}" "${pkgdir}/usr/bin/${_arch}-wx-config-3.1"
+    ln -s "/usr/${_arch}/lib/wx/config/${_arch}-msw-unicode-${_shortver}" "${pkgdir}/usr/bin/${_arch}-wx-config-${_shortver}"
 
     # conflicts with stable package
-    mv "${pkgdir}/usr/${_arch}/bin/wx-config"{,-3.1}
+    mv "${pkgdir}/usr/${_arch}/bin/wx-config"{,-${_shortver}}
     rm -r "${pkgdir}/usr/${_arch}/share"
 
     # rm "${pkgdir}/usr/${_arch}/bin/wxrc-3.1"
