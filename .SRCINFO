@@ -1,0 +1,14 @@
+pkgbase = javafx11-scenebuilder
+	pkgdesc = The release candidate version of Gluon Scene Builder for Java 11, it was released on Nov 23, 2018.
+	pkgver = 11.0.0
+	pkgrel = 0
+	url = http://gluonhq.com/labs/scene-builder/
+	arch = x86_64
+	arch = i686
+	license = BSD License
+	depends = libarchive
+	source = http://download.gluonhq.com/scenebuilder/RC/11.0.0/install/linux/scenebuilder-11.0.0.deb
+	sha1sums = f1de8c24910133672dad126bfc2d9a011c566341
+
+pkgname = javafx11-scenebuilder
+
