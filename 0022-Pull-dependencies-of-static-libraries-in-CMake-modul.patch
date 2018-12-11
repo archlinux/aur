@@ -1,4 +1,4 @@
-From f02786f7eea8c88f7cd4761638ae53bcf13d94fe Mon Sep 17 00:00:00 2001
+From f3eab06f0fa50e140a96182b0b7a1555b5e4797c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
 Subject: [PATCH 22/33] Pull dependencies of static libraries in CMake modules
@@ -13,7 +13,7 @@ the final application.
  3 files changed, 133 insertions(+), 42 deletions(-)
 
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-index 27f4c277d6..358945b758 100644
+index 3ed6dd5889..15d8b8372e 100644
 --- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 @@ -49,35 +49,52 @@ but not all the files it references.
@@ -126,9 +126,9 @@ index 27f4c277d6..358945b758 100644
  !!IF !equals(TEMPLATE, aux)
  !!IF !isEmpty(CMAKE_BUILD_IS_FRAMEWORK)
      set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY FRAMEWORK 1)
-@@ -235,6 +286,56 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
-     set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY
-       INTERFACE_COMPILE_DEFINITIONS $${MODULE_DEFINES})
+@@ -238,6 +289,56 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+     set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY INTERFACE_QT_ENABLED_FEATURES $$join(QT.$${MODULE}.enabled_features, ";"))
+     set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY INTERFACE_QT_DISABLED_FEATURES $$join(QT.$${MODULE}.disabled_features, ";"))
  
 +    # Find plugin targets
 +    file(GLOB pluginTargetsMaybe \"${CMAKE_CURRENT_LIST_DIR}/*Qt5$${CMAKE_MODULE_NAME}_*.cmake\")
@@ -183,7 +183,7 @@ index 27f4c277d6..358945b758 100644
      set(_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIRS_EXIST TRUE)
      foreach (_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIR ${Qt5$${CMAKE_MODULE_NAME}_OWN_PRIVATE_INCLUDE_DIRS})
          if (NOT EXISTS ${_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIR})
-@@ -325,9 +426,11 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -328,9 +429,11 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
  !!ELSE
          \"$${CMAKE_IMPLIB_FILE_LOCATION_RELEASE}\" )
  !!ENDIF
@@ -197,7 +197,7 @@ index 27f4c277d6..358945b758 100644
  !!ENDIF // CMAKE_RELEASE_TYPE
  !!ENDIF // CMAKE_FIND_OTHER_LIBRARY_BUILD
  
-@@ -338,29 +441,6 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -341,29 +444,6 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
      )
  !!ENDIF // TEMPLATE != aux
  
@@ -251,13 +251,13 @@ index 5baf0fdb10..ec5f3cc437 100644
 +
 +endif()
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index dd86df8b91..fc7a0927a9 100644
+index 879410afef..2ff4c4f714 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -994,10 +994,18 @@ MakefileGenerator::writePrlFile(QTextStream &t)
-             libs << "QMAKE_LIBS"; //obvious one
-         if(project->isActiveConfig("staticlib"))
-             libs << "QMAKE_LIBS_PRIVATE";
+@@ -1016,10 +1016,18 @@ MakefileGenerator::writePrlFile(QTextStream &t)
+             libs << "LIBS" << "QMAKE_LIBS";
+         else
+             libs << "LIBS" << "LIBS_PRIVATE" << "QMAKE_LIBS" << "QMAKE_LIBS_PRIVATE";
 -        t << "QMAKE_PRL_LIBS =";
 -        for (ProStringList::Iterator it = libs.begin(); it != libs.end(); ++it)
 -            t << qv(project->values((*it).toKey()));
@@ -278,5 +278,5 @@ index dd86df8b91..fc7a0927a9 100644
  }
  
 -- 
-2.19.0
+2.19.2
 

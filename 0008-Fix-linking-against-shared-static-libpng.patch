@@ -1,27 +1,30 @@
-From dc1443e4b4cbc38d31934674b006f0458fe86298 Mon Sep 17 00:00:00 2001
+From 00538d150502debca140f94c2057c1a541b8333f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 26 Jan 2017 17:51:31 +0100
 Subject: [PATCH 08/33] Fix linking against shared/static libpng
 
 Change-Id: Ic7a0ec9544059b8e647a5d0186f1b88c00911dcf
 ---
- src/gui/configure.json | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ src/gui/configure.json | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/src/gui/configure.json b/src/gui/configure.json
-index 219385a108..d629a45b92 100644
+index 0332631ec8..dbb6f708b0 100644
 --- a/src/gui/configure.json
 +++ b/src/gui/configure.json
-@@ -291,7 +291,8 @@
-             "sources": [
+@@ -308,8 +308,10 @@
                  { "type": "pkgConfig", "args": "libpng" },
+                 { "libs": "-llibpng16", "condition": "config.msvc" },
                  { "libs": "-llibpng", "condition": "config.msvc" },
--                { "libs": "-lpng", "condition": "!config.msvc" }
+-                { "libs": "-lpng16", "condition": "!config.msvc" },
+-                { "libs": "-lpng", "condition": "!config.msvc" },
++                { "libs": "-lpng16 -lz", "condition": "!config.msvc && !features.shared" },
 +                { "libs": "-lpng -lz", "condition": "!config.msvc && !features.shared" },
-+                { "libs": "-lpng", "condition": "!config.msvc && features.shared" }
++                { "libs": "-lpng16", "condition": "!config.msvc && features.shared" },
++                { "libs": "-lpng", "condition": "!config.msvc && features.shared" },
+                 { "libs": "-s USE_LIBPNG=1", "condition": "config.wasm" }
              ],
              "use": [
-                 { "lib": "zlib", "condition": "features.system-zlib" }
 -- 
-2.19.0
+2.19.2
 
