@@ -1,7 +1,7 @@
 pkgbase = apron
 	pkgdesc = APRON numerical abstract domain library
 	pkgver = 0.9.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://apron.cri.ensmp.fr/library/
 	arch = i686
 	arch = x86_64
