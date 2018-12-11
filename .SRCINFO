@@ -1,6 +1,6 @@
 pkgbase = labelpush
 	pkgdesc = Simple lightweight label printing app
-	pkgver = 2018.11.27
+	pkgver = 2018.12.11
 	pkgrel = 1
 	url = https://github.com/Matteljay/labelpush
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = labelpush
 	depends = python-kivy
 	depends = python-pillow
 	depends = cups
-	source = labelpush-2018.11.27.tar.gz::https://github.com/Matteljay/labelpush/archive/2018.11.27.tar.gz
-	sha256sums = 8db86374490d002ee7934e7cae10c0be8d8327a53b8c3a05cfcaf2294bf7c6e9
+	source = labelpush-2018.12.11.tar.gz::https://github.com/Matteljay/labelpush/archive/2018.12.11.tar.gz
+	sha256sums = 7c2ac1ed8886a880035f489b8509b2554219b2c5e1f020f6b80ad976d3bbe952
 
 pkgname = labelpush
 

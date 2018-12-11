@@ -1,6 +1,6 @@
 # Maintainer: Matteljay <matteljay at pm dot me>
 pkgname=labelpush
-pkgver=2018.11.27
+pkgver=2018.12.11
 pkgrel=1
 pkgdesc='Simple lightweight label printing app'
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/Matteljay/$pkgname"
 license=('MIT')
 depends=('python-kivy' 'python-pillow' 'cups')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Matteljay/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('8db86374490d002ee7934e7cae10c0be8d8327a53b8c3a05cfcaf2294bf7c6e9')
+sha256sums=('7c2ac1ed8886a880035f489b8509b2554219b2c5e1f020f6b80ad976d3bbe952')
 
 package() {
     cd $pkgname-$pkgver
