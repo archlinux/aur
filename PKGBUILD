@@ -6,7 +6,7 @@
 
 pkgname=gnupg-large-secmem
 _pkgname=gnupg
-pkgver=2.2.10
+pkgver=2.2.11
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard - with extra large secure memory for many parallel decryption actions'
 url='https://www.gnupg.org/'
@@ -25,7 +25,7 @@ validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
               'D238EA65D64C67ED4C3073F28A861B1C7EFD60D9')
 source=("https://gnupg.org/ftp/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"{,.sig}
         "gnupg_large_secmem.patch")
-sha256sums=('799dd37a86a1448732e339bd20440f4f5ee6e69755f6fd7a73ee8af30840c915'
+sha256sums=('496c3e123ef53f35436ddccca58e82acaa901ca4e21174e77386c0cea0c49cd9'
             'SKIP'
             '63108d8fcbcfddf7ba6eee699ade0f79f98558c8ba1f07d86c7a55dce603355d')
 
