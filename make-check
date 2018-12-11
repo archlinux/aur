@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# A convenience script for the package creator.
-# This file is not run on package installation.
+# A convenience script for the package maintainers.
+# This file is neither installed nor run on package installation.
+
+set -eu  # Bail if unexpected things happen
 
 PACMAN=
 PATH=/usr/bin:$PATH
