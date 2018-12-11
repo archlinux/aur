@@ -4,13 +4,13 @@
 
 pkgname='apron-ppl-svn'
 pkgver=0.9.11.r1104
-pkgrel=1
-pkgdesc='The APRON numerical abstract domain library, with the PPL domain'
+pkgrel=2
+pkgdesc='The APRON numerical abstract domain library'
 arch=('i686' 'x86_64')
 url='http://apron.cri.ensmp.fr/library/'
 license=('LGPL2')
-provides=('apron-svn')
-conflicts=('apron-svn')
+provides=('apron')
+conflicts=('apron')
 depends=('gmp>=5' 'mpfr>=3' 'ppl')
 makedepends=('svn' 'sed')
 source=("$pkgname::svn://scm.gforge.inria.fr/svnroot/apron/apron/trunk")
@@ -30,16 +30,17 @@ prepare() {
     -e 's|^HAS_OCAML *=.*$|HAS_OCAML=|' \
     -e 's|^HAS_OCAMLOPT *=.*$|HAS_OCAMLOPT=|' \
     -e 's|^OCAMLFIND *=.*$|OCAMLFIND=|' \
-    -e 's|^# HAS_PPL *=.*$|HAS_PPL = 1|' \
+    -e 's|^# HAS_PPL *=.*$|HAS_PPL=1|' \
     Makefile.config.model > Makefile.config
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  make
+  make -j1
 }
 
 package() {
   cd "$srcdir/$pkgname"
   make APRON_PREFIX="$pkgdir"/usr install
+  rm "$pkgdir"/usr/lib/*.idl # remove ocaml stuff
 }
