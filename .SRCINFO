@@ -1,7 +1,7 @@
 pkgbase = pulse-sms
 	pkgdesc = A native desktop implementation of Pulse
 	pkgver = 3.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://messenger.klinkerapps.com/
 	arch = x86_64
 	license = APACHE

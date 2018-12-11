@@ -2,7 +2,7 @@
 
 pkgname="pulse-sms"
 pkgver="3.1.4"
-pkgrel=2
+pkgrel=3
 pkgdesc="A native desktop implementation of Pulse"
 arch=('x86_64')
 url="https://messenger.klinkerapps.com/"
@@ -19,6 +19,7 @@ sha512sums=(
 package() {
     tar -xf data.tar.xz -C "$pkgdir"
 	mv "${pkgdir}/opt/Pulse SMS/" "${pkgdir}/opt/${pkgname}"
+	sed -i -e '4s/Pulse\ SMS/pulse-sms/' "${pkgdir}/usr/share/applications/pulse-sms.desktop"
 
     # install alias in /usr/bin
     mkdir "${pkgdir}/usr/bin"
