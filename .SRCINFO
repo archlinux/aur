@@ -1,6 +1,6 @@
 pkgbase = lib32-faudio-git
 	pkgdesc = Accuracy-focused XAudio reimplementation for open platforms
-	pkgver = r979.a98be73
+	pkgver = r988.911edc7
 	pkgrel = 1
 	url = https://github.com/FNA-XNA/FAudio
 	arch = x86_64

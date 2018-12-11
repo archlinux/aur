@@ -4,7 +4,7 @@ _pkgbase=faudio
 _pkgname=lib32-${_pkgbase}
 _gitname=FAudio
 pkgname=${_pkgname}-git
-pkgver=r979.a98be73
+pkgver=r988.911edc7
 pkgrel=1
 pkgdesc="Accuracy-focused XAudio reimplementation for open platforms"
 arch=('x86_64')
@@ -38,6 +38,8 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
+    -DCMAKE_INSTALL_LIBDIR=lib32 \
+    -DCMAKE_INSTALL_INCLUDEDIR=include/FAudio \
     -DFFMPEG=ON \
     -DFFmpeg_LIBRARY_DIRS=/usr/lib32
 
@@ -50,13 +52,6 @@ package() {
   make install
 
   rm -r "${pkgdir}/usr/include"
-  mv "${pkgdir}/usr/lib" "${pkgdir}/usr/lib32"
-
-  sed -i 's!"${_IMPORT_PREFIX}/include"!"${_IMPORT_PREFIX}/include/FAudio"!' \
-    "${pkgdir}/usr/lib32/cmake/FAudio/FAudio-targets.cmake"
-
-  sed -i 's!"${_IMPORT_PREFIX}/lib/libFAudio.so"!"${_IMPORT_PREFIX}/lib32/libFAudio.so"!' \
-    "${pkgdir}/usr/lib32/cmake/FAudio/FAudio-targets-release.cmake"
 
   mkdir -p "${pkgdir}/usr/share/licenses"
   ln -s "${_pkgbase}" "${pkgdir}/usr/share/licenses/${_pkgname}"
