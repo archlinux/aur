@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-canvas3d
 	pkgdesc = A JavaScript 3D rendering API for Qt Quick (mingw-w64)
-	pkgver = 5.11.2
+	pkgver = 5.12.0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = mingw-w64-qt5-canvas3d
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.11/5.11.2/submodules/qtcanvas3d-everywhere-src-5.11.2.tar.xz
-	sha256sums = fd9ca31268e81d4864da961de7635ef7316a815b8fc77910e512647eb4ceea40
+	source = https://download.qt.io/official_releases/qt/5.12/5.12.0/submodules/qtcanvas3d-everywhere-src-5.12.0.tar.xz
+	sha256sums = b21b9f01c498d0e51e3db4c54344147fb901c0f40ec8b3135609905b55f9c128
 
 pkgname = mingw-w64-qt5-canvas3d
 
