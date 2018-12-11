@@ -5,11 +5,11 @@ pkgver=0.3.7
 pkgrel=1
 pkgdesc="Custom Memory Allocator Interface"
 arch=('i686' 'x86_64')
-url='http://25thandclement.com/~william/projects/libarena.html'
+url='https://25thandclement.com/~william/projects/libarena.html'
 license=('MIT')
 depends=()
 options=()
-source=("http://25thandclement.com/~william/projects/releases/${pkgname}-${pkgver}.tgz")
+source=("https://25thandclement.com/~william/projects/releases/${pkgname}-${pkgver}.tgz")
 md5sums=('99339b429a34f32267be833a882008b9')
 
 build() {

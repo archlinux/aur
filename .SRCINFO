@@ -2,11 +2,11 @@ pkgbase = libarena
 	pkgdesc = Custom Memory Allocator Interface
 	pkgver = 0.3.7
 	pkgrel = 1
-	url = http://25thandclement.com/~william/projects/libarena.html
+	url = https://25thandclement.com/~william/projects/libarena.html
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = http://25thandclement.com/~william/projects/releases/libarena-0.3.7.tgz
+	source = https://25thandclement.com/~william/projects/releases/libarena-0.3.7.tgz
 	md5sums = 99339b429a34f32267be833a882008b9
 
 pkgname = libarena
