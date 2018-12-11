@@ -1,0 +1,26 @@
+--- b/src/html/enmlformatter.cpp
++++ a/src/html/enmlformatter.cpp
+@@ -23,8 +23,8 @@
+ #include <QWebFrame>
+ #include <QIcon>
+ #include <QMessageBox>
++#include <tidy.h>
++#include <tidybuffio.h>
+-#include <tidy/tidy.h>
+-#include <tidy/tidybuffio.h>
+ #include <iostream>
+ 
+ #include "enmlformatter.h"
+--- b/src/main.cpp
++++ a/src/main.cpp
+@@ -46,8 +46,8 @@
+ 
+ #include "src/application.h"
+ 
++#include <tidy.h>
++#include <tidybuffio.h>
+-#include <tidy/tidy.h>
+-#include <tidy/tidybuffio.h>
+ 
+ 
+ NixNote *w;
