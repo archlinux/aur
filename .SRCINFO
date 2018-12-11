@@ -1,7 +1,7 @@
 pkgbase = nutstore-experimental
 	pkgdesc = Nutstore experimental version.
 	pkgver = 4.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://jianguoyun.com/
 	arch = x86_64
 	license = custom
