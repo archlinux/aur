@@ -1,4 +1,4 @@
-From 89fe27c89393ab63fb251938a4d802cee152b8ce Mon Sep 17 00:00:00 2001
+From b28e7ecca02141dd80e2bff8287ee29c2943687c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 27 May 2018 14:23:11 +0200
 Subject: [PATCH] Revert "Directly link to functions available from Windows 7
@@ -42,7 +42,7 @@ Binary file /usr/i686-w64-mingw32/lib/libdwmapi.a matches
  create mode 100644 src/winextras/qwinfunctions_p.cpp
 
 diff --git a/src/winextras/qwinfunctions.cpp b/src/winextras/qwinfunctions.cpp
-index 7b102a8..9b748c3 100644
+index 82fd25b..4edf76f 100644
 --- a/src/winextras/qwinfunctions.cpp
 +++ b/src/winextras/qwinfunctions.cpp
 @@ -38,13 +38,6 @@
@@ -59,7 +59,7 @@ index 7b102a8..9b748c3 100644
  #include "qwinfunctions.h"
  #include "qwinfunctions_p.h"
  #include "qwineventfilter_p.h"
-@@ -1819,8 +1812,11 @@ bool QtWin::isCompositionOpaque()
+@@ -1850,8 +1843,11 @@ bool QtWin::isCompositionOpaque()
   */
  void QtWin::setCurrentProcessExplicitAppUserModelID(const QString &id)
  {
@@ -154,7 +154,7 @@ index 0000000..ea9dcf9
 +
 +QT_END_NAMESPACE
 diff --git a/src/winextras/qwinfunctions_p.h b/src/winextras/qwinfunctions_p.h
-index a69e52c..6ea1598 100644
+index 3aad7bc..00151b8 100644
 --- a/src/winextras/qwinfunctions_p.h
 +++ b/src/winextras/qwinfunctions_p.h
 @@ -64,8 +64,20 @@ enum qt_DWMWINDOWATTRIBUTE // Not present in MinGW 4.9
@@ -211,7 +211,7 @@ index a69e52c..6ea1598 100644
  {
      dst[src.toWCharArray(dst)] = 0;
 diff --git a/src/winextras/qwinthumbnailtoolbar.cpp b/src/winextras/qwinthumbnailtoolbar.cpp
-index 39622d1..37a9da8 100644
+index 3aa39b6..d7eb4aa 100644
 --- a/src/winextras/qwinthumbnailtoolbar.cpp
 +++ b/src/winextras/qwinthumbnailtoolbar.cpp
 @@ -38,13 +38,6 @@
@@ -228,7 +228,7 @@ index 39622d1..37a9da8 100644
  #include "qwinthumbnailtoolbar.h"
  #include "qwinthumbnailtoolbar_p.h"
  #include "qwinthumbnailtoolbutton.h"
-@@ -235,15 +228,18 @@ int QWinThumbnailToolBar::count() const
+@@ -232,15 +225,18 @@ int QWinThumbnailToolBar::count() const
  void QWinThumbnailToolBarPrivate::updateIconicPixmapsEnabled(bool invalidate)
  {
      Q_Q(QWinThumbnailToolBar);
@@ -248,7 +248,7 @@ index 39622d1..37a9da8 100644
          if (FAILED(hr))
              qWarning() << QWinThumbnailToolBarPrivate::msgComFailed("DwmInvalidateIconicBitmaps", hr);
      }
-@@ -389,11 +385,12 @@ QPixmap QWinThumbnailToolBar::iconicLivePreviewPixmap() const
+@@ -386,11 +382,12 @@ QPixmap QWinThumbnailToolBar::iconicLivePreviewPixmap() const
  
  inline void QWinThumbnailToolBarPrivate::updateIconicThumbnail(const MSG *message)
  {
@@ -263,7 +263,7 @@ index 39622d1..37a9da8 100644
          if (FAILED(hr))
              qWarning() << QWinThumbnailToolBarPrivate::msgComFailed("DwmSetIconicThumbnail", hr);
      }
-@@ -401,14 +398,15 @@ inline void QWinThumbnailToolBarPrivate::updateIconicThumbnail(const MSG *messag
+@@ -398,14 +395,15 @@ inline void QWinThumbnailToolBarPrivate::updateIconicThumbnail(const MSG *messag
  
  inline void QWinThumbnailToolBarPrivate::updateIconicLivePreview(const MSG *message)
  {
@@ -294,5 +294,5 @@ index 705c48c..5d93c6b 100644
      qwintaskbarprogress.cpp \
      windowsguidsdefs.cpp \
 -- 
-2.19.0
+2.19.2
 
