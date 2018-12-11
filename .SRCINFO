@@ -1,0 +1,15 @@
+pkgbase = docker-machine-driver-linode
+	pkgdesc = Linode driver for Docker Machine
+	pkgver = 0.0.12
+	pkgrel = 1
+	url = https://github.com/linode/docker-machine-driver-linode
+	arch = x86_64
+	license = MIT
+	depends = docker-machine
+	depends = go
+	optdepends = docker: to manage the containers in the machine
+	source = https://github.com/linode/docker-machine-driver-linode/archive/v0.0.12.tar.gz
+	sha256sums = SKIP
+
+pkgname = docker-machine-driver-linode
+
