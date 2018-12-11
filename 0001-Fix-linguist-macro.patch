@@ -1,7 +1,7 @@
-From d655bfeecb094524604864e9e265e55aaef037d3 Mon Sep 17 00:00:00 2001
+From a96b4b4b52f6458c5ca626c05cbe064349b6bb4a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:44:42 +0200
-Subject: [PATCH 1/2] Fix linguist macro
+Subject: [PATCH] Fix linguist macro
 
 - Prevent CMake appending extra 'Qt5::lupdate'/'Qt5::lrelease' to
   command line when invoking lupdate/lrelease
@@ -38,5 +38,5 @@ index b9959730..75776e0e 100644
              DEPENDS ${_abs_FILE} VERBATIM
          )
 -- 
-2.19.0
+2.19.2
 
