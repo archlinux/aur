@@ -3,7 +3,7 @@
 _varname='G4REALSURFACEDATA'
 _packagename='geant4-realsurfacedata'
 _foldername='RealSurface'
-_dataversion=2.1
+_dataversion=2.1.1
 
 _add() {
     echo "export ${_varname}=/usr/share/${_packagename}/${_foldername}${_dataversion}" >> /etc/profile.d/geant4.sh
