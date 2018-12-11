@@ -3,16 +3,17 @@
 # Maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
 pkgname='concourse-fly'
-pkgver=4.2.1
-pkgrel=3
+pkgver=4.2.2
+pkgrel=1
 pkgdesc="A command line interface that runs a build in a container with ATC."
 arch=(x86_64)
 url="https://concourse-ci.org/fly.html"
 license=('Apache')
 makedepends=('go-pie')
+provides=("${pkgname}")
+conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("git+https://github.com/concourse/concourse.git#tag=v${pkgver}")
 sha512sums=('SKIP')
-provides=('fly')
 
 prepare() {
     cd "${srcdir}/concourse"
