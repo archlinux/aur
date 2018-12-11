@@ -2,20 +2,27 @@
 
 pkgname=nextcloud-app-totp
 _releasename=twofactor_totp
-pkgver=1.5.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Two factor TOTP provider for nextcloud"
 arch=('any')
 url="https://github.com/nextcloud/twofactor_totp/"
 license=('AGPL')
-depends=('nextcloud')
+depends=('nextcloud>=15.0')
 makedepends=()
 options=('!strip')
-source=("${_releasename}-${pkgver}.tar.gz"::"${url}/releases/download/v${pkgver}/${_releasename}.tar.gz")
+source=("${_releasename}-${pkgver}.tar.gz"::"${url}/releases/download/v${pkgver}/${_releasename}.tar.gz"
+        'php-7.3.patch')
+
+build() {
+    cd "$srcdir/${_releasename}"
+    patch -p1 -i "$srcdir/php-7.3.patch"
+}
 
 package() {
     install -d --owner=root --group=root $pkgdir/usr/share/webapps/nextcloud/apps/
     cp -r --target-directory=$pkgdir/usr/share/webapps/nextcloud/apps/ $srcdir/$_releasename
 }
 
-sha256sums=('27a3e302dd7a2ce997f019842d9cf12a0ad2e351c5b48d0371d714ac40f0f370')
+sha256sums=('a882baae7ffe7e3613f4f292ea694fff676a3f9d5508794a76da42225edeba44'
+            '69e1a5a5e6c02690e4317ca8a28a51bbf59cb62eb42e78a9c0d2ea940079ba50')
