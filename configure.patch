@@ -1,0 +1,11 @@
+--- a/configure.ac	2018-12-01 23:43:13.000000000 +1100
++++ b/configure.ac	2018-12-11 10:50:59.989268036 +1100
+@@ -24,8 +24,6 @@
+ AS_VAR_SET([ac_lang_cflags], [$CFLAGS])
+ 
+ dnl AC_ARG_SWITCH_DEBUG([DEFINE-DBG-VAR], [DBG-CFLAGS], [DBG-LDFLAGS], [RELEASE-CFLAGS], [RELEASE-LDLAGS])
+-AC_BUILD_SWITCH([-g -Wall -Wextra -fno-exceptions], [],
+-  [-s -O2 -finline-functions-called-once -fno-exceptions -Wall -Wfatal-errors], [])
+ 
+ AC_SUBST([ac_lang_cflags])
+ 

@@ -1,0 +1,16 @@
+pkgbase = wxedid
+	pkgdesc = wxWidgets-based EDID (Extended Display Identification Data) editor
+	pkgver = 0.0.16
+	pkgrel = 1
+	url = https://sourceforge.net/projects/wxedid/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = wxgtk2
+	source = https://downloads.sourceforge.net/wxedid/wxedid-0.0.16.tar.gz
+	source = configure.patch
+	md5sums = 0b1a6c49274e0fc3f2398648d99d6954
+	md5sums = 519658fdadcbe8c0b66c6d47c1c8715f
+
+pkgname = wxedid
+
