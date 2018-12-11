@@ -1,5 +1,5 @@
 pkgbase = linux-mainline
-	pkgver = 4.20rc5
+	pkgver = 4.20rc6
 	pkgrel = 1
 	url = https://git.archlinux.org/linux.git/log/?h=v
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = linux-mainline
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v4.20-rc5
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v4.20-rc6
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
