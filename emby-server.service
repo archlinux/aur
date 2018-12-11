@@ -7,7 +7,7 @@ WorkingDirectory=/usr/lib/emby-server
 ExecStart=/usr/bin/emby-server
 User=emby
 Group=emby
-Restart=always
+Restart=on-abnormal
 
 [Unit]
 After=network.target
