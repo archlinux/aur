@@ -1,29 +1,18 @@
-From 6a07e64fd13fe35499d9e7b3dbaf968a201652a6 Mon Sep 17 00:00:00 2001
-From: =?utf-8?q?Javier=20Ti=C3=A1?= <javier.tia@gmail.com>
-Date: Mon, 1 Feb 2016 06:38:30 -0600
-Subject: [PATCH] Set where find and install 32-bits libraries
-
----
- CMakeLists.txt               | 2 +-
- cmake/Modules/FindPCAP.cmake | 2 +-
- src/CMakeLists.txt           | 4 ++--
- 3 files changed, 4 insertions(+), 4 deletions(-)
-
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7ddffe1..79f40a5 100644
+index 11d3aae..32fcc27 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -135,7 +135,7 @@ CONFIGURE_FILE(
+@@ -232,7 +232,7 @@ CONFIGURE_FILE(
  )
  
- # Support for pkg-config
--SET(CMAKE_INSTALL_LIBDIR lib)
-+SET(CMAKE_INSTALL_LIBDIR lib32)
- SET(pkgconfig_prefix      ${CMAKE_INSTALL_PREFIX})
- SET(pkgconfig_exec_prefix ${CMAKE_INSTALL_PREFIX})
- SET(pkgconfig_libdir      ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
+ IF (NOT CMAKE_INSTALL_LIBDIR)
+-    SET(CMAKE_INSTALL_LIBDIR lib)
++    SET(CMAKE_INSTALL_LIBDIR lib32)
+ ENDIF()
+ # The library output directory
+ SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
 diff --git a/cmake/Modules/FindPCAP.cmake b/cmake/Modules/FindPCAP.cmake
-index ecc32fb..c01fa76 100644
+index 388b30b..ce7a569 100644
 --- a/cmake/Modules/FindPCAP.cmake
 +++ b/cmake/Modules/FindPCAP.cmake
 @@ -29,7 +29,7 @@ find_path(PCAP_INCLUDE_DIR
@@ -35,20 +24,3 @@ index ecc32fb..c01fa76 100644
  
  # On x64 windows, we should look also for the .lib at /lib/x64/
  # as this is the default path for the WinPcap developer's pack
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 66b8c50..cfdae02 100644
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -75,7 +75,7 @@ SET_TARGET_PROPERTIES(tins PROPERTIES VERSION ${LIBTINS_VERSION} SOVERSION ${LIB
- INSTALL( 
-     TARGETS tins
-     EXPORT libtinsTargets
--    LIBRARY DESTINATION lib
--    ARCHIVE DESTINATION lib
-+    LIBRARY DESTINATION lib32
-+    ARCHIVE DESTINATION lib32
-     COMPONENT dev
- )
--- 
-2.7.0
-
