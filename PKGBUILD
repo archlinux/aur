@@ -3,8 +3,8 @@
 _gitname=CoreFreq
 pkgname=corefreq-git
 realname=corefreq
-pkgver=1.38
-pkgrel=9.1
+pkgver=1.39
+pkgrel=1.1
 pkgdesc="CoreFreq, a processor monitoring software with a kernel module inside."
 arch=('x86_64')
 url='https://github.com/cyring/CoreFreq'
