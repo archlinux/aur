@@ -3,7 +3,7 @@
 _varname='G4LEDATA'
 _packagename='geant4-ledata'
 _foldername='G4EMLOW'
-_dataversion=7.3
+_dataversion=7.7
 
 _add() {
     echo "export ${_varname}=/usr/share/${_packagename}/${_foldername}${_dataversion}" >> /etc/profile.d/geant4.sh
