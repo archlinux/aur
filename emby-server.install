@@ -1,7 +1,7 @@
 post_install() {
 cat <<EOF
 
-Emby is not compatible with the 10-bit versionof libx264. Please stick to the
+Emby is not compatible with the 10-bit version of libx264. Please stick to the
 8-bit version if you plan on using emby's transcoding features.
 
 EOF
