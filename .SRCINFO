@@ -1,6 +1,6 @@
 pkgbase = nodejs-foreman
 	pkgdesc = Node Implementation of Foreman
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://strongloop.github.io/node-foreman/
 	arch = any

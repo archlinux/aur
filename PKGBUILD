@@ -1,7 +1,7 @@
 _npmname=foreman
 _npmver=3.0.1
 pkgname=nodejs-foreman # All lowercase
-pkgver=3.0.0
+pkgver=$_npmver
 pkgrel=1
 pkgdesc="Node Implementation of Foreman"
 arch=(any)
