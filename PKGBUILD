@@ -1,8 +1,8 @@
 # Maintainer: Marcel Röthke <marcel.roethke@haw-hamburg.de>
 
 pkgname=rtrlib
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.3
+pkgrel=1
 pkgdesc="RPKI-RTR client library"
 arch=(x86_64 i686)
 url="https://github.com/rtrlib/rtrlib"
@@ -12,7 +12,7 @@ makedepends=(cmake)
 checkdepends=(cmocka)
 options=(strip)
 source=("rtrlib-$pkgver.tar.gz::https://github.com/rtrlib/rtrlib/archive/v$pkgver.tar.gz")
-md5sums=('a67a9796f5f122c12ef7af91a65462f0')
+md5sums=('91ee5de616cbdc7d1525f9155271e2e6')
 
 prepare() {
     cd ${srcdir}/${pkgname}-${pkgver}
