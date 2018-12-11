@@ -1,6 +1,6 @@
 pkgbase = python-aioredis
 	pkgdesc = asyncio (PEP 3156) Redis client library
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 0
 	url = https://github.com/aio-libs/aioredis
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-aioredis
 	makedepends = python-setuptools
 	depends = python
 	depends = redis
-	source = https://pypi.io/packages/source/a/aioredis/aioredis-1.1.0.tar.gz
-	md5sums = ce2046e03166fe9326fa0911ea150e26
+	source = https://pypi.io/packages/source/a/aioredis/aioredis-1.2.0.tar.gz
+	sha256sums = 84d62be729beb87118cf126c20b0e3f52d7a42bb7373dc5bcdd874f26f1f251a
 
 pkgname = python-aioredis
 
