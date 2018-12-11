@@ -1,4 +1,4 @@
-From 4a0b20d46895bbcc4bc85a11640c9c54364c508a Mon Sep 17 00:00:00 2001
+From 92e5888ab26ec60efeb1fe28ce3edbba35fec960 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 17:21:08 +0200
 Subject: [PATCH 2/2] Handle win64 in dumpcpp and
@@ -11,10 +11,10 @@ See https://bugreports.qt.io/browse/QTBUG-46827
  2 files changed, 12 insertions(+)
 
 diff --git a/src/activeqt/container/qaxbase.cpp b/src/activeqt/container/qaxbase.cpp
-index 883f1e9..2680baf 100644
+index 722a389..66499cb 100644
 --- a/src/activeqt/container/qaxbase.cpp
 +++ b/src/activeqt/container/qaxbase.cpp
-@@ -2180,6 +2180,10 @@ void MetaObjectGenerator::readClassInfo()
+@@ -2176,6 +2176,10 @@ void MetaObjectGenerator::readClassInfo()
              const QStringList versions = controls.childGroups();
              for (const QString &version : versions) {
                  tlfile = controls.value(QLatin1Char('/') + version + QLatin1String("/0/win32/.")).toString();
@@ -26,7 +26,7 @@ index 883f1e9..2680baf 100644
                      break;
              }
 diff --git a/tools/dumpcpp/main.cpp b/tools/dumpcpp/main.cpp
-index 2baad0e..e918e34 100644
+index 4601aef..65eee94 100644
 --- a/tools/dumpcpp/main.cpp
 +++ b/tools/dumpcpp/main.cpp
 @@ -1539,6 +1539,10 @@ int main(int argc, char **argv)
@@ -52,5 +52,5 @@ index 2baad0e..e918e34 100644
      }
  
 -- 
-2.19.0
+2.19.2
 
