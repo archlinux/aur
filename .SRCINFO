@@ -1,27 +1,27 @@
 pkgbase = nvidia-full-beta
 	pkgdesc = Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)
-	pkgver = 415.18
+	pkgver = 415.22
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
 	makedepends = linux-headers
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/415.18/NVIDIA-Linux-x86_64-415.18.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/415.22/NVIDIA-Linux-x86_64-415.22.run
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils-full-beta.sysusers
 	source = linux-4.16.patch
-	sha256sums = 585d52015208b550170dce86d93657804ed52d7abab46510ae972fdf611e8650
+	sha256sums = 22188f7e095b648554738638258107b89288b7902bdc3b4edaabbda615745b9b
 	sha256sums = 089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
 	sha256sums = 622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385
 
 pkgname = nvidia-full-beta
 	depends = linux
-	depends = nvidia-utils-full-beta>=415.18
+	depends = nvidia-utils-full-beta>=415.22
 	depends = libgl
-	provides = nvidia=415.18
-	provides = nvidia-beta=415.18
+	provides = nvidia=415.22
+	provides = nvidia-beta=415.22
 	conflicts = nvidia
 
 pkgname = nvidia-utils-full-beta
@@ -34,8 +34,8 @@ pkgname = nvidia-utils-full-beta
 	optdepends = opencl-nvidia-full-beta: OpenCL support
 	optdepends = xorg-server-devel: nvidia-xconfig
 	optdepends = egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.1.0)
-	provides = nvidia-utils=415.18
-	provides = nvidia-settings=415.18
+	provides = nvidia-utils=415.22
+	provides = nvidia-settings=415.22
 	provides = libglvnd
 	provides = vulkan-driver
 	conflicts = nvidia-utils
@@ -51,7 +51,7 @@ pkgname = nvidia-egl-wayland-full-beta
 pkgname = nvidia-libgl-full-beta
 	pkgdesc = NVIDIA driver library symlinks for 'nvidia-utils-full-beta'
 	depends = nvidia-utils-full-beta
-	provides = nvidia-libgl=415.18
+	provides = nvidia-libgl=415.22
 	provides = libgl
 	provides = libegl
 	provides = libgles
@@ -64,7 +64,7 @@ pkgname = opencl-nvidia-full-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-full-beta'
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-nvidia=415.18
+	provides = opencl-nvidia=415.22
 	provides = opencl-driver
 	conflicts = opencl-nvidia
 
@@ -75,7 +75,7 @@ pkgname = lib32-nvidia-utils-full-beta
 	depends = nvidia-utils-full-beta
 	depends = lib32-mesa>=17.0.2-1
 	optdepends = lib32-opencl-nvidia-full-beta: OpenCL support
-	provides = lib32-nvidia-utils=415.18
+	provides = lib32-nvidia-utils=415.22
 	provides = lib32-libglvnd
 	provides = lib32-vulkan-driver
 	conflicts = lib32-nvidia-utils
@@ -85,7 +85,7 @@ pkgname = lib32-nvidia-libgl-full-beta
 	pkgdesc = NVIDIA driver library symlinks for 'lib32-nvidia-utils-full-beta'
 	depends = lib32-nvidia-utils-full-beta
 	depends = nvidia-libgl-full-beta
-	provides = lib32-nvidia-libgl=415.18
+	provides = lib32-nvidia-libgl=415.22
 	provides = lib32-libgl
 	provides = lib32-libegl
 	provides = lib32-libgles
@@ -100,7 +100,7 @@ pkgname = lib32-opencl-nvidia-full-beta
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = lib32-opencl-nvidia=415.18
+	provides = lib32-opencl-nvidia=415.22
 	provides = lib32-opencl-driver
 	conflicts = lib32-opencl-nvidia
 
