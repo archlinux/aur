@@ -1,0 +1,18 @@
+pkgbase = clipcommander
+	pkgdesc = Clipboard selection monitor youtube-dl GUI front-end
+	pkgver = 2018.12.11
+	pkgrel = 1
+	url = https://github.com/Matteljay/clipcommander
+	arch = any
+	license = MIT
+	depends = python-kivy
+	depends = python-pillow
+	depends = xclip
+	depends = xterm
+	depends = youtube-dl
+	depends = ffmpeg
+	source = clipcommander-2018.12.11.tar.gz::https://github.com/Matteljay/clipcommander/archive/2018.12.11.tar.gz
+	sha256sums = ee5d72d0d7c3c0cbd05ec8d1c979fde0757ee3032d099df91885f947d536fd62
+
+pkgname = clipcommander
+
