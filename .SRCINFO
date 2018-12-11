@@ -1,0 +1,18 @@
+pkgbase = ruby-actioncable
+	pkgdesc = WebSocket framework for Rails.
+	pkgver = 5.2.2
+	pkgrel = 1
+	url = http://rubyonrails.org
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-actionpack
+	depends = ruby-nio4r
+	depends = ruby-websocket-driver
+	noextract = actioncable-5.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/actioncable-5.2.2.gem
+	sha1sums = d10aa1a5c5201a23236fbd6c4de0baf116141ae9
+
+pkgname = ruby-actioncable
+
