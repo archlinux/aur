@@ -1,11 +1,12 @@
-#  Maintainer: whight
+# Maintainer: whight
 
 pkgname="pulse-sms"
 pkgver="3.1.4"
-pkgrel=1
+pkgrel=2
 pkgdesc="A native desktop implementation of Pulse"
 arch=('x86_64')
 url="https://messenger.klinkerapps.com/"
+license=('APACHE')
 depends=('gconf' 'libnotify' 'libxtst' 'nss' 'libxss')
 
 source=(
@@ -17,4 +18,9 @@ sha512sums=(
 
 package() {
     tar -xf data.tar.xz -C "$pkgdir"
+	mv "${pkgdir}/opt/Pulse SMS/" "${pkgdir}/opt/${pkgname}"
+
+    # install alias in /usr/bin
+    mkdir "${pkgdir}/usr/bin"
+	ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
