@@ -1,6 +1,6 @@
 pkgbase = python-pykwalify
 	pkgdesc = Python lib/cli for JSON/YAML schema validation
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/Grokzen/pykwalify
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python-pykwalify
 	depends = python-docopt
 	depends = python-yaml
 	provides = pykwalify
-	source = https://github.com/Grokzen/pykwalify/releases/download/1.6.1/pykwalify-1.6.1.tar.gz
-	sha256sums = 0aa89759a0dc2ea200d36a6b550924c4a5b3a83011b8bf03641f8a62f5eb4bbb
+	source = https://github.com/Grokzen/pykwalify/releases/download/1.7.0/pykwalify-1.7.0.tar.gz
+	sha256sums = 7e8b39c5a3a10bc176682b3bd9a7422c39ca247482df198b402e8015defcceb2
 
 pkgname = python-pykwalify
 
