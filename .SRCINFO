@@ -1,7 +1,7 @@
 pkgbase = sakis3g
 	pkgdesc = An all-in-one script for connecting with 3G
 	pkgver = 0.2.0e
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Trixarian/sakis3g-source
 	arch = any
 	license = GPL2

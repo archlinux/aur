@@ -1,6 +1,6 @@
 pkgname=sakis3g
 pkgver=0.2.0e
-pkgrel=6
+pkgrel=7
 pkgdesc="An all-in-one script for connecting with 3G"
 arch=(any)
 url="https://github.com/Trixarian/sakis3g-source"
@@ -22,7 +22,7 @@ md5sums=('bba680bdd24143b02680ef441a45ec8a'
 
 build() {
   cd "$srcdir/$pkgname-source-master"
-  patch -p1 < ../../0a5a75babfbd8049be0cd3814df461f73880e0a7.patch
+  patch -p1 < ../0a5a75babfbd8049be0cd3814df461f73880e0a7.patch
   ./compile
 }
 
