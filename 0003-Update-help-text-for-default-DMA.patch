@@ -1,0 +1,25 @@
+From aef253cb667e4cc7352a3a8be8caafb8d4afd25e Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 1 Nov 2018 05:02:52 +0000
+Subject: [PATCH 3/5] Update help text for default DMA
+
+---
+ main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/main.c b/main.c
+index 85ecd67..f88414a 100644
+--- a/main.c
++++ b/main.c
+@@ -247,7 +247,7 @@ void parseargs(int argc, char **argv, ws2811_t *ws2811)
+ 				"-s (--strip)   - strip type - rgb, grb, gbr, rgbw\n"
+ 				"-x (--width)   - matrix width (default 8)\n"
+ 				"-y (--height)  - matrix height (default 8)\n"
+-				"-d (--dma)     - dma channel to use (default 5)\n"
++				"-d (--dma)     - dma channel to use (default 10)\n"
+ 				"-g (--gpio)    - GPIO to use\n"
+ 				"                 If omitted, default is 18 (PWM0)\n"
+ 				"-i (--invert)  - invert pin output (pulse LOW)\n"
+-- 
+2.19.1
+

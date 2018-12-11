@@ -1,0 +1,24 @@
+From 5291f6a3694f8622c5548a93b4e3ce65261fd9fc Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 1 Nov 2018 04:58:01 +0000
+Subject: [PATCH 1/5] Allow to adjust build directory
+
+---
+ SConstruct | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/SConstruct b/SConstruct
+index 64c14c7..16ac279 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -72,5 +72,6 @@ if env['TOOLCHAIN'] != '':
+     env['AR'] = env['TOOLCHAIN'] + '-ar'
+ 
+ Export(['clean_envs'])
+-SConscript('SConscript');
++AddOption('--build', default='')
++SConscript('SConscript', variant_dir=GetOption('build'), duplicate=0);
+ 
+-- 
+2.19.1
+

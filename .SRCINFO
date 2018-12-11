@@ -1,0 +1,26 @@
+pkgbase = rpi_ws281x-git
+	pkgdesc = Userspace Raspberry Pi PWM library for WS281X LEDs
+	pkgver = 173.e4a05d6
+	pkgrel = 1
+	url = https://github.com/jgarff/rpi_ws281x
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = scons
+	makedepends = git
+	provides = rpi_ws281x
+	conflicts = rpi_ws281x
+	source = rpi_ws281x::git://github.com/jgarff/rpi_ws281x.git
+	source = 0001-Allow-to-adjust-build-directory.patch
+	source = 0002-Cast-pointer-to-uintptr_t-instead-of-uint32_t.patch
+	source = 0003-Update-help-text-for-default-DMA.patch
+	source = 0004-Read-CPU-revision-from-proc-device-tree-on-arm64-clo.patch
+	sha256sums = SKIP
+	sha256sums = d98ae1d48bc78e78da9488e1519b3751c1a91311fa4f054714f199aa82084436
+	sha256sums = 3013ee02539e3d6120ae8c66db6dfff88ddf79ef38bc7badd11ff87ec2015ef7
+	sha256sums = 4b14dceb422e48036367db0bbcb5fe8152e2b58b2fc213c31775c160512ee45b
+	sha256sums = f1fac8430be31860324cb14b047182f88d4ab59b7bc186d16c0a782a68b54966
+
+pkgname = rpi_ws281x-git
+
