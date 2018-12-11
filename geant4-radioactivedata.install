@@ -2,7 +2,7 @@
 
 _varname='G4RADIOACTIVEDATA'
 _packagename='geant4-radioactivedata'
-_dataversion=5.2
+_dataversion=5.3
 _foldername="RadioactiveDecay${_dataversion}"
 
 _add() {
