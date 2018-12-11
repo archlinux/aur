@@ -27,4 +27,5 @@ package() {
 
 	install -D -m644 "${srcdir}/${pkgname}/openssh.hook" "${pkgdir}/usr/lib/initcpio/hooks/openssh"
 	install -D -m644 "${srcdir}/${pkgname}/openssh.install" "${pkgdir}/usr/lib/initcpio/install/openssh"
+	install -D -m644 "${srcdir}/${pkgname}/sshd_config" "${pkgdir}/etc/ssh-initrd/sshd_config"
 }
