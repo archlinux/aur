@@ -3,7 +3,7 @@
 _varname='G4SAIDXSDATA'
 _packagename='geant4-saiddata'
 _foldername='G4SAIDDATA'
-_dataversion=1.1
+_dataversion=2.0
 
 _add() {
     echo "export ${_varname}=/usr/share/${_packagename}/${_foldername}${_dataversion}" >> /etc/profile.d/geant4.sh
