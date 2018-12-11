@@ -1,0 +1,26 @@
+pkgbase = pi-fm-rds-git
+	pkgdesc = FM-RDS transmitter using the Raspberry Pi's PWM
+	pkgver = 65.e4e246e
+	pkgrel = 1
+	url = https://github.com/ChristopheJacquet/PiFmRds
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = git
+	depends = libsndfile
+	optdepends = python-scipy: generate_pulses and generate_waveforms
+	optdepends = python-numpy: generate_pulses and generate_waveforms
+	optdepends = python-matplotlib: generate_waveforms
+	optdepends = python-pydemod: generate_waveforms
+	provides = pi-fm-rds
+	conflicts = pi-fm-rds
+	source = PiFmRds::git://github.com/ChristopheJacquet/PiFmRds.git
+	source = 0001-Add-compile-flags-for-aarch64.patch
+	source = 0002-Prevent-undefined-reference-to-makedev.patch
+	sha256sums = SKIP
+	sha256sums = 4d5727b0657de420d12908203e8b44fdea1c1adfc3bde451266da29008440c3b
+	sha256sums = b21eea03a5bf79398f46fce0b4d4f5c67af0938446458fe324b1726f6e28db90
+
+pkgname = pi-fm-rds-git
+

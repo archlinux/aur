@@ -1,0 +1,26 @@
+From f4648419ea49d653c97eb95211284877e519e48f Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Tue, 11 Dec 2018 18:31:12 +0000
+Subject: [PATCH 1/2] Add compile flags for aarch64
+
+---
+ src/Makefile | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/Makefile b/src/Makefile
+index 0df77a3..6cebd28 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -12,6 +12,9 @@ ifeq ($(UNAME), armv6l)
+ else ifeq ($(UNAME), armv7l)
+ 	CFLAGS = $(STD_CFLAGS) -march=armv7-a -mtune=arm1176jzf-s -mfloat-abi=hard -mfpu=vfp -ffast-math -DRASPI=2
+ 	TARGET = pi2
++else ifeq ($(UNAME), aarch64)
++	CFLAGS = $(STD_CFLAGS) -march=armv8-a -O2 -pipe -fstack-protector-strong -fno-plt -ffast-math -DRASPI=2
++	TARGET = pi2
+ else
+ 	CFLAGS = $(STD_CFLAGS)
+ 	TARGET = other
+-- 
+2.20.0
+
