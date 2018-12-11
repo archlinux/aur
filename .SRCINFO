@@ -12,7 +12,7 @@ pkgbase = bmpanel2
 	depends = libxext
 	depends = pango
 	optdepends = pygtk: configuration GUI
-	source = http://bmpanel2.googlecode.com/files/bmpanel2-2.1pre1.tar.gz
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/bmpanel2/bmpanel2-2.1pre1.tar.gz
 	md5sums = 766ce5d3d6be427192fa11883b230eed
 
 pkgname = bmpanel2

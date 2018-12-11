@@ -1,4 +1,5 @@
-# Maintainer : SpepS <dreamspepser at yahoo dot it>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: SpepS <dreamspepser at yahoo dot it>
 # Contributor: nsf <no.smile.face@gmail.com>
 
 pkgname=bmpanel2
@@ -11,7 +12,8 @@ license=('custom:MIT')
 depends=('libxext' 'pango')
 optdepends=('pygtk: configuration GUI')
 makedepends=('cmake' 'asciidoc' 'python2')
-source=("${url}files/$pkgname-$pkgver.tar.gz")
+#source=("${url}files/$pkgname-$pkgver.tar.gz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('766ce5d3d6be427192fa11883b230eed')
 
 build() {
