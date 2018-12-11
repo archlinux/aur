@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-remoteobjects
 	pkgdesc = Inter-process communication (IPC) module developed for Qt (mingw-w64)
-	pkgver = 5.11.2
+	pkgver = 5.12.0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = mingw-w64-qt5-remoteobjects
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.11/5.11.2/submodules/qtremoteobjects-everywhere-src-5.11.2.tar.xz
-	sha256sums = f2bc6d65f4d4b90fc222c0fd0539120f29452b6d336171930f90e5129cd25c19
+	source = https://download.qt.io/official_releases/qt/5.12/5.12.0/submodules/qtremoteobjects-everywhere-src-5.12.0.tar.xz
+	sha256sums = 0940d0a4a961b64f38c52a2e5638c2b3341fe46bd6bd88d1c638707f42159d5f
 
 pkgname = mingw-w64-qt5-remoteobjects
 
