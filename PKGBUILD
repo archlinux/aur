@@ -2,7 +2,7 @@
 
 pkgname=("python2-pykwalify")
 _pkgname=pykwalify
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Python lib/cli for JSON/YAML schema validation'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python2-dateutil' 'python2-docopt' 'python2-yaml')
 checkdepends=('python2-pytest' 'python2-testfixtures')
 source=("https://github.com/Grokzen/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 provides=('pykwalify')
-sha256sums=('0aa89759a0dc2ea200d36a6b550924c4a5b3a83011b8bf03641f8a62f5eb4bbb')
+sha256sums=('7e8b39c5a3a10bc176682b3bd9a7422c39ca247482df198b402e8015defcceb2')
 
 prepare() {
 	mv -f ${_pkgname}-${pkgver}{,-py2}
