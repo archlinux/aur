@@ -1,6 +1,6 @@
 pkgbase = syncthing-git
 	pkgdesc = Open Source Continuous Replication / Cluster Synchronization Thing
-	pkgver = v0.14.54.r14.g002de7b6a
+	pkgver = v0.14.55.rc.1.r1.gbdcffe703
 	pkgrel = 1
 	url = http://syncthing.net/
 	install = syncthing-git.install
@@ -13,7 +13,7 @@ pkgbase = syncthing-git
 	makedepends = inetutils
 	provides = syncthing
 	conflicts = syncthing
-	source = syncthing-git-v0.14.54.r14.g002de7b6a::git+https://github.com/syncthing/syncthing.git
+	source = syncthing-git-v0.14.55.rc.1.r1.gbdcffe703::git+https://github.com/syncthing/syncthing.git
 	sha256sums = SKIP
 
 pkgname = syncthing-git
