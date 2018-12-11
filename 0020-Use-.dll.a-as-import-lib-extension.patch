@@ -1,4 +1,4 @@
-From 75c9cbfab1967e472ced8730e561b062a30c4d9d Mon Sep 17 00:00:00 2001
+From 47c3ea27e0aba1475c450dcc590f01846b054a07 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
 Subject: [PATCH 20/33] Use *.dll.a as import lib extension
@@ -27,7 +27,7 @@ index e67917cc96..2a94964b49 100644
      } else {
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}d.lib
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index dec0931bd4..cd64cb0c4f 100644
+index 37eee7fca3..59b394ca51 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -80,10 +80,14 @@ Win32MakefileGenerator::parseLibFlag(const ProString &flag, ProString *arg)
@@ -46,10 +46,10 @@ index dec0931bd4..cd64cb0c4f 100644
 +    impexts.append(project->values("QMAKE_EXTENSION_STATICLIB"));
 +  }
 +  QList<QMakeLocalFileName> dirs;
-   static const char * const lflags[] = { "QMAKE_LIBS", "QMAKE_LIBS_PRIVATE", 0 };
+   static const char * const lflags[] = { "LIBS", "LIBS_PRIVATE",
+                                          "QMAKE_LIBS", "QMAKE_LIBS_PRIVATE", nullptr };
    for (int i = 0; lflags[i]; i++) {
-     ProStringList &l = project->values(lflags[i]);
-@@ -234,9 +238,12 @@ void Win32MakefileGenerator::fixTargetExt()
+@@ -253,9 +257,12 @@ void Win32MakefileGenerator::fixTargetExt()
      if (!project->values("QMAKE_APP_FLAG").isEmpty()) {
          project->values("TARGET_EXT").append(".exe");
      } else if (project->isActiveConfig("shared")) {
@@ -64,5 +64,5 @@ index dec0931bd4..cd64cb0c4f 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.19.0
+2.19.2
 
