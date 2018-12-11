@@ -1,0 +1,13 @@
+pkgbase = joplin-appimage
+	pkgdesc = The latest released AppImage of Joplin - a cross-platform note taking and to-do app
+	pkgver = 1.0.117
+	pkgrel = 1
+	url = https://github.com/laurent22/joplin
+	arch = x86_64
+	license = MIT
+	makedepends = curl
+	makedepends = grep
+	options = !strip
+
+pkgname = joplin-appimage
+
