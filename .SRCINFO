@@ -1,0 +1,22 @@
+pkgbase = nodm-dgw
+	pkgdesc = X display manager for automatic logins
+	pkgver = 0.13
+	pkgrel = 2
+	url = https://github.com/spanezz/nodm
+	arch = x86_64
+	license = GPL
+	makedepends = help2man
+	depends = pam
+	depends = xorg-xinit
+	provides = nodm
+	conflicts = nodm
+	backup = etc/nodm.conf
+	source = https://github.com/dgw/nodm/archive/10-rebase.tar.gz
+	source = nodm.conf
+	source = nodm.service
+	sha512sums = 87202c0c3dac8c1fd28cdbc9d2f45d7e03429a015a987e97d044c8d60319a21bbe2d7dc5b13158078fd878b1ee79e5bbc2e2788e3c98931ca0572193ee3c3bef
+	sha512sums = 3da879a9362bf514b8ae9fbeb586489f203f1aff538162074e8b8bdd148a813f2a5d9f187a4396221c5a2b6b1dd44e3d11d43911b7a8220fe0682e0dec3b248f
+	sha512sums = 21214122072daec9c373c99d1c9c0898f58a277f90fab085b417989c62e6cf268fb52148f76ec12b9be23137af05059f37f901e3d54f49e6024a05fa75277381
+
+pkgname = nodm-dgw
+
