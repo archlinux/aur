@@ -3,7 +3,7 @@
 
 pkgname=octave-hg
 pkgrel=1
-pkgver=5.0.0r26195.a5094f65012c
+pkgver=5.0.0r26201.750a6f9957ea
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -51,9 +51,9 @@ build() {
     --with-umfpack --enable-java --with-hdf5 --without-osmesa \
     --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
     --with-java-includedir=/usr/lib/jvm/`archlinux-java get`/include \
-    --with-java-libdir={/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server,/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server} --with-qt=5 --without-portaudio
+    --with-java-libdir={/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server,/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server} --with-qt=5 --without-portaudio --disable-docs
   export CLASSPATH=.:$CLASSPATH
-  make -j1 V=1
+  make 
 }
 
 check() {
