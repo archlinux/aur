@@ -31,11 +31,11 @@ build() {
     -DMapper_PACKAGE_NAME=${pkgname} \
     -DQt5Help_QCOLLECTIONGENERATOR_EXECUTABLE=qhelpgenerator \
     -Wno-dev
-  make
+  cmake --build .
 }
 
 package() {
   cd ${_pkgname}-${pkgver}/build
 
-  make DESTDIR=${pkgdir}/ install
+  DESTDIR=${pkgdir}/ cmake --build . --target install
 }
