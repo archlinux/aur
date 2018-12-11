@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=jwm-git
-pkgver=s1675
+pkgver=s1685.r6.d5ca153
 pkgrel=1
 pkgdesc="JWM is a light-weight window manager for the X11 Window System. Git version."
 arch=('i686' 'x86_64')
@@ -21,14 +21,14 @@ md5sums=('SKIP'
 pkgver() {
   cd $pkgname
   # Use the tag of the last commit
-  git describe --always | sed 's|-|.|g'
+  git describe --always | sed -r 's|-([^-]*)-g(.*)|.r\1.\2|'
 }
 
 prepare() {
   cd $pkgname
-  /usr/bin/cp -f /usr/share/automake-1.15/config.guess .
-  /usr/bin/cp -f /usr/share/automake-1.15/config.sub .
-  /usr/bin/cp -f /usr/share/automake-1.15/install-sh .
+  /usr/bin/cp -f /usr/share/automake-1.16/config.guess .
+  /usr/bin/cp -f /usr/share/automake-1.16/config.sub .
+  /usr/bin/cp -f /usr/share/automake-1.16/install-sh .
   /usr/bin/cp -f /usr/share/gettext/config.rpath .
   /usr/bin/cp -f /usr/share/gettext/po/Makefile.in.in po/
   autoreconf
