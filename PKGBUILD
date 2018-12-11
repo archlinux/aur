@@ -1,5 +1,5 @@
 _npmname=wt-cli
-_npmver=9.3.0
+_npmver=11.0.0
 pkgname=$_npmname # All lowercase
 pkgver=$_npmver
 pkgrel=1
@@ -12,7 +12,7 @@ optdepends=()
 install=wt-cli.install
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('ee1a2774a8884e64658a7a746577ed6e371e77ef')
+sha1sums=('a02fbaec24ff3106eb990f43f4c8b06b5c507f0c')
 
 package() {
   cd $srcdir
