@@ -11,11 +11,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=('perl-module-build')
-url='http://search.cpan.org/dist/Encode-Detect'
-source=('http://search.cpan.org/CPAN/authors/id/J/JG/JGMYERS/Encode-Detect-1.01.tar.gz')
+url='https://metacpan.org/pod/Encode::Detect'
+source=("https://cpan.metacpan.org/authors/id/J/JG/JGMYERS/Encode-Detect-${pkgver}.tar.gz")
 md5sums=('ee9faf55d7105c97b02b8ebe590819c7')
 sha512sums=('cc9c81f716dcb61abb321abd84e4ebb95a674d9aa34c4265f58cace38f6d15ef4f2b8338190ae7d200672e047b795a30ce6155f9c1b1c424e25d962579b96224')
-_distdir="Encode-Detect-1.01"
+_distdir="Encode-Detect-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
