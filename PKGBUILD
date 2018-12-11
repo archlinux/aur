@@ -5,7 +5,7 @@
 pkgname=conky-lua-archers
 _pkgname=conky
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -19,7 +19,6 @@ depends=(
 	'curl'
 	'glib2'
 	'imlib2'
-	'libxnvctrl'
 	'librsvg'
 	'libxdamage'
 	'libxft'
@@ -29,6 +28,7 @@ depends=(
 	'tolua++'
 	'wireless_tools'
 )
+#	'libxnvctrl'
 makedepends=(
 	'cmake'
 	'docbook2x'
@@ -65,7 +65,6 @@ build() {
 		-D BUILD_LUA_RSVG=ON \
 		-D BUILD_MOC=OFF \
 		-D BUILD_MPD=OFF \
-		-D BUILD_NVIDIA=ON \
 		-D BUILD_OLD_CONFIG=ON \
 		-D BUILD_PULSEAUDIO=ON \
 		-D BUILD_WLAN=ON \
@@ -79,6 +78,7 @@ build() {
 		.
 	make
 }
+#		-D BUILD_NVIDIA=ON \
 
 package() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
