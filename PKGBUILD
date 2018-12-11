@@ -4,7 +4,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=mingw-w64-openssl-1.0
-_ver=1.0.2p
+_ver=1.0.2q
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
@@ -21,7 +21,7 @@ source=("http://www.openssl.org/source/openssl-$_ver.tar.gz"{,.asc}
         'openssl-1.0.1-x32.patch'
         'openssl-1.0.2a-parallel-build.patch'
         'openssl-1.0-versioned-symbols.patch')
-sha256sums=('50a98e07b1a89eb8f6a99477f262df71c6fa7bef77df4dc83025a2845c827d00'
+sha256sums=('5744cfcbcec2b1b48629f7354203bc1e5e9b5466998bbccc5b5fcde3b18eb684'
             'SKIP'
             'd38dfc58fe2c3723f2dfa10408394a6e796bd1e7273804cb19c41baf3dcee534'
             '164aa4928b022cc716fac545b4fd69899cb274682aa487100e595abb652adbae'
