@@ -2,7 +2,7 @@
 # Contributor: Thomas Gatzweiler <thomas.gatzweiler@gmail.com> wsjtx-svn maintainer
 
 pkgname=wsjtx-git
-pkgver=r4846.1efd8004
+pkgver=r4933.784f75ea
 pkgrel=1
 pkgdesc='Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)'
 arch=('i686' 'x86_64')
