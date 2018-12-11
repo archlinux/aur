@@ -1,7 +1,7 @@
 # Maintainer: Doron Behar <doron.behar@gmail.com>
 
 pkgname=python-xlsx2csv
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="xlsx to csv converter"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=(https://github.com/dilshod/xlsx2csv/archive/$pkgver.tar.gz)
-md5sums=('d6622bbb530cd80516aefd9291361ca5')
+md5sums=('c1fb8b22936bfb696158fba9bc0fae2e')
 
 package() {
   cd "$srcdir/xlsx2csv-$pkgver"
