@@ -1,7 +1,7 @@
 # Maintainer: bert@bertptrs.nl
 pkgname=bower-away
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Convert your project from Bower to Yarn"
 arch=('any')
 url="https://github.com/sheerun/bower-away"
@@ -29,5 +29,5 @@ package() {
 	chmod 644 "$pkgjson"
 
 	# Install license since the package doesn't include it
-	install -Dm 644 "$srcdir/LICENSE" "$pkgdir/usr/shace/licenses/$pkgname/LICENSE"
+	install -Dm 644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
