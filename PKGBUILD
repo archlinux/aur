@@ -2,8 +2,8 @@
 
 pkgname=melonds-git
 _gitname=melonds
-_releasever=0.6
-pkgver=0.6.r478.aab0030
+_releasever=0.7
+pkgver=0.7.r550.0b1c2f9
 pkgdesc='DS emulator, sorta. also 1st quality melon.'
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -33,7 +33,7 @@ build()
   cmake ../${_gitname} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX='/usr'
-  make
+  make VERBOSE=ON
 }
 
 package()

@@ -1,6 +1,6 @@
 pkgbase = melonds-git
 	pkgdesc = DS emulator, sorta. also 1st quality melon.
-	pkgver = 0.6.r478.aab0030
+	pkgver = 0.7.r550.0b1c2f9
 	pkgrel = 1
 	url = http://melonds.kuribo64.net/
 	arch = i686
