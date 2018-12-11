@@ -1,18 +1,18 @@
 pkgbase = nzbhydra2
 	pkgdesc = Meta search for NZB indexers
-	pkgver = 2.0.22
+	pkgver = 2.0.23
 	pkgrel = 1
 	url = https://github.com/theotherp/nzbhydra2
 	arch = any
 	license = Apache
 	depends = python2
 	depends = java-runtime-headless>=8
-	source = https://github.com/theotherp/nzbhydra2/releases/download/v2.0.22/nzbhydra2-2.0.22-linux.zip
-	source = nzbhydra2wrapper-2.0.22-1.py::https://raw.githubusercontent.com/theotherp/nzbhydra2/master/other/wrapper/nzbhydra2wrapper.py
+	source = https://github.com/theotherp/nzbhydra2/releases/download/v2.0.23/nzbhydra2-2.0.23-linux.zip
+	source = nzbhydra2wrapper-2.0.23-1.py::https://raw.githubusercontent.com/theotherp/nzbhydra2/master/other/wrapper/nzbhydra2wrapper.py
 	source = nzbhydra2.service
 	source = nzbhydra2.tmpfiles
 	source = nzbhydra2.sysusers
-	sha256sums = 56b33d79859a10055d46cad08cf8f778b61c60194bec9356ed8799889dc3ba58
+	sha256sums = d023fe65566e96c11ed87552f5d926660f6de4b45b584ef518cec7d1fb122a82
 	sha256sums = 95c89dfee7321cfa582c0daecc0b43cc2579c0823e5474d2bc782073b2534613
 	sha256sums = 8c864fa865c92a6e0182f4dd3d4032ad85f09d021444cca217efafecbeff33c3
 	sha256sums = 464bffa0e7bf99ccd7bbcdb787b25b53b7692f86f081a4fe347b92f88c56fb09
