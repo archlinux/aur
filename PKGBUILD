@@ -1,5 +1,5 @@
 _npmname=foreman
-_npmver=3.0.0
+_npmver=3.0.1
 pkgname=nodejs-foreman # All lowercase
 pkgver=3.0.0
 pkgrel=1
@@ -12,7 +12,7 @@ makedepends=('npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('19f89eb6d496ac864767f9938dce6914e20568f5')
+sha1sums=('805f28afc5a4bbaf08dbb1f5018c557dcbb8a410')
 
 package() {
   cd $srcdir

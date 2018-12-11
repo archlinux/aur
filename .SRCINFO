@@ -6,9 +6,9 @@ pkgbase = nodejs-foreman
 	arch = any
 	makedepends = npm
 	depends = nodejs
-	noextract = foreman-3.0.0.tgz
-	source = http://registry.npmjs.org/foreman/-/foreman-3.0.0.tgz
-	sha1sums = 19f89eb6d496ac864767f9938dce6914e20568f5
+	noextract = foreman-3.0.1.tgz
+	source = http://registry.npmjs.org/foreman/-/foreman-3.0.1.tgz
+	sha1sums = 805f28afc5a4bbaf08dbb1f5018c557dcbb8a410
 
 pkgname = nodejs-foreman
 
