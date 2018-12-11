@@ -1,0 +1,14 @@
+pkgbase = hexyl-bin
+	pkgdesc = A command-line hex viewer
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/sharkdp/hexyl
+	arch = x86_64
+	license = Apache
+	license = MIT
+	conflicts = hexyl
+	source = https://github.com/sharkdp/hexyl/releases/download/v0.2.0/hexyl-v0.2.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 1b9f900d78b3646ee68d03117150e502daae5d4970980bffef114b3df04e3768
+
+pkgname = hexyl-bin
+
