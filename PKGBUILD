@@ -17,7 +17,7 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'libtorrent-rasterbar'
         'python-twisted' 'python-pyasn1' 'python-pyopenssl' 'python-xdg'
         'python-chardet' 'python-six' 'python-setproctitle'
         'python-zope-interface' 'python-service-identity'
-        'python-rencode' 'python-setuptools' 'xdg-utils')
+        'python-rencode' 'python-setuptools' 'xdg-utils' 'python-pillow')
 makedepends=(
     # binary repositories:
         'git' 'intltool' 'librsvg' 'pygtk' 'python-mako'

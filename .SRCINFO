@@ -26,6 +26,7 @@ pkgbase = deluge-python3-git
 	depends = python-rencode
 	depends = python-setuptools
 	depends = xdg-utils
+	depends = python-pillow
 	optdepends = librsvg: gtk ui
 	optdepends = pygtk: gtk ui
 	optdepends = python-mako: web ui
