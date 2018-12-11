@@ -3,8 +3,8 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=gocr
-pkgver=0.51
-pkgrel=2
+pkgver=0.52
+pkgrel=1
 pkgdesc="OCR (Optical Character Recognition) program, which converts scanned images of text back to text files"
 arch=("x86_64")
 url="https://www-e.uni-magdeburg.de/jschulen/ocr/"
@@ -14,7 +14,7 @@ optdepends=('fig2dev: read xfig images'
             'tk: to use the tk frontend')
 source=(https://www-e.uni-magdeburg.de/jschulen/ocr/$pkgname-$pkgver.tar.gz{,.asc})
 validpgpkeys=('3816B803D578F5AD12FDFE065D330C4953BDFBE3')
-sha256sums=('6eb2ae0fa4eb07cf4163081e0194ea65f605f7db9709dd30680686804dfc2692'
+sha256sums=('df906463105f5f4273becc2404570f187d4ea52bd5769d33a7a8661a747b8686'
             'SKIP')
 
 build() {
