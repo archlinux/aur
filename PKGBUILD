@@ -2,7 +2,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=mastodon
-pkgver=2.6.2
+pkgver=2.6.5
 pkgrel=1
 pkgdesc='Free software social-network server based on ActivityPub and OStatus'
 arch=(x86_64)
@@ -30,7 +30,7 @@ source=(https://github.com/tootsuite/mastodon/archive/v$pkgver.tar.gz
         mastodon-sidekiq.service
         mastodon-streaming.service
         mastodon.target)
-sha512sums=('768167f463b6f07606b95d9a30e63b1e78ebce2058368e7b7202eb3ab4c1c2a0d7e10b4a884b3ec729e6927082d707c52e104b028036c7d115c439ba9e33faf9'
+sha512sums=('7ff73dfe9880851b85ca989572480816774db93312c1b6fea2667830dd24eb33c9a9dd25363214d2c8a1057ce7d20e8278853e165a130d2d18f02e102f458f2c'
             '532929aeeda9a0ccf72de0695a3381547cc389344e1e67f05ef1d7ce5c1ad57278b647423bb52d4a87069ad85479452533fbe3786e5e5c4b62730c6ef72ff267'
             '603a7877288c762855a29fd2399d3ff7d218a7f1b7d6378cad7f30048cdbfe2a13f2ed2b5c94cb683bdcaead8cd47243e564a2ae70d7f21fa33f295c5396f4f7'
             '90a0761b7709659bec6f29c366c503fdd348226cbb585cf4f6eaa065854e2027d08ab3b352eb13ad7c0e327d662f13bc00fb4163ea0c583ef55b1795ab2e0b31'
