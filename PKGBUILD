@@ -2,13 +2,13 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=18.12.17
+pkgver=18.14.18
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
 url='https://clickhouse.yandex/'
 license=('Apache')
-depends=('ncurses' 'readline' 'unixodbc' 'termcap' 'double-conversion' 'capnproto' 're2' 'gtest')
+depends=('ncurses' 'readline' 'unixodbc' 'termcap' 'double-conversion' 'capnproto' 're2' 'gtest' 'gsasl' 'libxml2' 'llvm')
 makedepends=('cmake' 'patchelf')
 source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/google/cctz/archive/4f9776a.tar.gz
@@ -16,21 +16,29 @@ source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/lz4/lz4/archive/c10863b.tar.gz
         https://github.com/facebook/zstd/archive/2555975.tar.gz
         https://github.com/Dead2/zlib-ng/archive/9173b89.tar.gz
-        https://github.com/ClickHouse-Extras/poco/archive/d7a4383.tar.gz
-        https://github.com/ClickHouse-Extras/boost/archive/2d5cb2c.tar.gz
-        https://github.com/ClickHouse-Extras/ssl/archive/de02224.tar.gz
-        https://github.com/jemalloc/jemalloc/archive/41b7372.tar.gz
+        https://github.com/ClickHouse-Extras/poco/archive/fe5505e.tar.gz
+        https://github.com/ClickHouse-Extras/boost-extra/archive/6883b40.tar.gz
+        https://github.com/ClickHouse-Extras/ssl/archive/dbbbcdb.tar.gz
+        https://github.com/jemalloc/jemalloc/archive/cd2931a.tar.gz
+        https://github.com/aklomp/base64/archive/a27c565.tar.gz
+        https://github.com/ClickHouse-Extras/libhdfs3/archive/bd6505c.tar.gz
+        https://github.com/MariaDB/mariadb-connector-c/archive/a0fd36c.tar.gz
+        https://github.com/ClickHouse-Extras/protobuf/archive/1273537.tar.gz
         libunwind.patch)
-md5sums=('56f77959e1ec5d8b2c5914203d46ad4f'
+md5sums=('21640933ad8040d2918d7021c725f552'
          '5323f7ba2565a84a80a93edde95eb4fe'
          '7d9c187a8afedde260fadf2f1d5f46a2'
          '7b92f0554687e6a8949adc5c10aeff78'
          'aaa86ec9f379ef587cc53f7b96bcc0e7'
          '8a7abcc6998e461605ecb2988ff93dfc'
-         '3e9bb8b30ceecfd7dba9c0b03a89bf85'
-         '123c1e981fe28c1240d066af493d83b9'
-         '26744168b84de285c9e7c0f3d3ae5ba0'
-         '6eaa07f5751d6264208185224f7a5e51'
+         'aa322f75107a4c8a364a38bfd5c7698f'
+         '3e95c80139b4450f3e1505a71d3ea369'
+         '31f887f0dcea406ca589ceb12db8bb93'
+         '1aad51c731b082d40c15be2804cd0ff3'
+         'e98c6b94f39d6947c83eb554aeb618e2'
+         '2fa16f04d0d533cbb5797bfd45b058fd'
+         'c8d7c0a9c52c05cd42a6baef52bc4053'
+         'd63e8036385a27113365a40eb6bfe75e'
          'f3f60b75abf8d6f21de74db6e88e1e7b')
 backup=('etc/clickhouse-client/config.xml' 'etc/clickhouse-server/config.xml' 'etc/clickhouse-server/users.xml')
 install=$pkgname.install
@@ -39,17 +47,21 @@ prepare() {
   cd ClickHouse-$pkgver-stable
   sed -e 's/mysqlxx common\(.*\) \(\${Z_LIB}\)/mysqlxx \2 common\1/' -i libs/libmysqlxx/CMakeLists.txt
   patch -p1 < ../libunwind.patch
-  mkdir -p contrib/cctz contrib/librdkafka contrib/lz4 contrib/zstd
-  rm -rf contrib/{cctz,librdkafka,lz4,zstd,zlib-ng,poco,boost,ssl}/*
+  mkdir -p contrib/cctz contrib/librdkafka contrib/lz4 contrib/zstd contrib/base64 contrib/libhdfs3 contrib/mariadb-connector-c contrib/protobuf
+  rm -rf contrib/{cctz,librdkafka,lz4,zstd,zlib-ng,poco,boost,ssl,base64,libhdfs3,mariadb-connector-c,jemalloc,protobuf}/*
   mv ../cctz-4f9776a*/* contrib/cctz/
   mv ../librdkafka-7478b5e*/* contrib/librdkafka/
   mv ../lz4-c10863b*/* contrib/lz4/
   mv ../zstd-2555975*/* contrib/zstd/
   mv ../zlib-ng-9173b89*/* contrib/zlib-ng/
-  mv ../poco-d7a4383*/* contrib/poco/
-  mv ../boost-2d5cb2c*/* contrib/boost/
-  mv ../ssl-de02224*/* contrib/ssl/
-  mv ../jemalloc-41b7372*/* contrib/jemalloc/
+  mv ../poco-fe5505e*/* contrib/poco/
+  mv ../boost-extra-6883b40*/* contrib/boost/
+  mv ../ssl-dbbbcdb*/* contrib/ssl/
+  mv ../jemalloc-cd2931a*/* contrib/jemalloc/
+  mv ../base64-a27c565*/* contrib/base64/
+  mv ../libhdfs3-bd6505c*/* contrib/libhdfs3/
+  mv ../mariadb-connector-c-a0fd36c*/ contrib/mariadb-connector-c/
+  mv ../protobuf-1273537*/ contrib/protobuf/
   for dir in contrib/*/; do
     rmdir $dir &> /dev/null || true
   done
@@ -57,7 +69,7 @@ prepare() {
 
 build() {
   cd ClickHouse-$pkgver-stable
-  cmake -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False -D USE_INTERNAL_DOUBLE_CONVERSION_LIBRARY:BOOL=False -D USE_INTERNAL_CAPNP_LIBRARY:BOOL=False -D USE_INTERNAL_POCO_LIBRARY:BOOL=True -D POCO_STATIC:BOOL=True -D USE_INTERNAL_RE2_LIBRARY:BOOL=False -D NO_WERROR=1 .
+  cmake -D CMAKE_BUILD_TYPE:STRING=Release -D USE_STATIC_LIBRARIES:BOOL=False -D ENABLE_TESTS:BOOL=False -D UNBUNDLED:BOOL=False -D USE_INTERNAL_DOUBLE_CONVERSION_LIBRARY:BOOL=False -D USE_INTERNAL_CAPNP_LIBRARY:BOOL=False -D USE_INTERNAL_POCO_LIBRARY:BOOL=True -D POCO_STATIC:BOOL=True -D USE_INTERNAL_RE2_LIBRARY:BOOL=False -D USE_INTERNAL_LIBGSASL_LIBRARY:BOOL=False -D USE_INTERNAL_GTEST_LIBRARY:BOOL=False -D USE_INTERNAL_LIBXML2_LIBRARY:BOOL=False -D USE_INTERNAL_LLVM_LIBRARY:BOOL=False -D NO_WERROR=1 .
   cmake --build . --target clickhouse
 }
 
