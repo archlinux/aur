@@ -2,10 +2,11 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: Christian Hesse <mail@earthworm.de>
 # Contributor: amish
+# Contributor: mr_nuub
 
-pkgname='perl-authen-pam'
-pkgver='0.16'
-pkgrel='3'
+pkgname=perl-authen-pam
+pkgver=0.16
+pkgrel=4
 pkgdesc="Perl interface to PAM library"
 arch=('any')
 url="http://search.cpan.org/~nikip/Authen-PAM-$pkgver/"
@@ -27,13 +28,13 @@ patch -p1 -i ../dotinc.patch
 build() {
   cd ${srcdir}/Authen-PAM-$pkgver
   export PERL_AUTOINSTALL=--skipdeps PERL_MM_USE_DEFAULT=1
-  cd "$DIST_DIR"
   perl Makefile.PL INSTALLDIRS=vendor
   make
   }
 
 package() {
   cd ${srcdir}/Authen-PAM-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make DESTDIR="$pkgdir" install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
