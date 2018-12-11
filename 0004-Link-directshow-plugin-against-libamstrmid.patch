@@ -1,4 +1,4 @@
-From da4ad130740aabeeeda441c9eb81d6810d3da582 Mon Sep 17 00:00:00 2001
+From 4ca58055892ae0273488913f998c47a7aaaa521f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 24 Sep 2018 20:10:19 +0200
 Subject: [PATCH 4/4] Link directshow plugin against libamstrmid
@@ -28,5 +28,5 @@ index 54d61716..e097d433 100644
  SOURCES += dsserviceplugin.cpp
  
 -- 
-2.19.0
+2.19.2
 

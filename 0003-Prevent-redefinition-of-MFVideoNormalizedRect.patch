@@ -1,10 +1,12 @@
-From ca9c6831d839d8b79df6d74c038e32c39e35cc17 Mon Sep 17 00:00:00 2001
+From ab9f339dd836ece1b4b1c220b6fe6888852a8694 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 24 Sep 2018 19:21:40 +0200
 Subject: [PATCH 3/4] Prevent redefinition of MFVideoNormalizedRect
 
-This establishes compatiblity with MinGW-w64 headers 6.0
+This establishes compatibility with MinGW-w64 headers 6.0
 where MFVideoNormalizedRect has been added to evr.h.
+
+Change-Id: Id4edec36c6bc9c50cadbeacc436382940973475c
 ---
  src/plugins/common/evr/evrdefs.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -23,5 +25,5 @@ index f898209b..a8d7f664 100644
      float left;
      float top;
 -- 
-2.19.0
+2.19.2
 
