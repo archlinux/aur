@@ -3,12 +3,12 @@
 
 pkgname=biglybt
 pkgver=1.7.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64')
 url="https://www.biglybt.com/"
 license=('GPL3')
-depends=('desktop-file-utils' 'java-runtime>=9')
+depends=('desktop-file-utils' 'xdg-user-dirs' 'java-runtime>=9')
 options=('!strip')
 install=$pkgname.install
 source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
@@ -32,7 +32,8 @@ package() {
   # which creates them a) in the wrong place and b) with wrong paths, therefore
   # preventing the start of the program via the launcher)
   find ~/.local/share/applications -name $pkgname.desktop -cmin -1 -exec rm {} +
-  find ~/Desktop -name $pkgname.desktop -cmin -1 -exec rm -f {} +
+  _user_desktop=$(xdg-user-dir DESKTOP)
+  [ "_user_desktop" ] && find "$_user_desktop" -name $pkgname.desktop -cmin -1 -exec rm -f {} +
 
   cd "$srcdir"/$pkgname
 
