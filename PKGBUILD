@@ -2,7 +2,7 @@
 
 pkgbase=django-redis
 pkgname=('python-django-redis')
-pkgver=4.9.0
+pkgver=4.10.0
 pkgrel=0
 pkgdesc="Full featured redis cache backend for Django"
 arch=('any')
@@ -10,8 +10,7 @@ license=('BSD')
 url="https://github.com/niwinz/django-redis"
 makedepends=('python' 'python-setuptools' 'python-redis')
 source=("https://pypi.io/packages/source/d/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
-#source=("https://github.com/niwinz/${pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('15b47faef6aefaa3f47135a2aeb67372da300e4a4cf06809c66ab392686a2155')
+sha256sums=('af0b393864e91228dd30d8c85b5c44d670b5524cb161b7f9e41acc98b6e5ace7')
 
 package_python-django-redis() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
