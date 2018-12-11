@@ -4,7 +4,7 @@
 
 pkgname=gmrun
 pkgver=0.9.4w
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple program which provides a run program window"
 arch=('x86_64')
 url="https://github.com/wdlkmpx/gmrun"
@@ -16,6 +16,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/wdlkmpx/gmrun/archive/$pkgve
 md5sums=('e3fa3ebfa6d81675ba59152372fb2f7b'
          '0b467e3cdb14ca9f93176d3193659af7'
          'f33450f3fae35ed6111aec8417c4d3d6')
+backup=('etc/gmrunrc')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -28,7 +29,7 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	./autogen.sh
-	./configure --prefix=/usr
+	./configure --prefix=/usr --sysconfdir=/etc
 	make
 }
 
