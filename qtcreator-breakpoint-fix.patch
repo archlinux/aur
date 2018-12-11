@@ -1,0 +1,15 @@
+diff --git a/src/plugins/debugger/gdb/gdbengine.cpp b/src/plugins/debugger/gdb/gdbengine.cpp
+index b4d104509e..bc5f5767a7 100644
+--- a/src/plugins/debugger/gdb/gdbengine.cpp
++++ b/src/plugins/debugger/gdb/gdbengine.cpp
+@@ -2492,10 +2492,6 @@ void GdbEngine::updateBreakpoint(const Breakpoint &bp)
+         // The only way to change this seems to be to re-set the bp completely.
+         cmd.function = "-break-delete " + bpnr;
+         cmd.callback = [this, bp](const DebuggerResponse &r) { handleBreakThreadSpec(r, bp); };
+-    } else if (!bp->isPending() && requested.lineNumber != bp->lineNumber()) {
+-        // The only way to change this seems to be to re-set the bp completely.
+-        cmd.function = "-break-delete " + bpnr;
+-        cmd.callback = [this, bp](const DebuggerResponse &r) { handleBreakLineNumber(r, bp); };
+     } else if (requested.command != bp->command()) {
+         cmd.function = "-break-commands " + bpnr;
+         for (QString command : requested.command.split('\n')) {
