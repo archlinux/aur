@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines, built with most options disabled.'
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme'
-license=('GPL2')
+license=('GPL2' 'CCbySA4')
 depends=('gtk-engine-murrine' 'gtk3')
 makedepends=('git' 'inkscape' 'libxml2' 'parallel' 'sassc')
-provides=('plata-gtk-theme')
-conflicts=('plata-gtk-theme')
+provides=('plata-theme')
+conflicts=('plata-theme')
 source=("git+https://gitlab.com/tista500/plata-theme.git#tag=${pkgver}")
 md5sums=('SKIP')
 

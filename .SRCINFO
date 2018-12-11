@@ -5,6 +5,7 @@ pkgbase = plata-theme-slim
 	url = https://gitlab.com/tista500/plata-theme
 	arch = any
 	license = GPL2
+	license = CCbySA4
 	makedepends = git
 	makedepends = inkscape
 	makedepends = libxml2
@@ -12,8 +13,8 @@ pkgbase = plata-theme-slim
 	makedepends = sassc
 	depends = gtk-engine-murrine
 	depends = gtk3
-	provides = plata-gtk-theme
-	conflicts = plata-gtk-theme
+	provides = plata-theme
+	conflicts = plata-theme
 	source = git+https://gitlab.com/tista500/plata-theme.git#tag=0.4.7.1
 	md5sums = SKIP
 
