@@ -1,4 +1,5 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Max Chesterfield <`echo Y2hlc3RtMDA3QGhvdG1haWwuY29tCg== | base64 -d`>
+# Contributor: Cedric Girard <girard.cedric@gmail.com>
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 # Contributor: Andrea Repetto <andrea.repetto85@gmail.com>
 # Contributor: Bogdan Szczurek <thebodzio@gmail.com>
