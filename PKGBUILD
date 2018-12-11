@@ -3,7 +3,7 @@
 
 pkgname=linux-thermaltake-rgb
 pkgdesc="Python usb daemon and controller for thermaltake rgb watercooling devices"
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 arch=('any')
 license=('GPL2')
@@ -17,11 +17,6 @@ md5sums=('SKIP')
 #  cd linux_thermaltake_riing
 #  git describe --tags | cut -d '-' -f 1
 #}
-
-check() {
-  cd "$srcdir/linux_thermaltake_riing/tests"
-  nosetests
-}
 
 build() {
   cd "$srcdir/linux_thermaltake_riing"
@@ -44,5 +39,4 @@ package() {
   
   mkdir -p "$pkgdir/etc/linux_thermaltake_rgb"
   cp "$pkgdir/usr/share/linux_thermaltake_rgb/config.yml" "$pkgdir/etc/linux_thermaltake_rgb/"
-
 } 

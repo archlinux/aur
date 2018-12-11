@@ -1,6 +1,6 @@
 pkgbase = linux-thermaltake-rgb
 	pkgdesc = Python usb daemon and controller for thermaltake rgb watercooling devices
-	pkgver = 0.0.11
+	pkgver = 0.0.12
 	pkgrel = 1
 	url = https://github.com/chestm007/linux_thermaltake_riing
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = linux-thermaltake-rgb
 	depends = python-dbus
 	depends = python-psutil
 	depends = python-pyusb
-	source = git+https://github.com/chestm007/linux_thermaltake_riing/#tag=0.0.11
+	source = git+https://github.com/chestm007/linux_thermaltake_riing/#tag=0.0.12
 	md5sums = SKIP
 
 pkgname = linux-thermaltake-rgb
