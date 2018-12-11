@@ -1,3 +1,18 @@
+2018-12-11 mrxx <mrxx at cyberhome dot at>
+
+	* PKGBUILD :
+	upgpkg: taskcoach 1.4.4
+	Set dependency python2-wxpython3 instead of wxpython2.8
+	Minor cleanups.
+
+2017-11-10 Eli Schwartz <eschwartz@archlinux.org>
+
+	* PKGBUILD :
+	upgpkg: taskcoach 1.4.3-2
+	Fix unresolvable dependency.
+	Fix unquoted $srcdir/$pkgdir.
+	Other minor cleanups.
+
 2016-02-13 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
