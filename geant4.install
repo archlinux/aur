@@ -1,16 +1,20 @@
 #!/bin/sh
 
 _init() {
-    variables=("G4ABLADATA" \
-                   "G4ENSDFSTATEDATA" \
-                   "G4LEDATA" \
-                   "G4LEVELGAMMADATA" \
-                   "G4NEUTRONHPDATA" \
-                   "G4NEUTRONXSDATA" \
-                   "G4PIIDATA" \
-                   "G4RADIOACTIVEDATA" \
-                   "G4REALSURFACEDATA" \
-                   "G4SAIDXSDATA" )
+    variables=(  "G4NEUTRONHPDATA" \
+                 "G4LEDATA" \
+                 "G4LEVELGAMMADATA" \
+                 "G4RADIOACTIVEDATA" \
+                 "G4PARTICLEXSDATA" \
+                 "G4PIIDATA" \
+                 "G4REALSURFACEDATA" \
+                 "G4SAIDXSDATA" \
+                 "G4ABLADATA" \
+                 "G4INCLDATA" \
+                 "G4ENSDFSTATEDATA" \
+                 "G4PARTICLEHPDATA" \  # not included by default anyway
+                 "G4NEUTRONXS" \       # to be removed
+              )
 
 shell=("sh" "csh")
 
@@ -27,6 +31,10 @@ _read() {
     _init
     for _varname in ${variables[*]}
     do
+	if [ "$_varname" == "G4NEUTRONXS" ]   # to be removed
+	then
+	    continue
+	fi
         for _ext in ${shell[*]}
         do
             sed -n /${_varname}/p ${path}/geant4.${_ext} >> $existing.${_ext}
