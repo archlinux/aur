@@ -1,4 +1,4 @@
-From 2658fe5a2166aa8893701e65e71dd7bdb16d9180 Mon Sep 17 00:00:00 2001
+From 916b6a82bc084162432f9ed36934940892679ebd Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
 Subject: [PATCH 01/33] Adjust win32-g++ profile for cross compilation with
@@ -163,5 +163,5 @@ index ed131c6823..b77d86cd6b 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.19.0
+2.19.2
 

@@ -1,4 +1,4 @@
-From 39c6529c65ebf9e9af4d54cec6ac45a61f4ba618 Mon Sep 17 00:00:00 2001
+From cf9119f68b3e575ef07853ab177259f4ef044e0b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:36:53 +0200
 Subject: [PATCH 02/33] Ensure GLdouble is defined when using dynamic OpenGL
@@ -9,7 +9,7 @@ FIXME: Not sure whether this is still required
  1 file changed, 2 deletions(-)
 
 diff --git a/src/gui/opengl/qopenglfunctions.h b/src/gui/opengl/qopenglfunctions.h
-index 1a43f13d9b..a4c954a453 100644
+index 00287b0665..35ad3007d1 100644
 --- a/src/gui/opengl/qopenglfunctions.h
 +++ b/src/gui/opengl/qopenglfunctions.h
 @@ -56,9 +56,7 @@
@@ -23,5 +23,5 @@ index 1a43f13d9b..a4c954a453 100644
  #ifdef Q_ENABLE_OPENGL_FUNCTIONS_DEBUG
  #include <stdio.h>
 -- 
-2.19.0
+2.19.2
 
