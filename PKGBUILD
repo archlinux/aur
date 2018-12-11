@@ -1,7 +1,7 @@
 # Maintainer: Max Kueng <me [at] maxkueng [dot] com>
 pkgname=yakyak
-pkgver=1.5.3
-_pkgid="${pkgname}-${pkgver}"
+pkgver=1.5.4
+_pkgid="${pkgname}-${pkgver}-beta-rolling"
 pkgrel=0
 pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
@@ -11,11 +11,11 @@ depends=('electron>=3.0.10')
 optdepends=('emojione-color-font: Emoji support')
 makedepends=('nodejs' 'npm')
 
-sha256sums=('e7b8d0828da2ec099bbde541fe8cfdbcb03d5e1f4cca75dd5578f9cf8b2f50a7'
+sha256sums=('901692038e797c3d971c57d1187239b0feed3f68c202876c8d694abf4bbf155b'
             '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360'
             '0a02abfbceb1029301308239f8d0a1e8e5a5565d66c561223836ecaaf7cb5046')
 
-source=("${_pkgid}.tar.gz::https://github.com/yakyak/yakyak/archive/v${pkgver}.tar.gz"
+source=("${_pkgid}.tar.gz::https://github.com/yakyak/yakyak/archive/v${pkgver}-beta-rolling.tar.gz"
         "yakyak.desktop"
         "yakyak.sh")
 
