@@ -2,35 +2,46 @@
 
 _pkgname=lxqt-config
 pkgname=$_pkgname-git
-pkgver=0.12.0.12.g7ac37d2
-pkgrel=2
+pkgver=0.13.0.580.g0e92bb1
+pkgrel=1
 pkgdesc="LXQt system configuration."
 arch=("i686" "x86_64")
 url="https://lxqt.org"
 license=("GPL2")
 depends=("liblxqt-git" "libkscreen" "libxcursor" "qt5-svg" "hicolor-icon-theme")
-makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
-provides=("$_pkgname")
+makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git" "xf86-input-libinput")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
 
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
+  cd "$_pkgname"
+  git describe --always | sed "s/-/./g"
+}
+
+prepare() {
+  cd "$_pkgname"
+
+  mkdir -p build
 }
 
 build() {
-	mkdir -p build
-	cd build
-	cmake "$srcdir/$_pkgname" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib
-	make
+  cd "$_pkgname/build"
+
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    ..
+
+  make
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir" install
+  cd "$_pkgname/build"
+
+  make DESTDIR="$pkgdir" install
 }
+
+# vim: set ts=2 sw=2 et:
