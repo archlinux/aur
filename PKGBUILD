@@ -1,13 +1,14 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=writefreely
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
 license=('AGPL3')
-depends=('mariadb')
+optdepends=('sqlite: For SQLite support',
+            'mariadb: For MariaDB support')
 backup=('var/lib/writefreely/config.ini')
 install=writefreely.install
 source=('writefreely.tmpfiles'
@@ -18,8 +19,8 @@ source=('writefreely.tmpfiles'
 sha256sums=('fe04838284663b3725d5bb1cd82ca8fbe180512d59200c88b0a5829f8e390b2d'
             '6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10'
             'dbb332d30c49a8b9f8a1f926c0b3439c1487d395fbef979481f9e76e53a3bcaa'
-            '3d36f7914c62d8c839807eaf30fb9efa43c95c1776fd441681fa9c9edaa3225b'
-            'a6fbf3b652ff9df95792c2d59233d5d1421df013cde6d2dbecf72ad27472918a')
+            '6946f0211b25743451954d2c155222df2aeaf7f49c3fafcb9183c6fc62a95ef9'
+            '9faec39501ea24cc7e76b6b3dc3476d84cf8a2a51ac9d54dcb79dfbe6e53f941')
 
 package() {
   # -o writefreely -g writefreely
