@@ -1,34 +1,37 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=libzypp
-pkgver=17.10.1
+pkgver=17.10.2
 pkgrel=1
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libzypp"
 license=('GPL')
-depends=('libsolv' 'openssl' 'curl' 'libsystemd')
-makedepends=('git' 'cmake' 'boost' 'dejagnu' 'graphviz'
-             'libxml2' 'expat' 'gnupg' 'rpm-org' 'libproxy'
-	     'asciidoc')
+depends=('libsolv-git' 'openssl' 'curl' 'libsystemd')
+makedepends=('git' 'cmake' 'ninja' 'boost' 'dejagnu' 'graphviz'
+             'libxml2' 'expat' 'gnupg' 'rpm-org' 'libproxy' 'asciidoc')
 provides=('libzypp')
 source=("https://github.com/openSUSE/libzypp/archive/${pkgver}.tar.gz")
-md5sums=('3f9bee95c62b82fcf68a009ed9716a90')
+md5sums=('a05a6d54ae2df9eede3a61fadf5a7ba3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake -D CMAKE_INSTALL_PREFIX=/usr \
+  mkdir -p build
+  cd build
+  cmake \
+    -G Ninja \
+    -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_SKIP_RPATH=1 \
     -D DISABLE_AUTODOCS=1 \
     -D DISABLE_LIBPROXY=0 \
-    .
-  make
+    ..
+  ninja
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  DESTDIR="$pkgdir/" ninja install
 
   # cmake fix (see GH#28)
   mkdir -p $pkgdir/usr/lib/cmake/Zypp
