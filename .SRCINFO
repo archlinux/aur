@@ -1,39 +1,38 @@
 pkgbase = jre
-	pkgdesc = Oracle Java Runtime Environment (public release - end of support)
-	pkgver = 10.0.2
+	pkgdesc = Oracle Java Runtime Environment
+	pkgver = 11.0.1
 	pkgrel = 1
-	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	url = https://www.oracle.com/java/
 	install = jre.install
 	arch = x86_64
-	license = custom:Oracle
-	depends = ca-certificates-java
-	depends = hicolor-icon-theme
+	license = custom
 	depends = java-runtime-common
-	depends = nss
-	depends = xdg-utils
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = libxtst
+	depends = libxrender
+	depends = libnet
 	optdepends = alsa-lib: for basic sound support
-	optdepends = gtk2: for Gtk+ look and feel (desktop)
-	provides = java-runtime=10
-	provides = java-runtime-headless=10
-	provides = java-web-start=10
-	provides = java-runtime-jre=10
-	provides = java-runtime-headless-jre=10
-	provides = java-web-start-jre=10
-	provides = java-openjfx=10
-	provides = jre10
-	conflicts = jre10
-	backup = etc/java-jre10/management/jmxremote.access
-	backup = etc/java-jre10/management/management.properties
-	backup = etc/java-jre10/security/java.policy
-	backup = etc/java-jre10/security/java.security
-	backup = etc/java-jre10/security/javaws.policy
-	backup = etc/java-jre10/logging.properties
-	backup = etc/java-jre10/net.properties
-	backup = etc/java-jre10/sound.properties
-	source = http://0install.de/files/hosted/jre-10.0.2_linux-x64_bin.tar.gz
-	source = policytool.desktop
-	sha256sums = 7d2909a597574f1821903790bb0f31aaa57ab7348e3ae53639c850371450845d
-	sha256sums = 175bf53f43aa42bcf719b9d08d6cbc926fb6e3fbdf2eea7a8090c1750a285a7f
+	provides = java-runtime=11
+	provides = java-runtime-headless=11
+	provides = java-runtime-jre=11
+	provides = java-runtime-headless-jre=11
+	backup = etc/java11-jre/management/jmxremote.access
+	backup = etc/java11-jre/management/jmxremote.password.template
+	backup = etc/java11-jre/management/management.properties
+	backup = etc/java11-jre/security/policy/limited/default_US_export.policy
+	backup = etc/java11-jre/security/policy/limited/default_local.policy
+	backup = etc/java11-jre/security/policy/limited/exempt_local.policy
+	backup = etc/java11-jre/security/policy/unlimited/default_US_export.policy
+	backup = etc/java11-jre/security/policy/unlimited/default_local.policy
+	backup = etc/java11-jre/security/policy/README.txt
+	backup = etc/java11-jre/security/java.policy
+	backup = etc/java11-jre/security/java.security
+	backup = etc/java11-jre/logging.properties
+	backup = etc/java11-jre/net.properties
+	backup = etc/java11-jre/sound.properties
+	source = https://download.oracle.com/otn-pub/java/jdk/11.0.1+13/90cf5d8f270a4347a95050320eef3fb7/jdk-11.0.1_linux-x64_bin.tar.gz
+	sha256sums = e7fd856bacad04b6dbf3606094b6a81fa9930d6dbb044bbd787be7ea93abc885
 
 pkgname = jre
 
