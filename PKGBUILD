@@ -13,17 +13,17 @@ arch=('x86_64')
 url="http://www.tecgraf.puc-rio.br/iup/"
 license=('MIT')
 makedepends=('lsb-release'
-	         'libcd'
-	         'ftgl'
-	         'webkitgtk'
-	         'openmotif'
-	         'libxpm'
-	         'lua'
-	         'lua51'
-	         'lua52'
-	         'lua-cd'
-	         'lua51-cd'
-	         'lua52-cd')
+             'libcd'
+             'ftgl'
+             'webkitgtk'
+             'openmotif'
+             'libxpm'
+             'lua'
+             'lua51'
+             'lua52'
+             'lua-cd'
+             'lua51-cd'
+             'lua52-cd')
 
 source=(
   "http://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Sources.tar.gz"
@@ -157,7 +157,7 @@ package_lua-iup() {
   pkgdesc="Lua 5.3 bindings for IUP GUI toolkit"
   depends=('iup' 'lua')
   optdepends=('lua-im: IM toolkit support'
-              'lua-cd: Canwas Draw support')
+              'lua-cd: Canvas Draw support')
 
   _lua_iup_package_helper "5.3"
 }
@@ -166,7 +166,7 @@ package_lua51-iup() {
   pkgdesc="Lua 5.1 bindings for IUP GUI toolkit"
   depends=('iup' 'lua51')
   optdepends=('lua51-im: IM toolkit support'
-              'lua51-cd: Canwas Draw support')
+              'lua51-cd: Canvas Draw support')
 
   _lua_iup_package_helper "5.1"
 }
@@ -175,7 +175,7 @@ package_lua52-iup() {
   pkgdesc="Lua 5.2 bindings for IUP GUI toolkit"
   depends=('iup' 'lua52')
   optdepends=('lua52-im: IM toolkit support'
-              'lua52-cd: Canwas Draw support')
+              'lua52-cd: Canvas Draw support')
 
   _lua_iup_package_helper "5.2"
 }

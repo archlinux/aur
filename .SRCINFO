@@ -35,19 +35,19 @@ pkgname = lua-iup
 	depends = iup
 	depends = lua
 	optdepends = lua-im: IM toolkit support
-	optdepends = lua-cd: Canwas Draw support
+	optdepends = lua-cd: Canvas Draw support
 
 pkgname = lua51-iup
 	pkgdesc = Lua 5.1 bindings for IUP GUI toolkit
 	depends = iup
 	depends = lua51
 	optdepends = lua51-im: IM toolkit support
-	optdepends = lua51-cd: Canwas Draw support
+	optdepends = lua51-cd: Canvas Draw support
 
 pkgname = lua52-iup
 	pkgdesc = Lua 5.2 bindings for IUP GUI toolkit
 	depends = iup
 	depends = lua52
 	optdepends = lua52-im: IM toolkit support
-	optdepends = lua52-cd: Canwas Draw support
+	optdepends = lua52-cd: Canvas Draw support
 
