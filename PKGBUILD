@@ -1,19 +1,19 @@
 # Maintainer: Sebastian Koller <seb.koller@gmail.com>
 pkgname=moneyguru
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="Personal finance management application"
-arch=(any)
+arch=('x86_64')
 url="http://www.hardcoded.net/${pkgname}/"
 license=('GPL3')
 depends=('python' 'python-pyqt5')
 makedepends=()
+options=(!buildflags)
 source=(https://download.hardcoded.net/${pkgname}-src-${pkgver}.tar.gz)
-md5sums=('108e1362b14c294a7a5ec2c7857b36f1')
+sha1sums=('a74fe0c1ef4ca8d30b30a4d4e61d7e0527c8ba74')
 
 package() {
-  cd "${srcdir}"
-  make PREFIX="/usr" DESTDIR="$pkgdir" install
+  make -C ${srcdir} PREFIX="/usr" DESTDIR="$pkgdir" install
 }
 
 
