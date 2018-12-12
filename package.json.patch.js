@@ -28,6 +28,6 @@ Object.keys(data.devDependencies).forEach(dep => {
 });
 
 // upgrade node-sass
-data.devDependencies['node-sass'] = '^4.9.3';
+data.devDependencies['node-sass'] = '4.10.0';
 
 fs.writeFileSync(PATCHABLE_FILE, JSON.stringify(data, null, '\t'));

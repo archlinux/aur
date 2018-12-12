@@ -2,7 +2,7 @@
 
 pkgname=keeweb
 pkgver=1.6.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/keeweb/keeweb"
@@ -23,7 +23,7 @@ source=(
 
 sha1sums=('75c054b23aa4f0f6fd067174623549f65ebe740a'
           'a8d1efc9faf9c9f38d1499ff3eda4e219c394eef'
-          'ffcb2e59ef756c1ddb9d6cdb97e1e387598dc6b1')
+          'ad73331a8a701e83a77ab9aaf6a56dc5b768b678')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
@@ -61,7 +61,7 @@ build() {
 	export LIBSASS_EXT=auto
 
 	npm install --no-package-lock
-	node_modules/.bin/grunt --skip-sign build-web-app build-desktop-app-content
+	npx grunt --skip-sign build-web-app build-desktop-app-content
 
 	asar p tmp/desktop/app ../keeweb.asar
 }
