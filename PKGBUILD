@@ -2,7 +2,7 @@
 
 pkgname=libzypp
 pkgver=17.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libzypp"
@@ -15,7 +15,7 @@ source=("https://github.com/openSUSE/libzypp/archive/${pkgver}.tar.gz")
 md5sums=('a05a6d54ae2df9eede3a61fadf5a7ba3')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   mkdir -p build
   cd build
   cmake \
@@ -30,15 +30,15 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
-  DESTDIR="$pkgdir/" ninja install
+  cd "${pkgname}-${pkgver}/build"
+  DESTDIR="${pkgdir}/" ninja install
 
   # cmake fix (see GH#28)
-  mkdir -p $pkgdir/usr/lib/cmake/Zypp
-  mv $pkgdir/usr/share/cmake/Modules/FindZypp.cmake $pkgdir/usr/lib/cmake/Zypp/ZyppConfig.cmake
-  mv $pkgdir/usr/share/cmake/Modules/ZyppCommon.cmake $pkgdir/usr/lib/cmake/Zypp/ZyppCommon.cmake
+  mkdir -p "${pkgdir}/usr/lib/cmake/Zypp"
+  mv "${pkgdir}/usr/share/cmake/Modules/FindZypp.cmake" "${pkgdir}/usr/lib/cmake/Zypp/ZyppConfig.cmake"
+  mv "${pkgdir}/usr/share/cmake/Modules/ZyppCommon.cmake" "${pkgdir}/usr/lib/cmake/Zypp/ZyppCommon.cmake"
   
   # hacky lib64 symlink fix
-  mv $pkgdir/usr/lib64/* $pkgdir/usr/lib/
-  rmdir $pkgdir/usr/lib64
+  mv "${pkgdir}"/usr/lib64/* "${pkgdir}/usr/lib/"
+  rmdir "${pkgdir}/usr/lib64"
 }
