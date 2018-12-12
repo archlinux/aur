@@ -2,6 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
 # Contributor: Apkawa <apkawa@gmail.com>
 # Contributor: Peter A. Shevtsov <pshevtsov@severusweb.ru>
+
 pkgname=mysql-docs
 pkgver=8.0
 pkgrel=1
@@ -11,7 +12,7 @@ url="http://dev.mysql.com/doc/"
 license=('GPL')
 options=('docs')
 source=("${pkgname}-${pkgver}.tar.gz::http://downloads.mysql.com/docs/refman-${pkgver}-en.html-chapter.tar.gz")
-sha256sums=('8548db6781a47cefd5ed9753f3d421e3538fd9da0fb72507732a0e4daf2983c2')
+sha256sums=('a7cae15df1726151f9cd14acd5dcc6b0f9713ccf5b4e69a223ea5b89e00e3612')
 
 package() {
   install -d ${pkgdir}/usr/share/doc/mysql/html
