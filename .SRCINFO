@@ -1,0 +1,20 @@
+pkgbase = python-robotarium-git
+	pkgdesc = A Python-based simulator for the Robotarium.
+	pkgver = r19.1ed474a
+	pkgrel = 1
+	url = https://github.com/robotarium/robotarium_python_simulator
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cvxopt
+	depends = python-scipy
+	depends = python-numpy
+	depends = python-matplotlib
+	provides = python-robotarium
+	conflicts = python-robotarium
+	source = git+https://github.com/robotarium/robotarium_python_simulator.git
+	sha256sums = SKIP
+
+pkgname = python-robotarium-git
+
