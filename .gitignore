@@ -1,4 +1,5 @@
 *.tar.xz
 src/
 pkg/
+*.asc
 *.rpm
