@@ -1,14 +1,13 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=pantheon-desktop-git
 pkgver=20180925
-pkgrel=2
+pkgrel=3
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
 license=(LGPL)
-depends=(granite-git
-  gala-git
-  cerbere-git
+makedepends=(granite-git gala-git wingpanel-standalone-git)
+depends=(cerbere-git
   contractor-git
   pantheon-applications-menu-git
   pantheon-calculator-git
@@ -50,7 +49,6 @@ depends=(granite-git
   switchboard-plug-sharing-git
   switchboard-plug-sound-git
   switchboard-plug-user-accounts-git
-  wingpanel-git
   wingpanel-indicator-bluetooth-git
   wingpanel-indicator-datetime-git
   wingpanel-indicator-keyboard-git
