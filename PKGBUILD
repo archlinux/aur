@@ -2,13 +2,11 @@
 _binname=step
 pkgname=$_binname-cli-bin
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc."
 arch=('x86_64')
 url="https://smallstep.com/cli"
 license=('MIT')
-provides=('step-cli')
-conflicts=('step-cli')
 
 source=(
 	"https://github.com/smallstep/cli/releases/download/v${pkgver}/step_${pkgver}_linux_amd64.tar.gz"
