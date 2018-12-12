@@ -2,10 +2,10 @@
 
 pkgname=php-swoole
 _extname=swoole
-pkgver=4.1.2
+pkgver=4.2.9
 pkgrel=1
 pkgdesc="Event-driven asynchronous and concurrent networking engine with high performance for PHP."
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="https://github.com/swoole/swoole-src"
 license=('Apache')
 depends=('nghttp2')
@@ -30,4 +30,4 @@ package() {
 	install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config --extension-dir)/$_extname.so"
 }
 
-sha256sums=('66706808cfdf797522517325f0385c1ba0295e0bb73ead6378393692ce801b20')
+sha256sums=('f4814b83b2877b13191a33b628514cdf765a9a4eea78a5f6266bea91d083ff9d')
