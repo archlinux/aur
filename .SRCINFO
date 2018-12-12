@@ -1,7 +1,7 @@
 pkgbase = php-32bits-fixes
 	pkgdesc = A general-purpose scripting language that is especially suited to web development, patched version to not error on large files on 32 bits system
-	pkgver = 7.2.13
-	pkgrel = 2
+	pkgver = 7.3.0
+	pkgrel = 1
 	url = http://www.php.net
 	arch = x86
 	arch = armv7h
@@ -35,15 +35,15 @@ pkgbase = php-32bits-fixes
 	depends = libzip
 	depends = pcre
 	depends = argon2
-	provides = php=7.2.13
-	provides = php-ldap=7.2.13
+	provides = php=7.3.0
+	provides = php-ldap=7.3.0
 	conflicts = php
 	conflicts = php-ldap
 	replaces = php
 	replaces = php-ldap
 	backup = etc/php/php.ini
-	source = https://php.net/distributions/php-7.2.13.tar.xz
-	source = https://php.net/distributions/php-7.2.13.tar.xz.asc
+	source = https://php.net/distributions/php-7.3.0.tar.xz
+	source = https://php.net/distributions/php-7.3.0.tar.xz.asc
 	source = apache.patch
 	source = apache.conf
 	source = php-fpm.patch
@@ -53,7 +53,7 @@ pkgbase = php-32bits-fixes
 	source = freetype.patch
 	validpgpkeys = B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F
 	validpgpkeys = 1729F83938DA44E27BA0F4D3DBDB397470D12172
-	sha512sums = 9df1d43e9cd701db10281811b328721b85cb90c6c8dae1842b0fd848cb5388328918b3040bbad7634b340550d82b93746ea479ed45f4d8a80e8a316e6324115d
+	sha512sums = d991101eb833d3a47833aa930341e75c56f26c4cb0249896728ebe209c6c02af1704fccc3052128d8f9fdffc60dcef0ece38a532697131141946898d8b1abcda
 	sha512sums = SKIP
 	sha512sums = bb9abfc51c41e1de180ef09244691c909ee64feebd9749978e1ecb7f576466a37232d9c6e97c1a01a96b8413a33c4818a91dc79f63078dc1946f56dad516bb05
 	sha512sums = eccbe1a0c7b2757ab3c982c871cc591a66ad70f085aaa0d44f93cacacedc7b8fd21b8d0c66471327ff070db1bab1ab83a802f6fa190f33bdd74c134975e3910e
