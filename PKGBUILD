@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
-pkgver=5.2.16
+pkgver=5.2.22
 _tarver=${pkgver}
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
@@ -39,7 +39,7 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarve
         '011-python-3-7.patch'
         )
 sha256sums=(
-    'c30383ad9c86b8a2d1fee03e576f0c0b6ec5354cbfba5f795bf3c5cd339bf650'
+    '5580e875349341a1aabc6d5d2f697d242f277487316faaf1fbe68d9014f788d4'
     '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
     '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
     '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
