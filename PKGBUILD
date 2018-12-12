@@ -4,7 +4,7 @@
 pkgname=compute-runtime-bin
 depver=18.48.1124
 pkgver=18.48.11934
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond (binary version)'
 arch=(x86_64)
 url='https://github.com/intel/compute-runtime'
@@ -12,8 +12,8 @@ license=(MIT)
 install=${pkgname}.install
 depends=(intel-gmmlib zlib ncurses5-compat-libs)
 optdepends=(libdrm libva ocl-icd)
-provides=(opencl-driver compute-runtime)
-conflicts=(beignet compute-runtime)
+provides=(opencl opencl-driver compute-runtime)
+conflicts=(beignet compute-runtime intel-opencl-runtime)
 
 source=(
 ${url}/releases/download/${pkgver}/intel-igc-core_${depver}_amd64.deb
@@ -55,7 +55,7 @@ package() {
     tar -xJC ${pkgdir} -f ${srcdir}/igc-opencl/data.tar.xz
     tar -xJC ${pkgdir} -f ${srcdir}/opencl/data.tar.xz
 
-    rm -f ${pkgdir}/usr/local/lib/libigdgmm.so
+    rm -f ${pkgdir}/usr/local/lib/libigdgmm.so*
     cp -af ${pkgdir}/usr/local/lib/*.so ${pkgdir}/usr/lib
     chmod 755 ${pkgdir}/usr/lib/*.so
     chown root:root ${pkgdir}/usr/lib/*.so
