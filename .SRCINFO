@@ -1,7 +1,7 @@
 pkgbase = virtualbox-beta-bin
 	pkgdesc = Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)
 	pkgver = 6.0.0.127378
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.virtualbox.org/
 	install = virtualbox-beta-bin.install
 	arch = i686

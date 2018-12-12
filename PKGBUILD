@@ -10,7 +10,7 @@ pkgver=6.0.0.127378
 _pkgver=6.0.0_RC1
 _build=127378
 _rev=75527
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
 url='https://www.virtualbox.org/'
@@ -91,7 +91,6 @@ package() {
     #                 unsupported $ORIGIN/.. in VBoxC.so and make sure the
     #                 directory is only writable by the user (paranoid)
     cd "${pkgdir}/${_installdir}"
-    chmod 511 VirtualBox VBox{SDL,Headless,NetDHCP,NetNAT,NetAdpCtl,VolInfo}
     for _lib in VBox{VMM,RT}.so
     do
         ln -s "${_installdir}/${_lib}" "components/${_lib}"
@@ -212,5 +211,4 @@ EOF
     
     # fix permissions (change executables from 4711 to 4755)
     printf '%s\n' '  -> Fixing permissions...'
-    chmod 4755 "${pkgdir}/${_installdir}"/{VBox{Headless,Net{AdpCtl,DHCP,NAT},SDL,VolInfo},VirtualBox}
 }
