@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
@@ -16,7 +16,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('5c2c4de4de65a6890e5e0d5b0ee7bdb6')
+md5sums=('8fd60919661038db3d00a0518e501090')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -54,10 +54,12 @@ package() {
 	   "$pkgdir/usr/share/man/man1/repomanage.1" \
 	   "$pkgdir/usr/share/man/man1/reposync.1" \
 	   "$pkgdir/usr/share/man/man1/yum-builddep.1" \
+	   "$pkgdir/usr/share/man/man1/yum-changelog.1" \
 	   "$pkgdir/usr/share/man/man1/yum-config-manager.1" \
 	   "$pkgdir/usr/share/man/man1/yum-debug-dump.1" \
 	   "$pkgdir/usr/share/man/man1/yum-debug-restore.1" \
 	   "$pkgdir/usr/share/man/man1/yumdownloader.1" \
+	   "$pkgdir/usr/share/man/man5/yum-changelog.conf.5" \
 	   "$pkgdir/usr/share/man/man5/yum-versionlock.conf.5" \
 	   "$pkgdir/usr/share/man/man8/yum-copr.8" \
 	   "$pkgdir/usr/share/man/man8/yum-versionlock.8"
