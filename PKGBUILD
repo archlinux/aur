@@ -1,20 +1,22 @@
+# Maintainer: Damien Molinier <damien-43\N{COMMERCIAL AT}gmx.fr>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
+_distname='Data-Printer'
+
 pkgname='perl-data-printer'
-pkgver='0.39'
+pkgver='0.40'
 pkgrel='1'
 pkgdesc="colored pretty-print of Perl data structures and objects"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-clone-pp' 'perl-file-homedir>=0.91' 'perl-package-stash>=0.3' 'perl-sort-naturally')
-makedepends=()
-url='https://metacpan.org/release/Data-Printer'
-source=('http://search.cpan.org/CPAN/authors/id/G/GA/GARU/Data-Printer-0.39.tar.gz')
-md5sums=('886abbb9bae5363eca16b5728732f659')
-sha512sums=('4110f4a8c0f1516df14e418ba4b5b2b6a30790cbf838f81a9dec862f62355cf3035f482ccd0d118bb3d16f28dd381d518c23d65b95d045444438b9721062eb9c')
-_distdir="Data-Printer-0.39"
+url="https://metacpan.org/release/${_distname}"
+source=("http://cpan.metacpan.org/authors/id/G/GA/GARU/${_distname}-${pkgver}.tar.gz")
+sha512sums=('9aa92013c4d1f43a654f2e40f797a20f2fc5576d9496bc40bfe4b63e3f2c5893ffb4b83aaeca9c27ca09ab248e18ec44c1a0ca5a34cf140f62522f7adf15f446')
+
+_distdir="${_distname}-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
