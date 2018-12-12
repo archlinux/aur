@@ -6,7 +6,7 @@
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=3.30.2+4
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -49,6 +49,11 @@ prepare() {
     echo "======= mutter-781835-workaround not installed, not applying MR276 ======="
     sleep 3
   fi
+
+  # messageTray: Re-enable unredirection when banner is destroyed 
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/304
+  # Fix performance regression with fullscreen apps, merged in master but not in 3.30
+  git cherry-pick e5ce3d54
 
   # Move the plugin to our custom epiphany-only dir
   sed -i "s/'mozilla'/'epiphany'/g" meson.build
