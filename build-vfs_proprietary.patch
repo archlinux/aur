@@ -1,0 +1,34 @@
+diff --git a/libfprint/meson.build b/libfprint/meson.build
+index 8689c9f..9dece5f 100644
+--- a/libfprint/meson.build
++++ b/libfprint/meson.build
+@@ -142,7 +142,7 @@ if aes3k
+ endif
+ 
+ other_sources = []
+-if imaging_dep.found()
++if imaging_dep != [] and imaging_dep.found()
+     other_sources += [ 'pixman.c' ]
+ endif
+ 
+@@ -163,6 +163,8 @@ libfprint_sources += configure_file(input: 'empty_file',
+                                     ])
+ 
+ deps = [ mathlib_dep, glib_dep, libusb_dep, nss_dep, imaging_dep ]
++libvfsFprintWrapper_dir='/usr/lib/'
++subdir('drivers/vfs_proprietary')
+ libfprint = library('fprint',
+                     libfprint_sources + drivers_sources + nbis_sources + other_sources,
+                     soversion: soversion,
+diff --git a/meson.build b/meson.build
+index c5c691d..2c9d126 100644
+--- a/meson.build
++++ b/meson.build
+@@ -46,6 +46,7 @@ mathlib_dep = cc.find_library('m', required: false)
+ # Drivers
+ drivers = get_option('drivers').split(',')
+ all_drivers = [ 'upekts', 'upektc', 'upeksonly', 'vcom5s', 'uru4000', 'aes1610', 'aes1660', 'aes2501', 'aes2550', 'aes2660', 'aes3500', 'aes4000', 'vfs101', 'vfs301', 'vfs5011', 'upektc_img', 'etes603', 'vfs0050', 'elan' ]
++all_drivers += [ 'vfs_proprietary' ]
+ primitive_drivers = [ 'upekts' ]
+ 
+ if drivers == [ 'all' ]
