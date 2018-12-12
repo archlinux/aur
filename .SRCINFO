@@ -1,5 +1,5 @@
 pkgbase = php-32bits-fixes
-	pkgdesc = A general-purpose scripting language that is especially suited to web development
+	pkgdesc = A general-purpose scripting language that is especially suited to web development, patched version to not error on large files on 32 bits.
 	pkgver = 7.3.0
 	pkgrel = 1
 	url = https://secure.php.net/
@@ -36,8 +36,8 @@ pkgbase = php-32bits-fixes
 	conflicts = php-ldap
 	replaces = php
 	replaces = php-ldap
-	source = https://php.net/distributions/php-32bits-fixes-7.3.0.tar.xz
-	source = https://php.net/distributions/php-32bits-fixes-7.3.0.tar.xz.asc
+	source = https://php.net/distributions/php-7.3.0.tar.xz
+	source = https://php.net/distributions/php-7.3.0.tar.xz.asc
 	source = apache.patch
 	source = apache.conf
 	source = php-fpm.patch

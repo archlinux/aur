@@ -1,6 +1,6 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
-pkgbase=php-32bits-fixes
+orig_pkg=php
 pkgname='php-32bits-fixes'
 pkgver=7.3.0
 pkgrel=1
@@ -13,8 +13,8 @@ checkdepends=('procps-ng')
 replaces=('php' 'php-ldap')
 conflicts=('php' 'php-ldap')
 provides=("php=${pkgver}" "php-ldap=${pkgver}")
-pkgdesc='A general-purpose scripting language that is especially suited to web development'
-source=("https://php.net/distributions/${pkgbase}-${pkgver}.tar.xz"{,.asc}
+pkgdesc='A general-purpose scripting language that is especially suited to web development, patched version to not error on large files on 32 bits.'
+source=("https://php.net/distributions/${orig_pkg}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'enchant-2.patch' 'freetype.patch')
 sha256sums=('7d195cad55af8b288c3919c67023a14ff870a73e3acc2165a6d17a4850a560b5'
@@ -30,7 +30,7 @@ validpgpkeys=('CBAF69F173A0FEA4B537F470D66C9593118BCCB6'
               'F38252826ACD957EF380D39F2F7956BC5DA04B5D')
 
 prepare() {
-	cd ${srcdir}/${pkgbase}-${pkgver}
+	cd ${srcdir}/${orig_pkg}-${pkgver}
 
 	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
@@ -47,7 +47,7 @@ build() {
 	CPPFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
 	CFLAGS+=' -D_FILE_OFFSET_BITS=64'
 
-	local _phpconfig="--srcdir=../${pkgbase}-${pkgver} \
+	local _phpconfig="--srcdir=../${orig_pkg}-${pkgver} \
 		--config-cache \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
@@ -122,7 +122,7 @@ build() {
 
 	mkdir ${srcdir}/build
 	cd ${srcdir}/build
-	ln -s ../${pkgbase}-${pkgver}/configure
+	ln -s ../${orig_pkg}-${pkgver}/configure
 	./configure ${_phpconfig} \
 		--enable-cgi \
 		--enable-fpm \
@@ -153,7 +153,7 @@ build() {
 }
 
 check() {
-	cd ${srcdir}/${pkgbase}-${pkgver}
+	cd ${srcdir}/${orig_pkg}-${pkgver}
 
 	# Check if sendmail was configured correctly (FS#47600)
 	${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
@@ -170,7 +170,7 @@ package() {
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
-	install -D -m644 ${srcdir}/${pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
+	install -D -m644 ${srcdir}/${orig_pkg}-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
 	install -d -m755 ${pkgdir}/etc/php/conf.d/
 
 	# remove static modules
