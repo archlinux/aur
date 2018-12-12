@@ -5,13 +5,8 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the patches!
 # https://github.com/mymedia2/tdesktop
 
-# Telegram API credentials. The defaults below are Telegram's test keys.
-# You may use you your own here for better API performance
-_api_id='17349'
-_api_hash='344583e45741c457fe1862106095a5eb'
-
 pkgname=telegram-desktop-systemqt-notoemoji
-pkgver=1.4.8
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Official Telegram Desktop client (with noto emoji)'
 arch=('x86_64')
@@ -39,6 +34,8 @@ source=(
     "tdesktop.patch"
     "no-gtk2.patch"
     "libtgvoip.patch"
+    "demibold.patch"
+    "Use-system-wide-font.patch"
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -51,9 +48,11 @@ sha512sums=('SKIP'
             'fa7042f370ae4e2e14d083395743cdee25bfedc39ab5273b5d1ab12fb074757cf76dab065f2abcb44cad018920e711142fbf24a2b9cd30f517c5a5b46d6a6182'
             'b87414ceaae19185a8a5749cea1f6d9f3fc3c69b8dd729e3db8790cde00b987c3c827cd30baf0eac579d1884e34aa2f37bb90778c3c0bc9ca211d75a82891b9d'
             'b20674f61ff6378749d1f59a6a0da194d33ccc786bd783f6ed62027924a3a8a8d27c9763bf376480432d6536896b0c7eeb8c495c5b8cefff7cf5fe84da50947e'
-            '26158910692f37f2f340165a194c2c4a4aedc5da140d80f877fecb9a6f577b15a7083468ed53ec9a915e581794ed82dec2b2b3751c017a3cc32f9ed65066e3fe'
+            'd85caca626a11aab15d5d443912dd48b5b6797409ecd1d6b34618a77bd969c33170bcdee3b43f9c1acce1b91dc0fe3b1c3bdefb2d567a0e085ee924bcede83c2'
             'a8f1708616a598fea3cb94e3b63b02a7b13b55abd129a5dc02ad502529f4ebe7a673b6a350b669290fd26135358d21e2e10bf4a11d88f58f0685b7c4ab515bc5'
-            'd60694dc701aa985b0e82a12c9732b945082470441c687b33167a94f94efcf253baf43bb7280ec160ba338485ee5c62de138e4804cae05f27cc5cf4298166d39')
+            'd60694dc701aa985b0e82a12c9732b945082470441c687b33167a94f94efcf253baf43bb7280ec160ba338485ee5c62de138e4804cae05f27cc5cf4298166d39'
+            '6d0bac5aa4c4992b5400a9a9318f7a4e92d5eab961917cf0b05cdd251ab66a77c52ec8fbef246e8019606a7624d7b5420b87f8153e071e9724c7d2f5c94e47c0'
+            'ce6be003220267bac5483caf8302b492e1581892bc36d35a61236ebf9f9d766b8bd2159557a1c36256aa85f461797a38bfaae57b12da7a72101b21c0b17ed653')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -69,6 +68,8 @@ prepare() {
     set -x
     patch -Np1 -i "$srcdir/tdesktop.patch"
     patch -Np1 -i "$srcdir/no-gtk2.patch"
+    patch -R -Np1 -i "$srcdir/demibold.patch"
+    patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
 
     # speed up builds: disable debugging information and use parallel LTO
     sed "s/@NPROC@/$(nproc)/g" "$srcdir/build-time-optimize.patch.in" >"$srcdir/build-time-optimize.patch"
@@ -84,13 +85,21 @@ prepare() {
 build() {
     cd "$srcdir/tdesktop"
     export LANG=en_US.UTF-8
-    export GYP_DEFINES="TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME"
+    export GYP_DEFINES="TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME,TDESKTOP_DISABLE_DESKTOP_FILE_GENERATION"
     export EXTRA_FLAGS="-Winvalid-pch"
     export CPPFLAGS="$CPPFLAGS $EXTRA_FLAGS"
     export CXXFLAGS="$CXXFLAGS $EXTRA_FLAGS"
+
+    # Telegram requires us to set API_ID and API_HASH for some reason but they do not provide a way to receive a pair
+    # See https://github.com/telegramdesktop/tdesktop/commit/65b2db216033aa08b7bc846df27843e566f08981 and
+    # https://github.com/telegramdesktop/tdesktop/issues/4717
+    # The official API_ID seems to be 2040 while the API_HASH is "b18441a1ff607e10a989891a5462e627".
+    # We're going to use the defaults for now but might at some point use the official ones from the official binaries as noted above.
+
     gyp \
+        -Dapi_id=17349 \
+        -Dapi_hash=344583e45741c457fe1862106095a5eb \
         -Dbuild_defines=${GYP_DEFINES} \
-        -Dapi_id=${_api_id} -Dapi_hash=${_api_hash} \
         -Gconfig=Release \
         --depth=Telegram/gyp --generator-output=../.. -Goutput_dir=out Telegram/gyp/Telegram.gyp --format=cmake
     NUM=$((`wc -l < out/Release/CMakeLists.txt` - 2))
