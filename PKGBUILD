@@ -2,7 +2,7 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 pkgname=taffybar
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 license=('BSD3')
 pkgdesc="A desktop bar similar to xmobar, but with more GUI"
 url="http://github.com/travitch/taffybar"
@@ -54,13 +54,16 @@ source=("https://github.com/taffybar/taffybar/archive/v${pkgver}.tar.gz"
         "dynamic-compilation.patch"
         "taffybar.install"
         "taffybar.service"
-        "https://raw.githubusercontent.com/taffybar/taffybar/13b32fc2bc62129093494e939339a979d641691c/xmonad.hs.example")
+        "https://raw.githubusercontent.com/taffybar/taffybar/13b32fc2bc62129093494e939339a979d641691c/xmonad.hs.example"
+        "https://github.com/taffybar/taffybar/commit/ee2cd6b871ea05bc60a050d5cefc9e307475e794.patch"
+        )
 
 sha256sums=('6d6de1a4de2c9bf4758db69c8dd322ce0ffe7fe2eb5042bac5d0857230152ffa'
             'ff90b6e3d05b3bb94cfc2365708bbabbb96fd9a9a4919c0face6f8d2b69037e7'
             'e1a1c820057c64fab4521de3c9b153e4d54e7df9a96d94679dbffc9cec245076'
             'f4a08e887ba527a24f4cecc22393023bf7230172cc76f840ddfc5cfc54182a7e'
-            '1a8ca4f177891941960585e228d5386ea9f120a1bb12ac0a956200de839032cb')
+            '1a8ca4f177891941960585e228d5386ea9f120a1bb12ac0a956200de839032cb'
+            '697275116d1a11410326dc40d9bc8d712f51f9c156b5ff241fb681b79a5ffb18')
 
 # PKGBUILD functions
 
@@ -68,8 +71,9 @@ prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     # See https://github.com/willdonnelly/dyre/issues/5
-    patch -p1 -i ../dynamic-compilation.patch
     #sed -i -e 's/Dyre.ghcOpts = \["-threaded", "-rtsopts"\]/Dyre.ghcOpts = \["-threaded", "-rtsopts", "-dynamic"\]/'  src/System/Taffybar.hs
+    patch -p1 -i ../dynamic-compilation.patch
+    patch -p1 -i ../ee2cd6b871ea05bc60a050d5cefc9e307475e794.patch
 }
 
 build() {
