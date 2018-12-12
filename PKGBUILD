@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Caffe 1.0 with triNNity extensions"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -12,7 +12,7 @@ depends=(
         'python' 'boost' 'cython' 'python-numpy' 'python-scipy'
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
-        'python-yaml' 'python-pillow' 'python-six'
+        'python-yaml' 'python-pillow' 'python-six' 'python-scikit-image'
         'opencv>=4.0.0'
 )
 optdepends=('openblas: OpenBLAS for backend linear algebra ops',
