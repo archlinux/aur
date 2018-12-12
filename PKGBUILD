@@ -7,7 +7,7 @@
 
 pkgname=telegram-desktop-systemqt-notoemoji
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Telegram Desktop client (with noto emoji)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -18,7 +18,7 @@ optdepends=('libnotify: desktop notifications')
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 
-_emojiver="v1.0"
+_emojiver=v1.1
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
@@ -44,11 +44,11 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c0983a175b5bab3c2fbc9717bd16233188fc7e6e60e0744682a17b7d41b748400924682811f6b04f88e2c0721754466a2496ccc595f7d34a45f69bd0063757f6'
+            '1f8a51acfe4c5262919fa441eb74af2312c3141cad84c677ef7aa45e9faf3d4c90ebb57c99a98b7cb8f2abe467d4777366523ecf2029b74e71c6bf5c09e98803'
             'fa7042f370ae4e2e14d083395743cdee25bfedc39ab5273b5d1ab12fb074757cf76dab065f2abcb44cad018920e711142fbf24a2b9cd30f517c5a5b46d6a6182'
             'b87414ceaae19185a8a5749cea1f6d9f3fc3c69b8dd729e3db8790cde00b987c3c827cd30baf0eac579d1884e34aa2f37bb90778c3c0bc9ca211d75a82891b9d'
             'b20674f61ff6378749d1f59a6a0da194d33ccc786bd783f6ed62027924a3a8a8d27c9763bf376480432d6536896b0c7eeb8c495c5b8cefff7cf5fe84da50947e'
-            'd85caca626a11aab15d5d443912dd48b5b6797409ecd1d6b34618a77bd969c33170bcdee3b43f9c1acce1b91dc0fe3b1c3bdefb2d567a0e085ee924bcede83c2'
+            '7922e92d0541112e8e90dbf5b60e45d707ade38aac9d56a46491656ce37ba2386815433511775ae5c5a96fe578ed8651ada20d3b736c5e71e9231ff2b6a5abe4'
             'a8f1708616a598fea3cb94e3b63b02a7b13b55abd129a5dc02ad502529f4ebe7a673b6a350b669290fd26135358d21e2e10bf4a11d88f58f0685b7c4ab515bc5'
             'd60694dc701aa985b0e82a12c9732b945082470441c687b33167a94f94efcf253baf43bb7280ec160ba338485ee5c62de138e4804cae05f27cc5cf4298166d39'
             '6d0bac5aa4c4992b5400a9a9318f7a4e92d5eab961917cf0b05cdd251ab66a77c52ec8fbef246e8019606a7624d7b5420b87f8153e071e9724c7d2f5c94e47c0'
