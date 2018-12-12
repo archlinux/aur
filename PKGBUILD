@@ -12,6 +12,8 @@ license=('GPL')
 changelog=$pkgname.changelog
 source=(http://www.pentest.co.uk/src/$pkgname-$pkgver.tar.bz2
        $pkgname.patch)
+source=(http://web.archive.org/web/20070711171847/http://www.pentest.co.uk/src/$pkgname-$pkgver.tar.bz2
+       $pkgname.patch)
 md5sums=('587ec5847647d432eac1704b260af020'
          '606530db564f269ce245997e30f9fe86')
 
