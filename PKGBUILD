@@ -1,7 +1,7 @@
 # Maintainer: Fangrui Song <i at maskray.me>
 
 pkgname=ccls
-pkgver=0.20181111
+pkgver=0.20181111.1
 pkgrel=1
 pkgdesc='C/C++/ObjC language server supporting cross references, hierarchies, completion and semantic highlighting'
 arch=('any')
