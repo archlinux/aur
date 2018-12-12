@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.30.2+3+g6ff7805c0
+pkgver=3.30.2+4
 pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -27,11 +27,6 @@ source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
 sha256sums=('SKIP'
             'SKIP')
 
-pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
-}
-
 prepare() {
   cd $_pkgname
 
@@ -39,12 +34,21 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/224
   git remote add vanvugt https://gitlab.gnome.org/vanvugt/gnome-shell.git || true
   git fetch vanvugt
-  git cherry-pick 6a3dd0fa || bash
-  git cherry-pick 5aac3f0a || bash
+  git cherry-pick 6a3dd0fa
+  git cherry-pick 5aac3f0a
 
-  # js/ui: Use captured-event::instantaneous [performance] 
+  # js/ui: Use captured-event::instantaneous [performance]
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/276
-  git cherry-pick d12c86cf || bash
+  # Requires mutter MR283/commit "clutter-actor: Add detail to captured-event signal [performance]"
+  pacman -Q | grep mutter-781835-workaround
+  if [ $? -eq 0 ]; then
+    git cherry-pick d12c86cf || bash
+    echo "======= mutter-781835-workaround detected, MR276 is applied ======="
+    sleep 3
+  else
+    echo "======= mutter-781835-workaround not installed, not applying MR276 ======="
+    sleep 3
+  fi
 
   # Move the plugin to our custom epiphany-only dir
   sed -i "s/'mozilla'/'epiphany'/g" meson.build
