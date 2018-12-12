@@ -2,7 +2,7 @@
 # Maintainer: Mark Weiman <markzz@archlinux.net>
 
 pkgbase=linux-vfio
-_srcver=4.18.16-arch1
+_srcver=4.19.8-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -30,8 +30,8 @@ sha256sums=('SKIP'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '5687fbf6508be9c133c721f368be9e572751f27798995af468a363c5f2aedd33'
-            'fc1734c1d24aca66015d93f8636afd52afa0f939516d83efb3457da6b5044944')
+            'aca1e02ec3e04122e82426762e133054a0124ce236b005fe610240a93c870b87'
+            'afb4c025d1180c1c8d9419910910f44755a4aefc711c2f0d4fee374d6b33e0d5')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
