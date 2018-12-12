@@ -5,7 +5,7 @@ pkgdesc="A command-line benchmarking tool - Precompiled binary from official rep
 url="https://github.com/sharkdp/hyperfine"
 license=("APACHE" "MIT")
 
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 
 provides=('hyperfine')
@@ -13,10 +13,10 @@ conflicts=('hyperfine')
 arch=('x86_64' 'i686')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/hyperfine-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('1757885406d956df0357d68a204a2bdb32cd4f93358eb6f72c572135c5547325')
+sha256sums_x86_64=('819de95779617e0fe41b667fa0fd587493f5300338366d0f88947d56d1556e6f')
 
 source_i686=("${url}/releases/download/v${pkgver}/hyperfine-v${pkgver}-i686-unknown-linux-gnu.tar.gz")
-sha256sums_i686=('17fbd0f50d35817ba4301386e419ceab100826aeb13b9062c2c72f255e4b8a3a')
+sha256sums_i686=('039c8133523214a18ce68c0b115183e79a229db9c56544ceded8c310b54020a9')
 
 package() {
     cd "${srcdir}/${pkgname/-bin}-v${pkgver}-${CARCH}-unknown-linux-gnu"
