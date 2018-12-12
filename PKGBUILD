@@ -6,8 +6,8 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.17.19.r13351.ff6c7a54d
-pkgrel=1
+pkgver=2.17.19
+pkgrel=2
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 
@@ -65,23 +65,21 @@ makedepends=('python-paver'
 provides=('flexget')
 conflicts=('flexget')
 
-source=('git+https://github.com/Flexget/Flexget'
+source=("git+https://github.com/Flexget/Flexget/#tag=$pkgver"
         'flexget.service'
         'flexget@.service'
         'https://patch-diff.githubusercontent.com/raw/Flexget/Flexget/pull/2225.diff'
-        'https://patch-diff.githubusercontent.com/raw/Flexget/Flexget/pull/2268.diff'
         )
 
 sha256sums=('SKIP'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             '5fca3a1b6be282c0914754bbfdeef21005d936fba3d2698801bba18369e1321a'
-            '5a22b446a33fda2174c7540c983f328797e37bd2e0ddff8342ea682dd4adce79'
-            'ab7378a209b815b493bc85728279d0e344db864ba394409be6d62b768f279951')
+            '5a22b446a33fda2174c7540c983f328797e37bd2e0ddff8342ea682dd4adce79')
 
-pkgver() {
-  cd Flexget
-  printf "%s.r%s.%s" "$(grep __version__ flexget/_version.py | sed -r "s/.*([0-9].*\.[0-9].*\.[0-9].*)\.dev.*/\1/g")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+#pkgver() {
+#  cd Flexget
+#  printf "%s.r%s.%s" "$(grep __version__ flexget/_version.py | sed -r "s/.*([0-9].*\.[0-9].*\.[0-9].*)\.dev.*/\1/g")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
 
 prepare() {
   cd "${_pkgname}"
@@ -90,7 +88,6 @@ prepare() {
   sed -i 's!requests==2.20.1!requests==2.16.5!' requirements.txt
 
   patch -p1 < ../2225.diff
-  patch -p1 < ../2268.diff
   #pip-compile --output-file requirements.txt requirements.in
   #pip-compile give too stricts requirements...
   cp requirements.in requirements.txt
@@ -125,7 +122,7 @@ package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # Make sure the perms allow reading by all
-  chmod ugo+r ${pkgdir}/usr/lib/python3.7/site-packages/FlexGet-*.*.*.dev0-py3.*.egg-info/*
+  chmod ugo+r ${pkgdir}/usr/lib/python3.7/site-packages/FlexGet-$pkgver-py3.*.egg-info/*
 
   # install systemd user unit
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
