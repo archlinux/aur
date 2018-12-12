@@ -7,7 +7,7 @@ pkgbase = javafx11-scenebuilder
 	arch = i686
 	license = BSD License
 	depends = libarchive
-	source = http://download.gluonhq.com/scenebuilder/RC/11.0.0/install/linux/scenebuilder-11.0.0.deb
+	source = https://download2.gluonhq.com/scenebuilder/RC/11.0.0/scenebuilder-11.0.0.deb
 	sha1sums = f1de8c24910133672dad126bfc2d9a011c566341
 
 pkgname = javafx11-scenebuilder
