@@ -35,7 +35,7 @@ pkgbase = libc++-rpm
 
 pkgname = libc++-rpm
 	pkgdesc = LLVM C++ standard library. (from Fedora rawhide)
-	depends = libc++abi-rpm=7.0.0-2
+	depends = libc++abi-rpm
 	provides = libc++=7.0.0-1
 	conflicts = libc++
 

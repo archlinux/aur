@@ -61,7 +61,7 @@ package_libc++-rpm() {
   fi
 
   pkgdesc='LLVM C++ standard library. (from Fedora rawhide)'
-  depends=("libc++abi-rpm=${pkgver}-${_fedoracxxabipkgrel}")
+  depends=("libc++abi-rpm")
   conflicts=('libc++')
   provides=("libc++=${pkgver}-${_fedoracxxpkgrel}")
   cd "${pkgdir}"
