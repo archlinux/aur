@@ -57,5 +57,5 @@ pkgbase = php-32bits-fixes
 	sha256sums = 3992491eebaf5b31f6b00095a7276d11682f9a8aaff473bfb25afbdcfa6eba32
 	sha256sums = 07c4648669dc05afc3c1ad5a4739768079c423b817eabf5296ca3d1ea5ffd163
 
-pkgname = phpphp-32bits-fixes
+pkgname = php-32bits-fixes
 

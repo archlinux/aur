@@ -1,7 +1,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgbase=php-32bits-fixes
-pkgname='phpphp-32bits-fixes'
+pkgname='php-32bits-fixes'
 pkgver=7.3.0
 pkgrel=1
 arch=('x86_64' 'armv7h')
