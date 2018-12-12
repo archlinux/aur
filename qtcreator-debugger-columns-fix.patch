@@ -20,6 +20,19 @@ index 8ced94f4ba..ed8f60bce8 100644
      m_breakView->setRootIsDecorated(true);
      m_breakWindow = addSearch(m_breakView);
      m_breakWindow->setObjectName(DOCKWIDGET_BREAK);
+diff --git a/src/plugins/debugger/debuggerplugin.cpp b/src/plugins/debugger/debuggerplugin.cpp
+index 3f7b01d2bd..dfc5d6c0df 100644
+--- a/src/plugins/debugger/debuggerplugin.cpp
++++ b/src/plugins/debugger/debuggerplugin.cpp
+@@ -1038,6 +1038,8 @@ bool DebuggerPluginPrivate::initialize(const QStringList &arguments,
+     m_breakpointManagerView->setSettings(settings, "Debugger.BreakWindow");
+     m_breakpointManagerView->setRootIsDecorated(true);
+     m_breakpointManagerView->setModel(BreakpointManager::model());
++    m_breakpointManagerView->header()->setStretchLastSection(false);
++    m_breakpointManagerView->header()->setSectionResizeMode(BreakpointFunctionColumn, QHeaderView::Stretch);
+     m_breakpointManagerWindow = addSearch(m_breakpointManagerView);
+     m_breakpointManagerWindow->setWindowTitle(tr("Breakpoint Preset"));
+     m_breakpointManagerWindow->setObjectName(DOCKWIDGET_BREAKPOINTMANAGER);
 diff --git a/src/plugins/debugger/stackwindow.cpp b/src/plugins/debugger/stackwindow.cpp
 index 83e6af2829..bd14a327a6 100644
 --- a/src/plugins/debugger/stackwindow.cpp
