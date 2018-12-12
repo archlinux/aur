@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Obinslab Starter for Anne Pro and Anne Pro 2"
 arch=('x86_64')
 url="http://en.obins.net/obinslab-starter"
-license=('Custom' 'Proprietary')
+license=(custom)
 groups=('')
 depends=('desktop-file-utils' 'gconf' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libnotify' 'libxss' 'libxtst' 'nss')
 options=('!strip' '!emptydirs')
@@ -19,6 +19,8 @@ package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "/opt/Obinslab Starter/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/opt/Obinslab Starter/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-CHROMIUM"
+
+	install -D -m644 "${pkgdir}/opt/Obinslab Starter/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-ELECTRON"
 
 }
