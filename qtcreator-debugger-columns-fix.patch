@@ -21,10 +21,10 @@ index 8ced94f4ba..ed8f60bce8 100644
      m_breakWindow = addSearch(m_breakView);
      m_breakWindow->setObjectName(DOCKWIDGET_BREAK);
 diff --git a/src/plugins/debugger/stackwindow.cpp b/src/plugins/debugger/stackwindow.cpp
-index 83e6af2829..b30054d0c9 100644
+index 83e6af2829..bd14a327a6 100644
 --- a/src/plugins/debugger/stackwindow.cpp
 +++ b/src/plugins/debugger/stackwindow.cpp
-@@ -32,33 +32,56 @@
+@@ -32,33 +32,53 @@
  #include <utils/savedaction.h>
  
  #include <QAction>
@@ -34,7 +34,6 @@ index 83e6af2829..b30054d0c9 100644
  namespace Internal {
  
  StackTreeView::StackTreeView()
-+    : m_contentsAdjusted(false)
  {
 -    setWindowTitle(tr("Stack"));
 -
@@ -43,21 +42,14 @@ index 83e6af2829..b30054d0c9 100644
      showAddressColumn(false);
  }
  
--void StackTreeView::showAddressColumn(bool on)
-+void StackTreeView::adjustForFirstContents()
- {
--    setColumnHidden(StackAddressColumn, !on);
--    resizeColumnToContents(StackLevelColumn);
--    resizeColumnToContents(StackLineNumberColumn);
--    resizeColumnToContents(StackAddressColumn);
-+    if (!m_contentsAdjusted)
-+        adjustForContents();
- }
- 
- void StackTreeView::setModel(QAbstractItemModel *model)
- {
-     BaseTreeView::setModel(model);
-+    connect(model, SIGNAL(stackChanged()), this, SLOT(adjustForFirstContents()));
++void StackTreeView::setModel(QAbstractItemModel *model)
++{
++    BaseTreeView::setModel(model);
++    connect(static_cast<StackHandler*>(model), &StackHandler::stackChanged,
++            this, [this]() {
++        if (!m_contentsAdjusted)
++            adjustForContents();
++    });
 +
 +    // Stretch function section to any remaining space.
 +    header()->setStretchLastSection(false);
@@ -67,14 +59,19 @@ index 83e6af2829..b30054d0c9 100644
 +    showAddressColumn(action(UseAddressInStackView)->isChecked());
 +}
 +
-+void StackTreeView::showAddressColumn(bool on)
-+{
-+    setColumnHidden(StackAddressColumn, !on);
+ void StackTreeView::showAddressColumn(bool on)
+ {
+     setColumnHidden(StackAddressColumn, !on);
+-    resizeColumnToContents(StackLevelColumn);
+-    resizeColumnToContents(StackLineNumberColumn);
+-    resizeColumnToContents(StackAddressColumn);
 +    adjustForContents();
-+}
-+
+ }
+ 
+-void StackTreeView::setModel(QAbstractItemModel *model)
 +void StackTreeView::adjustForContents()
-+{
+ {
+-    BaseTreeView::setModel(model);
 +    // Skip resizing if no contents. This will be called again once contents are available.
 +    if (!model() || model()->rowCount() == 0)
 +        return;
@@ -90,23 +87,19 @@ index 83e6af2829..b30054d0c9 100644
  
  } // namespace Internal
 diff --git a/src/plugins/debugger/stackwindow.h b/src/plugins/debugger/stackwindow.h
-index 5439ead73f..cb020b9947 100644
+index 5439ead73f..3314ee8ca6 100644
 --- a/src/plugins/debugger/stackwindow.h
 +++ b/src/plugins/debugger/stackwindow.h
-@@ -34,17 +34,21 @@ namespace Internal {
+@@ -34,8 +34,6 @@ namespace Internal {
  
  class StackTreeView : public Utils::BaseTreeView
  {
 -    Q_DECLARE_TR_FUNCTIONS(Debugger::Internal::StackTreeView)
-+    Q_OBJECT
- 
+-
  public:
      StackTreeView();
  
-+private slots:
-+    void adjustForFirstContents();
-+
- private:
+@@ -43,8 +41,9 @@ private:
      void setModel(QAbstractItemModel *model) override;
  
      void showAddressColumn(bool on);
@@ -114,7 +107,7 @@ index 5439ead73f..cb020b9947 100644
 -    void copyContentsToClipboard();
 +    void adjustForContents();
 +
-+    bool m_contentsAdjusted;
++    bool m_contentsAdjusted = false;
  };
  
  } // namespace Internal
