@@ -24,7 +24,8 @@ sha512sums=('d991101eb833d3a47833aa930341e75c56f26c4cb0249896728ebe209c6c02af170
             '06b49fb044fe8cdeef5109aa7bb6858906396e3f3643827cdb241264029579c71b0a7661d24b78b16573c54832505491c4b2a1fd77ae7c313cb082731c2efd9e'
             '97ca469d5234f5cc71af38bb99a60130fdab5f849ad1f49f112101779c7659ca4d6700aef72e0294c85bdcb18e487fc0cdda855cc51084b9e8cacb02ec0fb1eb')
 validpgpkeys=('B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F'
-              '1729F83938DA44E27BA0F4D3DBDB397470D12172')
+              '1729F83938DA44E27BA0F4D3DBDB397470D12172'
+	      'CBAF69F173A0FEA4B537F470D66C9593118BCCB6')
 
 pkgdesc='A general-purpose scripting language that is especially suited to web development, patched version to not error on large files on 32 bits system'
 depends=('libxml2' 'curl' 'libzip' 'pcre' 'argon2')
