@@ -1,7 +1,7 @@
 # Maintainer: Adam S Levy <adam@aslevy.com>
 
 pkgname='factomd'
-pkgver='6.0.1'
+pkgver='6.1.0'
 pkgrel='1'
 pkgdesc='Factom Blockchain Daemon'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
