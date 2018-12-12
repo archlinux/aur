@@ -1,19 +1,19 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=zypper
-pkgver=1.14.17
+pkgver=1.14.18
 pkgrel=1
 pkgdesc="Command line software manager using libzypp"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/zypper"
 license=('GPL')
 depends=('libzypp' 'libxml2' 'procps' 'readline' 'augeas')
-makedepends=('git' 'cmake' 'boost' 'asciidoc')
+makedepends=('git' 'cmake' 'ninja' 'boost' 'asciidoc')
 provides=('zypper' 'apt')
 conflicts=('apt')
 source=("https://github.com/openSUSE/zypper/archive/${pkgver}.tar.gz"
         'make-ZyppCommon-cmake-module-includable.patch')
-sha256sums=('9a1f74b4700e5bc547c22eb9351fb09017f9153ce987084f4664bface096e844'
+sha256sums=('feb3ac9572ac40e456cecee34cdb69a70236c0242f23b9498d3f68326eacb624'
             'f5cdd85109c58d786f1124fa3cab1c5431a93a8d87a59117eac257c6e4698ae7')
 
 
@@ -24,17 +24,21 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake -D CMAKE_INSTALL_PREFIX=/usr \
+  mkdir -p build
+  cd build
+  cmake \
+    -G Ninja \
+    -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release \
     -D LIB=/lib \
     -D ZYPP_PREFIX=/usr \
-    .
-  make
+    ..
+  ninja
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  DESTDIR="$pkgdir/" ninja install
 
   # hacky sbin symlink fix
   mv $pkgdir/usr/sbin/* $pkgdir/usr/bin/
