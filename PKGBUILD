@@ -11,7 +11,7 @@ makedepends=('boost' 'cmake')
 source=("$url/archive/release-$pkgver.tar.gz"
         "$url/pull/15.patch")
 sha256sums=('6283454ccbfecab44276344b6bc1bf74e86808fb9f539ca63eb0447d7741487e'
-            '41cdf78a74a0f6f5ef367a75a24757ab9278a04e955bf57e9e51013ed58c6688')
+            '9addf43ff4f39702ea298113512b096304ad0678d118c7cf8ecc38ead5c79959')
 
 prepare() {
     cd "$pkgname-release-$pkgver"
