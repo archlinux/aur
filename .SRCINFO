@@ -1,7 +1,7 @@
 pkgbase = yggdrasil-git
 	pkgdesc = An experiment in scalable routing as an encrypted IPv6 overlay network
-	pkgver = 0.2.7
-	pkgrel = 4
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/yggdrasil-network/yggdrasil-go
 	arch = aarch64
 	arch = armv6l
