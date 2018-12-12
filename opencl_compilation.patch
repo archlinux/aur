@@ -1,0 +1,16 @@
+ src/gallium/state_trackers/clover/llvm/compat.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git i/src/gallium/state_trackers/clover/llvm/compat.hpp w/src/gallium/state_trackers/clover/llvm/compat.hpp
+index 975012cbda..e1b1b68c49 100644
+--- i/src/gallium/state_trackers/clover/llvm/compat.hpp
++++ w/src/gallium/state_trackers/clover/llvm/compat.hpp
+@@ -58,7 +58,7 @@
+ #include <llvm/Analysis/TargetLibraryInfo.h>
+ 
+ #include <clang/Basic/TargetInfo.h>
+-#include <clang/Frontend/CodeGenOptions.h>
++#include <clang/Basic/CodeGenOptions.h>
+ #include <clang/Frontend/CompilerInstance.h>
+ 
+ namespace clover {
