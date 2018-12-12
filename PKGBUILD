@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/PurpleI2P/i2pd"
 license=('BSD')
 depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
-makedepends=('boost' 'cmake')
+makedepends=('git' 'boost' 'cmake')
 source=("${pkgname%%-git}::git+https://github.com/PurpleI2P/i2pd#branch=master")
 install="${pkgname%%-git}.install"
 

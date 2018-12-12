@@ -10,6 +10,7 @@ pkgbase = i2pd-git
 	arch = armv7h
 	arch = aarch64
 	license = BSD
+	makedepends = git
 	makedepends = boost
 	makedepends = cmake
 	depends = boost-libs
