@@ -3,7 +3,7 @@
 
 pkgname=wire-desktop-beta
 _pkgname=${pkgname%-beta}
-pkgver=3.4.2885
+pkgver=2883
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ optdepends=('hunspell-en: for English spellcheck support'
 provides=('wire-desktop')
 source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/${pkgver}.tar.gz"
         "${_pkgname}.desktop")
-sha256sums=('7bdcb33bfb23719b0840a86d294b4d4d97c59f8a7857bc609d8736dfe2b340e1'
+sha256sums=('11ffb833439393d2b1a82e36daef62c89ba60f9ce4be0609c574753b0804e625'
             'cc9056cecff2aa49a9ce9c8376d57ec8c7c2cb8174f7966b5cdccbeb2e3751ea')
 
 build() {
