@@ -1,15 +1,15 @@
 pkgbase = lib32-libpaper
 	pkgdesc = Library for handling paper characteristics (32-bit)
-	pkgver = 1.1.24
-	pkgrel = 2
+	pkgver = 1.1.26
+	pkgrel = 1
 	url = https://packages.debian.org/unstable/source/libpaper
 	arch = x86_64
 	license = GPL
 	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = libpaper
-	source = http://ftp.de.debian.org/debian/pool/main/libp/libpaper/libpaper_1.1.24+nmu5.tar.gz
-	sha256sums = e29deda4cd7350189c71af0925cbf4a4473f9841d1419a922e1e8ff1954db1f2
+	source = http://ftp.de.debian.org/debian/pool/main/libp/libpaper/libpaper_1.1.26.tar.gz
+	sha256sums = a6950b67df66a53e974ffe0baec9a52775b909dd2c51497139af2af4e46519b1
 
 pkgname = lib32-libpaper
 
