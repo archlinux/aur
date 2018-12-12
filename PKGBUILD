@@ -1,19 +1,19 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=createrepo_c
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A C implementation of createrepo, a tool to create yum repositories"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="https://github.com/rpm-software-management/$pkgname"
-depends=('curl' 'drpm' 'glib2' 'libxml2' 'rpm-org' 'sqlite' 'zlib')
+depends=('curl' 'drpm' 'glib2' 'libxml2' 'rpm-org' 'sqlite' 'zchunk' 'zlib')
 makedepends=('bash-completion' 'cmake' 'doxygen'
              'python' 'python-sphinx')
 checkdepends=('python-nose')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('eaf3f3224c265c996bee5f63109e30da')
+md5sums=('015b5e0104ce6648c99b1d7826bbcaab')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -24,12 +24,14 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"/build
 
-	cmake -DCMAKE_BUILD_TYPE=Release  \
+	cmake -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_C_FLAGS="$CFLAGS $CPPFLAGS" \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
-	      -DPYTHON_DESIRED=3          \
+	      -DPYTHON_DESIRED=3 \
+	      -DWITH_ZCHUNK=ON \
 	      ..
 
-	make
+	make VERBOSE=1
 	make doc
 }
 
