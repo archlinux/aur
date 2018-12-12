@@ -1,47 +1,50 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=zypper-git
-pkgver=1.14.18.5.g234d0c57
+pkgver=1.14.18.7.ge9dd3e4d
 pkgrel=1
 pkgdesc="Command line software manager using libzypp"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/zypper"
 license=('GPL')
 depends=('libzypp-git' 'libxml2' 'procps' 'readline' 'augeas')
-makedepends=('git' 'cmake' 'boost' 'asciidoc')
+makedepends=('git' 'cmake' 'ninja' 'boost' 'asciidoc')
 provides=('zypper' 'apt')
 conflicts=('zypper' 'apt')
 source=('git+https://github.com/openSUSE/zypper.git'
         'make-ZyppCommon-cmake-module-includable.patch')
-md5sums=('SKIP'
-         '526cf13a72658e7a3f2a07253eee07df')
+sha256sums=('SKIP'
+            'f5cdd85109c58d786f1124fa3cab1c5431a93a8d87a59117eac257c6e4698ae7')
 _gitname="zypper"
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "${_gitname}"
   echo $(git describe --always | sed -r 's/-/./g')
 }
 
 prepare() {
-  cd "$srcdir/$_gitname"
-  patch -p1 -i $srcdir/make-ZyppCommon-cmake-module-includable.patch 
+  cd "${_gitname}"
+  patch -p1 -i ../make-ZyppCommon-cmake-module-includable.patch 
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  cmake -D CMAKE_INSTALL_PREFIX=/usr \
+  cd "${_gitname}"
+  mkdir -p build && cd build
+  cmake \
+    -G Ninja \
+    -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release \
     -D LIB=/lib \
     -D ZYPP_PREFIX=/usr \
-    .
-  make
+    ..
+  ninja
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir/" install
+  cd "${_gitname}/build"
+  DESTDIR="$pkgdir/" ninja install
 
   # hacky sbin symlink fix
-  mv $pkgdir/usr/sbin/* $pkgdir/usr/bin/
-  rmdir $pkgdir/usr/sbin
+  mv "${pkgdir}"/usr/sbin/* "$pkgdir/usr/bin/"
+  rmdir "$pkgdir/usr/sbin"
 }

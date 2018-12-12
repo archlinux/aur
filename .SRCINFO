@@ -1,6 +1,6 @@
 pkgbase = zypper-git
 	pkgdesc = Command line software manager using libzypp
-	pkgver = 1.14.18.5.g234d0c57
+	pkgver = 1.14.18.7.ge9dd3e4d
 	pkgrel = 1
 	url = https://github.com/openSUSE/zypper
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = zypper-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = boost
 	makedepends = asciidoc
 	depends = libzypp-git
@@ -21,8 +22,8 @@ pkgbase = zypper-git
 	conflicts = apt
 	source = git+https://github.com/openSUSE/zypper.git
 	source = make-ZyppCommon-cmake-module-includable.patch
-	md5sums = SKIP
-	md5sums = 526cf13a72658e7a3f2a07253eee07df
+	sha256sums = SKIP
+	sha256sums = f5cdd85109c58d786f1124fa3cab1c5431a93a8d87a59117eac257c6e4698ae7
 
 pkgname = zypper-git
 
