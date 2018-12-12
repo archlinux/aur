@@ -15,7 +15,7 @@ optdepends=('mplayer: for the saver_mplayer module'\
             'mpv: for the saver_mpv module'\
             'imagemagick: for the auth_pamtester module'\
             'pamtester: for the auth_pamtester module'\
-            'xorg-apps: for the saver_blank module'\
+            'xorg-xset: for the saver_blank module'\
             'xscreensaver: for the saver_xscreensaver module')
 provides=('xsecurelock')
 conflicts=('xsecurelock')
