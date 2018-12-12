@@ -15,7 +15,7 @@ git clone ${REPO} ${WORKDIR}
 
 # Fetch version information
 pushd ${WORKDIR}
-VER=$(bash contrib/semver/version.sh | sed 's/^v//')
+VER=$(FULL=1 bash contrib/semver/version.sh | sed 's/^v//')
 
 # Replace version in PKGBUILD
 popd
