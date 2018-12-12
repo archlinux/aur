@@ -4,18 +4,18 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=simgear
-pkgver=2018.2.2
+pkgver=2018.3.1
 _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 arch=(x86_64)
-depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph')
+depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph34')
 makedepends=('boost' 'cmake' 'mesa')
 license=("GPL")
 url="http://www.flightgear.org/"
 options=('makeflags' 'staticlibs')
 source=("https://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('f61576bc36aae36f350154749df1cee396763604c06b8a71c4b50452d9151ce5')
+sha256sums=('294580c8e98044f660d2a9d202856970a4ce9d81ff0107fffcbd701d36daa06a')
 
 build() {
   cd "$srcdir"/simgear-$pkgver
