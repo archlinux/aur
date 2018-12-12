@@ -1,19 +1,21 @@
 pkgname=dnf
-pkgver=4.0.9
+pkgver=4.0.10
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2' 'GPL')
-depends=('libdnf>=0.22.3' 'libcomps>=0.1.8' 'libmodulemd>=1.4.0'
+depends=('libdnf>=0.24.1' 'libcomps>=0.1.8' 'libmodulemd>=1.4.0'
          'python' 'python-gpgme' 'python-iniparse'
          'rpm-org')
 makedepends=('bash-completion' 'cmake' 'python-sphinx')
 checkdepends=('python-nose')
 backup=("etc/$pkgname/automatic.conf"
-        "etc/$pkgname/$pkgname.conf")
+        "etc/$pkgname/$pkgname.conf"
+        "etc/$pkgname/protected.d/$pkgname.conf"
+        "etc/logrotate.d/$pkgname")
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('ea60b8c74ce6f82c751202316401c758')
+md5sums=('9a13f1b52d0de425278681b9357998e7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -43,6 +45,7 @@ package() {
 
 	rm "$pkgdir/usr/share/man/man8/yum.8" \
 	   "$pkgdir/usr/share/man/man5/yum.conf.5" \
+	   "$pkgdir/usr/share/man/man1/yum-aliases.1" \
 	   "$pkgdir/usr/share/man/man8/yum-shell.8"
 	ln -s $pkgname-3 "$pkgdir/usr/bin/$pkgname"
 	ln -s $pkgname-automatic-3 "$pkgdir/usr/bin/$pkgname-automatic"
