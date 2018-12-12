@@ -2,7 +2,7 @@
 
 pkgname=libzypp-git
 pkgver=17.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libzypp"
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'ninja' 'boost' 'dejagnu' 'graphviz'
 provides=('libzypp')
 conflicts=('libzypp')
 source=('git+https://github.com/openSUSE/libzypp.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 _gitname="libzypp"
 
 pkgver() {
