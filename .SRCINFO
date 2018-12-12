@@ -1,28 +1,24 @@
 pkgbase = dokku
 	pkgdesc = Docker powered mini-Heroku in around 100 lines of Bash.
-	pkgver = 0.12.13
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://github.com/dokku/dokku
 	install = dokku.install
 	arch = any
 	license = MIT
-	makedepends = go
-	makedepends = plugn
 	depends = bind-tools
 	depends = docker
 	depends = gliderlabs-sigil
-	depends = go
-	depends = herokuish>=0.4.4
-	depends = lsb-release
+	depends = herokuish
+	depends = net-tools
 	depends = nginx
-	depends = openbsd-netcat
-	depends = plugn>=0.3.0
-	depends = python
-	depends = sshcommand>=0.7.0
-	source = https://github.com/dokku/dokku/archive/v0.12.13.zip
+	depends = plugn
+	depends = rsyslog
+	depends = sshcommand
+	source = https://github.com/dokku/dokku/archive/v0.13.2.zip
 	source = dokku.install
-	sha256sums = 2ebb883f207da87eaf34e70a4051d42657fab79e8bcbff64bb4b3daa00403658
-	sha256sums = d8df381f8c9c170e2e446bed20beb6442dd2058ba8f0e9c5e234d31d86b2c9bc
+	sha256sums = e102ab0934d6675e6c31d2478ff3650ac949231e728512e672c71f663514e54c
+	sha256sums = 65175269313c2afcabec038d3994d940b7e60db91be270da11bfefc3febb9452
 
 pkgname = dokku
 
