@@ -1,5 +1,5 @@
 diff --git a/src/plugins/debugger/debuggerengine.cpp b/src/plugins/debugger/debuggerengine.cpp
-index 8ced94f4ba..ed8f60bce8 100644
+index 8ced94f4ba..e27a65bb6f 100644
 --- a/src/plugins/debugger/debuggerengine.cpp
 +++ b/src/plugins/debugger/debuggerengine.cpp
 @@ -647,7 +647,7 @@ void DebuggerEnginePrivate::setupViews()
@@ -11,7 +11,16 @@ index 8ced94f4ba..ed8f60bce8 100644
      m_stackView->setModel(m_stackHandler.model());
      m_stackView->setSettings(settings, "Debugger.StackView");
      m_stackView->setIconSize(QSize(10, 10));
-@@ -720,6 +720,8 @@ void DebuggerEnginePrivate::setupViews()
+@@ -668,6 +668,8 @@ void DebuggerEnginePrivate::setupViews()
+ 
+     m_threadsView = new BaseTreeView;
+     m_threadsView->setModel(m_threadsHandler.model());
++    m_threadsView->header()->setStretchLastSection(false);
++    m_threadsView->header()->setSectionResizeMode(ThreadData::FunctionColumn, QHeaderView::Stretch);
+     m_threadsView->setSortingEnabled(true);
+     m_threadsView->setSettings(settings, "Debugger.ThreadsView");
+     m_threadsView->setIconSize(QSize(10, 10));
+@@ -720,6 +722,8 @@ void DebuggerEnginePrivate::setupViews()
              this, [this](bool on) { m_breakView->setColumnHidden(BreakpointAddressColumn, !on); });
      m_breakView->setSettings(settings, "Debugger.BreakWindow");
      m_breakView->setModel(m_breakHandler.model());
