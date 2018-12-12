@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libpaper
 	pkgdesc = Library for handling paper characteristics (mingw-w64)
-	pkgver = 1.1.24
+	pkgver = 1.1.26
 	pkgrel = 1
 	url = https://packages.debian.org/unstable/source/libpaper
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = mingw-w64-libpaper
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://http.debian.net/debian/pool/main/libp/libpaper/libpaper_1.1.24+nmu5.tar.gz
+	source = http://http.debian.net/debian/pool/main/libp/libpaper/libpaper_1.1.26.tar.gz
 	source = 001-no-undefined.patch
-	sha256sums = e29deda4cd7350189c71af0925cbf4a4473f9841d1419a922e1e8ff1954db1f2
+	sha256sums = a6950b67df66a53e974ffe0baec9a52775b909dd2c51497139af2af4e46519b1
 	sha256sums = a77784a1a2dce1bf0155ee0cd889157fdbb67024e2967d3b0466a39849ac75f0
 
 pkgname = mingw-w64-libpaper
