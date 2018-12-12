@@ -10,7 +10,7 @@ pkgver=3.25
 pkgrel=2
 pkgdesc="C cross platform GUI toolkit"
 arch=('x86_64')
-url="http://www.tecgraf.puc-rio.br/iup/"
+url="https://www.tecgraf.puc-rio.br/iup/"
 license=('MIT')
 makedepends=('lsb-release'
              'libcd'
@@ -26,8 +26,8 @@ makedepends=('lsb-release'
              'lua52-cd')
 
 source=(
-  "http://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Sources.tar.gz"
-  "http://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Docs.pdf"
+  "https://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Sources.tar.gz"
+  "https://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Docs.pdf"
 )
 
 md5sums=('cecb337e3135519492466034c9d8d78b'
