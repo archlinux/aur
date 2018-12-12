@@ -1,7 +1,7 @@
 pkgbase = ruby-bacon
 	pkgdesc = a small RSpec clone
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 4
 	url = http://github.com/chneukirchen/bacon
 	arch = any
 	makedepends = ruby-rdoc
