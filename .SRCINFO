@@ -10,37 +10,37 @@ pkgbase = libc++-rpm
 	depends = gcc-libs
 	source_x86_64 = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/libcxx-7.0.0-1.fc30.x86_64.rpm
 	source_x86_64 = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/libcxx-devel-7.0.0-1.fc30.x86_64.rpm
-	source_x86_64 = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/libcxxabi-7.0.0-1.fc30.x86_64.rpm
-	source_x86_64 = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/libcxxabi-devel-7.0.0-1.fc30.x86_64.rpm
+	source_x86_64 = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/libcxxabi-7.0.0-2.fc30.x86_64.rpm
+	source_x86_64 = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/libcxxabi-devel-7.0.0-2.fc30.x86_64.rpm
 	sha256sums_x86_64 = 3726f6705ba9c6ebb2e99865a4fadcc97b695f56ec11e2613208c698df33e0f5
 	sha256sums_x86_64 = eb619542d06b774670d2bc06b67d86ddcb3b706a1e2091fd08b9128f4b1cc0d3
-	sha256sums_x86_64 = 8575d56cc65944fc9baff708246ee8b6cb7bdc4a98b6e2108d7ec6f69828b94d
-	sha256sums_x86_64 = 0baae7fe03f6734ad5bae35a3b108eed11f22d3c28c27990d8f0a84629e8628b
+	sha256sums_x86_64 = 05ab7a92ca3cb0ca402b5cafb3bd5c961f7de04e893f6a746d6f686a90b9c76b
+	sha256sums_x86_64 = 4870701fb6dda6282a00992054af361f9ee83de7d73d8ae8b1df9298e902c067
 	source_armv7h = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/armhfp/os/Packages/l/libcxx-7.0.0-1.fc30.armv7hl.rpm
 	source_armv7h = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/armhfp/os/Packages/l/libcxx-devel-7.0.0-1.fc30.armv7hl.rpm
-	source_armv7h = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/armhfp/os/Packages/l/libcxxabi-7.0.0-1.fc30.armv7hl.rpm
-	source_armv7h = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/armhfp/os/Packages/l/libcxxabi-devel-7.0.0-1.fc30.armv7hl.rpm
+	source_armv7h = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/armhfp/os/Packages/l/libcxxabi-7.0.0-2.fc30.armv7hl.rpm
+	source_armv7h = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/armhfp/os/Packages/l/libcxxabi-devel-7.0.0-2.fc30.armv7hl.rpm
 	sha256sums_armv7h = cac30f4c46b07b306589d67978e69718920aca952ad97af76a131d3cd3466f32
 	sha256sums_armv7h = 4fb5e3b013f45578f23a27d238f46bdb18315701d43732463eac1df37090c337
-	sha256sums_armv7h = bda4b17de5ddfb9526d7a164420f45342a6a85fc093ad40759bd46dc5a756ee4
-	sha256sums_armv7h = 1713f53ee886da82d48903c1cd6a130d9ff6ad8e7db9d88ea79325f894fe8a1a
+	sha256sums_armv7h = b75a78c71f4412c2dd19a49896065a1c03d3dab37f43bb21c63ce7a7d99dda31
+	sha256sums_armv7h = dfb38f1a1e511db42cf907f5de153d95a3551a4d635ff2f59b90cca1ef5857ed
 	source_aarch64 = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/l/libcxx-7.0.0-1.fc30.aarch64.rpm
 	source_aarch64 = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/l/libcxx-devel-7.0.0-1.fc30.aarch64.rpm
-	source_aarch64 = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/l/libcxxabi-7.0.0-1.fc30.aarch64.rpm
-	source_aarch64 = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/l/libcxxabi-devel-7.0.0-1.fc30.aarch64.rpm
+	source_aarch64 = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/l/libcxxabi-7.0.0-2.fc30.aarch64.rpm
+	source_aarch64 = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/l/libcxxabi-devel-7.0.0-2.fc30.aarch64.rpm
 	sha256sums_aarch64 = 4eda497a7f5b4cd9ee601783000abe93ae8dee890230080624f1d5922d5e0572
 	sha256sums_aarch64 = 0ca0149cad539d314bb3b92098974ff9fde1441b23fb5dc103d3aa0ab283675a
-	sha256sums_aarch64 = 8be62e4492e083e54d05e4ac70a5ca2cbb855a4eca5aa00f198da32cadeff2f1
-	sha256sums_aarch64 = 399ce14f0fab1f6e3c269c100fb056ec73f6a0b3af9ef9fc14aa512d4360dee5
+	sha256sums_aarch64 = 54aeaca75d0f9cbd5e1c6d64ffc99cc6d4ea2f725638202ca314f82c423d30e7
+	sha256sums_aarch64 = 97f424736100f6084d377a864a737230771db882fc7f885568603295baa96f72
 
 pkgname = libc++-rpm
 	pkgdesc = LLVM C++ standard library. (from Fedora rawhide)
-	depends = libc++abi-rpm=7.0.0-1
+	depends = libc++abi-rpm=7.0.0-2
 	provides = libc++=7.0.0-1
 	conflicts = libc++
 
 pkgname = libc++abi-rpm
 	pkgdesc = Low level support for the LLVM C++ standard library. (from Fedora rawhide)
-	provides = libc++abi=7.0.0-1
+	provides = libc++abi=7.0.0-2
 	conflicts = libc++abi
 
