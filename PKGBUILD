@@ -7,7 +7,7 @@ _fedoracxxabipkgrel=2
 pkgbase=${_pkgbase}-rpm
 pkgname=(${_pkgbase}{,abi}-rpm)
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 url="https://libcxx.llvm.org/"
 license=('MIT' 'custom:University of Illinois/NCSA Open Source License')
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -61,9 +61,9 @@ package_libc++-rpm() {
   fi
 
   pkgdesc='LLVM C++ standard library. (from Fedora rawhide)'
-  depends=("libc++abi-rpm")
+  depends=("libc++abi-rpm=${pkgver}-${pkgrel}")
   conflicts=('libc++')
-  provides=("libc++=${pkgver}-${_fedoracxxpkgrel}")
+  provides=("libc++=${pkgver}-${pkgrel}")
   cd "${pkgdir}"
   bsdtar -x -p -f "${srcdir}/libcxx-$pkgver-$_fedoracxxpkgrel.$_fedorarelease.$_ARCH.rpm"
   bsdtar -x -p -f "${srcdir}/libcxx-devel-$pkgver-$_fedoracxxpkgrel.$_fedorarelease.$_ARCH.rpm"
@@ -85,7 +85,7 @@ package_libc++abi-rpm() {
 
   pkgdesc='Low level support for the LLVM C++ standard library. (from Fedora rawhide)'
   conflicts=('libc++abi')
-  provides=("libc++abi=${pkgver}-${_fedoracxxabipkgrel}")
+  provides=("libc++abi=${pkgver}-${pkgrel}")
   cd "${pkgdir}"
   bsdtar -x -p -f "${srcdir}/libcxxabi-$pkgver-$_fedoracxxabipkgrel.$_fedorarelease.$_ARCH.rpm"
   bsdtar -x -p -f "${srcdir}/libcxxabi-devel-$pkgver-$_fedoracxxabipkgrel.$_fedorarelease.$_ARCH.rpm"

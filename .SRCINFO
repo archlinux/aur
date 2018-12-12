@@ -1,6 +1,6 @@
 pkgbase = libc++-rpm
 	pkgver = 7.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libcxx.llvm.org/
 	arch = x86_64
 	arch = armv7h
@@ -35,8 +35,8 @@ pkgbase = libc++-rpm
 
 pkgname = libc++-rpm
 	pkgdesc = LLVM C++ standard library. (from Fedora rawhide)
-	depends = libc++abi-rpm
-	provides = libc++=7.0.0-1
+	depends = libc++abi-rpm=7.0.0-2
+	provides = libc++=7.0.0-2
 	conflicts = libc++
 
 pkgname = libc++abi-rpm
