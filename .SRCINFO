@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libatomic_ops
 	pkgdesc = Provides semi-portable access to hardware provided atomic memory operations (mingw-w64)
-	pkgver = 7.6.6
+	pkgver = 7.6.8
 	pkgrel = 1
 	url = https://github.com/ivmai/libatomic_ops
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-libatomic_ops
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/ivmai/libatomic_ops/releases/download/v7.6.6/libatomic_ops-7.6.6.tar.gz
-	sha1sums = 89a320bc94860fc63069615a0a7ee6f38eee9b70
+	source = https://github.com/ivmai/libatomic_ops/releases/download/v7.6.8/libatomic_ops-7.6.8.tar.gz
+	sha1sums = 628fe98e9e1703c64028454bdfed022f18659aff
 
 pkgname = mingw-w64-libatomic_ops
 
