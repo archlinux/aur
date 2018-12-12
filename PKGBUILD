@@ -42,8 +42,8 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 
 md5sums=('c128bec162c5cff3136ad680c326579f'
          '5d87f45f3811cafbf9a4c0685a87170a'
-         'a318efbfb3d56cc554f885dd6484f1e6'
-         'e5ce7c27f31b4eb8f0c7e9415e94c9b6'
+         '172047cda180834a3f9f8325359e65e3'
+         '1a6aa653fdf7a6406d550aabb023cafe'
          '4d6b3db77bd0b712fc193aa32ba4eea8'
          '971cc2859672341d77f8deba702fb7f7'
          'b63fcf29c29796023a2677bcf2b369a7'
