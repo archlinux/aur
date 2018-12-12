@@ -3,8 +3,8 @@
 _gitname=captain-frank-cursors
 pkgname=captain-frank-cursors-git
 pkgver=r18.78d8511
-pkgrel=1
-pkgdesc="An x-cursor theme heavily based on capitaine cursors and elementary (Mint) for use on my KDE desktop."
+pkgrel=2
+pkgdesc="An x-cursor theme heavily based on capitaine cursors and elementary (Mint) for use on KDE desktop"
 arch=('any')
 url="https://github.com/ChrisP4/${_gitname}"
 license=('GPL3')

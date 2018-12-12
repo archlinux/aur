@@ -1,7 +1,7 @@
 pkgbase = captain-frank-cursors-git
-	pkgdesc = An x-cursor theme heavily based on capitaine cursors and elementary (Mint) for use on my KDE desktop.
+	pkgdesc = An x-cursor theme heavily based on capitaine cursors and elementary (Mint) for use on KDE desktop
 	pkgver = r18.78d8511
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ChrisP4/captain-frank-cursors
 	arch = any
 	license = GPL3
