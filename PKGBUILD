@@ -3,7 +3,7 @@
 
 pkgname=biglybt
 pkgver=1.7.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64')
 url="https://www.biglybt.com/"
@@ -33,7 +33,7 @@ package() {
   # preventing the start of the program via the launcher)
   find ~/.local/share/applications -name $pkgname.desktop -cmin -1 -exec rm {} +
   _user_desktop=$(xdg-user-dir DESKTOP)
-  [ "_user_desktop" ] && find "$_user_desktop" -name $pkgname.desktop -cmin -1 -exec rm -f {} +
+  [ "$_user_desktop" ] && find "$_user_desktop" -name $pkgname.desktop -cmin -1 -exec rm -f {} +
 
   cd "$srcdir"/$pkgname
 
