@@ -1,11 +1,11 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=osmium-tool
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Command line tool for working with OpenStreetMap data based on the Osmium library"
 arch=('i686' 'x86_64')
 depends=('boost-libs' 'expat')
-makedepends=('cmake' 'libosmium>=2.14.0')
+makedepends=('cmake' 'libosmium>=2.15.0')
 optdepends=('pandoc: building documentation')
 url="http://osmcode.org/osmium-tool/"
 license=('GPL3')
@@ -30,4 +30,4 @@ package() {
 	install -Dm644 ../zsh_completion/_osmium "${pkgdir}/usr/share/zsh/site-functions/_osmium"
 }
 
-sha256sums=('56d6cbc895ce86716b88152f3be788f961d0085580ba2ca024e84ba211695de5')
+sha256sums=('f0a75ce39ac92c43a01d978c1ecae05d864930bf7d518ea059d7ba320735dd66')
