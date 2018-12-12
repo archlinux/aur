@@ -2,7 +2,7 @@
 
 pkgname=zypper
 pkgver=1.14.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line software manager using libzypp"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/zypper"
@@ -18,12 +18,12 @@ sha256sums=('feb3ac9572ac40e456cecee34cdb69a70236c0242f23b9498d3f68326eacb624'
 
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   patch -p1 -i $srcdir/make-ZyppCommon-cmake-module-includable.patch 
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   mkdir -p build
   cd build
   cmake \
@@ -37,10 +37,10 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
-  DESTDIR="$pkgdir/" ninja install
+  cd "${pkgname}-${pkgver}/build"
+  DESTDIR="${pkgdir}/" ninja install
 
   # hacky sbin symlink fix
-  mv $pkgdir/usr/sbin/* $pkgdir/usr/bin/
-  rmdir $pkgdir/usr/sbin
+  mv "${pkgdir}"/usr/sbin/* "${pkgdir}/usr/bin/"
+  rmdir "${pkgdir}/usr/sbin"
 }
