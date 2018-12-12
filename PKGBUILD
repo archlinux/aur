@@ -10,9 +10,21 @@ pkgver=7.0.0
 pkgrel=2
 url="https://libcxx.llvm.org/"
 license=('MIT' 'custom:University of Illinois/NCSA Open Source License')
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 depends=('gcc-libs')
 noextract=("${source[@]##*/}")
+source_i686=(
+"$_fedorabaseurl/x86_64/$_fedorapackageurl/libcxx-$pkgver-$_fedoracxxpkgrel.$_fedorarelease.i686.rpm"
+"$_fedorabaseurl/x86_64/$_fedorapackageurl/libcxx-devel-$pkgver-$_fedoracxxpkgrel.$_fedorarelease.i686.rpm"
+"$_fedorabaseurl/x86_64/$_fedorapackageurl/libcxxabi-$pkgver-$_fedoracxxabipkgrel.$_fedorarelease.i686.rpm"
+"$_fedorabaseurl/x86_64/$_fedorapackageurl/libcxxabi-devel-$pkgver-$_fedoracxxabipkgrel.$_fedorarelease.i686.rpm"
+)
+sha256sums_i686=(
+'4c74e913425239b683a173c3b73a4e09f80fc9d8b1ee01da35ad50f4e4c864ef'
+'69f0565e5a43bb6a8246a0d0bc2c8281f309a528d7c7775fe7d20bd1e0e3ac6a'
+'fd7aeba19823fe69dc353d819a298c5e9a98f0794e168a6c1aea6a8d66fcdaf2'
+'4ed6c02e6588ec3e9488baf3dcc7b1db5743808ddab63c5be32b8589d8cbd445'
+)
 source_x86_64=(
 "$_fedorabaseurl/x86_64/$_fedorapackageurl/libcxx-$pkgver-$_fedoracxxpkgrel.$_fedorarelease.x86_64.rpm"
 "$_fedorabaseurl/x86_64/$_fedorapackageurl/libcxx-devel-$pkgver-$_fedoracxxpkgrel.$_fedorarelease.x86_64.rpm"
