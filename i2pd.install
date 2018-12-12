@@ -14,11 +14,3 @@ post_upgrade() {
     chown -R ${USER}:${USER} ${HOME}
 	chmod -R o-rwx ${HOME}
 }
-
-pre_remove() {
-    getent passwd ${USER} &>/dev/null && {
-        echo -n ">>> Removing ${USER} user... "
-        userdel ${USER}
-        echo "done"
-    }
-}
