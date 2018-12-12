@@ -3,12 +3,14 @@
 
 pkgname=('reprotest')
 pkgver=0.7.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Run a process twice and check the output for reproducibility"
 arch=('any')
-license=('GPL2' 'GPL3')
+license=('GPL3')
 url="https://salsa.debian.org/reproducible-builds/reprotest"
-depends=('python-setuptools' 'python' 'python-rstr' 'diffoscope' 'fakeroot' 'python-distro')
+depends=('python-setuptools' 'python' 'python-rstr' 'python-distro'
+         'diffoscope' 'fakeroot' 'libfaketime'
+         'python-docutils' 'help2man')
 optdepends=(
     'disorderfs: to enable the shuffle-dirents option'
     'python-progressbar: to show a progress bar during diffoscope')
@@ -23,9 +25,13 @@ validpgpkeys=("A405E58AB3725B396ED1B85C1318EFAC5FBBDBCE"
 build() {
   cd "$srcdir/${pkgname}"
   python setup.py build
+
+  make -C doc
 }
 
 package() {
   cd "$srcdir/${pkgname}"
   python setup.py install --root="$pkgdir" --optimize=1
+
+  install -Dm644  doc/reprotest.1 "${pkgdir}/usr/share/man/man1/reprotest.1"
 }
