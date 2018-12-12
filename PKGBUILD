@@ -2,7 +2,7 @@
 
 pkgname=papirus-smplayer-theme-git
 pkgver=20181024
-pkgrel=1
+pkgrel=2
 pkgdesc="Papirus theme for SMPlayer (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
 arch=('any')
