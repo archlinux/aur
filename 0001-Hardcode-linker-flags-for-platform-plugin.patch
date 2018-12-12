@@ -1,0 +1,46 @@
+From 5b16d26c0064099d26cfdf51cfd220948b396e5b Mon Sep 17 00:00:00 2001
+From: Marius Kittler <mkittler@suse.de>
+Date: Wed, 12 Dec 2018 18:16:54 +0100
+Subject: [PATCH] Hardcode linker flags for platform plugin
+
+Otherwise incorrect order of libs leads to errors
+when building libqwebgl.dll
+
+This is the same workaround as for the platform plugins
+in qtbase.
+---
+ src/plugins/platforms/webgl/webgl.pro | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/src/plugins/platforms/webgl/webgl.pro b/src/plugins/platforms/webgl/webgl.pro
+index 7f7227c..45f8f66 100644
+--- a/src/plugins/platforms/webgl/webgl.pro
++++ b/src/plugins/platforms/webgl/webgl.pro
+@@ -1,10 +1,20 @@
+ TARGET = qwebgl
+ QT += \
+     websockets \
+-    gui-private \
+-    eventdispatcher_support-private \
+-    fontdatabase_support-private \
+-    theme_support-private
++    gui-private
++
++# Fix linker error when building libqwebgl.dll by specifying linker flags forer flags for
++# required modules manually (otherwise order is messed)
++LIBS += \
++    -lQt5EventDispatcherSupport \
++    -lQt5FontDatabaseSupport \
++    -lQt5ThemeSupport \
++    -lfreetype -lole32 -lgdi32 -ldwmapi -luuid
++# However, this workaround leads to the necessity of specifying include dirs manually
++INCLUDEPATH += \} \
++    $$QT_INSTALL_PREFIX/include/qt/QtEventDispatcherSupport/$${QT_VERSION} \
++    $$QT_INSTALL_PREFIX/include/qt/QtFontDatabaseSupport/$${QT_VERSION} \
++    $$QT_INSTALL_PREFIX/include/qt/QtThemeSupport/$${QT_VERSION}
+ 
+ qtHaveModule(quick) {
+     QT += quick
+-- 
+2.20.0
+

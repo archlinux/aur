@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-qt5-webglplugin
 	pkgdesc = QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)
 	pkgver = 5.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io/
 	arch = i686
 	arch = x86_64
@@ -19,8 +19,10 @@ pkgbase = mingw-w64-qt5-webglplugin
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.12/5.12.0/submodules/qt3d-everywhere-src-5.12.0.tar.xz
-	sha256sums = a12adc9c14ffa18ff5c4951efb41914d4840a0c2a88486eb8d39a4833e4631da
+	source = https://download.qt.io/official_releases/qt/5.12/5.12.0/submodules/qtwebglplugin-everywhere-src-5.12.0.tar.xz
+	source = 0001-Hardcode-linker-flags-for-platform-plugin.patch
+	sha256sums = 65223ad13a46e38343a621459a60ea25bc9e74d6549bf62a2d54d839c66b652e
+	sha256sums = 31b168aadea2a3936419809d00e061ab09453bcfb3ca95269ac1911dfb68c34d
 
 pkgname = mingw-w64-qt5-webglplugin
 

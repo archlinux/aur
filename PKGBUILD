@@ -7,10 +7,10 @@
 # Includes dynamic and static versions; if only one version is requried, just
 # set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
-_qt_module=qt3d
+_qt_module=qtwebglplugin
 pkgname="mingw-w64-qt5-webglplugin"
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)"
 depends=('mingw-w64-qt5-declarative' 'mingw-w64-qt5-websockets')
@@ -20,8 +20,10 @@ groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('a12adc9c14ffa18ff5c4951efb41914d4840a0c2a88486eb8d39a4833e4631da')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+        '0001-Hardcode-linker-flags-for-platform-plugin.patch')
+sha256sums=('65223ad13a46e38343a621459a60ea25bc9e74d6549bf62a2d54d839c66b652e'
+            '31b168aadea2a3936419809d00e061ab09453bcfb3ca95269ac1911dfb68c34d')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -34,8 +36,11 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
 
-  # ensure qgltf is linked against zlib
-  echo 'LIBS += -L/usr/lib -lz' >> tools/qgltf/qgltf.pro
+  # apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    msg2 "Applying patch $patch"
+    patch -p1 -i "$patch"
+  done
 }
 
 build() {
@@ -45,7 +50,7 @@ build() {
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
-      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} QT_INSTALL_PREFIX="/usr/${_arch}"
       make
       popd
     done
