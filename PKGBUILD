@@ -7,7 +7,7 @@
 
 pkgname=mutter-781835-workaround
 _pkgname=mutter
-pkgver=3.30.2+3+g73d0d5e11
+pkgver=3.30.2+7
 pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -23,17 +23,14 @@ groups=(gnome)
 _commit=bcd6103c44ff74ebffd1737b8e0f3a952b83bd54  # tags/3.30.2^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         https://gitlab.gnome.org/vanvugt/mutter/commit/fc02b040f3b750b0513f812813351c09795950f6.patch
+        https://gitlab.gnome.org/GNOME/mutter/merge_requests/347.patch
         startup-notification.patch
         revert.patch)
 sha256sums=('SKIP'
             'dffa2ca19281b9fa5a81bf80bd46a8eae78325c7e1f8b2a25c33945aa7cc0903'
+            '1343ed3c21ca7ab4f179b864eae4b915b910406c3eb8259399973c29822f751c'
             '00d5e77c94e83e1987cc443ed7c47303aa33367ce912b2f665bcd34f88890a17'
             '2d2e305e0a6cca087bb8164f81bdc0ae7a5ca8e9c13c81d7fd5252eb3563fc09')
-
-pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
-}
 
 prepare() {
   cd $_pkgname
@@ -52,19 +49,19 @@ prepare() {
 
   # clutter: Fix offscreen-effect painting of clones
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/117/commits
-  # conflicts
-  # git cherry-pick 31a949de
-
-  # Geometric (GPU-less) picking
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
-  # conflicts too
-  # git cherry-pick 0fe913fe^..955d9c07
+  git cherry-pick 5c123a76 || true
+  echo 'm' | git mergetool
+  git commit -m 'nicer'
 
   # Sync to the hardware refresh rate, not just 60.00Hz [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/171/commits
-  # Disabled as requires to solve conflicts
-  # git cherry-pick cc28298c || bash
-  # git cherry-pick 3947a4de || bash
+  git cherry-pick d20697ff
+  git cherry-pick 1b310980
+
+  # Geometric (GPU-less) picking
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
+  git apply -3 ../347.patch
+  git add -A && git commit -m "347"
 
   # clutter-actor: Add detail to captured-event signal [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/283/commits
@@ -72,13 +69,13 @@ prepare() {
 
   # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281/commits
-  git cherry-pick 68af9783
-  git cherry-pick fa7125e6
+  git cherry-pick 8234efc0
+  git cherry-pick d2fbb9ff
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
 
-  # Revert offending commit
+  # Revert offending commit, recommended to comment out the line below if not using NVIDIA
   patch -Np1 -i ../revert.patch
 
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/216
