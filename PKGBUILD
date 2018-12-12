@@ -2,7 +2,7 @@
 
 pkgname=libzypp
 pkgver=17.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libzypp"
@@ -12,12 +12,11 @@ makedepends=('git' 'cmake' 'ninja' 'boost' 'dejagnu' 'graphviz'
              'libxml2' 'expat' 'gnupg' 'rpm-org' 'libproxy' 'asciidoc')
 provides=('libzypp')
 source=("https://github.com/openSUSE/libzypp/archive/${pkgver}.tar.gz")
-md5sums=('a05a6d54ae2df9eede3a61fadf5a7ba3')
+sha256sums=('3f7eced19de3b892b845147b01220de2a80dc6f721deb148c65902fe62ae5dc7')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  mkdir -p build
-  cd build
+  mkdir -p build && cd build
   cmake \
     -G Ninja \
     -D CMAKE_INSTALL_PREFIX=/usr \
