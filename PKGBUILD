@@ -10,7 +10,7 @@ pkgname=${_name}-${_channel}-${_lang,,}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 
-_version=65.0a1
+_version=66.0a1
 declare -A _build_id
 _build_id=(
 	[id]="$(curl https://ftp.mozilla.org/pub/${_name}/${_channel}/latest-mozilla-central-l10n/${_name}-${_version}.${_lang}.linux-${CARCH}.checksums | grep '.partial.mar' | cut -d' ' -f4 | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
