@@ -1,5 +1,5 @@
 pkgname=libmodulemd
-pkgver=2.0.0beta1
+pkgver=2.0.0beta2
 pkgrel=1
 pkgdesc="C Library for manipulating module metadata files"
 arch=('i686' 'x86_64')
@@ -9,15 +9,15 @@ depends=('glib2' 'libyaml')
 makedepends=('gobject-introspection' 'gtk-doc' 'meson' 'python-gobject')
 optdepends=('python-gobject: for python bindings')
 source=("$url/releases/download/$pkgname-$pkgver/${pkgname#lib}-$pkgver.tar.xz")
-md5sums=('3a6856b749df26e044731bc23f7c0b7b')
+md5sums=('96a6bf20d7615f830d67fc083da560c1')
 
 prepare() {
-	mv "${pkgname#lib}-${pkgver%beta1}" "$pkgname-$pkgver"
+	mv "${pkgname#lib}-${pkgver%beta*}" "$pkgname-$pkgver"
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-	arch-meson build -Ddeveloper_build=false -Dbuild_api_v2=true
+	arch-meson build -Ddeveloper_build=false -Dbuild_api_v1=true
 	ninja -C build
 }
 
