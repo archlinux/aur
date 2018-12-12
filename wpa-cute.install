@@ -1,0 +1,7 @@
+post_install() {
+  echo "*"
+  echo "* Hint: There is manual configuration required.  See README -> Post Install Steps"
+  echo "*       https://github.com/loh-tar/wpa-cute"
+  echo "*       And it may wise to run: wpa-cute --help"
+  echo "*"
+}
