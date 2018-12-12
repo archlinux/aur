@@ -4,7 +4,7 @@
 
 pkgname=t7-daw
 pkgver=7.2.1
-pkgrel=4
+pkgrel=6
 pkgdesc="The world's best, fully featured, completely unlimited free daw for all music creators."
 arch=('x86_64')
 url="https://www.tracktion.com/products/t7-daw"
@@ -17,6 +17,7 @@ optdepends=(
   'ladspa-plugins: A set of ladspa plugins'
 )
 provides=("t7-daw=${pkgver}" "tracktion-7=${pkgver}")
+conflicts=("tracktion-7")
 options=('!emptydirs' '!strip')
 install=${pkgname}.install
 replaces=("tracktion-7-free-daw")
@@ -25,16 +26,10 @@ sha256sums=('904b120c2d597a2f504854a3a61883ca2b1f1066fb921aca423fdb42976d8db0')
 
 package() {
   msg2 "Extracting the data.tar.lzma"
-  mkdir -p ${pkgdir}/opt/${pkgname}
-  tar -x --lzma -f data.tar.lzma -C "${pkgdir}/opt/${pkgname}/"
-  
-  cd "$pkgdir"
-  install -dm0755 opt/$pkgname usr/bin usr/share/applications/ usr/share/doc usr/share/mime/packages usr/share/pixmaps
-
-  ln -sf /opt/$pkgname/usr/bin/Tracktion7 usr/bin/Tracktion7
-  ln -sf /opt/$pkgname/usr/bin/Tracktion7 usr/bin/tracktion7
-  ln -sf /opt/$pkgname/usr/share/applications/tracktion7.desktop usr/share/applications/tracktion7.desktop
-  ln -sf /opt/$pkgname/usr/share/doc/tracktion7 usr/share/doc/tracktion7
-  ln -sf /opt/$pkgname/usr/share/mime/packages/tracktion7.xml usr/share/mime/packages/tracktion7.xml
-  ln -sf /opt/$pkgname/usr/share/pixmaps/tracktion7.png usr/share/pixmaps/tracktion7.png
+  tar -x --lzma -f data.tar.lzma -C "${pkgdir}"
+  cd "${pkgdir}"
+  mv usr/share/doc/tracktion7 usr/share/doc/t7-daw
+  # Uncomment if you do not like binary called with capital T
+  #ln -sf Tracktion7 usr/bin/tracktion7
+  #ln -sf Tracktion7 usr/bin/t7-daw
 }

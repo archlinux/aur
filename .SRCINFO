@@ -1,7 +1,7 @@
 pkgbase = t7-daw
 	pkgdesc = The world's best, fully featured, completely unlimited free daw for all music creators.
 	pkgver = 7.2.1
-	pkgrel = 4
+	pkgrel = 6
 	url = https://www.tracktion.com/products/t7-daw
 	install = t7-daw.install
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = t7-daw
 	optdepends = ladspa-plugins: A set of ladspa plugins
 	provides = t7-daw=7.2.1
 	provides = tracktion-7=7.2.1
+	conflicts = tracktion-7
 	replaces = tracktion-7-free-daw
 	options = !emptydirs
 	options = !strip
