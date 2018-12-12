@@ -5,10 +5,10 @@
 
 pkgname=st-qguv-git
 _pkgname=st
-pkgver=20160725.642a678
+pkgver=20181212.68471aea5012
 pkgrel=1
-pkgdesc='Simple virtual terminal emulator for X'
-url='http://git.suckless.org/st/'
+pkgdesc="Simple virtual terminal emulator for X, qguv's fork"
+url='https://github.com/qguv/dwm'
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('libxft')
