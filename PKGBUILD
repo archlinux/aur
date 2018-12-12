@@ -1,8 +1,8 @@
 pkgname=pycharm-community-eap
-_buildver=183.4588.64
-_pkgver=2018.3.1
+_buildver=183.4886.18
+_pkgver=2018.3.2
 pkgver=$_pkgver.$_buildver
-pkgrel=2
+pkgrel=1
 epoch=2
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build. Community edition.'
 arch=(any)
@@ -12,8 +12,8 @@ license=(Apache)
 depends=(java-environment libdbusmenu-glib)
 provides=(pycharm-community-edition)
 conflicts=(pycharm-community-edition)
-source=("https://download.jetbrains.com/python/pycharm-community-$_pkgver.tar.gz"{,.sha256})
-sha256sums=($(cut -f1 -d' ' "pycharm-community-$_pkgver.tar.gz.sha256") SKIP)
+source=("https://download.jetbrains.com/python/pycharm-community-$_buildver.tar.gz"{,.sha256})
+sha256sums=($(cut -f1 -d' ' "pycharm-community-$_buildver.tar.gz.sha256") SKIP)
 PKGEXT=${PKGEXT:-'.pkg.tar'}
 
 build() {
