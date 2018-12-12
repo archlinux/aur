@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-extras
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Extras DNF Plugins"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('snapper: for snapper plugin'
 backup=('etc/dnf/plugins/rpmconf.conf'
         'etc/dnf/plugins/torproxy.conf')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('c8c17d87643620ca1d41f0dec14f4163')
+md5sums=('3d3f167264ce25b4361eba4db177d972')
 
 prepare() {
 	cd "$pkgname-$pkgver"
