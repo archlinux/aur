@@ -1,8 +1,8 @@
 pkgbase = azure-functions-core-tools-bin
 	pkgdesc = Command line tools for Azure Functions
 	pkgver = 2.3.148
-	pkgrel = 1
-	url = https://github.com/Microsoft/azure-functions-core-tools
+	pkgrel = 2
+	url = https://github.com/Azure/azure-functions-core-tools
 	arch = x86_64
 	license = MIT
 	optdepends = dotnet-runtime

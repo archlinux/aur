@@ -2,10 +2,10 @@
 _name=azure-functions-core-tools
 pkgname=$_name-bin
 pkgver=2.3.148
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tools for Azure Functions"
 arch=('x86_64')
-url="https://github.com/Microsoft/$_name"
+url="https://github.com/Azure/$_name"
 license=('MIT')
 optdepends=('dotnet-runtime') # https://github.com/Azure/azure-functions-core-tools/issues/367
 options=('staticlibs')
