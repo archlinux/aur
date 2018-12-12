@@ -1,0 +1,16 @@
+pkgbase = ruby-marcel
+	pkgdesc = Simple mime type detection using magic numbers, filenames, and extensions
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/basecamp/marcel
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-mimemagic
+	noextract = marcel-0.3.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/marcel-0.3.3.gem
+	sha1sums = a4cf7bd4bd3cc8da6275133dbc9745458653fdf4
+
+pkgname = ruby-marcel
+
