@@ -1,6 +1,6 @@
 pkgbase = archipelago-git
 	pkgdesc = A terminal for a more modern age
-	pkgver = v1.0.5.r153.a18a53f
+	pkgver = v2.3.2.r482.61afeb0
 	pkgrel = 1
 	url = https://github.com/npezza93/archipelago
 	arch = x86_64
