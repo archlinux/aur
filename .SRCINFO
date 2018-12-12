@@ -1,6 +1,6 @@
 pkgbase = aom-git
 	pkgdesc = An open, royalty-free video coding format designed for video transmissions over the Internet
-	pkgver = 1.0.0.r295.g8853196577
+	pkgver = 1.0.0.r1028.g78e6b2cb84
 	pkgrel = 1
 	url = https://aomedia.org/
 	arch = i686
