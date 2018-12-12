@@ -1,14 +1,16 @@
 pkgbase = cpuset
 	pkgdesc = Cpuset is a Python application to make using the cpusets facilities in the Linux kernel easier.
-	pkgver = 1.5.7
-	pkgrel = 2
+	pkgver = 1.6
+	pkgrel = 1
 	url = https://github.com/lpechacek/cpuset/
 	arch = any
 	license = GPL2
 	depends = python2
+	depends = python2-future
+	depends = python2-configparser
 	options = !emptydirs
-	source = https://github.com/lpechacek/cpuset/archive/v1.5.7.tar.gz
-	md5sums = 6ad79b26ba03f559604d74513cc34392
+	source = https://github.com/lpechacek/cpuset/archive/v1.6.tar.gz
+	md5sums = 365dcccfef9ac095530821a7e711b308
 
 pkgname = cpuset
 
