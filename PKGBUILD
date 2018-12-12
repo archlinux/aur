@@ -41,7 +41,6 @@ package(){
   cd build
   make DESTDIR=$pkgdir install
   install -Dm0644 ../contrib/debian/${pkgname%%-git}.service $pkgdir/usr/lib/systemd/system/${pkgname%%-git}.service
-  install -Dm0644 ../contrib/debian/${pkgname%%-git}.tmpfile $pkgdir/usr/lib/tmpfiles.d/${pkgname%%-git}.conf
 
   install -Dm0644 $srcdir/${pkgname%%-git}/contrib/i2pd.conf $pkgdir/${_conf_dest}/${pkgname%%-git}.conf
   install -Dm0644 $srcdir/${pkgname%%-git}/contrib/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
