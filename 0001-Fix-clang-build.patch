@@ -1,7 +1,7 @@
---- a/qtbase/mkspecs/android-clang/qmake.conf	2018-09-13 01:25:10.000000000 -0300
-+++ b/qtbase/mkspecs/android-clang/qmake.conf	2018-09-23 15:53:19.000000000 -0300
-@@ -31,16 +31,17 @@
- 
+--- a/qtbase/mkspecs/android-clang/qmake.conf	2018-12-03 08:15:26.000000000 -0300
++++ b/qtbase/mkspecs/android-clang/qmake.conf	2018-12-11 14:07:47.497103671 -0300
+@@ -31,18 +31,19 @@
+
  QMAKE_CFLAGS += -gcc-toolchain $$NDK_TOOLCHAIN_PATH
  QMAKE_LINK    = $$QMAKE_CXX $$QMAKE_CFLAGS -Wl,--exclude-libs,libgcc.a
 -QMAKE_CFLAGS += -DANDROID_HAS_WSTRING --sysroot=$$NDK_ROOT/sysroot \
@@ -12,12 +12,14 @@
 -                -isystem $$NDK_ROOT/sources/cxx-stl/llvm-libc++abi/include
 +                -isystem $$NDK_ROOT/sources/cxx-stl/llvm-libc++abi/include \
 +                -isystem $$NDK_ROOT/sysroot/usr/include
- 
+
  ANDROID_SOURCES_CXX_STL_LIBDIR = $$NDK_ROOT/sources/cxx-stl/llvm-libc++/libs/$$ANDROID_TARGET_ARCH
- 
+
  ANDROID_STDCPP_PATH = $$ANDROID_SOURCES_CXX_STL_LIBDIR/libc++_shared.so
--ANDROID_CXX_STL_LIBS = -lc++
-+ANDROID_CXX_STL_LIBS = -lc++_shared
- 
- QMAKE_CFLAGS_OPTIMIZE_SIZE = -Oz
- 
+
+ exists($$ANDROID_SOURCES_CXX_STL_LIBDIR/libc++.so): \
+-    ANDROID_CXX_STL_LIBS = -lc++
++    ANDROID_CXX_STL_LIBS = -lc++_shared
+ else: \
+     ANDROID_CXX_STL_LIBS = $$ANDROID_SOURCES_CXX_STL_LIBDIR/libc++.so.$$replace(ANDROID_PLATFORM, "android-", "")
+

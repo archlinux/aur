@@ -1,20 +1,29 @@
---- a/qtbase/src/tools/androiddeployqt/main.cpp	2018-09-13 01:25:10.000000000 -0300
-+++ b/qtbase/src/tools/androiddeployqt/main.cpp	2018-11-28 11:01:22.654317806 -0300
-@@ -1629,7 +1629,7 @@
+--- a/qtbase/src/tools/androiddeployqt/main.cpp	2018-12-03 08:15:26.000000000 -0300
++++ b/qtbase/src/tools/androiddeployqt/main.cpp	2018-12-11 13:52:56.700766773 -0300
+@@ -1663,7 +1663,7 @@
          rootPath += QLatin1Char('/');
- 
+
      QStringList importPaths;
 -    importPaths += shellQuote(options->qtInstallDirectory + QLatin1String("/qml"));
 +    importPaths += shellQuote(options->qtInstallDirectory + QLatin1String("/lib/qt/qml"));
      importPaths += rootPath;
      for (const QString &qmlImportPath : qAsConst(options->qmlImportPaths))
          importPaths += shellQuote(qmlImportPath);
-@@ -1760,7 +1760,7 @@
+@@ -1758,7 +1758,7 @@
+                     fprintf(stdout, "    -- Appending dependency found by qmlimportscanner: %s\n", qPrintable(fileName.absolutePath));
+
+                 // Put all imports in default import path in assets
+-                fileName.relativePath.prepend(QLatin1String("qml/"));
++                fileName.relativePath.prepend(QLatin1String("lib/qt/qml/"));
+                 options->qtDependencies.append(fileName);
+
+                 if (fileName.absolutePath.endsWith(QLatin1String(".so"))) {
+@@ -1794,7 +1794,7 @@
          return false;
- 
+
      // Jam in the dependencies of the platform plugin, since the application will crash without it
 -    if (!readDependenciesFromElf(options, options->qtInstallDirectory + QLatin1String("/plugins/platforms/android/libqtforandroid.so"), &usedDependencies, &remainingDependencies))
 +    if (!readDependenciesFromElf(options, options->qtInstallDirectory + QLatin1String("/lib/qt/plugins/platforms/android/libqtforandroid.so"), &usedDependencies, &remainingDependencies))
          return false;
- 
-     QString qtDir = options->qtInstallDirectory + QLatin1Char('/');
+
+     while (!remainingDependencies.isEmpty()) {
