@@ -1,8 +1,8 @@
 pkgbase = nutstore-experimental
 	pkgdesc = Nutstore experimental version.
-	pkgver = 4.1.4
-	pkgrel = 3
-	url = https://jianguoyun.com/
+	pkgver = 4.1.5
+	pkgrel = 1
+	url = https://www.jianguoyun.com/
 	arch = x86_64
 	license = custom
 	depends = libappindicator-gtk3
@@ -15,8 +15,8 @@ pkgbase = nutstore-experimental
 	source = license
 	sha256sums = 3091740b20ddd31ba4407b8daba1077c4677040cdc47bccfab2f7f3947676384
 	sha256sums = f3d2861ff48f2d193a4eced23a02b4eba9fab4c1d3f727e934ed7c59f38f0f7e
-	source_x86_64 = https://jianguoyun.com/static/exe/ex/4.1.4/nutstore_client-4.1.4-linux-x64-public.tar.gz
-	sha256sums_x86_64 = b0ec672174b7f3d100d41bb6ab8768d45cfb36aef47b5e80a3560bec8842bf84
+	source_x86_64 = https://www.jianguoyun.com/static/exe/ex/4.1.5/nutstore_client-4.1.5-linux-x64-public.tar.gz
+	sha256sums_x86_64 = 9d41854c2d654085c2004b5da738c3ba9152d5de8c15a9fb9d1df8efd2e021a3
 
 pkgname = nutstore-experimental
 
