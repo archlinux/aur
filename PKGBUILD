@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-beta-ffmpeg-codecs
-pkgver=70.0.3538.102
+pkgver=71.0.3578.80
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-beta"
 arch=('x86_64')
@@ -15,10 +15,8 @@ makedepends=(
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
-  'chromium-FORTIFY_SOURCE-r2.patch'
 )
-sha512sums=('ceb997f1b945ad4159f5434a1593a4d60c78a695cb356430ad76b52eb0350bd4b9af0c61a5304dc7176f6598a129987944e63d1a7798d907730c66cbcae4e201'
-            '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c')
+sha512sums=('79b0f5ebe71a34d9f5215df1b4e47071f2337bb480fbec591011653acdfe524419bd10efdeab334ac34c07bc4eb2c485d60a9c3b2f053a721271130ff98af516')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -31,7 +29,6 @@ prepare() {
   mkdir "$srcdir/path"
   ln -s /usr/bin/python2 "$srcdir/path/python"
 
-  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r2.patch"
 }
 
 build() {
@@ -44,7 +41,7 @@ build() {
   #export CC="clang"
   #export CXX="clang++"
 
-  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true use_gnome_keyring=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=false clang_use_chrome_plugins=false is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false use_lld=false use_jumbo_build=false"
+  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true enable_ac3_eac3_audio_demuxing=true use_gnome_keyring=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=false clang_use_chrome_plugins=false is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false use_lld=false use_jumbo_build=false"
 
   #(
     #cd third_party/ffmpeg
