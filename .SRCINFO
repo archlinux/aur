@@ -1,6 +1,6 @@
 pkgbase = gnuplot-git
 	pkgdesc = A command-line driven interactive function and data plotting utility - git version
-	pkgver = 5.3r20181007.10587
+	pkgver = 5.3r20181209.10646
 	pkgrel = 1
 	url = https://github.com/gnuplot/gnuplot
 	arch = i686

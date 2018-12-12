@@ -3,7 +3,8 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.3r20181007.10587
+pkgver=5.3r20181209.10646
+_majorver=5.3
 pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility - git version"
 arch=('i686' 'x86_64')
@@ -20,7 +21,7 @@ options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf "5.3r%s.%s" $(git log -1 --format="%cd" --date=short | tr -d '-') \
+  printf "%sr%s.%s" $(echo $_majorver) $(git log -1 --format="%cd" --date=short | tr -d '-') \
 	 "$(git rev-list --count HEAD)"
 }
 
@@ -55,7 +56,7 @@ build() {
 
 package() {
   cd ${pkgname%-git}
-  make DESTDIR="$pkgdir" install
+  make pkglibexecdir=/usr/bin DESTDIR="$pkgdir" install
 
   install -Dm644 Copyright "$pkgdir"/usr/share/licenses/$pkgname/Copyright
 }
