@@ -3,12 +3,12 @@
 pkgname=mblock
 orginalname=mBlock
 pkgver="4.0.0"
-pkgrel=3
+pkgrel=4
 pkgdesc="Program Robots / Arduino Without writing a single line of code"
 arch=('x86_64')
 url="http://www.mblock.cc/"
 license=('GPL')
-depends=(systemd)
+depends=('systemd' 'gconf')
 
 source=("https://github.com/Makeblock-official/$orginalname/releases/download/V$pkgver-Linux/$orginalname-$pkgver-linux-$pkgver.tar.gz"
 	"$pkgname.install"
