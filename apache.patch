@@ -1,6 +1,6 @@
 --- sapi/apache2handler/config.m4.orig
 +++ sapi/apache2handler/config.m4
-@@ -122,7 +122,6 @@
+@@ -113,7 +113,6 @@
        PHP_BUILD_THREAD_SAFE
      fi
    else

@@ -1,41 +1,36 @@
-# $Id$
-# Original: Maintainer: Pierre Schmitz <pierre@archlinux.de>
-# Maintainer of forked PHP package: Marc Cousin <cousinmarc@gmail.com>
+# Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname='php-32bits-fixes'
+pkgbase=php-32bits-fixes
+pkgname='phpphp-32bits-fixes'
 pkgver=7.3.0
 pkgrel=1
-arch=('x86' 'armv7h')
+arch=('x86_64' 'armv7h')
 license=('PHP')
-url='http://www.php.net'
+url='https://secure.php.net/'
 makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libsodium' 'libxslt' 'libzip' 'net-snmp'
-             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre' 'libnsl')
+             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre2' 'libnsl')
 checkdepends=('procps-ng')
-source=("https://php.net/distributions/php-${pkgver}.tar.xz"{,.asc}
-        'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
-        'enchant-2.patch' 'freetype.patch')
-sha512sums=('d991101eb833d3a47833aa930341e75c56f26c4cb0249896728ebe209c6c02af1704fccc3052128d8f9fdffc60dcef0ece38a532697131141946898d8b1abcda'
-            'SKIP'
-            'bb9abfc51c41e1de180ef09244691c909ee64feebd9749978e1ecb7f576466a37232d9c6e97c1a01a96b8413a33c4818a91dc79f63078dc1946f56dad516bb05'
-            'eccbe1a0c7b2757ab3c982c871cc591a66ad70f085aaa0d44f93cacacedc7b8fd21b8d0c66471327ff070db1bab1ab83a802f6fa190f33bdd74c134975e3910e'
-            'c5d57a4d06d33856082a461a6796975ec42b655e81abe14bc896692d44b5c28e9b344111e64d13af486168b3dc927d908705e543095f34052f72198f257b4c34'
-            '824e9a0d10063283357d49a81ab49bf834afd24f098482bdbaa9ab60bbad2b0dea6f5879259b73717d437626b02fb4f2d3ef68b7bcbb26bee274a7b61144720f'
-            '85000bcb4f5674bfcbac7f32aeb28c523904a23da716e7fd982ac225845843e0acb33c0b8552107c234b1dd106337ad0a6792253f200980b88a6f6239ec982d0'
-            '06b49fb044fe8cdeef5109aa7bb6858906396e3f3643827cdb241264029579c71b0a7661d24b78b16573c54832505491c4b2a1fd77ae7c313cb082731c2efd9e'
-            '97ca469d5234f5cc71af38bb99a60130fdab5f849ad1f49f112101779c7659ca4d6700aef72e0294c85bdcb18e487fc0cdda855cc51084b9e8cacb02ec0fb1eb')
-validpgpkeys=('B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F'
-              '1729F83938DA44E27BA0F4D3DBDB397470D12172'
-	      'CBAF69F173A0FEA4B537F470D66C9593118BCCB6')
-
-pkgdesc='A general-purpose scripting language that is especially suited to web development, patched version to not error on large files on 32 bits system'
-depends=('libxml2' 'curl' 'libzip' 'pcre' 'argon2')
 replaces=('php' 'php-ldap')
 conflicts=('php' 'php-ldap')
 provides=("php=${pkgver}" "php-ldap=${pkgver}")
-backup=('etc/php/php.ini')
+pkgdesc='A general-purpose scripting language that is especially suited to web development'
+source=("https://php.net/distributions/${pkgbase}-${pkgver}.tar.xz"{,.asc}
+        'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
+        'enchant-2.patch' 'freetype.patch')
+sha256sums=('7d195cad55af8b288c3919c67023a14ff870a73e3acc2165a6d17a4850a560b5'
+            'SKIP'
+            '62e5ceea3c90a3c6eab1166488f876e766efcfd7d4e973c44060a9e72d51a98a'
+            'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
+            '3de3c76930874c81824c23aa033cb9e66631659fd31f925d7c58f0479aeb18a9'
+            '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
+            'ba63ff727d911882726e4e5e513249d29e9ccc842ebee10a07b160b4718ba20d'
+            '3992491eebaf5b31f6b00095a7276d11682f9a8aaff473bfb25afbdcfa6eba32'
+            '07c4648669dc05afc3c1ad5a4739768079c423b817eabf5296ca3d1ea5ffd163')
+validpgpkeys=('CBAF69F173A0FEA4B537F470D66C9593118BCCB6'
+              'F38252826ACD957EF380D39F2F7956BC5DA04B5D')
 
 prepare() {
-	cd ${srcdir}/php-${pkgver}
+	cd ${srcdir}/${pkgbase}-${pkgver}
 
 	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
@@ -52,7 +47,7 @@ build() {
 	CPPFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
 	CFLAGS+=' -D_FILE_OFFSET_BITS=64'
 
-	local _phpconfig="--srcdir=../php-${pkgver} \
+	local _phpconfig="--srcdir=../${pkgbase}-${pkgver} \
 		--config-cache \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
@@ -127,7 +122,7 @@ build() {
 
 	mkdir ${srcdir}/build
 	cd ${srcdir}/build
-	ln -s ../php-${pkgver}/configure
+	ln -s ../${pkgbase}-${pkgver}/configure
 	./configure ${_phpconfig} \
 		--enable-cgi \
 		--enable-fpm \
@@ -158,7 +153,7 @@ build() {
 }
 
 check() {
-	cd ${srcdir}/php-${pkgver}
+	cd ${srcdir}/${pkgbase}-${pkgver}
 
 	# Check if sendmail was configured correctly (FS#47600)
 	${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
@@ -167,17 +162,15 @@ check() {
 	export NO_INTERACTION=1
 	export SKIP_ONLINE_TESTS=1
 	export SKIP_SLOW_TESTS=1
-        # Test don't pass on my armv7h... if ever someone finds the cause, keep
-        # it to be able to reactivate it quickly
-	#${srcdir}/build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
-	echo 1
+
+	${srcdir}/build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
 }
 
 package() {
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
-	install -D -m644 ${srcdir}/php-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
+	install -D -m644 ${srcdir}/${pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
 	install -d -m755 ${pkgdir}/etc/php/conf.d/
 
 	# remove static modules
@@ -187,4 +180,5 @@ package() {
 	# remove empty directory
 	rmdir ${pkgdir}/usr/include/php/include
 }
+
 

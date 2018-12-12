@@ -9,7 +9,7 @@
 +		$(INSTALL_DATA) sapi/fpm/php-fpm.conf $(INSTALL_ROOT)$(sysconfdir)/php-fpm.conf; \
 +		$(INSTALL_DATA) sapi/fpm/www.conf $(INSTALL_ROOT)$(sysconfdir)/php-fpm.d/www.conf; \
  	fi
- 	
+ 
  	@echo "Installing PHP FPM man page:      $(INSTALL_ROOT)$(mandir)/man8/"
 --- sapi/fpm/php-fpm.conf.in.orig
 +++ sapi/fpm/php-fpm.conf.in
