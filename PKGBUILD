@@ -10,9 +10,9 @@ _rustc=1.30.0
 _cargo=0.31.0
 
 pkgname=mingw-w64-rust
-_prefix=usr
+_prefix=opt/rust
 pkgver=1.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
 url="https://www.rust-lang.org"
