@@ -2,7 +2,7 @@
 #Package based on hunspell-fr pagkaged created by Guillaume ALAUX
 
 pkgname=hunspell-fr-cpr90
-pkgver=6.2
+pkgver=6.3
 pkgrel=1
 pkgdesc="French (Classic + 1990 Reform) hunspell dictionaries"
 arch=(any)
@@ -13,7 +13,7 @@ provides=('hunspell-fr')
 conflicts=('hunspell-fr')
 source=(http://www.dicollecte.org/download/fr/hunspell-french-dictionaries-v${pkgver}.zip
         LICENSE)
-sha256sums=('c98147b99518a5aa51d51db58d6a153377bb9f366ebe8a21a2faa05b6c76308d'
+sha256sums=('cc6c2d15073659d221487b45245e9eee9a4ed66c30c6dcf784326bab063c5266'
             'fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85')
 
 package() {
