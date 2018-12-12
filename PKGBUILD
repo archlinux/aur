@@ -14,7 +14,7 @@ depends=('libarchive')
 makedepends=()
 optdepends=()
 install=
-source=(http://download.gluonhq.com/scenebuilder/RC/$pkgver/install/linux/$_debpkg"-"$pkgver".deb")
+source=(https://download2.gluonhq.com/scenebuilder/RC/$pkgver/$_debpkg"-"$pkgver".deb")
 sha1sums=('f1de8c24910133672dad126bfc2d9a011c566341') 
 build() {
   cd "$srcdir/"
