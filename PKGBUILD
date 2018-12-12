@@ -1,11 +1,12 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
+# Contributor: Daniel M. Capella <polyzen@archlinux.info>
 # Contributor: Morten Linderud <morten@linderud.pw>
 
 _name=PyChromecast
 pkgname=python-pychromecast
 pkgver=2.3.0
 pkgrel=1
-pkgdesc='Library for Python 2 and 3 to communicate with the Google Chromecast'
+pkgdesc='Library for Python 3 to communicate with the Google Chromecast'
 arch=('any')
 url=https://github.com/balloob/pychromecast
 license=('MIT')
