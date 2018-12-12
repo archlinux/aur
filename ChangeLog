@@ -1,3 +1,10 @@
+4.5.0 (2018-12-12 13:58:00)
+
+    First version of the application notarized at Apple,
+    Better support for environments using Cylance,
+    Initial support for the S4 processor of the latest Apple Watch Series 4,
+    Fixes a rare crash in the debugger.
+
 4.4.9 (2018-12-03 15:25:27)
 
     Fixes a compatibility issue with Cylance,
