@@ -1,6 +1,6 @@
 pkgbase = pyqt4
-	pkgver = 4.12.1
-	pkgrel = 3
+	pkgver = 4.12.3
+	pkgrel = 1
 	url = http://www.riverbankcomputing.com/software/pyqt/intro
 	arch = x86_64
 	license = GPL
@@ -11,15 +11,14 @@ pkgbase = pyqt4
 	makedepends = phonon-qt4
 	makedepends = mesa
 	makedepends = python2-opengl
-	makedepends = qt-assistant-compat
 	makedepends = python2-dbus
-	source = http://downloads.sourceforge.net/pyqt/PyQt4_gpl_x11-4.12.1.tar.gz
-	md5sums = 0112e15858cd7d318a09e7366922f874
+	source = http://downloads.sourceforge.net/pyqt/PyQt4_gpl_x11-4.12.3.tar.gz
+	sha256sums = a00f5abef240a7b5852b7924fa5fdf5174569525dc076cd368a566619e56d472
 
 pkgname = pyqt4-common
 	pkgdesc = Common PyQt files shared between python-pyqt4 and python2-pyqt4
 	depends = qt4
-	provides = pyqt-common=4.12.1
+	provides = pyqt-common=4.12.3
 	conflicts = pyqt-common
 	replaces = pyqt-common
 
@@ -30,8 +29,7 @@ pkgname = python-pyqt4
 	depends = python-dbus
 	depends = pyqt4-common
 	optdepends = phonon-qt4: enable audio and video in PyQt applications
-	optdepends = qt-assistant-compat: add PyQt online help in Qt Assistant
-	provides = pyqt=4.12.1
+	provides = pyqt=4.12.3
 	conflicts = pyqt
 	replaces = pyqt
 
@@ -43,8 +41,7 @@ pkgname = python2-pyqt4
 	depends = pyqt4-common
 	optdepends = phonon-qt4: enable audio and video in PyQt applications
 	optdepends = python2-opengl: enable OpenGL 3D graphics in PyQt applications
-	optdepends = qt-assistant-compat: add PyQt online help in Qt Assistant
-	provides = python2-pyqt=4.12.1
+	provides = python2-pyqt=4.12.3
 	conflicts = python2-pyqt
 	replaces = python2-pyqt
 
