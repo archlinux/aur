@@ -1,7 +1,7 @@
 # Maintainer: Nils Czernia <nils@czserver.de>
 
 pkgname=prometheus-postgresql-exporter
-pkgver=0.2.3
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Prometheus exporter for PostrgreSQL"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('git' 'go')
 source=("https://github.com/wrouesnel/postgres_exporter/archive/v${pkgver}.tar.gz"
         "prometheus-postgresql-exporter.service")
-sha256sums=('203ea51a9e5fb1fadceaa82ad63637db7248e22ae8b876613f3c8c2c255682d7'
+sha256sums=('f42a986c556a17b96969ae0198fc8ed302fa83d9d66e3186bd9b07ffdef04847'
             'cda225c236df0e2a6d71c17a5390a92ed5cc7f71b8ca5843590c59fa02cdb135')
 
 prepare() {
@@ -24,14 +24,13 @@ prepare() {
 build() {
     export GOPATH="${srcdir}/gopath"
     cd "${GOPATH}/src/github.com/wrouesnel/postgres_exporter"
-    make
+    go run mage.go binary
 }
 
 check() {
     export GOPATH="${srcdir}/gopath"
     cd "${GOPATH}/src/github.com/wrouesnel/postgres_exporter"
-
-    make test
+    go run mage.go test
 }
 
 package() {
