@@ -1,11 +1,11 @@
 pkgbase = vipster-git
 	pkgdesc = Molecule editor based on Qt, specialized on periodic structures, development version
-	pkgver = r806.e00e69b
+	pkgver = r923.8a3e5de
 	pkgrel = 1
 	url = https://sgsaenger.github.io/vipster
 	arch = x86_64
 	license = GPL3
-	makedepends = qbs
+	makedepends = cmake
 	makedepends = git
 	depends = qt5-base
 	depends = python
