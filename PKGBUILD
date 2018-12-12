@@ -27,8 +27,8 @@ if [ -z "${ANDROID_SDK_ROOT}" ]; then
 fi
 
 pkgname=android-${_android_arch}-qt5
-pkgver=5.11.2
-pkgrel=2
+pkgver=5.12.0
+pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
 url='https://www.qt.io'
@@ -43,7 +43,7 @@ makedepends=('libgl'
              'fontconfig')
 depends=('java-runtime-headless>=7'
          'apache-ant'
-         'android-ndk'
+         'android-ndk>=r18.b'
          "android-platform-$ANDROID_MINIMUM_PLATFORM"
          'android-sdk'
          'android-sdk-build-tools'
@@ -80,10 +80,10 @@ source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkg
         "0001-Fix-clang-build.patch"
         "0002-Disable-mapbox.patch"
         "0003-Fix-androiddeployqt-search-paths.patch")
-md5sums=('152a8ade9c11fe33ff5bc95310a1bb64'
-         '511eafcabe9e0c6210f1dc5e26daa5c8'
+md5sums=('af569de3eb42da4457b0897e5759dc91'
+         'b30076dddd0a424f8b65bf7ca765ac14'
          '20d8bdd24102e9011b561b7361394728'
-         '549cf284d0cea4d618ad2d49532ea2db')
+         '90141a931baac77fa608146f32414ead')
 
 _pref=/opt/android-libs/$_android_arch
 

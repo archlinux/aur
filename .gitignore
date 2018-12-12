@@ -1,5 +1,4 @@
 pkg
 src
-android-*-qt5
 *.tar.xz
 *.tar.gz
