@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=cloudflared-bin
-pkgver=2018.11.0
+pkgver=2018.12.1
 pkgrel=1
 pkgdesc="An Argo Tunnel client which proxies any local webserver through the Cloudflare network"
 arch=("x86_64" "arm")
@@ -18,8 +18,8 @@ source_arm=("https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tg
 sha256sums=('6a486a0f6c00e87cce1caf0aa8db45ea9fefd0bf91d9be6fc44460160dc0dbda'
             '4e06eb54143d872f73707ed2bba2ba2198649d3066df741bd0cfda5d1a5f334d'
             'a2d6beef87b531ec43837ce1c2ebd7411058466a11bd6a899a8659582b25e3c2')
-sha256sums_x86_64=('ba2e1f4f44a412bd627d050e1a50463c64d9eca2d041a510d02e1053f4279023')
-sha256sums_arm=('efb90d8f62d91d64b862e4dd01e269634f5c78762859c5494486447a0bdd7c7d')
+sha256sums_x86_64=('5fbbba90fb16388130e8099137559d2b9948923f4e87d84e80b9f464c019d8be')
+sha256sums_arm=('d8a5e5dc1a7fc740cf05177f900fc76a687399b0d723e11523cb16c70f28de07')
 
 package() {
     # Install License
