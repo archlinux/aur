@@ -15,8 +15,13 @@ optdepends=("python-numpy: used by array")
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
 sha256sums=('890815aa01e4d855a6a95dd3ad0953b872a6b954982106407df0c5a31a163e50')
 
+build() {
+  cd "picamera-$pkgver"
+  python setup.py build
+}
+
 package() {
-  cd "$srcdir/picamera-$pkgver"
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  cd "picamera-$pkgver"
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
