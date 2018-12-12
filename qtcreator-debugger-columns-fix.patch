@@ -1,0 +1,120 @@
+diff --git a/src/plugins/debugger/debuggerengine.cpp b/src/plugins/debugger/debuggerengine.cpp
+index 8ced94f4ba..ed8f60bce8 100644
+--- a/src/plugins/debugger/debuggerengine.cpp
++++ b/src/plugins/debugger/debuggerengine.cpp
+@@ -647,7 +647,7 @@ void DebuggerEnginePrivate::setupViews()
+     m_registerWindow->setObjectName(DOCKWIDGET_REGISTER);
+     m_registerWindow->setWindowTitle(tr("Reg&isters"));
+ 
+-    m_stackView = new BaseTreeView;
++    m_stackView = new StackTreeView;
+     m_stackView->setModel(m_stackHandler.model());
+     m_stackView->setSettings(settings, "Debugger.StackView");
+     m_stackView->setIconSize(QSize(10, 10));
+@@ -720,6 +720,8 @@ void DebuggerEnginePrivate::setupViews()
+             this, [this](bool on) { m_breakView->setColumnHidden(BreakpointAddressColumn, !on); });
+     m_breakView->setSettings(settings, "Debugger.BreakWindow");
+     m_breakView->setModel(m_breakHandler.model());
++    m_breakView->header()->setStretchLastSection(false);
++    m_breakView->header()->setSectionResizeMode(BreakpointFunctionColumn, QHeaderView::Stretch);
+     m_breakView->setRootIsDecorated(true);
+     m_breakWindow = addSearch(m_breakView);
+     m_breakWindow->setObjectName(DOCKWIDGET_BREAK);
+diff --git a/src/plugins/debugger/stackwindow.cpp b/src/plugins/debugger/stackwindow.cpp
+index 83e6af2829..b30054d0c9 100644
+--- a/src/plugins/debugger/stackwindow.cpp
++++ b/src/plugins/debugger/stackwindow.cpp
+@@ -32,33 +32,56 @@
+ #include <utils/savedaction.h>
+ 
+ #include <QAction>
++#include <QHeaderView>
+ 
+ namespace Debugger {
+ namespace Internal {
+ 
+ StackTreeView::StackTreeView()
++    : m_contentsAdjusted(false)
+ {
+-    setWindowTitle(tr("Stack"));
+-
+     connect(action(UseAddressInStackView), &QAction::toggled,
+         this, &StackTreeView::showAddressColumn);
+     showAddressColumn(false);
+ }
+ 
+-void StackTreeView::showAddressColumn(bool on)
++void StackTreeView::adjustForFirstContents()
+ {
+-    setColumnHidden(StackAddressColumn, !on);
+-    resizeColumnToContents(StackLevelColumn);
+-    resizeColumnToContents(StackLineNumberColumn);
+-    resizeColumnToContents(StackAddressColumn);
++    if (!m_contentsAdjusted)
++        adjustForContents();
+ }
+ 
+ void StackTreeView::setModel(QAbstractItemModel *model)
+ {
+     BaseTreeView::setModel(model);
++    connect(model, SIGNAL(stackChanged()), this, SLOT(adjustForFirstContents()));
++
++    // Stretch function section to any remaining space.
++    header()->setStretchLastSection(false);
++    header()->setSectionResizeMode(StackFunctionNameColumn, QHeaderView::Stretch);
++
++    // Resize for the current contents if any are available.
++    showAddressColumn(action(UseAddressInStackView)->isChecked());
++}
++
++void StackTreeView::showAddressColumn(bool on)
++{
++    setColumnHidden(StackAddressColumn, !on);
++    adjustForContents();
++}
++
++void StackTreeView::adjustForContents()
++{
++    // Skip resizing if no contents. This will be called again once contents are available.
++    if (!model() || model()->rowCount() == 0)
++        return;
++
+     resizeColumnToContents(StackLevelColumn);
++    resizeColumnToContents(StackFileNameColumn);
+     resizeColumnToContents(StackLineNumberColumn);
+-    showAddressColumn(action(UseAddressInStackView)->isChecked());
++    resizeColumnToContents(StackAddressColumn);
++    resizeColumns();
++    m_contentsAdjusted = true;
+ }
+ 
+ } // namespace Internal
+diff --git a/src/plugins/debugger/stackwindow.h b/src/plugins/debugger/stackwindow.h
+index 5439ead73f..cb020b9947 100644
+--- a/src/plugins/debugger/stackwindow.h
++++ b/src/plugins/debugger/stackwindow.h
+@@ -34,17 +34,21 @@ namespace Internal {
+ 
+ class StackTreeView : public Utils::BaseTreeView
+ {
+-    Q_DECLARE_TR_FUNCTIONS(Debugger::Internal::StackTreeView)
++    Q_OBJECT
+ 
+ public:
+     StackTreeView();
+ 
++private slots:
++    void adjustForFirstContents();
++
+ private:
+     void setModel(QAbstractItemModel *model) override;
+ 
+     void showAddressColumn(bool on);
+-    void reloadFullStack();
+-    void copyContentsToClipboard();
++    void adjustForContents();
++
++    bool m_contentsAdjusted;
+ };
+ 
+ } // namespace Internal

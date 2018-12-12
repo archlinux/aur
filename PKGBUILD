@@ -12,7 +12,7 @@
 pkgname=qtcreator-fixed-themes
 pkgver=4.8.0
 _clangver=7.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Lightweight, cross-platform integrated development environment, with fixes applied for various themes'
 arch=(x86_64)
 url='http://qt-project.org'
@@ -37,14 +37,16 @@ source=("http://download.qt.io/official_releases/qtcreator/${pkgver%.*}/$pkgver/
         qtcreator-dark-and-flat-selection-fixes.patch
 		qtcreator-exit-debugger-fix.patch
 		qtcreator-occurrences-fix.patch
-		qtcreator-breakpoint-fix.patch)
+		qtcreator-breakpoint-fix.patch
+		qtcreator-debugger-columns-fix.patch)
 sha256sums=('aec7b4595e17f5536eb2eef4331057f2d0fa4ba0a46f4968cc06959a1d589b43'
             '6f19fc9d83964a5460d224b3d44ce580553847960181fe0364e2ce26e1efd2e6'
             'a7b87219de0ee3e18754749a057535c04357acc2478dcb3fca6bc4b1ba8a8178'
             '514d9ff2989b0c865ead40b62df79f46871cbc1840ca552c64947b2e6c7d7d18'
 			'f938a72cc79c9ed8de07da8af79b170f67448a74dbd3228dd3de7e4855ed633d'
 			'ba6a48156cc14935a0dea12e8282bdfb1936e0c67216c660eef41bd5b5a44d4b'
-			'12dad35519cfc62119b0af21b31a96149081ae1ee6d6e7cb65ee80f3774ff06f')
+			'12dad35519cfc62119b0af21b31a96149081ae1ee6d6e7cb65ee80f3774ff06f'
+			'cc1c6a1096431158543ef83243bdad775374f9a5f7bc9c7d3c4a738378f3a9fc')
 
 prepare() {
   mkdir -p build
@@ -67,6 +69,8 @@ prepare() {
   patch -p1 -i ../qtcreator-exit-debugger-fix.patch
   # Fix infinite looping breakpoints.
   patch -p1 -i ../qtcreator-breakpoint-fix.patch
+  # Fix broken sizing for debugger columns.
+  patch -p1 -i ../qtcreator-debugger-columns-fix.patch
 }
 
 build() {
