@@ -57,7 +57,7 @@ post_upgrade() {
     local _CustConf=${_gogs_home}/custom/conf/app.ini
 
     if [ ! -f ${_CustConf} ] ; then
-        echo "  Gogs old configuration file must be moved to ${_CustConf} before starting service."
+        echo "  Gogs old configuration file must be moved to ${_CustConf} before starting or re-enabling service."
         _disable_if_enabled
     fi
     _start_if_enabled

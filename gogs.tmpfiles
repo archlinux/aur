@@ -1,2 +1,2 @@
-d /var/lib/gogs 0700 gogs gogs -
+d /var/lib/gogs 0750 gogs gogs -
 d /var/log/gogs 0750 gogs log  -

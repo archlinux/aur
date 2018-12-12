@@ -8,6 +8,7 @@ pkgbase = gogs-dev-git
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = go
@@ -28,14 +29,14 @@ pkgbase = gogs-dev-git
 	options = !buildflags
 	options = !strip
 	options = emptydirs
-	source = git+https://github.com/gogs/gogs.git#branch=develop
+	source = gogs::git+https://github.com/gogs/gogs.git#branch=develop
 	source = gogs.service
 	source = gogs.sysusers
 	source = gogs.tmpfiles
 	sha512sums = SKIP
 	sha512sums = 26fa3b9579ec2780e56f4a52870461b9cc1e4c1608e006b0759de7c5de137895d48e94a1694341b545be0dae87c966a982d8b581397d56fad83ab12e297f98df
 	sha512sums = 0a546902ffb9fe99f61b301183059cc85c75408cd735f04ee93829ad6e3d66a07ebc73ce663743f109ea6303c1815933a17fe2b83bf9104d1528acb5aa63faf8
-	sha512sums = a48c51665079575aa9e4774e9d6ccaf15880c81d3d8d77dbcc0871133be7907177694986f12a5d880aa1930a636ca42b5ccb2dbb91874ad9f3c31fa6e5218c6b
+	sha512sums = ffd60cd6fa08786e6d53580a43597013753c16a0e7dec93b8ba9aef944f3225e74b032bf8a9819e0a60e1b5fb503b8378b5710d84d5dd52159b91641ee483876
 
 pkgname = gogs-dev-git
 
