@@ -1,7 +1,7 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 pkgname=libbladerf-git
-pkgver=2016.06.r18.gc3eccc6d
+pkgver=2018.10.rc1.r102.gb2f30720
 pkgrel=1
 pkgdesc="Driver and userspace for the bladeRF SDR."
 url="https://github.com/Nuand/bladeRF"
@@ -17,7 +17,9 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/bladeRF"
-  sed -i 's|MODE.*$|TAG+="uaccess"|' host/misc/udev/88-nuand.rules.in
+  sed -i 's|MODE.*$|TAG+="uaccess"|' host/misc/udev/88-nuand-bladerf1.rules.in
+  sed -i 's|MODE.*$|TAG+="uaccess"|' host/misc/udev/88-nuand-bladerf2.rules.in
+  sed -i 's|MODE.*$|TAG+="uaccess"|' host/misc/udev/88-nuand-bootloader.rules.in
 }
 
 pkgver() {
