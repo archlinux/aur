@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-radio
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Listen to radio stations"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("nextcloud-app-radio-${pkgver}.tar.gz::https://onny.project-insanity.org/files/nextcloud-app-radio-${pkgver}.tar.gz")
-sha512sums=("bf8a82e1362dc1e59464643d5fe556bc55ed0d99a0eb147fd2eb2338f27a109d168623009e9293665f33dfab8a9a97f86b4af184afe1cba37e63dc0dd92004b3")
+sha512sums=('c84d910c3c8915085a6b7e7fe9cb35a0c83bbd5497205dfbb41ca90b4adaf159b160a00503c759df4f4088eff64dec5b08fb81b6f3081070d9b8ed89c3a56536')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
