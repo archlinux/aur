@@ -1,0 +1,80 @@
+From 8dcd3d21cd5e1bf0312225a0db9506173ea76fc7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rafael=20Ascens=C3=A3o?= <rafa.almas@gmail.com>
+Date: Mon, 10 Dec 2018 20:55:08 +0000
+Subject: [PATCH] tests: configure user ident in repos used by tests
+
+Some git operations require the user to have an identity configured and
+will exit with failure if none is set (or if git can't guess it). As a
+direct consequence of this, the test suite may fail depending on the
+user local configuration.
+
+The error itself is justified as regular users *should* configure their
+identity themselves. However, when building in chrooted environments
+it's unlikely the git identity will be set making the test suite fail
+unnecessarily.
+
+To prevent such unnecessary failures, let's make a dummy identity for
+repos created and used by the test suite.
+---
+ bug/bug_actions_test.go        | 7 +++++++
+ commands/select/select_test.go | 7 +++++++
+ tests/read_bugs_test.go        | 7 +++++++
+ 3 files changed, 21 insertions(+)
+
+diff --git a/bug/bug_actions_test.go b/bug/bug_actions_test.go
+index e68132f..a60e5c6 100644
+--- a/bug/bug_actions_test.go
++++ b/bug/bug_actions_test.go
+@@ -31,6 +31,13 @@ func createRepo(bare bool) *repository.GitRepo {
+ 		log.Fatal(err)
+ 	}
+ 
++	if err := repo.StoreConfig("user.name", "testuser"); err != nil {
++		log.Fatal("failed to set user.name for test repository: ", err)
++	}
++	if err := repo.StoreConfig("user.email", "testuser@example.com"); err != nil {
++		log.Fatal("failed to set user.email for test repository: ", err)
++	}
++
+ 	return repo
+ }
+ 
+diff --git a/commands/select/select_test.go b/commands/select/select_test.go
+index 79c8cbf..fe501d7 100644
+--- a/commands/select/select_test.go
++++ b/commands/select/select_test.go
+@@ -96,6 +96,13 @@ func createRepo() *repository.GitRepo {
+ 		log.Fatal(err)
+ 	}
+ 
++	if err := repo.StoreConfig("user.name", "testuser"); err != nil {
++		log.Fatal("failed to set user.name for test repository: ", err)
++	}
++	if err := repo.StoreConfig("user.email", "testuser@example.com"); err != nil {
++		log.Fatal("failed to set user.email for test repository: ", err)
++	}
++
+ 	return repo
+ }
+ 
+diff --git a/tests/read_bugs_test.go b/tests/read_bugs_test.go
+index b28da49..e5de0cc 100644
+--- a/tests/read_bugs_test.go
++++ b/tests/read_bugs_test.go
+@@ -31,6 +31,13 @@ func createRepo(bare bool) *repository.GitRepo {
+ 		log.Fatal(err)
+ 	}
+ 
++	if err := repo.StoreConfig("user.name", "testuser"); err != nil {
++		log.Fatal("failed to set user.name for test repository: ", err)
++	}
++	if err := repo.StoreConfig("user.email", "testuser@example.com"); err != nil {
++		log.Fatal("failed to set user.email for test repository: ", err)
++	}
++
+ 	return repo
+ }
+ 
+-- 
+2.20.0
+

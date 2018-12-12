@@ -1,16 +1,19 @@
 pkgbase = git-bug
 	pkgdesc = Distributed bug tracker embedded in Git
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/MichaelMure/git-bug
 	arch = x86_64
 	arch = i686
-	license = GPLv3
-	makedepends = go
-	options = !strip
-	options = !emptydirs
-	source = https://github.com/MichaelMure/git-bug/archive/0.2.0.tar.gz
-	sha256sums = 56b05fb8c456973871863138ac5eb2a871654e7a504605970cbe9a08b6ce0b19
+	license = GPL3
+	makedepends = go-pie
+	makedepends = dep
+	depends = git
+	optdepends = xdg-utils: open bugs in browser
+	source = git-bug-0.4.0.tar.gz::https://github.com/MichaelMure/git-bug/archive/0.4.0.tar.gz
+	source = 0001-tests-configure-user-ident-in-repos-used-by-tests.patch
+	sha256sums = 5ab14e8528556862c1991bd8f0cd73f25367d85c5c72d38d0f9556de58d86311
+	sha256sums = 1a9b881913a0396e563a7798a6b7b41d8d559586e8d2f31d3696e9b79dca8ed4
 
 pkgname = git-bug
 
