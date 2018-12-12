@@ -1,0 +1,20 @@
+pkgbase = step-cli-bin
+	pkgdesc = A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://smallstep.com/cli
+	arch = x86_64
+	license = MIT
+	provides = step-cli
+	conflicts = step-cli
+	source = https://github.com/smallstep/cli/releases/download/v0.8.1/step_0.8.1_linux_amd64.tar.gz
+	source = https://github.com/smallstep/cli/raw/v0.8.1/LICENSE
+	source = https://github.com/smallstep/cli/raw/v0.8.1/autocomplete/bash_autocomplete
+	source = https://github.com/smallstep/cli/raw/v0.8.1/autocomplete/zsh_autocomplete
+	sha256sums = 8ccec7cef0a0455179b1e092fc54b357cd2c8e7e2d3e37e99b35c96aec0389c8
+	sha256sums = 18fbbca2e27d445e5c08ba493c3dd0c2c2eb991fa22033b8615a7b95ea34179a
+	sha256sums = add3e078e394e265f6b6a3bf12af81cc7897410ae5e6a0d4ee7714a5b856a7be
+	sha256sums = 1ef3da03d7d728568b163d706bdcfadbc67bb254ce2da615ec1367e437146fad
+
+pkgname = step-cli-bin
+
