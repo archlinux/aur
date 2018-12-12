@@ -1,8 +1,7 @@
 # Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
-_pkgver=0.5
 _pkgname=xsecurelock
 pkgname=xsecurelock-git
-pkgver=0.5.126.4335207
+pkgver=1.2.r7.gc75d8e2
 pkgrel=1
 pkgdesc="X11 screen lock utility with security in mind"
 arch=('any')
@@ -25,17 +24,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("$_pkgname-$_pkgver"::'git+https://github.com/google/xsecurelock.git#branch=master')
+source=("$_pkgname"::'git+https://github.com/google/xsecurelock.git#branch=master')
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname-$_pkgver"
-	echo "$_pkgver.$(git rev-list --count HEAD).$(git rev-parse --short master)"
+	cd "$_pkgname"
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/$_pkgname-$_pkgver"
+	cd "$_pkgname"
 	sh autogen.sh
 	./configure --prefix=/usr \
               --libexecdir=/usr/lib \
@@ -44,7 +43,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$_pkgver"
+	cd "$_pkgname"
 	make DESTDIR="$pkgdir/" install
 }
 
