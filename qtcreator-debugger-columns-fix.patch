@@ -43,10 +43,10 @@ index 3f7b01d2bd..dfc5d6c0df 100644
      m_breakpointManagerWindow->setWindowTitle(tr("Breakpoint Preset"));
      m_breakpointManagerWindow->setObjectName(DOCKWIDGET_BREAKPOINTMANAGER);
 diff --git a/src/plugins/debugger/stackwindow.cpp b/src/plugins/debugger/stackwindow.cpp
-index 83e6af2829..bd14a327a6 100644
+index 83e6af2829..db9b1973d1 100644
 --- a/src/plugins/debugger/stackwindow.cpp
 +++ b/src/plugins/debugger/stackwindow.cpp
-@@ -32,33 +32,53 @@
+@@ -32,33 +32,52 @@
  #include <utils/savedaction.h>
  
  #include <QAction>
@@ -103,7 +103,6 @@ index 83e6af2829..bd14a327a6 100644
      resizeColumnToContents(StackLineNumberColumn);
 -    showAddressColumn(action(UseAddressInStackView)->isChecked());
 +    resizeColumnToContents(StackAddressColumn);
-+    resizeColumns();
 +    m_contentsAdjusted = true;
  }
  
