@@ -3,7 +3,7 @@
 
 pkgname=('python-hkdf' 'python2-hkdf')
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="This module implements the HMAC Key Derivation function, defined at http://tools.ietf.org/html/draft-krawczyk-hkdf-01"
 arch=('any')
 url="https://pypi.python.org/packages/c3/be/hkdf-${pkgver}"
@@ -11,14 +11,10 @@ license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://pypi.python.org/packages/c3/be/327e072850db181ce56afd51e26ec7aa5659b18466c709fa5ea2548c935f/hkdf-${pkgver}.tar.gz")
 
-build_python-hkdf() {
+build() {
   cd "${srcdir}/${pkgname#python-}-${pkgver}"
   python setup.py build
-}
-
-build_python2-hkdf() {
-  cd "${srcdir}/${pkgname#python2-}-${pkgver}"
-  python setup.py build
+  python2 setup.py build
 }
 
 package_python-hkdf() {
