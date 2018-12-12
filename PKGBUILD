@@ -1,17 +1,17 @@
 # Contributor: Thomas Laroche <tho.laroche@gmail.com>
 # Contributor: Thomas Fanninger <thomas@fanninger.at>
 # Contributor: surefire@cryptomile.net
+# Contributor: Martchus <martchus@gmx.net>
 # Maintainer: Edvinas Valatka <edacval@gmail.com>
 
 _branch=master
 _pkgname=gogs
 _team=github.com/gogs
-_gogsdir="${_team}/${_pkgname}"
 pkgname=${_pkgname}-git
-pkgver=0.11.53.0603+2+91441c3fb
+pkgver=0.11.79.1211+1+f43d21d0a
 pkgrel=1
 pkgdesc="Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://${_pkgname}.io"
 license=('MIT')
 depends=('git' 'pam')
@@ -27,19 +27,16 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 options=('!buildflags' '!strip' 'emptydirs')
 install=${_pkgname}.install
-
-source=("git+https://${_team}/${_pkgname}.git#branch=${_branch}"
+source=("${_pkgname}::git+https://${_team}/${_pkgname}.git#branch=${_branch}"
         "${_pkgname}.service"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
 
 prepare() {
-    export GOPATH="$srcdir"
+    mkdir -p "${srcdir}/src/${_team}"
+    mv -v "${srcdir}/${_pkgname}" "${srcdir}/src/${_team}/${_pkgname}"
 
-    mkdir -p "$srcdir/${_team}"
-    mv -v -t "$srcdir/${_team}"   ./${_pkgname}
-
-    cd "$srcdir/$_gogsdir"
+    cd "$srcdir/src/${_team}/${_pkgname}"
 
     sed -E -i conf/app.ini \
         -e '0,             /^\[/ s/^(RUN_USER)\W.*$/\1 = gogs/' \
@@ -49,7 +46,7 @@ prepare() {
 }
 
 pkgver() {
-    cd "$srcdir/$_gogsdir"
+    cd "$srcdir/src/${_team}/${_pkgname}"
     printf '%s+%s+%s' \
         $(sed -e 's,/,+,g; s, ,,g' templates/.VERSION) \
         $(git rev-list --count HEAD...$(git log --pretty=format:%H -n 1 -- templates/.VERSION)) \
@@ -59,15 +56,14 @@ pkgver() {
 
 build() {
     export GOPATH="$srcdir"
-
-    cd "$srcdir/$_gogsdir"
+    cd "$srcdir/src/${_team}/${_pkgname}"
 
     go fix
     LDFLAGS='-s -w' make PATH="$GOPATH/bin:$PATH" TAGS='libsqlite3 sqlite pam cert' build
 }
 
 package() {
-    cd "$srcdir/$_gogsdir"
+    cd "$srcdir/src/${_team}/${_pkgname}"
 
     rm -rf ./public/{less,config.codekit}
 
@@ -85,4 +81,4 @@ package() {
 sha512sums=('SKIP'
             '26fa3b9579ec2780e56f4a52870461b9cc1e4c1608e006b0759de7c5de137895d48e94a1694341b545be0dae87c966a982d8b581397d56fad83ab12e297f98df'
             '0a546902ffb9fe99f61b301183059cc85c75408cd735f04ee93829ad6e3d66a07ebc73ce663743f109ea6303c1815933a17fe2b83bf9104d1528acb5aa63faf8'
-            'a48c51665079575aa9e4774e9d6ccaf15880c81d3d8d77dbcc0871133be7907177694986f12a5d880aa1930a636ca42b5ccb2dbb91874ad9f3c31fa6e5218c6b')
+            'ffd60cd6fa08786e6d53580a43597013753c16a0e7dec93b8ba9aef944f3225e74b032bf8a9819e0a60e1b5fb503b8378b5710d84d5dd52159b91641ee483876')
