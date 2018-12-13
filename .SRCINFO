@@ -1,6 +1,6 @@
 pkgbase = minikube
 	pkgdesc = Minikube is a tool that makes it easy to run Kubernetes locally
-	pkgver = 0.30.0
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://github.com/kubernetes/minikube
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = minikube
 	optdepends = virtualbox: to use --vm-driver=virtualbox
 	optdepends = docker-machine-kvm: to use --vm-driver=kvm
 	optdepends = docker-machine-driver-kvm2: to use --vm-driver=kvm
-	source = git+https://github.com/kubernetes/minikube.git#tag=v0.30.0
+	source = git+https://github.com/kubernetes/minikube.git#tag=v0.31.0
 	md5sums = SKIP
 
 pkgname = minikube
