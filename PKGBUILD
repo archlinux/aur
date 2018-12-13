@@ -1,7 +1,7 @@
 # Maintainer: tjbp (archlinux@tjbp.net)
 
 pkgname='php-lua'
-pkgver='2.0.3'
+pkgver='2.0.5'
 pkgrel='1'
 pkgdesc='PHP PECL extension for an embedded Lua interpreter'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ source=(
     "http://pecl.php.net/get/lua-$pkgver.tgz"
 )
 sha256sums=(
-    '5fd633bf701c2ebea9836f85532d44645ff88f0091bfcc0778580c88635d3580'
+    'bb49431ce5494ebebba98d9c477537df97234e13d4bd46529809ca1a2b8c287e'
 )
 
 build() {
