@@ -1,9 +1,9 @@
 # Contributor: Daniel Kirchner <daniel@ekpyron.org>
 
 pkgname=mingw-w64-boost
-pkgver=1.68.0
+pkgver=1.69.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
 arch=('any')
 url="http://www.boost.org/"
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-gcc' 'bzip2' 'zlib' 'python2')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
         "boost-mingw.patch")
-sha256sums=('7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7'
+sha256sums=('8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406'
             '11a5c39852e0513d871a0f74c2f1224efc602a0404db7cd83190712e49a6d3bc')
 
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
@@ -62,7 +62,7 @@ package() {
       architecture=x86 \
       binary-format=pe \
       ${MAKEFLAGS} \
-      --layout=tagged install
+      --layout=system install
     install -d $pkgdir/usr/${_arch:3}/bin
     mv "$pkgdir"/usr/${_arch:3}/lib/*.dll "$pkgdir"/usr/${_arch:3}/bin
     ${_arch:3}-strip --strip-unneeded "$pkgdir"/usr/${_arch:3}/bin/*.dll
