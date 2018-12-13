@@ -1,0 +1,20 @@
+pkgbase = i3icons2-git
+	pkgdesc = go version of i3icons - native deamon to rename workspaces with fontawesome-icons based on open applications
+	pkgver = 20181213.27ee9d8
+	pkgrel = 1
+	url = https://github.com/nwhirschfeld/i3icons2
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = custom:MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = i3icons2
+	conflicts = i3icons2
+	source = i3icons2::git+https://github.com/nwhirschfeld/i3icons2.git
+	sha1sums = SKIP
+
+pkgname = i3icons2-git
+
