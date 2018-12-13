@@ -1,6 +1,6 @@
 pkgbase = qt5-mqtt
 	pkgdesc = Module to implement MQTT protocol v3.1/3.1.1
-	pkgver = 5.11.2
+	pkgver = 5.12.0
 	pkgrel = 1
 	url = http://qt-project.org/
 	arch = i386
@@ -12,7 +12,7 @@ pkgbase = qt5-mqtt
 	license = custom
 	makedepends = git
 	depends = qt5-base
-	source = git://code.qt.io/qt/qtmqtt.git#tag=v5.11.2
+	source = git://code.qt.io/qt/qtmqtt.git#tag=v5.12.0
 	sha512sums = SKIP
 
 pkgname = qt5-mqtt
