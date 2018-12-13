@@ -1,7 +1,7 @@
 pkgbase = dropbox
 	pkgdesc = A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
 	pkgver = 63.4.102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dropbox.com
 	arch = i686
 	arch = x86_64
