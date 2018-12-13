@@ -3,12 +3,12 @@
 
 pkgname=git-fiddle-git
 pkgver=r67.606086d
-pkgrel=1
+pkgrel=2
 pkgdesc='Edit commit messages, authors, and timestamps during git-rebase'
 url='https://github.com/felixSchl/git-fiddle'
 arch=('any')
 license=('MIT')
-depends=('git')
+depends=('bash' 'git')
 source=("${pkgname%-git}::git+https://github.com/felixSchl/git-fiddle.git"
         'git-fiddle.patch'
         'git-fiddle.patch.sig')
