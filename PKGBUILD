@@ -1,13 +1,11 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
-# Maintainer: Alif Rachmawadi <subosito at gmail dot com>
 
 pkgname=flutter-beta
-_pkgname=flutter
-pkgver=0.8.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
-url="https://${_pkgname}.io"
+url="https://${pkgname%-beta}.io"
 license=("custom" "BSD" "CCPL")
 depends=("glu" "java-environment" "lib32-libglvnd")
 optdepends=("android-sdk"
@@ -21,30 +19,32 @@ optdepends=("android-sdk"
             "python"
             "sh")
 makedepends=("git" "python")
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-backup=("opt/${_pkgname}/packages/${_pkgname}_test/pubspec.yaml" "opt/${_pkgname}/packages/${_pkgname}/pubspec.yaml")
+provides=("${pkgname%-beta}")
+conflicts=("${pkgname%-beta}")
+backup=("opt/${pkgname%-beta}/packages/${pkgname%-beta}_test/pubspec.yaml" "opt/${pkgname%-beta}/packages/${pkgname%-beta}/pubspec.yaml")
 options=("!emptydirs")
-install="${_pkgname}.install"
-source=("${_pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/${_pkgname}_linux_v${pkgver}-beta.tar.xz"
-        "${_pkgname}.sh"
-        "${_pkgname}.csh")
-sha256sums=("c201ec9b3242fa6fb89296c55fbd6a252f26faacdff5ca6768175858ed9a97a5"
+install="${pkgname%-beta}.install"
+source=("${pkgname%-beta}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/${pkgname%-beta}_linux_v${pkgver}-beta.tar.xz"
+        "${pkgname%-beta}.sh"
+        "${pkgname%-beta}.csh")
+sha256sums=("3d52bc8fefe427bf245c12b4d4dd5179b894e174db5d98554fc9d853bd567013"
             "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
             "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f")
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  "bin/${_pkgname}" doctor
+  cd "${srcdir}/${pkgname%-beta}"
+  "${srcdir}/${pkgname%-beta}/bin/${pkgname%-beta}" doctor
 }
 
 package() {
-  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/etc/profile.d/${_pkgname}.sh"
-  install -Dm755 "${srcdir}/${_pkgname}.csh" "${pkgdir}/etc/profile.d/${_pkgname}.csh"
-  install -d "${pkgdir}/opt/${_pkgname}/"
-  cp -ra "${srcdir}/${_pkgname}" "${pkgdir}/opt/"
-  find "${pkgdir}/opt/${_pkgname}" -type d -exec chmod a+rx {} +
-  find "${pkgdir}/opt/${_pkgname}" -type f -exec chmod a+r {} +
-  chmod a+rw "${pkgdir}/opt/${_pkgname}/bin/cache/lockfile" "${pkgdir}/opt/${_pkgname}/version"
+  install -Dm644 "${srcdir}/${pkgname%-beta}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${srcdir}/${pkgname%-beta}.sh" "${pkgdir}/etc/profile.d/${pkgname%-beta}.sh"
+  install -Dm755 "${srcdir}/${pkgname%-beta}.csh" "${pkgdir}/etc/profile.d/${pkgname%-beta}.csh"
+  install -dm755 "${pkgdir}/opt/${pkgname%-beta}"
+  install -dm755 "${pkgdir}/usr/bin"
+  cp -ra "${srcdir}/${pkgname%-beta}" "${pkgdir}/opt/"
+  find "${pkgdir}/opt/${pkgname%-beta}" -type d -exec chmod a+rx {} +
+  find "${pkgdir}/opt/${pkgname%-beta}" -type f -exec chmod a+r {} +
+  chmod a+rw "${pkgdir}/opt/${pkgname%-beta}/bin/cache/lockfile" "${pkgdir}/opt/${pkgname%-beta}/version"
+  ln -s "/opt/${pkgname%-beta}/bin/${pkgname%-beta}" "${pkgdir}/usr/bin/${pkgname%-beta}"
 }
