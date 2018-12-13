@@ -29,6 +29,7 @@ build() {
 
 check() {
   export GOPATH="$srcdir/gopath"
+  export PATH=$(pwd)/gopath/bin:$PATH
   cd "gopath/src/$_goimport/test"
   Xvfb :23 -screen 0 800x600x16 &
   pid_xvfb=$!
