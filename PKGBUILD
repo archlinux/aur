@@ -1,11 +1,11 @@
-# Maintainer: Sam Whited <sam@samwhited.com>
+# Contributor: Sam Whited <sam@samwhited.com>
 # Contributor: Brian Clemens <brian@tiuxo.com>
 # Contributor: Přemysl Janouch <p.janouch@gmail.com>
 
 pkgname=hugo-git
 _pkgname=hugo
-pkgver=v0.51.r20.ge82b2dc8c162
-pkgrel=3
+pkgver=v0.52.r17.gab9214768de4
+pkgrel=1
 pkgdesc="Fast and Flexible Static Site Generator in Go"
 arch=('x86_64')
 url="https://gohugo.io/"
