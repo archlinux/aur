@@ -9,8 +9,9 @@ url='https://tlaun.ch'
 arch=('x86_64' 'i686')
 license=('GPLv3')
 depends=('java-runtime>=8' 'xorg-xrandr')
-makedepends=('jq')
-_checksum=$(curl -sL 'http://cdn.turikhay.ru/tlauncher/legacy_beta/bootstrap.json' | jq -r '.update.bootstrap.downloads.JAR.checksum')
+#makedepends=('jq')
+#_checksum=$(curl -sL 'http://cdn.turikhay.ru/tlauncher/legacy_beta/bootstrap.json' | jq -r '.update.bootstrap.downloads.JAR.checksum')
+_checksum='972758e1c5cad62861844a94f2830a14c7e795975108cd3d31de729285c53eb6' # mark out-of-date if you'll get 404
 # try to change repo if default sends 404
 source=(#"http://turikhay.ru/tlauncher/legacy_beta/bootstrap/${_checksum}.jar"
         #"http://u.tlauncher.ru/legacy_beta/bootstrap/${_checksum}.jar"
@@ -23,9 +24,9 @@ sha256sums=("${_checksum}"
             '0346fbc5e81522e498b63d392339024b8617a03de9fdf9126ba6364db94e188b')
 install="${pkgname}.install"
 
-pkgver() {
-  echo $(curl -sL 'http://cdn.turikhay.ru/tlauncher/legacy_beta/bootstrap.json' | jq -r '.update.launcher.version')
-}
+#pkgver() {
+#  echo $(curl -sL 'http://cdn.turikhay.ru/tlauncher/legacy_beta/bootstrap.json' | jq -r '.update.launcher.version')
+#}
 
 # tlauncher.jar needs at least 666 to launch =(
 package() {

@@ -8,7 +8,6 @@ pkgbase = tlauncher
 	arch = x86_64
 	arch = i686
 	license = GPLv3
-	makedepends = jq
 	depends = java-runtime>=8
 	depends = xorg-xrandr
 	noextract = 972758e1c5cad62861844a94f2830a14c7e795975108cd3d31de729285c53eb6.jar
