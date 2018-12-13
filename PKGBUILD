@@ -5,7 +5,7 @@
 # Upstream: https://github.com/lightningnetwork/lnd
 
 pkgname=('lnd-git')
-pkgver=0.5.1.beta.160.gdc7c5974
+pkgver=0.5.1.beta.172.g8c5d6842
 pkgrel=1
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
 arch=('x86_64')
@@ -24,11 +24,10 @@ pkgver() {
 }
 
 build() {
-   #To do : Add RELRO and PIE
    cd $pkgname
-   go build .
+   go build -buildmode=pie -ldflags -extldflags=-Wl,-z,now,-z,relro .
    cd cmd/lncli
-   go build .
+   go build -buildmode=pie -ldflags -extldflags=-Wl,-z,now,-z,relro .
 }
 
 package() {
