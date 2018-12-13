@@ -1,12 +1,12 @@
 pkgbase = pantheon-desktop-git
 	pkgdesc = Meta package for the complete Pantheon desktop & apps
 	pkgver = 20180925
-	pkgrel = 3
+	pkgrel = 4
 	url = http://elementary.io
 	arch = any
 	license = LGPL
 	makedepends = granite-git
-	makedepends = gala-git
+	makedepends = pantheon-workarounds
 	makedepends = wingpanel-standalone-git
 	depends = cerbere-git
 	depends = contractor-git
@@ -64,7 +64,7 @@ pkgbase = pantheon-desktop-git
 	depends = gtk-theme-elementary-git
 	depends = lightdm
 	depends = lightdm-settings
-	depends = lightdm-pantheon-greeter
+	depends = lightdm-pantheon-greeter-git
 
 pkgname = pantheon-desktop-git
 
