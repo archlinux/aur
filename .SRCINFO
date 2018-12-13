@@ -1,6 +1,6 @@
 pkgbase = lc0-cudnn-git
 	pkgdesc = CudNN version of Leela Chess Zero.
-	pkgver = 657
+	pkgver = 855
 	pkgrel = 1
 	url = https://lczero.org/
 	arch = i686
