@@ -1,0 +1,13 @@
+pkgbase = git-fiddle
+	pkgdesc = Edit commit messages, authors, and timestamps during git-rebase
+	pkgver = 606086d
+	pkgrel = 1
+	url = https://github.com/felixSchl/git-fiddle
+	arch = any
+	license = custom
+	depends = bash
+	source = git-fiddle::git+https://github.com/felixSchl/git-fiddle.git
+	md5sums = SKIP
+
+pkgname = git-fiddle
+
