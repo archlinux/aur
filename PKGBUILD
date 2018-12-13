@@ -1,11 +1,12 @@
 # Maintainer: Chris <christopher.r.mullins g-mail>
+# Contributor: geosam <samuelmesa@linuxmail.org>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=insight-toolkit
-pkgver=4.13.0
-pkgrel=9
+pkgver=4.13.1
+pkgrel=10
 pkgdesc='Cross-platform system that provides developers with an extensive suite of software tools for image analysis'
 arch=('i686' 'x86_64')
 url='http://www.itk.org/'
@@ -23,7 +24,7 @@ optdepends=('python2: build python wrapping'
 	    'castxml-git: for ITK')
 makedepends=('cmake')
 source=("http://downloads.sourceforge.net/project/itk/itk/${pkgver:0:4}/InsightToolkit-${pkgver}.tar.xz")
-sha512sums=('5ab7b411f70c39a937baee03e75df18fdd53479691b7829c37637163314c26a01cf50628ce3c9503f952eb02c1746688719fdca525650f0747af184117680006')
+sha512sums=('faeb33875e00fb8380192a6772ecab2e713a0a5dd2879a15e862690f25302627c7370b646eea68367d215bf4eb6f7eb06b32cd05e18d031e853229fc23943d8b')
 
 _usepython=false
 
@@ -44,7 +45,7 @@ build() {
     -DITK_USE_SYSTEM_PNG:BOOL=ON \
     -DITK_USE_SYSTEM_ZLIB:BOOL=ON \
     -DITK_USE_SYSTEM_TIFF:BOOL=ON \
-    -DITK_USE_SYSTEM_GDCM:BOOL=ON \
+    -DITK_USE_SYSTEM_GDCM:BOOL=OFF \
     -DITK_LEGACY_SILENT:BOOL=ON \
     $( $_usepython && echo "-DITK_WRAP_PYTHON:BOOL=ON") \
     $( $_usepython && echo "-DModule_ITKReview:BOOL=OFF") \
