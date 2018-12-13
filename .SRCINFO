@@ -1,7 +1,7 @@
 pkgbase = caffe-ssd-cpu
 	pkgdesc = weiliu89's caffe for CPU only
 	pkgver = ssdv1.0.r0.g4817bf8b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/weiliu89/caffe/tree/ssd
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = caffe-ssd-cpu
 	makedepends = gcc6
 	makedepends = doxygen
 	makedepends = texlive-core
+	makedepends = findutils
 	depends = boost-libs
 	depends = protobuf
 	depends = google-glog
@@ -52,9 +53,7 @@ pkgbase = caffe-ssd-cpu
 	conflicts = caffe-git
 	conflicts = caffe-ssd
 	source = caffe-ssd-cpu::git+https://github.com/weiliu89/caffe.git#branch=ssd
-	source = makefile.patch
 	sha256sums = SKIP
-	sha256sums = b39cc3e741818d2879fe881143e890c0be023557dd4d9b7f23874cf60cfec7eb
 
 pkgname = caffe-ssd-cpu
 

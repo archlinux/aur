@@ -1,13 +1,9 @@
 # Maintainer : jerry73204 < jerry73204 at gmail dot com >
 
-# NOTE:
-# In order to build with NCCL support, uncomment the NCCL
-# lines in 'depends' and 'preprare()'.
-
 pkgname=caffe-ssd-cpu
 _srcname=caffe
 pkgver=ssdv1.0.r0.g4817bf8b
-pkgrel=1
+pkgrel=2
 pkgdesc="weiliu89's caffe for CPU only"
 arch=('x86_64')
 url='https://github.com/weiliu89/caffe/tree/ssd'
@@ -22,21 +18,18 @@ depends=(
     # AUR:
         # required:
             'openblas-lapack'
-        # not required:
-            # 'nccl'
         #python:
             'python-leveldb' 'python-scikit-image' 'python-pydotplus'
     # NOTE:
     # python-pydotplus (or python-pydot) is required by python executable draw_net.py
     # https://github.com/BVLC/caffe/blob/691febcb83d6a3147be8e9583c77aefaac9945f8/python/caffe/draw.py#L7-L22
 )
-makedepends=('git' 'gcc6' 'doxygen' 'texlive-core')
+makedepends=('git' 'gcc6' 'doxygen' 'texlive-core' 'findutils')
 provides=('caffe' 'caffe-ssd')
 conflicts=('caffe' 'caffe-cpu' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git'
            'caffe2' 'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git' 'caffe-git' 'caffe-ssd')
-source=("${pkgname}"::"git+https://github.com/weiliu89/caffe.git#branch=ssd" 'makefile.patch')
-sha256sums=('SKIP'
-            'b39cc3e741818d2879fe881143e890c0be023557dd4d9b7f23874cf60cfec7eb')
+source=("${pkgname}"::"git+https://github.com/weiliu89/caffe.git#branch=ssd")
+sha256sums=('SKIP')
 
 prepare() {
     cd "$pkgname"
@@ -44,23 +37,37 @@ prepare() {
     # prepare to configure options in Makefile.config
     cp -f Makefile.config.example Makefile.config
 
-    # enable cuDNN acceleration switch
-    # sed -i '/USE_CUDNN/s/^#[[:space:]]//g' Makefile.config
-
     # use cpu only
     sed -i '/CPU_ONLY/s/^#[[:space:]]//g' Makefile.config
 
-    # enable NCCL acceleration switch
-    # sed -i '/USE_NCCL/s/^#[[:space:]]//g' Makefile.config
+    # fix compatibility OpenCV 4
+    sed -i '/INCLUDE_DIRS += $(BUILD_INCLUDE_DIR) .\/src .\/include/a\INCLUDE_DIRS += /usr/include/opencv4' Makefile
+    sed -i 's|COMMON_FLAGS += \$(foreach includedir,\$(INCLUDE_DIRS),-isystem \$(includedir))|COMMON_FLAGS += \$(foreach includedir,\$(INCLUDE_DIRS),-I \$(includedir))|' Makefile
+
+    find -name '*.cpp' -exec \
+         sed -i -e 's/CV_LOAD_IMAGE_COLOR/cv::IMREAD_COLOR/g' \
+         -e 's/CV_LOAD_IMAGE_GRAYSCALE/cv::IMREAD_GRAYSCALE/g' \
+         -e 's/CV_CAP_PROP_FRAME_COUNT/cv::CAP_PROP_FRAME_COUNT/g' \
+         -e 's/CV_CAP_PROP_POS_FRAMES/cv::CAP_PROP_POS_FRAMES/g' \
+         -e 's/CV_HSV2BGR/cv::COLOR_HSV2BGR/g' \
+         -e 's/CV_BGR2HSV/cv::COLOR_BGR2HSV/g' \
+         -e 's/CV_BGR2Lab/cv::COLOR_BGR2Lab/g' \
+         -e 's/CV_BGR2YCrCb/cv::COLOR_BGR2YCrCb/g' \
+         -e 's/CV_YCrCb2BGR/cv::COLOR_YCrCb2BGR/g' \
+         -e 's/CV_GRAY2BGR/cv::COLOR_GRAY2BGR/g' \
+         -e 's/CV_BGR2GRAY/cv::COLOR_BGR2GRAY/g' \
+         -e 's/CV_THRESH_BINARY_INV/cv::THRESH_BINARY_INV/g' \
+         -e 's/CV_THRESH_OTSU/cv::THRESH_OTSU/g' \
+         -e 's/CV_IMWRITE_JPEG_QUALITY/cv::IMWRITE_JPEG_QUALITY/g' \
+         -e 's/CV_FOURCC/cv::VideoWriter::fourcc/g' \
+         -e 's/CV_FILLED/cv::FILLED/g' \
+         {} ';'
 
     # strictly enable I/O dependencies
     sed -i '/USE_OPENCV/s/^#[[:space:]]//;/USE_OPENCV/s/0/1/'   Makefile.config
     sed -i '/USE_LEVELDB/s/^#[[:space:]]//;/USE_LEVELDB/s/0/1/' Makefile.config
     sed -i '/USE_LMDB/s/^#[[:space:]]//;/USE_LMDB/s/0/1/'       Makefile.config
     sed -i '/OPENCV_VERSION/s/^#[[:space:]]//g'                 Makefile.config
-
-    # set CUDA directory
-    # sed -i '/CUDA_DIR/s/\/usr\/local\/cuda/\/opt\/cuda/' Makefile.config
 
     # remove gpu architectures not supported by CUDA 9.0
     sed -i 's/-gencode[[:space:]]arch=compute_20,code=sm_20//' Makefile.config
@@ -97,9 +104,6 @@ prepare() {
     # python2 settings
     #_py2inc_line="$(sed -n '/PYTHON_INCLUDE[[:space:]]\:=[[:space:]]\/usr\/include\/python2\.7/=' Makefile.config)"
     #sed -i "$((_py2inc_line+1))s/dist/site/" Makefile.config
-
-    # patch Makefile
-    patch -Np1 -i $srcdir/makefile.patch
 }
 
 pkgver() {
