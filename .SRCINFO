@@ -1,0 +1,20 @@
+pkgbase = python-enamlx
+	pkgdesc = Additional Qt Widgets for Enaml
+	pkgver = 0.3.0
+	pkgrel = 00
+	url = https://github.com/frmdstryr/enamlx
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-enaml
+	noextract = enamlx-0.3.0-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/be/5a/217fda69ee0e5fa2a9a558de29ead1591e6861b0b6869a075c1346810275/enamlx-0.3.0-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 896f51bd17ae1f74190c9abdbf682913
+	md5sums = 794244867fb0e2662f4faaca995758f9
+
+pkgname = python-enamlx
+
