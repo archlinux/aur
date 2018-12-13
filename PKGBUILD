@@ -17,6 +17,16 @@ prepare(){ # GOPATH setup - will go away with go.mod
   ln -rTsf "${pkgname}-${pkgver}" "gopath/src/$_goimport"
 }
 
+build() {
+  export GOPATH="$srcdir/gopath"
+  cd "gopath/src/$_goimport"
+  meta="-X main.version=v$pkgver -X main.commit=release -X main.date=$(date +%F)"
+  go install \
+    -gcflags "all=-trimpath=$PWD" \
+    -asmflags "all=-trimpath=$PWD" \
+    -ldflags "-extldflags $LDFLAGS $meta"
+}
+
 check() {
   export GOPATH="$srcdir/gopath"
   cd "gopath/src/$_goimport/test"
@@ -28,16 +38,6 @@ check() {
   sleep 5
   dbus-run-session go test
   kill $pid_xvfb
-}
-
-build() {
-  export GOPATH="$srcdir/gopath"
-  cd "gopath/src/$_goimport"
-  meta="-X main.version=v$pkgver -X main.commit=release -X main.date=$(date +%F)"
-  go install \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS $meta" 
 }
 
 package() {
