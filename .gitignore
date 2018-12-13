@@ -7,3 +7,4 @@ linux.install.pkg
 *.log
 *.part
 *.sig
+archlinux-linux/

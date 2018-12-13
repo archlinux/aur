@@ -1,6 +1,6 @@
-From 5ffe511d5d8b5e803c8fa7249438efca7368b4c4 Mon Sep 17 00:00:00 2001
+From f56f33917f418568141184eb2503ec65309a8255 Mon Sep 17 00:00:00 2001
 From: Mark Weiman <mark.weiman@markzz.com>
-Date: Wed, 12 Dec 2018 10:18:35 -0500
+Date: Thu, 13 Dec 2018 13:15:16 -0500
 Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.18)
 
 This an updated version of Alex Williamson's patch from:
@@ -50,10 +50,10 @@ your customers the hassle of this boot option.
  2 files changed, 110 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 1370b424a453..e9334812da5d 100644
+index 0c404cda531a..0d45f0014f4a 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -3106,6 +3106,14 @@
+@@ -3165,6 +3165,14 @@
  		nomsi		[MSI] If the PCI_MSI kernel config parameter is
  				enabled, this kernel boot option can be used to
  				disable the use of MSI interrupts system-wide.
@@ -69,10 +69,10 @@ index 1370b424a453..e9334812da5d 100644
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index a4d11d14b196..0be08f804e87 100644
+index c0673a717239..695d99b390f7 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -186,6 +186,106 @@ static int __init pci_apply_final_quirks(void)
+@@ -194,6 +194,106 @@ static int __init pci_apply_final_quirks(void)
  }
  fs_initcall_sync(pci_apply_final_quirks);
  
@@ -179,12 +179,12 @@ index a4d11d14b196..0be08f804e87 100644
  /*
   * Decoding should be disabled for a PCI device during BAR sizing to avoid
   * conflict. But doing so may cause problems on host bridge and perhaps other
-@@ -4393,6 +4493,8 @@ static const struct pci_dev_acs_enabled {
+@@ -4513,6 +4613,8 @@ static const struct pci_dev_acs_enabled {
  	{ PCI_VENDOR_ID_AMPERE, 0xE00A, pci_quirk_xgene_acs },
  	{ PCI_VENDOR_ID_AMPERE, 0xE00B, pci_quirk_xgene_acs },
  	{ PCI_VENDOR_ID_AMPERE, 0xE00C, pci_quirk_xgene_acs },
 +	/* allow acs for any */
-+	{ PCI_ANY_ID, PCI_ANY_ID, pci_acs_overrides },
++	{ PCI_ANY_ID, PCI_ANY_ID, pcie_acs_overrides },
  	{ 0 }
  };
  
