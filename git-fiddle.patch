@@ -1,0 +1,11 @@
+--- gf/git-fiddle/git-fiddle	2018-12-13 20:06:44.904371633 +0100
++++ gf2/git-fiddle/git-fiddle	2018-12-13 20:45:32.131986428 +0100
+@@ -32,7 +32,7 @@
+ #       [git config: fiddle.body]
+ #   [args...] These arguments are passed verbatim to git-rebase
+
+-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
++SCRIPT_DIR='/usr/lib/git-fiddle'
+ ORIGINAL_GIT_SEQUENCE_EDITOR="$GIT_SEQUENCE_EDITOR"
+
+ # derive the help text from the first comment in a shell script

@@ -1,0 +1,17 @@
+pkgbase = git-fiddle-git
+	pkgdesc = Edit commit messages, authors, and timestamps during git-rebase
+	pkgver = r67.606086d
+	pkgrel = 1
+	url = https://github.com/felixSchl/git-fiddle
+	arch = any
+	license = MIT
+	depends = git
+	source = git-fiddle::git+https://github.com/felixSchl/git-fiddle.git
+	source = git-fiddle.patch
+	source = git-fiddle.patch.sig
+	validpgpkeys = 7A194E3F7A8F867BEA8A5339023F078862ACFE50
+	sha256sums = SKIP
+	sha256sums = 427f7d910811e10991e32da3b210925dc69886f8687d7464c21966955c03d056
+	sha256sums = SKIP
+
+pkgname = git-fiddle-git
