@@ -1,3 +1,6 @@
+# Maintainer: Ayrton Araujo <root@ayr-ton.net>
+# Contributor: Fabien LEFEBVRE <contact@d1ceward.com>
+
 pkgname=dokku
 pkgver=0.13.3
 pkgrel=1
