@@ -6,7 +6,7 @@
 
 pkgname=('lnd-git')
 pkgver=0.5.1.beta.172.g8c5d6842
-pkgrel=1
+pkgrel=2
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
 arch=('x86_64')
 url='https://github.com/lightningnetwork/lnd'
