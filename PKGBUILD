@@ -34,5 +34,5 @@ package() {
   cd $pkgname
   install -Dm 755 "lnd" -t "$pkgdir/usr/bin";
   install -Dm 755 "cmd/lncli/lncli" -t "$pkgdir/usr/bin";
-  install -D -m644 LICENSE "$pkgdir/LICENSE"
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
