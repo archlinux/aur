@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sanoid
-pkgver=1.4.18
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Sanoid is a policy-driven snapshot management tool for ZFS filesystems."
 arch=('any')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/jimsalterjrs/sanoid/archive
         'sanoid.service'
         'sanoid.timer')
 
-sha256sums=('42e6ba2f8fc5ebf4ca6c4c7ea71dc68756891ba2a81111d49ca0304c532b1dfa'
+sha256sums=('92afcf75ff83d46356bc0e00f9caa33ebcfd887f242607551082c094cdb6c7aa'
             'a1f53363c2814a797ed4b19533b31db87e36bf9ffd41487c036570e80f498f76'
             '69f216772f852e2f7ed90633799d2ad8fa04cb0166c2e54eddcf6654047a4beb')
 
