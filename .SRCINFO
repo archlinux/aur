@@ -1,7 +1,7 @@
 pkgbase = ruby-activestorage
 	pkgdesc = Local and cloud file storage framework.
 	pkgver = 5.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rubyonrails.org
 	arch = any
 	license = MIT
