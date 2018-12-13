@@ -2,8 +2,8 @@
 
 _pkgname=sonarqube
 pkgname=${_pkgname}-lts
-pkgver=6.7.5
-pkgrel=2
+pkgver=6.7.6
+pkgrel=1
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
 url="http://www.sonarqube.org/"
@@ -30,7 +30,7 @@ source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-$
         "${_pkgname}-user.conf"
         "99-${_pkgname}.conf")
 
-sha256sums=('a9221a3b6a3826c84e9002ecc76e146662b09bbef42b7ea4aa0f3aeb9503c23a'
+sha256sums=('68c7cf30d9d9cb9028742ef478e50c358728fac4c680bf5285f6a4fbfc1a55a3'
             '1aeefc9db232d13a3139a27af308e30df72c8c9fd631f713e317e1ab18a24d77'
             '6e024de469ebb1bc4083274412f0a5d68d5fa511c2139ce4cb1d243c51ff9535'
             '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d'
