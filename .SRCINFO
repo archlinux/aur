@@ -1,6 +1,6 @@
 pkgbase = oranchelo-icon-theme
 	pkgdesc = Oranchelo is a flat-design icon theme for XFCE4 based on Super Flat Remix and inspired by "Corny icons" by Patryk Goworowski.
-	pkgver = 0.7.7.1
+	pkgver = 0.7.7.2
 	pkgrel = 1
 	url = https://github.com/Madh93/oranchelo-icon-theme.git
 	arch = any
