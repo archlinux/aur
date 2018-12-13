@@ -1,9 +1,9 @@
 # Maintainer Cookie Engineer <@cookiengineer>
 
 _npmname=fx
-_npmver=3.0.2
+_npmver=9.0.2
 pkgname=nodejs-fx # All lowercase
-pkgver=3.0.2
+pkgver=9.0.2
 pkgrel=1
 pkgdesc="Command-line JSON processing tool"
 arch=(any)
@@ -12,7 +12,7 @@ license=( "MIT" )
 depends=('nodejs')
 options=('!emptydirs')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha256sums=('12d374edf8ba9c77df5bbc47f0acff9e4905539f958c9ee0e221a66ebad8602f')
+sha256sums=('SKIP')
 noextract=($_npmname-$_npmver.tgz)
 
 package() {

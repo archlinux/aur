@@ -1,15 +1,15 @@
 pkgbase = nodejs-fx
 	pkgdesc = Command-line JSON processing tool
-	pkgver = 3.0.2
+	pkgver = 9.0.2
 	pkgrel = 1
 	url = https://github.com/antonmedv/fx
 	arch = any
 	license = MIT
 	depends = nodejs
-	noextract = fx-3.0.2.tgz
+	noextract = fx-9.0.2.tgz
 	options = !emptydirs
-	source = http://registry.npmjs.org/fx/-/fx-3.0.2.tgz
-	sha256sums = 12d374edf8ba9c77df5bbc47f0acff9e4905539f958c9ee0e221a66ebad8602f
+	source = http://registry.npmjs.org/fx/-/fx-9.0.2.tgz
+	sha256sums = SKIP
 
 pkgname = nodejs-fx
 
