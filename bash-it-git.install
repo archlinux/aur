@@ -9,6 +9,17 @@ post_install() {
 EOF
 }
 
+post_upgrade() {
+  cat >&2 << 'EOF'
+
+    ##                                                  ##
+    ## To finish the upgrade for the logged-in user,    ##
+    ## run: /usr/share/bash-it-git/upgrade.sh           ##
+    ##                                                  ##
+
+EOF
+}
+
 post_remove() {
   cat >&2 << 'EOF'
 

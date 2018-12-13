@@ -1,6 +1,6 @@
 pkgbase = bash-it-git
 	pkgdesc = A community Bash framework
-	pkgver = r2279.36345cb
+	pkgver = r2382.b973bb1
 	pkgrel = 1
 	url = https://github.com/Bash-it/bash-it
 	install = bash-it-git.install
@@ -34,6 +34,8 @@ pkgbase = bash-it-git
 	source = LICENSE
 	source = custom.lib.bash.shim
 	source = install.sh.wrapper
+	source = upgrade.sh.wrapper
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP

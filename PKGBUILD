@@ -4,7 +4,7 @@
 # PKGBUILD reference: https://wiki.archlinux.org/index.php/PKGBUILD
 
 pkgname=bash-it-git
-pkgver=r2279.36345cb
+pkgver=r2382.b973bb1
 pkgrel=1
 pkgdesc='A community Bash framework'
 arch=('any')
@@ -37,8 +37,10 @@ source=(
   'LICENSE'
   'custom.lib.bash.shim'
   'install.sh.wrapper'
+  'upgrade.sh.wrapper'
 )
 sha512sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -65,7 +67,7 @@ package() {
   cp -r --preserve=mode -t "${pkgdir}/usr/lib/${pkgname}" \
     "${srcdir}/${pkgname}"/{bash_it,install,uninstall}.sh \
     "${srcdir}/${pkgname}"/{aliases,completion,custom,lib} \
-    "${srcdir}/${pkgname}"/{plugins,themes}
+    "${srcdir}/${pkgname}"/{plugins,scripts,themes}
 
   # Copy warning shim to `lib/custom.bash`
   cp --preserve=mode \
@@ -78,10 +80,12 @@ package() {
     "${srcdir}/${pkgname}/install.sh" \
     "${srcdir}/${pkgname}/template"
 
-  # Copy wrapper for `install.sh`
-  cp --preserve=mode \
-    "${srcdir}/install.sh.wrapper" \
-    "${pkgdir}/usr/share/${pkgname}/install.sh"
+  # Copy wrappers for `install.sh` and `upgrade.sh`
+  for event in install upgrade; do
+    cp --preserve=mode \
+      "${srcdir}/${event}.sh.wrapper" \
+      "${pkgdir}/usr/share/${pkgname}/${event}.sh"
+  done
 
   cp --preserve=mode -t "${pkgdir}/usr/share/doc/${pkgname}" \
     "${srcdir}/${pkgname}"/*.md
@@ -137,7 +141,7 @@ package() {
   # Create symlinks to remaining files
   ln -fs \
     "/usr/lib/${pkgname}"/{bash_it,install,uninstall}.sh \
-    "/usr/lib/${pkgname}"/{lib,themes} \
+    "/usr/lib/${pkgname}"/{lib,scripts,themes} \
     "/usr/share/${pkgname}"/{.editorconfig,template} \
     "/usr/share/doc/${pkgname}"/{CONTRIBUTING,DEVELOPMENT,README}.md \
     "${_factorydir}/"
