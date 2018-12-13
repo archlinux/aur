@@ -5,6 +5,7 @@ pkgbase = git-bug-bin
 	url = https://github.com/MichaelMure/git-bug
 	arch = x86_64
 	arch = i686
+	arch = arm
 	license = GPLv3
 	source = https://github.com/MichaelMure/git-bug/archive/0.4.0.tar.gz
 	sha256sums = 5ab14e8528556862c1991bd8f0cd73f25367d85c5c72d38d0f9556de58d86311
@@ -12,6 +13,8 @@ pkgbase = git-bug-bin
 	sha256sums_x86_64 = 0787fe0eeae2de0c9c99f56f98bec7b4845b91b5a29f9af29059beffed858460
 	source_i686 = https://github.com/MichaelMure/git-bug/releases/download/0.4.0/git-bug_linux_386
 	sha256sums_i686 = 550ca201ab90fec8533023d4d9d0f4c4b99d639ba0a7731b7f8897f011f5744c
+	source_arm = https://github.com/MichaelMure/git-bug/releases/download/0.4.0/git-bug_linux_arm
+	sha256sums_arm = f4da587e814aa9a6da395c8e40dfb1025d4940aad5a8c8c20cc253dc62bb426b
 
 pkgname = git-bug-bin
 
