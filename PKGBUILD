@@ -4,13 +4,13 @@
 pkgname=vfs495-daemon
 _realver=4.5-136.0
 pkgver=${_realver//-/_}
-pkgrel=4
+pkgrel=5
 pkgdesc="Userspace driver for VFS495 fingerprint readers"
 arch=('x86_64')
 url=""
 license=('unknown')
 depends=('openssl098' 'libusb-compat')
-makedepends=('rpmextract')
+makedepends=('rpmextract' 'chrpath')
 install='vfs495-daemon.install'
 provides=('vfs495-daemon')
 # source comes straight from the HP driver site for this laptop model, which
@@ -37,9 +37,14 @@ package() {
   install -m 644 -D -t "${pkgdir}/usr/share/doc/vfs495-daemon" usr/share/doc/packages/validity/*
 
   install -D -t "${pkgdir}/usr/lib/systemd/system-sleep" vfs495-sleep
+
+  chrpath -d usr/lib/libvfsFprintWrapper.so usr/bin/vcsFPService
   install -D -t "${pkgdir}/usr/lib" usr/lib/libvfsFprintWrapper.so
   install -D -t "${pkgdir}/usr/bin" usr/bin/vcsFPService
 
-  mkdir -p "${pkgdir}/usr/share/vfs495-daemon"
-  cp -t "${pkgdir}/usr/share/vfs495-daemon" usr/sbin/*
+  # the stuff in /sbin doesn't seem used anywhere, although both the
+  # vcsFPService and validity-sensor binaries contain strings with paths to
+  # /usr/sbin/HPUsbVFS[*].img . however, they have always been installed to
+  # /usr/bin via this package and it doesn't seem to have caused any issues, so
+  # I'm leaving them off for now.
 }
