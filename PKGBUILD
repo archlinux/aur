@@ -4,7 +4,7 @@
 pkgname=vfs495-daemon
 _realver=4.5-136.0
 pkgver=${_realver//-/_}
-pkgrel=2
+pkgrel=3
 pkgdesc="Userspace driver for VFS495 fingerprint readers"
 arch=('x86_64')
 url=""
@@ -43,8 +43,8 @@ package() {
   cd "${srcdir}/"
 
   cp -R usr/ "${pkgdir}/"
-  mkdir -p "${pkgdir}/etc/systemd/system"
-  cp vfs495-daemon.service "${pkgdir}/etc/systemd/system"
+  mkdir -p "${pkgdir}/usr/lib/systemd/system"
+  cp vfs495-daemon.service "${pkgdir}/usr/lib/systemd/system"
   mkdir -p "${pkgdir}/usr/lib/systemd/system-sleep"
   cp vfs495-sleep "${pkgdir}/usr/lib/systemd/system-sleep"
 }

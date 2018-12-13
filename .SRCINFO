@@ -1,7 +1,7 @@
 pkgbase = vfs495-daemon
 	pkgdesc = Userspace driver for VFS495 fingerprint readers
 	pkgver = 4.5_136.0
-	pkgrel = 1
+	pkgrel = 3
 	install = vfs495-daemon.install
 	arch = x86_64
 	license = unknown
@@ -12,8 +12,10 @@ pkgbase = vfs495-daemon
 	noextract = sp84530.tar
 	source = https://ftp.hp.com/pub/softpaq/sp84501-85000/sp84530.tar
 	source = vfs495-daemon.service
+	source = vfs495-sleep
 	md5sums = 9877c69c4f4b57a00f9e4afbcd9baacc
 	md5sums = ebe697d6fac43645191e2fad74bad99f
+	md5sums = a2edc66e120d073211f7ded3aeedd7d0
 
 pkgname = vfs495-daemon
 
