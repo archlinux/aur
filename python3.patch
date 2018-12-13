@@ -1,0 +1,78 @@
+diff -Naur ./usr.bak/share/nemo-python/extensions/insync-nemo-plugin.py ./usr/share/nemo-python/extensions/insync-nemo-plugin.py
+--- ./usr.bak/share/nemo-python/extensions/insync-nemo-plugin.py	2018-12-13 00:10:11.813708370 -0500
++++ ./usr/share/nemo-python/extensions/insync-nemo-plugin.py	2018-12-13 00:10:56.838040063 -0500
+@@ -1,6 +1,7 @@
+ print('loading insync nemo plugin..')
+ from gi.repository import GObject
+ from gi.repository import Nemo
++import importlib
+ 
+ DEV_MODE = False
+ 
+@@ -8,17 +9,17 @@
+ import os
+ import socket
+ import sys
+-import urllib
++import urllib.request, urllib.parse, urllib.error
+ 
+ 
+ if sys.getdefaultencoding() != 'utf-8':
+-  reload(sys)
++  importlib.reload(sys)
+   sys.setdefaultencoding('utf-8') # pylint: disable=E1101
+ 
+ def ipc_insync(**kw):
+   #print('<ipc-insync>',kw)
+   data = json.dumps( kw )
+-  socket_file = u'/tmp/insync%r.sock' % os.getuid()
++  socket_file = '/tmp/insync%r.sock' % os.getuid()
+   if not os.path.exists(socket_file):
+     if DEV_MODE:
+       print('WARN: insync socket not found')
+@@ -65,10 +66,10 @@
+     if file.get_uri_scheme() != 'file':
+       return None
+ 
+-    path = os.path.realpath(urllib.unquote(file.get_uri()[len('file://'):]))
+-    path = unicode(path)
++    path = os.path.realpath(urllib.parse.unquote(file.get_uri()[len('file://'):]))
++    path = str(path)
+     if DEV_MODE:
+-      print path
++      print(path)
+     is_dir = os.path.isdir(path)
+ 
+     cm_info = ipc_insync(command='CONTEXT-MENU-ITEMS', full_path=path)
+@@ -88,7 +89,7 @@
+       item_id = 0
+       for text, cmd in cm_items:
+         if text == 'separator':
+-          text = u'\u2015' * 10
++          text = '\u2015' * 10
+           name = 'Insync:separator:' + str(item_id)
+         else:
+           name = 'Insync:%s:%d' % (text, item_id)
+@@ -104,7 +105,7 @@
+     return None
+ 
+   def do_action(self, menu, file, method):
+-    path = urllib.unquote(
++    path = urllib.parse.unquote(
+       file.get_uri()[len('file://'):]
+     )
+     ipc_insync( method=method, full_path=path)
+@@ -113,11 +114,11 @@
+     if file.get_uri_scheme() != 'file':
+       return
+ 
+-    filename = urllib.unquote(file.get_uri()[len('file://'):])
++    filename = urllib.parse.unquote(file.get_uri()[len('file://'):])
+     filename = os.path.realpath(filename)
+     status = ipc_insync(command='GET-FILE-STATUS', full_path=filename)
+     if DEV_MODE:
+-      print filename, status
++      print(filename, status)
+     if status and status != 'UNKNOWN':
+       emblem = _EMBLEM_KEYS[status]
+       if os.path.isdir(filename):
