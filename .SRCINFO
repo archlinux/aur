@@ -1,5 +1,5 @@
 pkgbase = python-atari-py
-	pkgdesc = Python bindings to Atari games
+	pkgdesc = A python interface for the Arcade Learning Environment (Modified by OpenAI)
 	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/openai/atari-py
