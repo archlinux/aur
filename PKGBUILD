@@ -1,5 +1,5 @@
 pkgname=libmodulemd
-pkgver=2.0.0beta2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="C Library for manipulating module metadata files"
 arch=('i686' 'x86_64')
@@ -9,10 +9,10 @@ depends=('glib2' 'libyaml')
 makedepends=('gobject-introspection' 'gtk-doc' 'meson' 'python-gobject')
 optdepends=('python-gobject: for python bindings')
 source=("$url/releases/download/$pkgname-$pkgver/${pkgname#lib}-$pkgver.tar.xz")
-md5sums=('96a6bf20d7615f830d67fc083da560c1')
+md5sums=('cce2ddc925d08c9fb9a65681f227d1c8')
 
 prepare() {
-	mv "${pkgname#lib}-${pkgver%beta*}" "$pkgname-$pkgver"
+	mv "${pkgname#lib}-$pkgver" "$pkgname-$pkgver"
 }
 
 build() {
@@ -29,6 +29,9 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	DESTDIR="$pkgdir/" ninja -C build install
+
+	# Defaults to libmodulemd API v1 until more software are ported to API v2
+	ln -sf "$pkgname.so.1" "$pkgdir/usr/lib/$pkgname.so"
 
 	install -Dp -m644 COPYING   "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 	install -Dp -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
