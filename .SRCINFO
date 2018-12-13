@@ -1,0 +1,18 @@
+pkgbase = ruby-activestorage
+	pkgdesc = Local and cloud file storage framework.
+	pkgver = 5.2.2
+	pkgrel = 1
+	url = http://rubyonrails.org
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-actionpack
+	depends = ruby-activerecord
+	depends = ruby-marcel
+	noextract = activestorage-5.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/activestorage-5.2.2.gem
+	sha1sums = 242150e6f07a6bca55191225022e94e4a6622053
+
+pkgname = ruby-activestorage
+
