@@ -1,6 +1,6 @@
 # Maintainer: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=nccmp
-pkgver=1.8.2.1
+pkgver=1.8.3.1
 pkgrel=1
 pkgdesc="nccmp compares two NetCDF files bitwise or with a user defined tolerance"
 arch=(i686 x86_64)
@@ -8,17 +8,20 @@ url="http://nccmp.sourceforge.net/"
 license=('GPL')
 groups=(science)
 depends=(netcdf)
-source=(http://prdownloads.sourceforge.net/nccmp/${pkgname}-${pkgver}.tar.gz)
-md5sums=('a657f60e01e3bbcbc92d8414f079889f')
+source=(https://gitlab.com/remikz/nccmp/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
+md5sums=('6e3caef483f0b44544c1a825899f989a')
  
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr --program-transform-name='s/info/desc/'
+  mkdir build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=production ..
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}/build
   make DESTDIR=${pkgdir} install
 }
 
