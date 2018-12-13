@@ -1,0 +1,19 @@
+pkgbase = python-atari-py
+	pkgdesc = Python bindings to Atari games
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/openai/atari-py
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = cmake
+	makedepends = gcc
+	depends = python
+	depends = python-numpy
+	depends = python-six
+	depends = zlib
+	source = atari-py-0.1.7.tar.gz::https://github.com/openai/atari-py/archive/0.1.7.tar.gz
+	md5sums = 0de4736dff57022538238a9d5554ef1c
+
+pkgname = python-atari-py
+
