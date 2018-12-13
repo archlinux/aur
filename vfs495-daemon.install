@@ -1,8 +1,14 @@
-post_install () {
-	echo "Run systemctl enable --now vfs495-daemon.service to start the daemon"
+post_install() {
+  systemctl enable vfs495-daemon.service
+  systemctl start vfs495-daemon.service
 }
 
-post_remove () {
-	echo ""
+pre_upgrade() {
+  systemctl stop vfs495-daemon.service
+  systemctl disable vfs495-daemon.service
 }
 
+pre_remove() {
+  systemctl stop vfs495-daemon.service
+  systemctl disable vfs495-daemon.service
+}

@@ -21,7 +21,7 @@ source=("https://ftp.hp.com/pub/softpaq/sp84501-85000/${_softpaq}"
         'vfs495-daemon.service')
 noextract=(${_softpaq})
 md5sums=('9877c69c4f4b57a00f9e4afbcd9baacc'
-         '8e959fb897cb2e8c134541abdbeeaee9')
+         'ebe697d6fac43645191e2fad74bad99f')
 
 build() {
   cd "${srcdir}/"

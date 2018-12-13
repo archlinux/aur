@@ -13,7 +13,7 @@ pkgbase = vfs495-daemon
 	source = https://ftp.hp.com/pub/softpaq/sp84501-85000/sp84530.tar
 	source = vfs495-daemon.service
 	md5sums = 9877c69c4f4b57a00f9e4afbcd9baacc
-	md5sums = 8e959fb897cb2e8c134541abdbeeaee9
+	md5sums = ebe697d6fac43645191e2fad74bad99f
 
 pkgname = vfs495-daemon
 
