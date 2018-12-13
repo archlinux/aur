@@ -1,0 +1,21 @@
+pkgbase = python-atom
+	pkgdesc = Memory efficient Python objects
+	pkgver = 0.4.1
+	pkgrel = 00
+	url = https://github.com/nucleic/atom
+	arch = x86_64
+	license = custom:
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	depends = python-future
+	depends = python-setuptools
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/21/8d/a4edf3f7b8a93e8d20f6dba989f49469b002f63fc372ae331d6223a9437b/atom-0.4.1.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = b71d424637ef42b742ca7cc5dbb59478
+	md5sums = 479e15005627e12fcd8dccc0877c2e6e
+
+pkgname = python-atom
+
