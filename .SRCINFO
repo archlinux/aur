@@ -1,0 +1,15 @@
+pkgbase = realtime-suggestions
+	pkgdesc = Script suggesting improvements for realtime audio
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/linuxaudio/realtime-suggestions
+	arch = any
+	groups = realtime
+	license = GPL3
+	checkdepends = shellcheck
+	depends = bash
+	source = realtime-suggestions-0.1.0.tar.gz::https://github.com/linuxaudio/realtime-suggestions/archive/0.1.0.tar.gz
+	sha512sums = 1d6f8d6ab5bc3feafe606e57ca8e21f0c105f9bf32e274eefb093658956f1f55cad9c6e7353dcb59a9076ca5d07e2ae65199230963a4c494e4b3de74f8d97a89
+
+pkgname = realtime-suggestions
+
