@@ -1,0 +1,18 @@
+pkgbase = systrayhelper
+	pkgdesc = A systray utility written in go, using json over stdio for control and events
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/ssbc/systrayhelper
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = xorg-server-xvfb
+	makedepends = dbus
+	makedepends = i3-wm
+	makedepends = xdotool
+	depends = libappindicator-gtk3
+	source = https://github.com/ssbc/systrayhelper/archive/v0.0.5.tar.gz
+	sha256sums = 55cbb75d6f89784ec03f936059625ae316d32542103a2ab66a98cf404c34c752
+
+pkgname = systrayhelper
+
