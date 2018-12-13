@@ -1,6 +1,6 @@
 pkgbase = git-fiddle
 	pkgdesc = Edit commit messages, authors, and timestamps during git-rebase
-	pkgver = git
+	pkgver = 606086d
 	pkgrel = 1
 	url = https://github.com/felixSchl/git-fiddle
 	arch = any

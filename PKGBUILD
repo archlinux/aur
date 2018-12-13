@@ -1,6 +1,6 @@
 # Maintainer: Chris Lahaye <dev@chrislahaye.com>
 pkgname=git-fiddle
-pkgver=git
+pkgver=606086d
 pkgrel=1
 pkgdesc="Edit commit messages, authors, and timestamps during git-rebase"
 url="https://github.com/felixSchl/git-fiddle"
