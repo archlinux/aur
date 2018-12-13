@@ -1,6 +1,8 @@
 post_install() {
-	getent group wildfly >/dev/null 2>&1 || groupadd -r wildfly
-	getent passwd wildfly >/dev/null 2>&1 || useradd -g wildfly -d /opt/wildfly -s /bin/bash -r wildfly
+	getent group wildfly >/dev/null 2>&1 || \
+		groupadd -r wildfly
+	getent passwd wildfly >/dev/null 2>&1 || \
+		useradd -g wildfly -d /opt/wildfly -s /bin/bash -r wildfly
 	chown -R wildfly:wildfly /opt/wildfly
 	echo "  Wildfly is installed as a systemd service. You should run the add-user"
 	echo "  script (/opt/wildfly/bin/add-user.sh) in order to add a management user"

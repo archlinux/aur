@@ -1,7 +1,7 @@
 pkgbase = wildfly-systemd
 	pkgdesc = Wildfly Application Server with systemd integration
-	pkgver = 14.0.1.Final
-	pkgrel = 2
+	pkgver = 15.0.0.Final
+	pkgrel = 1
 	url = http://www.wildfly.org/
 	install = wildfly.install
 	arch = any
@@ -29,12 +29,12 @@ pkgbase = wildfly-systemd
 	backup = opt/wildfly/bin/jboss-cli.xml
 	backup = opt/wildfly/bin/standalone.conf
 	backup = etc/wildfly/wildfly.conf
-	backup = etc/systemd/system/wildfly.service
+	backup = usr/lib/systemd/system/wildfly.service
 	backup = opt/wildfly/bin/launch.sh
-	source = https://download.jboss.org/wildfly/14.0.1.Final/wildfly-14.0.1.Final.tar.gz
+	source = https://download.jboss.org/wildfly/15.0.0.Final/wildfly-15.0.0.Final.tar.gz
 	source = wildfly.install
-	sha256sums = e12092ec6a6e048bf696d5a23c3674928b41ddc3f810016ef3e7354ad79fc746
-	sha256sums = 15c59a22a28ccab3378479e2f05376e2e921d6812b54ac66f3e7056a5f39be54
+	sha256sums = 52a41ca0e36dc41800214e6a8f4e0032276477299804e6a719ba1ffe35d37a92
+	sha256sums = 2844ec981fcf9e6fd93226796e7531b9b8fd30806adba6b31e43d9592a6409c2
 
 pkgname = wildfly-systemd
 
