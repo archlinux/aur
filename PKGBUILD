@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=2.0.1
-_commit=e8f5e592b864b341391c9becf80bbe3e0e930a33
+pkgver=2.0.2
+_commit=8e2ca4d94e2f1bc0835d3d888a969fe2e83e7ece
 pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         'zcashd.service')
 sha512sums=('SKIP'
             '3c002c9d721853089f02cc397e2bc4130574a9c06b1118824338efedc476daa5bdbdcf55bf6beba69fb9c4bd065b871b3111259fa1e25828f333056d340282a1'
-            'fe07d546b88bd0d03dbbf9843d33c2be4e8eb4744f308ed6c73015757fe77d5fde0d30ee480a9175d218b6a21b403d4defae70c44aa9e8e7541cced1c477a857'
+            'dba24a8a99da58c856bf346631b675b5b2512514384c85a3ffbbacd4c51df808d127de926850eeb36993597f31a0052ac758d065c9cecbb05a87c079555e0a54'
             '2fb8b0a636ca9c7ee15f0fd2c47046c8323ade3de9562f393da7541eee50dd14b12107dd29b0e1ee90ff88963e2f7e25b12435166a1812df5c88c579c12dde88')
 
 prepare() {
