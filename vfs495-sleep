@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+case $1 in
+  "pre")  pkill -SIGUSR1 vcsFPService ;;
+  "post") pkill -SIGUSR2 vcsFPService ;;
+esac
