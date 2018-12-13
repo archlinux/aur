@@ -1,0 +1,17 @@
+pkgbase = 35c3_char-dkms-git
+	pkgdesc = Creates a char device with the content 35c3
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Kloenk/35c3_char
+	arch = x86_64
+	groups = kloenk
+	license = GPL
+	makedepends = git
+	depends = dkms
+	provides = 35c3_char
+	conflicts = 35c3_char
+	source = 35c3_char::git+https://github.com/Kloenk/35c3_char.git
+	md5sums = SKIP
+
+pkgname = 35c3_char-dkms-git
+
