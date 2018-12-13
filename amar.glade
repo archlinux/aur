@@ -19,22 +19,6 @@
         <property name="orientation">vertical</property>
         <property name="row_spacing">5</property>
         <child>
-          <object class="GtkButton" id="buttonDesactive">
-            <property name="label" translatable="yes">DESACTIVER</property>
-            <property name="width_request">250</property>
-            <property name="height_request">40</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="halign">center</property>
-            <signal name="clicked" handler="onClickDesactive" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">5</property>
-            <property name="top_attach">6</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkButton" id="buttonActive">
             <property name="label" translatable="yes">ACTIVER</property>
             <property name="width_request">250</property>
@@ -45,27 +29,13 @@
             <property name="halign">center</property>
             <property name="valign">end</property>
             <property name="margin_top">9</property>
+            <property name="margin_bottom">9</property>
             <signal name="clicked" handler="onClickActive" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">4</property>
             <property name="top_attach">5</property>
             <property name="width">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="amarfinalstate">
-            <property name="width_request">300</property>
-            <property name="height_request">40</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">center</property>
-            <property name="valign">start</property>
-            <property name="label" translatable="yes">label</property>
-          </object>
-          <packing>
-            <property name="left_attach">5</property>
-            <property name="top_attach">7</property>
           </packing>
         </child>
         <child>
@@ -103,6 +73,12 @@ des logiciels dont l'installation via AUR est problématique ou des logiciels qu
             <property name="top_attach">1</property>
             <property name="width">5</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
         </child>
         <child>
           <placeholder/>
