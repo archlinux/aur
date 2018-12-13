@@ -1,7 +1,7 @@
 # Maintainer: hdhoang <arch@hdhoang.space>
 
 pkgname=nginx-mainline-mod-fancyindex
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=7
 
 _modname="${pkgname#nginx-mainline-mod-}"
@@ -19,7 +19,7 @@ source=(
 	https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz
 )
 sha256sums=('SKIP' 'SKIP'
-            '8327150864ca267b735d550d3304030efbbd863fdddfe0a94e970f249a8827ee')
+            '81698fb0c1ec9f906ce308c055d5d248085caf390f4b92516c1ec93f87c886d4')
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 
 prepare() {
