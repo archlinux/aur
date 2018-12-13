@@ -2,15 +2,15 @@
 
 _pkgname=krita
 pkgname="${_pkgname}-minimal"
-pkgver=4.1.5
+pkgver=4.1.7
 pkgrel=1
 pkgdesc='Edit and paint images (less KDE dependencies)'
 arch=(x86_64)
 url='https://krita.org'
 license=(GPL3)
-depends=(karchive kcompletion kcoreaddons ki18n kitemviews qt5-svg
-         qt5-multimedia qt5-x11extras kitemmodels
-         gsl libraw exiv2 openexr fftw curl boost-libs giflib qt5-declarative hicolor-icon-theme)
+depends=(karchive kcompletion kcoreaddons ki18n kitemmodels kitemviews
+         qt5-svg qt5-multimedia qt5-x11extras gsl libraw exiv2 openexr fftw curl
+         boost-libs giflib hicolor-icon-theme desktop-file-utils)
 makedepends=(extra-cmake-modules kdoctools python boost eigen vc poppler-qt5 opencolorio
              python-pyqt5 libheif sip python-sip)
 optdepends=('poppler-qt5: PDF filter'
@@ -23,7 +23,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=(calligra-krita krita-l10n "${_pkgname}")
 source=("https://download.kde.org/stable/krita/$pkgver/${_pkgname}-$pkgver.tar.gz"{,.sig}
         'replace-code.patch')
-sha256sums=('20603393afcb093a4c5fdf4a799d556600195a7b1e3db80a7003dce622bac8af'
+sha256sums=('c16ec0dd23cdf20e9dd4d34ebabcf5bdb06a825bd6fe2c7196d6777279bdabd0'
             'SKIP'
             '3cf0c0b134687e784d66c6103b2bf78a559a0b698e746b5803a6d7419098315f')
 validpgpkeys=('05D00A8B73A686789E0A156858B9596C722EA3BD') # Boudewijn Rempt <foundation@krita.org>
