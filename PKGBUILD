@@ -1,15 +1,18 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=spirv-tools-git
-pkgver=r520.9166854
+pkgver=r1864.2af6ffae826426cff344
 pkgrel=1
 pkgdesc='API and commands for processing SPIR-V modules'
 url='https://github.com/KhronosGroup/SPIRV-Tools'
 arch=('i686' 'x86_64')
-license=('MIT')
-source=('git+https://github.com/KhronosGroup/SPIRV-Tools')
-sha1sums=('SKIP')
-makedepends=('cmake')
+license=('custom')
+groups=('vulkan-devel')
+source=('git+https://github.com/KhronosGroup/SPIRV-Tools'
+        'git+https://github.com/KhronosGroup/SPIRV-Headers')
+sha1sums=('SKIP' 'SKIP')
+depends=(gcc-libs spirv-headers)
+makedepends=('cmake' 'python' 'git')
 options=('staticlibs')
 conflicts=('spirv-tools')
 provides=('spirv-tools')
@@ -21,24 +24,19 @@ pkgver() {
 
 build() {
   cd "${srcdir}"/SPIRV-Tools
-  cmake -DCMAKE_BUILD_TYPE=Release
+  cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DSPIRV-Headers_SOURCE_DIR="${srcdir}/SPIRV-Headers" \
+    -DSPIRV_WERROR=OFF
   make
 }
 
 package() {
   cd "${srcdir}"/SPIRV-Tools
 
-  # Tools
-  pushd tools
-  install -dm755                   "${pkgdir}"/usr/bin/
-  install -m755 spirv-{as,dis,val} "${pkgdir}"/usr/bin/
-  popd
-
-  # Library
-  pushd source
-  install -dm755                 "${pkgdir}"/usr/lib/
-  install -m644 libSPIRV-Tools.a "${pkgdir}"/usr/lib/
-  popd
+  DESTDIR="${pkgdir}" make install
 
   # License
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
