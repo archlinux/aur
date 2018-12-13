@@ -1,12 +1,12 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=pantheon-desktop-git
 pkgver=20180925
-pkgrel=4
+pkgrel=5
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
 license=(LGPL)
-makedepends=(granite-git pantheon-workarounds wingpanel-standalone-git)
+makedepends=(pantheon-core-git)
 depends=(cerbere-git
   contractor-git
   pantheon-applications-menu-git
@@ -61,12 +61,17 @@ depends=(cerbere-git
   elementary-wallpapers-git
   elementary-icon-theme-git
   gtk-theme-elementary-git
-  lightdm
-  lightdm-settings
-  lightdm-pantheon-greeter-git
   )
 
 #  pantheon-mail-git
+
+build(){
+  /bin/true
+}
+
+check(){
+  /bin/true
+}
 
 package(){
   /bin/true
