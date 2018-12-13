@@ -1,15 +1,15 @@
 pkgbase = nvidia-utils-beta
 	pkgdesc = NVIDIA driver utilities and libraries (beta version)
-	pkgver = 415.22
+	pkgver = 415.23
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/415.22/NVIDIA-Linux-x86_64-415.22-no-compat32.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/415.23/NVIDIA-Linux-x86_64-415.23-no-compat32.run
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils-beta.sysusers
-	sha256sums = 41f59dc6916aad42bce97debacd9cf44a7511e49de661138da761cebc23d13c9
+	sha256sums = d10ac5e0804acfcadf43c653a1ea04c397c5e47bc0bb586854e184d34e489e53
 	sha256sums = 089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
 
@@ -23,8 +23,8 @@ pkgname = nvidia-utils-beta
 	optdepends = opencl-nvidia-beta: OpenCL support
 	optdepends = xorg-server-devel: nvidia-xconfig
 	optdepends = egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.1.0)
-	provides = nvidia-utils=415.22
-	provides = nvidia-settings=415.22
+	provides = nvidia-utils=415.23
+	provides = nvidia-settings=415.23
 	provides = libglvnd
 	provides = vulkan-driver
 	conflicts = nvidia-utils
@@ -40,7 +40,7 @@ pkgname = nvidia-egl-wayland-beta
 pkgname = nvidia-libgl-beta
 	pkgdesc = NVIDIA driver library symlinks for 'nvidia-utils-beta'
 	depends = nvidia-utils-beta
-	provides = nvidia-libgl=415.22
+	provides = nvidia-libgl=415.23
 	provides = libgl
 	provides = libegl
 	provides = libgles
@@ -53,7 +53,7 @@ pkgname = opencl-nvidia-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-beta'
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-nvidia=415.22
+	provides = opencl-nvidia=415.23
 	provides = opencl-driver
 	conflicts = opencl-nvidia
 
