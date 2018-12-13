@@ -3,8 +3,8 @@
 # Derived from official Chromium and Inox PKGBUILDS and ungoogled-chromium buildkit
 
 pkgname=ungoogled-chromium
-pkgver=70.0.3538.110
-pkgrel=3
+pkgver=71.0.3578.98
+pkgrel=1
 _launcher_ver=6
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
 arch=('x86_64')
@@ -28,9 +28,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         https://github.com/Eloston/ungoogled-chromium/archive/$pkgver-$pkgrel.tar.gz
         chromium-harfbuzz-2.0.patch)
-sha256sums=('445ef88fcf283206c1eba4faeb1c186c805e053d8b4ffeac1fcb88187bc1942f'
+sha256sums=('1c56a9e30825774c83d568d194e9585625c6e90f81ee0ef09760fcedc86b9d45'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '6c25448f34bb1fab434a2b14aedb8fe706e9f1a2f2d8b5895afac3bfc0c0dc30'
+            'ad997c4735f31703457340fdfc0c29e7b9a148ebddfbe6ce5b5d4538c9cc618b'
             'bad4d4a3065f1432d5f9189e29c6bf1d7fe1d365b6c7c4ff51b294569b20e962')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
