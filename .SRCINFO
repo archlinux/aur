@@ -1,10 +1,9 @@
 pkgbase = wavebox-bin
 	pkgdesc = The next generation of web-desktop communication
-	pkgver = 4.4.0
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://wavebox.io/
 	arch = x86_64
-	arch = i686
 	license = Mozilla Public License version 2.0
 	depends = gconf
 	depends = gtk2
@@ -19,10 +18,8 @@ pkgbase = wavebox-bin
 	options = !strip
 	source = wavebox.desktop
 	sha256sums = ed71fff01f57bc7d4b32278b2fb5f33bb30057ed7aeee64b3696eb17dc4ba0fc
-	source_x86_64 = https://github.com/wavebox/waveboxapp/releases/download/v4.4.0/Wavebox_4_4_0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 96d2889c4f6632dfa756e1112827a8f0940d4978cb24821bdd31e8d93365e73c
-	source_i686 = https://github.com/wavebox/waveboxapp/releases/download/v4.4.0/Wavebox_4_4_0_linux_ia32.tar.gz
-	sha256sums_i686 = 9f3f48472ac0a725ed79bd8c285b9e8f1c43eb036848f03f1560f6393147c941
+	source_x86_64 = https://github.com/wavebox/waveboxapp/releases/download/v4.5.0/Wavebox_4_5_0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = ed3172508268c4cca33718fc058eb9c349a35d9e98bf94e81d256101da661d18
 
 pkgname = wavebox-bin
 
