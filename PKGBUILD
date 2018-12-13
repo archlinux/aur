@@ -1,6 +1,6 @@
 # Maintainer: Kloenk <35c3@kloenk.de>
 pkgname=35c3_char-dkms-git
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Creates a char device with the content 35c3"
 arch=('x86_64')
