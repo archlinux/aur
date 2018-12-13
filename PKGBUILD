@@ -4,12 +4,12 @@
 # Contributor: Massimiliano Torromeo <massimiliano DOT torromeo AT google mail service>
 
 pkgname=python-unbound
-pkgver=1.6.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='Validating, recursive, and caching DNS resolver: python binding'
 url='http://unbound.net/'
 license=('custom:BSD')
-arch=('i686' 'x86_64')
+arch=('any')
 options=('!libtool')
 depends=('python' 'unbound' 'openssl')
 makedepends=('expat' 'swig' 'openssl')
@@ -17,7 +17,7 @@ optdepends=('expat: unbound-anchor')
 _basename='unbound'
 validpgpkeys=('EDFAA3F2CA4E6EB05681AF8E9F6F1C2D7E045F8D')
 source=("http://unbound.net/downloads/${_basename}-${pkgver}.tar.gz"{,.asc})
-sha1sums=('9b7606b016b447dc837efc108cee94f3fecf4ede'
+sha1sums=('ccd3a208dd6f9623065f182e9aec4da73ea9b1ad'
           'SKIP')
 
 build() {
@@ -45,10 +45,10 @@ package() {
         rm -r "${pkgdir}/usr/sbin"
         rm -r "${pkgdir}/usr/include"
         rm -r "${pkgdir}/usr/share"
-        rm -r "${pkgdir}/usr/lib/libunbound.la"
-        rm -r "${pkgdir}/usr/lib/libunbound.so"
-        rm -r "${pkgdir}/usr/lib/libunbound.so.2"
-        rm -r "${pkgdir}/usr/lib/libunbound.so.2.4.3"
+        rm "${pkgdir}/usr/lib/libunbound.la"
+        rm "${pkgdir}/usr/lib/libunbound.so"
+        rm "${pkgdir}/usr/lib/libunbound.so.8"
+        rm "${pkgdir}/usr/lib/libunbound.so.8.0.2"
 
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
