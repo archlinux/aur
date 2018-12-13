@@ -1,7 +1,7 @@
 pkgbase = caffe-ssd
 	pkgdesc = weiliu89's caffe
 	pkgver = ssdv1.0.r0.g4817bf8b
-	pkgrel = 2
+	pkgrel = 3
 	url = http://caffe.berkeleyvision.org/
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = caffe-ssd
 	makedepends = gcc6
 	makedepends = doxygen
 	makedepends = texlive-core
+	makedepends = findutils
 	depends = boost-libs
 	depends = protobuf
 	depends = google-glog

@@ -7,7 +7,7 @@
 pkgname=caffe-ssd
 _srcname=caffe
 pkgver=ssdv1.0.r0.g4817bf8b
-pkgrel=2
+pkgrel=3
 pkgdesc="weiliu89's caffe"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -30,7 +30,7 @@ depends=(
     # python-pydotplus (or python-pydot) is required by python executable draw_net.py
     # https://github.com/BVLC/caffe/blob/691febcb83d6a3147be8e9583c77aefaac9945f8/python/caffe/draw.py#L7-L22
 )
-makedepends=('git' 'gcc6' 'doxygen' 'texlive-core')
+makedepends=('git' 'gcc6' 'doxygen' 'texlive-core' 'findutils')
 provides=('caffe')
 conflicts=('caffe' 'caffe-cpu' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git'
            'caffe2' 'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git' 'caffe-git' 'caffe-ssd-cpu')
