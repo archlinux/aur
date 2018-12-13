@@ -8,13 +8,13 @@ After=memcached.service
 After=redis.service
 
 [Service]
-User=git
-Group=git
+User=gitea
+Group=gitea
 Type=simple
-WorkingDirectory=/var/lib/gitea
+WorkingDirectory=~
 RuntimeDirectory=gitea
 LogsDirectory=gitea
-Environment=USER=git HOME=/var/lib/gitea GITEA_WORK_DIR=/var/lib/gitea
+Environment=USER=gitea HOME=/var/lib/gitea GITEA_WORK_DIR=/var/lib/gitea
 ExecStart=/usr/bin/gitea web -c /etc/gitea/app.ini
 Restart=always
 RestartSec=2s

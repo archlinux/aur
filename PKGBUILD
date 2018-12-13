@@ -8,7 +8,7 @@
 
 _pkgname='gitea'
 pkgname=gitea-git
-pkgver=v1.6.0_rc1_103_gd487a76ee284
+pkgver=v1.6.0_rc1_180_gb3b7598ec684
 pkgrel=1
 pkgdesc='Painless self-hosted Git service. Community managed fork of Gogs.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -29,15 +29,18 @@ provides=('gitea')
 source=("git+https://github.com/go-gitea/gitea.git"
         gitea.tmpfiles
         gitea.service
-        gitea-repos.patch
+        gitea.sysusers
+        gitea-arch-defaults.patch
         gitea-ldflags.patch
         gitea-disable-u2f.patch)
 sha512sums=('SKIP'
-            '0c58381f38fff0d029fd1b32f65536a7f96d0daa4aa1ee7c1c483f818c822c0088bfa980991800775eaece272e9d995faf5cadb7cfe648c75b6da579f38f3ed6'
-            '6487cd8a5de45e68bc842979197c442d1cbd8c79cf6781431e8965a2ef89cccadc20f75f3ee2e3403707ddb9f801ec782dec360fabc9d9dfc2ce2b1edd76482a'
-            '7bed1338af9d44de55964b9cf98816109da45a43c07b3260f51b7d517cf2e2d0c496c8ba5df44d57c9a8aa6aea18614a619ea14600a8f62d72c79485a74e6ab0'
+            '89bf119a91fd48ed35c06131c67de1b4300bd2e79522c47aee9a73d7f1ebb08d9bceadc37408bd2425475d92c8bf59d87a799f2ce0a46bee860bf9fc7a904103'
+            '0b93ddbb88ff843014f583a36c00156c011cca568cb69b61eb4c576c557b21ecdab1b105815a5dfdd08349e4e3b0976c8bdf87c8d3b201edae95de9070200352'
+            '77f672ed82bc8f78ca04b1e2b7c7d026cb897da6e4f057817adbe1242bf8a67875061553806e6b027cdb3266cdf217ee3993efd9242a66c5802ed34344b5ded1'
+            '36abba7ed22a1ce59ab1005b988f177d8ab13101684237d515a80b12a082487f8643f6f36d15e0b0823949134cecc61bd523057e80a93cf4c98d2e5b5902d968'
             '8d3024a17c8faae80b2af349457701c45695f70e2e5c5bf43f33c277bde8241f5e01ee08c534902fd5be976b49d85d0112bda7a2e6fb940179a99029d9e404fb'
             '779869c10bcb37581cde6df38f0905618099d604f29b0281abc4fa4c2302b8063063d0e8b0efdd99897b127c45103d376ba4a121e66edd51944abaf0235ab834')
+install=gitea.install
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -47,12 +50,14 @@ pkgver() {
 prepare() {
   cd ${srcdir}/${_pkgname}
   # Change default repos path for ArchLinux
-  patch -Np1 -i ../../gitea-repos.patch
+  patch -Np1 -i ../../gitea-arch-defaults.patch
   # Fix LDFLAGS not being respected by Go
   patch -Np1 -i ../../gitea-ldflags.patch
   # https://github.com/go-gitea/gitea/issues/4692
   patch -Np1 -i ../../gitea-disable-u2f.patch
 
+  # Make sure we rebuild the mod file from Gopkg.toml to pick up any changes.
+  rm -f go.mod
   go mod init || true
 }
 
@@ -68,6 +73,7 @@ package() {
   install -Dm644 ${_pkgname}/LICENSE -t "${pkgdir}"/usr/share/licenses/${_pkgname}/
   install -Dm644 ${_pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
+  install -Dm644 ${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
   install -D ${_pkgname}/custom/conf/app.ini.sample "${pkgdir}"/etc/gitea/app.ini
 }
 
