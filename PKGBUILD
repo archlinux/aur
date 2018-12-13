@@ -12,9 +12,9 @@ pkgname=(gdc-git libgphobos-git)
 pkgver=8.2.1+2.081.2
 _branch=gdc-8 # Change here! pkgver/_gccver/_d_ver will be automatically updated.
 _islver=0.20 # Change here!
-_gccver=8.2.1-20180831 # Change here! Should match Arch's GCC version
+_gccver=8.2.1-20181127 # Change here! Should match Arch's GCC version
 _d_ver=''
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
 license=('GPL3')
 url="https://github.com/D-Programming-GDC/GDC"
@@ -22,13 +22,12 @@ pkgdesc="GCC based D compiler"
 groups=('dlang')
 makedepends=('git' 'gdc')
 source=(
-		"https://sources.archlinux.org/other/gcc/gcc-$_gccver.tar.xz"
-		#"ftp://gcc.gnu.org/pub/gcc/releases/$_gccver/gcc-$_gccver.tar.xz"
+	"https://sources.archlinux.org/other/gcc/gcc-$_gccver.tar.xz"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2"
         "gdc::git+https://github.com/D-Programming-GDC/GDC.git#branch=$_branch"
         'git+https://github.com/D-Programming-GDC/GDMD.git'
         'paths.diff')
-sha512sums=('0f9f921ae563bf762d05e9d1ad6d551686371e5b2f8925f7b514caedfff15507f39616059a07465e4083b6da3d14343f986b3ec89b1f28ab536f4d68ff26829d'
+sha512sums=('8988e9425a1fb5c2bc7655a8054438060e145d568fa60d19ec2ab4005a8becc06f906cffbfb674ff6c6995a3751af0590d2e6d5694cbb88951633aa8c2667e18'
             'afe2e159b74646a26449268637403d271f9e3f6410d8cc1c9cffca41370c4357b165dea844db0c2a654591f954e54710dda650c8088abd4711406aa6302da950'
             'SKIP'
             'SKIP'
@@ -106,7 +105,7 @@ build() {
                           --with-pkgversion="GDC ${pkgver%+*} based on D v${pkgver#*+} built with ISL $_islver for Arch Linux" \
                           gdc_include_dir=/usr/include/dlang/gdc
 
-  make
+  make $MAKEFLAGS
 }
 
 package_gdc-git() {

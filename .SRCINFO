@@ -1,7 +1,7 @@
 pkgbase = gdc-git
 	pkgdesc = GCC based D compiler
 	pkgver = 8.2.1+2.081.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/D-Programming-GDC/GDC
 	arch = x86_64
 	arch = i686
@@ -9,12 +9,12 @@ pkgbase = gdc-git
 	license = GPL3
 	makedepends = git
 	makedepends = gdc
-	source = https://sources.archlinux.org/other/gcc/gcc-8.2.1-20180831.tar.xz
+	source = https://sources.archlinux.org/other/gcc/gcc-8.2.1-20181127.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.20.tar.bz2
 	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git#branch=gdc-8
 	source = git+https://github.com/D-Programming-GDC/GDMD.git
 	source = paths.diff
-	sha512sums = 0f9f921ae563bf762d05e9d1ad6d551686371e5b2f8925f7b514caedfff15507f39616059a07465e4083b6da3d14343f986b3ec89b1f28ab536f4d68ff26829d
+	sha512sums = 8988e9425a1fb5c2bc7655a8054438060e145d568fa60d19ec2ab4005a8becc06f906cffbfb674ff6c6995a3751af0590d2e6d5694cbb88951633aa8c2667e18
 	sha512sums = afe2e159b74646a26449268637403d271f9e3f6410d8cc1c9cffca41370c4357b165dea844db0c2a654591f954e54710dda650c8088abd4711406aa6302da950
 	sha512sums = SKIP
 	sha512sums = SKIP
