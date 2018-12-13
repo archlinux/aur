@@ -1,6 +1,6 @@
 pkgbase = kaku-bin
 	pkgdesc = The next generation music client.
-	pkgver = 1.9.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://kaku.rocks
 	install = kaku-bin.install
@@ -21,10 +21,10 @@ pkgbase = kaku-bin
 	source = http://kaku.rocks/public/img/logo.png
 	sha512sums = 354016d1de60b330e50f996dcdf61989091b44b28f096f7cb83f83c006cb2d51ef3da94a49d2ba73b71bc294a206a524d38a6b3c0f5bf1cc3ac6048d57624b04
 	sha512sums = fbc59e8bc4b3e39bbdf75a824e3f1e3accd372bf1fda194ec433443feff88158a0df14cac0f3a1a3aef18ada98c3b02b40b5b254d1096ae28e3a84aace8b842f
-	source_x86_64 = https://github.com/EragonJ/Kaku/releases/download/1.9.0/Kaku-1.9.0.tar.gz
-	sha512sums_x86_64 = 430fb9fa12cf39f354c6d872e250b7f8695eafb9220df8dc8d0f16cd624e684cb8faa2c2d90ec70ff2c701fa41ff29f9684850d48a844fef95ef308e9605b5dd
-	source_i686 = https://github.com/EragonJ/Kaku/releases/download/1.9.0/Kaku-1.9.0-ia32.tar.gz
-	sha512sums_i686 = 8e4d172e420b46062d398360ac46bcaea9eb697e29becc5c56054c876ec90614bcf6a520dcd4b1c5d071c0fa39e94fbd7fc0b2b68b8be0f02541661505a6a320
+	source_x86_64 = https://github.com/EragonJ/Kaku/releases/download/2.0.1/Kaku-2.0.1.tar.gz
+	sha512sums_x86_64 = fcd4220be6765689097754d9dede1566e8ad22cf78ac2918511151ece529b6df0b7bae6d04533bd8023db7b31a85562ef46d1ccb9ab80ce2215734fd5a348f5b
+	source_i686 = https://github.com/EragonJ/Kaku/releases/download/2.0.1/Kaku-2.0.1-ia32.tar.gz
+	sha512sums_i686 = 5e1ffe0d4cabdacdd0bf0a277ae226818270a209a20787fb24d42387d9caec06611399df320d7cce95d29d0fdfe1b3914cee08f1182a27bfcb0b34fe14f8abe4
 
 pkgname = kaku-bin
 
