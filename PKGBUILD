@@ -22,20 +22,21 @@ depends=('perl' 'perl-glib-object-introspection'
   'glew' 'dblatex' 'vtk' 'hdf5')
 
 source=('https://gitlab.com/jojo_boulix/auto-multiple-choice/-/archive/1.4.0-rc2/auto-multiple-choice-1.4.0-rc2.zip'
-'amc.patch')  
+'amc.patch' 'automultiplechoice.sty')  
 
 md5sums=('0584e43f9605720206e0385451d26da5'
-    'a85fe857b879d4e8ad73253eae4db078')
-
+    '5d9e0db71f987cdf076dde0ecadb131f'
+    '9e3717f2d521a075109c8c65003d4d09')
 build() {
   #cd "$srcdir"/$pkgbase-$pkgver
   cd auto-multiple-choice-1.4.0-rc2
   patch -p 1 < $srcdir"/amc.patch"
-  make all || return 1
+  make all_precomp || return 1
 }
 
 package_auto-multiple-choice(){
   install='amc.install'
   cd auto-multiple-choice-1.4.0-rc2
   make DESTDIR="$pkgdir/" install
+  sudo cp ../automultiplechoice.sty /usr/share/latex/texmf/latex/tex/
 }

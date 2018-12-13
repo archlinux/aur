@@ -21,82 +21,6 @@ index b5e8552..5d706d0 100644
  
  # INFO IN DESKTOP FILE
  
-diff --git a/Makefile b/Makefile
-index c701eae..f56869f 100644
---- a/Makefile
-+++ b/Makefile
-@@ -52,8 +52,8 @@ else
- endif
- endif
- 
--GCC_OPENCV ?= $(shell pkg-config --cflags opencv)
--GCC_OPENCV_LIBS ?= $(shell pkg-config --libs opencv)
-+GCC_OPENCV ?= $(shell pkg-config --cflags opencv4)
-+GCC_OPENCV_LIBS ?= $(shell pkg-config --libs opencv4)
- GCC_PDF ?= $(shell pkg-config --cflags --libs cairo pangocairo poppler-glib)
- GCC_POPPLER ?= $(shell pkg-config --cflags --libs poppler-glib gio-2.0)
- 
-@@ -158,8 +158,8 @@ vars-subs.pl: $(SUB_MAKEFILES) authors-subs.xsl authors.xml
- # some components
- 
- doc:
--	$(MAKE) -C doc
--	$(MAKE) -C doc/sty
-+	#$(MAKE) -C doc
-+	#$(MAKE) -C doc/sty
- 
- I18N:
- 	$(MAKE) -C I18N
-@@ -239,7 +239,7 @@ endif
- 	install    -m 0755 $(USER_GROUP) $(BINARIES) $(DESTDIR)/$(MODSDIR)/exec
- 	install    -m 0644 $(USER_GROUP) $(GLADE) $(DESTDIR)/$(MODSDIR)/perl
- 	install -d -m 0755 $(USER_GROUP) $(DESTDIR)/$(TEXDIR)
--	install    -m 0644 $(USER_GROUP) $(STY) $(DESTDIR)/$(TEXDIR)
-+	#install    -m 0644 $(USER_GROUP) $(STY) $(DESTDIR)/$(TEXDIR)
- ifneq ($(DESKTOPDIR),)
- 	install -d -m 0755 $(USER_GROUP) $(DESTDIR)/$(DESKTOPDIR)
- 	install    -m 0644 $(USER_GROUP) -T auto-multiple-choice.desktop $(DESTDIR)/$(DESKTOPDIR)/auto-multiple-choice.desktop
-@@ -250,7 +250,7 @@ endif
- 	install    -m 0644 $(USER_GROUP) icons/*.svg $(DESTDIR)/$(ICONSDIR)
- ifneq ($(APPICONDIR),)
- 	install	-d -m 0755 $(USER_GROUP) $(DESTDIR)/$(APPICONDIR)/scalable/apps
--	install	   -m 0644 $(USER_GROUP) $(MAIN_LOGO).svgz $(DESTDIR)/$(APPICONDIR)/scalable/apps
-+	install	   -m 0644 $(USER_GROUP) $(MAIN_LOGO).svg $(DESTDIR)/$(APPICONDIR)/scalable/apps
- 	$(foreach SIZE, $(APPICONSIZES),\
- 	install	-d -m 0755 $(USER_GROUP) $(DESTDIR)/$(APPICONDIR)/$(SIZE)x$(SIZE)/apps ; \
- 	install	   -m 0644 $(USER_GROUP) -T $(MAIN_LOGO)-$(SIZE).png $(DESTDIR)/$(APPICONDIR)/$(SIZE)x$(SIZE)/apps/auto-multiple-choice.png ; )
-@@ -277,29 +277,7 @@ endif
- 	install    -m 0644 $(USER_GROUP) AMC-perl/AMC/Gui/*.glade $(DESTDIR)/$(PERLDIR)/AMC/Gui
- 	install    -m 0644 $(USER_GROUP) AMC-perl/AMC/Print/*.pm $(DESTDIR)/$(PERLDIR)/AMC/Print
- 
--install_doc: FORCE
--	@echo "Installing doc..."
--ifneq ($(TEXDOCDIR),)
--	install -d -m 0755 $(USER_GROUP) $(DESTDIR)/$(TEXDOCDIR)
--	install    -m 0644 $(USER_GROUP) doc/sty/*.pdf doc/sty/*.tex $(DESTDIR)/$(TEXDOCDIR)
--endif
--ifneq ($(SYSTEM_TYPE),deb) # with debian, done with dh_install{doc,man}
--	install -d -m 0755 $(USER_GROUP) $(DESTDIR)/$(DOCDIR)
--	install    -m 0644 $(USER_GROUP) $(wildcard doc/auto-multiple-choice.??.xml doc/auto-multiple-choice.??.pdf) $(DESTDIR)/$(DOCDIR)
--	cp -r doc/html $(DESTDIR)/$(DOCDIR)
--ifeq ($(INSTALL_USER),)
--else
--	chown -hR $(INSTALL_USER) $(DESTDIR)/$(DOCDIR)
--endif
--ifeq ($(INSTALL_GROUP),)
--else
--	chgrp -hR $(INSTALL_GROUP) $(DESTDIR)/$(DOCDIR)
--endif
--	install -d -m 0755 $(USER_GROUP) $(DESTDIR)/$(MAN1DIR)
--	install    -m 0644 $(USER_GROUP) doc/*.1 $(DESTDIR)/$(MAN1DIR)
--endif
--
--install: install_nodoc install_doc ;
-+install: install_nodoc ;
- 
- # Test
- 
-
 diff --git a/AMC-detect.cc b/AMC-detect.cc
 index 79f07e7..f25c2be 100644
 --- a/AMC-detect.cc
@@ -365,3 +289,51 @@ index 79f07e7..f25c2be 100644
 -
    illustr.release();
    src.release();
+
+diff --git a/Makefile b/Makefile
+index c701eae..4ceef6e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -52,8 +52,8 @@ else
+ endif
+ endif
+ 
+-GCC_OPENCV ?= $(shell pkg-config --cflags opencv)
+-GCC_OPENCV_LIBS ?= $(shell pkg-config --libs opencv)
++GCC_OPENCV ?= $(shell pkg-config --cflags opencv4)
++GCC_OPENCV_LIBS ?= $(shell pkg-config --libs opencv4)
+ GCC_PDF ?= $(shell pkg-config --cflags --libs cairo pangocairo poppler-glib)
+ GCC_POPPLER ?= $(shell pkg-config --cflags --libs poppler-glib gio-2.0)
+ 
+@@ -239,7 +239,7 @@ endif
+ 	install    -m 0755 $(USER_GROUP) $(BINARIES) $(DESTDIR)/$(MODSDIR)/exec
+ 	install    -m 0644 $(USER_GROUP) $(GLADE) $(DESTDIR)/$(MODSDIR)/perl
+ 	install -d -m 0755 $(USER_GROUP) $(DESTDIR)/$(TEXDIR)
+-	install    -m 0644 $(USER_GROUP) $(STY) $(DESTDIR)/$(TEXDIR)
++#	install    -m 0644 $(USER_GROUP) $(STY) $(DESTDIR)/$(TEXDIR)
+ ifneq ($(DESKTOPDIR),)
+ 	install -d -m 0755 $(USER_GROUP) $(DESTDIR)/$(DESKTOPDIR)
+ 	install    -m 0644 $(USER_GROUP) -T auto-multiple-choice.desktop $(DESTDIR)/$(DESKTOPDIR)/auto-multiple-choice.desktop
+@@ -249,9 +249,9 @@ endif
+ 	install -d -m 0755 $(USER_GROUP) $(DESTDIR)/$(ICONSDIR)
+ 	install    -m 0644 $(USER_GROUP) icons/*.svg $(DESTDIR)/$(ICONSDIR)
+ ifneq ($(APPICONDIR),)
+-	install	-d -m 0755 $(USER_GROUP) $(DESTDIR)/$(APPICONDIR)/scalable/apps
+-	install	   -m 0644 $(USER_GROUP) $(MAIN_LOGO).svgz $(DESTDIR)/$(APPICONDIR)/scalable/apps
+-	$(foreach SIZE, $(APPICONSIZES),\
++#	install	-d -m 0755 $(USER_GROUP) $(DESTDIR)/$(APPICONDIR)/scalable/apps
++#	install	   -m 0644 $(USER_GROUP) $(MAIN_LOGO).svgz $(DESTDIR)/$(APPICONDIR)/scalable/apps
++#	$(foreach SIZE, $(APPICONSIZES),\
+ 	install	-d -m 0755 $(USER_GROUP) $(DESTDIR)/$(APPICONDIR)/$(SIZE)x$(SIZE)/apps ; \
+ 	install	   -m 0644 $(USER_GROUP) -T $(MAIN_LOGO)-$(SIZE).png $(DESTDIR)/$(APPICONDIR)/$(SIZE)x$(SIZE)/apps/auto-multiple-choice.png ; )
+ endif
+@@ -299,7 +299,7 @@ endif
+ 	install    -m 0644 $(USER_GROUP) doc/*.1 $(DESTDIR)/$(MAN1DIR)
+ endif
+ 
+-install: install_nodoc install_doc ;
++install: install_nodoc;
+ 
+ # Test
+ 
+
