@@ -1,16 +1,16 @@
 pkgbase = nodejs-asciicast2gif
 	pkgdesc = Generate GIF animations from asciicasts (asciinema recordings)
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/asciinema/asciicast2gif
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
 	depends = gifsicle
-	noextract = asciicast2gif-0.2.0.tgz
-	source = https://registry.npmjs.org/asciicast2gif/-/asciicast2gif-0.2.0.tgz
-	sha1sums = 2265003593b7c601d589040b27ef5570de22f692
+	noextract = asciicast2gif-0.2.1.tgz
+	source = https://registry.npmjs.org/asciicast2gif/-/asciicast2gif-0.2.1.tgz
+	sha1sums = 2b0b8c2acde3ecc1b32f4f5321be859ebede82c0
 
 pkgname = nodejs-asciicast2gif
 
