@@ -11,7 +11,6 @@ arch=('i686' 'x86_64')
 url="http://bcache.evilpiepirate.org/"
 license=('GPL')
 depends=('util-linux')
-makedepends=('git')
 install="${pkgname}.install"
 source=("https://github.com/g2p/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'crc64.patch'
@@ -33,10 +32,11 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  mkdir -p ${pkgdir}/usr/bin
-  mkdir -p ${pkgdir}/usr/lib/udev/rules.d
-  mkdir -p ${pkgdir}/usr/share/man/man8
-  mkdir -p ${pkgdir}/usr/lib/initcpio/install
+  install -d \
+    "${pkgdir}/usr/bin" \
+    "${pkgdir}/usr/lib/udev/rules.d" \
+    "${pkgdir}/usr/share/man/man8" \
+    "${pkgdir}/usr/lib/initcpio/install"
 
   make DESTDIR="${pkgdir}" install
 }

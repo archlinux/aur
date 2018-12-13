@@ -8,7 +8,6 @@ pkgbase = bcache-tools
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = util-linux
 	source = https://github.com/g2p/bcache-tools/archive/v1.0.8/bcache-tools-1.0.8.tar.gz
 	source = crc64.patch
