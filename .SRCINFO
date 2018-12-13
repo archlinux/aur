@@ -1,6 +1,6 @@
 pkgbase = tlauncher
 	pkgdesc = TLauncher is freeware launcher of Minecraft.
-	pkgver = 1.100.0
+	pkgver = 1.110.4
 	pkgrel = 1
 	epoch = 1
 	url = https://tlaun.ch
@@ -11,11 +11,11 @@ pkgbase = tlauncher
 	makedepends = jq
 	depends = java-runtime>=8
 	depends = xorg-xrandr
-	noextract = 3133df976aec90532e63677f52f99b4267496b54ed7319350d5190f116c2e48b.jar
-	source = http://turikhay.ru/tlauncher/legacy_beta/bootstrap/3133df976aec90532e63677f52f99b4267496b54ed7319350d5190f116c2e48b.jar
+	noextract = 972758e1c5cad62861844a94f2830a14c7e795975108cd3d31de729285c53eb6.jar
+	source = http://tlauncherrepo.com/legacy_beta/bootstrap/972758e1c5cad62861844a94f2830a14c7e795975108cd3d31de729285c53eb6.jar
 	source = tlauncher.desktop
 	source = tlauncher.install
-	sha256sums = 3133df976aec90532e63677f52f99b4267496b54ed7319350d5190f116c2e48b
+	sha256sums = 972758e1c5cad62861844a94f2830a14c7e795975108cd3d31de729285c53eb6
 	sha256sums = ab05e25ac610dedf89b9554494eb56d2771789baf405d537f6ae3e2f069a115d
 	sha256sums = 0346fbc5e81522e498b63d392339024b8617a03de9fdf9126ba6364db94e188b
 

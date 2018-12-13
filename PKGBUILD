@@ -1,7 +1,7 @@
 # Maintainer: SaMaLerO <smlr[at]ukr[dot]net>
 # Co-Maintainer: McModder <aur @ modder.pw>
 pkgname=tlauncher
-pkgver=1.100.0
+pkgver=1.110.4
 pkgrel=1
 epoch=1
 pkgdesc='TLauncher is freeware launcher of Minecraft.'
@@ -11,7 +11,10 @@ license=('GPLv3')
 depends=('java-runtime>=8' 'xorg-xrandr')
 makedepends=('jq')
 _checksum=$(curl -sL 'http://cdn.turikhay.ru/tlauncher/legacy_beta/bootstrap.json' | jq -r '.update.bootstrap.downloads.JAR.checksum')
-source=("http://turikhay.ru/tlauncher/legacy_beta/bootstrap/${_checksum}.jar"
+# try to change repo if default sends 404
+source=(#"http://turikhay.ru/tlauncher/legacy_beta/bootstrap/${_checksum}.jar"
+        #"http://u.tlauncher.ru/legacy_beta/bootstrap/${_checksum}.jar"
+        "http://tlauncherrepo.com/legacy_beta/bootstrap/${_checksum}.jar"
         'tlauncher.desktop'
         'tlauncher.install')
 noextract=("${_checksum}.jar")
@@ -24,7 +27,7 @@ pkgver() {
   echo $(curl -sL 'http://cdn.turikhay.ru/tlauncher/legacy_beta/bootstrap.json' | jq -r '.update.launcher.version')
 }
 
-# tlauncher.jar needs 666 to launch =(
+# tlauncher.jar needs at least 666 to launch =(
 package() {
   mkdir -p "${pkgdir}/opt/tlauncher"
   mkdir -p "${pkgdir}/usr/share/applications/"
