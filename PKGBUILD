@@ -23,10 +23,10 @@ makedepends=("git" "python")
 backup=("opt/${pkgname}/packages/${pkgname}_test/pubspec.yaml" "opt/${pkgname}/packages/${pkgname}/pubspec.yaml")
 options=("!emptydirs")
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/${pkgname}_linux_v${pkgver}-beta.tar.xz"
+source=("${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/${pkgname}_linux_v${pkgver}-stable.tar.xz"
         "${pkgname}.sh"
         "${pkgname}.csh")
-sha256sums=("3d52bc8fefe427bf245c12b4d4dd5179b894e174db5d98554fc9d853bd567013"
+sha256sums=("96e59dac54e427d4a6936d6ae98bda1b04a06a17a4323a95480f22fa19f9e2f4"
             "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
             "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f")
 
