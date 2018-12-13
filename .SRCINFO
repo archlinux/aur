@@ -1,7 +1,7 @@
 pkgbase = postgresql-9.4
 	pkgdesc = A powerful, open source object-relational database system
 	pkgver = 9.4.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.postgresql.org/
 	install = postgresql.install
 	arch = i686

@@ -1,11 +1,12 @@
-# Maintainer: Matthew Carter <m@ahungry.com>
+# Maintainer: Tim Sharpe <tim@sharpe.id.au>
+# Contributor: Matthew Carter <m@ahungry.com>
 
 # Modified from postgresql-9.3 package provided by:
 # Ariel Popper <a@arielp.com>
 
 pkgname=postgresql-9.4
 pkgver=9.4.20
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
 pkgdesc="A powerful, open source object-relational database system"
@@ -48,6 +49,7 @@ build() {
   --with-tcl \
   --with-pam \
   --with-system-tzdata=/usr/share/zoneinfo \
+  --with-uuid=e2fs \
   --enable-nls \
   --enable-thread-safety
 
