@@ -1,6 +1,6 @@
 pkgbase = wildfly
 	pkgdesc = Wildfly Application Server
-	pkgver = 14.0.1.Final
+	pkgver = 15.0.0.Final
 	pkgrel = 1
 	url = http://www.wildfly.org/
 	install = wildfly.install
@@ -27,7 +27,7 @@ pkgbase = wildfly
 	backup = opt/wildfly/bin/jboss-cli-logging.properties
 	backup = opt/wildfly/bin/jboss-cli.xml
 	backup = opt/wildfly/bin/standalone.conf
-	source = http://download.jboss.org/wildfly/14.0.1.Final/wildfly-14.0.1.Final.tar.gz
+	source = http://download.jboss.org/wildfly/15.0.0.Final/wildfly-15.0.0.Final.tar.gz
 	source = wildfly.service
 	source = wildfly.sh
 	source = wildfly.install
