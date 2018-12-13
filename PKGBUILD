@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-libassuan
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="IPC library used by some GnuPG related software (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ source=("https://gnupg.org/ftp/gcrypt/libassuan/libassuan-${pkgver}.tar.bz2"
         "0002-enable-silent-rules.mingw.patch"
         "0004-enable-gnu.mingw.patch"
         "0005-better-check-for-stpcpy.mingw.patch")
-sha256sums=('47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449'
+sha256sums=('986b1bf277e375f7a960450fbb8ffbd45294d06598916ad4ebf79aee0cb788e7'
             'b74089b88544da56bf4e6589516264b30757b9393fb8bdd916ff7c03cbba6e19'
             '14a46889fc0a9d3d8c0426983e9a467da46d95dfd77156fc343de8c598504d05'
             '4e2f030dbfd0d1069a1d1015ac725509f1a8ac136ff83453d7a9ce31103e8263'
