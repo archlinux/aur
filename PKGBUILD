@@ -4,7 +4,7 @@
 
 pkgname=dockmanager
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Dock-independent helper scripts for compatible docks"
 url="https://launchpad.net/dockmanager"
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ depends=('libdesktop-agnostic' 'gconf' 'python2-dbus' 'python2-gobject2' 'python
 makedepends=('intltool' 'vala')
 optdepends=('pygtk: Banshee control, Rhythmbox control Helper'
             'deluge: Deluge badge Helper'
-            'python-mpd: Mpd control Helper'
+            'python2-mpd: Mpd control Helper'
             'python2-gconf: Open terminal here Helper'
-            'python2-libgnome: Zeitgeist journal Helper'
+            'gnome-python-desktop: Zeitgeist journal Helper'
             'zeitgeist: Zeitgeist journal, Zeitgeist menus Helper')
 source=(http://launchpad.net/dockmanager/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz)
 
