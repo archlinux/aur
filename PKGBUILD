@@ -4,7 +4,7 @@
 # Contributor: Travis Nickles <nickles.travis@gmail.com>
 
 pkgname=antimicro
-pkgver=2.24
+pkgver=2.24.1
 pkgrel=1
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to a gamepad"
 arch=("i686" "x86_64")
@@ -12,15 +12,8 @@ url="https://github.com/juliagoda/${pkgname}"
 license=("GPL3")
 depends=("desktop-file-utils" "libxtst" "qt5-base" "sdl2")
 makedepends=("cmake" "extra-cmake-modules" "gettext" "itstool" "qt5-tools")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/juliagoda/${pkgname}/archive/${pkgver}.tar.gz"
-        "${pkgname}.patch")
-sha256sums=("220edefd7b2f2dadd9f52d8160aae30976d182dd88db7f2a4f751453a1ec85d9"
-            "6609845ef9a2a856be141e9c1bbe4c5adf00e1c9a965f46a765f22b3fc4e231d")
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "../${pkgname}.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/juliagoda/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=("1a7f8693b2f969426a1ae1177af9d76389274308ae2f713a694df7c616369b31")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
