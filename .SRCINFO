@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 19.0.0_devel.105871.d4e7d8b7f0
+	pkgver = 19.0.0_devel.106153.fb88dcf5ca
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -37,22 +37,22 @@ pkgbase = lib32-mesa-git
 	depends = lib32-lm_sensors
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = lib32-mesa
-	provides = lib32-opencl-mesa
 	provides = lib32-vulkan-intel
 	provides = lib32-vulkan-radeon
 	provides = lib32-libva-mesa-driver
 	provides = lib32-mesa-vdpau
 	provides = lib32-opengl-driver
 	conflicts = lib32-mesa
-	conflicts = lib32-opencl-mesa
 	conflicts = lib32-vulkan-intel
 	conflicts = lib32-vulkan-radeon
 	conflicts = lib32-libva-mesa-driver
 	conflicts = lib32-mesa-vdpau
 	source = mesa::git://anongit.freedesktop.org/mesa/mesa
 	source = LICENSE
+	source = llvm32.native
 	sha512sums = SKIP
 	sha512sums = 25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2
+	sha512sums = c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe
 
 pkgname = lib32-mesa-git
 
