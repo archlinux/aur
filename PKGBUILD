@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=sqlite3pp-git
-pkgver=r55.5a4e595
+pkgver=1.0.8+1.g30d38560c7
 pkgrel=1
 pkgdesc="C++ wrapper of SQLite3 API"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "sqlite3pp"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build() {

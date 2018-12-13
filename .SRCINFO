@@ -1,6 +1,6 @@
 pkgbase = sqlite3pp-git
 	pkgdesc = C++ wrapper of SQLite3 API
-	pkgver = r55.5a4e595
+	pkgver = 1.0.8+1.g30d38560c7
 	pkgrel = 1
 	url = https://github.com/iwongu/sqlite3pp
 	arch = i686
