@@ -3,61 +3,71 @@ post_install() {
   DOKKU_ROOT="/home/dokku"
   DOKKU_LIB_ROOT="/var/lib/dokku"
 
+  echo "Create dokku user"
   sshcommand create dokku /usr/bin/dokku &>/dev/null
 
+  echo "Add dokku user to docker group"
   (egrep -i "^docker" /etc/group || groupadd docker) &>/dev/null
   usermod -aG docker dokku
 
   echo "Setting up storage directories"
-  mkdir -p ${DOKKU_LIB_ROOT}/data ${DOKKU_LIB_ROOT}/data/storage
-  chown dokku:dokku ${DOKKU_LIB_ROOT}/data ${DOKKU_LIB_ROOT}/data/storage
+  mkdir -p "$DOKKU_LIB_ROOT/data/storage"
+  chown dokku:dokku "$DOKKU_LIB_ROOT/data" "$DOKKU_LIB_ROOT/data/storage"
 
   echo "Setting up plugin directories"
   # should be replaced by `plugn init`
-  mkdir -p ${DOKKU_LIB_ROOT}/core-plugins/available ${DOKKU_LIB_ROOT}/plugins/available
-  mkdir -p ${DOKKU_LIB_ROOT}/core-plugins/enabled ${DOKKU_LIB_ROOT}/plugins/enabled
-  touch ${DOKKU_LIB_ROOT}/core-plugins/config.toml ${DOKKU_LIB_ROOT}/plugins/config.toml
+  mkdir -p "$DOKKU_LIB_ROOT/core-plugins/available"
+  mkdir -p "$DOKKU_LIB_ROOT/plugins/available"
+  mkdir -p "$DOKKU_LIB_ROOT/core-plugins/enabled"
+  mkdir -p "$DOKKU_LIB_ROOT/plugins/enabled"
+  touch "$DOKKU_LIB_ROOT/core-plugins/config.toml"
+  touch "$DOKKU_LIB_ROOT/plugins/config.toml"
 
   echo "Migrating old plugins"
-  find ${DOKKU_LIB_ROOT}/plugins/ -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
+  find "$DOKKU_LIB_ROOT/plugins" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
     if [ "$plugin" = "available" ] || [ "$plugin" = "enabled" ]; then
       continue
-    elif [ -f ${DOKKU_LIB_ROOT}/plugins/$plugin/.core ]; then
-      rm -rf ${DOKKU_LIB_ROOT}/plugins/$plugin
-    elif [ ! -d ${DOKKU_LIB_ROOT}/plugins/available/$plugin ]; then
-      mv ${DOKKU_LIB_ROOT}/plugins/$plugin ${DOKKU_LIB_ROOT}/plugins/available;
+    elif [ -f "$DOKKU_LIB_ROOT/plugins/$plugin/.core" ]; then
+      rm -rf "$DOKKU_LIB_ROOT/plugins/$plugin"
+    elif [ ! -d "$DOKKU_LIB_ROOT/plugins/available/$plugin" ]; then
+      mv "$DOKKU_LIB_ROOT/plugins/$plugin" "$DOKKU_LIB_ROOT/plugins/available"
     fi
   done
 
   echo "Enabling all core plugins"
-  find ${DOKKU_LIB_ROOT}/core-plugins/available -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
-    if [ ! -d ${DOKKU_LIB_ROOT}/plugins/available/$plugin ]; then
-      ln -s ${DOKKU_LIB_ROOT}/core-plugins/available/$plugin ${DOKKU_LIB_ROOT}/plugins/available/$plugin;
-      PLUGIN_PATH=${DOKKU_LIB_ROOT}/core-plugins plugn enable $plugin
-      PLUGIN_PATH=${DOKKU_LIB_ROOT}/plugins plugn enable $plugin
+  find "$DOKKU_LIB_ROOT/core-plugins/available" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
+    if [ ! -d "$DOKKU_LIB_ROOT/plugins/available/$plugin" ]; then
+      ln -s "$DOKKU_LIB_ROOT/core-plugins/available/$plugin" "$DOKKU_LIB_ROOT/plugins/available/$plugin"
+      PLUGIN_PATH="$DOKKU_LIB_ROOT/core-plugins" plugn enable $plugin
+      PLUGIN_PATH="$DOKKU_LIB_ROOT/plugins" plugn enable $plugin
     fi
   done
-  find -L ${DOKKU_LIB_ROOT} -type l -delete
-  chown dokku:dokku -R ${DOKKU_LIB_ROOT}/plugins ${DOKKU_LIB_ROOT}/core-plugins
+  find -L $DOKKU_LIB_ROOT -type l -delete
+  chown dokku:dokku -R "$DOKKU_LIB_ROOT/plugins" "$DOKKU_LIB_ROOT/core-plugins"
 
   echo "Ensure proper sshcommand path"
-  echo '/usr/bin/dokku' > "${DOKKU_ROOT}/.sshcommand"
-  mkdir -p ${DOKKU_ROOT}/.ssh
-  touch ${DOKKU_ROOT}/.ssh/authorized_keys
+  echo /usr/bin/dokku > "$DOKKU_ROOT/.sshcommand"
+  mkdir -p "$DOKKU_ROOT/.ssh"
+  touch "$DOKKU_ROOT/.ssh/authorized_keys"
   if [[ -f .ssh/authorized_keys ]]; then
-    sed -i.bak 's#/usr/local/bin/dokku#/usr/bin/dokku#' "${DOKKU_ROOT}/.ssh/authorized_keys"
-    rm "${DOKKU_ROOT}/.ssh/authorized_keys"
+    sed -i.bak 's#/usr/local/bin/dokku#/usr/bin/dokku#' "$DOKKU_ROOT/.ssh/authorized_keys"
+    rm "$DOKKU_ROOT/.ssh/authorized_keys"
   fi
 
   echo "Install all core plugins"
   dokku plugin:install --core
 
-  rm -f ${DOKKU_ROOT}/VERSION
-  cp ${DOKKU_LIB_ROOT}/STABLE_VERSION ${DOKKU_ROOT}/VERSION
+  echo "Update version file"
+  rm -f "$DOKKU_ROOT/VERSION"
+  cp "$DOKKU_LIB_ROOT/VERSION" "$DOKKU_ROOT/VERSION"
 
-  hostname -f > "${DOKKU_ROOT}/HOSTNAME"
+  echo "Update hostname"
+  hostname -f > "$DOKKU_ROOT/HOSTNAME"
 
+  echo "Create nginx config folder"
   mkdir -p /etc/nginx/conf.d
+
+  echo "Add sudoers rule for dokku control over nginx"
   echo "%dokku ALL=(ALL) NOPASSWD:/usr/bin/systemctl reload nginx, /usr/sbin/nginx -t" > /etc/sudoers.d/dokku-nginx
 
   echo "
@@ -72,21 +82,23 @@ post_install() {
 }
 
 post_upgrade() {
-  post_install $1
+  post_install
 }
 
 post_remove() {
-  rm -f /etc/init/dokku-installer.conf
-  rm -f /etc/init/dokku-redeploy.conf
-  rm -f /etc/systemd/system/dokku-installer.conf
+  rm -f /var/cache/dokku-completion
   rm -f /etc/systemd/system/dokku-redeploy.service
+  rm -f /etc/systemd/system/dokku-retire.timer
+  rm -f /etc/systemd/system/dokku-retire.service
   rm -f /etc/update-motd.d/99-dokku
+  rm -f /etc/logrotate.d/dokku
 
-  rm -rf /etc/nginx/conf.d/dokku.conf
-  systemctl reload nginx
+  rm -f /etc/nginx/conf.d/dokku.conf
+  systemctl reload nginx &>/dev/null
 
   rm -rf /var/lib/dokku
   rm -rf /var/log/dokku
 
   userdel -r dokku &>/dev/null
+  rm -rf /home/dokku
 }
