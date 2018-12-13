@@ -1,0 +1,18 @@
+pkgbase = tuxguitar-gtk3-launcher
+	pkgdesc = Launcher for tuxguitar with SWT_GTK3=1
+	pkgver = 1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/tuxguitar
+	arch = x86_64
+	license = LGPL
+	depends = tuxguitar
+	depends = gtk3
+	source = tuxguitar-gtk3
+	source = tuxguitar-gtk3.desktop
+	source = tuxguitar-gtk3.sh
+	sha256sums = 2cce573750a09a0eee3a2885bf3fe7312f3145dc2d804ba51dd7dc7510dccb49
+	sha256sums = 0e7cd3b51db25295a937d7c988143e3968d76c82646da1f73f540b327663bf34
+	sha256sums = 1e4579f69d337b087bfde4d55331253a8a101df4c8171ee894626e1a814b03e8
+
+pkgname = tuxguitar-gtk3-launcher
+
