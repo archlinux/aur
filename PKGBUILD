@@ -69,7 +69,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=4.19.8-arch1
+_srcver=4.19.9-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -96,7 +96,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('d540d066f307f13f0cfe7e097373cd1af2cc4866b5e36a503775b4e69167e171'
+sha256sums=('fc116cc6829c73944215d3b3ac0fc368dde9e8235b456744afffde001269dbf2'
             'SKIP'
             '7193e2041168571a6e09a77838b18f7bdc301e64918c594cbb4f972641bf7f7a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
