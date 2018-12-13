@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=tldr-git
-pkgver=r110.0e54281
+pkgver=1.3.0+15.g9b23d26854
 pkgrel=1
 pkgdesc="C++ command line client for tldr"
 arch=('i686' 'x86_64' 'armv6h')
@@ -15,7 +15,7 @@ provides=('tldr')
 
 pkgver() {
   cd "$(basename $url)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build() {
