@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Hitori
+Comment=Hitori (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/hitori.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/hitori_icon.png
+Type=Application

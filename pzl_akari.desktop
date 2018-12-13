@@ -5,5 +5,5 @@ Comment=Akari (pzl games)
 Categories=Game;LogicGame
 Exec=python /usr/share/pzl_games/akari.pyw
 Terminal=false
-Icon=/usr/share/pixmaps/pzl_games/akari_logo.png
+Icon=/usr/share/pixmaps/pzl_games/akari_icon.png
 Type=Application
