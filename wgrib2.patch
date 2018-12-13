@@ -1,6 +1,6 @@
---- makefile.orig	2017-02-23 14:21:54.801873775 +0100
-+++ makefile	2017-02-23 14:23:45.562213474 +0100
-@@ -89,8 +89,8 @@
+--- makefile.orig	2017-12-29 16:14:43.000000000 +0100
++++ makefile	2018-12-13 18:21:27.746506129 +0100
+@@ -93,8 +93,8 @@
  # export COMP_SYS=intel_linux
  #
  # can uncomment following two lines to use gcc/gfortran
@@ -11,8 +11,8 @@
  #
  # for OS-X: uncomment line for makefile -f scripts/makefile.darwin
  #
-@@ -102,20 +102,20 @@
- #
+@@ -107,21 +107,21 @@
+ 
  
  # Warning do not set both USE_NETCDF3 and USE_NETCDF4 to one
 -USE_NETCDF3=1
@@ -33,35 +33,27 @@
 +USE_WMO_VALIDATION=1
  DISABLE_TIMEZONE=0
  MAKE_FTN_API=1
+ DISABLE_ALARM=0
  
 -USE_G2CLIB=0
 +USE_G2CLIB=1
  USE_PNG=1
  USE_JASPER=1
  USE_AEC=1
-@@ -195,14 +195,14 @@
- ifeq ($(USE_IPOLATES),1)
- #   for HWRF
- #   ip:=${cwd}/iplib_hwrf
--#   iplib:=${lib}/libipolate_hwrf.a
--#   wLDFLAGS+=-lipolate_hwrf
-+   iplib:=../iplib_hwrf/libipolate.a
-+   wLDFLAGS+=-L../../iplib_hwrf -lipolate
- 
+@@ -210,8 +210,8 @@
+ #   for HWRF iplib:=${lib}/libipolate_hwrf.a
+ #   for HWRF wLDFLAGS+=-lipolate_hwrf
  #  normal IPOLATES
- #   ip:=${cwd}/iplib.v3.0.0
--   ip:=${cwd}/iplib.2012
 -   iplib:=${lib}/libipolate.a
 -   wLDFLAGS+=-lipolate
-+#   ip:=${cwd}/iplib.2012
-+#   iplib:=${lib}/libipolate.a
-+#   wLDFLAGS+=-lipolate
- 
++   iplib:=../iplib_hwrf/libipolate.a
++   wLDFLAGS+=-L../../iplib_hwrf -lipolate
     a:=$(shell echo "\#define USE_IPOLATES" >> ${CONFIG_H})
-    a:=$(shell echo "\#define IPOLATES_LIB \"`basename ${ip}`\"" >> ${CONFIG_H})
-@@ -268,8 +268,8 @@
-       GFORTLIBDIR:=${shell dirname ${GFORTLIB}}
-       wLDFLAGS+=-L$(GFORTLIBDIR)
+    a:=$(shell echo "\#define IPOLATES_LIB \"`basename ${ipdir}`\"" >> ${CONFIG_H})
+ else
+@@ -281,8 +281,8 @@
+           wLDFLAGS+=-L$(GFORTLIBDIR)
+       endif
        wLDFLAGS+=-lgfortran
 -      wCPPFLAGS+=-DGFORTRAN
 -      wFFLAGS+=-O2
@@ -70,25 +62,23 @@
     endif
     ifeq ($(USE_OPENMP),1)
        a:=$(shell echo "\#define USE_OPENMP" >> ${CONFIG_H})
-@@ -371,10 +371,9 @@
- #   
+@@ -406,28 +406,27 @@
  
+ g2cdir:=${cwd}/g2clib-1.4.0
  ifeq ($(USE_G2CLIB),1)
--   g:=${cwd}/g2clib-1.4.0
--   glib:=${lib}/libgrib2c.a
+-   g2clib:=${lib}/libgrib2c.a
 -   wLDFLAGS+=-lgrib2c
 -   wCPPFLAGS+=-I$g
-+  glib:=/usr/lib/libg2c.a
-+  wLDFLAGS+=-L/usr/lib -lg2c
-+  wCPPFLAGS+=-I/usr/include
- endif
- 
- 
-@@ -385,19 +384,17 @@
++   glib:=/usr/lib/libg2c.a
++   wLDFLAGS+=-L/usr/lib -lg2c
++   wCPPFLAGS+=-I/usr/include
+    a:=$(shell echo "\#define USE_G2CLIB" >> ${CONFIG_H})
+ else
+    a:=$(shell echo "//\#define USE_G2CLIB" >> ${CONFIG_H})
  endif
  
  # gctpc library
--gctpc:=${cwd}/gctpc
+-gctpcdir:=${cwd}/gctpc
 -gctpcsrc:=gctpc20a.tgz
 -gctpclib:=${lib}/libgeo.a
 +gctpc:=/usr/lib
@@ -98,12 +88,12 @@
 +wCPPFLAGS+=-I/usr/include/gctpc
  
  # proj4 library
+    proj4dir:=${cwd}/proj-4.8.0
  ifeq ($(USE_PROJ4),1)
--   proj4:=${cwd}/proj-4.8.0
 -   proj4src:=${cwd}/proj-4.8.0.tar.gz
 -   proj4lib:=${lib}/libproj.a
 -   wLDFLAGS+=-lproj
--#   wCPPFLAGS+=-I${proj4}/src
+-#   wCPPFLAGS+=-I${proj4dir}/src
 +   proj4:=
 +   proj4lib:=/usr/lib/libproj.so
 +   wLDFLAGS+=-L/usr/lib -lproj
@@ -111,159 +101,123 @@
     a:=$(shell echo "\#define USE_PROJ4" >> ${CONFIG_H})
  else
     a:=$(shell echo "//\#define USE_PROJ4" >> ${CONFIG_H})
-@@ -407,13 +404,16 @@
+@@ -437,10 +436,9 @@
  
+ jasperdir=${cwd}/jasper-1.900.1
  ifeq ($(USE_JASPER),1)
- #   jsrc=jasper-fedora19.tgz
 -   jsrc=jasper-1.900.1-14ubuntu3.2.debian.tgz
--   j=${cwd}/jasper-1.900.1
-+#   jsrc=jasper-1.900.1-14ubuntu3.2.debian.tgz
-+#   j=${cwd}/jasper-1.900.1
- #   jsrc=jasper-1.900.29.tar.gz
- #   j=${cwd}/jasper-1.900.29
 -   jlib=${lib}/libjasper.a
 -   wLDFLAGS+=-ljasper
--   wCPPFLAGS+=-I$j/src/libjasper/include
+-   wCPPFLAGS+=-I${jasperdir}/src/libjasper/include
 +   jlib=/usr/lib/libjasper.so
 +   wLDFLAGS+=-L/usr/lib -ljasper
 +   wCPPFLAGS+=-I/usr/include
-+#   jlib=${lib}/libjasper.a
-+#   wLDFLAGS+=-ljasper
-+#   wCPPFLAGS+=-I$j/src/libjasper/include
     a:=$(shell echo "\#define USE_JASPER" >> ${CONFIG_H})
  else
     a:=$(shell echo "//\#define USE_JASPER" >> ${CONFIG_H})
-@@ -422,10 +422,12 @@
- # AEC
- 
+@@ -451,8 +449,8 @@
+ aecdir=${cwd}/libaec-1.0.2
  ifeq ($(USE_AEC),1)
--   aecdir=${cwd}/libaec-1.0.0
--   aecsrc=libaec-1.0.0.tar.gz
+    aecsrc=libaec-1.0.2.tar.gz
 -   aeclib=${lib}/libaec.a
 -   wLDFLAGS+=-laec
-+#   aecdir=${cwd}/libaec-1.0.0
-+#   aecsrc=libaec-1.0.0.tar.gz
 +   aeclib=/usr/lib/libaec.so
 +   wLDFLAGS+=-L/usr/lib -laec
-+#   aeclib=${lib}/libaec.a
-+#   wLDFLAGS+=-laec
     a:=$(shell echo "\#define USE_AEC \"${aecsrc}\"" >> ${CONFIG_H})
  else
     a:=$(shell echo "//\#define USE_AEC" >> ${CONFIG_H})
-@@ -443,13 +445,18 @@
- endif
- 
+@@ -472,12 +470,12 @@
+ hdf5dir:=${cwd}/hdf5-1.8.19
+ netcdf4dir:=${cwd}/netcdf-4.4.1.1
  ifeq ($(USE_NETCDF4),1)
--   n4:=${cwd}/netcdf-4.4.1
--   netcdf4src=netcdf-4.4.1.tar.gz
--   n4lib:=${lib}/libnetcdf.a
--   h5:=${cwd}/hdf5-1.8.17
--   hdf5src:=hdf5-1.8.17.tar.gz
--   h5lib:=${lib}/libhdf5.a
+-   netcdf4src=netcdf-4.4.1.1.tar.gz
+-   netcdf4lib:=${lib}/libnetcdf.a
+-   hdf5src:=hdf5-1.8.19.tar.gz
+-   hdf5lib:=${lib}/libhdf5.a
 -   wLDFLAGS+=-lnetcdf -lhdf5_hl -lhdf5 -ldl
+-#   wCPPFLAGS+=-I${netcdf4dir}/include -I${hdf5dir}/src -I${hdf5dir}/hl/src
++   netcdf4src=
 +   n4lib:=/usr/lib/libnetcdf.so
 +   h5:=
 +   h5lib:=
 +   wLDFLAGS+=`nc-config --libs`
 +   wCPPFLAGS+=`nc-config --cflags`
-+#   n4:=${cwd}/netcdf-4.4.1
-+#   netcdf4src=netcdf-4.4.1.tar.gz
-+#   n4lib:=${lib}/libnetcdf.a
-+#   h5:=${cwd}/hdf5-1.8.17
-+#   hdf5src:=hdf5-1.8.17.tar.gz
-+#   h5lib:=${lib}/libhdf5.a
-+#   wLDFLAGS+=-lnetcdf -lhdf5_hl -lhdf5 -ldl
- #   wCPPFLAGS+=-I${n4}/include -I${h5}/src -I${h5}/hl/src
     a:=$(shell echo "\#define USE_NETCDF4" >> ${CONFIG_H})
  else
-@@ -498,19 +505,25 @@
- # png 
+    a:=$(shell echo "//\#define USE_NETCDF4" >> ${CONFIG_H})
+@@ -526,18 +524,16 @@
  
+ pngdir=${cwd}/libpng-1.2.57
  ifeq ($(USE_PNG),1)
--   p=${cwd}/libpng-1.2.57
--   psrc=${cwd}/libpng-1.2.57.tar.gz
--   plib=${lib}/libpng.a
--   wLDFLAGS+=-lpng
-+#   p=${cwd}/libpng-1.2.57
-+#   psrc=${cwd}/libpng-1.2.57.tar.gz
-+#   plib=${lib}/libpng.a
-+#   wLDFLAGS+=-lpng
-+   plib=/usr/lib/libpng.so
-+   wLDFLAGS+=-L/usr/lib -lpng
-+   wCPPFLAGS+=-I/usr/include
+-   pngsrc=${cwd}/libpng-1.2.57.tar.gz
+-   pnglib=${lib}/libpng.a
++   pnglib=/usr/lib/libpng.so
+    wLDFLAGS+=-lpng
  # wCPPFLAGS+=-I$p
     a:=$(shell echo "\#define USE_PNG" >> ${CONFIG_H})
  
+ zdir=${cwd}/zlib-1.2.11
  # z
- 
--   z=${cwd}/zlib-1.2.11
+-   zsrc=${cwd}/zlib-1.2.11.tar.gz
 -   zlib=${lib}/libz.a
 -   wLDFLAGS+=-lz
 -   # wCPPFLAGS+=-I$z
 +   zlib=/usr/lib/libz.so
 +   wLDFLAGS+=-L/usr/lib -lz
 +   wCPPFLAGS+=-I/usr/include
-+#   z=${cwd}/zlib-1.2.11
-+#   zlib=${lib}/libz.a
-+#   wLDFLAGS+=-lz
-+#   # wCPPFLAGS+=-I$z
  else
     a:=$(shell echo "//\#define USE_PNG" >> ${CONFIG_H})
  endif
-@@ -564,95 +577,6 @@
- 	cp wgrib2/wgrib2_api.h lib/
- 	cd lib ; touch libwgrib2.a ; rm libwgrib2.a ; ar crsT libwgrib2.a *.a
+@@ -594,97 +590,6 @@
+ 	tar -xvf tmpj.tar
+ 	rm tmpj.tar
  
--${jlib}:
--	cp ${jsrc}  tmpj.tar.gz
--	gunzip -n -f tmpj.tar.gz
--	tar -xvf tmpj.tar
--	rm tmpj.tar
--	cd "$j" && export CC=${CCjasper} && ./configure --without-x --disable-libjpeg --disable-opengl --prefix=${cwd} && ${MAKE} check install
+-${jlib}:	${jasperdir}
+-	cd ${jasperdir} && export CC=${CCjasper} && ./configure --without-x --disable-libjpeg --disable-opengl --prefix=${cwd} && ${MAKE} -j 1 check install
 -
--${aeclib}:
+-${aecdir}:
 -	cp ${aecsrc} tmpaec.tar.gz
 -	gunzip -n -f tmpaec.tar.gz
 -	tar -xvf tmpaec.tar
 -	rm tmpaec.tar
+-
+-${aeclib}:	${aecdir}
 -	cd "${aecdir}" && export CFLAGS="${wCPPFLAGS}" && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
 -
--
--${plib}:	${zlib}
--	cp ${psrc} tmpp.tar.gz
+-${pngdir}:
+-	cp ${pngsrc} tmpp.tar.gz
 -	gunzip -n -f tmpp.tar.gz
 -	tar -xvf tmpp.tar
 -	rm tmpp.tar
--#       for OSX
--#	export LDFLAGS="-L$z" && cd "$p" && export CPPFLAGS="${wCPPFLAGS}" && make -f scripts/makefile.darwin
--#	for everybody else
--#	export LDFLAGS="-L${lib}" && cd "$p" && export CPPFLAGS="${wCPPFLAGS}" && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
--#	export LDFLAGS="-L${lib}" && cd "$p" && export CPPFLAGS="${wCPPFLAGS} -DPNG_USER_WIDTH_MAX=200000000L" && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
--#	export LDFLAGS="-L${lib}" && cd "$p" && export CFLAGS="${wCPPFLAGS} -DPNG_USER_WIDTH_MAX=200000000L" && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
--	export LDFLAGS="-L${lib}" && cd "$p" && export CFLAGS="-DPNG_USER_WIDTH_MAX=200000000L" && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
 -
--${zlib}:
--	cp $z.tar.gz tmpz.tar.gz
+-${pnglib}:	${zlib} ${pngdir}
+-#       for OSX
+-#	export LDFLAGS="-L${lib}" && cd "${pngdir}" && export CPPFLAGS="${wCPPFLAGS}" && ${MAKE} -f scripts/makefile.darwin
+-#	for everybody else
+-	export LDFLAGS="-L${lib}" && cd "${pngdir}" && export CFLAGS="-DPNG_USER_WIDTH_MAX=200000000L -I../include" && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
+-
+-${zdir}:
+-	cp ${zsrc} tmpz.tar.gz
 -	gunzip -f tmpz.tar.gz
 -	tar -xvf tmpz.tar
--	rm tmpz.tar
--	cd "$z" && export CFLAGS="${wCPPFLAGS}" && ./configure --prefix=${cwd} --static && ${MAKE} install
--#	cd "$z" && export CFLAGS="${wCPPFLAGS}" && ./configure --prefix=${cwd} --static && ${MAKE} check install
 -
--${glib}:	${jlib} ${plib} ${zlib}
--	touch ${glib}
--	rm ${glib}
--	cd "$g" && export CPPFLAGS="${wCPPFLAGS}" && ${MAKE} && cp libgrib2c.a ${lib}
+-${zlib}:	${zdir}
+-	cd ${zdir} && export CFLAGS="${wCPPFLAGS}" && ./configure --prefix=${cwd} --static && ${MAKE} install
 -
--${gctpclib}:
+-${g2clib}:	${jlib} ${pnglib} ${zlib}
+-	cd "$g2cdir" && export CPPFLAGS="${wCPPFLAGS}" && ${MAKE} && cp libgrib2c.a ${lib}
+-
+-${gctpcdir}/source/makefile.gctpc:
 -	cp ${gctpcsrc} tmpgctpc.tar.gz
 -	gunzip -n -f tmpgctpc.tar.gz
 -	tar -xvf tmpgctpc.tar
 -	rm tmpgctpc.tar
--	cp makefile.gctpc proj.h sominv.c somfor.c ${gctpc}/source/
--	cd "${gctpc}/source" && export CPPFLAGS="${wCPPFLAGS}" && ${MAKE} -f makefile.gctpc
--	cp ${gctpc}/source/libgeo.a ${lib}
--	cp ${gctpc}/source/proj.h ${cwd}/include/
+-	cp makefile.gctpc proj.h sominv.c somfor.c ${gctpcdir}/source/
+-
+-${gctpclib}:	${gctpcdir}/source/makefile.gctpc
+-	cd "${gctpcdir}/source" && export CPPFLAGS="${wCPPFLAGS}" && ${MAKE} -f makefile.gctpc
+-	cp ${gctpcdir}/source/libgeo.a ${lib}
+-	cp ${gctpcdir}/source/proj.h ${cwd}/include/
 -
 -${proj4lib}:
 -	cp ${proj4src}  tmpproj4.tar.gz
@@ -272,47 +226,43 @@
 -	rm tmpproj4.tar
 -	cd ${proj4} && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
 -
--${nlib}:
--	cp ${netcdfsrc} tmpn.tar.gz
+-${netcdf3dir}:
+-	cp ${netcdf3src} tmpn.tar.gz
 -	gunzip -f tmpn.tar.gz
 -	tar -xvf tmpn.tar
 -	rm tmpn.tar
--	cd $n && export CPPFLAGS="${netcdf3CPPFLAGS}" && ./configure --enable-c-only --prefix=${cwd} && ${MAKE} check install
 -
--${n4lib}:	${zlib} ${netcdf4src} ${h5lib}
+-${netcdf3lib}:	${netcdf3dir}
+-	cd ${netcdf3dir} && export CPPFLAGS="${netcdf3CPPFLAGS}" && ./configure --enable-c-only --prefix=${cwd} && ${MAKE} check install
+-
+-${netcdf4src}:
+-	$(error ERROR, get netcdf4 source by "wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.4.1.1.tar.gz" )
+-
+-${netcdf4dir}:	${netcdf4src}
 -	cp ${netcdf4src} tmpn4.tar.gz
 -	gunzip -n -f tmpn4.tar.gz
 -	tar -xvf tmpn4.tar
 -	rm tmpn4.tar
--	cd "${n4}" && export CPPFLAGS="${wCPPFLAGS}" && export LDFLAGS="-L${lib}" && export LIBS="-lhdf5 -ldl" && ./configure --disable-fortran --disable-cxx --disable-dap --enable-netcdf-4 --prefix=${cwd} --disable-shared && ${MAKE} install
 -
--${netcdf4src}:
--	$(error ERROR, get netcdf4 source by "wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.4.1.tar.gz" )
+-${netcdf4lib}:	${zlib} ${netcdf4dir} ${hdf5lib}
+-	cd "${netcdf4dir}" && export CPPFLAGS="${wCPPFLAGS}" && export LDFLAGS="-L${lib}" && export LIBS="-lhdf5 -ldl" && ./configure --disable-fortran --disable-cxx --disable-dap --enable-netcdf-4 --prefix=${cwd} --disable-shared && ${MAKE} install
 -
--${h5lib}:	${hdf5src}
+-${hdf5src}:
+-	$(error ERROR, get hdf5 source by "wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.19/src/hdf5-1.8.19.tar.gz" )
+-
+-${hdf5dir}:	${hdf5src}
 -	cp ${hdf5src} tmph5.tar.gz
 -	gunzip -n -f tmph5.tar.gz
 -	tar -xvf tmph5.tar
 -	rm tmph5.tar
--	cd "${h5}" && export CFLAGS="${hdf5CFLAGS}" && export LDFLAGS="${LDFLAGS}" && ./configure --disable-shared --with-zlib=$z --prefix=${cwd} && ${MAKE} all check install
 -
+-${hdf5lib}:	${hdf5dir}
+-	cd "${hdf5dir}" && export CFLAGS="${hdf5CFLAGS}" && export LDFLAGS="${LDFLAGS}" && ./configure --disable-shared --with-zlib=$z --prefix=${cwd} && ${MAKE} all check install
 -
--${hdf5src}:
--	$(error ERROR, get hdf5 source by "wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.17/src/hdf5-1.8.17.tar.gz" )
 -
 -${iplib}:
--	cd "${ip}" && export FFLAGS="${wFFLAGS}" && ${MAKE} && cp libipolate.a ${iplib}
+-	cd "${ipdir}" && export FFLAGS="${wFFLAGS}" && ${MAKE} && cp libipolate.a ${iplib}
 -
  aux_progs/gmerge:	aux_progs/gmerge.c		
  	cd aux_progs && ${MAKE} -f gmerge.make
  
-@@ -676,9 +600,6 @@
- ifeq ($(USE_JASPER),1)
- 	mkdir -p $j && rm -rf $j
- endif
--ifeq ($(USE_AEC),1)
--	mkdir -p ${aecdir} && rm -r ${aecdir}
--endif
- ifeq ($(USE_G2CLIB),1)
- 	mkdir -p $g && cd $g && touch junk.a junk.o && rm *.o *.a
- endif
