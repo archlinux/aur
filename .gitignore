@@ -1,3 +1,4 @@
-nuovext-icon-theme*
-pkg
-src
+/nuovext-icon-theme
+/pkg
+/src
+*.tar*
