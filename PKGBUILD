@@ -1,45 +1,45 @@
-# Maintainer: Tobias Bachmann <tobachmann@gmx.de>
+# Maintainer: Score_Under <seejay.11@gmail.com>
+# Original PKGBUILD (for python 3): Eric Bélanger <eric@archlinux.org>
+
 pkgname=python2-wxpython4
-pkgver=4.0.1
-pkgrel=1
+_pkgname=wxPython
+pkgver=4.0.3
+pkgrel=4
 pkgdesc="Phoenix wxWidgets GUI toolkit for Python 2"
-_name=wxPython
-arch=('any')
-url="https://github.com/wxWidgets/Phoenix"
+arch=('x86_64')
 license=('custom:wxWindows')
-groups=()
-depends=('python')
-makedepends=('python2-setuptools' 'python2-appdirs' 'python2-six' 'twine' 'python2-sphinx' 'python2-requests' 'python2-pytest' 'python2-pytest-xdist' 'python2-pytest-timeout' 'python2-numpy' 'mesa' 'glu' 'git' 'libpng' 'libjpeg-turbo' 'libtiff' 'sdl' 'gst-plugins-base' 'libnotify' 'freeglut' 'gtk3' 'webkit2gtk')
-provides=('python2-wxpython' 'python2-wxpython-phoenix')
-conflicts=('python2-wxpython-phoenix' 'sk1' 'wammu')
-replaces=('python2-wxpython-phoenix')
-backup=()
-options=(!emptydirs)
-install=
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('f8f2ac1a75368b9b103259addc77f4e3dfe729c6d70aa1fd0b7e9c5b6075c710')
+url="https://www.wxpython.org"
+depends=('wxgtk3' 'python2-setuptools' 'python2-six')
+makedepends=('mesa' 'glu' 'webkit2gtk')
+#checkdepends=('xorg-server-xvfb' 'python2-pytest' 'python2-numpy')
+provides=(python2-wxpython-phoenix)
+conflicts=(${provides[@]})
+source=("https://files.pythonhosted.org/packages/source/w/wxPython/wxPython-${pkgver}.tar.gz")
+sha512sums=('911dd98d15b0cbc2551f1b22a21fdae4450656ca59cc93216b7c6a8a00e399b929b78484637992d78cecffb098b8d8dc408c24795549827e2f90ce42740c3bf9')
 
 prepare() {
-  sed -i -e "s|WX_CONFIG = 'wx-config'|WX_CONFIG = 'wx-config-gtk3'|" "$_name-$pkgver/build.py"
+  sed -i "s|WX_CONFIG = 'wx-config'|WX_CONFIG = 'wx-config-gtk3'|" $_pkgname-$pkgver/build.py
 }
 
 build() {
-  cd "$srcdir/$_name-$pkgver"
+  cd $_pkgname-$pkgver
+
   python2 build.py build --use_syswx --release
 }
 
+# Check function doesn't work without pypubsub for python 2
+#check() {
+#  cd $_pkgname-$pkgver
+#
+#  xvfb-run python2 build.py test
+#}
+
 package() {
-  cd "$srcdir/$_name-$pkgver"
+  cd $_pkgname-$pkgver
 
   python2 build.py install --destdir="$pkgdir"
-  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
-  # We have to rename the files in /usr/bin to avoid conflicts with python2 wxPython
-  # I've used the naming convention established in wxpython-phoenix-git
-  cd "$pkgdir/usr/bin"
-  for file in ./*; do mv "$file" "$file-phoenix2"; done
-
-  find "$pkgdir/usr/lib" -type f -exec chmod 644 {} +
+  install -Dm 644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+  find "$pkgdir/usr/lib" -type f | xargs chmod 644
+  rm -f "$pkgdir/usr/bin"/*
 }
-
-# vim:set ts=2 sw=2 et:
