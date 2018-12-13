@@ -1,26 +1,28 @@
-# Contributor : chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
+# Contributor : chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|tr -d '[0-9]'
 
 pkgname=ares
-pkgver=2.4.6.3072
-pkgrel=2
+pkgver=2.4.9.3075
+pkgrel=1
 pkgdesc="A free open source file sharing program that enables users to share any digital file including images, audio, video, software, documents, etc. (via wine)"
 arch=(i686 x86_64)
 url="https://aresgalaxy.io/"
 license=('GPL')
 depends=('wine')
 makedepends=(p7zip)
-source=(ares.sh ares.desktop ares.xpm https://aresgalaxy.io/aresregular246_installer.exe)
+_version=249
+_filename="aresregular"$_version"_installer.exe"
+source=(ares.sh ares.desktop ares.xpm https://aresgalaxy.io/$_filename)
 md5sums=('c7bc3239f0a3f6e001942823f882bdcb'
-         '22084eb3acd121ef811180f7f238047c'
+         '673b1c2d2ef64f7fd9b1b879df3f3904'
          'f89b51f21633e02c9017222b33544c1b'
-         '17a4d80bd942e53a183aed27136c7337')
+         '0fce6ef36b4eb4118adcd4f5c121d1b1')
 
 noextract=()
 options=(!strip)
 
 build() {
   cd $srcdir/
-  7z x -o$pkgname aresregular246_installer.exe
+  7z x -o$pkgname $_filename
 }
 package() {
   cd $srcdir/
