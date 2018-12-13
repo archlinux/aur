@@ -1,7 +1,7 @@
 pkgbase = python-vipaccess
 	pkgdesc = A free software implementation of Symantec's VIP Access application and protocol.
-	pkgver = 0.9.0
-	pkgrel = 4
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://github.com/dlenski/python-vipaccess
 	arch = any
 	license = Apache
@@ -11,8 +11,8 @@ pkgbase = python-vipaccess
 	depends = python-lxml
 	depends = python-oath
 	depends = python-requests
-	source = python-vipaccess-0.9.0::https://github.com/dlenski/python-vipaccess/archive/v0.9.0.tar.gz
-	sha256sums = 0a432d5f8bc8920a7adb9624f40ff8bd25a9f326bb1264462ad048faa6758c88
+	source = python-vipaccess-0.10.0.tar.gz::https://github.com/dlenski/python-vipaccess/archive/v0.10.0.tar.gz
+	sha256sums = ceee345ea955603ed31f6c34e44aff08e7447ece08c60ee40d520bac4fc0d705
 
 pkgname = python-vipaccess
 
