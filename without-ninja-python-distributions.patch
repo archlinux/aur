@@ -1,9 +1,9 @@
---- setup.py.orig	2018-11-11 15:44:57.952391993 +0800
-+++ setup.py	2018-11-11 15:45:02.749171434 +0800
+--- setup.py.orig	2018-12-13 12:18:38.984617089 +0800
++++ setup.py	2018-12-13 12:18:44.094724415 +0800
 @@ -141,7 +141,6 @@
      package_data={'pytype': get_builtin_files()},
      install_requires=[
-         'importlab',
+         'importlab (>=0.4)',
 -        'ninja',
          'pyyaml (>=3.11)',
          'six'

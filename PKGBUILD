@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=pytype
-pkgver=2018.11.06
+pkgver=2018.12.11
 pkgrel=1
 pkgdesc="Python type inferencer"
 arch=('any')
@@ -14,7 +14,9 @@ depends=('python-importlab>=0.4'
 makedepends=('python' 'python-setuptools' 'python-wheel'
              'make' 'gcc' 'cmake'
              'bison>=3.0.2' 'flex>=2.5.35')
-optdepends=('python36: Python versions > 3.6 of the target code are not yet supported')
+optdepends=('python2: for target code of Python 2.7 support'
+            'python36: for target code of Python 3.6 support'
+            )
 options=(!emptydirs)
 source=("https://github.com/google/pytype/archive/${pkgver}.tar.gz"
         "cpython-9734024.zip::https://github.com/python/cpython/archive/9734024ec65311e33936faa83fb1cb249ef0de9d.zip"
@@ -22,11 +24,11 @@ source=("https://github.com/google/pytype/archive/${pkgver}.tar.gz"
         "typeshed-9ee4582.zip::https://github.com/python/typeshed/archive/9ee458226c212acc2691f014d2a5575f33160d6d.zip"
         'without-ninja-python-distributions.patch'
         )
-sha256sums=('5dbb1ee60453f836d0592d719a3ea253fe7f359ab5057fad4d5bbe37aa824565'
+sha256sums=('59a6127bfaef76831c8279229bea87af987acfe21164a45ffb6589ae6c07f5ca'
             'ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a'
             '891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7'
             '6e634f400fcbe30ac6f5f8e476eef8b3cb8ae7d801e01b81bab04826c6d2402e'
-            '3bff9fe87a283d37b929cec814a384a723b8f7c805a79981869357323dcaebb7'
+            '23243118d2e3792a5232186fdc204dc6b81e79e86bdaf4426573e48ca4f9080b'
             )
 
 prepare() {
