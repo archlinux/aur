@@ -1,11 +1,11 @@
 pkgbase = uftrace-git
 	pkgdesc = Function (graph) tracer for user-space
-	pkgver = 0.9+2.ga2ca9a1
+	pkgver = 0.9.1+63.gb71a369
 	pkgrel = 1
 	url = https://github.com/namhyung/uftrace
 	arch = x86_64
 	license = GPL2
-	provides = uftrace=0.9
+	provides = uftrace=0.9.1
 	conflicts = uftrace
 	source = https://github.com/namhyung/uftrace
 	sha1sums = SKIP
