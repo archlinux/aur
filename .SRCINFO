@@ -1,12 +1,13 @@
 pkgbase = kubectl
 	pkgdesc = Kubernetes.io client binary
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kubernetes.io
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = go
+	makedepends = rsync
 	conflicts = kubernetes>=1.4.6
 	source = kubernetes-1.13.0.tar.gz::https://dl.k8s.io/v1.13.0/kubernetes-src.tar.gz
 	sha256sums = f72fea2b7c479a798d700fe50057ba97fa7771a3638a5eab2fa08bb0870bb6ed

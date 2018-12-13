@@ -6,11 +6,11 @@
 pkgname=kubectl
 pkgdesc="Kubernetes.io client binary"
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://kubernetes.io"
 license=('Apache')
-makedepends=('go')
+makedepends=('go' 'rsync')
 conflicts=('kubernetes>=1.4.6')
 #source=("git+https://github.com/kubernetes/kubernetes#tag=v${pkgver}")
 source=("kubernetes-$pkgver.tar.gz::https://dl.k8s.io/v$pkgver/kubernetes-src.tar.gz")
