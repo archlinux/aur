@@ -4,7 +4,7 @@
 pkgname=vfs495-daemon
 _realver=4.5-136.0
 pkgver=${_realver//-/_}
-pkgrel=3
+pkgrel=4
 pkgdesc="Userspace driver for VFS495 fingerprint readers"
 arch=('x86_64')
 url=""
@@ -25,26 +25,21 @@ md5sums=('9877c69c4f4b57a00f9e4afbcd9baacc'
          'ebe697d6fac43645191e2fad74bad99f'
          'a2edc66e120d073211f7ded3aeedd7d0')
 
-build() {
-  cd "${srcdir}/"
-
+prepare() {
   bsdtar xf "${_softpaq}" --strip-components 1
   rpmextract.sh Validity-Sensor-Setup-${_realver}.x86_64.rpm
-
-  rm -rf usr/lib64/
-  rm -rf usr/lib/pm-utils
-  mv usr/share/doc/packages/validity usr/share/doc/vfs495-daemon
-  rm -fR usr/share/doc/packages
-  mv usr/sbin/* usr/bin/
-  rmdir usr/sbin/
 }
 
 package() {
-  cd "${srcdir}/"
+  cd "${srcdir}"
 
-  cp -R usr/ "${pkgdir}/"
-  mkdir -p "${pkgdir}/usr/lib/systemd/system"
-  cp vfs495-daemon.service "${pkgdir}/usr/lib/systemd/system"
-  mkdir -p "${pkgdir}/usr/lib/systemd/system-sleep"
-  cp vfs495-sleep "${pkgdir}/usr/lib/systemd/system-sleep"
+  install -m 644 -D -t "${pkgdir}/usr/lib/systemd/system" vfs495-daemon.service
+  install -m 644 -D -t "${pkgdir}/usr/share/doc/vfs495-daemon" usr/share/doc/packages/validity/*
+
+  install -D -t "${pkgdir}/usr/lib/systemd/system-sleep" vfs495-sleep
+  install -D -t "${pkgdir}/usr/lib" usr/lib/libvfsFprintWrapper.so
+  install -D -t "${pkgdir}/usr/bin" usr/bin/vcsFPService
+
+  mkdir -p "${pkgdir}/usr/share/vfs495-daemon"
+  cp -t "${pkgdir}/usr/share/vfs495-daemon" usr/sbin/*
 }
