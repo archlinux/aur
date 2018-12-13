@@ -1,6 +1,6 @@
 pkgbase = smarthhc
 	pkgdesc = Digital HiHat Controller
-	pkgver = 0.1.0
+	pkgver = r2.125f492
 	pkgrel = 1
 	url = https://github.com/azdrums/smarthhc
 	arch = x86_64
@@ -10,8 +10,10 @@ pkgbase = smarthhc
 	depends = qt5-serialport
 	depends = qt5-connectivity
 	optdepends = bluez: to work with bluetooth device
-	source = https://github.com/azdrums/smarthhc.git
+	source = smarthhc::git+https://github.com/azdrums/smarthhc.git
+	source = smarthhc.desktop
 	md5sums = SKIP
+	md5sums = c4bbe0c1137422064fd6240d07513a5e
 
 pkgname = smarthhc
 
