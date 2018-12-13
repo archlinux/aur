@@ -2,7 +2,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=miredo
-pkgver=1.2.6+149+g5db176c
+pkgver=1.2.6+r149+g5db176c
 pkgrel=1
 _commit='5db176c6aae10fe3d743738244c82f0b52f80cd7'
 pkgdesc='Teredo client and server.'
@@ -14,14 +14,14 @@ makedepends=('git')
 backup=('etc/miredo/miredo.conf'
         'etc/miredo/miredo-server.conf'
         'etc/miredo/client-hook')
-#validpgpkeys=('9480583353E334D2F03FE80CC3EC6DBEDD6D12BD')	# Rémi Denis-Courmont
+validpgpkeys=('9480583353E334D2F03FE80CC3EC6DBEDD6D12BD')	# Rémi Denis-Courmont
 #source=("http://www.remlab.net/files/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,'.asc'})
 source=("git+http://git.remlab.net/git/miredo.git#commit=${_commit}")
 sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname}"
-	git describe --tags | sed 's/-/+/g'
+	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/+/g'
 }
 
 build() {

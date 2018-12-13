@@ -1,6 +1,6 @@
 pkgbase = miredo
 	pkgdesc = Teredo client and server.
-	pkgver = 1.2.6+149+g5db176c
+	pkgver = 1.2.6+r149+g5db176c
 	pkgrel = 1
 	url = https://www.remlab.net/miredo/
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = miredo
 	backup = etc/miredo/miredo-server.conf
 	backup = etc/miredo/client-hook
 	source = git+http://git.remlab.net/git/miredo.git#commit=5db176c6aae10fe3d743738244c82f0b52f80cd7
+	validpgpkeys = 9480583353E334D2F03FE80CC3EC6DBEDD6D12BD
 	sha512sums = SKIP
 
 pkgname = miredo
