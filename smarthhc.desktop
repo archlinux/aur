@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SmartHHC
+GenericName=Electronic Drums HiHat Controller
+Type=Application
+Categories=Audio;AudioVideo;Midi;Music;Qt
+Icon=/usr/share/smarthhc/icons/icon.png
+Exec=smarthhc
+Terminal=false
