@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.0.0_devel.105763.d1a1c21e76
+pkgver=19.0.0_devel.106192.5088ba2aeb
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
@@ -27,15 +27,21 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
+        'clang-moved-CodeGenOptions.h.patch'
 )
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-)
+            'b74216c5fee849f00d45e3fbaf68ca44fc89a3d6195aeed7778a862c28f7bb1d19ba762201079e32c1ed6636fd6d63272d9b162f1e2db0c0fcd3bb847b8c858c')
 
 pkgver() {
     cd mesa
     read -r _ver <VERSION
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+    cd mesa
+    patch -Np1 -i "$srcdir"/clang-moved-CodeGenOptions.h.patch
 }
 
 build () {
