@@ -1,0 +1,17 @@
+pkgbase = cctbx-bin
+	pkgdesc = The Computational Crystallography Toolbox (cctbx)
+	pkgver = 1617
+	pkgrel = 4
+	url = https://cci.lbl.gov/cctbx_docs/index.html
+	arch = x86_64
+	license = BSD
+	makedepends = fakechroot
+	depends = python2
+	depends = libpng15
+	noextract = cctbx-installer-dev-1617-intel-linux-2.6-x86_64-centos6.tar.gz
+	options = !strip
+	source = http://cci.lbl.gov/cctbx_build/dev-1617/cctbx-installer-dev-1617-intel-linux-2.6-x86_64-centos6.tar.gz
+	sha1sums = 6e66addfa2df9e96c29058a95748eeb792319877
+
+pkgname = cctbx-bin
+
