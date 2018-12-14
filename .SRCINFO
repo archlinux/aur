@@ -1,7 +1,7 @@
 pkgbase = antimicro
 	pkgdesc = Graphical program used to map keyboard keys and mouse controls to a gamepad
 	pkgver = 2.24.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/juliagoda/antimicro
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = antimicro
 	makedepends = itstool
 	makedepends = qt5-tools
 	depends = desktop-file-utils
+	depends = hicolor-icon-theme
 	depends = libxtst
 	depends = qt5-base
 	depends = sdl2
