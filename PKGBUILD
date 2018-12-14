@@ -1,4 +1,5 @@
-# Maintainer: smlb <smlb at riseup dot net>
+# Maintainer: phi <phi at qgr dot se>
+# Contributor: smlb <smlb at riseup dot net>
 
 pkgname=dockd
 pkgver=1.21
@@ -9,7 +10,7 @@ url="https://github.com/libthinkpad/dockd"
 license=('BSD')
 depends=('libthinkpad' 'libxrandr')
 makedepends=('cmake')
-source=("http://thinkpads.org/ftp/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://libthinkpad.github.io/ftp/dockd/$pkgname-$pkgver.tar.gz")
 md5sums=('67093aa2889fd140a6460ab7897087ac')
 
 prepare () {
