@@ -5,7 +5,7 @@
 pkgname=mumps-seq
 _pkgname=mumps
 _PKGNAME=MUMPS
-pkgver=5.0.2
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="Sparse solver library using Gaussian elimination (sequential version)"
 url="http://mumps.enseeiht.fr"
@@ -16,7 +16,7 @@ conflicts=('mumps')
 arch=('i686' 'x86_64')
 source=("http://mumps.enseeiht.fr/${_PKGNAME}_${pkgver}.tar.gz"
         "Makefile.seq.inc")
-sha256sums=('77292b204942640256097a3da482c2abcd1e0d5a74ecd1d4bab0f5ef6e60fe45'
+sha256sums=('eb345cda145da9aea01b851d17e54e7eef08e16bfa148100ac1f7f046cd42ae9'
             'e73105ab186f78c14c71f8032deec0af77f9f32f6fe51381a56f0a545fd6ea3c')
 
 prepare(){
