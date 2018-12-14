@@ -1,6 +1,6 @@
 pkgbase = qt5ct-svn
 	pkgdesc = Qt5 Configuration Tool - svn version.
-	pkgver = 0.37.r501
+	pkgver = 0.37.r508
 	pkgrel = 1
 	url = https://sourceforge.net/projects/qt5ct/
 	install = qt5ct.install

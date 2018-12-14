@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=qt5ct-svn
-pkgver=0.37.r501
+pkgver=0.37.r508
 pkgrel=1
 pkgdesc="Qt5 Configuration Tool - svn version."
 arch=('i686' 'x86_64')
@@ -25,7 +25,10 @@ pkgver() {
 
 build() {
   cd "${pkgname%-*}"
-  qmake-qt5 qt5ct.pro
+  qmake-qt5 PREFIX=/usr qt5ct.pro \
+    QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
+    QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
+    QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
   make
 }
 
