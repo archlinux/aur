@@ -1,13 +1,13 @@
 pkgbase = clair-git
 	pkgdesc = Vulnerability Static Analysis for Containers
 	pkgver = v2.0.0.r246.g504f0f3a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coreos/clair
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = go
-	source = clair-git::git+https://github.com/coreos/clair
+	source = clair::git+https://github.com/coreos/clair
 	sha256sums = SKIP
 
 pkgname = clair-git
