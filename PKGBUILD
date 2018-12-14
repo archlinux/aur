@@ -1,7 +1,7 @@
 # Maintainer: Muhkoenig
 
 pkgname=kubebuilder-bin
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="SDK for building Kubernetes APIs using CRDs"
 url="https://github.com/kubernetes-sigs/kubebuilder"
@@ -14,7 +14,7 @@ optdepends=(
 provides=('kubebuilder')
 conflicts=('kubebuilder')
 source=("https://github.com/kubernetes-sigs/kubebuilder/releases/download/v${pkgver}/kubebuilder_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('e729c74f6a1b3ab9c416642f372b84df60d07c84f64302f1f7e3fe7a9f9411e5')
+sha256sums=('a622eebdcc95984d3a3d87d0acd2d7c02b463f4db23b1b22020a2bc77c032668')
 
 package() {
 	for file in kubebuilder_"${pkgver}"_linux_amd64/bin/*
