@@ -1,4 +1,4 @@
-From 6db371f6604d00b31d797447bfc6be93091637c9 Mon Sep 17 00:00:00 2001
+From 27a1638bad652da1e73bbe1533aca8b625eeda4d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 18:28:10 +0200
 Subject: [PATCH 10/33] Don't try to use debug version of D-Bus library
@@ -12,10 +12,10 @@ Change-Id: Ic34e1025fda55f9659e065f5bbe9d51f55420adb
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure.json b/configure.json
-index 68fed05289..bcd226f852 100644
+index 17446b6c21..5b37371a7b 100644
 --- a/configure.json
 +++ b/configure.json
-@@ -185,7 +185,7 @@
+@@ -182,7 +182,7 @@
                  {
                      "libs": "",
                      "builds": {
@@ -25,5 +25,5 @@ index 68fed05289..bcd226f852 100644
                      },
                      "condition": "config.win32 && features.shared"
 -- 
-2.19.0
+2.19.2
 

@@ -1,4 +1,4 @@
-From baee6baceceaa4abb8a9ea909771bcac6da04e05 Mon Sep 17 00:00:00 2001
+From 42ab8012488408bfb6ab77fb056b27f3400d40ce Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:48:51 +0200
 Subject: [PATCH 04/33] Fix too many sections assemler error in OpenGL factory
@@ -11,7 +11,7 @@ Hence the assembler option -mbig-obj is required.
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/src/gui/opengl/opengl.pri b/src/gui/opengl/opengl.pri
-index 4c778b184e..1dd1755d7f 100644
+index 24758afdeb..aa04b4a672 100644
 --- a/src/gui/opengl/opengl.pri
 +++ b/src/gui/opengl/opengl.pri
 @@ -3,7 +3,8 @@
@@ -25,5 +25,5 @@ index 4c778b184e..1dd1755d7f 100644
      HEADERS += opengl/qopengl.h \
                 opengl/qopengl_p.h \
 -- 
-2.19.0
+2.19.2
 

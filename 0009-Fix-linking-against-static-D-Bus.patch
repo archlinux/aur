@@ -1,4 +1,4 @@
-From ce8a5ec429efd173899f3a545ca527085c929daf Mon Sep 17 00:00:00 2001
+From 3acf388e10fd40909af87cfdba35768f2be26be6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 19:36:25 +0100
 Subject: [PATCH 09/33] Fix linking against static D-Bus
@@ -9,17 +9,16 @@ Subject: [PATCH 09/33] Fix linking against static D-Bus
  2 files changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/configure.json b/configure.json
-index 2dc79137e8..68fed05289 100644
+index 522bd34e9b..17446b6c21 100644
 --- a/configure.json
 +++ b/configure.json
-@@ -172,18 +172,23 @@
-                     "CONFIG(debug, debug|release): \\",
-                     "    LIBS += $$LIBS_DEBUG",
-                     "else: \\",
--                    "    LIBS += $$LIBS_RELEASE"
-+                    "    LIBS += $$LIBS_RELEASE",
-+                    "static: DEFINES += DBUS_STATIC_BUILD"
-                 ]
+@@ -170,17 +170,22 @@
+             "label": "D-Bus >= 1.2",
+             "test": {
+                 "include": "dbus/dbus.h",
+-                "main": "(void) dbus_bus_get_private(DBUS_BUS_SYSTEM, (DBusError *)NULL);"
++                "main": "(void) dbus_bus_get_private(DBUS_BUS_SYSTEM, (DBusError *)NULL);",
++                "qmake": "static: DEFINES += DBUS_STATIC_BUILD"
              },
              "sources": [
                  { "type": "pkgConfig", "args": "dbus-1 >= 1.2" },
@@ -39,7 +38,7 @@ index 2dc79137e8..68fed05289 100644
                  { "libs": "-ldbus-1", "condition": "!config.win32" }
              ]
 diff --git a/src/dbus/qdbus_symbols_p.h b/src/dbus/qdbus_symbols_p.h
-index 9eaebe6d7e..ac1b1d977b 100644
+index 7cce0d71aa..4d3d774d45 100644
 --- a/src/dbus/qdbus_symbols_p.h
 +++ b/src/dbus/qdbus_symbols_p.h
 @@ -57,6 +57,10 @@
@@ -54,5 +53,5 @@ index 9eaebe6d7e..ac1b1d977b 100644
  #  include <dbus/dbus.h>
  #else
 -- 
-2.19.0
+2.19.2
 

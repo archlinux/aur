@@ -1,16 +1,11 @@
---- a/src/corelib/io/qfilesystemengine_unix.cpp	2018-09-25 20:41:17.721173332 +0200
-+++ b/src/corelib/io/qfilesystemengine_unix.cpp	2018-09-25 20:45:38.611149986 +0200
-@@ -110,11 +110,11 @@
- { return syscall(SYS_renameat2, oldfd, oldpath, newfd, newpath, flags); }
- #    endif
+--- a/src/corelib/io/qfilesystemengine_unix.cpp.orig	2018-12-14 21:54:13.136089911 +0100
++++ b/src/corelib/io/qfilesystemengine_unix.cpp	2018-12-14 21:53:41.726039852 +0100
+@@ -102,6 +102,8 @@
+ #  undef STATX_BASIC_STATS
+ #endif
  
--#    if !QT_CONFIG(statx) && defined(SYS_statx)
-+#    if 0
- #      include <linux/stat.h>
- static int statx(int dirfd, const char *pathname, int flag, unsigned mask, struct statx *statxbuf)
- { return syscall(SYS_statx, dirfd, pathname, flag, mask, statxbuf); }
--#    elif !QT_CONFIG(statx) && !defined(SYS_statx)
-+#    elif 1
- #      undef STATX_BASIC_STATS
- #    endif
- #  endif // !Q_OS_ANDROID
++#undef STATX_BASIC_STATS
++
+ #ifndef STATX_ALL
+ struct statx { mode_t stx_mode; };      // dummy
+ #endif
