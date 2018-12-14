@@ -117,7 +117,7 @@ prepare() {
   # Put the file "myconfig" at the package folder to use this feature
   if [ -f "../myconfig" ]; then
     msg2 "Using user CUSTOM config..."
-    cp -f ../myconfig .config
+    cp -f "${srcdir}"/myconfig .config
   fi
 
   make olddefconfig
