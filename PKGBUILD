@@ -1,13 +1,13 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 pkgname=kube-prompt-git
-pkgrel=1
+pkgrel=2
 pkgver=v1.0.5.r20.g048ea99
 pkgdesc="An interactive kubernetes client featuring auto-complete using go-prompt."
 arch=(any)
 url="https://github.com/c-bata/kube-prompt"
 license=('MIT')
 depends=("kubectl")
-makedepends=("dep" "git" "go") # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=("dep" "git" "go")
 provides=("kube-prompt")
 conflicts=("kube-prompt")
 source=("$pkgname::git+https://github.com/c-bata/kube-prompt.git")
