@@ -1,7 +1,7 @@
 pkgbase = vorta
 	pkgdesc = A GUI for BorgBackup
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/borgbase/vorta
 	arch = any
 	license = GPL
@@ -15,6 +15,7 @@ pkgbase = vorta
 	depends = python-dateutil
 	depends = python-keyring
 	depends = python-sentry_sdk
+	depends = python-psutil
 	options = !emptydirs
 	source = https://github.com/borgbase/vorta/archive/v0.6.1.zip
 	source = vorta32.png
