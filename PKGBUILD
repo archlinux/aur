@@ -1,22 +1,28 @@
 # $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Alexandre Moine <alexandre@moine.me>
+# Maintainer: Thanos Apostolou <thanosapostolou@outlook.com>
+# Contributor: Alexandre Moine <alexandre@moine.me>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: |AhIoRoS| < ahioros@gmail.com >
 
-pkgname=tuxguitar
+pkgbase=tuxguitar
+pkgname=(tuxguitar tuxguitar-common tuxguitar-gtk2)
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('x86_64')
 url="http://sourceforge.net/projects/tuxguitar"
 license=('LGPL')
-depends=('java-runtime>=8' 'alsa-lib' 'gtk2' 'libxtst')
+depends=('java-runtime>=8' 'alsa-lib' 'libxtst')
 makedepends=('unzip' 'zip' 'apache-ant' 'jack' 'fluidsynth' 'java-environment>=8' 'maven')
 optdepends=('fluidsynth')
 source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz
-        nogcj.patch)
+        nogcj.patch
+        tuxguitar
+        tuxguitar-gtk2)
 sha256sums=('a9ade566752aa0ac72831a1cd0b18b85d302eca7934e2192ad875f51df755981'
-            'bda4bc1b864ecfa27392a145854ee3b5ab20876c2d2bc38bbf85f92ce97fe2bc')
+            'bda4bc1b864ecfa27392a145854ee3b5ab20876c2d2bc38bbf85f92ce97fe2bc'
+            'efeef39d43ecf5a87ed64abc7d8cf63a01f3c9b08bac0ea299bf959fcb7c216a'
+            '39f92c0de6fcf86635dec5ac3b83613ca980fa7d24f66888fd06e5bb2c7c571f')
 
 case $CARCH in
   i686) _arch=x86;;
@@ -48,7 +54,7 @@ build() {
   ); done
 }
 
-package() {
+package_tuxguitar-common () {
   # tuxguitar
   cd tuxguitar-$pkgver-src/build-scripts
   install -d "$pkgdir"/usr/share
@@ -65,17 +71,33 @@ package() {
     for _m in audio-x-{tuxguitar,gtp,ptb}; do
       ln -sr "$_dir"/apps/tuxguitar.png "$_dir"/mimetypes/$_m.png
     done
-  done
+  done 
+  
+  #misc
+  cd "${srcdir}/tuxguitar-$pkgver-src/misc"
+  install -Dm644 tuxguitar.xml "$pkgdir"/usr/share/mime/packages/tuxguitar.xml
+  install -Dm644 tuxguitar.desktop "$pkgdir"/usr/share/applications/tuxguitar.desktop
+  
+  # remove tuxguitar.sh
+  rm "${pkgdir}/usr/share/tuxguitar/tuxguitar.sh"
+}
 
-  # Misc
-  install -Dm644 misc/tuxguitar.xml "$pkgdir"/usr/share/mime/packages/tuxguitar.xml
-  install -Dm644 misc/tuxguitar.desktop "$pkgdir"/usr/share/applications/tuxguitar.desktop
+package_tuxguitar () {
+  depends=('tuxguitar-common' 'gtk3')
+  replaces=('tuxguitar-gtk3')
+  
+  install -Dm 755 tuxguitar "$pkgdir"/usr/bin/tuxguitar
+  install -Dm 755 "${srcdir}/tuxguitar-$pkgver-src/build-scripts/tuxguitar-linux-$_arch/target/tuxguitar-$pkgver-linux-$_arch/tuxguitar.sh" \
+                  "${pkgdir}/usr/share/tuxguitar/tuxguitar.sh"
+  sed -i s/SWT_GTK3=0/SWT_GTK3=1/g "${pkgdir}/usr/share/tuxguitar/tuxguitar.sh"
+}
 
-  # Launcher
-  install -D /dev/stdin "$pkgdir"/usr/bin/tuxguitar <<EOF
-#!/bin/sh -e
-export SWT_GTK3=0
-cd /usr/share/tuxguitar
-exec ./tuxguitar.sh -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false "\$@"
-EOF
+package_tuxguitar-gtk2 () {
+  depends=('tuxguitar-common' 'gtk2')
+  conflicts=('tuxguitar')
+  provides=('tuxguitar')
+  
+  install -Dm 755 tuxguitar-gtk2 "$pkgdir"/usr/bin/tuxguitar
+  install -Dm 755 "${srcdir}/tuxguitar-$pkgver-src/build-scripts/tuxguitar-linux-$_arch/target/tuxguitar-$pkgver-linux-$_arch/tuxguitar.sh" \
+                  "${pkgdir}/usr/share/tuxguitar/tuxguitar.sh"
 }

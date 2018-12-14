@@ -1,7 +1,7 @@
 pkgbase = tuxguitar
 	pkgdesc = multitrack guitar tablature editor and player
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/tuxguitar
 	arch = x86_64
 	license = LGPL
@@ -14,13 +14,27 @@ pkgbase = tuxguitar
 	makedepends = maven
 	depends = java-runtime>=8
 	depends = alsa-lib
-	depends = gtk2
 	depends = libxtst
 	optdepends = fluidsynth
 	source = https://downloads.sourceforge.net/tuxguitar/tuxguitar-1.5.2-src.tar.gz
 	source = nogcj.patch
+	source = tuxguitar
+	source = tuxguitar-gtk2
 	sha256sums = a9ade566752aa0ac72831a1cd0b18b85d302eca7934e2192ad875f51df755981
 	sha256sums = bda4bc1b864ecfa27392a145854ee3b5ab20876c2d2bc38bbf85f92ce97fe2bc
+	sha256sums = efeef39d43ecf5a87ed64abc7d8cf63a01f3c9b08bac0ea299bf959fcb7c216a
+	sha256sums = 39f92c0de6fcf86635dec5ac3b83613ca980fa7d24f66888fd06e5bb2c7c571f
 
 pkgname = tuxguitar
+	depends = tuxguitar-common
+	depends = gtk3
+	replaces = tuxguitar-gtk3
+
+pkgname = tuxguitar-common
+
+pkgname = tuxguitar-gtk2
+	depends = tuxguitar-common
+	depends = gtk2
+	provides = tuxguitar
+	conflicts = tuxguitar
 

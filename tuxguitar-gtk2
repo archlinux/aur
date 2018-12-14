@@ -1,0 +1,3 @@
+#!/bin/sh -e
+cd /usr/share/tuxguitar
+exec ./tuxguitar.sh -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false "$@"
