@@ -14,7 +14,7 @@
 #######################
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=1.2.1163
+pkgver=1.2.1186
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
-md5sums_x86_64=('9f3b53cb7ba5a4d29ea21c1aac0121cf')
+md5sums_x86_64=('4f3dbbd89209cbde3263b3455ebfee24')
 
 source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/trusty/amd64/rstudio-${pkgver}-amd64.deb")
 
