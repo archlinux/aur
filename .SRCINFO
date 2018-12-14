@@ -1,0 +1,21 @@
+pkgbase = python-gym
+	pkgdesc = A toolkit for developing and comparing reinforcement learning algorithms.
+	pkgver = 0.10.9
+	pkgrel = 1
+	url = https://gym.openai.com/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-scipy
+	depends = python-numpy
+	depends = python-requests
+	depends = python-pyglet
+	optdepends = python-atari-py
+	optdepends = python-pillow
+	optdepends = python-opengl
+	source = https://github.com/openai/gym/archive/0.10.9.tar.gz
+	md5sums = 8f12cb1e528b81b7cd01621b89d07d3e
+
+pkgname = python-gym
+
