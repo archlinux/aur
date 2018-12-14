@@ -5,9 +5,9 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-macbook        # Build kernel with a different name
-_srcver=4.19.4-arch1
+_srcver=4.19.9-arch1
 pkgver=${_srcver//-/.}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=(GPL2)
@@ -29,7 +29,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'e7fa30bb2de12d1a2488423e27c00f26d55668e310e69aaf93673c1afd89dbaf'
+            '2aa5cde5c40ca06ea0a10b9a212bd9b96deb548d58c0a55386f0e8ae5fc0edf5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
