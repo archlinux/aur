@@ -1,22 +1,31 @@
-# Contributor: Francois Boulogne <fboulogne at april dot org>
-# Maintainer: Francois Boulogne <fboulogne at april dot org>
+# Maintainer: Leo Mao
 
-pkgname=python-imageio
-pkgver=2.1.2
+pkgname="python-imageio"
+_pkgname="imageio"
+pkgver=2.4.1
 pkgrel=1
-pkgdesc="Library for reading and writing a wide range of image, video, scientific, and volumetric data formats"
-arch=('any')
-url="https://pypi.python.org/pypi/imageio/"
-license=('MIT')
-depends=('python' 'python-numpy' 'freeimage' 'ffmpeg' 'avbin')
-makedepends=('python-setuptools')
-optdepends=('python-astropy' 'simpleitk')
-source=("https://files.pythonhosted.org/packages/source/i/imageio/imageio-${pkgver}.zip")
-sha256sums=('89d7692d9f513aa21665af7de94948bc1ef110d812fa66c34bfd486590d986bb')
+pkgdesc="a Python library that provides an easy interface to read and write a wide range of image data"
+arch=('x86_64')
+_github="imageio/imageio"
+_pypiname="imageio"
+url="https://github.com/imageio/imageio"
+license=('BSD')
+depends=('python-numpy' 'python-pillow')
+optdepends=('avbin' 'ffmpeg' 'freeimage' 'python-astropy' 'simpleitk')
+makedepends=('python' 'python-setuptools')
+source=("https://github.com/imageio/imageio/archive/v${pkgver}.tar.gz")
+sha256sums=('0c0c5869830b738cbafd4c278299c7b28e179ad04920938de9109161a328b5ec')
 
-package() {
-  cd "$srcdir/imageio-$pkgver"
-  python setup.py install --root="${pkgdir}"  --optimize=1
+build() {
+  msg "Building Python 3"
+  cd "$srcdir/${_pkgname}-${pkgver}"
+  python setup.py build
 }
 
-# vim:ts=2:sw=2:et:
+package() {
+  cd "$srcdir/${_pkgname}-${pkgver}"
+  python setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+}
+
+# vim:set ts=2 sw=2 et:<Paste>
