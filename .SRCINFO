@@ -1,0 +1,13 @@
+pkgbase = aws-checksums-git
+	pkgdesc = Cross-Platform HW accelerated CRC32c and CRC32 with fallback to efficient SW implementations.
+	pkgver = r22.b06b1f7
+	pkgrel = 1
+	url = https://github.com/awslabs/aws-checksums
+	arch = any
+	license = BSD
+	depends = cmake
+	source = aws-checksums-git::git+https://github.com/awslabs/aws-checksums
+	sha256sums = SKIP
+
+pkgname = aws-checksums-git
+
