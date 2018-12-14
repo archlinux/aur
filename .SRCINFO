@@ -1,22 +1,22 @@
 pkgbase = include-what-you-use
 	pkgdesc = A tool for use with clang to analyze #includes in C and C++ source files
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	epoch = 1
 	url = http://include-what-you-use.org
 	install = iwyu.install
 	arch = x86_64
 	license = LLVM Release License
-	makedepends = clang>=6.0
-	makedepends = clang<7.0
+	makedepends = clang>=7.0
+	makedepends = clang<8.0
 	makedepends = cmake
-	makedepends = llvm>=6.0
-	makedepends = llvm<7.0
-	depends = clang>=6.0
-	depends = clang<7.0
+	makedepends = llvm>=7.0
+	makedepends = llvm<8.0
+	depends = clang>=7.0
+	depends = clang<8.0
 	depends = python2
-	source = https://github.com/include-what-you-use/include-what-you-use/archive/clang_6.0.tar.gz
-	sha512sums = 2bf2593dba252d870074125f976a237e901e969323969f2c8fb030e8376bb230f1d5c2baecc8cd8fad7099e83589c7666c44cd178d2094f6e883cace1e53ad90
+	source = https://github.com/include-what-you-use/include-what-you-use/archive/clang_7.0.tar.gz
+	sha512sums = 50d186b2e09c3595cc2dc7513e5db74da0038987158c2c45ef4279c67c50de621ca6499b07894ee203f25566aafaddde4b05840946f921678499d2efc131575a
 
 pkgname = include-what-you-use
 
