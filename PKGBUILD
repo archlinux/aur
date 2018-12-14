@@ -1,6 +1,6 @@
 # Maintainer: Lukas Spies <luspi (AT) gmx _DOT_ de>
 pkgname=mingw-w64-graphicsmagick
-pkgver=1.3.29
+pkgver=1.3.31
 pkgrel=1
 pkgdesc="Image processing system (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('mingw-w64-configure' 'mingw-w64-pcre' 'mingw-w64-libpng' 'mingw-w6
 depends=('mingw-w64-crt' 'mingw-w64-freetype2' 'mingw-w64-lcms2' 'mingw-w64-bzip2' 'mingw-w64-xz' 'mingw-w64-libtool')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/1.3/GraphicsMagick-$pkgver.tar.xz")
-md5sums=('ddde0dd239592db50c5378472355c03c')
+md5sums=('6f55c300c95f83e638ad2570a1e397ac')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -27,9 +27,7 @@ build() {
 
     mkdir -p build-${_arch} && pushd build-${_arch}
 
-    ### NOTE ###
-    # 1.3.29 doesn't compile with JPEG-2000 support (problems with jasper)
-    ${_arch}-configure --enable-shared --without-x --with-quantum-depth=16 --with-threads --with-modules --without-jp2
+    ${_arch}-configure --enable-shared --without-x --with-quantum-depth=16 --with-threads --with-modules
 
     sed -i "s/\/usr\/include/\/usr\/${_arch}\/include/g" Makefile
     sed -i "s/\/usr\/lib/\/usr\/${_arch}\/lib/g" Makefile
