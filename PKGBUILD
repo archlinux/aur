@@ -8,7 +8,7 @@ _build="$(echo "$pkgver" | awk -F \. '{print $4}')"
 _build="${_build//_/-}"
 # Specify BuildTools version explicitly (instead of using
 # 'lastSuccessfulBuild') to let makepkg detect when needs to download an update
-_buildtoolver=83
+_buildtoolver=85
 pkgrel=1
 pkgdesc="CraftBukkit & Spigot Minecraft servers"
 arch=(any)
@@ -32,7 +32,7 @@ source=("BuildTools-${_buildtoolver}.jar::https://hub.spigotmc.org/jenkins/job/B
         "start_server.sh"
         "readme.md"
         "sysusers.conf")
-sha256sums=('ce254173df9872e60cbd7828ec29a268dd541068e79894a2765b47595193e1ad'
+sha256sums=('83746eea0bdd49f87daa9e6c72ed1b337cfc9239b00d5fad79af2e0da23622dc'
             'cf72cf4af41000c9d04d00722097e609b57cd57d12a7eb3fd8b90ed7f408f4fd'
             '58a675cf0bd3c514f9e65a67e5ef1d7c688a70d23afe4da5bfebea5e622b6b35'
             '16d2281874c953eb94141994d5a4c4c31b0b3f7d51652ebdad1f2367fdeaea8c'
