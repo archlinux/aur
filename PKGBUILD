@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=pkgcloud-git
-pkgver=r62.3529b73
-pkgrel=2
+pkgver=r63.b0bbd28
+pkgrel=1
 pkgdesc="Talk to the packagecloud API, in Go"
 arch=(x86_64)
 url='https://github.com/tonylambiris/pkgcloud'
