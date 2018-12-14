@@ -1,4 +1,5 @@
-# Maintainer: smlb <smlb at riseup dot net>
+# Maintainer: phi <phi at qgr dot se>
+# Contributor: smlb <smlb at riseup dot net>
 
 pkgname=libthinkpad
 pkgver=2.6
@@ -9,16 +10,16 @@ url="https://github.com/libthinkpad/libthinkpad"
 license=('BSD')
 depends=('libsystemd' 'acpid')
 makedepends=('cmake')
-source=("http://thinkpads.org/ftp/$pkgname/$pkgname-$pkgver.tar.gz" "$pkgname.install")
+source=("https://libthinkpad.github.io/ftp/$pkgname/$pkgname-$pkgver.tar.gz" "$pkgname.install")
 md5sums=('66750d4ece8e12605e022acc134d352f'
-'b44e3c7ddac879d57b45a709544df785')
+'b3e3589091b8d70357a7aa75d329e104')
 
-install=$pkgname.install 
+install=$pkgname.install
 
 build () {
     cd "$srcdir/$pkgname-$pkgver"
     cmake . -DCMAKE_INSTALL_PREFIX=/usr
-    make 
+    make
 }
 
 package() {

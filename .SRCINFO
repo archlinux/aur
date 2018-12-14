@@ -10,10 +10,10 @@ pkgbase = libthinkpad
 	makedepends = cmake
 	depends = libsystemd
 	depends = acpid
-	source = http://thinkpads.org/ftp/libthinkpad/libthinkpad-2.6.tar.gz
+	source = https://libthinkpad.github.io/ftp/libthinkpad/libthinkpad-2.6.tar.gz
 	source = libthinkpad.install
 	md5sums = 66750d4ece8e12605e022acc134d352f
-	md5sums = b44e3c7ddac879d57b45a709544df785
+	md5sums = b3e3589091b8d70357a7aa75d329e104
 
 pkgname = libthinkpad
 

@@ -1,5 +1,5 @@
 post_install() {
-	echo ""
+    echo ""
     echo "You need to enable acpid"
     echo "Run: systemctl enable acpid"
     echo ""
