@@ -9,7 +9,7 @@ url="https://github.com/miiton/Cica"
 license=('custom')
 arch=('any')
 depends=('fontconfig' 'xorg-font-utils')
-source=(https://github.com/miiton/Cica/releases/download/v4.1.1/Cica-v4.1.1.zip)
+source=(https://github.com/miiton/Cica/releases/download/v${pkgver}/Cica-v${pkgver}.zip)
 md5sums=('3244058131a3c9a4f0055bf989d64a2b')
 
 package() {
