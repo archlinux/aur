@@ -3,15 +3,15 @@
 # Release Code Name: Clarke
 
 pkgname=lbry-app-bin
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
 url='https://lbry.io/'
 license=('MIT')
 depends=('nodejs' 'npm' 'gnome-keyring')
-source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.26.0/LBRY_0.26.0.deb')
-sha256sums=('c3eed2a26da4edfba5166a45bec84859a0489bf7301da9193aa0f66a53d3e6a4')
+source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.26.1/LBRY_0.26.1.deb')
+sha256sums=('cc1bceec5cb699b955265cb487c6afe620f3fd349dc35515a2a2ac3c978e8527')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
