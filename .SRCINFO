@@ -1,14 +1,14 @@
 pkgbase = firefox-tridactyl
 	pkgdesc = Replace Firefox's control mechanism with one modelled on Vim
-	pkgver = 1.14.5
+	pkgver = 1.14.6
 	pkgrel = 1
 	url = https://github.com/cmcaine/tridactyl
 	arch = any
 	groups = firefox-addons
 	license = Apache
-	noextract = tridactyl-1.14.5-an+fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/873070/tridactyl-1.14.5-an+fx.xpi
-	sha256sums = cc1a481d2a84202c8c559e530335c22d7f08a9b1ca2595a0194dea272acdb834
+	noextract = tridactyl-1.14.6-an+fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/873070/tridactyl-1.14.6-an+fx.xpi
+	sha256sums = ed4ad0c06ba32bdd40eb59a1cdeac48ec556276fafdecad8de0d56d8d2855bea
 
 pkgname = firefox-tridactyl
 
