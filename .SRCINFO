@@ -1,12 +1,13 @@
 pkgbase = lib32-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
 	pkgver = 4.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://ffmpeg.org/
 	arch = x86_64
 	license = GPL3
 	makedepends = ffnvcodec-headers
+	makedepends = git
 	makedepends = lib32-ladspa
 	makedepends = yasm
 	depends = ffmpeg
