@@ -1,24 +1,29 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
+# based on lxd-git package https://aur.archlinux.org/packages/lxd-git/
+# which in turn is based based on old version of this very package
+# Contrubutor: Asterios Dimitriou <asterios@pci.gr>
 # Contributor: Benjamin Asbach <archlinux-aur.lxd@impl.it>
 
 pkgname=lxd
-pkgver=3.7
+_pkgname=lxd
+pkgver=3.8
 pkgrel=1
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC."
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
 license=('APACHE')
-conflicts=('lxd-lts')
-depends=('lxc' 'squashfs-tools' 'dnsmasq' 'dqlite')
-makedepends=('go-pie' 'git')
-options=('!strip' '!emptydirs')
+conflicts=('lxd' 'lxd-lts')
+provides=('lxd')
+depends=('lxc' 'squashfs-tools' 'dnsmasq' 'libuv')
+makedepends=('go' 'git' 'tcl' 'patchelf')
 optdepends=(
     'lvm2: for lvm2 support'
     'thin-provisioning-tools: for thin provisioning support'
-    'btrfs-progs: for btrfs support'
+    'btrfs-progs: for btrfs storage driver support'
+    'ceph: for ceph storage driver support'
 )
+options=('!strip' '!emptydirs')
 source=(
-    "https://github.com/lxc/$pkgname/archive/$pkgname-$pkgver.tar.gz"
     "lxd.service"
     "lxd.socket"
     "dnsmasq-lxd.conf"
@@ -27,9 +32,9 @@ source=(
     "dbus-dnsmasq-lxd.conf"
     "networkmanager-dnsmasq-lxd.conf"
 )
+_lxd=github.com/lxc/lxd
 
-md5sums=('a3aa2df3afbf5a6b23f736e1cd215f67'
-         'a95280cf05920bd561cae451acb5b27d'
+md5sums=('6462095d5892d15c4f14310aa263a2a9'
          '1fb28d8dfe82af71d0675c8e9a0a7293'
          'b1fd16933c1b24aaa9ccc8f5a0e6478c'
          '15ae1bc51684d611bded2839ca55a37b'
@@ -37,37 +42,60 @@ md5sums=('a3aa2df3afbf5a6b23f736e1cd215f67'
          'c86b8c441ab014340186acc7799096f2'
          '427926fddb1537f7a65d0a7274106df5')
 
-build() {
+prepare() {
   export GOPATH="${srcdir}/go"
-  go_base=github.com/lxc/lxd
   mkdir -p "${GOPATH}"
-  GOPATH="${GOPATH}" go get "${go_base}" || echo "(ignoring go error)"
-  cd "${GOPATH}/src/${go_base}"
+  if [ ! -f "${GOPATH}/src/${_lxd}/Makefile" ]; then
+    # download the go package along with all of its go dependencies
+    go get -d -v "${_lxd}/lxd"
+  else
+    # or update the existing packages
+    cd "${GOPATH}/src/${_lxd}"
+    make update
+  fi
+}
+
+build() { 
+  cd "${GOPATH}/src/${_lxd}"
+  git checkout lxd-${pkgver}
+  make deps
+  export CGO_CFLAGS="-I${GOPATH}/deps/sqlite/ -I${GOPATH}/deps/dqlite/include/"
+  export CGO_LDFLAGS="-L${GOPATH}/deps/sqlite/.libs/ -L${GOPATH}/deps/dqlite/.libs/"
+  export LD_LIBRARY_PATH="${GOPATH}/deps/sqlite/.libs/:${GOPATH}/deps/dqlite/.libs/"
   make
 }
 
 package() {
-  go_bin_dir="${GOPATH}/bin"
+  go_bin_dir="${srcdir}/go/bin"
+  go_deps_dir="${srcdir}/go/deps"
   install=lxd.install
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/lib/lxd"
+  mkdir -p "${pkgdir}/usr/share/doc/lxd"
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
   install -p -m755 "${go_bin_dir}/"* "${pkgdir}/usr/bin"
+  patchelf --set-rpath "/usr/lib/lxd" "${pkgdir}/usr/bin/lxd"
+  cp --no-dereference --preserve=timestamps \
+    "${go_deps_dir}/sqlite/.libs/"libsqlite3.so* \
+    "${go_deps_dir}/dqlite/.libs/"libdqlite.so* \
+    "${pkgdir}/usr/lib/lxd"
+  patchelf --set-rpath "/usr/lib/lxd" "${pkgdir}/usr/lib/lxd/libdqlite.so"
 
-  # Package license (if available)
-  for f in LICENSE COPYING LICENSE.* COPYING.*; do
-    if [ -e "${go_bin_dir}/$f" ]; then
-      install -Dm644 "${go_bin_dir}/$f" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/$f"
-    fi
-  done
+  # Package license
+  install -Dm644 "${srcdir}/go/src/${_lxd}/COPYING"  "${pkgdir}/usr/share/licenses/${_pkgname}/LICENCE"
+
+  # systemd files
   install -D -m644 "${srcdir}/lxd.service" \
     "${pkgdir}/usr/lib/systemd/system/lxd.service"
   install -D -m644 "${srcdir}/lxd.socket" \
     "${pkgdir}/usr/lib/systemd/system/lxd.socket"
 
+  # documentation
+  install -D -m644 "${srcdir}/go/src/${_lxd}/doc/"* \
+    "${pkgdir}/usr/share/doc/lxd/"
+
   # Bash completions
-  install -p -m755 "${srcdir}/${pkgname}-${pkgname}-${pkgver}/scripts/bash/lxd-client" \
+  install -p -m644 "${srcdir}/go/src/${_lxd}/scripts/bash/lxd-client" \
     "${pkgdir}/usr/share/bash-completion/completions/lxd"
 
   # Example configuration files

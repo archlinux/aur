@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/lxd --group lxd
+ExecStop=/usr/bin/lxd shutdown
 KillMode=process
 LimitNOFILE=1048576
 LimitNPROC=infinity
