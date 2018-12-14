@@ -1,6 +1,6 @@
 pkgbase = aminal-git
 	pkgdesc = Golang terminal emulator from scratch
-	pkgver = r216.13246ca
+	pkgver = r358.bf90bfb
 	pkgrel = 1
 	url = https://github.com/liamg/aminal
 	arch = x86_64
