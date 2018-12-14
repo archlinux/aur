@@ -9,7 +9,7 @@ pkgbase = dockd
 	makedepends = cmake
 	depends = libthinkpad
 	depends = libxrandr
-	source = http://thinkpads.org/ftp/dockd/dockd-1.21.tar.gz
+	source = https://libthinkpad.github.io/ftp/dockd/dockd-1.21.tar.gz
 	md5sums = 67093aa2889fd140a6460ab7897087ac
 
 pkgname = dockd
