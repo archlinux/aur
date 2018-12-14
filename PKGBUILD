@@ -32,6 +32,7 @@ pkgver() {
     # function, and arch-meson relies on them to work properly.
     _basever="$(cat "$_basename/meson.build" | \
         sed -n 's/.*version:\s*'\''\([0-9.]\+\)'\''.*/\1/p')"
+        ##          version:   '---            '---
 
     cd "$_basename"
     echo "$_basever.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
