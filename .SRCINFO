@@ -1,6 +1,6 @@
 pkgbase = linux-me176c
-	pkgver = 4.19.8
-	pkgrel = 2
+	pkgver = 4.19.9
+	pkgrel = 1
 	url = https://github.com/me176c-dev/me176c-archlinux
 	arch = x86_64
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = linux-me176c
 	makedepends = graphviz
 	makedepends = acpica
 	options = !strip
-	source = archlinux-linux::git+https://github.com/me176c-dev/me176c-kernel.git#tag=arch-4.19.8-2
+	source = archlinux-linux::git+https://github.com/me176c-dev/me176c-kernel.git#tag=arch-4.19.9-1
 	source = git+https://github.com/me176c-dev/me176c-acpi.git#commit=18a1fe0c450375c16e17429b429955e068f83945
 	source = config
 	source = 60-linux.hook
@@ -24,7 +24,7 @@ pkgbase = linux-me176c
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = f808fce9c88497fb7cabfffb44bc640a60b49fad3a27037008350c0d553bfc9c
+	sha256sums = d95fe61b230c35117d04cc6c8a13684d6b76666d47d275009e4fffb9b213aa04
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
