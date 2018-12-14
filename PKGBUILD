@@ -1,4 +1,4 @@
-# Maintainer: Stephen Zhang <zsrkmyn at gmail dot com>
+# Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
 pkgbase="python-pytorch-git"
 pkgname=("python-pytorch-git" "python2-pytorch-git")
