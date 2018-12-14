@@ -38,8 +38,10 @@ pkgbase = slimjet-browser
 	options = !strip
 	source = slimjet-browser-21.0.4.0-x86_64.deb::https://www.slimjet.com/release/archive/21.0.4.0/slimjet_amd64.deb
 	source = LICENSE
+	source = slimjet-browser
 	sha256sums = 6aaffba334238429f92b5fe29d10c7799ffdb34d1ac94d2fa9e73981d8ac567b
 	sha256sums = fc0297ac9ec689eeb610024c9f59d5f47661d5e1fdf18bd3c5e456068c47d15e
+	sha256sums = 8ab05210886cda05d2d9c0463e093bd1419ad8dde9dc3f4892149d6cda23bee0
 
 pkgname = slimjet-browser
 
