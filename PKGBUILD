@@ -16,7 +16,6 @@ optdepends=('ffmpeg: for transcoding downloaded content'
 provides=('mps-youtube')
 conflicts=('mps-youtube')
 
-install=mps-youtube-hd-git.install
 source=('git+https://github.com/th0rn/mps-youtube.git')
 
 md5sums=('SKIP')
