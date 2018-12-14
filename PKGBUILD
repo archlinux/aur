@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-company-mode
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="Modular in-buffer completion framework for Emacs"
 url="http://company-mode.github.io"
@@ -12,7 +12,7 @@ depends=('emacs')
 makedepends=('git')
 provides=('emacs-company-mode')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/company-mode/company-mode/archive/${pkgver}.tar.gz")
-sha256sums=('89ade7ba4556921df00114ed30cfea34965b9a24aba29a8f17d0034d883c2282')
+sha256sums=('fc9a6fb2328ce5017386ff9888ee11ba6d1bcaadf6e13b07e47c355edb612d96')
 
 build() {
   cd company-mode-${pkgver}

@@ -1,6 +1,6 @@
 pkgbase = emacs-company-mode
 	pkgdesc = Modular in-buffer completion framework for Emacs
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = http://company-mode.github.io
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = emacs-company-mode
 	makedepends = git
 	depends = emacs
 	provides = emacs-company-mode
-	source = emacs-company-mode-0.9.8.tar.gz::https://github.com/company-mode/company-mode/archive/0.9.8.tar.gz
-	sha256sums = 89ade7ba4556921df00114ed30cfea34965b9a24aba29a8f17d0034d883c2282
+	source = emacs-company-mode-0.9.9.tar.gz::https://github.com/company-mode/company-mode/archive/0.9.9.tar.gz
+	sha256sums = fc9a6fb2328ce5017386ff9888ee11ba6d1bcaadf6e13b07e47c355edb612d96
 
 pkgname = emacs-company-mode
 
