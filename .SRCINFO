@@ -1,0 +1,16 @@
+pkgbase = simulavr-git
+	pkgdesc = simulavr is a remote utility tool. (copy, paste and open browser) over TCP.
+	pkgver = r890.a12e85f
+	pkgrel = 1
+	url = https://github.com/Traumflug/simulavr
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = go
+	source = simulavr::git+https://github.com/Traumflug/simulavr.git
+	source = gtest-flags.patch
+	sha256sums = SKIP
+	sha256sums = a016162419acd85baff083d5380394da0add0b5b0297cc37ba3bddbb641b148c
+
+pkgname = simulavr-git
+
