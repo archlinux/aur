@@ -1,15 +1,15 @@
 pkgbase = makedepf90
-	pkgdesc = Automatic creation of Makefile dependency lists for Fortran source code
-	pkgver = 2.8.8
-	pkgrel = 3
-	url = http://personal.inet.fi/private/erikedelmann/makedepf90/
+	pkgdesc = Fortran dependency generation tool
+	pkgver = 2.8.9
+	pkgrel = 1
+	url = https://github.com/amckinstry/makedepf90
 	arch = i686
 	arch = x86_64
-	license = GPL
-	makedepends = flex
-	makedepends = bison
-	source = http://personal.inet.fi/private/erikedelmann/makedepf90/makedepf90-2.8.8.tar.gz
-	sha256sums = 283bf10e57d9d3571a77a1f9422def2ee435245d6d4c472d32d78f1462cb6d85
+	license = GPL2
+	makedepends = git
+	provides = makedepf90
+	source = git+https://github.com/amckinstry/makedepf90.git#branch=upstream
+	md5sums = SKIP
 
 pkgname = makedepf90
 

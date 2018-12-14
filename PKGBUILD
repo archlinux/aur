@@ -1,29 +1,28 @@
-# Maintainer: eolianoe <eolianoe At GMAIL DoT com>
+# Maintainer: mrsyellow <mrsyellow at protonmail dot com>
 pkgname=makedepf90
-pkgver=2.8.8
-pkgrel=3
-pkgdesc='Automatic creation of Makefile dependency lists for Fortran source code'
+pkgver=2.8.9
+pkgrel=1
+pkgdesc="Fortran dependency generation tool"
 arch=('i686' 'x86_64')
-url="http://personal.inet.fi/private/erikedelmann/makedepf90/"
-license=('GPL')
-makedepends=('flex' 'bison')
-source=("http://personal.inet.fi/private/erikedelmann/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('283bf10e57d9d3571a77a1f9422def2ee435245d6d4c472d32d78f1462cb6d85')
-#source=("http://ftp.debian.org/debian/pool/main/m/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz")
-#sha256sums=('a5118aea198219f59bc04eab0a2099341cecac76a7029c2aef72141645e7596a')
+url="https://github.com/amckinstry/makedepf90"
+license=('GPL2')
+makedepends=('git')
+provides=("makedepf90")
+source=(git+https://github.com/amckinstry/makedepf90.git#branch=upstream)
+md5sums=('SKIP')				
 
-build(){
-  cd ${srcdir}/${pkgname}-${pkgver}
+pkgver() {
+	cd "$srcdir/makedepf90"
+	git describe --tags | sed 's/^upstream\///'
+}
 
-  ./configure --prefix=${pkgdir}/usr
-
-  make
+build() {
+	cd "$srcdir/makedepf90"
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-
-  make install
+	cd "$srcdir/makedepf90"
+	make DESTDIR="$pkgdir/" install
 }
-
-# vim:set ts=2 sw=2 et:
