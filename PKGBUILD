@@ -1,7 +1,7 @@
 # Maintainer: Michael Herzberg <{firstname}@{firstinitial}{lastname}.de>
 
 pkgname=moonlight-qt
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='GameStream client for PCs (Windows, Mac, and Linux)'
 arch=('x86_64')
