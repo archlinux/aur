@@ -1,0 +1,29 @@
+pkgbase = python-rawkit-git
+	pkgdesc = ctypes based libraw bindings
+	pkgver = v0.6.0_26_g93c3e9b6ad0b
+	pkgrel = 1
+	url = https://rawkit.readthedocs.io/
+	arch = any
+	license = MIT
+	checkdepends = python-mock
+	checkdepends = python2-mock
+	checkdepends = python-pytest
+	checkdepends = python2-pytest
+	checkdepends = python-numpy
+	checkdepends = python2-numpy
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = libraw
+	provides = python-rawkit
+	conflicts = python-rawkit
+	source = git+https://github.com/photoshell/rawkit.git
+	sha256sums = SKIP
+
+pkgname = python-rawkit-git
+	depends = libraw
+	depends = python
+
+pkgname = python2-rawkit-git
+	depends = libraw
+	depends = python2
+
