@@ -3,12 +3,14 @@
 pkgname=system76-io-dkms-git
 _pkgname=system76-io-dkms
 pkgver=19
-pkgrel=1
+pkgrel=2
 pkgdesc="This DKMS driver provides airplane mode, keyboard backlight, and fan support for System76 laptops"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-io-dkms"
 license=('GPL3')
 depends=('dkms')
+conflicts=(system76-io-dkms)
+provides=(system76-io-dkms)
 source=("${_pkgname}::git+https://github.com/pop-os/${_pkgname}.git"
         'system76-io.conf')
 sha256sums=('SKIP'
@@ -16,6 +18,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
+
   git rev-list --count HEAD
 }
 
