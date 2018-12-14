@@ -1,44 +1,43 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=vg-git
-pkgver=v0.8.0.r12.g1582cb4
+_pkgname=vg
+pkgver=v0.8.0.r14.gcdcc9a2
 pkgrel=1
 pkgdesc='Easy and powerful workspace based development for go'
 arch=(x86_64)
 url='https://github.com/GetStream/vg'
 license=(MIT)
 makedepends=(go)
-source=("${pkgname}::git+https://github.com/GetStream/vg.git")
+source=("${_pkgname}::git+https://github.com/GetStream/vg.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
 
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
+
+	sed -i -re '/ifndef VIRTUALGO/,/endif/d' Makefile
 
 	install -m755 -d "${srcdir}/go/src/github.com/GetStream/"
-	cp -a "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/GetStream/vg"
-
-	sed -i -re '/ifndef VIRTUALGO/,/endif/d' \
-		"${srcdir}/go/src/github.com/GetStream/vg/Makefile"
+	ln -sf "${srcdir}/${_pkgname}" "${srcdir}/go/src/github.com/GetStream/${_pkgname}"
 }
 
 build() {
-	cd "${srcdir}/go/src/github.com/GetStream/vg"
+	cd "${srcdir}/go/src/github.com/GetStream/${_pkgname}"
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" go get -v
 
-	go get -v
-	go build -o vg \
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" go build -o vg \
 		-ldflags="-w -s -X github.com/GetStream/vg/cmd.Version=${pkgver}"
 }
 
 package() {
-	cd "${srcdir}/go/src/github.com/GetStream/vg"
+	cd "${srcdir}/go/src/github.com/GetStream/${_pkgname}"
 
 	install -m755 -D vg "${pkgdir}"/usr/bin/vg
 }

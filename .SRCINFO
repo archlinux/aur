@@ -1,12 +1,12 @@
 pkgbase = vg-git
 	pkgdesc = Easy and powerful workspace based development for go
-	pkgver = v0.8.0.r12.g1582cb4
+	pkgver = v0.8.0.r14.gcdcc9a2
 	pkgrel = 1
 	url = https://github.com/GetStream/vg
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = vg-git::git+https://github.com/GetStream/vg.git
+	source = vg::git+https://github.com/GetStream/vg.git
 	sha256sums = SKIP
 
 pkgname = vg-git
