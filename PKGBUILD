@@ -23,14 +23,15 @@ sha1sums=('SKIP')
 _builddir="build"
 
 pkgver() {
-    #_basev="$(meson introspect --projectinfo "$_builddir" | \
+    #_basever="$(meson introspect --projectinfo "$_builddir" | \
     #    sed 's/.*"version":\s*"\([0-9.]\+\)".*/\1/')"
 
     # This is a dirty hack for as long as I can't figure out how to get meson
     # introspect working. arch-meson needs to run first, but there's nowhere
     # good I can run it. CFLAGS etc aren't defined in prepare() or in this
     # function, and arch-meson relies on them to work properly.
-    _basever=5.0.90
+    _basever="$(cat "$_basename/meson.build" | \
+        sed -n 's/.*version:\s*'\''\([0-9.]\+\)'\''.*/\1/p')"
 
     cd "$_basename"
     echo "$_basever.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
