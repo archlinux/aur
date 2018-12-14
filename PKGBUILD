@@ -4,43 +4,43 @@
 # Maintainer: Ian Denhardt <ian@zenhack.net>
 
 pkgname=alot
-pkgver=0.7
-pkgrel=2
+pkgver=0.8
+pkgrel=1
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
 license=(GPL)
 depends=(notmuch
-         python2-gpgme
-         python2-magic
-         python2-configobj
-         python2-urwid
-         python2-urwidtrees
-         python2-twisted)
-makedepends=(python2-sphinx)
+         python-gpgme
+         python-magic
+         python-configobj
+         python-urwid
+         python-urwidtrees
+         python-twisted)
+makedepends=(python-sphinx)
 options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://github.com/pazz/$pkgname/archive/$pkgver.tar.gz)
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    # The archlinux package python2-magic's egg calls itself "file-magic",
+    # The archlinux package python-magic's egg calls itself "file-magic",
     # as opposed to the python-magic on pypi. The result is that the alot
     # executable can't find the module, so we patch setup.py to fix the
     # dependency:
     sed -i -e 's/python-magic/file-magic/' setup.py
 
-    python2 setup.py build
+    python setup.py build
 
     # The makefile is not actually concurrency-safe; the different calls to
     # sphinx will trample on each other if we try to parallelize the build.
     # So we pass --jobs=1.
-    make SPHINXBUILD=sphinx-build2 --jobs=1 -C docs man html
+    make --jobs=1 -C docs man html
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    python2 setup.py install --optimize=1 --root="$pkgdir"
+    python setup.py install --optimize=1 --root="$pkgdir"
     install -Dm644 extra/completion/alot-completion.zsh \
         "$pkgdir/usr/share/zsh/functions/_alot"
     install -dm755 "$pkgdir/usr/share/alot/themes/examples"
@@ -51,4 +51,4 @@ package() {
     install -Dm644 docs/build/man/alot.1 "$pkgdir/usr/share/man/man1/alot.1"
     install -Dm644 extra/alot.desktop "$pkgdir/usr/share/applications/alot.desktop"
 }
-sha256sums=('2d49a7d61241cfadc993a8456076605b2cfe264c51f5e3f18f337bad58f29a1c')
+sha256sums=('4ae269342f1ca61b88e550b763c53b859b8dff17645e5fe697bc2d1a7a173bb8')
