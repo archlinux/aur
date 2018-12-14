@@ -4,7 +4,7 @@
 
 pkgname=insync-nemo
 pkgver=1.3.12.36116
-pkgrel=2
+pkgrel=3
 pkgdesc="Nemo integration for insync"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
@@ -19,6 +19,6 @@ sha256sums=('e3b9ac6be0a2f0488aea05753c37b271763cc2f145ff860f5615a79bf2dc2113'
 package() {
   cd "${srcdir}"
   tar -zxf data.tar.gz
-  patch -Np1 -i ../python3.patch
+  patch -Np0 -i ./python3.patch
   cp -r usr "${pkgdir}"
 }
