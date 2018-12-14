@@ -2,7 +2,7 @@
 
 pkgname=python-mnemonic
 pkgver=0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of Bitcoin BIP-0039"
 arch=('any')
 depends=('python' 'python-pbkdf2')
