@@ -1,0 +1,5 @@
+#!/bin/bash
+ARGV=(${*})
+xhost + &>/dev/zero
+su - slim-root -c \
+"DISPLAY=:0 /usr/share/slimjet/flashpeak-slimjet ${ARGV[*]}" &
