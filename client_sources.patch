@@ -1,0 +1,22 @@
+--- icon_window.cpp	2018-10-23 23:55:36.000000000 +0200
++++ icon_window.cpp	2018-12-14 23:25:30.710693140 +0100
+@@ -374,7 +374,7 @@
+ 		size_t index = (has_highlight)? 1: 0;
+ 		if (flashing)
+ 		{
+-			if (abs(SDL_GetTicks() - last_flash_change) > 250)
++			if (abs((long int) SDL_GetTicks() - last_flash_change) > 250)
+ 			{
+ 				last_flash_change = SDL_GetTicks();
+ 				flashing--;
+
+--- item_lists.cpp	2018-10-23 23:55:38.000000000 +0200
++++ item_lists.cpp	2018-12-14 23:25:30.704026455 +0100
+@@ -788,6 +788,6 @@
+ 	{
+ 		if (!last_mod_time)
+ 			return;
+-		if (force || (last_mod_time && abs(last_mod_time - SDL_GetTicks()) > 5000))
++		if (force || (last_mod_time && abs((long int) SDL_GetTicks() - last_mod_time) > 5000))
+ 			save();
+ 	}
