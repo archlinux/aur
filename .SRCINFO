@@ -1,6 +1,6 @@
 pkgbase = bisq-git
 	pkgdesc = Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges
-	pkgver = 0.9.0.r1.g1e5cddd71
+	pkgver = 0.9.1.r1.g517429e8d
 	pkgrel = 1
 	url = https://bisq.network
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = bisq-git
 	makedepends = protobuf
 	depends = jdk10-openjdk
 	depends = java-openjfx
+	conflicts = bisq
+	conflicts = bisq-bin
 	source = bisq-git::git+https://github.com/bisq-network/bisq.git#branch=master
 	source = bisq.desktop
 	sha256sums = SKIP
