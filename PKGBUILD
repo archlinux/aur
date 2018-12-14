@@ -2,12 +2,12 @@
 
 pkgname=gnome-shell-extension-system76-power-git
 pkgver=47.0cc2661
-pkgrel=2
+pkgrel=3
 pkgdesc="Gnome shell extension for System76 power management"
 arch=('any')
 url="https://github.com/pop-os/gnome-shell-extension-system76-power"
 license=('MIT')
-depends=('gnome-shell' 'system76-power-git')
+depends=('gnome-shell' 'system76-power')
 makedepends=('git' 'make')
 source=("${pkgname}::git+https://github.com/pop-os/gnome-shell-extension-system76-power.git"
 		"update-metadata-json.patch")
