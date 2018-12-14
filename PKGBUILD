@@ -1,4 +1,4 @@
-# Maintainer: Stephen Zhang <zsrkmyn at gmail dot com>
+# Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
 pkgname=sphinxtrain
 pkgver=5prealpha
