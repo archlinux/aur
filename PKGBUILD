@@ -5,7 +5,7 @@ _pkgname='ardor'
 
 pkgbase="$_pkgname-system"
 pkgname=("$pkgbase")
-pkgver=2.1.2
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="The Ardor Reference Software Client -- Secure System Installation."
 url="https://www.ardorplatform.org"
@@ -15,7 +15,7 @@ source=("https://bitbucket.org/Jelurida/ardor/downloads/ardor-client-$pkgver.zip
         'ardor.desktop'
         'ardor.default'
         'ardor.service')
-sha256sums=('02e5e70d862e89df8fc5b8c49705efdacd30c9df53bfbc01a2007afbbae9a2b6'
+sha256sums=('4e6a3075141847252724e13a49d3e8110694a49a08fc22dfd986b53a39f3770d'
             'a6787a24aad510f3b4f8b6c724221a9518c34298425c9b93f9ac4ded94ba4544'
             '1fd2eb63c2778279f9e17cafa650399ed67bc8ba2428745bd56a01d41e949ff5'
             '9e9540a65c661f6ece0113726549df11735ee75b122b4751412cae79f9c4b362')
