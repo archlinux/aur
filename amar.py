@@ -50,20 +50,13 @@ try:
 except OSError:
     errorButtons()
 
-if etatamar == 1:
-    buttonactive.set_label('DESACTIVER')
-else:
-    buttonactive.set_label('ACTIVER')
+buttonactive.set_label('DESACTIVER' if etatamar == 1 else 'ACTIVER')
 
 configamar = "\n#Do not disable AMAR manually if you use the app\nInclude = /etc/pacman.d/amar.conf\n"
 
-def success1():
+def success():
     buttonactive.set_sensitive(True)
-    buttonactive.set_label('DESACTIVER')
-
-def success2():
-    buttonactive.set_sensitive(True)
-    buttonactive.set_label('ACTIVER')
+    buttonactive.set_label('DESACTIVER' if etatamar == 1 else 'ACTIVER')
 
 def pressActive():
     global etatamar
@@ -75,7 +68,7 @@ def pressActive():
                 os.system("pacman -Syy")
                 etatamar = 1
                 ecrire.close()
-                GLib.idle_add(success1)
+                GLib.idle_add(success)
         except OSError:
             GLib.idle_add(errorButtons)
     else:
@@ -91,7 +84,7 @@ def pressActive():
             etatamar = 0
             f.close()
             new_f.close()
-            GLib.idle_add(success2)
+            GLib.idle_add(success)
         except OSError:
             GLib.idle_add(errorButtons)
 

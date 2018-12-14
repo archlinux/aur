@@ -1,6 +1,6 @@
 pkgbase = amar-installer
 	pkgdesc = Install AMAR repository
-	pkgver = 1.9.11.fb
+	pkgver = 1.9.12.fb
 	pkgrel = 1
 	url = https://www.tuxnvape.fr/
 	install = amar.install
@@ -15,7 +15,7 @@ pkgbase = amar-installer
 	source = amar.glade
 	source = amarban.png
 	source = org.tnv.amar.policy
-	sha256sums = 7183315ded7ab7af4923ac42e8777268692d308590bd18a73bf72ee98989fc0b
+	sha256sums = fe40dcd2375a8dafba8c37a28afbd74a71f440f0370809f9c881f576627a11f5
 	sha256sums = 874700067f446dff59f8e4e6c3b14519ca8afdf31742af629343c80002c71376
 	sha256sums = c5dbfca766050bdbfd36866c1f479ca8039aae80fa8b2847b376c05087d1364c
 	sha256sums = d8fafeb25a8b2368803565ed62ba147aa38adfe57089fe44125f5e07eea3d21b
