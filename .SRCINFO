@@ -1,6 +1,6 @@
 pkgbase = cri-o
 	pkgdesc = Open Container Initiative-based implementation of Kubernetes Container Runtime Interface
-	pkgver = 1.12.3
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/kubernetes-incubator/cri-o
 	arch = x86_64

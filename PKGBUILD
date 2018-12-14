@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cri-o
-pkgver=1.12.3
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
 arch=(x86_64)
@@ -22,6 +22,8 @@ prepare() {
 
 build() {
 	cd "$srcdir/go/src/github.com/kubernetes-incubator/cri-o"
+	sed -i 's/$(GO) build -i/$(GO) build/' Makefile
+	sed -i 's#../bin/conmon: config.h $(obj) | ../bin#../bin/conmon: $(obj) | config.h ../bin#' conmon/Makefile
 
 	export GOPATH="$srcdir/go"
 	make -j1 binaries docs
