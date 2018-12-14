@@ -1,13 +1,15 @@
 pkgbase = pacman-backup-hook
 	pkgdesc = A pacman hook that will save the list of your packages to /etc/pkglist.txt on every install and removal
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.voluntaryism.club/dtluna/pacman-backup-hook
 	arch = any
 	license = unknown
 	depends = pacman>=5.1
-	source = pacman-backup-hook-1.0.0.tar.gz::https://git.voluntaryism.club/dtluna/pacman-backup-hook/archive/1.0.0.tar.gz
-	sha256sums = 532fcbc1fc4dbb93b8b7e729d53bc5e37c7067eb9f491c31cdafd54b2fa7d56e
+	source = pacman-backup.hook
+	source = LICENSE
+	sha256sums = e05db077598b8cd441dfbb878a3f8886a07c69068bf481a06574c50c250a6055
+	sha256sums = faf2caea6f44f13dc7d138c1e6106bce82b0c416260dc4a8538f7b2d7f6a033c
 
 pkgname = pacman-backup-hook
 
