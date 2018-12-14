@@ -1,7 +1,7 @@
 # Maintainer: Joakim Reinert <mail+aur@jreinert.com>
 
 pkgname=fogtrack
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc='A cli tool for all you fogbugz tracking needs'
 arch=(x86_64 i686)
@@ -12,7 +12,7 @@ optdepends=('rofi: for task switching dialog')
 makedepends=(crystal shards)
 
 source=("https://gitlab.com/jreinert/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha512sums=('29d93b2859e1080d3778b07fc3acbb06e455556f5ce802fe4c43b26f9f4d41951583507c4c636b9a01e8585dc8384fe1d64ebbd6e102710626331e590e8cb6c0')
+sha512sums=('7bbdb88186550a2dce5a106f3f00658989fb483b97b65bbcf2214adb483ee4c28580ac6250bf7b7a6f0da48656aa6c7182bec2ef2e50d7cf07cb5fc66cb2b346')
 provides=('fogtrack')
 conflicts=('fogtrack-git')
 
