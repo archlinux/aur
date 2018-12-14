@@ -1,0 +1,15 @@
+pkgbase = ruby-filesize
+	pkgdesc = filesize is a small class for handling filesizes with both the SI and binary prefixes, allowing conversion from any size to any other size.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dominikh/filesize
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = filesize-0.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/filesize-0.2.0.gem
+	sha1sums = 2a88f34ce629bdcb00113a6cf4128a61e10d0814
+
+pkgname = ruby-filesize
+
