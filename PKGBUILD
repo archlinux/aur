@@ -1,18 +1,18 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 # based on lxd-git package https://aur.archlinux.org/packages/lxd-git/
 # which in turn is based based on old version of this very package
-# Contrubutor: Asterios Dimitriou <asterios@pci.gr>
+# Contributor: Asterios Dimitriou <asterios@pci.gr>
 # Contributor: Benjamin Asbach <archlinux-aur.lxd@impl.it>
 
 pkgname=lxd
 _pkgname=lxd
 pkgver=3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC."
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
 license=('APACHE')
-conflicts=('lxd' 'lxd-lts')
+conflicts=('lxd-git' 'lxd-lts')
 provides=('lxd')
 depends=('lxc' 'squashfs-tools' 'dnsmasq' 'libuv')
 makedepends=('go' 'git' 'tcl' 'patchelf')
