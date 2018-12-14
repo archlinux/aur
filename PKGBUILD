@@ -3,8 +3,8 @@
 
 pkgname='ivideon-server-headless'
 pkgver='3.7.0'
-pkgrel='2772'
-_rel='8a05220b6b80'
+pkgrel='2779'
+_rel='d2b933bbad5f'
 pkgdesc='Ivideon-server daemon'
 arch=('x86_64')
 url='https://ivideon.com'
@@ -12,16 +12,16 @@ license=('freeware')
 depends=('portaudio' 'ffmpeg' 'gst-plugins-good' 'gst-plugins-base')
 makedepends=('libarchive')
 conflicts=('ivideon-video-server-nogui')
-source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgname}_${pkgver}-faces-${pkgrel}~${_rel}_amd64.deb"
-	"https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-server-dahua-bin-module/ivideon-server-dahua-bin-module_${pkgver}-faces-${pkgrel}~${_rel}_amd64.deb"
+source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgname}_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
+	"https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-server-dahua-bin-module/ivideon-server-dahua-bin-module_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
 	"https://packages.ivideon.com/ubuntu/pool/non-free/libd/libdahuasdk/libdahuasdk_1.0.2_amd64.deb"
 	"videoserverd.service"
 	"videoserverd.conf"
 	"sysusers.conf"
 	"videoservertmp.conf")
 noextract=("${source[@]%%::*}")
-sha256sums=('dc9fa8509973520b525836de87808a45d2ee0c60ed01decc56fe81b23cec6c89'
-            '010659dd48e3c63e6fc25aa65089823e500bb38cd75a5796a117e1037f507a60'
+sha256sums=('e796cbc025922067047ba64990dd33a163382332509af5885a8ba62d698f2bba'
+            'ac21019f89e659135811e5b6e0002862f52834cb09562d446b72370cf89d3ef2'
             '7da74ca97c53669f95efea718bbf05ddd7b0d5b0b97dc93d2777ed8c64388254'
             '48cd5beedc9992a26448ee06c44460c8e9f3014154adcad0eee39aa985851071'
             'f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012'
@@ -31,14 +31,14 @@ backup=("etc/videoserverd.conf")
 
 prepare() {
   cd "${srcdir}"
-  bsdtar xf "${srcdir}/${pkgname}_${pkgver}-faces-${pkgrel}~${_rel}_amd64.deb"
-  bsdtar xf "data.tar.xz"
+  bsdtar xf "${srcdir}/${pkgname}_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
+  bsdtar xf "data.tar.gz"
   sed -i 's|$(dirname "$(readlink /etc/init.d/videoserver)")|/opt/ivideon/ivideon-server|g' "opt/ivideon/ivideon-server/serverctl.sh"
 
   mkdir "${srcdir}/ivideon-server-dahua-bin-module"
   cd "${srcdir}/ivideon-server-dahua-bin-module"
-  bsdtar xf "${srcdir}/ivideon-server-dahua-bin-module_${pkgver}-faces-${pkgrel}~${_rel}_amd64.deb"
-  bsdtar xf "data.tar.xz"
+  bsdtar xf "${srcdir}/ivideon-server-dahua-bin-module_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
+  bsdtar xf "data.tar.gz"
 
   mkdir "${srcdir}/libdahuasdk"
   cd "${srcdir}/libdahuasdk"
