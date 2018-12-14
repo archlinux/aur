@@ -1,53 +1,49 @@
-# Maintainer: Joel Teichroeb <joel@teichroeb.net>
+# Maintainer: Eric Toombs
+# Contributor: Joel Teichroeb <joel@teichroeb.net>
 # Contributor: Sébastien Luttringer
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
-pkgname=weston-git
-pkgver=2.0.90.5742.11ae2a30
-pkgrel=1
+_basename=weston
+pkgname="$_basename-git"
+pkgver=5.0.90.6411.bc315aa2
+pkgrel=2
 pkgdesc='Reference implementation of a Wayland compositor'
-arch=('i686' 'x86_64')
-url='http://wayland.freedesktop.org'
+arch=('x86_64')
+url='https://wayland.freedesktop.org/'
 license=('MIT')
-makedepends=('git')
-depends=('libxkbcommon' 'wayland-git' 'wayland-protocols-git' 'mesa'
-         'poppler-glib' 'mtdev' 'libva' 'libinput' 'libxcursor' 'glu' 'cairo'
-         'pixman' 'libunwind' 'pango' 'colord' 'libwebp')
-conflicts=('weston')
-provides=('weston')
+depends=('wayland-git' 'libxkbcommon' 'libinput' 'libjpeg-turbo' 'libwebp'
+         'libegl' 'libgles' 'pango' 'libva' 'libxcursor' 'colord')
+makedepends=('meson' 'wayland-protocols-git' 'git')
+conflicts=("$_basename")
+provides=("$_basename")
 
-source=('git://anongit.freedesktop.org/wayland/weston')
+source=("git://anongit.freedesktop.org/wayland/$_basename")
 sha1sums=('SKIP')
 
+_builddir="build"
+
 pkgver() {
-    cd weston
+    #_basev="$(meson introspect --projectinfo "$_builddir" | \
+    #    sed 's/.*"version":\s*"\([0-9.]\+\)".*/\1/')"
 
-    for i in major_version minor_version micro_version; do
-        local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
-    done
+    # This is a dirty hack for as long as I can't figure out how to get meson
+    # introspect working. arch-meson needs to run first, but there's nowhere
+    # good I can run it. CFLAGS etc aren't defined in prepare() or in this
+    # function, and arch-meson relies on them to work properly.
+    _basever=5.0.90
 
-    echo $_major_version.$_minor_version.$_micro_version.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare() {
-    mkdir -p weston/build
+    cd "$_basename"
+    echo "$_basever.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd weston/build
-    ../autogen.sh --prefix=/usr \
-        --libexecdir=/usr/lib/weston \
-        --enable-demo-clients-install \
-        --with-cairo=image
-    make
+    arch-meson "$_builddir" "$_basename" -Dbackend-drm-screencast-vaapi=false \
+        -Dscreenshare=false -Dbackend-rdp=false -Dshell-ivi=false \
+        -Dsimple-dmabuf-drm= -Dremoting=false
+    ninja -C "$_builddir"
 }
 
 package() {
-    cd weston/build
-    make DESTDIR="${pkgdir}" install
-    install -Dm644 "config.h" "$pkgdir/usr/include/weston/config.h"
-
-    cd ..
-    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-    install -Dm644 "shared/zalloc.h" "$pkgdir/usr/include/weston/zalloc.h"
+    DESTDIR="$pkgdir" ninja -C "$_builddir" install
+    install -Dm644 "$_basename/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
