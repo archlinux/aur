@@ -1,8 +1,8 @@
 #!/usr/bin/python
-#Created by Baoréla alias..... SOON
-#Old parts of code Fredo, Rhylx, Francky, hRF, Pepito
+# Created by Baba Orhum
+# NO MORE THIRD PARTS OF CODE SPECIAL THANKS FOR MORAL SUPPORT OF TUXNVAPE
+# AND MY DEVEL TEACHER WASCAR
 
-import sys
 import os
 import gi
 from threading import Thread
@@ -21,7 +21,6 @@ class Handler:
         thread.daemon = True
         thread.start()
 
-
 amarpath = "/usr/share/amar/amar.glade"
 builder = Gtk.Builder()
 builder.add_from_file(amarpath)
@@ -32,6 +31,14 @@ os.system("xrdb -load /dev/null")
 pacmanfichier = "/etc/pacman.conf"
 buttonactive = builder.get_object("buttonActive")
 
+def errorButtons():
+    dialog = Gtk.MessageDialog(parent=Gtk.Window(), flags=0, message_type=Gtk.MessageType.ERROR,
+                               buttons=Gtk.ButtonsType.OK, text="FATAL")
+    dialog.format_secondary_text("Erreur dans l'execution vérifiez les permissions")
+    dialog.run()
+    dialog.destroy()
+    Gtk.main_quit()
+
 try:
     etatamar = 0
     searchfile = open(pacmanfichier, "r")
@@ -41,20 +48,14 @@ try:
     searchfile.close()
 
 except OSError:
-    print("pacman.conf non acessible, donnez le chemin vers votre fichier")
-    sys.exit(1)
+    errorButtons()
 
 if etatamar == 1:
     buttonactive.set_label('DESACTIVER')
 else:
     buttonactive.set_label('ACTIVER')
 
-
 configamar = "\n#Do not disable AMAR manually if you use the app\nInclude = /etc/pacman.d/amar.conf\n"
-
-def errorButtons():
-
-    print("bad")
 
 def success1():
     buttonactive.set_sensitive(True)
@@ -76,7 +77,7 @@ def pressActive():
                 ecrire.close()
                 GLib.idle_add(success1)
         except OSError:
-             errorButtons()
+            GLib.idle_add(errorButtons)
     else:
         try:
             with open((pacmanfichier), "r") as f:
@@ -92,12 +93,8 @@ def pressActive():
             new_f.close()
             GLib.idle_add(success2)
         except OSError:
-            errorButtons()
+            GLib.idle_add(errorButtons)
 
-
-
-print(etatamar)
 window = builder.get_object("mainWindow")
 window.show_all()
-
 Gtk.main()
