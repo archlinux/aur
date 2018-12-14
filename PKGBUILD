@@ -1,6 +1,6 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=aws-sdk-cpp-git
-pkgver=1.6.49.r0.g58ae61b268
+pkgver=1.7.19.r0.gc18f2daa64
 pkgrel=1
 epoch=
 pkgdesc="AWS SDK for C++"
@@ -34,8 +34,8 @@ build() {
 	cd ${pkgname}
 
     CMAKE_FLAGS="-Wno-dev \
-		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
+		-DCMAKE_INSTALL_INCLUDEDIR=/usr/include \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DENABLE_TESTING=OFF \
 		-DSTATIC_LINKING=1 \
