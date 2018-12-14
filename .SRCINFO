@@ -1,7 +1,7 @@
 pkgbase = moneyguru
 	pkgdesc = Personal finance management application
 	pkgver = 2.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.hardcoded.net/moneyguru/
 	arch = x86_64
 	license = GPL3
