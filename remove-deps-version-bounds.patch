@@ -17,7 +17,7 @@ diff -u -r a/setup.py b/setup.py
 -    # * https://github.com/pypa/pip/issues/988
 -    'idna<2.8',
 -
--    'acme>=0.27,<0.28',
+-    'acme>=0.29,<0.30',
 +    'acme',
      'cryptography',
      # formerly known as acme.jose:
