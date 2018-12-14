@@ -2,10 +2,10 @@
 pkgname=pyosmium
 _module='osmium'
 pkgver=2.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for libosmium, the data processing library for OSM data"
 url="https://osmcode.org/pyosmium"
-depends=('python' 'libosmium')
+depends=('python' 'libosmium' 'pybind11')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('x86_64')
@@ -18,7 +18,6 @@ build() {
 }
 
 package() {
-    depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
