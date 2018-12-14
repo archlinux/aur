@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-fbalpha-git
-pkgver=600.1846fbd
+pkgver=6560.98708751c
 pkgrel=1
 pkgdesc="libretro implementation of Final Burn Alpha (v0.2.97.42) (Arcade)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -22,13 +22,16 @@ pkgver() {
 }
 
 build() {
-  RPI=`grep -m1 'Revision' /proc/cpuinfo | awk '{print $3}'`
-  case "${RPI}" in
-    a[0-2]1041)	PLATFORM="platform=rpi2" ;;
-    a[0-2]2082)	PLATFORM="platform=rpi3" ;;
-  esac
+#  obosolete?
+#  RPI=`grep -m1 'Revision' /proc/cpuinfo | awk '{print $3}'`
+#  case "${RPI}" in
+#    a[0-2]1041)	PLATFORM="platform=rpi2" ;;
+#    a[0-2]2082)	PLATFORM="platform=rpi3" ;;
+#  esac
+#  cd "${_gitname}"
+#  make -f makefile.libretro ${PLATFORM}
   cd "${_gitname}"
-  make -f makefile.libretro ${PLATFORM}
+  make -f makefile.libretro
 }
 
 package() {
