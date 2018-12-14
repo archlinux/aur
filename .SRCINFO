@@ -1,6 +1,6 @@
 pkgbase = shyaml
 	pkgdesc = YAML for the command line
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/0k/shyaml
 	arch = x86_64
