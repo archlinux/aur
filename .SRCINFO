@@ -1,0 +1,22 @@
+pkgbase = whatsapp-nativefier
+	pkgdesc = WhatsApp desktop built with nativefier (electron)
+	pkgver = 0.3.1649
+	pkgrel = 1
+	url = https://web.whatsapp.com
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = whatsapp-nativefier.png
+	source = whatsapp-nativefier.desktop
+	source = whatsapp-nativefier-inject.js
+	sha256sums = 3899581abcfed9b40b7208bbbca8bdbfe3ae9655980dbf55f04dec9cb3309f27
+	sha256sums = a4ea20639ea570d2f9ec6040b8873136fa507e0aa2341fd98aad25aa6bb66e2e
+	sha256sums = 043bd3f16d42464fab92d9ecd9ca4312f9a2bc07ca4da106df73ae0f227fa67f
+
+pkgname = whatsapp-nativefier
+
