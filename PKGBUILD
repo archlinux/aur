@@ -1,37 +1,39 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=gomplate-git
-pkgver=r641.9f5a39fb
+_pkgname=gomplate
+pkgver=r669.2d77de23
 pkgrel=1
 pkgdesc='A flexible commandline tool for template rendering.'
 arch=(i686 x86_64)
 url='https://gomplate.hairyhenderson.ca/'
 license=(BSD)
 makedepends=(go)
-source=("${pkgname}::git+https://github.com/hairyhenderson/gomplate.git")
+source=("${_pkgname}::git+https://github.com/hairyhenderson/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
 
 	install -m755 -d "${srcdir}/go/src/github.com/hairyhenderson/"
-	cp -a "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/hairyhenderson/gomplate"
+	#cp -a "${srcdir}/${_pkgname}" "${srcdir}/go/src/github.com/hairyhenderson/gomplate"
+	ln -sf "${srcdir}/${_pkgname}" "${srcdir}/go/src/github.com/hairyhenderson/${_pkgname}"
 }
 
 build() {
-	cd "${srcdir}/go/src/github.com/hairyhenderson/gomplate"
+	cd "${srcdir}/go/src/github.com/hairyhenderson/${_pkgname}"
 
 	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" make
 }
 
 package() {
-	cd "${srcdir}/go/src/github.com/hairyhenderson/gomplate"
+	cd "${srcdir}/go/src/github.com/hairyhenderson/${_pkgname}"
 
 	install -m755 -D bin/gomplate "${pkgdir}"/usr/bin/gomplate
 }
