@@ -1,23 +1,23 @@
-# Maintainer: yuhr <sdn.pate(at)gmail.com>
+# Maintainer: Syu Takayama <syu.takayama(at)gmail.com>
+# Contributor: yuhr <sdn.pate(at)gmail.com>
 
 pkgname=ttf-cica
-pkgver=1.0.2
+pkgver=4.1.1
 pkgrel=1
-pkgdesc="Composite font with Ubuntu Mono and Rounded Mgen+."
+pkgdesc="A Japanese monospace font for programming"
 url="https://github.com/miiton/Cica"
 license=('custom')
 arch=('any')
 depends=('fontconfig' 'xorg-font-utils')
-install=$pkgname.install
-source=(Cica.zip::https://github.com/qothr/cabinet/blob/master/Cica.zip?raw=true)
-md5sums=('5b0daba6aea3c54ca09a026e75a65ac7')
+source=(https://github.com/miiton/Cica/releases/download/v4.1.1/Cica-v4.1.1.zip)
+md5sums=('3244058131a3c9a4f0055bf989d64a2b')
 
 package() {
-  cd ${srcdir}/Cica
+  cd ${srcdir}
   
-  install -dm755 "${pkgdir}"/usr/share/fonts/TTF
-  install -m644 *.ttf "${pkgdir}"/usr/share/fonts/TTF/
+  install -dm755 "${pkgdir}/usr/share/fonts/TTF"
+  install -m644 *.ttf "${pkgdir}/usr/share/fonts/TTF/"
 
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 *.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -m644 *.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
