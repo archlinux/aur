@@ -1,7 +1,7 @@
 pkgbase = wmmail
 	pkgdesc = A WindowMaker dock applet for email reporting.
 	pkgver = 0.64
-	pkgrel = 9
+	pkgrel = 10
 	url = http://web.archive.org/web/20121102092600/http://dockapps.windowmaker.org/file.php/id/70
 	arch = i686
 	arch = x86_64

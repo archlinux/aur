@@ -4,7 +4,7 @@ pkgname=wmmail
 _appname=WMMail
 _realname=${_appname}.app
 pkgver=0.64
-pkgrel=9
+pkgrel=10
 pkgdesc="A WindowMaker dock applet for email reporting."
 arch=('i686' 'x86_64')
 #url="http://dockapps.windowmaker.org/file.php/id/93"
@@ -24,8 +24,8 @@ md5sums=('fc596db9f2f6b52eec3a303178106c8e'
 prepare() {
   cd ${_realname}-${pkgver}
   patch -Np2 -b -z .orig -i "${srcdir}/${pkgname}.patch"
-  cp /usr/share/automake-1.15/config.sub .
-  cp /usr/share/automake-1.15/config.guess .
+  cp /usr/share/automake-1.16/config.sub .
+  cp /usr/share/automake-1.16/config.guess .
   autoreconf -fiv
 }
 
