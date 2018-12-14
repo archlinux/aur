@@ -1,0 +1,15 @@
+pkgbase = imlib2-heic
+	pkgdesc = HEIC/HEIF decoder for imlib2
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vi/imlib2-heic
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = imlib2
+	depends = libheif
+	source = git+https://github.com/vi/imlib2-heic.git#commit=d500fad6cc2411e41daaf305b77428bf2aa6c681?signed
+	validpgpkeys = 331079CCE5FF6E6C6F2B3019C097221D6E03DF68
+	sha256sums = SKIP
+
+pkgname = imlib2-heic
