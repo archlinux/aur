@@ -1,8 +1,8 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 
 pkgname=paradox-launcher
-pkgver=1.0_beta_24
-pkgrel=1
+pkgver=1.0
+pkgrel=2
 pkgdesc="Paradox Interactive Game Launcher"
 arch=('x86_64')
 url="https://play.paradoxplaza.com/"
