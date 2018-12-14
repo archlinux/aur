@@ -3,17 +3,17 @@
 _pkgname=folder-color
 pkgname=${_pkgname}-bzr
 pkgver=0.0.86.r281
-pkgrel=2
+pkgrel=3
 pkgdesc="Folder color switcher extension for nautilus, caja, and nemo"
-arch=(any)
+arch=('any')
 url="http://foldercolor.tuxfamily.org/"
-license=(GPL3)
+license=('GPL3')
 makedepends=('bzr' python{,2}-distutils-extra python{,2}-setuptools)
-optdepends=('python-nautilus: Nautilus extension'
-            'nemo-python:      Nemo extension'
-            'python2-caja:     Caja extension')
+optdepends=('python-nautilus:    Nautilus extension'
+            'nemo-python>=3.9.0: Nemo extension'
+            'python2-caja:       Caja extension')
 conflicts=('folder-color-nautilus-bzr')
-source=($_pkgname::bzr+http://bazaar.launchpad.net/~costales/folder-color/trunk)
+source=("${_pkgname}"::bzr+http://bazaar.launchpad.net/~costales/folder-color/trunk)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -28,8 +28,8 @@ prepare() {
 		pushd "${_pkgname}-${_fm}"/install_scripts
 		./${_fm}.sh
 		case "${_fm}" in 
-			#nemo-python ported to python3 in 3.9.0
-			nautilus) #|nemo
+			# patch nemo and nautilus extensions for python3
+			nautilus|nemo)
 				sed -i 's:urllib.unquote:urllib.parse.unquote:g' ../${_fm}-extension/folder-color.py ;;
 		esac
 		popd
@@ -37,13 +37,13 @@ prepare() {
 }
 
 package() {
-	for _fm in nautilus common ; do #nemo
+	for _fm in nautilus nemo common ; do
 		pushd "${_pkgname}-${_fm}/"
 		python ./setup.py install --root="$pkgdir"
 		popd
 	done
 
-	for _fm in nemo caja common ; do
+	for _fm in caja common ; do
 		pushd "${_pkgname}-${_fm}/"
 		python2 ./setup.py install --root="$pkgdir"
 		popd
