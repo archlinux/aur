@@ -1,0 +1,22 @@
+pkgbase = mps-youtube-hd-git
+	pkgdesc = Terminal based YouTube jukebox, fork with HD video playback
+	pkgver = 0.2.8.r91.g8b09b3d
+	pkgrel = 1
+	url = https://github.com/th0rn/mps-youtube'
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-setuptools
+	depends = python-pafy-git
+	depends = mpv
+	optdepends = ffmpeg: for transcoding downloaded content
+	optdepends = python-pyperclip: for copying content to the clipboard
+	optdepends = python-gobject: MPRIS2 support
+	optdepends = python-dbus: MPRIS2 support
+	provides = mps-youtube
+	conflicts = mps-youtube
+	source = git+https://github.com/th0rne/mps-youtube.git
+	md5sums = SKIP
+
+pkgname = mps-youtube-hd-git
+
