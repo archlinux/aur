@@ -1,7 +1,7 @@
 pkgbase = compute-runtime-bin
 	pkgdesc = Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond (binary version)
-	pkgver = 18.48.11934
-	pkgrel = 3
+	pkgver = 18.49.11968
+	pkgrel = 1
 	url = https://github.com/intel/compute-runtime
 	install = compute-runtime-bin.install
 	arch = x86_64
@@ -17,15 +17,15 @@ pkgbase = compute-runtime-bin
 	provides = compute-runtime
 	conflicts = beignet
 	conflicts = compute-runtime
-	noextract = https://github.com/intel/compute-runtime/releases/download/18.48.11934/intel-igc-core_18.48.1124_amd64.deb
-	noextract = https://github.com/intel/compute-runtime/releases/download/18.48.11934/intel-igc-opencl_18.48.1124_amd64.deb
-	noextract = https://github.com/intel/compute-runtime/releases/download/18.48.11934/intel-opencl_18.48.11934_amd64.deb
-	source = https://github.com/intel/compute-runtime/releases/download/18.48.11934/intel-igc-core_18.48.1124_amd64.deb
-	source = https://github.com/intel/compute-runtime/releases/download/18.48.11934/intel-igc-opencl_18.48.1124_amd64.deb
-	source = https://github.com/intel/compute-runtime/releases/download/18.48.11934/intel-opencl_18.48.11934_amd64.deb
+	noextract = https://github.com/intel/compute-runtime/releases/download/18.49.11968/intel-igc-core_18.48.1124_amd64.deb
+	noextract = https://github.com/intel/compute-runtime/releases/download/18.49.11968/intel-igc-opencl_18.48.1124_amd64.deb
+	noextract = https://github.com/intel/compute-runtime/releases/download/18.49.11968/intel-opencl_18.49.11968_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/18.49.11968/intel-igc-core_18.48.1124_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/18.49.11968/intel-igc-opencl_18.48.1124_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/18.49.11968/intel-opencl_18.49.11968_amd64.deb
 	sha256sums = f0dd87998a290a713295e9b3498fc49545e7e4c15710ed1d11055e160c1bff17
 	sha256sums = 7aaf3560d86a8c6be7e7dbc696a16cd030ccc8aea5fda07bcb86d2dbe3590de2
-	sha256sums = f0e59852514be01c6a26252fd897e84507164bb6098e27817701312f4ae65dfe
+	sha256sums = e244a521c9949ae78f232b70604678941dbbf528fc58144b0d9d7d2b5dc2fb8e
 
 pkgname = compute-runtime-bin
 
