@@ -1,0 +1,7 @@
+pkg/
+prometheus-xmpp-webhook-git/
+src/
+*.tar
+*.tar.gz
+*.tar.xz
+*.zip

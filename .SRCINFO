@@ -1,0 +1,28 @@
+pkgbase = prometheus-xmpp-webhook-git
+	pkgdesc = XMPP-Webhook built for Prometheus/Grafana Alerts
+	pkgver = 0.2_5_g8346a2202805
+	pkgrel = 1
+	url = https://github.com/opthomas-prime/xmpp-webhook
+	install = prometheus-xmpp-webhook.install
+	arch = x86_64
+	license = mit
+	depends = glibc
+	optdepends = grafana: use the webhook with Grafana alerts
+	optdepends = alertmanager: use the webhook with Prometheus
+	optdepends = prometheus: use the webhook with Prometheus
+	provides = prometheus-xmpp-webhook
+	conflicts = prometheus-xmpp-webhook
+	backup = etc/xmpp-webhook.env
+	source = prometheus-xmpp-webhook-sysusers.conf
+	source = prometheus-xmpp-webhook.install
+	source = xmpp-webhook.env
+	source = xmpp-webhook.service.patch
+	source = prometheus-xmpp-webhook-git::git+https://github.com/opthomas-prime/xmpp-webhook.git
+	sha256sums = 691af96667e6eb627512f038c5f2f7b3928edc586f27aecad37f3957437a3f6a
+	sha256sums = 0ec7e2fb1d5d843174718b922a8bb931098c0c5a7154cf5f50aa43af24717860
+	sha256sums = e97efa5c6d3f7f4e970a84220cd73fbc0fb8e213623c4c44652f3c57d348e2a4
+	sha256sums = a2938e74de29c13ee08f5dad3fc8b2c4b618ec90a85ca8e95a4470f87f8af4f7
+	sha256sums = SKIP
+
+pkgname = prometheus-xmpp-webhook-git
+
