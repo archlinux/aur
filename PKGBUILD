@@ -15,24 +15,21 @@ source=("https://github.com/KDE/$pkgname/archive/$_commit.tar.gz")
 sha256sums=('761e8a98c3c5259ed664b9ef7305192cc246c770369690c3e1d142321849bbeb')
 
 prepare() {
-  cd $srcdir/$pkgname-$_commit
-  sed -i 's/lib64/lib/' cmake/FindQt1.cmake
-  sed -i 's/lib64/lib/' cmake/KDE1InstallDirs.cmake
+  mkdir -p build
+  cd $pkgname-$_commit
+  sed -i 's/lib64/lib/' cmake/FindQt1.cmake cmake/KDE1InstallDirs.cmake
 }
 
 build() {
-  cd $srcdir/$pkgname-$_commit
-  mkdir -p build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake ../$pkgname-$_commit -DCMAKE_INSTALL_PREFIX='/usr'
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$_commit
-  cd build
-  make DESTDIR="$pkgdir/" install
-  cd ..  
+  make -C build DESTDIR="$pkgdir/" install
+
+  cd $pkgname-$_commit
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
   install -Dm644 COPYING.LIB $pkgdir/usr/share/licenses/$pkgname/COPYING.LIB
   ln -s /opt/kde1/share/doc/HTML/en/ $pkgdir/opt/kde1/share/doc/HTML/default
