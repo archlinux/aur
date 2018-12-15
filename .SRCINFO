@@ -1,6 +1,6 @@
 pkgbase = imagej2
 	pkgdesc = Image manipulation software for scientists
-	pkgver = 2.0.0rc68
+	pkgver = 2.0.0rc69
 	pkgrel = 1
 	url = https://imagej.net
 	arch = any
@@ -8,12 +8,10 @@ pkgbase = imagej2
 	makedepends = maven
 	makedepends = java-environment=8
 	depends = java-runtime>=8
-	source = https://github.com/imagej/imagej/archive/imagej-2.0.0-rc-68.tar.gz
+	source = https://github.com/imagej/imagej/archive/imagej-2.0.0-rc-69.tar.gz
 	source = imagej2.desktop
-	source = fix-launcher.patch
-	md5sums = 8a1ebe7fbe111ad1de3ca8381fb4d259
+	md5sums = c5a2a829b871a708c67a29757bae5589
 	md5sums = db18ac6d6ed799e04bc23b635b35e673
-	md5sums = 7936077e9d108b000fb66e1b65ff19c0
 
 pkgname = imagej2
 
