@@ -3,21 +3,22 @@
 
 _gemname=mdl
 pkgname=ruby-$_gemname
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
-pkgdesc='Markdown lint tool'
-arch=(any)
-url='http://github.com/mivok/markdownlint'
-license=(MIT)
-depends=(ruby ruby-kramdown ruby-mixlib-config ruby-mixlib-cli)
+pkgdesc="Markdown lint tool"
+arch=("any")
+url="http://github.com/markdownlint/markdownlint"
+license=("MIT")
+depends=("ruby-kramdown" "ruby-mixlib-config" "ruby-mixlib-cli")
+makedepends=("ruby-rdoc")
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('7972c49a7ab00e9deb1994586b870f25c6c4aca2')
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+sha256sums=('913cc1c340b808645b54c8536e6e2e68b849677ca12e342e07c3a81a3ebaf010')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" $_gemname-$pkgver.gem
+  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
+  install -D -m644 "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
