@@ -1,6 +1,6 @@
 pkgbase = tomahawk-git
 	pkgdesc = A Music Player App written in C++/Qt - development version
-	pkgver = 0.8.0rc1.1304.g119a7ebdb
+	pkgver = 0.8.0rc1.1337.g777b31219
 	pkgrel = 1
 	epoch = 1
 	url = http://tomahawk-player.org/
@@ -16,26 +16,24 @@ pkgbase = tomahawk-git
 	depends = qt5-tools
 	depends = qt5-xmlpatterns
 	depends = qt5-x11extras
-	depends = qca-qt5
+	depends = qca
 	depends = taglib
 	depends = lucene++
 	depends = libechonest
 	depends = jreen
 	depends = quazip
-	depends = attica-qt5
+	depends = attica
 	depends = qt5-webkit
 	depends = liblastfm-qt5
 	depends = qtkeychain
 	depends = vlc
 	optdepends = kdelibs: integration with Plasma Desktop
-	optdepends = telepathy-qt5: integration with Telepathy
+	optdepends = telepathy-qt: integration with Telepathy
 	provides = tomahawk
 	conflicts = tomahawk
 	conflicts = tomahawk-qt5
 	source = tomahawk-git::git://github.com/tomahawk-player/tomahawk.git
-	source = fix-qt5-dependencies.patch
 	sha256sums = SKIP
-	sha256sums = 7dba918658edcec661760ac7d33d18bf8fbbdd507b60139e858d027492bec4cb
 
 pkgname = tomahawk-git
 
