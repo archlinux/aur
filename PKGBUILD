@@ -5,7 +5,7 @@
 _pkgbase='firefox-i18n'
 _language='ca-valencia'
 pkgname=("${_pkgbase}-${_language}")
-pkgver=63.0
+pkgver=64.0
 pkgrel=1
 pkgdesc="Valencian language pack for Firefox"
 arch=('any')
@@ -13,8 +13,8 @@ url="http://www.softvalencia.org/guies/firefox-en-valencia/"
 license=('GPL' 'LGPL' 'MPL')
 provides=("${pkgname}")
 depends=("firefox>=$pkgver")
-source=("https://addons.mozilla.org/firefox/downloads/file/1120661/firefox_en_valencia-${pkgver}-fx.xpi")
-sha256sums=('e81a3547da63a3d2c383dad92695b171b910699bd7d3d28ff4d6538f16fea18e')
+source=("https://addons.mozilla.org/firefox/downloads/file/1181325/firefox_en_valencia-${pkgver}-fx.xpi")
+sha256sums=('d8b788c9a8d9f69f57e9bb5a3b31e9e04f0967054d79b97c4bd01b517263c943')
 
 # Don't extract xpi
 noextract=('firefox_en_valencia-${pkgver}-fx.xpi')
