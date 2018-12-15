@@ -1,13 +1,13 @@
 # Maintainer: Marco Steiger <marco1steiger (at) gmail (dot) com>
 pkgname=thedude
 pkgver=6.43.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Mikrotik The Dude network monitoring client"
 url="http://www.mikrotik.com"
 arch=('x86_64' 'i686')
 license=('custom')
 makedepends=('p7zip')
-depends=('wine')
+depends=('findutils' 'wine')
 optdepends=(
   'ttf-ms-fonts: for better fonts'
 )
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.exe::http://download2.mikrotik.com/routeros/${pkgv
 sha256sums=('ef1dda80db4243d957123c1b6233255652f257b2d964ff6f0c2da6c0d40eb817'
             '037f296da60fa1e46f256f0b8314b4de467529dcbfe743b512bb29730ac05a18'
             'b2595e2c2c9980fd5a9b2a6bbd847a8cbb158a4c18e36e9002ccbec109b4eaa1'
-            '85fe839f1dd2e9f71b0cf931ad377610a1b4b324517df3d0c4a8be5e41b19646')
+            '95a12300ae46ee8aec5789c9fdb6da1ac91ab1cdf5044f54375fd65f24f43c8d')
 
 build() {
   test ! -d ${srcdir}/${pkgname}-src && mkdir ${srcdir}/${pkgname}-src
