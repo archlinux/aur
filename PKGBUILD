@@ -2,12 +2,12 @@
 
 pkgname=prosody-mod-filter-chatstates-hg
 pkgver=tip
-pkgrel=1
+pkgrel=2
 pkgdesc="Client State Indication module to filter chat states depending on the client state"
 arch=('any')
 url="https://modules.prosody.im/mod_filter_chatstates.html"
 license=('MIT')
-depends=('prosody>=0.9' 'prosody-mod-csi-hg')
+depends=('prosody>=0.11')
 makedepends=('mercurial')
 source=("hg+https://hg.prosody.im/prosody-modules/")
 sha1sums=('SKIP')
