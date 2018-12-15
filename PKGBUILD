@@ -4,7 +4,7 @@
 # Contributor: Joshua Stiefer <facedelajunk@gmail.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=wordgrinder
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A word processor for processing words."
 url="http://cowlark.com/wordgrinder/"
@@ -14,9 +14,9 @@ makedepends=(ninja)
 checkdepends=()
 depends=('lua' 'lua52' 'lua52-filesystem' 'libx11' 'libxft' 'freetype2' 'zlib')
 source=("https://github.com/davidgiven/$pkgname/archive/${pkgver}.tar.gz")
-md5sums=('593ae7f64770d52d2e75c9f3402b4df0')
-sha1sums=('1fe2328cfee71620bbf4bfc04471cddc8abd14ca')
-sha256sums=('54085af7963e1f67342bc0b1b20d1ccc75494f2e23d401b601cf3089acea747c')
+md5sums=('4c754fddfe29c2038a1c96d38ba49c74')
+sha1sums=('2978975ed122e9deb0bae32fffbaabbcb434e15a')
+sha256sums=('4e1bc659403f98479fe8619655f901c8c03eb87743374548b4d20a41d31d1dff')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
