@@ -38,7 +38,7 @@ fi
 ## Set variable "use_pds" to: n to disable (stock Xanmod)
 ##                            y to enable
 if [ -z ${_pds+x} ]; then
-  use_pds=y
+  use_pds=n
 fi
 
 pkgbase=linux-xanmod
