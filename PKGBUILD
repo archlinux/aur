@@ -1,7 +1,6 @@
 # Maintainer: Kazuo Teramoto <kaz.rag at gmail dot com>
 
-pkgbase=('stig')
-pkgname=('stig')
+pkgname=stig
 pkgver=0.10.1a
 pkgrel=1
 pkgdesc='TUI and CLI client for the Transmission daemon'
