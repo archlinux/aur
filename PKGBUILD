@@ -4,29 +4,48 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 ##
-## The following variables take integer value, change at your wish
+## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-## Config you want to build kernel:
-## 1 xanmod's provided (default)
-## 2 Archlinux stock
-_configuration=1
+##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Only valid numbers are: 0 to 22
+## Valid numbers between: 0 to 25
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 22 => native
 _microarchitecture=0
 ##
+## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
+## Archlinux and Xanmod enable it by default.
+## Set variable "use_numa" to: n to disable (possibly increase performance)
+##                             y to enable  (stock default)
+if [ -z ${_numa+x} ]; then
+  use_numa=y
+fi
+##
+## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
+## Stock Archlinux and Xanmod have this enabled. 
+## Set variable "use_tracers" to: n to disable (possibly increase performance)
+##                                y to enable  (stock default)
+if [ -z ${_tracers+x} ]; then
+  use_tracers=y
+fi
+##
+## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
+## Set variable "use_pds" to: n to disable (stock Xanmod)
+##                            y to enable
+if [ -z ${_pds+x} ]; then
+  use_pds=n
+fi
 
 pkgbase=linux-xanmod-lts
 _srcname=linux
-pkgver=4.14.83
-xanmod=50
+pkgver=4.14.87
+xanmod=52
 pkgrel=1
-arch=('x86_64')
+arch=(x86_64)
 url="http://www.xanmod.org/"
-license=('GPL2')
-makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
+license=(GPL2)
+makedepends=(xmlto kmod inetutils bc libelf python-sphinx graphviz)
 options=('!strip')
 
 # Arch stock configuration files are directly pulled from a specific trunk
@@ -45,31 +64,19 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        'choose-gcc-optimization.sh'
 )
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux-lts&id=${arch_config_trunk}") ; done
-source_x86_64=("config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${arch_config_trunk}")
 
-sha256sums=('58928284fc05102e31ca5fde74936986bee50afde680647ee203d1ac73f1b8d7'
+sha256sums=('44f361c7da2ddf83e28b504f8d4c199b7fd011547a887ded2ce3e5ceb82cba54'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
             '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98'
             '6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794')
-sha256sums_x86_64=('c645053c4525a1a70d5c10b52257ac136da7e9059b6a4a566a857a3d42046426')
 
 _kernelname=${pkgbase#linux}
 
 prepare() {
   cd "${srcdir}/linux-${pkgver}-xanmod${xanmod}"
-
-  case $_configuration in
-    1) true ; answer="Xanmod" ;;
-    2) cat "${srcdir}/config" > ./.config ; answer="Archlinux" ;;
-    *) echo "Variable _configuration should be 1 or 2"; exit 1 ;;
-  esac
-  warning "This package is now totally non-interactive!!!!!"
-  msg "Building this kernel with configuration provided by: $answer"
-  sleep 5
-  warning "To change this modify _configuration variable in PKGBUILD"
 
   if [ "${_kernelname}" != "" ]; then
     #sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -77,16 +84,41 @@ prepare() {
   fi
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
-  sed -i "s|# CONFIG_STACK_VALIDATION.*|CONFIG_STACK_VALIDATION=y|" ./.config
+  scripts/config --enable CONFIG_STACK_VALIDATION
 
   # Archlinux patches
   for n in ${arch_patches[@]} ; do patch -Np1 -i ../$n ; done
 
   # Enable IKCONFIG following Arch's philosophy
-  sed -i "s|# CONFIG_IKCONFIG.*|CONFIG_IKCONFIG=y\nCONFIG_IKCONFIG_PROC=y|" ./.config
+  scripts/config --enable CONFIG_IKCONFIG \
+                 --enable CONFIG_IKCONFIG_PROC
 
-  # EXPERIMENTAL: let's user choose microarchitecture optimization in GCC
+  # User set. See at the top of this file
+  if [ "$use_tracers" = "n" ]; then
+    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
+    scripts/config --disable CONFIG_FUNCTION_TRACER \
+                   --disable CONFIG_STACK_TRACER
+  fi
+
+  if [ "$use_numa" = "n" ]; then
+    msg2 "Disabling NUMA..."
+    scripts/config --disable CONFIG_NUMA
+  fi
+
+  if [ "$use_pds" = "y" ]; then
+    msg2 "Enabling PDS CPU scheduler by default..."
+    scripts/config --enable CONFIG_SCHED_PDS
+  fi
+
+  # Let's user choose microarchitecture optimization in GCC
   ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
+
+  # This is intended for the people that want to build this package with their own config
+  # Put the file "myconfig" at the package folder to use this feature
+  if [ -f "${startdir}/myconfig" ]; then
+    msg2 "Using user CUSTOM config..."
+    cp -f "${startdir}"/myconfig .config
+  fi
 
   # set extraversion to pkgrel
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
