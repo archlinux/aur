@@ -1,7 +1,7 @@
 # Contributor: Alexej Magura <agm2819*gmail*>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mgrep
-pkgver=1.0.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A multiline grep."
 arch=('i686' 'x86_64')
@@ -9,9 +9,9 @@ url="http://sourceforge.net/projects/multiline-grep/"
 license=('custom')
 depends=('boost-libs')
 source=("https://downloads.sourceforge.net/project/multiline-grep/$pkgname-${pkgver}.tar.gz")
-md5sums=('76a729c879ce95ff19d6ea5ffe165947')
-sha1sums=('570ccb10bad49a1d1cbfd652ede09952b318255f')
-sha256sums=('4e267c8c420b5337d8efde608ff877cfedb9fe8a107583248ca95683468aa7a1')
+md5sums=('e9c16df1344d6485f75037d0fcc3733c')
+sha1sums=('61f3366113eedd270384036121fed5c333c9ad27')
+sha256sums=('1dc3f892204393cebd73cf1b3a85146aed3625242c2c86cd6afbd0e4a2d8a690')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -24,10 +24,10 @@ build() {
   make 
 }
 
-#check() {
-#  cd "$srcdir/$pkgname-$pkgver"
-#  make test
-#}
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make test
+}
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
