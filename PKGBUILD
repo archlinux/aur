@@ -3,7 +3,7 @@
 
 
 pkgname=kvmd
-pkgver=0.111
+pkgver=0.112
 pkgrel=1
 pkgdesc="The main Pi-KVM daemon"
 url="https://github.com/pi-kvm/kvmd"
@@ -49,6 +49,7 @@ package() {
 	cp -r web "$pkgdir/usr/share/kvmd"
 	cp -r extras "$pkgdir/usr/share/kvmd"
 	cp -r configs "$pkgdir/usr/share/kvmd/configs.default"
+	sed -i -e "s/^#PROD//g" "$pkgdir/usr/share/kvmd/configs.default/nginx/nginx.conf"
 	find "$pkgdir" -name ".gitignore" -delete
 
 	mkdir -p "$pkgdir/etc/kvmd"
