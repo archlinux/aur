@@ -1,0 +1,16 @@
+pkgbase = minetest-mod-unifieddyes-git
+	pkgdesc = FozLand's unifieddyes mod for Minetest
+	pkgver = 76.cea39f6
+	pkgrel = 1
+	url = https://github.com/FozLand/unifieddyes
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = bash
+	optdepends = minetest-usrdir_patch
+	provides = minetest-mod-unifieddyes
+	source = minetest-mod-unifieddyes::git+git://github.com/FozLand/unifieddyes.git
+	md5sums = SKIP
+
+pkgname = minetest-mod-unifieddyes-git
+
