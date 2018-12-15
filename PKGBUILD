@@ -9,7 +9,7 @@ license=('GPL2')
 makedepends=('git')
 provides=("makedepf90")
 source=(git+https://github.com/amckinstry/makedepf90.git#branch=upstream)
-md5sums=('SKIP')				
+md5sums=('SKIP')				# skip b.c. loading current git sources
 
 pkgver() {
 	cd "$srcdir/makedepf90"
@@ -18,11 +18,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/makedepf90"
-	./configure --prefix=/usr
+  ./configure --prefix=/usr --mandir=/usr/share/man
 	make
 }
 
 package() {
 	cd "$srcdir/makedepf90"
-	make DESTDIR="$pkgdir/" install
+	make prefix="$pkgdir/usr" mandir="$pkgdir/usr/share/man" install
 }
