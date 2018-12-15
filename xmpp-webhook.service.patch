@@ -1,0 +1,23 @@
+5a6,8
+> User=xmppwebhook
+> Group=xmppwebhook
+> Type=simple
+7c10
+< ExecStart=/usr/local/bin/xmpp-webhook
+---
+> ExecStart=/usr/bin/xmpp-webhook
+9c12,23
+< RestartSec=30
+---
+> RestartSec=30s
+> NoNewPrivileges=true
+> PrivateUsers=true
+> PrivateDevices=true
+> PrivateTmp=true
+> ProtectHome=true
+> ProtectSystem=strict
+> ProtectControlGroups=yes
+> ProtectKernelTunables=true
+> ProtectKernelModules=yes
+> LockPersonality=true
+> MemoryDenyWriteExecute=true
