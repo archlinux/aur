@@ -6,10 +6,12 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 ##
-## The following variables take integer value, change at your wish
+## The following variables can be customized at build time. Use env or export to change at your wish
+##
+##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Only valid numbers are: 0 to 25
+## Valid numbers are: 0 to 25
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 25 => native
 if [ -z ${_microarchitecture+x} ]; then
@@ -18,25 +20,25 @@ fi
 ##
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
 ## Archlinux and Xanmod enable it by default.
-## Set variable _numa to: 0 to disable (teorically performance++)
-##                        1 to enable  (stock default)
+## Set variable "use_numa" to: n to disable (possibly increase performance)
+##                             y to enable  (stock default)
 if [ -z ${_numa+x} ]; then
-  _numa=1
+  use_numa=y
 fi
 ##
 ## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
 ## Stock Archlinux and Xanmod have this enabled. 
-## Set variable _tracers to: 0 to disable (teorically performance++)
-##                           1 to enable  (stock default)
+## Set variable "use_tracers" to: n to disable (possibly increase performance)
+##                                y to enable  (stock default)
 if [ -z ${_tracers+x} ]; then
-  _tracers=1
+  use_tracers=y
 fi
 ##
 ## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
-## Set variable _pds to: 0 to disable (stock Xanmod)
-##                       1 to enable
+## Set variable "use_pds" to: n to disable (stock Xanmod)
+##                            y to enable
 if [ -z ${_pds+x} ]; then
-  _pds=0
+  use_pds=y
 fi
 
 pkgbase=linux-xanmod
@@ -94,18 +96,18 @@ prepare() {
                  --enable CONFIG_IKCONFIG_PROC
 
   # User set. See at the top of this file
-  if [ "$_tracers" = "0" ]; then
+  if [ "$use_tracers" = "n" ]; then
     msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
     scripts/config --disable CONFIG_FUNCTION_TRACER \
                    --disable CONFIG_STACK_TRACER
   fi
 
-  if [ "$_numa" = "0" ]; then
+  if [ "$use_numa" = "n" ]; then
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
   fi
 
-  if [ "$_pds" = "1" ]; then
+  if [ "$use_pds" = "y" ]; then
     msg2 "Enabling PDS CPU scheduler by default..."
     scripts/config --enable CONFIG_SCHED_PDS
   fi
@@ -113,7 +115,7 @@ prepare() {
   # Let's user choose microarchitecture optimization in GCC
   ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
-  # This is intended for the people that wants to build this package with their own config
+  # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder to use this feature
   if [ -f "../myconfig" ]; then
     msg2 "Using user CUSTOM config..."
