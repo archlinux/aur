@@ -2,7 +2,7 @@
 
 pkgname=lua51-lualdap-git
 pkgver=master
-pkgrel=1
+pkgrel=2
 pkgdesc="lua binding to openldap"
 arch=('i686' 'x86_64')
 url="https://github.com/lualdap/lualdap"
@@ -11,10 +11,8 @@ license=('MIT')
 provides=('lua51-lualdap')
 depends=('openldap>=2.1' 'lua51')
 makedepends=('git')
-source=("git+https://github.com/lualdap/lualdap.git"
-        "allow-uri.patch")
-sha1sums=('SKIP'
-          'a5185d05bf737707937bf3f7177afb33160ff5ec')
+source=("git+https://github.com/lualdap/lualdap.git")
+sha1sums=('SKIP')
 _luaBin=lua5.1
 
 pkgver() {
@@ -24,7 +22,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/lualdap"
-  git apply "${srcdir}/allow-uri.patch"
   sed -i "s/^LUA *:=.*/LUA := lua$($_luaBin -v 2>&1 | grep -Eo '\<[5-9]\..')/" config
   make
 }
