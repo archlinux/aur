@@ -3,7 +3,7 @@ LANG=C
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgrel=1
+pkgrel=2
 pkgver=5.0.0r26240+.a957e0da8613+
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'openmp'
 	 'gl2ps' 'qhull' 'graphicsmagick' 'mesa' 'julia' 'libsndfile'
 	 'suitesparse' 'java-environment' 'qscintilla-qt5' 'termcap'
-	'qt5-tools' 'qrupdate')
+	'qt5-tools' 'qrupdate' 'portaudio')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gettext'
 	     'transfig' 'epstool' 'texlive-core' 'icoutils' 'git')
 optdepends=('texinfo: for help-support in octave'
