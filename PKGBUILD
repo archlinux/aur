@@ -3,8 +3,8 @@
 # Contributor: Bram Schoenmakers <me@bramschoenmakers.nl>
 
 pkgname=closure-compiler
-pkgver=20180402
-pkgrel=2
+pkgver=20181210
+pkgrel=1
 pkgdesc="Performs checking, instrumentation and optimizations on Javascript code."
 arch=('any')
 url="https://developers.google.com/closure/compiler/"
@@ -12,7 +12,7 @@ license=('APACHE')
 depends=('java-runtime=8')
 makedepends=('maven' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('5076b664f8eb7e9fed9e23884c6eedd7a75f463f4c094580d87375aaa87a698f83beb76688b9a465be0dcdd6388995e577529af5fbb29f4dc10feb1edd619f92')
+sha512sums=('54da6f1983e7d3a523e8352ab5749113f33dae64a3df8d08c4db3eb5a13d6bcdd9b9a9850279dc168ed63a15ac5150c9bcd5a8642ff7090a058b9b18ade4d024')
 
 LANG='en_US.UTF-8'
 
@@ -29,11 +29,11 @@ package() {
   install -dm755 $pkgdir/usr/bin
 
   echo '#!/bin/sh
-  "$JAVA_HOME/bin/java" -jar /usr/share/java/closure-compiler/closure-compiler.jar $@' > "$pkgdir/usr/bin/closure-compiler"
+  PATH="/usr/lib/jvm/java-8-openjdk/bin:$PATH" java -jar /usr/share/java/closure-compiler/closure-compiler.jar $@' > "$pkgdir/usr/bin/closure-compiler"
   chmod +x "$pkgdir/usr/bin/closure-compiler"
 
   echo '#!/bin/sh
-  "$JAVA_HOME/bin/java" -jar /usr/share/java/closure-compiler/closure-compiler-linter.jar $@' > "$pkgdir/usr/bin/closure-compiler-linter"
+  PATH="/usr/lib/jvm/java-8-openjdk/bin:$PATH" java -jar /usr/share/java/closure-compiler/closure-compiler-linter.jar $@' > "$pkgdir/usr/bin/closure-compiler-linter"
   chmod +x "$pkgdir/usr/bin/closure-compiler-linter"
 }
 
