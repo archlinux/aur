@@ -1,8 +1,8 @@
 # Maintainer: Erazem Kokot <contact at erazem dot eu>
 
 pkgname='batificator'
-pkgver='v1.0'
-pkgrel=1
+pkgver='1.1'
+pkgrel=2
 pkgdesc='A battery status notifier'
 arch=('any')
 url="https://gitlab.com/JustMeErazem/${pkgname}"
