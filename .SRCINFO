@@ -1,0 +1,16 @@
+pkgbase = lua52-lpty
+	pkgdesc = pty control for lua 5.2
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://tset.de/lpty/index.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = lua52
+	source = http://tset.de/downloads/lpty-1.2.2-1.tar.gz
+	source = Makefile.patch
+	sha1sums = ccacc8f1f1ef87f8339322eb519d0937324b5e5e
+	sha1sums = 7a21cde96f4d07ea639cf0257cfa365b760563ae
+
+pkgname = lua52-lpty
+

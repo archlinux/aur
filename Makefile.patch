@@ -1,0 +1,37 @@
+--- Makefile.dist	2016-07-18 15:28:52.000000000 +0200
++++ Makefile	2017-05-27 17:06:44.630971965 +0200
+@@ -5,8 +5,9 @@
+ 
+ # try some automatic discovery
+ OS = $(shell uname -s)
+-LUAVERSION = $(shell lua -e "print(string.match(_VERSION, '%d+%.%d+'))")
+-LUA_BINDIR = $(shell dirname `which lua`)
++LUA = lua5.2
++LUAVERSION = $(shell $(LUA) -e "print(string.match(_VERSION, '%d+%.%d+'))")
++LUA_BINDIR = $(shell dirname `which $(LUA)`)
+ LUAROOT = $(shell dirname $(LUA_BINDIR))
+ 
+ # Defaults
+@@ -15,9 +16,12 @@
+ 
+ CC = gcc
+ CFLAGS = -fPIC -Wall $(DEBUG)
++ifeq ($(LUA),lua)
+ LUA_INCDIR = $(LUAROOT)/include
++else
++LUA_INCDIR = $(LUAROOT)/include/lua$(LUAVERSION)
++endif
+ LUA_LIBDIR = $(LUAROOT)/lib
+-LUA = lua
+ 
+ # OS specialities
+ ifeq ($(OS),Darwin)
+@@ -47,7 +51,7 @@
+ 	cp $(TARGET) $(INST_LIBDIR)
+ 
+ test: all
+-	cd samples && LUA_CPATH=../\?.so lua lptytest.lua
++	cd samples && LUA_CPATH=../\?.so $(LUA) lptytest.lua
+ 
+ clean:
+ 	find . -name "*~" -exec rm {} \;
