@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-insiders
 pkgver=1544768411
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor for building and debugging modern web and cloud applications (insiders version)"
 arch=('x86_64' 'i686')
 url="https://code.visualstudio.com/"
@@ -16,10 +16,10 @@ source_i686=(code_ia32_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net
               ${pkgname}.desktop ${pkgname}-url-handler.desktop
               )
 sha256sums_x86_64=('dce3dcd83de7246b830b10f50e4b7a3fd654312a28556a40dd52fa4cde295892'
-                   '9c015c6f6d1611e9609fb06db553db5186c4ce8d1f0bc1c6085f577e092d9d9b'
+                   '84a4e1713baee49727c3bde36cccb69e79eeb8e66849f161ed0edb7e65a089f9'
                    'd87b1f9f6187fe2d401424f109a7254d6f185f9ff433a4e6d60feed6e5ace6f8')
 sha256sums_i686=('2bfe917d84485b61516291c23ccc6be0220fab4673bd68bec63909b6e2557c33'
-                 '9c015c6f6d1611e9609fb06db553db5186c4ce8d1f0bc1c6085f577e092d9d9b'
+                 '84a4e1713baee49727c3bde36cccb69e79eeb8e66849f161ed0edb7e65a089f9'
                  'd87b1f9f6187fe2d401424f109a7254d6f185f9ff433a4e6d60feed6e5ace6f8')
 pkgver() {
     if [ "${CARCH}" = "x86_64" ]; then
