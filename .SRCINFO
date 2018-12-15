@@ -38,11 +38,11 @@ pkgbase = tor-browser-fr
 	sha256sums = 89ed1cda6611abcbfdafef9aec78ada146643455d6675b22b72319ae286ea67e
 	source_x86_64 = https://dist.torproject.org/torbrowser/8.0.3/tor-browser-linux64-8.0.3_fr.tar.xz
 	source_x86_64 = https://dist.torproject.org/torbrowser/8.0.3/tor-browser-linux64-8.0.3_fr.tar.xz.asc
-	sha256sums_x86_64 = d0d2e9a6c65825bc8fff5aecdbb1b0174ea4f3197b057fa41997a2d0772d36a1
+	sha256sums_x86_64 = 5fbcebe6fc668a53f7847c7b2760e265e92306adcea0298d7de04a9552151c73
 	sha256sums_x86_64 = SKIP
 	source_i686 = https://dist.torproject.org/torbrowser/8.0.3/tor-browser-linux32-8.0.3_fr.tar.xz
 	source_i686 = https://dist.torproject.org/torbrowser/8.0.3/tor-browser-linux32-8.0.3_fr.tar.xz.asc
-	sha256sums_i686 = 29b24d14e131e8d0470e712faec690553537e81265e96dd5437fd678fb3dd781
+	sha256sums_i686 = 5a9f657847de2f783509914ff53b7d98b874843c4f195f8f464e0b527ca95c7c
 	sha256sums_i686 = SKIP
 
 pkgname = tor-browser-fr
