@@ -1,6 +1,6 @@
 pkgbase = python-memory_profiler
 	pkgdesc = A module for monitoring memory usage of a python program
-	pkgver = 0.54.0
+	pkgver = 0.55.0
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/memory_profiler
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-memory_profiler
 	depends = python
 	depends = python-psutil
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/8c/e2/6cfd60b81de29c40ff0e19247c76f334975d62a362b52b4c2772e8f0cd7b/memory_profiler-0.54.0.tar.gz
-	md5sums = b5729a1a0fb5b512be63bcc7bbb1eb9d
+	source = https://files.pythonhosted.org/packages/source/m/memory_profiler/memory_profiler-0.55.0.tar.gz
+	md5sums = 53ecb3d4be95a36fc1da339dce26d57f
 
 pkgname = python-memory_profiler
 
