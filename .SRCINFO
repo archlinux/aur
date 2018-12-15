@@ -1,12 +1,12 @@
 pkgbase = go-tools-complete-git
-	pkgdesc = Various tools for the Go programming language
+	pkgdesc = Developer tools for the Go programming language
 	pkgver = v0.0.0_20181214171254_3c39ce7b6105
-	pkgrel = 2
+	pkgrel = 3
 	url = https://godoc.org/golang.org/x/tools/cmd
 	arch = x86_64
-	license = custom:GoogleBSD
-	makedepends = go
+	license = BSD
 	makedepends = git
+	makedepends = go
 	depends = glibc
 	provides = go-tools
 	conflicts = go-tools

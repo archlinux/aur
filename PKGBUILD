@@ -2,14 +2,13 @@
 
 pkgname=go-tools-complete-git
 pkgver=v0.0.0_20181214171254_3c39ce7b6105
-pkgrel=2
-pkgdesc='Various tools for the Go programming language'
-arch=('x86_64')
+pkgrel=3
+pkgdesc='Developer tools for the Go programming language'
+arch=(x86_64)
 url='https://godoc.org/golang.org/x/tools/cmd'
-license=('custom:GoogleBSD')
-depends=('glibc')
-makedepends=('go'
-             'git')
+license=(BSD)
+depends=(glibc)
+makedepends=(git go)
 conflicts=('go-tools'
            'go-tools-git'
            'go-imports-git')
@@ -37,18 +36,21 @@ prepare() {
 }
 
 build() {
-  for tool in ${srcdir}/${pkgname}/cmd/*; do
-    cd $tool
-    GOCACHE="${srcdir}/cache" go build -o "${srcdir}/build/${PWD##*/}"
-  done
+  cd "${pkgname}"
+  GOCACHE="${srcdir}/cache" GOBIN="${srcdir}/build" go install -v -a \
+    -gcflags "all=-trimpath=${srcdir}" \
+    -asmflags "all=-trimpath=${srcdir}" \
+    ./cmd/...
+}
+
+check() {
+  cd "${pkgname}"
+  go test ./cmd/...
 }
 
 package() {
   install -Dm755 build/* -t "${pkgdir}"/usr/bin/
-  install -Dm644 ${pkgname}/AUTHORS -t ${pkgdir}/usr/share/licenses/${pkgname}/
-  install -Dm644 ${pkgname}/CONTRIBUTORS -t ${pkgdir}/usr/share/licenses/${pkgname}/
   install -Dm644 ${pkgname}/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
-  install -Dm644 ${pkgname}/PATENTS -t ${pkgdir}/usr/share/licenses/${pkgname}/
   install -Dm644 godoc.service -t ${pkgdir}/usr/lib/systemd/system/
 }
 
