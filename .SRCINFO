@@ -1,0 +1,16 @@
+pkgbase = ttyebus-dkms
+	pkgdesc = Real time linux kernel module for the ebusd using the PL011 UART on a Rasperry Pi
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/eBUS/ttyebus
+	arch = any
+	license = GPL3
+	depends = dkms
+	conflicts = ttyebus
+	source = ttyebus::git+https://github.com/eBUS/ttyebus.git#commit=b39d79d8ae8512adefd73d7ea4b296e59769e7d5
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 09fd52fecc4ed818560b1c3a1652dbd8f45badddb114d2c004314e4decf37664
+
+pkgname = ttyebus-dkms
+
