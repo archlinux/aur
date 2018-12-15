@@ -1,0 +1,15 @@
+pkgbase = noaa-apt
+	pkgdesc = NOAA APT image decoder with GUI
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://github.com/martinber/noaa-apt
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gsl
+	depends = gtk3
+	source = https://github.com/martinber/noaa-apt/archive/v0.9.6.tar.gz
+	sha512sums = 2b1a21dda40595dfc7ea8666c2f89b8d435dfc2d38efd5c1627b92b05144cbab0545b648696dd1490e724926d2384d725c87324b041882f58d0231c36644ba72
+
+pkgname = noaa-apt
+
