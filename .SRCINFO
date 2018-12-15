@@ -1,0 +1,20 @@
+pkgbase = go-tools-complete-git
+	pkgdesc = Various tools for the Go programming language
+	pkgver = v0.0.0_20181214171254_3c39ce7b6105
+	pkgrel = 1
+	url = https://godoc.org/golang.org/x/tools/cmd
+	arch = x86_64
+	license = custom:GoogleBSD
+	makedepends = go
+	makedepends = git
+	provides = go-tools
+	conflicts = go-tools
+	conflicts = go-tools-git
+	conflicts = go-imports-git
+	source = go-tools-complete-git::git+https://go.googlesource.com/tools
+	source = godoc.service
+	sha256sums = SKIP
+	sha256sums = 0afd3dcbf1758b33f6810cc81fc7eb37095db48bc8055ddd6b714c46184a490e
+
+pkgname = go-tools-complete-git
+

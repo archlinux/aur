@@ -1,0 +1,10 @@
+[Unit]
+Description=Godoc
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/godoc -http=127.0.0.1:6060
+
+[Install]
+WantedBy=multi-user.target
