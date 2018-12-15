@@ -13,10 +13,8 @@ pkgbase = kde1-kdebase
 	depends = libjpeg
 	depends = libtiff
 	depends = perl
-	source = https://github.com/KDE/kde1-kdebase/archive/444ba45c273384ddbb4257027bdd60ec09fda13e.tar.gz
-	source = 0001-kcmikbd-also-needs-the-moc-files.patch
-	sha256sums = ff402fb14d1befb606c98a28a1bfe710a290dcf5ffa89849b61607eefc8ef4bf
-	sha256sums = dbb7fa69167c6f8f175793ae0be445450a89a941562a641f462ae518b89135a8
+	source = https://github.com/KDE/kde1-kdebase/archive/a40a9a0de966d1831688bb9371a3c165b825bc7e.tar.gz
+	sha256sums = a368f1294edafcae10a78fb5c0694dbcd38ae65379813bac67c2afda66390e6a
 
 pkgname = kde1-kdebase
 

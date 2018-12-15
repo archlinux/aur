@@ -10,29 +10,24 @@ license=("GPL2")
 groups=("kde1")
 depends=("qt1" "kde1-kdelibs" "libjpeg" "libtiff" "perl")
 makedepends=("cmake")
-_commit="444ba45c273384ddbb4257027bdd60ec09fda13e"
-source=("https://github.com/KDE/$pkgname/archive/$_commit.tar.gz" 0001-kcmikbd-also-needs-the-moc-files.patch)
-sha256sums=('ff402fb14d1befb606c98a28a1bfe710a290dcf5ffa89849b61607eefc8ef4bf'
-            'dbb7fa69167c6f8f175793ae0be445450a89a941562a641f462ae518b89135a8')
+_commit="a40a9a0de966d1831688bb9371a3c165b825bc7e"
+source=("https://github.com/KDE/$pkgname/archive/$_commit.tar.gz")
+sha256sums=('a368f1294edafcae10a78fb5c0694dbcd38ae65379813bac67c2afda66390e6a')
 
 prepare() {
-  cd $srcdir/$pkgname-$_commit
-  patch -Np1 < $srcdir/0001-kcmikbd-also-needs-the-moc-files.patch
+  mkdir -p build
 }
 
 build() {
-  cd $srcdir/$pkgname-$_commit
-  mkdir -p build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_LIBRARY_PATH='/opt/kde1/lib'
+  cmake ../$pkgname-$_commit -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_LIBRARY_PATH='/opt/kde1/lib'
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$_commit
-  cd build
-  make DESTDIR="$pkgdir/" install
-  cd ..  
+  make -C build DESTDIR="$pkgdir/" install
+
+  cd $pkgname-$_commit
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
 
