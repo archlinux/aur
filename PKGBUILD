@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ukopp
-pkgver=6.7
+pkgver=6.8
 pkgrel=1
 pkgdesc="A backup program for USB devices"
 url="http://www.kornelix.net/ukopp/ukopp.html"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtk3')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-sha256sums=('854fbf3f72261eb337528382faaa5ca0c9a3260f957fa0725c811e802acca2d8')
+sha256sums=('e10cc04cdc4293786fcab9648f4344b94685088e850005089649b0474a990e90')
 options=('!emptydirs')
 
 build() {
