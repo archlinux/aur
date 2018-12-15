@@ -5,7 +5,7 @@
 pkgbase=spotifyd
 pkgname=('spotifyd' 'spotifyd-pulseaudio' 'spotifyd-dbus-mpris')
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('alsa-lib' 'libogg' 'gcc-libs')
@@ -30,7 +30,7 @@ build() {
 
 _package_feature() {
   # Create a package for a particular feature.
-  cargo install --locked --root "$pkgdir/usr" --path "$srcdir/$pkgbase-$pkgver"
+  cargo install --locked --root "$pkgdir/usr" --path "$srcdir/$pkgbase-$pkgver" --features "$1"
   rm "$pkgdir/usr/.crates.toml"
   install -D -m 644 "$srcdir/$pkgbase-$pkgver/contrib/spotifyd.service" "$pkgdir/usr/lib/systemd/user/spotifyd.service"
 }
