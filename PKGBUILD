@@ -2,11 +2,12 @@
 
 pkgname=go-tools-complete-git
 pkgver=v0.0.0_20181214171254_3c39ce7b6105
-pkgrel=1
+pkgrel=2
 pkgdesc='Various tools for the Go programming language'
 arch=('x86_64')
 url='https://godoc.org/golang.org/x/tools/cmd'
 license=('custom:GoogleBSD')
+depends=('glibc')
 makedepends=('go'
              'git')
 conflicts=('go-tools'
