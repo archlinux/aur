@@ -1,0 +1,12 @@
+diff --git a/kmail/CMakeLists.txt b/kmail/CMakeLists.txt
+--- a/kmail/CMakeLists.txt
++++ b/kmail/CMakeLists.txt
+@@ -3,6 +3,7 @@
+ include_directories(
+     ${QT_INCLUDE_DIR}
+     ${KDE1_INCLUDE_DIR}
++    ../mimelib
+ )
+ 
+ set(KMAIL_SRCS
+

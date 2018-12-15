@@ -1,19 +1,20 @@
 pkgbase = kde1-kdenetwork
 	pkgdesc = Historical copy of the network applications module of KDE 1, adapted to compile on modern systems (circa. 2016)
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KDE/kde1-kdenetwork
 	arch = i686
 	arch = x86_64
 	groups = kde1
 	license = GPL2
 	makedepends = cmake
+	makedepends = gcc7
 	depends = qt1
 	depends = kde1-kdelibs
-	source = https://github.com/KDE/kde1-kdenetwork/archive/3cefe8bc58885a7aa77abff02cf7e4dc390804a2.tar.gz
-	source = kmail_cmake.diff
-	sha256sums = ca134e501c18dc90afd8255a6bf19acd3401a65143f640de4c433d0d2daa9dc7
-	sha256sums = f0578385eb55d3a1ee960bd927396af8840b6fa6746750148b2b3e90c2fa5534
+	source = https://github.com/KDE/kde1-kdenetwork/archive/1029167fdfe0bb9e0d49cb3508b86e332ccebaaf.tar.gz
+	source = D17603.diff
+	sha256sums = 9827be45f6cf2bef17d96b7cea4ee0aa97c139b2d447134df53ad8ab80cf2498
+	sha256sums = 6cdf1ea25c4f0bf5d2e7ec7d072128ec801255ea555725efcc6eaa804e9504c6
 
 pkgname = kde1-kdenetwork
 
