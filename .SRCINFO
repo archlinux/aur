@@ -5,7 +5,7 @@ pkgbase = ddcpuid
 	url = https://git.dd86k.space/dd86k/ddcpuid
 	arch = x86_64
 	license = MIT
-	makedepends = dmd
+	makedepends = ldc
 	source = https://git.dd86k.space/dd86k/ddcpuid/archive/v0.10.0.tar.gz
 	sha256sums = fe4fd971be6e928435fc159c830f30ec81dff210700338bc806809f0ac54899c
 
