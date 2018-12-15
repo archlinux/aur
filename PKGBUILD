@@ -14,24 +14,20 @@ _commit="16f863f984ead0f72fdbfb05062e3e603b0e674b"
 source=("https://github.com/KDE/$pkgname/archive/$_commit.tar.gz")
 sha256sums=('6a361da334367c1a79d59e28c08d20d31a28fdcc7f1c35a9a88a68aa0dfc3789')
 
-#prepare() {
-#  cd $srcdir/$pkgname-$_commit
-#  patch -p1 kfm/pics/CMakeLists.txt < $srcdir/kfm_CMakeLists.patch
-#}
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd $srcdir/$pkgname-$_commit
-  mkdir -p build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_LIBRARY_PATH='/opt/kde1/lib'
+  cmake ../$pkgname-$_commit -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_LIBRARY_PATH='/opt/kde1/lib'
   make
 }
 
 package() {
+  make -C build DESTDIR="$pkgdir/" install
+
   cd $srcdir/$pkgname-$_commit
-  cd build
-  make DESTDIR="$pkgdir/" install
-  cd ..  
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
 
