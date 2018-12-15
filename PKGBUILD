@@ -5,7 +5,7 @@ set -u
 pkgbase="linux-lts49"
 #pkgbase=linux-lts-custom
 _srcname="linux-4.9"
-pkgver="4.9.144"
+pkgver="4.9.145"
 pkgrel='1'
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -29,7 +29,7 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
              )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            '9565214cf8b7e3242493a7ec1fb4f5ea59d3f728f3bbf89427aa91ea7b9a615b'
+            '5a4314479a9de082b2a36ffac03cc52c134a600ce64fac0440a6733919791ef4'
             '4ba80ad6778ac7666ff63484243b56fee6e134adf1f20c1edd04828c65b341b1'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
