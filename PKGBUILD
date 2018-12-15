@@ -6,7 +6,7 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-fr'
-pkgver='8.0.3'
+pkgver='8.0.4'
 _language='fr'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
