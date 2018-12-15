@@ -22,8 +22,8 @@ pkgname=()
 for _p in "${_pkgname[@]}" ; do 
 	pkgname+=(${_p}-git)
 done
-pkgver=3.8.0+26+g2750b80
-_pyextver=3.9.0
+_pkgver=4.0.0
+pkgver=4.0.0+10+gd8c20fa
 pkgrel=1
 pkgdesc="Various extensions for Nemo"
 arch=('i686' 'x86_64')
@@ -36,15 +36,17 @@ makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'git' 'meson')
 makedepends+=("${_preview_deps[@]}" "${_python_deps[@]}" "${_seahorse_deps[@]}")
 options=('!emptydirs')
 source=("${pkgbase}::git+https://github.com/linuxmint/nemo-extensions"
-        'nemo-seahorse-gnupg.patch'
         'dropbox-remove-python-deps.patch')
 sha256sums=('SKIP'
-            'ba6ae77a7d6727088e49aae2dc2c89c77c44f1ea19ee48956481d673d97caa36'
             'ac695b3d847368606f5a551db198942dcc0422c20dadf5f6524c2d41ad54a499')
+_release_commit='cdb9295e31d70924e5f7de2367b596f8e191a7cd'
 
 pkgver() {
     cd "${srcdir}/${pkgbase}"
-  git describe | sed 's/-/+/g'
+    printf "%s+%s+%s" \
+               "${_pkgver}" \
+               "$( bc <<< "`git rev-list HEAD --count` - `git rev-list ${_release_commit} --count`" )" \
+               "$( git describe --long | sed 's:.*-::' )"
 }
 
 prepare() {
@@ -53,9 +55,6 @@ prepare() {
     # Delete deprecated gnome-common macros, even their standard autoconf-archive replacements are
     # annoying to people who actually set $C(XX)?FLAGS. This drops the unneeded dependency on gnome-common
     sed -i '/^GNOME_/d' nemo-image-converter/configure.ac
-
-    # Support GnuPG 2.2
-    patch -p1 -i ../nemo-seahorse-gnupg.patch
 
 	# nemo-engrampa patches
 	[ -d nemo-engrampa ] && rm -fr nemo-engrampa
@@ -123,7 +122,7 @@ package_nemo-fileroller-git() {
     pkgdesc="File archiver extension for Nemo"
     license=('GPL2')
     depends+=('file-roller')
-    provides=("${pkgname/-git/}=${pkgver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -134,7 +133,7 @@ package_nemo-engrampa-git() {
     pkgdesc="File archiver extension for Nemo using engrampa"
     license=('GPL2')
     depends+=('engrampa')
-    provides=("${pkgname/-git/}=${pkgver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -145,7 +144,7 @@ package_nemo-image-converter-git() {
     pkgdesc="Nemo extension to rotate/resize image files"
     license=('GPL2')
     depends+=('imagemagick')
-    provides=("${pkgname/-git/}=${pkgver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -156,7 +155,7 @@ package_nemo-preview-git() {
     pkgdesc="Quick file previewer for Nemo"
     license=('GPL2')
     depends+=("${_preview_deps[@]}")
-    provides=("${pkgname/-git/}=${pkgver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -167,7 +166,7 @@ package_nemo-python-git() {
     pkgdesc="Python binding for Nemo components"
     license=('GPL2')
     depends+=("${_python_deps[@]}")
-    provides=("${pkgname/-git/}=${_pyextver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"/build
@@ -178,7 +177,7 @@ package_nemo-seahorse-git() {
     pkgdesc="PGP encryption and signing extension for Nemo"
     license=('GPL2')
     depends+=("${_seahorse_deps[@]}")
-    provides=("${pkgname/-git/}=${pkgver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -189,7 +188,7 @@ package_nemo-share-git() {
     pkgdesc="Samba extension for Nemo"
     license=('GPL2')
     depends+=('samba')
-    provides=("${pkgname/-git/}=${pkgver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -201,7 +200,7 @@ package_nemo-terminal-git() {
     arch=('any')
     license=('GPL3')
     depends=('nemo-python>=3.9.0' 'vte3')
-    provides=("${pkgname/-git/}=${_pyextver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -214,7 +213,7 @@ package_nemo-media-columns-git() {
     arch=('any')
     license=('GPL2')
     depends=('nemo-python>=3.9.0' 'python-mutagen' 'exiv2' 'python-pymediainfo' 'python-pillow' 'python-pypdf2')
-    provides=("${pkgname/-git/}=${_pyextver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -228,7 +227,7 @@ package_nemo-pastebin-git() {
     license=('GPL2')
   	depends=('pastebinit' 'nemo-python>=3.9.0')
   	optdepends=('libnofify')
-    provides=("${pkgname/-git/}=${_pyextver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -241,7 +240,7 @@ package_nemo-audio-tab-git() {
 	license=('GPL2')
 	arch=('any')
 	depends=('nemo-python>=3.9.0' 'python-mutagen')
-    provides=("${pkgname/-git/}=${_pyextver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 	
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -253,7 +252,7 @@ package_nemo-dropbox-git() {
     pkgdesc="Dropbox for Linux - Nemo extension"
 	license=('custom:CC-BY-ND-3' 'GPL3')
 	depends+=('dropbox')
-    provides=("${pkgname/-git/}=${pkgver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
     
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -272,7 +271,7 @@ package_nemo-compare-git() {
 	            'fldiff: Additional comparison options (preferred diff, three-way, multi-compare)'
 	            'diffuse: Alternate comparison backend'
 	            'kdiff3: Alternate comparison backend')
-    provides=("${pkgname/-git/}=${_pyextver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -285,7 +284,7 @@ package_nemo-emblems-git() {
     arch=('any')
     license=('GPL3')
     depends=('nemo-python>=3.9.0')
-    provides=("${pkgname/-git/}=${_pyextver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
     
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
@@ -296,7 +295,7 @@ package_nemo-emblems-git() {
 package_nemo-repairer-git() {
     pkgdesc="Nemo extension for filename encoding repair"
     license=('GPL2')
-    provides=("${pkgname/-git/}=${pkgver}")
+    provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
     cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
