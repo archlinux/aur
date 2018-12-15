@@ -4,8 +4,8 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=3.6.0.76
-pkgrel=4
+pkgver=3.6.0.77
+pkgrel=1
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('any')
 url='http://emby.media'
@@ -22,7 +22,7 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
         'emby-server.sysusers'
         'emby-server.tmpfiles')
 backup=('etc/conf.d/emby-server')
-sha256sums=('5e26d7b3990d234bbacabfa37633966ab61a70e038f87ced8abb385c1a5910bb'
+sha256sums=('2150c53b7e8e4f9073ae057c8dc6dd4e8e7a33ec4dc700d3cb929b8303ba47e6'
             '1f04c5dff2e1534bff101917a556295d63aae26c233446b252890ad58221e513'
             'e44692b24d69aef8568c6e68088e5a28e42584868a8936abcab9211c236c2a6b'
             'e6676f75bb12ba2b88da130be1272abb0e332f40e9fa043182a865e3d74a38fb'
@@ -37,6 +37,7 @@ prepare() {
 package() {
   install -dm 755 "${pkgdir}"/{etc/conf.d,usr/{bin,lib/{systemd/system,sysusers.d,tmpfiles.d}}}
   cp -dr --no-preserve='ownership' system "${pkgdir}"/usr/lib/emby-server
+  ln -s ../libSkiaSharp.so.60.0.0 "${pkgdir}"/usr/lib/emby-server/libSkiaSharp.so
   install -m 755 emby-server "${pkgdir}"/usr/bin/
   install -m 755 emby-migrate-database "${pkgdir}"/usr/bin/
   install -m 644 emby-server.service "${pkgdir}"/usr/lib/systemd/system/
