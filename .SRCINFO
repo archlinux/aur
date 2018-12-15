@@ -1,7 +1,7 @@
 pkgbase = python-svg2mod-git
 	pkgdesc = Convert Inkscape SVG drawings to KiCad footprint modules
-	pkgver = r69.a198fa6
-	pkgrel = 1
+	pkgver = r70.28a8c65
+	pkgrel = 2
 	url = https://github.com/greyltc/svg2mod
 	arch = any
 	license = Creative Commons Zero v1.0 Universal
