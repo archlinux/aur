@@ -14,6 +14,8 @@ depends=(
 	python-yaml
 	python-aiohttp
 	python-aiofiles
+	python-aionotify
+	python-passlib
 	python-pyudev
 	python-raspberry-gpio
 	python-pyserial
