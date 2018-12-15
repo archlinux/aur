@@ -16,7 +16,7 @@ depends=(
       "menu-cache" "libxcomposite" "lxmenu-data" "libdbusmenu-qt5"
       "lxqt-globalkeys"
 )
-makedepends=("git" "cmake" "qt5-tools")
+makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxde/$_pkgname.git")
