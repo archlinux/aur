@@ -11,7 +11,7 @@
 ##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Valid numbers are: 0 to 25
+## Valid numbers between: 0 to 25
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 25 => native
 if [ -z ${_microarchitecture+x} ]; then
@@ -117,7 +117,7 @@ prepare() {
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder to use this feature
-  if [ -f "../myconfig" ]; then
+  if [ -f "${srcdir}/myconfig" ]; then
     msg2 "Using user CUSTOM config..."
     cp -f "${srcdir}"/myconfig .config
   fi
