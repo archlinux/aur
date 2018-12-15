@@ -1,0 +1,22 @@
+pkgbase = plasma-hud-git
+	pkgver = 16.10.0.r90.g7ff3752
+	pkgrel = 1
+	url = https://github.com/Zren/plasma-hud
+	install = plasma-hud-git.install
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = plasma-workspace
+	depends = rofi
+	depends = python
+	depends = python-dbus
+	depends = python-setproctitle
+	depends = python-xlib
+	depends = gobject-introspection
+	depends = appmenu-gtk-module
+	depends = appmenu-qt4
+	source = git+https://github.com/Zren/plasma-hud.git
+	sha256sums = SKIP
+
+pkgname = plasma-hud-git
+

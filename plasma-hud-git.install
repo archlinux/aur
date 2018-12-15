@@ -1,0 +1,15 @@
+post_install() {
+  # Note to enable the HUD menu by using alt
+  cat << _EOF
+
+  ==> Run the following commands to bind the Alt keys to plasma-hud:
+  ------------------------------------------------------------------------------
+  kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Alt "com.github.zren.PlasmaHUD,/PlasmaHUD,com.github.zren.PlasmaHUD,toggleHUD"
+  qdbus org.kde.KWin /KWin reconfigure
+
+_EOF
+}
+
+post_upgrade() {
+  post_install
+}
