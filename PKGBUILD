@@ -2,16 +2,16 @@
 
 _appname=freecad-python3
 pkgname=freecad-python3-git
-pkgver=0.17.r548.g5f63a7764
+pkgver=0.17.r1908.gcc0ea5571
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('x86_64')
 url='http://www.freecadweb.org/'
 license=('LGPL')
-depends=('netcdf' 'boost-libs' 'med' 'oce' 'vtk' 'python-numpy' 'glew'
+depends=('netcdf' 'boost-libs' 'med' 'opencascade' 'vtk' 'python-numpy' 'glew'
          'xerces-c' 'qt5-svg' 'qt5-webkit' 'jsoncpp' 'hicolor-icon-theme'
          'python-pyside2' 'python-pivy-git')
-makedepends=('boost' 'cmake' 'desktop-file-utils' 'eigen' 'git' 'pyside2-tools' 'qt5-tools' 'shiboken2')
+makedepends=('boost' 'cmake' 'desktop-file-utils' 'eigen' 'git' 'pyside2-tools' 'qt5-tools')
 source=("${_appname}::git+https://github.com/FreeCAD/FreeCAD.git"
         "FreeCAD-Python3"
         "FreeCADCmd-Python3"
@@ -32,7 +32,7 @@ build() {
     cd "$srcdir/${_appname}"
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX="/opt/${_appname}" \
-          -DFREECAD_USE_OCC_VARIANT="Community Edition" \
+          -DFREECAD_USE_OCC_VARIANT="Official Version" \
           -DPYTHON_EXECUTABLE="/usr/bin/python3" \
           -DBUILD_QT5=ON
 
