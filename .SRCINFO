@@ -1,6 +1,6 @@
 pkgbase = lm_sensors-git
 	pkgdesc = Collection of user space tools for general SMBus access and hardware monitoring
-	pkgver = r5175.70f7e084
+	pkgver = r5216.84f773b3
 	pkgrel = 1
 	url = http://www.lm-sensors.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = lm_sensors-git
 	conflicts = lm_sensors
 	backup = etc/sensors3.conf
 	backup = etc/conf.d/sensord
-	source = git+https://github.com/groeck/lm-sensors.git
+	source = git+https://github.com/lm-sensors/lm-sensors.git
 	source = sensord.conf
 	sha1sums = SKIP
 	sha1sums = f4b5f21fdb3b2a55aa353afa1603f953b207b73b
