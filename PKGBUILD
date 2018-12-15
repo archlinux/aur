@@ -1,8 +1,7 @@
 # Maintainer: Kazuo Teramoto <kaz.rag at gmail dot com>
 
-pkgbase=('stig-git')
-pkgname=('stig-git')
-pkgver=0.9.0a.r0.707642d
+pkgname=stig-git
+pkgver=0.10.0a.r84.da65b1f
 pkgrel=1
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
