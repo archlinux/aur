@@ -1,18 +1,18 @@
 pkgbase = osu-lazer
 	pkgdesc = The new open source version of osu!, the free-to-win rhythm game
 	pkgver = 2018.1214.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osu.ppy.sh/
 	arch = x86_64
 	license = MIT
 	license = custom:CC-BY-NC 4.0
 	makedepends = git
-	makedepends = dotnet-sdk
+	makedepends = dotnet-sdk>=2.2.0
 	depends = ffmpeg
 	depends = libgl
 	depends = sdl2
-	depends = dotnet-runtime
 	depends = shared-mime-info
+	depends = dotnet-runtime>=2.2.0
 	provides = osu-lazer
 	conflicts = osu-lazer-git
 	source = osu-2018.1214.0::git://github.com/ppy/osu.git#tag=2018.1214.0

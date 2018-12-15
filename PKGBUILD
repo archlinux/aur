@@ -5,13 +5,18 @@
 
 pkgname=osu-lazer
 pkgver=2018.1214.0
-pkgrel=1
+pkgrel=2
+
+dotnet_version=2.2
+
 pkgdesc="The new open source version of osu!, the free-to-win rhythm game"
 arch=('x86_64')
 license=('MIT' 'custom:CC-BY-NC 4.0')
 url='https://osu.ppy.sh/'
-depends=(ffmpeg libgl sdl2 dotnet-runtime shared-mime-info)
-makedepends=(git dotnet-sdk)
+
+depends=(ffmpeg libgl sdl2 shared-mime-info "dotnet-runtime>=$dotnet_version.0")
+makedepends=(git "dotnet-sdk>=$dotnet_version.0")
+
 provides=(osu-lazer)
 conflicts=(osu-lazer-git)
 
@@ -45,12 +50,12 @@ build()
 {
     cd "osu-$pkgver"
 
-    dotnet publish osu.Desktop          \
-        --framework     netcoreapp2.1   \
-        --configuration Release         \
-        --runtime       linux-x64       \
-        --self-contained false          \
-        --output        ./bin/Release/netcoreapp2.1/linux-x64
+    dotnet publish osu.Desktop                      \
+        --framework     netcoreapp$dotnet_version   \
+        --configuration Release                     \
+        --runtime       linux-x64                   \
+        --self-contained false                      \
+        --output        ./bin/Release/netcoreapp$dotnet_version/linux-x64
 }
 
 package()
@@ -73,7 +78,7 @@ package()
     install -m644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
     # Compiled binaries
-    cd "$srcdir/osu-$pkgver/osu.Desktop/bin/Release/netcoreapp2.1/linux-x64"
+    cd "$srcdir/osu-$pkgver/osu.Desktop/bin/Release/netcoreapp$dotnet_version/linux-x64"
     mkdir -p "$pkgdir/usr/lib/$pkgname"
     for binary in *.so *.dll *.json *.pdb; do
         install -m755 "$binary" "$pkgdir/usr/lib/$pkgname/$binary"
