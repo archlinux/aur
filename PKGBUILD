@@ -22,6 +22,7 @@ build() {
 }
 
 package_afick() {
+pkgdesc="A security tool similar to tripwire"
 depends=('perl')
 conflicts=('afick-gui')
 
