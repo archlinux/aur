@@ -2,12 +2,12 @@
 
 pkgname=paradox-launcher
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Paradox Interactive Game Launcher"
 arch=('x86_64')
 url="https://play.paradoxplaza.com/"
 license=('custom')
-depends=("libxi" "xdg-utils" "freetype2" "libgl")
+depends=("libxi" "xdg-utils" "freetype2" "libgl" "gconf")
 source=(${pkgname}-${pkgver}.zip::http://launcher.paradoxplaza.com/linux_launcher
         ${pkgname}
         ${pkgname}.desktop)
