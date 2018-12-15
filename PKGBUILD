@@ -3,8 +3,8 @@
 
 pkgname=watchman-git
 _gitname=watchman
-pkgver=v4.9.0.r535.gc12ab4ca
-pkgrel=2
+pkgver=v4.9.0.r566.g1d4d1bf4
+pkgrel=1
 pkgdesc='Watches files and records, or triggers actions, when they change.'
 arch=('i686' 'x86_64')
 url='https://facebook.github.io/watchman/'
