@@ -1,6 +1,6 @@
 pkgbase = clight
 	pkgdesc = A C daemon that turns your webcam into a light sensor. It can also change display gamma temperature, dim your screen and set your dpms.
-	pkgver = 3.0
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://github.com/FedeDP/Clight
 	install = clight.install
@@ -17,9 +17,10 @@ pkgbase = clight
 	depends = clightd>=3.0
 	optdepends = geoclue2: to retrieve user location through geoclue2.
 	optdepends = upower: to save energy by increasing timeouts between captures while on battery and to autocalibrate keyboard backlight.
+	optdepends = bash-completion: to add support for bash automatic completion.
 	backup = etc/default/clight.conf
-	source = Clight-3.0.tar.gz::https://github.com/FedeDP/Clight/archive/3.0.tar.gz
-	sha256sums = d904e20f90e3166d26a9c8a72b401ee104c06c53660b70bb809ba1eabc32b0d3
+	source = Clight-3.1.tar.gz::https://github.com/FedeDP/Clight/archive/3.1.tar.gz
+	sha256sums = 24d95c1d812d7b9293e647ac00c1a0a62429b74d11d9a746865d52a2f0f7e7fc
 
 pkgname = clight
 
