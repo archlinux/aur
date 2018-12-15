@@ -1,13 +1,13 @@
 pkgbase = ddcpuid
-	pkgdesc = Processor information tool
-	pkgver = 0.9.0
+	pkgdesc = Advanced x86/AMD64 Processor Information Tool
+	pkgver = 0.10.0
 	pkgrel = 1
-	url = https://github.com/dd86k/ddcpuid
+	url = https://git.dd86k.space/dd86k/ddcpuid
 	arch = x86_64
 	license = MIT
 	makedepends = dmd
-	source = https://github.com/dd86k/ddcpuid/archive/v0.9.0.tar.gz
-	sha256sums = e333c9f1ba67b33d075be193b83d3bfcb998a6a8d17a166280237888af73b6dd
+	source = https://git.dd86k.space/dd86k/ddcpuid/archive/v0.10.0.tar.gz
+	sha256sums = fe4fd971be6e928435fc159c830f30ec81dff210700338bc806809f0ac54899c
 
 pkgname = ddcpuid
 

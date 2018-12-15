@@ -1,22 +1,22 @@
 # Maintainer: dax <dev@dax.moe>
 pkgname=ddcpuid
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
-pkgdesc="Processor information tool"
+pkgdesc="Advanced x86/AMD64 Processor Information Tool"
 arch=('x86_64')
-url="https://github.com/dd86k/ddcpuid"
+url="https://git.dd86k.space/dd86k/ddcpuid"
 license=('MIT')
 depends=()
-makedepends=('dmd')
-source=("https://github.com/dd86k/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e333c9f1ba67b33d075be193b83d3bfcb998a6a8d17a166280237888af73b6dd')
+makedepends=('ldc')
+source=("https://git.dd86k.space/dd86k/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('fe4fd971be6e928435fc159c830f30ec81dff210700338bc806809f0ac54899c')
 build() {
-	cd "$pkgname-$pkgver"
-	dmd -betterC -O -release -boundscheck=off ddcpuid
+	cd "$pkgname-v$pkgver"
+	ldc -betterC -O -boundscheck=off ddcpuid
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-v$pkgver"
 	install -D ddcpuid "$pkgdir"/usr/bin/ddcpuid
 	install -D -m 0644 LICENSE "$pkgdir"/usr/share/licenses/ddcpuid/LICENSE
 	install -D -m 0644 README.md "$pkgdir"/usr/share/doc/ddcpuid/README.md
