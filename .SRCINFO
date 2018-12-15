@@ -1,0 +1,16 @@
+pkgbase = slock-plus
+	pkgdesc = A simple screen locker for X, with patches: control clear, message, terminalkeys, quickcancel
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://tools.suckless.org/slock
+	arch = x86_64
+	license = MIT
+	depends = libxext
+	depends = libxrandr
+	provides = slock
+	conflicts = slock
+	source = https://git.sr.ht/~craftyguy/slock/archive/1.4-plus.tar.gz
+	sha256sums = 64a94798cb5233ccd9e747b43b08316d38bcf33a542276d016a996343423606d
+
+pkgname = slock-plus
+
