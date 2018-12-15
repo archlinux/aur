@@ -1,23 +1,23 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rar2fs
-pkgver=1.27.0
-_unrarver=5.6.3
+pkgver=1.27.1
+_unrarver=5.6.7
 pkgrel=1
 pkgdesc="Fuse file system for reading Rar archives"
 arch=("i686" "x86_64")
 license=("GPLv3")
 url="https://github.com/hasse69/rar2fs"
 url="https://hasse69.github.io/rar2fs/"
-depends=("fuse" "libunrar")
+depends=("fuse3" "libunrar")
 makedepends=("libunrar")
 source=("https://github.com/hasse69/rar2fs/releases/download/v$pkgver/rar2fs-$pkgver.tar.gz"
         "http://www.rarlab.com/rar/unrarsrc-$_unrarver.tar.gz")
-md5sums=('9bb74cc98067f4790345d30ee397129d'
-         '520b4682527e30438b81adee58260ecc')
-sha1sums=('cd77f3cd0779f24a6fb0da2121c5c827cd0e2fc7'
-          'eb140463af65294583c02223bd8b54fdc9bdcdd3')
-sha256sums=('8b8f89bc715690dc67f6d5f66dac6ae4c4338ff960f5cfd0f46cfa666be570f1'
-            'c590e70a745d840ae9b9f05ba6c449438838c8280d76ce796a26b3fcd0a1972e')
+md5sums=('c84943782f2f6781c9b4a3da2a3ef0d9'
+         'dfc4ae6b360d774177d109080883bd6d')
+sha1sums=('882f620e3a30158c1ab5548cb524ea3f32fda749'
+          '2128d9298da609eb9b01dac5f7309f1f1546ab7d')
+sha256sums=('f7e84b813fe82c6a886313e13a85d4f0d229b21f343a3ce6f73325a4ac90cb5a'
+            'ff4613db80a7177da660b20225b2a5162409d4b6a5c5c4dc072e43a3dcf2226b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
