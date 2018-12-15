@@ -3,11 +3,11 @@
 
 _pkgname=sickrage
 pkgname=$_pkgname-git
-pkgver=9.3.55.r0.ge233cb683
+pkgver=9.4.53.r0.gccea132d4
 pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
-url="https://github.com/SiCKRAGETV/SickRage"
+url="https://git.sickrage.ca/SiCKRAGE/sickrage"
 license=('GPL3')
 makedepends=('git')
 depends=('python2-apscheduler'
@@ -28,7 +28,7 @@ conflicts=($_pkgname)
 options=('!strip')
 install=$pkgname.install
 #source=("$pkgname::git://github.com/SiCKRAGETV/SickRage.git"
-source=("$pkgname::git+https://git.sickrage.ca/SiCKRAGE/sickrage.git"
+source=("$pkgname::git+http://git.sickrage.ca/SiCKRAGE/sickrage.git"
         'sickrage.service'
         'sickrage.sysusers'
         'sickrage.tmpfile')
@@ -62,7 +62,7 @@ package() {
   # The install type is "source": .git folder is not included
   #cd $pkgname
   #python2 setup.py install --prefix=/opt/sickrage/app --install-lib=/opt/sickrage/app --root="$pkgdir" --optimize=1
-  cp -rp $pkgname/* "$pkgdir/opt/sickrage/app/"
+  cp -a $pkgname/* "$pkgdir/opt/sickrage/app/"
 
   warning "If the upgrade fails with \"error: failed to commit transaction (conflicting files)\", then uninstall first"
 }
