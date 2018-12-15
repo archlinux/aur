@@ -14,7 +14,7 @@ source=(http://mgltools.scripps.edu/downloads/tars/releases/nightly/latest/REL/m
 md5sums=('SKIP'
 '7f2e0c303999deffe2879e466ae28be7')
 options=('!emptydirs')
-
+depends=('libpng12')
 #"http://mgltools.scripps.edu/downloads/tars/releases/nightly/${pkgver}/REL\${_pkgname}_x86_64Linux2_${pkgver}.tar.gz")
 #depends=('swig' 'tk' 'python2-numpy' 'python2-imaging' 'python2-pmw' 'glut' 'python2-zsi' 
 #        'python2-simpy' 'libxmu' 'python2-backports.ssl' 'python2-colorama' 'python2-dateutil'

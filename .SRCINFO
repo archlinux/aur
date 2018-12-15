@@ -5,6 +5,7 @@ pkgbase = mgltools-bin
 	url = http://mgltools.scripps.edu/
 	arch = x86_64
 	license = custom
+	depends = libpng12
 	options = !emptydirs
 	source = http://mgltools.scripps.edu/downloads/tars/releases/nightly/latest/REL/mgltools_x86_64Linux2_latest.tar.gz
 	source = remove_licence_popup.patch
