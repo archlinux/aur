@@ -3,7 +3,7 @@
 
 _md5sum=$(curl -s https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest.md5)
 pkgname=aws-ecs-cli
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="The Amazon EC2 Container Service (Amazon ECS) command line interface (CLI) provides high-level commands to simplify creating, updating, and monitoring clusters and tasks from a local development environment."
 depends=('docker')
