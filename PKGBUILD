@@ -117,9 +117,9 @@ prepare() {
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder to use this feature
-  if [ -f "${srcdir}/myconfig" ]; then
+  if [ -f "${startdir}/myconfig" ]; then
     msg2 "Using user CUSTOM config..."
-    cp -f "${srcdir}"/myconfig .config
+    cp -f "${startdir}"/myconfig .config
   fi
 
   make olddefconfig
