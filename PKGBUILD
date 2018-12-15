@@ -2,11 +2,11 @@
 
 pkgname=prometheus-xmpp-webhook
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='XMPP-Webhook built for Prometheus/Grafana Alerts'
 arch=('x86_64')
 url='https://github.com/opthomas-prime/xmpp-webhook'
-license=('custom:Unlicense')
+license=('mit')
 depends=('glibc')
 optdepends=('grafana: use the webhook with Grafana alerts'
             'alertmanager: use the webhook with Prometheus'
@@ -20,7 +20,7 @@ source=('prometheus-xmpp-webhook-sysusers.conf'
         "https://github.com/opthomas-prime/xmpp-webhook/releases/download/${pkgver}/xmpp-webhook-${pkgver}.tar")
 sha256sums=('691af96667e6eb627512f038c5f2f7b3928edc586f27aecad37f3957437a3f6a'
             '0ec7e2fb1d5d843174718b922a8bb931098c0c5a7154cf5f50aa43af24717860'
-            'a26d0e801ad4063989bd19f69e50359285a90bdb8215a3c71d6f58fde5cc37d7'
+            'e97efa5c6d3f7f4e970a84220cd73fbc0fb8e213623c4c44652f3c57d348e2a4'
             'a2938e74de29c13ee08f5dad3fc8b2c4b618ec90a85ca8e95a4470f87f8af4f7'
             'e7939c95276430e80b191f37a46402c12c7a3546c17b11cafb0f3f238d84de24')
 
@@ -30,7 +30,6 @@ prepare() {
 
 package() {
   install -dm775 "${pkgdir}"/usr/share/licenses/prometheus-xmpp-webhook
-  install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/prometheus-xmpp-webhook
   install -Dm644 THIRD-PARTY-NOTICES -t "${pkgdir}"/usr/share/licenses/prometheus-xmpp-webhook
   install -Dm644 xmpp-webhook.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm755 xmpp-webhook "${pkgdir}"/usr/bin/xmpp-webhook
