@@ -18,7 +18,7 @@
 pkgbase="spl-linux-vfio"
 pkgname=("spl-linux-vfio" "spl-linux-vfio-headers")
 _splver="0.7.12"
-_kernelver="4.18.5.arch1-1"
+_kernelver="4.19.8.arch1-1"
 _extramodules="${_kernelver/.arch/-arch}-vfio"
 
 pkgver="${_splver}_$(echo ${_kernelver} | sed s/-/./g)"
