@@ -1,7 +1,7 @@
 pkgbase = python-pytest-describe
-	pkgdesc = Architectural foundation for Python applications
+	pkgdesc = Describe-style plugin for pytest
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ropez/pytest-describe
 	arch = any
 	license = Apache
