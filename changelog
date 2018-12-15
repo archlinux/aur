@@ -1,3 +1,17 @@
+2018-12-15 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.4.1.7-1:
+    [!] Updated .NET Core runtime from 2.1 to 2.2. As usual, generic users are reminded to update their runtimes, OS-specific users are covered by us, no prerequisites changes.
+    Further MatchActively improvements:
+        The code is now aware of non-tradable items and will properly try to match tradable ones in order to create a matching sum. Previously ASF operated on tradable items exclusively.
+        The code is now aware of non-responding bots and upon detection of missed trade, will not attempt to match the bot during remaining rounds.
+        The code now properly resumes matching that was cut in the middle while creating another trade offer.
+        Various other small logic-related improvements and bugfixes.
+    Added Steam winter sale 2018 to built-in blacklist.
+    Increased default value of WebLimiterDelay from 200 to 300 due to more harsh Steam restrictions.
+    Fixed redeem command not working properly with Steam wallet codes (ref: #957).
+    Fixed InventoryLimiterDelay not being applied properly to inventories with more than 5000 items.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2018-12-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.4.1.4-1:
     [!] Added MatchActively feature to bot's TradingPreferences. Visit wiki for more info.
