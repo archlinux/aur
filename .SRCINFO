@@ -1,0 +1,15 @@
+pkgbase = python-pytest-describe
+	pkgdesc = Architectural foundation for Python applications
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/ropez/pytest-describe
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-pytest
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/p/pytest-describe/pytest-describe-0.11.1.tar.gz
+	sha256sums = bd6be131452b7822c872735ffe53ce3931b3b80cbbad1647c2b482cc9ef3d00e
+
+pkgname = python-pytest-describe
+
