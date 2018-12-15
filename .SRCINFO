@@ -1,6 +1,6 @@
 pkgbase = lxc-selinux
 	pkgdesc = Linux Containers
-	pkgver = 3.0.1
+	pkgver = 3.1.0
 	pkgrel = 1
 	epoch = 1
 	url = http://linuxcontainers.org
@@ -21,18 +21,18 @@ pkgbase = lxc-selinux
 	optdepends = lua
 	optdepends = lua-filesystem: lxc-top
 	optdepends = lua-alt-getopt: lxc-top
-	provides = lxc=3.0.1-1
+	provides = lxc=3.1.0-1
 	conflicts = lxc
 	options = emptydirs
 	backup = etc/lxc/default.conf
 	backup = etc/default/lxc
-	source = https://linuxcontainers.org/downloads/lxc-3.0.1.tar.gz
-	source = https://linuxcontainers.org/downloads/lxc-3.0.1.tar.gz.asc
+	source = https://linuxcontainers.org/downloads/lxc-3.1.0.tar.gz
+	source = https://linuxcontainers.org/downloads/lxc-3.1.0.tar.gz.asc
 	source = lxc.tmpfiles.d
 	source = lxc.service
 	source = lxc-auto.service
 	validpgpkeys = 602F567663E593BCBD14F338C638974D64792D67
-	sha256sums = 45986c49be1c048fa127bd3e7ea1bd3347e25765c008a09a2e4c233151a2d5db
+	sha256sums = 4d8772c25baeaea2c37a954902b88c05d1454c91c887cb6a0997258cfac3fdc5
 	sha256sums = SKIP
 	sha256sums = 10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479
 	sha256sums = 711fb84c87b143cb0098e095fdebb040b15f553a854efbe846a00100bdb9ae88

@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andrea Zucchelli <zukka77@gmail.com>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
@@ -8,7 +7,7 @@
 
 pkgname=lxc-selinux
 epoch=1
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Linux Containers"
 arch=('x86_64')
@@ -30,7 +29,7 @@ source=("https://linuxcontainers.org/downloads/${pkgname/-selinux}-${pkgver}.tar
 	"lxc.tmpfiles.d"
 	"lxc.service"
 	"lxc-auto.service")
-sha256sums=('45986c49be1c048fa127bd3e7ea1bd3347e25765c008a09a2e4c233151a2d5db'
+sha256sums=('4d8772c25baeaea2c37a954902b88c05d1454c91c887cb6a0997258cfac3fdc5'
             'SKIP'
             '10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479'
             '711fb84c87b143cb0098e095fdebb040b15f553a854efbe846a00100bdb9ae88'
