@@ -5,7 +5,7 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=pytrainer
-pkgver=1.12.2
+pkgver=2.0.0rc1
 pkgrel=1
 pkgdesc='A tool to log your sport activities.'
 arch=('any')
@@ -21,7 +21,7 @@ source=("$pkgname-${pkgver}.tar.gz::https://github.com/$pkgname/$pkgname/archive
         $pkgname.sh
         #pathfix.patch
         )
-md5sums=('1b1f87081ab68197c51d5e9e40e71e33'
+md5sums=('1a29bd8749a7ce218e1959e918b60211'
          'b39a8511bc63e6d65a615d26defbb05f'
          #'c80aa188dce3a5675b15a703873bf3ad'
          )
