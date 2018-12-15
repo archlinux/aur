@@ -1,6 +1,6 @@
 pkgbase = kvmd-webterm
 	pkgdesc = Pi-KVM Web Terminal (GoTTY)
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://github.com/pi-kvm/kvmd-webterm
 	install = kvmd-webterm.install
@@ -12,15 +12,15 @@ pkgbase = kvmd-webterm
 	source = kvmd-webterm.install
 	source = kvmd-webterm.service
 	source = terminal.svg
-	source = nginx.http-ctx.conf
-	source = nginx.server-ctx.conf
+	source = nginx.ctx-http.conf
+	source = nginx.ctx-server.conf
 	source = index.html
 	source = manifest.yaml
 	md5sums = a8119b6f675ca954c71ecd241745df0c
 	md5sums = 1a44d9a469c566b20bcf9b9dafa97fe6
 	md5sums = 8310f16f1892706c6ee5d07d51393e00
 	md5sums = dc9e0d328cb2710ef2921737fded3229
-	md5sums = 4623292f8a4dab570ea14ec63e25216e
+	md5sums = 7a97a82f9e2a1b4c657699fcd6feffc9
 	md5sums = 322e19b66f30da453c9e7525400c64d4
 	md5sums = ad52c541f400b29e85770bbb3d6a5211
 
