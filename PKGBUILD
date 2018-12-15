@@ -1,7 +1,7 @@
 # Maintainer: xstaticxgpx (optimum.reflex<at>gmail<dot>com)
 
 pkgname=podman
-pkgver=0.12.1.1
+pkgver=0.12.1.2
 pkgrel=1
 pkgdesc="Utility for running OCI-based containers."
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=("https://github.com/containers/libpod/archive/v${pkgver}.tar.gz"
         "seccomp.json"
         "policy.json"
 )
-sha256sums=('ccd5b7f8cff0af9f7d9558c70a674ac192f4126056705e968a71a8b8069d63e3'
+sha256sums=('bcde54cad3d08c84af7d18f5a5ef192121bf8e562b6e6cd8a75762c1664ac9c0'
             'bf720633c4c9906e93665813bbf13a73a6cb0df2b412d81228c7673505513d1f'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             'c883cff9c50b01d71ad96403a9e12cab934490fa02b0dce01a602e9c9f720db7'
