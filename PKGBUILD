@@ -1,8 +1,8 @@
-# Maintainer: xsmile <>
+# Maintainer: wtzb <>
 
 pkgname=mycrypto-bin
 _pkgname=mycrypto
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Open-source, client-side tool for generating Ether Wallets, handling ERC-20 tokens, and interacting with the blockchain more easily'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('MIT')
 source=("${url}/releases/download/${pkgver}/linux-x86-64_${pkgver}_MyCrypto.AppImage"
         'LICENSE'
         'mycrypto.sh')
-sha256sums=('80af9204b11fad75f8168f00e864d6f1e67987a840d0289a1377b02dc7f3035f'
+sha256sums=('55bddcdbb8849bcaab0f671e77a473577c5a9bafa5a6fe1add2aa1c0b558f105'
             'e4d52665623eaeb7d6efa43c0c29d225cd009cd766dc15f1b464a19cab1ec5cb'
             'eb800f7d523bbff35010f640d06cc35c7fd62ee522c9615cd45acb5413df01f0')
 
