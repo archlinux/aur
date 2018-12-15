@@ -6,7 +6,7 @@ After=dev-ttyAMA0.device
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/hciattach-rpi3 -n /dev/ttyAMA0 bcm43xx 921600 noflow -
+ExecStart=/usr/bin/btattach -B /dev/ttyAMA0 -P bcm -S 3000000
 
 [Install]
 WantedBy=multi-user.target
