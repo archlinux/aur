@@ -1,6 +1,6 @@
 pkgbase = lxqt-panel-git
 	pkgdesc = The LXQt desktop panel
-	pkgver = 0.11.0.7.gf73d164
+	pkgver = 0.13.0.1104.gc6f910fd
 	pkgrel = 1
 	url = https://github.com/lxde/lxqt-panel
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = lxqt-panel-git
 	depends = libxcomposite
 	depends = lxmenu-data
 	depends = libdbusmenu-qt5
-	depends = lxqt-globalkeys
+	depends = lxqt-globalkeys-git
 	provides = lxqt-panel
 	conflicts = lxqt-panel
 	source = git+https://github.com/lxde/lxqt-panel.git

@@ -4,7 +4,7 @@
 
 _pkgname=lxqt-panel
 pkgname=$_pkgname-git
-pkgver=0.11.0.7.gf73d164
+pkgver=0.13.0.1104.gc6f910fd
 pkgrel=1
 pkgdesc='The LXQt desktop panel'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=(
       "alsa-lib" "libpulse" "lm_sensors" "libstatgrab" "libsysstat-git"
       "solid"
       "menu-cache" "libxcomposite" "lxmenu-data" "libdbusmenu-qt5"
-      "lxqt-globalkeys"
+      "lxqt-globalkeys-git"
 )
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 provides=("$_pkgname")
