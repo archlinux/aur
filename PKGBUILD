@@ -1,7 +1,7 @@
 # Maintainer: Zoron <zoronlivingston@gmail.com>
 
 pkgname=sddm-chinese-painting-theme
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Chinese style SDDM theme"
 arch=('any')
