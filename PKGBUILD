@@ -6,7 +6,7 @@
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=3.30.2+4
-pkgrel=2
+pkgrel=3
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -40,8 +40,7 @@ prepare() {
   # js/ui: Use captured-event::instantaneous [performance]
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/276
   # Requires mutter MR283/commit "clutter-actor: Add detail to captured-event signal [performance]"
-  pacman -Q | grep mutter-781835-workaround
-  if [ $? -eq 0 ]; then
+  if pacman -Q | grep mutter-781835-workaround; then
     git cherry-pick d12c86cf || bash
     echo "======= mutter-781835-workaround detected, MR276 is applied ======="
     sleep 3
