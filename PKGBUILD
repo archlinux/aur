@@ -13,14 +13,14 @@ source=("https://github.com/KDE/$pkgname/archive/$_commit.tar.gz")
 sha256sums=('cf745bb7a40f4fe2c830f3ece3133853eb5d99280e6b108852c4655e83fa30af')
 
 prepare() {
-  cd $srcdir/$pkgname-$_commit
+  cd $pkgname-$_commit
   mkdir -p lib
   find . -name "*.o" -delete
 }
 
 build() {
   # TODO : Fix package not building the second time (workaround with the find command in "prepare")
-  cd $srcdir/$pkgname-$_commit
+  cd $pkgname-$_commit
   export QTDIR=$(pwd)
   make linux-g++-shared
   make
@@ -33,7 +33,7 @@ _qt1_includedir="$_qt1_prefix/include"
 
 package() {
   # Stuff from the fedora spec file
-  cd $srcdir/$pkgname-$_commit
+  cd $pkgname-$_commit
   mkdir -p $pkgdir/$_qt1_bindir
   mkdir -p $pkgdir/$_qt1_libdir
 #  mkdir -p $pkgdir/usr/man # disabled because it is apparently not needed
