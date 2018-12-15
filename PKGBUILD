@@ -2,7 +2,7 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.29.3+41+g364591a15
+pkgver=3.31.3+2+g29cbc2166
 pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
 url="http://www.gnome.org/projects/$_pkgname/"
@@ -30,10 +30,10 @@ build() {
   ninja -C build
 }
 
-# check() {
-#   cd $_pkgname
-#   ninja -C build test
-# }
+check() {
+  cd $_pkgname
+  ninja -C build test
+}
 
 package() {
   cd $_pkgname
