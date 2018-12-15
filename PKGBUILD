@@ -15,6 +15,7 @@ backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt'
 'etc/dnsmasq.d/01-pihole.conf')
 
 source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
+	"https://raw.github.com/max72bra/pi-hole-standalone-archlinux-customization/master/arch-server-core-$pkgver.patch"
 	dnsmasq.main
 	dnsmasq.include
 	$_pkgname-gravity.service
@@ -23,6 +24,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	piholeDebug.sh)
 
 md5sums=('c128bec162c5cff3136ad680c326579f'
+         '10e38b72351866e7c9906fdae8f5688e'
          'b955136ef15be29a468e8d9f85f24b8c'
          '0bab89977a2d4357ec8befb4ff85ee3d'
          '047f13d4ac97877f724f87b002aaee63'
@@ -31,167 +33,8 @@ md5sums=('c128bec162c5cff3136ad680c326579f'
          'd7b69ae51db0e8ac8e27f20a234eed85')
 
 prepare() {
-  _ssc="/tmp/sedcontrol"
-  
-  # the return of service management
-  sed -i "s|service \${resolver} \${svcOption}|systemctl \${svcOption} pi-hole-ftl|w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: the return of service management" && return 1 ; fi
-
-  # setting up and securing pihole wrapper script
-  #sed -n "/debugFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  #if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 1" && return 1 ; fi
-  #sed -i '/debugFunc() {/,+16d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/flushFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 2" && return 1 ; fi
-  sed -i '/flushFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/versionFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 3" && return 1 ; fi
-  sed -i '/versionFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/updatePiholeFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 2" && return 1 ; fi
-  sed -i '/updatePiholeFunc() {/,+5d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/reconfigurePiholeFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 3" && return 1 ; fi
-  sed -i '/reconfigurePiholeFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/chronometerFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 6" && return 1 ; fi
-  sed -i '/chronometerFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/uninstallFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 4" && return 1 ; fi
-  sed -i '/uninstallFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/piholeCheckoutFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 5" && return 1 ; fi
-  sed -i '/piholeCheckoutFunc() {/,+22d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/tricorderFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 6" && return 1 ; fi
-  sed -i '/tricorderFunc() {/,+29d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/\"\-[r,up]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 7" && return 1 ; fi
-  sed -i '/\"\-[r,up]/d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/^  \-[r,t,l,f],/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 11" && return 1 ; fi
-  sed -i '/^  \-[r,t,l,f],/d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/^  \-up,/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 13" && return 1 ; fi
-  sed -i '/^  \-up,/d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/^  \-a,/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 14" && return 1 ; fi
-  sed -i '/^  \-a,/,+1d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/uninstall/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 11" && return 1 ; fi
-  sed -i '/uninstall/d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -i "s|^  checkout.*$|\";|w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 12" && return 1 ; fi
-
-  sed -n "/checkout/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 13" && return 1 ; fi
-  sed -i '/checkout/d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/tricorder/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 14" && return 1 ; fi
-  sed -i '/tricorder/d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/updatechecker/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 19" && return 1 ; fi
-  sed -i '/updatechecker/d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-# -----------------
-
-  # setup gravity.sh
-  sed -i "s|/usr/local/bin/|/usr/bin/|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setup gravity.sh 1" && return 1 ; fi
-
-# -----------------
-
-  # setting up and securing webpage.sh script
-  sed -n "/SetWebPassword() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 1" && return 1 ; fi
-  sed -i '/SetWebPassword() {/,+42d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-
-  sed -n "/SetTemperatureUnit() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 2" && return 1 ; fi
-  sed -i '/SetTemperatureUnit() {/,+3d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-
-  sed -n "/SetExcludeDomains() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 3" && return 1 ; fi
-  sed -i '/SetExcludeDomains() {/,+3d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-
-  sed -n "/SetExcludeClients() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 4" && return 1 ; fi
-  sed -i '/SetExcludeClients() {/,+3d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-
-  sed -n "/EnableDHCP() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 5" && return 1 ; fi
-  sed -i '/EnableDHCP() {/,+17d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-
-  sed -n "/DisableDHCP() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 6" && return 1 ; fi
-  sed -i '/DisableDHCP() {/,+11d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-
-  sed -n "/SetWebUILayout() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 7" && return 1 ; fi
-  sed -i '/SetWebUILayout() {/,+3d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-
-  sed -n "/SetPrivacyMode() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 8" && return 1 ; fi
-  sed -i '/SetPrivacyMode() {/,+7d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-
-  sed -n "/\"\-[p,c,f,k]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 9" && return 1 ; fi
-  sed -i '/\"\-[p,c,f,k]/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-
-  sed -n "/  \-[p,c,f,k]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 9" && return 1 ; fi
-  sed -i '/  \-[p,c,f,k]/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-
-  sed -n "/\"setexcludedomains/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 10" && return 1 ; fi
-  sed -i '/\"setexcludedomains/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  sed -n "/\"setexcludeclients/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 11" && return 1 ; fi
-  sed -i '/\"setexcludeclients/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  sed -n "/\"enabledhcp/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 12" && return 1 ; fi
-  sed -i '/\"enabledhcp/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  sed -n "/\"disabledhcp/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 13" && return 1 ; fi
-  sed -i '/\"disabledhcp/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  sed -n "/\"layout/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 14" && return 1 ; fi
-  sed -i '/\"layout/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  sed -n "/\"privacymode/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 15" && return 1 ; fi
-  sed -i '/\"privacymode/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-
-  sed -i "s|/usr/local/bin/|/usr/bin/|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 15" && return 1 ; fi
-
-# -----------------
-  # adlists.default is gone and adlists.list is populated by install script
-  # from basic-install.sh -- function chooseBlocklists()
-  cat <<EOF > $_pkgname-$pkgver/adlists.list
-https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-https://mirror1.malwaredomains.com/files/justdomains
-http://sysctl.org/cameleon/hosts
-https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist
-https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
-https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
-https://hosts-file.net/ad_servers.txt
-EOF
+  cd "$srcdir"/"$_pkgname"-"$pkgver"
+  patch -Np1 -i "$srcdir"/arch-server-core-$pkgver.patch
 }
 
 package() {
