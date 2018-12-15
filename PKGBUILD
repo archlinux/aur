@@ -1,6 +1,6 @@
 #Maintainer: KlarkKable <KlarkKable at protonmail dot com>
 pkgname=dart-sdk-dev
-pkgver=2.2.0_dev.0.0
+pkgver=2.2.0_dev.1.1
 pkgrel=1
 pkgdesc="The official Dart sdk from dart-lang project (Development branch)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('unzip')
 conflicts=('dart')
 provides=('dart=$pkgver')
 source=("https://storage.googleapis.com/dart-archive/channels/dev/release/${pkgver//_/-}/sdk/dartsdk-linux-x64-release.zip")
-sha256sums=('fe2087156d5215cf5f333cf6cd72d9a461fb1e475bcc60e48e53d348306ca0d9')
+sha256sums=('f6a7d7e07b6ad093c1cd90f452fc74b7d580001bb07e654b1ef4d3b07a07d0aa')
 
 package() {
   # Uncompressed name is "dart-sdk" not "dart-sdk-dev"
