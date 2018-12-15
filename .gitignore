@@ -1,0 +1,6 @@
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+writeas-gtk-git/
+*.zip

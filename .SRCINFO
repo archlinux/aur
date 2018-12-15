@@ -1,0 +1,19 @@
+pkgbase = writeas-gtk-git
+	pkgdesc = Write.as GTK desktop app
+	pkgver = v1.0.1_0_g708de8f0ae86
+	pkgrel = 1
+	url = https://write.as/apps/desktop
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = gtksourceview3
+	optdepends = writeas-cli: web publishing support
+	provides = writeas-gtk
+	conflicts = writeas-gtk
+	source = writeas-gtk-git::git+https://code.as/writeas/writeas-gtk.git
+	sha256sums = SKIP
+
+pkgname = writeas-gtk-git
+
