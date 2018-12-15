@@ -1,6 +1,6 @@
 pkgbase = leiningen
 	pkgdesc = Automating Clojure projects without setting your hair on fire.
-	pkgver = 2.8.1
+	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://github.com/technomancy/leiningen
 	install = leiningen.install
@@ -10,11 +10,11 @@ pkgbase = leiningen
 	depends = bash
 	optdepends = rlwrap: for readline support
 	optdepends = leiningen-completions: completion scripts
-	noextract = leiningen-2.8.1-standalone.zip
-	source = https://github.com/technomancy/leiningen/archive/2.8.1.tar.gz
-	source = https://github.com/technomancy/leiningen/releases/download/2.8.1/leiningen-2.8.1-standalone.zip
-	sha256sums = 7c6ca968f365e0a0893781b1eb03f920695ed8982ac7dbc2803a3188fbd75242
-	sha256sums = fc49bbc7ff25ef42ad9c0a8b5f3d0641702abc9a9a8e847bc845bca4c09a7c58
+	noextract = leiningen-2.8.3-standalone.zip
+	source = https://github.com/technomancy/leiningen/archive/2.8.3.tar.gz
+	source = https://github.com/technomancy/leiningen/releases/download/2.8.3/leiningen-2.8.3-standalone.zip
+	sha256sums = adabd2f0412a507ef0dbbcf59e91f6aa0a8b0de0348b98d7b2c63a80a0a37024
+	sha256sums = 7f0aafc93b1e32e49b7b15beaeefdbd6521dabb3cdbe541225e2524a503b6b1e
 
 pkgname = leiningen
 
