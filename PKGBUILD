@@ -2,8 +2,8 @@
 _pkgname=pytest-describe
 pkgname=python-$_pkgname
 pkgver=0.11.1
-pkgrel=1
-pkgdesc="Architectural foundation for Python applications"
+pkgrel=2
+pkgdesc="Describe-style plugin for pytest"
 arch=('any')
 url="https://github.com/ropez/pytest-describe"
 license=('Apache')
