@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=snd-usb-audio-lowlatency-dkms
 _basepkgname=snd-usb-audio-lowlatency
-pkgver=4.19.4
+pkgver=4.19.9
 _srcname=linux-${pkgver%.*}
 pkgrel=1
 pkgdesc="snd-usb-audio kernel module modified for low latency"
@@ -23,7 +23,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
-            'c1f2c29e3a5b9cd0ec7184a5820cd8a4568e67b791373efa12bd28c29616de9b'
+            '0a64d9fdfbab1707840a5f4487167deca4071553c780caa0574bb0eb60499afc'
             'b2b40e2640986d0d965ff243d892d6d4d36cdadd930f4e83efffcbd8cbcf75ca'
             '69f325c3af92c4098c9d118b2eab7de76eba691677864f714697bce5f47005e2'
             '7c9b89931e4edc595dda38f8c6116dc45d10d191885c52aba3d9d8efdc26d261'
