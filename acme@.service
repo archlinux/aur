@@ -21,7 +21,7 @@ RuntimeDirectoryMode=0755
 SuccessExitStatus=2
 
 Environment="ACME_DIR=/var/lib/acme"
-Environment="ACME_ARGS=-vbnN"
+Environment="ACME_ARGS=-vbnN -a https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf"
 Environment="ACME_ACCOUNT=letsencrypt"
 
 EnvironmentFile=/etc/acme/%I.conf
