@@ -1,10 +1,10 @@
-# Maintainer: Sándor Nagy <sanya868[at]gmail[dot]com>
+# Maintainer: Sandor Nagy <sandor[dot]nagy[at]kdemail[dot]net>
 pkgname=soccerwindow2
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="RoboCup Soccer Simulator"
 arch=('x86_64' 'i686')
-url="http://rctools.sourceforge.jp/"
+url="https://osdn.net/projects/rctools/"
 license=('CCPL')
 groups=('rcss')
 depends=('librcsc>=4.0.1' 'qt4>=4.3')
@@ -13,14 +13,14 @@ optdepends=(
 	'rcssserver:	RCSS Server'
 	'rcssmonitor:	RCSS Monitor')
 options=('buildflags' 'makeflags')
-source=(http://jaist.dl.sourceforge.jp/rctools/51942/$pkgname-$pkgver.tar.gz
-	$pkgname-$pkgver.patch)
-sha512sums=('e417965a8e6c24d915930306f795edc7571b3edd4ba6879914799aa49089dd1296672bb231c73dbdb707e61a65c4f17bbafedd610b861a16d0cf9ce575152d4f'
-            '5ee3841d7e89ac4fdd0af52364ee24ebc37a30865909cb50f78002e17ba0f83da4938ae7eef91d765a4b81ef27570b45e3284187e1d6c204d4eb59b9d4cfd9f7')
+source=(https://osdn.net/dl/rctools/soccerwindow2-5.1.1.tar.gz
+	fix-locale.patch)
+md5sums=('aa0a30fcf596157b752c695f74f8a97f'
+         '65e4af0782e44b54732d825dda88c866')
 
 prepare() {
         cd "$srcdir/$pkgname-$pkgver"
-        patch -p0 -i "$srcdir/$pkgname-$pkgver.patch"
+        patch -p0 -i "$srcdir/fix-locale.patch"
 }
 
 build() {
