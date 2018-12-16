@@ -4,16 +4,16 @@
 # Contributer: Toni Foerster <stonerl@skeps.de>, AndrÃ© Klitzing <aklitzing@online.de>
 
 pkgname=po-debconf
-pkgver=1.0.20
-pkgrel=2
+pkgver=1.0.21
+pkgrel=1
 pkgdesc="Debian manage translated Debconf templates files with gettext"
 arch=('any')
 url="http://www.debian.org/"
 license=('GPL')
 changelog=ChangeLog
 depends=('gettext' 'perl' 'intltool-debian')
-source=(http://ftp.debian.org/debian/pool/main/p/po-debconf/${pkgname}_${pkgver}_all.deb)
-sha256sums=('493dcfe155a49b97689403d440b9c953caabc89ccedc4d0297db675ec4db09a1')
+source=(https://deb.debian.org/debian/pool/main/p/po-debconf/${pkgname}_${pkgver}_all.deb)
+sha256sums=('0c293549b93c65ca6ca410639065d6f2ebcc5ceb2138b51da4fb9a904136733c')
 
 build() {
 	cd $srcdir
