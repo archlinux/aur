@@ -1,6 +1,6 @@
 pkgbase = btrfs-progs-git
 	pkgdesc = Btrfs filesystem utilities
-	pkgver = 4166_4.16_r24_g9ecda876
+	pkgver = 4420_4.19.1_r0_g167651ca
 	pkgrel = 1
 	url = https://btrfs.wiki.kernel.org/index.php/Main_Page
 	install = btrfs-progs-git.install
@@ -19,7 +19,7 @@ pkgbase = btrfs-progs-git
 	depends = zstd
 	provides = btrfs-progs
 	conflicts = btrfs-progs
-	source = btrfs-progs-unstable::git+http://repo.or.cz/r/btrfs-progs-unstable/devel.git#branch=devel
+	source = git+https://github.com/kdave/btrfs-progs.git
 	source = initcpio-hook-btrfs::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/initcpio-hook-btrfs?h=packages/btrfs-progs
 	source = initcpio-install-btrfs::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/initcpio-install-btrfs?h=packages/btrfs-progs
 	source = btrfs-scrub@.service::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/btrfs-scrub@.service?h=packages/btrfs-progs

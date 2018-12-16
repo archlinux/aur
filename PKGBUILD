@@ -5,8 +5,8 @@
 # Based on PKGBUILD from Dan Zwell <dzwell@zwell.net>
 
 pkgname=btrfs-progs-git
-_gitname=${pkgname%-git}-unstable
-pkgver=4166_4.16_r24_g9ecda876
+_gitname=${pkgname%-git}
+pkgver=4420_4.19.1_r0_g167651ca
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
@@ -18,7 +18,7 @@ provides=('btrfs-progs')
 conflicts=('btrfs-progs')
 _url=https://projects.archlinux.org/svntogit/packages.git/plain/trunk/
 install="${pkgname}.install"
-source=(${_gitname}::git+"http://repo.or.cz/r/btrfs-progs-unstable/devel.git#branch=devel"
+source=(git+"https://github.com/kdave/btrfs-progs.git"
         "initcpio-hook-btrfs::${_url}initcpio-hook-btrfs?h=packages/btrfs-progs"
         "initcpio-install-btrfs::${_url}initcpio-install-btrfs?h=packages/btrfs-progs"
         "btrfs-scrub@.service::${_url}btrfs-scrub@.service?h=packages/btrfs-progs"
@@ -75,7 +75,9 @@ check() {
     tests/fsck-tests/024-clear-space-cache \
     tests/fsck-tests/025-file-extents \
     tests/fsck-tests/028-unaligned-super-dev-sizes \
-    tests/fsck-tests/031-metadatadump-check-data-csum
+    tests/fsck-tests/031-metadatadump-check-data-csum \
+    tests/fsck-tests/033-lowmem-collission-dir-items \
+    tests/fsck-tests/037-freespacetree-repair
 
   make test-fsck
 
