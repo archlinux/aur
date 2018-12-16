@@ -3,16 +3,16 @@
 
 pkgname=veusz-git
 pkgver=3.0.1.7.g444bf3ff
-pkgrel=1
+pkgrel=2
 pkgdesc="A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output."
 url="http://home.gna.org/veusz"
 arch=('x86_64')
 license=('GPL2')
-depends=('python-pyqt5' 'python-numpy' 'sip' 'python-sip' 'hicolor-icon-theme' 'cblas')
-makedepends=('git')
-optdepends=('python-pyfits: for reading files in FITS format'
+depends=('python-pyqt5' 'python-numpy' 'python-sip' 'hicolor-icon-theme' 'cblas')
+makedepends=('git' 'sip')
+optdepends=('ghostscript: for EPS/PS output'
+	    'python-pyfits: for reading files in FITS format'
 	    'python-dbus: for dbus interface'
-            'python-pyminuit2: for numerical function minimization'
             'python-astropy: for VO table import')
 conflicts=('veusz')
 provides=('veusz')
