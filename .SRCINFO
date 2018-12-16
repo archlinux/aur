@@ -1,6 +1,6 @@
 pkgbase = unity-editor-beta
 	pkgdesc = The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences.
-	pkgver = 2018.3.0f1
+	pkgver = 2019.1.0a12
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -28,16 +28,16 @@ pkgbase = unity-editor-beta
 	optdepends = unity-editor-beta-facebook
 	optdepends = visual-studio-code-bin
 	options = !strip
-	source = https://beta.unity3d.com/download/f023c421e164/LinuxEditorInstaller/Unity.tar.xz
+	source = 2019.1.0a12.tar.xz::https://beta.unity3d.com/download/5175bce2e5d4/LinuxEditorInstaller/Unity.tar.xz
 	source = unity-editor-beta
 	source = unity-editor-beta.desktop
 	source = unity-editor-beta-icon.png
 	source = eula.txt
-	sha1sums = 5f29683307ead4ad306d59898abcc7fc60c35d67
-	sha1sums = d61175685d0836a79b2d4582c09ea23ed5ee18e9
-	sha1sums = c348f141232ec06c6558fd42b5cbf86a75e2d02d
-	sha1sums = fddf4861974f88f0565de7f54f7418204e729894
-	sha1sums = 1c3d4bc66fd16a10e68f78320e16cfd86afac7ac
+	md5sums = eee04fe02f11b9c5a930ecf8de99b0c0
+	md5sums = a0705606b7f36a6f1e4bc01be16336b1
+	md5sums = 03837b6962d1050bbaf29b76e0f257e3
+	md5sums = 723f9e556821810682a6d1f4be540a74
+	md5sums = 24f6741eba3d591a0761f3c92e3cc1f7
 
 pkgname = unity-editor-beta
 

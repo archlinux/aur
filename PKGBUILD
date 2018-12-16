@@ -1,12 +1,9 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2018.3.0
-_build=f1
-_randomstring=f023c421e164
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta
-pkgver=${_version}${_build}
+pkgver=2019.1.0a12
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
@@ -26,24 +23,24 @@ depends=('desktop-file-utils'
          'npm'
          'intel-tbb'
          'gtk3')
-optdepends=('unity-editor-beta-doc'
-            'unity-editor-beta-android'
-            'unity-editor-beta-ios'
-            'unity-editor-beta-mac'
-            'unity-editor-beta-webgl'
-            'unity-editor-beta-windows'
-            'unity-editor-beta-facebook'
-            'visual-studio-code-bin')
-source=("https://beta.unity3d.com/download/${_randomstring}/LinuxEditorInstaller/Unity.tar.xz"
-        'unity-editor-beta'
-        'unity-editor-beta.desktop'
-        'unity-editor-beta-icon.png'
-        'eula.txt')
-sha1sums=('5f29683307ead4ad306d59898abcc7fc60c35d67'
-          'd61175685d0836a79b2d4582c09ea23ed5ee18e9'
-          'c348f141232ec06c6558fd42b5cbf86a75e2d02d'
-          'fddf4861974f88f0565de7f54f7418204e729894'
-          '1c3d4bc66fd16a10e68f78320e16cfd86afac7ac')
+optdepends=("${pkgname}-doc"
+            "${pkgname}-android"
+            "${pkgname}-ios"
+            "${pkgname}-mac"
+            "${pkgname}-webgl"
+            "${pkgname}-windows"
+            "${pkgname}-facebook"
+            "visual-studio-code-bin")
+source=("2019.1.0a12.tar.xz::https://beta.unity3d.com/download/5175bce2e5d4/LinuxEditorInstaller/Unity.tar.xz"
+        "${pkgname}"
+        "${pkgname}.desktop"
+        "${pkgname}-icon.png"
+        "eula.txt")
+md5sums=("eee04fe02f11b9c5a930ecf8de99b0c0"
+         'a0705606b7f36a6f1e4bc01be16336b1'
+         '03837b6962d1050bbaf29b76e0f257e3'
+         '723f9e556821810682a6d1f4be540a74'
+         '24f6741eba3d591a0761f3c92e3cc1f7')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
@@ -58,11 +55,11 @@ package() {
   find "${pkgdir}${_prefix}/Editor/Data" -type d -exec chmod ga+rx {} \;
 
   # Add version to desktop file
-  sed -i "/^Version=/c\Version=${_version}${_build}" "${srcdir}/unity-editor-beta.desktop"
+  sed -i "/^Version=/c\Version=${_version}${_build}" "${srcdir}/${pkgname}.desktop"
 
-  install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/unity-editor-beta.desktop"
-  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${srcdir}/unity-editor-beta-icon.png"
-  install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/unity-editor-beta"
+  install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${srcdir}/${pkgname}-icon.png"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/${pkgname}"
   install -Dm644 "${srcdir}/eula.txt" "${pkgdir}/usr/share/licenses/${pkgname}/eula.txt"
 }
 
