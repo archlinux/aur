@@ -1,103 +1,40 @@
-# Maintainer: Patrick Wicki <patrick.wicki@member.fsf.org>
+# Maintainer: Patrick Wicki <wickip@student.ethz.ch>
 
 pkgname=gnome-meta
-pkgver=3.26.2
+pkgver=3.30.1
 pkgrel=1
 pkgdesc='Meta package for installing the gnome group'
 arch=(any)
 url='https://www.archlinux.org/'
 license=(GPL)
-depends=(accountsservice
-	apache
-	bluez
-	bubblewrap
-	caribou
+depends=(baobab
 	cheese
-	clutter
-	clutter-gst
-	clutter-gtk
-	cogl
-	colord-gtk
-	cups-pk-helper
-	djvulibre
-	evolution-data-server
-	exempi
-	farstream
-	folks
-	geocode-glib
-	gjs
-	gmime3
-	gnome-autoar
-	gnome-bluetooth
-	gnome-color-manager
-	gnome-desktop
-	gnome-menus
-	gnome-online-accounts
-	gom
-	grilo
-	js52
-	libchamplain
-	libcue
-	libdmapsharing
-	libgdata
-	libgdm
-	libgee
-	libgnomekbd
-	libgphoto2
-	libgrss
-	libgsf
-	libgweather
-	libgxps
-	libibus
-	libiptcdata
-	libmediaart
-	libmtp
-	libmusicbrainz5
-	libnautilus-extension
-	libnice
-	liboauth
-	libosinfo
-	libpeas
-	libphonenumber
-	libpwquality
-	libquvi
-	libquvi-scripts
-	libspectre
-	lua52-bitop
-	lua52-expat
-	lua52-lpeg
-	lua52-luajson
-	lua52-socket
-	mod_dnssd
-	nautilus-sendto
-	osinfo-db
-	pulseaudio-bluetooth
-	python-atspi
-	python-gobject
-	shared-color-targets
-	telepathy-farstream
-	telepathy-glib
-	telepathy-logger
-	telepathy-mission-control
-	totem-plparser
-	xdg-user-dirs
-	xorg-xhost
-	yelp-xsl
-	adwaita-icon-theme
-	baobab
-	empathy
 	eog
 	epiphany
 	evince
+	file-roller
 	gdm
+	gedit
 	gnome-backgrounds
 	gnome-calculator
+	gnome-calendar
+	gnome-characters
+	gnome-clocks
+	gnome-color-manager
 	gnome-contacts
 	gnome-control-center
 	gnome-dictionary
 	gnome-disk-utility
+	gnome-documents
 	gnome-font-viewer
+	gnome-getting-started-docs
 	gnome-keyring
+	gnome-logs
+	gnome-maps
+	gnome-menus
+	gnome-music
+	gnome-photos
+	gnome-remote-desktop
 	gnome-screenshot
 	gnome-session
 	gnome-settings-daemon
@@ -105,11 +42,12 @@ depends=(accountsservice
 	gnome-shell-extensions
 	gnome-system-monitor
 	gnome-terminal
-	gnome-themes-standard
+	gnome-themes-extra
+	gnome-todo
 	gnome-user-docs
 	gnome-user-share
+	gnome-video-effects
 	grilo-plugins
-	gucharmap
 	gvfs
 	gvfs-afc
 	gvfs-goa
@@ -122,10 +60,15 @@ depends=(accountsservice
 	mutter
 	nautilus
 	networkmanager
+	orca
+	rygel
 	sushi
 	totem
 	tracker
 	tracker-miners
 	vino
 	xdg-user-dirs-gtk
-	yelp)
+	yelp
+	gnome-boxes
+	gnome-software
+	simple-scan)
