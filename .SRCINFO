@@ -1,6 +1,6 @@
 pkgbase = compton-git
 	pkgdesc = X Compositor (a fork of xcompmgr-dana) (git-version)
-	pkgver = 599_Next.4.gb18d46b_2018.11.08
+	pkgver = 658_Next.11.ga6b63cd_2018.12.16
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/yshui/compton
@@ -24,6 +24,7 @@ pkgbase = compton-git
 	depends = libconfig
 	depends = libdbus
 	depends = hicolor-icon-theme
+	depends = libxdg-basedir
 	optdepends = dbus: To control compton via D-Bus
 	optdepends = xorg-xwininfo: For compton-trans
 	optdepends = xorg-xprop: For compton-trans
