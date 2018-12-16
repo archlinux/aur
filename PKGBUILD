@@ -5,7 +5,7 @@
 # Based on the official opencv PKGBUILD
 pkgname=opencv-java
 _pkgbase=opencv
-pkgver=3.4.3
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library - Java bindings"
 arch=(i686 x86_64)
@@ -17,16 +17,16 @@ makedepends=(cmake python-numpy python2-numpy mesa eigen apache-ant java-environ
 optdepends=('opencv-samples: OpenCV samples')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.tar.gz"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
-sha256sums=('4eef85759d5450b183459ff216b4c0fa43e87a4f6aa92c8af649f89336f002ec'
-            '6dfb51326f3dfeb659128df952edecd45683626a965aa4a8e1e9c970c40fb636')
+sha256sums=('3787b3cc7b21bba1441819cb00c636911a846c0392ddf6211d398040a1e4886c'
+            '4fb0681414df4baedce6e3f4a01318d6f4fcde6ee14854d761fd4e397a397763')
 # Removed all the CMake flags manipulation;
 # hopefully, SSE will be automagically disabled properly on i686
 
 prepare() {
-    # Setting JAVA_HOME
-    msg2 "Setting JAVA_HOME variable"
-    export JAVA_HOME="/usr/lib/jvm/default"
-    mkdir -p build
+  # Setting JAVA_HOME
+  msg2 "Setting JAVA_HOME variable"
+  export JAVA_HOME="/usr/lib/jvm/default"
+  mkdir -p build
 }
 
 build() {
@@ -56,16 +56,20 @@ build() {
 package() {
   cd build
 
-  # Making a fake install
+  msg2 "Making a fake install ..."
   mkdir -p "$srcdir/temp"
   make DESTDIR="$srcdir/temp" install
 
+  msg2 "Adjusting stuff ..."
+  _opencv_java="usr/share/java/opencv4"
   # Creating the package structure
-  mkdir -p "$pkgdir/usr/share/opencv/java"
+  mkdir -p "$pkgdir/$_opencv_java"
   # Installing the built files
-  cp -r "$srcdir/temp/usr/share/OpenCV/java" "$pkgdir/usr/share/opencv"
+  cp -rv "$srcdir/temp/$_opencv_java" "$pkgdir/usr/share/java"
 
   # Create a symbolic link in /usr/share/java as Java apps written for Ubuntu may be looking there
   mkdir -p "$pkgdir/usr/share/java/"
-  ln -s "/usr/share/opencv/java/opencv-${pkgver//./}.jar" "$pkgdir/usr/share/java/opencv.jar"
+  ln -sv "/$_opencv_java/opencv-${pkgver//./}.jar" "$pkgdir/usr/share/java/opencv.jar"
+  mkdir -p "$pkgdir/usr/lib/"
+  ln -sv "/$_opencv_java/libopencv_java${pkgver//./}.so" "$pkgdir/usr/lib/libopencv_java.so"
 }
