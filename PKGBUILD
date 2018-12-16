@@ -2,19 +2,18 @@
 
 pkgname=tscdriver
 pkgver=0.2.06
-pkgrel=5
+pkgrel=6
 pkgdesc="Drivers for TSC Printers"
 arch=(x86_64)
 url="http://www.tscprinters.com"
 license=('custom:proprietary')
 depends=(gtk2)
 makedepends=(unzip)
-source=("Linux64_v$pkgver.zip::$url/EN/DownloadFile/DownloadFileSupport/1103/3174")
-md5sums=('ea523125745496cc2f0de0d8969b15e5')
+source=("$pkgname-$pkgver.zip::$url/EN/DownloadFile/DownloadFileSupport/1103/Linux64_v$pkgver.zip?m_id=3174")
+sha256sums=('ae0055600947b648a0843727fecef440ef573ec0937d178684d9ebe34076a6b2')
 
 prepare() {
-  cd "$srcdir"
-  tar xvf "$pkgname-$pkgver-$CARCH.tar.gz"
+  tar xvf "Linux64_v$pkgver/$pkgname-$pkgver-$CARCH.tar.gz"
 }
 
 package() {
