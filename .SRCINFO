@@ -1,7 +1,7 @@
 pkgbase = resvg-git
 	pkgdesc = SVG rendering library and CLI
 	pkgver = 0.4.0.r6.g9891e06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RazrFalcon/resvg
 	arch = i686
 	arch = x86_64
