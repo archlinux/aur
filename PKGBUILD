@@ -1,10 +1,12 @@
 pkgname=protonvpn-cli-git
 pkgver=r158.9072bab
-pkgrel=1
+pkgrel=2
 pkgdesc="ProtonVPN CLI tool for protonvpn.com"
 arch=("any")
 url="https://github.com/ProtonVPN/protonvpn-cli"
 license=("MIT")
+provides=("protonvpn-cli")
+conflicts=("protonvpn-cli")
 depends=("openvpn" "python" "dialog" "wget" "procps-ng" "openvpn-update-systemd-resolved")
 makedepends=("git")
 source=("git+https://github.com/ProtonVPN/protonvpn-cli.git")
