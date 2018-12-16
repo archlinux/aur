@@ -8,6 +8,8 @@ pkgbase = cmatrix-git
 	makedepends = fontconfig
 	depends = ncurses
 	optdepends = fontconfig: custom font
+	provides = cmatrix
+	conflicts = cmatrix
 	source = git+https://github.com/abishekvashok/cmatrix
 	md5sums = SKIP
 

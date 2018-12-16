@@ -10,6 +10,8 @@ license=('GPL3')
 depends=('ncurses')
 makedepends=('fontconfig')
 optdepends=('fontconfig: custom font')
+conflicts=('cmatrix')
+provides=('cmatrix')
 source=("git+https://github.com/abishekvashok/cmatrix")
 md5sums=('SKIP')
 
