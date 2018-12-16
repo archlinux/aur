@@ -1,7 +1,7 @@
 pkgbase = mint-backgrounds-tessa
 	pkgdesc = The backgrounds included in Linux Mint 19.1 Tessa
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-tessa
 	arch = any
 	license = GPL3
