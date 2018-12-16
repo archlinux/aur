@@ -1,4 +1,4 @@
-# Maintainer: b00rt00s ( bomby dot zrzuc at gmail dot com )
+# Maintainer: b00rt00s <b00rt00s.aur@gmail.com>
 # Committer: Zachary A. Jones <jazzplayerl9@gmail.com>
 pkgname=gsas-expgui-svn
 pkgver=1253
