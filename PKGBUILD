@@ -7,7 +7,7 @@ arch=('any')
 url='http://registry.gimp.org/node/186'
 license=('GPLv3')
 depends=('gimp' 'python2')
-source=('http://registry.gimp.org/files/layerfx.2.8.py.txt')
+source=('https://raw.githubusercontent.com/pixlsus/registry.gimp.org_static/master/registry.gimp.org/files/layerfx.2.8.py.txt')
 md5sums=('408c5191552a7639f64bd6bd25891f85')
 
 build() {
