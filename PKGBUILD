@@ -1,37 +1,41 @@
-# Maintainer: Yosef Or Boczko <yoseforb@gnome.org>
+# Maintainer: Philip Goto <philip.goto@gmail.com>
 
-_pkgname=adwaita-icon-theme
-pkgname=$_pkgname-git
-pkgver=3.16.0.30.g8cce8aa
+pkgname=adwaita-icon-theme-git
+pkgver=3.31.1.r71.g4bdd1843
 pkgrel=1
-_realver=3.16.2.1
-pkgdesc="GNOME default icons"
+pkgdesc="GNOME standard icons"
+url="https://gitlab.gnome.org/GNOME/adwaita-icon-theme"
 arch=(any)
-depends=('hicolor-icon-theme' 'icon-naming-utils' 'gtk-update-icon-cache')
-makedepends=('git' 'gnome-common' 'automake' 'itstool' 'libxml2' 'yelp-tools' 'intltool' 'librsvg')
-url="https://www.gnome.org"
-license=('GPL')
-groups=('gnome')
-install=$_pkgname.install
-options=('!emptydirs')
-conflicts=('adwaita-icon-theme' 'gnome-icon-theme' 'gnome-icon-theme-symbolic')
-provides=("adwaita-icon-theme=${_realver}" "gnome-icon-theme=${_realver}" "gnome-icon-theme-symbolic=${_realver}")
-source=('git://git.gnome.org/adwaita-icon-theme')
-sha256sums=('SKIP')
+license=(LGPL3 CCPL:by-sa)
+depends=(hicolor-icon-theme gtk-update-icon-cache librsvg)
+makedepends=(git gtk3)
+provides=(adwaita-icon-theme)
+conflicts=(adwaita-icon-theme)
+source=("git+https://gitlab.gnome.org/GNOME/adwaita-icon-theme.git")
+sha256sums=(SKIP)
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --always | sed 's|-|.|g'
+    cd adwaita-icon-theme
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd adwaita-icon-theme
+    autoreconf -fvi
+}
+  
 build() {
-  cd "$srcdir/$_pkgname"  
-  ./autogen.sh --prefix=/usr
-  make
+    cd adwaita-icon-theme
+    ./configure --prefix=/usr
+    make
+}
+
+check() {
+    cd adwaita-icon-theme
+    make check
 }
 
 package() {
-    cd "$srcdir/$_pkgname"  
+    cd adwaita-icon-theme
     make DESTDIR="$pkgdir" install
-    rm -f  "${pkgdir}/usr/share/icons/gnome/icon-theme.cache"
 }

@@ -1,31 +1,19 @@
 pkgbase = adwaita-icon-theme-git
-	pkgdesc = GNOME default icons
-	pkgver = 3.16.0.30.g8cce8aa
+	pkgdesc = GNOME standard icons
+	pkgver = 3.31.1.r71.g4bdd1843
 	pkgrel = 1
-	url = https://www.gnome.org
-	install = adwaita-icon-theme.install
+	url = https://gitlab.gnome.org/GNOME/adwaita-icon-theme
 	arch = any
-	groups = gnome
-	license = GPL
+	license = LGPL3
+	license = CCPL:by-sa
 	makedepends = git
-	makedepends = gnome-common
-	makedepends = automake
-	makedepends = itstool
-	makedepends = libxml2
-	makedepends = yelp-tools
-	makedepends = intltool
-	makedepends = librsvg
+	makedepends = gtk3
 	depends = hicolor-icon-theme
-	depends = icon-naming-utils
 	depends = gtk-update-icon-cache
-	provides = adwaita-icon-theme=3.16.2.1
-	provides = gnome-icon-theme=3.16.2.1
-	provides = gnome-icon-theme-symbolic=3.16.2.1
+	depends = librsvg
+	provides = adwaita-icon-theme
 	conflicts = adwaita-icon-theme
-	conflicts = gnome-icon-theme
-	conflicts = gnome-icon-theme-symbolic
-	options = !emptydirs
-	source = git://git.gnome.org/adwaita-icon-theme
+	source = git+https://gitlab.gnome.org/GNOME/adwaita-icon-theme.git
 	sha256sums = SKIP
 
 pkgname = adwaita-icon-theme-git
