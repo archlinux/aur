@@ -3,7 +3,7 @@
 _prefix=/opt/Unity
 
 pkgname=unity-editor-android
-pkgver=2018.2.20f1
+pkgver=2018.3.0f2
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Android platform"
 arch=('x86_64')
@@ -15,8 +15,8 @@ depends=('unity-editor'
          'android-udev')
 makedepends=('cpio')
 optdepends=('android-ndk-13b: needed for IL2CPP builds')
-source=("https://download.unity3d.com/download_unity/cef3e6c0c622/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2018.2.20f1.pkg")
-md5sums=("9070ba86ab364fc53152d0219474dfe9")
+source=("2018.3.0f2.3.0f2.pkg::https://download.unity3d.com/download_unity/6e9a27477296/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2018.3.0f2.pkg")
+md5sums=("24d2140baf616f957d00b23ba17e85b4")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
