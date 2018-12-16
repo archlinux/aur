@@ -1,0 +1,21 @@
+pkgbase = asus-wmi-sensors-dkms-git
+	pkgdesc = Linux sensors driver for ASUS motherboards with WMI sensors interface
+	pkgver = 6.04e5cc0
+	pkgrel = 1
+	url = https://github.com/electrified/asus-wmi-sensors
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = dkms
+	provides = asus-wmi-sensors
+	source = asus-wmi-sensors::git+https://github.com/electrified/asus-wmi-sensors.git
+	source = asus-wmi-sensors.conf
+	source = dkms.conf
+	source = module-load.conf
+	sha256sums = SKIP
+	sha256sums = 16620f044ef6dd20d0d56c4fa2c0fdd62326ea41ca2332ac9fa46aed451ced7e
+	sha256sums = 89b3c073df8fd641e64c88d00e396ebadd2ef9c7ba35fd88cc5142d7173731ec
+	sha256sums = 322596bc74aaecbbd6a10f6d5f2e205ff423dc512f80d5046c1ffb48057c8d62
+
+pkgname = asus-wmi-sensors-dkms-git
+
