@@ -1,0 +1,40 @@
+From 79f548c9fb77c1df2681be53bcf06b0f4b9c16ec Mon Sep 17 00:00:00 2001
+From: Leif Warner <abimelech@gmail.com>
+Date: Sat, 8 Dec 2018 17:03:08 -0800
+Subject: [PATCH] Change input of DBus.Introspection.parseXML to Text
+
+To allow building with dbus 1.2.1
+---
+ src/StatusNotifier/Util.hs | 9 ++++-----
+
+diff --git a/src/StatusNotifier/Util.hs b/src/StatusNotifier/Util.hs
+index a3ca781..a608cd2 100644
+--- a/src/StatusNotifier/Util.hs
++++ b/src/StatusNotifier/Util.hs
+@@ -17,14 +17,13 @@ import           Data.Word
+ import           Language.Haskell.TH
+ import           Network.Socket (ntohl)
+ import           StatusNotifier.TH
+-import           System.IO
+-import           System.IO.Unsafe
+-import           System.Log.Handler.Simple
++import qualified Data.Text.IO as TIO
++import           Data.Text (pack)
+ import           System.Log.Logger
+ 
+ getIntrospectionObjectFromFile :: FilePath -> T.ObjectPath -> Q I.Object
+ getIntrospectionObjectFromFile filepath nodePath = runIO $
+-  head . maybeToList . I.parseXML nodePath <$> readFile filepath
++  head . maybeToList . I.parseXML nodePath <$> TIO.readFile filepath
+ 
+ generateClientFromFile :: G.GenerationParams -> Bool -> FilePath -> Q [Dec]
+ generateClientFromFile params useObjectPath filepath = do
+@@ -122,7 +121,7 @@ getInterfaceAt
+   -> T.ObjectPath
+   -> IO (Either M.MethodError (Maybe I.Object))
+ getInterfaceAt client bus path =
+-  right (I.parseXML "/") <$> introspect client bus path
++  right (I.parseXML "/" . pack) <$> introspect client bus path
+ 
+ findM :: Monad m => (a -> m Bool) -> [a] -> m (Maybe a)
+ findM p [] = return Nothing
