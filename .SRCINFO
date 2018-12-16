@@ -1,6 +1,6 @@
 pkgbase = palemoon
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 28.2.1
+	pkgver = 28.2.2
 	pkgrel = 1
 	url = https://www.palemoon.org/
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = palemoon
 	depends = startup-notification
 	optdepends = libpulse: PulseAudio audio driver
 	optdepends = ffmpeg: various video and audio support
-	source = git+https://github.com/MoonchildProductions/UXP#tag=PM28.2.1_Release
+	source = git+https://github.com/MoonchildProductions/UXP#tag=PM28.2.2_Release
 	source = mozconfig.in
 	md5sums = SKIP
 	md5sums = 17c1f14483018a6a258db20093cdceb8
