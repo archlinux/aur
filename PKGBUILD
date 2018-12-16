@@ -1,6 +1,6 @@
 # Maintainer: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-linux-git
-pkgver=v0.1.beta.1.r0.gbc90cb2
+pkgver=v0.1.beta.2.r11.gc2a2f53
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('GPL3' 'custom')
 makedepends=('git' 'cmake' 'gcc-multilib')
 depends=('lib32-curl' 'lib32-libx11' 'lib32-zlib' 'lib32-libpng' 'lib32-libevdev' 'lib32-systemd' 'lib32-libxi' 'lib32-libegl')
 optdepends=('mcpelauncher-msa: Xbox Live support')
-provides=('mcpelauncher-linux' 'mcpelauncher-server')
-conflicts=('mcpelauncher-linux' 'mcpelauncher-server')
+provides=('mcpelauncher-client' 'mcpelauncher-server')
+conflicts=('mcpelauncher-client' 'mcpelauncher-server')
 source=(
   'git://github.com/minecraft-linux/mcpelauncher-manifest.git'
   'git://github.com/minecraft-linux/logger.git'
