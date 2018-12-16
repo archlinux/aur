@@ -2,20 +2,20 @@
 
 pkgname=unityhub
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations."
 arch=('x86_64')
 url=https://forum.unity.com/threads/unity-hub-v-1-3-2-is-now-available.594139
 license=('custom')
 depends=('gtk2' 'nss' 'p7zip' 'tar' 'gzip' 'cpio' 'zip' 'libxss' 'gconf')
-source=("https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.AppImage")
+source=("${pkgname}-${pkgver}.AppImage::https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.AppImage")
 md5sums=('a71a4c98b265fe083eaccca33a6fd4ba')
 PKGEXT='.pkg.tar'
 
 package() {
   # Extract AppImage
-  chmod +x UnityHubSetup.AppImage
-  ./UnityHubSetup.AppImage --appimage-extract
+  chmod +x "${pkgname}-${pkgver}.AppImage"
+  "./${pkgname}-${pkgver}.AppImage" --appimage-extract
 
   # Patch desktop file
   _df="${srcdir}/squashfs-root/unityhub.desktop"
