@@ -1,6 +1,6 @@
 pkgbase = cmatrix-git
 	pkgdesc = A curses-based scrolling 'Matrix'-like screen
-	pkgver = 1.2
+	pkgver = 1.2.r45.g70be5c3
 	pkgrel = 1
 	url = http://www.asty.org/cmatrix/
 	arch = x86_64
