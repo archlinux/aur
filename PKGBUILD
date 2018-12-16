@@ -45,7 +45,7 @@ build() {
     -DITK_USE_SYSTEM_PNG:BOOL=ON \
     -DITK_USE_SYSTEM_ZLIB:BOOL=ON \
     -DITK_USE_SYSTEM_TIFF:BOOL=ON \
-    -DITK_USE_SYSTEM_GDCM:BOOL=OFF \
+    -DITK_USE_SYSTEM_GDCM:BOOL=ON \
     -DITK_LEGACY_SILENT:BOOL=ON \
     $( $_usepython && echo "-DITK_WRAP_PYTHON:BOOL=ON") \
     $( $_usepython && echo "-DModule_ITKReview:BOOL=OFF") \
