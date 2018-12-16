@@ -1,11 +1,11 @@
 pkgbase = mint-backgrounds-sylvia
 	pkgdesc = The backgrounds included in Linux Mint 18.3 Sylvia
-	pkgver = 1.1
-	pkgrel = 1
+	pkgver = 1.2
+	pkgrel = 2
 	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-sylvia
 	arch = any
 	license = GPL3
-	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-sylvia/mint-backgrounds-sylvia_1.1.tar.gz
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-sylvia/mint-backgrounds-sylvia_1.2.tar.gz
 	md5sums = f975bc54518635966af7c1e56c571652
 
 pkgname = mint-backgrounds-sylvia

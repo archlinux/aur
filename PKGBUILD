@@ -1,7 +1,7 @@
 #Maintainer: Seantum <tsiegele AT gmx DOT at>
 pkgname=mint-backgrounds-sylvia
-pkgver=1.1
-pkgrel=1
+pkgver=1.2
+pkgrel=2
 pkgdesc="The backgrounds included in Linux Mint 18.3 Sylvia"
 license=('GPL3')
 arch=('any')
