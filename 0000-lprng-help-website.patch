@@ -1,0 +1,317 @@
+diff -Naru3 lprng-3.8.C.orig/man/checkpc.n lprng-3.8.C/man/checkpc.n
+--- lprng-3.8.C.orig/man/checkpc.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/checkpc.n	2018-12-12 22:52:08.917254556 -0500
+@@ -117,15 +117,6 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word
+-.I subscribe
+-in the body.
+ .br
+ The software is available via
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -Naru3 lprng-3.8.C.orig/man/lpbanner.n lprng-3.8.C/man/lpbanner.n
+--- lprng-3.8.C.orig/man/lpbanner.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lpbanner.n	2018-12-12 22:53:03.077071032 -0500
+@@ -91,15 +91,6 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -Naru3 lprng-3.8.C.orig/man/lpc.n lprng-3.8.C/man/lpc.n
+--- lprng-3.8.C.orig/man/lpc.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lpc.n	2018-12-12 22:55:17.816586551 -0500
+@@ -437,9 +437,7 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng mailing list is lprng@lprng.com;
+-subscribe by sending mail to lprng-request@lprng.com with
+-the word subscribe in the body.
+-The software is available from ftp://ftp.lprng.com/pub/LPRng.
++The software is available from 
++.B http://www.lprng.com/
+ .SH "AUTHOR"
+ Patrick Powell <papowell@lprng.com>.
+diff -Naru3 lprng-3.8.C.orig/man/lpd.conf.n lprng-3.8.C/man/lpd.conf.n
+--- lprng-3.8.C.orig/man/lpd.conf.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lpd.conf.n	2018-12-12 22:55:11.406610399 -0500
+@@ -745,9 +745,7 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng mailing list is lprng@lprng.com;
+-subscribe by sending mail to lprng-request@lprng.com with
+-the word subscribe in the body.
+-The software is available from ftp://ftp.lprng.com/pub/LPRng.
++The software is available from 
++.B http://www.lprng.com/
+ .SH "AUTHOR"
+ Patrick Powell <papowell@lprng.com>.
+diff -Naru3 lprng-3.8.C.orig/man/lpd.n lprng-3.8.C/man/lpd.n
+--- lprng-3.8.C.orig/man/lpd.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lpd.n	2018-12-12 22:54:18.706803592 -0500
+@@ -1864,15 +1864,6 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -Naru3 lprng-3.8.C.orig/man/lpd.perms.n lprng-3.8.C/man/lpd.perms.n
+--- lprng-3.8.C.orig/man/lpd.perms.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lpd.perms.n	2018-12-12 22:54:31.546757008 -0500
+@@ -363,15 +363,6 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -Naru3 lprng-3.8.C.orig/man/lpf.n lprng-3.8.C/man/lpf.n
+--- lprng-3.8.C.orig/man/lpf.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lpf.n	2018-12-12 22:54:45.386706441 -0500
+@@ -135,15 +135,6 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -Naru3 lprng-3.8.C.orig/man/lp.n lprng-3.8.C/man/lp.n
+--- lprng-3.8.C.orig/man/lp.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lp.n	2018-12-12 22:52:47.987122879 -0500
+@@ -39,18 +39,9 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+ .\" This manpage-stub is written by Bernhard R. Link <brlink@debian.org>
+ .\" and available under GNU GPL v2 and any license LPRng is available under.
+ 
+diff -Naru3 lprng-3.8.C.orig/man/lpq.n lprng-3.8.C/man/lpq.n
+--- lprng-3.8.C.orig/man/lpq.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lpq.n	2018-12-12 22:55:00.376651264 -0500
+@@ -282,16 +282,7 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+ 
+diff -Naru3 lprng-3.8.C.orig/man/lprm.n lprng-3.8.C/man/lprm.n
+--- lprng-3.8.C.orig/man/lprm.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lprm.n	2018-12-12 22:55:48.686470700 -0500
+@@ -234,15 +234,6 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -Naru3 lprng-3.8.C.orig/man/lpr.n lprng-3.8.C/man/lpr.n
+--- lprng-3.8.C.orig/man/lpr.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lpr.n	2018-12-12 22:55:36.036518373 -0500
+@@ -515,15 +515,6 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -Naru3 lprng-3.8.C.orig/man/lprng_certs.n lprng-3.8.C/man/lprng_certs.n
+--- lprng-3.8.C.orig/man/lprng_certs.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lprng_certs.n	2018-12-12 22:56:03.806413369 -0500
+@@ -223,15 +223,6 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -Naru3 lprng-3.8.C.orig/man/lprng_index_certs.n lprng-3.8.C/man/lprng_index_certs.n
+--- lprng-3.8.C.orig/man/lprng_index_certs.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lprng_index_certs.n	2018-12-12 22:56:22.306342720 -0500
+@@ -38,15 +38,6 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -Naru3 lprng-3.8.C.orig/man/lpstat.n lprng-3.8.C/man/lpstat.n
+--- lprng-3.8.C.orig/man/lpstat.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/lpstat.n	2018-12-12 22:57:03.476183607 -0500
+@@ -107,18 +107,9 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word
+-.I subscribe
+-in the body.
+ .br
+ The software is available via
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+ .\" This manpage is written by Bernhard R. Link <brlink@debian.org>
+ .\" and available under GNU GPL v2 and any license LPRng is available under.
+ .\" The descriptions are extracted from lpstat.c from Patrick Powell <papowell@lprng.com>
+diff -Naru3 lprng-3.8.C.orig/man/monitor.n lprng-3.8.C/man/monitor.n
+--- lprng-3.8.C.orig/man/monitor.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/monitor.n	2018-12-12 22:57:19.586120669 -0500
+@@ -51,15 +51,6 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/
+diff -Naru3 lprng-3.8.C.orig/man/printcap.n lprng-3.8.C/man/printcap.n
+--- lprng-3.8.C.orig/man/printcap.n	2012-04-15 06:28:52.000000000 -0400
++++ lprng-3.8.C/man/printcap.n	2018-12-12 22:57:35.926056463 -0500
+@@ -1218,15 +1218,6 @@
+ .SH "HISTORY"
+ LPRng is a enhanced printer spooler system
+ with functionality similar to the Berkeley LPR software.
+-The LPRng developer mailing list is lprng-devel@lists.sourceforge.net;
+-subscribe by visiting 
+-.B https://lists.sourceforge.net/lists/listinfo/lprng-devel
+-or sending mail to 
+-.B lprng-request@lists.sourceforge.net
+-with
+-the word 
+-.I subscribe 
+-in the body.
+ .br
+ The software is available via 
+-.B http://lprng.sourceforge.net
++.B http://www.lprng.com/

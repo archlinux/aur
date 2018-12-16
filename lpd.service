@@ -1,0 +1,12 @@
+[Unit]
+Description=Lprng Printer Daemon
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/lpd
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

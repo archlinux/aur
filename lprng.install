@@ -1,0 +1,38 @@
+_printcap='/etc/lprng/printcap'
+_service='lpd.service'
+
+_post_ui() {
+  set -u
+  systemctl daemon-reload
+  if systemctl -q is-active 'org.cups.cups-lpd.socket'; then
+    echo 'You may need to disable cups-lpd with'
+    echo "  systemctl disable --now 'org.cups.cups-lpd.socket'"
+  fi
+  if ! systemctl -q is-enabled "${_service}"; then
+    echo 'Enable your lpd server with'
+    echo "  sudo systemctl enable --now '${_service}'"
+  fi
+  if ! grep -qe '^[a-zA-Z]' "${_printcap}"; then
+    echo "Add some printers to ${_printcap}"
+  fi
+  set +u
+}
+
+post_upgrade() {
+  _post_ui
+}
+
+post_install() {
+  _post_ui
+}
+
+pre_remove() {
+  set -u
+  systemctl stop "${_service}"
+  systemctl disable "${_service}"
+  set +u
+}
+
+post_remove() {
+  systemctl daemon-reload
+}

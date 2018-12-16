@@ -1,0 +1,52 @@
+#!/bin/sh
+#
+# gsfilter.simple -- HP deskjet or similar sample filter
+#
+# Requires
+#    poppler (xpdf): pdftops
+#    ghostscript
+#    enscript
+
+set -u
+
+# define temporary files
+infile="/tmp/infile.$$"
+tempfile="/tmp/tempfile.$$"
+outfile="/tmp/outfile.$$"
+
+# choose your paper size
+GSPAPER='letter'
+#GSPAPER='a4'
+PAPER='Letter'
+#PAPER='A4'
+
+# chose your printer device (run gs -h to see what is available)
+GSDEVICE='cdjcolor'
+
+# send the standard input to a temporary file
+cat > "${infile}"
+
+# figure out what type of file we are trying to print
+fileinfo="$(file -b "${infile}")"
+
+# take various actions depending on the type of file -- send
+# results to a temporary postscript file
+case "${fileinfo}" in
+*ASCII*)      enscript -M "${PAPER}" -o - "${infile}" > "${tempfile}" ;;
+*PDF*)        pdftops -paper 'match' "${infile}" - > "${tempfile}" ;;
+*PostScript*) cat "${infile}" > "${tempfile}" ;;
+*)
+  echo "Cannot print file of type ${fileinfo}" | \
+  enscript -M "${PAPER}" -o - > "${tempfile}"
+  ;;
+esac
+
+# run the postscript through gs to produce device output in a file
+echo 'quit' | gs -sOutputFile="${outfile}" -q -sPAPERSIZE="$GSPAPER" -dSAFER \
+    -dNOPAUSE -sDEVICE="${GSDEVICE}" "${tempfile}" > /dev/null 2>&1
+
+# send output file to standard out
+cat "${outfile}"
+
+# clean up
+rm -f "${infile}" "${tempfile}" "${outfile}"

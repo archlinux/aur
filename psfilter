@@ -1,0 +1,64 @@
+#!/bin/sh
+#
+# psfilter.simple -- Convert pdf and text to postscript.  Control of
+# duplexing for postscript files is via the insertion of a duplexing
+# control line as the second line of the postscript file.  This seems
+# to work for pdftops, pdf2ps, and cairo output.  It doesn't work for
+# postscript files created by enscript.  Instead, enscript duplexing
+# is controlled by a command line option in enscript.  Duplex on pdf
+# files is controlled by a pdftops flag.
+#
+# Requires
+#    poppler (xpdf): pdftops
+#    enscript
+
+set -u
+
+# define temporary files
+infile="/tmp/infile.$$"
+tempfile="/tmp/tempfile.$$"
+headfile="/tmp/headfile.$$"
+tailfile="/tmp/tailfile.$$"
+
+# choose your paper size
+PAPER='Letter'
+#PAPER='A4'
+
+# define whether duplex is desired by uncommenting appropriate lines
+#duplex='false'
+duplex='true'
+#duplexflag=''
+duplexflag='-duplex'
+
+# send the standard input to a temporary file
+cat > "${infile}"
+
+# figure out what type of file we are trying to print
+fileinfo="$(file -b "${infile}")"
+
+# do conversions to postscript based on file type and put in tempfile
+case "${fileinfo}" in
+*ASCII*)      enscript -DDuplex:"${duplex}" -M "${PAPER}" -o - "${infile}" ;;
+*PDF*)        pdftops -paper 'match' "${duplexflag}" "${infile}" - ;;
+*PostScript*)
+  if [ "${duplex}" = 'true' ]; then
+    # are we doing duplex?  if so, insert a special string in postscript file
+    sed -e "1 w ${headfile}" -e "2,$ w ${tailfile}" < "${infile}" > /dev/null
+    cat "${headfile}" > "${tempfile}"
+    echo "<< /Duplex true >> setpagedevice" >> "${tempfile}"
+    cat "${tailfile}" >> "${tempfile}"
+  else
+    # if not duplex, don't do anything
+    cat "${tailfile}" >> "${tempfile}"
+  fi
+  # send the file to standard output
+  cat "${tempfile}"
+  ;;
+*)
+  echo "Cannot print file of type ${fileinfo}" | \
+  enscript -M "${PAPER}" -DDuplex:"${duplex}" -o -
+  ;;
+esac
+
+# clean up
+rm -f "${infile}" "${tempfile}" "${headfile}" "${tailfile}"
