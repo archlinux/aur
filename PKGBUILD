@@ -1,7 +1,7 @@
-# Maintainer: mickele <mimocciola____at____yahoo____dot____com>
-# Contributor: Damien Flament <damien.flament____at____gmx____dot____com>
-# Contributor: Ilmari Repo <ilmari____at____gmail____dot____com> (librecad-svn PKGBUILD)
-# Contributor: GazJ Gary James <garyjames82____at____gmail____ dot____com> (CADuntu PKGBUILD)
+# Maintainer: Damien Flament <damien.flament at gmx dot com>
+# Contributor: mickele <mimocciola at yahoo dot com>
+# Contributor: Ilmari Repo <ilmari at gmail dot com> (librecad-svn PKGBUILD)
+# Contributor: GazJ Gary James <garyjames82 at gmail  dot com> (CADuntu PKGBUILD)
 
 pkgname=librecad-git
 pkgver=2.2.0_alpha_244_g54269f5b
@@ -29,7 +29,6 @@ validpgpkeys=()
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  
   git describe --tags | sed -e 's/-/_/g'
 }
 
@@ -74,4 +73,3 @@ package() {
   install -D -m 644 "${srcdir}/librecad.desktop" "${pkgdir}/usr/share/applications/librecad.desktop"
   install -D -m 644 librecad/res/main/librecad.png "${pkgdir}/usr/share/pixmaps/librecad.png"
 }
-
