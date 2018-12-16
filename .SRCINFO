@@ -1,0 +1,14 @@
+pkgbase = mbox2eml
+	pkgdesc = Splits mbox mailboxes into single eml files
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/mbox2eml/
+	arch = x86_64
+	license = GPL2
+	depends = boost
+	depends = popt
+	source = https://downloads.sourceforge.net/project/mbox2eml/mbox2eml/0.1.2/mbox2eml-0.1.2.tar.gz
+	md5sums = 3aeed01e7f3db0173b9a5b7d44897691
+
+pkgname = mbox2eml
+
