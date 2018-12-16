@@ -1,0 +1,23 @@
+pkgbase = daty-git
+	pkgdesc = Daty Wikidata Editor
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/tallero/daty
+	arch = any
+	license = AGPLv3
+	makedepends = python-setuptools
+	depends = libhandy
+	depends = python-appdirs
+	depends = python-bleach
+	depends = python-beautifulsoup4
+	depends = python-gobject
+	depends = python-requests
+	depends = python-setproctitle
+	depends = python-pywikibot
+	provides = daty
+	conflicts = daty
+	source = daty::git+https://gitlab.com/tallero/daty.git
+	sha256sums = SKIP
+
+pkgname = daty-git
+
