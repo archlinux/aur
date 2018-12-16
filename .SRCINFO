@@ -1,0 +1,15 @@
+pkgbase = sweet-theme-git
+	pkgdesc = Light and dark colorful Gtk3.20+ theme
+	pkgver = 20.727a3e6
+	pkgrel = 1
+	url = https://github.com/EliverLara/Sweet
+	arch = any
+	license = GPL
+	optdepends = ttf-roboto: primary font face defined
+	optdepends = ttf-ubuntu-font-family: secondary font face defined
+	optdepends = cantarell-fonts: tertiary font face defined
+	source = Sweet::git+https://github.com/EliverLara/Sweet.git
+	sha256sums = SKIP
+
+pkgname = sweet-theme-git
+
