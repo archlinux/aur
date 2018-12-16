@@ -1,20 +1,21 @@
-# Maintainer: b00rt00s ( bomby dot zrzuc at gmail dot com )
+# Maintainer: b00rt00s <b00rt00s.aur@gmail.com>
 # Committer: Zachary A. Jones <jazzplayerl9@gmail.com>
 
 pkgname=gsas2-svn
 _pkgname=gsas2
-pkgver=3196
+pkgver=3615
 pkgrel=1
 pkgdesc="General Structure Analysis System II - refinement for powder diffraction patterns"
 arch=(i686 x86_64)
 url="https://subversion.xray.aps.anl.gov/trac/pyGSAS"
 license=(unknown)
-depends=(python2 python2-scipy python2-matplotlib wxpython python2-opengl python2-numpy gcc-fortran)
+depends=(python2 python2-scipy python2-matplotlib wxpython python2-opengl python2-numpy gcc-fortran python2-backports.functools_lru_cache)
 [ "${CARCH}" = "x86_64" ] && depends=("${depends[@]}")
 makedepends=(subversion scons python2-numpy)
 optdepends=(python2-h5py)
 
-source=("${_pkgname}::svn+https://subversion.xray.aps.anl.gov/pyGSAS/trunk/"
+source=(#"${_pkgname}::svn+https://subversion.xray.aps.anl.gov/pyGSAS/trunk/#revision=${pkgver}"
+	"${_pkgname}::svn+https://subversion.xray.aps.anl.gov/pyGSAS/trunk"
 	"GSASII.desktop"
 	"rungsas2")
 
