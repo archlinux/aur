@@ -1,8 +1,9 @@
-# Maintainer: lily wilson <hotaru@thinkindifferent.net>
+# Contributor: lily wilson <hotaru@thinkindifferent.net>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _pkgname=pstoedit
 pkgname=$_pkgname-emf
-pkgver=3.70
+pkgver=3.73
 pkgrel=1
 pkgdesc="Translates PostScript and PDF graphics into other vector formats, with EMF support"
 arch=('i686' 'x86_64')
@@ -14,20 +15,20 @@ options=('!makeflags')
 conflicts=("$_pkgname")
 provides=("$_pkgname=$pkgver")
 source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-${pkgver}.tar.gz")
-sha1sums=('657f8f7070fde1432cd65a34b6b1c4b5b42f8b50')
+sha256sums=('ad31d13bf4dd1b9e2590dccdbe9e4abe74727aaa16376be85cd5d854f79bf290')
 
 prepare() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd ${_pkgname}-$pkgver
   sed -i 's/-pedantic//' configure
 }
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd ${_pkgname}-$pkgver
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd ${_pkgname}-$pkgver
   make DESTDIR="${pkgdir}" install
 }
