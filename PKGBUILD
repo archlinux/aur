@@ -25,17 +25,17 @@ sha256sums=("48fee7f29e6dac4a301d3facf607796b04b7d1ee0b433fd083e3100bf38f7a38"
             "8645efc4d2da7d6a0aeb23b2bc81d069bfd490e06ff78df82aab13a36e1ab85a")
 
 prepare() {
-  mkdir -p "${srcdir}/gopath/src/github.com/${_pkgauthor}"
-  ln -rTsf "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/gopath/src/github.com/${_pkgauthor}/${pkgname}"
-
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i "${srcdir}/build_info.patch"
+
+  rm -rf "${srcdir}/gopath"
+  mkdir -p "${srcdir}/gopath/src/github.com/${_pkgauthor}"
+  ln -rTsf "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/gopath/src/github.com/${_pkgauthor}/${pkgname}"
 }
 
 build() {
-  export GOPATH="${srcdir}/gopath"
   cd "${srcdir}/gopath/src/github.com/${_pkgauthor}/${pkgname}"
-  VERSION="v${pkgver}" COMMIT="${_commit}" TREE_STATE="clean" make install
+  GOPATH="${srcdir}/gopath" PATH="${PATH}:${GOPATH}/bin" VERSION="v${pkgver}" COMMIT="${_commit}" TREE_STATE="clean" make install
 }
 
 package() {
