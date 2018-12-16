@@ -1,6 +1,6 @@
 pkgbase = unity-editor-doc
 	pkgdesc = Unity User Manual and Scripting API Reference.
-	pkgver = 2018.2.20f1
+	pkgver = 2018.3.0f2
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = unity-editor-doc
 	makedepends = cpio
 	depends = unity-editor
 	options = !strip
-	source = https://storage.googleapis.com/docscloudstorage/2018.2/UnityDocumentation.zip
+	source = 2018.3.0f2.zip::https://storage.googleapis.com/docscloudstorage/2018.3/UnityDocumentation.zip
 	md5sums = SKIP
 
 pkgname = unity-editor-doc

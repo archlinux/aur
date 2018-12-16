@@ -3,7 +3,7 @@
 _prefix=/opt/Unity
 
 pkgname=unity-editor-doc
-pkgver=2018.2.20f1
+pkgver=2018.3.0f2
 pkgrel=1
 pkgdesc="Unity User Manual and Scripting API Reference."
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor')
 makedepends=('cpio')
-source=("https://storage.googleapis.com/docscloudstorage/2018.2/UnityDocumentation.zip")
+source=("2018.3.0f2.zip::https://storage.googleapis.com/docscloudstorage/2018.3/UnityDocumentation.zip")
 md5sums=("SKIP")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
