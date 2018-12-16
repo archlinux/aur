@@ -3,6 +3,7 @@
 # Contributor: Ilmari Repo <ilmari at gmail dot com> (librecad-svn PKGBUILD)
 # Contributor: GazJ Gary James <garyjames82 at gmail  dot com> (CADuntu PKGBUILD)
 
+_pkgtitle='LibreCAD'
 pkgname=librecad-git
 pkgver=2.2.0_rc1_91_g8604f171
 pkgrel=1
@@ -17,52 +18,36 @@ provides=('librecad')
 conflicts=('librecad')
 replaces=('librecad-svn' 'caduntu' 'caduntu-svn')
 
-_gitname='LibreCAD'
-_gitroot="https://github.com/$_gitname/$_gitname.git"
-source=("${_gitname}::git://github.com/$_gitname/${_gitname}.git" 'librecad.desktop')
+source=("$_pkgtitle::git://github.com/$_pkgtitle/$_pkgtitle.git" 'librecad.desktop')
 md5sums=('SKIP' '19dcb83a3fcdb3752439095b118ac6d3')
 
 function pkgver
 {
-    cd "${srcdir}/${_gitname}"
+    cd "$_pkgtitle"
     git describe --tags | sed -e 's/-/_/g'
-}
-
-function prepare
-{
-    cd "${srcdir}"
-    msg "Connecting to GIT server...."
-
-    if [[ -d ${_gitname} ]] ; then
-        cd "${_gitname}" && git pull origin master
-        msg "The local files are updated."
-    else
-        git clone ${_gitroot} ${_gitname}
-    fi
-
-    msg "GIT checkout done or server timeout"
 }
 
 function build
 {
-    msg "Building ${_gitname}..."
-    cd "${srcdir}/${_gitname}"
+    cd "$_pkgtitle"
+
     qmake-qt5 -r librecad.pro \
         QMAKE_CFLAGS="${CFLAGS}" \
         QMAKE_CXXFLAGS="${CXXFLAGS}"
 
     make
 
-    msg "Building ${_gitname} plugins"
+    msg "Building ${_pkgtitle} plugins"
 
-    cd plugins
+    cd 'plugins'
     qmake-qt5
     make
 }
 
 function package
 {
-    cd "${srcdir}/${_gitname}"
+    cd "$_pkgtitle"
+
     install -D -m 755 unix/librecad "${pkgdir}/usr/bin/librecad"
     install -D -m 755 unix/ttf2lff "${pkgdir}/usr/bin/ttf2lff"
 
