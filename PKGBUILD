@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 _name=ssr
 pkgname=ssr-osc-git
-pkgver=0.4.2.r488.g11e1cf1
+pkgver=0.4.2.r489.g2c9ec30
 pkgrel=1
 pkgdesc="A tool for real-time spatial audio reproduction (with OSC interface)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/dvzrv/ssr"
 conflicts=('ssr')
 provides=('ssr')
 license=('GPL3')
-depends=('asio' 'ecasound' 'fftw' 'glu' 'jack' 'liblo' 'libsndfile' 'libxml2' 'qt5-base')
+depends=('asio' 'ecasound' 'fftw' 'glu' 'qt5-base')
 makedepends=('gendesk' 'git' 'help2man' 'qt5-tools')
 source=("git+https://github.com/dvzrv/${_name}#branch=networking-with-osc")
 sha512sums=('SKIP')
