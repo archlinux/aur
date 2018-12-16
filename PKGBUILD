@@ -1,7 +1,6 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=pyocd
-_pkgname=pyOCD
-pkgver=0.12.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Python On Chip Debugger and programmer for ARM Cortex-M microcontrollers using CMSIS-DAP"
 url="https://github.com/mbedmicro/pyocd"
@@ -22,11 +21,11 @@ license=('Apache')
 arch=('any')
 # Sigh: Make sure you're not using GitHub's tarballs (or similar ones), as those don't contain the necessary metadata. Use PyPI's tarballs instead.
 #source=("https://github.com/mbedmicro/${pkgname}/archive/v${pkgver}.tar.gz")
-source=("https://files.pythonhosted.org/packages/89/03/ba2b7c7573b384a92981a6a199abd88a688df7f2dbbee1eea872366b84c0/pyOCD-0.12.0.tar.gz")
-sha512sums=('dadaeb0a9a5f1dde65fa4b131836813d95a9be93e044f6cb9097028ab7700823264f85c3f66aecfe3ec373f1346a7d9eacd7fe788ac9042976f2e4165932be2a')
+source=("https://files.pythonhosted.org/packages/12/4a/cc22b847cbb0c56e13e17ac6ea497d12297f7a5792ceb7be981d52551f5e/pyocd-0.14.1.tar.gz")
+sha512sums=('289f26844907acfbebcf98e468e7b61547608c3d48b8f9c35e59bc8847fb1b3a3ce6955b8c8ec02ec91daee215762304c5da1487fa55ad64c758cbab4e03b53b')
 
 prepare() {
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
     # Start to make it work with python3 :( since the deps for python2 libs are a bigger headache
     #sed -i -e "s:, 'enum34'::" setup.py
@@ -40,12 +39,12 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     python2 setup.py build
 }
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1 
 }
 
