@@ -1,10 +1,10 @@
-# Maintainer: Sándor Nagy <sanya868[at]gmail[dot]com>
+# Maintainer: Sandor Nagy <sandor[dot]nagy[at]kdemail[dot]net>
 pkgname=librcsc
 pkgver=4.1.0
 pkgrel=1
 pkgdesc="The basic library to develop the RoboCup Soccer Simulation client and tools"
 arch=('x86_64' 'i686')
-url="http://rctools.sourceforge.jp/"
+url="https://osdn.net/projects/rctools/"
 license=('CCPL')
 groups=('rcss')
 depends=('zlib' 'gcc-libs' 'sh')
@@ -14,8 +14,8 @@ optdepends=(
 	'rcssmonitor:	RCSS Monitor'
 	'cppunit:	C++ unit testing framework')
 options=('buildflags' 'makeflags')
-source=(http://jaist.dl.sourceforge.jp/rctools/51941/$pkgname-$pkgver.tar.gz)
-sha512sums=('8609aa8d3a1d8ccfe49af8497e696cff20d3587670282f9e0c5440dfa35fcc2a02ea098373f9da22d1c1aab3331637af164af7cd9855a1b536cfede2d63aaa1d')
+source=(https://osdn.net/dl/rctools/$pkgname-$pkgver.tar.gz)
+md5sums=('509c30d1e00499a08ae1f58f4ff05573')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
