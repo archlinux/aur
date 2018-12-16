@@ -7,7 +7,7 @@ license=('GPL3')
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/mint-backgrounds-sylvia"
 source=("$url/mint-backgrounds-sylvia_$pkgver.tar.gz")
-md5sums=("f975bc54518635966af7c1e56c571652")
+md5sums=("33dc85aa5570a2d902ad5b25367e9f50")
 package() {
 	mkdir -p $pkgdir/usr/share/backgrounds/linuxmint-sylvia
 	cp -a $srcdir/$pkgname/backgrounds/linuxmint-sylvia $pkgdir/usr/share/backgrounds/

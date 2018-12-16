@@ -6,7 +6,7 @@ pkgbase = mint-backgrounds-sylvia
 	arch = any
 	license = GPL3
 	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-sylvia/mint-backgrounds-sylvia_1.2.tar.gz
-	md5sums = f975bc54518635966af7c1e56c571652
+	md5sums = 33dc85aa5570a2d902ad5b25367e9f50
 
 pkgname = mint-backgrounds-sylvia
 
