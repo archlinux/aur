@@ -44,7 +44,7 @@ package() {
   install -dm755 "${pkgdir}/etc/chromium/native-messaging-hosts"
   
   for _file in $(find "${pkgdir}/etc/opt/chrome/native-messaging-hosts" -type f); do
-    _filename=${_file##*/}
+    local _filename=$(basename ${_file})
     if [[ ! -f "/etc/chromium/native-messaging-hosts/${_filename}" ]]; then
       ln -s "/etc/opt/chrome/native-messaging-hosts/${_filename}" "${pkgdir}/etc/chromium/native-messaging-hosts/${_filename}"
     fi
