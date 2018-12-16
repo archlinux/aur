@@ -1,5 +1,5 @@
 pkgbase = linux-gc
-	pkgver = 4.19.6
+	pkgver = 4.19.9
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -13,23 +13,23 @@ pkgbase = linux-gc
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = linux-4.19.6-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-4.19.6-arch1.tar.gz
+	source = linux-4.19.9-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-4.19.9-arch1.tar.gz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
-	source = v4.19_pds099f.patch::https://gitlab.com/alfredchen/PDS-mq/raw/master/4.19/v4.19_pds099f.patch
+	source = v4.19_pds099g.patch::https://gitlab.com/alfredchen/PDS-mq/raw/master/4.19/v4.19_pds099g.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = c2f2b105232a7b5d15daa3cd824b2232f39f2b76a930f5a89b75690b395f1eb9
+	sha256sums = cd1220edc5ebeb91c139cba845659675bdf28e64b5e069fdbfc620fe10b6ced5
 	sha256sums = fdb0aff5728261d6121ca29a0458b3a179d395c4e7deca6b3595b427044fd857
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
-	sha256sums = 4092b02faf07da8dca3c135512d2424113ead125ac49450b8ad3a763b280c0d2
+	sha256sums = dd8c0e92836099a373a7fe82280c731dce7685067ce8a8dfb5a77542286a51f9
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the PDS-mq CPU scheduler
@@ -39,12 +39,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=4.19.6
+	provides = linux-gc=4.19.9
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel
 	depends = linux-gc
-	provides = linux-gc-headers=4.19.6
-	provides = linux-headers=4.19.6
+	provides = linux-gc-headers=4.19.9
+	provides = linux-headers=4.19.9
 
