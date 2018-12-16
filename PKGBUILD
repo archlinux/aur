@@ -3,7 +3,7 @@
 
 set -u
 pkgname='urbackup2-client-no-gui'
-pkgver='2.2.6'
+pkgver='2.3.4'
 pkgrel='1'
 pkgdesc='Client/Server network backup for Windows Workgroups and Linux, headless client'
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
@@ -25,7 +25,7 @@ _scripts=(
 _srcdir="urbackup-client-${pkgver}.0"
 source=("https://hndl.urbackup.org/Client/${pkgver}/urbackup-client-${pkgver}.tar.gz")
 source+=("${_scripts[@]}" 'defaults_client' "${_patches[@]}")
-sha256sums=('95d5a8d4e8016c23171f12340a7fc28cd8d275d6c815604f28e978a4256eff6f'
+sha256sums=('0016df892687c4f254877827253b0e493c85d273da8ab95edc00e99dce1f6b63'
             '18b5eceb73086b86d904f80e9270df121d06d7c683f93c5449a82e7deb38e0ee'
             '334d9eb67a642d96e04874fd27c1b57d578c35b4cdc768d50db7ac2436f0927c'
             '869e6244efbf6e370938e2e5c94a16c0130f583815ddbd34802578656989048b'
@@ -46,7 +46,7 @@ prepare() {
   set -u
   cd "${_srcdir}"
 
-  patch -d'cryptoplugin' -p0 -i "${srcdir}/cryptopp-bytes.patch"
+  # patch -d 'cryptoplugin' -p0 -i "${srcdir}/cryptopp-bytes.patch"
   patch -p0 -i "${srcdir}/md5-bytes.patch"
 
   sed -e "s:\"${_oldsig}\":\"${_newsig}\":g" -i 'urbackupclient/ClientService.cpp'
