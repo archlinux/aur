@@ -1,6 +1,6 @@
 pkgbase = unity-editor-mac
 	pkgdesc = Allows building your Unity projects for the Mac platform
-	pkgver = 2018.2.19f1
+	pkgver = 2018.2.20f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = unity-editor-mac
 	makedepends = cpio
 	depends = unity-editor
 	options = !strip
-	source = https://download.unity3d.com/download_unity/06990f28ba00/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2018.2.19f1.pkg
-	sha1sums = a188b643d81c2af1e949ceb4e6c2cc9265fb1f13
+	source = https://download.unity3d.com/download_unity/cef3e6c0c622/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2018.2.20f1.pkg
+	md5sums = 936be78c451a01a37c53dee89055dad1
 
 pkgname = unity-editor-mac
 
