@@ -23,10 +23,9 @@ sha256sums=("e6ec5831a4ab09b7afee71a48627646828b4f2545988539a908d0d6108e87fb5"
 build() {
   cd "${srcdir}"
 
-  msg2 "Extracting data from debian package"
   bsdtar -xf data.tar.xz -C .
   
-  msg2 "Removing unnecessary .deb related files"
+  # Removing unnecessary .deb related files
   rm -R "${srcdir}/etc/cron.daily"
   rm -R "${srcdir}/etc/init.d"
   rm -R "${srcdir}/etc/pam.d"
@@ -37,20 +36,11 @@ package() {
 
   install -d "${pkgdir}/etc"
   install -d "${pkgdir}/opt"
-  
   cp -r "${srcdir}/etc/"* "${pkgdir}/etc"
   cp -r "${srcdir}/opt/"* "${pkgdir}/opt"
-
-  msg2 "Packaging copyright file"
   install -Dm644 "${srcdir}/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
-
-  msg2 "Adding systemd user service file"
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
-
-  msg2 "Adding runnable crd command"
   install -Dm755 "${srcdir}/crd" "${pkgdir}/usr/bin/crd"
-  
-  msg2 "Creating symlinks for Chromium compatibility"
   install -dm755 "${pkgdir}/etc/chromium/native-messaging-hosts"
   
   for _file in $(find "${pkgdir}/etc/opt/chrome/native-messaging-hosts" -type f); do
@@ -59,7 +49,5 @@ package() {
       ln -s "/etc/opt/chrome/native-messaging-hosts/${_filename}" "${pkgdir}/etc/chromium/native-messaging-hosts/${_filename}"
     fi
   done
-  
-  msg2 "Setting uid root to user-session command"
   chmod u+s "${pkgdir}/opt/google/${pkgname}/user-session"
 }
