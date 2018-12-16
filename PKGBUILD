@@ -74,26 +74,21 @@ prepare() {
   git config "submodule.cmd/${pkgname}/vendor/github.com/smartystreets/assertions.url" "${srcdir}/assertions"
   
   git submodule update --init
+  
+  rm -rf "${srcdir}/gopath"
+  mkdir -p "${srcdir}/gopath/src/github.com/zyedidia"
+  ln -s "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/gopath/src/github.com/zyedidia/${pkgname}"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  echo "Linking to repository path..."
-  mkdir -p "${srcdir}/src/github.com/zyedidia"
-  ln -s "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/github.com/zyedidia/${pkgname}"
-  cd "${srcdir}/src/github.com/zyedidia/${pkgname}"
-  
-  GOPATH="${srcdir}" PATH="${PATH}:${GOPATH}/bin" make build-quick
-  
-  echo "Removing link..."
-  rm -rf "${srcdir}/src"
+  cd "${srcdir}/gopath/src/github.com/zyedidia/${pkgname}"
+  GOPATH="${srcdir}/gopath" PATH="${PATH}:${GOPATH}/bin" make build-quick
 }
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  for _file in ${srcdir}/${pkgname}-${pkgver}/*.md
+  for _file in "${srcdir}/${pkgname}-${pkgver}/"*.md
   do
     install -Dm644 "${_file}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename ${_file})"
   done
