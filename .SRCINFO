@@ -1,6 +1,6 @@
 pkgbase = realtimeconfigquickscan-git
 	pkgdesc = Linux configuration checker for systems to be used for real-time audio.
-	pkgver = r30.3cfde30
+	pkgver = r32.1235378
 	pkgrel = 1
 	url = https://github.com/raboof/realtimeconfigquickscan
 	arch = any
