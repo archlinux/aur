@@ -1,6 +1,6 @@
 pkgbase = blender-fracture_modifier-git
 	pkgdesc = Development version of Blenders fracture_modifier branch
-	pkgver = v2.79b.r2130.g9a21afd18d4
+	pkgver = v2.79b.r2154.gc8d6bba3cce
 	pkgrel = 1
 	url = http://blender.org/
 	install = blender.install
@@ -47,6 +47,7 @@ pkgbase = blender-fracture_modifier-git
 	source = version.patch
 	source = ffmpeg.patch
 	source = openvdb.patch
+	source = collada1668.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -59,6 +60,7 @@ pkgbase = blender-fracture_modifier-git
 	md5sums = 975cef0e17c77517ed8727701abc8a0c
 	md5sums = bb325c8c879d677ad1f1c54797268716
 	md5sums = fe709e616e52c1acc47c1cc0f77c2694
+	md5sums = 4e4423315f07bc724c7703c57c4481d7
 
 pkgname = blender-fracture_modifier-git
 

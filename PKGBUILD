@@ -5,7 +5,7 @@ _sufix=${_branch}
 _blenver=2.81
 _fragment="#branch=${_branch}"
 pkgname=blender-${_sufix}-git
-pkgver=v2.79b.r2130.g9a21afd18d4
+pkgver=v2.79b.r2154.gc8d6bba3cce
 pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"
 arch=('i686' 'x86_64')
@@ -37,6 +37,7 @@ source=("git://git.blender.org/blender.git${_fragment}" \
         version.patch \
         ffmpeg.patch \
         openvdb.patch \
+        collada1668.patch \
         )
 md5sums=('SKIP'
          'SKIP'
@@ -49,7 +50,8 @@ md5sums=('SKIP'
          'df6f12c3327678b0a05f9e48e9ace67c'
          '975cef0e17c77517ed8727701abc8a0c'
          'bb325c8c879d677ad1f1c54797268716'
-         'fe709e616e52c1acc47c1cc0f77c2694')
+         'fe709e616e52c1acc47c1cc0f77c2694'
+         '4e4423315f07bc724c7703c57c4481d7')
 
 # determine whether we can precompile CUDA kernels
 _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
@@ -66,14 +68,15 @@ pkgver() {
 prepare() {
   cd "$srcdir/blender"
   # update the submodules
-  git submodule update --init --recursive
-  git submodule foreach git checkout master
-  git submodule foreach git pull --rebase origin master
+  git submodule update --init --recursive --remote
+#  git submodule foreach git checkout master
+#  git submodule foreach git pull --rebase origin master
   git apply -v ${srcdir}/SelectCudaComputeArch.patch
   git apply -v ${srcdir}/gcc8.patch
   git apply -v ${srcdir}/ffmpeg.patch
   git apply -v ${srcdir}/openvdb.patch
   git apply -v ${srcdir}/version.patch
+  git apply -v ${srcdir}/collada1668.patch
 }
 
 build() {
