@@ -7,7 +7,7 @@ pkgdesc="Xilinx ISE Design Suite"
 url="http://www.xilinx.com/products/design-tools/ise-design-suite.html"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('ncurses5-compat-libs')
+depends=('ncurses5-compat-libs' 'qt4')
 optdepends=('fxload: Firmware loader for some programmer dongles'
             'digilent.adept.utilities: Digilent programmer support')
 options=('!strip')

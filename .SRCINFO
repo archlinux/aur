@@ -7,6 +7,7 @@ pkgbase = xilinx-ise
 	arch = x86_64
 	license = custom
 	depends = ncurses5-compat-libs
+	depends = qt4
 	optdepends = fxload: Firmware loader for some programmer dongles
 	optdepends = digilent.adept.utilities: Digilent programmer support
 	options = !strip
