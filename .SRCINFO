@@ -1,0 +1,18 @@
+pkgbase = mesen-git
+	pkgdesc = A cross-platform NES/Famicom emulator
+	pkgver = 0.9.7
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = clang
+	makedepends = gendesk
+	makedepends = zip
+	depends = mono
+	depends = sdl2
+	provides = mesen
+	conflicts = mesen
+	source = Mesen::git+https://github.com/SourMesen/Mesen.git
+	sha256sums = SKIP
+
+pkgname = mesen-git
+
