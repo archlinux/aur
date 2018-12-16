@@ -1,0 +1,21 @@
+diff -Naurp a/Makefile b/Makefile
+--- a/Makefile	2018-09-11 10:47:31.000000000 +0000
++++ b/Makefile	2018-12-16 20:19:17.793566976 +0000
+@@ -15,7 +15,7 @@ endif
+ 
+ # Compiler flags for various configurations:
+ 
+-CFLAGS := -std=c99 -pedantic -Wall -Wextra -Wno-unused-parameter
++CFLAGS += -std=c99 -pedantic -Wall -Wextra -Wno-unused-parameter
+ 
+ ifeq "$(CC)" "clang"
+   CFLAGS += -Wunreachable-code
+@@ -78,7 +78,7 @@ $(OUT)/libmujs.a: $(OUT)/libmujs.o
+ 
+ $(OUT)/libmujs.so: one.c $(HDRS)
+ 	@ mkdir -p $(dir $@)
+-	$(CC) $(CFLAGS) -fPIC -shared -o $@ $< -lm
++	$(CC) $(CFLAGS) -fPIC -shared $(LDFLAGS) -o $@ $< -lm
+ 
+ $(OUT)/mujs: $(OUT)/libmujs.o $(OUT)/main.o
+ 	@ mkdir -p $(dir $@)

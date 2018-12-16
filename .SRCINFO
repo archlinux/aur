@@ -1,14 +1,16 @@
 pkgbase = mujs
 	pkgdesc = An embeddable Javascript interpreter in C
 	pkgver = 1.0.5
-	pkgrel = 2
-	url = http://mujs.com/
+	pkgrel = 3
+	url = https://mujs.com/
 	arch = i686
 	arch = x86_64
 	license = ISC
-	depends = glibc
+	depends = readline
 	source = mujs-1.0.5.tar.gz::https://github.com/ccxvii/mujs/archive/1.0.5.tar.gz
+	source = mujs-flags.patch
 	sha256sums = 06c5ba5844af8714a7b89e614eb9a049da58b22974642900c87964d1f726174d
+	sha256sums = 051c8a8727f4ff2816e9c060fbe969b7d1e8b9e2c07d704e809c24ff4394f0f4
 
 pkgname = mujs
 
