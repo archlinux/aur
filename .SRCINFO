@@ -1,6 +1,6 @@
 pkgbase = pgmanage-bin
 	pkgdesc = pgManage - A fast alternative to PGAdmin
-	pkgver = 10.3.1
+	pkgver = 11.0.1
 	pkgrel = 1
 	url = https://www.workflowproducts.com/services.html#software
 	arch = i686
@@ -18,10 +18,10 @@ pkgbase = pgmanage-bin
 	source = pgManage.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_i686 = pgmanage-bin-10.3.1-i686.rpm::https://github.com/pgManage/pgManage/releases/download/v10.3.1/pgManage-10.3.1-ia32.rpm
-	md5sums_i686 = ae51e9e05c1838785ba5a805cb1a2452
-	source_x86_64 = pgmanage-bin-10.3.1-x86_64.rpm::https://github.com/pgManage/pgManage/releases/download/v10.3.1/pgManage-10.3.1.rpm
-	md5sums_x86_64 = b8ecbad69f4c78fa9ed5421335023e70
+	source_i686 = pgmanage-bin-11.0.1-i686.rpm::https://github.com/pgManage/pgManage/releases/download/v11.0.1/pgManage-11.0.1.i686.rpm
+	md5sums_i686 = 60cdaa61d5f0c6562eb646be198dc6a5
+	source_x86_64 = pgmanage-bin-11.0.1-x86_64.rpm::https://github.com/pgManage/pgManage/releases/download/v11.0.1/pgManage-11.0.1.x86_64.rpm
+	md5sums_x86_64 = 1ade5523b45041d0f08dfc50571fd096
 
 pkgname = pgmanage-bin
 

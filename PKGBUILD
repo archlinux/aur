@@ -2,7 +2,7 @@
 # Contributor: Lorenzo Giuliani <lorenzo at giuliani dot me>
 
 pkgname=pgmanage-bin
-pkgver=10.3.1
+pkgver=11.0.1
 pkgrel=1
 pkgdesc="pgManage - A fast alternative to PGAdmin"
 arch=('i686' 'x86_64')
@@ -13,11 +13,11 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 makedepends=('')
 source=("LICENSE.${name}.txt::https://raw.githubusercontent.com/${name}/${name}/master/LICENSE"
         "${name}.sh")
-source_i686=("${pkgname}-${pkgver}-i686.rpm::https://github.com/${name}/${name}/releases/download/v${pkgver}/${name}-${pkgver}-ia32.rpm")
-source_x86_64=("${pkgname}-${pkgver}-x86_64.rpm::https://github.com/${name}/${name}/releases/download/v${pkgver}/${name}-${pkgver}.rpm")
+source_i686=("${pkgname}-${pkgver}-i686.rpm::https://github.com/${name}/${name}/releases/download/v${pkgver}/${name}-${pkgver}.i686.rpm")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.rpm::https://github.com/${name}/${name}/releases/download/v${pkgver}/${name}-${pkgver}.x86_64.rpm")
 sha256sums=('SKIP' 'SKIP')
-md5sums_i686=('ae51e9e05c1838785ba5a805cb1a2452')
-md5sums_x86_64=('b8ecbad69f4c78fa9ed5421335023e70')
+md5sums_i686=('60cdaa61d5f0c6562eb646be198dc6a5')
+md5sums_x86_64=('1ade5523b45041d0f08dfc50571fd096')
 
 package() {
 	install -d "${pkgdir}"/opt/${name}
