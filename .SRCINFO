@@ -1,0 +1,22 @@
+pkgbase = kuiserver-standalone-git
+	pkgdesc = Standalone version of the KIO job manager
+	pkgver = r72.30f67de
+	pkgrel = 1
+	url = https://github.com/sandsmark/kuiserver-standalone
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kinit
+	depends = kio
+	depends = kdbusaddons
+	depends = ki18n
+	provides = kuiserver-standalone
+	conflicts = kuiserver-standalone
+	conflicts = plasma-workspace
+	source = git+https://github.com/sandsmark/kuiserver-standalone.git
+	md5sums = SKIP
+
+pkgname = kuiserver-standalone-git
+
