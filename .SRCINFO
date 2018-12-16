@@ -1,7 +1,7 @@
 pkgbase = mint-backgrounds-tara
 	pkgdesc = The backgrounds included in Linux Mint 19 Tara
 	pkgver = 1.1
-	pkgrel = 5
+	pkgrel = 4
 	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-tara
 	arch = any
 	license = GPL3

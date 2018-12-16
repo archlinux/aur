@@ -3,7 +3,7 @@
 
 pkgname=mint-backgrounds-tara
 pkgver=1.1
-pkgrel=5
+pkgrel=4
 pkgdesc="The backgrounds included in Linux Mint 19 Tara"
 license=('GPL3')
 arch=('any')
