@@ -3,7 +3,7 @@
 # Many options will remain here as leftovers in case the packaging in Github resumes once again
 
 pkgname=mintlocale
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Language and locale selection tool"
 arch=('any')
@@ -26,10 +26,10 @@ source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz"
         "im_apt_check.patch"
         "install_remove_apt_check.patch"
         "mintlocale_apt_check.patch")
-sha256sums=('fea9496190553dfb58c92a50659aa927805ef60d093ec32a52a13e1e825fcd42'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('05125a2bc69cb2c6c838a67f07dc18f3c1d4df3fb02ef45d12d7922f822e7afd'
+            '3f59e0144e906e2e1b75ba429a1eeb0bc12986fdccf98d2da4692bed80741c8e'
+            '5ab364fc1756e0e91b97de81d48316ba6df77a938f5eee3ea7deaefb093e72e7'
+            'd3861405dcac12bf0637f47ef22c910f3f06e0d9545022191ecafbac818b9fd2')
 
 ## Packaging via Linuxmint repository
 prepare() {
