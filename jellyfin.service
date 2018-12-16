@@ -4,7 +4,8 @@ After=network.target
 
 [Service]
 User=jellyfin
-ExecStart=/usr/bin/dotnet /usr/lib/jellyfin/EmbyServer.dll
+EnvironmentFile=/etc/conf.d/jellyfin
+ExecStart=/usr/bin/dotnet /usr/lib/jellyfin/jellyfin.dll -programdata ${JELLYFIN_DATA} ${JELLYFIN_ADD_OPTS}
 Restart=on-abort
 TimeoutSec=20
 
