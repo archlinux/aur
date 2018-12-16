@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marcusva/${pkgname/pyth
 sha256sums=("50e137cc6078d20d59c7a79883a684a02cbeaa583c9f43ac6bfbcca364236f97")
 
 package() {
-  cd "${pkgname/python-py/py-}-rel_${pkgver//./_}"
+  cd "${srcdir}/${pkgname/python-py/py-}-rel_${pkgver//./_}"
   python setup.py install --root="${pkgdir}"
-  install -Dm644 "doc/copying.rst" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${pkgname/python-py/py-}-rel_${pkgver//./_}/doc/copying.rst" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
