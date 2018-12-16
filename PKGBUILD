@@ -1,9 +1,9 @@
 # Maintainer: Evgeniy Alekseev <arcanis at archlinux dot org>
 
-pkgbase=('python-gspread')
+pkgbase=python-gspread
 pkgname=('python-gspread' 'python2-gspread')
 _pkgname=gspread
-pkgver=0.6.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Google Spreadsheets Python API"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/burnash/gspread"
 license=('Custom:MIT')
 depends=('python-requests' 'python2-requests')
 source=("https://github.com/burnash/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('d1881bb67320e57dc4423f1e1f7c0e6f')
+sha512sums=('8d1072bdd45fe2287cbc5bbc5fd6d6f615343898fca811687d0ebe6dea266ded7fd795693067d423e9a55cc83ebc5a12a38ab70db9b61cec65e8f766dbead0b2')
 
 prepare() {
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
