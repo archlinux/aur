@@ -30,17 +30,14 @@ function pkgver
 function build
 {
     cd "$_pkgtitle"
-
-    qmake-qt5 -r librecad.pro \
-        QMAKE_CFLAGS="${CFLAGS}" \
-        QMAKE_CXXFLAGS="${CXXFLAGS}"
-
+    qmake librecad.pro \
+        QMAKE_CPPFLAGS="$CPPFLAGS" \
+        QMAKE_CFLAGS="$CFLAGS" \
+        QMAKE_CXXFLAGS="$CXXFLAGS" \
+        QMAKE_LDFLAGS="$LDFLAGS"
     make
 
-    msg "Building ${_pkgtitle} plugins"
-
     cd 'plugins'
-    qmake-qt5
     make
 }
 
