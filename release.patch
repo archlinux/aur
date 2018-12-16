@@ -1,6 +1,6 @@
-diff -ura package.orig/kleiner-brauhelfer-1.4.4.3/source/src/definitionen.h package.new/kleiner-brauhelfer-1.4.4.3/source/src/definitionen.h
---- package.orig/kleiner-brauhelfer-1.4.4.3/source/src/definitionen.h	2018-02-08 15:06:51.808896854 +0100
-+++ package.new/kleiner-brauhelfer-1.4.4.3/source/src/definitionen.h	2018-02-08 15:07:09.036995977 +0100
+diff -ura package.orig/kleiner-brauhelfer-1.4.4.4/source/src/definitionen.h package.new/kleiner-brauhelfer-1.4.4.4/source/src/definitionen.h
+--- package.orig/kleiner-brauhelfer-1.4.4.4/source/src/definitionen.h	2018-02-08 15:06:51.808896854 +0100
++++ package.new/kleiner-brauhelfer-1.4.4.4/source/src/definitionen.h	2018-02-08 15:07:09.036995977 +0100
 @@ -2,7 +2,7 @@
  #define DEFINITIONEN_H
 
