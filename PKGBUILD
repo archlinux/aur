@@ -1,9 +1,9 @@
 #Maintainer: Relliebermann <name AT gmail DOT com>
 #Co-Maintainer: Seantum <tsiegele AT gmx DOT at>
 
-pkgname=mint-backgrounds-tessa
+pkgname=mint-backgrounds-tessa-1.1
 pkgver=1.1
-pkgrel=9
+pkgrel=10
 pkgdesc="The backgrounds included in Linux Mint 19.1 Tessa"
 license=('GPL3')
 arch=('any')
