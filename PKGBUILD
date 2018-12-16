@@ -1,4 +1,4 @@
-# Maintainer: b00rt00s ( bomby dot zrzuc at gmail dot com )
+# Maintainer: b00rt00s <b00rt00s.aur@gmailcom>
 pkgname=drawxtl
 pkgver=5.5
 pkgrel=3
