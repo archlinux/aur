@@ -1,6 +1,6 @@
 pkgbase = unity-editor
 	pkgdesc = The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences.
-	pkgver = 2018.2.19f1
+	pkgver = 2018.2.20f1
 	pkgrel = 1
 	epoch = 1
 	url = https://unity3d.com/
@@ -29,16 +29,16 @@ pkgbase = unity-editor
 	optdepends = unity-editor-facebook
 	optdepends = visual-studio-code-bin
 	options = !strip
-	source = https://download.unity3d.com/download_unity/06990f28ba00/LinuxEditorInstaller/Unity.tar.xz
+	source = https://download.unity3d.com/download_unity/cef3e6c0c622/LinuxEditorInstaller/Unity.tar.xz
 	source = unity-editor
 	source = unity-editor.desktop
 	source = unity-editor-icon.png
 	source = eula.txt
-	sha1sums = 2f2d81e891e98e804e1d5649ec56adf708707afd
-	sha1sums = c3727d6851a3ffd0aef9b380e2485eed9f02ef6b
-	sha1sums = 6ba1a3051bc0d5ed08e2fa4551d0f6c679109176
-	sha1sums = fddf4861974f88f0565de7f54f7418204e729894
-	sha1sums = 1c3d4bc66fd16a10e68f78320e16cfd86afac7ac
+	md5sums = e8c2b2df49a5017f953543d595ecf31b
+	md5sums = c5871a48d70e13e33138176c0490ac59
+	md5sums = ee60f0d4d3c3fa9e0a52da085b1f3be6
+	md5sums = 723f9e556821810682a6d1f4be540a74
+	md5sums = 24f6741eba3d591a0761f3c92e3cc1f7
 
 pkgname = unity-editor
 
