@@ -1,6 +1,6 @@
 pkgbase = packagecore
 	pkgdesc = Utility for building distribution specific Linux packages.
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/BytePackager/packagecore
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = packagecore
 	depends = python
 	provides = packagecore-git
 	conflicts = packagecore-git
-	source = https://github.com/BytePackager/packagecore/releases/download/v0.10.0/packagecore-0.10.0.tar.gz
-	md5sums = f474bd655962ffdfbe8b964ac46ca5f2
-	sha256sums = fa8a15462ec5d485a3ab725ea70971a19d15067bd4b544c8b56feca3f12e5461
+	source = https://github.com/BytePackager/packagecore/releases/download/v0.11.0/packagecore-0.11.0.tar.gz
+	md5sums = 2b7fdceb30090563d4e6752a968c70ce
+	sha256sums = ee8a2429db7ddf52b5287ca2c00c9d256a7b35748696e6cf1b91a9c9105d0987
 
 pkgname = packagecore
 
