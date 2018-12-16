@@ -3,14 +3,14 @@
 _prefix=/opt/Unity
 
 pkgname=unity-editor-language-zh-cn
-pkgver=2018.2.20f1
+pkgver=2018.3.0f2
 pkgrel=1
 pkgdesc="Chinese Language Pack (Preview)"
 arch=('x86_64')
 url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor')
-source=("https://new-translate.unity3d.jp/v1/live/54/2018.2/zh-cn")
+source=("2018.3.0f2.zh-cn::https://new-translate.unity3d.jp/v1/live/54/2018.3/zh-cn")
 md5sums=("SKIP")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
@@ -18,6 +18,6 @@ PKGEXT='.pkg.tar' # Prevent compressing of the final package
 package() {
   _dest="${pkgdir}${_prefix}/Editor/Data/Localization"
   install -d "${_dest}"
-  mv zh-cn "${_dest}/zh-cn.po"
+  mv ${pkgver}.zh-cn "${_dest}/zh-cn.po"
 }
 
