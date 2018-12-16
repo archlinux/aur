@@ -1,6 +1,6 @@
 _pkgname=resvg
 pkgname=${_pkgname}-git
-pkgver=0.4.0.r6.g9891e06
+pkgver=0.4.0.r14.gc48545f
 pkgrel=2
 pkgdesc='SVG rendering library and CLI'
 arch=(i686 x86_64)
