@@ -1,0 +1,14 @@
+pkgbase = haskell-numbers
+	pkgdesc = Various number types
+	pkgver = 3000.2.0.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/numbers
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	source = http://hackage.haskell.org/packages/archive/numbers/3000.2.0.2/numbers-3000.2.0.2.tar.gz
+	sha256sums = f0cee40b90c3746bd0bc0559d3827d3cf1b1e2c43270b7ec9bf4fa458fcb5a77
+
+pkgname = haskell-numbers
+
