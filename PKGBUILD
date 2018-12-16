@@ -7,8 +7,8 @@ pkgname=(qemu-patched qemu-patched-headless qemu-patched-arch-extra qemu-patched
          qemu-patched-block-{iscsi,rbd,gluster} qemu-patched-guest-agent)
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
-pkgver=3.0.0
-pkgrel=6
+pkgver=3.1.0
+pkgrel=1
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
@@ -20,19 +20,15 @@ source=("$url/download/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         qemu-ga.service
         65-kvm.rules
         allow_elf64.patch
-        cpu-pinning.patch::https://github.com/saveriomiroddi/qemu-pinning/commit/4bdb6d0e930f6dd8473d6833a0811169f43a9f0b.patch
-        pa-fixes.patch::https://gist.githubusercontent.com/Vaporeon/c879636f9147bd696fb888321ffd5655/raw/57fe4b41a84d46b908fcb9d8e9756e27f3b75940/pa-fixes.patch
-        fix_virtio.patch::https://github.com/qemu/qemu/commit/db812c4073c77c8a64db8d6663b3416a587c7b4a.patch
-        pcie-enhanced-link-speed-and-width.patch::https://gist.githubusercontent.com/Vaporeon/411acfbb8d5eb8ceb337924f1c04d1ef/raw/967414a2febb8ac692cfa095ea9ca80d7620854d/pcie-enhanced-link-speed-and-width.patch)
-sha256sums=('8d7af64fe8bd5ea5c3bdf17131a8b858491bcce1ee3839425a6d91fb821b5713'
+        cpu-pinning.patch::https://github.com/saveriomiroddi/qemu-pinning/commit/cf5294579e4b43e9bea7d681154dc1737e56e323.patch
+        pcie-enhanced-link-speed-and-width.patch::https://patchwork.kernel.org/series/43129/mbox/)
+sha256sums=('6a0508df079a0a33c2487ca936a56c12122f105b8a96a44374704bef6c69abfc'
             'SKIP'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
             'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
             '59751f1ed26ea61b2a37ebee4be6979e584a450b611282138a0893aa9173e2e4'
-            '0769c55299606e897b16179ebf7bfd7dfb72a836d2a8bcebdccd8586f99d3166'
-            '0fd49e734ee141b90d7d41d534f5635c175734a454e61c1c7e31b9fec3e19508'
-            '9d176af4506f16f2798e772151fa8595620a770510241b688980fc7f0c6970b3'
-            '057d7bb01de2cbf68882124542c91d6cc473cb101c7fbf4b79c44805a61ce965')
+            'a6e9c046555aca07a234ab2ec75223bfb3fb156eab37331a418b7de66d25331e'
+            '49f697aa8858692b6a0bc7b43fe569f83b7bcc1b5976634e08c202eccbc35e67')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
 case $CARCH in
@@ -49,9 +45,8 @@ prepare() {
 
   patch -p1 < ../allow_elf64.patch
   # FS#60141
-  patch -p1 < ../fix_virtio.patch
   patch -p1 < ../cpu-pinning.patch
-  patch -p1 < ../pa-fixes.patch
+  #patch -p1 < ../pa-fixes.patch
   patch -p1 < ../pcie-enhanced-link-speed-and-width.patch
 }
 
@@ -85,7 +80,6 @@ _build() (
     --libexecdir=/usr/lib/qemu \
     --python=/usr/bin/python2 \
     --smbd=/usr/bin/smbd \
-    --with-gtkabi=3.0 \
     --with-sdlabi=2.0 \
     --enable-modules \
     --enable-jemalloc \
@@ -167,7 +161,8 @@ _package() {
     case $_blob in
       # provided by seabios package
       bios.bin|acpi-dsdt.aml|bios-256k.bin|vgabios-cirrus.bin|vgabios-qxl.bin|\
-      vgabios-stdvga.bin|vgabios-vmware.bin|vgabios-virtio.bin) rm "$_blob"; continue ;;
+      vgabios-stdvga.bin|vgabios-vmware.bin|vgabios-virtio.bin|vgabios-bochs-display.bin|\
+      vgabios-ramfb.bin) rm "$_blob"; continue ;;
 
       # iPXE ROMs
       efi-*|pxe-*) continue ;;
