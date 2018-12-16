@@ -1,20 +1,17 @@
 # Maintainer: Oscar Morante <spacepluk at gmail dot com>
 
-_version=2018.3.0
-_build=f1
-_randomstring=f023c421e164
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-doc
-pkgver=${_version}${_build}
+pkgver=2019.1.0a12
 pkgrel=1
 pkgdesc="Unity User Manual and Scripting API Reference."
 arch=('x86_64')
 url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta')
-source=("https://docs.unity3d.com/2018.3/Documentation/uploads/UnityDocumentation.zip")
-sha1sums=('SKIP')
+source=("2019.1.0a12.zip::https://storage.googleapis.com/docscloudstorage/2019.1/UnityDocumentation.zip")
+md5sums=("SKIP")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
