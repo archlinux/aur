@@ -1,4 +1,4 @@
-# Maintainer: b00rt00s
+# Maintainer: b00rt00s <b00rt00s.aur@gmail.com>
 
 pkgname=vesta
 pkgver=3.4.5
