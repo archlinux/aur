@@ -4,8 +4,8 @@
 
 _name=twmn
 pkgname="${_name}-git"
-pkgver=186.5b92ac5
-pkgrel=2
+pkgver=187.80f4883
+pkgrel=1
 pkgdesc="A notification system for tiling window managers"
 arch=('any')
 url="https://github.com/sboli/twmn"
@@ -31,5 +31,5 @@ build() {
 package() {
    install -Dm755 "${_name}/bin/${_name}c" "${pkgdir}/usr/bin/${_name}c"
    install -Dm755 "${_name}/bin/${_name}d" "${pkgdir}/usr/bin/${_name}d"
-   install -Dm644 "${_name}/init/systemd/${_name}d.service" "${pkgdir}/usr/lib/systemd/system/${_name}d.service"
+   install -Dm644 "${_name}/init/systemd/${_name}d.service" "${pkgdir}/usr/lib/systemd/user/${_name}d.service"
 }
