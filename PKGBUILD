@@ -1,47 +1,47 @@
+# Maintainer: Christian Pfeiffer <cpfeiffer at live de>
 # Contributor: Michael Straube <straubem gmx de>
 # Contributor: xantares <xantares09 at hotmail dot com>
 
 pkgname=combblas
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 pkgdesc="Combinatorial BLAS Library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://gauss.cs.ucsb.edu/~aydin/CombBLAS/html/"
 license=("MIT")
 depends=('openmpi')
 makedepends=('cmake')
-source=("http://gauss.cs.ucsb.edu/~aydin/CombBLAS_FILES/CombBLAS_beta_15_0.tgz"
-        "http://gauss.cs.ucsb.edu/~aydin/CombBLAS_FILES/testdata_combblas1.2.1.tgz")
-sha256sums=('626f26f34dce8e2cc2c189d3ab52dbc2959268c71755f6e7dca5ba5f9302ade5'
-            '003bd04528ee89b543b5d123f8dd9d248c8f45a917278b46962a100c4516f505')
+_filename="CombBLAS_beta_16_2"
+source=("http://gauss.cs.ucsb.edu/~aydin/CombBLAS_FILES/${_filename}.tgz")
+
+sha512sums=('de63b6da77563cd1e074f44d6892c8d1dcb7aa9475f617b2de60239485e6dbd5965a305471f933fe175778a12fc6bb987a75f3631487b6461a382c5419b267aa')
 
 prepare() {
-  mkdir CombBLAS/build
-  ln -s "$srcdir"/TESTDATA CombBLAS/build/TESTDATA
+  mkdir build
 }
 
 build() {
-  cd CombBLAS/build
+  cd build
 
-  cmake ..\
+  # Some tests are computationally heavy MPI stuff, so avoid them
+  cmake "${srcdir}/${_filename}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_SHARED_LIBS=ON
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_SKIP_INSTALL_RPATH=ON \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_TESTING=OFF
+
   make
 }
 
-check() {
-  cd CombBLAS/build
-
-  make test
-}
-
 package() {
-  cd CombBLAS/build
+  cd build
 
-  install -d "$pkgdir"/usr/{lib,include/combblas}
+  make DESTDIR="${pkgdir}" install
 
-  install -m 644 ../*.h "$pkgdir"/usr/include/combblas/
-  install -m 755 *.so "$pkgdir"/usr/lib/
+  # Remove OS X leftover files
+  find "${pkgdir}" -name "*.DS_Store" -delete
+  find "${pkgdir}" -name "._*" -delete
 
-  install -D -m 644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 "${srcdir}/${_filename}/LICENSE" -t "${pkgdir}"/usr/share/licenses/$pkgname/
 }
