@@ -36,7 +36,7 @@ package() {
   install -d "$pkgdir/usr/share/fonts/misc/"
   install -d "$pkgdir/usr/share/kbd/consolefonts/"
   make DESTDIR="$pkgdir" install
-  
+
   rm -f "$pkgdir/usr/share/fonts/misc/fonts.dir"
 
   for i in AUTHORS NEWS COPYING README ChangeLog INSTALL; do
