@@ -6,22 +6,23 @@ pkgname=pacman-static
 pkgver=5.1.1
 _cares_ver=1.15.0
 _nghttp2_ver=1.34.0
-_curlver=7.62.0
-_sslver=1.1.1
+_curlver=7.63.0
+_sslver=1.1.1a
 _xzver=5.2.4
 _bzipver=1.0.6
 _zstdver=1.3.7
 _libarchive_ver=3.3.3
-_gpgerrorver=1.32
+_gpgerrorver=1.33
 _libassuanver=2.5.1
 _gpgmever=1.12.0
 _gnupgver=2.2.11
-pkgrel=6
+pkgrel=7
 pkgdesc="Statically-compiled pacman (to fix or install systems without libc)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
 depends=("pacman=${pkgver}")
+makedepends=('musl' 'kernel-headers-musl')
 
 # pacman
 source=("https://sources.archlinux.org/other/pacman/pacman-${pkgver}.tar.gz"{,.sig})
@@ -62,16 +63,16 @@ sha512sums=('7112025dbd3e263c16f5b0ab34c9db3e8d631a0801bb086b47a2252d1764172261b
             '5ddc4ab443c51ce286a656d2013421172fc37608f14c0a7ea02fa9e5a0dd155e162d5602b55f34dacc69709525a9a8110dc4c42d92607bbad1951075d094c6a0'
             'a1de6c5e7e1a6a13c926aae690e83d5caa51e7313d63da1cf2af6bc757c41d585aad5466bc3ba7b7f7793cb1748fa589f40972b196728851c8b059cfc8c3be50'
             'SKIP'
-            'b254e6e8e7cff23b7a005da875c580cff98e50d227fa4809f899f625cb70e7f80f7f072594a1cde700359b258ff0ac2fdc03ee4a809b6dbcdf6004b2bf87c884'
+            '25ad69a1978de2178ac7a456e72152907203931ad895234c14781c27681ea2c5d6669794880c4ebae6e38b8014c6538bc88a6afec2c192210b6d491d60b8f691'
             'SKIP'
-            'c0284a4fe84bdf765ca5bc5148da4441ffc36392cfecaf9d372af00cf93b6de5681cab1248b6f8246474532155dc205da5ad49549ad7c61c07c917145e7c9c71'
+            '1523985ba90f38aa91aa6c2d57652f4e243cb2a095ce6336bf34b39b5a9b5b876804299a6825c758b65990e57948da532cca761aa12b10958c97478d04dd6d34'
             'SKIP'
             '3857c298663728a465b5f95a3ef44547efbfb420d755e9dde7f20aa3905171b400e1c126d8db5c2b916c733bbd0724d8753cad16c9baf7b12dcd225a3ee04a97'
             'e5bf6eb88365d2dbdc774db49261fb9fae0544ed297891fc20f1ed223f4072cb0357cbd98146ac35b6d29410a12b6739bbd111cd57d4a225bef255ed46988578'
             'SKIP'
             '00ace5438cfa0c577e5f578d8a808613187eff5217c35164ffe044fbafdfec9e98f4192c02a7d67e01e5a5ccced630583ad1003c37697219b0f147343a3fdd12'
             'fb9ac61b79b22a628e602e68f7c59c85a00020f7f25b8653076895da7589ca1203adc7fe3d9b865f36648bc30d765b9630cf0955f970596253da74c089b97af1'
-            '0130af48fe81f4db401635757d22a330455aab5dc27edfffad44b7c7c5c439399e92d234c9e00f4d3a399646b52e06c95d53196ea19f5a166817e2032511cb20'
+            'c0396a63ea54e321b207d84fb4eac247ba8a791058db00a8bbf1dd7698c6593b13c77de08fc0971cccd6c3c27925637d1f9fdc59c4cac1344ddfe4c25adc2e42'
             'SKIP'
             'c8829925221780f175cee8c4084060b0d661229f583a50d400a1903ab7303b2724b99ff9c0fa242881d4c5d779036756e1da54d9143acc0fcd92f302ecb5882d'
             'SKIP'
@@ -80,6 +81,18 @@ sha512sums=('7112025dbd3e263c16f5b0ab34c9db3e8d631a0801bb086b47a2252d1764172261b
             '10063764b610c0c966ba0177cac0d2cb781e297a45545cc8a587741513089af26f40769670894c86e7985b73c47e9cb985253bc3bef3a12fa83fe2a6a30acb6d')
 
 export LDFLAGS="$LDFLAGS -static"
+export CC=musl-gcc
+export CXX=musl-gcc
+
+# https://www.openwall.com/lists/musl/2014/11/05/3
+# fstack-protector and musl do not get along but only on i686
+if [[ $CARCH = i686 ]]; then
+    # silly build systems have configure checks or buildtime programs that don't CFLAGS but do do CC
+    export CC="musl-gcc -fno-stack-protector"
+    export CXX="musl-gcc -fno-stack-protector"
+    export CFLAGS="${CFLAGS/-fstack-protector-strong/}"
+    export CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/}"
+fi
 
 prepare() {
     cd "${srcdir}"/libarchive-${_libarchive_ver}
