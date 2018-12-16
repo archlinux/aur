@@ -1,8 +1,8 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 _pkgname=project-generator
 pkgname=(${_pkgname} python2-${_pkgname})
-pkgver=0.8.15
-pkgrel=2
+pkgver=0.9.13
+pkgrel=1
 pkgdesc="Project generators for various embedded tools (IDE)"
 url="https://github.com/project-generator/project_generator"
 depends=('python'
@@ -15,8 +15,8 @@ depends=('python'
 optdepends=()
 license=('Apache')
 arch=('any')
-source=("https://github.com/project-generator/${_pkgname/-/_}/archive/v${pkgver}.tar.gz")
-sha512sums=('8eaf11a278d7c62e8ae7118e684e3cd6f4a859acd4e117fca6b980132923b5aebdabbb2ff2f42781e980749e7168989eda645d895644c34adc7de84ea349f369')
+source=("https://github.com/project-generator/${_pkgname/-/_}/archive/${pkgver}.tar.gz")
+sha512sums=('5987d318241e446b1ef860b15a88ee98dddb0fccedca0a29501eb051d2941aceac43bb7e1e0ef18bb0f47072e3a7645ef9a0a335d02b3eef9ae65bc811b21a04')
 
 prepare() {
     mv "${srcdir}/${_pkgname//-/_}-${pkgver}" "${srcdir}/${_pkgname}-${pkgver}"
