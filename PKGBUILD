@@ -2,7 +2,7 @@
 
 pkgname=minikube
 pkgver=0.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minikube is a tool that makes it easy to run Kubernetes locally"
 url="https://github.com/kubernetes/minikube"
 license=('Apache')
@@ -14,7 +14,7 @@ optdepends=(
   'docker-machine-kvm: to use --vm-driver=kvm'
   'docker-machine-driver-kvm2: to use --vm-driver=kvm'
 )
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'go-bindata')
 source=("git+https://github.com/kubernetes/minikube.git#tag=v$pkgver")
 md5sums=('SKIP')
 
