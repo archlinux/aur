@@ -4,7 +4,7 @@
 
 pkgname=combblas
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Combinatorial BLAS Library"
 arch=('x86_64')
 url="http://gauss.cs.ucsb.edu/~aydin/CombBLAS/html/"
@@ -44,4 +44,8 @@ package() {
   find "${pkgdir}" -name "._*" -delete
 
   install -Dm644 "${srcdir}/${_filename}/LICENSE" -t "${pkgdir}"/usr/share/licenses/$pkgname/
+
+  # Add extra headers
+  install -Dm644 "${srcdir}/${_filename}"/Applications/*.h -t "${pkgdir}"/usr/include/CombBLAS/Applications/
+  install -Dm644 "${srcdir}/${_filename}"/BipartiteMatchings/*.h -t "${pkgdir}"/usr/include/CombBLAS/BipartiteMatchings/
 }

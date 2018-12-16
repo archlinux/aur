@@ -1,7 +1,7 @@
 pkgbase = combblas
 	pkgdesc = Combinatorial BLAS Library
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gauss.cs.ucsb.edu/~aydin/CombBLAS/html/
 	arch = x86_64
 	license = MIT
