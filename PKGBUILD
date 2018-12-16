@@ -1,8 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
-_pkgname=fragments
-pkgname=$_pkgname-git
-pkgver=1.2.r8.g9c1577c
+pkgname=fragments-git
+pkgver=1.2.r13.g06b8d2d
 pkgrel=1
 pkgdesc="A GTK3 BitTorrent client following the GNOME Human Interface Guidelines"
 arch=(i686 x86_64 armv6h armv7h)
@@ -20,25 +19,54 @@ makedepends=(git
              libhandy
              meson
              vala)
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+https://github.com/haecker-felix/Fragments.git")
-md5sums=(SKIP)
-
-prepare() {
-    cd Fragments
-    git submodule update --init --recursive
-}
+provides=(fragments)
+conflicts=(fragments)
+source=("git+https://github.com/haecker-felix/Fragments"
+        "git+https://github.com/transmission/transmission"
+        "git+https://github.com/transmission/dht"
+        "git+https://github.com/transmission/libb64"
+        "git+https://github.com/transmission/libevent"
+        "git+https://github.com/transmission/libnatpmp"
+        "git+https://github.com/transmission/libutp"
+        "git+https://github.com/transmission/miniupnpc")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
     cd Fragments
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd Fragments
+    git submodule init
+    git config --local submodule.submodules/transmission.url "$srcdir/transmission"
+    git submodule update
+
+    cd submodules/transmission
+    git submodule init
+    git config --local submodule.third-party/dht.url "$srcdir/dht"
+    git config --local submodule.third-party/libb64.url "$srcdir/libb64"
+    git config --local submodule.third-party/libevent.url "$srcdir/libevent"
+    git config --local submodule.third-party/libnatpmp.url "$srcdir/libnatpmp"
+    git config --local submodule.third-party/libutp.url "$srcdir/libutp"
+    git config --local submodule.third-party/miniupnpc.url "$srcdir/miniupnpc"
+    git submodule update
+}
+
 build() {
-    rm -rf build
     arch-meson Fragments build
-    ninja -v -C build
+    ninja -C build
+}
+
+check() {
+    ninja -C build test
 }
 
 package() {

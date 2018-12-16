@@ -1,6 +1,6 @@
 pkgbase = fragments-git
 	pkgdesc = A GTK3 BitTorrent client following the GNOME Human Interface Guidelines
-	pkgver = 1.2.r8.g9c1577c
+	pkgver = 1.2.r13.g06b8d2d
 	pkgrel = 1
 	url = https://github.com/haecker-felix/Fragments
 	arch = i686
@@ -22,8 +22,22 @@ pkgbase = fragments-git
 	depends = miniupnpc
 	provides = fragments
 	conflicts = fragments
-	source = git+https://github.com/haecker-felix/Fragments.git
-	md5sums = SKIP
+	source = git+https://github.com/haecker-felix/Fragments
+	source = git+https://github.com/transmission/transmission
+	source = git+https://github.com/transmission/dht
+	source = git+https://github.com/transmission/libb64
+	source = git+https://github.com/transmission/libevent
+	source = git+https://github.com/transmission/libnatpmp
+	source = git+https://github.com/transmission/libutp
+	source = git+https://github.com/transmission/miniupnpc
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = fragments-git
 
