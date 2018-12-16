@@ -34,7 +34,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}-source"
   make PREFIX="${pkgdir}/usr" install
-  install -Dm644 "misc/${pkgname}.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
-  install -Dm644 "misc/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "misc/${pkgname}.6" "${pkgdir}/usr/share/man/man6/${pkgname}.6"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}-source/misc/${pkgname}.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}-source/misc/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}-source/misc/${pkgname}.6" "${pkgdir}/usr/share/man/man6/${pkgname}.6"
 }
