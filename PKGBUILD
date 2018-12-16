@@ -1,7 +1,7 @@
 _pkgname=verne
 _srcname=jesus
 pkgname=$_pkgname-git
-pkgver=r633.9c620e3
+pkgver=r717.38a0424
 pkgrel=1
 pkgdesc="A filemanager build with EFL"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('efl-git')
 makedepends=('git' 'cmake' 'check')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_srcname" "${_srcname}-git")
-source=("git://git.enlightenment.org/devs/bu5hm4n/${_srcname}.git")
+source=("git+https://git.enlightenment.org/devs/bu5hm4n/${_srcname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
