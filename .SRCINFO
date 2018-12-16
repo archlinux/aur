@@ -1,6 +1,6 @@
 pkgbase = libhandy-git
 	pkgdesc = A library full of GTK+ widgets for mobile phones
-	pkgver = 0.0.4.r7.g6eef658
+	pkgver = 0.0.5.r31.ge9e8add
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/libhandy
 	arch = i686

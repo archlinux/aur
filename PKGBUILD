@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libhandy-git
-pkgver=0.0.4.r7.g6eef658
+pkgver=0.0.5.r31.ge9e8add
 pkgrel=1
 pkgdesc="A library full of GTK+ widgets for mobile phones"
 url="https://source.puri.sm/Librem5/libhandy"
@@ -20,10 +20,12 @@ pkgver() {
 }
 
 build() {
-    rm -rf build
     arch-meson libhandy build -Dexamples=false -Dgtk_doc=true
     ninja -C build
-    ninja -C build libhandy-doc
+}
+
+check() {
+    ninja -C build test
 }
 
 package() {
