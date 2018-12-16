@@ -1,19 +1,20 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 _pkgname=project-generator-definitions
 pkgname=(${_pkgname} python2-${_pkgname})
-pkgver=0.2.31
+pkgver=0.2.38
 pkgrel=1
 pkgdesc="Definitions for project-generator"
 url="https://github.com/project-generator/project_generator_definitions/"
 depends=('python'
          'python-setuptools'
          'python2-setuptools'
+         'python2-pip'
          )
 optdepends=()
 license=('Apache')
 arch=('any')
 source=("https://github.com/project-generator/${_pkgname//-/_}/archive/v${pkgver}.tar.gz")
-sha512sums=('be3c487391660a7e6dfa7b9a1e2798fa76a61bcc24b6843754738f4cd9663946788f798aab7a0910b990dfde1b2fccd16273299e6db183b1ca1b0b740881b694')
+sha512sums=('74f0d564282e9bdac6ebbd824aaae75c40e7aeab2ff38ef4adfd1e3da81c8a1c19fd78e9998130eb99e26bbae36e55c621135875fae23c957221ca9c683655c4')
 
 prepare() {
     mv "${srcdir}/${_pkgname//-/_}-${pkgver}" "${srcdir}/${_pkgname}-${pkgver}"
