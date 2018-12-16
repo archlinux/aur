@@ -8,10 +8,10 @@ pkgbase=linux-aarch64-raspberrypi
 _srcname=linux
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for RaspberryPi 3"
-pkgver=4.19.5
+pkgver=4.19.9
 pkgrel=1
 arch=('aarch64')
-url="http://www.kernel.org/"
+url="https://github.com/raspberrypi/linux"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
@@ -20,7 +20,7 @@ source=("git+https://github.com/raspberrypi/linux.git#branch=rpi-4.19.y"
         'linux.preset'
         '99-linux.hook')
 md5sums=('SKIP'
-         'fb2568d5b2b6667be6eeb16ff713ddbf'
+         'dec10b31be1e0493c77292c4ef887652'
          '06e904bf795a75f5bc74b8b000780467'
          '1d4477026533efaa0358a40855d50a83')
 
@@ -28,7 +28,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # reset to a certain version
-  git reset --hard cac94e15be6e7015b747f744e640f623f26fa0e2
+  git reset --hard 0a186de04e03315b1107a5df803bdb7d78828227
 
   # Dirty hack to get rid of the + in kernel version
   rm -rf .git
@@ -44,8 +44,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_srcname}"
-
-  #make bcmrpi3_defconfig
 
   # get kernel version
   make prepare
