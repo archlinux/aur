@@ -57,7 +57,7 @@ _bldtype=Release
 
 _mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 _utdicver=20171008
-_zipcoderel=201806
+_zipcoderel=201811
 
 _fcitxver=2.23.2815.102.1
 
@@ -65,9 +65,9 @@ _pkgbase=mozc-ut2
 pkgname=fcitx-mozc-ut2
 pkgdesc="Mozc the Japanese Input Method with Mozc UT2 Dictionary (additional dictionary) and uim-mozc (optional)"
 pkgver=2.23.2815.102.20171008
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-url="http://www.geocities.jp/ep3797/mozc-ut2.html"
+url="http://linuxplayers.g1.xrea.com/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
 depends=('qt5-base' 'fcitx' 'zinnia')
 makedepends=('python2' 'ruby' 'git' 'ninja' 'clang')
@@ -77,10 +77,10 @@ optdepends=('tegaki-models-zinnia-japanese: hand-writing recognition support')
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut2-${_utdicver}.tar.bz2
-  http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict2-${_utdicver}.gz
+  https://osdn.net/projects/ponsfoot-aur/storage/mozc/edict2-${_utdicver}.gz
+  https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-${_zipcoderel}.zip
+  https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcoderel}.zip
   EDICT_license.html
-  http://downloads.sourceforge.net/project/pnsft-aur/mozc/ken_all-${_zipcoderel}.zip
-  http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
   mod-generate-dictionary.sh
   http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
   http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
@@ -89,9 +89,9 @@ source=(
 sha1sums=('SKIP'
           '9f88c5f12b3d9b1190c8ec046c6693483af3ba3f'
           'e085ab894d415ce318cf91de64f017d505f1d14e'
+          '5bd6e07178cd42a35082c81e939a817b2180cff8'
+          '6187d52063d5ddf8cb7ed060cfff03cf91ed45cf'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          'd884d2d9ddbd6092174f441326805bd09a395b71'
-          '2c577559d0aaef946d221a0aec5ee413186d44e9'
           '6a6f5b0dce10fe6327d32256f53c28731cb83d2f'
           '63a2b10e7d209c6216e2d912b2629efc44c637ea'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
