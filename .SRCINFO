@@ -1,6 +1,6 @@
 pkgbase = gmsh-bin
 	pkgdesc = A free 3D finite element grid generator with a build-in CAD engine and post-processor.
-	pkgver = 4.0.6
+	pkgver = 4.0.7
 	pkgrel = 1
 	url = http://gmsh.info/
 	arch = i686
