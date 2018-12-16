@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.4.7
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -35,6 +35,8 @@ source=(
     "tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
     "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
     "no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop"
+    "demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop"
+    "Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop"
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -44,9 +46,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'f37f7827e10557d1e74b58b81eb0d17102e1c0f193d129e6e8edbbf7284f5867'
-            'fba40197322b166ce5e5b5d569494a37759407e1dd9962aabe60581a9ae4ab56'
+            'bb04b1eea47370d5f1e45ac851bed81c728e4b52890efd94d511ed59847c9a61'
             '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
-            '8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6')
+            '95efc9cd84c2c26bddd832ef8c88637353ed9ba9d9068f183b7ee48ba25d1cc7'
+            '3f23161f8239893e82d2a4f655cb80523a558a4e7869a6683802c2f434b68bbf'
+            '2457746d9b963c77decd5d8b08498035dc1003fbcbc95d4dfdb11bf524954f13')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -67,6 +71,8 @@ prepare() {
 
     patch -Np1 -i "$srcdir/tdesktop.patch"
     patch -Np1 -i "$srcdir/no-gtk2.patch"
+    patch -R -Np1 -i "$srcdir/demibold.patch"
+    patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
 
     cd "Telegram/ThirdParty/libtgvoip"
     patch -Np1 -i "$srcdir/libtgvoip.patch"
@@ -75,12 +81,18 @@ prepare() {
 build() {
     cd "$srcdir/tdesktop"
     export LANG=en_US.UTF-8
-    export GYP_DEFINES="TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME,TDESKTOP_DISABLE_UNITY_INTEGRATION"
+    export GYP_DEFINES="TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME,TDESKTOP_DISABLE_DESKTOP_FILE_GENERATION"
     export EXTRA_FLAGS="-Winvalid-pch"
     export CPPFLAGS="$CPPFLAGS $EXTRA_FLAGS"
     export CXXFLAGS="$CXXFLAGS $EXTRA_FLAGS"
-    # Using Telegram Destkop keys for now, in future using Arch/other ones
+
+    # Telegram requires us to set API_ID and API_HASH for some reason but they do not provide a way to receive a pair
+    # See https://github.com/telegramdesktop/tdesktop/commit/65b2db216033aa08b7bc846df27843e566f08981 and
+    # https://github.com/telegramdesktop/tdesktop/issues/4717
+    # The official API_ID seems to be 2040 while the API_HASH is "b18441a1ff607e10a989891a5462e627".
+    # We're going to use the defaults for now but might at some point use the official ones from the official binaries as noted above.
     export API_FLAGS="-Dapi_id=17349 -Dapi_hash=344583e45741c457fe1862106095a5eb"
+
     gyp \
         -Dbuild_defines=${GYP_DEFINES} \
         ${API_FLAGS} \
