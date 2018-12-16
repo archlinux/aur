@@ -1,14 +1,14 @@
 # Maintainer: Ignacio <nachohc89 at gmail dot com>
 pkgname=lxc-templates
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="Old style template scripts for LXC"
 arch=(any)
 url="https://github.com/lxc/lxc-templates"
 license=('GPL')
 depends=('lxc' 'bash')
 source=("https://github.com/lxc/lxc-templates/archive/$pkgname-$pkgver.tar.gz")
-md5sums=('74970133f59325df1414df1e189f9246')
+md5sums=('9cc16659a920b3c4b1490697a65ceb21')
 options=(!emptydirs)
 
 prepare() {

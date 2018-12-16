@@ -1,15 +1,15 @@
 pkgbase = lxc-templates
 	pkgdesc = Old style template scripts for LXC
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.0.3
+	pkgrel = 1
 	url = https://github.com/lxc/lxc-templates
 	arch = any
 	license = GPL
 	depends = lxc
 	depends = bash
 	options = !emptydirs
-	source = https://github.com/lxc/lxc-templates/archive/lxc-templates-3.0.0.tar.gz
-	md5sums = 74970133f59325df1414df1e189f9246
+	source = https://github.com/lxc/lxc-templates/archive/lxc-templates-3.0.3.tar.gz
+	md5sums = 9cc16659a920b3c4b1490697a65ceb21
 
 pkgname = lxc-templates
 
