@@ -135,16 +135,6 @@
 -        }
 -    }
  }
---- src/wingpanel/src/CMakeLists.txt	2017-10-13 03:28:23.119421691 +0900
-+++ src/wingpanel/src/CMakeLists.txt	2017-10-13 03:30:12.838158479 +0900
-@@ -10,7 +10,6 @@
-   Services/IndicatorSorter.vala
-   Services/PopoverManager.vala
-   Services/Settings.vala
--  Services/BackgroundManager.vala
- )
- 
- vala_precompile (CLIENT_VALA_C ${CMAKE_PROJECT_NAME}
 --- src/wingpanel/src/meson.build	2018-12-02 05:25:42.153643446 +0900
 +++ src/wingpanel/src/meson.build.new	2018-12-02 05:27:27.293643581 +0900
 @@ -1,7 +1,6 @@

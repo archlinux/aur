@@ -11,34 +11,6 @@ index 20a23ed..409aceb 100644
 
  install:
   - docker pull elementary/docker:juno-unstable
-diff --git a/./CMakeLists.txt b/../wingpanel-qq/wingpanel-qq/CMakeLists.txt
-index 2309c8b..878fc26 100644
---- a/./CMakeLists.txt
-+++ b/../wingpanel-qq/wingpanel-qq/CMakeLists.txt
-@@ -76,6 +76,7 @@ set (LIB_PACKAGES
-   gee-0.8
-   gmodule-2.0
-   gtk+-3.0
-+  libwnck-3.0
- )
-
- set (LIB_PKG
-@@ -84,11 +85,15 @@ set (LIB_PKG
-   gee-0.8
-   gmodule-2.0
-   gtk+-3.0>=3.22
-+  libwnck-3.0>=3.14
- )
- find_package(PkgConfig)
-
- pkg_check_modules (LIB REQUIRED ${LIB_PKG})
-
-+add_definitions (-DWNCK_I_KNOW_THIS_IS_UNSTABLE ${WNCK_CFLAGS})
-+link_libraries (${WNCK_LIBRARIES})
-+
- set (GLOBAL_VALAC_OPTIONS
-   --vapidir=${CMAKE_BINARY_DIR}/lib
-   --vapidir=vapi
 diff --git a/./meson.build b/../wingpanel-qq/wingpanel-qq/meson.build
 index 4f0f279..19b4f65 100644
 --- a/./meson.build
