@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Patrick Wicki <patrick.wicki@member.fsf.org>
+# Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=xfce4-goodies-meta
 pkgver=4.12
@@ -10,7 +10,6 @@ url='https://www.archlinux.org/'
 license=(GPL)
 depends=(mousepad
 	orage
-	ristretto
 	thunar-archive-plugin
 	thunar-media-tags-plugin
 	xfburn
@@ -42,5 +41,8 @@ depends=(mousepad
 	xfce4-verve-plugin
 	xfce4-wavelan-plugin
 	xfce4-weather-plugin
+	xfce4-xkb-plugin
+	parole
+	ristretto
 	xfce4-whiskermenu-plugin
-	xfce4-xkb-plugin)
+	)
