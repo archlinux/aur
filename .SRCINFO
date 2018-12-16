@@ -1,0 +1,18 @@
+pkgbase = perl-authen-sasl-xs
+	pkgdesc = Authen::SASL::XS - XS code to glue Perl SASL to Cyrus SASL
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://metacpan.org/release/Authen-SASL-XS
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-devel-checklib
+	depends = libsasl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/G/GB/GBARR/Authen-SASL-XS-1.00.tar.gz
+	sha256sums = 1b0eaa0e7ac3a45857147d837e3d34c80c6eca1d9fdcb826a213c2a105454234
+
+pkgname = perl-authen-sasl-xs
+
