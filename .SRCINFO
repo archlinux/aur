@@ -6,7 +6,7 @@ pkgbase = mint-backgrounds-tessa
 	arch = any
 	license = GPL3
 	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-tessa/mint-backgrounds-tessa_1.1.tar.gz
-	md5sums = 711e1b6d57fa6f4d4d108c0acd428a3b
+	md5sums = b5b4dd9ca3f017408a98f3b5bd382235
 
 pkgname = mint-backgrounds-tessa
 

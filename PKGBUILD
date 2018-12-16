@@ -9,7 +9,7 @@ license=('GPL3')
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/mint-backgrounds-tessa"
 source=("$url/mint-backgrounds-tessa_$pkgver.tar.gz")
-md5sums=("711e1b6d57fa6f4d4d108c0acd428a3b")
+md5sums=("b5b4dd9ca3f017408a98f3b5bd382235")
 package() {
 	mkdir -p $pkgdir/usr/share/backgrounds/linuxmint-tessa
 	cp -a $srcdir/$pkgname/backgrounds/linuxmint-tessa $pkgdir/usr/share/backgrounds/
