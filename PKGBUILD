@@ -19,7 +19,7 @@ source=("$_pkgbase::git+https://github.com/electrified/asus-wmi-sensors.git"
 
 sha256sums=('SKIP'
 '16620f044ef6dd20d0d56c4fa2c0fdd62326ea41ca2332ac9fa46aed451ced7e'
-'89b3c073df8fd641e64c88d00e396ebadd2ef9c7ba35fd88cc5142d7173731ec'
+'9eb35ca8dcff02744dd3256238f22bfe6ebaf1636867aabed4c40a31073c4e1e'
 '322596bc74aaecbbd6a10f6d5f2e205ff423dc512f80d5046c1ffb48057c8d62'
 )
 
