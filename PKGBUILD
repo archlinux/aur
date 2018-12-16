@@ -13,7 +13,7 @@ optdepends=(
 	'rcssserver:	RCSS Server'
 	'rcssmonitor:	RCSS Monitor')
 options=('buildflags' 'makeflags')
-source=(https://osdn.net/dl/rctools/soccerwindow2-5.1.1.tar.gz
+source=(https://osdn.net/dl/rctools/$pkgname-$pkgver.tar.gz
 	fix-locale.patch)
 md5sums=('aa0a30fcf596157b752c695f74f8a97f'
          '65e4af0782e44b54732d825dda88c866')
