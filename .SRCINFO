@@ -1,7 +1,7 @@
 pkgbase = r-mkl
 	pkgdesc = Language and environment for statistical computing and graphics, linked to the Intel(R) MKL.
 	pkgver = 3.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.r-project.org/
 	install = r-mkl.install
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = r-mkl
 	depends = intel-mkl
 	depends = intel-compiler-base
 	depends = intel-fortran-compiler
-	depends = intel-tbb_psxe
 	depends = bzip2
 	depends = desktop-file-utils
 	depends = gcc-libs

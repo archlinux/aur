@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
 license=('GPL')
@@ -15,7 +15,6 @@ conflicts=('r' 'microsoft-r-open')
 depends=('intel-mkl'
         'intel-compiler-base'
         'intel-fortran-compiler'
-        'intel-tbb_psxe'
         'bzip2'
         'desktop-file-utils'
         'gcc-libs'
@@ -62,15 +61,14 @@ sha512sums=('382cc6e200469dd168799948edcf3a0b869d7ef3b3176fdfc60752f3f37e6ba3563
             '1491b01d3d14b86d26c383e00e2305858a52ddd498158c9f7f6b33026ee01f246408b1676cffea73f7783c8c4cf546285705c43c0286adbd75ad77706918b5fe'
             'aae388c5b6c02d9fb857914032b0cd7d68a9f21e30c39ba11f5a29aaf1d742545482054b57ce18872eabb6605bbb359b2fc1e9be5ce6881443fdbdf6b67fab3b')
 
-# Build with the Intel Compiler Suite or GCC/GFortran
-# _CC="icc" # comment this line to build the package with GCC
+# Build with the Intel Compiler Suite or GCC/GFortran.
+# Comment the following line to build the package with GCC
+# _CC="icc"
 
 prepare() {
   cd R-${pkgver}
   # set texmf dir correctly in makefile
   sed -i 's|$(rsharedir)/texmf|${datarootdir}/texmf|' share/Makefile.in
-  # DEPRECATED: fix for texinfo 5.X
-  # sed -i 's|test ${makeinfo_version_min} -lt 7|test ${makeinfo_version_min} -lt 0|' configure
   # DEPRECATED: Fix the config script to look in Makeconf for LDFLAGS
   # sed -i '/LIBS=`eval $query VAR=LIBS`/a\LDFLAGS=`eval $query VAR=LDFLAGS`' src/scripts/config
 }
@@ -90,18 +88,16 @@ build() {
 
   if [[ $_CC = "icc" ]]; then
     source ${MKLROOT}/../bin/compilervars.sh ${_intel_arch}
-    source ${MKLROOT}/../tbb/bin/tbbvars.sh ${_intel_arch}
-    _intel_cc_opt=" -O3 -ipo -qno-openmp -xHost -fPIC -m64 -march=native -fp-model precise -fp-model source"
-    export LDFLAGS=" -qno-openmp"
+    _intel_cc_opt=" -O3 -fPIC -m64 -march=native -fp-model precise -fp-model source -I${MKLROOT}/include"
+    # export LDFLAGS=" -qopenmp"
     export FLIBS=" -lgfortran -lifcore -lifport"
 
-    # Dynamic Linking with TBB
+    # Dynamic Linking
     _mkllibs=" -L${MKLROOT}/lib/${_intel_arch} \
       -l${_intel_lib} \
-      -lmkl_tbb_thread \
+      -lmkl_intel_thread \
       -lmkl_core \
-      -ltbb \
-      -lstdc++ \
+      -liomp5 \
       -lpthread \
       -lm \
       -ldl"
@@ -112,22 +108,21 @@ build() {
     export LD="xild"
     export F77="ifort"
     export FC="ifort"
-    export CFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
-    export CXXFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
-    export FFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
-    export FCFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
+    export CFLAGS="${_intel_cc_opt}"
+    export CXXFLAGS="${_intel_cc_opt}"
+    export FFLAGS="${_intel_cc_opt}"
+    export FCFLAGS="${_intel_cc_opt}"
   else
-    _gcc_opt=" -O3 -fopenmp -m64 -march=native"
-    export LDFLAGS=" -fopenmp"
+    _gcc_opt=" -O3 -m64 -march=native -I${MKLROOT}/include"
+    # export LDFLAGS=" -fopenmp"
 
-    # Dynamic Linking with TBB
+    # Dynamic Linking
     _mkllibs=" -L${MKLROOT}/lib/${_intel_arch} \
       -Wl,--no-as-needed \
       -l${_gfortran_lib} \
-      -lmkl_tbb_thread \
+      -lmkl_intel_thread \
       -lmkl_core \
-      -ltbb \
-      -lstdc++ \
+      -liomp5 \
       -lpthread \
       -lm \
       -ldl"
@@ -138,10 +133,10 @@ build() {
     export LD="ld"
     export F77="gfortran"
     export FC="gfortran"
-    export CFLAGS="${_gcc_opt} -I${MKLROOT}/include"
-    export CXXFLAGS="${_gcc_opt} -I${MKLROOT}/include"
-    export FFLAGS="${_gcc_opt} -I${MKLROOT}/include"
-    export FCFLAGS="${_gcc_opt} -I${MKLROOT}/include"
+    export CFLAGS="${_gcc_opt}"
+    export CXXFLAGS="${_gcc_opt}"
+    export FFLAGS="${_gcc_opt}"
+    export FCFLAGS="${_gcc_opt}"
   fi
 
   ./configure  --prefix=/usr \
