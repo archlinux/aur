@@ -1,6 +1,6 @@
 pkgbase = unity-editor-language-zh-cn
 	pkgdesc = Chinese Language Pack (Preview)
-	pkgver = 2018.2.19f1
+	pkgver = 2018.2.20f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = unity-editor-language-zh-cn
 	depends = unity-editor
 	options = !strip
 	source = https://new-translate.unity3d.jp/v1/live/54/2018.2/zh-cn
-	sha1sums = 9187a2a4a13c70721573228343ecb77ddb40c157
+	md5sums = SKIP
 
 pkgname = unity-editor-language-zh-cn
 
