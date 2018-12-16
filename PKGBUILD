@@ -8,7 +8,7 @@ pkgname=librecad-git
 pkgver=2.2.0_rc1_91_g8604f171
 pkgrel=1
 pkgdesc="A 2D CAD drawing tool based on the community edition of QCad."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://librecad.org"
 license=('GPL')
 
