@@ -18,11 +18,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/frealgagu/PCSX-Reloaded
         "${pkgname}-fix-undefined-operations.patch"
         "${pkgname}-remove-assertion-64bit.patch"
         "${pkgname}-fix-uncompress2.patch")
-md5sums=("ee0f9dfd003d9a5350aafc8cca0cdeee"
-         "29bc686e8b68d128796deef60ac1efe1"
-         "96a82dcc66851160f452160a538cd6f8"
-         "c3ed7fc2a5e395a11f860c305522cb7b"
-         "19a8be752dceb236a82e24eefd7e03cb")
+sha256sums=("1a132bf4d1875cd2ab90b335620659caa1af2056e7c3d622fb438a0fa90d948d"
+            "d433fe75fcb50bc2552838c420637b6ea8a86cb574d8bebe5c18a668cb5f93f4"
+            "dab73981e9931b71e04c7fb5119008b6e4d8f14849f2b0db9519644ab4688ed5"
+            "8dd49ca7ad7bce8534a14d28bbb3c70b10a8695797519a18ab79de15bf015be1"
+            "c4c08c7ff55045ac0fb00179e92ada201eef024db0f144970fc21544de877cf9")
 
 prepare() {
   cd "${srcdir}/PCSX-Reloaded-${pkgver}"
