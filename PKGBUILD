@@ -3,7 +3,7 @@
 
 pkgname=mint-backgrounds-tessa
 pkgver=1.1
-pkgrel=8
+pkgrel=9
 pkgdesc="The backgrounds included in Linux Mint 19.1 Tessa"
 license=('GPL3')
 arch=('any')
