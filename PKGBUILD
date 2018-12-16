@@ -1,4 +1,4 @@
-# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
+# Maintainer:  Chris Severance aur.severach AatT spamgourmet.com
 # Contributor: Artem Alabin <kirpicheff@yandex.ru>
 # Contributor: K0n24d <konrad AT knauber DOT net>
 
@@ -44,14 +44,14 @@ else
   _pkgname='urbackup-server'
 fi
 pkgname="${_pkgname}-git"
-pkgver=2.2.6.r19.g3face36a
+pkgver=2.3.2.r207.g51daaa7e
 pkgrel=1
 pkgdesc='Client/Server network backup for Windows Workgroups and Linux, builds server or client'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url='https://www.urbackup.org/'
 license=('GPL')
 depends=('crypto++' 'fuse')
-makedepends=('python3' 'autoconf' 'git' 'unzip')
+makedepends=('python3' 'autoconf' 'git' 'unzip' 'wget')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
@@ -64,11 +64,12 @@ _scripts=(
   'lvm_create_filesystem_snapshot'
   'lvm_remove_filesystem_snapshot'
 )
+_srcdir='urbackup_backend'
 _branchb='dev'
 _branchf='dev'
 source=("git+https://github.com/uroni/urbackup_backend.git#branch=${_branchb}" "git+https://github.com/uroni/urbackup_frontend_wx.git#branch=${_branchf}")
 #source=("git+https://github.com/uroni/urbackup_backend.git#commit=9df2ba394f29ee86ad56fdd93179768aca3691fa" "git+https://github.com/uroni/urbackup_frontend_wx.git#commit=70378bf100c5d88e3342a4448c11a0cce83edc30")
-source+=("${_scripts[@]}"  'defaults_client')
+source+=("${_scripts[@]}" 'defaults_client')
 _cryptopp='cryptopp565.zip'
 source+=("https://www.cryptopp.com/${_cryptopp}")
 noextract=("${_cryptopp}")
@@ -82,7 +83,6 @@ sha256sums=('SKIP'
             '0ffb3bbbf5faf939564681d24786767a4706132f2f081b7a870ecc718a8e9413'
             'd77fa6ad67141ae5cb4c3c6953783ce54aaaa3c1f2fe5bb28cd20948ddda12c4'
             'a75ef486fe3128008bbb201efee3dcdcffbe791120952910883b26337ec32c34')
-_srcdir='urbackup_backend'
 if [ "${_opt_BuildClient}" -ne 0 ]; then
   unset install
   if [ "${_opt_Headless}" -eq 0 ]; then
@@ -248,14 +248,14 @@ prepare() {
   fi
 
   sed -e 's:byte digest:unsigned char digest:g' -i 'md5.h'
-  cat >> 'cryptoplugin/cryptopp_inc.h' <<EOL
+  cat >> 'cryptoplugin/cryptopp_inc.h' <<EOF
 
 #if (CRYPTOPP_VERSION >= 600) && (__cplusplus >= 201103L)
     using byte = CryptoPP::byte;
 #else
     typedef unsigned char byte;
 #endif
-EOL
+EOF
 
   if [ "${_opt_BuildClient}" -ne 0 ]; then
     ln -sf '../urbackup_frontend_wx' 'client'
@@ -295,9 +295,14 @@ EOL
 build() {
   set -u
   cd "${_srcdir}"
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  nice make -s -j "${_nproc}"
-  nice make -s -j "${_nproc}" dist
+  local _makeopts=()
+  if [ -z "${MAKEFLAGS:-}" ] || [ "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
+    local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+    _makeopts=(-j "${_nproc}")
+  fi
+  nice make -s "${_makeopts[@]}"
+  set +u; msg2 'make dist'; set -u
+  nice make -s "${_makeopts[@]}" dist
   set +u
 }
 
@@ -337,17 +342,6 @@ package() {
   fi
 
   set +u
-  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
-  #! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
-  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; false; }
-  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; false; }
-  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; false; }
-  ! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  ! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  #! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
-  #! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  #! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
 }
 set +u
 # vim: ts=2
