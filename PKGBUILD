@@ -3,8 +3,8 @@
 
 _pkgname=nohang
 pkgname=${_pkgname}-git
-pkgver=0.1.r23.g14ea665
-pkgrel=2
+pkgver=0.1.r85.g74640fe
+pkgrel=1
 pkgdesc="A highly configurable OOM preventer"
 arch=('any')
 url="https://github.com/hakavlad/nohang"
@@ -15,11 +15,10 @@ source=(
 md5sums=('SKIP')
 depends=(
 	'python'
-	'libnotify'
-	'sudo'
-	'procps-ng'
 )
 optdepends=(
+	'libnotify: to show GUI notifications'
+	'sudo: to show GUI notifications if nohang started with UID=0'
 )
 conflicts=("${_pkgname}")
 backup=('etc/nohang/nohang.conf')

@@ -1,14 +1,13 @@
 pkgbase = nohang-git
 	pkgdesc = A highly configurable OOM preventer
-	pkgver = 0.1.r23.g14ea665
-	pkgrel = 2
+	pkgver = 0.1.r85.g74640fe
+	pkgrel = 1
 	url = https://github.com/hakavlad/nohang
 	arch = any
 	license = MIT
 	depends = python
-	depends = libnotify
-	depends = sudo
-	depends = procps-ng
+	optdepends = libnotify: to show GUI notifications
+	optdepends = sudo: to show GUI notifications if nohang started with UID=0
 	conflicts = nohang
 	backup = etc/nohang/nohang.conf
 	source = nohang-git::git+https://github.com/hakavlad/nohang.git#branch=master
