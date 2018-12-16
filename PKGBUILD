@@ -19,7 +19,7 @@ sha512sums=('b221ce0892e4291d8efd944b3f5632f20863c311189f6eadee878d902b7e0a784ef
 
 build() {
   cd "${pkgname}-${pkgver}"
-  qmake-qt4 CONFIG+="liborigin python"
+  qmake-qt4 CONFIG+="liborigin python" QMAKE_CXXFLAGS=-fpermissive
   make qmake
   make
 }
