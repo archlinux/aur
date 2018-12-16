@@ -1,17 +1,17 @@
-# Maintainer: b00rt00s <bomby dot zrzuc at gmail dot com>
+# Maintainer: b00rt00s <b00rt00s.aur@gmail.com>
 # Contributor: Markus Theil <aur@thillux.de>
 # Contributor: Oleg Smirnov <oleg.smirnov@gmail.com>
 # Contributor: Jason Taylor <jftaylor21@gmail.com>
 # Contributor: Christophe Gueret <tolgam@homegnu.net>
 pkgname=blt-git
-pkgver=r875.5ab3f0a
-pkgrel=2
+pkgver=r1535.d7a32cd
+pkgrel=1
 pkgdesc="Adds new commands and widgets to the Tcl interpreter."
 url="http://blt.sourceforge.net"
 license=("custom")
 depends=('tk' 'libxpm' 'libxrandr' 'libtiff' 'libjpeg-turbo' 'libssh2' 'libmariadbclient' 'sqlite')
 makedepends=('git')
-conflicts=('blt_tcl85')
+conflicts=('blt_tcl85' 'blt')
 arch=('i686' 'x86_64')
 source=("${pkgname}::git+git://git.code.sf.net/p/blt/src")
 md5sums=('SKIP')
