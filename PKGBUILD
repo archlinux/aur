@@ -38,5 +38,5 @@ package_auto-multiple-choice(){
   install='amc.install'
   cd auto-multiple-choice-1.4.0-rc2
   make DESTDIR="$pkgdir/" install
-  sudo cp ../automultiplechoice.sty /usr/share/latex/texmf/latex/tex/
+  sudo cp ../automultiplechoice.sty /usr/share/texmf/tex/latex/AMC/
 }
