@@ -1,7 +1,7 @@
 pkgbase = superlu_dist
 	pkgdesc = Set of subroutines to solve a sparse linear system (MPI parallel version)
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://crd-legacy.lbl.gov/~xiaoye/SuperLU/
 	arch = x86_64
 	license = custom
