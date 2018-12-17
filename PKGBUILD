@@ -1,8 +1,8 @@
 # Maintainer: Knut Ahlers <knut at ahlers dot me>
 
 pkgname=yggdrasil
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="An experiment in scalable routing as an encrypted IPv6 overlay network"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/yggdrasil-network/yggdrasil-go"
@@ -10,7 +10,7 @@ license=('LGPLv3')
 conflicts=('yggdrasil-git')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('da674994182c73f1c89e5a01f3272d55c39d27894f4713102c8e0e3e2c288ae9fdeacf04c4c2d87b6c7380fbbe9b6eef31fca358dd1de433155cddbac0ba9581')
+sha512sums=('c1c77066097bbc9ef7ed0732a7781502c2d3720478467b9ef65eb455f5d50d1d33513c1b0a50e8ca5e8109f7c53e7ad70870d4f4ef5b11ac96a512d1c9b0ff87')
 
 build() {
 	cd "${pkgname}-go-${pkgver}"
