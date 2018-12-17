@@ -1,6 +1,6 @@
 pkgbase = python-twilio
 	pkgdesc = A module for using the Twilio REST API and generating valid TwiML.
-	pkgver = 6.21.0
+	pkgver = 6.22.0
 	pkgrel = 1
 	url = https://github.com/twilio/twilio-python
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = python-twilio
 	depends = python-pytz
 	depends = python-six
 	options = !emptydirs
-	source = https://github.com/twilio/twilio-python/archive/6.21.0.tar.gz
+	source = https://github.com/twilio/twilio-python/archive/6.22.0.tar.gz
 	source = LICENSE
-	sha256sums = c90e5cccd566b7648771051b9585f0f72044d45a55cde433c4627eba1f376624
+	sha256sums = 50810f942ea5fcf338d2e6a8f9d7a3a1415be79f0382dcf8db1faaea994d6ab6
 	sha256sums = 17db7e6dddc3a621518f20dd4b35dac73f25160680d2a4858654eca1019bdea6
 
 pkgname = python-twilio
