@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='http://ros.org/wiki/roscpp'
 
 pkgname='ros-indigo-roscpp'
-pkgver='1.11.19'
+pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -43,14 +43,16 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_comm-release-release-indigo-roscpp-${pkgver}-${_pkgver_patch}"
+_dir="ros_comm-release-release-indigo-roscpp"
 source=(
   "${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/roscpp/${pkgver}-${_pkgver_patch}.tar.gz"
-  "readv.patch"
+  "0000-readv.patch"
+  "0001-boost_time.patch"
 )
 sha256sums=(
-  'b234e626e2013307ac8a456cbfa41a55e5d8e0e2c812431755828b29fee81255'
+  'd169290a2b5b2c539fd3eaac57aff820fcf2f9546128d98b51ccb69e4fac2570'
   '06c2e8446233a55d8be74ea24f977af923038053cd02ed05118e89644358d845'
+  '60fecf40c2465264f887d78ae8817859740db9417b48a00c5ebae5d997b09af6'
 )
 
 build() {
@@ -60,7 +62,8 @@ build() {
 
   # Apply patch
   cd "${srcdir}/${_dir}"
-  patch -p1 -i "${srcdir}"/readv.patch
+  patch -p1 -i "${srcdir}"/0000-readv.patch
+  patch -p1 -i "${srcdir}"/0001-boost_time.patch
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
