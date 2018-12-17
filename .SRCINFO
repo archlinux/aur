@@ -1,6 +1,6 @@
 pkgbase = python2-shiboken2
 	pkgdesc = Generates bindings for C++ libraries using CPython source code
-	pkgver = 5.11.2
+	pkgver = 5.12.0
 	pkgrel = 1
 	url = http://qt-project.org/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = python2-shiboken2
 	makedepends = libxslt
 	makedepends = qt5-xmlpatterns
 	depends = python2
-	source = http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.11.2-src/pyside-setup-everywhere-src-5.11.2.tar.xz
-	sha256sums = 18f572f1f832e476083d30fccabab167450f2a8cbe5cd9c6e6e4fa078ccb86c2
+	source = http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.12.0-src/pyside-setup-everywhere-src-5.12.0.tar.xz
+	sha256sums = 890149628a6c722343d6498a9f7e1906ce3c10edcaef0cc53cd682c1798bef51
 
 pkgname = python2-shiboken2
 
