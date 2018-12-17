@@ -2,12 +2,12 @@
 
 pkgname=python09
 pkgver=0.9.1
-pkgrel=9
+pkgrel=10
 pkgdesc="an extensible interpreted programming language"
 arch=('i686' 'x86_64')
 license=('custom')
 url="www.cwi.nl/~guido/Python.html"
-depends=("readline")
+depends=("readline" "termcap")
 
 source=(
 

@@ -1,12 +1,13 @@
 pkgbase = python09
 	pkgdesc = an extensible interpreted programming language
 	pkgver = 0.9.1
-	pkgrel = 9
+	pkgrel = 10
 	url = www.cwi.nl/~guido/Python.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = readline
+	depends = termcap
 	options = !buildflags
 	options = !makeflags
 	options = !strip
