@@ -2,6 +2,10 @@ post_install() {
   for _g in stapusr stapsys stapdev; do
     getent group $_g >/dev/null || groupadd -r $_g
   done
+
+  chgrp stapusr usr/bin/stapbpf
+  chmod 04110 usr/bin/stapbpf
+
   chgrp stapusr usr/bin/staprun
   chmod 04110 usr/bin/staprun
 }
@@ -11,7 +15,6 @@ post_upgrade() {
 }
 
 pre_remove() {
-  userdel -rf archsocks
   for _g in stapusr stapsys stapdev; do
     groupdel $_g
   done
