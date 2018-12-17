@@ -1,0 +1,13 @@
+pkgbase = pupil-eye-tracking-bin
+	pkgdesc = Open source eye tracking software platform that started as a thesis project at MIT
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://pupil-labs.com/
+	arch = x86_64
+	license = LGPL v3.0
+	options = !strip
+	source = https://github.com/pupil-labs/pupil/releases/download/v1.9/pupil_v1.9-7-gdf51687_linux_x64.zip
+	sha256sums = 2a499dc7b10e47b6d54487f2661f52c33dbb76ce742091ca4f7466fd66d71c53
+
+pkgname = pupil-eye-tracking-bin
+
