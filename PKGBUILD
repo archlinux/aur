@@ -33,39 +33,41 @@ sha256sums=("725fcd0c18890ae04fc0916996361f10bf0b4a68aa0267e3269226d663c33199"
             "fd5bf933ebe3e754ca4f2229000c5b77fd7c253d05f4b6864507a203495b88b1")
 
 prepare() {
+  rm -rf "${srcdir}/gopath"
+
   mkdir -p "${srcdir}/gopath/src/github.com/Humpheh"
   ln -rTsf "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/gopath/src/github.com/Humpheh/${pkgname}"
-  
+
   mkdir -p "${srcdir}/gopath/src/github.com/faiface"
   ln -rTsf "${srcdir}/glhf-82a6317ac380cdc61567d729fe48833d75b8108e" "${srcdir}/gopath/src/github.com/faiface/glhf"
   ln -rTsf "${srcdir}/mainthread-8b78f0a41ae388189090ac4506612659fa53082b" "${srcdir}/gopath/src/github.com/faiface/mainthread"
   ln -rTsf "${srcdir}/pixel-7b509e1d7d67aee5f81cb01596299867d905d990" "${srcdir}/gopath/src/github.com/faiface/pixel"
-  
+
   mkdir -p "${srcdir}/gopath/src/github.com/go-gl"
   ln -rTsf "${srcdir}/gl-55b76b7df9d25d70b63e31a767f47158292b85d8" "${srcdir}/gopath/src/github.com/go-gl/gl"
   ln -rTsf "${srcdir}/glfw-691ee1b84c51ae625ed1aafebc915d3db3d63d66" "${srcdir}/gopath/src/github.com/go-gl/glfw"
   ln -rTsf "${srcdir}/mathgl-cdf14b6b8f8a4a1bfb003dd5119205c5f711d85a" "${srcdir}/gopath/src/github.com/go-gl/mathgl"
-  
+
   mkdir -p "${srcdir}/gopath/src/github.com/hajimehoshi"
   ln -rTsf "${srcdir}/oto-3a9bb05c78a0583c0f5a6c041eeb05a6ceec8ef9" "${srcdir}/gopath/src/github.com/hajimehoshi/oto"
-  
+
   mkdir -p "${srcdir}/gopath/src/github.com/mattn"
   ln -rTsf "${srcdir}/go-gtk-ab259656e6a458c72e0a54a95b09df331b3bc20b" "${srcdir}/gopath/src/github.com/mattn/go-gtk"
   ln -rTsf "${srcdir}/go-pointer-49522c3f37914a12a6813caf41f4a9e84d39ca0a" "${srcdir}/gopath/src/github.com/mattn/go-pointer"
-  
+
   mkdir -p "${srcdir}/gopath/src/github.com/pkg"
   ln -rTsf "${srcdir}/errors-059132a15dd08d6704c67711dae0cf35ab991756" "${srcdir}/gopath/src/github.com/pkg/errors"
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  GOPATH="${srcdir}/gopath" PATH="${PATH}:${GOPATH}/bin" go build -x -i -v -o goboy.bin cmd/goboy/main.go
+  GOPATH="${srcdir}/gopath" PATH="${PATH}:${GOPATH}/bin" go build -x -i -v -o "${pkgname}.bin" "cmd/${pkgname}/main.go"
 }
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.bin" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  for _file in ${srcdir}/${pkgname}-${pkgver}/*.md ${srcdir}/${pkgname}-${pkgver}/docs/*.md
+  for _file in "${srcdir}/${pkgname}-${pkgver}/"*.md "${srcdir}/${pkgname}-${pkgver}/docs/"*.md
   do
     install -Dm644 "${_file}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename ${_file})"
   done
