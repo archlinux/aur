@@ -1,0 +1,16 @@
+pkgbase = wavm-git
+	pkgdesc = WebAssembly Virtual Machine
+	pkgver = r1302.3783a6d
+	pkgrel = 1
+	url = https://github.com/WAVM/WAVM
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	depends = llvm
+	source = git+https://github.com/WAVM/WAVM/#branch=master
+	sha256sums = SKIP
+
+pkgname = wavm-git
+
