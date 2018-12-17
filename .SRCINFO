@@ -1,7 +1,8 @@
 pkgbase = itch
 	pkgdesc = The best way to play itch.io games.
 	pkgver = 1.14.0
-	pkgrel = 2
+	pkgrel = 3
+	epoch = 1
 	url = https://github.com/itchio/itch
 	install = itch.install
 	arch = i686
@@ -20,7 +21,9 @@ pkgbase = itch
 	depends = gtk3
 	options = !strip
 	source = https://github.com/itchio/itch/archive/v25.4.0.tar.gz
+	source = itch-setup::https://broth.itch.ovh/itch-setup/linux-amd64/1.14.0/unpacked/default
 	sha256sums = e86c70044c7d02754c6e52fb428d1278678d729c77b8359b5d82198595da1351
+	sha256sums = b68249a309aff7e929bb2579ba9114dc2369535ce3cdbcf926f9b2ced2f2368b
 
 pkgname = itch
 

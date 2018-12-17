@@ -2,7 +2,8 @@
 
 pkgname=itch
 pkgver=1.14.0
-pkgrel=2
+pkgrel=3
+epoch=1
 pkgdesc="The best way to play itch.io games."
 
 arch=('i686' 'x86_64')
@@ -17,12 +18,11 @@ install="itch.install"
 [ "$CARCH" = "i686" ]   && _ITCH_ARCH=386;
 [ "$CARCH" = "x86_64" ] && _ITCH_ARCH=amd64;
 
-source=("https://github.com/itchio/itch/archive/v25.4.0.tar.gz")
-sha256sums=('e86c70044c7d02754c6e52fb428d1278678d729c77b8359b5d82198595da1351')
-
-prepare() {
-  curl --fail --location --output itch-setup "https://broth.itch.ovh/itch-setup/linux-${_ITCH_ARCH}/${pkgver}/unpacked/default"
-}
+source=(
+  "https://github.com/itchio/itch/archive/v25.4.0.tar.gz"
+  "itch-setup::https://broth.itch.ovh/itch-setup/linux-${_ITCH_ARCH}/${pkgver}/unpacked/default")
+sha256sums=('e86c70044c7d02754c6e52fb428d1278678d729c77b8359b5d82198595da1351'
+            'b68249a309aff7e929bb2579ba9114dc2369535ce3cdbcf926f9b2ced2f2368b')
 
 package() {
   install -Dm755 itch-setup "${pkgdir}/usr/bin/itch-setup"
