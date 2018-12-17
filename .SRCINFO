@@ -16,7 +16,7 @@ pkgbase = systemtap-git
 	depends = python
 	depends = json-c
 	depends = avahi
-	optdepends = sqlite3
+	optdepends = sqlite
 	provides = systemtap=4.0
 	conflicts = systemtap
 	source = git+git://sourceware.org/git/systemtap.git
