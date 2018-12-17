@@ -1,0 +1,11 @@
+pkgbase = ntbtls-git
+	pkgver = 0.1.2.r16.g4b7c6a9
+	pkgrel = 1
+	url = https://www.gnupg.org/related_software/ntbtls/index.html
+	arch = x86_64
+	license = GPL3
+	source = ntbtls::git+https://dev.gnupg.org/source/ntbtls.git
+	sha512sums = SKIP
+
+pkgname = ntbtls-git
+
