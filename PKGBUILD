@@ -12,7 +12,7 @@ license=('GPL')
 depends=('r')
 replaces=('r-cran-e1071')
 source=("https://cran.r-project.org/src/contrib/e1071_"$_cranver".tar.gz")
-sha512sums=('SKIP')
+sha512sums=('6e0c6308b856c24c80e59716af6e490b72e333f7fc7b2f536864781e18e39c879655feed2c11ade46d46f76b58a22d196cc291d6a1f38c7077a0a2ea3c7f1e15')
 
 build(){
     R CMD INSTALL e1071_"$_cranver".tar.gz -l "$srcdir"
