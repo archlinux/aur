@@ -56,6 +56,7 @@ prepare() {
 }
 
 build() { 
+  export GOPATH="${srcdir}/go"
   cd "${GOPATH}/src/${_lxd}"
   git checkout lxd-${pkgver}
   make deps
