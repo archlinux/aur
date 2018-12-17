@@ -1,0 +1,10 @@
+[Unit]
+Description=Samhain HIDS
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/yule start
+ExecStop=/usr/sbin/yule stop
+
+[Install]
+WantedBy=multi-user.target
