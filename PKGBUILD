@@ -38,7 +38,6 @@ build() {
 
   sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
 
-  # The c++11-narrowing warnings have been disabled as the code won't compile otherwise.
   scons platform=x11 \
         tools=yes \
         target=release_debug \
