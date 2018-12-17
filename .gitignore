@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# ...but
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!oscam.install
+!oscam.service
+!oscam.sysuser
