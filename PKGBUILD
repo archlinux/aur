@@ -5,7 +5,7 @@
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=eternallands
-pkgver=1.9.5.2
+pkgver=1.9.5.3
 pkgrel=1
 pkgdesc="A free 3D MMORPG game with thousands of on-line players"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ build()
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
-  git checkout 1.9.5.2
+  git checkout ${pkgver}
 
   sed -i "s|/usr/games/|/usr/bin/|" pkgfiles/eternallands
   sed -i "s|/usr/share/games/EternalLands/|/usr/share/eternallands/|" pkgfiles/eternallands

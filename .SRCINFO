@@ -1,6 +1,6 @@
 pkgbase = eternallands
 	pkgdesc = A free 3D MMORPG game with thousands of on-line players
-	pkgver = 1.9.5.2
+	pkgver = 1.9.5.3
 	pkgrel = 1
 	url = http://www.eternal-lands.com/
 	changelog = eternallands.changelog
