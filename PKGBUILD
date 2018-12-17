@@ -11,7 +11,7 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-gitb)
-pkgver=9.0.0.r164869.68a32e54c7f
+pkgver=9.0.0.r166204.2c4e6da263b
 _majorver=${pkgver:0:1}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}

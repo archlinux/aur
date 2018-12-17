@@ -1,6 +1,6 @@
 pkgbase = gcc-git
 	pkgdesc = The GNU Compiler Collection (git version)
-	pkgver = 9.0.0.r164869.68a32e54c7f
+	pkgver = 9.0.0.r166204.2c4e6da263b
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = x86_64
@@ -35,12 +35,12 @@ pkgbase = gcc-git
 pkgname = gcc-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (git version)
 	groups = base-devel
-	depends = gcc-libs=9.0.0.r164869.68a32e54c7f-1
+	depends = gcc-libs=9.0.0.r166204.2c4e6da263b-1
 	depends = binutils>=2.28
 	depends = libmpc
 	optdepends = lib32-gcc-libs: for generating code for 32-bit ABI
-	provides = gcc-multilib=9.0.0.r164869.68a32e54c7f-1
-	provides = gcc=9.0.0.r164869.68a32e54c7f-1
+	provides = gcc-multilib=9.0.0.r166204.2c4e6da263b-1
+	provides = gcc=9.0.0.r166204.2c4e6da263b-1
 	conflicts = gcc
 	options = !emptydirs
 	options = staticlibs
@@ -49,47 +49,47 @@ pkgname = gcc-libs-git
 	pkgdesc = Runtime libraries shipped by GCC (git version)
 	groups = base
 	depends = glibc>=2.27
-	provides = gcc-libs-multilib=9.0.0.r164869.68a32e54c7f-1
-	provides = libgo.so=9.0.0.r164869.68a32e54c7f-1
-	provides = libgfortran.so=9.0.0.r164869.68a32e54c7f-1
-	provides = libubsan.so=9.0.0.r164869.68a32e54c7f-1
-	provides = libasan.so=9.0.0.r164869.68a32e54c7f-1
-	provides = libtsan.so=9.0.0.r164869.68a32e54c7f-1
-	provides = liblsan.so=9.0.0.r164869.68a32e54c7f-1
-	provides = gcc-libs=9.0.0.r164869.68a32e54c7f-1
+	provides = gcc-libs-multilib=9.0.0.r166204.2c4e6da263b-1
+	provides = libgo.so=9.0.0.r166204.2c4e6da263b-1
+	provides = libgfortran.so=9.0.0.r166204.2c4e6da263b-1
+	provides = libubsan.so=9.0.0.r166204.2c4e6da263b-1
+	provides = libasan.so=9.0.0.r166204.2c4e6da263b-1
+	provides = libtsan.so=9.0.0.r166204.2c4e6da263b-1
+	provides = liblsan.so=9.0.0.r166204.2c4e6da263b-1
+	provides = gcc-libs=9.0.0.r166204.2c4e6da263b-1
 	conflicts = gcc-libs
 	options = !emptydirs
 	options = !strip
 
 pkgname = gcc-fortran-git
 	pkgdesc = Fortran front-end for GCC (git version)
-	depends = gcc=9.0.0.r164869.68a32e54c7f-1
-	provides = gcc-fortran-multilib=9.0.0.r164869.68a32e54c7f-1
-	provides = gcc-fortran=9.0.0.r164869.68a32e54c7f-1
+	depends = gcc=9.0.0.r166204.2c4e6da263b-1
+	provides = gcc-fortran-multilib=9.0.0.r166204.2c4e6da263b-1
+	provides = gcc-fortran=9.0.0.r166204.2c4e6da263b-1
 	conflicts = gcc-fortran
 
 pkgname = gcc-objc-git
 	pkgdesc = Objective-C front-end for GCC (git version)
-	depends = gcc=9.0.0.r164869.68a32e54c7f-1
-	provides = gcc-objc-multilib=9.0.0.r164869.68a32e54c7f-1
-	provides = gcc-objc=9.0.0.r164869.68a32e54c7f-1
+	depends = gcc=9.0.0.r166204.2c4e6da263b-1
+	provides = gcc-objc-multilib=9.0.0.r166204.2c4e6da263b-1
+	provides = gcc-objc=9.0.0.r166204.2c4e6da263b-1
 	conflicts = gcc-objc
 
 pkgname = gcc-ada-git
 	pkgdesc = Ada front-end for GCC (GNAT) (git version)
-	depends = gcc=9.0.0.r164869.68a32e54c7f-1
-	provides = gcc-ada-multilib=9.0.0.r164869.68a32e54c7f-1
-	provides = gcc-ada=9.0.0.r164869.68a32e54c7f-1
+	depends = gcc=9.0.0.r166204.2c4e6da263b-1
+	provides = gcc-ada-multilib=9.0.0.r166204.2c4e6da263b-1
+	provides = gcc-ada=9.0.0.r166204.2c4e6da263b-1
 	conflicts = gcc-ada
 	options = !emptydirs
 	options = staticlibs
 
 pkgname = gcc-go-git
 	pkgdesc = Go front-end for GCC (git version)
-	depends = gcc=9.0.0.r164869.68a32e54c7f-1
+	depends = gcc=9.0.0.r166204.2c4e6da263b-1
 	provides = go=1.10.1
 	provides = gcc-go-multilib
-	provides = gcc-go=9.0.0.r164869.68a32e54c7f-1
+	provides = gcc-go=9.0.0.r166204.2c4e6da263b-1
 	conflicts = go
 	conflicts = gcc-go
 
@@ -97,11 +97,11 @@ pkgname = lib32-gcc-libs-gitb
 	pkgdesc = 32-bit runtime libraries shipped by GCC (git version)
 	groups = multilib-devel
 	depends = lib32-glibc>=2.27
-	provides = libgo.so=9.0.0.r164869.68a32e54c7f-1
-	provides = libgfortran.so=9.0.0.r164869.68a32e54c7f-1
-	provides = libubsan.so=9.0.0.r164869.68a32e54c7f-1
-	provides = libasan.so=9.0.0.r164869.68a32e54c7f-1
-	provides = lib32-gcc-libs=9.0.0.r164869.68a32e54c7f-1
+	provides = libgo.so=9.0.0.r166204.2c4e6da263b-1
+	provides = libgfortran.so=9.0.0.r166204.2c4e6da263b-1
+	provides = libubsan.so=9.0.0.r166204.2c4e6da263b-1
+	provides = libasan.so=9.0.0.r166204.2c4e6da263b-1
+	provides = lib32-gcc-libs=9.0.0.r166204.2c4e6da263b-1
 	conflicts = lib32-gcc-libs
 	options = !emptydirs
 	options = !strip
