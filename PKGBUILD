@@ -3,7 +3,7 @@
 
 pkgname=kitch
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The best way to play itch.io games."
 
 arch=('i686' 'x86_64')
@@ -43,11 +43,11 @@ Exec=kitch %U
 Icon=kitch
 Terminal=false
 Categories=Game;
-MimeType=x-scheme-handler/kitch;
+MimeType=x-scheme-handler/kitchio;x-scheme-handler/kitch;
 X-GNOME-Autostart-enabled=true
 Comment=Install and play itch.io games easily
 BE_PATIENT
-  install -Dm644 io.itch.kitch.desktop "${pkgdir}/usr/share/applications/kitch.desktop"
+  install -Dm644 io.itch.kitch.desktop "${pkgdir}/usr/share/applications/io.itch.kitch.desktop"
 
   cd "${srcdir}/itch-25.4.0"
 
