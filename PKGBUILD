@@ -77,7 +77,7 @@ prepare() {
   
   rm -rf "${srcdir}/gopath"
   mkdir -p "${srcdir}/gopath/src/github.com/zyedidia"
-  ln -s "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/gopath/src/github.com/zyedidia/${pkgname}"
+  ln -rTsf "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/gopath/src/github.com/zyedidia/${pkgname}"
 }
 
 build() {
