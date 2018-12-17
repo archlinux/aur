@@ -1,16 +1,16 @@
 pkgbase = coredns-bin
 	pkgdesc = CoreDNS is a DNS server that chains plugins (official binary version)
-	pkgver = 1.2.6
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/coredns/coredns
 	arch = x86_64
 	license = Apache
 	provides = coredns
 	conflicts = coredns
-	source = coredns_x64_1.2.6.tar.gz::https://github.com/coredns/coredns/releases/download/v1.2.6/coredns_1.2.6_linux_amd64.tgz
+	source = coredns_x64_1.3.0.tar.gz::https://github.com/coredns/coredns/releases/download/v1.3.0/coredns_1.3.0_linux_amd64.tgz
 	source = https://raw.githubusercontent.com/coredns/deployment/39c9f7ed7640f86fa0fb6ba06a88e9afa830b306/systemd/coredns.service
 	source = https://raw.githubusercontent.com/coredns/deployment/39c9f7ed7640f86fa0fb6ba06a88e9afa830b306/systemd/coredns-sysusers.conf
-	sha256sums = 04e855cffa07052dbd82fc5a8823c60396231b23252f5c5bb2c9e0af9c711012
+	sha256sums = b1799f83b9be9a7b8ef916d6ad041eddd094e4d72429baafd0339159c48425aa
 	sha256sums = 947b4838af48212ecd8e565155c97ca61ff7d408d0b8622499925b6e232656c4
 	sha256sums = 178c632fd855a5a35ae69e13ab554d5abad696cf75d23c6b6b37f0ace3b4b0f2
 
