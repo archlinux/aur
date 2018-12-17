@@ -1,17 +1,17 @@
 pkgbase = nginx-mainline-mod-srcache
 	pkgdesc = Transparent subrequest-based caching layout for arbitrary nginx locations (module for mainline nginx)
 	pkgver = 0.31
-	pkgrel = 19
+	pkgrel = 20
 	url = https://github.com/openresty/srcache-nginx-module
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = nginx-mainline
-	source = https://nginx.org/download/nginx-1.15.6.tar.gz
-	source = https://nginx.org/download/nginx-1.15.6.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.15.7.tar.gz
+	source = https://nginx.org/download/nginx-1.15.7.tar.gz.asc
 	source = https://github.com/openresty/srcache-nginx-module/archive/v0.31/srcache-0.31.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = a3d8c67c2035808c7c0d475fffe263db8c353b11521aa7ade468b780ed826cc6
+	sha256sums = 8f22ea2f6c0e0a221b6ddc02b6428a3ff708e2ad55f9361102b1c9f4142bdf93
 	sha256sums = SKIP
 	sha256sums = 3f9729e73a8340926fa9d9fc15707c2f287cd27b6a9fe42e83f660ca48a5972d
 
