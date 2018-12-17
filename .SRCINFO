@@ -1,0 +1,15 @@
+pkgbase = r-bsda
+	pkgdesc = R Basic Statistics and Data Analysis
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=expm
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-e1071
+	replaces = r-cran-bsda
+	source = https://cran.r-project.org/src/contrib/BSDA_1.2.0.tar.gz
+	sha512sums = b169d21dfa74498f6c8244229162d340e7995bf1be4dd7a6149981d3bdba3bdd777b7d91127f93a887b2c5ee645781503fd1b14200ed2e84b4d371cb0a49ea53
+
+pkgname = r-bsda
+
