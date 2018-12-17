@@ -1,0 +1,18 @@
+pkgbase = alva-appimage
+	pkgdesc = Create living prototypes with code components.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://meetalva.io
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = alva
+	conflicts = alva
+	options = !strip
+	source = https://github.com/meetalva/alva/releases/download/v0.8.0/Alva-0.8.0.AppImage
+	source = alva.sh
+	md5sums = abad794dd58818065a1f9133e7aef566
+	md5sums = SKIP
+
+pkgname = alva-appimage
+

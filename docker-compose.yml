@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  makepkg:
+    image: imrehg/archlinux-makepkg
+    volumes:
+      - '.:/home/builder/'
+    command: sh -c "makepkg --printsrcinfo > .SRCINFO && makepkg -f"
+
+

@@ -1,0 +1,4 @@
+services:
+  - docker
+script:
+  - docker-compose run --rm makepkg
