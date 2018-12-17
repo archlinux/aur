@@ -1,0 +1,21 @@
+pkgbase = python09
+	pkgdesc = an extensible interpreted programming language
+	pkgver = 0.9.1
+	pkgrel = 9
+	url = www.cwi.nl/~guido/Python.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = readline
+	options = !buildflags
+	options = !makeflags
+	options = !strip
+	source = http://python.org/ftp/python/src/Python-0.9.1.tar.gz
+	source = http://eel.sdf.org/pit/python/0.9/mod.pdf
+	source = http://eel.sdf.org/pit/python/0.9/tut.pdf
+	md5sums = 7d7a4c0e472226b33f7ad2f976f4eb9e
+	md5sums = b97d27ed16cb0df9ffc2d9067c5c6982
+	md5sums = bf44218c430a1c30261ff0ba1e5f5ff3
+
+pkgname = python09
+
