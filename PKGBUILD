@@ -1,21 +1,35 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-git
-pkgver=r325.99d68c1
+pkgver=r382.dd64ba8
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/elementary/wingpanel'
-license=('GPL3')
-groups=('pantheon-unstable')
-depends=('glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
-         'libgala.so' 'libgranite.so')
-makedepends=('cmake' 'gala-git' 'git' 'granite-git' 'vala')
-provides=('wingpanel' 'libwingpanel-2.0.so')
-conflicts=('wingpanel')
-replaces=('wingpanel-bzr')
-source=('git+https://github.com/elementary/wingpanel.git')
-sha256sums=('SKIP')
+license=(GPL3)
+groups=(pantheon-unstable)
+depends=(
+  glib2
+  gtk3
+  libgala.so
+  libgee
+  libgranite.so
+  mutter
+)
+makedepends=(
+  gala-git
+  git
+  granite-git
+  meson
+  vala
+)
+provides=(
+  libwingpanel-2.0.so
+  wingpanel
+)
+conflicts=(wingpanel)
+source=(git+https://github.com/elementary/wingpanel.git)
+sha256sums=(SKIP)
 
 pkgver() {
   cd wingpanel
@@ -23,30 +37,13 @@ pkgver() {
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd wingpanel
-
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
-}
-
 build() {
-  cd wingpanel/build
-
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DGSETTINGS_COMPILE='FALSE'
-  make
+  arch-meson wingpanel build
+  ninja -C build
 }
 
 package() {
-  cd wingpanel/build
-
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
