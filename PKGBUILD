@@ -9,7 +9,7 @@ pkgver=2.2.0_rc1_91_g8604f171
 pkgrel=1
 pkgdesc="A 2D CAD drawing tool based on the community edition of QCad."
 arch=('x86_64')
-url="http://librecad.org"
+url="https://librecad.org"
 license=('GPL')
 
 depends=('qt5-base' 'qt5-svg' 'qt5-tools' 'boost' 'muparser')
@@ -24,20 +24,20 @@ md5sums=('SKIP' '19dcb83a3fcdb3752439095b118ac6d3')
 function pkgver
 {
     cd "$_pkgtitle"
+
     git describe --tags | sed -e 's/-/_/g'
 }
 
 function build
 {
     cd "$_pkgtitle"
+
     qmake librecad.pro \
         QMAKE_CPPFLAGS="$CPPFLAGS" \
         QMAKE_CFLAGS="$CFLAGS" \
         QMAKE_CXXFLAGS="$CXXFLAGS" \
         QMAKE_LDFLAGS="$LDFLAGS"
-    make
 
-    cd 'plugins'
     make
 }
 
