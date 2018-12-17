@@ -1,6 +1,6 @@
 pkgbase = plata-theme
 	pkgdesc = A Gtk+ theme based on Material Design Refresh
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://gitlab.com/tista500/plata-theme
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = plata-theme
 	optdepends = gtk-engine-murrine: for gtk2 themes
 	optdepends = noto-fonts: Recommended font
 	optdepends = ttf-roboto: Recommended font
-	source = git+https://gitlab.com/tista500/plata-theme.git#tag=0.4.8
+	source = git+https://gitlab.com/tista500/plata-theme.git#tag=0.4.9
 	sha256sums = SKIP
 
 pkgname = plata-theme

@@ -1,7 +1,7 @@
 # Maintainer: nightuser <nightuser at ya dot ru>
 
 pkgname=plata-theme
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc='A Gtk+ theme based on Material Design Refresh'
 arch=('any')
