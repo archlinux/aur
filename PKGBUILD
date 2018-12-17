@@ -14,8 +14,8 @@ pkgbase=mesa-intel-iris-git
 pkgname="${pkgbase}"
 _branch=iris
 pkgdesc="Mesa with Intel Iris (Gallium) Driver, git version"
-pkgver=19.0.0_devel.106869.7f12281b48e
-pkgrel=2
+pkgver=19.0.0_devel.107038.dfcc38999c0
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
              'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
@@ -28,24 +28,15 @@ conflicts=('mesa-git' 'mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva
 url="https://www.mesa3d.org"
 license=('custom')
 source=("mesa::git+https://gitlab.freedesktop.org/kwg/mesa.git#branch=${_branch}"
-        'LICENSE'
-	'opencl_compilation.patch')
+        'LICENSE')
 
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-	    'f164a82a5a84c1f092f2f2c5b6acc69074b5d1e467b1adb7b5067042be80d010b01f3a9dee6f2af8513af19bdc1449f01edd9122f04cfaa62298b2d76d5baa1e')
-
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 pkgver() {
     cd mesa
     read -r _ver <VERSION
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
-
-prepare () {
-   cd mesa
-   patch -p1 -i ../opencl_compilation.patch
-}
-
 
 build () {
     meson setup mesa _build \

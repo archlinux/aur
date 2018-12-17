@@ -1,7 +1,7 @@
 pkgbase = mesa-intel-iris-git
 	pkgdesc = Mesa with Intel Iris (Gallium) Driver, git version
-	pkgver = 19.0.0_devel.106869.7f12281b48e
-	pkgrel = 2
+	pkgver = 19.0.0_devel.107038.dfcc38999c0
+	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
 	license = custom
@@ -55,10 +55,8 @@ pkgbase = mesa-intel-iris-git
 	conflicts = mesa-vdpau
 	source = mesa::git+https://gitlab.freedesktop.org/kwg/mesa.git#branch=iris
 	source = LICENSE
-	source = opencl_compilation.patch
 	sha512sums = SKIP
 	sha512sums = 25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2
-	sha512sums = f164a82a5a84c1f092f2f2c5b6acc69074b5d1e467b1adb7b5067042be80d010b01f3a9dee6f2af8513af19bdc1449f01edd9122f04cfaa62298b2d76d5baa1e
 
 pkgname = mesa-intel-iris-git
 
