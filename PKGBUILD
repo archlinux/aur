@@ -35,7 +35,7 @@ build() {
     --sysconfdir=/etc \
     --localstatedir=/var \
     --libdir=/usr/lib/"${_gitname}" \
-    --libexecdir=/usr/lib/"{${_gitname}" \
+    --libexecdir=/usr/lib/"${_gitname}" \
     --with-python3 \
     --enable-pie \
     --disable-docs \
