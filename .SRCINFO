@@ -1,7 +1,7 @@
 pkgbase = slit-git
 	pkgdesc = A modern PAGER for viewing logs, get more than most in less time
-	pkgver = 1.2.0.r9.g7e3652e
-	pkgrel = 3
+	pkgver = 1.2.0.r10.g88bec40
+	pkgrel = 1
 	url = https://github.com/tigrawap/slit
 	arch = x86_64
 	license = MIT
