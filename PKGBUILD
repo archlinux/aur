@@ -1,6 +1,6 @@
 pkgname=mps-youtube-hd-git
 pkgver=0.2.8.r91.g8b09b3d
-pkgrel=1
+pkgrel=3
 
 pkgdesc="Terminal based YouTube jukebox, fork with HD video playback"
 url='https://github.com/th0rn/mps-youtube'
