@@ -1,0 +1,14 @@
+pkgbase = python-requests-threads
+	pkgdesc = Twisted Deferred Thread backend for Requests
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/requests/requests-threads
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	depends = python-requests
+	source = https://github.com/requests/requests-threads/archive/v0.1.1.tar.gz
+	sha256sums = 479292ad0f958fd2932365399fbc0e00dfa0185c409bfa35339cb8fbf66485fe
+
+pkgname = python-requests-threads
+
