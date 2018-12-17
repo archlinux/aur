@@ -1,6 +1,6 @@
 pkgbase = maxima-git
 	pkgdesc = Sophisticated computer algebra system - git-version
-	pkgver = 5.42.1.268.g09c41285e
+	pkgver = 5.42.1.279.ge2a275d4d
 	pkgrel = 1
 	url = http://maxima.sourceforge.net
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = maxima-git
 	makedepends = python
 	makedepends = texlive-core
 	makedepends = texinfo
-	depends = ecl
+	depends = sbcl
 	depends = sh
 	optdepends = gnuplot: plotting capabilities
 	optdepends = rlwrap: readline support via /usr/bin/rmaxima
