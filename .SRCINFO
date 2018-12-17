@@ -1,0 +1,24 @@
+pkgbase = android-ndk-16b
+	pkgdesc = Android C/C++ developer kit
+	pkgver = r16_b
+	pkgrel = 1
+	url = https://developer.android.com/ndk/
+	install = android-ndk.install
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = custom
+	depends = ncurses5-compat-libs
+	provides = android-ndk
+	conflicts = android-ndk
+	replaces = android-ndk64
+	options = !strip
+	options = staticlibs
+	backup = etc/profile.d/android-ndk.sh
+	source = android-ndk.sh
+	source = http://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip
+	sha256sums = 5bc58ccd7e7de03c9656ca8f13fb9bf9dff2eeee31a2670ce04a4b97be73dc95
+	sha256sums = bcdea4f5353773b2ffa85b5a9a2ae35544ce88ec5b507301d8cf6a76b765d901
+
+pkgname = android-ndk-16b
+
