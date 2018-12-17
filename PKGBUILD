@@ -1,4 +1,4 @@
-# Maintainer: Carlos Silva <r3pek@r3pek.org>
+# Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
 
 pkgname=cartaodecidadao-v1
 pkgver=1.61.0
