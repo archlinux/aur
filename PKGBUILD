@@ -3,15 +3,15 @@
 
 pkgname=nwn-diamond
 pkgver=1.69
-pkgrel=8
+pkgrel=9
 pkgdesc='Neverwinter Nights RPG from Bioware. Requires the Diamond Collection DVD. Update PKGBUILD with path to your DVD.'
 url='http://nwn.bioware.com/'
 license=('custom:EULA')
 arch=('i686' 'x86_64')
 if [ "$CARCH" = 'x86_64' ]; then
-    depends=('binkplayer' 'elfutils' 'lib32-elfutils' 'lib32-libgl' 'lib32-libstdc++5' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-mesa' 'perl' 'lib32-sdl_mixer')
+    depends=('binkplayer-bin' 'elfutils' 'lib32-elfutils' 'lib32-libgl' 'lib32-libstdc++5' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-mesa' 'perl' 'lib32-sdl_mixer')
 else
-    depends=('binkplayer' 'elfutils' 'libgl' 'libstdc++5' 'libxcursor' 'mesa' 'perl' 'sdl_mixer')
+    depends=('binkplayer-bin' 'elfutils' 'libgl' 'libstdc++5' 'libxcursor' 'mesa' 'perl' 'sdl_mixer')
 fi
 makedepends=('git' 'unzip' 'p7zip' 'perl')
 provides=('nwn')
@@ -19,9 +19,9 @@ conflicts=('nwn')
 install='nwn.install'
 backup=('opt/nwn/nwncdkey.ini')
 source=(
-    'http://nwdownloads.bioware.com/neverwinternights/linux/gold/nwclientgold.tar.gz'
-    'http://nwdownloads.bioware.com/neverwinternights/linux/161/nwclienthotu.tar.gz'
-    'http://files.bioware.com/neverwinternights/updates/linux/169/English_linuxclient169_xp2.tar.gz'
+    'https://lutris.net/files/games/neverwinter-nights/nwclientgold.tar.gz'
+    'https://lutris.net/files/games/neverwinter-nights/nwclienthotu.tar.gz'
+    'https://lutris.net/files/games/neverwinter-nights/English_linuxclient169_xp2.tar.gz'
     'git+https://github.com/nwnlinux/nwlogger.git#commit=3bfa7aa5'
     'git+https://github.com/nwnlinux/nwmouse.git#commit=6df8b96f'
     'git+https://github.com/nwnlinux/nwmovies.git#commit=61fb3645'
