@@ -26,7 +26,7 @@ package() {
   mkdir -p "${pkgdir}/opt/$pkgname/"
   mkdir -p "${pkgdir}/usr/bin"
   cp -r "${srcdir}/${pkgname}/" "${pkgdir}/opt/$pkgname"
-  install -Dm644 "$srcdir/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   ln -s /opt/tutanota-electron-git/tutanota "${pkgdir}/usr/bin/tutanota"
   install -Dm755 "$srcdir/$pkgname/tutanota.desktop" "${pkgdir}/usr/share/applications/tutanota.desktop"
 }
