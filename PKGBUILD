@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=qtfm
-pkgver=6.1.0
+pkgver=6.1.5
 pkgrel=1
 pkgdesc="A lightweight file manager"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/rodlie/qtfm/releases"
 license=('GPL')
 depends=('qt5-base' 'desktop-file-utils' 'hicolor-icon-theme')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rodlie/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('a70b2f328f10c7107b66195146795e3ac089d102ec1bf0a56cabd2df452607d2')
+sha256sums=('a84b03373e2ae9c6eb0cd736bc1826a7e6e8a3f38537861004fd370c8b5934a6')
 
 build() {
   cd $pkgname-${pkgver//_/-}
