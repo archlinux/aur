@@ -1,18 +1,17 @@
 pkgbase = docker-bashbrew
 	pkgdesc = Canonical build tool for the official docker images
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/docker-library/official-images
 	arch = x86_64
 	license = Apache
 	makedepends = gb
-	makedepends = git
 	depends = docker>=1:10
 	depends = git
 	provides = bashbrew
 	conflicts = bashbrew
 	source = git+https://github.com/docker-library/official-images
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = docker-bashbrew
 

@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/docker-library/official-images'
 license=('Apache')
 depends=('docker>=1:10' 'git')
-makedepends=('gb' 'git')
+makedepends=('gb')
 provides=('bashbrew')
 conflicts=('bashbrew')
 source=("git+$url")
