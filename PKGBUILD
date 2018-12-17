@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=goboy-git
-pkgver=0.4.2.r1.c35240e
+pkgver=0.4.2.r2.f876370
 pkgrel=1
 pkgdesc="Multi-platform Nintendo Game Boy Color emulator written in go"
 arch=("x86_64")
@@ -25,26 +25,28 @@ sha256sums=("SKIP"
             "SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
 
 prepare() {
+  rm -rf "${srcdir}/gopath"
+
   mkdir -p "${srcdir}/gopath/src/github.com/Humpheh"
   ln -rTsf "${srcdir}/${pkgname%-git}-${pkgver}" "${srcdir}/gopath/src/github.com/Humpheh/${pkgname%-git}"
-  
+
   mkdir -p "${srcdir}/gopath/src/github.com/faiface"
   ln -rTsf "${srcdir}/glhf" "${srcdir}/gopath/src/github.com/faiface/glhf"
   ln -rTsf "${srcdir}/mainthread" "${srcdir}/gopath/src/github.com/faiface/mainthread"
   ln -rTsf "${srcdir}/pixel" "${srcdir}/gopath/src/github.com/faiface/pixel"
-  
+
   mkdir -p "${srcdir}/gopath/src/github.com/go-gl"
   ln -rTsf "${srcdir}/gl" "${srcdir}/gopath/src/github.com/go-gl/gl"
   ln -rTsf "${srcdir}/glfw" "${srcdir}/gopath/src/github.com/go-gl/glfw"
   ln -rTsf "${srcdir}/mathgl" "${srcdir}/gopath/src/github.com/go-gl/mathgl"
-  
+
   mkdir -p "${srcdir}/gopath/src/github.com/hajimehoshi"
   ln -rTsf "${srcdir}/oto" "${srcdir}/gopath/src/github.com/hajimehoshi/oto"
-  
+
   mkdir -p "${srcdir}/gopath/src/github.com/mattn"
   ln -rTsf "${srcdir}/go-gtk" "${srcdir}/gopath/src/github.com/mattn/go-gtk"
   ln -rTsf "${srcdir}/go-pointer" "${srcdir}/gopath/src/github.com/mattn/go-pointer"
-  
+
   mkdir -p "${srcdir}/gopath/src/github.com/pkg"
   ln -rTsf "${srcdir}/errors" "${srcdir}/gopath/src/github.com/pkg/errors"
 }
@@ -60,13 +62,13 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  GOPATH="${srcdir}/gopath" PATH="${PATH}:${GOPATH}/bin" go build -x -i -v -o goboy.bin cmd/goboy/main.go
+  GOPATH="${srcdir}/gopath" PATH="${PATH}:${GOPATH}/bin" go build -x -i -v -o "${pkgname%-git}.bin" "cmd/${pkgname%-git}/main.go"
 }
 
 package() {
   install -Dm755 "${srcdir}/${pkgname%-git}/${pkgname%-git}.bin" "${pkgdir}/usr/bin/${pkgname%-git}"
   install -Dm644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-  for _file in ${srcdir}/${pkgname%-git}/*.md ${srcdir}/${pkgname%-git}/docs/*.md
+  for _file in "${srcdir}/${pkgname%-git}/"*.md "${srcdir}/${pkgname%-git}/docs/"*.md
   do
     install -Dm644 "${_file}" "${pkgdir}/usr/share/doc/${pkgname%-git}/$(basename ${_file})"
   done

@@ -1,6 +1,6 @@
 pkgbase = goboy-git
 	pkgdesc = Multi-platform Nintendo Game Boy Color emulator written in go
-	pkgver = 0.4.2.r1.c35240e
+	pkgver = 0.4.2.r2.f876370
 	pkgrel = 1
 	url = https://humpheh.github.io/goboy
 	arch = x86_64
