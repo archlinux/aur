@@ -1,8 +1,8 @@
 # Maintainer: Nazar Mishturak <nazarmx@gmail.com> 
-_binname=step
-pkgname=$_binname-cli-bin
+_binname=step-cli
+pkgname=$_binname-bin
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc."
 arch=('x86_64')
 url="https://smallstep.com/cli"
@@ -22,7 +22,7 @@ sha256sums=(
 )
 
 package() {
-	install -Dm755 "step_$pkgver/bin/$_binname" "$pkgdir/usr/bin/$_binname"
+	install -Dm755 "step_$pkgver/bin/step" "$pkgdir/usr/bin/$_binname"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "step_$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 "bash_autocomplete" "$pkgdir/usr/share/bash-completion/completions/$_binname"

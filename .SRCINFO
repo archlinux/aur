@@ -1,7 +1,7 @@
 pkgbase = step-cli-bin
 	pkgdesc = A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc.
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://smallstep.com/cli
 	arch = x86_64
 	license = MIT
