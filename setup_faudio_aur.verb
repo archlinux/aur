@@ -88,7 +88,7 @@ load_setup_faudio_aur() {
            "$file13" "$file14" "$file15" "$file16" "$file17" "$file18" \
            "$file19" "$file20" "$file21" "$file22" "$file23" "$file24" \
            "$file25" "$file26" "$file27" "$file28" "$file29" "$file30" \
-           "$file31" "$file32" "$file33" "$file34" "$file35"; do
+           "$file31" "$file32" "$file33" "$file34"; do
     w_try ln -fs "$FAUDIO_ROOT_DIR/$f" "${W_SYSTEM32_DLLS}/$f"
   done
 
