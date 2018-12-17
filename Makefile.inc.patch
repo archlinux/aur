@@ -1,0 +1,17 @@
+diff -ura sdf3/etc/Makefile.inc sdf3.new/etc/Makefile.inc
+--- sdf3/etc/Makefile.inc	2014-07-24 12:16:04.000000000 +0200
++++ sdf3.new/etc/Makefile.inc	2018-12-17 13:53:39.994552004 +0100
+@@ -71,10 +71,9 @@
+ RANLIB      = ranlib
+ MAKE		= make
+ 
+-CXXFLAGS    = -g -fno-tree-fre -O3 -Wall -D_GNU_SOURCE -D_$(TARGET)_ -pipe -fpic
+-LDFLAGS     = 
+-ARFLAGS     = cru
+-MAKEFLAGS	= --no-print-directory
++CXXFLAGS   += -fno-tree-fre -fpic
++ARFLAGS     = cru
++MAKEFLAGS  += --no-print-directory
+  
+ OBJ         = o
+ CPP         = cc

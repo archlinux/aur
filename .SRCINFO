@@ -1,0 +1,21 @@
+pkgbase = sdf3
+	pkgdesc = Tool for generating, analyzing, transforming, and visualizing random Synchronous DataFlow Graphs (SDFGs)
+	pkgver = latest
+	pkgrel = 1
+	url = http://www.es.ele.tue.nl/sdf3
+	arch = i386
+	arch = x86_64
+	license = GPL
+	makedepends = chrpath
+	makedepends = unzip
+	depends = boost-libs
+	depends = libxml2
+	noextract = sdf3.zip
+	options = !makeflags
+	source = http://www.es.ele.tue.nl/sdf3/download/files/releases/sdf3.zip
+	source = Makefile.inc.patch
+	md5sums = 77eadba886cf8c02b7c6831bd62cb675
+	md5sums = 0607b3b91e382beeb452c0fbfee0e768
+
+pkgname = sdf3
+
