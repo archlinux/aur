@@ -1,8 +1,10 @@
 # Maintainer: Ariel AxionL <axionl@aosc.io>
+# Co-Maintener: Samuel Van Zuijlen <sam.vzh@orange.fr>
+
 pkgname=sielo-browser-git
 _pkgname=sielo-browser
-pkgver=r1207.b4dbd9d
-pkgrel=1
+pkgver=r1255.390246a
+pkgrel=2
 pkgdesc="A simple, customizable and fast web browser"
 arch=('x86_64')
 depends=('qt5-webengine')
@@ -50,8 +52,8 @@ package() {
     cp -r icon/* ${pkgdir}/usr/share/icons/hicolor/
 
     # Binaries
-	install -Dm755 build/bin/sielo-browser ${pkgdir}/usr/bin/sielo-browser
-	install -Dm755 build/bin/libSieloCore.so ${pkgdir}/usr/lib/libSieloCore.so
-    install -Dm755 build/SNCompiler/sielo-compiler ${pkgdir}/usr/bin/sielo-compiler
+    install -Dm755 build/bin/sielo-browser ${pkgdir}/usr/bin/sielo-browser
+    install -Dm755 build/bin/sielo-compiler ${pkgdir}/usr/bin/sielo-compiler
+    install -Dm755 build/bin/libSieloCore.so ${pkgdir}/usr/lib/libSieloCore.so
 }
 # vim set: ts=4 sw=4 et
