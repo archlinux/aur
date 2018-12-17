@@ -2,7 +2,7 @@
 
 pkgname=ycmd-git
 _gitname=ycmd
-pkgver=r2028.702222bb
+pkgver=r2177.ed8d17c2
 pkgrel=1
 pkgdesc="A code-completion & code-comprehension server"
 arch=('i686' 'x86_64')
@@ -31,17 +31,17 @@ prepare() {
     cd "$srcdir/$_gitname"
     git submodule init third_party/bottle \
         third_party/frozendict \
-        third_party/jedi \
-        third_party/parso \
+        third_party/jedi_deps/jedi \
+        third_party/jedi_deps/parso \
         third_party/python-future \
-        third_party/requests \
+        third_party/requests_deps/requests \
         third_party/waitress
     git config submodule.third_party/bottle.url $srcdir/bottle
     git config submodule.third_party/frozendict.url $srcdir/python-frozendict
-    git config submodule.third_party/jedi.url $srcdir/jedi
-    git config submodule.third_party/parso.url $srcdir/parso
+    git config submodule.third_party/jedi_deps/jedi.url $srcdir/jedi_deps/jedi
+    git config submodule.third_party/jedi_deps/parso.url $srcdir/jedi_deps/parso
     git config submodule.third_party/python-future.url $srcdir/python-future
-    git config submodule.third_party/requests.url $srcdir/requests
+    git config submodule.third_party/requests_deps/requests.url $srcdir/requests_deps/requests
     git config submodule.third_party/waitress.url $srcdir/waitress
     git submodule update
 }
@@ -59,7 +59,7 @@ package() {
     mkdir -p "$pkgdir/$trgtdir/third_party"
    	cp -r "$srcdir/$_gitname/"{ycmd,ycm_core.so,CORE_VERSION,cpp,clang_includes} \
 		    "$pkgdir/$trgtdir"
-   	cp -r "$srcdir/$_gitname/third_party/"{bottle,frozendict,jedi,parso,python-future,requests,waitress} \
+   	cp -r "$srcdir/$_gitname/third_party/"{bottle,frozendict,jedi_deps,python-future,requests_deps,waitress} \
 		    "$pkgdir/$trgtdir/third_party"
 	  find "$pkgdir" -name .git -exec rm -fr {} +
    	rm -rf "$pkgdir/$trgtdir/ycmd/tests"
