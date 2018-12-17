@@ -1,7 +1,7 @@
 pkgbase = infocom
-	pkgdesc = infocom interactive fiction
+	pkgdesc = Infocom interactive fiction
 	pkgver = 1989
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gallery.guetech.org/greybox.html
 	arch = any
 	license = KALLISTI
@@ -10,6 +10,7 @@ pkgbase = infocom
 	optdepends = infocom-docs: docs and feelies
 	optdepends = inform: make your own dang games
 	optdepends = zork: no pdp-10 should be without one!
+	noextract = infocom.6.gz
 	options = !strip
 	source = http://archive.org/download/Infocom_Z-Machine_TOSEC_2012_04_23/Infocom_Z-Machine_TOSEC_2012_04_23.zip
 	source = http://eel.sdf.org/pit/infocom.6.gz

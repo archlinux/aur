@@ -2,8 +2,8 @@
 
 pkgname=infocom
 pkgver=1989
-pkgrel=1
-pkgdesc="infocom interactive fiction"
+pkgrel=2
+pkgdesc="Infocom interactive fiction"
 url="http://gallery.guetech.org/greybox.html"
 arch=('any')
 license=('KALLISTI')
