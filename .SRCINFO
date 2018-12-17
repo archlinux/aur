@@ -1,0 +1,17 @@
+pkgbase = samhain-client
+	pkgdesc = file integrity / intrusion detection system
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = http://www.la-samhna.de/
+	install = samhain.install
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	source = http://www.la-samhna.de/samhain/samhain-current.tar.gz
+	source = samhain.service
+	validpgpkeys = EF6CEF54701A0AFDB86AF4C31AAD26C80F571F6C
+	sha256sums = d4dcedc6bc579c935de7972d23675e94654391c3a1bd19c06ec38e57f7faf1f2
+	sha256sums = 7e53bee6bb9ba15db6e741ed3520491c747e57bb58ffc0da6c5d7e235ac720c9
+
+pkgname = samhain-client
+
