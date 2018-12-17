@@ -23,9 +23,8 @@ md5sums=('54ba4c185be392644b76e818f12a3c55')
 sha512sums=('9eba93361f627508f044b128da012becc062f722ef3b8801a5b34530a85d3f4555d7793d6c7f8826ea3f2935c669f48794c97e0cec8c2c543a57acb808fcea05')
 
 package() {
-  mkdir -p "${pkgdir}/opt/$pkgname/"
   mkdir -p "${pkgdir}/usr/bin"
-  cp -r "${srcdir}/${pkgname}/" "${pkgdir}/opt/$pkgname"
+  cp -r "${srcdir}/${pkgname}" "${pkgdir}/opt/$pkgname"
   install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   ln -s /opt/tutanota-electron-git/tutanota "${pkgdir}/usr/bin/tutanota"
   install -Dm755 "$srcdir/$pkgname/tutanota.desktop" "${pkgdir}/usr/share/applications/tutanota.desktop"
