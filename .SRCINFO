@@ -1,7 +1,7 @@
 pkgbase = ttf-moderndos
-	pkgdesc = A raster monospace serif typeface based on IBM and Verite, extracted from VGA ROM typefaces in real machines by various manufacturers.
+	pkgdesc = A raster monospace serif typeface based on IBM and Verite, extracted from VGA ROM in real machines by various manufacturers.
 	pkgver = 20181216.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notabug.org/HarvettFox96/ttf-moderndos
 	arch = any
 	license = CC0
