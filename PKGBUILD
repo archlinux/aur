@@ -25,7 +25,7 @@ source=('https://gitlab.com/jojo_boulix/auto-multiple-choice/-/archive/1.4.0-rc2
 'amc.patch' 'automultiplechoice.sty')  
 
 md5sums=('0584e43f9605720206e0385451d26da5'
-    '5d9e0db71f987cdf076dde0ecadb131f'
+    '3901536f4e2d2d3baf3b5db157443bd9'
     '9e3717f2d521a075109c8c65003d4d09')
 build() {
   #cd "$srcdir"/$pkgbase-$pkgver
@@ -37,6 +37,5 @@ build() {
 package_auto-multiple-choice(){
   install='amc.install'
   cd auto-multiple-choice-1.4.0-rc2
-  make DESTDIR="$pkgdir/" install
-  sudo cp ../automultiplechoice.sty /usr/share/latex/texmf/latex/tex/
+  make DESTDIR="$pkgdir/" STY=$srcdir/automultiplechoice.sty install
 }

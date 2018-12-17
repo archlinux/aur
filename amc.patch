@@ -305,15 +305,6 @@ index c701eae..4ceef6e 100644
  GCC_PDF ?= $(shell pkg-config --cflags --libs cairo pangocairo poppler-glib)
  GCC_POPPLER ?= $(shell pkg-config --cflags --libs poppler-glib gio-2.0)
  
-@@ -239,7 +239,7 @@ endif
- 	install    -m 0755 $(USER_GROUP) $(BINARIES) $(DESTDIR)/$(MODSDIR)/exec
- 	install    -m 0644 $(USER_GROUP) $(GLADE) $(DESTDIR)/$(MODSDIR)/perl
- 	install -d -m 0755 $(USER_GROUP) $(DESTDIR)/$(TEXDIR)
--	install    -m 0644 $(USER_GROUP) $(STY) $(DESTDIR)/$(TEXDIR)
-+#	install    -m 0644 $(USER_GROUP) $(STY) $(DESTDIR)/$(TEXDIR)
- ifneq ($(DESKTOPDIR),)
- 	install -d -m 0755 $(USER_GROUP) $(DESTDIR)/$(DESKTOPDIR)
- 	install    -m 0644 $(USER_GROUP) -T auto-multiple-choice.desktop $(DESTDIR)/$(DESKTOPDIR)/auto-multiple-choice.desktop
 @@ -249,9 +249,9 @@ endif
  	install -d -m 0755 $(USER_GROUP) $(DESTDIR)/$(ICONSDIR)
  	install    -m 0644 $(USER_GROUP) icons/*.svg $(DESTDIR)/$(ICONSDIR)
