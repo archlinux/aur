@@ -2,7 +2,8 @@
 # Contributor: 
 
 pkgname=python-gpy
-pkgver=1.9.5
+_name=GPy
+pkgver=1.9.6
 pkgrel=1
 pkgdesc="Gaussian processes framework in python"
 arch=("any")
@@ -11,15 +12,10 @@ url="https://github.com/SheffieldML/GPy"
 depends=('python' 'python-numpy' 'python-scipy' 'python-six' 'python-paramz' 'python-matplotlib' 'python-climin-git')
 optdepends=('python-plotly' 'ipython' 'python-sphinx' 'python-ipykernel' 'python-ipywidgets' 'python-jupyter_client' 'jupyter-notebook' 'python-mpi4py')
 makedepends=('python-setuptools' 'python-numpy' 'cython')
-source=("https://github.com/SheffieldML/GPy/archive/v${pkgver}.tar.gz"
-        "cython-v1.9.5.patch")
-sha512sums=("e4d45b426977ef1d987ffde9275adeeac3eb85874cee4049f40a255c14a54ebcfb7e1c402046af6818e20a7b166e51162731d3d904f2e43e830519c6c9489ae2"
-            "1c173cdac44e13663a6320528fa4a772c17adb37039dbda34633f1d4912ea5c3192cc7b13ac61bc036e06c538e5b5b63201b3a72ca7ebc37234dd2643e62ac0e")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=("f11d649b3320d4cb836d283706754953277c8696977726803ccd3ee1355a94a7")
 
 prepare() {
-    # Fix Cython compilation errors (https://github.com/SheffieldML/GPy/pull/677)
-    patch -p1 -i cython-v1.9.5.patch
-    
     cd "GPy-${pkgver}"
     
     # Forcibly update cython for python 3.7 (https://github.com/SheffieldML/GPy/issues/649)
