@@ -1,3 +1,5 @@
+--- lix.desktop.orig	2018-12-17 22:02:00.986002246 +0100
++++ lix.desktop	2018-12-17 22:05:24.586237965 +0100
 @@ -1,10 +1,10 @@
  [Desktop Entry]
  Name=Lix
@@ -7,7 +9,7 @@
  Terminal=false
  Type=Application
 -Icon=lix
-+Icon=/usr/share/icons/default/48x48/apps/lix.png
- X-AppImage-Version=1.0.21
- X-AppImage-BuildId=4137aba0-ba69-11a8-395a-9f6da4565c39
- Categories=Education;
++Icon=/usr/share/icons/hicolor/64x64/apps/lix.png
+ StartupWMClass=Lix
+ X-AppImage-Version=1.0.33
+ MimeType=x-scheme-handler/lix;
