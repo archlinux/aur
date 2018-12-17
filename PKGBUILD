@@ -35,6 +35,7 @@ package() {
 	# installing source
 	cd "$srcdir/35c3_char"
 	install -Dm644 35c3.c "$pkgdir/usr/src/35c3_char-${pkgver}/35c3.c"
+	install -Dm644 35c3.h "$pkgdir/usr/src/35c3_char-${pkgver}/35c3.h"
 	install -Dm644 Makefile "$pkgdir/usr/src/35c3_char-${pkgver}/Makefile"
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
