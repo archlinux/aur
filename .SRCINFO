@@ -23,7 +23,6 @@ pkgbase = gcc-git
 	source = http://isl.gforge.inria.fr/isl-0.20.tar.bz2
 	source = c89
 	source = c99
-	source = bz87672.patch
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
 	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
@@ -32,7 +31,6 @@ pkgbase = gcc-git
 	sha256sums = b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2
 	sha256sums = de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931
 	sha256sums = 2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a
-	sha256sums = 0505bf68d19b0ad7c0e615a4963e4098e2fcbe0f0b3bc6aec47a006b23b72815
 
 pkgname = gcc-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (git version)
