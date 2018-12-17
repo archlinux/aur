@@ -1,37 +1,27 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-
+# Maintainer: Carter Green <crtrgreen@gmail.com>
 pkgname=mssql-cli
-pkgver=0.9.0
-_commit=7ec1d8c27def76c5bd2dde28c70025fd5243059b
+pkgver=0.15.0
 pkgrel=1
-pkgdesc='A Terminal Client for MySQL with AutoCompletion and Syntax Highlighting'
-arch=('any')
-url='https://pypi.python.org/pypi/mssql_cli'
-license=('BSD')
-depends=(
-    'python'
-    'python-click'
-    'python-configobj'
-    'python-cryptography'
-    'python-prompt_toolkit'
-    'python-pygments'
-    'python-sqlparse'
-    'python-cli_helpers'
-    'python-humanize'
-    'python-applicationinsights'
-)
-makedepends=('python-setuptools')
-options=(!emptydirs)
-source=("https://github.com/dbcli/mssql-cli/archive/$_commit/$pkgname-$pkgver.tar.gz")
-sha256sums=('8c0265bcb374e0a6abe40df4989b6e37e3e2cb8740da16eb19ce89cf78a16ac3')
-
-build() {
-    cd "$srcdir/$pkgname-$_commit"
-    python setup.py build
-}
+pkgdesc="Interactive command line query tool for SQL Server"
+arch=(any)
+url="https://github.com/dbcli/mssql-cli"
+license=('BSD-3-Clause')
+depends=('python' 'python-click' 'python-argparse' 'python-pygments'
+         'python-prompt_toolkit' 'python-sqlparse' 'python-configobj'
+         'python-humanize' 'python-cli_helpers' 'python-applicationinsights'
+         'python-future')
+makedepends=('python-pip')
+source=("https://files.pythonhosted.org/packages/py2.py3/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-${pkgver}-py2.py3-none-manylinux1_x86_64.whl")
+sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir/$pkgname-$_commit"
-    python setup.py install -O1 --skip-build --root="$pkgdir"
-    install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir"
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
+  msg2 "Removing non-existant required static libraries..."
+  sed -i '/\.a": {}/d' "${pkgdir}/usr/lib/python3.7/site-packages/mssqlcli/mssqltoolsservice/bin/MicrosoftSqlToolsServiceLayer.deps.json"
+  msg2 "Generating .pyo files..."
+  python -O -m compileall "$pkgdir"
 }
+
+# vim:set ts=2 sw=2 et:
+
