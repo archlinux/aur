@@ -1,9 +1,10 @@
 # Maintainer: Julian Gwywitz <aur@geigi.de>+
+# Maintainer: Pavel Finkelshteyn <pavel.finkelshtein+AUR@gmail.com>
 
 pkgname=cozy-audiobooks
 _gitname=cozy
 pkgdesc=' A modern audio book player for Linux using GTK+ 3.'
-pkgver=0.6.1b
+pkgver=0.6.5
 pkgrel=1
 url='https://github.com/geigi/cozy'
 arch=('i686' 'x86_64')
@@ -18,7 +19,7 @@ source=(
   
 )
 sha256sums=(
-  'bb609366adbcedad0473a7a6ecfcfe811c365018e72745877c7ed03746c01da2'
+  '4064e6d6cbefe3e29728ff89322bf0e964af9696d56172628ff17598dfb41d9c'
 )
 
 build() {

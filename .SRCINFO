@@ -1,6 +1,6 @@
 pkgbase = cozy-audiobooks
 	pkgdesc = A modern audio book player for Linux using GTK+ 3.
-	pkgver = 0.6.1b
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://github.com/geigi/cozy
 	arch = i686
@@ -16,12 +16,12 @@ pkgbase = cozy-audiobooks
 	depends = python-dbus
 	depends = python-gobject
 	depends = python-mutagen
-	depends = python-peewee
 	depends = python-cairo
+	depends = python-peewee
 	depends = file
 	depends = gst-plugins-good
-	source = https://github.com/geigi/cozy/archive/0.6.1b.tar.gz
-	sha256sums = bb609366adbcedad0473a7a6ecfcfe811c365018e72745877c7ed03746c01da2
+	source = https://github.com/geigi/cozy/archive/0.6.5.tar.gz
+	sha256sums = 4064e6d6cbefe3e29728ff89322bf0e964af9696d56172628ff17598dfb41d9c
 
 pkgname = cozy-audiobooks
 
