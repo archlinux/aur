@@ -1,0 +1,15 @@
+pkgbase = minetest-mod-animals
+	pkgdesc = danielmeek32's animals mod for Minetest
+	pkgver = 65.7cf283f
+	pkgrel = 1
+	url = https://github.com/danielmeek32/animals
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = minetest-usrdir_patch
+	provides = minetest-mod-animals
+	source = minetest-mod-animals::git+git://github.com/danielmeek32/animals
+	md5sums = SKIP
+
+pkgname = minetest-mod-animals
+
