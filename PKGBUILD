@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-rtmp
 pkgver=1.2.1
-pkgrel=10
+pkgrel=11
 
 _modname="nginx-rtmp-module"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
