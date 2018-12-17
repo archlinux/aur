@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('elfutils' 'nss' 'python' 'json-c' 'avahi')
 makedepends=('git' 'python-setuptools' 'xmlto' 'cpio')
-optdepends=('sqlite3' 'linux-fedora: for debug enabled kernel' 'linux-lily-debug: for debug enabled kernel')
+optdepends=('sqlite3')
 provides=(systemtap=4.0)
 conflicts=(systemtap)
 _gitroot=git://sourceware.org/git/systemtap.git
