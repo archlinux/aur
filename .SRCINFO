@@ -1,6 +1,6 @@
 pkgbase = scenarist
 	pkgdesc = Screenwriting software, which developed in Russia.
-	pkgver = 0.7.2.rc2
+	pkgver = 0.7.2.rc3
 	pkgrel = 1
 	url = https://kitscenarist.ru
 	arch = x86_64
@@ -9,10 +9,12 @@ pkgbase = scenarist
 	depends = qt5-multimedia
 	depends = qt5-svg
 	depends = qt5-webengine
-	source = scenarist::git+https://github.com/dimkanovikov/KITScenarist.git#tag=0.7.2.rc2
+	source = scenarist::git+https://github.com/dimkanovikov/KITScenarist.git#tag=0.7.2.rc3
 	source = mime.xml
+	source = build.patch
 	md5sums = SKIP
 	md5sums = 45018aa6c472835db014c62a80f5b6dc
+	md5sums = eef816ca49ef1d45f8b101dd26e01a58
 
 pkgname = scenarist
 

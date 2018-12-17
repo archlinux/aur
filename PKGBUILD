@@ -1,7 +1,7 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist
-pkgver=0.7.2.rc2
+pkgver=0.7.2.rc3
 pkgrel=1
 pkgdesc='Screenwriting software, which developed in Russia.'
 url='https://kitscenarist.ru'
@@ -12,15 +12,18 @@ makedepends=('git')
 source=(
   "${pkgname}::git+https://github.com/dimkanovikov/KITScenarist.git#tag=${pkgver}"
   'mime.xml'
+  'build.patch'
 )
 md5sums=(
   'SKIP'
   '45018aa6c472835db014c62a80f5b6dc'
+  'eef816ca49ef1d45f8b101dd26e01a58'
 )
 
 prepare() {
   cd "${pkgname}"
   git submodule update --init
+  git apply "${srcdir}/build.patch"
 }
 
 build() {

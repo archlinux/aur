@@ -1,0 +1,12 @@
+diff --git a/src/bin/scenarist-desktop.pro b/src/bin/scenarist-desktop.pro
+index b779461f..25addead 100755
+--- a/src/bin/scenarist-desktop.pro
++++ b/src/bin/scenarist-desktop.pro
+@@ -11,7 +11,6 @@ TARGET = Scenarist
+ TEMPLATE = app
+ 
+ CONFIG += c++11 warn_on
+-unix: QMAKE_CXXFLAGS_WARN_ON += -Werror
+ 
+ QMAKE_MAC_SDK = macosx10.13
+ 
