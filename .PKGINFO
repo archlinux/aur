@@ -2,7 +2,7 @@
 # using fakeroot version 1.22
 # Wed Mar 14 22:44:42 UTC 2018
 pkgname = tutanota-electron-git
-pkgver = 0.0.3-1
+pkgver = 0.1.0
 pkgdesc = A secure email client
 url = https://bitbucket.org/Thesilentdrifter/tutanota-electron
 builddate = 1521124482
