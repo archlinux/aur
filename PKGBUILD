@@ -14,7 +14,7 @@ pkgbase=lib32-mesa-intel-iris-git
 pkgname="${pkgbase}"
 _branch=iris
 pkgdesc="Mesa with Intel Iris (Gallium) Driver, 32bit git version"
-pkgver=19.0.0_devel.106869.7f12281b48e
+pkgver=19.0.0_devel.107038.dfcc38999c0
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -23,17 +23,15 @@ makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
 depends=('mesa-intel-iris-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
          'lib32-llvm-libs-svn' 'lib32-libunwind' 'lib32-lm_sensors')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('lib32-mesa-git' 'lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-opengl-driver')
-conflicts=('lib32-mesa-git' 'lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
+provides=('lib32-mesa-git' 'lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-opengl-driver')
+conflicts=('lib32-mesa-git' 'lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
 source=("mesa::git+https://gitlab.freedesktop.org/kwg/mesa.git#branch=${_branch}"
-        'LICENSE'
-)
+        'LICENSE')
 
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
-
 
 pkgver() {
     cd mesa
@@ -79,25 +77,26 @@ build () {
        -D osmesa=gallium \
        -D shared-glapi=true \
        -D valgrind=false \
-       -D tools=[]
+       -D tools=[] \
+       -D CMAKE_C_FLAGS="$CFLAGS" \
+       -D CMAKE_CXX_FLAGS="$CXXFLAGS"
     meson configure _build
     ninja -C _build
 }
 
 package_lib32-mesa-intel-iris-git () {
-
-  DESTDIR="$pkgdir" ninja -C _build install
+  DESTDIR="${pkgdir}" ninja -C _build install
 
   # remove files provided by mesa-git
-  rm -rf "$pkgdir"/etc
-  rm -rf "$pkgdir"/usr/include
-  rm -rf "$pkgdir"/usr/share/glvnd/
-  rm -rf "$pkgdir"/usr/share/drirc.d/
+  rm -rf "${pkgdir}"/etc
+  rm -rf "${pkgdir}"/usr/include
+  rm -rf "${pkgdir}"/usr/share/glvnd/
+  rm -rf "${pkgdir}"/usr/share/drirc.d/
 
   # remove files present in lib32-libglvnd
-  rm "$pkgdir"/usr/lib32/libGLESv{1_CM,2}.so*
-    
+  rm "${pkgdir}"/usr/lib32/libGLESv{1_CM,2}.so*
+
   # indirect rendering
   ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
-  install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE 
+  install -Dt  "${pkgdir}"/usr/share/licenses/"${pkgbase}"/ -m644 "$srcdir"/LICENSE
 }
