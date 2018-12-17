@@ -7,7 +7,7 @@ bootmgr.efi, boot/bcd, and boot/boot.sdi) on
 memory.
 
 For more information, visit
-http://ipxe.org/wimboot
+https://ipxe.org/wimboot
 
 EOF
 }
