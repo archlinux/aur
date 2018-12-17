@@ -1,7 +1,7 @@
 #Maintainer: Yan Burdonsky <psyrccio@gmail.com>
 #Contributor: Yan Burdonsky <psyrccio@gmail.com>
 pkgname=jwildfire
-pkgver=3.50.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Fractal flame image and animation processor written in Java"
 arch=('any')
@@ -12,12 +12,12 @@ depends=('java-environment' 'bash')
 provides=('jwildfire')
 conflicts=('jwildfire')
 
-source=("http://www.andreas-maschke.de/java/j-wildfire-3.50.zip" "https://raw.githubusercontent.com/thargor6/JWildfire/master/Delphi/jwildfire_icon.png")
-sha256sums=('cc14c7e901ebb242efb9321c6a18f5ad696d9194fffcf172cbfe3f5ac293d48a' 'c4b30c591d3f00ca163f8b48da7980e0a6f327552aa7e03828d2c5b3f01c66e8')
+source=("http://www.andreas-maschke.de/java/j-wildfire-4.0.zip" "https://raw.githubusercontent.com/thargor6/JWildfire/master/Delphi/jwildfire_icon.png")
+sha256sums=('52e0a1cdbe77c154123630dce42184ec4f0b98ecbfad2bc1014c5635cdbd549e' 'c4b30c591d3f00ca163f8b48da7980e0a6f327552aa7e03828d2c5b3f01c66e8')
 
 build() {
   cd "$srcdir"
-  rm -rf ./j-wildfire-3.50.zip
+  rm -rf ./j-wildfire-4.0.zip
   rm -rf ./*.exe
   rm -rf ./start_mac.command
   echo "[Desktop Entry]" > ./jwildfire.desktop
