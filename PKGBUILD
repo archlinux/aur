@@ -1,8 +1,8 @@
 pkgname=infocom-docs
-pkgdesc="infocom documentation & feelies"
+pkgdesc="Infocom documentation & feelies"
 url="http://infodoc.plover.net"
 pkgver=1989
-pkgrel=1
+pkgrel=2
 arch=('any')
 depends=('infocom')
 license=('KALLISTI')

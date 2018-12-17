@@ -1,7 +1,7 @@
 pkgbase = infocom-docs
-	pkgdesc = infocom documentation & feelies
+	pkgdesc = Infocom documentation & feelies
 	pkgver = 1989
-	pkgrel = 1
+	pkgrel = 2
 	url = http://infodoc.plover.net
 	arch = any
 	license = KALLISTI
