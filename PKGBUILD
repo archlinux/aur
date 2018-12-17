@@ -2,7 +2,7 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=kitch
-pkgver=24.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -10,49 +10,46 @@ arch=('i686' 'x86_64')
 url="https://github.com/itchio/kitch"
 license=('MIT')
 
-depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'gtk2' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache' 'libxss')
-makedepends=('nodejs' 'npm' 'python2' 'gcc')
+depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'gtk2' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache' 'libxss' 'gtk3')
+makedepends=('curl')
 options=('!strip')
 install="kitch.install"
 
-# sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
-source=("https://github.com/itchio/itch/archive/v${pkgver}-canary.tar.gz")
-sha256sums=('5f4f98f46c3430e302378d7832df1fc7fa48db14c3403a1a6fdf170ae23ace25')
+[ "$CARCH" = "i686" ]   && _ITCH_ARCH=386;
+[ "$CARCH" = "x86_64" ] && _ITCH_ARCH=amd64;
 
-[ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=386
-[ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
+source=("https://github.com/itchio/itch/archive/v25.4.0.tar.gz")
+sha256sums=('e86c70044c7d02754c6e52fb428d1278678d729c77b8359b5d82198595da1351')
 
 prepare() {
-  cd "itch-${pkgver}-canary"
-
-  export PYTHON=/usr/bin/python2
-
-  # Get dependencies
-  npm install
+  curl --fail --location --output kitch-setup "https://broth.itch.ovh/kitch-setup/linux-${_ITCH_ARCH}/${pkgver}/unpacked/default"
 }
-
-build() {
-  cd "${srcdir}/itch-${pkgver}-canary"
-  export CI_BUILD_TAG="v24.12.0-canary"
-  export CI_CHANNEL="canary"
-
-  release/ci-compile.js
-  release/ci-generate-linux-extras.js
-  release/ci-package.js --build-only linux "${_ITCH_ARCH}"
-}
-
-# about the absence of check():
-# tests are run with electron and, trust me, you don't
-# want this in your PKGBUILD
 
 package() {
-  cd "${srcdir}/itch-${pkgver}-canary"
+  install -Dm755 kitch-setup "${pkgdir}/usr/bin/kitch-setup"
 
-  install -d "${pkgdir}/usr/lib/kitch"
-  cp -a "build/v${pkgver}/kitch-linux-${_ELECTRON_ARCH}/." "${pkgdir}/usr/lib/kitch"
+  cat << BE_KIND > kitch
+#!/bin/sh
+kitch-setup --prefer-launch -- "@$"
+BE_KIND
+  install -Dm755 kitch "${pkgdir}/usr/bin/kitch"
 
-  install -d "${pkgdir}/usr/share/applications"
-  install -Dm644 linux-extras/io.itch.kitch.desktop "${pkgdir}/usr/share/applications/kitch.desktop"
+  cat << BE_PATIENT > io.itch.kitch.desktop
+[Desktop Entry]
+Type=Application
+Name=kitch
+TryExec=kitch
+Exec=kitch %U
+Icon=kitch
+Terminal=false
+Categories=Game;
+MimeType=x-scheme-handler/kitch;
+X-GNOME-Autostart-enabled=true
+Comment=Install and play itch.io games easily
+BE_PATIENT
+  install -Dm644 io.itch.kitch.desktop "${pkgdir}/usr/share/applications/kitch.desktop"
+
+  cd "${srcdir}/itch-25.4.0"
 
   for icon in release/images/kitch-icons/icon*.png
   do
@@ -64,7 +61,4 @@ package() {
   done
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/kitch/kitch" "${pkgdir}/usr/bin/kitch"
 }
