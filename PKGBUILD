@@ -4,8 +4,8 @@
 
 pkgname=conky-lua-archers
 _pkgname=conky
-pkgver=1.11.0
-pkgrel=3
+pkgver=1.11.1
+pkgrel=1
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -24,11 +24,11 @@ depends=(
 	'libxft'
 	'libxinerama'
 	'libxml2'
+	'libxnvctrl'
 	'lua51'
 	'tolua++'
 	'wireless_tools'
 )
-#	'libxnvctrl'
 makedepends=(
 	'cmake'
 	'docbook2x'
@@ -38,7 +38,7 @@ makedepends=(
 	'perl-xml-sax-expat'
 )
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('cc75b5f6cdeefa83082f3dedf5a12105569c2cdc0ae3e7728922d79bc4abcf51')
+sha256sums=('71fab859946cc2e67be46f2db53859c66369c5c87acf18fc8dfbd41b114f6d6e')
 options=('strip' '!debug' '!emptydirs')
 
 prepare() {
@@ -65,6 +65,7 @@ build() {
 		-D BUILD_LUA_RSVG=ON \
 		-D BUILD_MOC=OFF \
 		-D BUILD_MPD=OFF \
+		-D BUILD_NVIDIA=ON \
 		-D BUILD_OLD_CONFIG=ON \
 		-D BUILD_PULSEAUDIO=ON \
 		-D BUILD_WLAN=ON \
@@ -78,7 +79,6 @@ build() {
 		.
 	make
 }
-#		-D BUILD_NVIDIA=ON \
 
 package() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
