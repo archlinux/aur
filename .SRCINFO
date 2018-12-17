@@ -1,6 +1,6 @@
 pkgbase = 35c3_char-dkms-git
 	pkgdesc = Creates a char device with the content 35c3
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/Kloenk/35c3_char
 	arch = x86_64
