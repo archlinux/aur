@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=openjdk-devel
 _majorver=12
-_buildver=23
+_buildver=24
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJDK ${_majorver} Early-Access Builds"
@@ -18,7 +18,7 @@ provides=(
   "java-runtime-headless-openjdk=${_majorver}"
 )
 source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-x64_bin.tar.gz")
-sha256sums=('a9c97791aa9334e3a8849f3c7f74162a7c7167bfe120fb3ef038eb01d6a5a310')
+sha256sums=('dd927d41c2174f66e3fa2ffc847386e081d111318b235d2b9f4fb64b40624072')
 install=install_jdk12-openjdk.sh
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-openjdk
