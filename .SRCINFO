@@ -1,0 +1,14 @@
+pkgbase = nitrocli
+	pkgdesc = Command-line interface for Nitrokey devices
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/d-e-s-o/nitrocli
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = hidapi
+	source = nitrocli.tar.gz::https://crates.io/api/v1/crates/nitrocli/0.1.3/download
+	sha512sums = 43880b6cb9bb152a1179d02b4290ff6c4dbbdae3c5cb46c0c5cdc382d2a5d8322de97d94b1842b6e93bba97bc3d451bc8946da6d6c0b66fb7d9ed8936df2c263
+
+pkgname = nitrocli
+
