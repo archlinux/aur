@@ -61,7 +61,7 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _major=4.19
-pkgver=4.19.9
+pkgver=4.19.10
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
 pkgrel=1
@@ -100,7 +100,7 @@ source=(# mainline kernel patches
         'linux.preset'
         '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch')
 
-sha256sums=('fc116cc6829c73944215d3b3ac0fc368dde9e8235b456744afffde001269dbf2'
+sha256sums=('afe968ceeca93eac2173f9f95d90b2eeb489bafdd2083478ac0b7d0704b33e94'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             '8761152216a204b0bbf2bd581abc3f5cdf851cec8b807316528b72a7b552ef12'
