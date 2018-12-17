@@ -9,7 +9,7 @@ pkgdesc="Achieve some basic imposition on PDF documents"
 arch=('any')
 url="http://kjo.herbesfolles.org/bookletimposer/"
 license=('GPLv3+')
-depends=('python2>=2.6' 'python2-pypdf2>=1.13' 'python2-gobject' 'desktop-file-utils')
+depends=('python2>=2.6' 'python2-pypdf2>=1.23' 'python2-gobject' 'desktop-file-utils')
 makedepends=('python2-distutils-extra' 'pandoc')
 install=bookletimposer.install
 source=("http://kjo.herbesfolles.org/bookletimposer/archive/$pkgname-$pkgver.tar.gz")

@@ -9,7 +9,7 @@ pkgbase = bookletimposer
 	makedepends = python2-distutils-extra
 	makedepends = pandoc
 	depends = python2>=2.6
-	depends = python2-pypdf2>=1.13
+	depends = python2-pypdf2>=1.23
 	depends = python2-gobject
 	depends = desktop-file-utils
 	source = http://kjo.herbesfolles.org/bookletimposer/archive/bookletimposer-0.2.tar.gz
