@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=websocat-git
-pkgver=v1.2.0.r5.gd328450
+pkgver=v1.2.0.r7.g2e676b3
 pkgrel=1
 pkgdesc="Command-line client for WebSockets"
 arch=(x86_64)
