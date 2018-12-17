@@ -1,6 +1,6 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 
-pkgname=cartaodecidadao
+pkgname=cartaodecidadao-v1
 pkgver=1.61.0
 pkgrel=3
 pkgdesc="Portuguese Citizen Card Application"

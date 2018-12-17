@@ -1,4 +1,4 @@
-pkgbase = cartaodecidadao
+pkgbase = cartaodecidadao-v1
 	pkgdesc = Portuguese Citizen Card Application
 	pkgver = 1.61.0
 	pkgrel = 3
@@ -18,5 +18,5 @@ pkgbase = cartaodecidadao
 	source_x86_64 = https://www.autenticacao.gov.pt/documents/10179/11962/Aplica%C3%A7%C3%A3o+do+Cart%C3%A3o+de+Cidad%C3%A3o+%28Linux+-+Ubuntu+-+64+bits%29%20%28v.1.61.0%29%20Jan+2016/013924f5-dee7-4eeb-ac82-ef81e3db1dec
 	md5sums_x86_64 = 630442660ffc7419a6d8c82a40c1f8cc
 
-pkgname = cartaodecidadao
+pkgname = cartaodecidadao-v1
 
