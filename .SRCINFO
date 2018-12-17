@@ -1,0 +1,19 @@
+pkgbase = postgis-old-upgrade
+	pkgdesc = Postgis build against postgresql-old-upgrade package for pg_upgrade
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = http://postgis.net/
+	changelog = postgis-old-upgrade.changelog
+	arch = x86_64
+	license = GPL
+	depends = postgresql-old-upgrade
+	depends = gdal
+	depends = json-c
+	depends = proj
+	depends = protobuf-c
+	options = !makeflags
+	source = http://download.osgeo.org/postgis/source/postgis-2.5.1.tar.gz
+	sha256sums = fb137056f43aae0e9d475dc5b7934eccce466f86f5ceeb69ec8b5cea26817a91
+
+pkgname = postgis-old-upgrade
+
