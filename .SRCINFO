@@ -1,10 +1,13 @@
 pkgbase = amber-theme-git
 	pkgdesc = GTK+ and GNOME Shell theme based on the Ubuntu Ambiance theme
-	pkgver = r90.25f3139
+	pkgver = r129.140bde6
 	pkgrel = 1
 	url = https://github.com/lassekongo83/amber-theme
 	arch = any
 	license = GPL
+	makedepends = meson
+	makedepends = ninja
+	makedepends = sassc
 	source = amber-theme-git::git+https://github.com/lassekongo83/amber-theme
 	sha512sums = SKIP
 
