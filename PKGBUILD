@@ -1,8 +1,10 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+# Maintainer: Carter Green <crtrgreen@gmail.com>
+# Contributor: Mario Aichinger <aichingm@gmail.com>
+# Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=ccat
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Colorizes output for cat."
 arch=('any')
 url="https://github.com/jingweno/ccat"
@@ -10,23 +12,18 @@ license=('CUSTOM')
 makedepends=('go' 'git')
 conflicts=('ccat-git' 'ccrypt')
 options=('!strip' '!emptydirs')
-source=("https://github.com/jingweno/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('9ce544810476685c4b7f1220b9e99649')
-
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('b02d2c8d573f5d73595657c7854c9019d3bd2d9e6361b66ce811937ffd2bfbe1')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver/"
-  msg2 'Building ccat'
+  cd "${pkgname}-${pkgver}"
+  msg2 'Building...'
   ./script/build
-
 }
-
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/"
+  cd "${pkgname}-${pkgver}"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  cd "$srcdir/$pkgname-$pkgver"
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
-
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
