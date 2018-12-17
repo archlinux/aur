@@ -17,7 +17,7 @@ _commit="c6da4c8a47a45a96beb2de4fbe5b98cfb87446b4"
 prepare() {
   rm -rf "${srcdir}/gopath"
   mkdir -p "${srcdir}/src/github.com/jesseduffield"
-  ln -s "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/github.com/jesseduffield/${pkgname}"
+  ln -rTsf "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/github.com/jesseduffield/${pkgname}"
 }
 
 build () {
