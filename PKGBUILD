@@ -2,7 +2,7 @@
 # Contributor:	Ondřej Surý <ondrej@sury.org>
 
 pkgname=knot-resolver
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='full caching DNS resolver implementation'
 url='https://www.knot-resolver.cz/'
@@ -12,6 +12,7 @@ backup=('etc/knot-resolver/kresd.conf')
 options=(debug strip)
 install=install
 depends=('cmocka'
+         'dnssec-anchors'
          'gnutls'
          'knot>=2.7.2'
          'libedit'
@@ -23,9 +24,9 @@ depends=('cmocka'
          'luajit')
 source=("https://secure.nic.cz/files/${pkgname}/${pkgname}-${pkgver}.tar.xz")
 
-_makevars="PREFIX=/usr SBINDIR=/usr/bin LIBDIR=/usr/lib INCLUDEDIR=/usr/include ETCDIR=/etc/knot-resolver V=1"
+_makevars="PREFIX=/usr SBINDIR=/usr/bin LIBDIR=/usr/lib INCLUDEDIR=/usr/include ETCDIR=/etc/knot-resolver KEYFILE_DEFAULT=/etc/trusted-key.key V=1"
 
-sha256sums=('8f3deba4695784a666cde317bc6af80ecf42ce1047b01f4b9c582fdc021c7492')
+sha256sums=('924f1aebad04cacbc4545571239914d2c42e9253784c0df0f391dfad97c59f42')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -51,6 +52,5 @@ package() {
 	install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/distro/common/systemd/kresd.systemd.7" "${pkgdir}/usr/share/man/man7/kresd.systemd.7"
 	install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/distro/common/tmpfiles/knot-resolver.conf" "${pkgdir}/usr/lib/tmpfiles.d/knot-resolver.conf"
 	install -dm 0775 "${pkgdir}/etc/knot-resolver"
-	install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/distro/common/kresd.conf" "${pkgdir}/etc/knot-resolver/kresd.conf"
-	install -Dm 0664 "${srcdir}/${pkgname}-${pkgver}/distro/common/root.keys" "${pkgdir}/etc/knot-resolver/root.keys"
+	install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/distro/common/kresd.no_ta.conf" "${pkgdir}/etc/knot-resolver/kresd.conf"
 }

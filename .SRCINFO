@@ -1,12 +1,14 @@
 pkgbase = knot-resolver
 	pkgdesc = full caching DNS resolver implementation
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://www.knot-resolver.cz/
 	install = install
 	arch = x86_64
+	arch = armv7h
 	license = GPL3
 	depends = cmocka
+	depends = dnssec-anchors
 	depends = gnutls
 	depends = knot>=2.7.2
 	depends = libedit
@@ -19,8 +21,8 @@ pkgbase = knot-resolver
 	options = debug
 	options = strip
 	backup = etc/knot-resolver/kresd.conf
-	source = https://secure.nic.cz/files/knot-resolver/knot-resolver-3.1.0.tar.xz
-	sha256sums = 8f3deba4695784a666cde317bc6af80ecf42ce1047b01f4b9c582fdc021c7492
+	source = https://secure.nic.cz/files/knot-resolver/knot-resolver-3.2.0.tar.xz
+	sha256sums = 924f1aebad04cacbc4545571239914d2c42e9253784c0df0f391dfad97c59f42
 
 pkgname = knot-resolver
 
