@@ -1,0 +1,81 @@
+pkgbase = postgresql-10
+	pkgdesc = Sophisticated object-relational DBMS
+	pkgver = 10.6
+	pkgrel = 1
+	url = https://www.postgresql.org/
+	arch = x86_64
+	license = custom:PostgreSQL
+	makedepends = krb5
+	makedepends = libxml2
+	makedepends = python
+	makedepends = python2
+	makedepends = perl
+	makedepends = tcl>=8.6.0
+	makedepends = openssl>=1.0.0
+	makedepends = pam
+	makedepends = zlib
+	makedepends = icu
+	makedepends = systemd
+	makedepends = libldap
+	source = https://ftp.postgresql.org/pub/source/v10.6/postgresql-10.6.tar.bz2
+	source = postgresql-run-socket.patch
+	source = postgresql-perl-rpath.patch
+	source = postgresql.pam
+	source = postgresql.logrotate
+	source = postgresql.service
+	source = postgresql-check-db-dir
+	sha256sums = 68a8276f08bda8fbefe562faaf8831cb20664a7a1d3ffdbbcc5b83e08637624b
+	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
+	sha256sums = 5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31
+	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
+	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
+	sha256sums = ad025a5fb623b1a1e9dff0cc62cc63f66244bb27d81370a6251aa29e8574be94
+	sha256sums = 888a1d44f03fccfa4bf344ee45824fefb846ae3c1c0c40113ad6020b4be3b0cf
+	sha512sums = 5d4d5cee2a19ad1820c3411bc4851904e3059cdcacc837350694d54d7d59260b66c565c72cc14a3a10541a8fc49c5185f08f57b7a8c7e4c64ed2614da6e1201f
+	sha512sums = 031efe12d18ce386989062327cdbbe611c5ef1f94e4e1bead502304cb3e2d410af533d3c7f1109d24f9da9708214fe32f9a10ba373a3ca8d507bdb521fbb75f7
+	sha512sums = 38302242b30c01c7981574ed28d9cbd9dc73bf6b56ba3a032afb5d0885ae83e5aa72ce578bf2422214dfa6c46f09d0bdd7cccaeb3c25d58754eb1a34f8bf5615
+	sha512sums = 1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67
+	sha512sums = 9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8
+	sha512sums = acd60166ff513b16778705e824944945cd0a98abc519fa5f0232252e0e9c85460c6f8b85459d9692d1f3df1caaaf8909c3e7f785be99c2d3fb98a10b2641a795
+	sha512sums = 56974ef34a8d94596068413154b1a7ed5a71f5a3942bd79427f05e6f6b7853036874dedd8d988bb94306023f2a675996d500b075eaf8a192ef5c24026eb28eb0
+
+pkgname = postgresql-libs-10
+	pkgdesc = Libraries for use with PostgreSQL
+	depends = krb5
+	depends = openssl>=1.0.0
+	depends = readline>=6.0
+	depends = zlib
+	depends = libldap
+	provides = postgresql-client
+	provides = postgresql-libs=10.6
+	conflicts = postgresql-client
+	conflicts = postgresql-libs
+
+pkgname = postgresql-docs-10
+	pkgdesc = HTML documentation for PostgreSQL
+	provides = postgresql-docs=10.6
+	conflicts = postgresql-docs
+	options = docs
+
+pkgname = postgresql-10
+	pkgdesc = Sophisticated object-relational DBMS
+	install = postgresql.install
+	depends = postgresql-libs>=10.6
+	depends = krb5
+	depends = libxml2
+	depends = readline>=6.0
+	depends = openssl>=1.0.0
+	depends = pam
+	depends = icu
+	depends = libsystemd
+	depends = libldap
+	optdepends = python2: for PL/Python 2 support
+	optdepends = python: for PL/Python 3 support
+	optdepends = perl: for PL/Perl support
+	optdepends = tcl: for PL/Tcl support
+	provides = postgresql=10.6
+	conflicts = postgresql
+	options = staticlibs
+	backup = etc/pam.d/postgresql
+	backup = etc/logrotate.d/postgresql
+
