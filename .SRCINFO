@@ -1,4 +1,4 @@
-pkgbase = minetest-mod-animals
+pkgbase = minetest-mod-animals-git
 	pkgdesc = danielmeek32's animals mod for Minetest
 	pkgver = 65.7cf283f
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = minetest-mod-animals
 	source = minetest-mod-animals::git+git://github.com/danielmeek32/animals
 	md5sums = SKIP
 
-pkgname = minetest-mod-animals
+pkgname = minetest-mod-animals-git
 

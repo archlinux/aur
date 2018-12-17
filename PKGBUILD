@@ -1,6 +1,6 @@
 # Maintainer: Thomas Benko <tombenkmo@gmail.com>
 
-pkgname=minetest-mod-animals
+pkgname=minetest-mod-animals-git
 _gitname=${pkgname%-git}
 pkgver=65.7cf283f
 pkgrel=1
