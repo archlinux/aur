@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=zola
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="An opinionated static site generator"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/getzola/zola"
 makedepends=(cargo cmake)
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/getzola/zola/archive/v${pkgver}.tar.gz")
-sha256sums=('718aaec6e0db6c0e6fb310d8a1ef3978f41a173e39b1c2515ca7365690b09cff')
+sha256sums=('d4fa5e70a8da2d2b544147508e8d44a081f19c7d6c002c32ee9661c7873d3c7c')
 
 build() {
   cd zola-$pkgver
