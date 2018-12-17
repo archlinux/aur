@@ -1,0 +1,31 @@
+pkgbase = seastar-git
+	pkgdesc = High performance server-side application framework
+	pkgver = r4026.e67572ef
+	pkgrel = 1
+	url = https://github.com/scylladb/seastar
+	arch = x86_64
+	license = Apache-2
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = ragel
+	depends = hwloc
+	depends = boost
+	depends = boost-libs
+	depends = hwloc
+	depends = numactl
+	depends = libpciaccess
+	depends = crypto++
+	depends = libxml2
+	depends = xfsprogs
+	depends = gnutls
+	depends = lksctp-tools
+	depends = lz4
+	depends = systemtap
+	depends = libtool
+	depends = yaml-cpp
+	source = git+https://github.com/scylladb/seastar#branch=master
+	sha256sums = SKIP
+
+pkgname = seastar-git
+
