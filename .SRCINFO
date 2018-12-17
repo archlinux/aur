@@ -1,17 +1,13 @@
 pkgbase = itch
 	pkgdesc = The best way to play itch.io games.
-	pkgver = 23.6.3
-	pkgrel = 1
+	pkgver = 1.14.0
+	pkgrel = 2
 	url = https://github.com/itchio/itch
 	install = itch.install
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = nodejs
-	makedepends = nodejs-grunt-cli
-	makedepends = npm>=5.5.1
-	makedepends = python2
-	makedepends = gcc
+	makedepends = curl
 	depends = alsa-lib
 	depends = libnotify
 	depends = nss
@@ -21,9 +17,10 @@ pkgbase = itch
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	depends = libxss
+	depends = gtk3
 	options = !strip
-	source = https://github.com/itchio/itch/archive/v23.6.3.tar.gz
-	sha256sums = e05589a2f5b618aa45b8ca4f7a77a22647694ee32810a99781d418b196a0810f
+	source = https://github.com/itchio/itch/archive/v25.4.0.tar.gz
+	sha256sums = e86c70044c7d02754c6e52fb428d1278678d729c77b8359b5d82198595da1351
 
 pkgname = itch
 

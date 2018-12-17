@@ -1,61 +1,54 @@
 # Maintainer: Amos Wenger <amos@itch.io>
-# Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=itch
-pkgver=23.6.3
-pkgrel=1
+pkgver=1.14.0
+pkgrel=2
 pkgdesc="The best way to play itch.io games."
 
 arch=('i686' 'x86_64')
 url="https://github.com/itchio/itch"
 license=('MIT')
 
-depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'gtk2' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache' 'libxss')
-makedepends=('nodejs' 'nodejs-grunt-cli' 'npm>=5.5.1' 'python2' 'gcc')
+depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'gtk2' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache' 'libxss' 'gtk3')
+makedepends=('curl')
 options=('!strip')
 install="itch.install"
 
-# sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
-source=("https://github.com/itchio/itch/archive/v${pkgver}.tar.gz")
-sha256sums=('e05589a2f5b618aa45b8ca4f7a77a22647694ee32810a99781d418b196a0810f')
+[ "$CARCH" = "i686" ]   && _ITCH_ARCH=386;
+[ "$CARCH" = "x86_64" ] && _ITCH_ARCH=amd64;
 
-[ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=i386
-[ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
+source=("https://github.com/itchio/itch/archive/v25.4.0.tar.gz")
+sha256sums=('e86c70044c7d02754c6e52fb428d1278678d729c77b8359b5d82198595da1351')
 
 prepare() {
-  cd "itch-${pkgver}"
-
-  export PYTHON=/usr/bin/python2
-
-  # Get dependencies
-  # (npm3's progress indicator is notoriously slow, disable)
-  npm install --no-progress --quiet
-}
-
-build() {
-  cd "${srcdir}/itch-${pkgver}"
-  export CI_BUILD_TAG="v23.6.3"
-  export CI_CHANNEL="stable"
-
-  release/ci-compile.js
-  release/ci-generate-linux-extras.js
-
-  grunt -v "electron:linux-${_ELECTRON_ARCH}"
-}
-
-check() {
-  cd "${srcdir}/itch-${pkgver}"
-  node app/tests/runner.js
+  curl --fail --location --output itch-setup "https://broth.itch.ovh/itch-setup/linux-${_ITCH_ARCH}/${pkgver}/unpacked/default"
 }
 
 package() {
-  cd "${srcdir}/itch-${pkgver}"
+  install -Dm755 itch-setup "${pkgdir}/usr/bin/itch-setup"
 
-  install -d "${pkgdir}/usr/lib/itch"
-  cp -a "build/v${pkgver}/itch-linux-${_ELECTRON_ARCH}/." "${pkgdir}/usr/lib/itch"
+  cat << BE_KIND > itch
+#!/bin/sh
+itch-setup --prefer-launch -- "@$"
+BE_KIND
+  install -Dm755 itch "${pkgdir}/usr/bin/itch"
 
-  install -d "${pkgdir}/usr/share/applications"
-  install -Dm644 linux-extras/io.itch.itch.desktop "${pkgdir}/usr/share/applications/itch.desktop"
+  cat << BE_PATIENT > io.itch.itch.desktop
+[Desktop Entry]
+Type=Application
+Name=itch
+TryExec=itch
+Exec=itch %U
+Icon=itch
+Terminal=false
+Categories=Game;
+MimeType=x-scheme-handler/itchio;x-scheme-handler/itch;
+X-GNOME-Autostart-enabled=true
+Comment=Install and play itch.io games easily
+BE_PATIENT
+  install -Dm644 io.itch.itch.desktop "${pkgdir}/usr/share/applications/io.itch.itch.desktop"
+
+  cd "${srcdir}/itch-25.4.0"
 
   for icon in release/images/itch-icons/icon*.png
   do
@@ -67,7 +60,4 @@ package() {
   done
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/itch/itch" "${pkgdir}/usr/bin/itch"
 }
