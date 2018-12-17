@@ -1,3 +1,4 @@
+# Maintainer: Luong The Minh Quang <luci at devel.faith>
 pkgname=seastar-git
 pkgdesc='High performance server-side application framework'
 pkgver=r4026.e67572ef
