@@ -1,6 +1,6 @@
 # Maintainer: krypt.co <aur@>
 pkgname=kr
-pkgver=2.4.13
+pkgver=2.4.14
 pkgrel=1
 pkgdesc="SSH using a key stored in Krypton"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-  echo "2.4.13"
+  echo "2.4.14"
 }
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
     (which rustup 2>/dev/null && (rustup which cargo || rustup default stable)) || true
     rustup target add wasm32-unknown-emscripten
     # cargo web 0.6.10 required to build dashboard frontend
-    cargo web --version || cargo install --debug --version 0.6.10 cargo-web
+    cargo web --version || cargo install --debug cargo-web
     mkdir -p "${srcdir}/src/github.com/kryptco/"
     rm -rf "${srcdir}/src/github.com/kryptco/kr"
     mv "${srcdir}/kr" "${srcdir}/src/github.com/kryptco/kr"

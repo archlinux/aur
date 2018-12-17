@@ -1,6 +1,6 @@
 pkgbase = kr
 	pkgdesc = SSH using a key stored in Krypton
-	pkgver = 2.4.13
+	pkgver = 2.4.14
 	pkgrel = 1
 	url = https://github.com/kryptco/kr
 	install = kr.install
@@ -15,7 +15,7 @@ pkgbase = kr
 	depends = gcc-libs-multilib
 	provides = kr
 	conflicts = kr
-	source = git+https://github.com/kryptco/kr#tag=2.4.13
+	source = git+https://github.com/kryptco/kr#tag=2.4.14
 	md5sums = SKIP
 
 pkgname = kr
