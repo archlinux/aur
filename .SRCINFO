@@ -1,7 +1,7 @@
 pkgbase = global
 	pkgdesc = A source code tag system
-	pkgver = 6.6.2
-	pkgrel = 3
+	pkgver = 6.6.3
+	pkgrel = 1
 	url = https://www.gnu.org/software/global/
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = global
 	optdepends = vim
 	options = !emptydirs
 	options = !libtool
-	source = https://ftp.gnu.org/pub/gnu/global/global-6.6.2.tar.gz
-	sha256sums = 43c64711301c2caf40dc56d7b91dd03d2b882a31fa31812bf20de0c8fb2e717f
+	source = https://ftp.gnu.org/pub/gnu/global/global-6.6.3.tar.gz
+	sha256sums = cbee98ef6c1b064bc5b062d14a6d94dca67289e8374860817057db7688bc651c
 
 pkgname = global
 
