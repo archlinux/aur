@@ -16,7 +16,6 @@ depends=('qt5-base' 'qt5-svg' 'qt5-tools' 'boost' 'muparser')
 makedepends=('git')
 provides=('librecad')
 conflicts=('librecad')
-replaces=('librecad-svn' 'caduntu' 'caduntu-svn')
 
 source=("$_pkgtitle::git://github.com/$_pkgtitle/$_pkgtitle.git" 'librecad.desktop')
 md5sums=('SKIP' '19dcb83a3fcdb3752439095b118ac6d3')
