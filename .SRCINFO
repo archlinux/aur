@@ -9,8 +9,8 @@ pkgbase = jgtk+
 	depends = gtk3
 	depends = glib2
 	depends = wayland
-	depends = jwl
 	depends = native-proxy
+	depends = jwl
 	depends = jdk-openjdk>=11
 
 pkgname = jgtk+

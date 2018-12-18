@@ -13,7 +13,7 @@ arch=('x86_64')
 url="https://bitbucket.org/Scoopta/jgtk/src/default/"
 license=('GPL3')
 groups=()
-depends=('gtk3' 'glib2' 'wayland' 'jwl' 'native-proxy' 'jdk-openjdk>=11')
+depends=('gtk3' 'glib2' 'wayland' 'native-proxy' 'jwl' 'jdk-openjdk>=11')
 makedepends=('mercurial')
 checkdepends=()
 optdepends=()
