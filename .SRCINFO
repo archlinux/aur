@@ -18,6 +18,7 @@ pkgbase = ungoogled-chromium
 	makedepends = llvm
 	makedepends = libva
 	makedepends = quilt
+	makedepends = jsoncpp
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
