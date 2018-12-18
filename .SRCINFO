@@ -1,7 +1,7 @@
 pkgbase = trinnity-compiler-git
 	pkgdesc = The triNNity DNN compiler
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/STG-TCD/trinnity-compiler
 	arch = any
 	license = BSD
