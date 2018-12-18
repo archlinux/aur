@@ -7,20 +7,22 @@
 # This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
 # If you want to help keep it up to date, please open a Pull Request there.
 
+# When updating, if makepkg reports "dbus is not a clone of https://gitlab.freedesktop.org/dbus/dbus.git",
+# you need to update the remotes of the source git repository, for example with the following command:
+#   git -C dbus remote set-url origin https://gitlab.freedesktop.org/dbus/dbus.git
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
-pkgver=1.12.10
-pkgrel=2
+pkgver=1.12.12
+pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64)
 license=(GPL custom)
 groups=('selinux')
-depends=(libsystemd-selinux expat)
+depends=(libsystemd-selinux expat audit)
 makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive graphviz audit libselinux)
-_commit=f8902fa1c840e3fab807016e6a00647b6ef9dd41  # tags/dbus-1.12.8^0
-_commit=f98e784bb6f18b4c28feca6a6e9d12b7bf021a00  # tags/dbus-1.12.10^0
-source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit")
+_commit=d4f8423bbff9b3c5fca2d8009c28d1cff4652788  # tags/dbus-1.12.12^0
+source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=$_commit")
 sha256sums=('SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
