@@ -1,0 +1,34 @@
+--- PSSM.cpp	2007-05-31 17:36:24.000000000 +0800
++++ PSSM.cpp	2018-12-18 11:38:35.805256544 +0800
+@@ -204,13 +204,8 @@
+          string tmpS;
+          double tmpD;
+          ss >> tmpS;
+-         if(!getDoubleFromString(tmpD, tmpS, 0.0, 10000.0)) {
+-            errorVal = 29;
+-            return(false);
+-         }
+-         else {
+-            m[i-1][j] = tmpD;
+-         }
++         tmpD = atof(tmpS.c_str());
++         m[i-1][j] = tmpD;
+       }
+    }
+
+@@ -285,13 +280,8 @@
+
+          // MAKE SURE EACH COLUMN IS A POSITIVE DOUBLE VALUE
+
+-         if(!getDoubleFromString(tmpD, tmpS, 0.0, 10000.0)) {
+-            errorVal = 29;
+-            return(false);
+-         }
+-         else {
+-            m[j][i] = tmpD;
+-         }
++         tmpD = atof(tmpS.c_str());
++         m[i-1][j] = tmpD;
+       }
+    }
+
