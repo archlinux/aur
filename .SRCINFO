@@ -1,0 +1,23 @@
+pkgbase = budgie-pixel-saver-applet-git
+	pkgdesc = Pixel Saver applet for Budgie Desktop
+	pkgver = v4.0.0.r10.g30c1f94
+	pkgrel = 1
+	url = https://github.com/ilgarmehmetali/budgie-pixel-saver-applet
+	install = budgie-pixel-saver-applet.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = budgie-desktop
+	depends = gnome-settings-daemon
+	depends = libpeas
+	depends = libwnck3
+	depends = xorg-xprop
+	source = git+https://github.com/ilgarmehmetali/budgie-pixel-saver-applet
+	sha512sums = SKIP
+
+pkgname = budgie-pixel-saver-applet-git
+
