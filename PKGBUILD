@@ -1,7 +1,7 @@
-# Maintainer: Robert Orzanna <orschiro@gmail.com>
+# Maintainer: Chris Salzberg <chris@dejimata.com>
 
 pkgname=wat-git
-pkgver=r25.1302640
+pkgver=r2.76a920c
 pkgrel=1
 pkgdesc="Show upgrades since recent -Syu"
 arch=('i686' 'x86_64')
