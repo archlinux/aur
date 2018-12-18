@@ -1,30 +1,37 @@
-# Maintainer: Swift Geek
+# Maintainer: Adrian Kocis <adrian dot kocis at gmail>
+# Contributor: Swift Geek
 pkgname=pamix-git
 _pkgname=PAmix
-pkgver=a
+pkgver=1.6.r10.gea4ab3b.0.gea4ab3b
 pkgrel=1
-pkgdesc="Ncurses Pulseaudio mixer"
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+pkgdesc="PAMix - the pulseaudio terminal mixer"
+arch=('x86_64')
 url="https://github.com/patroclos/PAmix"
 license=('MIT')
 depends=('ncurses' 'pulseaudio')
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=("git://github.com/patroclos/PAmix.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git rev-parse --short HEAD # Fix to better comply with github display
+    cd "${srcdir}/${_pkgname}"
+    (
+        set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
-  cd "$srcdir/${_pkgname}"
-  autoreconf -i
-  ./configure --prefix=/usr
-  make
+    cd "${srcdir}/${_pkgname}"
+    cmake . -B build -DCMAKE_BUILD_TYPE=RELEASE -DWITH_UNICODE=1 -DNCURSESW_H_INCLUDE="ncurses.h" \
+         -DCMAKE_INSTALL_PREFIX="/usr"
+    cd build
+    make
 }
 
 package() {
-  cd "$srcdir/${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${_pkgname}/build"
+    make DESTDIR="${pkgdir}" install
+    install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
