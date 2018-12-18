@@ -1,6 +1,6 @@
 pkgbase = leagueoflegends-git
 	pkgdesc = League Of Legends: Install/Run wrapper
-	pkgver = 0.13.r24.g08f238a
+	pkgver = 0.13.r25.g0b05e62
 	pkgrel = 1
 	url = https://github.com/Nefelim4ag/League-Of-Legends
 	arch = any
