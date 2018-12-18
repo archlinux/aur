@@ -1,15 +1,15 @@
 pkgbase = rmotifgen
 	pkgdesc = Random motif sequence generator for genomic sequences
 	pkgver = 3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bioinformatics.louisville.edu/rMotifGen.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	source = http://bioinformatics.louisville.edu/localresources/software/rMotifGen3.0.tar.gz
-	source = PSSM.cpp.patch
+	source = source.patch
 	md5sums = b8b43a6cfd3c8ade4eee3306c9661eda
-	md5sums = b595210ee6873e37fcd5986866a95ba3
+	md5sums = 42cea8476540f270c1502d123414bbd0
 
 pkgname = rmotifgen
 

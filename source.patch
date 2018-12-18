@@ -1,0 +1,61 @@
+diff --git a/CommonRoutines.cpp b/CommonRoutines.cpp
+index 306280f..3b43739 100644
+--- a/CommonRoutines.cpp
++++ b/CommonRoutines.cpp
+@@ -35,9 +35,11 @@
+ #include <iostream>
+ #include <fstream>
+ #include <vector>
++#include <cstring>
+ #include "CommonRoutines.H"
+ using namespace std;
+ 
++const int HI_BOUND = 1000001;
+ 
+ //---------------------------------------------------------------------------
+ bool isNum(char ch) {
+@@ -97,7 +99,7 @@ bool getDoubleFromString(double &retVal, string s,
+    }
+ 
+    if(getIntFromString(lhs, lhTok, -1, 101) && 
+-      getIntFromString(rhs, rhTok, -1, 10001)) {
++      getIntFromString(rhs, rhTok, -1, HI_BOUND)) {
+ 
+       // rhs should be divided accordingly
+       int divisor = 1;
+diff --git a/Makefile b/Makefile
+index c49a584..cf08cc7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+ COMPILER = g++
+-CCFLAGS = -g
++CCFLAGS = -g -fpermissive
+ 
+ rMotifGen: RandomMotifs.cpp SequenceClass.o CommonRoutines.o SubstitutionMatrices.o PSSM.o
+ 	${COMPILER} ${CCFLAGS} -o rMotifGen RandomMotifs.cpp SequenceClass.o CommonRoutines.o SubstitutionMatrices.o PSSM.o
+diff --git a/README b/README
+index 18502c2..ba0164f 100644
+--- a/README
++++ b/README
+@@ -107,6 +107,7 @@ RUNNING rMotifGen
+         motif<X>Type=      // Where X=1..numMotifs --  the value can
+                            // be 'U' for user defined, 'R' for random
+                            // or 'P' for PSSM
++        motif<X>PSSMFILE=  // PSSM filename if motif<X>Type=P
+         motif<X>Seq=       // Only Valid if Type = 'U' -- consensus motif
+         motif<X>PctSeqsContain= // Percentage of sequences that contain this 
+                                 // motif 
+diff --git a/SequenceClass.cpp b/SequenceClass.cpp
+index 45c121f..92035c1 100644
+--- a/SequenceClass.cpp
++++ b/SequenceClass.cpp
+@@ -144,7 +144,7 @@ string SequenceClass::randomPSSMSeq(PSSM *P) {
+          }
+       }
+       if(!nextFound) {
+-         s+= P->residueArr[P->totRows - 1];
++         s+= P->residueArr[P->totCols - 1];
+       }
+    }
+    return(s);
