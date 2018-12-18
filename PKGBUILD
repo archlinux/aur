@@ -10,7 +10,7 @@ pkgrel=1
 epoch=
 pkgdesc="GTK+ 3 Bindings for Java"
 arch=('x86_64')
-url="https://bitbucket.org/Scoopta/native-proxy/src/default/"
+url="https://bitbucket.org/Scoopta/jgtk/src/default/"
 license=('GPL3')
 groups=()
 depends=('gtk3' 'glib2' 'wayland' 'jwl' 'native-proxy' 'jdk-openjdk>=11')
@@ -47,6 +47,5 @@ check() {
 package() {
 	echo "Packaging"
 	mkdir -p "../pkg/${pkgname}/usr/share/java"
-	pwd
 	cp ${pkgname}-${pkgver}/build/libs/*.jar "../pkg/${pkgname}/usr/share/java/"
 }
