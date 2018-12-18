@@ -1,7 +1,7 @@
 # Maintainer: Thomas Lam <thomas@lamcw.com>
 
 pkgname=python-pyls-isort-git
-_pkgname="${pkgname#python-%-git}"
+_pkgname=pyls-isort
 pkgver=0.1.1.r2.g5654f98
 pkgrel=1
 pkgdesc="Isort plugin for python-language-server"
