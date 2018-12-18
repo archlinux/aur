@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd pkgcenter/depend/libcmb
-  ./configure --prefix /usr
+  ./configure --prefix "$pkgdir/usr"
 }
 
 build() {
@@ -32,17 +32,5 @@ build() {
 
 package() {
   cd pkgcenter/depend/libcmb
-
-  # Disabled for now because DESTDIR isn't respected
-  #DESTDIR="$pkgdir" make install
-
-  install -dm755 "$pkgdir"/usr/lib
-  install -m755 libcmb.so.* "$pkgdir"/usr/lib/
-  ln -s libcmb.so.* "$pkgdir"/usr/lib/libcmb.so
-
-  install -dm755 "$pkgdir"/usr/include
-  install -m444 cmb.h "$pkgdir"/usr/include/
-
-  install -dm755 "$pkgdir"/usr/share/man/man3
-  install -m444 cmb.3.gz "$pkgdir"/usr/share/man/man3/
+  make install
 }
