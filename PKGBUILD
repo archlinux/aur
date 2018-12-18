@@ -1,4 +1,4 @@
-# Mantainer: Young Acinonyx <young.acinonyx@gmail.com>
+# Mantainer: Young Acinonyx <young.acinonyx [at] gmail [dot] com>
 
 pkgname=xfce-theme-blackbird-git
 pkgver=v0.4.r33.gab4a30e
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Dark Desktop Suite for Xfce. Git version."
 arch=(any)
 url="https://github.com/shimmerproject/Blackbird"
-license=(CCPL:by-sa-3.0 GPL)
+license=('CCPL:cc-by-sa-3.0' 'GPL2')
 depends=('gtk-engine-murrine')
 makedepends=('git')
 provides=('xfce-theme-blackbird')
