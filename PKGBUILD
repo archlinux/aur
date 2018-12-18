@@ -7,7 +7,7 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc='R Basic Statistics and Data Analysis'
 arch=('x86_64')
-url='https://cran.r-project.org/package=expm'
+url='https://cran.r-project.org/web/packages/BSDA/'
 license=('GPL')
 depends=('r' 'r-e1071')
 replaces=('r-cran-bsda')

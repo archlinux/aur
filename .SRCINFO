@@ -2,7 +2,7 @@ pkgbase = r-bsda
 	pkgdesc = R Basic Statistics and Data Analysis
 	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://cran.r-project.org/package=expm
+	url = https://cran.r-project.org/web/packages/BSDA/
 	arch = x86_64
 	license = GPL
 	depends = r
