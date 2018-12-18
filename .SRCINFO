@@ -1,15 +1,15 @@
 pkgbase = edk2-ovmf
-	pkgdesc = EDK2 ovmf firmware from Fedora 28 rpm
-	pkgver = 20171011
-	pkgrel = 3
+	pkgdesc = EDK2 ovmf firmware from Fedora 29 rpm
+	pkgver = 20180815
+	pkgrel = 1
 	url = https://fedoraproject.org/wiki/Using_UEFI_with_QEMU
 	arch = any
 	license = custom:BSD
 	optdepends = qemu: To make use of edk2 ovmf firmware
-	source = http://download.fedoraproject.org/pub/fedora/linux/releases/28/Everything/x86_64/os/Packages/e/edk2-ovmf-20171011git92d07e4-3.fc28.noarch.rpm
-	source = http://download.fedoraproject.org/pub/fedora/linux/releases/28/Everything/x86_64/os/Packages/e/edk2-ovmf-ia32-20171011git92d07e4-3.fc28.noarch.rpm
-	sha256sums = 96f1afacc5f58182f74e2f5137a296a71cd2275d023b214ee8a0096eb98a787e
-	sha256sums = 1473db323ea7e6fe979b11fbe6cc603291440acc994bacfbea2f0db3a8caeddc
+	source = http://download.fedoraproject.org/pub/fedora/linux/releases/29/Everything/x86_64/os/Packages/e/edk2-ovmf-20180815gitcb5f4f45ce-1.fc29.noarch.rpm
+	source = http://download.fedoraproject.org/pub/fedora/linux/releases/29/Everything/x86_64/os/Packages/e/edk2-ovmf-ia32-20180815gitcb5f4f45ce-1.fc29.noarch.rpm
+	sha256sums = dd2e56cd2b09ecf96dd4ae67b15be6b5166cad70b2d6951775d6be67b5aec662
+	sha256sums = 98a8f491843b3a0ccc925069ca9943b06c730ac08a751b47c695f9282cfea273
 
 pkgname = edk2-ovmf
 
