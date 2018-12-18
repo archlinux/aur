@@ -1,8 +1,228 @@
+diff --git a/src/libs/utils/spancolumntreeview.cpp b/src/libs/utils/spancolumntreeview.cpp
+new file mode 100644
+index 0000000000..1109aa18b7
+--- /dev/null
++++ b/src/libs/utils/spancolumntreeview.cpp
+@@ -0,0 +1,113 @@
++ /****************************************************************************
++**
++** Copyright (C) 2018 The Qt Company Ltd.
++** Contact: https://www.qt.io/licensing/
++**
++** This file is part of Qt Creator.
++**
++** Commercial License Usage
++** Licensees holding valid commercial Qt licenses may use this file in
++** accordance with the commercial license agreement provided with the
++** Software or, alternatively, in accordance with the terms contained in
++** a written agreement between you and The Qt Company. For licensing terms
++** and conditions see https://www.qt.io/terms-conditions. For further
++** information use the contact form at https://www.qt.io/contact-us.
++**
++** GNU General Public License Usage
++** Alternatively, this file may be used under the terms of the GNU
++** General Public License version 3 as published by the Free Software
++** Foundation with exceptions as appearing in the file LICENSE.GPL3-EXCEPT
++** included in the packaging of this file. Please review the following
++** information to ensure the GNU General Public License requirements will
++** be met: https://www.gnu.org/licenses/gpl-3.0.html.
++**
++****************************************************************************/
++
++#include "spancolumntreeview.h"
++
++#include <utils/qtcassert.h>
++
++#include <QHeaderView>
++
++namespace Utils {
++namespace Internal {
++
++class SpanColumnTreeViewPrivate : public QObject
++{
++public:
++    SpanColumnTreeViewPrivate(SpanColumnTreeView *parent, int mainSpanColumn)
++        : q(parent)
++        , spanColumn(mainSpanColumn)
++        , processing(false)
++    {
++        connect(q->header(), &QHeaderView::sectionResized, this, [this](int logicalIndex, int, int) {
++            rebalanceColumns(logicalIndex >= spanColumn ? logicalIndex + 1 : spanColumn);
++        });
++        connect(q->header(), &QHeaderView::geometriesChanged, this, [this]() {
++            rebalanceColumns();
++        });
++    }
++
++    void rebalanceColumns()
++    {
++        rebalanceColumns(spanColumn);
++    }
++
++    void rebalanceColumns(int column)
++    {
++        if (processing)
++            return;
++
++        QHeaderView *h = q->header();
++        QTC_ASSERT(h, return);
++
++        int count = h->count();
++        if (column >= count)
++            return;
++
++        int otherColumnTotal = 0;
++        for (int i = 0; i < count; ++i) {
++            if (i != column)
++                otherColumnTotal += h->sectionSize(i);
++        }
++
++        int totalSize = h->width();
++        if (otherColumnTotal < totalSize) {
++            processing = true;
++            q->setColumnWidth(column, totalSize - otherColumnTotal);
++            processing = false;
++        }
++    }
++
++private:
++    SpanColumnTreeView* q;
++    int spanColumn;
++    bool processing;
++};
++
++} // namespace Internal
++
++SpanColumnTreeView::SpanColumnTreeView(int spanColumn, QWidget *parent)
++    : BaseTreeView(parent)
++    , d(new Internal::SpanColumnTreeViewPrivate(this, spanColumn))
++{
++    header()->setStretchLastSection(false);
++}
++
++SpanColumnTreeView::~SpanColumnTreeView()
++{
++    delete d;
++}
++
++void SpanColumnTreeView::rebalanceColumns()
++{
++    d->rebalanceColumns();
++}
++
++void SpanColumnTreeView::setModel(QAbstractItemModel *model)
++{
++    BaseTreeView::setModel(model);
++    d->rebalanceColumns();
++}
++
++} // namespace Utils
+diff --git a/src/libs/utils/spancolumntreeview.h b/src/libs/utils/spancolumntreeview.h
+new file mode 100644
+index 0000000000..0c9387ba20
+--- /dev/null
++++ b/src/libs/utils/spancolumntreeview.h
+@@ -0,0 +1,49 @@
++/****************************************************************************
++**
++** Copyright (C) 2018 The Qt Company Ltd.
++** Contact: https://www.qt.io/licensing/
++**
++** This file is part of Qt Creator.
++**
++** Commercial License Usage
++** Licensees holding valid commercial Qt licenses may use this file in
++** accordance with the commercial license agreement provided with the
++** Software or, alternatively, in accordance with the terms contained in
++** a written agreement between you and The Qt Company. For licensing terms
++** and conditions see https://www.qt.io/terms-conditions. For further
++** information use the contact form at https://www.qt.io/contact-us.
++**
++** GNU General Public License Usage
++** Alternatively, this file may be used under the terms of the GNU
++** General Public License version 3 as published by the Free Software
++** Foundation with exceptions as appearing in the file LICENSE.GPL3-EXCEPT
++** included in the packaging of this file. Please review the following
++** information to ensure the GNU General Public License requirements will
++** be met: https://www.gnu.org/licenses/gpl-3.0.html.
++**
++****************************************************************************/
++
++#pragma once
++
++#include "basetreeview.h"
++
++namespace Utils {
++
++namespace Internal { class SpanColumnTreeViewPrivate; }
++
++class QTCREATOR_UTILS_EXPORT SpanColumnTreeView : public BaseTreeView
++{
++public:
++    explicit SpanColumnTreeView(int spanColumn, QWidget *parent = nullptr);
++    ~SpanColumnTreeView() override;
++
++    void rebalanceColumns();
++
++    void setModel(QAbstractItemModel *model) override;
++
++private:
++    Internal::SpanColumnTreeViewPrivate *d;
++};
++
++}
++
+diff --git a/src/libs/utils/utils-lib.pri b/src/libs/utils/utils-lib.pri
+index 3369e0e161..079e0e8c32 100644
+--- a/src/libs/utils/utils-lib.pri
++++ b/src/libs/utils/utils-lib.pri
+@@ -122,7 +122,9 @@ SOURCES += \
+     $$PWD/filecrumblabel.cpp \
+     $$PWD/fixedsizeclicklabel.cpp \
+     $$PWD/removefiledialog.cpp \
+-    $$PWD/differ.cpp
++    $$PWD/differ.cpp \
++    $$PWD/spancolumntreeview.cpp
++
+ 
+ win32:SOURCES += $$PWD/consoleprocess_win.cpp
+ else:SOURCES += $$PWD/consoleprocess_unix.cpp
+@@ -260,7 +262,8 @@ HEADERS += \
+     $$PWD/link.h \
+     $$PWD/fixedsizeclicklabel.h \
+     $$PWD/removefiledialog.h \
+-    $$PWD/differ.h
++    $$PWD/differ.h \
++    $$PWD/spancolumntreeview.h
+ 
+ FORMS += $$PWD/filewizardpage.ui \
+     $$PWD/newclasswidget.ui \
+diff --git a/src/libs/utils/utils.qbs b/src/libs/utils/utils.qbs
+index 40f7a21ca4..895e2199d8 100644
+--- a/src/libs/utils/utils.qbs
++++ b/src/libs/utils/utils.qbs
+@@ -218,6 +218,8 @@ Project {
+             "smallstringlayout.h",
+             "smallstringmemory.h",
+             "smallstringvector.h",
++            "spancolumntreeview.cpp",
++            "spancolumntreeview.h",
+             "statuslabel.cpp",
+             "statuslabel.h",
+             "stringutils.cpp",
 diff --git a/src/plugins/debugger/debuggerengine.cpp b/src/plugins/debugger/debuggerengine.cpp
-index 8ced94f4ba..e27a65bb6f 100644
+index 0925cb79e4..edf6eeb7c6 100644
 --- a/src/plugins/debugger/debuggerengine.cpp
 +++ b/src/plugins/debugger/debuggerengine.cpp
-@@ -647,7 +647,7 @@ void DebuggerEnginePrivate::setupViews()
+@@ -78,6 +78,7 @@
+ #include <utils/qtcassert.h>
+ #include <utils/qtcprocess.h>
+ #include <utils/savedaction.h>
++#include <utils/spancolumntreeview.h>
+ #include <utils/styledbar.h>
+ #include <utils/utilsicons.h>
+ 
+@@ -647,7 +648,7 @@ void DebuggerEnginePrivate::setupViews()
      m_registerWindow->setObjectName(DOCKWIDGET_REGISTER);
      m_registerWindow->setWindowTitle(tr("Reg&isters"));
  
@@ -11,42 +231,50 @@ index 8ced94f4ba..e27a65bb6f 100644
      m_stackView->setModel(m_stackHandler.model());
      m_stackView->setSettings(settings, "Debugger.StackView");
      m_stackView->setIconSize(QSize(10, 10));
-@@ -668,6 +668,8 @@ void DebuggerEnginePrivate::setupViews()
+@@ -666,7 +667,7 @@ void DebuggerEnginePrivate::setupViews()
+     m_sourceFilesWindow->setObjectName(DOCKWIDGET_SOURCE_FILES);
+     m_sourceFilesWindow->setWindowTitle(tr("Source Files"));
  
-     m_threadsView = new BaseTreeView;
+-    m_threadsView = new BaseTreeView;
++    m_threadsView = new SpanColumnTreeView(ThreadData::FunctionColumn);
      m_threadsView->setModel(m_threadsHandler.model());
-+    m_threadsView->header()->setStretchLastSection(false);
-+    m_threadsView->header()->setSectionResizeMode(ThreadData::FunctionColumn, QHeaderView::Stretch);
      m_threadsView->setSortingEnabled(true);
      m_threadsView->setSettings(settings, "Debugger.ThreadsView");
-     m_threadsView->setIconSize(QSize(10, 10));
-@@ -720,6 +722,8 @@ void DebuggerEnginePrivate::setupViews()
-             this, [this](bool on) { m_breakView->setColumnHidden(BreakpointAddressColumn, !on); });
-     m_breakView->setSettings(settings, "Debugger.BreakWindow");
-     m_breakView->setModel(m_breakHandler.model());
-+    m_breakView->header()->setStretchLastSection(false);
-+    m_breakView->header()->setSectionResizeMode(BreakpointFunctionColumn, QHeaderView::Stretch);
-     m_breakView->setRootIsDecorated(true);
-     m_breakWindow = addSearch(m_breakView);
-     m_breakWindow->setObjectName(DOCKWIDGET_BREAK);
+@@ -712,7 +713,7 @@ void DebuggerEnginePrivate::setupViews()
+     connect(m_localsView->header(), &QHeaderView::sectionResized,
+             this, &DebuggerEnginePrivate::updateReturnViewHeader, Qt::QueuedConnection);
+ 
+-    m_breakView = new BaseTreeView;
++    m_breakView = new SpanColumnTreeView(BreakpointFunctionColumn);
+     m_breakView->setIconSize(QSize(10, 10));
+     m_breakView->setWindowIcon(Icons::BREAKPOINTS.icon());
+     m_breakView->setSelectionMode(QAbstractItemView::ExtendedSelection);
 diff --git a/src/plugins/debugger/debuggerplugin.cpp b/src/plugins/debugger/debuggerplugin.cpp
-index 3f7b01d2bd..dfc5d6c0df 100644
+index 3f7b01d2bd..de8790b7b5 100644
 --- a/src/plugins/debugger/debuggerplugin.cpp
 +++ b/src/plugins/debugger/debuggerplugin.cpp
-@@ -1038,6 +1038,8 @@ bool DebuggerPluginPrivate::initialize(const QStringList &arguments,
-     m_breakpointManagerView->setSettings(settings, "Debugger.BreakWindow");
-     m_breakpointManagerView->setRootIsDecorated(true);
-     m_breakpointManagerView->setModel(BreakpointManager::model());
-+    m_breakpointManagerView->header()->setStretchLastSection(false);
-+    m_breakpointManagerView->header()->setSectionResizeMode(BreakpointFunctionColumn, QHeaderView::Stretch);
-     m_breakpointManagerWindow = addSearch(m_breakpointManagerView);
-     m_breakpointManagerWindow->setWindowTitle(tr("Breakpoint Preset"));
-     m_breakpointManagerWindow->setObjectName(DOCKWIDGET_BREAKPOINTMANAGER);
+@@ -118,6 +118,7 @@
+ #include <utils/proxyaction.h>
+ #include <utils/qtcassert.h>
+ #include <utils/savedaction.h>
++#include <utils/spancolumntreeview.h>
+ #include <utils/statuslabel.h>
+ #include <utils/styledbar.h>
+ #include <utils/temporarydirectory.h>
+@@ -1031,7 +1032,7 @@ bool DebuggerPluginPrivate::initialize(const QStringList &arguments,
+         vbox->insertWidget(0, label);
+     };
+ 
+-    m_breakpointManagerView = new BaseTreeView;
++    m_breakpointManagerView = new SpanColumnTreeView(BreakpointFunctionColumn);
+     m_breakpointManagerView->setIconSize(QSize(10, 10));
+     m_breakpointManagerView->setWindowIcon(Icons::BREAKPOINTS.icon());
+     m_breakpointManagerView->setSelectionMode(QAbstractItemView::ExtendedSelection);
 diff --git a/src/plugins/debugger/stackwindow.cpp b/src/plugins/debugger/stackwindow.cpp
-index 83e6af2829..db9b1973d1 100644
+index 83e6af2829..e182d472eb 100644
 --- a/src/plugins/debugger/stackwindow.cpp
 +++ b/src/plugins/debugger/stackwindow.cpp
-@@ -32,33 +32,52 @@
+@@ -32,33 +32,51 @@
  #include <utils/savedaction.h>
  
  #include <QAction>
@@ -55,7 +283,9 @@ index 83e6af2829..db9b1973d1 100644
  namespace Debugger {
  namespace Internal {
  
- StackTreeView::StackTreeView()
+-StackTreeView::StackTreeView()
++StackTreeView::StackTreeView(QWidget *parent)
++    : SpanColumnTreeView(StackFunctionNameColumn, parent)
  {
 -    setWindowTitle(tr("Stack"));
 -
@@ -72,10 +302,6 @@ index 83e6af2829..db9b1973d1 100644
 +        if (!m_contentsAdjusted)
 +            adjustForContents();
 +    });
-+
-+    // Stretch function section to any remaining space.
-+    header()->setStretchLastSection(false);
-+    header()->setSectionResizeMode(StackFunctionNameColumn, QHeaderView::Stretch);
 +
 +    // Resize for the current contents if any are available.
 +    showAddressColumn(action(UseAddressInStackView)->isChecked());
@@ -103,24 +329,38 @@ index 83e6af2829..db9b1973d1 100644
      resizeColumnToContents(StackLineNumberColumn);
 -    showAddressColumn(action(UseAddressInStackView)->isChecked());
 +    resizeColumnToContents(StackAddressColumn);
++    // The above resizes might be slightly off relative to the total size.
++    rebalanceColumns();
 +    m_contentsAdjusted = true;
  }
  
  } // namespace Internal
 diff --git a/src/plugins/debugger/stackwindow.h b/src/plugins/debugger/stackwindow.h
-index 5439ead73f..3314ee8ca6 100644
+index 5439ead73f..fcdd9deaa8 100644
 --- a/src/plugins/debugger/stackwindow.h
 +++ b/src/plugins/debugger/stackwindow.h
-@@ -34,8 +34,6 @@ namespace Internal {
+@@ -25,26 +25,25 @@
  
- class StackTreeView : public Utils::BaseTreeView
+ #pragma once
+ 
+-#include <utils/basetreeview.h>
++#include <utils/spancolumntreeview.h>
+ 
+ #include <QCoreApplication>
+ 
+ namespace Debugger {
+ namespace Internal {
+ 
+-class StackTreeView : public Utils::BaseTreeView
++class StackTreeView : public Utils::SpanColumnTreeView
  {
 -    Q_DECLARE_TR_FUNCTIONS(Debugger::Internal::StackTreeView)
 -
  public:
-     StackTreeView();
+-    StackTreeView();
++    explicit StackTreeView(QWidget *parent = nullptr);
  
-@@ -43,8 +41,9 @@ private:
+ private:
      void setModel(QAbstractItemModel *model) override;
  
      void showAddressColumn(bool on);
