@@ -1,6 +1,6 @@
 pkgbase = why3
 	pkgdesc = A platform for deductive program verification
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = http://why3.lri.fr/
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = why3
 	makedepends = isabelle
 	depends = gtksourceview2
 	options = !makeflags
-	source = https://gforge.inria.fr/frs/download.php/file/37767/why3-1.1.0.tar.gz
-	sha256sums = 817dde9d68eeef60717a137adfe6b909f82726cac286d68627228f5d118e3fa5
+	source = https://gforge.inria.fr/frs/download.php/file/37842/why3-1.1.1.tar.gz
+	sha256sums = defe68520b6367958e521a0e93d71ec0ee433047fa087e5e5f09004a63e8b118
 
 pkgname = why3
 
