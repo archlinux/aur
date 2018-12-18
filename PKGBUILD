@@ -3,7 +3,7 @@ _npmname=Ark.Desktop.Wallet
 _appname=ark-desktop-wallet
 pkgname=ark-desktop
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi Platform Ark Desktop Wallet"
 arch=(x86_64)
 url="https://github.com/ArkEcosystem/desktop-wallet"
@@ -25,7 +25,7 @@ sha256sums=(
 )
 
 package() {
-  cd "${srcdir}/${_npmname}-${pkgver}"
+  cd "${srcdir}/${_appname}-${pkgver}"
 
   install -d ${pkgdir}/{opt/${pkgname},usr/bin}
   cp -a * ${pkgdir}/opt/${pkgname}
