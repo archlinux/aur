@@ -88,6 +88,7 @@ source=(# mainline kernel patches
         # bfq-mq patch
         "${_lucjanpath}/${_bfq_sq_mq_path}/${_bfq_sq_mq_patch}"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
+        "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -97,20 +98,19 @@ source=(# mainline kernel patches
          # pacman hook for remove initramfs
         '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch')
+        'linux.preset')
 
 sha256sums=('afe968ceeca93eac2173f9f95d90b2eeb489bafdd2083478ac0b7d0704b33e94'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             '8761152216a204b0bbf2bd581abc3f5cdf851cec8b807316528b72a7b552ef12'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
+            '1bc55e0c12f1ea9bf4b823fc78b91e12cf1cf1972f778484fbd5fa0d9e8264f2'
             '431c8b4ebc34d86c815d6af071d728a02872db9f5f6cc5e6542b0431264532ff'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '37c115ad797afc7e47615dc56c6416932b6645e16da097ddcfa401df41a31248')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
