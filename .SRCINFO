@@ -1,28 +1,42 @@
 pkgbase = casile-git
 	pkgdesc = Caleb's SILE publishing toolkit
 	pkgver = 0.0.0.r603.g51f263c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alerque/casile/
 	arch = any
 	license = LGPL3
 	makedepends = git
+	depends = bc
 	depends = cpdf
 	depends = entr
 	depends = imagemagick>=7.0
 	depends = inkscape
+	depends = jq
 	depends = kindlegen
+	depends = lua-yaml
+	depends = m4
+	depends = moreutils
 	depends = nodejs
 	depends = otf-libertinus
 	depends = pandoc
+	depends = pcre
 	depends = pdftk
+	depends = perl-yaml
+	depends = perl-yaml-merge-simple
 	depends = podofo
 	depends = poppler
 	depends = povray
+	depends = python-isbnlib
+	depends = python-pandocfilters
 	depends = python-usfm2osis-cw-git
+	depends = python-yaml
 	depends = rsync
 	depends = sile-git>=0.9.4.r532
+	depends = tex-gyre-fonts
 	depends = ttf-hack
+	depends = yarn
 	depends = zint
+	depends = zsh
 	provides = casile
 	conflicts = casile
 	source = git://github.com/alerque/casile.git#branch=master
