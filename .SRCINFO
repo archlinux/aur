@@ -1,0 +1,19 @@
+pkgbase = ckmame-git
+	pkgdesc = A program to check ROM sets for MAME, the Multiple Arcade Machine Emulator. Git version.
+	pkgver = r1911.473bf78
+	pkgrel = 1
+	url = https://nih.at/ckmame/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = zlib>=1.1.2
+	depends = libzip>=1.0
+	depends = sqlite>=3.0
+	optdepends = libxml2: for M.A.M.E. -listxml and detectors
+	conflicts = ckmame
+	source = git+https://github.com/nih-at/ckmame.git
+	md5sums = SKIP
+
+pkgname = ckmame-git
+
