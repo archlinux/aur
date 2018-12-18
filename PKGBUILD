@@ -1,4 +1,4 @@
-# Maintainer: Genki Sky <alt+archlinux.org@genki.is>
+# Maintainer: Chris Salzberg <chris@dejimata.com>
 
 pkgname=wlstream-git
 pkgver=20180715.182076a
