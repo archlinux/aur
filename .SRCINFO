@@ -1,0 +1,13 @@
+pkgbase = budgie-visualspace-git
+	pkgdesc = Budgie dynamic workspaces and visualizer script
+	pkgver = v0.6.1.r56.g05fda7f
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = budgie-desktop
+	depends = budgie-extras
+	source = budgie-extras::git+https://github.com/UbuntuBudgie/budgie-extras
+	sha256sums = SKIP
+
+pkgname = budgie-visualspace-git
+
