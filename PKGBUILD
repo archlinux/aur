@@ -3,7 +3,7 @@
 pkgname=lib32-heaptrack-git
 pkgver=812.f6a3479
 pkgrel=1
-pkgdesc="A heap memory profiler"
+pkgdesc="A heap memory profiler - 32-bit libraries"
 arch=('x86_64')
 url="http://milianw.de/tag/heaptrack"
 license=('APACHE')
