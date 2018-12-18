@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-maps-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2018_11_16
+pkgver=2018_12_10
 pkgrel=1
 pkgdesc="Map data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport. Note that some timetables need the purchased version of IDOS to run."
 arch=(any)
