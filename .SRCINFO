@@ -13,7 +13,7 @@ pkgbase = qtcreator-fixed-themes
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-webengine
-	depends = clang=7.0.0
+	depends = clang=7.0.1
 	depends = qbs
 	depends = clazy
 	optdepends = qt5-doc: integrated Qt documentation

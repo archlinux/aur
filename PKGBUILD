@@ -11,7 +11,7 @@
 
 pkgname=qtcreator-fixed-themes
 pkgver=4.8.0
-_clangver=7.0.0
+_clangver=7.0.1
 pkgrel=7
 pkgdesc='Lightweight, cross-platform integrated development environment, with fixes applied for various themes'
 arch=(x86_64)
