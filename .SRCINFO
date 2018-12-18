@@ -1,11 +1,12 @@
 pkgbase = mpssh
 	pkgdesc = Mass Parallel SSH
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ndenev/mpssh
 	arch = x86_64
 	arch = i686
 	license = custom:BSD
+	depends = openssh
 	source = https://github.com/ndenev/mpssh/archive/1.3.3.tar.gz
 	source = LICENSE
 	sha1sums = ba11dfe7607cac3d47f1c86db236a2e440700ce7

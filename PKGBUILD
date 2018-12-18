@@ -2,7 +2,7 @@
 
 pkgname=mpssh
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Mass Parallel SSH'
 arch=(x86_64 i686)
 url='https://github.com/ndenev/mpssh'
@@ -22,4 +22,5 @@ build() {
 package() {
   install -Dm 755 "$srcdir/$pkgname-$pkgver/mpssh" "$pkgdir/usr/bin/mpssh"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
 }
