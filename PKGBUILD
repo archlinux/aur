@@ -17,8 +17,8 @@ makedepends=('git')
 provides=('librecad')
 conflicts=('librecad')
 
-source=("$_pkgtitle::git://github.com/$_pkgtitle/$_pkgtitle.git" 'librecad.desktop')
-md5sums=('SKIP' '19dcb83a3fcdb3752439095b118ac6d3')
+source=("$_pkgtitle::git://github.com/$_pkgtitle/$_pkgtitle.git")
+md5sums=('SKIP')
 
 function pkgver
 {
