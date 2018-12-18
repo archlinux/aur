@@ -32,7 +32,7 @@ function build
 {
     cd "$_pkgtitle"
 
-    qmake librecad.pro \
+    qmake -recursive librecad.pro \
         QMAKE_CPPFLAGS="$CPPFLAGS" \
         QMAKE_CFLAGS="$CFLAGS" \
         QMAKE_CXXFLAGS="$CXXFLAGS" \
@@ -45,12 +45,14 @@ function package
 {
     cd "$_pkgtitle"
 
-    install -D -m 755 unix/librecad "${pkgdir}/usr/bin/librecad"
-    install -D -m 755 unix/ttf2lff "${pkgdir}/usr/bin/ttf2lff"
+    install -m 644 -Dt "$pkgdir/usr/share/pixmaps" librecad/res/main/librecad.png
 
-    mkdir -p "${pkgdir}/usr/share/librecad"
-    cp -r unix/resources/{library,patterns,fonts,qm,plugins} "${pkgdir}/usr/share/librecad"
+    cd unix
 
-    install -D -m 644 "${srcdir}/librecad.desktop" "${pkgdir}/usr/share/applications/librecad.desktop"
-    install -D -m 644 librecad/res/main/librecad.png "${pkgdir}/usr/share/pixmaps/librecad.png"
+    install -Dt "$pkgdir/usr/bin" librecad ttf2lff
+
+    install -Dd "$pkgdir/usr/share/librecad"
+    cp --recursive -t "$pkgdir/usr/share/librecad" resources/*
+
+    install -m 644 -Dt "$pkgdir/usr/share/applications" "$srcdir/librecad.desktop"
 }
