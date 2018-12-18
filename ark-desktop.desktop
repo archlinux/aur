@@ -1,12 +1,12 @@
 [Desktop Entry]
 Version=1.0
-Name=Ark Desktop
-Comment=Ark Wallet Lite Client
-TryExec=/usr/bin/arkclient
-Exec=/usr/bin/arkclient
+Name=Ark Desktop Wallet
+Comment=Multi Platform Ark Desktop Wallet
+TryExec=/usr/bin/ark-desktop-wallet
+Exec=/usr/bin/ark-desktop-wallet
 Terminal=false
 Type=Application
-Icon=arkclient
+Icon=ark-desktop
 Categories=Finance;
 MimeType: x-scheme-handler/ark;
 Actions=Explorer;
