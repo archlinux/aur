@@ -10,7 +10,7 @@ arch=(x86_64)
 url='http://qt-project.org/'
 license=(LGPL)
 pkgdesc='Enables the use of Qt5 APIs in Python applications'
-depends=(python2-shiboken2 qt5-base)
+depends=("python2-shiboken2>=$pkgver" qt5-base)
 optdepends=('qt5-svg: QtSvg bindings'
             'qt5-script: QtScript bindings'
             'qt5-speech: QtTextToSpeech bindings'
@@ -23,7 +23,7 @@ optdepends=('qt5-svg: QtSvg bindings'
             'qt5-x11extras: QtX11Extras bindings'
             'qt5-charts: QtCharts bindings'
             'qt5-tools: QtHelp bindings')
-makedepends=(shiboken2 python2-shiboken2 cmake
+makedepends=(shiboken2 cmake
              qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
              qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras)
 groups=(qt qt5)

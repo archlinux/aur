@@ -8,7 +8,6 @@ pkgbase = python2-pyside2
 	groups = qt5
 	license = LGPL
 	makedepends = shiboken2
-	makedepends = python2-shiboken2
 	makedepends = cmake
 	makedepends = qt5-multimedia
 	makedepends = qt5-tools
@@ -23,7 +22,7 @@ pkgbase = python2-pyside2
 	makedepends = qt5-script
 	makedepends = qt5-scxml
 	makedepends = qt5-x11extras
-	depends = python2-shiboken2
+	depends = python2-shiboken2>=5.12.0
 	depends = qt5-base
 	optdepends = qt5-svg: QtSvg bindings
 	optdepends = qt5-script: QtScript bindings
