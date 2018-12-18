@@ -1,5 +1,59 @@
 #!/bin/sh
 
+unityhub_editors_path="$HOME/.config/UnityHub"
+unityhub_editors_json="$unityhub_editors_path/editors.json"
+
+check_jq() {
+  hash jq 2> /dev/null
+  if [ $? -ne 0 ]; then
+    echo "ERROR: You need to install 'jq' to register/deregister %PKGNAME% with unithub"
+    exit 1
+  fi
+}
+
+check_unityhub() {
+  local unityhub_pids=$(pgrep unityhub)
+  if [ ! -z "$unityhub_pids" ]; then
+    echo "ERROR: Can't UnityHub config while it's running. Close all Unity/UnityHub processes and try again."
+    exit 1
+  fi
+}
+
+ensure_json() {
+  if [ ! -f "$unityhub_editors_json" ] || [ ! -s "$unityhub_editors_json" ]; then
+    mkdir -p "$unityhub_editors_path"
+    echo "{}" > "$unityhub_editors_json"
+  fi
+}
+
+unityhub_remove() {
+  local oldentries=$(cat "$unityhub_editors_json" \
+                     | jq 'to_entries[] | select(.value.location == ["/usr/bin/%PKGNAME%"]) | [.key?]' \
+                     | jq -cs '.')
+  cat "$unityhub_editors_json" | jq -c "delpaths($oldentries)" > /tmp/editors.json
+  mv /tmp/editors.json "$unityhub_editors_json"
+}
+
+unityhub_add() {
+  unityhub_remove
+  cat "$unityhub_editors_json" | jq -c ". + {\"%PKGVER%\":{version:\"%PKGVER%\",location:[\"/usr/bin/%PKGNAME%\"],manual:true}}" > /tmp/editors.json
+  mv /tmp/editors.json "$unityhub_editors_json"
+}
+
+if [ "$1" == "--register" ]; then
+  check_jq
+  check_unityhub
+  ensure_json
+  unityhub_add
+  exit 0
+elif [ "$1" == "--deregister" ]; then
+  check_jq
+  check_unityhub
+  ensure_json
+  unityhub_remove
+  exit 0
+fi
+
 # This prevents the editor from crashing when opening projects in some systems
 unset GTK_IM_MODULE
 

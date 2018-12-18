@@ -1,0 +1,12 @@
+unityhub_msg() {
+  echo "To integrate with UnityHub you can run 'unity-editor-beta --register' after every update."
+  echo "To remove the integration you can run 'unity-editor-beta --deregister' or manually remove the entry in UnityHub's GUI."
+}
+
+post_install() {
+  unityhub_msg
+}
+
+post_upgrade() {
+  unityhub_msg
+}
