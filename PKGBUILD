@@ -2,14 +2,14 @@
 
 pkgname=melonds-git
 _gitname=melonds
-_releasever=0.7
-pkgver=0.7.r550.0b1c2f9
+_releasever=0.7.2
+pkgver=0.7.2.r623.dd30b41
 pkgdesc='DS emulator, sorta. also 1st quality melon.'
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://melonds.kuribo64.net/"
 license=('GPLv3')
-makedepends=('git')
+makedepends=('git' 'cmake')
 depends=('gtk3' 'pkg-config')
 source=("${_gitname}::git://github.com/StapleButter/${_gitname}.git")
 provdes=('melonds')
