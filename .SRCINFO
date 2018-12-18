@@ -5,10 +5,11 @@ pkgbase = libjwt
 	url = https://github.com/benmcollins/libjwt
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = LGPL3
 	depends = check
 	depends = jansson
-	source = https://github.com/benmcollins/libjwt/archive/v1.10.0.tar.gz
+	depends = openssl
+	source = libjwt-1.10.0.tar.gz::https://github.com/benmcollins/libjwt/archive/v1.10.0.tar.gz
 	sha256sums = 93b399f829cde5f5a232612fcb2909d63e7a9530bcaef40491a0493ba1606565
 
 pkgname = libjwt
