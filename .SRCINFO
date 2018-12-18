@@ -1,6 +1,6 @@
 pkgbase = wat-git
 	pkgdesc = Show upgrades since recent -Syu
-	pkgver = r25.1302640
+	pkgver = r2.76a920c
 	pkgrel = 1
 	url = https://github.com/pbrisbin/wat
 	arch = i686
