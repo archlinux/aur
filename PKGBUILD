@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd pkgcenter/depend/cmb
-  ./configure --prefix /usr
+  ./configure --prefix "$pkgdir/usr"
 }
 
 build() {
@@ -32,13 +32,5 @@ build() {
 
 package() {
   cd pkgcenter/depend/cmb
-
-  # Disabled for now because DESTDIR isn't respected
-  #DESTDIR="$pkgdir" make install
-
-  install -dm755 "$pkgdir"/usr/bin
-  install -m755 cmb "$pkgdir"/usr/bin/
-
-  install -dm755 "$pkgdir"/usr/share/man/man1
-  install -m444 cmb.1.gz "$pkgdir"/usr/share/man/man1/
+  make install
 }
