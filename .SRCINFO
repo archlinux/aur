@@ -1,0 +1,19 @@
+pkgbase = python-pyls-isort-git
+	pkgdesc = Isort plugin for python-language-server
+	pkgver = 0.1.1.r2.g5654f98
+	pkgrel = 1
+	url = https://github.com/paradoxxxzero/pyls-isort
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-language-server
+	depends = python-isort
+	provides = python-pyls-isort
+	conflicts = python-pyls-isort
+	source = git+https://github.com/paradoxxxzero/pyls-isort.git
+	md5sums = SKIP
+
+pkgname = python-pyls-isort-git
+
