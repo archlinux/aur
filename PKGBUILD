@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2018-12-10.
+# PKGBUILD last time manually edited: At least on 2018-12-18.
 
 _year='19'
 _prevyear="$(( ${_year} - 1 ))"
@@ -8,8 +8,8 @@ _prevyear="$(( ${_year} - 1 ))"
 _pkgname="idos-timetable-data-chaps-trains-idol-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2018_12_7
-pkgrel=1
+pkgver=2018_12_18
+pkgrel=3
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: Trains in Liberec public transport reagion (IDOL). Note that this timetable needs the purchased version of IDOS to run."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -36,10 +36,10 @@ optdepends=(
 
 provides=(
   "${_pkgname}=${pkgver}"
-  
+
   "idos-timetable-data=${pkgver}"
   "idos-timetable-data-trains=${pkgver}"
-  
+
   "idos-timetable-data-trains-idol=${pkgver}"
   "idos-timetable-data-trains-idol-20${_year}=${pkgver}"
 )
