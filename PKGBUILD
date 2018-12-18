@@ -9,88 +9,84 @@
 
 pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=12
+pkgrel=13
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh/"
 license=('GPL3')
-depends=('alsa-lib' 'gconf' 'gtk2' 'libnotify' 'libxss' 'libxtst' 'nss' 'ttf-font')
-makedepends=('npm' 'bower' 'gulp' 'git')
+depends=(alsa-lib gconf gtk2 nss libxtst libxss ttf-font)
+makedepends=(git npm yarn)
 optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 #install="popcorntime.install"
 # Needed variables for sources downloads
-_commit_hash="commit=be800aa98cb9ef16f7e00737bbc51ba69204ed8f"
+_commit_hash="commit=e2351a0cbaf2c5c186df150476860a1677c2450e"
 #_commit_hash="branch=master"
 _pkgname="popcorn-desktop"
 
-# Useful variables for builds
-_nwjs="0.31.5"
+# NW.js version to use while building
+_nwjs="0.31.5" # e.g. 0.31.5
+# Missing dependencies to install
+#_missing_deps="underscore@~1.8.3"
+
+# Build-related stuff
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
 _srcdir="${_pkgname}"
 _bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
-# Dependencies to install
-# natives: solves some builds problems with gulp < 4
-# See: https://github.com/gulpjs/gulp/issues/2162#issuecomment-384380989, read all the thread
-_missing_deps="natives@1.1.4 bufferutil@3.0.5"
 
 # Get sources only here
 source=(
     "${_pkgname}::git+https://github.com/popcorn-official/popcorn-desktop/#${_commit_hash}"
-    "gulp-fixes.patch"
     "popcorntime.desktop"
+    "gulp-fixes.patch"
 )
-source_i686=("https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/$_nwjs/$_nwjs-linux-ia32.zip")
-source_x86_64=("https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/$_nwjs/$_nwjs-linux-x64.zip")
 sha256sums=('SKIP'
-            'fa2615680bcb591b9892e8d6394235436ffa65210be6e942b8ca91de982e8cd2'
-            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
-sha256sums_i686=('78241eb9e051dff300ea310c7fb44093cd242be9f88e7659b0db991f378adbc3')
-sha256sums_x86_64=('c7f4620cd51f3df1a573c84f42e57a575d320788730693b157a52115b73f3edc')
+            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334'
+            'e1fc82b712babc4d4d7e07cce0af42100eb19b037c36fdb97c13324f6773846f')
 
 # Building the package
 prepare() {
     cd "${srcdir}/${_srcdir}"
 
-    # Using a different folder for the cache, makes the system cleaner
-    # Thanks to Eschwartz for the tip!
-    export npm_config_cache="$srcdir/npm_cache"
-    msg2 "npm cache changed to `npm config get cache`"
+    msg2 "Apply Gulpfile fixes ..."
+    git apply "$srcdir/gulp-fixes.patch"
 
-    #msg2 "Set up the \$PATH to allow npm-installed executables..."
-    #export PATH="$PWD/node_modules/.bin:$PATH"
+    # Thanks to Eschwartz for the tip! yarn edition
+    export YARN_CACHE_FOLDER="$srcdir/npm_cache"
 
-    msg2 "Patching wrong packages versions, if any ..."
-    # Obviously, when I try to update Node software, some dev makes big updates.
-    # These are from less than a week ago; just fetch the old working version
+    #msg2 "Patching wrong packages versions, if any ..."
+    # Keeping this as example, in case needed in the future
     #msg "Patching Vodo provider (butter-provider-vodo)..."
     #sed -E 's|(.*vodo.*)",|\1#f61e70217711b4a29ff50618d28e8d4170d63fe5",|' -i package.json
 
     # Actually install the stuff
     msg2 "Installing normal dependencies"
-    npm install #-dd install
+    yarn install
 
     msg2 "Install missing dependencies, if any ..."
-    # Build is almost always broken with newer NPMs. Install a good one and use it
+    # Here specific version of the packages will be installed
     for package in $_missing_deps
     do
         msg2 "Installing missing dependency $package"
-        npm install "$package"
+        yarn install "$package"
     done
 
-    # Use upstream nw.js, to avoid possible binary malware
-    sed -i "s|get.popcorntime.sh/repo/nw|dl.nwjs.io|"    gulpfile.js
-    # And use latest version of nw.js
-    sed -i "s|\(const nwVersion = '\)[0-9.]\+|\1$_nwjs|" gulpfile.js
-    # Fix problems with the dependecies list function with newer npm versions
-    patch -Np1 -i "$srcdir/gulp-fixes.patch"
+    # Change NW.js version, if defined
+    if [ -n "$_nwjs" ]
+    then
+        msg2 "Changing NW.js version to $_nwjs ..."
+        sed -i "s|\(const nwVersion = '\)[0-9.]\+|\1$_nwjs|" gulpfile.js
+    fi
 }
 
 build() {
+    # Re-set all the needed information
+    export YARN_CACHE_FOLDER="$srcdir/npm_cache"
+
     cd "${srcdir}/${_srcdir}"
 
-    gulp build
+    yarn build
 }
 
 package() {
@@ -100,15 +96,6 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
 
     find . -type f -exec install -D {} ${pkgdir}/usr/share/${pkgname}/{} \;
-    # Remove customly installed npm, if any
-    for package in $_missing_deps
-    do
-        local package_path=`echo $package | sed 's|@.*||'`
-        rm -rf "${pkgdir}/usr/share/${pkgname}/node_modules/$package_path"
-    done
-
-    # Install the FFmpeg library with additional codecs
-    install -Dm644 "${srcdir}/libffmpeg.so" "${pkgdir}/usr/share/${pkgname}/lib/libffmpeg.so"
 
     install -Dm644 "${srcdir}/${_srcdir}/src/app/images/icon.png" "${pkgdir}/usr/share/pixmaps/popcorntime.png"
     chmod +x "${pkgdir}/usr/share/${pkgname}/Popcorn-Time"

@@ -1,38 +1,47 @@
-From b4877d9bed9cb1205e13e1c3432011fce9776e14 Mon Sep 17 00:00:00 2001
+From e7d40b904df28f67d775d48e36dbf4f5b385bc37 Mon Sep 17 00:00:00 2001
 From: Giovanni Santini <giovannisantini93@yahoo.it>
-Date: Tue, 24 Jul 2018 17:01:02 +0200
-Subject: [PATCH] Ignore issues showing missing dependencies There are issues
- showing dependencies using such function, due to npm updates; ignore them and
- live happily!
+Date: Sat, 29 Dec 2018 01:53:12 +0100
+Subject: [PATCH] Small fixes 1. Path adjusted for FFmpeg library for Linux and
+ OSX targets 2. Small changes in checking for the downloaded FFmpeg library
 
 ---
- gulpfile.js | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+ gulpfile.js | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/gulpfile.js b/gulpfile.js
-index f367fbe1..e1895e2b 100644
+index c6c8739e..26a6fbbe 100644
 --- a/gulpfile.js
 +++ b/gulpfile.js
-@@ -64,10 +64,7 @@ const parsePlatforms = () => {
- // returns an array of paths with the node_modules to include in builds
- const parseReqDeps = () => {
-     return new Promise((resolve, reject) => {
--        exec('npm ls --production=true --parseable=true', {maxBuffer: 1024 * 500}, (error, stdout, stderr) => {
--            if (error || stderr) {
--                reject(error || stderr);
--            } else {
-+        exec('npm ls --production=true --parseable=true', (error, stdout, stderr) => {
-                 // build array
-                 let npmList = stdout.split('\n');
- 
-@@ -83,7 +80,6 @@ const parseReqDeps = () => {
- 
-                 // return
-                 resolve(npmList);
--            }
-         });
-     });
- };
+@@ -306,7 +306,7 @@ gulp.task('nwjs', () => {
+ // get ffmpeg lib
+ gulp.task('downloadffmpeg', done => {
+     var parsed = ffmpegurl.substring(ffmpegurl.lastIndexOf('/'));
+-        if(!fs.existsSync('./cache/ffmpeg/')){
++        if(!fs.existsSync('./cache/ffmpeg/' + parsed)){
+             console.log('FFmpeg download starting....');
+             return download(ffmpegurl).pipe(gulp.dest('./cache/ffmpeg/')).on('error', function (err) {
+                 console.error(err);
+@@ -322,8 +322,10 @@ gulp.task('unzipffmpeg', () => {
+       // Need to check Correct folder on every Nw.js Upgrade as long as we use nwjs Binary directly
+       var ffpath = './build/' + pkJson.name + '/' + parsePlatforms() + '/' + pkJson.name + '.app/Contents/Versions/69.0.3497.100';
+     } else {
+-    var ffpath = './build/' + pkJson.name + '/' + parsePlatforms();
++      var ffpath = './build/' + pkJson.name + '/' + parsePlatforms();
+     }
++    if (parsePlatforms()[0].indexOf('win') === -1)
++        ffpath = ffpath + '/lib';
+     return gulp.src('./cache/ffmpeg/*.{tar,tar.bz2,tar.gz,zip}')
+         .pipe(decompress({ strip: 1 }))
+         .pipe(gulp.dest(ffpath))
+@@ -343,6 +345,8 @@ gulp.task('unzipffmpegcache', () => {
+   } else {
+     var platform = parsePlatforms()[0];
+     var bin = path.join('cache', nwVersion + '-' + nwFlavor, platform);
++    if (platform.indexOf('win') === -1)
++        bin = bin + '/lib';
+   }
+     return gulp.src('./cache/ffmpeg/*.{tar,tar.bz2,tar.gz,zip}')
+         .pipe(decompress({ strip: 1 }))
 -- 
-2.18.0
+2.20.1
 

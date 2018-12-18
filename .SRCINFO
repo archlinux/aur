@@ -1,35 +1,29 @@
 pkgbase = popcorntime
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
 	pkgver = 0.3.10
-	pkgrel = 12
+	pkgrel = 13
 	url = https://popcorntime.sh/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = npm
-	makedepends = bower
-	makedepends = gulp
 	makedepends = git
+	makedepends = npm
+	makedepends = yarn
 	depends = alsa-lib
 	depends = gconf
 	depends = gtk2
-	depends = libnotify
-	depends = libxss
-	depends = libxtst
 	depends = nss
+	depends = libxtst
+	depends = libxss
 	depends = ttf-font
 	optdepends = net-tools: vpn.ht client
 	options = !strip
-	source = popcorn-desktop::git+https://github.com/popcorn-official/popcorn-desktop/#commit=be800aa98cb9ef16f7e00737bbc51ba69204ed8f
-	source = gulp-fixes.patch
+	source = popcorn-desktop::git+https://github.com/popcorn-official/popcorn-desktop/#commit=e2351a0cbaf2c5c186df150476860a1677c2450e
 	source = popcorntime.desktop
+	source = gulp-fixes.patch
 	sha256sums = SKIP
-	sha256sums = fa2615680bcb591b9892e8d6394235436ffa65210be6e942b8ca91de982e8cd2
 	sha256sums = 4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334
-	source_i686 = https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.31.5/0.31.5-linux-ia32.zip
-	sha256sums_i686 = 78241eb9e051dff300ea310c7fb44093cd242be9f88e7659b0db991f378adbc3
-	source_x86_64 = https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.31.5/0.31.5-linux-x64.zip
-	sha256sums_x86_64 = c7f4620cd51f3df1a573c84f42e57a575d320788730693b157a52115b73f3edc
+	sha256sums = e1fc82b712babc4d4d7e07cce0af42100eb19b037c36fdb97c13324f6773846f
 
 pkgname = popcorntime
 
