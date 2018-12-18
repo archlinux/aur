@@ -2,6 +2,7 @@ pkgbase = yarn-completion-git
 	pkgdesc = Bash completion for Yarn
 	pkgver = v0.12.0.r0.gf0d5170
 	pkgrel = 1
+	url = https://github.com/dsifford/yarn-completion
 	arch = any
 	license = MIT
 	makedepends = git

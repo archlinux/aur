@@ -5,6 +5,7 @@ pkgname=yarn-completion-git
 pkgver=v0.12.0.r0.gf0d5170
 pkgrel=1
 pkgdesc='Bash completion for Yarn'
+url='https://github.com/dsifford/yarn-completion'
 arch=('any')
 license=('MIT')
 depends=('bash' 'bash-completion' 'yarn')
