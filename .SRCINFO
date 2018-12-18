@@ -1,7 +1,7 @@
 pkgbase = unity-editor
 	pkgdesc = The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences.
 	pkgver = 2018.3.0f2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://unity3d.com/
 	install = unity-editor.install
