@@ -1,5 +1,5 @@
 # Maintainer:  Gabriel Souza Franco <Z2FicmllbGZyYW5jb3NvdXphQGdtYWlsLmNvbQ==>
-# Contributor: Florian Pritz <bluewind@xinu.at>
+# Contributor: Florian Pritz
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Jordi De Groof <jordi (dot) degroof (at) gmail (dot) com>
 # Contributor: mickele
@@ -19,7 +19,7 @@ depends=('boost-libs' 'curl' 'opencascade>=7.2' 'xerces-c' 'libspnav' 'glu' 'net
          'shared-mime-info' 'hicolor-icon-theme' 'jsoncpp' 'qt5-base' 'qt5-declarative' 'qt5-svg' 'qt5-tools'
          'med' 'python2-pivy' 'python2-pyside2' 'python2-matplotlib' 'pyside2-tools')
 makedepends=('boost' 'eigen' 'gcc-fortran' 'swig' 'xerces-c' 'desktop-file-utils' 'git'
-             'cmake' 'coin>=3.1.3-9' 'python2-pyside2' 'python2-shiboken2' 'pyside2' 'shiboken2')
+             'cmake' 'coin>=3.1.3-9' 'python2-shiboken2' 'pyside2' 'shiboken2')
 optdepends=('python2-matplotlib' 'python2-pyqt5' 'graphviz' 'openscad')
 source=("git+https://github.com/FreeCAD/FreeCAD.git#commit=$_commit"
         "${pkgname}.desktop" "${pkgname}.xml"
