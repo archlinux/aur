@@ -1,6 +1,6 @@
 pkgbase = rider
 	pkgdesc = A cross-platform C# IDE by JetBrains.
-	pkgver = 2018.2.3
+	pkgver = 2018.3
 	pkgrel = 1
 	epoch = 1
 	url = https://www.jetbrains.com/rider/
@@ -11,9 +11,9 @@ pkgbase = rider
 	provides = rider
 	conflicts = rider
 	options = !strip
-	source = https://download-cf.jetbrains.com/rider/JetBrains.Rider-2018.2.3.tar.gz
+	source = https://download-cf.jetbrains.com/rider/JetBrains.Rider-2018.3.tar.gz
 	source = rider.desktop
-	sha256sums = d604751be7c240caca73647d59d992be5f1059e59bbdac49fb76c6fd353f4bbc
+	sha256sums = 4edb3736cf642f07a36dabd6a6c2e579e79a5baf987a3b23a69fae97cfbb5253
 	sha256sums = 91f41e1a5deae9f66bab7d7798a679a39350120aa229b4093415ef8269449714
 
 pkgname = rider
