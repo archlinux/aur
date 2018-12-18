@@ -4,7 +4,7 @@ _prefix=/opt/Unity
 
 pkgname=unity-editor
 pkgver=2018.3.0f2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
@@ -31,17 +31,20 @@ optdepends=("${pkgname}-doc"
             "${pkgname}-webgl"
             "${pkgname}-windows"
             "${pkgname}-facebook"
-            "visual-studio-code-bin")
+            "visual-studio-code-bin"
+            "unityhub"
+            "jq: needed for UnityHub integration helpers --register/--deregister")
+install=${pkgname}.install
 source=("2018.3.0f2.tar.xz::https://download.unity3d.com/download_unity/6e9a27477296/LinuxEditorInstaller/Unity.tar.xz"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}-icon.png"
         "eula.txt")
-md5sums=("50fc7ae8146a7f8e16e30778ce0be7e4"
-         "c5871a48d70e13e33138176c0490ac59"
-         "ee60f0d4d3c3fa9e0a52da085b1f3be6"
-         "723f9e556821810682a6d1f4be540a74"
-         "24f6741eba3d591a0761f3c92e3cc1f7")
+md5sums=('50fc7ae8146a7f8e16e30778ce0be7e4'
+         'a8fe2e41f06489dd09f651b08ec87125'
+         'ee60f0d4d3c3fa9e0a52da085b1f3be6'
+         '723f9e556821810682a6d1f4be540a74'
+         '24f6741eba3d591a0761f3c92e3cc1f7')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
@@ -56,7 +59,11 @@ package() {
   find "${pkgdir}${_prefix}/Editor/Data" -type d -exec chmod ga+rx {} \;
 
   # Add version to desktop file
-  sed -i "/^Version=/c\Version=${_version}${_build}" "${srcdir}/${pkgname}.desktop"
+  sed -i "/^Version=/c\Version=${pkgver}" "${srcdir}/${pkgname}.desktop"
+
+  # Add version/name to launch script
+  sed -i "s/%PKGNAME%/${pkgname}/g" "${srcdir}/${pkgname}"
+  sed -i "s/%PKGVER%/${pkgver}/g" "${srcdir}/${pkgname}"
 
   install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
   install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${srcdir}/${pkgname}-icon.png"
