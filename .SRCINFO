@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libgeotiff
 	pkgdesc = A TIFF based interchange format for georeferenced raster imagery (mingw-w64)
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://trac.osgeo.org/geotiff/
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = mingw-w64-libgeotiff
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = http://download.osgeo.org/geotiff/libgeotiff/libgeotiff-1.4.2.tar.gz
+	source = http://download.osgeo.org/geotiff/libgeotiff/libgeotiff-1.4.3.tar.gz
 	source = libgeotiff_buildsys.patch
-	sha256sums = ad87048adb91167b07f34974a8e53e4ec356494c29f1748de95252e8f81a5e6e
-	sha256sums = ea3f8f94afd691281bdb71e9e16defb6e3b69a50e5c222a97bb2ef950a0761f9
+	sha256sums = b8510d9b968b5ee899282cdd5bef13fd02d5a4c19f664553f81e31127bc47265
+	sha256sums = b158fc586ea55e5c8a1c8137eaf9a1f95c2d28709f8b550739aad9f85235bfcf
 
 pkgname = mingw-w64-libgeotiff
 

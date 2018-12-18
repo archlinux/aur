@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-libgeotiff
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A TIFF based interchange format for georeferenced raster imagery (mingw-w64)"
 arch=('any')
@@ -12,8 +12,8 @@ makedepends=('mingw-w64-configure')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("http://download.osgeo.org/geotiff/libgeotiff/libgeotiff-${pkgver}.tar.gz"
         "libgeotiff_buildsys.patch")
-sha256sums=('ad87048adb91167b07f34974a8e53e4ec356494c29f1748de95252e8f81a5e6e'
-            'ea3f8f94afd691281bdb71e9e16defb6e3b69a50e5c222a97bb2ef950a0761f9')
+sha256sums=('b8510d9b968b5ee899282cdd5bef13fd02d5a4c19f664553f81e31127bc47265'
+            'b158fc586ea55e5c8a1c8137eaf9a1f95c2d28709f8b550739aad9f85235bfcf')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
