@@ -5,7 +5,7 @@
 
 _pkgtitle='LibreCAD'
 pkgname=librecad-git
-pkgver=2.2.0_rc1_91_g8604f171
+pkgver=2.2.0.rc1.r91.g8604f171
 pkgrel=1
 pkgdesc="A 2D CAD drawing tool based on the community edition of QCad."
 arch=('x86_64')
@@ -25,7 +25,7 @@ function pkgver
 {
     cd "$_pkgtitle"
 
-    git describe --tags | sed -e 's/-/_/g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 function build
