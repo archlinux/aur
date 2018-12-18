@@ -9,8 +9,8 @@ pkgbase = jaybar
 	depends = native-proxy
 	depends = jwl
 	depends = jgtk+
-	depends = wlroots
 	depends = jlibc
+	depends = wlroots
 	depends = wayland
 	depends = jdk-openjdk>=11
 
