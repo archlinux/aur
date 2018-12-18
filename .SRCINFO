@@ -1,7 +1,7 @@
 pkgbase = unity-editor-android
 	pkgdesc = Allows building your Unity projects for the Android platform
 	pkgver = 2018.3.0f2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unity3d.com/
 	arch = x86_64
 	license = custom

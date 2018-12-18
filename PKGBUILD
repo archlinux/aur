@@ -4,7 +4,7 @@ _prefix=/opt/Unity
 
 pkgname=unity-editor-android
 pkgver=2018.3.0f2
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows building your Unity projects for the Android platform"
 arch=('x86_64')
 url='https://unity3d.com/'
