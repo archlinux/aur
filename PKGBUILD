@@ -1,8 +1,8 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 
 pkgname=perl-software-license
-pkgver=0.103013
-pkgrel=2
+pkgver=0.103014
+pkgrel=1
 pkgdesc='packages that provide templated software licenses'
 arch=(any)
 license=(PerlArtistic GPL)
@@ -11,8 +11,8 @@ depends=('perl>=5.6' perl-data-section perl-text-template)
 checkdepends=(perl-try-tiny)
 url=https://metacpan.org/release/Software-License
 source=("http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Software-License-$pkgver.tar.gz")
-md5sums=(ec6e88f6ba4691f834807d4f6f606bad)
-sha512sums=(69af2e6f759cb9c449ee2045e26d4cc6e344eec07f1ecae6718a5bcc0a11e594009338f509f321100b214af1a445169cf06fd32e11a477f137e57de33f377b25)
+md5sums=(24bab4d2b3a8f3cb8533e118f5498de2)
+sha512sums=(8012f9d3e8671bdcbaf52f6790f6cd2f6a0510883bb40115c222c8c685aed6697ba33b3f9df8d853841cd2eef0806d919c9038b6ba7b1057f475b3b63457069d)
 _ddir="Software-License-$pkgver"
 
 build()
@@ -36,7 +36,6 @@ package()
 (
   cd "$srcdir/$_ddir"
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 )
 
 # Local Variables:
