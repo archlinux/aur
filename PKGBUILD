@@ -2,16 +2,15 @@
 
 pkgname=infocom
 pkgver=1989
-pkgrel=2
+pkgrel=3
 pkgdesc="Infocom interactive fiction"
 url="http://gallery.guetech.org/greybox.html"
 arch=('any')
-license=('KALLISTI')
+license=('none')
 depends=('frotz')
 makedepends=('unzip')
 
 optdepends=('infocom-docs: docs and feelies'
-	    'inform: make your own dang games'
 	    'zork: no pdp-10 should be without one!')
 
 noextract=('infocom.6.gz')
