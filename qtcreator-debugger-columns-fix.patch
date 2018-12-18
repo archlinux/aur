@@ -1,12 +1,12 @@
 diff --git a/src/libs/utils/spancolumntreeview.cpp b/src/libs/utils/spancolumntreeview.cpp
 new file mode 100644
-index 0000000000..1109aa18b7
+index 0000000000..d4139e7429
 --- /dev/null
 +++ b/src/libs/utils/spancolumntreeview.cpp
 @@ -0,0 +1,113 @@
-+ /****************************************************************************
++/****************************************************************************
 +**
-+** Copyright (C) 2018 The Qt Company Ltd.
++** Copyright (C) 2018 Aaron Barany (akb825@gmail.com)
 +** Contact: https://www.qt.io/licensing/
 +**
 +** This file is part of Qt Creator.
@@ -119,13 +119,13 @@ index 0000000000..1109aa18b7
 +} // namespace Utils
 diff --git a/src/libs/utils/spancolumntreeview.h b/src/libs/utils/spancolumntreeview.h
 new file mode 100644
-index 0000000000..0c9387ba20
+index 0000000000..884cb5da01
 --- /dev/null
 +++ b/src/libs/utils/spancolumntreeview.h
 @@ -0,0 +1,49 @@
 +/****************************************************************************
 +**
-+** Copyright (C) 2018 The Qt Company Ltd.
++** Copyright (C) 2018 Aaron Barany (akb825@gmail.com)
 +** Contact: https://www.qt.io/licensing/
 +**
 +** This file is part of Qt Creator.
