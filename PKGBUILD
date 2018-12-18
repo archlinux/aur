@@ -4,26 +4,24 @@
 # Contributor: V0K3 <v0k3@inventati.org>
 
 pkgname=sasm
-pkgver=3.9.0
+pkgver=3.10.1
 pkgrel=1
-pkgdesc="Simple crossplatform IDE for NASM, MASM, GAS, FASM assembly languages"
+pkgdesc="Simple crossplatform IDE for NASM, GAS, FASM assembly languages"
 arch=('i686' 'x86_64')
 url="http://dman95.github.io/SASM/english.html"
 license=('GPL3')
-depends=('qt5-base' 'nasm' 'gdb')
-depends_i686=('gcc')
-depends_x86_64=('gcc-multilib')
+depends=('qt5-base' 'nasm' 'gdb' 'gcc')
 conflicts=('fasm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Dman95/SASM/archive/v${pkgver}.tar.gz")
-sha256sums=('1a50bb1fd52a7f0e791bb15e659c7267b20246aad71b16420c22c5616c316602')
+sha256sums=('7bd7f3a01f217026362024b53505688fd3757a7dd8cc4e163b55d81a01c078d3')
 
 build() {
-    cd "${srcdir}/SASM-${pkgver}"
+    cd "${srcdir}/${pkgname^^}-${pkgver}"
     qmake PREFIX="/usr"
     make
 }
 
 package() {
-    cd "${srcdir}/SASM-${pkgver}"
+    cd "${srcdir}/${pkgname^^}-${pkgver}"
     make INSTALL_ROOT="${pkgdir}" install
 }
