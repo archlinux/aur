@@ -1,6 +1,6 @@
 pkgbase = zedenv
 	pkgdesc = Utility to manage ZFS Boot Environments
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = http://github.com/johnramsden/zedenv
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = zedenv
 	depends = python-pyzfscmds>=0.1.4
 	optdepends = zedenv-grub: zedenv plugin for GRUB
 	conflicts = zedenv-git
-	source = zedenv-0.3.4.tar.gz::https://github.com/johnramsden/zedenv/archive/v0.3.4-beta.tar.gz
-	md5sums = 0e9742ad16ad6ade288e105f3f8a652c
+	source = zedenv-0.3.5.tar.gz::https://github.com/johnramsden/zedenv/archive/v0.3.5-beta.tar.gz
+	md5sums = 2d8a8fb003543de9f69a634d96ef0c7c
 
 pkgname = zedenv
 
