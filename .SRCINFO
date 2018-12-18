@@ -1,4 +1,4 @@
-pkgbase = jgtk
+pkgbase = jgtk+
 	pkgdesc = GTK+ 3 Bindings for Java
 	pkgver = 1.0
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = jgtk
 	depends = native-proxy
 	depends = jdk-openjdk>=11
 
-pkgname = jgtk
+pkgname = jgtk+
 

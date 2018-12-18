@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Your Name <youremail@domain.com>
-pkgname="jgtk"
+pkgname="jgtk+"
 pkgver=1.0
 pkgrel=1
 epoch=
