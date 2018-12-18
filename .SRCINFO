@@ -1,0 +1,15 @@
+pkgbase = jwl
+	pkgdesc = Wayland Bindings for Java
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bitbucket.org/Scoopta/jwl/src/default/
+	arch = x86_64
+	license = GPL3
+	makedepends = mercurial
+	depends = wayland
+	depends = wlroots
+	depends = native-proxy
+	depends = jdk-openjdk>=11
+
+pkgname = jwl
+
