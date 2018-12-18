@@ -1,0 +1,16 @@
+pkgbase = nq-git
+	pkgdesc = Unix command line queue utility
+	pkgver = 0.3.1.r0.gc09c3a7
+	pkgrel = 1
+	url = https://github.com/chneukirchen/nq
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = bash
+	provides = nq
+	conflicts = nq
+	source = git+https://github.com/chneukirchen/nq.git
+	md5sums = SKIP
+
+pkgname = nq-git
+
