@@ -9,7 +9,7 @@ url="https://pouyanh.github.io/carrot/"
 license=('GPL3')
 depends=('lua')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pouyanh/carrot/archive/v${pkgver}.tar.gz)
-md5sums=() #autofill using updpkgsums
+md5sums=('4482bc06dfad33ee98d04691a6863d04')
 
 package() {
   cd "${pkgname}-${pkgver}"

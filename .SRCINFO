@@ -7,6 +7,7 @@ pkgbase = awesome-carrot
 	license = GPL3
 	depends = lua
 	source = awesome-carrot-1.0.0.tar.gz::https://github.com/pouyanh/carrot/archive/v1.0.0.tar.gz
+	md5sums = 4482bc06dfad33ee98d04691a6863d04
 
 pkgname = awesome-carrot
 
