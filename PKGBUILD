@@ -7,8 +7,8 @@ pkgdesc="combinatorics utility"
 url="https://fraubsd.org/cmb"
 arch=('x86_64')
 license=('BSD')
-makedepends=('libcmb' 'awk')
-depends=('openssl' 'libcmb')
+makedepends=('awk' "libcmb>=$pkgver")
+depends=('openssl' "libcmb>=$pkgver")
 source=("git+https://github.com/FrauBSD/pkgcenter")
 sha256sums=('SKIP')
 

@@ -5,10 +5,10 @@ pkgbase = cmb
 	url = https://fraubsd.org/cmb
 	arch = x86_64
 	license = BSD
-	makedepends = libcmb
 	makedepends = awk
+	makedepends = libcmb>=2.0
 	depends = openssl
-	depends = libcmb
+	depends = libcmb>=2.0
 	source = https://github.com/FrauBSD/pkgcenter
 	sha256sums = SKIP
 
