@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://bitbucket.org/Scoopta/jaybar/src/default/"
 license=('GPL3')
 groups=()
-depends=('native-proxy' 'jgtk+' 'wlroots' 'jwl' 'jlibc' 'wayland' 'jdk-openjdk>=11')
+depends=('native-proxy' 'jwl' 'jgtk+' 'wlroots' 'jlibc' 'wayland' 'jdk-openjdk>=11')
 makedepends=('mercurial')
 checkdepends=()
 optdepends=()

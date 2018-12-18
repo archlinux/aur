@@ -7,9 +7,9 @@ pkgbase = jaybar
 	license = GPL3
 	makedepends = mercurial
 	depends = native-proxy
+	depends = jwl
 	depends = jgtk+
 	depends = wlroots
-	depends = jwl
 	depends = jlibc
 	depends = wayland
 	depends = jdk-openjdk>=11
