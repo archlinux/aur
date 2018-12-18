@@ -2,10 +2,10 @@ pkgname=infocom-docs
 pkgdesc="Infocom documentation & feelies"
 url="http://infodoc.plover.net"
 pkgver=1989
-pkgrel=2
+pkgrel=3
 arch=('any')
 depends=('infocom')
-license=('KALLISTI')
+license=('none')
 options=('!strip')
 
 _pdf_mirror=('http://infodoc.plover.net/manuals')

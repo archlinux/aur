@@ -1,10 +1,10 @@
 pkgbase = infocom-docs
 	pkgdesc = Infocom documentation & feelies
 	pkgver = 1989
-	pkgrel = 2
+	pkgrel = 3
 	url = http://infodoc.plover.net
 	arch = any
-	license = KALLISTI
+	license = none
 	depends = infocom
 	options = !strip
 	source = http://infodoc.plover.net/manuals/amfv.pdf
