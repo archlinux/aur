@@ -1,4 +1,4 @@
-# Maintainer: Young Acinonyx <young.acinonyx@gmail.com>
+# Maintainer: Young Acinonyx <young.acinonyx [at ] gmail [dot] com>
 
 pkgname=ezusb
 pkgver=1.5.3
