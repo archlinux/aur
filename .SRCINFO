@@ -6,7 +6,7 @@ pkgbase = jlibc
 	arch = x86_64
 	license = GPL3
 	makedepends = mercurial
-	depends = Native-Proxy
+	depends = native-proxy
 	depends = jdk-openjdk>=11
 
 pkgname = jlibc

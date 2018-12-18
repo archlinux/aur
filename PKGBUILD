@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://bitbucket.org/Scoopta/jlibc/src/default/"
 license=('GPL3')
 groups=()
-depends=('Native-Proxy' 'jdk-openjdk>=11')
+depends=('native-proxy' 'jdk-openjdk>=11')
 makedepends=('mercurial')
 checkdepends=()
 optdepends=()
