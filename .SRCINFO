@@ -1,7 +1,7 @@
 pkgbase = ark-desktop
 	pkgdesc = Multi Platform Ark Desktop Wallet
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ArkEcosystem/desktop-wallet
 	arch = x86_64
 	license = MIT
