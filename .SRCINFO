@@ -1,0 +1,12 @@
+pkgbase = native-proxy
+	pkgdesc = Dynamic Dispatch to C Libraries from Java
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bitbucket.org/Scoopta/native-proxy/src/default/
+	arch = x86_64
+	license = GPL3
+	makedepends = mercurial
+	depends = jdk-openjdk>=11
+
+pkgname = native-proxy
+
