@@ -1,0 +1,13 @@
+pkgbase = trinnity-compiler-git
+	pkgdesc = The triNNity DNN compiler
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://bitbucket.org/STG-TCD/trinnity-compiler
+	arch = any
+	license = BSD
+	makedepends = python
+	source = git+https://bitbucket.org/STG-TCD/trinnity-compiler
+	sha512sums = SKIP
+
+pkgname = trinnity-compiler-git
+
