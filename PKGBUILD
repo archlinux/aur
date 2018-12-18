@@ -2,7 +2,7 @@
 
 _gitname=deen
 pkgname="${_gitname}-git"
-pkgver=1.6.3.4c36edf
+pkgver=1.6.5.4078b5e
 pkgrel=1
 pkgdesc='Generic data encoding/decoding application built with PyQt5'
 url='https://github.com/takeshixx/deen'
@@ -10,8 +10,8 @@ arch=('any')
 license=('Apache 2.0')
 depends=('python' 'python-setuptools' 'python-pyqt5')
 optdepends=('python-pyopenssl' 'python-jsbeautifier' 'python-keystone'
-            'python-capstone' 'python-pyjwt' 'python-bcrypt'
-            'python-xmltodict' 'python-jose')
+            'python-capstone' 'python-jose' 'python-bcrypt'
+            'python-xmltodict')
 makedepends=('git')
 provides=('deen')
 conflicts=('deen')
