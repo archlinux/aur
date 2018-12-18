@@ -17,18 +17,17 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" CMakeLists.txt
+  mkdir -p "${srcdir}/${pkgname}/build"
+  cd "${srcdir}/${pkgname}/build"
+
+  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" ..
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}/build"
   make install
 
-  # remove garbage files (TODO: maybe fix in CMakeList.txt in upstream)
-  rm -rf "${pkgdir}/usr/share/cmake"
-  rm -rf "${pkgdir}/usr/include/${pkgname}/CMakeFiles"
-
+  cd "${srcdir}/${pkgname}"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
