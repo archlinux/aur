@@ -7,8 +7,7 @@ pkgdesc="A heap memory profiler - 32-bit libraries"
 arch=('x86_64')
 url="http://milianw.de/tag/heaptrack"
 license=('APACHE')
-# dependencies with GUI enabled
-depends=('kdiagram' 'threadweaver' 'kitemmodels' 'kio' 'heaptrack-git' 'lib32-boost-libs')
+depends=('heaptrack-git' 'lib32-boost-libs')
 makedepends=('git' 'extra-cmake-modules' 'sparsehash')
 # minimal dependencies
 #depends=('libunwind' 'boost-libs')
