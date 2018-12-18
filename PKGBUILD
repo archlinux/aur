@@ -3,7 +3,7 @@
 # Contributor: Ilmari Repo <ilmari at gmail dot com> (librecad-svn PKGBUILD)
 # Contributor: GazJ Gary James <garyjames82 at gmail  dot com> (CADuntu PKGBUILD)
 
-_pkgtitle='LibreCAD'
+_repository='LibreCAD'
 pkgname=librecad-git
 pkgver=2.2.0.rc1.r91.g8604f171
 pkgrel=2
@@ -17,19 +17,19 @@ makedepends=('git')
 provides=('librecad')
 conflicts=('librecad')
 
-source=("git+https://github.com/$_pkgtitle/$_pkgtitle.git")
+source=("git+https://github.com/LibreCAD/$_repository.git")
 md5sums=('SKIP')
 
 function pkgver
 {
-    cd "$_pkgtitle"
+    cd "$_repository"
 
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 function build
 {
-    cd "$_pkgtitle"
+    cd "$_repository"
 
     qmake -recursive librecad.pro \
         QMAKE_CPPFLAGS="$CPPFLAGS" \
@@ -42,7 +42,7 @@ function build
 
 function package
 {
-    cd "$_pkgtitle"
+    cd "$_repository"
 
     install -m 644 -Dt "$pkgdir/usr/share/pixmaps" librecad/res/main/librecad.png
     install -m 644 -Dt "$pkgdir/usr/share/applications" desktop/librecad.desktop
