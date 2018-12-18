@@ -4,7 +4,7 @@ pkgname=lib32-heaptrack-git
 pkgver=812.f6a3479
 pkgrel=1
 pkgdesc="A heap memory profiler"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://milianw.de/tag/heaptrack"
 license=('APACHE')
 # dependencies with GUI enabled
