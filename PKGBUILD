@@ -47,6 +47,7 @@ function package
 
     install -m 644 -Dt "$pkgdir/usr/share/pixmaps" librecad/res/main/librecad.png
     install -m 644 -Dt "$pkgdir/usr/share/applications" desktop/librecad.desktop
+    install -m 644 -Dt "$pkgdir/usr/share/man/man1" desktop/librecad.1
 
     cd unix
 
