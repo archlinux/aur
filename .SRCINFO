@@ -1,6 +1,6 @@
 pkgbase = python-lpsolve
 	pkgdesc = lpsolve python extension for python 2.x and python 3.x
-	pkgver = 5.5.2.0
+	pkgver = 5.5
 	pkgrel = 1
 	url = https://github.com/chandu-atina/lp_solve_python_3x
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = python-lpsolve
 	depends = lpsolve
 	depends = python-numpy
 	source = git+https://github.com/chandu-atina/lp_solve_python_3x.git
+	source = sitedir.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = python-lpsolve
