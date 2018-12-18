@@ -1,6 +1,6 @@
 pkgbase = timescaledb
 	pkgdesc = An open-source time-series database optimized for fast ingest and complex queries.
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 0
 	url = http://www.timescale.com/
 	install = timescaledb.install
@@ -13,7 +13,7 @@ pkgbase = timescaledb
 	depends = postgresql<11
 	depends = postgresql>=9.6.0
 	depends = postgresql-libs>=9.6.0
-	source = timescaledb-1.0.0::git+https://github.com/timescale/timescaledb.git#tag=0.11.0
+	source = timescaledb-1.1.0::git+https://github.com/timescale/timescaledb.git#tag=0.11.0
 	md5sums = SKIP
 
 pkgname = timescaledb
