@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://librecad.org"
 license=('GPL')
 
-depends=('qt5-base' 'qt5-svg' 'qt5-tools' 'boost' 'muparser')
+depends=('muparser' 'qt5-svg' 'boost' 'freetype2')
 makedepends=('git')
 provides=('librecad')
 conflicts=('librecad')
