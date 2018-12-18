@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-llvm
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (mingw-w64)
-	pkgver = 7.0.0
+	pkgver = 7.0.1
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-llvm
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://releases.llvm.org/7.0.0/llvm-7.0.0.src.tar.xz
-	sha256sums = 8bc1f844e6cbde1b652c19c1edebc1864456fd9c78b8c1bea038e51b363fe222
+	source = https://releases.llvm.org/7.0.1/llvm-7.0.1.src.tar.xz
+	sha256sums = a38dfc4db47102ec79dcc2aa61e93722c5f6f06f0a961073bd84b78fb949419b
 
 pkgname = mingw-w64-llvm
 

@@ -1,6 +1,6 @@
 
 pkgname=('mingw-w64-llvm')
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'llvm' 'python2')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz")
-sha256sums=('8bc1f844e6cbde1b652c19c1edebc1864456fd9c78b8c1bea038e51b363fe222')
+sha256sums=('a38dfc4db47102ec79dcc2aa61e93722c5f6f06f0a961073bd84b78fb949419b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
