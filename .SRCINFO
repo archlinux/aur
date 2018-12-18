@@ -1,7 +1,7 @@
 pkgbase = ark-desktop
 	pkgdesc = Multi Platform Ark Desktop Wallet
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ArkEcosystem/desktop-wallet
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = ark-desktop
 	depends = libxtst
 	depends = gconf
 	depends = libxss
-	source = https://github.com/ArkEcosystem/ark-desktop/releases/download/2.1.0/Ark.Desktop.Wallet-2.1.0.tar.xz
+	source = https://github.com/ArkEcosystem/ark-desktop/releases/download/2.1.0/Ark.Desktop.Wallet-2.1.0.tar.gz
 	source = https://raw.githubusercontent.com/ArkEcosystem/ark-desktop/2.1.0/LICENSE
 	source = ark-desktop.desktop
 	source = ark-desktop.svg

@@ -3,7 +3,7 @@ _npmname=Ark.Desktop.Wallet
 _appname=ark-desktop-wallet
 pkgname=ark-desktop
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi Platform Ark Desktop Wallet"
 arch=(x86_64)
 url="https://github.com/ArkEcosystem/desktop-wallet"
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('gtk2' 'alsa-lib' 'nss' 'libxtst' 'gconf' 'libxss')
 
 source=(
-  "https://github.com/ArkEcosystem/${pkgname}/releases/download/${pkgver}/${_npmname}-${pkgver}.tar.xz"
+  "https://github.com/ArkEcosystem/${pkgname}/releases/download/${pkgver}/${_npmname}-${pkgver}.tar.gz"
   "https://raw.githubusercontent.com/ArkEcosystem/${pkgname}/${pkgver}/LICENSE"
   "${pkgname}.desktop"
   "${pkgname}.svg"
