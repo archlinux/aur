@@ -1,6 +1,6 @@
 pkgbase = cataclysm-dda-tiles
 	pkgdesc = A post-apocalyptic roguelike,tiles only
-	pkgver = 0.C.2018.12.02
+	pkgver = 0.C.2018.12.18
 	pkgrel = 1
 	url = http://en.cataclysmdda.com/
 	arch = x86_64
