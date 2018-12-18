@@ -9,7 +9,7 @@ url="http://lalescu.ro/liviu/fet/"
 license=('AGPL3')
 depends=('qt5-base' 'hicolor-icon-theme')
 source=("http://lalescu.ro/liviu/fet/download/$_module-$pkgver.tar.bz2")
-md5sums=('0079d314e74cb4216bca613918cbb646')
+md5sums=('aba29fe17c12af99d752472ebd4190c4')
 
 build() {
 	cd "$srcdir/$_module-$pkgver"

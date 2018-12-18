@@ -9,7 +9,7 @@ pkgbase = fet-timetabling
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	source = http://lalescu.ro/liviu/fet/download/fet-5.37.3.tar.bz2
-	md5sums = 0079d314e74cb4216bca613918cbb646
+	md5sums = aba29fe17c12af99d752472ebd4190c4
 
 pkgname = fet-timetabling
 
