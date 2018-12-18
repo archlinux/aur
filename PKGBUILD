@@ -8,7 +8,7 @@
 pkgname=mutter-781835-workaround
 _pkgname=mutter
 pkgver=3.30.2+7
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -39,13 +39,17 @@ prepare() {
   # Commented multiline comment start, remove the # below to disable the patches
   # : '
 
+  # workaround to automatically  resolve conflicts with git mergetool
+  git config user.email "you@example.com"
+  git config user.name "Your Name"
+
   git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   git fetch vanvugt
 
   # clutter: Deliver events sooner when possible
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168/commits
-  # may cause stutter when using mouse with high polling rate
-  git cherry-pick 7782ed6e
+  # Disabled as may cause stutter when using mouse with high polling rate
+  # git cherry-pick 7782ed6e
 
   # clutter: Fix offscreen-effect painting of clones
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/117/commits
