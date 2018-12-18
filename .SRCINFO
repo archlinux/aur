@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-cairo-bootstrap
 	pkgdesc = Cairo vector graphics library (mingw-w64 bootstrap)
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cairographics.org/
 	arch = any
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-cairo-bootstrap
 	depends = mingw-w64-fontconfig
 	depends = mingw-w64-libpng
 	depends = mingw-w64-lzo
-	provides = mingw-w64-cairo
+	provides = mingw-w64-cairo=1.16.0
 	conflicts = mingw-w64-cairo
 	options = !strip
 	options = !buildflags
