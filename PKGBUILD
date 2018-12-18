@@ -1,6 +1,6 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=resvg
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='SVG rendering library and CLI'
 arch=(i686 x86_64)
@@ -8,7 +8,7 @@ url="https://github.com/RazrFalcon/$pkgname"
 license=(MPL2)
 makedepends=(cargo qt5-base pango)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0e6c356cf440ea92908925f063afbee63cd0458f7261b0fa72b5297fcab19833')
+sha256sums=('ce079e6dc6d316bebe41bdedcb9e0714a1caf90c0d6f52d0b3aa1de37f989275')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -21,7 +21,7 @@ build() {
 	done
 	
 	msg2 'Building docs'
-	cargo doc --release
+	cargo doc --release --no-deps -p resvg-capi
 }
 
 package() {

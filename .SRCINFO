@@ -1,6 +1,6 @@
 pkgbase = resvg
 	pkgdesc = SVG rendering library and CLI
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/RazrFalcon/resvg
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = resvg
 	makedepends = cargo
 	makedepends = qt5-base
 	makedepends = pango
-	source = resvg-0.3.0.tar.gz::https://github.com/RazrFalcon/resvg/archive/v0.3.0.tar.gz
-	sha256sums = 0e6c356cf440ea92908925f063afbee63cd0458f7261b0fa72b5297fcab19833
+	source = resvg-0.4.0.tar.gz::https://github.com/RazrFalcon/resvg/archive/v0.4.0.tar.gz
+	sha256sums = ce079e6dc6d316bebe41bdedcb9e0714a1caf90c0d6f52d0b3aa1de37f989275
 
 pkgname = resvg
 
