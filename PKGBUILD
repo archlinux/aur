@@ -3,7 +3,7 @@
 
 
 pkgname=kvmd-webterm
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="Pi-KVM Web Terminal (GoTTY)"
 url="https://github.com/pi-kvm/kvmd-webterm"
@@ -26,7 +26,7 @@ md5sums=(
 	"1a44d9a469c566b20bcf9b9dafa97fe6"
 	"8310f16f1892706c6ee5d07d51393e00"
 	"dc9e0d328cb2710ef2921737fded3229"
-	"7a97a82f9e2a1b4c657699fcd6feffc9"
+	"55b8aa8ebfe04146ff0ce8dd8e71c72d"
 	"9abc035d7f58e1b18c6712d7b2831adb"
 	"ad52c541f400b29e85770bbb3d6a5211"
 )
