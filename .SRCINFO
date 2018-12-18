@@ -1,7 +1,7 @@
 pkgbase = librecad-git
 	pkgdesc = A 2D CAD drawing tool based on the community edition of QCad.
 	pkgver = 2.2.0.rc1.r91.g8604f171
-	pkgrel = 1
+	pkgrel = 2
 	url = https://librecad.org
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = librecad-git
 	depends = freetype2
 	provides = librecad
 	conflicts = librecad
-	source = LibreCAD::git://github.com/LibreCAD/LibreCAD.git
+	source = git+https://github.com/LibreCAD/LibreCAD.git
 	md5sums = SKIP
 
 pkgname = librecad-git

@@ -6,7 +6,7 @@
 _pkgtitle='LibreCAD'
 pkgname=librecad-git
 pkgver=2.2.0.rc1.r91.g8604f171
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D CAD drawing tool based on the community edition of QCad."
 arch=('x86_64')
 url="https://librecad.org"
@@ -17,7 +17,7 @@ makedepends=('git')
 provides=('librecad')
 conflicts=('librecad')
 
-source=("$_pkgtitle::git://github.com/$_pkgtitle/$_pkgtitle.git")
+source=("git+https://github.com/$_pkgtitle/$_pkgtitle.git")
 md5sums=('SKIP')
 
 function pkgver
