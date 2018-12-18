@@ -4,16 +4,16 @@
 pkgbase=mp-5
 #pkgname=(mp-5-nc mp-5-qt4 mp-5-kde4 mp-5-gtk)
 pkgname=(mp-5-qt4 mp-5-gtk)
-pkgver=5.2.13
+pkgver=5.2.14
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.triptico.com/software/mp.html"
 license=('GPL')
 # Note: config.sh auto-detects during the build which libraries are available
 makedepends=('ncurses' 'qt4' 'kdelibs' 'gtk3')     # 'gtk2'
 source=(http://triptico.com/download/mp/mp-$pkgver.tar.gz
 		MinimumProfit.desktop)
-md5sums=('83553fbfe6a9e9c977026addf3193508'
+md5sums=('ee90eeda004b137922d7d9387fd272d8'
          '7eae413ded2d6f69fba8347240b8b875')
 
 prepare() {
