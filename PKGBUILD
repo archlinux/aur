@@ -46,6 +46,7 @@ function package
     cd "$_pkgtitle"
 
     install -m 644 -Dt "$pkgdir/usr/share/pixmaps" librecad/res/main/librecad.png
+    install -m 644 -Dt "$pkgdir/usr/share/applications" desktop/librecad.desktop
 
     cd unix
 
@@ -53,6 +54,4 @@ function package
 
     install -Dd "$pkgdir/usr/share/librecad"
     cp --recursive -t "$pkgdir/usr/share/librecad" resources/*
-
-    install -m 644 -Dt "$pkgdir/usr/share/applications" "$srcdir/librecad.desktop"
 }
