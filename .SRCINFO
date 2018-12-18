@@ -1,0 +1,16 @@
+pkgbase = minetest-mod-animals_wolf-git
+	pkgdesc = danielmeek32's animals mod for Minetest - the wolf
+	pkgver = 8.ae23c51
+	pkgrel = 1
+	url = https://github.com/danielmeek32/animals_wolf
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = minetest-mod-animals-git
+	optdepends = minetest-usrdir_patch
+	provides = minetest-mod-animals_wolf
+	source = minetest-mod-animals_wolf::git+git://github.com/danielmeek32/animals_wolf
+	md5sums = SKIP
+
+pkgname = minetest-mod-animals_wolf-git
+
