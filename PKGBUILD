@@ -73,6 +73,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "${_gcc_path}/${_gcc_patch}"
         "${_uksm_path}/${_uksm_patch}"
+        "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -82,8 +83,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # pacman hook for remove initramfs
         '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch')
+        'linux.preset')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-uksm}
@@ -383,12 +383,12 @@ sha512sums=('78949b02fd8e3e546a743ee47eff93f0851881f751ab4171d0eed3115737c8e90b8
             'SKIP'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '81d52d3d9bf542c9bdd3024ef1a956804bfdfb1d9e321100caff76de96da8f0591a4fd843b00252ccc43b9c01441793b680eca4e25532472ef26d9b914dbe411'
+            '560920b4ebf8d7b753f058a41da62d20fde1e4b42a42e73be11461d3fe25b59bc36250a66d9c1c6e3c499426b237427af5ba7586daa7c549d2cf7bb7087932a1'
             '4c265e32ac7e7fdbaa3710cc5d596a7adfe10b85d62d0c4da46f9ff5697f6926df56edf90d46881bd67090234840b337e16bb830f751c91ee0d00e41e29c5d7b'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '39c50e70d28ddaa2cca030f1050c3ead72d44d957a533d0d09a5a8b92d3743c5712fef1a60aacfcac8319346dd407247667e1c25a96cd2585e9d9b017ccd707c')
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
 
 validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
