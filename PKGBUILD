@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <andersan@tcd.ie>
 pkgname=trinnity-compiler-git
 pkgver=0.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="The triNNity DNN compiler"
 arch=('any')
 url="https://bitbucket.org/STG-TCD/trinnity-compiler"
@@ -26,6 +26,6 @@ build() {
 package() {
 	cd trinnity-compiler/triNNity && python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	mkdir -p ${pkgdir}/usr/bin
-	install -ma=rx triNNity-compiler ${pkgdir}/usr/bin
+	install -ma=rx ${srcdir}/triNNity-compiler ${pkgdir}/usr/bin
 }
 
