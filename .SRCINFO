@@ -1,6 +1,6 @@
 pkgbase = yuzu-canary-git
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger
-	pkgver = r10088.7acbec3e0
+	pkgver = r10090.365aa36b9
 	pkgrel = 1
 	url = https://github.com/yuzu-emu/yuzu-canary
 	arch = i686
