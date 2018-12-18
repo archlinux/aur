@@ -25,7 +25,5 @@ build() {
 }
 
 package() {
-	cd "$srcdir/hactool"
-	mkdir -p "$pkgdir/usr/bin/"
-	cp "hactool" "$pkgdir/usr/bin"
+	install -D -t "$pkgdir/usr/bin" "$srcdir/hactool/hactool"
 }
