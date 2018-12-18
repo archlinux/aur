@@ -36,7 +36,6 @@ build() {
 	echo "Building"
 	cd "${pkgname}-${pkgver}"
 	./gradlew build 
-	./gradlew linuxPackage
 	cd ..
 }
 
