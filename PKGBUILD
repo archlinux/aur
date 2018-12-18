@@ -1,7 +1,7 @@
 # Maintainer: misson20000 <xenotoad at xenotoad dot n e t>
 pkgname=hactool-git
-pkgver=1.0.1.r10.g41e6695
-pkgrel=2
+pkgver=1.2.2.r4.g4d8d84d
+pkgrel=1
 pkgdesc="hactool is a tool to view information about, decrypt, and extract common file formats for the Nintendo Switch, especially Nintendo Content Archives."
 arch=("any")
 url="https://github.com/SciresM/hactool"
