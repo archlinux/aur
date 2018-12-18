@@ -21,7 +21,7 @@ index 5da67fa236..6b1f2fba96 100644
  PaletteDark=shadowBackground
  PaletteHighlightedText=textHighlighted
 diff --git a/share/qtcreator/themes/flat-dark.creatortheme b/share/qtcreator/themes/flat-dark.creatortheme
-index 9c713b4202..ba1978586c 100644
+index e73d10b0ff..3faa2223a1 100644
 --- a/share/qtcreator/themes/flat-dark.creatortheme
 +++ b/share/qtcreator/themes/flat-dark.creatortheme
 @@ -13,7 +13,7 @@ toolBarItemDisabled=60a4a6a8
@@ -29,8 +29,8 @@ index 9c713b4202..ba1978586c 100644
  fancyBarsBoldTextColor=b6fbfdff
  hoverBackground=22ffffff
 -selectedBackground=66000000
-+selectedBackground=aa1f75cc
- selectedBackgroundText=aa1f75cc
++selectedBackground=ff1d545c
+ selectedBackgroundText=ff1d545c
  normalBackground=ff2E2F30
  alternateBackground=ff353637
 @@ -223,7 +223,7 @@ PaletteBrightText=ffff3333
@@ -43,7 +43,7 @@ index 9c713b4202..ba1978586c 100644
  PaletteDark=shadowBackground
  PaletteHighlightedText=textHighlighted
 diff --git a/share/qtcreator/themes/flat-light.creatortheme b/share/qtcreator/themes/flat-light.creatortheme
-index 5932ae86dc..27fbbb2866 100644
+index 29edca63fd..826c798faa 100644
 --- a/share/qtcreator/themes/flat-light.creatortheme
 +++ b/share/qtcreator/themes/flat-light.creatortheme
 @@ -11,7 +11,7 @@ toolBarItemDisabled=38000000
@@ -51,12 +51,12 @@ index 5932ae86dc..27fbbb2866 100644
  fancyBarsBoldTextColor=a0010508
  hoverBackground=1a000000
 -selectedBackground=a8ffffff
-+selectedBackground=55000000
++selectedBackground=553daee9
  normalBackground=ffffffff
  alternateBackground=ff515151
  stop_error=ffec7373
 diff --git a/share/qtcreator/themes/flat.creatortheme b/share/qtcreator/themes/flat.creatortheme
-index ab0189528f..10a60c1aad 100644
+index ab0189528f..668d4bf612 100644
 --- a/share/qtcreator/themes/flat.creatortheme
 +++ b/share/qtcreator/themes/flat.creatortheme
 @@ -11,7 +11,7 @@ toolBarItemDisabled=60a4a6a8
@@ -64,7 +64,7 @@ index ab0189528f..10a60c1aad 100644
  fancyBarsBoldTextColor=b6fbfdff
  hoverBackground=22ffffff
 -selectedBackground=66000000
-+selectedBackground=ff1f75cc
++selectedBackground=aa3daee9
  normalBackground=ffffffff
  alternateBackground=ff515151
  error=ffdf4f4f

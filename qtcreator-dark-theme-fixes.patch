@@ -44,21 +44,21 @@ index ef19fc9fa6..5da67fa236 100644
  PaletteLink=textColorLink
  PaletteLinkVisited=textColorLinkVisited
 diff --git a/share/qtcreator/themes/flat-dark.creatortheme b/share/qtcreator/themes/flat-dark.creatortheme
-index 0c01aa1707..9c713b4202 100644
+index 0c01aa1707..e73d10b0ff 100644
 --- a/share/qtcreator/themes/flat-dark.creatortheme
 +++ b/share/qtcreator/themes/flat-dark.creatortheme
 @@ -7,12 +7,14 @@ DefaultTextEditorColorScheme=creator-dark.xml
  shadowBackground=ff404244
  text=ffd0d0d0
  textDisabled=60a4a6a8
-+textHighlighted=ffd0d0d0
++textHighlighted=fff0f0f0
  toolBarItem=b6fbfdff
  toolBarItemDisabled=60a4a6a8
  fancyBarsNormalTextColor=ffd0d0d0
  fancyBarsBoldTextColor=b6fbfdff
  hoverBackground=22ffffff
  selectedBackground=66000000
-+selectedBackgroundText=aa1f75cc
++selectedBackgroundText=ff1d545c
  normalBackground=ff2E2F30
  alternateBackground=ff353637
  error=ffdf4f4f
@@ -92,19 +92,6 @@ index 0c01aa1707..9c713b4202 100644
  PaletteToolTipText=text
  PaletteLink=textColorLink
  PaletteLinkVisited=textColorLinkVisited
-diff --git a/share/qtcreator/themes/flat-light.creatortheme b/share/qtcreator/themes/flat-light.creatortheme
-index 29edca63fd..5932ae86dc 100644
---- a/share/qtcreator/themes/flat-light.creatortheme
-+++ b/share/qtcreator/themes/flat-light.creatortheme
-@@ -145,7 +145,7 @@ OutputPanes_TestWarnTextColor=ffd0bb00
- OutputPanes_TestFatalTextColor=ff640000
- OutputPanes_TestDebugTextColor=ff329696
- OutputPaneButtonFlashColor=ffff0000
--OutputPaneToggleButtonTextColorChecked=fancyBarsNormalTextColor
-+OutputPaneToggleButtonTextColorChecked=ffffffff
- OutputPaneToggleButtonTextColorUnchecked=fancyBarsNormalTextColor
- 
- Debugger_LogWindow_LogInput=ff00acac
 diff --git a/src/plugins/coreplugin/locator/locatorwidget.cpp b/src/plugins/coreplugin/locator/locatorwidget.cpp
 index 7276685d20..2421bd776a 100644
 --- a/src/plugins/coreplugin/locator/locatorwidget.cpp
