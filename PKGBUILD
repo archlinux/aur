@@ -22,7 +22,7 @@ build() {
   cd "samhain-${pkgver}"
   # see samhain documentation, lots of other options available. e.g. use --enable-network=server to run in server mode.
   #./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --sbindir=/usr/bin
-  ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --sbindir=/usr/bin --enable-network=client
+  ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --sbindir=/usr/bin --enable-network=client --enable-port-check --enable-login-watch --enable-process-check
   make
 }
 
