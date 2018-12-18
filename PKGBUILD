@@ -7,11 +7,8 @@ pkgdesc="A heap memory profiler - 32-bit libraries"
 arch=('x86_64')
 url="http://milianw.de/tag/heaptrack"
 license=('APACHE')
-depends=('heaptrack-git' 'lib32-boost-libs')
-makedepends=('git' 'extra-cmake-modules' 'sparsehash')
-# minimal dependencies
-#depends=('libunwind' 'boost-libs')
-#makedepends=('git' 'cmake' 'boost')
+depends=('lib32-libunwind' 'heaptrack-git' 'lib32-boost-libs')
+makedepends=('git' 'cmake' 'boost')
 provides=('lib32-heaptrack')
 conflicts=('lib32-heaptrack')
 source=('git+https://github.com/KDE/heaptrack.git')
