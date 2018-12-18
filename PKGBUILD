@@ -7,6 +7,7 @@ pkgdesc="A library with SDR DSP primitives"
 arch=('any')
 url="http://cgit.osmocom.org/libosmo-dsp/"
 license=(GPL)
+depends=('fftw')
 makedepends=('git')
 source=("git://git.osmocom.org/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
