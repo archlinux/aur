@@ -1,7 +1,7 @@
 pkgbase = teleport-bin
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gravitational/teleport
 	install = teleport.install
 	arch = x86_64
