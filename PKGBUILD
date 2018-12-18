@@ -5,7 +5,7 @@
 
 pkgname=weston-eglstream
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Reference implementation of a Wayland compositor with EGLStream support'
 arch=('i686' 'x86_64')
 url='https://wayland.freedesktop.org/'
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('glibc' 'wayland' 'libxkbcommon' 'libinput' 'libunwind' 'pixman'
          'libdrm' 'pam' 'libsystemd' 'cairo' 'libpng' 'libjpeg-turbo' 'libwebp'
          'libegl' 'libgles' 'glib2' 'pango' 'lcms2' 'mtdev' 'libx11'
-         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord' 'egl-wayland')
+         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord' 'egl-wayland' 'autoconf')
 makedepends=('wayland-protocols')
 provides=('weston')
 conflicts=('weston')
@@ -50,6 +50,7 @@ prepare() {
 
 build() {
 	cd weston-$pkgver
+	autoreconf --force -v --install
 	./configure \
 		--prefix=/usr \
 		--libexecdir=/usr/lib/weston \
