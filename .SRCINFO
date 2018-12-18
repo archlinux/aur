@@ -1,0 +1,16 @@
+pkgbase = kops-git
+	pkgdesc = Kubernetes Operations (kops git) - Production Grade K8s Installation, Upgrades, and Management
+	pkgver = r1.e15d7ee4b1165b9fd575349c4a6de0efbc82a972
+	pkgrel = 1
+	url = https://github.com/kubernetes/kops
+	arch = x86_64
+	license = Apache
+	makedepends = go-pie
+	makedepends = git
+	provides = kops
+	conflicts = kops
+	source = kops::git+https://github.com/kubernetes/kops
+	md5sums = SKIP
+
+pkgname = kops-git
+
