@@ -2,8 +2,8 @@
 
 pkgbase=python-flask-restful
 pkgname=(python-flask-restful python2-flask-restful)
-pkgver=0.3.6
-pkgrel=2
+pkgver=0.3.7
+pkgrel=1
 pkgdesc="Simple framework for creating REST APIs"
 url="https://github.com/flask-restful/flask-restful"
 license=('BSD')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python2-setuptools' 'python-six' 'python2-six'
 checkdepends=('python-nose' 'python2-nose' 'python-mock' 'python2-mock' 'python-blinker'
               'python2-blinker' 'python-crypto' 'python2-crypto')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/flask-restful/flask-restful/archive/$pkgver.tar.gz")
-sha512sums=('c5136302111e6c8953e038d31b42b029744111bb916dea7ec8bd5fac2de5e17a86d30a7d04a7335cdc5da25ee13f35ad9a6d284166e11cca0c6fec96d23fd977')
+sha512sums=('1d1d066dec5f39af3197b680f791d83df686602b703efe874ea0e81d7f3b65f605dbdb63f84fdd07e469c6824d52571e195ae70f58e1543b53f13a81e1cd8543')
 
 prepare() {
   cp -a flask-restful-$pkgver{,-py2}
