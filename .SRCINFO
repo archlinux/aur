@@ -1,6 +1,6 @@
 pkgbase = chef-workstation
 	pkgdesc = Chef Workstation gives you everything you need to get started with Chef. Start scanning and configuring your environments today with InSpec and chef-run.
-	pkgver = 0.2.40
+	pkgver = 0.2.41
 	pkgrel = 1
 	url = https://downloads.chef.io/chef-workstation/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = chef-workstation
 	conflicts = chef
 	conflicts = chef-solo
 	conflicts = chef-client
-	source = https://packages.chef.io/files/stable/chef-workstation/0.2.40/ubuntu/18.04/chef-workstation_0.2.40-1_amd64.deb
-	sha256sums = 8dca658f4fe7dda9a1a9a34f9ef6ace8a8c5b83d244aa3a731dc9b905c2b8d44
+	source = https://packages.chef.io/files/stable/chef-workstation/0.2.41/ubuntu/18.04/chef-workstation_0.2.41-1_amd64.deb
+	sha256sums = 9ee430530f57938859961e1a0fc1dc64f4255678d42ab79a2d41c849e1d5b267
 
 pkgname = chef-workstation
 
