@@ -6,7 +6,7 @@ TryExec=/usr/bin/ark-desktop-wallet
 Exec=/usr/bin/ark-desktop-wallet
 Terminal=false
 Type=Application
-Icon=ark-desktop
+Icon=ark-desktop-wallet
 Categories=Finance;
 MimeType: x-scheme-handler/ark;
 Actions=Explorer;
