@@ -1,6 +1,6 @@
 pkgbase = cmb
 	pkgdesc = combinatorics utility
-	pkgver = 1.4.1
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://fraubsd.org/cmb
 	arch = x86_64

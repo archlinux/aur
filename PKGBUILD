@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=cmb
-pkgver=1.4.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="combinatorics utility"
 url="https://fraubsd.org/cmb"
