@@ -1,0 +1,18 @@
+pkgbase = jaybar
+	pkgdesc = Status bar for the Sway Compositor
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bitbucket.org/Scoopta/jaybar/src/default/
+	arch = x86_64
+	license = GPL3
+	makedepends = mercurial
+	depends = jgtk+
+	depends = wlroots
+	depends = native-proxy
+	depends = jwl
+	depends = jlibc
+	depends = wayland
+	depends = jdk-openjdk>=11
+
+pkgname = jaybar
+
