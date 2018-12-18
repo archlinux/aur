@@ -1,6 +1,6 @@
 pkgbase = nemesyst-git
 	pkgdesc = Generalised, sequence-based, deep-learning framework of the gods. Warning may include GANs, does not include nuts.
-	pkgver = 0.9.5.r23.3c41545
+	pkgver = 0.9.5.r58.7488e79
 	pkgrel = 1
 	url = https://github.com/DreamingRaven/Nemesyst
 	arch = x86_64
@@ -17,7 +17,8 @@ pkgbase = nemesyst-git
 	depends = python-pandas
 	depends = python-numpy
 	depends = python-h5py
-	depends = python-pydot
+	depends = python-colorama
+	optdepends = python-pydot: quick architecture graphs
 	source = nemesyst::git+https://github.com/DreamingRaven/Nemesyst#branch=master
 	md5sums = SKIP
 

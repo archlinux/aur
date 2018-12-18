@@ -1,7 +1,7 @@
 # Maintainer: George Raven <GeorgeRavenCommunity AT outlook dot com>
 pkgname=nemesyst-git
 pkgsrcname="nemesyst"
-pkgver=0.9.5.r23.3c41545
+pkgver=0.9.5.r58.7488e79
 pkgrel=1
 pkgdesc="Generalised, sequence-based, deep-learning framework of the gods. Warning may include GANs, does not include nuts."
 arch=('x86_64')
@@ -13,8 +13,11 @@ branch="master"
 
 license=('MIT') # MIT is a special case store a copy in /usr/share/pkgname
 groups=("nemesyst-base")
-depends=('git' 'python-setuptools' 'mongodb' 'python' 'python-pymongo' 'python-keras' 'python-keras-applications' 'python-keras-preprocessing' 'python-pandas' 'python-numpy' 'python-h5py' 'python-pydot')
+depends=('git' 'python-setuptools' 'mongodb' 'python' 'python-pymongo'
+				 'python-keras' 'python-keras-applications' 'python-keras-preprocessing'
+				 'python-pandas' 'python-numpy' 'python-h5py' 'python-colorama')
 makedepends=() # 'bzr', 'git', 'mercurial' or 'subversion'
+optdepends=('python-pydot: quick architecture graphs')
 provides=()
 conflicts=()
 replaces=()
