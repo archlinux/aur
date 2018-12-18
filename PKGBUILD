@@ -1,8 +1,8 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=zypper
-pkgver=1.14.18
-pkgrel=3
+pkgver=1.14.19
+pkgrel=1
 pkgdesc="Command line software manager using libzypp"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/zypper"
@@ -13,7 +13,7 @@ provides=('zypper' 'apt')
 conflicts=('apt')
 source=("https://github.com/openSUSE/zypper/archive/${pkgver}.tar.gz"
         'make-ZyppCommon-cmake-module-includable.patch')
-sha256sums=('feb3ac9572ac40e456cecee34cdb69a70236c0242f23b9498d3f68326eacb624'
+sha256sums=('f2728a098d9d6191ecf59358a1688350b58d41535757bee97102f914734f351e'
             'f5cdd85109c58d786f1124fa3cab1c5431a93a8d87a59117eac257c6e4698ae7')
 
 prepare() {
