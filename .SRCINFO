@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-odis-2018-latest
 	pkgdesc = 2017/2018 Timetable data for the timetable search engines by CHAPS: Trains in Ostrava public transport reagion (ODIS). Note that this timetable needs the purchased version of IDOS to run.
-	pkgver = 2018_12_9
-	pkgrel = 1
+	pkgver = 2018_12_6
+	pkgrel = 2
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
@@ -13,14 +13,14 @@ pkgbase = idos-timetable-data-chaps-trains-odis-2018-latest
 	optdepends = idos-timetable-maps-mhd-odis: For displaying routes on maps.
 	optdepends = idos-timetable-additionalinfo-mhd-odis: For additional information (changes, fare, sales points, etc.).
 	optdepends = idos-timetable-browser-license: To use this timetable.
-	provides = idos-timetable-data-chaps-trains-odis-2018=2018_12_9
-	provides = idos-timetable-data=2018_12_9
-	provides = idos-timetable-data-trains=2018_12_9
-	provides = idos-timetable-data-trains-odis=2018_12_9
-	provides = idos-timetable-data-trains-odis-2018=2018_12_9
+	provides = idos-timetable-data-chaps-trains-odis-2018=2018_12_6
+	provides = idos-timetable-data=2018_12_6
+	provides = idos-timetable-data-trains=2018_12_6
+	provides = idos-timetable-data-trains-odis=2018_12_6
+	provides = idos-timetable-data-trains-odis-2018=2018_12_6
 	conflicts = idos-timetable-data-chaps-trains-odis-2018
 	replaces = idos-timetable-data-chaps-trains-odis-latest
-	replaces = idos-timetable-data-chaps-trains-odis-2018<=2018_12_9
+	replaces = idos-timetable-data-chaps-trains-odis-2018<=2018_12_6
 	source = vlakodis18.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAKODIS18.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
