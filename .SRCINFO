@@ -1,0 +1,16 @@
+pkgbase = minetest-mod-animals_sheep-git
+	pkgdesc = danielmeek32's animals mod for Minetest - the sheep
+	pkgver = 5.8cda7c1
+	pkgrel = 1
+	url = https://github.com/danielmeek32/animals_sheep
+	arch = any
+	license = custom:modified zlib-license
+	makedepends = git
+	depends = minetest-mod-animals-git
+	optdepends = minetest-usrdir_patch
+	provides = minetest-mod-animals_sheep
+	source = minetest-mod-animals_sheep::git+git://github.com/danielmeek32/animals_sheep
+	md5sums = SKIP
+
+pkgname = minetest-mod-animals_sheep-git
+
