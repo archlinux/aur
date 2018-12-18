@@ -1,0 +1,15 @@
+pkgbase = yarn-completion-git
+	pkgdesc = Bash completion for Yarn
+	pkgver = v0.12.0.r0.gf0d5170
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = bash-completion
+	depends = yarn
+	source = git+https://github.com/dsifford/yarn-completion.git
+	md5sums = SKIP
+
+pkgname = yarn-completion-git
+
