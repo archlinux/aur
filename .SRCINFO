@@ -1,6 +1,6 @@
 pkgbase = moproxy
 	pkgdesc = A transparent TCP to SOCKSv5/HTTP proxy.
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/sorz/moproxy
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = moproxy
 	makedepends = cargo
 	backup = etc/moproxy/config.env
 	backup = etc/moproxy/proxy.ini
-	source = https://github.com/sorz/moproxy/archive/v0.2.4.tar.gz
-	sha256sums = 51ce5e7413f2fc318ee3207ee2e8f9ad915340162444592eb1430d8a9168dacc
+	source = https://github.com/sorz/moproxy/archive/v0.2.5.tar.gz
+	sha256sums = a04c35dc4b89bf4a3ba20f0baf4f12328efeb1ce7b3752ea1f24f6dba51fc462
 
 pkgname = moproxy
 
