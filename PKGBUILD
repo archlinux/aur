@@ -2,7 +2,7 @@
 pkgname=avengers-gtk-theme-git
 _pkgname=Avengers-gtk-theme
 pkgdesc='A special version of Qogir gtk theme'
-pkgver=5.a7f8287
+pkgver=8.f91984c
 pkgrel=1
 arch=('any')
 depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
