@@ -1,0 +1,13 @@
+pkgbase = picogw-hal-git
+	pkgdesc = Host driver/HAL to build a LoRa Picocell Gateway which communicates through USB with a concentrator board based on Semtech SX1308 multi-channel modem and SX1257/SX1255 RF transceivers.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Lora-net/picoGW_hal
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+
+pkgname = picogw-hal-git
+
