@@ -1,18 +1,22 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-totp-git
 pkgver=r1.51c2aee
-pkgrel=1
+pkgrel=2
 pkgdesc='Attest the trustworthiness of a device against a human using time-based one-time passwords'
 arch=('x86_64')
 url='https://github.com/AndreasFuchsSIT/tpm2-totp'
 license=('BSD')
 depends=('qrencode' 'tpm2-tss')
 makedepends=('git' 'autoconf-archive' 'oath-toolkit' 'pandoc')
-checkdepends=('ibm-sw-tpm2')
+checkdepends=('psmisc' 'ibm-sw-tpm2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git")
-sha512sums=('SKIP')
+source=("git+$url.git"
+        'initcpio_install_tpm2-totp'
+        'initcpio_hooks_tpm2-totp')
+sha512sums=('SKIP'
+            'cd8e3d6d2dd84ec1c24ecc5ff8b099325dfafc5fb0b6f2309c70005c345f37a944d8a1240f512e91de6b09679f23f9822cfc5f779f54e66ecfd34287b21f8cb1'
+            'ae334b3e11ff89554de485c744556d88c789b773ff26dce9f2fc4c51a78eb12cd1094334a4ea43dc042c406e74b629e7ab5a68eeb36894d9635f81b2eaf02837')
 BUILDENV+=('!check') # see warning below before enabling tests
 
 pkgver() {
@@ -45,4 +49,6 @@ package() {
 	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir" install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/initcpio_install_tpm2-totp" "$pkgdir/usr/lib/initcpio/install/tpm2-totp"
+	install -Dm644 "$srcdir/initcpio_hooks_tpm2-totp" "$pkgdir/usr/lib/initcpio/install/tpm2-totp"
 }

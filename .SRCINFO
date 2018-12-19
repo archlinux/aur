@@ -1,10 +1,11 @@
 pkgbase = tpm2-totp-git
 	pkgdesc = Attest the trustworthiness of a device against a human using time-based one-time passwords
 	pkgver = r1.51c2aee
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AndreasFuchsSIT/tpm2-totp
 	arch = x86_64
 	license = BSD
+	checkdepends = psmisc
 	checkdepends = ibm-sw-tpm2
 	makedepends = git
 	makedepends = autoconf-archive
@@ -15,7 +16,11 @@ pkgbase = tpm2-totp-git
 	provides = tpm2-totp
 	conflicts = tpm2-totp
 	source = git+https://github.com/AndreasFuchsSIT/tpm2-totp.git
+	source = initcpio_install_tpm2-totp
+	source = initcpio_hooks_tpm2-totp
 	sha512sums = SKIP
+	sha512sums = cd8e3d6d2dd84ec1c24ecc5ff8b099325dfafc5fb0b6f2309c70005c345f37a944d8a1240f512e91de6b09679f23f9822cfc5f779f54e66ecfd34287b21f8cb1
+	sha512sums = ae334b3e11ff89554de485c744556d88c789b773ff26dce9f2fc4c51a78eb12cd1094334a4ea43dc042c406e74b629e7ab5a68eeb36894d9635f81b2eaf02837
 
 pkgname = tpm2-totp-git
 

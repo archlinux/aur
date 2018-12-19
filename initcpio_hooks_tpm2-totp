@@ -1,0 +1,8 @@
+#!/usr/bin/ash
+
+run_hook() {
+    echo 'Verification TOTP:'
+    tpm2-totp --time calculate
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
