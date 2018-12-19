@@ -1,23 +1,21 @@
-# Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
-# Contributor: OramahMaalhur <oramahmaalhur@gmail.com>
-# Contributor: mtorromeo
+# Maintainer: Florijan Hamzic <florijanh@gmail.com>
 
 pkgname=python-oursql
-pkgver=0.9.4
-pkgrel=5
+pkgver=0.9.5
+pkgrel=1
 pkgdesc="new set of MySQL bindings for python3"
 arch=('i386' 'x86_64')
 url="https://launchpad.net/oursql"
 license=('BSD')
 depends=('python>=3.1' 'libmariadbclient' 'cython')
 makedepends=('python-setuptools')
-source=("http://launchpad.net/oursql/py3k/py3k-$pkgver/+download/oursql-$pkgver.zip")
-sha1sums=('fdc853d1020c227bd5bda08ecb368746d3ed5b6d')
+source=("https://github.com/cinatic/python-oursql/archive/v$pkgver.tar.gz")
+sha1sums=('267eb50558a1f97818d4b6766e64673d080ea129')
 
 package() {
-  cd "$srcdir/oursql-$pkgver"
+  cd "$srcdir/python-oursql-$pkgver"
 
-  cythonize --force oursqlx/oursql.pyx 
+  cythonize --force oursqlx/oursql.pyx
 
   python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
 
@@ -26,3 +24,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+
