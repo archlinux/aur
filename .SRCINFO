@@ -1,6 +1,6 @@
 pkgbase = slimjet-browser
-	pkgdesc = A lightweight Browser based on Blink (**added: 'slim-root' sandbox-user)
-	pkgver = 21.0.4.0
+	pkgdesc = A lightweight Browser based on Blink (without setuid-sandbox)
+	pkgver = 21.0.6.0
 	pkgrel = 1
 	url = http://www.slimjet.com
 	install = slimjet-browser.install
@@ -36,7 +36,7 @@ pkgbase = slimjet-browser
 	replaces = slimjet
 	options = !emptydirs
 	options = !strip
-	source = slimjet-browser-21.0.4.0-x86_64.deb::https://www.slimjet.com/release/archive/21.0.4.0/slimjet_amd64.deb
+	source = slimjet-browser-21.0.6.0-x86_64.deb::https://www.slimjet.com/release/archive/21.0.6.0/slimjet_amd64.deb
 	source = LICENSE
 	source = flashpeak.patch
 	source = slimjet-browser
