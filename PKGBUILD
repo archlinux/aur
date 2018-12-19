@@ -4,8 +4,8 @@
 
 _pkgname=lilv
 pkgname="${_pkgname}-git"
-pkgver=0.24.3.r1163.9a45b4c
-pkgrel=2
+pkgver=0.24.5.r1185.bf061a4
+pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/lilv"
@@ -16,7 +16,7 @@ optdepends=(
     "bash-completion: completion for bash"
     "libsndfile: lv2apply utility"
 )
-provides=("${_pkgname}=${pkgver%.r*}")
+provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}" "${_pkgname}-svn")
 source=("${_pkgname}::git+http://git.drobilla.net/${_pkgname}.git")
 md5sums=('SKIP')

@@ -1,7 +1,7 @@
 pkgbase = lilv-git
 	pkgdesc = A C library interface to the LV2 plug-in standard
-	pkgver = 0.24.3.r1163.9a45b4c
-	pkgrel = 2
+	pkgver = 0.24.5.r1185.bf061a4
+	pkgrel = 1
 	url = http://drobilla.net/software/lilv
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = lilv-git
 	depends = sratom
 	optdepends = bash-completion: completion for bash
 	optdepends = libsndfile: lv2apply utility
-	provides = lilv=0.24.3
+	provides = lilv
+	provides = lilv=0.24.5
 	conflicts = lilv
 	conflicts = lilv-svn
 	source = lilv::git+http://git.drobilla.net/lilv.git
