@@ -1,0 +1,4 @@
+pkg/
+src/
+*.exe
+*.pkg.tar.xz

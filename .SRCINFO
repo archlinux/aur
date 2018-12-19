@@ -1,0 +1,16 @@
+pkgbase = ricoh-sp220-ppd
+	pkgdesc = CUPS driver for Ricoh SP220 series
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://support.ricoh.com/bb/html/dr_ut_e/re1/model/sp221s/sp221s.htm
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = binutils
+	makedepends = p7zip
+	depends = cups
+	source = http://support.ricoh.com/bb/pub_e/dr_ut_e/0001300/0001300718/V101/r78183en.exe
+	md5sums = 6e0f7e79d5873b1152446ea7aa8dc438
+
+pkgname = ricoh-sp220-ppd
+
