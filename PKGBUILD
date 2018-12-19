@@ -7,7 +7,7 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=swi-prolog-devel
-pkgver=7.7.21
+pkgver=7.7.25
 pkgrel=1
 pkgdesc='Prolog environment (development version)'
 arch=('x86_64' 'i686')
@@ -24,28 +24,17 @@ optdepends=('unixodbc: for using the odbc4pl library'
             'java-environment: for interfacing java with the jpl package')
 #options=('!makeflags')
 source=("http://swi-prolog.org/download/devel/src/swipl-${pkgver}.tar.gz")
-sha256sums=('f4795d3e6abe9289729169a9d74a006e55df95a2e118b7a1701bb7bd92c864f4')
+sha256sums=('33f3770934ca5ec3d1078543afa8e093e9036aa1c45f19e014ee23d011b8f779')
 conflicts=('swi-prolog')
 provides=('swi-prolog')
 
 build() {
   cd "swipl-$pkgver"
 
-  ./configure --prefix=/usr --with-world
-  cd src
-  ./configure --enable-shared --prefix=/usr
-
-  make -C ..
-}
-
-check() {
-  make -C "swipl-$pkgver" check || true
+  mkdir build
+  cd build && cmake -DCMAKE_INSTALL_PREFIX=/usr .. && make
 }
 
 package() {
-  make -C "swipl-$pkgver" DESTDIR="$pkgdir" install
-
-  # Fix for FS#20873
-  chmod +x "$pkgdir/usr/lib/swipl-$pkgver/library/dialect/sicstus/swipl-lfr.pl"
+  make -C "swipl-$pkgver/build" DESTDIR="$pkgdir" install
 }
-
