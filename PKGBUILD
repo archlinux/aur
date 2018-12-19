@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-astropy-healpix
 pkgname=('python-astropy-healpix' 'python-astropy-healpix-doc')
-pkgver=0.3.1
+pkgver=0.4
 pkgrel=1
 pkgdesc="BSD-licensed HEALPix for Astropy"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=('cython' 'python-astropy>=1.2' 'python-astropy-helpers>=3.1' 'python-sphinx' 'python-sphinx-astropy')
 checkdepends=('python-pytest' 'python-healpy' 'python-hypothesis')
 source=("https://files.pythonhosted.org/packages/source/a/astropy-healpix/astropy-healpix-${pkgver}.tar.gz")
-md5sums=('2c159be654778ee1f3ba5c0b95beaa5f')
+md5sums=('59174f71ae6ef8b8969b2cfce702231e')
 
 prepare() {
     cd ${srcdir}/astropy-healpix-${pkgver}
