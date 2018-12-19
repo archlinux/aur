@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=TimeCamp Desktop
+Exec=/usr/bin/timecamp
+Icon=timecamp
+StartupNotify=false
+Terminal=false
+Categories=Office;ProjectManagement;

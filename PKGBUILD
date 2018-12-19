@@ -1,21 +1,34 @@
 # Maintainer: Chris Hobbs (RX14) <chris@rx14.co.uk>
 pkgname=timecamp
-pkgver=1.4.3.3
+pkgver=2.1.1.0
 pkgrel=1
 pkgdesc="Client application for TimeCamp software"
-arch=('x86_64')
+arch=('any')
 url="https://www.timecamp.com/"
-license=('custom')
-depends=('gtk2' 'libsm' 'libnotify' 'libxss' 'libappindicator-gtk2')
-install=${pkgname}.install
-source=("https://www.timecamp.com/downloadsoft/${pkgver}/TimeCampSetup_LinAmd64-${pkgver}.tar.gz")
-sha256sums=("51213dd2db59d8b4daa801682d5ec062d44341410a3fda4479d25b6dfc71264a")
+license=('GPL3')
+depends=('qt5-base' 'qt5-webengine' 'qt5-x11extras')
+makedepends=('cmake')
+source=("timecamp-${pkgver}.tar.gz::https://github.com/timecamp/timecamp-v2.1-desktop-app/archive/${pkgver}.tar.gz"
+        "timecamp.desktop")
+sha256sums=('1ed3904dc3b99f4a84a637dbeb8d5d130e0d31859fdf7ce34229b374b24183c8'
+            '632c47beefd1aae80eb3ea51832fd74e43f11ed6432f5dc7dded867c80d5df70')
+build() {
+  cd "$srcdir/timecamp-v2.1-desktop-app-${pkgver}"
 
-package(){
-	# Extract package data
-  ar x timecamp.deb
-	tar xzf data.tar.gz -C "${pkgdir}"
+  cp CMakeProjectConfig.cmake.example CMakeProjectConfig.cmake
 
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s /usr/share/timecamp/timecamp "${pkgdir}/usr/bin/timecamp"
+  mkdir build
+  cd build
+
+  cmake ..
+  make
+}
+
+package() {
+  cd "$srcdir/timecamp-v2.1-desktop-app-${pkgver}"
+
+  install -D -m755 build/TimeCampDesktop "$pkgdir/usr/bin/timecamp"
+  install -D -m644 res/AppIcon_48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/timecamp.png"
+  install -D -m644 res/AppIcon_256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/timecamp.png"
+  install -D -m644 "$srcdir/timecamp.desktop" "$pkgdir/usr/share/applications/timecamp.desktop"
 }
