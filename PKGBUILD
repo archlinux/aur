@@ -2,20 +2,19 @@
 # Author: Michael Polidori
 
 pkgname=pykgbuild
-_pkgname=py-pkgbuild-version
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
-pkgdesc="Compare a users Python PKGBUILD version(s) with respective PyPI version(s)."
-url="https://github.com/mpolidori/py-pkgbuild-version"
+pkgdesc="A tool to check if a user's AUR Python package(s) are up to date with the PyPI."
+url="https://github.com/mpolidori/pykgbuild"
 depends=('python')
 license=('MIT')
 arch=('any')
-source=('git+https://github.com/mpolidori/py-pkgbuild-version.git')
+source=('git+https://github.com/mpolidori/pykgbuild.git')
 md5sums=(SKIP)
 
 package() {
-    cd $_pkgname
+    cd $pkgname
     mv pykgbuild.py pykgbuild
     install -Dm 0755 -t ${pkgdir}/usr/bin pykgbuild
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

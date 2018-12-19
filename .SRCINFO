@@ -1,12 +1,12 @@
 pkgbase = pykgbuild
-	pkgdesc = Compare a users Python PKGBUILD version(s) with respective PyPI version(s).
-	pkgver = 0.1.6
+	pkgdesc = A tool to check if a user's AUR Python package(s) are up to date with the PyPI.
+	pkgver = 0.1.7
 	pkgrel = 1
-	url = https://github.com/mpolidori/py-pkgbuild-version
+	url = https://github.com/mpolidori/pykgbuild
 	arch = any
 	license = MIT
 	depends = python
-	source = git+https://github.com/mpolidori/py-pkgbuild-version.git
+	source = git+https://github.com/mpolidori/pykgbuild.git
 	md5sums = SKIP
 
 pkgname = pykgbuild
