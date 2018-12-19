@@ -5,7 +5,6 @@ pkgbase = mingw-w64-agrum
 	url = http://agrum.gitlab.io/
 	arch = any
 	license = GPL
-	makedepends = git
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-crt
 	options = !buildflags
