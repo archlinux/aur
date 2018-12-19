@@ -1,0 +1,111 @@
+--- old
++++ new
+@@ -6,10 +6,11 @@
+ 
+ # Kent@FlashPeak:
+ # Check current user
+-if [ "`whoami`" = "root" ]; then
+-  echo "Don't run this as root."
+-  exit;
+-fi
++
++#if [ "`whoami`" = "root" ]; then
++#  echo "Don't run this as root."
++#  exit;
++#fi
+ 
+ # Running Slimjet via this script makes it possible to set Slimjet as the
+ # default browser directly out of a compile, without needing to package it.
+@@ -148,92 +149,5 @@
+   PROFILE_DIRECTORY_FLAG="--user-data-dir=$SLIMJET_USER_DATA_DIR"
+ fi
+ 
+-access_owner=`stat -c "%a %U %G" "$HERE/slimjet-sandbox"`
+-if [ "$access_owner" != "4755 root root" ] && [[ "$@" != *"--no-sandbox"* ]] ; then
+-  syslang=$LANGUAGE
+-  if [ "$syslang" == "" ]; then
+-    syslang=$LANG
+-  fi
+-  syslang=${syslang:0:5}
+-  langcode=${syslang:0:2}
+-  if [ "$syslang" == "zh_CN" ]; then
+-    echo "沙箱程序的启用需要管理员权限。如果您有sudo的权限的话（如Ubuntu系统），请选择“使用sudo命令”。如果您有根用户使用权的话，请选择“使用su命令”。如果您没有管理员权限的话，选择“退出”并加上“--no-sandbox”的命令行开关以无沙箱的方式的启动风之影浏览器（安全性差）。"
+-    PS3="请选择一个选项："
+-    options=("使用sudo命令" "使用su命令" "退出")
+-		suprompt="请输入根用户的口令："
+-		invalid_choice="选择无效!"
+-  elif [ "$syslang" == "zh_TW" ]; then
+-    echo "沙箱程序的啟用需要管理員權限。如果您有sudo的權限的話（如Ubuntu系統），請選擇“使用sudo命令”。
+-如果您有根用戶使用權的話，請選擇“使用su命令”。如果您沒有管理員權限的話，選擇“退出”並加上“--no-sandbox”
+-的命令行開關以無沙箱的方式的啟動風之影瀏覽器（安全性差）。"
+-    PS3="請選擇一個選項："
+-    options=("使用sudo命令" "使用su命令" "退出")
+-		suprompt="請輸入根用戶的口令："
+-		invalid_choice="選擇無效!"
+-  elif [ "$langcode" == "es" ]; then
+-    echo "
+-Se necesita acceso de administrador para activar el sandbox para mayor seguridad. Elija “Usar comando sudo” si tiene acceso a sudo en sistemas como Ubuntu. Elija “Use comando su” si tiene acceso a cuenta raíz. Si no tiene acceso de administrador, seleccione “Salir” y añada el interruptor “—no-sandbox” para ejecutar Slimjet sin sandbox (menos seguro)."
+-    PS3="Por favor, seleccione una opción para proceder:"
+-    options=("Use comando sudo" "Use comando su" "Salir")
+-    suprompt="Por favor, introduzca la contraseña raíz:"
+-    invalid_choice="¡Elección no válida!"
+-  elif [ "$langcode" == "ru" ]; then
+-    echo "Чтобы включить «песочницу» для повышения уровня безопасности, необходим доступ администратора. Выберите «Использовать команду sudo», если у вас есть доступ sudo к таким системам, как ubuntu. Выберите «Использовать команду su», если у вас есть доступ к рут-аккаунту. Если у вас нет доступа с правами администратора, выберите «Выход» и добавьте переключатель «--не-песочница» для запуска Slimjet без «песочницы» (менее безопасно)."
+-    PS3="Пожалуйста, выберите один из вариантов для продолжения:"
+-    options=("Использовать команду sudo" "Использовать команду su" "Выход")
+-    suprompt="Пожалуйста, выберите один из вариантов для продолжения:"
+-    invalid_choice="Неверный выбор!"
+-  elif [ "$langcode" == "pt" ]; then
+-    echo "É necessário o acesso de administrador para ativar o sandbox para uma segurança reforçada. Selecione \"Usar comando sudo\" se tiver acesso sudo em sistemas como o ubuntu. Selecione \"Usar comando su\" se tiver acesso à conta root. Se não dispuser de acesso de adiministrador, selecione \"Sair\" e adicione a chave '--sem-sandbox' para executar o Slimjet sem o sandbox (menos seguro)."
+-    PS3="Por favor, selecione uma opção para prosseguir:"
+-    options=("Usar comando sudo" "Usar comando su" "Sair")
+-    suprompt="Por favor, introduza a palavra-passe root."
+-    invalid_choice="Escolha inválida!"
+-  elif [ "$langcode" == "it" ]; then
+-    echo "L'accesso da amministratore è necessario per consentire al sandbox di migliorare la sicurezza. Scegli 'Usa il comando sudo' se hai accesso sudo a sistemi come ubuntu. Scegli 'Usa il comando su' se hai accessi alla root dell'account. Se non hai accesso da amministratore, seleziona 'Esci' e aggiungi lo switch '--no-sandbox' per lanciare Slimjet senza sandbox (meno sicuro)."
+-    PS3="Seleziona un'opzione per procedere:"
+-    options=("Usa il comando sudo" "Usa il comando su" "Esci")
+-    suprompt="Inserisci la password root."
+-    invalid_choice="Scelta non valida!"
+-  elif [ "$langcode" == "nl" ]; then
+-    echo "Beheerder toegang is nodig om de zandbak verbeterde beveiliging in te schakelen. Kies 'Gebruik sudo commando' als je sudo toegang hebt op systemen zoals Ubuntu. Kies 'Gebruik su commando' als u toegang hebt tot een root-account. Als u geen beheerder toegang heeft, kies 'Verlaten' en voeg de schakelaar'--geen-zandbak' toe om Slimjet uit te voeren zonder zandbak(minder veilig)."
+-    PS3="Kies een optie om verder te gaan:"
+-    options=("Gebruik sudo commando" "Gebruik su commando" "verlaten")
+-    suprompt="Voer alstublieft root-wachtwoord in."
+-    invalid_choice="Ongeldige keuze!"
+-  elif [ "$langcode" == "de" ]; then
+-    echo "Admin-Zugang ist erforderlich, um die Sandbox für ein verbessertes Sicherheitsniveau zu aktivieren. Wählen Sie 'Sudo-Kommando verwenden', wenn Sie Sudo-Zugang auf Systeme wie ubuntu haben. Wählen Sie 'su-Kommando', wenn Sie Zugang zu einem Root-Konto haben. Falls Sie keinen Admin-Zugang haben, wählen Sie 'Verlassen' und fügen Sie den Schalter '--keine-Sandbox' hinzu, um Slimjet ohne Sandbox auszuführen (unsicherer)."
+-    PS3="Bitte wählen Sie eine Option, um fortzufahren:"
+-    options=("Sudo-Kommando verwenden" "Su-Kommando verwenden" "Verlassen")
+-    invalid_choice="Ungültige Wahl!"
+-  elif [ "$langcode" == "fr" ]; then
+-    echo "Un accès administrateur est nécessaire pour activer le bac à sable pour une sécurité renforcée. Choisissez « Use sudo command » (Utiliser la commande sudo) si vous avez un accès sudo sur les systèmes comme ubuntu. Choisissez « Use su command » (Utiliser la commande su) si vous avez accès au compte racine. Si vous n'avez pas d'accès administrateur, sélectionnez « Quit » (Quitter) et ajoutez le commutateur « --no sandbox » (pas de bac à sable) pour exécuter Slimjet sans bac à sable (moins sûr)."
+-    PS3="Veuillez sélectionner une option pour continuer:"
+-    options=("Utiliser la commande sudo" "Utiliser la commande su" "Quitter")
+-    invalid_choice="Choix non valide !"
+-  else
+-    echo "Admin access is needed to enable the sandbox for enhanced security. Choose 'Use sudo command' if you have sudo access on systems like ubuntu. Choose 'Use su command' if you have access to root account. If you don't have admin access, select 'Quit' and add the switch '--no-sandbox' to run Slimjet without sandbox (less secure)."
+-    PS3="Please select an option to proceed:"
+-    options=("Use sudo command" "Use su command" "Quit")
+-		suprompt="Please input root password."
+-		invalid_choice="Invalid choice!"
+-  fi
+-  select option in "${options[@]}"; do
+-    if [ $REPLY == 3 ]; then
+-      exit
+-    fi
+-    if [ $REPLY == 1 ]; then
+-      sudo bash -c "chown root:root \"$HERE/slimjet-sandbox\"; chmod 4755 \"$HERE/slimjet-sandbox\""
+-      break
+-    fi
+-    if [ $REPLY == 2 ]; then
+-		  echo $suprompt
+-      su -c "chown root:root \"$HERE/slimjet-sandbox\"; chmod 4755 \"$HERE/slimjet-sandbox\""
+-      break
+-    fi
+-    echo $invalid_choice
+-  done
+-fi
+-
+ exec -a "$0" "$HERE/slimjet" "$@"
+ 

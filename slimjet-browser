@@ -1,5 +1,14 @@
 #!/bin/bash
-ARGV=(${*})
-xhost + &>/dev/zero
-su - slim-root -c \
-"DISPLAY=:0 /usr/share/slimjet/flashpeak-slimjet ${ARGV[*]}" &
+if [[ `id -u` -eq 0 ]]; then
+  if [[ `cat /proc/sys/kernel/unprivileged_userns_clone` -eq 0 ]]; then
+    echo 1 > /proc/sys/kernel/unprivileged_userns_clone
+  fi
+  $(which xhost) + &>/dev/zero
+  su - slim-root \
+  --session-command="DISPLAY=:0 /usr/share/slimjet/flashpeak-slimjet $@"&
+  wait $!
+else
+  . /usr/share/flashpeak-slimjet $@ &
+  wait $!
+fi
+exit $?
