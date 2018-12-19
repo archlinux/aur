@@ -44,6 +44,13 @@ package() {
   # Remove makepkg-created symlinks before copying content
   rm *.tar.xz *.desktop
 
+  # Move library files to /usr/lib/popcorntime
+  install -d "${pkgdir}/usr/lib/${_pkgname}/${pkgver}"
+  mv "${srcdir}"/lib/* "${pkgdir}/usr/lib/${_pkgname}/${pkgver}"
+  rmdir "${srcdir}"/lib/
+  install -d "${pkgdir}/etc/ld.so.conf.d"
+  echo "/usr/lib/${_pkgname}/${pkgver}" > "${pkgdir}/etc/ld.so.conf.d/${_pkgname}.conf"
+
   # Copy complete content of source archive to /usr/share/${_pkgname}/
   cp -a "${srcdir}"/* "${pkgdir}/usr/share/${_pkgname}/"
 
