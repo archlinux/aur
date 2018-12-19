@@ -1,38 +1,30 @@
-# Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
+# Maintainer: Angelo Theodorou <encelo at gmail dot com>
+
 pkgname=tracy
-pkgver=0.08
+pkgver=0.4
 pkgrel=1
-pkgdesc="A system call tracer and injector"
+pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
-url="http://hetgrotebos.org/wiki/Tracy"
+url="https://bitbucket.org/wolfpld/tracy"
 license=('BSD')
-optdepends=(python)
-source=("https://github.com/MerlijnWajer/tracy/archive/$pkgname-$pkgver.tar.gz"
-)
-md5sums=('546ec78803e83697b1330190da7ce42c')
+depends=('glfw-x11' 'gtk2')
+makdepends=('pkgconf')
+provides=('tracy')
+conflicts=('tracy')
+source=("git+$url#tag=v0.4")
+md5sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver/src"
-  make
-  cd ./soxy
-  make
+  cd tracy
+  make -C profiler/build/unix release
+  make -C update/build/unix release
+  make -C capture/build/unix release
 }
-
-check() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver/src"
-  make tests
-}
-
 
 package() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver/src"
-  for ext in a so; do
-    install -Dm644 lib"$pkgname.$ext" "$pkgdir/usr/lib/lib$pkgname.$ext"
-  done
-  install -Dm644 tracy.h "$pkgdir"/usr/include/tracy.h
-  install -Dm755 soxy/soxy "$pkgdir"/usr/bin/soxy
-  mkdir -p $pkgdir/usr/lib/python3.4/site-packages/$pkgname
-  install -Dm644 *.py  $pkgdir/usr/lib/python3.4/site-packages/$pkgname/
+  cd tracy
+  install -Dm755 profiler/build/unix/Tracy-release $pkgdir/usr/bin/tracy
+  install -Dm755 update/build/unix/update-release $pkgdir/usr/bin/tracy-update
+  install -Dm755 capture/build/unix/capture-release $pkgdir/usr/bin/tracy-capture
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
