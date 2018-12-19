@@ -1,5 +1,5 @@
 pkgbase = linux-bfq-mq
-	pkgver = 4.19.10
+	pkgver = 4.19.11
 	pkgrel = 1
 	url = https://github.com/Algodev-github/bfq-mq/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = linux-bfq-mq
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.10.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.10.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.11.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.11.tar.sign
 	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.19/bfq-sq-mq/4.19-bfq-sq-mq-v9r1-2K181212-rc1.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.19/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch
@@ -23,7 +23,7 @@ pkgbase = linux-bfq-mq
 	source = 99-linux.hook
 	source = linux.preset
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = afe968ceeca93eac2173f9f95d90b2eeb489bafdd2083478ac0b7d0704b33e94
+	sha256sums = 1a5eb3452103803feb568d948538a97b4046d6c77f9c26b6c2c9af0ddc5c79ec
 	sha256sums = SKIP
 	sha256sums = 9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178
 	sha256sums = 8761152216a204b0bbf2bd581abc3f5cdf851cec8b807316528b72a7b552ef12
@@ -44,19 +44,19 @@ pkgname = linux-bfq-mq
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-bfq-mq=4.19.10
-	provides = linux=4.19.10
+	provides = linux-bfq-mq=4.19.11
+	provides = linux=4.19.11
 	backup = etc/mkinitcpio.d/linux-bfq-mq.preset
 
 pkgname = linux-bfq-mq-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.19.10
-	provides = linux-bfq-mq-headers=4.19.10
-	provides = linux-headers=4.19.10
+	depends = linux-bfq-mq=4.19.11
+	provides = linux-bfq-mq-headers=4.19.11
+	provides = linux-headers=4.19.11
 
 pkgname = linux-bfq-mq-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq-mq kernel
-	depends = linux-bfq-mq=4.19.10
-	provides = linux-bfq-mq-docs=4.19.10
-	provides = linux-docs=4.19.10
+	depends = linux-bfq-mq=4.19.11
+	provides = linux-bfq-mq-docs=4.19.11
+	provides = linux-docs=4.19.11
 
