@@ -1,14 +1,14 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-totp-git
 pkgver=r1.51c2aee
-pkgrel=2
+pkgrel=3
 pkgdesc='Attest the trustworthiness of a device against a human using time-based one-time passwords'
 arch=('x86_64')
 url='https://github.com/AndreasFuchsSIT/tpm2-totp'
 license=('BSD')
 depends=('qrencode' 'tpm2-tss')
 makedepends=('git' 'autoconf-archive' 'oath-toolkit' 'pandoc')
-checkdepends=('psmisc' 'ibm-sw-tpm2')
+checkdepends=('ibm-sw-tpm2' 'psmisc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git"
@@ -50,5 +50,5 @@ package() {
 	make DESTDIR="$pkgdir" install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/initcpio_install_tpm2-totp" "$pkgdir/usr/lib/initcpio/install/tpm2-totp"
-	install -Dm644 "$srcdir/initcpio_hooks_tpm2-totp" "$pkgdir/usr/lib/initcpio/install/tpm2-totp"
+	install -Dm644 "$srcdir/initcpio_hooks_tpm2-totp" "$pkgdir/usr/lib/initcpio/hooks/tpm2-totp"
 }
