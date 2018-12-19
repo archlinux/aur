@@ -1,6 +1,6 @@
 pkgbase = hexchat-git
 	pkgdesc = A GTK+ based IRC client
-	pkgver = 2.12.4.r45.gc6f3fbd1
+	pkgver = 2.14.2.r9.ged553301
 	pkgrel = 1
 	url = https://hexchat.github.io
 	arch = i686
@@ -29,7 +29,6 @@ pkgbase = hexchat-git
 	conflicts = hexchat
 	conflicts = hexchat-lua-git
 	replaces = hexchat-lua-git
-	options = !libtool
 	source = git://github.com/hexchat/hexchat.git
 	md5sums = SKIP
 
