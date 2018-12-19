@@ -4,6 +4,23 @@ post_install() {
 	# Link to the binary
 	ln -sf '/opt/Obinslab Starter/obinslab-starter' '/usr/bin/obinslab-starter'
 	update-desktop-database -q
+
+	# Necessary udev rules for non-root access to AP or AP2
+	cat >/etc/udev/rules.d/obinslab-starter.rules <<-EOF
+	SUBSYSTEM=="input", GROUP="input", MODE="0666"
+	# For ANNE PRO 2
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8008",
+	MODE="0666", GROUP="plugdev"
+	KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8008",
+	MODE="0666", GROUP="plugdev"
+	## For ANNE PRO
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5710",
+	MODE="0666", GROUP="plugdev"
+	KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5710",
+	MODE="0666", GROUP="plugdev"
+	EOF
+	# Reload existing udev rules
+	sudo udevadm control --reload-rule
 }
 
 post_upgrade() {
@@ -16,4 +33,8 @@ post_remove() {
 	# Delete the link to the binary
 	rm -f '/usr/bin/obinslab-starter'
 	update-desktop-database -q
+
+	# Delete udev rule and reload
+	rm -f '/etc/udev/rules.d/obinslab-starter.rules'
+	sudo udevadm control --reload-rule
 }

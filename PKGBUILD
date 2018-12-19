@@ -14,6 +14,7 @@ install=${pkgname}.install
 source_x86_64=("http://releases.obins.net/occ/linux/deb/ObinslabStarter_1.0.5.deb")
 sha512sums_x86_64=('0adcce6146be6dd2c1394cbc4f439b903f8c0c4948f88fe8b33598a0a1529b4862fbe549451a04f30fc0ff79a7bbed332cda6524f49b7b6a4013c3c187f7144b')
 
+
 package(){
 
 	# Extract package data
