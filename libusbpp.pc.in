@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libusbpp
+Description: A simple C++ wrapper around libusb providing some additional convenience functions.
+Version: @VERSION@
+Libs: -L${libdir} -lusbpp
+Libs.private: -lusb-1.0
+Cflags: -I${includedir}/libusbpp
