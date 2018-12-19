@@ -2,16 +2,16 @@
 
 pkgname=mackup
 pkgver=0.8.18
-pkgrel=1
+pkgrel=2
 pkgdesc="a small Python utitlity to keep your application settings in sync."
 arch=('any')
 url="https://github.com/lra/mackup"
 license=('GPL3')
-depends=('python')
+depends=('python'
+         'python-docopt')
 
 makedepends=(
             'python'
-            'python-docopt'
             'python-setuptools')
 
 source=("https://github.com/lra/${pkgname}/archive/${pkgver}.tar.gz")
