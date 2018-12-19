@@ -2,7 +2,7 @@
 
 pkgname=xkb-switch
 pkgver=1.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Program that allows to query and change the XKB layout state'
 arch=('i686' 'x86_64')
 url='https://github.com/ierton/xkb-switch'
