@@ -2,7 +2,7 @@
 
 pkgbase=dhex
 pkgname=dhex-git
-pkgver=r3.4cbe567
+pkgver=r4.dde4756
 pkgrel=1
 pkgdesc="An ncurses-based hexeditor with a diff mode"
 arch=('x86_64')
@@ -13,20 +13,20 @@ conflictc=('dhex')
 source=("git+https://github.com/ideal/dhex.git")
 md5sums=('SKIP')
 
-dirname=dhex
+_pkgname=dhex
 
 pkgver() {
-  cd "${srcdir}/${dirname}"
+  cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${dirname}"
+  cd "${srcdir}/${_pkgname}"
   make
 }
 
 package() {
-  cd "${srcdir}/${dirname}"
+  cd "${srcdir}/${_pkgname}"
   install -d "${pkgdir}"/usr/{bin,share}
   install -d "${pkgdir}"/usr/man/man{1,5}
   make DESTDIR="${pkgdir}/usr" install

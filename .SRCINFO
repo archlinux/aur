@@ -1,6 +1,6 @@
 pkgbase = dhex
 	pkgdesc = An ncurses-based hexeditor with a diff mode
-	pkgver = r3.4cbe567
+	pkgver = r4.dde4756
 	pkgrel = 1
 	url = https://github.com/ideal/dhex/
 	arch = x86_64
