@@ -7,7 +7,7 @@ pkgdesc="Affiliated package for the AstroPy package for basic data reductions of
 arch=('i686' 'x86_64')
 url="http://ccdproc.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'python-astropy-helpers' 'python-scikit-image' 'python-astroscrappy' 'python-reproject' 'python-sphinx')
+makedepends=('cython' 'python-astropy-helpers' 'python-scikit-image' 'python-astroscrappy' 'python-reproject' 'python-sphinx-astropy')
 #checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/c/ccdproc/ccdproc-${pkgver}.tar.gz")
 md5sums=('89a5795245a517fbb5ca740aa85625b6')
@@ -17,7 +17,7 @@ prepare() {
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 }
 
-build () {
+build() {
     cd ${srcdir}/ccdproc-${pkgver}
     python setup.py build --use-system-libraries --offline
 
@@ -25,8 +25,8 @@ build () {
     python setup.py build_docs
 }
 
-#check(){
-#    cd $srcdir/ccdproc-${pkgver}
+#check() {
+#    cd ${srcdir}/ccdproc-${pkgver}
 #
 #    python setup.py test
 #}
@@ -44,7 +44,7 @@ package_python-ccdproc() {
 
 package_python-ccdproc-doc() {
     pkgdesc="Documentation for Python CCDPROC module"
-    cd ${srcdir}/ccdproc-${pkgver}/build/sphinx
+    cd ${srcdir}/ccdproc-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
