@@ -1,20 +1,20 @@
-diff --git a/release/linux/trezor.rules b/release/linux/trezor.rules
-index c937ad7..4fd234f 100644
---- a/release/linux/trezor.rules
-+++ b/release/linux/trezor.rules
-@@ -3,10 +3,10 @@
- # Put this file into /usr/lib/udev/rules.d
+diff --git i/release/linux/trezor.rules w/release/linux/trezor.rules
+index c5aac4b..fa6674b 100644
+--- i/release/linux/trezor.rules
++++ w/release/linux/trezor.rules
+@@ -6,10 +6,10 @@
+ # however, it is still necessary for Chrome support of u2f
  
  # TREZOR
 -SUBSYSTEM=="usb", ATTR{idVendor}=="534c", ATTR{idProduct}=="0001", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
 -KERNEL=="hidraw*", ATTRS{idVendor}=="534c", ATTRS{idProduct}=="0001",  MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl"
-+SUBSYSTEM=="usb", ATTR{idVendor}=="534c", ATTR{idProduct}=="0001", MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
++SUBSYSTEM=="usb", ATTR{idVendor}=="534c", ATTR{idProduct}=="0001", MODE="0660", GROUP="trezord", TAG+="uaccess", SYMLINK+="trezor%n"
 +KERNEL=="hidraw*", ATTRS{idVendor}=="534c", ATTRS{idProduct}=="0001",  MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl"
  
  # TREZOR v2
 -SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c0", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
 -SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c1", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
 -KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c1",  MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl"
-+SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c0", MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
-+SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c1", MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
++SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c0", MODE="0660", GROUP="trezord", TAG+="uaccess", SYMLINK+="trezor%n"
++SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c1", MODE="0660", GROUP="trezord", TAG+="uaccess", SYMLINK+="trezor%n"
 +KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c1",  MODE="0660", GROUP="trezord", TAG+="uaccess", TAG+="udev-acl"

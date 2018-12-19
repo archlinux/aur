@@ -3,7 +3,7 @@ _pkgname=trezord
 pkgname="${_pkgname}-git"
 gitname="${_pkgname}-go"
 pkgrel=1
-pkgver=2.0.14.r0.gd749730
+pkgver=2.0.25.r25.g678071f
 pkgdesc='TREZOR Communication Daemon'
 url='https://trezor.io/'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=(
 sha256sums=(
     'SKIP'
     'efa561a7192a22088d1840278fc742b77f649fb3d949aa2a1d8644c681acd270'
-    'ae9a00171c7542de802346ca364d0f463a64f97b72298af886d45a97a604f4ea'
+    'c6869841dcb9d6ef3f5c51b3c31ca35f1a981a07ca630a3e742a1245813a2da1'
 )
 
 _importpath="github.com/trezor/${gitname}"
@@ -43,7 +43,11 @@ pkgver() {
 
 build() {
     export GOPATH="${srcdir}"
-    go install "${_importpath}"
+    go install \
+        -gcflags "all=-trimpath=${srcdir}" \
+        -asmflags "all=-trimpath=${srcdir}" \
+        -ldflags "-extldflags ${LDFLAGS}" \
+        "${_importpath}"
 }
 
 package() {
