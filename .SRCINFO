@@ -7,7 +7,6 @@ pkgbase = agrum
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = cococpp
 	depends = python-pydotplus
 	depends = python-matplotlib
 	depends = ipython

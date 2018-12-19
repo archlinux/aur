@@ -6,7 +6,7 @@ license=('GPL')
 arch=('i686' 'x86_64')
 url="http://agrum.gitlab.io/"
 depends=('python-pydotplus' 'python-matplotlib' 'ipython' 'unixodbc')
-makedepends=('cmake' 'cococpp')
+makedepends=('cmake')
 source=("https://gitlab.com/agrumery/aGrUM/-/archive/${pkgver}/aGrUM-${pkgver}.tar.bz2")
 sha256sums=('bfb77bae256e08d100a62719ed6706f84845ce3ef0b87f25842206f5b2f8013b')
 
