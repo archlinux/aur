@@ -1,0 +1,19 @@
+post_install() {
+  echo "NOTE: To use eilin as normal user you have to add yourself into \"eilin\" group"
+  getent group eilin >> /dev/null || {
+    echo "Creating group 'eilin' ..."
+    groupadd eilin
+  }
+  chown -c :eilin /usr/bin/eilin /usr/bin/qeilin /usr/bin/testhid
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  getent group eilin &>/dev/null && {
+    echo "Deleting group 'eilin' ..."
+    groupdel eilin
+  }
+}
