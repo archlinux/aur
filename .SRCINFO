@@ -1,0 +1,18 @@
+pkgbase = nvidia-340xx-lts44
+	pkgdesc = NVIDIA drivers for linux-lts44, 340xx legacy branch
+	pkgver = 340.107
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	makedepends = nvidia-340xx-utils=340.107
+	makedepends = linux-lts44
+	makedepends = linux-lts44-headers
+	options = !strip
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/340.107/NVIDIA-Linux-x86_64-340.107-no-compat32.run
+	source = kernel-4.4.168.patch
+	sha512sums = 0de6f182d67bd322df7ae04e74c0cde6973c55bfea47a8f2503a29f8a899cd1b801ae4b52d066628df4a4f9c84e5e7547465bdc37d1b87df47af43fdab23466f
+	sha512sums = ea8c5d03ea05041e726a5ecd17e27833a4b6c7d824fe87f1016a47f484d07ac77652d6545439cff9e468e336fec0c7ad618e29401fcb325f18bc6f4308bd941b
+
+pkgname = nvidia-340xx-lts44
+

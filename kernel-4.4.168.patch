@@ -1,0 +1,67 @@
+--- a/kernel/nv-linux.h	2018-12-14 19:32:47.000000000 +1100
++++ b/kernel/nv-linux.h	2018-12-20 01:02:36.066123342 +1100
+@@ -2083,45 +2083,27 @@
+ 
+ /* get_user_pages
+  *
+- * The 8-argument version of get_user_pages was deprecated by commit 
+- * (2016 Feb 12: cde70140fed8429acf7a14e2e2cbd3e329036653)for the non-remote case 
+- * (calling get_user_pages with current and current->mm).
+- *
+- * Completely moved to the 6 argument version of get_user_pages -
+- * 2016 Apr 4: c12d2da56d0e07d230968ee2305aaa86b93a6832
+- *
+- * write and force parameters were replaced with gup_flags by - 
+- * 2016 Oct 12: 768ae309a96103ed02eb1e111e838c87854d8b51
+- *
++ * hacked to work with 4.4.168
+  */
+ 
+-#if defined(NV_GET_USER_PAGES_HAS_TASK_STRUCT)
+-    #define NV_GET_USER_PAGES(start, nr_pages, write, force, pages, vmas) \
+-        get_user_pages(current, current->mm, start, nr_pages, write, force, pages, vmas)
+-#else
+-    #if defined(NV_GET_USER_PAGES_HAS_WRITE_AND_FORCE_ARGS)
+-        #define NV_GET_USER_PAGES get_user_pages
+-    #else
+-        #include <linux/mm.h>
+-
+-        static inline long NV_GET_USER_PAGES(unsigned long start,
+-                                             unsigned long nr_pages,
+-                                             int write,
+-                                             int force,
+-                                             struct page **pages,
+-                                             struct vm_area_struct **vmas)
+-        {
+-            unsigned int flags = 0;
+-
+-            if (write)
+-                flags |= FOLL_WRITE;
+-            if (force)
+-                flags |= FOLL_FORCE;
+-
+-            return get_user_pages(start, nr_pages, flags, pages, vmas);
+-        }
+-    #endif
+-#endif
++#include <linux/mm.h>
++
++static inline long NV_GET_USER_PAGES(unsigned long start,
++                                        unsigned long nr_pages,
++                                        int write,
++                                        int force,
++                                        struct page **pages,
++                                        struct vm_area_struct **vmas)
++{
++    unsigned int flags = 0;
++
++    if (write)
++        flags |= FOLL_WRITE;
++    if (force)
++        flags |= FOLL_FORCE;
++
++    return get_user_pages(current, current->mm, start, nr_pages, flags, pages, vmas);
++}
+ 
+ /* get_user_pages_remote() was added by:
+  *   2016 Feb 12: 1e9877902dc7e11d2be038371c6fbf2dfcd469d7
