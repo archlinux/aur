@@ -3,7 +3,7 @@
 _pkgname=adhocspot-script
 pkgname="${_pkgname}"
 epoch=0
-pkgver=20180326.2
+pkgver=20181219.1
 pkgrel=1
 pkgdesc="Bash script to easily configure your interface to share your internet connection and configure a DHCP and DNS and TFTP boot server to listen on it. IP, DHCP, DNS can be configured, and for WiFi interfaces also wireless mode and encryption."
 arch=('any')

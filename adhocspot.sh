@@ -1,6 +1,6 @@
 #!/bin/bash
 
-_version=20161112.1
+_version=20181219.1
 
 ##### Dependencies. #####
 #
@@ -48,7 +48,7 @@ _rundir_base_default="/var/run/adhocspot"
 msg()
 {
   if [ $# -ge 1 ]; then
-    echo "$@"
+    cat <<< "$@"
   else
     cat
   fi
