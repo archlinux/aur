@@ -15,8 +15,8 @@
 pkgname=popcorntime-stable-bin
 _pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=1
-pkgdesc="Stream movies and TV shows from torrents (continuous integration builds)"
+pkgrel=2
+pkgdesc="Stream movies and TV shows from torrents (stable builds)"
 arch=('x86_64')
 url="https://popcorntime.sh"
 license=('GPL3')

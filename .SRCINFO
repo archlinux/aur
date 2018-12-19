@@ -1,5 +1,5 @@
 pkgbase = popcorntime-stable-bin
-	pkgdesc = Stream movies and TV shows from torrents (continuous integration builds)
+	pkgdesc = Stream movies and TV shows from torrents (stable builds)
 	pkgver = 0.3.10
 	pkgrel = 1
 	url = https://popcorntime.sh
