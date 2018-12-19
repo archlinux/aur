@@ -3,7 +3,7 @@
 pkgorg=github.com/mipimipi
 pkgname=smsync-git
 _pkgname=smsync
-pkgver=3.0.3
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="smsync (Smart Music Sync) keeps huge music collections in sync and is takes care of conversions between different file formats. It's an easy-to-use command line application"
 arch=('x86_64' 'i686')
