@@ -1,0 +1,36 @@
+pkgbase = pacman-test
+	pkgdesc = A library-based package manager with dependency support (new features testing)
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = http://www.archlinux.org/pacman/
+	arch = x86_64
+	groups = base
+	groups = base-devel
+	license = GPL
+	checkdepends = python2
+	checkdepends = fakechroot
+	makedepends = asciidoc
+	depends = archlinux-keyring
+	depends = bash
+	depends = glibc
+	depends = libarchive
+	depends = pacman-mirrorlist
+	depends = curl
+	depends = gpgme
+	depends = openssl
+	optdepends = perl-locale-gettext: translation support in makepkg-template
+	provides = pacman
+	conflicts = pacman
+	backup = etc/pacman.conf
+	backup = etc/makepkg.conf
+	source = git://github.com/ezamlinsky/pacman.git
+	source = pacman.conf
+	source = makepkg.conf
+	validpgpkeys = 6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD
+	validpgpkeys = B8151B117037781095514CA7BBDFFC92306B1121
+	sha256sums = SKIP
+	sha256sums = b82e9c1073292766c2f49b5c771dddf37383f1151117ef9cd5e0c11047b4f3eb
+	sha256sums = 650ddad24cad6afc4aecb4829cb8f06b9acb70c10a44f756fe8bd279949b518e
+
+pkgname = pacman-test
+
