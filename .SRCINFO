@@ -9,6 +9,7 @@ pkgbase = xkb-switch-git
 	makedepends = git
 	makedepends = cmake
 	depends = libx11
+	depends = libxkbfile
 	provides = xkb-switch
 	conflicts = xkb-switch
 	source = git+git://github.com/ierton/xkb-switch
