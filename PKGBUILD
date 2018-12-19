@@ -11,8 +11,8 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
-_commit='63f95c0297aea62ce47d1389e5221c54992f580e'
-pkgver=239.303
+_commit='3bf819c4ca718a6bc4b3b871cf52a0d1b518967d'
+pkgver=239.370
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
