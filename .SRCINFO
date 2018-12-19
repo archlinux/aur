@@ -1,0 +1,22 @@
+pkgbase = libusbpp-hg
+	pkgdesc = A simple C++ wrapper around libusb providing some additional convenience functions.
+	pkgver = date20170116_r24.8797ece29e62
+	pkgrel = 1
+	url = http://bitbucket.org/stativ/libusbpp
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = mercurial
+	depends = libusb
+	provides = libusbpp
+	provides = testhid-hg
+	provides = testhid
+	conflicts = libusbpp
+	conflicts = testhid-hg
+	conflicts = testhid
+	source = libusbpp::hg+http://bitbucket.org/stativ/libusbpp
+	sha256sums = SKIP
+
+pkgname = libusbpp-hg
+
