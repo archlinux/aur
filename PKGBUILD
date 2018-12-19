@@ -64,7 +64,7 @@ sha256sums=(
 prepare() {
 
 	# Change directory to source directory
-	cd $pkgname
+	cd pacman
 
 	# Run autogen script if exists
 	if [ -x autogen.sh ]; then
@@ -78,7 +78,7 @@ prepare() {
 build() {
 
 	# Change directory to source directory
-	cd $pkgname
+	cd pacman
 
 	# Default configure options
 	config_opts=(
@@ -122,7 +122,7 @@ build() {
 check() {
 
 	# Change directory to source directory
-	cd $pkgname
+	cd pacman
 
 	# Run internal checks
 	make -k check
@@ -134,7 +134,7 @@ check() {
 package() {
 
 	# Change directory to source directory
-	cd $pkgname
+	cd pacman
 
 	# Install files
 	make DESTDIR=$pkgdir install
