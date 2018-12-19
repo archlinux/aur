@@ -1,0 +1,45 @@
+
+name=smart-organizing-monitor-for-sp-200series
+
+install_system_icons() {
+	# Add icons to the system icons
+	XDG_ICON_RESOURCE="`which xdg-icon-resource 2> /dev/null`"
+	if [ -x "$XDG_ICON_RESOURCE" ]; then
+	    for icon in "/opt/$name/som_"*.png; do
+			size="${icon##*/som_}"
+			"$XDG_ICON_RESOURCE" $1 --size "${size%.png}" "$icon" $name
+	    done
+	fi
+}
+
+post_upgrade() {
+	#update the menu
+	UPDATE_MENUS="`which update-menus 2> /dev/null`"
+	#update the menu
+	if [ -x "$UPDATE_MENUS" ]; then
+	  update-menus
+	fi
+}
+
+post_install() {
+	install_system_icons install
+
+	post_upgrade
+
+	#add w+r for DevCfg.ini
+	rm -f /home/*/.sdcdevcfgnetb.ini
+	rm -f /home/*/.som200series.ini
+	rm -f /home/*/.som200seriesa.ini
+	rm -f /home/*/.som_ui.ini
+	rm -f /home/*/.som_uia.ini
+}
+
+post_remove() {
+	post_upgrade
+}
+
+pre_remove() {
+	install_system_icons uninstall
+}
+
+
