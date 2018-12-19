@@ -1,21 +1,19 @@
-# Maintainer: Josef Vybihal josef.vybihal.gmail.com
-# Previous maintainer: TingPing tingping@tingping.se
+# Maintainer: TingPing tingping@tingping.se
 
 pkgname=hexchat-git
-pkgver=2.14.2.r9.ged553301
+pkgver=2.12.4.r45.gc6f3fbd1
 pkgrel=1
 pkgdesc='A GTK+ based IRC client'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://hexchat.github.io'
 license=('GPL')
-depends=('dbus-glib' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk2'
-         'libcanberra' 'libnotify' 'libproxy' 'openssl' 'pango' 'pciutils')
-makedepends=('git' 'intltool' 'iso-codes' 'lua' 'meson' 'perl' 'python')
-optdepends=('enchant: Spell check'
-            'iso-codes: Display language names instead of codes'
-            'lua: Lua plugin'
-            'perl: Perl plugin'
-            'python: Python plugin')
+depends=('gtk2' 'openssl' 'dbus-glib' 'luajit'
+         'libcanberra' 'libnotify' 'libproxy' 
+         'hicolor-icon-theme' 'desktop-file-utils' 'sound-theme-freedesktop' 'iso-codes')
+makedepends=('git' 'perl' 'python' 'meson')
+optdepends=('enchant: for spell check'
+            'perl: for perl plugin'
+            'python: for python plugin')
 provides=('hexchat')
 conflicts=('hexchat' 'hexchat-lua-git')
 replaces=('hexchat-lua-git')
@@ -30,19 +28,14 @@ pkgver() {
 }
 
 build() {
-  #cd "$_gitname"
+  cd "$_gitname"
 
-  #rm -rf _build
-  arch-meson ${_gitname} _build \
-    --prefix=/usr \
-    --buildtype=plain \
-    -Dwith-lua='lua' \
-    -Dwith-text='true' \
-    #-Dwith-python=python2
+  rm -rf _build
+  meson _build --prefix=/usr --buildtype=plain
   ninja -C _build
 }
 
 package() {
-  #cd "$_gitname"
+  cd "$_gitname"
   env DESTDIR="$pkgdir" ninja -C _build install
 }
