@@ -1,0 +1,21 @@
+pkgbase = git-remote-ipld-git
+	pkgdesc = git IPLD remote helper
+	pkgver = 0.0.0.g61547fd
+	pkgrel = 1
+	url = https://github.com/ipfs-shipyard/git-remote-ipld
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = jq
+	makedepends = go-ipfs
+	depends = git
+	provides = git-remote-ipld
+	conflicts = git-remote-ipld
+	source = git+https://github.com/ipfs-shipyard/git-remote-ipld.git
+	sha256sums = SKIP
+
+pkgname = git-remote-ipld-git
+
