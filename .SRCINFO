@@ -1,0 +1,16 @@
+pkgbase = rust-analyzer-git
+	pkgdesc = An experimental Rust compiler front-end for IDEs
+	pkgver = 0.1.0.1249.g0e1c01c
+	pkgrel = 1
+	url = https://github.com/rust-analyzer/rust-analyzer
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	provides = rust-analyzer
+	conflicts = rust-analyzer
+	source = rust-analyzer-git::git+https://github.com/rust-analyzer/rust-analyzer.git
+	sha256sums = SKIP
+
+pkgname = rust-analyzer-git
+
