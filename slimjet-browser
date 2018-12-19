@@ -8,6 +8,9 @@ if [[ `id -u` -eq 0 ]]; then
   --session-command="DISPLAY=:0 /usr/share/slimjet/flashpeak-slimjet $@"&
   wait $!
 else
+  if [[ `cat /proc/sys/kernel/unprivileged_userns_clone` -eq 0 ]]; then
+    echo 1 > /proc/sys/kernel/unprivileged_userns_clone
+  fi
   . /usr/share/flashpeak-slimjet $@ &
   wait $!
 fi
