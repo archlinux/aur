@@ -1,6 +1,6 @@
 pkgbase = linux-amd-raven
 	pkgver = 4.20.rc7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-amd-raven
 	source = config.x86_64
 	source = linux-amd-raven.preset
 	sha256sums = SKIP
-	sha256sums = 16d792dbe1f61abf81841419c2e47a0900e03f1425ec9ffb927249f388574bf8
+	sha256sums = 04f9b19d0dde49a132d79006663cac6cfe3a0eb1252ca33e9694a63f00bccb65
 	sha256sums = 0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87
 
 pkgname = linux-amd-raven

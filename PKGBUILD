@@ -3,7 +3,7 @@
 pkgbase=linux-amd-raven
 _srcname=linux
 pkgver=4.20.rc7
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -16,7 +16,7 @@ source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/l
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
-            '16d792dbe1f61abf81841419c2e47a0900e03f1425ec9ffb927249f388574bf8'
+            '04f9b19d0dde49a132d79006663cac6cfe3a0eb1252ca33e9694a63f00bccb65'
             '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87')
 
 _kernelname=${pkgbase#linux}
@@ -34,10 +34,6 @@ prepare() {
     echo "Sorry, non x86_64 arch not supported."
       exit 2
   fi
-
-  # set localversion to git commit
-  sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
-  sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
