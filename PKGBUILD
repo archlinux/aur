@@ -1,15 +1,15 @@
 # Maintainer: Daniel Fernandez Rodriguez <gmail.com daferoes>
 pkgname=python-cec
-pkgver=0.2.5
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="libcec bindings for Python"
 arch=('any')
 url="https://github.com/trainman419/python-cec"
 license=('GPL')
-depends=('libcec>=1.6.1')
+depends=('libcec') #Fixes raspberry pi dependency of package libcec-rpi which provides libcec but no version specified. (https://archlinuxarm.org/packages/armv7h/libcec-rpi/files/PKGBUILD)
 makedepends=('git' 'python2-setuptools')
 source=("https://github.com/trainman419/python-cec/archive/$pkgver.tar.gz")
-md5sums=('f086f0f853fbfa5d241ab53c89ea50bf')
+md5sums=('7aa445c7616a152d8ae357248f6306be')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
