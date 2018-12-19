@@ -1,6 +1,6 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=pyocd
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="Python On Chip Debugger and programmer for ARM Cortex-M microcontrollers using CMSIS-DAP"
 url="https://github.com/mbedmicro/pyocd"
@@ -21,8 +21,8 @@ license=('Apache')
 arch=('any')
 # Sigh: Make sure you're not using GitHub's tarballs (or similar ones), as those don't contain the necessary metadata. Use PyPI's tarballs instead.
 #source=("https://github.com/mbedmicro/${pkgname}/archive/v${pkgver}.tar.gz")
-source=("https://files.pythonhosted.org/packages/12/4a/cc22b847cbb0c56e13e17ac6ea497d12297f7a5792ceb7be981d52551f5e/pyocd-0.14.1.tar.gz")
-sha512sums=('289f26844907acfbebcf98e468e7b61547608c3d48b8f9c35e59bc8847fb1b3a3ce6955b8c8ec02ec91daee215762304c5da1487fa55ad64c758cbab4e03b53b')
+source=("https://files.pythonhosted.org/packages/74/2b/618c5ac18961770b26f429c78946cc9003860f1036a6d51902ba23f90811/pyocd-0.14.2.tar.gz")
+sha512sums=('37256facae069e6c1f23722a9963c5101fe0c423be3cdd0be6828a6de71b2dc324375c18b5a07519d8a2c4712a51631b4f7edbc9137e1b455e5233d8cf858290')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
