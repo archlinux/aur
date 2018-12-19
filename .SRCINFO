@@ -10,7 +10,6 @@ pkgbase = timescaledb
 	makedepends = gcc
 	makedepends = cmake>=3.4
 	makedepends = git
-	depends = postgresql<11
 	depends = postgresql>=9.6.0
 	depends = postgresql-libs>=9.6.0
 	source = timescaledb-1.1.0::git+https://github.com/timescale/timescaledb.git#tag=0.11.0
