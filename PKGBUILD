@@ -22,7 +22,7 @@ fi
 ## Archlinux and Xanmod enable it by default.
 ## Set variable "use_numa" to: n to disable (possibly increase performance)
 ##                             y to enable  (stock default)
-if [ -z ${_numa+x} ]; then
+if [ -z ${use_numa+x} ]; then
   use_numa=y
 fi
 ##
@@ -30,14 +30,14 @@ fi
 ## Stock Archlinux and Xanmod have this enabled. 
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
 ##                                y to enable  (stock default)
-if [ -z ${_tracers+x} ]; then
+if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 ##
 ## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
 ## Set variable "use_pds" to: n to disable (stock Xanmod)
 ##                            y to enable
-if [ -z ${_pds+x} ]; then
+if [ -z ${use_pds+x} ]; then
   use_pds=n
 fi
 
