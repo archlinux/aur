@@ -1,7 +1,7 @@
 pkgbase = qtcreator-fixed-themes
 	pkgdesc = Lightweight, cross-platform integrated development environment, with fixes applied for various themes
 	pkgver = 4.8.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://qt-project.org
 	arch = x86_64
 	license = LGPL
