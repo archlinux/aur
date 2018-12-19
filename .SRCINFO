@@ -1,0 +1,12 @@
+pkgbase = ultimate-oldschool-pc-font-pack
+	pkgdesc = System and BIOS fonts from DOS-era IBM PCs and compatibles
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://int10h.org/oldschool-pc-fonts
+	arch = any
+	license = custom
+	source = ultimate-oldschool-pc-font-pack_v1.0.zip::https://int10h.org/oldschool-pc-fonts/download/ultimate_oldschool_pc_font_pack_v1.0.zip
+	sha256sums = 7666cf23176e34ea03a218b5c1500f4ad729d97150ab7bdb7cf2adf4c99a9a7a
+
+pkgname = ultimate-oldschool-pc-font-pack
+
