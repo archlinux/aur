@@ -1,16 +1,17 @@
-# Maintainer: Alastair Feille <me@alastair.se>
+# Maintainer: Valentijn V. <deepnavy at waifu dot club>
+# Contributor: Alastair Feille <me at alastair dot se>
 
 pkgname=wget-lua
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Wget with Lua scripting"
 url="http://archiveteam.org/index.php?title=Wget_with_Lua_hooks"
 license=('GPL')
-depends=('openssl' 'libidn' 'pcre' 'lua')
+depends=('gnutls' 'libidn' 'pcre' 'lua')
 optdepends=("ca-certificates: HTTPS Downloads")
 makedepends=('git' 'perl')
 provides=('wget-lua')
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7l')
 source=("http://warriorhq.archiveteam.org/downloads/wget-lua/wget-1.14.lua.LATEST.tar.bz2"
         "lua.patch"
         "ssl.patch")
@@ -22,7 +23,7 @@ build() {
   patch -p0 -i $srcdir/lua.patch
   patch -p0 -i $srcdir/ssl.patch
 
-  ./configure --with-ssl=openssl --disable-nls
+  ./configure --with-ssl=gnutls --disable-nls
   make
 }
 
