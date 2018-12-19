@@ -2,12 +2,12 @@
 
 pkgname=hexchat-git
 pkgver=2.14.2.r9.ged553301
-pkgrel=1
+pkgrel=2
 pkgdesc='A GTK+ based IRC client'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://hexchat.github.io'
 license=('GPL')
-depends=('gtk2' 'openssl' 'dbus-glib' 'luajit'
+depends=('gtk2' 'openssl' 'dbus-glib' 'luajit' 'python-cffi'
          'libcanberra' 'libnotify' 'libproxy' 
          'hicolor-icon-theme' 'desktop-file-utils' 'sound-theme-freedesktop' 'iso-codes')
 makedepends=('git' 'perl' 'python' 'meson')
