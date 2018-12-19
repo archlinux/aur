@@ -2,9 +2,9 @@
 # Contributor: visit ""
 pkgname=('slimjet-browser')
 _origname='slimjet'
-pkgver=21.0.4.0
+pkgver=21.0.6.0
 pkgrel=1
-pkgdesc="A lightweight Browser based on Blink (**added: 'slim-root' sandbox-user)"
+pkgdesc="A lightweight Browser based on Blink (without setuid-sandbox)"
 arch=('x86_64')
 url="http://www.slimjet.com"
 depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gtk2' 'harfbuzz' 'harfbuzz-icu' 'hicolor-icon-theme' 'xorg-xhost'

@@ -1,14 +1,13 @@
 #!/bin/sh
 post_install() {
-  mkdir -m0755 /home/slim-root || exit 1
-	useradd -M -G wheel,http,audio,video,root,sys,mem,utmp --home=/home/slim-root -s /bin/sh slim-root || exit 1
-  chown slim-root:root -R /home/slim-root
+	useradd -G root,dbus,wheel,http,network,video,audio \
+	        -m -k /dev/zero --comment 'SlimJet runtime' \
+	        -s /bin/sh slim-root || exit 1
+  chown slim-root:root -R /home/slim-root || exit 1
   chown slim-root:root -R /usr/share/slimjet || exit 1
-  setcap cap_setuid,cap_sys_chroot,cap_sys_admin+pei /usr/share/slimjet/slimjet-sandbox || exit 1
-  chown root:root /usr/share/slimjet/slimjet-sandbox || exit 1
-  chmod 4755 /usr/share/slimjet/slimjet-sandbox || exit 1
 }
 
 post_remove() {
   userdel --force --remove slim-root || exit 1
+  rm -rf /usr/share/slimjet &>/dev/zero
 }
