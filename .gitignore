@@ -1,0 +1,4 @@
+pkg/
+src/
+*.rpm
+*.pkg.tar.xz

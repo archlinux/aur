@@ -1,17 +1,20 @@
-pkgbase = cinnamon-applet-global-appmenu-git
+pkgbase = cinnamon-applet-global-appmenu
 	pkgdesc = Cinnamon applet. Integrates the Ubuntu AppMenu (Global Menu) support into Cinnamon Desktop.
-	pkgver = r99.d9eb339
+	pkgver = 0.6.git20160913.5b55d2d.fc28
 	pkgrel = 1
 	url = https://github.com/jake-phy/WindowIconList
 	arch = any
 	license = GPL
-	makedepends = git
+	makedepends = rpmextract
 	depends = cinnamon
-	depends = unity-gtk-module-standalone-bzr
+	depends = appmenu-gtk-module-git
 	provides = cinnamon-applet-global-appmenu
 	conflicts = cinnamon-applet-global-appmenu
-	source = cinnamon-applet-global-appmenu-git::git+https://github.com/lestcape/Global-AppMenu.git
-	md5sums = SKIP
+	replaces = cinnamon-applet-global-appmenu-git
+	source = http://dl.fedoraproject.org/pub/fedora-secondary/releases/28/Everything/i386/os/Packages/c/cinnamon-applet-globalappmenu-0.6-4.git20160913.5b55d2d.fc28.noarch.rpm
+	source = configurableMenus.patch
+	md5sums = edb90f3245d993a347f9206e362d6fc1
+	md5sums = 3d7b129e6ee0aaabc772c4ff9479d726
 
-pkgname = cinnamon-applet-global-appmenu-git
+pkgname = cinnamon-applet-global-appmenu
 
