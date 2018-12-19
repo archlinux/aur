@@ -115,7 +115,7 @@ package() {
 
   # copy Icons
   # install -Dm644 $_pkgname.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
-  install -Dm644 installer/icons/$_pkgname.svg "$pkgdir/usr/share/icons/$_pkgname.svg"
+  install -Dm644 installer/icons/$_pkgname.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 
   # sudo archlinux-java set $_jre
 }
