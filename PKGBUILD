@@ -5,9 +5,9 @@
 
 pkgname=diffimg
 _pkgname=Diffimg
-_newpkgname=Diffimg-xbee # possible future name?
+_newpkgname=Diffimg-xbee # possible future name due to conflict
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple image comparison tool"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -36,6 +36,15 @@ prepare(){
   sed -i -e 's;\"\/usr\/include\/qwt\";\"\/usr\/include\/qwt\-qt4\";g' CMakeLists.txt
   sed -i -e '178s;qwt;qwt\-qt4;g' CMakeLists.txt
   sed -i -e '180s;qwt;qwt\-qt4;g' CMakeLists.txt
+
+  #Hack to fix upgrade to opencv4 breaking legacy components
+  sed -i -e "/ADD_LIBRARY(PerceptualDiff/a find_package(OpenCV COMPONENTS opencv_imgproc REQUIRED CONFIG)\ninclude_directories(\${OpenCV_INCLUDE_DIRS})" ../3rdparty/perceptualdiff/CMakeLists.txt
+  sed -i -e "/#include <opencv2\/imgproc\/imgproc.hpp/i #include <opencv2\/imgproc\/imgproc_c.h>" ../3rdparty/perceptualdiff/OpenCVImageLoader.cpp
+  sed -i -e "/#include <opencv2\/imgproc\/imgproc.hpp/i #include <opencv2\/imgproc\/imgproc_c.h>" ../src/MiscFunctions.cpp
+  sed -i -e "/#include <opencv2\/imgproc\/imgproc.hpp/i #include <opencv2\/imgproc\/imgproc_c.h>" ../src/metrics/PerLuminanceMetric.cpp
+  sed -i -e "/#include <opencv2\/imgproc\/imgproc.hpp/i #include <opencv2\/imgcodecs\/legacy\/constants_c.h>\n#include <opencv2\/imgproc\/imgproc_c.h>" ../src/metrics/BaseMetric.cpp
+
+
 }
 
 build() {
@@ -48,16 +57,15 @@ build() {
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}-src
-  install -Dm644 ../${pkgname}.desktop "${pkgdir}"/usr/share/applications/${_pkgname}.desktop
+  cd ${_pkgname}-${pkgver}-src/build
+  install -Dm644 ../../${pkgname}.desktop "${pkgdir}"/usr/share/applications/${_pkgname}.desktop
 
-  cd ./build
   #make DESTDIR="${pkgdir}" INSTALL_ROOT="${pkgdir}" install
   #make INSTALL_ROOT="${pkgdir}" install
 
   make DESTDIR="${pkgdir}" prefix="${pkgdir}" install
 
-  # remove cmake's generated file
+  # remove cmake's generated file we don't need
   rm "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   # fix name conflicts with graphviz/diffimg
@@ -72,4 +80,3 @@ package() {
   mv "${pkgdir}/usr/share/pixmaps/diffimg.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}/${_pkgname}.png"
 
 }
-

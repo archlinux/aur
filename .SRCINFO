@@ -1,7 +1,7 @@
 pkgbase = diffimg
 	pkgdesc = Simple image comparison tool
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/diffimg/
 	install = diffimg.install
 	arch = i686
