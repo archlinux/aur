@@ -1,6 +1,6 @@
 pkgbase = linux-amd-raven
-	pkgver = 4.20rc7.r6.gddfbab46539f
-	pkgrel = 1
+	pkgver = 4.20.rc7
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2

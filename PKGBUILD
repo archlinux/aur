@@ -3,7 +3,7 @@
 pkgbase=linux-amd-raven
 _srcname=linux
 pkgver=4.20.rc7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
