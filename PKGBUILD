@@ -126,7 +126,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Linux kernel (git version)"
+  pkgdesc="Header files and scripts for building modules for Linux kerel with working amdgpu for Raven Ridge hardware"
   provides=('linux-headers')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
@@ -237,7 +237,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel"
   provides=('linux-docs')
 
   cd "${_srcname}"

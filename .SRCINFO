@@ -31,10 +31,10 @@ pkgname = linux-amd-raven
 	backup = etc/mkinitcpio.d/linux-amd-raven.preset
 
 pkgname = linux-amd-raven-headers
-	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
+	pkgdesc = Header files and scripts for building modules for Linux kerel with working amdgpu for Raven Ridge hardware
 	provides = linux-headers
 
 pkgname = linux-amd-raven-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel
 	provides = linux-docs
 
