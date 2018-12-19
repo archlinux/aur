@@ -12,21 +12,21 @@
 # Contributor: xantares <xantares09 [at] hotmail [dot] com>
 # Contributor: petterk <stifler3k [at] hotmail [dot] com>
 
-pkgname=popcorntime-ci-bin
+pkgname=popcorntime-stable-bin
 _pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=362
+pkgrel=1
 pkgdesc="Stream movies and TV shows from torrents (continuous integration builds)"
 arch=('x86_64')
 url="https://popcorntime.sh"
 license=('GPL3')
 depends=('nss' 'ttf-font' 'libxss' 'gtk3' 'nodejs')
-provides=('popcorntime' 'popcorn-time-ce' 'popcorntime-bin')
+provides=('popcorntime' 'popcorn-time-ce' 'popcorntime-ci-bin' 'popcorntime-bin')
 conflicts=('popcorntime')
 options=('!strip')
-source=("${_pkgname}.desktop" "https://ci.popcorntime.sh/job/Popcorn-Time-Desktop/${pkgrel}/artifact/build/Popcorn-Time-${pkgver}_linux64.tar.xz")
+source=("${_pkgname}.desktop" "https://get.popcorntime.sh/build/Popcorn-Time-${pkgver}-Linux-64.tar.xz")
 sha512sums=('7e6538a7b39465439a62cb089510b6d85a65ad4bfa74d21b692363d1176ee94165ab7b5fef5f3470bf821cfc9f3b3a23763b8e3d8530420d7fa97c66083c3adb'
-            '4995da3263738fd9c99ad9158d13d768627a132253afe9f42d59c6ff6fc90d4ab1569b95b7c9f342b2a09145908af7baac0755d71542b1a5a98c0bbd80ff916a')
+            '0fe3c1be064231134eacfb0be74266361ba5d521f0cda2848cad5357fe03d6603284e80ed3bdacdf0a012b415949b9603ff3dcf95b03693e2f7704d500ee9516')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
