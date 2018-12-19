@@ -1,0 +1,16 @@
+pkgbase = ruby-textplay-git
+	pkgdesc = Convert fountain screenplays to Final Draft and HTML format, and convert HTML to PDF.
+	pkgver = r87.88f7871
+	pkgrel = 1
+	url = https://www.olivertaylor.net/
+	arch = any
+	license = custom:textplay
+	makedepends = git
+	depends = ruby
+	provides = ruby-textplay
+	conflicts = ruby-textplay
+	source = ruby-textplay::git+https://github.com/olivertaylor/Textplay
+	md5sums = SKIP
+
+pkgname = ruby-textplay-git
+
