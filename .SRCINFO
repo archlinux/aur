@@ -1,7 +1,7 @@
 pkgbase = linux-selinux
-	pkgver = 4.19.8.arch1
+	pkgver = 4.19.9.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v4.19.8-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v4.19.9-arch1
 	arch = x86_64
 	groups = selinux
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = linux-selinux
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v4.19.8-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v4.19.9-arch1
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -23,7 +23,7 @@ pkgbase = linux-selinux
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = e8f4f68a8a21f82879e4069fda76a796e860d60a71c9db4e45fb93d58734a03f
+	sha256sums = 4bb18fbcb04501664e8e09d1388d312c223ce24c696ad27d51e6f9ebd8b14b65
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
