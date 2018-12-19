@@ -1,0 +1,23 @@
+pkgbase = acl-ebuild
+	pkgdesc = Access control list utilities, libraries and headers
+	pkgver = 2.2.53
+	pkgrel = 1
+	url = http://savannah.nongnu.org/projects/acl
+	arch = x86_64
+	license = LGPL
+	makedepends = gettext
+	depends = attr
+	depends = glibc
+	provides = xfsacl
+	provides = acl
+	conflicts = xfsacl
+	conflicts = acl
+	replaces = xfsacl
+	replaces = acl
+	source = https://download.savannah.gnu.org/releases/acl/acl-2.2.53.tar.gz
+	source = https://download.savannah.gnu.org/releases/acl/acl-2.2.53.tar.gz.sig
+	sha256sums = 06be9865c6f418d851ff4494e12406568353b891ffe1f596b34693c387af26c7
+	sha256sums = SKIP
+
+pkgname = acl-ebuild
+
