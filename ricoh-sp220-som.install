@@ -24,7 +24,7 @@ update_menus() {
 post_install() {
 	install_system_icons install
 
-	post_upgrade
+	update_menus
 
 	#add w+r for DevCfg.ini
 	rm -f /home/*/.sdcdevcfgnetb.ini

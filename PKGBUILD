@@ -1,7 +1,7 @@
 # Maintainer: Ivan Naydonov <samogot@gmail.com>
 pkgname=ricoh-sp220-som
 pkgver=1.07
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Smart Organizing Monitor Utility for Ricoh SP220 series"
 arch=('i686' 'x86_64')

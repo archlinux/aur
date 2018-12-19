@@ -1,7 +1,7 @@
 pkgbase = ricoh-sp220-som
 	pkgdesc = Smart Organizing Monitor Utility for Ricoh SP220 series
 	pkgver = 1.07
-	pkgrel = 2
+	pkgrel = 3
 	url = http://support.ricoh.com/bb/html/dr_ut_e/re1/model/sp221s/sp221s.htm
 	install = ricoh-sp220-som.install
 	arch = i686
