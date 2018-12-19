@@ -2,30 +2,42 @@
 # Maintainer: Darcy Hu <hot123tea123@gmail.com>
 
 ## This PKGBUILD creates an Arch Linux package for the proprietary MATLAB application.
-## In order to build the package the user must supply a plain text file installation key as file `matlab.fik`, the license file as `matlab.lic`, the software tarball as `matlab.tar` from MATLAB ISO image.
-## A typical matlab tarball directory structure look like this:
-# matlab
-# ├── activate.ini
-# ├── archives/
-# ├── bin/
-# ├── etc/
-# ├── help/
-# ├── install
-# ├── installer_input.txt
-# ├── install_guide.pdf
-# ├── java/
-# ├── license_agreement.txt
-# ├── licenses/
-# ├── patents.txt
-# ├── readme.txt
-# ├── sys/
-# ├── trademarks.txt
-# ├── ui/
-# └── version.txt
-#
-## To perform a network install set $_networkinstall to true.
+## In order to build the package, the user must supply:
+## 1) a plain text file installation key as file `matlab.fik`
+## and
+## 2) the software tarball as `matlab.tar` from MATLAB ISO image or as downloaded by the installer
+## A typical matlab tarball structure looks like this:
+#matlab.tar
+#├── activate.ini*
+#├── archives/
+#│   ├── common/
+#│   └── glnxa64/
+#│       ├── matlab/
+#│       ├── matlab_code_analyzer/
+#│       ├── matlabconnector/
+#│       ├── matlabdata/
+#│       ├── matlab_desktop_glnxa64_1535004605.enc*
+#│       ├── matlab_desktop_glnxa64_1535004605.xml*
+#│       ├── ... other encrypted toolbox/related files & folders go here 
+#├── bin/
+#├── help/
+#├── install*
+#├── installer_input.txt*
+#├── install_guide.pdf*
+#├── java/
+#├── license_agreement.txt*
+#├── patents.txt*
+#├── readme.txt*
+#├── sys/
+#├── trademarks.txt*
+#├── ui/
+#└── VersionInfo.xml*
 
-_networkinstall=false
+## This PKGBUILD no longer attempts to activate the product.
+## The user will be prompted to undertake their activation method of choice when the GUI is first run.
+## Activation could be automated by running /opt/matlab/bin/activate_matlab.sh
+## after this package is installed.
+## That activation script could be called by matlab.install (a file that doesn't exist at this time)
 
 # partial install
 _partialinstall=false
@@ -58,15 +70,11 @@ depends=('gconf'
          'xerces-c')
 optdepends=('gcc6: For MEX support')
 
-source=("file://matlab.tar"
-		"file://matlab.fik"
-		"file://matlab.lic"
-		"matlab.png::https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png")
-md5sums=('SKIP'
-		'SKIP'
-		'SKIP'
-		'cf28632239db6e02bc09bcca6bf5360f')
-PKGEXT='.pkg.tar'
+source=("local:///matlab.tar"
+	"local:///matlab.fik"
+	"matlab.png::https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png")
+md5sums=("SKIP" "SKIP" 'cf28632239db6e02bc09bcca6bf5360f')
+#PKGEXT='.pkg.tar'
 
 prepare() {
 	# using system's libstdc++
@@ -81,33 +89,29 @@ prepare() {
 	_fik=$(grep -o [0-9-]* ${pkgname}.fik)
 
 	msg2 'Modifying the installer settings'
-	sed -i "s,^# destinationFolder=,destinationFolder=${pkgdir}/${_instdir}," "${srcdir}/${pkgname}/installer_input.txt"
-	sed -i "s,^# agreeToLicense=,agreeToLicense=yes," "${srcdir}/${pkgname}/installer_input.txt"
-	sed -i "s,^# mode=,mode=silent," "${srcdir}/${pkgname}/installer_input.txt"
-	sed -i "s,^# fileInstallationKey=,fileInstallationKey=${_fik}," "${srcdir}/${pkgname}/installer_input.txt"
+	sed -i "s,^# destinationFolder=,destinationFolder=${pkgdir}/${_instdir}," "${srcdir}/installer_input.txt"
+	sed -i "s,^# agreeToLicense=,agreeToLicense=yes," "${srcdir}/installer_input.txt"
+	sed -i "s,^# mode=,mode=silent," "${srcdir}/installer_input.txt"
+	sed -i "s,^# fileInstallationKey=,fileInstallationKey=${_fik}," "${srcdir}/installer_input.txt"
 
-	if ${_networkinstall}; then
-		sed -i "s,^# licensePath=,licensePath=${srcdir}/matlab.lic," "${srcdir}/${pkgname}/installer_input.txt"
-	else
-		sed -i "s,^# activationPropertiesFile=,activationPropertiesFile=${srcdir}/${pkgname}/activate.ini," "${srcdir}/${pkgname}/installer_input.txt"
-		sed -i "s,^activateCommand=,activateCommand=activateOffline," "${srcdir}/${pkgname}/activate.ini"
-		sed -i "s,^licenseFile=,licenseFile=${srcdir}/matlab.lic," "${srcdir}/${pkgname}/activate.ini"
-	fi
+	# install all productcts by default
+	sed -i "/^#product.${_product}$/ s/^#//" "${srcdir}/installer_input.txt"
 
 	if [ ! -z ${_products+isSet} ]; then
     	msg2 'Building a package with a subset of the licensed products.'
+	sed -i "s,^product,#product," "${srcdir}/installer_input.txt"
     	for _product in "${_products[@]}"; do
-      		sed -i "/^#product.${_product}$/ s/^#//" "${srcdir}/${pkgname}/installer_input.txt"
+      		sed -i "/^#product.${_product}$/ s/^#//" "${srcdir}/installer_input.txt"
     	done
   	fi
 }
 
 package() {
 	msg2 'Starting MATLAB installer'
-	"${srcdir}/${pkgname}/install" -inputFile "${srcdir}/${pkgname}/installer_input.txt"
+	"${srcdir}/install" -inputFile "${srcdir}/installer_input.txt"
 
 	msg2 'Installing license'
-	install -D -m644 "${srcdir}/${pkgname}/license_agreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${srcdir}/license_agreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	msg2 'Installing desktop files'
 	install -D -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -117,99 +121,9 @@ package() {
 
 if ${_partialinstall} && [ -z ${_products+isSet} ]; then
 	_products=(
-		"5G_Toolbox"
-		"Aerospace_Blockset"
-		"Aerospace_Toolbox"
-		"Antenna_Toolbox"
-		"Audio_System_Toolbox"
-		"Automated_Driving_System_Toolbox"
-		"Bioinformatics_Toolbox"
-		"Communications_Toolbox"
-		"Computer_Vision_System_Toolbox"
-		"Control_System_Toolbox"
-		"Curve_Fitting_Toolbox"
-		"DO_Qualification_Kit"
-		"DSP_System_Toolbox"
-		"Data_Acquisition_Toolbox"
-		"Database_Toolbox"
-		"Datafeed_Toolbox"
-		"Deep_Learning_Toolbox"
-		"Econometrics_Toolbox"
-		"Embedded_Coder"
-		"Filter_Design_HDL_Coder"
-		"Financial_Instruments_Toolbox"
-		"Financial_Toolbox"
-		"Fixed_Point_Designer"
-		"Fuzzy_Logic_Toolbox"
-		"GPU_Coder"
-		"Global_Optimization_Toolbox"
-		"HDL_Coder"
-		"HDL_Verifier"
-		"IEC_Certification_Kit"
-		"Image_Acquisition_Toolbox"
-		"Image_Processing_Toolbox"
-		"Instrument_Control_Toolbox"
-		"LTE_HDL_Toolbox"
-		"LTE_Toolbox"
 		"MATLAB"
-		"MATLAB_Coder"
-		"MATLAB_Compiler"
-		"MATLAB_Compiler_SDK"
-		"MATLAB_Distributed_Computing_Server"
-		"MATLAB_Production_Server"
-		"MATLAB_Report_Generator"
-		"Mapping_Toolbox"
-		"Model_Predictive_Control_Toolbox"
-		"Model_Based_Calibration_Toolbox"
-		"OPC_Toolbox"
-		"Optimization_Toolbox"
-		"Parallel_Computing_Toolbox"
-		"Partial_Differential_Equation_Toolbox"
-		"Phased_Array_System_Toolbox"
-		"Polyspace_Bug_Finder"
-		"Polyspace_Code_Prover"
-		"Powertrain_Blockset"
-		"Predictive_Maintenance_Toolbox"
-		"RF_Blockset"
-		"RF_Toolbox"
-		"Risk_Management_Toolbox"
-		"Robotics_System_Toolbox"
-		"Robust_Control_Toolbox"
-		"Sensor_Fusion_and_Tracking_Toolbox"
-		"Signal_Processing_Toolbox"
-		"SimBiology"
-		"SimEvents"
-		"Simscape"
-		"Simscape_Driveline"
-		"Simscape_Electrical"
-		"Simscape_Fluids"
-		"Simscape_Multibody"
-		"Simulink"
-		"Simulink_3D_Animation"
-		"Simulink_Check"
-		"Simulink_Code_Inspector"
-		"Simulink_Coder"
-		"Simulink_Control_Design"
-		"Simulink_Coverage"
-		"Simulink_Design_Optimization"
-		"Simulink_Design_Verifier"
-		"Simulink_Desktop_Real_Time"
-		"Simulink_PLC_Coder"
-		"Simulink_Real_Time"
-		"Simulink_Report_Generator"
-		"Simulink_Requirements"
-		"Simulink_Test"
-		"Spreadsheet_Link"
-		"Stateflow"
-		"Statistics_and_Machine_Learning_Toolbox"
-		"Symbolic_Math_Toolbox"
-		"System_Identification_Toolbox"
-		"Text_Analytics_Toolbox"
-		"Trading_Toolbox"
-		"Vehicle_Dynamics_Blockset"
-		"Vehicle_Network_Toolbox"
-		"Vision_HDL_Toolbox"
-		"WLAN_Toolbox"
-		"Wavelet_Toolbox"
+		#"Curve_Fitting_Toolbox"
+		# fill in toolboxes/products here as needed for a partial install
+		# hint: look in your installer_input.txt file for names to use here
 		)
 fi
