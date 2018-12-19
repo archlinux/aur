@@ -9,8 +9,8 @@
 
 pkgname=davinci-resolve
 _pkgname=resolve
-pkgver=15.2.1
-pkgrel=0
+pkgver=15.2.2
+pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -33,7 +33,7 @@ if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
 fi
 
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('88fa41778e58dc5ec51b1d0d8ddcfb0a751e9b1d2ee8916dba374c46325fb6bc')
+sha256sums=('4330673cbe62f1ce2292d0357e20503233124bbb5a1b7752ce83b4befcf29497')
 
 package() {
 #	msg2 "Did you download the archive manually? If not, this will fail."
