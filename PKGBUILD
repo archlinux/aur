@@ -14,18 +14,11 @@ sha1sums=('5b9ee5fd2c06360ed1297e4e58dda19ae1336d85')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	cmake .
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
 	make
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="$pkgdir/" install
-
-	mkdir "${pkgdir}/usr/bin"
-	mkdir "${pkgdir}/usr/lib"
-	mv "${pkgdir}/usr/local/bin/xkb-switch" "${pkgdir}/usr/bin"
-	mv "${pkgdir}/usr/local/lib/libxkbswitch.so" "${pkgdir}/usr/lib"
-	rmdir "${pkgdir}/usr/local/bin"
-	rmdir "${pkgdir}/usr/local/lib"
 }
