@@ -29,12 +29,12 @@ pkgver() {
 }
 
 prepare() {
-  cd $_svnmod
+  cd $_svnmod/trunk
   patch -Np1 < "$srcdir"/python2.patch || true
 }
 
 build() {
-  cd $_svnmod/Scribus
+  cd $_svnmod/trunk/Scribus
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DCMAKE_SKIP_RPATH:BOOL=YES \
 	-DWANT_GRAPHICSMAGICK:BOOL=YES \
@@ -42,18 +42,17 @@ build() {
 	-DCMAKE_INCLUDE_PATH:PATH=/usr/include/python2.7 \
 	-DCMAKE_EXE_LINKER_FLAGS:STRING="-lQt5Quick -lQt5PrintSupport" \
 	-DCMAKE_APPDATA_DIR:PATH=/usr/share/appdata \
-	-DQT_PREFIX:PATH="/usr" -DWANT_SVNVERSION:BOOL=YES \
-	
+	-DQT_PREFIX:PATH="/usr" -DWANT_SVNVERSION:BOOL=YES 
   make
 }
 
 package () {
-  cd "$srcdir"/$_svnmod/Scribus
+  cd $_svnmod/trunk/Scribus
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
   install -Dm644 scribus.desktop $pkgdir/usr/share/applications/scribus.desktop
-  install -d "${pkgdir}"/usr/share/pixmaps
-  ln -s /usr/share/scribus/icons/1_5_0/scribus.png "${pkgdir}"/usr/share/pixmaps/scribus.png
+  install -d "$pkgdir"/usr/share/pixmaps
+  ln -s /usr/share/scribus/icons/1_5_0/scribus.png "$pkgdir"/usr/share/pixmaps/scribus.png
   # move around some picture files
   for _i in AppIcon.png AllCaps.png Kapital.xpm Strike.xpm \
 		       outlined.png shadow.png shade.png Revers.png zeichen.png
