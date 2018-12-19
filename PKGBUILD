@@ -3,7 +3,7 @@
 _pkgname=keyboardlayouteditor
 pkgname="${_pkgname}"-git
 pkgver=1.1+r84.g742101b
-pkgrel=2
+pkgrel=3
 pkgdesc="PyGTK programme that helps create or edit XKB keyboard layouts."
 arch=('any')
 url="http://github.com/simos/keyboardlayouteditor"
@@ -125,5 +125,5 @@ package() {
   done
   _cmd install -D -m644 "${srcdir}/website.url" "${pkgdir}/usr/share/doc/${_pkgname}/website.url"
 
-  _cmd install -D -m644 'COPYING' "${pkgdir}/usr/share/license/${pkgname}/COPYING"
+  _cmd install -D -m644 'COPYING' "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
