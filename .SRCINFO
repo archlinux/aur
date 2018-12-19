@@ -1,7 +1,7 @@
 pkgbase = trackma-git
 	pkgdesc = A lightweight and simple program for updating and using lists on several media tracking websites.
 	pkgver = 0.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://z411.github.io/trackma/
 	arch = any
 	license = GPL3
@@ -25,8 +25,8 @@ pkgbase = trackma-git
 	source = trackma-qt.desktop
 	sha256sums = SKIP
 	sha256sums = 80be9ffc3eb66456004a438a3da8950ed8382faa00a3fe61c5ef3980090c4dce
-	sha256sums = 0ac6a97d417814551d7c2a5d0369f0999aafe055388319841d5e0ba6c48f6be1
-	sha256sums = 62d3002958a604a4d56da1c9b875b9e3b79861d8f95f1b62deb365261fbe99bd
+	sha256sums = ec25ab92890b72b4a9334d13280bc889f53d91463f54a4de7120a594770718fa
+	sha256sums = dbeb2e1980df220392fc0b41e6d2f6110f0d506282dfbfc84b354e20adb7bf84
 
 pkgname = trackma-git
 

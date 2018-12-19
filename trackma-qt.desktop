@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Trackma
+Name=Trackma (Qt)
 Exec=trackma-qt %u
 OnlyShowIn=KDE;
 Type=Application

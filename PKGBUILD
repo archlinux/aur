@@ -3,7 +3,7 @@
 
 pkgname=trackma-git
 pkgver=0.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="http://z411.github.io/trackma/"
@@ -30,8 +30,8 @@ source=(${pkgname}::"git+https://github.com/z411/${pkgname%-git}.git"
 
 sha256sums=('SKIP'
             '80be9ffc3eb66456004a438a3da8950ed8382faa00a3fe61c5ef3980090c4dce'
-            '0ac6a97d417814551d7c2a5d0369f0999aafe055388319841d5e0ba6c48f6be1'
-            '62d3002958a604a4d56da1c9b875b9e3b79861d8f95f1b62deb365261fbe99bd')
+            'ec25ab92890b72b4a9334d13280bc889f53d91463f54a4de7120a594770718fa'
+            'dbeb2e1980df220392fc0b41e6d2f6110f0d506282dfbfc84b354e20adb7bf84')
 
 #old package name.
 conflicts=('wmal-git')
