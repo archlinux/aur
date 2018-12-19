@@ -19,8 +19,8 @@ options=()
 install=()
 changeLog=()
 source=("https://gitlab.com/TheSilentDrifter/Tutanota-Electron/raw/master/tutanota-electron-git.tar.xz")
-md5sums=('54ba4c185be392644b76e818f12a3c55')
-sha512sums=('9eba93361f627508f044b128da012becc062f722ef3b8801a5b34530a85d3f4555d7793d6c7f8826ea3f2935c669f48794c97e0cec8c2c543a57acb808fcea05')
+md5sums=('cb7fc7aba260062b01a7d7f8a9864d63')
+sha512sums=('d61ec5ca885f77e664d6969224e761766d2a8236a6cdb096665b34a80f43c4f6f018c2726fecf78e46022786715482b84ef3fd19e4e526712245f1e3b0049330')
 
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
