@@ -1,0 +1,27 @@
+pkgbase = cartaodecidadao-bin
+	pkgdesc = Portuguese Citizen Card Application
+	pkgver = 3.0.15
+	pkgrel = 1
+	url = http://www.cartaodecidadao.pt/
+	arch = x86_64
+	license = GPL2
+	license = LGPL3
+	license = custom:EUPL
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
+	depends = pcsclite>=1.5.0
+	depends = openssl-1.0
+	depends = ccid
+	depends = poppler-qt5
+	depends = libxerces-c-3.1
+	depends = xml-security-c
+	optdepends = autenticacao-gov-pt: Necessário para autenticações online
+	optdepends = cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC
+	optdepends = ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)
+	source_x86_64 = https://www.autenticacao.gov.pt/documents/10179/11962/pteid-mw_amd64.deb
+	md5sums_x86_64 = 823b1dc97a30907b56c235b42a11f6fe
+
+pkgname = cartaodecidadao-bin
+
