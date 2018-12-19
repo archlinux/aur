@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'linux-amd-raven' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-amd-raven"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-amd-raven.img"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-amd-raven-fallback.img"
+fallback_options="-S autodetect"
