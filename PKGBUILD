@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.9.4.r456.g501b372
+pkgver=0.9.4.r532.ge7c9d81
 _branch='master'
 pkgrel=1
 arch=(any)
@@ -14,14 +14,15 @@ conflicts=("${pkgname%-git}")
 source=("git://github.com/alerque/${pkgname%-git}.git#branch=$_branch")
 sha512sums=('SKIP')
 makedepends=('git')
-depends=('lua-cosmo'
-         'lua-lpeg'
+depends=('fontconfig'
+         'harfbuzz>=1.2.6'
+         'icu'
+         'lua-cosmo'
          'lua-expat'
          'lua-filesystem'
+         'lua-lpeg'
+         'lua-penlight'
          'lua-zlib'
-         'fontconfig'
-         'icu'
-         'harfbuzz>=1.2.6'
          'ttf-gentium-plus')
 
 pkgver() {
