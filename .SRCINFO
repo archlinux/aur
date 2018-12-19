@@ -1,0 +1,23 @@
+pkgbase = attr-cbuild
+	pkgdesc = Extended attribute support library for ACL support
+	pkgver = 2.4.48
+	pkgrel = 1
+	url = http://savannah.nongnu.org/projects/attr
+	arch = x86_64
+	license = LGPL
+	makedepends = gettext
+	depends = glibc
+	provides = xfsattr
+	provides = attr
+	conflicts = xfsattr
+	conflicts = attr
+	replaces = xfsattr
+	replaces = attr
+	backup = etc/xattr.conf
+	source = https://download.savannah.gnu.org/releases/attr-cbuild/attr-cbuild-2.4.48.tar.gz
+	source = https://download.savannah.gnu.org/releases/attr-cbuild/attr-cbuild-2.4.48.tar.gz.sig
+	sha256sums = 5ead72b358ec709ed00bbf7a9eaef1654baad937c001c044fe8b74c57f5324e7
+	sha256sums = SKIP
+
+pkgname = attr-cbuild
+
