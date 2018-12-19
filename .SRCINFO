@@ -1,7 +1,7 @@
 pkgbase = ricoh-sp220-sane
 	pkgdesc = SANE driver for Ricoh SP220 series
 	pkgver = 1.01
-	pkgrel = 1
+	pkgrel = 2
 	url = http://support.ricoh.com/bb/html/dr_ut_e/re1/model/sp221s/sp221s.htm
 	install = ricoh-sp220-sane.install
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Ivan Naydonov <samogot@gmail.com>
 pkgname=ricoh-sp220-sane
 pkgver=1.01
-pkgrel=1
+pkgrel=2
 
 pkgdesc="SANE driver for Ricoh SP220 series"
 arch=('i686' 'x86_64')

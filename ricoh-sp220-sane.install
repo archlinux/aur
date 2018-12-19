@@ -7,3 +7,8 @@ post_install() {
 post_remove() {
     sed -i /"${backend_name}"/d /etc/sane.d/dll.conf
 }
+
+post_upgrade() {
+	post_remove
+	post_install
+}
