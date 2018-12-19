@@ -22,7 +22,7 @@ CC     = gcc -g
 MATH   = -lm -lc
 
 FFLAGS = 
-FC     = gfortran -fdefault-double-8 -fdefault-real-8 -O2
+FC     = gfortran -std=legacy -fdefault-double-8 -fdefault-real-8 -O2
 
 #-------------------------------------------
 #debug options

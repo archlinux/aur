@@ -13,10 +13,10 @@ depends=('tk' 'tcl' 'gl2ps' 'fftw' 'bwidget' 'imagemagick' 'gcc-fortran' 'glu' '
 replaces=('xcrysden-bin')
 source=("http://www.xcrysden.org/download/xcrysden-${pkgver}.tar.gz"
         "fix-xcrysden-install.patch"
-	"Make.sys")
+		"Make.sys")
 sha256sums=('a695729f1bb3e486b86a74106c06a392c8aca048dc6b0f20785c3c311cfb2ef4'
-	    '61a0bbc7728beff05bcb7f1676053de468ebb926b638869174aa2bbcb5bc554c'  
-	    '65087f42dc08b335798b2cdeee2e3dc5ed99ef177c71dbf9c5ff3ac5039161a6')
+	    	'61a0bbc7728beff05bcb7f1676053de468ebb926b638869174aa2bbcb5bc554c'  
+	    	'077ca35a6d7264c0b13489a3c06cb49041c6afaf394d136c303ba9b4a5614d66')
 
 
 prepare() {
