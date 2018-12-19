@@ -1,21 +1,21 @@
-# Maintainer: Justin Frank <jf.laelath@gmail.com>
+# Maintainer: Justin Frank <justinpfrank@protonmail.com>
 
 pkgname=miniterm-git
 _pkgname=miniterm
-pkgver=1.1.3.r0.a861663
-pkgrel=2
+pkgver=v1.2.0.0.gc4d2ae2
+pkgrel=1
 pkgdesc="Lightweight VTE terminal emulator with colorscheme support (fork of tinyterm)"
-arch=('i686' 'x86_64')
-url="https://gitlab.com/laelath/miniterm"
+arch=('i386' 'x86_64')
+url="https://github.com/laelath/miniterm"
 license=('MIT')
 depends=('vte3' 'glib2')
 makedepends=('git')
-source=('git+https://gitlab.com/laelath/miniterm.git')
+source=('git+https://github.com/laelath/miniterm.git')
 md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --tags --long | sed 's/-/./g'
 }
 
 build() {
