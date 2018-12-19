@@ -18,7 +18,7 @@
 #│       ├── matlabdata/
 #│       ├── matlab_desktop_glnxa64_1535004605.enc*
 #│       ├── matlab_desktop_glnxa64_1535004605.xml*
-#│       ├── ... other encrypted toolbox/related files & folders go here 
+#│       ├── ... other toolbox/product files & folders go here 
 #├── bin/
 #├── help/
 #├── install*
@@ -35,9 +35,8 @@
 
 ## This PKGBUILD no longer attempts to activate the product.
 ## The user will be prompted to undertake their activation method of choice when the GUI is first run.
-## Activation could be automated by running /opt/matlab/bin/activate_matlab.sh
-## after this package is installed.
-## That activation script could be called by matlab.install (a file that doesn't exist at this time)
+## Activation could be automated by running /opt/matlab/bin/activate_matlab.sh after this package is installed.
+## Activation could be further automated in matlab.install (a file that doesn't exist at this time)
 
 # partial install
 _partialinstall=false
@@ -94,12 +93,8 @@ prepare() {
 	sed -i "s,^# mode=,mode=silent," "${srcdir}/installer_input.txt"
 	sed -i "s,^# fileInstallationKey=,fileInstallationKey=${_fik}," "${srcdir}/installer_input.txt"
 
-	# install all productcts by default
-	sed -i "/^#product.${_product}$/ s/^#//" "${srcdir}/installer_input.txt"
-
 	if [ ! -z ${_products+isSet} ]; then
     	msg2 'Building a package with a subset of the licensed products.'
-	sed -i "s,^product,#product," "${srcdir}/installer_input.txt"
     	for _product in "${_products[@]}"; do
       		sed -i "/^#product.${_product}$/ s/^#//" "${srcdir}/installer_input.txt"
     	done
