@@ -19,16 +19,6 @@ diff -r 5faffcf234b7 -r d25f4bc99e42 libgui/graphics/Backend.cc
    }
  
    Backend::~Backend (void)
-@@ -162,7 +163,8 @@
-     if (proxy)
-       {
-         proxy->finalize ();
--        delete proxy;
-+        if (proxy)
-+          delete proxy;
- 
-         graphics_object gObj (go);
- 
 diff -r 5faffcf234b7 -r d25f4bc99e42 libgui/graphics/ObjectProxy.cc
 --- a/libgui/graphics/ObjectProxy.cc	Fri Nov 23 11:18:53 2018 +0100
 +++ b/libgui/graphics/ObjectProxy.cc	Sat Dec 15 11:31:31 2018 +0100
@@ -66,7 +56,7 @@ diff -r 5faffcf234b7 -r d25f4bc99e42 libgui/graphics/ObjectProxy.cc
 -    init (nullptr);
 +    if (! m_object)
 +      return;
-+    
++
 +    Qt::ConnectionType t = Qt::BlockingQueuedConnection;
 +
 +    if (QThread::currentThread () == QCoreApplication::instance ()->thread ())
@@ -102,12 +92,10 @@ diff -r 5faffcf234b7 -r d25f4bc99e42 libgui/graphics/ObjectProxy.cc
 diff -r 5faffcf234b7 -r d25f4bc99e42 libinterp/corefcn/graphics.cc
 --- a/libinterp/corefcn/graphics.cc	Fri Nov 23 11:18:53 2018 +0100
 +++ b/libinterp/corefcn/graphics.cc	Sat Dec 15 11:31:31 2018 +0100
-@@ -2003,7 +2003,8 @@
- 
+@@ -2004,6 +2004,7 @@
        for (int k = 0; k < children.numel (); k++)
          finalize_r (children(k));
--
-+      
+ 
 +      gh_manager::unlock ();
        go.finalize ();
      }

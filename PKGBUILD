@@ -3,8 +3,8 @@ LANG=C
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgrel=2
-pkgver=5.0.0r26240+.a957e0da8613+
+pkgrel=1
+pkgver=5.0.0r26265+.01f1e70c80b6+
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -22,10 +22,10 @@ optdepends=('texinfo: for help-support in octave'
 conflicts=('octave')
 provides=("octave=$pkgver")
 options=('!emptydirs')
-source=(hg+https://hg.savannah.gnu.org/hgweb/octave git://git.sv.gnu.org/gnulib synchronous_qt.patch)
+source=(hg+https://hg.savannah.gnu.org/hgweb/octave git://git.sv.gnu.org/gnulib synchronous_qt_edit.patch)
 md5sums=('SKIP'
          'SKIP'
-         'f5580c1698d96b73d6b0869a63c3470f')
+         'a9a6e57e985ab906dbdfe9e3128b485a')
 _hgrepo=octave
 
 pkgver() {
@@ -36,7 +36,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"/${_hgrepo}
-  patch -Np1 < "$srcdir"/synchronous_qt.patch
+  patch -Np1 < "$srcdir"/synchronous_qt_edit.patch
 }
 
 build() {
