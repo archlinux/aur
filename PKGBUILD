@@ -23,7 +23,7 @@ install='slimjet-browser.install'
 sha256sums=('84e1be84169770e17dcd4445af1b4361f7791950fd8d0247f77be2d1aee80b95'
             'fc0297ac9ec689eeb610024c9f59d5f47661d5e1fdf18bd3c5e456068c47d15e'
             '9ec7ee8938b2f88fe0130abe4aa886a90da97003bfc08d20937612d75ee9f228'
-            '09f3bdf4ff2545b755c76150992268d0febdc163a59880bc1a60c82ebd372e3d')
+            '963dceae574449e985525c0e1fccd326f1a050a63dc608c8879cd942ae6721a6')
 
 package() {
   msg2 "Extracting data.tar.xz of ${pkgname}-${pkgver}-${arch}.deb ..."

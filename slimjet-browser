@@ -4,7 +4,6 @@ if [[ `id -u` -eq 0 ]]; then
     echo 1 > /proc/sys/kernel/unprivileged_userns_clone
   fi
   $(which xhost) + &>/dev/zero
-  -f
   su - slim-root \
   --session-command="DISPLAY=:0 dbus-run-session /usr/share/slimjet/flashpeak-slimjet $@"&
   wait $!
