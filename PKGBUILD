@@ -1,12 +1,12 @@
 # Author: rko <raymond.w.ko@gmail.com>
 pkgname=ogremeshy-hg
-pkgver=r44.8087fc81b9fd
+pkgver=r49.15c39553d143
 pkgrel=1
 pkgdesc="Ogre Meshy is a tool for viewing OGRE mesh files."
 arch=('i686' 'x86_64')
 url="http://www.yosoygames.com.ar/wp/ogre-meshy/"
 license=('GLPv3')
-depends=('ogre' 'wxgtk' 'nvidia-cg-toolkit')
+depends=('ogre' 'wxgtk2' 'nvidia-cg-toolkit')
 makedepends=('cmake' 'mercurial')
 provides=('ogremeshy')
 conflicts=('ogremeshy')
@@ -32,8 +32,9 @@ build() {
 
     cmake \
         -D CMAKE_BUILD_TYPE=$CMAKE_CONFIGURATION \
-        -D CMAKE_CXX_FLAGS="-I/usr/include/OGRE -I /usr/include/OGRE/Overlay" \
+        -D CMAKE_CXX_FLAGS="-I/usr/include/OGRE -I /usr/include/OGRE/Overlay -I /usr/include/OGRE/Bites" \
         -D OGRE_PLUGIN_DIR="/usr/lib/OGRE/" \
+        -D OGRE_BUILD_COMPONENT_BITES=TRUE \
         -D CMAKE_EXE_LINKER_FLAGS="-lboost_system" \
         "$srcdir/${pkgname%-hg}"
     make VERBOSE=1
