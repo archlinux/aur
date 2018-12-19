@@ -5,7 +5,7 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -124,8 +124,8 @@ build() {
   export WITH_CUDNN=1
   export CUDAHOSTCXX=g++-7
   export CUDA_HOME=/opt/cuda
-  export CUDNN_LIB_DIR=/opt/cuda/lib64
-  export CUDNN_INCLUDE_DIR=/opt/cuda/include
+  export CUDNN_LIB_DIR=/usr/lib
+  export CUDNN_INCLUDE_DIR=/usr/include
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
   export TORCH_CUDA_ARCH_LIST="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
 
