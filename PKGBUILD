@@ -43,6 +43,6 @@ package() {
   install -Dm644 "${srcdir}/trunk/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -dm700 "${pkgdir}/var/log/${_pkgname}"
   install -Dm644 "${_pkgname}" "${pkgdir}/etc/logrotate.d/${_pkgname}"
-  install -Dm655 "${_pkgname}on-create" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}on-create"
+  install -Dm755 "${_pkgname}on-create" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}on-create"
   install -Dm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
 }
