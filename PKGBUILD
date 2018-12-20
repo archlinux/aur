@@ -6,7 +6,7 @@
 _pkgbase=glfw
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-x11-git" "$_pkgbase-wayland-git")
-pkgver=3.2.1.r502.gae53cd29
+pkgver=3.2.1.r644.gf9923e90
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.glfw.org/"
@@ -30,6 +30,7 @@ build() {
   cd $_pkgbase/build-x11
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_SHARED_LIBS=ON \
     -DGLFW_BUILD_EXAMPLES=OFF \
     -DGLFW_BUILD_TESTS=OFF \
@@ -40,6 +41,7 @@ build() {
   cd ../build-wayland
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_SHARED_LIBS=ON \
     -DGLFW_BUILD_EXAMPLES=OFF \
     -DGLFW_BUILD_TESTS=OFF \
