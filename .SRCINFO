@@ -1,7 +1,7 @@
 pkgbase = yaourtix
 	pkgdesc = Yaourt (= a pacman wrapper with extended features and AUR support) patched with user definable repo-support for building from source, and other customizepkg-enhancements. Artix support included.
 	pkgver = 1.9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/archlinuxfr/yaourt
 	arch = any
 	license = GPL

@@ -6,7 +6,7 @@
 
 pkgname=yaourtix
 pkgver=1.9
-pkgrel=5
+pkgrel=6
 
 pkgdesc='Yaourt (= a pacman wrapper with extended features and AUR support) patched with user definable repo-support for building from source, and other customizepkg-enhancements. Artix support included.'
 arch=('any')
