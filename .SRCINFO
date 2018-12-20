@@ -1,0 +1,15 @@
+pkgbase = ruby-erubi
+	pkgdesc = Small ERB Implementation
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/jeremyevans/erubi
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = erubi-1.8.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/erubi-1.8.0.gem
+	sha1sums = d9c2cae43ad52200626b7c783280d23e7f2498f6
+
+pkgname = ruby-erubi
+
