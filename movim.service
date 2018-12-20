@@ -3,7 +3,7 @@ Description=Movim Daemon
 After=network.target
 
 [Service]
-Group=http
+User=movim
 WorkingDirectory=/usr/share/webapps/movim
 EnvironmentFile=/etc/default/movim
 ExecStartPre=/usr/bin/php vendor/bin/phinx migrate

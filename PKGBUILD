@@ -22,7 +22,8 @@ optdepends=('postgresql: to use the postgresql database backend'
 makedepends=('git' 'composer')
 source=("$_pkgbase::git+https://github.com/movim/movim"
         movim.env
-        movim.service)
+        movim.service
+        sysuser.conf)
 install=movim.install
 backup=("etc/webapps/$_pkgbase/db.inc.php"
         "etc/default/movim")
@@ -69,12 +70,14 @@ package() {
   chown -R root:http "$pkgdir/var/log/webapps/$_pkgbase"
   ln -s "/var/log/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/log"
 
-  # Systemd unit file
+  # Systemd files
   install -m755 -d "$pkgdir/etc/default"
   install -g http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
   install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
+  install -Dm644 "$srcdir/sysuser.conf" "$pkgdir/usr/lib/sysuser.d/movim.conf"
 }
 
 sha256sums=('SKIP'
             '5dfff91dd4a54f3d3713530e204370a96d37898b670a61123d8cad42f92da306'
-            'b348b86ccfe56b104ada9134672bf77054b148b2a2eb9f704be429905fc3d834')
+            '813d580300ee5bb7f1f9603db2404f5af67fd02f49017708d4adb919d4422045'
+            'a0aae072d9ee93d270fec602a3fe65bfc63e0de8814f3af6ddebb8ed223391fc')
