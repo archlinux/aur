@@ -1,0 +1,18 @@
+pkgbase = gtk-theme-shades-of-gray-git
+	pkgdesc = A dark GTK-theme (GNOME, Cinnamon, Xfce, Openbox) in 7 color variants (Git-version)
+	pkgver = 1.1.3.r4.g0530f86
+	pkgrel = 1
+	url = https://github.com/WernerFP/Shades-of-gray-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	optdepends = gtk-engine-murrine: for gtk2 themes
+	optdepends = gtk-engines: for gtk2 themes
+	conflicts = gtk-theme-shades-of-gray
+	replaces = gtk-theme-shades-of-gray
+	source = Shades-of-gray-theme::git+https://github.com/WernerFP/Shades-of-gray-theme.git
+	md5sums = SKIP
+
+pkgname = gtk-theme-shades-of-gray-git
+
