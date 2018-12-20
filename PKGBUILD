@@ -9,7 +9,7 @@ url="https://github.com/laurent22/joplin"
 license=('MIT')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 source=('https://github.com/laurent22/joplin/releases/download/v1.0.119/Joplin-1.0.119-x86_64.AppImage')
-md5sums=('SKIP')
+sha512sums=('51ce1d1f5e8f7d59145c3eabdf92adde7d7984fd73845882f3dc04eb56ba6da972fa1565c306fbc8a15bdf54bf3d505983ef39a4e7a651e6ab08bab209492902')
 _filename=Joplin-$pkgver-x86_64.AppImage
 
 package() {
