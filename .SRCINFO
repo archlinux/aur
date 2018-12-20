@@ -1,6 +1,6 @@
 pkgbase = proaudio-meta
 	pkgdesc = Metapackage for most useful audio production software
-	pkgver = 2018.10.08
+	pkgver = 2018.12.20
 	pkgrel = 1
 	url = https://github.com/Bleuzen/archlinux-packages
 	install = proaudio-meta.install
@@ -25,6 +25,8 @@ pkgbase = proaudio-meta
 	depends = swh-plugins
 	depends = x42-plugins
 	depends = calf
+	depends = eq10q
+	depends = wolf-shaper
 	depends = caps
 	depends = tap-plugins
 	depends = zam-plugins
