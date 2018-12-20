@@ -1,6 +1,6 @@
 pkgbase = snapd-glib
 	pkgdesc = Library to allow GLib/Qt based applications access to snapd, the daemon that controls Snaps
-	pkgver = 1.44
+	pkgver = 1.45
 	pkgrel = 1
 	url = https://launchpad.net/snapd-glib
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = snapd-glib
 	conflicts = snapd-glib
 	options = !strip
 	options = emptydirs
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/snapd-glib/1.44-1/snapd-glib_1.44.orig.tar.xz
-	sha256sums = 071b31824afe82ba783d02484d4a6abc0c6d2107b1c71323f618363766ee1521
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/snapd-glib/1.45-1/snapd-glib_1.45.orig.tar.xz
+	sha256sums = aa204e17490f422375e6eb6a9d3d07f232931b89355a17cf70c4e42f8c155bb6
 
 pkgname = snapd-glib
 
