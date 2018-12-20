@@ -1,7 +1,7 @@
 # Maintainer: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
 pkgname=notmuch-addrlookup-c
-pkgver=v8
-pkgrel=2
+pkgver=v9
+pkgrel=1
 pkgdesc="A tool to query the notmuch database for addresses."
 url="https://github.com/aperezdc/notmuch-addrlookup-c"
 arch=('any')
@@ -11,9 +11,9 @@ makedepends=()
 conflicts=()
 replaces=()
 backup=()
-source=("https://github.com/aperezdc/notmuch-addrlookup-c/archive/${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/aperezdc/notmuch-addrlookup-c/archive/${pkgver}.tar.gz"
         "MIT-LICENSE")
-md5sums=('ca1055f24d1ea7224e5ff87d6fca8527'
+md5sums=('c4a659213225730d2512934e4aca3254'
          'f9be2430c190c736214e76ead254ed07')
 
 build() {
