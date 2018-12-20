@@ -6,6 +6,7 @@ pkgbase = urlview-git
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = automake
 	makedepends = autoconf
 	depends = bash

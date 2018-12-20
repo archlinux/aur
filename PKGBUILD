@@ -11,7 +11,7 @@ license=('GPL')
 conflicts=('urlview')
 provides=('urlview')
 depends=('bash')
-makedepends=('automake' 'autoconf')
+makedepends=('git' 'automake' 'autoconf')
 source=("git+https://github.com/sigpipe/${_pkgname}.git")
 sha256sums=('SKIP')
 
