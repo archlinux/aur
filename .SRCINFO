@@ -1,6 +1,6 @@
 pkgbase = cargo-web
 	pkgdesc = A Cargo subcommand for the client-side Web
-	pkgver = 0.6.11
+	pkgver = 0.6.23
 	pkgrel = 1
 	url = https://github.com/koute/cargo-web
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = cargo-web
 	depends = cargo
 	depends = openssl
 	optdepends = chromium: needed for tests
-	source = cargo-web-0.6.11.tar.gz::https://github.com/koute/cargo-web/archive/0.6.11.tar.gz
-	sha256sums = 4d38461671b0d7084dbac801b59d358ae4bd259e3975a3d6a8f5920544b9f6c2
+	source = cargo-web-0.6.23.tar.gz::https://github.com/koute/cargo-web/archive/0.6.23.tar.gz
+	sha256sums = 0b1eb16a9e09522ef228bc8d824ae934bef890321179b830ebdb04b20c5b1380
 
 pkgname = cargo-web
 
