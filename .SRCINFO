@@ -1,6 +1,6 @@
 pkgbase = python-futurist
 	pkgdesc = Oslo Log library
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://docs.openstack.org/developer/futurist/
 	arch = any
@@ -28,8 +28,8 @@ pkgbase = python-futurist
 	makedepends = python2-contextlib2
 	makedepends = python-prettytable
 	makedepends = python2-prettytable
-	source = git+https://git.openstack.org/openstack/futurist#tag=1.7.0
-	sha512sums = SKIP
+	source = https://github.com/openstack/futurist/archive/1.8.0.tar.gz
+	sha512sums = ab438d8ddaee50eb67674195def2d2d2e3646ad073ee21d867870b0f239f750eced8a51bc05dce9aa834ca483835f5aaeff52d148d11389c7d4bcbb13c3b8c1a
 
 pkgname = python-futurist
 	depends = python-pbr
