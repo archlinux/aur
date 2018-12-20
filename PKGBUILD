@@ -7,7 +7,7 @@ pkgname=diffimg
 _pkgname=Diffimg
 _newpkgname=Diffimg-xbee # possible future name due to conflict
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple image comparison tool"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -18,10 +18,12 @@ url='http://sourceforge.net/projects/diffimg/'
 source=(
 "http://sourceforge.net/projects/diffimg/files/${pkgver}/${_pkgname}-${pkgver}-src.zip"
 diffimg.desktop
+fix-opencv-headers.patch
 )
 install='diffimg.install'
 md5sums=('e97610c4a265524297bc20268870556a'
-        '98d6aae50942ef908313515bdd9b02f4')
+        '98d6aae50942ef908313515bdd9b02f4'
+        '383406fdf35e39750a7cf14d0a275770')
 
 prepare(){
   cd "${srcdir}"/${_pkgname}-${pkgver}-src
@@ -31,20 +33,8 @@ prepare(){
     tounix.sh
   chmod +x tounix.sh
   ./tounix.sh
-
-  cd ./build
-  sed -i -e 's;\"\/usr\/include\/qwt\";\"\/usr\/include\/qwt\-qt4\";g' CMakeLists.txt
-  sed -i -e '178s;qwt;qwt\-qt4;g' CMakeLists.txt
-  sed -i -e '180s;qwt;qwt\-qt4;g' CMakeLists.txt
-
-  #Hack to fix upgrade to opencv4 breaking legacy components
-  sed -i -e "/ADD_LIBRARY(PerceptualDiff/a find_package(OpenCV COMPONENTS opencv_imgproc REQUIRED CONFIG)\ninclude_directories(\${OpenCV_INCLUDE_DIRS})" ../3rdparty/perceptualdiff/CMakeLists.txt
-  sed -i -e "/#include <opencv2\/imgproc\/imgproc.hpp/i #include <opencv2\/imgproc\/imgproc_c.h>" ../3rdparty/perceptualdiff/OpenCVImageLoader.cpp
-  sed -i -e "/#include <opencv2\/imgproc\/imgproc.hpp/i #include <opencv2\/imgproc\/imgproc_c.h>" ../src/MiscFunctions.cpp
-  sed -i -e "/#include <opencv2\/imgproc\/imgproc.hpp/i #include <opencv2\/imgproc\/imgproc_c.h>" ../src/metrics/PerLuminanceMetric.cpp
-  sed -i -e "/#include <opencv2\/imgproc\/imgproc.hpp/i #include <opencv2\/imgcodecs\/legacy\/constants_c.h>\n#include <opencv2\/imgproc\/imgproc_c.h>" ../src/metrics/BaseMetric.cpp
-
-
+   # OpenCV4 split headers for modules
+   patch -p1 -i ../fix-opencv-headers.patch
 }
 
 build() {

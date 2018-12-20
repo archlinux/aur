@@ -1,0 +1,87 @@
+diff --git a/3rdparty/perceptualdiff/CMakeLists.txt b/3rdparty/perceptualdiff/CMakeLists.txt
+index 3a698e0..cb4147b 100644
+--- a/3rdparty/perceptualdiff/CMakeLists.txt
++++ b/3rdparty/perceptualdiff/CMakeLists.txt
+@@ -5,6 +5,8 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.4)
+ SET(DIFF_SRC  LPyramid.cpp RGBAImage.cpp CompareArgs.cpp Metric.cpp OpenCVImageLoader.cpp)
+ 
+ ADD_LIBRARY(PerceptualDiff STATIC ${DIFF_SRC} ${})
++find_package(OpenCV COMPONENTS opencv_imgproc REQUIRED CONFIG)
++include_directories(${OpenCV_INCLUDE_DIRS})
+ 
+ IF (MSVC)
+ # Turn off deprecation warnings
+diff --git a/3rdparty/perceptualdiff/OpenCVImageLoader.cpp b/3rdparty/perceptualdiff/OpenCVImageLoader.cpp
+index 4c65a2b..dc9266c 100644
+--- a/3rdparty/perceptualdiff/OpenCVImageLoader.cpp
++++ b/3rdparty/perceptualdiff/OpenCVImageLoader.cpp
+@@ -20,6 +20,7 @@
+ #include "RGBAImage.h"
+ #include "OpenCVImageLoader.h"
+ 
++#include <opencv2/imgproc/imgproc_c.h>
+ #include <opencv2/imgproc/imgproc.hpp>
+ #include <opencv2/highgui/highgui.hpp>
+ 
+diff --git a/build/CMakeLists.txt b/build/CMakeLists.txt
+index 5736040..42b804e 100644
+--- a/build/CMakeLists.txt
++++ b/build/CMakeLists.txt
+@@ -78,7 +78,7 @@ INCLUDE_DIRECTORIES(${QT_INCLUDE_DIR} "../src/"
+ "../3rdparty/libyuv/include" 
+ "../3rdparty/qtpropertybrowser" 
+ "../3rdparty/perceptualdiff" 
+-"/usr/include/qwt" )
++"/usr/include/qwt-qt4" )
+ ENDIF(MSVC)
+ 
+ FILE(GLOB include_file_list "../src/*.h" "../src/metrics/*.h" "../src/formats/*.h")
+@@ -175,9 +175,9 @@ ENDIF( APPLE )
+ # last thing we have to do is to tell CMake what libraries our executable needs,
+ # luckily FIND_PACKAGE prepared QT_LIBRARIES variable for us:
+ IF (UNIX)
+-    TARGET_LINK_LIBRARIES( ${PROGNAME} ${QT_LIBRARIES} PerceptualDiff qtpropertybrowser qwt opencv_core opencv_highgui opencv_imgproc libyuv -lX11 -ldl )
++    TARGET_LINK_LIBRARIES( ${PROGNAME} ${QT_LIBRARIES} PerceptualDiff qtpropertybrowser qwt-qt4 opencv_core opencv_highgui opencv_imgproc libyuv -lX11 -ldl )
+ ELSE (UNIX)
+-    TARGET_LINK_LIBRARIES( ${PROGNAME} ${QT_LIBRARIES} PerceptualDiff qtpropertybrowser qwt opencv_core opencv_highgui opencv_imgproc libyuv )
++    TARGET_LINK_LIBRARIES( ${PROGNAME} ${QT_LIBRARIES} PerceptualDiff qtpropertybrowser qwt-qt4 opencv_core opencv_highgui opencv_imgproc libyuv )
+ ENDIF (UNIX)
+ 
+ IF(WIN32)
+diff --git a/src/MiscFunctions.cpp b/src/MiscFunctions.cpp
+index c3cd347..ee0fe35 100644
+--- a/src/MiscFunctions.cpp
++++ b/src/MiscFunctions.cpp
+@@ -32,6 +32,7 @@
+ #include <QtGui/QImage>
+ 
+ #include <opencv2/core/core.hpp>
++#include <opencv2/imgproc/imgproc_c.h>
+ #include <opencv2/imgproc/imgproc.hpp>
+ 
+ #include "MiscFunctions.h"
+diff --git a/src/metrics/BaseMetric.cpp b/src/metrics/BaseMetric.cpp
+index a0912c6..029461b 100644
+--- a/src/metrics/BaseMetric.cpp
++++ b/src/metrics/BaseMetric.cpp
+@@ -23,6 +23,8 @@
+ #include <QtCore/QFile>
+ #include <QtCore/QFileInfo>
+ 
++#include <opencv2/imgcodecs/legacy/constants_c.h>
++#include <opencv2/imgproc/imgproc_c.h>
+ #include <opencv2/imgproc/imgproc.hpp>
+ 
+ #include "BaseMetric.h"
+diff --git a/src/metrics/PerLuminanceMetric.cpp b/src/metrics/PerLuminanceMetric.cpp
+index 48fc4ce..5cfb2e5 100644
+--- a/src/metrics/PerLuminanceMetric.cpp
++++ b/src/metrics/PerLuminanceMetric.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include <QtCore/QDebug>
+ 
++#include <opencv2/imgproc/imgproc_c.h>
+ #include <opencv2/imgproc/imgproc.hpp>
+ 
+ #include "PerLuminanceMetric.h"
