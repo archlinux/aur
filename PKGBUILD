@@ -26,7 +26,7 @@ conflicts=('litecli-git')
 md5sums=('976766def2012b1eee80dfcf703597b5')
 
 package() {
-    cd "$srcdir/litecli-${pkgver}"
+    cd "$srcdir/${pkgname}-${pkgver}"
     python setup.py install --root="$pkgdir/" --optimize=1
     install -D "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
