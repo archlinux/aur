@@ -1,0 +1,18 @@
+pkgbase = urlview-git
+	pkgdesc = A curses URL parser for text files. Git version. Adds support for QUITONLAUNCH option.
+	pkgver = r19.08767aa
+	pkgrel = 1
+	url = https://github.com/sigpipe/urlview
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automake
+	makedepends = autoconf
+	depends = bash
+	provides = urlview
+	conflicts = urlview
+	source = git+https://github.com/sigpipe/urlview.git
+	sha256sums = SKIP
+
+pkgname = urlview-git
+
