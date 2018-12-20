@@ -2,7 +2,7 @@
 # Contributor: Giuseppe Borzi <gborzi@ieee.org>
 pkgname=superlu
 pkgver=5.2.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Set of subroutines to solve a sparse linear system"
 arch=('i686' 'x86_64')
 url="http://crd-legacy.lbl.gov/~xiaoye/SuperLU/"
@@ -65,7 +65,7 @@ package() {
   ln -s lib$pkgname.so.$pkgver lib$pkgname.so.4
   ln -s lib$pkgname.so.4 lib$pkgname.so
   install -m644 $srcdir/SuperLU_$pkgver/SRC/*.h $pkgdir/usr/include/$pkgname
-  install -m644 $srcdir/superlu_ug.pdf $pkgdir/usr/share/doc/$pkgname/superlu_ug.pdf
+  install -m644 $srcdir/ug.pdf $pkgdir/usr/share/doc/$pkgname/ug.pdf
   install -m644 $srcdir/SuperLU_$pkgver/README $pkgdir/usr/share/doc/$pkgname
   install -m644 $srcdir/License.txt $pkgdir/usr/share/licenses/$pkgname
 }
