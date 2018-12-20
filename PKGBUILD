@@ -3,7 +3,7 @@
 _pkgname=urlview
 pkgname=$_pkgname-git
 pkgver=r19.08767aa
-pkgrel=1
+pkgrel=2
 pkgdesc="A curses URL parser for text files. Git version. Adds support for QUITONLAUNCH option."
 arch=('i686' 'x86_64')
 url="https://github.com/sigpipe/urlview"
