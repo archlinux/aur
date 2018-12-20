@@ -1,0 +1,21 @@
+pkgbase = adb-arm64
+	pkgdesc = adb for Raspberry 3
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = aarch64
+	license = custom
+	depends = zlib
+	depends = ncurses
+	depends = repo
+	provides = adb
+	conflicts = adb
+	source = adb.service
+	source = license.html
+	source = Makefile
+	sha1sums = 49a40c129199844603afe71fce69c0908e062393
+	sha1sums = bfb91be7e0b602d765b7a1fcaf0ce1b7e1a93faa
+	sha1sums = SKIP
+
+pkgname = adb-arm64
+
