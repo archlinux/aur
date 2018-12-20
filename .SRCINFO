@@ -1,6 +1,6 @@
 pkgbase = qt5-base-headless
 	pkgdesc = A cross-platform application and UI framework - headless build (no QtGui or QtWidgets)
-	pkgver = 5.11.2
+	pkgver = 5.12.0
 	pkgrel = 1
 	url = http://qt-project.org/
 	arch = x86_64
@@ -12,20 +12,24 @@ pkgbase = qt5-base-headless
 	makedepends = sqlite
 	makedepends = unixodbc
 	makedepends = postgresql-libs
+	makedepends = dbus
 	depends = sqlite
 	depends = libproxy
 	depends = double-conversion
+	depends = pcre2
+	depends = glib2
+	depends = icu
 	optdepends = postgresql-libs: PostgreSQL driver
 	optdepends = libmariadbclient: MariaDB driver
 	optdepends = unixodbc: ODBC driver
-	optdepends = libfbclient: Firebird/iBase driver
 	optdepends = freetds: MS SQL driver
-	optdepends = gtk3: GTK platform plugin
+	optdepends = python: build scripts for Apple platforms
+	optdepends = dbus: DBus module
 	provides = qt5-base
 	conflicts = qtchooser
 	conflicts = qt5-base
-	source = http://download.qt.io/official_releases/qt/5.11/5.11.2/submodules/qtbase-everywhere-src-5.11.2.tar.xz
-	sha256sums = 6381e7c3468d5a1dcfe3683b29eeced192faa0f8a32434fec071a59b8bcd0107
+	source = http://download.qt.io/official_releases/qt/5.12/5.12.0/submodules/qtbase-everywhere-src-5.12.0.tar.xz
+	sha256sums = 5e03221d780e121aabd734896aab8f331e5d8c9d9b54f1eb04907d0818eaeecb
 
 pkgname = qt5-base-headless
 
