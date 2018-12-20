@@ -16,7 +16,7 @@ pkgbase = kicad-rc
 	depends = desktop-file-utils
 	depends = boost-libs
 	depends = python
-	depends = glm
+	depends = glm<=0.9.9.2
 	depends = curl
 	depends = swig
 	depends = wxpython

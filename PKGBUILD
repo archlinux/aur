@@ -8,7 +8,8 @@ pkgdesc="Official KiCad release candidates and dev snapshots"
 arch=('any')
 url="http://kicad-pcb.org/"
 license=('GPL3')
-depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl' 'swig' 'wxpython' 'opencascade' 'ngspice>=27' 'kicad-footprints' 'kicad-symbols' 'kicad-packages3d')
+# glm 0.9.9.3 breaks the build
+depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm<=0.9.9.2' 'curl' 'swig' 'wxpython' 'opencascade' 'ngspice>=27' 'kicad-footprints' 'kicad-symbols' 'kicad-packages3d')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-symbols' 'kicad-packages3d' 'kicad-footprints' 'kicad-templates')
 conflicts=('kicad' 'kicad-git' 'kicad-scripting-git' 'kicad-bzr')
