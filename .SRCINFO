@@ -38,8 +38,8 @@ pkgbase = python-gnocchiclient
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://github.com/gnocchixyz/python-gnocchiclient#tag=7.0.4
-	sha256sums = SKIP
+	source = https://github.com/gnocchixyz/python-gnocchiclient/archive/7.0.4.tar.gz
+	sha512sums = 46cfe78ecba2f18424814452289de3e0ac40d0e8580f6e303616676aa5f145a8eea6df95aa24ca32cb26fba4adf954045c0c00d9a93f2c8b92bd4feb5ba5401b
 
 pkgname = python-gnocchiclient
 	depends = python-pbr

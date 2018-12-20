@@ -23,18 +23,19 @@ checkdepends=('python-pbr' 'python2-pbr'
               'python-openstackclient' 'python2-openstackclient'
               'python-pytest' 'python2-pytest'
               'python-pytest-xdist' 'python2-pytest-xdist')
-source=("git+https://github.com/gnocchixyz/${pkgname}#tag=${pkgver}")
-sha256sums=('SKIP')
+source=("https://github.com/gnocchixyz/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('46cfe78ecba2f18424814452289de3e0ac40d0e8580f6e303616676aa5f145a8eea6df95aa24ca32cb26fba4adf954045c0c00d9a93f2c8b92bd4feb5ba5401b')
 
 prepare() {
-  cp -a "${srcdir}/${pkgname}"{,-py2}
+  cp -a "${srcdir}/${pkgname}-${pkgver}"{,-py2}
+  export PBR_VERSION=$pkgver
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}/${pkgname}-py2"
+  cd "${srcdir}/${pkgname}-${pkgver}-py2"
   python2 setup.py build
 }
 
@@ -42,7 +43,7 @@ package_python-gnocchiclient() {
   depends=('python-pbr' 'python-cliff' 'python-ujson' 'python-keystoneauth1'
            'python-six' 'python-futurist' 'python-iso8601' 'python-monotonic'
            'python-dateutil' 'python-debtcollector')
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
@@ -50,7 +51,7 @@ package_python2-gnocchiclient() {
   depends=('python2-pbr' 'python2-cliff' 'python2-ujson' 'python2-keystoneauth1'
            'python2-six' 'python2-futurist' 'python2-iso8601' 'python2-monotonic'
            'python2-dateutil' 'python2-debtcollector')
-  cd "${srcdir}/python-gnocchiclient-py2"
+  cd "${srcdir}/python-gnocchiclient-${pkgver}-py2"
   python2 setup.py install --root="${pkgdir}" --optimize=1
   mv "${pkgdir}"/usr/bin/gnocchi{,2}
 }
