@@ -1,7 +1,4 @@
-# Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
-# Contributor: Vlad M. <vlad@archlinux.net>
-# Contributor: Gordin <9ordin @t gmail dot com>
-# Contributor: Christoph Bayer <chrbayer@criby.de>
+# Maintainer: Franck Lucien Duriez <franck.lucien.duriez@gmail.com>
 
 pkgname=adb-arm64
 pkgver=5.1.1
