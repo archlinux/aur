@@ -2,7 +2,7 @@
 
 pkgname=uhk-agent-appimage
 pkgver=1.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="The configuration application of the Ultimate Hacking Keyboard."
 arch=('x86_64')
 url="https://github.com/UltimateHackingKeyboard/agent"
@@ -22,7 +22,7 @@ prepare() {
   cd "${srcdir}"
   chmod +x ${_filename}
   ${_filename} --appimage-extract
-  patch -Np0 < ../uhk-agent.desktop.patch
+  patch -Np0 < ./uhk-agent.desktop.patch
 }
 
 package() {
