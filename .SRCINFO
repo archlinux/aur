@@ -1,0 +1,14 @@
+pkgbase = ssh-tools
+	pkgdesc = collection of various tools using ssh
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/vaporup/ssh-tools/
+	arch = any
+	license = GPL
+	makedepends = help2man
+	depends = openssh
+	optdepends = colordiff: colors for ssh-diff
+	source = https://github.com/vaporup/ssh-tools/archive/v1.4.tar.gz
+	md5sums = 0cf8eb854944f0fa5b6635268d52c9cb
+
+pkgname = ssh-tools
