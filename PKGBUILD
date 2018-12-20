@@ -2,7 +2,7 @@
 # Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Giacomo <giacomogiorgianni at gmail dot com>
 
-pkgname=vokoscreen
+pkgname=vokoscreen-legacy
 _pkgver=2.5.8-beta
 pkgver=${_pkgver/-/.}
 pkgrel=1
