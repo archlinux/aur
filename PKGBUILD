@@ -4,7 +4,7 @@ _pkgname=godot-export-templates
 pkgname=${_pkgname}-git
 _gitname=godot
 pkgver=3.1.r18268.e8cdbf99e9
-pkgrel=1
+pkgrel=2
 pkgdesc='Godot export templates'
 url='https://godotengine.org/'
 license=('MIT')
@@ -36,8 +36,16 @@ pkgver() {
 build() {
   cd "${srcdir}"/${_gitname}
   sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
+
+  # 64 bit x11 client
   scons platform=x11 tools=no target=release bits=64 CXX=clang++ -j$(nproc)
   scons platform=x11 tools=no target=release_debug bits=64 CXX=clang++ -j$(nproc)
+  
+  # 64 bit headless server
+  scons platform=server tools=no target=release bits=64 CXX=clang++ -j$(nproc)
+  scons platform=server tools=no target=release_debug bits=64 CXX=clang++ -j$(nproc)
+
+  # 32 bit
   scons platform=x11 tools=no target=release bits=32 CXX=clang++ -j$(nproc)
   scons platform=x11 tools=no target=release_debug bits=32 CXX=clang++ -j$(nproc)
 }
@@ -47,6 +55,8 @@ package() {
   mkdir -p "${pkgdir}"/usr/share/godot/templates/
   install -Dm755 bin/godot.x11.opt.64.llvm "${pkgdir}"/usr/share/godot/templates/
   install -Dm755 bin/godot.x11.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
+  install -Dm755 bin/godot.server.opt.64.llvm "${pkgdir}"/usr/share/godot/templates/
+  install -Dm755 bin/godot.server.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
   install -Dm755 bin/godot.x11.opt.32.llvm "${pkgdir}"/usr/share/godot/templates/
   install -Dm755 bin/godot.x11.opt.debug.32.llvm "${pkgdir}"/usr/share/godot/templates/
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${_pkgname}"/LICENSE
