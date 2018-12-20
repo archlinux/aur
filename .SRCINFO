@@ -10,9 +10,9 @@ pkgbase = p4
 	source_x86_64 = http://www.perforce.com/downloads/perforce/r17.2/bin.linux26x86_64/p4
 	source_i686 = http://www.perforce.com/downloads/perforce/r17.2/bin.linux26x86/p4
 	source = LICENSE
-	sha256sums = ff4726ddfdd981b045ec25b3b3bf29a6d0d0d4458215af7a79abf36b27651293
-	sha256sums = 0e27fafff42c5f2bc5c481363eb1dc08080dc89b7a28643804d88ccbbeed8a57
-	sha256sums = b6f794c69f73c16480432b7a47b6400b14b745bd7d0bb53cbc8277ae8d68e682
+	sha256sums = 784d9ff78b1c74f7bcdcf3ce12b7d7a878dd58d57f6daa533569eca6b742d179
+	sha256sums = 84b3cd833c46b8576ff46286822652cc7009878628a0996edb59116f3045e233
+	sha256sums = c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32
 
 pkgname = p4
 
