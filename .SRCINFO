@@ -1,17 +1,14 @@
 pkgbase = wireframesketcher
 	pkgdesc = WireframeSketcher, wireframing tool for professionals (Trial)
-	pkgver = 5.1.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = http://wireframesketcher.com
-	arch = i686
 	arch = x86_64
 	license = nonfree
 	depends = gtk3
 	depends = webkit2gtk
-	source_i686 = http://cdn.wireframesketcher.com/studio/dist/WireframeSketcher-5.1.0_i386.deb
-	sha512sums_i686 = 5cac8d9b3b74a9d31643fb5824b324494e81fe0a8848151c10b02397fd9a18b9208a7c4b6483fa446bff12c77ba30e4b89a061d34d9bed234d3db922b1fd7c57
-	source_x86_64 = http://cdn.wireframesketcher.com/studio/dist/WireframeSketcher-5.1.0_amd64.deb
-	sha512sums_x86_64 = c51aeb1791e6644c62dd0d61b14d725718c6def804c855417cfb9c07733c2f9bc0cb98932bcdfa1d18c6caf46691d7765592790d54d37441b4a76c541e28567c
+	source_x86_64 = http://cdn.wireframesketcher.com/studio/dist/WireframeSketcher-6.0.0_amd64.deb
+	sha512sums_x86_64 = c6187b5412487bdb24bb4cf4e1f34c3205384facc62b37f80ff224890b7c94aad63fae2d968ac177671dd57df92813e87489bbc04cd77582b8e5677783aed7f0
 
 pkgname = wireframesketcher
 
