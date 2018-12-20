@@ -1,8 +1,8 @@
 # Maintainer: Yves G. <theYinYeti@yalis.fr>
 
 pkgname=collabora-online-server-nodocker
-pkgver=3.3.1
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
@@ -37,7 +37,7 @@ optdepends=(
   'hyphen-hu: Hungarian hyphenation rules for LibreOffice'
   'hyphen-pl: Polish hyphenation rules for LibreOffice'
 )
-depends=(cpio noto-fonts)
+depends=(cpio noto-fonts poco)
 source=(
   'https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/Packages'
   install
@@ -57,7 +57,7 @@ sha1sums=(
 
 # From deb’s conffiles
 backup=(
-  opt/collaboraoffice5.3/share/psprint/psprint.conf
+  opt/collaboraoffice6.0/share/psprint/psprint.conf
   etc/loolwsd/loolkitconfig.xcu
   etc/loolwsd/loolwsd.xml
 )
@@ -101,13 +101,6 @@ _upstream_equiv='
   libpam0g            = pam
   libpcre3            = 
   libpng12-0          = libpng12
-  libpococrypto60     = poco
-  libpocofoundation60 = poco
-  libpocojson60       = poco
-  libpoconet60        = poco
-  libpoconetssl60     = poco
-  libpocoutil60       = poco
-  libpocoxml60        = poco
   libsm6              = libsm
   libssl1.0.0         = openssl-1.0
   libstdc++6          = gcc-libs
@@ -184,6 +177,9 @@ package() {
   # /lib is deprecated
   mv {lib,usr/lib}
 
+  # replace the embedded poco, which depends on unknown libpcre.so.3, with Arch poco
+  rm -f usr/lib/libPoco*
+
   # use systemd for user allocation
   install -Dm0644 "$srcdir"/sysusers usr/lib/sysusers.d/$pkgname.conf
 
@@ -192,6 +188,8 @@ package() {
   install -Dm0644 "$srcdir"/tmpfiles usr/lib/tmpfiles.d/$pkgname.conf
 
   # add dependency on systemd
+  mv usr/lib{/lib,}/systemd
+  rmdir usr/lib/lib
   sed -i '/^\[Unit\]/ a \
 After=systemd-tmpfiles-setup.service' usr/lib/systemd/system/loolwsd.service
 
@@ -200,23 +198,23 @@ After=systemd-tmpfiles-setup.service' usr/lib/systemd/system/loolwsd.service
 
   # actually provide libreoffice, without conflicting with Archlinux’ libreoffice
   mkdir -p usr/share/applications
-  sed -i 's#^Exec=collaboraoffice5.3#Exec=/opt/collaboraoffice5.3/program/soffice#' \
-    opt/collaboraoffice5.3/share/xdg/*
-  ls opt/collaboraoffice5.3/share/xdg \
+  sed -i 's#^Exec=collaboraoffice6.0#Exec=/opt/collaboraoffice6.0/program/soffice#' \
+    opt/collaboraoffice6.0/share/xdg/*
+  ls opt/collaboraoffice6.0/share/xdg \
   | while read f; do
     case "$f" in
     calc.desktop|draw.desktop|impress.desktop|writer.desktop)
-      sed -i "s#^Icon=.*#Icon=/opt/collaboraoffice5.3/share/config/wizard/web/images/${f%.desktop}.gif#" \
-        opt/collaboraoffice5.3/share/xdg/$f
+      sed -i "s#^Icon=.*#Icon=/opt/collaboraoffice6.0/share/config/wizard/web/images/${f%.desktop}.gif#" \
+        opt/collaboraoffice6.0/share/xdg/$f
       ;;
     *)
-      sed -i 's#^Icon=.*#Icon=/opt/collaboraoffice5.3/share/config/wizard/web/images/other.gif#' \
-        opt/collaboraoffice5.3/share/xdg/$f
+      sed -i 's#^Icon=.*#Icon=/opt/collaboraoffice6.0/share/config/wizard/web/images/other.gif#' \
+        opt/collaboraoffice6.0/share/xdg/$f
       ;;
     esac
-    mv opt/collaboraoffice5.3/share/xdg/"$f" usr/share/applications/"collaboraoffice-$f"
+    mv opt/collaboraoffice6.0/share/xdg/"$f" usr/share/applications/"collaboraoffice-$f"
   done
-  rm -rf opt/collaboraoffice5.3/share/xdg
+  rm -rf opt/collaboraoffice6.0/share/xdg
 
   # give some hints about usage
   install -Dm0644 "$srcdir"/nginx.conf usr/share/doc/loolwsd/example.nginx.conf
