@@ -6,7 +6,7 @@ pkgname=vokoscreen-legacy
 _pkgrealname=vokoscreen
 _pkgver=2.5.8-beta
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc='An easy to use screencast creator'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
@@ -17,8 +17,8 @@ depends=(
 	'lsof' 'pulseaudio-alsa' 'xdg-utils'
 )
 makedepends=('qt5-tools' 'libxrandr')
-provides=("${_pkgrealname}=${pkgver}")
-conflicts=("${_pkgrealname}-git")
+provides=("${_pkgrealname}")
+conflicts=("${_pkgrealname}-git" "${_pkgrealname}")
 
 source=(
 	"${_pkgrealname}-${_pkgver}.tar.gz::https://github.com/vkohaupt/${_pkgrealname}/archive/${_pkgver}.tar.gz"

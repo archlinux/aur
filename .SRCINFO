@@ -1,7 +1,7 @@
 pkgbase = vokoscreen-legacy
 	pkgdesc = An easy to use screencast creator
 	pkgver = 2.5.8.beta
-	pkgrel = 2
+	pkgrel = 3
 	url = http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,9 @@ pkgbase = vokoscreen-legacy
 	depends = lsof
 	depends = pulseaudio-alsa
 	depends = xdg-utils
-	provides = vokoscreen=2.5.8.beta
+	provides = vokoscreen
 	conflicts = vokoscreen-git
+	conflicts = vokoscreen
 	source = vokoscreen-2.5.8-beta.tar.gz::https://github.com/vkohaupt/vokoscreen/archive/2.5.8-beta.tar.gz
 	source = desktop_file.patch
 	source = fix_lrelease.patch
