@@ -1,16 +1,16 @@
 pkgbase = python-zstandard
 	pkgdesc = Python bindings to the Zstandard (zstd) compression library
-	pkgver = 0.9.1
+	pkgver = 0.10.2
 	pkgrel = 1
-	url = https://thriftpy.readthedocs.org/
+	url = https://github.com/indygreg/python-zstandard
 	arch = x86_64
 	license = BSD
 	checkdepends = python-hypothesis
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-cffi
-	source = https://github.com/indygreg/python-zstandard/releases/download/0.9.1/python-zstandard-0.9.1.tar.gz
-	sha256sums = 59c7d6f1f85cebb5124abb50d8ec281c5311e0812e18785e28b197cf1515dd3b
+	source = https://github.com/indygreg/python-zstandard/archive/0.10.2.tar.gz
+	sha256sums = f684c1457f99c344f9bb5268cca49cd96fcf239b7d27acf3785390427a6d1476
 
 pkgname = python-zstandard
 
