@@ -4,13 +4,9 @@ pkgver=v9
 pkgrel=1
 pkgdesc="A tool to query the notmuch database for addresses."
 url="https://github.com/aperezdc/notmuch-addrlookup-c"
-arch=('any')
+arch=('x86_64')
 license=('MIT')
 depends=('notmuch')
-makedepends=()
-conflicts=()
-replaces=()
-backup=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aperezdc/notmuch-addrlookup-c/archive/${pkgver}.tar.gz"
         "MIT-LICENSE")
 md5sums=('c4a659213225730d2512934e4aca3254'
