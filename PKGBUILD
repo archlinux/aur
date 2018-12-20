@@ -3,7 +3,7 @@
 
 # This PKGBUILD creates conky for tolua++_5.3 lua + cairo + imlib2 + nvidia
 
-# The git version has built in tolua++_5.3 lua
+# The git version has built in tolua++_5.3 lua - only supports lua 5.3
 
 # to create NON NVIDIA package - remove following
 # in makedepends 'libxnvctrl'
@@ -26,7 +26,7 @@
 pkgname=conky-cairo
 pkgver=1.11.1
 pkgrel=1
-pkgdesc='conky - built for nvidia n (tolua++_5.3 in AUR) - conky git has built in lua 5.3 support (tolua++_5.3 NOT required) - lua 51 support remove - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.'
+pkgdesc='conky - built for nvidia n (tolua++_5.3 in AUR) - conky git has built in lua 5.3 support (tolua++_5.3 NOT required) - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.'
 url='https://github.com/brndnmtthws/conky'
 license=('GPL3' 'BSD')
 arch=('i686' 'x86_64')
