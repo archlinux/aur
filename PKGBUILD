@@ -1,7 +1,7 @@
 # Maintainer: Alif Rachmawadi <arch@subosito.com>
 
 pkgname=wavebox-bin
-pkgver=4.5.8
+pkgver=4.5.9
 pkgrel=1
 pkgdesc="The next generation of web-desktop communication"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=('wavebox.desktop')
 source_x86_64=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_linux_${CARCH}.tar.gz")
 
 sha256sums=('ed71fff01f57bc7d4b32278b2fb5f33bb30057ed7aeee64b3696eb17dc4ba0fc')
-sha256sums_x86_64=('fbed8b012f420e91049579282dbcbdf9e76dc07dd699adeedc53ccbf55d151e0')
+sha256sums_x86_64=('cf84d824f67aa240b69dc4e4f9aa5577900243696b7f7ecbece3925bf2911395')
 
 package() {
   if [ ${CARCH} == "x86_64" ]; then
