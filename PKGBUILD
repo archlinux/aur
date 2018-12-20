@@ -3,16 +3,16 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=56.2.5
+pkgver=56.2.6
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
 url="https://www.waterfoxproject.org/"
-depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
-         'nss>=3.32.1' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr>=4.15' 'hicolor-icon-theme' 'jemalloc')
+depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
+         'nss>=3.34' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr>=4.15' 'hicolor-icon-theme' 'jemalloc')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'inetutils' 'xorg-server-xvfb'
-             'autoconf2.13' 'rust' 'clang' 'llvm' 'ccache')
+             'autoconf2.13' 'rust' 'clang' 'llvm')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -89,7 +89,6 @@ mk_add_options AUTOCLOBBER=1
 mk_add_options MOZ_MAKE_FLAGS="-j6"
 
 ac_add_options --prefix=/usr
-ac_add_options --libdir=/opt
 
 ac_add_options --with-app-name=waterfox
 ac_add_options --with-app-basename=Waterfox
