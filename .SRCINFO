@@ -4,6 +4,7 @@ pkgbase = mcpelauncher-linux-git
 	pkgrel = 1
 	url = https://github.com/minecraft-linux/mcpelauncher-manifest
 	arch = x86_64
+	arch = i686
 	license = GPL3
 	license = custom
 	optdepends = mcpelauncher-msa: Xbox Live support
@@ -70,6 +71,17 @@ pkgbase = mcpelauncher-linux-git
 	makedepends_x86_64 = git
 	makedepends_x86_64 = cmake
 	makedepends_x86_64 = gcc-multilib
+	depends_i686 = curl
+	depends_i686 = libx11
+	depends_i686 = zlib
+	depends_i686 = libpng
+	depends_i686 = libevdev
+	depends_i686 = systemd
+	depends_i686 = libxi
+	depends_i686 = libegl
+	makedepends_i686 = git
+	makedepends_i686 = cmake
+	makedepends_i686 = gcc
 
 pkgname = mcpelauncher-linux-git
 
