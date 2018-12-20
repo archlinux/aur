@@ -1,6 +1,6 @@
 pkgbase = lsdeluxe
 	pkgdesc = A ls command with a lot of pretty colors.
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/Peltoche/lsd
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = lsdeluxe
 	makedepends = cargo
 	provides = lsd
 	conflicts = lsdeluxe-git
-	source = https://github.com/Peltoche/lsd/archive/0.10.0.tar.gz
-	sha256sums = 6e1880306d61e778bd9746ad99e5814980b8eb7c4e708ef0e156bab509dc8682
+	source = https://github.com/Peltoche/lsd/archive/0.11.0.tar.gz
+	sha256sums = ff9e4b36aa9f3457e978ecd01aa889010b70cecee73a5dfaad77b388c17e4c0e
 
 pkgname = lsdeluxe
 
