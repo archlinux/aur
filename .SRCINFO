@@ -1,6 +1,6 @@
 pkgbase = multicat
 	pkgdesc = Easily and efficiently manipulate multicast streams
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://www.videolan.org/projects/multicat.html
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = multicat
 	license = GPL2
 	makedepends = bitstream
 	depends = glibc
-	source = multicat-2.2-src.tar.gz::https://get.videolan.org/multicat/2.2/multicat-2.2.tar.bz2
-	sha256sums = fa4e48b38665658df7719293f9358df08f59f3eb7f7b77df510b35951e316b40
+	source = multicat-2.3-src.tar.gz::https://get.videolan.org/multicat/2.3/multicat-2.3.tar.bz2
+	sha256sums = 2be162e9e8b2e6f6aa7686431f102db6c72c8288bd82dbc67ffed631f4a3361e
 
 pkgname = multicat
 
