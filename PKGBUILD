@@ -1,21 +1,22 @@
 # Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
-_pkgbase=ddcci-driver-linux
 pkgname=ddcci-driver-linux-dkms
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A pair of Linux kernel drivers for DDC/CI monitors (DKMS)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux/"
 license=('GPL2')
 depends=('dkms')
-conflicts=("${_pkgbase}")
-source=("$_pkgbase-$pkgver.tar.gz::https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux/repository/archive.tar.gz?ref=v$pkgver")
-md5sums=('22fb02763984b3f9dd987551a46f3d53')
+conflicts=("ddcci-driver-linux")
+source=("https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux/-/archive/v${pkgver}/ddcci-driver-linux-v${pkgver}.tar.gz")
+md5sums=('2592ba497fa11fbbb0e8cf0b7a35fdc4')
 
 package() {
-  cd ${_pkgbase}-v${pkgver}-*
+  cd "ddcci-driver-linux-v${pkgver}"
 
-  install -Dm644 dkms.conf "${pkgdir}"/usr/src/ddcci-${pkgver}/dkms.conf
-  cp -r ./* "${pkgdir}"/usr/src/ddcci-${pkgver}/
+  local destdir="${pkgdir}/usr/src/ddcci-${pkgver}"
+
+  install -d "${destdir}"
+  cp -rt     "${destdir}" .
 }
