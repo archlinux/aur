@@ -1,7 +1,7 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=writeas-gtk
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Write.as GTK desktop app'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
 	'writeas-cli: web publishing support'
 )
 source=("https://code.as/writeas/writeas-gtk/archive/v${pkgver}.tar.gz")
-sha256sums=('be97a35012cee110911bda517a87ed8a8ad1ce1634a8960b11b565449470245f')
+sha256sums=('7c7f43fc322de74af4ce0cce06859ac9964dd1bc89b0f5479de1181004e4066c')
 
 prepare() {
 	# The build was failing across versions of meson, so always clean build.
