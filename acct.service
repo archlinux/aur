@@ -1,11 +1,12 @@
 [Unit]
 Description=Kernel process accounting
 After=syslog.target
+ConditionPathExists=/var/log/account
 
 [Service]
 Type=oneshot
 ExecStartPre=/usr/lib/acct/accton-create
-ExecStart=/usr/sbin/accton /var/log/acct/acct
+ExecStart=/usr/sbin/accton /var/log/account/pacct
 ExecStop=/usr/sbin/accton off
 RemainAfterExit=yes
 

@@ -1,5 +1,5 @@
 #!/usr/bin/sh
-ACCTFILE=/var/log/acct/acct
+ACCTFILE=/var/log/account/pacct
 if [ ! -r $ACCTFILE ];then
   touch $ACCTFILE && chmod 600 $ACCTFILE
 fi
