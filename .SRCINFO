@@ -2,7 +2,7 @@ pkgbase = ethr
 	pkgdesc = Ethr is a Network Performance Measurement Tool for TCP, UDP & HTTP
 	pkgver = 0.1
 	pkgrel = 1
-	url = https://github.com/Microsoft/Ethr
+	url = https://github.com/Microsoft/ethr
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -11,8 +11,8 @@ pkgbase = ethr
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = ethr-0.1.tar.gz::https://github.com/Microsoft/Ethr/archive/v0.1.tar.gz
-	sha256sums = d233fe1c6ae14ddfd38dc883a79bdad520bd24040cbe9d21fa2e9185d873beef
+	source = ethr-0.1.tar.gz::https://github.com/Microsoft/ethr/archive/v0.1.tar.gz
+	sha256sums = 6b9b3a76a6999c6726b370a9caeef6a18d5b7a6c9b81cfdc7adacc7625ec5edd
 
 pkgname = ethr
 
