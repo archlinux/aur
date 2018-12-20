@@ -3,9 +3,10 @@
 # Contributor: Giacomo <giacomogiorgianni at gmail dot com>
 
 pkgname=vokoscreen-legacy
+_pkgrealname=vokoscreen
 _pkgver=2.5.8-beta
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use screencast creator'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
@@ -16,11 +17,11 @@ depends=(
 	'lsof' 'pulseaudio-alsa' 'xdg-utils'
 )
 makedepends=('qt5-tools' 'libxrandr')
-provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}-git")
+provides=("${_pkgrealname}=${pkgver}")
+conflicts=("${_pkgrealname}-git")
 
 source=(
-	"${pkgname}-${_pkgver}.tar.gz::https://github.com/vkohaupt/${pkgname}/archive/${_pkgver}.tar.gz"
+	"${_pkgrealname}-${_pkgver}.tar.gz::https://github.com/vkohaupt/${_pkgrealname}/archive/${_pkgver}.tar.gz"
 	'desktop_file.patch'
 	'fix_lrelease.patch'
 )
@@ -31,7 +32,7 @@ sha512sums=(
 )
 
 prepare() {
-	cd "${srcdir}"/${pkgname}-${_pkgver}
+	cd "${srcdir}"/${_pkgrealname}-${_pkgver}
 
 	# Fix lrelease path
 	patch -Np1 < ../fix_lrelease.patch
@@ -46,7 +47,7 @@ prepare() {
 build() {
 	# Building package
 	cd "${srcdir}"/build
-	qmake-qt5 ../${pkgname}-${_pkgver} \
+	qmake-qt5 ../${_pkgrealname}-${_pkgver} \
 		QMAKE_CFLAGS="${CFLAGS}" \
 		QMAKE_CXXFLAGS="${CXXFLAGS}" \
 		CONFIG+=release \
