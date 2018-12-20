@@ -37,10 +37,6 @@ pkgver() {
 package() {
     cd $srcdir/litecli
     python setup.py install --root=$pkgdir/ --optimize=1
-    echo "#!/usr/bin/bash" >$pkgdir/usr/bin/litecli
-    python_bin='/usr/bin/python'
-    echo "$(python_bin) -c 'import litecli.main; litecli.main.cli()' \"\$@\"" \
-        >>$pkgdir/usr/bin/litecli
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
     cp LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
