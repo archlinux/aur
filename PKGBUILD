@@ -1,12 +1,12 @@
 # Maintainer: Noel Kuntze <noel.kuntze at thermi dot consulting>
 # Contributor: Mikael Eriksson <mikael_eriksson@miffe.org>
-# Contributor: Stephan Eisvogel <eisvogel at embinet dot de
+# Contributor: Stephan Eisvogel <eisvogel at embinet dot de>
 
 pkgname=acmetool
 pkgver=0.0.67
 pkgrel=3
 pkgdesc="An easy-to-use command line tool for automatically acquiring certificates from ACME servers (such as Let's Encrypt)"
-arch=(i686 x86_64 armv7h)
+arch=(i686 x86_64 armv7h aarch64)
 url="https://github.com/hlandau/acme"
 license=('MIT')
 depends=(bash libcap)
