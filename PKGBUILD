@@ -11,7 +11,7 @@ url='https://movim.eu'
 license=('AGPL3')
 provides=('movim')
 conflicts=('movim')
-depends=('php-gd' 'php-imagick' 'php-zmq')
+depends=('php-gd' 'php-imagick')
 optdepends=('postgresql: to use the postgresql database backend'
             'php-pgsql: php bindings for postgresql'
             'mariadb: to use the mysql database backend'

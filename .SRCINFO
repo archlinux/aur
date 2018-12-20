@@ -10,7 +10,6 @@ pkgbase = movim-git
 	makedepends = composer
 	depends = php-gd
 	depends = php-imagick
-	depends = php-zmq
 	optdepends = postgresql: to use the postgresql database backend
 	optdepends = php-pgsql: php bindings for postgresql
 	optdepends = mariadb: to use the mysql database backend
