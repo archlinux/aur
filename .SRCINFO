@@ -14,7 +14,7 @@ pkgbase = warspear
 	depends = zenity
 	depends = curl
 	source = http://distr.warspear-online.com/linux/pool/non-free/w/warspear/warspear_7.8.0_amd64.deb
-	sha512sums = e68dee6efe20c3fd8988bf9ad00c1cb5b38adec1e993297e94481527e3be9220db3f5dedca95853df257364f869301ba63d6cbef7637591f54da642c8126ef71
+	sha512sums = 2da58db10cee305919d406bee6c403e237f059f84e7b7049ea2f5b8a2dc8009c8ac2d45430d84939e40923ebf1d39c67299e8623183f0d9518ff106dd0eb1e06
 
 pkgname = warspear
 
