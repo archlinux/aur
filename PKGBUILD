@@ -7,7 +7,7 @@
 pkgbase=phpstorm
 pkgname=(phpstorm phpstorm-jre)
 pkgver=2018.3.2
-_pkgver=183.4588.67
+_pkgver=183.4886.46
 pkgrel=1
 pkgdesc='Lightweight and Smart PHP IDE'
 arch=('x86_64' 'i686')
