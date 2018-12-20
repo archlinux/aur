@@ -1,6 +1,6 @@
 pkgbase = xorgxrdp
 	pkgdesc = Xorg drivers for xrdp
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/neutrinolabs/xorgxrdp
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = xorgxrdp
 	depends = glibc
 	depends = xrdp
 	options = staticlibs
-	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.2.8/xorgxrdp-0.2.8.tar.gz
-	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.2.8/xorgxrdp-0.2.8.tar.gz.asc
+	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.2.9/xorgxrdp-0.2.9.tar.gz
+	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.2.9/xorgxrdp-0.2.9.tar.gz.asc
 	validpgpkeys = 61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB
-	sha256sums = 6e7e657eff8213e307451c5947e1ac5fa75683436768d73eafc1a1df09bdbae6
+	sha256sums = 2f24f468771c874d6cda86e09edcf5bd48e88894de9c4ebd2bef9cb6f255c688
 	sha256sums = SKIP
 
 pkgname = xorgxrdp
