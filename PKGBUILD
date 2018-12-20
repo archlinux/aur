@@ -1,7 +1,7 @@
 # Maintainer: Aiyion <aur@aiyionpri.me>
 _pkgname=heimdallr
 pkgname=$_pkgname-git
-pkgver=v1.0.2.r4.g32de57e
+pkgver=v1.0.3.r5.g8524e89
 pkgrel=1
 pkgdesc="finding public ssh keys with ease"
 arch=('x86_64')
