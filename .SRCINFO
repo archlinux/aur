@@ -1,6 +1,6 @@
 pkgbase = pext
 	pkgdesc = Python-based extendable tool
-	pkgver = 0.21
+	pkgver = 0.22
 	pkgrel = 1
 	url = https://pext.io/
 	arch = any
@@ -11,13 +11,15 @@ pkgbase = pext
 	depends = python-pip
 	depends = python-pyqt5
 	depends = qt5-quickcontrols
+	depends = python-opengl
+	depends = python-opengl-accelerate
+	depends = python-requests
 	optdepends = pass: password manager support
 	optdepends = ffmpeg: radiobrowser music support
-	optdepends = python-opengl: required for correct rendering on some GPUs
 	provides = pext
 	conflicts = pext
-	source = https://github.com/Pext/Pext/archive/v0.21.tar.gz
-	sha256sums = f53dade9e1f12f0dc08f3f64ccfc45a26b5624deb9ecb6c365d8c33479575877
+	source = https://github.com/Pext/Pext/archive/v0.22.tar.gz
+	sha256sums = 908a98f5e0804b935b1efe21b48470fe543672b5494437475474bccbb1acb289
 
 pkgname = pext
 
