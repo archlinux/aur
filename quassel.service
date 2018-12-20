@@ -1,0 +1,14 @@
+[Unit]
+Description=Quassel Core
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+User=quassel
+Group=quassel
+PIDFile=/var/run/quassel.pid
+EnvironmentFile=/etc/conf.d/quassel
+ExecStart=/usr/bin/quasselcore --configdir=/var/lib/quassel
+
+[Install]
+WantedBy=multi-user.target
