@@ -1,6 +1,6 @@
 pkgbase = tbftss-the-pandoran-war
 	pkgdesc = A 2D mission-based space shooter, based on the Battle for the Solar System space opera novel trilogy.
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://www.battleforthesolarsystem.com/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = tbftss-the-pandoran-war
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = sdl2_ttf
-	source = tbftss-1.4.0.tar.gz::https://github.com/stephenjsweeney/tbftss/archive/v1.4.0.tar.gz
-	sha256sums = c8c128f89253a04cfc91a01a2c25fad6b0804df0bc28505c703335cb7a37331f
+	source = tbftss-1.5.0.tar.gz::https://github.com/stephenjsweeney/tbftss/archive/1.5.0.tar.gz
+	sha256sums = 5120bd44e783b536a5e78a5568de94347d44263087f3e2287afbcff5bc92b5ce
 
 pkgname = tbftss-the-pandoran-war
 
