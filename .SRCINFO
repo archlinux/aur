@@ -1,0 +1,23 @@
+pkgbase = godot-export-templates-git
+	pkgdesc = Godot export templates
+	pkgver = 3.1.r18268.e8cdbf99e9
+	pkgrel = 1
+	url = https://godotengine.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = scons
+	makedepends = pulseaudio
+	makedepends = clang
+	depends = glu
+	depends = libxcursor
+	depends = libxinerama
+	depends = alsa-lib
+	depends = freetype2
+	depends = mesa
+	source = git://github.com/godotengine/godot.git#branch=master
+	sha256sums = SKIP
+
+pkgname = godot-export-templates-git
+
