@@ -4,7 +4,7 @@
 _pkgbase=gnome-software
 pkgbase=gnome-software-snap
 pkgname=(gnome-software-snap gnome-software-packagekit-plugin-snap)
-pkgver=3.30.5
+pkgver=3.30.6
 _pkgver=3.30
 pkgrel=1
 pkgdesc="GNOME Software Tools with built in snap support"
@@ -14,7 +14,7 @@ license=(GPL2)
 makedepends=(appstream-glib gnome-desktop libpackagekit-glib flatpak fwupd ostree
              docbook-xsl git gobject-introspection gspell gtk-doc meson valgrind snapd-glib liboauth)
 source=("http://download.gnome.org/sources/$_pkgbase/$_pkgver/$_pkgbase-$pkgver.tar.xz")
-sha256sums=('22a183f7af2ee77f243a00eebea0e32ab54cfe0abb3597e7d7a8cf8511105d34')
+sha256sums=('54630cdcde67cc571905a2ef5918fb7697f6aff80d937340440869f65c0c9002')
 
 build() {
   arch-meson $_pkgbase-$pkgver build \
