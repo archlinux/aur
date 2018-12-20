@@ -1,8 +1,8 @@
 pkgbase = linux-amd-staging-drm-next-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
 	pkgver = 4.21.797753.0050e1bd9b50
-	pkgrel = 1
-	url = https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html
+	pkgrel = 2
+	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
