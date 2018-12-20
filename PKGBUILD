@@ -1,8 +1,8 @@
 # Maintainer: ghostbuster <aur@sieverdingbeck.com>
 _pkgname=nagstamon
-_pkgver='3.1.20180829'
+_pkgver='3.2'
 pkgname=nagstamon-beta
-pkgver='3.1.0.20180829'
+pkgver='3.2'
 pkgrel=1
 pkgdesc="Nagios status monitor for the desktop"
 depends=('python-pyqt5' 'qt5-multimedia' 'qt5-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus')
@@ -12,22 +12,22 @@ license=('GPL')
 conflicts=('nagstamon')
 provides=('nagstamon')
 source=(
-        "https://nagstamon.ifw-dresden.de/files/unstable/${_pkgname}-${_pkgver}.fedora28-1.src.rpm"
+        "https://nagstamon.ifw-dresden.de/files/unstable/${_pkgname}-${_pkgver}.fedora29-1.src.rpm"
 )
 md5sums=(
-        'da9abe98c79737996a7fcb4674dd224e'
+        '6a07bec363c12a308f720e82c3b9e9de'
 )
 sha256sums=(
-        '8247e51c2a417255ee6a02ee0d0cbb3512d7c0278fdb0fb088d71bb4e3953146'
+        'b86b6d1a4010f7b49e73e62ae3ea32680d54b09fe050c20305a10a808f499fcf'
 )
 
 prepare() {
   cd "$srcdir/"
-  tar -xzf "$_pkgname-$_pkgver.fedora28.tar.gz"
+  tar -xzf "$_pkgname-$_pkgver.fedora29.tar.gz"
 }
 
 package() {
-  cd "${srcdir}/$_pkgname-$_pkgver.fedora28"
+  cd "${srcdir}/$_pkgname-$_pkgver.fedora29"
   # setup.py imports AppInfo from Nagstamon.Config which leads to a import of keyring
   # importing keyring fails in a fakeroot environment, which seems to be somehow related to a the keyring connection init triggered by the import
   # to avoid the issue setup.py is rewritten here to resolve the need for the AppInfo import
