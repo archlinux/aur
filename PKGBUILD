@@ -3,7 +3,7 @@
 # Contributor: Edvinas Valatka <edacval@gmail.com>
 
 pkgname=seafile-client
-pkgver=6.2.7
+pkgver=6.2.9
 pkgrel=1
 pkgdesc="GUI client for synchronizing your local files with seafile server"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=("cmake")
 conflicts=('seafile-client-qt5')
 provides=('seafile-client-qt5')
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('930b9d61decf6b99d6e4ea891a11b630c7c040c1be7268d63000f29bf021bdf9')
+sha256sums=('3504a0276f8be8115952d613d336367c31d47b5221c45d499d2d3bec0d8c9cac')
 
 prepare() {
   cd "${srcdir}"
