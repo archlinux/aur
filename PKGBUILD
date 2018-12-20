@@ -3,6 +3,8 @@
 
 # This PKGBUILD creates conky for tolua++_5.3 lua + cairo + imlib2 + nvidia
 
+# The git version has built in tolua++_5.3 lua
+
 # to create NON NVIDIA package - remove following
 # in makedepends 'libxnvctrl'
 # in build  section remove line containing -D BUILD_NVIDIA=ON \
@@ -13,7 +15,7 @@
 # I prefer to give the new files a .lua extension - easier to edit.
 # the config section uses -- as comment and text section uses # for comment
 
-# 'Lightweight system monitor for X. conky 1.10.1 has integrated lua - this build includes lua-cairo, lua-imlib2, nvidia and other bindings. Read this PKGBUILD for added comments re installing Audacious etc or disabling nvidia. Visit http://conky.sourceforge.net/docs.html for conky help and https://github.com/brndnmtthws/conky/issues for conky issues.'
+# 'Lightweight system monitor for X. conky 1.11.1 has integrated lua - this build includes lua-cairo, lua-imlib2, nvidia and other bindings. Read this PKGBUILD for added comments re installing Audacious etc or disabling nvidia. Visit http://conky.sourceforge.net/docs.html for conky help and https://github.com/brndnmtthws/conky/issues for conky issues.'
 
 # There are many packages that can be added like xenirama - if you have more than
 # one display - add it in the depends and build section. Like wise - the docs are
@@ -33,18 +35,19 @@ replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky')
 
-depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxnvctrl' 'libxinerama' 'tolua++_5.3' )
 
 makedepends=( 'cmake' 'git' )
 
 
-### NOTE: Install tolua++_5.3 from AUR - one of my other packages besides conkywx weather program
 
 ### change _myopts=0 to use git version
 _myopts=1
 
 case ${_myopts} in
 0)  ### _myopts=0 for git version #####################################
+	### we now have tolua++ 5.3 support built in !!!
+	depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxnvctrl' 'libxinerama' )
+
 	_pkgname=conky
 
 	source=("git+${url}.git" )
@@ -56,6 +59,11 @@ case ${_myopts} in
 	md5sums=('SKIP')
     ;;
 1)  ### _myopts=1 for release version #################################
+
+	### NOTE: Install tolua++_5.3 from AUR - one of my other packages besides conkywx weather program
+
+	depends=( 'alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxft' 'librsvg' 'glib2' 'libxdamage' 'imlib2' 'lua' 'libxnvctrl' 'libxinerama' 'tolua++_5.3' )
+
 	_pkgname="conky-${pkgver}"
 
 	source=(${url}/archive/v${pkgver}.tar.gz)
@@ -68,7 +76,8 @@ build() {
 
 	cd "${srcdir}/${_pkgname}"
 
-### to link to tolua++ 5.3 - See my package tolua++ in AUR #####
+case ${_myopts} in
+1)  ### to link to tolua++ 5.3 - See my package tolua++ in AUR #####
 	sed -i 's|-Werror||' cmake/ConkyBuildOptions.cmake
 
 	sed -i \
@@ -79,6 +88,9 @@ build() {
 	sed -i \
 	       -e 's|#include <string>|#include <string>\n#include <functional>|' \
 	    src/luamm.hh
+	;;
+esac
+
 ################################################################
 
 	cmake \
