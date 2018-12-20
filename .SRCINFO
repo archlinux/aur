@@ -1,13 +1,13 @@
 pkgbase = python-mt-940
 	pkgdesc = A library to parse MT940 files and returns smart Python collections for statistics and manipulation
-	pkgver = 4.10.0
+	pkgver = 4.12.2
 	pkgrel = 1
 	url = https://github.com/WoLpH/mt940
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	source = https://github.com/WoLpH/mt940/archive/v4.10.0/python-mt-940-4.10.0.tar.gz
-	sha512sums = 3c04e34ebc9dfbbafd74db9cac367b44b65f8bf01d70c9a08291528f6bf5e2f6f34274319506df5c7e597663ab478270cd4ce2aa700b6d5b436b0223fe3232e9
+	source = https://github.com/WoLpH/mt940/archive/v4.12.2/python-mt-940-4.12.2.tar.gz
+	sha512sums = 33680f91607020d9557e16ff1e8c013511abfa3afc3425a94e753c21df26ab5521f8f111bfe5dee32766b31b8f63df9dd1ed32e1b80cd7b8d4ee534282ea90b2
 
 pkgname = python-mt-940
 
