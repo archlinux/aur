@@ -1,0 +1,13 @@
+[Unit]
+Description=Kernel process accounting
+After=syslog.target
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/lib/acct/accton-create
+ExecStart=/usr/sbin/accton /var/log/acct/acct
+ExecStop=/usr/sbin/accton off
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

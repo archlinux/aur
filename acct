@@ -1,0 +1,15 @@
+# Logrotate file for acct
+
+/var/log/acct/acct {
+    compress
+    delaycompress
+    notifempty
+    daily
+    rotate 31
+    create 0600 root root
+    postrotate
+       if /usr/bin/systemctl --quiet is-active acct.service ; then
+           /usr/sbin/accton /var/log/acct/acct | /usr/bin/grep -v "Turning on process accounting." | /usr/bin/cat
+       fi
+    endscript
+}

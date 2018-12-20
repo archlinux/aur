@@ -1,0 +1,28 @@
+pkgbase = acct-svn
+	pkgdesc = Utilities for monitoring process activities
+	pkgver = r103
+	pkgrel = 1
+	url = https://savannah.gnu.org/projects/acct
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = glibc
+	provides = acct
+	provides = psacct
+	conflicts = acct
+	conflicts = psacct
+	source = svn+https://svn.savannah.gnu.org/svn/acct/trunk
+	source = acct
+	source = accton-create
+	source = acct.service
+	md5sums = SKIP
+	md5sums = 4227583ee39255418ece1249ad4d7791
+	md5sums = 3835033cdfbbe5b938d142099a44d35f
+	md5sums = d5397e070e68ebf3070e1f99deecbf11
+	sha256sums = SKIP
+	sha256sums = b2d40354cc67efb104d09f491024b698585f7614166c266f2c80293236aaf835
+	sha256sums = 143c59b297117791e4f7a022f560317640dbc4fdd4c6bc15e9fe3a2971ba784b
+	sha256sums = dc92a6365e45ce0c4a1087bf83e3f22c400f254baa55230feab70d967f993314
+
+pkgname = acct-svn
+
