@@ -1,7 +1,7 @@
 pkgbase = hexchat-git
 	pkgdesc = A GTK+ based IRC client
 	pkgver = 2.14.2.r9.ged553301
-	pkgrel = 2
+	pkgrel = 3
 	url = https://hexchat.github.io
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = hexchat-git
 	depends = libcanberra
 	depends = libnotify
 	depends = libproxy
+	depends = pciutils
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = sound-theme-freedesktop
