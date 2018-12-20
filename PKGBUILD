@@ -6,7 +6,7 @@
 pkgbase=linux-surface4       # Build kernel with a different name
 _srcver=4.18.8
 pkgver=${_srcver//-/.}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://www.kernel.org/pub/linux/kernel/v4.x/"
 license=(GPL2)
@@ -26,8 +26,7 @@ source=(
   sdcard_reader.patch
   surfacedock.patch
   wifi.patch
-  "https://github.com/czheji/linux-surface/raw/master/firmware.zip"
-
+  "https://github.com/jakeday/linux-surface/archive/502a40ebadac7c21724e3a2a57c26c0ee8194681.zip"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -46,7 +45,7 @@ sha256sums=('f1551bad69ab617708fa8cf3f94545ae03dd350bdeb3065fbcf39c1a7df85494'
             '7b58bf7bf2d61fea106af24b37ee4e2c5faf7e4ffa55be5769a1b1d0c5fb04af'
             'cbad22346c934a52a42716c8af604154b52c21dccc938e22a40eb51f9179ae0e'
             '0526f56347aa4c7f8b604c614300baff1da3dddb2930b4c2b8890622c6e99e82'
-            '75c9db69d7e7e5d90683a797347b1c9d19f27f80be25e57f4110ff2b9e1e9e5b')
+            '628ec823f284cedd3d785027a75ba6f8c432a3a3c634144df2ef209043121cc4')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -78,7 +77,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make -j2 bzImage modules htmldocs
+  make bzImage modules htmldocs
 }
 
 _package() {
@@ -132,6 +131,7 @@ _package() {
     "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
   msg2 "Intall i915 & ipts firmware..."
+  mv ../linux-surface-502a40ebadac7c21724e3a2a57c26c0ee8194681/firmware/* ..
   sed "$subst" ../update-firmware.sh | install -Dm755 /dev/stdin \
     "$pkgdir/usr/bin/$pkgbase-firmware"
   install -Dm64 ../i915_firmware_bxt.zip "$pkgdir/usr/share/${pkgbase}/firmware/i915_firmware_bxt.zip"
