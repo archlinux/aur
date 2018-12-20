@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.20.0-rc3 Kernel Configuration
+# Linux/x86 4.20.0-rc4 Kernel Configuration
 #
 
 #
@@ -3315,6 +3315,7 @@ CONFIG_MWL8K=m
 CONFIG_WLAN_VENDOR_MEDIATEK=y
 CONFIG_MT7601U=m
 CONFIG_MT76_CORE=m
+CONFIG_MT76_LEDS=y
 CONFIG_MT76_USB=m
 CONFIG_MT76x02_LIB=m
 CONFIG_MT76x02_USB=m
