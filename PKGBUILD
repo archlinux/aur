@@ -3,7 +3,7 @@
 pkgbase=linux-amd-raven
 _srcname=linux
 pkgver=4.20.rc7
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -27,6 +27,7 @@ pkgver() {
 
 prepare() {
   cd "${_srcname}"
+  #We want to base this on a release candidate.
   git checkout tags/v4.20-rc7
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -228,6 +229,11 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+
+  #Fix build modules for dkms
+  cp "arch/x86/kernel/macros.s" "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86/kernel/."
+  mkdir -p ${pkgdir}/usr/src/
+  ln -s "../lib/modules/${_kernver}/build/" "${pkgdir}/usr/src/${_kernver}"
 }
 
 _package-docs() {
@@ -243,6 +249,7 @@ _package-docs() {
 
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
