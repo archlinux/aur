@@ -6,6 +6,11 @@ pkgbase = chromium-widevine
 	url = https://www.widevine.com/
 	arch = x86_64
 	license = custom
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = nspr
+	depends = nss
 	options = !strip
 	source = chrome-eula_text-20181101.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html
 	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_71.0.3578.98-1_amd64.deb
@@ -15,10 +20,4 @@ pkgbase = chromium-widevine
 	sha256sums = 3fda44a5b8b222434530f27923568de1fda1eb0caa8621b56a8b2a6a2a2e3d5d
 
 pkgname = chromium-widevine
-	depends = chromium
-	depends = gcc-libs
-	depends = glib2
-	depends = glibc
-	depends = nspr
-	depends = nss
 
