@@ -1,6 +1,6 @@
 pkgbase = tiddlywiki
 	pkgdesc = Personal wiki where everything is in one html-file
-	pkgver = 5.1.18
+	pkgver = 5.1.19
 	pkgrel = 1
 	url = http://www.tiddlywiki.com/
 	arch = i686

@@ -2,7 +2,7 @@
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=tiddlywiki
-pkgver=5.1.18
+pkgver=5.1.19
 pkgrel=1
 pkgdesc='Personal wiki where everything is in one html-file'
 arch=('i686' 'x86_64')
