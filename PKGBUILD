@@ -15,7 +15,7 @@ arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse libvpx icu xorg-server-xwayland)
+         ffmpeg nss sqlite ttf-font libpulse libvpx icu xorg-server-xwayland)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
              python nodejs python2-psutil cbindgen)
@@ -24,7 +24,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
-options=(!emptydirs !makeflags)
+options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
