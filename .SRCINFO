@@ -1,0 +1,19 @@
+pkgbase = fastboot-arm64
+	pkgdesc = fastboot for Raspberry 3
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = aarch64
+	license = custom
+	depends = zlib
+	depends = ncurses
+	depends = repo
+	provides = fastboot
+	conflicts = fastboot
+	source = license.txt
+	source = Makefile
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = fastboot-arm64
+
