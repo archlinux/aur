@@ -4,12 +4,19 @@ if [[ `id -u` -eq 0 ]]; then
     echo 1 > /proc/sys/kernel/unprivileged_userns_clone
   fi
   $(which xhost) + &>/dev/zero
-  su slim-root \
-  --session-command="env - DISPLAY=:0 dbus-run-session /usr/share/slimjet/flashpeak-slimjet $@"
+  sudo -nu slim-root DISPLAY=:0 \
+  DBUS_SESSION_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket \
+  /usr/share/slimjet/flashpeak-slimjet \
+  --flag-switches-begin --enable-fast-unload \
+  --disable-offline-auto-reload-visible-only \
+  --enable-offline-auto-reload --enable-tcp-fastopen \
+  --num-raster-threads=4 --disable-smooth-scrolling \
+  --enable-features=PasswordExport --flag-switches-end $@ &
 else
   if [[ `cat /proc/sys/kernel/unprivileged_userns_clone` -eq 0 ]]; then
     echo 1 > /proc/sys/kernel/unprivileged_userns_clone
   fi
-  /usr/share/flashpeak-slimjet $@
+  /usr/share/flashpeak-slimjet $@ &
 fi
+wait $!
 exit $?
