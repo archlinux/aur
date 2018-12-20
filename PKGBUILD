@@ -16,13 +16,13 @@ source=("svn+https://svn.savannah.gnu.org/svn/${_pkgname}/trunk"
 	"${_pkgname}on-create"
 	"${_pkgname}.service")
 md5sums=('SKIP'
-         '4227583ee39255418ece1249ad4d7791'
-         '3835033cdfbbe5b938d142099a44d35f'
-         'd5397e070e68ebf3070e1f99deecbf11')
+         '4a980513fcb4ebf104d85897be052e73'
+         '285408e0d50c2b14768020be00b3f0e4'
+         'e838c53be7be5b7498f88ed4efca4091')
 sha256sums=('SKIP'
-            'b2d40354cc67efb104d09f491024b698585f7614166c266f2c80293236aaf835'
-            '143c59b297117791e4f7a022f560317640dbc4fdd4c6bc15e9fe3a2971ba784b'
-            'dc92a6365e45ce0c4a1087bf83e3f22c400f254baa55230feab70d967f993314')
+            '75155d0795bf001938519c108b747708c4508f532fc7f185c0d1c5d4a48f1c6d'
+            '4a3fc2603ef35b839431a0c4e81d80928d01c75ecfd10692953e9f7baf6b2b71'
+            '9f899b4b3ea05de6e6125779d96f8b83e4be341f255fa4c9c3cd7f34ccb56d67')
 
 pkgver() {
   cd "$srcdir/trunk"
