@@ -1,24 +1,26 @@
-# Maintainer: Bruce Zhang <zttt183525594@gmail.com>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Bruce Zhang <zttt183525594@gmail.com>
+
 pkgname=mcfly
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
-epoch=
 pkgdesc="Fly through your shell history"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/cantino/mcfly"
 license=('MIT')
+depends=('sh')
 makedepends=('rust' 'cargo')
 install=mcfly.install
-source=("https://github.com/cantino/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('c0bcfa7f6395907f6cfb8bff379919de5bee17d4b7888e0308f15414e93f046b')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cantino/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('6dceb25539ef3af4136d1011cdca0c1acee22eebb9b8eec1442c1e69024e9316')
 
 build() {
-	cd "${pkgname}-${pkgver}"
-	env CARGO_INCREMENTAL=0 cargo build --release
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  env CARGO_INCREMENTAL=0 cargo build --release
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-	install -D -m755 "$srcdir/${pkgname}-${pkgver}/target/release/mcfly" "$pkgdir/usr/bin/mcfly"
-	install -D -m644 "$srcdir/${pkgname}-${pkgver}/mcfly.bash" "$pkgdir/usr/share/doc/mcfly/mcfly.bash"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -D -m755 "$srcdir/${pkgname}-${pkgver}/target/release/mcfly" "${pkgdir}/usr/bin/mcfly"
+  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/mcfly.bash" "${pkgdir}/usr/share/doc/mcfly/mcfly.bash"
 }
