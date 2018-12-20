@@ -1,4 +1,5 @@
-# Maintainer: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
+# Maintainer: j605
+# Contributor: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
 pkgname=notmuch-addrlookup-c
 pkgver=v9
 pkgrel=1
