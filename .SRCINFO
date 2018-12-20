@@ -1,6 +1,6 @@
 pkgbase = discover-snap
 	pkgdesc = KDE and Plasma resources management GUI
-	pkgver = 5.14.3
+	pkgver = 5.14.4
 	pkgrel = 1
 	url = https://userbase.kde.org/Discover
 	arch = x86_64
@@ -27,13 +27,13 @@ pkgbase = discover-snap
 	optdepends = fwupd: firmware update support
 	provides = discover
 	conflicts = discover
-	source = https://download.kde.org/stable/plasma/5.14.3/discover-5.14.3.tar.xz
-	source = https://download.kde.org/stable/plasma/5.14.3/discover-5.14.3.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/5.14.4/discover-5.14.4.tar.xz
+	source = https://download.kde.org/stable/plasma/5.14.4/discover-5.14.4.tar.xz.sig
 	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 64621972d5baccf3ccbafdd064811dbc5a909cf0c7f354c886b5608fcc35fd8b
+	sha256sums = d172ce8a5288e64920512a975985382e09c202b454633ffd88fedfe785f63b5e
 	sha256sums = SKIP
 
 pkgname = discover-snap
