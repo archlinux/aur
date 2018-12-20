@@ -1,7 +1,7 @@
 pkgbase = discord-ptb
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
-	pkgver = 0.0.9
-	pkgrel = 3
+	pkgver = 0.0.10
+	pkgrel = 1
 	url = https://discordapp.com/
 	install = DiscordPTB.install
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = discord-ptb
 	optdepends = noto-fonts-cjk: Font for special characters such as /shrug face.
 	provides = discord
 	source = LICENSE
-	source = https://dl-ptb.discordapp.net/apps/linux/0.0.9/discord-ptb-0.0.9.tar.gz
+	source = https://dl-ptb.discordapp.net/apps/linux/0.0.10/discord-ptb-0.0.10.tar.gz
 	md5sums = 26b3229c74488c64d94798e48bc49fcd
-	md5sums = db2bbf313309bd8d139ae92d2ae7a10e
+	md5sums = 8448dc09a42f90530a38e0080ef7048e
 
 pkgname = discord-ptb
 
