@@ -1,6 +1,6 @@
 pkgbase = qutepart-git
 	pkgdesc = Code editor component for PyQt and Pyside
-	pkgver = 3.1.r3.ga869bf5
+	pkgver = 3.2.0.r18.gb3d6124
 	pkgrel = 1
 	url = https://github.com/hlamer/qutepart/
 	arch = any
