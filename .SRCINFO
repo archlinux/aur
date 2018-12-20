@@ -1,6 +1,6 @@
 pkgbase = minecraft-launcher-beta
 	pkgdesc = Official Minecraft Launcher - Beta
-	pkgver = 2.1.2022
+	pkgver = 2.1.2033
 	pkgrel = 1
 	url = https://mojang.com/
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = minecraft-launcher-beta
 	depends = libxtst
 	depends = nss
 	optdepends = flite: narrator support
-	source = https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher_2.1.2022-beta.tar.gz
+	source = https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher_2.1.2033-beta.tar.gz
 	source = minecraft-launcher-beta.desktop
 	source = minecraft-launcher-beta.svg
-	sha256sums = 597e56d8199b073b3f74ba38100c9faf07103e2b5c597d549f71ba7ead65865f
+	sha256sums = 3ca0ab5e1a2b181e753f0b4c0758495bae1a5f88b6f667572193a7e56a02fde8
 	sha256sums = 9a00dc84bf9c14e0ccc29cd92882197854a3bd732e64d93a92b0330726ec4960
 	sha256sums = 35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71
 

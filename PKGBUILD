@@ -1,6 +1,6 @@
 # Maintainer: Petr Mrázek <petr@mojang.com>
 pkgname=minecraft-launcher-beta
-pkgver=2.1.2022
+pkgver=2.1.2033
 pkgrel=1
 pkgdesc="Official Minecraft Launcher - Beta"
 arch=('x86_64')
@@ -14,7 +14,7 @@ minecraft-launcher-beta.desktop
 minecraft-launcher-beta.svg
 )
 sha256sums=(
-'597e56d8199b073b3f74ba38100c9faf07103e2b5c597d549f71ba7ead65865f'
+'3ca0ab5e1a2b181e753f0b4c0758495bae1a5f88b6f667572193a7e56a02fde8'
 '9a00dc84bf9c14e0ccc29cd92882197854a3bd732e64d93a92b0330726ec4960'
 '35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71'
 )
