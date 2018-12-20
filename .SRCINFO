@@ -1,0 +1,17 @@
+pkgbase = phrased
+	pkgdesc = Generate awesome passphrases from a set of dictionaries.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://phrased.org/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	provides = phrased
+	conflicts = phrased-git
+	source_x86_64 = phrased_x86_64.tar.gz::https://github.com/phrased-org/phrased/releases/download/v0.2/phrased_0.2_Linux-64bit.tar.gz
+	md5sums_x86_64 = 6dc49429aa62c69f37aec01f083e979f
+	source_i686 = phrased_i686.tar.gz::https://github.com/phrased-org/phrased/releases/download/v0.2/phrased_0.2_Linux-32bit.tar.gz
+	md5sums_i686 = 3f2ab2056938819deca93a7cbc5ecc9a
+
+pkgname = phrased
+
