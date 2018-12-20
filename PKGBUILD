@@ -1,8 +1,8 @@
 # Maintainer: David Rodriguez <dissonant.tech@gmail.com>
 
 pkgname=kops-git
-pkgver=1.11.0.alpha.1.r283.ge15d7ee4b
-pkgrel=2
+pkgver=1.11.0.beta.1.r0.g0c5a0a57d
+pkgrel=1
 pkgdesc="Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management. (git version)"
 arch=('x86_64')
 url="https://github.com/kubernetes/kops"
@@ -21,7 +21,7 @@ prepare(){
 
 pkgver() {
   cd $GOPATH/src/k8s.io/kops
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags `git rev-list --tags --max-count=1` | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
