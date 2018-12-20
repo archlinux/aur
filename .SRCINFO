@@ -1,13 +1,14 @@
 pkgbase = pybitmessage
 	pkgdesc = Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers
 	pkgver = 0.6.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bitmessage/PyBitmessage
 	arch = any
 	license = MIT
 	depends = openssl
 	depends = python2
 	depends = python2-pyqt4
+	depends = python2-sip-pyqt4
 	depends = python2-msgpack
 	depends = qt4
 	depends = sqlite

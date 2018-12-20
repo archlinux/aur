@@ -3,10 +3,10 @@
 pkgname=pybitmessage
 _realname=PyBitmessage
 pkgver=0.6.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers"
 arch=('any')
-depends=('openssl' 'python2' 'python2-pyqt4' 'python2-msgpack' 'qt4' 'sqlite')
+depends=('openssl' 'python2' 'python2-pyqt4' 'python2-sip-pyqt4' 'python2-msgpack' 'qt4' 'sqlite')
 optdepends=('mpg123: MP3 sounds support'
             'alsa-utils: WAV sounds support')
 url="https://github.com/Bitmessage/PyBitmessage"
