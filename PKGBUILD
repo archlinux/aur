@@ -7,7 +7,7 @@ _pkgbase=glfw
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-x11-git" "$_pkgbase-wayland-git")
 pkgver=3.2.1.r644.gf9923e90
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.glfw.org/"
 license=('custom:ZLIB')
@@ -31,6 +31,7 @@ build() {
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
     -DGLFW_BUILD_EXAMPLES=OFF \
     -DGLFW_BUILD_TESTS=OFF \
@@ -42,6 +43,7 @@ build() {
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
     -DGLFW_BUILD_EXAMPLES=OFF \
     -DGLFW_BUILD_TESTS=OFF \
