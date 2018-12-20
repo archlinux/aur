@@ -41,4 +41,6 @@ package() {
     python_bin='/usr/bin/python'
     echo "$(python_bin) -c 'import litecli.main; litecli.main.cli()' \"\$@\"" \
         >>$pkgdir/usr/bin/litecli
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+    cp LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
