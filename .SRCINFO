@@ -5,6 +5,7 @@ pkgbase = ruby-erubi
 	url = https://github.com/jeremyevans/erubi
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	noextract = erubi-1.8.0.gem
 	options = !emptydirs
