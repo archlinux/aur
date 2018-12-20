@@ -1,32 +1,35 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer:  Devin Cofer <ranguvar[at]ranguvar[dot]io>
+# Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Maxwell Anselm <silverhammermba+aur@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r445452.d3d642b62488
+pkgver=r504030.fde04f5ec920
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org"
+pkgdesc="Standalone web browser from mozilla.org - Wayland build of mozilla-unified hg"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss sqlite ttf-font libpulse libvpx icu wayland)
+         ffmpeg nss ttf-font libpulse libvpx icu xorg-server-xwayland)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
-         xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
-         python nodejs python2-psutil cbindgen)
+             xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
+             python nodejs python2-psutil cbindgen)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech')
-options=(!emptydirs !makeflags !strip)
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English')
+options=(!emptydirs !makeflags)
 _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
-source=('mozilla-unified::hg+https://hg.mozilla.org/mozilla-central/'
-        firefox.desktop firefox-symbolic.svg)
+source=("hg+$_repo"
+        $_pkgname.desktop $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
             '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
@@ -49,10 +52,17 @@ pkgver() {
 }
 
 prepare() {
+  mkdir mozbuild
   cd mozilla-unified
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
+
+  #
+  # If you want to disable LTO/PGO (compile too long, it needs working
+  # xorg-server-xvfb), delete the lines below beginning with
+  # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
+  #
 
   cat >.mozconfig <<END
 ac_add_options --enable-application=browser
@@ -62,6 +72,14 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+
+ac_add_options --enable-lto
+export MOZ_PGO=1
+export CC=clang
+export CXX=clang++
+export AR=llvm-ar
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
 
 # Branding
 ac_add_options --enable-official-branding
@@ -94,8 +112,6 @@ ac_add_options --enable-crashreporter
 ac_add_options --disable-gconf
 ac_add_options --disable-updater
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
-#ac_add_options --with-gl-provider=EGL
-#mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/objdir-wayland
 END
 }
 
@@ -106,9 +122,9 @@ build() {
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 
-  # Do PGO
-  #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
-  #  MOZ_PGO=1 ./mach build
+  # LTO/PGO needs more open files
+  ulimit -n 4096
+ 
   ./mach build
   ./mach buildsymbols
 }
@@ -132,9 +148,6 @@ pref("browser.shell.checkDefaultBrowser", false);
 // Don't disable our bundled extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
-
-// Opt all of us into e10s, instead of just 50%
-pref("browser.tabs.remote.autostart", true);
 END
 
   _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
@@ -175,3 +188,5 @@ END
   ln -srf "$pkgdir/usr/bin/$_pkgname" \
     "$pkgdir/usr/lib/$_pkgname/firefox-bin"
 }
+
+# vim:set sw=2 et:
