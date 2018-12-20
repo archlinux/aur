@@ -1,21 +1,27 @@
-pkgname='dvblast'
-pkgver='3.0'
-pkgrel='1'
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Former maintainer: Ryan Lovelett <ryan@lovelett.me>
+
+pkgname=dvblast
+pkgver=3.4
+pkgrel=1
+pkgdesc="A simple and powerful MPEG-2/TS demux and streaming application"
 arch=('i686' 'x86_64')
+url="https://www.videolan.org/projects/dvblast.html"
 license=('GPL2')
-pkgdesc='DVBlast is a simple and powerful MPEG-2/TS demux and streaming application.'
-url='https://www.videolan.org/projects/dvblast.html'
-depends=('libev')
+depends=('glibc' 'libev')
 makedepends=('bitstream')
-source=(https://downloads.videolan.org/pub/videolan/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('89ea9ffb16476d47b8853e52a8a3ee63')
+source=("https://get.videolan.org/dvblast/$pkgver/dvblast-$pkgver.tar.bz2")
+sha256sums=('7abd45aff738544017350af87ec7ebad00fcfb4e4effd04f35023d504d9b6f44')
+
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make || return 1
+  cd "$pkgname-$pkgver"
+
+  make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=usr DESTDIR="$pkgdir/" install || return 1
+  cd "$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
