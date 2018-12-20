@@ -55,8 +55,8 @@ package() {
   mkdir -p "${pkgdir}"/usr/share/godot/templates/
   install -Dm755 bin/godot.x11.opt.64.llvm "${pkgdir}"/usr/share/godot/templates/
   install -Dm755 bin/godot.x11.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
-  install -Dm755 bin/godot.server.opt.64.llvm "${pkgdir}"/usr/share/godot/templates/
-  install -Dm755 bin/godot.server.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
+  install -Dm755 bin/godot_server.x11.opt.64.llvm "${pkgdir}"/usr/share/godot/templates/
+  install -Dm755 bin/godot_server.x11.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
   install -Dm755 bin/godot.x11.opt.32.llvm "${pkgdir}"/usr/share/godot/templates/
   install -Dm755 bin/godot.x11.opt.debug.32.llvm "${pkgdir}"/usr/share/godot/templates/
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${_pkgname}"/LICENSE
