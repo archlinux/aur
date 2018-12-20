@@ -2,7 +2,7 @@
 
 pkgname=next-browser-git
 _pkgname=next-browser
-pkgver=1.0.0.56.g824f25d
+pkgver=1.1.0.14.gc645350
 pkgrel=2
 pkgdesc="Keyboard-oriented, Common Lisp extensible web-browser"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('next-browser')
 source=(${_pkgname}::git+https://source.atlas.engineer/public/next)
 sha256sums=('SKIP')
 # If someday Next works with other Lisps, replace 'sbcl' with 'common-lisp'.
-makedepends=('sbcl' 'cl-asdf')
+makedepends=('git' 'sbcl' 'cl-asdf')
 depends=('webkit2gtk' 'sqlite' 'glib-networking' 'gsettings-desktop-schemas')
 optdepends=('gstreamer: for HTML5 audio/video'
             'gst-plugins-base: for HTML5 audio/video'

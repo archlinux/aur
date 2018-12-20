@@ -1,11 +1,12 @@
 pkgbase = next-browser-git
 	pkgdesc = Keyboard-oriented, Common Lisp extensible web-browser
-	pkgver = 1.0.0.56.g824f25d
+	pkgver = 1.1.0.14.gc645350
 	pkgrel = 2
 	url = https://next.atlas.engineer
 	arch = i686
 	arch = x86_64
 	license = BSD-3
+	makedepends = git
 	makedepends = sbcl
 	makedepends = cl-asdf
 	depends = webkit2gtk
