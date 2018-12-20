@@ -6,7 +6,7 @@ pkgver=5.9
 pkgrel=1
 pkgdesc="A perl server for house automation"
 arch=('any')
-url='http://fhem.de'
+url='https://fhem.de'
 license=('GPL')
 depends=('perl-io-socket-ssl' 'perl-json' 'perl-libwww' 'perl-xml-simple' 'perl-xml-libxml')
 optdepends=('perl-device-serialport: Communication through serial port'
@@ -16,7 +16,7 @@ optdepends=('perl-device-serialport: Communication through serial port'
 backup=('etc/fhem.cfg')
 install="${pkgname}.install"
 source=(
-  "http://fhem.de/${pkgname}-${pkgver}.tar.gz"
+  "https://fhem.de/${pkgname}-${pkgver}.tar.gz"
   'fhem.service'
   'sysusers.conf'
   'tmpfiles.conf'
