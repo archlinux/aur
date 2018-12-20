@@ -1,7 +1,7 @@
 pkgbase = godot-export-templates-git
 	pkgdesc = Godot export templates
 	pkgver = 3.1.r18268.e8cdbf99e9
-	pkgrel = 2
+	pkgrel = 1
 	url = https://godotengine.org/
 	arch = i686
 	arch = x86_64
