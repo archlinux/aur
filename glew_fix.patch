@@ -1,0 +1,11 @@
+--- libs/openFrameworks/utils/ofConstants.back	2018-12-20 17:00:10.600334546 +0100
++++ libs/openFrameworks/utils/ofConstants.h	2018-12-20 17:00:28.527301800 +0100
+@@ -209,7 +209,7 @@
+ 		#define GL_GLEXT_PROTOTYPES
+ 		#include <GL/glew.h>
+ 		#include <GL/gl.h>
+-		#include <GL/glext.h>
++		// #include <GL/glext.h>
+ 	#endif
+ 
+ 	// for some reason, this isn't defined at compile time,
