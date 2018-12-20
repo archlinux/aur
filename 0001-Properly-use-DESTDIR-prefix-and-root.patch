@@ -1,0 +1,48 @@
+From fcc94af8081fbac8eca4d15e40c3abc7ebdcb265 Mon Sep 17 00:00:00 2001
+From: Aleksandar Trifunovic <akstrfn@gmail.com>
+Date: Thu, 20 Dec 2018 12:09:23 +0100
+Subject: [PATCH] Properly use DESTDIR, --prefix and --root
+
+DESTDIR is not properly expanded during the make install phase.
+--prefix is separated into --prefix and --root for python.
+---
+ CMakeLists.txt             | 7 ++++---
+ src/libsumo/CMakeLists.txt | 3 +--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2bfa5baab6..4058e90e21 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -300,10 +300,11 @@ install(DIRECTORY tools/ DESTINATION share/sumo/tools
+         PATTERN "traas" EXCLUDE
+         PATTERN "traci4matlab/src" EXCLUDE
+         PATTERN ".git" EXCLUDE)
+-install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ../../bin $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/sumo/bin)")
+-install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/build/setup-sumolib.py clean --all install --prefix $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX})"
++
++install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ../../bin \$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/sumo/bin)")
++install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/build/setup-sumolib.py clean --all install --prefix=${CMAKE_INSTALL_PREFIX} --root=\$ENV{DESTDIR} --optimize=1)"
+         COMPONENT pysumolib)
+-install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/build/setup-traci.py clean --all install --prefix $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX})"
++install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/build/setup-traci.py clean --all install --prefix=${CMAKE_INSTALL_PREFIX} --root=\$ENV{DESTDIR} --optimize=1)"
+         COMPONENT pytraci)
+ 
+ string(REPLACE "${SUMO_LIBRARIES}" "" SUMO_LIBRARIES_DLL "${SUMO_LIBRARIES_DLL}")
+diff --git a/src/libsumo/CMakeLists.txt b/src/libsumo/CMakeLists.txt
+index e7500d7e29..ae38495f07 100644
+--- a/src/libsumo/CMakeLists.txt
++++ b/src/libsumo/CMakeLists.txt
+@@ -108,8 +108,7 @@ if(SWIG_FOUND)
+             else()
+                 swig_link_libraries(libsumo -Wl,--whole-archive ${sumolibs} -Wl,--no-whole-archive ${PYTHON_LIBRARIES})
+             endif()
+-            install(
+-                CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/build/setup-libsumo.py clean --all install --prefix $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX})"
++            install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/build/setup-libsumo.py clean --all install --prefix=${CMAKE_INSTALL_PREFIX} --root=\$ENV{DESTDIR} --optimize=1)"
+                 COMPONENT pylibsumo)
+         else()
+             message(WARNING "ENABLE_PYTHON_BINDINGS is set but python libraries were not found.")
+-- 
+2.20.1
+

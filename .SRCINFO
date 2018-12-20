@@ -1,6 +1,6 @@
 pkgbase = sumo
 	pkgdesc = Traffic simulation modelling road vehicles, public transport and pedestrians.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://sumo.dlr.de
 	arch = i686
@@ -17,10 +17,12 @@ pkgbase = sumo
 	depends = xerces-c
 	depends = gdal
 	depends = gl2ps
-	source = https://github.com/eclipse/sumo/archive/v1_0_1.tar.gz
+	source = https://github.com/eclipse/sumo/archive/v1_1_0.tar.gz
 	source = sumo.desktop
-	sha256sums = 244dd552b77a9bdccc8bc3a6e8591216410858404a3f1e943a141f4143f7dd6f
+	source = 0001-Properly-use-DESTDIR-prefix-and-root.patch
+	sha256sums = 11aeaa8abaa8008e4f13f82cd77797ffd803d20e345c741966a70a3dc1f55c2e
 	sha256sums = d9ec82a1b56ebeaf31c6382f6d903baf0767e440b640a713e587d7e09f72d213
+	sha256sums = 2dc86272997f898908afab9136bb423e378f60c34bfa92cdbd2fbb2a6b0d6c25
 
 pkgname = sumo
 	optdepends = java-runtime-common: for executing Jar files like TraCI4J

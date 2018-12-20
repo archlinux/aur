@@ -5,7 +5,7 @@
 
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=1.0.1
+pkgver=1.1.0
 _pkgver="${pkgver//./_}"
 pkgrel=1
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
@@ -15,18 +15,19 @@ license=('GPL')
 depends=('openscenegraph' 'python' 'proj' 'fox' 'xerces-c' 'gdal' 'gl2ps')
 makedepends=('cmake' 'help2man' 'swig' 'gtest')
 source=("https://github.com/eclipse/sumo/archive/v${_pkgver}.tar.gz"
-        "${pkgbase}.desktop")
+        "${pkgbase}.desktop"
+        "0001-Properly-use-DESTDIR-prefix-and-root.patch")
 
-sha256sums=('244dd552b77a9bdccc8bc3a6e8591216410858404a3f1e943a141f4143f7dd6f'
-            'd9ec82a1b56ebeaf31c6382f6d903baf0767e440b640a713e587d7e09f72d213')
+sha256sums=('11aeaa8abaa8008e4f13f82cd77797ffd803d20e345c741966a70a3dc1f55c2e'
+            'd9ec82a1b56ebeaf31c6382f6d903baf0767e440b640a713e587d7e09f72d213'
+            '2dc86272997f898908afab9136bb423e378f60c34bfa92cdbd2fbb2a6b0d6c25')
 
 prepare() {
     cd ${pkgbase}-${_pkgver}
     sed -i "/^Version=/ s/$/${pkgver}/" "${srcdir}/${pkgbase}.desktop"
 
-    # CMake didn't have man target in 1.0.1..... sigh
-    curl -O https://raw.githubusercontent.com/eclipse/sumo/702985ea9187dcdeb3071334b505a5c4791467e9/CMakeLists.txt
-    sed -i "s/PACKAGE_VERSION "git"/PACKAGE_VERSION ${_pkgver}/" CMakeLists.txt
+    patch -Np1 -i "${srcdir}/0001-Properly-use-DESTDIR-prefix-and-root.patch"
+
     cmake -H. -Bbuild \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
         -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
@@ -65,7 +66,7 @@ cat <<EOF > "${pkgdir}/etc/profile.d/sumo.sh"
 export SUMO_HOME="/usr/lib/sumo"
 EOF
 
-    install -Dm644 docs/logo/256x256.png ${pkgdir}/usr/share/pixmaps/${pkgbase}.png
+    install -Dm644 data/logo/sumo-128x138.png ${pkgdir}/usr/share/pixmaps/${pkgbase}.png
     install -Dm644 ${srcdir}/${pkgbase}.desktop -t ${pkgdir}/usr/share/applications/
 }
 
