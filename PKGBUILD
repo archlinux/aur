@@ -24,7 +24,7 @@ package() {
   ./GravitDesigner.AppImage --appimage-extract
 
   # Patch desktop file
-  _df="${srcdir}/squashfs-root/gravit-designer.desktop"
+  local _df="${srcdir}/squashfs-root/gravit-designer.desktop"
   sed -i "/^Exec=/cExec=gravit-designer" "${_df}"
   sed -i "s/^X-AppImage-Version=/Version=/" "${_df}"
   sed -i "/^X-AppImage/d" "${_df}"
@@ -33,7 +33,6 @@ package() {
   install -d "${pkgdir}/usr/share"
   install -D ${_df} "${pkgdir}/usr/share/applications/gravitdesigner.desktop"
   install -D "${srcdir}/gravit-designer.png" "${pkgdir}/usr/share/pixmaps/gravit-designer.png"
-  #cp -r --no-preserve=all "${srcdir}/squashfs-root/usr/share" "${pkgdir}/usr"
 
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   cp --no-preserve=all \
