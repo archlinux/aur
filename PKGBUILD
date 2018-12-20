@@ -1,6 +1,6 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 
-pkgbasename=litecli
+_pkgbasename=litecli
 pkgname=litecli-git
 pkgver=v0.0.3.r1.g08d6953
 pkgrel=1
@@ -38,6 +38,6 @@ pkgver() {
 package() {
     cd $srcdir/litecli
     python setup.py install --root=$pkgdir/ --optimize=1
-    mkdir -p "$pkgdir/usr/share/licenses/$pkgbasename"
-    cp LICENSE "$pkgdir/usr/share/licenses/$pkgbasename/LICENSE"
+    mkdir -p "$pkgdir/usr/share/licenses/$_pkgbasename"
+    cp LICENSE "$pkgdir/usr/share/licenses/$_pkgbasename/LICENSE"
 }
