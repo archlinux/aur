@@ -1,14 +1,14 @@
 pkgbase = seafile-helper
 	pkgdesc = Seafile-server and seahub helper for upgrade and deployment
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://gitlab.com/J0ffrey/seafile-helper
 	arch = any
 	license = GPL3
 	depends = python-setuptools
 	depends = seahub
-	source = https://gitlab.com/J0ffrey/seafile-helper/-/archive/v0.1.2/seafile-helper-v0.1.2.tar.gz
-	sha256sums = 38215c861c885316361118cc7ad7f37cf0f4576f7961c87b2ac63223c30e1133
+	source = seafile-helper-0.1.3.tar.gz::https://gitlab.com/J0ffrey/seafile-helper/-/archive/v0.1.3/seafile-helper-v0.1.3.tar.gz
+	sha256sums = 361a4052a0b85984398503d6821d9ffc9f99e7e19d5723aa493c2aae8763f9d4
 
 pkgname = seafile-helper
 
