@@ -1,0 +1,16 @@
+pkgbase = cnijfilter-e560series
+	pkgdesc = Canon IJ Printer Driver (for E560 series)
+	pkgver = 4.10
+	pkgrel = 1
+	url = http://support-cn.canon-asia.com/contents/CN/ZH/0100588503.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = popt
+	depends = libcups
+	depends = libxml2
+	source = http://gdlp01.c-wss.com/gds/5/0100005885/01/cnijfilter-e560series-4.10-1-deb.tar.gz
+	md5sums = 38ac1c4eb70e5fce53bd06fd571c3830
+
+pkgname = cnijfilter-e560series
+
