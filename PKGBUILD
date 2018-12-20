@@ -4,15 +4,22 @@
 
 _pkgname=enki-editor
 pkgname=$_pkgname-git
-pkgver=16.04.1.r3.g5b3994b6
+pkgver=18.08.0.r3.g7ac303fc
 pkgrel=1
 pkgdesc="Text editor for programmers. Live preview in Markdown, reStructuredText and HTML"
 arch=('any')
 url="http://enki-editor.org/"
 license=('GPL')
 makedepends=('git' 'python')
-#         'qutepart')
-depends=('python-pyparsing' 
+#         'python-code-chat'
+#         'qutepart'
+depends=('flake8'
+         'python-code-chat-git'
+         'python-markdown'
+         'python-pyparsing' 
+         'python-qtconsole'
+         'python-regex'
+         'python-sphinx'
          'qutepart-git')
 #            'python-pygments: Scheme preview'
 optdepends=('ctags: navigation in file'
@@ -22,7 +29,6 @@ optdepends=('ctags: navigation in file'
             'tre: preview synchronization')
 provides=($_pkgname)
 conflicts=($_pkgname)
-install=$pkgname.install
 source=($pkgname::git://github.com/hlamer/enki.git)
 md5sums=('SKIP')
 
