@@ -1,0 +1,28 @@
+pkgbase = nxmc
+	pkgdesc = Graphical console for NetXMS NMS based on Eclipse.
+	pkgver = 2.2.10
+	pkgrel = 1
+	url = https://www.netxms.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = imagemagick
+	depends = gtk3
+	depends = python
+	depends = cairo
+	depends = jre8-openjdk
+	source_x86_64 = https://www.netxms.org/download/releases/2.2/2.2.10/nxmc-2.2.10-linux-gtk-x64.tar.gz
+	source_x86_64 = nxmc.desktop
+	source_x86_64 = https://raw.githubusercontent.com/netxms/netxms/master/COPYING
+	sha256sums_x86_64 = d6503f8d7f1d59ca7afe31c07d35eb53a788d82762b8c29eb51dc3ba8e0e21f3
+	sha256sums_x86_64 = a8fd91020c07d78163bcc4988ab94ca192240bb01566138cc6ed531e3d183e9c
+	sha256sums_x86_64 = 61406472f600746e836e92a47baa290a4a2f8491ac09724bc5bf2a0a4a5309e3
+	source_i686 = https://www.netxms.org/download/releases/2.2/2.2.10/nxmc-2.2.10-linux-gtk-x86.tar.gz
+	source_i686 = nxmc.desktop
+	source_i686 = https://raw.githubusercontent.com/netxms/netxms/master/COPYING
+	sha256sums_i686 = 498964d0f5b07930e431bc110d8a03cf2d3f289dd71995389c217cdbfcb39a2a
+	sha256sums_i686 = a8fd91020c07d78163bcc4988ab94ca192240bb01566138cc6ed531e3d183e9c
+	sha256sums_i686 = 61406472f600746e836e92a47baa290a4a2f8491ac09724bc5bf2a0a4a5309e3
+
+pkgname = nxmc
+
