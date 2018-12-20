@@ -1,6 +1,6 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 #
-# Based on the linux-mainline  package by:
+# Based on the linux-mainline package by:
 # Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
@@ -13,9 +13,9 @@ _kernel_rel=4.21
 _branch=drm-next-${_kernel_rel}
 _kernelname=${pkgbase#linux}
 pkgver=4.21.797639.674e78acae0d
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
-url='https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html'
+url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
