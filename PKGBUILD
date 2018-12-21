@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Chrome/Chromium extension for Reddit Enhancement Suite - git/dev"
 arch=('any')
 url='https://github.com/honestbleeps/Reddit-Enhancement-Suite'
-license=('MIT')
+license=('GPL3')
 makedepends=(git nodejs)
 source=("git+https://github.com/honestbleeps/Reddit-Enhancement-Suite.git")
 sha512sums=('SKIP')
@@ -20,7 +20,7 @@ pkgver() {
 }
 build() {
 	cd "${srcdir}/${pkgsubn}"
-	npm install
+	npm install --cache "${srcdir}/npm-cache"
 	npm run once
 }
 package() {
