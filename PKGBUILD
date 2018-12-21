@@ -21,7 +21,7 @@ license=('BSD')
 depends=('efl-git' 'xcb-util-keysyms' 'udisks2' 'wayland'
          'xorg-server-xwayland')
   [[ ! $(pacman -T bluez-libs) ]] && depends+=('bluez-libs') #l2ping support in enlightenment_sys is detected at build time
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot')
 optdepends=('acpid: power events on laptop lid close'
             'bc: calculator in everything module'
             'bluez4: bluetooth module'
