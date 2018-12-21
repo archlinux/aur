@@ -1,7 +1,7 @@
 pkgbase = pi-hole-standalone
 	pkgdesc = The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pi-hole/pi-hole
 	install = pi-hole-standalone.install
 	arch = any
