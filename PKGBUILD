@@ -2,7 +2,7 @@
 
 _pkgname=boolector
 pkgname=boolector-git
-pkgver=r9758.df7cc3ac
+pkgver=r9842.06b2357b
 pkgrel=1
 pkgdesc="A Satisfiability Modulo Theories (SMT) solver for the theories of fixed-size bit-vectors, arrays and uninterpreted functions"
 arch=('any')
@@ -71,6 +71,5 @@ package() {
   mkdir -p "$pkgdir/usr/include/boolector"
   install -m755 boolector/build/bin/boolector "$pkgdir/usr/bin/"
   install -m755 boolector/build/lib/*.so "$pkgdir/usr/lib/"
-  install -m755 boolector/build/lib/*.a "$pkgdir/usr/lib/"
   install -m644 boolector/src/*.h "$pkgdir/usr/include/boolector/"
 }
