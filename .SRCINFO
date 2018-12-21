@@ -1,0 +1,15 @@
+pkgbase = tab-session-manager-chromium-git
+	pkgdesc = Chrome/Chromium extension for Tab Session Manager - git/dev
+	pkgver = 390.80f930e
+	pkgrel = 1
+	url = https://github.com/honestbleeps/Reddit-Enhancement-Suite
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = unzip
+	source = git+https://github.com/sienori/Tab-Session-Manager.git
+	sha512sums = SKIP
+
+pkgname = tab-session-manager-chromium-git
+
