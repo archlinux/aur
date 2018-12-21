@@ -37,7 +37,7 @@ md5sums=('SKIP')
 
 prepare() {
   cd qiskit-terra
-  git checkout $(curl https://api.github.com/repos/QISKit/qiskit-terra/releases/latest | grep tag_name| cut -d '"' -f4)
+  git checkout $(curl https://api.github.com/repos/QISKit/qiskit-terra/releases | grep tag_name | cut -d '"' -f4 | head -n 1)
 }
 
 pkgver() {
