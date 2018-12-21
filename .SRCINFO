@@ -1,0 +1,38 @@
+pkgbase = intel-graphics-compiler
+	pkgdesc = Intel Graphics Compiler for OpenCL
+	pkgver = 2018.12.12
+	pkgrel = 1
+	url = https://github.com/intel/intel-graphics-compiler/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	makedepends = python2
+	makedepends = python2-pygments
+	makedepends = python2-yaml
+	makedepends = spirv-tools
+	makedepends = clang40
+	depends = gcc-libs
+	depends = ncurses
+	depends = zlib
+	conflicts = compute-runtime
+	noextract = igc_release_2018-12-12.tar.gz
+	options = !emptydirs
+	source = https://github.com/intel/intel-graphics-compiler/archive/igc_release_2018-12-12.tar.gz
+	source = llvm_source::git+https://github.com/llvm-mirror/llvm#branch=release_40
+	source = llvm7.0.0_source::git+https://github.com/llvm-mirror/llvm#branch=release_70
+	source = clang_source::git+https://github.com/llvm-mirror/clang#branch=release_40
+	source = llvm_patches::git+https://github.com/intel/llvm-patches
+	source = common_clang::git+https://github.com/intel/opencl-clang
+	source = opencl_headers::git+https://github.com/KhronosGroup/OpenCL-Headers
+	sha256sums = 5fdc3ac1b9e3589c627f2c7bf0cd3195b451f8767d8dd8ad17d5e089a168eda7
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = intel-graphics-compiler
+
