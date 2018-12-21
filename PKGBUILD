@@ -4,10 +4,10 @@
 
 _pkgname=terminology
 pkgname=$_pkgname-git
-pkgver=1.2.99.r1989.ea91a6c
+pkgver=1.3.99.r2086.3f1de6b
 pkgrel=1
 pkgdesc="EFL based terminal emulator - Development version"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.enlightenment.org/p.php?p=about/terminology"
 license=('BSD')
 depends=('efl')
