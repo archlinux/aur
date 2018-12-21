@@ -4,8 +4,8 @@
 # Based on the PKGBUILD for R
 
 pkgname=r-mkl
-pkgver=3.5.1
-pkgrel=3
+pkgver=3.5.2
+pkgrel=1
 pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
 license=('GPL')
@@ -52,11 +52,11 @@ source=("http://cran.r-project.org/src/base/R-${pkgver%%.*}/R-${pkgver}.tar.gz"
         'r.png'
         'R.conf')
 
-md5sums=('8620686bc237cf80288afff336fcc93c'
+md5sums=('3e4b40b2bbd4a2f8133ac45dbef6a485'
          '44ca875140b148543148b7749c7d6f5e'
          '8e0c51650b8a63f110fa7b09e699e9c4'
          '1dfa62c812aed9642f6e4ac34999b9fe')
-sha512sums=('382cc6e200469dd168799948edcf3a0b869d7ef3b3176fdfc60752f3f37e6ba356323c47d8815a4d9ab6ad3a21cd045d26ef5e75107c8685328e0ffcfd172f7f'
+sha512sums=('53e94f01ecee6c90cecfa07ee9950d62130a331010c0b23baaf88ab5009007856c9352ce97916404ff35d19632495902d41cb655a5fd116a7d2f5d6767d7b447'
             '1a90aed5411d72dd3e7708db0cb92c518e656e1a510ece02ad934131e05b8e683b4a36da8d37198263dc19fb2f3f19656c19c01f9b67974f0d7755974076d0b7'
             '1491b01d3d14b86d26c383e00e2305858a52ddd498158c9f7f6b33026ee01f246408b1676cffea73f7783c8c4cf546285705c43c0286adbd75ad77706918b5fe'
             'aae388c5b6c02d9fb857914032b0cd7d68a9f21e30c39ba11f5a29aaf1d742545482054b57ce18872eabb6605bbb359b2fc1e9be5ce6881443fdbdf6b67fab3b')
