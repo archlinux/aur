@@ -1,19 +1,21 @@
 pkgbase = keyboardlayouteditor-git
 	pkgdesc = PyGTK programme that helps create or edit XKB keyboard layouts.
-	pkgver = 1.1+r84.g742101b
-	pkgrel = 3
+	pkgver = 1.1+r84.d20181009.g742101b
+	pkgrel = 1
+	epoch = 1
 	url = http://github.com/simos/keyboardlayouteditor
 	arch = any
 	license = GPL3
 	makedepends = antlr3=3.1.2
 	makedepends = git
+	depends = gucharmap
 	depends = pygtk
 	depends = python2
 	depends = python2-antlr3=3.1.2
 	depends = python2-cairo
 	depends = python2-gobject2
 	depends = python2-lxml
-	provides = keyboardlayouteditor=1.1+r84.g742101b
+	provides = keyboardlayouteditor=1.1+r84.d20181009.g742101b
 	source = keyboardlayouteditor::git+git://github.com/simos/keyboardlayouteditor.git
 	source = keyboardlayouteditor.sh
 	sha256sums = SKIP

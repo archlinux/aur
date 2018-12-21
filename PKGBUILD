@@ -2,8 +2,9 @@
 
 _pkgname=keyboardlayouteditor
 pkgname="${_pkgname}"-git
-pkgver=1.1+r84.g742101b
-pkgrel=3
+pkgver=1.1+r84.d20181009.g742101b
+pkgrel=1
+epoch=1
 pkgdesc="PyGTK programme that helps create or edit XKB keyboard layouts."
 arch=('any')
 url="http://github.com/simos/keyboardlayouteditor"
@@ -14,6 +15,7 @@ license=('GPL3')
 # * GObject
 # * lxml
 depends=(
+  'gucharmap'
   'pygtk'
   'python2'
   'python2-antlr3=3.1.2'
@@ -50,11 +52,16 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   _ver="$(grep '__version__' KeyboardLayoutEditor | tail -n 1 | awk -F '=' '{print $2}' | tr -d "[[:space:]]'\"")"
+  _date="$(git log -n 1 --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
   _rev="$(git rev-list --count HEAD)"
   _githash="$(git rev-parse --short HEAD)"
 
   if [ -z "${_ver}" ]; then
     msg2 "Error in 'pkgver()': Could not determine version."
+    return 11
+  fi
+  if [ -z "${_date}" ]; then
+    msg2 "Error in 'pkgver()': Could not determine latest commit date."
     return 11
   fi
   if [ -z "${_rev}" ]; then
@@ -66,13 +73,17 @@ pkgver() {
     return 13
   fi
 
-  echo "${_ver}+r${_rev}.g${_githash}"
+  echo "${_ver}+r${_rev}.d${_date}.g${_githash}"
 }
 
 prepare() {
   cd "${srcdir}"
 
+  msg2 "Creating 'website.url' documentation file ..."
   cat <<< "${url}" > website.url
+
+  msg2 "Creating git commit changelog ..."
+  git log --date=iso > ChangeLog-git.txt
 }
 
 build() {
@@ -123,6 +134,7 @@ package() {
   for _docfile in 'README.md' 'TODO'; do
     _cmd install -D -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
+  _cmd install -D -m644 "${srcdir}/ChangeLog-git.txt" "${pkgdir}/usr/share/doc/${_pkgname}/ChangeLog-git.txt"
   _cmd install -D -m644 "${srcdir}/website.url" "${pkgdir}/usr/share/doc/${_pkgname}/website.url"
 
   _cmd install -D -m644 'COPYING' "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
