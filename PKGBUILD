@@ -1,16 +1,16 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic
-pkgver=2.12.13
+pkgver=2.12.14
 pkgrel=1
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
 url="http://dcpomatic.com/"
 #  CXXFLAGS="$CXXFLAGS  -I/usr/include/openjpeg-1.5/  -std=c++11"
-depends=('pangomm>=1.4' 'libsub>=1.3.0' 'libcxml>=0.15.5' 'libdcp>=1.5.2' 'ffmpeg>=4.0.2' 'glib2' 'imagemagick' 'libssh' 'wxgtk2>=3.0.1' 'libquickmail>=0.1.22' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264')
+depends=('pangomm>=1.4' 'libsub>=1.3.5' 'libcxml>=0.15.5' 'libdcp>=1.5.6' 'ffmpeg>=4.0.2' 'glib2' 'imagemagick' 'libssh' 'wxgtk2>=3.0.1' 'libquickmail>=0.1.22' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264')
 makedepends=('python2' 'boost>=1.66.0' )
 source=("${pkgname}-${pkgver}.tar.bz2::http://dcpomatic.com/dl.php?id=source&version=${pkgver}" )
-sha256sums=('b94e39b6bbe74953dba7b4f301f6dabca7e8688e85a998ab525564a5f54ac27c')
+sha256sums=('090e6a162ab1dc7bd52225f05e53d3fca740b6dbd84f3fcf58fbefef8bdd46b0')
 
 
 
