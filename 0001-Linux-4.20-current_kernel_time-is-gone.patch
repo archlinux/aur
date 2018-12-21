@@ -1,0 +1,71 @@
+From d2f3f96ad737c2c49c64fcf954dc96b63722c108 Mon Sep 17 00:00:00 2001
+From: Mark Vitale <mvitale@sinenomine.net>
+Date: Tue, 13 Nov 2018 11:20:09 -0500
+Subject: [PATCH 1/2] Linux 4.20: current_kernel_time is gone
+
+With Linux commit 976516404ff3fab2a8caa8bd6f5efc1437fed0b8 'y2038:
+remove unused time interfaces' (4.20-rc1), current_kernel_time() has
+been removed.
+
+Many y2038-compliant time APIs were introduced with Linux commit
+fb7fcc96a86cfaef0f6dcc0665516aa68611e736 'timekeeping: Standardize on
+ktime_get_*() naming' (4.18).  According to
+Documentation/core-api/timekeeping.rst, a suitable replacement for:
+
+  struct timespec current_kernel_time(void)
+
+would be:
+
+  void ktime_get_coarse_real_ts64(struct timespec64 *ts))
+
+Add an autoconf test and equivalent logic to deal.
+
+Reviewed-on: https://gerrit.openafs.org/13391
+Tested-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 3c454b39d04f4886536267c211171dae30dc0344)
+
+Change-Id: I3f00cf4bd3a1ffb7c90e3920113964d74c6df403
+---
+ src/afs/LINUX/osi_machdep.h | 9 ++++++++-
+ src/cf/linux-kernel-func.m4 | 4 ++++
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/src/afs/LINUX/osi_machdep.h b/src/afs/LINUX/osi_machdep.h
+index ce8cabf6e..a1a2f57c0 100644
+--- a/src/afs/LINUX/osi_machdep.h
++++ b/src/afs/LINUX/osi_machdep.h
+@@ -75,7 +75,14 @@
+ #if defined(HAVE_LINUX_CRED_H)
+ #include "h/cred.h"
+ #endif
+-#if defined(HAVE_LINUX_CURRENT_KERNEL_TIME)
++
++#if defined(HAVE_LINUX_KTIME_GET_COARSE_REAL_TS64)
++static inline time_t osi_Time(void) {
++    struct timespec64 xtime;
++    ktime_get_coarse_real_ts64(&xtime);
++    return xtime.tv_sec;
++}
++#elif defined(HAVE_LINUX_CURRENT_KERNEL_TIME)
+ static inline time_t osi_Time(void) {
+     struct timespec xtime;
+     xtime = current_kernel_time();
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index 0b17e172e..62fd528d6 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -72,6 +72,10 @@ AC_CHECK_LINUX_FUNC([iter_file_splice_write],
+ AC_CHECK_LINUX_FUNC([kernel_setsockopt],
+                     [#include <linux/net.h>],
+                     [kernel_setsockopt(NULL, 0, 0, NULL, 0);])
++AC_CHECK_LINUX_FUNC([ktime_get_coarse_real_ts64],
++                    [#include <linux/time.h>],
++                    [struct timespec64 *s;
++                    ktime_get_coarse_real_ts64(s);])
+ AC_CHECK_LINUX_FUNC([locks_lock_file_wait],
+                     [#include <linux/fs.h>],
+                     [locks_lock_file_wait(NULL, NULL);])
+-- 
+2.20.1
+

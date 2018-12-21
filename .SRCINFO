@@ -1,7 +1,7 @@
 pkgbase = openafs-modules
 	pkgdesc = Kernel module for OpenAFS
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openafs.org
 	install = openafs-modules.install
 	arch = i686
@@ -15,7 +15,11 @@ pkgbase = openafs-modules
 	conflicts = openafs<1.6.6-2
 	options = !emptydirs
 	source = http://openafs.org/dl/openafs/1.8.2/openafs-1.8.2-src.tar.bz2
+	source = 0001-Linux-4.20-current_kernel_time-is-gone.patch
+	source = 0002-Linux-4.20-do_settimeofday-is-gone.patch
 	sha256sums = 25fd3e4261a72a2cbdd40367e5f981895d80c32aaf309a5842aecc739dd3138e
+	sha256sums = af5f65915c33a13311280ca5f1d52e49d954341d2b5d8939fc0ccb6a15663388
+	sha256sums = a4036be334ce54a4eb4a777621983e6535144d4c81d717e2045bb9040cf3ae8b
 
 pkgname = openafs-modules
 
