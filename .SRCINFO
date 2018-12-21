@@ -1,12 +1,12 @@
 pkgbase = spl-linux-vfio
-	pkgver = 0.7.12_4.19.8.arch1.1
+	pkgver = 0.7.12_4.19.9.arch1.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
-	makedepends = linux-vfio-headers=4.19.8.arch1-1
+	makedepends = linux-vfio-headers=4.19.9.arch1-1
 	depends = kmod
-	depends = linux-vfio=4.19.8.arch1-1
+	depends = linux-vfio=4.19.9.arch1-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.12/spl-0.7.12.tar.gz
 	sha256sums = 4709a06e913bbbeb634161a8b68c3f879e5b6040c6c0c09b1f51042b3178c274
 
