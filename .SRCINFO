@@ -1,6 +1,6 @@
 pkgbase = edex-ui-git
 	pkgdesc = A science fiction desktop running everywhere. Awesome.
-	pkgver = 1.1.2.r2.gdd521f8
+	pkgver = 1.1.2.r8.gdad81fa
 	pkgrel = 1
 	url = https://github.com/GitSquared/edex-ui
 	install = edex-ui.install

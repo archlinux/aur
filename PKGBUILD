@@ -1,14 +1,13 @@
 # Maintainer: Lucas Malandrino <lucas.malandrino@gmail.com>
 pkgname='edex-ui-git'
 _pkgname='edex-ui'
-pkgver=1.1.2.r2.gdd521f8
+pkgver=1.1.2.r8.gdad81fa
 pkgrel=1
 pkgdesc="A science fiction desktop running everywhere. Awesome."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/GitSquared/edex-ui'
 license=('GPL3')
 depends=('gtk3'
-         'gconf'
          'libxss'
          'nss')
 makedepends=('npm' 'git')
