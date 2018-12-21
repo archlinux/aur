@@ -1,8 +1,8 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=libzypp-git
-pkgver=17.10.2
-pkgrel=2
+pkgver=17.10.3.3.g2513a0202
+pkgrel=1
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libzypp"
