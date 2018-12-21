@@ -1,0 +1,17 @@
+pkgbase = phrased-git
+	pkgdesc = Generate awesome passphrases from a set of dictionaries.
+	pkgver = v0.1.1.r13.4b68f7e
+	pkgrel = 1
+	url = https://phrased.org/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = go
+	provides = phrased
+	conflicts = phrased
+	source = phrased::git+https://github.com/phrased-org/phrased.git
+	md5sums = SKIP
+
+pkgname = phrased-git
+
