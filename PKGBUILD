@@ -5,8 +5,8 @@
 # repository. $pkgver is currently inherited from there.
 
 pkgname=intel-graphics-compiler-bin
-pkgver=18.44.1060
-_icrver=18.46.11837 # intel-compute-runtime version
+pkgver=18.48.1124
+_icrver=18.49.11968 # intel-compute-runtime version
 pkgrel=1
 pkgdesc='Intel Graphics Compiler for OpenCL'
 arch=('x86_64')
@@ -26,8 +26,8 @@ source=("https://github.com/intel/compute-runtime/releases/download/${_icrver}/i
         'LICENSE')
 noextract=("intel-igc-core_${pkgver}_amd64.deb"
            "intel-igc-opencl_${pkgver}_amd64.deb")
-sha256sums=('00fe6aae32b0818e833db8fc1ec38b3b70326a5fdb54b0f49ea1badc79d8271a'
-            '00079138c79e22cd022de6ce0318b6fa0c0eaf2ec1ba312ae628bf8d06ed570c'
+sha256sums=('f0dd87998a290a713295e9b3498fc49545e7e4c15710ed1d11055e160c1bff17'
+            '7aaf3560d86a8c6be7e7dbc696a16cd030ccc8aea5fda07bcb86d2dbe3590de2'
             '0a17bb0830659515e66a960a6fd553d9ef939bc8097066e1c8f4954d562c252c')
 
 prepare() {
