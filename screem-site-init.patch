@@ -1,0 +1,11 @@
+--- src/screem-site.c	2018-12-21 03:41:59.267062174 +0100
++++ src/screem-site.c	2018-12-21 03:47:31.918945358 +0100
+@@ -1759,7 +1759,7 @@
+ 
+ 	/* all new sites are fake ones, we change this when we
+ 	   load / create a site */
+-	screem_site_set_name( site, _("Individual Files") );
++	screem_site_set_name( site, "Individual Files" );
+ 
+ 	screem_site_model_initialise( site );
+

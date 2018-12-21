@@ -1,0 +1,15 @@
+--- src/screem-editor.c	2005-11-12 20:21:33.000000000 +0100
++++ src/screem-editor.c	2018-12-21 02:41:40.976012503 +0100
+@@ -36,9 +36,9 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#include <gtksourceview/gtksourceview.h>
+-#include <gtksourceview/gtksourcebuffer.h>
+-#include <gtksourceview/gtksourceprintjob.h>
++#include <gtksourceview-1.0/gtksourceview/gtksourceview.h>
++#include <gtksourceview-1.0/gtksourceview/gtksourcebuffer.h>
++#include <gtksourceview-1.0/gtksourceview/gtksourceprintjob.h>
+ #include <gtk/gtk.h>
+ 
+ #include <gdk/gdkkeysyms.h>

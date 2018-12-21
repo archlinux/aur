@@ -1,0 +1,74 @@
+--- src/screem-cvs.c	2005-11-05 16:42:13.000000000 +0100
++++ src/screem-cvs.c	2018-12-21 02:33:04.555493450 +0100
+@@ -21,7 +21,7 @@
+  *  about box under the help menu for a contact address
+  */
+ 
+-#include <glib/gutils.h>
++#include <glib.h>
+ #include <stdio.h>
+ 
+ #include <string.h>
+
+--- src/screem-file-browser.c	2005-11-16 00:02:15.000000000 +0100
++++ src/screem-file-browser.c	2018-12-21 03:00:48.834408443 +0100
+@@ -25,9 +25,7 @@
+ 
+ #include <config.h>
+ 
+-#include <glib/gutils.h>
+-#include <glib/ghash.h>
+-#include <glib/gthread.h>
++#include <glib.h>
+ 
+ #include <libgnomevfs/gnome-vfs-mime-handlers.h>
+ #include <libgnomevfs/gnome-vfs-mime-utils.h>
+
+--- src/screem-site-parse.c	2005-07-29 21:34:59.000000000 +0200
++++ src/screem-site-parse.c	2018-12-21 03:05:26.019857516 +0100
+@@ -1,7 +1,6 @@
+ #include <config.h>
+ 
+-#include <glib/gmarkup.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <string.h>
+ 
+ #include "fileops.h"
+
+--- src/screem-site-ui.c	2005-11-05 16:08:13.000000000 +0100
++++ src/screem-site-ui.c	2018-12-21 03:12:20.993371176 +0100
+@@ -24,7 +24,7 @@
+ 
+ #include <config.h>
+ 
+-#include <glib/gfileutils.h>
++#include <glib.h>
+ 
+ #include <gtk/gtktogglebutton.h>
+
+--- src/screem-site.c	2005-11-12 20:34:35.000000000 +0100
++++ src/screem-site.c	2018-12-21 03:16:21.864242285 +0100
+@@ -32,8 +32,7 @@
+ #include <unistd.h>
+ #include <dirent.h>
+ 
+-#include <glib/gfileutils.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libgnome/gnome-exec.h>
+ 
+ #include <libgnomevfs/gnome-vfs-mime-handlers.h>
+
+--- src/fileops.c	2005-11-12 20:26:14.000000000 +0100
++++ src/fileops.c	2018-12-21 03:20:04.949350046 +0100
+@@ -29,7 +29,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ 
+-#include <glib/gfileutils.h>
++#include <glib.h>
+ 
+ #include <gtk/gtkdialog.h>
+ #include <gtk/gtklabel.h>
+
