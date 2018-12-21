@@ -10,9 +10,9 @@ pkgdesc='GNOME library that extends GtkTextView'
 url='http://www.gnome.org/'
 arch=('x86_64' 'i686')
 license=('LGPL' 'GPL')
-
+depends=('libgnomeprint' libgnomeprintui')
 #depends=('pango' 'libart-lgpl' 'libxml2' 'libgnomecups' 'libgcrypt' 'bzip2')
-#makedepends=('intltool' 'pkgconfig' 'addinclude')
+makedepends=('intltool' 'pkgconfig' 'addinclude')
 #replaces=('libgnomeprint-cups')
 #conflicts=('libgnomeprint-cups')
 #options=('!libtool')
@@ -33,7 +33,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   CPPFLAGS=-D_GNU_SOURCE ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-  --disable-static --enable-gtk-doc=no --disable-build-tests --disable-gnomeprint
+  --disable-static --enable-gtk-doc=no --disable-build-tests #--disable-gnomeprint
   make
 }
 
