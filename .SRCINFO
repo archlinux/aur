@@ -1,0 +1,14 @@
+pkgbase = gtksourceview
+	pkgdesc = GNOME library that extends GtkTextView
+	pkgver = 1.8.5
+	pkgrel = 1
+	url = http://www.gnome.org/
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	license = GPL
+	source = http://ftp.gnome.org/pub/gnome/sources/gtksourceview/1.8/gtksourceview-1.8.5.tar.gz
+	sha256sums = 36727b1cd5ed311af0c0418c9617f69bc31cc97e2dfef05ba1cc6ce1fb513c9e
+
+pkgname = gtksourceview
+
