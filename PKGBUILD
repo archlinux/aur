@@ -3,8 +3,8 @@
 # Contributor: Schmetzler <web.de d i m o n o k>
 
 pkgname=compute-runtime-bin
-depver=18.48.1124
-pkgver=18.49.11968
+depver=18.50.1270
+pkgver=18.51.12049
 pkgrel=1
 pkgdesc='Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond (binary version)'
 arch=(x86_64)
@@ -23,9 +23,9 @@ ${url}/releases/download/${pkgver}/intel-opencl_${pkgver}_amd64.deb
 )
 
 sha256sums=(
-'f0dd87998a290a713295e9b3498fc49545e7e4c15710ed1d11055e160c1bff17'
-'7aaf3560d86a8c6be7e7dbc696a16cd030ccc8aea5fda07bcb86d2dbe3590de2'
-'e244a521c9949ae78f232b70604678941dbbf528fc58144b0d9d7d2b5dc2fb8e'
+'SKIP'
+'SKIP'
+'724bd7c12a07c95b35e254c66d29498a1d30ead70c2979fcc473c9362750a7e2'
 )
 
 noextract=(
@@ -56,6 +56,7 @@ package() {
     tar -xJC ${pkgdir} -f ${srcdir}/igc-opencl/data.tar.xz
     tar -xJC ${pkgdir} -f ${srcdir}/opencl/data.tar.xz
 
+    mkdir -p ${pkgdir}/usr/lib
     rm -f ${pkgdir}/usr/local/lib/libigdgmm.so*
     cp -af ${pkgdir}/usr/local/lib/*.so ${pkgdir}/usr/lib
     chmod 755 ${pkgdir}/usr/lib/*.so
