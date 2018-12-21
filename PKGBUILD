@@ -8,6 +8,10 @@ url="https://www.olivertaylor.net/"
 license=('custom:textplay')
 depends=('ruby')
 makedepends=('git') 
+optdepends=('ttf-courier-prime: To print screenplays in the expected font'
+	    'python-weasyprint: To create a PDF version from the output (Recommended)'
+            'python2-weasyprint: Python 2 version of the above'
+            'princexml: The PDF package textplay was written for, commercial - free version creates watermark')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=
