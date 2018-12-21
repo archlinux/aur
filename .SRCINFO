@@ -1,0 +1,12 @@
+pkgbase = pocket-casts-linux-bin
+	pkgdesc = Electron wrapper around the Pocket Casts web app with support for MPRIS (media controls)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jgierer12/pocket-casts-linux
+	arch = x86_64
+	license = MIT
+	source = https://github.com/jgierer12/pocket-casts-linux/releases/download/v1.0.0/pocket-casts-linux-1.0.0-x64.pacman
+	md5sums = 7e9c06b7ddfed8100d48f20c27b9783f
+
+pkgname = pocket-casts-linux-bin
+
