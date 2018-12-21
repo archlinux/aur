@@ -1,18 +1,16 @@
 pkgbase = sigasi
 	pkgdesc = IDE for VHDL editing and browsing
-	pkgver = 2.31
+	pkgver = 4.2
 	pkgrel = 1
 	url = http://www.sigasi.com/
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = glib2
+	options = !strip
+	source = http://download.sigasi.com/updates/latest/com.sigasi.hdt.product-linux.gtk.x86_64.zip
 	source = sigasi.desktop
+	sha256sums = 0bc95d91d5578a50b02afd442d9c39b7800d7c31c32d5e6b9443e0ae150ab431
 	sha256sums = a8084b3146904c2accd5946e2aa493e133c56e4f8f0d7f582a0edcb080a7958c
-	source_i686 = http://download.sigasi.com/updates/sigasi-hdt2/com.sigasi.hdt.product-linux.gtk.x86.zip
-	sha256sums_i686 = 64144deb3493fd6722fa98c30f6c6e21235de69411cd6bcc4cc3a2ad40168618
-	source_x86_64 = http://download.sigasi.com/updates/sigasi-hdt2/com.sigasi.hdt.product-linux.gtk.x86_64.zip
-	sha256sums_x86_64 = 9a69d85f70e42fe39120ed40b561ac8db895a3b31c283d249ded29c03f963215
 
 pkgname = sigasi
 
