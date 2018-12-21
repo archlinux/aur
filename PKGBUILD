@@ -3,7 +3,7 @@
 _pkgname=keyboardlayouteditor
 pkgname="${_pkgname}"-git
 pkgver=1.1+r84.d20181009.g742101b
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="PyGTK programme that helps create or edit XKB keyboard layouts."
 arch=('any')
