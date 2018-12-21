@@ -1,0 +1,390 @@
+diff -uprN pi-hole-4.1.1/adlists.list pi-hole-4.1.1.cust/adlists.list
+--- pi-hole-4.1.1/adlists.list	1970-01-01 01:00:00.000000000 +0100
++++ pi-hole-4.1.1.cust/adlists.list	2018-12-21 23:32:49.862403602 +0100
+@@ -0,0 +1,7 @@
++https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
++https://mirror1.malwaredomains.com/files/justdomains
++http://sysctl.org/cameleon/hosts
++https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist
++https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
++https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
++https://hosts-file.net/ad_servers.txt
+diff -uprN pi-hole-4.1.1/advanced/Scripts/webpage.sh pi-hole-4.1.1.cust/advanced/Scripts/webpage.sh
+--- pi-hole-4.1.1/advanced/Scripts/webpage.sh	2018-12-21 18:06:19.000000000 +0100
++++ pi-hole-4.1.1.cust/advanced/Scripts/webpage.sh	2018-12-21 23:32:49.862403602 +0100
+@@ -28,10 +28,6 @@ Example: pihole -a -p password
+ Set options for the Admin Console
+ 
+ Options:
+-  -p, password        Set Admin Console password
+-  -c, celsius         Set Celsius as preferred temperature unit
+-  -f, fahrenheit      Set Fahrenheit as preferred temperature unit
+-  -k, kelvin          Set Kelvin as preferred temperature unit
+   -r, hostrecord      Add a name to the DNS associated to an IPv4/IPv6 address
+   -e, email           Set an administrative contact address for the Block Page
+   -h, --help          Show this help dialog
+@@ -78,10 +74,6 @@ delete_dnsmasq_setting() {
+     sed -i "/${1}/d" "${dnsmasqconfig}"
+ }
+ 
+-SetTemperatureUnit() {
+-    change_setting "TEMPERATUREUNIT" "${unit}"
+-    echo -e "  ${TICK} Set temperature unit to ${unit}"
+-}
+ 
+ HashPassword() {
+     # Compute password hash twice to avoid rainbow table vulnerability
+@@ -90,51 +82,6 @@ HashPassword() {
+     echo ${return}
+ }
+ 
+-SetWebPassword() {
+-    if [ "${SUDO_USER}" == "www-data" ]; then
+-        echo "Security measure: user www-data is not allowed to change webUI password!"
+-        echo "Exiting"
+-        exit 1
+-    fi
+-
+-    if [ "${SUDO_USER}" == "lighttpd" ]; then
+-        echo "Security measure: user lighttpd is not allowed to change webUI password!"
+-        echo "Exiting"
+-        exit 1
+-    fi
+-
+-    if (( ${#args[2]} > 0 )) ; then
+-        readonly PASSWORD="${args[2]}"
+-        readonly CONFIRM="${PASSWORD}"
+-    else
+-        # Prevents a bug if the user presses Ctrl+C and it continues to hide the text typed.
+-        # So we reset the terminal via stty if the user does press Ctrl+C
+-        trap '{ echo -e "\nNo password will be set" ; stty sane ; exit 1; }' INT
+-        read -s -r -p "Enter New Password (Blank for no password): " PASSWORD
+-        echo ""
+-
+-    if [ "${PASSWORD}" == "" ]; then
+-        change_setting "WEBPASSWORD" ""
+-        echo -e "  ${TICK} Password Removed"
+-        exit 0
+-    fi
+-
+-    read -s -r -p "Confirm Password: " CONFIRM
+-    echo ""
+-    fi
+-
+-    if [ "${PASSWORD}" == "${CONFIRM}" ] ; then
+-        # We do not wrap this in brackets, otherwise BASH will expand any appropriate syntax
+-        hash=$(HashPassword "$PASSWORD")
+-        # Save hash to file
+-        change_setting "WEBPASSWORD" "${hash}"
+-        echo -e "  ${TICK} New password set"
+-    else
+-        echo -e "  ${CROSS} Passwords don't match. Your password has not been changed"
+-        exit 1
+-    fi
+-}
+-
+ ProcessDNSSettings() {
+     source "${setupVars}"
+ 
+@@ -257,14 +204,6 @@ SetDNSServers() {
+     RestartDNS
+ }
+ 
+-SetExcludeDomains() {
+-    change_setting "API_EXCLUDE_DOMAINS" "${args[2]}"
+-}
+-
+-SetExcludeClients() {
+-    change_setting "API_EXCLUDE_CLIENTS" "${args[2]}"
+-}
+-
+ Poweroff(){
+     nohup bash -c "sleep 5; poweroff" &> /dev/null </dev/null &
+ }
+@@ -274,7 +213,7 @@ Reboot() {
+ }
+ 
+ RestartDNS() {
+-    /usr/local/bin/pihole restartdns
++    /usr/bin/pihole restartdns
+ }
+ 
+ SetQueryLogOptions() {
+@@ -343,40 +282,6 @@ ra-param=*,0,0
+     fi
+ }
+ 
+-EnableDHCP() {
+-    change_setting "DHCP_ACTIVE" "true"
+-    change_setting "DHCP_START" "${args[2]}"
+-    change_setting "DHCP_END" "${args[3]}"
+-    change_setting "DHCP_ROUTER" "${args[4]}"
+-    change_setting "DHCP_LEASETIME" "${args[5]}"
+-    change_setting "PIHOLE_DOMAIN" "${args[6]}"
+-    change_setting "DHCP_IPv6" "${args[7]}"
+-
+-    # Remove possible old setting from file
+-    delete_dnsmasq_setting "dhcp-"
+-    delete_dnsmasq_setting "quiet-dhcp"
+-
+-    ProcessDHCPSettings
+-
+-    RestartDNS
+-}
+-
+-DisableDHCP() {
+-    change_setting "DHCP_ACTIVE" "false"
+-
+-    # Remove possible old setting from file
+-    delete_dnsmasq_setting "dhcp-"
+-    delete_dnsmasq_setting "quiet-dhcp"
+-
+-    ProcessDHCPSettings
+-
+-    RestartDNS
+-}
+-
+-SetWebUILayout() {
+-    change_setting "WEBUIBOXEDLAYOUT" "${args[2]}"
+-}
+-
+ CustomizeAdLists() {
+     list="/etc/pihole/adlists.list"
+ 
+@@ -397,14 +302,6 @@ CustomizeAdLists() {
+     fi
+ }
+ 
+-SetPrivacyMode() {
+-    if [[ "${args[2]}" == "true" ]]; then
+-        change_setting "API_PRIVACY_MODE" "true"
+-    else
+-        change_setting "API_PRIVACY_MODE" "false"
+-    fi
+-}
+-
+ ResolutionSettings() {
+     typ="${args[2]}"
+     state="${args[3]}"
+@@ -552,22 +449,12 @@ main() {
+     args=("$@")
+ 
+     case "${args[1]}" in
+-        "-p" | "password"     ) SetWebPassword;;
+-        "-c" | "celsius"      ) unit="C"; SetTemperatureUnit;;
+-        "-f" | "fahrenheit"   ) unit="F"; SetTemperatureUnit;;
+-        "-k" | "kelvin"       ) unit="K"; SetTemperatureUnit;;
+         "setdns"              ) SetDNSServers;;
+-        "setexcludedomains"   ) SetExcludeDomains;;
+-        "setexcludeclients"   ) SetExcludeClients;;
+         "poweroff"            ) Poweroff;;
+         "reboot"              ) Reboot;;
+         "restartdns"          ) RestartDNS;;
+         "setquerylog"         ) SetQueryLogOptions;;
+-        "enabledhcp"          ) EnableDHCP;;
+-        "disabledhcp"         ) DisableDHCP;;
+-        "layout"              ) SetWebUILayout;;
+         "-h" | "--help"       ) helpFunc;;
+-        "privacymode"         ) SetPrivacyMode;;
+         "resolve"             ) ResolutionSettings;;
+         "addstaticdhcp"       ) AddDHCPStaticAddress;;
+         "removestaticdhcp"    ) RemoveDHCPStaticAddress;;
+diff -uprN pi-hole-4.1.1/gravity.sh pi-hole-4.1.1.cust/gravity.sh
+--- pi-hole-4.1.1/gravity.sh	2018-12-21 18:06:19.000000000 +0100
++++ pi-hole-4.1.1.cust/gravity.sh	2018-12-21 23:32:49.769071092 +0100
+@@ -19,7 +19,7 @@ regexconverter="/opt/pihole/wildcard_reg
+ source "${regexconverter}"
+ 
+ basename="pihole"
+-PIHOLE_COMMAND="/usr/local/bin/${basename}"
++PIHOLE_COMMAND="/usr/bin/${basename}"
+ 
+ piholeDir="/etc/${basename}"
+ 
+diff -uprN pi-hole-4.1.1/pihole pi-hole-4.1.1.cust/pihole
+--- pi-hole-4.1.1/pihole	2018-12-21 18:06:19.000000000 +0100
++++ pi-hole-4.1.1.cust/pihole	2018-12-21 23:32:49.752404572 +0100
+@@ -13,7 +13,6 @@ readonly PI_HOLE_SCRIPT_DIR="/opt/pihole
+ readonly gravitylist="/etc/pihole/gravity.list"
+ readonly blacklist="/etc/pihole/black.list"
+ 
+-# setupVars is not readonly here because in some funcitons (checkout),
+ # it might get set again when the installer is sourced. This causes an
+ # error due to modifying a readonly variable.
+ setupVars="/etc/pihole/setupVars.conf"
+@@ -62,22 +61,6 @@ debugFunc() {
+   exit 0
+ }
+ 
+-flushFunc() {
+-  "${PI_HOLE_SCRIPT_DIR}"/piholeLogFlush.sh "$@"
+-  exit 0
+-}
+-
+-updatePiholeFunc() {
+-  shift
+-  "${PI_HOLE_SCRIPT_DIR}"/update.sh "$@"
+-  exit 0
+-}
+-
+-reconfigurePiholeFunc() {
+-  /etc/.pihole/automated\ install/basic-install.sh --reconfigure
+-  exit 0;
+-}
+-
+ updateGravityFunc() {
+   "${PI_HOLE_SCRIPT_DIR}"/gravity.sh "$@"
+   exit $?
+@@ -89,23 +72,8 @@ queryFunc() {
+   exit 0
+ }
+ 
+-chronometerFunc() {
+-  shift
+-  "${PI_HOLE_SCRIPT_DIR}"/chronometer.sh "$@"
+-  exit 0
+-}
+-
+ 
+-uninstallFunc() {
+-  "${PI_HOLE_SCRIPT_DIR}"/uninstall.sh
+-  exit 0
+-}
+ 
+-versionFunc() {
+-  shift
+-  "${PI_HOLE_SCRIPT_DIR}"/version.sh "$@"
+-  exit 0
+-}
+ 
+ restartDNS() {
+   local svcOption svc str output status
+@@ -122,7 +90,7 @@ restartDNS() {
+     else
+       svcOption="start"
+     fi
+-    svc="service ${resolver} ${svcOption}"
++    svc="systemctl ${svcOption} pi-hole-ftl"
+   fi
+ 
+   # Print output to Terminal, but not to Web Admin
+@@ -322,60 +290,6 @@ tailFunc() {
+   exit 0
+ }
+ 
+-piholeCheckoutFunc() {
+-  if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]]; then
+-    echo "Usage: pihole checkout [repo] [branch]
+-Example: 'pihole checkout master' or 'pihole checkout core dev'
+-Switch Pi-hole subsystems to a different Github branch
+-
+-Repositories:
+-  core [branch]       Change the branch of Pi-hole's core subsystem
+-  web [branch]        Change the branch of Web Interface subsystem
+-  ftl [branch]        Change the branch of Pi-hole's FTL subsystem
+-
+-Branches:
+-  master              Update subsystems to the latest stable release
+-  dev                 Update subsystems to the latest development release
+-  branchname          Update subsystems to the specified branchname"
+-    exit 0
+-  fi
+-
+-  source "${PI_HOLE_SCRIPT_DIR}"/piholeCheckout.sh
+-  shift
+-  checkout "$@"
+-}
+-
+-tricorderFunc() {
+-  if [[ ! -p "/dev/stdin" ]]; then
+-    echo -e "  ${INFO} Please do not call Tricorder directly"
+-    exit 1
+-  fi
+-
+-  if ! (echo > /dev/tcp/tricorder.pi-hole.net/9998) >/dev/null 2>&1; then
+-    echo -e "  ${CROSS} Unable to connect to Pi-hole's Tricorder server"
+-    exit 1
+-  fi
+-
+-  if command -v openssl &> /dev/null; then
+-    openssl s_client -quiet -connect tricorder.pi-hole.net:9998 2> /dev/null < /dev/stdin
+-    exit "$?"
+-  else
+-    echo -e "  ${INFO} ${COL_YELLOW}Security Notice${COL_NC}: ${COL_WHITE}openssl${COL_NC} is not installed
+-       Your debug log will be transmitted unencrypted via plain-text
+-       There is a possibility that this could be intercepted by a third party
+-       If you wish to cancel, press Ctrl-C to exit within 10 seconds"
+-    secs="10"
+-    while [[ "$secs" -gt "0" ]]; do
+-       echo -ne "."
+-       sleep 1
+-       : $((secs--))
+-    done
+-    echo " "
+-    nc tricorder.pi-hole.net 9999 < /dev/stdin
+-    exit "$?"
+-  fi
+-}
+-
+ updateCheckFunc() {
+   "${PI_HOLE_SCRIPT_DIR}"/updatecheck.sh "$@"
+   exit 0
+@@ -396,33 +310,24 @@ Whitelist/Blacklist Options:
+ Debugging Options:
+   -d, debug           Start a debugging session
+                         Add '-a' to enable automated debugging
+-  -f, flush           Flush the Pi-hole log
+-  -r, reconfigure     Reconfigure or Repair Pi-hole subsystems
+-  -t, tail            View the live output of the Pi-hole log
+ 
+ Options:
+-  -a, admin           Web interface options
+-                        Add '-h' for more info on Web Interface usage
+   -c, chronometer     Calculates stats and displays to an LCD
+                         Add '-h' for more info on chronometer usage
+   -g, updateGravity   Update the list of ad-serving domains
+   -h, --help, help    Show this help dialog
+-  -l, logging         Specify whether the Pi-hole log should be used
+                         Add '-h' for more info on logging usage
+   -q, query           Query the adlists for a specified domain
+                         Add '-h' for more info on query usage
+-  -up, updatePihole   Update Pi-hole subsystems
+                         Add '--check-only' to exit script before update is performed.
+   -v, version         Show installed versions of Pi-hole, Web Interface & FTL
+                         Add '-h' for more info on version usage
+-  uninstall           Uninstall Pi-hole from your system
+   status              Display the running status of Pi-hole subsystems
+   enable              Enable Pi-hole subsystems
+   disable             Disable Pi-hole subsystems
+                         Add '-h' for more info on disable usage
+   restartdns          Restart Pi-hole subsystems
+-  checkout            Switch Pi-hole subsystems to a different Github branch
+-                        Add '-h' for more info on checkout usage";
++";
+   exit 0
+ }
+ 
+@@ -438,23 +343,17 @@ case "${1}" in
+   "--regex" | "regex"            ) listFunc "$@";;
+   "-d" | "debug"                ) debugFunc "$@";;
+   "-f" | "flush"                ) flushFunc "$@";;
+-  "-up" | "updatePihole"        ) updatePiholeFunc "$@";;
+-  "-r"  | "reconfigure"         ) reconfigurePiholeFunc;;
+   "-g" | "updateGravity"        ) updateGravityFunc "$@";;
+   "-c" | "chronometer"          ) chronometerFunc "$@";;
+   "-h" | "help"                 ) helpFunc;;
+   "-v" | "version"              ) versionFunc "$@";;
+   "-q" | "query"                ) queryFunc "$@";;
+   "-l" | "logging"              ) piholeLogging "$@";;
+-  "uninstall"                   ) uninstallFunc;;
+   "enable"                      ) piholeEnable 1;;
+   "disable"                     ) piholeEnable 0 "$2";;
+   "status"                      ) statusFunc "$2";;
+   "restartdns"                  ) restartDNS "$2";;
+   "-a" | "admin"                ) webpageFunc "$@";;
+   "-t" | "tail"                 ) tailFunc;;
+-  "checkout"                    ) piholeCheckoutFunc "$@";;
+-  "tricorder"                   ) tricorderFunc;;
+-  "updatechecker"               ) updateCheckFunc "$@";;
+   *                             ) helpFunc;;
+ esac
