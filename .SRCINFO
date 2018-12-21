@@ -1,7 +1,7 @@
 pkgbase = webkitgtk
-	pkgdesc = Legacy Web content engine
+	pkgdesc = Legacy Web content engine for GTK+ 3
 	pkgver = 2.4.11
-	pkgrel = 15
+	pkgrel = 16
 	epoch = 3
 	url = https://webkitgtk.org/
 	install = webkitgtk.install
@@ -19,6 +19,7 @@ pkgbase = webkitgtk
 	depends = enchant>=2.2
 	depends = geoclue2
 	depends = gst-plugins-base-libs
+	depends = gtk3
 	depends = harfbuzz-icu
 	depends = libgl
 	depends = libsecret
@@ -28,6 +29,13 @@ pkgbase = webkitgtk
 	optdepends = gst-libav: nonfree media decoding
 	optdepends = gst-plugins-base: free media decoding
 	optdepends = gst-plugins-good: media decoding
+	optdepends = gtk2: Netscape plugin support
+	provides = webkitgtk3=2.4.11
+	provides = libwebkit3=2.4.11
+	conflicts = webkitgtk3
+	conflicts = libwebkit3
+	replaces = webkitgtk3
+	replaces = libwebkit3
 	options = !emptydirs
 	source = https://webkitgtk.org/releases/webkitgtk-2.4.11.tar.xz
 	source = webkitgtk-2.4.9-abs.patch
@@ -41,41 +49,4 @@ pkgbase = webkitgtk
 	sha256sums = a1e2f24b28273746b2fbaecef42495f6314c76b16a446c22dc123e6a3afb58c8
 
 pkgname = webkitgtk
-	pkgdesc = Legacy Web content engine for GTK+ 3
-	depends = enchant>=2.2
-	depends = geoclue2
-	depends = gst-plugins-base-libs
-	depends = harfbuzz-icu
-	depends = libgl
-	depends = libsecret
-	depends = libwebp
-	depends = libxslt
-	depends = libxt
-	depends = gtk3
-	optdepends = gst-libav: nonfree media decoding
-	optdepends = gst-plugins-base: free media decoding
-	optdepends = gst-plugins-good: media decoding
-	optdepends = gtk2: Netscape plugin support
-	provides = webkitgtk3=2.4.11
-	provides = libwebkit3=2.4.11
-	conflicts = webkitgtk3
-	conflicts = libwebkit3
-	replaces = webkitgtk3
-	replaces = libwebkit3
-
-pkgname = webkitgtk2
-	pkgdesc = Legacy Web content engine for GTK+ 2
-	depends = enchant>=2.2
-	depends = geoclue2
-	depends = gst-plugins-base-libs
-	depends = harfbuzz-icu
-	depends = libgl
-	depends = libsecret
-	depends = libwebp
-	depends = libxslt
-	depends = libxt
-	depends = gtk2
-	provides = libwebkit=2.4.11
-	conflicts = libwebkit
-	replaces = libwebkit
 
