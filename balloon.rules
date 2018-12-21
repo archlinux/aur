@@ -1,0 +1,71 @@
+### Auto-Balloon ###############################################################
+# Author: Jianfeng Zhang <swordfeng123@gmail.com>
+
+# Basic idea: make guest pressure equal to host pressure
+# Host pressure = min(1, max(0, (host_used - host_free_threshold) / (host_free_critical - host_free_threshold)))
+# Guest pressure = min(1, guest_visually_used / (1 - guest_free_critical))
+
+# Lower bound (%) of host pressure
+(defvar host_free_threshold 0.8)
+# Upper bound (%) of host pressure
+(defvar host_free_critical 0.1)
+# Lower bound of guest pressure is 0.
+# Upper bound (%) of guest pressure
+(defvar guest_free_critical 0.1)
+
+# Change of these values will change the speed and sensitivity of adjustments
+(defvar max_balloon_change_percent 0.1)
+(defvar min_balloon_change_percent 0.005)
+
+(defvar host_free_percent (/ (Host.StatAvg "mem_free") Host.mem_available))
+
+(def adjust_guest (guest)
+{
+    (defvar guest_mem_used (- guest.balloon_cur guest.mem_unused))
+    (debug "host_usage" (- 1 host_free_percent) "guest_usage" (/ (* 1.0 guest_mem_used) Host.mem_available))
+    (debug "guest_used" guest_mem_used "guest_free" guest.mem_unused "ballooned" (- guest.mem_available guest.balloon_cur))
+
+    (defvar guest_free (+ (guest.StatAvg "mem_unused") (- guest.mem_available (guest.StatAvg "balloon_cur"))))
+    (defvar guest_free_percent (/ guest_free guest.mem_available))
+    (defvar guest_free_visible (/ (guest.StatAvg "mem_unused") guest.mem_available))
+
+    (defvar host_freedom (/ (- host_free_percent host_free_critical)
+                            (- host_free_threshold host_free_critical)))
+    (defvar guest_freedom (/ (- guest_free_visible guest_free_critical)
+                             (- guest_free_percent guest_free_critical)))
+    (debug "host_pressure" (- 1 host_freedom) "guest_pressure" (- 1 guest_freedom))
+
+    (defvar guest_avail (* guest.mem_available (- guest_free_percent guest_free_critical)))
+    (defvar host_avail (* Host.mem_available (- host_free_threshold host_free_critical)))
+    (defvar delta (/ (* (* (- host_freedom guest_freedom) guest_avail) host_avail)
+                     (+ guest_avail host_avail)))
+
+    (defvar guest_free_target
+            (if (or (<= host_free_percent host_free_critical) (<= guest_free_percent guest_free_critical))
+                guest_free_critical
+                (+ guest_free_visible (/ delta guest.mem_available))
+            )
+    )
+
+    # Target guest visible usage
+    (debug "guest_visible_use_target" (- 1 guest_free_target))
+    (defvar balloon_size (* guest.mem_available
+                            (- 1 (- guest_free_percent guest_free_target))))
+    (if (> balloon_size guest.balloon_max)
+        (set balloon_size guest.balloon_max)
+        0)
+    (defvar balloon_adjust (- balloon_size guest.balloon_cur))
+    (defvar max_change (* max_balloon_change_percent guest.mem_available))
+    (defvar min_change (* min_balloon_change_percent guest.mem_available))
+    (if (< balloon_adjust (- 0 max_change))
+        (set balloon_size (- guest.balloon_cur max_change))
+        0)
+    (if (> balloon_adjust max_change)
+        (set balloon_size (+ guest.balloon_cur max_change))
+        0)
+    (if (or (< balloon_adjust (- 0 min_change)) (> balloon_adjust min_change))
+        (guest.Control "balloon_target" balloon_size)
+        0)
+})
+
+(with Guests guest (adjust_guest guest))

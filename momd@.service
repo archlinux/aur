@@ -1,0 +1,13 @@
+[Unit]
+Description=Memory Overcommitment Manager
+After=network.target
+After=libvirtd.service
+Requires=libvirtd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/momd -c /etc/mom/mom.conf -r /etc/mom/%i.rules
+
+[Install]
+WantedBy=multi-user.target
+
