@@ -2,8 +2,8 @@
 # Python package author: Ines Montani <ines@explosion.ai>
 pkgname=python-wasabi-git
 _origpkgname=wasabi
-pkgver=0.0.10.r72.0363236
-pkgrel=1
+pkgver=0.0.15.r96.4ff962b
+pkgrel=2
 pkgdesc="A lightweight console printing and formatting toolkit"
 arch=("x86_64")
 url="https://github.com/ines/wasabi"
@@ -14,6 +14,11 @@ provides=('python-wasabi')
 conflicts=('python-wasabi')
 source=("git+https://github.com/ines/$_origpkgname.git")
 md5sums=('SKIP')
+
+prepare() {
+  cd "$_origpkgname"
+  git checkout $(curl https://api.github.com/repos/ines/$_origpkgname/releases/ | grep tag_name | cut -d '"' -f4 | head -n 1)
+}
 
 pkgver() {
   cd "$_origpkgname"

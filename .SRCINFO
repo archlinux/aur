@@ -1,7 +1,7 @@
 pkgbase = python-wasabi-git
 	pkgdesc = A lightweight console printing and formatting toolkit
-	pkgver = 0.0.10.r72.0363236
-	pkgrel = 1
+	pkgver = 0.0.15.r96.4ff962b
+	pkgrel = 2
 	url = https://github.com/ines/wasabi
 	arch = x86_64
 	license = MIT
