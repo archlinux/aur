@@ -1,7 +1,7 @@
 pkgbase = brackets-bin
 	pkgdesc = A code editor for HTML, CSS and JavaScript.
 	pkgver = 1.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://brackets.io
 	install = brackets-bin.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = brackets-bin
 	depends = nspr
 	depends = nss
 	depends = systemd
+	depends = libxss
 	optdepends = google-chrome: to enable Live Preview
 	optdepends = gnuplot: to enable node benchmarking
 	optdepends = gtk2: to enable native UI

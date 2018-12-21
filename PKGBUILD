@@ -5,12 +5,12 @@
 pkgname=brackets-bin
 _pkgname=brackets
 pkgver=1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A code editor for HTML, CSS and JavaScript. "
 arch=("x86_64")
 url="http://brackets.io"
 license=("MIT")
-depends=("gconf" "libgcrypt15" "nodejs" "nspr" "nss" "systemd")
+depends=("gconf" "libgcrypt15" "nodejs" "nspr" "nss" "systemd" "libxss")
 optdepends=("google-chrome: to enable Live Preview"
             "gnuplot: to enable node benchmarking"
             "gtk2: to enable native UI"
