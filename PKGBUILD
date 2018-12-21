@@ -2,7 +2,7 @@
 # Contributor: Christopher A. Williamson <home@chrisaw.com>
 
 pkgname='dbus-client-gen'
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc='A library for generating some simple classes and functions useful for a Python D-Bus client'
 arch=('any')
@@ -10,9 +10,9 @@ license=('MPL2')
 url='https://stratis-storage.github.io/'
 depends=('python-dbus')
 makedepends=('python-pylint')
-checkdepends=('python-nose' 'python-hypothesis')
+checkdepends=('python-nose' 'python-hypothesis' 'python-hs-dbus-signature')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('41fc256db0adedd7489c2744b0dd09fc53c5e4b680d31775fac96a4708d62338')
+sha256sums=('be2d7518238044f1ca148a5fff8504cc1324ee41dabec8b6e6a9ca2be3e93e7b')
 
 check() {
   cd "${pkgname}-${pkgver}"
