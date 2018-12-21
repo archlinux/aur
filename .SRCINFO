@@ -1,0 +1,16 @@
+pkgbase = sysnapshot
+	pkgdesc = backup tool written in ruby
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = http://github.com/knasan/sysnapshot
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = ruby
+	depends = rsync
+	provides = sysnapshot
+	source = https://github.com/knasan/sysnapshot/archive/0.0.3.tar.gz
+	sha256sums = 759301545378e0ca14bb12fa491c5745336fbe14f394b73a920e265aa38e9614
+
+pkgname = sysnapshot
+
