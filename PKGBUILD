@@ -3,15 +3,15 @@ pkgname=('tini')
 _srcname='tini'
 # shellcheck disable=SC2016
 pkgdesc='A tiny but valid `init` for containers'
-pkgver='0.14.0'
-_commit='2c02e147480f8e48aa0d49b5345a9132dced7c3d'
+pkgver='0.18.0'
+_commit='fec3683b971d9c3ef73f284f176672c44b448662'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url="https://github.com/krallin/${_srcname}"
 license=('MIT')
 
 depends=('glibc')
-makedepends=('git' 'cmake' 'gcc' 'vim')
+makedepends=('git' 'cmake' 'gcc')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
