@@ -12,12 +12,12 @@ md5sums=('52002d49bf97676c67882176f1f55d56')
 install=$pkgname.install
 
 build() {
-	cd "$pkgname-$pkgver"
-	make
+  cd "$pkgname-$pkgver"
+  make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
   install -Dm644 MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
