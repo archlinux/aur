@@ -1,6 +1,6 @@
 pkgbase = xf86-video-amdgpu-git
 	pkgdesc = X.org amdgpu video driver (git version)
-	pkgver = 18.1.0.20
+	pkgver = 18.1.0.33
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = x86_64
