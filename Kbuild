@@ -1,0 +1,6 @@
+EXTRA_CFLAGS += -Wall -D__MODULE__ -DFORTIFY_SOURCE=2 -DRANDSTRUCT_PLUGIN -DCONSTIFY_PLUGIN -DSTRUCTLEAK_PLUGIN -DLATENT_ENTROPY_PLUGIN -fstack-protector-strong
+
+obj-m := havege.o
+CFLAGS_havege.o := -O2
+
+clean-files := *~

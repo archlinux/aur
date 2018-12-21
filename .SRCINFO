@@ -1,0 +1,28 @@
+pkgbase = havege-dkms
+	pkgdesc = HArdware Volatile Entropy Gathering & Expansion kernel module
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	groups = leogx9r
+	license = GPL
+	depends = dkms
+	provides = havege-1.0.0
+	source = step.h
+	source = body.h
+	source = havege.c
+	source = Kbuild
+	source = Makefile
+	source = dkms.conf
+	source = LICENSE
+	source = 99-havege-udev.rules
+	sha256sums = d280bcda294824f26eb19490e0caf50af2b4a61d2dd8ffa2a6f3002631e2c95d
+	sha256sums = eab8a8ad347eebd5a9ab5d540c8917736d8b330baae0e595a30dc6414302a22a
+	sha256sums = 6801f4711a64cd5924f9d17d751919a0f3c4ec4797b319b92f8744aaea8bdcd0
+	sha256sums = a7d29866566640c5bbd35dcacffbf3ca4b3bc9b2fde5adf05671a3881ef9a52e
+	sha256sums = 11bc0a630c6a3d9a7ca2563432aba1d4f4b539941423640428d3cc5b449a22b0
+	sha256sums = 46863364b2f9db6aa75fea98f2430452b72361c73b88436aec8b5a1ff52952e7
+	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
+	sha256sums = 08278f2efef8514505ee76c2d031588353f1663bba243877f78c3f365cf3db2c
+
+pkgname = havege-dkms
+

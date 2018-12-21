@@ -1,0 +1,2 @@
+# Rule to allow HAVEGE character device to be read-only for root and users.
+KERNEL=="havege", OWNER="root", GROUP="root", MODE="0444"
