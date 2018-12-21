@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname}"
+    cd "$srcdir/${pkgname}"
 
     # fetch third libraries
     git submodule update --init --recursive
@@ -28,7 +28,6 @@ build() {
     # build
     cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release
     cmake --build build
-
 }
 
 package() {
