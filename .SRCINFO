@@ -1,7 +1,7 @@
 pkgbase = eclipse-spotbugs
 	pkgdesc = SpotBugs plugin for Eclipse IDE to look for bugs in Java code by static code analysis
 	pkgver = 3.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spotbugs/spotbugs/
 	arch = any
 	license = LGPL
@@ -9,7 +9,9 @@ pkgbase = eclipse-spotbugs
 	noextract = feature.jar
 	noextract = plugin.jar
 	options = !strip
+	source = feature.jar::https://spotbugs.github.io/eclipse-stable-latest/features/com.github.spotbugs.plugin.eclipse_3.1.11.201812210434-554d102.jar
 	source = plugin.jar::https://spotbugs.github.io/eclipse-stable-latest/plugins/com.github.spotbugs.plugin.eclipse_3.1.11.201812210434-554d102.jar
+	sha256sums = ed197bcba2685dd4dabf9bc421cee7a26de8ad4bbe2069fe09b0c562aa1e3bc6
 	sha256sums = 653cd15370db01244bc00c1521fedc8019a09befd1be8d5c4a1b556d7fa54a32
 
 pkgname = eclipse-spotbugs
