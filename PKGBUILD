@@ -2,7 +2,7 @@
 
 pkgname=venom
 _pkgname=Venom
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='a modern Tox client for the Linux desktop'
 url='https://github.com/naxuroqa/venom'
@@ -12,7 +12,7 @@ depends=('libgee' 'toxcore' 'gspell' 'xdg-desktop-portal' 'sqlcipher')
 makedepends=('vala' 'meson')
 
 source=("https://github.com/naxuroqa/$_pkgname/archive/$pkgver.tar.gz")
-sha512sums=('9d52890104ced7889c5f49280cb69ba63331b55fc3ebbb68bd418e07cfc99db3799d6640cf8ddaf9a40e4bb079657cf8a7afd5bedd69ae4e392a5826819ba150')
+sha512sums=('3b1ada00b7f708dabb2ef2cc9f886c7df9e7a716e91c691639803675cd4adf3d53ff791ca92d3ff6daa6aeab859db251edca911e77962811ce6278c47995c4a5')
 
 check() {
   ninja -C build test
