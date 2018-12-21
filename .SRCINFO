@@ -1,7 +1,7 @@
 pkgbase = vokoscreen-git
 	pkgdesc = An easy to use screencast creator. Development version.
-	pkgver = 2.9.3.beta.35.gb763020
-	pkgrel = 1
+	pkgver = 2.9.4.beta.1.g8a76b38
+	pkgrel = 2
 	url = http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html
 	arch = i686
 	arch = x86_64
@@ -14,13 +14,15 @@ pkgbase = vokoscreen-git
 	depends = qt-gstreamer
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
-	depends = pulseaudio-alsa
+	depends = pulseaudio
 	optdepends = gst-plugins-ugly: for x264 video codec
-	provides = vokoscreen=2.9.3.beta.35.gb763020
+	provides = vokoscreen=2.9.4.beta.1.g8a76b38
 	conflicts = vokoscreen
 	source = git+https://github.com/vkohaupt/vokoscreenNG.git
+	source = fix_window_position.patch
 	source = install.pri
 	sha512sums = SKIP
+	sha512sums = a8a99aeec85baca43649bae8af3683814f5d7bdbde7705539b98ed85bf1ec7d1feaab9359175659b4529c5a138c3f8b5b811202cafc4f6d96f0d6e8edc21664e
 	sha512sums = 0a5e0523adaa9e7f9b46cbbc8f7d8d0167787b67f11cfb7895785e3f93ab8836526c1b0891f4bf3362f4e8bc44885ffcf99670b86558aa667bd4f4ac7df56f11
 
 pkgname = vokoscreen-git
