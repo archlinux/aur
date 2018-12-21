@@ -1,7 +1,7 @@
 pkgbase = ccrplus
 	pkgdesc = A opensource and cross-platform judge environment for OI contest.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sxyzccr/CCR-Plus
 	arch = x86_64
 	license = GPL
