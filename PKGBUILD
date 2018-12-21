@@ -33,5 +33,5 @@ build() {
 package() {
     cd "$srcdir/${pkgname}"
     install -Dm755 "bin/moros" "$pkgdir/usr/bin/moros"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/wrk/LICENSE"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/moros/LICENSE"
 }
