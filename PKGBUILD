@@ -4,8 +4,8 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2018.1214.0
-pkgrel=2
+pkgver=2018.1219.0
+pkgrel=1
 
 dotnet_version=2.2
 
@@ -21,8 +21,8 @@ provides=(osu-lazer)
 conflicts=(osu-lazer-git)
 
 source=(
-    "osu-$pkgver::git://github.com/ppy/osu.git#tag=$pkgver"
-    'git://github.com/ppy/osu-resources.git'
+    "osu-$pkgver::git+https://github.com/ppy/osu.git#tag=$pkgver"
+    'git+https://github.com/ppy/osu-resources.git'
     'osu-launcher'
     'osu-lazer.desktop'
     'osu-lazer.png'
