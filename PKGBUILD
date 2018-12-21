@@ -2,8 +2,8 @@
 
 pkgname=python-cma
 pkgver=2.6.0
-pkgrel=1
-pkgdesc='Implementation of CMA-ES'
+pkgrel=2
+pkgdesc='The Covariance Matrix Adaptation Evolution Strategy'
 arch=(any)
 url='https://github.com/CMA-ES/pycma'
 license=(MIT)
