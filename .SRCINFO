@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-screenshotlocations-git
+	pkgdesc = Gnome-shell extension disabling hotcorners
+	pkgver = 25.2948bc8
+	pkgrel = 1
+	url = https://github.com/TimurKiyivinski/gnome-shell-screenshotlocations-extension
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = gnome-shell
+	source = git://github.com/TimurKiyivinski/gnome-shell-screenshotlocations-extension
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-screenshotlocations-git
+
