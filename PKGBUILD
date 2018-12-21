@@ -30,6 +30,7 @@ arch=('i686' 'x86_64')
 url='https://support.brother.com/g/s/id/linux/en/'
 license=('GPL' 'custom')
 depends=('cups' 'ghostscript' 'sed' 'grep')
+depends_x86_64=('lib32-gcc-libs')
 # We look at the scripts and find these programs from which we decide on the depends above.
 # gs: lpr rendering
 # pdf2ps: cups rendering
