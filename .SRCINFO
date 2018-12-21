@@ -15,6 +15,7 @@ pkgbase = nftables-git
 	depends = gmp
 	depends = readline
 	depends = ncurses
+	depends = jansson
 	conflicts = nftables
 	source = git://git.netfilter.org/nftables
 	source = nftables.conf

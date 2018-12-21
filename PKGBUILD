@@ -9,7 +9,7 @@ pkgdesc='Netfilter tables userspace tools'
 arch=(i686 x86_64)
 url='https://netfilter.org/projects/nftables/'
 license=('GPL2')
-depends=(libmnl libnftnl-git gmp readline ncurses)
+depends=(libmnl libnftnl-git gmp readline ncurses jansson)
 makedepends=(docbook2x git bison lex)
 privides=(nftables)
 conflicts=(nftables)
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd nftables
   sh autogen.sh
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/usr/share CONFIG_MAN=y DB2MAN=docbook2man
+  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/usr/share --with-json CONFIG_MAN=y DB2MAN=docbook2man
   make
 }
 
