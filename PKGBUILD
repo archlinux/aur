@@ -2,8 +2,8 @@
 # Python package author: Matthew Honnibal <matt@explosion.ai>
 pkgname=python-thinc-git
 _origpkgname=thinc
-pkgver=7.0.0.dev6.r2716.f26cb395
-pkgrel=1
+pkgver=6.12.1.r2400.a6badde8
+pkgrel=2
 pkgdesc="Practical Machine Learning for NLP"
 arch=("x86_64")
 url="https://github.com/explosion/thinc"
@@ -26,16 +26,21 @@ depends=('cython'
          'python-blis'
          'flake8'
 )
-makedepends=("python-setuptools")
-optdepends=("python-spacy: examples")
+makedepends=('git' 'python-setuptools')
+optdepends=('python-spacy: examples')
 provides=('python-thinc')
 conflicts=('python-thinc')
 source=("git+https://github.com/explosion/$_origpkgname.git")
 md5sums=('SKIP')
 
+prepare() {
+  cd "$_origpkgname"
+  git checkout $(curl https://api.github.com/repos/explosion/$_origpkgname/releases | grep tag_name | cut -d '"' -f4 | head -n 1)
+}
+
 pkgver() {
   cd "$_origpkgname"
-  printf "%s.r%s.%s" "$(cat thinc/about.py | grep -i version | grep -v '#' | cut -d '"' -f2 | head -n 1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(cat thinc/about.py | grep -i version | grep -v '#' | cut -d "'" -f2 | head -n 1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

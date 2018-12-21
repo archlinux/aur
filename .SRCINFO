@@ -1,10 +1,11 @@
 pkgbase = python-thinc-git
 	pkgdesc = Practical Machine Learning for NLP
-	pkgver = 7.0.0.dev6.r2716.f26cb395
-	pkgrel = 1
+	pkgver = 6.12.1.r2400.a6badde8
+	pkgrel = 2
 	url = https://github.com/explosion/thinc
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
 	depends = cython
 	depends = python-numpy
