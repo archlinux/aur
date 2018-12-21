@@ -3,12 +3,12 @@
 pkgname=rrn
 pkgver=0.0.1
 _pkgver=
-pkgrel=1
+pkgrel=2
 pkgdesc='recursive renaming tool written in C ++, uses boost library'
 arch=('x86_64')
 license=('GPL3')
 url='http://github.com/knasan/rrn'
-makedepends=('gcc' 'boost-libs' 'cmake')
+makedepends=('make' 'gcc' 'boost-libs' 'cmake')
 provides=('rrn')
 source=("https://github.com/knasan/rrn/archive/${pkgver}.tar.gz")
 sha256sums=('eb27468f5805272dde101d06a1f22912ea518e8ebe733194a4d52c0e685d6a21')

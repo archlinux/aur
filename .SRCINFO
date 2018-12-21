@@ -1,10 +1,11 @@
 pkgbase = rrn
 	pkgdesc = recursive renaming tool written in C ++, uses boost library
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/knasan/rrn
 	arch = x86_64
 	license = GPL3
+	makedepends = make
 	makedepends = gcc
 	makedepends = boost-libs
 	makedepends = cmake
