@@ -1,43 +1,43 @@
 pkgbase = linux-drm-misc-next-git
 	pkgdesc = Kernel DRM miscellaneous fixes and cross-tree changes
-	pkgver = 4.2
-	pkgrel = 2
-	url = https://cgit.freedesktop.org/drm/drm
+	pkgver = 4.21.798439.70bce993a7aa
+	pkgrel = 1
+	url = https://cgit.freedesktop.org/drm/drm-misc
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
-	makedepends = docbook-xsl
 	makedepends = kmod
 	makedepends = inetutils
 	makedepends = bc
-	makedepends = git
 	makedepends = libelf
+	makedepends = git
+	makedepends = python-sphinx
+	makedepends = graphviz
 	options = !strip
 	source = linux-drm-misc-next-git::git://anongit.freedesktop.org/drm/drm-misc#branch=drm-misc-next
-	source = config.x86_64
-	source = linux.install
-	source = linux-drm-misc-next-git.preset
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = c9ab9676e52a6249a1d3f0382e88d40975fdcb14c78f252d0bf920eb62d8d866
-	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
+	sha256sums = 247607f3ae9c05e3c52e692233a305a9ac92ea7b981b3e6167f79ec0ab465353
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-drm-misc-next-git
-	pkgdesc = The Linux kernel and modules with DRM patches
+	pkgdesc = The Linux-drm-misc-next-git kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.7
+	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux
 	backup = etc/mkinitcpio.d/linux-drm-misc-next-git.preset
 
 pkgname = linux-drm-misc-next-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux kernel with DRM patches
-	provides = linux-headers
+	pkgdesc = Header files and scripts for building modules for Linux-drm-misc-next-git kernel
 
 pkgname = linux-drm-misc-next-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel with DRM patches
-	provides = linux-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-drm-misc-next-git kernel
 
