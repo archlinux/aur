@@ -1,6 +1,6 @@
 # Maintainer: TrueRandom <rantruedom at gmail dot com>
 pkgname=iota-trinity-wallet
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="The IOTA Trinity Wallet"
 arch=(x86_64)
@@ -10,7 +10,7 @@ provides=(iota-trinity-wallet)
 options=('!strip')
 
 source_x86_64=("https://github.com/iotaledger/trinity-wallet/releases/download/$pkgver/trinity-desktop-$pkgver.AppImage"{,.asc})
-sha256sums_x86_64=('02c12067966c697bd608ab39396da7d229d493ad8bc96ba6891dde23271cbc15'
+sha256sums_x86_64=('e1ac0a3d3fa3799a292614398863f9775e6c579c4bf153f8ec34740e60428dc6'
                    'SKIP')
 
 source=("iota-trinity-wallet.desktop")
