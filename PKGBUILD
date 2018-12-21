@@ -3,7 +3,7 @@
 _pkgname=keyboardlayouteditor
 pkgname="${_pkgname}"-git
 pkgver=1.1+r84.d20181009.g742101b
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="PyGTK programme that helps create or edit XKB keyboard layouts."
 arch=('any')
@@ -77,7 +77,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}"
+  cd "${srcdir}/${_pkgname}"
 
   msg2 "Creating 'website.url' documentation file ..."
   cat <<< "${url}" > website.url
@@ -131,11 +131,9 @@ package() {
 
   _cmd install -D -m755 "${srcdir}/keyboardlayouteditor.sh" "${pkgdir}/usr/bin/keyboardlayouteditor"
 
-  for _docfile in 'README.md' 'TODO'; do
+  for _docfile in 'ChangeLog-git.txt' 'README.md' 'TODO' 'website.url'; do
     _cmd install -D -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
-  _cmd install -D -m644 "${srcdir}/ChangeLog-git.txt" "${pkgdir}/usr/share/doc/${_pkgname}/ChangeLog-git.txt"
-  _cmd install -D -m644 "${srcdir}/website.url" "${pkgdir}/usr/share/doc/${_pkgname}/website.url"
 
   _cmd install -D -m644 'COPYING' "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
