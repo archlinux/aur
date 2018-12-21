@@ -2,7 +2,7 @@
 
 _pkgname=sqlcipher
 pkgname=mingw-w64-sqlcipher
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="SQLite extension that provides transparent 256-bit AES encryption of database files (mingw-w64)"
 arch=('any')
@@ -11,15 +11,16 @@ license=('BSD')
 makedepends=('mingw-w64-configure' 'tcl')
 depends=('mingw-w64-crt' 'mingw-w64-openssl')
 options=(!buildflags !strip staticlibs !makeflags)
-source=("${_pkgname}-${pkgver}.zip::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.zip")
-sha256sums=('b02e18287d9bf43064fcbd0be07eb2a88af5c17342c3f95cf824688cb3e3fe39')
+source=("${_pkgname}-${pkgver}.zip::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.zip"
+        "01-fix_extensions.patch")
+sha256sums=('08b96e956b85755a0bdb16501c09f5519ebd564f2142fa1352ca3fef8e443bf0'
+            'dfac9b545b3c6fe37eaf47c994b929db078067dbbfaa5be82ba6472f66f77ec1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare(){
   cd "${srcdir}/${_pkgname}-${pkgver}/"
-  sed -i 's/lemon /lemon\$(BEXE)/g' Makefile.in
-  sed -i 's/mksourceid\$(BEXE)/mksourceid /g' Makefile.in
+  patch -p1 -i "${srcdir}"/01-fix_extensions.patch
 }
 
 build() {

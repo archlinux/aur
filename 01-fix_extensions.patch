@@ -1,0 +1,29 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -774,7 +774,7 @@
+ 
+ # Rules to build the program that generates the source-id
+ #
+-mksourceid$(BEXE):	$(TOP)/tool/mksourceid.c
++mksourceid:	$(TOP)/tool/mksourceid.c
+ 	$(BCC) -o $@ $(TOP)/tool/mksourceid.c
+ 
+ # Rules to build individual *.o files from generated *.c files. This
+@@ -1067,7 +1067,7 @@
+ 	mv parse.h parse.h.temp
+ 	$(TCLSH_CMD) $(TOP)/tool/addopcodes.tcl parse.h.temp >parse.h
+ 
+-sqlite3.h:	$(TOP)/src/sqlite.h.in $(TOP)/manifest mksourceid$(BEXE) $(TOP)/VERSION
++sqlite3.h:	$(TOP)/src/sqlite.h.in $(TOP)/manifest mksourceid $(TOP)/VERSION
+ 	$(TCLSH_CMD) $(TOP)/tool/mksqlite3h.tcl $(TOP) >sqlite3.h
+ 
+ keywordhash.h:	$(TOP)/tool/mkkeywordhash.c
+@@ -1189,7 +1189,7 @@
+    $(TOP)/ext/fts5/fts5_varint.c \
+    $(TOP)/ext/fts5/fts5_vocab.c  \
+ 
+-fts5parse.c:	$(TOP)/ext/fts5/fts5parse.y lemon
++fts5parse.c:	$(TOP)/ext/fts5/fts5parse.y lemon$(BEXE)
+ 	cp $(TOP)/ext/fts5/fts5parse.y .
+ 	rm -f fts5parse.h
+ 	./lemon$(BEXE) $(OPTS) fts5parse.y
