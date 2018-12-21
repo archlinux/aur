@@ -4,8 +4,8 @@
 pkgname=stash-electron-git
 _pkgname=${pkgname%-git}
 _appname=Stash
-pkgver=1.1.1pre
-pkgrel=83
+pkgver=1.2.1pre
+pkgrel=3
 pkgdesc="Stash Team Secret Manager"
 url='https://github.com/Doccrazy/stash-electron'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('stash-electron')
 
 source=("${pkgname}_${pkgver}-${pkgrel}_amd64.deb::https://bintray.com/doccrazy/deb/download_file?file_path=${pkgname}_${pkgver}-${pkgrel}_amd64.deb"
         "LICENSE")
-sha256sums=('75a27802c09f260f368a4148c3b877ace2145cc93848d0659cfcec9931c4fcb2'
+sha256sums=('f5086539650fe34879c1061f0d2143edaea4216fdbfbb53732f4bedb5017fe2d'
             '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
 
 package() {
