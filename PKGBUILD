@@ -4,7 +4,7 @@ LANG=C
 
 pkgname=octave-hg
 pkgrel=1
-pkgver=5.0.0r26265+.01f1e70c80b6+
+pkgver=6.0.0r26279.42437d6e4096
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -22,21 +22,14 @@ optdepends=('texinfo: for help-support in octave'
 conflicts=('octave')
 provides=("octave=$pkgver")
 options=('!emptydirs')
-source=(hg+https://hg.savannah.gnu.org/hgweb/octave git://git.sv.gnu.org/gnulib synchronous_qt_edit.patch)
-md5sums=('SKIP'
-         'SKIP'
-         'a9a6e57e985ab906dbdfe9e3128b485a')
+source=(hg+https://hg.savannah.gnu.org/hgweb/octave git://git.sv.gnu.org/gnulib)
+md5sums=('SKIP' 'SKIP')
 _hgrepo=octave
 
 pkgver() {
   cd "$srcdir"/${_hgrepo}
   _appver=$(awk -F", " '/bugs.html/ {print $2}' configure.ac|tr -d []|tr - _)
   printf "%sr%s.%s" "${_appver}" "$(hg identify -n)" "$(hg identify -i)"
-}
-
-prepare() {
-  cd "$srcdir"/${_hgrepo}
-  patch -Np1 < "$srcdir"/synchronous_qt_edit.patch
 }
 
 build() {
