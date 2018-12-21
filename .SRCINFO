@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-api-git
 	pkgdesc = A Python library for the Quantum Experience API.
-	pkgver = 2.0.4
-	pkgrel = 2
+	pkgver = 2.0.4.r265.2ab2401
+	pkgrel = 3
 	url = http://www.qiskit.org
 	arch = any
 	groups = QISKit
