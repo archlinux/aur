@@ -6,7 +6,7 @@ pkgrel=1
 arch=('x86_64')
 url='https://github.com/scylladb/seastar'
 license=('Apache-2')
-depends=('hwloc' 'boost' 'boost-libs' 'hwloc' 'numactl' 'libpciaccess' 'crypto++' 'libxml2' 'xfsprogs' 'gnutls' 'lksctp-tools' 'lz4' 'systemtap' 'libtool' 'yaml-cpp')
+depends=('hwloc' 'boost' 'boost-libs' 'hwloc' 'numactl' 'libpciaccess' 'crypto++' 'libxml2' 'xfsprogs' 'gnutls' 'lksctp-tools' 'lz4' 'systemtap' 'libtool' 'yaml-cpp' 'fmt-git')
 makedepends=('git' 'cmake' 'gcc' 'ragel')
 source=("git+https://github.com/scylladb/seastar#branch=master")
 sha256sums=('SKIP')

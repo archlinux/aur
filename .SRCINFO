@@ -24,6 +24,7 @@ pkgbase = seastar-git
 	depends = systemtap
 	depends = libtool
 	depends = yaml-cpp
+	depends = fmt-git
 	source = git+https://github.com/scylladb/seastar#branch=master
 	sha256sums = SKIP
 
