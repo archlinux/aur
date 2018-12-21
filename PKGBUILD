@@ -1,7 +1,7 @@
 # Maintainer: noirscape <deepnavy at waifu dot club>
 pkgname=fatattr-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=1
-pkgrel=2
+pkgver=r7.0d6431f
+pkgrel=1
 pkgdesc="Small linux application to see or modify MSDOS attributes in a FAT file system"
 arch=("any")
 url="https://github.com/Terseus/fatattr"
