@@ -1,6 +1,6 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Maintainer: Máté Eckl <ecklm94@gmail.com>
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Steven Allen <steven@stebalien.com>
-# Contributor: Máté Eckl <ecklm94@gmail.com>
 
 pkgname=nftables-git
 pkgver=0.8.3.r129.g8810a28
