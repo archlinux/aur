@@ -1,14 +1,14 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=gitit
 pkgver=0.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A wiki backed by a git, darcs, or mercurial filestore"
 arch=(i686 x86_64)
 url=https://hackage.haskell.org/package/gitit
 license=(GPL)
-depends=(libffi gmp mailcap zlib)
+depends=(libffi gmp mailcap ncurses5-compat-libs numactl zlib)
 optdepends=("git: git support" "mercurial: mercurial support")
-makedepends=(cabal-install ghc-pristine ghc-static)
+makedepends=(cabal-install)
 source=(haskell-ConfigFile-1.1.4.tar.gz::https://hackage.haskell.org/package/ConfigFile-1.1.4/ConfigFile-1.1.4.tar.gz
         haskell-Diff-0.3.4.tar.gz::https://hackage.haskell.org/package/Diff-0.3.4/Diff-0.3.4.tar.gz
         haskell-Glob-0.9.3.tar.gz::https://hackage.haskell.org/package/Glob-0.9.3/Glob-0.9.3.tar.gz
@@ -362,14 +362,21 @@ sha256sums=('ae087b359ff2945a62b671449227e0a811d143ee651179f4e7e9c66548e0f514'
             '9937d440072552c03c6d8ad79f61e61467dc28dcd5adeaad81038b9b94eef8c9'
             'b385eea5652c798b701c627dce8b327c3d6cbfd8c92e1e18e7118862d4d0e2b4'
             '988adee77c806e0b497929b24d5526ea68bd3297427da0d0b30b99c094efc84d'
-            '0dcc7d925769bdbeb323f83b66884101084167501f11d74d21eb9bc515707fed')
+            '0dcc7d925769bdbeb323f83b66884101084167501f11d74d21eb9bc515707fed'
+            '47c80a32d8f02838a2401414c94ba260d1fe82b7d090479994522242c767cc83')
 noextract=("${source[@]%%::*}")
+source=("${source[@]}" "https://downloads.haskell.org/~ghc/8.4.4/ghc-8.4.4-$CARCH-deb9-linux.tar.xz")
 
 prepare() {
     unset CABAL_SANDBOX_CONFIG CABAL_SANDBOX_PACKAGE_PATH GHC_PACKAGE_PATH
+    (
+        cd ghc-8.4.4
+        ./configure --prefix="$srcdir/.local"
+        make install
+    )
     mkdir -p .cabal
     cat >.cabal/config <<EOF
-with-compiler: /usr/share/ghc-pristine/bin/ghc
+with-compiler: $srcdir/.local/bin/ghc
 jobs: \$ncpus
 EOF
     cabal --config=.cabal/config sandbox init
