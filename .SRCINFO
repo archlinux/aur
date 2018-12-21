@@ -1,15 +1,14 @@
 pkgbase = ruby-textplay-git
 	pkgdesc = Convert fountain screenplays to Final Draft and HTML format, and convert HTML to PDF.
 	pkgver = r87.88f7871
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.olivertaylor.net/
 	arch = any
 	license = custom:textplay
 	makedepends = git
 	depends = ruby
 	optdepends = ttf-courier-prime: To print screenplays in the expected font
-	optdepends = python-weasyprint: To create a PDF version from the output (Recommended)
-	optdepends = python2-weasyprint: Python 2 version of the above
+	optdepends = python-weasyprint: To create a PDF version from the output if you dont want to use PrinceXML
 	optdepends = princexml: The PDF package textplay was written for, commercial - free version creates watermark
 	provides = ruby-textplay
 	conflicts = ruby-textplay
