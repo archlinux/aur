@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-tariff-chaps-trains-cz+sk-latest
 	pkgdesc = Tariff data for the timetable search engines by CHAPS: Czech ans Slovak trains.
-	pkgver = 2018_12_11
+	pkgver = 2018_12_19
 	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatar
@@ -9,11 +9,11 @@ pkgbase = idos-timetable-tariff-chaps-trains-cz+sk-latest
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-data-trains
-	provides = idos-timetable-tariff-chaps-trains-cz+sk=2018_12_11
-	provides = idos-timetable-tariff=2018_12_11
-	provides = idos-timetable-tariff-trains=2018_12_11
-	provides = idos-timetable-tariff-trains-cz=2018_12_11
-	provides = idos-timetable-tariff-trains-sk=2018_12_11
+	provides = idos-timetable-tariff-chaps-trains-cz+sk=2018_12_19
+	provides = idos-timetable-tariff=2018_12_19
+	provides = idos-timetable-tariff-trains=2018_12_19
+	provides = idos-timetable-tariff-trains-cz=2018_12_19
+	provides = idos-timetable-tariff-trains-sk=2018_12_19
 	conflicts = idos-timetable-tariff-chaps-trains-cz+sk
 	conflicts = idos-timetable-tariff-chaps-all
 	conflicts = idos-timetable-tariff-trains-cz
