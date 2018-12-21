@@ -3,7 +3,7 @@
 # Contributor: WaveHack <email@wavehack.net>
 # Contributor: Whovian9369 <Whovian9369@gmail.com>
 
-pkgname=gitahead
+pkgname=gitahead-bin
 pkgrel=1
 pkgver=2.5.0
 pkgdesc='The most powerful git gui'
@@ -11,6 +11,8 @@ url='http://gitahead.scitools.com/'
 arch=('x86_64')
 license=('custom')
 depends=('curl')
+provides=('gitahead')
+conflicts=('gitahead')
 source=(
   "gitahead-${pkgver}.bin::https://gitahead.com/downloads/v${pkgver}/GitAhead-${pkgver}.sh"
   "gitahead-license"

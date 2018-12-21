@@ -1,4 +1,4 @@
-pkgbase = gitahead
+pkgbase = gitahead-bin
 	pkgdesc = The most powerful git gui
 	pkgver = 2.5.0
 	pkgrel = 1
@@ -6,6 +6,8 @@ pkgbase = gitahead
 	arch = x86_64
 	license = custom
 	depends = curl
+	provides = gitahead
+	conflicts = gitahead
 	source = gitahead-2.5.0.bin::https://gitahead.com/downloads/v2.5.0/GitAhead-2.5.0.sh
 	source = gitahead-license
 	source = gitahead.desktop
@@ -17,5 +19,5 @@ pkgbase = gitahead
 	sha256sums = 66cb53fc57eb2ce2e6cd02ff392476fdfb91b723b76ef5da1856e9b5dc1b5c75
 	sha256sums = ba4e21c675ce7f49e6df27df1f29d1bb99c47679c4981657a2a4cf5d59930b4a
 
-pkgname = gitahead
+pkgname = gitahead-bin
 
