@@ -5,7 +5,7 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=libva-intel-driver-hybrid
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family'
 arch=('x86_64')
