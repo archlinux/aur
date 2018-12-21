@@ -1,0 +1,14 @@
+pkgbase = sqlfmt-bin
+	pkgdesc = Experimental SQL formatter with width-aware output.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/mjibson/sqlfmt
+	arch = x86_64
+	license = APACHE
+	source = https://github.com/mjibson/sqlfmt/releases/download/v0.2.0/sqlfmt_0.2.0_linux_amd64.tar.gz
+	source = https://raw.githubusercontent.com/mjibson/sqlfmt/v0.2.0/LICENSE
+	sha256sums = 820ab91550736e658c3af734d30ba8342120561f3a8f4ea211d8d6bd463a23c8
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = sqlfmt-bin
+
