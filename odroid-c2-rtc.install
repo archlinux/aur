@@ -1,0 +1,31 @@
+post_install() {
+  echo '--> Edit the MODULES array in /etc/mkinitcpio.conf to contain:'
+  echo '--> MODULES=( aml_i2c rtc_pcf8563 ... )'
+  echo '--> Then regenerate the boot image with: mkinitcpio -p linux-odroid-c2'
+
+  # first time setup
+
+  if lsmod | grep -q sx865x; then
+    rmmod sx865x
+  fi
+  
+  # even if loaded execute this has it is harmless and will exit with 0
+  modprobe -a aml_i2c rtc_pcf8563
+
+  # first time setup of device tree
+  if [[ -f /boot/dtbs/meson64_odroidc2.dtb ]]; then
+    fdtput -t s /boot/dtbs/meson64_odroidc2.dtb /i2c@c1108500/pcf8563@51 status "okay"
+    # save the current time we assume is correct to the RTC chip
+    hwclock -w
+  else
+    echo '--> ERROR: cannot locate meson64_odroidc2.dtb so quitting!'
+    exit 1
+  fi
+
+}
+
+post_remove() {
+  echo '--> Optionally edit the MODULES array in /etc/mkinitcpio.conf'
+  echo '--> to remove both aml_i2c and rtc_pcf8563'
+  echo '--> Do not forget to regenerate the boot image with: mkinitcpio -p linux-odroid-c2'
+}

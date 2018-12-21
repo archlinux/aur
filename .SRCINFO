@@ -1,0 +1,14 @@
+pkgbase = odroid-c2-rtc
+	pkgdesc = Use and automate kernel updates for the PCF8563 RTC Shield on the ODROID-C2
+	pkgver = 1.20
+	pkgrel = 1
+	url = https://github.com/graysky2/odroid-c2-rtc
+	install = odroid-c2-rtc.install
+	arch = aarch64
+	license = MIT
+	depends = dtc
+	source = odroid-c2-rtc-1.20.tar.gz::https://github.com/graysky2/odroid-c2-rtc/archive/v1.20.tar.gz
+	md5sums = 52002d49bf97676c67882176f1f55d56
+
+pkgname = odroid-c2-rtc
+
