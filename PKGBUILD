@@ -1,39 +1,61 @@
-# $Id$
-# Maintainer: Realex
-# Based on muffin PKGBUILD
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
-_pkgname=muffin
-pkgname=${_pkgname}-git
-pkgver=527.d9f4fcd
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
+pkgname=muffin-git
+pkgver=4.0.5.r0.gf001ea2
 pkgrel=1
 pkgdesc="A window manager for GNOME"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/muffin"
 license=('GPL')
-depends=('clutter' 'gobject-introspection' 'cinnamon-desktop-git' 'libcanberra'
-         'startup-notification' 'zenity' 'dconf')
-makedepends=('intltool' 'gnome-doc-utils' 'gnome-common' 'git')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+depends=('cinnamon-desktop' 'gobject-introspection-runtime' 'libcanberra' 'libinput'
+         'libsm' 'libxkbcommon-x11' 'startup-notification' 'zenity')
+makedepends=('git' 'intltool' 'gobject-introspection' 'gtk-doc' 'gnome-doc-utils')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 options=('!emptydirs')
-install=${pkgname}.install
-source=("git+https://github.com/linuxmint/${_pkgname}.git")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+    cd "${srcdir}"/${pkgname%-git}
+
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}"/${pkgname%-git}
+
+    NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  PYTHON=python2 ./autogen.sh --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/muffin \
-  				 			 --localstatedir=/var --disable-static --disable-schemas-compile \
-                 --enable-compile-warnings=minimum
-  make
+    cd "${srcdir}"/${pkgname%-git}
+
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --libexecdir=/usr/lib/muffin \
+                --localstatedir=/var \
+                --disable-gtk-doc \
+                --disable-static \
+                --disable-schemas-compile \
+                --enable-compile-warnings=minimum
+
+    #https://bugzilla.gnome.org/show_bug.cgi?id=656231
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+    make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+    cd "${srcdir}"/${pkgname%-git}
+
+    make DESTDIR="${pkgdir}" install
+
+    # Remove unused stuff
+    make -C src DESTDIR="${pkgdir}" uninstall-binPROGRAMS uninstall-desktopfilesDATA
+    make -C src/tools DESTDIR="${pkgdir}" uninstall
+    make -C src/compositor/plugins DESTDIR="${pkgdir}" uninstall
+    make -C doc/man DESTDIR="${pkgdir}" uninstall
 }
