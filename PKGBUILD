@@ -11,7 +11,7 @@
 pkgname=android-studio-beta
 pkgver=3.3.0.18
 pkgrel=1
-_build=182.5160847
+_build=182.5183351
 pkgdesc="The Official Android IDE (Beta branch)"
 arch=('i686' 'x86_64')
 url="http://tools.android.com/"
@@ -23,7 +23,7 @@ optdepends=('gtk2: GTK+ look and feel'
 options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-ide-$_build-linux.zip"
         "$pkgname.desktop")
-sha256sums=('257a69d69843232643c970afed4b1c137a4b9335bf4405c1059d0378d9e63217'
+sha256sums=('1e62d69c5e9e97c9ff04af5c0edabf9d95126b155ceb8f1a9398b028fb2414e7'
             '368b5287efcfd2b421bdd10e1bdd39a8bffeb84500745c4a88729609c841bcf7')
 
 if [ "$CARCH" = "i686" ]; then
