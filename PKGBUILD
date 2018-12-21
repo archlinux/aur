@@ -1,10 +1,9 @@
-# Maintainer: chendaniely <chendaniely@gmail.com>
-# Contributor: Conor Anderson <conor@conr.ca>
+# Maintainer: Doccrazy <mpiepk@gmail.com>
 
 pkgname=stash-electron
 _appname=Stash
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Stash Team Secret Manager"
 url='https://github.com/Doccrazy/stash-electron'
 arch=('x86_64')
@@ -12,14 +11,14 @@ license=('GPL-3.0')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss' 'libsecret' 'libcurl-gnutls')
 conflicts=('stash-electron-git')
 
-source=("${pkgname}_${pkgver}_amd64.deb::https://github.com/Doccrazy/stash-electron/releases/download/v${pkgver}/stash-electron_${pkgver}_amd64.deb"
+source=("${pkgname}_${pkgver}-1_amd64.deb::https://bintray.com/doccrazy/deb/download_file?file_path=${pkgname}_${pkgver}-1_amd64.deb"
         "LICENSE")
-sha256sums=('4454a7a805289b3b16c9142d386ca8c6b1b859c8afa05ee4f07e0c5fbbf30992'
+sha256sums=('8c44a3d892dd843cc3c023d94c941523dd24105b3c90263450a74946697b44a2'
             '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
 
 package() {
   cd "$srcdir"
-  ar xf "${pkgname}_${pkgver}_amd64.deb"
+  ar xf "${pkgname}_${pkgver}-1_amd64.deb"
   tar xf data.tar.xz
 
   # Place files
