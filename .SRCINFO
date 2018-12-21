@@ -1,6 +1,6 @@
 pkgbase = jellyfin-git
 	pkgdesc = The Free Software Media Browser
-	pkgver = r14803.a069d3f79
+	pkgver = r14852.f25b526ae
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = jellyfin-git
 	sha256sums = SKIP
 	sha256sums = ff3c81ddfd716f179fec8149ea6c2db379e05cd20bd0ffa8ce3ff3a609ca9749
 	sha256sums = 61febaa0bbe71235d724f236223c7315da393b8b481e4bbed86489a343bca51f
-	sha256sums = effc1cf85c0c959da73bedbcd94e00cfd317dd876f710183b7baf04209055ea2
+	sha256sums = 9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228
 	sha256sums = aa87d52386dde4a2ea4663de2f08249415b2babfefd98d348a96df35dfc36bc0
 
 pkgname = jellyfin-git

@@ -3,7 +3,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin-git
-pkgver=r14803.a069d3f79
+pkgver=r14852.f25b526ae
 pkgrel=1
 pkgdesc='The Free Software Media Browser'
 arch=('i686' 'x86_64' 'armv6h')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             'SKIP'
             'ff3c81ddfd716f179fec8149ea6c2db379e05cd20bd0ffa8ce3ff3a609ca9749'
             '61febaa0bbe71235d724f236223c7315da393b8b481e4bbed86489a343bca51f'
-            'effc1cf85c0c959da73bedbcd94e00cfd317dd876f710183b7baf04209055ea2'
+            '9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228'
             'aa87d52386dde4a2ea4663de2f08249415b2babfefd98d348a96df35dfc36bc0')
 
 pkgver() {
