@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-drop-down-terminal-x-git
+	pkgdesc = Another extended Drop Down Terminal extension for the Gnome Shell.
+	pkgver = 1.0.1.r2.gfd64bc8
+	pkgrel = 1
+	url = https://https://github.com/bigbn/drop-down-terminal-x.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-drop-down-terminal
+	conflicts = gnome-shell-extension-drop-down-terminal-git
+	conflicts = gnome-shell-extension-drop-down-terminal-x
+	source = git+https://github.com/bigbn/drop-down-terminal-x.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-drop-down-terminal-x-git
+
