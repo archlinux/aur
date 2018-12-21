@@ -1,13 +1,12 @@
 pkgname=lugaru
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A third-person action game featuring a unique close-range combat system"
 url="https://osslugaru.gitlab.io"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('sdl2' 'glu' 'libjpeg-turbo' 'libpng' 'openal' 'libvorbis' 'zlib')
 makedepends=('cmake')
-options=('!optipng')
 conflicts=('lugaru-hg' 'lugaruhd-hg' 'lugaro-git')
 source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/osslugaru/lugaru/repository/archive.tar.bz2?ref=${pkgver}"
         "${pkgname}.desktop")
