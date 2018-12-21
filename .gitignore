@@ -2,5 +2,7 @@ pkg/
 src/
 polyphone-*-src.zip
 polyphone-*.pkg.tar.xz
+polyphone.desktop
+polyphone.sharedmimeinfo
 .AURINFO
 

@@ -1,44 +1,44 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=polyphone
-pkgver=1.9
-pkgrel=4
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Graphical user interface for editing sf2 and sfz files"
 arch=('i686' 'x86_64')
 url="http://polyphone-soundfonts.com/"
 license=('GPL3')
-depends=('libvorbis' 'qt5-svg' 'portaudio' 'stk')
+depends=('desktop-file-utils' 'libvorbis' 'qt5-svg' 'portaudio' 'stk')
 makedepends=('rtmidi')
-source=("https://github.com/davy7125/polyphone/raw/d28bc6f0d6688f2ade50a54670cca17d114a53d7/versions/${pkgname}-${pkgver}-src.zip"
-        "$pkgname-config-cpp.patch"
-        "$pkgname.desktop"
-        "$pkgname.mime")
+source=("${pkgname}-${pkgver}-src.zip::https://www.polyphone-soundfonts.com/en/download/file/611-polyphone-2-0-src-zip/latest/download?20ccdbdec80fcdb11e421a6e127e4241=1"
+        "https://raw.githubusercontent.com/davy7125/polyphone/master/deployment/debian/polyphone.desktop"
+        "https://raw.githubusercontent.com/davy7125/polyphone/master/deployment/debian/polyphone.sharedmimeinfo")
 changelog='ChangeLog'
-sha256sums=('c034cd09084439a57e07a526a9674800668536add7609f4e4ab610f63b0538ca'
-            'cefd4c29d4767be54e2a45d584542106888caf5d7fd4a73307b08e4c9be32b93'
-            '280f626c53aff264a2c735da4478a769b6b39440679360d775c9b5e549b890aa'
-            '6456f6f458283054361b6e0bff6a0a6335201798984b17c259fe343d559de996')
+sha256sums=('b0748ae1ad6d9455ccc686b531caeef2107ae78ba0bc8b77f6fe96ce39d77ef0'
+            '18ba291bab99097767326738852e26e26ba124fd94398a2b2fc243ea3d16f2b9'
+            '62ae04b2768feeafd22c8be223b0192df0a1dfc318a613e7eacc69164e7e9be6')
 
 
 prepare() {
-  cd "${srcdir}/trunk"
+  cd "$srcdir/sources"
 
-  # https://github.com/davy7125/polyphone/issues/33
-  patch -p1 -i "$srcdir/$pkgname-config-cpp.patch"
+  # See https://github.com/davy7125/polyphone/issues/45
+  sed -i \
+    -e 's|#DEFINES += USE_LOCAL_QCUSTOMPLOT|DEFINES += USE_LOCAL_QCUSTOMPLOT|' \
+    polyphone.pro
 }
 
 build() {
-  cd "${srcdir}/trunk"
+  cd "$srcdir/sources"
 
   qmake-qt5
   make
 }
 
 package() {
-  cd "${srcdir}/trunk"
+  cd "$srcdir/sources"
 
-  install -D RELEASE/polyphone "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 ressources/polyphone.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -D bin/polyphone "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 resources/polyphone.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$srcdir/$pkgname.mime" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
+  install -Dm644 "$srcdir/$pkgname.sharedmimeinfo" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 }

@@ -1,25 +1,24 @@
 pkgbase = polyphone
 	pkgdesc = Graphical user interface for editing sf2 and sfz files
-	pkgver = 1.9
-	pkgrel = 4
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = http://polyphone-soundfonts.com/
 	changelog = ChangeLog
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = rtmidi
+	depends = desktop-file-utils
 	depends = libvorbis
 	depends = qt5-svg
 	depends = portaudio
 	depends = stk
-	source = https://github.com/davy7125/polyphone/raw/d28bc6f0d6688f2ade50a54670cca17d114a53d7/versions/polyphone-1.9-src.zip
-	source = polyphone-config-cpp.patch
-	source = polyphone.desktop
-	source = polyphone.mime
-	sha256sums = c034cd09084439a57e07a526a9674800668536add7609f4e4ab610f63b0538ca
-	sha256sums = cefd4c29d4767be54e2a45d584542106888caf5d7fd4a73307b08e4c9be32b93
-	sha256sums = 280f626c53aff264a2c735da4478a769b6b39440679360d775c9b5e549b890aa
-	sha256sums = 6456f6f458283054361b6e0bff6a0a6335201798984b17c259fe343d559de996
+	source = polyphone-2.0.1-src.zip::https://www.polyphone-soundfonts.com/en/download/file/611-polyphone-2-0-src-zip/latest/download?20ccdbdec80fcdb11e421a6e127e4241=1
+	source = https://raw.githubusercontent.com/davy7125/polyphone/master/deployment/debian/polyphone.desktop
+	source = https://raw.githubusercontent.com/davy7125/polyphone/master/deployment/debian/polyphone.sharedmimeinfo
+	sha256sums = b0748ae1ad6d9455ccc686b531caeef2107ae78ba0bc8b77f6fe96ce39d77ef0
+	sha256sums = 18ba291bab99097767326738852e26e26ba124fd94398a2b2fc243ea3d16f2b9
+	sha256sums = 62ae04b2768feeafd22c8be223b0192df0a1dfc318a613e7eacc69164e7e9be6
 
 pkgname = polyphone
 
