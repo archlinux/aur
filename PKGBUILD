@@ -5,7 +5,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.20.99.57388.g7255954ccc
+pkgver=1.21.99.60509.g166d5e4767
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi'
          'libxss' 'libunwind' 'mesa' 'openjpeg2' 'poppler' 'wayland'
          'shared-mime-info' 'ttf-font' 'scim' 'libibus' 'glib2'
          'wayland' 'wayland-protocols' 'libxkbcommon-x11')
-makedepends=('git' 'python2')
+makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot')
 optdepends=('geoclue: For elocation'
             'gst-plugins-base: Video and thumbnail codecs'
             'gst-plugins-good: Video and thumbnail codecs'
@@ -48,34 +48,39 @@ build() {
   export CFLAGS="$CFLAGS -fvisibility=hidden"
   export CXXFLAGS="$CXXFLAGS -fvisibility=hidden"
 
-  ./autogen.sh \
-    --prefix=/usr \
-    --with-tests=none \
-    --with-opengl=es \
-    --enable-egl \
-    --enable-wayland \
-    --enable-drm \
-    --enable-gl-drm \
-    --enable-drm-hw-accel \
-    --enable-elput \
-    --enable-libinput \
-    --enable-fb \
-    --enable-ibus \
-    --disable-tslib \
-    --enable-image-loader-webp \
-    --enable-systemd \
-    --enable-harfbuzz \
-    --enable-xinput22 \
-    --enable-multisense \
-    --enable-liblz4
+  MEM=`free -m | head -2 | tail -1 | awk '{printf("%s", $4);}'`
+  J=`expr $MEM / 200`
+  CPUS=`echo /sys/devices/system/cpu/cpu[0-9]* | wc -w`
+  if test "$J" -gt $CPUS; then J=$CPUS; fi
+  if test "$J" -lt 1; then J=1; fi
+  echo "Free Mem: $MEM M, using $J threads for build"
 
-  make
+  rm -rf build
+  meson --prefix=/usr \
+    -Dopengl=es-egl \
+    -Dxinput22=true \
+    -Dbuffer=true \
+    -Dfb=true \
+    -Ddrm=true \
+    -Dtslib=false \
+    -Dharfbuzz=true \
+    -Dwl=true \
+    -Dnetwork-backend=connman \
+    -Devas-loaders-disabler= \
+    -Dmono=false \
+    -Dbuild-examples=false \
+    -Dbuild-tests=false \
+    -Dcxx=false \
+    -Decore-imf-loaders-disabler= \
+    . build
+
+  ninja -j $J -C build
 }
 
 package() {
   cd $_pkgname
 
-  make -j1 DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 
 # compile python files
   python2 -m compileall -q "$pkgdir"
