@@ -8,6 +8,7 @@ pkgbase = mkpdf
 	depends = texlive-core
 	depends = biber
 	depends = pandoc
+	optdepends = python-langdetect: autodetect language of input document
 	source = https://github.com/ber532k/mkpdf/archive/v0.3.0.tar.gz
 	md5sums = 2c68d9dace8a75afa12b5e32e9e71f71
 

@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/ber532k/mkpdf"
 license=('GPL3')
 depends=('texlive-core' 'biber' 'pandoc')
+optdepends=('python-langdetect: autodetect language of input document')
 source=("https://github.com/ber532k/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('2c68d9dace8a75afa12b5e32e9e71f71')
 
