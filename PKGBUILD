@@ -15,8 +15,8 @@ depends=('mingw-w64-harfbuzz'
          'mingw-w64-fribidi'
          'mingw-w64-fontconfig'
          'mingw-w64-freetype2'
-         'mingw-w64-cairo')
-optdepends=('mingw-w64-libthai: libthai support')
+         'mingw-w64-cairo'
+         'mingw-w64-libthai')
 makedepends=('gtk-doc'
              'gobject-introspection'
              'mingw-w64-poppler'
