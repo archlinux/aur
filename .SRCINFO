@@ -1,7 +1,7 @@
 pkgbase = adb-arm64
 	pkgdesc = adb for Raspberry 3
 	pkgver = 5.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://developer.android.com/sdk/index.html
 	arch = aarch64
 	license = custom
