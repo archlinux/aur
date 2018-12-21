@@ -1,4 +1,4 @@
-From bced35b82a9bd386894f535794fd61feed482525 Mon Sep 17 00:00:00 2001
+From a9dd02eec6b1d6ed4e1fbc90cc865e3fea73bc5b Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:36:56 +0100
 Subject: [PATCH 1/5] Cairo backend added to Qt5 wrapper
@@ -12,10 +12,10 @@ Subject: [PATCH 1/5] Cairo backend added to Qt5 wrapper
  5 files changed, 95 insertions(+), 1 deletion(-)
 
 diff --git a/qt5/src/CMakeLists.txt b/qt5/src/CMakeLists.txt
-index 6f34054e..70d635ad 100644
+index de565b23..6a482fcc 100644
 --- a/qt5/src/CMakeLists.txt
 +++ b/qt5/src/CMakeLists.txt
-@@ -7,6 +7,11 @@ include_directories(
+@@ -8,6 +8,11 @@ include_directories(
    ${CMAKE_CURRENT_BINARY_DIR}
  )
  
@@ -27,7 +27,7 @@ index 6f34054e..70d635ad 100644
  set(CMAKE_C_VISIBILITY_PRESET hidden)
  set(CMAKE_CXX_VISIBILITY_PRESET hidden)
  set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
-@@ -33,6 +38,13 @@ set(poppler_qt5_SRCS
+@@ -34,6 +39,13 @@ set(poppler_qt5_SRCS
    poppler-media.cc
    ArthurOutputDev.cc
  )
@@ -41,7 +41,7 @@ index 6f34054e..70d635ad 100644
  add_library(poppler-qt5 ${poppler_qt5_SRCS})
  set_target_properties(poppler-qt5 PROPERTIES VERSION 1.17.0 SOVERSION 1)
  if(MINGW)
-@@ -40,6 +52,9 @@ if(MINGW)
+@@ -41,6 +53,9 @@ if(MINGW)
      set_target_properties(poppler-qt5 PROPERTIES SUFFIX "-${POPPLER_QT5_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
  endif()
  target_link_libraries(poppler-qt5 poppler ${Qt5Core_LIBRARIES} ${Qt5Gui_LIBRARIES} ${Qt5Xml_LIBRARIES})
@@ -52,7 +52,7 @@ index 6f34054e..70d635ad 100644
  target_link_libraries(poppler-qt5 poppler ${poppler_LIBS})
  endif()
 diff --git a/qt5/src/poppler-document.cc b/qt5/src/poppler-document.cc
-index c7b90ca9..afad9f5d 100644
+index ea2fd7e6..50bd94f4 100644
 --- a/qt5/src/poppler-document.cc
 +++ b/qt5/src/poppler-document.cc
 @@ -677,6 +677,9 @@ namespace Poppler {
@@ -66,7 +66,7 @@ index c7b90ca9..afad9f5d 100644
      }
  
 diff --git a/qt5/src/poppler-page.cc b/qt5/src/poppler-page.cc
-index 34f58053..37b1d06a 100644
+index 68802bab..833126d2 100644
 --- a/qt5/src/poppler-page.cc
 +++ b/qt5/src/poppler-page.cc
 @@ -47,6 +47,7 @@
@@ -182,7 +182,7 @@ index ed189701..2e8ca01f 100644
  
  	/**
 diff --git a/qt5/tests/CMakeLists.txt b/qt5/tests/CMakeLists.txt
-index af8de6ef..20df9f4b 100644
+index 7fda2687..e117d9d3 100644
 --- a/qt5/tests/CMakeLists.txt
 +++ b/qt5/tests/CMakeLists.txt
 @@ -11,6 +11,11 @@ include_directories(
@@ -198,5 +198,5 @@ index af8de6ef..20df9f4b 100644
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Gui_EXECUTABLE_COMPILE_FLAGS}")
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Xml_EXECUTABLE_COMPILE_FLAGS}")
 -- 
-2.19.1
+2.20.1
 

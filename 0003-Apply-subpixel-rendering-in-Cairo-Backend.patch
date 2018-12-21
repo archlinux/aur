@@ -1,4 +1,4 @@
-From a90586073f306d4598e1be254e617bd4f6ceba34 Mon Sep 17 00:00:00 2001
+From 37343838d358f4719eb8ad8e8bfebaaaadf51ac8 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
 Subject: [PATCH 3/5] Apply subpixel rendering in Cairo Backend
@@ -74,7 +74,7 @@ index 78d24bb5..d482ceb5 100644
          g_timer_stop (timer);
  
 diff --git a/glib/poppler-page.cc b/glib/poppler-page.cc
-index 6a592fbc..3bd532fa 100644
+index 34a1c77d..4e81a348 100644
 --- a/glib/poppler-page.cc
 +++ b/glib/poppler-page.cc
 @@ -2419,3 +2419,13 @@ poppler_page_get_text_attributes_for_area (PopplerPage      *page,
@@ -104,7 +104,7 @@ index 487b3656..24216aeb 100644
  /* A rectangle on a page, with coordinates in PDF points. */
  #define POPPLER_TYPE_RECTANGLE             (poppler_rectangle_get_type ())
 diff --git a/poppler/CairoFontEngine.cc b/poppler/CairoFontEngine.cc
-index 4114fa7b..c922c162 100644
+index ad3c39e9..711f1d26 100644
 --- a/poppler/CairoFontEngine.cc
 +++ b/poppler/CairoFontEngine.cc
 @@ -123,7 +123,7 @@ CairoFont::getSubstitutionCorrection(GfxFont *gfxFont)
@@ -135,7 +135,7 @@ index 4114fa7b..c922c162 100644
    if (cairo_font_face_set_user_data (l->font_face,
  				     &_ft_cairo_key,
 diff --git a/poppler/CairoOutputDev.cc b/poppler/CairoOutputDev.cc
-index b8a3e491..9490b600 100644
+index 4fc9882c..87e50dd7 100644
 --- a/poppler/CairoOutputDev.cc
 +++ b/poppler/CairoOutputDev.cc
 @@ -205,6 +205,13 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
@@ -191,7 +191,7 @@ index b8a3e491..9490b600 100644
    glyphs = nullptr;
    if (use_show_text_glyphs) {
 diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
-index 3dfc08e8..428a4481 100644
+index 9a117569..f62b96cd 100644
 --- a/poppler/Gfx.cc
 +++ b/poppler/Gfx.cc
 @@ -4604,6 +4604,47 @@ void Gfx::doImage(Object *ref, Stream *str, bool inlineImg) {
@@ -257,7 +257,7 @@ index f966e8f6..3850bc28 100644
  
    void drawForm(Object *str, Dict *resDict, const double *matrix, const double *bbox,
 diff --git a/poppler/Page.cc b/poppler/Page.cc
-index fddb831c..880ee303 100644
+index 6d6d8642..b7fb441d 100644
 --- a/poppler/Page.cc
 +++ b/poppler/Page.cc
 @@ -336,6 +336,19 @@ Dict *Page::getResourceDictCopy(XRef *xrefA) {
@@ -281,7 +281,7 @@ index fddb831c..880ee303 100644
    Object obj1;
    Dict *pageDict = pageObj.getDict()->copy(xrefA);
 diff --git a/poppler/Page.h b/poppler/Page.h
-index 37b59455..bf8e44aa 100644
+index 01f056f9..d6547a79 100644
 --- a/poppler/Page.h
 +++ b/poppler/Page.h
 @@ -183,6 +183,9 @@ public:
@@ -295,5 +295,5 @@ index 37b59455..bf8e44aa 100644
    Object getAnnotsObject(XRef *xrefA = nullptr) { return annotsObj.fetch(xrefA ? xrefA : xref); }
    // Add a new annotation to the page
 -- 
-2.19.1
+2.20.1
 
