@@ -1,4 +1,5 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Mantainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Rafael Ferreira <josephgbr@archlinux.info>
 
