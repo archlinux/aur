@@ -9,7 +9,7 @@
 # Contributor: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
 
 pkgname=android-studio-beta
-pkgver=3.3.0.18
+pkgver=3.3.0.19
 pkgrel=1
 _build=182.5183351
 pkgdesc="The Official Android IDE (Beta branch)"
