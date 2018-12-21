@@ -1,6 +1,6 @@
 pkgbase = packettracer
 	pkgdesc = Network design and emulation software for Cisco's Networking Academy instructors and students.
-	pkgver = 7.2
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = http://www.netacad.com/about-networking-academy/packet-tracer
 	install = pt.install
@@ -13,11 +13,11 @@ pkgbase = packettracer
 	sha512sums = 7135a62c5e46d9742eb8bdb5b3b171201243487e3681d152595121cfa1b9e5f3a0f89a6e54f25b7aa4cd2ae87156db4351b992a4988d364ba36c7bd71829c4d2
 	sha512sums = dab1f7f9c77c900a65899f2d795d9df39136de7e6ab1f544c538311012a212edbbb2101741672fdbe729c43e5bef0cb323800aa40b68b0cacf14342a1b040800
 	sha512sums = 3f4732213a9ca7c95f742edbdccf4d84c95e1c9e00d3dfa72e79b8039ef86bed29bc5b76586402a233ce3af409c0a56c759c2554e17962c292a6bd333654ce71
-	source_x86_64 = local://Packet Tracer 7.2 for Linux 64 bit.tar.gz
+	source_x86_64 = local://Packet Tracer 7.2.1 for Linux 64 bit.tar.gz
 	depends_x86_64 = openssl-1.0
 	depends_x86_64 = libpng12
-	depends_x86_64 = icu52
-	sha512sums_x86_64 = c5315fece36504ea551b8bcc9abc8c92829b90eb986e6e231cbbb7add981bac3d7d15343efe0a74527a25d768dcb60cf603699528ff3bde42251678ce0f70f6d
+	depends_x86_64 = icu
+	sha512sums_x86_64 = 359f1b2740459cf58b2e71da3edd52eb8c49c3197c3a5af25682e469c00e8e35de90b2d43cdd8d9c614cbed0aac554b150d578d6a25295ea547025e090b4ff25
 
 pkgname = packettracer
 
