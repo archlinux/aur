@@ -4,7 +4,7 @@
 # Contributor: spider-mario <spidermario@free.fr>
 
 pkgname=rakudo-git
-pkgver=20181129
+pkgver=20181221
 pkgrel=1
 pkgdesc="Perl6 on MoarVM"
 arch=('i686' 'x86_64')

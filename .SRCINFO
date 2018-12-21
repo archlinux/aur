@@ -1,6 +1,6 @@
 pkgbase = rakudo-git
 	pkgdesc = Perl6 on MoarVM
-	pkgver = 20181129
+	pkgver = 20181221
 	pkgrel = 1
 	url = https://github.com/rakudo/rakudo
 	arch = i686
