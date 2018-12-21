@@ -2,8 +2,8 @@
 # Python package author: Matthew Honnibal <matt@explosion.ai>
 pkgname=python-srsly-git
 _origpkgname=srsly
-pkgver=0.0.4.r115.8f5d1f5
-pkgrel=1
+pkgver=0.0.5.r116.2b04f37
+pkgrel=2
 pkgdesc="Modern high-performance serialization utilities for Python"
 arch=("x86_64")
 url="https://github.com/explosion/srsly"
@@ -15,11 +15,16 @@ depends=('python'
          'python-mock'
          'python-pytz'
 )
-makedepends=("python-setuptools")
+makedepends=('git' 'python-setuptools')
 provides=('python-srsly')
 conflicts=('python-srsly')
 source=("git+https://github.com/explosion/$_origpkgname.git")
 md5sums=('SKIP')
+
+prepare() {
+  cd "$_origpkgname"
+  git checkout $(curl https://api.github.com/repos/explosion/$_origpkgname/releases | grep tag_name | cut -d '"' -f4 | head -n 1)
+}
 
 pkgver() {
   cd "$_origpkgname"
