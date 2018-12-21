@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-data-chaps-trains-cz-2019-latest
 	pkgdesc = 2018/2019 Timetable data for the timetable search engines by CHAPS: Czech trains.
-	pkgver = 2018_12_18
+	pkgver = 2018_12_20
 	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
@@ -12,14 +12,14 @@ pkgbase = idos-timetable-data-chaps-trains-cz-2019-latest
 	optdepends = idos-timetable-tariff-trains-cz: For showing prices.
 	optdepends = idos-timetable-maps-trains-cz: For displaying routes on maps.
 	optdepends = idos-timetable-additionalinfo-trains-cz: For (links to) additional information about train composition and stations.
-	provides = idos-timetable-data-chaps-trains-cz-2019=2018_12_18
-	provides = idos-timetable-data=2018_12_18
-	provides = idos-timetable-data-trains=2018_12_18
-	provides = idos-timetable-data-trains-cz=2018_12_18
-	provides = idos-timetable-data-trains-cz-2019=2018_12_18
+	provides = idos-timetable-data-chaps-trains-cz-2019=2018_12_20
+	provides = idos-timetable-data=2018_12_20
+	provides = idos-timetable-data-trains=2018_12_20
+	provides = idos-timetable-data-trains-cz=2018_12_20
+	provides = idos-timetable-data-trains-cz-2019=2018_12_20
 	conflicts = idos-timetable-data-chaps-trains-cz-2019
 	replaces = idos-timetable-data-chaps-trains-cz-latest
-	replaces = idos-timetable-data-chaps-trains-cz-2019<=2018_12_18
+	replaces = idos-timetable-data-chaps-trains-cz-2019<=2018_12_20
 	source = vlak19c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK19C.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
