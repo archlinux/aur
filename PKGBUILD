@@ -2,7 +2,7 @@
 # Contributor: equation314 <https://github.com/equation314>
 pkgname=ccrplus
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A opensource and cross-platform judge environment for OI contest."
 arch=('x86_64')
 url="https://github.com/sxyzccr/CCR-Plus"
@@ -13,14 +13,14 @@ md5sums=() #autofill using updpkgsums
 
 prepare() {
   cd "$srcdir"
-	if [ -e CCR-Plus ]; then
-		cd CCR-Plus
-		git pull
-	else
-		git clone https://github.com/sxyzccr/CCR-Plus
-	fi
-  # FIXME: Complie Error because of less header file
-  sed -i "4 i #include <QHeaderView>" "$srcdir/CCR-Plus/src/configure/configuredialog.h"
+  if [ -e CCR-Plus ]; then
+    cd CCR-Plus
+    git pull
+  else
+    git clone https://github.com/sxyzccr/CCR-Plus
+	cd CCR-Plus
+  fi
+  git apply $srcdir/../ccr-plus.patch
 }
 
 build() {

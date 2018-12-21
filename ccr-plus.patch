@@ -1,0 +1,34 @@
+diff --git a/src/configure/configuredialog.h b/src/configure/configuredialog.h
+index dfd4db7..ec5e274 100644
+--- a/src/configure/configuredialog.h
++++ b/src/configure/configuredialog.h
+@@ -1,6 +1,7 @@
+ #ifndef CONFIGUREDIALOG_H
+ #define CONFIGUREDIALOG_H
+ 
++#include <QHeaderView>
+ #include <QDialog>
+ 
+ class QAbstractButton;
+diff --git a/src/judge/judger/basejudger.cpp b/src/judge/judger/basejudger.cpp
+index 48b4264..375307a 100644
+--- a/src/judge/judger/basejudger.cpp
++++ b/src/judge/judger/basejudger.cpp
+@@ -137,7 +137,7 @@ TestCaseResult BaseJudger::checkOutput(const QString& inFile, const QString& ans
+     else
+         checkerDir = data_dir;
+ #ifdef Q_OS_LINUX
+-    QProcess::execute(QString("chmod +wx \"%1\"").arg(checkerDir + problem->Checker()));
++//    QProcess::execute(QString("chmod +wx \"%1\"").arg(checkerDir + problem->Checker()));
+ #endif
+     process.start(checkerDir + problem->Checker(), QStringList({inFile, ansFile, outFile, ".result"}));
+ 
+@@ -307,7 +307,7 @@ TestCaseResult BaseJudger::runProgram(const QString& exe, double timeLim, double
+ 
+ TestCaseResult BaseJudger::runProgram(const QString& exe, double timeLim, double memLim) const
+ {
+-    QProcess::execute(QString("chmod +wx \"%1\"").arg(QCoreApplication::applicationDirPath() + "/monitor"));
++//    QProcess::execute(QString("chmod +wx \"%1\"").arg(QCoreApplication::applicationDirPath() + "/monitor"));
+ 
+     QProcess process;
+     process.setWorkingDirectory(working_dir);
