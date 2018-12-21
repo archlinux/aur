@@ -5,13 +5,13 @@ _pkgname=vcrpy
 _author=kevin1024
 pkgname=python-$_pkgname-git
 pkgver=2.7.r835.0cf11d4
-pkgrel=1
+pkgrel=2
 pkgdesc="VCR.py simplifies and speeds up tests that make HTTP requests."
 arch=('any')
 url="https://github.com/$_author/$_pkgname"
 license=('')
 depends=('python')
-makedepends=('')
+makedepends=('git' 'python-setuptools')
 provides=("python-$_pkgname")
 conflicts=("python-$_pkgname")
 source=("git+https://github.com/$_author/$_pkgname.git")
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$_pkgname"
-  git checkout $(curl https://api.github.com/repos/$_author/$_pkgname/releases/latest | grep tag_name| cut -d '"' -f4)
+  git checkout $(curl https://api.github.com/repos/$_author/$_pkgname/releases | grep tag_name | cut -d '"' -f4 | head -n 1)
 }
 
 pkgver() {
