@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('t2ec')
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts to display info icons and controls in Tint2 or other panels"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
@@ -11,9 +11,9 @@ optdepends=('light: for machines not handling xbacklight'
 	    'rof-git: for running mouse events commands as single instances'
 	    'zenity: for volume and brightness slider box')
 
-source=("https://github.com/nwg-piotr/t2ec/archive/v1.1-1.tar.gz")
+source=("https://github.com/nwg-piotr/t2ec/archive/v1.1-2.tar.gz")
 
-md5sums=('89b80dd32f0a279cd3ad7241e408c645')
+md5sums=('9b93e5eba1f24c8265c396bbe47138ea')
 
 package() {
   install -D -t "$pkgdir"/usr/lib/"$pkgname" "$pkgname"-"$pkgver"-"$pkgrel"/scripts-arch/*.sh
