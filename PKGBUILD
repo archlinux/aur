@@ -1,7 +1,7 @@
 # Contributor: xsmile <sascha_r AT gmx DOT de>
 # Maintainer: max-k <max-k AT post DOT com>
 pkgname=pydio
-pkgver=8.2.1
+pkgver=8.2.2
 pkgrel=1
 pkgdesc='Sync & share solution, formerly AjaXplorer'
 arch=('any')
@@ -29,7 +29,7 @@ install="${pkgname}.install"
 _srcbase="https://download.${pkgname}.com/pub/core/archives"
 source=("${_srcbase}/${pkgname}-core-${pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('63ede5513a66863aacd74833cab4cdd05ca52c63dcbdc4f8d12e82553b1eb9cb'
+sha256sums=('437c9131eb276d38095a9edea35ea7a0f402e57403d75893493c312d6e02b086'
             '78321bb235918578a95d42947fd5a3f0287ecc43910a10dde49e24b1bb47bb65')
 
 package() {
