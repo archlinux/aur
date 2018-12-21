@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.enlightenment.org/p.php?p=about/rage"
 license=('BSD')
 depends=('efl')
-makedepends=('git')
+makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('debug')
