@@ -1,41 +1,55 @@
-# $Id$
-# Maintainer: Realex
-# Based on cinnamon-settings-daemon PKGBUILD
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
-_pkgname=cinnamon-settings-daemon
-pkgname=${_pkgname}-git
-pkgver=221.ec2ca3a
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
+pkgname=cinnamon-settings-daemon-git
+pkgver=4.0.3.r0.gd3ead09
 pkgrel=1
 pkgdesc="The Cinnamon Settings daemon"
 arch=('i686' 'x86_64')
+url="https://github.com/linuxmint/${pkgname%-git}"
 license=('GPL')
-depends=('cinnamon-desktop-git'  'libibus' 'libcanberra-pulse' 'librsvg' 'nss' 'pulseaudio-alsa' 'upower' 'libnotify' 'libwacom' 'libgnomekbd')
-makedepends=('intltool' 'docbook-xsl' 'gnome-common' 'cinnamon-desktop-git' 'git')
-options=('!emptydirs' '!libtool')
-conflicts=("${_pkgname}")
-install=${pkgname}.install
-url="http://cinnamon.linuxmint.com/"
-source=(${_pkgname}::git+https://github.com/linuxmint/cinnamon-settings-daemon.git)
+depends=('cinnamon-desktop' 'colord' 'dbus-glib' 'libcanberra-pulse' 'libcups'
+         'libgnomekbd' 'libgudev' 'libnotify' 'librsvg' 'libwacom' 'nss' 'polkit'
+         'pulseaudio-alsa' 'upower')
+optdepends=('cinnamon-translations: i18n')
+makedepends=('git' 'autoconf-archive' 'intltool' 'python' 'xf86-input-wacom')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+options=('!emptydirs')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+    cd "${srcdir}"/${pkgname%-git}
+
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}"/${pkgname%-git}
+
+    autoreconf -fi
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}
+    cd "${srcdir}"/${pkgname%-git}
 
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-      --libexecdir=/usr/lib/${_pkgname} --disable-static --enable-systemd
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --localstatedir=/var \
+                --libexecdir="/usr/lib/${pkgname%-git}" \
+                --enable-systemd \
+                --enable-polkit
 
-  #https://bugzilla.cinnamon.org/show_bug.cgi?id=656231
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    #https://bugzilla.gnome.org/show_bug.cgi?id=656231
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-  make
+    make
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
-  make DESTDIR="$pkgdir" install
+    cd "${srcdir}"/${pkgname%-git}
+
+    make DESTDIR="${pkgdir}" install
 }
