@@ -4,13 +4,13 @@
 # Based on original tikzit-aur-package made by pippin
 
 pkgname=tikzit-git
-pkgver=2.0.8.g87b50b1
-pkgrel=2
+pkgver=2.0.34.g873316d
+pkgrel=1
 pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library - rewrite in QT and C++"
 arch=('i686' 'x86_64')
 url="https://tikzit.github.io/"
 license=('GPL')
-depends=('qt5-base' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('qt5-base' 'desktop-file-utils' 'hicolor-icon-theme' 'poppler-qt5')
 makedepends=('git')
 provides=('tikzit')
 conflicts=('tikzit')
