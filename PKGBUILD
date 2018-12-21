@@ -1,7 +1,7 @@
 # Maintainer: Joop Kiefte <joop@kiefte.net>
 pkgname=ruby-textplay-git
 pkgver=r87.88f7871
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert fountain screenplays to Final Draft and HTML format, and convert HTML to PDF."
 arch=('any')
 url="https://www.olivertaylor.net/"
