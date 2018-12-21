@@ -12,7 +12,7 @@
 #==============================================================================#
 #       Package information                                                    #
 #==============================================================================#
-pkgname=('pacman-test')
+pkgname=('pacman-ezamlinsky-git')
 pkgver=5.1.1
 pkgrel=1
 pkgdesc='A library-based package manager with dependency support (new features testing)'
