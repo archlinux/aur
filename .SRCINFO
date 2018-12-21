@@ -1,0 +1,21 @@
+pkgbase = less-ebuild
+	pkgdesc = A terminal based program for viewing text files
+	pkgver = 530
+	pkgrel = 1
+	url = http://www.greenwoodsoftware.com/less
+	arch = x86_64
+	groups = base
+	license = GPL3
+	depends = glibc
+	depends = ncurses
+	depends = +pcre
+	provides = less
+	conflicts = less
+	replaces = less
+	source = http://www.greenwoodsoftware.com/less/less-530.tar.gz
+	source = less-530.tar.gz::http://www.greenwoodsoftware.com/less/less-530.sig
+	md5sums = 6a39bccf420c946b0fd7ffc64961315b
+	md5sums = SKIP
+
+pkgname = less-ebuild
+
