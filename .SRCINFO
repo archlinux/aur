@@ -9,7 +9,6 @@ pkgbase = pmcli-git
 	depends = lua
 	depends = lua-http
 	depends = lua-dkjson
-	depends = lua-html-entities
 	depends = mpv
 	provides = pmcli
 	source = git+https://github.com/Aanok/pmcli.git
