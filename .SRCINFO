@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-data-inprop-mhd-sk-all-latest
 	pkgdesc = Public transport data of many Slovak cities for the IDOS timetable browser, data provided by INPROP.
-	pkgver = 2018_12_14
+	pkgver = 2018_12_20
 	pkgrel = 1
 	epoch = 0
 	url = http://www.inprop.sk/download.aspx
@@ -12,11 +12,11 @@ pkgbase = idos-timetable-data-inprop-mhd-sk-all-latest
 	depends = idos-timetable-browser
 	optdepends = idos-timetable-tariff-mhd: For showing prices.
 	optdepends = idos-timetable-maps-mhd: For displaying routes.
-	provides = idos-timetable-data-inprop-mhd-sk-all=2018_12_14
-	provides = idos-timetable-data=2018_12_14
-	provides = idos-timetable-data-mhd=2018_12_14
-	provides = idos-timetable-data-mhd-sk=2018_12_14
-	provides = idos-timetable-data-mhd-sk-all=2018_12_14
+	provides = idos-timetable-data-inprop-mhd-sk-all=2018_12_20
+	provides = idos-timetable-data=2018_12_20
+	provides = idos-timetable-data-mhd=2018_12_20
+	provides = idos-timetable-data-mhd-sk=2018_12_20
+	provides = idos-timetable-data-mhd-sk-all=2018_12_20
 	conflicts = idos-timetable-data-inprop-mhd-sk-all
 	conflicts = idos-timetable-data-mhd-banskabystrica
 	conflicts = idos-timetable-data-mhd-bratislava
