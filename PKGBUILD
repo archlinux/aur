@@ -1,6 +1,6 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert-lite
-pkgver=0.14.22
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher. Without QML and VirtualBox dependencies"
 arch=('i686' 'x86_64' 'armv7h')
@@ -9,6 +9,7 @@ license=('GPL')
 depends=(
   'qt5-svg'
   'qt5-x11extras'
+  'qt5-charts'
   'libx11'
 )
 makedepends=(
