@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-data-zsr-sk-2018-latest
 	pkgdesc = 2017/2018 Timetable data for the offline railway and other public transport timetable search engines by CHAPS: Slovak train data, provided by Inprop (Slovakia).
-	pkgver = 2018_12_11
+	pkgver = 2018_12_19
 	pkgrel = 1
 	epoch = 1
 	url = http://www.inprop.sk/download.aspx
@@ -12,14 +12,14 @@ pkgbase = idos-timetable-data-zsr-sk-2018-latest
 	depends = idos-timetable-data-trains-common
 	optdepends = idos-timetable-tariff-trains-sk: For showing prices.
 	optdepends = idos-timetable-maps-trains-sk: For displaying routes.
-	provides = idos-timetable-data-zsr-sk-2018=2018_12_11
-	provides = idos-timetable-data=2018_12_11
-	provides = idos-timetable-data-trains=2018_12_11
-	provides = idos-timetable-data-trains-sk=2018_12_11
-	provides = idos-timetable-data-trains-sk-2018=2018_12_11
+	provides = idos-timetable-data-zsr-sk-2018=2018_12_19
+	provides = idos-timetable-data=2018_12_19
+	provides = idos-timetable-data-trains=2018_12_19
+	provides = idos-timetable-data-trains-sk=2018_12_19
+	provides = idos-timetable-data-trains-sk-2018=2018_12_19
 	conflicts = idos-timetable-data-zsr-sk-2018
 	replaces = idos-timetable-data-zsr-sk-latest
-	replaces = idos-timetable-data-zsr-sk-2018<=2018_12_11
+	replaces = idos-timetable-data-zsr-sk-2018<=2018_12_19
 	source = vlak18sk.exe::http://www.inprop.sk/Data/Vlak18Sk.exe
 	source = license-dummy.txt
 	sha256sums = SKIP
