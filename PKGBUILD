@@ -12,7 +12,8 @@ url='https://github.com/DeadSix27/waifu2x-converter-cpp'
 license=('MIT')
 depends=('opencv'
          'cuda'
-         'gtkglext'
+         'gtk3'
+         'hdf5'
          )
 makedepends=('cmake'
              'git'
@@ -26,8 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd waifu2x-converter-cpp
-  #echo $(git describe --long --tags | tr - .)
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo $(git describe --long --tags | tr - .)
 }
 
 prepare() {
