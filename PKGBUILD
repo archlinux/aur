@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-tariff-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2018_12_14
+pkgver=2018_12_19
 pkgrel=1
 pkgdesc="Tariff data for the timetable search engines by CHAPS: Czech/Slovak trains + bus, Czech public transport. Note that some data need the purchased version of IDOS to run."
 arch=(any)
