@@ -1,0 +1,25 @@
+pkgbase = screenrecorder-git
+	pkgdesc = A simple screen recorder app designed for Pantheon Shell
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/mohelm97/screenrecorder
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = clutter-gst
+	depends = clutter-gtk
+	depends = gstreamer
+	depends = libx11
+	provides = screenrecorder
+	conflicts = screenrecorder
+	source = git+https://github.com/mohelm97/screenrecorder.git
+	md5sums = SKIP
+
+pkgname = screenrecorder-git
+
