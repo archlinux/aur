@@ -1,10 +1,12 @@
 pkgbase = python-spacy-git
 	pkgdesc = A free open-source library for Natural Language Processing in Python
-	pkgver = 2.0.18.r8888.ae5601be
-	pkgrel = 2
+	pkgver = 2.0.18.r8886.bbaca991
+	pkgrel = 3
 	url = https://spacy.io/
 	arch = x86_64
 	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = cython
 	depends = python-numpy

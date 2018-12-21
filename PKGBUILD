@@ -2,8 +2,8 @@
 # Python package author: Matthew Honnibal <matt@explosion.ai>
 pkgname=python-spacy-git
 _origpkgname=spaCy
-pkgver=2.0.18.r8888.ae5601be
-pkgrel=2
+pkgver=2.0.18.r8886.bbaca991
+pkgrel=3
 pkgdesc="A free open-source library for Natural Language Processing in Python"
 arch=("x86_64")
 url="https://spacy.io/"
@@ -22,11 +22,16 @@ depends=("cython"
         "python-pytest"
         "python-mock"
 )
-makedepends=("python-wheel")
+makedepends=('git' 'python-setuptools' 'python-wheel')
 provides=('python-spacy')
 conflicts=('python-spacy')
 source=("git+https://github.com/explosion/$_origpkgname.git")
 md5sums=('SKIP')
+
+prepare() {
+  cd "$_origpkgname"
+  git checkout $(curl https://api.github.com/repos/explosion/$_origpkgname/releases | grep tag_name | cut -d '"' -f4 | head -n 1)
+}
 
 pkgver() {
   cd "$_origpkgname"
