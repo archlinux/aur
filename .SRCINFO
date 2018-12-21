@@ -1,0 +1,15 @@
+pkgbase = plgi
+	pkgdesc = Prolog bindings for GLib/GObject/GIO/GTK+
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/keriharris/plgi
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gobject-introspection
+	depends = gobject-introspection-runtime
+	depends = swi-prolog
+	source = plgi-1.0.6.tar.gz::https://github.com/keriharris/plgi/archive/v1.0.6.tar.gz
+	sha256sums = d2e2105acadd0d6752e42304d6a7e1d51025b3c82efdc2a30ca84d402860910d
+
+pkgname = plgi
+
