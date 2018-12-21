@@ -1,0 +1,5 @@
+pkg/
+src/
+eclipse-spotbugs-*-any.pkg.tar.xz
+feature.jar
+plugin.jar
