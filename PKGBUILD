@@ -18,8 +18,8 @@
 pkgbase="spl-linux-lts"
 pkgname=("spl-linux-lts" "spl-linux-lts-headers")
 _splver="0.7.12"
-_kernelver="4.14.88-1"
-_extramodules="4.14.88-1-lts"
+_kernelver="4.14.89-1"
+_extramodules="4.14.89-1-lts"
 
 pkgver="${_splver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=2
