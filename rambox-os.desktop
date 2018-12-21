@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=Rambox-OS
 Comment=Forked Free and Open Source messaging and emailing app that combines common web applications into one.
-Exec=/opt/rambox-os/rambox -- %u
+Exec=rambox -- %u
 StartupWMClass=Rambox-OS
 Icon=rambox-os
 Terminal=false
