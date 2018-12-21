@@ -5,7 +5,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.21.99.60510.gc84580cc05
+pkgver=1.21.99.60512.g8fa3f39e31
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -50,7 +50,7 @@ build() {
 
   MEM=`free -m | head -2 | tail -1 | awk '{printf("%s", $7);}'`
   if test "$MEM" -lt 200; then MEM=200; fi
-  J=`expr $MEM / 200`
+  J=`expr $MEM / 250`
   CPUS=`echo /sys/devices/system/cpu/cpu[0-9]* | wc -w`
   if test "$J" -gt $CPUS; then J=$CPUS; fi
   if test "$J" -lt 1; then J=1; fi
