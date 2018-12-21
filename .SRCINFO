@@ -1,7 +1,7 @@
 pkgbase = logcat-color
 	pkgdesc = A colorful alternative to "adb logcat"
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/marshall/logcat-color
 	arch = any
 	license = Apache
