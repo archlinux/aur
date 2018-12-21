@@ -1,0 +1,13 @@
+diff --git a/src/client.h b/src/client.h
+index 4377a14..acb9df6 100644
+--- a/src/client.h
++++ b/src/client.h
+@@ -24,7 +24,7 @@ class KPXCCLIENT_EXPORT Client : public QObject
+ 	Q_PROPERTY(QByteArray currentDatabase READ currentDatabase NOTIFY currentDatabaseChanged)
+ 
+ public:
+-	enum class Option {
++	enum Option {
+ 		None = 0x00,
+ 		AllowNewDatabase = 0x01,
+ 		TriggerUnlock = 0x02,

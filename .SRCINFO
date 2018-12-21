@@ -1,0 +1,23 @@
+pkgbase = keepassxc-client-library
+	pkgdesc = A C++ library to access the browser-plugin-API of KeePassXC to retrieve or create entries
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Skycoder42/keepassxc-client-library
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = pkgconfig
+	depends = qt5-base
+	depends = libsodium
+	optdepends = repkg: Automatically rebuild the package on dependency updates
+	source = keepassxc-client-library-1.0.0::git+https://github.com/Skycoder42/keepassxc-client-library.git#tag=1.0.0
+	source = clientflags.patch
+	source = keepassxc-client-library.rule
+	sha256sums = SKIP
+	sha256sums = 739d2c8bb3b6637369ebf42a10bdf846f15c6432453b844f9761d3009d00e01f
+	sha256sums = 5c26037370478a522a91354fd1f5504790ec9a1bf46523c433ca1ea4348b4a6f
+
+pkgname = keepassxc-client-library
+
