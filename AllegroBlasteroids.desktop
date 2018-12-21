@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1
+Type=Game
+Terminal=false
+Exec=/opt/allegro-blasteroids/game
+Path=/opt/allegro-blasteroids
+Name=Allegro Blasteroids
+Comment=A blasteroids like game made with C and Allegro5

@@ -1,0 +1,14 @@
+pkgbase = allegro-blasteroids-git
+	pkgdesc = A game inspired on blasteroids started from the last proposed exercise of Head First C
+	pkgver = v1
+	pkgrel = 0
+	url = https://github.com/lucasew/allegro_blasteroids
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = allegro
+	source = https://github.com/lucasew/allegro_blasteroids/archive/v1.zip
+	sha256sums = 040b6eaa2a4f2314f18a9cb10ae72db5e31b4771d2adaa496aa8805f08077d9d
+
+pkgname = allegro-blasteroids-git
+
