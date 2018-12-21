@@ -3,7 +3,7 @@
 
 pkgname=wire-desktop-beta
 _pkgname=${pkgname%-beta}
-pkgver=3.4.2885
+pkgver=3.5.2881
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
@@ -16,13 +16,13 @@ optdepends=('hunspell-en: for English spellcheck support'
             'noto-fonts-emoji: for colorful emoji made by Google'
             'ttf-emojione: for colorful emoji made by EmojiOne')
 provides=('wire-desktop')
-source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/${pkgver}.tar.gz"
+source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/linux/${pkgver}.tar.gz"
         "${_pkgname}.desktop")
-sha256sums=('7bdcb33bfb23719b0840a86d294b4d4d97c59f8a7857bc609d8736dfe2b340e1'
+sha256sums=('4216cd9c3a2c4920aec2f3c967181b04bfafdb1b47e526a8e823911cce704da1'
             'cc9056cecff2aa49a9ce9c8376d57ec8c7c2cb8174f7966b5cdccbeb2e3751ea')
 
 build() {
-  cd "${srcdir}/${_pkgname}-release-${pkgver}"
+  cd "${srcdir}/${_pkgname}-linux-${pkgver}"
   yarn
   yarn build:ts
   npx grunt 'linux-other-internal'
@@ -31,7 +31,7 @@ build() {
 package() {
   # Place files
   install -d "${pkgdir}/usr/lib/${_pkgname}"
-  cp -a "${srcdir}/${_pkgname}-release-${pkgver}"/wrap/dist/linux*unpacked/* "${pkgdir}/usr/lib/${_pkgname}"  
+  cp -a "${srcdir}/${_pkgname}-linux-${pkgver}"/wrap/dist/linux*unpacked/* "${pkgdir}/usr/lib/${_pkgname}"  
 
   # Symlink main binary
   install -d "${pkgdir}/usr/bin"
@@ -41,7 +41,7 @@ package() {
   desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_pkgname}.desktop"
   for res in 32x32 256x256; do
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
-    install -Dm644 "${srcdir}/${_pkgname}-release-${pkgver}/resources/icons/${res}.png" \
+    install -Dm644 "${srcdir}/${_pkgname}-linux-${pkgver}/resources/icons/${res}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_pkgname}.png"
   done
 
