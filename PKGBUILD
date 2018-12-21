@@ -13,7 +13,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=2.18.26
+pkgver=2.18.27
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Old Long Term Release'
 url='https://qgis.org/'
@@ -37,7 +37,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.md5
-md5sums=('dace95665a7842114129ce95baf442a5')
+md5sums=('e74924dd823c6926e7b522002f3826ce')
 
 prepare() {
   cd "$_pkgname-$pkgver"

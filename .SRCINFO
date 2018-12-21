@@ -1,6 +1,6 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS); Old Long Term Release
-	pkgver = 2.18.26
+	pkgver = 2.18.27
 	pkgrel = 1
 	url = https://qgis.org/
 	arch = i686
@@ -43,10 +43,10 @@ pkgbase = qgis-ltr
 	optdepends = python2-pyspatialite: DB Manager plugin; Processing plugin
 	optdepends = python2-yaml: Processing plugin
 	optdepends = saga-gis-ltr: Saga processing tools
-	provides = qgis=2.18.26
+	provides = qgis=2.18.27
 	conflicts = qgis
-	source = https://qgis.org/downloads/qgis-2.18.26.tar.bz2
-	md5sums = dace95665a7842114129ce95baf442a5
+	source = https://qgis.org/downloads/qgis-2.18.27.tar.bz2
+	md5sums = e74924dd823c6926e7b522002f3826ce
 
 pkgname = qgis-ltr
 
