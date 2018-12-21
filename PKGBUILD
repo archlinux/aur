@@ -6,7 +6,7 @@ _buildtime=201812210434-554d102
 pkgrel=1
 pkgdesc='SpotBugs plugin for Eclipse IDE to look for bugs in Java code by static code analysis'
 arch=('any')
-url='http://pmd.sourceforge.net/'
+url='https://github.com/spotbugs/spotbugs/'
 license=('LGPL')
 depends=('eclipse>=4.5.0')
 options=('!strip')
