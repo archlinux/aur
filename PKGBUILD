@@ -2,15 +2,15 @@
 pkgname=('waifu2x-converter-cpp')
 _srcname='waifu2x-converter-cpp'
 pkgdesc='Image Super-Resolution for Anime-Style Art'
-pkgver='5.2'
-_commit='f860abfa18a75ed68d3b1e79fe83f6091a6e27e0'
+pkgver='5.2.1'
+_commit='0dc4f71e2ea159a5845fd2214bedfa3f74a93ce8'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url="https://github.com/DeadSix27/${_srcname}"
 license=('MIT')
 
-depends=('opencv' 'opencl-headers')
-makedepends=('git' 'cmake')
+depends=('opencv')
+makedepends=('git' 'cmake' 'opencl-headers')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
