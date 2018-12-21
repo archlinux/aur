@@ -1,12 +1,12 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=keepassxc-client-library
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ library to access the browser-plugin-API of KeePassXC to retrieve or create entries"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/keepassxc-client-library"
 license=('BSD')
-depends=('qt5-base' 'libsodium')
+depends=('qt5-base' 'libsodium' 'keepassxc')
 makedepends=('git' 'qt5-tools' 'pkgconfig')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
