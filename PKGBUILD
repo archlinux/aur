@@ -6,7 +6,7 @@ pkgname=$_pkgname-git
 pkgver=0.3.0.r194.b7be3a0
 pkgrel=1
 pkgdesc="Video Player based on EFL - Development version"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.enlightenment.org/p.php?p=about/rage"
 license=('BSD')
 depends=('efl')
