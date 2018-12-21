@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname}"
+    cd "$srcdir/${pkgname}"
 
     # fetch third libraries
     git submodule update --init --recursive
