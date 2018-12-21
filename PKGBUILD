@@ -1,4 +1,5 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Cravix < dr dot neemous at gmail dot org >
 
 _pkgname=terminology
