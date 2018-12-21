@@ -1,15 +1,18 @@
 pkgbase = intel-graphics-compiler-git
 	pkgdesc = Intel Graphics Compiler for OpenCL (git version)
-	pkgver = r869.4128b9e
+	pkgver = 2018.12.12.r50.g66ad47d
 	pkgrel = 1
 	url = https://github.com/intel/intel-graphics-compiler/
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = clang
+	makedepends = python
 	makedepends = python2
+	makedepends = python2-pygments
+	makedepends = python2-yaml
+	makedepends = spirv-tools
+	makedepends = clang40
 	depends = gcc-libs
 	depends = ncurses
 	depends = zlib
@@ -20,9 +23,11 @@ pkgbase = intel-graphics-compiler-git
 	source = igc::git+https://github.com/intel/intel-graphics-compiler.git
 	source = llvm_source::git+https://github.com/llvm-mirror/llvm#branch=release_40
 	source = clang_source::git+https://github.com/llvm-mirror/clang#branch=release_40
+	source = llvm7.0.0_source::git+https://github.com/llvm-mirror/llvm#branch=release_70
 	source = llvm_patches::git+https://github.com/intel/llvm-patches
 	source = common_clang::git+https://github.com/intel/opencl-clang
 	source = opencl_headers::git+https://github.com/KhronosGroup/OpenCL-Headers
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
