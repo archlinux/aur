@@ -2,6 +2,7 @@ pkgbase = ttf-press-start-2p
 	pkgdesc = Press Start 2P Font
 	pkgver = 1.0
 	pkgrel = 1
+	url = https://www.dafont.com/press-start-2p.font
 	install = ttf-press-start-2p.install
 	arch = any
 	license = OFL
