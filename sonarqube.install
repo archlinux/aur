@@ -6,7 +6,7 @@ username="sonarqube"
 post_install() {
     systemd-sysusers "${username}.conf"
     systemd-tmpfiles --create "${username}.conf"
-    chown -R "$username:$username" /etc/webapps/$username /run/$username /usr/share/webapps/$username /var/log/$username
+    chown -R "$username:$username" /etc/webapps/$username /usr/share/webapps/$username
 
     echo "Copy /usr/share/doc/sonarqube/99-sonarqube.conf to /etc/sysctl.d/99-sonarqube.conf for required sysctl values (vm.max_map_count and fs.file-max)."
     echo "For further information see https://docs.sonarqube.org/display/SONAR/Requirements#Requirements-Linux"
@@ -19,7 +19,8 @@ pre_upgrade() {
 
 post_upgrade() {
     getent passwd "${username}" >/dev/null 2>&1 || systemd-sysusers "${username}.conf"
-    systemd-tmpfiles --create sonarqube.conf
+    systemd-tmpfiles --create "${username}.conf"
+    chown -R "$username:$username" /etc/webapps/$username /usr/share/webapps/$username
 
     if [ -f /etc/webapps/sonarqube/sonar.properties.pacnew ]; then
         echo "Please check for changes in /etc/webapps/sonarqube/sonar.properties and edit accordingly:"
@@ -29,11 +30,5 @@ post_upgrade() {
     if [ ! -f /etc/sysctl.d/99-sonarqube.conf ]; then
         echo "Copy /usr/share/doc/sonarqube/99-sonarqube.conf to /etc/sysctl.d/99-sonarqube.conf for required sysctl values (vm.max_map_count and fs.file-max)."
         echo "For further information see https://docs.sonarqube.org/display/SONAR/Requirements#Requirements-Linux"
-    fi
-
-    if [ "$(vercmp $2 5.6)" -lt 0 ]; then
-        echo " >> "
-        echo " >> Major version update from 5.2 to 5.6. Please take a look at http://www.sonarqube.org/downloads/ for more information."
-        echo " >> "
     fi
 }
