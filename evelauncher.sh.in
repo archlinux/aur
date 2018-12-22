@@ -81,9 +81,11 @@ check_wine() {
 	    env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg add \
 		'HKEY_CURRENT_USER\Software\Wine\DllOverrides' \
 		/v winemenubuilder.exe /f >/dev/null
-	    if [ $($WINEPATH/wine --version | grep -q 3.2 ;echo $?) != 0 ] ;then
-		env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
-		    $(which winetricks) -q winxp >/dev/null
+	    if [ "x$($WINEPATH/wine --version | grep -q 3.2 ;echo $?)" != "x0" ] ;then
+		if [ "x$($WINEPATH/wine --version | grep -q 4.0 ;echo $?)" != "x0" ] ;then
+		    env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
+			$(which winetricks) -q winxp >/dev/null
+		fi
 	    fi
 	fi
     else
