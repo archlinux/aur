@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-glib2
 	pkgdesc = Low level core library (mingw-w64)
-	pkgver = 2.58.1
-	pkgrel = 2
+	pkgver = 2.58.2
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = any
 	license = LGPL2.1
@@ -15,7 +15,7 @@ pkgbase = mingw-w64-glib2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=a9f5a6fa2fdd6eb2f754709d7e790d24e3ceaa18
+	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=97bcbcb8c2aa0aeee5afd9939efbadbae0c8a8fa
 	source = 0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch
 	source = 0001-win32-Make-the-static-build-work-with-MinGW-when-pos.patch
 	sha256sums = SKIP
