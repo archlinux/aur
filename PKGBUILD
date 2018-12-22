@@ -9,6 +9,8 @@ pkgdesc="A program for improving image files made with a digital camera, test-ve
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
+conflicts=('fotoxx')
+provides=('fotoxx')
 depends=('libraw' 'gtk3' 'libchamplain' 'perl-image-exiftool>=0.8.6' 'xdg-utils')
 optdepends=('rawtherapee: for raw image processing'
 	    'dvd+rw-tools: for burning CDs,DVDs or BlueRays'
