@@ -1,0 +1,15 @@
+pkgbase = juno-theme-git
+	pkgdesc = GTK themes inspired by epic vscode themes
+	pkgver = 6.6242224
+	pkgrel = 1
+	url = https://github.com/EliverLara/Juno
+	arch = any
+	license = GPL
+	optdepends = ttf-roboto: primary font face defined
+	optdepends = ttf-ubuntu-font-family: secondary font face defined
+	optdepends = cantarell-fonts: tertiary font face defined
+	source = Juno::git+https://github.com/EliverLara/Juno.git
+	sha256sums = SKIP
+
+pkgname = juno-theme-git
+
