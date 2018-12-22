@@ -1,14 +1,17 @@
 pkgbase = xtables-geoip-db
-	pkgdesc = GeoIP Database for xtables.
-	pkgver = 0.1
-	pkgrel = 10
+	pkgdesc = GeoIP Database for xtables
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://dev.maxmind.com/geoip/geoip2/geolite2/
 	arch = any
 	license = BSD
 	license = GPL
 	makedepends = perl-text-csv-xs
 	makedepends = perl-net-cidr-lite
-	depends = xtables-addons-dkms
+	source = http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
+	source = xt_geoip_build::https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v3.2/tree/geoip/xt_geoip_build?format=raw
+	sha256sums = SKIP
+	sha256sums = 216cb5a8c018c9db1cbff6b8a788d71d08f1d23dbb4ae60d318fc62fab1a2b46
 
 pkgname = xtables-geoip-db
 
