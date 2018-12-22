@@ -4,7 +4,7 @@
 pkgsubn=Tab-Session-Manager
 pkgname=tab-session-manager-chromium-git
 pkgver=390.80f930e
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome/Chromium extension for Tab Session Manager - git/dev"
 arch=('any')
 url='https://github.com/sienori/Tab-Session-Manager'
