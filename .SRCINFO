@@ -1,0 +1,22 @@
+pkgbase = fotoxx-test
+	pkgdesc = A program for improving image files made with a digital camera, test-version
+	pkgver = 19.0.2018.12.22
+	pkgrel = 1
+	url = http://www.kornelix.net/fotoxx/fotoxx.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libraw
+	depends = gtk3
+	depends = libchamplain
+	depends = perl-image-exiftool>=0.8.6
+	depends = xdg-utils
+	optdepends = rawtherapee: for raw image processing
+	optdepends = dvd+rw-tools: for burning CDs,DVDs or BlueRays
+	optdepends = hugin: for panorama photos
+	options = !makeflags
+	source = http://www.kornelix.net/downloads/tarballs/fotoxx-19.0-test-2018-12-22.tar.gz
+	sha512sums = 72879368be408c74cef8fe91f0f6fa90dce9e70a9fdd167bbe99c080b97c7685cf96b963c669353b861c60faddf861e0d18b0c37036025ff6eac612157674144
+
+pkgname = fotoxx-test
+
