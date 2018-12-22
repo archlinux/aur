@@ -1,7 +1,7 @@
 pkgbase = python-better-apidoc-git
 	pkgdesc = A version of sphinx-apidoc with support for templating.
 	pkgver = 0.2.0.r26.0aa3bb3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/goerz/better-apidoc
 	arch = any
 	license = FreeBSD
