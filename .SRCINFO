@@ -1,0 +1,16 @@
+pkgbase = zgen-git
+	pkgdesc = A lightweight and simple plugin manager for ZSH
+	pkgver = r159.0b669d2
+	pkgrel = 1
+	url = https://github.com/tarjoilija/zgen
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = zsh
+	provides = zgen
+	conflicts = zgen
+	source = git+https://github.com/tarjoilija/zgen
+	md5sums = SKIP
+
+pkgname = zgen-git
+
