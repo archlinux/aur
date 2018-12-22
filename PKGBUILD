@@ -2,7 +2,7 @@
 
 pkgname=gomplate-git
 _pkgname=gomplate
-pkgver=r669.2d77de23
+pkgver=r680.b7670b8e
 pkgrel=1
 pkgdesc='A flexible commandline tool for template rendering.'
 arch=(i686 x86_64)
