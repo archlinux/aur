@@ -865,3 +865,16 @@ Sun Dec 9 02:05:53 2018 +0100
      2018-12-09 e164b762 actionless chore(packaging: ubuntu): add control file with deps for Ubuntu 18.10
      2018-12-08 17d0f99f actionless chore(plugins: materia): update submodule (fix theme generation)
      2018-12-07 8fe5141b poison.vm34 Move and rename color palette
+
+
+Sat Dec 22 23:27:26 2018 +0100
+-------------------------------------------------
+1.8.0           Release 1.8.0
+    
+    Notable changes:
+     2018-12-22 3941b405 actionless chore(packaging: arch): use resvg-git instead of inkscape
+     2018-12-22 eb65b761 actionless fix(plugin_loader): exception formatting if exception args are not all strings
+     2018-12-22 9fdc5012 actionless feat(main, preview): reduce extra paddings in UI
+     2018-12-22 8b80fae4 actionless refactor(plugins: materia): rename TXT_BG to MATERIA_VIEW, BTN_BG to MATERIA_SURFACE, GNOME_SHELL_PANEL_OPACITY to MATERIA_PANEL_OPACITY (and migrate old values on runtime)
+     2018-12-21 1af5ba70 actionless refactor: rename MENU_BG to HDR_BG and MENU_FG to HDR_FG (and migrate old values on runtime)
+     2018-12-21 b4c3f955 actionless chore(plugins: oomox): update submodule (viewport fix again :))

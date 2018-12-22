@@ -1,7 +1,7 @@
 pkgbase = oomox-git
 	pkgdesc = Graphical application for generating different color variations of Oomox(Numix-based), Materia (ex-Flat-Plat) and Arc themes (GTK2, GTK3, Cinnamon, GNOME, Openbox, Xfwm), gnome-colors and ArchDroid icon themes. Have a hack for HiDPI in gtk2.
-	pkgver = 1.7.2.3.r3.g2ef1ae45
-	pkgrel = 2
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://github.com/themix-project/oomox
 	arch = x86_64
 	arch = i686
@@ -25,8 +25,8 @@ pkgbase = oomox-git
 	depends = imagemagick
 	depends = parallel
 	depends = optipng
-	depends = inkscape
 	depends = python-pillow
+	depends = resvg-git
 	optdepends = xorg-xrdb: for the `xresources` theme
 	optdepends = breeze-icons: more fallback icons
 	optdepends = gksu: for applying Spotify theme from GUI without polkit
@@ -37,7 +37,6 @@ pkgbase = oomox-git
 	source = git+https://github.com/themix-project/oomox.git#branch=master
 	source = git+https://github.com/themix-project/oomox-gtk-theme.git#branch=master
 	source = git+https://github.com/nana-4/materia-theme.git#branch=master
-	source = git+https://github.com/NicoHood/arc-theme.git#branch=master
 	source = git+https://github.com/themix-project/archdroid-icon-theme.git#branch=master
 	source = git+https://github.com/themix-project/gnome-colors-icon-theme.git#branch=master
 	source = git+https://github.com/themix-project/oomoxify.git#branch=master

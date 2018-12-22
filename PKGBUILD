@@ -2,8 +2,8 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=oomox-git
-pkgver=1.7.2.3.r3.g2ef1ae45
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Graphical application for generating different color variations
 of Oomox(Numix-based), Materia (ex-Flat-Plat) and Arc themes
 (GTK2, GTK3, Cinnamon, GNOME, Openbox, Xfwm),
@@ -12,13 +12,12 @@ Have a hack for HiDPI in gtk2."
 arch=('x86_64' 'i686')
 url="https://github.com/themix-project/oomox"
 license=('GPL3')
-	#"git+https://github.com/actionless/materia-theme.git#branch=apply-roundness"
-	#"git+https://github.com/actionless/arc-theme.git#branch=oomox"
+	#"git+https://github.com/NicoHood/arc-theme.git#branch=master"
 source=(
 	"git+https://github.com/themix-project/oomox.git#branch=master"
 	"git+https://github.com/themix-project/oomox-gtk-theme.git#branch=master"
 	"git+https://github.com/nana-4/materia-theme.git#branch=master"
-	"git+https://github.com/NicoHood/arc-theme.git#branch=master"
+	#"git+https://github.com/actionless/arc-theme.git#branch=resvg"
 	"git+https://github.com/themix-project/archdroid-icon-theme.git#branch=master"
 	"git+https://github.com/themix-project/gnome-colors-icon-theme.git#branch=master"
 	"git+https://github.com/themix-project/oomoxify.git#branch=master"
@@ -57,8 +56,11 @@ depends=(
 	'imagemagick'  # gnome-colors
 	'parallel'  # materia, arc
 	'optipng'  # materia, arc
-	'inkscape'  # materia, arc
 	'python-pillow'  # import_pil
+
+	'resvg-git'  # materia, arc
+	##or
+	#'inkscape'  # materia, arc
 )
 makedepends=(
 	'git'
