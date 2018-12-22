@@ -49,8 +49,8 @@ build() {
   export CXXFLAGS="$CXXFLAGS -fvisibility=hidden"
 
   MEM=`free -m | head -2 | tail -1 | awk '{printf("%s", $7);}'`
-  if test "$MEM" -lt 200; then MEM=200; fi
-  J=`expr $MEM / 250`
+  if test "$MEM" -lt 300; then MEM=300; fi
+  J=`expr $MEM / 300`
   CPUS=`echo /sys/devices/system/cpu/cpu[0-9]* | wc -w`
   if test "$J" -gt $CPUS; then J=$CPUS; fi
   if test "$J" -lt 1; then J=1; fi
