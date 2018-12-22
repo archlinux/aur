@@ -1,8 +1,8 @@
 pkgbase = white_dune
 	pkgdesc = white_dune X3D/VRML97 tool
-	pkgver = 0.99pl1236
+	pkgver = 0.99pl1238
 	pkgrel = 1
-	url = ftp://ftp.ourproject.org/pub/wdune/white_dune-0.99pl1236.tar.bz2
+	url = ftp://ftp.ourproject.org/pub/wdune/white_dune-0.99pl1238.tar.bz2
 	arch = 86_64
 	license = GPL
 	makedepends = gcc
@@ -42,8 +42,8 @@ pkgbase = white_dune
 	makedepends = curl
 	makedepends = freetype2
 	makedepends = ttf-bitstream-vera
-	source = ftp://ftp.ourproject.org/pub/wdune/white_dune-0.99pl1236.tar.bz2
-	md5sums = c791a4f2c34f5894aafbd602c89b585e
+	source = ftp://ftp.ourproject.org/pub/wdune/white_dune-0.99pl1238.tar.bz2
+	md5sums = 3a3aed1446332b93c07b6834d291e4bb
 
 pkgname = white_dune
 
