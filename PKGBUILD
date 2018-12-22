@@ -2,7 +2,7 @@
 
 pkgname=osquery-git
 pkgver=3.3.1.r1.g5188ce528
-pkgrel=1
+pkgrel=2
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
 url="https://osquery.io"
@@ -21,7 +21,7 @@ conflicts=()
 backup=('etc/osquery/osquery.conf')
 options=(!strip !ccache)
 _gitcommit='5188ce5288abe0e323b8e8bd364f452134a62d00'
-#source=("${pkgname}::git+https://github.com/facebook/osquery"
+#source=("${pkgname}::git+https://github.com/facebook/osquery#branch=master"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
 		"osqueryd.service"
@@ -31,17 +31,17 @@ sha256sums=('SKIP'
             '0c28be3fb234325c3279aa3c02a5b0636db833c06f89ec551b77addb86507ce4'
             'e4b5fc12f116327482f93ee4cc2132c460ed6f0018fe228dac8d06c5da4f1a98')
 
-#pkgver() {
-#	cd ${pkgname}
-#
-#	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#}
-
-prepare() {
+pkgver() {
 	cd ${pkgname}
 
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "${srcdir}/${pkgname}"
+
 	git reset HEAD --hard
-	git submodule update --init
+	git submodule update --init --recursive
 
 	patch -F3 -p1 -i "${srcdir}/arch-linux.patch"
 
@@ -49,11 +49,12 @@ prepare() {
 	find . -type f -name '*deb_package*' -delete
 	find . -type f -name '*rpm_package*' -delete
 
-	make format_master
+	#make format_master
+	make format_all
 }
 
 build() {
-	cd ${pkgname}
+	cd "${srcdir}/${pkgname}"
 
 	#SANITIZE_THREAD=True # Add -fsanitize=thread when using "make sanitize"
 	#OPTIMIZED=True # Enable specific CPU optimizations (not recommended)
@@ -63,8 +64,7 @@ build() {
 	#SQLITE_DEBUG=True # Enable SQLite query debugging (very verbose!)
 	#export SKIP_TESTS=True SKIP_BENCHMARKS=True
 
-	export CC="/usr/bin/gcc"
-	export CXX="/usr/bin/g++"
+	export CC="/usr/bin/gcc" CXX="/usr/bin/g++"
 	export SKIP_TESTS=True SKIP_BENCHMARKS=True SKIP_SMART=True
 
 	[[ -z $DEBUG ]] || unset DEBUG
@@ -81,7 +81,7 @@ build() {
 }
 
 package() {
-	cd ${pkgname}
+	cd "${srcdir}/${pkgname}"
 
 	make DESTDIR="${pkgdir}" install
 
