@@ -42,5 +42,7 @@ check() {
 package() {
 	echo "Packaging"
 	mkdir -p "../pkg/${pkgname}/usr/share/java"
+	mkdir -p "../pkg/${pkgname}/bin"
         cp ${pkgname}-${pkgver}/build/libs/*.jar "../pkg/${pkgname}/usr/share/java/"
+	cp ${pkgname}-${pkgver}/build/libs/jaybar "../pkg/${pkgname}/bin/"
 }
