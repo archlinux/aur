@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com
 
 pkgname=double-conversion-git
-pkgver=2.0.1.r102.g9a8e518
+pkgver=3.1.0.r5.g4b2a7f3
 pkgrel=1
 pkgdesc='Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.'
 arch=(i686 x86_64)
@@ -9,38 +9,34 @@ url='https://github.com/google/double-conversion'
 license=(BSD)
 conflicts=(double-conversion)
 provides=(double-conversion)
-replaces=(double-conversion)
 depends=(gcc-libs)
 makedepends=(git scons cmake)
-source=(git+https://github.com/google/double-conversion.git)
+source=("${pkgname}::git+https://github.com/google/double-conversion.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}"/double-conversion
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${srcdir}/${pkgname}"
+
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	mkdir -p build
 }
 
 build() {
-  cd "${srcdir}"/double-conversion
-  cmake . \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DBUILD_SHARED_LIBS=ON \
-      -DCMAKE_INSTALL_LIBDIR=lib
-  make
-}
+	cd build
 
-check() {
-  cd "${srcdir}"/double-conversion
-  cd test
-  cmake .
-# Currently tests fail
-#  make all
+	cmake ../${pkgname} \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_SHARED_LIBS=ON
+	make
 }
 
 package () {
-  cd "${srcdir}"/double-conversion
-  make DESTDIR="$pkgdir" install
+	cd build
 
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/double-conversion/LICENSE
+	make DESTDIR="${pkgdir}" install
+
+	install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
