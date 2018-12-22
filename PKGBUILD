@@ -2,7 +2,7 @@
 # Contributor: Sebastien Chassot (sinux) <seba.ptl@sinux.net>
 
 pkgname=pothos-git
-pkgver=r2989.cefd4db6
+pkgver=r3024.4f5f487f
 pkgrel=1
 pkgdesc="The Pothos data-flow framework"
 arch=('i686' 'x86_64')
@@ -31,6 +31,8 @@ prepare() {
     git submodule init
     git submodule deinit poco
     git submodule update --recursive
+    # Init submodules in plotters
+    git submodule update --init --recursive plotters
 }
 
 build() {
