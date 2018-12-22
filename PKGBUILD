@@ -3,7 +3,7 @@
 pkgname=python-thinc-git
 _origpkgname=thinc
 pkgver=6.12.1.r2400.a6badde8
-pkgrel=2
+pkgrel=3
 pkgdesc="Practical Machine Learning for NLP"
 arch=("x86_64")
 url="https://github.com/explosion/thinc"
@@ -16,16 +16,17 @@ depends=('cython'
          'python-wrapt'
          'python-plac'
          'python-tqdm'
-         'python-srsly'
-         'python-wasabi'
          'python-six'
-         'python'
+         'python-dill'
          'python-hypothesis'
          'python-pytest'
          'python-mock'
          'python-blis'
-         'flake8'
-)
+         'python-msgpack-numpy'
+         'python-msgpack'
+         'python-cytoolz'
+        )
+
 makedepends=('git' 'python-setuptools')
 optdepends=('python-spacy: examples')
 provides=('python-thinc')
