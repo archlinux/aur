@@ -1,11 +1,12 @@
 pkgbase = python-msgpack-numpy-git
 	pkgdesc = Python 3 package that provides encoding and decoding routines that enable the serialization and deserialization of numerical and array data types provided by numpy using the highly efficient msgpack format.
 	pkgver = 0.4.4.2.r95.ff6901d
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lebedov/msgpack-numpy
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-numpy
 	depends = python-msgpack

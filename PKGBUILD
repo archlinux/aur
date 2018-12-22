@@ -3,7 +3,7 @@
 pkgname=python-msgpack-numpy-git
 pkgver=0.4.4.2.r95.ff6901d
 _gitname=msgpack-numpy
-pkgrel=3
+pkgrel=4
 pkgdesc="Python 3 package that provides encoding and decoding routines that enable the serialization and deserialization of numerical and array data types provided by numpy using the highly efficient msgpack format."
 arch=('any')
 url='https://github.com/lebedov/msgpack-numpy'
@@ -13,7 +13,7 @@ depends=('python'
          'python-msgpack')
 source=('git+https://github.com/lebedov/msgpack-numpy.git')
 sha256sums=('SKIP')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=('python-msgpack-numpy')
 conflicts=('python-msgpack-numpy')
 
