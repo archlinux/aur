@@ -18,7 +18,7 @@ _microarchitecture=0
 ## Archlinux and Xanmod enable it by default.
 ## Set variable "use_numa" to: n to disable (possibly increase performance)
 ##                             y to enable  (stock default)
-if [ -z ${_numa+x} ]; then
+if [ -z ${use_numa+x} ]; then
   use_numa=y
 fi
 ##
@@ -26,21 +26,21 @@ fi
 ## Stock Archlinux and Xanmod have this enabled. 
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
 ##                                y to enable  (stock default)
-if [ -z ${_tracers+x} ]; then
+if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 ##
 ## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
 ## Set variable "use_pds" to: n to disable (stock Xanmod)
 ##                            y to enable
-if [ -z ${_pds+x} ]; then
+if [ -z ${use_pds+x} ]; then
   use_pds=n
 fi
 
 pkgbase=linux-xanmod-lts
 _srcname=linux
-pkgver=4.14.89
-xanmod=53
+pkgver=4.14.90
+xanmod=54
 pkgrel=1
 arch=(x86_64)
 url="http://www.xanmod.org/"
@@ -65,7 +65,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 )
 for _patch in ${arch_patches[@]} ; do source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux-lts&id=${arch_config_trunk}") ; done
 
-sha256sums=('ef30d9488923f0e22896dcffde4c3f8fd73fa3e1f67601720b30e9960f87fbda'
+sha256sums=('0729e61a3a08041f3ba3ecb31339e3cd01c7c59bbf2a85494c25f0e804a2c008'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
