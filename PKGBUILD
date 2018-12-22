@@ -1,38 +1,36 @@
-# Maintainer: Steve Holmes <steve.holmes88@gmail.com>
-# Contributers: Chris Brannon <cmbrannon79@gmail.com>
+# Maintainer: erik-pro <aarnaarn2@gmail.com>
+# Contributor: Steve Holmes <steve.holmes88@gmail.com>
+# Contributor: Chris Brannon <cmbrannon79@gmail.com>
 pkgname=emacspeak
-pkgver=42.0
-pkgrel=1
+pkgver=49.0
+pkgrel=0
 pkgdesc="Emacs extension that provides spoken output"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://emacspeak.sf.net/"
 license=('GPL' 'LGPL' 'APACHE')
 depends=(emacs
 	 'tcl>=8.6'
-	 'tcl<8.7'
 	 'tclx'
+	 'lesstif'
 	 'espeak')
 optdepends=('eflite: software speech via the FLite TTS engine'
             'python: Google client, and wrapper for Emacspeak speech servers.')
 install='emacspeak.install'
 source=("https://github.com/tvraman/emacspeak/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('cbf0fb61180120d6eb18af572dae4606')
+md5sums=('24a73d020c434e539ac88ea2041898b6  emacspeak-49.0.tar.bz2
+')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   sed -i -e 's|/etc/info-dir|$(DESTDIR)/etc/info-dir|g' info/Makefile
-  rm -f lisp/g-client/*.elc
-  rm -f sounds/default-8k/*.elc
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   make config
   make
-
   # This one isn't compiled by default, but a lot of folks use it.
-  cd servers/linux-espeak
-  make TCL_VERSION=8.6
+  make espeak
 }
 
 package() {

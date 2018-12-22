@@ -1,23 +1,22 @@
 pkgbase = emacspeak
 	pkgdesc = Emacs extension that provides spoken output
-	pkgver = 42.0
-	pkgrel = 1
+	pkgver = 49.0
+	pkgrel = 0
 	url = http://emacspeak.sf.net/
 	install = emacspeak.install
-	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	license = APACHE
 	depends = emacs
 	depends = tcl>=8.6
-	depends = tcl<8.7
 	depends = tclx
+	depends = lesstif
 	depends = espeak
 	optdepends = eflite: software speech via the FLite TTS engine
 	optdepends = python: Google client, and wrapper for Emacspeak speech servers.
-	source = https://github.com/tvraman/emacspeak/releases/download/42.0/emacspeak-42.0.tar.bz2
-	md5sums = cbf0fb61180120d6eb18af572dae4606
+	source = https://github.com/tvraman/emacspeak/releases/download/49.0/emacspeak-49.0.tar.bz2
+	md5sums = 24a73d020c434e539ac88ea2041898b6 emacspeak-49.0.tar.bz2
 
 pkgname = emacspeak
 
