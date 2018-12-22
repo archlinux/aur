@@ -1,0 +1,48 @@
+# Maintainer: Sorin-Mihai Vârgolici <sorin-mihai@vargolici.com>
+pkgname=acct
+pkgver=6.6.4
+pkgrel=1
+pkgdesc="Utilities for monitoring process activities"
+arch=(x86_64)
+url="https://www.gnu.org/software/$pkgname"
+license=('GPL3')
+depends=('glibc' 'sh')
+provides=('psacct')
+conflicts=('psacct')
+backup=(etc/logrotate.d/acct)
+source=(http://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz{,.sig}
+        ${pkgname}
+        ${pkgname}on-create
+        ${pkgname}.service)
+md5sums=('7caf66ed43edd11f3a84b9dbac7ebbe7'
+         'SKIP'
+         '4a980513fcb4ebf104d85897be052e73'
+         '285408e0d50c2b14768020be00b3f0e4'
+         'e838c53be7be5b7498f88ed4efca4091')
+sha256sums=('4c15bf2b58b16378bcc83f70e77d4d40ab0b194acf2ebeefdb507f151faa663f'
+            'SKIP'
+            '75155d0795bf001938519c108b747708c4508f532fc7f185c0d1c5d4a48f1c6d'
+            '4a3fc2603ef35b839431a0c4e81d80928d01c75ecfd10692953e9f7baf6b2b71'
+            '9f899b4b3ea05de6e6125779d96f8b83e4be341f255fa4c9c3cd7f34ccb56d67')
+sha512sums=('413aa446caece8fd773c92e2995bbaa034f63dd0ced521815a676c49f118e02982862b9c0ab7e60be5212c87d1e82ba6325bda212cf4857392a068d359a1e2c2'
+            'SKIP'
+            '0cecdd68acc729ecb172dcfd4389b9eff6a69aad522e893643af632e67ea637a80531c8b8b2e14094ac6855aec07568e8ccb490cb87a71a31d570ce22e9c389a'
+            'e0cc7c8af4d307a83263275ae6f5178b880afcc04721d1e5f4dde5366d188f18ae43c8014332cfedc4dc00fe2d4f2c0ba6ccad75f799d60c56cd8e9336c79053'
+            '382757159ffaac68253541e66e048eb18d9725cd2e21af146b47535c4299b579508204271835be44b600942f4748e835526c4847ed2aa796408d68aab380b12a')
+validpgpkeys=('747774305F9DCC9504703CEFB73CBC7708FA8C10')	# Markus Gothe <nietzsche@lysator.liu.se>
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure --prefix=/usr --sbindir=/usr/bin
+  make
+}
+
+package() {
+  make -C "$srcdir/$pkgname-$pkgver" DESTDIR="$pkgdir" install
+  rm "$pkgdir/usr/bin/last" "$pkgdir/usr/share/man/man1/last.1"
+  install -Dm644 "${srcdir}/$pkgname-$pkgver/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm700 "${pkgdir}/var/log/account"
+  install -Dm644 "${pkgname}" "${pkgdir}/etc/logrotate.d/${pkgname}"
+  install -Dm755 "${pkgname}on-create" "${pkgdir}/usr/lib/${pkgname}/${pkgname}on-create"
+  install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+}
