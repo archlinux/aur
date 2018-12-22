@@ -1,5 +1,5 @@
 diff --git a/src/libs/utils/basetreeview.cpp b/src/libs/utils/basetreeview.cpp
-index bae4c16fef..227d137766 100644
+index bae4c16fef..3fc12130b7 100644
 --- a/src/libs/utils/basetreeview.cpp
 +++ b/src/libs/utils/basetreeview.cpp
 @@ -55,6 +55,42 @@ public:
@@ -63,11 +63,19 @@ index bae4c16fef..227d137766 100644
      void toggleColumnWidth(int logicalIndex)
      {
          QHeaderView *h = q->header();
-@@ -212,10 +259,64 @@ public:
+@@ -211,11 +258,72 @@ public:
+             int minSize = 10 * fm.width(QLatin1Char('x'));
              targetSize = qMax(minSize, headerSize);
          }
++
++        // Prevent rebalance as part of this resize.
++        m_processingSpans = true;
          h->resizeSection(logicalIndex, targetSize);
++        m_processingSpans = false;
++
++        // Now trigger a rebalance so it resizes the span column. (if set)
 +        rebalanceColumns();
++
          m_userHandled.remove(logicalIndex); // Reset.
          saveState();
      }
@@ -128,7 +136,7 @@ index bae4c16fef..227d137766 100644
  public:
      BaseTreeView *q;
      QMap<int, int> m_userHandled; // column -> width, "not present" means "automatic"
-@@ -224,6 +325,8 @@ public:
+@@ -224,6 +332,8 @@ public:
      QString m_settingsKey;
      bool m_expectUserChanges = false;
      ProgressIndicator *m_progressIndicator = nullptr;
@@ -137,7 +145,7 @@ index bae4c16fef..227d137766 100644
  };
  
  class BaseTreeViewDelegate : public QItemDelegate
-@@ -369,6 +472,12 @@ void BaseTreeView::mouseDoubleClickEvent(QMouseEvent *ev)
+@@ -369,6 +479,12 @@ void BaseTreeView::mouseDoubleClickEvent(QMouseEvent *ev)
          TreeView::mouseDoubleClickEvent(ev);
  }
  
@@ -150,7 +158,7 @@ index bae4c16fef..227d137766 100644
  void BaseTreeView::showEvent(QShowEvent *ev)
  {
      emit aboutToShow();
-@@ -416,6 +525,21 @@ void BaseTreeView::resizeColumns()
+@@ -416,6 +532,21 @@ void BaseTreeView::resizeColumns()
      d->resizeColumns();
  }
  

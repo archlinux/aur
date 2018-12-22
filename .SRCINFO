@@ -43,7 +43,7 @@ pkgbase = qtcreator-fixed-themes
 	sha256sums = f938a72cc79c9ed8de07da8af79b170f67448a74dbd3228dd3de7e4855ed633d
 	sha256sums = ba6a48156cc14935a0dea12e8282bdfb1936e0c67216c660eef41bd5b5a44d4b
 	sha256sums = 12dad35519cfc62119b0af21b31a96149081ae1ee6d6e7cb65ee80f3774ff06f
-	sha256sums = 67835ac127ec440c1bf227f9ecc1ffb3a0c4ce2c89213a09af5cf13b99b773cf
+	sha256sums = cf378a8b591a10646ad89d101375d8b04844c76a83d6c9c960036ba6a3b122e3
 
 pkgname = qtcreator-fixed-themes
 
