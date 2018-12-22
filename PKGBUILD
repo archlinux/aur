@@ -4,7 +4,7 @@
 
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=4.19.11-arch1
+_srcver=4.19.12-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
