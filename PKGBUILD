@@ -6,7 +6,7 @@
 #   gpg --recv-keys 3CE464558A84FDC69DB40CFB090B11993D9AEBB5
 
 pkgname=guix
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A purely functional package manager for the GNU system"
 arch=('x86_64' 'i686' 'armv7h')
@@ -21,6 +21,7 @@ makedepends=(
   'help2man')
 depends=(
   'guile>=2.0.9'
+  'guile-gcrypt'
   'guile-git-lib'
   'guile-sqlite3'
   'sqlite>=3.6.19'
@@ -47,8 +48,8 @@ source=(
 )
 install="${pkgname}.install"
 sha1sums=(
-  'b971e19b539f3f27f675bc1d7cfc126065a7d61c'
-  '1284dfdebc290c7d02921b0251ce2347a9263bb9'
+  '62f665dc02ea4c575f75b6728d6ec62875206846'
+  'ae4ded76633ff0d37c5297f457542cee2e6ee205'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -141,7 +142,7 @@ package() {
 	mv "${guix_daemon_default}" "${guix_daemon_upstream}"
 	mv "${guix_publish_default}" "${guix_publish_upstream}"
 	# Generate default systemd service files from upstream ones by fixing paths
-	local guix_profile_root="/var/guix/profiles/per-user/root/guix-profile"
+	local guix_profile_root="/var/guix/profiles/per-user/root/current-guix"
 	sed -e "s|^ExecStart=${guix_profile_root}/bin|ExecStart=/usr/bin|" \
 		-e "s|^Description=\(.*\)|Description=\1 (default)|" \
 		-e "/^Environment=/d" "${guix_daemon_upstream}" \
