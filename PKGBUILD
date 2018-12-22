@@ -12,7 +12,7 @@
 _qt_module=qtvirtualkeyboard
 pkgname="mingw-w64-qt5-virtualkeyboard"
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Virtual keyboard framework (translations, mingw-w64)"
 depends=('mingw-w64-qt5-declarative' 'mingw-w64-pkg-config' 'mingw-w64-qt5-svg')
