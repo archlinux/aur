@@ -37,6 +37,7 @@ pkgbase = oomox-git
 	source = git+https://github.com/themix-project/oomox.git#branch=master
 	source = git+https://github.com/themix-project/oomox-gtk-theme.git#branch=master
 	source = git+https://github.com/nana-4/materia-theme.git#branch=master
+	source = git+https://github.com/actionless/arc-theme.git#branch=resvg
 	source = git+https://github.com/themix-project/archdroid-icon-theme.git#branch=master
 	source = git+https://github.com/themix-project/gnome-colors-icon-theme.git#branch=master
 	source = git+https://github.com/themix-project/oomoxify.git#branch=master
