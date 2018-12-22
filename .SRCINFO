@@ -1,8 +1,8 @@
 pkgbase = solarus
 	pkgdesc = An open-source Zelda-like 2D game engine used by the games zsxd and zsdx.
-	pkgver = 1.5.3
-	pkgrel = 2
-	url = http://www.solarus-engine.org/
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = http://www.solarus-games.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -17,6 +17,7 @@ pkgbase = solarus
 	depends = libmodplug
 	depends = qt5-tools
 	depends = qt5-base
+	depends = libglvnd
 	optdepends = zsxd
 	optdepends = zsdx
 	optdepends = zelda-roth-se
@@ -29,8 +30,8 @@ pkgbase = solarus
 	replaces = zsdxdemo-de
 	replaces = zsdxdemo-fr
 	replaces = solarus-git
-	source = http://solarus-games.org/downloads/solarus/solarus-1.5.3-src.tar.gz
-	md5sums = 24e0e889940472575a2e81a7dbdcbdbb
+	source = http://solarus-games.org/downloads/solarus/solarus-1.6.0-src.tar.gz
+	md5sums = c7d81c934109520cac39b9c9e434059d
 
 pkgname = solarus
 
