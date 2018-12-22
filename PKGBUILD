@@ -8,55 +8,74 @@
 # files will be provided.
 
 _year=2018
-_release=R1
-_sdkver=16.8
+_release=R2
+_sdkver=16.9
+_build=00183
+_oclbuild=00158
+_vcp=14959
+
 pkgname=intel-media-server-studio
 pkgver="${_year}.${_release}"
-pkgrel=5
+pkgrel=1
 pkgdesc='Intel Media Server Studio (only SDK files, no kernel patches, no system modifications)'
 arch=('x86_64')
 url='https://software.intel.com/en-us/intel-media-server-studio/'
 license=('custom')
-depends=('numactl')
+depends=(
+    # official repositories:
+        'ocl-icd' 'linux-firmware' 'libxext' 'gcc-libs' 'zlib' 'libglvnd'
+        'libdrm' 'libva' 'libpciaccess' 'libxfixes'
+    # AUR:
+        'ncurses5-compat-libs'
+)
 makedepends=('poppler')
-provides=('intel-opencl' 'intel-opencl-runtime' 'intel-media-sdk')
-conflicts=('intel-opencl' 'intel-opencl-runtime' 'intel-media-sdk')
+provides=('intel-media-sdk' 'compute-runtime')
+conflicts=('intel-media-sdk' 'compute-runtime' 'intel-graphics-compiler'
+           'intel-opencl' 'intel-opencl-runtime')
 options=('!strip')
-source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/12841/MediaServerStudioEssentials${_year}${_release}.tar.gz")
-sha256sums=('2bb4a8d2235203f4943a19398feb51c4a07b9f60f1e11da8d4aff2b8c7eb2187')
+_srcfile="MediaServerStudioEssentials${_year}_${_sdkver}_${_build}.tar.gz"
+source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/${_vcp}/${_srcfile}")
+sha256sums=('9540918283798af47dce7a1300433c3c3850ab198a4a24789909fcacffe08a25')
+
+_basedir="${_srcfile/%.tar.gz/}"
+_sdkdir="${_basedir}/SDK${_year}Production${_sdkver}/generic"
 
 prepare() {
-    cd "MediaServerStudioEssentials${_year}${_release}"
+    cd "$_basedir"
     bsdtar -xf "SDK${_year}Production${_sdkver}.tar.gz"
     
-    cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}/SDK${_year}Production${_sdkver}/Generic"
-    bsdtar -xf intel-linux-media_generic_"$_sdkver"-*_64bit.tar.gz
-    bsdtar -xf intel-opencl-cpu-*.x86_64.tar.xz
-    bsdtar -xf intel-opencl-devel-*.x86_64.tar.xz
-    bsdtar -xf intel-opencl-${_sdkver}*.x86_64.tar.xz
+    cd "${srcdir}/${_sdkdir}"
+    bsdtar -xf "intel-linux-media-generic-${_sdkver}-${_build}.tar.gz"
+    bsdtar -xf "intel-opencl-$_sdkver-${_oclbuild}.tar.gz"
     
     # create a license file
-    cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}"
+    cd "${srcdir}/${_basedir}"
     pdftotext -layout 'Intel(R)_Media_Server_Studio_EULA.pdf'
 }
 
 package() {
     # directories creation
+    mkdir -p "$pkgdir"/etc
     mkdir -p "$pkgdir"/opt/intel
     mkdir -p "$pkgdir"/usr/{include,lib}/"$pkgname"
     
-    # copy SDK files
-    cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}/SDK${_year}Production${_sdkver}/Generic"
+    # media sdk
+    cd "${_sdkdir}/intel-linux-media-generic-${_sdkver}-${_build}"
     cp -a opt/intel/common   "${pkgdir}/opt/intel"
     cp -a opt/intel/mediasdk "${pkgdir}/opt/intel"
-    cp -a opt/intel/opencl   "${pkgdir}/opt/intel"
-    cp -a etc/OpenCL         "${pkgdir}/etc"
     cp -a etc/ld.so.conf.d   "${pkgdir}/etc"
     cp -a usr/include/*      "${pkgdir}/usr/include/${pkgname}"
     cp -a usr/lib64/*        "${pkgdir}/usr/lib/${pkgname}"
     install -D -m644 etc/profile.d/*.sh -t "${pkgdir}/etc/profile.d"
+    ln -s ../samples/_bin/x64/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib64/libcttmetrics.so"
     sed -i '2,3s/^/#/' "${pkgdir}/etc/profile.d/intel-mediasdk.sh"
-    sed -i '1s/^/#/'   "${pkgdir}/etc/profile.d/libintelopencl.sh"
+    
+    # opencl
+    cd "${srcdir}/${_sdkdir}/intel-opencl-${_sdkver}-${_oclbuild}"
+    cp -a usr/local/lib64/* "${pkgdir}/usr/lib"
+    cp -a etc/ld.so.conf.d  "${pkgdir}/etc"
+    cp -a etc/OpenCL        "${pkgdir}/etc"
+    sed -i 's|local/||;s|64||' "${pkgdir}/etc/"{ld.so.conf.d/libintelopencl.conf,OpenCL/vendors/intel.icd}
     
     # add 'mfx' include folder for ffmpeg compatibility
     local _header
@@ -69,19 +88,19 @@ package() {
         cd ..
     done
     
-    # copy license files
-    cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}"
-    install -D -m644  'Intel(R)_Media_Server_Studio_EULA.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644  'redist.txt'                            "${pkgdir}/usr/share/licenses/${pkgname}/redist.txt"
-    mv "${pkgdir}/opt/intel/opencl/LICENSE"                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.opencl"
-    mv "${pkgdir}/opt/intel/opencl/NOTICES"                   "${pkgdir}/usr/share/licenses/${pkgname}/NOTICES.opencl"
+    # license
+    cd "${srcdir}/${_basedir}"
+    install -D -m644 'Intel(R)_Media_Server_Studio_EULA.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 'redist.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cd "${srcdir}/${_sdkdir}"
+    install -D -m644 NOTICES.TXT "${pkgdir}/usr/share/licenses/${pkgname}/NOTICES"
     
-    # create a pkgconfig file for libmfx
+    # create a pkg-config file for libmfx
     local _mfxver_major
     local _mfxver_minor
     local _mfxver
-    _mfxver_major="$(grep '#define MFX_VERSION_MAJOR' "${pkgdir}/opt/intel/mediasdk/include/mfxdefs.h" | awk '{ print $3 }')"
-    _mfxver_minor="$(grep '#define MFX_VERSION_MINOR' "${pkgdir}/opt/intel/mediasdk/include/mfxdefs.h" | awk '{ print $3 }')"
+    _mfxver_major="$(grep '#define MFX_VERSION_MAJOR' "${pkgdir}/opt/intel/mediasdk/include/mfxdefs.h" | head -n1 | awk '{ print $3 }')"
+    _mfxver_minor="$(grep '#define MFX_VERSION_MINOR' "${pkgdir}/opt/intel/mediasdk/include/mfxdefs.h" | head -n1 | awk '{ print $3 }')"
     _mfxver="${_mfxver_major}.${_mfxver_minor}"
     mkdir -p  "${pkgdir}/opt/intel/mediasdk/lib/pkgconfig"
     cat << __EOF__ >"${pkgdir}/opt/intel/mediasdk/lib/pkgconfig/libmfx.pc"
@@ -96,4 +115,13 @@ Version: ${_mfxver}
 Libs: -L\${libdir} -lmfx -lva -lstdc++ -ldl -lva-drm -ldrm
 Cflags: -I\${includedir} -I/usr/include/libdrm
 __EOF__
+    
+    # fix pkg-config files for intel products
+    local _file
+    for _file in "${pkgdir}/usr/lib/intel-media-server-studio/pkgconfig/"{libva-drm,libva-glx,libva-x11,libva}.pc
+    do
+        sed -i "/libdir=/s|\(libdir=\).*|\1/usr/lib/${pkgname}|" "$_file"
+        sed -i "/includedir=/s|\(includedir=\).*|\1\${prefix}/include/${pkgname}|" "$_file"
+    done
+    sed -i '/driverdir=/s/64//' "${pkgdir}/usr/lib/intel-media-server-studio/pkgconfig/libva.pc"
 }
