@@ -7,7 +7,6 @@ pkgbase = autovpn-git
 	license = GPL3
 	makedepends = git
 	makedepends = go-pie
-	depends = go
 	depends = openvpn
 	provides = autovpn
 	conflicts = autovpn
