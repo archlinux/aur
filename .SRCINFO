@@ -1,7 +1,7 @@
 pkgbase = osquery-git
 	pkgdesc = SQL powered operating system instrumentation, monitoring, and analytics.
 	pkgver = 3.3.1.r1.g5188ce528
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osquery.io
 	arch = i686
 	arch = x86_64
@@ -49,6 +49,7 @@ pkgbase = osquery-git
 	makedepends = boost-libs>=1.65.1
 	makedepends = libc++
 	makedepends = cppcheck
+	makedepends = cscope
 	makedepends = ssdeep
 	makedepends = libelfin-git
 	depends = wget

@@ -2,7 +2,7 @@
 
 pkgname=osquery-git
 pkgver=3.3.1.r1.g5188ce528
-pkgrel=2
+pkgrel=3
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
 url="https://osquery.io"
@@ -16,7 +16,7 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 			 'gtest' 'gmock' 'lldpd' 'lld' 'zstd' 'rapidjson' 'apt' 'dpkg'
 			 'rpm-org' 'python2-jinja' 'librdkafka-git' 'augeas>=1.9.0'
 			 'boost>=1.65.1' 'boost-libs>=1.65.1' 'libc++' 'cppcheck'
-			 'ssdeep' 'libelfin-git')
+			 'cscope' 'ssdeep' 'libelfin-git')
 conflicts=()
 backup=('etc/osquery/osquery.conf')
 options=(!strip !ccache)
@@ -49,6 +49,8 @@ prepare() {
 	find . -type f -name '*deb_package*' -delete
 	find . -type f -name '*rpm_package*' -delete
 
+	export SKIP_TESTS=True SKIP_BENCHMARKS=True SKIP_SMART=True
+
 	#make format_master
 	make format_all
 }
@@ -72,7 +74,6 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_CXX_FLAGS="-I/usr/include/libxml2" \
 		-DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2 \
-		-DBUILD_GMOCK=OFF \
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 
 	#find . -type f -name link.txt -exec sed -i -re 's/Bstatic -lgflags/Bdynamic -lgflags/g' "{}" \;
