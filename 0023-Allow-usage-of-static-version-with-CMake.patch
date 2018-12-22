@@ -1,4 +1,4 @@
-From 682d934b6365e11caca6a2ec45ce97f1888b2806 Mon Sep 17 00:00:00 2001
+From d5b5246f2422b82b55dd464964884ef31a7fa36c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Aug 2017 21:14:26 +0200
 Subject: [PATCH 23/33] Allow usage of static version with CMake
@@ -12,13 +12,13 @@ installed in the same prefix
    via regular find_package(Qt5Core)
 ---
  mkspecs/features/create_cmake.prf             | 103 +++---
- .../data/cmake/Qt5BasicConfig.cmake.in        | 298 ++++++++++++------
+ .../data/cmake/Qt5BasicConfig.cmake.in        | 302 ++++++++++++------
  .../data/cmake/Qt5PluginTarget.cmake.in       |  18 +-
  .../cmake/Qt5StaticOnlyRedirection.cmake.in   |  11 +
  src/corelib/Qt5CoreConfigExtras.cmake.in      |  24 +-
  src/gui/Qt5GuiConfigExtras.cmake.in           |   8 +-
  src/testlib/Qt5TestConfigExtras.cmake.in      |   2 +-
- 7 files changed, 313 insertions(+), 151 deletions(-)
+ 7 files changed, 315 insertions(+), 153 deletions(-)
  create mode 100644 mkspecs/features/data/cmake/Qt5StaticOnlyRedirection.cmake.in
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
@@ -244,7 +244,7 @@ index 2a94964b49..839a51f377 100644
  # We are generating cmake files. Most developers of Qt are not aware of cmake,
  # so we require automatic tests to be available. The only module which should
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-index 15d8b8372e..3492133d9b 100644
+index 15d8b8372e..939e55dfd8 100644
 --- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 @@ -3,6 +3,33 @@ if (CMAKE_VERSION VERSION_LESS 3.1.0)
@@ -589,7 +589,7 @@ index 15d8b8372e..3492133d9b 100644
      macro(_process_prl_file PRL_FILE_LOCATION CONFIGURATION)
          if (EXISTS \"${PRL_FILE_LOCATION}\")
              file(STRINGS \"${PRL_FILE_LOCATION}\" prl_strings REGEX \"QMAKE_PRL_LIBS_FOR_CMAKE\")
-@@ -257,34 +343,45 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -257,37 +343,48 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
      endmacro()
  
  !!IF isEmpty(CMAKE_LIB_DIR_IS_ABSOLUTE)
@@ -643,8 +643,13 @@ index 15d8b8372e..3492133d9b 100644
 +        INTERFACE_COMPILE_DEFINITIONS $${MODULE_DEFINES})
 +!!ENDIF
  
-     set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY INTERFACE_QT_ENABLED_FEATURES $$join(QT.$${MODULE}.enabled_features, ";"))
-     set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY INTERFACE_QT_DISABLED_FEATURES $$join(QT.$${MODULE}.disabled_features, ";"))
+-    set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY INTERFACE_QT_ENABLED_FEATURES $$join(QT.$${MODULE}.enabled_features, ";"))
+-    set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY INTERFACE_QT_DISABLED_FEATURES $$join(QT.$${MODULE}.disabled_features, ";"))
++    set_property(TARGET ${QT_VARIANT_PREFIX}Qt5::$${CMAKE_MODULE_NAME} PROPERTY INTERFACE_QT_ENABLED_FEATURES $$join(QT.$${MODULE}.enabled_features, ";"))
++    set_property(TARGET ${QT_VARIANT_PREFIX}Qt5::$${CMAKE_MODULE_NAME} PROPERTY INTERFACE_QT_DISABLED_FEATURES $$join(QT.$${MODULE}.disabled_features, ";"))
+ 
+     # Find plugin targets
+     file(GLOB pluginTargetsMaybe \"${CMAKE_CURRENT_LIST_DIR}/*Qt5$${CMAKE_MODULE_NAME}_*.cmake\")
 @@ -301,7 +398,11 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
          endforeach()
      endif()
@@ -992,5 +997,5 @@ index 2a575958ae..ca0e3be3b5 100644
      INTERFACE_COMPILE_DEFINITIONS QT_TESTCASE_BUILDDIR=\\\"\${CMAKE_BINARY_DIR}\\\"
  )
 -- 
-2.19.2
+2.20.1
 
