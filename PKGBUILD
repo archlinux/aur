@@ -3,7 +3,7 @@
 pkgname=ant-theme-git
 _pkgname=Ant
 pkgver=56.3c787e3
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat and light theme with a modern look"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
@@ -26,7 +26,7 @@ build() {
 	export THEME_FONT_FACE="${THEME_FONT_FACE:-Roboto}"
 	export THEME_FONT_SIZE="${THEME_FONT_SIZE:-10}"
 
-	msg2 "To customize the font size for gnome-shell, build this pacakge"
+	msg2 "To customize the font size for gnome-shell, build this package"
 	msg2 "with the variables below set to the desired font family and size"
 	msg2 "- THEME_FONT_FACE (default font family is Roboto)"
 	msg2 "- THEME_FONT_SIZE (default font point size is 10)"
