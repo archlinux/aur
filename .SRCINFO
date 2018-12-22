@@ -1,6 +1,6 @@
 pkgbase = pext-git
 	pkgdesc = Python-based extendable tool
-	pkgver = 0.17
+	pkgver = 0.22
 	pkgrel = 1
 	url = https://pext.hackerchick.me/
 	arch = any

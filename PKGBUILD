@@ -1,8 +1,8 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: Abhishek Mudgal
 
 pkgname=pext-git
 _pkgname=Pext
-pkgver=0.17
+pkgver=0.22
 pkgrel=1
 pkgdesc='Python-based extendable tool'
 url='https://pext.hackerchick.me/'
