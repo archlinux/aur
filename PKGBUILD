@@ -13,7 +13,7 @@ depends=('qt5-base' 'hicolor-icon-theme')
 source=('https://download.opendesign.com/guestfiles/ODAFileConverter/ODAFileConverter_QT5_lnxX64_4.7dll.deb'
         'oda-file-converter'
         'oda-file-converter.desktop')
-sha256sums=('c8f0db233c8f506456c909dfdc6480268c05f291ef153239132e079a3d3fc038'
+sha256sums=('a9ca9c72e6303bc0a03b8b7f64a7300fec6092184f7efb2c8a89aca8d34ec32b'
             '717f27caf6be52ffa1de45022e1c7534827731a2b59d908d02b5970fc904081d'
             '808bfc11b6c062ca9cccedf3a0231715826eef19d8b0664216999fc9a9792827')
 _ogname='ODAFileConverter'
