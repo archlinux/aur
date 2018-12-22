@@ -1,7 +1,7 @@
 pkgbase = vendorlint-git
 	pkgdesc = Tool to ensure all dependents are properly vendored
 	pkgver = r13.08816a4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mephux/vendorlint
 	arch = x86_64
 	arch = i686

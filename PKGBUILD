@@ -2,7 +2,7 @@
 
 pkgname=vendorlint-git
 pkgver=r13.08816a4
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to ensure all dependents are properly vendored"
 url="https://github.com/mephux/vendorlint"
 arch=('x86_64' 'i686')
@@ -23,20 +23,26 @@ prepare() {
 	mkdir -p "${srcdir}/go/src/github.com/mephux"
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/mephux/vendorlint"
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin"
+	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export PATH="$PATH:$GOPATH/bin"
+
 	go get -v -d ./...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/mephux/vendorlint"
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin"
+	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export PATH="$PATH:$GOPATH/bin"
+
 	make
 }
 
 package() {
 	cd "${srcdir}/go/src/github.com/mephux/vendorlint"
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin"
+	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	export PATH="$PATH:$GOPATH/bin"
+
 	install -Dm755 "bin/vendorlint" "${pkgdir}/usr/bin/vendorlint"
 }
