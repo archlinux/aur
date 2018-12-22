@@ -1,0 +1,15 @@
+pkgbase = nauz-file-detector-git
+	pkgdesc = Nauz File Detector is a portable linker/compiler/packer identifier utility.
+	pkgver = 0.01.r1.g1412dcb
+	pkgrel = 1
+	url = http://n10info.blogspot.com/2018/12/nauz-file-detector.html
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-base
+	source = nauz-file-detector-git::git+https://github.com/horsicq/Nauz-File-Detector
+	sha256sums = SKIP
+
+pkgname = nauz-file-detector-git
+
