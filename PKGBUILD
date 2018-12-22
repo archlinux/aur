@@ -2,12 +2,12 @@
 
 pkgname=neru-icon-newyear-theme
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Christmas theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-newyear-theme/"
 license=('LGPL3')
-depends=()
+depends=('gtk-update-icon-cache' 'librsvg' 'hicolor-icon-theme')
 replaces=(neru-icon-newyear-theme)
 conflicts=()
 source=("https://github.com/chistota/"${pkgname}"/archive/v"${pkgver}".tar.gz")
@@ -26,10 +26,16 @@ package() {
 	ln -s document-viewer.svg neru-newyear-light/medium/apps/xpdf9.svg
 	ln -s document-viewer.svg neru-newyear-light/medium/apps/accessories-document-viewer.svg
 
+	ln -s qv4l2.svg neru-newyear-light/medium/apps/qvidcap.svg
+	ln -s usb-creator.svg neru-newyear-light/medium/apps/mintstick.svg
+
 	ln -s document-viewer.svg neru-newyear-dark/medium/apps/graphics-viewer-document.svg
 	ln -s document-viewer.svg neru-newyear-dark/medium/apps/org.gnome.Evince.svg
 	ln -s document-viewer.svg neru-newyear-dark/medium/apps/xpdf9.svg
 	ln -s document-viewer.svg neru-newyear-dark/medium/apps/accessories-document-viewer.svg
+
+	ln -s qv4l2.svg neru-newyear-dark/medium/apps/qvidcap.svg
+	ln -s usb-creator.svg neru-newyear-dark/medium/apps/mintstick.svg
 
 	gtk-update-icon-cache neru-newyear-light/
 	gtk-update-icon-cache neru-newyear-dark/
