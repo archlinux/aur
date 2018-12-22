@@ -1,6 +1,6 @@
 pkgbase = linux-phicomm-n1-armbian-git
-	pkgver = 4.19.9
-	pkgrel = 2
+	pkgver = 4.19.12
+	pkgrel = 1
 	url = https://github.com/isjerryxiao/Amlogic_s905-kernel
 	arch = aarch64
 	license = GPL2
@@ -19,7 +19,7 @@ pkgbase = linux-phicomm-n1-armbian-git
 	source = linux.preset
 	source = 99-linux.hook
 	md5sums = SKIP
-	md5sums = e14b6e04c3730a918d9bdd9f238e87ff
+	md5sums = 71a4d2b8faa2d4461f577b06b9bbdbf3
 	md5sums = f6ee374f560e1b9df6a7de2399027d1b
 	md5sums = d1c40c7367a7081f3b4c03264780f9d4
 
