@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=jdtls
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Eclipse Java language server"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('java-runtime')
 makedepends=('git' 'java-environment' 'maven')
 source=("https://github.com/eclipse/eclipse.jdt.ls/archive/v${pkgver}.tar.gz"
         "launcher.sh")
-md5sums=('9335bd15c144098ac147bea8016d4889'
+md5sums=('a60b09d3de33e0abb78796c4c6bbf4ca'
          'd92f22ae00c112d65ef41fa5a578b55a')
 
 build() {
