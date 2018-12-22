@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 
 pkgname=freshrss
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='A free, self-hostable aggregator…'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('apache: Web server to run FreshRSS'
             'sqlite: Database server to run FreshRSS')
 install="$pkgname.install"
 source=("https://github.com/FreshRSS/FreshRSS/archive/$pkgver.tar.gz")
-sha256sums=('a5d367669586b6a778a2d2662b780b100d1095b55751f4151d257c5160eadce1')
+sha256sums=('f5de318ce99955a13e7a69fec1f3294a110f254337d91c3a3afeba991dfc5f5a')
 
 package() {
   cd "${srcdir}/FreshRSS-$pkgver"
