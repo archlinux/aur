@@ -2,7 +2,7 @@ diff --git a/Source/CMake/HelperMethods.cmake b/Source/CMake/HelperMethods.cmake
 index 9577b6c8e..90ec58df6 100644
 --- a/Source/CMake/HelperMethods.cmake
 +++ b/Source/CMake/HelperMethods.cmake
-@@ -331,8 +331,6 @@ function(strip_symbols targetName outputFilename)
+@@ -353,8 +353,6 @@ function(strip_symbols targetName outputFilename)
  endfunction()
  
  function(install_bsf_target targetName)
@@ -11,7 +11,7 @@ index 9577b6c8e..90ec58df6 100644
  	install(
  		TARGETS ${targetName}
  		EXPORT bsf
-@@ -340,19 +338,6 @@ function(install_bsf_target targetName)
+@@ -362,19 +360,6 @@ function(install_bsf_target targetName)
  		LIBRARY DESTINATION lib
  		ARCHIVE DESTINATION lib
  	)		
