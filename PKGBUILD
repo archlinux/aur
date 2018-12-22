@@ -4,7 +4,7 @@
 pkgsubn=Reddit-Enhancement-Suite
 pkgname=reddit-enhancement-suite-chromium-git
 pkgver=9215.07c94df4f
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome/Chromium extension for Reddit Enhancement Suite - git/dev"
 arch=('any')
 url='https://github.com/honestbleeps/Reddit-Enhancement-Suite'
