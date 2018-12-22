@@ -1,14 +1,14 @@
 pkgbase = detect-it-easy
 	pkgdesc = Detect It Easy is a packer identifier
-	pkgver = 2.00
+	pkgver = 2.01
 	pkgrel = 1
 	url = http://ntinfo.biz/index.html
 	install = detect-it-easy.install
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = https://github.com/horsicq/DIE-engine/releases/download/2.00/die_lin64_portable_2.00.tar.gz
-	sha256sums = 027668b749985715b441277ebf9ac1c1bdf7ac26af8aa9ccc93325287f0b2214
+	source = https://github.com/horsicq/DIE-engine/releases/download/2.01/die_lin64_portable_2.01.tar.gz
+	sha256sums = 9fa3ea45c548bbcbfc651ab62e7cb9dce59f130d1d304143acb2cc53d94e3418
 
 pkgname = detect-it-easy
 
