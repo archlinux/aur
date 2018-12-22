@@ -1,6 +1,6 @@
 pkgbase = libmodulemd-git
 	pkgdesc = C Library for manipulating module metadata files
-	pkgver = 1.6.2.r4.g7b1c167
+	pkgver = 2.0.0.r0.g3a7a000
 	pkgrel = 1
 	url = https://github.com/fedora-modularity/libmodulemd
 	arch = any
