@@ -1,6 +1,6 @@
 # Maintainer: Nikita Puzyryov <PuzyryovN@gmail.com>
 pkgname=zchunk-git
-pkgver=0.9.17
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A file format that allows easy deltas while maintaining good compression (git version)"
 arch=(x86 x86_64)
@@ -8,7 +8,7 @@ url="https://github.com/zchunk/zchunk"
 license=('BSD')
 depends=('libcurl.so' 'zstd')
 makedepends=('meson')
-provides=('zchunk')
+provides=('zchunk' 'libzck.so')
 conflicts=('zchunk')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
