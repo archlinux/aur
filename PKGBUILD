@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh-git
-pkgver=0.0.1.r44.g3fb62b2
+pkgver=0.0.2.r21.gade8659
 pkgrel=1
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
@@ -29,8 +29,12 @@ pkgver() {
 
 build() {
     rm -rf build
-    arch-meson phosh build -Dtests=false
+    arch-meson phosh build
     ninja -C build
+}
+
+check() {
+    ninja -C build test
 }
 
 package() {
