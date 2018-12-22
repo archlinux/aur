@@ -1,7 +1,7 @@
 pkgbase = peru
 	pkgdesc = A tool for fetching code
-	pkgver = 1.1.4
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/buildinspace/peru
 	arch = any
 	license = MIT
@@ -12,8 +12,8 @@ pkgbase = peru
 	depends = python-yaml
 	optdepends = mercurial: fetching from hg repos
 	optdepends = subversion: fetching from svn repos
-	source = peru-1.1.4.tar.gz::https://codeload.github.com/buildinspace/peru/tar.gz/1.1.4
-	sha256sums = aa93ba4d7663f597c05a14dc39cac57ddcdaa70b876c90ebe46bf205240b0784
+	source = peru-1.2.0.tar.gz::https://codeload.github.com/buildinspace/peru/tar.gz/1.2.0
+	sha256sums = fb0fb02639e1c5403c9a6ddfd9719c5ea5ddf69fb440fbcfafe234470645e1dc
 
 pkgname = peru
 
