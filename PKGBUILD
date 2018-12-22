@@ -2,23 +2,23 @@
 
 _pkgname=dfshow
 pkgname=${_pkgname}
-pkgver=0.4.6
+pkgver=0.5.0
 _pkgversub=-alpha
 pkgrel=1
 pkgdesc="An interactive directory/file browser written for Unix-like systems."
 arch=('i686' 'x86_64' 'arm')
 url="https://github.com/roberthawdon/dfshow"
 license=('GPL3')
-depends=('ncurses')
-makedepends=('autoconf' 'automake')
+depends=('ncurses' 'libconfig')
+makedepends=('autoconf' 'automake' 'libconfig')
 source=(https://github.com/roberthawdon/dfshow/archive/v${pkgver}${_pkgversub}.tar.gz)
-sha1sums=('e71593ebc0cb53487591649299c2454809749442')
+sha1sums=('6bd3941d595a8bf3927b388ac965ce84de942d4a')
 options=('!buildflags' '!makeflags')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}${_pkgversub}"
   ./bootstrap
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --sysconfdir=/etc --datadir=/usr/share
   make
 }
 
