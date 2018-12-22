@@ -1,6 +1,6 @@
 pkgbase = firefox-multiple-tab-handler
 	pkgdesc = Provides ability to manage multiple tabs at a time
-	pkgver = 2.2.5
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://piro.sakura.ne.jp/xul/_multipletab.html.en
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = firefox-multiple-tab-handler
 	license = GPL
 	license = LGPL
 	license = MPL
-	noextract = multiple_tab_handler-2.2.5-fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/4838/multiple_tab_handler-2.2.5-fx.xpi
-	sha256sums = 3ebfc10caa6fb1bef1179cf0f15e8fdd640957dc321e5b81e0bf03f2b56f50da
+	noextract = multiple_tab_handler-3.0.1-fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/4838/multiple_tab_handler-3.0.1-fx.xpi
+	sha256sums = 9719e923bb285a810c2c18f86ffcdf75909900b27c6b57c2031d135ee71b4c9a
 
 pkgname = firefox-multiple-tab-handler
 
