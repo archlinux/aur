@@ -9,7 +9,7 @@
 _qt_module=qtnetworkauth
 pkgname="mingw-w64-qt5-networkauth"
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Network authentication module (mingw-w64)"
 depends=('mingw-w64-qt5-base')
