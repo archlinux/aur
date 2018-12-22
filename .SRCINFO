@@ -1,7 +1,7 @@
 pkgbase = linux-macbook
-	pkgver = 4.19.9.arch1
+	pkgver = 4.19.12.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v4.19.9-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v4.19.12-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -13,7 +13,7 @@ pkgbase = linux-macbook
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v4.19.9-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v4.19.12-arch1
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -26,7 +26,7 @@ pkgbase = linux-macbook
 	sha256sums = SKIP
 	sha256sums = 2aa5cde5c40ca06ea0a10b9a212bd9b96deb548d58c0a55386f0e8ae5fc0edf5
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
+	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = c5a714823c3418692bc5c212dd5d094a0e2ae6147d6726822911f1c26e3a1d1b
 	sha256sums = a4e044fb954f035aa70af4c7d79f8a6076933bdbbf9efee749304829621d77ed
