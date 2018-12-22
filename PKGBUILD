@@ -11,7 +11,7 @@
 _qt_module=qtimageformats
 pkgname="mingw-w64-qt5-imageformats"
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Plugins for additional image formats: TIFF, MNG, TGA, WBMP (mingw-w64)"
 depends=('mingw-w64-qt5-base')
