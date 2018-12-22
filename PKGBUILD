@@ -4,7 +4,7 @@
 
 pkgname=hop-git
 epoch=1
-pkgver=3.2.0r5061.be86efe4
+pkgver=3.2.0r5093.848b1d1f
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ build() {
   cd ${pkgname%-git}
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
 	      --disable-ssl --bigloobindir=/usr/bin \
-	      --bigloolibdir=/usr/lib/bigloo/4.3d
+	      --bigloolibdir=/usr/lib/bigloo/4.3e
   make
   make doc
 }
