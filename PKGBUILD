@@ -1,4 +1,4 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: Abhishek Mudgal
 
 pkgname=pext
 _pkgname=Pext
