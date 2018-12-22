@@ -1,0 +1,42 @@
+pkgbase = gnome-shell-dev
+	pkgdesc = Next generation desktop shell
+	pkgver = 3.31.2
+	pkgrel = 3
+	url = https://gitlab.gnome.org/GNOME/gnome-shell
+	arch = x86_64
+	groups = gnome
+	license = GPL2
+	makedepends = gtk-doc
+	makedepends = gnome-control-center
+	makedepends = evolution-data-server
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	makedepends = sassc
+	depends = accountsservice
+	depends = gcr
+	depends = gjs
+	depends = gnome-bluetooth
+	depends = upower
+	depends = gnome-session
+	depends = gnome-settings-daemon
+	depends = gnome-themes-extra
+	depends = gsettings-desktop-schemas
+	depends = libcanberra-pulse
+	depends = libcroco
+	depends = libgdm
+	depends = libsecret
+	depends = mutter-dev
+	depends = nm-connection-editor
+	depends = unzip
+	depends = gstreamer
+	depends = libibus
+	optdepends = gnome-control-center: System settings
+	optdepends = evolution-data-server: Evolution calendar integration
+	provides = gnome-shell
+	conflicts = gnome-shell
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=50c28714df987eafdb6dfad8f5a36303cbd26572
+	sha256sums = SKIP
+
+pkgname = gnome-shell-dev
+
