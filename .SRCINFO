@@ -1,0 +1,14 @@
+pkgbase = jack-stdio
+	pkgdesc = unix pipe audio-data from and to JACK
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/x42/jack-stdio/tree/v1.4
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = jack
+	source = jack-stdio-1.4::git+https://github.com/x42/jack-stdio.git
+	md5sums = SKIP
+
+pkgname = jack-stdio
+
