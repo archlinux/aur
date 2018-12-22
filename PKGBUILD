@@ -1,6 +1,6 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=aws-checksums-git
-pkgver=r22.b06b1f7
+pkgver=r23.9d4d04a
 pkgrel=1
 epoch=
 pkgdesc='Cross-Platform HW accelerated CRC32c and CRC32 with fallback to efficient SW implementations.'
@@ -37,6 +37,7 @@ build() {
 
     CMAKE_FLAGS="-Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=/usr/lib
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=OFF"
     cmake $CMAKE_FLAGS .
