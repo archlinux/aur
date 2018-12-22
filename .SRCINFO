@@ -1,6 +1,6 @@
 pkgbase = python-dipy
 	pkgdesc = Diffusion MR imaging in Python
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = http://nipy.org/dipy/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = python-dipy
 	depends = python-scipy
 	depends = python-nibabel
 	depends = python-h5py
-	source = https://github.com/nipy/dipy/archive/0.14.0.tar.gz
-	sha512sums = 312c5ec997ceac3d43c4c0ad87e030dd6a7b9310ae31ae2ef2a0efc0286e576f862552800fc9d3a81fcc4ff5295c0dc90e2ac9c6b22924120b841378152d6882
+	source = https://github.com/nipy/dipy/archive/0.15.0.tar.gz
+	sha256sums = 9446486a45059d390ef2fc9dc42b3877f61db2de5e037e795ffbb0b6872af8fb
 
 pkgname = python-dipy
 
