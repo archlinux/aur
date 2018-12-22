@@ -13,7 +13,7 @@
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
 depends=('mingw-w64-qt5-base')
