@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-qt5-quickcontrols2
 	pkgdesc = Reusable Qt Quick based UI controls to create classic desktop-style user interfaces (mingw-w64)
 	pkgver = 5.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io/
 	arch = any
 	groups = mingw-w64-qt5
