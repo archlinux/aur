@@ -17,7 +17,7 @@
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
 depends=('mingw-w64-qt5-declarative')
