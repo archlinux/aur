@@ -1,6 +1,6 @@
 pkgbase = gvim-gtk2
 	pkgdesc = Vim, the text editor. CLI version and GTK2 GUI providing majority of features.
-	pkgver = 8.1.0611
+	pkgver = 8.1.0618
 	pkgrel = 1
 	url = http://www.vim.org
 	arch = i686
@@ -22,10 +22,10 @@ pkgbase = gvim-gtk2
 	optdepends = python: Python 3 interpreter
 	optdepends = python2: Python 2 interpreter
 	optdepends = ruby: Ruby interpreter
-	provides = gvim=8.1.0611
+	provides = gvim=8.1.0618
 	provides = xxd
-	provides = vim-runtime=8.1.0611
-	provides = vim=8.1.0611
+	provides = vim-runtime=8.1.0618
+	provides = vim=8.1.0618
 	conflicts = vim-minimal-git
 	conflicts = vim-git
 	conflicts = vim-runtime
@@ -38,7 +38,7 @@ pkgbase = gvim-gtk2
 	conflicts = gvim-python3
 	conflicts = gvim-git
 	backup = etc/vimrc
-	source = https://github.com/vim/vim/archive/v8.1.0611.tar.gz
+	source = https://github.com/vim/vim/archive/v8.1.0618.tar.gz
 	source = vimrc
 	source = archlinux.vim
 	source = gvim.desktop
