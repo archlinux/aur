@@ -1,0 +1,34 @@
+pkgbase = mutter-dev
+	pkgdesc = A window manager for GNOME.
+	pkgver = 3.31.2
+	pkgrel = 3
+	url = https://gitlab.gnome.org/GNOME/mutter
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = egl-wayland
+	depends = dconf
+	depends = gobject-introspection-runtime
+	depends = gsettings-desktop-schemas
+	depends = libcanberra
+	depends = startup-notification
+	depends = zenity
+	depends = libsm
+	depends = gnome-desktop
+	depends = upower
+	depends = libxkbcommon-x11
+	depends = gnome-settings-daemon
+	depends = libgudev
+	depends = libinput
+	depends = pipewire
+	depends = gnome-shell
+	provides = mutter
+	conflicts = mutter
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=9a12befd22bff7bfd3afb12f2a774b3bcdf771ba
+	sha256sums = SKIP
+
+pkgname = mutter-dev
+
