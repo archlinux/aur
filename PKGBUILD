@@ -16,7 +16,7 @@ depends=(emacs
 optdepends=('python: Google client, and wrapper for Emacspeak speech servers.')
 install='emacspeak.install'
 source=("https://github.com/tvraman/emacspeak/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('24a73d020c434e539ac88ea2041898b6  emacspeak-49.0.tar.bz2')
+md5sums=('24a73d020c434e539ac88ea2041898b6')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -44,7 +44,6 @@ package() {
   cd "$pkgdir"
   find . -perm 640 -print0
   find . -perm 750 -print0
-  gzip -9nf "${pkgdir}"/usr/share/info/*
   rm -f "$pkgdir/usr/share/info/dir"
   rm -f "$pkgdir/etc/info-dir"
 }

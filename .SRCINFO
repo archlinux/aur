@@ -15,7 +15,7 @@ pkgbase = emacspeak
 	depends = espeak
 	optdepends = python: Google client, and wrapper for Emacspeak speech servers.
 	source = https://github.com/tvraman/emacspeak/releases/download/49.0/emacspeak-49.0.tar.bz2
-	md5sums = 24a73d020c434e539ac88ea2041898b6 emacspeak-49.0.tar.bz2
+	md5sums = 24a73d020c434e539ac88ea2041898b6
 
 pkgname = emacspeak
 
