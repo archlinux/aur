@@ -1,8 +1,8 @@
 # Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
 pkgname=octoprint
-pkgver=1.3.9
-pkgrel=2
+pkgver=1.3.10
+pkgrel=1
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(x86_64 armv6h armv7h)
 url="http://octoprint.org/"
@@ -56,7 +56,7 @@ source=($pkgname::git+https://github.com/foosel/OctoPrint.git
 		octoprint-serve
 		octoprint.conf
 		)
-
+options=(!distcc !ccache)
 sha256sums=('SKIP'
             'bd9b7f989aefb02da1ac414f306861f21f084d886f0283eea11516482b407d65'
             '231685e84b0241a466766c766f8d3ba31efda3238f19e9adedea380e7b861737'
