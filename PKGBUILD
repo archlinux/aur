@@ -1,6 +1,6 @@
 
 pkgname=xamarin-android
-_pkgver=9.1.199.8
+_pkgver=9.1.199.38
 pkgver=${_pkgver//[+-]/_}
 pkgrel=3
 pkgdesc="Xamarin android build from jenkins.mono-project"
