@@ -1,6 +1,6 @@
 pkgbase = ant-theme-git
 	pkgdesc = A flat and light theme with a modern look
-	pkgver = 55.a7acc0b
+	pkgver = 56.3c787e3
 	pkgrel = 1
 	url = https://github.com/EliverLara/Ant
 	arch = any
