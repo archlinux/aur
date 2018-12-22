@@ -11,7 +11,7 @@
 _qt_module=qtscxml
 pkgname="mingw-w64-qt5-scxml"
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Static and runtime integration of SCXML models into Qt code (mingw-w64)"
 depends=('mingw-w64-qt5-declarative')
