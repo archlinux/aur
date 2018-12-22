@@ -2,8 +2,8 @@
 
 pkgname=clair-git
 _pkgname=clair
-pkgver=v2.0.0.r246.g504f0f3a
-pkgrel=2
+pkgver=v2.0.0.r249.g3947073b
+pkgrel=1
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=(x86_64)
 url='https://github.com/coreos/clair'
