@@ -11,7 +11,7 @@
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
