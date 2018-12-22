@@ -1,4 +1,4 @@
-From 21151358f35b2e052baf54a46f88f44f5797c260 Mon Sep 17 00:00:00 2001
+From 4f58af1580449536e00792fa5e4051352ba8133a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
 Subject: [PATCH 26/33] Fix macro invoking moc, rcc and uic
@@ -70,5 +70,5 @@ index 737371a5ad..d103278cdf 100644
            MAIN_DEPENDENCY ${infile} VERBATIM)
          set_source_files_properties(${infile} PROPERTIES SKIP_AUTOUIC ON)
 -- 
-2.19.2
+2.20.1
 
