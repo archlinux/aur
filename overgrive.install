@@ -1,0 +1,15 @@
+post_install() {
+    virtualenv2 --system-site-packages /opt/thefanclub/overgrive/venv
+    /opt/thefanclub/overgrive/venv/bin/python2 -m pip install --upgrade google-api-python-client
+    /opt/thefanclub/overgrive/venv/bin/python2 -m pip install --upgrade oauth2client
+	sudo glib-compile-schemas /usr/share/glib-2.0/schemas
+}
+post_upgrade() {
+	post_install
+}
+post_remove() {
+    sudo rm -rf /opt/thefanclub/overgrive/
+    if [ -z "$(ls -A /opt/thefanclub/)" ]; then
+        sudo rmdir /opt/thefanclub/
+    fi
+}

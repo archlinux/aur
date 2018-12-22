@@ -1,0 +1,22 @@
+pkgbase = overgrive
+	pkgdesc = OverGrive without any extra stuff required in https://www.thefanclub.co.za/overgrive/installation-instructions-arch-linux
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = https://www.thefanclub.co.za/overgrive
+	install = overgrive.install
+	arch = x86_64
+	license = unknown
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = python2
+	depends = python2-pyinotify
+	depends = python2-gobject
+	depends = python2-virtualenv
+	provides = overgrive
+	conflicts = overgrive
+	noextract = overgrive-3.2.3-0-any.pkg.tar.xz
+	source = https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.2.3-0-any.pkg.tar.xz
+	md5sums = 6d7cc554e39b6ea399ff88358a58eb78
+
+pkgname = overgrive
+
