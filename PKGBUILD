@@ -10,7 +10,7 @@
 _qt_module=qtsvg
 pkgname="mingw-w64-qt5-svg"
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Classes for displaying the contents of SVG files (mingw-w64)"
 depends=('mingw-w64-qt5-base')
