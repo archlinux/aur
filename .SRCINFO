@@ -1,6 +1,6 @@
 pkgbase = sweet-theme-git
 	pkgdesc = Light and dark colorful Gtk3.20+ theme
-	pkgver = 20.727a3e6
+	pkgver = 21.22aed6a
 	pkgrel = 1
 	url = https://github.com/EliverLara/Sweet
 	arch = any
