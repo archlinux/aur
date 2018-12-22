@@ -1,9 +1,8 @@
 # Maintainer: Pedro Henrique <pedro00dk@gmail.com>
 pkgname=overgrive
 pkgver=3.2.3
-pkgrel=1
-pkgdesc="OverGrive without any extra stuff required in 
-https://www.thefanclub.co.za/overgrive/installation-instructions-arch-linux"
+pkgrel=2
+pkgdesc="A complete Google Drive™ desktop client solution for Linux"
 arch=('x86_64')
 url="https://www.thefanclub.co.za/overgrive"
 license=("unknown")

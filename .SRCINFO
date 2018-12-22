@@ -1,7 +1,7 @@
 pkgbase = overgrive
-	pkgdesc = OverGrive without any extra stuff required in https://www.thefanclub.co.za/overgrive/installation-instructions-arch-linux
+	pkgdesc = A complete Google Drive™ desktop client solution for Linux
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.thefanclub.co.za/overgrive
 	install = overgrive.install
 	arch = x86_64
