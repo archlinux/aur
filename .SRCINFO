@@ -1,7 +1,7 @@
 pkgbase = zsdx
 	pkgdesc = A free 2D Zelda fangame.
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zelda-solarus.com/
 	arch = any
 	license = custom
@@ -9,7 +9,7 @@ pkgbase = zsdx
 	makedepends = cmake
 	depends = solarus>=1.6.0
 	source = http://www.zelda-solarus.com/downloads/zsdx/zsdx-1.12.0.tar.gz
-	md5sums = 2f8093c02a0d4320f1e10cc6f7ddda6a
+	md5sums = b3175bca727accdeec8d158171d58441
 
 pkgname = zsdx
 

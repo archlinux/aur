@@ -5,7 +5,7 @@
 
 pkgname=zsdx
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A free 2D Zelda fangame."
 arch=('any')
@@ -25,7 +25,7 @@ install=
 changelog=
 source=(http://www.zelda-solarus.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('2f8093c02a0d4320f1e10cc6f7ddda6a')
+md5sums=('b3175bca727accdeec8d158171d58441')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
