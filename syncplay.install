@@ -1,0 +1,11 @@
+post_install () {
+    echo "\
+#########################################################################
+# NOTE: 'qt5-declarative' and 'pyside2' are REQUIRED for GUI function.
+# Please install these manually if you want to use Syncplay for the GUI.
+#########################################################################\
+"
+}
+post_upgrade () {
+    post_install
+}
