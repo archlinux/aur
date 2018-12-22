@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-curl
 pkgver=7.63.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
 url="http://curl.haxx.se"
@@ -18,10 +18,12 @@ depends=('mingw-w64-crt'
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
 source=("$url/download/curl-$pkgver.tar.bz2"
+        "curl-3399.patch::https://github.com/curl/curl/pull/3399.patch"
         "0001-Make-cURL-relocatable.patch"
         "0002-nghttp2-static.patch"
         "0003-libpsl-static-libs.patch")
 sha256sums=('9bab7ed4ecff77020a312d84cc5fb7eb02d58419d218f267477a724a17fd8dd8'
+            'c8cd19d1845e468b742dbe599f7e252c960d508a3090e62cea613681f4245235'
             '5d29129b312500c94c4e94cbcdee2fb54148b5788837761534aabb698484f4d4'
             '963368c3fdc16f37eef6b1f5b8afa99d7c945b7ae06cc636d3d6277e330c93fb'
             '5d6563e29e85c7fadd129308e9927450c59fe5d429d9b27aafd3460bfc40defb')
@@ -30,6 +32,9 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}"/${pkgname#mingw-w64-}-${pkgver}
+  # See https://github.com/curl/curl/issues/3392
+  patch -p1 -i "$srcdir/curl-3399.patch"
+
   rm -f lib/pathtools.h lib/pathtools.c > /dev/null 2>&1 || true
   patch -Np1 -i "${srcdir}/0001-Make-cURL-relocatable.patch"
   patch -Np1 -i "${srcdir}/0002-nghttp2-static.patch"
