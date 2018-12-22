@@ -2,7 +2,7 @@
 
 pkgbase=snowball-git
 pkgname=(snowball-git libstemmer-git)
-pkgver=r632.1964ce6
+pkgver=r662.d29510a
 pkgrel=1
 pkgdesc="String processing language for creating stemming algorithms"
 arch=(x86_64)

@@ -1,6 +1,6 @@
 pkgbase = snowball-git
 	pkgdesc = String processing language for creating stemming algorithms
-	pkgver = r632.1964ce6
+	pkgver = r662.d29510a
 	pkgrel = 1
 	url = http://snowballstem.org/
 	arch = x86_64
