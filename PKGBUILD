@@ -1,30 +1,19 @@
-#Maintainer: Yan Burdonsky <psyrccio@gmail.com>
-#Contributor: Yan Burdonsky <psyrccio@gmail.com>
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Contributor: Yan Burdonsky <psyrccio@gmail.com>
+
 pkgname=anoise-community-extension1
 pkgver=0.0.1
-pkgrel=3
-pkgdesc="Ambient Noise Community Library. Sounds and icons from the users"
+pkgrel=4
+pkgdesc="Ambient Noise Community Library Package 1"
 arch=('any')
 license=('GPL3')
 url="https://code.launchpad.net/anoise"
-install=
-options=()
-conflicts=()
-depends=('anoise' 'python-distutils-extra' 'gstreamer0.10' 'gstreamer0.10-python')
-optdepends=()
-source=("https://launchpad.net/~costales/+archive/ubuntu/anoise/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('3dc4d15970ede8011c4934ea76f69e1bbb5e4e1e1b80d223f620f4bf11adbaa3')
-
-build() {
-  cd "${srcdir}"
-}
+depends=('anoise')
+makedepends=('python-distutils-extra')
+source=("${pkgname}-${pkgver}.tar.gz::https://launchpad.net/~costales/+archive/ubuntu/anoise/+sourcefiles/${pkgname}/${pkgver}/${pkgname}_${pkgver}.tar.gz")
+sha256sums=('605aafb84a4669cc6d64dec2d93b3585dc260971bcc5db7d63478f8f8901c7b4')
 
 package() {
-  cd "${srcdir}"
-
-  ar x "${pkgname}_${pkgver}_all.deb" > /dev/null
-  tar -xJf data.tar.xz -C "${pkgdir}"
-
-  install -d -m755 "${pkgdir}/usr/"
-
+  cd "${srcdir}/community"
+  python ./setup.py install --prefix=/usr --root="${pkgdir}"
 }
