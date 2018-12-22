@@ -1,11 +1,11 @@
 pkgbase = kalu-cli
 	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news (CLI only)
 	pkgver = 4.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://jjacky.com/kalu
 	arch = i686
 	arch = x86_64
-	license = GPL3+
+	license = GPL3
 	depends = pacman>=5.1
 	depends = pacman<5.2
 	depends = curl
