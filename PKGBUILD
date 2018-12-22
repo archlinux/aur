@@ -1,7 +1,7 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-tkfilebrowser' 'python2-tkfilebrowser')
 _name=tkFileBrowser
-pkgver=2.2.6
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="File browser for Tkinter, alternative to tkinter.filedialog in linux with GTK bookmarks support."
 url="https://github.com/j4321/tkFileBrowser"
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("$_name-$pkgver.tar.gz::https://github.com/j4321/$_name/archive/v$pkgver.tar.gz")
-sha512sums=('e6583f40c83ced63b0eccc50627f9a27068cbbfb1de4e859bb88c49d2dae2230327e5866a9af09e8833632cbb871e16c9ddc0591288f0c1305fc692068edbf62')
+sha512sums=('8d674ed05ed15f323aca07f76359d316cbcc6761e9d45455779ee163a7628da42a312cb8e8723ae52cd14a01008cba27431aee9d3a073fab1955716350e6bd4d')
 
 build() {
     cd "${srcdir}/$_name-${pkgver}"
