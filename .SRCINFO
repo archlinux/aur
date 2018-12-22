@@ -1,0 +1,15 @@
+pkgbase = ant-bloody-theme-git
+	pkgdesc = Bloody variant of the Ant theme
+	pkgver = 48.4c0b416
+	pkgrel = 1
+	url = https://github.com/EliverLara/Ant-Bloody
+	arch = any
+	license = GPL
+	optdepends = ttf-roboto: primary font face defined
+	optdepends = ttf-ubuntu-font-family: secondary font face defined
+	optdepends = cantarell-fonts: tertiary font face defined
+	source = Ant-Bloody::git+https://github.com/EliverLara/Ant-Bloody.git
+	sha256sums = SKIP
+
+pkgname = ant-bloody-theme-git
+
