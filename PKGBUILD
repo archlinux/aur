@@ -15,7 +15,7 @@ _mapboxcfg='QT.global.disabled_features+=geoservices_mapboxgl'
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')

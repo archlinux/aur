@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-qt5-location
 	pkgdesc = Provides access to position, satellite and area monitoring classes (mingw-w64)
 	pkgver = 5.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io/
 	arch = any
 	groups = mingw-w64-qt5
