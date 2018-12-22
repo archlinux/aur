@@ -1,0 +1,16 @@
+pkgbase = minetest-mod-advanced_npc-git
+	pkgdesc = hkzorman's advanced npc mod for Minetest. Still under development!
+	pkgver = 258.a43233f
+	pkgrel = 1
+	url = https://github.com/hkzorman/advanced_npc
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = minetest-mod-mobs_redo-git
+	optdepends = minetest-usrdir_patch
+	provides = minetest-mod-advanced_npc
+	source = minetest-mod-advanced_npc::git+git://github.com/hkzorman/advanced_npc.git
+	md5sums = SKIP
+
+pkgname = minetest-mod-advanced_npc-git
+
