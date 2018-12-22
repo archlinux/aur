@@ -1,29 +1,43 @@
 diff --git a/src/libs/utils/basetreeview.cpp b/src/libs/utils/basetreeview.cpp
-index bae4c16fef..a1ccafd816 100644
+index bae4c16fef..227d137766 100644
 --- a/src/libs/utils/basetreeview.cpp
 +++ b/src/libs/utils/basetreeview.cpp
-@@ -55,6 +55,28 @@ public:
+@@ -55,6 +55,42 @@ public:
          m_settingsTimer.setSingleShot(true);
          connect(&m_settingsTimer, &QTimer::timeout,
                  this, &BaseTreeViewPrivate::doSaveState);
 +        connect(q->header(), &QHeaderView::sectionResized, this, [this](int logicalIndex, int oldSize, int newSize) {
++            if (m_processingSpans || m_spanColumn < 0)
++                return;
++
 +            QHeaderView *h = q->header();
 +            QTC_ASSERT(h, return);
 +
-+            int column;
-+            if (oldSize < newSize && logicalIndex + 1 < h->count() &&
-+                    h->sectionSize(logicalIndex + 1) == h->minimumSectionSize()) {
++            // Last non-hidden column.
++            int count = h->count();
++            while (count > 0 && h->isSectionHidden(count - 1))
++                --count;
++
++            if (count == 0)
++                return;
++
++            int column = logicalIndex;
++            if (oldSize < newSize)
++            {
 +                // Protect against sizing past the next section.
-+                column = logicalIndex;
-+            } else if (logicalIndex >= m_spanColumn) {
-+                // Resize after the span column.zzz
-+                column = logicalIndex + 1;
++                while (column + 1 < count && h->sectionSize(column + 1) == h->minimumSectionSize())
++                    ++column;
++            }
++
++            if (logicalIndex >= m_spanColumn) {
++                // Resize after the span column.
++                column = column + 1;
 +            } else {
 +                // Resize the span column or before it.
 +                column = m_spanColumn;
 +            }
 +
-+            rebalanceColumns(column);
++            rebalanceColumns(column, false);
 +        });
 +        connect(q->header(), &QHeaderView::geometriesChanged, this, [this]() {
 +            rebalanceColumns();
@@ -31,7 +45,7 @@ index bae4c16fef..a1ccafd816 100644
      }
  
      bool eventFilter(QObject *, QEvent *event) override
-@@ -197,6 +219,17 @@ public:
+@@ -197,6 +233,17 @@ public:
          }
      }
  
@@ -49,7 +63,7 @@ index bae4c16fef..a1ccafd816 100644
      void toggleColumnWidth(int logicalIndex)
      {
          QHeaderView *h = q->header();
-@@ -212,10 +245,65 @@ public:
+@@ -212,10 +259,64 @@ public:
              targetSize = qMax(minSize, headerSize);
          }
          h->resizeSection(logicalIndex, targetSize);
@@ -60,10 +74,10 @@ index bae4c16fef..a1ccafd816 100644
  
 +    void rebalanceColumns()
 +    {
-+        rebalanceColumns(m_spanColumn);
++        rebalanceColumns(m_spanColumn, true);
 +    }
 +
-+    void rebalanceColumns(int column)
++    void rebalanceColumns(int column, bool allowResizePrevious)
 +    {
 +        if (m_spanColumn < 0 || column < 0 || m_processingSpans)
 +            return;
@@ -76,17 +90,17 @@ index bae4c16fef..a1ccafd816 100644
 +            return;
 +
 +        // Start with the target column, and resize other columns as necessary.
-+        for (int i = column; i < count; ++i) {
-+            if (tryRebalanceColumns(i))
-+                return;
-+        }
-+        for (int i = column - 1; i >= 0; --i) {
-+            if (tryRebalanceColumns(i))
++        int totalSize = q->viewport()->width();
++        if (tryRebalanceColumns(column, totalSize))
++            return;
++
++        for (int i = allowResizePrevious ? 0 : column + 1; i < count; ++i) {
++            if (i != column && tryRebalanceColumns(i, totalSize))
 +                return;
 +        }
 +    }
 +
-+    bool tryRebalanceColumns(int column)
++    bool tryRebalanceColumns(int column, int totalSize)
 +    {
 +        QHeaderView *h = q->header();
 +
@@ -97,7 +111,6 @@ index bae4c16fef..a1ccafd816 100644
 +                otherColumnTotal += h->sectionSize(i);
 +        }
 +
-+        int totalSize = h->width();
 +        if (otherColumnTotal < totalSize) {
 +            m_processingSpans = true;
 +            h->resizeSection(column, totalSize - otherColumnTotal);
@@ -109,13 +122,13 @@ index bae4c16fef..a1ccafd816 100644
 +        int totalColumnSize = 0;
 +        for (int i = 0; i < count; ++i)
 +            totalColumnSize += h->sectionSize(i);
-+        return totalColumnSize != totalSize;
++        return totalColumnSize == totalSize;
 +    }
 +
  public:
      BaseTreeView *q;
      QMap<int, int> m_userHandled; // column -> width, "not present" means "automatic"
-@@ -224,6 +312,8 @@ public:
+@@ -224,6 +325,8 @@ public:
      QString m_settingsKey;
      bool m_expectUserChanges = false;
      ProgressIndicator *m_progressIndicator = nullptr;
@@ -124,7 +137,20 @@ index bae4c16fef..a1ccafd816 100644
  };
  
  class BaseTreeViewDelegate : public QItemDelegate
-@@ -416,6 +506,21 @@ void BaseTreeView::resizeColumns()
+@@ -369,6 +472,12 @@ void BaseTreeView::mouseDoubleClickEvent(QMouseEvent *ev)
+         TreeView::mouseDoubleClickEvent(ev);
+ }
+ 
++void BaseTreeView::resizeEvent(QResizeEvent *ev)
++{
++    TreeView::resizeEvent(ev);
++    d->rebalanceColumns();
++}
++
+ void BaseTreeView::showEvent(QShowEvent *ev)
+ {
+     emit aboutToShow();
+@@ -416,6 +525,21 @@ void BaseTreeView::resizeColumns()
      d->resizeColumns();
  }
  
@@ -147,10 +173,16 @@ index bae4c16fef..a1ccafd816 100644
  {
      QTC_ASSERT(!d->m_settings, qDebug() << "DUPLICATED setSettings" << key);
 diff --git a/src/libs/utils/basetreeview.h b/src/libs/utils/basetreeview.h
-index 923c69b042..8ea6659c0c 100644
+index 923c69b042..36da658913 100644
 --- a/src/libs/utils/basetreeview.h
 +++ b/src/libs/utils/basetreeview.h
-@@ -73,6 +73,13 @@ public:
+@@ -68,11 +68,19 @@ public:
+     void dropEvent(QDropEvent *ev) override;
+     void dragMoveEvent(QDragMoveEvent *ev) override;
+     void mouseDoubleClickEvent(QMouseEvent *ev) override;
++    void resizeEvent(QResizeEvent *event) override;
+ 
+     void showProgressIndicator();
      void hideProgressIndicator();
      void resizeColumns();
  

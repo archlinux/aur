@@ -21,7 +21,7 @@ index 5da67fa236..6b1f2fba96 100644
  PaletteDark=shadowBackground
  PaletteHighlightedText=textHighlighted
 diff --git a/share/qtcreator/themes/flat-dark.creatortheme b/share/qtcreator/themes/flat-dark.creatortheme
-index e73d10b0ff..3faa2223a1 100644
+index e73d10b0ff..a4f263c1f7 100644
 --- a/share/qtcreator/themes/flat-dark.creatortheme
 +++ b/share/qtcreator/themes/flat-dark.creatortheme
 @@ -13,7 +13,7 @@ toolBarItemDisabled=60a4a6a8
@@ -29,7 +29,7 @@ index e73d10b0ff..3faa2223a1 100644
  fancyBarsBoldTextColor=b6fbfdff
  hoverBackground=22ffffff
 -selectedBackground=66000000
-+selectedBackground=ff1d545c
++selectedBackground=aa1d545c
  selectedBackgroundText=ff1d545c
  normalBackground=ff2E2F30
  alternateBackground=ff353637
