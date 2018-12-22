@@ -9,7 +9,7 @@
 _qt_module=qtdatavis3d
 pkgname="mingw-w64-qt5-datavis3d"
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Qt Data Visualization module (mingw-w64)"
 depends=('mingw-w64-qt5-base')
