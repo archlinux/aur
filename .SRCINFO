@@ -1,0 +1,17 @@
+pkgbase = python-undertime
+	pkgdesc = pick a meeting time
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://gitlab.com/anarcat/undertime
+	arch = any
+	license = AGPL3
+	makedepends = python-pip
+	depends = python-parsedatetime
+	depends = python-pytz
+	depends = python-terminaltables
+	depends = python-termcolor
+	source = https://files.pythonhosted.org/packages/4f/9b/1ee545b11203e7b60ba0fac0a5b475161be6c891fb4ba72390530547bd12/undertime-1.5.0-py3-none-any.whl
+	md5sums = da5ff7f782d14ab821ce3fe862821ca1
+
+pkgname = python-undertime
+
