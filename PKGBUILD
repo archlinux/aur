@@ -10,7 +10,7 @@
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=('mingw-w64-qt5-base')
