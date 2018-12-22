@@ -1,5 +1,5 @@
 pkgbase = linux-aarch64-raspberrypi
-	pkgver = 4.19.9
+	pkgver = 4.19.12
 	pkgrel = 1
 	url = https://github.com/raspberrypi/linux
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = linux-aarch64-raspberrypi
 	source = linux.preset
 	source = 99-linux.hook
 	md5sums = SKIP
-	md5sums = dec10b31be1e0493c77292c4ef887652
+	md5sums = 7fd337566d739a8eb2dc58b89c509fef
 	md5sums = 06e904bf795a75f5bc74b8b000780467
 	md5sums = 1d4477026533efaa0358a40855d50a83
 
