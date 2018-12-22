@@ -1,19 +1,17 @@
 # Maintainer: Eric Berquist <eric dot berquist at gmail dot com>
-
-# Based off the ABS PKGBUILD in [extra]/openbabel.
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
 pkgname=openbabel-git
 _name=openbabel
-pkgver=2.3.90.r4215.3dda994
+pkgver=2.4.90.r5252.722b2134
 pkgrel=1
 pkgdesc="A library designed to interconvert between many file formats used in molecular modeling and computational chemistry (git version, builds Python bindings)"
-arch=("i686" "x86_64")
-url="http://openbabel.org/wiki/Main_Page"
+arch=("x86_64")
+url="https://github.com/openbabel/openbabel"
 license=("GPL")
-depends=("libxml2" "libsm")
-makedepends=("git" "cmake" "eigen2" "wxgtk2.8" "boost" "swig" "python")
-optdepends=("eigen2: to use bindings"
-            "wxgtk2.8: GUI interface")
+depends=("libxml2" "libsm" "python" "wxgtk")
+makedepends=("git" "cmake" "eigen" "boost" "swig")
 provides=("${_name}")
 conflicts=("${_name}" "python-${_name}")
 source=("${_name}::git+https://github.com/openbabel/openbabel.git#branch=master")
@@ -47,7 +45,7 @@ build() {
   cmake "${srcdir}/${_name}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-2.8 \
+    -DENABLE_OPENMP=ON \
     -DRUN_SWIG=ON \
     -DPYTHON_BINDINGS=ON
 
@@ -61,6 +59,8 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/build"
+  cd "${srcdir}"/build
+  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}"/build/scripts
   make DESTDIR="${pkgdir}" install
 }
