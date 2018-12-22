@@ -1,5 +1,5 @@
 pkgname=electrum-ltc
-pkgver=3.3.1.1
+pkgver=3.3.2.1
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
@@ -27,7 +27,7 @@ makedepends=(python-requests)
 source=(
   "electrum-ltc-$pkgver.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/$pkgver"
 )
-sha256sums=(c1f7edbd1bdd242d5d31a28af562214b11da9e736c8f43ede8e136b14b01e890)
+sha256sums=(cf77a9dd6e06d991e24ded1230a81172fa236228ed94c1ca971a0f6733b4a33c)
 
 prepare() {
   sed -e 's/Exec=.*electrum-ltc %u"/Exec=electrum-ltc %u/' \
