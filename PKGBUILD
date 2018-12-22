@@ -7,7 +7,7 @@ _build=13
 _hash=90cf5d8f270a4347a95050320eef3fb7
 _majver="${pkgver%%.*}"
 _next="$((_majver + 1))"
-pkgrel=2
+pkgrel=3
 pkgdesc='Oracle Java Development Kit'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
@@ -55,9 +55,9 @@ package() {
     install -D -m644 lib/src.zip -t "${pkgdir}/${_jvmdir}/lib"
     
     # desktop and icons
-    install -D -m644 "${srcdir}/java.desktop"     -t "${pkgdir}/usr/share/applications"
-    install -D -m644 "${srcdir}/jconsole.desktop" -t "${pkgdir}/usr/share/applications"
-    install -D -m644 "${srcdir}/jshell.desktop"   -t "${pkgdir}/usr/share/applications"
+    install -D -m644 "${srcdir}/java.desktop"     "${pkgdir}/usr/share/applications/java-java${_majver}-jdk.desktop"
+    install -D -m644 "${srcdir}/jconsole.desktop" "${pkgdir}/usr/share/applications/jconsole-java${_majver}-jdk.desktop"
+    install -D -m644 "${srcdir}/jshell.desktop"   "${pkgdir}/usr/share/applications/jshell-java${_majver}-jdk.desktop"
     install -D -m644 "${srcdir}/java_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/java${_majver}-jdk.png"
     install -D -m644 "${srcdir}/java_48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/java${_majver}-jdk.png"
     

@@ -1,7 +1,7 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java Development Kit
 	pkgver = 11.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.oracle.com/java/
 	install = jdk.install
 	arch = x86_64
