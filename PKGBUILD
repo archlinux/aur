@@ -20,7 +20,7 @@ sha256sums=('0c6ee49e0c6dd61793e5705823570055e55e7601d665c9be75271c8b2ff54337')
 build() {
 	cd "${srcdir}/picard-release-${pkgver}"
 	sed "s/‘/'/g" -i setup.cfg
-	python setup.py config
+	python setup.py config --disable-autoupdate
 }
 
 package() {
