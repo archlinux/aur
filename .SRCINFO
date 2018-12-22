@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-qt5-graphicaleffects
 	pkgdesc = Graphical effects for use with Qt Quick 2 (mingw-w64)
 	pkgver = 5.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io/
 	arch = any
 	groups = mingw-w64-qt5
