@@ -10,7 +10,7 @@
 _qt_module=qtwebsockets
 pkgname="mingw-w64-qt5-websockets"
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Provides WebSocket communication compliant with RFC 6455 (mingw-w64)"
 depends=('mingw-w64-qt5-base')
