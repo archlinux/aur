@@ -2,14 +2,14 @@
 
 pkgname=python-nevergrad
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Gradient-free optimization'
 arch=(any)
 url='https://github.com/facebookresearch/nevergrad'
 license=(MIT)
 depends=(mypy python-bayesian-optimization python-cma python-coverage python-genty python-joblib python-matplotlib python-nose python-nose-timer python-numpy python-pandas)
-makedepends=(git)
-source=("git+https://github.com/facebookresearch/nevergrad#tag=v$pkgver")
+makedepends=(git python-setuptools)
+source=("git+$url#tag=v$pkgver")
 md5sums=('SKIP')
 
 build() {
