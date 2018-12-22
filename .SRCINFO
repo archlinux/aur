@@ -11,6 +11,7 @@ pkgbase = acct-svn
 	provides = psacct
 	conflicts = acct
 	conflicts = psacct
+	backup = etc/logrotate.d/acct
 	source = svn+https://svn.savannah.gnu.org/svn/acct/trunk
 	source = acct
 	source = accton-create
