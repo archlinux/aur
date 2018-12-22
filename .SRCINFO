@@ -1,16 +1,16 @@
 pkgbase = yaml-language-server-bin
 	pkgdesc = Language server implementation for YAML files and optional schema support
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/vscode-html-languageserver-bin
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = yaml-language-server-0.1.0.tgz
-	source = https://registry.npmjs.org/yaml-language-server/-/yaml-language-server-0.1.0.tgz
+	noextract = yaml-language-server-0.2.0.tgz
+	source = https://registry.npmjs.org/yaml-language-server/-/yaml-language-server-0.2.0.tgz
 	source = yaml-language-server
-	sha1sums = ab3aff5c601ae33e03dc08c0960fd7c70296e635
+	sha1sums = 3f551e4d449943e05e31dd69fcb5ef56498467a8
 	sha1sums = a0cb0fb3b5a8835196f28d3e20d5a8da4f682ba1
 
 pkgname = yaml-language-server-bin
