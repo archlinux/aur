@@ -1,7 +1,7 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgname=eigenpy
-pkgver=1.4.5
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('boost-libs')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen' 'boost' 'python-numpy')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('b53213d6b75f1d21895ca4f28228cf53')
+sha1sums=('d69a2f5528749973a7cc4b39583ac3b20c34b92b')
 
 build() {
     cd "$pkgname-$pkgver"
