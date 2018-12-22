@@ -1,6 +1,6 @@
 pkgbase = github-desktop-git
 	pkgdesc = GUI for managing Git and GitHub.
-	pkgver = 1.4.1.beta0.r18.g2e69e4033
+	pkgver = 1.5.1_linux1
 	pkgrel = 1
 	url = https://desktop.github.com
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = github-desktop-git
 	optdepends = hub: CLI interface for GitHub.
 	provides = github-desktop
 	conflicts = github-desktop
-	source = git+https://github.com/desktop/desktop.git
+	source = git+https://github.com/shiftkey/desktop.git
 	source = github-desktop.desktop
 	sha256sums = SKIP
 	sha256sums = be057e4a392e64760f7a40203ac886b7cf5551de254ad55c706376dca8aa4341

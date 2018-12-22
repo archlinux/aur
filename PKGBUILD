@@ -4,7 +4,7 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}-git"
-pkgver=1.4.1.beta0.r18.g2e69e4033
+pkgver=1.5.1_linux1
 gitname="release-${pkgver//_/-}"
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
@@ -18,7 +18,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 DLAGENTS=("https::/usr/bin/git clone --branch ${gitname} --single-branch %u")
 source=(
-  git+https://github.com/desktop/desktop.git
+  git+https://github.com/shiftkey/desktop.git
   ${_pkgname}.desktop
 )
 sha256sums=(
@@ -38,7 +38,7 @@ build() {
 }
 package() {
   install -d "${pkgdir}/opt/${_pkgname}"
-  cp -r --preserve=mode desktop/dist/desktop-linux-x64/* "${pkgdir}/opt/${_pkgname}/"
+  cp -r --preserve=mode desktop/dist/github-desktop-linux-x64/* "${pkgdir}/opt/${_pkgname}/"
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "desktop/app/static/logos/1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
   install -Dm644 "desktop/app/static/logos/512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
