@@ -24,5 +24,5 @@ index de7363e51b..b2b9d01799 100644
      if (project->isActiveConfig("dll")) {
          QString destDir = "";
 -- 
-2.19.2
+2.20.1
 

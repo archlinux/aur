@@ -1,4 +1,4 @@
-From c6e9aef076e72a4c7dab417d5b15afd28431877a Mon Sep 17 00:00:00 2001
+From 9c26fcc555b4ff9cca74dec82dae355bb2bc0044 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 16:42:07 +0200
 Subject: [PATCH 24/33] Adjust linker flags for static build with
@@ -25,5 +25,5 @@ index f0add757bb..5328da2e80 100644
 +unset(_isExe)
 +!!ENDIF
 -- 
-2.19.2
+2.20.1
 
