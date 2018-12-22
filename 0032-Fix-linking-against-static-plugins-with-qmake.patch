@@ -1,4 +1,4 @@
-From e8da100dec44bc38ec5eb9675f231c5d14d2e62f Mon Sep 17 00:00:00 2001
+From dc6f09599400e4e6a790ba8bdd8fce3b6dc419de Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 25 Aug 2017 17:07:17 +0200
 Subject: [PATCH 32/33] Fix linking against static plugins with qmake
@@ -33,5 +33,5 @@ index 2c4d6cd97e..a15ab81899 100644
          # Check if the plugin is known to Qt. We can use this to determine
          # the plugin path. Unknown plugins must rely on the default link path.
 -- 
-2.19.2
+2.20.1
 

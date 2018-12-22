@@ -29,5 +29,5 @@ index 5abf0624f4..a7f1285c26 100644
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
 -- 
-2.19.2
+2.20.1
 

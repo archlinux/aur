@@ -23,5 +23,5 @@ index 4802d3b04d..fac6be7301 100644
                  { "type": "mysqlConfig", "query": "--libs", "cleanlibs": true },
                  { "type": "mysqlConfig", "query": "--libs_r", "cleanlibs": false },
 -- 
-2.19.2
+2.20.1
 

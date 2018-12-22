@@ -93,5 +93,5 @@ index 1c76a2e46f..6a5f046b34 100644
          SUBDIRS += src_3rdparty_libpng
          src_3rdparty_freetype.depends += src_3rdparty_libpng
 -- 
-2.19.2
+2.20.1
 

@@ -1,4 +1,4 @@
-From f14f1928ace664034aeac5d348883a93f35b2ea5 Mon Sep 17 00:00:00 2001
+From 496054604431db3e647bf89d63a9140ce75d1001 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 7 Feb 2017 18:25:28 +0100
 Subject: [PATCH 30/33] Prevent qmake from messing static lib dependencies
@@ -39,5 +39,5 @@ index 59b394ca51..7788862142 100644
    static const char * const lflags[] = { "LIBS", "LIBS_PRIVATE",
                                           "QMAKE_LIBS", "QMAKE_LIBS_PRIVATE", nullptr };
 -- 
-2.19.2
+2.20.1
 

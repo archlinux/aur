@@ -163,5 +163,5 @@ index ed131c6823..b77d86cd6b 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.19.2
+2.20.1
 
