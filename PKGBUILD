@@ -23,7 +23,7 @@ build() {
   cd $pkgname
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
 	      --disable-ssl --bigloobindir=/usr/bin \
-	      --bigloolibdir=/usr/lib/bigloo/4.3d
+	      --bigloolibdir=/usr/lib/bigloo/4.3e
   make
   make doc
 }
