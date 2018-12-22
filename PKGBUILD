@@ -11,6 +11,7 @@ depends=('glibc')
 makedepends=('subversion')
 provides=('acct' 'psacct')
 conflicts=('acct' 'psacct')
+backup=(etc/logrotate.d/acct)
 source=("svn+https://svn.savannah.gnu.org/svn/${_pkgname}/trunk"
 	"${_pkgname}"
 	"${_pkgname}on-create"
