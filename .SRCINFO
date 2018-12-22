@@ -1,6 +1,6 @@
 pkgbase = ginkgo-git
 	pkgdesc = BDD Testing Framework for Go
-	pkgver = v1.6.0.r2.g2445fc1
+	pkgver = v1.7.0.r2.g505cc35
 	pkgrel = 1
 	url = http://onsi.github.io/ginkgo/
 	arch = x86_64
