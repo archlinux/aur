@@ -10,7 +10,7 @@
 _qt_module=qtserialport
 pkgname="mingw-w64-qt5-serialport"
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Provides access to hardware and virtual serial ports (mingw-w64)"
 depends=('mingw-w64-qt5-base')
