@@ -1,8 +1,9 @@
-# Maintainer: Thomas Weißschuh <thomas t-8ch de>
+# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Contributor: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=logcat-color
 pkgver=0.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A colorful alternative to "adb logcat"'
 arch=('any')
 url='https://github.com/marshall/logcat-color'
@@ -31,5 +32,5 @@ check() {
 
 package() {
   cd "$srcdir/logcat-color-${pkgver}"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
