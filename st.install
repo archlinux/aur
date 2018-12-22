@@ -1,0 +1,4 @@
+post_install() {
+	echo "-- Edit config.h and rebuild the package for customizations"
+	echo "-- Don't forget to add 'xcompmgr &' to your .xinitrc"
+}
