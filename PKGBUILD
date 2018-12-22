@@ -2,7 +2,7 @@
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=yle-dl-git
-pkgver=2.36.r1.gbd377c3
+pkgver=20181221.r0.g5e423a8
 pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=("any")
@@ -16,7 +16,6 @@ depends=('ffmpeg'
        'python-lxml'
        'python-mini-amf'
        'python-pycryptodomex'
-       'python-pysocks'
        'python-requests'
        'wget'
 )
