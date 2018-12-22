@@ -2,63 +2,56 @@
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 
 pkgname=onlyoffice-bin
-pkgver=5.1.27
-pkgrel=2
+pkgver=5.2.4
+pkgrel=1
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
-license=('AGPL3.0')
-depends=('gcc-libs' 'xorg-server' 'libx11' 'libxss' 'gtkglext' 'cairo' 'gconf'
-         'ttf-dejavu' 'ttf-liberation' 'libcurl-gnutls' 'libglvnd' 'gtk2'
-         'gdk-pixbuf2' 'glib2' 'libxml2' 'gtk3' 'qt5-declarative' 'qt5-svg'
-         'qt5-x11extras' 'nss')
-makedepends=('w3m')
+license=('AGPL3')
+depends=('alsa-lib' 'curl' 'wget' 'libxss' 'gtkglext' 'cairo' 'gconf' 'gcc-libs'
+         'ttf-dejavu' 'ttf-liberation' 'ttf-carlito' 'xdg-utils' 'libx11' 'fontconfig'
+         'freetype2' 'libsm' 'libxtst' 'gstreamer' 'gst-plugins-base-libs' 'libdrm'
+         'pango' 'libice' 'libpulse' 'libxext' 'libxdamage' 'nss' 'nspr'
+         'libcurl-gnutls' 'libxcursor' 'gtk2' 'libglvnd' 'libxrender' 'libcups'
+         'libxrandr' 'libxcomposite' 'libxfixes' 'libxi' 'atk' 'libxcb' 'gdk-pixbuf2'
+         'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('libreoffice: for OpenSymbol fonts'
-            'ttf-carlito: for Carlito fonts'
-            'ttf-ms-fonts: for Microsoft fonts'
-            'otf-takao: for japanese Takao fonts')
+            'otf-takao: for japanese Takao fonts'
+            'ttf-ms-fonts: for Microsoft fonts')
 provides=('onlyoffice')
 conflicts=('onlyoffice')
-options=('!strip')
+options=('!strip' '!emptydirs')
 _srcfile='onlyoffice-desktopeditors_amd64.deb'
 _srcurl="https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-${pkgver}/${_srcfile}"
 source=("onlyoffice-desktopeditors-${pkgver}_amd64.deb"::"$_srcurl")
 noextract=("onlyoffice-desktopeditors-${pkgver}_amd64.deb")
-sha256sums=('34af31acaa4b55fc6f2f148d60b494e07235409dc9bbe7a24f1e730eb5196e55')
+sha256sums=('8882a2ff4c5a9c16d74ab9733efc7f457631d2ebca975db964564ab487f0cdc7')
 
 prepare() {
     mkdir -p "onlyoffice-${pkgver}"
     
-    cd "onlyoffice-${pkgver}"
-    
-    bsdtar -xf "${srcdir}/onlyoffice-desktopeditors-${pkgver}_amd64.deb"
+    bsdtar -xf "${srcdir}/onlyoffice-desktopeditors-${pkgver}_amd64.deb" -C "onlyoffice-${pkgver}"
 }
 
 package() {
     cd "onlyoffice-${pkgver}"
     
     # install bundled files
-    printf '%s\n' '  -> Installing bundled files...'
     bsdtar -xf data.tar.xz -C "$pkgdir"
     
-    # fix permissions
-    printf '%s\n' '  -> Fixing permissions...'
-    chmod 755 "$pkgdir"{/opt/,/usr/{,bin/,share/{,applications/}}}
-    chmod 755 "${pkgdir}/usr/bin/onlyoffice-desktopeditors"
+    # fix broken symlink
+    ln -sf DesktopEditors "${pkgdir}/opt/onlyoffice/desktopeditors/desktop_64"
     
-    # install icons
-    printf '%s\n' '  -> Installing icons...'
+    # icons
+    local _res
     for _res in 16 24 32 48 64 128 256
     do
-        install -D -m644 "${pkgdir}/opt/onlyoffice/desktopeditors/asc-de-${_res}.png" \
+        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
+        ln -s "../../../../../../opt/onlyoffice/desktopeditors/asc-de-${_res}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/asc-de.png"
     done
     
-    # license
-    printf '%s\n' '  -> Installing license...'
-    cd "${pkgdir}/opt/onlyoffice/desktopeditors"
-    w3m -I 'utf-8' -T 'text/html' LICENSE.htm > "${srcdir}/onlyoffice-${pkgver}/LICENSE"
-    install -D -m644 3DPARTYLICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    cd "${srcdir}/onlyoffice-${pkgver}"
-    install -D -m644 LICENSE        -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    # 3rd party licenses
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s ../../../../opt/onlyoffice/desktopeditors/3DPARTYLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/3DPARTYLICENSE"
 }
