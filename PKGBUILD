@@ -2,12 +2,12 @@
 
 pkgname=neru-icon-classic-theme
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Classic theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-classic-theme"
 license=('LGPL3')
-depends=()
+depends=('gtk-update-icon-cache' 'librsvg' 'hicolor-icon-theme')
 replaces=('neru-icon-classic-theme')
 conflicts=()
 source=("https://github.com/chistota/"${pkgname}"/archive/v"${pkgver}".tar.gz")
@@ -25,6 +25,8 @@ package() {
 	ln -s document-viewer.svg neru-classic-light/32x32/apps/org.gnome.Evince.svg
 	ln -s document-viewer.svg neru-classic-light/32x32/apps/xpdf9.svg
 	ln -s document-viewer.svg neru-classic-light/32x32/apps/accessories-document-viewer.svg
+	ln -s qv4l2.svg neru-classic-light/32x32/apps/qvidcap.svg
+	ln -s usb-creator.svg neru-classic-light/32x32/apps/mintstick.svg
 
 	gtk-update-icon-cache neru-classic-light/
 	gtk-update-icon-cache neru-classic-dark/
