@@ -2,7 +2,7 @@
 
 pkgname=gorsync-git
 _pkgname=go-rsync
-pkgver=0.3
+pkgver=0.3.1
 epoch=
 pkgrel=1
 pkgdesc="Best GTK+ client frontend for RSYNC console utility."
@@ -10,7 +10,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/d2r2/go-rsync"
 license=('GPL3')
 makedepends=('git' 'go')
-depends=('rsync' 'glib2' 'gtk3')
+depends=('rsync' 'glib2' 'gtk3' 'libnotify')
 provides=('gorsync')
 install="${pkgname}.install"
 source=("${_pkgname}"::'git+https://github.com/d2r2/go-rsync.git')
@@ -51,7 +51,7 @@ build() {
     mv "${srcdir}/${_pkgname}" "${srcdir}/.go/src/"
     cd "${srcdir}/.go/src/${_pkgname}/"
     # download and build main package and all dependencies
-    GOPATH="${srcdir}/.go" go get -u -v all && GOPATH="${srcdir}/.go" ./gorsync_build.sh
+    GOPATH="${srcdir}/.go" go get -u -v all && GOPATH="${srcdir}/.go" ./gorsync_build.sh --buildtype Release
 }
 
 package() {
