@@ -1,24 +1,18 @@
 pkgbase = log4cxx-git
 	pkgdesc = A C++ port of Log4j, development version (GIT)
-	pkgver = 20180321
+	pkgver = 20181214
 	pkgrel = 1
 	url = http://logging.apache.org/log4cxx
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = svn
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = libtool
-	makedepends = patch
+	makedepends = git
 	makedepends = zip
-	makedepends = gzip
-	makedepends = sed
 	depends = apr-util
 	depends = libxml2
 	provides = log4cxx
 	conflicts = log4cxx
-	source = log4cxx::git+https://git-wip-us.apache.org/repos/asf/logging-log4cxx.git#commit=5f825186936a1876f92b88b371334ff26e997287
+	source = log4cxx::git+https://gitbox.apache.org/repos/asf/logging-log4cxx.git#commit=171e980fdd31e09e36841cf82adcebfa12bcd6d0
 	md5sums = SKIP
 
 pkgname = log4cxx-git
