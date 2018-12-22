@@ -4,7 +4,7 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}"
-pkgver=1.4.1_beta0
+pkgver=1.5.1_linux1
 gitname="release-${pkgver//_/-}"
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
@@ -16,7 +16,7 @@ optdepends=('hub: CLI interface for GitHub.')
 makedepends=('xorg-server-xvfb' 'nodejs-lts-carbon' 'yarn' 'python2')
 DLAGENTS=("http::/usr/bin/git clone --branch ${gitname} --single-branch %u")
 source=(
-  git+https://github.com/desktop/desktop.git#tag=${gitname}
+  git+https://github.com/shiftkey/desktop.git#tag=${gitname}
   ${_pkgname}.desktop
 )
 sha256sums=(
@@ -32,7 +32,7 @@ build() {
 }
 package() {
   install -d "${pkgdir}/opt/${_pkgname}"
-  cp -r --preserve=mode desktop/dist/desktop-linux-x64/* "${pkgdir}/opt/${_pkgname}/"
+  cp -r --preserve=mode desktop/dist/github-desktop-linux-x64/* "${pkgdir}/opt/${_pkgname}/"
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "desktop/app/static/logos/1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
   install -Dm644 "desktop/app/static/logos/512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
