@@ -1,0 +1,28 @@
+--- xt_geoip_build	2018-12-22 22:32:01.294152997 +0530
++++ xt_geoip_build.nft	2018-12-22 23:15:51.543757285 +0530
+@@ -247,19 +247,19 @@
+ 		($family == AF_INET ? '4' : '6'),
+ 		$iso_code, $name;
+ 
+-	my $file = "$target_dir/".uc($iso_code).".iv".($family == AF_INET ? '4' : '6');
++	my $file = "$target_dir/".uc($iso_code).".ipv".($family == AF_INET ? '4' : '6');
+ 	if (!open($fh, '>', $file)) {
+ 		print STDERR "Error opening $file: $!\n";
+ 		exit 1;
+ 	}
+ 
+-	binmode($fh);
+-
++	print $fh "define geoip".($family == AF_INET ? '4' : '6')."_iso_country_".uc($iso_code)." = {\n";
+ 	foreach my $range (@ranges) {
+ 		my ($start, $end) = split('-', $range);
+-		$start = inet_pton($family, $start);
+-		$end = inet_pton($family, $end);
+-		print $fh $start, $end;
++		print $fh "    $start";
++		print $fh "-$end" if ($start ne $end);
++		print $fh ",\n";
+ 	}
++	print $fh "}\n";
+ 	close $fh;
+ }

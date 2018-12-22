@@ -1,0 +1,6 @@
+src
+pkg
+GeoLite2-Country-CSV.zip
+xt_geoip_build
+nftables-geoip-db-*.tar.gz
+*-any.pkg.tar.xz

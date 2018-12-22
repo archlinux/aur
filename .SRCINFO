@@ -1,0 +1,21 @@
+pkgbase = nftables-geoip-db
+	pkgdesc = GeoIP Database for nftables
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://dev.maxmind.com/geoip/geoip2/geolite2/
+	arch = any
+	license = BSD
+	license = GPL
+	makedepends = perl-text-csv-xs
+	makedepends = perl-net-cidr-lite
+	source = http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
+	source = xt_geoip_build::https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v3.2/tree/geoip/xt_geoip_build?format=raw
+	source = xt_geoip_build.patch
+	source = README
+	sha256sums = SKIP
+	sha256sums = 216cb5a8c018c9db1cbff6b8a788d71d08f1d23dbb4ae60d318fc62fab1a2b46
+	sha256sums = 4f9180c17ea45c53da3f4804e98750a7f610510326bd78fd7e52e1f453aeda38
+	sha256sums = f2b62555d00d30baf7b2a3386d895bbd7a762123cf7342d3d50364cfb4587795
+
+pkgname = nftables-geoip-db
+
