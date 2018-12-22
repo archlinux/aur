@@ -1,17 +1,17 @@
 # Maintainer=alive4ever
 pkgname=libressl-netcat
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Low level UDP/TCP connection tool with support for TLS protocol"
 url=https://www.libressl.org
 license=('isc' 'custom:Openssl')
-depends=('glibc' 'ca-certificates')
+depends=('ca-certificates')
 provides=('netcat')
 conflicts=('openbsd-netcat' 'gnu-netcat')
 source=("https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz"
 	"https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz.asc")
-sha256sums=('b8cb31e59f1294557bfc80f2a662969bc064e83006ceef0574e2553a1c254fd5'
+sha256sums=('9b640b13047182761a99ce3e4f000be9687566e0828b4a72709e9e6a3ef98477'
             'SKIP')
 
 ## To verify the package signature, import the public key manually before
