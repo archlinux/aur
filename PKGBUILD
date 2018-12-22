@@ -17,7 +17,8 @@ depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi'
          'libxcursor' 'libxinerama' 'libxkbcommon' 'libxp' 'libxrandr'
          'libxss' 'libunwind' 'mesa' 'openjpeg2' 'poppler' 'wayland'
          'shared-mime-info' 'ttf-font' 'scim' 'libibus' 'glib2'
-         'wayland' 'wayland-protocols' 'libxkbcommon-x11')
+         'wayland' 'wayland-protocols' 'libxkbcommon-x11'
+         'pulseaudio')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot')
 optdepends=('geoclue: For elocation'
             'gst-plugins-base: Video and thumbnail codecs'
