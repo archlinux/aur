@@ -9,7 +9,7 @@
 _qt_module=qtgamepad
 pkgname="mingw-w64-qt5-gamepad"
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Adds support for getting events from gamepad devices (mingw-w64)"
 depends=('mingw-w64-qt5-base' 'mingw-w64-sdl2')
