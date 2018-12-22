@@ -13,12 +13,10 @@ depends=(emacs
 	 'tclx'
 	 'lesstif'
 	 'espeak')
-optdepends=('eflite: software speech via the FLite TTS engine'
-            'python: Google client, and wrapper for Emacspeak speech servers.')
+optdepends=('python: Google client, and wrapper for Emacspeak speech servers.')
 install='emacspeak.install'
 source=("https://github.com/tvraman/emacspeak/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('24a73d020c434e539ac88ea2041898b6  emacspeak-49.0.tar.bz2
-')
+md5sums=('24a73d020c434e539ac88ea2041898b6  emacspeak-49.0.tar.bz2')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
