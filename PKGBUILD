@@ -9,7 +9,7 @@
 _qt_module=qtwebchannel
 pkgname=mingw-w64-qt5-webchannel
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (mingw-w64)'
 depends=('mingw-w64-qt5-declarative')

@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-qt5-webchannel
 	pkgdesc = Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (mingw-w64)
 	pkgver = 5.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io/
 	arch = any
 	groups = mingw-w64-qt5
