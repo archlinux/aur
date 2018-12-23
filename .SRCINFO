@@ -1,6 +1,6 @@
 pkgbase = giada-vst
 	pkgdesc = A looper, drum machine, sequencer, live sampler and plugin host (VST enabled)
-	pkgver = 0.15.2
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = http://www.giadamusic.com/
 	changelog = ChangeLog
@@ -19,8 +19,8 @@ pkgbase = giada-vst
 	depends = rtmidi
 	provides = giada
 	conflicts = giada
-	source = http://www.giadamusic.com/data/giada-0.15.2-src.tar.gz
-	md5sums = 1143195670f5b4d65a6cafb9b044a32c
+	source = http://www.giadamusic.com/data/giada-0.15.3-src.tar.gz
+	md5sums = ae9e13fe9926261946bfd5c5f34329a9
 
 pkgname = giada-vst
 
