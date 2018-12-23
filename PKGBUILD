@@ -1,4 +1,4 @@
-# Maintainer: Einhard Leichtfuß <archer@respiranto.de>
+# Maintainer: Einhard Leichtfuß <alguien@respiranto.de>
 pkgname=dict-wikt-en-all
 pkgver=2018_05_15
 pkgrel=1
