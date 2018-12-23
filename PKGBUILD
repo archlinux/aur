@@ -2,15 +2,15 @@
 
 pkgbase=cpptoml
 pkgname=(cpptoml cpptoml-doc)
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A header-only library for parsing TOML configuration files."
 arch=('any')
 url="https://github.com/skystrife/cpptoml"
 license=('MIT')
-makedepends=('cmake' 'doxygen' 'git' 'graphviz')
+makedepends=('cmake' 'doxygen' 'git' 'graphviz' 'texlive-core')
 source=("https://github.com/skystrife/cpptoml/archive/v$pkgver.tar.gz")
-sha256sums=('11b1c07132d23e85071cef3d0fe9bc605de731fcd1b1c3f3d43ed09a6fd7a850')
+sha256sums=('23af72468cfd4040984d46a0dd2a609538579c78ddc429d6b8fd7a10a6e24403')
 
 prepare()
 {
