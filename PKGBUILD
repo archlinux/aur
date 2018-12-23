@@ -2,7 +2,7 @@
 
 pkgname=mcos-mjv-xfce-edition
 _pkgname=McOS-MJV-XFCE-Edition
-pkgver=2.3
+pkgver=2.3r5.6435c39
 _pkgver=2.3
 pkgrel=1
 pkgdesc="It's GTK2,GTK3,XFCE4,NOTIFYD theme Mac OS created PaulXFCE"
@@ -21,7 +21,7 @@ sha512sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
 
-  echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "2.3r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package(){
