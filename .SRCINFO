@@ -1,0 +1,24 @@
+pkgbase = fheroes2enh-git
+	pkgdesc = Free Heroes 2 is an engine recreation of game Heroes 2 (of Might and Magic) with UI and coding enhancements.
+	pkgver = r305.21f2504
+	pkgrel = 1
+	url = https://github.com/ciplogic/fheroes2enh
+	install = fheroes2enh-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = sdl_ttf
+	conflicts = fheroes2-svn
+	source = fheroes2enh-git::git+https://github.com/ciplogic/fheroes2enh
+	source = fheroes2enh-git.install
+	sha256sums = SKIP
+	sha256sums = 9bfcb311ccb8fa3785cb769b1cc5f9a5fa3488cc7a72d2dc6f4e5afe1de16769
+
+pkgname = fheroes2enh-git
+

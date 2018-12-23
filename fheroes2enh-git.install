@@ -1,0 +1,7 @@
+post_install() {
+  printf "\n"
+  printf "You need to install HoMM2 game files:\n"
+  printf " - data (*.ogg) files to /usr/share/fheroes2/data\n"
+  printf " - maps to /usr/share/fheroes2/maps\n\n"
+  printf "You can get demo version at: https://github.com/ciplogic/fheroes2enh/releases/download/0.9.1/h2demo.zip\n\n"
+}
