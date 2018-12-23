@@ -2,7 +2,7 @@
 
 pkgname=gorsync-git
 _pkgname=go-rsync
-pkgver=0.3.3
+pkgver=0.3.1
 epoch=
 pkgrel=1
 pkgdesc="Best GTK+ client frontend for RSYNC console utility."
