@@ -1,6 +1,6 @@
 pkgbase = virtboard-git
-	pkgdesc = A basic keyboard, blazing the path of modern Wayland keyboards. Sacrificial.
-	pkgver = r6272.5210414c
+	pkgdesc = Basic keyboard, blazing the path of modern Wayland keyboards
+	pkgver = 0.0.5.r12.g49b04fb6
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/virtboard
 	arch = i686
