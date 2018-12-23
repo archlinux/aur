@@ -1,5 +1,5 @@
 pkgbase = shiboken2-git
-	pkgver = 5.11.3.r5913.08a99cb6
+	pkgver = 5.12.1.r6177.b5d27d9f
 	pkgrel = 1
 	url = http://www.pyside.org
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = shiboken2-git
 	makedepends = python
 	makedepends = libxslt
 	makedepends = qt5-xmlpatterns
-	source = shiboken2-git::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.11
+	source = shiboken2-git::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.12
 	sha256sums = SKIP
 
 pkgname = python2-shiboken2-git
