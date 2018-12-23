@@ -1,6 +1,6 @@
 pkgbase = gcc-arm-none-eabi-bin
 	pkgdesc = GNU Tools ARM Embedded Processors (binary distribution, includes newlib, does NOT include GDB)
-	pkgver = 7_2018_q2_update
+	pkgver = 8_2018_q4_major
 	pkgrel = 1
 	url = https://developer.arm.com/open-source/gnu-toolchain/gnu-rm
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = gcc-arm-none-eabi-bin
 	conflicts = arm-none-eabi-newlib
 	options = !strip
 	options = staticlibs
-	source = https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/7-2018q2/gcc-arm-none-eabi-7-2018-q2-update-linux.tar.bz2
-	md5sums = 299ebd3f1c2c90930d28ab82e5d8d6c0
-	sha256sums = bb17109f0ee697254a5d4ae6e5e01440e3ea8f0277f2e8169bf95d07c7d5fe69
+	source = https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/8-2018q4/gcc-arm-none-eabi-8-2018-q4-major-linux.tar.bz2
+	md5sums = f55f90d483ddb3bcf4dae5882c2094cd
+	sha256sums = fb31fbdfe08406ece43eef5df623c0b2deb8b53e405e2c878300f7a1f303ee52
 
 pkgname = gcc-arm-none-eabi-bin
 
