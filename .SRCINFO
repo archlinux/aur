@@ -1,0 +1,12 @@
+pkgbase = smdev-lvm2
+	pkgver = 20181204
+	pkgrel = 1
+	arch = any
+	groups = smdev-scripts
+	depends = smdev
+	depends = lvm2
+	source = 01-lvm
+	sha256sums = 1bda9cab63426456dd46b9946ea66735bba0a3c0d6ebff326c17874c2d7fdfa5
+
+pkgname = smdev-lvm2
+

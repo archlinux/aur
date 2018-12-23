@@ -1,0 +1,7 @@
+if [[ $(echo $DEVNAME | grep 'dm-[0-9]') ]]; then
+	NAME=$(cat /sys$DEVPATH/dm/name)
+	test -d /dev/mapper || mkdir -p /dev/mapper
+	ln -sf /dev/$DEVNAME /dev/mapper/$NAME
+	test -d /dev/$(echo $NAME | awk -F - '{print $1}') || mkdir -p /dev/$(echo $NAME | awk -F - '{print $1}') # this creates /dev/GROUPNAME/VOLUMENAME
+	ln -sf /dev/$DEVNAME /dev/$(echo $NAME | awk -F - '{print $1}')/$(echo $NAME | awk -F - '{print $2}')
+fi
