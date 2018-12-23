@@ -1,0 +1,9 @@
+post_install() {
+	echo ":: Make sure to also add the llvm tools component"
+	echo "   using 'rustup component add llvm-tools-preview'"
+}
+
+post_remove() {
+	echo ":: If you no longer require the llvm tools from rustup, you can"
+	echo "   remove it with 'rustup component remove llvm-tools-preview'"
+}
