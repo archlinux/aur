@@ -1,0 +1,16 @@
+pkgbase = massivethreads
+	pkgdesc = A Lightweight Thread Library for High Productivity Languages
+	pkgver = 0.99
+	pkgrel = 1
+	url = https://github.com/massivethreads/massivethreads
+	arch = x86_64
+	license = BSD
+	makedepends = glibc
+	makedepends = gcc
+	depends = python
+	optdepends = sqlite
+	source = massivethreads-0.99.tar.gz::https://github.com/massivethreads/massivethreads/archive/v0.99.tar.gz
+	sha256sums = 681a72108a6245f9eec043e05e5a676cb3b5ba83444c74f5613b57ce8f7d7d51
+
+pkgname = massivethreads
+
