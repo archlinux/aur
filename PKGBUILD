@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=gnome-shell-extension-do-not-disturb-git
-pkgver=r31.93f3ccb
+pkgver=2.0.0.r0.g27ef26f
 pkgrel=1
 pkgdesc="Enable or disable do not disturb mode"
 arch=(any)
@@ -15,7 +15,7 @@ sha256sums=(SKIP)
 
 pkgver() {
     cd gnome-shell-extension-do-not-disturb
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

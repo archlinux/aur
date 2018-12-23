@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-do-not-disturb-git
 	pkgdesc = Enable or disable do not disturb mode
-	pkgver = r31.93f3ccb
+	pkgver = 2.0.0.r0.g27ef26f
 	pkgrel = 1
 	url = https://github.com/kylecorry31/gnome-shell-extension-do-not-disturb
 	arch = any
