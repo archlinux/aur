@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-do-not-disturb
+	pkgdesc = Enable or disable do not disturb mode
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/kylecorry31/gnome-shell-extension-do-not-disturb
+	arch = any
+	license = MIT
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-do-not-disturb-git
+	source = https://github.com/kylecorry31/gnome-shell-extension-do-not-disturb/archive/v2.0.0.tar.gz
+	sha256sums = ccdf94ba24f9be4cf29230773f16a0f1a7f3dbddd7d8382f3e42fe70d6655331
+
+pkgname = gnome-shell-extension-do-not-disturb
+
