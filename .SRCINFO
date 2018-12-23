@@ -1,0 +1,15 @@
+pkgbase = xdemineur
+	pkgdesc = A minesweeper game for the X Window System.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://www.babafou.eu.org/xdemineur/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libx11
+	depends = libxpm
+	source = http://www.babafou.eu.org/xdemineur/xdemineur-2.1.1.tar.gz
+	sha256sums = 593824412a208a1b75d5b15745a271dc3eba330d41f7718f4826567d04bcbb9b
+
+pkgname = xdemineur
+
