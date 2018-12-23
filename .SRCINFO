@@ -1,6 +1,6 @@
 pkgbase = libprelude
 	pkgdesc = Provides the framework for using the Prelude system
-	pkgver = 4.1.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://www.prelude-siem.org
 	arch = i686
@@ -16,10 +16,8 @@ pkgbase = libprelude
 	backup = etc/prelude/default/global.conf
 	backup = etc/prelude/default/idmef-client.conf
 	backup = etc/prelude/default/tls.conf
-	source = https://www.prelude-siem.org/pkg/src/4.1.0/libprelude-4.1.0.tar.gz
-	source = libprelude-4.1.0-fix_compatibility_gnutls_3_6.patch
-	md5sums = d75977db58de9ba4cf9c4d00a0e25cb9
-	md5sums = 5237abe04d26bc071b1018d456550259
+	source = https://www.prelude-siem.org/pkg/src/5.0.0/libprelude-5.0.0.tar.gz
+	md5sums = 122cebf2073dc9803eb60e80d3d234a4
 
 pkgname = libprelude
 
