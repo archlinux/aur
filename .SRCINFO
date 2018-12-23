@@ -1,6 +1,6 @@
 pkgbase = nss-tls-git
 	pkgdesc = A DNS over HTTPS resolver for glibc
-	pkgver = r16.c256eb1
+	pkgver = r35.86c005d
 	pkgrel = 1
 	url = https://github.com/dimkr/nss-tls
 	arch = i686
