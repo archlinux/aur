@@ -1,12 +1,14 @@
 # $Id$
 # Maintainer: shmilee <shmilee.zju@gmail.com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
-# longest and latest "longterm maintenance" kernel releases
+# last/latest "longterm maintenance" kernel releases
 # https://www.kernel.org/category/releases.html
-# 4.9 Greg Kroah-Hartman 2016-12-11 2023-01
-_LLL_VER=4.9
-_LLL_SUBVER=136
+# 4.19 Greg Kroah-Hartman 2018-10-22 2020-12
+_LLL_VER=4.19
+_LLL_SUBVER=12
 
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU can actually run slower with NUMA enabled.
@@ -20,16 +22,9 @@ _NUMA_disable=y
 _CK_VER=1
 _CK_PATCH="http://ck.kolivas.org/patches/4.0/${_LLL_VER}/${_LLL_VER}-ck${_CK_VER}/patch-${_LLL_VER}-ck${_CK_VER}.xz"
 
-# Alternative I/O scheduler by Paolo Valente in ck patch
-_BFQ_VER=v8
-# Set this if you want it enabled globally i.e. for all devices in your system
-# If you want it enabled on a device-by-device basis, leave this unset and see:
-# https://wiki.archlinux.org/index.php/Linux-ck#How_to_enable_the_BFQ_I.2FO_Scheduler
-_BFQ_enable=
-
 # Ultra Kernel Samepage Merging
 _UKSM_VER=0.1.2.6
-_UKSM_COMMIT=676f9bb2a6da8705e463adc2161f70e00f150238
+_UKSM_COMMIT=c4fc85e4e513f97c38806358c472cc45270d936f
 _UKSM_PATCH="https://raw.githubusercontent.com/dolohow/uksm/${_UKSM_COMMIT}/uksm-${_LLL_VER}.patch"
 
 # CJKTTY patch 
@@ -39,7 +34,7 @@ _CJKTTY_PATCH_FILE=linux-cjktty-${_LLL_VER}.patch
 _CJKTTY_PATCH_URL="https://github.com/torvalds/linux/compare/v${_LLL_VER}...Gentoo-zh:${_LLL_VER}-utf8.patch"
 _CJKTTY_PATCH="${_CJKTTY_PATCH_FILE}::${_CJKTTY_PATCH_URL}"
 
-_PATHSET_DESC="ck${_CK_VER} bfq-${_BFQ_VER} uksm-${_UKSM_VER} and cjktty"
+_PATHSET_DESC="ck${_CK_VER} uksm-${_UKSM_VER} and cjktty"
 
 
 pkgbase=linux-shmilee
@@ -50,7 +45,7 @@ pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
 options=('!strip')
 source=(
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -58,11 +53,9 @@ source=(
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         ${_CK_PATCH}
-        'ck-patch-for-4.9.117+.patch'
-        'ck-patch-for-4.9.135+.patch'
+        'ck-patch-for-4.19.7+.patch'
         ${_UKSM_PATCH}
         ${_CJKTTY_PATCH}
-        'linux-cjktty-patch-for-4.9.112+.patch'
         'config'         # the main kernel config file
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -73,16 +66,14 @@ validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman 
 )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
-sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
+sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '9ca1d89c5997ab84b16bbe1e7dabe916751f934ab6e8cc0ad0743a7ea11c813d'
-            '5b9d8f4ef73f87e8595de66ccc38bad86e290fd9453bd536b9cc950f5344b82d'
-            '83083a6afc8be5504629049d6659beb6d2e8412a50db4caa4c1bec2a0d3ec2d7'
-            'a020096879c2a2b7f041cc34e4f4970fbb7af9fdad6903987fa80864bd00fcb3'
-            '65fae53b7ac44a9f3ffdcf5722e70f248ffcc183583b686066a766d27f269e1d'
-            '41acf07ce9316ec2d4149331e92223dc59d2f2090efb7b71cd96522a5ba9bf48'
-            'afda821d57be33c5e93390e353b1aa99bd0bd41dff70feac90249097b9b44ea9'
-            'e1c3a3dc250cd6abcbc7dd6c646a324e7b9960210fbf170c829f29e4f426cc07'
+            '4b2bab90b752a2cf2d2d2157e360ff4e37a5413620fdac624033a469d86518e0'
+            '77863d16a08e1b3c726b6c965f1bb7c672bd7317776810121062b73f9ea26780'
+            '58b81803f8f81d18bef9fe3c5101851ca770ca103da114b8d1460ed74d920efa'
+            'ec617b1718e6cadfad02c75aca9c4b0e6b6f944bc1a93b7e4d82c847c04b5653'
+            '72be48252f30bc644071bbce2607b773f789c6f19e281b89ab7e16a3d8161ed3'
+            '05a6906a4e2f854fdbe86b48a890e58b0487d34d5424cf8913af7d7f15349fa8'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -101,10 +92,9 @@ prepare() {
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../patch-${_LLL_VER}-ck${_CK_VER}"
   # Patch source with ck patch set
-  msg "Patching source with ck${_CK_VER} including BFS BFQ"
+  msg "Patching source with ck${_CK_VER} including BFS"
   cp "../patch-${_LLL_VER}-ck${_CK_VER}" "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
-  patch -i ../ck-patch-for-4.9.117+.patch "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
-  patch -i ../ck-patch-for-4.9.135+.patch "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
+  patch -i ../ck-patch-for-4.19.7+.patch "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
   patch -Np1 -i "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
 
   msg "Patching source with uksm ${_UKSM_VER} patches"
@@ -113,7 +103,6 @@ prepare() {
 
   msg "Patching source with Gentoo-zh/linux-cjktty patches"
   cp "../${_CJKTTY_PATCH_FILE}" "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
-  patch -i ../linux-cjktty-patch-for-4.9.112+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
   patch -Np1 -i "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
 
   cp -Tf ../config .config
@@ -141,14 +130,6 @@ prepare() {
         -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
   fi
 
-  # Optionally enable BFQ as the default I/O scheduler
-  if [ -n "$_BFQ_enable" ]; then
-    msg "Setting BFQ as default I/O scheduler..."
-    sed -i -e 's|CONFIG_DEFAULT_IOSCHED=.*|CONFIG_DEFAULT_IOSCHED="bfq"|' \
-        -i -e 's|CONFIG_DEFAULT_DEADLINE=y|# CONFIG_DEFAULT_DEADLINE is not set\nCONFIG_DEFAULT_BFQ=y|' \
-        -i -e 's|CONFIG_DEFAULT_CFQ=y|# CONFIG_DEFAULT_CFQ is not set\nCONFIG_DEFAULT_BFQ=y|' ./.config
-  fi
-
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
@@ -170,13 +151,13 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make ${MAKEFLAGS} LOCALVERSION= bzImage modules htmldocs
 }
 
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ${_PATHSET_DESC} patchsets"
   [ "${pkgbase}" = "linux" ] && groups=('base')
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
@@ -189,8 +170,12 @@ _package() {
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+
+  msg2 "Installing boot image..."
+  install -Dm644 "$(make -s image_name)" "${pkgdir}/boot/vmlinuz-${pkgbase}"
+
+  msg2 "Installing modules..."
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
-  cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # make room for external modules
   local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
@@ -209,6 +194,7 @@ _package() {
   # now we call depmod...
   depmod -b "${pkgdir}/usr" -F System.map "${_kernver}"
 
+  msg2 "Installing hooks..."  
   # sed expression for following substitutions
   local _subst="
     s|%PKGBASE%|${pkgbase}|g
@@ -220,15 +206,16 @@ _package() {
   sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
 
-  # install mkinitcpio preset file
-  sed "${_subst}" ../linux.preset |
-    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  # install mkinitcpio preset file and pacman hooks
+  sed "${_subst}" ../linux.preset | install -Dm644 /dev/stdin \
+    "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  sed "${_subst}" ../60-linux.hook | install -Dm644 /dev/stdin \
+    "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+  sed "${_subst}" ../90-linux.hook | install -Dm644 /dev/stdin \
+    "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
-  # install pacman hooks
-  sed "${_subst}" ../60-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
-  sed "${_subst}" ../90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -259,9 +246,6 @@ _package-headers() {
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
 
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
@@ -319,11 +303,28 @@ _package-docs() {
   cd ${_srcname}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
 
+  msg2 "Installing documentation..."
   mkdir -p "${_builddir}"
   cp -t "${_builddir}" -a Documentation
 
-  # Fix permissions
-  chmod -R u=rwX,go=rX "${_builddir}"
+  msg2 "Removing doctrees..."
+  rm -r "${_builddir}/Documentation/output/.doctrees"
+
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="${_builddir}/Documentation/${src#${_builddir}/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "${_builddir}/Documentation/output" -type f -print0)
+
+  msg2 "Adding symlink..."
+  mkdir -p "${pkgdir}/usr/share/doc"
+  ln -sr "${_builddir}/Documentation" "${pkgdir}/usr/share/doc/${pkgbase}"
+
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "${pkgdir}"
 }
 
 for _p in ${pkgname[@]}; do

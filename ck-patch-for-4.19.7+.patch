@@ -1,0 +1,40 @@
+--- patch-4.19-ck1	2018-12-22 10:30:40.000000000 +0800
++++ patch-4.19.7-ck1	2018-12-22 10:43:47.000000000 +0800
+@@ -5366,14 +5366,9 @@
+ index 1a0be022f91d..cfa268364ec7 100644
+ --- a/arch/x86/Kconfig
+ +++ b/arch/x86/Kconfig
+-@@ -1009,10 +1009,26 @@ config SCHED_SMT
+- 	depends on SMP
+- 	---help---
+- 	  SMT scheduler support improves the CPU scheduler's decision making
+--	  when dealing with Intel Pentium 4 chips with HyperThreading at a
+-+	  when dealing with Intel P4/Core 2 chips with HyperThreading at a
+- 	  cost of slightly increased overhead in some places. If unsure say
+- 	  N here.
++@@ -1003,6 +1003,22 @@
++ config SCHED_SMT
++ 	def_bool y if SMP
+  
+ +config SMT_NICE
+ +	bool "SMT (Hyperthreading) aware nice priority and policy support"
+@@ -7529,7 +7529,7 @@
+ index 000000000000..02e9eebab3d9
+ --- /dev/null
+ +++ b/kernel/sched/MuQSS.c
+-@@ -0,0 +1,7366 @@
++@@ -0,0 +1,7370 @@
+ +// SPDX-License-Identifier: GPL-2.0
+ +/*
+ + *  kernel/sched/MuQSS.c, was kernel/sched.c
+@@ -8543,6 +8543,10 @@
+ +#define CPUIDLE_THREAD_BUSY	(16)
+ +#define CPUIDLE_DIFF_NODE	(32)
+ +
+++#ifdef CONFIG_SCHED_SMT
+++DEFINE_STATIC_KEY_FALSE(sched_smt_present);
+++#endif
+++
+ +/*
+ + * The best idle CPU is chosen according to the CPUIDLE ranking above where the
+ + * lowest value would give the most suitable CPU to schedule p onto next. The
