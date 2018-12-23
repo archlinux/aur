@@ -1,6 +1,6 @@
 pkgbase = kubebuilder-bin
 	pkgdesc = SDK for building Kubernetes APIs using CRDs
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/kubernetes-sigs/kubebuilder
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = kubebuilder-bin
 	optdepends = kustomize
 	provides = kubebuilder
 	conflicts = kubebuilder
-	source = https://github.com/kubernetes-sigs/kubebuilder/releases/download/v1.0.6/kubebuilder_1.0.6_linux_amd64.tar.gz
-	sha256sums = a622eebdcc95984d3a3d87d0acd2d7c02b463f4db23b1b22020a2bc77c032668
+	source = https://github.com/kubernetes-sigs/kubebuilder/releases/download/v1.0.7/kubebuilder_1.0.7_linux_amd64.tar.gz
+	sha256sums = 9f7f55708429122b2111a5012977265522228764e756e0094f0128605f85b462
 
 pkgname = kubebuilder-bin
 
