@@ -2,7 +2,7 @@
 
 pkgname=pam_panic
 pkgver=0.3.2
-pkgrel=2
+pkgrel=1
 pkgdesc="A PAM module that protects sensitive data and provides a panic function for emergency situations. Authentication through passwords or removable media."
 arch=('any')
 url="https://github.com/pampanic/pam_panic"

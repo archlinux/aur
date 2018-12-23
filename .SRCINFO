@@ -1,7 +1,7 @@
 pkgbase = pam_panic
 	pkgdesc = A PAM module that protects sensitive data and provides a panic function for emergency situations. Authentication through passwords or removable media.
 	pkgver = 0.3.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/pampanic/pam_panic
 	arch = any
 	license = GPL3
