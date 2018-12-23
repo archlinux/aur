@@ -1,0 +1,17 @@
+pkgbase = rst2beamer3k
+	pkgdesc = msmtp wrapper allowing for offline use
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/myint/rst2beamer
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	provides = rst2beamer
+	conflicts = rst2beamer
+	source = https://files.pythonhosted.org/packages/source/r/rst2beamer3k/rst2beamer3k-0.9.1.tar.gz
+	sha256sums = 63d9859b20783984034795932c9b14981bea7159add6503cba378c85d9260951
+
+pkgname = rst2beamer3k
+	depends = python
+
