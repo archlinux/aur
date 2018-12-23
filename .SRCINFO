@@ -1,13 +1,13 @@
 pkgbase = cargo-binutils
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rust-embedded/cargo-binutils
 	install = cargo-binutils.install
 	arch = x86_64
 	license = Apache
 	license = MIT
-	makedepends = cargo
 	depends = rustup
+	depends = cargo
 	source = https://github.com/rust-embedded/cargo-binutils/archive/v0.1.6.tar.gz
 	sha256sums = 5514aefc982944c9fb965881a533817a4faaad883c871daa6fd5c820ce91ef6f
 
