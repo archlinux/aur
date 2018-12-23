@@ -2,19 +2,19 @@
 # Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=gcompris-qt
-pkgver=0.91
+pkgver=0.95
 pkgrel=1
 pkgdesc="Educational software suite comprising of numerous activities for children aged 2 to 10"
 arch=('x86_64')
 url="http://gcompris.net/"
 license=('GPL3')
 depends=('qt5-declarative' 'qt5-multimedia' 'qt5-svg' 'qt5-sensors'
-         'qt5-quickcontrols' 'qt5-graphicaleffects' 'qml-box2d'
-         'hicolor-icon-theme')
+         'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-xmlpatterns'
+         'qml-box2d' 'hicolor-icon-theme')
 makedepends=('cmake' 'extra-cmake-modules' 'qt5-tools' 'kdoctools')
 replaces=('gcompris' 'gcompris-data')
 source=(http://gcompris.net/download/qt/src/$pkgname-$pkgver.tar.xz)
-sha256sums=('6fcf6451f5214ccacf6df51b4caa53ab996c2dc597dda0e8b7301d9c384a0026')
+sha256sums=('34d3ece24e87755a68c70129e502bf57874b21311aca54ba67619e25ba9451a9')
 
 prepare() {
   cd $pkgname-$pkgver
