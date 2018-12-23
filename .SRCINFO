@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-sphinxbase
+	pkgdesc = Common library for sphinx speech recognition. (mingw-w64)
+	pkgver = 5prealpha
+	pkgrel = 1
+	url = http://cmusphinx.sourceforge.net/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-configure
+	makedepends = bison
+	depends = mingw-w64-lapack
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://downloads.sourceforge.net/project/cmusphinx/sphinxbase/5prealpha/sphinxbase-5prealpha.tar.gz
+	sha256sums = f72bdb59e50b558bed47cc2105777200d2b246a0f328e913de16a9b22f9a246f
+
+pkgname = mingw-w64-sphinxbase
+
