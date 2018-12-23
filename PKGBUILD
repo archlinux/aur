@@ -1,8 +1,8 @@
 # Maintainer: Varakh <varakh@varakh.de>
 
 pkgname=spotifyd-git
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.3.8.gd2b2d39
+pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 depends=('flac' 'libogg' 'libsndfile' 'libvorbis')
 makedepends=('git' 'cargo')
