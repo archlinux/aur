@@ -2,7 +2,7 @@
 # Contributor: Michael Carlberg <c@rlberg.se>
 _pkgname=polybar
 pkgname="${_pkgname}-git"
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="A fast and easy-to-use status bar"
 arch=("i686" "x86_64")
@@ -18,6 +18,7 @@ optdepends=("alsa-lib: alsa module support"
             "i3-wm: i3 module support"
             "ttf-unifont: Font used in example config"
             "siji-git: Font used in example config"
+            "xorg-fonts-misc: Font used in example config"
             "curl: github module support")
 makedepends=("cmake" "git" "python" "python2" "pkg-config")
 provides=("polybar")
