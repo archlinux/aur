@@ -1,6 +1,6 @@
 pkgbase = k8vavoom-git
 	pkgdesc = Source port of Doom
-	pkgver = r6774.8cc5560b6
+	pkgver = r7417.023db7608
 	pkgrel = 1
 	url = https://repo.or.cz/k8vavoom.git
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = k8vavoom-git
 	depends = sdl2_mixer
 	depends = openal
 	optdepends = libmad
-	source = k8vavoom-git::git+https://repo.or.cz/k8vavoom.git#commit=8cc5560b6389d4e5593c1cae6e1b1fefc4030506
+	source = k8vavoom-git::git+https://repo.or.cz/k8vavoom.git#commit=023db7608919f8e9da345e2fa4c93d712010c86e
 	source = arch.patch
 	sha256sums = SKIP
 	sha256sums = b35e882aee67e17a0a4bc2654fb15e8b014d69d666d138408375d8171250f192
