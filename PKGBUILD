@@ -2,7 +2,7 @@
 _lang=deu-fra
 pkgname=dict-freedict-${_lang}
 pkgver=2018.09.13
-pkgrel=1
+pkgrel=2
 pkgdesc="German -> French dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="https://freedict.org/"
@@ -16,7 +16,11 @@ sha512sums=('8507e7b2688c13a5e4c6597fafc0685bd51d759566ec45c7dba74a3812483b4e81a
 prepare()
 {
 	cd $_lang
-	sed -i 's/\(10\)\(100\>.*1 mit 100 Nullen\)/\1\^\2/' ${_lang}.tei
+	sed -Ei \
+		-e 's/(10)(10)(100\>)(\s+\(10)(Googol.*(1|Eins) mit einem Googol Nullen)/\1^(\2^\3)\4^\5/' \
+		-e 's/(10)([1-9][0-9]*)(.*(1|Eins) mit \2 Nullen)/\1\^\2\3/' \
+		-e 's/(die Zahl 10)(60)/\1^\2/' \
+		${_lang}.tei
 }
 
 build()
