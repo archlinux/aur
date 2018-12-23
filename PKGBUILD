@@ -3,8 +3,8 @@
 
 pkgsubn=Tab-Session-Manager
 pkgname=tab-session-manager-chromium-git
-pkgver=390.80f930e
-pkgrel=2
+pkgver=4.3.3.r0.g80f930e
+pkgrel=3
 pkgdesc="Chrome/Chromium extension for Tab Session Manager - git/dev"
 arch=('any')
 url='https://github.com/sienori/Tab-Session-Manager'
@@ -14,9 +14,11 @@ source=("git+https://github.com/sienori/Tab-Session-Manager.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgsubn}"
-	local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-	printf "%s" "${ver//-/.}"
+  cd "${srcdir}/${pkgsubn}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 build() {
 	cd "${srcdir}/${pkgsubn}"
