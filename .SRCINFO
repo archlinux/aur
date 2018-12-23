@@ -1,0 +1,17 @@
+pkgbase = nldev-openrc
+	pkgdesc = OpenRC nldev and nltrigger init scripts
+	pkgver = 20181222
+	pkgrel = 1
+	arch = any
+	license = MIT/X
+	depends = nldev
+	depends = openrc
+	source = nldev.confd
+	source = nldev.initd
+	source = nltrigger.initd
+	sha256sums = 210bf319a575bac663f3926f832d296cd13747c31e2c2d575808d1fa773e7a87
+	sha256sums = 262238f02af571db99e18663414d4d3450609f1b35a85722d9bae08f0e84a16a
+	sha256sums = 766bb955aad9289b87eccb5ab1c4f82815288ac209c0a7454374fdcda547d088
+
+pkgname = nldev-openrc
+

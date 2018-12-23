@@ -1,0 +1,17 @@
+#!/usr/bin/openrc-run
+
+description="nldev is a simple netlink device manager"
+
+depend()
+{
+	need sysfs dev-mount smdev
+	before checkfs fsck nltrigger
+	provide dev
+}
+
+start()
+{
+	ebegin "Starting nldev device manager"
+	nldev -b -r "${runpath}" "${nldev_opts}"
+	eend $?
+}

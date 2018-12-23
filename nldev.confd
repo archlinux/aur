@@ -1,0 +1,7 @@
+# /etc/conf.d/nldev: config file for nldev
+
+# choose hotplug helper
+runpath="/usr/bin/smdev"
+
+# Add extra command line options to nldev
+# nldev_opts=""
