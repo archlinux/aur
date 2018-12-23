@@ -1,0 +1,13 @@
+diff -Naur ./anoise.orig/anoise/anoise.py ./anoise/anoise/anoise.py
+--- ./anoise.orig/anoise/anoise.py	2018-12-22 20:41:04.414678220 -0500
++++ ./anoise/anoise/anoise.py	2018-12-22 20:41:36.830664713 -0500
+@@ -47,8 +47,7 @@
+ class ANoise:
+     """Control the sound indicator"""
+     def __init__(self):
+-        # These 3 are need
+-        GObject.threads_init()
++        # These 2 are need
+         DBusGMainLoop(set_as_default=True)
+         Gst.init(None)
+         

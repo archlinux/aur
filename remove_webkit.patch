@@ -1,0 +1,126 @@
+diff -Naur ./anoise.orig/anoise/preferences.py ./anoise/anoise/preferences.py
+--- ./anoise.orig/anoise/preferences.py	2018-12-22 14:46:02.724540048 -0500
++++ ./anoise/anoise/preferences.py	2018-12-22 18:47:17.143218584 -0500
+@@ -19,8 +19,7 @@
+ import gi, os, shutil, webbrowser, subprocess
+ from datetime import datetime, timedelta
+ gi.require_version('Gtk', '3.0')
+-gi.require_version('WebKit', '3.0')
+-from gi.repository import Gtk, WebKit
++from gi.repository import Gtk
+ # i18n
+ import gettext
+ gettext.textdomain('anoise')
+@@ -43,8 +42,6 @@
+         self.lbl_minutes  = builder.get_object('lbl_minutes')
+         self.cb_sleep     = builder.get_object('cb_timesleep')
+         self.cb_autostart = builder.get_object('cb_autostart')
+-        self.btn_noises   = builder.get_object('btn_show_noises')
+-        self.web          = builder.get_object('boxWeb')
+         
+         # Autostart
+         if os.path.isfile(self.AUTOSTART):
+@@ -103,26 +100,7 @@
+             self.sp_timer.show()
+             self.cb_sleep.set_label(_("Stop in"))
+             self._restore_window_size()
+-    
+-    def on_btn_show_noises_clicked(self, widget, data=None):
+-        self.btn_noises.hide()
+-        web_content = WebKit.WebView()
+-        settings = web_content.get_settings()
+-        settings.set_property('enable-default-context-menu', False)
+-        web_content.set_settings(settings)
+-        web_content.open('http://anoise.tuxfamily.org/noises')
+-        web_content.connect('navigation-requested', self._on_navigation_requested)
+-        self.web.add(web_content)
+-        self.web.show_all()
+-    
+-    def _on_navigation_requested(self, view, frame, req):
+-        uri = req.get_uri()
+-        if uri and uri.startswith('apt'): # OS installer
+-            subprocess.Popen(["apturl", uri], shell=False)
+-        if uri and uri.startswith('http'): # authors
+-            webbrowser.open(uri)
+-        return True
+-    
++       
+     def on_preferences_delete_event(self, widget, data=None):
+         self.win_preferences.hide()
+         return True
+diff -Naur ./anoise.orig/anoise/preferences.ui ./anoise/anoise/preferences.ui
+--- ./anoise.orig/anoise/preferences.ui	2018-12-22 14:46:02.724540048 -0500
++++ ./anoise/anoise/preferences.ui	2018-12-22 18:49:33.760720646 -0500
+@@ -167,72 +167,6 @@
+           </packing>
+         </child>
+         <child>
+-          <object class="GtkFrame" id="frame2">
+-            <property name="visible">True</property>
+-            <property name="can_focus">False</property>
+-            <property name="label_xalign">0</property>
+-            <property name="shadow_type">none</property>
+-            <child>
+-              <object class="GtkAlignment" id="alignment2">
+-                <property name="visible">True</property>
+-                <property name="can_focus">False</property>
+-                <property name="left_padding">12</property>
+-                <child>
+-                  <object class="GtkBox" id="box4">
+-                    <property name="visible">True</property>
+-                    <property name="can_focus">False</property>
+-                    <property name="orientation">vertical</property>
+-                    <child>
+-                      <object class="GtkButton" id="btn_show_noises">
+-                        <property name="label" translatable="yes">Get more online...</property>
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="receives_default">True</property>
+-                        <signal name="clicked" handler="on_btn_show_noises_clicked" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">0</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkScrolledWindow" id="boxWeb">
+-                        <property name="height_request">226</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="hexpand">True</property>
+-                        <property name="vexpand">True</property>
+-                        <property name="shadow_type">in</property>
+-                        <child>
+-                          <placeholder/>
+-                        </child>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">1</property>
+-                      </packing>
+-                    </child>
+-                  </object>
+-                </child>
+-              </object>
+-            </child>
+-            <child type="label">
+-              <object class="GtkLabel" id="label2">
+-                <property name="visible">True</property>
+-                <property name="can_focus">False</property>
+-                <property name="margin_bottom">8</property>
+-                <property name="label" translatable="yes">Noises:</property>
+-              </object>
+-            </child>
+-          </object>
+-          <packing>
+-            <property name="expand">False</property>
+-            <property name="fill">False</property>
+-            <property name="position">2</property>
+-          </packing>
+-        </child>
+-        <child>
+           <object class="GtkBox" id="box3">
+             <property name="visible">True</property>
+             <property name="can_focus">False</property>
