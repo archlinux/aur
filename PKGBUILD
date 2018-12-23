@@ -1,9 +1,9 @@
 # Maintainer: trougnouf (Benoit Brummer) <trougnouf at gmail dot com>
-# Last images added on 2018-09-26
+# Last images added on 2018-12-23
 
 pkgname="trougnouf-backgrounds"
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'

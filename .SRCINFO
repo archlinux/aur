@@ -1,7 +1,7 @@
 pkgbase = trougnouf-backgrounds
 	pkgdesc = Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://commons.wikimedia.org/wiki/User:Trougnouf
 	arch = any
 	license = CCPL
