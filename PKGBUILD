@@ -52,6 +52,9 @@ package() {
         cp -r ../patches ${pkgdir}/opt/${pkgname}/.
     fi
 
+    # remove refrence to ${pkgdir}
+    sed -i "s,${pkgdir},,g" "${pkgdir}/opt/wingide/file-list.txt"
+
     # Correct the file permissions
     chown -R root:root "${pkgdir}/opt/${pkgname}"
     chmod +x ${pkgdir}/opt/${pkgname}/resources/linux/desktop/install-linux-desktop.sh
