@@ -1,6 +1,6 @@
 pkgbase = php70
 	pkgdesc = A general-purpose scripting language that is especially suited to web development (old stable 7.0 series)
-	pkgver = 7.0.32
+	pkgver = 7.0.33
 	pkgrel = 1
 	url = http://www.php.net
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = php70
 	makedepends = freetds
 	makedepends = pcre
 	makedepends = c-client
-	source = https://php.net/distributions/php-7.0.32.tar.xz
-	source = https://php.net/distributions/php-7.0.32.tar.xz.asc
+	source = https://php.net/distributions/php-7.0.33.tar.xz
+	source = https://php.net/distributions/php-7.0.33.tar.xz.asc
 	source = apache.patch
 	source = apache.conf
 	source = enchant-2.patch
@@ -40,8 +40,8 @@ pkgbase = php70
 	source = freetype2.patch
 	validpgpkeys = 1A4E8B7277C42E53DBA9C7B9BCAA30EA9C0D5763
 	validpgpkeys = 6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3
-	sha512sums = 4a7c9a6b91ad7da69303916202062d639e6f02dcd483e851a44d8c7a2efeb5c9a666097935ab60d700c4445f86a0c68df1515300c57af1cdb76528b54b757608
-	sha512sums = f81fa240bbc78ca9fb7acb18ffb9f4f6f702779ddadedb0d538d929ed9234aea5070f42f91912b670dcfd85fef892ee179a68545d064bc21c53382c4a1ddfdb9
+	sha512sums = 9298e185702ea801e9243671ecb0b781c2b04181a2f9fd6490bc14897a333a2c0cc88fe27b0c69c6dd0079629a71c330ed1aa337f48cac6cbd624addb8855500
+	sha512sums = c0a0d045978aa569e0fbc54388f6fc52f53e1824dbffc05845709301118cf63a935cfbd1db12ca825c6d11b4a47e441e8da1c518823dc811535915ce1ed776ad
 	sha512sums = f5e5431993c2e0c1806c4edf392030d0b605f4b3c4cebec036e810ff771b2327983f347221735673506e2c91ce2e18ad37ab7600261b684fe29491206171b4f3
 	sha512sums = 30cdc281c6e288cf8a0bf58a0ad74ad5b4e8205d2b0b6ab465fad97d810f7bfae4581ad836712998e834d2e90d38cacd22f19bb01e77fc4c9d200d95613fc669
 	sha512sums = 2d5f3aa71ce7d8da43f0f683f81b06258e3a0d95df4807a8acac91ff89fbe60484ef97856a908bce625b1610d0004767a6a8c622246086afe2f2d464977088b5
@@ -58,13 +58,13 @@ pkgname = php70
 	depends = curl
 	depends = libzip
 	depends = pcre
-	provides = php=7.0.32
+	provides = php=7.0.33
 	backup = etc/php70/php.ini
 
 pkgname = php70-cgi
 	pkgdesc = CGI and FCGI SAPI for PHP
 	depends = php70
-	provides = php-cgi=7.0.32
+	provides = php-cgi=7.0.33
 
 pkgname = php70-apache
 	pkgdesc = Apache SAPI for PHP
@@ -83,90 +83,90 @@ pkgname = php70-fpm
 pkgname = php70-embed
 	pkgdesc = Embedded PHP SAPI library
 	depends = php70
-	provides = php70-embed=7.0.32
+	provides = php70-embed=7.0.33
 	options = !emptydirs
 
 pkgname = php70-phpdbg
 	pkgdesc = Interactive PHP debugger
 	depends = php70
-	provides = php70-phpdbg=7.0.32
+	provides = php70-phpdbg=7.0.33
 	options = !emptydirs
 
 pkgname = php70-dblib
 	pkgdesc = dblib module for PHP
 	depends = php70
-	provides = php70-dblib=7.0.32
+	provides = php70-dblib=7.0.33
 
 pkgname = php70-enchant
 	pkgdesc = enchant module for PHP
 	depends = php70
 	depends = enchant
-	provides = php70-enchant=7.0.32
+	provides = php70-enchant=7.0.33
 
 pkgname = php70-gd
 	pkgdesc = gd module for PHP
 	depends = php70
 	depends = gd
-	provides = php70-gd=7.0.32
+	provides = php70-gd=7.0.33
 
 pkgname = php70-imap
 	pkgdesc = imap module for PHP
 	depends = php70
 	depends = c-client
-	provides = php70-imap=7.0.32
+	provides = php70-imap=7.0.33
 
 pkgname = php70-intl
 	pkgdesc = intl module for PHP
 	depends = php70
 	depends = icu
-	provides = php70-intl=7.0.32
+	provides = php70-intl=7.0.33
 
 pkgname = php70-mcrypt
 	pkgdesc = mcrypt module for PHP
 	depends = php70
 	depends = libmcrypt
 	depends = libltdl
-	provides = php70-mcrypt=7.0.32
+	provides = php70-mcrypt=7.0.33
 
 pkgname = php70-odbc
 	pkgdesc = ODBC modules for PHP
 	depends = php70
 	depends = unixodbc
-	provides = php70-odbc=7.0.32
+	provides = php70-odbc=7.0.33
 
 pkgname = php70-pgsql
 	pkgdesc = PostgreSQL modules for PHP
 	depends = php70
 	depends = postgresql-libs
-	provides = php70-pgsql=7.0.32
+	provides = php70-pgsql=7.0.33
 
 pkgname = php70-pspell
 	pkgdesc = pspell module for PHP
 	depends = php70
 	depends = aspell
-	provides = php70-pspell=7.0.32
+	provides = php70-pspell=7.0.33
 
 pkgname = php70-snmp
 	pkgdesc = snmp module for PHP
 	depends = php70
 	depends = net-snmp
-	provides = php70-snmp=7.0.32
+	provides = php70-snmp=7.0.33
 
 pkgname = php70-sqlite
 	pkgdesc = sqlite module for PHP
 	depends = php70
 	depends = sqlite
-	provides = php70-sqlite=7.0.32
+	provides = php70-sqlite=7.0.33
 
 pkgname = php70-tidy
 	pkgdesc = tidy module for PHP
 	depends = php70
 	depends = tidyhtml
-	provides = php70-tidy=7.0.32
+	provides = php70-tidy=7.0.33
 
 pkgname = php70-xsl
 	pkgdesc = xsl module for PHP
 	depends = php70
 	depends = libxslt
-	provides = php70-xsl=7.0.32
+	provides = php70-xsl=7.0.33
 
