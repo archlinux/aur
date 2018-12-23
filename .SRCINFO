@@ -1,11 +1,12 @@
 pkgbase = dict-freedict-deu-fra
 	pkgdesc = German -> French dictionary for dictd et al. from Freedict.org
 	pkgver = 2018.09.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://freedict.org/
 	install = dict-freedict-deu-fra.install
 	arch = any
-	license = GPL
+	license = CCPL:by-sa
+	license = FDL
 	makedepends = dictd
 	makedepends = freedict-tools
 	optdepends = dictd: dict client and server

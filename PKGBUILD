@@ -2,11 +2,11 @@
 _lang=deu-fra
 pkgname=dict-freedict-${_lang}
 pkgver=2018.09.13
-pkgrel=2
+pkgrel=3
 pkgdesc="German -> French dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="https://freedict.org/"
-license=('GPL')
+license=('CCPL:by-sa' 'FDL')
 optdepends=('dictd: dict client and server')
 makedepends=('dictd' 'freedict-tools')
 install=${pkgname}.install
