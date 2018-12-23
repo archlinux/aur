@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full-nvenc
 	pkgdesc = Record, convert, and stream audio and video (all codecs including Nvidia NVENC)
 	pkgver = 4.1
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = http://ffmpeg.org/
 	arch = i686

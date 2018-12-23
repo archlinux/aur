@@ -19,7 +19,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=4.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -63,6 +63,7 @@ build() {
   then
       local _libvmaf='--enable-libvmaf'
       local _cudasdk='--enable-cuda-sdk'
+      local _libmfx='--enable-libmfx'
       local _libnpp='--enable-libnpp'
       local _cflags='-I/opt/cuda/include'      
       # '-L/usr/lib/nvidia' (for cuda_sdk) needs to be enabled only on
@@ -105,6 +106,7 @@ build() {
     $_cudasdk \
     $_cuvid \
     $_libnpp \
+    $_libmfx \
     \
     --enable-ffnvcodec \
     --enable-libdrm \
