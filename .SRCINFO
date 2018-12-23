@@ -1,7 +1,7 @@
 pkgbase = php70
 	pkgdesc = A general-purpose scripting language that is especially suited to web development (old stable 7.0 series)
 	pkgver = 7.0.33
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.php.net
 	arch = i686
 	arch = x86_64
