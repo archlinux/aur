@@ -3,8 +3,8 @@
 
 pkgsubn=Reddit-Enhancement-Suite
 pkgname=reddit-enhancement-suite-chromium-git
-pkgver=9215.07c94df4f
-pkgrel=2
+pkgver=v5.13.3.r24.g4fff1e72e
+pkgrel=3
 pkgdesc="Chrome/Chromium extension for Reddit Enhancement Suite - git/dev"
 arch=('any')
 url='https://github.com/honestbleeps/Reddit-Enhancement-Suite'
@@ -14,9 +14,11 @@ source=("git+https://github.com/honestbleeps/Reddit-Enhancement-Suite.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgsubn}"
-	local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-	printf "%s" "${ver//-/.}"
+  cd "${srcdir}/${pkgsubn}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 build() {
 	cd "${srcdir}/${pkgsubn}"
