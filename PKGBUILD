@@ -16,7 +16,7 @@ md5sums=('ae76cf5bfedbd265077ccbf215a834b0'
 build() {
   rm "${srcdir}/${pkgname}-${pkgver}/go.sum"
   cd "${srcdir}/${pkgname}-${pkgver}/cmd/proxy"
-  go build
+  go build -ldflags "-extldflags ${LDFLAGS}" -buildmode=pie
 }
 
 package() {
