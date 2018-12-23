@@ -1,0 +1,18 @@
+pkgbase = legerd-bin
+	pkgdesc = Legerdemain is a fantasy computer role-playing game (CRPG) that you can play for free.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://roguelikefiction.com/
+	arch = any
+	license = Commercial
+	depends = java-runtime
+	depends = sh
+	optdepends = ttf-ms-fonts: Courier New or Lucida Sans Typewriter is required
+	optdepends = ttf-ms-win10: Courier New or Lucida Sans Typewriter is required
+	source = http://roguelikefiction.com/bindrops/1.1.0/legerd-20100902-2319-bin-v110.tar.gz
+	source = legerd.sh
+	sha1sums = 92f09c0c9c680498c31c2835d3ca200c788682de
+	sha1sums = 6f9c3cc1e8c2f788cd70b07aa65fb82881faa1ae
+
+pkgname = legerd-bin
+
