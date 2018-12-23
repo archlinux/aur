@@ -1,6 +1,6 @@
 pkgbase = prelude-correlator
 	pkgdesc = Real time correlator of events received by Prelude Manager
-	pkgver = 4.1.1
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://www.prelude-siem.org
 	install = prelude-correlator.install
@@ -24,10 +24,10 @@ pkgbase = prelude-correlator
 	backup = etc/prelude-correlator/rules/python/OpenSSHAuthPlugin.py
 	backup = etc/prelude-correlator/rules/python/SpamhausDropPlugin.py
 	backup = etc/prelude-correlator/rules/python/WormPlugin.py
-	source = https://www.prelude-siem.org/pkg/src/4.1.0/prelude-correlator-4.1.1.tar.gz
+	source = https://www.prelude-siem.org/pkg/src/5.0.0/prelude-correlator-5.0.1.tar.gz
 	source = prelude-correlator.run
 	source = prelude-correlator.service
-	md5sums = 6f163fcd22c7a41d62a99dba37694e8c
+	md5sums = 449fb847d74db70e816c6aead816b013
 	md5sums = a0b86827d99078b61db8361f4acad285
 	md5sums = a2009c2dbcfb995ca01e9ad1b371a3fb
 
