@@ -9,16 +9,14 @@ pkgbase = fheroes2enh-git
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
-	depends = gcc-libs
 	depends = sdl_image
 	depends = sdl_mixer
-	depends = sdl_net
 	depends = sdl_ttf
 	conflicts = fheroes2-svn
 	source = fheroes2enh-git::git+https://github.com/ciplogic/fheroes2enh
 	source = fheroes2enh-git.install
 	sha256sums = SKIP
-	sha256sums = 9bfcb311ccb8fa3785cb769b1cc5f9a5fa3488cc7a72d2dc6f4e5afe1de16769
+	sha256sums = edef5400740936cda51e7eacc38ec30f9dfdb4b27082e5cc30f55c359ad5b62a
 
 pkgname = fheroes2enh-git
 

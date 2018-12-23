@@ -14,7 +14,7 @@ install='fheroes2enh-git.install'
 source=("${pkgname}"'::git+https://github.com/ciplogic/fheroes2enh'
         'fheroes2enh-git.install')
 sha256sums=('SKIP'
-         '9bfcb311ccb8fa3785cb769b1cc5f9a5fa3488cc7a72d2dc6f4e5afe1de16769')
+         'edef5400740936cda51e7eacc38ec30f9dfdb4b27082e5cc30f55c359ad5b62a')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
