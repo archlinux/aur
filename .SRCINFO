@@ -1,6 +1,6 @@
 pkgbase = pam_panic-git
 	pkgdesc = A PAM module that protects sensitive data and provides a panic function for emergency situations. Authentication through passwords or removable media.
-	pkgver = r324.00372dc
+	pkgver = r326.249e222
 	pkgrel = 1
 	url = https://github.com/pampanic/pam_panic
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = pam_panic-git
 	makedepends = dialog
 	depends = cryptsetup
 	depends = dialog
-	source = pam_panic-git-r324.00372dc::git://github.com/pampanic/pam_panic.git
+	source = pam_panic-git-r326.249e222::git://github.com/pampanic/pam_panic.git
 	validpgpkeys = E2D7876915312785DC086BFCC1E133BC65A822DD
 	sha512sums = SKIP
 
