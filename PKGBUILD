@@ -2,7 +2,7 @@
 
 pkgname=gorsync-git
 _pkgname=go-rsync
-pkgver=0.3.1
+pkgver=0.3.3
 epoch=
 pkgrel=1
 pkgdesc="Best GTK+ client frontend for RSYNC console utility."
@@ -46,10 +46,10 @@ pkgver() {
 
 build() {
     rm -rf "${srcdir}/.go/src"
-    mkdir -p "${srcdir}/.go/src"
+    mkdir -p "${srcdir}/.go/src/github.com/d2r2"
     # export GOPATH="${srcdir}/.go"
-    mv "${srcdir}/${_pkgname}" "${srcdir}/.go/src/"
-    cd "${srcdir}/.go/src/${_pkgname}/"
+    mv "${srcdir}/${_pkgname}" "${srcdir}/.go/src/github.com/d2r2/"
+    cd "${srcdir}/.go/src/github.com/d2r2/${_pkgname}/"
     # download and build main package and all dependencies
     # retrying n times, due to issue with go get functionality
     n=0
@@ -66,7 +66,7 @@ build() {
 package() {
     _binname="gorsync"
     # echo "Working dir $(pwd)"
-    cd "${srcdir}/.go/src/${_pkgname}"
+    cd "${srcdir}/.go/src/github.com/d2r2/${_pkgname}"
     install -Dm755 "${_binname}" "${pkgdir}/usr/bin/${_binname}"
     install -Dm644 "builds/fpm_packages/gorsync.desktop" "$pkgdir/usr/share/applications/gorsync.desktop"
     install -Dm644 "ui/gtkui/gsettings/org.d2r2.gorsync.gschema.xml" "$pkgdir/gsettings/org.d2r2.gorsync.gschema.xml"
