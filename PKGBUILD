@@ -10,7 +10,7 @@ license=('custom')
 depends=('perl')
 conflicts=('openssl')
 options=('staticlibs')
-source=("https://github.com/guanzhi/GmSSL/archive/gmssl-$pkgver.tar.gz"
+source=("https://github.com/GmSSL/GmSSL/archive/gmssl-$pkgver.tar.gz"
         "ca-dir.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ca-dir.patch?h=packages/openssl")
 sha256sums=('3e3cf33bb81a30a9d5f896cd3b381bbfbf4d989f4fcb0872d0e6dfbe92a6e632'
             'SKIP')
