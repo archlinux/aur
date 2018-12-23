@@ -1,0 +1,17 @@
+#!/usr/bin/openrc-run
+
+description="smdev Coldplug all Devices"
+
+depend()
+{
+	need sysfs dev-mount
+	before checkfs fsck nldev
+	provide dev-settle dev
+}
+
+start()
+{
+	ebegin "Waiting for uevents to be processed"
+	smdev -s
+	eend $?
+}

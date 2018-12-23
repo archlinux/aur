@@ -1,0 +1,13 @@
+pkgbase = smdev-openrc
+	pkgdesc = OpenRC smdev startup script
+	pkgver = 20181222
+	pkgrel = 1
+	arch = any
+	license = MIT/X
+	depends = smdev
+	depends = openrc
+	source = smdev
+	sha256sums = 9d979138e078af142884272722e1c4c629bdde79821f2e34fc10fe8902f5cc51
+
+pkgname = smdev-openrc
+
