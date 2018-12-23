@@ -19,6 +19,7 @@
 # Contributor: edacval
 # Contributor: MarcelPa
 # Contributor: Trent
+# Contributor: urxvtcd-256
 
 
 
@@ -29,6 +30,7 @@ _omnisharp="y"
 _gocode="y"
 _rust="y"
 _tern="y"
+_typescript="y"
 _java="y"
 _use_system_clang="ON"
 _use_python2="OFF"
@@ -43,7 +45,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 #                                    Default PKGBUILD Configuration                                       #
 #=========================================================================================================#
 pkgname=vim-youcompleteme-git
-pkgver=r2449.0790dc99
+pkgver=r2451.a53ccefc
 pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -196,8 +198,8 @@ prepare() {
 	gitprepare "YouCompleteMe/third_party/ycmd" "third_party/" "${ycmd[@]}"
 
 	if [[ "$_gocode" == "y" ]]; then
-                gitprepare "YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/mdempsky" "" "gocode"
-                gitprepare "YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/rogpeppe" "" "godef"
+			gitprepare "YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/mdempsky" "" "gocode"
+			gitprepare "YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/rogpeppe" "" "godef"
 	fi
 
 	if [[ "$_omnisharp" == "y" ]]; then
@@ -244,6 +246,14 @@ build() {
 		msg2 'Skipping Rust completer...'
 	fi
 
+	if [[ "$_typescript" == "y" ]]; then
+		msg2 'Building Typescipt completer...'
+		cd "$srcdir/YouCompleteMe/third_party/ycmd/"
+		npm install -g --prefix third_party/tsserver typescript
+	else
+		msg2 'Skipping Typescipt completer...'
+	fi
+
 	if [[ "$_tern" == "y" ]]; then
 		msg2 'Building Tern completer...' # SetUpTern()
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" || exit
@@ -257,10 +267,16 @@ build() {
 	fi
 
 	if [[ "$_java" == "y" ]]; then
+		msg2 'Injecting Java completer...'
+
 		# Remove stale java completer data if any
 		rm -rf "$srcdir/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/repository"
+
+		# Continue populating directory
 		mkdir -p "$srcdir/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/repository"
 		mv "$srcdir"/{config_linux,features,plugins} "$srcdir/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/repository"
+	else
+		msg2 'Skipping Java completer...'
 	fi
 }
 
@@ -310,6 +326,11 @@ package() {
 	if [[ "$_tern" == "y" ]]; then
 		cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" \
 			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party"
+	fi
+
+	if [[ "$_typescript" == "y" ]]; then
+	  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tsserver" \
+		  "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party"
 	fi
 
 	if [[ "$_java" == "y" ]]; then
