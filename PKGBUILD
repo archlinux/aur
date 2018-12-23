@@ -2,8 +2,8 @@
 # Last images added on 2018-09-26
 
 pkgname="trougnouf-backgrounds"
-pkgver=1.5
-pkgrel=2
+pkgver=1.6
+pkgrel=1
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -11,15 +11,17 @@ makedepends=()
 license=('CCPL')
 arch=('any')
 
-_images=('Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,_Belgium_(DSCF3343).jpg'
+_images=(
+    'Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,_Belgium_(DSCF3343).jpg'
 	'Pears_covered_in_snow_at_Marché_de_Boitsfort_(Belgium).jpg'
 	'Fagne_Tirifaye_with_the_Hill_river_in_Waimes,_Belgium_(DSCF3679).jpg'
 	'View_through_the_shattered_glass_of_a_door_in_the_SNCB_B22490_type-K3_carriage,_looking_at_a_yellow_H._Weyhausen_KG_backhoe_loader_in_As,_Belgium_(DSCF3088-hdr).jpg'
 	'Stawamus_Chief_Provincial_Park,_BC_(DSCF7828).jpg'
 	'Rock_dove_(Columba_livia)_standing_on_place_de_la_Bourse,_Brussels,_Belgium_(DSCF4429).jpg'
 	'Pipes_in_the_water_treatment_plant_of_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3276).jpg'
-	'Water_treatment_plant_in_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3285).jpg'
-	'A_tree_South_of_Doel,_Belgium_(DSCF3811).jpg'
+	'Water_treatment_plant_in_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3285).jpg' # 14h56 to 15h30
+	'A_tree_South_of_Doel,_Belgium_(DSCF3811).jpg'  # 15h30 to 16h21
+	'Lac de Virelles (frozen), Chimay (DSC 0251).jpg'   # 16h21 to 16h35
 	'Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg'
 	'Tunnel_Belliard,_coming_out_on_Rue_de_la_Loi.jpg'
 	'Container_cranes_at_the_MPET-_MSC_PSA_European_Terminal_in_Port_of_Antwerp_(Kieldrecht,_Belgium)_during_the_sunset_civil_twilight_(DSCF3901).jpg'
@@ -38,7 +40,8 @@ _stimes=(
 	900 # 14h23 to 14h38 = 15 minutes
 	1080 # 14h38 to 14h56 = 18 minutes
 	2040 # 14h56 to 15h30 = 34 minutes
-	3900 # 15h30 to 16h35 = 65 minutes
+	3900 # 15h30 to 16h21 = 65 minutes
+	840 # 16h21 to 16h35 = 14 minutes
 	2460 # 16h35 to 17h16 = 41 minutes
 	1920 # 17h16 to 17h48 = 32 minutes
 	1080 # 17h48 to 18h06 = 18 minutes
@@ -57,11 +60,12 @@ sha256sums=('60da898f8fb43491594e7466f44294db43795d61de124f590eb2be2d42ea208a'
 	'ed2e76aedadc5e776fe8c350f1120cc3879d1888b33c9a898d85133dcc8165c9'
 	'563a2acab1c80c2ad4f0f60cc514811191c25406c416415aea9b51151462ef58'
 	'f5e476019deb0af38230da66a7749527001cb32f1f101966ab60ae082a38870b'
+	'57222827c856252af6631acd494fb6739130b7a8f5fa0b1f45ec405c72f6a4a5'
 	'cf08f4598bd569eb8df860a83fd44110f5a25282e508732e924de1c3fab581c2'
 	'0f7fed8930d452f4355d1f9026aeedcc74587a7344c9758959de0b329fa08e5e'
 	'21ca6228fa574de64975fb48306d59e98f345fcd75a2c5571d89216fa3ba8aa6'
 	'f8fc6e64a19fab1aa6a7c676ef7eb6978abed3a115e5d3a73bd2a6a583195651'
-	'decdcae46f94604ae65c0cc212e6eddd3eba16ec57613755afe5c75ab833cc1c'
+	'514845799c8e44b4faaeda29420cb0f2de708ed722f99ce10627704a8d6d6328'
 	'c609f60318d57135e43314a81ff5a95c9b8290190d18bb5cb0d720f1616b9f4a'
 	'3411929c2eb43edbc190dbb694f32b8257b13f953278f39e54a70178ca035e1c')
 
