@@ -1,0 +1,16 @@
+pkgbase = ricoh-sp150su-sane
+	pkgdesc = SANE driver for Ricoh SP150SU series
+	pkgver = 1.0.22
+	pkgrel = 1
+	url = http://support.ricoh.com/bb/html/dr_ut_e/re1/model/sp150su/sp150su.htm
+	arch = x86_64
+	license = custom
+	depends = sane
+	depends = libusb-compat
+	source = http://support.ricoh.com/bb/pub_e/dr_ut_e/0001294/0001294703/V100/r75389L2.gz
+	source = http://support.ricoh.com/bb/html/dr_ut_e/rcn1/ref_html/Agree.htm
+	sha256sums = ade3a9b8b280b2ed8f91ff0a186c763aeda6e3ccb5dea8642e70119ab7967473
+	sha256sums = dfe55420823dd1c1b43608aa7fda5dd2af052778e601b96810248f5c9fd8f6d2
+
+pkgname = ricoh-sp150su-sane
+
