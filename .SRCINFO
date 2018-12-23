@@ -1,0 +1,18 @@
+pkgbase = nldev-phkr
+	pkgdesc = frontend for mdev, replacing the over-engineered udevd
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://git.r-36.net/nldev/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git://git.r-36.net/nldev#commit=9971105
+	source = 0000-change_shell.patch
+	source = 0001-increase_buffer.patch
+	md5sums = SKIP
+	md5sums = f96e7f40e2f4c5378c93c5cc97d4185d
+	md5sums = 508367c15bf5117870c7dc0765cba2b9
+
+pkgname = nldev
+

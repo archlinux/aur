@@ -1,0 +1,20 @@
+---
+ nldev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/nldev.c b/nldev.c
+index 018ed86..9efe6d1 100644
+--- a/nldev.c
++++ b/nldev.c
+@@ -161,7 +161,7 @@ init_netlink_socket(void)
+ 	if (fd < 0)
+ 		edie("socket");
+ 
+-	slen = 16*1024;
++	slen = 1024*1024;
+ 	if (setsockopt(fd, SOL_SOCKET, SO_RCVBUFFORCE, &slen,
+ 				sizeof(slen)) < 0) {
+ 		edie("setsockopt");
+-- 
+2.20.1
+

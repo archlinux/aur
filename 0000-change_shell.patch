@@ -1,0 +1,16 @@
+---
+ nltrigger | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/nltrigger b/nltrigger
+index b591d32..e09598b 100755
+--- a/nltrigger
++++ b/nltrigger
+@@ -1,4 +1,4 @@
+-#!/bin/busybox ash
++#!/bin/sh
+ 
+ usage() {
+ 	printf "usage: %s [add|list|del|action] [subsystem]\n" "$(basename $1)" >&2
+-- 
+2.20.1
