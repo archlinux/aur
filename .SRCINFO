@@ -1,6 +1,6 @@
 pkgbase = yaru-git
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 18.10.7.r143.g4f9e8a41
+	pkgver = 18.10.7.r288.g93c13b3e
 	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any
@@ -12,9 +12,7 @@ pkgbase = yaru-git
 	options = !buildflags
 	options = staticlibs
 	source = git+https://github.com/ubuntu/yaru
-	source = 0001-gnome-shell-fix-install-dir.patch
 	sha256sums = SKIP
-	sha256sums = c84e9720c47fc86eaf89ebc647bb656b13a3e79aa0b01c46734c5db013e42bc5
 
 pkgname = yaru-sound-theme-git
 	pkgdesc = Yaru default ubuntu sound theme
@@ -33,6 +31,7 @@ pkgname = yaru-gtk-theme-git
 pkgname = yaru-gnome-shell-theme-git
 	pkgdesc = Yaru default ubuntu gnome shell theme
 	depends = gnome-shell
+	depends = yaru-session
 	provides = yaru-gnome-shell-theme
 	conflicts = yaru-gnome-shell-theme
 
@@ -43,4 +42,10 @@ pkgname = yaru-icon-theme-git
 	depends = librsvg
 	provides = yaru-icon-theme
 	conflicts = yaru-icon-theme
+
+pkgname = yaru-session-git
+	pkgdesc = Yaru session
+	depends = gnome-shell
+	provides = yaru-session
+	conflicts = yaru-session
 
