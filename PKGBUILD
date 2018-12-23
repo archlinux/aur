@@ -4,9 +4,9 @@
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
 pkgname=teensyduino
-pkgver=1.44
-_pkgver=1.44
-_arduino=1.8.7
+pkgver=1.45
+_pkgver=1.45
+_arduino=1.8.8
 pkgrel=1
 pkgdesc="Arduino SDK with Teensyduino"
 arch=('i686' 'x86_64')
@@ -15,12 +15,11 @@ options=(!strip staticlibs)
 license=('GPL' 'LGPL' 'custom')
 depends=('gtk2' 'libusb-compat' 'libusb' 'java-runtime' 'libpng12' 'libsm'
          'desktop-file-utils' 'giflib' 'avrdude')
-makedepends=('xorg-server-xvfb' 'libxft' 'xdotool' 'git')
+makedepends=('git')
 provides=('arduino')
 conflicts=('arduino' 'teensy-loader-cli')
 install="teensyduino.install"
 source=('arduino.xml'
-        'teensyduino.sh'
         'teensy-loader.desktop'
         "git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=d239f76f01f922e115c2661a6a3855dfc660a69c"
         "http://www.pjrc.com/teensy/49-teensy.rules"
@@ -30,15 +29,14 @@ source_i686+=("http://downloads.arduino.cc/arduino-${_arduino}-linux32.tar.xz"
 source_x86_64+=("http://downloads.arduino.cc/arduino-${_arduino}-linux64.tar.xz"
                 "http://www.pjrc.com/teensy/td_${_pkgver//./}/TeensyduinoInstall.linux64")
 sha256sums=('473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
-            '0ad3b85a1b5a9a0dc0cd64685742b66368a338777a80a0bff29d01ac26816173'
             '270b55353eb438d3790c7245e5ae16ff8bac9f98cfe927d6c9f2146a34499323'
             'SKIP'
             '031de0b26991b5a3b19c497d9c0a17f86c40c55d925b9d07d19ab89f2286469d'
             '25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3')
-sha256sums_i686=('8ef115816f912d7ce049a48d24987db03c9c86a2ef59d3edb5f840b10c813f74'
-                 'de7e38510be9e274861e25d63d4ec1ddde1797234a1d986c9a9905f5a2e86aee')
-sha256sums_x86_64=('eda4a5b989a317ab56b3700b1c5751308e62bfb8a29bf6829e4cdaaf15b62115'
-                   'e78440fb4091b62a9a244ab4cdee3b51741ffd45483d28d8fe839ed122db0e5c')
+sha256sums_i686=('84a0d2bbb1e60e1fc7566b87b016614f981fee90b5cbeaa92d9a4b2f731f1496'
+                 'a7d0b185000b3a490d34abf0b27d1cfecb8e54f6c129a01268d36cf2d0cae4dc')
+sha256sums_x86_64=('7b261ffe4dea65a82a670afdd37c0e18a9e474154f17fbd480e90ddfd77ba3ea'
+                   'ab67d725e0338278b2bbe5879175783dde224d26378811daf1db376ebf080859')
 
 if [ "$CARCH" == 'x86_64' ]; then
   _bits=64
@@ -47,10 +45,10 @@ elif [ "$CARCH" == 'i686' ]; then
 fi
 
 build() {
-  msg2 "Running Teensyduino installer (takes around 50 seconds)"
+  msg2 "Installing Teensyduino"
 
   chmod +x "TeensyduinoInstall.linux${_bits}"
-  xvfb-run ./teensyduino.sh "./TeensyduinoInstall.linux${_bits}" "${srcdir}/arduino-${_arduino}"
+  ./TeensyduinoInstall.linux${_bits} --dir="${srcdir}/arduino-${_arduino}"
 
   msg2 "Building Teensy Loader command line"
 
