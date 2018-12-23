@@ -1,6 +1,6 @@
 --- a/src/sage/misc/sphinxify.py	2018-09-14 20:13:32.788831484 +0200
 +++ b/src/sage/misc/sphinxify.py	2018-09-14 20:14:07.142478667 +0200
-@@ -64,6 +64,7 @@
+@@ -68,6 +68,7 @@
          sage: assert n == len(sys.path)
      """
      srcdir = mkdtemp()
@@ -8,7 +8,7 @@
      base_name = os.path.join(srcdir, 'docstring')
      rst_name = base_name + '.rst'
  
-@@ -71,7 +72,7 @@
+@@ -75,7 +76,7 @@
          suffix = '.html'
      else:
          suffix = '.txt'
@@ -17,7 +17,7 @@
  
      with open(rst_name, 'w') as filed:
          filed.write(docstring)
-@@ -89,7 +90,7 @@
+@@ -93,7 +94,7 @@
  
      import sys
      old_sys_path = list(sys.path)  # Sphinx modifies sys.path

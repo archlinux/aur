@@ -1,0 +1,78 @@
+diff --git a/src/sage/libs/singular/function.pyx b/src/sage/libs/singular/function.pyx
+index 87342e8..9a0d37d 100644
+--- a/src/sage/libs/singular/function.pyx
++++ b/src/sage/libs/singular/function.pyx
+@@ -1258,7 +1258,7 @@ cdef class SingularFunction(SageObject):
+             Traceback (most recent call last):
+             ...
+             RuntimeError: error in Singular function call 'size':
+-            Wrong number of arguments (got 2 arguments, arity code is 300)
++            Wrong number of arguments (got 2 arguments, arity code is 302)
+             sage: size('foobar', ring=P)
+             6
+ 
+@@ -1667,17 +1667,17 @@ def singular_function(name):
+         Traceback (most recent call last):
+         ...
+         RuntimeError: error in Singular function call 'factorize':
+-        Wrong number of arguments (got 0 arguments, arity code is 303)
++        Wrong number of arguments (got 0 arguments, arity code is 305)
+         sage: factorize(f, 1, 2)
+         Traceback (most recent call last):
+         ...
+         RuntimeError: error in Singular function call 'factorize':
+-        Wrong number of arguments (got 3 arguments, arity code is 303)
++        Wrong number of arguments (got 3 arguments, arity code is 305)
+         sage: factorize(f, 1, 2, 3)
+         Traceback (most recent call last):
+         ...
+         RuntimeError: error in Singular function call 'factorize':
+-        Wrong number of arguments (got 4 arguments, arity code is 303)
++        Wrong number of arguments (got 4 arguments, arity code is 305)
+ 
+     The Singular function ``list`` can be called with any number of
+     arguments::
+diff --git a/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx b/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
+index 8f6576b477..deaf0f5769 100644
+--- a/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
++++ b/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
+@@ -447,7 +447,7 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+             return True
+         for i from 0 <= i < p_d-s_d:
+             s_poly = singular_system("stest",s_poly,1,
+-                                     A._degbound,A.__ngens,ring=P)
++                                     ring=P)
+             if P.monomial_divides(s_poly,p_poly):
+                 return True
+         return False
+@@ -601,7 +601,7 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+         # we must put the polynomials into the same ring
+         left._poly = A._current_ring(left._poly)
+         right._poly = A._current_ring(right._poly)
+-        rshift = singular_system("stest",right._poly,left._poly.degree(),A._degbound,A.__ngens, ring=A._current_ring)
++        rshift = singular_system("stest",right._poly,left._poly.degree(), ring=A._current_ring)
+         return FreeAlgebraElement_letterplace(A,left._poly*rshift, check=False)
+ 
+     def __pow__(FreeAlgebraElement_letterplace self, int n, k):
+@@ -629,7 +629,7 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+         q = p = self._poly
+         cdef int i
+         for i from 0<i<n:
+-            q = singular_system("stest",q,d,A._degbound,A.__ngens,
++            q = singular_system("stest",q,d,
+                                      ring=A._current_ring)
+             p *= q
+         return FreeAlgebraElement_letterplace(A, p, check=False)
+diff --git a/src/sage/algebras/letterplace/free_algebra_letterplace.pyx b/src/sage/algebras/letterplace/free_algebra_letterplace.pyx
+index 7a8400052e..b3474fa07c 100644
+--- a/src/sage/algebras/letterplace/free_algebra_letterplace.pyx
++++ b/src/sage/algebras/letterplace/free_algebra_letterplace.pyx
+@@ -683,7 +683,7 @@ cdef class FreeAlgebra_letterplace(Algebra):
+         degbound = self._degbound
+         cdef list G = [C(x._poly) for x in g]
+         for y in G:
+-            out.extend([y]+[singular_system("stest",y,n+1,degbound,ngens,ring=C) for n in xrange(d-y.degree())])
++            out.extend([y]+[singular_system("stest",y,n+1,ring=C) for n in xrange(d-y.degree())])
+         return C.ideal(out)
+ 
+     ###########################

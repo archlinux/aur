@@ -1,0 +1,23 @@
+diff --git a/src/sage/libs/ecl.pyx b/src/sage/libs/ecl.pyx
+index 1fafb6c..4f730ad 100644
+--- a/src/sage/libs/ecl.pyx
++++ b/src/sage/libs/ecl.pyx
+@@ -321,6 +321,7 @@ def init_ecl():
+         """))
+     safe_funcall_clobj=cl_eval(string_to_object(b"(symbol-function 'sage-safe-funcall)"))
+ 
++    cl_eval(string_to_object("(si::trap-fpe T NIL)"))
+     ecl_has_booted = 1
+ 
+ cdef cl_object ecl_safe_eval(cl_object form) except NULL:
+--- sage-8.5/src/sage/interfaces/maxima_lib.py.orig     2018-12-23 21:59:46.431420340 +0000
++++ sage-8.5/src/sage/interfaces/maxima_lib.py  2018-12-23 22:00:05.494568891 +0000
+@@ -107,6 +107,7 @@
+ else:
+     ecl_eval("(require 'maxima)")
+ ecl_eval("(in-package :maxima)")
++ecl_eval("(si::trap-fpe 'floating-point-overflow nil)")
+ ecl_eval("(setq $nolabels t))")
+ ecl_eval("(defvar *MAXIMA-LANG-SUBDIR* NIL)")
+ ecl_eval("(set-locale-subdir)")
+

@@ -320,7 +320,7 @@ index 06a5203..5cbf5e9 100644
      import networkx
      return Graph(networkx.powerlaw_cluster_graph(n, m, p, seed=seed))
  
-@@ -838,13 +847,15 @@ def RandomLobster(n, p, q, seed=None):
+@@ -1239,13 +1248,15 @@ def RandomLobster(n, p, q, seed=None):
      - ``q`` - probability of adding an edge (claw) to the
        arms
  
@@ -338,7 +338,7 @@ index 06a5203..5cbf5e9 100644
  
      ::
  
-@@ -852,7 +863,7 @@ def RandomLobster(n, p, q, seed=None):
+@@ -1253,7 +1264,7 @@ def RandomLobster(n, p, q, seed=None):
          sage: G.show()  # long time
      """
      if seed is None:
@@ -347,7 +347,7 @@ index 06a5203..5cbf5e9 100644
      import networkx
      return Graph(networkx.random_lobster(n, p, q, seed=seed))
  
-@@ -924,7 +935,7 @@ def RandomTree(n):
+@@ -1325,7 +1336,7 @@ def RandomTree(n):
  
      return g
  
@@ -356,7 +356,7 @@ index 06a5203..5cbf5e9 100644
      """
      Returns a tree with a power law degree distribution. Returns False
      on failure.
-@@ -943,15 +954,17 @@ def RandomTreePowerlaw(n, gamma=3, tries=100, seed=None):
+@@ -1344,15 +1355,17 @@ def RandomTreePowerlaw(n, gamma=3, tries=100, seed=None):
      - ``tries`` - number of attempts to adjust sequence to
        make a tree
  
@@ -377,7 +377,7 @@ index 06a5203..5cbf5e9 100644
  
      ::
  
-@@ -960,7 +973,7 @@ def RandomTreePowerlaw(n, gamma=3, tries=100, seed=None):
+@@ -1361,7 +1374,7 @@ def RandomTreePowerlaw(n, gamma=3, tries=100, seed=None):
          ....:     G.show()  # random output, long time
      """
      if seed is None:
@@ -386,7 +386,7 @@ index 06a5203..5cbf5e9 100644
      import networkx
      try:
          return Graph(networkx.random_powerlaw_tree(n, gamma, seed=seed, tries=tries))
-@@ -981,7 +994,8 @@ def RandomRegular(d, n, seed=None):
+@@ -1382,7 +1395,8 @@ def RandomRegular(d, n, seed=None):
  
      - ``d`` - degree
  
@@ -396,7 +396,7 @@ index 06a5203..5cbf5e9 100644
  
  
      EXAMPLES: We show the edge list of a random graph with 8 nodes each
-@@ -990,7 +1004,7 @@ def RandomRegular(d, n, seed=None):
+@@ -1391,7 +1405,7 @@ def RandomRegular(d, n, seed=None):
      ::
  
          sage: graphs.RandomRegular(3, 8).edges(labels=False)
@@ -405,7 +405,7 @@ index 06a5203..5cbf5e9 100644
  
      ::
  
-@@ -1009,7 +1023,7 @@ def RandomRegular(d, n, seed=None):
+@@ -1410,7 +1424,7 @@ def RandomRegular(d, n, seed=None):
        regular graphs quickly. Prob. and Comp. 8 (1999), pp 377-396.
      """
      if seed is None:
@@ -414,7 +414,7 @@ index 06a5203..5cbf5e9 100644
      import networkx
      try:
          N = networkx.random_regular_graph(d, n, seed=seed)
-@@ -1034,17 +1048,19 @@ def RandomShell(constructor, seed=None):
+@@ -1435,17 +1449,19 @@ def RandomShell(constructor, seed=None):
      - ``d`` - the ratio of inter (next) shell edges to
        intra shell edges
  

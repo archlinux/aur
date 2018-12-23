@@ -1,6 +1,6 @@
 --- src/sage/doctest/control.py.orig       2016-10-20 19:39:53.714618246 +0200
 +++ src/sage/doctest/control.py    2016-10-20 19:40:15.158049920 +0200
-@@ -346,22 +346,6 @@
+@@ -347,22 +347,6 @@
                  # Special case to run all optional tests
                  options.optional = True
              else:

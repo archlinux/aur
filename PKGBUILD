@@ -7,14 +7,14 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.5.beta6.r0.gd45ef02048
+pkgver=8.5.r0.g934b744f65
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
 depends=(ipython2 ppl palp brial cliquer maxima-ecl gfan sympow nauty python2-rpy2 python2-fpylll python2-psutil python2-cypari2
-  python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-future libgap flintqs lcalc lrcalc arb
+  python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-future gap flintqs lcalc lrcalc arb
   eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox m4rie rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
   libgiac libhomfly libbraiding three.js openblas)
@@ -24,7 +24,7 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'coin-or-cbc: COIN backend for numerical computations' 'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
   'ffmpeg: to export animations to video' 'imagemagick: to show animations'
-  'coxeter: Coxeter groups implementation' 'gap-4.8-data: for computing Galois groups'
+  'coxeter: Coxeter groups implementation'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
   'latte-integrale: integral point count in polyhedra' 'polymake: polymake backend for polyhedral computations'
@@ -43,23 +43,27 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         fes02.patch
         sagemath-threejs.patch
         sagemath-cremona.patch
-        sagemath-gap-4.8.patch
+        sagemath-gap-4.10.patch
         sagemath-sphinx-1.8.patch
         sagemath-networkx-2.2.patch
-        sagemath-cypari2.patch)
+        sagemath-cypari2.patch
+        sagemath-singular-4.1.1.p4.patch
+        sagemath-ecl-sigfpe.patch)
 sha256sums=('SKIP'
-            'a5473aeb082a9c5d5ecb02a81f10ea3a9efd014a77c1c609e0cedbca8cdf2b91'
+            'f26ab0f22d7d916a621f02b9d9fc806eb6825f8d34cdf45accb0e2601c82f049'
             '960afe4fcbffe2762b66119b8f14355386ced0d8ee52b535d0dac1dba90d365b'
             'ef265f88ceb6caf4aac2d86ea74850861d99a63d11c94fc52b2ce88053c26d1e'
-            '769fd5a9c377be61de41e1e30004dadb23818da901cceb6e1bece7712ba7cb83'
-            '3a0ebda1df708f263be830751cc5ddb430ca1f685b25b08d4b6592b65b123ebe'
+            'bd2744c6564bbf71bd6ea3cd7b9031e2126cc1423bcdc1fcc258d90d750a129d'
+            'f12bd2a53ad51549015093aacc89978f4d796d9ab5bcd3d737aa0d57a5815b54'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             'f6b48abf34f64ea3fc092b0f0179e89633f7d3ecc0d62c2acacbfa1217751d63'
-            '7efb38ba511037feb3abbd88576323320555ba50235ddc7e3d423ca294dd42ed'
-            '79bce829e2ba3050e14cf66f8d4346852cd02febf937575eec53b885163d5a10'
-            '7dd2ab94fddda8e7c2cdd5250642c4cdd00b7702815d88762fbcd68416bacaee'
-            'a011fac2db31c3076fb8fc59e959fd9a9dc785ad3897f4fe3b3bd00b466cde83'
-            '1677bcaa3fe19bf978b6ffaae7b64b7ec32df63fa3d0e28b179cfa831fcfa896')
+            '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
+            '224f8d1db783d7ae25408912c4891687d6a8a1dacc8c5b3a00b725a28d951b6c'
+            '22f5e44a42c8276025b8512f45cac1c36d576c29c7fd9d36fde8b19ff87867d8'
+            'c19afd209d1f0caf072a43e0f6447c61cae8cf1583f3f89e27c48c8302542c26'
+            '1677bcaa3fe19bf978b6ffaae7b64b7ec32df63fa3d0e28b179cfa831fcfa896'
+            '482887fe43d89cef3270e89300ab9e2238fa74cd5b7c875688b68fb1b10c4fdf'
+            '87bf055de0a233e9599c59a86f64b4502be31fda53ba0a426f94f25f17ca76df')
 
 pkgver() {
   cd sage
@@ -82,8 +86,6 @@ prepare(){
   patch -p1 -i ../sagemath-python3-notebook.patch
 # fix three.js plotting backend
   patch -p1 -i ../sagemath-threejs.patch
-# Adjust paths for gap-4.8
-  patch -p1 -i ../sagemath-gap-4.8.patch
 # fix introspection with sphinx 1.8
   patch -p1 -i ../sagemath-sphinx-1.8.patch
 
@@ -96,6 +98,12 @@ prepare(){
   patch -p1 -i ../sagemath-networkx-2.2.patch
 # Fix build with cypari 2.0 https://trac.sagemath.org/ticket/26442
   patch -p1 -i ../sagemath-cypari2.patch
+# Build with GAP 4.10 https://trac.sagemath.org/ticket/22626
+  patch -p1 -i ../sagemath-gap-4.10.patch
+# Fixes for singular 4.1.1p4 https://trac.sagemath.org/ticket/25993
+  patch -p1 -i ../sagemath-singular-4.1.1.p4.patch
+# Fix SIGFPE crashes with ecl 16.1.3 https://trac.sagemath.org/ticket/22191
+  patch -p1 -i ../sagemath-ecl-sigfpe.patch
 
 # use python2
   sed -e 's|sage-python23|python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
