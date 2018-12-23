@@ -1,0 +1,11 @@
+[Unit]
+Description=A proxy server for the Go Modules download API
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/usr/bin/athens -config_file /etc/athens/config.toml
+
+[Install]
+WantedBy=multi-user.target

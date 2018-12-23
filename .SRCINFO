@@ -1,0 +1,17 @@
+pkgbase = athens
+	pkgdesc = A proxy server for the Go Modules download API
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/gomods/athens
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = https://github.com/gomods/athens/archive/v0.2.0/athens-0.2.0.tar.gz
+	source = athens.service
+	md5sums = ae76cf5bfedbd265077ccbf215a834b0
+	md5sums = 5bb8e6295d07efcd72392f89702d9501
+
+pkgname = athens
+
