@@ -4,6 +4,7 @@ pkgbase = mcpelauncher-msa-git
 	pkgrel = 1
 	url = https://github.com/minecraft-linux/msa-manifest
 	arch = x86_64
+	arch = i686
 	license = MIT
 	makedepends = git
 	makedepends = cmake
