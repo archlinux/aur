@@ -885,11 +885,11 @@ Sun Dec 23 01:03:43 2018 +0100
 1.8.0.1         Bump version to update Flatpak description
 
 
-Sun Dec 23 02:47:01 2018 +0100
+Sun Dec 23 04:10:43 2018 +0100
 -------------------------------------------------
-1.8.0.2         More Flatpak packaging stuff
-
-
-Sun Dec 23 04:03:06 2018 +0100
--------------------------------------------------
-1.8.0.3         Flatpak bump
+1.8.0.2         Bump for Flatpak and small fixes
+    
+    Notable changes:
+     2018-12-23 7e300b91 actionless fix(packaging: flatpak): rust stuff
+     2018-12-23 a40a6cc2 actionless fix(makefile): apply chmod before install-ing files
+     2018-12-23 ddcb7f3d actionless fix(plugins: random): remove unused import
