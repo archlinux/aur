@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-pocketsphinx
+	pkgdesc = Lightweight speech recognition engine (mingw-w64)
+	pkgver = 5prealpha
+	pkgrel = 1
+	url = http://cmusphinx.sourceforge.net/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-configure
+	makedepends = bison
+	depends = mingw-w64-sphinxbase
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://downloads.sourceforge.net/cmusphinx/pocketsphinx-5prealpha.tar.gz
+	sha256sums = ef5bb5547e2712bdf571f256490ef42a47962033892efd9d7df8eed7fe573ed9
+
+pkgname = mingw-w64-pocketsphinx
+
