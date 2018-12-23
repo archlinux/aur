@@ -51,7 +51,16 @@ build() {
     mv "${srcdir}/${_pkgname}" "${srcdir}/.go/src/"
     cd "${srcdir}/.go/src/${_pkgname}/"
     # download and build main package and all dependencies
-    GOPATH="${srcdir}/.go" go get -u -v all && GOPATH="${srcdir}/.go" ./gorsync_build.sh --buildtype Release
+    # retrying n times, due to issue with go get functionality
+    n=0
+    until [ $n -ge 7 ]
+    do
+        GOPATH="${srcdir}/.go" go get -v all && \
+            GOPATH="${srcdir}/.go" ./gorsync_build.sh --buildtype Release && \
+            break  # substitute your command here
+        n=$[$n+1]
+        sleep 1
+    done
 }
 
 package() {
@@ -59,7 +68,7 @@ package() {
     # echo "Working dir $(pwd)"
     cd "${srcdir}/.go/src/${_pkgname}"
     install -Dm755 "${_binname}" "${pkgdir}/usr/bin/${_binname}"
-    install -Dm644 "builds/gorsync.desktop" "$pkgdir/usr/share/applications/gorsync.desktop"
+    install -Dm644 "builds/fpm_packages/gorsync.desktop" "$pkgdir/usr/share/applications/gorsync.desktop"
     install -Dm644 "ui/gtkui/gsettings/org.d2r2.gorsync.gschema.xml" "$pkgdir/gsettings/org.d2r2.gorsync.gschema.xml"
     # install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }

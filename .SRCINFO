@@ -17,5 +17,6 @@ pkgbase = gorsync-git
 	source = go-rsync::git+https://github.com/d2r2/go-rsync.git
 	md5sums = SKIP
 
+
 pkgname = gorsync-git
 
