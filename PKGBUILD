@@ -3,7 +3,7 @@
 
 _gemname=pdf-reader
 pkgname=ruby-$_gemname
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A library for accessing the content of PDF files'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-ascii85 ruby-ruby-rc4 ruby-hashery ruby-ttfunk ruby-afm)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('857463c03b9a166a67ae6e09a184e57ece19ebe25001ee8fc2ab3d76397971ac')
+sha256sums=('83347d0588d94616860ddaf93547770a84d8607c0466ee7d7e973fca8a135a29')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
