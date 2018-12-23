@@ -6,16 +6,16 @@ pkgdesc="An ebook creation tool"
 arch=('x86_64')
 url="http://www.jutoh.com"
 license=('custom: Jutoh')
-depends=('gtk2' 'libpng12' 'libsm'
+depends=('gtk2' 'libpng' 'libsm'
          'desktop-file-utils')
 optdepends=('libjpeg6: jpeg support'
             'java-runtime: epubcheck support')
 
 source=('jutoh.sh')
-source_x86_64=(http://www.jutoh.com/Jutoh-${pkgver}-x86_64.tar.gz)
+source_x86_64=(http://www.jutoh.com/Jutoh-${pkgver}-ubuntu-x86_64.tar.gz)
 
 sha512sums=('620b4f443129c87dab2a49669d466a2e78979a52a4068e61f2b8f2c318100d2c453261b80250fe78be144c11aa2a41f91a178fb70281ac138727c096e67727fd')
-sha512sums_x86_64=('d3a520de3b7275174ed0940339019cde36fa9202f24d5226380f3588bbf32d0f448ff8c83f21b7aff41f73e210c74b9be1f9dca009b01e58e13021f91cc2766a')
+sha512sums_x86_64=('e200c93ce10dc060f1e91a5b7fae33dca01fcf2af7f9da6b343948780943d59a0052da1b02aa912b6b5565d74f3b558d48f8de36f3f40d22c143c73fdd10eb71')
 
 prepare() {
   mkdir ${srcdir}/jutoh-data
