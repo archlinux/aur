@@ -1,0 +1,183 @@
+---
+ smdev.c | 127 ++++++++++++++++++++++++++++----------------------------
+ 1 file changed, 64 insertions(+), 63 deletions(-)
+
+diff --git a/smdev.c b/smdev.c
+index b774908..59b5485 100644
+--- a/smdev.c
++++ b/smdev.c
+@@ -85,7 +85,7 @@ main(int argc, char *argv[])
+ 
+ 	umask(0);
+ 	if (sflag) {
+-		recurse("/sys/devices", populatedev);
++		recurse("/sys", populatedev);
+ 	} else {
+ 		if (dohotplug() < 0)
+ 			eprintf("Environment not set up correctly for hotplugging\n");
+@@ -126,14 +126,14 @@ dohotplug(void)
+ 	action = getenv("ACTION");
+ 	devpath = getenv("DEVPATH");
+ 	devname = getenv("DEVNAME");
+-	if (!minor || !major || !action || !devpath || !devname)
++	if (!action || !devpath)
+ 		return -1;
+ 
+-	ev.minor = estrtol(minor, 10);
+-	ev.major = estrtol(major, 10);
++	ev.minor = minor?estrtol(minor, 10):-1;
++	ev.major = major?estrtol(major, 10):-1;
+ 	ev.action = mapaction(action);
+ 	ev.devpath = devpath;
+-	ev.devname = devname;
++	ev.devname = devname?devname:".";
+ 	return doevent(&ev);
+ }
+ 
+@@ -249,12 +249,14 @@ removedev(struct event *ev)
+ 	if (rule->path && rule->path[0] == '!')
+ 		return 0;
+ 
+-	/* Delete device node */
+-	unlink(rpath.path);
+-	/* Delete symlink */
+-	if (rule->path && rule->path[0] == '>') {
+-		snprintf(buf, sizeof(buf), "/dev/%s", ev->devname);
+-		unlink(buf);
++	if (ev->major > 0 && ev->minor > 0 && ev->devname) {
++		/* Delete device node */
++		unlink(rpath.path);
++		/* Delete symlink */
++		if (rule->path && rule->path[0] == '>') {
++			snprintf(buf, sizeof(buf), "/dev/%s", ev->devname);
++			unlink(buf);
++		}
+ 	}
+ 	return 0;
+ }
+@@ -276,58 +278,59 @@ createdev(struct event *ev)
+ 	if (rule->path && rule->path[0] == '!')
+ 		goto runrule;
+ 
+-	snprintf(buf, sizeof(buf), "%d:%d", ev->major, ev->minor);
+-	if ((type = devtype(buf)) < 0)
+-		return -1;
+-
+-	/* Parse path and create the directory tree */
+-	parsepath(rule, &rpath, ev->devname);
+-	if (!(dirc = strdup(rpath.path)))
+-		eprintf("strdup:");
+-	strlcpy(buf, dirname(dirc), sizeof(buf));
+-	free(dirc);
+-	umask(022);
+-	if (mkpath(buf, 0755) < 0)
+-		eprintf("mkdir %s:", buf);
+-	umask(0);
++	if (ev->major > 0 && ev->minor > 0 && ev->devname) {
++		snprintf(buf, sizeof(buf), "%d:%d", ev->major, ev->minor);
++		if ((type = devtype(buf)) < 0)
++			return -1;
+ 
+-	if (mknod(rpath.path, rule->mode | type,
+-		  makedev(ev->major, ev->minor)) < 0 &&
+-	    errno != EEXIST)
+-		eprintf("mknod %s:", rpath.path);
+-
+-	errno = 0;
+-	pw = getpwnam(rule->user);
+-	if (!pw) {
+-		if (errno)
+-			eprintf("getpwnam %s:", rule->user);
+-		else
+-			eprintf("getpwnam %s: no such user\n",
+-				 rule->user);
+-	}
++		/* Parse path and create the directory tree */
++		parsepath(rule, &rpath, ev->devname);
++		if (!(dirc = strdup(rpath.path)))
++			eprintf("strdup:");
++		strlcpy(buf, dirname(dirc), sizeof(buf));
++		free(dirc);
++		umask(022);
++		if (mkpath(buf, 0755) < 0)
++			eprintf("mkdir %s:", buf);
++		umask(0);
++
++		if (mknod(rpath.path, rule->mode | type,
++			  makedev(ev->major, ev->minor)) < 0 &&
++		    errno != EEXIST)
++			eprintf("mknod %s:", rpath.path);
++
++		errno = 0;
++		pw = getpwnam(rule->user);
++		if (!pw) {
++			if (errno)
++				eprintf("getpwnam %s:", rule->user);
++			else
++				eprintf("getpwnam %s: no such user\n",
++					 rule->user);
++		}
+ 
+-	errno = 0;
+-	gr = getgrnam(rule->group);
+-	if (!gr) {
+-		if (errno)
+-			eprintf("getgrnam %s:", rule->group);
+-		else
+-			eprintf("getgrnam %s: no such group\n",
+-				 rule->group);
+-	}
++		errno = 0;
++		gr = getgrnam(rule->group);
++		if (!gr) {
++			if (errno)
++				eprintf("getgrnam %s:", rule->group);
++			else
++				eprintf("getgrnam %s: no such group\n",
++					 rule->group);
++		}
+ 
+-	if (chown(rpath.path, pw->pw_uid, gr->gr_gid) < 0)
+-		eprintf("chown %s:", rpath.path);
++		if (chown(rpath.path, pw->pw_uid, gr->gr_gid) < 0)
++			eprintf("chown %s:", rpath.path);
+ 
+-	if (chmod(rpath.path, rule->mode) < 0)
+-		eprintf("chmod %s:", rpath.path);
++		if (chmod(rpath.path, rule->mode) < 0)
++			eprintf("chmod %s:", rpath.path);
+ 
+-	if (rule->path && rule->path[0] == '>') {
+-		/* ev->devname is the original device name */
+-		snprintf(buf, sizeof(buf), "/dev/%s", ev->devname);
+-		symlink(rpath.path, buf);
++		if (rule->path && rule->path[0] == '>') {
++			/* ev->devname is the original device name */
++			snprintf(buf, sizeof(buf), "/dev/%s", ev->devname);
++			symlink(rpath.path, buf);
++		}
+ 	}
+-
+ runrule:
+ 	if(rule->cmd) {
+ 		if (chdir("/dev") < 0)
+@@ -389,12 +392,10 @@ populatedev(const char *path)
+ 	char *cwd;
+ 
+ 	recurse(path, populatedev);
+-	if (strcmp(path, "dev") == 0) {
+-		cwd = agetcwd();
+-		if (!craftev(cwd))
+-			dohotplug();
+-		free(cwd);
+-	}
++	cwd = agetcwd();
++	if (!craftev(cwd))
++		dohotplug();
++	free(cwd);
+ }
+ 
+ static int
+-- 
+2.20.1
+

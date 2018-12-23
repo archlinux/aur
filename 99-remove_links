@@ -1,0 +1,7 @@
+if [[ $DEVNAME ]]; then
+	for lnk in $(find /dev -type l -exec ls -al {} \; | grep /dev/$DEVNAME); do
+		if [[ $(echo $lnk | awk '{print $11}') == /dev/$DEVNAME ]]; then
+			rm -f $(echo $lnk | awk '{print $9}')
+		fi
+	done
+fi
