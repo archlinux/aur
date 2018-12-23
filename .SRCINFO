@@ -3,7 +3,6 @@ pkgbase = jutoh
 	pkgver = 2.69
 	pkgrel = 1
 	url = http://www.jutoh.com
-	arch = i686
 	arch = x86_64
 	license = custom: Jutoh
 	depends = gtk2
@@ -14,8 +13,6 @@ pkgbase = jutoh
 	optdepends = java-runtime: epubcheck support
 	source = jutoh.sh
 	sha512sums = 620b4f443129c87dab2a49669d466a2e78979a52a4068e61f2b8f2c318100d2c453261b80250fe78be144c11aa2a41f91a178fb70281ac138727c096e67727fd
-	source_i686 = http://www.jutoh.com/Jutoh-2.69-i386.tar.gz
-	sha512sums_i686 = 4975b20a996e3d99c97cde06181d6185810cdc0f2ce50051516b9f73a98f409b439a302521947d315cdda58cdc4440f24750ad28a23451176c9b8bb608a91c5d
 	source_x86_64 = http://www.jutoh.com/Jutoh-2.69-x86_64.tar.gz
 	sha512sums_x86_64 = 1d73cac8df68dbd3378f89ee0a9f8d1fb0f9172d342a375746025659070cdcbaa2dbe601ee5ccace03e6fb26dabfd1162739e3a70c3c22bc1745e7f2107956ec
 
