@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Olive
+GenericName=Video Editor
+Comment=Free non-linear video editor
+Exec=Olive
+Icon=olive
+Terminal=false
+StartupNotify=false
+Categories=Qt;AudioVideo;AudioVideoEditing;
+Keywords=editing;video;audio;
