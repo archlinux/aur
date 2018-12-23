@@ -12,16 +12,16 @@
 # Contributor: xantares <xantares09 [at] hotmail [dot] com>
 # Contributor: petterk <stifler3k [at] hotmail [dot] com>
 
-pkgname=popcorntime-stable-bin
+pkgname=popcorntime-bin
 _pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=2
+pkgrel=4
 pkgdesc="Stream movies and TV shows from torrents (stable builds)"
 arch=('x86_64')
 url="https://popcorntime.sh"
 license=('GPL3')
 depends=('nss' 'ttf-font' 'libxss' 'gtk3' 'nodejs')
-provides=('popcorntime' 'popcorn-time-ce' 'popcorntime-ci-bin' 'popcorntime-bin')
+provides=('popcorntime' 'popcorn-time-ce' 'popcorntime-ci-bin' 'popcorntime-stable-bin')
 conflicts=('popcorntime')
 options=('!strip')
 source=("${_pkgname}.desktop" "https://get.popcorntime.sh/build/Popcorn-Time-${pkgver}-Linux-64.tar.xz")
