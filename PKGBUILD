@@ -1,7 +1,7 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=olive
-pkgver=20181130
+pkgver=20181223
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Free non-linear video editor"
@@ -12,7 +12,7 @@ makedepends=('libicns')
 source=("${pkgver}.tar.gz::https://github.com/olive-editor/olive/archive/${pkgver}.tar.gz"
         "olive.desktop"
        )
-sha512sums=('20b2e2e149194480df8e136a03af77e931858daefdfd4c68e95b48abf48cb09c6b3d7b60d6ebb401339ad2b0a7c3a46a93d1c75dffc70dbaf5a7340f576d4466'
+sha512sums=('b9421faa8bc03855cd51837d1f4a264eea1e32d8a4a2fdbb033f4a5a5622220215c66b52b08ba4eb62788665e065b8bfdf43eae6383f4cf6b8e2bd36c5625f95'
             '5c6e6fb0309bfc6a45cde61051df285e8b092545dd56e08aa49c322dd5ce52f8b50f094e5056350222c78e38b1f07a179244beaf8053c923a9fe06d2bff21f3d'
            )
 
