@@ -10,7 +10,7 @@ source=('https://downloads.music-group.com/software/behringer/M32/M32-Edit_LINUX
         'm32-edit.desktop'
         'm32-edit.png')
 md5sums=('cdbfdb6cfc1c14ad2e4be6fd4b7f639f'
-         'd06fe10eeff0b1fd502c80110f1fb493'
+         '2322e5fbc050bfb19dfe719093c63b69'
          '027a21ff0e8bda95fe62e97488b1c6e4')
 
 package() {

@@ -9,7 +9,7 @@ pkgbase = m32-edit
 	source = m32-edit.desktop
 	source = m32-edit.png
 	md5sums = cdbfdb6cfc1c14ad2e4be6fd4b7f639f
-	md5sums = d06fe10eeff0b1fd502c80110f1fb493
+	md5sums = 2322e5fbc050bfb19dfe719093c63b69
 	md5sums = 027a21ff0e8bda95fe62e97488b1c6e4
 
 pkgname = m32-edit

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name[en_DK.UTF-8]=M32 edit
-X-GNOME-FullName[en_DK.UTF-8]=M32 edit
-Comment[en_DK.UTF-8]=
+Name=M32 edit
+X-GNOME-FullName=M32 edit
+Comment=
 Icon=/usr/share/pixmaps/m32-edit.png
 NoDisplay=false
 Exec=/usr/bin/m32-edit
