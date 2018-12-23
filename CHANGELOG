@@ -878,3 +878,8 @@ Sat Dec 22 23:27:26 2018 +0100
      2018-12-22 8b80fae4 actionless refactor(plugins: materia): rename TXT_BG to MATERIA_VIEW, BTN_BG to MATERIA_SURFACE, GNOME_SHELL_PANEL_OPACITY to MATERIA_PANEL_OPACITY (and migrate old values on runtime)
      2018-12-21 1af5ba70 actionless refactor: rename MENU_BG to HDR_BG and MENU_FG to HDR_FG (and migrate old values on runtime)
      2018-12-21 b4c3f955 actionless chore(plugins: oomox): update submodule (viewport fix again :))
+
+
+Sun Dec 23 01:03:43 2018 +0100
+-------------------------------------------------
+1.8.0.1         Bump version to update Flatpak description
