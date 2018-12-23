@@ -1,7 +1,7 @@
 # Contributor: Hy Goldsher <hyness-at-freshlegacycode-dot-org>
 # Maintainer: Hy Goldsher <hyness-at-freshlegacycode-dot-org>
 pkgname=davmail
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service"
 arch=('i686' 'x86_64')
@@ -9,13 +9,13 @@ url="http://$pkgname.sourceforge.net/"
 license=('GPL')
 makedepends=('unzip')
 depends=('java-runtime')
-_rev=2801
+_rev=2891
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-$_rev.zip
         $pkgname.desktop
         $pkgname.sh
         $pkgname@.system_service
         $pkgname@.user_service)
-md5sums=('8bc1ac30a2fa939b8446e3917c3cb882'
+md5sums=('47e72d1afbb069add1aaf9074b649cf5'
          '1df37a6120d88de8df3cb735977336ba'
          '4a88ecc8e4db82e744e35ad497ad37d9'
          '8d373851babe1d8bb860228c8b4db702'
