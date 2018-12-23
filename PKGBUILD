@@ -2,7 +2,7 @@
 # based on qjackctl-svn by robertfoster
 
 pkgname=qjackctl-git
-pkgver=r979.dda8f97
+pkgver=r1095.3b16632
 pkgrel=1
 pkgdesc="A Qt front-end for the JACK low-latency audio server"
 arch=('i686' 'x86_64')
