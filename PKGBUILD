@@ -1,46 +1,48 @@
 # Maintainer: Maxime Poulin <maxpoulin64@gmail.com>
-pkgname='thelounge'
-_npmname='thelounge'
+# Contributor: Reto Brunner <brunnre8@gmail.com>
+pkgname=thelounge
 pkgver=2.7.1
-pkgrel=1
-pkgdesc="Modern self-hosted web IRC client"
+pkgrel=2
+pkgdesc='Modern self-hosted web IRC client'
 url='https://thelounge.chat/'
 arch=('any')
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-install=install
 backup=('etc/thelounge/config.js')
 source=(
-	"https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz"
-	"system.service"
-	"user.service"
+    "http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
+    'system.service'
+    'user.service'
+    'sysusers.d'
+    'tmpfiles.d'
 )
-noextract=("$_npmname-$pkgver.tgz")
-sha256sums=(
-	'4b4970caba850042244798008afd334dd2ddd7e25339c864837ce11ba4703021'
-	'SKIP'
-	'SKIP'
-)
+noextract=("$pkgname-$pkgver.tgz")
+md5sums=('f2be61e721cc677fb624687cf1e8944c'
+         'e52c5db8dece96c773718b402e4679ad'
+         '7493ff3e6bb98daae42b26bf97173ed3'
+         'bf9da927d1432ec00a8dc0b7183745fc'
+         '456c3d6d70aa33da967f79d215621dba')
 
 package() {
-	local _etc="$pkgdir/etc/$pkgname"
-	export NODE_ENV=production
-	
-	npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
-	
-	echo "/etc/thelounge" > "$pkgdir/usr/lib/node_modules/$_npmname/.thelounge_home"
-	
-	install -dm700 "$_etc" "$_etc/users"
-	install -Dm600 \
-		"$pkgdir/usr/lib/node_modules/$_npmname/defaults/config.js" \
-		"$_etc/config.js"
-	
-	install -Dm644 "$srcdir/system.service" \
-		"$pkgdir/usr/lib/systemd/system/$pkgname.service"
-	install -Dm644 "$srcdir/user.service" \
-		"$pkgdir/usr/lib/systemd/user/$pkgname.service"
-	
-	grep -FRlZ "$startdir" "$pkgdir" | \
-		xargs -0 -- sed -i "s|$startdir|/tmp/build|g"
+    export NODE_ENV=production
+
+    npm install -g --user root --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz" --cache "${srcdir}/npm-cache"
+
+    echo /var/lib/thelounge > "$pkgdir/usr/lib/node_modules/$pkgname/.thelounge_home"
+
+    # add default config
+    install -Dm 644 "$pkgdir/usr/lib/node_modules/$pkgname/defaults/config.js" "$pkgdir/etc/thelounge/config.js"
+
+    # services
+    install -Dm644 "$srcdir/system.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -Dm644 "$srcdir/user.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
+
+    # setting up system user
+    install -Dm644 "${srcdir}/sysusers.d" "${pkgdir}/usr/lib/sysusers.d/thelounge.conf"
+    install -Dm644 "${srcdir}/tmpfiles.d" "${pkgdir}/usr/lib/tmpfiles.d/thelounge.conf"
+
+    # Non-deterministic race in npm gives 777 permissions to random directories.
+    # See https://github.com/npm/npm/issues/9359 for details.
+    find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 }
