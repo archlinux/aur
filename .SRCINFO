@@ -1,6 +1,6 @@
 pkgbase = java-openjfx-ea-bin
 	pkgdesc = Java OpenJFX 12 Early-Access Build.
-	pkgver = 12b3
+	pkgver = 12b6
 	pkgrel = 1
 	url = http://jdk.java.net/openjfx/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = java-openjfx-ea-bin
 	depends = webkit2gtk
 	depends = ffmpeg
 	depends = qt5-base
-	source = https://download2.gluonhq.com/openjfx/12/openjfx-12-ea+3_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/12/openjfx-12-ea+3_linux-x64_bin-jmods.zip
-	sha256sums = 297b56b130a12f29367aed2095f393482eef6a5cb9b7e6dd740a7fa9c71f3153
-	sha256sums = bf29e79e8f36416456806992465f4dab34e92fd9671d52ca2193a0cc2d100464
+	source = https://download2.gluonhq.com/openjfx/12/openjfx-12-ea+6_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/12/openjfx-12-ea+6_linux-x64_bin-jmods.zip
+	sha256sums = abde94a2748a4f23ee6845cc5adf77830dc9b3e66a6f4294868192dac43596e4
+	sha256sums = 472d14cffae6b4e56c877682043607ac00086f9f40ffdbb657ff714763cb9378
 
 pkgname = java-openjfx-ea-bin
 
