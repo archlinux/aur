@@ -7,7 +7,7 @@ pkgbase=digikam
 pkgname=(digikam kipi-plugins)
 _pkgver=5.9.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=3
+pkgrel=4
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
@@ -46,7 +46,8 @@ build() {
 }
 
 package_digikam() {
-  depends=(liblqr libkipi lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common threadweaver kcalcore)
+  depends=(liblqr libkipi lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata
+           qt5-webkit qtav marble-common threadweaver kcalcore)
   optdepends=('kipi-plugins: export to various online services'
               'hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)')
 
