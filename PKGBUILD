@@ -1,5 +1,5 @@
 pkgname=wp-cli
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
@@ -13,7 +13,7 @@ replaces=()
 backup=()
 source=("https://github.com/wp-cli/wp-cli-bundle/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/wp-cli/wp-cli/v${pkgver}/utils/wp-completion.bash")
-md5sums=('39df7128998fad0756a8ecddb6d28f2d'
+md5sums=('80810da4724dbb89b8476ccc7545514c'
          'f8acb424f1460428796451679631be86')
 
 prepare() {
@@ -36,8 +36,13 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-bundle-${pkgver}"
+  # BEGIN TMP FIX - https://github.com/wp-cli/wp-cli-bundle/issues/68
+  sed -i 's/639eb33aac1dc043c6a72323779ea836fb7795e5/7d4b691497b4c99149b89d93dba49775fbb4d2f3/g' composer.lock
+  # END TMP FIX
   composer install --no-interaction --prefer-dist --no-scripts && composer dump
+  echo -n "Building phar... "
   php -dphar.readonly=0 utils/make-phar.php wp-cli.phar --quiet
+  echo "Done!"
 }
 
 check() {

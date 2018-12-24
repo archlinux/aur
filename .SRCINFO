@@ -1,15 +1,15 @@
 pkgbase = wp-cli
 	pkgdesc = A command-line tool for managing WordPress
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://wp-cli.org/
 	arch = any
 	license = MIT
 	makedepends = php-composer
 	depends = php
-	source = https://github.com/wp-cli/wp-cli-bundle/archive/v2.0.1.tar.gz
-	source = https://raw.githubusercontent.com/wp-cli/wp-cli/v2.0.1/utils/wp-completion.bash
-	md5sums = 39df7128998fad0756a8ecddb6d28f2d
+	source = https://github.com/wp-cli/wp-cli-bundle/archive/v2.1.0.tar.gz
+	source = https://raw.githubusercontent.com/wp-cli/wp-cli/v2.1.0/utils/wp-completion.bash
+	md5sums = 80810da4724dbb89b8476ccc7545514c
 	md5sums = f8acb424f1460428796451679631be86
 
 pkgname = wp-cli
