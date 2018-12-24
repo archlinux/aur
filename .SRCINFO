@@ -1,15 +1,15 @@
 pkgbase = zfs-linux-zen
-	pkgver = 0.7.12_4.19.11.zen1.1
+	pkgver = 0.7.12_4.19.12.zen1.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-zen-headers=4.19.11.zen1-1
+	makedepends = linux-zen-headers=4.19.12.zen1-1
 	makedepends = spl-linux-zen-headers
 	depends = kmod
 	depends = spl-linux-zen
 	depends = zfs-utils=0.7.12
-	depends = linux-zen=4.19.11.zen1-1
+	depends = linux-zen=4.19.12.zen1-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.12/zfs-0.7.12.tar.gz
 	sha256sums = 720e3b221c1ba5d4c18c990e48b86a2eb613575a0c3cc84c0aa784b17b7c2848
 
