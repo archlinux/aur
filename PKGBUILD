@@ -4,12 +4,12 @@
 # then please put 'unknown'.
 
 # Maintainer: Your Name <youremail@domain.com>
-pkgname="jgtk+"
+pkgname="jlibc"
 pkgver=1.0
 pkgrel=1
 srcdir="src"
 epoch=
-pkgdesc="GTK+ 3 Bindings for Java"
+pkgdesc="glibc Bindings for Java"
 arch=('x86_64')
 url="https://bitbucket.org/Scoopta/jlibc/src/default/"
 license=('GPL3')
