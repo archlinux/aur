@@ -1,14 +1,11 @@
 pkgbase = ddnet-skins
 	pkgdesc = DDraceNetwork skin database
 	pkgver = 20180808
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ddnet.tw
 	arch = any
 	license = GPL
 	makedepends = unzip
-	provides = teeworlds-ddnet-skins
-	conflicts = teeworlds-ddnet-skins
-	replaces = teeworlds-ddnet-skins
 	source = ddnet-skins-20180808.zip::https://ddnet.tw/skins/zip/database.zip
 	sha256sums = bc9dec0801fec08e040091b2e803dac42a0340b348f327a851940ca6a9ae2e59
 
