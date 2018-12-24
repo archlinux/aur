@@ -1,9 +1,9 @@
 # Maintainer: Igor Visi <mail@igorvisi.xyz>
 
 _npmname=verdaccio
-_npmver=3.8.5
+_npmver=3.10.1
 pkgname=verdaccio
-pkgver=3.8.5
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="Private npm repository server"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(2478f28b4bf75afc32e59880e75c4e21def917d6)
+sha1sums=(35a4997685c3a92518959f3b7d48487a164d6289)
 
 package() {
   cd $srcdir
