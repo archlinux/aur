@@ -5,7 +5,7 @@
 
 _realname=Vulkan-Loader
 pkgname=("mingw-w64-vulkan-loader")
-pkgver=1.1.92
+pkgver=1.1.96
 pkgrel=1
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (mingw-w64)'
 arch=('any')
@@ -17,23 +17,10 @@ makedepends=("mingw-w64-cmake"
              "mingw-w64-vulkan-headers"
              "python"
              "git")
-_commit=a29f808461116a33caed15529fc10a0285dd3d70
-source=(git+https://github.com/KhronosGroup/Vulkan-Loader.git#commit=${_commit}
-        001-build-fix.patch
-        002-proper-def-files-for-32bit.patch
-        003-generate-pkgconfig-files.patch)
+_commit=32d33e965089f3e3721a3c0834633e50b45ea903
+source=(git+https://github.com/KhronosGroup/Vulkan-Loader.git#commit=${_commit})
 options=(!strip !buildflags staticlibs)
-sha256sums=('SKIP'
-            '64ef57d8551a0b33f63aa98a06c276d5e8e24d9b4ff27347baa8fcb2a39c1295'
-            '9fa83968486c97a2c79295dadd6be5cba4382d5083caa6fa73ce78e9f80be8be'
-            '5c189b3f76fa53ad12077cd8932423a0cf385f9464cdde60ba711589ccde19ad')
-
-prepare() {
-  cd ${srcdir}/${_realname}
-  patch -p1 -i ${srcdir}/001-build-fix.patch
-  patch -p1 -i ${srcdir}/002-proper-def-files-for-32bit.patch
-  patch -p1 -i ${srcdir}/003-generate-pkgconfig-files.patch
-}
+sha256sums=('SKIP')
 
 _build() {
   [[ -d ${srcdir}/build-$1 ]] && rm -rf ${srcdir}/build-$1
