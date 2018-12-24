@@ -1,15 +1,15 @@
 _npmname=jdrive
 pkgname=nodejs-jdrive
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Drive sync daemon"
 arch=(any) #Any that can fill the dependencies
 url="https://gitlab.com/mrvik/jdrive"
 depends=("nodejs>=10")
 makedepends=(npm python2)
-source=("jdrive.tgz::https://gitlab.com/mrvik/jdrive/-/jobs/artifacts/master/raw/jdrive.tgz?job=Build%20npm%20tarball")
+source=("jdrive.tgz::https://gitlab.com/mrvik/jdrive/-/jobs/artifacts/v${pkgver}/raw/jdrive.tgz?job=Build%20npm%20tarball")
 noextract=("jdrive.tgz")
-sha512sums=('adb7a077617679cd4e8635cdadb39bd2a416db9d94e5bdd2a53b8cd037b2d4a5fcbbc37f870db7894bb20d0db8efeae529068a5cf5c586f74aacb48943f05072')
+sha512sums=('b89814debec42195bccaa3f4f75f05f40400af12089a2cca6a2a2344e9d76915ec0bb79195c4ee117ace2a6a53f6c07e58b64daf2390cb0578ca87caafd09987')
 
 prepare(){
     tar --strip=1 -axf jdrive.tgz package/init
