@@ -3,7 +3,7 @@
 
 pkgname=dtboost
 pkgver=1.6.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon that changes priority (CPU and disk I/O) and limits CPU usage of your applications on the fly"
 url="http://code.google.com/p/${pkgname}/"
 license=("GPL3")
