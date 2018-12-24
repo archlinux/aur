@@ -1,0 +1,15 @@
+pkgbase = prewikka-updatedb
+	pkgdesc = Database updates for graphical front-end analysis console for the Prelude Framework
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://www.prelude-siem.org
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = python2-setuptools
+	depends = prewikka
+	source = https://www.prelude-siem.org/pkg/src/5.0.0/prewikka-updatedb-5.0.0.tar.gz
+	md5sums = 1f25cca40677ee111950e5776a581232
+
+pkgname = prewikka-updatedb
+
