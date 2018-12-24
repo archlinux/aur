@@ -1,6 +1,6 @@
 # Maintainer: Matt Mathis <aur@cloudninja.pw>
 pkgname=jaybar
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="Status bar for the Sway Compositor"
