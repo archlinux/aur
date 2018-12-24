@@ -34,6 +34,7 @@ build() {
 	cmake ../${_gitname} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_TESTING:BOOL=OFF \
 		-DINSTALL_SYSCONFDIR=/etc \
 		-DINSTALL_LIBDIR=/usr/lib \
 		-DINSTALL_LIBEXECDIR=/usr/lib \
