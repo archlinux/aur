@@ -12,9 +12,6 @@ makedepends=('cmake' 'python')
 checkdepends=('gtest')
 optdepends=('ddnet-skins: more skins for your tee'
             'ddnet-maps-git: have all DDNet maps available offline')
-provides=('teeworlds-ddnet')
-conflicts=('teeworlds-ddnet')
-replaces=('teeworlds-ddnet')
 source=("https://ddnet.tw/downloads/DDNet-$pkgver.tar.xz"
         'ddnet.desktop' 'ddnet-server.desktop'
         'DDNet.png' 'DDNet-Server.png')
