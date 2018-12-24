@@ -2,8 +2,8 @@
 _orgname=OpenOrienteering
 _pkgname=mapper
 pkgname=${_orgname,,}-${_pkgname}
-pkgver=0.8.3
-pkgrel=4
+pkgver=0.8.4
+pkgrel=1
 pkgdesc='Map drawing program from OpenOrienteering'
 arch=('i686' 'x86_64')
 url='https://www.openorienteering.org/apps/mapper/'
@@ -15,7 +15,7 @@ provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
 install=${pkgname}.install
 source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ff4aefd11318857b65254ac360d1100a75792210600d44333cbd23d3eec6d5d4')
+sha256sums=('d39c05a84ad222ed278231c89c353174f35682c79f92467cb08d8f101debd8fd')
 
 build() {
   cd ${_pkgname}-${pkgver}
@@ -29,7 +29,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLICENSING_PROVIDER=arch   \
     -DMapper_PACKAGE_NAME=${pkgname} \
-    -DQt5Help_QCOLLECTIONGENERATOR_EXECUTABLE=qhelpgenerator \
     -Wno-dev
   cmake --build .
 }
