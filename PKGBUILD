@@ -5,8 +5,8 @@
 
 pkgname=buildbot
 pkgdesc='The Continuous Integration Framework'
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -15,8 +15,9 @@ depends=(python-twisted python-jinja python-zope-interface python-future
          python-autobahn python-pyjwt python-yaml)
 makedepends=(git)
 checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
-              python-mock python-moto python-buildbot-pkg buildbot-worker
-              python-buildbot-www python-pip openssh)
+              python-mock python-moto
+              python-buildbot-pkg=$pkgver buildbot-worker=$pkgver python-buildbot-www=$pkgver
+              python-pip openssh)
 optdepends=(
   'python-boto3: for AWS EC2 latent worker'
   'python-lz4: to compress logs using lz4'
@@ -24,7 +25,7 @@ optdepends=(
   'python-txrequests: for using HTTP requests as steps'
 )
 source=(https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz{,.sig})
-sha256sums=('1d6dbab6cc3fa77cf709589d93bd86de030dc9bf244eebca1f16c388ed27d24a'
+sha256sums=('e22f51b693f7fb293b6a111072cada00bc227fcdc2575bcb1c45f10fa25f5738'
             'SKIP')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com>
@@ -44,7 +45,9 @@ check() {
 
   pip install --root="$srcdir"/tmp_install .
 
-  PYTHONPATH="$srcdir"/tmp_install/usr/lib/python3.7/site-packages TZ=UTC trial3 --rterrors buildbot
+  export PYTHONPATH="$srcdir"/tmp_install/usr/lib/python3.7/site-packages
+  export PATH="$PATH:$srcdir/tmp_install/usr/bin"
+  TZ=UTC trial3 --rterrors buildbot
 }
 
 package() {
