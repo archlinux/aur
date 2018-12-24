@@ -12,9 +12,8 @@ makedepends=('git' 'cmake' 'python')
 checkdepends=('gtest')
 optdepends=('ddnet-skins: more skins for your tee'
             'ddnet-maps-git: have all DDNet maps available offline')
-provides=('teeworlds-ddnet-git' 'ddnet')
-conflicts=('teeworlds-ddnet-git' 'ddnet')
-replaces=('teeworlds-ddnet-git')
+provides=('ddnet')
+conflicts=('ddnet')
 source=("git+https://github.com/ddnet/ddnet"
         'ddnet.desktop' 'ddnet-server.desktop'
         'DDNet.png' 'DDNet-Server.png')
