@@ -2,7 +2,7 @@
 # Contributor: Hubert Maraszek <marach5 at gmail dot com>
 
 pkgname=mp3tag
-pkgver=2.90a
+pkgver=2.91
 pkgrel=1
 pkgdesc="The universal tag editor."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('3fdcabf91b5ec50373d3aaeaf653611613aed39d94d17af50bb6f5a85afff586'
             '18967b634e69d8ccb08383d42a49ced3c0b11c632649a15c3a6a55e3a27f62e9'
             'bc0c7b8a7a9f9ee92dfe2f1880ef5d91920473713b5d60e4afa361d69a446798'
             'a3e09f7cda34bc31b3b5b1d7cf2010c3b17847c141ef5a074472eb72f760f6bf'
-            '66f6b83f73900dfbcb284f168adfb13c5d6e9bdf56e3dd86c4a893c38caf885b')
+            'd887ae908ba31ee2f47b15d228cf594656aa217242ca38bf91b55c1133f1e346')
 options=('!strip')
 
 package() {
