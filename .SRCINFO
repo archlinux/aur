@@ -1,32 +1,11 @@
-pkgbase = python-gmusicapi
+pkgbase = python2-gmusicapi
 	pkgdesc = An unofficial client library for Google Music
 	pkgver = 11.1.1
 	pkgrel = 1
 	url = https://github.com/simon-weber/gmusicapi
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	depends = mutagen
-	source = https://github.com/simon-weber/gmusicapi/archive/11.1.1.tar.gz
-	md5sums = 0414c5361e4317a5e126372d1a22d9f6
-
-pkgname = python-gmusicapi
-	depends = python-validictory
-	depends = python-decorator
-	depends = python-requests
-	depends = python-dateutil
-	depends = python-proboscis
-	depends = python-protobuf
-	depends = python-oauth2client
-	depends = python-mock
-	depends = python-appdirs
-	depends = python-gpsoauth
-	depends = python-mechanicalsoup
-	depends = python-six
-	depends = python-future
-
-pkgname = python2-gmusicapi
 	depends = python2-validictory
 	depends = python2-decorator
 	depends = python2-requests
@@ -40,4 +19,9 @@ pkgname = python2-gmusicapi
 	depends = python2-mechanicalsoup
 	depends = python2-six
 	depends = python2-future
+	depends = mutagen
+	source = https://github.com/simon-weber/gmusicapi/archive/11.1.1.tar.gz
+	md5sums = 0414c5361e4317a5e126372d1a22d9f6
+
+pkgname = python2-gmusicapi
 
