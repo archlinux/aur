@@ -52,8 +52,8 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=4.19
-_minor=8
-_rtver=6
+_minor=10
+_rtver=8
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
@@ -387,9 +387,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('c863dbfcba413a1d9ee396c20d40ede6c5f07f168f74ef604c261b11797226dced1912270203b2a2d3be000284f6cca72df6ed52675e260e8289a87b0d65f282'
+sha512sums=('78949b02fd8e3e546a743ee47eff93f0851881f751ab4171d0eed3115737c8e90b8c984364b97f0ff0df42a12e7ce1a5aa6e8973180392014bcfcfeb70981e2f'
             'SKIP'
-            '368818426719676e0e1fd39d3b6d3927565f94909a1d38392c804ebebcd88b867faa6397bfdaf4dafd44d6747909e60f51d1b088544fb1205a75066b51835514'
+            '81a66d156061900afbae406cfb9c5157a7954d8c0f6a879360506e9a16cf3aaa8747277bad14b35e6ae4b343bc599b1cceb9d3c88af0837c137945006d45f374'
             'SKIP'
             'a014e72cadd0ceb52f10ceee6902a1732450c6b670f33cec643a9b3684d92d3ad311e5b9b0ac71b3ee65b52a4d4538fff1ed5e003f3e3979e0faa2679b5edb59'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
