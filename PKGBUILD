@@ -12,7 +12,8 @@ arch=('x86_64')
 url='https://github.com/disks86/VK9'
 license=('zlib')
 options=(!strip !buildflags staticlibs)
-makedepends=('ninja' 'meson>=0.43' 'git' 'wine>=3.5' 'mingw-w64-gcc' 'cmake' 'mingw-w64-boost' 'vulkan-headers' 'mingw-w64-eigen' 'shaderc' 'util-linux' 'mingw-w64-pkg-config' 'mingw-w64-headers' 'mingw-w64-vulkan-devel')
+makedepends=('ninja' 'meson>=0.43' 'git' 'wine>=3.5' 'shaderc' 'util-linux' 'cmake'
+			'mingw-w64-cmake' 'mingw-w64-boost' 'mingw-w64-vulkan-headers' 'mingw-w64-eigen' 'mingw-w64-vulkan-loader')
 source=($project::'git+https://github.com/disks86/VK9.git')
 sha256sums=('SKIP')
 
@@ -30,14 +31,37 @@ prepare(){
 #!/usr/bin/env bash
 export BOOST_INCLUDEDIR=/usr/x86_64-w64-mingw32/include
 export BOOST_LIBRARYDIR=$srcdir/boost64
-unset PKG_CONFIG_PATH PKG_CONFIG_PATH_CUSTOM
 EOF
   cat > dep32/boost.sh << EOF
 #!/usr/bin/env bash
 export BOOST_INCLUDEDIR=/usr/i686-w64-mingw32/include
 export BOOST_LIBRARYDIR=$srcdir/boost32
-unset PKG_CONFIG_PATH PKG_CONFIG_PATH_CUSTOM
 EOF
+  cat > dep64/eigen.pc << EOF
+# Package Information for pkg-config
+
+prefix=/usr/x86_64-w64-mingw32
+exec_prefix=${prefix}
+includedir=${prefix}/include
+
+Name: Eigen3
+Description: A C++ template library for linear algebra: vectors, matrices, and related algorithms
+Version: 3.3.5
+Cflags: -I${includedir}
+EOF
+  cat > dep32/eigen.pc << EOF
+# Package Information for pkg-config
+
+prefix=/usr/i686-w64-mingw32
+exec_prefix=${prefix}
+includedir=${prefix}/include
+
+Name: Eigen3
+Description: A C++ template library for linear algebra: vectors, matrices, and related algorithms
+Version: 3.3.5
+Cflags: -I${includedir}
+EOF
+  rm dep{32,64}/vulkan-1.pc
   
   mkdir -p "$srcdir/boost"{32,64}
   cd "$srcdir/boost32"
@@ -51,7 +75,7 @@ EOF
 
 build() {
   cd "$srcdir/$project"
-  export WINEPREFIX="$srcdir/wine/VK9-build" PKG_CONFIG_PATH=""
+  export WINEPREFIX="$srcdir/wine/VK9-build"
   ./package-release.sh $pkgver '..' --no-package --keep-builddir
 }
 

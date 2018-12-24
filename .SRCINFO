@@ -9,16 +9,14 @@ pkgbase = vk9-git
 	makedepends = meson>=0.43
 	makedepends = git
 	makedepends = wine>=3.5
-	makedepends = mingw-w64-gcc
-	makedepends = cmake
-	makedepends = mingw-w64-boost
-	makedepends = vulkan-headers
-	makedepends = mingw-w64-eigen
 	makedepends = shaderc
 	makedepends = util-linux
-	makedepends = mingw-w64-pkg-config
-	makedepends = mingw-w64-headers
-	makedepends = mingw-w64-vulkan-devel
+	makedepends = cmake
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-boost
+	makedepends = mingw-w64-vulkan-headers
+	makedepends = mingw-w64-eigen
+	makedepends = mingw-w64-vulkan-loader
 	options = !strip
 	options = !buildflags
 	options = staticlibs
