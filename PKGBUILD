@@ -2,7 +2,7 @@
 # Contributor: Artyom Olshevskiy <siasia@siasia>
 
 pkgname='java-service-wrapper'
-pkgver=3.5.35
+pkgver=3.5.37
 pkgrel=1
 pkgdesc="Enables a Java Application to be run as a Windows Service or Unix Daemon"
 url="https://wrapper.tanukisoftware.com/doc/english/introduction.html"
@@ -12,19 +12,17 @@ conflicts=('java-service-wrapper-bin')
 makedepends=('apache-ant' 'java-environment>=7')
 source=("https://wrapper.tanukisoftware.com/download/${pkgver}/wrapper_${pkgver}_src.tar.gz"
         'java10.patch')
-sha256sums=('82f7d89414ce4ff0cdbb8357d779362bb5ddf068aede20a4a56627ed55e25e56'
-            'af0f8fb43e22b5499376a633fea106654a30bb9000f00e6d68bfa603c422746f')
+sha256sums=('a2a27e65904688da3e84f5745d3a71371a6ecba43675d8d824c3774e879281c9'
+            'f5dbf6150278f09a0e3269ace9f3e38a4361d2f3e3c72c3649bb78ad9f1e1499')
 
 prepare() {
     cd "${srcdir}/wrapper_${pkgver}_src"
 
     if [[ $(javac -version |grep 10.0) ]]; then
-        sed -i "build.xml" \
-            -e "s:value=\"1.4\":value=\"1.10\":"
+        _target=1.10
         patch -Np0 -i "$srcdir/java10.patch"
     else
-        sed -i "build.xml" \
-            -e "s:value=\"1.4\":value=\"1.7\":"
+        _target=1.7
     fi
 
     # Prevent building the testsuite on the x64, this requires the cunit pkg
@@ -42,7 +40,8 @@ build() {
     [[ "$CARCH" = @(x86_64|aarch64) ]] && _bits=64    || _bits=32
     [[ "$CARCH" = arm*              ]] && _arch=armhf || _arch=x86
 
-    ant -Dbits="$_bits" -Ddist.arch="$_arch" jar compile-c-unix
+    ant -Dbits="$_bits" -Ddist.arch="$_arch" -Djavac.target.version="$_target" \
+        jar compile-c-unix
 }
 
 package() {

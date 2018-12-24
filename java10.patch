@@ -1,19 +1,9 @@
---- build.xml.orig	2018-05-22 10:47:44.750997514 -0400
-+++ build.xml	2018-05-22 10:48:00.760430872 -0400
-@@ -524,7 +524,7 @@
-         <mkdir dir="${lib.dir}"/>
-         
-         <!-- compile everything under src/java -->
--        <javac srcdir="${src.dir}/java" destdir="${build.classes}"
-+        <javac srcdir="${src.dir}/java" destdir="${build.classes}" nativeheaderdir="${src.dir}/c"
-                deprecation="on"
-                debug="on"
-                optimize="on"
+--- build.xml.orig	2018-12-24 04:26:08.343432389 -0500
++++ build.xml	2018-12-24 04:26:59.394029875 -0500
 @@ -553,39 +553,6 @@
-                 <include name="**/Manifest"/>
              </fileset> 
          </copy>
--        
+         
 -        <!-- Generate the jni header files.  This is done here rather than with the
 -             c code to make intermediate pre-release distributions possible. -->
 -        <javah
@@ -46,6 +36,7 @@
 -            <class name="org.tanukisoftware.wrapper.WrapperResources"/>
 -        </javah>
 -        <fixcrlf srcdir="${src.dir}/c" includes="org_tanukisoftware_wrapper_WrapperResources.h" eol="lf" />
- 
+-
          <available property="junit.present"
              classname="junit.framework.TestCase">
+             <classpath refid="project.class.path"/>
