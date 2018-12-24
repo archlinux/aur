@@ -4,7 +4,7 @@
 
 pkgname=hugo-git
 _pkgname=hugo
-pkgver=v0.52.r17.gab9214768de4
+pkgver=v0.53.r1.g8431871201cb
 pkgrel=1
 pkgdesc="Fast and Flexible Static Site Generator in Go"
 arch=('x86_64')
@@ -31,9 +31,14 @@ build() {
   LDFLAGS="-X github.com/gohugoio/hugo/hugolib.CommitHash=`git rev-parse --short HEAD`"
   go build --tags extended \
     -ldflags "-linkmode external -extldflags '${EXTLDFLAGS}' -s -w ${LDFLAGS}"
+
+  ./hugo gen man
 }
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}"/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgname}"/LICENSE     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgname}"/man/*.1  -t "${pkgdir}/usr/share/man/man1/"
 }
+
+# vim: ts=2 sw=2 et:

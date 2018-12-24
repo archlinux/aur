@@ -1,6 +1,6 @@
 pkgbase = hugo-git
 	pkgdesc = Fast and Flexible Static Site Generator in Go
-	pkgver = v0.52.r17.gab9214768de4
+	pkgver = v0.53.r1.g8431871201cb
 	pkgrel = 1
 	url = https://gohugo.io/
 	arch = x86_64
