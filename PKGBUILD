@@ -2,7 +2,7 @@
 
 _basename=achemso
 pkgname=texlive-"$_basename"
-pkgver=3.11a
+pkgver=3.12
 pkgrel=1
 pkgdesc="LaTeX support for American Chemical Society journal submissions."
 arch=('any')
@@ -19,4 +19,4 @@ package() {
   find "$pkgdir" -type d -exec chmod 755 '{}' \+
 }
 
-sha512sums=('97f8fff8cf7f8e9e0bcac8cdeb40b997418c1becb05dea025f2c865786618997880f8f2be055ec4dbfb9b7945bb7292f15a4512f5ddb4bf48de105c90aff22ff')
+sha512sums=('376a09d8f9670df2309585935a28a9dc9e5d2d80b3c5fb9705870a6007431d26a9b69e96d19aa3c431cdad3ec383ae963d9aff254fed365c9de5a3754afd0027')
