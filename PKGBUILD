@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
 pkgver=0.0.5
-pkgrel=6
+pkgrel=7
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
@@ -75,7 +75,7 @@ prepare()
         mkdir build
     fi
 
-    patch -Np1 -i "${srcdir}/../rpcs3.patch"
+    patch -Np1 -i "${srcdir}/rpcs3.patch"
 
     cd build
 
