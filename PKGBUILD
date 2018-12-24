@@ -3,7 +3,7 @@
 
 pkgname=webbench
 pkgver=1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A very simple tool for benchmarking WWW or proxy servers. Uses fork() for simulating multiple clients"
 arch=(i686 x86_64)
 url="http://home.tiscali.cz/~cz210552/webbench.html"
