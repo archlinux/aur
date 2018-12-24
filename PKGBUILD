@@ -2,7 +2,7 @@
 _upstream_name=plasma-applet-ambientnoise
 pkgname=plasma5-applets-ambientnoise
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasmoid for ambient noise reproduction"
 arch=('any')
 url="https://github.com/m-pilia/plasma-applet-ambientnoise"
@@ -11,7 +11,9 @@ depends=('plasma-workspace')
 optdepends=('anoise-media: noise files and icons'
             'anoise-community-extension1: noise files and icons'
             'anoise-community-extension2: noise files and icons'
-            'anoise-community-extension3: noise files and icons')
+            'anoise-community-extension3: noise files and icons'
+            'anoise-community-extension4: noise files and icons'
+            'anoise-community-extension5: noise files and icons')
 makedepends=('extra-cmake-modules'
              'git')
 source=(https://github.com/m-pilia/${_upstream_name}/archive/${pkgver}.tar.gz)
