@@ -1,7 +1,7 @@
 pkgbase = linux-vfio
-	pkgver = 4.19.10.arch1
+	pkgver = 4.19.12.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v4.19.10-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v4.19.12-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -13,7 +13,7 @@ pkgbase = linux-vfio
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v4.19.10-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v4.19.12-arch1
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
