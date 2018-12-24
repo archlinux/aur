@@ -2,7 +2,7 @@
 
 pkgnamebase=vk9-bin
 pkgname=(vk9-bin lib32-vk9-bin)
-pkgver=0.28.1
+pkgver=0.29.0
 pkgrel=1
 pkgdesc='Direct3D 9 compatibility layer using Vulkan'
 arch=('x86_64' 'i686')
@@ -16,8 +16,8 @@ source=(
 	setup_vk9{,-32})
 noextract=("$pkgname-$pkgver-i686.zip")
 
-md5sums=('eadeb7837256defd7ae26e087a5970aa'
-         '48ada543e87e565632b9520780d25b56'
+md5sums=('808d09e34c5aeae5971a2259423fc01a'
+         '2086a2ab04aa27e6101463723695e3b6'
          '6600eabb853962260068f86d9a70aed1'
          'aaf4cb6c959a9dfcab2ec8ec8f802909'
          '42de90e0a79a9eef2410799044521f39'
