@@ -1,5 +1,5 @@
 pkgbase = linux-amd-raven
-	pkgver = 4.20
+	pkgver = 4.20.0
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
