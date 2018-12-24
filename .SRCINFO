@@ -12,13 +12,7 @@ pkgbase = rpi_ws281x-git
 	provides = rpi_ws281x
 	conflicts = rpi_ws281x
 	source = rpi_ws281x::git://github.com/jgarff/rpi_ws281x.git
-	source = 0001-Allow-to-adjust-build-directory.patch
-	source = 0002-Update-help-text-for-default-DMA.patch
-	source = 0003-Adjust-LED-defs.patch
 	sha256sums = SKIP
-	sha256sums = 26119114589fc5aef067fd1de99b532c27416642aeab9ad1150dcc5badc95b59
-	sha256sums = 2ca78207da848ac22d7c791c564988c9a0a0c407c710fe9540ac57a580c5df1c
-	sha256sums = daaa7f46c988b7b37f5528361648ff2d830d3b929f0be032a9fdc4a751b9829e
 
 pkgname = rpi_ws281x-git
 

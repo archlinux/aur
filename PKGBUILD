@@ -16,24 +16,8 @@ makedepends=('scons' 'git')
 provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/jgarff/${_reponame}"
-source=("${_reponame}::git://github.com/jgarff/${_reponame}.git"
-        '0001-Allow-to-adjust-build-directory.patch'
-        '0002-Update-help-text-for-default-DMA.patch'
-        '0003-Adjust-LED-defs.patch')
-sha256sums=('SKIP'
-            '26119114589fc5aef067fd1de99b532c27416642aeab9ad1150dcc5badc95b59'
-            '2ca78207da848ac22d7c791c564988c9a0a0c407c710fe9540ac57a580c5df1c'
-            'daaa7f46c988b7b37f5528361648ff2d830d3b929f0be032a9fdc4a751b9829e')
-
-prepare() {
-  cd "$srcdir/$_reponame"
-
-  # apply patches; further descriptions can be found in patch files itself
-  for patch in "$srcdir/"*.patch; do
-    msg2 "Applying patch $patch"
-    patch -p1 -i "$patch"
-  done
-}
+source=("${_reponame}::git://github.com/jgarff/${_reponame}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_reponame"
