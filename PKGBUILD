@@ -8,7 +8,7 @@
 pkgname=mutter-781835-workaround
 _pkgname=mutter
 pkgver=3.30.2+7
-pkgrel=3
+pkgrel=4
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -53,7 +53,7 @@ prepare() {
 
   # clutter: Fix offscreen-effect painting of clones
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/117/commits
-  git cherry-pick 5c123a76 || true
+  git cherry-pick 81952da6 || true
   echo 'm' | git mergetool
   git commit -m 'nicer'
 

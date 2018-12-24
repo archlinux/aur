@@ -1,7 +1,7 @@
 pkgbase = mutter-781835-workaround
 	pkgdesc = A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included.
 	pkgver = 3.30.2+7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	groups = gnome
