@@ -11,11 +11,11 @@ conflicts=('wxtoimg' 'xwxtoimg')
 provides=('wxtoimg' 'xwxtoimg')
 case "$CARCH" in
 	x86_64)
-		source=("http://wxtoimg.com/downloads/$pkgname-linux64-$pkgver-1.tar.gz")
+		source=("https://wxtoimgrestored.xyz/downloads/$pkgname-linux64-$pkgver-1.tar.gz")
 		md5sums+=('773dcad83ac853e7ea622debcd99478d')
 		;;
 	i686)
-		source=("http://wxtoimg.com/downloads/$pkgname-linux-$pkgver.tar.gz")
+		source=("https://wxtoimgrestored.xyz/downloads/$pkgname-linux-$pkgver.tar.gz")
 		md5sums+=('278b7dc098188beec20bde2169162279')
 		;;
 esac
