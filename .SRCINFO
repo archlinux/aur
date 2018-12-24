@@ -1,0 +1,18 @@
+pkgbase = buttermanager
+	pkgdesc = Graphical tool to create BTRFS snapshots, balance filesystems and upgrade the system safety
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/egara/buttermanager
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python>=3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3
+	depends = btrfs-progs
+	source = git+https://github.com/egara/buttermanager.git#branch=master
+	md5sums = SKIP
+
+pkgname = buttermanager
+
