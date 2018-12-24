@@ -1,0 +1,15 @@
+post_install() {
+	echo "Please consider review of /etc/dtboost.conf, read comments included there"
+	echo "If you are using systemd, you need to enable dtboost like:"
+	echo "'systemctl enable dtboost.service' and/or 'systemctl start dtboost'"
+	#echo "If you are still using initscripts instead, you need to have dtboost among deamons in /etc/rc.conf, like:"
+	#echo "DAEMONS=(aaaa bbbb dtboost)"
+
+	test -e /etc/dtboost.conf.pacnew && chmod 644 /etc/dtboost.conf.pacnew
+	chmod 644 /etc/dtboost.conf
+}
+
+post_upgrade() {
+	post_install
+	#/bin/true
+}

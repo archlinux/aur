@@ -1,0 +1,19 @@
+Notes specific to ArchLinux
+
+(read also Readme in source tarbal - you can find it in src/ directory....)
+
+
+Please note, that you have to edit configuration file /etc/dtboost.conf  
+to list critical applications you want to reprioritize, and few other things.
+
+After installation try to run the script manually to watch what it prints out:
+$/usr/local/dtboost/dtboost.py
+that way it will run in verbose mode. Init script starts it in quiet mode.
+
+you can see some logs in /var/log/user.log (only if run in quit mode - 'dtboost.py -q'), try:
+$grep dtboost /var/log/user.log
+
+More info also at:
+http://code.google.com/p/dtboost/wiki/dtboostIntroduction
+
+Be tolerant for this is new project, feedback welcomed at tiborb95 at gmail.com
