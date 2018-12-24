@@ -1,0 +1,8 @@
+if [[ $DEVNAME && $(echo $DEVPATH | grep /platform) ]]; then # add links for platform devices
+	test -d $(dirname /dev/$DEVNAME)/by-path || mkdir -p $(dirname /dev/$DEVNAME)/by-path
+	if [[ $(echo $DEVNAME | grep dri) ]]; then # for dri create -card and -render links
+		ln -sf /dev/$DEVNAME /dev/$(dirname $DEVNAME)/by-path/platform-$(echo $DEVPATH | sed -e 's/\//\n/g' | grep '[0-9]:[0-9]' | sed -n '2p')-$(echo $DEVNAME | awk -F / '{print $2}' | sed -e 's/[A-Z]//g' -e 's/[0-9]//g')
+	else # generic
+		ln -sf /dev/$DEVNAME /dev/$(dirname $DEVNAME)/by-path/pci-$(echo $DEVPATH | sed -e 's/\//\n/g' | grep '[0-9]:[0-9]' | sed -n '2p')
+	fi
+fi
