@@ -1,7 +1,7 @@
 pkgbase = clipgrab-qt5
 	pkgdesc = A video downloader and converter for YouTube, Veoh, DailyMotion, MyVideo, ... (Qt5)
 	pkgver = 3.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://clipgrab.org
 	arch = i686
 	arch = x86_64

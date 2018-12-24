@@ -3,7 +3,7 @@
 pkgname=clipgrab-qt5
 pkgver=3.7.2
 _qt5patch=3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A video downloader and converter for YouTube, Veoh, DailyMotion, MyVideo, ... (Qt5)'
 arch=('i686' 'x86_64')
 url='http://clipgrab.org'
@@ -20,6 +20,9 @@ md5sums=('703862f5c80838308a0778922114aa6c'
 prepare() {
   cd clipgrab-$pkgver
   patch -p1 -i ../clipgrab-qt5-${_qt5patch}.patch
+
+  #fix Qt 5.12 build
+  sed -i 's|QtWebKit/QWebView|QtWebKitWidgets/QWebView|' mainwindow.ui
 } 
 
 build() {
