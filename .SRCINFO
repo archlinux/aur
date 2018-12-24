@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 1.5.2
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = telegram-desktop-dev
 	optdepends = libnotify: desktop notifications
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.5.2
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.5.4
 	source = Catch::git+https://github.com/philsquared/Catch.git
 	source = crl::git+https://github.com/telegramdesktop/crl.git
 	source = GSL::git+https://github.com/Microsoft/GSL.git
