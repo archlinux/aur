@@ -15,7 +15,7 @@ license=('Apache')
 depends=("mingw-w64-vulkan-headers")
 makedepends=("mingw-w64-cmake"
              "mingw-w64-vulkan-headers"
-             "mingw-w64-python3"
+             "python"
              "git")
 _commit=a29f808461116a33caed15529fc10a0285dd3d70
 source=(git+https://github.com/KhronosGroup/Vulkan-Loader.git#commit=${_commit}
