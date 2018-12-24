@@ -25,9 +25,10 @@ changelog=
 noextract=()
 validpgpkeys=()
 pkgver() {
-	mkdir -p ${srcdir}/${pkgname}
-	cd ${srcdir}/${pkgname}
-	echo $(hg identify -i)
+#	mkdir -p ${srcdir}/${pkgname}
+#	cd ${srcdir}/${pkgname}
+#	echo $(hg identify -i)
+echo "1.0.1"
 }
 build() {
 	cd $pkgname
