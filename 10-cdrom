@@ -1,0 +1,3 @@
+if [[ $(echo $DEVNAME | 'sr[0-9]') ]]; then
+	ln -sf /dev/$DEVNAME /dev/cdrom
+fi
