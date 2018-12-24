@@ -13,7 +13,7 @@ pkgbase = jaybar
 	depends = wlroots
 	depends = wayland
 	depends = jdk-openjdk>=11
-	source = src/jaybar::hg+https://bitbucket.org/Scoopta/jaybar/src/default/
+	source = src/jaybar/::hg+https://bitbucket.org/Scoopta/jaybar/src/default/
 	sha256sums = SKIP
 
 pkgname = jaybar
