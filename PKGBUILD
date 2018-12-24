@@ -46,6 +46,10 @@ pkgver() {
 build() {
   cd $_pkgname
 
+  # fix -mfpu= flags that break a build e.g. for neon on armv7 due to
+  # basically makepkg.conf being "bad' with default CFLAGS having
+  # -mfpu=vfpv3-d16
+  export CFLAGS=`echo -n $CFLAGS | sed 's/-mfpu=vfpv3-d16/-mfpu=neon-vfpv4/g'`
   export CFLAGS="$CFLAGS -fvisibility=hidden"
   export CXXFLAGS="$CXXFLAGS -fvisibility=hidden"
 
