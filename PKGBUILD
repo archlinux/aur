@@ -27,11 +27,13 @@ pkgver() {
 }
 
 prepare() {
+	pkgver=1.0
 	mkdir -p "${pkgname}-${pkgver}"
 	hg clone ${url} "${pkgname}-${pkgver}"
 }
 
 build() {
+	pkgver=1.0
 	cd "${pkgname}-${pkgver}"
         ./gradlew build
 	./gradlew linuxPackage
@@ -43,6 +45,7 @@ check() {
 }
 
 package() {
+	pkgver=1.0
 	echo "Packaging"
 	mkdir -p "../pkg/${pkgname}/usr/share/java"
 	mkdir -p "../pkg/${pkgname}/usr/bin"
