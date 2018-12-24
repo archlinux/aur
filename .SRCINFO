@@ -1,7 +1,7 @@
 pkgbase = dbxfs
 	pkgdesc = User-space file system for Dropbox
 	pkgver = 1.0.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rianhunter/dbxfs
 	arch = i686
 	arch = x86_64

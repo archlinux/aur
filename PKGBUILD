@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=dbxfs
 pkgver=1.0.40
-pkgrel=1
+pkgrel=2
 pkgdesc="User-space file system for Dropbox"
 arch=('i686' 'x86_64')
 url="https://github.com/rianhunter/dbxfs"
@@ -13,7 +13,7 @@ depends=('fuse2'
         'python-block_tracing>=1.0.1' #'python-block_tracing<2'
         #'python-privy>=6.0' 'python-privy<7'
         'python-privy'
-        #'python-keyring>=15.1.0' 'python-keyring<16'
+        #'python-keyring>=15.1.0' 'python-keyring<17'
         'python-keyrings-alt>=3.1' #'python-keyrings-alt<4'
         'python-sentry_sdk>=0.3') #'python-sentry_sdk<1'
 makedepends=('python-setuptools')
@@ -26,7 +26,7 @@ md5sums=('b61dc4327bbf48266d23ba44bb1fc6ba'
 prepare() {
     cd $pkgname-$pkgver
     patch -Np1 -i "$srcdir/$pkgname.patch"
-    sed -i 's/"keyring>=15.1.0,<16",/"keyring>=15.1.0",/g' setup.py
+    sed -i 's/"keyring>=15.1.0,<17",/"keyring>=15.1.0",/g' setup.py
 }
 
 build() {
