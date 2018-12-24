@@ -7,7 +7,7 @@
 
 pkgname=bitfighter
 pkgver=0.19g
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast-paced team-based outer-space multi-player combat game"
 arch=('i686' 'x86_64')
 url="http://bitfighter.org/"
@@ -20,10 +20,11 @@ depends=(
 	'libvorbis'
 	'libmodplug'
 	'speex'
+	'mpg123'
 )
 makedepends=(
 	'cmake>=3.1.0'
-	'libmariadbclient'
+	'gcc'
 	'glu'
 )
 install=${pkgname}.install
@@ -40,6 +41,7 @@ build() {
     -DUSE_GLES:BOOL=YES \
     -DMASTER_MINIMAL=YES \
     -DCMAKE_BUILD_TYPE=Release \
+    -DLUAJIT_BUILTIN=YES\
     ..
 
   make VERBOSE=1
