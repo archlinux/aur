@@ -8,7 +8,7 @@ _rev='r09'
 _arch='x86_64'
 pkgname="android-${_arch/x86_/x86-}-system-image-${_apilevel}"
 pkgver="${_sdkver}_${_rev}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Android ${_arch} System Image, API-${_apilevel}"
 arch=('any')
 url='https://software.intel.com/en-us/android/tools'
@@ -17,7 +17,9 @@ depends=("android-platform-${_apilevel}")
 optdepends=('qemu' 'libvirt')
 provides=("${pkgname/x86-/x86_}-${_apilevel}")
 conflicts=("${pkgname/x86-/x86_}-${_apilevel}")
-options=('!strip' '!upx')
+#https://git.archlinux.org/pacman.git/commit/?id=1a29744d0da8aa945b96b234574e0d5c80f13b62
+#makepkg: Remove upx and optipng support
+options=('!strip')
 PKGEXT='.pkg.tar'
 source=("http://dl.google.com/android/repository/sys-img/android/sysimg_${_arch}-${_apilevel}_${_rev}.zip"
         "source.properties")
