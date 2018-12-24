@@ -1,0 +1,42 @@
+pkgbase = vk9-git
+	pkgdesc = Direct3D 9 compatibility layer using Vulkan.
+	pkgver = 0.29.0.9.ga5d3536
+	pkgrel = 1
+	url = https://github.com/disks86/VK9
+	arch = x86_64
+	license = zlib
+	makedepends = ninja
+	makedepends = meson>=0.43
+	makedepends = git
+	makedepends = wine>=3.5
+	makedepends = mingw-w64-gcc
+	makedepends = cmake
+	makedepends = mingw-w64-boost
+	makedepends = vulkan-headers
+	makedepends = mingw-w64-eigen
+	makedepends = shaderc
+	makedepends = util-linux
+	makedepends = mingw-w64-pkg-config
+	makedepends = mingw-w64-headers
+	makedepends = mingw-w64-vulkan-devel
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = vk9::git+https://github.com/disks86/VK9.git
+	sha256sums = SKIP
+
+pkgname = vk9-git
+	depends = vulkan-icd-loader
+	depends = wine
+	provides = vk9
+	conflicts = vk9-bin
+	conflicts = vk9
+
+pkgname = lib32-vk9-git
+	pkgdesc = Direct3D 9 compatibility layer using Vulkan. (32-bit)
+	depends = lib32-vulkan-icd-loader
+	depends = wine
+	provides = lib32-vk9
+	conflicts = lib32-vk9-bin
+	conflicts = lib32-vk9
+
