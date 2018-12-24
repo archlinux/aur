@@ -14,8 +14,8 @@ pkgbase = tageditor
 	makedepends = qt5-tools
 	makedepends = mesa
 	makedepends = reflective-rapidjson
-	depends = qtutilities>=5.6.0
-	depends = tagparser>=6.2.0
+	depends = qtutilities
+	depends = tagparser
 	depends = desktop-file-utils
 	depends = xdg-utils
 	depends = qt5-webkit
