@@ -1,0 +1,7 @@
+# arg 1:  the new package version
+post_install() {
+  echo 'Please note:'
+  echo '  Infer does not seem to work with all java environments'
+  echo '  It has been confirmed to work with jre8-openjdk'
+  echo '  For help with java environments see https://wiki.archlinux.org/index.php/java'
+}
