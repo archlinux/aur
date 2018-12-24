@@ -1,15 +1,16 @@
 pkgbase = trimage
 	pkgdesc = A GUI based lossless image compressor.
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://trimage.org
 	arch = any
 	license = custom:MIT
 	depends = python2-pyqt4
-	optdepends = optipng: for crushing png files
-	optdepends = pngcrush: for crushing png files
-	optdepends = advancecomp: for crushing png files
-	optdepends = jpegoptim: for crushing jpeg-files
+	depends = python2-sip-pyqt4
+	depends = optipng
+	depends = pngcrush
+	depends = advancecomp
+	depends = jpegoptim
 	source = trimage-1.0.5.tar.gz::https://github.com/Kilian/Trimage/archive/1.0.5.zip
 	md5sums = 5d596c19c36773d6c94c3633763f603c
 
