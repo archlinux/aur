@@ -10,6 +10,8 @@ pkgbase = jwl
 	depends = wlroots
 	depends = native-proxy
 	depends = jdk-openjdk>=11
+	source = jwl::hg+https://bitbucket.org/Scoopta/jwl/src/default/
+	sha256sums = SKIP
 
 pkgname = jwl
 
