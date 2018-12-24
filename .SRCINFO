@@ -1,5 +1,5 @@
 pkgbase = remotelauncherserver-bin
-	pkgdesc = Remote Launcher is an easy to use tool that enables you to launch applications remotely on your PC via your Android phone.
+	pkgdesc = An easy-to-use tool for launching PC applications remotely via an Android phone
 	pkgver = 0.2.16
 	pkgrel = 3
 	url = http://remotelauncher.sourceforge.net/
