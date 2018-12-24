@@ -3,7 +3,7 @@
 # Contributor: Edvinas Valatka <edacval@gmail.com>
 # Contributor: Adrian Hühn <adrian.huehn@web.de>
 
-pkgname='ccnet-server'
+pkgname=ccnet-server
 pkgver=6.3.4
 pkgrel=2
 pkgdesc="Internal communication framework and user/group management for seafile server"
