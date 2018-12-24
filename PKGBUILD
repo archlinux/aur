@@ -1,14 +1,14 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=xdg-desktop-portal-liri-git
-pkgver=20180802.7.ff7b725
+pkgver=r13.118aecd
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for Liri"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
 depends=('libliri-git' 'xdg-desktop-portal')
-makedepends=('git' 'liri-qbs-shared-git')
+makedepends=('git' 'liri-cmake-shared-git')
 conflicts=('xdg-desktop-portal-liri')
 replaces=('xdg-desktop-portal-liri')
 provides=('xdg-desktop-portal-liri' 'xdg-desktop-portal-impl')
@@ -22,20 +22,31 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd ${srcdir}/${_gitname}
-	echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git rev-list --count HEAD).$(git log -1 --format="%h")"
+	( set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
+
+prepare() {
+	mkdir -p build
 }
 
 build() {
-	cd ${srcdir}/${_gitname}
-	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-	qbs setup-qt /usr/bin/qmake-qt5 qt5
-	qbs config profiles.qt5.baseProfile gcc
-	qbs build --no-install -d build profile:qt5 \
-		modules.lirideployment.prefix:/usr \
-		modules.lirideployment.qmlDir:/usr/lib/qt/qml
+	cd build
+	cmake ../${_gitname} \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_TESTING:BOOL=OFF \
+		-DINSTALL_SYSCONFDIR=/etc \
+		-DINSTALL_LIBDIR=/usr/lib \
+		-DINSTALL_LIBEXECDIR=/usr/lib \
+		-DINSTALL_QMLDIR=/usr/lib/qt/qml \
+		-DINSTALL_PLUGINSDIR=/usr/lib/qt/plugins
+	make
 }
 
 package() {
-	cd ${srcdir}/${_gitname}
-	qbs install -d build --no-build -v --install-root $pkgdir profile:qt5
+	cd build
+	make DESTDIR="$pkgdir" install
 }
