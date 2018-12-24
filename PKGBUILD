@@ -6,7 +6,7 @@
 _reponame=rpi_ws281x
 pkgname=rpi_ws281x-git
 _name=${pkgname%-git}
-pkgver=173.e4a05d6
+pkgver=182.14aacad
 pkgrel=1
 arch=('armv6h' 'armv7h' 'aarch64')
 pkgdesc='Userspace Raspberry Pi PWM library for WS281X LEDs'
@@ -17,15 +17,13 @@ provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/jgarff/${_reponame}"
 source=("${_reponame}::git://github.com/jgarff/${_reponame}.git"
-        0001-Allow-to-adjust-build-directory.patch
-        0002-Cast-pointer-to-uintptr_t-instead-of-uint32_t.patch
-        0003-Update-help-text-for-default-DMA.patch
-        0004-Read-CPU-revision-from-proc-device-tree-on-arm64-clo.patch)
+        '0001-Allow-to-adjust-build-directory.patch'
+        '0002-Update-help-text-for-default-DMA.patch'
+        '0003-Adjust-LED-defs.patch')
 sha256sums=('SKIP'
-            'd98ae1d48bc78e78da9488e1519b3751c1a91311fa4f054714f199aa82084436'
-            '3013ee02539e3d6120ae8c66db6dfff88ddf79ef38bc7badd11ff87ec2015ef7'
-            '4b14dceb422e48036367db0bbcb5fe8152e2b58b2fc213c31775c160512ee45b'
-            'f1fac8430be31860324cb14b047182f88d4ab59b7bc186d16c0a782a68b54966')
+            '26119114589fc5aef067fd1de99b532c27416642aeab9ad1150dcc5badc95b59'
+            '2ca78207da848ac22d7c791c564988c9a0a0c407c710fe9540ac57a580c5df1c'
+            'daaa7f46c988b7b37f5528361648ff2d830d3b929f0be032a9fdc4a751b9829e')
 
 prepare() {
   cd "$srcdir/$_reponame"

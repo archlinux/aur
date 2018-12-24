@@ -1,7 +1,7 @@
-From 5291f6a3694f8622c5548a93b4e3ce65261fd9fc Mon Sep 17 00:00:00 2001
+From 4f4d7b74391db1cdec6b32d085090a9c6a8d4cad Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 1 Nov 2018 04:58:01 +0000
-Subject: [PATCH 1/5] Allow to adjust build directory
+Subject: [PATCH 1/3] Allow to adjust build directory
 
 ---
  SConstruct | 3 ++-
@@ -20,5 +20,5 @@ index 64c14c7..16ac279 100644
 +SConscript('SConscript', variant_dir=GetOption('build'), duplicate=0);
  
 -- 
-2.19.1
+2.20.1
 

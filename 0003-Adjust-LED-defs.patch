@@ -1,0 +1,27 @@
+From c5f98979c69d1bfbe1bba5349103d8872499dee8 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 1 Nov 2018 05:05:06 +0000
+Subject: [PATCH 3/3] Adjust LED defs
+
+---
+ main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/main.c b/main.c
+index f88414a..d15a06c 100644
+--- a/main.c
++++ b/main.c
+@@ -63,8 +63,8 @@ static char VERSION[] = "XX.YY.ZZ";
+ #define STRIP_TYPE              WS2811_STRIP_GBR		// WS2812/SK6812RGB integrated chip+leds
+ //#define STRIP_TYPE            SK6812_STRIP_RGBW		// SK6812RGBW (NOT SK6812RGB)
+ 
+-#define WIDTH                   8
+-#define HEIGHT                  8
++#define WIDTH                   (24 + 16 + 6 + 1)
++#define HEIGHT                  1
+ #define LED_COUNT               (WIDTH * HEIGHT)
+ 
+ int width = WIDTH;
+-- 
+2.20.1
+

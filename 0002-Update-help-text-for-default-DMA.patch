@@ -1,7 +1,7 @@
-From aef253cb667e4cc7352a3a8be8caafb8d4afd25e Mon Sep 17 00:00:00 2001
+From 4bba7f43328617ae742ed342e16d9fc5d8f1e0fe Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 1 Nov 2018 05:02:52 +0000
-Subject: [PATCH 3/5] Update help text for default DMA
+Subject: [PATCH 2/3] Update help text for default DMA
 
 ---
  main.c | 2 +-
@@ -21,5 +21,5 @@ index 85ecd67..f88414a 100644
  				"                 If omitted, default is 18 (PWM0)\n"
  				"-i (--invert)  - invert pin output (pulse LOW)\n"
 -- 
-2.19.1
+2.20.1
 
