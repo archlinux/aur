@@ -14,7 +14,7 @@ license=('zlib')
 options=(!strip !buildflags staticlibs)
 makedepends=('ninja' 'meson>=0.43' 'git' 'wine>=3.5' 'shaderc' 'util-linux' 'cmake'
 		'mingw-w64-cmake' 'mingw-w64-boost' 'mingw-w64-vulkan-headers'
-		'mingw-w64-eigen' 'mingw-w64-vulkan-loader' 'mingw-w64-spirv-headers')
+		'mingw-w64-eigen' 'mingw-w64-vulkan-loader' 'spirv-headers')
 source=($project::'git+https://github.com/disks86/VK9.git')
 sha256sums=('SKIP')
 
@@ -29,7 +29,7 @@ prepare(){
 
   cat > "$srcdir/fix-build.sh" << EOF
 #!/usr/bin/env bash
-sed -i'' -E 's/-isystem\/usr\/[^-]+-w64-mingw32\/include//g' build.ninja
+sed -i'' -E 's/-isystem\/usr\/[^-]+-w64-mingw32\/include/-I\/usr\/include\/spirv\/unified1/g' build.ninja
 EOF
   chmod +x "$srcdir/fix-build.sh"
 
@@ -38,15 +38,11 @@ EOF
 #!/usr/bin/env bash
 export BOOST_INCLUDEDIR=/usr/x86_64-w64-mingw32/include
 export BOOST_LIBRARYDIR=$srcdir/boost64
-export CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES=/usr/x86_64-w64-mingw32/include/.
-export CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES=/usr/x86_64-w64-mingw32/include/.
 EOF
   cat > dep32/boost.sh << EOF
 #!/usr/bin/env bash
 export BOOST_INCLUDEDIR=/usr/i686-w64-mingw32/include
 export BOOST_LIBRARYDIR=$srcdir/boost32
-export CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES=/usr/i686-w64-mingw32/include/.
-export CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES=/usr/i686-w64-mingw32/include/.
 EOF
   cat > dep64/eigen.pc << EOF
 # Package Information for pkg-config
