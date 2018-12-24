@@ -8,7 +8,7 @@
 pkgname=mutter-781835-workaround
 _pkgname=mutter
 pkgver=3.30.2+7
-pkgrel=4
+pkgrel=5
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -53,9 +53,9 @@ prepare() {
 
   # clutter: Fix offscreen-effect painting of clones
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/117/commits
-  git cherry-pick 81952da6 || true
-  echo 'm' | git mergetool
-  git commit -m 'nicer'
+  git cherry-pick --strategy=recursive -Xtheirs 81952da6 || true
+  git rm clutter/tests/conform/meson.build
+  git commit -m "fix"
 
   # Sync to the hardware refresh rate, not just 60.00Hz [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/171/commits
@@ -75,7 +75,6 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281/commits
   git cherry-pick 8234efc0
   git cherry-pick d2fbb9ff
-
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
 
