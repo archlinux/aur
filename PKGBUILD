@@ -1,7 +1,7 @@
 # Maintainer: skydrome <skydrome at@at proton mail dot com>
 # Contributors: Thynix
 
-_fred=#tag=build01481
+_fred=#tag=build01483
 
 _wot=#branch=next
 _keyutils=#tag=v5026
@@ -14,8 +14,8 @@ _plugins=('WebOfTrust' 'UPnP' 'KeyUtils')
 BUILDENV+=('!check')
 
 pkgname=freenet
-pkgver=0.7.5.1481
-pkgrel=2
+pkgver=0.7.5.1483
+pkgrel=1
 pkgdesc="An encrypted network without censorship"
 url="https://freenetproject.org"
 license=('GPL2')
