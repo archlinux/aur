@@ -22,6 +22,9 @@ changelog=
 noextract=()
 validpgpkeys=()
 
+pkgver() {
+	echo $(curl -s https://api.bitbucket.org/2.0/repositories/Scoopta/jaybar/commits/tip | grep -o '"hash": "[0-9a-f]*[0-9a-f]"' | head -n1 | grep -o "[0-9a-f]*[0-9a-f]" | tail -n1)
+}
 
 prepare() {
 	mkdir -p "${pkgname}-${pkgver}"
