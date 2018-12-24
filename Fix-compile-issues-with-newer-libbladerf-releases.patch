@@ -1,0 +1,39 @@
+diff --git a/src/CellSearch.cpp b/src/CellSearch.cpp
+index 8df062b..22fd03d 100644
+--- a/src/CellSearch.cpp
++++ b/src/CellSearch.cpp
+@@ -862,7 +862,7 @@ int config_bladerf(
+       if (dev!=NULL) {bladerf_close(dev); dev = NULL; return(-1);}
+   }
+ 
+-  unsigned int actual_frequency;
++  long unsigned int actual_frequency;
+   status = bladerf_get_frequency(dev, BLADERF_MODULE_RX, &actual_frequency);
+   if (status != 0) {
+       printf("config_bladerf bladerf_get_frequency: Failed to read back frequency: %s\n",
+diff --git a/src/LTE-Tracker.cpp b/src/LTE-Tracker.cpp
+index d2bcf28..ff586ce 100644
+--- a/src/LTE-Tracker.cpp
++++ b/src/LTE-Tracker.cpp
+@@ -954,7 +954,7 @@ int config_bladerf(
+       if (dev!=NULL) {bladerf_close(dev); dev = NULL; return(-1);}
+   }
+ 
+-  unsigned int actual_frequency;
++  long unsigned int actual_frequency;
+   status = bladerf_get_frequency(dev, BLADERF_MODULE_RX, &actual_frequency);
+   if (status != 0) {
+       printf("config_bladerf bladerf_get_frequency: Failed to read back frequency: %s\n",
+diff --git a/src/capbuf.cpp b/src/capbuf.cpp
+index 68d6b95..c8c7ae5 100644
+--- a/src/capbuf.cpp
++++ b/src/capbuf.cpp
+@@ -87,7 +87,7 @@ int open_bladerf_board(bladerf_device * & bladerf_dev, unsigned int freq_hz, uns
+     return(-1);
+   }
+ 
+-  status = bladerf_sync_config(bladerf_dev, BLADERF_MODULE_RX, BLADERF_FORMAT_SC16_Q11, 2, buffer_size, 1, 3500);
++  status = bladerf_sync_config(bladerf_dev, BLADERF_RX_X1, BLADERF_FORMAT_SC16_Q11, 2, buffer_size, 1, 3500);
+   if (status != 0) {
+      printf("open_bladerf_board bladerf_sync_config: Failed to configure sync interface: %s\n",
+              bladerf_strerror(status));
