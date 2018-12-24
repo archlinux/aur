@@ -14,7 +14,7 @@ url="https://www.khronos.org/vulkan/"
 groups=("mingw-w64-vulkan-devel")
 license=('Apache')
 depends=("mingw-w64-crt")
-makedepends=("mingw-w64-cmake" "mingw-w64-gcc" "git")
+makedepends=("mingw-w64-cmake" "git")
 _commit=114c3546e195819bd53a34b39f5194b2989a5b12
 source=(git+https://github.com/KhronosGroup/Vulkan-Headers.git#commit=${_commit})
 sha256sums=('SKIP')
@@ -24,14 +24,8 @@ _build() {
   [[ -d ${srcdir}/build-$1 ]] && rm -rf ${srcdir}/build-$1
   mkdir -p ${srcdir}/build-$1 && cd ${srcdir}/build-$1
 
-  CFLAGS+=" -D__STDC_FORMAT_MACROS" \
-  CPPFLAGS+=" -D__STDC_FORMAT_MACROS" \
-  CXXFLAGS+=" -D__USE_MINGW_ANSI_STDIO -D__STDC_FORMAT_MACROS -fpermissive" \
-  MSYS2_ARG_CONV_EXCL="-DCMAKE_INSTALL_PREFIX=" \
-  /usr/$1-w64-mingw32/bin/cmake \
-    -G"MSYS Makefiles" \
+  $1-w64-mingw32-cmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr/$1-w64-mingw32 \
     ../Vulkan-Headers
 
   make
@@ -46,7 +40,7 @@ _package() {
   cd ${srcdir}/build-$1
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 "${srcdir}/Vulkan-Headers/LICENSE.TXT" "${pkgdir}/usr/$1-w64-mingw32/share/licenses/vulkan-headers/LICENSE"
+  install -Dm644 "${srcdir}/Vulkan-Headers/LICENSE.txt" "${pkgdir}/usr/$1-w64-mingw32/share/licenses/vulkan-headers/LICENSE"
 }
 
 package() {

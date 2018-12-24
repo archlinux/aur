@@ -7,7 +7,6 @@ pkgbase = mingw-w64-vulkan-headers
 	groups = mingw-w64-vulkan-devel
 	license = Apache
 	makedepends = mingw-w64-cmake
-	makedepends = mingw-w64-gcc
 	makedepends = git
 	depends = mingw-w64-crt
 	options = !strip
