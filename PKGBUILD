@@ -1,7 +1,7 @@
 # Maintainer: Bailey Kasin <bailey@gingertechnology.net>
 pkgname=libdtrace-ctf
-pkgver=0.8.1
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 pkgdesc="libdtrace-ctf is the Compact Type Format library used by DTrace on Linux"
 arch=('x86_64')
 url="https://github.com/oracle/libdtrace-ctf/"
@@ -11,8 +11,8 @@ makedepends=(
         'zlib'
 )
 
-source=("https://github.com/oracle/libdtrace-ctf/archive/0.8.1.tar.gz")
-md5sums=('a1aa6849af3874a49be532bfd98f40bd')
+source=("https://github.com/oracle/libdtrace-ctf/archive/1.1.0.tar.gz")
+md5sums=('6e07a4982a82e1799d467069a83e8c3b')
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
