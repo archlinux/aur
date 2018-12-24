@@ -1,8 +1,9 @@
 pkgbase = nftables-geoip-db
 	pkgdesc = GeoIP Database for nftables
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://dev.maxmind.com/geoip/geoip2/geolite2/
+	install = nft_geoip.install
 	arch = any
 	license = BSD
 	license = GPL
@@ -15,7 +16,7 @@ pkgbase = nftables-geoip-db
 	sha256sums = SKIP
 	sha256sums = 216cb5a8c018c9db1cbff6b8a788d71d08f1d23dbb4ae60d318fc62fab1a2b46
 	sha256sums = 4f9180c17ea45c53da3f4804e98750a7f610510326bd78fd7e52e1f453aeda38
-	sha256sums = f2b62555d00d30baf7b2a3386d895bbd7a762123cf7342d3d50364cfb4587795
+	sha256sums = 8481a093eb50f73e488668e652eaf0f4a8e2073362565a784d901fb632d0d83a
 
 pkgname = nftables-geoip-db
 

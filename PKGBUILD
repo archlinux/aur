@@ -1,6 +1,6 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=nftables-geoip-db
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="GeoIP Database for nftables"
 arch=('any')
@@ -15,7 +15,8 @@ source=("http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV
 sha256sums=('SKIP'
             '216cb5a8c018c9db1cbff6b8a788d71d08f1d23dbb4ae60d318fc62fab1a2b46'
             '4f9180c17ea45c53da3f4804e98750a7f610510326bd78fd7e52e1f453aeda38'
-            'f2b62555d00d30baf7b2a3386d895bbd7a762123cf7342d3d50364cfb4587795')
+            '8481a093eb50f73e488668e652eaf0f4a8e2073362565a784d901fb632d0d83a')
+install=nft_geoip.install
 
 prepare() {
     cd "${srcdir}"
@@ -25,6 +26,7 @@ prepare() {
 
 package() {
     cd "${srcdir}"/GeoLite2-Country-CSV_*
+    install -d -m 755 "${pkgdir}"/etc/nftables.d/geoip
     install -d -m 755 "${pkgdir}/usr/share/doc/${pkgname}" "${pkgdir}"/usr/share/nft_geoip
     perl "${srcdir}"/nft_geoip_build -D "${pkgdir}"/usr/share/nft_geoip
     install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${srcdir}"/README

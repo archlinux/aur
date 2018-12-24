@@ -43,5 +43,31 @@ add set ip filter geo_IN { type ipv4_addr; flags interval; elements = $geoip4_is
 # create rule to accept connection from IP address in the set
 add rule ip filter INPUT ct state new tcp dport ssh ip saddr @geo_IN accept
 
-# alternate form without creating a set
+# alternate form without creating a set (anonymous set)
 # add rule ip filter INPUT ct state new tcp dport ssh ip saddr $geoip4_iso_country_IN accept
+
+
+Auto-update GeoIP SETs
+----------------------
+
+When nftables-geoip-db is updated, IP address ranges of a country may have changed.
+
+So you need to update your active nftables sets with up-to-date IP addresses.
+
+You can place file with extension .update.nft in /etc/nftables.d/geoip directory.
+
+This file should contain nft rules which change the contents of a set with new IP address ranges.
+
+When nftables-geoip-db package is updated, it will automatically run these rules.
+
+Example:
+--------
+$ cat /etc/nftables.d/geoip/IN.update.nft
+#!/usr/bin/nft -f
+
+# include the country specific file
+include "/usr/share/nft_geoip/IN.ipv4"
+
+# flush and update the set containing IP addresses of India
+flush set ip filter geo_IN
+add element ip filter geo_IN $geoip4_iso_country_IN
