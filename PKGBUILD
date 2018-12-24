@@ -6,7 +6,7 @@
 _realname=Vulkan-Loader
 pkgname=("mingw-w64-vulkan-loader")
 pkgver=1.1.96
-pkgrel=2
+pkgrel=3
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (mingw-w64)'
 arch=('any')
 url="https://www.khronos.org/vulkan/"
@@ -53,9 +53,26 @@ build() {
 _package() {
   cd ${srcdir}/build-$1
   make DESTDIR="${pkgdir}" install
+  
+  install -d "$pkgdir/usr/$1-w64-mingw32/lib/pkgconfig"
+  cat > "$pkgdir/usr/$1-w64-mingw32/lib/pkgconfig/vulkan-1.pc" << EOF
+# Package Information for pkg-config
+
+prefix=/usr/$1-w64-mingw32
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Vulkan-1
+Description: Vulkan loader
+Version: $pkgver
+Libs: -L${exec_prefix}/lib -lvulkan-1
+Cflags: -I${includedir}
+
+EOF
 
   install -Dm644 "${srcdir}/${_realname}/LICENSE.txt" "${pkgdir}/usr/$1-w64-mingw32/share/licenses/vulkan-loader/LICENSE"
-  $1-w64-mingw32-strip -g "$pkgdir"/usr/$1-w64-mingw32/lib/*.a
+  $1-w64-mingw32-strip -g "$pkgdir"/usr/$1-w64-mingw32/lib/*.*
 }
 
 package() {
