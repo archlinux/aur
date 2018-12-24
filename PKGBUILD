@@ -16,7 +16,7 @@ source=("https://github.com/simon-weber/gmusicapi/archive/$pkgver.tar.gz")
 
 package() {
 	cd "${pkgname##python-}-$pkgver"
-	python2 setup.py install --root="$pkgdir" --optimize=1
+	python setup.py install --root="$pkgdir" --optimize=1
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
