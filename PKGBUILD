@@ -1,4 +1,4 @@
-# Maintainer: Igor Visi <salut@igorvisi.xyz>
+# Maintainer: Igor Visi <mail@igorvisi.xyz>
 
 _npmname=verdaccio
 _npmver=3.8.5
@@ -21,6 +21,8 @@ package() {
   mkdir -p $_npmdir
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  install -Dm644 "$pkgdir"/dropbox.service "$pkgdir"/usr/lib/systemd/user/dropbox.service
+  install -Dm644 "$pkgdir"/dropbox@.service "$pkgdir"/usr/lib/systemd/user/dropbox@.service
 }
 
 # vim:set ts=2 sw=2 et:

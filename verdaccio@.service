@@ -1,0 +1,12 @@
+[Unit]
+Description=private npm server
+
+[Service]
+ExecStart=/usr/bin/verdaccio
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+User=%I
+
+[Install]
+WantedBy=default.target
