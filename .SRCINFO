@@ -12,6 +12,8 @@ pkgbase = jgtk+
 	depends = native-proxy
 	depends = jwl
 	depends = jdk-openjdk>=11
+	source = jgtk+::hg+https://bitbucket.org/Scoopta/jgtk/src/default/
+	sha256sums = SKIP
 
 pkgname = jgtk+
 
