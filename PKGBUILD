@@ -2,6 +2,7 @@
 pkgname=jaybar
 pkgver=51a9d7678d1b
 pkgrel=1
+srcdir="./src/"
 epoch=
 pkgdesc="Status bar for the Sway Compositor"
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('GPL3')
 groups=()
 depends=('native-proxy' 'jwl' 'jgtk+' 'jlibc' 'wlroots'  'wayland' 'jdk-openjdk>=11')
 makedepends=('mercurial')
-source=("src/jaybar/::hg+$url")
+source=("${srcdir}::hg+$url")
 sha256sums=('SKIP')
 checkdepends=()
 optdepends=()
