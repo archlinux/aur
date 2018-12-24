@@ -8,14 +8,14 @@
 
 _name=gajim
 pkgname="$_name-git"
-pkgver=1.0.0.beta1.r884.ga1b798b8f
+pkgver=1.0.0.beta1.r977.gc63e32634
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
 url="https://gajim.org/"
 license=('GPL3')
 depends=('python-gobject' 'python-pyopenssl' 'hicolor-icon-theme'
-         'python-pyasn1' 'python-nbxmpp' 'python-cairo' 'python-keyring'
+         'python-pyasn1' 'python-nbxmpp-git' 'python-cairo' 'python-keyring'
          'python-distro' 'python-cssutils' 'python-precis_i18n')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-dbus: for gajim-remote and zeroconf support'
