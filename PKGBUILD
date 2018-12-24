@@ -2,7 +2,7 @@
 
 pkgname=dtrace-utils
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="DTrace-utils contains the Userspace portion of the DTrace port to Linux"
 arch=('x86_64')
 url="https://github.com/oracle/dtrace-utils"
@@ -54,5 +54,5 @@ build() {
 package() {
         cd "$srcdir/$pkgname-$pkgver"
 
-        sudo make install
+        make DESTDIR="$pkgdir/" install
 }

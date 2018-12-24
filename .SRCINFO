@@ -1,7 +1,7 @@
 pkgbase = dtrace-utils
 	pkgdesc = DTrace-utils contains the Userspace portion of the DTrace port to Linux
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/oracle/dtrace-utils
 	arch = x86_64
 	license = UPL
