@@ -11,7 +11,7 @@ license=('GPL3')
 groups=()
 depends=('native-proxy' 'jwl' 'jgtk+' 'jlibc' 'wlroots'  'wayland' 'jdk-openjdk>=11')
 makedepends=('mercurial')
-source=("${srcdir}/${pkgname}::hg+$url")
+source=("${pkgname}::hg+$url")
 sha256sums=('SKIP')
 checkdepends=()
 optdepends=()
@@ -25,10 +25,9 @@ changelog=
 noextract=()
 validpgpkeys=()
 pkgver() {
-#	mkdir -p ${srcdir}/${pkgname}
-#	cd ${srcdir}/${pkgname}
-#	echo $(hg identify -i)
-echo "1.0.1"
+	mkdir -p ${srcdir}/${pkgname}
+	cd ${srcdir}/${pkgname}
+	echo $(hg identify -i)
 }
 build() {
 	cd $pkgname
