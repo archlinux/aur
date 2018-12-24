@@ -1,7 +1,7 @@
 # Maintainer: DJ Griffin <thewisenoob@gmail.com>
 
 pkgname=omp-git
-pkgver=0.0.21
+pkgver=0.0.21.1
 pkgrel=1
 pkgdesc='Open-Source Music Player'
 url='https://openmusicplayer.com/'
@@ -12,7 +12,7 @@ depends=(gstreamer gst-libav gst-plugins-bad gst-plugins-base
          libclastfm libconfig sqlite taglib)
 makedepends=(git)
 provides=('omp-git')
-conflicts=('omp' 'omp-git')
+conflicts=('omp' 'omp-git' )
 source=("$pkgname::git+https://github.com/TheWiseNoob/OpenMusicPlayer.git")
 sha256sums=('SKIP')
 
@@ -22,11 +22,11 @@ pkgver() {
 }
 
 build() {
-  cd "${pkgname}"
+  cd "$pkgname-$pkgver"
   make
 }
 
 package() {
-  cd "${pkgname}"
-  make install DESTDIR=${pkgdir}
+  cd "$pkgname-$pkgver"
+  make DESTDIR=${pkgdir} install
 }
