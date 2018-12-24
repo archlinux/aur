@@ -11,7 +11,7 @@ license=('GPL3')
 groups=()
 depends=('native-proxy' 'jwl' 'jgtk+' 'jlibc' 'wlroots'  'wayland' 'jdk-openjdk>=11')
 makedepends=('mercurial')
-source=("${srcdir}::hg+$url")
+source=("${srcdir}/${pkgname}::hg+$url")
 sha256sums=('SKIP')
 checkdepends=()
 optdepends=()
@@ -25,7 +25,7 @@ changelog=
 noextract=()
 validpgpkeys=()
 pkgver() {
-	cd $pkgname
+	cd ${srcdir}/$pkgname
 	echo $(hg identify -i)
 }
 build() {
