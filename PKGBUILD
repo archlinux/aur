@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=xash3d-hlsdk
-pkgver=r320.e0cf84d
+pkgver=r321.59269b1
 pkgrel=1
 pkgdesc="Half-Life SDK from original Xash3D engine"
 arch=('i686' 'x86_64')

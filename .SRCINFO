@@ -1,6 +1,6 @@
 pkgbase = xash3d-hlsdk
 	pkgdesc = Half-Life SDK from original Xash3D engine
-	pkgver = r320.e0cf84d
+	pkgver = r321.59269b1
 	pkgrel = 1
 	url = http://xash.su/
 	arch = i686
