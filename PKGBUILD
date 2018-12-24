@@ -2,7 +2,7 @@
 pkgname=jaybar
 pkgver=51a9d7678d1b
 pkgrel=1
-srcdir="./src/"
+srcdir="src"
 epoch=
 pkgdesc="Status bar for the Sway Compositor"
 arch=('x86_64')
@@ -25,7 +25,8 @@ changelog=
 noextract=()
 validpgpkeys=()
 pkgver() {
-	cd ${srcdir}/$pkgname
+	mkdir -p ${srcdir}/${pkgname}
+	cd ${srcdir}/${pkgname}
 	echo $(hg identify -i)
 }
 build() {
