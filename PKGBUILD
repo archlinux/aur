@@ -14,7 +14,10 @@ md5sums=('8d02ef80b6478f33ef9bd8849c867cf3')
 
 build() {
   cd $startdir/src/$pkgname-$pkgver
-  make || return 1
-  install -Dm755 webbench $pkgdir/usr/bin/webbench
+  CPPFLAGS=-I/usr/include/tirpc make || return 1
 }
 
+package() {
+  cd $startdir/src/$pkgname-$pkgver
+  install -Dm755 webbench $pkgdir/usr/bin/webbench
+}
