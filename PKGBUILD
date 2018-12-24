@@ -2,7 +2,7 @@
 # Contributor: redfish <redfish at galactica.pw>
 
 pkgname=bitcoin-unlimited
-pkgver=1.5.0.2
+pkgver=1.5.1.0
 _pkgbase=BitcoinUnlimited-bucash${pkgver}
 pkgrel=1
 pkgdesc='Bitcoin Unlimited Cash (BCH) versions of Bitcoind, bitcoin-cli, 
@@ -16,7 +16,7 @@ makedepends=('boost' 'qt5-tools')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-unlimited-git' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 source=("https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/bucash${pkgver}.tar.gz")
-sha256sums=('79d4befcc074389650288d23b6d8391ba69f5267772bb6d844faff79050f15cf')
+sha256sums=('0c10b7b0165ddef557734ffe52cb2036226e94a3c7c92573af58638916f610d2')
 install=$pkgname.install
 
 build() {
