@@ -1,0 +1,13 @@
+pkgbase = python-spacy-en_core_web_md
+	pkgdesc = English multi-task CNN trained on OntoNotes, with GloVe vectors trained on Common Crawl for spaCy
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://spacy.io/models/en#section-en_core_web_md
+	arch = any
+	license = CC BY-SA 3.0
+	makedepends = python-setuptools
+	source = https://github.com/explosion/spacy-models/releases/download/en_core_web_md-2.0.0/en_core_web_md-2.0.0.tar.gz
+	sha256sums = ec77172fd76e21766c0aeaac2daf2c9d314a6f88f45d209d43f5bfa0ea2bafac
+
+pkgname = python-spacy-en_core_web_md
+
