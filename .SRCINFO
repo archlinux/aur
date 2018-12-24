@@ -1,6 +1,6 @@
 pkgbase = jaybar
 	pkgdesc = Status bar for the Sway Compositor
-	pkgver = 1.0.51a9d7678d1b752ce40164d40ea47a210375388f
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://bitbucket.org/Scoopta/jaybar/src/default/
 	arch = x86_64
