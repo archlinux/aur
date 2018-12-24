@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=python2-influxdb
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="Python client for InfluxDB"
 arch=(any)
@@ -11,7 +11,7 @@ optdepends=(influxdb python2-pandas)
 #checkdepends=(python2-nose python2-mock python2-requests-mock python2-pandas) - disabled due to failure
 options=(!emptydirs)
 source=("https://github.com/influxdb/influxdb-python/archive/v$pkgver.tar.gz")
-sha256sums=('620de85bcca5207b06ec1565884b6d10b4be01d579a78e08b1e922f453fdac05')
+sha256sums=('e162e0a3005ddff8c861c4d1849bcc9b18d41b67b4ac727e86c34fc7f05b7b7b')
 
 build() {
   cd "$srcdir/influxdb-python-$pkgver"

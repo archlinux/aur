@@ -1,6 +1,6 @@
 pkgbase = python2-influxdb
 	pkgdesc = Python client for InfluxDB
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/influxdb/influxdb-python
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python2-influxdb
 	optdepends = influxdb
 	optdepends = python2-pandas
 	options = !emptydirs
-	source = https://github.com/influxdb/influxdb-python/archive/v5.2.0.tar.gz
-	sha256sums = 620de85bcca5207b06ec1565884b6d10b4be01d579a78e08b1e922f453fdac05
+	source = https://github.com/influxdb/influxdb-python/archive/v5.2.1.tar.gz
+	sha256sums = e162e0a3005ddff8c861c4d1849bcc9b18d41b67b4ac727e86c34fc7f05b7b7b
 
 pkgname = python2-influxdb
 
