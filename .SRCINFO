@@ -1,0 +1,26 @@
+pkgbase = wesnoth-1.2
+	pkgdesc = Turn-based strategy game on a fantasy world (for old replays)
+	pkgver = 1.2.8+dev
+	pkgrel = 1
+	url = https://www.wesnoth.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc43
+	depends = sdl
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = freetype2
+	options = !emptydirs
+	source = wesnoth-1.2.desktop
+	source = wesnothd-1.2.tmpfiles.conf
+	source = wesnothd-1.2.service
+	source = wesnoth-1.2.appdata.xml
+	md5sums = c3ba9b84c818bba105b0ea236b1d3744
+	md5sums = d23cafae5c732d6bf10a836bdabd15b9
+	md5sums = a1831302d36c5d5ddffcf76c42483e1d
+	md5sums = b6dfb0e146e6ac3a265487b6e32e9766
+
+pkgname = wesnoth-1.2
+
