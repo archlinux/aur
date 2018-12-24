@@ -1,27 +1,43 @@
-pkgbase = python2-gmusicapi
+pkgbase = python-gmusicapi
 	pkgdesc = An unofficial client library for Google Music
-	pkgver = 11.0.4
+	pkgver = 11.1.1
 	pkgrel = 1
 	url = https://github.com/simon-weber/gmusicapi
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	depends = python2-validictory>=0.8.0
-	depends = python2-decorator>=3.3.1
-	depends = mutagen>=1.34
-	depends = python2-requests>=1.1.0
-	depends = python2-dateutil>=1.3
-	depends = python2-proboscis>=1.2.5.1
-	depends = python2-protobuf>=3.0.0
-	depends = python2-oauth2client>=1.1
-	depends = python2-mock>=0.7.0
-	depends = python2-appdirs>=1.1.0
-	depends = python2-gpsoauth>=0.2.0
-	depends = python2-mechanicalsoup>=0.4.0
-	depends = python2-six>=1.9.0
-	depends = python2-future
-	source = https://github.com/simon-weber/gmusicapi/archive/11.0.4.tar.gz
-	md5sums = b5d7d4c4e609658b8a594e2d5f2a938e
+	depends = mutagen
+	source = https://github.com/simon-weber/gmusicapi/archive/11.1.1.tar.gz
+	md5sums = 0414c5361e4317a5e126372d1a22d9f6
+
+pkgname = python-gmusicapi
+	depends = python-validictory
+	depends = python-decorator
+	depends = python-requests
+	depends = python-dateutil
+	depends = python-proboscis
+	depends = python-protobuf
+	depends = python-oauth2client
+	depends = python-mock
+	depends = python-appdirs
+	depends = python-gpsoauth
+	depends = python-mechanicalsoup
+	depends = python-six
+	depends = python-future
 
 pkgname = python2-gmusicapi
+	depends = python2-validictory
+	depends = python2-decorator
+	depends = python2-requests
+	depends = python2-dateutil
+	depends = python2-proboscis
+	depends = python2-protobuf
+	depends = python2-oauth2client
+	depends = python2-mock
+	depends = python2-appdirs
+	depends = python2-gpsoauth
+	depends = python2-mechanicalsoup
+	depends = python2-six
+	depends = python2-future
 
