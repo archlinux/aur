@@ -2,7 +2,7 @@
 # Contributor: Eduardo Sánchez Muñoz
 pkgname=nlohmann-json-git
 _name="${pkgname%-git}"
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Header-only JSON library for Modern C++'
 url='https://github.com/nlohmann/json'
@@ -21,15 +21,22 @@ pkgver() {
 	printf %s "${v//-/+}"
 }
 
+_cmake_flags=(
+	-DCMAKE_BUILD_TYPE=Release
+	-DCMAKE_INSTALL_PREFIX=/usr
+)
+
 build() {
 	mkdir build
 	cd build
-	cmake ../json -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release 
+	cmake ../json "${_cmake_flags[@]}" -DBUILD_TESTING=OFF
 	make
 }
 
 check() {
 	cd build
+	cmake ../json "${_cmake_flags[@]}" -DBUILD_TESTING=ON
+	make
 	ctest --output-on-failure
 }
 
