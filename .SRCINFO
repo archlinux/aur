@@ -7,6 +7,8 @@ pkgbase = native-proxy
 	license = GPL3
 	makedepends = mercurial
 	depends = jdk-openjdk>=11
+	source = native-proxy::hg+https://bitbucket.org/Scoopta/native-proxy/src/default/
+	sha256sums = SKIP
 
 pkgname = native-proxy
 
