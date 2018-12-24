@@ -1,0 +1,14 @@
+pkgbase = remotelauncherserver-bin
+	pkgdesc = Remote Launcher is an easy to use tool that enables you to launch applications remotely on your PC via your Android phone.
+	pkgver = 0.2.16
+	pkgrel = 3
+	url = http://remotelauncher.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	source = http://sourceforge.net/projects/remotelauncher/files/0.2.16/remotelauncherserver-0.2.16.tar.gz
+	sha1sums = e8034856ae9b51455efad40f51cf15f3548b8cae
+
+pkgname = remotelauncherserver-bin
+
