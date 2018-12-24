@@ -1,0 +1,57 @@
+[Unit]
+Description=Wesnoth-1.0 Server Daemon
+Documentation=https://www.wesnoth.org/wiki/ServerAdministration
+Documentation=man:wesnothd-1.0(6)
+After=network.target
+# They use by default the same port. Can be changed with -p
+Conflicts=wesnothd.service wesnothd-1.2.service wesnothd-1.4.service wesnothd-1.6.service wesnothd-1.8.service wesnothd-1.10.service wesnothd-1.12.service wesnothd-1.14.service wesnothd-devel.service wesnothd-git.service
+
+[Service]
+# Ensures that the pipe will be recreated with the restrictive permissions
+ExecStopPre=/usr/bin/rm -f /run/wesnothd-1.0/socket
+
+ExecStart=/usr/bin/wesnothd-1.0 --threads 5
+# You can use -c to specify the same configuration file
+# which is used when starting wensothd from the wesnoth UI
+# (and make sure wesnothd has the required access permissions)
+
+SyslogIdentifier=Wesnothd-1.0
+WorkingDirectory=/run/wesnothd-1.0
+User=nobody
+Group=nobody
+
+# remove remaining pipe
+ExecStopPost=/usr/bin/rm -f /run/wesnothd-1.0/socket
+
+# Additional security-related features
+ProtectSystem=strict
+ProtectHome=yes
+# When specifying with the -c option a file in the home directory,
+# set ProtectHome=read-only and whitelist the directory or file with
+# ReadWritePaths.
+# Alternatively, set ProtectHome=tmpfs and BindPaths=
+ReadWritePaths=/run/wesnothd-1.0
+InaccessiblePaths=/opt
+InaccessiblePaths=/usr/share
+InaccessiblePaths=/usr/include
+InaccessiblePaths=/usr/src
+InaccessiblePaths=/usr/local
+InaccessiblePaths=/boot
+InaccessiblePaths=/mnt
+InaccessiblePaths=/srv
+PrivateTmp=yes
+PrivateDevices=yes
+NoNewPrivileges=yes
+RestrictAddressFamilies=AF_INET AF_UNIX
+RestrictRealtime=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+ProtectControlGroups=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+
+
+[Install]
+WantedBy=multi-user.target

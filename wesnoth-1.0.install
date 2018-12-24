@@ -1,0 +1,4 @@
+post_install() {
+  echo "==> This version was built without zipios"
+  echo "==> If you cannot load an ancient save, try to unzip it first"
+}

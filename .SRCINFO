@@ -1,0 +1,30 @@
+pkgbase = wesnoth-1.0
+	pkgdesc = Turn-based strategy game on a fantasy world (historical version)
+	pkgver = 1.0.2+dev
+	pkgrel = 1
+	url = https://www.wesnoth.org
+	install = wesnoth-1.0.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = freetype2
+	options = !emptydirs
+	source = wesnoth-1.0.desktop
+	source = wesnothd-1.0.tmpfiles.conf
+	source = wesnothd-1.0.service
+	source = wesnoth-1.0.appdata.xml
+	source = wesnoth-icon-64x64.png::https://raw.githubusercontent.com/wesnoth/wesnoth/1.12/icons/wesnoth-icon.png
+	source = wesnoth-icon-128x128.png::https://raw.githubusercontent.com/wesnoth/wesnoth/1.12/icons/wesnoth-icon-Mac.png
+	md5sums = 29dcc619dad3ba9e7806b97badee3023
+	md5sums = 1d061d2df18d707b212c314440c30cd2
+	md5sums = b3bbefe4e73a0278c339f556673ed128
+	md5sums = 81953f9a24639fb66e435b34ba530b94
+	md5sums = 3c271ac7485d871400dd1f7af2ecfd8d
+	md5sums = 0327cec01cd5b98acee056ec79702bab
+
+pkgname = wesnoth-1.0
+
