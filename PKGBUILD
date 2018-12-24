@@ -1,6 +1,6 @@
 # Maintainer: Matt Mathis <aur@cloudninja.pw>
 pkgname=jaybar
-pkgver=1.0
+pkgver=1.0.51a9d7678d1b752ce40164d40ea47a210375388f
 pkgrel=1
 epoch=
 pkgdesc="Status bar for the Sway Compositor"
@@ -23,7 +23,7 @@ noextract=()
 validpgpkeys=()
 
 pkgver() {
-	echo $(curl -s https://api.bitbucket.org/2.0/repositories/Scoopta/jaybar/commits/tip | grep -o '"hash": "[0-9a-f]*[0-9a-f]"' | head -n1 | grep -o "[0-9a-f]*[0-9a-f]" | tail -n1)
+	echo "1.0"
 }
 
 prepare() {
