@@ -1,6 +1,6 @@
 pkgbase = jaybar
 	pkgdesc = Status bar for the Sway Compositor
-	pkgver = 1.1
+	pkgver = 51a9d7678d1b
 	pkgrel = 1
 	url = https://bitbucket.org/Scoopta/jaybar/src/default/
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = jaybar
 	depends = wlroots
 	depends = wayland
 	depends = jdk-openjdk>=11
+	source = ./src/jaybar::hg+https://bitbucket.org/Scoopta/jaybar/src/default/
+	sha256sums = SKIP
 
 pkgname = jaybar
 
