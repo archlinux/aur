@@ -5,7 +5,7 @@
 
 _reponame=passwordfile
 pkgname=passwordfile
-pkgver=3.2.0
+pkgver=4.0.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='C++ library to read/write passwords from/to encrypted files using AES-256-CBC via OpenSSL'
@@ -18,7 +18,7 @@ optdepends=("$pkgname-doc: API documentation")
 install=
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('48e95ad852dc83b598c428f9fd0e9717aa12e81aae8254c2946f380afee1b768')
+sha256sums=('4918322b65eb4d70114ff427016decb9dc799c76a97b699b88db4790ae7609e1')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
