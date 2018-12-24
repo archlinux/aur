@@ -1,14 +1,11 @@
 pkgbase = ddnet-maps-git
 	pkgdesc = All released maps with configs for a DDraceNetwork server
-	pkgver = r1049.g454e288b
+	pkgver = r1094.g486d51b4
 	pkgrel = 1
 	url = https://ddnet.tw
 	arch = any
 	license = custom
 	makedepends = git
-	provides = teeworlds-ddnet-maps-git
-	conflicts = teeworlds-ddnet-maps-git
-	replaces = teeworlds-ddnet-maps-git
 	backup = usr/share/ddnet/data/autoexec_server.cfg
 	backup = usr/share/ddnet/data/reset.cfg
 	backup = usr/share/ddnet/data/storage.cfg
