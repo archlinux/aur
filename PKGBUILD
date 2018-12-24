@@ -1,7 +1,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet-git
-pkgver=11.4.5.r5.gd072817e2
+pkgver=11.6.r2.g77c086d61
 pkgrel=1
 pkgdesc="DDraceNetwork, a mod of Teeworlds"
 arch=('x86_64')
