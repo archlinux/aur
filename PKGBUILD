@@ -6,7 +6,7 @@
 _realname=Vulkan-Headers
 pkgbase=mingw-w64-vulkan-headers
 pkgname=("mingw-w64-vulkan-headers")
-pkgver=1.1.92
+pkgver=1.1.96
 pkgrel=1
 pkgdesc='Vulkan header files (mingw-w64)'
 arch=('any')
@@ -15,7 +15,7 @@ groups=("mingw-w64-vulkan-devel")
 license=('Apache')
 depends=("mingw-w64-crt")
 makedepends=("mingw-w64-cmake" "git")
-_commit=114c3546e195819bd53a34b39f5194b2989a5b12
+_commit=f54e45b92374b99de8556cacffc3602a03187b68
 source=(git+https://github.com/KhronosGroup/Vulkan-Headers.git#commit=${_commit})
 sha256sums=('SKIP')
 options=(!strip !buildflags staticlibs)
