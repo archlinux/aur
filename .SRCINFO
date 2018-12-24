@@ -1,6 +1,6 @@
 pkgbase = deoplete-jedi-git
 	pkgdesc = jedi add-on for deoplete completion plugin for neovim
-	pkgver = r325.583ee29
+	pkgver = r328.73c1187
 	pkgrel = 1
 	url = https://github.com/zchee/deoplete-jedi
 	arch = any
