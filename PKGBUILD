@@ -3,7 +3,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=opencv-cuda
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 provides=(opencv)
 conflicts=(opencv)
@@ -22,12 +22,12 @@ optdepends=('opencv-samples: samples'
             'python2-numpy: Python 2 interface')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
-sha256sums=('86fd08fc02893e05e2944fa7b0daa7d02643232450f020b475e1b2f24587b99a'
-            '4fb0681414df4baedce6e3f4a01318d6f4fcde6ee14854d761fd4e397a397763')
+sha256sums=('b79ccdc4797a959c5ab17249a8a302c066248ae070e4d7010e2d77a625fdb30a'
+            '0d8acbad4b7074cfaafd906a7419c23629179d5e98894714402090b192ef8237')
 
 prepare() {
   msg2 "Patching sources for CUDA v10"
-  sed -i 's|dynlink_nvcuvid.h|nvidia-sdk/nvcuvid.h|' opencv_contrib-$pkgver/modules/cud*/src/*.hpp
+  sed -i 's|nvcuvid.h|nvidia-sdk/nvcuvid.h|' opencv_contrib-$pkgver/modules/cud*/src/*.hpp
 
   mkdir -p build
 }
