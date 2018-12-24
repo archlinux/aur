@@ -1,4 +1,4 @@
-# Maintainer: Sara Jakša <sarajaksa@gmail.com>
+# Maintainer: Sara Jakša <sarajaksa@sarajaksa.eu>
 
 _pkgname=python2-pytumblr
 pkgname=$_pkgname-git

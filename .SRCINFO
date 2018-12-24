@@ -1,6 +1,6 @@
 pkgbase = python2-pytumblr-git
 	pkgdesc = Python2 wrapper for Tumblr API
-	pkgver = 2
+	pkgver = 0.0.6.r112.cbdd6c9
 	pkgrel = 1
 	url = https://github.com/tumblr/pytumblr
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python2-pytumblr-git
 	depends = python2-oauth2
 	provides = python2-pytumblr
 	conflicts = python2-pytumblr
-	source = pytumblr::git+https://github.com/tumblr/pytumblr
+	source = git+https://github.com/tumblr/pytumblr#commit=cbdd6c9da15679bffff719a4b6a81fa66ec5783b
 	sha256sums = SKIP
 
 pkgname = python2-pytumblr-git
