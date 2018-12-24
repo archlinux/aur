@@ -1,3 +1,5 @@
+# Maintainer: Matt Fields (0x6d617474) <aur at 0x6d617474 dot net>
+
 pkgname=wp-cli
 pkgver=2.1.0
 pkgrel=2
