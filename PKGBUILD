@@ -1,14 +1,14 @@
 # Maintainer: Matt Parnell/ilikenwf <parwok@gmail.com>
 
 pkgname=mcomix-gtk3-git
-pkgver=r1500.16004f9
+pkgver=r1501.708ba0d
 pkgrel=1
 pkgdesc="A comic book reader. Ported to GTK3, works well with retina/hidpi"
 arch=('any')
 url="https://sourceforge.net/projects/mcomix/"
 license=('GPL')
 depends=('pygtk' 'python2-pillow' 'xdg-utils' 'python2' \
-         'desktop-file-utils' 'hicolor-icon-theme' 'python2-setuptools python2-gobject')
+         'desktop-file-utils' 'hicolor-icon-theme' 'python2-setuptools' 'python2-gobject')
 makedepends=('gettext' 'intltool')
 optdepends=('libunrar: for rar compressed comics' \
             'p7zip: for 7z compressed comics' \
