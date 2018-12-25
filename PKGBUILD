@@ -2,14 +2,14 @@
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-text-git
-pkgver=20171115.6c8fbe5
+pkgver=r324.404d021
 pkgrel=1
 pkgdesc="Advanced text editor built in accordance with Material Design"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
 depends=('fluid-git')
-makedepends=('git' 'qbs' 'qt5-tools')
+makedepends=('git' 'liri-cmake-shared-git' 'qt5-tools')
 conflicts=('liri-text')
 provides=('liri-text')
 groups=('liri-git')
@@ -22,23 +22,31 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd ${srcdir}/${_gitname}
-	echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
+	( set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 prepare() {
-	cd ${srcdir}/${_gitname}
-	git submodule update --init
+	mkdir -p build
 }
 
 build() {
-	cd ${srcdir}/${_gitname}
-	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-	qbs setup-qt /usr/bin/qmake-qt5 qt5
-	qbs config profiles.qt5.baseProfile gcc
-	qbs build --no-install -d build profile:qt5 qbs.installRoot:/ qbs.installPrefix:usr
+	cd build
+	cmake ../${_gitname} \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_TESTING:BOOL=OFF \
+		-DINSTALL_SYSCONFDIR=/etc \
+		-DINSTALL_LIBDIR=/usr/lib \
+		-DINSTALL_LIBEXECDIR=/usr/lib \
+		-DINSTALL_QMLDIR=/usr/lib/qt/qml \
+		-DINSTALL_PLUGINSDIR=/usr/lib/qt/plugins
+	make
 }
 
 package() {
-	cd ${srcdir}/${_gitname}
-	qbs install -d build --no-build -v --install-root $pkgdir profile:qt5
+	cd build
+	make DESTDIR="$pkgdir" install
 }
