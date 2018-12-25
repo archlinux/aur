@@ -1,7 +1,7 @@
 # Maintainer: Yarema aka Knedlyk <yupadmin (at) gmail (dot) com>
 
 pkgname=ddrescue-gui
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A simple GUI frontend to make ddrescue (a command-line data recovery tool) easier to use."
 arch=('any')
@@ -29,4 +29,4 @@ package() {
 	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/${pkgname}"
 }
 
-md5sums=('bf73369066ec729b33f67f0599f78a26')
+md5sums=('0e2d8a96e403424c8d00cda7778b12f4')
