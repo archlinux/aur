@@ -2,10 +2,10 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-noepg
-pkgver=0.0.4
-_gitver=b18cfff51a8d7722cc7f8ae511596714995f6c92
-_vdrapi=2.2.0
-pkgrel=2
+pkgver=0.0.5
+_gitver=779c9aef12be1dd2e03bce535c1c69f4a97b7f0f
+_vdrapi=2.4.0
+pkgrel=1
 pkgdesc="Replace the noepg-patch with the new cEpgHandler of vdr >= 1.7.26"
 url="https://github.com/flensrocker/vdr-plugin-noepg"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('curl' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git://github.com/flensrocker/vdr-plugin-noepg.git#commit=$_gitver")
+source=("git+https://github.com/flensrocker/vdr-plugin-noepg.git#commit=$_gitver")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('SKIP')
 
