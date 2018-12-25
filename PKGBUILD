@@ -4,8 +4,8 @@
 pkgname=vdr-upnp
 pkgver=1.0.0.r14.g11a035a
 _gitver=11a035aa4ec2b55faaef1eaa48b7726a28422048
-_vdrapi=2.2.0
-pkgrel=1
+_vdrapi=2.4.0
+pkgrel=2
 pkgdesc="extends the VDR with the possibility to act as an UPnP/DLNA Media Server (DMS)"
 url="http://projects.vdr-developer.org/projects/plg-softhddevice"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
