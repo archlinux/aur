@@ -9,7 +9,7 @@ url="https://github.com/CReimer/vdrctl"
 arch=('any')
 license=('GPL3')
 depends=('perl' 'pkg-config' 'vdr')
-source=("https://github.com/CReimer/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/CReimer/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('ccca8b2ea13bc485fdd6f194d27273a2')
 
 package() {
