@@ -1,28 +1,39 @@
 # Maintainer: kXuan <kxuanobj@gmail.com>
 
 pkgname=envoyproxy
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
 url='https://envoyproxy.io'
 license=('Apache2')
-makedepends=('cmake' 'clang' 'go' 'bazel' 'perl' 'ninja' 'python')
+makedepends=('cmake' 'go' 'bazel' 'perl' 'ninja' 'python' 'git')
 source=(
     https://github.com/$pkgname/envoy/archive/v$pkgver.tar.gz
 )
-sha512sums=('728794f755b85e2a01b79342156953deade38c34a565e538928cb669a17658af01b69488a0e966b4774bba6d30fa2d460e3329f80503a3de1f8669225bf4426b')
+sha512sums=('bf8901ca510efb9d54d67999caaa02e14736ffe4ad2da616ee7e471df12746d2f5d0aa866bd8a6fec2abdfdb546fcd1b338dd78f99ead15bc5ef29531348073e')
 
 prepare() {
   cd "envoy-$pkgver"
   go get github.com/bazelbuild/buildtools/buildifier
-  echo "5d25f466c3410c0dfa735d7d4358beb76b2da507" > SOURCE_VERSION
+  # The commit id of $pkgver
+  echo "37bfd8ac347955661af695a417492655b21939dc" > SOURCE_VERSION
 }
 
 build() {
   cd "envoy-$pkgver"
 
-  bazel build --verbose_failures --workspace_status_command bazel/get_workspace_status  //source/exe:envoy-static
+  # -fno-plt cause boringssl build failed with this error:
+  # error while processing "\tjmpq\t*aes_nohw_encrypt@GOTPCREL(%rip) # TAILCALL\n" on line 94: "Cannot rewrite GOTPCREL reference for instruction \"jmpq\""
+  if [[ "$CXXFLAGS" == *-fno-plt* ]]; then
+      echo "NOTE: Found '-fno-plt' in CXXFLAGS. Drop it."
+      export CXXFLAGS=${CXXFLAGS//-fno-plt/}
+  fi
+  if [[ "$CFLAGS" == *-fno-plt* ]]; then
+      echo "NOTE: Found '-fno-plt' in CFLAGS. Drop it."
+      export CFLAGS=${CFLAGS//-fno-plt/}
+  fi
+  bazel build --verbose_failures --workspace_status_command bazel/get_workspace_status -c opt //source/exe:envoy-static
 }
 
 package() {
