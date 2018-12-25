@@ -3,7 +3,7 @@
 pkgname=smdev-cdrom
 pkgver=20181217
 pkgrel=1
-pkgdesk="cdrom processing for smdev"
+pkgdesc="cdrom processing for smdev"
 arch=('any')
 licence=('MIT')
 groups=('smdev-scripts')
