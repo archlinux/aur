@@ -1,17 +1,16 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-shell-git
-pkgver=20181008.1898.274b4580
+pkgver=v0.9.0.r310.gd7e54966
 pkgrel=1
 pkgdesc="QtQuick and Wayland based shell for convergence"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
 depends=('qt5-tools' 'qt5-wayland' 'qt5-accountsservice-git' 'qt5-gsettings-git'
-         'libqtxdg' 'polkit-qt5' 'pam' 'pipewire' 'dconf' 'libliri-git' 'fluid-git'
-	 'liri-platformtheme-git' 'liri-materialdecoration-git'
-	 'qml-xwayland-git' 'liri-eglfs-git')
-makedepends=('git' 'liri-qbs-shared-git')
+         'libqtxdg' 'polkit-qt5' 'solid' 'pam' 'pipewire' 'dconf' 'libliri-git' 'fluid-git'
+	 'liri-platformtheme-git' 'qml-xwayland-git' 'liri-eglfs-git')
+makedepends=('git' 'liri-cmake-shared-git')
 options=(debug !strip)
 conflicts=('hawaii-shell-git' 'papyros-shell-git' 'liri-workspace-git' 'liri-wayland-git' 'liri-shell')
 replaces=('hawaii-shell-git' 'papyros-shell-git' 'liri-workspace-git' 'liri-wayland-git' 'liri-shell')
@@ -27,26 +26,31 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd ${srcdir}/${_gitname}
-	echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git rev-list --count HEAD).$(git log -1 --format="%h")"
+	( set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 prepare() {
-	cd ${srcdir}/${_gitname}
-	git submodule update --init
+	mkdir -p build
 }
 
 build() {
-	cd ${srcdir}/${_gitname}
-	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-	qbs setup-qt /usr/bin/qmake-qt5 qt5
-	qbs config profiles.qt5.baseProfile gcc
-	qbs build --no-install -d build config:debug qbs.buildVariant:debug profile:qt5 \
-		modules.lirideployment.prefix:/usr \
-		modules.lirideployment.qmlDir:/usr/lib/qt/qml \
-		modules.lirideployment.pluginsDir:/usr/lib/qt/plugins
+	cd build
+	cmake ../${_gitname} \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_TESTING:BOOL=OFF \
+		-DINSTALL_SYSCONFDIR=/etc \
+		-DINSTALL_LIBDIR=/usr/lib \
+		-DINSTALL_LIBEXECDIR=/usr/lib \
+		-DINSTALL_QMLDIR=/usr/lib/qt/qml \
+		-DINSTALL_PLUGINSDIR=/usr/lib/qt/plugins
+	make
 }
 
 package() {
-	cd ${srcdir}/${_gitname}
-	qbs install -d build --no-build -v --install-root $pkgdir config:debug profile:qt5
+	cd build
+	make DESTDIR="$pkgdir" install
 }
