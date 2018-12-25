@@ -2,10 +2,10 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epgfixer
-pkgver=0.3.1_18_g1ad4aaf
-_gitver=1ad4aaffdc820af7e0a0f8c45a4beea4f3f10421
-_vdrapi=2.2.0
-pkgrel=9
+pkgver=0.3.1_21_g354f28b
+_gitver=354f28b0112ba27f08f6509243b410899f74b6ed
+_vdrapi=2.4.0
+pkgrel=1
 pkgdesc="VDR plugin for doing extra fixing of EPG data"
 url="http://projects.vdr-developer.org/projects/plg-epgfixer"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('gcc-libs' 'pcre' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git://projects.vdr-developer.org/vdr-plugin-epgfixer.git#commit=$_gitver")
+source=("git+https://projects.vdr-developer.org/git/vdr-plugin-epgfixer.git#commit=$_gitver")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/epgfixer/blacklist.conf'
         'var/lib/vdr/plugins/epgfixer/charset.conf'
