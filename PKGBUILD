@@ -1,7 +1,7 @@
 # Maintainer: Platon Ryzhikov <ihummer63@yandex.ru>
 
 pkgname=smdev-cdrom
-pkgver=20181217
+pkgver=20181225
 pkgrel=1
 pkgdesc="cdrom processing for smdev"
 arch=('any')

@@ -1,5 +1,6 @@
 pkgbase = smdev-cdrom
-	pkgver = 20181217
+	pkgdesc = cdrom processing for smdev
+	pkgver = 20181225
 	pkgrel = 1
 	arch = any
 	groups = smdev-scripts
