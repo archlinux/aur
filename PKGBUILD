@@ -1,14 +1,14 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-browser-git
-pkgver=20181008.228.b0192ef
+pkgver=r232.97b7f28
 pkgrel=1
 pkgdesc="Liri Browser"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
 depends=('qt5-webengine' 'fluid-git')
-makedepends=('git' 'liri-qbs-shared-git')
+makedepends=('git' 'liri-cmake-shared-git')
 options=(debug !strip)
 conflicts=('liri-browser')
 replaces=('liri-browser')
@@ -23,24 +23,31 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd ${srcdir}/${_gitname}
-	echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git rev-list --count HEAD).$(git log -1 --format="%h")"
+	( set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 prepare() {
-	cd ${srcdir}/${_gitname}
-	git submodule update --init
+	mkdir -p build
 }
 
 build() {
-	cd ${srcdir}/${_gitname}
-	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-	qbs setup-qt /usr/bin/qmake-qt5 qt5
-	qbs config profiles.qt5.baseProfile gcc
-	qbs build --no-install -d build profile:qt5 \
-		modules.lirideployment.prefix:/usr
+	cd build
+	cmake ../${_gitname} \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_TESTING:BOOL=OFF \
+		-DINSTALL_SYSCONFDIR=/etc \
+		-DINSTALL_LIBDIR=/usr/lib \
+		-DINSTALL_LIBEXECDIR=/usr/lib \
+		-DINSTALL_QMLDIR=/usr/lib/qt/qml \
+		-DINSTALL_PLUGINSDIR=/usr/lib/qt/plugins
+	make
 }
 
 package() {
-	cd ${srcdir}/${_gitname}
-	qbs install -d build --no-build -v --install-root $pkgdir profile:qt5
+	cd build
+	make DESTDIR="$pkgdir" install
 }
