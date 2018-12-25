@@ -5,7 +5,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=63.0.3
+pkgver=64.0
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -31,7 +31,7 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
 sha256sums=('SKIP'
             '2adca824b52ab5bc6e7e4fa486c1ecb47d283832bd4b75d10494b033f1cab911'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            '722324ef522f3e2452f49924e47a2e8a3a547e18aef32d7c1252113eb839451f')
+            '18d37f79d6919d26c7f581f4c0025b556ced05362749be29af118da05f3cfb51')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -63,6 +63,13 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+ac_add_options --enable-lto
+export MOZ_PGO=1
+export CC=clang
+export CXX=clang++
+export AR=llvm-ar
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
 
 # Branding
 ac_add_options --enable-official-branding
@@ -103,6 +110,9 @@ build() {
   export MOZ_SOURCE_REPO="$_repo"
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+
+  # LTO needs more open files
+  ulimit -n 4096
 
   ./mach build
   ./mach buildsymbols

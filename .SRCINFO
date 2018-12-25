@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 63.0.3
+	pkgver = 64.0
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/firefox-appmenu/
 	arch = x86_64
@@ -45,12 +45,12 @@ pkgbase = firefox-appmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=63.0.3
+	provides = firefox=64.0
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_63_0_3_RELEASE
+	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_64_0_RELEASE
 	source = firefox.desktop
 	source = firefox-symbolic.svg
 	source = unity-menubar.patch
