@@ -1,8 +1,8 @@
 # Maintainer: Zanny <lordzanny@gmail.com>
 
 pkgname=oda-file-converter
-pkgver=19.8.0.0
-pkgrel=3
+pkgver=19.12.0.0
+pkgrel=1
 pkgdesc="Converts files between the .dwg and .dxf file formats"
 arch=('x86_64')
 url="https://www.opendesign.com/guestfiles/oda_file_converter"
