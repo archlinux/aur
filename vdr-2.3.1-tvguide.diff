@@ -1,0 +1,1228 @@
+Index: b/channelcolumn.c
+===================================================================
+--- a/channelcolumn.c
++++ b/channelcolumn.c
+@@ -5,9 +5,15 @@
+     this->channel = channel;
+     this->num = num;
+     this->myTime = myTime;
++#if VDRVERSNUM > 20300
++    setTimer();
++#else
+     hasTimer = channel->HasTimer();
++#endif
+     hasSwitchTimer = SwitchTimers.ChannelInSwitchList(channel);
++#if VDRVERSNUM < 20300
+     schedulesLock = new cSchedulesLock(false, 100);
++#endif
+     header = NULL;
+ }
+ 
+@@ -15,7 +21,9 @@
+     if (header)
+         delete header;
+     grids.Clear();
++#if VDRVERSNUM < 20300
+     delete schedulesLock;
++#endif
+ }
+ 
+ void cChannelColumn::clearGrids() {
+@@ -33,7 +41,12 @@
+ }
+ 
+ bool cChannelColumn::readGrids() {
++#if VDRVERSNUM > 20300
++    LOCK_SCHEDULES_READ;
++    schedules = Schedules;
++#else
+     schedules = cSchedules::Schedules(*schedulesLock);
++#endif
+     const cSchedule *Schedule = NULL;
+     Schedule = schedules->GetSchedule(channel);
+     if (!Schedule) {
+@@ -186,7 +199,12 @@
+         return;
+     }
+     //if not, i have to add new ones to the list
++#if VDRVERSNUM > 2030
++    LOCK_SCHEDULES_READ;
++    schedules = Schedules;
++#else
+     schedules = cSchedules::Schedules(*schedulesLock);
++#endif
+     const cSchedule *Schedule = NULL;
+     Schedule = schedules->GetSchedule(channel);
+     if (!Schedule) {
+@@ -234,7 +252,12 @@
+         return;
+     }
+     //if not, i have to add new ones to the list
++#if VDRVERSNUM > 2030
++    LOCK_SCHEDULES_READ;
++    schedules = Schedules;
++#else
+     schedules = cSchedules::Schedules(*schedulesLock);
++#endif
+     const cSchedule *Schedule = NULL;
+     Schedule = schedules->GetSchedule(channel);
+     if (!Schedule) {
+@@ -319,6 +342,15 @@
+     }
+ }
+ 
++#if VDRVERSNUM > 20300
++void cChannelColumn::setTimer() {
++    hasTimer = false;
++    LOCK_TIMERS_READ;
++    if (Timers->UsesChannel(channel))
++        hasTimer = true;
++}
++
++#endif
+ cGrid *cChannelColumn::addEpgGrid(const cEvent *event, cGrid *firstGrid, bool color) {
+     cGrid *grid = new cEpgGrid(this, event);
+     grid->setText();
+@@ -342,7 +374,11 @@
+ }
+ 
+ void cChannelColumn::SetTimers() {
++#if VDRVERSNUM > 20300
++    setTimer();
++#else
+     hasTimer = channel->HasTimer();
++#endif
+     hasSwitchTimer = SwitchTimers.ChannelInSwitchList(channel);
+     for (cGrid *grid = grids.First(); grid; grid = grids.Next(grid)) {
+         bool gridHadTimer = grid->HasTimer();
+@@ -364,4 +400,4 @@
+         esyslog("tvguide: grid %d: start: %s, stop: %s", i, *cMyTime::printTime(grid->StartTime()), *cMyTime::printTime(grid->EndTime()));
+         i++;
+     }
+-}
+\ No newline at end of file
++}
+Index: b/channelcolumn.h
+===================================================================
+--- a/channelcolumn.h
++++ b/channelcolumn.h
+@@ -50,7 +50,11 @@
+     void ClearOutdatedEnd();
+     int GetNum() {return num;};
+     void SetNum(int num) {this->num = num;};
++#if VDRVERSNUM > 20300
++    void setTimer();
++#else
+     void setTimer() {hasTimer = channel->HasTimer();};
++#endif
+     bool HasTimer() { return hasTimer; };
+     void setSwitchTimer() {hasSwitchTimer = SwitchTimers.ChannelInSwitchList(channel);};
+     bool HasSwitchTimer() { return hasSwitchTimer; };
+Index: b/channelgroups.c
+===================================================================
+--- a/channelgroups.c
++++ b/channelgroups.c
+@@ -10,12 +10,21 @@
+ void cChannelGroups::ReadChannelGroups(void) {
+     bool setStart = false;
+     int lastChannelNumber = 0;
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    const cChannel *first = Channels->First();
++#else
+     const cChannel *first = Channels.First();
++#endif
+     if (!first->GroupSep()) {
+         channelGroups.push_back(cChannelGroup(tr("Main Program")));
+         setStart = true;
+     }    
++#if VDRVERSNUM > 20300
++    for (const cChannel *channel = Channels->First(); channel; channel = Channels->Next(channel)) {
++#else
+     for (const cChannel *channel = Channels.First(); channel; channel = Channels.Next(channel)) {
++#endif
+         if (setStart && (channelGroups.size() > 0)) {
+             channelGroups[channelGroups.size()-1].SetChannelStart(channel->Number());
+             setStart = false;
+@@ -103,7 +112,12 @@
+     int groupLast = group;
+     int line = 0;
+     int lineStart = 0;
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    for (const cChannel *channel = Channels->Next(start); channel; channel = Channels->Next(channel)) {
++#else
+     for (const cChannel *channel = Channels.Next(start); channel; channel = Channels.Next(channel)) {
++#endif
+         if (channel->GroupSep())
+             continue;
+         group = GetGroup(channel);
+Index: b/channeljump.c
+===================================================================
+--- a/channeljump.c
++++ b/channeljump.c
+@@ -11,7 +11,12 @@
+     pixmapText = NULL;
+     channel = 0;
+ 	if (!tvguideConfig.hideLastGroup) {
++#if VDRVERSNUM > 20300
++	LOCK_CHANNELS_READ;
++        maxChannels = Channels->MaxNumber();
++#else
+         maxChannels = Channels.MaxNumber();
++#endif
+ 	} else {
+         maxChannels = channelGroups->GetLastValidChannel();
+     }
+@@ -87,4 +92,4 @@
+  	if ((cTimeMs::Now() - startTime) > timeout)
+ 	 	return true;
+ 	return false;
+- }
+\ No newline at end of file
++ }
+Index: b/detailview.c
+===================================================================
+--- a/detailview.c
++++ b/detailview.c
+@@ -9,7 +9,12 @@
+     Cancel(-1);
+     while (Active())
+         cCondWait::SleepMs(10);
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    footer->LeaveDetailedViewMode(Channels->GetByChannelID(event->ChannelID()));
++#else
+     footer->LeaveDetailedViewMode(Channels.GetByChannelID(event->ChannelID()));
++#endif
+     if (view)
+         delete view;
+ }
+@@ -42,7 +47,12 @@
+         dateTime = cString::sprintf("%s  %s - %s (%d %s)", *event->GetDateString(), *event->GetTimeString(), *event->GetEndTimeString(), event->Duration()/60, tr("min"));
+     }
+     view->SetDateTime(*dateTime);
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    view->SetChannel(Channels->GetByChannelID(event->ChannelID(), true));
++#else
+     view->SetChannel(Channels.GetByChannelID(event->ChannelID(), true));
++#endif
+     view->SetEventID(event->EventID());
+     view->SetEvent(event);
+ }
+@@ -90,7 +100,12 @@
+                     continue;
+                 i++;
+                 sstrReruns  << *DayDateTime(r->event->StartTime());
++#if VDRVERSNUM > 20300
++                LOCK_CHANNELS_READ;
++                cChannel *channel = (cChannel *)Channels->GetByChannelID(r->event->ChannelID(), true, true);
++#else
+                 cChannel *channel = Channels.GetByChannelID(r->event->ChannelID(), true, true);
++#endif
+                 if (channel) {
+                     sstrReruns << ", " << trVDR("Channel") << " " << channel->Number() << ":";
+                     sstrReruns << " " << channel->ShortName(true);
+@@ -156,4 +171,4 @@
+             break;
+     }
+     return state;
+-}
+\ No newline at end of file
++}
+Index: b/imagecache.c
+===================================================================
+--- a/imagecache.c
++++ b/imagecache.c
+@@ -280,7 +280,12 @@
+         return;
+     if (tvguideConfig.numLogosInitial > 0) {
+         int channelsCached = 0;
++#if VDRVERSNUM > 20300
++        LOCK_CHANNELS_READ;
++        for (const cChannel *channel = Channels->First(); channel; channel = Channels->Next(channel)) {
++#else
+         for (const cChannel *channel = Channels.First(); channel; channel = Channels.Next(channel)) {
++#endif
+             if (channelsCached >= tvguideConfig.numLogosInitial)
+                 break;
+             if (!channel->GroupSep()) {
+Index: b/recmanager.c
+===================================================================
+--- a/recmanager.c
++++ b/recmanager.c
+@@ -62,8 +62,14 @@
+         rtMatch.event = event;
+         pRemoteTimers->Service("RemoteTimers::GetMatch-v1.0", &rtMatch);
+         timer = rtMatch.timer;
+-    } else
++    } else {
++#if VDRVERSNUM > 20300
++        LOCK_TIMERS_READ;
++        timer = (cTimer*) Timers->GetMatch(event);
++#else
+         timer = Timers.GetMatch(event);    
++#endif
++    }
+     return timer;
+ }
+ 
+@@ -79,19 +85,35 @@
+ 
+ cTimer *cRecManager::createLocalTimer(const cEvent *event, std::string path) {
+     cTimer *timer = new cTimer(event);
++#if VDRVERSNUM > 20300
++    LOCK_TIMERS_WRITE;
++    cTimer *t = Timers->GetTimer(timer);
++#else
+     cTimer *t = Timers.GetTimer(timer);
++#endif
+     if (t) {
+         t->OnOff();
++#if VDRVERSNUM > 20300
++        LOCK_SCHEDULES_READ;
++        t->SetEventFromSchedule(Schedules);
++#else
+         t->SetEventFromSchedule();
++#endif
+         delete timer;
+         timer = t;
+         isyslog("timer %s reactivated", *t->ToDescr());
+     } else {
++#if VDRVERSNUM > 20300
++        Timers->Add(timer);
++#else
+         Timers.Add(timer);
++#endif
+         isyslog("timer %s added (active)", *timer->ToDescr());
+     }
+     SetTimerPath(timer, event, path);
++#if VDRVERSNUM < 20300
+     Timers.SetModified();
++#endif
+     return timer;
+ }
+ 
+@@ -148,7 +170,12 @@
+ }
+ 
+ void cRecManager::DeleteTimer(int timerID) {
++#if VDRVERSNUM > 20300
++    LOCK_TIMERS_READ;
++    cTimer *t = (cTimer *)Timers->Get(timerID);
++#else
+     cTimer *t = Timers.Get(timerID);
++#endif
+     if (!t)
+         return;
+     DeleteTimer(t);
+@@ -165,7 +192,12 @@
+ }
+ 
+ void cRecManager::DeleteLocalTimer(const cEvent *event) {
++#if VDRVERSNUM > 20300
++    LOCK_TIMERS_READ;
++    cTimer *t = (cTimer *)Timers->GetMatch(event);
++#else
+     cTimer *t = Timers.GetMatch(event);
++#endif
+     if (!t)
+         return;
+     DeleteTimer(t);
+@@ -173,13 +205,24 @@
+ 
+ 
+ void cRecManager::DeleteTimer(cTimer *timer) {
++#if VDRVERSNUM > 20300
++    LOCK_TIMERS_WRITE;
++#endif
+     if (timer->Recording()) {
+         timer->Skip();
++#if VDRVERSNUM > 20300
++        cRecordControls::Process(Timers,time(NULL));
++#else
+         cRecordControls::Process(time(NULL));
++#endif
+     }
+     isyslog("timer %s deleted", *timer->ToDescr());
++#if VDRVERSNUM > 20300
++    Timers->Del(timer, true);
++#else
+     Timers.Del(timer, true);
+     Timers.SetModified();
++#endif
+ }
+ 
+ void cRecManager::DeleteRemoteTimer(const cEvent *event) {
+@@ -220,21 +263,33 @@
+     else if (!timer->HasFlags(tfActive) && active)
+         timer->SetFlags(tfActive);
+     
++#if VDRVERSNUM > 20300
++    LOCK_SCHEDULES_READ;
++    timer->SetEventFromSchedule(Schedules);
++#else
+     timer->SetEventFromSchedule();
++#endif
+     if (tvguideConfig.useRemoteTimers && pRemoteTimers) {
+         RemoteTimers_Timer_v1_0 rt;
+         rt.timer = timer;
+         if (!pRemoteTimers->Service("RemoteTimers::ModTimer-v1.0", &rt))
+             rt.timer = NULL;
+         RefreshRemoteTimers();
++#if VDRVERSNUM < 20300
+     } else {
+-        Timers.SetModified();
++        Timers.SetModified();  // what to do JF ???
++#endif
+     }          
+ }
+ 
+ 
+ bool cRecManager::IsRecorded(const cEvent *event) {
++#if VDRVERSNUM > 20300
++    LOCK_TIMERS_READ;
++    cTimer *timer = (cTimer *)Timers->GetMatch(event);
++#else
+     cTimer *timer = Timers.GetMatch(event);
++#endif
+     if (!timer)
+         return false;
+     return timer->Recording();
+@@ -260,7 +315,12 @@
+ }
+ 
+ void cRecManager::CreateSeriesTimer(cTimer *seriesTimer) {
++#if VDRVERSNUM > 20300
++    LOCK_SCHEDULES_READ;
++    seriesTimer->SetEventFromSchedule(Schedules);
++#else
+     seriesTimer->SetEventFromSchedule();
++#endif
+     if (tvguideConfig.useRemoteTimers && pRemoteTimers) {
+         RemoteTimers_Timer_v1_0 rt;
+         rt.timer = seriesTimer;
+@@ -268,8 +328,13 @@
+             isyslog("%s", *rt.errorMsg);
+         RefreshRemoteTimers();
+     } else {
++#if VDRVERSNUM > 20300
++        LOCK_TIMERS_WRITE;
++        Timers->Add(seriesTimer);
++#else
+         Timers.Add(seriesTimer);
+         Timers.SetModified();
++#endif
+     }
+ }
+ 
+@@ -316,9 +381,15 @@
+         numResults = results.size();
+         if (numResults > 0) {
+             searchResults = new const cEvent *[numResults];
++#if VDRVERSNUM > 20300
++            LOCK_CHANNELS_READ;
++            LOCK_SCHEDULES_READ;
++            const cSchedules *schedules = Schedules;
++#else
+             cSchedulesLock schedulesLock;
+             const cSchedules *schedules;
+             schedules = cSchedules::Schedules(schedulesLock);
++#endif
+             const cEvent *event = NULL;
+             int index=0;
+             for (std::list<std::string>::iterator it=results.begin(); it != results.end(); ++it) {
+@@ -328,7 +399,11 @@
+                     int eventID = atoi(flds[1].c_str());
+                     std::string channelID = flds[7];
+                     tChannelID chanID = tChannelID::FromString(channelID.c_str());
++#if VDRVERSNUM > 20300
++                    cChannel *channel = (cChannel *)Channels->GetByChannelID(chanID);
++#else
+                     cChannel *channel = Channels.GetByChannelID(chanID);
++#endif
+                     if (channel) {
+                         const cSchedule *Schedule = NULL;
+                         Schedule = schedules->GetSchedule(channel);
+@@ -435,24 +510,45 @@
+         return;
+     int searchTimerID = searchTimer->GetID();
+     if (delTimers) {
++#if VDRVERSNUM > 20300
++        LOCK_TIMERS_READ;
++        cTimer *timer = (cTimer *)Timers->First();
++#else
+         cTimer *timer = Timers.First();
++#endif
+         while(timer) {
+             if (!timer->Recording()) {
+                 char* searchID = GetAuxValue(timer, "s-id");
+                 if (searchID) {
+                     if (searchTimerID == atoi(searchID)) {
++#if VDRVERSNUM > 20300
++                        cTimer* timerNext = (cTimer *)Timers->Next(timer);
++#else
+                         cTimer* timerNext = Timers.Next(timer);
++#endif
+                         DeleteTimer(timer);
+                         timer = timerNext;
+                     } else {
++#if VDRVERSNUM > 20300
++                        timer = (cTimer *)Timers->Next(timer);
++#else
+                         timer = Timers.Next(timer);
++#endif
+                     }
+                     free(searchID);
+                 } else {
++#if VDRVERSNUM > 20300
++                    timer = (cTimer *)Timers->Next(timer);
++#else
+                     timer = Timers.Next(timer);
++#endif
+                 }
+             } else {
++#if VDRVERSNUM > 20300
++                timer = (cTimer *)Timers->Next(timer);
++#else
+                 timer = Timers.Next(timer);
++#endif
+             }
+         }
+     }
+@@ -511,7 +607,12 @@
+     int num = 0;
+     numResults = 0;
+     
++#if VDRVERSNUM > 20300
++    LOCK_RECORDINGS_READ;
++    for (cRecording *recording = (cRecording *)Recordings->First(); recording; recording = (cRecording *)Recordings->Next(recording)) {
++#else
+     for (cRecording *recording = Recordings.First(); recording; recording = Recordings.Next(recording)) {
++#endif
+         std::string s1 = recording->Name();
+         std::string s2 = searchString;
+         if (s1.empty() || s2.empty()) continue;
+@@ -619,17 +720,37 @@
+ 
+ const cEvent **cRecManager::WhatsOnNow(bool nowOrNext, int &numResults) {
+     std::vector<const cEvent*> tmpResults;
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    LOCK_SCHEDULES_READ;
++    const cSchedules *schedules = Schedules;
++#else
+     cSchedulesLock schedulesLock;
+     const cSchedules *schedules = cSchedules::Schedules(schedulesLock);
++#endif
+     const cChannel *startChannel = NULL, *stopChannel = NULL;
+     if (tvguideConfig.favLimitChannels) {
++#if VDRVERSNUM > 20300
++        startChannel = Channels->GetByNumber(tvguideConfig.favStartChannel);
++        stopChannel = Channels->GetByNumber(tvguideConfig.favStopChannel);
++#else
+         startChannel = Channels.GetByNumber(tvguideConfig.favStartChannel);
+         stopChannel = Channels.GetByNumber(tvguideConfig.favStopChannel);
++#endif
+     }
+-    if (!startChannel)
++    if (!startChannel) {
++#if VDRVERSNUM > 20300
++        startChannel = Channels->First();
++#else
+         startChannel = Channels.First();
++#endif
++    }
+ 
++#if VDRVERSNUM > 20300
++    for (const cChannel *channel = startChannel; channel; channel = Channels->Next(channel)) {
++#else
+     for (const cChannel *channel = startChannel; channel; channel = Channels.Next(channel)) {
++#endif
+         if (channel->GroupSep()) continue;
+         const cSchedule *Schedule = schedules->GetSchedule(channel);
+         if (!Schedule) continue;
+@@ -679,17 +800,37 @@
+     if (searchTime < now)
+         searchTime += 24*60*60;
+ 
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    LOCK_SCHEDULES_READ;
++    const cSchedules *schedules = Schedules;
++#else
+     cSchedulesLock schedulesLock;
+     const cSchedules *schedules = cSchedules::Schedules(schedulesLock);
++#endif
+     const cChannel *startChannel = NULL, *stopChannel = NULL;
+     if (tvguideConfig.favLimitChannels) {
++#if VDRVERSNUM > 20300
++        startChannel = Channels->GetByNumber(tvguideConfig.favStartChannel);
++        stopChannel = Channels->GetByNumber(tvguideConfig.favStopChannel);
++#else
+         startChannel = Channels.GetByNumber(tvguideConfig.favStartChannel);
+         stopChannel = Channels.GetByNumber(tvguideConfig.favStopChannel);
++#endif
+     }
+-    if (!startChannel)
++    if (!startChannel) {
++#if VDRVERSNUM > 20300
++        startChannel = Channels->First();
++#else
+         startChannel = Channels.First();
++#endif
++    }
+ 
++#if VDRVERSNUM > 20300
++    for (const cChannel *channel = startChannel; channel; channel = Channels->Next(channel)) {
++#else
+     for (const cChannel *channel = startChannel; channel; channel = Channels.Next(channel)) {
++#endif
+         if (channel->GroupSep()) continue;
+         const cSchedule *Schedule = schedules->GetSchedule(channel);
+         if (!Schedule) continue;
+Index: b/recmenuitem.c
+===================================================================
+--- a/recmenuitem.c
++++ b/recmenuitem.c
+@@ -1817,7 +1817,12 @@
+     if (!event)
+         return;
+     int logoX = DrawIcons();
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    const cChannel *channel = Channels->GetByChannelID(event->ChannelID());
++#else
+     const cChannel *channel = Channels.GetByChannelID(event->ChannelID());
++#endif
+     cString channelName = "";
+     if (channel)
+         channelName = channel->Name();
+@@ -1999,14 +2004,26 @@
+             if (!channel)
+                 return rmsConsumed;
+             cChannel *prev = channel;
++#if VDRVERSNUM > 20300
++            LOCK_CHANNELS_READ;
++            const cChannel *firstChannel = Channels->First();
++            if(firstChannel->GroupSep())
++                firstChannel = Channels->Next(firstChannel);
++#else
+             cChannel *firstChannel = Channels.First();
+             if(firstChannel->GroupSep())
+                 firstChannel = Channels.Next(firstChannel);
++#endif
+             if (prev == firstChannel) {
+                 if (!initialChannelSet)
+                     channel = NULL;
+             } else {
++#if VDRVERSNUM > 20300
++                LOCK_CHANNELS_READ;
++                while (prev = (cChannel *)Channels->Prev(prev)) {
++#else
+                 while (prev = Channels.Prev(prev)) {
++#endif
+                     if(!prev->GroupSep()) {
+                         channel = prev;
+                         break;
+@@ -2025,12 +2042,24 @@
+         case kRight: {
+             fresh = true;
+             if (!channel) {
++#if VDRVERSNUM > 20300
++                LOCK_CHANNELS_READ;
++                channel = (cChannel *)Channels->First();
++                if(channel->GroupSep())
++                    channel = (cChannel *)Channels->Next(channel);
++#else
+                 channel = Channels.First();
+                 if(channel->GroupSep())
+                     channel = Channels.Next(channel);
++#endif
+             } else {
+                 cChannel *next = channel;
++#if VDRVERSNUM > 20300
++                LOCK_CHANNELS_READ;
++                while (next = (cChannel *)Channels->Next(next)) {
++#else
+                 while (next = Channels.Next(next)) {
++#endif
+                     if(!next->GroupSep()) {
+                         channel = next;
+                         break;
+@@ -2052,7 +2081,12 @@
+                fresh = false;
+             }
+             channelNumber = channelNumber * 10 + (Key - k0);
++#if VDRVERSNUM > 20300
++            LOCK_CHANNELS_READ;
++            cChannel *chanNew = (cChannel *)Channels->GetByNumber(channelNumber);
++#else
+             cChannel *chanNew = Channels.GetByNumber(channelNumber);
++#endif
+             if (chanNew) {
+                 channel = chanNew;
+                 DrawValue();
+@@ -2242,7 +2276,12 @@
+     if (!recording)
+         return;
+     const cRecordingInfo *recInfo = recording->Info();
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    cChannel *channel = (cChannel *)Channels->GetByChannelID(recInfo->ChannelID());
++#else
+     cChannel *channel = Channels.GetByChannelID(recInfo->ChannelID());
++#endif
+     cString channelName = tr("unknown channel");
+     if (channel)
+         channelName = channel->Name();
+@@ -2899,4 +2938,4 @@
+             break;
+     }
+     return rmsNotConsumed;
+-}
+\ No newline at end of file
++}
+Index: b/recmenumanager.c
+===================================================================
+--- a/recmenumanager.c
++++ b/recmenumanager.c
+@@ -125,7 +125,12 @@
+                 timerIndex = menu->GetTimerConflictIndex();
+             } else break;
+             int timerID = timerConflicts->GetCurrentConflictTimerID(timerIndex);
++#if VDRVERSNUM > 20300
++            LOCK_TIMERS_READ;
++            cTimer *t = (cTimer *)Timers->Get(timerID);
++#else
+             cTimer *t = Timers.Get(timerID);
++#endif
+             if (t) {
+                 const cEvent *ev = t->Event();
+                 if (ev) {
+@@ -156,7 +161,12 @@
+                 timerIndex = menu->GetTimerConflictIndex();
+             } else break;
+             int timerID = timerConflicts->GetCurrentConflictTimerID(timerIndex);
++#if VDRVERSNUM > 20300
++            LOCK_TIMERS_READ;
++            cTimer *timer = (cTimer *)Timers->Get(timerID);
++#else
+             cTimer *timer = Timers.Get(timerID);
++#endif
+             if (timer) {
+                 delete activeMenu;
+                 activeMenu = new cRecMenuEditTimer(timer, rmsSaveTimerConflictMenu);
+@@ -230,7 +240,12 @@
+                 recFolder = menu->GetFolder();
+             }
+             delete activeMenu;
++#if VDRVERSNUM > 20300
++	    LOCK_CHANNELS_READ;
++            cChannel *channel = (cChannel *)Channels->GetByChannelID(event->ChannelID());
++#else
+             cChannel *channel = Channels.GetByChannelID(event->ChannelID());
++#endif
+             activeMenu = new cRecMenuSeriesTimer(channel, event, recFolder);
+             activeMenu->Display();
+             break; }
+@@ -606,7 +621,12 @@
+                 timerConflict = menu->GetTimerConflictIndex();
+             } else break;
+             int timerID = timerConflicts->GetCurrentConflictTimerID(timerConflict);
++#if VDRVERSNUM > 20300
++            LOCK_TIMERS_READ;
++            cTimer *timer = (cTimer *)Timers->Get(timerID);
++#else
+             cTimer *timer = Timers.Get(timerID);
++#endif
+             if (timer) {
+                 const cEvent *event = timer->Event();
+                 if (event) {
+@@ -648,7 +668,12 @@
+                 originalConflictIndex = menu->GetTimerConflictIndex();
+             } else break;
+             int originalTimerID = timerConflicts->GetCurrentConflictTimerID(originalConflictIndex);
++#if VDRVERSNUM > 20300
++            LOCK_TIMERS_READ;
++            cTimer *timerOriginal = (cTimer *)Timers->Get(originalTimerID);
++#else
+             cTimer *timerOriginal = Timers.Get(originalTimerID);
++#endif
+             if (replace && timerOriginal) {
+                 recManager->DeleteTimer(timerOriginal->Event());
+                 recManager->createTimer(replace);
+@@ -820,7 +845,12 @@
+ 
+ bool cRecMenuManager::DisplayTimerConflict(cTimer *timer) {
+     int timerID = 0;
++#if VDRVERSNUM > 20300
++    LOCK_TIMERS_READ;
++    for (cTimer *t = (cTimer *)Timers->First(); t; t = (cTimer *)Timers->Next(t)) {
++#else
+     for (cTimer *t = Timers.First(); t; t = Timers.Next(t)) {
++#endif
+         if (t == timer)
+             return DisplayTimerConflict(timerID);
+         timerID++;
+@@ -890,4 +920,4 @@
+     }
+     osdManager.flush();
+     return state;
+-}
+\ No newline at end of file
++}
+Index: b/recmenus.c
+===================================================================
+--- a/recmenus.c
++++ b/recmenus.c
+@@ -105,7 +105,12 @@
+ // --- cRecMenuConfirmTimer  ---------------------------------------------------------
+ cRecMenuConfirmTimer::cRecMenuConfirmTimer(const cEvent *event) {
+     SetWidthPercent(50);
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    cString channelName = Channels->GetByChannelID(event->ChannelID())->Name();
++#else
+     cString channelName = Channels.GetByChannelID(event->ChannelID())->Name();
++#endif
+     cString message;
+     bool eventHasTimer = false;
+     if (tvguideConfig.useRemoteTimers && pRemoteTimers) {
+@@ -143,7 +148,12 @@
+ // --- cRecMenuConfirmDeleteTimer  ---------------------------------------------------------
+ cRecMenuConfirmDeleteTimer::cRecMenuConfirmDeleteTimer(const cEvent *event) {
+     SetWidthPercent(50);
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    cString channelName = Channels->GetByChannelID(event->ChannelID())->Name();
++#else
+     cString channelName = Channels.GetByChannelID(event->ChannelID())->Name();
++#endif
+     cString text = cString::sprintf("%s\n%s\n%s %s - %s\n%s", 
+                                     tr("Timer deleted"), 
+                                     *channelName,
+@@ -165,7 +175,12 @@
+ // --- cRecMenuAskDeleteTimer ---------------------------------------------------------
+ cRecMenuAskDeleteTimer::cRecMenuAskDeleteTimer(const cEvent *event) {
+     SetWidthPercent(50);
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    cString channelName = Channels->GetByChannelID(event->ChannelID())->Name();
++#else
+     cString channelName = Channels.GetByChannelID(event->ChannelID())->Name();
++#endif
+     cString text = cString::sprintf("%s \"%s, %s\" %s", 
+                                     tr("Timer"),
+                                     *channelName,
+@@ -227,8 +242,15 @@
+                                                   conflict->overlapStop));
+     SetFooter(new cRecMenuItemButton(tr("Ignore Conflict"), rmsIgnoreTimerConflict, false, true));
+     int i=0;
++#if VDRVERSNUM > 20300
++    LOCK_TIMERS_READ;
++#endif
+     for(std::vector<int>::iterator it = conflict->timerIDs.begin(); it != conflict->timerIDs.end(); it++) {
++#if VDRVERSNUM > 20300
++        const cTimer *timer = Timers->Get(*it);
++#else
+         const cTimer *timer = Timers.Get(*it);
++#endif
+         if (timer) {
+             if (!AddMenuItemInitial(new cRecMenuItemTimer(  timer,
+                                                       rmsTimerConflictShowInfo,
+@@ -252,7 +274,12 @@
+     
+ cRecMenuItem *cRecMenuTimerConflict::GetMenuItem(int number) { 
+     if ((number >= 0) && (number < conflict->timerIDs.size())) {
++#if VDRVERSNUM > 20300
++        LOCK_TIMERS_READ;
++        const cTimer *timer = Timers->Get(conflict->timerIDs[number]);
++#else
+         const cTimer *timer = Timers.Get(conflict->timerIDs[number]);
++#endif
+         cRecMenuItem *result = new cRecMenuItemTimer( timer,
+                                                       rmsTimerConflictShowInfo,
+                                                       rmsDeleteTimerConflictMenu, 
+@@ -353,8 +380,14 @@
+ // --- cRecMenuConfirmRerunUsed  ---------------------------------------------------------
+ cRecMenuConfirmRerunUsed::cRecMenuConfirmRerunUsed(const cEvent *original, const cEvent *replace) {
+     SetWidthPercent(70);
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    cString channelOrig = Channels->GetByChannelID(original->ChannelID())->Name();
++    cString channelReplace = Channels->GetByChannelID(replace->ChannelID())->Name();
++#else
+     cString channelOrig = Channels.GetByChannelID(original->ChannelID())->Name();
+     cString channelReplace = Channels.GetByChannelID(replace->ChannelID())->Name();
++#endif
+     cString message1 = tr("Timer for");
+     cString message2 = tr("replaced by rerun");
+     cString text = cString::sprintf("%s\n\"%s\", %s %s, %s\n%s\n\"%s\", %s %s, %s", 
+@@ -508,7 +541,12 @@
+ }
+ 
+ cTimer *cRecMenuSeriesTimer::GetTimer(void) {
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    cChannel *chan = (cChannel *)Channels->GetByNumber(channel);
++#else
+     cChannel *chan = Channels.GetByNumber(channel);
++#endif
+     cTimer *seriesTimer = new cTimer(NULL, NULL, chan);
+     cString fileName = "TITLE EPISODE";
+     if (folder.size() > 0) {
+@@ -789,8 +827,14 @@
+         startChannel = 1;
+     if (stopChannel == 0)
+         stopChannel = 1;
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    useChannelSubMenu.push_back(new cRecMenuItemChannelChooser(tr("Start Channel"), (cChannel *)Channels->GetByNumber(startChannel), false, &startChannel, rmsSearchTimerSave));
++    useChannelSubMenu.push_back(new cRecMenuItemChannelChooser(tr("Stop Channel"), (cChannel *)Channels->GetByNumber(stopChannel), false, &stopChannel, rmsSearchTimerSave));
++#else
+     useChannelSubMenu.push_back(new cRecMenuItemChannelChooser(tr("Start Channel"), Channels.GetByNumber(startChannel), false, &startChannel, rmsSearchTimerSave));
+     useChannelSubMenu.push_back(new cRecMenuItemChannelChooser(tr("Stop Channel"), Channels.GetByNumber(stopChannel), false, &stopChannel, rmsSearchTimerSave));
++#endif
+ 
+     useTimeSubMenu.push_back(new cRecMenuItemTime(tr("Start after"), startTime, false, &startTime, rmsSearchTimerSave));
+     useTimeSubMenu.push_back(new cRecMenuItemTime(tr("Start before"), stopTime, false, &stopTime, rmsSearchTimerSave));
+@@ -1214,7 +1258,12 @@
+ // --- cRecMenuSearchConfirmTimer  ---------------------------------------------------------
+ cRecMenuSearchConfirmTimer::cRecMenuSearchConfirmTimer(const cEvent *event, eRecMenuState nextAction) {
+     SetWidthPercent(50);
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    cString channelName = Channels->GetByChannelID(event->ChannelID())->Name();
++#else
+     cString channelName = Channels.GetByChannelID(event->ChannelID())->Name();
++#endif
+     cString message = tr("Timer created");
+     cString text = cString::sprintf("%s\n%s\n%s %s - %s\n%s", 
+                                     *message, 
+@@ -1363,7 +1412,12 @@
+ 
+ void cRecMenuTimeline::GetTimersForDay(void) {
+     timersToday.clear();
++#if VDRVERSNUM > 20300
++    LOCK_TIMERS_READ;
++    for (cTimer *t = (cTimer *)Timers->First(); t; t = (cTimer *)Timers->Next(t)) {
++#else
+     for (cTimer *t = Timers.First(); t; t = Timers.Next(t)) {
++#endif
+         if (((t->StartTime() > timeStart) && (t->StartTime() <= timeStop)) || ((t->StopTime() > timeStart) && (t->StopTime() <= timeStop))) {
+             timersToday.push_back(t);
+         }
+@@ -1558,4 +1612,4 @@
+ cTVGuideSearchTimer cRecMenuFavorites::GetFavorite(void) {
+     cRecMenuItemFavorite *activeItem = dynamic_cast<cRecMenuItemFavorite*>(GetActiveMenuItem());
+     return activeItem->GetFavorite();
+-}
+\ No newline at end of file
++}
+Index: b/searchtimer.c
+===================================================================
+--- a/searchtimer.c
++++ b/searchtimer.c
+@@ -16,8 +16,14 @@
+     startTime = 0000;
+     stopTime = 2359;
+     useChannel = false;
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    channelMin = (cChannel *)Channels->GetByNumber(cDevice::CurrentChannel());
++    channelMax = (cChannel *)Channels->GetByNumber(cDevice::CurrentChannel());
++#else
+     channelMin = Channels.GetByNumber(cDevice::CurrentChannel());
+     channelMax = Channels.GetByNumber(cDevice::CurrentChannel());
++#endif
+     channelGroup = "";
+     useCase = false;
+     mode = 0;
+@@ -239,7 +245,12 @@
+                     char *channelMinbuffer = NULL;
+                     char *channelMaxbuffer = NULL;
+                     int channels = sscanf(values[value].c_str(), "%a[^|]|%a[^|]", &channelMinbuffer, &channelMaxbuffer);
++#if VDRVERSNUM > 20300
++                    LOCK_CHANNELS_READ;
++                    channelMin = (cChannel *)Channels->GetByChannelID(tChannelID::FromString(channelMinbuffer), true, true);
++#else
+                     channelMin = Channels.GetByChannelID(tChannelID::FromString(channelMinbuffer), true, true);
++#endif
+                     if (!channelMin) {
+                     	channelMin = channelMax = NULL;
+                         useChannel = 0;
+@@ -247,7 +258,12 @@
+                     if (channels == 1)
+                         channelMax = channelMin;
+                     else {
++#if VDRVERSNUM > 20300
++                        LOCK_CHANNELS_READ;
++                        channelMax = (cChannel *)Channels->GetByChannelID(tChannelID::FromString(channelMaxbuffer), true, true);
++#else
+                         channelMax = Channels.GetByChannelID(tChannelID::FromString(channelMaxbuffer), true, true);
++#endif
+                         if (!channelMax) {
+                             channelMin = channelMax = NULL;
+                             useChannel = 0;
+@@ -511,7 +527,12 @@
+     int numTimers = 0;
+     if (ID < 0)
+     	return numTimers;
++#if VDRVERSNUM > 20300
++    LOCK_TIMERS_READ;
++    for (cTimer *timer = (cTimer *)Timers->First(); timer; timer = (cTimer *)Timers->Next(timer)) {
++#else
+     for (cTimer *timer = Timers.First(); timer; timer = Timers.Next(timer)) {
++#endif
+         char* searchID = GetAuxValue(timer, "s-id");
+         if (!searchID) continue;
+       	if (ID == atoi(searchID))
+@@ -525,7 +546,12 @@
+     int numRecordings = 0;
+     if (ID < 0)
+         return numRecordings;
++#if VDRVERSNUM > 20300
++    LOCK_RECORDINGS_READ;
++    for (cRecording *recording = (cRecording *)Recordings->First(); recording; recording = (cRecording *)Recordings->Next(recording)) {
++#else
+     for (cRecording *recording = Recordings.First(); recording; recording = Recordings.Next(recording)) {
++#endif
+         if (recording->IsEdited()) 
+             continue;
+         if (!recording->Info()) 
+Index: b/searchtimer.h
+===================================================================
+--- a/searchtimer.h
++++ b/searchtimer.h
+@@ -106,8 +106,13 @@
+     void SetUseSubtitle(bool useSubtitle) { this->useSubtitle = useSubtitle; };
+     void SetUseDesription(bool useDescription) { this->useDescription = useDescription; };
+     void SetUseChannel(bool useChannel) { this->useChannel = useChannel; };
++#if VDRVERSNUM > 20300
++    void SetStartChannel(int startChannel) { LOCK_CHANNELS_READ; channelMin = (cChannel *)Channels->GetByNumber(startChannel); };
++    void SetStopChannel(int stopChannel) { LOCK_CHANNELS_READ; channelMax = (cChannel *)Channels->GetByNumber(stopChannel); };
++#else
+     void SetStartChannel(int startChannel) { channelMin = Channels.GetByNumber(startChannel); };
+     void SetStopChannel(int stopChannel) { channelMax = Channels.GetByNumber(stopChannel); };
++#endif
+     void SetUseTime(bool useTime) { this->useTime = useTime; };
+     void SetStartTime(int startTime) { this->startTime = startTime; };
+     void SetStopTime(int stopTime) { this->stopTime = stopTime; };
+Index: b/tvguideosd.c
+===================================================================
+--- a/tvguideosd.c
++++ b/tvguideosd.c
+@@ -73,11 +73,20 @@
+ 
+ void cTvGuideOsd::drawOsd() {
+     cPixmap::Lock();
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    cChannel *startChannel = (cChannel *)Channels->GetByNumber(cDevice::CurrentChannel());
++#else
+     cChannel *startChannel = Channels.GetByNumber(cDevice::CurrentChannel());
++#endif
+     int numBack = tvguideConfig.numGrids / 2;
+     int offset = 0;
+     const cChannel *newStartChannel = startChannel;
++#if VDRVERSNUM > 20300
++    for (; newStartChannel ; newStartChannel = Channels->Prev(newStartChannel)) {
++#else
+     for (; newStartChannel ; newStartChannel = Channels.Prev(newStartChannel)) {
++#endif
+         if (newStartChannel && !newStartChannel->GroupSep()) {
+             offset++;
+         }
+@@ -85,7 +94,11 @@
+             break;
+     }
+     if (!newStartChannel)
++#if VDRVERSNUM > 20300
++        newStartChannel = Channels->First();
++#else
+         newStartChannel = Channels.First();
++#endif
+     offset--;
+     if (offset < 0)
+         offset = 0;
+@@ -122,7 +135,12 @@
+     columns.Clear();
+     if (!channelStart)
+         return;
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++    for (const cChannel *channel = channelStart; channel; channel = Channels->Next(channel)) {
++#else
+     for (const cChannel *channel = channelStart; channel; channel = Channels.Next(channel)) {
++#endif
+         if (!channel->GroupSep()) {
+             if (channelGroups->IsInLastGroup(channel)) {
+                 break;
+@@ -144,7 +162,11 @@
+         int numCurrent = columns.Count();
+         int numBack = tvguideConfig.numGrids - numCurrent;
+         int newChannelNumber = columns.First()->getChannel()->Number() - numBack;
++#if VDRVERSNUM > 20300
++        const cChannel *newStart = Channels->GetByNumber(newChannelNumber);
++#else
+         const cChannel *newStart = Channels.GetByNumber(newChannelNumber);
++#endif
+         readChannels(newStart);
+     }
+ }
+@@ -213,7 +235,12 @@
+     bool colAdded = false;
+     if (!colRight) {
+         const cChannel *channelRight = activeGrid->column->getChannel();
++#if VDRVERSNUM > 20300
++        LOCK_CHANNELS_READ;
++        while (channelRight = Channels->Next(channelRight)) {
++#else
+         while (channelRight = Channels.Next(channelRight)) {
++#endif
+             if (!channelRight->GroupSep()) {
+                 if (channelGroups->IsInLastGroup(channelRight)) {
+                     break;
+@@ -263,7 +290,12 @@
+     bool colAdded = false;
+     if (!colLeft) {
+         const cChannel *channelLeft = activeGrid->column->getChannel();
++#if VDRVERSNUM > 20300
++        LOCK_CHANNELS_READ;
++        while (channelLeft = Channels->Prev(channelLeft)) {
++#else
+         while (channelLeft = Channels.Prev(channelLeft)) {
++#endif
+             if (!channelLeft->GroupSep()) {
+                 colLeft = new cChannelColumn(0, channelLeft, myTime);
+                 if (colLeft->readGrids()) {
+@@ -431,14 +463,25 @@
+     int currentCol = activeGrid->column->GetNum();
+     const cChannel *prev = NULL;
+     
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++#endif
+     if (tvguideConfig.channelJumpMode == eGroupJump) {
+         int prevNum = channelGroups->GetPrevGroupChannelNumber(currentChannel);
+         if (prevNum) {
++#if VDRVERSNUM > 20300
++            prev = Channels->GetByNumber(prevNum);
++#else
+             prev = Channels.GetByNumber(prevNum);
++#endif
+         }    
+     } else if (tvguideConfig.channelJumpMode == eNumJump) {
+         int i = tvguideConfig.jumpChannels + 1;
++#if VDRVERSNUM > 20300
++        for (const cChannel *channel = firstChannel; channel; channel = Channels->Prev(channel)) {
++#else
+         for (const cChannel *channel = firstChannel; channel; channel = Channels.Prev(channel)) {
++#endif
+             if (!channel->GroupSep()) {
+                 prev = channel;
+                 i--;
+@@ -467,14 +510,25 @@
+     const cChannel *firstChannel = columns.First()->getChannel();
+     const cChannel *next = NULL;
+     
++#if VDRVERSNUM > 20300
++    LOCK_CHANNELS_READ;
++#endif
+     if (tvguideConfig.channelJumpMode == eGroupJump) {
+         int nextNum = channelGroups->GetNextGroupChannelNumber(currentChannel);
+         if (nextNum) {
++#if VDRVERSNUM > 20300
++            next = Channels->GetByNumber(nextNum);
++#else
+             next = Channels.GetByNumber(nextNum);
++#endif
+         }    
+     } else if (tvguideConfig.channelJumpMode == eNumJump) {
+         int i=0;
++#if VDRVERSNUM > 20300
++        for (const cChannel *channel = firstChannel; channel; channel = Channels->Next(channel)) {
++#else
+         for (const cChannel *channel = firstChannel; channel; channel = Channels.Next(channel)) {
++#endif
+             if (channelGroups->IsInLastGroup(channel)) {
+                 break;
+             }
+@@ -625,7 +679,12 @@
+         int newChannelNum = channelJumper->GetChannel(); 
+         delete channelJumper;
+         channelJumper = NULL;
++#if VDRVERSNUM > 20300
++	LOCK_CHANNELS_READ;
++        const cChannel *newChannel = Channels->GetByNumber(newChannelNum);
++#else
+         const cChannel *newChannel = Channels.GetByNumber(newChannelNum);
++#endif
+         if (newChannel) {
+             readChannels(newChannel);
+             if (columns.Count() > 0) {
+Index: b/timerconflict.c
+===================================================================
+--- a/timerconflict.c
++++ b/timerconflict.c
+@@ -85,8 +85,15 @@
+     for (int i=0; i < numConflicts; i++) {
+         cTimeInterval *unionSet = NULL;
+         int numTimers = conflicts[i]->timerIDs.size();
++#if VDRVERSNUM > 20300
++        LOCK_TIMERS_READ;
++#endif
+         for (int j=0; j < numTimers; j++) {
++#if VDRVERSNUM > 20300
++            const cTimer *timer = Timers->Get(conflicts[i]->timerIDs[j]);
++#else
+             const cTimer *timer = Timers.Get(conflicts[i]->timerIDs[j]);
++#endif
+             if (timer) {
+                 if (!unionSet) {
+                     unionSet = new cTimeInterval(timer->StartTime(), timer->StopTime());
+@@ -105,7 +112,11 @@
+         
+         cTimeInterval *intersect = NULL;
+         for (int j=0; j < numTimers; j++) {
++#if VDRVERSNUM > 20300
++            const cTimer *timer = Timers->Get(conflicts[i]->timerIDs[j]);
++#else
+             const cTimer *timer = Timers.Get(conflicts[i]->timerIDs[j]);
++#endif
+             if (timer) {
+                 if (!intersect) {
+                     intersect = new cTimeInterval(timer->StartTime(), timer->StopTime());
+@@ -174,4 +185,4 @@
+             conflictsFound.push_back(conflicts[i]);
+     }
+     return conflictsFound;
+-}
+\ No newline at end of file
++}
+Index: b/view.c
+===================================================================
+--- a/view.c
++++ b/view.c
+@@ -130,7 +130,12 @@
+         timerMatch = (eTimerMatch)rtMatch.timerMatch;
+         ti = rtMatch.timer;
+     } else {
++#if VDRVERSNUM > 20300
++        LOCK_TIMERS_READ;
++        ti=(cTimer *)Timers->GetMatch(event, &timerMatch);
++#else
+         ti=Timers.GetMatch(event, &timerMatch);
++#endif
+     }
+     if (timerMatch == tmFull) {
+         cString recIconText(" REC ");
+@@ -1043,4 +1048,4 @@
+     }
+     DrawScrollbar();
+     osdManager.flush();
+-}
+\ No newline at end of file
++}

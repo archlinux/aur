@@ -1,0 +1,14 @@
+Index: b/channelcolumn.h
+===================================================================
+--- a/channelcolumn.h
++++ b/channelcolumn.h
+@@ -20,7 +20,9 @@
+     const cChannel *channel;
+     cHeaderGrid *header;
+     cList<cGrid> grids;
++#if VDRVERSNUM < 20300
+     cSchedulesLock *schedulesLock;
++#endif
+     const cSchedules *schedules;
+     bool hasTimer;
+     bool hasSwitchTimer;

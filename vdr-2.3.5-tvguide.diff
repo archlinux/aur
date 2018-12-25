@@ -1,0 +1,154 @@
+Index: b/epggrid.c
+===================================================================
+--- a/epggrid.c
++++ b/epggrid.c
+@@ -20,7 +20,7 @@
+ void cEpgGrid::SetViewportHeight() {
+     int viewportHeightOld = viewportHeight;
+     if ( column->Start() > StartTime() ) {
+-        viewportHeight = (min((int)EndTime(), column->Stop()) - column->Start()) /60;
++        viewportHeight = (std::min((int)EndTime(), column->Stop()) - column->Start()) /60;
+     } else if ( column->Stop() < EndTime() ) {
+         viewportHeight = (column->Stop() - StartTime()) /60;
+         if (viewportHeight < 0) viewportHeight = 0;
+Index: b/imagecache.c
+===================================================================
+--- a/imagecache.c
++++ b/imagecache.c
+@@ -460,7 +460,7 @@
+     }
+     if (!cornerLeft || !cornerRight)
+         return;
+-    int maxX = min(cornerWidth, imgWidth);
++    int maxX = std::min(cornerWidth, imgWidth);
+     for (int row = 0; row < cornerHeight; row++) {
+         for (int col = 0; col < maxX; ++col) {
+             img->SetPixel(cPoint(col, row), cornerLeft->GetPixel(cPoint(col, row)));
+@@ -482,7 +482,7 @@
+     }
+     if (!cornerHead || !cornerBottom)
+         return;
+-    int maxY = min(cornerHeight, imgHeight);
++    int maxY = std::min(cornerHeight, imgHeight);
+     for (int row = 0; row < maxY; row++) {
+         for (int col = 0; col < cornerWidth; ++col) {
+             img->SetPixel(cPoint(col, row), cornerHead->GetPixel(cPoint(col, row)));
+@@ -527,7 +527,7 @@
+     int imgWidth = img->Width();
+     int imgHeight = img->Height();
+     int heightHeadBottom = groupsHead->Height();
+-    int maxY = min(heightHeadBottom, imgHeight);
++    int maxY = std::min(heightHeadBottom, imgHeight);
+     for (int row = 0; row < maxY; row++) {
+         for (int col = 0; col < imgWidth; ++col) {
+             img->SetPixel(cPoint(col, row), groupsHead->GetPixel(cPoint(col, row)));
+@@ -542,7 +542,7 @@
+     int imgWidth = img->Width();
+     int imgHeight = img->Height();
+     int widthLeftRight = groupsLeft->Width();
+-    int maxX = min(widthLeftRight, imgWidth);
++    int maxX = std::min(widthLeftRight, imgWidth);
+     for (int row = 0; row < imgHeight; row++) {
+         for (int col = 0; col < maxX; ++col) {
+             img->SetPixel(cPoint(col, row), groupsLeft->GetPixel(cPoint(col, row)));
+Index: b/recmenuitem.c
+===================================================================
+--- a/recmenuitem.c
++++ b/recmenuitem.c
+@@ -543,7 +543,7 @@
+ void cRecMenuItemSelect::DrawValue(void) {
+     pixmapVal->Fill(clrTransparent);
+     std::string textVal = strings[currentVal];
+-    int iconSize = min(128, height);
++    int iconSize = std::min(128, height);
+     int textX = width - font->Width(textVal.c_str()) - iconSize;
+     int textY = (height - font->Height()) / 2;
+     pixmapVal->DrawText(cPoint(textX, textY), textVal.c_str(), colorText, clrTransparent, font);
+@@ -644,7 +644,7 @@
+ 
+ void cRecMenuItemSelectDirectory::DrawValue(void) {
+     pixmapVal->Fill(clrTransparent);
+-    int iconSize = min(128, height);
++    int iconSize = std::min(128, height);
+     int textX = width - font->Width(folders[currentVal].c_str()) - iconSize;
+     int textY = (height - font->Height()) / 2;
+     pixmapVal->DrawText(cPoint(textX, textY), folders[currentVal].c_str(), colorText, clrTransparent, font);
+@@ -948,7 +948,7 @@
+     if (specialChar)
+         addition = 1;
+     Utf8FromArray(startCharUtf8, p, numChars+addition);
+-    int maxChars = min(numChars+1+addition, 8);
++    int maxChars = std::min(numChars+1+addition, 8);
+     char *smskey = new char[maxChars];
+     Utf8Strn0Cpy(smskey, p, maxChars);
+     return smskey;
+@@ -2161,7 +2161,7 @@
+         if (charWidth > maxWidth)
+             maxWidth = charWidth;
+     }    
+-    daysSize = min(maxWidth + 15, height-4);
++    daysSize = std::min(maxWidth + 15, height-4);
+     daysX = width - 10 - 7*daysSize;
+     daysY = (height  - daysSize) / 2;
+ }
+Index: b/statusheader.c
+===================================================================
+--- a/statusheader.c
++++ b/statusheader.c
+@@ -82,7 +82,7 @@
+         int lineHeight = fontManager.FontStatusHeader->Height();
+         int textLines = description.Lines();
+         int maxLines = heightText / lineHeight;
+-        int lines = min(textLines, maxLines);
++        int lines = std::min(textLines, maxLines);
+         for (int i = 0; i < lines-1; i++) {
+             pixmapText->DrawText(cPoint(x,y), description.GetLine(i), theme.Color(clrFont), colorTextBack, fontManager.FontStatusHeader);
+             y += lineHeight;
+@@ -139,4 +139,4 @@
+     pixmapTVFrame->DrawEllipse(cRect(frame, height - radius - frame, radius, radius), theme.Color(clrBackgroundOSD), -3);
+     pixmapTVFrame->DrawRectangle(cRect(0, height - frame, tvFrameWidth, frame), theme.Color(clrBackgroundOSD));
+     pixmapTVFrame->DrawEllipse(cRect(tvFrameWidth - radius - frame, height - radius - frame, radius, radius), theme.Color(clrBackgroundOSD), -4);
+-}
+\ No newline at end of file
++}
+Index: b/switchtimer.c
+===================================================================
+--- a/switchtimer.c
++++ b/switchtimer.c
+@@ -20,6 +20,23 @@
+     }
+ }
+ 
++cSwitchTimer::cSwitchTimer(const cSwitchTimer &SwitchTimer) {
++	eventID = 0;
++	startTime = 0;
++	switchMinsBefore = 0;
++	announceOnly = 0;
++	*this = SwitchTimer;
++}
++
++cSwitchTimer& cSwitchTimer::operator= (const cSwitchTimer &SwitchTimer) {
++    this->eventID = SwitchTimer.eventID;
++    this->startTime = SwitchTimer.startTime;
++    this->channelID = SwitchTimer.channelID;
++    this->switchMinsBefore = SwitchTimer.switchMinsBefore;
++	this->announceOnly = SwitchTimer.announceOnly;
++    return *this;
++}
++
+ bool cSwitchTimer::Parse(const char *s) {
+     char *line;
+     char *pos;
+Index: b/switchtimer.h
+===================================================================
+--- a/switchtimer.h
++++ b/switchtimer.h
+@@ -12,6 +12,8 @@
+     int announceOnly;
+     cSwitchTimer(void);
+     cSwitchTimer(const cEvent* Event);
++	cSwitchTimer(const cSwitchTimer &SwitchTimer);
++	cSwitchTimer& operator= (const cSwitchTimer &SwitchTimer);
+     bool Parse(const char *s);
+     void SetEventID(tEventID eventID) { this->eventID = eventID; };
+     void SetStartTime(time_t startTime) { this->startTime = startTime; };
