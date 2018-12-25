@@ -6,54 +6,41 @@
 # Contributor: Thomas Jost <schnouki schnouki net>
 # Contributor: Hinrich Harms <arch hinrich de>
 
-pkgbase=enigmail-git
-pkgname=(icedove-${pkgbase} thunderbird-${pkgbase})
-pkgver=1.9.r432.gfa5c103b
+pkgname=thunderbird-extension-enigmail-git
+pkgver=1.9.r1063.gb06dad91
 pkgrel=2
-_pkgdesc="extension that enables sending and receiving signed and encrypted e-mail messages (development version)"
-pkgdesc="Icedove / Thunderbird ${_pkgdesc}"
+pkgdesc="OpenPGP message encryption and authentication for Thunderbird (development version)"
 arch=('any')
 url="https://www.enigmail.net/"
-license=('MPL' 'GPL')
-depends=('gnupg>=2.0.7')
-makedepends=('git' 'zip' 'python2' 'perl>=5.8')
-source=("${pkgbase}::git+https://git.code.sf.net/p/enigmail/source")
+license=('MPL' 'GPL3')
+depends=('gnupg' 'thunderbird')
+makedepends=('git' 'zip' 'python2' 'perl')
+provides=('thunderbird-extension-enigmail' 'thunderbird-enigmail')
+conflicts=('thunderbird-extension-enigmail' 'thunderbird-enigmail')
+source=("enigmail-git::git+https://git.code.sf.net/p/enigmail/source")
 sha512sums=('SKIP')
 
 pkgver()
 {
-	cd $pkgbase
+	cd enigmail-git
 	git describe --long | sed 's/enigmail-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build()
 {
-	cd $pkgbase
+	cd enigmail-git
 	./configure PYTHON=/usr/bin/python2
 	make -j1 # fails with -j greater than 1
 }
 
-_package_for()
+package()
 {
-	cd $pkgbase
+	cd enigmail-git
+
 	local emid="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' \
 		package/install.rdf)"
-	install -d -m755 "${pkgdir}/usr/lib/${1}/extensions/${emid}"
-	bsdtar -xf build/enigmail-*.xpi \
-		-C "${pkgdir}/usr/lib/${1}/extensions/${emid}"
+	local target_dir="${pkgdir}/usr/lib/thunderbird/extensions/${emid}"
 
-	pkgdesc="${1^} ${_pkgdesc}"
-	depends+=("${1}>=38")
-	provides+=(${1}-enigmail)
-	conflicts+=(${1}-enigmail)
-}
-
-package_icedove-enigmail-git()
-{
-	_package_for icedove
-}
-
-package_thunderbird-enigmail-git()
-{
-	_package_for thunderbird
+	install -d -m755 "$target_dir"
+	cp -R build/dist/. "$target_dir"
 }

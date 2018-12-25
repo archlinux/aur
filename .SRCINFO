@@ -1,20 +1,23 @@
-pkgbase = enigmail-git
-	pkgdesc = Icedove / Thunderbird extension that enables sending and receiving signed and encrypted e-mail messages (development version)
-	pkgver = 1.9.r432.gfa5c103b
+pkgbase = thunderbird-extension-enigmail-git
+	pkgdesc = OpenPGP message encryption and authentication for Thunderbird (development version)
+	pkgver = 1.9.r1063.gb06dad91
 	pkgrel = 2
 	url = https://www.enigmail.net/
 	arch = any
 	license = MPL
-	license = GPL
+	license = GPL3
 	makedepends = git
 	makedepends = zip
 	makedepends = python2
-	makedepends = perl>=5.8
-	depends = gnupg>=2.0.7
+	makedepends = perl
+	depends = gnupg
+	depends = thunderbird
+	provides = thunderbird-extension-enigmail
+	provides = thunderbird-enigmail
+	conflicts = thunderbird-extension-enigmail
+	conflicts = thunderbird-enigmail
 	source = enigmail-git::git+https://git.code.sf.net/p/enigmail/source
 	sha512sums = SKIP
 
-pkgname = icedove-enigmail-git
-
-pkgname = thunderbird-enigmail-git
+pkgname = thunderbird-extension-enigmail-git
 
