@@ -1,0 +1,3 @@
+post_install() {
+  echo "==> Python support has been removed after 1.4.7, this build does not support Python AIs"
+}

@@ -1,0 +1,37 @@
+[Unit]
+Description=Wesnoth-1.4 Server Daemon
+Documentation=https://www.wesnoth.org/wiki/ServerAdministration
+Documentation=man:wesnoth-1.4(6)
+After=network.target
+# They use by default the same port
+Conflicts=wesnothd.service wesnothd-1.0.service wesnothd-1.2.service wesnothd-1.6.service wesnothd-1.18.service wesnothd-1.10.service wesnothd-1.12.service wesnothd-1.14.service wesnothd-devel.service wesnothd-git.service
+
+[Service]
+ExecStart=/usr/bin/wesnothd-1.4 -t 2 -T 5
+# you can use -c to specify the same configuration file
+# which is used when starting wensothd from the wesnoth UI
+# (and make sure wesnothd has the required access permissions)
+
+SyslogIdentifier=Wesnothd-1.4
+User=nobody
+Group=users
+ExecStopPost=/usr/bin/rm -f /run/wesnothd-1.4/socket
+
+# Additional security-related features
+ProtectSystem=yes
+
+PrivateTmp=yes
+PrivateDevices=yes
+NoNewPrivileges=yes
+RestrictAddressFamilies=AF_INET AF_UNIX
+RestrictRealtime=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+ProtectControlGroups=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target

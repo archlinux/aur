@@ -1,0 +1,31 @@
+pkgbase = wesnoth-1.4
+	pkgdesc = Turn-based strategy game on a fantasy world (for old replays)
+	pkgver = 1.4.7+dev
+	pkgrel = 1
+	url = https://www.wesnoth.org
+	install = wesnoth-1.4.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = gcc43
+	depends = sdl
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = boost-libs
+	depends = zlib
+	depends = freetype2
+	options = !emptydirs
+	options = !zipman
+	source = wesnoth-1.4.desktop
+	source = wesnothd-1.4.tmpfiles.conf
+	source = wesnothd-1.4.service
+	source = wesnoth-1.4.appdata.xml
+	md5sums = b4052583dce2f360af5686f6320247a7
+	md5sums = e5e9941ae3fd5fce9af88a27c4e6795c
+	md5sums = c4d2f3ff8cf62ef214b9b249111df860
+	md5sums = 8dd142ec9fc6a2104f6cbfa5f95d761f
+
+pkgname = wesnoth-1.4
+
