@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-autostart
-pkgver=0.9.6
-_vdrapi=2.2.0
-pkgrel=8
+pkgver=0.9.7
+_vdrapi=2.4.0
+pkgrel=1
 pkgdesc="Automatic start of other plug-ins on change or insertion of removable devices"
 url="http://www.uli-eckhardt.de/vdr/autostart.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -12,18 +12,15 @@ license=('GPL2')
 depends=('libcdio' 'libdbus' 'libdvdread' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
 backup=("var/lib/vdr/plugins/$_plugname/cd.mpg")
-source=("http://www.uli-eckhardt.de/vdr/download/${pkgname}-${pkgver}.tgz"
-        "autostart-improve_libcdio.diff::https://git.uli-eckhardt.de/?p=vdr-plugin-autostart.git;a=patch;h=1a6154bed8db840eec09274dd1c47b6362efa2e0"
+source=("https://www.uli-eckhardt.de/vdr/download/${pkgname}-${pkgver}.tgz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         "var/lib/vdr/plugins/$_plugname/$_plugname.conf")
-md5sums=('7d833142939d21a3edae907f9fa0b55b'
-         '44aec23d96b5895bcc54771295fe0273'
+md5sums=('c370f3c0dfa906b3670cfa2fcc5975ca'
          'bfac43507495484a347bf5ab6c158651')
 
 prepare() {
   cd "${srcdir}/${_plugname}-${pkgver}"
-  patch -p1 -i "$srcdir/autostart-improve_libcdio.diff"
   sed -i 's/$(DESTDIR)//g' Makefile.inc
 }
 
