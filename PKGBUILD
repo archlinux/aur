@@ -4,8 +4,8 @@
 pkgname=vdr-skinpearlhd
 pkgver=0.0.1_28_g9899940
 _gitver=9899940a4920e77d1d6c14a3b1bb16be47f5045d
-_vdrapi=2.2.0
-pkgrel=27
+_vdrapi=2.4.0
+pkgrel=28
 pkgdesc="conversion of the PearlHD-Skin written by mapovi to a native vdr-plugin"
 url="http://projects.vdr-developer.org/projects/show/plg-skinpearlhd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
