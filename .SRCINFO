@@ -1,6 +1,6 @@
 pkgbase = wikidata-cli
 	pkgdesc = The command-line interface to Wikidata
-	pkgver = 7.0.4
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/maxlath/wikidata-cli#readme
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = wikidata-cli
 	makedepends = npm
 	depends = nodejs
 	replaces = nodejs-wikidata-cli
-	noextract = wikidata-cli-7.0.4.tgz
-	source = https://registry.npmjs.org/wikidata-cli/-/wikidata-cli-7.0.4.tgz
-	sha256sums = 4425702743e380df5c9d75bd07e96dc38587fe6ced501ab8164d845194522e56
+	noextract = wikidata-cli-7.1.0.tgz
+	source = https://registry.npmjs.org/wikidata-cli/-/wikidata-cli-7.1.0.tgz
+	sha256sums = 1f7d8cdaf5c630f5509438534d101216a08a4cfedbb3e7921cf7c1c78582e9bc
 
 pkgname = wikidata-cli
 
