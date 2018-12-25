@@ -1,8 +1,8 @@
 # Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Ansible minor mode for Emacs"
 pkgname=emacs-ansible
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/k1LoW/emacs-ansible"
 license=('GPL3')
 depends=('emacs-s' 'emacs-f' 'emacs-yasnippet' 'ansible')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/k1LoW/emacs-ansible/archive/$pkgver.tar.gz")
-sha256sums=('0de0cf9d9506b3abf0c27e72eea47282e81abb3d8b7c2808f1ab401456d1aa8f')
+sha256sums=('b3fe614eef5b22755cdf9b543fa0a197038ab307ef748ccc2295b98713470af1')
 install=${pkgname}.install
 
 build() {
