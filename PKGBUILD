@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-externalplayer
 pkgver=0.3.2
-_vdrapi=2.2.0
-pkgrel=17
+_vdrapi=2.4.0
+pkgrel=18
 pkgdesc="use external players in VDR"
 url="http://www.uli-eckhardt.de/vdr/external.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 backup=('var/lib/vdr/plugins/externalplayer.conf')
 _plugname=${pkgname//vdr-/}
-source=("http://www.uli-eckhardt.de/vdr/download/$pkgname-$pkgver.tgz"
+source=("https://www.uli-eckhardt.de/vdr/download/$pkgname-$pkgver.tgz"
         "50-$_plugname.conf"
         'externalplayer-fix-operator-mismatch.diff')
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
