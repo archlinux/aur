@@ -1,0 +1,11 @@
+[Unit]
+Description = EPG HTTP Daemon that provides a web interface
+After = epgd.service
+
+[Service]
+Type = forking
+ExecStart = /usr/bin/epghttpd
+Restart = always
+
+[Install]
+WantedBy = multi-user.target
