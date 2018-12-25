@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=kodi-addon-pvr-vdr-vnsi
-pkgver=2.6.33
+pkgver=2.6.34
 # Note: Use commits from "Krypton" branch for Kodi 17
-_gitver=de2c0c1450acfba34f167ff29aefd0d22d209116
+_gitver=730414b3bb3f12d690aa2f55dfec55e7f907dcda
 pkgrel=1
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
