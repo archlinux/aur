@@ -2,8 +2,8 @@
 # Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
 
 pkgname=substance-designer
-pkgver=2018.2.2
-_build=1641
+pkgver=2018.3.1
+_build=1869
 pkgrel=1
 pkgdesc="Node-based, non-destructive PBR material authoring tool."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("https://download.allegorithmic.com/substance-designer/2018.x/Substance_
         'substance-designer-icon.png'
         'substance-designer.desktop'
         'substance-designer')
-sha256sums=('24307866e960f7fac1d43ef39461b169672a7f820a32e1c826bf3c2be715a862'
+sha256sums=('8e465aba40191d6e4c94e3715a62c976a8654bc9dc352bc098365e1f33aea592'
             '8f7f090d96dbb3535747d2c09c32970343c8887df610bc7ef92b59871a9bfb35'
             'bd33ac539f029d415472abd20b8531c3aac519d64504a14164668a7e261c950c'
             '714d4484f5ca6d1ac0de77729ab60fc6aee53a7dc217fda5a6401fb6f8eee156')
