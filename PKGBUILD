@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-dummydevice
 pkgver=2.0.0
-_vdrapi=2.2.0
-pkgrel=12
+_vdrapi=2.4.0
+pkgrel=13
 pkgdesc="Output device that does nothing"
 url="http://phivdr.dyndns.org/vdr/vdr-dummydevice/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
