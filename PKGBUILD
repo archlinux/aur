@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-iptv
-pkgver=2.2.1
-_vdrapi=2.2.0
-pkgrel=3
+pkgver=2.4.0
+_vdrapi=2.4.0
+pkgrel=1
 pkgdesc="Integrates multicast IPTV transport streams seamlessly into VDR"
 url="http://www.saunalahti.fi/~rahrenbe/vdr/iptv/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -13,8 +13,6 @@ depends=('curl' "vdr-api=${_vdrapi}")
 optdepends=('vlc: Needed for vlc2iptv')
 _plugname=${pkgname//vdr-/}
 source=("http://www.saunalahti.fi/~rahrenbe/vdr/$_plugname/files/$pkgname-$pkgver.tgz"
-        'https://github.com/rofafor/vdr-plugin-iptv/commit/ccc9bab5e0d1c0e37fd61b6f412563f200b33abd.diff'
-        'https://github.com/rofafor/vdr-plugin-iptv/commit/201b50eb9d10012560b3143e811340980dda7fcc.diff'
         'https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/3Sat.conf'
         'https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/Bundesligen-TV.conf'
         'https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/Daytona-Beach.conf'
@@ -35,9 +33,7 @@ backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'etc/vdr/plugins/iptv/vlcinput/zdf-iptv.conf'
         'etc/vdr/plugins/iptv/vlcinput/zdf_info-iptv.conf'
         'etc/vdr/plugins/iptv/vlcinput/zdf_kultur-iptv.conf')
-md5sums=('318d58e097895789b18a07cac46dfd1c'
-         '2154addb039a115b6647736926f5b0a1'
-         'e45d1fdbcf279f1978d4298eb4c63510'
+md5sums=('4de2b227c24f362b452870dbee05b30f'
          '5e960f7a71ee493c0bb7a7c56ea109c4'
          '8b51a64c8278f62dd9721a83a0654933'
          '48c790160833a16bc29aff1e0410995b'
@@ -48,14 +44,6 @@ md5sums=('318d58e097895789b18a07cac46dfd1c'
          'b611bef1267193d056f8e0b3eae3a63d'
          '793750d284f06285ea317128abcc398c'
          '5ffc4e10ee120975540a7b3bff916d56')
-
-prepare() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
-  if [ `vercmp $_vdrapi 2.3.0` -eq 1 ]; then
-    patch -p1 -i "$srcdir/ccc9bab5e0d1c0e37fd61b6f412563f200b33abd.diff"
-  fi
-  patch -p1 -i "$srcdir/201b50eb9d10012560b3143e811340980dda7fcc.diff"
-}
 
 build() {
   cd "${srcdir}/${_plugname}-${pkgver}"
