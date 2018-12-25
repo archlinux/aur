@@ -4,8 +4,8 @@
 pkgname=vdr-lcdproc
 pkgver=0.0.10_jw9_9_g0c54897
 _gitver=0c548975b2d66d860180c79d58235a8923641a0c
-_vdrapi=2.2.0
-pkgrel=4
+_vdrapi=2.4.0
+pkgrel=5
 pkgdesc="Output to LCD modules that are supported by LCDproc"
 url="http://projects.vdr-developer.org/projects/plg-lcdproc"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
