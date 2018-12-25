@@ -1,6 +1,6 @@
 pkgbase = dosbox-x-sdl2
 	pkgdesc = x86 emulator with builtin DOS, with patches and more features
-	pkgver = 0.82.12
+	pkgver = 0.82.13
 	pkgrel = 1
 	url = http://dosbox-x.com
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = dosbox-x-sdl2
 	depends = mesa
 	depends = ffmpeg
 	depends = sdl2
-	source = dosbox-x::https://codeload.github.com/joncampbell123/dosbox-x/tar.gz/dosbox-x-v0.82.12
+	source = dosbox-x::https://codeload.github.com/joncampbell123/dosbox-x/tar.gz/dosbox-x-v0.82.13
 	source = dosbox-x.png
 	source = dosbox-x.desktop
-	md5sums = 5a5b51394a302f2a8a245fc4c254cf15
+	md5sums = b3b3d6e71dcabe4995dcf8f9eb74260d
 	md5sums = 3dcfe45c5ed0433316eaea51e3620b36
 	md5sums = 28e4e75b7e455f39e981de67dd95edeb
 
