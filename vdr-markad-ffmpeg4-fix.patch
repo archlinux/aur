@@ -1,0 +1,86 @@
+diff --git a/command/decoder.cpp b/command/decoder.cpp
+index 6400aa7..8cb14b9 100644
+--- a/command/decoder.cpp
++++ b/command/decoder.cpp
+@@ -180,16 +180,22 @@ cMarkAdDecoder::cMarkAdDecoder(bool useH264, int Threads)
+     }
+     else
+     {
++#ifdef AV_CODEC_ID_MPEG2VIDEO_XVMC
+         video_codecid=AV_CODEC_ID_MPEG2VIDEO_XVMC;
++#else
++        video_codecid=AV_CODEC_ID_MPEG2VIDEO;
++#endif
+     }
+ 
+     video_codec = avcodec_find_decoder(video_codecid);
++#ifdef AV_CODEC_ID_MPEG2VIDEO_XVMC
+     if ((!video_codec) && (video_codecid==AV_CODEC_ID_MPEG2VIDEO_XVMC))
+     {
+         // fallback to MPEG2VIDEO
+         video_codecid=AV_CODEC_ID_MPEG2VIDEO;
+         video_codec=avcodec_find_decoder(video_codecid);
+     }
++#endif
+ 
+     if (video_codec)
+     {
+@@ -200,17 +206,17 @@ cMarkAdDecoder::cMarkAdDecoder(bool useH264, int Threads)
+ #endif
+         if (video_context)
+         {
+-            if (video_codec->capabilities & CODEC_CAP_TRUNCATED)
+-                video_context->flags|=CODEC_FLAG_TRUNCATED; // we do not send complete frames
+-            video_context->flags|=CODEC_FLAG_LOW_DELAY;
+-            video_context->flags2|=CODEC_FLAG2_FAST; // really?
++            if (video_codec->capabilities & AV_CODEC_CAP_TRUNCATED)
++                video_context->flags|=AV_CODEC_FLAG_TRUNCATED; // we do not send complete frames
++            video_context->flags|=AV_CODEC_FLAG_LOW_DELAY;
++            video_context->flags2|=AV_CODEC_FLAG2_FAST; // really?
+             video_context->skip_idct=AVDISCARD_ALL;
+ 
+             if (video_codecid!=AV_CODEC_ID_H264)
+             {
+                 video_context->skip_frame=AVDISCARD_NONKEY; // just I-frames
+             } else {
+-                video_context->flags2|=CODEC_FLAG2_CHUNKS;
++                video_context->flags2|=AV_CODEC_FLAG2_CHUNKS;
+ #if LIBAVCODEC_VERSION_INT >= ((52<<16)+(47<<8)+0)
+                 av_log_set_level(AV_LOG_FATAL); // silence decoder output
+ #else
+@@ -224,7 +230,11 @@ cMarkAdDecoder::cMarkAdDecoder(bool useH264, int Threads)
+ #else
+             int ret=avcodec_open(video_context, video_codec);
+ #endif
++#ifdef AV_CODEC_ID_MPEG2VIDEO_XVMC
+             if ((ret < 0) && (video_codecid==AV_CODEC_ID_MPEG2VIDEO_XVMC))
++#else
++            if (ret < 0)
++#endif
+             {
+                 // fallback to MPEG2VIDEO
+                 video_codecid=AV_CODEC_ID_MPEG2VIDEO;
+@@ -256,9 +266,11 @@ cMarkAdDecoder::cMarkAdDecoder(bool useH264, int Threads)
+                 case AV_CODEC_ID_H264:
+                     esyslog("could not open codec for H264");
+                     break;
++#ifdef AV_CODEC_ID_MPEG2VIDEO_XVMC
+                 case AV_CODEC_ID_MPEG2VIDEO_XVMC:
+                     esyslog("could not open codec MPEG2 (XVMC)");
+                     break;
++#endif
+                 case AV_CODEC_ID_MPEG2VIDEO:
+                     esyslog("could not open codec MPEG2");
+                     break;
+@@ -322,9 +334,11 @@ cMarkAdDecoder::cMarkAdDecoder(bool useH264, int Threads)
+         case AV_CODEC_ID_H264:
+             esyslog("codec for H264 not found");
+             break;
++#ifdef AV_CODEC_ID_MPEG2VIDEO_XVMC
+         case AV_CODEC_ID_MPEG2VIDEO_XVMC:
+             esyslog("codec for MPEG2 (XVMC) not found");
+             break;
++#endif
+         case AV_CODEC_ID_MPEG2VIDEO:
+             esyslog("codec for MPEG2 not found");
+             break;
