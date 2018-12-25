@@ -4,7 +4,7 @@ Documentation=https://www.wesnoth.org/wiki/ServerAdministration
 Documentation=man:wesnothd-1.6(6)
 After=network.target
 # They use by default the same port
-Conflicts=wesnothd.service wesnothd-1.8.service wesnothd-1.10.service wesnothd-1.12.service wesnothd-1.14.service wesnothd-devel.service wesnothd-git.service
+Conflicts=wesnothd.service wesnothd-1.0.servicewesnothd-1.2.service wesnothd-1.4.service wesnothd-1.8.service wesnothd-1.10.service wesnothd-1.12.service wesnothd-1.14.service wesnothd-devel.service wesnothd-git.service
 
 [Service]
 ExecStart=/usr/bin/wesnothd-1.6 -t 2 -T 5
@@ -22,7 +22,7 @@ ProtectSystem=yes
 PrivateTmp=yes
 PrivateDevices=yes
 NoNewPrivileges=yes
-RestrictAddressFamilies=AF_INET
+RestrictAddressFamilies=AF_INET AF_UNIX
 RestrictRealtime=yes
 MemoryDenyWriteExecute=yes
 SystemCallArchitectures=native
@@ -30,6 +30,7 @@ ProtectControlGroups=yes
 ProtectKernelTunables=yes
 ProtectKernelModules=yes
 RestrictNamespaces=yes
+LockPersonality=yes
 
 [Install]
 WantedBy=multi-user.target

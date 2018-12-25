@@ -22,14 +22,15 @@ pkgbase = wesnoth-1.6
 	depends = dbus
 	depends = fribidi
 	options = !emptydirs
+	options = !zipman
 	source = wesnoth-1.6.desktop
 	source = wesnothd-1.6.tmpfiles.conf
 	source = wesnothd-1.6.service
 	source = wesnoth-1.6.appdata.xml
 	md5sums = 99f136647c5af1820d0132df08350965
 	md5sums = ec9cab718ba96b7a4c85c224f6b747c3
-	md5sums = 4b18649a4864c0ae9787dc1ee9fc3400
-	md5sums = 1018b1fae1a65d49bed1094ba0280d87
+	md5sums = c537d69cb8338594a606ebbc93cbd00e
+	md5sums = 3bf40dd42fb269275bd66ecaf892f3fc
 
 pkgname = wesnoth-1.6
 

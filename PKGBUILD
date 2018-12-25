@@ -1,6 +1,12 @@
-# Maintainer Severin Glöckner <severin dot gloeckner at stud dot htwk minus leipzig dot de>
+# Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
-_suffix=-1.6
+# This script contains as well instructions for other Linux systems.
+# There you have to execute the commands in the functions(){…} below by hand.
+
+# On other systems, ignore the used variables like $pkgdir, $srcdir or $startdir
+# (there $pkgdir would be the same as an undefined variable (empty),
+#  and $srcdir as well as $stardir would be the place where you have your files)
+
 pkgname=wesnoth-1.6
 pkgver=1.6.5+dev
 pkgrel=1
@@ -12,16 +18,16 @@ depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'sdl_net' 'boost-libs' 'zlib' '
 makedepends=('boost' 'cmake' 'git')
 # Package names on Debian / Ubuntu / Mint:
 # libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl-net1.2-dev libboost-iostreams-dev libboost-regex-dev zlib1g-dev libpango1.0-dev libcairo2-dev libfontconfig1-dev libdbus-1-dev libfribidi-dev gettext-base cmake make pkgconf gcc g++ git
-options=('!emptydirs')
-source=("wesnoth$_suffix.desktop"
-        "wesnothd$_suffix.tmpfiles.conf"
-        "wesnothd$_suffix.service"
-        "wesnoth$_suffix.appdata.xml")
+options=('!emptydirs' '!zipman')
+source=("wesnoth-1.6.desktop"
+        "wesnothd-1.6.tmpfiles.conf"
+        "wesnothd-1.6.service"
+        "wesnoth-1.6.appdata.xml")
 
 md5sums=('99f136647c5af1820d0132df08350965'
          'ec9cab718ba96b7a4c85c224f6b747c3'
-         '4b18649a4864c0ae9787dc1ee9fc3400'
-         '1018b1fae1a65d49bed1094ba0280d87')
+         'c537d69cb8338594a606ebbc93cbd00e'
+         '3bf40dd42fb269275bd66ecaf892f3fc')
 
 PKGEXT='.pkg.tar'
 
@@ -29,12 +35,15 @@ prepare() {
   cd "$startdir"
 
   # get a shallow clone of the git repo and store it outside the srcdir
-  if  [ ! -d "$pkgname-git" ] ; then
-    git clone https://github.com/wesnoth/wesnoth -b 1.6 --shallow-exclude=1.6.5 $pkgname-git
+  if  [ ! -d "wesnoth-1.6-git" ] ; then
+    git clone https://github.com/wesnoth/wesnoth -b 1.6 --shallow-exclude=1.6.5 wesnoth-1.6-git
     msg "Git checkout done (or server timeout)"
   fi
 
-  ln -sf "$startdir/$pkgname-git" "$srcdir/$pkgname-git"
+  # Archlinux specific (hide the usage of the $startdir variable)
+  if [ ! -e "$srcdir/wesnoth-1.6-git" ] ; then
+    ln -s "$startdir/wesnoth-1.6-git" "$srcdir/wesnoth-1.6-git"
+  fi
 }
 
 build() {
@@ -42,8 +51,11 @@ build() {
   # If you happen to find a fix, please fill a Pull Request for the 1.6 branch
   # at bugs.wesnoth.org
 
+  # It's a convention to use /usr/local when installing by hand, it allows you
+  # to keep easier track of what was installed.
+  # Feel free to replace ALL occurences of /usr with /usr/local below.
   rm -rf build && mkdir -p build && cd build
-  cmake ../$pkgname-git \
+  cmake ../wesnoth-1.6-git \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DBINARY_SUFFIX=-1.6 \
       -DDATADIRNAME=wesnoth-1.6 \
@@ -65,27 +77,38 @@ build() {
 # into the empty $pkgdir, and it's content is copied later to the system.
 
 package() {
-  cd "$srcdir/build"
+  cd build
 
+  # On Debian / Ubuntu / Mint / Fedora / Suse, just "make install"
   make DESTDIR="$pkgdir" install
 
-  # add suffix to manpages
-  cd "$pkgdir/usr/share/man"
-  for filename in */man6/wesnoth.6 man6/wesnoth.6 */man6/wesnothd.6 man6/wesnothd.6
+  # add a suffix to the manpages (using one multi-line command)
+  for filename in "$pkgdir"/usr/share/man/{,*/}man6/wesnoth{,d}.6
     do
       mv "$filename" $(dirname $filename)/$(basename $filename .6)-1.6.6
   done
 
   # better use the tools from a recent version of wesnoth
-  rm -r "$pkgdir/usr/share/wesnoth$_suffix/data/tools"
+  rm -r "$pkgdir/usr/share/wesnoth-1.6/data/tools"
+
+  # remove unneeded files
+  find "$pkgdir/usr/share" -name .gitignore -delete
 
   # placing relevant packaging files (launcher, icons, systemd and appdata files)
-  install -D -m644 "$srcdir/wesnoth$_suffix.desktop" "$pkgdir/usr/share/applications/wesnoth$_suffix.desktop"
-  install -D -m644 "$srcdir/$pkgname-git/images/wesnoth-icon-small.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname-icon.png"
-  install -D -m644 "$srcdir/$pkgname-git/data/core/images/wesnoth-icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname-icon.png"
+  install -D -m644 "$srcdir/wesnoth-1.6.desktop" "$pkgdir/usr/share/applications/wesnoth-1.6.desktop"
+  install -D -m644 "$srcdir/wesnoth-1.6-git/images/wesnoth-icon-small.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/wesnoth-1.6-icon.png"
+  install -D -m644 "$srcdir/wesnoth-1.6-git/data/core/images/wesnoth-icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/wesnoth-1.6-icon.png"
 
-  install -D -m644 "$srcdir/wesnothd$_suffix.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/wesnothd$_suffix.conf"
-  install -D -m644 "$srcdir/wesnothd$_suffix.service" "$pkgdir/usr/lib/systemd/system/wesnothd$_suffix.service"
+  install -D -m644 "$srcdir/wesnoth-1.6.appdata.xml" "$pkgdir/usr/share/metainfo/wesnoth-1.6.appdata.xml"
 
-  install -D -m644 "$srcdir/wesnoth$_suffix.appdata.xml" "$pkgdir/usr/share/metainfo/wesnoth$_suffix.appdata.xml"
+  # On other Linux systems, use /etc instead of /usr/lib for the files below
+  install -D -m644 "$srcdir/wesnothd-1.6.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/wesnothd-1.6.conf"
+
+  # On Debian / Ubuntu / Mint, edit the file and change:
+  # Group=nobody to Group=nogroup
+  # /usr/bin/rm to /bin/rm
+  install -D -m644 "$srcdir/wesnothd-1.6.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.6.service"
+
+  # All done, but it doesn't show up? Try that:
+  # update-desktop-database
 }
