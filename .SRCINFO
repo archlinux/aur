@@ -6,7 +6,7 @@ pkgbase = simpleaur-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	optdepends = cower: search for available updates and package names - recommended
+	optdepends = auracle: search for available updates and package names - recommended
 	source = git+https://gitlab.com/edu4rdshl/simpleaur.git
 	sha256sums = SKIP
 
