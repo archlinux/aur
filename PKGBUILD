@@ -1,5 +1,4 @@
 # Maintainer: Elmar Klausmeier <Elmar.Klausmeier@gmail.com>
-# Contributor: Michel Zou <xantares09@hotmail.com>
 
 pkgname=sundials
 pkgver=4.0.1
