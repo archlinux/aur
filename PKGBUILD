@@ -2,10 +2,10 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-ddci2
-pkgver=1.0.1
-_gitver=056fd68990eab7610fa421b384262edc79c3f13c
-_vdrapi=2.2.0
-pkgrel=1
+pkgver=1.0.5
+_gitver=a5a7ab1cb6be3ebddb8af77cc18313d75404ed81
+_vdrapi=2.4.0
+pkgrel=2
 pkgdesc="Support for stand alone CI by Digital Devices for VDR 2.1.6 and higher."
 url="https://github.com/jasmin-j/vdr-plugin-ddci2"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -21,8 +21,8 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-$_plugname"
-  _last_release=1.0.1
-  _last_release_commit=056fd68990eab7610fa421b384262edc79c3f13c
+  _last_release=1.0.5
+  _last_release_commit=a5a7ab1cb6be3ebddb8af77cc18313d75404ed81
 
   _count=$((`git rev-list --count HEAD` - `git rev-list --count $_last_release_commit`))
   if [ $_count -gt 0 ]; then
