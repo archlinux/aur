@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('bash')
 optdepends=('samba: To check active samba connections'
            'afpfs-ng: To check active AFP connections')
-source=("http://e-tobi.net/vdr-experimental/pool-squeeze/source/addons/vdr-addon-lifeguard_0.0.4.tar.gz"
+source=("https://packages.e-tobi.net/vdr-experimental/pool-squeeze/source/addons/vdr-addon-lifeguard_0.0.4.tar.gz"
         "lifeguard-use_ss_instead_of_netstat.diff")
 backup=('etc/vdr/lifeguard.conf')
 md5sums=('9494c1b691256452ead283f59956ebd4'
