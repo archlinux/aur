@@ -71,6 +71,10 @@ EOF
   rm dep{32,64}/vulkan-1.pc
 
   sed -i'' -E 's/ninja install/..\/..\/fix-build.sh\nninja install/g' package-release.sh
+
+  cd "VK9-Library/Shaders"
+  sparam="s/.VertexBuffer_XYZ_TEX2\.vert./\'VertexBuffer_XYZ_TEX2.vert\',\'PixelPassthrough.frag\'/g"
+  sed -i'' -E $sparam meson.build
   
   mkdir -p "$srcdir/boost"{32,64}
   cd "$srcdir/boost32"
