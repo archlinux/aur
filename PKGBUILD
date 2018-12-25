@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Contributor: Yarema aka Knedlyk <yupadmin at gmail dot com>
 pkgname=vdr-channelscan
-pkgver=1.0.0
-_vdrapi=2.2.0
+pkgver=1.0.2
+_vdrapi=2.4.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Channel scanner for VDR"
