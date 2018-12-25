@@ -2,7 +2,7 @@
 
 pkgname=php-smbclient
 _extname=smbclient
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="PHP bindings for libsmbclient."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('php' 'smbclient')
 backup=("etc/php/conf.d/${_extname}.ini")
 source=("https://github.com/eduardok/libsmbclient-php/archive/${pkgver}.tar.gz")
-md5sums=('9e447e2b46470713fc9302a30c409ace')
+md5sums=('c28d1d4cab164fb56626da00d7deb7b7')
 
 build() {
   cd "libsmbclient-php-${pkgver}"
