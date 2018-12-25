@@ -4,20 +4,19 @@
 
 pkgname=xwxapt
 _pkgname=apt
-pkgver=2.9
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Ham Radio - Weather Satellite APT format image decoder using X/GTK+"
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/$pkgname/$pkgname.html"
 license=(GPL)
-depends=('gtk2' 'alsa-lib' 'rtl-sdr' 'hamradio-menus')
+depends=('gtk3' 'rtl-sdr' 'hamradio-menus')
 makedepends=('autoconf' 'automake' 'intltool' 'pkg-config')
 source=(http://www.qsl.net/5b4az/pkg/$_pkgname/$pkgname/$pkgname-$pkgver.tar.bz2
-	diff.Makefile.am
 	$pkgname.desktop
 	$pkgname.1
 	xdemorse.png
-#	$pkgname.man.1.gz
+	diff.Makefile.am
 )
 
 prepare() {
@@ -46,24 +45,28 @@ package() {
 	cd $srcdir/$pkgname-$pkgver
 
 	mkdir -p $pkgdir/usr/share/doc/$pkgname/examples/
-	mkdir -p $pkgdir/usr/share/{applications,pixmaps}
+	mkdir -p $pkgdir/usr/share/man/man1/
+	mkdir -p $pkgdir/usr/share/{$pkgname,applications,pixmaps}
 	make DESTDIR=$pkgdir install
 
 	mkdir -p $pkgdir/usr/bin
 	mv $pkgdir/usr/bin/$pkgname $pkgdir/usr/bin/$pkgname.1
 	install -Dm755 ../$pkgname.1 $pkgdir/usr/bin/$pkgname
 
+	mv $pkgdir/usr/share/doc/$pkgname/$pkgname.1.gz $pkgdir/usr/share/man/man1/$pkgname.1.gz
+
+	install -Dm644 $pkgname/xwxapt.glade $pkgdir/usr/share/$pkgname/xwxapt.glade
+	install -Dm644 $pkgname/xwxaptrc $pkgdir/usr/share/doc/$pkgname/examples/xwxaptrc.example
 	install -Dm644 ../$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 	install -Dm644 ../xdemorse.png $pkgdir/usr/share/pixmaps/$pkgname.png
-#	install -Dm644 ../$pkgname.man.1.gz $pkgdir/usr/share/man/man1/$pkgname.1.gz
 }
-md5sums=('06dd1b1f83b48050b54f4f06dd813cf7'
-         '92f710ec367f09f7a6c4ec8f32815244'
+md5sums=('03eb85c9a8876cbeda21a22a2c8d7d99'
          '5b913f35d6cad963dec99c5fc0a0d5ad'
-         'bcd0a1d7a87a059a3d6cfb80dfad1e6f'
-         'edcd3f301ec8ea95453d40534beb6ede')
-sha256sums=('cf67dd4f0f1d9ce6704f7abeb9e06ac59f47d2d2dff6632c02ebe195c97a6cce'
-            '24b3c907aac799ad47c71914ace7476d403f2878f9c9fcb391d701367aa1794a'
+         'be4e387a7844b355742b622a48220f08'
+         'edcd3f301ec8ea95453d40534beb6ede'
+         '8b6dea74de28f7a6abbb2825eef521b7')
+sha256sums=('a4d92cd966ae3bb466b603f1faa91566df3dcc30c067bc683d796284aa40be0e'
             '51671884532f68f9ededadbbdfdcd801827bc9b543ae5cb1b5c414336b7cab07'
-            '0ae51c280d2ce20849c078a3c2c6c1a14b5fb6f396054833a347109a3fd4886e'
-            '857eb46c32c12333a7110fb3ea99d2246084724856638f2e04324fc2a576626d')
+            '43013c654e218d68232bb0ae53038f4d13fcfb63aca6002c54d9695f434f7b28'
+            '857eb46c32c12333a7110fb3ea99d2246084724856638f2e04324fc2a576626d'
+            'f938d59dd58219ae292927e2c49de6330f1f9ae07f55011bcba5b4e9804a9753')

@@ -1,6 +1,7 @@
 #!/bin/bash
 if [ ! -f ~/xwxapt/xwxaptrc ] ; then
-       mkdir -p ~/xwxapt
-       cp /usr/share/doc/xwxapt/examples/xwxaptrc.example ~/xwxapt/xwxaptrc
+	mkdir -p ~/xwxapt
     fi
+cp -ua /usr/share/doc/xwxapt/examples/xwxaptrc.example ~/xwxapt/xwxaptrc
+cp -ua /usr/share/xwxapt/xwxapt.glade ~/xwxapt/.
 /usr/bin/xwxapt.1 $1

@@ -1,28 +1,15 @@
---- Makefile.am	2013-12-02 00:01:29.000000000 -0700
-+++ Makefile.am	2015-02-18 20:18:22.333001926 -0700
-@@ -34,6 +34,19 @@
--	if test -d $(HOME)/$(PACKAGE); then \
--	  echo Working directory exists: $(HOME)/$(PACKAGE) - not copying; \
--	  else \
--	  echo Copying $(PACKAGE) working directory to $(HOME)/$(PACKAGE); \
--	  cp -r $(srcdir)/$(PACKAGE) $(HOME); \
--	  fi
-+	if test -d files/; then \
-+ 	  echo "cp files/$(PACKAGE).desktop $(DESTDIR)/usr/share/applications/"; \
-+ 	  cp files/$(PACKAGE).desktop $(DESTDIR)/usr/share/applications/; \
-+ 	  echo "cp files/$(PACKAGE).xpm $(DESTDIR)/usr/share/pixmaps/"; \
-+ 	  cp files/$(PACKAGE).xpm $(DESTDIR)/usr/share/pixmaps/; \
-+ 	fi
-+
-+	if test -d xwxapt/; then \
-+ 		if !(test -d $(DESTDIR)/usr/share/doc/$(PACKAGE)); then \
-+ 		  echo "mkdir $(DESTDIR)/usr/share/doc/$(PACKAGE)/"; \
-+ 		  mkdir $(DESTDIR)/usr/share/doc/$(PACKAGE)/; \
-+  		  echo "mkdir $(DESTDIR)/usr/share/doc/$(PACKAGE)/examples/"; \
-+ 		  mkdir $(DESTDIR)/usr/share/doc/$(PACKAGE)/examples/; \
-+ 		fi; \
-+ 	  echo "cp -r doc/* $(DESTDIR)/usr/share/doc/$(PACKAGE)/"; \
-+ 	  cp -r doc/* $(DESTDIR)/usr/share/doc/$(PACKAGE)/; \
-+ 	  echo "cp xwxapt/$(PACKAGE)rc $(DESTDIR)/usr/share/doc/$(PACKAGE)/examples/"; \
-+ 	  cp xwxapt/$(PACKAGE)rc $(DESTDIR)/usr/share/doc/$(PACKAGE)/examples/$(PACKAGE)rc.example; \
+--- Makefile.am	2017-12-21 06:06:12.000000000 -0700
++++ Makefile.am	2018-12-25 15:21:24.703018848 -0700
+@@ -55,11 +55,5 @@
+ 	if test -d doc/; then \
+ 	  cp -r doc/* $(DESTDIR)/usr/share/doc/$(PACKAGE)/; \
+ 	  cp -r doc/$(PACKAGE).1.gz $(DESTDIR)/usr/share/man/man1/; \
+-	fi; \
+-	if !(test -d /home/`logname`/$(PACKAGE)); then \
+-	  cp -r $(PACKAGE) /home/`logname`/; \
+-	else \
+-	  cp $(PACKAGE)/$(PACKAGE).glade /home/`logname`/$(PACKAGE); \
+-	fi; \
+-	chown -R `logname`:`logname` /home/`logname`/$(PACKAGE);
 +	fi
+ 
