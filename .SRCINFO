@@ -1,6 +1,6 @@
 pkgbase = jack-keyboard
 	pkgdesc = Virtual MIDI keyboard that uses JACK MIDI.
-	pkgver = 2.5
+	pkgver = 2.7.2
 	pkgrel = 1
 	epoch = 0
 	url = http://jack-keyboard.sourceforge.net/
@@ -12,8 +12,8 @@ pkgbase = jack-keyboard
 	optdepends = lash: integrate with lash session management
 	options = makeflags
 	options = buildflags
-	source = https://downloads.sourceforge.net/project/jack-keyboard/jack-keyboard/2.5/jack-keyboard-2.5.tar.gz
-	md5sums = 030a666f1703ef1ab3eae6004cb04a9a
+	source = https://downloads.sourceforge.net/project/jack-keyboard/jack-keyboard/2.7.2/jack-keyboard-2.7.2.tar.gz
+	md5sums = 0d7f8a10592f242374ac028a6b1e8a15
 
 pkgname = jack-keyboard
 
