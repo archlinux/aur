@@ -6,7 +6,7 @@
 pkgname=plank-git-patched
 pkgver=0.11.4.r24.0a842b4
 pkgrel=1
-pkgdesc='Elegant, simple, clean dock'
+pkgdesc='Elegant, simple, clean dock. Patched to make struts smaller and fix restrict-to-workspace. Intended for use with i3.'
 arch=('x86_64')
 url='https://launchpad.net/plank'
 license=('GPL3')
