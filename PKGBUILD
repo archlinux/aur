@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 # PKGBUILD script for pass-file upstream, git version
-# pony-file adds support to files using pass
+# pass-file adds support to files using pass
 _pkgname=pass-file
 pkgname=$_pkgname-git
 pkgver=r7.1c7e6a0
@@ -25,10 +25,6 @@ pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-# package() {
-#   make DESTDIR="$pkgdir/" install
-# }
 
 package() {
   cd "$srcdir/$_pkgname"
