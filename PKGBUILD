@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=python-unitify
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Replaces all nouns in a text with the word "unit"'
 url="https://github.com/flipflop97/unitify"
@@ -10,8 +10,8 @@ depends=(python-spacy
 makedepends=(python-setuptools)
 license=(MIT)
 arch=(any)
-source=("https://files.pythonhosted.org/packages/32/76/4498ccc4a9394521a13f56e0316d2a3b1b4d57d07221c4a9401199a71975/unitify-${pkgver}.tar.gz")
-sha256sums=("8ee15d4e4b0cb2351d2ace202477dc791bfca283e144e6e2729e2e01c383ac1a")
+source=("https://files.pythonhosted.org/packages/15/a6/cf8150280774ac1ef10dbbaacf962eb229ce19f57a7b6bb3d7d6c0c450b3/unitify-1.0.3.tar.gz")
+sha256sums=('5ac0cc1839d3077514e48b46779519b5e680eabfa54e0a8eafc5e3d0bfb7e045')
 
 build(){
     cd "unitify-${pkgver}"
