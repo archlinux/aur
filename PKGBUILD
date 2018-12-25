@@ -2,10 +2,10 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-skinenigmang
-pkgver=0.1.2_19_g3362ab0
+pkgver=0.1.2_20_g995b108
 epoch=1
-_gitver=3362ab0175c8e99375230627e772c1652559d9f4
-_vdrapi=2.2.0
+_gitver=995b108c894970306efcba1d8e70ded50e76f1d3
+_vdrapi=2.4.0
 pkgrel=1
 pkgdesc="skin based on the Enigma text2skin addon"
 url="http://andreas.vdr-developer.org/enigmang/index.html"
@@ -14,13 +14,11 @@ license=('GPL2')
 depends=('freetype2' 'gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git://projects.vdr-developer.org/vdr-plugin-skinenigmang.git#commit=$_gitver"
-        "skinenigmang-newmakefile-vdr1.7.36-2.tgz::https://www.vdr-portal.de/index.php?attachment/32701"
+source=("git+https://projects.vdr-developer.org/git/vdr-plugin-skinenigmang.git#commit=$_gitver"
         'skinenigmang-search_for_logos_in_resourcedir.diff'
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('SKIP'
-         '16eec14395fdc008462754e099bf802f'
          '6bfd86e7a92d969edd208401b65b20fe'
          '8b2c4d67273e3b52e38496e52b35e345')
 
@@ -32,20 +30,22 @@ pkgver() {
 prepare() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
   patch -p1 -i "$srcdir/skinenigmang-search_for_logos_in_resourcedir.diff"
-  cp "$srcdir/skinenigmang/Makefile" .
-  sed -i '/^HAVE_IMAGEMAGICK/d' Makefile
-}
-
-build() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
-  make
+  sed -i 's/\/include\/freetype/\/include\/freetype2/g' Makefile
 }
 
 package() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  make DESTDIR="$pkgdir" install
+
+  mkdir -p "$pkgdir/$(pkg-config vdr --variable=libdir)"
+  make CFLAGS="$(pkg-config vdr --variable=cflags)" \
+       CXXFLAGS="$(pkg-config vdr --variable=cxxflags)" \
+       VDRDIR="/usr/include/vdr" \
+       LIBDIR="$pkgdir/$(pkg-config vdr --variable=libdir)" \
+       LOCALEDIR="$pkgdir/$(pkg-config vdr --variable=locdir)" \
 
   install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
 
+  mkdir -p "$pkgdir/var/lib/vdr/themes"
+  cp themes/* "$pkgdir/var/lib/vdr/themes"
   chown -R 666:666 "$pkgdir/var/lib/vdr"
 }
