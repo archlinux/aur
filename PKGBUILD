@@ -1,9 +1,9 @@
 # Maintainer: Platon Ryzhikov <ihummer63@yandex.ru>
 
 pkgname=smdev-pci
-pkgver=20181204
+pkgver=20181225
 pkgrel=1
-pkgdesk="Add links to pci devices in /dev with smdev"
+pkgdesc="Add links to pci devices in /dev with smdev"
 arch=('any')
 licence=('MIT')
 groups=('smdev-scripts')
