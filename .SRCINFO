@@ -1,0 +1,14 @@
+pkgbase = ancient-packages
+	pkgdesc = Lists installed packages no longer available (anywhere)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://public.files.xavion.name/Software/ancient-packages/ancient-packages.jpg
+	arch = any
+	license = GPL3
+	depends = package-query
+	options = !emptydirs
+	source = http://public.files.xavion.name/Software/ancient-packages/ancient-packages
+	sha1sums = ec4d31d3dba2ac98019bf2557a6e9e9fcfa822c2
+
+pkgname = ancient-packages
+
