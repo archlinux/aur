@@ -5,11 +5,11 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=qbittorrent-git
-pkgver=3.3.16.r1634.gde6ca29dc
+pkgver=4.1.5.r568.gfb6bb932d
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
-url="http://www.qbittorrent.org/"
+url="https://www.qbittorrent.org/"
 license=('custom' 'GPL')
 depends=('libtorrent-rasterbar' 'qt5-base' 'qt5-svg')
 makedepends=('boost' 'git' 'qt5-tools')
@@ -30,6 +30,9 @@ pkgver() {
 
 build() {
   cd ${pkgname%-*}
+
+  # tell qmake not to break makepkg's debug/!strip options
+  export QBT_ADD_CONFIG='nostrip'
 
   ./configure --prefix=/usr
   make
