@@ -1,0 +1,11 @@
+--- cleanhome.pl.orig	2008-08-31 06:58:06.000000000 +1000
++++ cleanhome.pl	2008-08-31 09:15:31.000000000 +1000
+@@ -12,7 +12,7 @@
+ use Data::Dumper;
+ 
+ my $chpath = $FindBin::RealBin;
+-my $chpluginpath = $chpath."/CHPlugins";
++my $chpluginpath = "/usr/share/cleanHome/CHPlugins";
+ 
+ #program version
+ my $VERSION="0.6";

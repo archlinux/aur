@@ -1,0 +1,31 @@
+--- CHPlugins/BrowserCall.pm.orig	2008-07-31 18:21:51.000000000 +0200
++++ CHPlugins/BrowserCall.pm	2008-08-11 12:55:07.000000000 +0200
+@@ -7,7 +7,7 @@
+ 
+ use constant {
+     PLUGINNAME => 'BrowserCall',
+-    PLUGINDESCRIPTION => 'Google for the file/dir (starts firefox)',
++    PLUGINDESCRIPTION => 'Google for the file/dir (starts opera)',
+     PLUGINAUTHOR => 'Henning Mersch',
+     PLUGINAUHTORCONTACT => 'Webpage: http://www.henning-mersch.de',
+     PLUGINKEYPROPOSAL => 'b', #required to be an Action Plugin
+@@ -45,7 +45,7 @@
+ 	my $self = shift;
+ 	my $file = shift;
+ 	my $googlefile = basename($file);
+-	return "Start firefox and google for '$googlefile'";
++	return "Start opera and google for '$googlefile'";
+ }
+ 
+ # process()
+@@ -56,8 +56,8 @@
+ 	my $self = shift;
+ 	my $file = shift;
+ 	my $googlefile = basename($file);
+-	print "Starting Forefox ..";
+-	system("firefox http://www.google.de/search?q=$googlefile&ie=UTF-8");
++	print "Starting Opera ..";
++	system("opera http://www.google.de/search?q=$googlefile&ie=UTF-8");
+ 	return 0;
+ }
+ 

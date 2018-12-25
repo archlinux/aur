@@ -1,0 +1,17 @@
+pkgbase = clean-home
+	pkgdesc = Cleans up user's home directory by analyzing '.' config files/directories against a collaboratively maintained database
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://cleanhome.sourceforge.net/
+	arch = any
+	license = GPL2
+	depends = perl
+	depends = perl-libwww
+	optdepends = firefox: for BrowserCall plugin
+	optdepends = opera: for BrowserCall plugin
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/sourceforge/cleanhome/cleanHome-0.8.tar.gz
+	sha1sums = 58545185bc63b5b4aceb23e6a699b69bd0a50e24
+
+pkgname = clean-home
+
