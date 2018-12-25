@@ -1,7 +1,7 @@
 pkgbase = yaru
 	pkgdesc = Yaru default ubuntu theme
 	pkgver = 18.10.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ubuntu/yaru
 	arch = any
 	license = GPL3
@@ -34,6 +34,7 @@ pkgname = yaru-icon-theme
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
 	depends = librsvg
+	depends = humanity-icon-theme
 
 pkgname = yaru-session
 	pkgdesc = Yaru session

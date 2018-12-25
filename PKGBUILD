@@ -2,7 +2,7 @@
 pkgbase=yaru
 pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-icon-theme' 'yaru-session')
 pkgver=18.10.7
-pkgrel=2
+pkgrel=3
 _tag=18.10.7
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -61,7 +61,7 @@ package_yaru-gnome-shell-theme() {
 
 package_yaru-icon-theme() {
   pkgdesc="Yaru default ubuntu icon theme"  
-  depends=(hicolor-icon-theme gtk-update-icon-cache librsvg)
+  depends=("hicolor-icon-theme" "gtk-update-icon-cache" "librsvg" "humanity-icon-theme")
 
   DESTDIR="$pkgdir" ninja -C build install
   rm -r "$pkgdir/usr/share/glib-2.0"
