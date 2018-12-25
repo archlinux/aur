@@ -2,18 +2,18 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-duplicates
-pkgver=0.1.0
-_vdrapi=2.2.0
-pkgrel=2
+pkgver=1.0.1
+_vdrapi=2.4.0
+pkgrel=1
 pkgdesc="Shows duplicate recordings"
-url="http://tolleri.net/vdr/plugins/"
+url="https://projects.vdr-developer.org/projects/plg-duplicates"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("http://tolleri.net/vdr/plugins/$pkgname-$pkgver.tgz")
+source=("https://projects.vdr-developer.org/attachments/download/2170/vdr-duplicates-${pkgver}.tgz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('a7bf122811c080f0a928dc7b9f9cd842')
+md5sums=('3c843fe76649743ab106b60508058d25')
 
 build() {
   cd "${srcdir}/${_plugname}-${pkgver}"
