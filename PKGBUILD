@@ -2,7 +2,8 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=paranoid-git
 pkgver=r53.dc9496c
-pkgrel=2
+pkgrel=1
+epoch=2
 pkgdesc="GTK+3 configuration tool for compton."
 arch=('any')
 url="https://github.com/semplice/paranoid"
@@ -12,7 +13,7 @@ makedepends=('git')
 provides=('paranoid')
 conflicts=('paranoid')
 sha512sums=('SKIP')
-source=("git+https://github.com/natemaia/paranoid")
+source=("git+https://github.com/semplice/paranoid")
 epoch=1
 
 pkgver() {
