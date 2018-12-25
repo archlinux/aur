@@ -1,7 +1,7 @@
 # Maintainer: Chris Down <chris@chrisdown.name>
 
 pkgname=btmenu
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Control bluetooth devices with dmenu'
 url='http://github.com/cdown/btmenu'
@@ -10,7 +10,7 @@ license=('ISC')
 depends=(dmenu)
 
 source=("https://github.com/cdown/btmenu/archive/${pkgver}.zip")
-md5sums=('487aade34654c902f81e6249f0b36c7b')
+md5sums=('54d0ec163b727d919433e7dfd9618fce')
 
 package() {
     install -D -m755 \
