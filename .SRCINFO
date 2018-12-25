@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-sundials
 	pkgdesc = Suite of nonlinear differential/algebraic equation solvers (mingw-w64)
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://computation.llnl.gov/casc/sundials/main.html
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-sundials
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = http://computation.llnl.gov/projects/sundials/download/sundials-4.0.0.tar.gz
-	sha256sums = 953dd7c30d25d5e28f6aa4d803c5b6160294a5c0c9572ac4e9c7e2d461bd9a19
+	source = http://computation.llnl.gov/projects/sundials/download/sundials-4.0.1.tar.gz
+	sha256sums = 29e409c8620e803990edbda1ebf49e03a38c08b9187b90658d86bddae913aed4
 
 pkgname = mingw-w64-sundials
 
