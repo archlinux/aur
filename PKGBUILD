@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-peer
 pkgver=0.0.1
-_vdrapi=2.2.0
-pkgrel=15
+_vdrapi=2.4.0
+pkgrel=16
 pkgdesc="Wrapper for the plugins remotetimers and remoteosd"
 url="http://vdr.schmirler.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
