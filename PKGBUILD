@@ -3,8 +3,8 @@
 # Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
 pkgname=vdr-filebrowser
 pkgver=0.2.1
-_vdrapi=2.2.0
-pkgrel=17
+_vdrapi=2.4.0
+pkgrel=18
 pkgdesc="filebrowser with custom commands for vdr"
 url="http://opensource.holgerbrunn.net/vdr/filebrowser/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
