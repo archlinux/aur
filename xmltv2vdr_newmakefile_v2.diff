@@ -75,7 +75,7 @@ index aa344a4..d6d27c0 100644
 +### Includes and Defines (add further entries here):
  
 -INCLUDES += -I$(VDRDIR)/include
-+CXXFLAGS += $(shell pkg-config --cflags libxml-2.0 libpcrecpp sqlite3) -std=gnu++98
++CXXFLAGS += $(shell pkg-config --cflags libxml-2.0 libpcrecpp sqlite3)
  
 -DEFINES += -D_GNU_SOURCE -D_XOPEN_SOURCE -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
 +LIBS += $(shell pkg-config --libs libxml-2.0 libpcrecpp sqlite3)
