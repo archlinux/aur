@@ -3,9 +3,9 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgbase=xineliboutput
 pkgname=(vdr-xineliboutput xineliboutput-frontends xineliboutput-xineplug)
-pkgver=1.1.0.144.g46f0f1d
-_gitver=46f0f1dd61e759c523a86280f8ec6c5f1b40ce72
-_vdrapi=2.2.0
+pkgver=2.1.0
+_gitver=ba6aae8c11944f7d11b5d290d7905a010aba3944
+_vdrapi=2.4.0
 pkgrel=1
 url="http://www.sourceforge.net/projects/xineliboutput"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
