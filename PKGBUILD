@@ -2,8 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core
-pkgver=0.17.0.1
-_ver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -12,7 +11,7 @@ depends=('boost' 'boost-libs' 'zeromq' 'libevent')
 checkdepends=('python')
 makedepends=('autoconf' 'automake' 'binutils' 'libtool' 'm4' 'make' 'pkg-config' 'systemd')
 license=('MIT')
-source=(https://bitcoin.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
+source=(https://bitcoincore.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
@@ -22,7 +21,7 @@ source=(https://bitcoin.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin-core-01-userdel.hook
         bitcoin-core-02-chown.hook
         bitcoin-core-02-rm-rf.hook)
-sha256sums=('a5d5d7ca5840862018cc27eba7039c2b52f6e1832ac8f919a6eedfac13cb4597'
+sha256sums=('3e564fb5cf832f39e930e19c83ea53e09cfe6f93a663294ed83a32e194bda42a'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             'e56dc913b82097acdc20374a2ae1b08323af74ccbbf63c829d4d13c9cb63ad8d'
@@ -43,7 +42,7 @@ _nproc=$(($(nproc)/2))
 [[ ${_nproc} < 1 ]] && _nproc=1
 
 build() {
-  cd "$srcdir/${pkgname%-core}-$_ver"
+  cd "$srcdir/${pkgname%-core}-$pkgver"
 
   msg2 'Building...'
   ./autogen.sh
@@ -63,14 +62,14 @@ build() {
 }
 
 check() {
-  cd "$srcdir/${pkgname%-core}-$_ver"
+  cd "$srcdir/${pkgname%-core}-$pkgver"
 
   msg2 'Testing...'
   make -j$_nproc check
 }
 
 package() {
-  cd "$srcdir/${pkgname%-core}-$_ver"
+  cd "$srcdir/${pkgname%-core}-$pkgver"
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-core}"
