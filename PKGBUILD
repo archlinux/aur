@@ -5,8 +5,8 @@
 pkgname=vdr-burn
 pkgver=0.3.0
 epoch=1
-_vdrapi=2.2.0
-pkgrel=1
+_vdrapi=2.4.0
+pkgrel=2
 pkgdesc="VDR plugin to create DVDs"
 url="https://projects.vdr-developer.org/projects/plg-burn"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
