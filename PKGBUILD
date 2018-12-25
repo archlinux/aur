@@ -1,9 +1,10 @@
-#Maintainer: Jarek Sedlacek <jareksedlacek@gmail.com
+# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
+# Contributor: Jarek Sedlacek <jareksedlacek@gmail.com>
 
 pkgname=pymetar
 pkgver=1.0
 pkgrel=1
-pkgdesc="downloads the weather report for a given station ID, decodes it and the provides easy access to all the data found in the report"
+pkgdesc="Downloads the weather report for a given station ID and decodes it"
 arch=('any')
 url="http://www.schwarzvogel.de/software-pymetar.shtml"
 license=('GPL2')
