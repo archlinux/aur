@@ -5,8 +5,8 @@ pkgname=vdr-softhddevice
 pkgver=0.6.1rc1_65_g6dfa88a
 epoch=1
 _gitver=6dfa88aecf1b5a4c5932ba278209d9f22676547f
-_vdrapi=2.2.0
-pkgrel=1
+_vdrapi=2.4.0
+pkgrel=2
 pkgdesc="software and GPU emulated HD output device plugin for VDR"
 url="http://projects.vdr-developer.org/projects/plg-softhddevice"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -21,7 +21,7 @@ source=("git://projects.vdr-developer.org/vdr-plugin-softhddevice.git#commit=$_g
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('SKIP'
-         '242140449340814374442b4a92df2f33'
+         '5dc3d680794ae6293a7ba03de1d29c57'
          'f6ef6cb0bf17c5a28f858e5306776d27')
 
 pkgver() {
