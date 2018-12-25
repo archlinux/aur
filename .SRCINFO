@@ -1,0 +1,14 @@
+pkgbase = nusmv-bin
+	pkgdesc = A new symbolic model checker
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = http://nusmv.fbk.eu/index.html
+	arch = x86_64
+	license = LGPL2.1
+	provides = nusmv
+	conflicts = nusmv
+	source = nusmv-bin-2.6.0.tar.gz::http://nusmv.fbk.eu/distrib/NuSMV-2.6.0-linux64.tar.gz
+	sha256sums = 11b12e42bc04566c4ec1f7cc205fa8704382ac4d69e052154cbb59c9b7e8e08c
+
+pkgname = nusmv-bin
+
