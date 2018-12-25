@@ -2,13 +2,14 @@
 # Contributor: goll <adrian.goll+aur[at]gmail>
 
 pkgname=nocache
-pkgver=1.0
+pkgver=1.0.r7.ge4e77a4
 pkgrel=1
 pkgdesc="minimize caching effects"
 arch=(i686 x86_64)
 url="https://github.com/Feh/nocache"
 license=('FreeBSD License')
-source=("git+https://github.com/Feh/nocache.git#tag=v1.0")
+_commit=e4e77a48528739188dccbdbd8b4d2d2d49aa0d99
+source=("git+https://github.com/Feh/nocache.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
