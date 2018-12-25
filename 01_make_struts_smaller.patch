@@ -1,0 +1,13 @@
+diff --git a/lib/PositionManager.vala b/lib/PositionManager.vala
+index 3f140e8..7929afe 100644
+--- a/lib/PositionManager.vala
++++ b/lib/PositionManager.vala
+@@ -439,7 +439,7 @@ namespace Plank
+ 				height -= top_offset;
+ 			
+ 			// height of the dock window
+-			var dock_height = height + (screen_is_composited ? UrgentBounceHeight : 0);
++			var dock_height = height; // + (screen_is_composited ? UrgentBounceHeight : 0);
+ 			
+ 			var width = 0;
+ 			switch (Alignment) {

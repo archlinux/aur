@@ -1,0 +1,159 @@
+diff --git a/lib/Items/ApplicationDockItem.vala b/lib/Items/ApplicationDockItem.vala
+index a58dbed..2e871ad 100644
+--- a/lib/Items/ApplicationDockItem.vala
++++ b/lib/Items/ApplicationDockItem.vala
+@@ -177,6 +177,39 @@ namespace Plank
+ 			
+ 			update_indicator ();
+ 		}
++
++		GLib.List<unowned Bamf.View> get_windows ()
++		{
++			GLib.List<unowned Bamf.View>? all_windows = App.get_windows();
++			var res = new GLib.List<unowned Bamf.View>();
++			unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
++			foreach (var view in all_windows) {
++				unowned Bamf.Window? window = (view as Bamf.Window);
++				if (window == null)
++					continue;
++				unowned Wnck.Window wnckwin = Wnck.Window.@get(window.get_xid());
++				if (!wnckwin.is_on_workspace(active_workspace))
++					continue;
++				res.append(view);
++			}
++			return res;
++		}
++
++		Array<uint32> get_window_xids ()
++		{
++			GLib.List<unowned Bamf.View>? all_windows = App.get_windows();
++			var res = new Array<uint32>();
++			unowned Wnck.Workspace? active_workspace = Wnck.Screen.get_default ().get_active_workspace ();
++			foreach (var view in all_windows) {
++				unowned Bamf.Window? window = (view as Bamf.Window);
++				if (window == null)
++					continue;
++				var xid = window.get_xid();
++				if (Wnck.Window.@get(xid).is_on_workspace(active_workspace))
++					res.append_val(xid);
++			}
++			return res;
++		}
+ 		
+ 		public bool is_running ()
+ 		{
+@@ -289,7 +322,7 @@ namespace Plank
+ 				return;
+ 			}
+ 			
+-			var window_count = App.get_windows ().length ();
++			var window_count = get_windows ().length ();
+ 			
+ 			if (window_count <= 1) {
+ 				if (Indicator != IndicatorState.SINGLE)
+@@ -321,13 +354,13 @@ namespace Plank
+ 		{
+ 			if (!is_window ())
+ 				if (button == PopupButton.MIDDLE
+-					|| (button == PopupButton.LEFT && (App == null || App.get_windows ().length () == 0
++					|| (button == PopupButton.LEFT && (App == null || get_windows ().length () == 0
+ 					|| (mod & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK))) {
+ 					launch ();
+ 					return AnimationType.BOUNCE;
+ 				}
+ 			
+-			if (button == PopupButton.LEFT && App != null && App.get_windows ().length () > 0) {
++			if (button == PopupButton.LEFT && App != null && get_windows ().length () > 0) {
+ 				WindowControl.smart_focus (App, event_time);
+ 				return AnimationType.DARKEN;
+ 			}
+@@ -340,7 +373,10 @@ namespace Plank
+ 		 */
+ 		protected override AnimationType on_scrolled (Gdk.ScrollDirection direction, Gdk.ModifierType mod, uint32 event_time)
+ 		{
+-			if (App == null || App.get_windows ().length () == 0)
++			if (App == null)
++				return AnimationType.NONE;
++			Array<uint32> xids = get_window_xids();
++			if (xids.length == 0)
+ 				return AnimationType.NONE;
+ 			
+ 			if (GLib.get_monotonic_time () - LastScrolled < ITEM_SCROLL_DURATION * 1000)
+@@ -349,9 +385,9 @@ namespace Plank
+ 			LastScrolled = GLib.get_monotonic_time ();
+ 			
+ 			if (direction == Gdk.ScrollDirection.UP || direction == Gdk.ScrollDirection.LEFT)
+-				WindowControl.focus_previous (App, event_time);
++				WindowControl.focus_previous_by_xid (xids, event_time);
+ 			else
+-				WindowControl.focus_next (App, event_time);
++				WindowControl.focus_next_by_xid (xids, event_time);
+ 			
+ 			return AnimationType.DARKEN;
+ 		}
+@@ -399,7 +435,7 @@ namespace Plank
+ 			
+ 			GLib.List<unowned Bamf.View>? windows = null;
+ 			if (App != null)
+-				windows = App.get_windows ();
++				windows = get_windows ();
+ 			
+ 			var window_count = 0U;
+ 			if (windows != null)
+@@ -456,12 +492,12 @@ namespace Plank
+ 			if (is_running () && window_count > 1) {
+ 				if (items.size > 0)
+ 					items.add (new Gtk.SeparatorMenuItem ());
+-				
++			
+ 				foreach (var view in windows) {
+ 					unowned Bamf.Window? window = (view as Bamf.Window);
+ 					if (window == null || window.get_transient () != null)
+ 						continue;
+-					
++
+ 					Gtk.MenuItem window_item;
+ 					var pbuf = WindowControl.get_window_icon (window);
+ 					var window_name = window.get_name ();
+diff --git a/lib/Services/WindowControl.vala b/lib/Services/WindowControl.vala
+index 51e422d..c602bff 100644
+--- a/lib/Services/WindowControl.vala
++++ b/lib/Services/WindowControl.vala
+@@ -272,13 +272,7 @@ namespace Plank
+ 			if (xids == null)
+ 				return;
+ 			
+-			var i = find_active_xid_index (xids);
+-			i = i < xids.length ? i - 1 : 0;
+-			
+-			if (i < 0)
+-				i = (int) xids.length - 1;
+-			
+-			focus_window_by_xid (xids.index (i), event_time);
++			focus_previous_by_xid(xids, event_time);
+ 		}
+ 		
+ 		public static void focus_next (Bamf.Application app, uint32 event_time)
+@@ -291,6 +285,22 @@ namespace Plank
+ 			if (xids == null)
+ 				return;
+ 			
++			focus_next_by_xid(xids, event_time);
++		}
++
++		public static void focus_previous_by_xid (Array<uint32> xids, uint32 event_time)
++		{
++			var i = find_active_xid_index (xids);
++			i = i < xids.length ? i - 1 : 0;
++			
++			if (i < 0)
++				i = (int) xids.length - 1;
++			
++			focus_window_by_xid (xids.index (i), event_time);
++		}
++		
++		public static void focus_next_by_xid (Array<uint32> xids, uint32 event_time)
++		{
+ 			var i = find_active_xid_index (xids);
+ 			i = i < xids.length ? i + 1 : 0;
+ 			

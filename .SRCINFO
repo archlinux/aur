@@ -1,0 +1,32 @@
+pkgbase = plank-git-patched
+	pkgdesc = Elegant, simple, clean dock
+	pkgver = 0.11.4.r24.0a842b4
+	pkgrel = 1
+	url = https://launchpad.net/plank
+	arch = x86_64
+	license = GPL3
+	makedepends = gnome-common
+	makedepends = git
+	makedepends = intltool
+	makedepends = vala
+	depends = atk
+	depends = bamf
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gnome-menus
+	depends = gtk3
+	depends = libgee
+	depends = libwnck3
+	depends = libx11
+	depends = libxfixes
+	depends = libxi
+	depends = pango
+	provides = plank
+	conflicts = plank
+	source = git+https://github.com/ricotz/plank.git
+	sha256sums = SKIP
+
+pkgname = plank-git-patched
+
