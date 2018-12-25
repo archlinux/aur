@@ -10,7 +10,7 @@ pkgbase = libgxml-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = gobject-introspection
-	depends = libgee-git-alt
+	depends = libgee-git
 	depends = libxml2
 	depends = glib2
 	provides = libgxml=0.16.1.1746.301f134

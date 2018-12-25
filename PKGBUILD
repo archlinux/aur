@@ -7,7 +7,7 @@ pkgdesc="GObject API for XML manipulation and serialization library"
 url="https://gitlab.gnome.org/BZHDeveloper/gxml/"
 license=(LGPL2.1)
 arch=(i686 x86_64)
-depends=('libgee-git-alt' 'libxml2' 'glib2')
+depends=('libgee-git' 'libxml2' 'glib2')
 makedepends=('vala' 'meson' 'ninja' 'gobject-introspection')
 
 provides=('libgxml='$pkgver)
