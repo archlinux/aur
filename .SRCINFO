@@ -1,6 +1,6 @@
 pkgbase = dvc
 	pkgdesc = Open-source version control system for data science projects
-	pkgver = 0.21.1
+	pkgver = 0.23.2
 	pkgrel = 1
 	url = https://github.com/iterative/dvc
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = dvc
 	depends = python-paramiko
 	depends = python-wcwidth
 	depends = python-distro
-	source = dvc-0.21.1.tar.gz::https://github.com/iterative/dvc/archive/0.21.1.tar.gz
+	source = dvc-0.23.2.tar.gz::https://github.com/iterative/dvc/archive/0.23.2.tar.gz
 	source = https://files.pythonhosted.org/packages/source/g/grandalf/grandalf-0.6.tar.gz
 	source = https://files.pythonhosted.org/packages/source/j/jsonpath-rw/jsonpath-rw-1.4.0.tar.gz
 	source = https://files.pythonhosted.org/packages/source/n/ntfsutils/ntfsutils-0.1.4.tar.gz
@@ -31,7 +31,7 @@ pkgbase = dvc
 	source = https://files.pythonhosted.org/packages/source/n/networkx/networkx-2.1.zip
 	source = https://files.pythonhosted.org/packages/source/c/configparser/configparser-3.5.0.tar.gz
 	source = asciimatics-1.10.0::git+https://github.com/peterbrittain/asciimatics.git#branch=v1.10
-	sha256sums = 1888d815e6ecd1de20df399e2902b797d4356935b94adcddc6630e6294324f33
+	sha256sums = 1e4dd7a2ecf38a0324d985c1d4161287126181762b95507fa79a668c67f42639
 	sha256sums = 7471db231bd7338bc0035b16edf0dc0c900c82d23060f4b4d0c4304caedda6e4
 	sha256sums = 05c471281c45ae113f6103d1268ec7a4831a2e96aa80de45edc89b11fac4fbec
 	sha256sums = 50c058ce3371a819606ff29e914e6555c4d6c2527bff0cd0ed20af5947703118
