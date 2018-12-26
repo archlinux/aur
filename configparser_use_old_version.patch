@@ -1,0 +1,11 @@
+--- /tmp/old.py	2018-12-26 22:30:26.097501431 +0800
++++ kazam/kazam/backend/config.py	2018-12-26 22:30:43.520834893 +0800
+@@ -21,7 +21,7 @@
+ #       MA 02110-1301, USA.
+ 
+ import os
+-from configparser import ConfigParser, NoSectionError, NoOptionError
++from kazam.backend.configparser34 import ConfigParser, NoSectionError, NoOptionError
+ from xdg.BaseDirectory import xdg_config_home
+ 
+ 
