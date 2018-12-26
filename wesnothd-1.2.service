@@ -7,19 +7,36 @@ After=network.target
 Conflicts=wesnothd.service wesnothd-1.0.service wesnothd-1.4.service wesnothd-1.6.service wesnothd-1.8.service wesnothd-1.10.service wesnothd-1.12.service wesnothd-1.14.service wesnothd-devel.service wesnothd-git.service
 
 [Service]
+# If wesnothd is started from within the game it runs under a different user
+# Deleting the pipe resets owner, group and mode
+ExecStopPre=/bin/rm -f /run/wesnothd-1.2/socket
+
 ExecStart=/usr/bin/wesnothd-1.2 -t 2 -T 5
-# you can use -c to specify the same configuration file
-# which is used when starting wensothd from the wesnoth UI
+# you can use -c to specify a configuration file
 # (and make sure wesnothd has the required access permissions)
 
 SyslogIdentifier=Wesnothd-1.2
 User=nobody
 Group=users
-ExecStopPost=/usr/bin/rm -f /run/wesnothd-1.2/socket
+
+# Remove remaining administration pipe
+ExecStopPost=/bin/rm -f /run/wesnothd-1.2/socket
 
 # Additional security-related features
-ProtectSystem=yes
-ProtectHome=yes # disable this if using the -c option
+ProtectSystem=strict
+ProtectHome=yes
+# When specifying with the -c option a file in the home directory,
+# set ProtectHome=read-only and whitelist the directory or file with
+# ReadWritePaths.
+ReadWritePaths=/run/wesnothd-1.2
+InaccessiblePaths=/usr/include
+InaccessiblePaths=/usr/src
+InaccessiblePaths=/boot
+InaccessiblePaths=/media
+InaccessiblePaths=/mnt
+InaccessiblePaths=/srv
+InaccessiblePaths=/opt
+InaccessiblePaths=/var
 PrivateTmp=yes
 PrivateDevices=yes
 NoNewPrivileges=yes

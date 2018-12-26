@@ -20,7 +20,7 @@ source=("wesnoth-1.2.desktop"
 
 md5sums=('c3ba9b84c818bba105b0ea236b1d3744'
          'd23cafae5c732d6bf10a836bdabd15b9'
-         'a1831302d36c5d5ddffcf76c42483e1d'
+         '64a072ffd085f2b5af5110fc5b41ab37'
          'b6dfb0e146e6ac3a265487b6e32e9766')
 
 PKGEXT='.pkg.tar'
@@ -58,6 +58,10 @@ build() {
   export CC=gcc-4.3
   export CXX=g++-4.3
 
+  # It's a convention to use /usr/local when installing by hand, it allows you
+  # to keep easier track of what was installed.
+  # Feel free to replace ALL occurences of /usr with /usr/local in the commands
+  # below, and edit the start command in the file wesnothd-1.2.service.
   ./autogen.sh
   ./configure --with-freetype-prefix=/usr/lib --prefix=/usr --with-preferences-dir=.local/share/wesnoth/1.2 --program-suffix=-1.2 --with-datadir-name=wesnoth-1.2 --enable-editor --enable-server --with-fifodir=/run/wesnothd-1.2
   make -j4
@@ -76,6 +80,7 @@ package() {
   # (or delete) them.
   # Note that you can do this only the installation step shown above, as the
   # command will fail if it doesn't find these files.
+
   for filename in "$pkgdir"/usr/share/man/{,*/}man6/wesnoth{,d,_editor}.6
     do
       mv "$filename" $(dirname $filename)/$(basename $filename .6)-1.2.6
@@ -92,14 +97,11 @@ package() {
   install -D -m644 "$srcdir/wesnoth-1.2-git/icons/wesnoth-icon.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/wesnoth-1.2-icon.png"
   install -D -m644 "$srcdir/wesnoth-1.2-git/icons/wesnoth-icon-Mac.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/wesnoth-1.2-icon.png"
 
-  # On Debian / Ubuntu / Mint, the two files go into /etc instead of /usr/lib
-  install -D -m644 "$srcdir/wesnothd-1.2.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/wesnothd-1.2.conf"
-  # On Debian / Ubuntu / Mint, edit the file and change:
-  # Group=nobody to Group=nogroup
-  # /usr/bin/rm to /bin/rm
-  install -D -m644 "$srcdir/wesnothd-1.2.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.2.service"
-
   install -D -m644 "$srcdir/wesnoth-1.2.appdata.xml" "$pkgdir/usr/share/metainfo/wesnoth-1.2.appdata.xml"
+
+  # On other Linux systems, the two files go into /etc instead of /usr/lib
+  install -D -m644 "$srcdir/wesnothd-1.2.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/wesnothd-1.2.conf"
+  install -D -m644 "$srcdir/wesnothd-1.2.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.2.service"
 
   # All done, but it doesn't show up? Try that:
   # update-desktop-database
