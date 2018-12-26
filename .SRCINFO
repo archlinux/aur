@@ -1,0 +1,17 @@
+pkgbase = herald
+	pkgdesc = Simple systemd Journal-to-XMPP bridge
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/vianney/herald
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	depends = systemd
+	backup = etc/herald/config.toml
+	source = https://github.com/vianney/herald/archive/v0.1.tar.gz
+	md5sums = e2130a22bc8d6155f2353e2aa803fb86
+	sha256sums = 947fb8efa0d32eeffce114d336642b733fcd2f2598efdd8ac64d1aa9bb895d1b
+
+pkgname = herald
+
