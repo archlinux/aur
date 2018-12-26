@@ -1,0 +1,4 @@
+#!/bin/sh
+[ -r conf ] && . ./conf
+runpath=${runpath:-/usr/bin/smdev}
+exec nldev -r $runpath $optargs 2>&1

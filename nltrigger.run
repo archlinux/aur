@@ -1,0 +1,4 @@
+#!/bin/sh
+sv check nldev >/dev/null || exit 1
+nltrigger add all
+exec pause
