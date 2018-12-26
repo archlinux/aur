@@ -2,7 +2,7 @@
 
 pkgname=alien_package_converter
 pkgver=8.95
-pkgrel=2
+pkgrel=3
 pkgdesc="Alien is a program that converts between the rpm, dpkg, stampede slp, and slackware tgz file formats"
 arch=('any')
 url="http://joeyh.name/code/alien/"
@@ -29,6 +29,6 @@ build() {
 
 package() {
   cd "${srcdir}/alien-${pkgver}"
-  make DESTDIR="${pkgdir}" PREFIX="${pkgdir}/usr" VARPREFIX="${pkgdir}" INSTALLSITELIB=/usr/lib/perl5/site_perl INSTALLVENDORLIB=/usr/lib/perl5/vendor_perl install 
+  make DESTDIR="${pkgdir}" PREFIX="${pkgdir}/usr" VARPREFIX="${pkgdir}" INSTALLSITELIB=/usr/lib/perl5/5.28/site_perl INSTALLVENDORLIB=/usr/lib/perl5/5.28/vendor_perl install 
   mv "${pkgdir}"/usr/bin/site_perl/alien "${pkgdir}"/usr/bin
 }
