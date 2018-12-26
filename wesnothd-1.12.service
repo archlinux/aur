@@ -3,26 +3,44 @@ Description=Wesnoth-1.12 Server Daemon
 Documentation=https://www.wesnoth.org/wiki/ServerAdministration
 Documentation=man:wesnothd-1.12(6)
 After=network.target
-# They use by default the same port
-Conflicts=wesnothd.service wesnothd-1.6.service wesnothd-1.8.service wesnothd-1.10.service wesnothd-1.14.service wesnothd-devel.service wesnothd-git.service
+# They use by default the same port. You can change ith with the -p option.
+Conflicts=wesnothd.service wesnothd-1.0.service wesnothd-1.2.service wesnothd-1.4.service wesnothd-1.6.service wesnothd-1.8.service wesnothd-1.10.service wesnothd-1.14.service wesnothd-devel.service wesnothd-git.service
 
 [Service]
+# If wesnothd is started from within the game it runs under a different user.
+# Deleting the pipe resets owner, group and mode.
+ExecStopPre=/bin/rm -f /run/wesnothd-1.12/socket
+
 ExecStart=/usr/bin/wesnothd-1.12 -t 2 -T 5
-# you can use -c to specify the same configuration file
-# which is used when starting wensothd from the wesnoth UI
-# (and make sure wesnothd has the required access permissions)
+# You can use -c to specify a same configuration file
+# (and make sure wesnothd has the required access permissions).
 
 SyslogIdentifier=Wesnothd-1.12
 User=nobody
-Group=nobody
-ExecStopPost=/usr/bin/rm -f /run/wesnothd-1.12/socket
+Group=users
 
-# Additional security-related features
-ProtectSystem=yes
+# Remove remaining administration pipe:
+ExecStopPost=/bin/rm -f /run/wesnothd-1.12/socket
+
+# Additional security-related features:
 PrivateTmp=yes
 PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+# When specifying with the -c option a file in the home directory,
+# set ProtectHome=read-only and whitelist the directory or file with
+# ReadWritePaths.
+ReadWritePaths=/run/wesnothd-1.12
+InaccessiblePaths=/usr/include
+InaccessiblePaths=/usr/src
+InaccessiblePaths=/boot
+InaccessiblePaths=/media
+InaccessiblePaths=/mnt
+InaccessiblePaths=/srv
+InaccessiblePaths=/opt
+InaccessiblePaths=/var
 NoNewPrivileges=yes
-RestrictAddressFamilies=AF_INET
+RestrictAddressFamilies=AF_INET AF_UNIX
 RestrictRealtime=yes
 MemoryDenyWriteExecute=yes
 SystemCallArchitectures=native
@@ -30,6 +48,7 @@ ProtectControlGroups=yes
 ProtectKernelTunables=yes
 ProtectKernelModules=yes
 RestrictNamespaces=yes
+LockPersonality=yes
 
 [Install]
 WantedBy=multi-user.target

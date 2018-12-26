@@ -1,5 +1,5 @@
 pkgbase = wesnoth-1.12
-	pkgdesc = Turn-based strategy game on a fantasy world (legacy version)
+	pkgdesc = Turn-based strategy game on a fantasy world (oldstable)
 	pkgver = 1.12.6
 	pkgrel = 11
 	url = https://www.wesnoth.org
@@ -29,12 +29,14 @@ pkgbase = wesnoth-1.12
 	source = wesnothd-1.12.service
 	source = wesnoth-1.12.appdata.xml
 	source = wesnoth-boost.patch::https://github.com/wesnoth/wesnoth/commit/789588d11e3512b3494b4aeac11b44f1c38ad86d.patch
+	source = wesnoth-cve.patch::https://github.com/wesnoth/wesnoth/commit/e764257c3e91dfe7d26da2287b57b01158d213c0.patch
 	sha256sums = a50f384cead15f68f31cfa1a311e76a12098428702cb674d3521eb169eb92e4e
 	sha256sums = f765499315d6650fe91424c0818cc57fc9fd06108c29e78c2db987c148dbf877
 	sha256sums = 4d11e481ad8610bb2ad65290d2b3d1bf2d058485deaa9016325499b113e0f89f
-	sha256sums = 852fbdf8f4d2d366083136d241809b87880beb74d44465c03713c3ca900a0a78
-	sha256sums = d3f031c70e59ac544712c45e6fd9be7cd79f481aad38977e7a129e1bede54840
+	sha256sums = bbc1a80412d3e880d695cf0e818969da90c578501b455d0a6a81a45568cd8231
+	sha256sums = e5b0bd418e97d5f8cfc9392045dc749941c71e9cf805ef6f343c318022088384
 	sha256sums = 74bfc9187b3cdd1744477ca509344a516a94c9992a4c6273ed8a9f370d96600a
+	sha256sums = be21d7fd38b18238edeb38c52206a4d9a26ec09fe0d1a7333785df63023707a6
 
 pkgname = wesnoth-1.12
 

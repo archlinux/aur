@@ -89,7 +89,6 @@
   <url type="bugtracker">https://bugs.wesnoth.org</url>
   <project_group>Wesnoth</project_group>
   <developer_name>The Battle for Wesnoth Project</developer_name>
-  <translation>wesnoth</translation>
   <kudos>
     <kudo>HiDpiIcon</kudo>
     <!-- ModernToolkit is for v1.14.x only -->
