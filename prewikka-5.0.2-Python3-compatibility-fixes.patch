@@ -1,0 +1,212 @@
+diff --git prewikka-5.0.2/prewikka/baseview.py prewikka-5.0.2/prewikka/baseview.py
+index 9f777d9..bef313e 100644
+--- prewikka-5.0.2/prewikka/baseview.py
++++ prewikka-5.0.2/prewikka/baseview.py
+@@ -22,7 +22,6 @@ from __future__ import absolute_import, division, print_function, unicode_litera
+ import base64
+ import collections
+ import string
+-import urlparse
+ 
+ from prewikka import error, history, hookmanager, mainmenu, resource, response, template, utils, view
+ 
+@@ -102,7 +101,7 @@ class BaseView(view._View):
+ 
+     @staticmethod
+     def _get_server():
+-        url = urlparse.urlparse(env.config.general.get("help_location"))
++        url = utils.urlparse(env.config.general.get("help_location"))
+         if not url.netloc and not url.scheme and not url.path.startswith('/'):  # relative url
+             return '/' + url.geturl()
+ 
+diff --git prewikka-5.0.2/prewikka/resource.py prewikka-5.0.2/prewikka/resource.py
+index 10758fa..89cb267 100644
+--- prewikka-5.0.2/prewikka/resource.py
++++ prewikka-5.0.2/prewikka/resource.py
+@@ -84,7 +84,7 @@ class HTMLNode(json.JSONObject):
+         if icon:
+             self.childs = (HTMLNode("i", _class="fa %s" % icon), " ") + self.childs
+ 
+-        self._sortkey = attrs.pop("_sortkey", None)
++        self._sortkey = attrs.pop("_sortkey", "")
+         self._extra = attrs.pop("_extra", None)
+ 
+         tmp = attrs.pop("_class", None)
+diff --git prewikka-5.0.2/prewikka/statistics.py prewikka-5.0.2/prewikka/statistics.py
+index 9f7a7db..789289b 100644
+--- prewikka-5.0.2/prewikka/statistics.py
++++ prewikka-5.0.2/prewikka/statistics.py
+@@ -188,7 +188,7 @@ class ChronologyChart(GenericChart):
+ 
+     def _gen_selection(self, time_unit):
+         selection = []
+-        for idx, unit in enumerate(range(mainmenu.TimeUnit(time_unit) + 1)):
++        for idx, unit in enumerate(range(int(mainmenu.TimeUnit(time_unit) + 1))):
+             selection += ["%s:%s/order_desc,group_by" % (self._ctime_as_timezone(), mainmenu.TimeUnit(unit).dbunit)]
+ 
+         return idx + 1, selection
+diff --git prewikka-5.0.2/prewikka/utils/crypto.py prewikka-5.0.2/prewikka/utils/crypto.py
+index 4d11d1f..59c1917 100644
+--- prewikka-5.0.2/prewikka/utils/crypto.py
++++ prewikka-5.0.2/prewikka/utils/crypto.py
+@@ -26,6 +26,7 @@
+ # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
++import binascii
+ import hashlib
+ import hmac
+ import os
+@@ -43,7 +44,7 @@ except NotImplementedError:
+     using_sysrandom = False
+ 
+ 
+-PREWIKKA_SECRET = os.urandom(24).encode("hex")
++PREWIKKA_SECRET = binascii.hexlify(os.urandom(24))
+ 
+ 
+ def get_random_string(length=12, allowed_chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'):
+diff --git prewikka-5.0.2/prewikka/utils/misc.py prewikka-5.0.2/prewikka/utils/misc.py
+index 7e4ba18..1d01b7d 100644
+--- prewikka-5.0.2/prewikka/utils/misc.py
++++ prewikka-5.0.2/prewikka/utils/misc.py
+@@ -58,6 +58,12 @@ class AttrObj(object):
+         else:
+             return self.__dict__.iteritems()
+ 
++    def __getitem__(self, val):
++        return self.__dict__.__getitem__(val)
++
++    def keys(self):
++        return self.__dict__.keys()
++
+ 
+ # FIXME: Need appropriate implementation
+ def get_analyzer_status_from_latest_heartbeat(heartbeat, error_margin):
+diff --git prewikka-5.0.2/prewikka/utils/url.py prewikka-5.0.2/prewikka/utils/url.py
+index f2bade0..cfd8e15 100644
+--- prewikka-5.0.2/prewikka/utils/url.py
++++ prewikka-5.0.2/prewikka/utils/url.py
+@@ -29,10 +29,10 @@ from prewikka import siteconfig
+ 
+ 
+ if sys.version_info >= (3, 0):
+-    from urllib.parse import quote, quote_plus, urlsplit, urlunsplit, urlencode as _urlencode  # noqa: imported but unused
++    from urllib.parse import quote, quote_plus, urlparse, urlsplit, urlunsplit, urlencode as _urlencode  # noqa: imported but unused
+ else:
+     from urllib import quote, quote_plus, urlencode as __urlencode  # noqa: imported but unused
+-    from urlparse import urlsplit, urlunsplit
++    from urlparse import urlparse, urlsplit, urlunsplit  # noqa: imported but unused
+ 
+     def _convert(d):
+         if isinstance(d, (list, tuple)):
+diff --git prewikka-5.0.2/prewikka/views/datasearch/datasearch.py prewikka-5.0.2/prewikka/views/datasearch/datasearch.py
+index 9688d7d..9d24757 100644
+--- prewikka-5.0.2/prewikka/views/datasearch/datasearch.py
++++ prewikka-5.0.2/prewikka/views/datasearch/datasearch.py
+@@ -413,7 +413,7 @@ class DataSearch(view.View):
+         self._column_index = 0
+ 
+         self.all_fields = []
+-        self._main_fields = self.default_columns.keys()
++        self._main_fields = list(self.default_columns.keys())
+         self.fields_info = collections.OrderedDict()
+         self.columns_properties = collections.OrderedDict()
+ 
+diff --git prewikka-5.0.2/prewikka/views/datasearch/templates/forensic.mak prewikka-5.0.2/prewikka/views/datasearch/templates/forensic.mak
+index e37c07e..5041e36 100644
+--- prewikka-5.0.2/prewikka/views/datasearch/templates/forensic.mak
++++ prewikka-5.0.2/prewikka/views/datasearch/templates/forensic.mak
+@@ -17,7 +17,7 @@
+ 
+ <script type="text/javascript">
+ $LAB.script("datasearch/js/datasearch.js").wait(function() {
+-  datasearch_autocomplete_init(${ html.escapejs(fields_info.keys()) },
++  datasearch_autocomplete_init(${ html.escapejs(list(fields_info.keys())) },
+                             ${ html.escapejs(history) },
+                             ${ html.escapejs(labels) });
+ 
+@@ -33,7 +33,7 @@ $LAB.script("datasearch/js/datasearch.js").wait(function() {
+     %>
+ 
+     var columns = {
+-        'model': ${ html.escapejs(columns_properties.values()) },
++        'model': ${ html.escapejs(list(columns_properties.values())) },
+         'subgrid': true
+     };
+ 
+-- 
+1.8.3.1
+
+--- prewikka-5.0.2/prewikka/response.py	2018-12-23 23:24:53.000000000 +0100
++++ prewikka-5.0.2/prewikka/response.py	2018-12-26 08:51:37.606666535 +0100
+@@ -236,5 +236,5 @@
+         Redirect response
+     """
+     def __init__(self, location, code=302, status_text=None):
+-        PrewikkaResponse.__init__(self, code=code, status_text=status_text or "%d Redirect" % code)
++        PrewikkaResponse.__init__(self, code=code, status_text=status_text or "Redirect")
+         self.headers = collections.OrderedDict((('Location', location),))
+--- prewikka-5.0.2/prewikka/session/session.py	2018-12-26 08:55:54.099999860 +0100
++++ prewikka-5.0.2/prewikka/session/session.py	2018-12-26 09:02:08.369999860 +0100
+@@ -138,7 +138,12 @@
+         t = time.time()
+ 
+         self._db.delete_expired_sessions(t - self._expiration)
+-        sessionid = text_type(binascii.hexlify(os.urandom(16) + struct.pack(b">d", t)))
++        sessionid = binascii.hexlify(os.urandom(16) + struct.pack(b">d", t))
++
++        if sys.version_info[0] >= 3:
++            sessionid = sessionid.decode('utf-8')
++        else:
++            sessionid = text_type(sessionid)
+ 
+         self._db.create_session(sessionid, user, int(t))
+         self.__set_session(request, sessionid)
+--- prewikka-5.0.2/prewikka/utils/crypto.py	2018-12-26 08:51:06.039999868 +0100
++++ prewikka-5.0.2/prewikka/utils/crypto.py	2018-12-26 09:03:10.479999863 +0100
+@@ -45,6 +45,10 @@
+ 
+ 
+ PREWIKKA_SECRET = binascii.hexlify(os.urandom(24))
++if sys.version_info[0] >= 3:
++    PREWIKKA_SECRET = PREWIKKA_SECRET.decode('utf-8')
++else:
++    PREWIKKA_SECRET = text_type(PREWIKKA_SECRET)
+ 
+ 
+ def get_random_string(length=12, allowed_chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'):
+--- prewikka-5.0.2/prewikka/utils/crypto.py	2018-12-26 09:07:29.389999850 +0100
++++ prewikka-5.0.2/prewikka/utils/crypto.py	2018-12-26 09:08:50.096666504 +0100
+@@ -31,6 +31,7 @@
+ import hmac
+ import os
+ import random
++import sys
+ import time
+ 
+ # Use the system PRNG if possible
+--- prewikka-5.0.2/prewikka/session/session.py	2018-12-26 09:10:37.999999832 +0100
++++ prewikka-5.0.2/prewikka/session/session.py	2018-12-26 09:12:33.856666478 +0100
+@@ -22,6 +22,7 @@
+ import binascii
+ import os
+ import struct
++import sys
+ import time
+ 
+ from prewikka import database, hookmanager, log, pluginmanager, usergroup, utils
+--- prewikka-5.0.2/prewikka/web/wsgi.py	2018-12-23 23:24:56.000000000 +0100
++++ prewikka-5.0.2/prewikka/web/wsgi.py	2018-12-26 08:53:59.059999864 +0100
+@@ -124,7 +124,10 @@
+         if not status_text:
+             status_text = defined_status.get(code, "Unknown")
+ 
+-        self._write = self._start_response("%d %s" % (code, status_text.encode("ISO-8859-1")), headers)
++        if sys.version_info[0] < 3:
++            status_text = status_text.encode("ISO-8859-1")
++
++        self._write = self._start_response("%d %s" % (code, status_text), headers)
+ 
+     def get_cookie(self):
+         return self._wsgi_get_str('HTTP_COOKIE', '')
