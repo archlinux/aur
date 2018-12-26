@@ -2,17 +2,17 @@
 
 _name=xmlcutty
 pkgname="${_name}-bin"
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="xmlcutty is a simple tool for carving out elements from large XML files, fast - binary static"
 arch=('x86_64')
 url="https://github.com/miku/xmlcutty"
-license=('')
+license=('GPL3')
 options=('!strip' '!emptydirs')
 conflicts=("${_name}")
 replaces=("${_name}")
 source=("${url}/releases/download/v${pkgver}/${_name}_${pkgver}_amd64.deb")
-sha256sums=('5dfc56bf2b6458f0b141436794f3c5f0daff45d42ce25de044535197882939ce')
+sha256sums=('da247e1ed755a6bda9c1d680dc856adfe8b2ff8df93c6ac660dd9f8d3c6c078d')
 
 package() {
   ar x ${_name}_${pkgver}_amd64.deb
@@ -20,4 +20,4 @@ package() {
   mv ${pkgdir}/usr/sbin ${pkgdir}/usr/bin
 }
 
-# vim:set ft=sh ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
