@@ -23,6 +23,8 @@ source=("wesnoth-1.6.desktop"
         "wesnothd-1.6.tmpfiles.conf"
         "wesnothd-1.6.service"
         "wesnoth-1.6.appdata.xml")
+# Not finding the files? https://aur.archlinux.org/packages/wesnoth-1.6/
+# Rest assured, they are optional. Things like a launcher for your convenience…
 
 md5sums=('99f136647c5af1820d0132df08350965'
          'ec9cab718ba96b7a4c85c224f6b747c3'
