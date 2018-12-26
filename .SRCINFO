@@ -1,0 +1,21 @@
+pkgbase = adeskbar
+	pkgdesc = application launcher
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/adcomp/adeskbar-0.5
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = pygtk
+	depends = python2-xdg
+	depends = gnome-menus
+	source = adeskbar.sh
+	source = remove_launcher_menu.patch
+	source = adeskbar::git://github.com/adcomp/adeskbar-0.5#commit=7af984724eecc31ed9634457d73b5922d087729b
+	sha256sums = 09721d988333375f0b5bf143ea10482f17ec8f0738250d8f95629367b566d6b5
+	sha256sums = 56035b72a1e4c65ffdaf87657f2a798b45cc0e3a9837897404f2adbd741cbe38
+	sha256sums = SKIP
+
+pkgname = adeskbar
+

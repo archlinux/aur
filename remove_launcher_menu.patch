@@ -1,0 +1,15 @@
+Index: src/default.cfg
+<+>UTF-8
+===================================================================
+--- src/default.cfg	(revision 7af984724eecc31ed9634457d73b5922d087729b)
++++ src/default.cfg	(date 1545823834000)
+@@ -29,9 +29,3 @@
+ fake_trans=False
+ tooltips=False
+ show_quit=True
+-
+-[LAUNCHER/1]
+-terminal=x-terminal-emulator
+-cmd=@menu
+-name=Menu
+-icon=adeskbar
