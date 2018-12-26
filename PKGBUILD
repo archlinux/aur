@@ -11,7 +11,7 @@
 pkgname=davinci-resolve-studio
 _pkgname=resolve
 pkgver=15.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -54,7 +54,7 @@ prepare(){
 
 	    
 # extract package
-	    unzip -f ${srcdir}/${_archive}
+	    unzip ${srcdir}/${_archive}
 }
 
 package() {
