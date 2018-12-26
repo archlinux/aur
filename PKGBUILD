@@ -23,7 +23,7 @@ source=("wesnoth-1.8.desktop"
         "wesnothd-1.8.tmpfiles.conf"
         "wesnothd-1.8.service"
         "wesnoth-1.8.appdata.xml")
-# Not finding the files? https://aur.archlinux.org/packages/wesnoth-1.8/
+# Not finding the files? https://aur.archlinux.org/packages/wesnoth-1.8
 # Rest assured, they are optional. Things like a launcher for your convenience…
 
 md5sums=('7fa59aab4ec96e6466dd276a76462e78'
@@ -60,7 +60,7 @@ build() {
   # It's a convention to use /usr/local when installing by hand, it allows you
   # to keep easier track of what was installed.
   # Feel free to replace ALL occurences of /usr with /usr/local in the commands
-  # below, and edit the start command in the file wesnothd-1.2.service.
+  # below, and edit the start command in the file wesnothd-1.8.service.
   rm -rf build && mkdir build && cd build
   cmake ../wesnoth-1.8-git \
       -DCMAKE_INSTALL_PREFIX=/usr \
