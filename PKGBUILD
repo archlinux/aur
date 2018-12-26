@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
 license=('BSD')
@@ -9,10 +9,10 @@ url="http://opencv.org/"
 options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-crt' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-libwebp' 'mingw-w64-lapack' 'mingw-w64-cblas')
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-lapacke')
-source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
+source=("opencv-$pkgver.zip::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
-sha256sums=('86fd08fc02893e05e2944fa7b0daa7d02643232450f020b475e1b2f24587b99a'
-            '4fb0681414df4baedce6e3f4a01318d6f4fcde6ee14854d761fd4e397a397763')
+sha256sums=('b79ccdc4797a959c5ab17249a8a302c066248ae070e4d7010e2d77a625fdb30a'
+            '0d8acbad4b7074cfaafd906a7419c23629179d5e98894714402090b192ef8237')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -75,16 +75,14 @@ package() {
     make -C "$srcdir/opencv-$pkgver/build-${_arch}-static" DESTDIR="$pkgdir/static" install
     mv "$pkgdir/static/usr/${_arch}/lib/"*.a "$pkgdir/usr/${_arch}/lib/"
  
-    # install missing headers https://github.com/opencv/opencv/issues/13201
-    for _module in imgcodecs videoio photo; do
-      cp -r "$srcdir"/opencv-$pkgver/modules/$_module/include/opencv2/$_module/legacy \
-      "$pkgdir"/usr/${_arch}/include/opencv4/opencv2/$_module
-    done
-
     install -d "$pkgdir"/usr/${_arch}/lib/pkgconfig
+    # fix paths
     sed -i "s/\/\/usr\/${_arch}\/lib/\/lib/g" ./unix-install/opencv4.pc
+    # fix static builds. To be able to static build lapack.pc should be fixed too
+    # adding Libs.private: -lgfortran -lquadmath
     sed -i "s/^Libs.private.*/& -lgdi32 -lcomdlg32/" ./unix-install/opencv4.pc
     echo "Requires.private: libjpeg libtiff-4 libpng libwebp lapack cblas" >> ./unix-install/opencv4.pc
+    # remove nonexistent include dir
     sed -i "/^Cflags.*/ s/-I\${includedir_old}//g" ./unix-install/opencv4.pc
     install -m644 ./unix-install/opencv4.pc "$pkgdir"/usr/${_arch}/lib/pkgconfig/
     rm "$pkgdir"/usr/${_arch}/LICENSE
