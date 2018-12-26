@@ -2,13 +2,13 @@
 pkgname=gpupad-git
 _pkgname=gpupad
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc='A text editor for efficiently editing GLSL shaders of all kinds.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/houmaster/gpupad"
 license=('GPL3')
 depends=('qt5-declarative')
-makedepends=('qbs' 'git')
+makedepends=('cmake' 'git')
 conflicts=(${_pkgname})
 provides=(${_pkgname})
 source=('git+https://github.com/houmaster/gpupad.git')
@@ -22,11 +22,11 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
   echo "\"${pkgver}\"" > "src/_version.h"
-  qbs setup-qt /usr/bin/qmake qt5
-  qbs build profile:qt5 config:release
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr
+  make
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  qbs install --no-build --install-root "${pkgdir}/usr" profile:qt5 config:release
+  make DESTDIR="$pkgdir" install
 }
