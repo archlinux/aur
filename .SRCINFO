@@ -1,14 +1,14 @@
 pkgbase = findwild
 	pkgdesc = A program to find files with a nice gtk interface
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = http://www.kornelix.net/findwild/findwild.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
-	source = http://www.kornelix.net/downloads/tarballs/findwild-2.4.tar.gz
-	sha256sums = 4f265ad15032b23d62c6c23c783018ec9698fb3b945ef1425dec364308128815
+	source = http://www.kornelix.net/downloads/tarballs/findwild-2.5.tar.gz
+	sha256sums = a62df186000b50f837ecc5d8bd29c61e6ec8403c2582d040c11a4030022d375f
 
 pkgname = findwild
 
