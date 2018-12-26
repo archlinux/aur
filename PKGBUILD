@@ -1,11 +1,12 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=wslay
 pkgver=1.1.0
 pkgrel=1
 pkgdesc="The WebSocket library in C"
 arch=('i686' 'x86_64')
-makedepends=('autoconf' 'automake' 'git' 'libtool' 'make' 'pkg-config' 'python-sphinx')
+makedepends=('autoconf' 'automake' 'git' 'libtool' 'make' 'pkg-config' 'python2-sphinx')
 optdepends=('cunit: build and run tests'
             'nettle: build and run tests')
 url="https://github.com/tatsuhiro-t/wslay"
