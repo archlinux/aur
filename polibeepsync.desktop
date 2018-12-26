@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Polimi BeeP Sync
+Comment=Sync your BeeP files
+TryExec=polibeepsync
+StartupWMClass=PoliBeepSync
+Terminal=false
+Exec=polibeepsync-gui
+Icon=polibeepsync
+Keywords=polimi;sync;beep
+Categories=Network;Qt;
