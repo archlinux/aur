@@ -1,18 +1,19 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Jianqiu Zhang <zhangjianqiu13@gmail.com>
 
 pkgname=swagger-editor-git
-pkgver=20151009
+pkgver=20181227
 pkgrel=1
 pkgdesc="Swagger Editor"
 arch=('i686' 'x86_64')
 depends=('darkhttpd' 'nodejs')
-makedepends=('bower' 'git' 'nodejs-grunt-cli' 'npm')
+makedepends=('git' 'npm' 'python2')
 url="https://github.com/swagger-api/swagger-editor"
 license=('Apache')
 source=(git+https://github.com/swagger-api/swagger-editor
         swagger-editor.service)
 sha256sums=('SKIP'
-            '8988d97fe76124e0563c80842e0b7841b8fe3c24ca0c66c55af22b12746c5a34')
+            'ca2474524032867d5ea1662535250d9339d9e8f80be1d4d23e429b73e0a5eed4')
 provides=('swagger-editor')
 conflicts=('swagger-editor')
 options=('!strip')
@@ -29,11 +30,8 @@ build() {
   msg2 'Fetching NPM dependencies...'
   npm install --python=python2
 
-  msg2 'Fetching Web assets...'
-  bower install --allow-root --config.interactive=false
-
-  msg2 'Compiling Web assets...'
-  grunt build
+  msg2 'Building...'
+  npm run build
 }
 
 package() {

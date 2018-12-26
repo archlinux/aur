@@ -5,7 +5,7 @@ Description=Swagger Editor
 User=swaggereditor
 Group=swaggereditor
 WorkingDirectory=/usr/share/swagger-editor
-ExecStart=/usr/bin/darkhttpd /usr/share/swagger-editor/dist --port 9898
+ExecStart=/usr/bin/darkhttpd /usr/share/swagger-editor --port 9898
 StandardOutput=journal
 StandardError=journal
 
