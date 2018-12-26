@@ -1,7 +1,7 @@
 pkgbase = omp-git
 	pkgdesc = Open-Source Music Player
 	pkgver = 0.0.21.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://openmusicplayer.com/
 	arch = x86_64
 	license = GPL3

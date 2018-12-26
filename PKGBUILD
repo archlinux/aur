@@ -2,7 +2,7 @@
 
 pkgname=omp-git
 pkgver=0.0.21.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-Source Music Player'
 url='https://openmusicplayer.com/'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(gstreamer gst-libav gst-plugins-bad gst-plugins-base
          libclastfm libconfig sqlite taglib)
 makedepends=(git)
 provides=('omp-git')
-conflicts=('omp' 'omp-git' )
+conflicts=('omp' 'omp-git')
 source=("$pkgname::git+https://github.com/TheWiseNoob/OpenMusicPlayer.git")
 sha256sums=('SKIP')
 
