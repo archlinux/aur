@@ -1,7 +1,7 @@
 pkgbase = meme
 	pkgdesc = The MEME suite provides tools for discovering and using protein and DNA sequence motifs
 	pkgver = 4.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://meme-suite.org/
 	arch = i686
 	arch = x86_64
