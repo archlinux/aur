@@ -1,4 +1,5 @@
 # Maintainer: Florian Jacob <projects+arch AT florianjacob )DOT( de>
+# Maintainer: Jake <aur@ja-ke.tech>
 pkgname=earlyoom
 pkgver=1.2
 pkgrel=2
