@@ -98,7 +98,7 @@ package() {
       mv $filename $(dirname $filename)/$(basename $filename .6)-1.10.6
   done
 
-  # better use the pacthed tools from a recent version of wesnoth
+  # better use the patched tools from a recent version of wesnoth
   rm -r "$pkgdir/usr/share/wesnoth-1.10/data/tools"
 
   # these files are not needed
