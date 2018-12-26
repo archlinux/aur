@@ -42,6 +42,7 @@ prepare() {
 
 package() {
     mkdir "$pkgdir/opt"
+    mkdir -p "$pkgdir/usr/bin"
     cp -pr "$srcdir/$pkgname" "$pkgdir/opt"
     ln -s "/opt/stanza/stanza" "$pkgdir/usr/bin/stanza"
 }
