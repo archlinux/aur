@@ -9,16 +9,16 @@ pkgbase = thelounge
 	depends = nodejs
 	noextract = thelounge-2.7.1.tgz
 	backup = etc/thelounge/config.js
-	source = http://registry.npmjs.org/thelounge/-/thelounge-2.7.1.tgz
+	source = https://registry.npmjs.org/thelounge/-/thelounge-2.7.1.tgz
 	source = system.service
 	source = user.service
 	source = sysusers.d
 	source = tmpfiles.d
-	md5sums = f2be61e721cc677fb624687cf1e8944c
-	md5sums = e52c5db8dece96c773718b402e4679ad
-	md5sums = 7493ff3e6bb98daae42b26bf97173ed3
-	md5sums = bf9da927d1432ec00a8dc0b7183745fc
-	md5sums = 456c3d6d70aa33da967f79d215621dba
+	sha256sums = 4b4970caba850042244798008afd334dd2ddd7e25339c864837ce11ba4703021
+	sha256sums = c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20
+	sha256sums = 055f7e05e9e2528474526ceea864502112e27024c89c997b26ddace86c24dbc6
+	sha256sums = 30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5
+	sha256sums = 4060efc92346c7193e699ffe1b802d85dc45daa7b5260ecdf70a6b993c30b01a
 
 pkgname = thelounge
 

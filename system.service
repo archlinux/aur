@@ -6,10 +6,10 @@ After=network.target
 User=thelounge
 Group=thelounge
 Type=simple
-Environment=THELOUNGE_HOME=/var/lib/thelounge
+Environment=THELOUNGE_HOME=/etc/thelounge
 ExecStart=/usr/bin/thelounge start
 ProtectSystem=strict
-ReadWritePaths=/etc/thelounge /var/lib/thelounge
+ReadWritePaths=/etc/thelounge
 ProtectHome=yes
 NoNewPrivileges=yes
 PrivateTmp=yes

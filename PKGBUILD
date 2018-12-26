@@ -11,25 +11,25 @@ depends=('nodejs')
 makedepends=('npm')
 backup=('etc/thelounge/config.js')
 source=(
-    "http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
+    "https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
     'system.service'
     'user.service'
     'sysusers.d'
     'tmpfiles.d'
 )
 noextract=("$pkgname-$pkgver.tgz")
-md5sums=('f2be61e721cc677fb624687cf1e8944c'
-         'e52c5db8dece96c773718b402e4679ad'
-         '7493ff3e6bb98daae42b26bf97173ed3'
-         'bf9da927d1432ec00a8dc0b7183745fc'
-         '456c3d6d70aa33da967f79d215621dba')
+sha256sums=('4b4970caba850042244798008afd334dd2ddd7e25339c864837ce11ba4703021'
+            'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
+            '055f7e05e9e2528474526ceea864502112e27024c89c997b26ddace86c24dbc6'
+            '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
+            '4060efc92346c7193e699ffe1b802d85dc45daa7b5260ecdf70a6b993c30b01a')
 
 package() {
     export NODE_ENV=production
 
     npm install -g --user root --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz" --cache "${srcdir}/npm-cache"
 
-    echo /var/lib/thelounge > "$pkgdir/usr/lib/node_modules/$pkgname/.thelounge_home"
+    echo /etc/thelounge > "$pkgdir/usr/lib/node_modules/$pkgname/.thelounge_home"
 
     # add default config
     install -Dm 644 "$pkgdir/usr/lib/node_modules/$pkgname/defaults/config.js" "$pkgdir/etc/thelounge/config.js"
