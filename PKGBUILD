@@ -4,12 +4,12 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=flightgear
-pkgver=2018.2.2
+pkgver=2018.3.1
 _pkgver=${pkgver%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=(x86_64)
-depends=('libxmu' 'libxi' 'zlib' 'openscenegraph' 'subversion' 'libxrandr' 'glu' 'openal')
+depends=('libxmu' 'libxi' 'zlib' 'plib' 'openscenegraph34' 'subversion' 'libxrandr' 'glu' 'openal')
 makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear' 'qt5-base' 'qt5-declarative')
 optdepends=('qt5-base: fgfs --launcher'
 	        'qt5-declarative: fgfs --launcher'
@@ -18,7 +18,7 @@ license=("GPL")
 url="http://www.flightgear.org/"
 options=('makeflags')
 source=("http://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('61f809ef0a3f6908d156f0c483ed5313d31b5a6ac74761955d0b266751718147')
+sha256sums=('3d4a1f37e4d5cb376c16f02c111aac9d3e6b05529015c7d068ce2c00ecb5a640')
 
 build() {
   cd "$srcdir"/flightgear-$pkgver
