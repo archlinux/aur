@@ -893,3 +893,26 @@ Sun Dec 23 04:10:43 2018 +0100
      2018-12-23 7e300b91 actionless fix(packaging: flatpak): rust stuff
      2018-12-23 a40a6cc2 actionless fix(makefile): apply chmod before install-ing files
      2018-12-23 ddcb7f3d actionless fix(plugins: random): remove unused import
+
+
+Sun Dec 23 05:46:28 2018 +0100
+-------------------------------------------------
+1.8.0.3         Flatpak bump and fixes
+    
+     2018-12-23 31acfbbb actionless chore(plugins: materia): update submodule (more flatpak fixes)
+     2018-12-23 b25ebe80 actionless chore(plugins: arc): update submodule (allow running without inkscape - 2)
+     2018-12-23 ed097e0c actionless chore(packaging: flatpak): add optipng
+     2018-12-23 3d69fb92 actionless chore(plugins: arc, materia): update submodules (make optipng optional)
+
+
+Wed Dec 26 05:01:08 2018 +0100
+-------------------------------------------------
+1.9             Release 1.9
+    
+    Notable changes:
+    
+     GUI:
+      2018-12-26 f694c6ba actionless feat(main, colors_list): when doing slow operations set insensitive and show spinner
+      2018-12-24 84bfc410 actionless rename and reorder GTK3- and DE-specific theme options
+      2018-12-24 2c0c9237 actionless feat(colors_list: color row): use monospace style for entries
+      2018-12-24 bb962054 actionless beautify gtk preview widget alignment
