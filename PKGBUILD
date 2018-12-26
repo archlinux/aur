@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=git-related
-pkgver=r29.0d8db5e
+pkgver=0.4+1.ge5c35509d2
 pkgrel=1
 pkgdesc='Find related people and commits on a set of changes'
 arch=('any')
