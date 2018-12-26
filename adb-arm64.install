@@ -1,0 +1,10 @@
+pre_install() {
+  echo "############################################################################"
+  echo "## You should add current user to 'adbusers' group to be able to use adb. ##"
+  echo "## You will also probably need to reboot as udev rules changed.           ##"
+  echo "############################################################################"
+}
+
+pre_upgrade() {
+  pre_install
+}

@@ -7,9 +7,10 @@ pkgdesc='adb for Raspberry 3'
 arch=('aarch64')
 url='http://developer.android.com/sdk/index.html'
 license=('custom')
-depends=('zlib' 'ncurses' 'repo')
+depends=('zlib' 'ncurses' 'android-udev')
 provides=('adb')
 conflicts=('adb')
+install="adb-arm64.install"
 source=("adb.service"
         "license.html"
 	"Makefile")
