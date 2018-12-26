@@ -1,0 +1,12 @@
+pkgbase = picat
+	pkgdesc = Picat is a simple, and yet powerful, logic-based multi-paradigm programming language aimed for general-purpose applications.
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://picat-lang.org/
+	arch = x86_64
+	license = MPL
+	source = http://picat-lang.org/download/picat25_linux64.tar.gz
+	sha256sums = bb1d0f15a77af065ea7f071d8cdabfcb3f6df264f26d82647bf8daa997ad1113
+
+pkgname = picat
+
