@@ -2,38 +2,35 @@
 # Maintainer: ZeroDot1 <zerodot1@bk.ru>
 pkgname=mellowplayer
 _pkgname=MellowPlayer
-pkgver=3.4.0
-pkgrel=4
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Open source and cross-platform desktop application that runs web-based music streaming 
          services in its own window and provides integration with your desktop."
 url='https://github.com/ColinDuquesnoy/MellowPlayer'
 license=('GPL')
 arch=('x86_64')
 depends=('qt5-base' 'qt5-webengine' 'qt5-svg' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-translations' 'qt5-graphicaleffects' 'xdg-utils' 'libnotify' 'libevent')
-makedepends=('qt5-tools' 'qbs' 'mesa')
+makedepends=('qt5-tools' 'cmake' 'mesa')
 optdepends=( 'qt5-webengine-widevine: DRM needed for Spotify' 'pepper-flash: needed for Tidal and Deezer')
-source=("https://github.com/ColinDuquesnoy/MellowPlayer/archive/${pkgver}.tar.gz" 
+source=("https://gitlab.com/ColinDuquesnoy/MellowPlayer/-/archive/${pkgver}/MellowPlayer-${pkgver}.tar.gz" 
         "widevine-path.patch")
-md5sums=('60aac9e1f5f32d699920e44e2f3af790'
+md5sums=('2faff7575f5a954e1dad049b5cb91214'
          '67f8c5c6af4b770a4017a5ca9f137b90')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    patch -Np1 -i "${srcdir}/widevine-path.patch" "${srcdir}/${_pkgname}-${pkgver}/src/main/share/applications/mellowplayer.desktop"
-    
-    qbs-setup-toolchains --detect
-    qbs-setup-qt $(which qmake) qt5
-    qbs-config defaultProfile qt5
+    cd $srcdir/MellowPlayer-${pkgver}
+    patch -Np1 -i "${srcdir}/widevine-path.patch" "$srcdir/MellowPlayer-${pkgver}/src/main/share/applications/mellowplayer.desktop"
 }
 
 build() {
-      cd "${srcdir}/${_pkgname}-${pkgver}"
-  qbs build config:release
+  cd $srcdir/MellowPlayer-${pkgver}
+  export MAKEFLAGS="-j$(nproc)"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+  make 
 }
 
 package() {
-      cd "${srcdir}/${_pkgname}-${pkgver}"
-  qbs install --install-root "${pkgdir}/usr" config:release
+  cd $srcdir/MellowPlayer-${pkgver}
+  make DESTDIR=${pkgdir} install
 }
-
 

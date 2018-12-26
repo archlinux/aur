@@ -1,12 +1,12 @@
 pkgbase = mellowplayer
 	pkgdesc = Open source and cross-platform desktop application that runs web-based music streaming services in its own window and provides integration with your desktop.
-	pkgver = 3.4.0
-	pkgrel = 4
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = https://github.com/ColinDuquesnoy/MellowPlayer
 	arch = x86_64
 	license = GPL
 	makedepends = qt5-tools
-	makedepends = qbs
+	makedepends = cmake
 	makedepends = mesa
 	depends = qt5-base
 	depends = qt5-webengine
@@ -20,9 +20,9 @@ pkgbase = mellowplayer
 	depends = libevent
 	optdepends = qt5-webengine-widevine: DRM needed for Spotify
 	optdepends = pepper-flash: needed for Tidal and Deezer
-	source = https://github.com/ColinDuquesnoy/MellowPlayer/archive/3.4.0.tar.gz
+	source = https://gitlab.com/ColinDuquesnoy/MellowPlayer/-/archive/3.5.0/MellowPlayer-3.5.0.tar.gz
 	source = widevine-path.patch
-	md5sums = 60aac9e1f5f32d699920e44e2f3af790
+	md5sums = 2faff7575f5a954e1dad049b5cb91214
 	md5sums = 67f8c5c6af4b770a4017a5ca9f137b90
 
 pkgname = mellowplayer
