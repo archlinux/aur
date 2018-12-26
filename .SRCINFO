@@ -10,6 +10,7 @@ pkgbase = moros-git
 	makedepends = make
 	makedepends = boost
 	depends = boost
+	depends = openssl
 	provides = moros
 	conflicts = moros
 	source = moros-git::git+https://github.com/condy0919/moros.git
