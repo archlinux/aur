@@ -1,6 +1,6 @@
 pkgbase = psdoom-ng
 	pkgdesc = A FPS and operating system process killer (when you kill an enemy, it kills a process) based on psDooM and Chocolate Doom.
-	pkgver = 2017.10.02.2.3.0.20181228
+	pkgver = 2017.10.02.2.3.0.20181228.2
 	pkgrel = 1
 	url = https://github.com/yeoldegrove/psdoom-ng1
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = psdoom-ng
 	depends = sdl_mixer
 	depends = sdl_net
 	depends = freedoom1
-	source = https://github.com/yeoldegrove/psdoom-ng1/archive/psdoom-ng-2017.10.02.2.3.0.20181228.tar.gz
-	sha256sums = bd1af5ae4e21bc76567c89be246424a75826b5c993b16d72668fab30042c59c6
+	source = https://github.com/yeoldegrove/psdoom-ng1/archive/psdoom-ng-2017.10.02.2.3.0.20181228.2.tar.gz
+	sha256sums = 87ab954dcb82026e1d7dae6892be9001063b172176254767d50186a98358c0e2
 
 pkgname = psdoom-ng
 
