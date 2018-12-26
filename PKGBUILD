@@ -21,7 +21,7 @@ source=("wesnoth-1.4.desktop"
 
 md5sums=('b4052583dce2f360af5686f6320247a7'
          'e5e9941ae3fd5fce9af88a27c4e6795c'
-         'c4d2f3ff8cf62ef214b9b249111df860'
+         'c6028a0a179da7599f742543e38b8f76'
          '5dfa63b303f48842ee54bc65ed89f7a2')
 
 PKGEXT='.pkg.tar'
@@ -61,6 +61,11 @@ build() {
   export CC=gcc-4.3
   export CXX=g++-4.3
 
+  # It's a convention to use /usr/local when installing by hand, it allows you
+  # to keep easier track of what was installed.
+  # Feel free to replace ALL occurences of /usr with /usr/local in the commands
+  # below, and edit the start command in the file wesnothd-1.2.service.
+
   ./autogen.sh --with-freetype-prefix=/usr/lib --prefix=/usr --with-preferences-dir=.local/share/wesnoth/1.4 --program-suffix=-1.4 --with-datadir-name=wesnoth-1.4 --docdir=/usr/share/doc/wesnoth-1.4 --disable-desktop-entry --enable-editor --enable-server --with-fifodir=/run/wesnothd-1.4 CXXFLAGS=-w
   make -j4
 }
@@ -87,7 +92,7 @@ package() {
   mv "$pkgdir"/usr/share/doc/wesnoth-1.4/manual/* "$pkgdir"/usr/share/doc/wesnoth-1.4/
   rmdir "$pkgdir/usr/share/doc/wesnoth-1.4/manual/"
 
-  # better use the tools from a recent version of wesnoth
+  # better use the patched tools from a recent version of wesnoth
   rm -r "$pkgdir/usr/share/wesnoth-1.4/data/tools"
 
   # remove unneeded files
@@ -95,18 +100,15 @@ package() {
   find "$pkgdir/usr/share" -name .gitignore -delete
 
   # placing launcher, icons and (not required) appdata and systemd files
-  install -D -m644 "$srcdir/org.wesnoth.Wesnoth_1.4.desktop" "$pkgdir/usr/share/applications/wesnoth-1.4.desktop"
+  install -D -m644 "$srcdir/wesnoth-1.4.desktop" "$pkgdir/usr/share/applications/wesnoth-1.4.desktop"
   install -D -m644 "$srcdir/wesnoth-1.4-git/icons/wesnoth-icon.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/wesnoth-1.4-icon.png"
   install -D -m644 "$srcdir/wesnoth-1.4-git/icons/wesnoth-icon-Mac.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/wesnoth-1.4-icon.png"
 
-  # On Debian / Ubuntu / Mint, the two files go into /etc instead of /usr/lib
-  install -D -m644 "$srcdir/wesnothd-1.4.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/wesnothd-1.4.conf"
-  # On Debian / Ubuntu / Mint, edit the file and change:
-  # Group=nobody to Group=nogroup
-  # /usr/bin/rm to /bin/rm
-  install -D -m644 "$srcdir/wesnothd-1.4.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.4.service"
+  install -D -m644 "$srcdir/wesnoth-1.4.appdata.xml" "$pkgdir/usr/share/metainfo/wesnoth-1.4.appdata.xml"
 
-  install -D -m644 "$srcdir/org.wesnoth.Wesnoth_1.4.appdata.xml" "$pkgdir/usr/share/metainfo/wesnoth-1.4.appdata.xml"
+  # On other Linux systems, the two files go into /etc instead of /usr/lib
+  install -D -m644 "$srcdir/wesnothd-1.4.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/wesnothd-1.4.conf"
+  install -D -m644 "$srcdir/wesnothd-1.4.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.4.service"
 
   # All done, but it doesn't show up? Try that:
   # update-desktop-database

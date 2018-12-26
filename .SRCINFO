@@ -24,7 +24,7 @@ pkgbase = wesnoth-1.4
 	source = wesnoth-1.4.appdata.xml
 	md5sums = b4052583dce2f360af5686f6320247a7
 	md5sums = e5e9941ae3fd5fce9af88a27c4e6795c
-	md5sums = c4d2f3ff8cf62ef214b9b249111df860
+	md5sums = c6028a0a179da7599f742543e38b8f76
 	md5sums = 5dfa63b303f48842ee54bc65ed89f7a2
 
 pkgname = wesnoth-1.4
