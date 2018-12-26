@@ -2,17 +2,17 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=nodejs-n
-pkgver=2.1.11
-pkgrel=2
+pkgver=2.1.12
+pkgrel=3
 pkgdesc="Node version manager"
 arch=("any")
 depends=("bash")
 url="https://github.com/tj/n"
 license=("MIT")
 install="${pkgname}.install"
-source=("https://github.com/tj/n/archive/v2.1.11.zip"
+source=("https://github.com/tj/n/archive/v2.1.12.zip"
         "LICENSE.md")
-md5sums=('4c1274a88532e94cd4aa312fc6c50636'
+md5sums=('2b5cb2c962515845c27856d0b4ebb6e7'
          '55761bbdb8c6dfe8c83a1f27122bdff1')
 
 package() {
