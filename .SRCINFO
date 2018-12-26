@@ -1,11 +1,12 @@
 pkgbase = sparsebundlefs-git
 	pkgdesc = FUSE filesystem for reading Mac OS sparse-bundle disk images
-	pkgver = r64.f3ccd20
+	pkgver = r100.3cfb009
 	pkgrel = 1
 	url = https://github.com/torarnv/sparsebundlefs
 	arch = x86_64
 	license = custom:BSD-2-Clause
 	makedepends = pkg-config
+	makedepends = git
 	depends = fuse2
 	depends = gcc-libs
 	provides = sparsebundlefs

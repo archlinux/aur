@@ -1,13 +1,13 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=sparsebundlefs-git
 pkgdesc='FUSE filesystem for reading Mac OS sparse-bundle disk images'
-pkgver=r64.f3ccd20
+pkgver=r100.3cfb009
 pkgrel=1
 arch=('x86_64')
 license=('custom:BSD-2-Clause')
 url='https://github.com/torarnv/sparsebundlefs'
 depends=('fuse2' 'gcc-libs')
-makedepends=('pkg-config')
+makedepends=('pkg-config' 'git')
 conflicts=('sparsebundlefs')
 provides=('sparsebundlefs')
 source=("${pkgname}::git+${url}")
