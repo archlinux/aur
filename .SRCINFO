@@ -1,7 +1,7 @@
 pkgbase = fissh
 	pkgdesc = SSH authentication via Android Fingerprint scanning (Desktop part)
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.iodev.science/ioan/FiSSH-Desktop
 	install = fissh.install
 	arch = x86_64
