@@ -19,7 +19,6 @@ md5sums=('SKIP'
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
-	cp "${srcdir}/config.h" config.h
 	patch -Np1 -i ../0000-change_shell.patch
 	patch -Np1 -i ../0001-increase_buffer.patch
 }
