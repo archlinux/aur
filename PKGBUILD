@@ -80,7 +80,7 @@ build() {
 # For the Archlinux package this is no problem because the files are installed
 # into the empty $pkgdir, and it's content is copied later to the system.
 
-# Thes commands below have to be run with root privileges.
+# The commands below have to be run with root privileges.
 # E.g. by prefixing them with "sudo ".
 package() {
   cd build
