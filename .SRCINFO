@@ -1,6 +1,6 @@
 pkgbase = virtualbox-ck-modules
 	pkgver = 5.2.22
-	pkgrel = 1
+	pkgrel = 3
 	url = http://virtualbox.org
 	arch = x86_64
 	license = GPL

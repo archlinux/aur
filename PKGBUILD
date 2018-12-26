@@ -5,7 +5,7 @@
 pkgbase=(virtualbox-ck-modules)
 pkgname=(virtualbox-ck-host-modules)
 pkgver=5.2.22
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
