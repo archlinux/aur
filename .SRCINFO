@@ -1,11 +1,11 @@
 pkgbase = mingw-w64-dbh
 	pkgdesc = GNU DBH database library (mingw-w64)
 	pkgver = 5.0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/libdbh/
 	arch = any
 	license = GPL
-	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-gettext
 	depends = mingw-w64-crt
 	options = staticlibs
@@ -13,8 +13,8 @@ pkgbase = mingw-w64-dbh
 	options = !strip
 	source = http://downloads.sourceforge.net/project/dbh/dbh/5.0.22/libdbh2-5.0.22.tar.gz
 	source = 0001-remove-lrt.patch
-	md5sums = f8c592f6fd4d336cbb5529dc52177e4f
-	md5sums = e24ed905636b1f053896433f73d5922e
+	sha256sums = 8df54e7d1c1d071e385b59256b42a9538cb1b744b11ecc022e188d99046e91d7
+	sha256sums = 23a6319cd6b315e184267e01e7fa9355e37d929057b4823a95b26cd36a8b2efe
 
 pkgname = mingw-w64-dbh
 

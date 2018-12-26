@@ -1,20 +1,20 @@
-# Maintainer: edscott@imp.mx
-# Contributor: 
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: edscott@imp.mx
 
 pkgname=mingw-w64-dbh
 pkgver=5.0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU DBH database library (mingw-w64)"
 url="http://www.gnu.org/software/libdbh/"
 license=('GPL')
 arch=('any')
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-gcc' 'mingw-w64-gettext')
+makedepends=('mingw-w64-configure' 'mingw-w64-gettext')
 source=("http://downloads.sourceforge.net/project/dbh/dbh/${pkgver}/libdbh2-${pkgver}.tar.gz"
-        0001-remove-lrt.patch)
+        "0001-remove-lrt.patch")
 options=('staticlibs' '!buildflags' '!strip')
-md5sums=('f8c592f6fd4d336cbb5529dc52177e4f'
-         'e24ed905636b1f053896433f73d5922e')
+sha256sums=('8df54e7d1c1d071e385b59256b42a9538cb1b744b11ecc022e188d99046e91d7'
+            '23a6319cd6b315e184267e01e7fa9355e37d929057b4823a95b26cd36a8b2efe')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
