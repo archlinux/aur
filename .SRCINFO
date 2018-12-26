@@ -1,6 +1,6 @@
 pkgbase = python-yagmail-git
 	pkgdesc = Yet Another GMAIL/SMTP client, written in Python.
-	pkgver = 0.11.214
+	pkgver = r214.5f5f6c9
 	pkgrel = 1
 	url = https://github.com/kootenpv/yagmail.git
 	arch = any

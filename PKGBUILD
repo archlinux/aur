@@ -3,7 +3,7 @@
 
 pkgname=python-yagmail-git
 _name=yagmail
-pkgver=0.11.214
+pkgver=r214.5f5f6c9
 pkgrel=1
 pkgdesc="Yet Another GMAIL/SMTP client, written in Python."
 arch=(any)
