@@ -1,6 +1,6 @@
 pkgbase = etcher
 	pkgdesc = Burn images to SD cards & USB drives, safe & easy
-	pkgver = 1.4.8
+	pkgver = 1.4.9
 	pkgrel = 1
 	url = https://www.balena.io/etcher/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = etcher
 	makedepends = python2
 	makedepends = git
 	makedepends = jq
-	depends = electron
+	depends = electron2
 	depends = gtk2
 	depends = libxtst
 	depends = libxss
@@ -19,13 +19,13 @@ pkgbase = etcher
 	optdepends = libnotify: for notifications
 	optdepends = speech-dispatcher: for text-to-speech
 	options = !strip
-	source = etcher::git+https://github.com/balena-io/etcher.git#tag=v1.4.8
+	source = etcher::git+https://github.com/balena-io/etcher.git#tag=v1.4.9
 	source = git+https://github.com/balena-io/scripts.git
 	source = etcher-electron
 	source = etcher-electron.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 4499f316e4de865696312b31545f8df62850aad4492bcc9736cccb6d8eeb96ec
+	sha256sums = 58926eb1380e117a5f237d93d3d481a2af4695fa3e7049ae400531c52db87082
 	sha256sums = 89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4
 
 pkgname = etcher

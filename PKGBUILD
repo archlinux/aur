@@ -2,13 +2,13 @@
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 
 pkgname=etcher
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc='Burn images to SD cards & USB drives, safe & easy'
 arch=(x86_64)
 url='https://www.balena.io/etcher/'
 license=(apache)
-depends=(electron gtk2 libxtst libxss gconf nss alsa-lib)
+depends=(electron2 gtk2 libxtst libxss gconf nss alsa-lib)
 makedepends=(npm python2 git jq)
 optdepends=('libnotify: for notifications'
             'speech-dispatcher: for text-to-speech')
@@ -19,7 +19,7 @@ source=("$pkgname::git+https://github.com/balena-io/$pkgname.git#tag=v$pkgver"
         'etcher-electron.desktop')
 sha256sums=('SKIP'
             'SKIP'
-            '4499f316e4de865696312b31545f8df62850aad4492bcc9736cccb6d8eeb96ec'
+            '58926eb1380e117a5f237d93d3d481a2af4695fa3e7049ae400531c52db87082'
             '89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4')
 
 prepare() {
@@ -30,7 +30,7 @@ prepare() {
 
   # electron --version does not work in a chroot
   # https://github.com/electron/electron/issues/12621
-  export _electron_version=$(tail -c +2 /usr/lib/electron/version)
+  export _electron_version=$(tail -c +2 /usr/lib/electron2/version)
   mv package.json{,.orig}
   jq '.devDependencies.electron |= env._electron_version' \
     package.json.orig > package.json
