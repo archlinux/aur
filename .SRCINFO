@@ -1,7 +1,7 @@
 pkgbase = borgmatic
 	pkgdesc = A wrapper script for Borg backup software that creates and prunes backups
 	pkgver = 1.2.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://torsion.org/borgmatic/
 	install = borgmatic.install
 	arch = any
