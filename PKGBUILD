@@ -4,7 +4,7 @@
 
 pkgname='borgmatic'
 pkgver=1.2.14
-pkgrel=1
+pkgrel=3
 pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
 arch=('any')
 url='https://torsion.org/borgmatic/'
@@ -24,11 +24,22 @@ sha256sums=(
   '1b033f96dc7404c26fad0f5fbbdda2fd93959869a7737092049ed7cfe994602e'
 )
 
-#check() {
-#  cd "${pkgname}"
-#
-#  pytest --ignore='./tests/end-to-end'
-#}
+_pytestdir="$(mktemp -d)"
+
+prepare() {
+  cd "${pkgname}"
+
+  python setup.py -q install --root="${_pytestdir}"
+}
+
+check() {
+  cd "${pkgname}"
+
+  export PATH="${PATH}:${_pytestdir}/usr/bin"
+  export PYTHONPATH="${PYTHONPATH}:${_pytestdir}/usr/lib/python*/site-packages/"
+
+  pytest
+}
 
 package() {
   cd "${pkgname}"
