@@ -15,9 +15,9 @@ arch=('i686' 'x86_64')
 url="https://www.wesnoth.org"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'sdl_net' 'boost-libs' 'bzip2' 'zlib' 'libvorbis' 'pango' 'cairo' 'fontconfig' 'dbus' 'fribidi')
-makedepends=('boost' 'cmake' 'git')
+makedepends=('boost' 'scons' 'git')
 # package names on Debian / Ubuntu / Mint:
-# libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl-net1.2-dev libboost-filesystem-dev libboost-locale-dev libboost-iostreams-dev libboost-regex-dev libboost-serialization-dev libasio-dev libboost-program-options-dev libboost-system-dev zlib1g-dev libpango1.0-dev libcairo2-dev  libvorbis-dev libfontconfig1-dev libdbus-1-dev libfribidi-dev gettext-base cmake make pkgconf gcc g++ git
+# libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl-net1.2-dev libboost-filesystem-dev libboost-locale-dev libboost-iostreams-dev libboost-regex-dev libboost-serialization-dev libasio-dev libboost-program-options-dev libboost-system-dev zlib1g-dev libpango1.0-dev libcairo2-dev libvorbis-dev libfontconfig1-dev libdbus-1-dev libfribidi-dev gettext-base scons pkgconf gcc g++ git
 options=('!emptydirs')
 source=("wesnoth-1.12.desktop"
         "wesnothd-1.12.tmpfiles.conf"
@@ -62,28 +62,25 @@ build() {
   # Feel free to replace ALL occurences of /usr with /usr/local in the commands
   # below, and edit the start command in the file wesnothd-1.12.service.
 
-  rm -rf build && mkdir build && cd build
-  cmake ../wesnoth-1.12-git \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DBINARY_SUFFIX=-1.12 \
-      -DDATADIRNAME=wesnoth-1.12 \
-      -DDOCDIR=share/doc/wesnoth-1.12 \
-      -DFIFO_DIR=/run/wesnothd-1.12 \
-      -DPREFERENCES_DIR=.local/share/wesnoth/1.12 \
-      -DENABLE_OMP=ON \
-      -DENABLE_DESKTOP_ENTRY=OFF \
-      -DENABLE_DISPLAY_REVISION=OFF \
-      -Wno-dev # silence cmake warnings
-  make -j 4
+  cd wesnoth-1.12-git
+  scons jobs=4 \
+      prefix=/usr \
+      version_suffix=-1.12 \
+      docdir=share/doc/wesnoth-1.12 \
+      fifodir=/run/wesnothd-1.12 \
+      prefsdir=.local/share/wesnoth/1.12 \
+      openmp=True \
+      desktop_entry=False \
+      wesnoth wesnothd
 }
 
 # The commands below have to be run with root privileges.
 # E.g. by prefixing them with "sudo ".
 package() {
-  cd build
+  cd wesnoth-1.12-git
 
-  # On Debian / Ubuntu / Mint / Fedora / Suse, just "make install"
-  make DESTDIR="$pkgdir" install
+  # On Debian / Ubuntu / Mint / Fedora / Suse, just "scons install"
+  scons destdir="$pkgdir" install
 
   # On Debian / Ubuntu / Mint / Fedora, the above command may fail, in case you
   # have another wesnoth version installed, because they use the same file name
