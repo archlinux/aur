@@ -12,7 +12,8 @@ makedepends=('asciidoc')
 
 pkgver() {
   cd "${srcdir}/git-related"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --abbrev=10 HEAD |
+    sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build() {
