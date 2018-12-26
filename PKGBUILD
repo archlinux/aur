@@ -1,8 +1,8 @@
 # Maintainer: Marcin Mielniczuk <marmistrz@inboxalias.com>
 
 pkgname=ivan
-pkgver=0.53
-_vertag=053
+pkgver=0.55
+_vertag=055
 pkgrel=1
 pkgdesc="Iter Vehemens ad Necem - a tile-graphics roguelike with limb dismembering"
 arch=('i686' 'x86_64')
