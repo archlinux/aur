@@ -1,7 +1,7 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname=nemo-emblems
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Nemo file emblems extension"
 arch=('any')
@@ -14,7 +14,7 @@ install="$pkgname".install
 #source=("${pkgname}-${pkgver}.tar.gz::http://packages.linuxmint.com/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.gz")
 #source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
 #sha256sums=('4bee7336554fd3c6e87371bc4683e5bee989a67030582b89a050aad5874a04de')
-_commit='7637ee891380fae7669e4a5f48f3881337cfe998'
+_commit='d8c20fa9126fa59f815f30574673726ffd6ec4a0'
 source=("nemo-extensions::git+https://github.com/linuxmint/nemo-extensions#commit=${_commit}")
 sha256sums=('SKIP')
 
