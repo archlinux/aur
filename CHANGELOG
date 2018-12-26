@@ -121,6 +121,17 @@ Thu Apr 28 23:50:27 2016 +0200
     GTK3.1{6,8}:
      - unity fix
      - checkbox
+     - scrollbar
+     - notebook
+    GTK2:
+     - checkboxes
+     - scrollbar
+    chore:
+     - arch linux package
+     - ubuntu guide
+     - 2 new colorschemes
+    
+    thanks @neeasade and @TiZ-EX1
 
 
 Wed May 4 17:03:49 2016 +0200
@@ -134,6 +145,10 @@ Wed May 4 17:03:49 2016 +0200
      - unchecked checkbox and radio
     
     script fixes
+    documentation updates
+    support for spotify (still in testing)
+    
+    thanks to @TiZ-EX1, Spatry, @hotice
 
 
 Tue May 10 17:20:27 2016 +0200
@@ -166,6 +181,36 @@ Sat Jun 18 17:33:40 2016 +0200
     * |  745d574 chore(colors): add monovedek-gray
     * |  82cb2d6 fix(gtk3.20: button): make hover less 'glowing' - 2
     * |  634784c Revert "fix(gtk3.20: button): make hover less 'glowing'"
+    * |  e0e3b8f fix(gtk3.20: button): make hover less 'glowing'
+    * |    155fb52 Merge branch 'master' of https://github.com/shimmerproject/Numix
+    * |    1c8a650 Merge branch 'master' of https://github.com/shimmerproject/Numix
+    * |    5ce9e39 fix(gtk3.20: button): adapt for upstream fix for spinbutton once again :D
+    * |  a72a962 chore(gui): update built themes
+    * |  57b357e chore(colors): don't include dark variant for dark colorschemes
+    * |  692fa1c feat(gtk2): implement roundness for gtk2
+    * |  d529f2d chore(colors: retro): update to use new gtk3 options
+    * |  6f384c5 chore(colors): add superdesk theme
+    * |  6943ea4 feat(gui): preview for roundness and gradient
+    * |  0e6b859 doc(readme): update screenshot
+    * |  4d12518 feat: make gradient configurable for GTK+ 3 themes
+    * |  bdf361d feat: make spacing configurable for GTK+ 3 themes
+    * |  5d5fc42 feat: make roundness configurable for GTK+ 3 themes
+    * |  283398a feat: creation of dark GTK+3 theme version is optional now
+    * |  8513a6b theme(colors: gnome: shiki-noble-dark): lighter buttons
+    * |  d5b9430 fix(gui): fix export just after overriding default colorscheme
+    * |  bb1e785 fix(gui): fix export to unexisting dir
+    * |  5269d50 fix(gtk3.20: scrollbar): make slider bg color relative (fix dark colorschemes)
+    * |    aa47e1a Merge branch 'master' of https://github.com/shimmerproject/Numix
+    * |  a18ff27 fix(spotify): fix help
+    * |  2ccc029 fix(spotify): change font-changing interface
+    * |  c5c9908 fix(gtk3.20: button): adapt for upstream fix for spinbutton -3
+    * |  c5d11fe fix(gtk3.20: button): adapt for upstream fix for spinbutton - 2
+    * |  8647d99 fix(gtk3.20: button): adapt for upstream fix for spinbutton
+    * |    88fd22a chore: merge with upstream
+    * |  8dd12c4 fix(spotify): more font-related fixes
+    * |    49bf28c fix(gtk3.20: button): adapt for upstream fix for linked.vertical
+    *  be46c87 feat(spotify): add support for replacing default font
+    *  5db8ab4 chore(gui): update built themes
 
 
 Fri Jun 24 00:40:55 2016 +0200
@@ -179,6 +224,7 @@ Fri Jun 24 00:40:55 2016 +0200
     | *  1c4de97 Luke Jones Add Base-16 colour selection exported from Base16-Builder
     *  ddd0db0 Yauhen Kirylau chore(readme): add webupd8 ppa
     *  efe2e31 actionless chore(gui): update built themes
+    *  d985864 actionless fix(gtk3): don't use deprecated :focused and :prelight pseudo-classes
 
 
 Sun Jul 3 22:27:52 2016 +0200
@@ -204,6 +250,13 @@ Wed Jul 6 15:50:27 2016 +0200
     8279e67 feat(gui: presets_list): distinguish default themes from user-added ones with the same name
     df97e79 fix(gui: colors_list): workaround redraw issue via removing linked style for color input
     f8c1ed7 fix(gui): workaround for redraw glitch when center section size changes
+    dc89e71 fix(gui: helpers): ignore entries which are not real theme keys
+    d9fa7ed feat(gui: colors_list): add separators between sections
+    c2de78d feat(gui: colors_list): show text representation of colors
+    f223e8e refactor(gui: preview): split init to multiple routines
+    6702300 feat(gui): add icons' preview
+    b287c48 fix(pkgbuild): desktop file
+    1bb9d05 chore(pkgbuild): add desktop file
 
 
 Sat Jul 9 13:46:40 2016 +0200
@@ -217,6 +270,8 @@ Sat Jul 9 13:46:40 2016 +0200
     a111a9d feat(oomoxify): implement possibility to explicitly define spotify colors via env vars; add missing color for hover over selected item
     71c244c fix(gui: helpers: save colorscheme): don't skip unknown properties
     bf516c8 chore(pkgbuild): use https instead of http for retrieving the source
+    0a4e29b chore(pkgbuild): update pkgrel
+    cb6fd8d chore(pkgbuild): use http instead of ssh for retrieving the source
 
 
 Tue Aug 9 18:12:26 2016 +0200
@@ -230,6 +285,19 @@ Tue Aug 9 18:12:26 2016 +0200
     fix(colors: retro: excel): icon colors
     fix(gtk3, gtk320: colorswatch): case when roundness is less than 1
     chore(colors): add 'dhl' theme
+    fix(gui: colors_list): adjust floats by 0.01
+    fix(gui: preview): header button padding
+    fix(gtk2, gtk3, gtk320): user sel_bg for link color
+    chore(colors): add 'popart' theme pack
+    fix(index.theme: change-color.sh): put real theme name into index.theme - 2
+    fix(index.theme: change-color.sh): put real theme name into index.theme
+    feat(gui: colors_list): save recent palette colors persistently
+    fix(gui): don't block application on theme export
+    chore: merge with upstream
+    \
+     *  bd780f0 Csaba Jakosa GTK 3.20 :: Optimized Nemo and Nautilus design and update searchbar code (#482)
+    feat(gui: colors_list): use new color selection dialog
+    chore(colors: retro): update icon colors for some of the themes
 
 
 Tue Aug 9 18:14:12 2016 +0200
@@ -255,6 +323,8 @@ Fri Sep 23 16:27:03 2016 +0200
     *  ceb278a chore: merge with Numix upstream
     *  5d35b74 chore(darker.sh): don't write debug messages
     *  5d56661 feat(oomoxify): add '-w' option to 'normalize'
+    font Weight
+    *  7754eee fix(index.theme): put real theme name into index.theme - 3
 
 
 Wed Oct 12 12:20:03 2016 +0200
@@ -268,6 +338,18 @@ Wed Oct 12 12:20:03 2016 +0200
     |\
     | * upstream/master c138b78 Dustin Falgout Update README.md
     | *  1d56b33 Dustin Falgout remove old svg files (part of #508)
+    | *  f030e61 Set Hallstrom Adding single SVG asset file ready for batch export to PNG (#579)
+    | *  df38463 Csaba Jakosa * Fixes #548 (#568)
+    *  1019da6 actionless theme(popart): add few alternative variants to the existing themes
+    *  85569d9 actionless theme(monovedek-gray): small improvements
+    *  b1d86fe actionless chore: merge with Numix upstream
+    *  6e29c71 actionless chore(gtk320: button): decrease default minimal size
+    *  156aac2 actionless fix(change_color): don't dup gtk2 theme if hidpi chosen
+    *  da9d58f actionless feat(oomoxify): improve active row color transformation logic
+    *  c764d66 actionless feat(gtk3.20: button): change min size from 20px to 16px+*2
+    *  1cb67d3 actionless fix(gtk3.20: button): flat button fg
+    *  9919cc4 actionless fix(openbox): fix some after-merge problems (border, some of the colors)
+    *  169dc81 actionless fix(gtk320): buttons bg and fg in headerbar
 
 
 Tue Oct 18 21:01:50 2016 +0200
@@ -293,6 +375,7 @@ Mon Oct 31 17:48:08 2016 +0100
     * 6360306 fix(openbox): replace all the hardcoded colors to theme variables or computed values
     * 357ea43 feat(change_color.sh): export more theme variables; move scripts to ./scripts/ dir
     * de3bd9b fix(openbox): set window border width to SPACING var
+    * c79d8d5 chore: merge with upstream
 
 
 Tue Nov 15 18:33:28 2016 +0100
@@ -306,6 +389,24 @@ Tue Nov 15 18:33:28 2016 +0100
     * 7d64981 chore: merge with Numix upstream
     * 97f52a7 feat(oomoxify): make bg shades more contrast to each other
     * c28c2e7 feat(oomoxify): match latest spotify update
+    * 45bd94b fix(oomoxify): don't skip messages.spa
+    * d3d184e fix(gtk320: sidebar): use  var for sidebar icons' padding
+    * 33e1368 fix(gtk2): use sel_bg for link color; fixes #50
+    
+     - merge with Numix;
+    
+    | *  f9b4a5b Dustin Falgout RELEASE PREP :: Update CHANGES file.
+    | *  795932a Dustin Falgout update utils.sh script
+    | *  9574a02 Csaba Jakosa [Gtk-3.20] Fixed gnome-terminal scrollbar color. Disable backdrop mode
+    | *  ad37d7f Csaba Jakosa Disable box-shadow for osd button in fine-tune mode. Fixes #561.
+    | *  14d2a48 Nazar Mokrynskyi [Gtk-3.20] Fix for volume OSD slider. Fixes #623
+    | *    9ec47ab Khurshid Alam GTKHEADERB 3.22 :: Create global OSD file (#628)
+    | |\
+    | | *  4d33256 Megax * Fixed code.
+    | | *  b3ba2ee Megax * Create global OSD file.
+    | * |  a4cefd6 Csaba Jakosa [Gtk-3.20] Fixed xfce4 code.
+    | |/
+    | *  6d54958 Csaba Jakosa [GTK-3.20] Code Cleanup
 
 
 Thu Nov 17 01:57:10 2016 +0100
@@ -319,6 +420,9 @@ Thu Nov 17 01:57:10 2016 +0100
     * ccdb5ff feat(gui): add possibility to apply theme to Spotify frmo the GUI
     * 9d9243b feat(gui: export): resize script log view together with window
     * 6b1a1f8 feat(oomoxify): add `--gui` option to use `gksu` intead of `sudo`
+    * d7ccc7d feat(oomoxify): automatically flush spotify files' backup without manual user actions
+    * 896ab1c fix(gtk320: view: progressbar): remove doubled top border
+    * 5ba00b5 feat(gui): update borders' colors on preview
 
 
 Mon Nov 21 21:16:31 2016 +0100
@@ -332,6 +436,19 @@ Mon Nov 21 21:16:31 2016 +0100
     * 917c0c5 theme(monovedek-gray): fix gnome-colors icons shade
     * f93c959 refactor(gui): extract theme model into separate module and some minor refactoring elsewhere
     * 1448087 feat: add possibility to select icons style and export ArchDroid iconset
+    * a8fd111 chore(themes): add 'twm-reloaded'
+    * be1d282 fix(spotify): remove temporary fg workaround (using hardcoded color)
+    * 91f3eb2 chore(colors: base16): add alex-chew's ocean theme variant
+    * 8f449ad chore(pkgbuild): add new dependency
+    * 28dc69c refactor(gui: export): make scroller resize part more readable
+    * 2d2415f fix(gui: export): use button height instead of magic number when resizing log view
+    * 39b5417 fix(gui: export: spotify): typo
+    * ccdb5ff feat(gui): add possibility to apply theme to Spotify frmo the GUI
+    * 9d9243b feat(gui: export): resize script log view together with window
+    * 6b1a1f8 feat(oomoxify): add `--gui` option to use `gksu` intead of `sudo`
+    * d7ccc7d feat(oomoxify): automatically flush spotify files' backup without manual user actions
+    * 896ab1c fix(gtk320: view: progressbar): remove doubled top border
+    * 5ba00b5 feat(gui): update borders' colors on preview
 
 
 Tue Nov 22 02:16:12 2016 +0100
@@ -353,6 +470,14 @@ Sun Dec 4 22:25:15 2016 +0100
     * 3ce479f chore(themes: retro): add kdeish themes
     * a729024 Revert "Revert "fix(oomoxify): don't skip messages.spa""
     * 6df5955 fix(oomoxify): add SPOTIFY_HOVER_SELECTION_COLOR theme variable; s/SPOTIFY_ACTIVE_SELECTION_COLOR/SPOTIFY_SELECTED_TEXT_COLOR/g s/SPOTIFY_INACTIVE_SELECTION_COLOR/SPOTIFY_SELECTED_BUTTON_COLOR/g
+    * 8d8f00b chore: remove oomoxify-old script
+    * 8f903e9 Revert "fix(oomoxify): don't skip messages.spa"
+    * 73a81e0 fix(gtk320: view: progressbar): fix selected progressbar border again
+    * a0b564c fix(colors: retro: win20a): define some spotify-related theme variables
+    * f37bfc9 fix(gui): make export_icon_theme work with both menu and button
+    * da82fdc chore(gui): move Export icons button from menu to headerbar itself
+    * aea67e8 fix(colors: retro): update icons style
+    * ef0332e fix(colors: retro: twm2): spotify area bg
 
 
 Sun Feb 12 21:41:06 2017 +0100
@@ -366,6 +491,7 @@ Sun Feb 12 21:41:06 2017 +0100
     1a8c9bf Csaba Jakosa [Gtk-3.22][Gtk-3.20] Fix iconview background for Unity-Control-Center. Fixes #634
     45210ca Csaba Jakosa [GTK 3.22] Add hover effect for menuitem under Unity-LIM. Fixes #632
     a25d378 Yauhen Kirylau chore(readme): mention packages for newer ubuntu versions
+    468cf0d Yauhen Kirylau chore: update PKGBUILD
 
 
 Sat Feb 18 18:48:11 2017 +0100
@@ -379,6 +505,9 @@ Sat Feb 18 18:48:11 2017 +0100
     528d14c chore(gui): update built theme
     60733f4 fix(gui: save_colorscheme): don't copy NOGUI parameter when cloning a theme
     339f026 fix(oomoxify): one more fix for handling backup directory
+    d9f3b32 doc(readme): update description, add Archdroid mention
+    e311d31 fix(oomoxify): remove backup directory if its version is unknown
+    3c0e057 fix(gtk3: Makefile): escape all paths
 
 
 Sat Mar 4 21:04:01 2017 +0100
@@ -392,6 +521,51 @@ Sat Mar 4 21:04:01 2017 +0100
      * configure window manager border colors;
      * support for theming GTK+ text caret;
      * hotkeys and other GUI improvements;
+     * French translation of GUI.
+    
+    Commits:
+    [CW] Colomban Wendling
+    [YK] Yauheni Kirylau
+    8a9dfa5 YK feat(metacity-2): implement color-changing
+    8637737 YK fix(gtk320: globals; metacity-3): set `$wm_border` to match `menu_bg` (fixes titlebar color) in gtk3-based wm decorations
+    07190d7 YK feat(change_color; src): export qt5ct palette
+    9a0cfb4 YK fix(themes): explicitly set wm border focus for some of the themes
+    461b0c5 YK fix(themes: contrib: tizix): explicitly set icons' colors (fixes white shadow around them)
+    aab94e9 CW chore(i18n): update PKGBUILD
+    ed0fd66 CW chore(i18n): update .gitignore
+    6647bb5 YK fix(gui.sh): exec process
+    aa899d0 CW feat(i18n): add French translation
+    787e216 CW feat(i18n): add translation infrastructure
+    9b5ae24 CW feat(i18n, gui): mark strings for translation
+    b39429d CW style(gui: export): simplify code for sizing and scrolling the log
+    631bc09 CW feat(gui): don't use Gtk.TextView.set_monospace() on GTK < 3.16
+    9670f7c CW fix(gui): support older python3-gi
+    bcbc237 CW fix(gui): fix typo breaking Python 3.4 support
+    ed6e903 CW feat(change_colors, gui): add support for theming the caret
+    9e95d46 CW feat(gui): add tooltips to labeled buttons too
+    92677a9 CW fix(gui): remove an erroneous tooltip
+    21ae14b CW feat(gui): display accelerator in buttons' tooltip
+    657de04 CW style(gui): use named constants instead of duplicating strings
+    50264f6 CW feat(gui): add shortcut to quit
+    c7490c2 CW feat(gui): convert to actions and add keyboard shortcuts
+    de7c914 CW feat(gui): add mnemonic for export options
+    f839fa2 CW fix(gui): mark the save button insensitive after saving
+    2135c12 CW fix(gui): avoid warning when quitting the app
+    40260ae CW feat(gui): use a Gtk.MenuButton instead of re-doing it
+    d7c2a01 YK refactor(gui: preview): split `update_preview_colors` into multiple routines
+    70a1b86 YK fix(gui: preview): remove redundant border in the center of headerbar preview
+    4d0f5f2 YK feat(unity; change_color; gui): add option to not generate launcher assets for unity
+    4a6117b YK feat(oomoxify): improve generation for light colorschemes
+    0a0296a CW fix(gui): properly handle closing the dialogs window
+    ca9cf95 CW fix(gui): don't try to clone or rename if the dialog was canceled
+    9df9338 CW feat(gui): add mnemonics and default response to the dialogs
+    e4c27fc YK fix(gui: preview): compatibility with python < 3.5
+    dfc56f0 CW feat(gui: preview): add menus preview
+    c4c86a7 CW fix(scripts/mix.sh): fix floating-point truncation on non-C locales
+    8393b9c YK feat(unity): use better color substitution for inactive color
+    f216a5c YK feat(unity): generate unity icons
+    f7e4414 YK feat(gui; gtk3; metacity-1; openbox): make wm border color configurable
+    b992ff7 YK style(gui): make flake8 happy
 
 
 Mon Mar 6 23:20:28 2017 +0100
@@ -405,6 +579,11 @@ Mon Mar 6 23:20:28 2017 +0100
      * dd653c9 fix(gui: main): don't overwrite user theme when saving default one with the same name
      * f194e79 style(gui: main): add .pylintrc, .flake8 and fix warning in gui.main
      * da83122 feat(colors: random): randomize more colors
+     * d0f1817 fix(gui: main): prompt to save random theme before export - 2
+     * dc7c729 fix(gui: main): prompt to save random theme before export
+     * ebb551e refactor(init, main): move gettext initialization to __init__
+     * c418604 fix(gui: theme_model): change fallback value for ICONS_DARK
+     * 0225586 doc(readme): add link to big screenshot from DA
 
 
 Sat Apr 1 18:46:28 2017 +0200
@@ -418,6 +597,9 @@ Sat Apr 1 18:46:28 2017 +0200
     f796109 Colomban Wendling feat(gui): update French translation
     510bded Colomban Wendling feat(gui): add mnemonics to the export dialogs
     05df537 Laurent Treguier doc(readme): add Fedora Copr instructions
+    930ad93 Yauhen Kirylau fix(gtk3.20: window): return back border-radius
+    f99890a Yauhen Kirylau wip(gtk3.20): ignore backdrop since it's not supported in all the wm-s
+    029cf3d Yauhen Kirylau fix(gtk3.20: window): uniform border look in gtk and wm-s; update readme about tiling wm-s
 
 
 Sat Apr 1 19:20:19 2017 +0200
@@ -466,6 +648,9 @@ Mon Jul 17 22:35:20 2017 +0200
     2017-06-11 317fc81 Yauhen Kirylau feat(gui: export): increase timeout for longer types of exports
     2017-06-11 559a6d4 Yauhen Kirylau feat(gui: export: oomoxify): add option to use system sans font
     2017-06-11 6ade634 Yauhen Kirylau fix(oomoxify): typo in font-family attr
+    2017-05-28 98ffa1d Yauhen Kirylau feat(oomoxify): replace blue color to BTN_BG
+    2017-05-24 a8647d3 Yauhen Kirylau fix(readme): mention minimum required versions of libsass and gtk3
+    2017-05-04 b60a236 Hannes Hauswedell [FIX] make compatible with non-Linux (tested on FreeBSD)
 
 
 Tue Jul 18 23:07:21 2017 +0200
@@ -491,6 +676,15 @@ Sun Aug 20 21:16:07 2017 +0200
     2017-08-19 6a34e25 actionless chore(gui): update built theme
     2017-08-19 bb4fdc1 actionless chore: update gtk-theme submodule
     2017-08-19 2c83918 actionless chore: remove more leftovers from gtk theme - 2
+    2017-08-19 7d8d5d4 actionless chore: remove more leftovers from gtk theme
+    2017-08-19 fe298ca actionless doc(readme): improve usage examples
+    2017-08-19 3cc62f0 actionless chore(pkgbuild): copy files explicitly
+    2017-08-19 6ed7fb7 actionless chore(pkgbuild): remove .git from gtk-theme
+    2017-08-19 da72fa1 actionless chore: update gtk-theme submodule
+    2017-08-19 f9c4c51 actionless chore: move gtk-theme into submodule
+    2017-08-08 70e6403 actionless feat(gui: theme_model; change_color): use selection BG as a fallback value for focused WM border
+    2017-08-08 ac54802 actionless chore(themes): set selected border color for some old themes
+    2017-08-08 c0a63aa actionless feat(spotify; themes: omega): simplify choosing main spotify colors
 
 
 Sun Aug 27 16:18:58 2017 +0200
@@ -504,6 +698,10 @@ Sun Aug 27 16:18:58 2017 +0200
     06e6f81 chore(gnome-colors; PKGBUILD): bundle gnome-colors-common together with exported gnome-colors icon theme
     42c949b chore(README, PKGBUILD): mention new dependencies
     d310504 refactor(gui: preview): isolate oomox-gtk-theme - specific preview overrides
+    5e16f10 feat(gui: theme_model; submodules: flat-plat): add option to not generate dark theme variant for GTK+3
+    71f30b8 chore(colors: retro): add 'c64' theme
+    b242bc2 feat(gui: color_list, export, preview, theme_model, css): add Flat-Plat theme style
+    1548d8c doc(CREDITS): add new oomox contributors
 
 
 Sat Sep 9 19:48:10 2017 +0200
@@ -522,6 +720,15 @@ Thu Sep 28 22:16:02 2017 +0200
     4d6d6cc fix(gui: preview): reuse css providers
     2ba1b22 fix(gui: main: ActionsEnum): make it compatible with `pympler` (could be also problems with `memory_profiler`
     f44b454 style(gui: color_list): add refactor notice
+    b3c23c7 style(gui: color_list: color_button): rename attribute to avoid the confusion
+    e7d0f35 fix(gui: colors_list): memory leak when opening a theme
+    c8cc665 feat: implement Xresources colorscheme generation
+    ea750f9 feat(gui: export): make widget size configurable
+    a896b95 feat(gui: color_list): allow color to be `None`
+    9b4f231 feat(gui: color_list): allow omit display_name and use value instead
+    fe0579f fix(gui: colors_list): don't fire color_change event twice (in other place)
+    13093a0 fix(gui: colors_list): don't fire color_change event twice
+    d127b97 chore(archdroid-icon-theme): add readme
 
 
 Sat Sep 30 14:23:39 2017 +0200
@@ -545,6 +752,13 @@ Sun Nov 5 13:22:41 2017 +0100
      2017-10-26 a66bb1a Yauhen Kirylau fix(oomoxify): remove duplicated trap
      2017-10-19 e223584 Yauhen Kirylau doc(readme): update text around screenshots
      2017-10-19 5d0b209 Yauhen Kirylau doc(readme): add link to Slackbuild and add note about ubuntu ppa
+     2017-10-18 2d260b1 Akshay Chesnut oomox theme (#105)
+     2017-10-13 c784dcc Yauhen Kirylau chore(gui: preview css: materia): re-generate preview css
+     2017-10-13 4e035bd Yauhen Kirylau chore(submodules: materia): update
+     2017-10-13 8f82dcb Yauhen Kirylau refactor(gui: preview): split preview module to gtk, icons and terminal
+     2017-10-09 37b7c21 Yauhen Kirylau feat(spotify): hovered 'blue' button color
+     2017-10-07 8edf523 nana-4 Add 'halloween' theme (#103)
+     2017-10-04 845bbc9 Yauhen Kirylau chore(colors, gui, submodules, PKGBUILD): s/Flat-Plat/Materia/g
 
 
 Sun Dec 3 03:33:02 2017 +0100
@@ -558,6 +772,25 @@ Sun Dec 3 03:33:02 2017 +0100
     34ece8c fix(oomoxify): match new sidebar fg color
     650e669 chore(submodules: oomox-gtk-theme): update
     8fa4ca9 fix(gui: preview): remove headerbar client buttons
+    29de787 feat(oomoxify): compute area_bg-related values based on it
+    884592f chore(submodules: oomox-gtk-theme): update with fixed xfwm
+    847e205 feat(gui: theme_model; submodules: materia): add $MATERIA_MENUBAR_STYLE
+    9be353b fix(gui: theme_model): hide TXT_FG
+    7e17060 refactor(gui: main, gtk_helpers): extract YesNoDialog
+    6cb5ce5 refactor(gui: main, gtk_helpers): extract EntryDialog
+    40b025e refactor(gui: helpers, gtk_helpers): extract all related helpers
+    9773b50 refactor(gui: helpers, theme_file): extract all related helpers
+    de4c197 refactor(gui: main): s/ActionsEnum/ActionsEnumMeta/
+    709b7a6 refactor(gui: main): s/input_data/entry_text/
+    232b94d feat(gui: main): prepopulate rename dialog with the current theme name
+    a84573e chore(colors): add materia and oodwaita; move some other themes to reduce the number of directories
+    6fba719 refactor(gui: export, main): move logic to choose export theme from main to export module
+    b1cdc78 fix(gui: preview): headerbar color in materia
+    a67c967 feat(gui: preview): support gradient level in headerbar preview
+    3d814c7 chore(submodule, gui_theme_preview: materia): update
+    a01cb01 feat(oomoxify): style search input box
+    dabdeef doc(readme): mention other distros from copr
+    bd1b9a6 chore(gitattributes): change path to generated css
 
 
 Sat Dec 23 00:53:23 2017 +0100
@@ -571,6 +804,15 @@ Sat Dec 23 00:53:23 2017 +0100
      - use terminal colorscheme for error/warning/etc colors in Oomox GTK
     themes;
      - move all theme generators to separate git repositories.
+    
+    Fixes:
+     - don't redraw theme options on theme switch;
+     - saving SpinButton for float values when value is 0;
+     - reset manually set colors when switching to auto/basic
+    terminal colorsheme;
+     - Oomox GTK theme: levelbar, frames, borders;
+     - some hardcoded colors in Materia theme;
+     - oomoxify: add more colors to replace and font weight in sidebar.
 
 
 Sat Dec 23 05:20:47 2017 +0100
@@ -593,6 +835,23 @@ Sun Dec 31 15:48:59 2017 +0100
     Fixes:
      - Oomox-gtk-theme GTK+3: disabled checkboxes and radios.
     
+    Misc:
+     - Ubuntu packaging;
+     - new terminal template.
+    
+     2017-12-31 c04de57 actionless chore(submodules: gtk-theme): update to 1.4
+     2017-12-31 dad52f4 actionless feat(gui: colors_list, theme_model): add descriptions for theme styles
+     2017-12-31 b921467 actionless chore(packaging: arch): update version in PKGBUILD
+     2017-12-31 45788c3 actionless chore(packaging: ubuntu): add packaging script
+     2017-12-31 5775fa5 actionless chore(packaging: ubuntu): add first files
+     2017-12-31 5a80a38 actionless chore(packaging): extract packaging script ans assets from PKGBUILD to make them more reusable
+     2017-12-29 f415538 actionless chore(submodules: gtk-theme): more adjustments to notebook tabs' apperance
+     2017-12-28 042f92e actionless chore(submodules: gtk-theme): improve appearance of tabs (+support gradient and roundness), fix lightdm theme
+     2017-12-28 ff68bec actionless refactor(gui: export): use box.add/remove instead of widget.show/hide
+     2017-12-28 8543ec5 actionless refactor(gui: export): define constants for theme options and their values instead of using multiple hardcoded strings
+     2017-12-27 6bd5984 actionless feat(gui: terminal_templates): add 'basquiat'
+     2017-12-27 8b0adae actionless feat(themes: popart: basquiat_3a): assign custom terminal colorscheme
+     2017-12-23 b380eed actionless chore(submodules: gtk-theme): improve appearanc for disabled radios and checkboxes
 
 
 Mon Jan 1 18:08:24 2018 +0100
@@ -616,6 +875,11 @@ Tue Jan 2 18:23:33 2018 +0100
      2018-01-02 e33cc54 actionless hotfix(submodules: materia): problem with gnome-shell theme generation
      2018-01-01 1720d66 actionless chore(submodules: materia): update with more fixes for gnome-shell
      2018-01-01 2f721d6 actionless chore(submodules: materia): update with more fixes for gnome-shell
+     2018-01-01 12d7f94 actionless chore(submodules: materia): hotfix for redundant '#' in gnome shell panel opacity opacity value; fixes #115
+     2018-01-01 2a87ed1 actionless feat(gui: theme_model, colors_list): limit 'GNOME_SHELL_PANEL_OPACITY' max value to 1.0
+     2018-01-01 2bf1cd4 actionless chore(submodules: materia): update with more fixes for gnome-shell
+     2018-01-01 688f3b2 actionless feat(gui: theme_model; submodules: materia): add $GNOME_SHELL_PANEL_OPACITY; closes #114
+     2018-01-01 7f985b5 actionless fix(packaging: oomox.desktop): add Materia to description
 
 
 Sat Jan 6 06:25:00 2018 +0100
@@ -634,6 +898,69 @@ Wed Feb 14 18:55:23 2018 +0100
             - refactor linked buttons;
             - fix notebook tabs;
             - better theme performance with dark colorscheme;
+            - wm borders color fallback logic;
+            - discard rounded wm borders in openbox and other non-gnome wms.
+    
+    GNOME-COLORS ICONS:
+     - use rsvg-convert instead of inkscape to speed up gnome-colors icons generation;
+    
+    OOMOX APP:
+     - Flatpak packaging;
+     - implement a widget for hidpi image display and use it for icons preview.
+    
+     2018-02-14 dcf9e3a actionless chore(plugins: oomox): update submodule: new column header style
+     2018-02-14 586b4fa actionless doc(readme): add flatpak instructions
+     2018-02-14 8bd362b actionless chore(packaging: flatpak: appdata): update description and add screenshot
+     2018-02-14 800815b actionless chore(packaging): add flatpak
+     2018-02-14 478cd73 actionless chore(plugins: icons: archdroid): update submodule
+     2018-02-14 97e5229 actionless fix(packaging: install.sh): quote paths
+     2018-02-10 fe154af actionless doc(readme): use pikaur for arch manual
+     2018-01-29 fa9eb21 actionless chore(dockerfile): extract common test code to a shell script
+     2018-01-29 c7fe757 actionless chore(gitattributes): themes moved to ./plugins/ dir
+     2018-01-22 64ce62b Julian switch from pacaur to trizen
+     2018-01-23 3a9c74f actionless Merge branch 'master' of github.com:actionless/oomox
+    ubuntu34 2018-01-23 eaea98e actionless chore(travis): disable arch linux on python 3.4
+     2018-01-23 ecb7233 actionless chore(travis): try openmandriva for python 3.5 test
+     2018-01-23 f420c89 actionless chore(travis): try ubuntu for python 3.4 test
+     2018-01-22 dfc83db actionless fix(packaging: bin): update path to scripts which were moved to plugins
+     2018-01-21 a45549b actionless fix(readme): path to oomoxify
+     2018-01-19 bd3d981 actionless feat(maintenance scripts: show recent history): add '-c' option for clean output (filter out not important commits)
+     2018-01-19 ff5ea84 actionless feat(maintenance scripts: show submodule diff): better visual separation of blocks - 2
+     2018-01-19 ebf8922 actionless feat(maintenance scripts: show submodule diff): better visual separation of output
+     2018-01-19 3283c42 actionless chore(plugins: themes: oomox): GTK+3 theme improvements  - refactor linked buttons;  - fix notebook tabs;  - better theme performance with dark colorscheme;  - wm borders fallback logic;  - dynamic theme preview assets;  - tests improvements.
+     2018-01-19 393aafd actionless chore(plugins: icons: gnome-colors): update submodule: use rsvg-convert instead of inkscape - much faster theme generation
+     2018-01-18 f1a5ca3 actionless doc(readme): update spotify section
+     2018-01-18 a668411 actionless doc(readme): remove outdated info about CLI tools
+     2018-01-18 38197e0 actionless doc(readme): mention `librsvg` dependency, don't repeat dep list in ubuntu section
+     2018-01-18 4da7eef actionless chore(packaging: ubuntu): add librsvg-bin (for oomox thumbnails and future materia and archdroid)
+     2018-01-12 0958edb actionless chore(plugins: oomox): update submodule
+     2018-01-10 a4fbf51 actionless chore(plugins: themes): rsvg fix in materia; gtk2 dark theme and hidpi improvements
+     2018-01-10 f8fbd6b actionless style(colors_list): pylint
+     2018-01-10 63e45ab actionless refactor(colors_list): make on_value_changed an abstract property of Numeric Row
+     2018-01-10 3060180 actionless style(colors_list): pylint
+     2018-01-10 8de1c33 actionless feat(color_list): implement both min and max value limits for int and float theme options widgets
+     2018-01-10 589e2dc actionless feat(plugins: themes: oomox): configurable outline offset
+     2018-01-09 5d5ceda actionless style(plugin_loader): add pylint hint for python 3.4
+     2018-01-09 8514e13 actionless refactor(plugin_loader): use `SourceFileLoader` for python 3.4 and `spec_from_file_location` for python 3.5+
+     2018-01-09 a056f08 actionless refactor(plugin_loader): use SourceFileLoader instead of spec_from_file_location (the latter is available only in python 3.5)
+     2018-01-09 9596aba actionless refactor(plugin_loader, theme_file_parse, theme_model, xrdb): pylint
+     2018-01-09 4f222c0 actionless fix(theme_model): filters based on icons style
+     2018-01-09 0fa2bc2 actionless feat(themes: xresources): sync terminal theme with current xresources theme
+     2018-01-09 be1e21c actionless fix(xrdb, theme_file_parse): xrdb cache interface
+     2018-01-09 76d9062 actionless refactor(theme_file_load): rename to theme_file_parse
+     2018-01-09 133ca7a actionless feat(packaging: ubuntu: docker script): add version to output package name
+     2018-01-09 2d24ba3 actionless refactor(themes: xresources, random): reimplement themes which were using bash logic inside
+     2018-01-07 ecdd837 actionless fix(packaging: install.sh): update for oomoxify as plugin and new terminal templates location
+     2018-01-07 7e22a09 actionless chore: move terminal_templates to the top level directory
+     2018-01-07 007842d actionless refactor(gui: export): flatten module
+     2018-01-07 c964d6a actionless refactor: turn spotify-theming stuff into a completely separate plugin
+     2018-01-07 bfa0cd1 actionless chore(submodules: gtk-theme): fix window decoration in openbox and some other WMs if roundness>0
+     2018-01-07 2e159a0 actionless chore(submodules: gtk-theme): update submodule
+     2018-01-06 0f1f546 actionless feat(plugins: oomox): make outline width configurable
+     2018-01-06 0c1785f actionless chore(submodules: gtk-theme): use gtk outline for focused buttons and other button-based widgets
+     2018-01-06 99262d7 Laurent Tréguier fix(packaging: install.sh): force rm in case files don't exist
+     2018-01-06 f00c25f actionless fix(packaging: ubuntu: docker): remove unstaged git files inside the temporary build directory
+     2018-01-06 f8347e4 actionless feat(gui: preview_icons, gtk_helpers): implement a widget for hidpi image display and use it for icons preview
 
 
 Fri Feb 16 12:39:14 2018 +0100
@@ -690,6 +1017,39 @@ Fri Mar 16 15:49:33 2018 +0100
      - few new themes.
     
     Fixes:
+     - Oomox theme: GTK3: Nemo, Actionbar widget, Server-Side Decorations.
+    
+    Special thanks to @smurphos for designing the Cinnamon theme and other improvements.
+    
+     2018-03-16 b42e30e actionless fix(terminal_templates): add missing terminal template (default for PIL plugin)
+     2018-03-16 924ea4b actionless fix(plugins: oomox): add cinnamon to capabilities description
+     2018-03-16 a9aa5af actionless chore(plugins: oomox): enable Cinnamon support
+     2018-03-16 c25137c actionless chore(plugins: oomox): update option name
+     2018-03-16 ab7552e actionless feat(plugins: oomox): placeholder for cinnamon theme export
+     2018-03-16 188f966 actionless feat(plugins: oomox): export optionally gtk+3 theme for all available versions
+     2018-03-15 16778b6 actionless chore(plugins: pil): initial commit after porting to py3
+     2018-03-15 516b29a actionless fix(theme_file: save): don't save theme model keys prefixed with underscore `_`
+     2018-03-15 ea17840 actionless fix(plugin_api: import, theme_model, base16): create special theme model section for import plugins
+     2018-03-15 808230f actionless chore(colors: lcars): add 2 new themes and update terminal palettes
+     2018-03-14 d173a7e actionless feat(terminal): implement find_closest_color
+     2018-03-14 55167fc actionless feat(terminal: colordiff): add `sat` (saturation) property
+     2018-03-14 e2abc0e actionless fix(helpers): move hex_to_int/int_to_hex  upper than functions which are importing them
+     2018-03-14 76f1f9a actionless feat(plugins: base16): add decorative sepator to split theme options and plugin options
+     2018-03-13 e1ca579 actionless fix(gtk_helpers: scaled_image): unexpected resize when calling set_value with an img with different aspect ratio
+     2018-03-13 4ea931d actionless feat(colors_list): implement ImagePathListBoxRow
+     2018-03-11 3af8e0c actionless chore(plugins: themes): update submodules
+     2018-03-11 6a0461c actionless chore(plugins: materia): update sumbodule to the latest release
+     2018-03-10 664d85d actionless feat: implement plugin for using base16 themes
+     2018-03-07 7e4401b actionless chore(plugins: oomox): disable cinnamon export for now
+     2018-03-07 dd94b10 actionless chore(plugins: oomox): update submodule (Cinnamon support, backdrop titlebars/toolbars in GTK+3)
+     2018-03-03 79dbcd7 actionless fix(colors: retro): use more reasonable terminal palettes
+     2018-03-03 5c0425e actionless chore(color): add few materia-based theme variants
+     2018-03-03 5f1bbee actionless feat(colors: monovedek): add new theme to the suit
+     2018-03-03 5c55bcc actionless fix(colors: gnome-colors): use more reasonable terminal palettes
+     2018-03-03 037f33d actionless feat(theme_model; plugins: oomox): make ACCENT_BG available for both Oomox and Materia themes
+     2018-03-03 188befa actionless fix(colors): update to use more reasonable terminal palette
+     2018-03-01 5432ab0 actionless chore(plugins: oomox): update submodule
+     2018-02-26 9a040b6 actionless chore(packaging: flatpak): update imagemagick dep and use different separator in sed
 
 
 Fri Mar 30 16:32:33 2018 +0200
@@ -703,6 +1063,22 @@ Fri Mar 30 16:32:33 2018 +0200
     
      2018-03-30 b248736 actionless chore(plugins: oomox, materia): update submodules
      2018-03-28 81203d1 actionless fix(terminal): compatibility with python 3.4 and 3.5
+     2018-03-28 cd9fd68 actionless chore(plugins: oomox): update submodule (Cinnamon notifications; GTK+3.20 improvements backported to 3.18; fixed checradios in gtk2-hidip
+     2018-03-28 ae923f1 actionless refactor(plugin loader): rename dicts with loaded plugins
+     2018-03-28 63229bf actionless fix(main): terminal colors generation for Auto schema
+     2018-03-27 0486712 actionless chore(colors): update some themes to use new features
+     2018-03-26 6cc361a actionless chore(terminal_templates): import more from https://github.com/protesilaos/tempus-themes/tree/master/xterm
+     2018-03-26 81e21de actionless feat(terminal, theme_model): add new 'Experimental' terminal theme generator
+     2018-03-26 64c5d34 actionless chore(submodules: gtk-theme): update submodule
+     2018-03-26 aa4a233 actionless chore(terminal_templates): add 2 more
+     2018-03-25 dc2a33f actionless refactor(color, plugins: pil): move hex_darker function to `color` module
+     2018-03-25 a768864 actionless chore(plugins: materia, oomox, spotify): update submodules
+     2018-03-22 4e27738 smurphos Ubuntu Deb - specify minimum sassc (>=3.4) and libsass0 (>=3.4)
+     2018-03-21 471cb5c actionless fix(packaging: install): ignore missing files when removing them
+     2018-03-20 94af85a actionless feat(gui: preview, plugin_api; plugins: oomox, materia): implement preview for checkboxes
+     2018-03-20 0a26dc1 actionless feat(gui: gtk helpers: ScaledImage): allow setting new abse size when setting new picture
+     2018-03-20 8e783ed actionless chore(plugins: themes: materia): update submodule
+     2018-03-20 53a3262 actionless chore(plugins: themes: oomox): update submodule
 
 
 Mon Jul 30 17:25:30 2018 +0200
@@ -716,6 +1092,7 @@ Mon Jul 30 17:25:30 2018 +0200
      2018-05-03 70511332 actionless fix(theme_model; plugins: oomox): move caret options from common theme model to oomox plugin
      2018-04-12 de72ccc1 actionless feat(plugin_api; plugins: pil, base16): support multiple file extensions in file format plugins
      2018-03-31 6c35012a Andreas Backx doc(readme): described how to undo Spotify theme. #134
+     2018-03-31 98bbe268 actionless hotfix(gui: terminal): auto-terminal theme generation FG color in materia theme
 
 
 Tue Jul 31 23:50:48 2018 +0200
@@ -802,6 +1179,11 @@ Sat Nov 17 19:58:43 2018 +0100
      2018-11-17 679fcf89 chore(plugins: oomox): update submodule (missing popover outline)
      2018-11-16 de5030b0 feat: add import dialogs for plugins and show imported formats separately from native themix colorschemes
      2018-11-16 981758cd fix(plugins: materia): update symlinks to generated css
+     2018-11-16 9acb6e67 feat(main, theme_file): make possible to import oomox color files
+     2018-11-16 88ca57c7 feat(plugin_loader): skip loading plugin and show error instead of exiting the app
+     2018-11-15 dfb12750 chore(plugins: materia): update submodule (border radius updates and more)
+     2018-11-13 588eec17 chore(plugins: arc): update submodule (create .themes dir if not exists)
+     2018-11-11 7c4ed319 chore(plugins: oomox): update submodule (window decorations fixes)
 
 
 Sun Nov 18 22:19:29 2018 +0100
@@ -878,6 +1260,13 @@ Sat Dec 22 23:27:26 2018 +0100
      2018-12-22 8b80fae4 actionless refactor(plugins: materia): rename TXT_BG to MATERIA_VIEW, BTN_BG to MATERIA_SURFACE, GNOME_SHELL_PANEL_OPACITY to MATERIA_PANEL_OPACITY (and migrate old values on runtime)
      2018-12-21 1af5ba70 actionless refactor: rename MENU_BG to HDR_BG and MENU_FG to HDR_FG (and migrate old values on runtime)
      2018-12-21 b4c3f955 actionless chore(plugins: oomox): update submodule (viewport fix again :))
+     2018-12-21 2b0f79dc actionless chore(plugins: materia): update submodule (button color fix)
+     2018-12-19 f7421916 actionless feat(plugins: materia): revamp theme options
+     2018-12-19 dd3c784b actionless chore(plugins: materia): update to the latest version (optional resvg usage)
+     2018-12-13 05dc8bab actionless fix(makefile): explicitly set a+x for executables
+     2018-12-10 9d02e1db actionless chore(plugins: oomox): update submodule (cinnamon theme update)
+     2018-12-09 3b7279f2 actionless chore(colors: retro): update icons and terminal palettes for some of the themes
+     2018-12-09 440459d1 actionless feat(plugins: icons): add new Numix icons plugin
 
 
 Sun Dec 23 01:03:43 2018 +0100
@@ -916,3 +1305,24 @@ Wed Dec 26 05:01:08 2018 +0100
       2018-12-24 84bfc410 actionless rename and reorder GTK3- and DE-specific theme options
       2018-12-24 2c0c9237 actionless feat(colors_list: color row): use monospace style for entries
       2018-12-24 bb962054 actionless beautify gtk preview widget alignment
+      2018-12-24 73a7fc74 actionless beautify terminal preview widget alignment
+      2018-12-24 62a703ea nana-4 Capitalize words based on GNOME HIG (#193)
+      2018-12-23 2c610b8b actionless feat(terminal: experimental): enable BG and FG options
+      ...and lots other smaller GUI improvements in this release
+    
+     Plugins:
+      2018-12-24 d9668bf1 actionless chore(plugins: oomox): update submodule (configurable checkboxes ROUNDNESS)
+      2018-12-24 f68740b3 actionless chore(plugins: materia): update submodule (gtk2: apply View and Surface colors correctly)
+      2018-12-23 4dabf70c nana-4 Improve Materia checkbox preview
+      2018-12-23 71bcaeba actionless fix(plugins: arc): checkbox preview size
+    
+     Themes:
+      2018-12-23 c2df12f5 nana-4 Improve Christmas theme
+      2018-12-23 0e8b5aad Vlada Makhonina Add 2 new palettes
+
+
+Wed Dec 26 05:11:55 2018 +0100
+-------------------------------------------------
+1.9.0.1         Bugfix release 1.9.0.1
+    
+     2018-12-26 864ab1a8 actionless chore(maintenance_scripts: changelog): fix history size
