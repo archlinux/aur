@@ -61,7 +61,7 @@ package() {
       address-model=${_arch:0:2} \
       architecture=x86 \
       binary-format=pe \
-      ${MAKEFLAGS} -l0 \
+      -l0 ${MAKEFLAGS} \
       --layout=system install
     install -d $pkgdir/usr/${_arch:3}/bin
     mv "$pkgdir"/usr/${_arch:3}/lib/*.dll "$pkgdir"/usr/${_arch:3}/bin
