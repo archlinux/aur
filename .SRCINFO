@@ -1,6 +1,6 @@
-pkgbase = polibeepsync-git
+pkgbase = polibeepsync
 	pkgdesc = Sync Politecnico di Milano's BeeP files with your PC
-	pkgver = 0.4.1.r4.g10808e2
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://jacotsu.github.io/polibeepsync/
 	arch = any
@@ -18,12 +18,12 @@ pkgbase = polibeepsync-git
 	depends = python-contexter
 	provides = polibeepsync
 	conflicts = polibeepsync
-	source = git+https://github.com/Jacotsu/polibeepsync.git
+	source = git+https://github.com/Jacotsu/polibeepsync.git#tag=0.4.1
 	source = polibeepsync.desktop
 	source = polibeepsync.svg
 	sha512sums = SKIP
 	sha512sums = 2be34458899e0f8cdc7777514226d2e2fb91b70cc5a8f09d632f2958224842335337e5220fca39a7558a855a088c7e109edb8b96606ab6a013a684d055326576
 	sha512sums = faf89d54fc23b61d52773ea321f0f9522f453632a7abf9ee30889732ea808fec7e7ce282aad8d52a917c30a016e889c741f08c51979db0c2721a3383cf973cde
 
-pkgname = polibeepsync-git
+pkgname = polibeepsync
 
