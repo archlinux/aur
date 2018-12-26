@@ -1,7 +1,7 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=nutstore-experimental
-pkgver=4.1.5
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Nutstore experimental version.'
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(nutstore license)
 source_x86_64=("https://www.jianguoyun.com/static/exe/ex/$pkgver/nutstore_client-$pkgver-linux-x64-public.tar.gz")
 sha256sums=('3091740b20ddd31ba4407b8daba1077c4677040cdc47bccfab2f7f3947676384'
             'f3d2861ff48f2d193a4eced23a02b4eba9fab4c1d3f727e934ed7c59f38f0f7e')
-sha256sums_x86_64=('9d41854c2d654085c2004b5da738c3ba9152d5de8c15a9fb9d1df8efd2e021a3')
+sha256sums_x86_64=('5c12250df1cf8acc91544a00431a6b2bce50d5f443e187cd1ad2e3e05319c021')
 
 build() {
     cd $srcdir/gnome-config
