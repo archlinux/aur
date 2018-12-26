@@ -5,4 +5,5 @@
 !.SRCINFO
 !.gitignore
 !PKGBUILD
-!*.install
+!borgmatic.install
+!borgmatic.service
