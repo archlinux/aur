@@ -7,8 +7,9 @@ After=network.target
 Conflicts=wesnothd.service wesnothd-1.2.service wesnothd-1.4.service wesnothd-1.6.service wesnothd-1.8.service wesnothd-1.10.service wesnothd-1.12.service wesnothd-1.14.service wesnothd-devel.service wesnothd-git.service
 
 [Service]
-# Ensures that the pipe will be recreated with the restrictive permissions
-ExecStopPre=/usr/bin/rm -f /run/wesnothd-1.0/socket
+# If wesnothd is started from within the game it runs under a different user
+# Deleting the pipe resets owner, group and mode
+ExecStopPre=/bin/rm -f /run/wesnothd-1.0/socket
 
 ExecStart=/usr/bin/wesnothd-1.0 --threads 5
 # You can use -c to specify the same configuration file
@@ -18,10 +19,10 @@ ExecStart=/usr/bin/wesnothd-1.0 --threads 5
 SyslogIdentifier=Wesnothd-1.0
 WorkingDirectory=/run/wesnothd-1.0
 User=nobody
-Group=nobody
+Group=users
 
-# remove remaining pipe
-ExecStopPost=/usr/bin/rm -f /run/wesnothd-1.0/socket
+# Remove remaining administration pipe
+ExecStopPost=/bin/rm -f /run/wesnothd-1.0/socket
 
 # Additional security-related features
 ProtectSystem=strict
@@ -29,16 +30,15 @@ ProtectHome=yes
 # When specifying with the -c option a file in the home directory,
 # set ProtectHome=read-only and whitelist the directory or file with
 # ReadWritePaths.
-# Alternatively, set ProtectHome=tmpfs and BindPaths=
 ReadWritePaths=/run/wesnothd-1.0
-InaccessiblePaths=/opt
-InaccessiblePaths=/usr/share
 InaccessiblePaths=/usr/include
 InaccessiblePaths=/usr/src
-InaccessiblePaths=/usr/local
 InaccessiblePaths=/boot
+InaccessiblePaths=/media
 InaccessiblePaths=/mnt
 InaccessiblePaths=/srv
+InaccessiblePaths=/opt
+InaccessiblePaths=/var
 PrivateTmp=yes
 PrivateDevices=yes
 NoNewPrivileges=yes
@@ -51,7 +51,6 @@ ProtectKernelTunables=yes
 ProtectKernelModules=yes
 RestrictNamespaces=yes
 LockPersonality=yes
-
 
 [Install]
 WantedBy=multi-user.target

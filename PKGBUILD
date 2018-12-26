@@ -30,7 +30,7 @@ source=("wesnoth-1.0.desktop"
 
 md5sums=('29dcc619dad3ba9e7806b97badee3023'
          '1d061d2df18d707b212c314440c30cd2'
-         'b3bbefe4e73a0278c339f556673ed128'
+         '9db79a418d64046ed49e3899e294da3b'
          '81953f9a24639fb66e435b34ba530b94'
          '3c271ac7485d871400dd1f7af2ecfd8d'
          '0327cec01cd5b98acee056ec79702bab')
@@ -80,9 +80,9 @@ package() {
   # On Debian / Ubuntu / Mint / Fedora / Suse, just "make install"
   make DESTDIR="$pkgdir" install
 
-  # On Debian / Ubuntu / Mint / Fedora, the above command may fail, in case you
-  # have another wesnoth version installed, because they use the same file name
-  # for the manpages.
+  # When installing by hand, the above command may fail, in case you have
+  # another wesnoth version installed, because they use the same file name for
+  # the manpages.
   # If that happens, temporarily uninstall the other wesnoth package, then re-run
   # the above command, and thereafter use the below command to rename the files.
 
@@ -104,12 +104,8 @@ package() {
 
   install -D -m644 "$srcdir/wesnoth-1.0.appdata.xml" "$pkgdir/usr/share/metainfo/wesnoth-1.0.appdata.xml"
 
-  # On Debian / Ubuntu / Mint, the two files go into /etc instead of /usr/lib
+  # On other Linux systems, the two files go into /etc instead of /usr/lib
   install -D -m644 "$srcdir/wesnothd-1.0.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/wesnothd-1.0.conf"
-
-  # On Debian / Ubuntu / Mint, edit the file and change:
-  # Group=nobody to Group=nogroup
-  # /usr/bin/rm to /bin/rm
   install -D -m644 "$srcdir/wesnothd-1.0.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.0.service"
 
   # All done, but it doesn't show up? Try that:
