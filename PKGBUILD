@@ -29,7 +29,7 @@ source=("wesnoth-1.8.desktop"
 md5sums=('7fa59aab4ec96e6466dd276a76462e78'
          'a3afc892c43bbff72a9b150de513beaf'
          '634ea29d903ba62e751aa3e3cf24e80b'
-         '84418024db8d66acd2ce2489b5176a9b')
+         '46f8e791922b58f4b0cea7bebef511ad')
 
 PKGEXT='.pkg.tar'
 
