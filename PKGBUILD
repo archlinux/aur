@@ -1,7 +1,7 @@
 # Maintainer Musikolo <musikolo {at} hotmail [dot] com>
 
 pkgname=stsauth
-pkgver=0.2.5
+pkgver=0.3.0
 pkgdesc="CLI tool for fetching AWS tokens. Creates a temporary AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY that can be used with cli tools such as awscli, ansible, terraform and more."
 pkgrel=1
 arch=(any)
