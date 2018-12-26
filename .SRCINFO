@@ -1,8 +1,8 @@
 pkgbase = gplugin
 	pkgdesc = A GObject based library that implements a reusable plugin system
 	pkgver = 0.27
-	pkgrel = 1
-	url = https://bitbucket.org/gplugin/main
+	pkgrel = 2
+	url = https://bitbucket.org/gplugin/gplugin
 	arch = i868
 	arch = x86_64
 	license = LGPL 2

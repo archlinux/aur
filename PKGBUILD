@@ -2,11 +2,11 @@
 
 pkgname="gplugin"
 pkgver=0.27
-pkgrel=1
+pkgrel=2
 arch=('i868' 'x86_64')
 pkgdesc="A GObject based library that implements a reusable plugin system"
 license=("LGPL 2")
-url="https://bitbucket.org/gplugin/main"
+url="https://bitbucket.org/gplugin/gplugin"
 depends=("gtk3")
 makedepends=("cmake"
              "gcc"
