@@ -1,10 +1,10 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: olantwin <olantwin@gmail.com>
 
 pkgname=vim-airline
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
-pkgdesc='Lean & mean statusline/tabline for ViM'
+pkgdesc='Status line, written in Vimscript'
 arch=('any')
 url='https://github.com/vim-airline/vim-airline'
 license=('MIT')
@@ -12,12 +12,11 @@ depends=('vim-runtime' 'vim-airline-themes')
 makedepends=('git')
 groups=('vim-plugins')
 optdepends=('powerline-fonts')
-#optdepends=('otf-powerline-symbols-git: Use the Powerline symbols')
-source=("git+https://github.com/$pkgname/$pkgname.git#tag=v$pkgver")
+source=("git+$url#tag=v$pkgver")
 md5sums=('SKIP')
 
 package() {
-  cd "$pkgname"
+  cd $pkgname
 
   _installpath="$pkgdir/usr/share/vim/vimfiles"
   install -Dm755 doc/airline.txt "$_installpath/doc/airline.txt"
