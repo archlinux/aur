@@ -18,7 +18,12 @@ build() {
 }
 
 package() {
-    cd "${pkgname}-master/trunk"
+    cd "psdoom-ng1-${pkgname}-${pkgver}"
+    # install custom psdoom levels to /usr/share/games/doom
+    mkdir -p ${pkgdir}/usr/share/games/doom
+    tar xf contrib/psdoom-2000.05.03-data.tar.gz -C ${pkgdir}/usr/share/games/doom
+    mv ${pkgdir}/usr/share/games/doom/psdoom-data/*.wad ${pkgdir}/usr/share/games/doom
+    rm -rf ${pkgdir}/usr/share/games/doom/psdoom-data/
+    # install everything else
     DESTDIR=${pkgdir} make install
-    mv ${pkgdir}/usr/games ${pkgdir}/usr/bin
 }
