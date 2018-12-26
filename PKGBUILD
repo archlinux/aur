@@ -2,7 +2,7 @@
 
 pkgname=fotoxx
 pkgver=18.07.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for improving image files made with a digital camera, stable version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
@@ -16,12 +16,12 @@ sha512sums=('43955b380a7c9697c4c7bdf9cf859766c32eeef06259604f6519f86e47b901819ba
 options=('!makeflags')
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   make PREFIX=/usr
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" PREFIX=/usr install
   rm -r "$pkgdir"/usr/share/appdata
 }
