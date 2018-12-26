@@ -1,13 +1,13 @@
 post_install() {
 
   id turnserver &>/dev/null || \
-    useradd -r -g daemon -M -s /usr/bin/false turnserver
+    useradd -r -g daemon -d / -s /usr/bin/nologin turnserver
 
   install -dm 755 "/var/log/turnserver"
   chown -R turnserver:daemon /var/log/turnserver
 
   systemd-tmpfiles --create turnserver.conf
-  
+
   echo "start server by issuing \"systemctl start turnserver.service\" or calling \"turnserver\""
 }
 

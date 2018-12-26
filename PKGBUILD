@@ -4,7 +4,7 @@
 
 pkgname=coturn
 _portname=turnserver
-pkgver=4.5.0.7
+pkgver=4.5.0.8
 pkgrel=1
 pkgdesc="Free open source implementation of TURN and STUN Server"
 arch=('i686' 'x86_64' 'armv7h')
@@ -17,7 +17,7 @@ install="$_portname.install"
 backup=("etc/turnserver.conf")
 source=(http://$_portname.open-sys.org/downloads/v$pkgver/$_portname-$pkgver.tar.gz $_portname.service $_portname.tmpfiles.d)
 
-sha256sums=('86248c541a1184eb388c54d4178cffbf16ef53504fbb60106e575194f078b221'
+sha256sums=('94a9e67ac7d92c913b5bd8cb6b70ee6e9aa0e9e7cc3c984fc2d8cf381c6edf87'
             '319030c1916d353bfc3375626cc7f60d6eeca762fe4fce354f010212902c49dc'
             'fe7ed64dc6844aabdfa00b76134b22d69d9097bd3f77120d704d0ee08c036c21')
 
