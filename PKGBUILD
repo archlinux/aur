@@ -24,11 +24,13 @@ source=("wesnoth-1.10.desktop"
         "wesnothd-1.10.tmpfiles.conf"
         "wesnothd-1.10.service"
         "wesnoth-1.10.appdata.xml")
+# Not finding the files? https://aur.archlinux.org/packages/wesnoth-1.10
+# Rest assured, they are optional. Things like a launcher for your convenience…
 
 md5sums=('fe8278239945d0c69d686bf70b8362e0'
          '6c139ff1ccb6f30a375d6fea6d7049a2'
          '1a2eca33a8305f912b0f7db46abefff2'
-         '96f06b5eb48a9537f68b74c199a7b383')
+         'a9085aef6abd6cae39059ac83f7dd687')
 
 PKGEXT='.pkg.tar'
 
