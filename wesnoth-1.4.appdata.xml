@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  ​<!-- Copyright 2018 Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de> -->
-  <id>org.wesnoth.Wesnoth_1.4.desktop</id>
+  <id>wesnoth-1.4.desktop</id>
   <metadata_license>GFDL-1.3</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
   <name>Battle for Wesnoth (1.4)</name>
@@ -82,7 +81,7 @@
     <category>Game</category>
     <category>StrategyGame</category>
   </categories>
-  <launchable type="desktop-id">org.wesnoth.Wesnoth_1.4.desktop</launchable>
+  <launchable type="desktop-id">wesnoth-1.4.desktop</launchable>
   <url type="homepage">https://www.wesnoth.org</url>
   <url type="faq">https://wiki.wesnoth.org/Play</url>
   <url type="help">https://wiki.wesnoth.org/WesnothManual</url>
