@@ -23,12 +23,12 @@ source=("wesnoth-1.6.desktop"
         "wesnothd-1.6.tmpfiles.conf"
         "wesnothd-1.6.service"
         "wesnoth-1.6.appdata.xml")
-# Not finding the files? https://aur.archlinux.org/packages/wesnoth-1.6/
+# Not finding the files? https://aur.archlinux.org/packages/wesnoth-1.6
 # Rest assured, they are optional. Things like a launcher for your convenience…
 
 md5sums=('99f136647c5af1820d0132df08350965'
          'ec9cab718ba96b7a4c85c224f6b747c3'
-         'c537d69cb8338594a606ebbc93cbd00e'
+         'bb74eacfd1de53ab13a5fe8ae93c146d'
          '1018b1fae1a65d49bed1094ba0280d87')
 
 PKGEXT='.pkg.tar'
@@ -55,7 +55,9 @@ build() {
 
   # It's a convention to use /usr/local when installing by hand, it allows you
   # to keep easier track of what was installed.
-  # Feel free to replace ALL occurences of /usr with /usr/local below.
+  # Feel free to replace ALL occurences of /usr with /usr/local in the commands
+  # below, and edit the start command in the file wesnothd-1.6.service.
+
   rm -rf build && mkdir -p build && cd build
   cmake ../wesnoth-1.6-git \
       -DCMAKE_INSTALL_PREFIX=/usr \
@@ -78,6 +80,8 @@ build() {
 # For the Archlinux package this is no problem because the files are installed
 # into the empty $pkgdir, and it's content is copied later to the system.
 
+# Thes commands below have to be run with root privileges.
+# E.g. by prefixing them with "sudo ".
 package() {
   cd build
 
@@ -103,12 +107,8 @@ package() {
 
   install -D -m644 "$srcdir/wesnoth-1.6.appdata.xml" "$pkgdir/usr/share/metainfo/wesnoth-1.6.appdata.xml"
 
-  # On other Linux systems, use /etc instead of /usr/lib for the files below
+  # On other Linux systems, use /etc instead of /usr/lib for the two files below
   install -D -m644 "$srcdir/wesnothd-1.6.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/wesnothd-1.6.conf"
-
-  # On Debian / Ubuntu / Mint, edit the file and change:
-  # Group=nobody to Group=nogroup
-  # /usr/bin/rm to /bin/rm
   install -D -m644 "$srcdir/wesnothd-1.6.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.6.service"
 
   # All done, but it doesn't show up? Try that:
