@@ -10,6 +10,8 @@ arch=('any')
 url="https://github.com/vigneshwaranr/bd"
 license=('MIT')
 makedepends=('git')
+depends=('bash')
+optdepends=('bash-completion')
 source=($pkgname'::git+git://github.com/vigneshwaranr/bd.git')
 md5sums=('SKIP')
 

@@ -6,6 +6,8 @@ pkgbase = bd-git
 	arch = any
 	license = MIT
 	makedepends = git
+	depends = bash
+	optdepends = bash-completion
 	source = bd-git::git+git://github.com/vigneshwaranr/bd.git
 	md5sums = SKIP
 
