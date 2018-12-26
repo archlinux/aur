@@ -1,7 +1,7 @@
 pkgbase = linux-amd-wip-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 4.21.799002.ed2d54e862b3
-	pkgrel = 2
+	pkgver = 4.21.799020.31505d7f17bd
+	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
 	license = GPL2
