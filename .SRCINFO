@@ -1,6 +1,6 @@
 pkgbase = python-dataset
 	pkgdesc = Toolkit for Python-based database access.
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://github.com/pudo/dataset
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-dataset
 	depends = python
 	depends = python-sqlalchemy
 	depends = python-alembic
-	source = https://files.pythonhosted.org/packages/source/d/dataset/dataset-1.0.3.tar.gz
-	md5sums = f55e28e23af9e8f7a99f0a7529595445
+	source = https://files.pythonhosted.org/packages/source/d/dataset/dataset-1.1.0.tar.gz
+	md5sums = SKIP
 
 pkgname = python-dataset
 	depends = python

@@ -1,7 +1,7 @@
 pkgbase=('python-dataset')
 pkgname=('python-dataset')
 _module='dataset'
-pkgver='1.0.3'
+pkgver='1.1.0'
 pkgrel=1
 pkgdesc="Toolkit for Python-based database access."
 url="http://github.com/pudo/dataset"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/d/dataset/dataset-${pkgver}.tar.gz")
-md5sums=('f55e28e23af9e8f7a99f0a7529595445')
+md5sums=('SKIP')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
