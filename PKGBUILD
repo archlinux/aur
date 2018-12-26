@@ -1,7 +1,7 @@
 # Maintainer: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 
 pkgname=ancient-packages
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Lists installed packages no longer available (anywhere)"
 url="http://public.files.xavion.name/Software/${pkgname}/${pkgname}.jpg"
@@ -18,4 +18,4 @@ package() {
 	install -D -m755 ${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
 
-sha1sums=('ec4d31d3dba2ac98019bf2557a6e9e9fcfa822c2')
+sha1sums=('c1714d0361d71f5851f8db9c4b074aba397a030c')
