@@ -1,7 +1,7 @@
 pkgbase = rtl8822bu-dkms-git
 	pkgdesc = Kernel module for Edimax EW7822ULC USB3 and Asus AC53 Nano USB 802.11ac adapter.
 	pkgver = 20180723
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/MeissnerEffect/rtl8822bu
 	install = rtl8822bu-dkms-git.install
 	arch = armv7h
