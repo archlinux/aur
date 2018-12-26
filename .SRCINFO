@@ -1,14 +1,15 @@
 pkgbase = logtop
 	pkgdesc = Display real time statistics of whatever you want.
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/JulienPalard/logtop/
+	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = uthash
 	depends = ncurses
-	source = https://github.com/JulienPalard/logtop/archive/logtop-0.6.tar.gz
-	md5sums = 3323a9ab12e4884eebe32e48ff1f245d
+	source = https://github.com/JulienPalard/logtop/archive/logtop-0.7.tar.gz
+	sha256sums = c63371cd806b1b1e80e2e39b988c039d90264e6d92f8c03762035b6f74fa8730
 
 pkgname = logtop
 
