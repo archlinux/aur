@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Lestrelin <jonathan.lestrelin@gmail.com>
 
 pkgname=psdoom-ng
-pkgver=2017.10.02.2.3.0.20181228.2
+pkgver=2017.10.02.2.3.0.20181229
 pkgrel=1
 pkgdesc="A FPS and operating system process killer (when you kill an enemy, it kills a process) based on psDooM and Chocolate Doom."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/yeoldegrove/psdoom-ng1"
 license=('GPL')
 depends=('sdl' 'sdl_mixer' 'sdl_net' 'freedoom1')
 source=("https://github.com/yeoldegrove/psdoom-ng1/archive/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('87ab954dcb82026e1d7dae6892be9001063b172176254767d50186a98358c0e2')
+sha256sums=('d4ec606714daa568e84b59b94b361845e5e7681ae33c5ae4f1d2b543da1653e1')
 
 build() {
     cd "psdoom-ng1-${pkgname}-${pkgver}"
