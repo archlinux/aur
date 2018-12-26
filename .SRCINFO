@@ -1,6 +1,6 @@
 pkgbase = gi-bash-completion
 	pkgdesc = Bash completion support for gi
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://bitbucket.org/gagarski/gi-bash-completion
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = gi-bash-completion
 	depends = bash-completion
 	provides = gi-bash-completion
 	conflicts = gi-bash-completion
-	source = git+https://bitbucket.org/gagarski/gi-bash-completion.git#tag=0.1.2
+	source = git+https://bitbucket.org/gagarski/gi-bash-completion.git#tag=0.1.3
 	md5sums = SKIP
 
 pkgname = gi-bash-completion

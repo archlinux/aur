@@ -1,7 +1,7 @@
 #Maintainer: Kirill Gagarski <kirill.gagarski [at] gmail.com>
 pkgname=gi-bash-completion
 
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Bash completion support for gi"
 arch=('any')
