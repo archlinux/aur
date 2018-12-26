@@ -1,0 +1,18 @@
+pkgbase = swaylock-blur-git
+	pkgdesc = Small swaylock wrapper written in bash to set a blurred image of the desktop as the background
+	pkgver = r1.943d40e
+	pkgrel = 1
+	url = https://github.com/cjbassi/swaylock-blur
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sway
+	depends = imagemagick
+	depends = grim
+	provides = swaylock-blur
+	conflicts = swaylock-blur
+	source = git+https://github.com/cjbassi/swaylock-blur
+	md5sums = SKIP
+
+pkgname = swaylock-blur-git
+
