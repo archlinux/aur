@@ -9,7 +9,7 @@ Conflicts=wesnothd.service wesnothd-1.0.service wesnothd-1.2.service wesnothd-1.
 [Service]
 # If wesnothd is started from within the game it runs under a different user.
 # Deleting the pipe resets owner, group and mode.
-ExecStopPre=/bin/rm -f /run/wesnothd-1.4/socket
+ExecStopPre=/bin/rm -f /run/wesnothd-1.8/socket
 
 ExecStart=/usr/bin/wesnothd-1.8 -t 2 -T 5
 # You can use -c to specify a same configuration file
