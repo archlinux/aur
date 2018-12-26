@@ -1,7 +1,7 @@
 pkgbase = davinci-resolve-studio
 	pkgdesc = Professional A/V post-production software suite
 	pkgver = 15.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.blackmagicdesign.com/
 	install = davinci-resolve-studio.install
 	arch = x86_64
