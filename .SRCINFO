@@ -1,6 +1,6 @@
 pkgbase = libspng
 	pkgdesc = C library for reading and writing PNG format files with a focus on security and ease of use
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://libspng.org/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = libspng
 	makedepends = meson
 	depends = zlib
 	conflicts = libspng-git
-	source = https://gitlab.com/randy408/libspng/-/archive/v0.4.0/libspng-v0.4.0.tar.gz
-	md5sums = ae152da25d1cce7c392a0c1e81d22cb4
+	source = https://gitlab.com/randy408/libspng/-/archive/v0.4.1/libspng-v0.4.1.tar.gz
+	sha256sums = 4d27f8e201c0c940e81e6eb3b7a563ced3555e9902cd598bcd7dea8463c8ea24
 
 pkgname = libspng
 
