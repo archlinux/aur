@@ -11,15 +11,3 @@ show_mesage () {
 
 	EOF
 }
-
-post_install () {
-	/usr/bin/systemd-sysusers /usr/lib/sysusers.d/dqcache.conf
-}
-
-post_upgrade () {
-	post_install
-}
-
-post_remove () {
-	post_install
-}
