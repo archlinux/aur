@@ -1,9 +1,9 @@
-# Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 pkgname=alsi
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
-pkgdesc="ALSI: a configurable system information tool for Arch Linux. [Inspired by Archey]"
+pkgdesc="ALSI: a configurable system information tool for Arch Linux."
 url="https://github.com/trizen/${pkgname}"
 arch=('any')
 license=('GPLv3')
@@ -15,7 +15,7 @@ optdepends=(
     'scrot: for taking screenshots.'
     )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('043efcda81e3173e5ef960d6660b4fc533fc42aadc4faebb484ff9109d71f077')
+sha256sums=('0eae83cf3ca849a1d309cc1933e8329f24fb31c174587c4306ec665a7654dd8c')
 
 package() {
     cd "$pkgname-$pkgver"
