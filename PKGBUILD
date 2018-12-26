@@ -3,7 +3,7 @@
 pkgbase=nldev-phkr
 pkgname=nldev
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="frontend for mdev, replacing the over-engineered udevd"
 url="http://git.r-36.net/nldev/"
 arch=('i686' 'x86_64')
@@ -31,7 +31,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir" PREFIX=/usr install
-  mkdir -p "$pkgdir/etc"
-  mkdir -p "$pkgdir/usr/lib"
   install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
