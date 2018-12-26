@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.19
 
 pkgname=perl-io-pty-easy
-pkgver=0.09
+pkgver=0.10
 pkgrel=1
 pkgdesc="Easy interface to IO::Pty"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('perl-io-tty')
 makedepends=()
 url='http://search.cpan.org/dist/IO-Pty-Easy'
 source=("http://search.cpan.org/CPAN/authors/id/D/DO/DOY/IO-Pty-Easy-${pkgver}.tar.gz")
-md5sums=('7950e652896adf85067753799232caf1')
+md5sums=('2892ee94695277f8f39365e79b997643')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
