@@ -1,7 +1,7 @@
 pkgbase = gplugin
 	pkgdesc = A GObject based library that implements a reusable plugin system
 	pkgver = 0.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/gplugin/gplugin
 	arch = i868
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = gplugin
 	options = strip
 	options = !debug
 	options = staticlibs
-	source = gplugin::hg+https://bitbucket.org/gplugin/main#tag=v0.27
+	source = gplugin::hg+https://bitbucket.org/gplugin/gplugin#tag=v0.27
 	sha256sums = SKIP
 
 pkgname = gplugin
