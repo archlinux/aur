@@ -1,7 +1,7 @@
 pkgbase = libdtrace-ctf
 	pkgdesc = libdtrace-ctf is the Compact Type Format library used by DTrace on Linux
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/oracle/libdtrace-ctf/
 	arch = x86_64
 	license = UPL
