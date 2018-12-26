@@ -18,6 +18,8 @@ source=("wesnoth-1.4.desktop"
         "wesnothd-1.4.tmpfiles.conf"
         "wesnothd-1.4.service"
         "wesnoth-1.4.appdata.xml")
+# Not finding the files? https://aur.archlinux.org/packages/wesnoth-1.4
+# Rest assured, they are optional. Things like a launcher for your convenience…
 
 md5sums=('b4052583dce2f360af5686f6320247a7'
          'e5e9941ae3fd5fce9af88a27c4e6795c'
@@ -64,7 +66,7 @@ build() {
   # It's a convention to use /usr/local when installing by hand, it allows you
   # to keep easier track of what was installed.
   # Feel free to replace ALL occurences of /usr with /usr/local in the commands
-  # below, and edit the start command in the file wesnothd-1.2.service.
+  # below, and edit the start command in the file wesnothd-1.4.service.
 
   ./autogen.sh --with-freetype-prefix=/usr/lib --prefix=/usr --with-preferences-dir=.local/share/wesnoth/1.4 --program-suffix=-1.4 --with-datadir-name=wesnoth-1.4 --docdir=/usr/share/doc/wesnoth-1.4 --disable-desktop-entry --enable-editor --enable-server --with-fifodir=/run/wesnothd-1.4 CXXFLAGS=-w
   make -j4
