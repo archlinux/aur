@@ -2,7 +2,7 @@
 
 pkgname=omp-git
 pkgver=0.0.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-Source Music Player'
 url='https://openmusicplayer.com/'
 arch=(x86_64)
@@ -22,11 +22,11 @@ pkgver() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}"
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  make DESTDIR=${pkgdir} install
+  cd "${pkgname}"
+  make install DESTDIR=${pkgdir}
 }
