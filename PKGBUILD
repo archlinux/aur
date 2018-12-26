@@ -1,11 +1,11 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname=amber-theme-git
-pkgver=r129.140bde6
+pkgver=r133.b306dc4
 pkgrel=1
 pkgdesc='GTK+ and GNOME Shell theme based on the Ubuntu Ambiance theme'
 url=https://github.com/lassekongo83/amber-theme
 license=(GPL)
-makedepends=(meson ninja sassc)
+makedepends=(meson ninja sassc git)
 arch=(any)
 source=("${pkgname}::git+${url}")
 sha512sums=(SKIP)
