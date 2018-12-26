@@ -1,7 +1,7 @@
 pkgbase = smdev-phkr
 	pkgdesc = Suckless mdev (patched version)
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git.suckless.org/smdev/
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = smdev-phkr
 	sha1sums = SKIP
 	sha1sums = 00721a385678a2e576606d85463ca8ab4ba4da27
 	sha1sums = b300e68de6bcb6f542bb28206ab10f6ceca242bc
-	sha1sums = 61cd0f4c67c70cddadc58c1e7c50fc7180983129
+	sha1sums = e01d8c4f32deaed313950bfe71341f16c4ff7845
 	sha1sums = 983302eaf902e0ecd77a61ae90ba0c6d9c635d3e
 	sha1sums = 3a5d1f975539131248fde0db5e44c29798706ea7
 	sha1sums = 6a5369d9e3efc4317c907cc6140e509e82a559a5

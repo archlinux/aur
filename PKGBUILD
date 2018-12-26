@@ -3,7 +3,7 @@
 pkgbase=smdev-phkr
 pkgname=smdev
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 _rev=8d07540
 pkgdesc='Suckless mdev (patched version)'
 arch=( 'i686' 'x86_64' )
@@ -27,7 +27,7 @@ source=(
 sha1sums=('SKIP'
           '00721a385678a2e576606d85463ca8ab4ba4da27'
           'b300e68de6bcb6f542bb28206ab10f6ceca242bc'
-          '26b3316a3ee52e1c3306cbfab100712987580aa1'
+          'e01d8c4f32deaed313950bfe71341f16c4ff7845'
           '983302eaf902e0ecd77a61ae90ba0c6d9c635d3e'
           '3a5d1f975539131248fde0db5e44c29798706ea7'
           '6a5369d9e3efc4317c907cc6140e509e82a559a5')
