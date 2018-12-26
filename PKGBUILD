@@ -1,13 +1,13 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=gomuks-git
 pkgdesc='A terminal based Matrix client written in Go'
-pkgver=r257.c3f30a1
+pkgver=r270.2fc3378
 pkgrel=1
 url='https://github.com/tulir/gomuks'
 license=(GPL3)
 arch=(x86_64 i686)
 depends=(glibc)
-makedepends=(go)
+makedepends=(go git)
 provides=("${pkgname%-git}")
 conflicts=("${provides[@]}")
 
