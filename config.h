@@ -59,7 +59,7 @@ struct rule {
 	{ "dri/.*",       "root", "video", 0660, "=dri/",   "@/etc/smdev/proceeddev"        },
 	{ "card[0-9]*",   "root", "video", 0660, "=dri/",   "@/etc/smdev/proceeddev"        },
 	// usb
-	{ "bus/usb/.*"    "root", "usb",   0665, NULL,      "@/etc/smdev/proceeddev"        },
+	{ "bus/usb/.*",   "root", "usb",   0665, NULL,      "@/etc/smdev/proceeddev"        },
 	// printer
 	{ "partport[0-9]*","root","lp",    0660, NULL,      "@/etc/smdev/proceeddev"        },
 	{ "partport_pc",  "root", "lp",    0660, NULL,      "@/etc/smdev/proceeddev"        },

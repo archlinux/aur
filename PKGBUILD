@@ -27,7 +27,7 @@ source=(
 sha1sums=('SKIP'
           '00721a385678a2e576606d85463ca8ab4ba4da27'
           'b300e68de6bcb6f542bb28206ab10f6ceca242bc'
-          '61cd0f4c67c70cddadc58c1e7c50fc7180983129'
+          '26b3316a3ee52e1c3306cbfab100712987580aa1'
           '983302eaf902e0ecd77a61ae90ba0c6d9c635d3e'
           '3a5d1f975539131248fde0db5e44c29798706ea7'
           '6a5369d9e3efc4317c907cc6140e509e82a559a5')
