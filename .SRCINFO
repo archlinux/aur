@@ -6,6 +6,7 @@ pkgbase = signal
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = python
 	makedepends = python2
 	makedepends = npm
 	makedepends = yarn
