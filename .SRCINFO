@@ -1,17 +1,19 @@
 pkgbase = php-mailparse
 	pkgdesc = Extension for parsing and working with email messages (RFC822 and RFC2045)
 	pkgver = 3.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pecl.php.net/package/mailparse
 	arch = i686
 	arch = x86_64
 	license = PHP
-	depends = php>=7.0.0
+	depends = php>=7.2.0
 	backup = etc/php/conf.d/mailparse.ini
 	source = https://pecl.php.net/get/mailparse-3.0.2.tgz
 	source = mailparse.ini
+	source = mailparse-upstream.patch
 	sha256sums = d81a6f8a48e43fca1c0f0d6c90d666830c24d584a23a60add43062aaf221843b
 	sha256sums = e3a71ee16492ff486ad4e6b0c87a3af93bdb081efa5baf78d5d47f290f7ec86a
+	sha256sums = 5fef263ad49bac3b2b009574d07fda529bcb71856d4e208acf3bd51bccdd5312
 
 pkgname = php-mailparse
 

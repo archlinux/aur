@@ -1,0 +1,497 @@
+From 710cc7f02a0172bb1c6c249f2197414a70445f41 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@php.net>
+Date: Tue, 10 Jul 2018 15:53:10 +0200
+Subject: [PATCH] fix -Wformat warning
+
+---
+ .gitignore  | 2 ++
+ mailparse.c | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/mailparse.c b/mailparse.c
+index 229c361..0ec1b4e 100644
+--- a/mailparse.c
++++ b/mailparse.c
+@@ -1518,7 +1518,7 @@ PHP_FUNCTION(mailparse_msg_get_part)
+ 	foundpart = php_mimepart_find_by_name(part, ZSTR_VAL(mimesection));
+ 
+ 	if (!foundpart)	{
+-		php_error_docref(NULL, E_WARNING, "cannot find section %s in message", mimesection);
++		php_error_docref(NULL, E_WARNING, "cannot find section %s in message", ZSTR_VAL(mimesection));
+ 		RETURN_FALSE;
+ 	}
+ 	foundpart->rsrc->gc.refcount++;
+From 385763b215ca31b7677573a24156106e84e0b9f9 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@php.net>
+Date: Wed, 11 Jul 2018 08:11:09 +0200
+Subject: [PATCH] cleanup headers
+
+---
+ README                  | 5 +++--
+ config.m4               | 3 ---
+ config.w32              | 1 -
+ mailparse.c             | 5 ++---
+ php_mailparse.h         | 5 ++---
+ php_mailparse_mime.c    | 5 ++---
+ php_mailparse_mime.h    | 5 ++---
+ php_mailparse_rfc822.c  | 5 ++---
+ php_mailparse_rfc822.h  | 4 ++--
+ php_mailparse_rfc822.re | 5 ++---
+ 10 files changed, 17 insertions(+), 26 deletions(-)
+
+diff --git a/README b/README
+index bc43274..68aad8c 100644
+--- a/README
++++ b/README
+@@ -1,6 +1,5 @@
+-mailparse library for PHP 4
++mailparse library for PHP 7
+ ===========================
+-$Id$
+ 
+ Mailparse is an extension for parsing and working with email messages.
+ It can deal with rfc822 and rfc2045 (MIME) compliant messages.
+@@ -8,6 +7,8 @@ Mailparse is stream based, which means that it does not keep in-memory
+ copies of the files it processes - so it is very resource efficient
+ when dealing with large messages.
+ 
++Version 2.1.6 is for PHP 5
++
+ OO Syntax:
+ =============
+ <?php
+diff --git a/config.m4 b/config.m4
+index 24ac05b..f3da8fc 100644
+--- a/config.m4
++++ b/config.m4
+@@ -1,6 +1,3 @@
+-dnl
+-dnl $Id$
+-dnl
+ 
+ PHP_ARG_ENABLE(mailparse, whether to enable mailparse support,
+ [  --enable-mailparse      Enable mailparse support.])
+diff --git a/config.w32 b/config.w32
+index eb41292..3ebd426 100644
+--- a/config.w32
++++ b/config.w32
+@@ -1,4 +1,3 @@
+-// $Id$
+ // vim:ft=javascript
+ 
+ ARG_ENABLE("mailparse", "MAILPARSE support", "no");
+diff --git a/mailparse.c b/mailparse.c
+index 0ec1b4e..8f60cb9 100644
+--- a/mailparse.c
++++ b/mailparse.c
+@@ -1,8 +1,8 @@
+ /*
+    +----------------------------------------------------------------------+
+-   | PHP Version 5                                                        |
++   | PHP Version 7                                                        |
+    +----------------------------------------------------------------------+
+-   | Copyright (c) 1997-2015 The PHP Group                                |
++   | Copyright (c) 1997-2018 The PHP Group                                |
+    +----------------------------------------------------------------------+
+    | This source file is subject to version 3.01 of the PHP license,      |
+    | that is bundled with this package in the file LICENSE, and is        |
+@@ -15,7 +15,6 @@
+    | Author: Wez Furlong <wez@thebrainroom.com>                           |
+    +----------------------------------------------------------------------+
+  */
+-/* $Id$ */
+ 
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+diff --git a/php_mailparse.h b/php_mailparse.h
+index 2df36db..11384f5 100644
+--- a/php_mailparse.h
++++ b/php_mailparse.h
+@@ -1,8 +1,8 @@
+ /*
+    +----------------------------------------------------------------------+
+-   | PHP Version 5                                                        |
++   | PHP Version 8                                                        |
+    +----------------------------------------------------------------------+
+-   | Copyright (c) 1997-2015 The PHP Group                                |
++   | Copyright (c) 1997-2018 The PHP Group                                |
+    +----------------------------------------------------------------------+
+    | This source file is subject to version 3.01 of the PHP license,      |
+    | that is bundled with this package in the file LICENSE, and is        |
+@@ -17,7 +17,6 @@
+    | the support routines for this extension were based upon.             |
+    +----------------------------------------------------------------------+
+  */
+-/* $Id$ */
+ 
+ #ifndef PHP_MAILPARSE_H
+ #define PHP_MAILPARSE_H
+diff --git a/php_mailparse_mime.c b/php_mailparse_mime.c
+index 0cc7ff6..b22eabb 100644
+--- a/php_mailparse_mime.c
++++ b/php_mailparse_mime.c
+@@ -1,8 +1,8 @@
+ /*
+    +----------------------------------------------------------------------+
+-   | PHP Version 5                                                        |
++   | PHP Version 7                                                        |
+    +----------------------------------------------------------------------+
+-   | Copyright (c) 1997-2015 The PHP Group                                |
++   | Copyright (c) 1997-2018 The PHP Group                                |
+    +----------------------------------------------------------------------+
+    | This source file is subject to version 3.01 of the PHP license,      |
+    | that is bundled with this package in the file LICENSE, and is        |
+@@ -15,7 +15,6 @@
+    | Author: Wez Furlong <wez@thebrainroom.com>                           |
+    +----------------------------------------------------------------------+
+  */
+-/* $Id$ */
+ 
+ #include "php.h"
+ #include "php_mailparse.h"
+diff --git a/php_mailparse_mime.h b/php_mailparse_mime.h
+index 18b9d80..a0ef70e 100644
+--- a/php_mailparse_mime.h
++++ b/php_mailparse_mime.h
+@@ -1,8 +1,8 @@
+ /*
+    +----------------------------------------------------------------------+
+-   | PHP Version 5                                                        |
++   | PHP Version 7                                                        |
+    +----------------------------------------------------------------------+
+-   | Copyright (c) 1997-2015 The PHP Group                                |
++   | Copyright (c) 1997-2018 The PHP Group                                |
+    +----------------------------------------------------------------------+
+    | This source file is subject to version 3.01 of the PHP license,      |
+    | that is bundled with this package in the file LICENSE, and is        |
+@@ -15,7 +15,6 @@
+    | Author: Wez Furlong <wez@thebrainroom.com>                           |
+    +----------------------------------------------------------------------+
+  */
+-/* $Id$ */
+ 
+ #ifndef php_mailparse_mime_h
+ #define php_mailparse_mime_h
+diff --git a/php_mailparse_rfc822.c b/php_mailparse_rfc822.c
+index b6f965e..2cd4ec7 100644
+--- a/php_mailparse_rfc822.c
++++ b/php_mailparse_rfc822.c
+@@ -2,9 +2,9 @@
+ #line 1 "/home/vagrant/src/pecl-mail-mailparse/php_mailparse_rfc822.re"
+ /*
+    +----------------------------------------------------------------------+
+-   | PHP Version 5                                                        |
++   | PHP Version 7                                                        |
+    +----------------------------------------------------------------------+
+-   | Copyright (c) 1997-2015 The PHP Group                                |
++   | Copyright (c) 1997-2018 The PHP Group                                |
+    +----------------------------------------------------------------------+
+    | This source file is subject to version 3.01 of the PHP license,      |
+    | that is bundled with this package in the file LICENSE, and is        |
+@@ -17,7 +17,6 @@
+    | Author: Wez Furlong <wez@thebrainroom.com>                           |
+    +----------------------------------------------------------------------+
+  */
+-/* $Id$ */
+ 
+ #include "php.h"
+ #include "php_mailparse.h"
+diff --git a/php_mailparse_rfc822.h b/php_mailparse_rfc822.h
+index 34b5532..b4bf8d6 100644
+--- a/php_mailparse_rfc822.h
++++ b/php_mailparse_rfc822.h
+@@ -1,8 +1,8 @@
+ /*
+    +----------------------------------------------------------------------+
+-   | PHP Version 4                                                        |
++   | PHP Version 5                                                        |
+    +----------------------------------------------------------------------+
+-   | Copyright (c) 1997-2015 The PHP Group                                |
++   | Copyright (c) 1997-2018 The PHP Group                                |
+    +----------------------------------------------------------------------+
+    | This source file is subject to version 3.01 of the PHP license,      |
+    | that is bundled with this package in the file LICENSE, and is        |
+diff --git a/php_mailparse_rfc822.re b/php_mailparse_rfc822.re
+index 6562047..1903cc5 100644
+--- a/php_mailparse_rfc822.re
++++ b/php_mailparse_rfc822.re
+@@ -1,8 +1,8 @@
+ /*
+    +----------------------------------------------------------------------+
+-   | PHP Version 5                                                        |
++   | PHP Version 7                                                        |
+    +----------------------------------------------------------------------+
+-   | Copyright (c) 1997-2015 The PHP Group                                |
++   | Copyright (c) 1997-2018 The PHP Group                                |
+    +----------------------------------------------------------------------+
+    | This source file is subject to version 3.01 of the PHP license,      |
+    | that is bundled with this package in the file LICENSE, and is        |
+@@ -15,7 +15,6 @@
+    | Author: Wez Furlong <wez@thebrainroom.com>                           |
+    +----------------------------------------------------------------------+
+  */
+-/* $Id$ */
+ 
+ #include "php.h"
+ #include "php_mailparse.h"
+From 720ed5b77591922596564c414a655f3c7fcd6200 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@php.net>
+Date: Wed, 11 Jul 2018 11:26:35 +0200
+Subject: [PATCH] add dependency on mbstring extension
+
+---
+ config.m4   |  3 +--
+ mailparse.c | 11 +++++++++--
+ 2 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/config.m4 b/config.m4
+index f3da8fc..d592726 100644
+--- a/config.m4
++++ b/config.m4
+@@ -8,8 +8,7 @@ if test "$PHP_MAILPARSE" != "no"; then
+ 	  enable_mbstring=yes
+   fi
+   PHP_NEW_EXTENSION(mailparse, 	mailparse.c php_mailparse_mime.c php_mailparse_rfc822.c, $ext_shared)
+-
++  PHP_ADD_EXTENSION_DEP(mailparse, mbstring, true)
+   PHP_ADD_MAKEFILE_FRAGMENT
+-
+ fi
+ 
+diff --git a/mailparse.c b/mailparse.c
+index 8f60cb9..bf5be0f 100644
+--- a/mailparse.c
++++ b/mailparse.c
+@@ -90,11 +90,18 @@ zend_function_entry mailparse_functions[] = {
+ 
+ 	PHP_FE(mailparse_test,	NULL)
+ 
+-	{NULL, NULL, NULL}
++	PHP_FE_END
++};
++
++static const zend_module_dep mailparse_deps[] = {
++	ZEND_MOD_REQUIRED("mbstring")
++	ZEND_MOD_END
+ };
+ 
+ zend_module_entry mailparse_module_entry = {
+-	STANDARD_MODULE_HEADER,
++	STANDARD_MODULE_HEADER_EX,
++	NULL,
++	mailparse_deps,
+ 	"mailparse",
+ 	mailparse_functions,
+ 	PHP_MINIT(mailparse),
+From 13c2c425e519b22660a03d566c35e76b3d4751dc Mon Sep 17 00:00:00 2001
+From: Jan-E <github@ehrhardt.nl>
+Date: Tue, 10 Jul 2018 17:42:24 +0200
+Subject: [PATCH] PHP 7.3 compatibility
+
+---
+ mailparse.c          | 13 +++++++++++++
+ php_mailparse_mime.c |  9 +++++++++
+ 2 files changed, 22 insertions(+)
+
+diff --git a/mailparse.c b/mailparse.c
+index bf5be0f..f658d68 100644
+--- a/mailparse.c
++++ b/mailparse.c
+@@ -984,12 +984,21 @@ PHP_FUNCTION(mailparse_stream_encode)
+ 	buf = emalloc(bufsize);
+ 	RETVAL_TRUE;
+ 
++#if PHP_VERSION_ID >= 70300
++	conv = mbfl_convert_filter_new(mbfl_no2encoding(mbfl_no_encoding_8bit),
++			mbfl_no2encoding(enc),
++			mailparse_stream_output,
++			mailparse_stream_flush,
++			deststream
++			);
++#else
+ 	conv = mbfl_convert_filter_new(mbfl_no_encoding_8bit,
+ 			enc,
+ 			mailparse_stream_output,
+ 			mailparse_stream_flush,
+ 			deststream
+ 			);
++#endif
+ 
+ 	if (enc == mbfl_no_encoding_qprint) {
+ 		/* If the qp encoded section is going to be digitally signed,
+@@ -1165,9 +1174,13 @@ PHP_FUNCTION(mailparse_msg_get_structure)
+ 
+ 	mailparse_fetch_mimepart_resource(part, arg);
+ 
++#if PHP_VERSION_ID >= 70300
++	array_init(return_value);
++#else
+ 	if (array_init(return_value) == FAILURE)	{
+ 		RETURN_FALSE;
+ 	}
++#endif
+ 	php_mimepart_enum_parts(part, &get_structure_callback, return_value);
+ }
+ /* }}} */
+diff --git a/php_mailparse_mime.c b/php_mailparse_mime.c
+index b22eabb..8176c9d 100644
+--- a/php_mailparse_mime.c
++++ b/php_mailparse_mime.c
+@@ -906,12 +906,21 @@ PHP_MAILPARSE_API void php_mimepart_decoder_prepare(php_mimepart *part, int do_d
+ 		if (from == mbfl_no_encoding_8bit || from == mbfl_no_encoding_7bit) {
+ 			part->extract_filter = NULL;
+ 		} else {
++#if PHP_VERSION_ID >= 70300
++			part->extract_filter = mbfl_convert_filter_new(
++					mbfl_no2encoding(from), mbfl_no2encoding(mbfl_no_encoding_8bit),
++					filter_into_work_buffer,
++					NULL,
++					part
++					);
++#else
+ 			part->extract_filter = mbfl_convert_filter_new(
+ 					from, mbfl_no_encoding_8bit,
+ 					filter_into_work_buffer,
+ 					NULL,
+ 					part
+ 					);
++#endif
+ 		}
+ 	}
+ 
+From 4825a05d76b86d7c02bed0dbb9862e8357f6a3c2 Mon Sep 17 00:00:00 2001
+From: Jan-E <github@ehrhardt.nl>
+Date: Wed, 11 Jul 2018 00:40:59 +0200
+Subject: [PATCH] Move zend_string_init to the top of the block
+
+---
+ mailparse.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/mailparse.c b/mailparse.c
+index f658d68..2bcf0b6 100644
+--- a/mailparse.c
++++ b/mailparse.c
+@@ -1432,9 +1432,10 @@ static void add_header_reference_to_zval(char *headerkey, zval *return_value, zv
+ static int mailparse_get_part_data(php_mimepart *part, zval *return_value)
+ {
+ 	zval headers, *tmpval;
+-	zend_string *hash_key;
+ 	off_t startpos, endpos, bodystart;
+ 	int nlines, nbodylines;
++	/* extract the address part of the content-id only */
++	zend_string *hash_key = zend_string_init("content-id", sizeof("content-id") - 1, 0);
+ 
+ 	array_init(return_value);
+ 
+@@ -1481,8 +1482,6 @@ static int mailparse_get_part_data(php_mimepart *part, zval *return_value)
+ 	if (part->boundary)
+ 		add_assoc_string(return_value, "content-boundary", part->boundary);
+ 
+-	/* extract the address part of the content-id only */
+-	hash_key = zend_string_init("content-id", sizeof("content-id") - 1, 0);
+ 	if ((tmpval = zend_hash_find(Z_ARRVAL_P(&headers), hash_key)) != NULL) {
+ 		php_rfc822_tokenized_t *toks;
+ 		php_rfc822_addresses_t *addrs;
+From 449215fd2bea7a99bfc1a435565eef5191604c00 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@php.net>
+Date: Wed, 11 Jul 2018 11:43:58 +0200
+Subject: [PATCH] use proper macro
+
+---
+ mailparse.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mailparse.c b/mailparse.c
+index 2bcf0b6..99b0538 100644
+--- a/mailparse.c
++++ b/mailparse.c
+@@ -976,7 +976,7 @@ PHP_FUNCTION(mailparse_stream_encode)
+ 	if (enc == mbfl_no_encoding_invalid)	{
+ 		zend_error(E_WARNING, "%s(): unknown encoding \"%s\"",
+ 				get_active_function_name(),
+-				encod->val
++				ZSTR_VAL(encod)
+ 				);
+ 		RETURN_FALSE;
+ 	}
+From 132cb492bf9078732883653fca714504a4f6daf3 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@php.net>
+Date: Thu, 12 Jul 2018 14:20:54 +0200
+Subject: [PATCH] simplify, array_init always succeed
+
+---
+ mailparse.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/mailparse.c b/mailparse.c
+index 99b0538..df321c1 100644
+--- a/mailparse.c
++++ b/mailparse.c
+@@ -1174,13 +1174,7 @@ PHP_FUNCTION(mailparse_msg_get_structure)
+ 
+ 	mailparse_fetch_mimepart_resource(part, arg);
+ 
+-#if PHP_VERSION_ID >= 70300
+ 	array_init(return_value);
+-#else
+-	if (array_init(return_value) == FAILURE)	{
+-		RETURN_FALSE;
+-	}
+-#endif
+ 	php_mimepart_enum_parts(part, &get_structure_callback, return_value);
+ }
+ /* }}} */
+From 7df6d614e79ebdb2bf75f4913450229b55e72078 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@php.net>
+Date: Wed, 19 Dec 2018 14:30:30 +0100
+Subject: [PATCH] fix segfault, thanks cmb
+
+---
+ mailparse.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/mailparse.c b/mailparse.c
+index df321c1..92b247c 100644
+--- a/mailparse.c
++++ b/mailparse.c
+@@ -1417,7 +1417,6 @@ static void add_header_reference_to_zval(char *headerkey, zval *return_value, zv
+ 	hash_key = zend_string_init(headerkey, strlen(headerkey), 0);
+ 	if ((headerval = zend_hash_find(Z_ARRVAL_P(headers), hash_key)) != NULL) {
+ 		ZVAL_DUP(&newhdr, headerval);
+-		Z_SET_REFCOUNT_P(&newhdr, 1);
+ 		add_assoc_zval(return_value, headerkey, &newhdr);
+ 	}
+ 	zend_string_release(hash_key);
+@@ -1434,7 +1433,7 @@ static int mailparse_get_part_data(php_mimepart *part, zval *return_value)
+ 	array_init(return_value);
+ 
+ 	/* get headers for this section */
+-	ZVAL_DUP(&headers, &part->headerhash);
++	ZVAL_COPY(&headers, &part->headerhash);
+ 
+ 	add_assoc_zval(return_value, "headers", &headers);
+ 
+From bddcfcb2d3a263c17ac40b79b1479b4b15ecd607 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@php.net>
+Date: Tue, 10 Jul 2018 14:37:49 +0200
+Subject: [PATCH] skip m0001.txt as m0001.exp doesn't exist
+
+---
+ tests/parse_test_messages.phpt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/parse_test_messages.phpt b/tests/parse_test_messages.phpt
+index 48a0d05..c111bd1 100644
+--- a/tests/parse_test_messages.phpt
++++ b/tests/parse_test_messages.phpt
+@@ -157,6 +157,9 @@ $skip_keys = array("headers", "ending-pos-body");
+ 
+ foreach ($messages as $name => $msgdata) {
+ 	$testname = $testdir . "/" . $msgdata["testfile"];
++	if (!isset($msgdata["expectfile"])) {
++		continue;
++	}
+ 	$expectname = $testdir . "/" . $msgdata["expectfile"];
+ 
+ 	$use_wrapper = substr($testname, -3) == ".gz" ? $wrapper : "";
