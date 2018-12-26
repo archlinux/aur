@@ -1,4 +1,9 @@
 post_install() {
+test -e /opt/resolve/configs/config.dat || cp /opt/resolve/configs/config.dat-pkg-default /opt/resolve/configs/config.dat
+test -e /opt/resolve/configs/log-conf.xml || cp /opt/resolve/configs/log-conf.xml-pkg-default /opt/resolve/configs/log-conf.xml
+test -e /opt/resolve/DolbyVision/config.bin || cp /opt/resolve/DolbyVision/config.bin-pkg-default /opt/resolve/DolbyVision/config.bin
+
+
     tput bold
 	echo "Remember to open Davinci Resolve Studio as root for activation if you have an activation code instead of a dongle"
 	tput sgr0

@@ -10,127 +10,115 @@
 
 pkgname=davinci-resolve-studio
 _pkgname=resolve
-pkgver=15.2.1
-pkgrel=1
+pkgver=15.2.2
+pkgrel=2
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
 license=('Commercial')
 depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0'
          'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit'
-         'qt5-webengine' 'qt5-websockets' 'xdg-user-dirs' 'unzip')
+         'qt5-webengine' 'qt5-websockets')
+makedepends=('xdg-user-dirs' 'unzip' 'libisoburn')
 options=('!strip')
 conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio-beta')
 install='davinci-resolve-studio.install'
 
-DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 
-if [ ! -f ${pkgdir}/DaVinci_Resolve_Studio_${pkgver}_Linux.zip ]; then
-  if [ -f $DOWNLOADS_DIR/DaVinci_Resolve_Studio_${pkgver}_Linux.zip ]; then
-    ln -sfn $DOWNLOADS_DIR/DaVinci_Resolve_Studio_${pkgver}_Linux.zip ${pkgdir}
-  else
-    msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/products/davinciresolve/"
-    error "DaVinci_Resolve_${pkgver}_Linux.zip not found in the build directory or $DOWNLOADS_DIR"
-    sleep 3
-  fi
-fi
 
-source=("local://DaVinci_Resolve_Studio_${pkgver}_Linux.zip" "davinci-resolve-studio.install")
-sha256sums=('8ee1c9c38099b8bd7758ccbf4549ba5162de47c7e470dfa51d64beded4e3d17e' 'ff105552fc59e7957e1d9ed19f4c4d41294459353e3525f57207ed43e882b508')
+
+source=("davinci-resolve-studio.install" "75-davincipanel.rules" "75-sdx.rules" "davinci-resolve-studio.desktop")
+sha256sums=('ced9031d69d98222b9fd16ea4b776e356076a0e9286547ee2a8a5b4d07850799' '364c3b1b0ee39ce009840dba93e22e141e7aadc27f3254dbbf23d1b94c38a641' '5190c0c42d3c84ae4691c73b6fe28e7f471da6a247e7400e7b5181a6c0c81bee' '7da47b9afed6f82841c2385d37e12ba575989cdd347f7e88399632d53b0a4b36' )
+
+prepare(){
+	_archive="DaVinci_Resolve_Studio_${pkgver}_Linux.zip"
+    	_archive_sha256sum='e6b0947d48dd702ade93c455bb7c5e82e0be3484e5927ba56741a02b947e3bb2'
+
+	DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
+
+	if [ ! -f ${srcdir}/${_archive} ]; then
+		if [ -f $DOWNLOADS_DIR/${_archive} ]; then
+		    ln -sfn $DOWNLOADS_DIR/${_archive} ${srcdir}
+		else
+		    msg2 "The package archive can be downloaded here: https://www.blackmagicdesign.com/products/davinciresolve/"
+		    msg2 "Please remember to put a downloaded package ${_archive} into the build directory or $DOWNLOADS_DIR"
+		    exit 1
+		fi
+	fi
+
+# check integrity
+	if ! echo "${_archive_sha256sum} ${srcdir}/${_archive}" | sha256sum -c --quiet; then
+	echo "Invalid checksum for ${_archive}"
+	return 1
+	fi
+
+	    
+# extract package
+	    unzip -f ${srcdir}/${_archive}
+}
 
 package() {
 
 
-#	msg2 "Did you download the archive manually? If not, this will fail."
-	mkdir -p "${pkgdir}/opt/${_pkgname}/"{bin,configs,Media}
+# Extract DaVinci Resolve Archive
+	mkdir -p "${srcdir}/unpack"
 
-#	msg2 "Extracting from bundle..."
-	cd "${srcdir}" || exit
-	./DaVinci_Resolve_Studio_${pkgver}_Linux.sh --tar xf -C "${pkgdir}/opt/${_pkgname}"
+# Create directories
+	mkdir -p "${pkgdir}/opt/${_pkgname}/"{configs,easyDCP,logs,scripts,.LUT,.license,.crashreport,DolbyVision,Fairlight,Media,"Resolve Disk Database"}
 
-#	msg2 "Extracting library archives..."
-	cd "${pkgdir}/opt/${_pkgname}/" || exit
-	gunzip -f LUT/trim_lut0.dpx.gz
-	for archive in libs/*tgz; do
-		tar xf "${archive}" -C libs/
-		rm -f "${archive}"
-	done
+# Extract DaVinci Resolve Archive
+	xorriso -osirrox on -indev "${srcdir}/DaVinci_Resolve_Studio_${pkgver}_Linux.run" -extract / "${srcdir}/unpack"
 
-#	msg2 "Relocate binaries and config..."
-	cd "${pkgdir}/opt/${_pkgname}/" || exit
-	local _binaries=(
-		BMDPanelFirmware
-		DPDecoder
-		ShowDpxHeader
-		TestIO
-		bandwidthTest
-		bmdpaneld
-		deviceQuery
-		oclBandwidthTest
-		oclDeviceQuery
-		qt.conf
-	)
-	for binary in "${_binaries[@]}"; do
-		mv "rsf/${binary}" "bin/${binary}"
-	done
-	mv resolve bin/resolve
-	mv rsf/Control Control
-	install -Dm666 rsf/default-config-linux.dat "${pkgdir}/opt/${_pkgname}/configs/config.dat"
+# Copy objects
 
-#	msg2 "Add lib symlinks..."
+	cp -rp "${srcdir}/unpack/bin" "${pkgdir}/opt/${_pkgname}/"
+	cp -rp "${srcdir}/unpack/Control" "${pkgdir}/opt/${_pkgname}/"
+	cp -rp "${srcdir}/unpack/DaVinci Resolve Panels Setup" "${pkgdir}/opt/${_pkgname}/"
+	cp -rp "${srcdir}/unpack/Developer" "${pkgdir}/opt/${_pkgname}/"
+	cp -rp "${srcdir}/unpack/docs" "${pkgdir}/opt/${_pkgname}/"
+	cp -rp "${srcdir}/unpack/Fusion" "${pkgdir}/opt/${_pkgname}/"
+	cp -rp "${srcdir}/unpack/graphics" "${pkgdir}/opt/${_pkgname}/"
+	cp -rp "${srcdir}/unpack/libs" "${pkgdir}/opt/${_pkgname}/"
+	cp -rp "${srcdir}/unpack/LUT" "${pkgdir}/opt/${_pkgname}/"
+	cp -rp "${srcdir}/unpack/Onboarding" "${pkgdir}/opt/${_pkgname}/"
+	cp -rp "${srcdir}/unpack/plugins" "${pkgdir}/opt/${_pkgname}/"
+	cp -rp "${srcdir}/unpack/UI_Resource" "${pkgdir}/opt/${_pkgname}/"
+    #scripts
+	cp -p "${srcdir}/unpack/scripts/script.checkfirmware" "${pkgdir}/opt/${_pkgname}/scripts"
+	cp -p "${srcdir}/unpack/scripts/script.getlogs.v4" "${pkgdir}/opt/${_pkgname}/scripts"
+	cp -p "${srcdir}/unpack/scripts/script.start" "${pkgdir}/opt/${_pkgname}/scripts"
+    #configs
+	cp -rp "${srcdir}/unpack/share/default-config-linux.dat" "${pkgdir}/opt/${_pkgname}/configs/config.dat-pkg-default"
+	cp -rp "${srcdir}/unpack/share/log-conf.xml" "${pkgdir}/opt/${_pkgname}/configs/log-conf.xml-pkg-default"
+	cp -rp "${srcdir}/unpack/share/default_cm_config.bin" "${pkgdir}/opt/${_pkgname}/DolbyVision/config.bin-pkg-default"
+
+#Add lib symlinks
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
 	ln -s /usr/lib/libcrypto.so.1.0.0  libs/libcrypto.so.10
 	ln -s /usr/lib/libssl.so.1.0.0     libs/libssl.so.10
 	ln -s /usr/lib/libgstbase-1.0.so   libs/libgstbase-0.10.so.0
 	ln -s /usr/lib/libgstreamer-1.0.so libs/libgstreamer-0.10.so.0
 
-# Fusion templates need to be extracted in /opt/resolve, thx @laemplein
-#	msg2 "Extracting Fusion templates"
-	unzip -q "${pkgdir}/opt/${_pkgname}/rsf/fusion_presets.zip" -d "${pkgdir}/opt/${_pkgname}/"
+#Set proper permissions
+	chmod -R a+rw "${pkgdir}/opt/resolve/configs"
+	chmod -R a+rw "${pkgdir}/opt/resolve/easyDCP"
+	chmod -R a+rw "${pkgdir}/opt/resolve/logs"
+	chmod -R a+rw "${pkgdir}/opt/resolve/Developer"
+	chmod -R a+rw "${pkgdir}/opt/resolve/DolbyVision"
+	chmod -R a+rw "${pkgdir}/opt/resolve/LUT"
+	chmod -R a+rw "${pkgdir}/opt/resolve/.LUT"
+	chmod -R a+rw "${pkgdir}/opt/resolve/.license"
+	chmod -R a+rw "${pkgdir}/opt/resolve/.crashreport"
+	chmod -R a+rw "${pkgdir}/opt/resolve/Resolve Disk Database"
+	chmod -R a+rw "${pkgdir}/opt/resolve/Fairlight"
+	chmod -R a+rw "${pkgdir}/opt/resolve/Media"
 
-#	msg2 "Creating udev rules for dongles"
-	# Ensure dongle permissions are correctly set
-	SDX_RULES="${srcdir}/75-sdx.rules"
-	echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="096e", MODE="0666"' > ${SDX_RULES}
-	install -Dm644 ${SDX_RULES} "${pkgdir}/usr/lib/udev/rules.d/75-sdx.rules"
-
-# Remind the user to open resolve as root for activation if not using a dongle, thx @alxjsn & @macman for pointing this out
-#	msg2 "Remember to open Davinci Resolve Studio for activation if you have an activation code"
+#Installing udev rules for panels and dongles
 	
-#	msg2 "Creating launchers..."
-	cd "${srcdir}" || exit
-	cat > "${srcdir}/DaVinci Resolve Studio.desktop" << EOF
+	install -Dm644 ${srcdir}/75-davincipanel.rules "${pkgdir}/usr/lib/udev/rules.d/75-davincipanel.rules"
+	install -Dm644 ${srcdir}/75-sdx.rules "${pkgdir}/usr/lib/udev/rules.d/75-sdx.rules"
 
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Type=Application
-Name=DaVinci Resolve Studio
-Comment=Professional non-linear editing
-Exec=/opt/${_pkgname}/bin/start-resolve
-Icon=/opt/${_pkgname}/rsf/DV_Resolve.png
-Terminal=false
-Categories=Multimedia;AudioVideo;Application;
-EOF
-	install -Dm644 DaVinci\ Resolve\ Studio.desktop "${pkgdir}/usr/share/applications/DaVinci Resolve Studio.desktop"
+#Install .desktop launcher
+	install -Dm644 "${srcdir}/davinci-resolve-studio.desktop" "${pkgdir}/usr/share/applications/DaVinci Resolve Studio.desktop"
 
-	cat > "${srcdir}/start-resolve" << EOF
-#!/bin/sh
-mkdir -p /tmp/${_pkgname}/{logs,GPUCache}
-cd /opt/${_pkgname}
-exec bin/resolve "\$@"
-EOF
-	install -Dm755 start-resolve "${pkgdir}/opt/${_pkgname}/bin/start-resolve"
-
-#	msg2 "Making sure file ownership is 'correct'..."
-	chown -R root:root "${pkgdir}/opt"
-	chmod 0777 "${pkgdir}/opt/${_pkgname}/configs"
-	chmod 0777 "${pkgdir}/opt/${_pkgname}/Media"
-
-#	msg2 "Any final tweaks..."
-	ln -s "/tmp/${_pkgname}/logs" "${pkgdir}/opt/${_pkgname}/logs"
-	ln -s "/tmp/${_pkgname}/GPUCache" "${pkgdir}/opt/${_pkgname}/GPUCache"
-
-#	msg2 "Done!"
 }
-
-# vim: fileencoding=utf-8 sts=4 sw=4 noet
