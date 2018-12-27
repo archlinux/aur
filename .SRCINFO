@@ -1,7 +1,7 @@
 pkgbase = kde-thumbnailer-fb2
 	pkgdesc = A KDE thumbnail generator for the FictionBook (fb2) file format
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = http://kde-apps.org/content/show.php/KDE+fb2+Thumbnailer?content=160180
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = kde-thumbnailer-fb2
 	makedepends = cmake
 	depends = ebook-tools
 	depends = kdelibs
-	source = kde-thumbnailer-fb2-0.2.tar.gz::http://kde-apps.org/CONTENT/content-files/160180-kde-thumbnailer-fb2-0.2.tar.gz
-	sha256sums = 7cf6cce6a5ebf92eced5118a82765b620d9962b4686918c921571e1f773455d6
+	source = kde-thumbnailer-fb2-0.3.1.tar.gz::https://github.com/Caig/kde-thumbnailer-fb2/archive/v0.3.1.tar.gz
+	md5sums = 6ea4944fc5b573c609aebe4347e4eb1e
 
 pkgname = kde-thumbnailer-fb2
 

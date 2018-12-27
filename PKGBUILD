@@ -1,16 +1,16 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Szymon Scholz
+# Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=kde-thumbnailer-fb2
-pkgver=0.2
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="A KDE thumbnail generator for the FictionBook (fb2) file format"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://kde-apps.org/content/show.php/KDE+fb2+Thumbnailer?content=160180"
 depends=('ebook-tools' 'kdelibs')
 makedepends=('automoc4' 'cmake')
-source=("${pkgname}-${pkgver}.tar.gz::http://kde-apps.org/CONTENT/content-files/160180-${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7cf6cce6a5ebf92eced5118a82765b620d9962b4686918c921571e1f773455d6')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Caig/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
     install -d build/
@@ -25,3 +25,5 @@ build() {
 package() {
     make -C build DESTDIR="${pkgdir}" install
 }
+md5sums=('6ea4944fc5b573c609aebe4347e4eb1e')
+md5sums=('6ea4944fc5b573c609aebe4347e4eb1e')
