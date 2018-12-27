@@ -1,0 +1,15 @@
+post_install() {
+	getent group pyload &>/dev/null || groupadd -r pyload >/dev/null
+	getent passwd pyload &>/dev/null || useradd -r -g pyload -d /var/lib/pyload -s /bin/false -c pyload pyload >/dev/null
+	chown -R pyload:pyload /var/lib/pyload
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	getent passwd pyload &>/dev/null && userdel pyload >/dev/null
+	getent group pyload &>/dev/null && groupdel pyload >/dev/null
+	true
+}
