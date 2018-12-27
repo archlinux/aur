@@ -1,15 +1,15 @@
 pkgbase = python-aiosasl
 	pkgdesc = A pure python generic asyncio SASL library
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/horazont/aiosasl
 	arch = any
 	license = LGPL3
 	checkdepends = python-nose
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/horazont/aiosasl/archive/v0.4.0.tar.gz
-	sha256sums = 6cf620672b64669b9136ab73e42f022d95a328385bff5053080356fdbb129f82
+	source = https://files.pythonhosted.org/packages/source/a/aiosasl/aiosasl-0.4.0.tar.gz
+	sha256sums = 060f07220f47c47736ced749d1874194efc1bb0e83e55616b2af8af3c3302650
 
 pkgname = python-aiosasl
 
