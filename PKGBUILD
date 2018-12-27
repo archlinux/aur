@@ -42,7 +42,7 @@ build() {
 
     cd ${srcdir}/SAOImageDS9-${pkgver}
     unix/configure
-    make -j4
+    make
 }
 
 package() {
