@@ -1,7 +1,7 @@
 # Maintainer: saren@wtako.net
 pkgname=pulseaudio-bt-auto-enable-a2dp
 pkgver=15
-pkgrel=1
+pkgrel=2
 pkgdesc="Udev service for temporary solve bug 92102 https://bugs.freedesktop.org/show_bug.cgi?id=92102"
 url="https://gist.github.com/EHfive/c4f1218a75f95b076f0387403246de78"
 arch=(any)

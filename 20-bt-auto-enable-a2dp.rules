@@ -1,1 +1,1 @@
-SUBSYSTEM=="bluetooth", ACTION=="add", RUN+="/usr/bin/bt-auto-enable-a2dp"
+SUBSYSTEM=="bluetooth", ACTION=="add", RUN+="/usr/local/bin/bt-auto-enable-a2dp"
