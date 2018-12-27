@@ -1,4 +1,4 @@
-# Maintainer:  Saed Ahmed <itsaed7@gmail.com> 
+# Maintainer: Saed Ahmed <itsaed7@gmail.com> 
 # Contributor: robertfoster
 # Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 # Contributor: RaNaN <ranan@pyload.org>
