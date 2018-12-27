@@ -4,9 +4,9 @@ _appName="pyfunceble"
 pkgname=python-${_appName}
 _name=${pkgname#python-}
 upstreamName="PyFunceble"
-pkgver=0.94.3
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="The tool to check domains or IP availability."
+pkgdesc="The tool to check the availability or syntax of domains, IPv4 or URL."
 arch=('any')
 url="https://funilrys.github.io/PyFunceble/"
 license=('MIT')
@@ -19,16 +19,14 @@ depends=(
     'python-pyaml'
     'python-urllib3'
     'python-requests'
-)
-optdepends=(
-    'python-pypandoc: full description under setup.py'
+    'python-domain2idna'
 )
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${upstreamName}-${pkgver}.tar.gz"
     "https://raw.githubusercontent.com/funilrys/PyFunceble/master/LICENSE"
 )
 sha256sums=(
-    "5df103d26db9306709444b83662117c24851f7c8df34b122df5c97fb481822c1"
+    "e35d4c026ec29cc3f205667913bb59b14710ed7e0733f2f28d5eb3b88606002d"
     "a6446256d9e2281e96a2279c0cf0d424700a311d9f2ad6e71e1a5bbb9abd5f29"
 )
 
