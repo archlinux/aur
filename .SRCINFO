@@ -5,6 +5,7 @@ pkgbase = sane-git
 	url = http://www.sane-project.org/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL
 	makedepends = texlive-latexextra
 	depends = libtiff>=4.0.0

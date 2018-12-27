@@ -12,7 +12,7 @@ pkgver=20181220.2d14283d
 pkgrel=1
 pkgdesc="Scanner Access Now Easy"
 url="http://www.sane-project.org/"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('libtiff>=4.0.0' 'libgphoto2' 'libjpeg>=8' 'libusbx' 'libcups' 'libieee1284' 'v4l-utils' 'avahi' 'bash' 'net-snmp')
 makedepends=('texlive-latexextra')
