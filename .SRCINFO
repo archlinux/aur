@@ -3,7 +3,7 @@
 pkgbase = pyload
 	pkgdesc = Downloadtool for One-Click-Hoster written in python.
 	pkgver = 0.4.9
-	pkgrel = 17
+	pkgrel = 18
 	url = http://www.pyload.org
 	install = pyload.install
 	arch = any
