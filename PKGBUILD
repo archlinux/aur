@@ -1,9 +1,9 @@
 # Maintainer:  Yigit Dallilar <yigit.dallilar at gmail dot com>
 
 pkgname=ds9
-pkgver=7.6
+pkgver=8.0
 # need the grab a legacy openssl source and build ds9 against it
-_sslver=1.0.2o
+_sslver=1.0.2q
 pkgrel=1
 pkgdesc="SAOImage DS9: Astronomical Data Visualization Application"
 url="http://hea-www.harvard.edu/RD/ds9/"
@@ -21,8 +21,8 @@ source=("https://github.com/SAOImageDS9/SAOImageDS9/archive/v${pkgver}.tar.gz"
         "https://www.openssl.org/source/openssl-${_sslver}.tar.gz"
         "ds9.desktop"
         "ds9.png")
-md5sums=('23efdb3bc5c6c8581c8a52e4a1470e6e'
-         '44279b8557c3247cbe324e2322ecd114'
+md5sums=('5970c5dfd00cadf76d829513a4c515f1'
+         '7563e1ce046cb21948eeb6ba1a0eb71c'
          'f1738e4ec665ae9afd1b65b86e6a07f1'
          '9297d5738f5f462831075c483dc785d5')
 
@@ -42,7 +42,7 @@ build() {
 
     cd ${srcdir}/SAOImageDS9-${pkgver}
     unix/configure
-    make
+    make -j4
 }
 
 package() {
