@@ -1,4 +1,4 @@
-# Maintainer: Darjan Krijan (DarenK) <darjan_krijan@gmx.de>
+# Maintainer: Darjan Krijan (daren) <darjan_krijan@gmx.de>
 
 pkgname=xmltreeedit-bin
 pkgver=0.1.0.32
