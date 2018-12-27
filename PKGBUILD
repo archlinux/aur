@@ -3,7 +3,7 @@
 _gemname=native-package-installer
 pkgname=ruby-$_gemname
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc=native-package-installer\ helps\ to\ install\ native\ packages\ on\ \"gem\ install\"
 arch=(any)
 url=https://github.com/ruby-gnome2/native-package-installer
