@@ -3,7 +3,7 @@
 
 _basename=cmocka
 pkgname=lib32-cmocka
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Elegant unit testing framework for C with support for mock objects'
 url='https://cmocka.org/'
@@ -11,8 +11,8 @@ arch=('i686' 'x86_64')
 license=('Apache')
 depends=('lib32-glibc' 'cmocka')
 makedepends=('cmake')
-source=(https://cmocka.org/files/1.1/cmocka-${pkgver}.tar.{xz,asc})
-sha512sums=('801c4a3e1bb9047241b1cb5a90c1cbdee1b0aff5e3d0a84ec8b2dbaee79274618c24fbe5e9fedbf0b3ee18c6c98b55d93e135d037ac33ab872edc7665af41577'
+source=(https://cmocka.org/files/1.1/cmocka-${pkgver}.tar.{xz,xz.asc})
+sha512sums=('b1a2ce72234256d653eebf95f8744a34525b9027e1ecf6552e1620c83a4bdda8b5674b748cc5fd14abada1e374829e2e7f0bcab0b1c8d6c3b7d9b7ec474b6ed3'
             'SKIP')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 
