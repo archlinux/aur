@@ -9,6 +9,7 @@ arch=(any)
 url=https://github.com/ruby-gnome2/native-package-installer
 license=(LGPL3)
 depends=(ruby)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
