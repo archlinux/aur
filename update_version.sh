@@ -19,7 +19,10 @@ VER=$(FULL=1 bash contrib/semver/version.sh | sed 's/^v//')
 
 # Replace version in PKGBUILD
 popd
-sed -i "s/^pkgver=.*$/pkgver=${VER}/" PKGBUILD
+sed -i \
+	-e "s/^pkgver=.*$/pkgver=${VER}/" \
+	-e 's/pkgrel=.*/pkgrel=1/' \
+	PKGBUILD
 
 # Check for real updates
 if (git diff --exit-code PKGBUILD); then
