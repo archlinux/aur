@@ -1,6 +1,6 @@
 pkgbase = ufetch-git
 	pkgdesc = Info script for minimal *nix systems.
-	pkgver = r77.abb49b6
+	pkgver = r113.4df8cf8
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.com/jschx/ufetch
