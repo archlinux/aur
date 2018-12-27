@@ -12,6 +12,7 @@ license=('GPL')
 depends=('libusb' 'python')
 makedepends=('cmake')
 optdepends=('python-pyqt5: for the graphical qrazercfg tool')
+provides=('razerd')
 backup=('etc/razer.conf')
 source=("http://bues.ch/razercfg/razercfg-$pkgver.tar.bz2"{,.asc}
         'tmpfile.conf')
