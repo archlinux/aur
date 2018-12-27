@@ -19,7 +19,7 @@ pkgbase = butt
 	depends = libsamplerate
 	optdepends = icecast
 	source = http://sourceforge.net/projects/butt/files/butt/butt-0.1.17/butt-0.1.17.tar.gz
-	sha256sums = SKIP
+	sha256sums = afe9596b1d9ef38d2fde1f3255e5a3a12b206c73c8e6601e37cccb07e67ae33d
 
 pkgname = butt
 

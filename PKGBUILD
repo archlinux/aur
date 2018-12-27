@@ -12,7 +12,7 @@ url="http://butt.sourceforge.net/"
 depends=('fltk' 'libpng12' 'portaudio' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate')
 optdepends=('icecast')
 source=("http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('afe9596b1d9ef38d2fde1f3255e5a3a12b206c73c8e6601e37cccb07e67ae33d')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -25,8 +25,7 @@ package() {
 	make DESTDIR="$pkgdir/" install
 
 	# Desktop file
-	# Category "Sound" is invalid, replace it with "AudioVideo;Audio"
-	desktop-file-install --remove-category="Sound" --add-category="AudioVideo;Audio" --dir="$pkgdir/usr/share/applications" "icons/$pkgname.desktop"
+	install -D -m644 "usr/share/applications/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
 	# Icons
 	for size in 16 22 24 32 48 64 96 128 256 512; do
