@@ -1,0 +1,16 @@
+pkgbase = kim-api
+	pkgdesc = Online framework for reliable, reproducible and portable molecular simulations
+	pkgver = 2.0.0_beta.3
+	pkgrel = 1
+	url = https://openkim.org
+	install = kim-api.install
+	arch = i686
+	arch = x86_64
+	license = CDDL
+	makedepends = gcc-libs
+	depends = bash
+	source = https://s3.openkim.org/kim-api/kim-api-v2-2.0.0-beta.3.txz
+	md5sums = 67c103a00e84865848d004837262c76e
+
+pkgname = kim-api
+
