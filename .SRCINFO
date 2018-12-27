@@ -3,7 +3,6 @@ pkgbase = publii
 	pkgver = 0.32.4
 	pkgrel = 1
 	url = https://github.com/GetPublii/Publii
-	arch = i686
 	arch = x86_64
 	license = MIT
 	source = https://cdn.getpublii.com/Publii_0.32.4.rpm
