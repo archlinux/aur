@@ -1,17 +1,23 @@
 pkgbase = python-psycopg2-binary
 	pkgdesc = Python-PostgreSQL Database Adapter
 	pkgver = 2.7.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://initd.org/psycopg/
 	arch = x86_64
 	license = LGPL3
 	license = ZPL
 	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	depends = postgresql-libs
-	depends = python
 	conflicts = python-psycopg2
 	source = https://pypi.python.org/packages/source/p/psycopg2-binary/psycopg2-binary-2.7.6.1.tar.gz
 	sha256sums = 8d517e8fda2efebca27c2018e14c90ed7dc3f04d7098b3da2912e62a1a5585fe
 
 pkgname = python-psycopg2-binary
+	depends = postgresql-libs
+	depends = python
+
+pkgname = python2-psycopg2-binary
+	depends = postgresql-libs
+	depends = python2
 
