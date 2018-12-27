@@ -4,7 +4,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2018.1219.0
+pkgver=2018.1227.1
 pkgrel=1
 
 dotnet_version=2.2
@@ -50,12 +50,13 @@ build()
 {
     cd "osu-$pkgver"
 
-    dotnet publish osu.Desktop                      \
-        --framework     netcoreapp$dotnet_version   \
-        --configuration Release                     \
-        --runtime       linux-x64                   \
-        --self-contained false                      \
-        --output        ./bin/Release/netcoreapp$dotnet_version/linux-x64
+    dotnet publish          osu.Desktop                 \
+        --framework         netcoreapp$dotnet_version   \
+        --configuration     Release                     \
+        --runtime           linux-x64                   \
+        --self-contained    false                       \
+        /property:Version=$pkgver                       \
+        --output            ./bin/Release/netcoreapp$dotnet_version/linux-x64
 }
 
 package()
