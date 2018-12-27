@@ -1,10 +1,11 @@
 pkgbase = butt
 	pkgdesc = butt (broadcast using this tool) is an easy to use, multi OS streaming tool
-	pkgver = 0.1.16
-	pkgrel = 3
+	pkgver = 0.1.17
+	pkgrel = 1
 	url = http://butt.sourceforge.net/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL2
 	depends = fltk
 	depends = libpng12
@@ -17,10 +18,8 @@ pkgbase = butt
 	depends = opus
 	depends = libsamplerate
 	optdepends = icecast
-	source = http://sourceforge.net/projects/butt/files/butt/butt-0.1.16/butt-0.1.16.tar.gz
-	source = butt-gcc6.patch
-	sha256sums = 50feef4fe051484a2eb897b0175cf5f7b3f94f395c34c84d917b1a41c6fb6897
-	sha256sums = a420be932c97ee949c18428230d8f3a1aabada07c06cd8109757aef68910b5ab
+	source = http://sourceforge.net/projects/butt/files/butt/butt-0.1.17/butt-0.1.17.tar.gz
+	sha256sums = SKIP
 
 pkgname = butt
 

@@ -3,24 +3,16 @@
 # Contributor: Kosava <kosava@gmail.com>
 
 pkgname=butt
-pkgver=0.1.16
-pkgrel=3
+pkgver=0.1.17
+pkgrel=1
 pkgdesc="butt (broadcast using this tool) is an easy to use, multi OS streaming tool"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL2')
 url="http://butt.sourceforge.net/"
 depends=('fltk' 'libpng12' 'portaudio' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate')
 optdepends=('icecast')
-source=("http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
-        "butt-gcc6.patch")
-sha256sums=('50feef4fe051484a2eb897b0175cf5f7b3f94f395c34c84d917b1a41c6fb6897'
-            'a420be932c97ee949c18428230d8f3a1aabada07c06cd8109757aef68910b5ab')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -Np1 -i "$srcdir/butt-gcc6.patch"
-}
-
+source=("http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
