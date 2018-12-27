@@ -1,15 +1,16 @@
-# Mantainer: Luis Aranguren <pizzaman@hotmail.com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
 # PKGBUILD Based on : python-aiohttp/PKGBUILD 
 
 _pkgname=python-aiohttp_socks
 pkgname=python-aiohttp_socks
-pkgver=20181102
+pkgver=20181214
 pkgrel=1
 pkgdesc='SOCKS proxy connector for aiohttp'
 url='https://github.com/romis2012/aiohttp-socks'
 arch=('x86_64')
 license=('Apache')
 depends=('python-aiohttp')
+makedepends=('python-pytest')
 source=(${pkgname}::"git+https://github.com/romis2012/aiohttp-socks.git")
 sha512sums=('SKIP')
 
