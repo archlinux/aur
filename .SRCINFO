@@ -1,10 +1,11 @@
 pkgbase = pymetar
 	pkgdesc = Downloads the weather report for a given station ID and decodes it
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.schwarzvogel.de/software-pymetar.shtml
 	arch = any
 	license = GPL2
+	makedepends = python-setuptools
 	depends = python
 	source = http://www.schwarzvogel.de/pkgs/pymetar-1.0.tar.gz
 	md5sums = 1b81f632b38a16e01f8969f630dd403a
