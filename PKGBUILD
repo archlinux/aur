@@ -1,7 +1,7 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname=python2-sentry_sdk
 _pkgname=sentry-sdk
-pkgver=0.6.2
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 optdepends=('python2-flask')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/sentry-sdk-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/getsentry/sentry-python/master/LICENSE")
-md5sums=('78642322818c1ce47e80938fe1f40b5f'
+md5sums=('ff4696ea62904211e34e71b9483d281d'
          '0c79f8d3c91fc847350efd28bfe0a341')
 
 build() {
