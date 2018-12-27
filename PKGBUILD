@@ -2,8 +2,8 @@
 # Contributor: Oleg Rakhmanov <oleg [at] archlinuxarm [dot] org>
 
 pkgname=opentracker
-pkgver=2016.10.02
-pkgrel=4
+pkgver=2018.05.26
+pkgrel=1
 pkgdesc="A free and open torrent tracker"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://erdgeist.org/arts/software/opentracker/"
