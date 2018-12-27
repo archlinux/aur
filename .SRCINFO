@@ -1,6 +1,6 @@
 pkgbase = feedreader-git
 	pkgdesc = FeedReader is a modern desktop application designed to complement existing web-based RSS accounts.
-	pkgver = 2.6.1.r2784
+	pkgver = 2.6.1.r2790
 	pkgrel = 1
 	url = https://github.com/jangernert/FeedReader
 	arch = i686
