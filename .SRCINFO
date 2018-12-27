@@ -1,4 +1,4 @@
-pkgbase = pyload-git
+pkgbase = pyload
 	pkgdesc = Downloadtool for One-Click-Hoster written in python. Latest stable branch
 	pkgver = v0.4.9.r4238.g24782b8c0
 	pkgrel = 1
@@ -42,5 +42,5 @@ pkgbase = pyload-git
 	md5sums = 6fc2f343d2f324a66745524bbab93e5c
 	md5sums = 806a22a74e8331dffcb8538182e4df2c
 
-pkgname = pyload-git
+pkgname = pyload
 
