@@ -2,10 +2,10 @@
 
 _pkgname=python-omemo
 _pkgname2=python2-omemo
-_tag=v0.9.0-beta
+_tag=v0.10.0-beta
 pkgbase=python-omemo-syndace
 pkgname=("python-omemo-syndace" "python2-omemo-syndace")
-pkgver=0.9.0.beta.4.gd7814b6
+pkgver=0.10.0.beta
 pkgrel=1
 pkgdesc="An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol"
 url="https://github.com/Syndace/${_pkgname}"
