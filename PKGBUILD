@@ -2,14 +2,14 @@
 
 pkgname=mapton
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Some kind of map application"
 arch=(any)
 url="https://mapton.org"
-license=('AGPL')
+license=('Apache')
 source=("$url/files/$pkgname-$pkgver-SNAPSHOT.zip"
         mapton.desktop)
-sha256sums=('3ef19131c01fba6d08ceb79ad468aaaf936607ac7b739acc9480917201b753ff'
+sha256sums=('dc5dd79257768765bc7b28a3cf3084d78a94f797c7f1defeecde1c3bb264abfc'
             'a51a83f390dc75fd8164f94954dc2a28fa7efe8e2274c9ded45412a2bc2bd169')
 
 package() {
