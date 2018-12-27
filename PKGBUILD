@@ -1,14 +1,16 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
 _oomox_ver=1.9.0.2
-_numix_ver=1.9.3
-#_materia_ver=20181125
+_numix_theme_ver=1.9.3
+#_materia_theme_ver=20181125
 _materia_cmt=4f222c08826835346d8d160092868e62b444a1a0
-_arc_cmt=88d02754d11d174a7baf3db7beb857f28dac55ee
-_archdroid_ver=1.0.2
-_gnome_colors_ver=5.5.4
+_arc_theme_cmt=88d02754d11d174a7baf3db7beb857f28dac55ee
+_archdroid_icons_ver=1.0.2
+_gnome_colors_icons_ver=5.5.4
 _oomoxify_ver=1.1
 _base16_cmt=d022b9daa5c233a08a8d3b94fd534a3041e3a8c1
+_numix_icons_cmt=bd40be85955dcf20b15ce03e2baf0bf3dba313cb
+_numix_folders_icons_cmt=24e5f6c6603e7f798553d2f24a00de107713c333
 
 pkgname=oomox
 pkgver=${_oomox_ver}
@@ -55,16 +57,18 @@ options=(
 )
 provides=('oomox')
 conflicts=('oomox-git')
-    # "materia-theme-v${_materia_ver}.tar.gz::https://github.com/nana-4/materia-theme/archive/v${_materia_ver}.tar.gz"
+    # "materia-theme-v${_materia_theme_ver}.tar.gz::https://github.com/nana-4/materia-theme/archive/v${_materia_theme_ver}.tar.gz"
 source=(
     "oomox-${_oomox_ver}.tar.gz::https://github.com/themix-project/oomox/archive/${_oomox_ver}.tar.gz"
-    "oomox-gtk-theme-${_numix_ver}.tar.gz::https://github.com/themix-project/oomox-gtk-theme/archive/${_numix_ver}.tar.gz"
+    "oomox-gtk-theme-${_numix_theme_ver}.tar.gz::https://github.com/themix-project/oomox-gtk-theme/archive/${_numix_theme_ver}.tar.gz"
     "materia-theme-${_materia_cmt}.tar.gz::https://github.com/nana-4/materia-theme/archive/${_materia_cmt}.tar.gz"
-    "arc-theme-${_arc_cmt}.tar.gz::https://github.com/NicoHood/arc-theme/archive/${_arc_cmt}.tar.gz"
-    "archdroid-icon-theme-${_archdroid_ver}.tar.gz::https://github.com/themix-project/oomox-archdroid-icon-theme/archive/${_archdroid_ver}.tar.gz"
-    "gnome-colors-icon-theme-${_gnome_colors_ver}.tar.gz::https://github.com/themix-project/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_ver}.tar.gz"
+    "arc-theme-${_arc_theme_cmt}.tar.gz::https://github.com/NicoHood/arc-theme/archive/${_arc_theme_cmt}.tar.gz"
+    "archdroid-icon-theme-${_archdroid_icons_ver}.tar.gz::https://github.com/themix-project/oomox-archdroid-icon-theme/archive/${_archdroid_icons_ver}.tar.gz"
+    "gnome-colors-icon-theme-${_gnome_colors_icons_ver}.tar.gz::https://github.com/themix-project/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_icons_ver}.tar.gz"
     "oomoxify-${_oomoxify_ver}.tar.gz::https://github.com/themix-project/oomoxify/archive/${_oomoxify_ver}.tar.gz"
     "base16-builder-${_base16_cmt}.tar.gz::https://github.com/base16-builder/base16-builder/archive/${_base16_cmt}.tar.gz"
+    "numix-icon-theme-${_numix_icons_cmt}.tar.gz::https://github.com/numixproject/numix-icon-theme/archive/${_numix_icons_cmt}.tar.gz"
+    "numix-folders-${_numix_folders_icons_cmt}.tar.gz::https://github.com/numixproject/numix-folders/archive/${_numix_folders_icons_cmt}.tar.gz"
 )
 md5sums=('acf0604107bffb048a74e14e1f4b1f88'
          'd237f5093bffad3be18b90b344f78503'
@@ -73,18 +77,22 @@ md5sums=('acf0604107bffb048a74e14e1f4b1f88'
          'cb669130685dcbf03a8f7f5738c71dc6'
          'b5bc6ce914908c1e8f88180889b427e3'
          'd0c0f22c082cfd7c57148e7da809ddfb'
-         '38fc51a55c798032266c03ee82461119')
+         '38fc51a55c798032266c03ee82461119'
+         'a291f15685641f5be20493e6775d54c5'
+         '3fcb07cefe43a6a2fe4d977f124624ec')
 
 prepare() {
     cd ${srcdir}
-    cp -pr "${pkgname}-gtk-theme-${_numix_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_oomox/gtk-theme"
-    #cp -pr "materia-theme-${_materia_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
+    cp -pr "${pkgname}-gtk-theme-${_numix_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_oomox/gtk-theme"
+    #cp -pr "materia-theme-${_materia_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
     cp -pr "materia-theme-${_materia_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
-    cp -pr "arc-theme-${_arc_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/theme_arc/arc-theme"
-    cp -pr "archdroid-icon-theme-${_archdroid_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_archdroid/archdroid-icon-theme"
-    cp -pr "gnome-colors-icon-theme-${_gnome_colors_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_gnomecolors/gnome-colors-icon-theme"
+    cp -pr "arc-theme-${_arc_theme_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/theme_arc/arc-theme"
+    cp -pr "archdroid-icon-theme-${_archdroid_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_archdroid/archdroid-icon-theme"
+    cp -pr "gnome-colors-icon-theme-${_gnome_colors_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_gnomecolors/gnome-colors-icon-theme"
     cp -pr "oomoxify-${_oomoxify_ver}"/* "${pkgname}-${_oomox_ver}/plugins/oomoxify"
     cp -pr "base16-builder-${_base16_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/import_base16/base16-data"
+    cp -pr "numix-icon-theme-${_numix_icons_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/icons_numix/numix-icon-theme"
+    cp -pr "numix-folders-${_numix_folders_icons_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/icons_numix/numix-folders"
 }
 
 package() {
