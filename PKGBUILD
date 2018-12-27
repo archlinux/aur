@@ -2,7 +2,7 @@
 # Contributor: Sebba <sebba at cock dot li>
 _pkgname='transgui'
 pkgname='transmission-remote-gui-bin'
-pkgver='5.15.4'
+pkgver='5.16.0'
 pkgrel=1
 pkgdesc='Cross platform remote GUI for the Transmission daemon'
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ source=("${_pkgname}.desktop")
 source_i686=("https://github.com/leonsoft-kras/${pkgname%%-bin}/releases/download/v$pkgver/$_pkgname-$pkgver-i686-linux.txz")
 source_x86_64=("https://github.com/leonsoft-kras/${pkgname%%-bin}/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux.txz")
 sha256sums=('e7ca207f88fd98423b45476370c6899cacb8f0d9a0361e231a2e1b32ce36be51')
-sha256sums_i686=('0d2834dfbd11ae4d69409ed05e9298a6804108589d9ed198b2d32dd49c989dd2')
-sha256sums_x86_64=('cb227e9cb87c56e321c38a6b3e34831818e44582ef10f77914a5971cbc7a893a')
+sha256sums_i686=('75aa8a5c22ab4bf1046f2fe1e382b7637e732adfe89ba8b2713945f4343bc1de')
+sha256sums_x86_64=('0cf710c8a623052b9c3a1a363a1cba02e1d719c20551e870b4c18025532b2267')
 
 package() {
   cd "${srcdir}"
