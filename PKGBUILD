@@ -4,7 +4,7 @@ pkgname=ds9
 pkgver=8.0
 # need the grab a legacy openssl source and build ds9 against it
 _sslver=1.0.2q
-pkgrel=1
+pkgrel=2
 pkgdesc="SAOImage DS9: Astronomical Data Visualization Application"
 url="http://hea-www.harvard.edu/RD/ds9/"
 arch=('x86_64')
