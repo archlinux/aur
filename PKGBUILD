@@ -1,7 +1,7 @@
 # Maintainer: nightuser <nightuser at ya dot ru>
 
 pkgname=plata-theme
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A Gtk+ theme based on Material Design Refresh'
 arch=('any')
@@ -9,7 +9,6 @@ url='https://gitlab.com/tista500/plata-theme'
 license=('CCPL' 'GPL2')
 makedepends=('git' 'gnome-shell' 'inkscape' 'libxml2' 'parallel' 'sassc')
 optdepends=('gtk-engine-murrine: for gtk2 themes'
-            'noto-fonts: Recommended font'
             'ttf-roboto: Recommended font')
 source=("git+https://gitlab.com/tista500/plata-theme.git#tag=${pkgver}")
 sha256sums=('SKIP')
