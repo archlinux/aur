@@ -1,0 +1,8 @@
+--- a/borgmatic.service	2018-12-25 23:01:08.000000000 -0600
++++ b/borgmatic.service	2018-12-26 16:21:13.692465228 -0600
+@@ -3,4 +3,4 @@
+
+ [Service]
+ Type=oneshot
+-ExecStart=/usr/local/bin/borgmatic
++ExecStart=/usr/bin/borgmatic

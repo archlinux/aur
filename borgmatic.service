@@ -1,6 +1,0 @@
-[Unit]
-Description=borgmatic backup
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/borgmatic

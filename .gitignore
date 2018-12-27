@@ -6,4 +6,4 @@
 !.gitignore
 !PKGBUILD
 !borgmatic.install
-!borgmatic.service
+!borgmatic.service.patch
