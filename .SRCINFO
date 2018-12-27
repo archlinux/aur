@@ -1,13 +1,13 @@
 pkgbase = huawei-stat-e220
 	pkgdesc = HUAWEI E220 statistics interface
 	pkgver = 0.1
-	pkgrel = 3
-	url = http://oozie.fm.interia.pl/pro/huawei-e220/
+	pkgrel = 4
+	url = http://web.archive.org/web/20140830121640/http://oozie.fm.interia.pl/pro/huawei-e220/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libusb
-	source = http://oozie.fm.interia.pl/src/he220stat.tar.bz2
+	source = http://web.archive.org/web/20150802135657/http://oozie.fm.interiowo.pl/src/he220stat.tar.bz2
 	md5sums = aa800f85183dc1990102846773fbefd9
 
 pkgname = huawei-stat-e220
