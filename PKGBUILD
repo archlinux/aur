@@ -1,9 +1,10 @@
+# Maintainer: Szymon Scholz
 pkgname=python2-rstex
 _realname=rstex
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="An extension of docutils' rst2latex with inline math, equations, references, and raw latex"
-url="http://muralab.org/rstex"
+url="https://pypi.org/project/rstex/"
 depends=('python2')
 license=('BSD License')
 arch=('any')

@@ -1,8 +1,8 @@
 pkgbase = python2-rstex
 	pkgdesc = An extension of docutils' rst2latex with inline math, equations, references, and raw latex
 	pkgver = 0.12
-	pkgrel = 1
-	url = http://muralab.org/rstex
+	pkgrel = 2
+	url = https://pypi.org/project/rstex/
 	arch = any
 	license = BSD License
 	depends = python2
