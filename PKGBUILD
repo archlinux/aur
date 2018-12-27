@@ -1,10 +1,10 @@
-LANG=C
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
+epoch=1
 pkgrel=1
-pkgver=6.0.0r26279.42437d6e4096
+pkgver=5.0.1r26304.987154825e7a
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -23,7 +23,8 @@ conflicts=('octave')
 provides=("octave=$pkgver")
 options=('!emptydirs')
 source=(hg+https://hg.savannah.gnu.org/hgweb/octave git://git.sv.gnu.org/gnulib)
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP'
+         'SKIP')
 _hgrepo=octave
 
 pkgver() {
