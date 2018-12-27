@@ -1,7 +1,7 @@
 # Maintainer: Jordan Knott <jordan at jordanthedev dot com>
 # Contributor: Jordan Knott <jordan at jordanthedev dot com>
 pkgname=chrono
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A time tracking tool made with love'
 arch=('x86_64')
