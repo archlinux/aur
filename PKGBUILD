@@ -17,12 +17,11 @@ license=('GPL2')
 makedepends=('git' 'python')
 depends=('gcc-libs' 'libnl' 'openssl' 'sqlite' 'iw' 'ethtool' 'net-tools')
 optdepends=('python: dump-join, airgraph-ng, versuck-ng, airdrop-ng')
+provides=("${_pkgname}" 'aircrack-ng-scripts')
+conflicts=("${_pkgname}" 'aircrack-ng-scripts')
+replaces=('aircrack-ng-svn' 'aircrack-ng-scripts')
 source=("git://github.com/aircrack-ng/aircrack-ng.git")
 sha256sums=('SKIP')
-
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-replaces=('aircrack-ng-svn')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -38,8 +37,6 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	make \
-		DESTDIR="${pkgdir}" \
-		install
+	make DESTDIR="${pkgdir}" install
 }
 

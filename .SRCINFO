@@ -18,8 +18,11 @@ pkgbase = aircrack-ng-git
 	depends = net-tools
 	optdepends = python: dump-join, airgraph-ng, versuck-ng, airdrop-ng
 	provides = aircrack-ng
+	provides = aircrack-ng-scripts
 	conflicts = aircrack-ng
+	conflicts = aircrack-ng-scripts
 	replaces = aircrack-ng-svn
+	replaces = aircrack-ng-scripts
 	source = git://github.com/aircrack-ng/aircrack-ng.git
 	sha256sums = SKIP
 
