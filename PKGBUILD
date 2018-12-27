@@ -1,8 +1,8 @@
-# Maintainer: Andrew Chen <andrew.chuanye.chen@gmail.com>
+# Maintainer: Andrew Chen <xor.tux@gmail.com>
 
 pkgbase=python-cstruct
 pkgname=('python-cstruct' 'python2-cstruct')
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="C-style structs for Python"
 url="https://github.com/andreax79/python-cstruct"
@@ -10,7 +10,7 @@ arch=('any')
 license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/c/cstruct/cstruct-$pkgver.tar.gz")
-sha256sums=('42c6239336fe2d7119941ac3f9ca360e07148d715b742231e3dcc3a5ddd76492')
+sha256sums=('e11684fd5e8b9a44834f96dc88293cd7cf5cb393bddee4a9f83ef3f9824bb7af')
 
 prepare() {
   cp -r cstruct-${pkgver} python2-cstruct-${pkgver}
