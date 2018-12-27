@@ -2,13 +2,13 @@
 
 pkgname=playbluray-makemkv
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Blu-ray UHD Playback Script with makemkv and mpv"
 arch=('any')
-url="http://www.audio-linux.com"
+url="https://www.audio-linux.com"
 license=('GPL')
 depends=('makemkv' 'mpv' 'curl')
-source=("http://www.tophifi.it/ftp/packages/playbluray.tar.gz")
+source=("https://www.audio-linux.com/ftp/packages/playbluray.tar.gz")
 sha256sums=('SKIP')
 
 package() {
