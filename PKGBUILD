@@ -1,4 +1,4 @@
-# Maintainer: Darjan Krijan (DarenK) <darjan_krijan@gmx.de>
+# Maintainer: Darjan Krijan (daren) <darjan_krijan@gmx.de>
 
 pkgname=hdl-dump-git
 _pkgbasename=hdl-dump
