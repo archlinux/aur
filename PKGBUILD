@@ -16,6 +16,7 @@ source=("https://github.com/optyfr/${_gitname}/releases/download/${pkgver}/${_gi
 	"${_gitname}.desktop" 
 	"${_gitname}.png"
 	"${_gitname}.sh")
+options=(!strip)
 
 package() {
 	install -d -m755 "${pkgdir}/usr/share/java/${pkgname}/"
