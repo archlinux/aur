@@ -1,8 +1,9 @@
 # Maintainer: Davide Depau <davide@depau.eu>
+# Maintainer: Raffaele Di Campli <dcdrj.pub@gmail.com>
 
 _pkgname=polibeepsync
 pkgname="${_pkgname}"
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Sync Politecnico di Milano's BeeP files with your PC"
 arch=('any')
