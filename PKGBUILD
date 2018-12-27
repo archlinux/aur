@@ -2,22 +2,22 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
-pkgver=2018.3
-_gromacsver=2018.3
-_plumedver=2.4.3
+pkgver=2018.4
+_gromacsver=2018.4
+_plumedver=2.5.0
 pkgrel=1
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('i686' 'x86_64')
-depends=('lapack' 'zlib' plumed=${_plumedver})
+depends=('lapack' 'zlib' "plumed>=${_plumedver}")
 optdepends=('cuda: Nvidia GPU support'
             'opencl-mesa: OpenCL support for AMD GPU'
 	    'opencl-nvidia: OpenCL support for Nvidia GPU')
 makedepends=('cmake' 'libxml2' 'hwloc' 'gcc7')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha1sums=('f17d57b031d37f69981573dd4c70203d52863b61')
+sha1sums=('2ee68c3ef3176991238bb36445de0f48c34af78b')
 
 # Comment the following lines if no gromacs with CUDA support is needed 
 # In order to use CUDA 10 we need to use gcc7.
