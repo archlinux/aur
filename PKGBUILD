@@ -1,10 +1,10 @@
-# Maintainer: Einhard Leichtfuß <archer@respiranto.de>
+# Maintainer: Einhard Leichtfuß <alguien@respiranto.de>
 # Contributor: Enrico Morelli <morelli@cerm.unifi.it>
 # Contributor: Andrew Engelbrecht <sudoman@ninthfloor.org>
 pkgname=dict-wn
 pkgver=3.1
 _debver=3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="WordNet for dictd et al."
 arch=('any')
 url="https://wordnet.princeton.edu/"
@@ -23,26 +23,27 @@ sha512sums=('16dca17a87026d8a0b7b4758219cd21a869c3ef3da23ce7875924546f2eacac4c2f
 
 prepare()
 {
-	cp -rf dict/* "WordNet-${_debver}/dict/"
+	cd WordNet-${_debver}
 
-	cd "WordNet-${_debver}"
+	# Use the new data.
+	cp -rf ../dict/. dict/
 
 	# Apparently, the naming conventions changed.
 	# Use the old ones.
-	mv -f "dict/dbfiles/verb.Framestext" "dict/frames.vrb"
+	mv -f dict/dbfiles/verb.Framestext dict/frames.vrb
 
 	# Pretend old version.
-	mv -f "dict/log.grind."{"${pkgver}","${_debver}"}
+	mv -f dict/log.grind.{"${pkgver}","${_debver}"}
 
 	# Use python2, pass the url and the name with the new version.
-	sed -i 's/python wordnet_structures.py/python2 wordnet_structures.py --wn_url="http:\/\/wordnet\.princeton.edu" --db_desc_short="     WordNet \(r\) '"${pkgver}"' \(2011\)"/g' contrib/wordnet_structures/Makefile.in
+	sed -Ei 's`python (wordnet_structures.py)`python2 \1 --wn_url="https://wordnet.princeton.edu" --db_desc_short="WordNet (r) '"${pkgver}"' (2011)"`' contrib/wordnet_structures/Makefile.in
 
 	# Tcl_Interp structure does by default not contain result.
-	sed -i 's/^#include <tcl.h>$/#define USE_INTERP_RESULT\n#include <tcl.h>/' src/stubs.c
+	sed -Ei '/^#include <tcl.h>$/ i #define USE_INTERP_RESULT' src/stubs.c
 }
 
 build() {
-	cd "WordNet-${_debver}"
+	cd WordNet-${_debver}
 	./configure
 
 	# Builiding fails with -jN where N>1.
@@ -50,15 +51,17 @@ build() {
 }
 
 package() {
-	cd "WordNet-${_debver}"
-	mkdir -p "$pkgdir/usr/share/dictd/"
-	cp contrib/wordnet_structures/wn.{dict.dz,index} "$pkgdir/usr/share/dictd/"
-	
-	install -m 0755 -d "${pkgdir}/usr/share/doc/${pkgname}"
+	cd WordNet-${_debver}
+
+	install -m 0755 -d "${pkgdir}/usr/share/dictd"
+	install -m 0644 -t "${pkgdir}/usr/share/dictd/" \
+		contrib/wordnet_structures/wn.{dict.dz,index}
 
 	# Note, that the documentation will be for the old version.
-	install -m 0644 -t "${pkgdir}/usr/share/doc/${pkgname}/" AUTHORS COPYING NEWS README
-	
-	mkdir -p "${pkgdir}/usr/share/licenses/dict-wn"
+	install -m 0755 -d "${pkgdir}/usr/share/doc/${pkgname}"
+	install -m 0644 -t "${pkgdir}/usr/share/doc/${pkgname}/" \
+		AUTHORS COPYING NEWS README
+
+	install -m 0755 -d "${pkgdir}/usr/share/licenses/dict-wn"
 	ln -s /usr/share/doc/dict-wn/COPYING "${pkgdir}/usr/share/licenses/dict-wn"
 }
