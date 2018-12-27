@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.5.r0.g934b744f65
+pkgver=8.6.beta0.r0.g2639857771
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -43,7 +43,6 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         fes02.patch
         sagemath-threejs.patch
         sagemath-cremona.patch
-        sagemath-gap-4.10.patch
         sagemath-sphinx-1.8.patch
         sagemath-networkx-2.2.patch
         sagemath-cypari2.patch
@@ -58,9 +57,8 @@ sha256sums=('SKIP'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             'f6b48abf34f64ea3fc092b0f0179e89633f7d3ecc0d62c2acacbfa1217751d63'
             '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
-            '224f8d1db783d7ae25408912c4891687d6a8a1dacc8c5b3a00b725a28d951b6c'
             '22f5e44a42c8276025b8512f45cac1c36d576c29c7fd9d36fde8b19ff87867d8'
-            'c19afd209d1f0caf072a43e0f6447c61cae8cf1583f3f89e27c48c8302542c26'
+            '6ff08c4cdf468179618dd2d5428bcb8575308bc69dab2550c277d0beb2419f4f'
             '1677bcaa3fe19bf978b6ffaae7b64b7ec32df63fa3d0e28b179cfa831fcfa896'
             '482887fe43d89cef3270e89300ab9e2238fa74cd5b7c875688b68fb1b10c4fdf'
             '87bf055de0a233e9599c59a86f64b4502be31fda53ba0a426f94f25f17ca76df')
@@ -98,8 +96,6 @@ prepare(){
   patch -p1 -i ../sagemath-networkx-2.2.patch
 # Fix build with cypari 2.0 https://trac.sagemath.org/ticket/26442
   patch -p1 -i ../sagemath-cypari2.patch
-# Build with GAP 4.10 https://trac.sagemath.org/ticket/22626
-  patch -p1 -i ../sagemath-gap-4.10.patch
 # Fixes for singular 4.1.1p4 https://trac.sagemath.org/ticket/25993
   patch -p1 -i ../sagemath-singular-4.1.1.p4.patch
 # Fix SIGFPE crashes with ecl 16.1.3 https://trac.sagemath.org/ticket/22191
