@@ -6,7 +6,7 @@
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=3.30.2+4
-pkgrel=3
+pkgrel=4
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspe
 optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration')
 groups=(gnome)
-provides=(gnome-shell)
+provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 _commit=2a36bf52cb61ac1a015bc2150807a8d47c7155e4 # tags/3.30.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
