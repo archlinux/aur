@@ -1,0 +1,12 @@
+pkgbase = fastotv
+	pkgdesc = FastoTV - cross-platform solution for watching tv
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/fastogt/fastotv
+	arch = x86_64
+	license = GPLv3
+	source = https://fastotv.com/downloads/linux/fastotv-0.9.4-x86_64.rpm
+	sha256sums = 44668e5da60c345fb9cb56a3cfce3042b3a35d96c6ac41eeaa0c41f9a1f0b7ba
+
+pkgname = fastotv
+
