@@ -1,7 +1,7 @@
 pkgbase = netease-musicbox
 	pkgdesc = A sexy command line interface musicbox for NetEase based on Python
 	pkgver = 0.2.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/darknessomi/musicbox
 	install = netease-musicbox.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = netease-musicbox
 	depends = python-pycryptodomex
 	depends = python-requests
 	depends = python-future
+	depends = python-requests-cache
 	optdepends = aria2: music caching
 	optdepends = libnotify: notifications
 	optdepends = qt5-base: lyrics support
@@ -20,12 +21,10 @@ pkgbase = netease-musicbox
 	conflicts = netease-musicbox
 	source = musicbox-0.2.5.4.tar.gz::https://github.com/darknessomi/musicbox/archive/0.2.5.4.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/darknessomi/musicbox/master/LICENSE.txt
-	source = 0001Replace_pyqt4_to_pyqt5_as_depends.patch
-	source = 0002Remove_python_requests_cache_as_depends.patch
+	source = 0001-Replace_pyqt4_to_pyqt5_as_depends.patch
 	sha256sums = 4fdfd9061dfdec181736b56166a11bfe27ae9c4011f9c266b57fdfbca232afa3
 	sha256sums = 50efc98142cfffe413d73c87c91f2687dfb774217af923f03dfdc8426c9d9552
-	sha256sums = c910c12c5ffe23b3cc582fb718017c8dee5ef4e9dacfb1944f35266a79f8bbee
-	sha256sums = 24b74424cd624742e35631fafd24ad6fd6527807728deeb1cc0a81a1415370b7
+	sha256sums = 4ce77308982339ef8f90ac34e3d9e0f1b2894d4d36a09a3071919bbc39b6dde5
 
 pkgname = netease-musicbox
 
