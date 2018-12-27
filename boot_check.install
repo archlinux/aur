@@ -1,0 +1,19 @@
+post_install() {
+  cat << EOF
+Boot_check.py:
+
+This script checks to see if anyone powered up your hard disk without booting
+the operating system. This would be done if it was temporarily removed and
+accessed via an external reader, or booted off a LiveCD/USB Stick.
+
+This could be an indicator of a forensic copy of the hard disk, tampering,
+and/or an evil maid attack. There may be an innocent explination for this, such
+as yourself running a live or alternative OS, but it is not normal operation.
+
+To install:
+
+systemctl enable boot_check
+boot_check.py
+
+EOF
+}
