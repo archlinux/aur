@@ -2,8 +2,8 @@
 # Contributor: Jordan Knott <jordan at jordanthedev dot com>
 _pkgname=chrono
 pkgname="${_pkgname}-git"
-pkgver=v1.0.1
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc='A time tracking tool made with love'
 arch=('x86_64')
 url="https://github.com/gochrono/${_pkgname}"

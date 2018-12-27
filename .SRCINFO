@@ -1,7 +1,7 @@
 pkgbase = chrono-git
 	pkgdesc = A time tracking tool made with love
-	pkgver = v1.0.1
-	pkgrel = 1
+	pkgver = 1.0.1
+	pkgrel = 2
 	url = https://github.com/gochrono/chrono
 	arch = x86_64
 	license = MIT
