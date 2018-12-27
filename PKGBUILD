@@ -2,7 +2,7 @@
 # Contributor: goll <adrian.goll+aur[at]gmail>
 
 pkgname=nocache
-pkgver=1.0.r7.ge4e77a4
+pkgver=1.1
 pkgrel=1
 pkgdesc="minimize caching effects"
 arch=(i686 x86_64)

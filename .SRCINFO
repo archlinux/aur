@@ -1,6 +1,6 @@
 pkgbase = nocache
 	pkgdesc = minimize caching effects
-	pkgver = 1.0.r7.ge4e77a4
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/Feh/nocache
 	arch = i686
