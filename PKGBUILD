@@ -2,19 +2,21 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=yash
-pkgver=2.47
+pkgver=2.48
 pkgrel=1
 pkgdesc="Yet Another SHell is a POSIX-compliant command line shell"
 arch=('x86_64')
 url="http://sourceforge.jp/projects/yash/"
 license=('GPL')
 depends=('ncurses')
-install=yash.install
-source=("https://osdn.net/dl/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('931f2e7451d8b1eca2a98caeef7eda0527d96376f9f2c9bec90bc5938e39992e')
+install=${pkgname}.install
+source=("https://osdn.net/dl/${pkgname}/${pkgname}-${pkgver}.tar.xz"
+        "${pkgname}.install")
+sha256sums=('f46294d77c5a646405db20a6dc3d16bc1ed109b061b2a508081ce483153c1e8d'
+            'c66c7a4b9da4416082ea57bbec0ce0c2bbc13af340ceb1241b4a4897d8944531')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
@@ -32,7 +34,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
-  make install DESTDIR="$pkgdir"
+  make install DESTDIR="${pkgdir}"
 }
