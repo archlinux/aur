@@ -18,7 +18,7 @@ source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
         kdebug-395875.patch::"https://cgit.kde.org/digikam.git/patch/core?id=486e34a0"
         digikam-opencv4.patch)
 sha256sums=('660d32eedcfd6fe1a75170a651fab068ae62f7f092ae710771a2f32a1c550d1b'
-            '3910f0f36ef933649691fe6da47f205d86d79afa9b4f239f86dd540648b55731'
+            'c63f177950c4a1728699c59cf670fec1353955bdc4a7b4ac6c844aec15871fa8'
             '621faf691d081239d792616ea40bac7a1cc07c3adf1bc74b4adc9107eacb4232')
 
 prepare() {
