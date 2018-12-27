@@ -1,6 +1,6 @@
 pkgbase = osu-lazer-git
 	pkgdesc = Freeware rhythm video game - lazer development version
-	pkgver = 2018.1219.0_106_gc6b37c45b
+	pkgver = 2018.1219.0_126_ga2885a99c
 	pkgrel = 1
 	url = https://osu.ppy.sh
 	arch = x86_64
