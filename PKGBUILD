@@ -1,4 +1,4 @@
-# Maintainer:  Saed Ahmed <itsaed7@gmail.com>
+# Maintainer: Saed Ahmed <itsaed7@gmail.com>
 # Contributor: Dennis <dennis@stengele.me>
 # Contributor: Horo <horo@yoitsu.moe>
 # Contributor: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
