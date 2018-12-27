@@ -1,12 +1,12 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.7.2.3
-_numix_ver=1.9.2
+_oomox_ver=1.9.0.2
+_numix_ver=1.9.3
 #_materia_ver=20181125
-_materia_cmt=5c9565676429e47dc6c547fbf96101af1aad6a54
-_arc_cmt=e97206cf0772da5b07b982da67cc65d91884d48d
+_materia_cmt=4f222c08826835346d8d160092868e62b444a1a0
+_arc_cmt=88d02754d11d174a7baf3db7beb857f28dac55ee
 _archdroid_ver=1.0.2
-_gnome_colors_ver=5.5.3
+_gnome_colors_ver=5.5.4
 _oomoxify_ver=1.1
 _base16_cmt=d022b9daa5c233a08a8d3b94fd534a3041e3a8c1
 
@@ -36,8 +36,11 @@ depends=(
 	'imagemagick'  # gnome-colors
 	'parallel'  # materia, arc
 	'optipng'  # materia, arc
-	'inkscape'  # materia, arc
 	'python-pillow'  # import_pil
+
+	'resvg'  # materia, arc
+	##or
+	#'inkscape'  # materia, arc
 )
 optdepends=(
 	'xorg-xrdb: for the `xresources` theme'
@@ -63,12 +66,12 @@ source=(
     "oomoxify-${_oomoxify_ver}.tar.gz::https://github.com/themix-project/oomoxify/archive/${_oomoxify_ver}.tar.gz"
     "base16-builder-${_base16_cmt}.tar.gz::https://github.com/base16-builder/base16-builder/archive/${_base16_cmt}.tar.gz"
 )
-md5sums=('25a9506f3356316f9f13fd0d2199444f'
-         'bcc635f0dd06b0b0fae1f318d3271ec2'
-         'f6d49debd3879dcdbd228ec34431c4b5'
-         '19029e06b6fbda8a40eb047978c6a8ba'
+md5sums=('acf0604107bffb048a74e14e1f4b1f88'
+         'd237f5093bffad3be18b90b344f78503'
+         '7abab58c36ed5c19d16e5372210960a8'
+         '031f263be091e16de8932bfc4b7cfe82'
          'cb669130685dcbf03a8f7f5738c71dc6'
-         'ae3250f1dce9505dbaa60d92dcb9a239'
+         'b5bc6ce914908c1e8f88180889b427e3'
          'd0c0f22c082cfd7c57148e7da809ddfb'
          '38fc51a55c798032266c03ee82461119')
 
