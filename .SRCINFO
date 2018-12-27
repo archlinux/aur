@@ -1,11 +1,12 @@
 pkgbase = sane-git
 	pkgdesc = Scanner Access Now Easy
-	pkgver = 1.0.27_4_g2b0028b4
+	pkgver = 20181220.2d14283d
 	pkgrel = 1
 	url = http://www.sane-project.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = texlive-latexextra
 	depends = libtiff>=4.0.0
 	depends = libgphoto2
 	depends = libjpeg>=8
@@ -42,6 +43,7 @@ pkgbase = sane-git
 	backup = etc/sane.d/epjitsu.conf
 	backup = etc/sane.d/epson.conf
 	backup = etc/sane.d/epson2.conf
+	backup = etc/sane.d/epsonds.conf
 	backup = etc/sane.d/fujitsu.conf
 	backup = etc/sane.d/genesys.conf
 	backup = etc/sane.d/gphoto2.conf
@@ -69,6 +71,7 @@ pkgbase = sane-git
 	backup = etc/sane.d/net.conf
 	backup = etc/sane.d/p5.conf
 	backup = etc/sane.d/pie.conf
+	backup = etc/sane.d/pieusb.conf
 	backup = etc/sane.d/pixma.conf
 	backup = etc/sane.d/plustek.conf
 	backup = etc/sane.d/plustek_pp.conf
@@ -96,16 +99,16 @@ pkgbase = sane-git
 	backup = etc/sane.d/xerox_mfp.conf
 	backup = etc/sane.d/v4l.conf
 	backup = etc/xinetd.d/sane
-	source = git://anonscm.debian.org/sane/sane-backends.git
+	source = git+http://gitlab.com/sane-project/backends.git
 	source = sane.xinetd
 	source = saned.socket
 	source = saned.service
 	source = network.patch
-	md5sums = SKIP
-	md5sums = bc2c8b4f7b3012c8936c7da21f60e2ac
-	md5sums = e57e9e15528f47f5f1b3f1411135ed5d
-	md5sums = 3f9fe36b0c4ff0b01b53b1cffa5d9700
-	md5sums = 44e77692c52db15b0f530a1d9a8e1296
+	sha256sums = SKIP
+	sha256sums = 9d288d4fef0833da31ca1f1e9b4e567f81a4c03219af3b496d3fc3b6aac394eb
+	sha256sums = c06fdd54128b06efbf8fbcb40b145512fa8e8a1c470c5cb60abc839a6002fdf1
+	sha256sums = 9e5274b0184249aaf1066e64c08fed2d65445e4ca95717497b30fc9d30a55ae3
+	sha256sums = 23785948c7d9dc071fcc066754001dc2c1bd17a904051ed3ae6ec7f4e3b8e66b
 
 pkgname = sane-git
 
