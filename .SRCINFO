@@ -1,6 +1,6 @@
 pkgbase = kops-git
 	pkgdesc = Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management. (git version)
-	pkgver = 1.11.0.beta.1.r0.g0c5a0a57d
+	pkgver = 1.11.0.r0.g2c2042465
 	pkgrel = 1
 	url = https://github.com/kubernetes/kops
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kops-git
 	provides = kops
 	conflicts = kops
 	conflicts = kops-bin
-	source = kops-git-1.11.0.beta.1.r0.g0c5a0a57d::git+https://github.com/kubernetes/kops
+	source = kops-git-1.11.0.r0.g2c2042465::git+https://github.com/kubernetes/kops
 	md5sums = SKIP
 
 pkgname = kops-git
