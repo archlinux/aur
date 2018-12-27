@@ -1,12 +1,15 @@
+# Maintainer: Szymon Scholz
+# Package orphaned by developers. Source and upstream links only available via archive.org
 pkgname=vpnc-gui
 pkgver=0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="gtk graphical user interface for vpnc"
 arch=('i686' 'x86_64')
-url="http://ticc.mines.edu/csm/wiki/index.php/Vpnc-gui"
+url="http://web.archive.org/web/20150802135701/http://ticc.mines.edu/csm/wiki/index.php/Vpnc-gui"
 license=('GPL')
 depends=('vpnc' 'gtk2')
-source=(http://ticc.mines.edu/csm/wiki/images/5/58/Vpnc-gui.tgz
+makedepends=('libglade' 'glib2')
+source=(Vpnc-gui.tgz::http://web.archive.org/web/20150802135700/ticc.mines.edu/csm/wiki/images/5/58/Vpnc-gui.tgz
         vpnc-gui.desktop
         vpnc-gui.svg
         logo.png
