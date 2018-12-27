@@ -1,6 +1,6 @@
 pkgbase = insomnio-git
 	pkgdesc = keeps computer from fallling asleep
-	pkgver = 2.2
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://bitbucket.org/jjgalvez/insomnio
 	install = insomnio.install
@@ -12,7 +12,7 @@ pkgbase = insomnio-git
 	depends = python-click
 	provides = insomnio
 	conflicts = insomnio
-	source = insomnio::git+https://jjgalvez@bitbucket.org/jjgalvez/insomnio.git#tag=2.2
+	source = insomnio::git+https://jjgalvez@bitbucket.org/jjgalvez/insomnio.git#tag=2.4
 	source = insomnio.desktop
 	md5sums = SKIP
 	md5sums = 64383f3a8db623185c940d4097b82ed2
