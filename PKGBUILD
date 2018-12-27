@@ -3,7 +3,7 @@
 # Contributor: Eugeni Dodonov <eugeni@dodonov.net>
 # Contributor: Tom Vincent <aur@tlvince.com>
 pkgname=powerstat-git
-pkgver=0.02.11.r4.g5bd6c38
+pkgver=0.02.18.r1.g6b25c64
 pkgrel=1
 
 pkgdesc='A tool for measuring a laptops power usage via the battery.'
