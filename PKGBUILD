@@ -4,7 +4,7 @@
 
 pkgname='mono-git'
 _gitname='mono'
-pkgver=5.4.1.7.r1887.73c6a2ee50c
+pkgver=5.18.0.225.r1530.d1a5fa3783b
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'
@@ -36,11 +36,13 @@ source=(
   'git+https://github.com/mono/xunit-binaries.git'
   'git+https://github.com/mono/api-doc-tools.git'
   'git+https://github.com/mono/api-snapshot.git'
+  'git+https://github.com/mono/llvm.git#branch=release_60'
+  'git+https://github.com/mono/helix-binaries.git'
   'mono.binfmt.d'
 )
 sha256sums=(
-  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
   '9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425'
 )
 
@@ -78,6 +80,8 @@ prepare() {
     'xunit-binaries'
     'api-doc-tools'
     'api-snapshot'
+    'llvm'
+    'helix-binaries'
   )
 
   for module in "${submodules[@]}"; do
