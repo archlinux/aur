@@ -1,12 +1,12 @@
 pkgbase = nagios-images
 	pkgdesc = Collection of images and icons for the nagios system
-	pkgver = 0.8
-	pkgrel = 3
+	pkgver = 0.9.2
+	pkgrel = 1
 	url = http://www.nagios.org/
 	arch = any
 	license = GPL
-	source = http://ftp.de.debian.org/debian/pool/main/n/nagios-images/nagios-images_0.8.tar.gz
-	md5sums = 0b41a448c011becb75925685131d201d
+	source = http://ftp.de.debian.org/debian/pool/main/n/nagios-images/nagios-images_0.9.2.tar.gz
+	md5sums = c8a563dda86e79a55f6b163003541ba6
 
 pkgname = nagios-images
 
