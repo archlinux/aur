@@ -6,6 +6,7 @@ pkgbase = jrommanager
 	arch = any
 	license = GPL-2
 	depends = java-runtime>=8
+	options = !strip
 	source = https://github.com/optyfr/JRomManager/releases/download/2.0.1/JRomManager-2.0.1.zip
 	source = JRomManager.desktop
 	source = JRomManager.png
