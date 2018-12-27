@@ -1,13 +1,13 @@
 pkgbase = linx-client
 	pkgdesc = Simple client for linx-server
-	pkgver = 1.4
-	pkgrel = 4
+	pkgver = 1.4.0
+	pkgrel = 5
 	url = https://github.com/andreimarcu/linx-client
 	arch = x86_64
 	license = GPL
 	depends = fuse
-	source = https://github.com/andreimarcu/linx-client/releases/download/v1.4.0/linx-client-v1.4_linux-amd64
-	md5sums = 73abab25c8eab14b0d8e9dad3acae9ea
+	source = https://github.com/andreimarcu/linx-client/releases/download/v1.4.0/linx-client-v1.4.0_linux-amd64
+	md5sums = 167abbddc865299062b40a980cb4559f
 
 pkgname = linx-client
 
