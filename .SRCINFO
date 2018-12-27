@@ -1,7 +1,7 @@
 pkgbase = freefem++
 	pkgdesc = A PDE oriented language using the finite element method
 	pkgver = 3.61.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://freefem.org/index.html
 	arch = x86_64
 	license = LGPL
@@ -18,7 +18,7 @@ pkgbase = freefem++
 	depends = parmetis
 	depends = python
 	options = !makeflags
-	source = http://www.freefem.org/ff++/ftp/freefem++-3.61-1.tar.gz
+	source = freefem++-3.61.1.tar.gz::http://www3.freefem.org/ff++/ftp/freefem++-3.61-1.tar.gz
 	source = gcc8.patch
 	sha256sums = 1f225c5b5d3081df157794174a1a31037a622d111051258ad979ec9d52a48c67
 	sha256sums = 5a80de210d97ce08e97ebda63cda51d74100c8c05a3cc4a7d5b0733f64ab30ed
