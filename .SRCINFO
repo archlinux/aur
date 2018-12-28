@@ -1,0 +1,16 @@
+pkgbase = evscript-git
+	pkgdesc = A tiny sandboxed Dyon scripting environment for evdev input devices that lets you do e.g. xcape in Wayland
+	pkgver = r14.de6e09b
+	pkgrel = 1
+	url = https://github.com/myfreeweb/evscript
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = evscript
+	conflicts = evscript
+	source = git+https://github.com/myfreeweb/evscript
+	md5sums = SKIP
+
+pkgname = evscript-git
+
