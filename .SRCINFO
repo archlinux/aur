@@ -1,7 +1,7 @@
 pkgbase = libpod
 	pkgdesc = A library used to create container pods.
 	pkgver = 0.12.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/containers/libpod
 	arch = x86_64
 	license = Apache
@@ -21,7 +21,7 @@ pkgbase = libpod
 pkgname = libpod
 	depends = cri-o
 	depends = device-mapper
-	depends = libpod-networking
+	depends = iptables
 	depends = libseccomp
 	depends = runc
 	depends = ostree
@@ -29,19 +29,15 @@ pkgname = libpod
 	optdepends = libpod-docker: docker cli
 	optdepends = libpod-python: pypodman
 	provides = podman
+	provides = libpod-networking
 	conflicts = podman
+	conflicts = libpod-networking
 
 pkgname = libpod-docker
 	pkgdesc = Use podman as a Docker CLI replacement.
 	depends = libpod
 	provides = docker
 	conflicts = docker
-
-pkgname = libpod-networking
-	pkgdesc = Networking configuration for libpod.
-	depends = libpod
-	depends = cni-plugins
-	depends = iptables
 
 pkgname = libpod-python
 	pkgdesc = CLI for podman written in python.

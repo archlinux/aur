@@ -4,11 +4,10 @@ pkgbase=libpod
 pkgname=(
 	"libpod"
 	"libpod-docker"
-	"libpod-networking"
 	"libpod-python"
 )
 pkgver=0.12.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library used to create container pods."
 arch=("x86_64")
 url="https://github.com/containers/libpod"
@@ -52,7 +51,7 @@ package_libpod() {
 	depends+=(
 		"cri-o"
 		"device-mapper"
-		"libpod-networking"
+		"iptables"
 		"libseccomp"
 		"runc"
 		"ostree"
@@ -64,15 +63,18 @@ package_libpod() {
 	)
 	provides+=(
 		"podman"
+		# 2018-12-28: keep this for a few releases for packages that depend on it
+		"libpod-networking"
 	)
 	conflicts+=(
 		"podman"
+		"libpod-networking"
 	)
 
 	export GOPATH="${srcdir}/go"
 	cd "${GOPATH}/src/github.com/containers/${pkgbase}"
 
-	make install.bin install.completions install.config install.man install.systemd DESTDIR="${pkgdir}" PREFIX="${pkgdir}/usr"
+	make install.bin install.cni install.completions install.config install.man install.systemd DESTDIR="${pkgdir}" PREFIX="${pkgdir}/usr"
 
 	# seccomp.json is provided by cri-o
 	rm "${pkgdir}/etc/crio/seccomp.json"
@@ -95,20 +97,6 @@ package_libpod-docker() {
 	cd "${GOPATH}/src/github.com/containers/${pkgbase}"
 
 	make install.docker DESTDIR="${pkgdir}" PREFIX="${pkgdir}/usr"
-}
-
-package_libpod-networking() {
-	pkgdesc="Networking configuration for libpod."
-	depends+=(
-		"libpod"
-		"cni-plugins"
-		"iptables"
-	)
-
-	export GOPATH="${srcdir}/go"
-	cd "${GOPATH}/src/github.com/containers/${pkgbase}"
-
-	make install.cni DESTDIR="${pkgdir}" PREFIX="${pkgdir}/usr"
 }
 
 package_libpod-python() {
