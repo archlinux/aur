@@ -47,10 +47,10 @@ package() {
   # Cache
   install -m750 -d "$pkgdir/var/cache/webapps/$_pkgbase/cache"\
     "$pkgdir/var/cache/webapps/$_pkgbase/users"
-  chown -R root:http "$pkgdir/var/cache/webapps/$_pkgbase"
+  chown -R movim:movim "$pkgdir/var/cache/webapps/$_pkgbase"
   chmod -R u+rwX,g+rwX,o-rwx "$pkgdir/var/cache/webapps/$_pkgbase"
-  # XXX: Symlinks created post_upgrade. Waiting for upstream to fix
-  # https://github.com/movim/movim/issues/509.
+  ln -s "/var/cache/webapps/$_pkgbase/cache" "$pkgdir/usr/share/webapps/$_pkgbase"
+  ln -s "/var/cache/webapps/$_pkgbase/users" "$pkgdir/usr/share/webapps/$_pkgbase"
 
   cp -r app database lib locales src themes vendor \
     "$pkgdir/usr/share/webapps/$_pkgbase"
@@ -61,18 +61,17 @@ package() {
   # Configuration file
   install -m750 -d "$pkgdir/etc/webapps/$_pkgbase"
   install -Dm750 config/db.example.inc.php "$pkgdir/etc/webapps/$_pkgbase/db.inc.php"
-  chown -R root:http "$pkgdir/etc/webapps/$_pkgbase"
   chmod -R u+rwX,g+rwX,o-rwx "$pkgdir/etc/webapps/$_pkgbase"
   ln -s "/etc/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/config"
 
   # Log files
   install -m770 -d "$pkgdir/var/log/webapps/$_pkgbase"
-  chown -R root:http "$pkgdir/var/log/webapps/$_pkgbase"
+  chown -R movim:movim "$pkgdir/var/log/webapps/$_pkgbase"
   ln -s "/var/log/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/log"
 
   # Systemd files
   install -m755 -d "$pkgdir/etc/default"
-  install -g http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
+  install -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
   install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
   install -Dm644 "$srcdir/sysuser.conf" "$pkgdir/usr/lib/sysusers.d/movim.conf"
 }
