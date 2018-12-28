@@ -1,13 +1,15 @@
 pkgbase = tpm-quote-tools
 	pkgdesc = Tools for TPM remote attestation
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sf.net/projects/tpmquotetools
 	arch = x86_64
 	license = BSD
 	depends = trousers
 	source = tpm-quote-tools-1.0.4.tar.gz::https://sourceforge.net/projects/tpmquotetools/files/1.0.4/tpm-quote-tools-1.0.4.tar.gz/download
-	sha1sums = SKIP
+	source = 0001-Differentiate-between-owner-and-srk-well-known-passs.patch
+	sha1sums = dfbe967744833e76b7642b379bba2918d0a4263d
+	sha1sums = a02f51d88bc803a8866b87c90a09110bbb367a92
 
 pkgname = tpm-quote-tools
 

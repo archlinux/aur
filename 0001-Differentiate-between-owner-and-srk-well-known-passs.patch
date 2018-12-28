@@ -1,0 +1,92 @@
+From 500ca87db7e4935c77a545168183e9f7c3146c32 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michael=20Niew=C3=B6hner?= <foss@mniewoehner.de>
+Date: Fri, 28 Dec 2018 16:28:19 +0100
+Subject: [PATCH] Differentiate between owner and srk well known passsword
+
+---
+ tpm_mkaik.8 |  7 +++++--
+ tpm_mkaik.c | 15 ++++++++++-----
+ 2 files changed, 15 insertions(+), 7 deletions(-)
+
+diff --git a/tpm_mkaik.8 b/tpm_mkaik.8
+index ee98ead..5f05423 100644
+--- a/tpm_mkaik.8
++++ b/tpm_mkaik.8
+@@ -3,7 +3,7 @@
+ tpm_mkaik \- make a TPM Attestation Identity Key
+ .SH SYNOPSIS
+ .B tpm_mkaik
+-.RB [ \-zuhv ]
++.RB [ \-yzuhv ]
+ .RI BLOB-FILE
+ .RI PUBKEY-FILE
+ .br
+@@ -16,9 +16,12 @@ The public key is stored in the file
+ .RI PUBKEY-FILE.
+ The public key is DER encoded.
+ .TP
+-.RB \-z
++.RB \-y
+ Use the well known secret used as the owner secret.
+ .TP
++.RB \-z
++Use the well known secret used as the SRK secret.
++.TP
+ .RB \-u
+ Use TSS UNICODE encoding for passwords.
+ .TP
+diff --git a/tpm_mkaik.c b/tpm_mkaik.c
+index 3c9edcd..ef3dc1b 100644
+--- a/tpm_mkaik.c
++++ b/tpm_mkaik.c
+@@ -102,7 +102,8 @@ static int usage(const char *prog)
+   const char text[] =
+     "Usage: %s [options] blob pubkey\n"
+     "Options:\n"
+-    "\t-z   Use well known secret used as owner secret\n"
++    "\t-y   Use well known secret used as owner secret\n"
++    "\t-z   Use well known secret used as SRK secret\n"
+     "\t-u   Use TSS UNICODE encoding for passwords\n"
+     "\t-h   Display command usage info\n"
+     "\t-v   Display command version info\n"
+@@ -115,13 +116,17 @@ static int usage(const char *prog)
+ 
+ int main (int argc, char **argv)
+ {
+-  int well_known = 0;
++  int well_known_srk = 0;
++  int well_known_owner = 0;
+   int utf16le = 0;
+   int opt;
+   while ((opt = getopt(argc, argv, "zuhv")) != -1) {
+     switch (opt) {
++    case 'y':
++      well_known_owner = 1;
++      break;
+     case 'z':
+-      well_known = 1;
++      well_known_srk = 1;
+       break;
+     case 'u':
+       utf16le = 1;
+@@ -173,7 +178,7 @@ int main (int argc, char **argv)
+   if (rc != TSS_SUCCESS)
+     return tidy(hContext, tss_err(rc, "getting SRK policy"));
+ 
+-  rc = setSecret("Enter SRK password: ", hContext, hSrkPolicy, well_known, utf16le);
++  rc = setSecret("Enter SRK password: ", hContext, hSrkPolicy, well_known_srk, utf16le);
+   if (rc != TSS_SUCCESS)
+     return tidy(hContext, tss_err(rc, "setting SRK secret"));
+ 
+@@ -193,7 +198,7 @@ int main (int argc, char **argv)
+   if (rc != TSS_SUCCESS)
+     return tidy(hContext, tss_err(rc, "assigning TPM policy"));
+ 
+-  rc = setSecret("Enter owner password: ", hContext, hTPMPolicy, well_known, utf16le);
++  rc = setSecret("Enter owner password: ", hContext, hTPMPolicy, well_known_owner, utf16le);
+   if (rc != TSS_SUCCESS)
+     return tidy(hContext, tss_err(rc, "setting TPM policy secret"));
+ 
+-- 
+2.20.1
+
