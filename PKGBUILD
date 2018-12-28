@@ -25,7 +25,7 @@
 
 pkgname=storm
 # pkgver=1.0.2
-pkgver=1.1.1
+pkgver=1.2.2
 pkgrel=2
 pkgdesc='Free and open source distributed realtime computation system'
 arch=('any')
@@ -53,7 +53,7 @@ source=(${_closest}/${_app_path}
         arch_python2.patch)
 validpgpkeys=('ACEFE18DD2322E1E84587A148DE03962E80B8FFD') # P. Taylor Goetz
 
-sha256sums=('284b43c2e667ccb600605769e76dfc981140d769a684253f37309f85fea2a951'
+sha256sums=('e97e92ea13998c95ee37565bdf4d6f6a379deb259ec76cb0178cd356502e657f'
             'SKIP'
             'c94799f4b459f5218faf1da57936baeb4c32b9542a1ba0aacdd637bf2f3aaf05'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
