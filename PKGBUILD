@@ -1,6 +1,6 @@
-# Maintainer: VBChunguk <chwo9843@gmail.com>
+# Maintainer: Tirr <chwo9843@gmail.com>
 pkgname=thtk-git
-pkgver=r305.21620f0
+pkgver=r482.6825664
 pkgrel=1
 pkgdesc="A collection of tools for exploring and modifying the Touhou game series"
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
+  git submodule update --init extlib/thtypes
   sed -i.old -e '/RPATH/d' CMakeLists.txt
 }
 
