@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tss-git
-pkgver=2.0.0.r137.5a5f298f
+pkgver=2.0.0.r150.303412cb
 pkgrel=1
 pkgdesc='Implementation of the Trusted Platform Module 2.0 Software Stack (TSS2)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('openssl')
 makedepends=('git' 'autoconf-archive' 'doxygen' 'gnulib-git')
 checkdepends=('cmocka' # for unit test suite
-              'ibm-sw-tpm2' 'net-tools' 'procps-ng' 'uthash') # for integration test suite
+              'ibm-sw-tpm2' 'iproute2' 'procps-ng' 'uthash') # for integration test suite
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
