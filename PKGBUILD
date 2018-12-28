@@ -6,7 +6,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.17.19
+pkgver=2.17.22
 pkgrel=2
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
