@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Tsanev <tsachev@gmail.com>
 pkgname=jcov
 _version=3.0
-_build=b05
+_build=b07
 pkgver=${_version}_${_build}
 pkgrel=1
 pkgdesc="The JCov open source project is used to gather quality metrics associated with the production of test suites."
@@ -9,8 +9,8 @@ arch=('any')
 url="https://wiki.openjdk.java.net/display/CodeTools/jcov"
 license=('GPL2')
 groups=()
-depends=('java-runtime>=7')
-makedepends=('mercurial' 'apache-ant' 'java-environment-openjdk=7' 'java-asm' 'jtharness')
+depends=('java-runtime>=8')
+makedepends=('mercurial' 'apache-ant' 'java-environment-openjdk=8' 'java-asm' 'jtharness')
 optdepends=('jtharness')
 checkdepends=()
 provides=()
@@ -18,25 +18,25 @@ conflicts=()
 install=
 _tag=${pkgname}${_version}-${_build}
 source=("http://hg.openjdk.java.net/code-tools/jcov/archive/${_tag}.tar.gz")
-sha256sums=('d3bb6673e48bb4a41ed5bedae552e1e0906333974a613f3417a7ebf72f1db4eb')
+sha256sums=('af2b06da75e71718ea4c5e8b58e368688a4724a6b250ab52a79aad6a255def8f')
 
 _jcovdir=${pkgname}-${_tag}
 
 prepare() {
   cd ${srcdir}/${_jcovdir}
-  ln -sf /usr/share/java/asm/asm.jar build/asm-6.2.jar
-  ln -sf /usr/share/java/asm/asm-tree.jar build/asm-tree-6.2.jar
-  ln -sf /usr/share/java/asm/asm-util.jar build/asm-util-6.2.jar
+  ln -sf /usr/share/java/asm/asm.jar build/asm-7.0.jar
+  ln -sf /usr/share/java/asm/asm-tree.jar build/asm-tree-7.0.jar
+  ln -sf /usr/share/java/asm/asm-util.jar build/asm-util-7.0.jar
   ln -sf /usr/share/java/jtharness/javatest.jar build/javatest.jar
-  JAVA_HOME=/usr/lib/jvm/java-7-openjdk ant -f build/build.xml clean
-  JAVA_HOME=/usr/lib/jvm/java-7-openjdk ant -f plugins/coberturaXML/build/build.xml clean
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk ant -f build/build.xml clean
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk ant -f plugins/coberturaXML/build/build.xml clean
 }
 
 build() {
   cd ${srcdir}/${_jcovdir}/build
-  JAVA_HOME=/usr/lib/jvm/java-7-openjdk ant 
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk ant 
   cd ${srcdir}/${_jcovdir}/plugins/coberturaXML
-  JAVA_HOME=/usr/lib/jvm/java-7-openjdk ant -f build/build.xml
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk ant -f build/build.xml
 }
 
 package() {
