@@ -1,8 +1,9 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Szymon Scholz
+# Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=startactive
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="A dependency-based init system for KDE workspace"
 arch=('i686' 'x86_64')
@@ -11,8 +12,7 @@ license=('LGPL')
 depends=('kdebase-runtime')
 makedepends=('cmake' 'automoc4')
 groups=('plasma-active')
-source=("http://download.kde.org/stable/active/3.0/src/${pkgname}-${pkgver}.tar.xz")
-md5sums=('fc06ee1e7caeed2f3a6ac41ac7796ce6')
+source=("http://download.kde.org/stable/active/4.0/src/${pkgname}-${pkgver}.tar.xz")
 
 build() {
   cd "${srcdir}"
@@ -28,3 +28,4 @@ package() {
   cd "$srcdir/build"
   make DESTDIR="${pkgdir}" install
 }
+md5sums=('94e1b93ce6c843dc1ce1d0b8301de357')
