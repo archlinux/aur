@@ -1,6 +1,6 @@
 pkgname=transmission-remote-gui
 _pkgname=transgui
-pkgver=5.15.4
+pkgver=5.16.0
 pkgrel=1
 pkgdesc='Cross platform remote GUI for the Transmission daemon'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('lazarus')
 conflicts=('transmission-remote-gui-bin')
 source=(https://github.com/leonsoft-kras/transmisson-remote-gui/archive/v${pkgver}.zip
         ${_pkgname}.desktop)
-sha1sums=('d6dcde0c23b7612a3fb7bcfac3423b921aa64105'
+sha1sums=('ef4e559b277b4130459a83762798519d2c1fb11c'
           'df16780ed1f875b316e3e2e6d01dc4e886281d60')
 
 build() {
