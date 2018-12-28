@@ -1,6 +1,6 @@
 pkgbase = actor-framework
 	pkgdesc = An Open Source Implementation of the Actor Model in C++
-	pkgver = 0.16.2
+	pkgver = 0.16.3
 	pkgrel = 1
 	url = http://actor-framework.org
 	arch = i686
