@@ -39,6 +39,7 @@ package_leap-motion-sdk() {
 
   cp LeapSDK/lib/{LeapJava.jar,Leap.py} ${pkgdir}/usr/lib/Leap
 
+
   if [ "$CARCH" == 'x86_64' ]; then
     cp LeapSDK/lib/x64/{LeapPython,libLeapCSharp,libLeapJava,libLeap}.so ${pkgdir}/usr/lib/Leap
   else
@@ -78,6 +79,9 @@ package_leap-motion-driver() {
   mv ${pkgdir}/usr/sbin/leapd ${pkgdir}/usr/bin
   rm -r ${pkgdir}/usr/sbin
   cp -r lib ${pkgdir}/usr/
+
+# move libs in /usr/bin/ to /usr/lib/Leap/
+  mv ${pkgdir}/usr/bin/{libfreebl3.so,libnssdbm3.so,libnssutil3.so,libplc4.so,libplds4.so,libsoftokn3.so,libsqlite3.so,libnspr4.so} ${pkgdir}/usr/lib/Leap/
 
 # Install systemd service
   install -Dm644 "${srcdir}/leapd.service" "${pkgdir}/usr/lib/systemd/system/leapd.service"
