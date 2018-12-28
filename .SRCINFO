@@ -1,0 +1,15 @@
+pkgbase = chromium-extension-tab-session-manager-git
+	pkgdesc = Chrome/Chromium extension for Tab Session Manager - git/dev
+	pkgver = 4.3.3.r0.g80f930e
+	pkgrel = 1
+	url = https://github.com/sienori/Tab-Session-Manager
+	arch = any
+	license = MPL2
+	makedepends = git
+	makedepends = nodejs
+	makedepends = unzip
+	source = git+https://github.com/sienori/Tab-Session-Manager.git
+	sha512sums = SKIP
+
+pkgname = chromium-extension-tab-session-manager-git
+
