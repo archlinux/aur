@@ -3,7 +3,7 @@
 
 pkgname=mailcap-mime-types
 pkgver=2.1.48+14+g5811758
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern /etc/mime.types file from mailcap"
 url="https://pagure.io/mailcap"
 arch=(any)

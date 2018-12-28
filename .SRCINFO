@@ -1,7 +1,7 @@
 pkgbase = mailcap-mime-types
 	pkgdesc = A modern /etc/mime.types file from mailcap
 	pkgver = 2.1.48+14+g5811758
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pagure.io/mailcap
 	arch = any
 	license = MIT
