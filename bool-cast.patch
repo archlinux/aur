@@ -1,0 +1,15 @@
+# Make an implicit cast explicit so that the code compiles under new versions of gcc.
+
+diff --git a/include/llvm/IR/ValueMap.h b/include/llvm/IR/ValueMap.h
+index 4d00b637..7fddef45 100644
+--- include/llvm/IR/ValueMap.h
++++ include/llvm/IR/ValueMap.h
+@@ -99,7 +99,7 @@ public:
+   explicit ValueMap(const ExtraData &Data, unsigned NumInitBuckets = 64)
+       : Map(NumInitBuckets), Data(Data) {}
+ 
+-  bool hasMD() const { return MDMap; }
++  bool hasMD() const { return bool(MDMap); }
+   MDMapT &MD() {
+     if (!MDMap)
+       MDMap.reset(new MDMapT);

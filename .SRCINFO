@@ -1,0 +1,20 @@
+pkgbase = llvm37
+	pkgdesc = Low Level Virtual Machine (installed into /opt/llvm37)
+	pkgver = 3.7.1
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = libffi
+	makedepends = python
+	makedepends = gcc-multilib
+	depends = libedit
+	depends = zlib
+	options = staticlibs
+	source = https://releases.llvm.org/3.7.1/llvm-3.7.1.src.tar.xz
+	source = bool-cast.patch
+	sha256sums = be7794ed0cec42d6c682ca8e3517535b54555a3defabec83554dbc74db545ad5
+	sha256sums = 4a26322fdc31256a575df3d3056f09736c23291ab6c45704536d99b6e6c69d96
+
+pkgname = llvm37
+
