@@ -1,6 +1,6 @@
 # Maintainer: KingofToasters <themanhimself at sgregoratto dot me>
 pkgname=goawk
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="AWK interpreter written in go"
 url="https://github.com/benhoyt/goawk"
@@ -8,7 +8,7 @@ license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=('go-pie')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('0c88470a40222a94eb960cac829c05ff90f20f605961514a491c25f126f69b00')
+sha256sums=('56ff6e0f72b5481431e65d4a46ed39f1bae26e52126532e23f8d9333ac42454e')
 
 build() {
 	cd "${pkgname}-${pkgver}"
