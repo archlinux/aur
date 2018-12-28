@@ -10,7 +10,7 @@ _build=b13
 _tag=${pkgname}${_version}-${_build}
 #_commit=_tag
 #pkgver=${_version}+${_build}
-_commit=47820c88bcda
+_commit=b6fabf6bf942
 pkgver=${_version}+${_build}+${_commit}
 pkgrel=1
 pkgdesc="Regression Test Harness for the JDK"
@@ -18,15 +18,15 @@ arch=('any')
 url="http://openjdk.java.net/jtreg/"
 license=('GPL2')
 groups=()
-depends=('java-runtime>=7' 'jtharness' 'asmtools')
-makedepends=('apache-ant' 'java-environment-openjdk=7' 'jcov' 'java-testng' 'jcommander' 'junit')
+depends=('java-runtime>=8' 'jtharness' 'asmtools')
+makedepends=('apache-ant' 'java-environment-openjdk=8' 'jcov' 'java-testng' 'jcommander' 'junit')
 optdepends=()
 checkdepends=()
 provides=()
 conflicts=()
 install=
 source=("http://hg.openjdk.java.net/code-tools/jtreg/archive/${_commit}.tar.gz" "${pkgname}.sh" "${pkgname}.patch")
-sha256sums=('a095cf0d4d07d296a922430913f797d8d0909165b83cd327177925ff48d48b2a'
+sha256sums=('6f1ee9fd485f294caabda7c09c554cfa03e0296c2cfce744af25f7270aab0b8a'
             '49a4a58ff76e2e9989122d0aa0e5064f9797198789a851f21ed0b36484253c9f'
             '84a77930e1bfbd75c9643d78b0b5d60c38693fb9266409e37f50c42d40fecf29')
 
@@ -43,11 +43,11 @@ build() {
   # build fails when extracting jquery from testng
   mkdir -p build/org/testng
 
-  JDKHOME=/usr/lib/jvm/java-7-openjdk \
+  JDKHOME=/usr/lib/jvm/java-8-openjdk \
   JTHARNESS_HOME=/usr/share/jtharness \
   JCOV_HOME=/usr/share/jcov \
   ASMTOOLS_JAR=/usr/share/java/asmtools/asmtools.jar \
-  ANTHOME=/usr/share/apache-ant \
+  ANTHOME=/usr/share/ant \
   JUNIT_JAR=/usr/share/java/junit.jar \
   TESTNG_JAR=/usr/share/java/testng/testng-6.14.3.jar \
   JCOMMANDER_JAR=/usr/share/java/jcommander/jcommander.jar \
@@ -61,11 +61,11 @@ check() {
   cp /usr/share/java/hamcrest-core.jar build/images/${pkgname}/lib
   # todo find a way to set use vnc and enable tests
 
-  # JDKHOME=/usr/lib/jvm/java-7-openjdk \
+  # JDKHOME=/usr/lib/jvm/java-8-openjdk \
   # JTHARNESS_HOME=/usr/share/jtharness \
   # JCOV_HOME=/usr/share/jcov \
   # ASMTOOLS_JAR=/usr/share/java/asmtools/asmtools.jar \
-  # ANTHOME=/usr/share/apache-ant \
+  # ANTHOME=/usr/share/ant \
   # JUNIT_JAR=/usr/share/java/junit.jar \
   # TESTNG_JAR=/usr/share/java/testng/testng-6.14.3.jar \
   # JCOMMANDER_JAR=/usr/share/java/jcommander/jcommander.jar \
