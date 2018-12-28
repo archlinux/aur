@@ -1,7 +1,7 @@
 pkgbase = calculix
 	pkgdesc = CalculiX: 3D finite element solver and post-processor (executables)
 	pkgver = 2.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.calculix.de/
 	arch = i686
 	arch = x86_64

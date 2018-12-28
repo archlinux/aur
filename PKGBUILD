@@ -7,7 +7,7 @@
 
 pkgname=calculix
 pkgver=2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="CalculiX: 3D finite element solver and post-processor (executables)"
 arch=('i686' 'x86_64')
 options=(!makeflags !buildflags)
@@ -18,8 +18,8 @@ optdepends=('calculix-doc: documentation and examples')
 makedepends=('gcc-fortran' 'perl')
 checkdepends=('perl')
 
-# NOTE: in the current version of the source tarball, the file lbfgsd.f is
-#       missing. I took the file from the previus version. To be removed
+# NOTE: in the current version of the source tarball, some files are
+#       missing. I took the files from the previus version. To be removed
 #       when upstream fixes the issue
 source=("http://www.dhondt.de/ccx_${pkgver}.src.tar.bz2"
         "http://www.dhondt.de/ccx_${pkgver}.test.tar.bz2"
@@ -83,8 +83,7 @@ check()
          'restrictor' 'segment' 'sensitivity_I' 'shell1'
          'shellbeam' 'shellf' 'simplebeam' 'slant' 'spring1' 'spring2'
          'small_pressure_gradient' 'square' 'substructure' 'swing'
-         'thermomech' 'thread' 'transition' 'truss' 'twobeam' 'vortex1'
-         'wire')
+         'thermomech' 'transition' 'truss' 'vortex1' 'wire')
 
   msg "Testing solver..."
   cd ${srcdir}/CalculiX/ccx_${pkgver}/test
