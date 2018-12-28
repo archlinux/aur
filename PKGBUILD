@@ -14,6 +14,7 @@ conflicts=('movim')
 depends=('php-gd' 'php-imagick')
 optdepends=('postgresql: to use the postgresql database backend'
             'php-pgsql: php bindings for postgresql'
+            'php-sqlite: php bindings for sqlite'
             'mariadb: to use the mysql database backend'
             'sqlite3: to use the sqlite database backend'
             'nginx: reverse proxy'

@@ -12,6 +12,7 @@ pkgbase = movim-git
 	depends = php-imagick
 	optdepends = postgresql: to use the postgresql database backend
 	optdepends = php-pgsql: php bindings for postgresql
+	optdepends = php-sqlite: php bindings for sqlite
 	optdepends = mariadb: to use the mysql database backend
 	optdepends = sqlite3: to use the sqlite database backend
 	optdepends = nginx: reverse proxy
