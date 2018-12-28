@@ -2,7 +2,7 @@
 
 pkgname=jtharness
 _version=6.0
-_build=b03
+_build=b04
 pkgver=${_version}_${_build}
 pkgrel=2
 pkgdesc="general purpose, fully-featured, flexible, and configurable test harness very well suited for most types of unit testing"
@@ -19,20 +19,19 @@ conflicts=()
 install=
 _tag=jt${_version}-${_build}
 source=("http://hg.openjdk.java.net/code-tools/jtharness/archive/${_tag}.tar.gz"
-#        "${pkgname}.patch"
+        "${pkgname}.patch"
 )
-sha256sums=('d75778026b2b1edb72f123285ca3ef467aec45e3dea4b2b2316f71b072e38c79')
+sha256sums=('acabdb1ac97644619087351e3aab3292e99c95d08833af239e21fb1a01895a3e'
+            '9ec405ec5c1dc1f545aa60a374aa8fa2abe9152489ace9f266b44f8ab95b0265')
 _jtdir=${pkgname}-jt${_version}-${_build}
 prepare() {
   cd ${srcdir}/${_jtdir}
-#  patch -p1 -i "${srcdir}/${pkgname}.patch"
+  patch -p1 -i "${srcdir}/${pkgname}.patch"
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk ant -f build/build.xml clean
 }
 
 build() {
   cd ${srcdir}/${_jtdir}
-  ln -sf /usr/share/java/junit.jar build/junit-4.10.jar
-  ln -sf /usr/share/java/asm/asm.jar build/asm6.jar
-  ln -sf /usr/share/java/asm/asm-commons.jar build/asm-commons6.jar
   JAVA_HOME=/usr/lib/jvm/java-8-openjdk ant -f build/build.xml
 }
 
@@ -50,4 +49,3 @@ package() {
   mkdir $pkgdir/usr/share/${pkgname}
   ln -sf /usr/share/java/${pkgname} $pkgdir/usr/share/${pkgname}/lib
 }
-

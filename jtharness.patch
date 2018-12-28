@@ -1,0 +1,18 @@
+diff -r d629cdcdba43 build/local.properties
+--- a/build/local.properties	Sun Oct 28 12:25:21 2018 +0000
++++ b/build/local.properties	Fri Dec 28 16:40:32 2018 +0200
+@@ -32,11 +32,11 @@
+ servletjar = servlet-api.jar
+ 
+ # bytecode library
+-asmjar = asm6.jar
+-asmcommonsjar = asm-commons6.jar
++asmjar = /usr/share/java/asm/asm.jar
++asmcommonsjar = /usr/share/java/asm/asm-commons.jar
+ 
+ # JUnit Library - Version 4 currently used to compile 3 and 4 support
+-junitlib = junit-4.10.jar
++junitlib = /usr/share/java/junit.jar
+ 
+ # Please specify location where the build distribution (output) will be created
+ BUILD_DIR = ../JTHarness-build
