@@ -1,6 +1,6 @@
 # Maintainer: Jose Galvez <jose@cybergalvez.com>
 pkgname=insomnio-git
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="keeps computer from fallling asleep"
 arch=('any')
