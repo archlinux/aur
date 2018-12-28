@@ -1,5 +1,5 @@
 pkgname=electrum-ltc-git
-pkgver=3.3.0.1.git20181220.4cdf224
+pkgver=3.3.2.1.git20181226.e62d1c4
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
@@ -31,12 +31,6 @@ pkgver() {
   cd electrum-ltc
   printf %s.git%s "$(grep -om1 '[0-9.]*' electrum_ltc/version.py)" \
                   "$(git log -1 --format=%ad.%h --date=format:%Y%m%d --abbrev=7)"
-}
-
-prepare() {
-  sed -e 's/Exec=.*electrum-ltc %u"/Exec=electrum-ltc %u/' \
-      -e 's/Exec=.*electrum-ltc --testnet %u"/Exec=electrum-ltc --testnet %u/' \
-      -i electrum-ltc/electrum-ltc.desktop
 }
 
 build() {
