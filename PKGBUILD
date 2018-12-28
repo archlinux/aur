@@ -1,14 +1,14 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-pkgname='ksql'
+pkgname=ksql
 pkgdesc='Wrapper for the SQLite C interface focusing on ease correct usage and data integrity'
-pkgver='0.2.5'
-pkgrel='2'
-arch=('x86_64')
+pkgver=0.3.4
+pkgrel=1
+arch=(x86_64)
 url='https://kristaps.bsd.lv/ksql/'
-depends=('sqlite')
-license=('custom:BSD')
+depends=(sqlite)
+license=(custom:BSD)
 source=("https://kristaps.bsd.lv/ksql/snapshots/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('9ec89ad337bbf31aa0ecf3884eb8ceec68dfbdb1f716db56a7c21e8daaee9a0c3a85563758a4647507bbad524478a40ad4cd1c38010ee3e4dcb3bc712617f2e6')
+sha512sums=('9843d68c0d2aced37868dfea84ef3d31d7d3a46c2703f156b0582e8ab7944f41e46adb8b248edec3499ae40e0d21f2544fa934e82b413af6e167f141a660bd83')
 
 build () {
 	cd "${pkgname}-${pkgver}"
