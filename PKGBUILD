@@ -2,14 +2,14 @@
 
 pkgname=jhiccup
 _pkgname=jHiccup
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=2
 arch=('x86_64')
 url="http://www.azulsystems.com/jHiccup"
 license=('custom:BSD-2-clause')
 depends=('java-environment')
 source=(https://www.azul.com/files/$_pkgname-$pkgver-dist.tar.gz ${_pkgname}.sh ${_pkgname}LogProcessor.sh)
-sha256sums=('c4dc4b62f6615829c5771dd2649c2440210d905b9252f07baf39de05be74053b'
+sha256sums=('8fa42ee3a6140f51a2a866e84a1306a96cf70e1cdf49e5cab75bb20ed1b37744'
             '027eb7801d40bfe8881226904cf5ea3def5c5495d55055aac9eaebb55c70272d'
             '4f6513f46ebe693429a86d000fc32b43021ff66bc61317fbf9ff720b1a936898')
 
