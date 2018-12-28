@@ -1,13 +1,15 @@
-# Maintainer: M0Rf30 <morfeo89 [at] hotmail [dot] it>
+# Submitter: M0Rf30 <morfeo89 [at] hotmail [dot] it>
+# Maintainer: Rigo Reddig <rigo.reddig [at] gmail [dot] com>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: Leslie Zhai <xiang.zhai [at] i-soft [dot] com [dot] cn>
+
 
 pkgbase=leap-motion
 pkgname=('leap-motion-driver' 'leap-motion-sdk')
 _major=2.3.1
 _build=31549
 pkgver=${_major}
-pkgrel=4
+pkgrel=5
 pkgdesc="The Leap Motion Developer SDK"
 arch=('i686' 'x86_64')
 url="https://developer.leapmotion.com/downloads"
