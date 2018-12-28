@@ -45,6 +45,8 @@ build() {
 package() {
   cd $srcdir/llvm-$pkgver.src/build
   make DESTDIR=$pkgdir install
+  install -d $pkgdir/usr/lib
+  install -Dm644 Release/lib/libLLVM-*.so $pkgdir/usr/lib/
   install -Dm644 $srcdir/llvm-$pkgver.src/LICENSE.TXT \
     $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
