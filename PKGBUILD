@@ -5,7 +5,7 @@
 # Contributor: soeren <nonick@posteo.de>
 
 pkgname=gummi-gtk2-git
-pkgver=0.6.7
+pkgver=0.6.7.1
 pkgrel=3
 pkgdesc='Simple LaTex editor for GTK users (addtions to the original Gummi include: commenting functionality, cut/duplicate/delete line, reopening previously open files)'
 arch=('x86_64')
