@@ -3,7 +3,7 @@
 # Contributor: ZaZam <zazaamm ät gmail dt com>
 
 pkgname=python2-yle-dl
-pkgver=20181103
+pkgver=20181221
 pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
@@ -27,7 +27,7 @@ makedepends=('python2-setuptools')
 provides=("yle-dl=$pkgver")
 conflicts=('yle-dl')
 source=("yle-dl-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-${pkgver}.tar.gz")
-sha256sums=('8c890067bf20d5b9f38d9808e7e5d984f46ff6df66507c7deebfe9a60d0287b4')
+sha256sums=('8970960816151d0e296c0ab15b9371c0feea444567c59a7b2917bdf5f0de06fd')
 
 build() {
   cd "yle-dl-$pkgver"
