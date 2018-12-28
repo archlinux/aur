@@ -2,7 +2,7 @@ pkgname=pycharm-community-eap
 _buildver=183.5153.12
 _pkgver=2018.3.3
 pkgver=$_pkgver.$_buildver
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build. Community edition.'
 arch=(any)
@@ -30,6 +30,9 @@ build() {
 	StartupNotify=true
 	StartupWMClass=jetbrains-pycharm-ce
 	EOF
+
+	python2 "$srcdir/pycharm-community-$_pkgver/helpers/pydev/setup_cython.py" build_ext --inplace
+	python3 "$srcdir/pycharm-community-$_pkgver/helpers/pydev/setup_cython.py" build_ext --inplace
 }
 
 package() {
