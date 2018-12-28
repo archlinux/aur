@@ -3,14 +3,14 @@
 
 pkgname=libva-intel-driver-g45-h264
 epoch=1
-pkgver=2.1.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="VA-API implementation for Intel G45 chipsets with H264 support."
 arch=('i686' 'x86_64')
 url='https://01.org/linuxmedia/vaapi'
 pkgdesc='Video Acceleration (VA) API for Linux'
 depends=('libdrm' 'libgl' 'glibc' 'libva>=2.0.0')
-conflicts=('libva-intel-driver')
+conflicts=('libva-intel-driver' 'intel-gpu-tools')
 provides=('libva-intel-driver')
 replaces=('libva-intel-driver')
 optdepends=('libva-utils: Applications and Scripts for libva (vainfo and others)')
@@ -39,4 +39,4 @@ package() {
     install -m644 -D COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
 
-sha256sums=('d58f07fd0e229a84e76c435d488df8eff4e85726360064d4f56ebc0d088d7772')
+sha256sums=('59754576de8bc69412ca0554b3a28406b0562cbf2616eca0d3c261528e81c641')
