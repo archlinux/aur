@@ -1,0 +1,14 @@
+pkgbase = ttf-i.ming
+	pkgdesc = An old-style CJK font
+	pkgver = 6.00+1+a3ebddb
+	pkgrel = 1
+	url = https://github.com/ichitenfont/I.Ming
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = git+https://github.com/ichitenfont/I.Ming.git#commit=a3ebddb13de4204d0c39df2946a3b58f9e762e60
+	sha256sums = SKIP
+
+pkgname = ttf-i.ming
+
