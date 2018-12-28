@@ -74,7 +74,7 @@ package() {
   install -m755 -d "$pkgdir/etc/default"
   install -g http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
   install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
-  install -Dm644 "$srcdir/sysuser.conf" "$pkgdir/usr/lib/sysuser.d/movim.conf"
+  install -Dm644 "$srcdir/sysuser.conf" "$pkgdir/usr/lib/sysusers.d/movim.conf"
 }
 
 sha256sums=('SKIP'
