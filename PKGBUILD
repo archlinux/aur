@@ -1,7 +1,7 @@
 # Author: Dominic Radermacher <blip@mockmoon-cybernetics.ch>
 pkgname=ptouch
-pkgver=1.3.4.r10.g5014bf4
-pkgrel=2
+pkgver=1.3.4.r15.g72d1cc7
+pkgrel=1
 pkgdesc="Command line tool to print text or graphic labels on Brother P-touch printers like PT-2430PC"
 arch=('x86_64' 'i686' 'armv7h' 'armv6h')
 url="https://mockmoon-cybernetics.ch/computer/p-touch2430pc/"
