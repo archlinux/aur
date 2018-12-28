@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = boot/vmlinuz-linux*
+
+[Action]
+Description = Adding kernel and initramfs images to /boot...
+When = PostTransaction
+Exec = /bin/bash -c 'shopt -s extglob && . /usr/lib/initcpio/functions && while read -r f; do kernel-install add "$(kver "${f}")" "${f}"; done'
+Depends = bash
+Depends = mkinitcpio
+Depends = systemd
+NeedsTargets

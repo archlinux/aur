@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Upgrade
+Operation = Remove
+Type = File
+Target = boot/vmlinuz-linux*
+
+[Action]
+Description = Removing kernel and initramfs images from /boot...
+When = PreTransaction
+Exec = /bin/bash -c 'shopt -s extglob && . /usr/lib/initcpio/functions && while read -r f; do kernel-install remove "$(kver "${f}")"; done'
+Depends = bash
+Depends = mkinitcpio
+Depends = systemd
+NeedsTargets
