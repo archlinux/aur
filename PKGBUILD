@@ -1,8 +1,8 @@
-pkgbase=('python-pygdbmi')
+pkgbase=python-pygdbmi
 pkgname=('python-pygdbmi')
 _module='pygdbmi'
 pkgver=0.9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Parse gdb machine interface output with Python"
 url="https://github.com/cs01/pygdbmi"
 depends=('python')
