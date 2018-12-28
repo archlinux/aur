@@ -1,7 +1,7 @@
 pkgbase = mlox
 	pkgdesc = A tool for sorting and analyzing Morrowind plugin load order
 	pkgver = 0.62
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mlox/mlox
 	arch = any
 	license = MIT
