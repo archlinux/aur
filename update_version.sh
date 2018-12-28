@@ -21,7 +21,6 @@ VER=$(FULL=1 bash contrib/semver/version.sh | sed 's/^v//')
 popd
 sed -i \
 	-e "s/^pkgver=.*$/pkgver=${VER}/" \
-	-e 's/pkgrel=.*/pkgrel=1/' \
 	PKGBUILD
 
 # Check for real updates
@@ -29,6 +28,14 @@ if (git diff --exit-code PKGBUILD); then
 	echo "Version ${VER} is already in PKGBUILD, not updating"
 	exit 0
 fi
+
+# Reset pkgrel
+sed -i \
+	-e 's/pkgrel=.*/pkgrel=1/' \
+	PKGBUILD
+
+# Update source hashes
+updpkgsums
 
 # Update .SRCINFO
 makepkg --printsrcinfo >.SRCINFO
