@@ -4,7 +4,7 @@
 _pkgauthor=kubeless
 _upstream_pkgname=kubeless
 pkgname=kubeless-git
-pkgver=v1.0.0.r3.g026071aa
+pkgver=v1.0.1.r0.g9a7482bd
 pkgrel=1
 pkgdesc="A Kubernetes-native serverless framework that lets you deploy small bits of code without having to worry about the underlying infrastructure plumbing."
 arch=('x86_64')
