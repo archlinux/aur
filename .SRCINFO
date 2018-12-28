@@ -1,6 +1,6 @@
 pkgbase = hotshots-git
 	pkgdesc = Screenshot tool with some editing features.
-	pkgver = 77181c5
+	pkgver = e3b04ef
 	pkgrel = 1
 	url = http://thehive.xbee.net
 	arch = x86_64

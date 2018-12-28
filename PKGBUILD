@@ -1,5 +1,5 @@
 pkgname=hotshots-git
-pkgver=77181c5
+pkgver=e3b04ef
 pkgrel=1
 pkgdesc="Screenshot tool with some editing features."
 url="http://thehive.xbee.net"
@@ -19,9 +19,9 @@ prepare() {
 
 build() {
     cd "${srcdir}/HotShots/"
-    sed -i "s/\/usr\/local/\/usr/g" hotshots.desktop
     qmake
     make
+    sed -i "s/\/usr\/local/\/usr/g" hotshots.desktop
 }
 
 package() {
