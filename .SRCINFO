@@ -1,0 +1,17 @@
+pkgbase = dropbox-fix
+	pkgdesc = Fix to enable dropbox on non-ext4 filesystems
+	pkgver = r9.7cb9365
+	pkgrel = 1
+	url = https://github.com/dimaryaz/dropbox_ext4
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = dropbox
+	source = dropbox_ext4::git+https://github.com/dimaryaz/dropbox_ext4.git
+	source = dropbox@.service
+	md5sums = SKIP
+	md5sums = 2a087e57448ab4e17ff7f4975305c05a
+
+pkgname = dropbox-fix
+
