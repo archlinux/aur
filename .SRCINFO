@@ -1,0 +1,20 @@
+pkgbase = page-git
+	pkgdesc = pager that utilizes nvim terminal buffer
+	pkgver = v1.8.0.r1.gb67b846
+	pkgrel = 1
+	url = https://github.com/I60R/page
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = neovim
+	depends = gcc-libs
+	provides = page
+	conflicts = page
+	source = git+https://github.com/I60R/page.git
+	md5sums = SKIP
+
+pkgname = page-git
+
