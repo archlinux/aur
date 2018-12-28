@@ -25,9 +25,6 @@ updpkgsums
 # Update .SRCINFO
 makepkg --printsrcinfo >.SRCINFO
 
-# Try a build
-docker run --rm -ti -v "$(pwd):/src" luzifer/arch-repo-builder:latest
-
 # Commit changes
 git add PKGBUILD .SRCINFO
 git commit -m "${PKG} v${VER}"
