@@ -2,7 +2,7 @@
 
 pkgname=system76-dkms
 _pkgname=system76
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="This DKMS driver provides airplane mode, keyboard backlight, and fan support for System76 laptops"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('dkms')
 source=("https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
         'system76.conf')
-sha1sums=('6123093c125e72847271d743787d9597efdf21ca'
+sha1sums=('7cbe207d94145e71ca30a71f14bcf11da22af0b0'
           'f03f2b085eb04bd889778906ee387277751a1f5f')
 
 
