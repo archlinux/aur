@@ -5,8 +5,8 @@
 
 pkgbase=virtualbox-modules-lts
 pkgname=('virtualbox-host-modules-lts' 'virtualbox-guest-modules-lts')
-pkgver=5.2.18
-pkgrel=11
+pkgver=5.2.22
+pkgrel=3
 _linux_major=4
 _linux_minor=14
 arch=('x86_64' 'i686')
