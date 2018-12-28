@@ -1,22 +1,22 @@
 pkgbase = dict-foldoc
 	pkgdesc = The Free On-line Dictionary of Computing for dictd et al.
-	pkgver = 20181127_231140
-	pkgrel = 1
+	pkgver = 20181224_000006
+	pkgrel = 2
 	url = https://foldoc.org/
 	install = dict-foldoc.install
 	arch = any
-	license = FDL1.1+
+	license = custom: FDL1.1+
 	makedepends = dictd
 	makedepends = sed
 	optdepends = dictd: dict client and server
 	provides = dictd-foldoc
 	conflicts = dictd-foldoc
-	source = Dictionary-20181127_231140::https://foldoc.org/Dictionary
-	source = sedfile
-	source = https://www.gnu.org/licenses/old-licenses/fdl-1.1.txt
+	source = Dictionary-20181224_000006::https://foldoc.org/Dictionary
+	source = fix_misspellings.sed
+	source = extract_license.sed
 	sha512sums = SKIP
-	sha512sums = 94f123fc5d7042e918db098f03f31356953ef3cd09ee388d348797d7c61d414a2f3058009e7050490c52b83d529913f862bde29cfa9ddd9b3e273664d01ee4fd
-	sha512sums = 021a3205572254b975b3d3ad8b616010b9419cb1e3d68c54c64e36b898a1409e3561e8a2023e3efc324d1034d10ff316975e8008a56211f9fe43f316a15061d4
+	sha512sums = b68d7356cfa5664de8ca87aa941c208edcec8e79761d616728ff5f9dfbc4878c07cae91fff79872044e889d25d4b63b1b5c36917867d47a8d157815f2840a711
+	sha512sums = fa8c9b2f35ebc01dd5222a953d9507e40a36d3602fcd89f425f727f1e47e068da4e789eed400756b998cd36dfc06c408741c757fb8ec09bc7fbe79bd0304aa21
 
 pkgname = dict-foldoc
 
