@@ -1,6 +1,6 @@
 pkgbase = python-myhdl-git
 	pkgdesc = a Python-Based Hardware Description Language
-	pkgver = 0.10.r11.g49e90cd
+	pkgver = 0.10.r15.ge185577
 	pkgrel = 1
 	url = http://www.myhdl.org/
 	arch = any
