@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=spirv-headers-git
-pkgver=r110.2c51218
-pkgrel=2
+pkgver=r128.4618b86
+pkgrel=1
 pkgdesc='SPIR-V header files Git version'
 arch=('any')
 url='https://www.khronos.org/registry/spir-v/'
