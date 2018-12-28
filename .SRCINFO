@@ -1,6 +1,6 @@
 pkgbase = asmtools
 	pkgdesc = The AsmTools open source project is used to develop tools for the production of proper and improper Java '.class' files.
-	pkgver = 7.0_b05
+	pkgver = 7.0_b06
 	pkgrel = 1
 	url = https://wiki.openjdk.java.net/display/CodeTools/asmtools
 	arch = any
