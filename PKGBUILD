@@ -1,7 +1,7 @@
 # Maintainer: Katie Wolfe <katie@dnaf.moe>
 pkgname=igdm
-pkgver=2.5.4
-pkgrel=2
+pkgver=2.6.1
+pkgrel=1
 pkgdesc="Desktop application for Instagram DMs"
 arch=('x86_64' 'i686')
 url="https://github.com/ifedapoolarewaju/igdm"
@@ -17,8 +17,8 @@ changelog=
 source_x86_64=("https://github.com/ifedapoolarewaju/igdm/releases/download/v$pkgver/IGdm-$pkgver.zip")
 source_i686=("https://github.com/ifedapoolarewaju/igdm/releases/download/v$pkgver/IGdm-$pkgver-ia32.zip")
 noextract=("IGdm-$pkgver.zip" "IGdm-$pkgver-ia32.zip")
-sha256sums_x86_64=('ac6c246771c9c30707e2dd964bbef71f9189ad1b3f400b72faa7e38dbd4015e7')
-sha256sums_i686=('1f7356a47a848e88def24abadcf7ef5ba8e0a26a9404a8766a35d0d39d783b64')
+sha256sums_x86_64=('759f6f167c748619449fbd4a8a4bce179fb46fdf476fa604bc45d61eda5236b2')
+sha256sums_i686=('f93fb32877d40aabd09f173dc2900de2c8bf1da3c3eda5f07f58af76efea8d5a')
 validpgpkeys=()
 
 package() {
