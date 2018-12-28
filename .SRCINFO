@@ -1,0 +1,16 @@
+pkgbase = kwin-decoration-sierra-breeze-enhanced-git
+	pkgdesc = A fork of BreezeEnhanced to make it (arguably) more minimalistic and informative (git version)
+	pkgver = r48.ae89ab8
+	pkgrel = 1
+	url = https://github.com/kupiqu/SierraBreezeEnhanced
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = kwin
+	source = git+https://github.com/kupiqu/SierraBreezeEnhanced.git
+	sha256sums = SKIP
+
+pkgname = kwin-decoration-sierra-breeze-enhanced-git
+
