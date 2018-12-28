@@ -1,0 +1,17 @@
+pkgbase = python-liquidctl
+	pkgdesc = Cross-platform tool and drivers for liquid coolers and other devices
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/jonasmalacofilho/liquidctl
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = libusb
+	source = https://files.pythonhosted.org/packages/source/l/liquidctl/liquidctl-1.1.0.tar.gz
+	md5sums = 1fcf5a49e73c3799f49fb6a977b6cde9
+
+pkgname = python-liquidctl
+	depends = python
+	depends = libusb
+
