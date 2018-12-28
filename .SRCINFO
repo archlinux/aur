@@ -1,0 +1,14 @@
+pkgbase = lsix-git
+	pkgdesc = Like ls but for images, shows thumbnails in terminal using sixel graphics
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/hackerb9/lsix
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = imagemagick
+	source = git+https://github.com/hackerb9/lsix
+	sha256sums = SKIP
+
+pkgname = lsix-git
+
