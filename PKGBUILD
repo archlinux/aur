@@ -6,7 +6,7 @@
 
 pkgname=nextcloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.3.3.r17.g3a48c7c
+pkgver=2.5.1.r24.gac367b21b
 pkgrel=1
 pkgdesc="Nextloud client for linux"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ conflicts=('mirall-git' 'owncloud-client' 'owncloud-client-ngs' 'nextcloud-clien
 options=(!strip)
 backup=('etc/Nextcloud/sync-exclude.lst')
 source=(
-  "${_name}::git+https://github.com/nextcloud/client_theming.git"
+  "${_name}::git+https://github.com/nextcloud/desktop.git"
 )
 sha256sums=(
   'SKIP'
@@ -44,29 +44,22 @@ prepare() {
     git checkout "v${_version}"
   fi
   git submodule update --init --recursive
-  mkdir -p ${srcdir}/${_name}/build-linux
+  mkdir -p build
 }
 
 build() {
-  cd ${srcdir}/${_name}/build-linux
+  cd ${srcdir}/${_name}/build
 
-  cmake -D OEM_THEME_DIR=${srcdir}/${_name}/nextcloudtheme \
-        -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE="Release" \
-        -DCMAKE_INSTALL_SYSCONFDIR=/etc/${_name} \
-        -DWITH_DOC=FALSE \
-        ../client
+        -DWITH_DOC=FALSE 
 
   make
 }
 
-check() {
-  sed -Ei 's/Icon(\[.*\])?=nextcloud/Icon\1=Nextcloud/g' "${srcdir}/nextcloud-client/build-linux/src/gui/nextcloud.desktop"
-}
-
 package() {
-  cd ${srcdir}/${_name}/build-linux
+  cd ${srcdir}/${_name}/build
   make DESTDIR=${pkgdir} install
 
   # Fix some naming issues

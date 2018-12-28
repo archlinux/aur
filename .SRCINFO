@@ -1,6 +1,6 @@
 pkgbase = nextcloud-client-git
 	pkgdesc = Nextloud client for linux
-	pkgver = 2.3.3.r17.g3a48c7c
+	pkgver = 2.5.1.r24.gac367b21b
 	pkgrel = 1
 	url = https://nextcloud.com/
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = nextcloud-client-git
 	conflicts = owncloud-client-git
 	options = !strip
 	backup = etc/Nextcloud/sync-exclude.lst
-	source = nextcloud-client::git+https://github.com/nextcloud/client_theming.git
+	source = nextcloud-client::git+https://github.com/nextcloud/desktop.git
 	sha256sums = SKIP
 
 pkgname = nextcloud-client-git
