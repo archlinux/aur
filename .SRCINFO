@@ -1,12 +1,13 @@
 pkgbase = openwince-include
 	pkgdesc = A collection of the useful independent include files for C/Assembler developers, from the OpenWinCE project
-	pkgver = 0.3.2
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://openwince.sourceforge.net/jtag/
 	arch = i686
+	arch = x86_64
 	license = BSD
-	source = http://downloads.sourceforge.net/openwince/include-0.3.2.tar.bz2
-	md5sums = 2e9c1ae3b9ddc81e52a0f624193ceb64
+	source = https://archive.org/download/include-0.4.2.tar/include-0.4.2.tar.bz2
+	md5sums = e564c941363c958a7cd953ad97c1faa4
 
 pkgname = openwince-include
 
