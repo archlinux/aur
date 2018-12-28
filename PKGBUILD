@@ -1,15 +1,15 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
-pkgname='sblg'
+pkgname=sblg
 pkgdesc='simple off-line blog utility'
-pkgver='0.4.9'
-pkgrel='1'
+pkgver=0.4.17
+pkgrel=1
 url='https://kristaps.bsd.lv/sblg'
 source=("${url}/snapshots/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('435923a75b80137bbdb44dcc35d8138f863dfbe656ca82928bc37044dcf62ffc7d92e81868507d613d65bf8e7a09eb5774ca8bd8a24b47a9f98aad6c7761cd4f')
-depends=('expat')
-makedepends=('gawk')
-license=('custom:ISC')
-arch=('x86_64')
+depends=(expat)
+makedepends=(gawk)
+license=(custom:ISC)
+arch=(x86_64)
+sha512sums=('b137e985dabe1255418d23701302c7de0649815dc8358d4903a869cba0cb0e7805c38e2bf0091bb9f7ea8b4b48ef6b3d3086b1a4b11d472ffc9139dc3d191885')
 
 build () {
 	cd "${pkgname}-${pkgver}"
