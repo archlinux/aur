@@ -1,14 +1,14 @@
 pkgbase = lowpan-tools
 	pkgdesc = set of utils to manage Linux LoWPAN stack
-	pkgver = 0.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = http://sourceforge.net/apps/trac/linux-zigbee/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libnl
-	source = http://downloads.sourceforge.net/linux-zigbee/lowpan-tools-0.3.tar.gz
-	md5sums = 564bdf163de5b33232d751383495a65c
+	source = http://downloads.sourceforge.net/linux-zigbee/lowpan-tools-0.3.1.tar.gz
+	md5sums = a57b6a8ed18b80f57c5d3974391f2bc4
 
 pkgname = lowpan-tools
 
