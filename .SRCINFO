@@ -1,14 +1,14 @@
 pkgbase = etc-update
 	pkgdesc = CLI to interactively merge .pacnew in /etc
-	pkgver = 2.3.52
+	pkgver = 2.3.53
 	pkgrel = 1
 	url = https://wiki.gentoo.org/wiki/Handbook:X86/Portage/Tools#etc-update
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = bash
-	source = https://github.com/gentoo/portage/archive/portage-2.3.52.tar.gz
-	md5sums = 52f6575eba6d49162ecac2dee4bcf0ae
+	source = https://github.com/gentoo/portage/archive/portage-2.3.53.tar.gz
+	md5sums = bff59b9562bbf375428be795ce001db3
 
 pkgname = etc-update
 
