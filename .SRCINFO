@@ -1,7 +1,7 @@
 pkgbase = googleplaydownloader
 	pkgdesc = A graphical software to download APKs from the Google Play store.
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://framagit.org/tuxicoman/googleplaydownloader
 	arch = any
 	license = AGPL

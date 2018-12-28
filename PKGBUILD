@@ -1,7 +1,7 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld.fr>
 pkgname=googleplaydownloader
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical software to download APKs from the Google Play store."
 arch=(any)
 url="https://framagit.org/tuxicoman/googleplaydownloader"
