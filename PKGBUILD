@@ -1,3 +1,5 @@
+# Maintainer: Michael Niewöhner <foss@mniewoehner.de>
+
 pkgname=tpm-quote-tools
 pkgver=1.0.4
 pkgrel=1
@@ -10,15 +12,14 @@ source=("tpm-quote-tools-${pkgver}.tar.gz::https://sourceforge.net/projects/tpmq
 sha1sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  sh bootstrap.sh
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr \
               --sbindir=/usr/bin
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
 }
 
