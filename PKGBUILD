@@ -60,8 +60,9 @@ package() {
 
   # Configuration file
   install -m750 -d "$pkgdir/etc/webapps/$_pkgbase"
-  install -Dm750 config/db.example.inc.php "$pkgdir/etc/webapps/$_pkgbase/db.inc.php"
-  chmod -R u+rwX,g+rwX,o-rwx "$pkgdir/etc/webapps/$_pkgbase"
+  install -Dm640 config/db.example.inc.php "$pkgdir/etc/webapps/$_pkgbase/db.inc.php"
+  chown movim -R "$pkgdir/etc/webapps/$_pkgbase"
+  chmod -R u+rX,g+rX,o-rwx,u-w,g-w "$pkgdir/etc/webapps/$_pkgbase"
   ln -s "/etc/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/config"
 
   # Log files
