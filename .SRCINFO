@@ -1,0 +1,19 @@
+pkgbase = virtualbox-ext-oracle-5
+	pkgdesc = Oracle VM VirtualBox Extension Pack 5.x
+	pkgver = 5.2.22
+	pkgrel = 1
+	url = https://www.virtualbox.org/
+	install = virtualbox-ext-oracle.install
+	arch = any
+	license = custom:PUEL
+	conflicts = virtualbox-ext-oracle
+	conflicts = virtualbox-ext-oracle-5.0
+	noextract = Oracle_VM_VirtualBox_Extension_Pack-5.2.22.vbox-extpack
+	options = !strip
+	source = http://download.virtualbox.org/virtualbox/5.2.22/Oracle_VM_VirtualBox_Extension_Pack-5.2.22.vbox-extpack
+	sha256sums = 779250666551b2f5426e86c2d21ceb0209b46174536971611025f753535131ef
+
+pkgname = virtualbox-ext-oracle-5
+	depends = virtualbox
+	optdepends = rdesktop: client to connect vm via RDP
+
