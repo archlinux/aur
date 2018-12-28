@@ -1,6 +1,6 @@
 pkgbase = python-keeper-commander-git
 	pkgdesc = Module provides SDK for Keeper® Password Manager.
-	pkgver = 2.10
+	pkgver = 2.11
 	pkgrel = 1
 	url = https://github.com/Keeper-Security/Commander
 	arch = any
