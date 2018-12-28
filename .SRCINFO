@@ -1,25 +1,26 @@
 pkgbase = tidb
 	pkgdesc = A distributed HTAP database compatible with the MySQL protocol
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://github.com/pingcap/tidb
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	makedepends = make
+	makedepends = git
 	depends = tikv
 	provides = tidb-server
 	backup = etc/tidb/tidb.toml
-	source = tidb-2.1.0.tar.gz::https://github.com/pingcap/tidb/archive/v2.1.0.tar.gz
+	source = tidb-2.1.2.tar.gz::https://github.com/pingcap/tidb/archive/v2.1.2.tar.gz
 	source = tidb.service
 	source = tidb-sysusers.conf
 	source = tidb-tmpfiles.conf
 	source = tidb.toml
-	sha256sums = b091f427567695eb1e6e8f9897381cb04d638d6b857e2900b3999c23dca6bf7c
+	sha256sums = 414a3fda48e082405cf41bb5978451d0826125ab6e94642c9243657195b0c4e9
 	sha256sums = 22318c19bb89ff5a0852df5186cc1496214cd49f2264192413a326d1e8c93dc9
 	sha256sums = 2b147d80985e714d5f861baf76591104c07058b9b6fa573bf0676d675cf8fc20
 	sha256sums = 30ce83fbec8f102c30e438282bb5b18c026d08480f2386d68f1116c12481bf66
-	sha256sums = 329fc0e0429c42613b653b1d44d237264deefee4734cc464d61d24d9f865dc49
+	sha256sums = a34a8ca1f13c965cc0e872fc671f377b64a80cc11225cd6359bf7415b4c86a06
 
 pkgname = tidb
 
