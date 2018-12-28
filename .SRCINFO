@@ -1,21 +1,21 @@
 pkgbase = studio-3t
 	pkgdesc = The professional workspace for MongoDB (formerly known as MongoChef)
-	pkgver = 2018.4.4
+	pkgver = 2018.6.1
 	pkgrel = 1
 	url = https://studio3t.com
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = unzip
-	depends = java-runtime-openjdk=8
-	depends = java-openjfx
 	depends = gtk2
 	provides = studio-3t
 	replaces = mongochef
-	source_i686 = studio-3t-2018.4.4.tar.gz::https://download.studio3t.com/studio-3t/linux/2018.4.4/studio-3t-linux-x86-no-shell.tar.gz
-	sha256sums_i686 = da954b206e4d4a2c31f3f297c15de1e3557d7110d4d479c3882fb2ec07d39a64
-	source_x86_64 = studio-3t-2018.4.4.tar.gz::https://download.studio3t.com/studio-3t/linux/2018.4.4/studio-3t-linux-x64.tar.gz
-	sha256sums_x86_64 = e4ec05cf9da4ea3e22631c1eee96cb738f34064d62c6d8792041015b1dca4da8
+	source_i686 = studio-3t-2018.6.1.tar.gz::https://download.studio3t.com/studio-3t/linux/2018.6.1/studio-3t-linux-x86-no-shell.tar.gz
+	depends_i686 = java-runtime-openjdk=8
+	depends_i686 = java-openjfx
+	sha256sums_i686 = d528914393520670132deef47ddbc8f04120f5df81f6fa77cbdeac7cdfa77188
+	source_x86_64 = studio-3t-2018.6.1.tar.gz::https://download.studio3t.com/studio-3t/linux/2018.6.1/studio-3t-linux-x64.tar.gz
+	sha256sums_x86_64 = f4dde76b4407f63a0ca4f04cac9318aec3ba6be56e54a601810a616f3698dfae
 
 pkgname = studio-3t
 
