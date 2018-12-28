@@ -1,17 +1,17 @@
 # Maintainer: juantascon <juantascon.aur@horlux.org>
 
 pkgname=cmake-uselatex
-pkgver=2.4.6
-pkgrel=3
+pkgver=2.4.9
+pkgrel=1
 pkgdesc="CMAKE commands to actually use the LaTeX compiler"
 arch=(any)
-url="http://www.cmake.org/Wiki/CMakeUserUseLATEX"
-license=('GPL')
+url="https://gitlab.kitware.com/kmorel/UseLATEX/"
+license=('BSD3')
 depends=(cmake)
-source=(http://www.cmake.org/Wiki/images/8/80/UseLATEX.cmake)
-sha256sums=('2fb3827940d08ad3dd88c0a0eb862c226190fe3295977c1b1186fa97f964253c')
+source=("https://gitlab.kitware.com/kmorel/UseLATEX/raw/Version${pkgver}/UseLATEX.cmake")
+sha256sums=('f1a9ea8954a8714ab19b970f02ec3cf895b6f1b6d7f6a341fec8d09aedf37fbf')
 
 package() {
     cd "$srcdir"
-    install -D UseLATEX.cmake ${pkgdir}/usr/share/cmake-3.12/Modules/UseLATEX.cmake || return 1
+    install -D UseLATEX.cmake ${pkgdir}/usr/share/cmake-3.13/Modules/UseLATEX.cmake || return 1
 }
