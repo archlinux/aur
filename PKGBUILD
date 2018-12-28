@@ -1,7 +1,7 @@
 # Maintainer: Jens L. Nedregård <jens@nedregard.net>
 pkgname=lsix
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Like "ls", but for images. Shows thumbnails in terminal using sixel graphics.'
 arch=("any")
 url="https://github.com/hackerb9/lsix"
