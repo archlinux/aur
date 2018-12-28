@@ -6,9 +6,9 @@
 # Contributor: prophy <4prophy@gmail.com>
 # Contributor: carstene1ns <carsten.1 gmx net>
 pkgname='pyload-git'
-pkgver=v0.4.9.r4238.g24782b8c0
+pkgver=v0.4.9.1
 pkgrel=19
-pkgdesc="Downloadtool for One-Click-Hoster written in python. Latest stable branch"
+pkgdesc="Downloadtool for One-Click-Hoster written in python"
 url="https://github.com/pyload/pyload"
 license=('GPL')
 arch=('any')
