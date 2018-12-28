@@ -1,6 +1,6 @@
-diff -ur CalculiX_orig/ccx_2.14/src/Makefile CalculiX/ccx_2.14/src/Makefile
---- CalculiX_orig/ccx_2.14/src/Makefile
-+++ CalculiX/ccx_2.14/src/Makefile
+diff -ur CalculiX_orig/ccx_2.15/src/Makefile CalculiX/ccx_2.15/src/Makefile
+--- CalculiX_orig/ccx_2.15/src/Makefile
++++ CalculiX/ccx_2.15/src/Makefile
 @@ -2,2 +2,2 @@ 
 -CFLAGS = -Wall -O3 -I ../../../SPOOLES.2.2 -DARCH="Linux" -DSPOOLES -DARPACK -DMATRIXSTORAGE -DNETWORKOUT
 +CFLAGS = -Wall -O3 -fopenmp -I /usr/include/spooles -DARCH="Linux" -DSPOOLES -DARPACK -DMATRIXSTORAGE -DNETWORKOUT
@@ -13,9 +13,9 @@ diff -ur CalculiX_orig/ccx_2.14/src/Makefile CalculiX/ccx_2.14/src/Makefile
 -	../../../ARPACK/libarpack_INTEL.a \
 -       -lpthread -lm -lc
 +LIBS = -lpthread -lm -lc -lspooles -larpack -lblas
-diff -ur CalculiX_orig/cgx_2.14.1/src/Makefile CalculiX/cgx_2.14.1/src/Makefile
---- CalculiX_orig/cgx_2.14.1/src/Makefile
-+++ CalculiX/cgx_2.14.1/src/Makefile
+diff -ur CalculiX_orig/cgx_2.15/src/Makefile CalculiX/cgx_2.15/src/Makefile
+--- CalculiX_orig/cgx_2.15/src/Makefile
++++ CalculiX/cgx_2.15/src/Makefile
 @@ -1,14 +1,8 @@
  CFLAGS = -O3 -Wall \
    -I./ \
@@ -37,26 +37,26 @@ diff -ur CalculiX_orig/cgx_2.14.1/src/Makefile CalculiX/cgx_2.14.1/src/Makefile
 @@ -59,1 +53,1 @@
 - ../../libSNL/src/*.cpp
 +# ../../libSNL/src/*.cpp
-diff -ur CalculiX_orig/cgx_2.14.1/src/cgx.h CalculiX/cgx_2.14.1/src/cgx.h
---- CalculiX_orig/cgx_2.14.1/src/cgx.h
-+++ CalculiX/cgx_2.14.1/src/cgx.h
+diff -ur CalculiX_orig/cgx_2.15/src/cgx.h CalculiX/cgx_2.15/src/cgx.h
+--- CalculiX_orig/cgx_2.15/src/cgx.h
++++ CalculiX/cgx_2.15/src/cgx.h
 @@ -81,8 +81,8 @@
  #elif defined AFLIB
--  #define     HELPFILE        {"/usr/local/CalculiX/cgx_2.14.1/doc/cgx/cgx.html",\
--    "/usr/local/CalculiX/ccx_2.14/doc/ccx/ccx.html",\
+-  #define     HELPFILE        {"/usr/local/CalculiX/cgx_2.15/doc/cgx/cgx.html",\
+-    "/usr/local/CalculiX/ccx_2.15/doc/ccx/ccx.html",\
 -    "/usr/local/CalculiX/cgx_2.8/doc/aflib/aflib.pdf"}
 +  #define     HELPFILE        {"/usr/share/doc/cgx/cgx.html",\
 +    "/usr/share/doc/doc/ccx/ccx.html",\
 +    "/usr/share/doc/doc/aflib/aflib.pdf"}
  #else
--  #define     HELPFILE        {"/usr/local/CalculiX/cgx_2.14.1/doc/cgx/cgx.html",\
--    "/usr/local/CalculiX/ccx_2.14/doc/ccx/ccx.html"}
+-  #define     HELPFILE        {"/usr/local/CalculiX/cgx_2.15/doc/cgx/cgx.html",\
+-    "/usr/local/CalculiX/ccx_2.15/doc/ccx/ccx.html"}
 +  #define     HELPFILE        {"/usr/share/doc/cgx/cgx.html",\
 +    "/usr/share/doc/ccx/ccx.html"}
  #endif
-diff -ur CalculiX_orig/cgx_2.14.1/src/uselibSNL.h CalculiX/cgx_2.14.1/src/uselibSNL.h
---- CalculiX_orig/cgx_2.14.1/src/uselibSNL.h
-+++ CalculiX/cgx_2.14.1/src/uselibSNL.h
+diff -ur CalculiX_orig/cgx_2.15/src/uselibSNL.h CalculiX/cgx_2.15/src/uselibSNL.h
+--- CalculiX_orig/cgx_2.15/src/uselibSNL.h
++++ CalculiX/cgx_2.15/src/uselibSNL.h
 @@ -8,1 +8,3 @@
  #include <cgx.h>
 +#undef max
