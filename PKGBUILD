@@ -3,11 +3,11 @@
 
 _pkgname=asm
 pkgname=java-${_pkgname}
-pkgver=6.2.1
+pkgver=7.0
 pkgrel=1
 pkgdesc="An all purpose Java bytecode manipulation and analysis framework"
 arch=('any')
-url="http://asm.ow2.org/"
+url="https://asm.ow2.io/"
 license=('BSD')
 depends=('java-runtime')
 _maven_central='http://repo.apache.maven.org/maven2'
@@ -16,7 +16,7 @@ source=("${_maven_central}/org/ow2/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}
         "${_maven_central}/org/ow2/${_pkgname}/${_pkgname}-commons/${pkgver}/${_pkgname}-commons-${pkgver}.jar"
         "${_maven_central}/org/ow2/${_pkgname}/${_pkgname}-tree/${pkgver}/${_pkgname}-tree-${pkgver}.jar"
         "${_maven_central}/org/ow2/${_pkgname}/${_pkgname}-util/${pkgver}/${_pkgname}-util-${pkgver}.jar"
-        "${_maven_central}/org/ow2/${_pkgname}/${_pkgname}-xml/${pkgver}/${_pkgname}-xml-${pkgver}.jar"
+        "${_maven_central}/org/ow2/${_pkgname}/${_pkgname}-test/${pkgver}/${_pkgname}-test-${pkgver}.jar"
         LICENSE)
 
 
@@ -34,10 +34,10 @@ package() {
   done
 }
 
-sha256sums=('1460db6c33cc99c84e5cb30e46b017e4d1cc9a7fbc174101d6f84829bb64c085'
-            '4c9342c98e746e9c2d7f2cdc6896f7348317e9b1e5a6c591047fc8969def4b23'
-            '3f578d31ef30f94b6d1f44812f41fe4f98a7cd42af35335f5d4866ab3b901865'
-            'a520b54c7be4e07e533db8420ddf936fe8341ff56a5df255bab584478dd90aab'
-            'f747f70912e918872c0fe07ef227ff03b2b38fde94778502df7af133f8c8fcc6'
-            '361d2018f3262698c94837fcdea91059b2afeba11ecc109f618979561c36ebbf'
+sha256sums=('b88ef66468b3c978ad0c97fd6e90979e56155b4ac69089ba7a44e9aa7ffe9acf'
+            'e981f8f650c4d900bb033650b18e122fa6b161eadd5f88978d08751f72ee8474'
+            'fed348ef05958e3e846a3ac074a12af5f7936ef3d21ce44a62c4fa08a771927d'
+            'cfd7a0874f9de36a999c127feeadfbfe6e04d4a71ee954d7af3d853f0be48a6c'
+            '75fbbca440ef463f41c2b0ab1a80abe67e910ac486da60a7863cbcb5bae7e145'
+            '004997b99fe2648261cd57c6a7fc7b598bf22e20e2a8f05cbec989fa4772167f'
             '02f021ae8f8f2f205d36b20790eedd6a871dd3007ddf160c8692b6f3a3284fc7')
