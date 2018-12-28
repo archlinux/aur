@@ -2,10 +2,10 @@
 pkgname=libdiff
 pkgdesc='C library to generate arbitrary sequence diffs'
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 url='https://github.com/kristapsdz/libdiff'
 arch=(x86_64)
-depends=(zlib)
+makedepends=(glibc)
 license=(custom:MIT)
 source=("https://kristaps.bsd.lv/${pkgname}/snapshots/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('373b3f1a0d6146b2c1ff68d790cd5ba0f38b3a199e96f1da6ceee978e16d27508ea48678e804bcaba435c3c0a4317b01c98f90b3915385edbe73aedab455bbab')
