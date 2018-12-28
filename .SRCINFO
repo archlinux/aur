@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-clang-git
+	pkgdesc = MinGW clang wrapper (wclang)
+	pkgver = r94.7eee3ab
+	pkgrel = 1
+	url = https://github.com/tpoechtrager/wclang
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = mingw-w64-gcc
+	depends = clang
+	provides = mingw-w64-clang
+	conflicts = mingw-w64-clang
+	source = git+https://github.com/tpoechtrager/wclang.git
+	md5sums = SKIP
+
+pkgname = mingw-w64-clang-git
+
