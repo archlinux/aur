@@ -2,7 +2,7 @@
 
 pkgname=ffaudioconverter
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical audio converter"
 arch=('i686' 'x86_64')
 url="https://github.com/Bleuzen/FFaudioConverter/"
