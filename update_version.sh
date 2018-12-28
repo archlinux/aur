@@ -10,7 +10,6 @@ VER=$(curl -sSfL "https://lv.luzifer.io/catalog-api/nerd-fonts/latest.txt?p=vers
 # Insert latest version into PKGBUILD
 sed -i \
 	-e "s/^pkgver=.*/pkgver=${VER}/" \
-	-e 's/pkgrel=.*/pkgrel=1/' \
 	PKGBUILD
 
 # Check whether this changed anything
@@ -18,6 +17,11 @@ if (git diff --exit-code PKGBUILD); then
 	echo "Package ${PKG} has most recent version ${VER}"
 	exit 0
 fi
+
+# Reset pkgrel
+sed -i \
+	-e 's/pkgrel=.*/pkgrel=1/' \
+	PKGBUILD
 
 # Update source hashes
 updpkgsums
