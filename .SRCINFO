@@ -1,6 +1,6 @@
 pkgbase = pacman-kernel-install-git
 	pkgdesc = pacman hooks for kernel-install
-	pkgver = r20.29f5c94
+	pkgver = r1.79dfc1c
 	pkgrel = 1
 	url = https://gitlab.com/crazyh/pacman-kernel-install
 	arch = any
