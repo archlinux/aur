@@ -1,6 +1,6 @@
 pkgbase = firefox-beta-bin-all-localizations
 	pkgdesc = Perl script for installing latest FF beta in the language of your choice
-	pkgver = 65.0b6
+	pkgver = 65.0b7
 	pkgrel = 1
 	url = https://www.mozilla.com/firefox/channel/#beta
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = firefox-beta-bin-all-localizations
 	optdepends = hyphen: Hyphenation
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
-	provides = firefox=65.0b6
+	provides = firefox=65.0b7
 	conflicts = firefox-beta-bin
 	source = firefox-beta-bin.desktop
 	source = ff-downloader.pl
