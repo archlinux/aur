@@ -1,19 +1,19 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='VHDL compiler and simulator'
 pkgname=nvc
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 url='https://github.com/nickg/nvc'
-license=('GPL3')
-depends=('llvm' 'tcl' 'libelf')
-conflicts=('nvc-git')
-arch=('x86_64' 'i686')
-makedepends=('pkgconfig' 'make' 'flex' 'check')
+license=(GPL3)
+depends=(libelf llvm6-libs)
+conflicts=(nvc-git)
+arch=(x86_64 i686)
+makedepends=(pkgconfig make flex check llvm6 tcl)
 
 _vital_url='https://raw.githubusercontent.com/tgingold/ghdl/master/libraries/vital2000'
 
 source=("${url}/releases/download/r${pkgver}/${pkgname}-${pkgver}.tar.gz"
-		"https://standards.ieee.org/downloads/1076.2-1996_downloads.zip"
+		"https://standards.ieee.org/content/dam/ieee-standards/standards/web/download/1076.2-1996_downloads.zip"
 		"${_vital_url}/timing_p.vhdl"
 		"${_vital_url}/timing_b.vhdl"
 		"${_vital_url}/prmtvs_p.vhdl"
@@ -21,7 +21,7 @@ source=("${url}/releases/download/r${pkgver}/${pkgname}-${pkgver}.tar.gz"
 		"${_vital_url}/memory_p.vhdl"
 		"${_vital_url}/memory_b.vhdl")
 
-sha512sums=('5f535d0dd96119d41604dbd604f9a4d99d6afd47fd582d3522baf2ca40029ac71690ca32ef3b1963335cff1174d76dbf948410fc3e45c704caca83b1ff44415d'
+sha512sums=('4450f035c0355befa18636748b7eddb0a4710d4db3b38dfba581ecfc5f1bdaa02ddcbcc1b5cbe42cfcb23688288095c9d06f83e240b8ae59c65163c5db61aba6'
             '428ebaaa02eb25240569c90e907828ce87e7a18e3a61d9809dda8ecc0bb46a59d0d6c15e625cc0d8e92b26d37dae3be68b480acc77326c07b763fd986bd8e563'
             'bdc38f3f3b5f9b0e572277e8a984361fec7fc877db7ee819bfe4cc9de0f101e53d52472b39b0d3b2c931b50af942378002481dff8e4b99732823ec8d364abe12'
             'affb483b7a2c2cf8e99619696289f578ff0c28b980d3807d9d3b815874af94ccaeb92adb9415409256b1ddd399cc64eefa52648a42913259af275eea871547b3'

@@ -1,6 +1,8 @@
+/*.log
 /*.tar
 /*.tar.*
 /*.zip
 /*.vhdl
 /pkg/
 /src/
+/work/
