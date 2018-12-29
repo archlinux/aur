@@ -1,7 +1,7 @@
 pkgbase = ndpi
 	pkgdesc = Open and Extensible GPLv3 Deep Packet Inspection Library
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ntop.org/products/ndpi/
 	arch = i686
 	arch = x86_64
