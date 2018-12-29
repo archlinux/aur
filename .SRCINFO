@@ -1,7 +1,7 @@
 pkgbase = libgaminggear
 	pkgdesc = Provides functionality for gaming input devices
 	pkgver = 0.15.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sourceforge.net/projects/libgaminggear/
 	arch = i686
 	arch = x86_64
