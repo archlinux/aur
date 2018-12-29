@@ -97,7 +97,7 @@ index 0e288bf..42252b5 100644
          <Item2 ID="292782621389" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
          <Item3 ID="321585814677" Type="IDEMacro" MacroName="LCLWidgetType" Value="carbon"/>
 diff --git a/src/fmain.pas b/src/fmain.pas
-index 05676c4..7fe11c3 100644
+index 05676c4..0f288db 100644
 --- a/src/fmain.pas
 +++ b/src/fmain.pas
 @@ -3283,7 +3283,16 @@ begin
@@ -110,7 +110,7 @@ index 05676c4..7fe11c3 100644
 +    {$IFDEF UNIX}
 +      SetDefaultLang(deflanguage,'/usr/share/awgg/languages');
 +    {$ELSE}
-+      {$FATAL 'Define NOT_STANDALONE in a not UNIX system.' }
++      {$FATAL 'NOT_STANDALONE it defined in a system that is not UNIX.' }
 +    {$ENDIF}
 +  {$ELSE}
 +       SetDefaultLang(deflanguage);
@@ -127,7 +127,7 @@ index 05676c4..7fe11c3 100644
 +      {$IFDEF UNIX}
 +        if FindFirst(UTF8ToSys('/usr/share/awgg/languages/awgg.*.po'),faAnyFile,itemfile)=0 then
 +      {$ELSE}
-+        {$FATAL 'Define NOT_STANDALONE in a not UNIX system.' }
++        {$FATAL 'NOT_STANDALONE it defined in a system that is not UNIX.' }
 +      {$ENDIF}
 +    {$ELSE}
 +      if FindFirst(ExtractFilePath(UTF8ToSys(Application.Params[0]))+pathdelim+'languages'+pathdelim+'awgg.*.po',faAnyFile,itemfile)=0 then
@@ -144,7 +144,7 @@ index 05676c4..7fe11c3 100644
 +    {$IFDEF UNIX}
 +      SetDefaultLang(deflanguage,'/usr/share/awgg/languages');
 +    {$ELSE}
-+      {$FATAL 'Define NOT_STANDALONE in a not UNIX system.' }
++      {$FATAL 'NOT_STANDALONE it defined in a system that is not UNIX.' }
 +    {$ENDIF}
 +  {$ELSE}
 +       SetDefaultLang(deflanguage);
@@ -161,7 +161,7 @@ index 05676c4..7fe11c3 100644
 +      {$IFDEF UNIX}
 +        if FindFirst(UTF8ToSys('/usr/share/awgg/languages/awgg.*.po'),faAnyFile,itemfile)=0 then
 +      {$ELSE}
-+        {$FATAL 'Define NOT_STANDALONE in a not UNIX system.' }
++        {$FATAL 'NOT_STANDALONE it defined in a system that is not UNIX.' }
 +      {$ENDIF}
 +    {$ELSE}
 +      if FindFirst(ExtractFilePath(UTF8ToSys(Application.Params[0]))+pathdelim+'languages'+pathdelim+'awgg.*.po',faAnyFile,itemfile)=0 then
@@ -178,7 +178,7 @@ index 05676c4..7fe11c3 100644
 +    {$IFDEF UNIX}
 +      SetDefaultLang(deflanguage,'/usr/share/awgg/languages');
 +    {$ELSE}
-+      {$FATAL 'Define NOT_STANDALONE in a not UNIX system.' }
++      {$FATAL 'NOT_STANDALONE it defined in a system that is not UNIX.' }
 +    {$ENDIF}
 +  {$ELSE}
 +       SetDefaultLang(deflanguage);

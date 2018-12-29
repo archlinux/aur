@@ -6,7 +6,7 @@ pkgname=$pkgbase
 
 pkgver=d3e7088
 
-pkgrel=1
+pkgrel=2
 
 _gitname=AWGG
 
