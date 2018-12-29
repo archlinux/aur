@@ -1,10 +1,9 @@
 pkgbase = virtualbox-bin
 	pkgdesc = Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)
-	pkgver = 5.2.22
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://www.virtualbox.org/
 	install = virtualbox-bin.install
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = linux-headers
@@ -21,7 +20,7 @@ pkgbase = virtualbox-bin
 	optdepends = virtualbox-ext-oracle: for Oracle extensions
 	optdepends = linux-headers: build the module for Arch kernel
 	optdepends = linux-lts-headers: build the module for LTS Arch kernel
-	provides = virtualbox=5.2.22
+	provides = virtualbox=6.0.0
 	provides = virtualbox-sdk
 	provides = VIRTUALBOX-HOST-MODULES
 	provides = virtualbox-host-dkms
@@ -32,12 +31,13 @@ pkgbase = virtualbox-bin
 	conflicts = virtualbox-host-modules-arch
 	replaces = virtualbox_bin
 	replaces = virtualbox-sun
-	noextract = VirtualBoxSDK-5.2.22-126460.zip
+	noextract = VirtualBoxSDK-6.0.0-127566.zip
 	options = !strip
 	options = !emptydirs
 	backup = etc/vbox/vbox.cfg
 	backup = etc/conf.d/vboxweb
-	source = https://download.virtualbox.org/virtualbox/5.2.22/VirtualBoxSDK-5.2.22-126460.zip
+	source = http://download.virtualbox.org/virtualbox/6.0.0/VirtualBox-6.0.0-127566-Linux_amd64.run
+	source = https://download.virtualbox.org/virtualbox/6.0.0/VirtualBoxSDK-6.0.0-127566.zip
 	source = VBoxAuth-r75085.h::https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=75085
 	source = VBoxAuthPAM-r75085.c::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=75085
 	source = VBoxAuthSimple-r75085.cpp::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=75085
@@ -48,7 +48,8 @@ pkgbase = virtualbox-bin
 	source = do_dkms
 	source = dkms.conf
 	source = 009-include-path.patch
-	sha256sums = b15fc5330d435834c1a683c63b4117feb7cb96a02a30a0c034b8c4c746c93259
+	sha256sums = b81461f3662af4e94992d224cdcf4aedb161a9d84458689c06d1fe6fc28686c9
+	sha256sums = b12fec50d87dcdcef1be9cb4e0f0de55ceeea3a5580fb5fe78d9e29f6898c8c5
 	sha256sums = 23e3e0e6abfaa69bf0aa046c0ee070d19435b97cb4bfbb16bba65a2783502154
 	sha256sums = 815f6e2e3ab687356aad0e6f59eef6e266514fb12a6b569d239d834e0a480f37
 	sha256sums = 99deff35d8a600f20223b96ba409451834e58ac21a589a989dd82a2d6fe006ae
@@ -59,10 +60,6 @@ pkgbase = virtualbox-bin
 	sha256sums = cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a
 	sha256sums = e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801
 	sha256sums = 5112f0e1ba3bd0bd92ef2edb2d21024e265abb02841aa29aa05410526adc273f
-	source_i686 = http://download.virtualbox.org/virtualbox/5.2.22/VirtualBox-5.2.22-126460-Linux_x86.run
-	sha256sums_i686 = df4b30195b2fb25c30085349e8abf5bd8c286973bed933075b7963c52e2e767e
-	source_x86_64 = http://download.virtualbox.org/virtualbox/5.2.22/VirtualBox-5.2.22-126460-Linux_amd64.run
-	sha256sums_x86_64 = e48984cf0cc0dc0dd7035519fe747b77544e3fb6ac17cecbf934c7eef7224088
 
 pkgname = virtualbox-bin
 
