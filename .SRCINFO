@@ -1,6 +1,6 @@
 pkgbase = planck
 	pkgdesc = A stand-alone ClojureScript REPL
-	pkgver = 2.17.0
+	pkgver = 2.19.0
 	pkgrel = 1
 	url = http://planck-repl.org/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = planck
 	depends = libzip
 	depends = zlib
 	conflicts = planck-git
-	source = https://github.com/mfikes/planck/archive/2.17.0.tar.gz
-	sha256sums = c7907add05bc552fc2c298c27b53978ecd1f656c89bdfbe3c7569b9afc7e6377
+	source = https://github.com/mfikes/planck/archive/2.19.0.tar.gz
+	sha256sums = bb33984f986a7ac68b331cfd64bd0f9e41daf5391b1a36e158e15d94d886dd04
 
 pkgname = planck
 
