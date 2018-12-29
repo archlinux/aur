@@ -17,6 +17,7 @@ pkgbase = ntopng
 	depends = libmariadbclient
 	depends = libpcap
 	depends = sqlite
+	depends = libmaxminddb
 	source = https://github.com/ntop/ntopng/archive/3.8.tar.gz
 	source = https://github.com/ntop/nDPI/archive/2.6.tar.gz
 	source = ntopng@.service
