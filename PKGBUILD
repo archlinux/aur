@@ -4,7 +4,7 @@
 
 pkgname='borgmatic'
 pkgver=1.2.14
-pkgrel=4
+pkgrel=5
 pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
 arch=('any')
 url='https://torsion.org/borgmatic/'
@@ -36,8 +36,8 @@ prepare() {
 check() {
   cd "${pkgname}"
 
-  export PATH="${PATH}:${_pytestdir}/usr/bin"
-  export PYTHONPATH="${PYTHONPATH}:${_pytestdir}/usr/lib/python*/site-packages/"
+  export PATH="${_pytestdir}/usr/bin:${PATH}"
+  export PYTHONPATH="${_pytestdir}/usr/lib/python*/site-packages:${PYTHONPATH}"
 
   pytest
 }
