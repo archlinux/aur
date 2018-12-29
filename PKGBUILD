@@ -2,7 +2,7 @@
 pkgname=sensu-go-backend
 pkgver=5.1.0
 _pkgver=5.1.0-0ubuntu18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sensu Go Backend"
 arch=('x86_64')
 url='https://sensu.io'
