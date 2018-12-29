@@ -11,7 +11,7 @@ pkgdesc="Python interface for the GNU Data Language(GDL)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
 license=('GPL')
-depends=('gnudatalanguage=0.9.8')
+depends=("gnudatalanguage=${pkgver}")
 makedepends=('cmake')
 options=('!makeflags')
 source=("http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}.tgz"
