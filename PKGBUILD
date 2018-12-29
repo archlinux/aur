@@ -10,8 +10,8 @@ pkgdesc='Simple game launcher for GNOME'
 arch=('x86_64')
 license=('GPL3')
 url='https://wiki.gnome.org/Apps/Games'
-depends=('grilo' 'libmanette' 'retro-gtk' 'tracker')
-makedepends=('meson' 'vala')
+depends=('grilo' 'libhandy' 'libmanette' 'retro-gtk' 'tracker')
+makedepends=('libhandy' 'meson' 'vala')
 source=("git+https://gitlab.gnome.org/GNOME/gnome-games.git")
 sha256sums=(SKIP)
 
