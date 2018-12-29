@@ -1,5 +1,6 @@
-# Maintainer: makz <contact+aur@makz.me>
-# Maintainer: Light2Yellow <oleksii.vilchanskyi@gmail.com>
+# Maintainer: Tasos Sahanidis <aur@tasossah.com>
+# Contributor: makz <contact+aur@makz.me>
+# Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 
 pkgname=ckb-next-git
 pkgver=0.3.2.r13.g448f337
