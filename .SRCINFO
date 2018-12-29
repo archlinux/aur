@@ -1,0 +1,15 @@
+pkgbase = qt-mpris-git
+	pkgdesc = Qt and QML MPRIS interface and adaptor
+	pkgver = r27.7251898
+	pkgrel = 1
+	url = https://github.com/nemomobile/qtmpris
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = qt5-base
+	depends = qt-dbus-extended-git
+	source = git+https://github.com/nemomobile/qtmpris.git
+	sha256sums = SKIP
+
+pkgname = qt-mpris-git
+
