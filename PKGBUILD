@@ -1,29 +1,28 @@
 # Maintainer: robertfoster
 
 pkgname=ndpi
-pkgver=2.4
-pkgrel=2
+pkgver=2.6
+pkgrel=1
 pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
 arch=('i686' 'x86_64')
 url="http://www.ntop.org/products/ndpi/"
 license=('GPL3')
 conflicts=('ndpi-svn')
 options=('staticlibs' '!strip')
-source=("https://github.com/ntop/nDPI/archive/$pkgver.tar.gz"
-	make-patch)
+source=("https://github.com/ntop/nDPI/archive/$pkgver.tar.gz")
 
 build() {
-  cd ${srcdir}/nDPI-$pkgver
-  patch -Np1 -i ../make-patch
-  ./autogen.sh
-  ./configure --prefix=/usr --with-pic --includedir=/usr/include --libdir=/usr/lib
-  make
+    cd ${srcdir}/nDPI-$pkgver
+    # Remove hardcoded path
+    sed -i "s|\/usr\/local|\/usr|g" src/lib/Makefile.in example/Makefile.in
+    ./autogen.sh
+    ./configure --prefix=/usr --with-pic --includedir=/usr/include --libdir=/usr/lib
+    make
 }
 
 package() {
-  cd ${srcdir}/nDPI-$pkgver
-  make DESTDIR="${pkgdir}" install
+    cd ${srcdir}/nDPI-$pkgver
+    make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('110478950391bbe8b25201c6a09e2516'
-         '5b359b62300accf27087060a853f04c8')
+md5sums=('1602d7921ba2e6619e97fa2038f82a52')
