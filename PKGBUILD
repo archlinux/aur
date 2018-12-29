@@ -1,38 +1,30 @@
-# Maintainer: Tom Richards <tom@tomrichards.net>
+# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Tom Richards <tom@tomrichards.net>
 # Contributor: TingPing <tingping@tingping.se>
 
-_gitname=gnome-games
 pkgname=gnome-games-git
-pkgver=3.21.92.r15.g58aac8e
+pkgver=3.31.3.r11.g56650a82
 pkgrel=1
-pkgdesc='A game manager application for GNOME'
-arch=('i686' 'x86_64')
+pkgdesc='Simple game launcher for GNOME'
+arch=('x86_64')
 license=('GPL3')
 url='https://wiki.gnome.org/Apps/Games'
-install='gnome-games.install'
-# Arch has a group named gnome-games.. rather unfortunate naming
-#provides=('gnome-games')
-#conflicts=('gnome-games')
-depends=('retro-gtk' 'libarchive' 'libtracker-sparql')
-makedepends=('git' 'intltool' 'automake' 'autoconf' 'vala')
-source=('git+https://git.gnome.org/browse/gnome-games/')
-sha256sums=('SKIP')
+depends=('grilo' 'libmanette' 'retro-gtk' 'tracker')
+makedepends=('meson' 'vala')
+source=("git+https://gitlab.gnome.org/GNOME/gnome-games.git")
+sha256sums=(SKIP)
 
 pkgver() {
-	cd "$_gitname"
-
-	git describe --tags --long | sed 's/-/.r/; s/-/./'
+    cd gnome-games
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$_gitname"
-
-	./autogen.sh --prefix=/usr
-	make
+    arch-meson gnome-games build
+    ninja -C build
 }
 
 package() {
-	cd "$_gitname"
-
-	DESTDIR="$pkgdir" make install
+    DESTDIR="$pkgdir" ninja -C build install
 }
