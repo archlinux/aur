@@ -2,12 +2,14 @@ post_install() {
     post_upgrade
 }
 
-post_remove() {
-    killall -q asterisk
+pre_remove() {
+    systemctl stop asterisk.service
 }
 
 
 post_upgrade() {
+    systemd-sysusers
+
     chown -R asterisk:asterisk /etc/asterisk
     chown -R asterisk:asterisk /var/lib/asterisk
     chown -R asterisk:asterisk /var/log/asterisk
