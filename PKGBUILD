@@ -2,7 +2,7 @@
 # Contributor: Bruce Zhang <zttt183525594@gmail.com>
 
 pkgname=mcfly
-pkgver=0.2.5
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Fly through your shell history"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('sh')
 makedepends=('rust' 'cargo')
 install=mcfly.install
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cantino/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6dceb25539ef3af4136d1011cdca0c1acee22eebb9b8eec1442c1e69024e9316')
+sha256sums=('c7ba5868923c1f2e4589fec5c9f88a337d5248d48220f6d412f5655bb93b15ae')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,7 +21,7 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -D -m755 "$srcdir/${pkgname}-${pkgver}/target/release/mcfly" "${pkgdir}/usr/bin/mcfly"
-  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/mcfly.bash" "${pkgdir}/usr/share/doc/mcfly/mcfly.bash"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/mcfly" "${pkgdir}/usr/bin/mcfly"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/mcfly.bash" "${pkgdir}/usr/share/doc/mcfly/mcfly.bash"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
