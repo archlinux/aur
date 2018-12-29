@@ -2,7 +2,7 @@
 
 _pkgname=python-omemo
 _pkgname2=python2-omemo
-_tag=v0.10.0-beta
+_tag=v0.10.2-beta
 pkgbase=python-omemo-syndace
 pkgname=("python-omemo-syndace" "python2-omemo-syndace")
 pkgver=0.10.0.beta
