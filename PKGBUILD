@@ -3,13 +3,13 @@
 
 pkgname=ttf-emojione
 pkgver=4.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Official colorful EmojiOne font'
 url='https://github.com/emojione/emojione-assets'
 arch=('any')
 license=('custom')
 depends=('fontconfig')
-provides=('ttf-emoji')
+provides=('emoji-font')
 replaces=('emojione-fonts')
 install="$pkgname.install"
 source=("emojione-android-$pkgver.ttf::https://github.com/emojione/emojione-assets/releases/download/$pkgver/emojione-android.ttf"
