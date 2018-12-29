@@ -39,11 +39,11 @@ check() {
 	cd "${pkgname%-git}"
 
 	# Start TPM simulator
-	tpm_server &
+	tpm_server >/dev/null &
 	tpm_server_pid="$!"
 	tpm2_clear --tcti=mssim
 
-	make check
+	make --jobs=1 check
 
 	kill "$tpm_server_pid" || true
 }
