@@ -1,6 +1,6 @@
 pkgbase = qtchan
 	pkgdesc = A 4chan browser written with qt5
-	pkgver = 0.100
+	pkgver = master
 	pkgrel = 1
 	url = https://github.com/siavash119/qtchan
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = qtchan
 	license = MIT
 	makedepends = qt5-base
 	depends = qt5-base
-	source = qtchan::https://github.com/siavash119/qtchan/archive/v0.100.zip
-	md5sums = e83fb1bbb53473e33e2f137b708971a1
+	source = qtchan::https://github.com/siavash119/qtchan/archive/master.zip
 
 pkgname = qtchan
 

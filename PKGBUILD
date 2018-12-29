@@ -1,6 +1,6 @@
 # Maintainer: a1lu <a1lu at arcor dot de>
 pkgname=qtchan
-pkgver=0.100
+pkgver=master
 pkgrel=1
 pkgdesc="A 4chan browser written with qt5"
 arch=('i686' 'x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/siavash119/qtchan"
 license=('MIT')
 depends=('qt5-base')
 makedepends=('qt5-base')
-source=("$pkgname::https://github.com/siavash119/${pkgname}/archive/v${pkgver}.zip")
-md5sums=('e83fb1bbb53473e33e2f137b708971a1')
+source=("$pkgname::https://github.com/siavash119/${pkgname}/archive/${pkgver}.zip")
+md5sum=('SKIP')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
