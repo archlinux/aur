@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Geotag
-Comment=Program to match date/time information from photos with location information from a GPS unit
-Exec=geotag
-Icon=geotag.png
-Terminal=false
+Version=1.0
 Type=Application
-Categories=Application;Graphics;
+Name=Geotag
+Comment=Match date/time information from photos with location information from a GPS unit
+Exec=geotag
+Icon=geotag
+Categories=Graphics;ImageProcessing;Geography;

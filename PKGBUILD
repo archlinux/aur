@@ -1,34 +1,32 @@
-# Original Author: Johannes Wienke <languitar at semipol dot de>
-# Maintainer: Danilo Bargen <aur at dbrgn dot ch>
+# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Johannes Wienke <languitar at semipol dot de>
+# Contributor: Danilo Bargen <aur at dbrgn dot ch>
 
 pkgname=geotag
-pkgver=0.102
+pkgver=0.103
 pkgrel=1
-pkgdesc="Geotag is an open source program that allows you match date/time information from photos with location information from a GPS unit or from a map"
-arch=('i686' 'x86_64')
+pkgdesc="Match date/time information from photos with location information from a GPS unit or from a map"
+arch=('any')
 url="http://geotag.sourceforge.net/"
-license=('GPL2')
-depends=('java-runtime' 'perl-exiftool')
-source=("http://downloads.sourceforge.net/project/geotag/geotag/$pkgver/geotag-$pkgver.jar"
+license=('GPL')
+depends=('java-runtime' 'perl-image-exiftool')
+optdepends=('dcraw: display preview for RAW images'
+            'gpsbabel: load tracks from GPS')
+source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.jar"
         "$pkgname.desktop"
         "$pkgname.sh")
-noextract=("geotag-$pkgver.jar")
-sha256sums=('b0d344e3afad4de3cb2b09840648bf4f82e7343fd984fdd7139d6c527737d93f'
-            '03e25f98f958a205fed56657e21c30f636b8f67bc0f5e41f88d6bf3bfa1fb3fe'
-            'dd836097b81d0d4fea801ef4211d2e60befe6067e8ae3d29263bebcf268590bd')
+noextract=("$pkgname-$pkgver.jar")
+sha256sums=('9c12b0bdc8e497b461a5fb1611175e7c26750617febc70dd92b5c7783d69b2ba'
+            '8bce60d5a6c8ac61a4e72f433fcb921cc4df7ded3ffb954838aedc07f9ae8c0a'
+            '8a21754c6bee1d1e72dae11b27bc86436f378dd3a9ff33b4b13c73e4f882c89d')
 
+prepare() {
+  bsdtar -xf $pkgname-$pkgver.jar images/$pkgname-128.png
+}
 
 package() {
-  cd $srcdir
-
-  # Unpack icon from JAR file
-  bsdtar -xf geotag-${pkgver}.jar images/geotag-128.png
-
-  # Install JAR file
-  install -D -m644 $pkgname-$pkgver.jar $pkgdir/usr/share/java/$pkgname/$pkgname.jar
-
-  # Install desktop file
-  install -D -m644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  install -D -m755 $srcdir/$pkgname.sh $pkgdir/usr/bin/$pkgname
-  install -D -m644 $srcdir/images/$pkgname-128.png $pkgdir/usr/share/pixmaps/$pkgname.png
+  install -Dm644 $pkgname-$pkgver.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+  install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 images/$pkgname-128.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }

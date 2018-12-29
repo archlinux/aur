@@ -1,2 +1,2 @@
 #!/bin/bash
-PATH=/usr/bin/perlbin/vendor/:$PATH java -jar /usr/share/java/geotag/geotag.jar
+java -Xmx256M -jar /usr/share/java/geotag/geotag.jar
