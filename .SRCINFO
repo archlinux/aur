@@ -1,6 +1,6 @@
 pkgbase = openvswitch-git
 	pkgdesc = Production Quality, Multilayer Open Virtual Switch
-	pkgver = 2.5.0.r80.g042326c
+	pkgver = 2.10.1.r64.gd612a4961
 	pkgrel = 1
 	epoch = 1
 	url = http://openvswitch.org
@@ -8,14 +8,14 @@ pkgbase = openvswitch-git
 	arch = x86_64
 	arch = i686
 	license = APACHE
-	makedepends = python2
+	makedepends = python-six
 	makedepends = git
 	depends = openssl
 	depends = libcap-ng
-	optdepends = python2
+	optdepends = python-six: to run python utilities
 	provides = openvswitch
 	conflicts = openvswitch
-	source = openvswitch-git::git+https://github.com/openvswitch/ovs.git#branch=branch-2.5
+	source = openvswitch-git::git+https://github.com/openvswitch/ovs.git#branch=branch-2.10
 	source = openvswitch.tmpfiles
 	source = ovsdb-server.service
 	source = ovs-vswitchd.service

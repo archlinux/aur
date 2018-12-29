@@ -6,7 +6,6 @@ post_install() {
 		printf "Running: %s\n" "${cmd[*]}"
 		"${cmd[@]}"
 	fi
-	systemd-tmpfiles --create openvswitch.conf
 }
 
 post_upgrade() {
