@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=hashclash-git
 pkgver=r45.c1159e9
-pkgrel=2
+pkgrel=3
 pkgdesc="Project HashClash - MD5 & SHA-1 cryptanalysis "
 arch=(x86_64)
 url="https://github.com/cr-marcstevens/hashclash"
@@ -41,4 +41,6 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
 	install -D "$srcdir/${pkgname%-git}/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -d "$pkgdir/usr/share/${pkgname%-git}/scripts"
+	install -Dt "$pkgdir/usr/share/${pkgname%-git}/scripts" -m755 scripts/*
 }
