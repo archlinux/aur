@@ -7,13 +7,14 @@ validpgpkeys=('EFD9413B17293AFDFE6EA6F1402A088DEDF104CB')
 pkgname=ntopng
 pkgver=3.8
 _ndpiver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='The next generation version of the original ntop, a network traffic probe that shows the network usage'
 arch=('x86_64' 'i686')
 url='http://www.ntop.org/'
 license=('GPL3')
 depends=('redis' 'geoip' 'libmariadbclient' 'libpcap' 'sqlite' 'libmaxminddb')
 makedepends=('glib2' 'automake' 'libtool' 'wget' 'curl' 'libxml2')
+install=install.sh
 source=("https://github.com/ntop/$pkgname/archive/$pkgver.tar.gz"
 	"https://github.com/ntop/nDPI/archive/$_ndpiver.tar.gz"
 	"$pkgname@.service" )
