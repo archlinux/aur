@@ -1,6 +1,6 @@
 pkgbase = sccache-git
 	pkgdesc = ccache-like tool. Wraps compiler and avoids compilation when possible. Supports rustc
-	pkgver = r412.cbb72b8
+	pkgver = r655.1087c20
 	pkgrel = 1
 	url = https://github.com/mozilla/sccache
 	install = sccache.install
@@ -10,11 +10,7 @@ pkgbase = sccache-git
 	makedepends = git
 	makedepends = rust
 	source = git+https://github.com/mozilla/sccache/
-	source = color.patch
-	source = cross-package-cache.patch
 	sha256sums = SKIP
-	sha256sums = 82ed21e16bb38274bdc4f5ae2e3941c487ddf1859de4984a2610a065928806f5
-	sha256sums = 43a7c03ddc6c9a957ad330de2a938aebafebbae350869ad76302ebf8e0719a5d
 
 pkgname = sccache-git
 
