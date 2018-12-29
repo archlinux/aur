@@ -1,11 +1,12 @@
 pkgbase = tiny-dnn
 	pkgdesc = A C++11 implementation of deep learning for limited computational resource, embedded systems and IoT devices
 	pkgver = 1.0.0a3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tiny-dnn/tiny-dnn/
 	arch = any
 	license = BSD
 	makedepends = cmake
+	optdepends = cereal: for serialization support
 	source = tiny-dnn-1.0.0a3.tar.gz::https://github.com/tiny-dnn/tiny-dnn/archive/v1.0.0a3.tar.gz
 	sha256sums = e2c61ce8c5debaa644121179e9dbdcf83f497f39de853f8dd5175846505aa18b
 
