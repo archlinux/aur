@@ -1,26 +1,27 @@
+# Maintainer: Igor <f2404@yandex.ru>
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Original package: Jan de Groot <jgc@archlinux.org>
 
 _realname=gnome-terminal
 pkgname=$_realname-git
 
-pkgver=3.15.91.5228.e5f7763
+pkgver=3.31.1.6093.f624ba89
 _realver=3.7.3
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator. Git Version"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gconf' 'vte3-git' 'gsettings-desktop-schemas' 'libsm')
-makedepends=('gnome-doc-utils' 'intltool' 'gtk2' 'itstool' 'docbook-xsl' 'appdata-tools')
+makedepends=('gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'appdata-tools' 'yelp-tools')
 options=('!emptydirs')
-url="http://www.gnome.org"
+url="https://www.gnome.org"
 groups=('gnome')
 install=gnome-terminal.install
 
 provides=($_realname=$pkgver)
 conflicts=($_realname)
 
-source=(git://git.gnome.org/${_realname})
+source=("git+https://gitlab.gnome.org/GNOME/${_realname}.git")
 md5sums=("SKIP")
 
 subver() {
