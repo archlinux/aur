@@ -13,7 +13,7 @@ options=(!strip !buildflags staticlibs)
 source=("git+https://github.com/doitsujin/dxvk.git"
     "setup_dxvk_aur.verb"
 )
-sha256sums=("SKIP" "27a9a151e8b54dd7d5fe9f91c2811eee312672bf261cbb9708eec38271cc833d")
+sha256sums=("SKIP" "0f2ac8e7c7212b23fb0dfbb5c5a5c3ea8e9c7cdc290be85c625aeaed5b06c3fe")
 
 
 pkgver() {
