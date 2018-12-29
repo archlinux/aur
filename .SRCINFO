@@ -1,6 +1,6 @@
 pkgbase = glabels-qt-git
 	pkgdesc = Development version of the next major version of gLabels (4.0).
-	pkgver = r467.1afd5f7
+	pkgver = r474.c2d024f
 	pkgrel = 1
 	url = https://github.com/jimevins/glabels-qt
 	arch = x86_64
