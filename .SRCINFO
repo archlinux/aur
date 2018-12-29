@@ -1,0 +1,19 @@
+pkgbase = hashclash-git
+	pkgdesc = Project HashClash - MD5 & SHA-1 cryptanalysis
+	pkgver = r45.c1159e9
+	pkgrel = 1
+	url = https://github.com/cr-marcstevens/hashclash
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = boost
+	depends = boost-libs
+	provides = hashclash
+	conflicts = hashclash
+	source = hashclash::git+https://github.com/cr-marcstevens/hashclash
+	source = cuda.patch
+	md5sums = SKIP
+	md5sums = e50c821804f404ed10ccecc790382f8f
+
+pkgname = hashclash-git
+
