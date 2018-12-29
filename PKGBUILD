@@ -39,7 +39,7 @@ package() {
 	cd $pkgdir
 	install -d usr/lib/
 	install -d usr/bin/
-	ln -s usr/lib/$pkgname/$_file usr/bin/$pkgname
+	ln -s /usr/lib/$pkgname/$_file usr/bin/$pkgname
 
 	install -D -m755 $srcdir/$_file usr/lib/$pkgname/$_file
 	install -D -m644 $srcdir/$pkgname.desktop usr/share/applications/$pkgname.desktop
