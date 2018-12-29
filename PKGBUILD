@@ -9,8 +9,8 @@
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
 pkgname=neovim-youcompleteme-core-git
-pkgver=r2393.487b8ab2
-pkgrel=2
+pkgver=r2459.c209cdbb
+pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
 url='https://valloric.github.io/YouCompleteMe/'
@@ -30,8 +30,8 @@ optdepends=(
 # https://github.com/Valloric/ycmd/pull/885
 #'omnisharp-roslyn: C# semantic completion'
 
-source=('git+https://github.com/Valloric/YouCompleteMe.git'
-        'git+https://github.com/Valloric/ycmd')
+source=(git+https://github.com/Valloric/YouCompleteMe.git
+        git+https://github.com/Valloric/ycmd)
 sha256sums=('SKIP'
             'SKIP')
 
@@ -46,9 +46,11 @@ prepare() {
 
   cd YouCompleteMe
 
-  git submodule init
+  git submodule init third_party/ycmd
   git config submodule.third_party/ycmd.url "$srcdir/ycmd"
   git submodule update
+
+  git -C third_party/ycmd checkout master
 }
 
 build() {
