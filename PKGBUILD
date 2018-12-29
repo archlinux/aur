@@ -1,7 +1,7 @@
 # Maintainer: Jakob Englisch <jakob.englisch[at]gmail[dot]com>
 
 pkgname=tower-cli
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Command line tool and client library for the Ansible Tower and AWX Project's REST API."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python2')
 makedepends=("python2-setuptools")
 options=(!emptydirs)
 source=("https://github.com/ansible/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('dc48830dffca629104095c87a410be1cb8032910f8152f81f35479faa6f69973')
+sha256sums=('7dcd730b27b878a4a747a9190550c468a8791f8b3cf2cb7f5bc90bec6bebff80')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"

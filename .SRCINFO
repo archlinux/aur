@@ -1,6 +1,6 @@
 pkgbase = tower-cli
 	pkgdesc = Command line tool and client library for the Ansible Tower and AWX Project's REST API.
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/ansible/tower-cli
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = tower-cli
 	makedepends = python2-setuptools
 	depends = python2
 	options = !emptydirs
-	source = https://github.com/ansible/tower-cli/archive/v3.2.0.tar.gz
-	sha256sums = dc48830dffca629104095c87a410be1cb8032910f8152f81f35479faa6f69973
+	source = https://github.com/ansible/tower-cli/archive/v3.3.0.tar.gz
+	sha256sums = 7dcd730b27b878a4a747a9190550c468a8791f8b3cf2cb7f5bc90bec6bebff80
 
 pkgname = tower-cli
 
