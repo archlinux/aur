@@ -3,7 +3,7 @@
 _name=vnote
 _pkgname=VNote
 pkgname=${_name}-bin
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='A Vim-inspired note-taking application that knows programmers and Markdown better'
 arch=('x86_64')
@@ -17,7 +17,7 @@ _url=https://github.com/tamlok/vnote/
 _binfile=${_pkgname}-${pkgver}-${CARCH}.AppImage
 _buildfile=${_name}-${pkgver}.AppImage
 source=("${_buildfile}::${_url}/releases/download/v${pkgver}/${_binfile}")
-sha256sums=('d05b8f4f2e5bf6e82cad95219b2346b33b7933a2d0c3a154573bb915e3abed45')
+sha256sums=('caf7772c12044ad615789ac7b9288baae0fd31fe264af2ef17a1a167fa988d9b')
 
 prepare() {
   # Extract AppImage
