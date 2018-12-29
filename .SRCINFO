@@ -1,6 +1,6 @@
 pkgbase = gzdoom
 	pkgdesc = Advanced Doom source port with OpenGL support
-	pkgver = 3.6.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = gzdoom
 	makedepends = fluidsynth
 	makedepends = git
 	makedepends = gtk3
+	depends = asmjit-git
 	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libgme
@@ -42,7 +43,7 @@ pkgbase = gzdoom
 	optdepends = urbanbrawl-wad: Urban Brawl: Action Doom 2 game data
 	optdepends = xorg-xmessage: crash dialog (other)
 	replaces = gzdoom1
-	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g3.6.0
+	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g3.7.0
 	source = gzdoom.desktop
 	source = 0001-Fix-soundfont-search-path.patch
 	sha256sums = SKIP
