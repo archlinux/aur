@@ -1,7 +1,7 @@
 pkgbase = sielo-browser-git
 	pkgdesc = A simple, customizable and fast web browser
-	pkgver = r1255.390246a
-	pkgrel = 2
+	pkgver = r1257.f9ff626
+	pkgrel = 1
 	url = https://github.com/SieloBrowser/SieloBrowser
 	arch = x86_64
 	license = MIT

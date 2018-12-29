@@ -3,8 +3,8 @@
 
 pkgname=sielo-browser-git
 _pkgname=sielo-browser
-pkgver=r1255.390246a
-pkgrel=2
+pkgver=r1257.f9ff626
+pkgrel=1
 pkgdesc="A simple, customizable and fast web browser"
 arch=('x86_64')
 depends=('qt5-webengine')
