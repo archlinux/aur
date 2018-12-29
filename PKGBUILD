@@ -13,7 +13,7 @@ makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'wine')
 source=("git+https://github.com/doitsujin/dxvk.git" 
     setup_dxvk_aur.verb
     )
-sha256sums=("SKIP" "5ad17ac7a6e1a66ac0c5e621fe8f9b955817b1aca78bf80c95d3e2714d9e12c8")
+sha256sums=("SKIP" "3ab24ace22cba8e07997a7e30df85c104a86417704417d8a24ac0af3fb196bc6")
 
 pkgver() {
     cd dxvk

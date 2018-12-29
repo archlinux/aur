@@ -16,7 +16,7 @@ pkgbase = dxvk-wine-git
 	source = git+https://github.com/doitsujin/dxvk.git
 	source = setup_dxvk_aur.verb
 	sha256sums = SKIP
-	sha256sums = 5ad17ac7a6e1a66ac0c5e621fe8f9b955817b1aca78bf80c95d3e2714d9e12c8
+	sha256sums = 3ab24ace22cba8e07997a7e30df85c104a86417704417d8a24ac0af3fb196bc6
 
 pkgname = dxvk-wine64-git
 	arch = x86_64
