@@ -47,6 +47,9 @@ build() {
 
 package() {
     cd ${srcdir}/gdl-${pkgver}/build
+    if [[ -d ../pkginstall ]]; then
+        rm -r ../pkginstall
+    fi
     mkdir ../pkginstall
     make DESTDIR=../pkginstall install
 
