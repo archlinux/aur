@@ -5,10 +5,10 @@
 # Setting rows and width equal to the terminal size.
 
 # Decrementing $rows, as more number of rows cause the screen to scroll. Which we don't want.
-rows=`tput lines`;
-rows=`expr $rows - 1`;
+rows=$(tput lines);
+rows=${$rows - 1};
 
-width=`tput cols`;
+width=$(tput cols);
 
 widthOffset=0;
 cringe=false;
@@ -18,70 +18,70 @@ printf "\033c"
 
 # Take the user parameters. 
 while test $# -gt 0; do
-	case "$1" in
-		-r | --rows)
-			shift
-			rows=$1
-			shift
-			;;
+ case "$1" in
+  -r | --rows)
+   shift
+   rows=$1
+   shift
+   ;;
 
-		-w | --width)
-			shift
-			width=$1
-			shift
-			;;
+  -w | --width)
+   shift
+   width=$1
+   shift
+   ;;
 
-		-o | --offset)
-			shift
-			widthOffset=$1
-			shift
-			;;
+  -o | --offset)
+   shift
+   widthOffset=$1
+   shift
+   ;;
 
-		-c | --cringe)
-			shift
-			cringe=true;
-			;;
+  -c | --cringe)
+   shift
+   cringe=true;
+   ;;
 
-		*)
-			echo "$1 is not a recognized flag!"
-			exit 1;
-			;;
-	esac
-  done  
+  *)
+   echo "$1 is not a recognized flag!"
+   exit 1;
+   ;;
+ esac
+done  
 
 # An infinite loop.
 for((j=1; j<3;)); do
 
-	for((row=0; row<rows;  row++)) do
+ for((row=0; row<rows;  row++)) do
 
-		for((k=0; k<widthOffset; k++)); do
-			printf " ";
-		done
+  for((k=0; k<widthOffset; k++)); do
+   printf " ";
+  done
 
-		if ! $cringe ; then
-			i=$((16 + RANDOM/256))
-		fi
-		
-		for((k=0; k<width; k++)); do
+  if ! $cringe ; then
+   i=$((16 + RANDOM/256))
+  fi
+  
+  for((k=0; k<width; k++)); do
 
-			# Add some cringe. 
-			if $cringe ; then
-				i=$((16 + RANDOM/256))
-			fi
-			
-			# Do the magic
-			printf "\e[48;5;${i}m " $i;
-			printf '\e[0m';
-			[ ! $((($i - 15) % 6)) -eq 0 ] && printf '';
-		done
+   # Add some cringe. 
+   if $cringe ; then
+    i=$((16 + RANDOM/256))
+   fi
+   
+   # Do the magic
+   printf "\e[48;5;%sm " "$i";
+   printf '\e[0m';
+   [ ! $(((${i} - 15) % 6)) -eq 0 ] && printf '';
+  done
 
-		printf '\n';
-	done
+  printf '\n';
+ done
 
-	# Delay to print the colours.
-	sleep .001;
+ # Delay to print the colours.
+ sleep .001;
 
-	# Resets the cursor to (1, 1). Much better than deleting the previous lines or clearing the screen.
-	printf "\033[1;1H"
+ # Resets the cursor to (1, 1). Much better than deleting the previous lines or clearing the screen.
+ printf "\033[1;1H"
 
 done
