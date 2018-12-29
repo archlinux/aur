@@ -1,6 +1,6 @@
 pkgbase = python-indy
 	pkgdesc = Official wrapper for Hyperledger Indy library
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/hyperledger/indy-sdk
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = python-indy
 	license = APACHE
 	makedepends = python
 	depends = libindy
-	source = https://github.com/hyperledger/indy-sdk/archive/v1.6.1.tar.gz
-	md5sums = 38b59e8458099241a128da81baa6e67a
+	source = https://github.com/hyperledger/indy-sdk/archive/v1.7.0.tar.gz
+	md5sums = 31f28395998ad267b56dea8972f35cf8
 
 pkgname = python-indy
 
