@@ -13,8 +13,8 @@ source=("git+https://github.com/hackerb9/lsix")
 sha256sums=('SKIP')
 
 pkgver() {
-cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package () {
