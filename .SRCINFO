@@ -1,6 +1,6 @@
 pkgbase = zchunk
 	pkgdesc = A file format that allows easy deltas while maintaining good compression
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/zchunk/zchunk
 	arch = x86
@@ -10,8 +10,8 @@ pkgbase = zchunk
 	depends = libcurl.so
 	depends = zstd
 	provides = libzck.so
-	source = zchunk-1.0.1.tar.gz::https://github.com/zchunk/zchunk/archive/1.0.1.tar.gz
-	sha256sums = 0f0ebed7666f8201b3c9de3103f5e25f233deafce7541d958cdfbfeed416a847
+	source = zchunk-1.0.2.tar.gz::https://github.com/zchunk/zchunk/archive/1.0.2.tar.gz
+	sha256sums = 701e5f8b7ba655d3676f876a7b697ca8ce4d9e34f041f8b1d6d18e47c3dad966
 
 pkgname = zchunk
 
