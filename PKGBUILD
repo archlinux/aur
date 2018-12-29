@@ -1,15 +1,15 @@
+# Maintainer: Szymon Scholz
 # Contributor: Sean Bartell <yotann@yotann.org>
+# Website and source removed from web, including archive.org sources
 pkgname=nanopond
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A teeny tiny artificial life virtual machine"
 arch=('i686' 'x86_64')
-url="http://adam.ierymenko.name/nanopond.shtml"
+url="https://web.archive.org/web/20171017223720/http://adam.ierymenko.name:80/nanopond.shtml"
 license=('GPL')
 depends=('sdl')
-source=("http://adam.ierymenko.name/files/$pkgname-$pkgver.c")
-md5sums=('ff67c936ed47de3ea4a8a6653e54aad7')
-sha512sums=('c4bed6fdaa90f830434a732b0c9f9f980154c20a26af55e54d50ddf9403dc020427b9cda8d52f6c864e691a67367d1051132762f6f7211d9c9bd7925bfacdf57')
+source=("$pkgname-$pkgver.c")
 
 build() {
     # These are the flags recommended in the source file
@@ -22,3 +22,4 @@ package() {
     mkdir -p $pkgdir/usr/bin
     install nanopond "$pkgdir/usr/bin"
 }
+md5sums=('92466a08c17618e53583003aa45a373f')
