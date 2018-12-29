@@ -11,8 +11,25 @@ source=(
     "https://github.com/debauchee/barrier/archive/v${pkgver?}.tar.gz"
 )
 arch=(x86_64)
-depends=(curl libx11 libxrandr libxext libxinerama xorgproto libxtst libxi avahi libsm libice openssl qt5-base
-         hicolor-icon-theme)
+depends=(
+    # Barrier core dependencies:
+    curl
+    avahi
+    libx11
+    libxrandr
+    libxext
+    libxinerama
+    xorgproto
+    libxtst
+    libxi
+    libsm
+    libice
+    openssl
+
+    # Barrier GUI dependencies:
+    qt5-base
+    hicolor-icon-theme
+)
 makedepends=(cmake)
 
 prepare() {
