@@ -1,0 +1,19 @@
+pkgbase = gamekit-git
+	pkgdesc = Unarelith's C++ gamedev toolkit
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Quent42340/GameKit
+	arch = i686
+	arch = x86_64
+	makedepends = cmake
+	depends = glm
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = tinyxml2
+	provides = gamekit
+	source = gamekit::git+https://github.com/Quent42340/GameKit.git
+	md5sums = SKIP
+
+pkgname = gamekit-git
+
