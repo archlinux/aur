@@ -1,0 +1,14 @@
+pkgbase = lib32-libtxc_dxtn
+	pkgdesc = the S3TC algorithm, needed by wine-staging DXTn patches
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://dri.freedesktop.org/wiki/S3TC
+	arch = x86_64
+	license = BSD
+	depends = lib32-mesa
+	provides = lib32-libtxc_dxtn
+	source = http://people.freedesktop.org/~cbrill/libtxc_dxtn/libtxc_dxtn-1.0.1.tar.bz2
+	md5sums = 7105107f07ac49753f4b61ba9d0c79c5
+
+pkgname = lib32-libtxc_dxtn
+
