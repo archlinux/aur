@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=AWGG
+Icon=awgg
+Exec=awgg
+Terminal=false
+MimeType=
+Categories=Network
+Name[es_ES]=AWGG
+Comment[es_ES]=GUI Avanzado para Wget
+Name[en_US]=AWGG
+Comment[en_US]=Advanced Wget GUI

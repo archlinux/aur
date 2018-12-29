@@ -1,0 +1,188 @@
+diff --git a/build.sh b/build.sh
+index d5cf18a..fba6704 100755
+--- a/build.sh
++++ b/build.sh
+@@ -61,7 +61,7 @@ build_beta()
+ }
+ build_release()
+ {
+-
++  build_type="$1"
+   # Build versionitis
+   $lazbuild src/versionitis.lpi
+ 
+@@ -69,7 +69,7 @@ build_release()
+   src/versionitis -verbose
+ 
+   # Build AWGG
+-  $lazbuild src/awgg.lpi --bm=release $AWGG_ARCH
++  $lazbuild src/awgg.lpi --bm=$build_type $AWGG_ARCH
+ 
+   # Build Dwarf LineInfo Extractor
+   $lazbuild tools/extractdwrflnfo.lpi
+@@ -93,7 +93,7 @@ build_all()
+ 
+ case $1 in
+         beta)  build_beta;;
+-        release) build_release;;
++        rel*) build_release $1;;
+          all)  build_all;;
+            *)  build_default;;
+ esac
+diff --git a/src/awgg.lpi b/src/awgg.lpi
+index 0e288bf..42252b5 100644
+--- a/src/awgg.lpi
++++ b/src/awgg.lpi
+@@ -22,7 +22,7 @@
+       <BuildNr Value="5766"/>
+       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2019" OriginalFilename="awgg" ProductName="AWGG" ProductVersion="0.5.1.5685"/>
+     </VersionInfo>
+-    <BuildModes Count="13">
++    <BuildModes Count="14">
+       <Item1 Name="Default" Default="True"/>
+       <Item2 Name="Debug">
+         <CompilerOptions>
+@@ -544,7 +544,52 @@ end;"/>
+           </Other>
+         </CompilerOptions>
+       </Item13>
+-      <SharedMatrixOptions Count="13">
++      <Item14 Name="rel_notstandalone">
++        <CompilerOptions>
++          <Version Value="11"/>
++          <Target>
++            <Filename Value="../awgg"/>
++          </Target>
++          <SearchPaths>
++            <IncludeFiles Value="$(ProjOutDir)"/>
++            <UnitOutputDirectory Value="../units/$(TargetCPU)-$(TargetOS)-$(LCLWidgetType)"/>
++          </SearchPaths>
++          <Parsing>
++            <SyntaxOptions>
++              <IncludeAssertionCode Value="True"/>
++            </SyntaxOptions>
++          </Parsing>
++          <CodeGeneration>
++            <SmartLinkUnit Value="True"/>
++            <RelocatableUnit Value="True"/>
++            <Checks>
++              <IOChecks Value="True"/>
++            </Checks>
++            <Optimizations>
++              <OptimizationLevel Value="3"/>
++            </Optimizations>
++            <SmallerCode Value="True"/>
++          </CodeGeneration>
++          <Linking>
++            <Debugging>
++              <DebugInfoType Value="dsDwarf2Set"/>
++              <UseLineInfoUnit Value="False"/>
++              <UseExternalDbgSyms Value="True"/>
++            </Debugging>
++            <Options>
++              <PassLinkerOptions Value="True"/>
++              <Win32>
++                <GraphicApplication Value="True"/>
++              </Win32>
++            </Options>
++          </Linking>
++          <Other>
++            <CustomOptions Value="-drelease
++             -dNOT_STANDALONE"/>
++          </Other>
++        </CompilerOptions>
++      </Item14>
++      <SharedMatrixOptions Count="14">
+         <Item1 ID="262970800232" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
+         <Item2 ID="292782621389" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
+         <Item3 ID="321585814677" Type="IDEMacro" MacroName="LCLWidgetType" Value="carbon"/>
+diff --git a/src/fmain.pas b/src/fmain.pas
+index 05676c4..7fe11c3 100644
+--- a/src/fmain.pas
++++ b/src/fmain.pas
+@@ -3283,7 +3283,16 @@ begin
+   if frconfig.lbCategory.ItemIndex<>-1 then
+     categoryextencionstmp[frconfig.lbCategory.ItemIndex][0]:=frconfig.deCategoryDownFolder.Text;
+   categoryextencions:=categoryextencionstmp;
+-  SetDefaultLang(deflanguage);
++
++  {$IFDEF NOT_STANDALONE}
++    {$IFDEF UNIX}
++      SetDefaultLang(deflanguage,'/usr/share/awgg/languages');
++    {$ELSE}
++      {$FATAL 'Define NOT_STANDALONE in a not UNIX system.' }
++    {$ENDIF}
++  {$ELSE}
++       SetDefaultLang(deflanguage);
++  {$ENDIF}
+   updatelangstatus();
+   titlegen();
+   saveconfig();
+@@ -3413,7 +3422,15 @@ begin
+         end;
+     end;
+     frconfig.cbDefLanguage.Items.Clear;
+-    if FindFirst(ExtractFilePath(UTF8ToSys(Application.Params[0]))+pathdelim+'languages'+pathdelim+'awgg.*.po',faAnyFile,itemfile)=0 then
++    {$IFDEF NOT_STANDALONE}
++      {$IFDEF UNIX}
++        if FindFirst(UTF8ToSys('/usr/share/awgg/languages/awgg.*.po'),faAnyFile,itemfile)=0 then
++      {$ELSE}
++        {$FATAL 'Define NOT_STANDALONE in a not UNIX system.' }
++      {$ENDIF}
++    {$ELSE}
++      if FindFirst(ExtractFilePath(UTF8ToSys(Application.Params[0]))+pathdelim+'languages'+pathdelim+'awgg.*.po',faAnyFile,itemfile)=0 then
++    {$ENDIF}
+     begin
+       Repeat
+         try
+@@ -6360,7 +6377,15 @@ begin
+   loadmydownloads();
+   loadconfig();
+   categoryreload();
+-  SetDefaultLang(deflanguage);
++  {$IFDEF NOT_STANDALONE}
++    {$IFDEF UNIX}
++      SetDefaultLang(deflanguage,'/usr/share/awgg/languages');
++    {$ELSE}
++      {$FATAL 'Define NOT_STANDALONE in a not UNIX system.' }
++    {$ENDIF}
++  {$ELSE}
++       SetDefaultLang(deflanguage);
++  {$ENDIF}
+   titlegen();
+   if not firststart then
+     updatelangstatus();
+@@ -8195,7 +8220,15 @@ begin
+   if firststart then
+   begin
+     frlang.cbLang.Items.Clear;
+-    if FindFirst(ExtractFilePath(UTF8ToSys(Application.Params[0]))+pathdelim+'languages'+pathdelim+'awgg.*.po',faAnyFile,itemfile)=0 then
++    {$IFDEF NOT_STANDALONE}
++      {$IFDEF UNIX}
++        if FindFirst(UTF8ToSys('/usr/share/awgg/languages/awgg.*.po'),faAnyFile,itemfile)=0 then
++      {$ELSE}
++        {$FATAL 'Define NOT_STANDALONE in a not UNIX system.' }
++      {$ENDIF}
++    {$ELSE}
++      if FindFirst(ExtractFilePath(UTF8ToSys(Application.Params[0]))+pathdelim+'languages'+pathdelim+'awgg.*.po',faAnyFile,itemfile)=0 then
++    {$ENDIF}
+     begin
+       Repeat
+         try
+@@ -8211,7 +8244,15 @@ begin
+       frlang.ShowModal;
+       deflanguage:=frlang.cbLang.Text;
+     end;
+-    SetDefaultLang(deflanguage);
++  {$IFDEF NOT_STANDALONE}
++    {$IFDEF UNIX}
++      SetDefaultLang(deflanguage,'/usr/share/awgg/languages');
++    {$ELSE}
++      {$FATAL 'Define NOT_STANDALONE in a not UNIX system.' }
++    {$ENDIF}
++  {$ELSE}
++       SetDefaultLang(deflanguage);
++  {$ENDIF}
+     updatelangstatus();
+     if FileExists(currentdir+'awgg.ini') then //For portable version
+     begin
