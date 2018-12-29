@@ -1,7 +1,7 @@
 pkgbase = barrier
 	pkgdesc = Open-source KVM software based on Synergy
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://github.com/debauchee/barrier
 	changelog = CHANGELOG.rst
 	arch = x86_64
@@ -21,10 +21,8 @@ pkgbase = barrier
 	depends = openssl
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	source = https://github.com/debauchee/barrier/archive/v2.1.1.tar.gz
-	source = 0001-Handle-removal-of-cmake-macro-qt5_use_modules.patch
-	sha256sums = 775d504db6091c4dc479657fc4fc566ceb9893426664ae60c9a2bb198b562774
-	sha256sums = 142750baea34ee068ee77a7557fd4fd69ede0e151dcf8d905d88c67c59a22cc5
+	source = https://github.com/debauchee/barrier/archive/v2.1.2.tar.gz
+	sha384sums = 9d3f1e784ca1f1c1622f47be30632f6e0fc2fe07a38ab057df447e96b79a87e3362321ae0f3f5a8de98008bf76d479da
 
 pkgname = barrier
 
