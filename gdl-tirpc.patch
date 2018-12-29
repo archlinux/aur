@@ -1,0 +1,83 @@
+diff -urN gdl-0.9.8_old/CMakeLists.txt gdl-0.9.8/CMakeLists.txt
+--- gdl-0.9.8_old/CMakeLists.txt	2018-08-05 20:47:42.332868644 +0200
++++ gdl-0.9.8/CMakeLists.txt	2018-08-05 20:52:35.440704154 +0200
+@@ -356,28 +356,42 @@
+         "(suitable Fedora package: gsl-devel)")
+ endif(GSL_FOUND)
+ 
+-if(WIN32 AND NOT CYGWIN)
+-set(CMAKE_PREFIX_PATH ${XDRDIR})
+-find_package(Xdr)
+-set(HAVE_LIBXDR ${XDR_FOUND})
+-if(XDR_FOUND)
+-	set(LIBRARIES ${LIBRARIES} ${XDR_LIBRARIES})
+-	include_directories(${XDR_INCLUDE_DIR})
+-else(XDR_FOUND)
+-	message(FATAL_ERROR "bsd-xdr library is required but was not found.\n"
+-	"Use -DXDRDIR=DIR to specify the bsd-xdr directory tree.")
+-endif(XDR_FOUND)
++if(UNIX)
++	set(CMAKE_PREFIX_PATH ${RPCDIR})
++	find_package(RPC QUIET)
++	set(HAVE_RPC ${RPC_FOUND})
++	if(RPC_FOUND)
++		set(LIBRARIES ${LIBRARIES} ${RPC_LIBRARIES})
++		include_directories(${RPC_INCLUDE_DIR})
++	else(RPC_FOUND)
++		message(FATAL_ERROR "RPC support is mandatory.\n"
++		"Note that SunRPC has been removed in glibc-2.26 and later, "
++		"while being optional in earlier versions. Consider using the "
++		"recommended and more modern libtirpc instead.\n"
++		"Use -DRPCDIR=DIR to specify the rpc directory tree.\n")
++	endif(RPC_FOUND)
++elseif(WIN32 AND NOT CYGWIN)
++	set(CMAKE_PREFIX_PATH ${XDRDIR})
++	find_package(Xdr)
++	set(HAVE_LIBXDR ${XDR_FOUND})
++	if(XDR_FOUND)
++		set(LIBRARIES ${LIBRARIES} ${XDR_LIBRARIES})
++		include_directories(${XDR_INCLUDE_DIR})
++	else(XDR_FOUND)
++		message(FATAL_ERROR "bsd-xdr library is required but was not found.\n"
++			"Use -DXDRDIR=DIR to specify the bsd-xdr directory tree.")
++	endif(XDR_FOUND)
+ 
+-set(CMAKE_PREFIX_PATH ${PCREDIR})
+-find_package(PCRE)
+-set(HAVE_LIBPCRE ${PCRE_FOUND})
+-if(PCRE_FOUND)
+-	set(LIBRARIES ${LIBRARIES} ${PCRE_LIBRARIES})
+-	include_directories(${PCRE_INCLUDE_DIR})
+-else(PCRE_FOUND)
+-	message(FATAL_ERROR "pcre library is required but was not found.\n"
+-	"Use -DPCREDIR=DIR to specify the pcre directory tree.")
+-endif(PCRE_FOUND)
++	set(CMAKE_PREFIX_PATH ${PCREDIR})
++	find_package(PCRE)
++	set(HAVE_LIBPCRE ${PCRE_FOUND})
++	if(PCRE_FOUND)
++		set(LIBRARIES ${LIBRARIES} ${PCRE_LIBRARIES})
++		include_directories(${PCRE_INCLUDE_DIR})
++	else(PCRE_FOUND)
++		message(FATAL_ERROR "pcre library is required but was not found.\n"
++			"Use -DPCREDIR=DIR to specify the pcre directory tree.")
++	endif(PCRE_FOUND)
+ 	LINK_LIBRARIES(shlwapi gnurx)
+ endif(WIN32 AND NOT CYGWIN)
+ 
+diff -urN gdl-0.9.8_old/CMakeModules/FindRPC.cmake gdl-0.9.8/CMakeModules/FindRPC.cmake
+--- gdl-0.9.8_old/CMakeModules/FindRPC.cmake	1970-01-01 01:00:00.000000000 +0100
++++ gdl-0.9.8/CMakeModules/FindRPC.cmake	2018-08-05 20:54:31.086701032 +0200
+@@ -0,0 +1,12 @@
++
++include(FindPackageHandleStandardArgs)
++find_path(RPC_INCLUDE_DIR NAMES "rpc/rpc.h" PATH_SUFFIXES "tirpc")
++ if(RPC_INCLUDE_DIR MATCHES "/tirpc/?$")
++	find_library(RPC_LIBRARY NAMES tirpc)
++	set(RPC_LIBRARIES ${RPC_LIBRARY})
++	find_package_handle_standard_args(RPC DEFAULT_MSG RPC_INCLUDE_DIR RPC_LIBRARY RPC_LIBRARIES)
++else()
++	find_package_handle_standard_args(RPC DEFAULT_MSG RPC_INCLUDE_DIR)
++endif()
++ mark_as_advanced(RPC_INCLUDE_DIR RPC_LIBRARY RPC_LIBRARIES)
++
