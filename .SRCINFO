@@ -1,13 +1,11 @@
 pkgbase = vnote-bin
 	pkgdesc = A Vim-inspired note-taking application that knows programmers and Markdown better
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tamlok.github.io/vnote
 	arch = x86_64
 	license = MIT
-	conflicts = vnote-bin
 	conflicts = vnote
-	replaces = vnote-bin
 	replaces = vnote
 	options = !strip
 	source = vnote-2.2.AppImage::https://github.com/tamlok/vnote//releases/download/v2.2/VNote-2.2-x86_64.AppImage
