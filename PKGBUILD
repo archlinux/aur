@@ -1,11 +1,11 @@
-# Maintainer: Light2Yellow <oleksii.vilchanskyi@gmail.com>
-
+# Maintainer: Tasos Sahanidis <aur@tasossah.com>
+# Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 pkgname=ckb-next
 pkgver=0.3.2
 pkgrel=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, release version"
 arch=('i686' 'x86_64')
-url="https://github.com/mattanger/ckb-next"
+url="https://github.com/ckb-next/ckb-next"
 license=('GPL2')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
