@@ -1,6 +1,6 @@
 pkgbase = osu-lazer
 	pkgdesc = The new open source version of osu!, the free-to-win rhythm game
-	pkgver = 2018.1227.1
+	pkgver = 2018.1228.0
 	pkgrel = 1
 	url = https://osu.ppy.sh/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = osu-lazer
 	depends = dotnet-runtime>=2.2.0
 	provides = osu-lazer
 	conflicts = osu-lazer-git
-	source = osu-2018.1227.1::git+https://github.com/ppy/osu.git#tag=2018.1227.1
+	source = osu-2018.1228.0::git+https://github.com/ppy/osu.git#tag=2018.1228.0
 	source = git+https://github.com/ppy/osu-resources.git
 	source = osu-launcher
 	source = osu-lazer.desktop

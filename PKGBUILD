@@ -4,7 +4,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2018.1227.1
+pkgver=2018.1228.0
 pkgrel=1
 
 dotnet_version=2.2
