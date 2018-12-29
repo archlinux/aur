@@ -1,6 +1,6 @@
 pkgbase = plata-theme-slim
 	pkgdesc = An adaptive Gtk+ theme based on Material Design Guidelines, built with most options disabled.
-	pkgver = 0.4.9
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://gitlab.com/tista500/plata-theme
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = plata-theme-slim
 	depends = gtk3
 	provides = plata-theme
 	conflicts = plata-theme
-	source = git+https://gitlab.com/tista500/plata-theme.git#tag=0.4.9
+	source = git+https://gitlab.com/tista500/plata-theme.git#tag=0.5.0
 	md5sums = SKIP
 
 pkgname = plata-theme-slim
