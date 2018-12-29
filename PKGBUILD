@@ -2,11 +2,12 @@
 # Maintainer: David Parrish <BM-2cU1Bk3fXVo9VrGpo2YQFJ1it31gSuAy5j>
 
 pkgname=pybitmessage-git
-pkgver=0.6.3.2.r0.g634a49cd
+pkgver=0.6.3.2.r305.g1cdbb90f
 pkgrel=1
 pkgdesc="Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers"
 arch=('i686' 'x86_64')
-depends=('python2-pyqt4' 'qt4' 'python2-msgpack')
+depends=('python2-pyqt4' 'python2-msgpack' 'qt4' 'python2-sip-pyqt4' 'python2-setuptools')
+makedepends=('git' 'python2-setuptools')
 optdepends=('mpg123: MP3 sounds support'
             'alsa-utils: WAV sounds support')
 url="https://github.com/Bitmessage/PyBitmessage"
@@ -31,20 +32,20 @@ package() {
   cd "$pkgname" || exit
   python2 setup.py install --root="$pkgdir" --optimize=1
 
-  msg 'Installing desktop icons...'
+  # Installing desktop icons
   install -D -m644 src/images/can-icon-24px.png "$pkgdir/usr/share/icons/hicolor/24x24/apps/pybitmessage.png"
   install -D -m644 desktop/can-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/pybitmessage.svg"
   install -D -m644 desktop/can-icon.svg "$pkgdir/usr/share/pixmaps/pybitmessage.svg"
 
-  msg 'Installing man page...'
+  # Installing man page
   mkdir -p "$pkgdir/usr/share/man/man1"
   install -m644 man/pybitmessage.1.gz "$pkgdir/usr/share/man/man1"
 
-  msg 'Installing Firejail profile...'
+  # Installing Firejail profile...
   mkdir -p "$pkgdir/etc/firejail"
   install -m644 "$srcdir/pybitmessage.profile" "$pkgdir/etc/firejail"
 
-  msg 'Installing license...'
+  # Installing license
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
