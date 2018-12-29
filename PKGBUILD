@@ -1,8 +1,8 @@
 # Maintainer: Tilman BLUMENBACH <tilman+aur AT ax86 DOT net>
 
-pkgname=barrier
+pkgname=(barrier barrier-headless)
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source KVM software based on Synergy"
 url="https://github.com/debauchee/barrier"
 license=("custom:GPL2WithOpenSSLException")
@@ -25,12 +25,14 @@ depends=(
     libsm
     libice
     openssl
+)
+makedepends=(
+    cmake
 
     # Barrier GUI dependencies:
     qt5-base
     hicolor-icon-theme
 )
-makedepends=(cmake)
 
 prepare() {
     cd "barrier-${pkgver?}"
@@ -57,7 +59,7 @@ build() {
     make
 }
 
-package() {
+_package_common() {
     # Install binaries:
     cd "barrier-${pkgver?}/build"
     DESTDIR="${pkgdir?}" make install
@@ -73,6 +75,44 @@ package() {
     # Install the examples:
     mkdir -p "${pkgdir?}/usr/share/doc/${pkgname?}"
     install -m 644 doc/barrier.conf* "${pkgdir?}/usr/share/doc/${pkgname?}"
+}
+
+package_barrier() {
+    pkgdesc="Open-source KVM software based on Synergy (GUI)"
+    depends=(
+        "barrier-headless=${pkgver?}-${pkgrel?}"
+        qt5-base
+        hicolor-icon-theme
+    )
+
+    # Install all the files:
+    _package_common
+
+    # Now go and delete files that are already in
+    # barrier-headless:
+    for file in \
+        /usr/share/doc \
+        /usr/share/man \
+        /usr/bin/barrier{s,c} \
+    ;do
+        rm -rf "${pkgdir:?}/${file:?}"
+    done
+}
+
+package_barrier-headless() {
+    pkgdesc="Open-source KVM software based on Synergy (client and server CLI binaries)"
+
+    # Install all the files:
+    _package_common
+
+    # Now go and delete the GUI-related files:
+    for file in \
+        /usr/bin/barrier \
+        /usr/share/applications \
+        /usr/share/icons \
+    ;do
+        rm -rf "${pkgdir:?}/${file:?}"
+    done
 }
 
 sha384sums=('9d3f1e784ca1f1c1622f47be30632f6e0fc2fe07a38ab057df447e96b79a87e3362321ae0f3f5a8de98008bf76d479da')

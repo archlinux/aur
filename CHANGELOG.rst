@@ -1,5 +1,26 @@
-Changelog for package ``barrier``
-=================================
+Changelog for package base ``barrier``
+======================================
+
+2.1.2-2 - 2018-12-29
+--------------------
+
+- The ``barrier`` package now only contains the Barrier GUI, while
+  a new package ``barrier-headless`` contains the server and client
+  CLI binaries. Users that don't require the GUI can now install only
+  the ``barrier-headless`` package and avoid the ``qt5-base`` dependency
+  required by the Barrier GUI.
+
+  The ``barrier`` package automatically pulls in the ``barrier-headless``
+  package.
+
+2.1.2-1 - 2018-12-29
+--------------------
+
+- Updated to upstream release 2.1.2_, for which there is no upstream
+  changelog available (apart from the VCS history).
+
+**Note:** While this release has been tagged as ``2.1.2`` by upstream,
+the actual version number shown by the Barrier programs is ``2.2.0``.
 
 2.1.1-2 - 2018-05-30
 --------------------
@@ -16,4 +37,5 @@ Changelog for package ``barrier``
 
 
 .. _2.1.1: https://github.com/debauchee/barrier/releases/tag/v2.1.1
+.. _2.1.2: https://github.com/debauchee/barrier/releases/tag/v2.1.2
 .. _issue 49: https://github.com/debauchee/barrier/issues/49
