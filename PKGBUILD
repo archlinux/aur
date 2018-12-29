@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-bin
 pkgver=5.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
@@ -25,7 +25,7 @@ _srcfile='onlyoffice-desktopeditors_amd64.deb'
 _srcurl="https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-${pkgver}/${_srcfile}"
 source=("onlyoffice-desktopeditors-${pkgver}_amd64.deb"::"$_srcurl")
 noextract=("onlyoffice-desktopeditors-${pkgver}_amd64.deb")
-sha256sums=('8882a2ff4c5a9c16d74ab9733efc7f457631d2ebca975db964564ab487f0cdc7')
+sha256sums=('f64972c458f74641f6bb8fcbda3e95609c1e3311bd410842cc23e953e67d19c3')
 
 prepare() {
     mkdir -p "onlyoffice-${pkgver}"
