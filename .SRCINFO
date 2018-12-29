@@ -1,0 +1,16 @@
+pkgbase = sensu-go-backend
+	pkgdesc = Sensu Go Backend
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://sensu.io
+	arch = x86_64
+	license = MIT
+	source = sensu-go-backend-5.1.0-0ubuntu18.1_amd64.deb::https://packagecloud.io/sensu/stable/packages/ubuntu/cosmic/sensu-go-backend_5.1.0-0ubuntu18.1_amd64.deb/download.deb
+	source = sensu.sysusers
+	source = sensu.tmpfiles
+	sha1sums = 15b439316b5bfb798a92efde8ac40113d3334ea5
+	sha1sums = 054c2cfb7b2c4e6900fe79620b40fd060dbc0d8a
+	sha1sums = 8bab67a35662be89e2fe6bd4529ed248d164771d
+
+pkgname = sensu-go-backend
+

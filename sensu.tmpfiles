@@ -1,0 +1,5 @@
+d /etc/sensu 0750 sensu sensu
+d /var/cache/sensu 0750 sensu sensu
+d /var/lib/sensu 0750 sensu sensu
+d /var/log/sensu 0750 sensu sensu
+d /run/sensu 0750 sensu sensu

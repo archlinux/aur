@@ -1,0 +1,2 @@
+u sensu - "Sensu Monitoring Framework" /opt/sensu /sbin/nologin
+g sensu - -
