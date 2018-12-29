@@ -1,8 +1,8 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgbase=dxvk-git
-pkgname=('dxvk-win64-git' 'dxvk-win32-git' 'dxvk-git')
-pkgver=0.81_18_g8172d34
+pkgname=('dxvk-win64-git' 'dxvk-win32-git')
+pkgver=0.94.r6.g4e22e4b
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine."
 arch=('x86_64' 'i686')
@@ -10,37 +10,45 @@ url="https://github.com/doitsujin/dxvk"
 license=('zlib/libpng')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'mingw-w64-gcc' 'git' 'wine')
 options=(!strip !buildflags staticlibs)
-source=($pkgbase::"git+https://github.com/doitsujin/dxvk.git"
+source=("git+https://github.com/doitsujin/dxvk.git"
     "setup_dxvk_aur.verb"
 )
-sha256sums=("SKIP" "1a88e01e02ef9bfd9bf43d8dec4e70b425fb25812f597463ee4145705c82a504")
+sha256sums=("SKIP" "27a9a151e8b54dd7d5fe9f91c2811eee312672bf261cbb9708eec38271cc833d")
 
 
 pkgver() {
-        cd "$pkgbase"
-        git describe | sed s/"-"/"_"/g | sed 's/^v\(.*\)/\1/'
+    cd dxvk
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 
-
 build() {
-	"$pkgbase"/package-release.sh $pkgver $PWD --no-package
+    meson dxvk "build/x64" \
+        --cross-file dxvk/build-win64.txt \
+        --prefix "/usr/share/dxvk/x64" \
+        --bindir "" --libdir "" \
+        --buildtype "release" \
+        --strip \
+        -D enable_tests=false
+    ninja -C "build/x64"
+
+    meson dxvk "build/x32" \
+        --cross-file dxvk/build-win32.txt \
+        --prefix "/usr/share/dxvk/x32" \
+        --bindir "" --libdir "" \
+        --buildtype "release" \
+        --strip \
+        -D enable_tests=false
+    ninja -C "build/x32"
 }
 
 _package_dxvk() {
-        destdir="/usr/share/dxvk/"
-	mkdir -p "$pkgdir/$destdir"
-	cp -rv dxvk-$pkgver/x$1 "$pkgdir/$destdir"
-	extension=".dll"
-	for libname in "d3d11" "dxgi" "d3d10" "d3d10_1" "d3d10core"; do
-            if [ ! -f "$pkgdir"/$destdir/x$1/$libname$extension ] ; then
-                    echo "Missing file: $libname$extension, build was unsuccessful"
-                    return 1
-            fi
-        done
+        DESTDIR="$pkgdir" ninja -C "build/x$1" install
         mkdir -p "$pkgdir/usr/bin"
-        cat setup_dxvk_aur.verb | sed s/"DXVK_ARCH=64"/"DXVK_ARCH=$1"/g > "$pkgdir/$destdir/x$1/setup_dxvk_aur.verb"
+        cat setup_dxvk_aur.verb | sed s/"DXVK_ARCH=64"/"DXVK_ARCH=$1"/g > "$pkgdir/usr/share/dxvk/x$1/setup_dxvk_aur.verb"
+        install -Dm 644 setup_dxvk_aur.verb "$pkgdir/usr/share/dxvk/x$1/setup_dxvk_aur.verb"
+        sed "s/_ARCH/$1/g" -i "$pkgdir/usr/share/dxvk/x$1/setup_dxvk_aur.verb"
 	echo "#!/bin/sh" > "$pkgdir/usr/bin/setup_dxvk$1"
-	echo "winetricks --force $destdir/x$1/setup_dxvk_aur.verb" >> "$pkgdir/usr/bin/setup_dxvk$1"
+	echo "winetricks --force /usr/share/dxvk/x$1/setup_dxvk_aur.verb" >> "$pkgdir/usr/bin/setup_dxvk$1"
 	chmod +x "$pkgdir/usr/bin/setup_dxvk$1"
 }
 
@@ -49,8 +57,6 @@ package_dxvk-win64-git() {
         conflicts=("dxvk-win64-bin")
         provides=("dxvk" "dxvk64")
         depends=('vulkan-icd-loader' 'wine>=3.10' 'winetricks')
-        conflicts=("dxvk-git<$pkgver")
-        replaces=("dxvk-git")
         _package_dxvk 64
 }
 package_dxvk-win32-git() {
@@ -58,11 +64,5 @@ package_dxvk-win32-git() {
         conflicts=("dxvk-win32-bin")
         provides=("dxvk" "dxvk32")
         depends=('lib32-vulkan-icd-loader' 'wine>=3.10' 'winetricks')
-        conflicts=("dxvk-git<$pkgver")
-        replaces=("dxvk-git")
         _package_dxvk 32
-}
-package_dxvk-git() {
-	pkgdesc="Dummy package to smooth the transition to the split packages"
-	depends=("dxvk-win32-git" "dxvk-win64-git")
 }

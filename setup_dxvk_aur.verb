@@ -3,20 +3,18 @@ w_metadata setup_dxvk_aur dlls \
     publisher="Philip Rebohle" \
     year="2018" \
     media="manual_download" \
-    file1="dxgi.dll" \
-    file2="d3d11.dll" \
-    file3="d3d10.dll" \
-    file4="d3d10_1.dll" \
-    file5="d3d10core.dll" \
-    installed_file1="C:\\windows\\system32\\dxgi.dll" \
-    installed_file2="C:\\windows\\system32\\d3d11.dll" \
-    installed_file3="C:\\windows\\system32\\d3d10.dll" \
-    installed_file4="C:\\windows\\system32\\d3d10_1.dll" \
-    installed_file5="C:\\windows\\system32\\system32/d3d10core.dll" \
+    file1="d3d11.dll" \
+    file2="d3d10.dll" \
+    file3="d3d10_1.dll" \
+    file4="d3d10core.dll" \
+    installed_file1="C:\\windows\\system32\\d3d11.dll" \
+    installed_file2="C:\\windows\\system32\\d3d10.dll" \
+    installed_file3="C:\\windows\\system32\\d3d10_1.dll" \
+    installed_file4="C:\\windows\\system32\\system32/d3d10core.dll" \
     homepage="https://github.com/doitsujin/dxvk"
     
-DXVK_ROOT_DIR=`dirname "$(readlink -f $1)"`
 DXVK_ARCH=64
+DXVK_ROOT_DIR=`dirname "$(readlink -f $1)"`
 
 load_setup_dxvk_aur()
 {
@@ -36,7 +34,6 @@ load_setup_dxvk_aur()
     done
 
     w_override_dlls native \
-        dxgi \
         d3d11 \
         d3d10 \
         d3d10_1 \
