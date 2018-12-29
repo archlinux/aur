@@ -1,4 +1,4 @@
-pkgbase = tutanota-desktop-linux-appimage
+pkgbase = tutanota-desktop-linux
 	pkgdesc = Official Tutanota email client
 	pkgver = 0.1
 	pkgrel = 0.1
@@ -12,5 +12,5 @@ pkgbase = tutanota-desktop-linux-appimage
 	source = https://mail.tutanota.com/desktop/tutanota-desktop-linux.AppImage
 	sha512sums = be09abdf72bda028cb81fc894614b22c6b3d31301d0b39940edac3aa71cd956b898fcbbfa2a4d195eb8a4a611cd6934544c797383bb363497fdafe8eac236739
 
-pkgname = tutanota-desktop-linux-appimage
+pkgname = tutanota-desktop-linux
 
