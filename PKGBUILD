@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=python-rlp
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A package for encoding and decoding data in and from Recursive Length Prefix notation"
 url='https://pypi.python.org/pypi/rlp'
@@ -20,4 +20,4 @@ package () {
   python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
-md5sums=('2d435e272e9367c26715b8cd4c3f9a62')
+md5sums=('c3e99152796791c22f451a0fa34f525c')
