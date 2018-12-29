@@ -1,6 +1,6 @@
 pkgbase = r-rcpp
 	pkgdesc = Seamless R and C++ Integration
-	pkgver = 0.12.19
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Rcpp
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = r-rcpp
 	optdepends = r-rmarkdown
 	optdepends = r-pinp
 	optdepends = r-pkgkitten
-	source = http://cran.r-project.org/src/contrib/Rcpp_0.12.19.tar.gz
-	md5sums = e72a00c132f29ec10135f98b29cfdf09
+	source = http://cran.r-project.org/src/contrib/Rcpp_1.0.0.tar.gz
+	md5sums = 47ef1ad37fd75d19e8404b31e58ba994
 
 pkgname = r-rcpp
 
