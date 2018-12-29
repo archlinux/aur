@@ -1,7 +1,7 @@
 pkgbase = xneur-devel-git
 	pkgdesc = X Neural Switcher detects the input language and corrects keyboard layout. Git version
 	pkgver = 0.20.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/AndrewCrewKuznetsov/xneur-devel
 	arch = any
 	license = GPL
