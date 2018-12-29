@@ -1,0 +1,14 @@
+diff --git a/tests/suite/regression/RegressionTests.sml b/tests/suite/regression/RegressionTests.sml
+index 50af7e6..470058f 100644
+--- tests/suite/regression/RegressionTests.sml
++++ tests/suite/regression/RegressionTests.sml
+@@ -1536,9 +1536,6 @@ val tests = TestList [
+   Test
+     ("301_MathPow",
+      fn () => evalFile "regression/301_MathPow.sml"),
+-  Test
+-    ("302_DateFromTimeLocal",
+-     fn () => evalFile "regression/302_DateFromTimeLocal.sml"),
+   Test
+     ("303_Real32NotEqual",
+      fn () => evalFile "regression/303_Real32NotEqual.sml"),
