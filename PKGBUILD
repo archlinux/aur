@@ -23,7 +23,7 @@ prepare ()
 {
   cd "$srcdir/gcc-$pkgver"
   rm -f gcc/config/mips/allegrex.md gcc/config/mips/psp.h libgcc/config/mips/psp.h gcc/config/mips/t-allegrex libgcc/config/mips/t-allegrex
-  curl -L https://raw.githubusercontent.com/pspdev/psptoolchain/master/patches/gcc-$pkver-PSP.patch | patch -p1
+  curl -L https://raw.githubusercontent.com/pspdev/psptoolchain/master/patches/gcc-$pkgver-PSP.patch | patch -p1
   ln -sf "$srcdir"/gmp-5.1.3 gmp
   ln -sf "$srcdir"/mpc-1.0.2 mpc
   ln -sf "$srcdir"/mpfr-3.1.2 mpfr
