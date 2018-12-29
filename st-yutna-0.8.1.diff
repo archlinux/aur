@@ -1,0 +1,24 @@
+diff --git a/config.def.h b/config.def.h
+index 82b1b09..456b1a9 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -5,7 +5,7 @@
+  *
+  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
+  */
+-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
++static char *font = "Roboto Mono:pixelsize=14:antialias=true:autohint=true";
+ static int borderpx = 2;
+ 
+ /*
+@@ -134,8 +134,8 @@ static unsigned int cursorshape = 2;
+  * Default columns and rows numbers
+  */
+ 
+-static unsigned int cols = 80;
+-static unsigned int rows = 24;
++static unsigned int cols = 120;
++static unsigned int rows = 34;
+ 
+ /*
+  * Default colour and shape of the mouse cursor
