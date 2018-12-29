@@ -7,8 +7,8 @@ pkgdesc="Cross-platform desktop application that allows users to trade national 
 arch=('any')
 url="https://bisq.network"
 license=('AGPL3')
-depends=('jdk10-openjdk' 'java-openjfx')
-makedepends=('git' 'maven' 'jdk10-openjdk' 'java-openjfx' 'protobuf')
+depends=('java-runtime' 'bash')
+makedepends=('git' 'maven' 'jdk10-openjdk' 'protobuf')
 source=("${pkgname}::git+https://github.com/bisq-network/bisq-desktop.git#tag=v${pkgver}"
         "bisq.desktop")
 sha256sums=('SKIP'
