@@ -1,11 +1,12 @@
 pkgbase = st-yutna
 	pkgdesc = Simple terminal emulator.
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://st.suckless.org/
 	arch = x86_64
 	license = MIT
 	depends = libxft
+	depends = ttf-roboto-mono
 	provides = st
 	source = https://dl.suckless.org/st/st-0.8.1.tar.gz
 	source = st-yutna-0.8.1.diff

@@ -3,12 +3,12 @@
 pkgname=st-yutna
 _pkgname=st
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple terminal emulator."
 arch=("x86_64")
 url="https://st.suckless.org/"
 license=("MIT")
-depends=("libxft")
+depends=("libxft" "ttf-roboto-mono")
 provides=("st")
 source=(https://dl.suckless.org/st/$_pkgname-$pkgver.tar.gz
     st-yutna-0.8.1.diff
