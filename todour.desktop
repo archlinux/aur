@@ -9,7 +9,7 @@ Name=Todour
 
 Comment=An application for handling todo.txt files
 
-Exec=Todour
+Exec=todour
 
 Terminal=false
 
