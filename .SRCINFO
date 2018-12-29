@@ -1,6 +1,6 @@
 pkgbase = deepin-dock-plugin-cmdu-git
 	pkgdesc = A plugin for deepin dock, display uptime, CPU usage, RAM usage and netspeed.
-	pkgver = r24.63c3fc0
+	pkgver = r25.bad1eb3
 	pkgrel = 1
 	url = https://github.com/sonichy/CMDU_DDE_DOCK
 	arch = x86_64
