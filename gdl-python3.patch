@@ -1,0 +1,182 @@
+diff --git a/src/datatypes.cpp b/src/datatypes.cpp
+index 1a8d126..e8b08a1 100644
+--- a/src/datatypes.cpp
++++ b/src/datatypes.cpp
+@@ -18,6 +18,7 @@
+ #include "includefirst.hpp"
+ 
+ #if defined(USE_PYTHON) || defined(PYTHON_MODULE)
++#include <patchlevel.h>
+ #include <numpy/arrayobject.h>
+ #endif
+ 
+diff --git a/src/gdlpython.cpp b/src/gdlpython.cpp
+index 7835ec9..dd17598 100644
+--- a/src/gdlpython.cpp
++++ b/src/gdlpython.cpp
+@@ -32,18 +32,32 @@
+ 
+ using namespace std;
+ 
++#if PY_MAJOR_VERSION >= 3
++int PythonInit()
++{
++  if( Py_IsInitialized()) return NULL;
++#else
+ void PythonInit()
+ {
+   if( Py_IsInitialized()) return;
++#endif
+   Py_Initialize(); // signal handlers?
+   
+   static int argc = 1;
++#if PY_MAJOR_VERSION >= 3
++  static wchar_t* arg0 = Py_DecodeLocale("./py/python.exe",NULL);
++  static wchar_t* argv[] = {arg0};
++#else
+   static char* arg0 = (char*)"./py/python.exe";
+   static char* argv[] = {arg0};
++#endif
+   PySys_SetArgv(argc, argv);
+ 
+   // http://docs.scipy.org/doc/numpy/reference/c-api.array.html#miscellaneous
+   import_array();
++#if PY_MAJOR_VERSION >= 3
++  return NULL;
++#endif
+ }
+ 
+ void PythonEnd()
+@@ -71,6 +85,12 @@ BaseGDL* FromPython( PyObject* pyObj)
+ {
+   if( !PyArray_Check( pyObj))
+     {
++#if PY_MAJOR_VERSION >= 3
++      if( PyUnicode_Check( pyObj))
++	{
++	  return new DStringGDL( PyUnicode_AsUTF8( pyObj));
++	}
++#else
+       if( PyString_Check( pyObj))
+ 	{
+ 	  return new DStringGDL( PyString_AsString( pyObj));
+@@ -79,6 +99,7 @@ BaseGDL* FromPython( PyObject* pyObj)
+ 	{
+ 	  return new DLongGDL( PyInt_AsLong( pyObj));
+ 	}
++#endif
+       if( PyLong_Check( pyObj))
+ 	{
+ 	  return new DLongGDL( PyLong_AsLong( pyObj));
+@@ -174,11 +195,19 @@ namespace lib {
+ 	  e->Throw( "ARGV keyword must be of type STRING.");
+ 	
+ 	int argc = argvS->N_Elements();
++#if PY_MAJOR_VERSION >= 3
++	wchar_t** argv = new wchar_t*[ argc];
++#else
+ 	char** argv = new char*[ argc];
++#endif
+ 
+-	// pyhton copies the value -> threats it as const
++	// python copies the value -> treats it as const
+ 	for( int i=0; i<argc; ++i)
++#if PY_MAJOR_VERSION >= 3
++	  argv[i] = Py_DecodeLocale(const_cast<char*>((*argvS)[ i].c_str()), NULL); 
++#else
+ 	  argv[i] = const_cast<char*>((*argvS)[ i].c_str()); 
++#endif
+ 
+ 	PySys_SetArgv(argc, argv);
+ 	delete[] argv;
+diff --git a/src/gdlpython.hpp b/src/gdlpython.hpp
+index 45ef436..cb53bd7 100644
+--- a/src/gdlpython.hpp
++++ b/src/gdlpython.hpp
+@@ -18,7 +18,11 @@
+ #ifndef GDLPYTHON_HPP_
+ #define GDLPYTHON_HPP_
+ 
++#if PY_MAJOR_VERSION >= 3
++int PythonInit();
++#else
+ void PythonInit();
++#endif
+ void PythonEnd();
+ BaseGDL* FromPython( PyObject* pyObj);
+ 
+diff --git a/src/pythongdl.cpp b/src/pythongdl.cpp
+index a3b5afd..e541ba5 100644
+--- a/src/pythongdl.cpp
++++ b/src/pythongdl.cpp
+@@ -191,14 +191,22 @@ bool CopyArgFromPython( vector<BaseGDL*>& parRef,
+       for( SizeT k=0; k<nKW; ++k)
+ 	{
+ 	  PyDict_Next( kwDict, &dictPos, &key, &value);
++#if PY_MAJOR_VERSION >= 3
++	  int keyIsString =  PyUnicode_Check( key);
++#else
+ 	  int keyIsString =  PyString_Check( key);
++#endif
+ 	  if( !keyIsString)
+ 	    {
+ 	      PyErr_SetString( gdlError, 
+ 			       "Keywords must be of type string");
+ 	      return false;
+ 	    }
++#if PY_MAJOR_VERSION >= 3
++	  const char* keyChar = PyUnicode_AsUTF8( key);
++#else
+ 	  const char* keyChar = PyString_AsString( key);
++#endif
+ 	  string keyString = StrUpCase( keyChar);
+ 	  int kwIx = e.GetPro()->FindKey( keyString);
+ 	  if( kwIx == -1) 
+@@ -523,6 +531,35 @@ extern "C" {
+     {NULL, NULL, 0, NULL}        // Sentinel
+   };
+ 
++#if PY_MAJOR_VERSION >= 3
++  struct module_state {
++    PyObject *error;
++  };
++
++  #define GETSTATE(m) ((struct module_state*)PyModule_GetState(m))
++
++  static int GDL_traverse(PyObject *m, visitproc visit, void *arg) {
++    Py_VISIT(GETSTATE(m)->error);
++    return 0;
++  }
++
++  static int GDL_clear(PyObject *m) {
++    Py_CLEAR(GETSTATE(m)->error);
++    return 0;
++  }
++
++  static struct PyModuleDef moduledef = {
++    PyModuleDef_HEAD_INIT,
++    "GDL",
++    NULL,
++    sizeof(struct module_state),
++    GDLMethods,
++    NULL,
++    GDL_traverse,
++    GDL_clear,
++    NULL
++  };
++#endif
+ 
+   // python GDL module init function
+   PyMODINIT_FUNC initGDL()
+@@ -552,7 +589,11 @@ extern "C" {
+       }
+     SysVar::SetGDLPath( gdlPath);
+     
++#if PY_MAJOR_VERSION >= 3
++    PyObject* m = PyModule_Create(&moduledef);
++#else
+     PyObject* m = Py_InitModule("GDL", GDLMethods);
++#endif
+ 
+     gdlError = PyErr_NewException((char*)"GDL.error", NULL, NULL);
+     Py_INCREF(gdlError);
