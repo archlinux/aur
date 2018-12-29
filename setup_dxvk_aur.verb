@@ -24,7 +24,7 @@ load_setup_dxvk_aur()
     fi
     echo "Setting up DXVK from $DXVK_ROOT_DIR"
 
-     for f in "$file1" "$file2" "$file3" "$file4" "$file5"; do
+     for f in "$file1" "$file2" "$file3" "$file4"; do
         if [ "$DXVK_ARCH" = "32" ]; then
             w_try ln -fs "$DXVK_ROOT_DIR/$f.so" "$W_SYSTEM32_DLLS/$f"
         fi
