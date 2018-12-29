@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.launchpad.gottengeography</id>
+  <launchable type="desktop-id">gottengeography.desktop</launchable>
+  <name>GottenGeography</name>
+  <summary>Easily store geolocation data in your photographs</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <description>
+    <p>An easy to use geotagging application for the GNOME desktop, which aims to have a very streamlined and intuitive interface that makes it easy to apply geotags to photographs. It supports both manual tagging (without any GPS device), and is also quite good at automatic tagging with GPS data, and aims to painlessly allow batch-tagging of large numbers of photographs.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://git.launchpad.net/gottengeography/plain/help/C/figures/01-edmonton.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://git.launchpad.net/gottengeography/plain/help/C/figures/02-load-gps.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://git.launchpad.net/gottengeography/plain/help/C/figures/03-load-photos.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://bugs.launchpad.net/gottengeography</url>
+  <url type="homepage">https://launchpad.net/gottengeography</url>
+</component>
