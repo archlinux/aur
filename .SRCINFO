@@ -1,6 +1,6 @@
 pkgbase = blackvoxel
 	pkgdesc = Game of automation and programming in a voxel world
-	pkgver = 2.00
+	pkgver = 2.31
 	pkgrel = 1
 	url = http://www.blackvoxel.com/
 	install = blackvoxel.install
@@ -10,8 +10,8 @@ pkgbase = blackvoxel
 	depends = hicolor-icon-theme
 	depends = mesa
 	depends = sdl
-	source = blackvoxel_source_2_00.tar.bz2::http://www.blackvoxel.com//dm_download.php?file=89
-	sha256sums = 757143b36858541370a8c5508c8db44c43e49a2d4c09dff5582da88f59cef9d1
+	source = blackvoxel_source_2_31.tar.bz2::http://www.blackvoxel.com//dm_download.php?file=139&key=1
+	sha256sums = 09d14326031cc81848c59f1c8cf9b53c91c0d36777fb58367c9fb3784f3dd1b4
 
 pkgname = blackvoxel
 

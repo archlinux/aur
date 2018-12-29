@@ -4,7 +4,7 @@
 # working PKGBUILD for x86
 
 pkgname=blackvoxel
-pkgver=2.00
+pkgver=2.31
 pkgrel=1
 pkgdesc="Game of automation and programming in a voxel world"
 arch=('x86_64')
@@ -12,16 +12,16 @@ url='http://www.blackvoxel.com/'
 license=('GPL3')
 depends=('glew' 'hicolor-icon-theme' 'mesa' 'sdl')
 install="${pkgname}.install"
-source=("${pkgname}_source_2_00.tar.bz2::${url}/dm_download.php?file=89")
-sha256sums=('757143b36858541370a8c5508c8db44c43e49a2d4c09dff5582da88f59cef9d1')
+source=("${pkgname}_source_2_31.tar.bz2::${url}/dm_download.php?file=139&key=1")
+sha256sums=('09d14326031cc81848c59f1c8cf9b53c91c0d36777fb58367c9fb3784f3dd1b4')
 
 build() {
-	cd "${srcdir}/${pkgname}_source_2_00"
+	cd "${srcdir}/${pkgname}_source_2_31"
 	make blackvoxeldatadir="/usr/share/${pkgname}/"
 }
 
 package() {
-	cd "${srcdir}/${pkgname}_source_2_00"
+	cd "${srcdir}/${pkgname}_source_2_31"
 	make install \
 		specialinstall=true \
 		DESTDIR="${pkgdir}/" \
