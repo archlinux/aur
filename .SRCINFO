@@ -1,6 +1,6 @@
 pkgbase = gzdoom-git
 	pkgdesc = Advanced Doom source port with OpenGL support (git version)
-	pkgver = g3.7pre
+	pkgver = g3.8pre+31+geecf3a203
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = gzdoom-git
 	makedepends = fluidsynth
 	makedepends = git
 	makedepends = gtk3
+	depends = asmjit-git
 	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libgme
