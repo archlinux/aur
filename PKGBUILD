@@ -2,8 +2,8 @@
 
 pkgname=mingw-w64-http-parser
 _pkgname=http-parser
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="Parser for HTTP Request/Response written in C (mingw-w64)"
 arch=('any')
 license=('MIT')
@@ -11,17 +11,14 @@ url="https://github.com/nodejs/http-parser"
 makedepends=('mingw-w64-gcc')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/nodejs/http-parser/archive/v${pkgver}.tar.gz"
-        "http-max-header-size.patch")
-sha512sums=('6f52f543d979f39688ccefae236527a8183929b3d30f5370570107b01cf89d0338b448249a81102b78d31615d2e8f6e7c708f8961f55ece08e7d3a40e5ad0883'
-            '24de54a77860e2d1642bd0e74562a411374967fe6a08913a885b526185089b0a8bb78f25462fec2accfbeb63d249afb2385de3c82f8d9d86bc9d430ede0e7824')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/nodejs/http-parser/archive/v${pkgver}.tar.gz")
+sha512sums=('40acecbf71b9f0b4ae857c74c3ec0784d7f341a0cb83cf82b308387d0c5b56d38b282241aaf8ca93816970f2a9e67989f3d9d456459f3986c29fe51ab520155e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   sed -i 's|-Werror||' Makefile
-  patch -p1 -i "${srcdir}/http-max-header-size.patch"
 }
 
 build() {
