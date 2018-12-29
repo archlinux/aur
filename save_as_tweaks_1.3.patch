@@ -1,0 +1,107 @@
+diff --git a/mcomix/main.py b/mcomix/main.py
+index 80f74dc..d341238 100644
+--- a/mcomix/main.py
++++ b/mcomix/main.py
+@@ -278,6 +278,8 @@ class MainWindow(gtk.Window):
+         if show_library:
+             self.actiongroup.get_action('library').activate()
+ 
++        self.last_used_directory=None
++
+         self.cursor_handler.auto_hide_on()
+         # Make sure we receive *all* mouse motion events,
+         # even if a modal dialog is being shown.
+@@ -984,6 +986,7 @@ class MainWindow(gtk.Window):
+     def extract_page(self, *args):
+         """ Derive some sensible filename (archive name + _ + filename should do) and offer
+         the user the choice to save the current page with the selected name. """
++
+         if self.filehandler.archive_type is not None:
+             archive_name = self.filehandler.get_pretty_current_filename()
+             file_name = self.imagehandler.get_path_to_page()
+@@ -995,15 +998,50 @@ class MainWindow(gtk.Window):
+         save_dialog = gtk.FileChooserDialog(_('Save page as'), self,
+             gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_OK, gtk.RESPONSE_ACCEPT,
+             gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT))
+-        save_dialog.set_do_overwrite_confirmation(True)
+         save_dialog.set_current_name(suggested_name.encode('utf-8'))
++        save_dialog.set_do_overwrite_confirmation(True)
+ 
+-        if save_dialog.run() == gtk.RESPONSE_ACCEPT and save_dialog.get_filename():
+-            shutil.copy(self.imagehandler.get_path_to_page(),
+-                save_dialog.get_filename().decode('utf-8'))
++        if self.last_used_directory is not None and prefs['store recently saved in directory']:
++            # Automatically select previously used directory:
++            save_dialog.set_current_folder(self.last_used_directory)
++        else:
++            self.last_used_directory = os.getcwd()
++
++        if prefs['append number to suggested name']:
++            last_used_directory_plus_suggested_name = os.path.join(self.last_used_directory, suggested_name)
++            try_number = 1
++            # If the suggested filename already exists we try to suggest a new one:
++            if os.path.exists(last_used_directory_plus_suggested_name):
++                temp_suggested_name = suggested_name
++                lastpath_plus_new_suggested_name = last_used_directory_plus_suggested_name
++
++                while os.path.exists(lastpath_plus_new_suggested_name):
++                    temp_suggested_name_loop = self.generate_numbered_filename(temp_suggested_name.encode('utf-8'), try_number)
++                    lastpath_plus_new_suggested_name = self.last_used_directory + os.sep + temp_suggested_name_loop
++                    try_number += 1
++                    if not os.path.exists(lastpath_plus_new_suggested_name):
++                        # Keep this unused appended number
++                        break
++                save_dialog.set_current_name(temp_suggested_name_loop)
+ 
++        if save_dialog.run() == gtk.RESPONSE_ACCEPT and save_dialog.get_filename():
++            try:
++                shutil.copy(self.imagehandler.get_path_to_page(),
++                    save_dialog.get_filename().decode('utf-8'))
++            except Exception, ex:
++                log.warning('An error occured: %s', ex)
++
++        if prefs['store recently saved in directory']:
++            self.last_used_directory = save_dialog.get_current_folder()
+         save_dialog.destroy()
+ 
++    def generate_numbered_filename(self, filename, number):
++        """ Generate the same filename with an appended (number) before the .extension"""
++        file_no_ext = os.path.splitext(filename)[0]
++        ext = os.path.splitext(filename)[1]
++        new_name_with_number = file_no_ext + (" (%s)" %(number)) + ext
++        return new_name_with_number
++
+     def delete(self, *args):
+         """ The currently opened file/archive will be deleted after showing
+         a confirmation dialog. """
+diff --git a/mcomix/preferences.py b/mcomix/preferences.py
+index 3803c18..9beaac8 100644
+--- a/mcomix/preferences.py
++++ b/mcomix/preferences.py
+@@ -51,6 +51,8 @@ prefs = {
+     'smart scroll percentage': 0.5,
+     'flip with wheel': True,
+     'store recent file info': True,
++    'store recently saved in directory': False,
++    'append number to suggested name': False,
+     'hide all': False,
+     'hide all in fullscreen': True,
+     'stored hide all values': [True, True, True, True, True],
+diff --git a/mcomix/preferences_dialog.py b/mcomix/preferences_dialog.py
+index 6fdbef7..4d4230e 100644
+--- a/mcomix/preferences_dialog.py
++++ b/mcomix/preferences_dialog.py
+@@ -305,6 +305,13 @@ class _PreferencesDialog(gtk.Dialog):
+         page.add_row(gtk.Label(_('Animation mode:')),
+             self._create_animation_mode_combobox())
+ 
++        page.new_section(_('Save as Dialog'))
++        page.add_row(self._create_pref_check_button(_('Automatically select the last used directory'),
++            'store recently saved in directory', 'Directs the Save As dialog to the last used directory automatically.'))
++        # FIXME: disable the following checkbutton if the previous one is disabled
++        page.add_row(self._create_pref_check_button(_('Append numbers to suggested filename if it already exists'),
++            'append number to suggested name', 'Appends a number at the end of the suggested filename in case a similar filename already exists in the current directory.'))
++
+         return page
+ 
+     def _init_shortcuts_tab(self):
