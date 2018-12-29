@@ -2,7 +2,7 @@
 
 _pkgname=tox-node
 pkgname=$_pkgname-rs
-pkgver=0.0.6
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="A server application to run tox node written in pure Rust"
 arch=('i686' 'x86_64')
@@ -11,18 +11,16 @@ makedepends=('rust' 'cargo')
 url="https://github.com/tox-rs/tox-node"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tox-rs/tox-node/archive/v$pkgver.tar.gz")
-sha256sums=('ee36632c09de676d365ca806a2c0bc2386d5d1e459fe3fcdf9874d9fc2ea22c1')
+sha256sums=('4a58080374be2b38b8b55c306562697c56149d2c8a63e8517fce530d490e2237')
 provides=('tox-node-rs')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
-  SODIUM_USE_PKG_CONFIG=1 \
-    cargo build --release
+  cargo build --release
 }
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  SODIUM_USE_PKG_CONFIG=1 \
-    cargo install --root "$pkgdir/usr"
+  cargo install --root "$pkgdir/usr"
   rm -f "$pkgdir/usr/.crates.toml"
 }
