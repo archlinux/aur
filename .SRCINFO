@@ -1,6 +1,6 @@
 pkgbase = adapta-gtk-theme-wal
 	pkgdesc = An adaptive Gtk+ theme based on Material Design Guidelines
-	pkgver = 3.93.0.106
+	pkgver = 3.95.0.11
 	pkgrel = 1
 	url = https://github.com/adapta-project/adapta-gtk-theme
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = adapta-gtk-theme-wal
 	optdepends = ttf-roboto: Recommended font
 	provides = adapta-gtk-theme
 	conflicts = adapta-gtk-theme
-	source = git+https://github.com/adapta-project/adapta-gtk-theme.git#tag=3.93.0.106
+	source = git+https://github.com/adapta-project/adapta-gtk-theme.git#tag=3.95.0.11
 	source = colors.sh
 	sha256sums = SKIP
 	sha256sums = 830c99f4419532049a23f6e5499b249e1dc2cd132d8caacd2e41b4f60e3d79f7

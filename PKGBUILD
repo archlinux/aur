@@ -1,5 +1,4 @@
 # Maintainer: ahrs <Forward dot to at hotmail dot co dot uk>
-
 # Based on the work of the official adapta-gtk-theme package
 # brought to you by these fine folks:
 # $Id$
@@ -7,7 +6,7 @@
 # Contributor: Phillip Schichtel <phillip@schich.tel>
 
 pkgname=adapta-gtk-theme-wal
-pkgver=3.93.0.106
+pkgver=3.95.0.11
 pkgrel=1
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines'
 arch=('any')
