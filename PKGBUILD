@@ -6,7 +6,7 @@ pkgname=$pkgbase
 
 pkgver=d3e7088
 
-pkgrel=2
+pkgrel=3
 
 _gitname=AWGG
 
@@ -27,7 +27,7 @@ makedepends=("git" "lazarus-gtk2")
 sources=("awgg.desktop" "notstandalone.patch")
 
 sha256sum=("916576e5b637f0ccebb2be15b46387e4d2f49a007303335748126f2a61602716"
-           "f9b30c4c1772fa81097394c4f80b2549f4027be44279d2f1f5cbcbc0ff177909"
+           "f83422ac0717c18714dcfb2c1da2cf541106ff50ce53e6c498990dff20b015d0"
            )
 
 validpgpkeys=('51479755D90A2AACFA90A6551DD242462908D08B')
@@ -70,6 +70,8 @@ package() {
   mkdir -p "$pkgdir/usr/share/doc/awgg"
   
   cp -R docs/* "$pkgdir/usr/share/doc/awgg"
+
+  cp *.wav "$pkgdir/usr/share/awgg/"
  
   cd ../..
   
