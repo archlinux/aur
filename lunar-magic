@@ -1,0 +1,3 @@
+#!/bin/bash
+
+WINEDEBUG=-all wine /usr/share/lunar-magic/Lunar\ Magic.exe "$@"

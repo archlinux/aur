@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Lunar Magic
+Comment=A level editor for Super Mario World
+Exec=lunar-magic
+Icon=lunar-magic
+Terminal=false
+StartupNotify=false
+Categories=Wine;Games;
