@@ -4,12 +4,12 @@
 
 pkgname=nx-common
 pkgver=3.5.0
-pkgrel=7
+pkgrel=8
 pkgdesc="NoMachine NX common package for client and server"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://nomachine.com/"
-depends=('libjpeg-turbo' 'libpng' 'openssl' 'gcc-libs' 'libxcomp') 
+depends=('libjpeg-turbo' 'libpng' 'openssl-1.0' 'gcc-libs' 'libxcomp') 
 makedepends=('xorg-server-devel' 'nx-headers')
 source=(ftp://ftp.uni-duisburg.de/X11/NX/sources/$pkgver/nxcompsh-$pkgver-1.tar.gz
         ftp://ftp.uni-duisburg.de/X11/NX/sources/$pkgver/nxssh-$pkgver-2.tar.gz        
@@ -29,7 +29,7 @@ build() {
   # nxssh
   cd ${srcdir}/nxssh
   sed -i "s:NX.h:nx/NX.h:g" clientloop.c packet.c proxy.c
-  ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib
+  ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --with-cppflags=-I/usr/include/openssl-1.0 --with-ldflags='-L/usr/lib/openssl-1.0 -lpthread'
   make
 }
 
