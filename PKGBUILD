@@ -9,15 +9,15 @@ _lang='de_DE'
 pkgname=cewe-fotobuch
 conflicts=(cewe-fotoservice)
 pkgdesc='an offline client for creating photobooks, uploading and ordering them at cewe.de'
-md5sums=('9f2f06196338dde0750ec52ac965fa18'
+md5sums=('f0bbeb285f9818e8c763265da2fe2e88'
 # template start; name=cewe; version=6.4.1;
          '11e395d7c48d7f340435eeb938bcb502')
 
 pkgver=6.4.1
-pkgrel=1
+pkgrel=2
 url="http://www.cewe.de/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget')
+depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy')
 makedepends=('unzip')
 arch=('i686' 'x86_64')
 source=("https://dls.photoprintit.com/download/Data/$_keyaccount-$_lang/hps/setup_${_productUrname// /_}.tgz"
