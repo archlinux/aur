@@ -1,0 +1,26 @@
+pkgbase = cubicsdr
+	pkgdesc = Cross-Platform Software-Defined Radio Application
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/cjcliffe/CubicSDR
+	arch = x86_64
+	license = GPL
+	optdepends = soapyrtlsdr: support for RTL-SDR (RTL2832U) dongles
+	optdepends = soapyairspy-git: support for Airspy R2 and Airspy Mini
+	optdepends = soapysdrplay-git: support for SDRplay RSP
+	optdepends = soapyhackrf-git: support for HackRF
+	optdepends = limesuite: support for LimeSDR
+	optdepends = soapylms7-git: support for LimeSDR
+	optdepends = soapyosmo: support for MiriSDR and RFSpace
+	optdepends = soapyplutosdr-git: support for PlutoSDR
+	optdepends = soapyremote: use any SoapySDR device remotely over network
+	options = !strip
+	source = https://github.com/cjcliffe/CubicSDR/releases/download/0.2.5/CubicSDR-0.2.5-x86_64.AppImage
+	source = cubicsdr.desktop
+	source = cubicsdr.png
+	sha256sums = 52294f870659a1586182769446429d87a11b1821a882a67d846ca4a5170a77b4
+	sha256sums = 98dc7ec85637b44505cb1aa51f06fd4171c0d586968f653758fa216684d73de8
+	sha256sums = 063b0aeca2cf34f682bc33e9de49a704d5f8a56ba12a1acd75e7d6a2f99fe789
+
+pkgname = cubicsdr
+
