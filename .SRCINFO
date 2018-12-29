@@ -1,7 +1,7 @@
 pkgbase = awgg-git-gtk2
 	pkgdesc = AWGG comes from Advanced Wget GUI. AWGG is a lightweight multiplatform and multilanguage download manager, basically a wget frontend and other tools like aria2, curl, youtube-dl and axel. AWGG is written in Free Pascal , using CodeTyphon and Lazarus IDE.
 	pkgver = d3e7088
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Nenirey/AWGG
 	arch = x86_64
 	license = GPL2
@@ -13,6 +13,8 @@ pkgbase = awgg-git-gtk2
 	optdepends = curl
 	optdepends = youtube-dl
 	optdepends = axel
+	source = awgg.desktop
+	source = notstandalone.patch
 	validpgpkeys = 51479755D90A2AACFA90A6551DD242462908D08B
 
 pkgname = awgg-git-gtk2

@@ -6,7 +6,7 @@ pkgname=$pkgbase
 
 pkgver=d3e7088
 
-pkgrel=3
+pkgrel=4
 
 _gitname=AWGG
 
@@ -24,7 +24,7 @@ optdepends=("aria2" "curl" "youtube-dl" "axel")
 
 makedepends=("git" "lazarus-gtk2")
 
-sources=("awgg.desktop" "notstandalone.patch")
+source=("awgg.desktop" "notstandalone.patch")
 
 sha256sum=("916576e5b637f0ccebb2be15b46387e4d2f49a007303335748126f2a61602716"
            "f83422ac0717c18714dcfb2c1da2cf541106ff50ce53e6c498990dff20b015d0"
