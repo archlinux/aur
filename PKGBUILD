@@ -16,12 +16,12 @@ source=("http://ftp.gnu.org/pub/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.bz2"
         "https://ftp.gnu.org/gnu/mpc/mpc-1.0.2.tar.gz"
         "http://www.mpfr.org/mpfr-3.1.2/mpfr-3.1.2.tar.bz2"
         "patch-gcc_cp_cfns.h")
-md5sums=('6f831b4d251872736e8e9cc09746f327'
-         '472c84cce740a223420e186a35954fe4'
-         'bdffbffc1fb4a7205f20acbdf18be28e'
-         '68fadff3358fb3e7976c7a398a0af4c3'
-         'ee2c3ac63bf0c2359bf08fc3ee094c19'
-         'cc8bac293c0f0c6e127e7d242237f875')
+sha256sums=('2332b2a5a321b57508b9031354a8503af6fdfb868b8c1748d33028d100a8b67e'
+            '40c43fd1aacdb62dce19459708d633cee035cd25ddd2839d3065f150f5ba327f'
+            '9a6bde619a9dcdcb68a856be1b32a097a2a04fec2ce6d6fe0877d941f9309c50'
+            'b561f54d8a479cee3bc891ee52735f18ff86712ba30f036f8b8537bae380c488'
+            '79c73f60af010a30a5c27a955a1d2d01ba095b72537dab0ecaad57f5a7bb1b6b'
+            'ad3771c065bdb67141228032dbf8bfd62f9a2b4d0b846cbcdb27b1f0eedf2ee6')
 
 prepare ()
 {

@@ -848,6 +848,24 @@ diff -Nru gcc-4.9.3/libgcc/config/mips/t-allegrex gcc-4.9.3-psp/libgcc/config/mi
 diff -Nru gcc-4.9.3/libgcc/config.host gcc-4.9.3-psp/libgcc/config.host
 --- gcc-4.9.3/libgcc/config.host	2014-03-27 15:40:31.000000000 +0000
 +++ gcc-4.9.3-psp/libgcc/config.host	2015-10-19 00:17:27.026646529 +0100
+@@ -140,11 +140,15 @@ microblaze*-*-*)
+ 	cpu_type=microblaze
+ 	;;
+ mips*-*-*)
+-	# All MIPS targets provide a full set of FP routines.
+ 	cpu_type=mips
+ 	tmake_file="mips/t-mips"
+ 	if test "${libgcc_cv_mips_hard_float}" = yes; then
+-		tmake_file="${tmake_file} t-hardfp-sfdf t-hardfp"
++		if test "${libgcc_cv_mips_single_float}" = yes; then
++			tmake_file="${tmake_file} t-hardfp-sf"
++		else
++			tmake_file="${tmake_file} t-hardfp-sfdf"
++		fi
++		tmake_file="${tmake_file} t-hardfp"
+ 	else
+ 		tmake_file="${tmake_file} t-softfp-sfdf"
+ 	fi
 @@ -860,6 +860,14 @@
  mipstx39-*-elf* | mipstx39el-*-elf*)
  	tmake_file="$tmake_file mips/t-crtstuff mips/t-mips16"
@@ -875,3 +893,91 @@ diff -Nru gcc-4.9.3/libgcc/crtstuff.c gcc-4.9.3-psp/libgcc/crtstuff.c
  /* FIXME: Including auto-host is incorrect, but until we have
     identified the set of defines that need to go into auto-target.h,
     this will have to do.  */
+diff --git /dev/null gcc-4.9.3-psp/libgcc/config/t-hardfp-sf
+new file mode 100644
+index 00000000000..10682690219
+--- /dev/null
++++ gcc-4.9.3-psp/libgcc/config/t-hardfp-sf
+@@ -0,0 +1,32 @@
++# Copyright (C) 2014 Free Software Foundation, Inc.
++
++# This file is part of GCC.
++
++# GCC is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3, or (at your option)
++# any later version.
++
++# GCC is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++
++# You should have received a copy of the GNU General Public License
++# along with GCC; see the file COPYING3.  If not see
++# <http://www.gnu.org/licenses/>.
++
++hardfp_float_modes := sf
++# di and ti are provided by libgcc2.c where needed.
++hardfp_int_modes := si
++hardfp_extensions := 
++hardfp_truncations := 
++
++# Emulate 64 bit float:
++FPBIT = true
++DPBIT = true
++# Don't build functions handled by 32 bit hardware:
++LIB2FUNCS_EXCLUDE = _addsub_sf _mul_sf _div_sf \
++    _fpcmp_parts_sf _compare_sf _eq_sf _ne_sf _gt_sf _ge_sf \
++    _lt_sf _le_sf _unord_sf _si_to_sf _sf_to_si _negate_sf \
++    _thenan_sf _sf_to_usi _usi_to_sf
+diff --git gcc-4.9.3/libgcc/configure gcc-4.9.3-psp/libgcc/configure
+index 35896deb7bf..b04e158e155 100644
+--- gcc-4.9.3/libgcc/configure
++++ gcc-4.9.3-psp/libgcc/configure
+@@ -4352,6 +4352,26 @@ rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $libgcc_cv_mips_hard_float" >&5
+ $as_echo "$libgcc_cv_mips_hard_float" >&6; }
++  { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether the target is single-float" >&5
++$as_echo_n "checking whether the target is single-float... " >&6; }
++if test "${libgcc_cv_mips_single_float+set}" = set; then :
++  $as_echo_n "(cached) " >&6
++else
++  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++#ifndef __mips_single_float
++     #error FOO
++     #endif
++_ACEOF
++if ac_fn_c_try_compile "$LINENO"; then :
++  libgcc_cv_mips_single_float=yes
++else
++  libgcc_cv_mips_single_float=no
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
++fi
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $libgcc_cv_mips_single_float" >&5
++$as_echo "$libgcc_cv_mips_single_float" >&6; }
+ esac
+ 
+ # Collect host-machine-specific information.
+diff --git gcc-4.9.3/libgcc/configure.ac gcc-4.9.3-psp/libgcc/configure.ac
+index d877d21c092..312bf264679 100644
+--- gcc-4.9.3/libgcc/configure.ac
++++ gcc-4.9.3-psp/libgcc/configure.ac
+@@ -302,6 +302,14 @@ mips*-*-*)
+      #endif],
+     [libgcc_cv_mips_hard_float=yes],
+     [libgcc_cv_mips_hard_float=no])])
++  AC_CACHE_CHECK([whether the target is single-float],
++		 [libgcc_cv_mips_single_float],
++		 [AC_COMPILE_IFELSE(
++    [#ifndef __mips_single_float
++     #error FOO
++     #endif],
++    [libgcc_cv_mips_single_float=yes],
++    [libgcc_cv_mips_single_float=no])])
+ esac
+ 
+ # Collect host-machine-specific information.
