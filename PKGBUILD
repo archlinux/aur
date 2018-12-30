@@ -1,8 +1,8 @@
-# Maintainer: luke bonham <dada [at] archlinux [dot] info>
+# Maintainer: Luca CPZ <luca.cpz [at] gmail [dot] com>
 
 pkgname=lain-git
-pkgcom=1683
-pkgsha=8d1a905
+pkgcom=1686
+pkgsha=1a40fe8
 pkgver=$pkgcom.$pkgsha
 pkgrel=1
 pkgdesc="Layouts, asynchronous widgets and utilities for Awesome WM"
@@ -14,7 +14,7 @@ optdepends=('curl: for IMAP, MPD and weather widgets')
 makedepends=('git')
 provides=('lain')
 conflicts=('lain')
-source=("git://github.com/copycat-killer/lain.git")
+source=("git://github.com/lcpz/lain.git")
 md5sums=('SKIP')
 
 package() {
