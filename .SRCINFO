@@ -1,6 +1,6 @@
 pkgbase = task-maker
 	pkgdesc = The new cmsMake!
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/algorithm-ninja/task-maker
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = task-maker
 	depends = python-traits
 	depends = capnproto
 	depends = pybind11
-	source = https://github.com/algorithm-ninja/task-maker/archive/v2.1.0.tar.gz
-	sha384sums = 665f2cf0457bf86eac1ca0dd0edb9adb7fe3d76c5eb8bb206157df0ef766b0e6c936eb7cb7aff1544204c25727aa4ec1
+	source = https://github.com/algorithm-ninja/task-maker/archive/v2.1.1.tar.gz
+	sha384sums = 79b34b3fbacbb5bf09b2c1887c259f1c418b77b895fd53c297b0cf8030022dd4d48ff624c9323f1a0841f2e59d8590c1
 
 pkgname = task-maker
 

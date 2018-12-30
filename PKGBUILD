@@ -2,7 +2,7 @@
 # Co-maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="The new cmsMake!"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('MPL2')
 depends=('python' 'python-ruamel-yaml' 'python-traits' 'capnproto' 'pybind11')
 makedepends=('cmake' 'gmock' 'gtest' 'python-pip')
 source=("https://github.com/algorithm-ninja/task-maker/archive/v${pkgver}.tar.gz")
-sha384sums=('665f2cf0457bf86eac1ca0dd0edb9adb7fe3d76c5eb8bb206157df0ef766b0e6c936eb7cb7aff1544204c25727aa4ec1')
+sha384sums=('79b34b3fbacbb5bf09b2c1887c259f1c418b77b895fd53c297b0cf8030022dd4d48ff624c9323f1a0841f2e59d8590c1')
 
 build() {
     cd "$srcdir/task-maker-${pkgver}"
