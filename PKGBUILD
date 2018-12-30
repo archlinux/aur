@@ -1,7 +1,7 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=graylog-collector-sidecar
-pkgver=0.1.4
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='A supervisor process for 3rd party log collectors like NXLog or Filebeat'
 url='https://github.com/Graylog2/collector-sidecar'
