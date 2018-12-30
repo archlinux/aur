@@ -7,7 +7,7 @@
 
 _pkgname=audacious-plugins
 pkgname=$_pkgname-gtk3
-pkgver=3.10
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
@@ -55,19 +55,19 @@ source=("git+https://github.com/audacious-media-player/$_pkgname.git#tag=$_tag")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/audacious-plugins"
+  cd "$srcdir/$_pkgname"
   autoreconf -I m4
 }
 
 build() {
-  cd "$srcdir/audacious-plugins"
+  cd "$srcdir/$_pkgname"
   ./configure \
     --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/audacious-plugins"
+  cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
