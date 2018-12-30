@@ -1,6 +1,6 @@
 pkgbase = qzdoom-git
 	pkgdesc = Advanced Doom source port with true color renderer (git version)
-	pkgver = q2.2pre+905+ge2e0b0c15
+	pkgver = q2.2pre+1467+ga0e188773
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = qzdoom-git
 	makedepends = fluidsynth
 	makedepends = git
 	makedepends = gtk3
+	depends = asmjit-git
 	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libgme

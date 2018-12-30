@@ -2,13 +2,14 @@
 
 _name=qzdoom
 pkgname=${_name}-git
-pkgver=q2.2pre+905+ge2e0b0c15
+pkgver=q2.2pre+1467+ga0e188773
 pkgrel=1
 pkgdesc='Advanced Doom source port with true color renderer (git version)'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
-depends=('hicolor-icon-theme'
+depends=('asmjit-git'
+         'hicolor-icon-theme'
          'libgl'
          'libgme'
          'libjpeg'
@@ -68,7 +69,12 @@ build() {
           -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
           -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
           -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
+          -DCMAKE_DISABLE_FIND_PACKAGE_asmjit=TRUE \
           -DCMAKE_INSTALL_PREFIX=/usr \
+          -DASMJIT_FOUND=TRUE \
+          -DASMJIT_INCLUDE_DIR=/usr/include \
+          -DASMJIT_LIBRARIES=asmjit \
+          -DASMJIT_LIBRARY=asmjit \
           -DINSTALL_PATH=bin \
           -DINSTALL_PK3_PATH=share/$_name \
           .
