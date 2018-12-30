@@ -5,45 +5,63 @@
 # Contributor: Thiago Kenji Okada <thiago.mast3r@gmail.com>
 
 pkgbase=ppsspp
-pkgname=('ppsspp' 'ppsspp-headless' 'ppsspp-qt')
-pkgver=1.7.1
+pkgname=(
+  ppsspp
+  ppsspp-headless
+  ppsspp-qt
+)
+pkgver=1.7.4
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
-arch=('x86_64')
+arch=(x86_64)
 url='http://www.ppsspp.org/'
-license=('GPL2')
-depends=('glew' 'libgl' 'sdl2' 'snappy' 'zlib')
-makedepends=('cmake' 'git' 'libzip' 'qt5-tools')
-source=("git+https://github.com/hrydgard/ppsspp.git#tag=v${pkgver}"
-        'git+https://github.com/Kingcom/armips.git'
-        'git+https://github.com/discordapp/discord-rpc.git'
-        'ppsspp-ffmpeg::git+https://github.com/hrydgard/ppsspp-ffmpeg.git'
-        'ppsspp-glslang::git+https://github.com/hrydgard/glslang.git'
-        'git+https://github.com/hrydgard/ppsspp-lang.git'
-        'git+https://github.com/Tencent/rapidjson.git'
-        'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
-        'armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git'
-        'ppsspp.sh'
-        'ppsspp-headless.sh'
-        'ppsspp-qt.sh'
-        'ppsspp.desktop'
-        'ppsspp-qt.desktop'
-        'ppsspp-flags.patch')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '2c2d1ee6d1ce5c2acec372d58b8079885f6d5d674633cfea489cd550252a5426'
-            '1236ce000bb670ee2c0e0645c3d55f4d8c8e74dbc35a1af0962a3bdd7608f1c5'
-            '828b06aacc56672a4d953d77342717c5be414a68261025f74e466abd084b8e6b'
-            '1c332702d0aeced07df7e12ba8530bc3f19a52bc76c355f6c84c141becfd46d8'
-            'b3b1fb9e0ecd3c4472b51f27d028a69514b1a3823c26e33da6ffaebfb1522b7f'
-            '6694643d96dae673f01555637139468eb277f3379afbcceccad3f7e0ae670278')
+license=(GPL2)
+depends=(
+  glew
+  libgl
+  sdl2
+  zlib
+)
+makedepends=(
+  cmake
+  git
+  libzip
+  qt5-tools
+)
+source=(
+  git+https://github.com/hrydgard/ppsspp.git#tag=v${pkgver}
+  git+https://github.com/Kingcom/armips.git
+  git+https://github.com/discordapp/discord-rpc.git
+  ppsspp-ffmpeg::git+https://github.com/hrydgard/ppsspp-ffmpeg.git
+  ppsspp-glslang::git+https://github.com/hrydgard/glslang.git
+  git+https://github.com/hrydgard/ppsspp-lang.git
+  git+https://github.com/Tencent/rapidjson.git
+  git+https://github.com/KhronosGroup/SPIRV-Cross.git
+  armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
+  ppsspp.sh
+  ppsspp-headless.sh
+  ppsspp-qt.sh
+  ppsspp.desktop
+  ppsspp-qt.desktop
+  ppsspp-flags.patch
+)
+sha256sums=(
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  2c2d1ee6d1ce5c2acec372d58b8079885f6d5d674633cfea489cd550252a5426
+  1236ce000bb670ee2c0e0645c3d55f4d8c8e74dbc35a1af0962a3bdd7608f1c5
+  828b06aacc56672a4d953d77342717c5be414a68261025f74e466abd084b8e6b
+  1c332702d0aeced07df7e12ba8530bc3f19a52bc76c355f6c84c141becfd46d8
+  b3b1fb9e0ecd3c4472b51f27d028a69514b1a3823c26e33da6ffaebfb1522b7f
+  6694643d96dae673f01555637139468eb277f3379afbcceccad3f7e0ae670278
+)
 
 prepare() {
   cd ppsspp
@@ -100,7 +118,10 @@ build() {
 }
 
 package_ppsspp() {
-  depends+=('hicolor-icon-theme' 'libzip')
+  depends+=(
+    hicolor-icon-theme
+    libzip
+  )
 
   cd ppsspp/build-sdl
 
@@ -122,9 +143,13 @@ package_ppsspp-headless() {
 }
 
 package_ppsspp-qt() {
-  depends+=('hicolor-icon-theme' 'libzip' 'qt5-base')
-  provides=('ppsspp')
-  conflicts=('ppsspp')
+  depends+=(
+    hicolor-icon-theme
+    libzip
+    qt5-base
+  )
+  provides=(ppsspp)
+  conflicts=(ppsspp)
 
   cd ppsspp/build-qt
 
