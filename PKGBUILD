@@ -1,8 +1,8 @@
 # Maintainer: Raphael Emberger(raember) <raphael.emberger@hotmail.ch>
 # Contributor: Hervé Bitteur <herve.bitteur@audiveris.com>
 pkgname=audiveris
-pkgver=5.1.0_rc
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="Music score OMR engine"
 arch=('x86_64')
 url="https://github.com/Audiveris/audiveris"
@@ -23,12 +23,15 @@ source=(
   "$pkgname-${pkgver/_/-}.tar.gz::https://github.com/Audiveris/$pkgname/archive/${pkgver/_/-}.tar.gz"
   "$pkgname"
 )
-sha256sums=('1ea51e880c1bb867708ac917801056dd25686389d354d4683eb7ee972811ee1d'
+sha256sums=('1303e2deaef16a06c7ac21ae6b2d7f1409a2f80365777100d8927ebf90c48939'
             '12223d402f4f6719051df7ab4776a82c7326c41f49403d4d1868c5b041678743')
 
 prepare() {
   msg2 'Replacing git commit request with static commit hash'
-  sed -i "s/git rev-parse --short HEAD/echo '0bf68268962228f6993c52e77349fc44e7c17162'/g" "$srcdir/$pkgname-${pkgver/_/-}/build.gradle"
+  sed -i "s/git rev-parse --short HEAD/echo '4f234fefb8a5e004f3b82fee11e68b57c004b20a'/g" "$srcdir/$pkgname-${pkgver/_/-}/build.gradle"
+  # Quickfix for javadoc
+  sed -i "s/XmlRootElement;/XmlRootElement;\nimport org.audiveris.omr.sig.inter.AbstractInter;/g" "$srcdir/$pkgname-${pkgver/_/-}/src/main/org/audiveris/omr/sig/relation/MirrorRelation.java"
+
 }
 
 build() {
