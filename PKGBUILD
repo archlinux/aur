@@ -14,7 +14,7 @@ source=(git+https://github.com/felixdoerre/primus_vk
        'pvkrun.in.sh')
 md5sums=('SKIP'
          'e8bec20f7aa74956f4944c7ed237a770'
-         'ffcf85c06e6fce121417d6dd4d8bb633')
+         'fb5ae09d41c4590de7f0ecf1ca6c3673')
 
 pkgver() {
   cd "${_pkgname/-/_}"
@@ -26,7 +26,7 @@ build() {
   cd "${_pkgname/-/_}"
 
   CXXFLAGS+=' -DNV_DRIVER_PATH=\"/usr/lib/libGLX_nvidia.so.0\"'
-  make CXXFLAGS="$CXXFLAGS $LDFLAGS"
+  make CXXFLAGS="$CXXFLAGS"
 }
 
 package() {
