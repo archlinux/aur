@@ -1,6 +1,6 @@
 pkgbase = splunk
 	pkgdesc = Statistical analysis and search tool for logs and machine data
-	pkgver = 7.2.1_be11b2c46e23
+	pkgver = 7.2.3_06d57c595b80
 	pkgrel = 1
 	url = https://www.splunk.com/
 	install = splunk.install
@@ -8,8 +8,8 @@ pkgbase = splunk
 	license = custom
 	source = splunk.service
 	sha256sums = ca96b85750a0592208facc747bbe1eb22b0a35b6dee841e6f51f1ad6a9157757
-	source_x86_64 = https://download.splunk.com/products/splunk/releases/7.2.1/linux/splunk-7.2.1-be11b2c46e23-Linux-x86_64.tgz
-	sha256sums_x86_64 = 80ba9a499247cb7df102c3ea21954669f88ccf3b5e3c04f92b982f2dc83b338d
+	source_x86_64 = https://download.splunk.com/products/splunk/releases/7.2.3/linux/splunk-7.2.3-06d57c595b80-Linux-x86_64.tgz
+	sha256sums_x86_64 = c58d8786cafd1c05b1a9f6325e6bee7664cf2c9ca3e3e65b3fda732c76dbae5b
 
 pkgname = splunk
 
