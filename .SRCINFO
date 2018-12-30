@@ -1,6 +1,6 @@
 pkgbase = nudnik
 	pkgdesc = gRPC load-balancing testing tool
-	pkgver = 0.0.22
+	pkgver = 0.0.24
 	pkgrel = 1
 	url = https://github.com/salosh/nudnik.git
 	arch = any
