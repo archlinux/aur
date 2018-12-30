@@ -1,6 +1,6 @@
 pkgbase = blockbench
 	pkgdesc = A free, modern block model editor.
-	pkgver = 2.2.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://blockbench.net/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = blockbench
 	depends = libxtst
 	depends = nss
 	depends = libxss
-	source = https://github.com/JannisX11/blockbench/releases/download/v2.2.0/Blockbench_2.2.0_amd64.deb
+	source = https://github.com/JannisX11/blockbench/releases/download/v2.3.1/Blockbench_2.3.1_amd64.deb
 	sha512sums = a9a1c56742ae930d2bd3f6b91cf5451f37fc42467560a6a9dc3e006673d7085ccf0d63d4fb475e15f5532ad8536bcdf93e3f6de362f6a6a97475c501f46f522e
 
 pkgname = blockbench
