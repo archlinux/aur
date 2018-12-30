@@ -13,11 +13,18 @@ makedepends=('cargo' 'npm' 'python2' 'git' 'yarn')
 optdepends=('hunspell-en_US: for English spellcheck support'
             'emoji-font: colorful emoji')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${pkgname}/archive/linux/$pkgver.tar.gz"
-        "${pkgname}"
         "${pkgname}.desktop")
 sha256sums=('4216cd9c3a2c4920aec2f3c967181b04bfafdb1b47e526a8e823911cce704da1'
-            '13f0829f0995269e7bdf5db683d048d36ae8af8cf16030a581e6386d83aae03a'
             'cc9056cecff2aa49a9ce9c8376d57ec8c7c2cb8174f7966b5cdccbeb2e3751ea')
+
+prepare() {
+  # Create launcher script
+  cat << EOF > "${pkgname}"
+#!/bin/sh
+
+electron "/usr/lib/${pkgname}"
+EOF
+}
 
 build() {
   cd "${pkgname}-linux-${pkgver}"
