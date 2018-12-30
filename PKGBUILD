@@ -7,7 +7,7 @@
 _commit=76fea495eda10a2a7edef93609d176ac141c648e
 pkgname=shadow-beta
 pkgver=0.8.62
-pkgrel=3
+pkgrel=4
 pkgdesc="Shadow launcher"
 arch=('x86_64')
 url="http://shadow.tech"
@@ -36,7 +36,7 @@ package() {
 	mv opt "${pkgdir}"
 
 	# Move the source directory
-	cd ../
+	cd "$srcdir"
 
 	### Move the Wrapper
 	chmod g-w wrapper.pl

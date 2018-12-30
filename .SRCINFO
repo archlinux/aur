@@ -1,7 +1,7 @@
 pkgbase = shadow-beta
 	pkgdesc = Shadow launcher
 	pkgver = 0.8.62
-	pkgrel = 3
+	pkgrel = 4
 	url = http://shadow.tech
 	install = shadow-beta.install
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = shadow-beta
 	depends = libdrm
 	depends = libnotify
 	depends = libva
+	depends = libva-vdpau-driver-shadow
 	depends = libxtst
 	depends = nss
 	depends = opus

@@ -9,7 +9,8 @@ build:clear recup ## Build pakage
 clear: ## Clear files
 	rm -rf ./pkg
 	rm -rf ./src
-	rm -f ./shadowbeta.deb
+	rm -f ./*.deb
+	rm -f ./*.pl
 	rm -f ./shadow-beta-*.pkg.tar
 	rm -f ./*~
 
