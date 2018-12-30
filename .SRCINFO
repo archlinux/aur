@@ -1,6 +1,6 @@
 pkgbase = audacious-gtk3
 	pkgdesc = Lightweight, advanced audio player focused on audio quality
-	pkgver = 3.10
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://audacious-media-player.org/
 	install = audacious.install
@@ -17,7 +17,7 @@ pkgbase = audacious-gtk3
 	optdepends = unzip: zipped skins support
 	provides = audacious
 	conflicts = audacious
-	source = git+https://github.com/audacious-media-player/audacious.git#tag=audacious-3.10-gtk3
+	source = git+https://github.com/audacious-media-player/audacious.git#tag=audacious-3.10.1-gtk3
 	sha256sums = SKIP
 
 pkgname = audacious-gtk3

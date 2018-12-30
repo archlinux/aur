@@ -7,7 +7,7 @@
 
 _pkgname=audacious
 pkgname=$_pkgname-gtk3
-pkgver=3.10
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality"
 arch=('i686' 'x86_64')
@@ -24,12 +24,12 @@ source=("git+https://github.com/audacious-media-player/$_pkgname.git#tag=$_tag")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/audacious"
+  cd "$srcdir/$_pkgname"
   autoreconf -I m4
 }
 
 build() {
-  cd "$srcdir/audacious"
+  cd "$srcdir/$_pkgname"
   ./configure \
     --prefix=/usr \
     --with-buildstamp='Arch Linux'
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/audacious"
+  cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
