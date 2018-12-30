@@ -1,7 +1,7 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=imagej2
-_ver=2.0.0-rc-69
+_ver=2.0.0-rc-71
 pkgver=${_ver//-/}
 pkgrel=1
 pkgdesc="Image manipulation software for scientists"
@@ -12,7 +12,7 @@ depends=('java-runtime>=8')
 makedepends=('maven' 'java-environment=8')
 source=("https://github.com/imagej/imagej/archive/imagej-$_ver.tar.gz"
         "imagej2.desktop")
-md5sums=('c5a2a829b871a708c67a29757bae5589'
+md5sums=('f2c7dec97f4ae49dd8b84a854cad2d13'
          'db18ac6d6ed799e04bc23b635b35e673')
 
 build() {
