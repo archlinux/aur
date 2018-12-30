@@ -1,12 +1,12 @@
 pkgbase = s-tui-git
 	pkgdesc = Terminal UI stress test and monitoring tool
-	pkgver = r222.397e17f
+	pkgver = v0.8.3.r0.ga7cc0a3
 	pkgrel = 1
 	url = https://github.com/amanusk/s-tui
 	arch = any
 	license = GPLv2
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	depends = stress
 	depends = python2
 	depends = python2-urwid
