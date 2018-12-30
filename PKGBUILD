@@ -3,13 +3,12 @@
 
 pkgname=python-pywal
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate and change colorschemes on the fly"
 arch=('any')
 url="https://github.com/dylanaraps/pywal/"
 license=('MIT')
-depends=('python' 'imagemagick')
-makedepends=('python-setuptools')
+depends=('python' 'imagemagick' 'python-setuptools')
 optdepends=('feh: set wallpaper'
             'nitrogen: set wallpaper'
 	    'python2: reload gtk2 themes on the fly')
