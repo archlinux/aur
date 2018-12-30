@@ -8,12 +8,12 @@
 
 pkgname=filebot-git
 _pkgname=filebot
-pkgver=4.8.5.20181206
+pkgver=4.8.5.20181230
 _pkgver=4.8.5
 pkgrel=1
 pkgdesc="The ultimate TV and Movie Renamer"
 _jnaver=4.5.2
-_fixedcommit=2fc9bd0644dd5ae5c6a09f701ab7ae7dfab9a64d
+_fixedcommit=7bf24024b2b7d02eca03711342e6d45fbfc4472c
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 license=('Commercial')
 url="https://github.com/filebot/filebot"
