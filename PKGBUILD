@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${pkgname}::git+https://github.com/amietn/vcsi.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 package() {
   cd "${pkgname}"
