@@ -1,0 +1,25 @@
+pkgbase = chicago95-git
+	pkgdesc = Windows 95 theme
+	pkgver = r128.7ca8525
+	pkgrel = 1
+	url = https://github.com/grassmunk/Chicago95
+	arch = any
+	license = GPL
+	source = git+https://github.com/grassmunk/Chicago95.git
+	sha256sums = SKIP
+
+pkgname = chicago95-gtk-theme-git
+	pkgdesc = Windows 95 inspired GTK theme
+	provides = chicago95-gtk-theme
+	conflicts = chicago95-gtk-theme
+
+pkgname = chicago95-icon-theme-git
+	pkgdesc = Windows 95 inspired icon theme
+	provides = chicago95-icon-theme
+	conflicts = chicago95-icon-theme
+
+pkgname = xcursor-chicago95-git
+	pkgdesc = Windows 95 inspired cursors
+	provides = xcursor-chicago95
+	conflicts = xcursor-chicago95
+
