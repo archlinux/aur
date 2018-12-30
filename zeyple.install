@@ -1,0 +1,9 @@
+post_install() {
+    touch /var/log/zeyple.log
+    post_upgrade
+}
+
+post_upgrade() {
+    systemd-sysusers /usr/lib/sysusers.d/zeyple.conf
+    chown -R zeyple:zeyple /var/lib/zeyple /usr/bin/zeyple /etc/zeyple.conf /var/log/zeyple.log
+}
