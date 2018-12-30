@@ -1,6 +1,6 @@
 pkgbase = chessx-svn
 	pkgdesc = A free chess database
-	pkgver = 1.4.8.2434
+	pkgver = 1.4.8.2442
 	pkgrel = 1
 	url = http://chessx.sourceforge.net
 	install = chessx-svn.install
@@ -14,7 +14,7 @@ pkgbase = chessx-svn
 	depends = qt5-svg
 	depends = desktop-file-utils
 	depends = qt5-multimedia
-	provides = chessx=1.4.8.2434
+	provides = chessx=1.4.8.2442
 	conflicts = chessx
 	options = !emptydirs
 	source = chessx-svn::svn+http://svn.code.sf.net/p/chessx/code/trunk
