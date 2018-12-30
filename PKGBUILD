@@ -2,7 +2,7 @@
 # Previous Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=python2-uritools
 _pypiname=uritools
-pkgver=1.0.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="RFC 3986 compliant, Unicode-aware, scheme-agnostic replacement for urlparse"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python2-pip')
 depends=('python2' 'python2-ipaddress')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/u/${_pypiname}/${_pypiname}-$pkgver.tar.gz)
-md5sums=('64441f6ae24f4cbed1920feb5debea9f')
+md5sums=('b233ab8184cacf75c5ab3ffd35dac066')
 
 package() {
   cd "$srcdir/$_pypiname-$pkgver"
