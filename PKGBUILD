@@ -2,13 +2,14 @@
 
 _name=gzdoom
 pkgname=${_name}-legacy
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support (legacy version)'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
-depends=('hicolor-icon-theme'
+depends=('asmjit-git'
+         'hicolor-icon-theme'
          'libgl'
          'libgme'
          'libjpeg'
@@ -62,7 +63,12 @@ build() {
           -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
           -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
           -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
+          -DCMAKE_DISABLE_FIND_PACKAGE_asmjit=TRUE \
           -DCMAKE_INSTALL_PREFIX=/usr \
+          -DASMJIT_FOUND=TRUE \
+          -DASMJIT_INCLUDE_DIR=/usr/include \
+          -DASMJIT_LIBRARIES=asmjit \
+          -DASMJIT_LIBRARY=asmjit \
           -DINSTALL_PATH=bin \
           -DINSTALL_PK3_PATH=share/$_name \
           .
