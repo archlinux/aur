@@ -1,6 +1,6 @@
 # Maintainer: Salo Shp <support@salosh.org>
 pkgname=nudnik
-pkgver=0.0.24
+pkgver=0.0.26
 pkgrel=1
 epoch=
 pkgdesc="gRPC load-balancing testing tool"
@@ -24,7 +24,7 @@ md5sums=()
 validpgpkeys=()
 
 build() {
-  pip install --no-deps --target="nudnik" nudnik==0.0.24
+  pip install --no-deps --target="nudnik" nudnik==0.0.26
 }
 
 package() {
