@@ -10,7 +10,7 @@ arch=(x86_64)
 url='http://qt-project.org/'
 license=(LGPL)
 pkgdesc='Enables the use of Qt5 APIs in Python applications'
-depends=("python2-shiboken2>=$pkgver" qt5-base)
+depends=("python2-shiboken2>=${pkgver}" "qt5-base>=${_qtver}")
 optdepends=('qt5-svg: QtSvg bindings'
             'qt5-script: QtScript bindings'
             'qt5-speech: QtTextToSpeech bindings'

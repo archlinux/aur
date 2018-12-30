@@ -23,7 +23,7 @@ pkgbase = python2-pyside2
 	makedepends = qt5-scxml
 	makedepends = qt5-x11extras
 	depends = python2-shiboken2>=5.12.0
-	depends = qt5-base
+	depends = qt5-base>=5.12.0
 	optdepends = qt5-svg: QtSvg bindings
 	optdepends = qt5-script: QtScript bindings
 	optdepends = qt5-speech: QtTextToSpeech bindings
