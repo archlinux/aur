@@ -1,0 +1,16 @@
+pkgbase = python-nvchecker-toolbelt
+	pkgdesc = Utilities around nvchecker
+	pkgver = 0.2
+	pkgrel = 2
+	url = https://gitlab.com/yan12125/nvchecker-toolbelt
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools-scm
+	depends = nvchecker
+	source = git+https://gitlab.com/yan12125/nvchecker-toolbelt?signed#tag=0.2
+	validpgpkeys = 481C4474AF1572165AE4C6AF3FDDD575826C5C30
+	sha256sums = SKIP
+
+pkgname = python-nvchecker-toolbelt
+
