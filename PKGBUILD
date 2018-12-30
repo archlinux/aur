@@ -1,15 +1,15 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=daedalus
-pkgver=0.11.1
-_commit=42a014425a405b9c739e9787b641833bee7f7ba9
+pkgver=0.12.0
+_commit=d4fd4d98c127161401a8d86763f3a3810f14978c
 pkgrel=1
 pkgdesc='Cryptocurrency wallet'
 arch=('any')
 url='https://github.com/input-output-hk/daedalus'
 license=('MIT')
 depends=('cardano-sl' 'electron')
-makedepends=('asar' 'git' 'nodejs-lts-carbon' 'npm' 'python2')
+makedepends=('asar' 'git' 'npm')
 source=("git+https://github.com/input-output-hk/daedalus.git#commit=${_commit}"
         "${pkgname}.desktop"
         "${pkgname}.js"
@@ -28,7 +28,7 @@ prepare() {
 build() {
     cd ${pkgname}
 
-    PYTHON=python2 npm install
+    npm install
     NODE_ENV=production npm run build
 }
 
