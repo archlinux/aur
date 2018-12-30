@@ -1,7 +1,7 @@
 pkgbase = zeyple
 	pkgdesc = Zeyple is a Postfix filter/hook to automatically encrypt outgoing emails with GPG/PGP
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/infertux/zeyple
 	install = zeyple.install
 	arch = any
