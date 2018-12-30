@@ -1,12 +1,13 @@
 pkgbase = libressl-netcat
 	pkgdesc = Low level UDP/TCP connection tool with support for TLS protocol
 	pkgver = 2.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.libressl.org
 	arch = x86_64
 	arch = i686
 	license = isc
 	license = custom:Openssl
+	makedepends = libbsd
 	depends = ca-certificates
 	provides = netcat
 	conflicts = openbsd-netcat
