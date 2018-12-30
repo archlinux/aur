@@ -9,7 +9,7 @@ fzf-extras
 To source fzf-extras, add the following to your shell config:
 
     # when bash
-    . /etc/profile.d/fzf-extras.bash
+    . /usr/share/fzf/fzf-extras.bash
     # when zsh
-    . /etc/profile.d/fzf-extras.zsh
+    . /usr/share/fzf/fzf-extras.zsh
 EOF
