@@ -1,6 +1,6 @@
 pkgbase = purple-hangouts-hg
 	pkgdesc = A Pidgin plugin to support the proprietary protocol used by Google for the Hangouts service.
-	pkgver = r381.cd38fcd6082d
+	pkgver = r386.cccf2f62d439
 	pkgrel = 1
 	url = https://bitbucket.org/EionRobb/purple-hangouts
 	arch = i686
