@@ -1,6 +1,6 @@
 pkgbase = lib32-systemd-git
 	pkgdesc = system and service manager (32-bit, git version)
-	pkgver = 240.1
+	pkgver = 240.9
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
