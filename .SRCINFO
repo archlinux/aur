@@ -1,12 +1,12 @@
 pkgbase = virtualbox-ck-modules
-	pkgver = 5.2.22
-	pkgrel = 3
+	pkgver = 6.0.0
+	pkgrel = 1
 	url = http://virtualbox.org
 	arch = x86_64
 	license = GPL
 	makedepends = linux-ck-headers
-	makedepends = virtualbox-host-dkms>=5.2.22
-	makedepends = virtualbox-guest-dkms>=5.2.22
+	makedepends = virtualbox-host-dkms>=6.0.0
+	makedepends = virtualbox-guest-dkms>=6.0.0
 	makedepends = dkms
 
 pkgname = virtualbox-ck-host-modules

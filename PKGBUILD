@@ -4,8 +4,8 @@
 # Contributer: Sébastien Luttringer <seblu@aur.archlinux.org>
 pkgbase=(virtualbox-ck-modules)
 pkgname=(virtualbox-ck-host-modules)
-pkgver=5.2.22
-pkgrel=3
+pkgver=6.0.0
+pkgrel=1
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
