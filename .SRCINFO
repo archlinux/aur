@@ -1,0 +1,13 @@
+pkgbase = notable-bin
+	pkgdesc = The markdown-based note-taking app that doesn't suck
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/fabiospampinato/notable
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/fabiospampinato/notable/releases/download/v1.0.1/notable_1.0.1_amd64.deb
+	md5sums = 33bd16a5788da0d9156eb63624e20967
+	sha512sums = 5450826b852b66d19702fb48af986f1d2209e29bddbc5f36f0f01ea49a5245216512338d77325ec0dc5de1f7b36eac1f9a7d2100d6c4321d2cb4b549afff6cfd
+
+pkgname = notable-bin
+
