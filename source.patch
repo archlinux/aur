@@ -1,5 +1,40 @@
+diff --git a/output.dat b/AAoutput.dat
+similarity index 100%
+rename from output.dat
+rename to AAoutput.dat
+diff --git a/CommonRoutines.H b/CommonRoutines.H
+index c56b53b..6b12f5d 100644
+--- a/CommonRoutines.H
++++ b/CommonRoutines.H
+@@ -53,9 +53,9 @@ bool getDoubleFromString(double &retVal, string s,
+ 
+ bool getDouble(double &retVal, double defaultValue);
+ 
+-bool getInt(int &retVal, int defaultValue);
++bool getInt(long int &retVal, int defaultValue);
+ 
+-bool getIntFromString(int &retVal, string s, int lowBounds, int hiBounds);
++bool getIntFromString(long int &retVal, string s, int lowBounds, long int hiBounds);
+ 
+ int getIntInput(string prompt, int defaultVal, int lowBounds, int hiBounds);
+ 
+@@ -78,7 +78,7 @@ bool fileExists(string fn);
+ void getValidDoubleTokens (double &retVal, ifstream &ifs, double low,
+                            double hi, string validLabel, int errorCode);
+ 
+-void getValidIntTokens (int &retVal, ifstream &ifs, int low,
++void getValidIntTokens (long int &retVal, ifstream &ifs, int low,
+                         int hi, string validLabel, int errorCode);
+ 
+ void getValidCharTokens (string &retVal, ifstream &ifs,
+@@ -103,5 +103,3 @@ int findAAindex(char ch);
+ //===========================================================================
+ //=======================  END OF CommonRoutines.H   ========================
+ //===========================================================================
+-
+-
 diff --git a/CommonRoutines.cpp b/CommonRoutines.cpp
-index 306280f..3b43739 100644
+index 306280f..410172e 100644
 --- a/CommonRoutines.cpp
 +++ b/CommonRoutines.cpp
 @@ -35,9 +35,11 @@
@@ -10,19 +45,92 @@ index 306280f..3b43739 100644
  #include "CommonRoutines.H"
  using namespace std;
  
-+const int HI_BOUND = 1000001;
++const long int HI_BOUND = 1000000000000000001;
  
  //---------------------------------------------------------------------------
  bool isNum(char ch) {
-@@ -97,7 +99,7 @@ bool getDoubleFromString(double &retVal, string s,
+@@ -85,7 +87,7 @@ bool getDoubleFromString(double &retVal, string s,
+    lhTok = strtok((char *)s.c_str(), ".");
+    rhTok = strtok(NULL, "\n");
+ 
+-   int lhs, rhs;
++   long int lhs, rhs;
+    if(rhTok == NULL) {
+       if(getIntFromString(lhs, lhTok, -1, 101)) {
+          retVal = (double) lhs;
+@@ -96,8 +98,10 @@ bool getDoubleFromString(double &retVal, string s,
+       }
     }
  
-    if(getIntFromString(lhs, lhTok, -1, 101) && 
++   // cout << "rhTok: " << rhTok << endl;
++   // cout << "getIntFromString: " << getIntFromString(rhs, rhTok, -1, HI_BOUND) << endl;
+    if(getIntFromString(lhs, lhTok, -1, 101) &&
 -      getIntFromString(rhs, rhTok, -1, 10001)) {
 +      getIntFromString(rhs, rhTok, -1, HI_BOUND)) {
  
        // rhs should be divided accordingly
        int divisor = 1;
+@@ -118,7 +122,7 @@ bool getDoubleFromString(double &retVal, string s,
+ //---------------------------------------------------------------------------
+ 
+ //---------------------------------------------------------------------------
+-bool getIntFromString(int &retVal, string s, int lowBounds, int hiBounds) {
++bool getIntFromString(long int &retVal, string s, int lowBounds, long int hiBounds) {
+ 
+    //**********************************************************************
+    // PRE  : defaultValue has been set
+@@ -139,10 +143,16 @@ bool getIntFromString(int &retVal, string s, int lowBounds, int hiBounds) {
+       if(!isNum(currCh))
+          return(false);
+       else {
+-         int currMult = (int)pow(10,len-i-1);
+-         retVal += currMult * ((int)currCh - 48);
++         long int currMult = (long int)pow(10,len-i-1);
++         retVal += currMult * ((long int)currCh - 48);
+       }
+    }
++
++   // Debugging purpose
++   // cout << "retVal: " << retVal << endl;
++   // cout << "lowBounds: " << lowBounds << endl;
++   // cout << "hiBounds: " << hiBounds << endl;
++   // cout << "(retVal > lowBounds)  && (retVal < hiBounds): " << ((retVal > lowBounds)  && (retVal < hiBounds)) << endl;
+    if((retVal > lowBounds)  && (retVal < hiBounds))
+       return(true);
+    else
+@@ -196,7 +206,7 @@ bool getDouble(double &retVal, double defaultValue) {
+ //---------------------------------------------------------------------------
+ 
+ //---------------------------------------------------------------------------
+-bool getInt(int &retVal, int defaultValue) {
++bool getInt(long int &retVal, int defaultValue) {
+ 
+    //**********************************************************************
+    // PRE  : defaultValue has been set
+@@ -377,7 +387,7 @@ void getValidDoubleTokens (double &retVal, ifstream &ifs, double low,
+ //---------------------------------------------------------------------------
+ 
+ //---------------------------------------------------------------------------
+-void getValidIntTokens (int &retVal, ifstream &ifs, int low,
++void getValidIntTokens (long int &retVal, ifstream &ifs, int low,
+                         int hi, string validLabel, int errorCode) {
+ 
+    //**********************************************************************
+@@ -449,7 +459,7 @@ int getIntInput(string prompt, int defaultVal, int lowBounds, int hiBounds) {
+    //**********************************************************************
+ 
+    bool finished = false;
+-   int retVal;
++   long int retVal;
+ 
+    while(!finished) {
+       cout << prompt;
+@@ -688,5 +698,3 @@ int findAAindex(char ch) {
+ //===========================================================================
+ //=====================  END OF CommonRoutines.cpp ==========================
+ //===========================================================================
+-
+-
 diff --git a/Makefile b/Makefile
 index c49a584..cf08cc7 100644
 --- a/Makefile
@@ -34,6 +142,34 @@ index c49a584..cf08cc7 100644
  
  rMotifGen: RandomMotifs.cpp SequenceClass.o CommonRoutines.o SubstitutionMatrices.o PSSM.o
  	${COMPILER} ${CCFLAGS} -o rMotifGen RandomMotifs.cpp SequenceClass.o CommonRoutines.o SubstitutionMatrices.o PSSM.o
+diff --git a/PSSM.cpp b/PSSM.cpp
+index 7ec0e8e..f29f966 100644
+--- a/PSSM.cpp
++++ b/PSSM.cpp
+@@ -112,6 +112,7 @@ void PSSM::checkForValidPSSM() {
+    else {
+       if(!checkColOrientation()) {
+          if(!checkRowOrientation()) {
++            cerr << "Invalid orientation" << endl;
+             errorVal = 29; // INCORRECTLY FORMATTED PSSM FILE
+             return;
+          }
+@@ -205,6 +206,7 @@ bool PSSM::checkColOrientation() {
+          double tmpD;
+          ss >> tmpS;
+          if(!getDoubleFromString(tmpD, tmpS, 0.0, 10000.0)) {
++            cerr << "Invalid string reading in col orientation"  << endl;
+             errorVal = 29;
+             return(false);
+          }
+@@ -286,6 +288,7 @@ bool PSSM::checkRowOrientation() {
+          // MAKE SURE EACH COLUMN IS A POSITIVE DOUBLE VALUE
+ 
+          if(!getDoubleFromString(tmpD, tmpS, 0.0, 10000.0)) {
++            cerr << "Invalid string reading in row orientation" << endl;
+             errorVal = 29;
+             return(false);
+          }
 diff --git a/README b/README
 index 18502c2..ba0164f 100644
 --- a/README
@@ -46,6 +182,58 @@ index 18502c2..ba0164f 100644
          motif<X>Seq=       // Only Valid if Type = 'U' -- consensus motif
          motif<X>PctSeqsContain= // Percentage of sequences that contain this 
                                  // motif 
+diff --git a/RandomMotifs.cpp b/RandomMotifs.cpp
+index 9d66902..5e59a90 100644
+--- a/RandomMotifs.cpp
++++ b/RandomMotifs.cpp
+@@ -505,7 +505,7 @@ void getRandomMotifInfo(ifstream &infile, char *&motif_createTypeArr,
+     string motifLabel = setMotifLabel(i);
+     string currLabel = motifLabel + "Len";
+ 
+-    int tmpint;
++    long int tmpint;
+     if(infile.eof()) { exit(26); }
+     getValidIntTokens(tmpint, infile, 0, 101, currLabel, 18);
+     motif_lenArr[i] = tmpint;
+@@ -580,7 +580,7 @@ void getPAMValue(PAM **&motif_PAMArr, ifstream &infile,
+    //**********************************************************************
+ 
+     string currLabel = motifLabel + "PAM";
+-    int pamVal;
++    long int pamVal;
+     if(infile.eof()) { exit(26); }
+     getValidIntTokens(pamVal, infile, -1, 501, currLabel, 17);
+     motif_PAMArr[i] = new PAM(pamVal);
+@@ -601,9 +601,9 @@ void fileMode(string FN, char seqType){
+ 
+    double *ResiduePcts;
+    char   *ResidueLabels;
+-   int seqLen;
+-   int numMotifs;
+-   int numSeqs;
++   long int seqLen;
++   long int numMotifs;
++   long int numSeqs;
+    bool finished;
+    char   *motif_createTypeArr;
+    bool   *motif_isPalindromicArr;
+@@ -675,7 +675,7 @@ void fileMode(string FN, char seqType){
+          }
+          motif_PSSMArr[i] = currPSSM;
+          currLabel = motifLabel + "PctSeqsContain";
+-         int tmpint;
++         long int tmpint;
+          if(infile.eof()) { exit(26); }
+          getValidIntTokens(tmpint, infile, -1, 101, currLabel, 16);
+           motif_pctSeqConsArr[i] = tmpint;
+@@ -872,7 +872,3 @@ int main(int argc, char *argv[]) {
+ //============================================================================
+ //--------------------------- END OF RandomMotifs.cpp ------------------------
+ //============================================================================
+-
+-
+-
+-
 diff --git a/SequenceClass.cpp b/SequenceClass.cpp
 index 45c121f..92035c1 100644
 --- a/SequenceClass.cpp
