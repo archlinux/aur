@@ -1,6 +1,6 @@
 pkgbase = gzdoom-legacy-git
 	pkgdesc = Advanced Doom source port with OpenGL support (git legacy version)
-	pkgver = g3.5.0_legacy+9+g169c41e14
+	pkgver = g3.7.0_legacy
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = gzdoom-legacy-git
 	makedepends = fluidsynth
 	makedepends = git
 	makedepends = gtk3
+	depends = asmjit-git
 	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libgme
@@ -48,7 +49,7 @@ pkgbase = gzdoom-legacy-git
 	source = 0001-Fix-soundfont-search-path.patch
 	sha256sums = SKIP
 	sha256sums = 59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d
-	sha256sums = b0e621a39e0a050ce119fb4bea888afc7a02039ee9f37a2a5b518e4fe924b3f1
+	sha256sums = 11323f98caadb086b35cce1697744eeba53c96a3f4f9a8c9184ed23e6fb1ea61
 
 pkgname = gzdoom-legacy-git
 
