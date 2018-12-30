@@ -3,7 +3,7 @@
 # Contributor: Chris Brannon <cmbrannon79@gmail.com>
 pkgname=emacspeak
 pkgver=49.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Emacs extension that provides spoken output"
 arch=('x86_64')
 url="http://emacspeak.sf.net/"
@@ -11,10 +11,9 @@ license=('GPL' 'LGPL' 'APACHE')
 depends=(emacs
 	 'tcl>=8.6'
 	 'tclx'
-	 'lesstif'
 	 'espeak')
-optdepends=('python: Google client, and wrapper for Emacspeak speech servers.')
-install='emacspeak.install'
+optdepends=('python: Google client, and wrapper for Emacspeak speech servers.'
+	 'openmotif')
 source=("https://github.com/tvraman/emacspeak/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('24a73d020c434e539ac88ea2041898b6')
 
@@ -33,7 +32,15 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make prefix="${pkgdir}/usr" install
-}
+  local d=$pkgdir/usr/share/emacs/site-lisp/emacspeak
+  install -d -- "$d"
+  cp -a "$srcdir/$pkgname-$pkgver/."  "$d"
+  find "$d" \( -type d -or \( -type f -executable \) \) -execdir chmod 755 {} +
+  find "$d" -type f -not -executable -execdir chmod 644 {} +
 
+  # Add convenient wrapper to keep your configs unmodified
+  local s=$pkgdir/usr/bin/emacspeak
+  install -d -- "${s%/*}"
+  printf '#!/bin/sh\nemacs -l '"'%s'"' "$@"\n' "${d#$pkgdir}/lisp/emacspeak-setup.elc" >"$s"
+  chmod 755 "$s"
+}
