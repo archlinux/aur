@@ -1,14 +1,14 @@
 pkgbase = snowboard
 	pkgdesc = API blueprint toolkit
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/bukalapak/snowboard
 	arch = x86_64
 	license = MIT
 	source = LICENSE
 	sha256sums = 7735b9ba5dcaff4118d2bb06aa2dfa598ee87fe3da1de71a8b74a39c21b91191
-	source_x86_64 = https://github.com/bukalapak/snowboard/releases/download/v1.6.1/snowboard-v1.6.1.linux-amd64.tar.gz
-	sha256sums_x86_64 = 8e2113e81d5a89dbaa2d17e7293dac9966dddc269e47c76ead1b4f7cde4e28f3
+	source_x86_64 = https://github.com/bukalapak/snowboard/releases/download/v1.7.0/snowboard-v1.7.0.linux-amd64.tar.gz
+	sha256sums_x86_64 = 5061c9cd6afc844083435b9e4b5416d61c64bb3f2a2727720ac36d717a915c8d
 
 pkgname = snowboard
 
