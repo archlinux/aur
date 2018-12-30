@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Bert Peters <bert@bertptrs.nl>
 pkgname=hashclash-git
 pkgver=r45.c1159e9
 pkgrel=3
