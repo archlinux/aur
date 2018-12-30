@@ -1,0 +1,98 @@
+diff --git a/cinelerra/ffmpeg.C b/cinelerra/ffmpeg.C
+index 6ab6047..f1cd308 100644
+--- a/cinelerra/ffmpeg.C
++++ b/cinelerra/ffmpeg.C
+@@ -33,9 +33,9 @@ int FFMPEG::init(char *codec_string) {
+ 		return 1;
+ 	}
+ 
+-	context = avcodec_alloc_context();
++	context = avcodec_alloc_context3(codec);
+ 
+-	if (avcodec_open(context, codec)) {
++	if (avcodec_open2(context, codec,NULL)) {
+ 		printf("FFMPEG::init avcodec_open() failed\n");
+ 	}
+ 
+diff --git a/cinelerra/fileac3.C b/cinelerra/fileac3.C
+index a1ef61e..383f377 100644
+--- a/cinelerra/fileac3.C
++++ b/cinelerra/fileac3.C
+@@ -92,11 +92,11 @@ int FileAC3::open_file(int rd, int wr)
+ 			eprintf("codec not found.\n");
+ 			return 1;
+ 		}
+-		codec_context = avcodec_alloc_context();
++		codec_context = avcodec_alloc_context3(codec);
+ 		codec_context->bit_rate = asset->ac3_bitrate * 1000;
+ 		codec_context->sample_rate = asset->sample_rate;
+ 		codec_context->channels = asset->channels;
+-		if(avcodec_open(codec_context, codec))
++		if(avcodec_open2(codec_context, codec,NULL))
+ 		{
+ 			eprintf("failed to open codec.\n");
+ 			return 1;
+diff --git a/quicktime/mpeg4.c b/quicktime/mpeg4.c
+index 81cb72b..02c4a92 100644
+--- a/quicktime/mpeg4.c
++++ b/quicktime/mpeg4.c
+@@ -641,7 +641,7 @@ static int encode(quicktime_t *file, unsigned char **row_pointers, int track)
+ 				return 1;
+ 			}
+ 
+-			codec->encoder_context[current_field] = avcodec_alloc_context();
++			codec->encoder_context[current_field] = avcodec_alloc_context3(codec->encoder[current_field]);
+ 			AVCodecContext *context = codec->encoder_context[current_field];
+ 
+ 			context->width = width_i;
+@@ -740,7 +740,7 @@ static int encode(quicktime_t *file, unsigned char **row_pointers, int track)
+  * codec->fix_bitrate,
+  * codec->quantizer);
+  */
+-			avcodec_open(context, codec->encoder[current_field]);
++			avcodec_open2(context, codec->encoder[current_field],NULL);
+ 
+    			avcodec_get_frame_defaults(&codec->picture[current_field]);
+ 
+diff --git a/quicktime/qtffmpeg.c b/quicktime/qtffmpeg.c
+index 8c532c2..4f0bacb 100644
+--- a/quicktime/qtffmpeg.c
++++ b/quicktime/qtffmpeg.c
+@@ -68,7 +68,9 @@ quicktime_ffmpeg_t* quicktime_new_ffmpeg(int cpus,
+ 			return 0;
+ 		}
+ 
+-		AVCodecContext *context = ptr->decoder_context[i] = avcodec_alloc_context();
++		//AVCodecContext *context = ptr->decoder_context[i] = avcodec_alloc_context();
++		AVCodecContext *context = avcodec_alloc_context3(ptr->decoder[i]);
++		ptr->decoder_context[i] = context;
+ 		static char fake_data[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+ 		context->width = ptr->width_i;
+ 		context->height = ptr->height_i;
+@@ -96,8 +98,7 @@ quicktime_ffmpeg_t* quicktime_new_ffmpeg(int cpus,
+ 			avcodec_thread_init(context, cpus);
+ 			context->thread_count = cpus;
+ 		}
+-		if(avcodec_open(context, 
+-			ptr->decoder[i]) < 0)
++		if(avcodec_open2(context, ptr->decoder[i], NULL) < 0)
+ 		{
+ 			printf("quicktime_new_ffmpeg: avcodec_open failed.\n");
+ 			quicktime_delete_ffmpeg(ptr);
+diff --git a/quicktime/wma.c b/quicktime/wma.c
+index c045741..6a6588b 100644
+--- a/quicktime/wma.c
++++ b/quicktime/wma.c
+@@ -77,10 +77,10 @@ static int init_decode(quicktime_audio_map_t *track_map,
+ 			printf("init_decode: avcodec_find_decoder returned NULL.\n");
+ 			return 1;
+ 		}
+-		codec->decoder_context = avcodec_alloc_context();
++		codec->decoder_context = avcodec_alloc_context3(codec->decoder);
+ 		codec->decoder_context->sample_rate = trak->mdia.minf.stbl.stsd.table[0].sample_rate;
+ 		codec->decoder_context->channels = track_map->channels;
+-		if(avcodec_open(codec->decoder_context, codec->decoder) < 0)
++		if(avcodec_open2(codec->decoder_context, codec->decoder,NULL) < 0)
+ 		{
+ 			printf("init_decode: avcodec_open failed.\n");
+ 			return 1;

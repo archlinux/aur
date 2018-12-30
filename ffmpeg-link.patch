@@ -1,0 +1,24 @@
+--- configure.ac
++++ configure.ac
+@@ -497,7 +497,7 @@
+ AC_ARG_WITH([external-ffmpeg], AC_HELP_STRING([--with-external-ffmpeg], [use external ffmpeg library]))
+ 
+ if test "x$with_external_ffmpeg" = "xyes"; then
+-     PKG_CHECK_MODULES([FFMPEG_TEMP], [libavcodec libpostproc])
++     PKG_CHECK_MODULES([FFMPEG_TEMP], [libavcodec libpostproc libavutil])
+      FFMPEG_FOLDER=""
+      FFMPEG_EXTERNALTEXT="External ffmpeg"
+ 		   
+@@ -515,10 +515,10 @@
+      AC_MSG_RESULT($enable_ffmpeg_swscale)
+      if test x"$enable_ffmpeg_swscale" = xyes; then
+ 	     dnl AC_DEFINE(HAVE_SWSCALER)
+-	     PKG_CHECK_MODULES([FFMPEG], [libavcodec libpostproc libswscale])
++	     PKG_CHECK_MODULES([FFMPEG], [libavcodec libpostproc libswscale libavutil])
+ 	     FFMPEG_CFLAGS="$FFMPEG_CFLAGS -I/usr/include/libavcodec -I/usr/include/libswscale -DHAVE_SWSCALER"
+      else
+-	     PKG_CHECK_MODULES([FFMPEG], [libavcodec libpostproc])
++	     PKG_CHECK_MODULES([FFMPEG], [libavcodec libpostproc libavutil])
+      fi
+      FFMPEG_EXTERNALTEXT="External ffmpeg"
+ else

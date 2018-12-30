@@ -1,0 +1,33 @@
+From e534e852308abaa667c2579bc0025b0c89689b6f Mon Sep 17 00:00:00 2001
+From: Rashif Rahman (Ray) <schiv@archlinux.org>
+Date: Wed, 10 Jun 2015 02:06:36 +0000
+Subject: [PATCH] GCC 5.x inline function semantics fix
+
+The compiler will warn and the linker will fail if an inline
+function is declared but not defined in the same translation
+unit. This fixes the problem by prepending 'extern' to the
+declaration in the header file.
+
+For a proper explanation see:
+https://gcc.gnu.org/gcc-5/porting_to.html
+
+---
+ toolame-02l/bitstream.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/toolame-02l/bitstream.h b/toolame-02l/bitstream.h
+index 66f8ae4..db67ac5 100644
+--- a/toolame-02l/bitstream.h
++++ b/toolame-02l/bitstream.h
+@@ -9,7 +9,7 @@ unsigned int get1bit (Bit_stream_struc *);
+ void put1bit (Bit_stream_struc *, int);
+ unsigned long look_ahead (Bit_stream_struc *, int);
+ unsigned long getbits (Bit_stream_struc *, int);
+-INLINE void putbits (Bit_stream_struc *, unsigned int, int);
++extern INLINE void putbits (Bit_stream_struc *, unsigned int, int);
+ void byte_ali_putbits (Bit_stream_struc *, unsigned int, int);
+ unsigned long byte_ali_getbits (Bit_stream_struc *, int);
+ unsigned long sstell (Bit_stream_struc *);
+--
+2.4.2
+
