@@ -1,0 +1,21 @@
+pkgbase = acme-dns-bin
+	pkgdesc = Limited DNS server with RESTful HTTP API to handle ACME DNS challenges easily and securely
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/joohoi/acme-dns
+	install = acme-dns.install
+	arch = x86_64
+	license = MIT
+	options = !strip
+	options = !emptydirs
+	source = acme-dns.custom.service
+	source = acme-dns.sysusers
+	source = acme-dns.tmpfiles
+	sha256sums = 848052f02c0214cc8191b8583af0fdde8d2c435013f75a3b07242df9bbe417fd
+	sha256sums = 31c038721ff674519a506418b0d70045e2c51115a78a5939743886c44ef5e1bb
+	sha256sums = 36b309e79422ddbaf6067f814c8bd69bd842cc662c3c9dbbf507ee5716282779
+	source_x86_64 = https://github.com/joohoi/acme-dns/releases/download/v0.6/acme-dns_0.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5db9309343ae5b2cc082b7e79af5a9c735b182956ba2d52471046ba549121dc3
+
+pkgname = acme-dns-bin
+

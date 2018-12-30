@@ -1,0 +1,6 @@
+#/bin/sh
+
+post_install() {
+  systemd-sysusers /usr/lib/sysusers.d/acme-dns.conf
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/acme-dns.conf
+}
