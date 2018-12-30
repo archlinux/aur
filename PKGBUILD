@@ -1,13 +1,13 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=welle.io-soapysdr-git
-pkgver=1.0.r21.0141eb1
+pkgver=2.0.beta1.r0.f00230c
 pkgrel=1
 pkgdesc="An open source DAB and DAB+ software defined radio (SDR) with support for rtl-sdr (RTL2832U) and airspy (including SoapySDR)"
 arch=("x86_64")
 url="https://www.${pkgname%-soapysdr-git}"
 license=("GPL2")
-depends=("faad2" "fftw" "qt5-charts" "qt5-multimedia" "qt5-quickcontrols" "qt5-quickcontrols2" "rtl-sdr" "soapysdr-git")
+depends=("faad2" "fftw" "hicolor-icon-theme" "lame" "mpg123" "qt5-charts" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-multimedia" "rtl-sdr" "soapysdr-git")
 optdepends=("airspy" "soapyairspy-git" "soapybladerf-git" "soapyhackrf-git" "soapylms7-git" "soapyosmo-git" "soapyplutosdr-git" "soapyrtlsdr-git" "soapysdrplay-git")
 makedepends=("cmake" "gcc" "git")
 provides=("${pkgname%-soapysdr-git}")
@@ -27,15 +27,11 @@ pkgver() {
 build() {
   mkdir -p "${srcdir}/${pkgname%-soapysdr-git}/build"
   cd "${srcdir}/${pkgname%-soapysdr-git}/build"
-  cmake .. -DRTLSDR=1 -DSOAPYSDR=1
+  cmake "${srcdir}/${pkgname%-soapysdr-git}" -DRTLSDR=1 -DSOAPYSDR=1
   make
 }
 
 package() {
-  install -D -m 0644 "${srcdir}/${pkgname%-soapysdr-git}/${pkgname/%.io-soapysdr-git/-io}.desktop" "${pkgdir}/usr/share/applications/${pkgname/%.io-soapysdr-git/-io}.desktop"
-
-  install -D -m 0644 "${srcdir}/${pkgname%-soapysdr-git}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname/%.io-soapysdr-git/-io}.png"
-
   cd "${srcdir}/${pkgname%-soapysdr-git}/build"
   make DESTDIR=${pkgdir} install
 
