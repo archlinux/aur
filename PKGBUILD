@@ -4,14 +4,14 @@
 
 pkgname=dcmtk
 pkgver=3.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of libraries and applications implementing large parts the DICOM standard"
 arch=('i686' 'x86_64')
 url="http://dicom.offis.de/dcmtk"
 license=('other')
 depends=('zlib' 'libpng' 'libtiff' 'libxml2' 'openssl' 'libssh' 'libwrap')
 makedepends=('cmake' 'make')
-source=("ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk363/${pkgname}-${pkgver}.tar.gz")
+source=("ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk364/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('735f85d04410437a5163b154f43c8a299aff7a8f810605ce6c5027ae4569ff1323a69f70a2603805cec9d826a31166fd904bb53c3edc1137bfc41ba2902c2261')
 
 #Currently it's not building otherwise
