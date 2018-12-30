@@ -1,6 +1,6 @@
-# Maintainer: xsmile <sascha_r gmx de>
+# Maintainer: xsmile <>
 pkgname=ifrextractor-ls
-pkgver=0.1
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Utility that can extract the internal forms represenation from both EFI and UEFI modules'
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 makedepends=('cmake' 'git')
 provides=('ifrextractor')
 conflicts=('ifrextractor')
-source=("${pkgname}::git+${url}.git#commit=4f9699de9388e29cd31954563b0cf817f8af9f64")
+source=("${pkgname}::git+${url}.git#commit=7789d0a10185a8b31439d70d7848c106dcceee70")
 md5sums=('SKIP')
 
 prepare() {
