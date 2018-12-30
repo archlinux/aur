@@ -9,8 +9,10 @@ pkgbase = ds9-bin
 	options = !strip
 	source = http://ds9.si.edu/download/ubuntu18/ds9.ubuntu18.8.0.tar.gz
 	source = ds9.desktop
+	source = ds9.png
 	md5sums = 5f7353c4e963927bb06dbf10d4754b82
-	md5sums = 195b619383718be1dffe94e39975f006
+	md5sums = f1738e4ec665ae9afd1b65b86e6a07f1
+	md5sums = 9297d5738f5f462831075c483dc785d5
 
 pkgname = ds9-bin
 
