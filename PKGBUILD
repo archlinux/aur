@@ -1,6 +1,6 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-exec-plugin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Run commands when the timer starts, stops or finishes"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('83bacc4117cc9ba51e1bc296f66c78b4')
+md5sums=('515590d88e05dc63ebdecc22908f0546')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
