@@ -1,0 +1,14 @@
+pkgbase = beamerpresenter
+	pkgdesc = Simple dual screen pdf presentation software
+	pkgver = r3.ef907ef
+	pkgrel = 1
+	url = https://github.com/stiglers-eponym/BeamerPresenter
+	arch = x86_64
+	license = custom:unlicense
+	makedepends = git
+	depends = poppler-qt5
+	source = git://github.com/stiglers-eponym/BeamerPresenter.git
+	md5sums = SKIP
+
+pkgname = beamerpresenter
+
