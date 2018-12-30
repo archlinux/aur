@@ -1,12 +1,12 @@
 # Maintainer: Tom Hiller <thrilleratplay@gmail.com>
 pkgname=notable-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The markdown-based note-taking app that doesn't suck"
 arch=('x86_64')
 url="https://github.com/fabiospampinato/notable"
-license=('GPL3')
+license=('MIT')
 groups=()
 depends=()
 makedepends=()
