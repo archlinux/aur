@@ -1,27 +1,34 @@
-# Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
+# Maintainer: dllud <dllud riseup net>
+# Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Jochem Kossen <j.kossen@home.nl>
 
-pkgname=id3
-pkgver=0.80
+pkgname=id3-git
+pkgver=r569.51e738e
 pkgrel=1
-pkgdesc="Utility to edit id3v1 and id3v2 tags"
-arch=('x86_64')
+pkgdesc="id3 mass tagger is a tool for listing and manipulating ID3 and Lyrics3 tags in multiple files."
 url="https://squell.github.io/id3/"
+arch=('i686' 'x86_64')
 license=('BSD')
 depends=('gcc-libs')
+makedepends=('git')
+conflicts=('id3')
 options=('!makeflags')
-source=("https://github.com/squell/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('9eb2bca6ec194f0b6a56d91c7f433dd5')
+source=("$pkgname::git+https://github.com/squell/id3.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+ }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+  cd "$pkgname"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$pkgname"
   make prefix="${pkgdir}/usr" mandir="${pkgdir}/usr/share/man" install
 
   #install license

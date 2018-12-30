@@ -1,14 +1,17 @@
-pkgbase = id3
-	pkgdesc = Utility to edit id3v1 and id3v2 tags
-	pkgver = 0.80
+pkgbase = id3-git
+	pkgdesc = id3 mass tagger is a tool for listing and manipulating ID3 and Lyrics3 tags in multiple files.
+	pkgver = r569.51e738e
 	pkgrel = 1
 	url = https://squell.github.io/id3/
+	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	depends = gcc-libs
+	conflicts = id3
 	options = !makeflags
-	source = https://github.com/squell/id3/releases/download/0.80/id3-0.80.tar.gz
-	md5sums = 9eb2bca6ec194f0b6a56d91c7f433dd5
+	source = id3-git::git+https://github.com/squell/id3.git
+	md5sums = SKIP
 
-pkgname = id3
+pkgname = id3-git
 
