@@ -10,7 +10,7 @@ pkgbase = python2-shiboken2
 	makedepends = llvm
 	makedepends = cmake
 	makedepends = libxslt
-	makedepends = qt5-xmlpatterns
+	makedepends = qt5-xmlpatterns>=5.12.0
 	depends = python2
 	source = http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.12.0-src/pyside-setup-everywhere-src-5.12.0.tar.xz
 	sha256sums = 890149628a6c722343d6498a9f7e1906ce3c10edcaef0cc53cd682c1798bef51

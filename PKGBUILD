@@ -11,7 +11,7 @@ url='http://qt-project.org/'
 license=(GPL2 LGPL)
 pkgdesc='Generates bindings for C++ libraries using CPython source code'
 depends=(python2)
-makedepends=(clang llvm cmake libxslt qt5-xmlpatterns)
+makedepends=(clang llvm cmake libxslt "qt5-xmlpatterns>=${_qtver}")
 _pkgfqn=pyside-setup-everywhere-src-${_qtver}
 source=("http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz")
 sha256sums=('890149628a6c722343d6498a9f7e1906ce3c10edcaef0cc53cd682c1798bef51')
