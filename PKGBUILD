@@ -1,7 +1,7 @@
 # Maintainer: LambdAurora <aurora42lambda@gmail.com>
 pkgname=lambdacommon
-pkgver=1.9.3
-pkgrel=3
+pkgver=1.9.9
+pkgrel=1
 pkgdesc="A library written in C++ with common features."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://aperlambda.github.io/libraries/lambdacommon/"

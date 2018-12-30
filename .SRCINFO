@@ -1,7 +1,7 @@
 pkgbase = lambdacommon
 	pkgdesc = A library written in C++ with common features.
-	pkgver = 1.9.3
-	pkgrel = 3
+	pkgver = 1.9.9
+	pkgrel = 1
 	url = https://aperlambda.github.io/libraries/lambdacommon/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lambdacommon
 	license = MIT
 	makedepends = cmake
 	conflicts = lambdacommon-git
-	source = https://github.com/AperLambda/lambdacommon/archive/v1.9.3.tar.gz
+	source = https://github.com/AperLambda/lambdacommon/archive/v1.9.9.tar.gz
 	md5sums = SKIP
 
 pkgname = lambdacommon
