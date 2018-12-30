@@ -1,0 +1,5 @@
+/*.log
+/*.tar
+/*.tar.*
+/pkg/
+/src/
