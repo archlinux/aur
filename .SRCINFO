@@ -1,9 +1,9 @@
 pkgbase = moros-git
-	pkgdesc = a http(s) benchmark tool
+	pkgdesc = A modern http(s) benchmark tool
 	pkgver = r45.6e12809
 	pkgrel = 1
 	url = https://github.com/condy0919/moros
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake

@@ -2,8 +2,8 @@
 pkgname=moros-git
 pkgver=r45.6e12809
 pkgrel=1
-pkgdesc='a http(s) benchmark tool'
-arch=('any')
+pkgdesc='A modern http(s) benchmark tool'
+arch=('x86_64')
 url='https://github.com/condy0919/moros'
 license=('MIT')
 depends=('boost' 'openssl')
