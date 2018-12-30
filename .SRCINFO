@@ -1,0 +1,20 @@
+pkgbase = treeline
+	pkgdesc = Outliner and PIM which stores information in a tree structure
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = http://treeline.bellz.org/
+	arch = any
+	license = GPL2
+	depends = python-lxml
+	depends = python-pyqt5
+	optdepends = aspell
+	optdepends = ispell
+	optdepends = hunspell
+	conflicts = treeline-unstable
+	source = https://github.com/doug-101/TreeLine/releases/download/v3.0.3/treeline-3.0.3.tar.gz
+	source = treeline.xml
+	sha256sums = 9591b439ecb7596fc44f0795c776918fc98af4db53c6bb68b7feb3d2108461c0
+	sha256sums = 2b23717127a37888499bddf62042eddb800d58b10ec88f3f54a538c8e24b19d6
+
+pkgname = treeline
+
