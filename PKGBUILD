@@ -1,41 +1,56 @@
-# Submitter: Yosef Or Boczko <yoseforb@gnome.org>
-# Maintainer: emersion <contact@emersion.fr>
+# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Yosef Or Boczko <yoseforb@gnome.org>
+# Contributor: emersion <contact@emersion.fr>
 
-_pkgname=gnome-music
-pkgname=$_pkgname-git
-pkgver=3.17.4.r22.gfb9c664
+pkgname=gnome-music-git
+pkgver=3.31.1.r63.gd2587147
 pkgrel=1
-pkgdesc="Music player and management application for GNOME"
-arch=('i686' 'x86_64')
+pkgdesc="Music player and management application"
 url="https://wiki.gnome.org/Apps/Music"
-license=('GPL')
-depends=('gtk3>=3.13.2' 'glib2' 'python-dbus' 'python-gobject' 'python-requests' 'tracker' 'grilo'
-         'libmediaart' 'grilo-plugins' 'python-dbus-common' 'gupnp' 'gupnp-av' 'libdmapsharing' 'gssdp'
-         'yelp-tools')
-makedepends=('git' 'intltool' 'gobject-introspection' 'gnome-common')
-provides=('gnome-music=3.17.4')
-conflicts=('gnome-music')
-install=gnome-music.install
-source=("git://git.gnome.org/gnome-music")
-sha256sums=('SKIP')
+arch=(x86_64)
+license=(GPL)
+depends=(grilo grilo-plugins tracker-miners libdmapsharing libmediaart gtk3 gvfs python-gobject
+         python-cairo gst-plugins-base python-requests libdazzle)
+makedepends=(gobject-introspection git meson yelp-tools appstream-glib)
+optdepends=('gst-plugins-good: Extra media codecs'
+            'gst-plugins-ugly: Extra media codecs'
+            'gst-plugins-bad: Extra media codecs'
+            'gst-libav: Extra media codecs')
+conflicts=(gnome-music)
+provides=(gnome-music)
+groups=(gnome)
+source=("git+https://gitlab.gnome.org/GNOME/gnome-music.git"
+        "git+https://gitlab.gnome.org/GNOME/libgd.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --always | sed -E 's/^MUSIC_//;s/_/./g;s/([^-]*-g)/r\1/;s|-|.|g'
+  cd gnome-music
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
-  git clone git://git.gnome.org/libgd
+  cd gnome-music
+
+  git submodule init
+  git config --local submodule.subprojects/libgd.url "$srcdir/libgd"
+  git submodule update
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  ./autogen.sh --prefix=/usr --disable-schemas-compile
-  make
+  arch-meson gnome-music build
+  ninja -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" meson install -C build
+
+  python -m compileall -d /usr/lib "$pkgdir/usr/lib"
+  python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
 }
