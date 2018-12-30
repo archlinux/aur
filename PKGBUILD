@@ -1,8 +1,8 @@
 # Maintainer: degreeme <suratovvlad@gmail.com>
 
 pkgname=qbittorrent-dark-git
-pkgver=3.3.11.r730.g3e50ca15f
-pkgrel=2
+pkgver=4.1.5.r578.g15298b4b8
+pkgrel=1
 pkgdesc="A dark version of bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
@@ -31,7 +31,7 @@ prepare() {
 
   # Remove this once libtorrent-rasterbar 1.1.2 is released and packaged
   # See: https://github.com/qbittorrent/qBittorrent/issues/5888
-  patch -p1 < ../0001-Revert-Use-new-libtorrent-1.1.2-utility-function-to-.patch
+  # patch -p1 < ../0001-Revert-Use-new-libtorrent-1.1.2-utility-function-to-.patch
 }
 
 build() {
