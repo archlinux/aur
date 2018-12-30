@@ -1,0 +1,17 @@
+pkgbase = dropbox-fix2
+	pkgdesc = Fix to enable dropbox on non-ext4 filesystems (dark github repo)
+	pkgver = r24.d284f5d
+	pkgrel = 1
+	url = https://github.com/dark/dropbox-filesystem-fix
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = dropbox
+	source = dropbox-filesystem-fix::git+https://github.com/dark/dropbox-filesystem-fix.git
+	source = arch_paths.patch
+	md5sums = SKIP
+	md5sums = 7275dd87e1643f1bf28e3c8d24711a80
+
+pkgname = dropbox-fix2
+
