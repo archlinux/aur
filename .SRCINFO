@@ -1,0 +1,15 @@
+pkgbase = mouse-git
+	pkgdesc = Ncurses-based power manager
+	pkgver = r8.2355019
+	pkgrel = 1
+	url = https://github.com/LinArcX/Mouse
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = gcc
+	depends = ncurses
+	source = mouse-git::git+https://github.com/LinArcX/Mouse
+	sha256sums = SKIP
+
+pkgname = mouse-git
+
