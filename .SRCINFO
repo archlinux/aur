@@ -1,13 +1,19 @@
 pkgbase = trinity
 	pkgdesc = A Linux System call fuzz tester
-	pkgver = 1.5
+	pkgver = 1.8
 	pkgrel = 1
 	url = http://codemonkey.org.uk/projects/trinity/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://codemonkey.org.uk/projects/trinity/trinity-1.5.tar.xz
-	md5sums = 79ed682dd0f31fc4bdef4b77919759fa
+	source = http://codemonkey.org.uk/projects/trinity/trinity-1.8.tar.xz
+	source = fix_memfd.patch::https://github.com/kernelslacker/trinity/commit/c93bb184ce996c4d77eefbae2ab0bf74f396ec45.patch
+	source = fix_autofs.patch::https://github.com/kernelslacker/trinity/commit/32aff3da79f50a2dd9a944022c1b2837bfe0d1b7.patch
+	source = fix_irda.patch::https://github.com/kernelslacker/trinity/commit/1b2d43cb383cef86a05acb2df046ce5e9b17a7fe.patch
+	sha1sums = 61ceb57cd2624ed9fae48cf4b928ad351c0c2e6c
+	sha1sums = 246bb1a5da35ceccb266eb5b395b116a3837c199
+	sha1sums = cc79be5e42e5bfed2f23670843c2a648cae331c3
+	sha1sums = 1c2e24c4b66745c713e17a73b518ebc80aec4e0a
 
 pkgname = trinity
 
