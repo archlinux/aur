@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=sd
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Intuitive find & replace'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=()
 conflicts=('sd-git')
 makedepends=('rust' 'cargo' 'git')
 source=("$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d6fd8b1be9c83c0875f5dd20bb7da10ce3cd8a71cf0322e5818b055a7a466e3b')
+sha256sums=('974189be2e5c00baa8839462ad56ec32c2f78a362f97bc2f151ed81ebc5b0a21')
 
 build() {
   cd "$pkgname-$pkgver"
