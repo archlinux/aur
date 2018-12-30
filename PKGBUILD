@@ -1,9 +1,11 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Daniel Maslowski <info@orangecms.org>
 
+_branch=3.2.0
+
 pkgname=fisher-git
-pkgver=3.1.1.r2.ga8d7fb7
-pkgrel=1
+pkgver=3.1.1.r6.g8da5f95
+pkgrel=2
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=("any")
 url="https://github.com/jorgebucaran/fisher"
@@ -13,7 +15,7 @@ makedepends=("git")
 conflicts=("fisherman" "fisherman-git" "fisher")
 install=fisher-git.install
 source=(
-    "git+https://github.com/jorgebucaran/fisher.git"
+    "git+https://github.com/jorgebucaran/fisher.git#branch=${_branch}"
 )
 sha512sums=(
     "SKIP"
