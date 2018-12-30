@@ -1,9 +1,19 @@
+--- a/package.json
++++ b/package.json
+@@ -12,7 +12,6 @@
+     "url": "https://github.com/atom/atom/issues"
+   },
+   "license": "MIT",
+-  "electronVersion": "2.0.16",
+   "dependencies": {
+     "@atom/nsfw": "1.0.18",
+     "@atom/source-map-support": "^0.3.4",
 --- a/script/build
 +++ b/script/build
 @@ -2,10 +2,6 @@
- 
+
  'use strict'
- 
+
 -// Run bootstrap first to ensure all the dependencies used later in this script
 -// are installed.
 -require('./bootstrap')
@@ -14,21 +24,21 @@
 @@ -28,7 +24,6 @@
    .wrap(yargs.terminalWidth())
    .argv
- 
+
 -const checkChromedriverVersion = require('./lib/check-chromedriver-version')
  const cleanOutputDirectory = require('./lib/clean-output-directory')
  const codeSignOnMac = require('./lib/code-sign-on-mac')
  const codeSignOnWindows = require('./lib/code-sign-on-windows')
 @@ -60,7 +55,6 @@
  let binariesPromise = Promise.resolve()
- 
+
  if (!argv.existingBinaries) {
 -  checkChromedriverVersion()
    cleanOutputDirectory()
    copyAssets()
    transpilePackagesWithCustomTranspilerPaths()
 @@ -79,67 +73,5 @@
- 
+
  if (!argv.generateApiDocs) {
    binariesPromise
 -    .then(packageApplication)
@@ -97,7 +107,7 @@
  }
 --- a/script/lib/generate-startup-snapshot.js
 +++ b/script/lib/generate-startup-snapshot.js
-@@ -80,7 +80,7 @@
+@@ -89,7 +89,7 @@
      } else if (process.platform === 'win32') {
        nodeBundledInElectronPath = path.join(packagedAppPath, 'atom.exe')
      } else {
@@ -106,15 +116,15 @@
      }
      childProcess.execFileSync(
        nodeBundledInElectronPath,
-@@ -88,6 +88,7 @@
+@@ -97,6 +97,7 @@
        {env: Object.assign({}, process.env, {ELECTRON_RUN_AS_NODE: 1})}
      )
- 
+
 +/*
      const generatedStartupBlobPath = path.join(CONFIG.buildOutputPath, 'snapshot_blob.bin')
      console.log(`Generating startup blob at "${generatedStartupBlobPath}"`)
      childProcess.execFileSync(
-@@ -105,5 +106,6 @@
+@@ -114,5 +115,6 @@
      console.log(`Moving generated startup blob into "${startupBlobDestinationPath}"`)
      fs.unlinkSync(startupBlobDestinationPath)
      fs.renameSync(generatedStartupBlobPath, startupBlobDestinationPath)
@@ -133,38 +143,61 @@
      "electron-packager": "7.3.0",
      "electron-winstaller": "2.6.4",
      "fs-admin": "^0.1.5",
+--- a/src/compile-cache.js
++++ b/src/compile-cache.js
+@@ -122,7 +122,7 @@ exports.install = function (resourcesPath, nodeRequire) {
+       return {
+         column,
+         line: row,
+-        source: path.join(resourcesPath, 'app', 'static', relativePath),
++        source: path.join(resourcesPath, 'static', relativePath),
+         name: null
+       }
+     }
+ function getConfig () {
+--- a/src/module-cache.js
++++ b/src/module-cache.js
+@@ -227,7 +227,7 @@
+ }
+
+ function registerBuiltins (devMode) {
+-  if (devMode || !cache.resourcePath.startsWith(`${process.resourcesPath}${path.sep}`)) {
++  if (devMode || !cache.resourcePath.startsWith('/usr/lib/atom/')) {
+     const fs = require('fs-plus')
+     const atomJsPath = path.join(cache.resourcePath, 'exports', 'atom.js')
+     if (fs.isFileSync(atomJsPath)) { cache.builtins.atom = atomJsPath }
 --- a/src/package-manager.js
 +++ b/src/package-manager.js
-@@ -808,7 +808,7 @@ module.exports = class PackageManager {
+@@ -825,7 +825,7 @@ module.exports = class PackageManager {
    }
- 
+
    isBundledPackagePath (packagePath) {
 -    if (this.devMode && !this.resourcePath.startsWith(`${process.resourcesPath}${path.sep}`)) {
-+    if (this.devMode && this.resourcePath !== '/usr/lib/atom') {
++    if (this.devMode && !this.resourcePath.startsWith('/usr/lib/atom/')) {
        return false
      }
- 
+
 --- a/src/task-bootstrap.js
 +++ b/src/task-bootstrap.js
 @@ -3,7 +3,7 @@ const [compileCachePath, taskPath] = process.argv.slice(2)
- 
+
  const CompileCache = require('./compile-cache')
  CompileCache.setCacheDirectory(compileCachePath)
 -CompileCache.install(`${process.resourcesPath}`, require)
 +CompileCache.install('/usr/lib/atom', require)
- 
+
  const setupGlobals = function () {
    global.attachEvent = function () {}
 --- a/static/index.js
 +++ b/static/index.js
 @@ -23,7 +23,7 @@
        process.resourcesPath = path.normalize(process.resourcesPath)
- 
+
        setupAtomHome()
 -      const devMode = getWindowLoadSettings().devMode || !getWindowLoadSettings().resourcePath.startsWith(process.resourcesPath + path.sep)
 +      const devMode = getWindowLoadSettings().devMode || !getWindowLoadSettings().resourcePath.startsWith('/usr/lib/atom')
        useSnapshot = !devMode && typeof snapshotResult !== 'undefined'
- 
+
        if (devMode) {
 @@ -90,7 +90,7 @@
    function setupWindow () {
@@ -172,6 +205,6 @@
      CompileCache.setAtomHomeDirectory(process.env.ATOM_HOME)
 -    CompileCache.install(process.resourcesPath, require)
 +    CompileCache.install('/usr/lib/atom', require)
- 
+
      const ModuleCache = useSnapshot ? snapshotResult.customRequire('../src/module-cache.js') : require('../src/module-cache')
      ModuleCache.register(getWindowLoadSettings())

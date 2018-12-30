@@ -8,4 +8,3 @@
 +    const command = 'ctags';
      const defaultCtagsFile = path.join(packageRoot, 'lib', 'ctags-config');
      const args = [`--options=${defaultCtagsFile}`, '--fields=+KS'];
- 
