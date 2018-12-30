@@ -1,0 +1,16 @@
+pkgbase = pcb2gcodegui
+pkgdesc = A GUI for pcb2gcode.
+pkgver = r65.a28612f
+pkgrel = 1
+url = https://github.com/pcb2gcode/pcb2gcodeGUI
+arch = i686
+arch = x86_64
+license = GPL3
+makedepends = git
+depends = qt5-svg
+depends = pcb2gcode
+source = pcb2gcodegui::git://github.com/pcb2gcode/pcb2gcodeGUI.git
+md5sums = SKIP
+
+pkgname = pcb2gcodegui
+
