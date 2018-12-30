@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=python-fuzzysearch
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A Python library for fuzzy substring searches"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("python")
 makedepends=("python-setuptools")
 conflicts=("${pkgname}" "${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=("dabfdb47effd898b1a3fe56b9076853d")
+md5sums=("d741f2b79cd8db1296f875d18885008b")
 
 build() {
   cd "${srcdir}/fuzzysearch-${pkgver}"
