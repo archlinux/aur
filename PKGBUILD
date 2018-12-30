@@ -12,7 +12,7 @@ optdepends=('mpg123: MP3 sounds support'
             'alsa-utils: WAV sounds support')
 url="https://github.com/Bitmessage/PyBitmessage"
 license=('MIT')
-source=("${pkgname}::git+https://github.com/Bitmessage/PyBitmessage.git"
+source=("${pkgname}::git+https://github.com/Bitmessage/PyBitmessage.git#branch=v0.6"
             "pybitmessage.profile")
 sha256sums=('SKIP'
             '4029157df5179a487107ffb63358fc15c77e1395a765bbd957e89468669b414d')

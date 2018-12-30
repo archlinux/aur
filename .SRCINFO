@@ -16,7 +16,7 @@ pkgbase = pybitmessage-git
 	optdepends = mpg123: MP3 sounds support
 	optdepends = alsa-utils: WAV sounds support
 	provides = pybitmessage
-	source = pybitmessage-git::git+https://github.com/Bitmessage/PyBitmessage.git
+	source = pybitmessage-git::git+https://github.com/Bitmessage/PyBitmessage.git#branch=v0.6
 	source = pybitmessage.profile
 	sha256sums = SKIP
 	sha256sums = 4029157df5179a487107ffb63358fc15c77e1395a765bbd957e89468669b414d
