@@ -5,9 +5,9 @@
 
 _pkgname=cool-retro-term
 pkgname=$_pkgname-git
-pkgver=1.0.1.r33.g1cf6e27
+pkgver=1.1.0.r5.g4046bdb
 pkgrel=1
-pkgdesc='A good looking terminal emulator which mimics the old cathode display'
+pkgdesc='A good looking terminal emulator which mimics the old cathode display - git version'
 arch=('i686' 'x86_64')
 url='https://github.com/Swordfish90/cool-retro-term'
 license=('GPL3')
