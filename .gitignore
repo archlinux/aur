@@ -1,0 +1,8 @@
+# package and signature
+*pkg.tar.xz
+*pkg.tar.xz.sig
+# src and pkg dir
+src/
+pkg/
+# the cloned git repo as source
+dxx-rebirth/

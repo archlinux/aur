@@ -1,6 +1,6 @@
 pkgbase = dxx-rebirth
 	pkgdesc = An enhanced engine to play Descent 1 / Descent 2
-	pkgver = 0.59.100
+	pkgver = 0.59.100.r1109.ga02ad8b16
 	pkgrel = 1
 	url = http://www.dxx-rebirth.com/
 	install = dxx-rebirth.install
@@ -19,11 +19,8 @@ pkgbase = dxx-rebirth
 	conflicts = d2x-rebirth
 	replaces = d1x-rebirth
 	replaces = d2x-rebirth
-	noextract = d2xr-sc55-music.dxa
-	source = http://www.dxx-rebirth.com/download/dxx/dxx-rebirth_v0.59.100-src.tar.gz
-	source = http://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa
-	sha256sums = 6a1e1e589a007389df56efb9f7355efc36e7ea01e4c6af53b46ba1ec3f193355
-	sha256sums = ace152182c70b9a7ae6f911bddbc239566220a287ab5419cab260d5af739bf16
+	source = git+https://github.com/dxx-rebirth/dxx-rebirth.git
+	sha256sums = SKIP
 
 pkgname = dxx-rebirth
 
