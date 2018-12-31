@@ -1,9 +1,9 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=libjpeg-droppatch
-pkgver=8.0.2
-_pkgver=8c
-pkgrel=2
+pkgver=9
+_pkgver=9c
+pkgrel=1
 pkgdesc="Library of JPEG support with an additional drop patch"
 arch=('i686' 'x86_64')
 url="http://sylvana.net/jpegcrop/jpegtran/"
@@ -12,9 +12,11 @@ depends=('glibc')
 replaces=('libjpeg')
 makedepends=('libtool')
 options=('!libtool')
-source=(http://www.ijg.org/files/jpegsrc.v${_pkgver}.tar.gz http://sylvana.net/jpegcrop/droppatch.v8.tar.gz)
-md5sums=('a2c10c04f396a9ce72894beb18b4e1f9'
-         '7c6eff51b148d979bc53f947724889e3')
+source=(http://www.ijg.org/files/jpegsrc.v${_pkgver}.tar.gz http://sylvana.net/jpegcrop/droppatch.v9.tar.gz)
+provides=('libjpeg')
+conflicts=('libjpeg')
+md5sums=('93c62597eeef81a84d988bccbda1e990'
+         'b78421ffa5624e9ae90374301d82f123')
 
 build() {
   cd $srcdir/jpeg-${_pkgver}
