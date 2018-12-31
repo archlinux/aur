@@ -1,6 +1,6 @@
 pkgname=('med' 'med-docs')
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
 url="https://www.salome-platform.org/downloads"
 license=('LGPL')
