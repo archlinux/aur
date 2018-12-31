@@ -1,13 +1,18 @@
 pkgbase = libnbcompat
 	pkgdesc = Portable NetBSD compatibility library
-	pkgver = 20111103
+	pkgver = 20180822
 	pkgrel = 1
 	url = http://www.netbsd.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = bmake
-	makedepends = cvs
+	makedepends = git
+	options = !makeflags
+	source = git+https://github.com/jgoerzen/libnbcompat#commit=be9f9298fd165ea01a0769c4ffa29a3ec0d22023
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = beab088c74f4e3e456da604c0d62c2e3
 
 pkgname = libnbcompat
 
