@@ -8,7 +8,7 @@ pkgname=virtualbox-bin
 pkgver=6.0.0
 _build=127566
 _rev=75085
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -131,10 +131,12 @@ package() {
     # symlink the launchers
     local _bin
     install -d -m0755 "${pkgdir}/usr/bin"
-    for _bin in VirtualBox VBox{Headless,Manage,SDL,SVC,Tunctl,NetAdpCtl,FixUSB} rdesktop-vrdp
+    for _bin in VirtualBox{,VM} VBox{Headless,Manage,SDL,SVC,Tunctl,NetAdpCtl,FixUSB}
     do
         ln -s "../../${_installdir}/${_bin}" "${pkgdir}/usr/bin/${_bin}"
+        ln -s "../../${_installdir}/${_bin}" "${pkgdir}/usr/bin/${_bin,,}"
     done
+    ln -s "../../${_installdir}/rdesktop-vrdp" "${pkgdir}/usr/bin/rdesktop-vrdp"
     
     # symlink the desktop icon and .desktop files
     install -d -m0755 "${pkgdir}/usr/"{share/applications,share/pixmaps}
