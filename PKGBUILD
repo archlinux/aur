@@ -1,11 +1,11 @@
 pkgname=('med' 'med-docs')
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
 url="https://www.salome-platform.org/downloads"
 license=('LGPL')
 depends=('hdf5' 'tk')
-makedepends=('gcc-fortran' 'python' 'swig' 'openmpi')
+makedepends=('gcc-fortran' 'python' 'swig' 'openmpi' 'cmake')
 optdepends=()
 arch=('x86_64')
 source=("http://files.salome-platform.org/Salome/other/${pkgname}-${pkgver}.tar.gz")
