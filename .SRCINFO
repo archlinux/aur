@@ -1,23 +1,24 @@
 pkgbase = whizard
-	pkgdesc = A program system designed for the efficient calculation of multi-particle scattering cross sections and simulated event samples.
-	pkgver = 2.4.0
+	pkgdesc = The Generator of Monte Carlo Event Generators for Tevatron, LHC, ILC, CLIC, CEPC, FCC-ee, FCC-hh, SppC and other High Energy Physics Experiments
+	pkgver = 2.6.4
 	pkgrel = 1
 	url = http://whizard.hepforge.org
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = texlive-bin
 	makedepends = texlive-pictures
 	makedepends = ghostscript
-	depends = ocaml
+	depends = gcc-libs
 	depends = gcc-fortran
-	depends = pythia
-	depends = lhapdf
-	depends = fastjet
-	depends = looptools
-	depends = hepmc
-	source = http://www.hepforge.org/archive/whizard/whizard-2.4.0.tar.gz
-	sha256sums = 589c6e3cf6fa96248bec25094ade5ece563e9f28697a7f0bc187596852c5ef2a
+	depends = ocaml
+	depends = libtirpc
+	optdepends = pythia: PYTHIA8 for shower and hadronization
+	optdepends = lhapdf: LHAPDF for structure functions
+	optdepends = fastjet: FastJet for handling event data
+	optdepends = looptools: LoopTools loop integral library
+	optdepends = hepmc: HepMC for handling event data
+	source = http://whizard.hepforge.org/downloads/whizard-2.6.4.tar.gz
+	sha256sums = 58af39329f3445e36d0fbfea7010568cf3653a5b4d249cc1cd8ccfb04ceddfa5
 
 pkgname = whizard
 
