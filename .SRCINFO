@@ -1,7 +1,7 @@
 pkgbase = wire-desktop-beta
 	pkgdesc = End-to-end encrypted messenger with file sharing, voice calls and video conferences
 	pkgver = 3.5.2881
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wire.com/
 	arch = x86_64
 	license = GPL3
