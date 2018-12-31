@@ -17,16 +17,16 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/TheWiseNoob/OMP/archive/$pk
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "OMP-$pkgver"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname}"
+  cd "OMP-$pkgver"
   make
 }
 
 package() {
-  cd "${pkgname}"
+  cd "OMP-$pkgver"
   make install DESTDIR=${pkgdir}
 }
