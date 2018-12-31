@@ -3,21 +3,26 @@
 pkgname=rocketchat-desktop
 pkgver=2.14.6
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
 license=('MIT')
-depends=('nss' 'libxss' 'gconf' 'gtk3' 'glibc')
+depends=('electron2' 'nss' 'libxss' 'gconf' 'gtk3' 'glibc')
 makedepends=('nodejs' 'node-gyp' 'python2' 'yarn')
 conflicts=('rocketchat-client-bin')
+install=rocketchat-desktop.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/$pkgver.tar.gz"
+        rocketchat-desktop
         fix-linux-target.patch
         fix-gulp-release.patch
+        fix-dictionaries.patch
         rocketchat-desktop.desktop)
 sha512sums=('58b427e9745fa8b3866d1ea9c144c700faed7838c0fba6f070592dfdaea7e6509e6e53f5983494431a7976db919b65ad798b7b5cacac998e049239bb41ede0b8'
+            '8b6ddebe3e65d959c535c046b07291eb049a80996a28eccab1e45830dc85af8e62a8a52597fe53b038a14e96bbbc870ea9cd1555f3b50b580f9fdd6b0fd52886'
             '31e0b1d7d9a5fefa4ad4d186df2b3eb8849d7dee9dd3fa14fff6741006ef31191575a23ba62a86f53cf9fc692d138db6a380e2ad860077bc3d854c5a9083b716'
             '796a2a56a1facc2519d65955bb39d78733c13b5993c4b03cd2af11b83aa9c6132c0fbf9e7160146c6c87bc91cb04c4e66932fe891449d031c787284b5ce9d72a'
+            'ed0bc8884ea3c7ca50ae8f6aef415aecfac89f958939c1ccb6c86480a7210ead0df2fe0548e465fc1dd559436bae9db779d408e8a754e986cc8a976cd6590878'
             'd87664b9bdf30eac3011393d094962e0d568a94b5eaf4c8e5f17529442dcba905cea7341527066102a97a07a981acd6ce045b8737eb78a7d81a2a2d05023fe26')
 if [[ $CARCH == "i686" ]]; then
     _releasename="release:linux-ia32"
@@ -28,21 +33,24 @@ else
 fi
 
 prepare() {
-    patch -p1 -d "$_srcname" < fix-linux-target.patch
-    patch -p1 -d "$_srcname" < fix-gulp-release.patch
+    for patch in *.patch; do
+        patch -p1 -d "$_srcname" < "$patch"
+    done
 }
 
 build() {
-    cd "$srcdir/$_srcname"
+    cd "$_srcname"
     yarn install --non-interactive --pure-lockfile --cache-folder "$srcdir/yarn-cache"
     yarn build --env=production "$_releasename"
 }
 
 package() {
-    install -d "$pkgdir"/{usr/bin,opt}
-    install -Dm644 "$srcdir/$_srcname/build/icons/512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-    install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$srcdir/$_srcname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    cp -r "$srcdir/$_srcname/dist/$_distname" "$pkgdir/opt/$pkgname"
-    ln -sf "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+    cd "$srcdir/$_srcname"
+    install -Dm644 "build/icons/512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "dist/$_distname/resources/app.asar" "$pkgdir/usr/lib/$pkgname/app.asar"
+    #cp -r dist/$_distname/resources/dictionaries "$pkgdir/usr/lib/$pkgname/dictionaries"
 }
