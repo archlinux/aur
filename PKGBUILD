@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=lib32-python
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 _pybasever=3.7
 pkgdesc="Next generation of the python high-level scripting language"
@@ -17,13 +17,11 @@ provides=('lib32-python3')
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc}
         "lib32-distutils-sysconfig.patch"
         "python-config-32.patch"
-        "bpo34056-always-return-bytes-from-_HackedGetData.get_data.patch"
         "dont-make-libpython-readonly.patch")
-sha512sums=('8bb11233fb67ee9ab8ed1b72f8fdc62f66e26a6beaaeb92448bce681cf065269833b1658d3ed2459127f25ba43adb0eab73cf27c59834a2a803fb529b4216739'
+sha512sums=('3eb62a0127609b14420a47442727702f396519c649625aca59883d04f4c02e5f37ba1d58ac8e93c49d14a63f17ae7909315c33fc813293dbcdb6127f39a148b0'
             'SKIP'
-            '06e7d3985bba098459eed604eeaa77c4c19a52f175c47feeea15d1d680aeea519721ecab851fff6bc2b2315310a220a8e6fd1971140d233156e4412976264bf6'
+            'c6aeb74260740155b3ccee350230613b91567ae945026ce2a7f1f568cd0092d6fc7c49ad8d217dab3ad2e8b2ebe40b95c45b7e6feda2eb8849217ba6c31d7796'
             'f6119c9fb535e28d19c7500d8ce4859f9fa71738520357f4f7b418af25574380861381e911622b8cb85a21297083a3a96252d01595ba5803374b3f3f09d0e647'
-            '0ec544fa95ba30be03e866d02848f9fa4921304055368609136ac39626df9835bad75506f6d81ef9fdc0ebcc29a9749f84b5b5f4dd75958c9699ade522d51b68'
             '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4')
 validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D')  # Ned Deily (Python release signing key) <nad@python.org>
 
@@ -43,9 +41,6 @@ prepare() {
   sed -i "s|base/lib|base/lib32|g" "${srcdir}/Python-${pkgver}/Lib/distutils/command/install.py"
   sed -i "s|/include|/lib32/python{py_version_short}/include|g" "${srcdir}/Python-${pkgver}/Lib/distutils/command/install.py"
   sed -i "s|prefix)/lib|prefix)/lib32|g" "${srcdir}/Python-${pkgver}/Makefile.pre.in"
-  
-  # https://bugs.python.org/issue34056
-  patch -Np1 -i ../bpo34056-always-return-bytes-from-_HackedGetData.get_data.patch
   
   # FS#45809
   patch -p1 -i "${srcdir}/dont-make-libpython-readonly.patch"
@@ -108,9 +103,13 @@ package() {
   install -m755 Tools/i18n/{msgfmt,pygettext}.py "${pkgdir}"/usr/lib32/python${_pybasever}/Tools/i18n/
   install -m755 Tools/scripts/{README,*py} "${pkgdir}"/usr/lib32/python${_pybasever}/Tools/scripts/
   
-    # create symlinks
-    ln -s python3.6-32         ${pkgdir}/usr/bin/python-32
-    ln -s python3.6-32-config  ${pkgdir}/usr/bin/python-32-config
+  # create symlinks
+  ln -s python${_pybasever}m-32-config ${pkgdir}/usr/bin/python3-32-config
+  ln -s python${_pybasever}m-32 ${pkgdir}/usr/bin/python-32
+  ln -s python${_pybasever}m-32-config ${pkgdir}/usr/bin/python-32-config
+
+  # remove python3-config, conflicts with regular python
+  rm -rf ${pkgdir}/usr/bin/python3-config
 
   # License
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -118,7 +117,7 @@ package() {
   # Clean up
   rm -rf "${pkgdir}"/{etc,usr/{share,include}} # needs bin/
 
-  # Leave the python binary and configure script for depedants to find the headers
+  # Leave the python binary and configure script for dependants to find the headers
   cd "${pkgdir}"/usr/bin
   rm pydoc* idle* 2to3* pyvenv*
 }

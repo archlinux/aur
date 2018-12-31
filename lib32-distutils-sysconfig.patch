@@ -1,11 +1,11 @@
---- Python-3.6.5/Lib/distutils/sysconfig.py.orig	2018-04-21 18:06:40.371199062 -0400
-+++ Python-3.6.5/Lib/distutils/sysconfig.py	2018-04-21 18:09:31.972264882 -0400
+--- Python-3.7.1/Lib/distutils/sysconfig.py.orig	2018-04-21 18:06:40.371199062 -0400
++++ Python-3.7.1/Lib/distutils/sysconfig.py	2018-04-21 18:09:31.972264882 -0400
 @@ -99,7 +99,7 @@
                  incdir = os.path.join(get_config_var('srcdir'), 'Include')
                  return os.path.normpath(incdir)
          python_dir = 'python' + get_python_version() + build_flags
 -        return os.path.join(prefix, "include", python_dir)
-+        return os.path.join(prefix, "lib32/python3.6m/include", python_dir)
++        return os.path.join(prefix, "lib32/python3.7m/include", python_dir)
      elif os.name == "nt":
          return os.path.join(prefix, "include")
      else:
