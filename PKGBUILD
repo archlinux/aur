@@ -1,22 +1,22 @@
 # Contributor: Tatsuyuki Ishi <ishitatsuyuki at gmail dot com>
 
-pkgrel=3
-pkgver=r343.01e2766
+pkgrel=1
+pkgver=r458.1ab110c
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
-url="https://github.com/Eriner/zim"
+url="https://github.com/zimfw/zimfw"
 arch=('any')
 license=('MIT')
 depends=('zsh')
 makedepends=('git' 'rsync')
 optdepends=('otf-powerline-symbols-git: for eriner prompt')
-source=('git://github.com/Eriner/zim.git' 'zim.install' 'zshrc')
+source=('git://github.com/zimfw/zimfw.git' 'zim.install' 'zshrc')
 options=('!strip')
 install='zim.install'
 sha384sums=('SKIP'
             'ba9906f5cad124b1a419008ff5f98ca31414056be7a89d94ecf679a170765208d244b2d41ce85a2dba6a5aa60fc7f299'
             'f9369671dd4b4e116a6b1d6769482f148dc062ec9ff1cb0ec70f0c0ee91a62efc9acdae0193a299fab941e770f377d74')
-_gitname='zim'
+_gitname='zimfw'
 backup=('etc/zsh/zlogin' 'etc/zsh/zimrc' 'etc/zsh/zshrc')
 
 pkgver() {
