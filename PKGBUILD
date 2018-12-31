@@ -1,4 +1,4 @@
-pkgname=med
+pkgname=('med' 'med-docs')
 pkgver=4.0.0
 pkgrel=1
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
@@ -17,7 +17,22 @@ build() {
   make
 }
 
-package() {
-  cd ${pkgname}-${pkgver}
+package_med() {
+  cd ${pkgbase}-${pkgver}
   make DESTDIR=${pkgdir} install
+
+  rm -rf $pkgdir/usr/share/doc
+}
+
+package_med-docs() {
+  arch=('any')
+  depends=()
+
+  cd ${pkgbase}-${pkgver}
+  make DESTDIR=${pkgdir} install
+
+  rm -rf $pkgdir/usr/share/cmake
+  rm -rf $pkgdir/usr/lib
+  rm -rf $pkgdir/usr/include
+  rm -rf $pkgdir/usr/bin
 }
