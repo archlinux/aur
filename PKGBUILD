@@ -1,4 +1,4 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 # NOTE:
 # The additional field in $pkgver is in the format 'YYYMMDD.HHMMSS', which
@@ -7,14 +7,14 @@
 # mupen64plus component receives a new commit.
 
 pkgname=mupen64plus-git
-pkgver=2.5.r1018.ge9ac55bf.20181015.044935
+pkgver=2.5.r1032.gef15526e.20181121.044505
 pkgrel=1
 pkgdesc='Nintendo64 Emulator (git version)'
 arch=('i686' 'x86_64')
-url='http://www.mupen64plus.org/'
+url='https://www.mupen64plus.org/'
 license=('GPL')
-depends=('speexdsp' 'minizip' 'hicolor-icon-theme' 'sdl2'
-         'glu' 'libsamplerate' 'libpng' 'freetype2' 'boost-libs')
+depends=('speexdsp' 'minizip' 'sdl2' 'glu' 'libsamplerate' 'libpng'
+         'freetype2' 'boost-libs' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('git' 'nasm' 'mesa' 'boost')
 provides=('mupen64plus')
 conflicts=('mupen64plus')
@@ -24,20 +24,35 @@ source=('git+https://github.com/mupen64plus/mupen64plus-core.git'
         'git+https://github.com/mupen64plus/mupen64plus-video-glide64mk2.git'
         'git+https://github.com/mupen64plus/mupen64plus-audio-sdl.git'
         'git+https://github.com/mupen64plus/mupen64plus-input-sdl.git'
-        'git+https://github.com/mupen64plus/mupen64plus-ui-console.git')
+        'git+https://github.com/mupen64plus/mupen64plus-ui-console.git'
+        'mupen64plus-git-install-fix.patch'
+        'mupen64plus-git-core-exe-stack.patch'
+        'mupen64plus-git-ui-console-pie.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'd45208a1d9e5a08e6711739c9f52bd88ff016fa5c382a85f305cd4b69dbf62d1'
+            '859d0a51319e95c4357d539521a0872fedd5de366b759b89d66d663a6da3b6d0'
+            'e0e6b47aa5ea7b72f2bd5d5ad5e42fee870d947177f2b7e0137b6a93540b894d')
+
 _m64p_components='core rsp-hle video-rice video-glide64mk2 audio-sdl input-sdl ui-console'
 
 prepare() {
-    # extract install script and remove unecessary 'source' directory references from it
+    # extract install script
     bsdtar -xf "${srcdir}/mupen64plus-core/tools/m64p_helper_scripts.tar.gz" m64p_install.sh
-    sed -i 's/source\///g' m64p_install.sh
+    
+    # remove uneedeed 'source' directory references from install script
+    patch -Np1 -i mupen64plus-git-install-fix.patch
+    
+    # remove executable stack from core library
+    patch -Np1 -i mupen64plus-git-core-exe-stack.patch
+    
+    # enable PIE for ui-console interface
+    patch -Np1 -i mupen64plus-git-ui-console-pie.patch
 }
 
 pkgver() {
@@ -59,17 +74,9 @@ pkgver() {
 
 build() {
     local _component
-    local _target_line
     
     for _component in $_m64p_components
     do
-        # fix for 'ui-console' component (it needs to be compiled with -fPIC)
-        if [ "$_component" = 'ui-console' ] 
-        then
-            _target_line="$(sed -n '/^ifeq ($(OS), LINUX)/='   "mupen64plus-${_component}/projects/unix/Makefile")"
-            sed -i "$((_target_line + 1))i\  \CFLAGS += -fPIC" "mupen64plus-${_component}/projects/unix/Makefile"
-        fi
-        
         printf '%s\n' "  -> Building component '${_component}'..."
         make -C "mupen64plus-${_component}/projects/unix" clean $@
         make -C "mupen64plus-${_component}/projects/unix" all $@
