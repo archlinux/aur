@@ -1,12 +1,12 @@
 pkgbase = shipcat
 	pkgdesc = A standardisation tool on top of kubernetes to config manage microservices
-	pkgver = 0.74.0
+	pkgver = 0.79.0
 	pkgrel = 1
 	url = https://github.com/Babylonpartners/shipcat/
 	arch = x86_64
 	license = Apache
-	source = https://github.com/Babylonpartners/shipcat/releases/download/0.74.0/shipcat.x86_64-unknown-linux-musl.tar.gz
-	sha256sums = 91e8a3cf6ee2f16249745a0d30f1ae03f161ff7a61d0ded65beb0a04a4c3c110
+	source = https://github.com/Babylonpartners/shipcat/releases/download/0.79.0/shipcat.x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 64bbe56000f9ff345f3c2f85d45fca6bcc180e7584c955b39ccf812bd0ee7117
 
 pkgname = shipcat
 
