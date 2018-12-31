@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=aptik-gtk
 pkgver=18.8
-pkgrel=4
+pkgrel=5
 pkgdesc="GTK Frontend for Aptik System Migration Utility"
 arch=('i686' 'x86_64')
 url="https://github.com/teejee2008/aptik-gtk"
