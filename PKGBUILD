@@ -1,4 +1,4 @@
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=fcat-git
 pkgver=r40.c938b62
