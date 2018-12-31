@@ -1,4 +1,4 @@
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=pyt-git
 pkgver=0.30.r0.g00afcd3
