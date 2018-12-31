@@ -9,20 +9,22 @@ Conflicts=wesnothd.service wesnothd-1.2.service wesnothd-1.4.service wesnothd-1.
 [Service]
 # If wesnothd is started from within the game it runs under a different user
 # Deleting the pipe resets owner, group and mode
-ExecStopPre=/bin/rm -f /run/wesnothd-1.0/socket
+ExecStartPre=/bin/rm -f /run/wesnothd-1.0/socket
 
-ExecStart=/usr/bin/wesnothd-1.0 --threads 5
+ExecStart=/usr/bin/wesnothd-1.0
 # You can use -c to specify the same configuration file
 # which is used when starting wensothd from the wesnoth UI
 # (and make sure wesnothd has the required access permissions)
 
+# Remove remaining administration pipe
+ExecStopPost=/bin/rm -f /run/wesnothd-1.0/socket
+
 SyslogIdentifier=Wesnothd-1.0
+# Apply security settings only to ExecStart, so the Pre & Post steps run as root
+PermissionsStartOnly=yes
 WorkingDirectory=/run/wesnothd-1.0
 User=nobody
 Group=users
-
-# Remove remaining administration pipe
-ExecStopPost=/bin/rm -f /run/wesnothd-1.0/socket
 
 # Additional security-related features
 ProtectSystem=strict

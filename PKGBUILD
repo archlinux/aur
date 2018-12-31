@@ -30,7 +30,7 @@ source=("wesnoth-1.0.desktop"
 
 md5sums=('29dcc619dad3ba9e7806b97badee3023'
          '1d061d2df18d707b212c314440c30cd2'
-         '9db79a418d64046ed49e3899e294da3b'
+         'bd36602fa96cacfebd9d64bd589509fa'
          '81953f9a24639fb66e435b34ba530b94'
          '3c271ac7485d871400dd1f7af2ecfd8d'
          '0327cec01cd5b98acee056ec79702bab')
