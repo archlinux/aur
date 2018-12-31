@@ -69,7 +69,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=4.19.13-arch1
+_srcver=4.20-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -78,7 +78,7 @@ url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
 makedepends=(kmod inetutils bc libelf)
 options=('!strip')
-_ckpatchname="patch-4.19-ck${_ckpatchversion}"
+_ckpatch="patch-4.20-ck${_ckpatchversion}"
 _gcc_more_v='20180509'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-$pkgver.tar".{xz,sign}
@@ -86,27 +86,23 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
-  "http://ck.kolivas.org/patches/4.0/4.19/4.19-ck${_ckpatchversion}/4.19-ck1-broken-out.tar.xz"
-  https://gist.githubusercontent.com/graysky2/dc820c1b41c5eeb63d2de7a2e72499f4/raw/3d2b3be40df7e538db4ef9a69b438e00e5575e2d/unfuck-pre.patch
-  "unfuck-post.patch::https://pastebin.com/raw/v618N2xd"
+  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  "http://ck.kolivas.org/patches/4.0/4.20/4.20-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('f50a77fc40e13fc406791346fa91926394205874cd50246c7c2374006bacc0c2'
+sha256sums=('ad0823183522e743972382df0aa08fb5ae3077f662b125f1e599b0b2aaa12438'
             'SKIP'
-            'efe19aad01a6b1f4f0e1743dbadb3734ea3bea4bc8b2001a8526e4b7a50cb7dc'
+            '5ad148d2a401015a85fe7bf6ef483f3a25f5fa7f95ebcd0950fd184c98fe5fd2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '61431037fd487f4eff135a3fcf5962270913af9fd95c31e27a2f9d4124bd3d3b'
-            'b57666e47574edcb0b12c3a4fbddf2a37b1badf3591c76344aae0e8f91452915'
-            'd761a320bade7e16dfaf4ae87a9ee1280b96068b11ac5691beb4d55edb0bada2'
-            '0810e9a099c3ec5fc18f8d8c636e424999b9aff71453dab6ffc3c26110189444')
+            '4bd614333fcbe509118b5362889f76d241e1d33e1ee691bd24fd82384ce7f2de'
+            '560c8c06cb7833ab24743b818f831add8a7b6ed65181f30417e7b75f107441ef')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -119,50 +115,20 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
 
-  # array defines CK1 broken out
-  # we need to modify 0001 to fix for 4.19.7+
-  _CKArr=(
-  0001-MultiQueue-Skiplist-Scheduler-version-v0.180.patch
-  0002-Fix-Werror-build-failure-in-tools.patch
-  0003-Make-preemptible-kernel-default.patch
-  0004-Expose-vmsplit-for-our-poor-32-bit-users.patch
-  0005-Create-highres-timeout-variants-of-schedule_timeout-.patch
-  0006-Special-case-calls-of-schedule_timeout-1-to-use-the-.patch
-  0007-Convert-msleep-to-use-hrtimers-when-active.patch
-  0008-Replace-all-schedule-timeout-1-with-schedule_min_hrt.patch
-  0009-Replace-all-calls-to-schedule_timeout_interruptible-.patch
-  0010-Replace-all-calls-to-schedule_timeout_uninterruptibl.patch
-  0011-Don-t-use-hrtimer-overlay-when-pm_freezing-since-som.patch
-  0012-Make-hrtimer-granularity-and-minimum-hrtimeout-confi.patch
-  0013-Make-threaded-IRQs-optionally-the-default-which-can-.patch
-  0014-Reinstate-default-Hz-of-100-in-combination-with-MuQS.patch
-  0015-Swap-sucks.patch
-  0016-Add-ck1-version.patch
-  )
-  
-  cd ../patches
-  
   # fix naming schema in EXTRAVERSION of ck patch set
-  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" 0016-Add-ck1-version.patch
+  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
 
-  # unfuck 0001-MultiQueue-Skiplist-Scheduler-version-v0.180.patch
-  # http://ck-hack.blogspot.com/2018/11/linux-419-ck1-muqss-version-0180-for.html?showComment=1544055404401#c6971461776340355351
-  
-  patch -Np1 -i "$srcdir/unfuck-pre.patch"
+  msg2 "Patching with ck patchset..."
+  patch -Np1 -i "$srcdir/${_ckpatch}"
 
-  cd ../linux-${pkgver}
-  
-  msg2 "Applying ck patchset..."
-  local ckp
-  for ckp in "${_CKArr[@]}"; do
-    patch -Np1 < "../patches/$ckp"
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
   done
-
-  patch -Np1 < "../unfuck-post.patch"
-
-  # now Arch patch
-  msg2 "Applying 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-  patch -Np1 < "../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
 
   msg2 "Setting config..."
   cp ../config .config
