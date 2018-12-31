@@ -2,48 +2,30 @@
 # Contributer: Peter Hofmann <insert_email_here>
 
 pkgname=birtty
-pkgver=18.06
-pkgrel=2
+pkgver=18.06.r0.gb693f8b
+pkgrel=1
 pkgdesc="Try not to crash that bird"
 url="https://www.uninformativ.de/git/birtty"
 license=("custom:PIZZA-WARE LICENSE")
 makedepends=("gcc" "make")
 conflicts=("birtty-git")
 arch=("i686" "x86_64")
-_gitroot="https://www.uninformativ.de/git/birtty.git"
-_gitname="getstream"
+source=("git+https://www.uninformativ.de/git/birtty.git#tag=v18.06")
+
+pkgver() {
+  cd "${srcdir}/birtty"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-
-	echo "Connecting to the GIT server...."
-    if [[ -d ${srcdir}/${_gitname} ]] ; then
-        cd ${_gitname}
-        git pull origin
-        echo "The local files are updated..."
-    else
-        git clone ${_gitroot} ${_gitname}
-    fi
-
-    echo "GIT checkout done."
-
-    echo "Starting make for: ${pkgname}"
-
-    if [[ -d ${srcdir}/${_gitname}-build ]]; then
-       echo "Cleaning the previous build directory..." 
-       rm -rf ${srcdir}/${_gitname}-build
-    fi
-
-    git clone ${srcdir}/${_gitname} ${srcdir}/${_gitname}-build
-    
-    cd ${srcdir}/${_gitname}-build
-        
-    echo "Starting configure..."
-
- 	make
+  cd "${srcdir}/birtty"
+  make
 }
 
 package() {
-	cd ${srcdir}/${_gitname}-build
+	cd "${srcdir}/birtty"
 	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+md5sums=('SKIP')

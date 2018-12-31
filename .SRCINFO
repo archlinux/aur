@@ -1,7 +1,7 @@
 pkgbase = birtty
 	pkgdesc = Try not to crash that bird
-	pkgver = 18.06
-	pkgrel = 2
+	pkgver = 18.06.r0.gb693f8b
+	pkgrel = 1
 	url = https://www.uninformativ.de/git/birtty
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = birtty
 	makedepends = gcc
 	makedepends = make
 	conflicts = birtty-git
+	source = git+https://www.uninformativ.de/git/birtty.git#tag=v18.06
+	md5sums = SKIP
 
 pkgname = birtty
 
