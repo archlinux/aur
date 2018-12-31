@@ -2,9 +2,9 @@
 pkgname=mkinitcpio-gnupg
 pkgdesc="mkinitcpio hook that adds GnuPG and smartcard support"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 arch=(any)
-depends=(gnupg pinentry pcsclite)
+depends=('gnupg<=2.2.9' pinentry pcsclite)
 optdepends=('libusb-compat: Allows the use of USB smartcard like YubiKey')
 url="https://github.com/xdbob/mkinitcpio-gnupg"
 source=(https://github.com/xdbob/$pkgname/archive/v$pkgver.tar.gz)
