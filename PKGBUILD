@@ -1,15 +1,15 @@
 # Maintainer: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=jdatestamp
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='utility to losslessly imprint date/time of a picture taken in a digital camera into its JPEG image'
-arch=('i686')
+arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/jdatestamp/"
 license=('custom')
 depends=('libjpeg-droppatch' 'freetype2')
-source=(http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}-src.zip/download)
-md5sums=('45ef6c542acda5785dcb3b8b87e3b47d')
+source=(http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}-src.tar.gz/download)
+md5sums=('eaf9075f17780c6ef50f40e0865b28d1')
 
 build() {
 cd ${srcdir}/$pkgname-$pkgver-src
