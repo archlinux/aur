@@ -1,4 +1,4 @@
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
 _commit=b16a2c2b5b137f538f0992cd5553c83955257a3a
