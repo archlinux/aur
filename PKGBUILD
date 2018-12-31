@@ -28,7 +28,7 @@ source=("wesnoth-1.12.desktop"
 
 sha256sums=('f765499315d6650fe91424c0818cc57fc9fd06108c29e78c2db987c148dbf877'
             '4d11e481ad8610bb2ad65290d2b3d1bf2d058485deaa9016325499b113e0f89f'
-            'bbc1a80412d3e880d695cf0e818969da90c578501b455d0a6a81a45568cd8231'
+            'f8e20adabc0ecdbce23aed375ad9b28b616cebb0d261b3c6b8e576ccb61dcdae'
             'e5b0bd418e97d5f8cfc9392045dc749941c71e9cf805ef6f343c318022088384')
 
 PKGEXT='.pkg.tar'
