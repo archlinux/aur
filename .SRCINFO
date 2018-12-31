@@ -1,9 +1,8 @@
 pkgbase = rocketchat-desktop
 	pkgdesc = Rocket.Chat Native Cross-Platform Desktop Application via Electron.
 	pkgver = 2.14.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RocketChat/Rocket.Chat.Electron
-	install = rocketchat-desktop.install
 	arch = i686
 	arch = x86_64
 	license = MIT
