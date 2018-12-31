@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=pantheon-mutter-git
 pkgver=3.28
-pkgrel=2
+pkgrel=3
 pkgdesc='Pantheon version of libmutter'
 arch=(x86_64)
 url='http://elementary.io'
@@ -12,13 +12,13 @@ source=('https://github.com/GNOME/mutter/archive/gnome-3-28.zip')
 sha512sums=('7826b54bd50d87e9ab9c2bdea1dc65fbe8ade7c48b9dc4346fa3bb53826f28384116c80a7c4bace4324545fa4dce28989a93a9ab6681256351163e87ada7509f')
 
 prepare() {
-  cd $_pkgname/mutter*
+  cd "${srcdir}/mutter*"
 
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $_pkgname/mutter*
+  cd "${srcdir}/mutter*"
 
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
               --libexecdir=/usr/lib --disable-static \
@@ -32,6 +32,6 @@ build() {
 }
 
 package() {
-  cd $_pkgname/mutter*
+  cd "${srcdir}/mutter*"
   make DESTDIR="$pkgdir" install
 }
