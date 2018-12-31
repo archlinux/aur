@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=libpurple-lurch
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 pkgdesc='Plugin for libpurple (Pidgin, Adium, etc) implementing OMEMO (using axolotl)'
 arch=('i686' 'x86_64')
