@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=kolide-git
 _pkgname=kolide
-pkgver=2.0.0.r1.g510ec107
+pkgver=2.0.1.r3.gb752073d
 pkgrel=1
 pkgdesc="osquery command and control"
 url="https://www.kolide.co/"
@@ -34,9 +34,9 @@ prepare() {
 build() {
 	cd "${srcdir}/go/src/github.com/kolide/fleet"
 
-	GOPATH="${srcdir}/go" make deps
-	GOPATH="${srcdir}/go" make generate
-	GOPATH="${srcdir}/go" make
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make deps
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make generate
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make
 
 	./build/fleet version --full
 }
