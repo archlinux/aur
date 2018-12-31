@@ -3,8 +3,8 @@
 _pkgname=godot-export-templates
 pkgname=${_pkgname}-git
 _gitname=godot
-pkgver=3.1.r18268.e8cdbf99e9
-pkgrel=2
+pkgver=3.1.dev
+pkgrel=1
 pkgdesc='Godot export templates'
 url='https://godotengine.org/'
 license=('MIT')
