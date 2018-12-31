@@ -27,7 +27,7 @@ pkgver() {
 
 prepare() {
   # Ensure we compile native extensions against system electron version
-  local electronver="$(pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1)"
+  local electronver="$(sed 's/^[^0-9]*//' /usr/lib/electron/version)"
   msg2 "Compiling against system electron version: $electronver"
   sed -i 's/"electron": ".*"/"electron": "'"$electronver"'"/' "${_pkgname}/package.json"
 
