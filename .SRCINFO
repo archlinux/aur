@@ -1,6 +1,6 @@
 pkgbase = mupen64plus-video-gliden64-git
-	pkgdesc = A new generation, open-source graphics plugin for N64 emulators
-	pkgver = 3.0.r201.gf72553a5
+	pkgdesc = A new generation, open-source graphics plugin for N64 emulators (git version)
+	pkgver = 3.0.r249.gd420737d
 	pkgrel = 1
 	url = https://github.com/gonetz/GLideN64/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = mupen64plus-video-gliden64-git
 	depends = freetype2
 	provides = mupenplus-video-gliden64
 	conflicts = mupenplus-video-gliden64
-	source = mupen64plus-video-gliden64-git::git+https://github.com/gonetz/GLideN64.git
+	source = git+https://github.com/gonetz/GLideN64.git
 	sha256sums = SKIP
 
 pkgname = mupen64plus-video-gliden64-git

@@ -2,21 +2,22 @@
 # Contributor: Flávio Zavan <flavio dot zavan at gmail dot com>
 
 pkgname=mupen64plus-video-gliden64-git
-pkgver=3.0.r201.gf72553a5
+_srcname=GLideN64
+pkgver=3.0.r249.gd420737d
 pkgrel=1
-pkgdesc='A new generation, open-source graphics plugin for N64 emulators'
+pkgdesc='A new generation, open-source graphics plugin for N64 emulators (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/gonetz/GLideN64/'
 license=('GPL2')
 depends=('mupen64plus' 'libgl' 'freetype2')
 makedepends=('git' 'cmake')
-source=("$pkgname"::'git+https://github.com/gonetz/GLideN64.git')
+source=('git+https://github.com/gonetz/GLideN64.git')
 provides=('mupenplus-video-gliden64')
 conflicts=('mupenplus-video-gliden64')
 sha256sums=('SKIP')
 
 prepare() {
-    cd "${pkgname}/src"
+    cd "${_srcname}/src"
     
     printf '%s\n' "#define PLUGIN_REVISION \"${pkgver}\"" > Revision.h
     
@@ -24,14 +25,14 @@ prepare() {
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^Public_Release_//;s/^v//;s/_/./g'
 }
 
 build() {
-    cd "${pkgname}/src/build"
+    cd "${_srcname}/src/build"
     
     cmake \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
@@ -43,7 +44,7 @@ build() {
 }
 
 package() {
-    cd "${pkgname}/src/build/plugin/Release"
+    cd "${_srcname}/src/build/plugin/Release"
     
     install -D -m644 mupen64plus-video-GLideN64.so -t "${pkgdir}/usr/lib/mupen64plus"
 }
