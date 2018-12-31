@@ -1,7 +1,7 @@
 pkgbase = openni2-git
 	pkgdesc = Framework for sensor-based Natural Interaction (git version)
 	pkgver = 2.2.beta.r25.g1fce8ed
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/occipital/OpenNI2/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = openni2-git
 	depends = libjpeg-turbo
 	provides = openni2
 	conflicts = openni2
-	source = openni2-git::git+https://github.com/occipital/OpenNI2.git
+	source = git+https://github.com/occipital/OpenNI2.git
 	source = 0002-Change-path-of-config-files-to-etc-openni2.patch
 	source = 0003-Use-system-wide-libjpeg.patch
 	source = 0005-change-default-ni-drivers-path.patch

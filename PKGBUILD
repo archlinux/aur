@@ -1,8 +1,9 @@
 # Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=openni2-git
+_srcname=OpenNI2
 pkgver=2.2.beta.r25.g1fce8ed
-pkgrel=5
+pkgrel=6
 pkgdesc='Framework for sensor-based Natural Interaction (git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/occipital/OpenNI2/'
@@ -11,7 +12,7 @@ depends=('freeglut' 'glu' 'libusb' 'java-environment' 'libjpeg-turbo')
 makedepends=('git' 'python' 'doxygen' 'graphviz')
 provides=('openni2')
 conflicts=('openni2')
-source=('openni2-git'::'git+https://github.com/occipital/OpenNI2.git'
+source=('git+https://github.com/occipital/OpenNI2.git'
         '0002-Change-path-of-config-files-to-etc-openni2.patch'
         '0003-Use-system-wide-libjpeg.patch'
         '0005-change-default-ni-drivers-path.patch'
@@ -29,12 +30,13 @@ sha256sums=('SKIP'
             '57c9236c77133437a533d3cac6775da4749a070dd468e88e29b07d7a83aaaab1')
 
 prepare() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # fix building documentation with java 8
     # https://github.com/OpenNI/OpenNI2/issues/87
-    local _javaver="$(archlinux-java get | grep -o '^[^-]*.[0-9]*')"
-    if [ "$(vercmp "$_javaver" "java-8")" -ge '0' ] 
+    local _javaver
+    _javaver="$(archlinux-java get | grep -o '^[^-]*.[0-9]*')"
+    if [ "$(vercmp "$_javaver" java-8)" -ge '0' ] 
     then
         sed -i "s/cmd = \[javaDocExe, '-d', 'java'\]/cmd = [javaDocExe, '-d', 'java', '-Xdoclint:none']/" Source/Documentation/Runme.py
     fi
@@ -49,25 +51,20 @@ prepare() {
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
+    
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     make
     make doc
 }
 
 package() {
-    if [ "$CARCH" = 'x86_64' ] 
-    then
-        _architecture="x64"
-        
-    elif [ "$CARCH" = 'i686' ] 
-    then
-        _architecture='x86'
-    fi
+    [ "$CARCH" = 'x86_64' ] && local _architecture='x64'
+    [ "$CARCH" = 'i686'   ] && local _architecture='x86'
     
     # directories creation
     mkdir -p "${pkgdir}/usr/"{bin,include/openni2/{Driver,Linux-Arm,Linux-x86}}
@@ -77,7 +74,7 @@ package() {
     mkdir -p "${pkgdir}/etc/openni2/Drivers"  # config
     
     # binaries and libraries
-    cd "${pkgname}/Bin/${_architecture}-Release"
+    cd "${_srcname}/Bin/${_architecture}-Release"
     install    -m755 NiViewer             "${pkgdir}/usr/bin/NiViewer2"
     install -D -m755 ClosestPointViewer   "${pkgdir}/usr/bin"
     install -D -m755 EventBasedRead       "${pkgdir}/usr/bin"
@@ -89,23 +86,23 @@ package() {
     install -D -m755 OpenNI2/Drivers/*.so "${pkgdir}/usr/lib/OpenNI2/Drivers"
     
     # includes
-    cd "${srcdir}/${pkgname}/Include"
+    cd "${srcdir}/${_srcname}/Include"
     install -D -m644 *.h         "${pkgdir}/usr/include/openni2"
     install -D -m644 Driver/*    "${pkgdir}/usr/include/openni2/Driver"
     install -D -m644 Linux-Arm/* "${pkgdir}/usr/include/openni2/Linux-Arm"
     install -D -m644 Linux-x86/* "${pkgdir}/usr/include/openni2/Linux-x86"
     
     # udev rules
-    cd "${srcdir}/${pkgname}/Packaging/Linux"
+    cd "${srcdir}/${_srcname}/Packaging/Linux"
     install -m644 primesense-usb.rules "${pkgdir}/usr/lib/udev/rules.d/60-openni2-usb.rules"
     
     # config
-    cd "${srcdir}/${pkgname}/Config"
+    cd "${srcdir}/${_srcname}/Config"
     install -D -m644 *.ini             "${pkgdir}/etc/openni2"
     install -D -m644 OpenNI2/Drivers/* "${pkgdir}/etc/openni2/Drivers"
     
     # documentation
-    cd "${srcdir}/${pkgname}/Source/Documentation/html"
+    cd "${srcdir}/${_srcname}/Source/Documentation/html"
     install -D -m644 * "${pkgdir}/usr/share/doc/${pkgname}"
     
     # pkg-config file
@@ -113,7 +110,7 @@ package() {
     install -D -m644 libopenni2.pc "${pkgdir}/usr/lib/pkgconfig"
     
     # license
-    cd "$pkgname"
+    cd "$_srcname"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}"
 }
