@@ -1,9 +1,9 @@
 pkgbase = nnpack-git
 	pkgdesc = An acceleration package for neural network computations (git version)
 	pkgver = r359.1e005b0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Maratyszcza/NNPACK/
-	arch = i386
+	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
@@ -11,8 +11,7 @@ pkgbase = nnpack-git
 	makedepends = ninja
 	makedepends = confu2-git
 	makedepends = python2-peachpy-git
-	options = staticlibs
-	source = nnpack-git::git+https://github.com/Maratyszcza/NNPACK.git
+	source = git+https://github.com/Maratyszcza/NNPACK.git
 	sha256sums = SKIP
 
 pkgname = nnpack-git
