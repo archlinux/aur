@@ -1,5 +1,5 @@
 # Maintainer: Dan Beste <Dan.Ray.Beste@gmail.com>
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname='python-black-git'
 pkgver=18.9b0.r13.ge4e59f8
