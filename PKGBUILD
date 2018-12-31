@@ -1,4 +1,4 @@
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: ZaZam <zazaamm ät gmail döt com>
 # Contributor: Yegorius <yegorius@domic.us>
 
