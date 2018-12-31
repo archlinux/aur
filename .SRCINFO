@@ -1,5 +1,5 @@
 pkgbase = pantheon-default-settings-git
-	pkgver = 5.0.r0.ga01a83e
+	pkgver = 5.0.r22.g605590b
 	pkgrel = 1
 	url = https://github.com/elementary/default-settings
 	arch = any
@@ -7,9 +7,7 @@ pkgbase = pantheon-default-settings-git
 	license = GPL
 	makedepends = git
 	source = pantheon-default-settings::git+https://github.com/elementary/default-settings.git
-	source = arch-tweaks.patch
 	sha256sums = SKIP
-	sha256sums = 16a22594ad9aeda370eb04438ef024861e45f345acf1d48ab38913f76fcc5328
 
 pkgname = pantheon-default-settings-git
 	pkgdesc = Default settings for Pantheon
