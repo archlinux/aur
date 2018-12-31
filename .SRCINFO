@@ -1,7 +1,7 @@
 pkgbase = pantheon-mutter-git
 	pkgdesc = Pantheon version of libmutter
 	pkgver = 3.28
-	pkgrel = 2
+	pkgrel = 3
 	url = http://elementary.io
 	arch = x86_64
 	license = GPL
