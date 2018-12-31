@@ -1,0 +1,18 @@
+pkgbase = python-rchitect
+	pkgdesc = Minimal R API for Python
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/randy3k/rapi
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = r>3.4.0
+	depends = python-multipledispatch
+	source = https://github.com/randy3k/rchitect/archive/v0.2.4.tar.gz
+	sha256sums = 122e81c69bf73411b8b1ee021684e0e56d944f1b857102e455831a13ff79f0c8
+
+pkgname = python-rchitect
+
+pkgname = python2-rchitect
+
