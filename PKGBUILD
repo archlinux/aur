@@ -1,4 +1,4 @@
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=firefox-404-bookmarks
 pkgver=1.7
