@@ -1,11 +1,11 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=mupen64plus-extraplugins-git
 pkgver=20180827.053244
-pkgrel=1
+pkgrel=2
 pkgdesc='Additional plugins for Mupen64Plus (git version)'
 arch=('i686' 'x86_64')
-url='http://www.mupen64plus.org/'
+url='https://www.mupen64plus.org/'
 license=('GPL' 'CC0-1.0')
 depends=('mupen64plus' 'sdl2' 'glew')
 makedepends=('git')
@@ -21,6 +21,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
+
 _m64p_plugins='rsp-z64 rsp-cxd4 video-arachnoid video-z64 video-glide64'
 
 pkgver() {

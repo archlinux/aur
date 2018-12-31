@@ -1,8 +1,8 @@
 pkgbase = mupen64plus-extraplugins-git
 	pkgdesc = Additional plugins for Mupen64Plus (git version)
 	pkgver = 20180827.053244
-	pkgrel = 1
-	url = http://www.mupen64plus.org/
+	pkgrel = 2
+	url = https://www.mupen64plus.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
