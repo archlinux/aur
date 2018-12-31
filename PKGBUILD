@@ -2,13 +2,13 @@
 
 pkgname=lte-cell-scanner-git
 pkgver=r335.ef1ad25
-pkgrel=2
+pkgrel=3
 pkgdesc="An OpenCL accelerated TDD/FDD LTE Scanner"
 arch=('i686' 'x86_64')
 url="https://github.com/JiaoXianjun/LTE-Cell-Scanner"
 license=('GPL')
 depends=('git')
-makedepends=('cmake' 'hackrf' 'fftw' 'itpp' 'boost-libs' 'libbladerf-git')
+makedepends=('cmake' 'hackrf' 'fftw' 'itpp' 'boost' 'boost-libs' 'libbladerf-git')
 source=("${pkgname}::git+https://github.com/JiaoXianjun/LTE-Cell-Scanner"
 		"Fix-compile-issues-with-newer-libbladerf-releases.patch")
 sha256sums=('SKIP'
