@@ -3,7 +3,7 @@
 
 pkgname=pantheon-gala-git
 pkgver=0.3.0.r169.a71e8c1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pantheon Window Manager'
 arch=('x86_64')
 url='https://github.com/elementary/gala'
@@ -15,8 +15,8 @@ depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop'
          'mesa' 'pantheon-mutter-git' 'pango' 'plank' 'wayland'
          'libgranite.so')
 makedepends=('git' 'gnome-common' 'granite-git' 'intltool' 'meson' 'vala')
-provides=('gala' 'libgala.so')
-conflicts=('gala')
+provides=('gala-git' 'gala' 'libgala.so')
+conflicts=('gala-git' 'gala')
 source=('git+https://github.com/elementary/gala.git')
 sha256sums=('SKIP')
 
