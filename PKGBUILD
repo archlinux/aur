@@ -1,4 +1,4 @@
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 _name=fake-useragent
 pkgname=python-fake-useragent
