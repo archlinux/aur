@@ -2,7 +2,7 @@
 # Contributor:  James Lovejoy       <$(echo "Y29udGFjdEB2ZXJ0Y29pbi5vcmcK" | base64 -d)>
 
 pkgname=python-lyra2re2_hash
-pkgver=1.1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Bindings for Lyra2RE2 proof of work used by Vertcoin'
 
@@ -21,10 +21,11 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/lyra2re-hash-python/"
-    git checkout f0fa90423a1c564a1a3185418b05169b2c2222e1
+    git checkout 639567bf3674730362fafbb8ae90c35bcf94b42a
 }
 
 package() {
     cd "$srcdir/lyra2re-hash-python/"
     python setup.py install --root="$pkgdir/" --optimize=1 --prefix=/usr
 }
+
