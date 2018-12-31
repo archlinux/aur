@@ -1,4 +1,4 @@
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: David Vogt <dave at winged dot ch>
 
