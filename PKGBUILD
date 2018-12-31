@@ -1,6 +1,7 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Andrew Anderson <aanderso@tcd.ie>
+# Contributors: Maxime Gauduin <alucryd@archlinux.org>
 
-pkgname=gala-git
+pkgname=pantheon-gala-git
 pkgver=0.3.0.r169.a71e8c1
 pkgrel=1
 pkgdesc='The Pantheon Window Manager'
@@ -11,7 +12,7 @@ groups=('pantheon-unstable')
 depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop'
          'gtk3' 'json-glib' 'libdrm' 'libgee' 'libgl' 'libx11' 'libxcomposite'
          'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxtst'
-         'mesa' 'mutter' 'pango' 'plank' 'wayland'
+         'mesa' 'pantheon-mutter-git' 'pango' 'plank' 'wayland'
          'libgranite.so')
 makedepends=('git' 'gnome-common' 'granite-git' 'intltool' 'meson' 'vala')
 provides=('gala' 'libgala.so')
