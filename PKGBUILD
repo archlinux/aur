@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=aptik
 pkgver=18.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line tool for migrating system settings and data for distributions based on Debian, Arch and Fedora."
 arch=('i686' 'x86_64')
 url="https://github.com/teejee2008/aptik"
