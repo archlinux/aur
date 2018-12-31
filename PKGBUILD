@@ -6,12 +6,12 @@
 pkgname=nvidia-340xx-ck
 pkgver=340.107
 _extramodules=extramodules-ck
-pkgrel=34
+pkgrel=35
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-ck>=4.19' 'linux-ck<4.20' 'libgl' "nvidia-340xx-utils=${pkgver}")
-makedepends=('linux-ck-headers>=4.19' 'linux-ck-headers<4.20' 'nvidia-340xx-libgl')
+depends=('linux-ck>=4.20' 'linux-ck<4.21' 'libgl' "nvidia-340xx-utils=${pkgver}")
+makedepends=('linux-ck-headers>=4.20' 'linux-ck-headers<4.21' 'nvidia-340xx-libgl')
 conflicts=('nvidia-ck' 'nvidia-390xx-ck')
 #groups=('ck-generic')
 #replaces=()
@@ -27,7 +27,7 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 prepare() {
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
-  
+
   # patches here
   patch -Np0 < "${srcdir}/kernel-4.11.patch"
 }
