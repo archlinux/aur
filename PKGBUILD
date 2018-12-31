@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=pantheon-desktop-git
 pkgver=20180925
-pkgrel=6
+pkgrel=7
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
@@ -34,7 +34,6 @@ depends=(cerbere-git
   switchboard-plug-applications-git
   switchboard-plug-bluetooth-git
   switchboard-plug-datetime-git
-  switchboard-plug-desktop-git
   switchboard-plug-display-git
   switchboard-plug-elementary-tweaks-git
   switchboard-plug-keyboard-git
@@ -63,6 +62,7 @@ depends=(cerbere-git
   )
 
 #  pantheon-mail-git
+#  switchboard-plug-desktop-git
 
 build(){
   /bin/true
