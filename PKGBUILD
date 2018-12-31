@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=pantheon-desktop-git
 pkgver=20180925
-pkgrel=11
+pkgrel=12
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
@@ -25,7 +25,7 @@ depends=(contractor-git
   pantheon-system-monitor-git
   pantheon-terminal-git
   pantheon-videos-git
-  switchboard-git
+  pantheon-files
   switchboard-plug-a11y-git
   switchboard-plug-about-git
   switchboard-plug-applications-git
@@ -57,7 +57,6 @@ depends=(contractor-git
   wingpanel-indicator-sound-git
   elementary-wallpapers
   elementary-icon-theme
-  pantheon-files
   )
 
 #  pantheon-mail-git

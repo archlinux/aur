@@ -1,7 +1,7 @@
 pkgbase = pantheon-desktop-git
 	pkgdesc = Meta package for the complete Pantheon desktop & apps
 	pkgver = 20180925
-	pkgrel = 11
+	pkgrel = 12
 	url = http://elementary.io
 	arch = any
 	license = LGPL
@@ -24,7 +24,7 @@ pkgbase = pantheon-desktop-git
 	depends = pantheon-system-monitor-git
 	depends = pantheon-terminal-git
 	depends = pantheon-videos-git
-	depends = switchboard-git
+	depends = pantheon-files
 	depends = switchboard-plug-a11y-git
 	depends = switchboard-plug-about-git
 	depends = switchboard-plug-applications-git
@@ -56,7 +56,6 @@ pkgbase = pantheon-desktop-git
 	depends = wingpanel-indicator-sound-git
 	depends = elementary-wallpapers
 	depends = elementary-icon-theme
-	depends = pantheon-files
 
 pkgname = pantheon-desktop-git
 
