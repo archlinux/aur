@@ -3,15 +3,18 @@
 _applet_name=plasma-pstate
 pkgname=plasma5-applets-${_applet_name}
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel P-state and CPUFreq Manager Widget"
 url="https://github.com/jsalatas/${_applet_name}"
 arch=('any')
 license=('GPL v2')
 depends=('plasma-workspace')
+optdepends=(
+    "libsmbios: Dell's Thermal Management Feature"
+    "x86_energy_perf_policy: If your processor doesn't support EPP (ie older generations without HWP)"
+)
 source=("https://github.com/jsalatas/${_applet_name}/archive/${pkgver}.tar.gz")
 sha256sums=('76a1a8e31707cb62915ad0bd15faea680896cc06386d0a626da40ffcc21be9cf')
-
 
 package() {
   cd "${srcdir}/${_applet_name}-${pkgver}"
@@ -27,7 +30,6 @@ package() {
   sed -i 's/sudo/wheel/' "${_sudoers_dir}/99-plasma-pstate"
   chmod 400 "${_sudoers_dir}/99-plasma-pstate"
 }
-
 
 # SUDOERS_FILE="99-plasma-pstate"
 # 
