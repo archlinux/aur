@@ -70,7 +70,10 @@ build() {
     export EXTRA_FLAGS="-Winvalid-pch"
     export CPPFLAGS="$CPPFLAGS $EXTRA_FLAGS"
     export CXXFLAGS="$CXXFLAGS $EXTRA_FLAGS"
+
     gyp \
+        -Dapi_id=17349 \
+        -Dapi_hash=344583e45741c457fe1862106095a5eb \
         -Dbuild_defines=${GYP_DEFINES} \
         -Gconfig=Release \
         --depth=Telegram/gyp --generator-output=../.. -Goutput_dir=out Telegram/gyp/Telegram.gyp --format=cmake
