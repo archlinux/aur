@@ -1,9 +1,9 @@
 pkgbase = ntopng
 	pkgdesc = The next generation version of the original ntop, a network traffic probe that shows the network usage
 	pkgver = 3.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ntop.org/
-	install = install.sh
+	install = install-script.sh
 	arch = x86_64
 	arch = i686
 	license = GPL3
