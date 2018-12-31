@@ -1,14 +1,14 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=pantheon-core-git
 pkgver=20180925
-pkgrel=8
+pkgrel=9
 pkgdesc='Meta package for the complete Pantheon desktop & apps (core utilities)'
 arch=(any)
 url='http://elementary.io'
 license=(LGPL)
 makedepends=(bzr mutter-781835-workaround)
 depends=(granite-git
-  pantheon-workarounds
+  pantheon-gala-git
   wingpanel-git
   lightdm
   lightdm-settings
