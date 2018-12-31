@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=lib32-python
-pkgver=3.7.1
+pkgver=3.7.2
 pkgrel=1
 _pybasever=3.7
 pkgdesc="Next generation of the python high-level scripting language"
@@ -18,7 +18,7 @@ source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz
         "lib32-distutils-sysconfig.patch"
         "python-config-32.patch"
         "dont-make-libpython-readonly.patch")
-sha512sums=('3eb62a0127609b14420a47442727702f396519c649625aca59883d04f4c02e5f37ba1d58ac8e93c49d14a63f17ae7909315c33fc813293dbcdb6127f39a148b0'
+sha512sums=('6cd2d6d8455558783b99d55985cd7b22d67b98f41a09b4fdd96f680a630a4e035220d2b903f8c59ed513aa5ffe6730fa947ddb55bb72ce36f0e945ef8af5d971'
             'SKIP'
             'c6aeb74260740155b3ccee350230613b91567ae945026ce2a7f1f568cd0092d6fc7c49ad8d217dab3ad2e8b2ebe40b95c45b7e6feda2eb8849217ba6c31d7796'
             'f6119c9fb535e28d19c7500d8ce4859f9fa71738520357f4f7b418af25574380861381e911622b8cb85a21297083a3a96252d01595ba5803374b3f3f09d0e647'
