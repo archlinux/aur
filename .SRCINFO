@@ -1,9 +1,9 @@
 pkgbase = ncmpcpp-git
 	pkgdesc = An almost exact clone of ncmpc with some new features (git version)
 	pkgver = 0.8.2.r2.g81cb7a4f
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
-	url = http://rybczak.net/ncmpcpp/
+	url = https://rybczak.net/ncmpcpp/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -17,8 +17,10 @@ pkgbase = ncmpcpp-git
 	depends = boost-libs
 	provides = ncmpcpp
 	conflicts = ncmpcpp
-	source = ncmpcpp-git::git+https://github.com/arybczak/ncmpcpp.git
+	source = git+https://github.com/arybczak/ncmpcpp.git
+	source = ncmpcpp-git-add-full-relro.patch
 	sha256sums = SKIP
+	sha256sums = 737f057f043b2cdc172c509797ee4ee441b69247e60a344544476cee59290d71
 
 pkgname = ncmpcpp-git
 
