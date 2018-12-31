@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis-git
-pkgver=0.2.5.206.gaf624e5
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 arch=('x86_64')
@@ -39,8 +39,8 @@ check() {
 
 package() {
   cd ${pkgname%-git}
-  make DESTDIR="$pkgdir/" install
-  # repair
-  cp -r "$pkgdir"/bin "$pkgdir"/usr
+  make DESTDIR="$pkgdir" install
+  #repair
+  install -Dm755 "$pkgdir"/bin/art "$pkgdir"/usr/bin/art
   rm -r "$pkgdir"/bin
 }
