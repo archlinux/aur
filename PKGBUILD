@@ -1,7 +1,7 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 pkgname=libbladerf-git
-pkgver=2018.10.rc1.r102.gb2f30720
+pkgver=2018.12.rc3.r3.g3bb8ad61
 pkgrel=1
 pkgdesc="Driver and userspace for the bladeRF SDR."
 url="https://github.com/Nuand/bladeRF"
@@ -12,8 +12,18 @@ provides=('bladerf')
 conflicts=('bladerf')
 makedepends=('cmake' 'help2man' 'doxygen')
 
-source=(git+https://github.com/Nuand/bladeRF)
-md5sums=('SKIP')
+source=("git+https://github.com/Nuand/bladeRF"
+		"https://www.nuand.com/fpga/hostedxA4-latest.rbf"
+		"https://www.nuand.com/fpga/hostedxA9-latest.rbf"
+		"https://www.nuand.com/fpga/hostedx40-latest.rbf"
+		"https://www.nuand.com/fpga/hostedx115-latest.rbf"
+		"https://www.nuand.com/fx3/bladeRF_fw_latest.img")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 prepare() {
   cd "$srcdir/bladeRF"
@@ -46,4 +56,11 @@ build() {
 package() {
   cd "$srcdir/bladeRF/build"
   make DESTDIR="${pkgdir}" install
+
+  cd "$srcdir"
+  install -Dm644 bladeRF_fw_latest.img "$pkgdir/usr/share/Nuand/bladeRF/firmware/bladeRF_fw_latest.img"
+  install -Dm644 hostedxA4-latest.rbf  "$pkgdir/usr/share/Nuand/bladeRF/hostedxA4.rbf"
+  install -Dm644 hostedxA9-latest.rbf  "$pkgdir/usr/share/Nuand/bladeRF/hostedxA9.rbf"
+  install -Dm644 hostedx40-latest.rbf  "$pkgdir/usr/share/Nuand/bladeRF/hostedx40.rbf"
+  install -Dm644 hostedx115-latest.rbf "$pkgdir/usr/share/Nuand/bladeRF/hostedx115.rbf"
 }
