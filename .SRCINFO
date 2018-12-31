@@ -1,0 +1,26 @@
+pkgbase = siril-git
+	pkgdesc = An astronomical image processing software for Linux. (IRIS clone)
+	pkgver = 759a832
+	pkgrel = 1
+	url = https://free-astro.org/index.php/Siril
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = intltool
+	depends = gtk3
+	depends = fftw
+	depends = cfitsio
+	depends = gsl
+	depends = libconfig
+	depends = opencv
+	optdepends = libpng: PNG import
+	optdepends = libjpeg: JPEG import and export
+	optdepends = libtiff: TIFF import and export
+	optdepends = libraw: DSLR RAW images import
+	optdepends = ffms2: films native support as image sequences and import
+	optdepends = libcurl-gnutls: online astrometry
+	source = git+https://gitlab.com/free-astro/siril.git
+	sha1sums = SKIP
+
+pkgname = siril-git
+
