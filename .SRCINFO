@@ -1,6 +1,6 @@
 pkgbase = cilium-git
 	pkgdesc = API-aware Networking and Security for Containers based on BPF
-	pkgver = 1.4.0rc2.r658.g3e6232be8
+	pkgver = 1.4.0rc2.r662.g1678d328b
 	pkgrel = 1
 	url = https://cilium.io/
 	arch = x86_64
