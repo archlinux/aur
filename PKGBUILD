@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=pantheon-core-git
 pkgver=20180925
-pkgrel=16
+pkgrel=17
 pkgdesc='Meta package for the complete Pantheon desktop & apps (core utilities)'
 arch=(any)
 url='http://elementary.io'
@@ -12,7 +12,7 @@ depends=(granite-git
   wingpanel-git
   lightdm
   lightdm-settings
-  lightdm-pantheon-greeter-git
+  lightdm-pantheon-greeter
   gtk-theme-elementary-git
   pantheon-dpms-helper-git
   gnome-settings-daemon-elementary
