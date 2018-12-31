@@ -16,11 +16,6 @@ conflicts=('omp' 'omp-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TheWiseNoob/OMP/archive/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "OMP-$pkgver"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
 build() {
   cd "OMP-$pkgver"
   make
