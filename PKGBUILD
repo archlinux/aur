@@ -20,7 +20,7 @@ sha256sums=('4216cd9c3a2c4920aec2f3c967181b04bfafdb1b47e526a8e823911cce704da1'
 
 prepare() {
   # Ensure we compile native extensions against system electron version
-  local electronver="$(pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1)"
+  local electronver="$(sed 's/^[^0-9]*//' /usr/lib/electron/version)"
   msg2 "Compiling against system electron version: $electronver"
   sed -i 's/"electron": ".*"/"electron": "'"$electronver"'"/' "${_pkgname}-linux-${pkgver}/package.json"
 
