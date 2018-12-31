@@ -1,0 +1,15 @@
+pkgbase = libfreesrp-git
+	pkgdesc = Small C++ library to interface with the FreeSRP
+	pkgver = 0.3.0.r0.g541e7bb
+	pkgrel = 1
+	url = https://github.com/myriadrf/libfreesrp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = git
+	source = libfreesrp-git::git+https://github.com/myriadrf/libfreesrp
+	sha256sums = SKIP
+
+pkgname = libfreesrp-git
+
