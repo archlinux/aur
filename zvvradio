@@ -1,0 +1,2 @@
+#! /bin/sh
+sh -c 'cd /usr/share/ZVVRadio && python ZVVRadio.py'
