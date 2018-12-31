@@ -20,9 +20,11 @@ source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#branch=de
         "variant::git+https://github.com/mapbox/variant"
         "xxHash::git+https://github.com/Cyan4973/xxHash.git"
         "CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop"
-        "tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
+        "demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop"
         "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
-        "no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop")
+        "no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop"
+        "tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
+        "Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -31,9 +33,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'f37f7827e10557d1e74b58b81eb0d17102e1c0f193d129e6e8edbbf7284f5867'
-            'fba40197322b166ce5e5b5d569494a37759407e1dd9962aabe60581a9ae4ab56'
+            '3f23161f8239893e82d2a4f655cb80523a558a4e7869a6683802c2f434b68bbf'
             '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
-            '8d707debe027c7cb658825501dc30fb3beb57ab21b1b6df2f01c5f76ca39a0e6')
+            '95efc9cd84c2c26bddd832ef8c88637353ed9ba9d9068f183b7ee48ba25d1cc7'
+            'bb04b1eea47370d5f1e45ac851bed81c728e4b52890efd94d511ed59847c9a61'
+            '2457746d9b963c77decd5d8b08498035dc1003fbcbc95d4dfdb11bf524954f13')
 pkgver() {
     cd "$srcdir/tdesktop"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -52,6 +56,8 @@ prepare() {
 
     patch -Np1 -i "$srcdir/tdesktop.patch"
     patch -Np1 -i "$srcdir/no-gtk2.patch"
+    patch -R -Np1 -i "$srcdir/demibold.patch"
+    patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
 
     cd "Telegram/ThirdParty/libtgvoip"
     patch -Np1 -i "$srcdir/libtgvoip.patch"
