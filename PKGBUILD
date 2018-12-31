@@ -18,18 +18,24 @@
 pkgbase="zfs-linux-zen"
 pkgname=("zfs-linux-zen" "zfs-linux-zen-headers")
 _zfsver="0.7.12"
-_kernelver="4.19.12.zen1-1"
-_extramodules="${_kernelver/.zen/-zen}-zen"
+_kernelver="4.20.zen1-1"
+_extramodules="4.20.0-zen1-1-zen"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
 makedepends=("linux-zen-headers=${_kernelver}" "spl-linux-zen-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
-sha256sums=("720e3b221c1ba5d4c18c990e48b86a2eb613575a0c3cc84c0aa784b17b7c2848")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz"
+        "upstream-4f981f6-additional-fixes-for-current_kernel_time-in-4.20.patch")
+sha256sums=("720e3b221c1ba5d4c18c990e48b86a2eb613575a0c3cc84c0aa784b17b7c2848"
+            "6f27c3dae57c424e06aec31df6c1e1a821e547aa4e933f2f9b894b5e6762b52d")
 license=("CDDL")
 depends=("kmod" 'spl-linux-zen' "zfs-utils=${_zfsver}" "linux-zen=${_kernelver}")
+prepare() {
+    cd "${srcdir}/zfs-${_zfsver}"
+    patch -Np1 -i ${srcdir}/upstream-4f981f6-additional-fixes-for-current_kernel_time-in-4.20.patch
+}
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
