@@ -1,38 +1,23 @@
 pkgname=med
-pkgver=3.3.1
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
 url="https://www.salome-platform.org/downloads"
 license=('LGPL')
-depends=('hdf5' 'openmpi' 'swig')
-makedepends=('gcc-fortran' 'python2')
+depends=('hdf5')
+makedepends=('gcc-fortran' 'python' 'swig' 'openmpi')
 optdepends=('tk')
 arch=('x86_64')
-source=("http://files.salome-platform.org/Salome/other/${pkgname}-${pkgver}.tar.gz"
-        "hdf5-1.10-support.patch")
-sha256sums=('dd631ef813838bc7413ff0dd6461d7a0d725bcfababdf772ece67610a8d22588'
-            '55cf95f1a3b7abf529bb2ded6c9a491459623c830dc16518058ff53ab203291c')
-
-prepare () {
-  cd ${srcdir}/${pkgname}-${pkgver}_SRC
-  # https://salsa.debian.org/science-team/med-fichier/tree/master/debian/patches
-  patch -p1 -i "${srcdir}"/hdf5-1.10-support.patch
-  autoreconf -i
-}
+source=("http://files.salome-platform.org/Salome/other/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('a474e90b5882ce69c5e9f66f6359c53b8b73eb448c5f631fa96e8cd2c14df004')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}_SRC
-  export FFLAGS="-fopenmp -fPIC -fdefault-double-8 -fdefault-integer-8 -fdefault-real-8 -ffixed-line-length-0 ${CFLAGS}"
-  export FCFLAGS="-fopenmp -fPIC -fdefault-double-8 -fdefault-integer-8 -fdefault-real-8 -ffixed-line-length-0 ${CFLAGS}"
-  export CPPFLAGS="-DHAVE_F77INT64 ${CPPFLAGS}"
-  export F77=mpif90
-  export FC=mpif90
-  export PYTHON=/usr/bin/python2
-  ./configure --with-f90=mpif90 --prefix=/usr --datadir=/usr/share/med --with-swig=yes --disable-dependency-tracking
+  cd ${pkgname}-${pkgver}
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}_SRC
+  cd ${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
 }
