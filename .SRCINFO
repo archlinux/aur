@@ -1,15 +1,15 @@
 pkgbase = unicode
 	pkgdesc = Display unicode character properties on the command line
-	pkgver = 2.6
-	pkgrel = 2
+	pkgver = 2.7
+	pkgrel = 1
 	url = https://github.com/garabik/unicode
 	arch = any
 	license = GPL3
 	depends = python
-	source = https://github.com/garabik/unicode/archive/v2.6.tar.gz
+	source = https://github.com/garabik/unicode/archive/v2.7.tar.gz
 	source = http://www.unicode.org/Public/UNIDATA/UnicodeData.txt
 	source = http://www.unicode.org/Public/UNIDATA/Blocks.txt
-	sha256sums = 6bf64ff6f8c47eaab83f1b130bbcd1d91fdecd9de5c026bf3611adcc615616f9
+	sha256sums = 5e61318f0f9e3746f40f85fbe9113449b5ab5bbffc36586eb91a7ab16849ed1c
 	sha256sums = 4997a3196eb79b4d0d6b8384560f6aeb46a062693f0abd5ba736abbff7976099
 	sha256sums = 0b457b66c788a97c8521e265f0b793d4ed911356d39eb61029f9cef8554cd052
 
