@@ -1,24 +1,25 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=check_smartmon-git
-pkgver=r27.71d33af
+pkgver=r31.07b14b8
 pkgrel=1
 pkgdesc="Nagios-Plugin that uses smartmontools (http://smartmontools.sourceforge.net/) to check disk health status and temperature."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/nihlaeth/Nagios_check_smartmon"
 license=('GPL2')
-depends=('python2' 'python2-psutil')
+depends=('python2-psutil' 'smartmontools')
+makedepends=('git')
 source=("${pkgname}::git+https://github.com/nihlaeth/Nagios_check_smartmon.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "$pkgname"
+  cd "$pkgname" || exit 1
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$pkgname"
-  msg 'Fixing Python version...'
+  cd "$pkgname" || exit 1
+  # Fixing Python version
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/python$#/usr/bin/python2#g'
 }
 
