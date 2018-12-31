@@ -4,7 +4,7 @@
 pkgname=wire-desktop-git
 _pkgname=${pkgname%-git}
 pkgver=3.5.2881.r14.g2b7ce57f
-pkgrel=1
+pkgrel=2
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('x86_64')
 url='https://wire.com/'
@@ -26,11 +26,16 @@ pkgver() {
 }
 
 prepare() {
+  # Ensure we compile native extensions against system electron version
+  local electronver="$(pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1)"
+  msg2 "Compiling against system electron version: $electronver"
+  sed -i 's/"electron": ".*"/"electron": "'"$electronver"'"/' "${_pkgname}/package.json"
+
   # Create launcher script
   cat << EOF > "${_pkgname}-launcher"
 #!/bin/sh
 
-electron "/usr/lib/${_pkgname}"
+electron "/usr/lib/${_pkgname}" "\$@"
 EOF
 }
 
@@ -38,13 +43,13 @@ build() {
   cd "${_pkgname}"
   yarn
   yarn build:ts
-  npx grunt 'linux-other'
+  npx grunt 'clean:linux' 'update-keys' 'gitinfo' 'release-prod' 'bundle'
 }
 
 package() {
   # Place files
   install -d "${pkgdir}/usr/lib/${_pkgname}"
-  cp -a "${_pkgname}"/wrap/dist/linux-unpacked/resources/app/* "${pkgdir}/usr/lib/${_pkgname}"
+  cp -a "${_pkgname}/electron"/* "${pkgdir}/usr/lib/${_pkgname}"
 
   # Place launcher script
   install -Dm755 "${_pkgname}-launcher" "${pkgdir}/usr/bin/${_pkgname}"
@@ -59,10 +64,4 @@ package() {
   # Spellcheck dictionaries
   rm -rf "${pkgdir}/usr/lib/${_pkgname}/node_modules/spellchecker/vendor/hunspell_dictionaries"
   ln -s "/usr/share/hunspell" "${pkgdir}/usr/lib/${_pkgname}/node_modules/spellchecker/vendor/hunspell_dictionaries"
-
-  # Place license files
-  local license
-  for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
-    install -Dm644 "${_pkgname}/wrap/dist/linux-unpacked/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
-  done
 }
