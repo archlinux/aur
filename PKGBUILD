@@ -1,4 +1,4 @@
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Sibren Vasse <arch @ sibrenvasse dot nl>
 # Contributor: Preston Carpenter <APragmaticPlace@gmail.com>
 
