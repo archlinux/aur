@@ -1,21 +1,19 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=pantheon-desktop-git
 pkgver=20180925
-pkgrel=7
+pkgrel=8
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
 license=(LGPL)
-makedepends=(pantheon-core-git)
-depends=(cerbere-git
-  contractor-git
+makedepends=(pantheon-core-git pantheon-dpms-helper-git)
+depends=(contractor-git
   pantheon-applications-menu-git
   pantheon-calculator-git
   pantheon-calendar-git
   pantheon-camera-git
   pantheon-code-git
   pantheon-default-settings-git
-  pantheon-dpms-helper-git
   pantheon-files-git
   pantheon-geoclue2-agent-git
   pantheon-music-git
