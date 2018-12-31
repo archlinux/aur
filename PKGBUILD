@@ -1,6 +1,6 @@
 # Maintainer: Neil Shepperd <nshepperd at gmail dot com>
 pkgname=cabal-static
-pkgver=2.4.0.0
+pkgver=2.4.1.0
 pkgrel=1
 pkgdesc="The command-line interface for Cabal and Hackage. Statically linked."
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,7 +11,7 @@ makedepends=('ghc' 'ghc-static')
 provides=(cabal-install)
 conflicts=(cabal-install)
 source=("https://hackage.haskell.org/package/cabal-install-${pkgver}/cabal-install-${pkgver}.tar.gz")
-md5sums=('2735a4359003334e21877a6b8f87c4a8')
+md5sums=('75cbd6efa11ca4344bd75a5b7b54027e')
 
 # Transitive dependencies of cabal-install
 makeconflicts=(haskell-async
