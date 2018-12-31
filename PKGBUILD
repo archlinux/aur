@@ -10,13 +10,13 @@
 #   - deJaVu and GhostScript font directories are the default ones
 #   - Windows font directory is set according to a Wiki example
 
-_commit='e74ed77f5bcd2191b50b4db2b7daeb9f6cd65ed8'
+_commit='8421640902b535336436018941fc87ba5c46a594'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
 _srcname=ImageMagick
-pkgver=7.0.8.19
+pkgver=7.0.8.22
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
