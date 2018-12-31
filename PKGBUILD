@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=zafiro-icon-theme-git
-pkgver=v0.7.8.r0.g1f4c8e3
+pkgver=v0.8.r0.g3935dd0
 pkgrel=1
 pkgdesc="Icon pack flat with light colors"
 arch=('any')

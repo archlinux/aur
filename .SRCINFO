@@ -1,6 +1,6 @@
 pkgbase = zafiro-icon-theme-git
 	pkgdesc = Icon pack flat with light colors
-	pkgver = v0.7.8.r0.g1f4c8e3
+	pkgver = v0.8.r0.g3935dd0
 	pkgrel = 1
 	url = https://github.com/zayronxio/Zafiro-icons
 	arch = any
