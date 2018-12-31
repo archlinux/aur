@@ -1,7 +1,7 @@
 # Maintainer: Miguel de Val-Borro <miguel . deval @ gmail . com>
 
 pkgname=python-astroquery
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="Set of tools for querying astronomical web forms and databases"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('python>=3.4' 'python-numpy>=1.9' 'python-astropy>=1.0' 'python-request
 conflicts=()
 makedepends=('cython')
 source=("https://files.pythonhosted.org/packages/source/a/astroquery/astroquery-${pkgver}.tar.gz")
-md5sums=('99d863bfd8c7332e3871e10e1048194c')
+md5sums=('f2d69fa431306894ed5db74432093e22')
 
 build() {
   cd ${srcdir}/astroquery-${pkgver}
