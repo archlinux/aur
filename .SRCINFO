@@ -1,15 +1,13 @@
 pkgbase = pax
-	pkgdesc = The POSIX standard archive tool, supporting the two most common forms of standard Unix archive (backup) files - CPIO and TAR.
+	pkgdesc = Portable Archive Interchange - the POSIX standard archive tool for cpio and tar formats
 	pkgver = 3.4
-	pkgrel = 9
-	url = http://downloads.yoctoproject.org/mirror/sources
+	pkgrel = 10
+	url = https://man.openbsd.org/pax.1
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = glibc
-	provides = pax
-	conflicts = pax
-	source = http://downloads.yoctoproject.org/mirror/sources/pax-3.4.tar.bz2
+	source = https://downloads.yoctoproject.org/mirror/sources/pax-3.4.tar.bz2
 	source = 001-pax-3.4_fix_for_compile_with_gcc-4.6.0.patch
 	source = 002-pax-3.4_fix_for_x32.patch
 	source = 003-pax-3.0_unuse_warn.patch
@@ -18,6 +16,7 @@ pkgbase = pax
 	source = 006-pax-3.4_rdtruncate.patch
 	source = 007-pax-3.4_fix_for_compile_with_gcc-6.1.patch
 	source = 008-Fix-implicit-fallthrough-in-src-options.c.patch
+	source = 009-pax-3.4-gcc8-fix.patch
 	sha256sums = ac3c06048e02828077cf7757d3d142241429238893b91d529af29a2e8cc5623b
 	sha256sums = 45d08ba749e473525bd4882bfdaf2f16b2ab5ef97413d678e042874e2ce4b70b
 	sha256sums = 7b244542dcbc53f1e78ce1c57af401846ff1ec2269195f321ed2b2d9bf297f2d
@@ -27,6 +26,7 @@ pkgbase = pax
 	sha256sums = 30a6c084600c47af73a988abf8d4514e1766cee36f1efedb5a76772bf3b2c793
 	sha256sums = 82a7d29126193e902a2f0d5ba6f790502df3591fd28b09af7c49eec0295cab1e
 	sha256sums = d9d015ceb80c9907bd5d91cf1f2f3f4257f0152bcacc85057a41b0fe5e3ac5ba
+	sha256sums = 38b430fa93ff339166ffe6543648e20a22cf1b4e376ab8574705298bc32198d6
 
 pkgname = pax
 

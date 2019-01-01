@@ -1,0 +1,59 @@
+diff -Naurp a/src/pax.c b/src/pax.c
+--- a/src/pax.c	2005-07-29 07:46:31.000000000 +0000
++++ b/src/pax.c	2019-01-01 02:59:31.257262876 +0000
+@@ -335,6 +335,10 @@ gen_init (void)
+   struct sigaction n_hand;
+   struct sigaction o_hand;
+ 
++  // gcc8 fix: temporary pointer to avoid restricted argument aliases
++  struct sigaction *ptr_o_hand;
++  ptr_o_hand = &o_hand;
++
+   /*
+    * Really needed to handle large archives. We can run out of memory for
+    * internal tables really fast when we have a whole lot of files...
+@@ -403,27 +407,27 @@ gen_init (void)
+ 
+   if ((sigaction (SIGHUP, &n_hand, &o_hand) < 0) &&
+       (o_hand.sa_handler == SIG_IGN) &&
+-      (sigaction (SIGHUP, &o_hand, &o_hand) < 0))
++      (sigaction (SIGHUP, &o_hand, ptr_o_hand) < 0))
+     goto out;
+ 
+   if ((sigaction (SIGTERM, &n_hand, &o_hand) < 0) &&
+       (o_hand.sa_handler == SIG_IGN) &&
+-      (sigaction (SIGTERM, &o_hand, &o_hand) < 0))
++      (sigaction (SIGTERM, &o_hand, ptr_o_hand) < 0))
+     goto out;
+ 
+   if ((sigaction (SIGINT, &n_hand, &o_hand) < 0) &&
+       (o_hand.sa_handler == SIG_IGN) &&
+-      (sigaction (SIGINT, &o_hand, &o_hand) < 0))
++      (sigaction (SIGINT, &o_hand, ptr_o_hand) < 0))
+     goto out;
+ 
+   if ((sigaction (SIGQUIT, &n_hand, &o_hand) < 0) &&
+       (o_hand.sa_handler == SIG_IGN) &&
+-      (sigaction (SIGQUIT, &o_hand, &o_hand) < 0))
++      (sigaction (SIGQUIT, &o_hand, ptr_o_hand) < 0))
+     goto out;
+ 
+   if ((sigaction (SIGXCPU, &n_hand, &o_hand) < 0) &&
+       (o_hand.sa_handler == SIG_IGN) &&
+-      (sigaction (SIGXCPU, &o_hand, &o_hand) < 0))
++      (sigaction (SIGXCPU, &o_hand, ptr_o_hand) < 0))
+     goto out;
+ 
+   n_hand.sa_handler = SIG_IGN;
+diff -Naurp a/src/tar.c b/src/tar.c
+--- a/src/tar.c	2019-01-01 02:55:53.000000000 +0000
++++ b/src/tar.c	2019-01-01 02:59:53.181069890 +0000
+@@ -1102,7 +1102,7 @@ ustar_wr (register ARCHD * arcn)
+     }
+ 
+   strncpy (hd->magic, TMAGIC, TMAGLEN);
+-  strncpy (hd->version, TVERSION, TVERSLEN);
++  memcpy (hd->version, TVERSION, TVERSLEN);
+ 
+   /*
+    * Set the remaining fields. We only write 12 bit of the mode field
