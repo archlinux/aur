@@ -1,0 +1,31 @@
+pkgbase = gedit-git
+	pkgdesc = GNOME Text Editor
+	pkgver = 3.31.3.r8.g141e7be53
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Gedit
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = yelp-tools
+	makedepends = intltool
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = gnome-common
+	makedepends = git
+	makedepends = gtk-doc
+	depends = gtksourceview3
+	depends = gsettings-desktop-schemas
+	depends = libpeas
+	depends = gspell
+	depends = python-gobject
+	depends = dconf
+	optdepends = gedit-plugins: Additional features
+	provides = gedit
+	conflicts = gedit
+	source = git+https://gitlab.gnome.org/GNOME/gedit.git
+	source = git+https://gitlab.gnome.org/GNOME/libgd.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gedit-git
+
