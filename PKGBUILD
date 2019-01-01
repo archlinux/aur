@@ -3,8 +3,8 @@
 
 _pkgname=net-snmp
 pkgname=net-snmp-lmsensors
-pkgver=5.7.3
-pkgrel=7
+pkgver=5.8
+pkgrel=1
 pkgdesc="A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6, with lm-sensors support"
 arch=('i686' 'x86_64')
 url="http://www.net-snmp.org/"
@@ -18,20 +18,16 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 options=('!emptydirs' '!makeflags')
 source=(http://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.gz{,.asc}
-        snmpd.service snmptrapd.service net-snmp-5.7.3-perl-5.24.patch fix-openssl-build-errors.patch)
-sha1sums=('97dc25077257680815de44e34128d365c76bd839'
+        snmpd.service snmptrapd.service)
+sha1sums=('78f70731df9dcdb13fe8f60eb7d80d7583da4d2c'
           'SKIP'
           '84e32c54d32e6b608747054e04a3ddfe6d6638cc'
-          '0244e91c7baa0abebfb5c0560e8ce04c966c5992'
-          '31beef2cb5ad9b4ac655f8ced53058ebf6e99ca9'
-          'b329ff700a3e20cdfcab4643a573ef976f9182c0')
+          '0244e91c7baa0abebfb5c0560e8ce04c966c5992')
 validpgpkeys=('8AAA779B597B405BBC329B6376CF47B8A77C5329'
               '27CAA4A32E371383A33ED0587D5F9576E0F81533')  # Net-SNMP Administrators
 
 prepare() {
   cd ${_pkgname}-${pkgver}
-  patch -p1 -i ../net-snmp-5.7.3-perl-5.24.patch
-  patch -p1 -i ../fix-openssl-build-errors.patch
   autoreconf -i
 }
 
