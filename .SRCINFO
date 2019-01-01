@@ -1,0 +1,26 @@
+pkgbase = gnome-calculator-git
+	pkgdesc = GNOME Scientific calculator
+	pkgver = 3.31.3.r3.gaf52f787
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Calculator
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = gnome
+	license = GPL
+	makedepends = yelp-tools
+	makedepends = vala
+	makedepends = git
+	makedepends = appstream-glib
+	makedepends = meson
+	depends = gtksourceview4
+	depends = libmpc
+	provides = gnome-calculator
+	conflicts = gnome-calculator
+	options = !emptydirs
+	source = git+https://gitlab.gnome.org/GNOME/gnome-calculator.git
+	sha256sums = SKIP
+
+pkgname = gnome-calculator-git
+
