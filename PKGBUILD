@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=pantheon-desktop-git
 pkgver=20180925
-pkgrel=13
+pkgrel=14
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
@@ -14,7 +14,7 @@ depends=(pantheon-core-git
   pantheon-calendar-git
   pantheon-camera-git
   pantheon-code-git
-  pantheon-default-settings-git
+  pantheon-qq-default-settings-git
   pantheon-geoclue2-agent-git
   pantheon-music-git
   pantheon-photos-git
