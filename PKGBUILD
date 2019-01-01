@@ -2,7 +2,7 @@
 
 pkgname=zork
 pkgver=1981
-pkgrel=1
+pkgrel=0
 pkgdesc="MDL Zork!"
 license=('none')
 arch=('any')
@@ -16,27 +16,41 @@ source=('http://simh.trailing-edge.com/games/zork-mdl.zip'
 md5sums=('7aa4b442c3e0a156b9517868a05231a4'
 	 'f159bc65e1d12463981af5bd934cbb2f')
 
-noextract=('zork-mdl.zip')
+# noextract=('zork-mdl.zip')
 
 package() {
     cd "${srcdir}"
 
-    unzip zork-mdl.zip -d foo
-    patch -d foo < confusion_mdlzork.diff
+    unzip zork-mdl.zip -d mdlzork
+    patch -d mdlzork < confusion_mdlzork.diff
 
-    mkdir foo/{MDL,MTRZORK}
+    cd mdlzork
 
-    ./zork.ex
+    mkdir MDL
+    mkdir MTRZORK
 
-    cp -r foo/* $pkgdir/usr/share/mdl-zork
+    PWD="/tmp"
+
+    echo 'spawn mdli' > zorkfile
+    echo 'expect "LISTENING"' >> zorkfile
+    echo 'send "<FLOAD \"run.mud\">\r"' >> zorkfile
+    echo 'expect "> "' >> zorkfile
+    echo 'send "save\r"' >> zorkfile
+    echo 'expect "Saving."' >> zorkfile
+
+    expect zorkfile && rm zorkfile
+
     install -dm755 $pkgdir/usr/share/mdl-zork
 
+    cd "${srcdir}"
+    cp -r mdlzork/* $pkgdir/usr/share/mdl-zork
+
     # required for save & restore 
+    # move to postinstall message
     chmod -R 777 $pkgdir/usr/share/mdl-zork/MTRZORK
 
     echo '#!/bin/sh' > $pkgname
     echo 'cd /usr/share/mdl-zork' >> $pkgname
     echo 'mdli -r MDL/MADADV.SAVE' >> $pkgname
-
     install -Dm755 $pkgname $pkgdir/usr/bin/$pkgname
 }

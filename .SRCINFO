@@ -1,13 +1,12 @@
 pkgbase = zork
 	pkgdesc = MDL Zork!
 	pkgver = 1981
-	pkgrel = 1
+	pkgrel = 0
 	arch = any
 	license = none
 	makedepends = expect
 	makedepends = unzip
 	depends = confusion
-	noextract = zork-mdl.zip
 	source = http://simh.trailing-edge.com/games/zork-mdl.zip
 	source = http://mirrors.ibiblio.org/interactive-fiction/programming/mdl/interpreters/confusion/confusion_mdlzork.tgz
 	md5sums = 7aa4b442c3e0a156b9517868a05231a4
