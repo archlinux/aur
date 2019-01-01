@@ -1,43 +1,67 @@
-#Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgname=nautilus-git
-pkgver=3.15.90.17991.be33b71
+pkgbase=nautilus-git
+pkgname=(nautilus-git libnautilus-extension-git)
+pkgver=3.30.0.r165.g20339a8bb
 pkgrel=1
-pkgdesc="GNOME file manager"
-arch=(i686 x86_64)
-url="http://live.gnome.org/Nautilus"
-license=('GPL')
-depends=('libexif' 'gnome-desktop' 'exempi' 'gvfs' 'desktop-file-utils' 'gnome-icon-theme' 'dconf' 'libtracker-sparql' 'libnotify' 'glib2-git' 'gtk3-git')
-makedepends=('git' 'intltool' 'gobject-introspection')
-conflicts=('nautilus' 'libnautilus-extension')
-provides=('nautilus' 'libnautilus-extension')
-options=(!makeflags !emptydirs)
-install=nautilus.install
-source=("git+git://git.gnome.org/nautilus" "nautilus.install")
-_gitname="nautilus"
+pkgdesc="Default file manager for GNOME"
+url="https://wiki.gnome.org/Apps/Nautilus"
+arch=(i686 x86_64 armv6h armv7h)
+license=(GPL)
+depends=(libgexiv2 gnome-desktop gvfs dconf tracker nautilus-sendto gnome-autoar)
+makedepends=(gobject-introspection packagekit git gtk-doc meson appstream-glib)
+options=(!emptydirs)
+source=("git+https://gitlab.gnome.org/GNOME/nautilus.git"
+        "git+https://gitlab.gnome.org/GNOME/libgd.git")
+sha256sums=('SKIP'
+            'SKIP')
 
-md5sums=("SKIP" "6e2d69ac9680bd51414d284081117036")
+prepare() {
+  cd nautilus
+
+  git submodule init
+  git config --local submodule.subprojects/libgd.url "$srcdir/libgd"
+  git submodule update
+}
 
 pkgver() {
-  cd $_gitname
-  version=$(grep AC_INIT configure.ac | grep AC_INIT configure.ac | sed 's/AC_INIT(\[nautilus\],\[//' | sed 's/\],\[http:\/\/bugzilla.gnome.org\/enter_bug.cgi?product=nautilus\])//')
-  hash=$(git log --pretty=format:'%h' -n 1)
-  revision=$(git rev-list --count HEAD)
-  echo $version.$revision.$hash  
+  cd nautilus
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_gitname
-   ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-static \
-      --libexecdir=/usr/lib/nautilus \
-      --disable-nst-extension \
-      --disable-update-mimedb \
-      --disable-schemas-compile
-   make
+  arch-meson nautilus build -D docs=true
+  ninja -C build
 }
 
-package() {
-  cd $_gitname
-	make DESTDIR=$pkgdir install
+check() {
+  meson test -C build
+}
+
+package_nautilus-git() {
+  depends+=(libnautilus-extension)
+  provides=(nautilus)
+  conflicts=(nautilus)
+  groups=(gnome)
+
+  DESTDIR="$pkgdir" meson install -C build
+
+### Split libnautilus-extension
+
+  mkdir -p libne/{lib,share}
+  mv "$pkgdir"/usr/include libne
+  mv "$pkgdir"/usr/lib/{girepository-1.0,libnautilus-extension*,pkgconfig} libne/lib
+  mv "$pkgdir"/usr/share/{gir-1.0,gtk-doc} libne/share
+}
+
+package_libnautilus-extension-git() {
+  pkgdesc="Library for extending the $pkgdesc"
+  depends=(gtk3)
+  provides=(libnautilus-extension)
+  conflicts=(libnautilus-extension)
+  
+  mv libne "$pkgdir/usr"
 }
