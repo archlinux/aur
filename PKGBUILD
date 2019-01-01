@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=cryptsetup-vault
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A cli tool and initcpio hook to unlock a cryptdevice via HashiCorp Vault unattended"
 arch=('any')
@@ -35,4 +35,4 @@ package() {
   install -Dm644 "initcpio/hooks/cryptsetupvault"      "$pkgdir/usr/lib/initcpio/hooks/cryptsetupvault"
   install -Dm644 "initcpio/install/cryptsetupvault"    "$pkgdir/usr/lib/initcpio/install/cryptsetupvault"
 }
-sha512sums=(173958b2bcfedbc6fd44ebd33c8ad81e80c959fbb601259cd11c2ce746e455487a512868d206416e915903ecbb9743a131c006879507ace039969fcc3e5dabf2)
+sha512sums=(0674534e18b6116210f19257a47af7de5c8a5f650880403771bfce56bdb0a7157e450b98aaff7ac4eca9ae040339971966eae4f123bf1d6fb8ec9cf1174e9dc7)
