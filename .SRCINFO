@@ -1,6 +1,6 @@
 pkgbase = physlock-issue-git
 	pkgdesc = lightweight linux console locking tool (with support for displaying /etc/issue)
-	pkgver = v11.r35.g15744f5
+	pkgver = v0.5.r58.gf9d9618
 	pkgrel = 1
 	url = https://github.com/hv15/physlock
 	arch = x86_64
