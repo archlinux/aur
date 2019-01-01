@@ -2,8 +2,8 @@
 # Contributor: Daniel Maslowski <info@orangecms.org>
 
 pkgname=fisher
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=("any")
 url="https://github.com/jorgebucaran/fisher"
@@ -16,7 +16,7 @@ source=(
     "https://github.com/jorgebucaran/fisher/archive/${pkgver}.tar.gz"
 )
 sha512sums=(
-    "05ac9ac51b2df4f0525dcac80a85c8e6b31ac12ea70da2e4bbe4a5a2cf22f472309fd97b0bbf0ae56f0673635fd4485712cfcc212e17022b801990b2c306e02a"
+    "8d2cc34d99a477dfa046fae594badacdc1c7e3667f5461bf16287a09acea97574903e6c9ad83dec1e1fc37cb5037c0d6702648bda8903c8349c83da5c1f5cf8b"
 )
 
 package() {
