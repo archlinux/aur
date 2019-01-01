@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=13
+pkgrel=14
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh/"
@@ -20,12 +20,12 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 #install="popcorntime.install"
 # Needed variables for sources downloads
-_commit_hash="commit=e2351a0cbaf2c5c186df150476860a1677c2450e"
+_commit_hash="commit=01d3b09080f458e3a2eb95506655e9d174922ef5"
 #_commit_hash="branch=master"
 _pkgname="popcorn-desktop"
 
 # NW.js version to use while building
-_nwjs="0.31.5" # e.g. 0.31.5
+_nwjs="0.35.3" # e.g. 0.31.5
 # Missing dependencies to install
 #_missing_deps="underscore@~1.8.3"
 
@@ -39,18 +39,16 @@ _bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
 source=(
     "${_pkgname}::git+https://github.com/popcorn-official/popcorn-desktop/#${_commit_hash}"
     "popcorntime.desktop"
-    "gulp-fixes.patch"
 )
 sha256sums=('SKIP'
-            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334'
-            'e1fc82b712babc4d4d7e07cce0af42100eb19b037c36fdb97c13324f6773846f')
+            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
 # Building the package
 prepare() {
     cd "${srcdir}/${_srcdir}"
 
-    msg2 "Apply Gulpfile fixes ..."
-    git apply "$srcdir/gulp-fixes.patch"
+    #msg2 "Apply Gulpfile fixes ..."
+    #git apply "$srcdir/gulp-fixes.patch"
 
     # Thanks to Eschwartz for the tip! yarn edition
     export YARN_CACHE_FOLDER="$srcdir/npm_cache"
