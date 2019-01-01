@@ -1,6 +1,6 @@
 pkgbase = lib32-intel-tbb
 	pkgdesc = High level abstract threading library (32-bit)
-	pkgver = 2018_20180618
+	pkgver = 2019.3
 	pkgrel = 1
 	url = http://threadingbuildingblocks.org
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lib32-intel-tbb
 	makedepends = gcc-multilib
 	depends = intel-tbb
 	depends = lib32-gcc-libs
-	source = https://github.com/01org/tbb/archive/2018_U5.tar.gz
-	sha256sums = c4c2896af527392496c5e01ef8579058a71b6eebbd695924cd138841c13f07be
+	source = intel-tbb-2019.3.tar.gz::https://github.com/01org/tbb/archive/2019_U3.tar.gz
+	sha256sums = b2244147bc8159cdd8f06a38afeb42f3237d3fc822555499d7ccfbd4b86f8ece
 
 pkgname = lib32-intel-tbb
 
