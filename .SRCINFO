@@ -1,7 +1,7 @@
 pkgbase = adjtimex
 	pkgdesc = Allows configuration of kernel time variables
 	pkgver = 1.29_10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rogers0/adjtimex
 	arch = x86_64
 	arch = arm
@@ -11,7 +11,9 @@ pkgbase = adjtimex
 	license = GPL2
 	depends = glibc
 	source = adjtimex-1.29-10.tar.gz::https://github.com/rogers0/adjtimex/archive/debian/1.29-10.tar.gz
+	source = Makefile.patch
 	md5sums = 56e5c86c5fd5ef95d18673b2ed18e3f7
+	md5sums = 49548b8d3ad85bdb8e62da2d7d61f8d9
 
 pkgname = adjtimex
 
