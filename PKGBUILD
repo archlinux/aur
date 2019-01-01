@@ -1,15 +1,16 @@
-# Maintainer: Gordon Schulz <gordon.schulz@gmail.com>
-# Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
+# Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
+# Contributor: Gordon Schulz <gordon.schulz@gmail.com>
+# Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=physlock-git
 _pkgname='physlock'
-pkgver=v11.r16.g4f131cc
-pkgrel=1
+pkgver=v11.r35.g15744f5
+pkgrel=2
 pkgdesc="lightweight linux console locking tool"
-arch=(i686 x86_64)
+arch=('x86_64')
 license=('GPL')
 url="https://github.com/muennich/physlock"
-depends=(pam)
+depends=('pam')
 makedepends=('git')
 conflicts=('physlock')
 source=("${_pkgname}::git+${url}.git")
