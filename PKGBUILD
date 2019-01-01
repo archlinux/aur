@@ -2,9 +2,9 @@
 
 _name=gzdoom
 pkgname=${_name}-git
-pkgver=g3.8pre+31+geecf3a203
+pkgver=g3.8pre+42+g99479d84b
 pkgrel=1
-pkgdesc='Advanced Doom source port with OpenGL support  (git version)'
+pkgdesc='Advanced Doom source port with OpenGL support (git version)'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
@@ -75,7 +75,6 @@ build() {
           -DASMJIT_FOUND=TRUE \
           -DASMJIT_INCLUDE_DIR=/usr/include \
           -DASMJIT_LIBRARIES=asmjit \
-          -DASMJIT_LIBRARY=asmjit \
           -DINSTALL_PATH=bin \
           -DINSTALL_PK3_PATH=share/$_name \
           .
