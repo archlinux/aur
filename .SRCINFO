@@ -1,6 +1,6 @@
 pkgbase = python2-smbus
 	pkgdesc = Python wrapper for SMBus access over i2c-dev.
-	pkgver = r328.22939a7
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/utils/i2c-tools/i2c-tools.git/about/
 	arch = i686
@@ -8,15 +8,11 @@ pkgbase = python2-smbus
 	arch = armv6h
 	arch = armv7h
 	license = GPL
-	makedepends = python2
-	makedepends = git
 	depends = python2
-	depends = i2c-tools-git
-	provides = python2-smbus
-	conflicts = python2-smbus
+	depends = i2c-tools
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/utils/i2c-tools/i2c-tools.git
-	md5sums = SKIP
+	source = https://mirrors.edge.kernel.org/pub/software/utils/i2c-tools/i2c-tools-4.1.tar.gz
+	sha256sums = ef8f77afc70e7dbfd1171bfeae87a8a7f10074829370ce8d9ccd585a014e0073
 
 pkgname = python2-smbus
 
