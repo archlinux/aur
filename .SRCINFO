@@ -1,6 +1,6 @@
 pkgbase = phoenicis
 	pkgdesc = Phoenicis PlayOnLinux allows you to install and use non-native applications on linux
-	pkgver = 5.0alpha2
+	pkgver = 5.0_alpha2
 	pkgrel = 1
 	url = https://www.phoenicis.org/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = phoenicis
 	depends = wine
 	depends = java-runtime-openjdk=11
 	options = !strip
-	source = phoenicis-5.0alpha2::https://github.com/PhoenicisOrg/phoenicis/archive/v5.0-alpha.2.tar.gz
+	source = phoenicis-5.0_alpha2::https://github.com/PhoenicisOrg/phoenicis/archive/v5.0-alpha.2.tar.gz
 	sha256sums = c88b8ca68c0c37f62aad4db44cef0047c09e8fd553455af15ef3265b0e3c575b
 
 pkgname = phoenicis

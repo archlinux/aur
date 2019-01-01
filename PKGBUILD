@@ -5,7 +5,7 @@
 
 pkgname=phoenicis
 _pkgver=5.0-alpha.2
-pkgver=5.0alpha2
+pkgver=5.0_alpha2
 pkgrel=1
 pkgdesc="Phoenicis PlayOnLinux allows you to install and use non-native applications on linux"
 arch=('any')
