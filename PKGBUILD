@@ -1,7 +1,7 @@
 # Maintainer: whight
 
 pkgname=plata-theme-slim
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines, built with most options disabled.'
 arch=('any')
