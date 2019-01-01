@@ -13,6 +13,7 @@ depends=(
 makedepends=(
   git
   cmake
+  python
 )
 optdepends=(
   'firefox: could be controlled with this tool'
