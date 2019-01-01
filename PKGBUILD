@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=sortpuz  
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Unscramble a square matrix of numbered tiles to put them in order."
 url="http://www.kornelix.com/sortpuz"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3')
 conflicts=('fixme')
 replaces=('fixme')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-sha256sums=('e7582d3ebdaba58d4c1e0f119abf055a1f33f2983d2a379542a85533d829c593')
+sha256sums=('cb618215bcf7faa3298ddd7df8375a1aa667cdbc162212b41f86c7db3bb6334a')
 
 build() {
   cd $pkgname
