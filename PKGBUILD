@@ -1,12 +1,12 @@
 # Maintainer: Austin Haedicke (austin.haedicke@gmail.com)
-# all PKGBUILDs maintained by me are available on 
-# GitHub at https://github.com/savagezen/pkgbuild
+# Telegram @savagezen / @savagezen_aur
+# GitHub https://github.com/savagezen/pkgbuild
 
 # Previous Maintainer : Sauyon Lee <sauyonl@sauyon.com>
 # Contributor : Martin Wimpress <code@flexion.org>
 
 pkgname=syncthing-git
-pkgver=v0.14.55.rc.1.r1.gbdcffe703
+pkgver=v1.0.0.r21.g69fe471df
 pkgrel=1
 pkgdesc="Open Source Continuous Replication / Cluster Synchronization Thing"
 url="http://syncthing.net/"
