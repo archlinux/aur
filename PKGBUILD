@@ -1,7 +1,7 @@
 # Maintainer: Timothy Brown <sysop@timb.us>
 pkgname=adjtimex
 pkgver=1.29_10
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows configuration of kernel time variables"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
  url="https://github.com/rogers0/adjtimex"

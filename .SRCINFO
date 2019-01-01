@@ -1,7 +1,7 @@
 pkgbase = adjtimex
 	pkgdesc = Allows configuration of kernel time variables
 	pkgver = 1.29_10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rogers0/adjtimex
 	arch = x86_64
 	arch = arm
