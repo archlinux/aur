@@ -16,15 +16,15 @@ conflicts=('dictd-gcide')
 install=${pkgname}.install
 source=('fixes.sed'
         'post_webfilter.sed'
-				'check.sed'
+        'check.sed'
         "http://ftp.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${_debver}.tar.xz"
         "ftp://ftp.gnu.org/gnu/gcide/gcide-${pkgver}.tar.xz"{,.sig})
 sha512sums=('6fc2caf86d96ac9a14f2676ca4455afe987f37933c03ac672b27cf2de7a4fc893457c97c7fa17dc280debfb4e1a3ab4adc5f7c68ee445605dc3c22665d32a445'
             'e7c6766b51ef92c4d8669394b6a71f8c4d7249ac63a1eb940f0a3017cb5ff6841f0f4bce7a60ffbcf180801d92b068db6ca46afd1dceac06a9c37c59dcddbfb3'
-						'1304bdce3776355fcd7827cebbf670ae34377bda78b04bf271ba10a25d92e33f6ec69644e168c30a6ec47808ebacc461de47d9494a5a2a5894d58c21be045973'
+            '1304bdce3776355fcd7827cebbf670ae34377bda78b04bf271ba10a25d92e33f6ec69644e168c30a6ec47808ebacc461de47d9494a5a2a5894d58c21be045973'
             'a10d46947c7d8b7050c44a12cfb38ed374e971063805e69897652cd8993dc5cf0ecc4d9a12680a8ced30d110d20bc84def75bd587166aa2cfa78529b9397aafe'
             '260e4e7bb30ac857255b9a1f696b18b77bbae06574bb0f0cc35b38be7399bf497d3c561ab0d4a4b7e8fc3127c6bf72efde8e1d4a28fa428f82178d0972f704b3'
-						'SKIP')
+            'SKIP')
 validpgpkeys=('325F650C4C2B6AD58807327A3602B07F55D0C732')
 
 prepare()
