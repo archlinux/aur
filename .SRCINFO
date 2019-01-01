@@ -1,6 +1,6 @@
 pkgbase = oomox-git
 	pkgdesc = Themix: GUI for generating different color variations of Arc, Materia, Oomox themes (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm), ArchDroid, Gnome-Colors, Numix icon themes, and terminal palettes. Have a hack for HiDPI in GTK2.
-	pkgver = 1.9.0.2.r55.g459ed93a
+	pkgver = 1.9.0.2.r85.g1b8e948c
 	pkgrel = 1
 	url = https://github.com/themix-project/oomox
 	arch = x86_64
@@ -26,6 +26,8 @@ pkgbase = oomox-git
 	depends = parallel
 	depends = optipng
 	depends = python-pillow
+	depends = python-pystache
+	depends = python-yaml
 	depends = resvg-git
 	optdepends = xorg-xrdb: for the `xresources` theme
 	optdepends = breeze-icons: more fallback icons
@@ -41,7 +43,7 @@ pkgbase = oomox-git
 	source = git+https://github.com/themix-project/archdroid-icon-theme.git#branch=master
 	source = git+https://github.com/themix-project/gnome-colors-icon-theme.git#branch=master
 	source = git+https://github.com/themix-project/oomoxify.git#branch=master
-	source = git+https://github.com/base16-builder/base16-builder#branch=master
+	source = git+https://github.com/themix-project/base16_mirror.git#branch=master
 	source = git+https://github.com/numixproject/numix-icon-theme.git#branch=master
 	source = git+https://github.com/numixproject/numix-folders.git#branch=master
 	md5sums = SKIP
