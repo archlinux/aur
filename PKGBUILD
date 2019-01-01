@@ -2,7 +2,7 @@
 
 _name=azure-cli
 pkgname=python-$_name
-pkgver=2.0.50
+pkgver=2.0.52
 pkgrel=1
 pkgdesc="Microsoft Azure Command-Line Tools"
 arch=('any')
@@ -11,13 +11,17 @@ license=('MIT')
 depends=('python-applicationinsights' 'python-argcomplete' 'python-azure'
          'python-colorama' 'python-humanfriendly' 'python-jmespath' 'python-knack'
          'python-pyopenssl' 'python-pytz' 'python-scp' 'python-sshtunnel' 
-         'python-tabulate' 'python-vsts-cd-manager' 'python-yaml')
+         'python-tabulate' 'python-vsts-cd-manager' 'python-wheel' 'python-yaml')
 makedepends=('git' 'python-setuptools')
-source=("https://github.com/Azure/azure-cli/archive/azure-cli-${pkgver}.tar.gz")
-sha256sums=('decbf866e5a4e22914ed177553b89c0b017bf459eacb16e703766e0eae7efa69')
+source=("https://github.com/Azure/azure-cli/archive/azure-cli-${pkgver}.tar.gz"
+				"wheel.patch")
+sha256sums=('4fe43b7eff3212aace6906505e1cec7cb06b7626da757d1890c6e1c5e82218bd'
+						'33450e8feaa7bb20a5e64ef628c88ddf998d88c302b6f85458c319f68c167dfd')
 
 build() {
   cd "$_name-$_name-$pkgver/src"
+
+	patch -p2 < ../../wheel.patch
 
   for d in azure-cli \
                azure-cli-core \
