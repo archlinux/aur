@@ -1,45 +1,54 @@
-# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 # Contributor: Kerrick Staley <mail@kerrickstaley.com>
 # Contributor: Thomas Schneider <maxmusterm@gmail.com>
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 # Contributor: Gabor Nyekhelyi (n0gabor) <n0gabor@vipmail.hu>
 
 pkgname=pitivi-git
-pkgver=0.98.7539.c7e8c309
+_srcname=pitivi
+pkgver=0.999.0.r437.gbb236284
 pkgrel=1
-pkgdesc='Pitivi allows users to easily edit audio/video projects based on the GStreamer framework (Git version)'
-arch=('any')
+pkgdesc='Editor for audio/video projects using the GStreamer framework (git version)'
+arch=('x86_64')
+url='http://www.pitivi.org/'
 license=('LGPL')
-depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gobject-introspection' 'python' 'python-gobject' 'goocanvas' 'gst-python' 'gst-editing-services' 'python-xdg' 'desktop-file-utils' 'hicolor-icon-theme' 'python-numpy' 'gst-transcoder-git' 'python-matplotlib' 'python-cairo' 'gst-validate')
-makedepends=('automake' 'libtool' 'intltool' 'itstool' 'pygobject-devel' 'gtk-doc' 'gnome-doc-utils' 'yelp-tools')
-optdepends=('python-pycanberra-git: sound notifications')
-install=pitivi-git.install
+depends=('gsound' 'gst-editing-services' 'gst-plugins-bad' 'gst-plugins-good' 'gst-python'
+         'gst-transcoder' 'gst-validate' 'gtk3' 'libnotify' 'python-cairo' 'python-gobject'
+         'python-matplotlib' 'python-numpy' 'gdk-pixbuf2' 'libpeas')
+optdepends=('frei0r-plugins: additional video effects, clip transformation feature'
+            'gst-libav: additional multimedia codecs'
+            'gst-plugins-ugly: additional multimedia codecs')
+makedepends=('git' 'gettext' 'itstool' 'meson')
 provides=('pitivi')
 conflicts=('pitivi')
-url='http://www.pitivi.org/'
-
-source=('git://git.gnome.org/pitivi')
-_gitname='pitivi'
-md5sums=('SKIP')
+source=('git+https://gitlab.gnome.org/GNOME/pitivi.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  
-  version=$(git describe --abbrev=0)
-  hash=$(git log --pretty=format:'%h' -n 1)
-  revision=$(git rev-list --count HEAD)
-  
-  echo $version.$revision.$hash  
+    cd "$_srcname"
+    
+    local _version
+    local _revision
+    local _shorthash
+    
+    _version="$(git tag | grep '[[0-9]*\.]*[0-9]*' | sort -r | head -n1)"
+    _revision="$(git rev-list "${_version}..HEAD" --count)"
+    _shorthash="$(git rev-parse --short HEAD)"
+    
+    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
 
 build() {
-  cd $_gitname
-  ./configure --prefix=/usr
-  make
+    cd "$_srcname"
+    
+    arch-meson . build
+    
+    ninja -C build
 }
 
 package() {
-  cd $_gitname
-  make DESTDIR="$pkgdir" install
-  install -D -m644 mesonbuild/data/pitivi.desktop "$pkgdir/usr/share/applications/pitivi.desktop"
+    cd "$_srcname"
+    
+    DESTDIR="$pkgdir" ninja -C build install
 }
