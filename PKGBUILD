@@ -17,7 +17,7 @@ else
 fi
 install="quake4-demo.install"
 source=("${pkgname}.sh" "${pkgname}-dedicated.sh" \
-    'http://download.fileplanet.com/ftp1/112005/quake4-linux-1.0-demo.x86.run')
+    'http://slashbunny.com/aur/quake4/quake4-linux-1.0-demo.x86.run')
 sha256sums=('6f0620a70380214bc57977b27e0d3584f48443e396faa136fabcb8f712b3b581'
             '57c10f7c4771c28ca2e24e5dd6671d01d93e6a5af8df99c42648b54748f7bfdd'
             '69e69e8cb22dd1496bcc98dc63f244d35c516c2e770aba64c72275827814bc73')

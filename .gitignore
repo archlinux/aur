@@ -3,3 +3,4 @@ pkg/
 *.pkg.tar.xz
 *.pkg.tar
 *.src.tar.gz
+quake4-linux-1.0-demo.x86.run
