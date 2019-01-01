@@ -4,7 +4,7 @@
 
 pkgname=python-trezor
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python 3 library for communicating with the TREZOR Bitcoin hardware wallet'
 arch=('any')
 depends=('protobuf'
@@ -16,7 +16,8 @@ depends=('protobuf'
          'python-pyblake2'
          'python-protobuf'
          'python-requests'
-         'python-construct')
+         'python-construct'
+         'python-libusb1')
 makedepends=('python-setuptools')
 url='https://github.com/trezor/python-trezor'
 license=('LGPL3')
