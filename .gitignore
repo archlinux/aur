@@ -1,7 +1,9 @@
 *.xz
+*.xz.sig
 src
 pkg
 xbmpwall
 bitmap-walls
+
 
 
