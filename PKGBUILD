@@ -2,15 +2,15 @@
 
 _name=knack
 pkgname=python-$_name
-pkgver=0.4.1
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A Python command line interface framework"
 arch=('any')
 url="https://github.com/Microsoft/knack"
 license=('MIT')
 makedepends=('python-setuptools')
-source=("https://github.com/Microsoft/knack/archive/${pkgver}.tar.gz")
-sha256sums=('b60f72707b4ec9a2c9b79a6176e32b174ec40c400722f9aa9a653b2f60ace605')
+source=("https://github.com/Microsoft/knack/archive/v${pkgver}.tar.gz")
+sha256sums=('4445040efd93b21055b604b781355516f4c35a569788d3f156bcb449740fc752')
 
 build() {
   cd "$_name-$pkgver"
