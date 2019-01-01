@@ -8,7 +8,7 @@ pkgname=(qemu-patched qemu-patched-headless qemu-patched-arch-extra qemu-patched
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
@@ -20,6 +20,7 @@ source=("$url/download/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         qemu-ga.service
         65-kvm.rules
         allow_elf64.patch
+        pa-fixes.patch
         cpu-pinning.patch::https://github.com/saveriomiroddi/qemu-pinning/commit/cf5294579e4b43e9bea7d681154dc1737e56e323.patch
         pcie-enhanced-link-speed-and-width.patch::https://patchwork.kernel.org/series/43129/mbox/)
 sha256sums=('6a0508df079a0a33c2487ca936a56c12122f105b8a96a44374704bef6c69abfc'
@@ -27,6 +28,7 @@ sha256sums=('6a0508df079a0a33c2487ca936a56c12122f105b8a96a44374704bef6c69abfc'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
             'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
             '59751f1ed26ea61b2a37ebee4be6979e584a450b611282138a0893aa9173e2e4'
+            '848b1766b3ea6e75f0e1c69a1e964131f3884bf31e940f3bf7cf7e0737bcd0da'
             'a6e9c046555aca07a234ab2ec75223bfb3fb156eab37331a418b7de66d25331e'
             '49f697aa8858692b6a0bc7b43fe569f83b7bcc1b5976634e08c202eccbc35e67')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
@@ -46,7 +48,7 @@ prepare() {
   patch -p1 < ../allow_elf64.patch
   # FS#60141
   patch -p1 < ../cpu-pinning.patch
-  #patch -p1 < ../pa-fixes.patch
+  patch -p1 < ../pa-fixes.patch
   patch -p1 < ../pcie-enhanced-link-speed-and-width.patch
 }
 
