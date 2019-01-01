@@ -1,4 +1,4 @@
-# Maintainer: Alexandros Theodotou <alex at alextee dot online>
+# Maintainer: Alexandros Theodotou <alex at alextee dot org>
 
 pkgname=jack-stdio
 pkgver=1.4
