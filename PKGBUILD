@@ -22,7 +22,7 @@ sha256sums=("c4fb0fe2b8d2d3bd5e72763e80a8ae05b7d44dbac8f8e3bb18ef0161c7266926"
 prepare() {
     cd $srcdir/$_pkgname-$pkgver
     patch -p1 -i $srcdir/st-yutna-0.8.1.diff
-    patch -p1 -i $srcdir/st-no_bold_colors.diff
+    patch -p1 -i $srcdir/st-no_bold_colors-0.8.1.diff
     patch -p1 -i $srcdir/st-solarized-dark-0.8.1.diff
 }
 
