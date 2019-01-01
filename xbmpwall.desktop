@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=XBmpWall
+#Icon=xbmpwall
+Exec=bash -c "/usr/bin/xbmpwall /usr/share/xbmpwall/bitmaps/{bw-bgnd/*.xbm,patterns/*.xbm}"
+Terminal=false
+MimeType=
+Categories=Utility
+Name[es_ES]=XBmpWall
+Comment[es_ES]=Administrador de bitmaps (.xbm) para xsetroot
+Name[en_US]=XBmpWall
+Comment[en_US]=X11 bitmaps file manager (.xbm) for xsetroot
