@@ -1,6 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=texinfo-git
-pkgver=r8408.7ed10a17c
+pkgver=r8427.0b65757c6c
 pkgrel=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
@@ -9,11 +10,11 @@ license=('GPL')
 groups=('base' 'base-devel')
 depends=('coreutils')
 makedepends=('git' 'help2man')
-provides=('texinfo')
-conflicts=('texinfo')
+provides=('texinfo' 'texinfo-js')
+conflicts=('texinfo' 'texinfo-js')
 source=("$pkgname::git://git.savannah.gnu.org/texinfo.git"
-	texinfo-install.hook
-        texinfo-remove.hook)
+	texinfo-install.hook::https://git.archlinux.org/svntogit/packages.git/plain/trunk/texinfo-install.hook?h=packages/texinfo
+	texinfo-remove.hook::https://git.archlinux.org/svntogit/packages.git/plain/trunk/texinfo-remove.hook?h=packages/texinfo)
 sha256sums=('SKIP'
             '66ab7eab5ecdd7757081a743f94e6f4d2e783b61db5024344450748bf1bf8eb9'
             '7300f03ac56e32564fb508b0dd07839d2428a422dcf13fd3246863f7ccb1965e')
@@ -30,10 +31,17 @@ build() {
   ./autogen.sh 
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make
+  cd js
+  automake --add-missing
+  autoreconf -f
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
   cd $pkgname
+  make DESTDIR="$pkgdir/" install
+  cd js
   make DESTDIR="$pkgdir/" install
   install -dm755 "$pkgdir"/usr/share/libalpm/hooks/
   cd "$srcdir"
