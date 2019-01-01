@@ -24,6 +24,5 @@ build() {
 
 package() {
 	cd "$pkgname-debian-${pkgver//_/-}"
-        #install -d ${pkgdir}/usr/{bin,share/man/man8}
 	make prefix="$pkgdir/usr" bindir="$pkgdir/usr/bin" install
 }
