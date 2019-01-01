@@ -1,7 +1,7 @@
 pkgbase = pdfchain
 	pkgdesc = A graphical user interface for the PDF toolkit
 	pkgver = 0.4.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://pdfchain.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pdfchain
 	depends = gtkmm3
 	depends = pdftk
 	options = !emptydirs
-	source = http://sourceforge.net/projects/pdfchain/files/pdfchain-0.4.4.2/pdfchain-0.4.4.2.tar.gz
+	source = https://sourceforge.net/projects/pdfchain/files/pdfchain-0.4.4.2/pdfchain-0.4.4.2.tar.gz
 	source = pdfchain-fix-crash-on-startup.patch
 	source = pdfchain-fix-desktop-file.patch
 	source = pdfchain-fix-spelling.patch

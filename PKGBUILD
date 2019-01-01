@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Marcos Heredia <chelqo@gmail.com>
 # Contributor: yury <polek_yury@ukr.net>
 # Contributor: Carlos Maddela <e7appew@gmail.com> (Ubuntu)
@@ -7,7 +7,7 @@
 
 pkgname=pdfchain
 pkgver=0.4.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A graphical user interface for the PDF toolkit'
 arch=('i686' 'x86_64')
 url='http://pdfchain.sourceforge.net/'
@@ -19,7 +19,7 @@ depends=(
         'pdftk'
 )
 options=('!emptydirs')
-source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("https://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'pdfchain-fix-crash-on-startup.patch'
         'pdfchain-fix-desktop-file.patch'
         'pdfchain-fix-spelling.patch')
