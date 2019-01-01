@@ -1,7 +1,7 @@
 pkgbase = lxdm-theme-elementary
 	pkgdesc = elementaryOS theme for LXDM
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andrew-wja/lxdm-theme-elementary
 	arch = any
 	license = CC

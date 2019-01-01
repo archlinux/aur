@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=lxdm-theme-elementary
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="elementaryOS theme for LXDM"
 arch=('any')
 license=('CC')
@@ -26,5 +26,5 @@ check() {
 
 package() {
   mkdir -p ${pkgdir}/usr/share/lxdm/themes/elementary
-  cp ${srcdir}/lxdm-theme-elementary/* ${pkgdir}/usr/share/lxdm/themes/elementary
+  cp ${srcdir}/lxdm-theme-elementary-master/* ${pkgdir}/usr/share/lxdm/themes/elementary
 }
