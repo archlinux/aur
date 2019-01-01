@@ -1,10 +1,11 @@
 pkgbase = ddclient
 	pkgdesc = Update dynamic DNS entries for accounts on many dynamic DNS services
 	pkgver = 3.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ddclient/ddclient
 	arch = any
 	license = GPL2
+	depends = perl-io-socket-inet6
 	depends = perl-io-socket-ssl
 	depends = perl-digest-sha1
 	depends = net-tools
