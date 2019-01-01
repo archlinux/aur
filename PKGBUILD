@@ -1,7 +1,7 @@
 # Maintainer: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-2.8-bin
-pkgver=2.80.181210.168a6a4bfc1
-pkgrel=2
+pkgver=2.80.190101.4d795cee4938
+pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('i686' 'x86_64')
 url="https://www.blender.org"
@@ -40,7 +40,6 @@ build() {
 	cd "${_full%.tar.bz2}"
 	sed -i 's/=blender/=blender-2.8/' blender.desktop
 	sed -i 's/=Blender/=Blender-2.8/' blender.desktop
-	rm icons/blender_icon_source.svg
 	for f in icons/*/apps/blender.* ; do chmod 644 $f && mv $f "${f%.*}-2.8.${f#*.}" ; done
 	echo -n '[Thumbnailer Entry]
 TryExec=blender-2.8-thumbnailer.py
