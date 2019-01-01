@@ -1,0 +1,17 @@
+pkgbase = cryptsetup-vault
+	pkgdesc = A cli tool and initcpio hook to unlock a cryptdevice via HashiCorp Vault unattended
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://gitlab.com/T4cC0re/cryptsetup-vault
+	arch = any
+	license = Apache-2.0
+	makedepends = go>=1.11.1
+	depends = cryptsetup
+	depends = mkinitcpio-netconf
+	depends = ca-certificates-utils
+	noextract = cryptsetup-vault-1.0.2.tar.gz
+	source = cryptsetup-vault-1.0.2.tar.gz::https://gitlab.com/T4cC0re/cryptsetup-vault/-/archive/master/cryptsetup-vault-v1.0.2.tar.gz
+	sha512sums = 5f115f1dfb2f192983376a530661c9f636ad3e5ac4f175a6d61192a3a2e4295b94ca53a63bfd6c2d3e3ba4a4b935f1f9bd96e6fa6e85f6184d7867fad534872d
+
+pkgname = cryptsetup-vault
+
