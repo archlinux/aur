@@ -10,7 +10,7 @@
 
 pkgname="bunq-desktop-bin"
 pkgver="0.9.5"
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop implementation for the bunq API"
 url="https://github.com/BunqCommunity/BunqDesktop"
 provides=('bunq-desktop')
@@ -37,8 +37,8 @@ makedepens=(
 )
 
 source=(
-	"https://github.com/bunqCommunity/bunqDesktop/releases/download/${pkgver}/bunqDesktop-linux-unpacked.tar.gz"
-	"https://github.com/bunqCommunity/bunqDesktop/raw/${pkgver}/build/icons/512x512.png"
+	bunqDesktop-linux-unpacked-${pkgver}.tar.gz::"https://github.com/bunqCommunity/bunqDesktop/releases/download/${pkgver}/bunqDesktop-linux-unpacked.tar.gz"
+	${pkgver}-512x512.png::"https://github.com/bunqCommunity/bunqDesktop/raw/${pkgver}/build/icons/512x512.png"
 	"$pkgname.desktop"
 )
 
@@ -60,7 +60,7 @@ package() {
 		$pkgdir/opt/$pkgname
 
 	cp\
-		512x512.png\
+		${pkgver}-512x512.png\
 		$pkgdir/usr/share/pixmaps/bunq.png
 	
 	pushd $pkgdir/usr/bin
@@ -75,4 +75,3 @@ package() {
 		$pkgname.desktop\
 		--dir $pkgdir/usr/share/applications/
 }
-
