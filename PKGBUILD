@@ -4,12 +4,12 @@
 
 pkgname=gedit-git
 pkgver=3.31.3.r8.g141e7be53
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Text Editor"
 url="https://wiki.gnome.org/Apps/Gedit"
 arch=(x86_64)
 license=(GPL)
-depends=(gtksourceview3 gsettings-desktop-schemas libpeas gspell python-gobject dconf)
+depends=(gtksourceview4 libpeas gspell python-gobject)
 makedepends=(yelp-tools intltool vala gobject-introspection gnome-common git gtk-doc)
 provides=(gedit)
 conflicts=(gedit)
