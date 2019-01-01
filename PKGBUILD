@@ -35,4 +35,4 @@ package() {
   install -Dm644 "initcpio/hooks/cryptsetupvault"      "$pkgdir/usr/lib/initcpio/hooks/cryptsetupvault"
   install -Dm644 "initcpio/install/cryptsetupvault"    "$pkgdir/usr/lib/initcpio/install/cryptsetupvault"
 }
-sha512sums=(5f115f1dfb2f192983376a530661c9f636ad3e5ac4f175a6d61192a3a2e4295b94ca53a63bfd6c2d3e3ba4a4b935f1f9bd96e6fa6e85f6184d7867fad534872d)
+sha512sums=(173958b2bcfedbc6fd44ebd33c8ad81e80c959fbb601259cd11c2ce746e455487a512868d206416e915903ecbb9743a131c006879507ace039969fcc3e5dabf2)
