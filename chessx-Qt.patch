@@ -1,0 +1,33 @@
+diff -ura chessx.orig/src/dialogs/preferences.cpp chessx.new/src/dialogs/preferences.cpp
+--- chessx.orig/src/dialogs/preferences.cpp	2019-01-01 17:02:27.012213336 +0200
++++ chessx.new/src/dialogs/preferences.cpp	2019-01-01 17:23:28.316451679 +0200
+@@ -21,6 +21,7 @@
+ #include "engineoptiondialog.h"
+ #include "downloadmanager.h"
+ 
++#include <QAction>
+ #include <QCheckBox>
+ #include <QColorDialog>
+ #include <QComboBox>
+diff -ura chessx.orig/src/dialogs/savedialog.cpp chessx.new/src/dialogs/savedialog.cpp
+--- chessx.orig/src/dialogs/savedialog.cpp	2019-01-01 17:02:27.012213336 +0200
++++ chessx.new/src/dialogs/savedialog.cpp	2019-01-01 17:26:24.387577852 +0200
+@@ -22,6 +22,7 @@
+ #include "settings.h"
+ #include "tags.h"
+ 
++#include <QButtonGroup>
+ #include <QLineEdit>
+ #include <QCompleter>
+ 
+diff -ura chessx.orig/src/gui/gamewindow.cpp chessx.new/src/gui/gamewindow.cpp
+--- chessx.orig/src/gui/gamewindow.cpp	2019-01-01 17:02:27.015546706 +0200
++++ chessx.new/src/gui/gamewindow.cpp	2019-01-01 17:28:33.158507706 +0200
+@@ -8,6 +8,7 @@
+ #include "nag.h"
+ #include "settings.h"
+ 
++#include <QAction>
+ #include <QToolButton>
+ 
+ #if defined(_MSC_VER) && defined(_DEBUG)
