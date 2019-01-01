@@ -3,7 +3,7 @@
 pkgname=rocketchat-desktop
 pkgver=2.14.6
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=3
+pkgrel=4
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/RocketChat/Rocket.Chat.Elec
         fix-dictionaries.patch
         rocketchat-desktop.desktop)
 sha512sums=('58b427e9745fa8b3866d1ea9c144c700faed7838c0fba6f070592dfdaea7e6509e6e53f5983494431a7976db919b65ad798b7b5cacac998e049239bb41ede0b8'
-            '8b6ddebe3e65d959c535c046b07291eb049a80996a28eccab1e45830dc85af8e62a8a52597fe53b038a14e96bbbc870ea9cd1555f3b50b580f9fdd6b0fd52886'
+            '2b39f5728c7d7aff2f59a568c1e3c63816c72d1055743e7bb233aafe6370524e835d58995097480deaed864ac22aea54b5c450689eb18bee0bed0bc733810792'
             '31e0b1d7d9a5fefa4ad4d186df2b3eb8849d7dee9dd3fa14fff6741006ef31191575a23ba62a86f53cf9fc692d138db6a380e2ad860077bc3d854c5a9083b716'
             '796a2a56a1facc2519d65955bb39d78733c13b5993c4b03cd2af11b83aa9c6132c0fbf9e7160146c6c87bc91cb04c4e66932fe891449d031c787284b5ce9d72a'
             'ed0bc8884ea3c7ca50ae8f6aef415aecfac89f958939c1ccb6c86480a7210ead0df2fe0548e465fc1dd559436bae9db779d408e8a754e986cc8a976cd6590878'
@@ -51,6 +51,5 @@ package() {
     cd "$srcdir/$_srcname"
     install -Dm644 "build/icons/512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "dist/$_distname/resources/app.asar" "$pkgdir/usr/lib/$pkgname/app.asar"
-    #cp -r dist/$_distname/resources/dictionaries "$pkgdir/usr/lib/$pkgname/dictionaries"
+    install -Dm644 "dist/$_distname/resources/app.asar" "$pkgdir/usr/lib/$pkgname.asar"
 }
