@@ -1,5 +1,5 @@
 # 
-#   Copyright (C) 2018 CASM Organization <https://casm-lang.org>
+#   Copyright (C) 2018-2019 CASM Organization <https://casm-lang.org>
 #   All rights reserved.
 # 
 #   Developed by: Philipp Paulweber
@@ -69,7 +69,7 @@ and the used license of
 
 #+begin_src
 
-Copyright (C) 2018 CASM Organization <https://casm-lang.org>
+Copyright (C) 2018-2019 CASM Organization <https://casm-lang.org>
 All rights reserved.
 
 Developed by: Philipp Paulweber
