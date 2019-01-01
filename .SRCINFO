@@ -1,0 +1,23 @@
+pkgbase = gpick-git
+	pkgdesc = Advanced color picker written in C++ using GTK+ toolkit
+	pkgver = 0.2.6rc1.r41.g3b17cf9
+	pkgrel = 1
+	url = http://www.gpick.org/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	makedepends = boost
+	makedepends = cmake
+	makedepends = ragel
+	depends = boost-libs
+	depends = gtk3
+	depends = lua
+	provides = gpick
+	conflicts = gpick
+	source = git+https://github.com/thezbyg/gpick.git
+	sha256sums = SKIP
+
+pkgname = gpick-git
+
