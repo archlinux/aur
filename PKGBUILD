@@ -2,14 +2,14 @@
 
 pkgname=mystuff
 pkgver=3.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Create a custom menu in a popup window"
 url="http://www.kornelix.net/mystuff/mystuff.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtk3')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-sha256sums=('ae807e18a2088deec1496d652ea8fada616ce1d7ec6ef3e5858d0639de3d79a9')
+sha256sums=('112cb3788d0730867cad55295d5129e046f0cf29bcb634de87f5f50fc09b1cc2')
 options=('!emptydirs')
 
 prepare() {
