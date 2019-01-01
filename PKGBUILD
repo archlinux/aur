@@ -2,9 +2,9 @@
 
 pkgname=python-sphinx_materialdesign_theme
 pkgver=0.1.11
-pkgrel=1
-pkgdesc="Asynchronous Python API for building Telegram bots"
-url="https://github.com/szastupov/aiotg"
+pkgrel=2
+pkgdesc="Material Design HTML Theme for Sphinx"
+url="https://myyasuda.github.io/sphinx_materialdesign_theme/"
 depends=('python-sphinx')
 makedepends=('python-setuptools')
 license=('MIT')
