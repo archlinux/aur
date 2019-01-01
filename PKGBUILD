@@ -21,21 +21,20 @@ depends=('perl' 'perl-glib-object-introspection'
   'perl-gtk3'
   'glew' 'dblatex' 'vtk' 'hdf5')
 
-source=('https://gitlab.com/jojo_boulix/auto-multiple-choice/-/archive/1.4.0-rc2/auto-multiple-choice-1.4.0-rc2.zip'
-'amc.patch' 'automultiplechoice.sty')  
+source=('https://download.auto-multiple-choice.net/auto-multiple-choice_1.4.0_precomp.tar.gz'
+'amc.patch')  
 
-md5sums=('0584e43f9605720206e0385451d26da5'
-    '3901536f4e2d2d3baf3b5db157443bd9'
-    '9e3717f2d521a075109c8c65003d4d09')
+md5sums=('636aeb140829646ba3f223c69d75bd17'
+         'b7ad3eacff70a99bbd99afae617a5bb3')
+
 build() {
   #cd "$srcdir"/$pkgbase-$pkgver
-  cd auto-multiple-choice-1.4.0-rc2
+  cd auto-multiple-choice-1.4.0
   patch -p 1 < $srcdir"/amc.patch"
   make all_precomp || return 1
 }
 
 package_auto-multiple-choice(){
-  install='amc.install'
-  cd auto-multiple-choice-1.4.0-rc2
-  make DESTDIR="$pkgdir/" STY=$srcdir/automultiplechoice.sty install
+  cd auto-multiple-choice-1.4.0
+  make PERLDIR=/usr/share/perl5/vendor_perl DESTDIR="$pkgdir/" install
 }
