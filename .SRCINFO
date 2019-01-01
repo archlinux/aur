@@ -1,0 +1,19 @@
+pkgbase = radian
+	pkgdesc = A 21 century R console
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/randy3k/radian
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = r>=3.4.0
+	depends = python-lineedit>=0.1.1
+	depends = python-rchitect>=0.2.3
+	depends = python-six
+	replaces = rtichoke
+	source = https://github.com/randy3k/radian/archive/v0.3.1.tar.gz
+	sha256sums = efd76d311dec437fa6363409fc068ed4eb442992f2779516f23e45956707959e
+
+pkgname = radian
+
