@@ -1,17 +1,16 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=compsize-git
-pkgver=v1.0.r5.g01ad3d0
+pkgver=v1.2.r0.g7b91a8be5d0b
 pkgrel=1
 pkgdesc="Btrfs: find compression type/ratio on a file or set of files"
 arch=('any')
 url="https://github.com/kilobyte/compsize"
 license=('GPL2')
-#depends=('systemd' 'bash' 'schedtool')
 makedepends=('gcc' 'git')
 source=("$pkgname"::'git://github.com/kilobyte/compsize.git#branch=master')
+conflicts=('compsize')
 md5sums=('SKIP')
-#install=$pkgname.install
 
 pkgver() {
   cd "$pkgname"
