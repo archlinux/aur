@@ -10,10 +10,17 @@ url="https://bitbucket.org/dhellmann/virtualenvwrapper"
 license=('MIT')
 depends=('python-virtualenv' 'python2-virtualenv' 'python-virtualenv-clone'
          'python-stevedore')
+makedepends=('python-pbr')
 conflicts=('python2-virtualenvwrapper')
 replaces=('python2-virtualenvwrapper')
 source=(https://pypi.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-$pkgver.tar.gz)
 sha256sums=('18d8e4c500c4c4ee794f704e050cf2bbb492537532a4521d1047e7dd1ee4e374')
+
+build() {
+  cd "$srcdir/virtualenvwrapper-$pkgver"
+
+  python3 setup.py build
+}
 
 package() {
   cd "$srcdir/virtualenvwrapper-$pkgver"
