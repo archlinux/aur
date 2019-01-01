@@ -13,7 +13,7 @@ pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
-makedepends=('libglvnd' 'linux' 'linux-headers>=4.19' 'linux-headers<4.20')
+makedepends=('libglvnd' 'linux' 'linux-headers>=4.20' 'linux-headers<4.21')
 license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
@@ -74,7 +74,7 @@ build() {
 
 package_nvidia-vulkan() {
     pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
-    depends=('linux>=4.19' 'linux<4.20' "nvidia-vulkan-utils=${pkgver}" 'libglvnd')
+    depends=('linux>=4.20' 'linux<4.21' "nvidia-vulkan-utils=${pkgver}" 'libglvnd')
     provides=("nvidia=$pkgver")
     conflicts+=('nvidia')
 

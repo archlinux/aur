@@ -7,8 +7,8 @@ pkgbase = nvidia-vulkan
 	license = custom
 	makedepends = libglvnd
 	makedepends = linux
-	makedepends = linux-headers>=4.19
-	makedepends = linux-headers<4.20
+	makedepends = linux-headers>=4.20
+	makedepends = linux-headers<4.21
 	options = !strip
 	source = NVIDIA-Linux-x86_64-415.22.01.run::https://developer.nvidia.com/vulkan-beta-4152201-linux
 	source = nvidia-drm-outputclass.conf
@@ -21,8 +21,8 @@ pkgbase = nvidia-vulkan
 
 pkgname = nvidia-vulkan
 	pkgdesc = NVIDIA drivers for linux (vulkan developer branch)
-	depends = linux>=4.19
-	depends = linux<4.20
+	depends = linux>=4.20
+	depends = linux<4.21
 	depends = nvidia-vulkan-utils=415.22.01
 	depends = libglvnd
 	provides = nvidia=415.22.01
