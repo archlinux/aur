@@ -1,11 +1,11 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Daniel Maslowski <info@orangecms.org>
 
-_branch=3.2.0
+_branch=master
 
 pkgname=fisher-git
-pkgver=3.1.1.r6.g8da5f95
-pkgrel=2
+pkgver=3.2.1.r4.g2c7197b
+pkgrel=1
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=("any")
 url="https://github.com/jorgebucaran/fisher"
