@@ -2,7 +2,7 @@
 
 pkgbase=xbmpwall-git
 pkgname=$pkgbase
-pkgver=0.2
+pkgver=1.1
 pkgrel=1
 
 _gitname=xbmpwall
