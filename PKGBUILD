@@ -4,15 +4,15 @@
 # Contributor: nkoizu <nkoizu@gmail.com>
 
 pkgname=gauche
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 url='https://practical-scheme.net/gauche/'
 pkgdesc='R7RS Scheme implementation (includes gosh)'
-depends=('libatomic_ops' 'slib')
-license=('BSD')
-arch=('x86_64')
+depends=(libatomic_ops slib)
+license=(BSD)
+arch=(x86_64)
 source=("https://downloads.sourceforge.net/$pkgname/Gauche-$pkgver.tgz")
-sha256sums=('cd8928630d63b8043842a0526fbfb8f5f3c720b0d0ace81851e266ddfde69caf')
+sha256sums=('2d33bd942e3fc2f2dcc8e5217c9130c885a0fd1cb11a1856e619a83a23f336a0')
 
 build() {
   cd "Gauche-$pkgver"
