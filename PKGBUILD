@@ -1,6 +1,6 @@
 # Maintainer: Finn Behrens <finn@dsgvo.fail>
 pkgname=rifo-git 
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="rifo sripts"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://git.kloenk.de/finn/Rifo"
 license=('GPL3')
 groups=()
 depends=(fzf jq pass termite)
-optdepends=('xdotool: add support for inserting password')
+optdepends=('xdotool: add support for inserting password' 'oath-toolkit: add support for totp')
 makedepends=('git')
 provides=("${pkgname%-VCS}" 'rifopass')
 conflicts=("${pkgname%-VCS}")

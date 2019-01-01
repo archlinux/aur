@@ -1,6 +1,6 @@
 pkgbase = rifo-git
 	pkgdesc = rifo sripts
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://git.kloenk.de/finn/Rifo
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = rifo-git
 	depends = pass
 	depends = termite
 	optdepends = xdotool: add support for inserting password
+	optdepends = oath-toolkit: add support for totp
 	provides = rifo-git
 	provides = rifopass
 	conflicts = rifo-git
