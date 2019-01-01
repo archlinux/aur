@@ -1,5 +1,5 @@
 pkgname=cargo-outofdate-git
-pkgver=0.2.1.8.gf7de463
+pkgver=0.2.1.15.g99b1658
 pkgrel=1
 pkgdesc="Check outdated cargo dependencies"
 arch=('x86_64' 'i686')
