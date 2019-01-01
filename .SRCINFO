@@ -1,0 +1,15 @@
+pkgbase = lxdm-theme-elementary
+	pkgdesc = elementaryOS theme for LXDM
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/andrew-wja/lxdm-theme-elementary
+	arch = any
+	license = CC
+	source = https://github.com/andrew-wja/lxdm-theme-elementary/archive/master.zip
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = lxdm-theme-elementary
+
