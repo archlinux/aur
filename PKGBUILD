@@ -1,5 +1,5 @@
 pkgname=kdiagram-git
-pkgver=0.89.0ebda26
+pkgver=2.6.1.r21.g47b29c2
 pkgrel=1
 pkgdesc="Powerful libraries (KChart, KGantt) for creating business diagrams. (GIT version)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd kdiagram
-  echo "0.$(git rev-list --count HEAD).$(git describe --always)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
