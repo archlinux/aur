@@ -3,7 +3,7 @@
 _name=XSStrike
 
 pkgname=xsstrike
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Advanced XSS Detection Suite"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python>=3.4' 'python-tld' 'python-fuzzywuzzy' 'python-requests' 'python-selenium')
 options=(!emptydirs)
 source=("https://github.com/s0md3v/XSStrike/archive/${pkgver}.tar.gz")
-sha256sums=('aed86d3d1e71e245978a5bd5d1bb8e4fe78ef41d8cbd9c113126fbf7e32f12ca')
+sha256sums=('b7838494dcf376e55e6e4cf7bb9237ff8ac5e4b497a27eaee884a8a7cba63884')
 
 prepare() {
   rm -rf "${pkgdir}/usr/lib/${pkgname}"
