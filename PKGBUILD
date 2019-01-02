@@ -1,5 +1,5 @@
 pkgname=nanocurrency-git
-pkgver=15.0RC.r53.g5eb3f6c2
+pkgver=16.0RC1.r279.g9526f649
 pkgrel=1
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
 arch=('i686' 'x86_64')
@@ -11,14 +11,14 @@ provides=(raiblocks nanocurrency)
 conflicts=("raiblocks" "raiblocks-git" "raiblocks-node-git" "nanocurrency-node-git")
 install=install
 pkgver() {
-  cd "raiblocks"
+  cd "nano-node"
   git describe --long --tags | sed 's/^[vV]//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 source=(nanowallet.desktop
   nanowallet128.png
   nano-node.service
-  git+https://github.com/nanocurrency/raiblocks.git
+  git+https://github.com/nanocurrency/nano-node.git
   git+https://github.com/weidai11/cryptopp.git
   "git+https://github.com/nanocurrency/lmdb.git#branch=lmdb_0_9_21"
   git+https://github.com/miniupnp/miniupnp.git
@@ -34,7 +34,7 @@ sha256sums=('6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91'
             'SKIP')
 
 prepare() {
-  cd "$srcdir/raiblocks"
+  cd "$srcdir/nano-node"
   
   git submodule init
 
@@ -45,7 +45,7 @@ prepare() {
 
   git submodule update --init --recursive
 
-  _flags=( "-D RAIBLOCKS_GUI=ON" )
+  _flags=( "-D NANO_GUI=ON" )
   
   if grep -q avx2 /proc/cpuinfo; then
     echo "using AVX2 optimizations"
@@ -64,19 +64,19 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/raiblocks"
+  cd "$srcdir/nano-node"
+  make nano_node
   make nano_wallet
-  make rai_node
-  #make rai_lib #this only builds a static lib now, which we don't want
+  #make rai_lib #thisonly gets us a static lib now, which we don't want
 }
 
 package() {
-  cd "$srcdir/raiblocks"
+  cd "$srcdir/nano-node"
 
   install -Dm755 nano_wallet "$pkgdir"/usr/bin/nano_wallet
   ln -s /usr/bin/nano_wallet "$pkgdir"/usr/bin/rai_wallet
-  install -Dm755 rai_node "$pkgdir"/usr/bin/rai_node
-  ln -s /usr/bin/rai_node "$pkgdir"/usr/bin/nano_node
+  install -Dm755 nano_node "$pkgdir"/usr/bin/nano_node
+  ln -s /usr/bin/nano_node "$pkgdir"/usr/bin/rai_node
   #install -Dm644 librai_lib.so "$pkgdir"/usr/lib/librai_lib.so
   #ln -s /usr/lib/librai_lib.so "$pkgdir"/usr/lib/libnano_lib.so
 
