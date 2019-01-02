@@ -1,0 +1,13 @@
+pkgbase = python-asciitree
+	pkgdesc = Draws +-- ASCII Trees.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://github.com/mbr/asciitree
+	arch = any
+	license = MIT
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/asciitree/asciitree-0.3.3.tar.gz
+	sha256sums = 4aa4b9b649f85e3fcb343363d97564aa1fb62e249677f2e18a96765145cc0f6e
+
+pkgname = python-asciitree
+
