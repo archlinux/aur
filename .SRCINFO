@@ -1,15 +1,13 @@
 pkgbase = xdg-desktop-portal-kde-git
 	pkgdesc = A backend implementation for xdg-desktop-portal that is using Qt/KDE.
-	pkgver = 20161222.94fc1af
+	pkgver = 20181223.9f0c704
 	pkgrel = 1
 	url = https://github.com/KDE/xdg-desktop-portal-kde
 	install = install
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	depends = flatpak
 	depends = xdg-desktop-portal
 	provides = xdg-desktop-portal-kde
 	conflicts = xdg-desktop-portal-kde
