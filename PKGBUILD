@@ -1,4 +1,5 @@
 # Maintainer: Michal Lisowski <lisu@riseup.net>
+# Contributor: Harry <wang.haoda@protonmail.com>
 
 pkgname=bitmask
 pkgver=0.10.2
