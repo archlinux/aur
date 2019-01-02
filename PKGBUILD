@@ -6,13 +6,13 @@
 
 pkgname=nextcloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.5.1.r24.gac367b21b
+pkgver=2.5.1.r29.g0a14f6eeb
 pkgrel=1
 pkgdesc="Nextloud client for linux"
 arch=('i686' 'x86_64')
 url="https://nextcloud.com/"
 license=('GPL2')
-depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils')
+depends=('qtkeychain' 'qt5-webengine' 'hicolor-icon-theme' 'xdg-utils')
 optdepends=(
   'python2-nautilus: integration with Nautilus'
   'nemo-python: integration with Nemo'
