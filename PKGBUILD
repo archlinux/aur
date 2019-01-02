@@ -4,7 +4,7 @@
 pkgname=gradio
 _pkgname=Gradio
 pkgver=7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A GTK3 app for finding and listening to internet radio stations'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -12,6 +12,7 @@ url="https://github.com/haecker-felix/gradio"
 depends=('desktop-file-utils' 'gstreamer' 'gst-plugins-ugly' 'gst-plugins-bad' 
           'gtk3' 'gobject-introspection' 'gst-plugins-base' 'gst-plugins-good' 
           'json-glib' 'libgee' 'sqlite3' 'libsoup')
+optdepends=('gst-libav: H.264 video streaming')
 makedepends=('gnome-common' 'meson' 'gettext' 'appstream-glib' 'vala' 'yelp-tools')
 options=('!emptydirs')
 source=("${url}/archive/v${pkgver}.tar.gz")
