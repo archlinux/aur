@@ -9,8 +9,5 @@
 pkg/
 src/
 
-# KDE directory file
-.directory
-
 # Source file
-ubuntu
+*.deb
