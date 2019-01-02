@@ -1,0 +1,17 @@
+pkgbase = fsharp-fslexyacc
+	pkgdesc = Tools for FsLex/FsYacc lexer/parser generation tools
+	pkgver = 7.0.6
+	pkgrel = 1
+	url = https://fsprojects.github.io/FsLexYacc/
+	arch = any
+	license = apache
+	makedepends = nuget
+	depends = mono
+	options = !strip
+	source = fslex
+	source = fsyacc
+	sha512sums = f03037fa6819ae8c83d0e244a0ce7bb1587116b69b6918fb93705a482e3ccb5393a8733e91548d557da6fc329c175d9452d7512ca47f4fd41c224ce3a247aea4
+	sha512sums = 82628945f3e187477546339bdfcee6b6325d1df884dcb4d4b0c9060fb1289c2f283cbc0a08a1830489207e14b7f4e9d41be2e1ce001c3a089206e9c3a98ea577
+
+pkgname = fsharp-fslexyacc
+

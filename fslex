@@ -1,0 +1,2 @@
+#!/bin/sh
+mono /usr/lib/mono/fsharp/fslex.exe "$@"
