@@ -1,7 +1,7 @@
 pkgbase = vsxu
 	pkgdesc = A free to use program that lets you create and perform real-time audio visual presets.
-	pkgver = 0.6.2
-	pkgrel = 2
+	pkgver = 0.6.3
+	pkgrel = 1
 	url = http://www.vsxu.com/
 	arch = i686
 	arch = x86_64
@@ -14,14 +14,13 @@ pkgbase = vsxu
 	makedepends = pulseaudio
 	depends = desktop-file-utils
 	depends = glew
-	depends = libpng
 	depends = opencv
 	depends = sdl2
 	depends = xdg-utils
 	optdepends = alsa-lib: ALSA support.
 	optdepends = jack: JACK support
 	optdepends = pulseaudio: PulseAudio support
-	source = git+https://github.com/vovoid/vsxu#commit=5722f904c77c7130460d9dd566e4ac776163923e
+	source = git+https://github.com/vovoid/vsxu#commit=5404800f9309f852b8fec6e40e90cb11fa0bbbf9
 	source = dependencies::git+https://github.com/vovoid/vsxu-dependencies.git
 	source = cal3d::git+https://github.com/vovoid/cal3d.git
 	source = freetype2::git+https://github.com/vovoid/freetype2.git
