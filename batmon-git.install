@@ -1,0 +1,4 @@
+post_install () {
+    echo "[!] All the logs will be generated at /var/log/batmon.log!"
+    echo "[!] To start it please run systemctl start batmond"
+}
