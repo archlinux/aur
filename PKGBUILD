@@ -2,14 +2,14 @@
 
 pkgname=miniterm-git
 _pkgname=miniterm
-pkgver=v1.2.0.0.gc4d2ae2
+pkgver=v1.4.0.0.gc4d2ae2
 pkgrel=1
 pkgdesc="Lightweight VTE terminal emulator with colorscheme support (fork of tinyterm)"
 arch=('i386' 'x86_64')
 url="https://github.com/laelath/miniterm"
 license=('MIT')
 depends=('vte3' 'glib2')
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=('git+https://github.com/laelath/miniterm.git')
 md5sums=('SKIP')
 
@@ -20,6 +20,9 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Release ..
   make
 }
 
