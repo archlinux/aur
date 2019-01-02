@@ -1,6 +1,6 @@
 # Maintainer: Robin Krahl <robin.krahl@ireas.org>
 pkgname=nitrocli
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Command-line interface for Nitrokey devices"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/d-e-s-o/nitrocli"
 license=('GPL3')
 depends=('hidapi')
 makedepends=('cargo')
-source=("$pkgname.tar.gz"::https://crates.io/api/v1/crates/$pkgname/$pkgver/download)
-sha512sums=('43880b6cb9bb152a1179d02b4290ff6c4dbbdae3c5cb46c0c5cdc382d2a5d8322de97d94b1842b6e93bba97bc3d451bc8946da6d6c0b66fb7d9ed8936df2c263')
+source=("$pkgname-$pkgver.tar.gz"::https://crates.io/api/v1/crates/$pkgname/$pkgver/download)
+sha512sums=('aca356201c29ed670595d2d637edc2ce15df0a59a6843c68632b702fc92dd8df85cf6e17eed6d5d95e8dd2e83e1f15c3691f2e9bd1aeb0fc908c2217af7e74ae')
 
 build() {
 	cd "$pkgname-$pkgver"
