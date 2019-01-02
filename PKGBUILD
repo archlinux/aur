@@ -11,15 +11,14 @@ depends=('faac' 'flac' 'lame' 'python-flask' 'python-gobject' 'python-psutil'
          'sox' 'vorbis-tools')
 makedepends=('python-setuptools')
 optdepends=('alsa-utils: to cast with ALSA'
-            'ffmpeg: for ffmpeg backend and/or to cast with ALSA'
+            'ffmpeg: for ffmpeg backend (which is also needed to cast with ALSA)'
             'gstreamer: for gstreamer backend'
-            'pavucontrol: to cast with PulseAudio'
-            'pulseaudio: to cast with PulseAudio'
-            'python-pychromecast: Chromecast support'
-            'python-pyqt5: system tray menu support'
-            'python-soco: Sonos support'
-            'youtube-dl: YouTube support')
-options=('!strip')
+            'pavucontrol: for parec backend or just to cast with PulseAudio'
+            'pulseaudio: for parec backend or just to cast with PulseAudio'
+            'python-pychromecast: to cast to Chromecast devices'
+            'python-pyqt5: for system tray menu support'
+            'python-soco: to cast to Sonos devices'
+            'youtube-dl: for --youtube')
 source=("https://github.com/muammar/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         'pychromecast_optional.patch::https://github.com/muammar/mkchromecast/commit/0070f9f2b505f1c5a1b6d63324ff337f2de09860.patch')
 sha512sums=('ee66450768f3221500f198bf618120f02b93108797209ca0d6c2be9f882eee36753d3e1038354e51b5d76d130c12d193c7d152b33f80776cb225347a3743f376'
@@ -27,7 +26,7 @@ sha512sums=('ee66450768f3221500f198bf618120f02b93108797209ca0d6c2be9f882eee36753
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -Np1 -i ../pychromecast_optional.patch
+  patch -Np1 --no-backup-if-mismatch -i ../pychromecast_optional.patch
 }
 
 package() {
