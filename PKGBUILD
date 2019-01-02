@@ -1,7 +1,7 @@
 # Maintainer: Markus Richter <mqus at disroot dot org>
 
 pkgname=bitwarden_rs-vault-git
-pkgver=v2.5.0.r22.g1602c0ac
+pkgver=v2.7.1.r16.g62b01294
 pkgrel=1
 pkgdesc="Integrates the Vault Web-Interface into bitwarden_rs."
 arch=('any')
@@ -38,9 +38,6 @@ build() {
 	cd "$srcdir/web"
 	npm install --cache "${srcdir}/npm-cache" 
 	npm run sub:init --cache "${srcdir}/npm-cache" 
-	# fix https://github.com/gulpjs/gulp/issues/2246
-	npm install natives@1.1.6 --cache "${srcdir}/npm-cache"
-	
 	npm run dist --cache "${srcdir}/npm-cache" 
 }
 

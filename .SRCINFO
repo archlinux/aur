@@ -1,6 +1,6 @@
 pkgbase = bitwarden_rs-vault-git
 	pkgdesc = Integrates the Vault Web-Interface into bitwarden_rs.
-	pkgver = v2.5.0.r22.g1602c0ac
+	pkgver = v2.7.1.r16.g62b01294
 	pkgrel = 1
 	url = https://github.com/bitwarden/web
 	install = bitwarden_rs-vault.install
