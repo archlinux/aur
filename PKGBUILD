@@ -1,3 +1,4 @@
+# Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-atari-py
 _pkgname=atari-py
 pkgver=0.1.7
