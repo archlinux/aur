@@ -2,12 +2,13 @@
 # Contributor: Daniel Landau <daniel.landau@iki.fi>
 
 pkgname=thunderbird-conversations-git
-pkgver=r1802.fd13cf9
+pkgver=r1814.0cc6d5a
 pkgrel=2
 pkgdesc="GMail-like conversation view for Thunderbird"
 arch=('any')
 url="https://github.com/protz/GMail-Conversation-View"
 license=('MPL' 'GPL2' 'LGPL2.1')
+depends=('thunderbird')
 makedepends=('git' 'npm' 'zip')
 source=("$pkgname"::'git://github.com/protz/GMail-Conversation-View.git')
 md5sums=('SKIP')

@@ -1,6 +1,6 @@
 pkgbase = thunderbird-conversations-git
 	pkgdesc = GMail-like conversation view for Thunderbird
-	pkgver = r1802.fd13cf9
+	pkgver = r1814.0cc6d5a
 	pkgrel = 2
 	url = https://github.com/protz/GMail-Conversation-View
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = thunderbird-conversations-git
 	makedepends = git
 	makedepends = npm
 	makedepends = zip
+	depends = thunderbird
 	source = thunderbird-conversations-git::git://github.com/protz/GMail-Conversation-View.git
 	md5sums = SKIP
 
