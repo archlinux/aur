@@ -2,8 +2,8 @@
 
 pkgname=nzb-monkey
 _pkgname=nzbmonkey
-pkgver=v0.2.2
-pkgrel=2
+pkgver=v0.2.3
+pkgrel=1
 pkgdesc="A Reference implementation of how to handle a NZBLNK-URI, with support for SABnzbd, NZBGet and Synology Download Station"
 url="https://nzblnk.info/nzb-monkey/"
 arch=("any")
@@ -13,7 +13,7 @@ depends=("python" "python-pyperclip" "python-requests" "python-configobj"
 install="${pkgname}.install"
 source=("https://github.com/nzblnk/${pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux.tbz2"
         'konsole.patch')
-sha256sums=('c776e6a3c9e900c67cb96e9697a69b4e210a24d2e312cd89c97bdbac0e3035f1'
+sha256sums=('8edcb25c502e2d17d3aff980bdf53b150330fe6e0c247a221aa14113fd491433'
             '27c46e273704071aa0cf744b3d83fcc3194308f61b16eafbca9f62f0c565a4c3')
 
 prepare() {
