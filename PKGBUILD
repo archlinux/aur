@@ -2,9 +2,9 @@
 _pkgname=${pkgname%-src}
 pkgname=xidel-src
 pkgver=0.9.8
-pkgrel=2
+pkgrel=3
 pkgdesc='A command line tool to download and extract data from html/xml pages'
-arch=('x86_64' 'i686' 'armv7l' 'arch64')
+arch=('x86_64' 'i686' 'armv7h' 'arch64')
 url='http://videlibri.sourceforge.net/xidel.html'
 license=('GPL')
 optdepends=('openssl: for HTTPS connections')
