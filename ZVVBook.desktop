@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Utility
+Exec=zvvbook
+Icon=/usr/share/ZVVBook/images/book_cover.png
+Name=ZVVBook
+Name[en_US]=ZVVBook
+Type=Application
+X-Deepin-Vendor=user-custom
