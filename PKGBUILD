@@ -5,11 +5,11 @@
 
 pkgname=ffmpeg-git-nc
 _pkgname=ffmpeg-git
-pkgver=4.1.r91949.g6304268e39
+pkgver=4.2.r92899.g1dcb5b7dca
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; Nonconflicting git version)'
 arch=('i686' 'x86_64')
-url='http://www.ffmpeg.org/'
+url='https://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
 depends=(
     # official repositories:
@@ -18,16 +18,16 @@ depends=(
         'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
         'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm'
         'libiec61883' 'lensfun' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus'
-        'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr'
+        'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump' 'snappy' 'libsoxr'
         'speex' 'srt' 'libssh' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
         'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so'
         'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'libxv' 'libx11'
         'libxext' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'codec2' 'davs2-git' 'flite1-patched' 'libilbc' 'kvazaar'
-        'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
-        'rockchip-mpp'
+        'chromaprint-fftw' 'codec2' 'dav1d' 'davs2' 'flite1-patched' 'libilbc'
+        'libklvanc-git' 'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc'
+        'xavs' 'xavs2-git' 'ndi-sdk' 'libmysofa' 'rockchip-mpp'
 )
 depends_x86_64=(
     # official repositories:
@@ -46,27 +46,23 @@ makedepends_x86_64=(
         'vmaf'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so')
-source=("$_pkgname"::'git://source.ffmpeg.org/ffmpeg.git'
+          'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
+          'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git')
+source=($_pkgname::'git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
-prepare() {
-    cd "$_pkgname"
-    
-    # strictly specifying nvcc path is needed if package is installing
-    # cuda for the first time (nvcc path will be in $PATH only after relogin)
-    sed -i "s|^nvcc_default=.*|nvcc_default='/opt/cuda/bin/nvcc'|" configure
-}
-
 pkgver() {
     cd "$_pkgname"
     
-    local _version="$(  git describe  --tags --long      | awk -F'-' '{ printf $1 }' | sed 's/^n//')"
-    local _revision="$( git describe  --tags --match 'N' | awk -F'-' '{ printf $2 }')"
-    local _shorthash="$(git rev-parse --short HEAD)"
+    local _version
+    local _revision
+    local _shorthash
+    
+    _version="$(  git describe  --tags --long      | awk -F'-' '{ printf $1 }' | sed 's/^n//')"
+    _revision="$( git describe  --tags --match 'N' | awk -F'-' '{ printf $2 }')"
+    _shorthash="$(git rev-parse --short HEAD)"
     
     printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
@@ -95,7 +91,7 @@ build() {
         fi
     fi
     
-    msg2 'Running ffmpeg configure script. Please wait...'
+    printf '%s\n' '  -> Running ffmpeg configure script...'
     
     ./configure \
         --prefix='/usr' \
@@ -112,6 +108,7 @@ build() {
         --enable-nonfree \
         --enable-shared \
         --disable-static \
+        --disable-stripping \
         --enable-gray \
         --enable-avresample \
         \
@@ -133,6 +130,7 @@ build() {
         --enable-libcelt \
         --enable-libcdio \
         --enable-libcodec2 \
+        --enable-libdav1d \
         --enable-libdavs2 \
         --enable-libdc1394 \
         --enable-libfdk-aac \
@@ -145,6 +143,7 @@ build() {
         --enable-libiec61883 \
         --enable-libilbc \
         --enable-libjack \
+        --enable-libklvanc \
         --enable-libkvazaar \
         --enable-liblensfun \
         --enable-libmodplug \
@@ -161,7 +160,7 @@ build() {
         --enable-librubberband \
         --enable-librtmp  \
         --enable-libshine \
-        --enable-libsmbclient \
+        --disable-libsmbclient \
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
@@ -183,6 +182,7 @@ build() {
         --enable-libx264 \
         --enable-libx265 \
         --enable-libxavs \
+        --enable-libxavs2 \
         --enable-libxcb \
         --enable-libxcb-shm \
         --enable-libxcb-xfixes \
