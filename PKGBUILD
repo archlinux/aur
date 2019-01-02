@@ -1,7 +1,7 @@
 # Maintainer: Andrea Ratto <andrearatto_liste@yahoo.it>
 
 pkgname=awslogs
-pkgver=0.10
+pkgver=0.11.0
 pkgrel=0
 pkgdesc="AWSLogs client"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python>=3'
          'python-dateutil>=2.4.0')
 makedepends=('python-wheel')
 source=("https://github.com/jorgebastida/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('f4a042f1f107f018b02d002c400f2679900c330424e7cb4ded544313cff6a46fe6c3cf579fea04319ad75504d4f157b5bc735414be64cd05d9d63d377b315181')
+sha512sums=('30118717535ef46acc387473a0dffc61169e234b290555097db4d0deb0cfedba23a18147c9c40bc1f983f5ac18a051f057ec6aaa13a1ca8d7caa23e3c53a3e1b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
