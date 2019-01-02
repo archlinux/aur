@@ -60,8 +60,8 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-_major=4.19
-pkgver=4.19.13
+_major=4.20
+pkgver=4.20
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
 pkgrel=1
@@ -71,8 +71,8 @@ license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
 options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
-_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.19"
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.19"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 _bfq_sq_mq_path="bfq-sq-mq"
@@ -100,13 +100,13 @@ source=(# mainline kernel patches
          # standard config files for mkinitcpio ramdisk
         'linux.preset')
 
-sha256sums=('f50a77fc40e13fc406791346fa91926394205874cd50246c7c2374006bacc0c2'
+sha256sums=('ad0823183522e743972382df0aa08fb5ae3077f662b125f1e599b0b2aaa12438'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             '8761152216a204b0bbf2bd581abc3f5cdf851cec8b807316528b72a7b552ef12'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '1bc55e0c12f1ea9bf4b823fc78b91e12cf1cf1972f778484fbd5fa0d9e8264f2'
-            'b4af416fab79b5ef8c8c62647d704658ce60d83a9c106e9f6aa9113077a5893c'
+            'f7cc42c0ea00aec3debc72a62a1f29f9a267bcba3decb5becb47da5d4741ac79'
+            '7833a57f95cd62b4f4d5cbb9c057551c65586f44ec4b63f2073cc6c5d6ba0dc9'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37'
