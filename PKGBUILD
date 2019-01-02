@@ -1,4 +1,5 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
+# Contributor: Det <nimetonmaili g-mail>
 
 _pkgname=jdk
 pkgname=jdk10
@@ -31,11 +32,17 @@ backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-#source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
-source=('http://enos.itcollege.ee/~jpoial/allalaadimised/java10/jdk-10.0.2_linux-x64_bin.tar.gz'
-        'jconsole.desktop'
-        'jmc.desktop'
-        'policytool.desktop')
+source=(
+  #"http://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
+  "file://${_pkgname}-${pkgver}_linux-x64_bin.tar.gz"
+  'jconsole.desktop'
+  'jmc.desktop'
+  'policytool.desktop'
+)
+md5sums=('1cc0fa1d7f059978ae22a688dabcdc0b'
+         'ed1e8801db16b149247819c68fda97b1'
+         '0a3c4277ac6aec5c633af98d54986fa9'
+         'da29ac8f2d6b813ada985f6ee898005e')
 sha256sums=('6633c20d53c50c20835364d0f3e172e0cbbce78fff81867488f22a6298fa372b'
             '7fd81eced792aa76dac697b3daaa5d2699b15e8c6768ed4690a331e9f616b034'
             'bef07cdacef3e25137ac6ec394f09bb683c3ceb30b894f4b0c5ea40b0f87e4d5'
