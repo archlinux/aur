@@ -2,7 +2,7 @@
 
 _name=gzdoom
 pkgname=${_name}-legacy-git
-pkgver=g3.7.0_legacy
+pkgver=g3.7.1_legacy
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support (git legacy version)'
 arch=('i686' 'x86_64')
@@ -74,7 +74,6 @@ build() {
           -DASMJIT_FOUND=TRUE \
           -DASMJIT_INCLUDE_DIR=/usr/include \
           -DASMJIT_LIBRARIES=asmjit \
-          -DASMJIT_LIBRARY=asmjit \
           -DINSTALL_PATH=bin \
           -DINSTALL_PK3_PATH=share/$_name \
           .
