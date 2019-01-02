@@ -1,3 +1,4 @@
+# Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-gym
 _pkgname=gym
 pkgver=0.10.9
