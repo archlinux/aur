@@ -1,0 +1,5 @@
+*.pkg.tar
+psalm.phar
+/src/
+/pkg/
+update.sh
