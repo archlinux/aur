@@ -1,7 +1,7 @@
 pkgbase = miniterm-git
 	pkgdesc = Lightweight VTE terminal emulator with colorscheme support (fork of tinyterm)
 	pkgver = v1.4.0.0.g8b2fb99
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/laelath/miniterm
 	arch = i386
 	arch = x86_64
