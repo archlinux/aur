@@ -3,7 +3,7 @@
 
 pkgname=golden-cheetah-dev
 pkgver=3.5
-pkgrel=1811
+pkgrel=1901
 _devversion=1810
 pkgdesc="Cycling Power Analysis Software. Development version."
 arch=('i686' 'x86_64')

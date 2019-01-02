@@ -1,7 +1,7 @@
 pkgbase = golden-cheetah-dev
 	pkgdesc = Cycling Power Analysis Software. Development version.
 	pkgver = 3.5
-	pkgrel = 1811
+	pkgrel = 1901
 	url = http://www.goldencheetah.org/
 	arch = i686
 	arch = x86_64
