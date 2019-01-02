@@ -1,13 +1,13 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
 pkgname=quassel-core-lighter-git
 pkgver=0.14.pre.r110.g7c0eb011
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt-based distributed IRC client (core only) - minimal dependencies"
 url='https://quassel-irc.org'
 license=('GPL')
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 depends=('qt5-script')
-makedepends=('git' 'extra-cmake-modules' 'ninja' 'qt5-script' 'boost')
+makedepends=('git' 'extra-cmake-modules' 'ninja' 'boost')
 optdepends=('qca: encryption support'
             'libldap: LDAP support'
             'qt5-tools: translations support')
