@@ -1,19 +1,19 @@
 # Maintainer: Yunhui Fu <yhfudev@gmail.com>
 
 USE_DEV=1
-VER_RELEASE=3.28
+VER_RELEASE=3.29
 
 pkgname=ns3-hg
-pkgver=r13737
+pkgver=r13896
 pkgrel=1
 
 if [ "${USE_DEV}" = "0" ]; then
 pkgname=ns3
-pkgver=${VER_RELEASE}
+pkgver=r13896
 fi
 
-pkgdesc='Full package for the ns3 -- a Discrete-event network simulator for Internet systems'
-arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' )
+pkgdesc='Full package of ns3 -- a Discrete-event network simulator for Internet systems'
+arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' 'aarch64' )
 url='http://www.nsnam.org/'
 license=('GPL')
 depends=(
