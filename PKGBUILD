@@ -2,11 +2,11 @@
 # Contributors: Det, Achilleas Pipinellis, speed145a, Schnouki
 
 _launcher_ver=6
-_url_id="6oST9BpB92Lcdtj"
+_url_id="wtfekcXpKMkz4RP"
 
 pkgname=ungoogled-chromium-bin
-pkgver=70.0.3538.110
-pkgrel=1
+pkgver=71.0.3578.98
+pkgrel=2
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -23,7 +23,7 @@ optdepends=("gnome-keyring: for storing passwords in GNOME keyring"
 source=("ungoogled-chromium_${pkgver}-${pkgrel}_linux.tar.xz::https://cloud.woelkli.com/s/${_url_id}/download"
         "chromium-launcher-${_launcher_ver}.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v${_launcher_ver}.tar.gz"
         "chromium.desktop")
-sha256sums=("cda9460452a093ec506459944f2c77b50aa5b9e4fc0d1b64d1db1396344a5dc8"
+sha256sums=("d1f6cc7be0835cd2de9c1c337f5c048b9db79268f572d19461c4c20d82d41c2c"
             "04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1"
             "15898507b5bda1e56e303c7e7f54b80d6363e8f77321d29067eef15f4c5deeb5")
 
