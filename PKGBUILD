@@ -1,7 +1,7 @@
 # Maintainer: Dan Printzell <me@vild.io>
 
 pkgname=('serve-d')
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Wraps dcd, dfmt and dscanner to one unified environment managed by dub"
 arch=('x86_64')
