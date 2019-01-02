@@ -1,14 +1,13 @@
-# $Id$
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Sébastien Luttringer
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgbase=virtualbox-modules-lts
 pkgname=('virtualbox-host-modules-lts' 'virtualbox-guest-modules-lts')
-pkgver=5.2.22
-pkgrel=3
+pkgver=6.0.0
+pkgrel=2
 _linux_major=4
-_linux_minor=14
+_linux_minor=19
 arch=('x86_64' 'i686')
 url='http://virtualbox.org'
 license=('GPL')
@@ -51,7 +50,7 @@ package_virtualbox-guest-modules-lts(){
              'virtualbox-guest-dkms')
   provides=('VIRTUALBOX-GUEST-MODULES-LTS')
 
-  cd "/var/lib/dkms/vboxguest/${pkgver}_OSE/$_kernver/$CARCH/module"
+  cd "/var/lib/dkms/vboxsf/${pkgver}_OSE/$_kernver/$CARCH/module"
   install -Dt "$pkgdir/usr/lib/modules/$_extramodules" -m644 *
 
   # compress each module individually
