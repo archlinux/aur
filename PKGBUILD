@@ -6,7 +6,7 @@
 pkgname=home-assistant
 pkgdesc='Open-source home automation platform running on Python 3'
 pkgver=0.84.6
-pkgrel=1
+pkgrel=2
 url="https://home-assistant.io/"
 license=('APACHE')
 arch=('any')
@@ -59,7 +59,7 @@ prepare() {
   # TODO remove in future versions https://github.com/home-assistant/home-assistant/issues/9525
   replace '==' '>=' setup.py
   
-  echo Patching for home-assistant/home-assistant#11906
+  # Patches for https://github.com/home-assistant/home-assistant/issues/11906
   sed -i 's/from yarl import unquote/from yarl import URL/' homeassistant/components/http/static.py
   sed -i "s/unquote(request.match_info\['filename'\])/URL(request.match_info['filename'], encoded=True).path/" homeassistant/components/http/static.py
 }
