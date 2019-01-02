@@ -5,32 +5,27 @@
 
 pkgname=mpv-git-nc
 _pkgname=mpv-git
-pkgver=0.29.0.r30.g6eb59fea2f
+pkgver=0.29.1.r107.gd6d6da4711
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL3')
-url='http://mpv.io/'
+url='https://mpv.io/'
 depends=(
     # official repositories:
         'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
-        'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader'
+        'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc'
         
     # AUR:
-        'ffmpeg-git-nc' 'mujs' 'rsound' 'shaderc-git' 'crossc'
+        'ffmpeg-git-nc' 'mujs' 'rsound' 'crossc'
 )
+makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
+             'wayland-protocols' 'ffnvcodec-headers')
 optdepends=('youtube-dl: for video-sharing websites playback'
             'nvidia-utils: for hardware accelerated video decoding with CUDA')
-makedepends=(
-    # official repositories:
-        'git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
-        'wayland-protocols'
-    # AUR:
-        'ffnvcodec-headers'
-)
 provides=('mpv')
 conflicts=('mpv' 'mpv-git' 'mpv-full-git')
 options=('!emptydirs')
@@ -39,9 +34,14 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    local _version="$(git tag | sort -Vr | head -n1 | sed 's/^v//')"
-    local _revision="$(git rev-list v"${_version}"..HEAD --count)"
-    local _shorthash="$(git rev-parse --short HEAD)"
+    
+    local _version
+    local _revision
+    local _shorthash
+    
+    _version="$(git tag | sort -Vr | head -n1 | sed 's/^v//')"
+    _revision="$(git rev-list v"${_version}"..HEAD --count)"
+    _shorthash="$(git rev-parse --short HEAD)"
     
     printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
@@ -76,6 +76,7 @@ build() {
         --disable-clang-database \
         \
         --disable-android \
+        --disable-swift \
         --disable-uwp \
         --disable-win32-internal-pthreads \
         --enable-iconv \
@@ -166,7 +167,7 @@ build() {
         --disable-apple-remote \
         --disable-macos-touchbar \
         --disable-macos-cocoa-cb
-    
+        
     ./waf build
 }
 
