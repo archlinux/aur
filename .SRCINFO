@@ -1,6 +1,6 @@
 pkgbase = qtpad-git
 	pkgdesc = Modern and customizable sticky note application
-	pkgver = r195.864b384
+	pkgver = r197.4bf9b49
 	pkgrel = 1
 	url = https://gitlab.com/william.belanger/qtpad
 	arch = any

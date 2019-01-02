@@ -1,7 +1,7 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
 pkgname=qtpad-git
-pkgver=r195.864b384
+pkgver=r197.4bf9b49
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
