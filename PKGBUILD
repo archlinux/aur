@@ -1,7 +1,7 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
 _oomox_ver=1.9.0.2
-_numix_theme_ver=1.9.4
+_oomox_theme_ver=1.10
 #_materia_theme_ver=20181125
 _materia_cmt=4f222c08826835346d8d160092868e62b444a1a0
 _arc_theme_cmt=88d02754d11d174a7baf3db7beb857f28dac55ee
@@ -14,7 +14,7 @@ _numix_folders_icons_cmt=24e5f6c6603e7f798553d2f24a00de107713c333
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=4
+pkgrel=5
 pkgdesc='Graphical application for generating different color variations of Numix/Materia/Arc theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes. Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
 url='https://github.com/themix-project/oomox'
@@ -60,7 +60,7 @@ conflicts=('oomox-git')
     # "materia-theme-v${_materia_theme_ver}.tar.gz::https://github.com/nana-4/materia-theme/archive/v${_materia_theme_ver}.tar.gz"
 source=(
     "oomox-${_oomox_ver}.tar.gz::https://github.com/themix-project/oomox/archive/${_oomox_ver}.tar.gz"
-    "oomox-gtk-theme-${_numix_theme_ver}.tar.gz::https://github.com/themix-project/oomox-gtk-theme/archive/${_numix_theme_ver}.tar.gz"
+    "oomox-gtk-theme-${_oomox_theme_ver}.tar.gz::https://github.com/themix-project/oomox-gtk-theme/archive/${_oomox_theme_ver}.tar.gz"
     "materia-theme-${_materia_cmt}.tar.gz::https://github.com/nana-4/materia-theme/archive/${_materia_cmt}.tar.gz"
     "arc-theme-${_arc_theme_cmt}.tar.gz::https://github.com/NicoHood/arc-theme/archive/${_arc_theme_cmt}.tar.gz"
     "archdroid-icon-theme-${_archdroid_icons_ver}.tar.gz::https://github.com/themix-project/oomox-archdroid-icon-theme/archive/${_archdroid_icons_ver}.tar.gz"
@@ -71,7 +71,7 @@ source=(
     "numix-folders-${_numix_folders_icons_cmt}.tar.gz::https://github.com/numixproject/numix-folders/archive/${_numix_folders_icons_cmt}.tar.gz"
 )
 md5sums=('acf0604107bffb048a74e14e1f4b1f88'
-         'f5d53f7716374b19b5d8a68db9fb6b93'
+         '9eef9d048e14e94cbd154b000ea85ec6'
          '7abab58c36ed5c19d16e5372210960a8'
          '031f263be091e16de8932bfc4b7cfe82'
          'cb669130685dcbf03a8f7f5738c71dc6'
@@ -83,7 +83,7 @@ md5sums=('acf0604107bffb048a74e14e1f4b1f88'
 
 prepare() {
     cd ${srcdir}
-    cp -pr "${pkgname}-gtk-theme-${_numix_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_oomox/gtk-theme"
+    cp -pr "${pkgname}-gtk-theme-${_oomox_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_oomox/gtk-theme"
     #cp -pr "materia-theme-${_materia_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
     cp -pr "materia-theme-${_materia_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
     cp -pr "arc-theme-${_arc_theme_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/theme_arc/arc-theme"
