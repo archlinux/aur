@@ -1,5 +1,5 @@
 pkgname=nanocurrency-node-git
-pkgver=15.0RC.r53.g5eb3f6c2
+pkgver=16.0RC1.r279.g9526f649
 pkgrel=1
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees. Command-line version without wallet GUI or Qt dependencies."
 arch=('i686' 'x86_64')
@@ -11,14 +11,14 @@ provides=(raiblocks nanocurrency nanocurrency-node)
 conflicts=("raiblocks" "raiblocks-git" "raiblocks-cli-git" "nanocurrency-git")
 install=install
 pkgver() {
-  cd "raiblocks"
+  cd "nano-node"
   git describe --long --tags | sed 's/^[vV]//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 source=(nanowallet.desktop
   nanowallet128.png
   nano-node.service
-  git+https://github.com/nanocurrency/raiblocks.git
+  git+https://github.com/nanocurrency/nano-node.git
   git+https://github.com/weidai11/cryptopp.git
   "git+https://github.com/nanocurrency/lmdb.git#branch=lmdb_0_9_21"
   git+https://github.com/miniupnp/miniupnp.git
@@ -34,7 +34,7 @@ sha256sums=('6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91'
             'SKIP')
 
 prepare() {
-  cd "$srcdir/raiblocks"
+  cd "$srcdir/nano-node"
   
   git submodule init
 
@@ -64,16 +64,16 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/raiblocks"
-  make rai_node
+  cd "$srcdir/nano-node"
+  make nano_node
   #make rai_lib #thisonly gets us a static lib now, which we don't want
 }
 
 package() {
-  cd "$srcdir/raiblocks"
+  cd "$srcdir/nano-node"
 
-  install -Dm755 rai_node "$pkgdir"/usr/bin/rai_node
-  ln -s /usr/bin/rai_node "$pkgdir"/usr/bin/nano_node
+  install -Dm755 nano_node "$pkgdir"/usr/bin/nano_node
+  ln -s /usr/bin/nano_node "$pkgdir"/usr/bin/rai_node
   #install -Dm644 librai_lib.so "$pkgdir"/usr/lib/librai_lib.so
   #ln -s /usr/lib/librai_lib.so "$pkgdir"/usr/lib/libnano_lib.so
 
