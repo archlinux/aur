@@ -1,0 +1,20 @@
+pkgbase = flit-git
+	pkgdesc = Simple packaging tool for simple Python packages.
+	pkgver = 1.2.1.r24.gd0758b7
+	pkgrel = 1
+	url = http://flit.readthedocs.io
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	depends = python
+	depends = python-pytoml
+	depends = python-requests
+	depends = python-requests_download
+	depends = python-docutils
+	provides = flit
+	conflicts = flit
+	source = flit::git+https://github.com/takluyver/flit.git
+	sha256sums = SKIP
+
+pkgname = flit-git
+
