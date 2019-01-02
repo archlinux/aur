@@ -1,7 +1,7 @@
 pkgbase = praat
-	pkgdesc = A tool for 'Doing Phonetics by computer'
-	pkgver = 6.0.43
-	pkgrel = 2
+	pkgdesc = Doing Phonetics by computer (speech analysis)
+	pkgver = 6.0.45
+	pkgrel = 1
 	url = http://www.fon.hum.uva.nl/praat/
 	arch = x86_64
 	license = GPL
@@ -12,8 +12,18 @@ pkgbase = praat
 	depends = gtk2
 	depends = libpulse
 	optdepends = ttf-sil-fonts
-	source = https://github.com/praat/praat/archive/v6.0.43.tar.gz
-	md5sums = e66aaec26a7753430e933834c5795595
+	conflicts = praat-bin
+	conflicts = praat-git
+	source = https://github.com/praat/praat/archive/v6.0.45.tar.gz
+	source = praat.desktop
+	source = praat.xpm
+	source = praat.svg
+	source = praat.1
+	sha256sums = cad9b16346f146fee2c95aa02e104df40a9edcf63583010054726b9c50bd4fc5
+	sha256sums = 94720aedc8e9c9e9d53b3230d79ccaae551b5bc5e6986528664311d55f3cce5a
+	sha256sums = 07abf61475f22f83f0514a8fba1ec7bd3821d2b7f35b1215c1f3e1feb947d74b
+	sha256sums = db6c7568f6e13b4ce7c37bd9fcf289832867f79ba7d7fc48c4f13f0045ad98f1
+	sha256sums = 21ee03cae45be634c57c167c2dfbdfd9d9b7feadb98e0124413d9426c199e81c
 
 pkgname = praat
 
