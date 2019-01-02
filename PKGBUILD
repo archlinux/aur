@@ -1,5 +1,5 @@
-pkgbase=('python-codename')
-pkgname=('python-codename')
+pkgbase='python-codename'
+pkgname='python-codename'
 _module='codename'
 pkgver='1.1'
 pkgrel=1
