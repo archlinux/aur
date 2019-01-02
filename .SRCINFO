@@ -1,7 +1,7 @@
 pkgbase = python-codename
 	pkgdesc = Codename generator. Credits to 'projectcodename.com'.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/and3rson/codename
 	arch = any
 	license = unknown
