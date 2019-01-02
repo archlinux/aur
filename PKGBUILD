@@ -7,7 +7,7 @@ pkgname=phoenicis-playonlinux
 _pkgname=phoenicis
 pkgver=5.0_alpha2
 _pkgver=5.0-alpha.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Phoenicis PlayOnLinux allows you to install and use non-native applications on linux"
 arch=('any')
 url="https://www.phoenicis.org/"
@@ -17,8 +17,15 @@ depends=('cabextract' 'curl' 'icoutils' 'imagemagick'
          'java-openjfx-bin' 'java-runtime-openjdk=11'
          'p7zip' 'unzip' 'wget' 'wine' 'xterm')
 options=(!strip)
-source=(https://github.com/PhoenicisOrg/${_pkgname}/archive/v${_pkgver}.tar.gz)
-sha256sums=('c88b8ca68c0c37f62aad4db44cef0047c09e8fd553455af15ef3265b0e3c575b')
+source=("https://github.com/PhoenicisOrg/${_pkgname}/archive/v${_pkgver}.tar.gz"
+        "fix-launcher-on-wayland.patch")
+sha256sums=('c88b8ca68c0c37f62aad4db44cef0047c09e8fd553455af15ef3265b0e3c575b'
+            'f681160a361e84021cd9f0c272e9992eedb6950ffde49f335dec665232510ed7')
+
+prepare() {
+  cd "${_pkgname}-${_pkgver}"
+  patch -Np1 -i "${srcdir}/fix-launcher-on-wayland.patch"
+}
 
 build() {
   cd "${_pkgname}-${_pkgver}"
