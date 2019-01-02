@@ -24,7 +24,7 @@ _makenconfig=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver=4.19.12-arch1
+_srcver=4.20-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -35,7 +35,7 @@ options=('!strip')
 _gcc_more_v='20180509'
 _srcname=bcachefs
 source=(
-  "$_srcname::git+https://evilpiepirate.org/git/bcachefs.git"
+  "$_srcname::git+https://evilpiepirate.org/git/bcachefs.git#commit=3af2d26394618dc8812dc2af02dcd1fd28c83c1f"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
@@ -48,7 +48,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            'b9a66a11b36eae6e17c8503b54cfd41791efbe4a6f9a1455f81ad2b3c464399b'
+            'ae36db5af2cb8687ffcacbd98f44729140ca146eb74fdb1c3721b336a9823f19'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
