@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libopenblas
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD. (Designed for can be installed side by side with Blas)"
 arch=('x86_64')
@@ -14,22 +14,23 @@ makedepends=('perl'
 conflicts=('openblas')
 provides=('openblas')
 source=("OpenBLAS-v${pkgver}.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz")
-sha256sums=('4b4b4453251e9edb5f57465bf2b3cf67b19d811d50c8588cdf2ea1f201bb834f')
+sha256sums=('0950c14bd77c90a6427e26210d6dab422271bc86f9fc69126725833ecdaa0e85')
 options=('!emptydirs')
 
 # prepare() {
 #   mkdir -p build
 # 
+# }
+
+build() {
+
 #   cd build
 #   cmake ../"OpenBLAS-${pkgver}" \
 #     -DCMAKE_BUILD_TYPE=None \
 #     -DCMAKE_INSTALL_PREFIX=/usr \
 #     -DCMAKE_INSTALL_LIBDIR=lib \
 #     -DCMAKE_INSTALL_INCLUDEDIR=include/openblas
-# 
-# }
 
-build() {
   cd "OpenBLAS-${pkgver}"
 
   make \
