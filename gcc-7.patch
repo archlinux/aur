@@ -1,0 +1,51 @@
+Description: Avoid comparing pointers with booleans
+Author: Stephen Kitt <skitt@debian.org>
+Forwarded: https://github.com/xmoto/xmoto/pull/16
+
+--- a/src/WWW.cpp
++++ b/src/WWW.cpp
+@@ -206,7 +206,7 @@
+   std::string v_www_agent = WWW_AGENT;
+ 
+   /* open the file */
+-  if( (v_destinationFile = fopen(v_local_file_tmp.c_str(), "wb")) == false) {
++  if( (v_destinationFile = fopen(v_local_file_tmp.c_str(), "wb")) == NULL) {
+     throw Exception("error : unable to open output file " 
+         + v_local_file_tmp);
+   }
+@@ -320,7 +320,7 @@
+   LogInfo(std::string("Uploading replay " + p_replayFilename).c_str());
+ 
+   /* open the file */
+-  if( (v_destinationFile = fopen(v_local_file.c_str(), "wb")) == false) {
++  if( (v_destinationFile = fopen(v_local_file.c_str(), "wb")) == NULL) {
+     throw Exception("error : unable to open output file " DEFAULT_WWW_MSGFILE("UR"));
+   }
+       
+@@ -478,7 +478,7 @@
+   LogInfo("Sending vote");
+ 
+   /* open the file */
+-  if( (v_destinationFile = fopen(v_local_file.c_str(), "wb")) == false) {
++  if( (v_destinationFile = fopen(v_local_file.c_str(), "wb")) == NULL) {
+     throw Exception("error : unable to open output file " DEFAULT_WWW_MSGFILE("SV"));
+   }
+       
+@@ -562,7 +562,7 @@
+   LogInfo("Sending report");
+ 
+   /* open the file */
+-  if( (v_destinationFile = fopen(v_local_file.c_str(), "wb")) == false) {
++  if( (v_destinationFile = fopen(v_local_file.c_str(), "wb")) == NULL) {
+     throw Exception("error : unable to open output file " DEFAULT_WWW_MSGFILE("SR"));
+   }
+       
+@@ -677,7 +677,7 @@
+   LogInfo(std::string("Uploading dbsync " + p_dbSyncFilename + " to " + p_url_to_transfert).c_str());
+ 
+   /* open the file */
+-  if( (v_destinationFile = fopen(p_answerFile.c_str(), "wb")) == false) {
++  if( (v_destinationFile = fopen(p_answerFile.c_str(), "wb")) == NULL) {
+     throw Exception("error : unable to open output file " + p_answerFile);
+   }
+       
