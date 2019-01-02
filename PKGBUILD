@@ -1,4 +1,4 @@
-# Maintainer: Leo Mao
+# Maintainer: Leo Mao <leomaoyw at gmail dot com>
 
 pkgname="python-imageio"
 _pkgname="imageio"
