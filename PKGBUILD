@@ -5,14 +5,17 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.0.1028.gf7f18684
+pkgver=1.0.5.23.g8bc03fff
 pkgrel=1
 pkgdesc="C++ re-write of tablet notetaking app Xournal"
 arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL-2.0')
-makedepends=('git' 'cmake' 'gettext' 'boost' 'python')
-depends=('texlive-core' 'gtk3' 'boost-libs' 'glib2' 'libglade' 'glibmm' 'desktop-file-utils' 'poppler-glib')
+makedepends=('git' 'cmake' 'gettext')
+depends=('texlive-core' 'gtk3' 'glib2' 'desktop-file-utils' 'poppler-glib' 'libxml2')
+optdepends=('curl: recording support'
+            'vlc: recording support'
+            'alsa-utils: recording support')
 conflicts=('xournalpp')
 install="xournalpp.install"
 source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git")
