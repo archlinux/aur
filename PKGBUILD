@@ -2,7 +2,7 @@
 
 pkgname=qownnotes
 pkgver=19.1.0
-tag="fdcf330a86a05393b53e6eaa3d992a2cbe28d104"
+tag="065368e7a4c36e71f265e0749c04a81487becc6c"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud/Nextcloud integration"
 arch=('i686' 'x86_64' 'armv7h')
