@@ -1,8 +1,9 @@
-# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# Maintainer: Arvedui <arvedui@posteo.de>
+# Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=bugwarrior
-pkgver=1.5.1
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)"
 arch=(any)
 conflicts=(bugwarrior-git)
@@ -15,7 +16,7 @@ depends=('python' 'python-setuptools'
          'python-dogpile.cache' 'python-lockfile'
          'python-click' 'python-future')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ralphbean/bugwarrior/archive/$pkgver.tar.gz")
-sha256sums=('f28b98be94e1c11ade5876c68daaa7a6f0a25b3d13c1cf8898da97e411ce63e8')
+sha256sums=('92e417f956e6f9855ed7bb1197d10931175083086f2244fbf4aaeabdadfbdd82')
 
 prepare(){
     cd "$srcdir/$pkgname-$pkgver"
