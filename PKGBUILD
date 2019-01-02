@@ -4,14 +4,14 @@
 
 pkgname=studio-3t
 pkgver=2018.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The professional workspace for MongoDB (formerly known as MongoChef)"
 arch=('i686' 'x86_64')
 url="https://studio3t.com"
 license=("custom")
 depends_i686=('java-runtime-openjdk=8' 'java-openjfx')
 depends=('gtk2')
-makedepends=('unzip')
+makedepends=('gendesk' 'unzip')
 provides=('studio-3t')
 replaces=('mongochef')
 

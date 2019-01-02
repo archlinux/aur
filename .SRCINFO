@@ -1,11 +1,12 @@
 pkgbase = studio-3t
 	pkgdesc = The professional workspace for MongoDB (formerly known as MongoChef)
 	pkgver = 2018.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://studio3t.com
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = gendesk
 	makedepends = unzip
 	depends = gtk2
 	provides = studio-3t
