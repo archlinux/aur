@@ -1,12 +1,12 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
 # Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
 
-_commit=dc41ecef85b094b30c612113606597b91c55351c  # tags/2.2.0^0
+_commit=4941e95f10fe0fe658752134a42b58896fb19c42  # tags/2.3.0^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgbase=mingw-w64-harfbuzz
 pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=('mingw-w64-configure'
              'ragel'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://anongit.freedesktop.org/git/harfbuzz#commit=${_commit}")
+source=("git+https://github.com/harfbuzz/harfbuzz.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
