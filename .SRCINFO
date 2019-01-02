@@ -1,17 +1,23 @@
 pkgbase = librefox
 	pkgdesc = Librefox: Browse With Freedom
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://librefox.org/
 	arch = x86_64
 	license = Mozilla Public License Version 2.0
-	source = https://github.com/intika/Librefox/releases/download/Librefox-v2.1-v64.0.0/Librefox-2.1-Firefox-Linux-64.0.0-x64.tar.xz
+	source = https://github.com/intika/Librefox/releases/download/Librefox-v2.1-v64.0.0/Librefox-2.1-Firefox-Linux-64.0.0.zip
+	source = https://download-installer.cdn.mozilla.net/pub/firefox/releases/64.0/linux-x86_64/en-US/firefox-64.0.tar.bz2
 	source = librefox
 	source = librefox.desktop
 	validpgpkeys = 51479755D90A2AACFA90A6551DD242462908D08B
-	sha1sums = 1d25c606e08e6ad2e674abf3032255902067a81d
-	sha1sums = e2f2060a4b0ec0098cfc6a37fd3ce9f7c68bf755
-	sha1sums = d1b7e2e2f2618b26bfecf6a524ee984b31e8d061
+	sha1sums = a6f36d4c55c096f7e67c7cbf500ebb0fca9a0d2a
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 81a169d7541735059645b4021c3ab2332af016214d3726be58fcd376b601755f
+	sha256sums = 94e9dbd94fbf9668021ed580d36bb8a062ae78373e0a9aed91a261ae073696f4
+	sha256sums = f65a8d33c6cd09463f97a13c9c2d3b0d75937be823f81e7c40ab0cfc91e8541e
 
 pkgname = librefox
 

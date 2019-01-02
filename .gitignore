@@ -1,0 +1,7 @@
+*.sh
+SHA256SUMS
+*.zip
+*.bz2
+*.xz
+src/
+pkg/
