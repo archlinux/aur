@@ -1,8 +1,9 @@
 # Maintainer: ELmoussaoui Bilal <bil.elmoussaoui@gmail.com>
+# Maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
 pkgname=gradio
 _pkgname=Gradio
-pkgver=7.1
+pkgver=7.2
 pkgrel=1
 pkgdesc='A GTK3 app for finding and listening to internet radio stations'
 arch=('i686' 'x86_64')
@@ -14,7 +15,7 @@ depends=('desktop-file-utils' 'gstreamer' 'gst-plugins-ugly' 'gst-plugins-bad'
 makedepends=('gnome-common' 'meson' 'gettext' 'appstream-glib' 'vala' 'yelp-tools')
 options=('!emptydirs')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7b350583124f00f9030daaf4042cd54c9d340d67124dad298266d2dfa81ba766')
+sha256sums=('5a85d7d4afb1424e46c935114b268e4a65de2629d60f48eccd75d67ff4b113d2')
 conflicts=('gradio-git' 'gradio-bin')
 provides=("gradio=${pkgver}")
 
