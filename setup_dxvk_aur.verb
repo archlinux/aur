@@ -13,7 +13,6 @@ w_metadata setup_dxvk_aur dlls \
     installed_file4="C:\\windows\\system32\\system32/d3d10core.dll" \
     homepage="https://github.com/doitsujin/dxvk"
     
-DXVK_ARCH=64
 DXVK_ROOT_DIR=`dirname "$(readlink -f $1)"`
 
 load_setup_dxvk_aur()
@@ -25,12 +24,7 @@ load_setup_dxvk_aur()
     echo "Setting up DXVK from $DXVK_ROOT_DIR"
 
      for f in "$file1" "$file2" "$file3" "$file4"; do
-        if [ "$DXVK_ARCH" = "32" ]; then
-            w_try ln -fs "$DXVK_ROOT_DIR/$f" "$W_SYSTEM32_DLLS/$f"
-        fi
-        if [ "$DXVK_ARCH" = "64" ]; then
-            w_try ln -fs "$DXVK_ROOT_DIR/$f" "$W_SYSTEM64_DLLS/$f"
-        fi
+        w_try ln -fs "$DXVK_ROOT_DIR/$f" "$W_SYSTEM64_DLLS/$f"
     done
 
     w_override_dlls native \
