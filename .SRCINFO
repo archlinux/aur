@@ -1,0 +1,46 @@
+pkgbase = jdk8-arm64
+	pkgdesc = Oracle Java 8 Development Kit for Raspberry 3
+	pkgver = 8u191
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = jdk8-arm64.install
+	arch = aarch64
+	license = custom:Oracle
+	depends = ca-certificates-java
+	depends = hicolor-icon-theme
+	depends = java-environment-common
+	depends = java-runtime-common
+	depends = nss
+	depends = xdg-utils
+	optdepends = alsa-lib: for basic sound support
+	provides = java-runtime=8
+	provides = java-runtime-headless=8
+	provides = java-web-start=8
+	provides = java-environment=8
+	provides = java-runtime-jre=8
+	provides = java-runtime-headless-jre=8
+	provides = java-web-start-jre=8
+	provides = java-environment-jdk=8
+	provides = java-openjfx=8
+	options = !strip
+	backup = etc/java-jdk8/aarch64/jvm.cfg
+	backup = etc/java-jdk8/images/cursors/cursors.properties
+	backup = etc/java-jdk8/management/jmxremote.access
+	backup = etc/java-jdk8/management/management.properties
+	backup = etc/java-jdk8/security/java.policy
+	backup = etc/java-jdk8/security/java.security
+	backup = etc/java-jdk8/content-types.properties
+	backup = etc/java-jdk8/flavormap.properties
+	backup = etc/java-jdk8/fontconfig.properties.src
+	backup = etc/java-jdk8/logging.properties
+	backup = etc/java-jdk8/net.properties
+	backup = etc/java-jdk8/psfont.properties.ja
+	backup = etc/java-jdk8/psfontj2d.properties
+	backup = etc/java-jdk8/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/jdk-8u191-linux-arm64-vfp-hflt.tar.gz
+	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
+	md5sums = 15b091a66de576b3fc3788423c7243ce
+	md5sums = b3c7031bc65c28c2340302065e7d00d3
+
+pkgname = jdk8-arm64
+
