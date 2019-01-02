@@ -3,7 +3,7 @@
 pkgname=miniterm-git
 _pkgname=miniterm
 pkgver=v1.4.0.0.g8b2fb99
-pkgrel=1
+pkgrel=3
 pkgdesc="Lightweight VTE terminal emulator with colorscheme support (fork of tinyterm)"
 arch=('i386' 'x86_64')
 url="https://github.com/laelath/miniterm"
@@ -28,9 +28,9 @@ build() {
 
 package() {
   cd "$_pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cd Release
   make DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
