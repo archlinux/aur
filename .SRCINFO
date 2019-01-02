@@ -1,0 +1,15 @@
+pkgbase = igor
+	pkgdesc = proofreader for mdoc(7) and docbook files
+	pkgver = 1.595
+	pkgrel = 1
+	url = http://www.wonkity.com/~wblock/igor
+	arch = any
+	license = BSD
+	options = !strip
+	source = http://docscripts.glenbarber.us/tags/igor/1.595/igor-1.595.tar.gz
+	source = igor.patch
+	sha256sums = f0e1895235d6dac23f94759dd013a8bcb9b8d0235bfe44fb65f3a19c804810a4
+	sha256sums = e2fc335879143faf9ed2d7ddb7757747dcfad9a1b8c04ce85239ab35aca54718
+
+pkgname = igor
+

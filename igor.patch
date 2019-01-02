@@ -1,0 +1,49 @@
+Chunk 1:	Change gzcat command
+Chunk 2-4:	Do not use /usr/local/etc/
+		Originally authored by Ingo Schwarze <schwarze@openbsd.org>
+diff -ura igor-1.595.orig/igor igor-1.595.new/igor
+--- igor-1.595.orig/igor	2016-09-10 04:14:06.000000000 +1000
++++ igor-1.595.new/igor	2019-01-02 00:10:42.894811744 +1100
+@@ -40,7 +40,7 @@
+ use POSIX qw/strftime/;
+ 
+ my $file  = "/usr/bin/file";
+-my $gzcat = "/usr/bin/gzcat";
++my $gzcat = "/usr/bin/zcat";
+ my $bzcat = "/usr/bin/bzcat";
+ my $man   = "/usr/bin/man";
+ 
+@@ -1017,8 +1017,8 @@
+ 	my @spellfiles;
+ 	# IGORSPELLFILES environment variable is a whitespace-separated list of files
+ 	push (@spellfiles, split /\s/, $ENV{'IGORSPELLFILES'}) if defined($ENV{'IGORSPELLFILES'});
+-	# all files found in /usr/local/etc/igor/spelling
+-	push (@spellfiles, split /\s/, `ls /usr/local/etc/igor/spelling/*`) if -d '/usr/local/etc/igor/spelling';
++	# all files found in /etc/igor/spelling
++	push (@spellfiles, split /\s/, `ls /etc/igor/spelling/*`) if -d '/etc/igor/spelling';
+ 	for my $spellfile (@spellfiles) {
+ 		readspelling($spellfile);
+ 	}
+diff -ura igor-1.595.orig/igor.1 igor-1.595.new/igor.1
+--- igor-1.595.orig/igor.1	2016-09-10 04:14:06.000000000 +1000
++++ igor-1.595.new/igor.1	2019-01-02 00:10:51.108263129 +1100
+@@ -154,7 +154,7 @@
+ Additional files of misspelled words may be added with the
+ .Ev IGORSPELLFILES
+ environment variable, or placed in the
+-.Pa /usr/local/etc/igor/spelling
++.Pa /etc/igor/spelling
+ directory.
+ The first word on each line, including apostrophes, will be included in the
+ list of known misspellings to be checked.
+@@ -271,8 +271,8 @@
+ words.
+ .El
+ .Sh FILES
+-.Bl -tag -width /usr/local/etc/igor/spelling/
+-.It Pa /usr/local/etc/igor/spelling/
++.Bl -tag -width /etc/igor/spelling/
++.It Pa /etc/igor/spelling/
+ Directory for additional misspelled word files.
+ .El
+ .Sh EXAMPLES
