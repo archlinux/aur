@@ -2,7 +2,7 @@
 # Maintainer:  Thayne McCombs <astrothayne at gmail dot com>
 
 pkgname=elephant
-pkgver=54
+pkgver=55
 pkgrel=1
 pkgdesc="Notetaker with a classic interface."
 url="http://elephant.mine.nu/"
@@ -10,7 +10,7 @@ arch=('any')
 license=('Apache')
 depends=('java-environment' 'bash')
 source=(https://github.com/jusu/Elephant/releases/download/V"$pkgver"/elephant"$pkgver"_jar.zip)
-sha256sums=('95502e2cc75b20fc0ab31f213bf0c7b399c798cbc377d6bc0b97718c3ba757a2')
+sha256sums=('102acda3fcba85436a3af6b3d150da7d2f843fcd8bfc698c213a127a83c77842')
 
 package() {
     cd "$pkgdir"
