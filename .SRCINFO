@@ -1,6 +1,6 @@
 pkgbase = inxi-git
 	pkgdesc = script to get system information (git version)
-	pkgver = 3.0.29.r0.gb1194550
+	pkgver = 3.0.30.r0.gb8dc62a9
 	pkgrel = 1
 	url = https://github.com/smxi/inxi
 	arch = any
@@ -33,7 +33,6 @@ pkgbase = inxi-git
 	optdepends = xorg-xrandr: inxi -G single screen resolution
 	provides = inxi
 	conflicts = inxi
-	options = zipman
 	source = git+https://github.com/smxi/inxi.git
 	sha256sums = SKIP
 
