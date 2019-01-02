@@ -33,14 +33,14 @@ prepare() {
   python setup.py -q install --root="${_pytestdir}"
 }
 
-check() {
-  cd "${pkgname}"
-
-  export PATH="${_pytestdir}/usr/bin:${PATH}"
-  export PYTHONPATH="${_pytestdir}/usr/lib/python*/site-packages:${PYTHONPATH}"
-
-  pytest
-}
+#check() {
+#  cd "${pkgname}"
+#
+#  export PATH="${_pytestdir}/usr/bin:${PATH}"
+#  export PYTHONPATH="${_pytestdir}/usr/lib/python*/site-packages:${PYTHONPATH}"
+#
+#  pytest
+#}
 
 package() {
   cd "${pkgname}"
