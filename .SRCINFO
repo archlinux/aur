@@ -1,0 +1,24 @@
+pkgbase = sfml-bin
+	pkgdesc = The Simple and Fast Multimedia Library
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://www.sfml-dev.org/
+	arch = x86_64
+	license = custom
+	depends = flac
+	depends = freetype2
+	depends = graphite
+	depends = libglvnd
+	depends = libvorbis
+	depends = libxrandr
+	depends = openal
+	depends = pcre
+	provides = sfml=2.5.1
+	conflicts = sfml
+	source = https://www.sfml-dev.org/files/SFML-2.5.1-linux-gcc-64-bit.tar.gz
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sfml-bin
+
