@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=XBmpWall
-#Icon=xbmpwall
+Icon=xbmpwall
 Exec=bash -c "/usr/bin/xbmpwall /usr/share/xbmpwall/bitmaps/{bw-bgnd/*.xbm,patterns/*.xbm}"
 Terminal=false
 MimeType=

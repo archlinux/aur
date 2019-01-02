@@ -1,6 +1,6 @@
 pkgbase = xbmpwall-git
 	pkgdesc = X11 bitmaps file manager (.xbm) for xsetroot
-	pkgver = 1.3
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/daltomi/xbmpwall
 	arch = x86_64
@@ -10,13 +10,15 @@ pkgbase = xbmpwall-git
 	makedepends = make
 	depends = libxaw
 	depends = xorg-xsetroot
-	source = git+https://github.com/daltomi/xbmpwall.git?signed#tag=v1.3
+	source = git+https://github.com/daltomi/xbmpwall.git?signed#tag=v1.5
 	source = git+https://github.com/daltomi/bitmap-walls.git
 	source = xbmpwall.desktop
+	source = xbmpwall.png
 	validpgpkeys = 51479755D90A2AACFA90A6551DD242462908D08B
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 0a8290dc7866b38c0b893b287b3487724d1c4126972a11e4e74f7e310122bdb8
+	sha256sums = 952578d0e2b73f66e6070513ebeea827c4d48cb69b9bf7e95a90541d63b768b9
+	sha256sums = 6200014b0bad8ecdea1eb6eb242ebb0d42758634f93d065243034a42933cc343
 
 pkgname = xbmpwall-git
 
