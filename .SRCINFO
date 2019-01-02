@@ -1,0 +1,46 @@
+pkgbase = jdk8-arm
+	pkgdesc = Oracle Java 8 Development Kit for ARM32
+	pkgver = 8u201
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = jdk8-arm.install
+	arch = armv7h
+	license = custom:Oracle
+	depends = ca-certificates-java
+	depends = hicolor-icon-theme
+	depends = java-environment-common
+	depends = java-runtime-common
+	depends = nss
+	depends = xdg-utils
+	optdepends = alsa-lib: for basic sound support
+	provides = java-runtime=8
+	provides = java-runtime-headless=8
+	provides = java-web-start=8
+	provides = java-environment=8
+	provides = java-runtime-jre=8
+	provides = java-runtime-headless-jre=8
+	provides = java-web-start-jre=8
+	provides = java-environment-jdk=8
+	provides = java-openjfx=8
+	options = !strip
+	backup = etc/java-jdk8/arm/jvm.cfg
+	backup = etc/java-jdk8/images/cursors/cursors.properties
+	backup = etc/java-jdk8/management/jmxremote.access
+	backup = etc/java-jdk8/management/management.properties
+	backup = etc/java-jdk8/security/java.policy
+	backup = etc/java-jdk8/security/java.security
+	backup = etc/java-jdk8/content-types.properties
+	backup = etc/java-jdk8/flavormap.properties
+	backup = etc/java-jdk8/fontconfig.properties.src
+	backup = etc/java-jdk8/logging.properties
+	backup = etc/java-jdk8/net.properties
+	backup = etc/java-jdk8/psfont.properties.ja
+	backup = etc/java-jdk8/psfontj2d.properties
+	backup = etc/java-jdk8/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-arm32-vfp-hflt.tar.gz
+	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
+	md5sums = 7f421e5766094b7068042bcf9c603e96
+	md5sums = b3c7031bc65c28c2340302065e7d00d3
+
+pkgname = jdk8-arm
+
