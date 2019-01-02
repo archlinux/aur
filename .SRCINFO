@@ -1,6 +1,6 @@
 pkgbase = electrum-git
 	pkgdesc = Lightweight Bitcoin wallet
-	pkgver = 20181120
+	pkgver = 20190101
 	pkgrel = 1
 	url = https://github.com/spesmilo/electrum
 	install = electrum.install
@@ -28,6 +28,7 @@ pkgbase = electrum-git
 	depends = python-six
 	depends = python-websocket-client
 	depends = python-aiohttp_socks
+	depends = python-certifi
 	depends = qt5-base
 	optdepends = desktop-file-utils: update desktop icon
 	optdepends = gtk-update-icon-cache: update desktop icon

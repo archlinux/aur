@@ -11,7 +11,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20181120
+pkgver=20190101
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -31,6 +31,7 @@ depends=('hicolor-icon-theme'
          'python-six'
          'python-websocket-client'
 	 'python-aiohttp_socks'
+	 'python-certifi'
          'qt5-base')
 checkdepends=('python-tox')
 makedepends=('gettext'
