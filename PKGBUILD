@@ -1,18 +1,18 @@
 # Maintainer : yaute <yaute74@gmail.com>
 
 pkgname=hattrick_organizer-git
-pkgver=1.435.7
+pkgver=1.436.0
 pkgrel=1
-_rel=1.435-DEV-7
+_rel=1.436.0.102
 pkgdesc="A manager assistent for the online football manager Hattrick "
 arch=(i686 x86_64)
 url="https://github.com/akasolace/HO"
 license=(GPL)
 depends=(java-runtime)
 makedepends=(libarchive)
-source=(https://github.com/akasolace/HO/releases/download/1.435/ho_$_rel.deb)
+source=(https://github.com/akasolace/HO/releases/download/dev/ho_$_rel.deb)
 
-md5sums=('dcc69de76ef7952dc4630b5627716ac0')
+md5sums=('7adb743fc43d762201c2bdce9fa67549')
 
 package() {
 desktopfile=$pkgdir/usr/share/applications/ho.desktop
