@@ -13,10 +13,9 @@ makedepends=('alsa-lib' 'cmake' 'git' 'jack' 'pulseaudio')
 optdepends=(
   'alsa-lib: ALSA support.'
   'jack: JACK support'
-  'pulseaudio: PulseAudio support'
-)
+  'pulseaudio: PulseAudio support')
 _commit=5404800f9309f852b8fec6e40e90cb11fa0bbbf9  # tags/v0.6.3
-source=("git+https://github.com/vovoid/vsxu#commit=$_commit"
+source=("${pkgname}::git+https://github.com/vovoid/vsxu#commit=$_commit"
         "dependencies::git+https://github.com/vovoid/vsxu-dependencies.git"
         "cal3d::git+https://github.com/vovoid/cal3d.git"
         "freetype2::git+https://github.com/vovoid/freetype2.git"

@@ -20,7 +20,7 @@ pkgbase = vsxu
 	optdepends = alsa-lib: ALSA support.
 	optdepends = jack: JACK support
 	optdepends = pulseaudio: PulseAudio support
-	source = git+https://github.com/vovoid/vsxu#commit=5404800f9309f852b8fec6e40e90cb11fa0bbbf9
+	source = vsxu::git+https://github.com/vovoid/vsxu#commit=5404800f9309f852b8fec6e40e90cb11fa0bbbf9
 	source = dependencies::git+https://github.com/vovoid/vsxu-dependencies.git
 	source = cal3d::git+https://github.com/vovoid/cal3d.git
 	source = freetype2::git+https://github.com/vovoid/freetype2.git
