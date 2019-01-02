@@ -2,18 +2,18 @@
 #Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=bootswatch
-pkgver=4.1.1
+pkgver=4.2.1
 pkgrel=1
 pkgdesc='A collection of open source themes for Bootstrap.'
 arch=('any')
 url='https://bootswatch.com/'
 license=('MIT')
 depends=('bootstrap')
-source=("${pkgname}-${pkgver//_/-}.tar.gz::https://github.com/thomaspark/${pkgname}/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('e4a9f6666017fe73d01f38aad9b528d004697dc760a8dc936fa8826f12a43fe9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thomaspark/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('f381ffa41eeaeef4a730b8ef9b2ee1e25cfb2fa18b477ccb6da2715e36a60ee4')
 
 package() {
-  cd ${pkgname}-${pkgver//_/-}
+  cd ${pkgname}-${pkgver}
   install -d ${pkgdir}/usr/share/javascript/${pkgname}
   cp -a ./dist/* ${pkgdir}/usr/share/javascript/${pkgname}/
 }
