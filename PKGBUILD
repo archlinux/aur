@@ -13,7 +13,7 @@ license=('GPL2')
 makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _verwatch=('https://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/' '.*"patch-\(4\.14\.[0-9]\+\)\.xz.*' 'f')
-source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
+source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz
         https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
         'config'         # the main kernel config file
         '60-linux.hook'  # pacman hook for depmod
@@ -26,7 +26,6 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
              )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
-            'SKIP'
             '54aa6067020bb7c955e3e2fe83345563884b3e2ad32fdd4b02d082c4d30f5ec6'
             '1469bbc0c66e387ed577ba13e1e7c8c78c8a72b054dc216cfe2cb3d1bdfdf1da'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
