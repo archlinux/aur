@@ -1,8 +1,8 @@
-# Maintainer: Leo Mao
+# Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-apex-git
 _pkgname=apex
 _pkgver=0.1
-pkgver=0.1.r217
+pkgver=0.1.r223
 pkgrel=1
 pkgdesc="A PyTorch Extension: Tools for easy mixed precision and distributed training in Pytorch"
 arch=('any')
