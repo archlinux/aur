@@ -89,7 +89,7 @@ package() {
   cp -r lib/* "${pkgdir}/usr/share/java/${pkgname}"
   ln -s ../java/${pkgname} "${pkgdir}${_app_home}/lib"
 
-  cp -r examples external log4j2 public README.markdown SECURITY.md \
+  cp -r examples external extlib extlib-daemon log4j2 public README.markdown SECURITY.md  \
     "${pkgdir}${_app_home}"
 
   ln -s /var/log/${pkgname} "${pkgdir}${_app_home}/logs"
