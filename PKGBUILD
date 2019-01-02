@@ -5,7 +5,7 @@
 
 pkgname=tilda-git
 _gitname=tilda
-pkgver=1.3.2.r107.ga8ad2b3
+pkgver=tilda.1.3.2.r126.gcc3dfff
 pkgrel=1
 pkgdesc="Linux terminal based on classic terminals from first person shooter games"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-    git describe --long --tags | sed 's/^tilda-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
