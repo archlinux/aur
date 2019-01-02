@@ -45,7 +45,7 @@ prepare() {
 
   git submodule update --init --recursive
 
-  _flags=( "-D RAIBLOCKS_GUI=OFF" )
+  _flags=( "-D NANO_GUI=OFF" )
   
   if grep -q avx2 /proc/cpuinfo; then
     echo "using AVX2 optimizations"
@@ -54,7 +54,7 @@ prepare() {
     echo "excluding unsupported AVX2 optimizations"
   fi
   if grep -q sse4 /proc/cpuinfo; then
-    echo "using with SIMD optimizations"
+    echo "build with SIMD optimizations"
     _flags+=( "-D RAIBLOCKS_SIMD_OPTIMIZATIONS=ON" )
   else
     echo "excluding unsupported SIMD optimizations"
