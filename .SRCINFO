@@ -1,7 +1,7 @@
 pkgbase = quassel-client-lighter-git
 	pkgdesc = Qt-based distributed IRC client (client only) - minimal dependencies
 	pkgver = 0.14.pre.r110.g7c0eb011
-	pkgrel = 2
+	pkgrel = 3
 	url = https://quassel-irc.org
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = quassel-client-lighter-git
 	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = ninja
-	makedepends = qt5-base
 	makedepends = boost
 	depends = qt5-base
 	optdepends = sonnet: spell checking support
