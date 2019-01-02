@@ -2,7 +2,7 @@
 
 pkgbase=dxvk-wine-git
 pkgname=('dxvk-wine64-git' 'dxvk-wine32-git' 'dxvk-git')
-pkgver=0.94.r6.g4e22e4b
+pkgver=0.94.r8.g1750b14
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine. Winelib version"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'wine')
 source=("git+https://github.com/doitsujin/dxvk.git" 
     setup_dxvk_aur.verb
     )
-sha256sums=("SKIP" "3ab24ace22cba8e07997a7e30df85c104a86417704417d8a24ac0af3fb196bc6")
+sha256sums=("SKIP" "3be34f7dcfbfd47148b6becafb9fc530606b49c83ddb9ffaf3c71e4f27e56178")
 
 pkgver() {
     cd dxvk
@@ -43,9 +43,8 @@ build() {
 _package_dxvk() {
         DESTDIR="$pkgdir" ninja -C "build/x$1" install
         mkdir -p "$pkgdir/usr/bin"
-        cat setup_dxvk_aur.verb | sed s/"DXVK_ARCH=64"/"DXVK_ARCH=$1"/g > "$pkgdir/usr/share/dxvk/x$1/setup_dxvk_aur.verb"
         install -Dm 644 setup_dxvk_aur.verb "$pkgdir/usr/share/dxvk/x$1/setup_dxvk_aur.verb"
-        sed "s/_ARCH/$1/g" -i "$pkgdir/usr/share/dxvk/x$1/setup_dxvk_aur.verb"
+        sed "s/SYSTEM64/SYSTEM$1/g" -i "$pkgdir/usr/share/dxvk/x$1/setup_dxvk_aur.verb"
 	echo "#!/bin/sh" > "$pkgdir/usr/bin/setup_dxvk$1"
 	echo "winetricks --force /usr/share/dxvk/x$1/setup_dxvk_aur.verb" >> "$pkgdir/usr/bin/setup_dxvk$1"
 	chmod +x "$pkgdir/usr/bin/setup_dxvk$1"
