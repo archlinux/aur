@@ -2,7 +2,7 @@
 # Contributor: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=mytourbook_bin
-pkgver=18.12.1
+pkgver=18.13.0
 pkgrel=1
 pkgdesc="A tool to visualize and analyze tours recorded by a GPS device, ergometer, bike- or exercise computer."
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ sha256sums=('84607b0ae8313aaf4e466ff41a8c6d7d32d5fb4b1609463d99084b0c13d3036a')
 [ "$CARCH" = "i686"   ] && source=(${source[@]} "http://downloads.sourceforge.net/project/mytourbook/MyTourbook/${pkgver}/mytourbook-${pkgver}-linux-32.zip")
 [ "$CARCH" = "x86_64" ] && source=(${source[@]} "http://downloads.sourceforge.net/project/mytourbook/MyTourbook/${pkgver}/mytourbook-${pkgver}-linux-64.zip")
 
-[ "$CARCH" = "i686"   ] && sha256sums=(${sha256sums[@]} 'ad687466fa6433563f412b24211a780c478cdbe652552323b04506fb6eae1217')
-[ "$CARCH" = "x86_64" ] && sha256sums=(${sha256sums[@]} '546842f06da9ef83f46e019af9666a6e2f4d36c4dc722b282bd1deebeeef5d74')
+[ "$CARCH" = "i686"   ] && sha256sums=(${sha256sums[@]} '1b73f9e22187b7386cea124079cb4e18d41e244fc327519212017fe36fa115fa')
+[ "$CARCH" = "x86_64" ] && sha256sums=(${sha256sums[@]} '69e7030b9a5e283ed944db31a9b3fb0224a4f1329c775cb8ffdb071dfcbd37f3')
 
 package() {
   mkdir -p ${pkgdir}/usr/{bin,share/mytourbook}
