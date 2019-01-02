@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-shadowsocks-git
+	pkgdesc = Manage shadowsocks from panel menu. Support Surge subscription.
+	pkgver = r88.853af0b
+	pkgrel = 1
+	url = https://github.com/ylxdzsw/gnome-shell-extension-shadowsocks
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	depends = curl
+	optdepends = shadowsocks: provides sslocal
+	optdepends = shadowsocks-libev: provides ss-local
+	source = git+https://github.com/ylxdzsw/gnome-shell-extension-shadowsocks.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-shadowsocks-git
+
