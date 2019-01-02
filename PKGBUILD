@@ -9,20 +9,22 @@ pkgrel=1
 
 if [ "${USE_DEV}" = "0" ]; then
 pkgname=ns3
-pkgver=r13896
+pkgver=3.29
 fi
 
-pkgdesc='Full package of ns3 -- a Discrete-event network simulator for Internet systems'
+pkgdesc='Discrete-event network simulator for Internet systems'
 arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' 'aarch64' )
 url='http://www.nsnam.org/'
 license=('GPL')
 depends=(
+    'gcc'
     'gsl' # GNU Scientific Library
     'libxml2' 'sqlite' 'boost' 'boost-libs'
     'doxygen'
     'graphviz' 'imagemagick' 'dia' 'qt4'
-    'python2' 'python2-setuptools' 'python2-pydot' 'goocanvas' 'pygoocanvas' 'pygtk' 'python2-pygraphviz'
+    'python2' 'python2-setuptools' 'python2-pydot' 'goocanvas' 'pygoocanvas' 'pygtk' 'python2-pygraphviz' 'python2-gobject'
     'pygccxml' 'castxml'
+    'libgcrypt'
     'openmpi' # MPI for HPC
     'flex' # for nsc
     'valgrind'
@@ -102,6 +104,9 @@ prepare()
 
         sed '1s|^|#!/usr/bin/env python2\n|' -i ns-$pkgver/bindings/python/wscript
         sed -e 's|#!/usr/bin/env python$|#!/usr/bin/env python2|g' -i ns-$pkgver/waf
+
+        sed -e 's|program.create_task("SuidBuild")|program.create_task("SuidBuild_task")|' -i ns-$pkgver/wscript
+
     else
         # setup: bake, netanim, pybindgen, and ns-3-dev
         cd "${srcdir}/${pkgname}"
@@ -348,7 +353,7 @@ package()
 }
 
 #sha1sums=('59a9a3cfd738c48e17253eb7ed2aaccfc1cc498d' 'SKIP' 'SKIP' 'SKIP')
-md5sums=('SKIP' #c1580dbd9bd1f65b3453cd8956d36ae7
+md5sums=('1f4b667035fdb79471c7319f38595289'
          'SKIP'
          'SKIP'
          'SKIP'
