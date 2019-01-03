@@ -4,7 +4,7 @@
 _name=rogerrouter
 pkgname=roger-router-git
 pkgver=v2.1.0.r8.g3af078e
-pkgrel=1
+pkgrel=2
 pkgdesc="Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
@@ -31,7 +31,7 @@ source=("git+https://gitlab.com/tabos/rogerrouter.git")
 sha1sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "${srcdir}/${_name}"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
