@@ -1,7 +1,7 @@
 pkgbase = python-pot
 	pkgdesc = Python Optimal Transport
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rflamary/POT/
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,9 @@ pkgbase = python-pot
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-matplotlib
+	optdepends = python-cupy: necessary to use `ot.gpu`
+	optdepends = python-autograd: necessary to use `ot.dr`
+	optdepends = python-pymanopt: necessary to use `ot.dr`
 	source = https://github.com/rflamary/POT/archive/0.5.1.tar.gz
 	md5sums = a0aaad1c3163f2e14c11da3ee7a1a801
 
