@@ -18,16 +18,8 @@ prepare() {
 
 build() {
     cd yaml-cpp-yaml-cpp-$pkgver/build
-    cmake .. \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release
+    cmake .. -DCMAKE_BUILD_TYPE=Release
     make
-}
-
-check() {
-    cd yaml-cpp-yaml-cpp-$pkgver/build
-    make test
-    test/run-tests
 }
 
 package() {
