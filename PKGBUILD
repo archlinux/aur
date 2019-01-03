@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 # Maintainer: David Pugnasse <david.pugnasse@gmail.com>
 pkgname=pmd
-pkgver=6.9.0
+pkgver=6.10.0
 pkgrel=1
 pkgdesc="An extensible cross-language static code analyzer."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-environment=11')
 makedepends=('java-environment-common' 'maven')
 source=("https://github.com/$pkgname/$pkgname/releases/download/${pkgname}_releases/$pkgver/$pkgname-src-$pkgver.zip"
         pmdapp)
-sha256sums=('9c89cb142d374c8fc4caab4230e215ddbd622bf5a87efb358ac19972a367d42c'
+sha256sums=('5ec0788d0c1e73b47312688af9ff4cddcfd2f7c9aa6b3b6da237acae488a9401'
             'b1a73343ba0435801ce18c7fc18e14b7fed6a9be7b0a5907b67730471c176fc8')
 
 build() {
