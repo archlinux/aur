@@ -3,8 +3,8 @@
 
 pkgname=emacs-nim-mode
 pkgver=0.4.1
-pkgrel=1
-pkgdesc="The long lost Emacs string manipulation library."
+pkgrel=2
+pkgdesc="Emacs mode for the nim programming language"
 arch=('any')
 url="https://github.com/nim-lang/nim-mode"
 license=('GPL3')
