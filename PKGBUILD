@@ -1,12 +1,12 @@
 # Maintainer: Sibren Vasse <arch at sibrenvasse dot nl>
 pkgname=splashtop-streamer
 pkgver=2.2.5.1_4
-pkgrel=6
+pkgrel=7
 pkgdesc="Remotely access your desktop from any device from anywhere! - Server version"
 arch=('x86_64' 'i686')
 url="http://www.splashtop.com/streamer/linux"
 license=('custom')
-depends=('python2' 'pywebkitgtk' 'python2-keyring' 'python2-crypto' 'apr' 'apr-util' 'dbus' 'dbus-glib' 'glib2' 'libpulse' 'openssl' 'util-linux' 'libx11' 'libx264' 'libxfixes' 'libxrandr' 'libxtst' 'libappindicator-gtk2' 'networkmanager' 'libx264-142')
+depends=('python2' 'python2-keyring' 'python2-crypto' 'apr' 'apr-util' 'dbus' 'dbus-glib' 'glib2' 'libpulse' 'openssl' 'util-linux' 'libx11' 'libx264' 'libxfixes' 'libxrandr' 'libxtst' 'libappindicator-gtk2' 'networkmanager' 'python2-libappindicator')
 makedepends=('curl' 'p7zip')
 if [ "$CARCH" = "x86_64" ]; then
   source=(http://d17kmd0va0f0mp.cloudfront.net/linux/Splashtop_Streamer_Ubuntu_14.04_v${pkgver//_/-}_amd64.deb
