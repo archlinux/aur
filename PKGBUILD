@@ -1,7 +1,7 @@
 # Maintainer: Razer <razer@neuf.fr>
 pkgname=python-pylint-django
 _pypi_pkgname=pylint-django
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=0
 pkgdesc="A Pylint plugin to help Pylint understand the Django web framework"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('python')
 makedepends=('python-setuptools' 'python-pylint-plugin-utils')
 source=("https://pypi.io/packages/source/p/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('f2899a0f33c9bede0c9912ade9a57bbfc4b400b4912c59bea055353f9d2ff56f')
+sha256sums=('23d673c940710081d1e7417886cd14b0eca39ca9d9e50373961903cf2a607ccd')
 
 build() {
   cd "${_pypi_pkgname}-${pkgver}"
