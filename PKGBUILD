@@ -4,7 +4,7 @@
 
 pkgname=qwt-qt4
 _pkgname=qwt
-pkgver=6.1.3
+pkgver=6.1.4
 pkgrel=1
 pkgdesc='Qt Widgets for Technical Applications - Qt4 version'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url='http://qwt.sourceforge.net/'
 depends=('gcc-libs' 'glibc' 'qt4')
 license=('custom')
 source=("https://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('f3ecd34e72a9a2b08422fb6c8e909ca76f4ce5fa77acad7a2883b701f4309733')
+sha256sums=('1529215329e51fc562e0009505a838f427919a18b362afff441f035b2d9b5bd9')
 
 prepare() {
     cd "$_pkgname-$pkgver"
