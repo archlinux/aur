@@ -2,20 +2,20 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.23
+pkgver=0.9.24
 pkgrel=1
 changelog=.CHANGELOG
 source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
 _pkgname=${pkgname}
-# template start; name=lix; version=1.3;
+# template start; name=lix; version=1.4;
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
 license=('custom:CC0')
-depends=('allegro' 'enet' 'hicolor-icon-theme')
-makedepends=('git' 'dmd' 'dub')
+depends=('allegro' 'enet' 'hicolor-icon-theme' 'liblphobos')
+makedepends=('git' 'ldc' 'dub')
 _dubv=(	"4.0.4+5.2.0"   # allegro
         "0.7.1"         # bolts
         "4.1.0"         # derelict-enet
@@ -63,7 +63,7 @@ sha512sums+=(   'SKIP'
                 'SKIP'
                 )
 
-build()
+_build()
 {
     cd "${srcdir}/${_pkgname}" || exit
     _r=0
@@ -71,9 +71,8 @@ build()
     # add local dependencies to search path
     dub add-path "${srcdir}"
 
-    # force FHS compatibility with '-b releaseXDG'
     # ensure with --cache=local dub stays outside the users home directory
-    dub build -f -b releaseXDG --cache=local || _r="${?}"
+    dub $@ --cache=local || _r="$?"
 
     # remove local dependencies from search path so dub won't find them
     # later again
@@ -90,31 +89,18 @@ build()
     fi
 }
 
+build()
+{
+    cd "${srcdir}/${_pkgname}" || exit
+
+    # force FHS compatibility with 'releaseXDG'
+    _build build --force --build=releaseXDG
+}
+
 check()
 {
     cd "${srcdir}/${_pkgname}" || exit
-    _r=0
-
-    # add local dependencies to search path
-    dub add-path "${srcdir}"
-
-    # run test suite
-    # ensure with --cache=local dub stays outside the users home directory
-    dub test --cache=local || _r="${?}"
-
-    # remove local dependencies from search path so dub won't find them
-    # later again
-    dub remove-path "${srcdir}"
-
-    # removes any cached metadata like the list of available packages
-    # and their latest version
-    dub clean-caches
-
-    if [[ "${_r}" != 0 ]]
-    then
-        # dub failed so we also fail after we removed the local dependencies
-        return "${_r}"
-    fi
+    _build test --parallel
 }
 
 package()
@@ -149,7 +135,7 @@ package()
         `# SRCFILE:` \
             "doc/lix.6" \
         `# DSTFILE:` \
-            "${pkgdir}/usr/share/man/man6/lix.6.gz"
+            "${pkgdir}/usr/share/man/man6/lix.6"
 
     # install binary
     install -Dm755 \

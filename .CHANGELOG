@@ -1,6 +1,35 @@
 Version history
 ===============
 
+0.9.24
+------
+
+2019-01-03
+
+Work around bug #372 (garbled exit markers): Removed alpha channel from
+data/images/goalmark.I.png. Arrow's white overlay is entirely opaque. Made
+overlay line thinner to compensate for the fully-opaque overlay. This should
+avoid #372 to trigger at all. Everything should recolor properly.
+
+Multiplayer directories: Sort authors with easier multiplayer maps.
+Easy means that it's easy to save lix against opponents that do nothing.
+Reason: New players click on the first-listed authors very often.
+This is not an ideal permanent solution, but we have needed something like
+this quickly for the Debian 10 release.
+
+New multiplayer maps by Flopsy: Cascade Squared (4p, 6p, 8p) and
+The Storeroom (6p, 8p).
+
+Fix bug with _order.X.txt files: When you go to a dir A with order file, then
+go to a different dir B without order file but with files named like those in
+A, the files in B are now sorted alphabetically, not wrongly by the order
+file from A.
+
+The options file ./user/options.sdl contains a comment explaining that
+screenMode 0 is windowed, 1 is software fullscreen, 2 is hardware fullscreen.
+
+
+
 0.9.23
 ------
 
