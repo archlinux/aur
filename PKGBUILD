@@ -10,6 +10,7 @@ install="$pkgname.install"
 arch=('any')
 license=('GPL3')
 depends=('conky-cairo' 'lua-lpeg')
+makedepends=('git')
 source=("$pkgname::git+https://gitlab.com/goeb/$_reponame.git#tag=$pkgver")
 sha256sums=('SKIP')
 

@@ -6,6 +6,7 @@ pkgbase = corky
 	install = corky.install
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = conky-cairo
 	depends = lua-lpeg
 	source = corky::git+https://gitlab.com/goeb/Corky.git#tag=2017033001
