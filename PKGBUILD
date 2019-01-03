@@ -1,6 +1,6 @@
 pkgbase=python-nfc
 pkgname=('python-nfc' 'python2-nfc')
-pkgver=r83.4f4d194
+pkgver=r92.e5f6f89
 pkgrel=1
 pkgdesc='Python bindings for libnfc'
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ build()
   cd "$srcdir"/nfc-bindings-py2
   mkdir -p build && pushd build
   cmake \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DCMAKE_INSTALL_PREFIX=/usr ..
 }
 
