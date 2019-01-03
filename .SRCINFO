@@ -1,0 +1,19 @@
+pkgbase = keyman
+	pkgdesc = IBus engine supporting over 1,000 layouts (former KMFL)
+	pkgver = 11.0.101
+	pkgrel = 1
+	url = https://keyman.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = help2man
+	depends = ibus
+	replaces = kmflcomp
+	replaces = libkmfl
+	replaces = ibus-kmfl
+	source = keyman-11.0.101.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-beta-11.0.101.tar.gz
+	md5sums = 06965fc5182601aea3a8e6d094c9c683
+
+pkgname = keyman
+
