@@ -8,14 +8,14 @@ build() {
             add_module "$mod"
         done
     else
-        add_all_modules '/tpm/'
+        add_all_modules /tpm/
     fi
 
-    add_binary 'tpm2-totp'
+    add_binary tpm2-totp
 
     # Force usage of device TCTI and suppress warnings issued by tpm2-tss
     # when trying to load other TCTI libraries
-    add_file '/usr/lib/libtss2-tcti-device.so' '/usr/lib/libtss2-tcti-default.so'
+    add_file /usr/lib/libtss2-tcti-device.so /usr/lib/libtss2-tcti-default.so
 
     add_runscript
 }
@@ -35,6 +35,10 @@ TOTP is calculated and displayed together with the current time so that it can
 be compared with the output of the second device. This will only be successful
 and show a matching output if the boot process has not changed (new UEFI
 firmware, different boot loader, ...).
+
+When using a custom NV index with the '--nvindex index' option of tpm2-totp,
+this index needs to be specified as 'tpm2_totp_nvindex=index' on the kernel
+command line.
 
 Note that calculating the TOTP requires some entropy, which might be scarce
 directly after startup. If the boot process appears to be stuck, it might help
