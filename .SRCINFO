@@ -1,0 +1,28 @@
+pkgbase = gnome-contacts-git
+	pkgdesc = Contacts Manager for GNOME
+	pkgver = 3.31.3.r14.g93ca1c6
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Contacts
+	arch = x86_64
+	groups = gnome
+	license = GPL2
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	makedepends = libhandy
+	depends = gtk3
+	depends = folks
+	depends = gnome-desktop
+	depends = dconf
+	depends = gnome-online-accounts
+	depends = libgee
+	depends = cheese
+	depends = libhandy
+	provides = gnome-contacts
+	conflicts = gnome-contacts
+	source = git+https://gitlab.gnome.org/GNOME/gnome-contacts.git
+	sha256sums = SKIP
+
+pkgname = gnome-contacts-git
+
