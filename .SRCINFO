@@ -1,0 +1,19 @@
+pkgbase = ttf-genericmobile
+	pkgdesc = A raster proportional sans serif typeface, extracted from various generic mobile devices.
+	pkgver = 20190103.01
+	pkgrel = 1
+	url = https://notabug.org/HarvettFox96/ttf-genericmobile
+	arch = any
+	license = CC0
+	depends = fontconfig
+	depends = xorg-font-utils
+	depends = xorg-fonts-encodings
+	source = https://notabug.org/HarvettFox96/ttf-genericmobile/archive/20190103.01.tar.gz
+	source = 20190103.01.tar.gz.sig::https://notabug.org/attachments/026153a0-c06a-4a60-a296-1f217dd95529
+	validpgpkeys = 4C565E3C3DB4DE43785F0DA9B627DC6AB09D9B83
+	validpgpkeys = 925C741082DC0DB32CF8AADFCB73A6EB26948E91
+	sha512sums = a9c4027af295a89d2c6b2801ef7d1760bca4d477f8b2956559a6c2877fd175274b50f45b58af26b3598bb7d6a6b2d881cbab0eb5245c59d7a02f48cd0576b85e
+	sha512sums = SKIP
+
+pkgname = ttf-genericmobile
+
