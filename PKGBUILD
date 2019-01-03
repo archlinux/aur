@@ -2,7 +2,7 @@
 
 pkgname=slack-desktop-dark
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Slack Desktop (Beta) for Linux, with dark theme patch"
 arch=('x86_64')
 url="https://slack.com/downloads"
@@ -16,7 +16,7 @@ source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgv
 noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
 
 sha256sums=('d12dcc09f75af35b949068dd2b46c4e2a1990b8c7d3b3fdd4fc40b539755a407'
-            '93e1bea9f7352fca43b515835c7c319b74a77b68fa5f49a613d3fe03d6f2ba36'
+            'c14c22fd39a6cca72669a8a470f8b193e96757477c515f66506bd36f62b5af10'
             'c952eb32dd59beff9fc5374853b04acde4a60ed8c39934fcd0b66829455d594d')
 
 package() {

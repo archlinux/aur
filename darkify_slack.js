@@ -9896,7 +9896,7 @@ comments {
 .channel_header,
 .channel_title_info,
 body {
-    background: rgb(0, 43, 54)
+    background: rgb(50, 50, 50)
 }
 
 .c-message__body {
@@ -9905,7 +9905,7 @@ body {
 
 #team_menu,
 .p-channel_sidebar {
-    background: #023f4e !important
+    background: #191919 !important
 }
 
 .c-presence--active {
@@ -9917,16 +9917,16 @@ body {
 .p-message_pane .c-message_list.c-virtual_list--scrollbar>.c-scrollbar__hider:before,
 nav.p-channel_sidebar .p-channel_sidebar__channel--selected {
     color: #eee !important;
-    background: rgb(27, 139, 210) !important
+    background: rgb(111, 111, 111) !important
 }
 
 .c-message_list__day_divider__line {
-    border-top-color: rgb(27, 139, 210) !important
+    border-top-color: rgb(111, 111, 111) !important
 }
 
 #msg_input,
 #primary_file_button {
-    background: rgb(2, 55, 68) !important
+    background: rgb(76, 76, 76) !important
 }
 
 #msg_form #msg_input {
