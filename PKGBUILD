@@ -4,12 +4,12 @@ _pkgname=gpxtools
 _branch=master
 pkgname=${_pkgname}-git
 pkgver=r37.5a75289
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of c++ tools for using GPX files'
 arch=('i686' 'x86_64')
 url='https://github.com/irdvo/gpxtools'
 license=('GPL3')
-makedepends=('git')
+makedepends=('cmake' 'git')
 provides=("${pkgname//-git}=${pkgver}")
 conflicts=(${pkgname//-git})
 source=("${_pkgname}-${_branch}::git://github.com/${_orgname}/${_pkgname}.git#branch=${_branch}")
@@ -32,12 +32,11 @@ build() {
   cd build
 
   cmake ..
-  make
+  cmake --build .
 }
 
 package() {
   cd ${_pkgname}-${_branch}
 
-  install -dm755 ${pkgdir}/usr/bin
-  install -Dm755 build/gpx* ${pkgdir}/usr/bin
+  install -Dm755 build/gpx* -t ${pkgdir}/usr/bin
 }
