@@ -1,13 +1,11 @@
-# Maintainer: Mohammed Yaseen Mowzer <yaseen@mowzer.co.za>
+# Maintainer: Bjoern Franke <bjo@nord-west.org>
 
-#ALARM: Thomas Fanninger <thomas [at] fanninger [dot] at>
-#	- moved optional depenceses from depends to optdepends
 
 pkgname=spectrum2
-pkgver=2.0.7
-pkgrel=3
+pkgver=2.0.9
+pkgrel=1
 #epoch=
-pkgdesc="Create C++ transports easily"
+pkgdesc="an open source instant messaging transport"
 arch=('any')
 url="http://spectrum.im"
 license=('GPL')
@@ -36,9 +34,10 @@ changelog=
 source=("https://github.com/hanzz/$pkgname/archive/$pkgver.tar.gz"
         'spectrum2.service'
         'log4cxx-fix.patch')
-sha256sums=('7d2513a13d29fb2762dac2c87dac1483d1c65302bcf15614e4975b0b9d364872'
+sha256sums=('e536a65ef86aafdc6d87f3c6b5bce919a67054dd01f757a2dbc82acbbdd0fa87'
             '8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1'
             '1c1c867ef69a8d333197ffb2b2ddcf64527f34d92ee10597d85fd1d95c54e8f6')
+
 noextract=()
 validpgpkeys=()
 
