@@ -1,7 +1,7 @@
 # Contributor: Korzhetskiy Yury <neitrinoph@gmail.com>
 
 pkgname=mingw-w64-qwt
-pkgver=6.1.3
+pkgver=6.1.4
 pkgrel=1
 pkgdesc="Qt Widgets for Technical Applications (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('mingw-w64-qt5-svg')
 makedepends=('mingw-w64-gcc')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://downloads.sourceforge.net/qwt/qwt-${pkgver}.tar.bz2")
-md5sums=('19d1f5fa5e22054d22ee3accc37c54ba')
+sha256sums=('1529215329e51fc562e0009505a838f427919a18b362afff441f035b2d9b5bd9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
