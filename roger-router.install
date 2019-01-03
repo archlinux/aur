@@ -1,0 +1,19 @@
+post_install() {
+	if [ ! -d "$pkgdir/var/spool/roger" ]; then
+		mkdir -p "$pkgdir/var/spool/roger"
+		chmod 2770 "$pkgdir/var/spool/roger"
+		chown root:lp "$pkgdir/var/spool/roger"
+	fi
+
+	if [ ! $(lpstat -s | grep 'socket://localhost' | grep -i 'roger') ]; then
+		echo To add the fax printer install cups...
+		lpadmin -p Roger-Router-Fax -m drv:///sample.drv/generic.ppd -v socket://localhost:9100/ -E -o PageSize=A4 
+		echo
+		echo Users have to be in the group \"lp\" to use this printer.
+		gpasswd --add $USER lp
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
