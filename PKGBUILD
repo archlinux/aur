@@ -26,9 +26,8 @@ build() {
 package() {
   cd ${_pkgname}-${pkgver}
 
-  install -dm755 ${pkgdir}/usr/share/${pkgname}/translations
   install -Dm755 bin/GPXLab ${pkgdir}/usr/bin/${pkgname}
-  install -Dm644 GPXLab/locale/*.qm ${pkgdir}/usr/share/${pkgname}/translations
+  install -Dm644 GPXLab/locale/*.qm -t ${pkgdir}/usr/share/${pkgname}/translations
   install -Dm644 doc/gpxlab.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
   install -Dm644 pkg/gpxlab.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
   install -Dm644 pkg/gpxlab.xml ${pkgdir}/usr/share/mime/packages/${pkgname}.xml
