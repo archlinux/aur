@@ -1,7 +1,7 @@
 pkgbase = xbmpwall-git
-	pkgdesc = X11 bitmap (.xbm) file manager for xsetroot. It shows a bitmap preview and allows you to place it as a wallpaper with xsetroot.
+	pkgdesc = X11 bitmap (.xbm) file manager for xsetroot. It shows a bitmap preview and allows you to place it as a wallpaper.
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/daltomi/xbmpwall
 	arch = x86_64
 	license = GPL3
