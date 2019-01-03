@@ -6,6 +6,7 @@ pkgbase = snot
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	makedepends = git
 	makedepends = go
 	makedepends = python-docutils
 	depends = btrfs-progs

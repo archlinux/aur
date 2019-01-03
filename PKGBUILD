@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 url='https://gitlab.com/goeb/snot'
 license=('GPL3')
 depends=('btrfs-progs')
-makedepends=('go' 'python-docutils')
+makedepends=('git' 'go' 'python-docutils')
 source=("$pkgname::git+https://gitlab.com/goeb/$pkgname.git#tag=$pkgver")
 sha256sums=('SKIP')
 backup=(
