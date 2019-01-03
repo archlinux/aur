@@ -1,6 +1,6 @@
 pkgbase = opencv-java
 	pkgdesc = Open Source Computer Vision Library - Java bindings
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = http://opencv.org/
 	arch = i686
@@ -8,18 +8,23 @@ pkgbase = opencv-java
 	license = BSD
 	makedepends = cmake
 	makedepends = python-numpy
-	makedepends = python2-numpy
+	makedepends = python-setuptools
 	makedepends = mesa
 	makedepends = eigen
+	makedepends = hdf5
+	makedepends = lapacke
+	makedepends = gtk3
+	makedepends = vtk
+	makedepends = glew
 	makedepends = apache-ant
 	makedepends = java-environment
-	depends = opencv>=4.0.0
+	depends = opencv>=4.0.1
 	depends = java-runtime
 	optdepends = opencv-samples: OpenCV samples
-	source = opencv-4.0.0.tar.gz::https://github.com/opencv/opencv/archive/4.0.0.tar.gz
-	source = opencv_contrib-4.0.0.tar.gz::https://github.com/opencv/opencv_contrib/archive/4.0.0.tar.gz
-	sha256sums = 3787b3cc7b21bba1441819cb00c636911a846c0392ddf6211d398040a1e4886c
-	sha256sums = 4fb0681414df4baedce6e3f4a01318d6f4fcde6ee14854d761fd4e397a397763
+	source = opencv-4.0.1.tar.gz::https://github.com/opencv/opencv/archive/4.0.1.tar.gz
+	source = opencv_contrib-4.0.1.tar.gz::https://github.com/opencv/opencv_contrib/archive/4.0.1.tar.gz
+	sha256sums = 7b86a0ee804244e0c407321f895b15e4a7162e9c5c0d2efc85f1cadec4011af4
+	sha256sums = 0d8acbad4b7074cfaafd906a7419c23629179d5e98894714402090b192ef8237
 
 pkgname = opencv-java
 
