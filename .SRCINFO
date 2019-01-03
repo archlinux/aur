@@ -1,0 +1,34 @@
+pkgbase = scheduler
+	pkgdesc = Alarms and reminders: tasks, events, calendar, pomodoro and timer widgets
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/j4321/Scheduler
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = tk
+	depends = gettext
+	depends = desktop-file-utils
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-ewmh
+	depends = python-babel
+	depends = python-tkcalendar
+	depends = python-apscheduler
+	depends = python-sqlalchemy
+	depends = python-dateutil
+	depends = mpg123
+	optdepends = tktray: GUI toolkit for the system tray icon (at least one must be installed)
+	optdepends = pygtk: GUI toolkit for the system tray icon (at least one must be installed)
+	optdepends = python-pyqt5: GUI toolkit for the system tray icon (at least one must be installed)
+	optdepends = python-pyqt4: GUI toolkit for the system tray icon (at least one must be installed)
+	optdepends = python-pyside: GUI toolkit for the system tray icon (at least one must be installed)
+	optdepends = libnotify: desktop notifications
+	optdepends = zenity: nicer color chooser
+	optdepends = python-tkcolorpicker: nicer color chooser
+	source = scheduler-1.1.0.tar.gz::https://github.com/j4321/Scheduler/archive/v1.1.0.tar.gz
+	sha512sums = a6cc5a64e483cd6a36c7fc4373f260da34183f42ca8b17f0770b767bbd761082a557c7c4b741f71520eaec1a9052554e37ce055e8b3afcc82eaee3ab0bc94320
+
+pkgname = scheduler
+
