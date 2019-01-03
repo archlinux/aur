@@ -9,14 +9,14 @@
 
 _name=gajimbo
 pkgname="$_name-git"
-pkgver=v1.1.9.1.0.gf823ab321
+pkgver=v1.1.91.1.0.g9ee3249eb
 pkgrel=1
 pkgdesc="A fork of Gajim with various enhancements, written in Python with GTK+"
 arch=('any')
 url="https://gitlab.com/ao/gajimbo"
 license=('GPL3')
 depends=('python-gobject' 'python-pyopenssl' 'hicolor-icon-theme'
-         'python-pyasn1' 'python-nbxmpp' 'python-cairo' 'python-keyring'
+         'python-pyasn1' 'python-nbxmpp-git' 'python-cairo' 'python-keyring'
          'python-distro' 'python-precis_i18n')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-dbus: for gajim-remote and zeroconf support'
@@ -49,5 +49,10 @@ pkgver() {
 package() {
   cd $_name
   python setup.py install --root="$pkgdir/" --optimize=1
+  echo "=========================================================================================="
+  echo "IMPORTANT: To install all available plugins, run the following commands on your local user"
+  echo "mkdir -p ~/.local/share/gajim/plugins"
+  echo "git clone https://dev.gajim.org/gajim/gajim-plugins ~/.local/share/gajim/plugins"
+  echo "=========================================================================================="
 }
 
