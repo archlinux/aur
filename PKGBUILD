@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=twa
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Tiny web auditor with strong opinions'
 arch=('any')
@@ -9,7 +9,7 @@ url=https://github.com/trailofbits/twa
 license=('MIT')
 depends=('bash' 'bind-tools' 'curl' 'netcat')
 source=("$url/archive/$pkgver/twa-$pkgver.tar.gz")
-sha512sums=('b5c0c386b579e8cb3d24545a0424fecc55850eefe871129ffa7c10f674379ad35db4a20b0c3884084c53b30ea1c9b8b52e2577233582845581247fa7a243a442')
+sha512sums=('d5e954701569376162994ce7c4cbd6f35922befea4e59798873e3886b223d2020884466f1cee80585207c7a1b5822861d35caf35cf5fb651e99c50e041e57d97')
 
 package() {
   cd twa-$pkgver
