@@ -25,7 +25,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$SRCDEST/$pkgname"
-  svnversion
+  svn info | grep '^Revision:' | sed -e 's/^Revision: //'
 }
 
 build() {
