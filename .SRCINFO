@@ -1,6 +1,6 @@
 pkgbase = casile-git
 	pkgdesc = Caleb's SILE publishing toolkit
-	pkgver = 0.0.0.r619.g0a27c05
+	pkgver = 0.0.0.r620.gdf4693d
 	pkgrel = 1
 	url = https://github.com/alerque/casile/
 	arch = any
@@ -36,6 +36,7 @@ pkgbase = casile-git
 	depends = tex-gyre-fonts
 	depends = ttf-hack
 	depends = yarn
+	depends = yq
 	depends = zint
 	depends = zsh
 	provides = casile

@@ -2,7 +2,7 @@
 
 pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit"
-pkgver=0.0.0.r619.g0a27c05
+pkgver=0.0.0.r620.gdf4693d
 _branch='master'
 pkgrel=1
 arch=(any)
@@ -43,6 +43,7 @@ depends=('bc'
          'tex-gyre-fonts'
          'ttf-hack'
          'yarn'
+         'yq'
          'zint'
          'zsh')
 
