@@ -1,0 +1,30 @@
+From 603daa59ef609950cb98bd1941457b2819ad5ff9 Mon Sep 17 00:00:00 2001
+From: "J. Kim" <jeongseok.kim@sk.com>
+Date: Wed, 2 Jan 2019 20:58:40 +0900
+Subject: [PATCH] [build] Install examples into DOC directory
+
+${prefix}/examples is too general location.
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3797b05..1dee6ea 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -90,7 +90,11 @@ endif(ENABLE_TESTS)
+ if(ENABLE_EXAMPLES)
+     add_subdirectory(examples)
+ endif(ENABLE_EXAMPLES)
+-install(DIRECTORY examples DESTINATION .)
++if(WIN32 AND NOT CYGWIN)
++    install(DIRECTORY examples DESTINATION doc)
++else()
++    install(DIRECTORY examples DESTINATION share/doc/hawktracer)
++endif()
+ 
+ if(ENABLE_BENCHMARKS)
+     add_subdirectory(benchmarks)
+-- 
+2.20.1
+

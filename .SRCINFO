@@ -1,0 +1,19 @@
+pkgbase = hawktracer-git
+	pkgdesc = HawkTracer - a highly portable, low-overhead, configurable profiling tool (git version)
+	pkgver = 0.6.0.r59.ga90df7a
+	pkgrel = 1
+	url = https://github.com/loganek/hawktracer
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = hawktracer
+	conflicts = hawktracer
+	source = git+https://github.com/loganek/hawktracer.git
+	source = 0001-build-Install-examples-into-DOC-directory.patch
+	sha512sums = SKIP
+	sha512sums = b600931bb8e0ff40e6a4a16e80e7e32881f57491fc8bec8658cd863f3b42e3b73ee4c95912adaa0489b41df7681d9e7820b92b4601bcfaa7573b7578faa4b692
+
+pkgname = hawktracer-git
+
