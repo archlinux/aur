@@ -9,14 +9,14 @@ pkgbase=notmuch-git
 arch=('i686' 'x86_64')
 pkgname=('notmuch-emacs-git' 'notmuch-runtime-git' 'notmuch-python-git' 'notmuch-python2-git' 'notmuch-ruby-git' 'notmuch-vim-git' 'notmuch-mutt-git')
 epoch=3
-pkgver=0.27.3.31.g8dcc38ce
+pkgver=0.28.2.20.ge5253502
 pkgrel=1
 url="https://notmuchmail.org/"
 license=('GPL3')
 makedepends=('python2' 'python' 'python-sphinx' 'emacs' 'git' 
 	     'gnupg' 'ruby' 'pkgconfig' 'xapian-core' 'gmime' 'talloc')
-options=(!distcc !makeflags)
-source=("git+https://github.com/notmuch/notmuch")
+options=('!distcc')
+source=("git+https://git.notmuchmail.org/git/notmuch")
 md5sums=('SKIP')
 
 pkgver() {
@@ -33,7 +33,7 @@ prepare(){
 
 build() {
   cd "${pkgbase%-git}"
-  ./configure --prefix=/usr --sysconfdir=/etc --includedir=/usr/include --without-zsh-completion
+  ./configure --prefix=/usr --sysconfdir=/etc --includedir=/usr/include 
   make 
   
   make -C "contrib/${pkgbase%-git}-mutt" "${pkgbase%-git}-mutt.1"
@@ -54,7 +54,6 @@ package_notmuch-emacs-git(){
   optdepends=('emacs: for using the emacs interface' 'gnupg: for email encryption')
   conflicts=('notmuch')
   provides=('notmuch')
-  install=notmuch.install
  
   cd "${pkgbase%-git}"
   make DESTDIR="$pkgdir/" install-emacs

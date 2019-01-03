@@ -1,5 +1,5 @@
 pkgbase = notmuch-git
-	pkgver = 0.27.3.31.g8dcc38ce
+	pkgver = 0.28.2.20.ge5253502
 	pkgrel = 1
 	epoch = 3
 	url = https://notmuchmail.org/
@@ -18,13 +18,11 @@ pkgbase = notmuch-git
 	makedepends = gmime
 	makedepends = talloc
 	options = !distcc
-	options = !makeflags
-	source = git+https://github.com/notmuch/notmuch
+	source = git+https://git.notmuchmail.org/git/notmuch
 	md5sums = SKIP
 
 pkgname = notmuch-emacs-git
 	pkgdesc = Not much of an email program -default interface to emacs
-	install = notmuch.install
 	arch = any
 	depends = notmuch-runtime
 	optdepends = emacs: for using the emacs interface
