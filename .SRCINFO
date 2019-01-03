@@ -1,0 +1,31 @@
+pkgbase = jackal
+	pkgdesc = An XMPP/Jabber server
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ortuman/jackal
+	install = jackal.install
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = go>=1.11.0
+	depends = glibc
+	optdepends = mariadb: MariaDB support
+	conflicts = jackal-git
+	backup = etc/jackal/jackal.yml
+	source = https://github.com/ortuman/jackal/archive/v0.4.0.tar.gz
+	source = jackal.service
+	source = jackal.sysusers
+	source = jackal.tmpfiles
+	source = jackal.yml
+	sha512sums = b25065f21dbc674c8d43ffa389fcf7e16b27bdd72186e3ce56412654de6321f9a6c75ee1df1ff320b3d8770e0ee907fdd2310ec696f11ccd88f474464fcc9268
+	sha512sums = d7025628d82371c6ef7a942a918d8970ca54f01ddd513e2577474a31d880355045415c131cf68b8df6f1cc3b19b17135a8d955815f6b4f91d6ce77a70d982f7e
+	sha512sums = 470ec8c5958658e3f264f2186ccfb14a2b9cd6760da86116a89ecfbf147ef38310fb767ae1bb79a0fb6ae3881de399322a52540da7f4b21f4bd791d54cf47b11
+	sha512sums = 8eb4c15f63d1f4028d3dbe8a0861ffa514f6643c8fa918fc54c1fda4d6380d914b12d6cf1a199ee0929c966b311645aa482825f6d8ea29173865da29530bb711
+	sha512sums = c8445899ab3708bd11754e4c1cc74069c8586521d4e9d41c8cc93a7738889817a5502f19484685f3d1b5e658eb40eea1bd1b61c1fc447c5c3e4569faf1b82664
+
+pkgname = jackal
+
