@@ -1,0 +1,19 @@
+[Unit]
+Description=Jackal XMPP/Jabber server
+After=syslog.target
+After=network.target
+After=mysqld.service
+After=mariadb.service
+
+[Service]
+RestartSec=1s
+Type=simple
+PIDFile=/var/lib/jackal/data/jackal.pid
+User=jackal
+Group=jackal
+WorkingDirectory=/var/lib/jackal
+ExecStart=/usr/bin/jackal
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

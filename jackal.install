@@ -1,0 +1,10 @@
+post_upgrade() {
+cat << EOF
+
+Before starting Jackal, the database needs to be initialized.
+The schema files can be found in /usr/share/jackal/ and instructions can be
+found in /usr/share/doc/jackal.
+
+After configuring the database, restart jackal.service.
+EOF
+}
