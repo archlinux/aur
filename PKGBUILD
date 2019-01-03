@@ -3,7 +3,7 @@
 
 pkgname=miredo
 pkgver=1.2.6+r149+g5db176c
-pkgrel=1
+pkgrel=2
 _commit='5db176c6aae10fe3d743738244c82f0b52f80cd7'
 pkgdesc='Teredo client and server.'
 arch=('x86_64')
@@ -20,8 +20,14 @@ source=("git+http://git.remlab.net/git/miredo.git#commit=${_commit}")
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname}"
+	cd "${srcdir}/${pkgname}"
 	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/+/g'
+}
+
+prepare() {
+	cd "${srcdir}/${pkgname}"
+	# Miredo starts too early
+	sed 's|^After=network.target$|After=network-online.target|' -i "${srcdir}/${pkgname}/misc/miredo.service-in"
 }
 
 build() {
