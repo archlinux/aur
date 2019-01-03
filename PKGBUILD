@@ -3,12 +3,12 @@
 
 pkgname=netease-musicbox-git
 _gitname=musicbox
-pkgver=r579.8ce4a7e
+pkgver=r586.900d9bd
 pkgrel=1
 pkgdesc="A sexy command line interface musicbox for NetEase based on Python"
 arch=(any)
 url="https://github.com/darknessomi/musicbox"
-depends=('mpg123' 'python-pycryptodomex' 'python-requests' 'python-future')
+depends=('mpg123' 'python-pycryptodomex' 'python-requests' 'python-future' 'python-requests-cache')
 makedepends=('python-setuptools' 'git')
 optdepends=('aria2: music caching'
             'libnotify: notifications'
@@ -22,11 +22,11 @@ license=('MIT')
 
 source=("${_gitname}::git+https://github.com/darknessomi/musicbox"
         "LICENSE::https://raw.githubusercontent.com/darknessomi/musicbox/master/LICENSE.txt"
-        "0001-Fixed-Replace_pyqt4_to_pyqt5_as_depends.patch")
+        "0001-Replace_pyqt4_to_pyqt5_as_depends.patch")
 
 sha256sums=('SKIP'
-            '50efc98142cfffe413d73c87c91f2687dfb774217af923f03dfdc8426c9d9552'
-            '55b4dd116b8b7a1b47854f52ce1e9f8422fb72702beb4c259bda388e23060484')
+            'e6ce649439eace57267c94e651e38370582f883e6341b3203e951b9497433641'
+            '485d7a1e900da50a4d6d055131ebc3b2072cf5760d9e27cd266ff373aedb6d46')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -35,7 +35,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
-  patch -Np1 -i "${srcdir}/0001-Fixed-Replace_pyqt4_to_pyqt5_as_depends.patch"
+  patch -Np1 -i "${srcdir}/0001-Replace_pyqt4_to_pyqt5_as_depends.patch"
 }
 
 package() {
