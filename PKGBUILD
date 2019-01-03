@@ -2,7 +2,7 @@
 
 pkgname=clightd
 _gitname=Clightd
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('systemd>=221' 'linux-api-headers' 'libx11' 'libxrandr' 'libxext' 'polk
 makedepends=('git' 'cmake')
 optdepends=('clight: user service to automagically change screen backlight matching ambient brightness.')
 source=("${_gitname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=("a52d340ba4ac01fa115e54ca8f82ea9f7f6863103eef3a517425b42615accca0")
+sha256sums=("8631af4ed385bd752c17462a77f43abfb9932941780d8312a15cc76d7f0e4ebe")
 
 prepare() {
     cd "${srcdir}/${_gitname}-${pkgver}"
@@ -21,11 +21,12 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_gitname}-${pkgver}/build"
-    cmake \
+     cmake \
         -G "Unix Makefiles" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE="Release" \
+        -DENABLE_DDC=1 -DENABLE_GAMMA=1 -DENABLE_IDLE=1 -DENABLE_DPMS=1 \
         ..
     make
 }
