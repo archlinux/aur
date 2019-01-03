@@ -1,0 +1,22 @@
+pkgbase = uau
+	pkgdesc = A little helper for installing Arch upgrades scheduled, respecting the recommended upgrade checks and doing all this non-interactively
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/steadfasterX/arch_uau
+	install = uau.install
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = aur-comment-fetcher-git
+	depends = checkupdates+aur
+	depends = sudo
+	depends = pacman
+	depends = python3-memoizedb
+	optdepends = ssmtp: to provide the sendmail like mail command
+	backup = etc/unattended-arch-upgrade.conf
+	backup = etc/unattended-arch-upgrade.ignore
+	source = https://github.com/steadfasterX/arch_uau/archive/v1.1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = uau
+

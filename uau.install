@@ -1,0 +1,34 @@
+
+post_install() {
+    . /etc/unattended-arch-upgrade.conf
+
+    TODAY=$(date +%F); useradd $UPDATEUSER -G systemd-journal --expiredate $TODAY -f -1 -m
+
+    # install archnews and ensure it is a supported version
+    mkdir $ANEWSDIR
+    git clone $GITANEWS $ANEWSDIR
+    cd $ANEWSDIR
+    git checkout $ANEWREL
+
+    systemctl enable unattended-arch-upgrade.timer
+    systemctl start unattended-arch-upgrade.timer
+    systemctl list-timers unattended-arch-upgrade.timer
+
+    sed -i '/\[options\]/a Include=/etc/unattended-arch-upgrade.ignore' $PACCONF
+
+    mkdir -p $LOGDIR
+    chown $UPDATEUSER $LOGDIR
+
+    chmod 644 /etc/cron.d/archnews
+}
+
+pre_remove() {
+    . /etc/unattended-arch-upgrade.conf
+    
+    sed -i 's#Include=/etc/unattended-arch-upgrade.ignore##g' $PACCONF
+
+    systemctl stop unattended-arch-upgrade.timer
+    systemctl disable unattended-arch-upgrade.timer
+    userdel $UPDATEUSER -r
+}
+
