@@ -1,6 +1,6 @@
 # Maintainer: livix <gatti.oliver@gmail.com>
 pkgname=gazie
-pkgver=7.11
+pkgver=7.15
 pkgrel=1
 pkgdesc="Multicompany finance application written in PHP using a MySql database backend for small to medium enterprise."
 arch=('any')
@@ -9,8 +9,8 @@ license=('GPL')
 depends=('mysql-clients' 'php')
 backup=(etc/webapps/gazie/gconfig.php)
 install=gazie.install
-source=(http://freefr.dl.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname$pkgver.zip)
-md5sums=('62dcb029af6d8cd26bc493911af7ce99')
+source=(https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname$pkgver.zip)
+md5sums=('9295a3084c9329132e456c54e9e41804')
 
 package() {
 	_instdir="$pkgdir"/usr/share/webapps/gazie
@@ -20,6 +20,4 @@ package() {
 	mv "$_instdir"/config/config/gconfig.php "$pkgdir"/etc/webapps/gazie/gconfig.php
 	ln -s /etc/webapps/gazie/gconfig.php "$_instdir"/config/config/gconfig.php
 }
-
-
 

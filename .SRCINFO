@@ -1,6 +1,6 @@
 pkgbase = gazie
 	pkgdesc = Multicompany finance application written in PHP using a MySql database backend for small to medium enterprise.
-	pkgver = 7.11
+	pkgver = 7.15
 	pkgrel = 1
 	url = http://gazie.devincentiis.it/
 	install = gazie.install
@@ -9,8 +9,8 @@ pkgbase = gazie
 	depends = mysql-clients
 	depends = php
 	backup = etc/webapps/gazie/gconfig.php
-	source = http://freefr.dl.sourceforge.net/project/gazie/gazie/7.11/gazie7.11.zip
-	md5sums = 62dcb029af6d8cd26bc493911af7ce99
+	source = https://sourceforge.net/projects/gazie/files/gazie/gazie7.15.zip
+	md5sums = 9295a3084c9329132e456c54e9e41804
 
 pkgname = gazie
 
