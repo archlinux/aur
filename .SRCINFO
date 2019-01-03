@@ -10,7 +10,9 @@ pkgbase = emacs-flycheck-git
 	depends = emacs-dash
 	depends = emacs-pkg-info
 	provides = flycheck
+	provides = emacs-flycheck
 	conflicts = flycheck
+	conflicts = emacs-flycheck
 	source = git+https://github.com/flycheck/flycheck.git
 	sha256sums = SKIP
 
