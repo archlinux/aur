@@ -1,7 +1,7 @@
 pkgbase = lives
 	pkgdesc = A Video Editing System
-	pkgver = 2.8.9
-	pkgrel = 2
+	pkgver = 2.10.1
+	pkgrel = 1
 	url = http://lives-video.com
 	changelog = lives.changelog
 	arch = i686
@@ -33,8 +33,8 @@ pkgbase = lives
 	optdepends = youtube-dl
 	optdepends = opencv
 	options = !emptydirs
-	source = http://lives-video.com/releases/LiVES-2.8.9.tar.bz2
-	md5sums = abba27bc112513a57a0fd0ed71bec366
+	source = http://lives-video.com/releases/LiVES-2.10.1.tar.bz2
+	md5sums = f32554a295b58c01f69c9ed738562033
 
 pkgname = lives
 
