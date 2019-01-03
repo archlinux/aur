@@ -15,7 +15,7 @@ install='tiberiansun.install'
 source=('tiberiansun.desktop'
         'launch-tiberiansun.sh'
         'README'
-        'http://pub.zoneofgames.ru/demos/fullgames/OfficialCnCTiberianSun.rar')
+        'https://downloads.cncfps.com/Freeware/Tibsun/OfficialCnCTiberianSun.rar')
 noextract=('OfficialCnCTiberianSun.rar')
 sha256sums=('ce9c09f9338c989d005bd8c9c425b930ad591a7ee135c5f6c4ccbce513c4199e'
             '413b214f75ed15007d7ee5a71a2c89ef04e1892237d1e59c6fa2535bc4ba67ad'
