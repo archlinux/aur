@@ -1,7 +1,7 @@
 # Maintainer: degreeme <suratovvlad@gmail.com>
 
 pkgname=texstudio-dark-git
-pkgver=2.12.8.r18.g71585dcf
+pkgver=2.12.14.r34.gbb23f3c7
 pkgrel=1
 pkgdesc="Integrated writing environment for creating LaTeX documents. Dark version."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('qt5-tools')
 optdepends=('evince: pdf reader'
             'okular: alternate pdf reader')
 conflicts=('texstudio')
-source=("${pkgname%-*}::git+https://github.com/suratovvlad/texstudio.git#branch=darktheme")
+source=("${pkgname%-*}::git+https://github.com/suratovvlad/texstudio.git")
 sha512sums=('SKIP')
 
 pkgver() {
