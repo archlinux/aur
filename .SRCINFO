@@ -6,6 +6,7 @@ pkgbase = deepin-dock-plugin-weather-git
 	arch = x86_64
 	makedepends = git
 	makedepends = qt5-base
+	makedepends = dtkcore
 	depends = deepin-dock
 	source = deepin-dock-plugin-weather-git-5.2.tar.gz::https://github.com/CareF/deepin-dock-plugin-weather/archive/5.2.tar.gz
 	md5sums = 9ccbdeffe68796a0bb92d44ebdd38230
