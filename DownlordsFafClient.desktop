@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=FAForever
+Comment=Downlords FAF client
+Exec=/usr/bin/downlords-faf-client
+Icon=/usr/share/java/downlords-faf-client/icon.png
+Terminal=true
+Categories=Game;
+Path=/usr/share/java/downlords-faf-client

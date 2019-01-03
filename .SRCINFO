@@ -1,0 +1,21 @@
+pkgbase = downlords-faf-client
+	pkgdesc = Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance. Downlord's Java client reimplementation.
+	pkgver = 0.9.3
+	pkgrel = 1
+	epoch = 0
+	url = http://www.faforever.com/
+	arch = any
+	license = MIT
+	makedepends = jq
+	depends = jre10-openjdk
+	source = https://github.com/FAForever/downlords-faf-client/releases/download/v0.9.3-beta/_dfc_unix_0_9_3-beta.tar.gz
+	source = https://github.com/FAForever/downlords-faf-client/raw/develop/src/media/appicon/128.png
+	source = DownlordsFafClient.desktop
+	source = downlords-faf-client
+	sha256sums = 4c8bc35407d5a3afe9dbacf95364205e761d051bb90820c822b5a502b231c9de
+	sha256sums = 2a5803ca2dd463aa4b53d79cff7f30e3aa7beb0d874b39c8ef59e679fbde9d3d
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = downlords-faf-client
+
