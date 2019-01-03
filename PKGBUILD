@@ -3,16 +3,16 @@
 # Contributor: Rikles <style.boubou@gmail.com>
 # Contributor: N30N <archlinux@alunamation.com>
 
-pkgname="lightzone-git"
-_pkgname="lightzone"
-pkgver=4.0.0.913.gb6b80116
-pkgrel=2
+pkgname=lightzone-git
+_pkgname=lightzone
+pkgver=4.1.9
+pkgrel=1
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom (latest git version)"
 url="http://lightzoneproject.org/"
 license=('custom:BSD-3-Clause')
 arch=('i686' 'x86_64')
-depends=('java-runtime=7' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff' 'libxml2')
-makedepends=('java-environment=7' 'apache-ant' 'autoconf' 'gcc' 'make' 'git' 'libx11' 'pkg-config' 'rsync' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff')
+depends=('java-runtime=8' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff' 'libxml2')
+makedepends=('java-environment=8' 'ant' 'autoconf' 'gcc' 'make' 'git' 'libx11' 'pkg-config' 'rsync' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff')
 conflicts=('lightzone')
 source=('git+https://github.com/Aries85/LightZone.git')
 sha256sums=('SKIP')
@@ -28,12 +28,12 @@ MAKEFLAGS="-j1"
 
 build() { 
   cd "${srcdir}/LightZone/"
-  if [ -d /usr/lib/jvm/java-7-jdk ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-7-jdk
+  if [ -d /usr/lib/jvm/java-8-jdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-8-jdk
   else
-    export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
   fi
-  [ -f /etc/profile.d/apache-ant.sh ] && source /etc/profile.d/apache-ant.sh
+
   ant -f linux/build.xml jar
 }
 
