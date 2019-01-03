@@ -1,16 +1,16 @@
 # Maintainer: E5ten <e5ten.arch@gmail.com>
 
 pkgname=yq-bin
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
-pkgdesc='yq is a portable command-line YAML processor'
+pkgdesc='a portable command-line YAML processor'
 arch=('x86_64')
 url='https://github.com/mikefarah/yq'
 license=('MIT')
 provides=('yq')
 conflicts=('yq')
-source=('https://github.com/mikefarah/yq/releases/download/2.1.2/yq_linux_amd64')
-sha512sums=('d43a5469b4df7734b5f943cf3d88a23d94f83d72cbff64694564c4bb56a52cf78c3a2e8a4e976f3572a5a9de84c4b060f77964d932a018b0ab2cf4a8a34e8e10')
+source=("https://github.com/mikefarah/yq/releases/download/${pkgver}/yq_linux_amd64")
+sha512sums=('7f5162c73e7ba4620964fd7d33082780c2c0c01153694ab77e094d01a360047902343c1e7bfc3a2f43c3152dc82c4a5b1ad3bef4fca1d8200cbc4c560f310e8e')
 
 package() {
 	install -Dm755 $srcdir/yq_linux_amd64 $pkgdir/usr/bin/yq
