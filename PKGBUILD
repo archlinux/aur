@@ -1,14 +1,14 @@
 pkgname=linvst
-pkgver=2.3.r44.2a4b91e
+pkgver=2.4.r13.380c3b8
 pkgrel=1
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"
 depends=('wine')
 makedepends=('git')
-source=('git+https://github.com/osxmidi/LinVst.git' 'https://download.steinberg.net/sdk_downloads/vstsdk369_01_03_2018_build_132.zip')
+source=('git+https://github.com/osxmidi/LinVst.git' 'https://download.steinberg.net/sdk_downloads/vstsdk3611_22_10_2018_build_34.zip')
 sha256sums=('SKIP'
-            '7c6c2a5f0bcbf8a7a0d6a42b782f0d3c00ec8eafa4226bbf2f5554e8cd764964')
+            'de64ff1b5b40a7fdc2de873e80d911ffa9fd6b82435a555dda1e8edc267d1fa3')
 
 pkgver() {
     cd "LinVst"
