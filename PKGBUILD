@@ -1,10 +1,11 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer:  Gabriel Souza Franco <Z2FicmllbGZyYW5jb3NvdXphQGdtYWlsLmNvbQ==>
+# Contributor: Florian Pritz
 # Contributor: kachelaqa <kachelaqa at gmail dot com>
 
 pkgbase='python-pyside-tools'
 pkgname=('python2-pyside-tools' 'python-pyside-tools' 'pyside-tools-common')
 pkgver=0.2.15
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 license=('LGPL')
 url='https://qt-project.org/wiki/PySide'
