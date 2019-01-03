@@ -1,0 +1,17 @@
+pkgbase = visram-git
+	pkgdesc = Graphical RAM usage visualizer (git version)
+	pkgver = r134.efc7012
+	pkgrel = 1
+	url = https://github.com/Spferical/visram/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-matplotlib
+	depends = python-psutil
+	depends = python-pyqt5
+	source = git+https://github.com/Spferical/visram.git
+	md5sums = SKIP
+
+pkgname = visram-git
+
