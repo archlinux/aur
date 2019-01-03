@@ -3,12 +3,13 @@
 pkgbase=xbmpwall-git
 pkgname=$pkgbase
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 
 _gitname=xbmpwall
 _gittag="v${pkgver}"
 
-pkgdesc="X11 bitmaps file manager (.xbm) for xsetroot"
+pkgdesc="X11 bitmap (.xbm) file manager for xsetroot. It shows a bitmap preview and allows you to place it as a wallpaper with xsetroot."
+
 
 arch=('x86_64')
 
