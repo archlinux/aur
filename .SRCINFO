@@ -1,11 +1,15 @@
 pkgbase = libtwili
 	pkgdesc = Small twili IO library
-	pkgver = 1.0.0.r0.g3a061af
+	pkgver = 1.0.0.r0.g2d6722f
 	pkgrel = 1
 	url = https://github.com/misson20000/twili-libnx
 	arch = any
 	license = ISC
 	makedepends = devkitpro-pkgbuild-helpers
+	makedepends = devkitA64
+	makedepends = switch-tools
+	depends = libnx
+	depends = devkit-env
 	options = !strip
 	options = staticlibs
 	source = git+https://github.com/misson20000/twili-libnx.git

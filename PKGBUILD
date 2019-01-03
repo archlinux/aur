@@ -1,14 +1,15 @@
 # Maintainer: misson20000 <xenotoad@xenotoad.net>
 
 pkgname=libtwili
-pkgver=1.0.0.r0.g3a061af
+pkgver=1.0.0.r0.g2d6722f
 pkgrel=1
 pkgdesc='Small twili IO library'
 arch=('any')
 url='https://github.com/misson20000/twili-libnx'
 license=(ISC)
 options=(!strip staticlibs)
-makedepends=('devkitpro-pkgbuild-helpers')
+depends=('libnx' 'devkit-env')
+makedepends=('devkitpro-pkgbuild-helpers' 'devkitA64' 'switch-tools')
 source=("git+https://github.com/misson20000/twili-libnx.git")
 sha256sums=("SKIP")
 
