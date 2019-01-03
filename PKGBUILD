@@ -3,7 +3,7 @@
 
 pkgname="trougnouf-backgrounds"
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -17,11 +17,11 @@ _images=(
 	'Fagne_Tirifaye_with_the_Hill_river_in_Waimes,_Belgium_(DSCF3679).jpg'
 	'View_through_the_shattered_glass_of_a_door_in_the_SNCB_B22490_type-K3_carriage,_looking_at_a_yellow_H._Weyhausen_KG_backhoe_loader_in_As,_Belgium_(DSCF3088-hdr).jpg'
 	'Stawamus_Chief_Provincial_Park,_BC_(DSCF7828).jpg'
-	'Snowy trees on the GR-16 between Membre and Vresse-sur-Semois (DSCF4800).jpg'
+	'Snowy_trees_on_the_GR-16_between_Membre_and_Vresse-sur-Semois_(DSCF4800).jpg'
 	'Pipes_in_the_water_treatment_plant_of_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3276).jpg'
 	'Water_treatment_plant_in_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3285).jpg' # 14h56 to 15h30
 	'A_tree_South_of_Doel,_Belgium_(DSCF3811).jpg'  # 15h30 to 16h21
-	'Lac de Virelles (frozen), Chimay (DSC 0251).jpg'   # 16h21 to 16h35
+	'Lac_de_Virelles_(frozen),_Chimay_(DSC_0251).jpg'   # 16h21 to 16h35
 	'Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg'
 	'Tunnel_Belliard,_coming_out_on_Rue_de_la_Loi.jpg'
 	'Container_cranes_at_the_MPET-_MSC_PSA_European_Terminal_in_Port_of_Antwerp_(Kieldrecht,_Belgium)_during_the_sunset_civil_twilight_(DSCF3901).jpg'
@@ -40,7 +40,7 @@ _stimes=(
 	1080 # 14h20 to 14h38 = 18 minutes
 	1080 # 14h38 to 14h56 = 18 minutes
 	2040 # 14h56 to 15h30 = 34 minutes
-	3900 # 15h30 to 16h21 = 65 minutes
+	3060 # 15h30 to 16h21 = 51 minutes
 	840 # 16h21 to 16h35 = 14 minutes
 	2460 # 16h35 to 17h16 = 41 minutes
 	1920 # 17h16 to 17h48 = 32 minutes
@@ -80,12 +80,12 @@ echo "
 <!-- Author: trougnouf (Benoit Brummer), license: CC-BY-SA -->
 <background>
   <starttime>
-    <year>2011</year>
-    <month>11</month>
-    <day>24</day>
+    <year>2018</year>
+    <month>01</month>
+    <day>29</day>
     <hour>10</hour>
     <minute>16</minute>
-    <second>00</second>
+    <second>32</second>
   </starttime>" > "${pkgdir}/usr/share/backgrounds/trougnouf/trougnouf-timed.xml"
 for i in `seq 0 $[${#_images[@]}-1]`
 do
