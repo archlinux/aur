@@ -2,7 +2,7 @@
 
 pkgname=python-scan-build
 _name=scan-build
-pkgver=2.0.14
+pkgver=2.0.15
 pkgrel=1
 pkgdesc="Clang's scan-build re-implementation in python"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('python>=2.7' 'clang')
 conflicts=()
 provides=()
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
-md5sums=('be35e4338813db9b9ae96a277a21cd81')
+md5sums=('33ff671ca5a38f9a32539f897a6bc183')
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
