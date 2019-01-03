@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bauer <archlinux@tobias-bauer.de>
 pkgname=ucx
 pkgver=18.00.0.36
-pkgrel=1
+pkgrel=2
 pkgdesc="UltraCompare is a powerful compare tool for files and folders."
 arch=('i686' 'x86_64')
 url="https://www.ultraedit.com/products/ultracompare/"
@@ -20,7 +20,6 @@ if [ "${CARCH}" = 'i686' ]; then
 else
   source=(
     "https://downloads.ultraedit.com/main/uc/linux/tar/ucx-${pkgver}_amd64.tar.gz"
-     https://downloads.ultraedit.com/main/uc/linux/tar/ucx-18.00.0.36_amd64.tar.gz
     "https://www.ultraedit.com/assets/images/icons/uc.png"
   )
   md5sums=(
