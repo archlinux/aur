@@ -1,4 +1,4 @@
-# Mantainer: Luis Aranguren <pizzaman@hotmail.com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: RunningDroid <runningdroid AT zoho.com>
 # Contributor: Sebastian Lindqvist <dunpin@gmail.com>
@@ -12,7 +12,7 @@
 
 pkgname=electrum-git
 pkgver=20190101
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
 depends=('hicolor-icon-theme'
@@ -32,6 +32,8 @@ depends=('hicolor-icon-theme'
          'python-websocket-client'
 	 'python-aiohttp_socks'
 	 'python-certifi'
+	 'python-aiorpcx'
+	 'python-aiohttp'
          'qt5-base')
 checkdepends=('python-tox')
 makedepends=('gettext'
@@ -100,4 +102,7 @@ package() {
 
   msg2 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1
+
+  install -Dm644 AUTHORS README.rst RELEASE-NOTES -t "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
