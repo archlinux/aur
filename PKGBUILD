@@ -3,9 +3,9 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=pacman-static
-pkgver=5.1.1
+pkgver=5.1.2
 _cares_ver=1.15.0
-_nghttp2_ver=1.34.0
+_nghttp2_ver=1.35.1
 _curlver=7.63.0
 _sslver=1.1.1a
 _xzver=5.2.4
@@ -13,15 +13,15 @@ _bzipver=1.0.6
 _zstdver=1.3.7
 _libarchive_ver=3.3.3
 _gpgerrorver=1.33
-_libassuanver=2.5.1
+_libassuanver=2.5.2
 _gpgmever=1.12.0
-_gnupgver=2.2.11
-pkgrel=7
+_gnupgver=2.2.12
+pkgrel=1
 pkgdesc="Statically-compiled pacman (to fix or install systems without libc)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
-depends=("pacman=${pkgver}")
+depends=('pacman')
 makedepends=('musl' 'kernel-headers-musl')
 
 # pacman
@@ -34,7 +34,8 @@ source+=("https://github.com/nghttp2/nghttp2/releases/download/v$_nghttp2_ver/ng
 source+=("https://c-ares.haxx.se/download/c-ares-${_cares_ver}.tar.gz"{,.asc})
 validpgpkeys+=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg <daniel@haxx.se>
 # curl
-source+=("https://curl.haxx.se/download/curl-${_curlver}.tar.gz"{,.asc})
+source+=("https://curl.haxx.se/download/curl-${_curlver}.tar.gz"{,.asc}
+         "curl-3399.patch::https://github.com/curl/curl/pull/3399.patch")
 # openssl
 source+=("https://www.openssl.org/source/openssl-${_sslver}.tar.gz"{,.asc}
          "ca-dir.patch")
@@ -58,13 +59,14 @@ source+=("https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-${_gpgmever}.tar.bz2"{,.s
 # libarchive
 source+=("libarchive-${_libarchive_ver}.tar.gz::https://github.com/libarchive/libarchive/archive/v${_libarchive_ver}.tar.gz")
 
-sha512sums=('7112025dbd3e263c16f5b0ab34c9db3e8d631a0801bb086b47a2252d1764172261be6a14df1f24598c62935dcdfd74c89fa9d116deea41efb9e0f53dcadeb61c'
+sha512sums=('3c123005587359315ab0c24d50a58d10f365eb92b24840213559cd951c863beaa2e3805bf728975fdae55dc2619e1c2dfeafaef2ee57f3882a30c4d5e8777750'
             'SKIP'
-            '5ddc4ab443c51ce286a656d2013421172fc37608f14c0a7ea02fa9e5a0dd155e162d5602b55f34dacc69709525a9a8110dc4c42d92607bbad1951075d094c6a0'
+            'fcd3f79f913afbeee1c75003bb39df918e6122bbf728b3ad4192d5849d8fb96705e04f5505465d63f25a565b2f1da6abd8fabdebb6e3347500f7abd31980861d'
             'a1de6c5e7e1a6a13c926aae690e83d5caa51e7313d63da1cf2af6bc757c41d585aad5466bc3ba7b7f7793cb1748fa589f40972b196728851c8b059cfc8c3be50'
             'SKIP'
             '25ad69a1978de2178ac7a456e72152907203931ad895234c14781c27681ea2c5d6669794880c4ebae6e38b8014c6538bc88a6afec2c192210b6d491d60b8f691'
             'SKIP'
+            '233ccf215722657f8db5fd8e959836515361aa76bb67ae058ab8d946ae7673e623acb144b72ef429a240075ea23fd57adbbc0248a575537f4fcd18910bac289f'
             '1523985ba90f38aa91aa6c2d57652f4e243cb2a095ce6336bf34b39b5a9b5b876804299a6825c758b65990e57948da532cca761aa12b10958c97478d04dd6d34'
             'SKIP'
             '3857c298663728a465b5f95a3ef44547efbfb420d755e9dde7f20aa3905171b400e1c126d8db5c2b916c733bbd0724d8753cad16c9baf7b12dcd225a3ee04a97'
@@ -74,7 +76,7 @@ sha512sums=('7112025dbd3e263c16f5b0ab34c9db3e8d631a0801bb086b47a2252d1764172261b
             'fb9ac61b79b22a628e602e68f7c59c85a00020f7f25b8653076895da7589ca1203adc7fe3d9b865f36648bc30d765b9630cf0955f970596253da74c089b97af1'
             'c0396a63ea54e321b207d84fb4eac247ba8a791058db00a8bbf1dd7698c6593b13c77de08fc0971cccd6c3c27925637d1f9fdc59c4cac1344ddfe4c25adc2e42'
             'SKIP'
-            'c8829925221780f175cee8c4084060b0d661229f583a50d400a1903ab7303b2724b99ff9c0fa242881d4c5d779036756e1da54d9143acc0fcd92f302ecb5882d'
+            '1c6f87e3f785a053e6b736eb3554fa704c798c7078307391ca45961e06d9282c659c8e46d230d1f52e67acc2cc12d841f9ec0d5184443f68555d3f0d240865b3'
             'SKIP'
             'c228b3df28377df882be536ada56dc9c73150048a58e591aa4495f89c854af95820152cd60139840f994c249e9c7df50d8b89eb9d6dc4ce02aa80bbfebcdd014'
             'SKIP'
@@ -97,6 +99,10 @@ fi
 prepare() {
     cd "${srcdir}"/libarchive-${_libarchive_ver}
     autoreconf -fi
+
+    cd "${srcdir}"/curl-${_curlver}
+    # See https://github.com/curl/curl/issues/3392
+    patch -p1 -i "${srcdir}"/curl-3399.patch
 }
 
 build() {
