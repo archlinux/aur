@@ -2,7 +2,7 @@
 # Contributor: Tom Kuther <gimpel@sonnenkinder.org>
 
 pkgname=snapper
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('boost' 'lvm2' 'libxslt' 'docbook-xsl' 'pam' 'git' 'systemd')
 optdepends=('pam: pam_snapper')
 backup=('etc/conf.d/snapper')
 source=("ftp://ftp.suse.com/pub/projects/$pkgname/$pkgname-$pkgver.tar.bz2")
-sha256sums=('ab534893b3bb20bb44a0a9b18730c7482d5ee23504cd241778839a2dc96686ed')
+sha256sums=('0b0ea5d2430ab522dc41bedc92bf14d307798d6145a3ee55ffccb1f50ec08d18')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -35,6 +35,9 @@ prepare() {
 
   # man pages sysconfig location
   sed -i -e 's@/etc/sysconfig@/etc/conf.d@g' doc/*
+
+  # swap macro errors
+  sed -i -e '/#include <vector>/i #include <iterator>' {snapper,client,dbus}/*.{h,cc}
 }
 
 build() {
