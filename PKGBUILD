@@ -1,7 +1,7 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=cozy-desktop
-pkgver=3.11.1
+pkgver=3.11.2
 pkgrel=1
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
 arch=('any')
@@ -13,14 +13,15 @@ source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/cozy-labs/${pkgname}/ar
         "${pkgname}.desktop"
         "${pkgname}.sh"
         'icons.tar.xz')
-sha256sums=('a10d25b2a6207224e2856704915f894f326ca052f9f0522ff525d1125002c8e2'
+sha256sums=('98001624f31df450f1fb2156df33612014409d3d5c56f8c7be4215f80a5245e2'
             'df0935e38d99c506b622d99d85179ec4612140d78fcd8c73103cb89c4f58ebab'
             '6c2df91fca75903c1e518eab56ba9cddfd3e7af6d4433207d9861ce22338f677'
             '69631fcd5f2334deffd3a5e2708cd06801fd9c22f1ebd2892c2d829dc33adf97')
 
 prepare() {
     cd ${pkgname}-${pkgver}
-    sed -i 's/"electron": "^1.8.3"/"electron": "^2.0.15"/' package.json
+    _electronver=$(cat /usr/lib/electron2/version)
+    sed -i "s|\"electron\": \"^1.8.3\"|\"electron\": \"^${_electronver/v/}\"|" package.json
     #npm install --cache "${srcdir}"/npm-cache
     yarn install
 }
