@@ -1,10 +1,11 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Contributor: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _gituser="flycheck"
 _gitrepo="flycheck"
 
 pkgname=emacs-flycheck-git
-pkgver=r4535.253febbd
+pkgver=31.194.gbaf96df4
 pkgrel=1
 pkgdesc="On the fly syntax checking for GNU Emacs"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -19,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe --tags | tr - .
 }
 
 build() {
