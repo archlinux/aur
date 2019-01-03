@@ -8,13 +8,13 @@ arch=('x86_64'
       'i686')
 url="https://mamedev.emulab.it/clrmamepro/"
 license=('custom')
-depends=('wine')
+depends=('wine' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('icoutils')
 source=("https://mamedev.emulab.it/clrmamepro/binaries/cmp${pkgver//./}_32.zip"
         "clrmamepro"
         "clrmamepro.desktop")
 sha256sums=('3debfd1bdfa354e34863deca6097222e5c0b6313ac74c55112713ae6ac23c1a3'
-            '466f1cd863e85915f8355463a1062e394296228b17cbdfe101357b3266b988f5'
+            '497a4a5cfe5daf8ac576f8169e611c6433b73e5019a7a8e4b0a230e531f9cdc4'
             '8d92a074639a43cb5d7ed69df999d059dd81fca9f3967a58873db0acafb0d95b')
 
 build() {
