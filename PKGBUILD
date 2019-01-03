@@ -2,7 +2,7 @@
 
 pkgname=emacs-speechd-el-git
 pkgver=20180105.0b25d3e
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs speech and Braille output interface"
 url="http://devel.freebsoft.org/speechd-el"
 arch=('any')
@@ -11,6 +11,7 @@ depends=('emacs')
 makedepends=('git' 'make' 'texinfo')
 optdepends=('speech-dispatcher: for speech output'
   'brltty: for braille support'
+  'sound-icons: for playing short sounds to denote various events'
   'perl: for speechd-log-extractor script')
 conflicts=('emacs-speechd-el')
 provides=(emacs-speechd-el=${pkgver})
