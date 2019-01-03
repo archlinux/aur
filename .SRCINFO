@@ -1,0 +1,13 @@
+pkgbase = sh-dash-replaces-bash-hook
+	pkgdesc = Replaces the /bin/sh symlink with dash when bash is upgraded
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = FDL1.3
+	depends = bash
+	depends = dash
+	source = relink-sh.hook
+	sha256sums = 6a614c60c7ca1a2c4f604b9b4a24a6d2a9bb197776cde8d0e071311d9716a97b
+
+pkgname = sh-dash-replaces-bash-hook
+
