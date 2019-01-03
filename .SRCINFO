@@ -1,6 +1,6 @@
 pkgbase = liborcania
 	pkgdesc = Potluck with different functions for different purposes that can be shared among C programs
-	pkgver = 1.2.8
+	pkgver = 1.2.9
 	pkgrel = 1
 	url = https://github.com/babelouest/orcania
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = liborcania
 	makedepends = git
 	makedepends = cmake
 	depends = jansson
-	source = orcania-1.2.8.tar.gz::https://github.com/babelouest/orcania/archive/v1.2.8.tar.gz
-	sha256sums = de71726f067e10ecd5a370d486f9aa0aad12a0927d59e36e9b15b2bc7c30ce4c
+	source = orcania-1.2.9.tar.gz::https://github.com/babelouest/orcania/archive/v1.2.9.tar.gz
+	sha256sums = 005e9e26d20d4f799d853b77004f18b74ceba389bc60875d0480683e9019fbe6
 
 pkgname = liborcania
 
