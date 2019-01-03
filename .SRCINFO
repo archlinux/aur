@@ -1,0 +1,14 @@
+pkgbase = buddhasay
+	pkgdesc = Like Cowsay, but with a Buddha.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/luisonthekeyboard/buddhasay
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = cargo
+	source = buddhasay_sources::git+https://github.com/luisonthekeyboard/buddhasay.git?tag=0.2.0
+	sha256sums = SKIP
+
+pkgname = buddhasay
+
