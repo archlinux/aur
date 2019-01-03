@@ -2,25 +2,30 @@
 
 pkgname=gnome-games-libretro
 _srcname=gnome-games
-pkgver=3.30.0
-pkgrel=4
+pkgver=3.30.2
+pkgrel=1
 pkgdesc='Libretro definitions for gnome-games'
 arch=('any')
 url='https://wiki.gnome.org/Apps/Games'
 license=('GPL3')
-optdepends=('libretro-blastem: Sega Mega Drive support'
+makedepends=('git')
+optdepends=(# Removed in 3.20.2 but still on master
+            #'libretro-blastem: Sega Mega Drive support'
             'libretro-bsnes: Super Nintendo Entertainment System support'
             'libretro-bsnes-mercury-git: Alternative Super Nintendo Entertainment System support'
             # TODO: see if renaming module to desmume works
             #'libretro-desmume2015: Nintendo DS support'
-            'libretro-dosbox-git: MS-DOS support'
+            # Removed in 3.20.2 but still on master
+            #'libretro-dosbox-git: MS-DOS support'
             'libretro-gambatte: Nintendo Game Boy/Game Boy Color support'
             'libretro-handy-git: Atari Lynx support'
-            'libretro-mame-git: Arcade support'
+            # Removed in 3.20.2 but still on master
+            #'libretro-mame-git: Arcade support'
             # TODO: see if renaming module to beetle works
             #'libretro-mednafen-ngp: Neo Geo Pocket Color'
             #'libretro-mednafen-pce-fast: TurboGrafx support'
-            'libretro-mednafen-saturn-git: Sega Saturn support'
+            # Removed in 3.20.2 but still on master
+            #'libretro-mednafen-saturn-git: Sega Saturn support'
             #'libretro-mednafen-vb: Nintendo Virtual Boy support'
             #'libretro-mednafen-wswan: WonderSwan support'
             'libretro-mgba: Nintendo Game Boy Advance support'
@@ -28,6 +33,7 @@ optdepends=('libretro-blastem: Sega Mega Drive support'
             'libretro-pcsx-rearmed-git: Sony PlayStation support'
             'libretro-picodrive-git: Sega Genesis/Master System/CD/32X/Pico support'
             # Missing package
+            # Removed in 3.20.2 but still on master
             #'libretro-prboom: Doom support'
             'libretro-prosystem-git: Atari 7800 support'
             'libretro-stella-git: Atari 2600 support')
