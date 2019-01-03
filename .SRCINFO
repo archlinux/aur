@@ -1,0 +1,19 @@
+pkgbase = python-pymanopt
+	pkgdesc = Python toolbox for optimization on manifolds with support for automatic differentiation
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://pymanopt.github.io
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-scipy
+	optdepends = python-tensorflow
+	optdepends = python-autograd
+	optdepends = python-theano
+	source = https://github.com/pymanopt/pymanopt/archive/8b8c30f3bdd2fb9548fa800ce34036c984e7e75c.tar.gz
+	md5sums = 649e66abd690ada18935d6441ba5c578
+
+pkgname = python-pymanopt
+
