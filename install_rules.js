@@ -46,7 +46,7 @@ Controller.prototype.DynamicWorkspaceWidgetCallback = function() {
 Controller.prototype.ComponentSelectionPageCallback = function() {
     var widget = gui.currentPageWidget();
     console.log("component: " + widget);
-    widget.selectAll();
+    widget.selectDefault();
     gui.clickButton(buttons.NextButton);
 }
 

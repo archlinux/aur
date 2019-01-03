@@ -1,5 +1,5 @@
 post_install() {
-    _VERSION=1710
+    _VERSION=1.23
     _EXECUTABLE=SailfishOSSDK-Beta-${_VERSION}-Qt5-linux-64-offline.run
     _PATH=/usr/share/sailfishos-sdk-bin
 
@@ -11,7 +11,7 @@ post_install() {
     mkdir /opt/SailfishOS
     chown ${_USER}:users -R /opt/SailfishOS
 
-    sudo -u ${_USER} ${_PATH}/${_EXECUTABLE} --verbose --script ${_PATH}/install_rules.js -platform minimal --logging-rules
+    sudo -u ${_USER} ${_PATH}/${_EXECUTABLE} --verbose --script ${_PATH}/install_rules.js --platform minimal --logging-rules
 }
 
 pre_upgrade() {
