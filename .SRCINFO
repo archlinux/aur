@@ -1,0 +1,18 @@
+pkgbase = dsd-git
+	pkgdesc = Decoder for P25, ProVoice, X2-TDMA, DMR/MOTOTRBO, NXDN
+	pkgver = 1.6.0.r91.gf175834
+	pkgrel = 1
+	url = https://github.com/szechyjs/dsd
+	arch = i686
+	arch = x86_64
+	license = custom:copyright
+	depends = mbelib
+	depends = portaudio
+	depends = itpp
+	provides = dsd
+	conflicts = dsd
+	source = dsd::git+https://github.com/szechyjs/dsd.git
+	md5sums = SKIP
+
+pkgname = dsd-git
+
