@@ -1,0 +1,25 @@
+pkgbase = puddletag-qt5-git
+	pkgdesc = An audio tag editor for GNU/Linux (Qt5 Version)
+	pkgver = 872.9a61f00
+	pkgrel = 1
+	url = https://github.com/keithgg/puddletag
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = mutagen
+	depends = python2-pyqt5
+	depends = python2-pyparsing
+	depends = python2-configobj
+	depends = python2-musicbrainz2
+	optdepends = python2-imaging: edit/view FLAC cover art
+	optdepends = quodlibet: edit a QuodLibet library
+	provides = puddletag
+	conflicts = puddletag
+	conflicts = puddletag-git
+	source = puddletag-qt5-git::git://github.com/keithgg/puddletag#branch=pyqt5
+	md5sums = SKIP
+
+pkgname = puddletag-qt5-git
+
