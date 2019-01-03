@@ -2,7 +2,7 @@
 
 pkgname=deepin-dock-plugin-arch-update
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin for deepin dock, Arch Linux update indicator"
 arch=('x86_64')
 url="https://github.com/CareF/deepin-dock-plugin-arch-update"
