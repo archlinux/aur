@@ -14,7 +14,6 @@ pkgbase = gzdoom-legacy-git
 	makedepends = fluidsynth
 	makedepends = git
 	makedepends = gtk3
-	depends = asmjit-git
 	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libgme
