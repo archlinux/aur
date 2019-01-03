@@ -1,15 +1,15 @@
 pkgbase = muscle
 	pkgdesc = multiple sequence comparison by log-expectation
-	pkgver = 3.8.31
+	pkgver = 3.8.1551
 	pkgrel = 1
 	url = http://www.drive5.com/muscle/
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = http://www.drive5.com/muscle/downloads3.8.31/muscle3.8.31_src.tar.gz
+	source = http://www.drive5.com/muscle/muscle_src_3.8.1551.tar.gz
 	source = LICENSE
-	md5sums = f767f00fd15f0c5db944d41936779e10
-	md5sums = 57cfb6975987af93c89977f084d53b72
+	sha256sums = c70c552231cd3289f1bad51c9bd174804c18bb3adcf47f501afec7a68f9c482e
+	sha256sums = 2ee887dede5d3ddb6fa65690e0afd8d1083d835522d9271450752df0cc2f6658
 
 pkgname = muscle
 
