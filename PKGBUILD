@@ -20,5 +20,3 @@ package() {
   cd "$srcdir/${pkgname}"
   cp recbox-ardour.colors "$pkgdir/usr/share/ardour5/themes/"
 }
-md5sums=('SKIP')
-md5sums=('SKIP')
