@@ -1,7 +1,7 @@
 pkgbase = cquery
 	pkgdesc = cquery is a highly-scalable, low-latency language server for C/C++/Objective-C.
 	pkgver = v20180718
-	pkgrel = 6
+	pkgrel = 8
 	url = https://github.com/cquery-project/cquery/
 	arch = x86_64
 	license = MIT
