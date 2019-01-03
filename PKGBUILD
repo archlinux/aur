@@ -1,4 +1,4 @@
-# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
+# Maintainer: Jeremiah Ticket <seashellpromises@gmail.com>
 
 _gitname='espeakup'
 pkgname="$_gitname"-git
@@ -6,14 +6,14 @@ pkgver=v0.8.4.gf2000b2
 pkgrel=1
 pkgdesc='allows the Speakup screen review system to use the ESpeak synthesizer'
 arch=('armv7h' 'i686' 'x86_64')
-url='https://github.com/stormdragon2976/espeakup'
+url='https://github.com/jticket1024/espeakup'
 license=('GPL3')
 depends=('speakup-utils' 'espeak')
 makedepends=('git')
 provides=('espeakup')
 conflicts=('espeakup')
 install="$pkgname".install
-source=("git+http://github.com/stormdragon2976/$_gitname.git"
+source=("git+http://github.com/jticket1024/$_gitname.git"
         'espeakup.service'
         'speakupconf.service'
         'espeakup@.service'
