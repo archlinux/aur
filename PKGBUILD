@@ -8,7 +8,7 @@ arch=('any')
 url='https://gitlab.com/goeb/systray-generic/'
 license=('GPL3')
 depends=('python-pyqt5')
-makedepends=('python-docutils')
+makedepends=('git' 'python-docutils')
 source=("$pkgname::git+https://gitlab.com/goeb/$pkgname.git#tag=$pkgver")
 sha256sums=('SKIP')
 

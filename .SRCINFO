@@ -5,6 +5,7 @@ pkgbase = systray-generic
 	url = https://gitlab.com/goeb/systray-generic/
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-docutils
 	depends = python-pyqt5
 	source = systray-generic::git+https://gitlab.com/goeb/systray-generic.git#tag=2015101201
