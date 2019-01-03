@@ -1,6 +1,6 @@
 pkgbase = pasystray-gtk3-git
 	pkgdesc = PulseAudio system tray (gtk3 version)
-	pkgver = 0.7.0.r0.g62a7029
+	pkgver = 0.7.1.r0.g97724c9
 	pkgrel = 1
 	url = https://github.com/christophgysin/pasystray
 	arch = x86_64
