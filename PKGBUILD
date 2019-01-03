@@ -1,19 +1,19 @@
 # Maintainer: Rodolpheh <houdas.rodolphe@gmail.com>
 
 pkgname=lesspass-desktop-git
-_gitname=desktop
-pkgver=r60.dff0326
+_gitname=lesspass
+pkgver=r1815.495e8b3
 pkgrel=1
 pkgdesc="LessPass - desktop version"
 arch=('any')
-url="https://github.com/lesspass/desktop.git"
+url="https://github.com/lesspass/lesspass.git"
 license=('GPL3')
 depends=('npm' 'hicolor-icon-theme')
 makedepends=('git')
 provides=('lesspass-desktop')
 conflicts=('lesspass-desktop')
 options=(!emptydirs)
-source=("git://github.com/lesspass/desktop.git"
+source=("git://github.com/lesspass/lesspass.git#commit=495e8b3323cb3a7f24dce03e4d01158affa8ccf7"
 	"lesspass-desktop.desktop"
 	"lesspass.sh")
 sha256sums=("SKIP"
@@ -29,10 +29,12 @@ package() {
 	cd "${srcdir}"
 
 	for i in 16 32 128 256 512; do
-		install -Dm644 "${srcdir}"/desktop/images/icon.iconset/icon_${i}x${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/lesspass.png
+		install -Dm644 "${srcdir}/${_gitname}"/desktop/images/icon.iconset/icon_${i}x${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/lesspass.png
 	done
 	install -Dm644 "${srcdir}"/lesspass-desktop.desktop "${pkgdir}"/usr/share/applications/lesspass.desktop
 	install -Dm755 "${srcdir}"/lesspass.sh "${pkgdir}"/usr/bin/lesspass
 
-	cp -dpr --no-preserve=ownership "${_gitname}" "${pkgdir}"/usr/share/lesspass
+	echo `pwd`
+
+	cp -dpr --no-preserve=ownership "${_gitname}/desktop" "${pkgdir}"/usr/share/lesspass
 }
