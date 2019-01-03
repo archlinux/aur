@@ -1,26 +1,29 @@
-pkgname=urxvt-perls-git
-pkgver=1.df7ead4
+_pkgname=urxvt-perls
+pkgname=${_pkgname}-git
+pkgver=128.1f4897ccdd9b
 pkgrel=1
 pkgdesc="URL and Mouseless text selection for rxvt-unicode"
 arch=('any')
 url='http://www.github.com/muennich/urxvt-perls'
 license=('GPL2')
 depends=('rxvt-unicode' 'perl' 'xsel')
-provides=('urxvt-perls' 'urxvt-url-select' 'urxvt-keyboard-select')
-conflicts=('urxvt-perls' 'urxvt-url-select' 'urxvt-keyboard-select')
-replaces=('urxvt-perls' 'urxvt-url-select' 'urxvt-keyboard-select')
-install=urxvt-perls.install
+provides=("$_pkgname" 'urxvt-url-select' 'urxvt-keyboard-select')
+conflicts=("$_pkgname" 'urxvt-url-select' 'urxvt-keyboard-select')
+replaces=("$_pkgname" 'urxvt-url-select' 'urxvt-keyboard-select')
+install=$_pkgname.install
 source=(git://github.com/muennich/urxvt-perls)
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/urxvt-perls"
+    cd "$srcdir/$_pkgname"
     echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 package() {
-    cd "$srcdir/urxvt-perls"
+  cd "$srcdir/$_pkgname"
 
-    install -dm755 "$pkgdir"/usr/lib/urxvt/perl
-    install -t "$pkgdir"/usr/lib/urxvt/perl -m644 url-select keyboard-select clipboard
+  install -dm755 "$pkgdir"/usr/lib/urxvt/perl
+  install -dm755 "$pkgdir"/usr/lib/urxvt/perl/deprecated
+  install -t "$pkgdir"/usr/lib/urxvt/perl/deprecated -m644 deprecated/{clipboard,url-select}
+  install -t "$pkgdir"/usr/lib/urxvt/perl -m644 keyboard-select
 }

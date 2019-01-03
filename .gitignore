@@ -1,0 +1,6 @@
+urxvt-perls/
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+*.zip

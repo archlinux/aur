@@ -1,6 +1,6 @@
 pkgbase = urxvt-perls-git
 	pkgdesc = URL and Mouseless text selection for rxvt-unicode
-	pkgver = 1.df7ead4
+	pkgver = 128.1f4897ccdd9b
 	pkgrel = 1
 	url = http://www.github.com/muennich/urxvt-perls
 	install = urxvt-perls.install
@@ -19,7 +19,7 @@ pkgbase = urxvt-perls-git
 	replaces = urxvt-url-select
 	replaces = urxvt-keyboard-select
 	source = git://github.com/muennich/urxvt-perls
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = urxvt-perls-git
 
