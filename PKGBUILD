@@ -1,9 +1,9 @@
 # Maintainer: trougnouf (Benoit Brummer) <trougnouf at gmail dot com>
-# Last images added on 2018-12-23
+# Last images added on 2019-01-03
 
 pkgname="trougnouf-backgrounds"
-pkgver=1.6
-pkgrel=2
+pkgver=1.7
+pkgrel=1
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -17,7 +17,7 @@ _images=(
 	'Fagne_Tirifaye_with_the_Hill_river_in_Waimes,_Belgium_(DSCF3679).jpg'
 	'View_through_the_shattered_glass_of_a_door_in_the_SNCB_B22490_type-K3_carriage,_looking_at_a_yellow_H._Weyhausen_KG_backhoe_loader_in_As,_Belgium_(DSCF3088-hdr).jpg'
 	'Stawamus_Chief_Provincial_Park,_BC_(DSCF7828).jpg'
-	'Rock_dove_(Columba_livia)_standing_on_place_de_la_Bourse,_Brussels,_Belgium_(DSCF4429).jpg'
+	'Snowy trees on the GR-16 between Membre and Vresse-sur-Semois (DSCF4800).jpg'
 	'Pipes_in_the_water_treatment_plant_of_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3276).jpg'
 	'Water_treatment_plant_in_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3285).jpg' # 14h56 to 15h30
 	'A_tree_South_of_Doel,_Belgium_(DSCF3811).jpg'  # 15h30 to 16h21
@@ -36,8 +36,8 @@ _stimes=(
 	2160 # 12h31 to 13h07 = 36 minutes
 	2580 # 13h07 to 13h50 = 43 minutes
 	1080 # 13h50 to 14h08 = 18 minutes
-	900 # 14h08 to 14h23 = 15 minutes
-	900 # 14h23 to 14h38 = 15 minutes
+	720 # 14h08 to 14h20 = 12 minutes
+	1080 # 14h20 to 14h38 = 18 minutes
 	1080 # 14h38 to 14h56 = 18 minutes
 	2040 # 14h56 to 15h30 = 34 minutes
 	3900 # 15h30 to 16h21 = 65 minutes
@@ -56,7 +56,7 @@ sha256sums=('60da898f8fb43491594e7466f44294db43795d61de124f590eb2be2d42ea208a'
 	'34e13f84a99c20b7ba7280db25d6993675b17f953a327c144e57ad04abefd08f'
 	'4890081d1a7cdacb036da85e54f900c5effc40741c2a76816ad316b41931ad2b'
 	'799cf4bd62c5ac685acf28fe0fd8555db2fe318020767cc8dee3e377abb18a68'
-	'348eaede0251784bd0ecc0357ad5272b760a1457ca6a036fa295a3d37f9c945d'
+	'14e555f429f2e3e759be419a92f73f386891865c3cc2ff635d62a2b4a966fd2f'
 	'ed2e76aedadc5e776fe8c350f1120cc3879d1888b33c9a898d85133dcc8165c9'
 	'563a2acab1c80c2ad4f0f60cc514811191c25406c416415aea9b51151462ef58'
 	'f5e476019deb0af38230da66a7749527001cb32f1f101966ab60ae082a38870b'
