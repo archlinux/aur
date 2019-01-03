@@ -2,9 +2,9 @@
 
 pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit"
-pkgver=0.0.0.r603.g51f263c
+pkgver=0.0.0.r619.g0a27c05
 _branch='master'
-pkgrel=2
+pkgrel=1
 arch=(any)
 url='https://github.com/alerque/casile/'
 license=('LGPL3')
@@ -20,6 +20,7 @@ depends=('bc'
          'inkscape'
          'jq'
          'kindlegen'
+         'lua-colors'
          'lua-yaml'
          'm4'
          'moreutils'
