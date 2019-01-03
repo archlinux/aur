@@ -7,7 +7,7 @@ pkgbase = buddhasay
 	arch = x86_64
 	license = APACHE
 	makedepends = cargo
-	source = buddhasay_sources::git+https://github.com/luisonthekeyboard/buddhasay.git?tag=0.2.0
+	source = https://github.com/luisonthekeyboard/buddhasay/archive/0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = buddhasay

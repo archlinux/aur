@@ -6,15 +6,15 @@ url="https://github.com/luisonthekeyboard/buddhasay"
 makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('APACHE')
-source=("buddhasay_sources::git+https://github.com/luisonthekeyboard/buddhasay.git?tag=$pkgver")
+source=("https://github.com/luisonthekeyboard/buddhasay/archive/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd buddhasay_sources
+  cd $srcdir/buddhasay-$pkgver
   cargo build --release
 }
 
 package() {
-  cd buddhasay_sources
+  cd $srcdir/buddhasay-$pkgver
   install -Dm755 target/release/buddhasay "$pkgdir/usr/bin/buddhasay"
 }
