@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gc
 	pkgdesc = A garbage collector for C and C++ (mingw-w64)
-	pkgver = 7.6.8
+	pkgver = 8.0.2
 	pkgrel = 1
 	url = http://www.hboehm.info/gc/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-gc
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/ivmai/bdwgc/releases/download/v7.6.8/gc-7.6.8.tar.gz
-	sha256sums = 040ac5cdbf1bebc7c8cd4928996bbae0c54497c151ea5639838fa0128102e258
+	source = https://github.com/ivmai/bdwgc/releases/download/v8.0.2/gc-8.0.2.tar.gz
+	sha256sums = 4e8ca4b5b72a3a27971daefaa9b621f0a716695b23baa40b7eac78de2eeb51cb
 
 pkgname = mingw-w64-gc
 
