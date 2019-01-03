@@ -1,7 +1,8 @@
-# Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
+# Maintainer: Wil Thomason <wbthomason@cs.cornell.edu>
+# Former maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=ompl
-pkgver=1.3.2
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="The Open Motion Planning Library (OMPL) consists of many state-of-the-art sampling-based motion planning algorithms"
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ optdepends=('py++: Python binding'
             'ode: Plan using the Open Dynamics Engine'
             'eigen: For an informed sampling technique')
 source=(https://bitbucket.org/ompl/ompl/downloads/${pkgname}-${pkgver}-Source.tar.gz)
-sha512sums=('626fd7871f87ed24146dbb50e26a53b7dc9ed812835a94d6be1c531bf56ac6b8dc1869c019df81e26ad382c6a00c49f2de90b3352ff1c67544544acf7b834906')
+sha512sums=('c5006cfa205caeaf5290b66d184c2ca1ded02c25258aa1d26f84a964f07f034cdc19eb8466f4345b3538a600283a37482e5c7c5722bccfb6e24228c7eb45a4a9')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}-Source"
