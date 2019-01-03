@@ -5,8 +5,8 @@
 
 pkgname=bumblebee-git
 _gitname=bumblebee
-pkgver=3.2.1.r50.d469a32
-pkgrel=2
+pkgver=3.2.1.r57.61c6161
+pkgrel=1
 pkgdesc="NVIDIA Optimus support for Linux through VirtualGL or primus"
 arch=('i686' 'x86_64')
 depends=('glib2' 'mesa-libgl')
@@ -45,12 +45,16 @@ pkgver() {
     git describe --always | sed 's|^v||;s|\([^-]*-\)g|r\1|;s|-|.|g'
 }
 
+prepare(){
+      cd "$_gitname" 
+      for p in ${srcdir}/*.patch; do
+         patch -Np1 -i "$p"
+      done
+
+}
 build() {
     cd "$_gitname"
-     for p in ${srcdir}/*.patch; do
-        patch -Np1 -i "$p"
-    done
-
+    
     autoreconf -fi
     ./configure \
         CONF_DRIVER_MODULE_NVIDIA=nvidia \
