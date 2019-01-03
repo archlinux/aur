@@ -1,8 +1,8 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=usocks
-pkgver=0.6
-pkgrel=2
+pkgver=0.7
+pkgrel=1
 pkgdesc='Minimalistic SOCKS5 proxying library'
 url='http://fenua.org/gaetan/src/'
 license=('ISC')
@@ -10,8 +10,8 @@ arch=('i686' 'x86_64' 'armv7h')
 optdepends=('openssh: companion script')
 source=("${url}/${pkgname}-${pkgver}.c"
         "${pkgname}")
-sha1sums=('2f2b1705f9f622ca3542805e2d693ff8e786d189'
-          '799137e8ae0b67d947bbdaa9e13e25f5c9d3af8c')
+sha256sums=('193d9ea364baa1876da3e911b240f185ecd24d20868537e9a96020ef8fe6f0e8'
+            'd37a1996aafc0a5dfdf98a8ff0251f93c4c6e8e1b6b2db840289c9935e0a34a4')
 
 build() {
 	cd "${srcdir}"

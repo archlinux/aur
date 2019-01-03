@@ -1,17 +1,17 @@
 pkgbase = usocks
 	pkgdesc = Minimalistic SOCKS5 proxying library
-	pkgver = 0.6
-	pkgrel = 2
+	pkgver = 0.7
+	pkgrel = 1
 	url = http://fenua.org/gaetan/src/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = ISC
 	optdepends = openssh: companion script
-	source = http://fenua.org/gaetan/src//usocks-0.6.c
+	source = http://fenua.org/gaetan/src//usocks-0.7.c
 	source = usocks
-	sha1sums = 2f2b1705f9f622ca3542805e2d693ff8e786d189
-	sha1sums = 799137e8ae0b67d947bbdaa9e13e25f5c9d3af8c
+	sha256sums = 193d9ea364baa1876da3e911b240f185ecd24d20868537e9a96020ef8fe6f0e8
+	sha256sums = d37a1996aafc0a5dfdf98a8ff0251f93c4c6e8e1b6b2db840289c9935e0a34a4
 
 pkgname = usocks
 
