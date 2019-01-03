@@ -1,6 +1,6 @@
 pkgbase = libulfius
 	pkgdesc = HTTP Framework for REST API in C, using JSON, with websockets and streaming data
-	pkgver = 2.4.4
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/babelouest/ulfius
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = libulfius
 	depends = libgcrypt
 	depends = liborcania
 	depends = libyder
-	source = ulfius-2.4.4.tar.gz::https://github.com/babelouest/ulfius/archive/v2.4.4.tar.gz
-	sha256sums = 24f60cf869f4e12b4046a2986b601ad616b5a857c1cd9176d74bb21ed66710eb
+	source = ulfius-2.5.2.tar.gz::https://github.com/babelouest/ulfius/archive/v2.5.2.tar.gz
+	sha256sums = 5cd56cb769d1f67e95559c5f1633b5bc86f8ebee374f0083b3e22dbf0ead864b
 
 pkgname = libulfius
 
