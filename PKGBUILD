@@ -2,7 +2,7 @@
 
 pkgname=mesen-git
 _pkgname=Mesen
-pkgver=0.9.7
+pkgver=0.9.7.r94.ga489716a
 pkgrel=1
 pkgdesc='A cross-platform NES/Famicom emulator'
 arch=('x86_64')
@@ -13,6 +13,12 @@ provides=('mesen')
 license=('GPL3')
 source=("${_pkgname}::git+https://github.com/SourMesen/Mesen.git")
 sha256sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}/${_pkgname}"
+
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
@@ -32,6 +38,7 @@ prepare() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 
+	mkdir -p bin
 	make
 }
 
