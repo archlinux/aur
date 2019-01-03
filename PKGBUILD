@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=netcap-git
-pkgver=r74.9067552
+pkgver=r79.6a04651
 pkgrel=1
 epoch=1
 pkgdesc='A framework for secure and scalable network traffic analysis'
