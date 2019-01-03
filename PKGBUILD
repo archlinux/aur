@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Bubon (quaardvark) <dmitry.bubon at gmail dot com>
 
 pkgbase=linux-cx2072x   # Build kernel with CX2072x support
-_srcver=4.19_cx2072x
+_srcver=4.20_cx2072x
 _srcname="linux-$_srcver"
 pkgver=${_srcver//-/.}
 pkgrel=1
@@ -13,6 +13,7 @@ options=('!strip')
 source=(
   "https://github.com/heikomat/linux/archive/v$_srcver.tar.gz"
   config          # the main kernel config file
+  config.fragment # config fragment with cx2072x specific settings
   60-linux.hook   # pacman hook for depmod
   90-linux.hook   # pacman hook for initramfs regeneration
   linux.preset    # standard config files for mkinitcpio ramdisk
@@ -22,8 +23,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('8bf9f5e87ee699815fcfca3032ab18b8bc0bca8c3f50eafdb6ffcd9475747174'
-            'aa856d861656867d741657215a884110d172f7b6e5d013352d8deedf8367c432'
+sha256sums=('2b3d30efddfe22f5a160f6ca757ec17403078a2adb4fe5db6b307695e0dc8256'
+            '3f72b50a40e98737a6195b6d2b3c8c301007d40730bc4ec37fdf9e57dceb6fb9'
+            'd66d56cd119f02951c1db89c17f52a09140e1e177c36eaebdaf77710e1e095c8'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -50,6 +52,7 @@ prepare() {
 
   msg2 "Setting config..."
   cp ../config .config
+  ./scripts/kconfig/merge_config.sh -m .config ../config.fragment
   make olddefconfig
 
   make -s kernelrelease > ../version
