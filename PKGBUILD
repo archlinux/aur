@@ -2,8 +2,8 @@
 
 pkgname=libsafec
 _pkgname=safeclib
-pkgver=03032018
-_gitver=g570fa5
+pkgver=30122018
+_gitver=g4d1571
 pkgrel=1
 _pkgver="${pkgver}.0-${_gitver}"
 pkgdesc='Implementtion of C11 Annex K + ISO TR24731 Bounds Checking Interface'
@@ -15,7 +15,7 @@ makedepends=('clang')
 license=('MIT')
 # https://github.com/rurban/safeclib/releases/download/v03032018/libsafec-03032018.0-g570fa5.tar.bz2
 source=("${_url}/releases/download/v${pkgver}/${pkgname}-${_pkgver}.tar.bz2")
-sha256sums=('caeb1c4104e0f1cccbe6f354b1456d7f5096df2363292017618804cef72eca7d')
+sha256sums=('7ca210d537b9f4d06b27a49166544694d76b587ac5c07137b7d85baacc368b7f')
 
 # prepare() {
 #   cd "${srcdir}/${pkgname}-${_pkgver}"
@@ -43,4 +43,4 @@ package() {
   mv "${pkgdir}/usr/share/man/man3/wcsstr.3" "${pkgdir}/usr/share/man/man3/wcsstr_s.3"
 }
 
-# vim:set ft=sh ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
