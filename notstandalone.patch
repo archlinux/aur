@@ -168,7 +168,7 @@ index 0e288bf..bb3795c 100644
      </BuildModes>
      <PublishOptions>
 diff --git a/src/fmain.pas b/src/fmain.pas
-index 05676c4..8eec7b6 100644
+index 4d5826b..368239a 100644
 --- a/src/fmain.pas
 +++ b/src/fmain.pas
 @@ -3005,7 +3005,20 @@ begin
@@ -244,7 +244,7 @@ index 05676c4..8eec7b6 100644
    titlegen();
    if not firststart then
      updatelangstatus();
-@@ -8195,7 +8233,15 @@ begin
+@@ -8203,7 +8241,15 @@ begin
    if firststart then
    begin
      frlang.cbLang.Items.Clear;
@@ -261,9 +261,9 @@ index 05676c4..8eec7b6 100644
      begin
        Repeat
          try
-@@ -8211,7 +8257,15 @@ begin
-       frlang.ShowModal;
+@@ -8221,7 +8267,15 @@ begin
        deflanguage:=frlang.cbLang.Text;
+       frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
      end;
 -    SetDefaultLang(deflanguage);
 +  {$IFDEF NOT_STANDALONE}

@@ -4,9 +4,9 @@ pkgbase=awgg-git-gtk2
 
 pkgname=$pkgbase
 
-pkgver=d3e7088
+pkgver=e45e75c
 
-pkgrel=5
+pkgrel=1
 
 _gitname=AWGG
 
@@ -27,7 +27,7 @@ makedepends=("git" "lazarus-gtk2")
 source=("awgg.desktop" "notstandalone.patch")
 
 sha256sums=("916576e5b637f0ccebb2be15b46387e4d2f49a007303335748126f2a61602716"
-           "f83422ac0717c18714dcfb2c1da2cf541106ff50ce53e6c498990dff20b015d0"
+           "8f6616662cd54120c1e0c31dd7711501bd7dfd8a0abde51fcf21763754945f29"
            )
 
 validpgpkeys=('51479755D90A2AACFA90A6551DD242462908D08B')
@@ -38,7 +38,7 @@ pkgver() {
 }
 
 prepare(){
-	git clone --single-branch --depth=1 --branch master "${url}.git"
+  git clone --single-branch --depth=1 --branch master "${url}.git"
   cd "$srcdir/$_gitname"
   git apply ../../notstandalone.patch 
 }
@@ -56,24 +56,24 @@ build() {
 package() {
 
   cd $_gitname
-  
+
   install -Dm755 awgg "$pkgdir/usr/bin/awgg"
-   
+
   install -Dm644 awgg.png "$pkgdir/usr/share/pixmaps/awgg.png"
-  
+
   mkdir -p "$pkgdir/usr/share/awgg/languages"
-  
+
   install -Dm644 languages/* "$pkgdir/usr/share/awgg/languages"
-  
+
   install -Dm644 LICENSE "$pkgdir/usr/share/awgg/LICENSE"
-  
+
   mkdir -p "$pkgdir/usr/share/doc/awgg"
-  
+
   cp -R docs/* "$pkgdir/usr/share/doc/awgg"
 
   cp *.wav "$pkgdir/usr/share/awgg/"
- 
+
   cd ../..
-  
+
   install -Dm644 "awgg.desktop" "$pkgdir/usr/share/applications/awgg.desktop"
 }
