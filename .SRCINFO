@@ -1,6 +1,6 @@
 pkgbase = texinfo-git
 	pkgdesc = GNU documentation system for on-line information and printed output
-	pkgver = r8427.0b65757c6c
+	pkgver = r8432.34b30bd643
 	pkgrel = 1
 	url = http://www.gnu.org/software/texinfo/
 	arch = i686
