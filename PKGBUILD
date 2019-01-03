@@ -1,13 +1,14 @@
 # Maintainer: Ranuka Perera <random -at- sawrc.com>
 pkgname=wiringpi-git
 _gitname=wiringPi
-pkgver=94.d795066
+pkgver=107.8d188fa
 pkgrel=1
 pkgdesc="Arduino wiring-like library written in C for RaspberryPi."
 url="http://wiringpi.com/"
-arch=('armv7h' 'armv6h' 'i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
 makedepends=('git')
+conflicts=('wiringpi')
 source=('git://git.drogon.net/wiringPi')
 md5sums=('SKIP')
 
@@ -31,6 +32,9 @@ prepare() {
 	sed -i "s|/man/man1|/share/man/man1|g" Makefile
 	#sed -i "s|-I\$(DESTDIR)\$(PREFIX)/include|-I${pkgdir}/usr/include|g" Makefile
 	#sed -i "s|-L\$(DESTDIR)\$(PREFIX)/lib|-L${pkgdir}/usr/lib|g" Makefile
+	cd ../wiringPiD
+	sed -i "s|\$(DESTDIR)\$(PREFIX)/sbin|\$(DESTDIR)\$(PREFIX)/bin|g" Makefile
+	sed -i '166,172 s/^# //' ../build
 }
 package() {
 	msg2 "Creating skeleton dirs..."
@@ -38,4 +42,5 @@ package() {
 	cd $_gitname
 	msg2 "Running wiringPi build/package script..."
 	./build
+	install -Dm644 COPYING.LESSER "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.LESSER"
 }
