@@ -2,6 +2,7 @@ pkgbase = sh-dash-replaces-bash-hook
 	pkgdesc = Replaces the /bin/sh symlink with dash when bash is upgraded
 	pkgver = 1.0.0
 	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Dash#Relinking_/bin/sh
 	arch = any
 	license = FDL1.3
 	depends = bash
