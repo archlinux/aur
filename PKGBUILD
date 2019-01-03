@@ -14,8 +14,9 @@ source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgv
 	"darkify_slack.js"
         "${pkgname}.patch")
 noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
+
 sha256sums=('d12dcc09f75af35b949068dd2b46c4e2a1990b8c7d3b3fdd4fc40b539755a407'
-	    'd515af602470e358eb748200f086429342a7f24427be154521fb503c4fb5b450'
+            '93e1bea9f7352fca43b515835c7c319b74a77b68fa5f49a613d3fe03d6f2ba36'
             'c952eb32dd59beff9fc5374853b04acde4a60ed8c39934fcd0b66829455d594d')
 
 package() {
