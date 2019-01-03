@@ -1,11 +1,11 @@
 # Maintainer: Björn Bidar <bidar@odin>
 _pkgname=primus-vk
 pkgname=$_pkgname-git
-pkgver=r57.d6c21d2
+pkgver=r62.52ceb2c
 pkgrel=1
-pkgdesc="https://github.com/felixdoerre/primus_vk"
+pkgdesc="Primus-Vk Nvidia Vulkan offloading for Bumblebee"
 arch=('i686' 'x86_64')
-url="Primus-Vk Nvidia Vulkan offloading for Bumblebee"
+url="https://github.com/felixdoerre/primus_vk"
 license=('BSD')
 depends=('nvidia-utils' 'bumblebee' 'vulkan-icd-loader' 'primus')
 makedepends=('vulkan-validation-layers' 'git')
