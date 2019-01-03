@@ -1,6 +1,6 @@
 pkgbase = libqdark-git
 	pkgdesc = Plugin for Qt applications. Choose the dark side of the style.
-	pkgver = 0.3.r2.g46eb441
+	pkgver = 0.5.1.r0.g38d11fd
 	pkgrel = 1
 	url = http://github.com/suratovvlad/libqdark
 	arch = i686

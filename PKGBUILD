@@ -1,7 +1,7 @@
 # Maintainer: degreeme <suratovvlad@gmail.com>
 
 pkgname=libqdark-git
-pkgver=0.3.r2.g46eb441
+pkgver=0.5.1.r0.g38d11fd
 pkgrel=1
 pkgdesc="Plugin for Qt applications. Choose the dark side of the style."
 arch=('i686' 'x86_64')
@@ -14,16 +14,18 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-*}
-  _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/release-//p}')
-  _rev=$(git rev-list --count release-${_tag}..HEAD)
-  _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
+  git describe --long --tags | sed 's/^FOO-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
-build() {
+prepare() {
     cd ${pkgname%-*}
     git submodule update --init
+    patch -d $srcdir/libqdark/src/QDarkStyleSheet -p1 < $srcdir/libqdark/0001_fix_class_names.patch
+}
+
+build() {
+    echo ${pwd}
+    cd ${pkgname%-*}
     qmake-qt5 libqdark.pro
     make
 }
