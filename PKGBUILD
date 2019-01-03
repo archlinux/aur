@@ -1,22 +1,22 @@
 # Maintainer: Lex Black <autumn-wind at web dot de>
-# Maintainer: Anton Larionov <diffident dot cat at gmail dot com>
+# Contributor: Anton Larionov <diffident dot cat at gmail dot com>
 
 pkgname=7kaa-music
-pkgver=2.13
-pkgrel=3
+pkgver=2.15
+pkgrel=1
 pkgdesc='Music set for Seven Kingdoms: Ancient Adversaries'
 url='http://7kfans.com/'
 arch=('any')
 license=('custom')
-source=("http://www.7kfans.com/downloads/${pkgname}.tar.bz2")
-md5sums=('90716e41b58e56b816ffea797fb24676')
+source=("http://www.7kfans.com/downloads/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('b5316f47e80409d216f55de411e2462c')
 
 
 package() {
   # music files
-  install -dm755 "${pkgdir}/opt/7kaa/music/"
-  cd "${srcdir}/${pkgname}/music/"
-  install -m644 *.wav "${pkgdir}/opt/7kaa/music/"
+  install -dm755 "${pkgdir}/opt/7kaa/MUSIC/"
+  cd "${srcdir}/${pkgname}/MUSIC/"
+  install -m644 *.WAV "${pkgdir}/opt/7kaa/MUSIC/"
 
   # readme
   install -D -m644 "${srcdir}/${pkgname}/README-Music.txt" "${pkgdir}/usr/share/doc/7kaa/README-Music"
