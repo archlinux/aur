@@ -71,7 +71,7 @@ source=(
     "numix-folders-${_numix_folders_icons_cmt}.tar.gz::https://github.com/numixproject/numix-folders/archive/${_numix_folders_icons_cmt}.tar.gz"
 )
 md5sums=('acf0604107bffb048a74e14e1f4b1f88'
-         '13945f05eba3b85e6d63fec1ff60380a'
+         '9eef9d048e14e94cbd154b000ea85ec6'
          'b1dccfa1a77c3b051762a2583a6c070f'
          '031f263be091e16de8932bfc4b7cfe82'
          'cb669130685dcbf03a8f7f5738c71dc6'
