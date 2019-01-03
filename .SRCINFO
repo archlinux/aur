@@ -1,7 +1,7 @@
 pkgbase = simpleburn
 	pkgdesc = A simple GTK+ application for burning CDs and DVDs
-	pkgver = 1.8.3.1
-	pkgrel = 2
+	pkgver = 1.8.4
+	pkgrel = 1
 	url = http://simpleburn.tuxfamily.org/
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = simpleburn
 	optdepends = mpg321: alternative to mpg123
 	optdepends = mplayer: needed for video DVD extraction
 	optdepends = mencoder: needed for video DVD extraction
-	source = http://simpleburn.tuxfamily.org/IMG/gz/simpleburn-1.8.3.1.tar.gz
-	md5sums = b13d5d5a7f78c53d626cf04e2be815f4
+	source = http://simpleburn.tuxfamily.org/IMG/gz/simpleburn-1.8.4.tar.gz
+	md5sums = a1d40a9185d997121ec4ab7c632f179c
 
 pkgname = simpleburn
 
