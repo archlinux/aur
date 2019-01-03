@@ -1,6 +1,6 @@
 pkgbase = clair-git
 	pkgdesc = Vulnerability Static Analysis for Containers
-	pkgver = v2.0.0.r249.g3947073b
+	pkgver = v2.0.0.r251.g5cd6a8cc
 	pkgrel = 1
 	url = https://github.com/coreos/clair
 	arch = x86_64

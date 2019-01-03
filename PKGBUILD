@@ -2,7 +2,7 @@
 
 pkgname=clair-git
 _pkgname=clair
-pkgver=v2.0.0.r249.g3947073b
+pkgver=v2.0.0.r251.g5cd6a8cc
 pkgrel=1
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=(x86_64)
