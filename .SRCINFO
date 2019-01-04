@@ -1,6 +1,6 @@
 pkgbase = playfetch-git
 	pkgdesc = Fetch playlists from GMusicProxy
-	pkgver = r13.dbe0f6e
+	pkgver = r14.b35d24d
 	pkgrel = 1
 	url = https://github.com/jeffmhubbard/playfetch
 	arch = any

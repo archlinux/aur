@@ -1,7 +1,7 @@
 # Maintainer: Jeff M. Hubbard <jeffmhubbard@gmail.com>
 _pkgname=playfetch
 pkgname=${_pkgname}-git
-pkgver=r13.dbe0f6e
+pkgver=r14.b35d24d
 pkgrel=1
 pkgdesc="Fetch playlists from GMusicProxy"
 arch=('any')
