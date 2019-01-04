@@ -1,6 +1,6 @@
 pkgbase = python-xarray
 	pkgdesc = N-D labeled arrays and datasets in Python
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = http://xarray.pydata.org
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = python-xarray
 	optdepends = python-matplotlib: Plotting support
 	optdepends = python-dask: Enable out-of-core parallel computation
 	replaces = python-xray
-	source = python-xarray-0.11.1.tar.gz::https://github.com/pydata/xarray/archive/v0.11.1.tar.gz
-	md5sums = 182ce5bd94234c651280822c9a3ffbab
-	sha1sums = d2b7198e8bea3df9f4a6dbdd2632c09abfa875c6
-	sha256sums = a6f078abcb0d62213d1f2bc63b1a83e135c2bb94fdebe663ccd1facc737eb851
+	source = python-xarray-0.11.2.tar.gz::https://github.com/pydata/xarray/archive/v0.11.2.tar.gz
+	md5sums = ef65b6140d42a7d83debb310713869df
+	sha1sums = eec9a96b6482151c1123b728a656462ab1361d4f
+	sha256sums = f171df10e818ce0c7b73fda0e1739176a5c85a4a54a9e39d74e060f3b1593643
 
 pkgname = python-xarray
 
