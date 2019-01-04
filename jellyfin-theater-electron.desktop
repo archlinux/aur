@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Jellyfin Theater
+Comment=Electron Theater app for Jellyfin
+Exec=/usr/bin/jellyfin-theater-electron.sh
+StartupWMClass=JellyfinTheaterElectron
+Icon=jellyfin-theatre
+Terminal=false
+Type=Application
+Categories=Network;
+X-Desktop-File-Install-Version=0.1
+Name[en_US]=Jellyfin Theater
