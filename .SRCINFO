@@ -1,0 +1,14 @@
+pkgbase = beamwallet-bin
+	pkgdesc = Scalable confidential cryptocurrency
+	pkgver = 1.0.3976
+	pkgrel = 1
+	url = https://www.beam.mw
+	arch = x86_64
+	license = custom:beam
+	makedepends = binutils
+	makedepends = tar
+	source = Beam-Wallet-1.0.3976.deb::https://builds.beam.mw/mainnet/2019.01.03/Release/linux
+	sha256sums = ac5fce080df0a21ede3d13bd5a8366374be969ceeab6bb685a224385f1b14adc
+
+pkgname = beamwallet-bin
+
