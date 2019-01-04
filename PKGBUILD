@@ -3,15 +3,15 @@
 _pipname=python-dotenv
 pkgbase=python-dotenv
 pkgname=('python-dotenv')
-pkgver=0.7.1
+pkgver=0.10.1
 pkgrel=1
-pkgdesc="Get and set values in your .env file in local and production servers like Heroku does"
+pkgdesc="Get and set values in your .env file in local and production servers"
 arch=('any')
 url="https://github.com/theskumar/python-dotenv/"
 license=('BSD3')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/p/python-dotenv/python-dotenv-${pkgver}.tar.gz")
-sha256sums=('45e927c34204c90f5faa35ea8709b894f6b1a7712d77eb50940601068040993b')
+sha256sums=('c9b1ddd3cdbe75c7d462cb84674d87130f4b948f090f02c7d7144779afb99ae0')
 
 
 build() {
