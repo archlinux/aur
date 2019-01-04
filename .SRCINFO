@@ -1,0 +1,19 @@
+pkgbase = h3-git
+	pkgdesc = Hexagonal hierarchical geospatial indexing system
+	pkgver = v3.3.0.r0.g6af4914
+	pkgrel = 1
+	url = https://github.com/uber/h3
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = libtool
+	provides = h3
+	conflicts = h3
+	source = h3-git::git+https://github.com/uber/h3.git
+	md5sums = SKIP
+
+pkgname = h3-git
+
