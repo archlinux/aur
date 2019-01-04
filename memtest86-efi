@@ -42,7 +42,7 @@ _common_install() {
 
 _write_grub_cfg() {
 	uuid="$1"
-sleep 42
+
 	cat > "/etc/grub.d/86_memtest" <<FOE
 #!/bin/sh
 
