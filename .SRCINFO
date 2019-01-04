@@ -19,6 +19,7 @@ pkgbase = appimagelauncher-git
 	depends = inotify-tools
 	depends = libarchive
 	depends = libbsd
+	depends = boost
 	source = git://github.com/TheAssassin/AppImageLauncher#tag=continuous
 	source = appimage-binfmt-remove.hook
 	sha256sums = SKIP
