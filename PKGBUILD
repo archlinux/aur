@@ -17,6 +17,7 @@ sha256sums=("a5ec86ee7b7cb38acda2b956b039235d451216d256e225ec9b2d0a5849b3a6f4")
 package() {
     mkdir $pkgdir/usr/bin -p
     cp $srcdir/batmon-*/batmond $pkgdir/usr/bin
+    chmod +x $pkgdir/usr/bin/batmond
     mkdir $pkgdir/etc/systemd/system -p
     cp $srcdir/batmon-*/batmond.service $pkgdir/etc/systemd/system
 }
