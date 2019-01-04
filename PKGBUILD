@@ -28,5 +28,5 @@ build() {
 
 package() {
     cd "$srcdir/flare-engine"
-    make install DESTDIR=$pkgdir
+    make install DESTDIR="$pkgdir"
 }
