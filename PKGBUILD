@@ -2,14 +2,15 @@
 
 pkgname=libmysofa-git
 _srcname=libmysofa
-pkgver=0.6.r56.g5e1fc5b
-pkgrel=2
+pkgver=0.6.r59.g50ee637
+pkgrel=1
 pkgdesc='C library to read HRTFs if they are stored in the AES69-2015 SOFA format (git version)'
 arch=('i686' 'x86_64')
 url='https://hoene.github.io/libmysofa/'
 license=('BSD')
 depends=('glibc' 'zlib')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'cunit')
+checkdepends=('nodejs')
 provides=('libmysofa')
 conflicts=('libmysofa')
 source=('git+https://github.com/hoene/libmysofa.git')
@@ -27,13 +28,19 @@ build() {
     
     cmake \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
-        -DBUILD_TESTS:BOOL='OFF' \
+        -DBUILD_TESTS:BOOL='ON' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -Wno-dev \
         ..
         
     make all
+}
+
+check() {
+    cd "${_srcname}/build"
+    
+    make test
 }
 
 package() {
