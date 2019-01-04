@@ -2,8 +2,8 @@
 # Contributor: Philipp A. <flying-sheep@web.de>
 # Contributor: theSander <aur@sandervanbalen.be>
 pkgname=rambox-os-git
-pkgver=r989.821e3f5
-pkgrel=4
+pkgver=r1005.0172bec
+pkgrel=1
 pkgdesc="Free and Open Source messaging and emailing app that combines common web applications into one."
 arch=(i686 x86_64)
 url="https://github.com/TheGoddessInari/rambox"

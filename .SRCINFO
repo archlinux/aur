@@ -1,7 +1,7 @@
 pkgbase = rambox-os-git
 	pkgdesc = Free and Open Source messaging and emailing app that combines common web applications into one.
-	pkgver = r989.821e3f5
-	pkgrel = 4
+	pkgver = r1005.0172bec
+	pkgrel = 1
 	url = https://github.com/TheGoddessInari/rambox
 	arch = i686
 	arch = x86_64
