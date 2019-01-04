@@ -1,14 +1,15 @@
 pkgbase = python-scipy-doc
 	pkgdesc = Documentation for SciPy
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://docs.scipy.org
 	arch = any
 	license = BSD
 	makedepends = unzip
-	noextract = python-scipy-doc-1.1.0.zip
-	source = python-scipy-doc-1.1.0.zip::https://docs.scipy.org/doc/scipy-1.1.0/scipy-html-1.1.0.zip
-	sha256sums = 01fb4c8b2a981f4595035232da6fc53687a8ce6d78cd0efab7f5a27333cbf02f
+	depends = bash
+	noextract = python-scipy-doc-1.2.0.zip
+	source = python-scipy-doc-1.2.0.zip::https://docs.scipy.org/doc/scipy-1.2.0/scipy-html-1.2.0.zip
+	sha256sums = 40e54c58f94a3228305c16f50c2689f51c03862336e772359ab56c5fdb0dcd74
 
 pkgname = python-scipy-doc
 
