@@ -1,0 +1,21 @@
+pkgbase = tldr++
+	pkgdesc = Community driven man pages improved with smart user interaction
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://isacikgoz.me/tldr
+	arch = any
+	license = MIT
+	makedepends = go
+	provides = tldr
+	conflicts = tldr
+	conflicts = tealdeer
+	conflicts = tldr-bash
+	conflicts = nodejs-tldr
+	conflicts = tldr-go-client
+	conflicts = tldr-cpp
+	conflicts = tldr-python-client
+	source = tldr++-0.5.0.tar.gz::https://github.com/isacikgoz/tldr/archive/v0.5.0.tar.gz
+	md5sums = 40e3eabc37c767544d907f0a65f364fd
+
+pkgname = tldr++
+
