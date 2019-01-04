@@ -2,7 +2,7 @@
 # Original author: kalenz <archlinux@kalenz.fr>
 
 pkgname="python2-androguard"
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Python framework for Android application analysis."
 arch=("any")
@@ -25,7 +25,7 @@ optdepends=(
 makedepends=("git")
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/androguard/androguard/archive/v${pkgver}.tar.gz")
-md5sums=('1d0af15d39230d9524bc2a34c84fadf8')
+md5sums=('fe63ffa6ac3b26c619279577062e3b20')
 
 package() {
     cd "$srcdir/androguard-$pkgver"
