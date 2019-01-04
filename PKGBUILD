@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://www.beam.mw"
 license=("custom:beam")
 makedepends=("binutils" "tar")
-source=("Beam-Wallet-1.0.3976.deb::https://builds.beam.mw/mainnet/2019.01.03/Release/linux")
+source=("Beam-Wallet-1.0.3976.deb::https://builds.beam.mw/mainnet/2019.01.03/Release/linux/Beam-Wallet-1.0.3976.deb")
 sha256sums=("ac5fce080df0a21ede3d13bd5a8366374be969ceeab6bb685a224385f1b14adc")
 
 prepare() {
