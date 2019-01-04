@@ -1,8 +1,8 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-core
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.11.3
+pkgrel=1
 epoch=1
 pkgdesc="Industrial strength alternative to OCaml's standard library"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('ocaml-utop: for coretop support'
 makedepends=('dune')
 options=('!strip')
 source=("https://github.com/janestreet/core/releases/download/v${pkgver}/core-v${pkgver}.tbz")
-md5sums=('93ee333a0027bcda7cca3b323171d13b')
+sha512sums=('ac0846b4012d489a6b5222a37f5a3ab910ff35635896beeacc1c2d100639495756dddf2d7b71b86f1e51915790ccc4c79d049c1d4ebefdae406414dd376c15df')
 
 build() {
   cd "${srcdir}/core-v${pkgver}"
