@@ -1,7 +1,7 @@
 pkgbase = banshee-git
 	pkgdesc = Music management and playback for GNOME (fork by arfbtwn)
 	pkgver = 2.9.1.r355.g10da4d618
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/arfbtwn/banshee
 	arch = i686
 	arch = x86_64
@@ -31,6 +31,7 @@ pkgbase = banshee-git
 	optdepends = brasero: CD burning
 	conflicts = banshee
 	source = git+https://github.com/arfbtwn/banshee.git
+	source = Report-Pause-Play-Hack.patch
 	md5sums = SKIP
 
 pkgname = banshee-git

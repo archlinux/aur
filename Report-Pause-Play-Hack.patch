@@ -1,0 +1,19 @@
+diff --git a/src/Extensions/Banshee.Mpris/Banshee.Mpris/MediaPlayer.cs b/src/Extensions/Banshee.Mpris/Banshee.Mpris/MediaPlayer.cs
+index d5b38b122..5508ec7a5 100644
+--- a/src/Extensions/Banshee.Mpris/Banshee.Mpris/MediaPlayer.cs
++++ b/src/Extensions/Banshee.Mpris/Banshee.Mpris/MediaPlayer.cs
+@@ -187,11 +187,11 @@ namespace Banshee.Mpris
+         }
+ 
+         public bool CanPause {
+-            get { return engine_service.CanPause; }
++            get { return true; }
+         }
+ 
+         public bool CanPlay {
+-            get { return CanControl; }
++            get { return true; }
+         }
+ 
+         public bool CanSeek {
+

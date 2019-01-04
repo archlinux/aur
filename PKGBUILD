@@ -3,7 +3,7 @@
 pkgname=banshee-git
 _pkgbase=banshee
 pkgver=2.9.1.r355.g10da4d618
-pkgrel=2
+pkgrel=3
 pkgdesc="Music management and playback for GNOME (fork by arfbtwn)"
 arch=('i686' 'x86_64')
 url="https://github.com/arfbtwn/banshee"
@@ -17,12 +17,18 @@ optdepends=('gst-plugins-ugly: Extra media codecs'
             'gst-libav: Extra media codecs'
             'brasero: CD burning')
 conflicts=($_pkgbase)
-source=(git+https://github.com/arfbtwn/banshee.git)
+source=(git+https://github.com/arfbtwn/banshee.git
+'Report-Pause-Play-Hack.patch')
 md5sums=(SKIP)
 
 pkgver() {
   cd "$_pkgbase"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgbase"
+  patch -p1 -i $srcdir/Report-Pause-Play-Hack.patch
 }
 
 build() {
