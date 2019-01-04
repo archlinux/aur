@@ -1,17 +1,15 @@
 pkgbase = pegsolitaire
 	pkgdesc = game for one player involving movement of pegs on a board
-	pkgver = 0.1.1
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/jnumm/pegsolitaire
-	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = autoconf-archive
-	depends = gtk2
-	source = pegsolitaire-0.1.1.tar.gz::https://github.com/jnumm/pegsolitaire/archive/v0.1.1.tar.gz
-	source = pegsolitaire-0.1.1.tar.gz.asc::https://github.com/jnumm/pegsolitaire/releases/download/v0.1.1/v0.1.1.tar.gz.asc
+	depends = gtk3
+	source = pegsolitaire-0.3.tar.gz::https://github.com/jnumm/pegsolitaire/archive/v0.3.tar.gz
+	source = pegsolitaire-0.3.tar.gz.asc::https://github.com/jnumm/pegsolitaire/releases/download/v0.3/v0.3.tar.gz.asc
 	validpgpkeys = 0AF14FC9D1E57BB2C9D793DD80866B628FE313C6
-	md5sums = f70d22e9b048db2f912d335d15e945d9
+	md5sums = f209d6ac2dd3a6d8e7e90d4dc6c883d3
 	md5sums = SKIP
 
 pkgname = pegsolitaire
