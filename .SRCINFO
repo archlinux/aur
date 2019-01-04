@@ -9,6 +9,7 @@ pkgbase = gamekit-git
 	depends = glm
 	depends = sdl2
 	depends = sdl2_image
+	depends = sdl2_mixer
 	depends = sdl2_ttf
 	depends = tinyxml2
 	provides = gamekit
