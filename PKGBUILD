@@ -2,13 +2,13 @@
 
 pkgname=cozy-desktop
 pkgver=3.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
 arch=('any')
 url="https://cozy-labs.github.io/cozy-desktop/"
 license=('AGPL3')
-depends=('electron2' 'nodejs-lts-carbon')
-makedepends=('yarn' 'git' 'node-gyp' 'python2')
+depends=('electron2')
+makedepends=('nodejs-lts-carbon' 'yarn' 'git' 'node-gyp' 'python2')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/cozy-labs/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh"
@@ -39,6 +39,9 @@ package() {
 
     install -dm755 "${pkgdir}"/usr/lib/${pkgname}
     cp -r dist/linux-unpacked/resources "${pkgdir}"/usr/lib/${pkgname}/
+
+    rm "${pkgdir}"/usr/lib/cozy-desktop/resources/app.asar.unpacked/gui/scripts/macos-add-favorite.py
+    rmdir "${pkgdir}"/usr/lib/cozy-desktop/resources/app.asar.unpacked/gui/{scripts/,}
 
     cd "${srcdir}"
     install -dm755 "${pkgdir}"/usr/share/icons/
