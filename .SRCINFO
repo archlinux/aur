@@ -1,6 +1,6 @@
 pkgbase = gnome-logs-git
 	pkgdesc = A log viewer for the systemd journal
-	pkgver = 3.23.2+2+ga24c9da
+	pkgver = 3.31.3+9+g123f09b
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Logs
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = gnome-logs-git
 	depends = gtk3
 	depends = gsettings-desktop-schemas
 	conflicts = gnome-logs
-	source = git://git.gnome.org/gnome-logs#branch=master
+	source = git+https://gitlab.gnome.org/GNOME/gnome-logs.git
 	sha256sums = SKIP
 
 pkgname = gnome-logs-git
