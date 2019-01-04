@@ -1,5 +1,5 @@
 pkgname=buddhasay
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Like Cowsay, but with a Buddha."
 url="https://github.com/luisonthekeyboard/buddhasay"
@@ -17,4 +17,6 @@ build() {
 package() {
   cd $srcdir/buddhasay-$pkgver
   install -Dm755 target/release/buddhasay "$pkgdir/usr/bin/buddhasay"
+  install -d "$pkgdir/usr/share/buddhasay"
+  install -Dm755 resources/buddhasay.toml "$pkgdir/usr/share/buddhasay/buddhasay.toml"
 }
