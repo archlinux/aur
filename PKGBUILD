@@ -28,5 +28,5 @@ build() {
 
 package() {
     cd "$srcdir/flare-game"
-    make install DESTDIR=$pkgdir
+    make install DESTDIR="$pkgdir"
 }
