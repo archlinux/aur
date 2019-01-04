@@ -27,15 +27,15 @@ md5sums=('SKIP'
          'd2af5bfbe6ed19896d7e1b9bb1461498')
 
 pkgver() {
-  cd "$srcdir/${pkgname/-git/}"
+  cd "$srcdir/${pkgname/-lite-git/}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgname/-git/}"
+  cd "$srcdir/${pkgname/-lite-git/}"
 
-  patch -p1 -i ../0001-autogen.sh-remove-git-submodules-update.patch
-  patch -p1 -i ../0001-Update-.gitmodules.patch
+  patch -p1 -i ../banshee-autogen.sh-remove-git-submodules-update.patch
+  patch -p1 -i ../banshee-Update-.gitmodules.patch
 
   git submodule init
   git config 'submodule.src/Hyena.url' "${srcdir}/Hyena"
@@ -45,7 +45,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/${pkgname/-git/}"
+  cd "$srcdir/${pkgname/-lite-git/}"
 
   ./configure \
     --prefix=/usr \
@@ -74,7 +74,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname/-git/}"
+  cd "$srcdir/${pkgname/-lite-git/}"
 
   make DESTDIR="$pkgdir" install
   install -D -m644 COPYING "$pkgdir/usr/share/licenses/banshee/COPYING"
