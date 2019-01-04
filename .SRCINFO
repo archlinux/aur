@@ -1,6 +1,6 @@
 pkgbase = compute-runtime-bin
 	pkgdesc = Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond (binary version)
-	pkgver = 18.51.12049
+	pkgver = 18.52.12090
 	pkgrel = 1
 	url = https://github.com/intel/compute-runtime
 	install = compute-runtime-bin.install
@@ -17,15 +17,15 @@ pkgbase = compute-runtime-bin
 	provides = compute-runtime
 	conflicts = beignet
 	conflicts = compute-runtime
-	noextract = https://github.com/intel/compute-runtime/releases/download/18.51.12049/intel-igc-core_18.50.1270_amd64.deb
-	noextract = https://github.com/intel/compute-runtime/releases/download/18.51.12049/intel-igc-opencl_18.50.1270_amd64.deb
-	noextract = https://github.com/intel/compute-runtime/releases/download/18.51.12049/intel-opencl_18.51.12049_amd64.deb
-	source = https://github.com/intel/compute-runtime/releases/download/18.51.12049/intel-igc-core_18.50.1270_amd64.deb
-	source = https://github.com/intel/compute-runtime/releases/download/18.51.12049/intel-igc-opencl_18.50.1270_amd64.deb
-	source = https://github.com/intel/compute-runtime/releases/download/18.51.12049/intel-opencl_18.51.12049_amd64.deb
+	noextract = https://github.com/intel/compute-runtime/releases/download/18.52.12090/intel-igc-core_18.50.1270_amd64.deb
+	noextract = https://github.com/intel/compute-runtime/releases/download/18.52.12090/intel-igc-opencl_18.50.1270_amd64.deb
+	noextract = https://github.com/intel/compute-runtime/releases/download/18.52.12090/intel-opencl_18.52.12090_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/18.52.12090/intel-igc-core_18.50.1270_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/18.52.12090/intel-igc-opencl_18.50.1270_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/18.52.12090/intel-opencl_18.52.12090_amd64.deb
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 724bd7c12a07c95b35e254c66d29498a1d30ead70c2979fcc473c9362750a7e2
+	sha256sums = 4ec51c68c800c3584e6f501b0998f84c269e63c706c975d6ce4f4ea0b24e2b88
 
 pkgname = compute-runtime-bin
 
