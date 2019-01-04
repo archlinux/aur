@@ -1,0 +1,9 @@
+# Blacklist:
+*
+
+# Whitelist:
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!gog-pyre.desktop
+!gog-pyre

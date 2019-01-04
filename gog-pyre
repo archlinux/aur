@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Setting TERM prevents the application from crashing with "System.Exception:
+# Magic number is wrong: 542." See: https://github.com/mono/mono/issues/11557
+TERM=xterm /opt/gog-pyre/start.sh

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pyre
+Comment=A party-based RPG in which you lead a band of exiles to freedom.
+Exec=gog-pyre
+Icon=gog-pyre
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game
