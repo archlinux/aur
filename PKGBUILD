@@ -24,7 +24,7 @@ _makenconfig=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver=4.20-arch1
+_srcver=4.19.12-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -48,7 +48,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            'ae36db5af2cb8687ffcacbd98f44729140ca146eb74fdb1c3721b336a9823f19'
+            'b9a66a11b36eae6e17c8503b54cfd41791efbe4a6f9a1455f81ad2b3c464399b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -60,8 +60,8 @@ prepare() {
   cd $_srcname
 
   msg2 "Adding patches from Arch Linux kernel repository..."
-  git remote add arch_stable https://git.archlinux.org/linux.git
-  git pull arch_stable v$_srcver
+  git remote add upstream-arch https://git.archlinux.org/linux.git
+  git pull upstream-arch v$_srcver
   
   # https://github.com/graysky2/kernel_gcc_patch
   msg2 "Patching to enabled additional gcc CPU optimizatons..."
