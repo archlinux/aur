@@ -1,7 +1,7 @@
 # Maintainer:Lucas Eduardo Wendt <lucas59356@gmail.com>
 
 pkgname=batmon-git
-pkgver=v0.1
+pkgver=v0.2
 depends=('python')
 makedepends=()
 pkgrel=0
@@ -12,7 +12,7 @@ options=(!strip)
 url="https://github.com/lucasew/batmon"
 install=batmon-git.install
 source=("https://github.com/lucasew/batmon/archive/$pkgver.zip")
-sha256sums=("4c9f301995fcf1e1be0e68039a18d2269c3907dc0866fcf2736809e7ba776590")
+sha256sums=("a5ec86ee7b7cb38acda2b956b039235d451216d256e225ec9b2d0a5849b3a6f4")
 
 package() {
     mkdir $pkgdir/usr/bin -p
