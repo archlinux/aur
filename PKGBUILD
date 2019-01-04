@@ -5,7 +5,7 @@
 
 _gitname='libsigrok'
 pkgname="${_gitname}-git"
-pkgver=0.2.1.r3082.g0f523f2b
+pkgver=0.2.1.r3225.gea7a83a4
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, core library (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --long | sed 's/^libsigrok-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --exclude 'libsigrok-unreleased' --long | sed 's/^libsigrok-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
