@@ -4,20 +4,23 @@ pkgname=maptiler32bit
 pkgver=1.0.beta2
 pkgrel=2
 pkgdesc="Map Tile Cutter - Tile Overlay Generator for Google Maps and Google Earth"
-arch=('i686')
+arch=('any')
 url="http://www.maptiler.org/"
 license=('BSD')
-depends=('gdal')
+depends=('gdal' 'python2-gdal')
 makedepends=('dpkg')
-source=(https://dl.dropboxusercontent.com/u/29095940/oss/maptiler.tgz)
-md5sums=('a8c61c539c4d280424d9044bcd7c52ef')
+source=(https://github.com/jose1711/maptiler/archive/master.zip)
+md5sums=('d08159ae6c8c6ebf760d3ef749fc7824')
 
 package() {
-  #dpkg -x ${pkgname}_${pkgver}_all.deb "$pkgdir"
-  #grep -rl '^#!/usr/bin/env python$' $pkgdir | xargs sed -i 's/^\#\!\/usr\/bin\/env\ python$/\#\!\/usr\/bin\/env\ python2/g'
-  cd $srcdir
-  cp -r . $pkgdir
-  rm $pkgdir/maptiler.tgz
+  cd $srcdir/maptiler-master
+  install -d ${pkgdir}/usr/share/maptiler/maptiler/pp ${pkgdir}/usr/bin
+
+  tar -cf - --exclude deploy . | tar -C "$pkgdir/usr/share/maptiler" -xvf -
+  sed -i 's/Icon=.*/Icon=maptiler.png/' deploy/linux/maptiler.desktop
+  install -Dm644 deploy/linux/maptiler.desktop $pkgdir/usr/share/applications/maptiler.desktop
+  install -Dm644 resources/icon.png $pkgdir/usr/share/pixmaps/maptiler.png
+  ln -s /usr/share/maptiler/maptiler.py $pkgdir/usr/bin/maptiler
 }
 
 # vim:set ts=2 sw=2 et:
