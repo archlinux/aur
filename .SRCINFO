@@ -6,7 +6,7 @@ pkgbase = lsd
 	arch = i686
 	arch = x86_64
 	source = lsd
-	md5sums = a62587242073ca091d91aa0a51157af9
+	md5sums = 0319a8b534ea98135389332ccec4e968
 
 pkgname = lsd
 
