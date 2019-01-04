@@ -1,0 +1,20 @@
+pkgbase = python-ostruct
+	pkgdesc = OpenStruct for Python
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/hamidnazari/python-ostruct
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/o/ostruct/ostruct-3.0.1.tar.gz
+	sha512sums = f00772d8a35b88703147502add274e0413358ec4b217e1898c048c549922fd397e6ac37d48a15f1dfc0001e8b171ac5df55625a31f9f8092fc6ea1b2579b4b05
+
+pkgname = python-ostruct
+	depends = python
+
+pkgname = python2-ostruct
+	depends = python2
+
