@@ -29,8 +29,15 @@ backup=(etc/default/dirsrv
         etc/dirsrv/config/slapd-collations.conf
         etc/dirsrv/config/template-initconfig)
 options=(!libtool)
-source=("https://releases.pagure.org/389-ds-base/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('bcd22f64b7e29a0d58dc19c428eaabb3674b5f2a6029f62eeadf4e21346bcb79e689d91e2689d01b625d731cac8b49150343975961a52c1552d2454038598c20')
+source=("https://releases.pagure.org/389-ds-base/${pkgname}-${pkgver}.tar.bz2"
+				'nss.patch')
+sha512sums=('bcd22f64b7e29a0d58dc19c428eaabb3674b5f2a6029f62eeadf4e21346bcb79e689d91e2689d01b625d731cac8b49150343975961a52c1552d2454038598c20'
+            'b34c7125176481791d71cf98a78cc6dbaa658b8398ad7bdd48944612b6078307aee2acbb065011098d21672fd504191f207711e36399edc35b49af9aede64337')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+	patch -p1 < ../nss.patch
+}
 
 build() {
   cd "${pkgname}-${pkgver}"

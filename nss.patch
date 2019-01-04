@@ -1,0 +1,37 @@
+diff -Naur 389-ds-base-1.4.0.20-orig 389-ds-base-1.4.0.20
+diff -Naur 389-ds-base-1.4.0.20-orig/include/ldaputil/certmap.h 389-ds-base-1.4.0.20/include/ldaputil/certmap.h
+--- 389-ds-base-1.4.0.20-orig/include/ldaputil/certmap.h	2019-01-04 09:54:10.990649622 -0500
++++ 389-ds-base-1.4.0.20/include/ldaputil/certmap.h	2019-01-04 09:54:24.961017809 -0500
+@@ -16,7 +16,7 @@
+ /* What was extcmap.h begins ... */
+ 
+ #include <ldap.h>
+-#include <nss3/cert.h>
++#include <nss/cert.h>
+ 
+ #ifndef NSAPI_PUBLIC
+ #define NSAPI_PUBLIC
+diff -Naur 389-ds-base-1.4.0.20-orig/ldap/servers/slapd/slapi-private.h 389-ds-base-1.4.0.20/ldap/servers/slapd/slapi-private.h
+--- 389-ds-base-1.4.0.20-orig/ldap/servers/slapd/slapi-private.h	2019-01-04 09:54:11.060651467 -0500
++++ 389-ds-base-1.4.0.20/ldap/servers/slapd/slapi-private.h	2019-01-04 09:54:40.511427639 -0500
+@@ -1371,7 +1371,7 @@
+  * The latter case, caller is responsible to free it.
+  */
+ /* vnum is supposed to be in one of the following:
+- * nss3/sslproto.h
++ * nss/sslproto.h
+  * #define SSL_LIBRARY_VERSION_2                   0x0002
+  * #define SSL_LIBRARY_VERSION_3_0                 0x0300
+  * #define SSL_LIBRARY_VERSION_TLS_1_0             0x0301
+diff -Naur 389-ds-base-1.4.0.20-orig/lib/ldaputil/examples/init.c 389-ds-base-1.4.0.20/lib/ldaputil/examples/init.c
+--- 389-ds-base-1.4.0.20-orig/lib/ldaputil/examples/init.c	2019-01-04 09:54:11.110652785 -0500
++++ 389-ds-base-1.4.0.20/lib/ldaputil/examples/init.c	2019-01-04 09:54:51.591719659 -0500
+@@ -15,7 +15,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <ctype.h>
+-#include <nss3/cert.h>
++#include <nss/cert.h>
+ #include "certmap.h" /* Public Certmap API */
+ #include "plugin.h"  /* must define extern "C" functions */
+ 
