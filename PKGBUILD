@@ -1,4 +1,5 @@
-# Maintainer: Maintainer: oi_wtf <brainpower at mailbox dot org>
+# Maintainer: oi_wtf <brainpower at mailbox dot org>
+# Contributor: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Vesa Kaihlavirta <vegai@iki.fi>
 # Contributor: Kristoffer Fossgård <kfs1@online.no>
@@ -7,22 +8,31 @@
 
 _pkgname=terminus-font
 pkgname=${_pkgname}-td1
-pkgver=4.46
+pkgver=4.47
 pkgrel=1
+
 pkgdesc='Monospace bitmap font (for X11 and console) with td1 patch (centered ascii tilde)'
-arch=('any')
 url='http://sourceforge.net/projects/terminus-font/'
+arch=('any')
 license=('GPL2' 'custom:OFL')
+
 makedepends=('xorg-bdftopcf' 'fontconfig' 'xorg-mkfontscale' 'xorg-mkfontdir' 'python3')
 optdepends=('xorg-fonts-alias')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+
 conflicts=('terminus-font')
 provides=('terminus-font')
-source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('4e29433e5699b76df1f5c9a96f1228cccf8ea8a16791cfef063f2b8506c75bcd')
+
+source=("https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+        fix-75-yes-terminus.patch)
+sha256sums=('0f1b205888e4e26a94878f746b8566a65c3e3742b33cf9a4e6517646d5651297'
+            'ddd86485cf6d54e020e36f1c38c56e8b21b57c23a5d76250e15c1d16fed9caa5')
 
 prepare() {
-  chmod +x "${_pkgname}-${pkgver}/configure"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  chmod +x configure
+  patch -p1 < "$srcdir"/fix-75-yes-terminus.patch
 }
 
 build() {
@@ -52,5 +62,4 @@ package() {
   ln -s ../conf.avail/75-yes-terminus.conf
 }
 
-# getver: terminus-font.sf.net
 # vim:set ts=2 sw=2 et:
