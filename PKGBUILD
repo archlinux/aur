@@ -1,13 +1,13 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=redasm-git
-pkgver=r474.e08b300
+pkgver=r994.0169573
 pkgrel=1
 url='https://github.com/REDasmOrg/REDasm'
 arch=('i686' 'x86_64')
-pkgdesc='Portable Reverse Engineering Framework'
+pkgdesc='The OpenSource Disassembler'
 license=('GPL3')
-depends=('qt5-base')
+depends=('qt5-base' 'qt5-webengine')
 makedepends=('git')
 conflicts=(redasm)
 provides=(redasm)
@@ -15,8 +15,9 @@ source=(
     'git+https://github.com/REDasmOrg/REDasm.git'
     'git+https://github.com/Dax89/QHexEdit.git'
     'git+https://github.com/aquynh/capstone.git'
+    'git+https://github.com/madler/zlib.git'
     )
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd REDasm
@@ -27,20 +28,27 @@ prepare() {
     cd REDasm
     git submodule init
     git config submodule.widgets/QHexEdit.url "$srcdir/QHexEdit"
+    git submodule update
+    cd LibREDasm
+    git config submodule.depends/zlib.url "$srcdir/zlib"
     git config submodule.depends/capstone.url "$srcdir/capstone"
     git submodule update
 }
 
 build() {
-    cd REDasm
-    qmake -r
+    mkdir -p build
+    cd build
+    cmake ../REDasm -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
 package() {
-    cd REDasm
+    pushd build
     install -D -m755 REDasm ${pkgdir}/usr/bin/REDasm
+    install -D -m755 LibREDasm.so ${pkgdir}/usr/lib/LibREDasm.so
+    popd
 
+    cd REDasm
     install -D -m644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README
     install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
