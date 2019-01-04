@@ -10,7 +10,7 @@
 
 pkgname='unreal-engine'
 install="$pkgname.install"
-pkgver=4.21.0
+pkgver=4.21.1
 # shellcheck disable=SC2034
 {
   pkgrel=1
@@ -18,7 +18,7 @@ pkgver=4.21.0
   arch=('x86_64')
   url='https://www.unrealengine.com/'
   makedepends=('clang' 'mono' 'dos2unix' 'cmake' 'git')
-  depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python' 'lld')
+  depends=('icu' 'xdg-user-dirs' 'sdl2' 'python' 'lld')
   license=('custom:UnrealEngine')
 
   source=(
@@ -27,7 +27,6 @@ pkgver=4.21.0
     'ignore-return-value-error.patch'
     'only-generate-makefile.patch'
     'html5-build.patch'
-    'UnrealVersionSelector-register.patch'
     'recompile-version-selector.patch'
     'Makefile'
     'ignore-clang50-install.patch'
@@ -42,7 +41,6 @@ pkgver=4.21.0
     'UnrealExporter-move.patch'
     'NiagaraScriptViewModel-self-assign-fix.patch'
     'Messages-move.patch'
-    'UnrealVersionSelector-fstring-compat.patch'
   )
 
 sha256sums=('SKIP'
@@ -50,7 +48,6 @@ sha256sums=('SKIP'
             '918dff809a7e815343a8d233f704f52a910b8f01a9cb3d29de541a0334fecc7c'
             'ab3e7981da6da4473717aef0bce9d550aacad02f9260f98d5b7a0bb3374a959a'
             '9fd6d16d56fbe0489a2580b86359df84b83a6987b5760a9e57ae0898f51943ac'
-            '23f55f7dffc98f5a8ef84520c7ef82bc9cca447433ad0405e3f9a319a29301ef'
             '1dd876fa48c6fb4fcd4ccbdb8ed4ceccfa294685911e91be58bbc5e95726c279'
             '9654226ef3318389aa8fe15f3d4d14e7ac2113520ee5ebf2899d42273a2a6fb0'
             'eab5ba97327de2b8b17aea73ffd797a882fe0d1923ed2a8dc1709a8b00da63e4'
@@ -64,8 +61,7 @@ sha256sums=('SKIP'
             '2557758219e0e8718652e102579d26a67f88ec45e61cc3457b2ebf0710bb036a'
             '83df14d25b75321f80c9132e72d99e7feafd294a78210f284101a5a8298aa38d'
             'a0abe52f6ffe9b85b934e85a7077121461fab56f615f1714bdbc12afce5b2e82'
-            '2f872c76f998f4e04c1eb221d022848686537e087413bfc016028e1f406e2830'
-            'e8cedb798fb77200209e6315360bbfe13bb2660b61ba7a55a5164648fbe04d2a')
+            '2f872c76f998f4e04c1eb221d022848686537e087413bfc016028e1f406e2830')
 
   # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
   options=(strip staticlibs)
@@ -76,9 +72,6 @@ prepare() {
   # shellcheck disable=SC2154
 
   ue4src="$srcdir/UnrealEngine/Engine/Source"
-  versionSelector="$ue4src/Programs/UnrealVersionSelector"
-  patch "$versionSelector/Private/UnrealVersionSelector.cpp" UnrealVersionSelector-register.patch
-  patch "$versionSelector/Private/UnrealVersionSelector.cpp" UnrealVersionSelector-fstring-compat.patch
 
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" ignore-clang50-install.patch
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/SetupMono.sh" use-arch-mono.patch
@@ -102,15 +95,14 @@ prepare() {
   patch "$uht/CodeGenerator.cpp" CodeGenerator-move.patch
   patch "$uht/UnrealSourceFile.cpp" UnrealSourceFile-move.patch
   
-  ubt="$ue4src/Programs/UnrealBuildTool"
-  patch "$ubt/Platform/Linux/LinuxToolChain.cs" no-pie.patch
-
   hal="$ue4src/Runtime/Core/Public/HAL"
   patch "$hal/Platform.h" Platform-bitwise-or.patch
 
   linuxToolChain="$ue4src/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs"
+  patch "$linuxToolChain" no-pie.patch
   patch "$linuxToolChain" ignore-return-value-error.patch
   patch "$linuxToolChain" clang-70-support.patch
+
   cp "$srcdir/Makefile" "$srcdir/UnrealEngine/Makefile"
 
   patch -p0 -i only-generate-makefile.patch
