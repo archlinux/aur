@@ -10,7 +10,7 @@ pkgbase = kde-service-menu-reimage
 	depends = imagemagick
 	optdepends = jhead: used for extracting exif data
 	source = https://www.egregorion.net/works/kde/servicemenus/reimage/kde-service-menu-reimage-2.4_all.tar.gz
-	md5sums = 2a598f16634c8117ce4ad4e79edafb84
+	md5sums = 213213d6ccf7892a7e9f6c756a904242
 
 pkgname = kde-service-menu-reimage
 
