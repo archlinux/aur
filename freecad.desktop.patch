@@ -1,0 +1,11 @@
+--- squashfs-root/freecad.desktop
++++ squashfs-root/freecad.desktop
+@@ -7,7 +7,7 @@
+ GenericName=CAD Application
+ GenericName[de_DE]=CAD-Anwendung
+ GenericName[fr]=Application de CAO
+-Exec=freecad.wrapper --single-instance %U
++Exec=/usr/bin/freecad
+ Terminal=false
+ Type=Application
+ Icon=freecad

@@ -1,0 +1,7 @@
+*.AppImage
+*.asc
+*.pkg.*
+*.swp
+*.tar.xz
+pkg/
+src/

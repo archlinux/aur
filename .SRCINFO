@@ -1,0 +1,19 @@
+pkgbase = freecad-appimage
+	pkgdesc = A general purpose 3D CAD modeler (binary AppImage version)
+	pkgver = 0.17.13541.9948ee4
+	pkgrel = 1
+	url = http://www.freecadweb.org/
+	arch = x86_64
+	license = LGPL
+	provides = freecad
+	conflicts = freecad
+	options = !strip
+	source = https://github.com/FreeCAD/FreeCAD/releases/download/0.17/FreeCAD-0.17.13541.9948ee4.glibc2.17-x86_64.AppImage
+	source = freecad.desktop.patch
+	source = freecad.sh
+	sha256sums = ffbe93609f26ea38bcb019c17baa74264995d8b6b692e81ad07e73c7f763aa17
+	sha256sums = 7e3755f477d24f869408ac67ae75379b727464cc646b0a69ce86afe6e3ca9fef
+	sha256sums = 9bfca97e1e633601ddfbd74f32501050f50378cfd6b30f5bf91d978e7ce33436
+
+pkgname = freecad-appimage
+
