@@ -1,6 +1,6 @@
 pkgbase = anaconda
 	pkgdesc = Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing.
-	pkgver = 5.3.0
+	pkgver = 2018.12
 	pkgrel = 1
 	url = https://store.continuum.io/cshop/anaconda/
 	install = anaconda.install
@@ -9,9 +9,9 @@ pkgbase = anaconda
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = http://repo.continuum.io/archive/Anaconda3-5.3.0-Linux-x86_64.sh
+	source = http://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh
 	source = anaconda.install
-	sha256sums = cfbf5fe70dd1b797ec677e63c61f8efc92dad930fd1c94d60390bb07fdc09959
+	sha256sums = 1019d0857e5865f8a6861eaf15bfe535b87e92b72ce4f531000dc672be7fce00
 	sha256sums = 72e3066ba033c8e59684331f2d9ea8ea2dc1855d51a7a4ea2fa5565b7dd6cc60
 
 pkgname = anaconda
