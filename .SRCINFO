@@ -1,0 +1,17 @@
+pkgbase = bitwarden-rofi
+	pkgdesc = Wrapper for Bitwarden bitwarden/cli and Rofi
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/mattydebie/bitwarden-rofi
+	arch = any
+	license = GPL3
+	depends = rofi
+	depends = jq
+	depends = bitwarden-cli
+	optdepends = xsel: copy to clipboard,
+	optdepends = xclip: copy to clipboard
+	source = https://github.com/mattydebie/bitwarden-rofi/archive/0.1.tar.gz
+	sha512sums = 631add4ea96865a70da8984690a4f26afb7b3f199200dd129bcf0a9bbe0306c8e19af32df318ad0f16460818b24fa3119662baae44b9f45825186ef190a82060
+
+pkgname = bitwarden-rofi
+
