@@ -1,12 +1,13 @@
 pkgbase = python-dijitso-git
 	pkgdesc = A Python module for distributed just-in-time shared library building
-	pkgver = 20171215
+	pkgver = 20181121
 	pkgrel = 1
 	url = https://bitbucket.org/fenics-project/dijitso
 	arch = any
 	groups = fenics-git
 	license = GPL3
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-numpy
 	optdepends = mpi4py: for running tests with MPI
 	options = !emptydirs
