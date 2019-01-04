@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=battery-monitor-devel-git
 pkgver=0.5.3.r34.gf7a83dd
-pkgrel=5
+pkgrel=6
 pkgdesc='A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux.'
 arch=('any')
 url="https://github.com/maateen/battery-monitor"
@@ -19,9 +19,8 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname}"
-	install -d "${pkgdir}/usr/share/battery-monitor"
+	install -d “${pkgdir}/usr/{bin,share}/battery-monitor”
 	cp -a src/. "${pkgdir}/usr/share/battery-monitor"
-	mkdir -p "${pkgdir}/usr/bin"
 	install -Dm755 battery-monitor "${pkgdir}/usr/bin"
 	install -Dm755 battery-monitor-autostart.desktop "${pkgdir}/etc/xdg/autostart/battery-monitor-autostart.desktop"
 	install -Dm755 battery-monitor.desktop "${pkgdir}/usr/share/applications/battery-monitor.desktop"
