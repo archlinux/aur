@@ -15,7 +15,7 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-dir"
          "${_dir_backends[@]}"
          "${pkgbase}-dir-mysql")
-pkgver=9.0.7
+pkgver=9.4.1
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="${pkgbase^} - A Network Backup Tool "
@@ -30,15 +30,15 @@ source=("http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pk
         'bacula-sd.service'
         '00-qmake4.patch')
 
-sha256sums=('84e87fcfedb2e6df624c4f1a6281948f7061b22e2a2747cc2aa46d34bf190948'
+sha256sums=('6b5f6197cad360a6c37ee4f0fc28a6776f78a4e54bea667bb8a4fb801c98fd42'
             'SKIP'
             'd1f06403b3460ad8cb7bd063ec31108d87c77dc58bb8a916229262d2bac4a565'
             '072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39'
             'a5e75ee945479f9e38415d2841cf3485200d9d9374d5a68c19c13b39467ca5bb'
             '9297335f269257093be96be88c1047237f124cd6b358b0fee17f6afaad6b5e80')
 
-# Bacula Distribution Verification Key (www.bacula.org)
-validpgpkeys=('86260C02E82A8FC5CA5FB0638363575EFBD8D142')
+# Bacula 4096 Distribution Verification Key (www.bacula.org)
+validpgpkeys=('5235F5B668D81DB61704A82DC0BE2A5FE9DF3643')
 
 _workdir="/var/lib/${pkgbase}"
 
@@ -48,8 +48,7 @@ prepare() {
   cd autoconf
 
   # Enable tray-monitor
-  sed -i '/src\/qt-console\/install_conf_file \\/asrc\/qt-console\/tray-monitor\/install_conf_file \\\
-src\/qt-console\/tray-monitor\/bacula-tray-monitor.conf \\' configure.in
+  sed -i '/src\/qt-console\/install_conf_file \\/asrc\/qt-console\/tray-monitor\/install_conf_file \\' configure.in
 
   # Configure openssl assumes a structure $base/{lib,include}, but Arch has /usr/{lib,include}/openssl-1.0
   sed -Ei 's/\$with_openssl_directory\/(lib|include)/\$with_openssl_directory\/\1\/openssl-1.0/g' configure.in

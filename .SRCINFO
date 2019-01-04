@@ -1,6 +1,6 @@
 pkgbase = bacula
 	pkgdesc = Bacula - A Network Backup Tool
-	pkgver = 9.0.7
+	pkgver = 9.4.1
 	pkgrel = 1
 	url = http://www.bacula.org
 	install = bacula.install
@@ -13,14 +13,14 @@ pkgbase = bacula
 	makedepends = qt4
 	makedepends = openssl-1.0
 	optdepends = openssl-1.0: network encryption between daemons
-	source = http://downloads.sourceforge.net/sourceforge/bacula/bacula-9.0.7.tar.gz
-	source = http://downloads.sourceforge.net/sourceforge/bacula/bacula-9.0.7.tar.gz.sig
+	source = http://downloads.sourceforge.net/sourceforge/bacula/bacula-9.4.1.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/bacula/bacula-9.4.1.tar.gz.sig
 	source = bacula-dir.service
 	source = bacula-fd.service
 	source = bacula-sd.service
 	source = 00-qmake4.patch
-	validpgpkeys = 86260C02E82A8FC5CA5FB0638363575EFBD8D142
-	sha256sums = 84e87fcfedb2e6df624c4f1a6281948f7061b22e2a2747cc2aa46d34bf190948
+	validpgpkeys = 5235F5B668D81DB61704A82DC0BE2A5FE9DF3643
+	sha256sums = 6b5f6197cad360a6c37ee4f0fc28a6776f78a4e54bea667bb8a4fb801c98fd42
 	sha256sums = SKIP
 	sha256sums = d1f06403b3460ad8cb7bd063ec31108d87c77dc58bb8a916229262d2bac4a565
 	sha256sums = 072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39
@@ -32,19 +32,19 @@ pkgname = bacula-common
 
 pkgname = bacula-console
 	pkgdesc = Bacula - A Network Backup Tool (management CLI)
-	depends = bacula-common=9.0.7
+	depends = bacula-common=9.4.1
 	backup = etc/bacula/bconsole.conf
 
 pkgname = bacula-fd
 	pkgdesc = Bacula - A Network Backup Tool (file daemon)
-	depends = bacula-common=9.0.7
+	depends = bacula-common=9.4.1
 	optdepends = openssl-1.0: network encryption between daemons
 	optdepends = lzo: LZO compression for Storage Daemon
 	backup = etc/bacula/bacula-fd.conf
 
 pkgname = bacula-bat
 	pkgdesc = Bacula - A Network Backup Tool (management GUI)
-	depends = bacula-common=9.0.7
+	depends = bacula-common=9.4.1
 	depends = qt4
 	backup = etc/bacula/bat.conf
 
@@ -57,7 +57,7 @@ pkgname = bacula-sd
 
 pkgname = bacula-dir
 	pkgdesc = Bacula - A Network Backup Tool (Director)
-	depends = bacula-common=9.0.7
+	depends = bacula-common=9.4.1
 	optdepends = bacula-dir-sqlite3: SQLite support
 	optdepends = bacula-dir-mariadb: MariaDB support
 	optdepends = bacula-dir-postgresql: PostgreSQL support
