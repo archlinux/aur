@@ -3,7 +3,7 @@
 # Contributor: Chris Giles <Chris.G.27 (at) Gmail.com>
 
 pkgname=q4wine
-pkgver=1.3.10
+pkgver=1.3.11
 pkgrel=1
 pkgdesc="A Qt5 GUI for Wine"
 arch=("x86_64")
@@ -14,7 +14,7 @@ makedepends=("cmake" "qt5-tools" "qt5-svg")
 optdepends=("winetricks" "fuseiso")
 options=('!emptydirs')
 source=("https://github.com/brezerk/q4wine/archive/v${pkgver}.tar.gz")
-sha256sums=('a1dbc257dc7e56b07863ca469f924aded88ee5494b71a54249f097828dcae457')
+sha256sums=('922c1093267269f8ab1972bf419ca46fced8ed8bfd5b92de3bc31703a57e2964')
             
 build() {
   cd "$srcdir"/${pkgname}-${pkgver/_/-}
