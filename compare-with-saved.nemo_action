@@ -1,0 +1,8 @@
+[Nemo Action]
+Active=true
+Name=Compare with saved element
+Comment=Compare %F saved file or directory.
+Exec=<compare.sh compare %F>
+Icon-Name=meld
+Selection=S
+Extensions=any
