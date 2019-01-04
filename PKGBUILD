@@ -1,8 +1,8 @@
 # Maintainer: Antergos Developers <dev@antergos.com>
 
 pkgname=ttf-google-fonts-typewolf
-_commit='2e2caa23045987a4dfd6f072d611e5da720b484c'
-pkgver=17.11.git+2e2caa2
+_commit='94dff3eaa9301b6640cccc63c56d6ff33d82882c'
+pkgver=17.11.git+94dff3e
 pkgrel=1
 pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Fonts project."
 arch=('any')
@@ -25,7 +25,6 @@ provides=(
 	'ttf-cormorant'
 	'ttf-crimson-text'
 	'ttf-domine'
-	'ttf-font'
 	'ttf-eczar'
 	'ttf-fira-sans'
 	'ttf-gentium-basic'
@@ -62,7 +61,7 @@ conflicts=(
 	'ttf-google-fonts-opinionated-git'
 )
 source=("fonts-${_commit}.tar.gz::https://github.com/google/fonts/archive/${_commit}.tar.gz")
-md5sums=('566f49255f1ce0bf4531907c6404d3b0')
+md5sums=('7b1c3ea34b4fd7159e67ac97a43432e4')
 
 
 package() {
