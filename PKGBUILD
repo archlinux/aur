@@ -1,7 +1,7 @@
 # Maintainer: fzerorubigd <fzero@rubi.gd>
 _pkgmain=pgspecial
 pkgname=python-$_pkgmain
-pkgver=1.11.2
+pkgver=1.11.5
 pkgrel=2
 pkgdesc="Meta-commands handler for Postgres Database."
 arch=('any')
@@ -18,4 +18,4 @@ package() {
   cd "$srcdir/$_pkgmain-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-md5sums=('26a72af44fc4ccbf2364e6b48eda91c2')
+md5sums=('9d1b56f349124405a42d6ffe5461b097')
