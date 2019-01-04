@@ -1,16 +1,20 @@
-pkgbase = lib32-fuse
+pkgbase = lib32-fuse2
 	pkgdesc = A library that makes it possible to implement a filesystem in a userspace program (32 bit)
-	pkgver = 2.9.8
-	pkgrel = 2
+	pkgver = 2.9.9
+	pkgrel = 1
 	url = https://github.com/libfuse/libfuse
 	arch = x86_64
 	license = GPL2
 	makedepends = gcc-multilib
 	depends = lib32-glibc
-	depends = fuse
+	depends = fuse2
+	provides = lib32-fuse
 	options = !libtool
-	source = https://github.com/libfuse/libfuse/releases/download/fuse-2.9.8/fuse-2.9.8.tar.gz
-	sha256sums = 5e84f81d8dd527ea74f39b6bc001c874c02bad6871d7a9b0c14efb57430eafe3
+	source = https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz
+	source = https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz.asc
+	validpgpkeys = ED31791B2C5C1613AF388B8AD113FCAC3C4E599F
+	sha256sums = d0e69d5d608cc22ff4843791ad097f554dd32540ddc9bed7638cc6fea7c1b4b5
+	sha256sums = SKIP
 
-pkgname = lib32-fuse
+pkgname = lib32-fuse2
 
