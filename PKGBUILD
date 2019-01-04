@@ -2,7 +2,7 @@
 # Contributor: Peter Strapp <peter at strapp.co.uk>
 
 pkgname=libindi_3rdparty
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation"
 provides=('libindi_3rdparty')
@@ -13,7 +13,7 @@ depends=(libvorbis libusb openal libnova libjpeg libindi libgphoto2 libftdi-comp
 makedepends=(cmake boost)
 conflicts=(libqhy-git)
 source=("https://github.com/indilib/indi/archive/v${pkgver}.tar.gz")
-sha256sums=('214132d011ca4cf72cb6408dae0a3b6f96fed1e8ef988738b4b50c64916c3d99')
+sha256sums=('842ec3ad1a2e19f7bcad7c03d3982b45ffa84c905df751001f620896002c4e09')
 
 prepare() {
   mkdir -p build
