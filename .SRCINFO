@@ -1,6 +1,6 @@
 pkgbase = lxd-git
 	pkgdesc = Daemon based on liblxc offering a REST API to manage containers
-	pkgver = 3.7.r103.34fd1ba2
+	pkgver = 3.8.r41.6556fcb5
 	pkgrel = 1
 	url = https://github.com/lxc/lxd
 	arch = x86_64
@@ -22,8 +22,10 @@ pkgbase = lxd-git
 	conflicts = lxd-lts
 	options = !strip
 	options = !emptydirs
+	source = git+https://github.com/lxc/lxd.git
 	source = lxd.service
 	source = lxd.socket
+	md5sums = SKIP
 	md5sums = ad8ad313898fac0487fcf9a3b9b926ea
 	md5sums = 1fb28d8dfe82af71d0675c8e9a0a7293
 

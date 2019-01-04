@@ -5,7 +5,7 @@
 
 pkgname=lxd-git
 _pkgname=lxd
-pkgver=3.7.r103.34fd1ba2
+pkgver=3.8.r41.6556fcb5
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
@@ -15,33 +15,27 @@ conflicts=('lxd' 'lxd-lts')
 provides=('lxd')
 depends=('lxc' 'squashfs-tools' 'dnsmasq' 'libuv')
 makedepends=('go-pie' 'git' 'tcl' 'patchelf')
-optdepends=(
-    'lvm2: for lvm2 support'
-    'thin-provisioning-tools: for thin provisioning support'
-    'btrfs-progs: for btrfs storage driver support'
-    'ceph: for ceph storage driver support'
+optdepends=('lvm2: for lvm2 support'
+            'thin-provisioning-tools: for thin provisioning support'
+            'btrfs-progs: for btrfs storage driver support'
+            'ceph: for ceph storage driver support'
 )
 options=('!strip' '!emptydirs')
-source=(
-    "lxd.service"
-    "lxd.socket"
+source=("git+https://github.com/lxc/lxd.git"
+        "lxd.service"
+        "lxd.socket"
 )
-_lxd=github.com/lxc/lxd
+md5sums=('SKIP'
+         'ad8ad313898fac0487fcf9a3b9b926ea'
+         '1fb28d8dfe82af71d0675c8e9a0a7293'
+)
 
-md5sums=('ad8ad313898fac0487fcf9a3b9b926ea'
-         '1fb28d8dfe82af71d0675c8e9a0a7293')
+_lxd=github.com/lxc/lxd
 
 prepare() {
   export GOPATH="${srcdir}/go"
-  mkdir -p "${GOPATH}"
-  if [ ! -f "${GOPATH}/src/${_lxd}/Makefile" ]; then
-    # download the go package along with all of its go dependencies
-    go get -d -v "${_lxd}/lxd"
-  else
-    # or update the existing packages
-    cd "${GOPATH}/src/${_lxd}"
-    make update
-  fi
+  mkdir -p "${GOPATH}/src/github.com/lxc"
+  ln -rTsf "${_pkgname}" "${GOPATH}/src/${_lxd}"
 }
 
 pkgver() {
@@ -50,6 +44,7 @@ pkgver() {
 }
 
 build() { 
+  export GOPATH="${srcdir}/go"
   cd "${GOPATH}/src/${_lxd}"
   make deps
   export CGO_CFLAGS="-I${GOPATH}/deps/sqlite/ -I${GOPATH}/deps/dqlite/include/"
