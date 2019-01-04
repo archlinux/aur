@@ -1,8 +1,8 @@
 # Maintainer: Jiachen Yang <farseerfc@gmail.com>
 
 pkgname=suplemon
-pkgver=0.1.63
-pkgrel=1
+pkgver=0.1.64
+pkgrel=2
 pkgdesc='Console text editor with multi cursor support.'
 arch=(any)
 url=https://github.com/richrd/suplemon/
