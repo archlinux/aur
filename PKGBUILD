@@ -1,7 +1,7 @@
 # Maintainer: Arti Zirk <arti.zirk@gmail.com>
 
 pkgname=rauc
-pkgver=0.4
+pkgver=1.0
 pkgrel=1
 pkgdesc="RAUC controls the update process on embedded linux systems. It is both a target application that runs as an update client and a host/target tool that allows you to create, inspect and modify installation artifacts."
 arch=('i686' 'x86_64')
@@ -11,10 +11,9 @@ depends=('curl' 'json-glib')
 makedepends=('python')
 source=(https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz
         https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz.asc)
-sha256sums=('89656b6330ac1f31293d450f5179896397c588ab52e77ec229382a6abd125d35'
+sha256sums=('8875ab0d02b4cb38a211b236855361c18b874b385e6f18dde394ac699f2cf2aa'
          'SKIP')
-validpgpkeys=('977843FD5C3EBF76BAD4008EA58CC53DBF05E090'
-              '23F7401CD1CFE80940B611CA81C07DCEDA5CCBBB')
+validpgpkeys=('977843FD5C3EBF76BAD4008EA58CC53DBF05E090')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
