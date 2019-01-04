@@ -14,7 +14,7 @@ license=('APACHE')
 conflicts=('lxd' 'lxd-lts')
 provides=('lxd')
 depends=('lxc' 'squashfs-tools' 'dnsmasq' 'libuv')
-makedepends=('go-pie' 'git' 'tcl' 'patchelf')
+makedepends=('go' 'git' 'tcl' 'patchelf')
 optdepends=('lvm2: for lvm2 support'
             'thin-provisioning-tools: for thin provisioning support'
             'btrfs-progs: for btrfs storage driver support'
@@ -33,13 +33,12 @@ md5sums=('SKIP'
 _lxd=github.com/lxc/lxd
 
 prepare() {
-  export GOPATH="${srcdir}/go"
-  mkdir -p "${GOPATH}/src/github.com/lxc"
-  ln -rTsf "${_pkgname}" "${GOPATH}/src/${_lxd}"
+  mkdir -p "${srcdir}/go/src/github.com/lxc"
+  ln -rTsf "${_pkgname}" "${srcdir}/go/src/${_lxd}"
 }
 
 pkgver() {
-  cd "${GOPATH}/src/${_lxd}"
+  cd "${srcdir}/go/src/${_lxd}"
   printf "%s" "$(git describe --long | sed 's/^lxd-//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
