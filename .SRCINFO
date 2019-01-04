@@ -1,14 +1,14 @@
 pkgbase = python-pdftotext
 	pkgdesc = Simple PDF text extraction
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://pypi.org/project/pdftotext
 	arch = any
 	license = MIT
 	depends = poppler
-	source = python-pdftotext-2.1.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pdftotext/pdftotext-2.1.0.tar.gz
+	source = python-pdftotext-2.1.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pdftotext/pdftotext-2.1.1.tar.gz
 	source = LICENSE
-	md5sums = 8fd132b4b2873a3e41578c1036280bb2
+	md5sums = be525c7a29ce6b1fad1bd8285ba906b2
 	md5sums = 061d0915f2f14e32775f999a25bed0fe
 
 pkgname = python-pdftotext
