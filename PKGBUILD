@@ -2,12 +2,12 @@
 
 pkgname=can-isotp-dkms-git
 _pkgbase=can-isotp
-pkgver=r14.6003f99
-pkgrel=2
+pkgver=r17.58f3c59
+pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 pkgdesc="Kernel modules for isotp"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/hartkopp/can-isotp"
 license=('GPL2')
 makedepends=('git')
