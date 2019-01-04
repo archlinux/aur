@@ -1,6 +1,6 @@
 pkgbase = blender-2.8-git
 	pkgdesc = Development version of Blender 2.8 branch
-	pkgver = 2.8.r83145.10540822dcc
+	pkgver = 2.8.r83821.0d736d68967
 	pkgrel = 1
 	url = http://blender.org/
 	install = blender.install
@@ -35,7 +35,7 @@ pkgbase = blender-2.8-git
 	optdepends = cuda: CUDA support in Cycles
 	provides = blender-2.8
 	conflicts = blender-2.8
-	source = git://git.blender.org/blender.git#branch=blender2.8
+	source = git://git.blender.org/blender.git#branch=master
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
 	source = blender-translations.git::git://git.blender.org/blender-translations.git

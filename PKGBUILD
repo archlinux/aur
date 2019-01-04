@@ -2,7 +2,8 @@
 
 
 pkgname=blender-2.8-git
-pkgver=2.8.r83145.10540822dcc
+_fragment="#branch=master"
+pkgver=2.8.r83821.0d736d68967
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -21,7 +22,7 @@ install=blender.install
 # the path in .gitmodules.
 # More info:
 #   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
-source=('git://git.blender.org/blender.git#branch=blender2.8' \
+source=("git://git.blender.org/blender.git${_fragment}" \
         'blender-addons.git::git://git.blender.org/blender-addons.git' \
         'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git' \
         'blender-translations.git::git://git.blender.org/blender-translations.git' \
