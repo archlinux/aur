@@ -1,0 +1,18 @@
+display_message () {
+	cat <<-EOF
+
+	By default HiDPI autoscaling for Orion has been disabled.
+	To enable it set QT_AUTO_SCREEN_SCALE_FACTOR=1 before running:
+
+	$ QT_AUTO_SCREEN_SCALE_FACTOR=1 /usr/bin/orion
+
+	EOF
+}
+
+post_install() {
+	display_message
+}
+
+post_upgrade() {
+	display_message
+}
