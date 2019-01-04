@@ -1,6 +1,6 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.9.0.2
+_oomox_ver=1.10
 _oomox_theme_ver=1.10
 #_materia_theme_ver=20181125
 _materia_cmt=94da12f9c5dfa4e045f8f02e2c818891b13b0930
@@ -14,7 +14,7 @@ _numix_folders_icons_cmt=24e5f6c6603e7f798553d2f24a00de107713c333
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=7
+pkgrel=1
 pkgdesc='Graphical application for generating different color variations of Numix/Materia/Arc theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes. Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
 url='https://github.com/themix-project/oomox'
@@ -39,6 +39,8 @@ depends=(
 	'parallel'  # materia, arc
 	'optipng'  # materia, arc
 	'python-pillow'  # import_pil
+	'python-pystache'  #  base16_format
+	'python-yaml'  #  base16_format
 
 	#'resvg'  # materia, arc
 	##or
@@ -70,7 +72,7 @@ source=(
     "numix-icon-theme-${_numix_icons_cmt}.tar.gz::https://github.com/numixproject/numix-icon-theme/archive/${_numix_icons_cmt}.tar.gz"
     "numix-folders-${_numix_folders_icons_cmt}.tar.gz::https://github.com/numixproject/numix-folders/archive/${_numix_folders_icons_cmt}.tar.gz"
 )
-md5sums=('acf0604107bffb048a74e14e1f4b1f88'
+md5sums=('4012421ef63e3b8aa5e165999f739011'
          '9eef9d048e14e94cbd154b000ea85ec6'
          'b1dccfa1a77c3b051762a2583a6c070f'
          '031f263be091e16de8932bfc4b7cfe82'
