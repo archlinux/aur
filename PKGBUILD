@@ -2,18 +2,19 @@
 # Contributor: Alessio Fachechi <alessio.fachechi@gmail.com>
 
 pkgname=kitematic
-pkgver=0.17.5
+pkgver=0.17.6
 pkgrel=1
 pkgdesc='Visual Docker Container Management'
 arch=('x86_64')
 url='https://github.com/docker/kitematic/'
 license=('APACHE')
-depends=('docker' 'nodejs' 'glib2' 'hicolor-icon-theme')
+depends=('docker' 'nodejs' 'glib2' 'hicolor-icon-theme'
+         'nss' 'libxss' 'libxtst' 'gtk2' 'gconf' 'alsa-lib')
 makedepends=('git' 'npm' 'grunt-cli' 'python2')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/docker/kitematic/archive/v${pkgver}.tar.gz"
         'kitematic.desktop'
         'kitematic.svg')
-sha256sums=('a3144b8742b2a4bcb27a7f611317642fdd7f12399e849d69a6af7597f1c39071'
+sha256sums=('3bc78b7a0770603c4724e6617c9b8bc69a3e5228feb2f53b9c7df86181de6020'
             'acf85b7e6a94be11c482f6119dcea00cf828d9cd25e0bdea22b844fa5d4c01c0'
             '954d9803f49e475bc3242ad8b5dbfe5f3be9b532434ff260e1cf5c929f018617')
 
