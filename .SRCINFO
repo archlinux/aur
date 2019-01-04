@@ -1,0 +1,23 @@
+pkgbase = qoob
+	pkgdesc = foobar-like music player for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/william.belanger/qoob
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-setuptools
+	depends = python-pyqt5
+	depends = qt5-svg
+	depends = qt5-multimedia
+	depends = python-mutagen
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	optdepends = gst-libav: additional codecs (i.e. AAC)
+	optdepends = gst-plugins-bad: additional codecs (i.e. AAC)
+	optdepends = gst-plugins-ugly: additional codecs
+	source = https://gitlab.com/william.belanger/qoob/-/archive/v0.1.0/qoob-v0.1.0.tar.bz2
+	sha256sums = 4a59a993e3136f487733034198d98c621c35ff12df8d86ec25ed9eb9141eb702
+
+pkgname = qoob
+
