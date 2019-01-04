@@ -1,11 +1,12 @@
 pkgbase = cspice
 	pkgdesc = A comprehensive toolkit and api to design, simulate and analyse space missions
 	pkgver = N0066
-	pkgrel = 1
+	pkgrel = 2
 	url = https://naif.jpl.nasa.gov/naif/aboutspice.html
 	arch = x86_64
 	makedepends = tcsh
 	depends = glibc
+	depends = f2c
 	source = http://naif.jpl.nasa.gov/pub/naif/toolkit//C/PC_Linux_GCC_64bit/packages/cspice.tar.Z
 	sha1sums = bb1bee61522e4fac18b68364362270b4eb2f3fd8
 
