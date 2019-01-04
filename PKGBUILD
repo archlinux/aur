@@ -5,8 +5,8 @@
 # Upstream: https://github.com/lightningnetwork/lnd
 
 pkgname=('lnd-git')
-pkgver=0.5.1.beta.172.g8c5d6842
-pkgrel=2
+pkgver=0.5.1.beta.263.g552a9b71
+pkgrel=1
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
 arch=('x86_64')
 url='https://github.com/lightningnetwork/lnd'
