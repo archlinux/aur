@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 4.19.2-gnu Kernel Configuration
+# Linux/arm 4.19.5-gnu Kernel Configuration
 #
 
 #
@@ -5386,7 +5386,6 @@ CONFIG_DRM_SCHED=m
 #
 # I2C encoder or helper chips
 #
-# CONFIG_DRM_I2C_ADIHDMI is not set
 CONFIG_DRM_I2C_CH7006=m
 CONFIG_DRM_I2C_SIL164=m
 CONFIG_DRM_I2C_NXP_TDA998X=m
@@ -7536,6 +7535,7 @@ CONFIG_NAU7802=m
 CONFIG_PALMAS_GPADC=m
 CONFIG_ROCKCHIP_SARADC=m
 CONFIG_SD_ADC_MODULATOR=m
+CONFIG_STMPE_ADC=m
 CONFIG_SUN4I_GPADC=m
 CONFIG_TI_ADC081C=m
 CONFIG_TI_ADC0832=m

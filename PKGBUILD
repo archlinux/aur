@@ -13,7 +13,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _srcbasever=4.19-gnu
-_srcver=4.19.2-gnu
+_srcver=4.19.5-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -23,7 +23,7 @@ _srcname=linux-${_srcbasever%-*}
 _archpkgver=${_srcver%-*}
 pkgver=${_srcver//-/_}
 pkgrel=1
-rcnrel=armv7-x5
+rcnrel=armv7-x9
 arch=(i686 x86_64 armv7h)
 url="https://linux-libre.fsfla.org/"
 license=(GPL2)
@@ -63,7 +63,7 @@ validpgpkeys=(
 )
 sha512sums=('5bc800b3beff43a8c15bd5515f4e0babe2beb5fa600491b7b37110e22d9b739d293f1e38753ed681be289c51390e0e64b3e60ce0db0a3bfe1f94ee5c014579a3'
             'SKIP'
-            'a624123e9d51d9251c9bbb4e498f503ad1f41a5af241173e02ff53974142c8155ebb2538aed0984756b6de04acf1d0c8778969ae47e3063a0d1c6b87d86c11ea'
+            'dbb9b21c9c89e199ea6e719287f3ef1b7c07dfbda55108216499dfd1f981d80777dde191132417502772a25615511e9ae58a3f7efcf2f023d6a41d734a3099a9'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -71,13 +71,13 @@ sha512sums=('5bc800b3beff43a8c15bd5515f4e0babe2beb5fa600491b7b37110e22d9b739d293
             'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            '28fb502df94cd2464956f0dbb804bc53dbb9b5a4a593295ac4438011ad8d1bc4fe31dd72805ebd4c385f8d98b19e3ffdaa086ea969222e27177c844247fa20b5'
-            '4ed343f0188cdeb920fa958f544b4dd5c580e86bc12a1c72d958d9914792ecdcdd28c2534192fa8ca6d2853bc1b6c3539a236bab5f20be69aecb0c8705542f2e'
-            'dbd2fedf4064630cb9f41105f81b55062ee06a20f77bbd3746c162f7f548342526b18d475b8c795f5b7058d3a828a555ad3614a81fcb82157e64b56010c5ea12'
+            'c8551c0c8a54b36893a551e1d9a1cbfa1c65e95f4ff34ec705108120db71c01a329f81a0a79b8e6dc75f9dcb606d640402cd8972dfa7538e0dda8e05017e750a'
+            '4688945b99d1c47766d485641c3a367d3485d0361b32d21d48dcd00d28a61ffd84a3120b7ff5f02aabb783dc74a919f6aabcc02dfb4a2eabc570facc2711aa0c'
+            'aa5f9c6f1738614e5de8b56ef5b87f9e0070bf450b83b0fd6e3b627623d6d55575598e7cc26e7a218648dc16c939a8c1ab6d242024b49d1adf9f33e5971c5338'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
-            '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
+            '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'e29ed94922d26f99ef62b8e93357e1a5e76a0a6038aaebb1ce78f36f8b43fdb8414010da874fcef9f2440359168a420c76471bffcb0fa60620b69b9cdecffe01'
+            'fa32060ea7a44b94ce8ddc0c204a2ef1ec58551dfa20f94cd0237218c605e23783ff5aa0d2f802c40e58cef1502f0a770e34ac3302c40b5fba46d71ea9f75529'
             'SKIP'
             '60aa432465eb3ac10f565799d3dfecea21aaf08e83909c1161d9359e932626edbd1353e712d616c3d785c65a0f699e9c45df35bd9e86365c25399c6b2d45b9e4'
             '86809feb5ae2759b449ec0cb7a6b3fb457874ed82a72dfda00607e8819c804a0714b5d6a17cbbba44996a36872224af42d1b85f1b3932f43bccb419041d25dc7'
@@ -179,6 +179,7 @@ _package() {
   install=linux.install
 
   local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   cd $_srcname
 
@@ -186,11 +187,12 @@ _package() {
   if [ "$CARCH" = "armv7h" ]; then
     make INSTALL_DTBS_PATH="$pkgdir/boot/dtbs/$pkgbase" dtbs_install
   fi
-  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   msg2 "Installing modules..."
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-  mkdir -p "$modulesdir"
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # a place for external modules,
