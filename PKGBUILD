@@ -4,7 +4,7 @@
 
 _gitname='libsigrokdecode'
 pkgname="${_gitname}-git"
-pkgver=0.2.0.r716.gb26c713
+pkgver=0.2.0.r1038.g30d27bd
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, protocol decoders library (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --long | sed 's/^libsigrokdecode-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --exclude libsigrokdecode-unreleased --long | sed 's/^libsigrokdecode-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
