@@ -1,0 +1,16 @@
+pkgbase = omwllf
+	pkgdesc = OpenMW leveled list fixer
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jmelesky/omwllf
+	arch = any
+	license = GPL3
+	makedepends = python
+	depends = python
+	provides = omwllf
+	conflicts = omwllf
+	source = https://github.com/jmelesky/omwllf/archive/v1.0.tar.gz
+	sha512sums = 4c603a94f42ecfd8285c3c22fc5144515ca59659ba71e655a6b018189cff09351414208706ea6b281d31c3efa0c1c82dcc6e84e6a1ff737e0c6554b5c4efe9e0
+
+pkgname = omwllf
+
