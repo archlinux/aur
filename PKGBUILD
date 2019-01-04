@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=linphone-desktop-all-git
-pkgver=4.1.1.r640.f923ab1a
+pkgver=4.1.1.r652.cc958940
 pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
@@ -65,7 +65,7 @@ sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP
             "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP"
             "346d983f503873811b3a4f72772e5afe4990275526c9e15c1b5cde2ad69a0544"
             "e7574cdb0a5f8d334b1ed1d938fd6c7639e5785b80f01d39e81a682595af4171"
-            "88bc7f2f6ca9cf9ad54c1e4f42fe02597070aa2cb6c8d21c3b619739550a6651"
+            "c1f54c0634c2d42d091890ed5a73bcecf8c7c2d0c7f052a0014840ab36c64a01"
             "61a9a107267658971348343433a0709af7e1160d4227867faa8decd255f0289c")
 
 prepare() {
@@ -133,11 +133,6 @@ prepare() {
   cd "${srcdir}/${pkgname%-all-git}/${pkgname%-desktop-all-git}-sdk/external/soci"
 
   patch -Np1 -i "${srcdir}/soci.patch"
-  
-  #Temporal fix
-  cd "${srcdir}/${pkgname%-all-git}/${pkgname%-desktop-all-git}-sdk/external/opencore-amr"
-  
-  git checkout 6e799838855bca868ef50a0953f0c771924321c3
 }
 
 pkgver() {
