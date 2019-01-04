@@ -4,7 +4,7 @@
 
 _pkgname=gnome-logs
 pkgname=$_pkgname-git
-pkgver=3.23.2+2+ga24c9da
+pkgver=3.31.3+9+g123f09b
 pkgrel=1
 pkgdesc="A log viewer for the systemd journal"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ license=(GPL)
 depends=(systemd gtk3 gsettings-desktop-schemas)
 makedepends=(intltool itstool gnome-common appstream-glib git)
 conflicts=(gnome-logs)
-source=("git://git.gnome.org/gnome-logs#branch=master")
+source=("git+https://gitlab.gnome.org/GNOME/gnome-logs.git")
 sha256sums=('SKIP')
 
 pkgver() {
