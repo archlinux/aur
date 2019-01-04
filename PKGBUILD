@@ -5,7 +5,7 @@
 BUILD_SELINUX=false
 
 pkgname=389-ds-base
-pkgver=1.4.0.18
+pkgver=1.4.0.20
 pkgrel=1
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
@@ -30,7 +30,7 @@ backup=(etc/default/dirsrv
         etc/dirsrv/config/template-initconfig)
 options=(!libtool)
 source=("https://releases.pagure.org/389-ds-base/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('ac658801fe3343b48947b1a2599dde173e2850f54873ccb04862c5b166333bcc0967b4e4dde52d94dd1ce216fd81f55ed4505a47799b04d9dadba7d006deffe3')
+sha512sums=('bcd22f64b7e29a0d58dc19c428eaabb3674b5f2a6029f62eeadf4e21346bcb79e689d91e2689d01b625d731cac8b49150343975961a52c1552d2454038598c20')
 
 build() {
   cd "${pkgname}-${pkgver}"
