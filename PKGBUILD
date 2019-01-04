@@ -12,8 +12,8 @@
 
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
-_srcbasever=4.18-gnu
-_srcver=4.18.11-gnu
+_srcbasever=4.19-gnu
+_srcver=4.19.2-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -23,8 +23,8 @@ _srcname=linux-${_srcbasever%-*}
 _archpkgver=${_srcver%-*}
 pkgver=${_srcver//-/_}
 pkgrel=1
-rcnrel=armv7-x10
-arch=(i686 x86_64 armv7h ppc64le)
+rcnrel=armv7-x5
+arch=(i686 x86_64 armv7h)
 url="https://linux-libre.fsfla.org/"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf python-sphinx graphviz)
@@ -36,7 +36,7 @@ source=(
   "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"{,.sig}
   "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"{,.sig}
   # the main kernel config files
-  'config.i686' 'config.x86_64' 'config.armv7h' 'config.ppc64le'
+  'config.i686' 'config.x86_64' 'config.armv7h'
   # pacman hooks for depmod and initramfs regeneration
   '60-linux.hook' '90-linux.hook'
   # standard config files for mkinitcpio ramdisk
@@ -51,12 +51,7 @@ source=(
   '0006-set-default-cubietruck-led-triggers.patch'
   '0007-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch'
   '0008-ARM-dove-enable-ethernet-on-D3Plug.patch'
-  '0009-power-add-power-sequence-library.patch'
-  '0010-usb-core-add-power-sequence-handling-for-USB-devices.patch'
-  '0011-ARM-dts-imx6qdl-Enable-usb-node-children-with-reg.patch'
-  '0012-ARM-dts-imx6qdl-udoo.dtsi-fix-onboard-USB-HUB-proper.patch'
-  '0013-ARM-dts-imx6q-evi-Fix-onboard-hub-reset-line.patch'
-  '0014-ARM-mvebu-declare-asm-symbols-as-character-arrays-in.patch'
+  '0009-usb-dwc2-disable-power_down-on-rockchip-devices.patch'
   # other patches
   '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
   '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
@@ -66,9 +61,9 @@ validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
   '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78' # David P.
 )
-sha512sums=('0c221c6e84eb5bc270ef79454bf407079daed84534afb1d449d40fa46e42868a471d3063016a4eb3f68d42879e18ee314ab30716116805fee35b5084b23df2a9'
+sha512sums=('5bc800b3beff43a8c15bd5515f4e0babe2beb5fa600491b7b37110e22d9b739d293f1e38753ed681be289c51390e0e64b3e60ce0db0a3bfe1f94ee5c014579a3'
             'SKIP'
-            '8feff88760245f9649aa504140ba41832448aa0d51c1d49d5c40cb67de088d61a9f8848524e171d3688842046cd20e25cb631363746d39345458a4c020ca68e6'
+            'a624123e9d51d9251c9bbb4e498f503ad1f41a5af241173e02ff53974142c8155ebb2538aed0984756b6de04acf1d0c8778969ae47e3063a0d1c6b87d86c11ea'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -76,32 +71,26 @@ sha512sums=('0c221c6e84eb5bc270ef79454bf407079daed84534afb1d449d40fa46e42868a471
             'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            '459cc73623877d008a01ddb62bfb0ceb69d4ebb71d2ec22317c60e6c2c8e0f879fb9938e571dcd1a74b1cb585bace94bf42fd1879c0d66eab44432cef8476f52'
-            'e7915110234a75d5cb28bb0beccced2e851bdbf4911d366e2df3ce3b9cabdd8b19f92dcccfb8bd614b2d7afd329f903c4fc60ba18398d8c678c6604b8e8d5ccc'
-            '770975d1a319fabb574c6f74b46b1f80c12032e7d18cb5c34a7ed4a94e77e72918becb53e896064e3cdbd2559972f01186cef588ea8203af80fcbcaedc424131'
-            '1fd0fb77a1c1134c36e7956f948d27c36b67e131020c4bd7d3899ad878d5397c6900368d9e0a0802ad6ba3ba27b1d6724b7d9139e0634950130fccfac267c604'
+            '28fb502df94cd2464956f0dbb804bc53dbb9b5a4a593295ac4438011ad8d1bc4fe31dd72805ebd4c385f8d98b19e3ffdaa086ea969222e27177c844247fa20b5'
+            '4ed343f0188cdeb920fa958f544b4dd5c580e86bc12a1c72d958d9914792ecdcdd28c2534192fa8ca6d2853bc1b6c3539a236bab5f20be69aecb0c8705542f2e'
+            'dbd2fedf4064630cb9f41105f81b55062ee06a20f77bbd3746c162f7f548342526b18d475b8c795f5b7058d3a828a555ad3614a81fcb82157e64b56010c5ea12'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '4a8b324aee4cccf3a512ad04ce1a272d14e5b05c8de90feb82075f55ea3845948d817e1b0c6f298f5816834ddd3e5ce0a0e2619866289f3c1ab8fd2f35f04f44'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '41d00af3409e8ae91aa0423ef73a5d4c5ed4ba4e2244ef37d8b8a3c8d4e379c26e45fef21274d8e2c795ef545a3212b735fc1b5b5a8b6338c8a72ca29c5167c0'
+            'e29ed94922d26f99ef62b8e93357e1a5e76a0a6038aaebb1ce78f36f8b43fdb8414010da874fcef9f2440359168a420c76471bffcb0fa60620b69b9cdecffe01'
             'SKIP'
-            '8a12b4477f716214266b83785335515bc0d1b1ee5c728803945e0db613caca2df02939a681716cbb51039f9a003c7e7048d882271691fd8c20f273a4a8b78f01'
-            '47838b54f76595fd0dda8699bccf55aeefbe9031da965b50fadf2a8f8bb34c2e12b8c4b29cca5f6e6b3ce2704464dc1966565185641ab1b64ce2575591a79de7'
-            '067ed33621353496c19b88746b9b1ab875e8a1bde3954f4aa4e8c353389e0d15551e4edaa173e98f8dfe48877b7edec40abc68f423511dcaf5db81d998560acf'
-            'cec08c029509c6c07f1addb6ac1338b61ded296eac5dd3d66449429090ae0743a09cf93d8da46082784e463ee44d42fea669d362cec8ef36aa0527a0a20f1271'
-            '4cd1491b69a130f7e0a2bf93c542f962e50ed2b727a96b71bfe5c2444db1abf5dba559135feecc3c02e122f717a71982d73f7432fefa9da309ce2406add591e5'
-            '796e6808297a9e037c9a8912d796347f83d2c17e0162920a792216e3d6ef0e860a93c1a2c41797f1fa59cbbcaa2ace7a088ebc36dcb699ee17b95a47e39f2dda'
-            '41a5f8d2fd1d82fac38afb8b15631d35d9a15f779cf60963943af2807b8caf40461e212bd0081b46dd39e08d3a4ad94910700ab4bee8460fe99d725a22f7b1e2'
-            'e18ab92d1c4fcc9782ad9fdb456d3be397e17f9ec5e897242ba891c9cbb738bc616981447a7593bb907c5dd231035b000282e0e6f522cd6921a200d3b089aec8'
-            '85551c55a66885d765808ceb2c7f31cd911ec7c42212a7801883cee35881171de4d26d053d6c62cbec4474c437061e05ac5857b5038e64b7c14e7df3bb5985b1'
-            'a690b4ae030fe9657b2629bbe8d38b74415db06f293d0413c74b5ef88f85693f61926ff9b83fbd099ae25a11bf03b9f7cdf947ae2c52434282b3a583b280d78c'
-            '28d26ca6ffc095cac0574fadb7621ea0674d542deee3bb03d251ee3a6597107002cd24d88850ca9e0a987438c86b4c61b0d146d09f29bf57ca21f04e733b6865'
-            'e1b00e33bcdbc663041df21a2fa84743eebaf904204ea9b7458e4dde7bc61b17faa22c09038283e26291458427ebd9a53bf463b1bc8bc28d147d1a186426b232'
-            'c3a3ceed29b8513f478cad877507c7d2171453d24346c4d62ebf34c3f35ed13ebce2ca6f7200e97693ea900f504528685fe5b59c641ccfe36bc9bc257106f157'
-            '073c48fea2989334451b9020e8151c0385b07affcb2bc5f778fd5f9d2d8182e40dcd04edde4d53648c1ed8cea4721afc04267a72e429be3612d2f77f5d0fd459'
+            '60aa432465eb3ac10f565799d3dfecea21aaf08e83909c1161d9359e932626edbd1353e712d616c3d785c65a0f699e9c45df35bd9e86365c25399c6b2d45b9e4'
+            '86809feb5ae2759b449ec0cb7a6b3fb457874ed82a72dfda00607e8819c804a0714b5d6a17cbbba44996a36872224af42d1b85f1b3932f43bccb419041d25dc7'
+            '746acff348d62b3ed4e62cd9976ddf0af47f87bd3cffda90cbb00a6b57d589ccb681fcd9541ee5bdd179d95dad71d57c77cb1a60faee1c6cef518e4055c3456f'
+            'c945e871fa456b521ced77cae9081bcdc47d836ecdabe6766e373681fe11fda3e5a7a3c16f70c586be64a1eb5c9136c43b0a44df897298940fd8703b50b0a543'
+            '054e98a2d1ea83cece1fe55ae087b282f25593022f252c74612d4aeb2a547f84ea626e3d982098ca798271af55f3b733ac2aea2fc0d9cad031802d2901dfe4ca'
+            '4433f9e780a72347313916c8a9cbcbce3a8c40e1b299e887dc748d257879fb5fab8f1683936339f73a4d4b4ef668b1ed6cc0d9a19ed4bd99039a1613ac08610e'
+            'd1361d23ae79599e3fa94cba206bd40764f9eee0c584e639af13828dabb7f0dfa361792c098b5afae0bb350407b2dc47a1d67580daeade7a4f3e3e55e42c8470'
+            'c1653f91067d31801a23450175e47968add147477caf20aec6092831739641312f4ad995af43c7e55545007279016b5f62a0720d31e4591b4421a65b8bd5b398'
+            'a123747792417d3760ca40d7f913c2cdd194da2ea5778352eedebc80097b7b8dce4428a8fe8bd75cab92972f599c25bcf18a740856fc2990351234b0d7ebf9f5'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '78b8020105e7aafb84f32de6a7fb12b5dcb466f1d36d5188d78064d3d11a2a996a7ea4c7f9ba8a927fb9e4bbbfc6ac2913d03aa8b8257d8a771a93b7b8658092')
+            'ba561ef861c56002de25ec6f63211e758f3d26eaa7ff0e4a16ffd096d5fe7019d9df343658adc0535684303888d022aa816fc0b282da27ac1ca29dfc0b0e2be0')
 
 _kernelname=${pkgbase#linux-libre}
 _replacesarchkernel=("${_replacesarchkernel[@]/\%/${_kernelname}}")
@@ -111,7 +100,6 @@ _replacesoldmodules=("${_replacesoldmodules[@]/\%/${_kernelname}}")
 case "$CARCH" in
   i686|x86_64) KARCH=x86;;
   armv7h) KARCH=arm;;
-  ppc64le) KARCH=powerpc;;
 esac
 
 prepare() {
@@ -138,12 +126,7 @@ prepare() {
     patch -p1 -i ../0006-set-default-cubietruck-led-triggers.patch
     patch -p1 -i ../0007-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch
     patch -p1 -i ../0008-ARM-dove-enable-ethernet-on-D3Plug.patch
-    patch -p1 -i ../0009-power-add-power-sequence-library.patch
-    patch -p1 -i ../0010-usb-core-add-power-sequence-handling-for-USB-devices.patch
-    patch -p1 -i ../0011-ARM-dts-imx6qdl-Enable-usb-node-children-with-reg.patch
-    patch -p1 -i ../0012-ARM-dts-imx6qdl-udoo.dtsi-fix-onboard-USB-HUB-proper.patch
-    patch -p1 -i ../0013-ARM-dts-imx6q-evi-Fix-onboard-hub-reset-line.patch
-    patch -p1 -i ../0014-ARM-mvebu-declare-asm-symbols-as-character-arrays-in.patch
+    patch -p1 -i ../0009-usb-dwc2-disable-power_down-on-rockchip-devices.patch
   fi
 
   # add freedo as boot logo
@@ -181,8 +164,6 @@ build() {
     make zImage modules dtbs htmldocs
   elif [ "$CARCH" = "x86_64" ] || [ "$CARCH" = "i686" ]; then
     make bzImage modules htmldocs
-  elif [ "$CARCH" = "ppc64le" ]; then
-    make zImage modules htmldocs
   fi
 }
 

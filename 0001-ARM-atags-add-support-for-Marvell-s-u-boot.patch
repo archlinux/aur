@@ -1,7 +1,7 @@
-From 6cd78f818001a5e2caac7cadc3ffff95d752a021 Mon Sep 17 00:00:00 2001
+From 311f37a47e903b459dabc396494ac1621fb2d78b Mon Sep 17 00:00:00 2001
 From: Willy Tarreau <w@xxxxxx>
 Date: Sun, 2 Dec 2012 19:59:28 +0100
-Subject: [PATCH 01/14] ARM: atags: add support for Marvell's u-boot
+Subject: [PATCH 1/9] ARM: atags: add support for Marvell's u-boot
 
 Marvell uses a specific atag in its u-boot which includes among other
 information the MAC addresses for up to 4 network interfaces.
@@ -47,5 +47,5 @@ index 6b335a9ff8c8..614150b53643 100644
  };
  
 -- 
-2.18.0
+2.19.0
 
