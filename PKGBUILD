@@ -6,12 +6,12 @@ _pkgname='github-desktop'
 pkgname="${_pkgname}"
 pkgver=1.5.1_linux1
 gitname="release-${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
 license=('MIT')
-depends=('gnome-keyring' 'git' 'libcurl-openssl-1.0')
+depends=('gnome-keyring' 'git' 'curl' 'libxss' 'gconf')
 optdepends=('hub: CLI interface for GitHub.')
 makedepends=('xorg-server-xvfb' 'nodejs-lts-carbon' 'yarn' 'python2')
 DLAGENTS=("http::/usr/bin/git clone --branch ${gitname} --single-branch %u")
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  be057e4a392e64760f7a40203ac886b7cf5551de254ad55c706376dca8aa4341
+  2758e15659f5770ae2ac948250372135029e7ac2d4b6bf431a112dfdbcc681d1
 )
 build() {
   cd desktop
@@ -37,5 +37,5 @@ package() {
   install -Dm644 "desktop/app/static/logos/1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
   install -Dm644 "desktop/app/static/logos/512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
   install -Dm644 "desktop/app/static/logos/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
-  printf "#!/bin/sh\n\nLD_PRELOAD=/usr/lib/libcurl-openssl-1.0.so /opt/${_pkgname}/desktop \"\$@\"\n" | install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}"
+  printf "#!/bin/sh\n\n/opt/${_pkgname}/github-desktop \"\$@\"\n" | install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}"
 }
