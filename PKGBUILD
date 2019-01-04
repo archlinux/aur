@@ -2,33 +2,38 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 _pkgbase=fuse
-pkgname=lib32-${_pkgbase}
-pkgver=2.9.8
-pkgrel=2
+pkgname=lib32-fuse3
+pkgver=3.4.1
+pkgrel=1
 pkgdesc="A library that makes it possible to implement a filesystem in a userspace program (32 bit)"
 arch=('x86_64')
 url="https://github.com/libfuse/libfuse"
 license=('GPL2')
-depends=('lib32-glibc' "${_pkgbase}")
-makedepends=('gcc-multilib')
-source=("${url}/releases/download/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.tar.gz")
+depends=('lib32-glibc' 'fuse3')
+makedepends=('gcc-multilib' 'meson' 'pkg-config')
+source=(${url}/releases/download/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.tar.xz{,.asc})
 options=(!libtool)
-sha256sums=('5e84f81d8dd527ea74f39b6bc001c874c02bad6871d7a9b0c14efb57430eafe3')
+sha256sums=('88302a8fa56e7871066652495b05faf14b36dca9f1b740e9fb00da0785e60485'
+			'SKIP')
+validpgpkeys=(ED31791B2C5C1613AF388B8AD113FCAC3C4E599F)
 
 build() {
-  export CC="gcc -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+	# based off fuse3's build function
 
-  cd ${_pkgbase}-${pkgver}
-  ./configure \
-    --prefix=/usr --enable-lib \
-    --enable-util --libdir=/usr/lib32
-  make
+	export CC="gcc -m32"
+	export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+
+	cd "${_pkgbase}-${pkgver}"
+	rm -rf build
+	meson --prefix=/usr --sbindir=bin --libdir=/usr/lib32 . build
+	cd build
+	ninja
 }
 
 package() {
-  make -C ${_pkgbase}-${pkgver} DESTDIR="${pkgdir}" install
-  rm -r "${pkgdir}"/{dev,etc,sbin,usr/{bin,include,share}}
-}
+	cd "${_pkgbase}-${pkgver}/build"
+	DESTDIR="${pkgdir}" ninja install
 
-# vim:set ts=2 sw=2 et:
+	# remove files that should be provided by other fuse packages
+	rm -r "${pkgdir}"/{dev,etc,usr/{bin,include,share,lib}}
+}
