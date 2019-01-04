@@ -1,6 +1,6 @@
 # Maintainer: Henri Derycke <nheir.kim@gmail.com>
 pkgname=bluez-alsa-git
-pkgver=v1.3.1.r17.gdae0699
+pkgver=1.3.1.r39.g576b584
 pkgrel=1
 pkgdesc="Bluetooth Audio ALSA Backend"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ md5sums=('SKIP'
 install=bluealsa.install
 pkgver() {
 	cd "$pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
