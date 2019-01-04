@@ -8,7 +8,7 @@ _arc_theme_cmt=88d02754d11d174a7baf3db7beb857f28dac55ee
 _archdroid_icons_ver=1.0.2
 _gnome_colors_icons_ver=5.5.4
 _oomoxify_ver=1.1.1
-_base16_cmt=d022b9daa5c233a08a8d3b94fd534a3041e3a8c1
+_base16_cmt=2e4112fe859ed5d33f67c177f11d369d360db9ae
 _numix_icons_cmt=bd40be85955dcf20b15ce03e2baf0bf3dba313cb
 _numix_folders_icons_cmt=24e5f6c6603e7f798553d2f24a00de107713c333
 
@@ -68,7 +68,7 @@ source=(
     "archdroid-icon-theme-${_archdroid_icons_ver}.tar.gz::https://github.com/themix-project/oomox-archdroid-icon-theme/archive/${_archdroid_icons_ver}.tar.gz"
     "gnome-colors-icon-theme-${_gnome_colors_icons_ver}.tar.gz::https://github.com/themix-project/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_icons_ver}.tar.gz"
     "oomoxify-${_oomoxify_ver}.tar.gz::https://github.com/themix-project/oomoxify/archive/${_oomoxify_ver}.tar.gz"
-    "base16-builder-${_base16_cmt}.tar.gz::https://github.com/base16-builder/base16-builder/archive/${_base16_cmt}.tar.gz"
+    "base16_mirror-${_base16_cmt}.tar.gz::https://github.com/themix-project/base16_mirror/archive/${_base16_cmt}.tar.gz"
     "numix-icon-theme-${_numix_icons_cmt}.tar.gz::https://github.com/numixproject/numix-icon-theme/archive/${_numix_icons_cmt}.tar.gz"
     "numix-folders-${_numix_folders_icons_cmt}.tar.gz::https://github.com/numixproject/numix-folders/archive/${_numix_folders_icons_cmt}.tar.gz"
 )
@@ -79,7 +79,7 @@ md5sums=('4012421ef63e3b8aa5e165999f739011'
          'cb669130685dcbf03a8f7f5738c71dc6'
          'b5bc6ce914908c1e8f88180889b427e3'
          '5f92a530f72ef0547c2cfcb14b6b3782'
-         '38fc51a55c798032266c03ee82461119'
+         '8f7506b74131bfce78685aade0e275eb'
          'a291f15685641f5be20493e6775d54c5'
          '3fcb07cefe43a6a2fe4d977f124624ec')
 
@@ -92,7 +92,7 @@ prepare() {
     cp -pr "archdroid-icon-theme-${_archdroid_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_archdroid/archdroid-icon-theme"
     cp -pr "gnome-colors-icon-theme-${_gnome_colors_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_gnomecolors/gnome-colors-icon-theme"
     cp -pr "oomoxify-${_oomoxify_ver}"/* "${pkgname}-${_oomox_ver}/plugins/oomoxify"
-    cp -pr "base16-builder-${_base16_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/import_base16/base16-data"
+    cp -pr "base16_mirror-${_base16_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/base16/base16_mirror"
     cp -pr "numix-icon-theme-${_numix_icons_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/icons_numix/numix-icon-theme"
     cp -pr "numix-folders-${_numix_folders_icons_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/icons_numix/numix-folders"
 }
