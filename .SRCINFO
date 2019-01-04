@@ -1,10 +1,10 @@
 pkgbase = python-smart-progress
 	pkgdesc = Smart progressbar with multiple backends selected depending on the environment
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flying-sheep/smart-progress
 	arch = any
-	license = GPLv3
+	license = GPL3
 	makedepends = python-pip
 	depends = python
 	depends = jupyter
