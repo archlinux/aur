@@ -1,7 +1,7 @@
 # Maintainer: wallace < str(11) + my_id at gmail dot com>
 
 pkgname='kde-service-menu-reimage'
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc='Manipulate images e their metadata'
 arch=('any')
