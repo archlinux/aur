@@ -1,13 +1,13 @@
 pkgbase = buddhasay
 	pkgdesc = Like Cowsay, but with a Buddha.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/luisonthekeyboard/buddhasay
 	arch = i686
 	arch = x86_64
 	license = APACHE
 	makedepends = cargo
-	source = https://github.com/luisonthekeyboard/buddhasay/archive/0.2.0.tar.gz
+	source = https://github.com/luisonthekeyboard/buddhasay/archive/0.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = buddhasay

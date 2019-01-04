@@ -1,5 +1,5 @@
 pkgname=buddhasay
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Like Cowsay, but with a Buddha."
 url="https://github.com/luisonthekeyboard/buddhasay"
