@@ -1,6 +1,6 @@
 pkgbase = gtk-theme-united-archers-git
 	pkgdesc = GTK2/3 + GNOME Shell theme based on a Ubuntu 18.04 design concept.
-	pkgver = v2.2.r12.gd0b92ea
+	pkgver = v2.2.r13.geb55c4c
 	pkgrel = 1
 	url = https://github.com/godlyranchdressing/United-GNOME
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = gtk-theme-united-archers-git
 	depends = gtk-engine-murrine
 	optdepends = gnome-shell>=3.22: The GNOME Shell
 	optdepends = gnome-tweak-tool: A graphical tool to tweak gnome settings
-	provides = United-GNOME=v2.2.r12.gd0b92ea
+	provides = United-GNOME=v2.2.r13.geb55c4c
 	source = United-Antergos-Compact.tar.gz::https://github.com/godlyranchdressing/United-GNOME/blob/master/United-Antergos-Compact.tar.gz?raw=true
 	source = United-Antergos.tar.gz::https://github.com/godlyranchdressing/United-GNOME/blob/master/United-Antergos.tar.gz?raw=true
 	source = United-Arch-Compact.tar.gz::https://github.com/godlyranchdressing/United-GNOME/blob/master/United-Arch-Compact.tar.gz?raw=true

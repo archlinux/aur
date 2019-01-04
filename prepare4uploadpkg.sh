@@ -38,7 +38,7 @@ rm -rfv src/ United-Arch/ United-*.tar.gz
 
 namcap PKGBUILD && makepkg --printsrcinfo > .SRCINFO || exit 1
 git add . || exit 1
-git commit -am "New revision commit" || exit 1
+git commit -am "Last commit" || exit 1
 git push --set-upstream origin master || exit 1
 
 ###read -p "Press [Enter] key to exit..."
