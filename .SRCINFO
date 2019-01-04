@@ -1,18 +1,18 @@
 pkgbase = ttf-moderndos
 	pkgdesc = A raster monospace serif typeface based on IBM and Verite, extracted from VGA ROMs in real machines by various manufacturers.
-	pkgver = 20190101.01
-	pkgrel = 2
+	pkgver = 20190101.02
+	pkgrel = 1
 	url = https://notabug.org/HarvettFox96/ttf-moderndos
 	arch = any
 	license = CC0
 	depends = fontconfig
 	depends = xorg-font-utils
 	depends = xorg-fonts-encodings
-	source = https://notabug.org/HarvettFox96/ttf-moderndos/archive/20190101.01.tar.gz
-	source = 20190101.01.tar.gz.sig::https://notabug.org/attachments/c8286466-0381-430d-b9fd-df16839e610f
+	source = https://notabug.org/HarvettFox96/ttf-moderndos/archive/20190101.02.tar.gz
+	source = 20190101.02.tar.gz.sig::https://notabug.org/attachments/0a70c629-b0ca-496c-a2b7-d0dd2a0104bd
 	validpgpkeys = 4C565E3C3DB4DE43785F0DA9B627DC6AB09D9B83
 	validpgpkeys = 925C741082DC0DB32CF8AADFCB73A6EB26948E91
-	sha512sums = 17cd42e18a4df2b7a74f2476fab68cbc779c9faa4c027213832828da34905061a179c2713c8b247ab0f3e4d02d57168f30b3a76b3d45e963747a46472a20e4ca
+	sha512sums = 048d21810c7c1610460abe5edd03b4aab33d9256db81fba7523cbafa4ba255426674150792d7a3c3929fda392e2eb013e3c366cffcad027639b2ef3f1cb2fa1c
 	sha512sums = SKIP
 
 pkgname = ttf-moderndos
