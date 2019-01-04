@@ -1,7 +1,7 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=pgweb-bin
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="Web-based PostgreSQL database browser written in Go"
 arch=('i686' 'x86_64')
 url="https://github.com/sosedoff/pgweb"
@@ -15,14 +15,14 @@ md5sums=('d45bd1fdcac2311fffa9534b430a3ee8'
          'd89944e4c4d325569f94eb56dfbe6411'
          '1362f2c1ba241a56b4c2c98bdfa2eca7'
          '2146194a1a81d4d9f1172d1ea64e0fd0')
-md5sums_i686=('7ea941da9f08a71fa11a9f050506613c')
-md5sums_x86_64=('db2f033d3df452a5b54e9b07a1656dd3')
+md5sums_i686=('a9909fcc4abd932454cf33352ea98367')
+md5sums_x86_64=('13e8f884fe7a3e8ee739e0a3b149bd87')
 sha256sums=('cc041317281beafc22ad7dd47f3f3ae3ca5006a3f873996bc611124fc3d439d0'
             'aa58ad72a5ea730b4c2ae292e02608d3df2b882c173520737fa4afb0faa89f29'
             'b0f6b6099c2936e0dc11918799c2043831c0e4249d4dd15e77adc2d418e971a6'
             '5eae680e816a8124f0b227da33bf90637730a5ef2b32267b89344369f866c609')
-sha256sums_i686=('bf21ca1225c225b7d195119a4570a9e24118508545afddf15394aba071f8eb01')
-sha256sums_x86_64=('6124d89a31b2745e0d2c9104ce8e25ec30bc2815e182a41ef3ace0c771fdef22')
+sha256sums_i686=('1759b3f3b70a04c293a39cd840d11f8e8c5d9520799d3784a1f964be451611b3')
+sha256sums_x86_64=('553c9eb8c7e35c53af67f93ec5409130f62bfb3f2c0022a41732ad63e646b98d')
 backup=('etc/conf.d/pgweb')
 install='pgweb.install'
 
