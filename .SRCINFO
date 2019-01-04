@@ -1,7 +1,7 @@
 pkgbase = valentina
 	pkgdesc = Sewing pattern drafting software tool, designed to remake the garment industry.
-	pkgver = 0.5.0
-	pkgrel = 3
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://valentinaproject.bitbucket.io/
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = valentina
 	depends = qt5-svg
 	depends = poppler
 	depends = qt5-xmlpatterns
-	source = https://bitbucket.org/dismine/valentina/get/43c4c44d4c90.zip
-	md5sums = ba8d31564f00c9ca90ebe10966dae5f1
+	source = https://bitbucket.org/dismine/valentina/get/ad1d0130b485.zip
+	md5sums = a84b8c141a6e34a3fccf8fd13f63e172
 
 pkgname = valentina
 
