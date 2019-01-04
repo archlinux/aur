@@ -1333,3 +1333,29 @@ Wed Dec 26 05:39:00 2018 +0100
 1.9.0.2         Special Christmas Release 1.9.0.2
     
      2018-12-26 9b718be0 Vlada Makhonina Add one more Christmas palette
+
+
+Fri Jan 4 02:14:03 2019 +0100
+-------------------------------------------------
+1.10            Release 1.10
+    
+    Notable changes:
+     2019-01-03 e50a523f actionless chore(plugins: base16): update submodule (more themes synced)
+     2019-01-02 3bfa3c17 actionless chore(plugins: arc): update submodule(makefile rendersvg hidpi fix)
+     2019-01-02 077337a3 Vlada Makhonina Add new palette
+     2019-01-02 153965a3 actionless chore(plugins: oomox): update submodule (fix make opts, cinnamon theme generation)
+     2019-01-01 48888137 actionless fix(preview; theme_model): gradient preview
+     2019-01-01 4bcf5dae actionless feat: implement exporting of base16-based templates
+     2018-12-31 ad173176 actionless feat(settings): allow configuring minimal preset list width
+     2018-12-31 3c287f37 actionless chore(travis): disable python 3.4
+     2018-12-28 8232b1e4 actionless feat(main): allow running multiple instances of the app
+     2018-12-28 1d7772ef actionless feat(main, settings): save last window size
+     2018-12-28 1f31ab53 actionless feat(presets_list): save sections' expanded/collapsed state between app restarts
+     2018-12-28 8a07ccd6 actionless chore(plugins: oomox-gtk-theme): update submodule (make circular and combobox Spacing-aware)
+     2018-12-28 e5028b47 actionless refactor(settings): split into app and ui settings (friendlier to git-managed dotfiles)
+     2018-12-28 fb894a77 actionless chore(plugins: oomox-gtk-theme): update submodule (fix new checks/radios inside treeview and menus)
+     2018-12-27 00684476 actionless feat(main, settings): save preset list width between app restart
+     2018-12-27 0d191a26 actionless feat: add Keyboard Shortcuts help
+     2018-12-26 83503b16 actionless feat(presets_list): add hotkeys Left and Right arrows to expand/collapse and F5 to refresh
+     2018-12-26 37729347 actionless chore(plugins: oomox): update submodule (fix sidebar list styling)
+     2018-12-26 faa0b635 Vlada Makhonina Create new palette folder WoopWoop
