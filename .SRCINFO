@@ -1,14 +1,14 @@
 pkgbase = ktouch-lesson-generator
 	pkgdesc = A script for automatically generating custom lessons for the typing tutor KTouch.
-	pkgver = 1.0.1
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/simgunz/ktouch-lesson-generator
 	arch = any
 	license = MIT
 	depends = python-voluptuous
 	depends = python-docopt
-	source = https://github.com/simgunz/ktouch-lesson-generator/archive/1.0.1.tar.gz
-	md5sums = 5a5ab6890a30131d854c00ab61f2ac0b
+	source = https://github.com/simgunz/ktouch-lesson-generator/archive/2.0.tar.gz
+	md5sums = 782f6c3c32a22daf9c4695526766fe9f
 
 pkgname = ktouch-lesson-generator
 
