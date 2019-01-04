@@ -4,14 +4,14 @@ _base=ffc
 _fragment="#branch=master"
 pkgname=python-${_base}-git
 pkgdesc="A compiler for finite element variational forms."
-pkgver=20171215
+pkgver=20180827
 pkgrel=1
 arch=('any')
 url="https://bitbucket.org/fenics-project/${_base}"
 license=('GPL3')
 groups=('fenics-git')
 depends=('python-dijitso-git' 'python-fiat-git' 'python-ufl-git' 'pybind11')
-makedepends=('git')
+makedepends=('python-setuptools' 'git')
 options=(!emptydirs)
 source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
 md5sums=('SKIP')
