@@ -1,6 +1,6 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 pkgname=meep-git
-pkgver=1.6.0.r35.g3621a79b
+pkgver=1.7.0.r22.g8f4ea5b4
 pkgrel=1
 pkgdesc='Free finite-difference time-domain (FDTD) software for electromagnetic simulations (includes python interface)'
 arch=('i686' 'x86_64')
@@ -11,7 +11,8 @@ makedepends=('gcc-fortran' 'git')
 optdepends=('h5utils: visualization and conversion of scientific data'
             'python-h5py: process HDF5 data from python'
             'python-mpi4py: use MPI from the python interface'
-            'mpb-git: calculation of electromagnetic modes')
+            'mpb-git: calculation of electromagnetic modes'
+            'libgdsii-git: support for GDSII files')
 options=('!libtool' '!makeflags')
 provides=('meep')
 conflicts=('meep')

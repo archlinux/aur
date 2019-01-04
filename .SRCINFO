@@ -1,6 +1,6 @@
 pkgbase = meep-git
 	pkgdesc = Free finite-difference time-domain (FDTD) software for electromagnetic simulations (includes python interface)
-	pkgver = 1.6.0.r35.g3621a79b
+	pkgver = 1.7.0.r22.g8f4ea5b4
 	pkgrel = 1
 	url = https://github.com/stevengj/meep
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = meep-git
 	optdepends = python-h5py: process HDF5 data from python
 	optdepends = python-mpi4py: use MPI from the python interface
 	optdepends = mpb-git: calculation of electromagnetic modes
+	optdepends = libgdsii-git: support for GDSII files
 	provides = meep
 	conflicts = meep
 	options = !libtool
