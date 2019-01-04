@@ -28,10 +28,6 @@ I use and have tested only sstmp but every sendmail-like `mail` cmd will do.
 
 #### Configure
 
-Set the expiry, inactive etc to never:
-
-`chage -E -1 -I -1 -m -1 -M -1 archupdater`
-
 */etc/unattended-arch-upgrade.conf*
 
 All options are well documented in that conf file. Just adjust it to your needs.

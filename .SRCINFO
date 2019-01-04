@@ -1,7 +1,7 @@
 pkgbase = uau
-	pkgdesc = A little helper for installing Arch upgrades scheduled, respecting the recommended upgrade checks and doing all this non-interactively
+	pkgdesc = unattended upgrades for Arch. Schedule automatic upgrades while respecting the recommended upgrade process (Arch wiki - System maintenance).
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/steadfasterX/arch_uau
 	install = uau.install
 	arch = any

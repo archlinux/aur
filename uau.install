@@ -2,7 +2,9 @@
 post_install() {
     . /etc/unattended-arch-upgrade.conf
 
-    TODAY=$(date +%F); useradd $UPDATEUSER -G systemd-journal --expiredate $TODAY -f -1 -m
+    useradd $UPDATEUSER -G systemd-journal -m
+    # no account expiry, never set to inactive, no password expiry
+    chage -E -1 -I -1 -m -1 -M -1 $UPDATEUSER
 
     # install archnews and ensure it is a supported version
     mkdir $ANEWSDIR
