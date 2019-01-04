@@ -13,7 +13,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _srcbasever=4.19-gnu
-_srcver=4.19.5-gnu
+_srcver=4.19.8-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -23,11 +23,12 @@ _srcname=linux-${_srcbasever%-*}
 _archpkgver=${_srcver%-*}
 pkgver=${_srcver//-/_}
 pkgrel=1
-rcnrel=armv7-x9
+rcnrel=armv7-x11
 arch=(i686 x86_64 armv7h)
 url="https://linux-libre.fsfla.org/"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf python-sphinx graphviz)
+makedepends_armv7h=(uboot-tools vboot-utils dtc) # for linux-libre-chromebook
 options=('!strip')
 source=(
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/$_srcbasever/linux-libre-$_srcbasever.tar.xz"{,.sign}
@@ -41,6 +42,8 @@ source=(
   '60-linux.hook' '90-linux.hook'
   # standard config files for mkinitcpio ramdisk
   'linux.preset'
+  # files for signing Chromebooks kernels
+  'kernel.its' 'kernel.keyblock' 'kernel_data_key.vbprivk'
   # armv7h patches
   "https://repo.parabola.nu/other/rcn-libre/patches/${_srcver%-*}/rcn-libre-${_srcver%-*}-$rcnrel.patch"{,.sig}
   '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
@@ -63,7 +66,7 @@ validpgpkeys=(
 )
 sha512sums=('5bc800b3beff43a8c15bd5515f4e0babe2beb5fa600491b7b37110e22d9b739d293f1e38753ed681be289c51390e0e64b3e60ce0db0a3bfe1f94ee5c014579a3'
             'SKIP'
-            'dbb9b21c9c89e199ea6e719287f3ef1b7c07dfbda55108216499dfd1f981d80777dde191132417502772a25615511e9ae58a3f7efcf2f023d6a41d734a3099a9'
+            'd4de40e6fc7523e9314b89b29cd91af5d9cbbd57bece239e990c5f738ade9ceb53e7cedac30ecbf45009abfb0088a874b6570897dffd52c90e4f39743edd9b0f'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -77,7 +80,10 @@ sha512sums=('5bc800b3beff43a8c15bd5515f4e0babe2beb5fa600491b7b37110e22d9b739d293
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'fa32060ea7a44b94ce8ddc0c204a2ef1ec58551dfa20f94cd0237218c605e23783ff5aa0d2f802c40e58cef1502f0a770e34ac3302c40b5fba46d71ea9f75529'
+            '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
+            'bb6718984a7357c9b00c37e4788480e5b8b75018c172ecc1441bc3fc5d2d42444eb5d8c7f9d2e3a7d6fed6d03acb565e3c0559486e494c40a7fe6bd0570c9ede'
+            '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
+            '8e0485049f64c0532e933e864266b043a087b3c91e2eb564cc692ccd5c25f36f902fed4fae1c4b4b896cfab99b8e239e55965c914674dd360dd6ae847c94768a'
             'SKIP'
             '60aa432465eb3ac10f565799d3dfecea21aaf08e83909c1161d9359e932626edbd1353e712d616c3d785c65a0f699e9c45df35bd9e86365c25399c6b2d45b9e4'
             '86809feb5ae2759b449ec0cb7a6b3fb457874ed82a72dfda00607e8819c804a0714b5d6a17cbbba44996a36872224af42d1b85f1b3932f43bccb419041d25dc7'
@@ -377,7 +383,40 @@ _package-docs() {
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
+_package-chromebook() {
+  pkgdesc="Kernel image sign for ${pkgbase^} - Chromebooks"
+  depends=('linux-libre')
+  provides=("${_replacesarchkernel[@]/%/-armv7-chromebook=${_archpkgver}}")
+  conflicts=("${_replacesarchkernel[@]/%/-armv7-chromebook}" "${_replacesoldkernels[@]/%/-armv7-chromebook}")
+  replaces=("${_replacesarchkernel[@]/%/-armv7-chromebook}" "${_replacesoldkernels[@]/%/-armv7-chromebook}")
+  install=linux-chromebook.install
+
+  cd $_srcname
+
+  msg2 "Setting options for device tree compiler..."
+  cp ../kernel.its .
+  mkimage -D "-I dts -O dtb -p 2048" -f kernel.its kernel.itb
+  dd if=/dev/zero of=bootloader.bin bs=512 count=1
+  echo 'console=tty0 init=/sbin/init root=PARTUUID=%U/PARTNROFF=1 rootwait rw noinitrd' > cmdline
+
+  msg2 "Creating kernel sign..."
+  vbutil_kernel \
+    --pack vmlinux.kpart \
+    --version 1 \
+    --vmlinuz kernel.itb \
+    --arch arm \
+    --keyblock ../kernel.keyblock \
+    --signprivate ../kernel_data_key.vbprivk \
+    --config cmdline \
+    --bootloader bootloader.bin
+
+  msg2 "Installing kernel sign..."
+  mkdir -p "$pkgdir/boot"
+  cp vmlinux.kpart "$pkgdir/boot"
+}
+
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+[[ $CARCH = armv7h ]] && pkgname+=("$pkgbase-chromebook")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
