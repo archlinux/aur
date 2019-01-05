@@ -2,7 +2,7 @@
 
 pkgname=pupil-eye-tracking-bin
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source eye tracking software platform that started as a thesis project at MIT"
 arch=('x86_64')
 license=("LGPL v3.0")
@@ -13,6 +13,8 @@ _source="pupil_${_version}_linux_x64"
 
 source=("https://github.com/pupil-labs/pupil/releases/download/v${pkgver}/${_source}.zip")
 sha256sums=('3ca103c7cc4cad58e4580d2c178b2328dd6dde40e07f5b6f146ff20f0b2ab33f')
+options=('!strip')
+
 
 package() {
     extract_deb "player"
