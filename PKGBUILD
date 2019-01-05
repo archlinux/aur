@@ -1,7 +1,7 @@
 _pkgname=resvg
 pkgname=${_pkgname}-git
-pkgver=0.4.0.r14.gc48545f
-pkgrel=2
+pkgver=0.5.0.r1.g9d3eb6f
+pkgrel=1
 pkgdesc='SVG rendering library and CLI'
 arch=(i686 x86_64)
 url="https://github.com/RazrFalcon/$_pkgname"
@@ -27,8 +27,8 @@ build() {
 	)
 	done
 	
-	#msg2 'Building docs'
-	#cargo doc --release
+	msg2 'Building docs'
+	cargo doc --release --no-deps -p resvg-capi
 }
 
 package() {
@@ -38,6 +38,6 @@ package() {
 	install -Dm755 target/release/libresvg.so "$pkgdir/usr/lib/libresvg.so"
 	install -Dm644 capi/include/resvg.h       "$pkgdir/usr/include/resvg.h"
 
-	#install -d "$pkgdir/usr/share/doc/resvg"
-	#cp -r target/doc/* "$pkgdir/usr/share/doc/resvg"
+	install -d "$pkgdir/usr/share/doc/resvg"
+	cp -r target/doc/* "$pkgdir/usr/share/doc/resvg"
 }
