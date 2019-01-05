@@ -2,12 +2,12 @@
 
 pkgname=python-wsgidav
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic WebDAV server based on WSGI"
 arch=("any")
 license=("MIT")
 url="https://github.com/mar10/wsgidav"
-depends=("python" "python-defusedxml")
+depends=("python" "python-defusedxml" "python-entrypoints")
 makedepends=("python-setuptools")
 optdepends=(
     "python-lxml: for faster XML processing"
