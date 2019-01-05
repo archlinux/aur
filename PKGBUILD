@@ -30,7 +30,7 @@ package() {
     cd "tldextract-${pkgver}"
     python2 setup.py install --root=${pkgdir} --optimize=1 --skip-build
 
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/python2-tldextract/LICENSE"
 
     # use the snapshot version, because generating a new on requires Internet access and root permission
     _sitepkgs_dir=$(python2 -c "from __future__ import print_function; from distutils.sysconfig import get_python_lib; print(get_python_lib(), end='')")
