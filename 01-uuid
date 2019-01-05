@@ -1,0 +1,12 @@
+if [[ ($DEVTYPE=="disk" || $DEVTYPE=="partition") && $DEVNAME ]]; then
+	test -d /dev/disk || mkdir -p /dev/disk
+	export $(blkid --info -p -o udev /dev/$DEVNAME | grep UUID)
+	[ $ID_FS_UUID ] && {
+		test -d /dev/disk/by-uuid || mkdir -p /dev/disk/by-uuid
+		ln -sf /dev/$DEVNAME /dev/disk/by-uuid/$ID_FS_UUID
+	}
+	[ $ID_PART_ENTRY_UUID ] && {
+		test -d /dev/disk/by-partuuid || mkdir -p /dev/disk/by-partuuid
+		ln -sf /dev/$DEVNAME /dev/disk/by-partuuid/$ID_PART_ENTRY_UUID
+	}
+fi

@@ -1,0 +1,12 @@
+pkgbase = smdev-uuid
+	pkgdesc = Add block devices uuids with smdev
+	pkgver = 20190105
+	pkgrel = 1
+	arch = any
+	groups = smdev-scripts
+	depends = smdev
+	source = 01-uuid
+	sha256sums = d98735779002a318752d0cc8925ed744e1aefe49107575ad0edecea18f002739
+
+pkgname = smdev-uuid
+
