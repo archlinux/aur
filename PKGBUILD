@@ -1,7 +1,7 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-infi
-pkgver=2017.04.12
+pkgver=2019.01.05
 pkgrel=1
 pkgdesc="Create empty infi namespace for packages by Infinidat"
 arch=("any")
