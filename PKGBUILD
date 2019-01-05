@@ -7,16 +7,17 @@ pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
 license=("GPL3")
 arch=(i686 x86_64 armv6h armv7h)
-depends=(gtk3
-         vala
+depends=(gcr
          gnome-desktop
-         gobject-introspection
-         gtk-doc
          libhandy
+         upower
          wlroots)
-makedepends=(git
+makedepends=(ctags
+             git
+             libhandy
              pkg-config
-             meson)
+             meson
+             vala)
 conflicts=(phosh-git)
 source=("https://source.puri.sm/Librem5/phosh/-/archive/v${pkgver}/phosh-v${pkgver}.tar.gz"
         "fix-source-path.patch")
