@@ -1,17 +1,16 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=librepcb-git
 _fullname=LibrePCB
-pkgver=r1468.272044bfa
+pkgver=r1522.dbc6805ab
 pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards (git version)."
 arch=('x86_64' 'i686')
 url="http://librepcb.org/"
 license=('GPL')
-depends=('qt5-base' 'desktop-file-utils' 'shared-mime-info' 'openssl' 'zlib')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'qt5-base')
 makedepends=('git' 'qt5-tools')
 provides=('librepcb')
-conflicts=('librepcb')
-install=${pkgname}.install
+conflicts=('librepcb' 'librepcb-appimage')
 source=('git+https://github.com/LibrePCB/LibrePCB')
 md5sums=('SKIP')
 
@@ -33,6 +32,14 @@ build() {
 package() {
   cd "$srcdir/$_fullname-build/build"
   make install
+
+  # Install development utils
+  install -s -m 755 \
+    "output/workspace-library-updater" \
+    "${pkgdir}/usr/bin/librepcb-workspace-library-updater"
+  install -s -m 755 \
+    "output/uuid-generator" \
+    "${pkgdir}/usr/bin/librepcb-uuid-generator"
 }
 
 pkgver() {
