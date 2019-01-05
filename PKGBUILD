@@ -1,20 +1,18 @@
 # Maintainer: Marcus Behrendt <marcus dot behrendt dot 86 et bigbrothergoogle>
 
 pkgname=pupil-eye-tracking-bin
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="Open source eye tracking software platform that started as a thesis project at MIT"
 arch=('x86_64')
 license=("LGPL v3.0")
-url="https://pupil-labs.com/"
+url="https://github.com/pupil-labs/pupil"
 
-_version="v1.9-7-gdf51687"
+_version="v${pkgver}-20-g6936560"
 _source="pupil_${_version}_linux_x64"
 
 source=("https://github.com/pupil-labs/pupil/releases/download/v${pkgver}/${_source}.zip")
-sha256sums=('2a499dc7b10e47b6d54487f2661f52c33dbb76ce742091ca4f7466fd66d71c53')
-options=('!strip')
-
+sha256sums=('3ca103c7cc4cad58e4580d2c178b2328dd6dde40e07f5b6f146ff20f0b2ab33f')
 
 package() {
     extract_deb "player"
