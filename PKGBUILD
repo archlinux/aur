@@ -2,7 +2,7 @@
 
 pkgname=kicad-git
 pkgver=r10854.8e7d6063f
-pkgrel=1
+pkgrel=2
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
@@ -14,7 +14,7 @@ optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
 provides=('kicad')
 install=kicad.install
-source=("${pkgname}"'::git+git://git.launchpad.net/kicad')
+source=("${pkgname}"'::git+https://git.launchpad.net/kicad')
 md5sums=('SKIP')
 
 pkgver() {
