@@ -1,6 +1,6 @@
 pkgname=mingw-w64-glew
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GLEW, The OpenGL Extension Wrangler Library (mingw-w64)"
 arch=('any')
 url="http://glew.sourceforge.net/"
@@ -34,7 +34,7 @@ build() {
             LD="${_arch}-gcc" \
             LDFLAGS.GL="-lopengl32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32" \
             LDFLAGS.EXTRA="" \
-            CFLAGS.EXTRA="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4" \
+            CFLAGS.EXTRA="-D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" \
             all
   done
 }
