@@ -1,9 +1,9 @@
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
 # Contributor: Henning Garus <henning.garus@gmail.com>
 # Contributor: Patrik Hautala <phloyd@iki.fi>
 
 pkgname=moe
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc='A powerful, 8-bit clean, text editor. Supports ISO-8859-15 and ASCII.'
 arch=('i686' 'x86_64')
