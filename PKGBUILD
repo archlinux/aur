@@ -3,7 +3,7 @@
 pkgbase=rbldnsd
 pkgname=($pkgbase $pkgbase-sync)
 pkgver=0.998b
-pkgrel=2
+pkgrel=3
 pkgdesc="Small Daemon for DNSBLs"
 arch=(x86_64)
 url=https://rbldnsd.io
@@ -20,7 +20,7 @@ source=($pkgbase-$pkgver.tar.gz::https://github.com/spamhaus/rbldnsd/archive/0.9
 		$pkgbase-sync.sh
 		)
 sha256sums=('7f6abacb561bad4ec6014e75d44c4cce48d67ed13b7a5cd61bcc6566b3c0b8c7'
-            '1bffcd37cf6cd62813a9ace362b77be204e76fc368387c723ec795b13c779d59'
+            '312a7b6ad2f873b3ff4256810cd03288805236cde853316beff28e9883b766cd'
             '8e671965d7a80ffab0279f4b08a751d596ade0b02abdb8b860e39aabfb677734'
             '19a540e4619334fd8c6604adc3337f51c95089f87f64ebb5c2b0760dc571ea49'
             '8602e14db8a008f42541d4d66614909ab2b4d85e279a4d07b81fcb2d0556b8fe'

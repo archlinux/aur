@@ -13,7 +13,7 @@ OPTIONS="-r /var/rbldnsd $OPTIONS"
 
 cd /var/rbldnsd
 
-printf -v O_ZONES -- "$ZONE:%s " `find -mindepth 2 -type f | awk -F/ '{printf "%s:%s/%s", $2, $2, $3}'`
+printf -v O_ZONES -- "$ZONE:%s " `find -mindepth 2 -type f | awk -F/ '{printf "%s:%s/%s\n", $2, $2, $3}'`
 
-echo /usr/lib/rbldnsd/rbldnsd $O_BIND $OPTIONS $O_ZONES
+exec /usr/lib/rbldnsd/rbldnsd $O_BIND $OPTIONS $O_ZONES
 
