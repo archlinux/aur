@@ -4,7 +4,7 @@
 
 _basename=opencv
 pkgname=lib32-opencv
-pkgver=3.4.4
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library (32-bit)"
 arch=('x86_64')
@@ -15,8 +15,8 @@ depends=('lib32-ffmpeg' 'lib32-gst-plugins-base' 'lib32-gtk3' 'lib32-hdf5' 'lib3
 makedepends=('cmake' 'eigen' 'hdf5' 'lib32-libaec')
 source=("$_basename-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
-sha256sums=('b5755384cbadf67f55838c6cfd9ae1aad0ebad2c7cfe4c1174417c80d2ed15a9'
-            '765446d994713363554978d1da447fef77a2cdf9e38742f0a98b13b92652626d')
+sha256sums=('b79ccdc4797a959c5ab17249a8a302c066248ae070e4d7010e2d77a625fdb30a'
+            '0d8acbad4b7074cfaafd906a7419c23629179d5e98894714402090b192ef8237')
 
 prepare() {
     mkdir -p build
@@ -46,7 +46,24 @@ build() {
         -DINSTALL_PYTHON_EXAMPLES=OFF \
         -DCPU_BASELINE_DISABLE=SSE3 \
         -DCPU_BASELINE_REQUIRE=SSE2 \
-        -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules"
+        -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
+        -DOPENCV_GENERATE_PKGCONFIG=ON \
+        -DOPENCV_ENABLE_NONFREE=ON \
+        -DZLIB_LIBRARY_RELEASE="/usr/lib32/libz.so" \
+        -DHDF5_C_LIBRARY_hdf5="/usr/lib32/libhdf5.so" \
+        -DHDF5_C_LIBRARY_sz="/usr/lib32/libsz.so" \
+        -DHDF5_C_LIBRARY_z="/usr/lib32/libz.so" \
+        -DHDF5_C_LIBRARY_dl="/usr/lib32/libdl.so" \
+        -DJPEG_LIBRARY_RELEASE="/usr/lib32/libjpeg.so" \
+        -DWEBP_LIBRARY="/usr/lib32/libwebp.so" \
+        -DPNG_LIBRARY_RELEASE="/usr/lib32/libpng.so" \
+        -DTIFF_LIBRARY_RELEASE="/usr/lib32/libtiff.so" \
+        -DJASPER_LIBRARY_RELEASE="/usr/lib32/libjasper.so" \
+        -DOPENEXR_IMATH_LIBRARY="/usr/lib32/libImath.so" \
+        -DOPENEXR_ILMIMF_LIBRARY="/usr/lib32/libIlmImf.so" \
+        -DOPENEXR_IEX_LIBRARY="/usr/lib32/libIex.so" \
+        -DOPENEXR_HALF_LIBRARY="/usr/lib32/libHalf.so" \
+        -DOPENEXR_ILMTHREAD_LIBRARY="/usr/lib32/libIlmThread.so"
 
     make
 }

@@ -1,6 +1,6 @@
 pkgbase = lib32-opencv
 	pkgdesc = Open Source Computer Vision Library (32-bit)
-	pkgver = 3.4.4
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://opencv.org
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = lib32-opencv
 	depends = lib32-openexr
 	depends = lib32-tesseract
 	depends = opencv
-	source = opencv-3.4.4.tar.gz::https://github.com/opencv/opencv/archive/3.4.4.zip
-	source = opencv_contrib-3.4.4.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.4.tar.gz
-	sha256sums = b5755384cbadf67f55838c6cfd9ae1aad0ebad2c7cfe4c1174417c80d2ed15a9
-	sha256sums = 765446d994713363554978d1da447fef77a2cdf9e38742f0a98b13b92652626d
+	source = opencv-4.0.1.tar.gz::https://github.com/opencv/opencv/archive/4.0.1.zip
+	source = opencv_contrib-4.0.1.tar.gz::https://github.com/opencv/opencv_contrib/archive/4.0.1.tar.gz
+	sha256sums = b79ccdc4797a959c5ab17249a8a302c066248ae070e4d7010e2d77a625fdb30a
+	sha256sums = 0d8acbad4b7074cfaafd906a7419c23629179d5e98894714402090b192ef8237
 
 pkgname = lib32-opencv
 
