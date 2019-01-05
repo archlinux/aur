@@ -1,16 +1,12 @@
-# $Id$
-# Maintainer: Sébastien "Seblu" Luttringer
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: judd <jvinet@zeroflux.org>
+# Maintainer: Doron Behar <doron.behar@gmail.com>
 
 pkgname=gnuastro
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Various programs and library functions for the manipulation and analysis of astronomical data'
 arch=('x86_64')
 license=('GPL3')
-depends=('gsl' 'cfitsio' 'wcslib' 'libgit2' 'ghostscript')
+depends=('gsl' 'cfitsio' 'wcslib' 'libgit2' 'ghostscript' 'libtiff' 'libtool' 'libjpeg')
 url='https://www.gnu.org/software/gnuastro/'
 source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-latest.tar.gz")
 md5sums=('1f9fe021bf153ac7291af95c95e2d716')
@@ -20,23 +16,7 @@ prepare() {
   ./configure \
       --prefix=/usr \
       --libexecdir=/usr/lib \
-      --sysconfdir=/etc \
-      --enable-arithmetic \
-      --enable-buildprog \
-      --enable-convertt \
-      --enable-convolve \
-      --enable-cosmiccal \
-      --enable-crop \
-      --enable-fits \
-      --enable-match \
-      --enable-mkcatalog \
-      --enable-mknoise \
-      --enable-mkprof \
-      --enable-noisechisel \
-      --enable-segment \
-      --enable-statistics \
-      --enable-table \
-      --enable-warp
+      --sysconfdir=/etc
 }
 
 build() {
@@ -46,7 +26,7 @@ build() {
 
 check() {
   cd $pkgname-$pkgver
-  #make check
+  make check
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = gnuastro
 	pkgdesc = Various programs and library functions for the manipulation and analysis of astronomical data
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/gnuastro/
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,9 @@ pkgbase = gnuastro
 	depends = wcslib
 	depends = libgit2
 	depends = ghostscript
+	depends = libtiff
+	depends = libtool
+	depends = libjpeg
 	source = http://ftp.gnu.org/gnu/gnuastro/gnuastro-latest.tar.gz
 	md5sums = 1f9fe021bf153ac7291af95c95e2d716
 
