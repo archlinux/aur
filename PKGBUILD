@@ -2,22 +2,29 @@
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 _pkgname=SimpleITK
 pkgname=simpleitk
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
 depends=('gcc-libs' 'insight-toolkit>=4.13')
 makedepends=(
-    'clang' 'cmake' 'git' 'swig'
+	'cmake'
+	'git'
+	'python'
+	'python-numpy'
+	'python-pip'
+	'python-virtualenv'
+	'swig'
+	'tcl'
+	'tk'
     'java-environment'
     'lua51'
     'mono'
-    'python' 'python-pip' 'python-virtualenv' 'python-numpy'
     'r'
     'ruby'
-    'tcl' 'tk')
+)
 optdepends=(
     'java-runtime: Java bindings'
     'lua51: Lua bindings'
@@ -34,17 +41,14 @@ md5sums=('SKIP')
 
 prepare() {
     cd "$_pkgname"
-    mkdir -p build
-}
-
-build() {
-    cd "$_pkgname/build"
+    rm -rf build
+	mkdir -p build
+    cd build
 
 	_java_home=$(find '/usr/lib/jvm/' -name `archlinux-java get`)
 	_lua51_version=$(pacman -Qi lua51 | grep '^Version' | egrep -o '[0-9]\.[0-9]\.[0-9]')
 
-    CC=clang CXX=clang++ \
-		JAVA_HOME=$_java_home \
+	JAVA_HOME=$_java_home \
 		cmake \
 			-DCMAKE_INSTALL_PREFIX=/usr \
 			-DCMAKE_CXX_FLAGS:STRING="-std=c++14" \
@@ -66,6 +70,10 @@ build() {
 			-DWRAP_RUBY:BOOL=ON \
 			-DWRAP_TCL:BOOL=ON \
 			..
+}
+
+build() {
+    cd "$_pkgname/build"
 
     make all PythonVirtualEnv dist
 }
@@ -77,8 +85,14 @@ package() {
 
     make DESTDIR="$pkgdir/" install
 
-    pip install --root="$pkgdir/" --ignore-installed \
-        "$_builddir/Wrapping/Python/dist/$_pkgname-$pypkgver"*"-linux_$CARCH.whl"
+    PIP_CONFIG_FILE=/dev/null \
+		pip install \
+			--ignore-installed \
+			--isolated \
+			--no-deps \
+			--root="$pkgdir" \
+			"$_builddir/Wrapping/Python/dist/$_pkgname-$pypkgver"*"-linux_$CARCH.whl"
+	python -O -m compileall "${pkgdir}/usr/lib/python3.7/site-packages/SimpleITK"
 
     install -d -Dm755 "$pkgdir/usr/lib/lua/5.1/"
     install -Dm755 "$_builddir/Wrapping/Lua/lib/$_pkgname.so" "$pkgdir/usr/lib/lua/5.1/$_pkgname.so"
