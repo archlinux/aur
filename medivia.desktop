@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Medivia
+GenericName=Online game client
+Comment=Client for medivia.online game server. This is mmorpg game based on Tibia.
+Exec=medivia
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;

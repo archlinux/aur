@@ -1,0 +1,19 @@
+pkgbase = medivia
+	pkgdesc = Client for medivia.online game server. This is mmorpg game based on Tibia.
+	pkgver = 2.4.0
+	pkgrel = 2
+	url = https://medivia.online
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = chrpath
+	noextract = medivia-2.4.0.tar.gz
+	source = medivia-2.4.0.tar.gz::https://medivia.online/uploads/downloads/medivia-2.4.0-linux-32bits.tar.gz
+	source = medivia.desktop
+	md5sums = 70a59bd2857a14256a6a20b3d00c0abd
+	md5sums = 5808058b5bdea0b87199b34fe1dc1319
+	depends_i686 = libglvnd
+	depends_x86_64 = lib32-libglvnd
+
+pkgname = medivia
+
