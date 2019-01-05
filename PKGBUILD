@@ -65,7 +65,7 @@ _pkgbase=mozc-ut2
 pkgname=fcitx-mozc-ut2
 pkgdesc="Mozc the Japanese Input Method with Mozc UT2 Dictionary (additional dictionary) and uim-mozc (optional)"
 pkgver=2.23.2815.102.20171008
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://linuxplayers.g1.xrea.com/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
@@ -76,7 +76,7 @@ conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'mozc-ut' 'fcitx-m
 optdepends=('tegaki-models-zinnia-japanese: hand-writing recognition support')
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
-  http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut2-${_utdicver}.tar.bz2
+  https://osdn.net/projects/ponsfoot-aur/storage/mozc/mozcdic-ut2-${_utdicver}.tar.bz2
   https://osdn.net/projects/ponsfoot-aur/storage/mozc/edict2-${_utdicver}.gz
   https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-${_zipcoderel}.zip
   https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcoderel}.zip
