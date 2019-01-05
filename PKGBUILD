@@ -1,8 +1,8 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-wsgidav
-pkgver=2.2.4
-pkgrel=2
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="Generic WebDAV server based on WSGI"
 arch=("any")
 license=("MIT")
@@ -12,20 +12,22 @@ makedepends=("python-setuptools")
 optdepends=(
     "python-lxml: for faster XML processing"
     "python-cheroot: to use the built-in webserver"
+    "python-pyyaml: to use the build-in server runner CLI"
+    "python-jsmin: to use the built-in server runner CLI"
 )
 source=(
-    "https://pypi.python.org/packages/7e/75/9a56d97f19e2dad7166f48d073ad79678d8f26f195e9142b01c0e8fa5e94/WsgiDAV-${pkgver}.tar.gz"
+    "https://files.pythonhosted.org/packages/07/06/8952c1496a68db8d7571bfa4ddfbf0bcb0d155d23e64e3909752b9c6acfc/WsgiDAV-${pkgver}.tar.gz"
     "https://raw.githubusercontent.com/mar10/wsgidav/v${pkgver}/LICENSE"
     "uwsgi.py"
     "uwsgi.ini"
     "config.example.json"
 )
-sha512sums=(
-    "16cba8a6012576da88277525c297e7b8dcf0cf22beb6729829cafc4db1ad9ac28f87a753e8a0df665b8aac2fb525f4084c3b8e79faf38db2fb2903d60a83842f"
-    "3cd7f0442c32c90a6c6ecc86f59fd8f684b8ae9edd7303588c3d821f03e64ada98e12b5982ec412eea84cffebdbcf159d343d6cf815dfdceb4abbb129a0a6d03"
-    "0eb0563b1fda05af99c73d7824e4c410451b51bbf8ec9e65f702d6ce0a18998f31b05ba12d283d3f72a8d9c356bb0d19834868bc0705ce98e34b283b60ad0276"
-    "a4f0de9c7625007efb0fe917da66c68a205b16035e8313663a9ab35a9bfe30afa814542f2ec9bb965d90911c2f1be0a4a389443efd5dab2e45c36d12c2371cb4"
-    "d5286b64d083ac9fbfb49b6f71c0d06e21953b60bb7083a8affeceb9ffa28b7e4949233f63f7fd2d3d1de889ef3c1e91e77d6abbe06b88c626c4b5d2ac945f74"
+sha256sums=(
+    "d95014d71f595ae08062cb8608742adb4c1d7aece029e22ebe7de010359cb8f5"
+    "efab1ba243ab3de9a6fb75068eb39424055408849aa3aabf085f0fca0a1be3d1"
+    "7ca04465a67ec0726a4503aea86695e6d1948fa233dd2caa0fcee4db779aeaaf"
+    "25826e3ceec2e9e01c54e6367966537017b0c758c7eda131566a95f97b474250"
+    "3d114dd7275c40fde789a69eaaa8ddd0e5a1d803bf76948857eae7d9783cd761"
 )
 
 build() {
