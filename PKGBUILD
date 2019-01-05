@@ -15,7 +15,6 @@ depends=(gcr
 makedepends=(ctags
              git
              libhandy
-             pkg-config
              meson
              vala)
 conflicts=(phosh-git)
