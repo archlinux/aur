@@ -2,7 +2,7 @@
 # Contributor: visit ""
 pkgname=('slimjet-browser')
 _origname='slimjet'
-pkgver=21.0.6.0
+pkgver=21.0.7.0
 pkgrel=1
 pkgdesc="A lightweight Browser based on Blink (without setuid-sandbox)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}-${arch}.deb::https://www.${_origname}.com/release/
   "flashpeak.patch"
   "slimjet-browser")
 install='slimjet-browser.install'
-sha256sums=('84e1be84169770e17dcd4445af1b4361f7791950fd8d0247f77be2d1aee80b95'
+sha256sums=('2ee03c092d124d58afb6e52c39d16284d82eec724d0b223b15c93dc057f0f388'
             'fc0297ac9ec689eeb610024c9f59d5f47661d5e1fdf18bd3c5e456068c47d15e'
             '9ec7ee8938b2f88fe0130abe4aa886a90da97003bfc08d20937612d75ee9f228'
             '74759fb197d997661b891d73bbc30a5d9b82183457fc10d3695cbb3f20a3111c')
