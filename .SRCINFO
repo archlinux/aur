@@ -1,8 +1,8 @@
 pkgbase = nomad-plasma-look-and-feel-git
 	pkgdesc = Nomad Look and Feel package.
-	pkgver = r148.f138e8e
+	pkgver = r144.b76ae5f
 	pkgrel = 1
-	url = https://github.com/nomad-desktop
+	url = https://github.com/nx-desktop
 	arch = any
 	license = GPL
 	makedepends = git
@@ -12,8 +12,8 @@ pkgbase = nomad-plasma-look-and-feel-git
 	depends = luv-icon-theme-git
 	depends = kvantum-qt5
 	optdepends = nomad-gtk-themes-git
-	source = git+https://github.com/nomad-desktop/nomad-plasma-look-and-feel.git
-	source = git+https://github.com/nomad-desktop/nomad-kvantum-theme
+	source = git+https://github.com/nx-desktop/nx-plasma-look-and-feel.git
+	source = git+https://github.com/nx-desktop/nx-kvantum-theme
 	sha256sums = SKIP
 	sha256sums = SKIP
 
