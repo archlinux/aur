@@ -10,8 +10,7 @@ This package is basically Geoff Holden's [fork][libwacom-geoffholden] of [`libwa
 Simply use the provided `PKGBUILD`, i.e. clone this repository and then, inside this source directory, run
 
 ```shell
-makepkg
-sudo pacman -U *.tar.xz
+makepkg -si
 ```
 
 Note: This package replaces the core `libwacom` package.
