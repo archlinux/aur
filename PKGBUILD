@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wpewebkit
-pkgver=2.20.2
+pkgver=2.22.3
 pkgrel=1
 pkgdesc='Web content engine library optimized for embedded devices'
 arch=(x86_64 i686)
@@ -8,12 +8,10 @@ url='https://wpewebkit.org'
 license=(custom)
 groups=(wpe)
 depends=(cairo libxslt gst-plugins-base-libs libepoxy libsoup libwebp
-         harfbuzz-icu woff2 wpebackend)
+         harfbuzz-icu woff2 'libwpe>=1.0.0')
 makedepends=(gperf ruby cmake python2)
 source=("${url}/releases/${pkgname}-${pkgver}.tar.xz")
-md5sums=(07cb30291a8311f3cf126e3a2e3d0efb)
-sha1sums=(69f1206255989e969fcdfb5c63401fb1f5a37864)
-sha256sums=(0950befe6e970c9219ccbc29f5ff08bcc0923f0a9ca5a4c7531d74f9e26617f2)
+sha512sums=('00bedcbcd5aee947e5a415d0acc45ca0e066fd5c0f58ddac5cdba114a7284159f27b67025139f4a5df147e6bedc7ad2ac42b60c63c4ff25de156b02cf8d863ea')
 
 prepare () {
 	mkdir -p _build
