@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+includedir=${prefix}/include/faster
+libdir=${exec_prefix}/lib
+
+Name: faster
+Description: Fast key-value store from Microsoft Research
+Version: git
+Cflags: -I${includedir}
+Libs: -L${libdir} -lfaster -luuid -ltbb -laio
