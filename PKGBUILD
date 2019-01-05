@@ -3,7 +3,7 @@
 pkgbase=rbldnsd
 pkgname=($pkgbase $pkgbase-sync)
 pkgver=0.998b
-pkgrel=3
+pkgrel=4
 pkgdesc="Small Daemon for DNSBLs"
 arch=(x86_64)
 url=https://rbldnsd.io

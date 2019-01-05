@@ -1,7 +1,7 @@
 pkgbase = rbldnsd
 	pkgdesc = Small Daemon for DNSBLs
 	pkgver = 0.998b
-	pkgrel = 3
+	pkgrel = 4
 	url = https://rbldnsd.io
 	arch = x86_64
 	license = GPL
