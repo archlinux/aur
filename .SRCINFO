@@ -1,7 +1,7 @@
 pkgbase = python2-mastodon
 	pkgdesc = python2 bindings for the Mastodon RPC API
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/halcy/Mastodon.py
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python2-mastodon
 	depends = python2-six
 	depends = python2-pytz
 	depends = python2-decorator
+	depends = python2-http-ece
 	depends = python2-cryptography
 	source = Mastodon.py-1.3.1.tar.gz::https://files.pythonhosted.org/packages/source/M/Mastodon.py/Mastodon.py-1.3.1.tar.gz
 	sha256sums = 3f000f34e2740a90fdadd923d1a7dd100dd62d56906c026ae725ce43301f30f6
