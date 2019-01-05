@@ -1,0 +1,2 @@
+d /var/rbldnsd 0750 rbldnsd rbldnsd -
+C /var/rbldnsd/ip4set/local.txt 640 root rbldnsd - /usr/lib/rbldnsd/local.txt.ip4set

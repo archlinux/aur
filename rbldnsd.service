@@ -1,0 +1,12 @@
+[Unit]
+Description=rbldnsd.service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/rbldnsd
+PIDFile=/run/rbldnsd.pid
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
