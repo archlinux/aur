@@ -1,28 +1,15 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=aws-sdk-cpp-git
-pkgver=1.7.27.r0.gf61c0ffab2
+pkgver=1.7.28.r0.g7bc5b426e8
 pkgrel=1
-epoch=
 pkgdesc="AWS SDK for C++"
 arch=(any)
 url="https://github.com/aws/aws-sdk-cpp"
 license=('BSD')
-groups=()
 depends=('cmake')
 makedepends=('openssl' 'curl' 'zlib' 'libutil-linux')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("${pkgname}::git+https://github.com/aws/aws-sdk-cpp")
-noextract=()
 sha256sums=('SKIP')
-validpgpkeys=()
 
 pkgver() {
 	cd ${pkgname}
