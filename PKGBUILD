@@ -2,7 +2,7 @@
 
 pkgname=steam-fast-login
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Login manager for Steam, allowing fast switching between accounts"
 arch=("any")
 license=("GPL3")
