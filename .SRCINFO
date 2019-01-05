@@ -1,0 +1,18 @@
+pkgbase = awale
+	pkgdesc = A free version of the classic african reflexion game.
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.nongnu.org/awale/index.html
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = gcc
+	makedepends = make
+	depends = sdl
+	depends = tcl
+	depends = tk
+	source = http://ftp.igh.cnrs.fr/pub/nongnu/awale/awale-1.5.tar.gz
+	md5sums = 579709384f038b75f31e26e3e490f60b
+
+pkgname = awale
+
