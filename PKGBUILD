@@ -1,14 +1,14 @@
 # Maintainer: allencch <allencch at hotmail dot com>
 pkgname=chipmunk-motif
-pkgver=1.0
-pkgrel=2
+pkgver=8
+pkgrel=1
 pkgdesc="Fast and efficient motif discovery tool, reborn and running"
 arch=('any')
 url="http://autosome.ru/ChIPMunk/"
 license=('custom')
 depends=("sh")
 source=("http://autosome.ru/ChIPMunk/chipmunk.jar")
-sha256sums=('078d1546ec851ef96eaf76ec9fc1b0049993fc821436cc1d3a1a6b3048841748')
+sha256sums=('ce19b82578457e29c975ec15a515074bb0b840f3432b65a642d09186d41ae1af')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
