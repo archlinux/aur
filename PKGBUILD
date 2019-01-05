@@ -1,7 +1,7 @@
 _pkgbasename=net-snmp
 pkgname=lib32-${_pkgbasename}
 pkgver=5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6"
 arch=('x86_64')
 url="http://www.net-snmp.org/"
@@ -10,7 +10,7 @@ depends=("${_pkgbasename}" 'lib32-openssl' 'lib32-libnl' 'lib32-pciutils')
 makedepends=('python2-setuptools')
 options=('!emptydirs' '!makeflags')
 source=(http://downloads.sourceforge.net/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz{,.asc})
-sha256sums=('97dc25077257680815de44e34128d365c76bd839' 'SKIP')
+sha256sums=('b2fc3500840ebe532734c4786b0da4ef0a5f67e51ef4c86b3345d697e4976adf' 'SKIP')
 validpgpkeys=('8AAA779B597B405BBC329B6376CF47B8A77C5329'
               '27CAA4A32E371383A33ED0587D5F9576E0F81533'
               'D0F8F495DA6160C44EFFBF10F07B9D2DACB19FD6')  # Net-SNMP Administrators
