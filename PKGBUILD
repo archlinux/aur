@@ -1,7 +1,7 @@
 # Maintainer: zargbell <zargbell@yandex.ru>
 
 pkgname=pixiecore
-pkgver=2018.084
+pkgver=2018.283
 pkgrel=1
 epoch=
 pkgdesc="An all-in-one tool for easy netbooting"
@@ -28,11 +28,9 @@ md5sums=()
 
 prepare() {
 	export GOPATH="$srcdir/go"
-	mkdir -p $GOPATH
-
 	export GOBIN="$GOPATH/bin"
+	mkdir -p $GOPATH
 	mkdir -p $GOBIN
-
 	go env
 }
 
@@ -42,10 +40,14 @@ pkgver(){
 }
 
 build() {
+	export GOPATH="$srcdir/go"
+	export GOBIN="$GOPATH/bin"
 	go get -v go.universe.tf/netboot/cmd/pixiecore
 }
 
 
 package() {
+	export GOPATH="$srcdir/go"
+	export GOBIN="$GOPATH/bin"
 	install -Dm755 "$GOBIN/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
