@@ -18,7 +18,8 @@ pkgver=4.21.1
   arch=('x86_64')
   url='https://www.unrealengine.com/'
   makedepends=('clang' 'mono' 'dos2unix' 'cmake' 'git')
-  depends=('icu' 'xdg-user-dirs' 'sdl2' 'python' 'lld')
+  depends=('icu' 'sdl2' 'python' 'lld')
+  optdepends=('xdg-user-dirs: manage user directories in non-english language')
   license=('custom:UnrealEngine')
 
   source=(
