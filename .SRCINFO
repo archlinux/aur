@@ -1,14 +1,14 @@
 pkgbase = lib32-tesseract
 	pkgdesc = An OCR program (32 bit)
-	pkgver = 3.05.01
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/tesseract-ocr/tesseract
 	arch = x86_64
 	license = APACHE
 	depends = lib32-leptonica
 	depends = tesseract
-	source = tesseract-3.05.01.tar.gz::https://github.com/tesseract-ocr/tesseract/archive/3.05.01.tar.gz
-	sha256sums = 05898f93c5d057fada49b9a116fc86ad9310ff1726a0f499c3e5211b3af47ec1
+	source = tesseract-4.0.0.tar.gz::https://github.com/tesseract-ocr/tesseract/archive/4.0.0.tar.gz
+	sha256sums = a1f5422ca49a32e5f35c54dee5112b11b99928fc9f4ee6695cdc6768d69f61dd
 
 pkgname = lib32-tesseract
 

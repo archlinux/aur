@@ -2,7 +2,7 @@
 
 _basename=tesseract
 pkgname=lib32-tesseract
-pkgver=3.05.01
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="An OCR program (32 bit)"
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/tesseract-ocr/tesseract"
 license=("APACHE")
 depends=(lib32-leptonica tesseract)
 source=($_basename-$pkgver.tar.gz::https://github.com/tesseract-ocr/tesseract/archive/$pkgver.tar.gz)
-sha256sums=('05898f93c5d057fada49b9a116fc86ad9310ff1726a0f499c3e5211b3af47ec1')
+sha256sums=('a1f5422ca49a32e5f35c54dee5112b11b99928fc9f4ee6695cdc6768d69f61dd')
 
 build() {
     cd $_basename-$pkgver
