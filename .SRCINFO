@@ -1,7 +1,7 @@
 pkgbase = spriteilluminator
 	pkgdesc = Tool for creating Normal Maps, also known as Dot3 Bump Maps, which generate a 2.5D effect in different game engines including Cocos2D-X
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.codeandweb.com/spriteilluminator
 	install = spriteilluminator.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = spriteilluminator
 	depends = shared-mime-info
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	depends = grantlee-qt5
+	depends = grantlee
 	depends = gcc-libs-multilib
 	depends = qt5-svg
 	depends = qt5-declarative

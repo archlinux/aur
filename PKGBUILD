@@ -7,13 +7,13 @@
 
 pkgname=spriteilluminator
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for creating Normal Maps, also known as Dot3 Bump Maps, which generate a 2.5D effect in different game engines including Cocos2D-X"
 arch=('x86_64')
 url="http://www.codeandweb.com/$pkgname"
 license=("custom:$pkgname")
 install="$pkgname.install"
-depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'grantlee-qt5'
+depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'grantlee'
 		 'gcc-libs-multilib' 'qt5-svg' 'qt5-declarative' 'qt5-imageformats'
 		 'qt5-quickcontrols')
 source=("https://www.codeandweb.com/download/$pkgname/${pkgver}/SpriteIlluminator-${pkgver}-ubuntu64.deb")
