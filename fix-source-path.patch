@@ -1,0 +1,13 @@
+diff --git a/tests/meson.build b/tests/meson.build
+index f77b29e9d0e65f6db8314cee0e3f760889ea287b..ba764aef8d5b2f47dfdde46226fd7b58558903a5 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -12,7 +12,7 @@ test_env = [
+
+ test_cflags = [
+   '-fPIE',
+-  '-I../src',
++  '-I@0@/../src'.format(meson.current_source_dir()),
+   '-I@0@/../src'.format(meson.current_build_dir()),
+   '-I@0@/../src/dbus'.format(meson.current_build_dir()),
+   '-DTEST_DATA_DIR="@0@/data"'.format(meson.current_source_dir()),

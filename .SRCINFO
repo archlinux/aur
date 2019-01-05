@@ -1,6 +1,6 @@
 pkgbase = phosh
 	pkgdesc = A pure Wayland shell prototype for GNOME on mobile devices
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/phosh
 	arch = i686
@@ -19,8 +19,10 @@ pkgbase = phosh
 	depends = libhandy
 	depends = wlroots
 	conflicts = phosh-git
-	source = https://source.puri.sm/Librem5/phosh/-/archive/v0.0.1/phosh-v0.0.1.tar.gz
-	sha256sums = 841d97b48c146c0c8ecd604d1769cf9715d8609de2e36868d416714d50903d63
+	source = https://source.puri.sm/Librem5/phosh/-/archive/v0.0.2/phosh-v0.0.2.tar.gz
+	source = fix-source-path.patch
+	sha256sums = 55d5d08fae1c0ccc326cb5dd761516862622faa920ad2b9a0ed3a250e741526e
+	sha256sums = 4ef6958f314f903e8f86b7410a93927b039342383d83ac9d2704c28e4bb93828
 
 pkgname = phosh
 

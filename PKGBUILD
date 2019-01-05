@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
@@ -18,13 +18,24 @@ makedepends=(git
              pkg-config
              meson)
 conflicts=(phosh-git)
-source=("https://source.puri.sm/Librem5/phosh/-/archive/v${pkgver}/phosh-v${pkgver}.tar.gz")
-sha256sums=('841d97b48c146c0c8ecd604d1769cf9715d8609de2e36868d416714d50903d63')
+source=("https://source.puri.sm/Librem5/phosh/-/archive/v${pkgver}/phosh-v${pkgver}.tar.gz"
+        "fix-source-path.patch")
+sha256sums=('55d5d08fae1c0ccc326cb5dd761516862622faa920ad2b9a0ed3a250e741526e'
+            '4ef6958f314f903e8f86b7410a93927b039342383d83ac9d2704c28e4bb93828')
+
+prepare() {
+    cd phosh-v${pkgver}
+    patch -p1 < ../fix-source-path.patch
+}
 
 build() {
     rm -rf build
-    arch-meson phosh-v${pkgver} build -Dtests=false
+    arch-meson phosh-v${pkgver} build
     ninja -C build
+}
+
+check() {
+    ninja -C build test
 }
 
 package() {
