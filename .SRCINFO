@@ -1,0 +1,11 @@
+pkgbase = bettergram
+	pkgdesc = Bettergram is an improved version of the Telegram messaging app with 50 pins, favorites, sortable categories, and more.
+	pkgver = 1.3.12
+	pkgrel = 1
+	url = https://bettergram.io
+	arch = x86_64
+	license = GPL
+	source = bettergram-1.3.12.zip::https://bettergram.io/downloads/bettergram-linux.zip
+
+pkgname = bettergram
+
