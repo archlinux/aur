@@ -1,0 +1,15 @@
+pkgbase = sagemath-p_group_cohomology
+	pkgdesc = p-group cohomology package for Sagemath
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://users.fmi.uni-jena.de/cohomology/
+	arch = x86_64
+	license = GPL
+	makedepends = cython2
+	depends = sagemath
+	depends = shared_meataxe
+	source = https://users.fmi.uni-jena.de/cohomology/p_group_cohomology-3.1.tar.xz
+	sha256sums = 8b2d2cc3a139605779239b2dda2b7f0f060249091a0eadc9ff210f1ae1fabbd5
+
+pkgname = sagemath-p_group_cohomology
+
