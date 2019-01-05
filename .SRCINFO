@@ -1,15 +1,18 @@
 pkgbase = julia-binaryprovider
 	pkgdesc = A reliable binary provider for Julia
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JuliaPackaging/BinaryProvider.jl
 	arch = any
 	license = MIT
 	checkdepends = curl
 	checkdepends = git
 	depends = julia
+	depends = julia-loadpath
 	source = julia-binaryprovider-0.5.3.tar.gz::https://github.com/JuliaPackaging/BinaryProvider.jl/archive/v0.5.3.tar.gz
+	source = julia-binaryprovider-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/e7e51997561477e5de3375b590de983ae3944780/B/BinaryProvider/Package.toml
 	sha256sums = ef242e8c9250dbb8752eef4ecd504776e70c50b6d62ffea1a6d16150d6d0e282
+	sha256sums = decb333c3e4cf96c9f35d0b2bd5d42dbda88517f18ec7e68761aae4825fb7b85
 
 pkgname = julia-binaryprovider
 
