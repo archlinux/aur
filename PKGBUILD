@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-libsvm
 pkgver=3.23
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for Support Vector Machines classification (mingw-w64)"
 arch=(any)
 url="http://www.csie.ntu.edu.tw/~cjlin/libsvm/"
@@ -19,7 +19,7 @@ build()
   cd "$srcdir/libsvm-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    ${_arch}-c++ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4 -c ../svm.cpp
+    ${_arch}-c++ -D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4 -c ../svm.cpp
     ${_arch}-c++ -shared -o libsvm.dll svm.o -Wl,--out-implib,libsvm.dll.a
     ${_arch}-ar cru libsvm.a svm.o 
     ${_arch}-ranlib libsvm.a

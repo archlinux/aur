@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libsvm
 	pkgdesc = A library for Support Vector Machines classification (mingw-w64)
 	pkgver = 3.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.csie.ntu.edu.tw/~cjlin/libsvm/
 	arch = any
 	license = BSD
