@@ -1,16 +1,19 @@
 pkgbase = julia-mbedtls
 	pkgdesc = Wrapper around mbedtls for Julia
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JuliaWeb/MbedTLS.jl
 	arch = any
 	license = MIT
 	depends = julia
 	depends = julia-compat
+	depends = julia-loadpath
 	depends = mbedtls
 	source = julia-mbedtls-0.6.6.tar.gz::https://github.com/JuliaWeb/MbedTLS.jl/archive/v0.6.6.tar.gz
+	source = julia-mbedtls-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/bce262503a3b9e38bf2f04bc79979e215f0bbda7/M/MbedTLS/Package.toml
 	source = disable-test-logsecrets.patch
 	sha256sums = 2d1e81050f117bbdbd4fe1b84060ee3c73ee5060cbfc568e4a28bdf7387d254f
+	sha256sums = 04d846b75adf0693bf0cda4db3339bb419ac0a338c90dcbd2ac79c1966fb0091
 	sha256sums = c524da32a37ebee0938229402453ada5089c3396e10b3d4bfefcc80cd82af77f
 
 pkgname = julia-mbedtls
