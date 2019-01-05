@@ -3,7 +3,7 @@
 pkgname=mspaint-xp-bin
 pkgver=v1
 depends=('wine')
-pkgrel=0
+pkgrel=1
 arch=(x86_64)
 pkgdesc="The classic MS PAINT of Windows XP"
 license=("proprietary")

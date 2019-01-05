@@ -1,7 +1,7 @@
 pkgbase = mspaint-xp-bin
 	pkgdesc = The classic MS PAINT of Windows XP
 	pkgver = v1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/lucasew/allegro_blasteroids
 	arch = x86_64
 	license = proprietary
