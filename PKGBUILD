@@ -2,18 +2,18 @@
 # Maintainer: Jan Neumann <neum DOT ja AT gmail DOT com>
 
 pkgname=nomad-plasma-look-and-feel-git
-_gitname=nomad-plasma-look-and-feel
-pkgver=r148.f138e8e
+_gitname=nx-plasma-look-and-feel
+pkgver=r144.b76ae5f
 pkgrel=1
 pkgdesc="Nomad Look and Feel package."
 arch=('any')
-url="https://github.com/nomad-desktop"
+url="https://github.com/nx-desktop"
 license=('GPL')
 depends=('plasma-desktop' 'luv-icon-theme-git' 'kvantum-qt5')
 optdepends=('nomad-gtk-themes-git')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
-source=("git+${url}/nomad-plasma-look-and-feel.git"
-        "git+${url}/nomad-kvantum-theme")
+source=("git+${url}/nx-plasma-look-and-feel.git"
+        "git+${url}/nx-kvantum-theme")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -39,6 +39,6 @@ package() {
    
    make -C ${srcdir}/${_gitname}/build DESTDIR=${pkgdir} install        
    mkdir -p ${pkgdir}/usr/share/Kvantum/{KvNomad,KvNomadDark}
-   cp -r ${srcdir}/nomad-kvantum-theme/themes/{KvNomad,KvNomadDark} ${pkgdir}/usr/share/Kvantum/
+   cp -r ${srcdir}/nx-kvantum-theme/themes/{KvNomad,KvNomadDark} ${pkgdir}/usr/share/Kvantum/
  
 }
