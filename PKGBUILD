@@ -1,4 +1,4 @@
-# Maintainer: Fernandez Ludovic <lfernandez.dev@gmail.com>
+# Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='prm'
 pkgver=v2.3.0
