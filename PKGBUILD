@@ -28,5 +28,5 @@ package() {
 # Has circular dependency on julia-primes
 #check() {
 #	cd $_pkgname.jl-$pkgver
-#	JULIA_LOAD_PATH=src:$JULIA_LOAD_PATH julia test/runtests.jl
+#	JULIA_LOAD_PATH=src: julia test/runtests.jl
 #}
