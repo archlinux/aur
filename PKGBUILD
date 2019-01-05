@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-files-git
-pkgver=v0.1.0.r70.g2b81df0
+pkgver=20180510.166.4e5693c
 pkgrel=1
 pkgdesc="File manager for Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
