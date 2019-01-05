@@ -1,14 +1,17 @@
 pkgbase = julia-softglobalscope
 	pkgdesc = Utilities for "soft" global scope in interactive Julia environments
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stevengj/SoftGlobalScope.jl
 	arch = any
 	license = MIT
 	depends = julia
 	depends = julia-compat
-	source = softglobalscope-1.0.8.tar.gz::https://github.com/stevengj/SoftGlobalScope.jl/archive/v1.0.8.tar.gz
+	depends = julia-loadpath
+	source = julia-softglobalscope-1.0.8.tar.gz::https://github.com/stevengj/SoftGlobalScope.jl/archive/v1.0.8.tar.gz
+	source = julia-softglobalscope-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/a310c7f9fd217fb3550aef0c66fc5fd3cf42c8fb/S/SoftGlobalScope/Package.toml
 	sha256sums = 6ae2150fb04756cc1b353bcfd03135e20f2d0511cb9178a9398a39ef8c6d3f47
+	sha256sums = bd88b87dce5f48dd61010d56f75d2cf8aa73ddfca287c5fdc6f71a09c2bd9ca4
 
 pkgname = julia-softglobalscope
 
