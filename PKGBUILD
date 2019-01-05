@@ -3,7 +3,7 @@
 pkgname=mingw-w64-boost
 pkgver=1.69.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
 arch=('any')
 url="http://www.boost.org/"
@@ -57,7 +57,7 @@ package() {
       --prefix=${pkgdir}/usr/${_arch:3} \
       --user-config=user-config.jam \
       --without-python --without-mpi --without-graph_parallel \
-      cxxflags="-std=c++14 -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4" \
+      cxxflags="-std=c++14 -D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" \
       address-model=${_arch:0:2} \
       architecture=x86 \
       binary-format=pe \
