@@ -1,0 +1,16 @@
+pkgbase = zabbix-cli-git
+	pkgdesc = Command-line interface for the Zabbix monitoring system
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/usit-gd/zabbix-cli
+	arch = any
+	license = GPL3
+	makedepends = python2-setuptools
+	depends = python2-argparse
+	depends = python2-requests
+	depends = python2-ipaddr
+	source = git+https://github.com/usit-gd/zabbix-cli.git
+	sha256sums = SKIP
+
+pkgname = zabbix-cli-git
+
