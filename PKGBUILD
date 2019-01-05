@@ -16,7 +16,7 @@ python-pexpect
 xflux
 libindicator-gtk2
 # python2-libappindicator
-python2-xdg
+python-xdg
 )
 makedepends=(git)
 source=('git://github.com/xflux-gui/xflux-gui.git')
