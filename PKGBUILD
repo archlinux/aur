@@ -33,7 +33,8 @@ package() {
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # use the snapshot version, because generating a new on requires Internet access and root permission
-    ln -s .tld_set_snapshot "${pkgdir}/usr/lib/python2.7/site-packages/tldextract/.tld_set"
+    _sitepkgs_dir=$(python2 -c "from __future__ import print_function; from distutils.sysconfig import get_python_lib; print(get_python_lib(), end='')")
+    ln -s .tld_set_snapshot "${pkgdir}${_sitepkgs_dir}/tldextract/.tld_set"
 
     # Avoid conflict with the python3 version
     mv "${pkgdir}/usr/bin/tldextract" "${pkgdir}/usr/bin/py2-tldextract"
