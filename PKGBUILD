@@ -3,7 +3,7 @@
 _pkgname=xpadneo
 pkgname=xpadneo-dkms-git
 pkgver=0.r209.g38f3f71
-pkgrel=2
+pkgrel=3
 pkgdesc='Advanced Linux Driver for Xbox One S Wireless Gamepad'
 arch=('x86_64')
 url='https://github.com/atar-axis/xpadneo'
@@ -31,7 +31,7 @@ pkgver() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 
-	source VERSION
+	VERSION=$(cat VERSION)
 
 	echo "* copying module into /usr/src"
 	install -dm755 ${pkgdir}/usr/src/hid-xpadneo-${VERSION}
