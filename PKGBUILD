@@ -1,25 +1,40 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python2-tldextract
-pkgver=2.0.2
+pkgver=2.2.0
 pkgrel=1
-pkgdesc="Accurately separate the TLD from the registered domain and subdomains of a URL, using the Public Suffix List."
+pkgdesc="Accurately separate the TLD from the registered domain and subdomains of a URL, using the Public Suffix List"
 arch=("any")
 url="https://github.com/john-kurkowski/tldextract"
 license=("BSD")
-depends=("python2" "python2-idna" "python2-requests" "python2-requests-file")
-makedepends=("python2-setuptools")
-source=("https://pypi.python.org/packages/44/db/ab27d3003968f766bff7bde238de418d2b8ddd727c3e56346ffd3ef05e27/tldextract-${pkgver}.tar.gz")
-md5sums=("bcc6a198864f9c86ffdd8014fa3ccd73")
+depends=("python2" "python2-idna" "python2-requests" "python2-requests-file" "python2-setuptools")
+checkdepends=("python2-pytest-runner" "python2-pytest-mock" "python2-responses")
+source=("https://pypi.io/packages/source/t/tldextract/tldextract-${pkgver}.tar.gz")
+sha512sums=("25a8c3d2ce27bd54dea211fb3999caeb487840172a8b707b43e6c27729f247306cc0596f156e70f3039771f84f92112921c17873128d4597dbc8785e2d4de8d3")
+
+prepare() {
+    export LC_CTYPE=en_US.UTF-8
+}
 
 build() {
     cd "tldextract-${pkgver}"
     python2 setup.py build
 }
 
+check() {
+    cd "tldextract-${pkgver}"
+    python2 setup.py pytest
+}
+
 package() {
     cd "tldextract-${pkgver}"
     python2 setup.py install --root=${pkgdir} --optimize=1 --skip-build
+
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # use the snapshot version, because generating a new on requires Internet access and root permission
+    ln -s .tld_set_snapshot "${pkgdir}/usr/lib/python2.7/site-packages/tldextract/.tld_set"
+
     # Avoid conflict with the python3 version
     mv "${pkgdir}/usr/bin/tldextract" "${pkgdir}/usr/bin/py2-tldextract"
 }
