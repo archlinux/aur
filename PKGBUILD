@@ -1,8 +1,8 @@
 # Maintainer: Benoît Zugmeyer <bzugmeyer@gmail.com>
 pkgname=timescaledb-git
 _name="${pkgname%-git}"
-pkgver=0.4.2
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="An open-source time-series database optimized for fast ingest and complex queries."
 arch=(x86_64)
 url="http://www.timescale.com/"
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_name"
-    ./bootstrap
+    BUILD_FORCE_REMOVE=true ./bootstrap
     cd build && make
 }
 
