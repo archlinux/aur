@@ -6,6 +6,7 @@ pkgbase = bettergram
 	arch = x86_64
 	license = GPL
 	source = bettergram-1.3.12.zip::https://bettergram.io/downloads/bettergram-linux.zip
+	md5sums = 43ce37e5f1515a4ae0aaab84c96cf318
 
 pkgname = bettergram
 
