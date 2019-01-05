@@ -1,0 +1,21 @@
+pkgbase = cargo-crev-git
+	pkgdesc = Scalable, social, Code REView and recommendation system that we desperately need
+	pkgver = 0.3.0.386
+	pkgrel = 1
+	url = https://github.com/dpc/crev
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = Apache
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = clang
+	depends = openssl
+	provides = cargo-crev
+	conflicts = cargo-crev
+	source = crev::git+https://github.com/dpc/crev.git
+	sha256sums = SKIP
+
+pkgname = cargo-crev-git
+
