@@ -14,7 +14,7 @@ makedepends=('texinfo')
 install=moe.install
 backup=('etc/moerc')
 source=(http://ftpmirror.gnu.org/moe/$pkgname-$pkgver.tar.lz)
-md5sums=('29724ea148b05ef4a33037d5f5f6eab2')
+md5sums=('af87e388d8d72cd2a2cf6195df6dc3fc')
 
 build() {
 	cd $pkgname-$pkgver
