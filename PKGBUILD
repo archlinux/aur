@@ -5,7 +5,7 @@ _gituser="magnars"
 _gitrepo="dash.el"
 
 pkgname=emacs-dash-git
-pkgver=r570.453c775
+pkgver=2.13.0.92.g6514359
 pkgrel=1
 pkgdesc='A modern list API for Emacs. No cl required'
 arch=('any')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitrepo}"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe | tr - .
 }
 
 build() {
