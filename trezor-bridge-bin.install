@@ -15,6 +15,14 @@ post_install() {
     systemctl start trezord.service
 }
 
+pre_upgrade() {
+    systemctl stop trezord.service
+}
+
+post_upgrade() {
+    systemctl start trezord.service
+}
+
 pre_remove() {
     systemctl stop trezord.service
     systemctl disable trezord.service
