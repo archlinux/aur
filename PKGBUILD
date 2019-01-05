@@ -4,12 +4,12 @@
 
 pkgname=praat
 pkgver=6.0.46
-pkgrel=1
+pkgrel=2
 pkgdesc="Doing Phonetics by computer (speech analysis)"
 arch=('x86_64')
 url="http://www.fon.hum.uva.nl/praat/"
 license=('GPL')
-depends=( 'alsa-lib' 'gtk2' 'libpulse' )
+depends=( 'alsa-lib' 'gtk2' 'libpulse' 'jack')
 makedepends=('pkg-config' 'gtk2' 'alsa-lib')
 optdepends=( 'ttf-sil-fonts' )
 conflicts=('praat-bin' 'praat-git')

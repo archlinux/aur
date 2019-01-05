@@ -1,7 +1,7 @@
 pkgbase = praat
 	pkgdesc = Doing Phonetics by computer (speech analysis)
 	pkgver = 6.0.46
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fon.hum.uva.nl/praat/
 	arch = x86_64
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = praat
 	depends = alsa-lib
 	depends = gtk2
 	depends = libpulse
+	depends = jack
 	optdepends = ttf-sil-fonts
 	conflicts = praat-bin
 	conflicts = praat-git
