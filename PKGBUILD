@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.9.3
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -36,8 +36,8 @@ package ()
 {
   cd "$srcdir"
   mkdir -p $pkgdir/$_installdir
-  echo ">>> When asked, manually specify the path to the one printed above"
-  sh zephyr-sdk-0.9.3-setup.run --target $pkgdir/$_installdir --nochown --noexec --keep -- -d $pkgdir/$_installdir
+  echo ">>> Running installer...."
+  sh zephyr-sdk-${pkgver}-setup.run --target $pkgdir/$_installdir --nochown --noexec --keep -- -d $pkgdir/$_installdir
 
   # Add a flag to not relocate executables, because the path to pkgdir is invalid after installation
   # -R disables relocation, -S saves the relocation script so that it can be run manually.
@@ -80,5 +80,5 @@ package ()
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('8c805e192c3bf3031ac9033013a779bb8a32457051c8fa24f21e9dc9ed8644f0'
+sha256sums=('a5c483c099382036a87c02c7b4b1f4b32a31572fcb4a890b474b46b6e8cec647'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
