@@ -20,7 +20,7 @@ md5sums=('579709384f038b75f31e26e3e490f60b'
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure
+  ./configure --prefix=/usr
   make
   chmod +x+x+x ./src/xawale.tcl
   }
