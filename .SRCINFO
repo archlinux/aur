@@ -1,4 +1,4 @@
-pkgbase = python-http-ece
+pkgbase = python2-http-ece
 	pkgdesc = Encrypted Content Encoding for HTTP (python2)
 	pkgver = 1.0.5
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = python-http-ece
 	source = https://files.pythonhosted.org/packages/source/h/http_ece/http_ece-1.0.5.tar.gz
 	sha256sums = 2f31a0640c31a0c2934ab1e37005dd9a559ae854a16304f9b839e062074106cc
 
-pkgname = python-http-ece
+pkgname = python2-http-ece
 

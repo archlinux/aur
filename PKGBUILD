@@ -2,7 +2,7 @@
 # Contributor: Sergio Tridente < tioduke (at) gmail (dot) com >
 # Contributor: bb010g < bb010g (at) bb010g (dot) com >
 
-pkgname=python-http-ece
+pkgname=python2-http-ece
 _pkgname=http_ece
 pkgver=1.0.5
 pkgrel=1
