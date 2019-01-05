@@ -1,15 +1,18 @@
 pkgbase = lego-git
-	pkgdesc = Lets Encrypt client and ACME library written in Go
-	pkgver = f5d538c
+	pkgdesc = Lets Encrypt client and ACME library written in Go (master branch / unstable)
+	pkgver = r721.43401f2
 	pkgrel = 1
 	url = https://github.com/xenolf/lego
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
-	makedepends = go
+	makedepends = make
 	provides = lego
 	conflicts = lego
+	conflicts = lego-git
+	source = git+https://github.com/xenolf/lego.git
+	sha512sums = SKIP
 
 pkgname = lego-git
 
