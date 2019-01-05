@@ -1,13 +1,16 @@
 pkgbase = julia-compat
 	pkgdesc = Compat Package for Julia.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JuliaLang/Compat.jl
 	arch = any
 	license = MIT
 	depends = julia
+	depends = julia-loadpath
 	source = julia-compat-1.4.0.tar.gz::https://github.com/JuliaLang/Compat.jl/archive/v1.4.0.tar.gz
+	source = julia-compat-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/5e7610914e6193b9723ecbc13901e27001c470b4/C/Compat/Package.toml
 	sha256sums = 64913d7dbde5b5a64608a1a52dc127dd58c9089dfa68fa4d3584a0a38ac50e5e
+	sha256sums = 635b69201accd41cbf62491638b8e880370a473dd6ecf438fcfc1a80211b3b6c
 
 pkgname = julia-compat
 
