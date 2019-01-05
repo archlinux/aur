@@ -1,10 +1,10 @@
 --- Makefile	2007-06-15 13:15:56.000000000 +0200
-+++ ../gepatcht/Makefile	2010-01-24 23:05:15.000000000 +0100
++++ Makefile	2010-01-24 23:05:15.000000000 +0100
 @@ -102,7 +102,7 @@
  #	    USTAT	  - ustat(), no statfs etc.
  #
  #CFLAGS=-Wall -O2 -pipe -DSECUREWARE -DUSE_POLL
--CFLAGS=-O2 -Wall -pipe
+-CFLAGS=-Wall -O2 -pipe
 +CFLAGS=$(RPM_OPT_FLAGS) -Wall -pipe -DAUTO_PPP
  #CFLAGS=-O -DSVR4
  #CFLAGS=-O -DSVR4 -DSVR42
@@ -36,12 +36,3 @@
  #CONFDIR=/etc/default/
  #
  #
-@@ -275,7 +275,7 @@
- # please use the "mg.echo" program provided in the compat/ subdirectory.
- # Set ECHO="mg.echo" and INSTALL_MECHO to mg.echo
- #
--ECHO="echo"
-+ECHO="echo -e"
- #
- # INSTALL_MECHO=mg.echo
- 
