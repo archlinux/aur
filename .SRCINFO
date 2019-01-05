@@ -1,0 +1,15 @@
+pkgbase = perl-pod-pom-view-restructured
+	pkgdesc = View for Pod::POM that outputs reStructuredText
+	pkgver = 1.000002
+	pkgrel = 1
+	url = https://metacpan.org/release/Pod-POM-View-Restructured
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-pod-pom
+	source = https://www.cpan.org/modules/by-module/Pod/Pod-POM-View-Restructured-1.000002.tar.gz
+	sha512sums = 7174bddcf83d4456cebae6d11c030a4b11b1ff4aca05b85987717ca66d18b4f5c588df4198e3dca0c616358cf81102153cb3fdb92125c719a49f75d9321aa733
+
+pkgname = perl-pod-pom-view-restructured
+
