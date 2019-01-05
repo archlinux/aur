@@ -1,7 +1,7 @@
 pkgbase = texturepacker
 	pkgdesc = Sprite sheet creator and image optimizer
 	pkgver = 4.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.codeandweb.com/texturepacker
 	install = texturepacker.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = texturepacker
 	depends = shared-mime-info
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	depends = grantlee-qt5
+	depends = grantlee
 	depends = gcc-libs-multilib
 	depends = qt5-svg
 	depends = qt5-declarative
