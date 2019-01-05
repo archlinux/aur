@@ -1,7 +1,7 @@
 # Maintainer: Tilman Blumenbach <tilman [AT] ax86 [DOT] net>
 
 pkgname='terminus-font-ttf'
-pkgver=4.46.0
+pkgver=4.47.0
 pkgrel=1
 pkgdesc="Monospaced bitmap font designed for long work with computers (TTF version, mainly for Java applications)"
 arch=('any')
@@ -23,4 +23,4 @@ package()
     install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
 
-sha384sums=('c134df563057c9c41499830ab2e000fbb34e69f2df72a3dfa79eec250e6392141176a81ca411e53034f7e7e2ec245844')
+sha256sums=('3b98bde7e54827fb042686cdc7e902ac17289092e1dd2ccfeaea7ac3cedff606')
