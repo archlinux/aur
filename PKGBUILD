@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=libliri-git
-pkgver=r117.303ae04
+pkgver=20180412.113.340f505
 pkgrel=1
 pkgdesc="Utilities for Liri Quick applications"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
