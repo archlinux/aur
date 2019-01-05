@@ -1,14 +1,17 @@
 pkgbase = julia-datastructures
 	pkgdesc = Julia implementation of Data structures
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JuliaCollections/DataStructures.jl
 	arch = any
-	license = custom
+	license = MIT
 	depends = julia
 	depends = julia-compat
+	depends = julia-loadpath
 	source = julia-datastructures-0.14.0.tar.gz::https://github.com/JuliaCollections/DataStructures.jl/archive/v0.14.0.tar.gz
+	source = julia-datastructures-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/e558358589cf4704b991bd4425dd9e5fa84c7d11/D/DataStructures/Package.toml
 	sha256sums = 7934fd1fd78e9489cbafd73ee1a07381953035e675b3d5c6a7faa6cde1e4f087
+	sha256sums = 7f7668d5864d661e32aa75e5ef6e9de218e160ec849b67d7555e66a48b2aa4e9
 
 pkgname = julia-datastructures
 
