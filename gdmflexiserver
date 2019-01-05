@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+#pretend to be gdmflexiserver so the XFCE action plugin's Switch User and x-screensaver New login functions works
+
+#lock the current session
+/usr/bin/xdg-screensaver lock
+
+#then pass the user switch request to lxdm
+/usr/bin/lxdm -c USER_SWITCH
