@@ -27,5 +27,5 @@ package() {
 
 check() {
 	cd $_pkgname.jl-$pkgver
-	HOME="$srcdir" JULIA_LOAD_PATH=src: julia test/runtests.jl
+	HOME="$srcdir" JULIA_LOAD_PATH=src:$JULIA_LOAD_PATH julia test/runtests.jl
 }
