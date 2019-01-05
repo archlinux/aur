@@ -1,6 +1,6 @@
 # Maintainer: Greizgh <greizgh@ephax.org>
 pkgname=ugtrain-git
-pkgver=v0.3.r45.d9519a1
+pkgver=v0.4.r6.54ec737
 pkgrel=1
 pkgdesc="The Universal Elite Game Trainer for CLI"
 arch=('i686' 'x86_64')
