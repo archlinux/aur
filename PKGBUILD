@@ -3,15 +3,16 @@
 
 _basename=sbc
 pkgname="lib32-$_basename"
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="Bluetooth Subband Codec (SBC) library (32-bit)"
 arch=('x86_64')
 url="http://www.bluez.org/"
 license=('GPL' 'LGPL')
 depends=('lib32-glibc' 'sbc')
-source=(http://www.kernel.org/pub/linux/bluetooth/$_basename-$pkgver.tar.xz)
-sha512sums=('c11cb1ede8abdb226d404ce34307d217b716b91cbe550ed90cb5387b062b7b97a6b7a81371de6f462d8c1429cb3299869a1bda347fa175e9d81cfa2bc2056c8b')
+source=(https://mirrors.edge.kernel.org/pub/linux/bluetooth/$_basename-$pkgver.tar.xz)
+sha512sums=('f35250c202034e93ce4046d29883d76b162164d42fb59e6af8ff5e57f197244238f5f8087309cef2d44755c179e7f0869cf096735c8de510b1ac7e0f6c29d84f')
+
 
 build() {
     cd $_basename-$pkgver
