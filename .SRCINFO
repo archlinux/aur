@@ -1,7 +1,7 @@
 pkgbase = chipmunk-motif
 	pkgdesc = Fast and efficient motif discovery tool, reborn and running
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://autosome.ru/ChIPMunk/
 	arch = any
 	license = custom
