@@ -1,0 +1,19 @@
+pkgbase = tgstation-server-controlpanel-git
+	pkgdesc = Official client for tgstation-server v4
+	pkgver = r221.e0f1033
+	pkgrel = 1
+	url = https://github.com/tgstation/Tgstation.Server.ControlPanel
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = dotnet-sdk
+	depends = fontconfig
+	provides = tgstation-server-controlpanel-git
+	conflicts = tgstation-server-controlpanel-git
+	source = tgstation-server-controlpanel::git+https://github.com/tgstation/Tgstation.Server.ControlPanel
+	source = tgstation-server-controlpanel.desktop
+	sha512sums = SKIP
+	sha512sums = a7bb6c5c348526798cc0fc244c79a075016018791dccb63cc2320daa2e1bbfb1cb6ad58a8039ee8f5457e8f415af556ad8235868be9d53055fe30c27a8d98c92
+
+pkgname = tgstation-server-controlpanel-git
+

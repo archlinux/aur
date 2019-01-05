@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=/tg/station server control panel
+Path=/opt/tgscp
+Exec=dotnet /opt/tgscp/Tgstation.Server.ControlPanel.Core.dll
+Icon=solaar
+Terminal=false
+Categories=Games;Development;
