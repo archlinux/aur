@@ -11,7 +11,6 @@ pkgbase = phosh
 	makedepends = ctags
 	makedepends = git
 	makedepends = libhandy
-	makedepends = pkg-config
 	makedepends = meson
 	makedepends = vala
 	depends = gcr
