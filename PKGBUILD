@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _name=tensorboardX
 pkgname=python-tensorboardx
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Tensorboard for PyTorch"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('python-tensorboard-git')
 source+=("git+https://github.com/lanpa/tensorboardX.git")
 sha256sums=('SKIP')
 
-_release_commit=27f8e6b5e409e02bce5ded8a12adb898916ae169
+_release_commit=3a4c848ca850015ef5b2c7184dbe65da4eb674f4
 
 package() {
 	cd "$srcdir/$_name"
