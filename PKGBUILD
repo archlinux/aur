@@ -54,6 +54,7 @@ build() {
       -DBUILD_USERMANUAL=False \
       -DUSE_COLORD=On \
       -DCMAKE_INSTALL_LIBDIR=lib \
+      -DRAWSPEED_ENABLE_LTO=ON \
       -DCMAKE_C_FLAGS="-Wno-error=deprecated-declarations -Wno-error=unused-result" \
       ..
   make
