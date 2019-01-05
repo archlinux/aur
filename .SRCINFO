@@ -1,7 +1,7 @@
 pkgbase = wpewebkit
 	pkgdesc = Web content engine library optimized for embedded devices
 	pkgver = 2.22.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wpewebkit.org
 	arch = x86_64
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = wpewebkit
 	makedepends = ruby
 	makedepends = cmake
 	makedepends = python2
+	makedepends = ninja
 	depends = cairo
 	depends = libxslt
 	depends = gst-plugins-base-libs
