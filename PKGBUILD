@@ -1,5 +1,5 @@
 pkgname=libwacom-surface
-pkgver=0.30
+pkgver=0.31
 pkgrel=1
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 sha256sums=(
     '1e5301bf93bf75352e559b89fbb84aca2d3edb5ec2951dd848546404f9d8fb7f'
     '32f7a27225af200430c2f3d5e497f9ee51bda5a4921647472879d62e890551ad'
-    '523408680514c0f01052e478503d8e89f86d72ddc7129fdd63988c221c492259'
+    '18d58c254bee88527f5d58f6fd18458a9f0097641a1ee116dc2b6950619fbf03'
     'SKIP'
 )
 
