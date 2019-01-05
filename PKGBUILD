@@ -20,7 +20,7 @@ md5sums=('8b13d40274adc6d2ac06bef6b4b316ee')
 build() {
   tar xzf ${pkgver}.tar.gz
   cd TTK-Theme-chooser-${pkgver}
-  ./configure
+  ./configure --prefix=/usr
   make
   }
 
