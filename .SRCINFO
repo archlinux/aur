@@ -1,7 +1,7 @@
 pkgbase = gog-pyre
 	pkgdesc = A party-based RPG in which you lead a band of exiles to freedom. (GOG version)
 	pkgver = 1.50427.11957.23366
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/game/pyre
 	arch = x86_64
 	groups = games
@@ -9,7 +9,7 @@ pkgbase = gog-pyre
 	license = custom
 	makedepends = unzip
 	depends = binkplayer-bin
-	source = file:///pyre_1_50427_11957_23366.sh
+	source = local:///pyre_1_50427_11957_23366.sh
 	source = gog-pyre.desktop
 	source = gog-pyre
 	sha256sums = f42b4c55975df69e8d98069dea72178320485f6bb8b8a1573490e10331fa17d2

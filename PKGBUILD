@@ -4,7 +4,7 @@
 
 pkgname='gog-pyre'
 pkgver='1.50427.11957.23366'
-pkgrel=1
+pkgrel=2
 pkgdesc='A party-based RPG in which you lead a band of exiles to freedom. (GOG version)'
 url='https://www.gog.com/game/pyre'
 license=('custom')
@@ -15,7 +15,7 @@ arch=('x86_64')
 depends=('binkplayer-bin')
 makedepends=('unzip')
 # Copy the game file into the current directory before building.
-source=("file:///pyre_${pkgver//./_}.sh"
+source=("local:///pyre_${pkgver//./_}.sh"
         "${pkgname}.desktop"
         "${pkgname}")
 sha256sums=('f42b4c55975df69e8d98069dea72178320485f6bb8b8a1573490e10331fa17d2'
