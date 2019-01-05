@@ -17,13 +17,13 @@ sha256sums=('33d4e568f7cbffe9187d7548e86487f375ec0be07fa0da3743a2e008a8453707'
             '70bf9e181599853f1903f8c8f2ca5f26d9aab31d945df87796d6a2f3c8019060')
 
 package() {
-	install -d $pkgdir/usr/share/julia/vendor
+	install -d "$pkgdir"/usr/share/julia/vendor
 
-	cp -r         $_pkgname.jl-$pkgver  $pkgdir/usr/share/julia/vendor/$_pkgname
-	install -m644 $pkgname-Package.toml $pkgdir/usr/share/julia/vendor/$_pkgname/Project.toml
+	cp -r         $_pkgname.jl-$pkgver  "$pkgdir"/usr/share/julia/vendor/$_pkgname
+	install -m644 $pkgname-Package.toml "$pkgdir"/usr/share/julia/vendor/$_pkgname/Project.toml
 }
 
 check() {
 	cd $_pkgname.jl-$pkgver
-	JULIA_LOAD_PATH=:src julia test/runtests.jl
+	JULIA_LOAD_PATH=src: julia test/runtests.jl
 }
