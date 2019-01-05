@@ -1,0 +1,18 @@
+pkgbase = prm
+	pkgdesc = Pull Request Manager for Maintainers
+	pkgver = v2.3.0
+	pkgrel = 1
+	url = https://github.com/ldez/prm
+	arch = x86_64
+	license = APACHE
+	depends = git
+	provides = prm
+	conflicts = prm
+	conflicts = prm-git
+	source = https://github.com/ldez/prm/releases/download/v2.3.0/prm_linux-amd64
+	source = https://raw.githubusercontent.com/ldez/prm/master/LICENSE
+	sha256sums = 912eeede21e18e1dd7e31179f107cd3eee969ff52f7023a7cb4c5bc168892952
+	sha256sums = 4cc1b9526ac9a5f81b49e804ddeb134b3a70262f6d760c9fb2fb98fb1d6603ba
+
+pkgname = prm
+
