@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
 depends=('qt5-tools' 'qt5-wayland' 'qt5-accountsservice-git' 'qt5-gsettings-git'
-         'libqtxdg' 'polkit-qt5' 'solid' 'pam' 'pipewire' 'dconf' 'libliri-git' 'fluid-git'
+         'libliri-git' 'polkit-qt5' 'solid' 'pam' 'pipewire' 'dconf' 'libliri-git' 'fluid-git'
 	 'liri-platformtheme-git' 'qml-xwayland-git' 'liri-eglfs-git')
 makedepends=('git' 'liri-cmake-shared-git')
 options=(debug !strip)
