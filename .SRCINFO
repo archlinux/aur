@@ -1,0 +1,14 @@
+pkgbase = blugon
+	pkgdesc = A blue light filter written in 'python' using 'xorg-xgamma' as backend
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jumper149/blugon
+	arch = x86_64
+	license = Apache
+	depends = python
+	optdepends = xorg-xgamma: backend
+	source = git+https://github.com/jumper149/blugon.git
+	sha256sums = SKIP
+
+pkgname = blugon
+
