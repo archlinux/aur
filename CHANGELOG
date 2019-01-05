@@ -1,3 +1,89 @@
+4.0
+---
+
+ .. seealso::
+    `Pyteomics 4.0: five years of development of a Python proteomics framework
+    <https://pubs.acs.org/doi/10.1021/acs.jproteome.8b00717>`_
+
+
+ - Add parameters `semi` and `exception` in :py:func:`pyteomics.parser.cleave`.
+
+ - Add new parameter `encoding` in file writers.
+
+ - Add new parameters `write_charges` and `use_numpy` in :py:func:`pyteomics.mgf.write`.
+   Speed up the writing when :py:mod:`numpy` is available.
+
+ - :ref:`Indexing text parsers <indexing>`. This release introduces a family of parser classes for text files.
+   These parsers create byte offsets of indexed entries to allow random access by unique key or by positional index,
+   "rich" access by slices and, in case of MGF/mzML/mzXML, by retention time range.
+   All indexing parsers, text- or XML-based, now have a unified interface.
+
+   - New class :py:class:`pyteomics.mgf.IndexedMGF` is now the recommended way to parse MGF files.
+     It supports fast access by spectrum titles by using an index of byte offsets.
+     The old, sequential parser is preserved under its name, :py:class:`pyteomics.mgf.MGF`.
+     The function :py:func:`pyteomics.mgf.read` now returns an instance of one of the two classes,
+     based on the `use_index` argument and the type of `source`.
+     The common ancestor class, :py:class:`pyteomics.mgf.MGFBase`, can be used for type checking.
+
+   - New FASTA parsing classes:
+
+     - :py:class:`pyteomics.fasta.FASTABase` - common ancestor, suitable for type checking;
+
+       - :py:class:`pyteomics.fasta.FASTA` - text-mode, sequential parser; does
+         what the old :py:func:`fasta.read` was doing. Additionally, the following subclasses perform
+         format-specific parsing of FASTA headers:
+
+         - :py:class:`pyteomics.fasta.UniProt`;
+         - :py:class:`pyteomics.fasta.UniParc`;
+         - :py:class:`pyteomics.fasta.UniRef`;
+         - :py:class:`pyteomics.fasta.UniMes`;
+         - :py:class:`pyteomics.fasta.SPD`;
+         - :py:class:`pyteomics.fasta.NCBI`;
+
+       - :py:class:`pyteomics.fasta.IndexedFASTA` - binary-mode, indexing parser.
+         Supports direct indexing by header string;
+
+         - :py:class:`pyteomics.fasta.TwoLayerIndexedFASTA` - additionally supports
+           indexing by extracted header fields. Format-specific second indexes are available in
+           subclasses:
+
+           - :py:class:`pyteomics.fasta.IndexedUniProt`;
+           - :py:class:`pyteomics.fasta.IndexedUniParc`;
+           - :py:class:`pyteomics.fasta.IndexedUniRef`;
+           - :py:class:`pyteomics.fasta.IndexedUniMes`;
+           - :py:class:`pyteomics.fasta.IndexedSPD`;
+           - :py:class:`pyteomics.fasta.IndexedNCBI`.
+
+     :py:func:`pyteomics.fasta.read` now returns an instance of one of these classes,
+     depending on the arguments `use_index` and `flavor`.
+
+    - :py:class:`pyteomics.ms1.IndexedMS1` and :py:class:`pyteomics.ms1.MS1` are available for ms1 format.
+
+   *(In collaboration with J. Klein)*
+
+ - Multiprocessing support: all indexed XML and text file parsers now expose a :py:meth:`map` method.
+   This method can map a user-supplied function to each file entry in separate processes (or simply
+   parallelize the parsing itself).
+   Additionally, objects returned by :py:func:`chain` functions and :py:meth:`iterfind` methods also expose
+   the :py:meth:`map` interface to allow parallelizing the work over multiple files and when iterating over
+   non-default XML tree elements.
+   The order of entries is not preserved in the output.
+   *(In collaboration with J. Klein)*
+
+ - New module :py:mod:`pyteomics.peff` implements the :py:class:`IndexedPEFF` parser for protein databases
+   in the new PSI standard format, `PEFF <http://www.psidev.info/peff>`_. *(Contributed by J. Klein)*
+
+ - New module :py:mod:`pyteomics.traml` implements the :py:class:`TraML` parser for the PSI standard format
+   for SRM data, `TraML <http://www.psidev.info/traml>`_. *(In collaboration with J. Klein)*
+
+ - :py:class:`pyteomics.protxml.ProtXML` now also supports indexing and multiprocessing.
+
+ - Removed parameter `skip_empty_cvparam_values` in XML parsers. In cvParam elements, missing "value"
+   attribute is now always equivalent to the case when it is equal to an empty string. This affects
+   the structure of items produced by MzML and MzIdentML parsers.
+
+ - Multiple fixes and improvements.
+
 3.5.1
 -----
 
