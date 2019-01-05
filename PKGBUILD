@@ -1,20 +1,22 @@
-# Maintainer:  VirtualTam <virtualtam@flibidi.net>
+# $Id$
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor:  VirtualTam <virtualtam@flibidi.net>
 # Contributor: Eugene Yudin aka Infy <Eugene dot Yudin at gmail dot com>
+
 pkgname=goldendict-qt5-git
-pkgver=1.5.0.RC2.76.gadb1bf5
+pkgver=1.5.0.RC2.338.g6d46fd15
 pkgrel=1
 pkgdesc="Feature-rich dictionary lookup program."
 arch=('i686' 'x86_64')
 url="http://goldendict.org/"
 license=('GPL3')
-depends=('ffmpeg' 'hunspell' 'libao' 'libeb'
-         'qt5-svg' 'qt5-tools' 'qt5-webkit' 'qt5-x11extras')
+depends=('ffmpeg' 'hunspell' 'libao' 'libeb' 'qt5-multimedia' 'qt5-svg' 'qt5-tools' 'qt5-webkit' 'qt5-x11extras')
 makedepends=('git')
 conflicts=('goldendict' 'goldendict-svn' 'goldendict-git-opt')
 provides=('goldendict')
 replaces=('goldendict' 'goldendict-svn' 'goldendict-git-opt')
 _gitname="goldendict"
-source=(git://github.com/goldendict/goldendict.git)
+source=("git+https://github.com/goldendict/goldendict.git")
 sha256sums=(SKIP)
 
 pkgver() {
@@ -24,14 +26,13 @@ pkgver() {
 
 prepare() {
   cd ${_gitname}
-  msg "Fixing flags"
   echo "QMAKE_CXXFLAGS_RELEASE = $CFLAGS" >> goldendict.pro
   echo "QMAKE_CFLAGS_RELEASE = $CXXFLAGS" >> goldendict.pro
 }
 
 build(){
   cd ${_gitname}
-  PREFIX="/usr" qmake-qt5
+  PREFIX="/usr" qmake-qt5 "CONFIG+=zim_support"
   make
 }
 
@@ -39,3 +40,4 @@ package() {
   cd ${_gitname}
   make INSTALL_ROOT="${pkgdir}" install
 }
+# vim:set ts=2 sw=2 et:
