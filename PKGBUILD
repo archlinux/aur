@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Gsänger <sebastian_gsaenger@web.de>
 pkgname=vipster
 pkgver=1.14a
-pkgrel=1
+pkgrel=2
 pkgdesc="Molecule editor based on Qt, specialized on periodic structures"
 arch=('x86_64')
 url="https://sgsaenger.github.io/vipster"
@@ -23,13 +23,13 @@ build() {
 }
 
 check() {
-    cd vipster/build
+    cd vipster-$pkgver/build
 
     ./test_lib
 }
 
 package() {
-    cd vipster/build
+    cd vipster-$pkgver/build
 
     make DESTDIR=$pkgdir install
 }
