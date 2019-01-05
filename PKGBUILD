@@ -2,7 +2,7 @@
 
 pkgname=python-infi.unittest
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Various extensions to the unittest module"
 arch=("any")
 license=("BSD3")
