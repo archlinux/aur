@@ -1,0 +1,23 @@
+pkgbase = gloc-git
+	pkgdesc = GNU/Linux Overdrive/EMusic Client
+	pkgver = v0.601.r4.6d82080
+	pkgrel = 1
+	url = https://github.com/jvolkening/gloc
+	arch = any
+	license = GPL3
+	makedepends = perl-test-pod
+	makedepends = git
+	depends = perl-file-homedir
+	depends = gtk2-perl
+	depends = perl-io-socket-ssl
+	depends = perl-html-parser
+	depends = perl-html-tiny
+	depends = perl-xml-simple
+	depends = perl-net-ssleay
+	provides = gloc
+	conflicts = gloc
+	source = gloc::git+https://github.com/jvolkening/gloc.git
+	md5sums = SKIP
+
+pkgname = gloc-git
+
