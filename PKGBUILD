@@ -3,7 +3,7 @@
 pkgname=julia-conda
 _pkgname=Conda
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Use conda as a cross-platform binary provider for Julia'
 arch=(any)
 url=https://github.com/JuliaPy/Conda.jl
@@ -33,14 +33,23 @@ _deps() {
 	julia -e "using Pkg
 
 	          alldeps = Pkg.TOML.parsefile(\"$srcdir/$pkgname-Deps.toml\")
-	          version = join(split(\"$pkgver\", \".\")[1:2],\".\")
+	          version = VersionNumber(\"$pkgver\")
+	          majmin  = VersionNumber(\"${pkgver%.*}\")
 	          deps = Dict{String,Any}()
 
 	          for (key, value) in alldeps
 	            vers = split(key, \"-\")
-
-	            if version == vers[1] || (version > vers[1] && length(vers) == 2 && version <= vers[2])
-	              merge!(deps, value)
+	            lower = VersionNumber(vers[1])
+	            if length(vers) == 2
+	              upper = VersionNumber(vers[2])
+	              if (majmin  >= lower && majmin  <= upper) ||
+	                 (version >= lower && version <= upper)
+	                merge!(deps, value)
+	              end
+	            elseif length(vers) == 1
+	              if majmin == lower || version == lower
+	                merge!(deps, value)
+	              end
 	            end
 	          end
 
@@ -58,7 +67,7 @@ prepare() {
 
 build() {
 	cd $_pkgname.jl-$pkgver/deps
-	CONDA_JL_HOME=/usr julia build.jl
+	HOME="$srcdir" CONDA_JL_HOME=/usr julia build.jl
 }
 
 package() {
@@ -74,5 +83,5 @@ package() {
 # Will download the full MiniConda installer, so disable
 #check() {
 #	cd $_pkgname.jl-$pkgver
-#	ROOTENV=/usr JULIA_LOAD_PATH=src:$JULIA_LOAD_PATH julia test/runtests.jl
+#	HOME="$srcdir" ROOTENV=/usr JULIA_LOAD_PATH=src:$JULIA_LOAD_PATH julia test/runtests.jl
 #}

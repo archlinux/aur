@@ -1,7 +1,7 @@
 pkgbase = julia-conda
 	pkgdesc = Use conda as a cross-platform binary provider for Julia
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/JuliaPy/Conda.jl
 	arch = any
 	license = MIT
