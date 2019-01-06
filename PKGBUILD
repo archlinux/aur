@@ -3,7 +3,7 @@
 pkgname=julia-zmq
 _pkgname=ZMQ
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Julia binding to the native API of ØMQ project'
 arch=(any)
 url=https://github.com/JuliaInterop/ZMQ.jl
@@ -32,14 +32,23 @@ _deps() {
 	julia -e "using Pkg
 
 	          alldeps = Pkg.TOML.parsefile(\"$srcdir/$pkgname-Deps.toml\")
-	          version = join(split(\"$pkgver\", \".\")[1:2],\".\")
+	          version = VersionNumber(\"$pkgver\")
+	          majmin  = VersionNumber(\"${pkgver%.*}\")
 	          deps = Dict{String,Any}()
 
 	          for (key, value) in alldeps
 	            vers = split(key, \"-\")
-
-	            if version == vers[1] || (version > vers[1] && length(vers) == 2 && version <= vers[2])
-	              merge!(deps, value)
+	            lower = VersionNumber(vers[1])
+	            if length(vers) == 2
+	              upper = VersionNumber(vers[2])
+	              if (majmin  >= lower && majmin  <= upper) ||
+	                 (version >= lower && version <= upper)
+	                merge!(deps, value)
+	              end
+	            elseif length(vers) == 1
+	              if majmin == lower || version == lower
+	                merge!(deps, value)
+	              end
 	            end
 	          end
 
