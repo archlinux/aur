@@ -14,7 +14,7 @@ pkgbase = kristforge-git
 	depends = jsoncpp
 	depends = curl
 	depends = uwebsockets
-	source = kristforge::git+https://github.com/apemanzilla/kristforge.git#branch=master
+	source = kristforge::git+https://github.com/tmpim/kristforge.git#branch=legacy
 	md5sums = SKIP
 
 pkgname = kristforge-git
