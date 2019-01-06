@@ -1,8 +1,8 @@
-# Maintainer: banbanchs <memory.silentvoyage@gmail.com>
+# Maintainer: sdvcrx <memory.silentvoyage@gmail.com>
 
 pkgname=jid-bin
 _pkgname=jid
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Json incremental digger"
 url="https://github.com/simeji/jid"
@@ -11,18 +11,14 @@ license=("MIT")
 provides=("jid")
 conflicts=("jid" "jid-git")
 depends=("glibc")
-source_i686=("https://github.com/simeji/jid/releases/download/${pkgver}/${_pkgname}_linux_386.zip")
-source_x86_64=("https://github.com/simeji/jid/releases/download/${pkgver}/${_pkgname}_linux_amd64.zip")
-sha256sums_i686=('62ec94b54f767b2d9873b6d460d7832fcfea33d585313d4c40ff55f7e059858a')
-sha256sums_x86_64=('57d9e6cb6dcd052d7ffcfddd7bc88fd5a07351a9bdf0575d3355a9921153e177')
+source_i686=("https://github.com/simeji/jid/releases/download/v${pkgver}/${_pkgname}_linux_386.zip")
+source_x86_64=("https://github.com/simeji/jid/releases/download/v${pkgver}/${_pkgname}_linux_amd64.zip")
+sha256sums_i686=('e5cbf764753ed1b84217241887a59a6a9bd104acdfdaca1cc9c71ff03f1ecf16')
+sha256sums_x86_64=('8345855bbf1d99f0164964075be396bda58b96a5e27720a9a044ade45626c646')
 
 package() {
   cd "${srcdir}"
 
-  if [ "${CARCH}" = "x86_64" ]; then
-      install -Dm755 "${srcdir}/${_pkgname}_linux_amd64" "$pkgdir/usr/bin/${_pkgname}"
-  else
-      install -Dm755 "${srcdir}/${_pkgname}_linux_386" "$pkgdir/usr/bin/${_pkgname}"
-  fi
+  install -Dm755 "${srcdir}/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 }
 
