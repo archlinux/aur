@@ -1,7 +1,7 @@
 pkgbase = julia-compat
 	pkgdesc = Compat Package for Julia.
 	pkgver = 1.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/JuliaLang/Compat.jl
 	arch = any
 	license = MIT
