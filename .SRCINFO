@@ -1,18 +1,18 @@
 pkgbase = julia-compat
 	pkgdesc = Compat Package for Julia.
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/JuliaLang/Compat.jl
 	arch = any
 	license = MIT
 	depends = julia
 	depends = julia-loadpath
 	source = julia-compat-1.4.0.tar.gz::https://github.com/JuliaLang/Compat.jl/archive/v1.4.0.tar.gz
-	source = Compat-Project.toml
+	source = julia-compat-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/0a4458707f81e5cf3885e6162f22a0d28d819f5b/C/Compat/Deps.toml
 	source = julia-compat-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/0a4458707f81e5cf3885e6162f22a0d28d819f5b/C/Compat/Package.toml
 	source = julia-compat-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/0a4458707f81e5cf3885e6162f22a0d28d819f5b/C/Compat/Versions.toml
 	sha256sums = 64913d7dbde5b5a64608a1a52dc127dd58c9089dfa68fa4d3584a0a38ac50e5e
-	sha256sums = 7f362281b2c125dc2399af6421585d273a009cf619bee19c0440cf19477177ea
+	sha256sums = f3413bf543e8066a5439a120c44e32ef4fb6793ecaabb9c61464a529dc168e58
 	sha256sums = 635b69201accd41cbf62491638b8e880370a473dd6ecf438fcfc1a80211b3b6c
 	sha256sums = fb4b9fbfdd0bb4f846603ae206a1e73c5266c81c6be3a36a6db3525604abe5c3
 
