@@ -4,7 +4,7 @@
 
 pkgname=(lua-event lua51-event lua52-event)
 _pkgbase=luaevent
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="libevent binding for Lua"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ url="https://github.com/harningt/luaevent"
 license=('MIT')
 makedepends=('libevent' 'lua51' 'lua52' 'lua')
 source=($_pkgbase-$pkgver.tar.gz::https://github.com/harningt/$_pkgbase/archive/v$pkgver.tar.gz)
-sha256sums=('b4fffe2628a310f3bfe231176f777c20598c4d9699acb16a8da097e6ec061cfd')
+sha256sums=('dd12babb252115895618c1243557534decde289bf0c255ffebf0dcd14a18705d')
 
 # There is no build directory because the Makefile doesn’t allow for separating
 # both steps, see https://github.com/harningt/luaevent/issues/11
