@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=instalooter
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Another API-less Instagram pictures and videos downloader'
 arch=('any')
@@ -11,12 +11,21 @@ depends=('python-coloredlogs' 'python-dateutil' 'python-docopt'
          'python-fake-useragent' 'python-fs' 'python-requests' 'python-six'
          'python-tenacity' 'python-tqdm' 'python-verboselogs')
 makedepends=('python-setuptools')
+checkdepends=('python-contexter' 'python-mock' 'python-parameterized'
+              'python-piexif' 'python-pillow')
+optdepends=('python-piexif: to add EXIF metadata to downloaded pictures'
+            'python-pillow: to add EXIF metadata to downloaded pictures')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('9479ae621cd4c40a350747e2f162b87866f819bbf1a66f3f22ea9d437e57c2717ee0e3da475356f685a20185aa838eb443967f2ebdddd76a2869ea6cf9fcd357')
+sha512sums=('4a509d1f9f859d3aff8b835c0d3cfa281dfa30728c7dfb6c9a3eb72bc9b868329b152627f9b5e08c5a1f736cb8247b6b8ad69ad2ea6660916f7d80e13b7a2178')
 
 build() {
   cd $pkgname-$pkgver
   python setup.py build
+}
+
+check() {
+  cd $pkgname-$pkgver
+  python -m unittest discover
 }
 
 package() {
