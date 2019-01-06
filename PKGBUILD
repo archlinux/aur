@@ -1,3 +1,4 @@
+# Maintainer: Jakub Klinkovský <j.l.k@gmx.com>
 # Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=mandoc
@@ -20,22 +21,22 @@ sha256sums=('24eb72103768987dcc63b53d27fdc085796330782f44b3b40c4660b1e1ee9b9c'
             '74d6a02b97a17fffddcc0a3dc830e811348b1f6c6b84f867882c776d50f00ea4')
 
 prepare() {
-	cp "$srcdir"/configure.local $pkgname-$pkgver
+    cp "$srcdir"/configure.local $pkgname-$pkgver
 }
 
 build() {
-	cd $pkgname-$pkgver
-	./configure
-	make
+    cd $pkgname-$pkgver
+    ./configure
+    make
 }
 
 package() {
-	cd $pkgname-$pkgver
-	DESTDIR="$pkgdir" make install
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    cd $pkgname-$pkgver
+    DESTDIR="$pkgdir" make install
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-	install -Dm644 "$srcdir"/mandoc.timer "$pkgdir"/usr/lib/systemd/system/mandoc.timer
-	install -Dm644 "$srcdir"/mandoc.service "$pkgdir"/usr/lib/systemd/system/mandoc.service
-	install -dm755 "$pkgdir"/usr/lib/systemd/system/multi-user.target.wants
-	ln -s ../mandoc.timer "$pkgdir"/usr/lib/systemd/system/multi-user.target.wants/mandoc.timer
+    install -Dm644 "$srcdir"/mandoc.timer "$pkgdir"/usr/lib/systemd/system/mandoc.timer
+    install -Dm644 "$srcdir"/mandoc.service "$pkgdir"/usr/lib/systemd/system/mandoc.service
+    install -dm755 "$pkgdir"/usr/lib/systemd/system/multi-user.target.wants
+    ln -s ../mandoc.timer "$pkgdir"/usr/lib/systemd/system/multi-user.target.wants/mandoc.timer
 }
