@@ -1,27 +1,25 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=adaptagrams-git
+_pkgname=${pkgname%-git}
 pkgver=r1194.86b46ed
 pkgrel=1
-pkgdesc="A library of tools and reusable code for adaptive diagramming applications"
+pkgdesc="A library for adaptive diagramming applications"
 arch=('i686' 'x86_64')
-url="http://adaptagrams.sourceforge.net/"
+url="https://github.com/mjwybrow/$_pkgname"
 license=('LGPL')
 optdepends=('cairo')
 makedepends=('git')
 options=('!libtool')
-source=($pkgname::git+https://github.com/mjwybrow/adaptagrams.git)
-md5sums=('SKIP')
+source=("git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$srcdir/$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$pkgname/cola"
+  cd "$srcdir/$_pkgname/cola"
   mkdir m4 || true
   aclocal
   autoreconf --install
@@ -30,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname/cola"
+  cd "$srcdir/$_pkgname/cola"
   make DESTDIR="$pkgdir" install
   install -m644 "libcola/exceptions.h" "$pkgdir/usr/include/libcola/"
 }
