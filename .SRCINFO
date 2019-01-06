@@ -1,0 +1,20 @@
+pkgbase = goreleaser
+	pkgdesc = Deliver Go binaries as fast and easily as possible
+	pkgver = v0.95.2
+	pkgrel = 1
+	url = https://goreleaser.com
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	optdepends = nfpm: deb and rpm packager
+	optdepends = snapcraft: snap packager
+	source_x86_64 = https://github.com/goreleaser/goreleaser/releases/download/v0.95.2/goreleaser_linux_x86_64.tar.gz
+	sha256sums_x86_64 = a04f626fb853de48dde78d92ee08cdc188593a9ea9919fa56953703b8a8423bf
+	source_i686 = https://github.com/goreleaser/goreleaser/releases/download/v0.95.2/goreleaser_linux_i386.tar.gz
+	sha256sums_i686 = 632dfb0cebf277ee24afcfe008802f1da3e53abb613cb09c920b85e3b70c1941
+	source_aarch64 = https://github.com/goreleaser/goreleaser/releases/download/v0.95.2/goreleaser_linux_arm64.tar.gz
+	sha256sums_aarch64 = a89f2da77a70366d97d7422916d761fb93fd760c9574f987cc28a7e19a3ea8af
+
+pkgname = goreleaser
+
