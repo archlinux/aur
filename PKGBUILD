@@ -2,16 +2,16 @@
 # Contributor: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=ryver-desktop
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="Ryver client for Linux - Team communications"
 arch=('x86_64')
 url="https://ryver.com/"
 license=('custom')
 depends=('alsa-lib' 'expat' 'gconf' 'gtk2' 'gvfs' 'hunspell' 'libcurl-compat' 'libgcrypt' 'libgnome-keyring' 'libnotify' 'libxss' 'libxtst' 'xdg-utils')
 optdepends=('gnome-keyring')
-source=("https://d3vkb1nw20iqfq.cloudfront.net/linux/Ryver-1.2.1-linux-x64.tar.gz" "ryver.png" "ryver.desktop")
-sha256sums=('55fbc6c8084d13d076688a3079e146fa7b506a0964192fe312dfd5b6df00574c'
+source=("https://d3vkb1nw20iqfq.cloudfront.net/linux/Ryver-1.3.2-linux-x64.tar.gz" "ryver.png" "ryver.desktop")
+sha256sums=('61533a045322936111cf4431499a9c94e2a915d0cf800a87cd7b66f6ef89f166'
             '7aa50868245f75a489eff1c438aec17f51251a07401ef4aee7e7b395e2325377'
             '2ce4f9e27f123a327ed7be69b967e70cec1c4e0752caa39278853d6964f558ad')
 
