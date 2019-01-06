@@ -2,7 +2,7 @@
 
 pkgname=('python-expense_manager')
 _pkgname='expense_manager'
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A command-line expense manager and bank account logger."
 arch=('any')
