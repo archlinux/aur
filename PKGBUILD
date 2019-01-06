@@ -4,7 +4,7 @@ _pkgname="slirp4netns"
 pkgname="${_pkgname}-git"
 pkgdesc="User-mode networking for unprivileged network namespaces."
 
-pkgver=r54.39e87c0
+pkgver=v0.2.0.r7.g4775752
 pkgrel=1
 
 arch=('any')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
