@@ -11,11 +11,6 @@ source=("${pkgname}-${pkgver}.zip::https://bettergram.io/downloads/${pkgname}-li
 md5sums=('43ce37e5f1515a4ae0aaab84c96cf318')
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="${pkgdir}/" install
-}
-
-package() {
   cd "$srcdir"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
 
