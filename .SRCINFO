@@ -1,7 +1,7 @@
 pkgbase = julia-binaryprovider
 	pkgdesc = A reliable binary provider for Julia
 	pkgver = 0.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/JuliaPackaging/BinaryProvider.jl
 	arch = any
 	license = MIT
