@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url=https://www.rescuetime.com
 license=('GPL2')
 depends=('qt4' 'xorg-xprop' 'xprintidle')
+conflicts=('rescuetime')
 source_i686=("${pkgname}_${pkgver}_i686.deb"::"$url/installers/rescuetime_current_i386.deb")
 source_x86_64=("${pkgname}_${pkgver}_amd64.deb"::"$url/installers/rescuetime_current_amd64.deb")
 sha256sums_i686=('311b3b07b9919c2154abc8da6ac5fe87d443d2526bd26667fc18680b3089cc8c')
