@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('kristforge::git+https://github.com/apemanzilla/kristforge.git#branch=master')
+source=('kristforge::git+https://github.com/tmpim/kristforge.git#branch=legacy')
 noextract=()
 md5sums=('SKIP')
 
