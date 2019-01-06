@@ -1,13 +1,14 @@
 pkgbase = gdown
 	pkgdesc = Download a large file from Google Drive
 	pkgver = 3.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wkentaro/gdown
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
+	depends = python-tqdm
 	source = git+https://github.com/wkentaro/gdown.git#tag=v3.6.4
 	sha512sums = SKIP
 
