@@ -1,24 +1,25 @@
-pkgbase = beancount-fava-git
-	pkgver = r1238.f17754c
+pkgbase = fava-git
+	pkgver = 1.9.r29.g9e7c51af
 	pkgrel = 1
-	arch = i686
-	arch = x86_64
+	url = https://beancount.github.io/fava/
+	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = nodejs
 	makedepends = npm
-	depends = beancount-hg
+	depends = beancount>=2.1.2
 	depends = python
-	depends = python-click
-	depends = python-markdown2
-	depends = python-flask-babel
-	depends = python-google-api-python-client
-	depends = python-beautifulsoup4
-	depends = python-magic-ahupp
-	provides = beancount-fava
-	conflicts = beancount-fava
-	source = beancount-fava::git://github.com/beancount/fava.git
+	depends = python-setuptools
+	depends = python-markdown2>=2.3.0
+	depends = python-flask-babel>=0.10.0
+	depends = python-simplejson>=2.3.0
+	depends = python-cheroot
+	provides = fava
+	conflicts = fava
+	conflicts = beancount-fava-git
+	replaces = beancount-fava-git
+	source = git://github.com/beancount/fava.git
 	md5sums = SKIP
 
-pkgname = beancount-fava-git
+pkgname = fava-git
 

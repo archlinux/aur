@@ -1,45 +1,44 @@
-# Maintainer: Ng Oon-Ee <ngoonee.talk@gmail.com>
-pkgname=beancount-fava-git
-pkgver=r1238.f17754c
+# Maintainer: Carlos José Ruiz-Henestrosa Ruiz <ruizh.cj@gmail.com>
+# Contributor: Ng Oon-Ee <ngoonee.talk@gmail.com>
+pkgname=fava-git
+_name=${pkgname%-git}
+pkgver=1.9.r29.g9e7c51af
 pkgrel=1
 pkgdesc=""
-arch=('i686' 'x86_64')
-url=""
+arch=('any')
+url="https://beancount.github.io/fava/"
 license=('MIT')
 groups=()
-depends=('beancount-hg'
+depends=('beancount' # >=2.1.2, but beancount-hg doesn't provide a version.
          'python'
-         'python-click'
-         'python-markdown2'
-         'python-flask-babel'
-         'python-google-api-python-client'
-         'python-beautifulsoup4'
-         'python-magic-ahupp')
+         'python-setuptools'
+         'python-markdown2>=2.3.0'
+         'python-flask-babel>=0.10.0'
+         'python-simplejson>=2.3.0'
+         'python-cheroot')
+
 makedepends=('git'
              'nodejs'
              'npm')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
-source=('beancount-fava::git://github.com/beancount/fava.git')
-noextract=()
+
+provides=("${_name}")
+conflicts=("${_name}" "beancount-fava-git")
+replaces=("beancount-fava-git")
+source=('git://github.com/beancount/fava.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${_name}"
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${_name}"
 	make
-    python setup.py build
+	python setup.py build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-    python setup.py install --root="${pkgdir}"
+	cd "$srcdir/${_name}"
+	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
