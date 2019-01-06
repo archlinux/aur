@@ -1,16 +1,23 @@
 pkgbase = julia-primes
 	pkgdesc = Prime numbers in Julia
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/JuliaMath/Primes.jl
 	arch = any
 	license = MIT
 	depends = julia
 	depends = julia-compat
 	depends = julia-datastructures
+	depends = julia-loadpath
 	depends = julia-orderedcollections
 	source = julia-primes-0.4.0.tar.gz::https://github.com/JuliaMath/Primes.jl/archive/v0.4.0.tar.gz
+	source = julia-primes-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/a5407c18c94c6c262603337392426894f86b3f79/P/Primes/Deps.toml
+	source = julia-primes-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/a5407c18c94c6c262603337392426894f86b3f79/P/Primes/Package.toml
+	source = julia-primes-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/a5407c18c94c6c262603337392426894f86b3f79/P/Primes/Versions.toml
 	sha256sums = 489f5c77fc2fceb00b2d8c2571b1e85808322c8e762a5d1712e8bfbfb3c8bc36
+	sha256sums = 1c08fdc3105498ea73a5486a753edab162088ecdff1b7fbfb682855f63344fae
+	sha256sums = 52c8ba7d166e9593828b8ed5bf12e58cccdcc4ae86ea28e63fa8310468f91a14
+	sha256sums = 2abd6401f33937b90d28df5d4a8c806bc4110a4a3e65ece3ba623ab72e1e1c51
 
 pkgname = julia-primes
 
