@@ -1,7 +1,7 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
 
 pkgname=mpd-sacd
-pkgver=0.21.4
+pkgver=0.21.5
 pkgrel=1
 pkgdesc='MPD with patches for SACD and DVDA ISO playback.'
 url='https://sourceforge.net/p/sacddecoder/mpd/MPD.git/ci/master/tree/'
@@ -14,7 +14,7 @@ depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl' 'f
 makedepends=('boost' 'meson' 'python-sphinx')
 conflicts=('mpd')
 provides=("mpd=${pkgver}")
-source=('mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git#commit=3934b0b6c769cc4817f628c6b55fab130eb22d97'
+source=('mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git#commit=3242ab1cdfe4e41dd646fa5fddff99933f104299'
 	'sysusers.d'
 	'tmpfiles.d'
 	'conf')
