@@ -1,0 +1,22 @@
+pkgbase = python-jsonpath-rw
+	pkgdesc = A robust and significantly extended implementation of JSONPath for Python.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/kennknowles/python-jsonpath-rw
+	arch = any
+	license = Apache
+	checkdepends = python
+	checkdepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/kennknowles/python-jsonpath-rw/archive/1.4.0.tar.gz
+	sha256sums = 0aac3458f78b115e661a51610b631c46f27c8b6a4446e4dafb9a13b5ddb5d5e7
+
+pkgname = python-jsonpath-rw
+	pkgdesc = A robust and significantly extended implementation of JSONPath for Python3.
+	depends = python
+
+pkgname = python2-jsonpath-rw
+	pkgdesc = A robust and significantly extended implementation of JSONPath for Python2
+	depends = python2
+
