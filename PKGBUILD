@@ -1,22 +1,25 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libanimation
-pkgver=0.3.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="Library that provides animation calculations"
 arch=(x86_64 i686 aarch64 armv7h)
 url="https://github.com/endlessm/libanimation"
 license=(LGPL)
 depends=(glib2)
-makedepends=(meson)
+makedepends=(meson gmock gtest glib2)
 conflicts=(libanimation-git)
-source=("https://github.com/endlessm/libanimation/archive/Version_${pkgver}.tar.gz")
-md5sums=(SKIP)
+source=("https://github.com/endlessm/libanimation/archive/Release_${pkgver}.tar.gz")
+sha256sums=('d1a56061177a9519d16fd26796b747e27bac2948da1687f26032abb925cb1ea7')
 
 build() {
-    rm -rf build
-    arch-meson ${pkgname}-Version_${pkgver} build
-    ninja -v -C build
+    arch-meson ${pkgname}-Release_${pkgver} build
+    ninja -C build
+}
+
+check() {
+    ninja -C build test
 }
 
 package() {
