@@ -1,6 +1,6 @@
 #Maintainer: Sam Bazley <sambazley@protonmail.com>
 pkgname=blockbar-git
-pkgver=20190106211234
+pkgver=20190106214116
 pkgrel=1
 pkgdesc="Blocks based status bar for X window managers"
 arch=("i686" "x86_64")
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
     cd "$srcdir/blockbar"
-    cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" .
+    cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DLIBDIR="/usr/lib" .
     make
 }
 
