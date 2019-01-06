@@ -1,0 +1,23 @@
+pkgbase = beancount-import-git
+	pkgver = 1.0.7.r0.0341cf8
+	pkgrel = 1
+	url = https://beancount.github.io/fava/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = beancount
+	depends = python>=3.5
+	depends = python-setuptools
+	depends = python-tornado
+	depends = python-scikit-learn
+	depends = python-nltk
+	depends = python-dateutil
+	depends = python-atomicwrites
+	depends = python-jsonschema
+	provides = beancount-import=1.0.7
+	conflicts = beancount-import
+	source = git://github.com/jbms/beancount-import.git
+	md5sums = SKIP
+
+pkgname = beancount-import-git
+
