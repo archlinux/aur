@@ -12,6 +12,7 @@ license=('Boost-1.0')
 makedepends=('git' 'd-compiler')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+optdepends=(gnuplot)
 source=("$_pkgbase::git+https://github.com/eth-sri/psi.git")
 sha256sums=('SKIP')
 
