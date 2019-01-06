@@ -1,0 +1,16 @@
+pkgbase = frink
+	pkgdesc = Frink is a tcl formatting and static check program. It can prettify your program, minimise, obfuscate or just sanity check it. It can also do some rewriting.
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://catless.ncl.ac.uk/Programs/Frink/
+	arch = x86_64
+	arch = i686
+	license = Other
+	makedepends = gcc
+	makedepends = make
+	depends = tcl
+	source = http://hpux.connect.org.uk/ftp/hpux/Development/Languages/frink-2.2.2/frink-2.2.2-src-11.11.tar.gz
+	md5sums = 24841aa401c932fb6c0aac6af02d92ed
+
+pkgname = frink
+
