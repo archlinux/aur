@@ -1,0 +1,14 @@
+pkgbase = systemd-battery-targets-git
+	pkgdesc = Systemd targets for battery and ac
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://chrisdown.name/2017/10/29/adding-power-related-targets-to-systemd.html
+	arch = any
+	license = custom
+	depends = systemd
+	options = !strip
+	source = https://github.com/lucasew/arch-systemd-battery-targets/archive/v0.1.zip
+	sha256sums = 7b6d921a2aef826600480ce55628836f493dbc6be8045f82f7a75cf9c51879ec
+
+pkgname = systemd-battery-targets-git
+
