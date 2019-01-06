@@ -1,0 +1,31 @@
+pkgbase = python-hatch
+	pkgdesc = A modern project, package, and virtual env manager
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/ofek/hatch
+	arch = any
+	license = MIT
+	license = APACHE
+	depends = python-appdirs
+	depends = python-atomicwrites
+	depends = python-click
+	depends = python-colorama
+	depends = python-coverage
+	depends = python-pexpect
+	depends = python-pip>=9.0.1
+	depends = python-pytest
+	depends = python-semver>=2.7.8
+	depends = python-setuptools>=36.0.0
+	depends = python-sortedcontainers>=1.5.7
+	depends = python-toml>=0.9.3
+	depends = twine>=1.9.1
+	depends = python-userpath>=1.1.0
+	depends = python-virtualenv
+	depends = python-wheel>=0.27.0
+	provides = python-hatch
+	options = !emptydirs
+	source = https://github.com/ofek/hatch/archive/0.11.0.tar.gz
+	sha256sums = 89eb2417503125919f5536b0c50390affa2536b193ddcfc826ad96a4d17e7678
+
+pkgname = python-hatch
+
