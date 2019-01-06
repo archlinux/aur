@@ -1,7 +1,7 @@
 pkgbase = julia-fixedpointnumbers
 	pkgdesc = Fixed point types for Julia
 	pkgver = 0.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/JuliaMath/FixedPointNumbers.jl
 	arch = any
 	license = MIT
