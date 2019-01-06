@@ -1,0 +1,17 @@
+pkgbase = slideshow
+	pkgdesc = Draw a slideshow with the images in a directory or listed in a file and show it in a window or fullscreen.
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/Geballin/slideshow
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = gcc
+	makedepends = make
+	depends = sdl
+	depends = sdl_image
+	source = https://github.com/Geballin/slideshow/archive/0.9.tar.gz
+	md5sums = c0f195d6f74c53aa8d2f11cd75307c8b
+
+pkgname = slideshow
+
