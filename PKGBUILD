@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://www.openhantek.org/"
 license=('GPL')
 depends=('qt4' 'libusb' 'fftw' 'libgl' 'fxload')
-makedepends=('binutils' 'unzip')
+makedepends=('binutils' 'unzip' 'wget')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-$pkgver.tar.bz2 \
 http://downloads.sourceforge.net/project/$pkgname/$pkgname-extractfw/$pkgname-extractfw-0.7.0.tar.bz2)
 md5sums=('57732229f063f582bfaa3c3cc942dae2'
