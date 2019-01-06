@@ -1,0 +1,14 @@
+pkgbase = pomo
+	pkgdesc = Pomodoro CLI
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://kevinschoon.github.io/pomo
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	noextract = pomo-0.6.0-linux-amd64
+	source = https://github.com/kevinschoon/pomo/releases/download/0.6.0/pomo-0.6.0-linux-amd64
+	md5sums = 97be4ccf66c4ae4e3e154f87b9bb0bf2
+
+pkgname = pomo
+
