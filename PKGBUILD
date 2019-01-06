@@ -5,7 +5,7 @@
 
 pkgname=ijava-git
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A Java kernel for Jupyter'
 url='https://github.com/SpencerPark/IJava'
 arch=('any')
