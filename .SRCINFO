@@ -1,14 +1,14 @@
 pkgbase = python-pysqlcipher3
 	pkgdesc = DB-API 2.0 interface for SQLCIPHER 3.x
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/rigglemania/pysqlcipher3
 	arch = any
 	license = ZLIB
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pysqlcipher3/pysqlcipher3-1.0.2.tar.gz
-	md5sums = 387aa1f10ff84b72d879c111c6fce3d7
+	source = https://files.pythonhosted.org/packages/source/p/pysqlcipher3/pysqlcipher3-1.0.3.tar.gz
+	md5sums = 636368cab1f64db3572255b10e3cb9e3
 
 pkgname = python-pysqlcipher3
 	depends = python
