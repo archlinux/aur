@@ -3,7 +3,7 @@
 
 pkgname=qtwebflix-git
 _gitname=qtwebflix
-pkgver=0.1.r104.g3e66dd7
+pkgver=0.1.r129.g1aecbdd
 pkgrel=1
 pkgdesc='Standalone HD Netflix Browser using qt5-webengine (also supports Amazon prime, HBO Go, Hulu, Crunchy Roll)'
 arch=('any')
@@ -14,9 +14,10 @@ optdepends=('pepper-flash: Needed for some streaming services')
 makedepends=('git')
 source=("git+${url}.git"
         "${_gitname}.desktop")
+       
 sha256sums=('SKIP'
             '656953860c0014977b20eb0f023e1e5e3441a5ec58d4e353230c392d697eaf1a')
-
+       
 pkgver() {
    cd ${srcdir}/${_gitname}
    
@@ -24,21 +25,31 @@ pkgver() {
    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
-           
-build() {
-   cd ${srcdir}/${_gitname}
-
-   qmake -config release
-   make
    
+prepare() {
+
+   cd ${srcdir}/${_gitname}
+   git submodule init
+   git submodule update
+   
+}
+
+build() {
+   
+   cd ${srcdir}/${_gitname}
+   mkdir build && cd build
+   qmake -config release ..
+   make
+      
 }
 
 package() {
    
-   install -Dm755 ${srcdir}/${_gitname}/${_gitname} ${pkgdir}/usr/bin/${_gitname}
+   install -Dm755 ${srcdir}/${_gitname}/build/${_gitname} ${pkgdir}/usr/bin/${_gitname}
    install -Dm644 ${srcdir}/${_gitname}/resources/qtwebflix.svg ${pkgdir}/usr/share/pixmaps/qtwebflix.svg
    install -Dm755 ${srcdir}/${_gitname}.desktop ${pkgdir}/usr/share/applications/${_gitname}.desktop
   
-   
 
 }
+
+
