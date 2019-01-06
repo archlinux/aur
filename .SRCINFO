@@ -1,6 +1,6 @@
 pkgbase = perl-io-prompt
 	pkgdesc = Interactively prompt for user input
-	pkgver = 0.997003
+	pkgver = 0.997004
 	pkgrel = 1
 	url = https://metacpan.org/release/IO-Prompt
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = perl-io-prompt
 	depends = perl-term-readkey
 	depends = perl-want
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/IO-Prompt-0.997003.tar.gz
-	md5sums = 7607ed49d4f88bdca43e4411af8745df
-	sha512sums = 77bb0aee716322879b36cd3d393b58426fe50fb72d415fab16b2546b99f4f5c6b3e3f1da06be9d066baa6c549e2469b4b7c3807373c7b6233a689b6a4357664d
+	source = https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/IO-Prompt-0.997004.tar.gz
+	md5sums = 24d7c674fd8ec43edf8a05eeb068fc3a
+	sha512sums = a3624ae807b88493231e3de5ad2bff78927924fa72db68828cdbe69fd54c9a38f6fd7e39d9cddf1e82e60614ddaacbcdef1ba08e4af6713d899077b141d8b2e6
 
 pkgname = perl-io-prompt
 
