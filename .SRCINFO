@@ -1,6 +1,6 @@
-pkgbase = openboardview
+pkgbase = openboardview-inflex
 	pkgdesc = Linux SDL/ImGui edition software for viewing .brd files
-	pkgver = 7.3
+	pkgver = 2018062301
 	pkgrel = 1
 	url = https://openboardview.org/
 	arch = i686
@@ -8,14 +8,18 @@ pkgbase = openboardview
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = python
 	depends = sdl2
 	depends = sqlite
 	depends = zlib
 	depends = fontconfig
 	depends = gtk3
 	depends = libpng
-	source = git+https://github.com/OpenBoardView/OpenBoardView.git#tag=R7.3
+	conflicts = openboardview
+	source = git+https://github.com/inflex/OpenBoardView.git#tag=R2018062301
+	source = https://github.com/Dav1dde/glad/archive/v0.1.28.zip
 	sha512sums = SKIP
+	sha512sums = 46fade309d4c2803cb9d0e15e4c2416fc31973649f2d5860b6f57f36b4495c33d386e0fc2244d9ea0bee8070ca9b3874cd23ac50d9f95370c6bdede870baaece
 
-pkgname = openboardview
+pkgname = openboardview-inflex
 
