@@ -1,4 +1,5 @@
 # Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
+# Contributor: corubba <corubba at gmx dot de>
 # Contributor: Jakub Kozisek <nodevel at gmail dot com>
 
 pkgname=puddletag-git
@@ -11,9 +12,9 @@ pkgrel=1
 provides=('puddletag')
 conflicts=('puddletag')
 
-source=("$pkgname::git://github.com/keithgg/puddletag")
+source=("$pkgname::git://github.com/keithgg/puddletag#branch=pyqt5")
 md5sums=('SKIP')
-depends=('python2' 'mutagen' 'python2-pyqt' 'python2-pyparsing' 'python2-configobj' 'python2-musicbrainz2')
+depends=('python2' 'mutagen' 'python2-pyqt5' 'python2-pyparsing' 'python2-configobj' 'python2-musicbrainz2')
 makedepends=('git')
 optdepends=('python2-imaging: edit/view FLAC cover art'
             'quodlibet: edit a QuodLibet library')
@@ -24,12 +25,14 @@ pkgver() {
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
+build() {
+    cd "$srcdir/$pkgname/source"
+
+    python2 setup.py config
+}
+
 package() {
     cd "$srcdir/$pkgname/source"
 
-    export PYTHONPATH="$pkgdir/usr/lib/python2.7/site-packages"
-    mkdir -p "$PYTHONPATH"
-
-    python2 setup.py config
-    python2 setup.py install --prefix="$pkgdir/usr" --optimize=1 || return 1
+    python2 setup.py install --root="$pkgdir" --optimize=1 || return 1
 }

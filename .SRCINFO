@@ -9,7 +9,7 @@ pkgbase = puddletag-git
 	makedepends = git
 	depends = python2
 	depends = mutagen
-	depends = python2-pyqt
+	depends = python2-pyqt5
 	depends = python2-pyparsing
 	depends = python2-configobj
 	depends = python2-musicbrainz2
@@ -17,7 +17,7 @@ pkgbase = puddletag-git
 	optdepends = quodlibet: edit a QuodLibet library
 	provides = puddletag
 	conflicts = puddletag
-	source = puddletag-git::git://github.com/keithgg/puddletag
+	source = puddletag-git::git://github.com/keithgg/puddletag#branch=pyqt5
 	md5sums = SKIP
 
 pkgname = puddletag-git
