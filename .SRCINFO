@@ -1,15 +1,15 @@
 pkgbase = kde-servicemenus-encfs
-	pkgdesc = One KDE servicemenu for encfs encrypted directories.
-	pkgver = 0.5.2
+	pkgdesc = One KDE servicemenu for encFS encrypted directories.
+	pkgver = 0.7.0
 	pkgrel = 1
-	url = http://kde-apps.org/content/show.php?content=57086
+	url = https://www.opendesktop.org/p/1231244/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = kdebase-workspace
+	depends = plasma-workspace
 	depends = encfs
-	source = http://kde-apps.org/CONTENT/content-files/57086-kde-service-menu-encfs_0.5.2.tar.gz
-	md5sums = 42b10bd668568ce8ffdd25351c0f2d7e
+	source = https://dl.opendesktop.org/api/files/download/id/1524695036/s/ce70c73cec316ede6041efbc26f8a36ee92fe0b6750e36f97dc86e39634f684065393a1e363600912dc69540a25811750ea5e1ed4d4c81af77106c992f7d0861/t/1546792526/u/kde-service-menu-encfs-0.7.0_all.tar.gz
+	sha256sums = 403fd00b27d282fa292038ba6209c84c0ccb8ba941b269e2062ace57a286740d
 
 pkgname = kde-servicemenus-encfs
 
