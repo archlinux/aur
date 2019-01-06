@@ -2,7 +2,7 @@
 
 pkgname=nspawn-tools
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Convenience code for dealing with systemd-nspawn machines"
 arch=("any")
 url="https://github.com/djmattyg007/nspawn-tools"
