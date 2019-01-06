@@ -1,0 +1,18 @@
+pkgbase = rescuetime2
+	pkgdesc = Application time-tracking for Linux. Stable version
+	pkgver = 2.14.2.1
+	pkgrel = 1
+	url = https://www.rescuetime.com
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt4
+	depends = xorg-xprop
+	depends = xprintidle
+	source_i686 = rescuetime2_2.14.2.1_i686.deb::https://www.rescuetime.com/installers/rescuetime_current_i386.deb
+	sha256sums_i686 = 311b3b07b9919c2154abc8da6ac5fe87d443d2526bd26667fc18680b3089cc8c
+	source_x86_64 = rescuetime2_2.14.2.1_amd64.deb::https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
+	sha256sums_x86_64 = ca9a0d437169e43e539d044f6aad7b1acb33fde461f381774f596778320581b3
+
+pkgname = rescuetime2
+
