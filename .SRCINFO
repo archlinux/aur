@@ -12,7 +12,6 @@ pkgbase = python-expense_manager
 	depends = python-colorama
 	depends = python-termcolor
 	depends = python-tabulate
-	depends = python-pysqlcipher3
 	depends = python-normality
 	depends = python-banal
 	depends = xclip
