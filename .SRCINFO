@@ -1,6 +1,6 @@
 pkgbase = blugon
-	pkgdesc = A blue light filter written in 'python' using 'xorg-xgamma' as backend
-	pkgver = 0.1
+	pkgdesc = a blue light filter written in python
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/jumper149/blugon
 	arch = x86_64
