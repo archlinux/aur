@@ -1,11 +1,10 @@
 pkgbase = python-fuocore
 	pkgdesc = feeluown core
-	pkgver = 2.0.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/cosven/feeluown-core
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = mpv
@@ -15,9 +14,9 @@ pkgbase = python-fuocore
 	depends = python-requests
 	depends = python-mutagen
 	depends = python-fuzzywuzzy
-	provides = python-fuocore=2.0.2
-	source = python-fuocore::git://github.com/cosven/feeluown-core.git
-	md5sums = SKIP
+	provides = python-fuocore=2.3
+	source = python-fuocore::https://files.pythonhosted.org/packages/59/61/4ecaf91c6075d468f0343747565489bb65d3ef0238ec5176381121ae5ab4/fuocore-2.3.tar.gz
+	sha256sums = ad0f0d6f8c96fe0a46d2fa658515f50613e8daa8cce56eece58d702d1e9e4d51
 
 pkgname = python-fuocore
 	depends = python
