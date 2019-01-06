@@ -3,7 +3,7 @@
 pkgname=julia-ijulia
 _pkgname=IJulia
 pkgver=1.15.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Julia-language backend combined with the Jupyter interactive environment'
 arch=(any)
 url=https://github.com/JuliaLang/IJulia.jl
@@ -44,17 +44,21 @@ _deps() {
 	julia -e "using Pkg
 
 	          alldeps = Pkg.TOML.parsefile(\"$srcdir/$pkgname-Deps.toml\")
-	          version = join(split(\"$pkgver\", \".\")[1:2],\".\")
+	          version = VersionNumber(\"$pkgver\")
+	          majmin  = VersionNumber(\"${pkgver%.*}\")
 	          deps = Dict{String,Any}()
 
 	          for (key, value) in alldeps
 	            vers = split(key, \"-\")
-
-	            if version == vers[1] || \"$pkgver\" == vers[1]
-	              merge!(deps, value)
-	            elseif length(vers) == 2
-	              if (version > vers[1] && version <= vers[2]) ||
-	                 (\"$pkgver\" > vers[1] && \"$pkgver\" <= vers[2])
+	            lower = VersionNumber(vers[1])
+	            if length(vers) == 2
+	              upper = VersionNumber(vers[2])
+	              if (majmin  >= lower && majmin  <= upper) ||
+	                 (version >= lower && version <= upper)
+	                merge!(deps, value)
+	              end
+	            elseif length(vers) == 1
+	              if majmin == lower || version == lower
 	                merge!(deps, value)
 	              end
 	            end
