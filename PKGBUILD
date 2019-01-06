@@ -3,7 +3,7 @@
 
 pkgname=emacs-s
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The long lost Emacs string manipulation library."
 arch=('any')
 url="https://github.com/magnars/s.el"
@@ -13,12 +13,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/magnars/s.el/archive/$pkgve
 md5sums=('5bbfc45a9360ef6def7037af3ca887b7')
 
 build() {
-  cd "$srcdir"/s.el-$pkgver
+  cd s.el-$pkgver
   emacs -Q -batch -L . -f batch-byte-compile *.el
 }
 
 package() {
-  cd "$srcdir"/s.el-$pkgver
-  mkdir -p "$pkgdir"/usr/share/emacs/site-lisp/s/
-  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/s/
+  cd s.el-$pkgver
+  install -d "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/
 }
