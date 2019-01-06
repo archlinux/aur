@@ -1,15 +1,15 @@
 pkgbase = ownlang
 	pkgdesc = A scripting functional programming language with dynamic typing
-	pkgver = 1.3.1
-	pkgrel = 1
+	pkgver = 1.4.0
+	pkgrel = 2
 	url = http://projects.annimon.com/projects/ownlang
 	arch = any
 	license = MIT
 	depends = java-runtime>=8
 	optdepends = java-openjfx: for canvasfx module
-	source = https://annimon.com/aur/ownlang/ownlang-1.3.1.tar.gz
-	sha256sums = 8bf1700bde2f7c632c0448c065cea980e8ea0e3564b5bca1eb7e0313fd2c0125
-	sha512sums = d2d4df04b1027fb70a0fd9a14826b830ecdf7b0a8b16b3c292e1d65f822e68516a4a70bf8e7f98da910dc108b5e4c2e1da67146423a00f3c086f49b609f1dde6
+	source = https://annimon.com/aur/ownlang/ownlang-1.4.0.tar.gz
+	sha256sums = 176267b17c7cae0bf8de7c06e1090155f56cb064e4f80a4a6b985eff847f4462
+	sha512sums = d0bc6857bc456474d5434b12e15a14a989cfe6daf47d8db906f2aa03b6a1fb5e2e04176a1d24c7ba8f971051de9cc50305300fe694095ffd0fa201d381768853
 
 pkgname = ownlang
 
