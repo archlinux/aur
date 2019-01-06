@@ -20,7 +20,6 @@ md5sums=('579709384f038b75f31e26e3e490f60b'
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  chmod +x+x+x ./src/xawale.tcl
   ./configure --prefix=/usr
   make
   }
@@ -28,4 +27,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  chmod +x+x+x ${pkgdir}/usr/share/awale/xawale.tcl
   }
