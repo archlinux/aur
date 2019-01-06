@@ -24,21 +24,26 @@ fi
 # shellcheck disable=SC1091
 source './PKGBUILD'
 
-makepkg --printsrcinfo > '.SRCINFO'
+sed_args=()
 
 # shellcheck disable=SC2154
 for _locale in "${_locales[@]}"; do
-  pkgname_pattern="^pkgname = $pkgbase-$(tr '[:upper:]' '[:lower:]' <<< "$_locale")$"
+  _as_lower="$(tr '[:upper:]' '[:lower:]' <<< "$_locale")"
+  pkgname_pattern="^pkgname = $pkgbase-$_as_lower$"
 
-  # Information parameters are in reverse order.
-  for info in \
-      "conflicts = firefox-i18n-$(tr '[:upper:]' '[:lower:]' <<< "$_locale")" \
-      "provides = firefox-i18n-$(tr '[:upper:]' '[:lower:]' <<< "$_locale")=$pkgver" \
-      "provides = $pkgbase=$pkgver-$pkgrel" \
-      "pkgdesc = ${_languages["$_locale"]} language pack for Firefox Beta"; do
-    sed -e "s/$pkgname_pattern/\\0\\n\\t$info/" \
-        -i '.SRCINFO'
-  done
+  # Information parameters.
+  infos_delim='\n\t'
+  infos=("${infos_delim}pkgdesc = ${_languages["$_locale"]} language pack for Firefox Beta"
+         "${infos_delim}provides = $pkgbase=$pkgver-$pkgrel"
+         "${infos_delim}provides = firefox-i18n-$_as_lower=$pkgver"
+         "${infos_delim}provides = firefox-developer-edition-i18n-$_as_lower=$pkgver"
+         "${infos_delim}conflicts = firefox-i18n-$_as_lower"
+         "${infos_delim}conflicts = firefox-developer-edition-i18n-$_as_lower")
+
+  # shellcheck disable=SC2116
+  sed_args+=(-e "s/$pkgname_pattern/\\0$(IFS=''; echo "${infos[*]}")/")
 done
+
+makepkg --printsrcinfo | sed "${sed_args[@]}" > '.SRCINFO'
 
 # vim: set ts=2 sw=2 et syn=sh:

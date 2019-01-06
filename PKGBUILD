@@ -231,9 +231,10 @@ package_firefox-beta-i18n-all() {
 }
 
 _package() {
+  _as_lower="$(tr '[:upper:]' '[:lower:]' <<< "$1")"
   pkgdesc="${_languages["$1"]} language pack for Firefox Beta"
-  provides+=("firefox-i18n-$(tr '[:upper:]' '[:lower:]' <<< "$1")=$pkgver")
-  conflicts=("firefox-i18n-$(tr '[:upper:]' '[:lower:]' <<< "$1")")
+  provides+=("firefox-i18n-$_as_lower" "firefox-developer-edition-i18n-$_as_lower")
+  conflicts=("firefox-i18n-$_as_lower" "firefox-developer-edition-i18n-$_as_lower")
 
   install -Dm644 "firefox-i18n-$pkgver-$1.xpi" \
       "$pkgdir/usr/lib/firefox/browser/extensions/langpack-$1@firefox.mozilla.org.xpi"

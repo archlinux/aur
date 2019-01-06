@@ -392,563 +392,751 @@ pkgname = firefox-beta-i18n-ach
 	pkgdesc = Acholi language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ach=57.0b14
+	provides = firefox-developer-edition-i18n-ach=57.0b14
 	conflicts = firefox-i18n-ach
+	conflicts = firefox-developer-edition-i18n-ach
 
 pkgname = firefox-beta-i18n-af
 	pkgdesc = Afrikaans language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-af=57.0b14
+	provides = firefox-developer-edition-i18n-af=57.0b14
 	conflicts = firefox-i18n-af
+	conflicts = firefox-developer-edition-i18n-af
 
 pkgname = firefox-beta-i18n-an
 	pkgdesc = Aragonese language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-an=57.0b14
+	provides = firefox-developer-edition-i18n-an=57.0b14
 	conflicts = firefox-i18n-an
+	conflicts = firefox-developer-edition-i18n-an
 
 pkgname = firefox-beta-i18n-ar
 	pkgdesc = Arabic language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ar=57.0b14
+	provides = firefox-developer-edition-i18n-ar=57.0b14
 	conflicts = firefox-i18n-ar
+	conflicts = firefox-developer-edition-i18n-ar
 
 pkgname = firefox-beta-i18n-as
 	pkgdesc = Assamese language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-as=57.0b14
+	provides = firefox-developer-edition-i18n-as=57.0b14
 	conflicts = firefox-i18n-as
+	conflicts = firefox-developer-edition-i18n-as
 
 pkgname = firefox-beta-i18n-ast
 	pkgdesc = Asturian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ast=57.0b14
+	provides = firefox-developer-edition-i18n-ast=57.0b14
 	conflicts = firefox-i18n-ast
+	conflicts = firefox-developer-edition-i18n-ast
 
 pkgname = firefox-beta-i18n-az
 	pkgdesc = Azerbaijani language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-az=57.0b14
+	provides = firefox-developer-edition-i18n-az=57.0b14
 	conflicts = firefox-i18n-az
+	conflicts = firefox-developer-edition-i18n-az
 
 pkgname = firefox-beta-i18n-be
 	pkgdesc = Belarusian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-be=57.0b14
+	provides = firefox-developer-edition-i18n-be=57.0b14
 	conflicts = firefox-i18n-be
+	conflicts = firefox-developer-edition-i18n-be
 
 pkgname = firefox-beta-i18n-bg
 	pkgdesc = Bulgarian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-bg=57.0b14
+	provides = firefox-developer-edition-i18n-bg=57.0b14
 	conflicts = firefox-i18n-bg
+	conflicts = firefox-developer-edition-i18n-bg
 
 pkgname = firefox-beta-i18n-bn-bd
 	pkgdesc = Bengali (Bangladesh) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-bn-bd=57.0b14
+	provides = firefox-developer-edition-i18n-bn-bd=57.0b14
 	conflicts = firefox-i18n-bn-bd
+	conflicts = firefox-developer-edition-i18n-bn-bd
 
 pkgname = firefox-beta-i18n-bn-in
 	pkgdesc = Bengali (India) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-bn-in=57.0b14
+	provides = firefox-developer-edition-i18n-bn-in=57.0b14
 	conflicts = firefox-i18n-bn-in
+	conflicts = firefox-developer-edition-i18n-bn-in
 
 pkgname = firefox-beta-i18n-br
 	pkgdesc = Breton language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-br=57.0b14
+	provides = firefox-developer-edition-i18n-br=57.0b14
 	conflicts = firefox-i18n-br
+	conflicts = firefox-developer-edition-i18n-br
 
 pkgname = firefox-beta-i18n-bs
 	pkgdesc = Bosnian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-bs=57.0b14
+	provides = firefox-developer-edition-i18n-bs=57.0b14
 	conflicts = firefox-i18n-bs
+	conflicts = firefox-developer-edition-i18n-bs
 
 pkgname = firefox-beta-i18n-ca
 	pkgdesc = Catalan language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ca=57.0b14
+	provides = firefox-developer-edition-i18n-ca=57.0b14
 	conflicts = firefox-i18n-ca
+	conflicts = firefox-developer-edition-i18n-ca
 
 pkgname = firefox-beta-i18n-cak
 	pkgdesc = Maya Kaqchikel language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-cak=57.0b14
+	provides = firefox-developer-edition-i18n-cak=57.0b14
 	conflicts = firefox-i18n-cak
+	conflicts = firefox-developer-edition-i18n-cak
 
 pkgname = firefox-beta-i18n-cs
 	pkgdesc = Czech language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-cs=57.0b14
+	provides = firefox-developer-edition-i18n-cs=57.0b14
 	conflicts = firefox-i18n-cs
+	conflicts = firefox-developer-edition-i18n-cs
 
 pkgname = firefox-beta-i18n-cy
 	pkgdesc = Welsh language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-cy=57.0b14
+	provides = firefox-developer-edition-i18n-cy=57.0b14
 	conflicts = firefox-i18n-cy
+	conflicts = firefox-developer-edition-i18n-cy
 
 pkgname = firefox-beta-i18n-da
 	pkgdesc = Danish language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-da=57.0b14
+	provides = firefox-developer-edition-i18n-da=57.0b14
 	conflicts = firefox-i18n-da
+	conflicts = firefox-developer-edition-i18n-da
 
 pkgname = firefox-beta-i18n-de
 	pkgdesc = German language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-de=57.0b14
+	provides = firefox-developer-edition-i18n-de=57.0b14
 	conflicts = firefox-i18n-de
+	conflicts = firefox-developer-edition-i18n-de
 
 pkgname = firefox-beta-i18n-dsb
 	pkgdesc = Lower Sorbian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-dsb=57.0b14
+	provides = firefox-developer-edition-i18n-dsb=57.0b14
 	conflicts = firefox-i18n-dsb
+	conflicts = firefox-developer-edition-i18n-dsb
 
 pkgname = firefox-beta-i18n-el
 	pkgdesc = Greek language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-el=57.0b14
+	provides = firefox-developer-edition-i18n-el=57.0b14
 	conflicts = firefox-i18n-el
+	conflicts = firefox-developer-edition-i18n-el
 
 pkgname = firefox-beta-i18n-en-gb
 	pkgdesc = English (British) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-en-gb=57.0b14
+	provides = firefox-developer-edition-i18n-en-gb=57.0b14
 	conflicts = firefox-i18n-en-gb
+	conflicts = firefox-developer-edition-i18n-en-gb
 
 pkgname = firefox-beta-i18n-en-us
 	pkgdesc = English (US) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-en-us=57.0b14
+	provides = firefox-developer-edition-i18n-en-us=57.0b14
 	conflicts = firefox-i18n-en-us
+	conflicts = firefox-developer-edition-i18n-en-us
 
 pkgname = firefox-beta-i18n-en-za
 	pkgdesc = English (South African) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-en-za=57.0b14
+	provides = firefox-developer-edition-i18n-en-za=57.0b14
 	conflicts = firefox-i18n-en-za
+	conflicts = firefox-developer-edition-i18n-en-za
 
 pkgname = firefox-beta-i18n-eo
 	pkgdesc = Esperanto language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-eo=57.0b14
+	provides = firefox-developer-edition-i18n-eo=57.0b14
 	conflicts = firefox-i18n-eo
+	conflicts = firefox-developer-edition-i18n-eo
 
 pkgname = firefox-beta-i18n-es-ar
 	pkgdesc = Spanish (Argentina) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-es-ar=57.0b14
+	provides = firefox-developer-edition-i18n-es-ar=57.0b14
 	conflicts = firefox-i18n-es-ar
+	conflicts = firefox-developer-edition-i18n-es-ar
 
 pkgname = firefox-beta-i18n-es-cl
 	pkgdesc = Spanish (Chile) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-es-cl=57.0b14
+	provides = firefox-developer-edition-i18n-es-cl=57.0b14
 	conflicts = firefox-i18n-es-cl
+	conflicts = firefox-developer-edition-i18n-es-cl
 
 pkgname = firefox-beta-i18n-es-es
 	pkgdesc = Spanish (Spain) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-es-es=57.0b14
+	provides = firefox-developer-edition-i18n-es-es=57.0b14
 	conflicts = firefox-i18n-es-es
+	conflicts = firefox-developer-edition-i18n-es-es
 
 pkgname = firefox-beta-i18n-es-mx
 	pkgdesc = Spanish (Mexico) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-es-mx=57.0b14
+	provides = firefox-developer-edition-i18n-es-mx=57.0b14
 	conflicts = firefox-i18n-es-mx
+	conflicts = firefox-developer-edition-i18n-es-mx
 
 pkgname = firefox-beta-i18n-et
 	pkgdesc = Estonian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-et=57.0b14
+	provides = firefox-developer-edition-i18n-et=57.0b14
 	conflicts = firefox-i18n-et
+	conflicts = firefox-developer-edition-i18n-et
 
 pkgname = firefox-beta-i18n-eu
 	pkgdesc = Basque language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-eu=57.0b14
+	provides = firefox-developer-edition-i18n-eu=57.0b14
 	conflicts = firefox-i18n-eu
+	conflicts = firefox-developer-edition-i18n-eu
 
 pkgname = firefox-beta-i18n-fa
 	pkgdesc = Persian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-fa=57.0b14
+	provides = firefox-developer-edition-i18n-fa=57.0b14
 	conflicts = firefox-i18n-fa
+	conflicts = firefox-developer-edition-i18n-fa
 
 pkgname = firefox-beta-i18n-ff
 	pkgdesc = Fulah language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ff=57.0b14
+	provides = firefox-developer-edition-i18n-ff=57.0b14
 	conflicts = firefox-i18n-ff
+	conflicts = firefox-developer-edition-i18n-ff
 
 pkgname = firefox-beta-i18n-fi
 	pkgdesc = Finnish language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-fi=57.0b14
+	provides = firefox-developer-edition-i18n-fi=57.0b14
 	conflicts = firefox-i18n-fi
+	conflicts = firefox-developer-edition-i18n-fi
 
 pkgname = firefox-beta-i18n-fr
 	pkgdesc = French language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-fr=57.0b14
+	provides = firefox-developer-edition-i18n-fr=57.0b14
 	conflicts = firefox-i18n-fr
+	conflicts = firefox-developer-edition-i18n-fr
 
 pkgname = firefox-beta-i18n-fy-nl
 	pkgdesc = Frisian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-fy-nl=57.0b14
+	provides = firefox-developer-edition-i18n-fy-nl=57.0b14
 	conflicts = firefox-i18n-fy-nl
+	conflicts = firefox-developer-edition-i18n-fy-nl
 
 pkgname = firefox-beta-i18n-ga-ie
 	pkgdesc = Irish language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ga-ie=57.0b14
+	provides = firefox-developer-edition-i18n-ga-ie=57.0b14
 	conflicts = firefox-i18n-ga-ie
+	conflicts = firefox-developer-edition-i18n-ga-ie
 
 pkgname = firefox-beta-i18n-gd
 	pkgdesc = Gaelic (Scotland) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-gd=57.0b14
+	provides = firefox-developer-edition-i18n-gd=57.0b14
 	conflicts = firefox-i18n-gd
+	conflicts = firefox-developer-edition-i18n-gd
 
 pkgname = firefox-beta-i18n-gl
 	pkgdesc = Galician language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-gl=57.0b14
+	provides = firefox-developer-edition-i18n-gl=57.0b14
 	conflicts = firefox-i18n-gl
+	conflicts = firefox-developer-edition-i18n-gl
 
 pkgname = firefox-beta-i18n-gn
 	pkgdesc = Guarani language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-gn=57.0b14
+	provides = firefox-developer-edition-i18n-gn=57.0b14
 	conflicts = firefox-i18n-gn
+	conflicts = firefox-developer-edition-i18n-gn
 
 pkgname = firefox-beta-i18n-gu-in
 	pkgdesc = Gujarati (India) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-gu-in=57.0b14
+	provides = firefox-developer-edition-i18n-gu-in=57.0b14
 	conflicts = firefox-i18n-gu-in
+	conflicts = firefox-developer-edition-i18n-gu-in
 
 pkgname = firefox-beta-i18n-he
 	pkgdesc = Hebrew language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-he=57.0b14
+	provides = firefox-developer-edition-i18n-he=57.0b14
 	conflicts = firefox-i18n-he
+	conflicts = firefox-developer-edition-i18n-he
 
 pkgname = firefox-beta-i18n-hi-in
 	pkgdesc = Hindi (India) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-hi-in=57.0b14
+	provides = firefox-developer-edition-i18n-hi-in=57.0b14
 	conflicts = firefox-i18n-hi-in
+	conflicts = firefox-developer-edition-i18n-hi-in
 
 pkgname = firefox-beta-i18n-hr
 	pkgdesc = Croatian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-hr=57.0b14
+	provides = firefox-developer-edition-i18n-hr=57.0b14
 	conflicts = firefox-i18n-hr
+	conflicts = firefox-developer-edition-i18n-hr
 
 pkgname = firefox-beta-i18n-hsb
 	pkgdesc = Upper Sorbian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-hsb=57.0b14
+	provides = firefox-developer-edition-i18n-hsb=57.0b14
 	conflicts = firefox-i18n-hsb
+	conflicts = firefox-developer-edition-i18n-hsb
 
 pkgname = firefox-beta-i18n-hu
 	pkgdesc = Hungarian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-hu=57.0b14
+	provides = firefox-developer-edition-i18n-hu=57.0b14
 	conflicts = firefox-i18n-hu
+	conflicts = firefox-developer-edition-i18n-hu
 
 pkgname = firefox-beta-i18n-hy-am
 	pkgdesc = Armenian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-hy-am=57.0b14
+	provides = firefox-developer-edition-i18n-hy-am=57.0b14
 	conflicts = firefox-i18n-hy-am
+	conflicts = firefox-developer-edition-i18n-hy-am
 
 pkgname = firefox-beta-i18n-id
 	pkgdesc = Indonesian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-id=57.0b14
+	provides = firefox-developer-edition-i18n-id=57.0b14
 	conflicts = firefox-i18n-id
+	conflicts = firefox-developer-edition-i18n-id
 
 pkgname = firefox-beta-i18n-is
 	pkgdesc = Icelandic language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-is=57.0b14
+	provides = firefox-developer-edition-i18n-is=57.0b14
 	conflicts = firefox-i18n-is
+	conflicts = firefox-developer-edition-i18n-is
 
 pkgname = firefox-beta-i18n-it
 	pkgdesc = Italian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-it=57.0b14
+	provides = firefox-developer-edition-i18n-it=57.0b14
 	conflicts = firefox-i18n-it
+	conflicts = firefox-developer-edition-i18n-it
 
 pkgname = firefox-beta-i18n-ja
 	pkgdesc = Japanese language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ja=57.0b14
+	provides = firefox-developer-edition-i18n-ja=57.0b14
 	conflicts = firefox-i18n-ja
+	conflicts = firefox-developer-edition-i18n-ja
 
 pkgname = firefox-beta-i18n-ka
 	pkgdesc = Georgian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ka=57.0b14
+	provides = firefox-developer-edition-i18n-ka=57.0b14
 	conflicts = firefox-i18n-ka
+	conflicts = firefox-developer-edition-i18n-ka
 
 pkgname = firefox-beta-i18n-kab
 	pkgdesc = Kabyle language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-kab=57.0b14
+	provides = firefox-developer-edition-i18n-kab=57.0b14
 	conflicts = firefox-i18n-kab
+	conflicts = firefox-developer-edition-i18n-kab
 
 pkgname = firefox-beta-i18n-kk
 	pkgdesc = Kazakh language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-kk=57.0b14
+	provides = firefox-developer-edition-i18n-kk=57.0b14
 	conflicts = firefox-i18n-kk
+	conflicts = firefox-developer-edition-i18n-kk
 
 pkgname = firefox-beta-i18n-km
 	pkgdesc = Khmer language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-km=57.0b14
+	provides = firefox-developer-edition-i18n-km=57.0b14
 	conflicts = firefox-i18n-km
+	conflicts = firefox-developer-edition-i18n-km
 
 pkgname = firefox-beta-i18n-kn
 	pkgdesc = Kannada language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-kn=57.0b14
+	provides = firefox-developer-edition-i18n-kn=57.0b14
 	conflicts = firefox-i18n-kn
+	conflicts = firefox-developer-edition-i18n-kn
 
 pkgname = firefox-beta-i18n-ko
 	pkgdesc = Korean language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ko=57.0b14
+	provides = firefox-developer-edition-i18n-ko=57.0b14
 	conflicts = firefox-i18n-ko
+	conflicts = firefox-developer-edition-i18n-ko
 
 pkgname = firefox-beta-i18n-lij
 	pkgdesc = Ligurian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-lij=57.0b14
+	provides = firefox-developer-edition-i18n-lij=57.0b14
 	conflicts = firefox-i18n-lij
+	conflicts = firefox-developer-edition-i18n-lij
 
 pkgname = firefox-beta-i18n-lt
 	pkgdesc = Lithuanian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-lt=57.0b14
+	provides = firefox-developer-edition-i18n-lt=57.0b14
 	conflicts = firefox-i18n-lt
+	conflicts = firefox-developer-edition-i18n-lt
 
 pkgname = firefox-beta-i18n-lv
 	pkgdesc = Latvian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-lv=57.0b14
+	provides = firefox-developer-edition-i18n-lv=57.0b14
 	conflicts = firefox-i18n-lv
+	conflicts = firefox-developer-edition-i18n-lv
 
 pkgname = firefox-beta-i18n-mai
 	pkgdesc = Maithili language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-mai=57.0b14
+	provides = firefox-developer-edition-i18n-mai=57.0b14
 	conflicts = firefox-i18n-mai
+	conflicts = firefox-developer-edition-i18n-mai
 
 pkgname = firefox-beta-i18n-mk
 	pkgdesc = Macedonian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-mk=57.0b14
+	provides = firefox-developer-edition-i18n-mk=57.0b14
 	conflicts = firefox-i18n-mk
+	conflicts = firefox-developer-edition-i18n-mk
 
 pkgname = firefox-beta-i18n-ml
 	pkgdesc = Malayalam language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ml=57.0b14
+	provides = firefox-developer-edition-i18n-ml=57.0b14
 	conflicts = firefox-i18n-ml
+	conflicts = firefox-developer-edition-i18n-ml
 
 pkgname = firefox-beta-i18n-mr
 	pkgdesc = Marathi language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-mr=57.0b14
+	provides = firefox-developer-edition-i18n-mr=57.0b14
 	conflicts = firefox-i18n-mr
+	conflicts = firefox-developer-edition-i18n-mr
 
 pkgname = firefox-beta-i18n-ms
 	pkgdesc = Malay language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ms=57.0b14
+	provides = firefox-developer-edition-i18n-ms=57.0b14
 	conflicts = firefox-i18n-ms
+	conflicts = firefox-developer-edition-i18n-ms
 
 pkgname = firefox-beta-i18n-my
 	pkgdesc = Burmese language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-my=57.0b14
+	provides = firefox-developer-edition-i18n-my=57.0b14
 	conflicts = firefox-i18n-my
+	conflicts = firefox-developer-edition-i18n-my
 
 pkgname = firefox-beta-i18n-nb-no
 	pkgdesc = Norwegian (Bokmål) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-nb-no=57.0b14
+	provides = firefox-developer-edition-i18n-nb-no=57.0b14
 	conflicts = firefox-i18n-nb-no
+	conflicts = firefox-developer-edition-i18n-nb-no
 
 pkgname = firefox-beta-i18n-nl
 	pkgdesc = Dutch language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-nl=57.0b14
+	provides = firefox-developer-edition-i18n-nl=57.0b14
 	conflicts = firefox-i18n-nl
+	conflicts = firefox-developer-edition-i18n-nl
 
 pkgname = firefox-beta-i18n-nn-no
 	pkgdesc = Norwegian (Nynorsk) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-nn-no=57.0b14
+	provides = firefox-developer-edition-i18n-nn-no=57.0b14
 	conflicts = firefox-i18n-nn-no
+	conflicts = firefox-developer-edition-i18n-nn-no
 
 pkgname = firefox-beta-i18n-or
 	pkgdesc = Oriya language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-or=57.0b14
+	provides = firefox-developer-edition-i18n-or=57.0b14
 	conflicts = firefox-i18n-or
+	conflicts = firefox-developer-edition-i18n-or
 
 pkgname = firefox-beta-i18n-pa-in
 	pkgdesc = Punjabi (India) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-pa-in=57.0b14
+	provides = firefox-developer-edition-i18n-pa-in=57.0b14
 	conflicts = firefox-i18n-pa-in
+	conflicts = firefox-developer-edition-i18n-pa-in
 
 pkgname = firefox-beta-i18n-pl
 	pkgdesc = Polish language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-pl=57.0b14
+	provides = firefox-developer-edition-i18n-pl=57.0b14
 	conflicts = firefox-i18n-pl
+	conflicts = firefox-developer-edition-i18n-pl
 
 pkgname = firefox-beta-i18n-pt-br
 	pkgdesc = Portuguese (Brazilian) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-pt-br=57.0b14
+	provides = firefox-developer-edition-i18n-pt-br=57.0b14
 	conflicts = firefox-i18n-pt-br
+	conflicts = firefox-developer-edition-i18n-pt-br
 
 pkgname = firefox-beta-i18n-pt-pt
 	pkgdesc = Portuguese (Portugal) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-pt-pt=57.0b14
+	provides = firefox-developer-edition-i18n-pt-pt=57.0b14
 	conflicts = firefox-i18n-pt-pt
+	conflicts = firefox-developer-edition-i18n-pt-pt
 
 pkgname = firefox-beta-i18n-rm
 	pkgdesc = Romansh language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-rm=57.0b14
+	provides = firefox-developer-edition-i18n-rm=57.0b14
 	conflicts = firefox-i18n-rm
+	conflicts = firefox-developer-edition-i18n-rm
 
 pkgname = firefox-beta-i18n-ro
 	pkgdesc = Romanian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ro=57.0b14
+	provides = firefox-developer-edition-i18n-ro=57.0b14
 	conflicts = firefox-i18n-ro
+	conflicts = firefox-developer-edition-i18n-ro
 
 pkgname = firefox-beta-i18n-ru
 	pkgdesc = Russian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ru=57.0b14
+	provides = firefox-developer-edition-i18n-ru=57.0b14
 	conflicts = firefox-i18n-ru
+	conflicts = firefox-developer-edition-i18n-ru
 
 pkgname = firefox-beta-i18n-si
 	pkgdesc = Sinhala language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-si=57.0b14
+	provides = firefox-developer-edition-i18n-si=57.0b14
 	conflicts = firefox-i18n-si
+	conflicts = firefox-developer-edition-i18n-si
 
 pkgname = firefox-beta-i18n-sk
 	pkgdesc = Slovak language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-sk=57.0b14
+	provides = firefox-developer-edition-i18n-sk=57.0b14
 	conflicts = firefox-i18n-sk
+	conflicts = firefox-developer-edition-i18n-sk
 
 pkgname = firefox-beta-i18n-sl
 	pkgdesc = Slovenian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-sl=57.0b14
+	provides = firefox-developer-edition-i18n-sl=57.0b14
 	conflicts = firefox-i18n-sl
+	conflicts = firefox-developer-edition-i18n-sl
 
 pkgname = firefox-beta-i18n-son
 	pkgdesc = Songhai language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-son=57.0b14
+	provides = firefox-developer-edition-i18n-son=57.0b14
 	conflicts = firefox-i18n-son
+	conflicts = firefox-developer-edition-i18n-son
 
 pkgname = firefox-beta-i18n-sq
 	pkgdesc = Albanian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-sq=57.0b14
+	provides = firefox-developer-edition-i18n-sq=57.0b14
 	conflicts = firefox-i18n-sq
+	conflicts = firefox-developer-edition-i18n-sq
 
 pkgname = firefox-beta-i18n-sr
 	pkgdesc = Serbian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-sr=57.0b14
+	provides = firefox-developer-edition-i18n-sr=57.0b14
 	conflicts = firefox-i18n-sr
+	conflicts = firefox-developer-edition-i18n-sr
 
 pkgname = firefox-beta-i18n-sv-se
 	pkgdesc = Swedish language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-sv-se=57.0b14
+	provides = firefox-developer-edition-i18n-sv-se=57.0b14
 	conflicts = firefox-i18n-sv-se
+	conflicts = firefox-developer-edition-i18n-sv-se
 
 pkgname = firefox-beta-i18n-ta
 	pkgdesc = Tamil language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-ta=57.0b14
+	provides = firefox-developer-edition-i18n-ta=57.0b14
 	conflicts = firefox-i18n-ta
+	conflicts = firefox-developer-edition-i18n-ta
 
 pkgname = firefox-beta-i18n-te
 	pkgdesc = Telugu language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-te=57.0b14
+	provides = firefox-developer-edition-i18n-te=57.0b14
 	conflicts = firefox-i18n-te
+	conflicts = firefox-developer-edition-i18n-te
 
 pkgname = firefox-beta-i18n-th
 	pkgdesc = Thai language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-th=57.0b14
+	provides = firefox-developer-edition-i18n-th=57.0b14
 	conflicts = firefox-i18n-th
+	conflicts = firefox-developer-edition-i18n-th
 
 pkgname = firefox-beta-i18n-tr
 	pkgdesc = Turkish language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-tr=57.0b14
+	provides = firefox-developer-edition-i18n-tr=57.0b14
 	conflicts = firefox-i18n-tr
+	conflicts = firefox-developer-edition-i18n-tr
 
 pkgname = firefox-beta-i18n-uk
 	pkgdesc = Ukrainian language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-uk=57.0b14
+	provides = firefox-developer-edition-i18n-uk=57.0b14
 	conflicts = firefox-i18n-uk
+	conflicts = firefox-developer-edition-i18n-uk
 
 pkgname = firefox-beta-i18n-uz
 	pkgdesc = Uzbek language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-uz=57.0b14
+	provides = firefox-developer-edition-i18n-uz=57.0b14
 	conflicts = firefox-i18n-uz
+	conflicts = firefox-developer-edition-i18n-uz
 
 pkgname = firefox-beta-i18n-vi
 	pkgdesc = Vietnamese language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-vi=57.0b14
+	provides = firefox-developer-edition-i18n-vi=57.0b14
 	conflicts = firefox-i18n-vi
+	conflicts = firefox-developer-edition-i18n-vi
 
 pkgname = firefox-beta-i18n-xh
 	pkgdesc = Xhosa language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-xh=57.0b14
+	provides = firefox-developer-edition-i18n-xh=57.0b14
 	conflicts = firefox-i18n-xh
+	conflicts = firefox-developer-edition-i18n-xh
 
 pkgname = firefox-beta-i18n-zh-cn
 	pkgdesc = Chinese (Simplified) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-zh-cn=57.0b14
+	provides = firefox-developer-edition-i18n-zh-cn=57.0b14
 	conflicts = firefox-i18n-zh-cn
+	conflicts = firefox-developer-edition-i18n-zh-cn
 
 pkgname = firefox-beta-i18n-zh-tw
 	pkgdesc = Chinese (Traditional) language pack for Firefox Beta
 	provides = firefox-beta-i18n=57.0b14-1
 	provides = firefox-i18n-zh-tw=57.0b14
+	provides = firefox-developer-edition-i18n-zh-tw=57.0b14
 	conflicts = firefox-i18n-zh-tw
+	conflicts = firefox-developer-edition-i18n-zh-tw
 
