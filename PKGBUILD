@@ -3,10 +3,10 @@
 
 pkgname=python-pg8000
 pkgver=1.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
-url='https://pythonhosted.org/pg8000/'
+url='https://github.com/tlocke/pg8000'
 license=(BSD)
 makedepends=(python-setuptools)
 depends=(python)
