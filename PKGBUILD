@@ -1,7 +1,7 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma5-applets-feedreader
-pkgver=1.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="System tray support for Feedreader"
 arch=('i686' 'x86_64')
 url="https://github.com/naraesk/plasma-feedreader"
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=()
 changelog=()
-source=('https://github.com/naraesk/plasma-feedreader/archive/v1.0.tar.gz')
+source=('https://github.com/naraesk/plasma-feedreader/archive/v1.0.1.tar.gz')
 noextract=()
-md5sums=('60b63015bfa1537d6f4b112906fc6df4')
+md5sums=('a8224219d5986107626944a25115a533')
 
 prepare() {
   cd plasma-feedreader-${pkgver}
