@@ -3,7 +3,7 @@
 pkgname=julia-ijulia
 _pkgname=IJulia
 pkgver=1.15.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Julia-language backend combined with the Jupyter interactive environment'
 arch=(any)
 url=https://github.com/JuliaLang/IJulia.jl
@@ -50,8 +50,13 @@ _deps() {
 	          for (key, value) in alldeps
 	            vers = split(key, \"-\")
 
-	            if version == vers[1] || (version > vers[1] && length(vers) == 2 && version <= vers[2])
+	            if version == vers[1] || \"$pkgver\" == vers[1]
 	              merge!(deps, value)
+	            elseif length(vers) == 2
+	              if (version > vers[1] && version <= vers[2]) ||
+	                 (\"$pkgver\" > vers[1] && \"$pkgver\" <= vers[2])
+	                merge!(deps, value)
+	              end
 	            end
 	          end
 
