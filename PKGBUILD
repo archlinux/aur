@@ -2,7 +2,7 @@
 pkgname=bettergram
 _pkgname=Bettergram
 pkgver=1.3.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Bettergram is an improved version of the Telegram messaging app with 50 pins, favorites, sortable categories, and more."
 arch=('x86_64')
 url="https://bettergram.io"
