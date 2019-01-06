@@ -1,7 +1,7 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=python-property-manager
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Useful property variants for Python programming"
 url="https://github.com/xolox/python-property-manager"
 license=('MIT')
