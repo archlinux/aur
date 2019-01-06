@@ -1,0 +1,18 @@
+pkgbase = python-titlecase
+	pkgdesc = Python Port of John Gruber's titlecase.pl
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/ppannuto/python-titlecase
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/t/titlecase/titlecase-0.12.0.tar.gz
+	md5sums = 238c9655b9943801b1816046dcedb00e
+
+pkgname = python-titlecase
+	depends = python
+
+pkgname = python2-titlecase
+	depends = python2
+
