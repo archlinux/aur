@@ -22,7 +22,7 @@ prepare() {
 build() {
   export GOPATH="${srcdir}/singularity"
   cd "${GOPATH}/src/github.com/sylabs/singularity"
-  ./mconfig -p /usr
+  ./mconfig --prefix="${pkgdir}/usr"
   cd builddir
   make
 }
