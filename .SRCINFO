@@ -1,0 +1,16 @@
+pkgbase = psi-exact-inference-git
+	pkgdesc = Exact inference for probabilistic programs
+	pkgver = r1246.db0227c
+	pkgrel = 1
+	url = https://psisolver.org/
+	arch = any
+	license = Boost-1.0
+	makedepends = git
+	makedepends = d-compiler
+	provides = psi-exact-inference
+	conflicts = psi-exact-inference
+	source = psi-exact-inference::git+https://github.com/eth-sri/psi.git
+	sha256sums = SKIP
+
+pkgname = psi-exact-inference-git
+
