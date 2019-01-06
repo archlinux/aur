@@ -1,0 +1,13 @@
+# .gitignore
+
+/src
+/pkg
+/*.xpi
+/*.pkg.tar
+/*.pkg.tar.Z
+/*.pkg.tar.*z
+/*.src.tar
+/*.src.tar.Z
+/*.src.tar.*z
+
+# vim: set syn=config:
