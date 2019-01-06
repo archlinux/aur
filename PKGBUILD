@@ -3,7 +3,7 @@
 pkgname=julia-mbedtls
 _pkgname=MbedTLS
 pkgver=0.6.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Wrapper around mbedtls for Julia'
 arch=(any)
 url=https://github.com/JuliaWeb/MbedTLS.jl
@@ -40,8 +40,13 @@ _deps() {
 	          for (key, value) in alldeps
 	            vers = split(key, \"-\")
 
-	            if version == vers[1] || (version > vers[1] && length(vers) == 2 && version <= vers[2])
+	            if version == vers[1] || \"$pkgver\" == vers[1]
 	              merge!(deps, value)
+	            elseif length(vers) == 2
+	              if (version > vers[1] && version <= vers[2]) ||
+	                 (\"$pkgver\" > vers[1] && \"$pkgver\" <= vers[2])
+	                merge!(deps, value)
+	              end
 	            end
 	          end
 
