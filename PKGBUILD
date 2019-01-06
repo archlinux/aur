@@ -4,7 +4,7 @@
 pkgname=('backintime' 'backintime-cli')
 _pkgname="backintime"
 pkgver=1.1.24
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/bit-team/backintime"
 license=('GPL')
@@ -36,7 +36,7 @@ test() {
 
 package_backintime-cli() {
 	pkgdesc="Simple backup system inspired from the Flyback Project and TimeVault. CLI version."
-	depends=('rsync' 'cron' 'openssh' 'python-keyring' 'python-dbus' 'polkit')
+	depends=('rsync' 'cron' 'openssh' 'python-keyring' 'python-dbus' 'polkit' 'python-sip-pyqt4')
 	optdepends=('backintime: QT4 GUI version'
 	'encfs: encrypted filesystem in user-space'
 	'pm-utils: for laptops allows an option to not snapshot on battery'
