@@ -38,7 +38,7 @@ _deps() {
 	          for (key, value) in alldeps
 	            vers = split(key, \"-\")
 
-	            if version >= vers[1] && version <= vers[2]
+	            if version == vers[1] || (version > vers[1] && length(vers) == 2 && version <= vers[2])
 	              merge!(deps, value)
 	            end
 	          end
