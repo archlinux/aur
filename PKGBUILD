@@ -1,16 +1,26 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-proc
-pkgver=0.14
+pkgver=0.17
 pkgrel=1
 pkgdesc="Simple interface to Linux process information"
 arch=("any")
 url="https://github.com/xolox/python-proc"
 license=("MIT")
-depends=("python" "python-coloredlogs" "python-executor" "python-humanfriendly" "python-property-manager")
-makedepends=("python-setuptools")
-source=("https://github.com/xolox/python-proc/archive/${pkgver}.tar.gz")
-sha512sums=("8f92ca025cc60f9ba17c178a6294714b111a1efda2466311f2643b40ed1d5a81f0da232cb65be54eb7b4d922f73c68b14f2fcf2e02725b7ddc20d3e2dbf1e357")
+depends=("python" "python-coloredlogs" "python-executor" "python-humanfriendly" "python-property-manager" "python-setuptools")
+source=(
+    "https://github.com/xolox/python-proc/archive/${pkgver}.tar.gz"
+    "python37-compat.patch"
+)
+sha256sums=(
+    "fa0cde2babdac512a251685d73036b956f509b12021b2051e285b3f29d321b46"
+    "c1d469b3850b43df4e1b7d2097ebd2fba3e1e6786a750ca75585c3961f1ba9f8"
+)
+
+prepare() {
+    cd "python-proc-${pkgver}"
+    patch -p1 < "${srcdir}/python37-compat.patch"
+}
 
 package() {
     cd "python-proc-${pkgver}"
