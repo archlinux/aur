@@ -12,9 +12,9 @@ arch=('any')
 license=('MIT')
 depends=(
   'jupyter_console'
-  'java-environment=9'  # yes, we need the JDK not the JRE at runtime
+  'java-environment=11'  # yes, we need the JDK not the JRE at runtime
   )
-makedepends=('java-environment=9' 'gradle')
+makedepends=('java-environment=11' 'gradle')
 
 _gitcommit1=93e9e7bf5ac571b50ec60645327d8dd0d1700dd2
 _gitcommit2=2b68e1ec48a049ae7f289480c0a088561fe813a0
