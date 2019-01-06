@@ -1,18 +1,25 @@
 pkgbase = prm
 	pkgdesc = Pull Request Manager for Maintainers
-	pkgver = v2.3.0
+	pkgver = v2.4.0
 	pkgrel = 1
 	url = https://github.com/ldez/prm
 	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = APACHE
 	depends = git
 	provides = prm
 	conflicts = prm
 	conflicts = prm-git
-	source = https://github.com/ldez/prm/releases/download/v2.3.0/prm_linux-amd64
-	source = https://raw.githubusercontent.com/ldez/prm/master/LICENSE
-	sha256sums = 912eeede21e18e1dd7e31179f107cd3eee969ff52f7023a7cb4c5bc168892952
-	sha256sums = 4cc1b9526ac9a5f81b49e804ddeb134b3a70262f6d760c9fb2fb98fb1d6603ba
+	source_x86_64 = https://github.com/ldez/prm/releases/download/v2.4.0/prm_v2.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 043ad137dd495358e9f647597ebe7a608a3ae2d7f25771e10480771c69cd8135
+	source_i686 = https://github.com/ldez/prm/releases/download/v2.4.0/prm_v2.4.0_linux_386.tar.gz
+	sha256sums_i686 = 5b5b809b11cdd9b372514fd016674a029fcfb451af0048db247551608932398f
+	source_armv7h = https://github.com/ldez/prm/releases/download/v2.4.0/prm_v2.4.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 42f0486f2f617363f0c3e3a8588953116a76ccec471409fe93e3431a9d3ebc0f
+	source_aarch64 = https://github.com/ldez/prm/releases/download/v2.4.0/prm_v2.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = fb16b3ed1a720695eb30e65178348855a862e51eb0f96b7552a62bc474a2621e
 
 pkgname = prm
 
