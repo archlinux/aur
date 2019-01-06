@@ -1,8 +1,8 @@
 # Maintainer: DJ Griffin <thewisenoob@gmail.com>
 
 pkgname=omp
-pkgver=0.1
-pkgrel=2
+pkgver=0.1.0.1
+pkgrel=1
 pkgdesc='Open-Source Music Player'
 url='https://openmusicplayer.com/'
 arch=(x86_64)
