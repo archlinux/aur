@@ -1,0 +1,36 @@
+pkgbase = openwrt-devel
+	pkgdesc = Metapackage to pull all dependencies required to build OpenWrt
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://openwrt.org/docs/guide-developer/build-system/install-buildsystem
+	arch = x86_64
+	license = None
+	depends = asciidoc
+	depends = b43-fwcutter
+	depends = bcc
+	depends = bin86
+	depends = boost
+	depends = cdrkit
+	depends = fastjar
+	depends = findutils
+	depends = git
+	depends = gtk2
+	depends = intltool
+	depends = jdk7-openjdk
+	depends = libusb
+	depends = libxslt
+	depends = ncurses
+	depends = openssl
+	depends = perl-extutils-makemaker
+	depends = python2
+	depends = rsync
+	depends = ruby
+	depends = sdcc
+	depends = sharutils
+	depends = subversion
+	depends = unzip
+	depends = wget
+	depends = zlib
+
+pkgname = openwrt-devel
+
