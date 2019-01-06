@@ -1,7 +1,7 @@
 # Maintainer: Chris Hobbs (RX14) <chris@rx14.co.uk>
 
 pkgname=nadeshiko
-pkgver=2.3.11
+pkgver=2.3.12
 pkgrel=1
 pkgdesc="A Linux tool to cut short videos with ffmpeg"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=("libnotify: desktop notifications"
             "mpv: nadeshiko-mpv script"
             "gtk3: nadeshiko-mpv script")
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/deterenkelt/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('12c0cc4ef09200629328377957d388f3f09d77c11eb6c232a0e9031437c677bb')
+sha256sums=('e4aa92c7713c9c8ab81944a01aea0c3c6279f399e24037a7001ef7bdafe47a74')
 
 package() {
     cd $srcdir/Nadeshiko-$pkgver
