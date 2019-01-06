@@ -1,0 +1,7 @@
+src/
+pkg/
+*.war
+*.tar.xz
+*.tar.gz
+*.log
+*-git

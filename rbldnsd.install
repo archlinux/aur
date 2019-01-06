@@ -1,0 +1,19 @@
+
+post_install()
+{
+	echo ""
+	echo "To start rbldnsd, run: systemctl start rbldnsd"
+	echo "To enable rbldnsd at boot, run: systemctl enable rbldnsd"
+	echo ""
+}
+
+post_upgrade()
+{
+	systemctl daemon-reload
+}
+
+pre_remove()
+{
+	systemctl disable --now rbldnsd
+}
+

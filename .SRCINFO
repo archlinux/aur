@@ -1,0 +1,28 @@
+pkgbase = rbldnsd-git
+	pkgdesc = Small Daemon for DNSBLs
+	pkgver = 0
+	pkgrel = 1
+	url = https://rbldnsd.io
+	arch = x86_64
+	license = GPL
+	provides = rbldnsd
+	conflicts = rbldnsd
+	source = rbldnsd-git::git+https://github.com/spamhaus/rbldnsd.git
+	source = rbldnsd.sh
+	source = rbldnsd.sysusers
+	source = rbldnsd.tmpfiles
+	source = rbldnsd.service
+	source = rbldnsd.opts
+	source = rbldnsd.ip4set
+	sha256sums = SKIP
+	sha256sums = 312a7b6ad2f873b3ff4256810cd03288805236cde853316beff28e9883b766cd
+	sha256sums = 8e671965d7a80ffab0279f4b08a751d596ade0b02abdb8b860e39aabfb677734
+	sha256sums = 19a540e4619334fd8c6604adc3337f51c95089f87f64ebb5c2b0760dc571ea49
+	sha256sums = f17616ba4220550f933578371b9a11018ec993879fb2813215a65de84c3dce1f
+	sha256sums = 40cac6754bd2e7e40a60a824bfe0501ebbb52f8e81a185199b94773a186506fe
+	sha256sums = 80e32fa4746acf8f3d00f735eef4c1584979ac59e899bee22f6e07a9b2ba9b06
+
+pkgname = rbldnsd-git
+	install = rbldnsd.install
+	backup = etc/conf.d/rbldnsd
+

@@ -1,0 +1,27 @@
+# Specify the IP addresses to which the daemon should bind
+# The default port is 53. If you have to specify an other port
+# then you will add "/<port>" behind the IP address
+BIND=(127.0.0.1/53 127.0.0.1/31453)
+
+# Set interval between checking for zone file changes to be <seconds>.
+# rbldnsd will check zone file’s last modification time every so often,
+# and if it detects a change, zone will be automatically reloaded.
+# Setting this value to 0 disables automatic zone change detection.
+CHECK_TIME=3600
+
+# Set default reply time−to−live (TTL) value to be defttl, and set
+# constraints for TTL to minttl and maxttl.
+# TTL=defttl:minttl:maxttl or TTL=defttl
+TTL=3600
+
+# The zone name
+ZONE=rbl.example.com
+
+# Synchronizations, make sure rbldnsd is restarted after you modify and sync
+# the databases for the first time.
+RSYNC[ip4set]="psbl-mirror.surriel.com::psbl/psbl.txt rsync.unsubscore.com::LBBL/ubl_rbldns.txt"
+
+# Other options
+# OPTIONS="$OPTIONS -l query.log"
+# OPTIONS="$OPTIONS -s stats.log"
+
