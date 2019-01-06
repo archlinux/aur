@@ -1,7 +1,7 @@
 pkgbase = julia-json
 	pkgdesc = JSON parsing and printing for Julia
 	pkgver = 0.20.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/JuliaIO/JSON.jl
 	arch = any
 	license = MIT
