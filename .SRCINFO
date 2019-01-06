@@ -1,0 +1,14 @@
+pkgbase = ujson-git
+	pkgdesc = Json library written in C
+	pkgver = 20181227185838
+	pkgrel = 1
+	url = https://gitlab.com/Niflheimr/ujson
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	makedepends = cmake
+	source = git+https://gitlab.com/Niflheimr/ujson.git
+	md5sums = SKIP
+
+pkgname = ujson-git
+
