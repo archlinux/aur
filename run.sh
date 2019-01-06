@@ -7,9 +7,10 @@
 
 WINEPREFIX="$HOME/.deepinwine/Deepin-ThunderSpeed"
 APPDIR="/opt/deepinwine/apps/Deepin-ThunderSpeed"
-APPVER="7.10.35.366deepin17"
+APPVER="7.10.35.366deepin18"
 APPTAR="files.7z"
 PACKAGENAME="deepin.com.thunderspeed"
+WINE_CMD="wine"
 
 HelpApp()
 {
@@ -20,7 +21,7 @@ HelpApp()
 }
 CallApp()
 {
-	bash "$WINEPREFIX/drive_c/deepin/EnvInit.sh"
+    env WINEPREFIX="$WINEPREFIX" WINEDEBUG=-msvcrt $WINE_CMD "c:\\Program Files\\Thunder Network\\Thunder\\Program\\Thunder.exe" &
 }
 ExtractApp()
 {
@@ -28,7 +29,6 @@ ExtractApp()
 	7z x "$APPDIR/$APPTAR" -o"$1"
 	mv "$1/drive_c/users/@current_user@" "$1/drive_c/users/$USER"
 	sed -i "s#@current_user@#$USER#" $1/*.reg
-	sed -i "s/deepin-wine/wine/" $1/drive_c/deepin/EnvInit.sh
 }
 DeployApp()
 {
@@ -82,6 +82,9 @@ case $1 in
 		;;
 	"-e" | "--remove")
 		RemoveApp
+		;;
+	"-u" | "--uri")
+		RunApp $2
 		;;
 	"-h" | "--help")
 		HelpApp

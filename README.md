@@ -2,7 +2,7 @@
 
 把deepin打包的迅雷极速版移植到Archlinux
 
-构建状态: ![https://github.com/countstarlight/deepin-wine-thunderspeed-arch](https://travis-ci.org/countstarlight/deepin-wine-thunderspeed-arch.svg?branch=master)
+构建状态: [![travis-ci](https://travis-ci.org/countstarlight/deepin-wine-thunderspeed-arch.svg?branch=master)](https://travis-ci.org/countstarlight/deepin-wine-thunderspeed-arch)
 
 感谢:
 

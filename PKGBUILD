@@ -3,7 +3,7 @@
 pkgname=deepin-wine-thunderspeed
 pkgver=7.10.35.366deepin18
 pkgrel=1
-pkgdesc="Thunderspeed(Xun Lei) on Deepin Wine For Archlinux(Don't need deepin-wine package)"
+pkgdesc="Thunderspeed(Xun Lei) on Deepin Wine For Archlinux"
 arch=("x86_64")
 url="http://dl.xunlei.com/"
 license=('custom')
@@ -14,7 +14,7 @@ _mirror="https://mirrors.ustc.edu.cn/deepin"
 source=("$_mirror/pool/non-free/d/deepin.com.thunderspeed/deepin.com.thunderspeed_${pkgver}_i386.deb"
   "run.sh")
 md5sums=('8b6894e19d625844da4a6a85ab1c40ff'
-  '94a6bd45f579622b0799d664a9d65964')
+  'ef1dfefa4264ebd574142c97ac39d16c')
 
 build() {
   msg "Extracting DPKG package ..."
