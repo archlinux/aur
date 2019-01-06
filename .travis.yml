@@ -1,16 +1,21 @@
 sudo: required
 
+services:
+- docker
+
 arch:
+  repos:
+  - archlinuxfr=http://repo.archlinux.fr/$arch
   packages:
-    - p7zip
-    - wine
-    - wine-mono
-    - wine_gecko
-    - xorg-xwininfo
-    - wqy-microhei
-    - adobe-source-han-sans-cn-fonts
+  - p7zip
+  - wine
+  - wine-mono
+  - wine_gecko
+  - xorg-xwininfo
+  - wqy-microhei
+  - adobe-source-han-sans-cn-fonts
   script:
-    - "makepkg"
+  - "makepkg"
 
 script:
-  - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
+- "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
