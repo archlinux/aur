@@ -1,7 +1,7 @@
 pkgbase = julia-primes
 	pkgdesc = Prime numbers in Julia
 	pkgver = 0.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/JuliaMath/Primes.jl
 	arch = any
 	license = MIT
