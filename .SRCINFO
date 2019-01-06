@@ -1,7 +1,7 @@
 pkgbase = julia-datastructures
 	pkgdesc = Julia implementation of Data structures
 	pkgver = 0.14.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/JuliaCollections/DataStructures.jl
 	arch = any
 	license = MIT
