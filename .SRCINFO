@@ -1,7 +1,7 @@
 pkgbase = julia-softglobalscope
 	pkgdesc = Utilities for "soft" global scope in interactive Julia environments
 	pkgver = 1.0.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/stevengj/SoftGlobalScope.jl
 	arch = any
 	license = MIT

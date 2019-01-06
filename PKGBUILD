@@ -3,7 +3,7 @@
 pkgname=julia-softglobalscope
 _pkgname=SoftGlobalScope
 pkgver=1.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Utilities for "soft" global scope in interactive Julia environments'
 arch=(any)
 url=https://github.com/stevengj/SoftGlobalScope.jl
@@ -32,14 +32,23 @@ _deps() {
 	julia -e "using Pkg
 
 	          alldeps = Pkg.TOML.parsefile(\"$srcdir/$pkgname-Deps.toml\")
-	          version = join(split(\"$pkgver\", \".\")[1:2],\".\")
+	          version = VersionNumber(\"$pkgver\")
+	          majmin  = VersionNumber(\"${pkgver%.*}\")
 	          deps = Dict{String,Any}()
 
 	          for (key, value) in alldeps
 	            vers = split(key, \"-\")
-
-	            if version == vers[1] || (version > vers[1] && length(vers) == 2 && version <= vers[2])
-	              merge!(deps, value)
+	            lower = VersionNumber(vers[1])
+	            if length(vers) == 2
+	              upper = VersionNumber(vers[2])
+	              if (majmin  >= lower && majmin  <= upper) ||
+	                 (version >= lower && version <= upper)
+	                merge!(deps, value)
+	              end
+	            elseif length(vers) == 1
+	              if majmin == lower || version == lower
+	                merge!(deps, value)
+	              end
 	            end
 	          end
 
