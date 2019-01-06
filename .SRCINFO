@@ -1,15 +1,17 @@
 pkgbase = python-hidapi-cffi
 	pkgdesc = CFFI wrapper for hidapi
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/hidapi-cffi/
 	arch = any
 	license = BSD
-	depends = python
+	makedepends = python-setuptools
 	depends = python-cffi
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/h/hidapi-cffi/hidapi-cffi-0.2.2.tar.gz
+	source = https://raw.githubusercontent.com/jbaiter/hidapi-cffi/master/LICENSE.txt
 	sha512sums = e72ca5050dc1d877ad28e1bab46fadd94ada3ba2e2c8b0b4c3a40559f982a36f41018ff068c6c0c9c3d74e61f59e7bc6130e1b34be3d97f1d8cd30065c072070
+	sha512sums = fe538de4f6243ccb315f292d02bf540b0731e7dafa88d068473d3e7608c9c4e1567e0d4fc7177162e632398aeb0e7c682dad7cffe552ee46ca25fd640b69d106
 
 pkgname = python-hidapi-cffi
 
