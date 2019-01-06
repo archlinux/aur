@@ -2,7 +2,7 @@
 # Contributor: ianux <ianux@free.fr>
 
 pkgname=weboob-git
-pkgver=1.3_2060_g0200c0066
+pkgver=1.4_2_gaa9dd309e
 pkgrel=1
 pkgdesc="Weboob (Web Out Of Browsers) provides several applications to interact with a lot of websites."
 url="http://weboob.org"
@@ -39,7 +39,7 @@ optdepends=('gnupg: check for repository authenticity'
             'python2-nose: test suite')
 conflicts=('weboob')
 provides=('weboob')
-source=("$pkgname"::'git+https://git.weboob.org/weboob/devel')
+source=("$pkgname"::'git+https://git.weboob.org/weboob/weboob')
 sha256sums=('SKIP')
 
 pkgver() {
