@@ -2,7 +2,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=geotoad
-pkgver=3.28.2
+pkgver=3.28.4
 pkgrel=1
 pkgdesc="A tool to simplify geocaching"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/steve8x8/geotoad"
 license=('custom')
 depends=('ruby')
 source=($pkgname-$pkgver.tar.gz::https://github.com/steve8x8/geotoad/archive/$pkgver.tar.gz)
-sha256sums=('89ff723c42554bae2ceedcd174706367d0a8e57e9120a1a46974d8f87e92f0e1')
+sha256sums=('c6f35a61ad769cc5a7fa3fc5194f199f8755f6ec00b5d4e3fbc406bcaf654f62')
 
 package() {
   cd "${srcdir}"/${pkgname}-${pkgver}
