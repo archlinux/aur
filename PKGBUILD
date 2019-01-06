@@ -10,13 +10,10 @@ license=('MIT')
 provides=("${pkgname}")
 conflicts=("${pkgname}" "${pkgname}-git")
 
-depends=(
-  'git'
-)
-
+depends=()
 makedepends=()
 
-_source="${url}/releases/download/${pkgver}/lego_${pkgver}_linux"
+_source="${url}/releases/download/${pkgver}/${pkgname}_${pkgver}_linux"
 
 source_x86_64=("${_source}_amd64.tar.gz")
 sha256sums_x86_64=('ee8252c442e13cac40a2dcdeead9cc5812c44c393e72b39695d428b9275a0509')
@@ -32,8 +29,8 @@ sha256sums_aarch64=('b1b57d72a62882afcbbe18076a1c8ace2d581db4535947033d62b2b81ff
 
 package() {
   # Bin
-	rm -f "${pkgdir}"/usr/bin/lego
-	install -Dm755 "${srcdir}/lego" "${pkgdir}/usr/bin/lego"
+	rm -f "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	# License
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
