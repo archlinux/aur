@@ -10,7 +10,7 @@ pkgbase='nim-git'
 pkgname=('nim-git' 'nimble-git' 'nimsuggest-git' 'nimpretty-git')
 pkgdesc='Nim is a compiled, garbage-collected systems programming language with a design that focuses on efficiency, expressiveness, and elegance (in that order of priority).'
 epoch=1
-pkgver=0.19.0.r145.g14925ee8b
+pkgver=0.19.2.r946.2fa35126b
 pkgrel=1
 arch=('i686' 'x86_64')
 groups=('nim')
@@ -27,20 +27,38 @@ sha256sums=(
   '9d73290e81a2e2a79f7bb8058d47854d90ba9301dda1bee107294e2d82f631bf'
 )
 
+_tag() {
+  # Describes the most recent tag
+  git describe --tags origin/master
+}
+
+_revision() {
+  # Count revisions made to HEAD since master:
+  git rev-list --count origin/master...HEAD
+}
+
+_commit() {
+  # Convert HEAD into a shortened commit id:
+  git rev-parse --short HEAD
+}
+
 pkgver() {
   cd Nim
 
-  git describe --long --tags           \
-    | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
-    | sed 's/v//'
+  # Suggestions for improvement welcome!
+  printf '%s.r%s.%s'         \
+    "$(_tag | sed 's/v//g')" \
+    "$(_revision)"           \
+    "$(_commit)"
 }
 
 prepare() {
   cd Nim
 
-  # Prevent the build from failing if it is not cleanbuilt:
   [[ -d ./csources ]] && rm -rf ./csources
+
   cp -r "${srcdir}/csources" .
+
   # Remove `-O3` from build.sh's COMP_FLAGS:
   patch ./csources/build.sh \
   --strip=1                 \
