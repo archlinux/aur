@@ -3,7 +3,7 @@ pkgbase=qt5-datasync
 pkgname=(qt5-datasync qt5-datasync-kwallet-keystore qt5-datasync-secret-keystore qt5-datasync-doc)
 group=qt5-datasync-full
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtDataSync"
@@ -16,15 +16,18 @@ optdepends=("repkg: Automatically rebuild the package on dependency updates"
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/QtDataSync.git#tag=${pkgver}"
 		"${pkgname}.rule"
-		"subpkg.rule")
+		"subpkg.rule"
+		"logcat-include.patch")
 sha256sums=('SKIP'
             'ba8f2e738359436ad1a4faa8ad6268372441c60a34363c13aa9f0eec5d0378cc'
-            '321d7d24f490983f54acb9e7f58ebc2a170b520cd978c4989e28bc1a76513f3b')
+            '321d7d24f490983f54acb9e7f58ebc2a170b520cd978c4989e28bc1a76513f3b'
+            '3d48ebbaccb4e7e349895b73289a04ebcfc53253cf07e9374a2f2edaebd9bd12')
 
 prepare() {
   mkdir -p build
 
   cd "$_pkgfqn"
+  git apply ../logcat-include.patch
 }
 
 build() {
