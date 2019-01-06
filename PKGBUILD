@@ -1,14 +1,14 @@
 # Maintainer: Matthew Taylor <mtaylor1252dev@gmail.com>
 
 pkgname=cdynarr
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="C library implementing dynamic arrays."
 arch=("x86_64")
 url="https://gitlab.com/ymber/cdynarr"
 license=("MIT")
-source=(https://gitlab.com/ymber/cdynarr/-/archive/0.3.0/cdynarr-0.3.0.tar.bz2)
-sha256sums=("53e652fc8a10753ee37f904ca33298dae4dd5fe78cd388d889641f3f11bf6515")
+source=(https://gitlab.com/ymber/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2)
+sha256sums=("e7a1d77b917ee3f699597cd67a8f84af42e65038c5abbe04fdbd45d579a9ac8e")
 
 build() {
     cd $srcdir/$pkgname-$pkgver
