@@ -1,0 +1,16 @@
+pkgbase = h3-pg-git
+	pkgdesc = PostgreSQL bindings for H3, a hierarchical hexagonal geospatial indexing system
+	pkgver = v0.3.1.r0.g8089502
+	pkgrel = 1
+	url = https://github.com/bytesandbrains/h3-pg
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = h3-git
+	source = h3-pg-git::git+https://github.com/bytesandbrains/h3-pg.git
+	md5sums = SKIP
+
+pkgname = h3-pg-git
+
