@@ -1,7 +1,7 @@
 pkgbase = mpv-thin
 	pkgdesc = a free, open source, and cross-platform media player
 	pkgver = 0.29.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://mpv.io/
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = mpv-thin
 	depends = libxv
 	depends = lua52
 	depends = rubberband
+	depends = shaderc
 	depends = uchardet
 	depends = vulkan-icd-loader
 	depends = wayland

@@ -7,7 +7,7 @@ _pkgname=mpv
 pkgname=$_pkgname-thin
 epoch=1
 pkgver=0.29.1
-pkgrel=1
+pkgrel=2
 _waf_version=2.0.9
 pkgdesc='a free, open source, and cross-platform media player'
 arch=('x86_64')
@@ -18,7 +18,7 @@ url='https://mpv.io/'
 depends=('desktop-file-utils' 'ffmpeg' 'hicolor-icon-theme'  'lcms2'
          'libarchive' 'libcaca' 'libcdio-paranoia' 'libdvdnav' 'libgl' 'libva'
          'libxinerama' 'libxkbcommon' 'libxrandr' 'libxss' 'libxv' 'lua52'
-         'rubberband' 'uchardet' 'vulkan-icd-loader' 'wayland'
+         'rubberband' 'shaderc' 'uchardet' 'vulkan-icd-loader' 'wayland'
          'xdg-utils')
 makedepends=('mesa' 'python-docutils' 'ladspa' 'wayland-protocols'
              'ffnvcodec-headers' 'vulkan-headers')
