@@ -1,9 +1,9 @@
+# Maintainer: Rashintha Maduneth <rashinthamaduneth@gmail.com>
 # Maintainer: Dhananjay Balan <mail@dbalan.in>
 # Contributor: ahrs
 
 pkgname=mailspring
-_pkgver=1.5.3
-pkgver=${_pkgver}
+pkgver=1.5.5
 pkgrel=2
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
 arch=('x86_64')
@@ -12,11 +12,10 @@ url="https://getmailspring.com/"
 options=('!strip')
 
 source=()
-sha256sums=()
-sha256sums_x86_64=('472fd34c41e77cdcf48772b93d5272f615710dec042b099faa7cdf6ffd8bfaa4')
+sha256sums_x86_64=('60786914dcbac0a5089624b3f1059163df4c303ba1aba4036c4349bc777205ba')
 
-source_x86_64=("https://github.com/Foundry376/Mailspring/releases/download/${_pkgver}/mailspring-${_pkgver}-amd64.deb")
-depends=("libgnome-keyring" "gnome-keyring" "libxss" "libtool" "c-ares" "ctemplate" "tidy" "libxkbfile" "libsecret" "gconf" "gtk3" "nss")
+source_x86_64=("https://github.com/Foundry376/Mailspring/releases/download/${pkgver}/mailspring-${pkgver}-amd64.deb")
+depends=("libgnome-keyring" "gnome-keyring" "libxss" "libtool" "c-ares" "ctemplate" "tidy" "libxkbfile" "libsecret" "gconf" "gtk3" "nss" "libglvnd")
 
 optdepends=('libappindicator-gtk3: for system tray support')
 
