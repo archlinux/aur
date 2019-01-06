@@ -21,6 +21,7 @@ depends=(
   libgee
   libgl
   libgranite.so
+  libmutter2
   libx11
   libxcomposite
   libxdamage
@@ -30,7 +31,6 @@ depends=(
   libxrandr
   libxtst
   mesa
-  libmutter2
   pango
   plank
   wayland
