@@ -1,9 +1,10 @@
 pkgbase = mle-git
 	pkgdesc = Flexible terminal-based text editor
 	pkgver = r379.af76670
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adsr/mle
 	arch = x86_64
+	license = Apache
 	makedepends = git
 	makedepends = uthash
 	depends = pcre
