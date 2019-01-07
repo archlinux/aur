@@ -12,6 +12,7 @@ pkgbase = i3-layout-manager-git
 	depends = xdotool
 	depends = xorg-xrandr
 	depends = vim
+	depends = perl-anyevent-i3
 	conflicts = i3-layout-manager
 	source = git://github.com/klaxalk/i3-layout-manager.git
 	sha512sums = SKIP
