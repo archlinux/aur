@@ -3,23 +3,27 @@
 
 pkgname='sile'
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver='0.9.4'
-_libtexpdf_ver='0cb0c20a3ba40057e6902551300630fed7199bf6'
-pkgrel='3'
+pkgver='0.9.5'
+_libtexpdf_ver='50f0d788c358eb6e1953185f91817f885dc19649'
+pkgrel='1'
 arch=('i386' 'x86_64')
 url='http://www.sile-typesetter.org/'
 license=('MIT')
 source=("https://github.com/simoncozens/sile/archive/v$pkgver.tar.gz"
 	    "https://github.com/simoncozens/libtexpdf/archive/$_libtexpdf_ver.tar.gz")
-sha512sums=('3d041f3e014f2d55f878f535d7ffd5b271b5aa2dc5f74e68261f1f1cdbdd18d7901c77a92a7701a91f7eefae71aa550167b441ced740dc4e459d29bcd8cc9e5e'
-            'da8a3d663385138fd2ba4306e190ea5294631f622cce4592198d75cd76109a31c2db24ede95e6adad98f29f952d3a1656a46b8ec9448f6146689f1b5763dd004')
-
-depends=('lua-lpeg'
+depends=('fontconfig'
+         'harfbuzz>=1.2.6'
+         'icu'
+         'lua-cosmo'
          'lua-expat'
          'lua-filesystem'
-         'fontconfig'
-         'icu'
-         'harfbuzz>=1.2.6')
+         'lua-lpeg'
+         'lua-socket'
+         'lua-sec'
+         'lua-zlib'
+         'ttf-gentium-plus')
+sha512sums=('2f6dbdb38eb25d5db9363fa1d8c8aa6c02aec5bec2fd2752c4b51eebc37c781876fe06b511c93c4a76cdfa3fe02373f5280aab88a4e6f33cf07902aeabd0e63f'
+            '4dd2df1ff4027634f8c5e4ccbfb661229c0f6bf7e4f8e739dcb737f0af0d30570d92321781ab34e61a2f660c225715e569506b825a83744c244dfe9a956c8727')
 
 prepare () {
 	cd "$pkgname-$pkgver"
