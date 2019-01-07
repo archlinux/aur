@@ -1,6 +1,6 @@
 pkgbase = ethminer-bin
 	pkgdesc = Ethereum miner with OpenCL, CUDA and stratum support (precompiled binary)
-	pkgver = 0.16.2
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/ethereum-mining/ethminer
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = ethminer-bin
 	provides = ethminer
 	conflicts = ethminer
 	options = !strip
-	source = https://github.com/ethereum-mining/ethminer/releases/download/v0.16.2/ethminer-0.16.2-linux-x86_64.tar.gz
-	md5sums = fce425d4e33240ec386ad7a1ba6fab2f
+	source = https://github.com/ethereum-mining/ethminer/releases/download/v0.17.0/ethminer-0.17.0-linux-x86_64.tar.gz
+	md5sums = 3b671e760c9009a9371c4be23ebead7b
 
 pkgname = ethminer-bin
 
