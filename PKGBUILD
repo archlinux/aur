@@ -17,15 +17,10 @@ source=("google-music-manager-auth::git+https://github.com/jaymoulin/google-musi
 sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/$_gitname"
- 	   # git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
 	cd "${srcdir}/${_gitname}"
 	    python setup.py install --root="$pkgdir" --optimize=1
-#	cd "${srcdir}/${_gitname}/downloader"
-#            python setup.py install --root="$pkgdir" --optimize=1
-#	cd "${srcdir}/${_gitname}/uploader"
-#            python setup.py install --root="$pkgdir" --optimize=1
 }
