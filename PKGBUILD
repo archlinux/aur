@@ -2,7 +2,7 @@
 # Contributor: hexchain <i at hexchain dot org>
 pkgname=tpm2-tss
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of the Trusted Platform Module 2.0 Software Stack (TSS2)'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tss'
@@ -17,13 +17,13 @@ validpgpkeys=('D760B790CCF0A41CBE7B047C316CC1FB24ABDC72') # Tadeusz Struk
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --with-udevrulesprefix=60-
 	make
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --enable-unit --enable-integration
+	./configure --prefix=/usr --with-udevrulesprefix=60- --enable-unit --enable-integration
 	make check
 }
 
@@ -31,4 +31,5 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	echo 'u tss - "tpm2-tss udev rules"' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
