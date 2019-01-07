@@ -1,15 +1,15 @@
 # Maintainer: Chris Gregory <czipperz@gmail.com>
 pkgname=libclipboard-git
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Lightweight cross-platform C clipboard library"
-url="https://github.com/czipperz/libclipboard"
+url="https://github.com/jtanx/libclipboard"
 arch=("i686" "x86_64")
 license=("MIT")
 depends=("libxcb")
 makedepends=("cmake" "git")
 provides=("libclipboard")
-source=("git://github.com/czipperz/libclipboard")
+source=("git://github.com/jtanx/libclipboard")
 sha256sums=("SKIP")
 
 build() {
