@@ -10,7 +10,7 @@ _build="${_build//_/-}"
 # 'lastSuccessfulBuild') to let makepkg detect when needs to download an update
 _buildtoolver=90
 pkgrel=1
-pkgdesc="CraftBukkit & Spigot Minecraft servers"
+pkgdesc="CraftBukkit, Spigot, and vanilla Minecraft servers"
 arch=(any)
 url="http://www.spigotmc.org/"
 license=("GPL3")

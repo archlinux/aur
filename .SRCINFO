@@ -1,5 +1,5 @@
 pkgbase = craftbukkit-spigot
-	pkgdesc = CraftBukkit & Spigot Minecraft servers
+	pkgdesc = CraftBukkit, Spigot, and vanilla Minecraft servers
 	pkgver = 1.13.2.1969
 	pkgrel = 1
 	url = http://www.spigotmc.org/
