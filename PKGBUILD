@@ -3,7 +3,7 @@
 
 pkgname=libbigwig
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="library for handling bigWig files"
 arch=('i686' 'x86_64')
 url="https://github.com/dpryan79/libBigWig"
