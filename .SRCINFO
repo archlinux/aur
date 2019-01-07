@@ -1,0 +1,15 @@
+pkgbase = riscv64-linux-gnu-pkg-config
+	pkgdesc = pkg-config that only looks in /usr/riscv64-linux-gnu/lib/pkgconfig and not in /usr/lib/pkgconfig
+	pkgver = 0.29.2
+	pkgrel = 1
+	url = http://pkgconfig.freedesktop.org/wiki/
+	arch = x86_64
+	license = GPL
+	depends = glib2
+	source = https://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
+	source = https://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz.asc
+	md5sums = f6e931e319531b736fadc017f470e68a
+	md5sums = SKIP
+
+pkgname = riscv64-linux-gnu-pkg-config
+
