@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 # set the web view provider: either webkit, webengine, auto or none
-_webview_provider=${TAGEDITOR_WEBVIEW_PROVIDER:-webkit}
+_webview_provider=${TAGEDITOR_WEBVIEW_PROVIDER:-webengine}
 
 # set the JavaScript provider: either script, qml, auto or none
 _js_provider=${TAGEDITOR_JS_PROVIDER:-qml}
@@ -20,17 +20,29 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
 license=('GPL')
 depends=('qtutilities' 'tagparser' 'desktop-file-utils' 'xdg-utils')
-[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base>=5.6')
+[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
-[[ $_webview_provider == webengine ]] && depends+=('qt5-webengine>=5.6')
-[[ $_js_provider == script ]] && depends+=('qt5-script>=5.6')
-[[ $_js_provider == qml ]] && depends+=('qt5-declarative>=5.6')
+[[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
+[[ $_js_provider == script ]] && depends+=('qt5-script')
+[[ $_js_provider == qml ]] && depends+=('qt5-declarative')
 makedepends=('cmake' 'qt5-tools' 'mesa')
 [[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson')
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('0bb4092196051d44cd65a34b42186041ca82384ea1b159304ef81851be918e6a')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
+        '0001-Fix-building-tests-under-32-bit-Linux.patch')
+sha256sums=('0bb4092196051d44cd65a34b42186041ca82384ea1b159304ef81851be918e6a'
+            'ef7d081c335f9d80f00582685bb16acd72e50824d923e680e9a28cf341caa288')
+
+prepare() {
+  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+
+  # apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    msg2 "Applying patch $patch"
+    patch -p1 -i "$patch"
+  done
+}
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
