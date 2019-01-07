@@ -13,7 +13,7 @@ pkgbase = gnuastro
 	depends = libtiff
 	depends = libtool
 	depends = libjpeg
-	source = http://ftp.gnu.org/gnu/gnuastro/gnuastro-latest.tar.gz
+	source = http://ftp.gnu.org/gnu/gnuastro/gnuastro-0.8.tar.gz
 	md5sums = 1f9fe021bf153ac7291af95c95e2d716
 
 pkgname = gnuastro

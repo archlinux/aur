@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('GPL3')
 depends=('gsl' 'cfitsio' 'wcslib' 'libgit2' 'ghostscript' 'libtiff' 'libtool' 'libjpeg')
 url='https://www.gnu.org/software/gnuastro/'
-source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-latest.tar.gz")
+source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('1f9fe021bf153ac7291af95c95e2d716')
 
 prepare() {
