@@ -5,8 +5,8 @@
 # Contributor: Dies <JerryCasiano@gmail.com>
 
 pkgname=font-manager-git
-_branch=testing
-pkgver=0.7.3.r41.geb9c114
+_branch=master
+pkgver=0.7.4.r0.gc202c8c
 pkgrel=1
 pkgdesc='A simple font management application for GTK+ Desktop Environments'
 url='http://fontmanager.github.io'
