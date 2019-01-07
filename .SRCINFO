@@ -1,0 +1,15 @@
+pkgbase = setup
+	pkgdesc = A utility for manage dotfiles and install scripts.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.gitlab.com/DavidBittner/setup
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	provides = setup
+	conflicts = setup
+	source = https://gitlab.com/davidbittner/setup/-/jobs/142141969/artifacts/download.zip
+	sha512sums = 49fb9b865544c3f117b66e20622f14eea913451affcbb9cd5827a20b0fcca3f83411785858ab02f6ff74aee422dc6fc9021cba2850245df1cf5f8d7ce4bba91f
+
+pkgname = setup
+
