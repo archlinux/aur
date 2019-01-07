@@ -7,7 +7,7 @@ _pkgname=libvirt
 pkgname=libvirt-apparmor
 pkgver=4.10.0
 pkgrel=0
-pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
+pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc). Compiled with Audit and AppArmor support."
 arch=('x86_64')
 url="http://libvirt.org/"
 license=('LGPL')
@@ -130,7 +130,9 @@ build() {
     --with-storage-lvm \
     --with-storage-zfs \
     --with-audit \
-    --with-secdriver-apparmor
+    --with-apparmor \
+    --with-secdriver-apparmor \
+    --with-apparmor-profiles
   make
 }
 
