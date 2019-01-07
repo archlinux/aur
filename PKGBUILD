@@ -8,16 +8,16 @@
 
 pkgname=geany-plugin-markdown-gtk3
 _downloadname=geany-plugins
-pkgver=1.31
+pkgver=1.34
 pkgrel=1
 pkgdesc='Markdown plugin for Geany'
 arch=('x86_64' 'i686')
 url='http://plugins.geany.org/'
 license=('GPL')
-depends=("geany-gtk3>=$pkgver" 'discount' 'webkitgtk')
+depends=("geany>=$pkgver" 'discount' 'webkitgtk')
 makedepends=('intltool' 'vala' 'gdb' 'cppcheck')
 source=("http://plugins.geany.org/$_downloadname/$_downloadname-$pkgver.tar.bz2")
-sha256sums=('76bd9e803db5a626b86669f08330cf95b8cc35057a1cdf65759bc00aef120e25')
+sha256sums=('244417c681636e82a63cf6f9901b5b7f3889168f7d9b5ba9b45601767a589c3b')
 
 build() {
   cd "$_downloadname-$pkgver"
