@@ -29,13 +29,13 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --with-udevrulesprefix=60-
 	make
 }
 
 check() {
 	cd "${pkgname%-git}"
-	./configure --prefix=/usr --enable-unit --enable-integration
+	./configure --prefix=/usr --with-udevrulesprefix=60- --enable-unit --enable-integration
 	make check
 }
 
@@ -43,4 +43,5 @@ package() {
 	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir" install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	echo 'u tss - "tpm2-tss udev rules"' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
