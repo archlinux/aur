@@ -1,8 +1,8 @@
 pkgbase = libclipboard-git
 	pkgdesc = Lightweight cross-platform C clipboard library
-	pkgver = 1.0.2
-	pkgrel = 1
-	url = https://github.com/czipperz/libclipboard
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = https://github.com/jtanx/libclipboard
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = libclipboard-git
 	makedepends = git
 	depends = libxcb
 	provides = libclipboard
-	source = git://github.com/czipperz/libclipboard
+	source = git://github.com/jtanx/libclipboard
 	sha256sums = SKIP
 
 pkgname = libclipboard-git
