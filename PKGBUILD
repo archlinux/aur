@@ -3,7 +3,7 @@
 pkgbase=python-jgraph
 pkgname=('python-jgraph')
 pkgver='0.2.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="View graph data structures in the IPython notebook"
 arch=('any')
 url="http://patrick-fuller.com/jgraph/"
@@ -15,7 +15,7 @@ package_python-jgraph(){
   makedepends=('python-pip')
   depends=('python'
            'ipython')
-  pip install --no-deps --target "${pkgdir}/usr/lib/python3.5/site-packages" "jgraph-${pkgver}-py2.py3-none-any.whl"
+  pip install --no-deps --target "${pkgdir}/usr/lib/python3.7/site-packages" "jgraph-${pkgver}-py2.py3-none-any.whl"
 }
 
 # vim: ts=2 sw=2 et

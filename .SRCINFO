@@ -1,7 +1,7 @@
 pkgbase = python-jgraph
 	pkgdesc = View graph data structures in the IPython notebook
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://patrick-fuller.com/jgraph/
 	arch = any
 	license = MIT
