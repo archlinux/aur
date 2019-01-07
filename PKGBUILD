@@ -3,7 +3,7 @@
 pkgname=tela-icon-theme-git
 _gitname=Tela-icon-theme
 pkgdesc="A flat colorful Design icon theme."
-pkgver=7.c7c6739
+pkgver=25.3f7085f
 pkgrel=1
 arch=('any')
 url="https://github.com/vinceliuice/Tela-icon-theme"
@@ -18,9 +18,8 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${_gitname}"
-	install -dm755 "${pkgdir}/"usr/share/icons/Tela
-	
-	cd Tela
-	cp -r . "${pkgdir}/"usr/share/icons/Tela
+	install -dm755 "${pkgdir}/"usr/share/icons
+	sed -i '/gtk-update-icon-cache/d' Install
+	./Install -d "${pkgdir}"/usr/share/icons
 }
 	
