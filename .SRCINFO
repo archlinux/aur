@@ -41,10 +41,8 @@ pkgbase = spectrum2
 	optdepends = libev: LibPurple backend support - libev eventloop
 	source = https://github.com/hanzz/spectrum2/archive/2.0.9.tar.gz
 	source = spectrum2.service
-	source = log4cxx-fix.patch
 	sha256sums = e536a65ef86aafdc6d87f3c6b5bce919a67054dd01f757a2dbc82acbbdd0fa87
 	sha256sums = 8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1
-	sha256sums = 1c1c867ef69a8d333197ffb2b2ddcf64527f34d92ee10597d85fd1d95c54e8f6
 
 pkgname = spectrum2
 

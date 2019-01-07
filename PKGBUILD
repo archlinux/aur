@@ -32,11 +32,9 @@ options=()
 install=
 changelog=
 source=("https://github.com/hanzz/$pkgname/archive/$pkgver.tar.gz"
-        'spectrum2.service'
-        'log4cxx-fix.patch')
+        'spectrum2.service')
 sha256sums=('e536a65ef86aafdc6d87f3c6b5bce919a67054dd01f757a2dbc82acbbdd0fa87'
-            '8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1'
-            '1c1c867ef69a8d333197ffb2b2ddcf64527f34d92ee10597d85fd1d95c54e8f6')
+            '8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1')
 
 noextract=()
 validpgpkeys=()
