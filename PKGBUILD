@@ -1,4 +1,4 @@
-#Maintainer: David McInnis <davidm@eagles.ewu.edu>
+#Maintainer: David McInnis <dave@dave3.xyz>
 
 pkgname=python-mahotas
 shrtname=mahotas
