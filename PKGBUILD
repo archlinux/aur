@@ -2,7 +2,7 @@
 
 pkgname=('python-pyfr-git')
 _pkgname=('PyFR')
-pkgver=0.1.0.r723.ged2a7d5
+pkgver=0.1.0.r751.g9d4d5e9
 pkgrel=1
 pkgdesc="Python based framework for solving advection-diffusion type problems on streaming architectures (git version)"
 arch=('i686' 'x86_64')
@@ -12,8 +12,9 @@ conflicts=('python-pyfr')
 makedepends=('python-setuptools')
 source=("${_pkgname}::git+https://github.com/vincentlab/${_pkgname}.git#branch=develop")
 #mpi4py
+	#  'python-h5py>=2.6'
 depends=( 'python-gimmik>=2.0'
-	  'python-h5py>=2.6'
+	  'python-h5py-openmpi>=2.6'
 	  'python-numpy>=1.8'
 	  'python-pytools>=2016.2.1'
 	  'python-mako>=1.0.0'
