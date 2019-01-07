@@ -52,11 +52,6 @@ prepare() {
     sed -i 's/==/>=/' "$srcdir/$_pkgname/requirements.txt"
 }
  
-check() {
-  cd "$srcdir/$_pkgname"
-  python setup.py test
-}
- 
 build() {
     cd "$srcdir/$_pkgname"
     python setup.py build
