@@ -1,14 +1,14 @@
 pkgbase = nodenv-node-build
 	pkgdesc = Install NodeJS versions
-	pkgver = 3.0.14
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/nodenv/node-build
 	arch = any
 	license = MIT
 	conflicts = nodenv-node-build-git
 	conflicts = node-build
-	source = https://github.com/nodenv/node-build/archive/v3.0.14.tar.gz
-	md5sums = e04a3ce60add8887341187c87f44bfb2
+	source = https://github.com/nodenv/node-build/archive/v4.3.0.tar.gz
+	md5sums = c84850e738cfb32831d16b5aabd3c4c1
 
 pkgname = nodenv-node-build
 

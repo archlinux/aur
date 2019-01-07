@@ -2,7 +2,7 @@
 # Maintainer: Francesco Persico <francesco.persico@gmail.com>
 
 pkgname=nodenv-node-build
-pkgver=3.0.14
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Install NodeJS versions"
 arch=("any")
@@ -10,7 +10,7 @@ url="https://github.com/nodenv/node-build"
 license=("MIT")
 conflicts=("${pkgname}-git" "node-build")
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=("ae0cff5519b80c3d7238b78c9fa8513f")
+md5sums=("c84850e738cfb32831d16b5aabd3c4c1")
 
 package() {
 	cd "${srcdir}/node-build-${pkgver}"
