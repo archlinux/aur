@@ -1,0 +1,20 @@
+pkgbase = google-music-manager-downloader-git
+	pkgdesc = Google Music Manager Downloader Daemon
+	pkgver = r54.095e7d9
+	pkgrel = 1
+	url = https://github.com/jaymoulin/google-music-manager-downloader
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-netifaces
+	depends = python-watchdog
+	depends = python-gmusicapi-git
+	depends = python-beautifulsoup4
+	provides = google-music-manager-downloader
+	conflicts = google-music-manager-downloader
+	source = google-music-manager-downloader::git+https://github.com/jaymoulin/google-music-manager-downloader.git
+	sha256sums = SKIP
+
+pkgname = google-music-manager-downloader-git
+
