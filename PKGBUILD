@@ -46,7 +46,7 @@ makedepends=('git')
 source=('git+https://github.com/derrix060/onedriveClient'
         'onedriveClient.service')
 sha256sums=('SKIP'
-            '28466f805eca825145be503643d801273e8d00103b747fcd649b05dd04f6245e')
+            '28d391659002d7af93628dc9831f4a5c')
  
 prepare() {
     sed -i 's/==/>=/' "$srcdir/$_pkgname/requirements.txt"
