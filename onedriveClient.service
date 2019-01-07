@@ -1,0 +1,13 @@
+[Unit]
+Description=A Microsoft OneDrive client for Linux, written in Python3.
+Documentation=https://github.com/derrix060/onedriveClient
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/onedrive-client start --debug
+ExecStop=/usr/bin/onedrive-client stop
+ExecReload=/usr/bin/onedrive-client restart
+
+[Install]
+WantedBy=multi-user.target
