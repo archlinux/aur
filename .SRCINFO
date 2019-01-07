@@ -1,0 +1,17 @@
+pkgbase = electrum-personal-server-git
+	pkgdesc = Electrum Personal Server
+	pkgver = eps.v0.1.6.r9.ga8f6f44
+	pkgrel = 1
+	url = https://github.com/chris-belcher/electrum-personal-server
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-wheel
+	provides = electrum-personal-server
+	conflicts = electrum-personal-server
+	source = electrum-personal-server::git+https://github.com/chris-belcher/electrum-personal-server.git
+	sha512sums = SKIP
+
+pkgname = electrum-personal-server-git
+
