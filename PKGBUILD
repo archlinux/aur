@@ -19,7 +19,8 @@ optdepends=('gst-plugins-ugly: Extra media codecs'
 conflicts=($_pkgbase)
 source=(git+https://github.com/arfbtwn/banshee.git
 'Report-Pause-Play-Hack.patch')
-md5sums=(SKIP)
+md5sums=(SKIP
+'0b52f50dceacb29b91ee70da143e69b8')
 
 pkgver() {
   cd "$_pkgbase"
