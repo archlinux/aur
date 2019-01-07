@@ -11,6 +11,8 @@ pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,
 arch=('x86_64')
 url="http://libvirt.org/"
 license=('LGPL')
+provides=('libvirt')
+conflicts=('libvirt')
 makedepends=('lvm2' 'linux-api-headers' 'dnsmasq' 'lxc' 'libiscsi' 'open-iscsi'
              'perl-xml-xpath' 'libxslt' 'qemu' 'parted' 'python')
 depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'avahi'
