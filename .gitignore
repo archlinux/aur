@@ -1,8 +1,5 @@
-/lua/
-/mlbuf/
 /mle-git/
-/termbox/
-/uthash/
+/*.log
 /*.tar
 /*.tar.*
 /pkg/
