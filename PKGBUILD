@@ -1,18 +1,25 @@
+# Maintainer: metiis <aur at metiis dot com>
 pkgname=nordvpn-bin
-pkgver=2.0.0
-pkgrel=4
+pkgver=2.1.0_5
+pkgrel=1
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64')
 url="https://nordvpn.com/download/linux/"
 license=('custom')
-depends=('openvpn' 'net-tools')
+depends=('net-tools' 'libxslt' 'iptables' 'procps')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn')
-source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver}_amd64.deb")
-sha256sums=('5fb4f832ce7997b34f90a0671bf3806b44d35c5c24a664d06b40234999dd97d4')
+source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_amd64.deb")
+sha256sums=('684ab467fed5f84d3200a97d92d2f796fe9bb19cecc1f15900a1f88d819bb08b')
 
 package() {
-    bsdtar -O -xf "nordvpn_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+    bsdtar -O -xf "nordvpn_${pkgver//_/-}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+
     mv "${pkgdir}/usr/sbin/nordvpnd" "${pkgdir}/usr/bin"
     rm -r "${pkgdir}/usr/sbin"
+
+    mkdir -p "${pkgdir}/usr/lib/systemd/system/"
+    mv "${pkgdir}/etc/systemd/system/nordvpnd.socket" "${pkgdir}/usr/lib/systemd/system/"
+    mv "${pkgdir}/etc/systemd/system/nordvpnd.service" "${pkgdir}/usr/lib/systemd/system/"
+    rm -r "${pkgdir}/etc"
 }
