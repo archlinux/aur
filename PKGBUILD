@@ -5,7 +5,7 @@
 
 _pkgname=cool-retro-term
 pkgname=$_pkgname-git
-pkgver=1.1.0.r5.g4046bdb
+pkgver=1.1.0.r36.g54a6a7f
 pkgrel=1
 pkgdesc='A good looking terminal emulator which mimics the old cathode display - git version'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ prepare() {
 
 pkgver () {
   cd $_pkgname
-  git describe --tags --long | sed -r 's/^v//;s/-RC/RC/;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long | sed -r 's/^v//;s/-RC/RC/;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
