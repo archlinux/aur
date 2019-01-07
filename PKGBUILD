@@ -2,12 +2,13 @@
 pkgname=wasabi-wallet-bin
 _pkgname=wasabi-wallet
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Privacy focused, ZeroLink compliant Bitcoin wallet"
 arch=('x86_64')
 options=(!strip staticlibs)
 url="https://wasabiwallet.io/"
 license=('MIT')
+depends=('curl' 'fontconfig')
 provides=('wasabi-wallet')
 conflicts=('wasabi-wallet')
 source=(
