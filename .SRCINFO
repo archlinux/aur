@@ -1,6 +1,6 @@
 pkgbase = bloaty-git
 	pkgdesc = A size profiler for binaries
-	pkgver = v1.0.r2.gfeaca23
+	pkgver = 1.0.r2.gfeaca23
 	pkgrel = 1
 	url = https://github.com/google/bloaty
 	arch = x86_64

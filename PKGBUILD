@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Yamakaky <yamakaky@yamaworld.fr>
 pkgname=bloaty-git
-pkgver=v1.0.r2.gfeaca23
+pkgver=1.0.r2.gfeaca23
 pkgrel=1
 pkgdesc='A size profiler for binaries'
 arch=(x86_64 i686)
@@ -17,7 +17,7 @@ pkgver () {
 	cd "${pkgname}"
 	(
 		set -o pipefail
-		git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		git describe --long --tags 2>/dev/null | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
