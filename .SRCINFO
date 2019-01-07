@@ -9,7 +9,7 @@ pkgbase = singularity-container
 	makedepends = go
 	makedepends = dep
 	depends = squashfs-tools
-	noextract = singularity-v3.0.2.tar.gz
+	noextract = singularity-3.0.2.tar.gz
 	source = https://github.com/sylabs/singularity/releases/download/v3.0.2/singularity-3.0.2.tar.gz
 	md5sums = 2f49faa5c6685b28e0124959d0e796a2
 
