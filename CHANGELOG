@@ -1,3 +1,9 @@
+4.0.1
+-----
+
+Fix issue `#35 <https://bitbucket.org/levitsky/pyteomics/issues/35/ordereddict-may-be-in-reversed-order-on>`_
+(incorrect order of deserialized offset indexes on older Python versions).
+
 4.0
 ---
 
