@@ -1,0 +1,6 @@
+# Synchronizations, make sure rbldnsd is restarted after you modify and sync
+# the databases for the first time.
+RSYNC[ip4set]="psbl-mirror.surriel.com::psbl/psbl.txt 
+               rsync.unsubscore.com::LBBL/ubl_rbldns.txt
+"
+

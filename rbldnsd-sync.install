@@ -1,0 +1,20 @@
+
+post_install()
+{
+	systemctl enable --now rbldnsd-sync.timer
+	echo ""
+	echo "Initialising DBLs"
+	echo ""
+	systemctl start rbldnsd-sync
+}
+
+post_upgrade()
+{
+	systemctl daemon-reload
+}
+
+pre_remove()
+{
+	systemctl disable --now rbldnsd-sync.timer
+}
+

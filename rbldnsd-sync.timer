@@ -1,0 +1,10 @@
+[Unit]
+Description=RBLDNSD Synchronisation Timer
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

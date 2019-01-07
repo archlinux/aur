@@ -1,0 +1,14 @@
+[Unit]
+Description=RBLDNSD Synchronisation
+
+[Service]
+Group=rbldnsd
+Type=simple
+Nice=19
+ExecStart=/usr/bin/rbldnsd-sync
+StandardOutput=file:/var/rbldnsd/sync.log
+StandardError=inherit
+
+[Install]
+WantedBy=default.target
+
