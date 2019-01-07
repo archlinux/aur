@@ -2,7 +2,7 @@
 # Contributor: magedon <magedon.zt@gmail.com>
 
 pkgname=bin32-firefox-i18n
-pkgver=46.0
+pkgver=64.0
 pkgrel=1
 pkgdesc="Universal i18n for bin32-firefox - xpi version"
 arch=('x86_64')
@@ -105,5 +105,6 @@ package () {
     install -m644 $item ${pkgdir}/usr/lib32/bin32-firefox/browser/extensions/$iitem
   done
 }
+
 
 
