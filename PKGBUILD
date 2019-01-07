@@ -1,8 +1,8 @@
 # Maintainer: Adrián Pérez de Castro <adrian@perezdecastro.org>
-pkgname='fmsx'
 pkgdesc='Portable MSX/MSX2/MSX2+ emulator'
-pkgver='5.4'
-pkgrel='1'
+pkgname=fmsx
+pkgver=5.4
+pkgrel=2
 _dlname="fMSX${pkgver//./}"
 url='http://fms.komkon.org/fMSX'
 license=('custom')
@@ -50,8 +50,8 @@ prepare () {
 build () {
 	cd "${srcdir}"
 	cat > config.mk <<-EOF
-	CFLAGS += $(pkg-config libpulse-simple --cflags)
-	LIBS += $(pkg-config libpulse-simple --libs)
+	CFLAGS += ${CFLAGS} $(pkg-config libpulse-simple --cflags)
+	LIBS += ${LDFLAGS} $(pkg-config libpulse-simple --libs)
 	EOF
 	make -C fMSX/Unix
 }

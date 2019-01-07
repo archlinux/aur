@@ -1,7 +1,7 @@
 pkgbase = fmsx
 	pkgdesc = Portable MSX/MSX2/MSX2+ emulator
 	pkgver = 5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fms.komkon.org/fMSX
 	arch = i686
 	arch = x86_64

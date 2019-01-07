@@ -1,5 +1,6 @@
-*.ROM
-*.zip
-*.tar*
-/src/
+/*.ROM
+/*.log
+/*.tar*
+/*.zip
 /pkg/
+/src/
