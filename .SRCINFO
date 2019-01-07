@@ -1,6 +1,6 @@
 pkgbase = opentx-companion
 	pkgdesc = EEPROM Editor for OpenTX RC transmitter firmwares
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = http://www.open-tx.org/
 	arch = x86_64
@@ -28,9 +28,9 @@ pkgbase = opentx-companion
 	provides = companion
 	conflicts = companion
 	conflicts = companion9x-svn
-	source = https://github.com/opentx/opentx/archive/2.2.2.tar.gz
+	source = https://github.com/opentx/opentx/archive/2.2.3.tar.gz
 	source = installprefix.patch
-	sha256sums = 234c2cec0ad0f6804e233bd63081b2f81a1d4f780eb9f15d13df7861115cb078
+	sha256sums = 58d39b1be84af58ef2db3b4a77eecad3884269a9a1f3efe8ebcf17feaa49cf50
 	sha256sums = 9d669cf723e98b7be5463538b0590ae7776b3b866a423cceeb30ba9840748c64
 
 pkgname = opentx-companion

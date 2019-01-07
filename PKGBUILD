@@ -2,7 +2,7 @@
 # Previous Maintainer: Jeff Youdontneedtoknow <jeffpublicjr at gmail dot com>
 # Contributer: Arnaud
 pkgname=('opentx-companion')
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="EEPROM Editor for OpenTX RC transmitter firmwares"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://github.com/opentx/opentx/archive/$pkgver.tar.gz"
 )
 #"qt5_modules.patch"
 sha256sums=(
-    '234c2cec0ad0f6804e233bd63081b2f81a1d4f780eb9f15d13df7861115cb078'
+    '58d39b1be84af58ef2db3b4a77eecad3884269a9a1f3efe8ebcf17feaa49cf50'
     '9d669cf723e98b7be5463538b0590ae7776b3b866a423cceeb30ba9840748c64'
 )
     #'30fd1396a47bfc250780786e52447547aafcf934c6fe1775e4301fa3c7185be2'
