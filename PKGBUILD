@@ -2,7 +2,7 @@
 
 pkgname=python-mahotas
 shrtname=mahotas
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="A fast computer vision algorithms (all implemented in C++) operating over numpy arrays"
 url="http://luispedro.org/software/mahotas"
@@ -12,7 +12,7 @@ checkdepends=('python-scipy' 'python-imread' 'python-nose' 'python-pillow')
 license=('MIT')
 arch=('i686' 'x86_64')
 source=("${pkgname}-${pkgver}.zip::https://github.com/luispedro/mahotas/archive/v${pkgver}.zip")
-sha256sums=('ee8dc75e17956660c45dccef1d82326af2ed35ac598439522da9b051afe92202')
+sha256sums=('e8be9f106c3258ae76bd748a331721289fd8c70183c16f444d7e5376aef7c794')
 
 build() {
     cd $srcdir/$shrtname-$pkgver
