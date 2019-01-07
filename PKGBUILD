@@ -7,7 +7,7 @@
 # by setting SYNCTHING_TEST_TIMEOUT_FACTOR
 
 # set the web view provider: either webkit, webengine, auto or none
-_webview_provider=${SYNCTHING_TRAY_WEBVIEW_PROVIDER:-webkit}
+_webview_provider=${SYNCTHING_TRAY_WEBVIEW_PROVIDER:-webengine}
 
 # set the JavaScript provider: either script, qml, auto or none
 _js_provider=${SYNCTHING_TRAY_JS_PROVIDER:-qml}
@@ -24,7 +24,7 @@ _enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-1}
 
 _reponame=syncthingtray
 pkgname=syncthingtray
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
@@ -33,6 +33,8 @@ depends=('qtutilities' 'qt5-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == none ]] && depends+=('qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
+[[ $_js_provider == script ]] && depends+=('qt5-script')
+[[ $_js_provider == qml ]] && depends+=('qt5-declarative')
 [[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 5 desktop')
 makedepends=('cmake' 'qt5-tools' 'mesa')
@@ -41,7 +43,7 @@ checkdepends=('cppunit' 'syncthing')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('85c7578ce4b2d9c2454cfa4b5b3b5617829d1a77f579e7d33b34bd31542a8b32')
+sha256sums=('084289f3a295ef41ae4ebbc3976ca5782b47949ab73a7e12e33c72d271e869ea')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
