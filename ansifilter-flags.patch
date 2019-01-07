@@ -1,0 +1,18 @@
+diff -Naur ansifilter-2.13.orig/src/makefile ansifilter-2.13/src/makefile
+--- ansifilter-2.13.orig/src/makefile	2019-01-06 19:54:57.946093219 -0500
++++ ansifilter-2.13/src/makefile	2019-01-06 19:57:48.501622737 -0500
+@@ -8,12 +8,12 @@
+ #CC=clang++
+ 
+ # Added -std=c++11 because of auto_ptr to unique_ptr transition
+-CXXFLAGS= -Wall -O2 -DNDEBUG -std=c++11 -fPIC
++CXXFLAGS+= -Wall -O2 -DNDEBUG -std=c++11 -fPIC
+ #CXXFLAGS= -O0 -ggdb -std=c++11 -fPIC
+ #CXXFLAGS="-DNDEBUG -g2 -O3 -march=i686" 
+ #cov-build --dir cov-int make -j 2
+ 
+-LDFLAGS=
++LDFLAGS+=
+ 
+ SOURCES=arg_parser.o stringtools.o cmdlineoptions.o main.o platform_fs.o\
+ codegenerator.o htmlgenerator.o pangogenerator.o texgenerator.o latexgenerator.o rtfgenerator.o\

@@ -3,14 +3,21 @@
 
 pkgname=ansifilter
 pkgver=2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="remove or convert ANSI codes to another format"
 arch=('i686' 'x86_64')
 url="http://www.andre-simon.de/doku/ansifilter/en/ansifilter.php"
 license=('GPL3')
 depends=('gcc-libs')
-source=("http://www.andre-simon.de/zip/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('4022e6d763512cbbadc47264266c8796ee654ebd2f43daca4599d1f0281812c0')
+source=("http://www.andre-simon.de/zip/${pkgname}-${pkgver}.tar.bz2"
+        "ansifilter-flags.patch")
+sha256sums=('4022e6d763512cbbadc47264266c8796ee654ebd2f43daca4599d1f0281812c0'
+            '2d2feb27f4e07a78c95d423ecea144e225940508004e023d21c8bb67ae77c72a')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i "${srcdir}/ansifilter-flags.patch"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
