@@ -9,7 +9,7 @@ pkgbase = xmacro
 	depends = xorg-server
 	depends = libxtst
 	source = http://download.sarine.nl/xmacro/xmacro-0.4.6.tar.gz
-	md5sums = c1648529aab8d65a92ad43513b9815c5
+	sha256sums = c1c41bdbebaae38ac14537dfa5e05f124ae4ccee22fa2869bc4612ebbba432dd
 
 pkgname = xmacro
 
