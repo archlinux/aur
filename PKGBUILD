@@ -4,7 +4,7 @@
 _name=rogerrouter
 pkgname=roger-router-git
 pkgver=v2.1.0.r8.g3af078e
-pkgrel=2
+pkgrel=3
 pkgdesc="Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"

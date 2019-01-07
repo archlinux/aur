@@ -5,12 +5,17 @@ post_install() {
 		chown root:lp "$pkgdir/var/spool/roger"
 	fi
 
-	if [ ! $(lpstat -s | grep 'socket://localhost' | grep -i 'roger') ]; then
-		echo To add the fax printer install cups...
-		lpadmin -p Roger-Router-Fax -m drv:///sample.drv/generic.ppd -v socket://localhost:9100/ -E -o PageSize=A4 
+	if [ ! "$(lpstat -s | grep 'socket://localhost' | grep -i 'roger')" ]; then
+		lpadmin -p Roger-Router-Fax -m drv:///sample.drv/generic.ppd -v socket://localhost:9100/ -E -o PageSize=A4 || echo "Add the fax printer with: lpadmin -p Roger-Router-Fax -m drv:///sample.drv/generic.ppd -v socket://localhost:9100/ -E -o PageSize=A4"
 		echo
-		echo Users have to be in the group \"lp\" to use this printer.
-		gpasswd --add $USER lp
+		gpasswd --add $(logname) lp || echo "Add a user to the group \"lp\" with: gpasswd --add $(logname) lp"
+	fi
+}
+
+psot_remove() {
+	rogerprinter="$(lpstat -s | grep 'socket://localhost' | grep -i 'roger' | awk '{print $3}' | tr -d ':' | xargs)"
+	if [ $rogerprinter ]; then
+		lpadmin -x $rogerprinter || echo "Remove the fax printer with: lpadmin -x $rogerprinter"
 	fi
 }
 
