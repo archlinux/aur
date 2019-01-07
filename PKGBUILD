@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tools-git
-pkgver=3.0.2.r735.161fee77
+pkgver=3.0.2.r753.5d4cc4ee
 pkgrel=1
 pkgdesc='Trusted Platform Module 2.0 tools based on tpm2-tss'
 arch=('x86_64')
@@ -23,6 +23,7 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
+	sed --in-place 's|@CODE_COVERAGE_RULES@|include $(top_srcdir)/aminclude_static.am|' Makefile.am
 	./bootstrap
 }
 
