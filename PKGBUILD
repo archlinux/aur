@@ -31,6 +31,9 @@ prepare() {
 
   # Allow higher node minor versions
   sed -i 's/"node": "/&^/' package.json
+  
+  # Download modules
+  yarn install
 }
 
 build() {
@@ -38,8 +41,7 @@ build() {
 
   export npm_config_cache="$srcdir/npm_cache"
 
-  # Download modules and build Signal
-  yarn install
+  # Build Signal
   yarn generate
   yarn build-release --dir
 }
