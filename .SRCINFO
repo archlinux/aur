@@ -1,7 +1,7 @@
 pkgbase = python-mahotas
 	pkgdesc = A fast computer vision algorithms (all implemented in C++) operating over numpy arrays
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://luispedro.org/software/mahotas
 	arch = i686
 	arch = x86_64
