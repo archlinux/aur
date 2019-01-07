@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=wmfocus
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Visually focus window by label"
 url="https://github.com/svenstaro/wmfocus"

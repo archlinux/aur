@@ -1,6 +1,6 @@
 pkgbase = wmfocus
 	pkgdesc = Visually focus window by label
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/svenstaro/wmfocus
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wmfocus
 	depends = xcb-util-keysyms
 	depends = cairo
 	depends = libxkbcommon-x11
-	source = https://github.com/svenstaro/wmfocus/archive/1.1.0.tar.gz
+	source = https://github.com/svenstaro/wmfocus/archive/1.1.1.tar.gz
 	sha512sums = fb3bc44b5c45cff4275dcbd01ad20c5289cc4a9b48e9fa81e7e1a2327b998d84c826165a1b23017ad23b8f86da1515b2bac392fdbd5aa175abadafc99dbf105d
 
 pkgname = wmfocus
