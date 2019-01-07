@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
+	sed --in-place 's|@CODE_COVERAGE_RULES@|include $(top_srcdir)/aminclude_static.am|' Makefile.am
 	autoreconf --install --force
 }
 
