@@ -1,0 +1,20 @@
+pkgbase = google-music-manager-auth-git
+	pkgdesc = Google Music Manager Auth Daemon
+	pkgver = r54.08a07b9
+	pkgrel = 1
+	url = https://github.com/jaymoulin/google-music-manager-auth
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-netifaces
+	depends = python-watchdog
+	depends = python-gmusicapi-git
+	depends = python-beautifulsoup4
+	provides = google-music-manager-auth
+	conflicts = google-music-manager-auth
+	source = google-music-manager-auth::git+https://github.com/jaymoulin/google-music-manager-auth.git
+	sha256sums = SKIP
+
+pkgname = google-music-manager-auth-git
+
