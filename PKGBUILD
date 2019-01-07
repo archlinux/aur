@@ -1,4 +1,5 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname='catt'
 pkgver=0.8.1
