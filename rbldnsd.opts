@@ -1,3 +1,6 @@
+# The zone name
+ZONE=rbl.example.com
+
 # Specify the IP addresses to which the daemon should bind
 # The default port is 53. If you have to specify an other port
 # then you will add "/<port>" behind the IP address
@@ -12,14 +15,7 @@ CHECK_TIME=60
 # Set default reply time−to−live (TTL) value to be defttl, and set
 # constraints for TTL to minttl and maxttl.
 # TTL=defttl:minttl:maxttl or TTL=defttl
-TTL=21600
-
-# The zone name
-ZONE=rbl.example.com
-
-# Synchronizations, make sure rbldnsd is restarted after you modify and sync
-# the databases for the first time.
-RSYNC[ip4set]="psbl-mirror.surriel.com::psbl/psbl.txt rsync.unsubscore.com::LBBL/ubl_rbldns.txt"
+TTL=3600
 
 # Other options
 # OPTIONS="$OPTIONS -l query.log"

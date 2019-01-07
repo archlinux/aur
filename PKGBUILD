@@ -1,76 +1,58 @@
 # Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
-pkgbase=rbldnsd
-pkgname=($pkgbase $pkgbase-sync)
+pkgname=rbldnsd
 pkgver=0.998b
-pkgrel=4
+pkgrel=5
 pkgdesc="Small Daemon for DNSBLs"
 arch=(x86_64)
 url=https://rbldnsd.io
 license=(GPL)
-source=($pkgbase-$pkgver.tar.gz::https://github.com/spamhaus/rbldnsd/archive/0.998b.tar.gz
-		$pkgbase.sh
-		$pkgbase.sysusers
-		$pkgbase.tmpfiles
-		$pkgbase.service
-		$pkgbase.opts
-		$pkgbase.ip4set
-		$pkgbase-sync.service
-		$pkgbase-sync.timer
-		$pkgbase-sync.sh
+source=($pkgname-$pkgver.tar.gz::https://github.com/spamhaus/rbldnsd/archive/$pkgver.tar.gz
+		$pkgname.sh
+		$pkgname.sysusers
+		$pkgname.tmpfiles
+		$pkgname.service
+		$pkgname.opts
+		$pkgname.ip4set
 		)
+backup=(etc/conf.d/$pkgname)
+install=$pkgname.install
 sha256sums=('7f6abacb561bad4ec6014e75d44c4cce48d67ed13b7a5cd61bcc6566b3c0b8c7'
-            '312a7b6ad2f873b3ff4256810cd03288805236cde853316beff28e9883b766cd'
+            '3804cb9d9e94b66126541197afa69d10609a14a8c2f5100ca3f016ce8eec82ea'
             '8e671965d7a80ffab0279f4b08a751d596ade0b02abdb8b860e39aabfb677734'
             '19a540e4619334fd8c6604adc3337f51c95089f87f64ebb5c2b0760dc571ea49'
             'f17616ba4220550f933578371b9a11018ec993879fb2813215a65de84c3dce1f'
-            '8e9cb2c4c6334dee5db9068d72917f106dc90acf6e233b90c18a5e9cc5d2aa58'
-            '80e32fa4746acf8f3d00f735eef4c1584979ac59e899bee22f6e07a9b2ba9b06'
-            '9fd85509bb69f393b4520b20d6f645140c1650dd8c47b789597639b872d8b72f'
-            '69d23c6043d96b40f539b178d452f2753d602a68f3d5381b2c54cc142f70aad2'
-            '9d7b337d21d9801c253955fe790c9228b5455969a5167577c515d31b30740f34')
+            '56fb9b9290d089b773622b401fc552dec467a5649d47552bec85f80e6ab69664'
+            '80e32fa4746acf8f3d00f735eef4c1584979ac59e899bee22f6e07a9b2ba9b06')
 
 prepare()
 {
-	cd $srcdir/$pkgbase-$pkgver
+	cd $srcdir/$pkgname-$pkgver
 	./configure
 }
 
 build()
 {
-	cd $srcdir/$pkgbase-$pkgver
+	cd $srcdir/$pkgname-$pkgver
 	make
 }
 
-package_rbldnsd()
+package()
 {
-	backup=(etc/conf.d/$pkgbase)
-	install=$pkgbase.install
 
-	pushd $srcdir/$pkgbase-$pkgver
-	install -Dm755 $pkgbase $pkgdir/usr/lib/$pkgbase/$pkgbase
-	install -Dm644 $pkgbase.8 $pkgdir/usr/share/man/man8/$pkgbase.8
+	pushd $srcdir/$pkgname-$pkgver
+	install -Dm755 $pkgname $pkgdir/usr/lib/$pkgname/$pkgname
+	install -Dm644 $pkgname.8 $pkgdir/usr/share/man/man8/$pkgname.8
 	popd
 
-	install -Dm755 $pkgbase.sh $pkgdir/usr/bin/$pkgbase
-	install -Dm644 $pkgbase.sysusers $pkgdir/usr/lib/sysusers.d/$pkgbase.conf
-	install -Dm644 $pkgbase.service $pkgdir/usr/lib/systemd/system/$pkgbase.service
-	install -Dm644 $pkgbase.tmpfiles $pkgdir/usr/lib/tmpfiles.d/$pkgbase.conf
-	install -Dm644 $pkgbase.opts $pkgdir/etc/conf.d/$pkgbase
+	install -Dm755 $pkgname.sh $pkgdir/usr/bin/$pkgname
+	install -Dm644 $pkgname.sysusers $pkgdir/usr/lib/sysusers.d/$pkgname.conf
+	install -Dm644 $pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
+	install -Dm644 $pkgname.tmpfiles $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
+	install -Dm644 $pkgname.opts $pkgdir/etc/conf.d/$pkgname
 
-	install -Dm644 $pkgbase.ip4set $pkgdir/usr/lib/$pkgbase/local.txt.ip4set
+	install -Dm644 $pkgname.ip4set $pkgdir/usr/lib/$pkgname/local.txt.ip4set
 
-	gzip -9 $pkgdir/usr/share/man/man8/$pkgbase.8
-}
-
-package_rbldnsd-sync()
-{
-	depends=($pkgbase rsync)
-	install=$pkgbase-sync.install
-	pkgdesc="Syncrhonization for RBLDNSD"
-
-	install -Dm755 $pkgbase-sync.sh $pkgdir/usr/lib/$pkgbase/$pkgbase-sync.sh
-	install -Dm644 $pkgbase-sync.service $pkgdir/usr/lib/systemd/system/$pkgbase-sync.service
-	install -Dm644 $pkgbase-sync.timer $pkgdir/usr/lib/systemd/system/$pkgbase-sync.timer
+	gzip -9 $pkgdir/usr/share/man/man8/$pkgname.8
 }
 
