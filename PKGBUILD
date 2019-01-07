@@ -3,7 +3,7 @@
 
 pkgname=spectrum2
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 #epoch=
 pkgdesc="an open source instant messaging transport"
 arch=('any')
@@ -41,10 +41,6 @@ sha256sums=('e536a65ef86aafdc6d87f3c6b5bce919a67054dd01f757a2dbc82acbbdd0fa87'
 noextract=()
 validpgpkeys=()
 
-prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-	patch -p1 < ../log4cxx-fix.patch
-}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
