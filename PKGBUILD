@@ -12,7 +12,7 @@ _js_provider=${SYNCTHING_TRAY_JS_PROVIDER:-qml}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
@@ -21,10 +21,12 @@ depends=('mingw-w64-crt' 'mingw-w64-qt5-svg' 'mingw-w64-qtutilities' 'mingw-w64-
 [[ $_webview_provider == none ]] && depends+=('mingw-w64-qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('mingw-w64-qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('mingw-w64-qt5-webengine')
+[[ $_js_provider == script ]] && depends+=('mingw-w64-qt5-script')
+[[ $_js_provider == qml ]] && depends+=('mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('85c7578ce4b2d9c2454cfa4b5b3b5617829d1a77f579e7d33b34bd31542a8b32')
+sha256sums=('084289f3a295ef41ae4ebbc3976ca5782b47949ab73a7e12e33c72d271e869ea')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
