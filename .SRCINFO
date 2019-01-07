@@ -11,7 +11,7 @@ pkgbase = wmfocus
 	depends = cairo
 	depends = libxkbcommon-x11
 	source = https://github.com/svenstaro/wmfocus/archive/1.1.1.tar.gz
-	sha512sums = fb3bc44b5c45cff4275dcbd01ad20c5289cc4a9b48e9fa81e7e1a2327b998d84c826165a1b23017ad23b8f86da1515b2bac392fdbd5aa175abadafc99dbf105d
+	sha512sums = 1f13abb12affddc9c67ea3c09edf4b9bbc73a69aae6860056ac464b8fda0cbacde02937a8b25dd65e5c863e35acd17bb7c44fbffef95e93697b8f9da4e8c9227
 
 pkgname = wmfocus
 
