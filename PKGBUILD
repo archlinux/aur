@@ -1,4 +1,4 @@
-# Maintainer: Márk Sági-Kazár <mark.sagi-kazar@gmail.com>
+# Maintainer: Márk Sági-Kazár <mark.sagikazar@gmail.com>
 # Maintainer: Bence Hornák <hornak.bence@gmail.com>
 
 pkgname=anyk
