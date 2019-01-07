@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname='beancount-hg'
 pkgdesc='Double-Entry Accounting from Text Input'
-pkgver=r4435.17e54014214b
+pkgver=2.2.0.r2.9d7552d320a3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://furius.ca/beancount/"
@@ -13,12 +13,12 @@ depends=('python>=3.5' 'mpdecimal' 'python-ply' 'python-dateutil'
 		 'python-bottle' 'python-lxml' 'python-google-api-python-client')
 makedepends=('mercurial' 'python-nose' 'make')
 replaces=('ledgerhub-hg')
-provides=('ledgerhub-hg' 'beancount')
+provides=('ledgerhub-hg' "beancount=${pkgver%%.r*}")
 conflicts=('beancount')
 
-pkgver () {
-	cd "${pkgname}"
-	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+pkgver() {
+  cd "${pkgname}"
+  hg log -r . --template '{latesttag}-{latesttagdistance}-{node|short}' | sed 's/^\([^-]*\)-\([^-]*\)-/\1.r\2./'
 }
 
 # TODO: Tests are failing at the moment, needs investigating.

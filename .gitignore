@@ -1,1 +1,6 @@
-beancount-hg
+/beancount-hg/
+/pkg/
+/src/
+/*.log
+/*.tar
+/*.tar.*

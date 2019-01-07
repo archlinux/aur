@@ -1,6 +1,6 @@
 pkgbase = beancount-hg
 	pkgdesc = Double-Entry Accounting from Text Input
-	pkgver = r4435.17e54014214b
+	pkgver = 2.2.0.r2.9d7552d320a3
 	pkgrel = 1
 	url = http://furius.ca/beancount/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = beancount-hg
 	depends = python-lxml
 	depends = python-google-api-python-client
 	provides = ledgerhub-hg
-	provides = beancount
+	provides = beancount=2.2.0
 	conflicts = beancount
 	replaces = ledgerhub-hg
 	source = beancount-hg::hg+https://bitbucket.org/blais/beancount/
