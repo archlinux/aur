@@ -8,7 +8,7 @@ license=('GPL3')
 depends=('python' 'python-persistentlist' 'python-tweepy' 'python-feedparser')
 makedepends=('python' 'python-setuptools')
 source=(
-    "https://github.com/chaica/${pkgname}/archive/$pkgver.tar.gz"
+    "https://files.pythonhosted.org/packages/b5/4f/d7254341629ac5e73e0222efbbbf22adc8143f34366346b46df112b9110e/feed2tweet-1.1.tar.gz"
 )
 
 package() {
@@ -17,4 +17,4 @@ package() {
   python3 setup.py install --prefix=/usr --root="${pkgdir}"
 }
 
-md5sums=('be9c09c1c8f2be360240661173421d02')
+sha256sums=("d15e35ef8a34b6475af5afb45f38c362eff47163905a5ba781896366bf274a9f")
