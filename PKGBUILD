@@ -5,7 +5,7 @@
 # Contributer: Colin Woodbury <colingw@gmail.com>
 
 pkgname=xmobar-git
-pkgver=0.27+2+gcbde794
+pkgver=0.29.4
 pkgrel=1
 pkgdesc='Minimalistic Text Based Status Bar'
 url='https://hackage.haskell.org/package/xmobar'
@@ -16,7 +16,7 @@ depends=('libxft' 'libxinerama' 'libxrandr' 'libxpm' 'ghc-libs' 'haskell-x11'
          'haskell-hinotify' 'haskell-stm' 'haskell-parsec' 'haskell-parsec-numbers'
          'haskell-mtl' 'haskell-regex-base' 'haskell-regex-compat'
          'haskell-http' 'haskell-dbus' 'haskell-libmpd' 'haskell-iwlib'
-         'wireless_tools' 'haskell-text')
+         'wireless_tools' 'haskell-text' 'haskell-async' 'haskell-extensible-exceptions')
 makedepends=('git' 'ghc')
 conflicts=('xmobar')
 provides=('xmobar')
@@ -25,7 +25,12 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  git describe --tags --always|sed 's|-|+|g'|sed -r 's|v(.+)|\1|'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed -E 's|\.r0\.\w+$||'
+}
+
+prepare() {
+  cd ${pkgname}
+  sed -i -e 's/==.*0.3/== 0.4/' -e 's/< *4.12/<5/' -e 's/< *2.5/<3/' xmobar.cabal
 }
 
 build() {
