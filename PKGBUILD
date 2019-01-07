@@ -3,7 +3,7 @@
 
 pkgname=ldraw-parts-library
 pkgver=20181229
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of LDraw-format CAD files representing many of LEGO bricks produced"
 arch=(any)
 url="http://www.ldraw.org/parts/latest-parts.html"
@@ -33,6 +33,6 @@ package() {
 }
 
 md5sums=('4d8476c5c1b16482e9fa2d74d1a03f5b'
-         'afb1735193d8fc1862bd03e51919e51c'
+         '97d6deee4b8b7171708b458b7908a02c'
          '2acda6add7ed39994a710bd70aa96fc1'
          '8fca376070b84bea4d4c42c736a378de')
