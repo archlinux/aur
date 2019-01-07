@@ -9,6 +9,7 @@ url='https://github.com/dtao/safe_yaml'
 arch=('any')
 license=('MIT')
 depends=('ruby')
+makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/dtao/safe_yaml/archive/${pkgver}.tar.gz)
 sha256sums=('fb6939f6780680716a7c1eeb4ddf843d03a5951539fcdccce5901c3eb0a525c9')
