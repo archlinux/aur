@@ -2,8 +2,8 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=printrun
-pkgver=1.6.0
-pkgrel=2
+pkgver=2.0.0rc5
+pkgrel=1
 epoch=1
 _projectname='Printrun'
 _gittag="printrun-${pkgver}"
@@ -13,23 +13,23 @@ url='https://github.com/kliment/Printrun'
 license=('GPL')
 provides=('printrun-git')
 conflicts=('printrun-git')
-depends=('python2-pyserial' 'wxpython' 'python2-pyglet')
+depends=('python-pyserial' 'python-wxpython' 'python-pyglet' 'python-numpy')
 optdepends=(
-  'python2-cairo: to use Projector feature'
-  'python2-cairosvg: to use Projector feature'
-  'python2-numpy: for 3D view'
-  'python2-dbus: to inhibit sleep when printing'
-  'python2-psutil: to increase process priority when printing')
-makedepends=('cython2')
+  'python-cairo: to use Projector feature'
+  'python-cairosvg: to use Projector feature'
+  'python-dbus: to inhibit sleep when printing'
+  'python-psutil: to increase process priority when printing')
+makedepends=('cython')
 source=("https://github.com/kliment/${_projectname}/archive/${_gittag}.tar.gz")
-sha256sums=('fefcb4c5793fc77205a14263bc915616cde0523cd60704f356191b9ae34ba65d')
+sha256sums=('624b7918ba71cf8e07f430e596579a5357c27bc00f830bfbb666d37e0a101846')
 
 build() {
   cd "${srcdir}/${_projectname}-${_gittag}"
-  python2 setup.py build
+  python setup.py build
+  python setup.py build_ext --inplace
 }
 
 package() {
   cd "${srcdir}/${_projectname}-${_gittag}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
