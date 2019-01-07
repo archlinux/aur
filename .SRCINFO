@@ -8,7 +8,9 @@ pkgbase = libbigwig
 	license = MIT
 	depends = curl
 	source = libbigwig-0.4.2.tar.gz::https://github.com/dpryan79/libBigWig/archive/0.4.2.tar.gz
+	source = libbigwig-flags.patch
 	sha256sums = c32c655bf6e383226f76fd4052e0371848a274bc14502a0fe1b851b6d901c85b
+	sha256sums = 33be8bbc296c3ff022063d9907ad8975033cd47a5d91b052290507d531abd530
 
 pkgname = libbigwig
 

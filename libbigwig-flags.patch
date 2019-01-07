@@ -1,0 +1,16 @@
+diff -Naur libBigWig-0.4.2.orig/Makefile libBigWig-0.4.2/Makefile
+--- libBigWig-0.4.2.orig/Makefile	2019-01-06 20:07:43.880826741 -0500
++++ libBigWig-0.4.2/Makefile	2019-01-06 20:08:34.784586373 -0500
+@@ -1,10 +1,10 @@
+ CC ?= gcc
+ AR ?= ar
+ RANLIB ?= ranlib
+-CFLAGS ?= -g -Wall -O3 -Wsign-compare
++CFLAGS += -g -Wall -O3 -Wsign-compare
+ LIBS = -lcurl -lm -lz
+ EXTRA_CFLAGS_PIC = -fpic
+-LDFLAGS =
++LDFLAGS +=
+ LDLIBS =
+ INCLUDES = 
+ 
