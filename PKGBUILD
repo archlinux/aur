@@ -1,6 +1,6 @@
 # Maintainers: Perry Hung <perry@leaflabs.com> Florent Thiery <fthiery@gmail.com>
 pkgname=decklink
-pkgver=10.10
+pkgver=10.11.4
 pkgrel=1
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
@@ -9,14 +9,13 @@ license=('custom')
 makedepends=('curl')
 depends=('linux-headers' 'libxml2' 'libpng12' 'glu' 'qt4')
 options=('!strip' 'staticlibs')
-install='decklink.install'
 
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/046b297aa3a844fa8fc46d6c32241dbd"
+pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/f9a1f5fda76447838a8d0e5fb363dcd8"
 pkgsrc_file=$pkgname-${pkgver}.tar.gz
-pkgsrc_sha256sum="2ef7f504433e32fef970c12dd9d3b62e47162426c776d0485b503ed000ebb7c3"
+pkgsrc_sha256sum="f6ef48313309a0a06e54a66e2bfd1421ff6ece93394045d2fc23669e6fbc9e0f"
 
 prepare() {
   if [ -f $pkgsrc_file ]; then
@@ -32,16 +31,19 @@ prepare() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-	ln -s /usr/share/doc/desktopvideo/License.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  chmod 755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s /usr/share/doc/desktopvideo/License.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
-	cd $srcdir/Blackmagic_Desktop_Video_Linux_$pkgver/other/${_arch}
+  cd $srcdir/Blackmagic_Desktop_Video_Linux_$pkgver/other/${_arch}
 
-	tar xf desktopvideo-*-${_arch}.tar.gz
-	cp -a desktopvideo-*-${_arch}/* $pkgdir
-	rm -rf $pkgdir/usr/sbin
+  tar xf desktopvideo-*-${_arch}.tar.gz
+  cp -a desktopvideo-*-${_arch}/* $pkgdir
+  rm -rf $pkgdir/usr/sbin
 
-	tar xf mediaexpress-*-${_arch}.tar.gz
-	cp -a mediaexpress-*-${_arch}/* $pkgdir
+  find ${pkgdir} -name dkms.conf -exec sed -i 's|POST_INSTALL="../../lib/blackmagic/blackmagic-loader $PACKAGE_NAME $PACKAGE_VERSION"||' {} \;
+
+  tar xf mediaexpress-*-${_arch}.tar.gz
+  cp -a mediaexpress-*-${_arch}/* $pkgdir
 }
 
