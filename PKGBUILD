@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-wheel')
 conflicts=('electrum-personal-server')
 provides=('electrum-personal-server')
-makedepends=('python-pip')
+makedepends=('python-setuptools')
 source=("${_gitname}::git+https://github.com/chris-belcher/$_gitname.git")
 sha512sums=('SKIP')
 
@@ -28,5 +28,4 @@ build() {
 package(){
   cd "$srcdir/$_gitname"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  mv "$pkgdir/usr/bin/electrum-personal-server" "$pkgdir/usr/bin/electrum-personal-server"
 }
