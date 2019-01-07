@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-tss-engine-git
 pkgver=r33.c9061a7
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenSSL engine for Trusted Platform Module 2.0 devices'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tss-engine'
