@@ -1,7 +1,7 @@
 pkgbase = pantheon-core-git
 	pkgdesc = Meta package for the complete Pantheon desktop & apps (core utilities)
 	pkgver = 20180925
-	pkgrel = 25
+	pkgrel = 26
 	url = http://elementary.io
 	arch = any
 	license = LGPL
@@ -11,7 +11,7 @@ pkgbase = pantheon-core-git
 	depends = cerbere-git
 	depends = switchboard-git
 	depends = granite-git
-	depends = pantheon-gala-git
+	depends = gala-git
 	depends = wingpanel-git
 	depends = lxdm-gtk3
 	depends = lxdm-theme-elementary
