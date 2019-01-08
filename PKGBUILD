@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org> 
+# Previous Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer : Erik Dubois <erik.dubois@gmail.com>
 
 pkgname=plank-theme-numix
 pkgver=0.1
@@ -13,9 +14,7 @@ sha256sums=('951377d49be903e9257ad72bde18689d3471798e6bc21ea84e1249f0646759ed')
 
 package() {
   cd numix-plank-theme
-
   install -dm 755 "${pkgdir}"/usr/share/plank/themes
   cp -dr --no-preserve='ownership' Numix "${pkgdir}"/usr/share/plank/themes/
 }
 
-# vim: ts=2 sw=2 et:
