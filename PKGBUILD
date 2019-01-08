@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-materialdecoration-git
-pkgver=20180920.56.5ad9d89
+pkgver=r58.a415119
 pkgrel=1
 pkgdesc="Material Design decoration for Qt applications on Wayland"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
