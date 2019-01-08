@@ -1,6 +1,6 @@
 pkgbase = qt5-accountsservice-git
 	pkgdesc = Qt-style wrapper for Accounts Service
-	pkgver = v1.2.0.rb36a9ad
+	pkgver = v1.2.0.r16.gb36a9ad
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
