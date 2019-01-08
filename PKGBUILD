@@ -54,7 +54,7 @@ sha256sums=('SKIP'
             '73e13bf689838e4b27cdb08f040fbafb308aaf2990f5e1bf193a69a9dd736794'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
             '5903f99dce010279e2a2f0e56d98e756c5abf9a57e27df5e2239076038868d3d'
-            'e7ae75f0d1305066a5ba7b60a513d812c769beadaf890a13d1433c9f93242166')
+            '5b8c6204e35d2dc020a408e068b5c92afca00be9a6188a92a7dc122c68de6263')
 
 prepare() {
   mkdir path
@@ -238,7 +238,10 @@ END
     "$pkgdir/opt/waterfox/distribution/distribution.ini"
 
   # Use system-provided dictionaries
-  rm -r "$pkgdir"/opt/waterfox/dictionaries
+  if [ -d $pkgdir/opt/waterfox/dictionaries ]; then
+    rm -r "$pkgdir"/opt/waterfox/dictionaries
+  fi
+
   ln -Ts /usr/share/hunspell "$pkgdir/opt/waterfox/dictionaries"
   ln -Ts /usr/share/hyphen "$pkgdir/opt/waterfox/hyphenation"
 
