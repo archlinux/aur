@@ -1,19 +1,19 @@
 pkgbase = tldr-cpp-client
 	pkgdesc = C++ client for tldr: a simplified and community-driven man pages
-	pkgver = 1.3.0
-	pkgrel = 2
-	url = https://github.com/tldr-pages/tldr-cpp-client
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/Accurate0/tldr-cpp-client
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = clang
+	makedepends = gcc
 	depends = curl
 	depends = libzip
-	provides = tldr=1.3.0
+	provides = tldr=1.3.1
 	conflicts = nodejs-tldr
 	replaces = nodejs-tldr
-	source = https://github.com/tldr-pages/tldr-cpp-client/archive/v1.3.0.tar.gz
-	sha256sums = 6210ece3f5d8f8e55b404e2f6c84be50bfdde9f0d194a271bce751a3ed6141be
+	source = https://github.com/Accurate0/tldr-cpp-client/archive/v1.3.1.tar.gz
+	sha256sums = aeea033b2dec5bceed7c685e8057502f16920e4a5038d0da43ae46c5c93a034d
 
 pkgname = tldr-cpp-client
 
