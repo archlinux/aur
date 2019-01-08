@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qml-xwayland-git
-pkgver=r69.cb7d7a7
+pkgver=r71.ce9b71b
 pkgrel=1
 pkgdesc="XWayland support for QtQuick Wayland compositors"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
