@@ -1,8 +1,9 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Previous Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Diego <cdprincipe@gmail.com>
+# Maintainer : Erik Dubois <erik.dubois@gmail.com>
 
 pkgname=numix-gtk-theme-git
-pkgver=2.6.6.r18.f25d7e0
+pkgver=2.6.7.r51.b652b19
 pkgrel=1
 pkgdesc='A flat and light theme with a modern look (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
@@ -18,20 +19,16 @@ md5sums=('SKIP')
 
 pkgver() {
   cd numix-gtk-theme
-
-  git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./'
+  #git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./'
+  git describe --tags | sed 's/2.6.6/2.6.7/; s/-/.r/; s/-g/./'
 }
 
 build() {
   cd numix-gtk-theme
-
   make
 }
 
 package() {
   cd numix-gtk-theme
-
   make DESTDIR="${pkgdir}" install
 }
-
-# vim: ts=2 sw=2 et:

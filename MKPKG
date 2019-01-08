@@ -1,7 +1,0 @@
-arch=('any')
-pkgname=('numix-gtk-theme-git')
-builddeps=('ruby-maruku' 'ruby-yard' 'ruby-sass')
-
-check_git $packagedir/$pkgname/${pkgname%-*}
-
-# vim: ts=2 sw=2 et:
