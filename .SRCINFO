@@ -2,14 +2,14 @@ pkgbase = taurus
 	pkgdesc = GUI port scanner
 	pkgver = 1.1
 	pkgrel = 1
-	url = https://github.com/blooser/Taurus
+	url = https://github.com/blooser/taurus
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = qt5-base
 	depends = sfml
-	source = https://github.com/blooser/Taurus/archive/v1.1.tar.gz
-	md5sums = 8c2bc5bf4428544cc94055b195970d84
+	source = https://github.com/blooser/taurus/archive/v1.1.tar.gz
+	md5sums = db8e4732acfe2000d0bd1fe083a26a6813f0522f
 
 pkgname = taurus
 

@@ -4,7 +4,7 @@ pkgver=1.1
 pkgrel=1
 pkgdesc="GUI port scanner"
 arch=('x86_64')
-url="https://github.com/blooser/Taurus"
+url="https://github.com/blooser/taurus"
 license=('MIT')
 depends=('qt5-base' 'sfml')
 makedepends=('cmake')
@@ -21,8 +21,9 @@ Type=Application
 Categories=Application;Network
 Comment[en_US]=Quick ports scan
 "
-source=("https://github.com/blooser/Taurus/archive/v${pkgver}.tar.gz")
-md5sums=('8c2bc5bf4428544cc94055b195970d84')
+md5sums=('db8e4732acfe2000d0bd1fe083a26a6813f0522f')
+
+source=("https://github.com/blooser/taurus/archive/v${pkgver}.tar.gz")
 
 build() {
 	cd $pkgname-$pkgver
