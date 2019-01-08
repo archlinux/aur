@@ -1,29 +1,31 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-galpy
-pkgname=('python-galpy' 'python2-galpy')
+_pyname=${pkgbase#python-}
+pkgname=("python-${_pyname}" "python2-${_pyname}")
+#"python-${_pyname}-doc")
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
 url="http://galpy.readthedocs.io/"
 license=('BSD')
-makedepends=('python-scipy' 'python2-scipy' 'python-matplotlib' 'python2-matplotlib')
-source=("https://files.pythonhosted.org/packages/source/g/galpy/galpy-${pkgver}.tar.gz")
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('aa4f679050a0b5c69c87f4bc69d52a61')
 
 prepare() {
-    cd ${srcdir}/galpy-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
-    cp -a ${srcdir}/galpy-${pkgver}{,-py2}
+    cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
 }
 
 build() {
     msg "Building Python2"
-    cd ${srcdir}/galpy-${pkgver}-py2
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
     python2 setup.py build
 
     msg "Building Python3"
-    cd ${srcdir}/galpy-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py build
 
 #   msg "Building Docs"
@@ -31,17 +33,17 @@ build() {
 }
 
 #check() {
-#    cd ${srcdir}/galpy-${pkgver}
+#    cd ${srcdir}/${_pyname}-${pkgver}
 #    python setup.py test
 #
-#    cd ${srcdir}/galpy-${pkgver}-py2
+#    cd ${srcdir}/${_pyname}-${pkgver}-py2
 #    python2 setup.py test
 #}
 
 package_python2-galpy() {
     depends=('python2-scipy' 'python2-matplotlib')
     optdepends=('python-galpy-doc: Documentation for galpy')
-    cd ${srcdir}/galpy-${pkgver}-py2
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README* -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -49,9 +51,9 @@ package_python2-galpy() {
 }
 
 package_python-galpy() {
-    depends=('python2-scipy' 'python2-matplotlib')
+    depends=('python-scipy' 'python-matplotlib')
     optdepends=('python-galpy-doc: Documentation for galpy')
-    cd ${srcdir}/galpy-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README* -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -60,7 +62,7 @@ package_python-galpy() {
 
 #package_python-galpy-doc() {
 #    pkgdesc="Documentation for Python Radio Beam module"
-#    cd ${srcdir}/galpy-${pkgver}/docs/_build
+#    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 #
 #    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
 #    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
