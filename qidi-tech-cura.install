@@ -1,0 +1,9 @@
+post_install() {
+  RED='\033[0;31m'
+  echo -e "${RED}==> You should install X3GWriter in order to ba able to print with qidi tech printers with cura"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}

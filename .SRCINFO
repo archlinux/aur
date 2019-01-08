@@ -1,0 +1,16 @@
+pkgbase = qidi-tech-cura
+	pkgdesc = Cura plugins for QiDi printers (qidi1, x-maker, x-plus, ...)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/KenN7/qidi-tech-cura.git
+	install = qidi-tech-cura.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = cura
+	source = git://github.com/KenN7/qidi-tech-cura.git
+	md5sums = SKIP
+
+pkgname = qidi-tech-cura
+
