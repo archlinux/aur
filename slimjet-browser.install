@@ -1,13 +1,20 @@
-#!/bin/sh
+#!/bin/bash
 post_install() {
+	if [[ ! -d /etc/sysctl.d ]]; then
+		mkdir -m0755 /etc/sysctl.d &>/dev/zero
+	fi
+	echo "kernel.unprivileged_userns_clone = 1" >/etc/sysctl.d/slimjet_userns_sandbox.conf
+	chmod 0755 /etc/sysctl.d/slimjet_userns_sandbox.conf
+	sysctl -p /etc/sysctl.d/slimjet_userns_sandbox.conf
 	useradd -G root,dbus,wheel,http,network,video,audio \
-	        -m -k /dev/zero --comment 'SlimJet runtime' \
-	        -s /bin/sh slim-root || exit 1
-  chown slim-root:root -R /home/slim-root || exit 1
-  chown slim-root:root -R /usr/share/slimjet || exit 1
+		-m -k /dev/zero --comment 'SlimJet runtime' \
+		-s /bin/sh slim-root || exit 1
+	chown slim-root:root -R /home/slim-root || exit 1
+	chown slim-root:root -R /usr/share/slimjet || exit 1
 }
 
 post_remove() {
-  userdel --force --remove slim-root || exit 1
-  rm -rf /usr/share/slimjet &>/dev/zero
+	unlink /etc/sysctl.d/slimjet_userns_sandbox.conf
+	userdel --force --remove slim-root
+	rm -rf /usr/share/slimjet &>/dev/zero
 }
