@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('ISC')
 depends=('webkit2gtk')
 source=("${url}/${pkgname}-${pkgver}.c")
-sha256sums=('53a4ecc0daee48f93b0c78e5ebbbdbf2bc68e8202dcae41070c3efb25a9b60aa')
+sha256sums=('1995e265d13aba21ff78b0640e56a255c15de3e84f0ca12bb0699367700eb0f3')
 
 build() {
 	cd "${srcdir}"
