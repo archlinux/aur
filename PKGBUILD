@@ -1,40 +1,43 @@
-# Maintainer:  VirtualTam <virtualtam@flibidi.net>
+# Contributor:  VirtualTam <virtualtam@flibidi.net>
 # Contributor: Eugene Yudin aka Infy <Eugene dot Yudin at gmail dot com>
+# Maintainer: aksr <aksr at t-com dot me>
 pkgname=goldendict-git
-pkgver=1.5.0.RC2.197.g8dd4d9f0
+pkgver=1.5.0.RC.978.g6d46fd15
 pkgrel=1
-pkgdesc="Feature-rich dictionary lookup program."
+pkgdesc="A feature-rich dictionary lookup program, supporting multiple dictionary formats."
 arch=('i686' 'x86_64')
+url="https://github.com/goldendict/goldendict"
 url="http://goldendict.org/"
 license=('GPL3')
-depends=('ffmpeg' 'hunspell' 'libao' 'libeb' 'lzo' 'qtwebkit')
+depends=('ffmpeg' 'hunspell' 'libao' 'libvorbis' 'libxtst' 'lzo' 'zlib' 'xz' 'libeb' 'libiconv' 'opencc'
+         'qt5-webkit' 'qt5-svg' 'qt5-tools' 'qt5-x11extras')
 makedepends=('git')
 conflicts=('goldendict' 'goldendict-svn' 'goldendict-git-opt')
 provides=('goldendict')
 replaces=('goldendict' 'goldendict-svn' 'goldendict-git-opt')
-_gitname="goldendict"
-source=(git://github.com/goldendict/goldendict.git)
-sha256sums=(SKIP)
+source=("$pkgname::git://github.com/goldendict/goldendict.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd ${_gitname}
-  git describe --always --tags | sed 's|-|.|g'
+  cd "$srcdir/$pkgname"
+  git describe --always | sed 's|-|.|g'
 }
 
 prepare() {
-  cd ${_gitname}
+  cd "$srcdir/$pkgname"
   msg "Fixing flags"
   echo "QMAKE_CXXFLAGS_RELEASE = $CFLAGS" >> goldendict.pro
   echo "QMAKE_CFLAGS_RELEASE = $CXXFLAGS" >> goldendict.pro
 }
 
 build(){
-  cd ${_gitname}
-  PREFIX="/usr" qmake-qt4
+  cd "$srcdir/$pkgname"
+  qmake-qt5 "CONFIG+=zim_support" "CONFIG+=chinese_conversion_support" PREFIX="/usr"
   make
 }
 
 package() {
-  cd ${_gitname}
-  make INSTALL_ROOT="${pkgdir}" install
+  cd "$srcdir/$pkgname"
+  make INSTALL_ROOT="$pkgdir" install
 }
+
