@@ -4,7 +4,7 @@
 pkgbase=gallium-nine-git
 pkgname=('gallium-nine-git' 'lib32-gallium-nine-git')
 pkgver=0.r121.136dca6
-pkgrel=1
+pkgrel=2
 pkgdesc="Gallium Nine Standalone"
 arch=('x86_64')
 url="https://github.com/dhewg/nine"

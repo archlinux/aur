@@ -1,7 +1,7 @@
 pkgbase = gallium-nine-git
 	pkgdesc = Gallium Nine Standalone
 	pkgver = 0.r121.136dca6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dhewg/nine
 	arch = x86_64
 	license = LGPL2
