@@ -1,0 +1,15 @@
+pkgbase = colpack-git
+	pkgdesc = A Graph Coloring Algorithm Package
+	pkgver = r109.10b780b
+	pkgrel = 1
+	url = https://github.com/CSCsw/ColPack
+	arch = x86_64
+	arch = i686
+	license = LGPL3
+	makedepends = git
+	provides = colpack
+	source = git+https://github.com/CSCsw/ColPack.git
+	md5sums = SKIP
+
+pkgname = colpack-git
+
