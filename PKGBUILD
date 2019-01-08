@@ -4,12 +4,12 @@
 pkgbase=gallium-nine-git
 pkgname=('gallium-nine-git' 'lib32-gallium-nine-git')
 pkgver=0.r121.136dca6
-pkgrel=2
+pkgrel=3
 pkgdesc="Gallium Nine Standalone"
 arch=('x86_64')
 url="https://github.com/dhewg/nine"
 license=('LGPL2')
-makedepends=('git' 'wine' 'mesa')
+makedepends=('git' 'wine' 'mesa' 'meson')
 source=("git+https://github.com/dhewg/nine.git")
 sha512sums=('SKIP')
 

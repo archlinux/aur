@@ -1,13 +1,14 @@
 pkgbase = gallium-nine-git
 	pkgdesc = Gallium Nine Standalone
 	pkgver = 0.r121.136dca6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dhewg/nine
 	arch = x86_64
 	license = LGPL2
 	makedepends = git
 	makedepends = wine
 	makedepends = mesa
+	makedepends = meson
 	source = git+https://github.com/dhewg/nine.git
 	sha512sums = SKIP
 
