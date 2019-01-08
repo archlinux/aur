@@ -10,7 +10,8 @@ url='http://phonon.kde.org/'
 install="phonon-qt4.install"
 license=(LGPL)
 source=("https://download.kde.org/stable/${pkgname%-qt4}/$pkgver/${pkgname%-qt4}-$pkgver.tar.xz"{,.sig})
-sha256sums=('e5a98df31aeffc22493afc8d6adbca5d6f0c27cc2eed73b3be05195321e08db7')
+sha256sums=('e5a98df31aeffc22493afc8d6adbca5d6f0c27cc2eed73b3be05195321e08db7'
+            'SKIP')
 validpgpkeys=('CB9387521E1EE0127DA804843FDBB55084CC5D84') # Harald Sitter <sitter@kde.org>
 
 build() {
