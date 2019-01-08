@@ -1,6 +1,6 @@
 pkgbase = purevpn-networkmanager
 	pkgdesc = PureVPN configurations for NetworkManager
-	pkgver = 2018.01.06
+	pkgver = 2019.01.07
 	pkgrel = 1
 	url = https://www.purevpn.com/
 	install = purevpn-networkmanager.install
@@ -16,11 +16,11 @@ pkgbase = purevpn-networkmanager
 	source = template-pptp
 	source = purevpn
 	source = vpn-list.csv
-	sha256sums = 32ee473d414691438618d68740c7060ad1218719e13b41561b18c3d0a659ae01
+	sha256sums = 0c2fecda247c34003468d35b74438443b47fef0e4debdfa7cb1a6a88d2e93bb9
 	sha256sums = 336a901c88e406c05f1ec6d192bf7461145299b3c631eb203cebdc94b63c26d6
 	sha256sums = eb63f1730a807726e906d6c2e2362ee402f39d3b554bea225d0303a33b19ea58
 	sha256sums = 8de488f0d3de21711afa19f3a2d61c5405d4c6104363d5c7b6516eb892e66dd8
-	sha256sums = 2ac001e602af7689f552583c6cea00b610f6524d453fc141d9ed1a3fb1ebed53
+	sha256sums = 1c8de4640f8f358aaa8df53660516e155f29c1a42fde1f2f7f226b775e77e463
 
 pkgname = purevpn-networkmanager
 

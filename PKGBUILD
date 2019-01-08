@@ -1,6 +1,6 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=purevpn-networkmanager
-pkgver=2018.01.06
+pkgver=2019.01.07
 pkgrel=1
 pkgdesc='PureVPN configurations for NetworkManager'
 arch=('any')
@@ -15,11 +15,11 @@ source=("linux-files.zip::https://s3-us-west-1.amazonaws.com/heartbleed/linux/li
         "template-pptp"
         "purevpn"
         "vpn-list.csv")
-sha256sums=('32ee473d414691438618d68740c7060ad1218719e13b41561b18c3d0a659ae01'
+sha256sums=('0c2fecda247c34003468d35b74438443b47fef0e4debdfa7cb1a6a88d2e93bb9'
             '336a901c88e406c05f1ec6d192bf7461145299b3c631eb203cebdc94b63c26d6'
             'eb63f1730a807726e906d6c2e2362ee402f39d3b554bea225d0303a33b19ea58'
             '8de488f0d3de21711afa19f3a2d61c5405d4c6104363d5c7b6516eb892e66dd8'
-            '2ac001e602af7689f552583c6cea00b610f6524d453fc141d9ed1a3fb1ebed53')
+            '1c8de4640f8f358aaa8df53660516e155f29c1a42fde1f2f7f226b775e77e463')
 noextract=("linux-files.zip")
 install="${pkgname}".install
 
@@ -36,6 +36,6 @@ package() {
   install -D -m 755 "${startdir}/purevpn" "${pkgdir}"/usr/bin
   install -D -m 644 "${startdir}"/{template-ovpn,template-pptp} "${pkgdir}"/usr/lib/purevpn
   cd "${srcdir}"
-  install -Dm600 {ca.crt,Wdc.key,vpn-list.csv} "${pkgdir}"/usr/lib/purevpn
+  install -Dm600 {OpenVPN_Config_Files/TCP/ca.crt,OpenVPN_Config_Files/TCP/Wdc.key,vpn-list.csv} "${pkgdir}"/usr/lib/purevpn
 }
 
