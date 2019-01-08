@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-terminal-git
-pkgver=v0.2.0.r46.g15759fc
+pkgver=v0.2.0.r819ab01
 pkgrel=1
 pkgdesc="Terminal application and modules for Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
