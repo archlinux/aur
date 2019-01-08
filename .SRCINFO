@@ -1,7 +1,7 @@
 pkgbase = uppsala-linux-printer
 	pkgdesc = Connect to the EduPrint system at Uppsala universitet (unofficial package)
 	pkgver = 17.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.uu.se/en/students/it-for-students/copy-and-print/
 	install = uppsala-linux-printer.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = uppsala-linux-printer
 	depends = java-environment>=8
 	depends = cups
 	source = uppsala-linux-printer.tar.gz::https://mp.uu.se/documents/432512/127186965/eduprint-linux.tgz/21230058-0d34-6dd7-0102-d7f4e53d193e
-	sha512sums = 5f6ab91704bcfe633f465f8b72b29e81ff46992732a66949367ad04e14511c15d3f2b180ea1a63304a0cb9716548b9442a62af086f167f4492f499d59d1e6fd2
+	sha256sums = c4a39db6e522ae6e7075d6450d6181c88e3a3d9b314f8be28ff53118f6c07a4b
 
 pkgname = uppsala-linux-printer
 

@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=uppsala-linux-printer
 pkgver=17.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Connect to the EduPrint system at Uppsala universitet (unofficial package)"
 arch=('any')
 url="https://www.uu.se/en/students/it-for-students/copy-and-print/"
@@ -10,7 +10,7 @@ depends=('java-environment>=8' 'cups')
 makedepends=()
 install="${pkgname}.install"
 source=("${pkgname}.tar.gz::https://mp.uu.se/documents/432512/127186965/eduprint-linux.tgz/21230058-0d34-6dd7-0102-d7f4e53d193e")
-sha512sums=('5f6ab91704bcfe633f465f8b72b29e81ff46992732a66949367ad04e14511c15d3f2b180ea1a63304a0cb9716548b9442a62af086f167f4492f499d59d1e6fd2')
+sha256sums=('c4a39db6e522ae6e7075d6450d6181c88e3a3d9b314f8be28ff53118f6c07a4b')
 
 _ppd_file='eduPrint_UU_Linux_Ricoh_MP_C5504ex_PS.ppd'
 _autostart='eduprint.service'
@@ -21,13 +21,13 @@ prepare() {
 
 	cat <<-EOF
 
-	NOTE: This PKGBUILD file is not provided nor maintained by the
-	      University. It will download and package the official 
+	NOTE: This PKGBUILD file is NOT PROVIDED NOR MAINTAINED by the
+	      University. It will download and package the official
 	      PaperCut MF client provided by the University for the
 	      EduPrint system, allowing it to be managed by pacman.
 
 	EOF
-	
+
 
 	cd "${srcdir}/eduprint-linux-client"
 
@@ -81,13 +81,13 @@ package() {
 	# provide printer descriptor
 	install -D -m644 ${_ppd_file} ${pkgdir}/etc/cups/ppd/${_ppd_file}
 
-	# provide autostart entry 
+	# provide autostart entry
 	install -D -m644 ${_autostart} ${pkgdir}/etc/xdg/autostart/${_autostart}
-	
+
 	# provide command
 	install -D -m755 ${_command} ${pkgdir}/usr/bin/${_command}
-	
-	# provide .desktop entry 
+
+	# provide .desktop entry
 	install -D -m755 ${_desktop} ${pkgdir}/usr/share/applications/${_desktop}
 }
 
