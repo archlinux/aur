@@ -29,8 +29,8 @@ pkgbase = polybar
 	optdepends = xorg-fonts-misc: Font used in example config
 	optdepends = curl: github module support
 	conflicts = polybar-git
-	source = polybar::git+https://github.com/jaagr/polybar.git#tag=3.3.0
-	md5sums = SKIP
+	source = https://github.com/jaagr/polybar/releases/download/3.3.0/polybar-3.3.0.tar
+	sha256sums = 647dde8fbf6690138b354bf538d1d97ba8c1743ff22314af4ee085e06a1f506a
 
 pkgname = polybar
 
