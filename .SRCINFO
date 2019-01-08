@@ -1,4 +1,4 @@
-pkgbase = taurus
+	pkgbase = taurus
 	pkgdesc = GUI port scanner
 	pkgver = 1.1
 	pkgrel = 1
@@ -9,7 +9,7 @@ pkgbase = taurus
 	depends = qt5-base
 	depends = sfml
 	source = https://github.com/blooser/taurus/archive/v1.1.tar.gz
-	md5sums = db8e4732acfe2000d0bd1fe083a26a6813f0522f
+	md5sums = 37b7afb34fcc1213f731f770db7e0ee0
 
 pkgname = taurus
 
