@@ -2,16 +2,13 @@ post_install() {
   echo "
 ========================================================================
 
-To start rtapp, you must first start the systemctl timer:
-  # systemctl start rtapp.timer
+To start rtapp or rtjail, you must first start the systemctl timer:
+  systemctl start rtapp.timer
+  systemctl start rtjail.timer
 
 Then you can enable the service at boot:
-  # systemctl enable rtapp.timer
-  
-rtapp.timer will call rtapp.service in /usr/lib/systemd/system
-
-rtapp will check the priority of audio applications every 60 seconds.
-If you want to change this please edit OnUnitActiveSec in /usr/lib/systemd/system/rtapp.timer
+  systemctl enable rtapp.timer
+  systemctl enable rtjail.timer
 
 Please look at the readme file
 /usr/share/doc/rtapp/readme.txt
