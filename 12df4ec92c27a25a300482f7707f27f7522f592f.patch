@@ -1,0 +1,23 @@
+From 12df4ec92c27a25a300482f7707f27f7522f592f Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Fri, 6 Jul 2018 13:01:36 -0400
+Subject: [PATCH] tmpfiles.d: don't use legacy directory path
+
+systemd 239 (released June 22) introduces a new warning for tmpfiles.d
+snippets touching paths in /var/run instead of the canonical /run
+
+See https://github.com/systemd/systemd/commit/a2d1fb882c4308bc10362d971f333c5031d60069
+
+Update to use the preferred path.
+---
+ files/fail2ban-tmpfiles.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/files/fail2ban-tmpfiles.conf b/files/fail2ban-tmpfiles.conf
+index 3fd783f38..6e611c6a2 100644
+--- a/files/fail2ban-tmpfiles.conf
++++ b/files/fail2ban-tmpfiles.conf
+@@ -1 +1 @@
+-D /var/run/fail2ban 0755 root root -
+\ No newline at end of file
++D /run/fail2ban 0755 root root -
