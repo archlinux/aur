@@ -1,5 +1,5 @@
 pkgname=electrum-ltc-git
-pkgver=3.3.2.1.git20190104.d6c0918
+pkgver=3.3.2.1.git20190107.5d099f8
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
@@ -43,10 +43,7 @@ build() {
 
 package() {
   cd electrum-ltc
-
   ./setup.py install -O1 --root="$pkgdir" --skip-build
-
   install -Dm644 AUTHORS README.rst RELEASE-NOTES -t "$pkgdir"/usr/share/doc/electrum-ltc
-
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
