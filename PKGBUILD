@@ -2,7 +2,7 @@
 pkgname=purevpn-networkmanager
 pkgver=2019.01.07
 pkgrel=1
-pkgdesc='PureVPN configurations for NetworkManager'
+pkgdesc='A script to generate template-based PureVPN configuration files for NetworkManager'
 arch=('any')
 url='https://www.purevpn.com/'
 license=('GPL')
