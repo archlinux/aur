@@ -1,0 +1,15 @@
+# -*- mode: shell-script -*-
+
+post_install () {
+    cat << EOF
+==> Put this in your .emacs file to enable llvm-mode:
+
+(setq load-path
+    (cons (expand-file-name "/usr/share/emacs/site-lisp/emacs-llvm-mode") load-path))
+(require 'llvm-mode)
+EOF
+}
+
+post_upgrade () {
+    post_install $1
+}

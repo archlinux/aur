@@ -1,0 +1,14 @@
+pkgbase = emacs-llvm-mode
+	pkgdesc = Emacs syntax highlighting mode for LLVM IR
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://llvm.org/
+	install = emacs-llvm-mode.install
+	arch = any
+	license = custom:University of Illinois/NCSA Open Source License
+	depends = emacs
+	source = https://releases.llvm.org/7.0.1/llvm-7.0.1.src.tar.xz
+	sha256sums = a38dfc4db47102ec79dcc2aa61e93722c5f6f06f0a961073bd84b78fb949419b
+
+pkgname = emacs-llvm-mode
+
