@@ -1,12 +1,12 @@
 # Maintainer: Betül Ünlü < betulunlu0018 ~at~ gmail ~dot~ com >
 
-pkgname=emojicode
+pkgname="emojicode"
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
-license=("custom")
+license=("custom:ArtisticLicense2")
 depends=(
     "ncurses"
     "zlib"
