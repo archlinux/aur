@@ -1,6 +1,6 @@
 pkgbase = liri-browser-git
 	pkgdesc = Liri Browser
-	pkgver = 20181226.233.c914ffe
+	pkgver = r233.c914ffe
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
