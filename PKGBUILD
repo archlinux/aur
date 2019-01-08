@@ -2,10 +2,10 @@
 
 pkgname=ttf-genericmobile
 pkgver=20190103.01
-pkgrel=1
+pkgrel=2
 pkgdesc="A raster proportional sans serif typeface, extracted from various generic mobile devices." 
 url="https://notabug.org/HarvettFox96/${pkgname}"
-license=("CC0")
+license=("CC0-1.0")
 arch=("any")
 depends=("fontconfig" "xorg-font-utils" "xorg-fonts-encodings")
 source=("https://notabug.org/HarvettFox96/${pkgname}/archive/${pkgver}.tar.gz"
