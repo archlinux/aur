@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/qxmpp-project/qxmpp'
 license=('LGPL2.1')
 depends=('qt5-base')
+makedepends=('cmake')
 optdepends=('doxygen: required to build the HTML documentation'
 	    'opus: required to enable opus audio codec'
 	    'speex: required to enable speex audio codec'
@@ -30,7 +31,7 @@ build() {
 	# In order to enable opus & speex audio codecs, and vpx & theora video codecs,
 	# add WITH_OPUS, WITH_SPEEX, WITH_THEORA, WITH_VPX to CMake arguments
 	
-	cmake ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
 	make
 }
 
