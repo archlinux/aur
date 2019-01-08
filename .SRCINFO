@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-cast-to-tv
+	pkgdesc = Cast files to your Chromecast or other devices over local network
+	pkgver = 5
+	pkgrel = 1
+	url = https://github.com/Rafostar/gnome-shell-extension-cast-to-tv
+	arch = any
+	license = GPL
+	makedepends = npm
+	makedepends = gettext
+	depends = gnome-shell
+	depends = ffmpeg
+	source = https://github.com/Rafostar/gnome-shell-extension-cast-to-tv/archive/v5.tar.gz
+	sha256sums = 0ccfc6b5f55b2f9e468170bcae0df34e9cc744366583192969f4831049016902
+
+pkgname = gnome-shell-extension-cast-to-tv
+
