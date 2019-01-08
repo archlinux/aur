@@ -11,6 +11,9 @@ depends=(
     "ncurses"
     "zlib"
 )
+optdepends=(
+    "yarn: for package support"
+)
 makedepends=(
     "llvm6"
     "cmake>=3.5.1"
