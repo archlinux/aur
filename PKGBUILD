@@ -4,7 +4,7 @@ pkgver="2.4.0"
 pkgrel=2
 pkgdesc="Client for medivia.online game server. This is mmorpg game based on Tibia."
 arch=('i686' 'x86_64')
-url="https://medivia.online"
+url="https://medivia.online/download"
 # I am not sure what license is used
 license=('unknown')
 depends_x86_64=('lib32-libglvnd')
