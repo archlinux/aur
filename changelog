@@ -1,3 +1,11 @@
+2019-01-08 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 3.4.2.2-1:
+    Added warning for running excessive number of bot instances.
+    Increased default value of ConnectionTimeout from 60 to 90.
+    It's now possible to loot/transfer contextID higher than 255 (ref: #990, #1001).
+    Experimental improvements towards session checking code which might improve overall network stability.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2018-12-15 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.4.1.7-1:
     [!] Updated .NET Core runtime from 2.1 to 2.2. As usual, generic users are reminded to update their runtimes, OS-specific users are covered by us, no prerequisites changes.
