@@ -1,10 +1,11 @@
 pkgbase = recbox-ardour-theme-git
 	pkgdesc = Dark theme for Ardour with Matcha Dark Sea color schema.
-	pkgver = r3.28ac97a
+	pkgver = r4.eb63d1d
 	pkgrel = 1
 	url = https://gitlab.com/ProjektRoot/recbox-ardour-theme
 	arch = any
 	license = unknown
+	makedepends = git
 	source = recbox-ardour-theme-git::git+https://gitlab.com/ProjektRoot/recbox-ardour-theme
 	md5sums = SKIP
 
