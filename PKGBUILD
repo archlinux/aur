@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-pulseaudio-git
-pkgver=r76.fdfb2e9
+pkgver=r81.fdd90a3
 pkgrel=1
 pkgdesc="PulseAudio support for Liri Shell"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
