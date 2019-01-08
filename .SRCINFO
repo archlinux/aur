@@ -1,6 +1,6 @@
 pkgbase = liri-themes-git
 	pkgdesc = Themes for uniform look and feel throughout Liri OS
-	pkgver = v0.9.0.r7300b14
+	pkgver = v0.9.0.r50.g7300b14
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
