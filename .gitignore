@@ -1,0 +1,4 @@
+!.gitignore
+php-uopz-git*
+src/
+pkg/
