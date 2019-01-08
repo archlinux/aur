@@ -1,6 +1,6 @@
 pkgbase = liri-qbs-shared-git
 	pkgdesc = Extra imports and modules for Qbs
-	pkgver = v1.2.0.rac431c8
+	pkgver = v1.2.0.r23.gac431c8
 	pkgrel = 1
 	url = https://liri.io
 	arch = any
