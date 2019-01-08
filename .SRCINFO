@@ -1,6 +1,6 @@
 pkgbase = liri-files-git
 	pkgdesc = File manager for Liri OS
-	pkgver = v0.1.0.ra4c3e20
+	pkgver = v0.1.0.r74.ga4c3e20
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
