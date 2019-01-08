@@ -7,8 +7,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt       # Build kernel with a different name
-_srcver=4.18.7-arch1
-_rtpatchver=rt5
+_srcver=4.19.10-arch1
+_rtpatchver=rt8
 _pkgver=${_srcver//-arch1/}
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
@@ -20,8 +20,8 @@ options=('!strip')
 _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=v$_srcver"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.18/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.18/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
   fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
   config         # the main kernel config file
   60-${pkgbase}.hook  # pacman hook for depmod
@@ -37,10 +37,10 @@ validpgpkeys=(
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
 sha256sums=('SKIP'
-            '62062c9bd08a724ad2856a60657fefc4659520fa48fed5da36c18dcf94a50508'
+            '5a281c91eb3afb8df9b3c5debc3b5b1a0f4076daf3b080e5ec2b6c1a615ebecd'
             'SKIP'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06'
-            'd7fc4127beab6ff79060a771f6cbec3316daccef2fdfa02a710c65228d5bbb1a'
+            '59c7fb7512eb52a088eb32169ec6d538cb68ccad901a338bb3a050d02cd15619'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -69,14 +69,14 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
-  msg2 "Setting version..."
+  msg2 "Setting config..."
   cp ../config .config
   sed -e "/^CONFIG_LOCALVERSION =/s/=.*/=-${pkgrel}${_kernelname}/" -i .config
   sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
   touch .scmversion
 
-  #make oldconfig
-  #make menuconfig # CLI menu for configuration
+  make olddefconfig
+#  make menuconfig
 
   make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
@@ -96,16 +96,17 @@ _package() {
   install=${pkgbase}.install
 
   local kernver="$(<version)"
-  msg2 "kernver = $kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   cd $_srcname
 
   msg2 "Installing boot image..."
-  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   msg2 "Installing modules..."
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-  mkdir -p "$modulesdir"
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # a place for external modules,
