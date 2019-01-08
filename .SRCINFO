@@ -10,8 +10,8 @@ pkgbase = wl-clipboard-x11
 	provides = xsel
 	conflicts = xclip
 	conflicts = xsel
-	source = https://gitlab.com/brunelli/tools/raw/5024cc30d1a26fc0ad3da1547da694e2365a66d0/wl-clipboard-x11
-	sha256sums = 63fd6d60723d24e572c74c73382965ec35b01db51e5de6da53fceed7694fa5b3
+	source = wl-clipboard-x11_0e435f6::https://gitlab.com/brunelli/tools/raw/0e435f633687d92a1a25099a12dd8f30a7094a96/wl-clipboard-x11
+	sha256sums = 053b2c9150d7fc4544df17e9ef6cfc5a982dc5c677f656ad47fa37bb369e3a8c
 
 pkgname = wl-clipboard-x11
 
