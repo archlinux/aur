@@ -2,15 +2,15 @@
 
 pkgname=mkcert
 _package="github.com/FiloSottile/${pkgname}"
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A simple tool for making locally-trusted development certificates"
 arch=('x86_64')
 url="https://github.com/FiloSottile/mkcert"
 license=('BSD')
 makedepends=('go' 'git')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/FiloSottile/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('e52453a75d6674222a738dc67a3e78ab671265f4f03fda09ed38da1a7022166a')
+sha256sums=('5889775924122e196235ced42434c8c58d101188b725154a3424d1c8a4d10d14')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}
