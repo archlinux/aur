@@ -1,14 +1,15 @@
 # Maintainer: Felix Springer <felixspringer149@gmail.com>
 
 pkgname=blugon
-pkgdesc="a blue light filter written in python"
-pkgver=1.0
+pkgdesc="simple Blue Light Filter written in Python"
+pkgver=1.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/jumper149/blugon"
 license=('Apache')
 depends=('python')
-optdepends=('xorg-xgamma: backend')
+optdepends=('xorg-xgamma: backend'
+            'scg: backend')
 source=('git+https://github.com/jumper149/blugon.git')
 _gitname="blugon"
 sha256sums=('SKIP')
