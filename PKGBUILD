@@ -2,7 +2,7 @@
 
 pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit"
-pkgver=0.0.0.r620.gdf4693d
+pkgver=0.0.0.r645.g28bc984
 _branch='master'
 pkgrel=1
 arch=(any)
@@ -16,6 +16,7 @@ makedepends=('git')
 depends=('bc'
          'cpdf'
          'entr'
+         'epubcheck'
          'imagemagick>=7.0'
          'inkscape'
          'jq'
@@ -39,7 +40,7 @@ depends=('bc'
          'python-usfm2osis-cw-git'
          'python-yaml'
          'rsync'
-         'sile-git>=0.9.4.r532'
+         'sile-git>=0.9.5.r1'
          'tex-gyre-fonts'
          'ttf-hack'
          'yarn'
