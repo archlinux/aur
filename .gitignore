@@ -1,0 +1,4 @@
+!.gitignore
+php-componere-git*
+src/
+pkg/
