@@ -1,7 +1,7 @@
 pkgbase = scg
-	pkgdesc = Set Color from Gamma-values in X11
+	pkgdesc = Set Color from Gamma-values in X
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jumper149/scg
 	arch = x86_64
 	license = Apache

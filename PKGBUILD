@@ -1,9 +1,9 @@
 # Maintainer: Felix Springer <felixspringer149@gmail.com>
 
 pkgname=scg
-pkgdesc="Set Color from Gamma-values in X11"
+pkgdesc="Set Color from Gamma-values in X"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/jumper149/scg"
 license=('Apache')
