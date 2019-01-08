@@ -1,0 +1,26 @@
+Index: src/lib/sundials_includes.pxd
+===================================================================
+--- src/lib/sundials_includes.pxd	(revision 875)
++++ src/lib/sundials_includes.pxd	(working copy)
+@@ -237,7 +237,7 @@
+ 
+ 
+ cdef extern from "cvodes/cvodes.h":
+-    void* CVodeCreate(int lmm, int iter)
++    void* CVodeCreate(int lmm)
+     ctypedef int (*CVRhsFn)(realtype t, N_Vector y, N_Vector ydot, void *f_data)
+     int CVodeInit(void *cvode_mem, CVRhsFn f, realtype t0, N_Vector y0)
+     int CVodeReInit(void *cvode_mem, realtype t0, N_Vector y0)
+Index: src/solvers/sundials.pyx
+===================================================================
+--- src/solvers/sundials.pyx	(revision 875)
++++ src/solvers/sundials.pyx	(working copy)
+@@ -1699,7 +1699,7 @@
+         if self.cvode_mem == NULL: #The solver is not initialized
+             
+             #Create the solver
+-            self.cvode_mem= SUNDIALS.CVodeCreate(CV_BDF if self.options["discr"] == "BDF" else CV_ADAMS, CV_NEWTON if self.options["iter"] == "Newton" else CV_FUNCTIONAL)
++            self.cvode_mem= SUNDIALS.CVodeCreate(CV_BDF if self.options["discr"] == "BDF" else CV_ADAMS)
+             if self.cvode_mem == NULL:
+                 raise CVodeError(CV_MEM_FAIL)
+             
