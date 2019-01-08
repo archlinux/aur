@@ -1,19 +1,18 @@
-
-# Maintainer: Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>
+# Maintainer: Yuanji <self@gimo.me>
+# Contributor: Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>
 
 _pkgbase=hardcode-tray-git
 _gitname=Hardcode-Tray
 pkgname=$_pkgbase
-pkgver=4.0.r0.g8ec819f
+pkgver=4.3.r15.g46df7ea
 pkgrel=1
 pkgdesc="Fixes Hardcoded Tray Icons"
 arch=('i686' 'x86_64')
 url="https://github.com/bil-elmoussaoui/Hardcode-Tray"
 license=('GPL-3.0')
 provides=("$_pkgbase")
-makedepends=("git")
 conflicts=("hardcode-tray-fixer-git" "hardcode-tray")
-makedepends=('ninja' 'meson')
+makedepends=('ninja' 'meson' 'git')
 depends=('python' 'python-gobject' 'python-cairosvg' 'librsvg' 'gtk3' 'gobject-introspection')
 optdepends=('sni-qt-patched-git: patched qt4 sni plugin to enable icon modification' 'inkscape: to convert svg to png with inkscape')
 optdepends_x86_64=('lib32-sni-qt-patched-git: 32-bit patched qt4 sni plugin to enable icon modification')

@@ -1,6 +1,6 @@
 pkgbase = hardcode-tray-git
 	pkgdesc = Fixes Hardcoded Tray Icons
-	pkgver = 4.0.r0.g8ec819f
+	pkgver = 4.3.r15.g46df7ea
 	pkgrel = 1
 	url = https://github.com/bil-elmoussaoui/Hardcode-Tray
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = hardcode-tray-git
 	license = GPL-3.0
 	makedepends = ninja
 	makedepends = meson
+	makedepends = git
 	depends = python
 	depends = python-gobject
 	depends = python-cairosvg
