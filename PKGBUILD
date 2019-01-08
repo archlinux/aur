@@ -1,7 +1,7 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='getgarfield'
-pkgverUpstream="0.1.1"
+pkgverUpstream="0.1.2"
 pkgver="${pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="Java application that downloads all Garfield comic strips"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('java-runtime-headless>=8' 'bash')
 makedepends=('java-environment>=8')
 source=("http://eomanis.mooo.com/permshare/getgarfield/getgarfield-${pkgverUpstream}.tar.gz")
-sha384sums=('2a3e859662a7b9fa62581d9670e3adfbb68d16b251e37a34d621f580b3e940235fd63ccb52ce21e1fd3a17a51dee628b')
+sha384sums=('bc2de10986b2dc6a2f303583b791d3b1d05971961e10fdd5efb6b25a3dfc84be6723d271754e2b67fed50f2088ff297c')
 
 build() {
     local IFS=$'\n'
@@ -23,11 +23,13 @@ build() {
     # Compile the sources to .class files into bin
     echo "Compiling java sources" >&2
     javac -classpath "" -d bin -encoding UTF-8 -source 8 \
-        $(find src -type f -name '*.java' -print)
+        $(find "${pkgname}-${pkgverUpstream}/src" -type f -name '*.java' -print)
     # Add the other resources to bin, such as the web site templates
     echo "Copying required resources" >&2
     cp --verbose --recursive --target-directory bin/getgarfield \
-        src/getgarfield/templates 1>&2
+        "${pkgname}-${pkgverUpstream}/src/getgarfield/templates" 1>&2
+    # TODO Add COPYING
+    # TODO Add README
     
     # Create a versioned runnable .jar file containing the contents of
     # the bin directory and having the program correct entry point
