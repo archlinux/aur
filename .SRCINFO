@@ -5,6 +5,7 @@ pkgbase = zrythm-git
 	url = https://gitlab.com/alextee/zrythm
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = gtk3
 	depends = lv2
 	depends = lilv
