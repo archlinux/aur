@@ -1,28 +1,22 @@
 # Previous Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Maintainer : Erik Dubois <erik.dubois@gmail.com>
 
-pkgname=numix-circle-icon-theme-git
-pkgver=0.r33.085899f
+pkgname=plank-theme-numix
+pkgver=0.1
 pkgrel=1
-pkgdesc='Circle icon theme from the Numix project'
+pkgdesc='Numix theme for plank'
 arch=('any')
-url='http://numixproject.org/'
+url='https://numixproject.org/'
 license=('GPL3')
-depends=('numix-icon-theme-git')
-makedepends=('git')
-provides=('numix-circle-icon-theme' 'numix-circle-light-icon-theme')
-conflicts=('numix-circle-icon-theme' 'numix-circle-light-icon-theme')
-options=('!strip')
-source=('numix-circle-icon-theme::git+https://github.com/numixproject/numix-icon-theme-circle.git')
-sha256sums=('SKIP')
-
-pkgver() {
-  cd numix-circle-icon-theme
-  echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
+depends=('plank')
+source=("https://launchpad.net/~numix/+archive/ppa/+files/numix-plank-theme_0.1~ppa.tar.gz")
+sha256sums=('951377d49be903e9257ad72bde18689d3471798e6bc21ea84e1249f0646759ed')
 
 package() {
-  cd numix-circle-icon-theme
-  install -dm 755 "${pkgdir}"/usr/share/icons
-  cp -dr --no-preserve='ownership' Numix-Circle{,-Light} "${pkgdir}"/usr/share/icons/
+  cd numix-plank-theme
+
+  install -dm 755 "${pkgdir}"/usr/share/plank/themes
+  cp -dr --no-preserve='ownership' Numix "${pkgdir}"/usr/share/plank/themes/
 }
+
+# vim: ts=2 sw=2 et:
