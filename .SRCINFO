@@ -1,0 +1,18 @@
+pkgbase = phantomjs-beta-bin
+	pkgdesc = Headless WebKit with JavaScript API (official beta static binary)
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = http://www.phantomjs.org/
+	arch = x86_64
+	license = BSD
+	depends = fontconfig
+	depends = freetype2
+	depends = libpng
+	provides = phantomjs
+	conflicts = phantomjs
+	conflicts = phantomjs-bin
+	source = https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.5.0-beta-linux-ubuntu-xenial-x86_64.tar.gz
+	sha256sums = b478bb44e7a77468683a615bda082716d76e99dc17ebbc005d31d06b6715429e
+
+pkgname = phantomjs-beta-bin
+
