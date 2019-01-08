@@ -1,8 +1,8 @@
 # Maintainer: Igor Deyashkin <igor_deyawka@mail.ru>
 pkgname="medivia"
 pkgver="2.4.0"
-pkgrel=2
-pkgdesc="Client for medivia.online game server. This is mmorpg game based on Tibia."
+pkgrel=3
+pkgdesc="Client for medivia.online mmorpg server."
 arch=('i686' 'x86_64')
 url="https://medivia.online/download"
 # I am not sure what license is used
