@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=commonist
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='A file upload tool for mediawiki using its api.php interface'
 url="https://commons.wikimedia.org/wiki/Commons:Commonist"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('java-environment' 'bash')
 makedepends=('sbt')
 source=("https://github.com/ritschwumm/$pkgname/archive/v-$pkgver.tar.gz")
-sha256sums=('dda17d59f8824fd01c49d8516969e592a7425e64ec459a88d606e345f3f054e6')
+sha256sums=('208fd0133b1ade9db245133ec7438c107d98094f168e88d289ac2093af5c7a0b')
 
 prepare()
 {
@@ -49,10 +49,10 @@ package()
     cd "$pkgname-v-$pkgver"
 
     install --mode 755 --directory "$pkgdir/usr/lib/commonist"
-    install --mode 644 target/scala-2.12/scriptstart/commonist-1.9.0/lib/*.jar "$pkgdir/usr/lib/commonist"
+    install --mode 644 target/scala-2.12/scriptstart/commonist-$pkgver/lib/*.jar "$pkgdir/usr/lib/commonist"
 
     install --mode 755 --directory "$pkgdir/usr/bin"
-    install --mode 755 target/scala-2.12/scriptstart/commonist-1.9.0/commonist "$pkgdir/usr/bin"
+    install --mode 755 target/scala-2.12/scriptstart/commonist-$pkgver/commonist "$pkgdir/usr/bin"
 
     cd "$pkgdir"
     patch -Np1 -i "${srcdir}/../commonist.patch"

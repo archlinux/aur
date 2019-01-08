@@ -1,6 +1,6 @@
 pkgbase = commonist
 	pkgdesc = A file upload tool for mediawiki using its api.php interface
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://commons.wikimedia.org/wiki/Commons:Commonist
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = commonist
 	makedepends = sbt
 	depends = java-environment
 	depends = bash
-	source = https://github.com/ritschwumm/commonist/archive/v-1.9.0.tar.gz
-	sha256sums = dda17d59f8824fd01c49d8516969e592a7425e64ec459a88d606e345f3f054e6
+	source = https://github.com/ritschwumm/commonist/archive/v-1.10.0.tar.gz
+	sha256sums = 208fd0133b1ade9db245133ec7438c107d98094f168e88d289ac2093af5c7a0b
 
 pkgname = commonist
 
