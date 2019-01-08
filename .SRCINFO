@@ -1,6 +1,6 @@
 pkgbase = firefly-iii
 	pkgdesc = PHP personal finances manager
-	pkgver = 4.7.5.3
+	pkgver = 4.7.8
 	pkgrel = 1
 	url = https://github.com/firefly-iii/firefly-iii
 	install = firefly-iii.install
@@ -12,8 +12,8 @@ pkgbase = firefly-iii
 	backup = etc/webapps/firefly-iii/config.env.docker
 	backup = etc/webapps/firefly-iii/config.env.sandstorm
 	backup = etc/webapps/firefly-iii/config.env.testing
-	source = firefly-iii-4.7.5.3.tar.gz::https://github.com/firefly-iii/firefly-iii/archive/4.7.5.3.tar.gz
-	sha256sums = c87563b80a6f1d7d81a90e160e868cf94800e2b9d17938c2849ccc3d017372f7
+	source = firefly-iii-4.7.8.tar.gz::https://github.com/firefly-iii/firefly-iii/archive/4.7.8.tar.gz
+	sha256sums = 01e4a2ed6286afc44a98f85588dcb5f96f68ba82e6c3c482b924f23332ed289a
 
 pkgname = firefly-iii
 
