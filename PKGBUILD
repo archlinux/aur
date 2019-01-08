@@ -58,7 +58,7 @@ package_python2-astropy-healpix() {
 
     install -D -m644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-libraries --offline
+    python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-libraries --offline
 }
 
 package_python-astropy-healpix() {
