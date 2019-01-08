@@ -1,0 +1,17 @@
+pkgbase = meson-cross-riscv64-linux-gnu
+	pkgdesc = Meson cross file for riscv64
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/1ace/archlinux-meson-cross-riscv64-linux-gnu
+	arch = any
+	license = MIT
+	depends = meson
+	depends = riscv64-linux-gnu-binutils
+	depends = riscv64-linux-gnu-gcc
+	depends = riscv64-linux-gnu-glibc
+	depends = riscv64-linux-gnu-pkg-config
+	source = https://github.com/1ace/archlinux-meson-cross-riscv64-linux-gnu/archive/v1.tar.gz
+	sha256sums = 041afe4ccebeeee1c37d77152c01a71ec062f64121813c90efcab4b2bf224180
+
+pkgname = meson-cross-riscv64-linux-gnu
+
