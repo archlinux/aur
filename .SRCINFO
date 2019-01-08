@@ -13,6 +13,7 @@ pkgbase = fluid-git
 	makedepends = liri-cmake-shared-git
 	makedepends = qt5-doc
 	makedepends = qt5-tools
+	makedepends = clang
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
 	depends = qt5-svg
