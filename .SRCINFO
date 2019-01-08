@@ -1,6 +1,6 @@
 pkgbase = qt5-gsettings-git
 	pkgdesc = Qt-style wrapper for GSettings
-	pkgver = v1.2.0.r3132cd4
+	pkgver = v1.2.0.r9.g3132cd4
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
