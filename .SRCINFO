@@ -1,6 +1,6 @@
 pkgbase = conky-cairo
-	pkgdesc = conky - built for nvidia n (tolua++_5.3 in AUR) - conky git has built in lua 5.3 support (tolua++_5.3 NOT required) - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.
-	pkgver = 1.11.1
+	pkgdesc = conky - built for nvidia - conky now has built in lua 5.3 support (tolua++_5.3 NOT required) - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.
+	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://github.com/brndnmtthws/conky
 	arch = i686
@@ -22,12 +22,11 @@ pkgbase = conky-cairo
 	depends = lua
 	depends = libxnvctrl
 	depends = libxinerama
-	depends = tolua++_5.3
 	provides = conky
 	conflicts = conky
 	replaces = torsmo
 	replaces = conky
-	source = https://github.com/brndnmtthws/conky/archive/v1.11.1.tar.gz
+	source = https://github.com/brndnmtthws/conky/archive/v1.11.2.tar.gz
 	md5sums = SKIP
 
 pkgname = conky-cairo
