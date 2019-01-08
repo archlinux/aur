@@ -1,13 +1,13 @@
 # Maintainer: Acidhub <dev@acidhub.click>
 
 pkgname=stlib-plugins-git
-pkgver=20181026.26.c1e9e59
+pkgver=20190108.26.2f1645c
 pkgrel=1
 pkgdesc="A set of stlib official plugins"
 arch=('x86_64')
 url="https://github.com/ShyPixie/stilib-plugins"
-depends=('python>=3.7' 'python-aiohttp' 'python-beautifulsoup4')
-makedepends=('python>=3.7' 'git')
+depends=('python>=3.6' 'python-aiohttp' 'python-beautifulsoup4')
+makedepends=('git')
 license=('GPL')
 source=("git+https://github.com/ShyPixie/${pkgname%-*}")
 sha256sums=('SKIP')
