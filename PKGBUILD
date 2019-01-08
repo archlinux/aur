@@ -9,6 +9,7 @@ license=('MIT')
 depends=('qt5-base' 'sfml')
 makedepends=('cmake')
 applocation=/usr/share/$pkgname
+md5sums=('8c2bc5bf4428544cc94055b195970d84')
 shortcut="
 [Desktop Entry]
 Encoding=UTF-8
@@ -22,8 +23,6 @@ Categories=Application;Network
 Comment[en_US]=Quick ports scan
 "
 source=("https://github.com/blooser/Taurus/archive/v${pkgver}.tar.gz")
-md5sums=('8c2bc5bf4428544cc94055b195970d84')
-
 build() {
 	cd $pkgname-$pkgver
 	qmake	
