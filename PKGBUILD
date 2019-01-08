@@ -1,16 +1,16 @@
 # Maintainer: Acidhub <dev@acidhub.click>
 
 pkgname=steam-tools-ng
-pkgver=0.7.1
+pkgver=0.9
 pkgrel=1
 pkgdesc="Some useful tools for use with Steam client and some steam related websites."
 arch=('any')
 url="https://github.com/ShyPixie/steam-tools-ng"
-depends=('python>=3.7' 'python-aiohttp' 'python-gobject' 'stlib' 'stlib-plugins-git') 
-makedepends=('python-setuptools' 'python-certifi')
+depends=('python>=3.7' 'python-certifi' 'python-aiohttp' 'python-gobject' 'stlib>=0.12' 'stlib-plugins-git') 
+makedepends=('python-setuptools')
 license=('GPL')
 source=("https://github.com/ShyPixie/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('c488060f503d2470d8b63b7ea092f94ed4d03bbaf0f16055f476e78615f482b5')
+sha256sums=('4a994f50be37ff0222585dd3663491d99693d91516ae8aeb39a63d9ee3ca2e00')
 
 build() {
     cd $pkgname-$pkgver
@@ -21,6 +21,7 @@ package() {
     cd $pkgname-$pkgver
     python setup.py install --skip-build --optimize=1 --root=$pkgdir
     install -Dm644 steam-tools-ng.desktop $pkgdir/usr/share/applications/steam-tools-ng.desktop
+    cp -rf icons/* $pkgdir/usr/share/steam-tools-ng/icons/
 }
 
 
