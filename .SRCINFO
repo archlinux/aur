@@ -1,6 +1,6 @@
 pkgbase = liri-calculator-git
 	pkgdesc = A cross-platform material design calculator
-	pkgver = 20181015.123.6f90e9a
+	pkgver = r137.7caf7cf
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
