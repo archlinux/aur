@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-helper
 	pkgdesc = Deepin Wine Helper
-	pkgver = 1.1deepin18
-	pkgrel = 1
+	pkgver = 1.1
+	pkgrel = 2
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
