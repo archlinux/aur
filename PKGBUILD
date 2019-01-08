@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=luksmeta-git
-pkgver=9.r0.3e3cba3
-pkgrel=2
+pkgver=9.r2.fe3e941
+pkgrel=1
 pkgdesc='Library for storing metadata in the LUKSv1 header'
 arch=('x86_64')
 url='https://github.com/latchset/luksmeta'
@@ -10,10 +10,8 @@ depends=('cryptsetup')
 makedepends=('git' 'asciidoc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git"
-        'Relax-content-tests-in-test-suite.patch')
-sha512sums=('SKIP'
-            '145f6ceb7bad2090067c5e994bb0f89ce6388cc3c5b3e27a48704c3ae33615a81dcf309b54aa0d0004782890f9260560a24f274d442b3a397a352f5bac5b638e')
+source=("git+$url.git")
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -22,8 +20,6 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
-	# https://github.com/latchset/luksmeta/issues/6
-	patch --strip=1 --input="$srcdir/Relax-content-tests-in-test-suite.patch"
 	autoreconf --install --force
 }
 
