@@ -35,7 +35,7 @@ build() {
       --cross-file "tools/cross-wine64" \
       --buildtype "release" \
       --prefix "/usr/share/nine" \
-	    --bindir bin64 \
+	  --bindir bin64 \
       --libdir lib64 \
       "build64"
 
@@ -45,8 +45,8 @@ build() {
       --cross-file "tools/cross-wine32" \
       --buildtype "release" \
       --prefix "/usr/share/nine" \
-	    --bindir bin64 \
-      --libdir lib64 \
+	  --bindir bin32 \
+      --libdir lib32 \
       "build32"
 
     ninja -C "build32"
