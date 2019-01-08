@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-networkmanager-git
-pkgver=r38.5d3e76b
+pkgver=r46.5640b93
 pkgrel=1
 pkgdesc="Network Manager integration for Liri"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
