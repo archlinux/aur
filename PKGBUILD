@@ -11,7 +11,7 @@ _neovim="n"
 _name='deoplete-ternjs'
 pkgname="${_name}-git"
 pkgver=r93.185b011
-pkgrel=1
+pkgrel=2
 pkgdesc="javascript add-on for deoplete completion plugin for neovim"
 arch=('any')
 url="https://github.com/carlitux/deoplete-ternjs"
@@ -37,13 +37,13 @@ pkgver() {
 package() {
   if [ "$_neovim" = "y" ]; then
     mkdir -p "$pkgdir/usr/share/nvim/runtime"
-    cp -r "${srcdir}/${_name}/"{plugin,rplugin} \
+    cp -r "${srcdir}/${_name}/"{plugin,rplugin,autoload} \
       "$pkgdir/usr/share/nvim/runtime"
   fi
 
   if [ "$_vim" = "y" ]; then
     mkdir -p "$pkgdir/usr/share/vim/vimfiles"
-    cp -r "${srcdir}/${_name}/"{plugin,rplugin} \
+    cp -r "${srcdir}/${_name}/"{plugin,rplugin,autoload} \
       "$pkgdir/usr/share/vim/vimfiles"
   fi
 
