@@ -1,14 +1,14 @@
 # Maintainer: Franc[e]sco <lolisamurai@tfwno.gf>
 
 pkgname=sharenix-git
-pkgver=r130.dbaa0f2
+pkgver=r146.3ce23df
 pkgrel=1
 pkgdesc="file uploading tool with ShareX-compatible config"
 arch=('i686' 'x86_64')
 url="https://github.com/francesco149/sharenix"
 license=('GPLv3')
 provides=('sharenix')
-makedepends=('git' 'go' 'gtk2')
+makedepends=('git' 'go' 'gtk2' 'pkgconf')
 depends=('glibc' 'gtk2')
 optdepends=('gnome-screenshot: allows screenshotting regions with sharenix-window and sharenix-section')
 source=("git+https://github.com/Francesco149/sharenix.git")
