@@ -2,9 +2,9 @@
 # Maintainer: Skywol <skywol@qq.com>
 
 pkgname=deepin-wine
-pkgvers=2.18-14~rc1
-pkgver=2.18_14
-pkgrel=2
+pkgvers=2.18-16~rc2
+pkgver=2.18_16
+pkgrel=1
 epoch=
 pkgdesc="Deepin Wine"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ install=
 changelog=
 source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${pkgvers}_all.deb")
 noextract=("${pkgname}_${pkgvers}_all.deb")
-md5sums=('b8930fab9d8a6a2d3bb3b061211e695f')
+md5sums=('a2f770c9687a9ba9be6efd76e64143f4')
 validpgpkeys=()
 
 prepare() {
