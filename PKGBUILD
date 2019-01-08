@@ -4,7 +4,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=adonthell
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="A 2D graphical, single player role playing game engine"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('sdl2_mixer' 'sdl2_ttf' 'python')
 makedepends=('swig')
 options=('emptydirs')
 source=("http://savannah.nongnu.org/download/adonthell/$pkgname-src-$pkgver.tar.gz")
-sha256sums=('b94258666932bbae0e2fe0bcaf31c373a55a01c8977d24b9f45e1f11887ae8b5')
+sha256sums=('c006f95bc58f095eff1a6b4bfc3ec96a455c76cdc8b64c4b2430ad7775c2ccec')
 
 build() {
   cd $pkgname-$pkgver
