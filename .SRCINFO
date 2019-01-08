@@ -1,6 +1,6 @@
 pkgbase = webkit2gtk-unstable
 	pkgdesc = GTK+ Web content engine library
-	pkgver = 2.23.1
+	pkgver = 2.23.2
 	pkgrel = 1
 	url = https://webkitgtk.org/
 	arch = i686
@@ -34,8 +34,8 @@ pkgbase = webkit2gtk-unstable
 	provides = webkit2gtk
 	conflicts = webkit2gtk
 	options = !emptydirs
-	source = http://webkitgtk.org/releases/webkitgtk-2.23.1.tar.xz
-	sha1sums = 93238243880d573ea84bbf8d34bbe37f1c3be51f
+	source = http://webkitgtk.org/releases/webkitgtk-2.23.2.tar.xz
+	sha1sums = fc90f496d96e6386070e2c785b06f5fb8682d7a2
 
 pkgname = webkit2gtk-unstable
 
