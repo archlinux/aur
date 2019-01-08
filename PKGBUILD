@@ -2,7 +2,7 @@
 # Contributor: Dylan Araps <dylan.araps@gmail.com>
 
 pkgname=neofetch
-pkgver=5.0.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
@@ -12,6 +12,7 @@ depends=('bash')
 backup=('etc/neofetch/config.conf')
 optdepends=(
   'catimg: Display Images'
+  'chafa: Image to text support'
   'feh: Wallpaper Display'
   'imagemagick: Image cropping / Thumbnail creation / Take a screenshot'
   'jp2a: Display Images'
@@ -26,7 +27,7 @@ optdepends=(
   'xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dylanaraps/neofetch/archive/${pkgver}.tar.gz")
-sha256sums=('2a4f4853bf83b88a037994dbc53a90c8bd5708f5eeb3392f56d4e49c49d995b3')
+sha256sums=('264a7689561bb498f97f10231959bdd8f7c873671bac2ffb660de9a5863b1c76')
 
 package() {
   cd "${pkgname}-${pkgver}/"
