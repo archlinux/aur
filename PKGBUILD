@@ -2,7 +2,7 @@
 
 pkgname=sharenix-git
 pkgver=r146.3ce23df
-pkgrel=1
+pkgrel=2
 pkgdesc="file uploading tool with ShareX-compatible config"
 arch=('i686' 'x86_64')
 url="https://github.com/francesco149/sharenix"
