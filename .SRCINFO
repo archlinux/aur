@@ -1,18 +1,17 @@
 pkgbase = marktext
 	pkgdesc = Next generation markdown editor
-	pkgver = 0.13.53
+	pkgver = 0.13.65
 	pkgrel = 1
 	url = https://marktext.github.io/website/
 	arch = x86
 	arch = x86_64
 	license = MIT
 	makedepends = npm
-	depends = gconf
 	depends = gtk3
 	depends = libxss
 	depends = nss
-	source = marktext-0.13.53.tar.gz::http://github.com/marktext/marktext/archive/v0.13.53.tar.gz
-	sha512sums = 92ba596a9623128cb62de3f69bf44b419cd09fa815cbdb42dc2e06a45066d12b4042a32fad8d6b6e607d9548a2c246be327859ed38a489dde1aab174b9bcd0b0
+	source = marktext-0.13.65.tar.gz::http://github.com/marktext/marktext/archive/v0.13.65.tar.gz
+	sha512sums = 110f3b2a91ac2af2f7ae94abdff5fb6a155e810630f3e87929c61e52786e2e690464803ae239dc3f583ad37fc61e03e57ba394b28ac4d6d95e915382dcdfdc24
 
 pkgname = marktext
 
