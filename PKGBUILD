@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-themes-git
-pkgver=20180904.119.bcf7271
+pkgver=v0.9.0.r7300b14
 pkgrel=1
 pkgdesc="Themes for uniform look and feel throughout Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
