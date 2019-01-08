@@ -1,7 +1,7 @@
 # Maintainer: Acidhub <dev@acidhub.click>
 
 pkgname=stlib
-pkgver=0.9.1
+pkgver=0.12
 pkgrel=1
 pkgdesc="Async library that provides features related to Steam client and compatible stuffs"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'gcc' 'unzip')
 license=('GPL')
 source=("https://github.com/ShyPixie/$pkgname/archive/v$pkgver.tar.gz"
         'steamworks_sdk_142.zip::file://steamworks_sdk_142.zip')
-sha256sums=('ae9a44fa527bc45a143d3363a095a655c70dcc3a27c1ade8bbc47410e04d5622'
+sha256sums=('35fa857393354fc3949b2d4dfff464ed682964ba29677fc0669895873b783f22'
             '7695f8e183bef16dc2e663ffbdfad2248ae266bce8ff42066a3e88e1d54f0f42')
 
 prepare() {
