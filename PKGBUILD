@@ -4,7 +4,7 @@
 # Contributor : Jingbei Li <i@jingbei.li>
 pkgname=miniconda3
 pkgver=4.5.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Mini version of Anaconda Python distribution."
 arch=('x86_64')
 url="https://conda.io/miniconda"
@@ -37,8 +37,8 @@ package() {
 	msg2 "Correcting permissions"
 	chmod a+r -R pkgs
 
-	msg2 "Stripping \$pkgdir from default meta"
-	find conda-meta -name '*.json' -exec sed -e "s/${pkgdir//\//\\\/}//g" -i {} \;
+	msg2 "Stripping \$pkgdir"
+	sed "s|${pkgdir}||g" -i $(grep "$pkgdir" . -rIl)
 
 	msg2 "Installing license"
 	install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
