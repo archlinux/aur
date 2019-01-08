@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://gitlab.com/alextee/zrythm"
 license=('GPL3')
 depends=('gtk3' 'lv2' 'lilv' 'suil' 'jack' 'libsndfile' 'libsmf' 'libdazzle')
-source=("https://gitlab.com/alextee/zrythm/-/archive/$pkgver/zrythm-$pkgver.tar.gz")
+source=("zrythm-$pkgver::git+https://gitlab.com/alextee/zrythm.git")
 md5sums=('SKIP')
 
 prepare() {
