@@ -16,7 +16,7 @@ pkgbase = zrythm-git
 	depends = libdazzle
 	provides = zrythm
 	conflicts = zrythm
-	source = zrythm-git::git+https://gitlab.com/alextee/zrythm.git
+	source = zrythm::git+https://gitlab.com/alextee/zrythm.git
 	md5sums = SKIP
 
 pkgname = zrythm-git
