@@ -1,16 +1,15 @@
 pkgbase = docker-swarm
 	pkgdesc = A Docker-native clustering system
-	pkgver = 1.2.6
+	pkgver = 1.2.9
 	pkgrel = 1
 	url = https://github.com/docker/swarm/
 	arch = x86_64
 	arch = i686
 	license = Apache
 	makedepends = go
-	makedepends = godep
 	depends = glibc
-	source = https://github.com/docker/swarm/archive/v1.2.6.tar.gz
-	sha512sums = 3857036c625f36a75d50803d4ab5daed3e926f3a5044558bed36272add7210c0c0df79274dcd2daf265551aca066dd5b86861f251aac4a0ebbd6c00ad60e8c2a
+	source = https://github.com/docker/swarm/archive/v1.2.9.tar.gz
+	sha512sums = 8707e9de8d1e123d627674c8b320920000fa093347e1b74f657bc254445a222019c3f3d57bef6cd6496f8758cbbf653e7fa47b41e1f7d0604b1eadef1baa6d55
 
 pkgname = docker-swarm
 
