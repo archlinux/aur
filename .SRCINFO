@@ -1,6 +1,6 @@
 pkgbase = wastesedge
 	pkgdesc = Open source role playing game based on Adonthell engine
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = http://adonthell.nongnu.org/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = wastesedge
 	depends = adonthell
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	source = http://savannah.nongnu.org/download/adonthell/wastesedge-src-0.3.7.tar.gz
-	sha256sums = 9b8861f071a995c40a17589ae477027730dafa63c86b07b02995f84c5a3cbe41
+	source = http://savannah.nongnu.org/download/adonthell/wastesedge-src-0.3.8.tar.gz
+	sha256sums = 2003ef56f9673216a97d2aa277465c4cd6ff5f8be81e703508eb4425c556b620
 
 pkgname = wastesedge
 
