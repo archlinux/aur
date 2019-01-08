@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 
 pkgname=https-everywhere-chrome
-pkgver=2018.10.31
+pkgver=2019.1.7
 pkgrel=1
 pkgdesc="Chrome/Chromium extension to use HTTPS whenever possible"
 arch=('any')
@@ -10,7 +10,7 @@ url='https://www.eff.org/https-everywhere'
 license=('GPL')
 optdepends=('chromium' 'google-chrome')
 source=(https://www.eff.org/files/$pkgname-$pkgver.crx)
-sha512sums=('f76697ec40a81ff660b879e72f6741504d08e3f285490296a4c3a67449f43994577c85caab00c6b34066426aa67b7b387f8e7ddd4f39021911934f49c6322dc3')
+sha512sums=('77d1aff7fea3ade0c2cfc3d999428dcbbc4a31827774d489a6c95e8d6256924c3ade6c540a039a8c9aec599538ead802cbaa56d26eaff62018403ca7dc53e72c')
 
 package() {
 	 mkdir -p $pkgdir/usr/share/$pkgname
