@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-plugin
 	pkgdesc = Deepin Wine plugin
-	pkgver = 1.0deepin2
+	pkgver = 1.0.2
 	pkgrel = 2
 	url = http://www.deepin.org
 	arch = i686
