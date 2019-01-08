@@ -1,6 +1,6 @@
 pkgbase = qrun-git
 	pkgdesc = A command line tool to run QEMU in the most common configurations
-	pkgver = r46.6fa8337
+	pkgver = r57.3a62205
 	pkgrel = 1
 	arch = any
 	license = GPL

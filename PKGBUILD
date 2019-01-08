@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=qrun-git
-pkgver=r46.6fa8337
+pkgver=r57.3a62205
 pkgrel=1
 pkgdesc="A command line tool to run QEMU in the most common configurations"
 arch=('any')
