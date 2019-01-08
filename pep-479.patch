@@ -1,0 +1,20 @@
+--- a/jitlog/objects.py	2018-04-11 06:52:06.000000000 -0700
++++ b/jitlog/objects.py	2019-01-07 20:57:05.348638044 -0800
+@@ -371,7 +371,7 @@
+ 
+ def iter_ranges(numbers):
+     if len(numbers) == 0:
+-        raise StopIteration
++        return
+     numbers.sort()
+     first = numbers[0]
+     last = numbers[0]
+@@ -382,7 +382,7 @@
+                 last = i
+                 first = i
+             else:
+-                raise StopIteration
++                return
+         else:
+             last = i
+     yield range(first, last+1)

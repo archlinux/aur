@@ -1,31 +1,42 @@
-# Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
+# Contributor: Antony Lee <anntzer dot lee at gmail dot com>
+# Maintainer: Eric Anderson <ejona86@gmail.com>
 
-_pyname=vmprof
-pkgname=python-$_pyname
-pkgver=0.2.7
-pkgrel=2
-pkgdesc="Python's vmprof client"
-url='https://pypi.python.org/pypi/vmprof'
-depends=('python-six' 'libdwarf' 'libelf' 'libunwind')
-checkdepends=('python-pytest')
+pkgname=python-vmprof
+_reponame=vmprof-python
+pkgver=0.4.12
+pkgrel=1
+pkgdesc="A statistical Python program profiler"
+url="https://github.com/vmprof/vmprof-python"
+depends=('libdwarf' 'libelf' 'libunwind'
+         'python-pytz' 'python-requests' 'python-colorama' 'python-six')
+makedepends=('python-setuptools')
+checkdepends=('python-pytest' 'python-cffi' 'python-hypothesis')
 license=('MIT')
 arch=('i686' 'x86_64')
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
-md5sums=('2c2f9571dc4e18a581ab4474f3fbc6dd')
+# Use github archive instead of pypi because it contains tests
+source=("https://github.com/vmprof/$_reponame/archive/$pkgver.tar.gz"
+        "pep-479.patch")
+sha256sums=('64c62cd737c88573447d1f90f29978fc3178a1663ddbdb60cdcb3f2c15e427da'
+            '6df41198c903a4b6575e2bfdce9a1548909b318ab06f715c442a6608668815ec')
+
+prepare() {
+  cd "$_reponame-$pkgver"
+  patch -Np1 -i "${srcdir}/pep-479.patch"
+  sed -i 's/-Werror/-w/g' vmprof/test/*
+}
 
 build() {
-  cd $srcdir/$_pyname-$pkgver
+  cd "$_reponame-$pkgver"
   python setup.py build
 }
 
 check() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py build_ext --inplace
-  py.test tests
+  cd "$_reponame-$pkgver"
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.7" pytest
 }
 
 package() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "$_reponame-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
