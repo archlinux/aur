@@ -3,7 +3,7 @@
 # Rebuild when Qt is updated
 
 pkgname=liri-eglfs-git
-pkgver=r18.23941d3
+pkgver=r23.25b282a
 pkgrel=1
 pkgdesc="Liri QPA plugin"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
