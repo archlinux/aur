@@ -1,3 +1,16 @@
+Index: setup.py
+===================================================================
+--- setup.py	(revision 875)
++++ setup.py	(working copy)
+@@ -426,7 +426,7 @@
+             ext_list[-1].library_dirs = [self.libdirs]
+             
+             if self.SUNDIALS_version >= (3,0,0):
+-                ext_list[-1].libraries = ["sundials_cvodes", "sundials_nvecserial", "sundials_idas", "sundials_sunlinsoldense", "sundials_sunlinsolspgmr", "sundials_sunmatrixdense", "sundials_sunmatrixsparse"]
++                ext_list[-1].libraries = ["sundials_cvodes", "sundials_nvecserial", "sundials_idas", "sundials_sunlinsoldense", "sundials_sunlinsolspgmr", "sundials_sunmatrixdense", "sundials_sunmatrixsparse", "sundials_kinsol"]
+             else:
+                 ext_list[-1].libraries = ["sundials_cvodes", "sundials_nvecserial", "sundials_idas"]
+             if self.sundials_with_superlu and self.with_SLU: #If SUNDIALS is compiled with support for SuperLU
 Index: src/lib/sundials_includes.pxd
 ===================================================================
 --- src/lib/sundials_includes.pxd	(revision 875)
