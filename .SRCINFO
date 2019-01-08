@@ -1,6 +1,6 @@
 pkgbase = sile-git
 	pkgdesc = Modern typesetting system inspired by TeX
-	pkgver = 0.9.4.r532.ge7c9d81
+	pkgver = 0.9.5.r1.ga9b651d
 	pkgrel = 1
 	url = http://www.sile-typesetter.org/
 	arch = any
@@ -14,6 +14,8 @@ pkgbase = sile-git
 	depends = lua-filesystem
 	depends = lua-lpeg
 	depends = lua-penlight
+	depends = lua-sec
+	depends = lua-socket
 	depends = lua-zlib
 	depends = ttf-gentium-plus
 	provides = sile

@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.9.4.r532.ge7c9d81
+pkgver=0.9.5.r1.ga9b651d
 _branch='master'
 pkgrel=1
 arch=(any)
@@ -22,6 +22,8 @@ depends=('fontconfig'
          'lua-filesystem'
          'lua-lpeg'
          'lua-penlight'
+         'lua-sec'
+         'lua-socket'
          'lua-zlib'
          'ttf-gentium-plus')
 
