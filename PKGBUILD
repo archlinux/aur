@@ -2,7 +2,7 @@
 # Contributor: Troy Engel <troyengel+arch@gmail.com>
 
 pkgname=xeroxprtdrv
-pkgver=5.20.626.4179
+pkgver=5.20.647.4414
 pkgrel=1
 pkgdesc="Xerox Unix Print Drivers"
 arch=('i686' 'x86_64')
@@ -27,8 +27,8 @@ md5sums=('0a8eb0c1480a6ccc1ddab7cbb5e1bde4'
          'd380002eef6bbbbeb43cd0691123a7d4'
          '1976d9d3e95065820adbe417ec4e5b2d'
          '117637c64980344ca9bb87e8a8f10938')
-md5sums_i686=('cbeb3549ec90ead84813278686476a47')
-md5sums_x86_64=('6fa756571af8edc1dcf2e8e98fb4655d')
+md5sums_i686=('6349bae5313552d7840f0eefd10c3cea')
+md5sums_x86_64=('5922cd782b7aac681c40fb68abae0a5e')
 
 prepare() {
     cd "$srcdir"
