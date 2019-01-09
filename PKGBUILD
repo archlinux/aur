@@ -2,14 +2,13 @@
 # Contributor: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname=pyenv-git
 pkgver=1.2.8.r14.g337b92d9
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple Python version management'
 arch=('any')
 url='https://github.com/pyenv/pyenv'
 license=('MIT')
 conflicts=('pyenv')
 provides=('pyenv')
-depends=()
 source=('git+https://github.com/pyenv/pyenv')
 md5sums=('SKIP')
 
@@ -34,9 +33,6 @@ package() {
     # install python-build plugin
     cd plugins/python-build
     PREFIX="${pkgdir}/opt/pyenv" ./install.sh 
-
-    # go back to the source package
-    cd "${srcdir}/pyenv"
 
     for bin in pyenv-{,un}install; do
         ln -s /opt/pyenv/bin/"${bin}" "${pkgdir}/opt/pyenv/libexec/${bin}"

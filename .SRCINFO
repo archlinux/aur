@@ -1,7 +1,7 @@
 pkgbase = pyenv-git
 	pkgdesc = Simple Python version management
 	pkgver = 1.2.8.r14.g337b92d9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyenv/pyenv
 	arch = any
 	license = MIT
