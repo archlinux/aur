@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=SQL Power Architect
+GenericName=Data Modeling & Profiling Tool
+Exec=/usr/bin/sql-power-architect
+Icon=/usr/share/icons/hicolor/48x48/apps/sql-power-architect.png
+Type=Application
+Categories=Application;Java;Development;Database;
+Keywords=database;db;sql;query;administration;development;

@@ -1,0 +1,22 @@
+pkgbase = sql-power-architect
+	pkgdesc = Data Modeling & Profiling Tool
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = http://www.bestofbi.com/page/architect
+	arch = any
+	license = GPL
+	depends = java-runtime-common
+	depends = libxtst
+	depends = bash
+	depends = hicolor-icon-theme
+	source = http://www.bestofbi.com/downloads/architect/1.0.8/SQL-Power-Architect-generic-jdbc-1.0.8.tar.gz
+	source = sql-power-architect
+	source = sql-power-architect.desktop
+	source = sql-power-architect.png
+	sha256sums = 1e17e1f8b3277509d5e4e6dbc524831c7591c43b64c7f6c3b53044ebe741886b
+	sha256sums = 0e7d2457e19e52a415e0205e2275c66c828fe570c998dfc08b03c791a55ba769
+	sha256sums = f3d2d4da9fe61024cfbaf07c4823dfadc340768931cbfc9d5cf593b34c628705
+	sha256sums = be5b365808e3aa3d50c75f6ebb4397e9b906bbcf9a5c96750f6481b26f065e27
+
+pkgname = sql-power-architect
+
