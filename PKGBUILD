@@ -2,14 +2,13 @@
 
 pkgname=mariadb-jdbc
 pkgver=2.3.0
-pkgrel=2
-pkgdesc="The official JDBC driver (Java library) for MariaDB"
+pkgrel=3
+pkgdesc="The official JDBC driver (Connector/J) for MariaDB"
 arch=('any')
 url="https://downloads.mariadb.org/connector-java/"
 license=('LGPL2.1')
 depends=('java-runtime')
 provides=('mysql-jdbc')
-replaces=('mysql-jdbc')
 source=("https://downloads.mariadb.com/Connectors/java/connector-java-${pkgver}/mariadb-java-client-${pkgver}.jar")
 
 sha256sums=("26fc67b3022a6e85323b76ebb4c26994ec1a6b11ec7344483244c4e50ff79ce0")
