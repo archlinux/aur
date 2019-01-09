@@ -1,7 +1,7 @@
 # Maintainer: Alad Wenter <alad@archlinux.org>
 pkgname=kittypack
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Query package information from archweb API"
 arch=('any')
 url="https://github.com/MrElendig/kittypack"
@@ -15,6 +15,7 @@ sha256sums=('c35503c642d0b9394b9d16e572633073063794cbcc66bffbe114c7ce6398d6f6')
 
 build() {
     cd "$pkgname-$pkgver"
+    touch kittypack/__init__.py
     python setup.py build
 
     cd doc/man
@@ -23,7 +24,7 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
     install -D doc/man/kittypack.1 "$pkgdir"/usr/share/man/man1/kittypack.1
     install -D kittypack/kittypack.conf "$pkgdir"/etc/kittypack.conf
