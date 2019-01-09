@@ -6,7 +6,7 @@ After=network.target
 User=bazarr
 Group=bazarr
 Type=simple
-ExecStart=/usr/bin/python2 /usr/lib/bazarr/bazarr.py
+ExecStart=/usr/bin/python2 /usr/lib/bazarr/bazarr.py --no-update --config /var/lib/bazarr
 Restart=always
 TimeoutStopSec=30
 

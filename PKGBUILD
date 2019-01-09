@@ -2,7 +2,7 @@
 
 pkgname=bazarr
 pkgver=0.6.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
@@ -25,18 +25,21 @@ depends=('python2'
          'python2-tzlocal'
          'python2-urllib3'
          'python2-waitress'
-         'python2-webtest')
+         'python2-webtest'
+         'python2-gevent')
 
 makedepends=('git')
 source=("bazarr-${pkgver}.tar.gz::https://github.com/morpheus65535/bazarr/archive/v${pkgver}.tar.gz"
         'bazarr.service'
         'bazarr.sysusers'
+        'bazarr.install'
         'bazarr.tmpfiles')
 
 sha256sums=('89e37c1854b5931e6bf086cb288cd642f9f70b260e60ade7cecc76696d3afd77'
-            'e3c57f1a1d9ddd87d097efe2df5148f10de79c445fe6eee158f64b4335f3e174'
+            'b9e739e66eeabe5e9768db791d0d930e7f3cbaba6d2253a5973f8034ca12a8e7'
             '92fd48cbd7e5fe3a0388bbe756a52098fc461ef2dc87d9e886452e4f15acdcdc'
-            '7f75f2c2634524e90b1dea7649fceceb57949efa9db365cfa9e29e58690def4e')
+            '573beeac951d427e980332ce4d8645ae2299082e6c9c04f96e2a41a98c3acc60'
+            '2087276827bb090edf8743d5debfcc22a0c434b36d3b680bbea85dbd9a3b4539')
 
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/bazarr"

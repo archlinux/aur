@@ -1,0 +1,6 @@
+post_upgrade() {
+  if [[ -d /usr/lib/bazarr/data ]] && [[ ! -d /var/lib/bazarr/config ]]; then
+    echo "Moving old /usr/lib/bazarr/data/* to new /var/lib/bazarr..."
+    mv /usr/lib/bazarr/data/* /var/lib/bazarr/ && rmdir /usr/lib/bazarr/data
+  fi
+}
