@@ -1,7 +1,7 @@
 # Maintainer: Attenuation <ouyangjun1999@gmail.com>
 pkgname=hexyl
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='A command-line hex viewer'
 arch=('x86_64')
 url='https://github.com/sharkdp/hexyl'
@@ -9,7 +9,7 @@ license=('APACHE' 'MIT')
 makedepends=('rust')
 depends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c45e0b67da7e9e3e9921db11db5a6bcfaf1c253c2644a21d94a084af8dedff60')
+sha256sums=('7a6b8c6058fa887105dcd5f85b2808b2e0e7557f13b28d6fe802ce5609ff473e')
 
 build() {
   cd "$pkgname-$pkgver"

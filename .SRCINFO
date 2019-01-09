@@ -1,14 +1,14 @@
 pkgbase = hexyl
 	pkgdesc = A command-line hex viewer
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/sharkdp/hexyl
 	arch = x86_64
 	license = APACHE
 	license = MIT
 	makedepends = rust
-	source = hexyl-0.2.0.tar.gz::https://github.com/sharkdp/hexyl/archive/v0.2.0.tar.gz
-	sha256sums = c45e0b67da7e9e3e9921db11db5a6bcfaf1c253c2644a21d94a084af8dedff60
+	source = hexyl-0.3.0.tar.gz::https://github.com/sharkdp/hexyl/archive/v0.3.0.tar.gz
+	sha256sums = 7a6b8c6058fa887105dcd5f85b2808b2e0e7557f13b28d6fe802ce5609ff473e
 
 pkgname = hexyl
 
