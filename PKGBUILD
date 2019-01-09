@@ -9,7 +9,7 @@ url="https://github.com/blooser/taurus"
 license=('MIT')
 depends=('qt5-base' 'sfml')
 makedepends=('cmake')
-applocation=/usr/share/$pkgname
+applocation=~/Documents/$pkgname
 shortcut="
 [Desktop Entry]
 Encoding=UTF-8
@@ -35,7 +35,7 @@ package() {
 	cd $pkgname-$pkgver
 	make clean
 	cd ..
-	sudo cp -r $pkgname-$pkgver $applocation
+	cp -r $pkgname-$pkgver $applocation
 	rm -rf $pkgname-$pkgver		
 	echo "${shortcut}" > ~/.local/share/applications/taurus.desktop
 	if [ -f ~/.zshrc ]; then
