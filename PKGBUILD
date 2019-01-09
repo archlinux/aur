@@ -22,12 +22,17 @@ makedepends=('git' 'go-pie')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
+        ruby26.patch
         "git+https://github.com/mitchellh/vagrant-installers.git#commit=7b7fb86")
 md5sums=('3c9ef6fbbf1b36f7e98a1e2495e50101'
+         '16d1ca112b51345c47d2f6d899670e37'
          'SKIP')
 
 build() {
   cd $pkgname-$pkgver
+
+  # https://github.com/hashicorp/vagrant/issues/10577
+  patch -Np1 -i ../ruby26.patch
 
   INSTALLERS_DIR="$srcdir"/vagrant-installers/substrate/modules
 
@@ -53,7 +58,7 @@ package() {
 
   GEM_PATH="$EMBEDDED_DIR"/gems GEM_HOME="$GEM_PATH" \
   GEMRC="$EMBEDDED_DIR"/etc/gemrc \
-    gem install $pkgname-$pkgver.gem --no-ri --no-rdoc
+    gem install $pkgname-$pkgver.gem --no-document
 
   install -Dm755 "$INSTALLERS_DIR"/vagrant_substrate/files/launcher/vagrant \
     "$pkgdir"/opt/$pkgname/bin/$pkgname
