@@ -13,7 +13,7 @@ optdepends=('libmariadbclient' 'postgresql-libs')
 makedepends=('libmariadbclient' 'postgresql-libs' 'java-environment')
 options=('!libtool')
 license=('GPL2')
-source=("http://debian.rub.de/ubuntu/pool/universe/e/emboss/emboss_$pkgver.orig.tar.gz")
+source=("ftp://emboss.open-bio.org/pub/EMBOSS/EMBOSS-$pkgver.tar.gz")
 sha256sums=('7184a763d39ad96bb598bfd531628a34aa53e474db9e7cac4416c2a40ab10c6e')
 
 build() {
