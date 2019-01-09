@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='frr'
-pkgver='6.0.1'
+pkgver='6.0.2'
 pkgrel='1'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('any')
@@ -15,7 +15,7 @@ provides=('quagga' 'quagga_cumulus')
 source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('5fa2defebf00fb457edaa3cc39a63534b081526c00a3aeafc569caa7fc300cd1'
+sha256sums=('dde97d012b6068a1230c0c6a03b38015befae37f617b9ffbd17024c71a170d94'
             '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89')
 
