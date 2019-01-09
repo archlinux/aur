@@ -2,14 +2,14 @@
 
 pkgname=wastesedge
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source role playing game based on Adonthell engine"
 arch=('any')
 url="http://adonthell.nongnu.org/"
 license=('GPL2')
 depends=('adonthell' 'hicolor-icon-theme' 'desktop-file-utils')
 source=(http://savannah.nongnu.org/download/adonthell/$pkgname-src-$pkgver.tar.gz)
-sha256sums=('2003ef56f9673216a97d2aa277465c4cd6ff5f8be81e703508eb4425c556b620')
+sha256sums=('744aa03c727d01d8242ad8f9688175baac7712676f966b34b8e3914e891d06ca')
 
 build() {
   cd $pkgname-$pkgver
