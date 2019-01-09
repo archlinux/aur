@@ -2,7 +2,8 @@
 # Contributor: Chris Severance aur.severach AatT spamgourmet.com
 
 pkgname=python-sphinx-automodapi
-pkgver=0.9
+_pyname=${pkgname#python-}
+pkgver=0.10
 pkgrel=1
 pkgdesc="Sphinx extension for generating API documentation."
 arch=('any')
@@ -10,11 +11,11 @@ url="https://sphinx-automodapi.readthedocs.io/en/latest/"
 license=('BSD')
 depends=('python-sphinx>=1.6')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/s/sphinx-automodapi/sphinx-automodapi-${pkgver}.tar.gz")
-sha256sums=('71a69e1a7ab8d849f416d7431db854d7b1925f749ba6345bc7d88f288892871d')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+sha256sums=('5c989bfe37f555f635e8fbb650859df391556981f5a436507fb3241794fd26c6')
 
 package() {
-    cd ${srcdir}/sphinx-automodapi-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
