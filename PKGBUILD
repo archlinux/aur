@@ -1,8 +1,8 @@
 # Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgname=git-scripts-jwiegley-git
-pkgver=8ae43cb
-pkgrel=4
+pkgver=r236.c7fbb5f
+pkgrel=1
 pkgdesc="Git scripts written by different people (collected by John Wiegley)"
 url="https://github.com/jwiegley/git-scripts"
 arch=(any)
@@ -16,7 +16,10 @@ sha256sums=('SKIP')
 
 pkgver () {
   cd ${srcdir}/git-scripts
-  git rev-parse --short HEAD
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare () {
