@@ -50,6 +50,8 @@ pkgbase = pantheon-desktop-git
 	depends = wingpanel-indicator-power-git
 	depends = wingpanel-indicator-session-git
 	depends = wingpanel-indicator-sound-git
+	depends = gvfs-goa
+	depends = gvfs-google
 
 pkgname = pantheon-desktop-git
 

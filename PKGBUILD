@@ -52,6 +52,8 @@ depends=(pantheon-core-git
   wingpanel-indicator-power-git
   wingpanel-indicator-session-git
   wingpanel-indicator-sound-git
+  gvfs-goa
+  gvfs-google
   )
 
 # pantheon-mail-git # doesn't build
