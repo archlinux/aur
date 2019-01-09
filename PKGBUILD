@@ -2,7 +2,7 @@
 # Contributor wenLiangcan <boxeed at gmail dot com>
 
 pkgname=keeweb-git
-pkgver=1.6.3+192+g9b9cda3
+pkgver=1.7.2+6+g0c7210b
 pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases. (develop branch)"
 arch=('any')
@@ -26,7 +26,7 @@ source=(
 
 sha1sums=('SKIP'
           'a55c2ed276c6073b7954452cdc88209633d51ace'
-          '3cad1556a5a855a3ab5152f1b2cb175287bd8368'
+          'f5ceba9e7c6c9d93c50279c524a286eca4d52804'
           'a2ab033d06abfe7616d2615d8edf7931f29efc96')
 
 pkgver() {
@@ -43,12 +43,13 @@ prepare() {
 	node ../package.json.patch.js
 
 	sed -i \
-		-e "/electronVersion/           d" \
-		-e "/loader: 'babel-loader'/,+2 d" \
-		-e "/loader: 'uglify-loader'/   d" \
+		-e "/const electronVersion/       s/pkg.dependencies.electron/'$(</usr/lib/electron/version)'/" \
+	Gruntfile.js
+
+	sed -i \
 		-e "/'eslint',/                 d" \
 		-e "/'uglify',/                 d" \
-	Gruntfile.js
+	grunt.tasks.js
 
 	sed -i \
 		-e '/Exec=/ c \Exec=keeweb %u' \
@@ -61,8 +62,11 @@ build() {
 	export SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=1
 	export LIBSASS_EXT=auto
 
-	npm install --no-package-lock
-	node_modules/.bin/grunt --skip-sign build-web-app build-desktop-app-content
+	npm install
+
+	ln -fs normalize.css node_modules/normalize.css/normalize.scss
+
+	npx grunt build-web-app build-desktop-app-content
 
 	asar p tmp/desktop/app ../keeweb.asar
 }

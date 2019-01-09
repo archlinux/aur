@@ -1,6 +1,6 @@
 pkgbase = keeweb-git
 	pkgdesc = Desktop password manager compatible with KeePass databases. (develop branch)
-	pkgver = 1.6.3+192+g9b9cda3
+	pkgver = 1.7.2+6+g0c7210b
 	pkgrel = 1
 	url = https://github.com/keeweb/keeweb
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = keeweb-git
 	source = keeweb.sh
 	sha1sums = SKIP
 	sha1sums = a55c2ed276c6073b7954452cdc88209633d51ace
-	sha1sums = 3cad1556a5a855a3ab5152f1b2cb175287bd8368
+	sha1sums = f5ceba9e7c6c9d93c50279c524a286eca4d52804
 	sha1sums = a2ab033d06abfe7616d2615d8edf7931f29efc96
 
 pkgname = keeweb-git
