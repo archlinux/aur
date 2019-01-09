@@ -1,22 +1,24 @@
 pkgbase = keeweb
 	pkgdesc = Desktop password manager compatible with KeePass databases.
-	pkgver = 1.6.3
-	pkgrel = 6
+	pkgver = 1.7.2
+	pkgrel = 1
 	url = https://github.com/keeweb/keeweb
 	arch = any
 	license = MIT
 	makedepends = asar
 	makedepends = npm
 	makedepends = libsass
-	depends = electron2
+	depends = electron
 	optdepends = xdotool: for auto-type
 	conflicts = keeweb-desktop
-	source = https://github.com/keeweb/keeweb/archive/v1.6.3.tar.gz
+	source = https://github.com/keeweb/keeweb/archive/v1.7.2.tar.gz
+	source = hide-menubar.patch
 	source = keeweb.sh
 	source = package.json.patch.js
-	sha1sums = 75c054b23aa4f0f6fd067174623549f65ebe740a
-	sha1sums = a8d1efc9faf9c9f38d1499ff3eda4e219c394eef
-	sha1sums = ad73331a8a701e83a77ab9aaf6a56dc5b768b678
+	sha1sums = 2526922e7f872cb17a775321b55788d1c5d48854
+	sha1sums = a55c2ed276c6073b7954452cdc88209633d51ace
+	sha1sums = a2ab033d06abfe7616d2615d8edf7931f29efc96
+	sha1sums = 6fef823604bfeac45bc6aa830c1f129c15a80fcf
 
 pkgname = keeweb
 

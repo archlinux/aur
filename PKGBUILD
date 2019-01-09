@@ -1,13 +1,13 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=keeweb
-pkgver=1.6.3
-pkgrel=6
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/keeweb/keeweb"
 license=('MIT')
-depends=('electron2')
+depends=('electron')
 makedepends=(
 	'asar'
 	'npm'
@@ -17,41 +17,36 @@ optdepends=('xdotool: for auto-type')
 conflicts=('keeweb-desktop')
 source=(
 	"https://github.com/keeweb/keeweb/archive/v${pkgver}.tar.gz"
+	'hide-menubar.patch'
 	'keeweb.sh'
 	'package.json.patch.js'
 )
 
-sha1sums=('75c054b23aa4f0f6fd067174623549f65ebe740a'
-          'a8d1efc9faf9c9f38d1499ff3eda4e219c394eef'
-          'ad73331a8a701e83a77ab9aaf6a56dc5b768b678')
+sha1sums=('2526922e7f872cb17a775321b55788d1c5d48854'
+          'a55c2ed276c6073b7954452cdc88209633d51ace'
+          'a2ab033d06abfe7616d2615d8edf7931f29efc96'
+          '6fef823604bfeac45bc6aa830c1f129c15a80fcf')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
+
+	patch -Np1 -i ../hide-menubar.patch
 
 	# remove extra dependencies
 	node ../package.json.patch.js
 
 	sed -i \
-		-e "/electronVersion/           d" \
-		-e "/loader: 'babel-loader'/,+2 d" \
-		-e "/loader: 'uglify-loader'/   d" \
-		-e "/'eslint',/                 d" \
-		-e "/'uglify',/                 d" \
+		-e "/const electronVersion/       s/pkg.dependencies.electron/'$(</usr/lib/electron/version)'/" \
 	Gruntfile.js
 
-	# hide electron menu
 	sed -i \
-		-e '/mainWindow = new electron\.BrowserWindow({$/ a \        autoHideMenuBar: true,' \
-	desktop/app.js
+		-e "/'eslint',/                 d" \
+		-e "/'uglify',/                 d" \
+	grunt.tasks.js
 
 	sed -i \
 		-e '/Exec=/ c \Exec=keeweb %u' \
 	package/deb/usr/share/applications/keeweb.desktop
-
-	# downgrade broken bower package https://github.com/eligrey/FileSaver.js/issues/409
-	sed -i \
-		-e '/FileSaver.js/ s|eligrey/FileSaver.js|\0#1.3.4|' \
-	bower.json
 }
 
 build() {
@@ -60,8 +55,11 @@ build() {
 	export SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=1
 	export LIBSASS_EXT=auto
 
-	npm install --no-package-lock
-	npx grunt --skip-sign build-web-app build-desktop-app-content
+	npm install
+
+	ln -fs normalize.css node_modules/normalize.css/normalize.scss
+
+	npx grunt build-web-app build-desktop-app-content
 
 	asar p tmp/desktop/app ../keeweb.asar
 }
