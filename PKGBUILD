@@ -2,12 +2,13 @@
 
 pkgname=writefreely
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
 license=('AGPL3')
-makedepends=('go-bindata'
+makedepends=('go>=1.11'
+             'go-bindata'
              'sqlite')
 optdepends=('sqlite: For SQLite support',
             'mariadb: For MariaDB support')
