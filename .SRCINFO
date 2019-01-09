@@ -8,6 +8,7 @@ pkgbase = atlassian-jira
 	license = custom
 	depends = java-environment=8
 	optdepends = mysql-connector-java: connect to MySQL
+	conflicts = atlassian-jira-lts
 	backup = etc/conf.d/jira
 	backup = etc/webapps/atlassian-jira/server.xml
 	source = https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-core-7.13.0.tar.gz

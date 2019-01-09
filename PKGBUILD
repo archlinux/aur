@@ -10,6 +10,7 @@ pkgdesc="Bug tracking, issue tracking and project management software"
 url="https://www.atlassian.com/software/jira"
 license=('custom')
 arch=('any')
+conflicts=('atlassian-jira-lts')
 depends=('java-environment=8')
 optdepends=('mysql-connector-java: connect to MySQL')
 backup=('etc/conf.d/jira'
