@@ -4,8 +4,7 @@
 
 pkgname=hplip-plugin
 pkgver=3.18.12
-pkgrel=1
-epoch=1
+pkgrel=2
 pkgdesc="Binary plugin for HPs hplip printer driver library"
 arch=('i686' 'x86_64')
 url="http://hplipopensource.com/node/309"
