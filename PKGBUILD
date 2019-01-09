@@ -1,7 +1,7 @@
 # Maintainer: Harms <thotro at lyse dot net>
 pkgname=forticlient
 pkgver=6.0.4.0091
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="FortiClient"
 arch=("x86_64")
@@ -34,6 +34,7 @@ package() {
 	cd "$pkgname-$pkgver"
 	cp -R etc "${pkgdir}/etc"
 	cp -R usr "${pkgdir}/usr"
+	cp -R opt "${pkgdir}/opt"
 	cp -R lib "${pkgdir}/usr/lib"
 	cp -R var "${pkgdir}/var"
 }

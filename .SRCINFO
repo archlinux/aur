@@ -1,7 +1,7 @@
 pkgbase = forticlient
 	pkgdesc = FortiClient
 	pkgver = 6.0.4.0091
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = custom
 	provides = forticlient
