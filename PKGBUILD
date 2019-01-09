@@ -8,7 +8,7 @@ pkgbase=linux-aarch64-raspberrypi
 _srcname=linux
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for RaspberryPi 3"
-pkgver=4.19.12
+pkgver=4.19.13
 pkgrel=1
 arch=('aarch64')
 url="https://github.com/raspberrypi/linux"
@@ -28,7 +28,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # reset to a certain version
-  git reset --hard e75aca6e66f6091dd3b9c316750025c8e9684f16
+  git reset --hard 738499ce347b4670d4c6e3f018477b1237073922
 
   # Dirty hack to get rid of the + in kernel version
   rm -rf .git
