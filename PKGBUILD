@@ -1,32 +1,44 @@
-# Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
+# Maintainer: Matthias Lisin <ml@visu.li>
+# Contributor: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname=pyenv-git
-pkgver=1.1.3.r33.g48aa0c49
+pkgver=1.2.8.r14.g337b92d9
 pkgrel=1
 pkgdesc='Simple Python version management'
 arch=('any')
-url='https://github.com/yyuu/pyenv'
+url='https://github.com/pyenv/pyenv'
 license=('MIT')
-conflicts=("pyenv")
-provides=("pyenv")
+conflicts=('pyenv')
+provides=('pyenv')
 depends=()
-source=("$pkgname::git+https://github.com/yyuu/pyenv")
+source=('git+https://github.com/pyenv/pyenv')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd pyenv
+    git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
-    cd "$pkgname"
-    git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
-    cd ..
-    mkdir -p "${pkgdir?}"/{opt/pyenv,usr/bin}
-    cd "${srcdir?}/$pkgname" || return
-    cp -a -- * "$pkgdir"/opt/pyenv
-    ln -s /opt/pyenv/libexec/pyenv "$pkgdir/usr/bin/pyenv"
+    cd pyenv
 
-    for bin in pyenv-{,un}install python-build; do
-        ln -s /opt/pyenv/plugins/python-build/bin/"$bin" "$pkgdir/usr/bin/$bin"
+    install -dm755 "${pkgdir}"/{usr/bin,opt/pyenv}
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 completions/pyenv.bash "${pkgdir}/usr/share/bash-completion/completions/pyenv"
+    install -Dm644 completions/pyenv.fish "${pkgdir}/usr/share/fish/completions/pyenv.fish"
+    install -Dm644 completions/pyenv.zsh "${pkgdir}/usr/share/zsh/site-functions/_pyenv"
+
+    cp -r libexec "${pkgdir}/opt/pyenv/libexec"
+    ln -s "/opt/pyenv/libexec/pyenv" "${pkgdir}/usr/bin/pyenv"
+
+    # install python-build plugin
+    cd plugins/python-build
+    PREFIX="${pkgdir}/opt/pyenv" ./install.sh 
+
+    # go back to the source package
+    cd "${srcdir}/pyenv"
+
+    for bin in pyenv-{,un}install; do
+        ln -s /opt/pyenv/bin/"${bin}" "${pkgdir}/opt/pyenv/libexec/${bin}"
     done
 }

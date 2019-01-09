@@ -1,13 +1,13 @@
 pkgbase = pyenv-git
 	pkgdesc = Simple Python version management
-	pkgver = 1.1.3.r33.g48aa0c49
+	pkgver = 1.2.8.r14.g337b92d9
 	pkgrel = 1
-	url = https://github.com/yyuu/pyenv
+	url = https://github.com/pyenv/pyenv
 	arch = any
 	license = MIT
 	provides = pyenv
 	conflicts = pyenv
-	source = pyenv-git::git+https://github.com/yyuu/pyenv
+	source = git+https://github.com/pyenv/pyenv
 	md5sums = SKIP
 
 pkgname = pyenv-git
