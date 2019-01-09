@@ -1,7 +1,7 @@
 # Maintainer: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 
 pkgname=popular-packages
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Lists popular packages not (yet) installed"
 url="http://public.files.xavion.name/Software/${pkgname}/${pkgname}.jpg"
@@ -18,4 +18,4 @@ package() {
 	install -D -m755 ${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
 
-sha1sums=('45e1215c8f1606f433b9cd337c0507f52ad2da1c')
+sha1sums=('c204c966b3205273303569c03381fcce107dc7f5')
