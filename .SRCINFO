@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-actionlib-msgs
 	pkgdesc = ROS - actionlib_msgs defines the common messages to interact with an action server and an action client.
-	pkgver = 1.12.6
+	pkgver = 1.12.7
 	pkgrel = 1
 	url = http://wiki.ros.org/actionlib_msgs
 	arch = any
@@ -8,13 +8,13 @@ pkgbase = ros-melodic-actionlib-msgs
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-catkin
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-message-generation
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-actionlib-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/actionlib_msgs/1.12.6-0.tar.gz
-	sha256sums = 6edb884e6ca0727fdc5c5e755a89c524ac5716b52488cb431075d33897699a95
+	source = ros-melodic-actionlib-msgs-1.12.7-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/actionlib_msgs/1.12.7-0.tar.gz
+	sha256sums = 0ad19d4f8698df04a22979c4b64f21991696c55877c952dc592e92ffb82122f0
 
 pkgname = ros-melodic-actionlib-msgs
 
