@@ -1,8 +1,8 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=go-tools-complete-git
-pkgver=v0.0.0_20181214171254_3c39ce7b6105
-pkgrel=3
+pkgver=v0.0.0_20190109165630_d30e00c24034
+pkgrel=1
 pkgdesc='Developer tools for the Go programming language'
 arch=(x86_64)
 url='https://godoc.org/golang.org/x/tools/cmd'
