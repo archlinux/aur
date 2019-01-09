@@ -1,6 +1,6 @@
 pkgbase = ancient-packages
 	pkgdesc = Lists installed packages no longer available (anywhere)
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = http://public.files.xavion.name/Software/ancient-packages/ancient-packages.jpg
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ancient-packages
 	depends = package-query
 	options = !emptydirs
 	source = http://public.files.xavion.name/Software/ancient-packages/ancient-packages
-	sha1sums = 780377d23972116f0aabf729b1304900001954a0
+	sha1sums = 643a6452f67719a66effd72c1a446529c504ecd0
 
 pkgname = ancient-packages
 
