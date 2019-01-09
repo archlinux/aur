@@ -1,8 +1,9 @@
 # Maintainer:
+# Contributor: Michael Straube <michael.straube@posteo.de>
 
 pkgname=pogo
-pkgver=0.9.2
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc='A fast and minimalist audio player'
 arch=('any')
 url='https://github.com/jendrikseipp/pogo'
@@ -16,7 +17,7 @@ optdepends=('libnotify: desktop notifications'
             'gst-plugins-ugly: additional codecs'
             'gst-libav: libav codec')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jendrikseipp/pogo/archive/v$pkgver.tar.gz")
-sha256sums=('1a0555be78998c0eae770994d40b684b682b827129f4385a1f6042ba67376049')
+sha256sums=('0582d72885350f56ce9803cbec25bf91aba0d905245cd1cbe76aa661ebf7c316')
 
 package() {
   cd $pkgname-$pkgver

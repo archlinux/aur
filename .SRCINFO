@@ -1,7 +1,7 @@
 pkgbase = pogo
 	pkgdesc = A fast and minimalist audio player
-	pkgver = 0.9.2
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://github.com/jendrikseipp/pogo
 	arch = any
 	license = GPL
@@ -18,8 +18,8 @@ pkgbase = pogo
 	optdepends = gst-plugins-bad: additional codecs
 	optdepends = gst-plugins-ugly: additional codecs
 	optdepends = gst-libav: libav codec
-	source = pogo-0.9.2.tar.gz::https://github.com/jendrikseipp/pogo/archive/v0.9.2.tar.gz
-	sha256sums = 1a0555be78998c0eae770994d40b684b682b827129f4385a1f6042ba67376049
+	source = pogo-1.0.tar.gz::https://github.com/jendrikseipp/pogo/archive/v1.0.tar.gz
+	sha256sums = 0582d72885350f56ce9803cbec25bf91aba0d905245cd1cbe76aa661ebf7c316
 
 pkgname = pogo
 
