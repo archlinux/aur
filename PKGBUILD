@@ -1,6 +1,6 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=gnome-wallpaper-changer-git
-pkgver=r19.b744127
+pkgver=r26.19c3b6a
 pkgrel=1
 pkgdesc='Set Gnome Desktop wallpaper to an image from a provided directory.'
 arch=('any')
@@ -17,14 +17,10 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
-  mkdir "${pkgdir}"/usr
-  mkdir "${pkgdir}"/usr/bin
-  mkdir "${pkgdir}"/home
-  mkdir "${pkgdir}${HOME}"
-  mkdir "${pkgdir}${HOME}"/.config
-  mkdir "${pkgdir}${HOME}"/.config/autostart  
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}${HOME}/.config/autostart"
 
   cd "${pkgname}"
-  cp ./gnome-wallpaper-changer /usr/bin
-  cp ./gnome-wallpaper-changer.desktop "${HOME}"/.config/autostart
+  cp ./gnome-wallpaper-changer "${pkgdir}/usr/bin"
+  cp ./gnome-wallpaper-changer.desktop "${pkgdir}${HOME}/.config/autostart"
 }
