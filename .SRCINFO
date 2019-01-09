@@ -1,0 +1,15 @@
+pkgbase = leap_mouse
+	pkgdesc = Mouse operation by Leap Motion
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/niwanowa/leap_mouse
+	arch = any
+	license = custom:MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = git+https://github.com/niwanowa/leap_mouse.git
+	md5sums = SKIP
+
+pkgname = leap_mouse
+
