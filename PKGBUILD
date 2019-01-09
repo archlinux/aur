@@ -3,7 +3,7 @@
 
 pkgname=activinspire
 pkgver=2.14.67304
-pkgrel=1
+pkgrel=2
 pkgdesc="Presentation Software to use with Promethean Hardware products."
 arch=('i686' 'x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
@@ -59,4 +59,5 @@ package() {
         install -Dm644 "$pkgdir/usr/bin/activsoftware/inspire.ico" "$pkgdir/usr/share/icons/hicolor/512x512/apps/inspire.ico"
         sed -i 's/48x48\/apps\/asstudio.png/512x512\/apps\/inspire.ico/' "$pkgdir"/usr/share/applications/activsoftware.desktop
         sed -i 's/usr\/local\/bin/usr\/bin/' "$pkgdir"/usr/share/applications/activsoftware.desktop
+        rm -r "$pkgdir/DEB"
 }
