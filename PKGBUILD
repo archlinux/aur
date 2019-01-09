@@ -2,17 +2,14 @@
 # Contributor: Mick Elliot <micke at sfu dot ca>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 pkgname=fasta
-pkgver=36.3.8e
+pkgver=36.3.8g
 pkgrel=1
 pkgdesc="Fast protein or a fast nucleotide comparison"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('zlib')
 url="http://fasta.bioch.virginia.edu/fasta_www2/fasta_list2.shtml"
-source_i686=("http://faculty.virginia.edu/wrpearson/fasta/CURRENT/fasta-$pkgver-linux32.tar.gz")
-source_x86_64=("http://faculty.virginia.edu/wrpearson/fasta/CURRENT/fasta-$pkgver-linux64.tar.gz")
-md5sums_i686=('1bdec4e78caf4e7fa392316c5f35686b')
-md5sums_x86_64=('8c857d80951fedfa870a94fd9ab1438a')
+source=("http://faculty.virginia.edu/wrpearson/fasta/fasta36/fasta-$pkgver.tar.gz")
+sha256sums=('41c623f9ddbcaa7b1d479665216148cb30f75be263d3584d99e4d234a38babc3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src"
@@ -25,10 +22,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/bin"
+  cd "$srcdir/$pkgname-$pkgver"
 
-  for FILE in $(ls); do
-      install -Dm755 $FILE "$pkgdir/usr/bin/$FILE"
-  done
-  install -Dm644 ../COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mv bin "$pkgdir"/usr
+  rm "$pkgdir"/usr/bin/README
 }
