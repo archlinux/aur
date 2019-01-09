@@ -1,5 +1,5 @@
 pkgbase = linux-me176c
-	pkgver = 4.19.9
+	pkgver = 4.19.14
 	pkgrel = 1
 	url = https://github.com/me176c-dev/me176c-archlinux
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = linux-me176c
 	makedepends = graphviz
 	makedepends = acpica
 	options = !strip
-	source = archlinux-linux::git+https://github.com/me176c-dev/me176c-kernel.git#tag=arch-4.19.9-1
+	source = archlinux-linux::git+https://github.com/me176c-dev/me176c-kernel.git#tag=arch-4.19.14-1
 	source = git+https://github.com/me176c-dev/me176c-acpi.git#commit=18a1fe0c450375c16e17429b429955e068f83945
 	source = config
 	source = 60-linux.hook

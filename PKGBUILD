@@ -2,7 +2,7 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-me176c         # Build kernel with a different name
-pkgver=4.19.9
+pkgver=4.19.14
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/me176c-dev/me176c-archlinux"
