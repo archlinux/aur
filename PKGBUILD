@@ -1,43 +1,47 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 _name=gtfparse
 pkgbase='python-gtfparse'
 pkgname=('python-gtfparse' 'python2-gtfparse')
-pkgver=0.0.6
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Python library for parsing GTF files"
 arch=('any')
 url="https://pypi.python.org/pypi/gtfparse"
 license=('Apache')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
+makedepends=('python' 'python-setuptools' 'python-pypandoc' 'python2' 'python2-setuptools' 'python2-pypandoc')
 options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/2a/e9/96b187f33a1ce4d31287cda09c3422b3a9439a4245699364e6f4c5bbf5b2/gtfparse-0.0.6.tar.gz)
-sha256sums=('4e169a4dfb3b5a4eb4350a864e8435d7f7961c704b6c45cb0f540132f4e1d37e')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/g/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('2f27aa2b87eb43d613edabf27f9c11147dc595c8683b440ac1d88e9acdb85873')
 
 prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
+  cp -a "${srcdir}/${_name}-${pkgver}"{,-py2}
+
+  cd "${srcdir}/${_name}-${pkgver}-py2"
+  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
+         -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+      $(find . -name '*.py')
 }
 
 build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
+  cd "${srcdir}/${_name}-${pkgver}-py2"
   python2 setup.py build
 }
 
 package_python2-gtfparse() {
   depends=('python2' 'python2-numpy' 'python2-pandas')
 
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  cd "${srcdir}/${_name}-${pkgver}-py2"
+  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python-gtfparse() {
   depends=('python' 'python-numpy' 'python-pandas')
 
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
