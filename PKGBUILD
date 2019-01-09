@@ -4,7 +4,7 @@
 
 _pkgname=sabnzbd
 pkgname=sabnzbd-git
-pkgver=2.0.r5789
+pkgver=2.3.7RC1.r2.g6f69bfd9
 pkgrel=1
 pkgdesc="A web-interface based binary newsgrabber with NZB file support"
 url="http://www.sabnzbd.org"
@@ -30,8 +30,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  echo -n "2.0.r"
-  git rev-list --count HEAD
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

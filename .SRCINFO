@@ -1,6 +1,6 @@
 pkgbase = sabnzbd-git
 	pkgdesc = A web-interface based binary newsgrabber with NZB file support
-	pkgver = 2.0.r5789
+	pkgver = 2.3.7RC1.r2.g6f69bfd9
 	pkgrel = 1
 	url = http://www.sabnzbd.org
 	install = sabnzbd.install
