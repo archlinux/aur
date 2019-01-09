@@ -4,14 +4,15 @@
 pkgname=python-aioxmpp-git
 conflicts=('python-aioxmpp')
 provides=('python-aioxmpp')
-pkgver=v0.11.0a0.r1762.b653fb817bd5
+pkgver=v0.11.0a0.r1798.31eab9a33e2e
 pkgrel=1
 pkgdesc='An XMPP library for use with asyncio'
 arch=('any')
 url='https://github.com/horazont/aioxmpp'
 license=('LGPL3')
-depends=('python'
-         'libxml2'
+depends=('libxml2'
+         'python'
+         'python-aioopenssl'
          'python-aiosasl'
          'python-babel'
          'python-dnspython'
