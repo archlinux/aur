@@ -29,6 +29,7 @@ package_python-pushetta() {
 
   cd "${srcdir}/pushetta-$pkgver"
   python setup.py install --root=${pkgdir} --optimize=1
+  rm -r "${pkgdir}"/usr/lib/python*/site-packages/examples
 }
 
 package_python2-pushetta() {
@@ -36,5 +37,6 @@ package_python2-pushetta() {
 
   cd "${srcdir}/pushetta-$pkgver"
   python2 setup.py install --root=${pkgdir} --optimize=1
+  rm -r "${pkgdir}"/usr/lib/python*/site-packages/examples
 }
 
