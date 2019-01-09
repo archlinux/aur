@@ -2,16 +2,14 @@
 # Contributor: Bazon <bazonbloch@arcor.de>
 
 pkgname=activinspire
-pkgver=2.10.66827
-pkgrel=3
+pkgver=2.14.67304
+pkgrel=1
 pkgdesc="Presentation Software to use with Promethean Hardware products."
 arch=('i686' 'x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
 license=('unknown')
 depends_i686=('qt4' 'gst-plugins-base' 'libjpeg6' 'jre7-openjdk' 'openssl-1.0' 'libpulse' 'recordmydesktop')
 depends_x86_64=('qt4' 'lib32-gst-plugins-base' 'bin32-jre' 'lib32-libjpeg' 'lib32-libjpeg6' 'lib32-libxmu' 'lib32-alsa-lib' 'lib32-openssl-1.0' 'lib32-libpulse' 'recordmydesktop')
-md5sum_i686='08044e50534527a7a88ac6ff0586c934'
-md5sum_x86_64='59b14c0463a4f11c5e9cacd4d7206fae'
 
 optdepends=('activdriver: promethean hardware support'
             'activtools: hardware calibration'
@@ -25,9 +23,11 @@ else
 fi
 
 _u="http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/"
-source=(
-	${_u}activinspire/activinspire_${pkgver}-1."$_arch"_"$_arch".deb
-	)
+source_i686=(${_u}activinspire/activinspire_${pkgver}-1."$_arch"_"$_arch".deb)
+source_x86_64=(${_u}activinspire/activinspire_${pkgver}-1."$_arch"_"$_arch".deb)
+
+md5sums_i686=('e8d8790bab3e74de868e80fedaf95029')
+md5sums_x86_64=('24d75df7df8b6328fb65a36b8730f407')
 
 prepare() {
 	bsdtar -xf activinspire_${pkgver}-1.${_arch}_${_arch}.deb
