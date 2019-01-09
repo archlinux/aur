@@ -3,7 +3,7 @@
 
 _pkgname=PyMuPDF
 pkgname=('python2-pymupdf' 'python-pymupdf')
-pkgver=1.13.19
+pkgver=1.14.5
 pkgrel=1
 pkgdesc='Python bindings for MuPDF'
 arch=('x86_64')
@@ -16,8 +16,8 @@ source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-cp27-cp27mu-ma
 "${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-cp37-cp37m-manylinux1_x86_64.whl")
 noextract=("${_pkgname}-${pkgver}-cp27-cp27mu-manylinux1_x86_64.whl"
            "${_pkgname}-${pkgver}-cp37-cp37m-manylinux1_x86_64.whl")
-sha256sums=('6ce0975bc644c3153fd4d58e33085608106f80a3776ecc09cf3f72b716ddf89f'
-'c18f8ee416bf261ef54bfafb8a4e76f140ad65a34e9b27601a610118a6bf96e3')
+sha256sums=('539b623374e7157734b7c8f7ce90dd0bbcb0d5040473e6844f7b2d9ddb0fc6f2'
+'4917623d7153ca82875b0f5b75957eaf38fa9ff2846312c63d936c9f57dec671')
 
 package_python2-pymupdf() {
   cd "${srcdir}"
