@@ -1,7 +1,7 @@
 pkgbase = pantheon-desktop-git
 	pkgdesc = Meta package for the complete Pantheon desktop & apps
 	pkgver = 20180925
-	pkgrel = 20
+	pkgrel = 21
 	url = http://elementary.io
 	arch = any
 	license = LGPL
