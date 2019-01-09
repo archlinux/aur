@@ -13,11 +13,10 @@ pkgbase = python-assimulo
 	makedepends = gcc-fortran
 	makedepends = sundials
 	makedepends = lapack
-	makedepends = subversion
-	source = svn+https://svn.jmodelica.org/assimulo/tags/Assimulo-3.0
+	source = https://github.com/modelon/Assimulo/archive/Assimulo-3.0.tar.gz
 	source = sundials4.patch
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-assimulo
 	depends = python-scipy
