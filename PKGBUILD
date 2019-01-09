@@ -43,6 +43,13 @@ sha256sums=('89e37c1854b5931e6bf086cb288cd642f9f70b260e60ade7cecc76696d3afd77'
 
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/bazarr"
+
+  # Remove any .gitignore files
+  find "${srcdir}/bazarr-${pkgver}/" -name '.gitignore' -delete
+
+  # Remove the empty data folder from the installation
+  rm -rf "${srcdir}/bazarr-${pkgver}/data"
+
   cp -dpr --no-preserve=ownership "${srcdir}/bazarr-${pkgver}/"* "${pkgdir}/usr/lib/bazarr"
 
   install -D -m 644 "${srcdir}/bazarr.service" "${pkgdir}/usr/lib/systemd/system/bazarr.service"
