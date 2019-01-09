@@ -1,7 +1,7 @@
 # Maintainer: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=remotebox
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Open Source VirtualBox Client with Remote Management"
 arch=('any')
@@ -11,7 +11,7 @@ install="remotebox.install"
 depends=('perl' 'perl-soap-lite' 'gtk2-perl')
 optdepends=('rdesktop')
 source=("http://remotebox.knobgoblin.org.uk/downloads/RemoteBox-${pkgver}.tar.bz2" "remotebox.desktop")
-md5sums=('8c7806a80d4e7f15e6a4dfa51e4a8e3b'
+md5sums=('14bb618f5f0aabeb7755fd0b3d60718c'
          'b64b16d198471f9868ce7ed018295296')
 
 package() {
