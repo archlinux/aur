@@ -10,7 +10,7 @@ _srcname=Amlogic_s905-kernel
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1, Armbian source"
 pkgver=4.19.13
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://github.com/isjerryxiao/Amlogic_s905-kernel"
 license=('GPL2')
@@ -29,7 +29,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # reset to a certain version
-  git reset --hard 2956e78f2c77328dc98ed90ab54f7659aa715d34
+  git reset --hard 400222822e9c34b8ae18344f73b91feba86b00ec
 
   # Dirty hack to git rid of the + in kernel version
   rm -rf .git
