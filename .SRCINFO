@@ -7,14 +7,14 @@ pkgbase = ros-melodic-diagnostic-analysis
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
+	makedepends = ros-melodic-rostest
 	makedepends = ros-melodic-diagnostic-msgs
 	makedepends = ros-melodic-rosbag
-	makedepends = ros-melodic-rostest
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-roslib
-	depends = ros-melodic-diagnostic-msgs
-	depends = ros-melodic-rosbag
 	depends = ros-melodic-roslib
+	depends = ros-melodic-rosbag
+	depends = ros-melodic-diagnostic-msgs
 	source = ros-melodic-diagnostic-analysis-1.9.3-0.tar.gz::https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/diagnostic_analysis/1.9.3-0.tar.gz
 	sha256sums = 72eb7b968b92d97d5c95a15a4e9e573c9f025158e2a4e4375ad18b744858093f
 
