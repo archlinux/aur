@@ -3,12 +3,13 @@
 # Contributor: Vlad M. <vlad@archlinux.net>
 
 pkgname=atlassian-confluence-lts
-pkgver=6.6.3
+pkgver=6.6.11
 pkgrel=1
 pkgdesc="Enterprise wiki (Enterprise Release)"
 url="https://www.atlassian.com/software/confluence"
 license=('custom')
 arch=('any')
+conflicts=('atlassian-confluence')
 depends=('java-environment=8')
 optdepends=('mysql-connector-java: connect to MySQL')
 backup=('etc/conf.d/confluence'
@@ -17,7 +18,7 @@ install='confluence.install'
 source=("http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-$pkgver.tar.gz"
         'confluence.conf.d'
         'confluence.service')
-sha256sums=('0f98fe3efad8c055b637e9d923addee9b7ccd17584612724fbde72c6978ac63f'
+sha256sums=('46141d82f4455bfe181c2bdcef1b03919f26dede042df065faf5c9aa55741d6f'
             'a6304ba13a8ab1e27761bd3be71d05d2c2e3d61ea308316f4a04723ea4b30fc1'
             'd51ad7cb3eb8a4d5553a26fd5567867345bb4ae9a10876fc2bee7b6ab8800824')
 
