@@ -1,22 +1,22 @@
 pkgbase = ros-melodic-trajectory-msgs
 	pkgdesc = ROS - This package defines messages for defining robot trajectories.
-	pkgver = 1.12.6
+	pkgver = 1.12.7
 	pkgrel = 1
 	url = http://wiki.ros.org/trajectory_msgs
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-geometry-msgs
 	makedepends = ros-melodic-std-msgs
-	depends = ros-melodic-rosbag-migration-rule
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-geometry-msgs
 	depends = ros-melodic-message-runtime
-	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-trajectory-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/trajectory_msgs/1.12.6-0.tar.gz
-	sha256sums = aeae6dd3d75e892530a979547f16a573d757e554db0221ea66665f3a20c96008
+	depends = ros-melodic-rosbag-migration-rule
+	depends = ros-melodic-geometry-msgs
+	source = ros-melodic-trajectory-msgs-1.12.7-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/trajectory_msgs/1.12.7-0.tar.gz
+	sha256sums = 59b45292ef09a1fb7cd1bedcd96e390c6b17067af07bfa1035ca4d3acf631875
 
 pkgname = ros-melodic-trajectory-msgs
 
