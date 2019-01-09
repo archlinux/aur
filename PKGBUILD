@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel at milde dot cz>
 pkgname=pecl-propro
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Property proxy"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/propro"
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('php')
 makedepends=('autoconf')
 source=(http://pecl.php.net/get/propro-${pkgver}.tgz)
-md5sums=('355d8fe8ca8a2ac47ecbc3a80e09af5f')
+md5sums=('cb53d926b3bbd4e98b08757dd4b40fc9')
 
 build() {
   cd ${srcdir}/propro-${pkgver}
