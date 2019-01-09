@@ -1,21 +1,21 @@
 pkgbase = ros-melodic-visualization-msgs
 	pkgdesc = ROS - visualization_msgs is a set of messages used by higher level packages, such as rviz, that deal in visualization-specific data.
-	pkgver = 1.12.6
+	pkgver = 1.12.7
 	pkgrel = 1
 	url = http://ros.org/wiki/visualization_msgs
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-geometry-msgs
 	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-geometry-msgs
 	depends = ros-melodic-message-runtime
-	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-visualization-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/visualization_msgs/1.12.6-0.tar.gz
-	sha256sums = 8012e60dc75cc0f703d8a6faff3a255b29a320ae636aa4e20099845f780cf016
+	depends = ros-melodic-geometry-msgs
+	source = ros-melodic-visualization-msgs-1.12.7-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/visualization_msgs/1.12.7-0.tar.gz
+	sha256sums = fcd899da639e6bd69f2b1dab627bf76ae527ae753f671d01357cb55c215d05da
 
 pkgname = ros-melodic-visualization-msgs
 
