@@ -1,5 +1,4 @@
 src/
 pkg/
-herokuish
-*.tar.xz
 *.tgz
+*.tar
