@@ -1,6 +1,6 @@
 pkgbase = flat-remix-git
 	pkgdesc = Flat remix is a pretty simple icon theme inspired on material design.
-	pkgver = r188.615bec93
+	pkgver = r193.325e2b7b
 	pkgrel = 1
 	url = https://drasite.com/flat-remix
 	arch = any
