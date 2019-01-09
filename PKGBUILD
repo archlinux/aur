@@ -24,7 +24,7 @@ pkgname=(
     'clang-tools-extra-git'
 )
 _pkgname='llvm'
-pkgver=8.0.0_r172524.52f31f630a5
+pkgver=8.0.0_r173651.9597cfd242c
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -209,6 +209,8 @@ build() {
         -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
         -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
         -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
+        -DCMAKE_C_FLAGS="$CFLAGS" \
+        -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
         "../${_pkgname}"
 
     make

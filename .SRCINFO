@@ -1,5 +1,5 @@
 pkgbase = llvm-git
-	pkgver = 8.0.0_r172524.52f31f630a5
+	pkgver = 8.0.0_r173651.9597cfd242c
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = llvm-git
 pkgname = llvm-git
 	pkgdesc = The LLVM Compiler Infrastructure
 	groups = llvm-toolchain-git
-	depends = llvm-libs-git=8.0.0_r172524.52f31f630a5-1
+	depends = llvm-libs-git=8.0.0_r173651.9597cfd242c-1
 	provides = llvm-svn
 	provides = llvm
 	conflicts = llvm-svn
@@ -58,7 +58,7 @@ pkgname = llvm-libs-git
 
 pkgname = llvm-ocaml-git
 	pkgdesc = OCaml bindings for LLVM
-	depends = llvm-git=8.0.0_r172524.52f31f630a5-1
+	depends = llvm-git=8.0.0_r173651.9597cfd242c-1
 	depends = ocaml=4.07.1
 	depends = ocaml-ctypes
 	provides = llvm-ocaml-svn
@@ -70,7 +70,7 @@ pkgname = lld-git
 	pkgdesc = A linker from the LLVM project
 	url = https://lld.llvm.org/
 	groups = llvm-toolchain-git
-	depends = llvm-libs-git=8.0.0_r172524.52f31f630a5-1
+	depends = llvm-libs-git=8.0.0_r173651.9597cfd242c-1
 	provides = lld-svn
 	provides = lld
 	conflicts = lld-svn
@@ -80,7 +80,7 @@ pkgname = lldb-yurikoles-git
 	pkgdesc = Next generation, high-performance debugger
 	url = https://lldb.llvm.org/
 	groups = llvm-toolchain-git
-	depends = llvm-libs-git=8.0.0_r172524.52f31f630a5-1
+	depends = llvm-libs-git=8.0.0_r173651.9597cfd242c-1
 	depends = python2-six
 	provides = lldb-svn
 	provides = lldb
@@ -91,7 +91,7 @@ pkgname = clang-git
 	pkgdesc = C language family frontend for LLVM
 	url = https://clang.llvm.org/
 	groups = llvm-toolchain-git
-	depends = llvm-git=8.0.0_r172524.52f31f630a5-1
+	depends = llvm-git=8.0.0_r173651.9597cfd242c-1
 	optdepends = clang-analyzer-git: source code analysis for Clang, supporting C, C++, and Objective-C
 	optdepends = clang-compiler-rt-git: sanitizer runtimes, builtins, profile library and BlocksRuntime
 	optdepends = clang-tools-extra-git: standalone tools: syntax checking, formatting, refactoring, etc.
@@ -105,7 +105,7 @@ pkgname = clang-analyzer-git
 	pkgdesc = Source code analysis tool for Clang, supporting C, C++, and Objective-C
 	url = https://clang-analyzer.llvm.org/
 	groups = llvm-toolchain-git
-	depends = clang-git=8.0.0_r172524.52f31f630a5-1
+	depends = clang-git=8.0.0_r173651.9597cfd242c-1
 	depends = perl
 	depends = python2
 	provides = clang-analyzer-git
@@ -117,7 +117,7 @@ pkgname = clang-compiler-rt-git
 	pkgdesc = The "compiler-rt" set of runtime libraries for Clang and LLVM
 	url = https://compiler-rt.llvm.org/
 	groups = llvm-toolchain-git
-	depends = clang-git=8.0.0_r172524.52f31f630a5-1
+	depends = clang-git=8.0.0_r173651.9597cfd242c-1
 	provides = clang-compiler-rt-git
 	provides = clang-compiler-rt
 	conflicts = clang-compiler-rt-git
@@ -127,7 +127,7 @@ pkgname = clang-tools-extra-git
 	pkgdesc = Standalone tools for Clang: syntax checking, formatting, refactoring, etc.
 	url = https://clang.llvm.org/docs/ClangTools.html
 	groups = llvm-toolchain-git
-	depends = clang-git=8.0.0_r172524.52f31f630a5-1
+	depends = clang-git=8.0.0_r173651.9597cfd242c-1
 	provides = clang-tools-extra-git
 	provides = clang-tools-extra
 	conflicts = clang-tools-extra-git
