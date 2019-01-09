@@ -7,14 +7,14 @@ pkgbase = ros-melodic-class-loader
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-cmake-modules
-	makedepends = poco
+	makedepends = ros-melodic-catkin
 	makedepends = boost
 	makedepends = console-bridge
-	depends = poco
+	makedepends = poco
 	depends = boost
 	depends = console-bridge
+	depends = poco
 	source = ros-melodic-class-loader-0.4.1-0.tar.gz::https://github.com/ros-gbp/class_loader-release/archive/release/melodic/class_loader/0.4.1-0.tar.gz
 	sha256sums = 09c3d35e5afb806c612e843ef15078b97a0a6051174a45712d38c38345eae4a5
 
