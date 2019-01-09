@@ -4,25 +4,30 @@ _pkgname=radiotray-ng
 pkgname=${_pkgname}-git
 _pkgver=0.2.5
 _branch=v${_pkgver}-dev
-pkgver=0.2.5+29+8b3fb4f
+epoch=1
+pkgver=0.2.5dev+18+0384bc4
 pkgrel=1
 pkgdesc="An Internet radio player for Linux"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ebruck/radiotray-ng"
 license=('GPL')
-depends=('boost-libs' 'curl' 'gstreamer' 'jsoncpp' 'libappindicator-gtk3'
+depends=('boost-libs' 'curl' 'gst-plugins-good' 'jsoncpp' 'libappindicator-gtk3'
          'libbsd' 'libnotify' 'libxdg-basedir' 'glibmm' 'wxgtk3')
-makedepends=('cmake' 'boost' 'lsb-release' 'git')
+makedepends=('cmake' 'boost' 'lsb-release' 'git' 'bc')
 optdepends=('python2-lxml: Convert radiotray bookmarks to radiotray-ng format')
 options=('!libtool')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
+_release_commit=6b54d507bea343db7186173ba63d0be5d2e600db
 source=("${_pkgname}::git+https://github.com/ebruck/radiotray-ng#branch=${_branch}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf '%s+%s+%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git describe --always)"
+  printf '%s+%s+%s' \
+         "$( sed 's:-::;s:^v::' <<< ${_branch} )" \
+         "$( bc <<< "$(git rev-list --count HEAD) - $( git rev-list --count ${_release_commit} )" )" \
+         "$(git describe --always)"
 }
 
 prepare() {
