@@ -1,27 +1,25 @@
 pkgbase = modelio-bin
 	pkgdesc = The opensource modeling environment
-	pkgver = 3.6.1
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://www.modelio.org/
-	changelog = changelog
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = libxtst
-	depends = libstdc++5
-	depends = webkitgtk2
 	depends = glib2
+	depends = java-runtime
+	depends = libx11
+	depends = libxtst
+	depends = webkit2gtk
 	optdepends = atk
 	optdepends = gtk2
 	optdepends = cairo
 	source = modelio.desktop
-	source = changelog
-	sha256sums = SKIP
-	sha256sums = SKIP
-	source_i686 = modelio-3.6.1-i686::https://sourceforge.net/projects/modeliouml/files/3.6.1/modelio-open-source-3.6.1_i386.deb/download
-	sha256sums_i686 = SKIP
-	source_x86_64 = modelio-3.6.1-x86_64::https://sourceforge.net/projects/modeliouml/files/3.6.1/modelio-open-source-3.6.1_amd64.deb/download
-	sha256sums_x86_64 = SKIP
+	sha256sums = af7e10bb2849fb9cdb2ec0054d782dedd5c6901cbf3e742d1ab872447ae38b5c
+	source_i686 = modelio-3.8.0-i686.deb::https://sourceforge.net/projects/modeliouml/files/3.8.0/modelio-open-source3.8_3.8.0_i386.deb/download
+	sha256sums_i686 = 8cdc9b094807c509d943bcd1b88bbc3c5862c425799f19f05f796446447f3185
+	source_x86_64 = modelio-3.8.0-x86_64.deb::https://sourceforge.net/projects/modeliouml/files/3.8.0/modelio-open-source3.8_3.8.0_amd64.deb/download
+	sha256sums_x86_64 = 4d3252c0f611172c94d322cfa3e3257bb21adc9c2278f1e411bbbde0b5d21ded
 
 pkgname = modelio-bin
 
