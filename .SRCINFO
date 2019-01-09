@@ -1,14 +1,14 @@
 pkgbase = jattach
 	pkgdesc = JVM Dynamic Attach utility
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/apangin/jattach
 	arch = x86_64
 	groups = odnoklassniki
 	license = Apache
 	provides = jattach
-	source = jattach-1.4.tar.gz::https://github.com/apangin/jattach/archive/v1.4.tar.gz
-	sha256sums = d624d9158913c571452ac7cfeef59544ea775c5b868fb92efd1edc4d971659e9
+	source = jattach-1.5.tar.gz::https://github.com/apangin/jattach/archive/v1.5.tar.gz
+	sha256sums = 03829443d69e86537dd04a2d7e9c25a5777559716139363b335722299c1cd153
 
 pkgname = jattach
 

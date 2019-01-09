@@ -1,7 +1,7 @@
 # Maintainer: Vadim Tsesko <incubos at yandex dot com>
 
 pkgname=jattach
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc='JVM Dynamic Attach utility'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 provides=('jattach')
 groups=('odnoklassniki')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/apangin/jattach/archive/v$pkgver.tar.gz")
-sha256sums=('d624d9158913c571452ac7cfeef59544ea775c5b868fb92efd1edc4d971659e9')
+sha256sums=('03829443d69e86537dd04a2d7e9c25a5777559716139363b335722299c1cd153')
 
 build() {
   cd "$pkgname-$pkgver"
