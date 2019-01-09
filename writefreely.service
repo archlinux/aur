@@ -29,6 +29,8 @@ MemoryDenyWriteExecute=true
 RestrictRealtime=true
 SystemCallArchitectures=native
 SystemCallFilter=@system-service
+StandardOutput=syslog
+StandardError=syslog
 
 [Install]
 WantedBy=multi-user.target

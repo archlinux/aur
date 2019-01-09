@@ -1,6 +1,14 @@
-post_install() {
-  chown -R writefreely:writefreely /var/lib/writefreely
+post_upgrade() {
+  echo "---"
+  echo "To begin, configure your blog using 'writefreely --configure'."
+  echo "If using mariadb, create a database called 'writefreely'"
+  echo "then initialize the database with 'writefreely --init-db'."
+  echo "---"
+}
 
+post_install() {
   cd /var/lib/writefreely
   sudo -u writefreely writefreely -gen-keys
+
+  post_upgrade
 }
