@@ -9,6 +9,7 @@ pkgdesc="Enterprise wiki"
 url="https://www.atlassian.com/software/confluence"
 license=('custom')
 arch=('any')
+conflicts=('atlassian-confluence-lts')
 depends=('java-environment=8')
 optdepends=('mysql-connector-java: connect to MySQL')
 backup=('etc/conf.d/confluence'

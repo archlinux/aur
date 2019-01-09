@@ -8,6 +8,7 @@ pkgbase = atlassian-confluence
 	license = custom
 	depends = java-environment=8
 	optdepends = mysql-connector-java: connect to MySQL
+	conflicts = atlassian-confluence-lts
 	backup = etc/conf.d/confluence
 	backup = etc/webapps/atlassian-confluence/server.xml
 	source = http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-6.13.0.tar.gz
