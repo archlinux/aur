@@ -1,7 +1,7 @@
 pkgbase = pantheon-desktop-git
 	pkgdesc = Meta package for the complete Pantheon desktop & apps
 	pkgver = 20180925
-	pkgrel = 19
+	pkgrel = 20
 	url = http://elementary.io
 	arch = any
 	license = LGPL
@@ -37,7 +37,6 @@ pkgbase = pantheon-desktop-git
 	depends = switchboard-plug-parental-controls-git
 	depends = switchboard-plug-power-git
 	depends = switchboard-plug-printers-git
-	depends = switchboard-plug-security-privacy-git
 	depends = switchboard-plug-sharing-git
 	depends = switchboard-plug-sound-git
 	depends = switchboard-plug-user-accounts-git

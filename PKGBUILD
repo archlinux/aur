@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <aanderso@tcd.ie>
 pkgname=pantheon-desktop-git
 pkgver=20180925
-pkgrel=19
+pkgrel=20
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
@@ -39,7 +39,6 @@ depends=(pantheon-core-git
   switchboard-plug-parental-controls-git
   switchboard-plug-power-git
   switchboard-plug-printers-git
-  switchboard-plug-security-privacy-git
   switchboard-plug-sharing-git
   switchboard-plug-sound-git
   switchboard-plug-user-accounts-git
@@ -55,7 +54,8 @@ depends=(pantheon-core-git
   wingpanel-indicator-sound-git
   )
 
-#  pantheon-mail-git
+# pantheon-mail-git # doesn't build
+# switchboard-plug-security-privacy-git # requires lightdm
 
 build(){
   /bin/true
