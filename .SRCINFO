@@ -1,6 +1,6 @@
 pkgbase = arcus-beta
 	pkgdesc = Communication library between internal components for Ultimaker software
-	pkgver = 3.6
+	pkgver = 4.0
 	pkgrel = 2
 	url = https://github.com/Ultimaker/libArcus
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = arcus-beta
 	depends = python-sip
 	conflicts = arcus
 	conflicts = libarcus-git
-	source = git+https://github.com/Ultimaker/libArcus#branch=3.6
+	source = git+https://github.com/Ultimaker/libArcus#branch=4.0
 	md5sums = SKIP
 
 pkgname = arcus-beta
