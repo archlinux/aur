@@ -10,13 +10,13 @@ pkgbase = ros-melodic-resource-retriever
 	makedepends = ros-melodic-rosconsole
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-roslib
-	makedepends = curl
 	makedepends = boost
+	makedepends = curl
 	depends = ros-melodic-rosconsole
 	depends = ros-melodic-roslib
+	depends = boost
 	depends = python-rospkg
 	depends = curl
-	depends = boost
 	source = ros-melodic-resource-retriever-1.12.4-0.tar.gz::https://github.com/ros-gbp/resource_retriever-release/archive/release/melodic/resource_retriever/1.12.4-0.tar.gz
 	sha256sums = 568a6d1f0bd3a0c6e4c26b6e6524bc14a282df35a6b3ea1720e37591aaf024a1
 
