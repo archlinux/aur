@@ -1,6 +1,3 @@
 src/
 pkg/
-dokku
-*.tar.xz
-*.tgz
 *.zip
