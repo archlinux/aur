@@ -2,7 +2,7 @@
 
 pkgname=blugon
 pkgdesc="simple Blue Light Filter for X written in Python"
-pkgver=1.2
+pkgver=0.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/jumper149/blugon"
