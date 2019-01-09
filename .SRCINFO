@@ -1,21 +1,21 @@
 pkgbase = ros-melodic-shape-msgs
 	pkgdesc = ROS - This package contains messages for defining shapes, such as simple solid object primitives (cube, sphere, etc), planes, and meshes.
-	pkgver = 1.12.6
+	pkgver = 1.12.7
 	pkgrel = 1
 	url = http://wiki.ros.org/shape_msgs
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-geometry-msgs
 	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-geometry-msgs
 	depends = ros-melodic-message-runtime
-	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-shape-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/shape_msgs/1.12.6-0.tar.gz
-	sha256sums = 3616db3490d1cf8345c3cbeb55cec432bd073f7f3beb405cb6b4d8811ef4a4c2
+	depends = ros-melodic-geometry-msgs
+	source = ros-melodic-shape-msgs-1.12.7-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/shape_msgs/1.12.7-0.tar.gz
+	sha256sums = 77d8b3b79ef765cde23be9b753eab1e457888adbec1dd82fc8eadd3edeff83e3
 
 pkgname = ros-melodic-shape-msgs
 
