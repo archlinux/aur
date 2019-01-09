@@ -7,11 +7,11 @@ pkgbase = ros-melodic-rostopic
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-rostest
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-rosbag
-	depends = ros-melodic-genpy
+	makedepends = ros-melodic-rostest
 	depends = ros-melodic-rospy
+	depends = ros-melodic-genpy
+	depends = ros-melodic-rosbag
 	source = ros-melodic-rostopic-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rostopic/1.14.3-0.tar.gz
 	sha256sums = 0327ddd98b2b5aea960318ee4548726994d033f110d1016e53399a74ec6043de
 
