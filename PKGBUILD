@@ -2,8 +2,8 @@
 
 pkgname=ant-nebula-theme-git
 _pkgname=Ant-Nebula
-pkgver=55.b146cd3
-pkgrel=2
+pkgver=56.91cb8b1
+pkgrel=1
 pkgdesc="Nebula variant of the Ant theme"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
