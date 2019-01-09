@@ -1,5 +1,5 @@
 diff --git a/share/qtcreator/themes/dark.creatortheme b/share/qtcreator/themes/dark.creatortheme
-index 5da67fa236..6b1f2fba96 100644
+index 5da67fa236..41439ff22a 100644
 --- a/share/qtcreator/themes/dark.creatortheme
 +++ b/share/qtcreator/themes/dark.creatortheme
 @@ -9,7 +9,7 @@ text=ffe7e7e7
@@ -11,7 +11,15 @@ index 5da67fa236..6b1f2fba96 100644
  selectedBackgroundText=aa1f75cc
  normalBackground=ff333333
  alternateBackground=ff515151
-@@ -205,7 +205,7 @@ PaletteBrightText=ffff0000
+@@ -50,6 +50,7 @@ DoubleTabWidget2ndTabInactiveTextColor=textDisabled
+ EditorPlaceholderColor=normalBackground
+ FancyToolBarSeparatorColor=43ffffff
+ FancyTabBarBackgroundColor=shadowBackground
++FancyTabBarSelectedBackgroundColor=88000000
+ FancyTabWidgetDisabledSelectedTextColor=textDisabled
+ FancyTabWidgetDisabledUnselectedTextColor=textDisabled
+ FancyTabWidgetEnabledSelectedTextColor=text
+@@ -205,7 +206,7 @@ PaletteBrightText=ffff0000
  PaletteText=text
  PaletteButtonText=text
  PaletteButtonTextDisabled=textDisabled
@@ -20,33 +28,97 @@ index 5da67fa236..6b1f2fba96 100644
  PaletteHighlight=selectedBackgroundText
  PaletteDark=shadowBackground
  PaletteHighlightedText=textHighlighted
+diff --git a/share/qtcreator/themes/design.creatortheme b/share/qtcreator/themes/design.creatortheme
+index 8db109f313..cd90ad49de 100644
+--- a/share/qtcreator/themes/design.creatortheme
++++ b/share/qtcreator/themes/design.creatortheme
+@@ -17,6 +17,9 @@ text=ffdadada
+ ;disabled text
+ textDisabled=60a4a6a8
+ 
++;background for selected text
++selectedBackgroundText=aa1f75cc
++
+ ;icons, spinbox ticks,
+ ;toolBarItem=b6fbfdff
+ toolBarItem=ffb3b3b3
+@@ -50,7 +53,7 @@ hoverBackground=ff404244
+ ;blended background color for controls 1 spinboxes, background selection square for snapping modes, publish as alias icon.
+ ;color for filter background and overwrite width and height boxes
+ ;selectedBackground=66000000
+-selectedBackground=ff111111
++selectedBackground=aa1f75cc
+ 
+ 
+ ;background for default "open a document" screen in the edit mode,
+@@ -108,6 +111,7 @@ DoubleTabWidget2ndTabInactiveTextColor=text
+ EditorPlaceholderColor=normalBackground
+ FancyToolBarSeparatorColor=toolBarItemDisabled
+ FancyTabBarBackgroundColor=shadowBackground
++FancyTabBarSelectedBackgroundColor=ff000000
+ FancyTabWidgetDisabledSelectedTextColor=toolBarItemDisabled
+ FancyTabWidgetDisabledUnselectedTextColor=toolBarItemDisabled
+ FancyTabWidgetEnabledSelectedTextColor=fancyBarsBoldTextColor
+@@ -378,7 +382,7 @@ PaletteToolTipBase=selectedBackground
+ 
+ 
+ ;the selection highlight on the dropdown combo box in the file selection top menu and connections panel and tab mode selector dropdowns
+-PaletteHighlight=selectedBackground
++PaletteHighlight=selectedBackgroundText
+ ;PaletteHighlight=ffd3299a
+ 
+ 
 diff --git a/share/qtcreator/themes/flat-dark.creatortheme b/share/qtcreator/themes/flat-dark.creatortheme
-index e73d10b0ff..a4f263c1f7 100644
+index e73d10b0ff..07ecd43465 100644
 --- a/share/qtcreator/themes/flat-dark.creatortheme
 +++ b/share/qtcreator/themes/flat-dark.creatortheme
-@@ -13,7 +13,7 @@ toolBarItemDisabled=60a4a6a8
+@@ -5,6 +5,7 @@ DefaultTextEditorColorScheme=creator-dark.xml
+ 
+ [Palette]
+ shadowBackground=ff404244
++darkBackground=66000000
+ text=ffd0d0d0
+ textDisabled=60a4a6a8
+ textHighlighted=fff0f0f0
+@@ -13,7 +14,7 @@ toolBarItemDisabled=60a4a6a8
  fancyBarsNormalTextColor=ffd0d0d0
  fancyBarsBoldTextColor=b6fbfdff
  hoverBackground=22ffffff
 -selectedBackground=66000000
-+selectedBackground=aa1d545c
++selectedBackground=ff1d545c
  selectedBackgroundText=ff1d545c
  normalBackground=ff2E2F30
  alternateBackground=ff353637
-@@ -223,7 +223,7 @@ PaletteBrightText=ffff3333
+@@ -54,6 +55,7 @@ DoubleTabWidget2ndTabInactiveTextColor=text
+ EditorPlaceholderColor=normalBackground
+ FancyToolBarSeparatorColor=toolBarItemDisabled
+ FancyTabBarBackgroundColor=shadowBackground
++FancyTabBarSelectedBackgroundColor=darkBackground
+ FancyTabWidgetDisabledSelectedTextColor=toolBarItemDisabled
+ FancyTabWidgetDisabledUnselectedTextColor=toolBarItemDisabled
+ FancyTabWidgetEnabledSelectedTextColor=fancyBarsBoldTextColor
+@@ -223,7 +225,7 @@ PaletteBrightText=ffff3333
  PaletteText=text
  PaletteButtonText=text
  PaletteButtonTextDisabled=textDisabled
 -PaletteToolTipBase=selectedBackground
-+PaletteToolTipBase=66000000
++PaletteToolTipBase=darkBackground
  PaletteHighlight=selectedBackgroundText
  PaletteDark=shadowBackground
  PaletteHighlightedText=textHighlighted
 diff --git a/share/qtcreator/themes/flat-light.creatortheme b/share/qtcreator/themes/flat-light.creatortheme
-index 29edca63fd..826c798faa 100644
+index 29edca63fd..9cf6608ae4 100644
 --- a/share/qtcreator/themes/flat-light.creatortheme
 +++ b/share/qtcreator/themes/flat-light.creatortheme
-@@ -11,7 +11,7 @@ toolBarItemDisabled=38000000
+@@ -4,6 +4,7 @@ PreferredStyles=
+ 
+ [Palette]
+ shadowBackground=ffe4e4e4
++lightBackground=a8ffffff
+ text=ff000000
+ textDisabled=55000000
+ toolBarItem=a0010508
+@@ -11,7 +12,7 @@ toolBarItemDisabled=38000000
  fancyBarsNormalTextColor=ff000000
  fancyBarsBoldTextColor=a0010508
  hoverBackground=1a000000
@@ -55,8 +127,16 @@ index 29edca63fd..826c798faa 100644
  normalBackground=ffffffff
  alternateBackground=ff515151
  stop_error=ffec7373
+@@ -50,6 +51,7 @@ DoubleTabWidget2ndTabInactiveTextColor=ff000000
+ EditorPlaceholderColor=fff4f4f4
+ FancyToolBarSeparatorColor=toolBarItemDisabled
+ FancyTabBarBackgroundColor=shadowBackground
++FancyTabBarSelectedBackgroundColor=lightBackground
+ FancyTabWidgetDisabledSelectedTextColor=toolBarItemDisabled
+ FancyTabWidgetDisabledUnselectedTextColor=toolBarItemDisabled
+ FancyTabWidgetEnabledSelectedTextColor=fancyBarsBoldTextColor
 diff --git a/share/qtcreator/themes/flat.creatortheme b/share/qtcreator/themes/flat.creatortheme
-index ab0189528f..668d4bf612 100644
+index ab0189528f..a75a90b589 100644
 --- a/share/qtcreator/themes/flat.creatortheme
 +++ b/share/qtcreator/themes/flat.creatortheme
 @@ -11,7 +11,7 @@ toolBarItemDisabled=60a4a6a8
@@ -68,3 +148,42 @@ index ab0189528f..668d4bf612 100644
  normalBackground=ffffffff
  alternateBackground=ff515151
  error=ffdf4f4f
+@@ -48,6 +48,7 @@ DoubleTabWidget2ndTabInactiveTextColor=ff000000
+ EditorPlaceholderColor=ffdddddd
+ FancyToolBarSeparatorColor=toolBarItemDisabled
+ FancyTabBarBackgroundColor=shadowBackground
++FancyTabBarSelectedBackgroundColor=66000000
+ FancyTabWidgetDisabledSelectedTextColor=toolBarItemDisabled
+ FancyTabWidgetDisabledUnselectedTextColor=toolBarItemDisabled
+ FancyTabWidgetEnabledSelectedTextColor=fancyBarsBoldTextColor
+diff --git a/src/libs/utils/theme/theme.h b/src/libs/utils/theme/theme.h
+index 9a881e9e64..f350bf0ca2 100644
+--- a/src/libs/utils/theme/theme.h
++++ b/src/libs/utils/theme/theme.h
+@@ -80,6 +80,7 @@ public:
+         EditorPlaceholderColor,
+         FancyToolBarSeparatorColor,
+         FancyTabBarBackgroundColor,
++        FancyTabBarSelectedBackgroundColor,
+         FancyTabWidgetDisabledSelectedTextColor,
+         FancyTabWidgetDisabledUnselectedTextColor,
+         FancyTabWidgetEnabledSelectedTextColor,
+diff --git a/src/plugins/coreplugin/fancytabwidget.cpp b/src/plugins/coreplugin/fancytabwidget.cpp
+index 31ef98704c..677ff22e3a 100644
+--- a/src/plugins/coreplugin/fancytabwidget.cpp
++++ b/src/plugins/coreplugin/fancytabwidget.cpp
+@@ -349,7 +349,13 @@ void FancyTabBar::paintTab(QPainter *painter, int tabIndex) const
+     if (selected) {
+         if (creatorTheme()->flag(Theme::FlatToolBars)) {
+             // background color of a fancy tab that is active
+-            painter->fillRect(rect, creatorTheme()->color(Theme::FancyToolButtonSelectedColor));
++            int selectedWidth = std::min(5, rect.width());
++            int selectedBackgroundWidth = rect.width() - selectedWidth;
++            const QRect selectedRect = QRect(rect.topLeft(), QSize(selectedWidth, rect.height()));
++            const QRect selectedBackgroundRect = QRect(QPoint(rect.x() + selectedWidth, rect.y()),
++                                                       QSize(selectedBackgroundWidth, rect.height()));
++            painter->fillRect(selectedRect, creatorTheme()->color(Theme::FancyToolButtonSelectedColor));
++            painter->fillRect(selectedBackgroundRect, creatorTheme()->color(Theme::FancyTabBarSelectedBackgroundColor));
+         } else {
+             paintSelectedTabBackground(painter, rect);
+         }
