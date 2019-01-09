@@ -15,7 +15,7 @@ pkgbase = python-assimulo
 	makedepends = lapack
 	source = https://github.com/modelon/Assimulo/archive/Assimulo-3.0.tar.gz
 	source = sundials4.patch
-	sha256sums = SKIP
+	sha256sums = 6a1437af8ea0c9af3c0afa1efb44f5d1e11edfec1250ce3510f9e33397a04e6b
 	sha256sums = SKIP
 
 pkgname = python-assimulo

@@ -8,7 +8,8 @@ arch=('i686' 'x86_64')
 license=('LGPL')
 makedepends=('python-setuptools' 'python2-setuptools' 'cython' 'cython2' 'gcc-fortran' 'sundials' 'lapack')
 source=("https://github.com/modelon/Assimulo/archive/Assimulo-${pkgver}.tar.gz" sundials4.patch)
-sha256sums=('SKIP' SKIP )
+sha256sums=('6a1437af8ea0c9af3c0afa1efb44f5d1e11edfec1250ce3510f9e33397a04e6b'
+            'SKIP')
 
 prepare() {
   cd "${srcdir}"/Assimulo-Assimulo-$pkgver
