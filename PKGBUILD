@@ -3,7 +3,7 @@
 pkgname=mariadb-jdbc
 pkgver=2.3.0
 pkgrel=3
-pkgdesc="The official JDBC driver (Connector/J) for MariaDB"
+pkgdesc="The official Java library (Connector/J) to connect to MariaDB and MySQL"
 arch=('any')
 url="https://downloads.mariadb.org/connector-java/"
 license=('LGPL2.1')
