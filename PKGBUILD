@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel at milde dot cz>
 pkgname=pecl-raphf
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Resource and persistent handles factory"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/raphf"
