@@ -1,6 +1,6 @@
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 pkgname=lives
-pkgver=2.10.1
+pkgver=2.10.2
 pkgrel=1
 pkgdesc="A Video Editing System"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('pkg-config')
 options=(!emptydirs)
 changelog=lives.changelog
 source=(http://lives-video.com/releases/LiVES-$pkgver.tar.bz2)
-md5sums=('f32554a295b58c01f69c9ed738562033')
+md5sums=('a30013dd880e8fefa62bcf56170e6ca7')
 
 build() {
   cd ${pkgname}-${pkgver}
