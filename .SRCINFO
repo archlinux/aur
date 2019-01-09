@@ -14,7 +14,8 @@ pkgbase = emojicode
 	makedepends = python>=3.5.2
 	depends = ncurses
 	depends = zlib
-	optdepends = yarn: for package support
+	optdepends = yarn: for package support and allegro
+	optdepends = allegro: for graphics support
 	source = emojicode::git+https://github.com/emojicode/emojicode#tag=v0.8.1
 	md5sums = SKIP
 

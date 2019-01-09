@@ -2,7 +2,7 @@
 
 pkgname="emojicode"
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
@@ -12,7 +12,8 @@ depends=(
     "zlib"
 )
 optdepends=(
-    "yarn: for package support"
+    "yarn: for package support and allegro"
+    "allegro: for graphics support"
 )
 makedepends=(
     "llvm6"
