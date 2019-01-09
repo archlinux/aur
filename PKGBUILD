@@ -1,10 +1,10 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=taurus
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="GUI port scanner"
 arch=('x86_64')
-md5sums=('37b7afb34fcc1213f731f770db7e0ee0')
+md5sums=('956971bed1cdb1953bd6344162177804')
 url="https://github.com/blooser/taurus"
 license=('MIT')
 depends=('qt5-base' 'sfml')
@@ -13,10 +13,10 @@ applocation=/usr/share/$pkgname
 shortcut="
 [Desktop Entry]
 Encoding=UTF-8
-Version=1.1
+Version=${pkgver}
 Name[en_US]=Taurus
 GenericName=GUI Port Scanner
-Exec=${applocation}/./Taurus
+Exec=${applocation}/taurus
 Icon[en_US]=${applocation}/icons/discover.png
 Type=Application
 Categories=Application;Network
@@ -35,13 +35,13 @@ package() {
 	cd $pkgname-$pkgver
 	make clean
 	cd ..
-	sudo mv $pkgname-$pkgver $applocation		
+	sudo cp -r $pkgname-$pkgver $applocation
+	rm -rf $pkgname-$pkgver		
 	echo "${shortcut}" > ~/.local/share/applications/taurus.desktop
 	if [ -f ~/.zshrc ]; then
-		echo "alias taurus=${applocation}/./Taurus" >> ~/.zshrc
+		echo "alias taurus=${applocation}/taurus" >> ~/.zshrc
+
 	else
-		echo "alias taurus=${applocation}/./Taurus" >> ~/.bashrc
-	fi		
+		echo "alias taurus=${applocation}/taurus" >> ~/.bashrc	
+	fi	
 }
-
-
