@@ -8,10 +8,10 @@ pkgbase = ros-melodic-common-tutorials
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-nodelet-tutorial-math
 	depends = ros-melodic-pluginlib-tutorials
-	depends = ros-melodic-actionlib-tutorials
 	depends = ros-melodic-turtle-actionlib
+	depends = ros-melodic-nodelet-tutorial-math
+	depends = ros-melodic-actionlib-tutorials
 	source = ros-melodic-common-tutorials-0.1.11-0.tar.gz::https://github.com/ros-gbp/common_tutorials-release/archive/release/melodic/common_tutorials/0.1.11-0.tar.gz
 	sha256sums = a74b72d318a6002dcee5e39472587f5fbe70741e93e71fac242b4ad60b78d9d0
 
