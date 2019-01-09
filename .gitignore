@@ -1,0 +1,4 @@
+/nativescript-*.tgz
+/*.pkg.*
+/src/
+/pkg/
