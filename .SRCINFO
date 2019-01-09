@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-diagnostic-msgs
 	pkgdesc = ROS - This package holds the diagnostic messages which provide the standardized interface for the diagnostic and runtime monitoring systems in ROS.
-	pkgver = 1.12.6
+	pkgver = 1.12.7
 	pkgrel = 1
 	url = http://wiki.ros.org/diagnostic_msgs
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = ros-melodic-diagnostic-msgs
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-catkin
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-diagnostic-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/diagnostic_msgs/1.12.6-0.tar.gz
-	sha256sums = 4b6569654ed66c3362f425fd6f0488e133cba37e0764b86202106b35e5223019
+	source = ros-melodic-diagnostic-msgs-1.12.7-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/diagnostic_msgs/1.12.7-0.tar.gz
+	sha256sums = 649136f24515903a713e856fe413d5692073ce77b2970afefbb510af76964e70
 
 pkgname = ros-melodic-diagnostic-msgs
 
