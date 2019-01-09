@@ -8,8 +8,8 @@ pkgbase = ros-melodic-roscpp-traits
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	depends = ros-melodic-cpp-common
 	depends = ros-melodic-rostime
+	depends = ros-melodic-cpp-common
 	source = ros-melodic-roscpp-traits-0.6.11-0.tar.gz::https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/roscpp_traits/0.6.11-0.tar.gz
 	sha256sums = b7e12216b2239a621861af230301bc6a4fdbaf4101ef3423ca8aa655bfa4b0dd
 
