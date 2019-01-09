@@ -1,19 +1,19 @@
 pkgbase = ros-melodic-position-controllers
 	pkgdesc = ROS - position_controllers.
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/ros-controls/ros_controllers/wiki
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-forward-command-controller
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-controller-interface
-	depends = ros-melodic-forward-command-controller
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-forward-command-controller
 	depends = ros-melodic-controller-interface
-	source = ros-melodic-position-controllers-0.14.1-0.tar.gz::https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/position_controllers/0.14.1-0.tar.gz
-	sha256sums = b977cedf37692eab5cc052d8ccd3a975bbc67fd8ad13e663a815fff4bde7e4c6
+	depends = ros-melodic-forward-command-controller
+	source = ros-melodic-position-controllers-0.14.2-0.tar.gz::https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/position_controllers/0.14.2-0.tar.gz
+	sha256sums = c12f2cc841fecbb7415d7fd0036559043260a3ac7c875f6ddc93e6a654ef2171
 
 pkgname = ros-melodic-position-controllers
 
