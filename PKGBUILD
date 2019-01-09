@@ -3,31 +3,31 @@
 _pkgname="vdens"
 
 pkgname="$_pkgname-git"
-pkgver=0.1
+pkgver=r20.c65c775
 pkgrel=1
 pkgdesc="Create User Namespaces connected to VDE networks"
 arch=(any)
 url="https://github.com/rd235/$_pkgname"
 license=('GPL2')
 groups=('view-os')
-depends=('vde2' 'libs2argv-execs' 'vdeplug4')
-#makedepends=()
-#optdepends=()
+depends=('vde2' 's2argv-execs' 'vdeplug4')
+makedepends=('vdeplug4')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
-#backup=()
-#options=()
 install="$_pkgname.install"
-#changelog=
 source=("git+https://github.com/rd235/$_pkgname.git")
-#noextract=()
 md5sums=('SKIP')
+
+pkgver() {
+	cd "$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "$_pkgname"
   
-  autoreconf -i
+  autoreconf -if
   ./configure
   make
 }
