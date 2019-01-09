@@ -1,6 +1,6 @@
 pkgbase = libdazzle-git
 	pkgdesc = Companion library to GObject and GTK+
-	pkgver = 3.29.4.r65.g5d6fd6c
+	pkgver = 3.31.1.r40.ga714ac9
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libdazzle
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = libdazzle-git
 	makedepends = meson
 	makedepends = gobject-introspection
 	makedepends = vala
+	makedepends = git
 	depends = gtk3
 	provides = libdazzle
 	conflicts = libdazzle

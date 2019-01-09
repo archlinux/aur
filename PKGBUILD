@@ -1,14 +1,14 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
-pkgname='libdazzle-git'
 pkgdesc='Companion library to GObject and GTK+'
-license=('GPL3')
-pkgver=3.29.4.r65.g5d6fd6c
+pkgname=libdazzle-git
+license=(GPL3)
+pkgver=3.31.1.r40.ga714ac9
 pkgrel=1
-provides=('libdazzle')
-conflicts=('libdazzle')
-makedepends=('meson' 'gobject-introspection' 'vala')
-depends=('gtk3')
-arch=('x86_64' 'i686')
+provides=(libdazzle)
+conflicts=(libdazzle)
+makedepends=(meson gobject-introspection vala git)
+depends=(gtk3)
+arch=(x86_64 i686)
 url='https://gitlab.gnome.org/GNOME/libdazzle'
 source=("${pkgname}::git+${url}.git/")
 sha512sums=('SKIP')
@@ -26,10 +26,7 @@ pkgver () {
 build () {
 	cd "${pkgname}"
 	rm -rf build
-	meson --buildtype release  \
-		--prefix /usr \
-		--sysconfdir /etc \
-		--localstatedir /var \
+	arch-meson \
 		-Denable_gtk_doc=true \
 		-Dwith_introspection=true \
 		-Dwith_vapi=true \
