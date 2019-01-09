@@ -1,14 +1,14 @@
 pkgbase = scg
 	pkgdesc = Set Color from Gamma-values in X
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jumper149/scg
 	arch = x86_64
 	license = Apache
 	makedepends = libx11
 	makedepends = libxrandr
-	source = git+https://github.com/jumper149/scg.git
-	sha256sums = SKIP
+	source = https://github.com/jumper149/scg/archive/v1.0.tar.gz
+	sha256sums = dab6eb6075cf24e0bbcd5b08089815bf88f58269b885643418c9d6a4ca07a39b
 
 pkgname = scg
 
