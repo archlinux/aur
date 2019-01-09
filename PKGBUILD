@@ -4,13 +4,14 @@
 pkgname=python-aioxmpp
 _name=${pkgname#python-}
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An XMPP library for use with Python 3.4 asyncio"
 arch=('any')
 url="https://github.com/horazont/aioxmpp"
 license=('LGPL3')
-depends=('python'
-         'libxml2'
+depends=('libxml2'
+         'python'
+         'python-aioopenssl'
          'python-aiosasl'
          'python-babel'
          'python-dnspython'
@@ -20,6 +21,7 @@ depends=('python'
          'python-pyasn1'
          'python-pyasn1-modules'
          'python-pyopenssl'
+         'python-sortedcollections'
          'python-tzlocal')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
