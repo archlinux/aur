@@ -1,6 +1,6 @@
 pkgbase = atlassian-jira-lts
 	pkgdesc = Bug tracking, issue tracking and project management software (Enterprise Release)
-	pkgver = 7.6.4
+	pkgver = 7.6.10
 	pkgrel = 1
 	url = https://www.atlassian.com/software/jira
 	install = jira.install
@@ -8,9 +8,10 @@ pkgbase = atlassian-jira-lts
 	license = custom
 	depends = java-environment=8
 	optdepends = mysql-connector-java: connect to MySQL
+	conflicts = atlassian-jira
 	backup = etc/conf.d/jira
 	backup = etc/webapps/atlassian-jira/server.xml
-	source = https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-core-7.6.4.tar.gz
+	source = https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-core-7.6.10.tar.gz
 	source = jira.conf.d
 	source = jira.service
 	sha256sums = 768912b35c2edd908a78250c031c658576e117957055c0b4bada066674e63eb9

@@ -4,12 +4,13 @@
 # Contributor: Sebastien Bariteau <numkem@gmail.com>
 
 pkgname=atlassian-jira-lts
-pkgver=7.6.4
+pkgver=7.6.10
 pkgrel=1
 pkgdesc="Bug tracking, issue tracking and project management software (Enterprise Release)"
 url="https://www.atlassian.com/software/jira"
 license=('custom')
 arch=('any')
+conflicts=('atlassian-jira')
 depends=('java-environment=8')
 optdepends=('mysql-connector-java: connect to MySQL')
 backup=('etc/conf.d/jira'
