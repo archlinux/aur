@@ -1,6 +1,6 @@
 pkgbase = stlib-plugins-git
 	pkgdesc = A set of stlib official plugins
-	pkgver = 20190108.26.2f1645c
+	pkgver = 20190108.27.c3ce42e
 	pkgrel = 1
 	url = https://github.com/ShyPixie/stilib-plugins
 	arch = x86_64

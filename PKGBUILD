@@ -1,7 +1,7 @@
 # Maintainer: Acidhub <dev@acidhub.click>
 
 pkgname=stlib-plugins-git
-pkgver=20190108.26.2f1645c
+pkgver=20190108.27.c3ce42e
 pkgrel=1
 pkgdesc="A set of stlib official plugins"
 arch=('x86_64')
