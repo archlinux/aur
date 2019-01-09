@@ -3,7 +3,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethminer
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Ethereum miner with OpenCL and stratum support (built without CUDA)."
 arch=('x86_64')
