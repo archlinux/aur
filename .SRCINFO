@@ -1,0 +1,24 @@
+pkgbase = fotoxx-git
+	pkgdesc = A program for improving image files made with a digital camera, test-version
+	pkgver = 19.0.1.g5f30264
+	pkgrel = 1
+	url = http://www.kornelix.net/fotoxx/fotoxx.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libraw
+	depends = gtk3
+	depends = libchamplain
+	depends = perl-image-exiftool>=0.8.6
+	depends = xdg-utils
+	optdepends = rawtherapee: for raw image processing
+	optdepends = dvd+rw-tools: for burning CDs,DVDs or BlueRays
+	optdepends = hugin: for panorama photos
+	provides = fotoxx
+	conflicts = fotoxx
+	options = !makeflags
+	source = git+https://gitlab.com/fotoxx/fotoxx.git
+	sha256sums = SKIP
+
+pkgname = fotoxx-git
+
