@@ -1,0 +1,15 @@
+pkgbase = tosv-git
+	pkgdesc = Simple delimited file type converter
+	pkgver = 0.0.1.r0.773de77
+	pkgrel = 1
+	url = https://github.com/DreamingRaven/tosv
+	arch = any
+	license = MIT
+	depends = git
+	depends = python-setuptools
+	depends = python
+	source = tosv::git+https://github.com/DreamingRaven/tosv#branch=master
+	md5sums = SKIP
+
+pkgname = tosv-git
+
