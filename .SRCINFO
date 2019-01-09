@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-geometry-msgs
 	pkgdesc = ROS - geometry_msgs provides messages for common geometric primitives such as points, vectors, and poses.
-	pkgver = 1.12.6
+	pkgver = 1.12.7
 	pkgrel = 1
 	url = http://wiki.ros.org/geometry_msgs
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = ros-melodic-geometry-msgs
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-catkin
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-geometry-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/geometry_msgs/1.12.6-0.tar.gz
-	sha256sums = 797d3f77f9265ae2d832e34df4efae1c8f0ada553a7a395ed7969302e405489a
+	source = ros-melodic-geometry-msgs-1.12.7-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/geometry_msgs/1.12.7-0.tar.gz
+	sha256sums = 60734262caf065a7eabc82f5c4033e3107a00a204e706a3884d6ee12fcac4d11
 
 pkgname = ros-melodic-geometry-msgs
 
