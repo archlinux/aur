@@ -25,6 +25,6 @@ package() {
   mkdir "${pkgdir}${HOME}"/.config/autostart  
 
   cd "${pkgname}"
-  install -Dm 755 ./gnome-wallpaper-changer /usr/bin
-  install -Dm 644 ./gnome-wallpaper-changer.desktop "${HOME}"/.config/autostart
+  cp ./gnome-wallpaper-changer /usr/bin
+  cp ./gnome-wallpaper-changer.desktop "${HOME}"/.config/autostart
 }
