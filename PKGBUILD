@@ -1,8 +1,8 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=lazylibrarian-git
-pkgver=r2866.61caa2d5
-pkgrel=2
+pkgver=r3868.1580e85b
+pkgrel=1
 pkgdesc="Automatic Book Downloading via NZBs & Torrent"
 arch=('any')
 url="https://github.com/DobyTang/LazyLibrarian"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('git')
 install='lazylibrarian.install'
-source=('git+https://github.com/DobyTang/LazyLibrarian.git'
+source=('git+https://gitlab.com/LazyLibrarian/LazyLibrarian.git'
         'lazylibrarian.service'
         'lazylibrarian.tmpfiles'
         'lazylibrarian.sysusers')
