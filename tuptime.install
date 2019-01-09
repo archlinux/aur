@@ -1,0 +1,7 @@
+post_install() {
+    echo ""
+    echo "tuptime has been installed and the corresponding .timer unit"
+    echo "has been enabled. To start tuptime now, run"
+    echo "    # systemctl start tuptime.timer"
+    echo ""
+}
