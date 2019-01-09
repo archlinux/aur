@@ -14,7 +14,7 @@ optdepends=('qt5-svg')
 source=('https://fman.io/updates/arch/fman-1.5.4.pkg.tar.xz')
 noextract=("${source[@]##*/}")
 
-sha256sums=('c83c9ab7154104f9f7d32b2346b12846fd20cd1de5310b723bf0b43cad4842a4')
+sha256sums=('00ef2b372acfc7a73a39e0b1d493297656a39980dfa9aef71761ea948967495c')
 
 package() {
 	tar xf "${srcdir}/fman-1.5.4.pkg.tar.xz" -C "${pkgdir}" --exclude='.INSTALL' --exclude='.PKGINFO' --exclude='.MTREE'
