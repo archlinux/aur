@@ -7,7 +7,7 @@ pkgname=whatpulse
 pkgver=2.8.4
 pkgrel=1
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url=http://www.whatpulse.org
 # I have yet to find the actual licence, but alternatively: it's basically freeware
 license=(custom:whatpulse_tos)
