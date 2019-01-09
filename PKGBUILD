@@ -4,7 +4,7 @@ _pkgname="vdens"
 
 pkgname="$_pkgname-git"
 pkgver=r20.c65c775
-pkgrel=1
+pkgrel=2
 pkgdesc="Create User Namespaces connected to VDE networks"
 arch=(any)
 url="https://github.com/rd235/$_pkgname"
@@ -28,8 +28,8 @@ build() {
   cd "$_pkgname"
   
   autoreconf -if
-  ./configure
-  make
+  ./configure --prefix="/usr"
+  make 
 }
 
 package() {

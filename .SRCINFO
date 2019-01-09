@@ -1,7 +1,7 @@
 pkgbase = vdens-git
 	pkgdesc = Create User Namespaces connected to VDE networks
 	pkgver = r20.c65c775
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rd235/vdens
 	install = vdens.install
 	arch = any
