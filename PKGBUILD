@@ -1,13 +1,13 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bisq-git
-pkgver=0.9.1.r1.g517429e8d
+pkgver=0.9.3.r1.gd320380e8
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
 url="https://bisq.network"
 license=('AGPL3')
-depends=('jdk10-openjdk' 'java-openjfx')
+depends=('jdk10-openjdk')
 makedepends=('git' 'maven' 'jdk10-openjdk' 'protobuf')
 source=("${pkgname}::git+https://github.com/bisq-network/bisq.git#branch=master"
         "bisq.desktop")
