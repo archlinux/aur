@@ -15,8 +15,9 @@ source=("${pkgname}_${_commit::7}"::"https://gitlab.com/brunelli/tools/raw/${_co
 sha256sums=('87605bea63821d4329dda01375070d78fb580f883f3b9176b4c0d852ef6e88c1')
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
-    install -Dm0755 "${pkgname}_${_commit::7}" "${pkgdir}/usr/bin/${pkgname}"
-    ln -s /usr/bin/${pkgname} "${pkgdir}/usr/bin/xclip"
-    ln -s /usr/bin/${pkgname} "${pkgdir}/usr/bin/xsel"
+    mkdir -p "${pkgdir}/usr/bin/"
+    mkdir -p "${pkgdir}/usr/share/${pkgname}/"
+    install -Dm0755 "${pkgname}_${_commit::7}" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
+    ln -s /usr/share/${pkgname}/${pkgname} "${pkgdir}/usr/bin/xclip"
+    ln -s /usr/share/${pkgname}/${pkgname} "${pkgdir}/usr/bin/xsel"
 }
