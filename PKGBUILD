@@ -8,7 +8,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r504030.fde04f5ec920
+pkgver=r506165.89ca00a3e307
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Wayland build of mozilla-unified hg"
 arch=(x86_64)
