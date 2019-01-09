@@ -1,11 +1,12 @@
 pkgbase = writefreely
 	pkgdesc = Federated blogging from write.as
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://writefreely.org/
 	install = writefreely.install
 	arch = x86_64
 	license = AGPL3
+	makedepends = go-bindata
 	makedepends = sqlite
 	optdepends = sqlite: For SQLite support,
 	optdepends = mariadb: For MariaDB support
@@ -13,11 +14,13 @@ pkgbase = writefreely
 	source = writefreely-sysusers.conf
 	source = writefreely.service
 	source = config.ini
-	source = https://github.com/writeas/writefreely/releases/download/v0.7.0/writefreely_0.7.0_linux_amd64.tar.gz
+	source = 64.patch
+	source = https://github.com/writeas/writefreely/archive/v0.7.0.tar.gz
 	sha256sums = 6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10
 	sha256sums = 142fcf18320a418b73ed0678acea58ae69287e47760d6abb5283376c21092dec
 	sha256sums = 6946f0211b25743451954d2c155222df2aeaf7f49c3fafcb9183c6fc62a95ef9
-	sha256sums = 8d2e1eaa5db61080b328f2d6d8677bb68859346c6920db0bd4f7e8d7fc9149b7
+	sha256sums = 009c083488511d92b489337f7feb8bd17631a104907959d21b1f9b5df3ce0a70
+	sha256sums = a99d4fdc6fb3a52426f4b99fe1c18180ea35544d2267ec8ef82d868da5017fc9
 
 pkgname = writefreely
 
