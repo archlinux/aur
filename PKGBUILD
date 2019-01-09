@@ -20,5 +20,5 @@ package() {
 
   cd "${srcdir}/fastTSNE-$pkgver"
   python setup.py install --root=${pkgdir} --optimize=1
-  rm -rf usr/lib/python*/site-packages/{benchmarks,examples,tests}
+  rm -r "${pkgdir}"/usr/lib/python*/site-packages/{benchmarks,examples,tests}
 }
