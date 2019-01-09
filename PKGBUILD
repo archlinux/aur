@@ -3,12 +3,12 @@
 # Contributor: Familia < carlosfamilia at gmail dot com >
 pkgname=rstudio-server-bin
 pkgver=1.1.463
-pkgrel=1
+pkgrel=2
 pkgdesc="A integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r>=2.11.1' 'glibc>=2.7' 'libedit' 'psmisc')
+depends=('r>=2.11.1' 'glibc>=2.7' 'libedit' 'psmisc' 'openssl-1.0')
 conflicts=('rstudio-server' 'rstudio-server-git')
 provides=("rstudio-server=${pkgver}")
 #options=(!strip)
