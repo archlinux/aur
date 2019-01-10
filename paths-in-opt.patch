@@ -1,53 +1,78 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 92828e0..297bd0e 100755
+index 1d39c4f..e506341 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -476,7 +476,7 @@ class FrameGUI( ClientGUITopLevelWindows.FrameThatResizes ):
+@@ -397,7 +397,7 @@ class FrameGUI( ClientGUITopLevelWindows.FrameThatResizes ):
                              python_executable = python_executable.replace( 'pythonw', 'python' )
                              
                          
 -                        server_script_path = os.path.join( HC.BASE_DIR, 'server.py' )
 +                        server_script_path = '/opt/hydrus/server.py'
                          
-                         cmd = '"' + python_executable + '" "' + server_script_path + '" ' + db_param
+                         cmd = [ python_executable, server_script_path, db_param ]
                          
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index bb0a939..8e690e1 100755
+index 7b45015..47fc32c 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
-@@ -3,30 +3,15 @@ import sys
+@@ -2,30 +2,9 @@ import os
+ import sys
  
  # dirs
++RUNNING_FROM_FROZEN_BUILD = False
  
--BASE_DIR = sys.path[0]
--
--if BASE_DIR == '':
+-if getattr( sys, 'frozen', False ):
 -    
--    BASE_DIR = os.getcwdu()
+-    RUNNING_FROM_FROZEN_BUILD = True
+-    
+-    # we are in a pyinstaller frozen app
+-    
+-    BASE_DIR = getattr( sys, '_MEIPASS', None )
+-    
+-    if BASE_DIR is None:
+-        
+-        raise Exception( 'It seems this hydrus is running from a frozen bundle, but there was no _MEIPASS variable under sys to define the bundle directory.' )
+-        
 -    
 -else:
 -    
--    try:
--        
--        BASE_DIR = BASE_DIR.decode( 'utf-8' )
--        
--    except:
--        
--        pass
--        
+-    RUNNING_FROM_FROZEN_BUILD = False
 -    
+-    BASE_DIR = sys.path[0]
+-    
+-    if BASE_DIR == '':
+-        
+-        BASE_DIR = os.getcwd()
+-        
++BASE_DIR = os.path.expanduser("~/.local/share/hydrus")
+ 
+ PLATFORM_WINDOWS = False
+ PLATFORM_OSX  = False
+@@ -38,23 +17,16 @@ elif sys.platform == 'linux': PLATFORM_LINUX = True
+ RUNNING_FROM_SOURCE = sys.argv[0].endswith( '.py' ) or sys.argv[0].endswith( '.pyw' )
+ RUNNING_FROM_OSX_APP = os.path.exists( os.path.join( BASE_DIR, 'running_from_app' ) )
+ 
 -BIN_DIR = os.path.join( BASE_DIR, 'bin' )
 -HELP_DIR = os.path.join( BASE_DIR, 'help' )
 -INCLUDE_DIR = os.path.join( BASE_DIR, 'include' )
 -STATIC_DIR = os.path.join( BASE_DIR, 'static' )
-+BASE_DIR = os.path.expanduser("~/.local/share/hydrus")
-+
 +BIN_DIR = "/opt/hydrus/bin"
 +HELP_DIR = "/opt/hydrus/help"
 +INCLUDE_DIR = "/opt/hydrus/include"
 +STATIC_DIR = "/opt/hydrus/static"
  
  DEFAULT_DB_DIR = os.path.join( BASE_DIR, 'db' )
+ 
+-if PLATFORM_OSX:
+-    
+-    USERPATH_DB_DIR = os.path.join( os.path.expanduser( '~' ), 'Library', 'Hydrus' )
+-    
+-else:
+-    
+-    USERPATH_DB_DIR = os.path.join( os.path.expanduser( '~' ), 'Hydrus' )
+-    
++USERPATH_DB_DIR = DEFAULT_DB_DIR
+ 
 -LICENSE_PATH = os.path.join( BASE_DIR, 'license.txt' )
 +LICENSE_PATH = "/usr/share/licenses/hydrus/license.txt"
  

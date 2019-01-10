@@ -1,2 +1,2 @@
 #!/bin/sh
-exec python2 -OO /opt/hydrus/client.pyw "$@"
+exec python -OO /opt/hydrus/client.pyw "$@"

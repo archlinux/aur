@@ -4,31 +4,31 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgbase=hydrus
 pkgname=(hydrus)
-pkgver=334
-pkgrel=2
+pkgver=335
+pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(WTFPL)
 install=hydrus.install
 conflicts=(hydrus-docs hydrus-sources)
 url=http://hydrusnetwork.github.io/hydrus/
-depends=(python2 opencv-with-python2-support python2-beautifulsoup4 python2-yaml
-         'python2-lz4>=0.10.1' python2-numpy python2-twisted python2-pillow
-         python2-pysocks python2-psutil python2-send2trash python2-html5lib
-         python2-requests hdf5 python2-wxpython-phoenix gtkglext)
+depends=(python opencv python-beautifulsoup4 python-yaml
+         'python-lz4>=0.10.1' python-numpy python-twisted python-pillow
+         python-pysocks python-psutil python-send2trash python-html5lib
+         python-requests hdf5 'python-wxpython>=4.0.0' gtkglext)
 makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus')
-source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=4bb6c317040819c87bf6085f74620441587ef2d1"
+source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=4a52a5586a6e290b78c5bad2954f3bf2499e3c2b"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            '520fdc156dfb8c4a8c9a0c8c05e51807266809cddeca27a5b73049b2355c3a40'
-            'b2bf66b1068969e9598742d5c128cb04fd609512b0cff0ad5e25ecb6cdd35678'
-            '5fd3eb69bb5f9a0b88d7c1b25abdee42aa2b2fc5e1690635f60ed1f47848c46b'
+            '5c3be57fc5f612ff4bbe569b277caf4ec9faa75cb17dec4bc4be435bb7a7c933'
+            'd2cb826ce0dd1892ab95fc3b14dbe6bd312210f653d0aea31938eeb7e361fdc5'
+            '463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
 
 prepare() {
@@ -50,7 +50,7 @@ build() {
   cd "$pkgbase"
 
   msg 'Compiling .py files...'
-  python2 -OO -m compileall -fq .
+  python -OO -m compileall -fq .
 }
 
 package_hydrus() {
