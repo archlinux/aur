@@ -2,7 +2,7 @@
 
 pkgname=deepin-dock-plugin-weather-git
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin for deepin dock, display weather information."
 arch=('x86_64')
 url="https://github.com/CareF/deepin-dock-plugin-weather"
@@ -18,5 +18,5 @@ build() {
 }
 
 package(){
-  make INSTALL_ROOT="$pkgdir/usr" install
+  make INSTALL_ROOT="$pkgdir" install
 }
