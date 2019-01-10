@@ -3,11 +3,11 @@
 pkgname=blugon
 pkgdesc="simple Blue Light Filter for X written in Python"
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/jumper149/blugon"
 license=('Apache')
-depends=('python')
+depends=('libx11' 'libxrandr' 'python')
 optdepends=('xorg-xgamma: backend')
 source=('git+https://github.com/jumper149/blugon.git')
 _gitname="blugon"
