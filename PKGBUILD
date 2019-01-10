@@ -1,9 +1,9 @@
 # Maintainer: whight
 
 pkgname=plata-theme-slim
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
-pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines, built with most options disabled.'
+pkgdesc='A Gtk+ theme based on Material Design Refresh, built with most options disabled.'
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme'
 license=('GPL2' 'CCbySA4')
