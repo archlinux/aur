@@ -4,11 +4,12 @@ _gitrepo="auto-complete-clang"
 
 pkgname=emacs-auto-complete-clang-git
 pkgver=r16.a195db1
-pkgrel=1
+pkgrel=2
 pkgdesc="The AC sources for Clang. Combine the power of AC, Clang and Yasnippet."
 url="https://github.com/${_gituser}/${_gitrepo}"
 arch=('any')
 license=('GPL3')
+provides=('emacs-auto-complete-clang')
 depends=('emacs' 'emacs-auto-complete')
 makedepends=('git')
 source=("git+https://github.com/${_gituser}/${_gitrepo}.git")
