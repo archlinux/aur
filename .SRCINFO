@@ -1,0 +1,17 @@
+pkgbase = gemini
+	pkgdesc = Graphical audio player
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/blooser/gemini
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = python-setuptools
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = python
+	source = https://github.com/blooser/gemini/archive/v1.8.1.tar.gz
+	md5sums = fd0aa4cbc708a218bec4dd85eff2ee7c
+
+pkgname = gemini
+
