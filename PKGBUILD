@@ -10,7 +10,7 @@ arch=('any')
 url='https://github.com/systemd/mkosi'
 license=('LGPL2.1')
 depends=('python')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools' 'git' 'pandoc')
 optdepends=('dnf: build Fedora or Mageia images'
             'debootstrap: build Debian or Ubuntu images'
             'debian-archive-keyring: build Debian images'
@@ -54,6 +54,7 @@ pkgver() {
 build() {
     cd 'mkosi'
 
+    pandoc -s -f markdown -t man mkosi.md -o mkosi.1
     python setup.py build
 }
 
@@ -61,4 +62,5 @@ package() {
   cd 'mkosi'
 
   python setup.py install --skip-build --optimize=1 --root="$pkgdir"
+  install -Dm 644 mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1"
 }
