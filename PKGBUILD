@@ -2,15 +2,14 @@
 # Contributor: Tom < reztho at archlinux dot org >
 
 pkgname=tuned-git
-pkgver=v2.10.0.r40.gb9e1316
-pkgrel=1
+pkgver=2.10.0.r75.g26db89d
+pkgrel=2
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url='https://github.com/redhat-performance/tuned'
 license=('GPL')
-depends=('ethtool' 'python-configobj' 'python-pyudev' 'python-gobject2'
-         'python-decorator' 'python-dbus' 'python-dmidecode')
-optdepends=('virt-what' 'systemtap')
+depends=('ethtool' 'python-configobj' 'python-pyudev' 'python-gobject2' 'python-decorator' 'python-dbus' 'python-schedutils' 'python-linux-procfs' 'python-perf' 'hdparm' 'polkit' 'hicolor-icon-theme')
+optdepends=('virt-what' 'systemtap' 'python-dmidecode')
 makedepends=('git')
 provides=('tuned')
 backup=('etc/tuned/active_profile')
