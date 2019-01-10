@@ -25,7 +25,7 @@ conflicts=("${_pkgname}")
 source=("${_pkgname}"::"git+https://github.com/zenhack/simp_le.git"
         'remove-deps-version-bounds.patch')
 sha256sums=('SKIP'
-            '5213a50a35caae09d7d0df59dd4ab729106d4fde3255ae100cb9e67a4343adcf')
+            '2960e30de4aee69c20dfe3e7a060745cee5cc72859817ce3a3f547a8d3eff1fa')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
