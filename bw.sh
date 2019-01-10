@@ -1,2 +1,2 @@
 #!/bin/sh
-node /usr/lib/bitwarden-cli/bw.js $@
+node /usr/lib/bitwarden-cli/bw.js "$@"
