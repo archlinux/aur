@@ -33,10 +33,10 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=4.20-arch1
+_srcver=4.20.1-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
-_pdsversion=099j
+_pdsversion=099k
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
@@ -59,13 +59,13 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('a4557920ecb84658ede8746af601d6910a173ff043a53d7c0a6ba7b79d260653'
-            '21990b47d41040f93e65956e5162c4f1c7a07e6a656ec88e2e5f1bfe190eff66'
+sha256sums=('16472f08f69dcca48a412132b9b2c96371aaeddafd7bd4bb97cba8a7a97988e0'
+            'c79a4aeb206dd0578978c04364faba88f39e73f3bee361b9731d0cc0b481012d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '7af2125e2f08369b611298d2fddbd58817d321ca47704c9390f1e66e8ba910c0')
+            'cf68c85c6e74828f72e5f9e5a0cdbbc88f6f2bf1a5edfa6f99e0242faac9d8d7')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
