@@ -1,0 +1,4 @@
+#! /usr/bin/env sh
+wine /usr/share/mspinball/PINBALL.exe > /dev/null 2> /dev/null
+# Waits pinball to close
+wineserver -w

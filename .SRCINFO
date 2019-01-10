@@ -1,0 +1,16 @@
+pkgbase = mspinball-bin
+	pkgdesc = 3D Pinball - Space Cadet
+	pkgver = v1
+	pkgrel = 1
+	url = https://archive.org/details/SpaceCadet_Plus95
+	arch = x86_64
+	license = proprietary
+	makedepends = unrar
+	depends = wine
+	noextract = Space_Cadet.rar
+	options = !strip
+	source = https://archive.org/download/SpaceCadet_Plus95/Space_Cadet.rar
+	sha256sums = 3cc5dfd914c2ac41b03f006c7ccbb59d6f9e4c32ecfd1906e718c8e47f130f4a
+
+pkgname = mspinball-bin
+
