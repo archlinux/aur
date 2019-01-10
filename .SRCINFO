@@ -8,7 +8,7 @@ pkgbase = lc0-client-git
 	license = GPLv3
 	makedepends = git
 	makedepends = go
-	depends = lc0-cudnn-git
+	optdepends = lc0-cudnn-git
 	source = lc0-client::git+https://github.com/LeelaChessZero/lczero-client.git#branch=master
 	md5sums = SKIP
 
