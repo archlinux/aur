@@ -2,7 +2,7 @@
 
 _name=slade
 pkgname=${_name}-git
-pkgver=3.1.2+31+g2c4ef9ed
+pkgver=3.1.4+105+g1c78539e
 pkgrel=1
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
@@ -40,11 +40,9 @@ pkgver() {
 build() {
     cd slade
 
-    ln -sf /usr/bin/wx-config-gtk3 wx-config
-
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
-          -DWITH_WXPATH=. \
+          -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
           .
     make
 }
