@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-moveit-planners-ompl
 	pkgdesc = ROS - MoveIt interface to OMPL.
-	pkgver = 0.10.5
+	pkgver = 0.10.8
 	pkgrel = 1
 	url = http://moveit.ros.org
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = ros-melodic-moveit-planners-ompl
 	depends = ros-melodic-dynamic-reconfigure
 	depends = ros-melodic-moveit-ros-planning
 	depends = ros-melodic-eigen-conversions
-	source = ros-melodic-moveit-planners-ompl-0.10.5-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_planners_ompl/0.10.5-0.tar.gz
-	sha256sums = 23438b7ebb2c574126aaf2a71efc0ce3e5b00ad96ab89b7d8dcf87df67f5bc44
+	source = ros-melodic-moveit-planners-ompl-0.10.8-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_planners_ompl/0.10.8-0.tar.gz
+	sha256sums = fc23c84870bf03c1b7299e643cde5c8bb1a3fbb2e75db8e1789e7f7b11e6cd13
 
 pkgname = ros-melodic-moveit-planners-ompl
 
