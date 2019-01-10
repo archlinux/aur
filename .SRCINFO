@@ -1,6 +1,6 @@
 pkgbase = libgoldilocks-git
 	pkgdesc = An implementation of Mike Hamburg's Ed448 (Goldilocks) curve
-	pkgver = 642.55578ef
+	pkgver = 644.045bec4
 	pkgrel = 1
 	url = https://github.com/otrv4/libgoldilocks
 	arch = i686
