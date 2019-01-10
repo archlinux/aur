@@ -2,8 +2,8 @@
 
 pkgname=ttf-genericmobile
 pkgver=20190103.01
-pkgrel=2
-pkgdesc="A raster proportional sans serif typeface, extracted from various generic mobile devices." 
+pkgrel=3
+pkgdesc="A raster proportional sans serif typeface, extracted from various generic/knockoff mobile devices."
 url="https://notabug.org/HarvettFox96/${pkgname}"
 license=("CC0-1.0")
 arch=("any")
