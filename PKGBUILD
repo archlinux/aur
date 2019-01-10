@@ -2,7 +2,7 @@
 # Contributor: Sherlock Holo <sherlockya(at)gmail.com>
 pkgname=filebrowser-bin
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Web File Manager which can be used as a middleware or standalone app."
 arch=('x86_64')
 url="https://github.com/filebrowser/filebrowser"
@@ -15,7 +15,7 @@ install="$pkgname.install"
 source=('filebrowser@.service' 'config.json' 'filebrowser-bin.install'
         'https://raw.githubusercontent.com/hacdias/filebrowser/master/LICENSE')
 
-source_x86_64=(https://github.com/filebrowser/filebrowser/releases/download/v$pkgver/linux-amd64-filebrowser.tar.gz)
+source_x86_64=(linux-amd64-filebrowser-$pkgver.tar.gz::https://github.com/filebrowser/filebrowser/releases/download/v$pkgver/linux-amd64-filebrowser.tar.gz)
 
 sha256sums=('a02170d454ca64905b1b5bfe00311afdac4da099eeb14f594e3be9d08bc07af9'
             '211e8101821612d9c142ce05db565379845e735ec8f8891e3fa76111a65db799'
