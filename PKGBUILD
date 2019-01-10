@@ -3,7 +3,7 @@ pkgdesc="ROS - Core libraries used by MoveIt!."
 url='http://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-core'
-pkgver='0.10.5'
+pkgver='0.10.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -77,7 +77,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="moveit-release-release-melodic-moveit_core-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6950d824c684b7652a08ea5f24305429f6d1c82af1b7246fe1673a9e001a7cb1')
+sha256sums=('fddfeda19b8bf9f745e839e1b1576fa010c1959f21e9aba65a447d097b32e812')
 
 prepare() {
   cd ${srcdir}
