@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-moveit-ros-visualization
 	pkgdesc = ROS - Components of MoveIt that offer visualization.
-	pkgver = 0.10.5
+	pkgver = 0.10.8
 	pkgrel = 1
 	url = http://moveit.ros.org
 	arch = any
@@ -32,8 +32,8 @@ pkgbase = ros-melodic-moveit-ros-visualization
 	depends = ros-melodic-moveit-ros-robot-interaction
 	depends = ros-melodic-geometric-shapes
 	depends = ros-melodic-moveit-ros-perception
-	source = ros-melodic-moveit-ros-visualization-0.10.5-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_visualization/0.10.5-0.tar.gz
-	sha256sums = 194e2446abbde0db6f91e19f39f89e5fd73d5b33650bec5005d027ec68f28ab8
+	source = ros-melodic-moveit-ros-visualization-0.10.8-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_visualization/0.10.8-0.tar.gz
+	sha256sums = 54d8419a104129bdef52320a2aec6214b20f29362e72a206b76833b6771cead8
 
 pkgname = ros-melodic-moveit-ros-visualization
 

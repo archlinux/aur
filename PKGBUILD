@@ -3,7 +3,7 @@ pkgdesc="ROS - Components of MoveIt that offer visualization."
 url='http://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-visualization'
-pkgver='0.10.5'
+pkgver='0.10.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -48,7 +48,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-melodic-moveit_ros_visualization-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_visualization/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('194e2446abbde0db6f91e19f39f89e5fd73d5b33650bec5005d027ec68f28ab8')
+sha256sums=('54d8419a104129bdef52320a2aec6214b20f29362e72a206b76833b6771cead8')
 
 prepare() {
   sed -i "/#include <moveit\/macros\/class_forward.h/i#include <boost\/thread\/mutex.hpp>" ${srcdir}/${_dir}/rviz_plugin_render_tools/include/moveit/rviz_plugin_render_tools/trajectory_visualization.h
