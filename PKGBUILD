@@ -1,7 +1,7 @@
 # Maintainer: moparisthebest <admin dot archlinux AT moparisthebest dot com>
 
 pkgname=rusty-keys-git
-pkgver=0.0.2.r11.g99cf9c4
+pkgver=0.0.2.r18.g0ffc169
 pkgrel=1
 pkgdesc="uinput level keyboard mapper for linux"
 url="https://code.moparisthebest.com/moparisthebest/rusty-keys"
@@ -19,6 +19,11 @@ provides=(rusty-keys=$pkgver)
 pkgver() {
   cd "$pkgname"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$pkgname"
+  cargo fetch
 }
 
 build() {

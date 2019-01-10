@@ -1,6 +1,6 @@
 pkgbase = rusty-keys-git
 	pkgdesc = uinput level keyboard mapper for linux
-	pkgver = 0.0.2.r11.g99cf9c4
+	pkgver = 0.0.2.r18.g0ffc169
 	pkgrel = 1
 	url = https://code.moparisthebest.com/moparisthebest/rusty-keys
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = rusty-keys-git
 	makedepends = systemd
 	makedepends = git
 	depends = libsystemd
-	provides = rusty-keys=0.0.2.r11.g99cf9c4
+	provides = rusty-keys=0.0.2.r18.g0ffc169
 	conflicts = rusty-keys
 	backup = etc/rusty-keys/keymap.toml
 	source = rusty-keys-git::git+https://code.moparisthebest.com/moparisthebest/rusty-keys.git
