@@ -37,8 +37,9 @@ build() {
 package() {
 	echo "${runscript}" > $pkgname-$pkgver/run.sh	
 	chmod +x $pkgname-$pkgver/run.sh
-	cp -r $pkgname-$pkgver $applocation
-	rm -rf $pkgname-$pkgver		
+	mv $pkgname-$pkgver $pkgname
+	cp -r $pkgname ~/Documents
+	rm -rf $pkgname	
 	echo "${shortcut}" > ~/.local/share/applications/lyra.desktop
 	if [ -f ~/.zshrc ]; then
 		echo "alias lyra=${applocation}/run.sh" >> ~/.zshrc
