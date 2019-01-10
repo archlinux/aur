@@ -1,9 +1,9 @@
 # Maintainer: Microoo <hu@microoo.net>
 pkgname=substratumnode-git
-pkgver=0.4.1.r0.gbb7f3a4
+pkgver=0.4.2.r0.g07809e2c
 pkgrel=1
 pkgdesc="SubstratumNode is the foundation of the decentralized SubstratumNetwork. SubstratumNodes work together to relay CORES packages and content on the network."
-arch=('x86_64')
+arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/SubstratumNetwork/SubstratumNode"
 license=('GPLv3')
 depends=('rust' 'openssl' 'yarn')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname}"
-    sed -i 's/gpg --/# gpg --/' ci/release.sh
+    sed -i 's/"${GPG_EXECUTABLE}" --/# "${GPG_EXECUTABLE}" --/' ci/release.sh
     sed -i 's/zip -j/# zip -j/' ci/release.sh
     ci/release.sh
 }
