@@ -3,7 +3,7 @@ pkgdesc="ROS - Metapackage for moveit plugins."
 url='http://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-plugins'
-pkgver='0.10.5'
+pkgver='0.10.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-melodic-moveit_plugins-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('673a56b0a3d61abebfea0b95ef92154da90465b34217d59545bf429c64eeb213')
+sha256sums=('a408786ef2998b4aced548f8a27f0ebe92e1af6ad3e6637ba29ddc026006d5e4')
 
 build() {
   # Use ROS environment variables
