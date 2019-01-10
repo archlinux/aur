@@ -2,15 +2,15 @@
 
 _pkgname=transip-api
 pkgname=python-${_pkgname}-git
-pkgver=0.4.1.r3.g46ef59d
+pkgver=0.4.1.r8.gff925c4
 pkgrel=1
 pkgdesc="Python implementation of TransIP's API (unofficial)"
 arch=('any')
 url="https://github.com/benkonrath/transip-api"
 license=('MIT')
 makedepends=('git' 'python-setuptools')
-depends=('python-rsa' 'python-requests' 'python-suds-jurko')
-optdepends=('python-pycrypto: OpenSSH key format support')
+depends=('python-rsa' 'python-requests' 'python-suds')
+optdepends=('python-cryptography: OpenSSH key format support')
 provides=("python-${_pkgname}")
 conflicts=("python-${_pkgname}")
 source=("git+https://github.com/benkonrath/transip-api.git")
