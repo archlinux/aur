@@ -1,0 +1,15 @@
+pkgbase = emacs-auto-complete-clang-git
+	pkgdesc = The AC sources for Clang. Combine the power of AC, Clang and Yasnippet.
+	pkgver = r16.a195db1
+	pkgrel = 1
+	url = https://github.com/brianjcj/auto-complete-clang
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = emacs-auto-complete
+	source = git+https://github.com/brianjcj/auto-complete-clang.git
+	sha256sums = SKIP
+
+pkgname = emacs-auto-complete-clang-git
+
