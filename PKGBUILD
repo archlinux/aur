@@ -24,7 +24,6 @@ pkgver() {
 
 package() {
   cd "$pkgname"
-  find
   cmake .
   cmake --build .
   mkdir -p "$pkgdir/usr/share/$pkgname"
