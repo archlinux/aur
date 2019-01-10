@@ -1,5 +1,6 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 # Contributor: Dave Reisner <dreisner@archlinux.org>
+# Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
 pkgver=4.r85.g2fcdbfa
@@ -50,8 +51,14 @@ pkgver() {
 '
 }
 
+build() {
+    cd 'mkosi'
+
+    python setup.py build
+}
+
 package() {
   cd 'mkosi'
 
-  python setup.py install --root="$pkgdir"
+  python setup.py install --skip-build --root="$pkgdir"
 }
