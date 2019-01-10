@@ -8,7 +8,7 @@ pkgdesc="Mopidy extension for controlling volume using an external tpa2016d2 amp
 arch=('any')
 url="https://github.com/klomp/mopidi-tpa2016d2"
 license=('APACHE')
-depends=('python2' 'mopidy>=0.19')
+depends=('python2' 'i2c-tools' 'mopidy>=0.19')
 makedepends=('python2' 'git')
 conflicts=('mopidy-tpa2016d2')
 provides=('mopidy-tpa2016d2')
