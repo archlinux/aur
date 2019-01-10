@@ -1,6 +1,6 @@
 pkgbase = mutter-git
 	pkgdesc = A window manager for GNOME
-	pkgver = 3.31.2+190+gf740e8ed7
+	pkgver = 3.31.2+194+gfb38738fe
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mutter-git
 	makedepends = meson
 	depends = dconf
 	depends = gobject-introspection-runtime
-	depends = gsettings-desktop-schemas
+	depends = gsettings-desktop-schemas-git
 	depends = libcanberra
 	depends = startup-notification
 	depends = zenity
