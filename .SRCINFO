@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-moveit-ros-planning-interface
 	pkgdesc = ROS - Components of MoveIt that offer simpler interfaces to planning and execution.
-	pkgver = 0.10.5
+	pkgver = 0.10.8
 	pkgrel = 1
 	url = http://moveit.ros.org
 	arch = any
@@ -34,8 +34,8 @@ pkgbase = ros-melodic-moveit-ros-planning-interface
 	depends = ros-melodic-moveit-ros-manipulation
 	depends = ros-melodic-rosconsole
 	depends = python
-	source = ros-melodic-moveit-ros-planning-interface-0.10.5-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_planning_interface/0.10.5-0.tar.gz
-	sha256sums = 6144853d4051748430eb697f330d00d5dab2ec69b05650ac7a9e02bd4d50e0d6
+	source = ros-melodic-moveit-ros-planning-interface-0.10.8-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_planning_interface/0.10.8-0.tar.gz
+	sha256sums = 748d5e2ca554190c84b0e43be8aa44c9b76c5e2a77e9d87eac5619147604a174
 
 pkgname = ros-melodic-moveit-ros-planning-interface
 
