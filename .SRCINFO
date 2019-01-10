@@ -16,8 +16,8 @@ pkgbase = apm_planner-bin
 	depends = libsndfile
 	depends = python
 	depends = python-pexpect
-	source = http://firmware.ardupilot.org/Tools/APMPlanner/apm_planner_2.0.26_bionic64.deb
-	sha256sums = e0a7d0981bc4684788231417c7dfdb7f2500ed75b1a8a82a2f2be6a21a4d6681
+	source = http://firmware.ardupilot.org/Tools/APMPlanner/apm_planner_2.0.26_xenial64.deb
+	sha256sums = f027863fba98edbdd1674b324aab4c7ce381bf72438986057d74b6b6853eb431
 
 pkgname = apm_planner-bin
 
