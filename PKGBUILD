@@ -1,14 +1,14 @@
 # Maintainer: somekool <somekool _ at _ gmail _ dot _com>
 
 pkgname=netvirt-agent-git
-srcgiturl=https://github.com/mathieujobin/netvirt
-pkgver=v0.6.r173.758f816
+srcgiturl=https://github.com/netvirt/netvirt
+pkgver=v0.6.r593.g9b8c178
 pkgrel=1
 pkgdesc="NetVirt is an open source network virtualization platform (NVP)."
 arch=('i686' 'x86_64')
 url="http://netvirt.org"
 license=('GPLv3')
-depends=()
+depends=('jansson' 'curl' 'libevent')
 optdepends=()
 makedepends=('git' 'scons' 'cmake' 'libcap') # 'libqt4-dev' 'libssl-dev')
 source=("${pkgname}::git+${srcgiturl}.git")
@@ -26,16 +26,6 @@ prepare() {
   cd ${srcdir}/${pkgname}
   set -e
   git submodule update --init --recursive
-
-  pushd udt4
-  make > /dev/null
-  popd
-
-  pushd libconfig
-  #fix_libconfig_git
-  [ ! -f Makefile ] && ./configure
-  make > /dev/null
-  popd
 
   pushd tapcfg
   ./buildall.sh linuxonly || true > /dev/null
