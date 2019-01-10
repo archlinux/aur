@@ -11,7 +11,7 @@ pkgbase = pgi-compilers
 	source = file://pgilinux-2018-1810-x86-64.tar.gz
 	source = https://www.pgroup.com/doc/LICENSE.txt
 	source = pgi-compilers.sh
-	sha256sums = 4cc24b1c7c7a1e4b3a72f3dc3318367fe75502f93585997f2cdd0c8cc7616fd7
+	sha256sums = 4b3ff83d2a13de6001bed599246eff8e63ef711b8952d4a9ee12efd666b3e326
 	sha256sums = aa957920d152a0a778739c6da538fb01f6245e6d28655a3c144f2d42dffbfcff
 	sha256sums = 4aa862aece1c4df8a67b6677837fd4827d576619c67fed80af1578346c11f497
 

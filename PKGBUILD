@@ -14,9 +14,9 @@ makedepends=('bash')
 source=("file://pgilinux-${_REL_VERSION}-${_release//./}-x86-64.tar.gz"
         "https://www.pgroup.com/doc/LICENSE.txt"
         "pgi-compilers.sh")
-sha256sums=('4cc24b1c7c7a1e4b3a72f3dc3318367fe75502f93585997f2cdd0c8cc7616fd7'
-            'aa957920d152a0a778739c6da538fb01f6245e6d28655a3c144f2d42dffbfcff'
-            '4aa862aece1c4df8a67b6677837fd4827d576619c67fed80af1578346c11f497')
+md5sums=('0e1598c05aa8faeb84e351c0f68274c3'
+         '6ce643d0145bf318cddbc186b8da40d2'
+         '5591f7344c4ec974db4be9ad35a80b3b')
 options=(!strip)
 
 package(){
