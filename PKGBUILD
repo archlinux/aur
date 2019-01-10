@@ -1,15 +1,15 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 pkgname=kube-prompt-git
-pkgrel=2
-pkgver=v1.0.5.r20.g048ea99
-pkgdesc="An interactive kubernetes client featuring auto-complete using go-prompt."
+pkgrel=1
+pkgver=1.0.5.r21.g584bef9
+pkgdesc='An interactive kubernetes client featuring auto-complete using go-prompt.'
 arch=(any)
-url="https://github.com/c-bata/kube-prompt"
+url='https://github.com/c-bata/kube-prompt'
 license=('MIT')
-depends=("kubectl")
-makedepends=("dep" "git" "go")
-provides=("kube-prompt")
-conflicts=("kube-prompt")
+depends=('kubectl')
+makedepends=('dep' 'git' 'go')
+provides=('kube-prompt')
+conflicts=('kube-prompt')
 source=("$pkgname::git+https://github.com/c-bata/kube-prompt.git")
 sha512sums=('SKIP')
 
@@ -18,7 +18,7 @@ _fullpath="$_devpath/${pkgname%-git}"
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags | sed 's/-/.r/;s/-/./'
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
