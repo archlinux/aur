@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-moveit-ros
 	pkgdesc = ROS - Components of MoveIt that use ROS.
-	pkgver = 0.10.5
+	pkgver = 0.10.8
 	pkgrel = 1
 	url = http://moveit.ros.org
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = ros-melodic-moveit-ros
 	depends = ros-melodic-moveit-ros-benchmarks
 	depends = ros-melodic-moveit-ros-manipulation
 	depends = ros-melodic-moveit-ros-perception
-	source = ros-melodic-moveit-ros-0.10.5-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros/0.10.5-0.tar.gz
-	sha256sums = 1259e8fbe9de1ce8d5dd5c9ce6a5a674c24383ccb2ff445e5159fc051595964a
+	source = ros-melodic-moveit-ros-0.10.8-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros/0.10.8-0.tar.gz
+	sha256sums = 73877419812c59f090606ed61f00902217837abf29889ec8dc5841dc4a2f17f0
 
 pkgname = ros-melodic-moveit-ros
 
