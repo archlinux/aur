@@ -1,52 +1,52 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python2-iminuit
-pkgname=('python-iminuit' 'python2-iminuit')
-pkgver=1.3.2
+_pyname=${pkgbase#python2-}
+pkgname=("python-${_pyname}" "python2-${_pyname}")
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Python interface for MINUIT, a physics analysis tool for function minimization."
 arch=('any')
-url="http://iminuit.readthedocs.io/en/latest/"
+url="http://iminuit.readthedocs.io/"
 license=('GPL' 'MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
-#checkdepends=('cython' 'cython2' 'python-nose' 'python2-nose' 'python-matplotlib' 'python2-matplotlib' 'python-pytest-cov' 'python2-pytest-cov')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-numpy' 'python2-numpy')
+checkdepends=('python-pytest' 'jupyter-nbconvert')
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/source/i/iminuit/iminuit-${pkgver}.tar.gz")
-md5sums=('d3700bd61c02ee318c3fdd7a56126cb6')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+md5sums=('35f074f44dadd4e20dd110576c8a0ffc')
 
 prepare() {
-    cd ${srcdir}/iminuit-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
-    cp -a ${srcdir}/iminuit-${pkgver}{,-py2}
+    cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
 }
 
-build () {
+build() {
     msg "Building Python2"
-    cd ${srcdir}/iminuit-${pkgver}-py2
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
     python2 setup.py build
 
     msg "Building Python3"
-    cd ${srcdir}/iminuit-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py build
 }
 
-#check(){
-#    cd ${srcdir}/iminuit-${pkgver}
-#    python setup.py test
-#
-#    cd ${srcdir}/iminuit-${pkgver}-py2
-#    python2 setup.py test
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+    python setup.py test
+
+#   cd ${srcdir}/${_pyname}-${pkgver}-py2
+#   python2 setup.py test
+}
 
 package_python2-iminuit() {
-    depends=('python2>=2.7')
-    optdepends=('python2-numpy'
-                'ipython2'
+    depends=('python2>=2.7' 'python2-numpy')
+    optdepends=('ipython2'
                 'python2-matplotlib'
                 'python2-pytest-cov: For testing and get a coverage report'
                 'cython2'
                 'python2-sphinx: For docs building'
                 'python-iminuit-doc: Documentation for python-iminuit')
-    cd ${srcdir}/iminuit-${pkgver}-py2
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -54,15 +54,14 @@ package_python2-iminuit() {
 }
 
 package_python-iminuit() {
-    depends=('python>=3.4')
-    optdepends=('python-numpy'
-                'ipython'
+    depends=('python>=3.4' 'python-numpy')
+    optdepends=('ipython'
                 'python-matplotlib'
                 'python-pytest-cov: For testing and get a coverage report'
                 'cython'
                 'python-sphinx: For docs building'
                 'python-iminuit-doc: Documentation for python-iminuit')
-    cd ${srcdir}/iminuit-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
