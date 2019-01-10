@@ -2,7 +2,7 @@
 
 pkgname=stereophotoview
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Viewer/editor for stereoscopic 3d photo and video"
 arch=('i686' 'x86_64')
 url="https://stereophotoview.bitbucket.io/en"
