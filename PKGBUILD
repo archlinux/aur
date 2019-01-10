@@ -21,6 +21,7 @@ conflicts=('freetype2' 'freetype2-infinality')
 install=freetype2.install
 source=(http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2
         0001-infinality-${pkgver}-${_patchrel}.patch
+        freetype2.install
 	freetype2.sh)
 
 sha1sums=('220c82062171c513e4017c523d196933c9de4a7d'

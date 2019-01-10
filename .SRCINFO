@@ -21,6 +21,7 @@ pkgbase = freetype2-infinality-ultimate
 	conflicts = freetype2-infinality
 	source = http://downloads.sourceforge.net/sourceforge/freetype/freetype-2.9.1.tar.bz2
 	source = 0001-infinality-2.9.1-2018.06.21.patch
+	source = freetype2.install
 	source = freetype2.sh
 	sha1sums = 220c82062171c513e4017c523d196933c9de4a7d
 	sha1sums = 97f4face95c81891e7e9dfc1fe29a8d6b9e1618e
