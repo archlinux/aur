@@ -7,7 +7,7 @@
 
 _pkgname=vice
 pkgname=$_pkgname-gnomeui-devel
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc='Versatile Commodore Emulator (development release with the Gnome UI)'
 arch=('i686' 'x86_64')
@@ -28,26 +28,23 @@ source=(
   "http://downloads.sourceforge.net/project/vice-emu/$_release/$_pkgname-$pkgver.tar.gz"
   "$_pkgname.png"
   "$_pkgname.desktop"
-  'x11video.patch'
   'no-fc-cache-no-lib64.patch'
   'zlib-1.2.7.patch'
   'notexi-notxt.patch'
 )
 
 sha512sums=(
-  'd05081db90e2ee85745ecdee0b692a5c485b76b21a56463b17639de29c29c6deda3c39504122d8440f1667156d11dad504cea76b9b0272fc770ccfe0da3df616'
+  '702942e33b6e3d7e29ca6ed483242319ed5f6be26831def88a282cf7dce25d4c34dbf3651fcf8b583492fcb280ce5f4304c6eda3712088a73db24772c7a2bb3a'
   '1433ed9e88f5eab34e53f89201df62c0c3a6aa4b61e6855823bb1ff833886a3058bdfeb9ea79c0f8658c2ec744314638524db6e0194783b4bf04d86824f19cdf'
   'dc96b8658fac1a6f605b8f0052c11a5abb653da4b9deb3401d8b8177b14a664c0b3a5ed9e7c5c3013b0bc18b831045244f2f9187de9ff8b25b90f0b1cfa0cd8a'
-  '9d5625a7ed63d9908d778cecfe077ae238137894d82029c11144bc4986e92e69472dea3530cf18535ad72d2f5eec04f92d68a9b58ea3a99d1dd65a9c703662cd'
-  '568360097d382886a046cb43f046db18180d5fa3ca04a1205334e05891fa6b649a5c767e68dd2087ec70aab7595b2d01182da77589e4c507407ee3bd694c9803'
-  'cc5a0a8967d5532de0b0948ebd95f3aa69136ffc0aea4efc736b6dcef68f750d6103871acd41d18fac3828f412944d9f2d7f040825d5d6e7aacce24f43329de6'
-  '8f7d6ca165dee7f4cad53ddcc64c63236a5fbd1541e9eeaca3fde00a1133ee938b656d9a238934fd0170555d301fd81b9e67c7f6338a061628364e56dee1fff1'
+  'fc93c4917624bdee2c3b86acc8a36ddf2cfdbd69e89dff4907771c66c4457ee499dfb76a49e603474a12c9f84d0561a0b1b4b7ae82a9034b57dd0bb977770d13'
+  'b97fc172f4092675f13866ec208b12b494a4a1c35d535fe1e5d2c69bbc62b6d19df922fc7086c1878071d67ac2aa70920d1469b48a898a89c41b58ba053f73bd'
+  '25537f0e433d3b7a403adeb4efad48d29c869bf90a38de2868b3324240a63c6927f43cb0246e35b9b669bc1d02f17ebbcb77f51aeae7ff78071c9a412fd9e1cb'
 )
 
 prepare() {
   # Apply patches
   cd $_pkgname-$pkgver
-  patch -Np1 -i ../x11video.patch
   patch -Np1 -i ../no-fc-cache-no-lib64.patch
   patch -Np1 -i ../zlib-1.2.7.patch
   patch -Np1 -i ../notexi-notxt.patch
@@ -68,7 +65,7 @@ prepare() {
 build() {
   # Build the project
   cd $_pkgname-$pkgver
-  ./configure --prefix=/usr --enable-fullscreen --enable-native-gtk3ui --enable-ethernet
+  ./configure --prefix=/usr --enable-native-gtk3ui --enable-ethernet
   make
 }
 

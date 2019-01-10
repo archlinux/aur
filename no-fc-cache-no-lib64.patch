@@ -1,17 +1,8 @@
 diff --git a/configure b/configure
-index 47e2c9e..6c33c7b 100755
+index 03e9e18..e5e561d 100755
 --- a/configure
 +++ b/configure
-@@ -21203,7 +21203,7 @@ _ACEOF
- 	*) test -f "$ac_im_incroot/X11/Xos.h" && ac_x_includes=$ac_im_incroot;;
-     esac
-     case $ac_im_usrlibdir in
--	/usr/lib | /usr/lib64 | /lib | /lib64) ;;
-+	/usr/lib | /usr/lib | /lib | /lib) ;;
- 	*) test -d "$ac_im_usrlibdir" && ac_x_libraries=$ac_im_usrlibdir ;;
-     esac
-   fi
-@@ -26125,7 +26125,7 @@ fi
+@@ -21918,7 +21918,7 @@ fi
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
@@ -21,10 +12,10 @@ index 47e2c9e..6c33c7b 100755
    ALTERNATE_DOCDIR_TRUE=
    ALTERNATE_DOCDIR_FALSE='#'
 diff --git a/configure.ac b/configure.ac
-index 205b927..e54e072 100644
+index bc0da30..53d867e 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -3252,12 +3252,7 @@ if test x"$enable_lame" != "xno" ; then
+@@ -3012,12 +3012,7 @@ if test x"$enable_lame" != "xno" ; then
    fi
  fi
  
@@ -37,8 +28,8 @@ index 205b927..e54e072 100644
 +AM_CONDITIONAL(HAVE_FC_CACHE, false)
  
  if test x"$is_amigaos4" = "xyes"; then
-   if test x"$enable_sdlui" != "xyes" -a x"$enable_sdlui2" != "xyes"; then
-@@ -4999,7 +4994,7 @@ case "$host_os" in
+   dnl for AmigaOS4 native resid needs to be configured without dependency tracking
+@@ -4060,7 +4055,7 @@ case "$host_os" in
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
@@ -48,10 +39,10 @@ index 205b927..e54e072 100644
      else
        VICEDIR="$PREFIX/lib/vice"
 diff --git a/configure.proto b/configure.proto
-index 4521fa3..3b4595b 100755
+index 4204eda..775450a 100755
 --- a/configure.proto
 +++ b/configure.proto
-@@ -3252,12 +3252,7 @@ if test x"$enable_lame" != "xno" ; then
+@@ -3012,12 +3012,7 @@ if test x"$enable_lame" != "xno" ; then
    fi
  fi
  
@@ -64,8 +55,8 @@ index 4521fa3..3b4595b 100755
 +AM_CONDITIONAL(HAVE_FC_CACHE, false)
  
  if test x"$is_amigaos4" = "xyes"; then
-   if test x"$enable_sdlui" != "xyes" -a x"$enable_sdlui2" != "xyes"; then
-@@ -4999,7 +4994,7 @@ case "$host_os" in
+   dnl for AmigaOS4 native resid needs to be configured without dependency tracking
+@@ -4060,7 +4055,7 @@ case "$host_os" in
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
