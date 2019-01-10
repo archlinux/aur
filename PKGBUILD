@@ -21,12 +21,14 @@ md5sums=('SKIP'
          '155178854f344b3d56283beb739c8730'
 )
 
-package() {
+build() {
     cd "$srcdir/$pkgname"
     YARN_CACHE_FOLDER="$srcdir/yarn_cache" yarn install --ignore-scripts
     npm_config_devdir="$srcdir/node_gyp_dir" npm rebuild dbus
     yarn dist
+}
 
+package() {
     mkdir -p "$pkgdir/usr/lib"
     cp -r "$srcdir/$pkgname/dist" "$pkgdir/usr/lib/$pkgname"
 
