@@ -1,0 +1,6 @@
+go-tools-git/
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+*.zip
