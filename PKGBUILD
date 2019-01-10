@@ -1,6 +1,6 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 pkgname=azuredatastudio
-pkgver=1.2.4
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="Azure Data Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW (formerly SQL Operations Studio)."
 arch=('x86_64')
@@ -13,24 +13,25 @@ provides=('sqlops')
 conflicts=('sqlops')
 options=('staticlibs')
 source=("https://github.com/Microsoft/${pkgname}/releases/download/${pkgver}/${pkgname}-linux-${pkgver}.tar.gz"
-	"${pkgname}.desktop")
-sha256sums=('52b7ff9d8a968903fffe59eb805307fb2ff64ad73a5d4abd6eaeafaf65380863'
-            '42299d94a2b355c07a91f3c54bd79f6aa65c69dc1063689caad288be2d6c650b')
+        "${pkgname}.desktop")
+sha256sums=('3af90fbad6905329c831d491c0a377ef00eb80384f48f2f0e3ab57a2b4d1082b'
+            '4f7fa4bbc74249a1494f4df6aaba8e60c670a478c78bd73b4f0d19e4c802f5c5')
 
 package() {
-  install -d "${pkgdir}/usr/share/${pkgname}"
-  cp -r "${srcdir}/${pkgname}-linux-x64/"* "${pkgdir}/usr/share/${pkgname}"
+  install -d "${pkgdir}/opt/${pkgname}"
+  cp -a "${pkgname}-linux-x64/"* "${pkgdir}/opt/${pkgname}"
 
   # Symlink the startup script in /usr/bin
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/share/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   # Also add an alias for the previous name to hopefully not break things too much
-  ln -s "/usr/share/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/sqlops"
+  ln -s "/opt/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/sqlops"
 
-  # Add the .desktop file
-  install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  sed -i "s/{pkgname}/${pkgname}/g" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  # Add the icon and desktop file
+  install -D -m644 "${pkgname}-linux-x64/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+  install -D -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  sed -i "s/@@pkgname@@/${pkgname}/g" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   # Install the license file
-  install -D -m644 "${srcdir}/${pkgname}-linux-x64/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "${pkgname}-linux-x64/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
