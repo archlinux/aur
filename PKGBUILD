@@ -8,12 +8,12 @@
 _pkgname=vice
 pkgname=$_pkgname-gnomeui-devel
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Versatile Commodore Emulator (development release with the Gnome UI)'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://vice-emu.sourceforge.net'
-depends=('libpulse' 'giflib' 'vte' 'gtk3' 'libpcap' 'mpg123' 'libieee1284' 'portaudio' 'pciutils')
+depends=('libpulse' 'giflib' 'vte3' 'gtk3' 'libpcap' 'mpg123' 'libieee1284' 'portaudio' 'pciutils')
 makedepends=('dos2unix' 'xorg-bdftopcf' 'xorg-mkfontdir' 'autoconf' 'xa')
 options=('!makeflags')
 install=$pkgname.install
