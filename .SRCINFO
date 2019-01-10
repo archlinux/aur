@@ -1,0 +1,19 @@
+pkgbase = sierra-gtk-theme-git
+	pkgdesc = MacOS High Sierra like theme for GTK 3, GTK 2 and Gnome-Shell etc.
+	pkgver = 2018.10.12.r39.e95e679
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Sierra-gtk-theme
+	arch = any
+	license = GPL3
+	makedepends = gtk3
+	makedepends = sassc
+	makedepends = git
+	optdepends = gtk-engine-murrine: for gtk2 themes
+	optdepends = gnome-themes-standard: for gtk2 themes
+	conflicts = sierra-gtk-theme
+	replaces = sierra-gtk-theme
+	source = git+https://github.com/vinceliuice/Sierra-gtk-theme.git
+	sha512sums = SKIP
+
+pkgname = sierra-gtk-theme-git
+
