@@ -3,7 +3,7 @@ pkgdesc="ROS - Components of MoveIt that offer interaction via interactive marke
 url='http://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-robot-interaction'
-pkgver='0.10.5'
+pkgver='0.10.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,7 +36,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit-release-release-melodic-moveit_ros_robot_interaction-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_robot_interaction/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f532e6d3e2ad574898aadbf42b4e3dec70d97ee19f014050e82576c54f644953')
+sha256sums=('3e4e758e0f54c935036a793d72fd3ba658366d3a95ebbdde1c74d4e25c8a9354')
 
 build() {
   # Use ROS environment variables
