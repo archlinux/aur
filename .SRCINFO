@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-moveit-ros-perception
 	pkgdesc = ROS - Components of MoveIt connecting to perception.
-	pkgver = 0.10.5
+	pkgver = 0.10.8
 	pkgrel = 1
 	url = http://moveit.ros.org
 	arch = any
@@ -43,8 +43,8 @@ pkgbase = ros-melodic-moveit-ros-perception
 	depends = glut
 	depends = glew
 	depends = mesa-libgl
-	source = ros-melodic-moveit-ros-perception-0.10.5-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_perception/0.10.5-0.tar.gz
-	sha256sums = 23a77c1f2d5e35a7643206f5435f166e6c2de07c426b7af3ca0f3b099b04c798
+	source = ros-melodic-moveit-ros-perception-0.10.8-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_perception/0.10.8-0.tar.gz
+	sha256sums = 3c620d6a5d339999163f3b98a35e4c4c9a78ed43d07f5da934877c9bf3da4dc1
 
 pkgname = ros-melodic-moveit-ros-perception
 
