@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-moveit-ros-move-group
 	pkgdesc = ROS - The move_group node for MoveIt.
-	pkgver = 0.10.5
+	pkgver = 0.10.8
 	pkgrel = 1
 	url = http://moveit.ros.org
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = ros-melodic-moveit-ros-move-group
 	depends = ros-melodic-moveit-ros-planning
 	depends = ros-melodic-std-srvs
 	depends = ros-melodic-actionlib
-	source = ros-melodic-moveit-ros-move-group-0.10.5-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_move_group/0.10.5-0.tar.gz
-	sha256sums = 505494c0f2cf8b458d42112c8b5aba2a09ae7ad17b48648dcbda67a61906d8bf
+	source = ros-melodic-moveit-ros-move-group-0.10.8-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_move_group/0.10.8-0.tar.gz
+	sha256sums = 241e9b5170d5f679e7603cb45a5959614a70c91ffa77591b5d111d7b7930f8b6
 
 pkgname = ros-melodic-moveit-ros-move-group
 
