@@ -1,7 +1,7 @@
 pkgbase = libadios
 	pkgdesc = ADIOS Adaptable IO system for simulations. The Adaptable IO System (ADIOS) provides a simple, flexible way for scientists to describe the data in their code that may need to be written, read, or processed outside of the running simulation.
-	pkgver = 1.9.0
-	pkgrel = 5
+	pkgver = 1.13.1
+	pkgrel = 1
 	url = https://www.olcf.ornl.gov/center-projects/adios/
 	install = libadios.install
 	arch = i686
@@ -11,10 +11,8 @@ pkgbase = libadios
 	depends = python2
 	depends = mxml
 	depends = gcc-fortran
-	source = http://users.nccs.gov/~pnorbert/adios-1.9.0.tar.gz
-	source = libc-2.23-fixes.patch
-	sha256sums = f752b2093f5453b3ec4717aad67da7c3227b3687367a0b3fe7ad80eed391327e
-	sha256sums = 565d06199f35a2c0c459e31b821b915fb76be27e8c919d2166be04466404fcb2
+	source = http://users.nccs.gov/~pnorbert/adios-1.13.1.tar.gz
+	sha256sums = 684096cd7e5a7f6b8859601d4daeb1dfaa416dfc2d9d529158a62df6c5bcd7a0
 
 pkgname = libadios
 
