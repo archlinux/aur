@@ -11,9 +11,9 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
-_commit='3bf819c4ca718a6bc4b3b871cf52a0d1b518967d'
-pkgver=239.370
-pkgrel=1
+_commit='1742aae2aa8cd33897250d6fcfbe10928e43eb2f'
+pkgver=240.0
+pkgrel=3
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -78,6 +78,25 @@ sha512sums=('SKIP'
             '209b01b044877cc986757fa4009a92ea98f480306c2530075d153203c3cd2b3afccab6aacc1453dee8857991e04270572f1700310705d7a0f4d5bed27fab8c67')
 
 _backports=(
+  # https://github.com/systemd/systemd/issues/11277
+  'b261494128e60dd3168e0ea961606ec4f39c5739'
+  'ff86c92e3043f71fc801cf687600a480ee8f6778'
+
+  # https://github.com/systemd/systemd/issues/11264
+  '577ab71c58d36bc8577d15f172a306c9c05cd2f4'
+
+  # https://github.com/systemd/systemd/issues/11251
+  '7334ade4a7e103b1a01d1c8fe1ea7c7a854a1c31'
+
+  # https://github.com/systemd/systemd/issues/11255
+  'adeb26c1affd09138bb96a9e25b795d146e64c97'
+
+  # https://github.com/systemd/systemd/issues/11259
+  '8ca9e92c742602b8bcd431001e6f5b78c28c184f'
+
+  # https://github.com/systemd/systemd/issues/11293
+  '00efd4988b8e4a147f96337de32e54925640f0b7'
+  '69bd76f2b90cd00c1596b2e2c05845a4d9596fd2'
 )
 
 _reverts=(
@@ -138,8 +157,8 @@ build() {
     -Dselinux=true
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
-    # TODO(dreisner): consider changing this to unified
     -Ddefault-hierarchy=hybrid
+    -Ddefault-locale=C
     -Ddefault-kill-user-processes=false
     -Dfallback-hostname='archlinux'
     -Dntp-servers="${_timeservers[*]}"
@@ -261,7 +280,7 @@ package_systemd-selinux() {
 package_libsystemd-selinux() {
   pkgdesc='systemd client libraries with SELinux support'
   depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz' 'libselinux')
-  license=('GPL2')
+  license=('LGPL2.1')
   provides=('libsystemd.so' 'libudev.so'
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=("${pkgname/-selinux}")
@@ -271,8 +290,8 @@ package_libsystemd-selinux() {
 }
 
 package_systemd-resolvconf-selinux() {
-  pkgdesc='systemd resolvconf replacement with SELinux support'
-  license=('GPL2')
+  pkgdesc='systemd resolvconf replacement with SELinux support (for use with systemd-resolved)'
+  license=('LGPL2.1')
   depends=('systemd-selinux')
   provides=('openresolv' 'resolvconf' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=('openresolv' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
