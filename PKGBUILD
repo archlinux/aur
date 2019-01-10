@@ -16,7 +16,7 @@ _gopath="gopath/src/github.com/fluidkeys/fluidkeys"
 pkgver() {
   cd $_pkgname
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --exclude release | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
