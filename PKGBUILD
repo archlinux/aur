@@ -3,7 +3,7 @@
 # Contributor: Joel Sevilleja Febrer Joel7987[at].gmail.com
 
 pkgname=xom
-pkgver=1.2.11
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A Java XML Object Model"
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL')
 makedepends=('apache-ant')
 depends=('java-runtime')
 source=("http://www.cafeconleche.org/XOM/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d147822813d905c1ae94879994112d29ddbc07e3dc3b4f77419a4c3695797844')
+sha256sums=('688dff0f2faa21f597c9b6e422e97fcb66af5d8a2f0a8adb9c4d79a4a7b672c1')
 
 build() {
 	cd "${srcdir}"/XOM
