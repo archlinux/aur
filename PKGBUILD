@@ -3,7 +3,7 @@ pkgdesc="ROS - Python interfaces to MoveIt."
 url='http://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-commander'
-pkgver='0.10.5'
+pkgver='0.10.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="moveit-release-release-melodic-moveit_commander-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_commander/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('005a9d7f112f9b8d3295b27334b7e464561a37ce2a63e9dc09619ca6957c0348')
+sha256sums=('962f2d1ec00b2678d1561ab8a2e5b70df4faf80dc5d3cd4a6b25bb085fffa97d')
 
 build() {
   # Use ROS environment variables

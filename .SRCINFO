@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-moveit-commander
 	pkgdesc = ROS - Python interfaces to MoveIt.
-	pkgver = 0.10.5
+	pkgver = 0.10.8
 	pkgrel = 1
 	url = http://moveit.ros.org
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = ros-melodic-moveit-commander
 	depends = ros-melodic-shape-msgs
 	depends = python
 	depends = python-pyassimp
-	source = ros-melodic-moveit-commander-0.10.5-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_commander/0.10.5-0.tar.gz
-	sha256sums = 005a9d7f112f9b8d3295b27334b7e464561a37ce2a63e9dc09619ca6957c0348
+	source = ros-melodic-moveit-commander-0.10.8-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_commander/0.10.8-0.tar.gz
+	sha256sums = 962f2d1ec00b2678d1561ab8a2e5b70df4faf80dc5d3cd4a6b25bb085fffa97d
 
 pkgname = ros-melodic-moveit-commander
 
