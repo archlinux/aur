@@ -1,6 +1,6 @@
 pkgbase = moc-pulse-svn
 	pkgdesc = An ncurses console audio player with support for pulseaudio (SVN)
-	pkgver = r2963
+	pkgver = r2994
 	pkgrel = 1
 	url = http://moc.daper.net
 	arch = i686
@@ -34,10 +34,8 @@ pkgbase = moc-pulse-svn
 	options = !libtool
 	source = moc-pulse-svn::svn://daper.net/moc/trunk
 	source = 0001-Pulseaudio-backend.patch
-	source = moc-ffmpeg4.patch
 	sha1sums = SKIP
 	sha1sums = d86a04606eaa0960f3b59626070cd231d37b6430
-	sha1sums = 007a0580ac754e1c318a0d0b6f0d403883797eaf
 
 pkgname = moc-pulse-svn
 

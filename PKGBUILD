@@ -4,7 +4,7 @@
 
 _pkgname=moc
 pkgname="${_pkgname}-pulse-svn"
-pkgver=r2963
+pkgver=r2994
 pkgrel=1
 pkgdesc='An ncurses console audio player with support for pulseaudio (SVN)'
 url='http://moc.daper.net'
@@ -24,11 +24,9 @@ conflicts=('moc')
 provides=('moc')
 options=('!libtool')
 source=("${pkgname}::svn://daper.net/moc/trunk"
-        '0001-Pulseaudio-backend.patch'
-        'moc-ffmpeg4.patch')
+        '0001-Pulseaudio-backend.patch')
 sha1sums=('SKIP'
-          'd86a04606eaa0960f3b59626070cd231d37b6430'
-          '007a0580ac754e1c318a0d0b6f0d403883797eaf')
+          'd86a04606eaa0960f3b59626070cd231d37b6430')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -38,9 +36,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  # Fix build with ffmpeg 4 (taken from official release on ArchLinux)
-  patch -p0 -i ../moc-ffmpeg4.patch
-
   # Add pulseaudio backend
   patch -p1 -i ../0001-Pulseaudio-backend.patch
 
