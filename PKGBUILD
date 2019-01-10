@@ -4,13 +4,15 @@
 pkgname=emacs-gtk2
 _pkgname=emacs
 pkgver=26.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The extensible, customizable, self-documenting real-time display editor"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
 depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'gtk2'
          'hicolor-icon-theme' 'desktop-file-utils' 'alsa-lib' 'libmagick6' 'gnutls')
+conflicts=('emacs')
+provides=('emacs')
 validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199' '28D3BED851FDF3AB57FEF93C233587A47C207910')
 source=(ftp://ftp.gnu.org/gnu/emacs/$_pkgname-$pkgver.tar.xz{,.sig}
         0001-Ignore-color-fonts-when-using-Xft.patch
