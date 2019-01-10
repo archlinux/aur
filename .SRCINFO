@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-moveit-fake-controller-manager
 	pkgdesc = ROS - A fake controller manager plugin for MoveIt.
-	pkgver = 0.10.5
+	pkgver = 0.10.8
 	pkgrel = 1
 	url = http://moveit.ros.org
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = ros-melodic-moveit-fake-controller-manager
 	depends = ros-melodic-moveit-core
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-moveit-ros-planning
-	source = ros-melodic-moveit-fake-controller-manager-0.10.5-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_fake_controller_manager/0.10.5-0.tar.gz
-	sha256sums = 35cceb4e53c89a82bf97925e8537ff3218afc7f3f82bdd4a1560bca472446e8a
+	source = ros-melodic-moveit-fake-controller-manager-0.10.8-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_fake_controller_manager/0.10.8-0.tar.gz
+	sha256sums = 44eae6c365fbdc261b91058fe53a4f932357fbcb4f800431ddb258c14ac2f1f2
 
 pkgname = ros-melodic-moveit-fake-controller-manager
 
