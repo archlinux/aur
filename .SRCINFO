@@ -1,0 +1,18 @@
+pkgbase = hecate-git
+	pkgdesc = The Hex Editor from Hell
+	pkgver = r122.b2580b1
+	pkgrel = 1
+	url = https://github.com/evanmiller/hecate
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = go-pie
+	makedepends = git
+	provides = hecate
+	source = hecate::git+https://github.com/evanmiller/hecate
+	sha256sums = SKIP
+
+pkgname = hecate-git
+
