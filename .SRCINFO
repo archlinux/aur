@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
 	pkgver = 2.33
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.kernel.org/pub/linux/utils/util-linux/
 	arch = x86_64
 	groups = selinux
@@ -16,6 +16,7 @@ pkgbase = util-linux-selinux
 	source = 0001-agetty-fix-output-of-escaped-characters.patch
 	source = pam-login
 	source = pam-common
+	source = pam-runuser
 	source = pam-su
 	source = util-linux.sysusers
 	source = 60-rfkill.rules
@@ -27,6 +28,7 @@ pkgbase = util-linux-selinux
 	sha256sums = a20ab3b78eed0e143300476d059e55ab87720bc9fc66a4dcbbd5ae8c48f39bf4
 	sha256sums = 993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92
 	sha256sums = fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20
+	sha256sums = 95b7cdc4cba17494d7b87f37f8d0937ec54c55de0e3ce9d9ab05ad5cc76bf935
 	sha256sums = 51eac9c2a2f51ad3982bba35de9aac5510f1eeff432d2d63c6362e45d620afc0
 	sha256sums = 10b0505351263a099163c0d928132706e501dd0a008dac2835b052167b14abe3
 	sha256sums = 7423aaaa09fee7f47baa83df9ea6fef525ff9aec395c8cbd9fe848ceb2643f37
@@ -42,19 +44,17 @@ pkgname = util-linux-selinux
 	depends = libutil-linux-selinux
 	optdepends = python: python bindings to libmount
 	optdepends = words: default dictionary for look
-	provides = eject
-	provides = zramctl
 	provides = rfkill
-	provides = util-linux=2.33-2
-	provides = selinux-util-linux=2.33-2
-	conflicts = eject
-	conflicts = zramctl
+	provides = util-linux=2.33-3
+	provides = selinux-util-linux=2.33-3
 	conflicts = rfkill
 	conflicts = util-linux
 	conflicts = selinux-util-linux
 	backup = etc/pam.d/chfn
 	backup = etc/pam.d/chsh
 	backup = etc/pam.d/login
+	backup = etc/pam.d/runuser
+	backup = etc/pam.d/runuser-l
 	backup = etc/pam.d/su
 	backup = etc/pam.d/su-l
 
@@ -66,6 +66,6 @@ pkgname = libutil-linux-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.33-2
+	provides = libutil-linux=2.33-3
 	conflicts = libutil-linux
 

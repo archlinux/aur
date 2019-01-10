@@ -12,7 +12,7 @@ pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
 _pkgmajor=2.33
 pkgver=${_pkgmajor}
-pkgrel=2
+pkgrel=3
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('x86_64')
@@ -28,7 +28,7 @@ options=('strip')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgbase/-selinux}-$pkgver.tar."{xz,sign}
         '0001-agetty-fix-output-of-escaped-characters.patch'
-        pam-{login,common,su}
+        pam-{login,common,runuser,su}
         'util-linux.sysusers'
         '60-rfkill.rules'
         'rfkill-unblock_.service'
@@ -38,6 +38,7 @@ sha256sums=('f261b9d73c35bfeeea04d26941ac47ee1df937bd3b0583e748217c1ea423658a'
             'a20ab3b78eed0e143300476d059e55ab87720bc9fc66a4dcbbd5ae8c48f39bf4'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
             'fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20'
+            '95b7cdc4cba17494d7b87f37f8d0937ec54c55de0e3ce9d9ab05ad5cc76bf935'
             '51eac9c2a2f51ad3982bba35de9aac5510f1eeff432d2d63c6362e45d620afc0'
             '10b0505351263a099163c0d928132706e501dd0a008dac2835b052167b14abe3'
             '7423aaaa09fee7f47baa83df9ea6fef525ff9aec395c8cbd9fe848ceb2643f37'
@@ -59,7 +60,7 @@ build() {
     --libdir=/usr/lib \
     --bindir=/usr/bin \
     --localstatedir=/var \
-    --enable-fs-paths-extra=/usr/bin \
+    --enable-fs-paths-default=/usr/bin:/usr/local/bin \
     --enable-raw \
     --enable-vipw \
     --enable-newgrp \
@@ -73,9 +74,9 @@ build() {
 }
 
 package_util-linux-selinux() {
-  conflicts=('eject' 'zramctl' 'rfkill'
+  conflicts=('rfkill'
              "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
-  provides=('eject' 'zramctl' 'rfkill'
+  provides=('rfkill'
             "${pkgname/-selinux}=${pkgver}-${pkgrel}"
             "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
   depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux'
@@ -85,6 +86,8 @@ package_util-linux-selinux() {
   backup=(etc/pam.d/chfn
           etc/pam.d/chsh
           etc/pam.d/login
+          etc/pam.d/runuser
+          etc/pam.d/runuser-l
           etc/pam.d/su
           etc/pam.d/su-l)
 
@@ -99,6 +102,8 @@ package_util-linux-selinux() {
   install -Dm644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chfn"
   install -m644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chsh"
   install -m644 "$srcdir/pam-login" "$pkgdir/etc/pam.d/login"
+  install -m644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser"
+  install -m644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser-l"
   install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su"
   install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su-l"
 
