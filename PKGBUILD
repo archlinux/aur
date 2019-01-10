@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.lli>
 pkgdesc='Experimental cuda nn package'
 pkgname='torch7-cunnx-git'
-pkgver=r184.80e55ad
+pkgver=r185.3307c4a
 pkgrel=1
 makedepends=('cmake' 'git')
 depends=('torch7-git>=r819' 'torch7-nn-git' 'torch7-cunn-git' 'torch7-nnx-git' 'torch7-cutorch-git' 'cuda')
@@ -27,7 +27,7 @@ build () {
 	CXXFLAGS="${CFLAGS/-fno-plt/}"
 
 	cd "${pkgname}"
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=g++-5 -DCMAKE_C_COMPILER=gcc-5 -DCMAKE_BUILD_TYPE=Release
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_BUILD_TYPE=Release
 	make
 }
 
