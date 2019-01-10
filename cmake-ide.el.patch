@@ -1,0 +1,20 @@
+diff -Naur orig/cmake-ide.el new/cmake-ide.el
+--- orig/cmake-ide.el	2019-01-08 21:08:17.718818451 +0100
++++ new/cmake-ide.el	2019-01-08 21:08:28.512074733 +0100
+@@ -41,7 +41,6 @@
+ 
+ (require 'json)
+ (require 'find-file)
+-(require 'levenshtein)
+ (require 'cl-lib)
+ (require 'seq)
+ (require 's)
+@@ -1076,7 +1075,7 @@
+ 
+ (defun cide--file-distance (dir object)
+   "Return the distance between DIR and OBJECT's file."
+-  (levenshtein-distance dir (file-name-directory (cide--idb-obj-get object 'file))))
++  (string-distance dir (file-name-directory (cide--idb-obj-get object 'file))))
+ 
+ (defun cide--idb-all-objs (idb)
+   "Return a list of IDB entries."

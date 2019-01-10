@@ -1,0 +1,24 @@
+pkgbase = emacs-cmake-ide-git
+	pkgdesc = Enable IDE-like features on Emacs for CMake projects.
+	pkgver = 0.5.r201.g0a90200
+	pkgrel = 1
+	url = https://github.com/atilaneves/cmake-ide.git
+	arch = any
+	license = custom
+	makedepends = git
+	depends = emacs
+	depends = emacs-dash
+	depends = emacs-s
+	optdepends = rtags
+	optdepends = flycheck
+	optdepends = emacs-auto-complete-clang
+	optdepends = emacs-company-mode
+	optdepends = irony-mode
+	provides = emacs-cmake-ide
+	source = git+https://github.com/atilaneves/cmake-ide.git
+	source = cmake-ide.el.patch
+	sha256sums = SKIP
+	sha256sums = 6a486daeed6d4085646c1afaa1327be8dc81bcd360578f4d92435e59a60eaae7
+
+pkgname = emacs-cmake-ide-git
+
