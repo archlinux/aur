@@ -3,7 +3,7 @@ pkgdesc="ROS - Meta package that contains all essential package of MoveIt!."
 url='http://moveit.ros.org'
 
 pkgname='ros-melodic-moveit'
-pkgver='0.10.5'
+pkgver='0.10.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -23,7 +23,7 @@ depends=(${ros_depends[@]})
 
 _dir="moveit-release-release-melodic-moveit-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d13daca09dfb83deafd532ad22bc59e7f82682dfb4728ad32c93d05cf3107d17')
+sha256sums=('3b8cc20058f0525e54635a8db4983c94777ab88826f4485001a92b13c2d66251')
 
 build() {
   # Use ROS environment variables

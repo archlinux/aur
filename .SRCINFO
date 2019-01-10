@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-moveit
 	pkgdesc = ROS - Meta package that contains all essential package of MoveIt!.
-	pkgver = 0.10.5
+	pkgver = 0.10.8
 	pkgrel = 1
 	url = http://moveit.ros.org
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-moveit
 	depends = ros-melodic-moveit-planners
 	depends = ros-melodic-moveit-plugins
 	depends = ros-melodic-moveit-ros
-	source = ros-melodic-moveit-0.10.5-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit/0.10.5-0.tar.gz
-	sha256sums = d13daca09dfb83deafd532ad22bc59e7f82682dfb4728ad32c93d05cf3107d17
+	source = ros-melodic-moveit-0.10.8-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit/0.10.8-0.tar.gz
+	sha256sums = 3b8cc20058f0525e54635a8db4983c94777ab88826f4485001a92b13c2d66251
 
 pkgname = ros-melodic-moveit
 
