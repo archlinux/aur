@@ -1,7 +1,7 @@
 # Maintainer: Amina Khakimova <hakami1024@gmail.com>
 # Contributor: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
 pkgname=neo4j-enterprise
-pkgver=3.4.9
+pkgver=3.5.1
 pkgrel=1
 pkgdesc='A fully transactional graph database implemented in Java'
 arch=(any)
@@ -18,12 +18,11 @@ source=(http://dist.neo4j.org/neo4j-enterprise-$pkgver-unix.tar.gz
         neo4j.install
         neo4j.service
         neo4j-tmpfile.conf)
-sha256sums=('d00760202541d211f5fdba0337321f9d1a63a05e3b45338b859cbc27d751d6c0'
+sha256sums=('376a32e3835de3dfe0592912893ca7a5c14cab9a8cb0072fa268931f686c1ddf'
             '40ecfbdcb843577a0e9b677e9c0cc7ab4899962309d6148ce8fcd1da35560103'
             'f95936abc4a519b01d2cd987cd38a253003cf4cd39bfab29948708e82d98de66'
-            'cf3148bd65ddc06f5ca8cf2ad37013d2e1aa561c5759e4b295f361465e603928'
+            '319546aaae7bd960ec3b6cfc4ee7053a2418a3c922b5cc0e594f2d934df3f60d'
             'e1311352e05b1e698599b91883141b938ceb418abd7e6bc11cc964854f0a21e1')
-
 package() {
   cd $srcdir/neo4j-enterprise-$pkgver
 

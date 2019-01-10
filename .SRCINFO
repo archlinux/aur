@@ -1,6 +1,6 @@
 pkgbase = neo4j-enterprise
 	pkgdesc = A fully transactional graph database implemented in Java
-	pkgver = 3.4.9
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = http://neo4j.org/
 	install = neo4j.install
@@ -11,15 +11,15 @@ pkgbase = neo4j-enterprise
 	conflicts = neo4j-community
 	options = !strip
 	backup = etc/neo4j/neo4j.conf
-	source = http://dist.neo4j.org/neo4j-enterprise-3.4.9-unix.tar.gz
+	source = http://dist.neo4j.org/neo4j-enterprise-3.5.1-unix.tar.gz
 	source = neo4j.conf
 	source = neo4j.install
 	source = neo4j.service
 	source = neo4j-tmpfile.conf
-	sha256sums = d00760202541d211f5fdba0337321f9d1a63a05e3b45338b859cbc27d751d6c0
+	sha256sums = 376a32e3835de3dfe0592912893ca7a5c14cab9a8cb0072fa268931f686c1ddf
 	sha256sums = 40ecfbdcb843577a0e9b677e9c0cc7ab4899962309d6148ce8fcd1da35560103
 	sha256sums = f95936abc4a519b01d2cd987cd38a253003cf4cd39bfab29948708e82d98de66
-	sha256sums = cf3148bd65ddc06f5ca8cf2ad37013d2e1aa561c5759e4b295f361465e603928
+	sha256sums = 319546aaae7bd960ec3b6cfc4ee7053a2418a3c922b5cc0e594f2d934df3f60d
 	sha256sums = e1311352e05b1e698599b91883141b938ceb418abd7e6bc11cc964854f0a21e1
 
 pkgname = neo4j-enterprise
