@@ -3,7 +3,7 @@
 
 pkgname=deadbeef-gnome-mmkeys-git
 _pkgname=deadbeef-gnome-mmkeys
-pkgver=r37.c0da8e4
+pkgver=r45.96e5664
 pkgrel=1
 pkgdesc="DeaDBeeF player Gnome (via DBus) multimedia keys plugin"
 url="https://github.com/DreaminginCodeZH/deadbeef-gnome-mmkeys"
