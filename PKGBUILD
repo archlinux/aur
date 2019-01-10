@@ -38,7 +38,7 @@ sha256sums_aarch64=('da4549077bfab205f3a5514c65c9ffb83d35540703c48b5748c87a10712
 
 package() {
   # install main binary
-  install -Dm755 "${srcdir}"/rslsync "${pkgdir}"/usr/bin/rslsync
+  install -D -m 755 "${srcdir}"/rslsync "${pkgdir}"/usr/bin/rslsync
   
   # generate and install system-wide config
   mkdir -p "${pkgdir}"/etc
@@ -51,11 +51,11 @@ package() {
   chmod 644 "${pkgdir}"/etc/rslsync.conf
 
   # install systemd config files
-  install -Dm644 "${srcdir}"/rslsync.service "${pkgdir}"/usr/lib/systemd/system/rslsync.service
-  install -Dm644 "${srcdir}"/rslsync.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/rslsync.conf
-  install -Dm644 "${srcdir}"/rslsync_user.service "${pkgdir}"/usr/lib/systemd/user/rslsync.service
-  install -Dm644 "${srcdir}/rslsync.sysusers" "${pkgdir}/usr/lib/sysusers.d/rslsync.conf"
+  install -D -m 644 "${srcdir}"/rslsync.service "${pkgdir}"/usr/lib/systemd/system/rslsync.service
+  install -D -m 644 "${srcdir}"/rslsync.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/rslsync.conf
+  install -D -m 644 "${srcdir}"/rslsync_user.service "${pkgdir}"/usr/lib/systemd/user/rslsync.service
+  install -D -m 644 "${srcdir}/rslsync.sysusers" "${pkgdir}/usr/lib/sysusers.d/rslsync.conf"
 
   # install license
-  install -Dm644 "${srcdir}"/LICENSE.TXT "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
+  install -D -m 644 "${srcdir}"/LICENSE.TXT "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
 }
