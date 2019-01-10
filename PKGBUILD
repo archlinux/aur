@@ -36,7 +36,9 @@ package() {
 	cd $pkgname-$pkgver
 	make clean
 	cd ..
-	mv $pkgname-$pkgver $applocation
+	mv $pkgname-$pkgver $pkgname
+	cp -r $pkgname ~/Documents
+	rm -rf $pkgname
 	echo "${shortcut}" > ~/.local/share/applications/gemini.desktop
 	if [ -f ~/.zshrc ]; then
 		echo "alias gemini=${applocation}/Gemini" >> ~/.zshrc
