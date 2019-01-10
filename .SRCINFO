@@ -1,0 +1,16 @@
+pkgbase = bingo
+	pkgdesc = A Go language server that speaks Language Server Protocol, largely inspired by go-langserver.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/saibing/bingo
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = bingo
+	conflicts = bingo-git
+	source = https://github.com/saibing/bingo/archive/v1.1.0.tar.gz
+	sha256sums = 4aa7fedca55c636b014b8127ae1c5277521b8a27acbc3eedc2eef7e92bb1273f
+
+pkgname = bingo
+
