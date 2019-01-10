@@ -1,0 +1,20 @@
+pkgbase = marble-marcher-git
+	pkgdesc = A Fractal Physics Game.
+	pkgver = 0.0.0.g23ac1f8
+	pkgrel = 1
+	url = https://codeparade.itch.io/marblemarcher
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	depends = eigen
+	depends = sfml
+	provides = marble-marcher
+	conflicts = marble-marcher
+	source = marble-marcher-git::git+https://github.com/HackerPoet/MarbleMarcher.git
+	md5sums = SKIP
+
+pkgname = marble-marcher-git
+
