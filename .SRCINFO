@@ -1,0 +1,15 @@
+pkgbase = rcswitch-pi-git
+	pkgdesc = rapberry pi library for rc controlled outlets
+	pkgver = r10.1c4e20f
+	pkgrel = 1
+	url = https://github.com/rpodgorny/rcswitch-pi
+	arch = armv6h
+	license = GPL
+	depends = wiringpi
+	provides = rcswitch-pi
+	conflicts = rcswitch-pi
+	source = git+https://github.com/rpodgorny/rcswitch-pi.git
+	md5sums = SKIP
+
+pkgname = rcswitch-pi-git
+
