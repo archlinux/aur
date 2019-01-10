@@ -1,8 +1,8 @@
 # Maintainer: Dmitry Barker Medvedev <dimon@bitel.ru>
 pkgname=bgbillingclient72
-pkgver=7.2.8
+pkgver=7.2.1901091804
 pkgrel=1
-pkgdesc='Client for billing system BGBilling 7.2'
+pkgdesc='Client runner for billing system BGBilling 7.2'
 arch=('i686' 'x86_64')
 url='http://bgbilling.ru'
 license=('custom')
@@ -10,7 +10,7 @@ depends=('java-runtime>=8')
 install=bgbillingclient.install
 source=(bgbillingclient{_versuf}.sh bgbillingclient{_versuf}.desktop bgbillingclient{_versuf}.png)
 md5sums=('5c6031713ab88c1d6fa71e43d27d1071'
-         '64cbed916271ecc83f2af450cfececbc'
+         'ea13f5d5bc06949b581f2cea54a47faa'
          'e33f57ef3a2e711f47ccc3ec5ecddaf8')
 
 # vesions: major, build, version suffix for package
@@ -18,7 +18,7 @@ _vermajor=$(echo ${pkgver}|cut -d'.' -f1,2)
 _verbuild=$(echo ${pkgver}|cut -d'.' -f3)
 _versuf=$(echo ${_vermajor}|sed -e "s/\.//g")
 # product/archive name
-_achivename=BGBillingClient
+_achivename=BGBillingRunner
 # program directory name
 _dstdirname=bgbillingclient
 
@@ -42,9 +42,10 @@ _rename_var_file() {
 
 pkgver() {
 	wget --no-remove-listing ftp://ftp.bgbilling.ru/pub/bgbilling/${_vermajor}/${_achivename}_${_vermajor}_*.zip
-	# -rw-r--r-- 9 500 100 31493131 Oct 25 19:32 BGBillingClient_6.0_1258.zip
-	_ver=$(grep -o -P "${_achivename}_(\d+)\.(\d+)_(\d+)" .listing)
-	# BGBillingClient_6.0_1258
+	# lrwxrwxrwx    1 0        0              34 Jan 09 18:48 BGBillingRunner_7.2.zip -> BGBillingRunner_7.2_1901091804.zip
+	# -rw-rw-r--    1 0        0           81124 Jan 09 18:04 BGBillingRunner_7.2_1901091804.zip
+	_ver=$(grep -o -P --max-count=1 "${_achivename}_(\d+)\.(\d+)_(\d+)" .listing)
+	# BGBillingRunner_7.2_1901091804
 	_v1=$(echo ${_ver}|cut -d'_' -f2)
 	_v2=$(echo ${_ver}|cut -d'_' -f3)
 	echo "${_v1}.${_v2}"
@@ -61,6 +62,9 @@ package() {
 	msg2 "remove win files"
 	rm -f $pkgdir/opt/${_dstdirname}${_versuf}/*.{bat,exe,ini}
 
+	msg2 "rename launch scripts (runner.sh -> bgbilling.sh)"
+	rename runner.sh bgbilling.sh $pkgdir/opt/${_dstdirname}${_versuf}/runner.sh
+
 	msg2 "rename launch scripts (add suffix) and chmod"
 	rename .sh ${_versuf}.sh $pkgdir/opt/${_dstdirname}${_versuf}/*.sh
 	chmod +x $pkgdir/opt/${_dstdirname}${_versuf}/*.sh
@@ -75,6 +79,9 @@ package() {
 	sed -i '5d' $pkgdir/opt/${_dstdirname}${_versuf}/bgbilling*${_versuf}.sh
 	sed -i '5d' $pkgdir/opt/${_dstdirname}${_versuf}/bgbilling*${_versuf}.sh
 	sed -i '5d' $pkgdir/opt/${_dstdirname}${_versuf}/bgbilling*${_versuf}.sh
+
+	msg2 "patch log path in launch script"
+	sed -i "s/runner\.log/\$\{HOME\}\/\.bgbilling\/runner${_versuf}\.log/" $pkgdir/opt/${_dstdirname}${_versuf}/bgbilling*${_versuf}.sh
 
 	msg2 "patch var in files"
 	_patch_var_file bgbillingclient{_versuf}.desktop
