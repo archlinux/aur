@@ -1,12 +1,12 @@
 _pkgname=fluidkeys
 pkgname=$_pkgname-git
-pkgver=release.r87.g63f3e8e
+pkgver=0.3.1.r0.g7f56a48
 pkgrel=1
 pkgdesc='Fluidkeys helps teams protect themselves with strong encryption.'
 arch=('any')
 url="https://www.fluidkeys.com"
 license=('AGPL3')
-makedepends=('go-pie' 'rsync')
+makedepends=('go-pie' 'rsync' 'git' 'dep')
 provides=("fluidkeys=$pkgver")
 source=("git+https://github.com/fluidkeys/fluidkeys.git")
 sha256sums=('SKIP')
