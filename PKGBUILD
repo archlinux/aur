@@ -4,7 +4,7 @@ pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit"
 pkgver=0.0.0.r657.g48713a6
 _branch='master'
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://github.com/alerque/casile/'
 license=('LGPL3')
@@ -45,7 +45,7 @@ depends=('bc'
          'ttf-hack'
          'xcftools'
          'yarn'
-         'yq'
+         'yq>=2.7.2'
          'zint'
          'zsh')
 

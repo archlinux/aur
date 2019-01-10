@@ -1,7 +1,7 @@
 pkgbase = casile-git
 	pkgdesc = Caleb's SILE publishing toolkit
 	pkgver = 0.0.0.r657.g48713a6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alerque/casile/
 	arch = any
 	license = LGPL3
@@ -38,7 +38,7 @@ pkgbase = casile-git
 	depends = ttf-hack
 	depends = xcftools
 	depends = yarn
-	depends = yq
+	depends = yq>=2.7.2
 	depends = zint
 	depends = zsh
 	provides = casile
