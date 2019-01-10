@@ -1,0 +1,72 @@
+From f21fa142aca53e3de5783e1ce6fe1bf116174aeb Mon Sep 17 00:00:00 2001
+From: Robert Pluim <rpluim@gmail.com>
+Date: Tue, 3 Apr 2018 11:06:01 +0200
+Subject: [PATCH] Ignore color fonts when using Xft
+
+* src/font.c (syms_of_font): New configuration variable
+xft-ignore-color-fonts, default t.
+* src/ftfont.c (ftfont_spec_pattern): Tell fontconfig to ignore
+color fonts if xft-ignore-color-fonts is t.  (Bug#30874, Bug#30045)
+* etc/NEWS: Document xft-ignore-color-fonts.
+---
+ etc/NEWS     | 6 ++++++
+ src/font.c   | 7 +++++++
+ src/ftfont.c | 7 +++++++
+ 3 files changed, 20 insertions(+)
+
+diff --git a/etc/NEWS b/etc/NEWS
+index 873e2dfd1d..2bec8de0ea 100644
+--- a/etc/NEWS
++++ b/etc/NEWS
+@@ -31,6 +31,12 @@ in its NEWS.)
+ 
+ * Changes in Emacs 26.2
+ 
++---
++** New variable 'xft-ignore-color-fonts'.
++Default t means don't try to load color fonts when using Xft, as they
++often cause crashes.  Set it to nil if you really need those fonts.
++(Bug#30874)
++
+ 
+ * Editing Changes in Emacs 26.2
+ 
+diff --git a/src/font.c b/src/font.c
+index e53935a15c..305bb14576 100644
+--- a/src/font.c
++++ b/src/font.c
+@@ -5476,6 +5476,13 @@ Disabling compaction of font caches might enlarge the Emacs memory
+ footprint in sessions that use lots of different fonts.  */);
+   inhibit_compacting_font_caches = 0;
+ 
++  DEFVAR_BOOL ("xft-ignore-color-fonts",
++	       Vxft_ignore_color_fonts,
++	       doc: /*
++Non-nil means don't query fontconfig for color fonts, since they often
++cause Xft crashes.  Only has an effect in Xft builds.  */);
++  Vxft_ignore_color_fonts = 1;
++
+ #ifdef HAVE_WINDOW_SYSTEM
+ #ifdef HAVE_FREETYPE
+   syms_of_ftfont ();
+diff --git a/src/ftfont.c b/src/ftfont.c
+index c2e093e633..24a92dd52e 100644
+--- a/src/ftfont.c
++++ b/src/ftfont.c
+@@ -764,6 +764,13 @@ ftfont_spec_pattern (Lisp_Object spec, char *otlayout, struct OpenTypeSpec **ots
+   if (scalable >= 0
+       && ! FcPatternAddBool (pattern, FC_SCALABLE, scalable ? FcTrue : FcFalse))
+     goto err;
++#ifdef HAVE_XFT
++  /* We really don't like color fonts, they cause Xft crashes.  See
++     Bug#30874.  */
++  if (Vxft_ignore_color_fonts
++      && ! FcPatternAddBool(pattern, FC_COLOR, FcFalse))
++    goto err;
++#endif
+ 
+   goto finish;
+ 
+-- 
+2.17.1
+

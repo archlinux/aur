@@ -1,0 +1,32 @@
+From 97d61f878e6378efbde73923a36f71caac73a4a0 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Tue, 3 Apr 2018 08:12:41 -0700
+Subject: [PATCH] Port FC_COLOR change to older fontconfig
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Problem reported by John ff in:
+https://lists.gnu.org/r/emacs-devel/2018-04/msg00058.html
+* src/ftfont.c (ftfont_spec_pattern) [!FC_COLOR]:
+Don’t use FC_COLOR on older fontconfigs that don’t have it.
+---
+ src/ftfont.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ftfont.c b/src/ftfont.c
+index 24a92dd52e..84e4a30389 100644
+--- a/src/ftfont.c
++++ b/src/ftfont.c
+@@ -764,7 +764,7 @@ ftfont_spec_pattern (Lisp_Object spec, char *otlayout, struct OpenTypeSpec **ots
+   if (scalable >= 0
+       && ! FcPatternAddBool (pattern, FC_SCALABLE, scalable ? FcTrue : FcFalse))
+     goto err;
+-#ifdef HAVE_XFT
++#if defined HAVE_XFT && defined FC_COLOR
+   /* We really don't like color fonts, they cause Xft crashes.  See
+      Bug#30874.  */
+   if (Vxft_ignore_color_fonts
+-- 
+2.17.1
+
