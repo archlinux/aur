@@ -1,7 +1,7 @@
 pkgbase = apm_planner-bin
 	pkgdesc = Ground Control Station for MAVlink based autopilots (e.g. Ardupilot) (binary version)
 	pkgver = 2.0.26
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ardupilot.org/planner2/
 	arch = x86_64
 	groups = base-devel
@@ -16,8 +16,8 @@ pkgbase = apm_planner-bin
 	depends = libsndfile
 	depends = python
 	depends = python-pexpect
-	source = http://firmware.ardupilot.org/Tools/APMPlanner/apm_planner_2.0.26_xenial64.deb
-	md5sums = 0343dbd67c1c0c5ad5ae557922684912
+	source = http://firmware.ardupilot.org/Tools/APMPlanner/apm_planner_2.0.26_bionic64.deb
+	sha256sums = e0a7d0981bc4684788231417c7dfdb7f2500ed75b1a8a82a2f2be6a21a4d6681
 
 pkgname = apm_planner-bin
 
