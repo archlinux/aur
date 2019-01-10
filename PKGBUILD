@@ -5,7 +5,7 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.5.23.g8bc03fff
+pkgver=1.0.6.macOS.alpha1.53.gfc887771
 pkgrel=1
 pkgdesc="C++ re-write of tablet notetaking app Xournal"
 arch=('i686' 'x86_64')
@@ -32,7 +32,12 @@ prepare() {
 	test -e "${srcdir}/${_pkgname}/build" || mkdir -p "${srcdir}/${_pkgname}/build"
 	cd "${srcdir}/${_pkgname}/build"
 
-	cmake -DENABLE_OS="OFF" -DENABLE_MATHTEX="ON" -DCMAKE_INSTALL_PREFIX="/usr/"  ..
+	if [ -z "$XDG_CONFIG_HOME" ]; then
+		configdir=".config"
+	else
+		configdir="$XDG_CONFIG_HOME"
+	fi
+	cmake -DENABLE_MATHTEX="ON" -DCMAKE_INSTALL_PREFIX="/usr/" -DDEV_CONFIG_DIR="$configdir/xournalpp"  ..
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = xournalpp-git
 	pkgdesc = C++ re-write of tablet notetaking app Xournal
-	pkgver = 1.0.5.23.g8bc03fff
+	pkgver = 1.0.6.macOS.alpha1.53.gfc887771
 	pkgrel = 1
 	url = https://github.com/xournalpp/xournalpp
 	install = xournalpp.install
