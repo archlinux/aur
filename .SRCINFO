@@ -6,6 +6,7 @@ pkgbase = chaiscript
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	depends = readline
 	source = chaiscript-6.1.0.tar.gz::https://github.com/Chaiscript/Chaiscript/archive/v6.1.0.tar.gz
 	sha256sums = 3ca9ba6434b4f0123b5ab56433e3383b01244d9666c85c06cc116d7c41e8f92a
 
