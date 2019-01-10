@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=hexyl-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A command-line hex viewer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 conflicts=('hexyl')
 
 source=("${url}/releases/download/v${pkgver}/hexyl-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('ee10308ab9153687b499f034af4c7ef360229481a0714ca6a5a477ba439d5576')
+sha256sums=('eff0fa45e27a73b9e2ff594a06ce7646d59288d969657b14fa33c5d931796be1')
 
 package() {
   cd "${srcdir}/hexyl-v${pkgver}-x86_64-unknown-linux-musl/"
