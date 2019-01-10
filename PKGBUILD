@@ -7,7 +7,7 @@
 #
 
 pkgname=platformio
-pkgver=3.6.0
+pkgver=3.6.3
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
