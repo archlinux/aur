@@ -1,27 +1,9 @@
 post_install() {
-
-	# add rslsync user and group if doesn't exist
-	if [ "$(grep rslsync /etc/passwd)" == "" ]; then
-		useradd -r -s /bin/sh -d /var/lib/rslsync rslsync
-	fi
-	# create rslsync dir
-	mkdir -p /var/lib/rslsync && chown -R rslsync:rslsync /var/lib/rslsync
-
 	post_upgrade
 }
 
 post_upgrade() {
-	
-	# following will be moved to post_install eventually
-
-	# create tmpdirs
-	systemd-tmpfiles --create rslsync.conf
-	# adjust owner and permissions for config file
-    chown rslsync:rslsync /etc/rslsync.conf
-    chmod 600 /etc/rslsync.conf
-
 cat << EOF
-
 	WebGUI can be accessed via following URL: http://localhost:8888
 	
 	* Running rslsync system instance (using dedicated rslsync:rslsync account)
@@ -69,6 +51,5 @@ EOF
 }
 
 post_remove() {
-	userdel rslsync
 	echo -e "Please remove /var/lib/rslsync folder manually"
 }

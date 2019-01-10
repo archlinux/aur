@@ -14,7 +14,10 @@ url="https://www.getsync.com"
 install=rslsync.install
 backup=('etc/rslsync.conf')
 conflicts=()
-source=(rslsync.service rslsync_user.service rslsync.tmpfiles)
+source=('rslsync.service'
+        'rslsync_user.service'
+        'rslsync.tmpfiles'
+        'rslsync.sysusers')
 source_arm=("rslsync_arm-${pkgver}-${pkgrel}.tar.gz::https://download-cdn.resilio.com/stable/linux-arm/resilio-sync_arm.tar.gz")
 source_armv6h=("rslsync_arm-${pkgver}-${pkgrel}.tar.gz::https://download-cdn.resilio.com/stable/linux-arm/resilio-sync_arm.tar.gz")
 source_armv7h=("rslsync_armhf-${pkgver}-${pkgrel}.tar.gz::https://download-cdn.resilio.com/stable/linux-armhf/resilio-sync_armhf.tar.gz")
@@ -23,7 +26,8 @@ source_i686=("rslsync_i386-${pkgver}-${pkgrel}.tar.gz::https://download-cdn.resi
 source_x86_64=("rslsync_x64-${pkgver}-${pkgrel}.tar.gz::https://download-cdn.resilio.com/stable/linux-x64/resilio-sync_x64.tar.gz")
 sha256sums=('4483cbe3fff81281666d8fbe8c9b8d7d27c38ba7a3d3752a865f1ab8c1f212db'
             'ba4b0ee3303027122e67345d4bf852f911a56f213f98c9eaa198c69d903fd8a1'
-            '150408a99eea8082b1df115c2c836f4e8e68a85eba7cd56b5885ebd4e07dceda')
+            'bb1ed9b330916039ee52d8aa6c85287ed52a84ff991e2772e1acb9c93732298a'
+            '3c69179987c2e0f54b2f3478ab421c65515f5b5b9bad2b6e055ec04aea0f5c6d')
 sha256sums_i686=('b06cc3facd01de583a1d432394c7e43a1353200a605068ed636be336571278bf')
 sha256sums_x86_64=('82f940a130a0e82c3b020dd9cb1381ae0c0f2b52dee1b7eff81f90b3c997086f')
 sha256sums_arm=('29ef3db304a47ead441e9a998adf497e3f9f964cbe60a755356001c3f08f1816')
