@@ -25,7 +25,7 @@ Comment[en_US]=Analyze and track cryptocurrency
 
 runscript="
 cd ${applocation}
-python3 -B main.py
+python3 main.py
 "
 
 source=("https://github.com/blooser/lyra/archive/v${pkgver}.tar.gz")
