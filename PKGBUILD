@@ -1,30 +1,23 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
-# Contributor: Cesar Alcalde <lambda512 _at_ gmail.com>
+# Contributor: egore911
 pkgname=scmccid
 pkgver=5.0.35
-pkgrel=4
+pkgrel=5
 pkgdesc="Binary driver for the SCM smart card readers"
 arch=('i686' 'x86_64')
 url="http://support.identiv.com/products/"
 license=('custom')
-depends=('pcsclite' 'libusb0')
+depends=('pcsclite' 'libusb-compat')
 makedepends=('unzip')
 backup=('usr/local/scm/ini/scmccid.ini')
 install=$pkgname.install
+source_x86_64=(https://scm-pc-card.de/file/driver/Readers_Writers/scmccid_5.0.35_linux_rel_64.tar.gz)
+source_i686=(https://scm-pc-card.de/file/driver/Readers_Writers/scmccid_5.0.35_linux_rel.tar.gz)
 
-source=("uTrust_Linux.zip::http://files.identiv.com/products/smart-card-readers/common-drivers/uTrust_Linux.tar.gz")
-
-sha256sums=('3ca2bb8ffcfe964db33378c1c861405aad0bd68f15f517921c5c9b1f1455ac20')
-
+sha256sums_i686=('791a80a1eeee6544d32e1dcaddb7383e6566a89b6f4a97ce0565dd8f274def65')
+sha256sums_x86_64=('4857f7402fb585909622020e1007c81d1ebc3c71574d6f1a993e03e5431331e4')
 
 package() {
-	cd "$srcdir"
-	unzip "scmccid_${pkgver}_linux.zip"
-	if [ "$CARCH" = "x86_64" ]; then
-		tar xvf "scmccid_${pkgver}_linux_64bit.tar.gz"
-	else
-		tar xvf "scmccid_${pkgver}_linux.tar.gz"
-	fi
 	cd "scmccid_${pkgver}_linux"
 
 	bundle_path=`pkg-config libpcsclite --variable=usbdropdir`

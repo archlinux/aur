@@ -1,7 +1,7 @@
 pkgbase = scmccid
 	pkgdesc = Binary driver for the SCM smart card readers
 	pkgver = 5.0.35
-	pkgrel = 4
+	pkgrel = 5
 	url = http://support.identiv.com/products/
 	install = scmccid.install
 	arch = i686
@@ -9,10 +9,12 @@ pkgbase = scmccid
 	license = custom
 	makedepends = unzip
 	depends = pcsclite
-	depends = libusb0
+	depends = libusb-compat
 	backup = usr/local/scm/ini/scmccid.ini
-	source = uTrust_Linux.zip::http://files.identiv.com/products/smart-card-readers/common-drivers/uTrust_Linux.tar.gz
-	sha256sums = 3ca2bb8ffcfe964db33378c1c861405aad0bd68f15f517921c5c9b1f1455ac20
+	source_i686 = https://scm-pc-card.de/file/driver/Readers_Writers/scmccid_5.0.35_linux_rel.tar.gz
+	sha256sums_i686 = 791a80a1eeee6544d32e1dcaddb7383e6566a89b6f4a97ce0565dd8f274def65
+	source_x86_64 = https://scm-pc-card.de/file/driver/Readers_Writers/scmccid_5.0.35_linux_rel_64.tar.gz
+	sha256sums_x86_64 = 4857f7402fb585909622020e1007c81d1ebc3c71574d6f1a993e03e5431331e4
 
 pkgname = scmccid
 
