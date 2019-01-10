@@ -1,7 +1,7 @@
 pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
 	pkgver = 15.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.blackmagicdesign.com/
 	arch = x86_64
 	license = Commercial
@@ -17,6 +17,7 @@ pkgbase = davinci-resolve
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qt5-webkit
+	depends = libisoburn
 	depends = qt5-webengine
 	depends = qt5-websockets
 	depends = xdg-user-dirs
