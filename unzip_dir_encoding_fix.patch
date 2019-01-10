@@ -1,0 +1,36 @@
+diff --git a/src/pyfmi/fmi.pyx b/src/pyfmi/fmi.pyx
+index d30de5f..5449808 100644
+--- a/src/pyfmi/fmi.pyx
++++ b/src/pyfmi/fmi.pyx
+@@ -7894,9 +7894,9 @@ def load_fmu(fmu, path = '.', enable_logging = None, log_file_name = "", kind =
+ 
+         #Compare fmu_kind with input-specified kind
+         if fmu_1_kind == FMI_ME and kind.upper() != 'CS':
+-            model=FMUModelME1(fmu, path, original_enable_logging, log_file_name,log_level, _unzipped_dir=fmu_temp_dir)
++            model=FMUModelME1(fmu, path, original_enable_logging, log_file_name,log_level, _unzipped_dir=decode(fmu_temp_dir))
+         elif (fmu_1_kind == FMI_CS_STANDALONE or fmu_1_kind == FMI_CS_TOOL) and kind.upper() != 'ME':
+-            model=FMUModelCS1(fmu, path, original_enable_logging, log_file_name,log_level, _unzipped_dir=fmu_temp_dir)
++            model=FMUModelCS1(fmu, path, original_enable_logging, log_file_name,log_level, _unzipped_dir=decode(fmu_temp_dir))
+         else:
+             FMIL.fmi1_import_free(fmu_1)
+             FMIL.fmi_import_free_context(context)
+@@ -7938,15 +7938,15 @@ def load_fmu(fmu, path = '.', enable_logging = None, log_file_name = "", kind =
+         #FMU kind is known
+         if kind.lower() == 'auto':
+             if fmu_2_kind == FMIL.fmi2_fmu_kind_cs:
+-                model = FMUModelCS2(fmu, path, original_enable_logging, log_file_name,log_level, _unzipped_dir=fmu_temp_dir)
++                model = FMUModelCS2(fmu, path, original_enable_logging, log_file_name,log_level, _unzipped_dir=decode(fmu_temp_dir))
+             elif fmu_2_kind == FMIL.fmi2_fmu_kind_me or fmu_2_kind == FMIL.fmi2_fmu_kind_me_and_cs:
+-                model = FMUModelME2(fmu, path, original_enable_logging, log_file_name,log_level, _unzipped_dir=fmu_temp_dir)
++                model = FMUModelME2(fmu, path, original_enable_logging, log_file_name,log_level, _unzipped_dir=decode(fmu_temp_dir))
+         elif kind.upper() == 'CS':
+             if fmu_2_kind == FMIL.fmi2_fmu_kind_cs or fmu_2_kind == FMIL.fmi2_fmu_kind_me_and_cs:
+-                model = FMUModelCS2(fmu, path, original_enable_logging, log_file_name,log_level, _unzipped_dir=fmu_temp_dir)
++                model = FMUModelCS2(fmu, path, original_enable_logging, log_file_name,log_level, _unzipped_dir=decode(fmu_temp_dir))
+         elif kind.upper() == 'ME':
+             if fmu_2_kind == FMIL.fmi2_fmu_kind_me or fmu_2_kind == FMIL.fmi2_fmu_kind_me_and_cs:
+-                model = FMUModelME2(fmu, path, original_enable_logging, log_file_name,log_level, _unzipped_dir=fmu_temp_dir)
++                model = FMUModelME2(fmu, path, original_enable_logging, log_file_name,log_level, _unzipped_dir=decode(fmu_temp_dir))
+ 
+         #Could not match FMU kind with input-specified kind
+         if model is None:
