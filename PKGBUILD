@@ -26,7 +26,7 @@ depends=('python2'
          'python2-setuptools')
 conflicts=('platformio-git')
 source=("https://github.com/platformio/platformio-core/archive/v${pkgver}.tar.gz")
-sha256sums=('600fba225eddd73f76426a05c23f257bea94e76ec75cf8b67a8ccd5a5dbb645d')
+sha256sums=('dc6316cf6eaa03594ce7f82c5e42fd46bb92cf46af4bdb52fd6dc429badc030e')
 
 package() {
     cd "$srcdir/platformio-core-$pkgver"
