@@ -20,6 +20,7 @@ pkgbase = passwordmanager
 	depends = libxkbcommon-x11
 	depends = desktop-file-utils
 	depends = xdg-utils
+	depends = qt5-quickcontrols2
 	optdepends = kirigami2: Qt Quick GUI
 	source = passwordmanager-4.0.0.tar.gz::https://github.com/Martchus/passwordmanager/archive/v4.0.0.tar.gz
 	sha256sums = d55bc5eb4329b7c9568246d9eeb959e64eea9909d460cd9bea12e3cb171f5570
