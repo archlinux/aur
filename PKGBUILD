@@ -4,7 +4,7 @@
 pkgname=wire-desktop-git
 _name=${pkgname%-git}
 pkgver=3.5.2881.r45.g48cdf84b
-pkgrel=1
+pkgrel=2
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('x86_64')
 url='https://wire.com/'
@@ -29,6 +29,9 @@ prepare() {
     local electronver="$(sed 's/^[^0-9]*//' /usr/lib/electron/version)"
     msg2 "Compiling against system electron version: $electronver"
     sed -i 's/"electron": ".*"/"electron": "'"$electronver"'"/' "${_name}/package.json"
+
+    # Remove "node-addressbook" dependency as it's only for macOS
+    sed -i '/node-addressbook/d' "${_name}/electron/package.json"
 
     # Create launcher script
     cat << EOF > "${_name}-launcher"
