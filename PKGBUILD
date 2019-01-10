@@ -1,6 +1,6 @@
 # Maintainer: somekool <somekool _ at _ gmail _ dot _com>
 
-pkgname=netvirt-agent-git
+pkgname=netvirt-agent-beta-git
 srcgiturl=https://github.com/netvirt/netvirt
 pkgver=v2.0.2b
 pkgrel=1
@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="http://netvirt.org"
 license=('GPLv3')
 depends=('jansson' 'curl' 'libevent' 'openssl')
-optdepends=()
-makedepends=('git' 'scons' 'cmake') # 'libqt4-dev' 'libssl-dev')
+optdepends=() # 'qt4'
+makedepends=('git' 'scons' 'cmake')
 source=("${pkgname}::git+${srcgiturl}.git")
 md5sums=('SKIP')
 
@@ -30,6 +30,7 @@ pkgver() {
 prepare() {
   cd ${srcdir}/${pkgname}
   set -e
+  #git checkout proto1.2
   git submodule update --init --recursive
 
   pushd tapcfg
