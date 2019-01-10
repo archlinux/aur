@@ -60,5 +60,5 @@ build() {
 package() {
   cd 'mkosi'
 
-  python setup.py install --skip-build --root="$pkgdir"
+  python setup.py install --skip-build --optimize=1 --root="$pkgdir"
 }
