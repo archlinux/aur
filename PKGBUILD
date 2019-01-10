@@ -48,7 +48,6 @@ package() {
   | sed 's:\/\/ "storage_path":  "storage_path":' \
   | sed 's/\/var\/run\/resilio/\/run\/resilio/g' \
   > "${pkgdir}"/etc/rslsync.conf
-  chmod 644 "${pkgdir}"/etc/rslsync.conf
 
   # install systemd config files
   install -D -m 644 "${srcdir}"/rslsync.service "${pkgdir}"/usr/lib/systemd/system/rslsync.service
