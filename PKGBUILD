@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=peerflix-server
-pkgver=0.3.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Streaming torrent client for node.js with web ui"
 arch=('i686' 'x86_64')
@@ -25,6 +25,5 @@ package(){
     install -Dm644 "${srcdir}/$pkgname.service" "${pkgdir}/usr/lib/systemd/system/$pkgname.service"
     install -Dm775 "${srcdir}/peerflix-server.sh" "${pkgdir}/usr/bin/peerflix-server"
 }
-
 md5sums=('c16f83bd40fe9905b51c3ffd073bbcd0'
          'ea9702820f92bef0636a4f01d13dd348')
