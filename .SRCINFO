@@ -1,6 +1,6 @@
 pkgbase = spark2014-git
 	pkgdesc = formally defined programming language based on ada (gnat fsf)
-	pkgver = 0.3.draft.r17341.g2536e7fb9
+	pkgver = 0.3.draft.r17853.g7a0a54649
 	pkgrel = 1
 	url = https://www.spark-2014.org
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = spark2014-git
 	conflicts = spark2014
 	conflicts = why3
 	options = !makeflags
-	source = git+https://github.com/AdaCore/spark2014
+	source = git+https://github.com/AdaCore/spark2014#branch=fsf
 	source = why3-adacore::git+https://github.com/AdaCore/why3
 	source = git+https://github.com/gcc-mirror/gcc
 	source = makefile-installdir-fixes.diff

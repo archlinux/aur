@@ -1,5 +1,5 @@
 pkgname=spark2014-git
-pkgver=0.3.draft.r17341.g2536e7fb9
+pkgver=0.3.draft.r17853.g7a0a54649
 pkgrel=1
 
 pkgdesc='formally defined programming language based on ada (gnat fsf)'
@@ -24,7 +24,7 @@ conflicts=('spark2014' 'why3')
 # directory instead of cloning the entire gcc tree.  The downside to this is
 # that github will take awhile to generate the checkout.
 # svn+https://github.com/gcc-mirror/gcc/trunk/gcc/ada
-source=('git+https://github.com/AdaCore/spark2014'
+source=('git+https://github.com/AdaCore/spark2014#branch=fsf'
         'why3-adacore::git+https://github.com/AdaCore/why3'
         'git+https://github.com/gcc-mirror/gcc'
         'makefile-installdir-fixes.diff')
