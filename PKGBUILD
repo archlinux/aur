@@ -2,7 +2,7 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-pkgver=4.20.0
+pkgver=4.20.1
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -10,7 +10,10 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 
-source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux'
+#https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/log/?h=linux-4.19.y
+
+#source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux'
+source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         # the main kernel config files
         'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -28,7 +31,7 @@ pkgver() {
 prepare() {
   cd "${_srcname}"
   #We want to base this on the release
-  git checkout tags/v4.20
+  git checkout tags/v4.20.1
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
