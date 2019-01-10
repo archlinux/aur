@@ -1,7 +1,7 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist-bin
-pkgver=0.7.2.rc2a
+pkgver=0.7.2.rc4
 pkgrel=1
 pkgdesc='Screenwriting software, which developed in Russia.'
 url='https://kitscenarist.ru'
@@ -10,7 +10,7 @@ license=('GPL3')
 conflicts=('scenarist')
 depends=('dbus' 'glib2')
 source=("https://kitscenarist.ru/downloads/linux/scenarist-setup-${pkgver}_en_amd64.deb")
-sha512sums=('6fdca5ed89c9bf1976d30db9f4b8faae3772f6585057bbd676b5311ca0a3fb651f51c6fd0dfff9d0e83a2f4a7809203143a8c8b053e125ed2a8ac69448726b96')
+sha512sums=('f4313f8f9a575226bf15189830fd603401e99a2879ba8a893938c1a28a89d8ed0280d3c41fc256f60b9e4d75729674d8b8040a2140001d50a440884d5e2ee795')
 options=('!strip' '!emptydirs')
 PKGEXT=.tar
 
