@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-moveit-simple-controller-manager
 	pkgdesc = ROS - A generic, simple controller manager plugin for MoveIt.
-	pkgver = 0.10.5
+	pkgver = 0.10.8
 	pkgrel = 1
 	url = http://moveit.ros.org
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = ros-melodic-moveit-simple-controller-manager
 	depends = ros-melodic-moveit-core
 	depends = ros-melodic-actionlib
 	depends = ros-melodic-roscpp
-	source = ros-melodic-moveit-simple-controller-manager-0.10.5-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_simple_controller_manager/0.10.5-0.tar.gz
-	sha256sums = ff911024f0c61d8d69a762b4dfc5fae5e96db563f53a90b8723e935e2c57a98d
+	source = ros-melodic-moveit-simple-controller-manager-0.10.8-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_simple_controller_manager/0.10.8-0.tar.gz
+	sha256sums = 5dc519ed4bed9af6b9d149e80ac82575753e08ce8d408b211351c7875785bc83
 
 pkgname = ros-melodic-moveit-simple-controller-manager
 
