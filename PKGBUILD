@@ -5,7 +5,7 @@
 pkgbase=mlapack
 pkgname=('mlapack')
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MPACK - Multiple precision linear algebra package"
 arch=('x86_64' 'i686')
 license=('Custom')
@@ -20,7 +20,7 @@ makedepends=( 'qd'
 source=(http://www.tbi.univie.ac.at/RNA/packages/source/mlapack-${pkgver}.tar.gz)
 
 #create this sum with the command "sha256sum mpack-${pkgver}.tar.gz" before each build of the package
-sha256sums=('852746097cffc267c072c159eb60d2f8b0474db6ea31bb9ff8b9c89e3b38c334')
+sha256sums=('7f2e40ff9b656583b75591892e86e7eb2bdc9a593438a2e66e663c4ef7fde509')
 
 build() {
   cd "${srcdir}/mlapack-${pkgver}"
