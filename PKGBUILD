@@ -1,7 +1,7 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=cygnus
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="RSS reader"
 arch=('x86_64')
 md5sums=('26cfda2c5b20496debe039d94207404d')
@@ -40,6 +40,9 @@ package() {
 	mv $pkgname-$pkgver $pkgname 
 	cp -r $pkgname ~/Documents
 	rm -rf $pkgname	
+	if [ ! -f ~/.local/share/applications ]; then
+		mkdir ~/.local/share/applications
+	fi
 	echo "${shortcut}" > ~/.local/share/applications/cygnus.desktop
 	if [ -f ~/.zshrc ]; then
 		echo "alias cygnus=${applocation}/run.sh" >> ~/.zshrc
