@@ -2,8 +2,8 @@
 
 pkgname=gnome-shell-extension-windowoverlay-icons
 pkgver=33
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Adds application icons to the windows overview (in Activities menu)"
 arch=('any')
 url="https://github.com/sustmi/gnome-shell-extension-windowoverlay-icons"
 license=('GPL3')
