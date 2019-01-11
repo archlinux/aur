@@ -1,0 +1,26 @@
+pkgbase = gtklash-git
+	pkgdesc = A proxy client that supports multiple protocol
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/balthild/GTKlash
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	makedepends = go
+	depends = glib2
+	depends = gtk3
+	depends = libgee
+	depends = libsoup
+	depends = librsvg
+	depends = json-glib
+	depends = gtksourceview4
+	depends = gnome-icon-theme-symbolic
+	provides = gtklash
+	conflicts = gtklash
+	source = gtklash::git+https://github.com/balthild/gtklash.git
+	sha256sums = SKIP
+
+pkgname = gtklash-git
+
