@@ -2,7 +2,7 @@
 
 pkgbase=('python-picos')
 pkgname=('python-picos' 'python2-picos')
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A Python interface to conic optimization solvers.'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://gitlab.com/picos-api/picos/-/archive/v${pkgver}/picos-v${pkgver}.tar.gz")
 
 package_python-picos() {
-	depends=('python-six' 'python-numpy' 'python-cvxopt')
+	depends=('python-numpy' 'python-cvxopt')
 	conflicts=('python-picos-git')
 
 	cd "${srcdir}/picos-v${pkgver}"
@@ -21,7 +21,7 @@ package_python-picos() {
 }
 
 package_python2-picos() {
-	depends=('python2-six' 'python2-numpy' 'python2-cvxopt')
+	depends=('python2-numpy' 'python2-cvxopt')
 	conflicts=('python2-picos-git')
 
 	cd "${srcdir}/picos-v${pkgver}"
@@ -29,4 +29,4 @@ package_python2-picos() {
 	python2 setup.py install --root=${pkgdir}
 }
 
-md5sums=('e6b554cf76fe5266bd9ecf4ce72ef278')
+md5sums=('486dd2f41832d85dc9d2fd6618e32caa')
