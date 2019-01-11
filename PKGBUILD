@@ -6,8 +6,8 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=9.4.1
-pkgrel=5
+pkgver=9.6.0
+pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -27,7 +27,7 @@ optdepends=('bullet: Bullet support'
             'ruby-ronn: Generate manpages'
             'simbody: Simbody support'
             'urdfdom: Load URDF files')
-makedepends=('cmake' 'doxygen')
+makedepends=('cmake' 'doxygen' 'ignition-cmake')
 install="${pkgname}.install"
 source=("https://bitbucket.org/osrf/gazebo/get/gazebo9_${pkgver}.tar.bz2")
 sha256sums=('8a42cf1e5c9cd358fd03e71cf8e00651af8d0ff15793a6942d387d555525c423')
@@ -38,8 +38,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/osrf-${pkgname}-04a40b564570"
-
-  sed -i -e 's|boost/uuid/sha1.hpp|boost/uuid/detail/sha1.hpp|g' gazebo/common/CommonIface.hh
 
   mkdir -p build && cd build
 
