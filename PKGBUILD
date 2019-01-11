@@ -10,7 +10,7 @@ license=(GPL3)
 source=("git+https://github.com/unbrice/$_pkgname.git"
         ksm-wrapper)
 optdepends=('sh: ksm-wrapper script')
-makedepends=(cmake)
+makedepends=(cmake git)
 sha256sums=('SKIP'
             'ff95193fae6576bd71a5a1378607e4a44dcd12324201c3dbaffb965f9236b4e2')
 
