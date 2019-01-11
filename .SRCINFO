@@ -1,6 +1,6 @@
 pkgbase = postsrsd
 	pkgdesc = Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 2
 	url = https://github.com/roehling/postsrsd
 	install = postsrsd.install
@@ -12,8 +12,8 @@ pkgbase = postsrsd
 	makedepends = help2man
 	depends = glibc
 	backup = etc/postsrsd/postsrsd
-	source = https://github.com/roehling/postsrsd/archive/1.4.tar.gz
-	md5sums = cb6e13a06d6bbd7d383efb9bbf0867ce
+	source = postsrsd-1.5.tar.gz::https://github.com/roehling/postsrsd/archive/1.5.tar.gz
+	md5sums = e33826a7d1055080854ff7db71641fb8
 
 pkgname = postsrsd
 
