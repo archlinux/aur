@@ -16,7 +16,6 @@ conflicts=('hawaii-shell-git' 'papyros-shell-git' 'liri-workspace-git' 'liri-way
 replaces=('hawaii-shell-git' 'papyros-shell-git' 'liri-workspace-git' 'liri-wayland-git' 'liri-shell')
 provides=('liri-shell')
 groups=('liri-git')
-install=$pkgname.install
 
 _gitroot="git://github.com/lirios/shell.git"
 _gitbranch=develop
