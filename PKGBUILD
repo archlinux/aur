@@ -1,15 +1,14 @@
-#Maintainer:  MartiMcFly martimcfly@autorisation.de
-#Maintainer:  Yahya Mohajer <yaya_2013 {AT} yahoo {DOT} com >
+# Maintainer: PAPPY <pappy _AT_ a s c e l i o n _DOT_ com>
+
+_version=2.14.10
+_patch=01
 
 pkgname=nexus
-pkgver=2.14.3
-patchver=02
+pkgver=${_version}.${_patch}
 pkgrel=1
-pkgdesc="A Maven Repository Manager. Nexus 2"
+pkgdesc="Nexus 2 Repository Manager (OSS)"
 url="http://nexus.sonatype.org"
-arch=('i686' 
-      'x86_64'
-      'armv7h')
+arch=('any')
 license=('GPL3')
 depends=('java-environment')
 optdepends=('apache: a full featured webserver'
@@ -17,20 +16,19 @@ optdepends=('apache: a full featured webserver'
 
 install=nexus.install
 backup=(opt/nexus/bin/jsw/conf/wrapper.conf)
-conflicts=('nexus2')
-provides=('java-nexus' 
-	  'nexus')
+conflicts=(nexus2 nexus3 nexus-oss)
+provides=(nexus2 nexus)
 options=(!strip !docs)
 
-source=("http://www.sonatype.org/downloads/nexus-${pkgver}-${patchver}-bundle.tar.gz"
+source=("http://www.sonatype.org/downloads/nexus-$_version-$_patch-bundle.tar.gz"
         'http://wrapper.tanukisoftware.com/download/3.5.26/wrapper-delta-pack-3.5.26.tar.gz'
         'nexus'
         'nexus.service')	
 
-md5sums=('a366e94c738d5132e09353814310162d'
-         '8c1e180aba2b3991bcf107e899a96cbd'
-         'fee6289e0ee48ee5705da54660f7595d'
-         'ac7c0c60bb3c77ff67965ec160ef2517')
+sha256sums=('d91fcc927ac90248d81ec741527668524388052abd7415548804dcb13a41e208'
+            '635e545fde9c8728e4d7126859cab286637d565f041ce63596f5361fb85fc924'
+            '945e2fa64d6096416edd60c2a98c0ed385aee00f6bb3b33f6cbbc428b6b47d07'
+            'b89aaee6f035d7be20af5b738ed3b892df7f4db6538f9b7ec3c3f54685bbe7f8')
 
 package() {
   cd ${srcdir}
