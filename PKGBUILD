@@ -6,7 +6,7 @@
 # Contributor: Daniel White <daniel@whitehouse.id.au>
 
 pkgname=emacs-magit-git
-pkgver=2.13.0.r27.a8106b60c87f
+pkgver=2.90.1.r93.4f2144cf108a
 pkgrel=1
 pkgdesc="It's Magit! A Emacs mode for Git."
 arch=('any')
@@ -14,7 +14,7 @@ _github_org="magit"
 _github_repo="magit"
 url="http://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
-depends=('emacs>=25.1' 'git>=2.4' 'emacs-dash>=2.14.1' 'emacs-ghub>=2.0.1' 'emacs-magit-popup>=2.12.3' 'emacs-with-editor>=2.7.3')
+depends=('emacs>=25.1' 'git>=2.0.0' 'emacs-dash>=2.14.1' 'emacs-ghub>=3.2.0' 'emacs-magit-popup>=2.12.5' 'emacs-with-editor>=2.7.3')
 provides=('emacs-magit')
 conflicts=('emacs-magit')
 install="${pkgname}.install"
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${_github_repo}"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
