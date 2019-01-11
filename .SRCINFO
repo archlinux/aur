@@ -1,0 +1,17 @@
+pkgbase = dgtal
+	pkgdesc = Digital Geometry Tools and Algorithms Library
+	pkgver = 0.9.4.1
+	pkgrel = 1
+	url = https://dgtal.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake>=3.1
+	makedepends = boost>=1.46
+	makedepends = gcc>=4.8.1
+	depends = zlib
+	depends = gcc-libs
+	source = https://github.com/DGtal-team/DGtal/archive/0.9.4.1.zip
+	sha256sums = d0aa3bcf7515616b5688424c256986dc8ce02b55e85e1ac07727848f40ea50df
+
+pkgname = dgtal
+
