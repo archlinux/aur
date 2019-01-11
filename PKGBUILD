@@ -1,21 +1,29 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=sunrise-commander
-pkgver=6r463
-pkgrel=3
+pkgver=6r464
+pkgrel=1
 pkgdesc="A two panel filemanager for emacs"
 arch=('any')
 url="http://www.emacswiki.org/emacs/Sunrise_Commander"
 license=('GPL')
 depends=('emacs' 'avfs')
+makedepends=('git')
 optdepends=('zip: support for zip files' 'unzip: support for zip files')
-source=(http://www.emacswiki.org/emacs/download/sunrise-commander.el)
-sha256sums=('7ee7d967c4efad398a412c938f76d7ccc80dddaed83294fa788565cd6cd1bd46')
+source=(git+https://github.com/escherdragon/sunrise-commander.git#commit=cf8305a149a321d028858057e7a7c92f0038a06a)
+sha256sums=('SKIP')
 
-prepare() {
-  printf "%s" $(awk '/RCS/ {print $5}' $pkgname.el)
+pkgver() {
+  cd $pkgname
+  echo $(printf 6r%s $(awk '/RCS/ {print $5}' $pkgname.el))
+}
+
+build() {
+  cd $pkgname
+  emacs -q --no-splash -batch -L . -f batch-byte-compile *.el
 }
 
 package() {
-  install -Dm644 $pkgname.el \
-    $pkgdir/usr/share/emacs/site-lisp/$pkgname.el
+  cd $pkgname
+  install -Dm644 $pkgname.el{,c} -t "$pkgdir"/usr/share/emacs/site-lisp/
 }
