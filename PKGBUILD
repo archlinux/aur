@@ -3,13 +3,13 @@
 
 pkgname=xfce4-screensaver
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Screensaver for XFCE Desktop'
 url="https://www.xfce.org"
 arch=('x86_64')
 license=('GPL')
 depends=('libxss' 'libxklavier>=5.2' 'garcon>=0.5.0')
-makedepends=('intltool' 'systemd' 'xfce4-dev-tools' 'xmlto' 'docbook-xsl')
+makedepends=('intltool' 'systemd' 'xfce4-dev-tools' 'xmlto' 'docbook-xsl' 'exo')
 groups=('xfce4')
 conflicts=('mate-screensaver-gtk3' 'mate-screensaver' 'gnome-screensaver')
 replaces=('mate-screensaver-gtk3' 'mate-screensaver' 'gnome-screensaver')
