@@ -2,7 +2,7 @@
 
 pkgbase=('python-picos-git')
 pkgname=('python-picos-git' 'python2-picos-git')
-pkgver=1.1.3.r0.g9abcd64
+pkgver=1.2.0.r0.gb9c3105
 pkgrel=1
 pkgdesc='A Python interface to conic optimization solvers. Git version.'
 arch=('any')
@@ -17,7 +17,7 @@ pkgver() {
 }
 
 package_python-picos-git() {
-	depends=('python-six' 'python-numpy' 'python-cvxopt')
+	depends=('python-numpy' 'python-cvxopt')
 	conflicts=('python-picos')
 
 	cd picos
@@ -25,7 +25,7 @@ package_python-picos-git() {
 }
 
 package_python2-picos-git() {
-	depends=('python2-six' 'python2-numpy' 'python2-cvxopt')
+	depends=('python2-numpy' 'python2-cvxopt')
 	conflicts=('python2-picos')
 
 	cd picos
