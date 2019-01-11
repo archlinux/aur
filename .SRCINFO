@@ -1,15 +1,16 @@
 pkgbase = lib32-libyaml
 	pkgdesc = YAML 1.1 library (32-bit)
 	pkgver = 0.2.1
-	pkgrel = 1
-	url = http://pyyaml.org/wiki/LibYAML
+	pkgrel = 2
+	url = https://pyyaml.org/wiki/LibYAML
 	arch = x86_64
 	license = MIT
+	makedepends = gcc-multilib
 	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = libyaml
-	source = http://pyyaml.org/download/libyaml/yaml-0.2.1.tar.gz
-	md5sums = 72724b9736923c517e5a8fc6757ef03d
+	source = https://pyyaml.org/download/libyaml/yaml-0.2.1.tar.gz
+	sha256sums = 78281145641a080fb32d6e7a87b9c0664d611dcb4d542e90baf731f51cbb59cd
 
 pkgname = lib32-libyaml
 

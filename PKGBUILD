@@ -3,15 +3,15 @@
 pkgname=lib32-libyaml
 _pkgname=libyaml
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="YAML 1.1 library (32-bit)"
 arch=('x86_64')
-url="http://pyyaml.org/wiki/LibYAML"
+url="https://pyyaml.org/wiki/LibYAML"
 license=('MIT')
 depends=('lib32-glibc' "${_pkgname}")
-makedepends=('lib32-gcc-libs')
-source=("http://pyyaml.org/download/libyaml/yaml-${pkgver}.tar.gz")
-md5sums=('72724b9736923c517e5a8fc6757ef03d')
+makedepends=('gcc-multilib' 'lib32-gcc-libs')
+source=("https://pyyaml.org/download/libyaml/yaml-${pkgver}.tar.gz")
+sha256sums=('78281145641a080fb32d6e7a87b9c0664d611dcb4d542e90baf731f51cbb59cd')
 
 build() {
   cd "${srcdir}/yaml-${pkgver}"
