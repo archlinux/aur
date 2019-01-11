@@ -22,7 +22,7 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/gnome-shell/theme"
 	for theme in Flat-Remix*
 	do
-		ln -s "${pkgdir}/usr/share/themes/${theme}/gnome-shell" "${pkgdir}/usr/share/gnome-shell/theme/${theme}"
+		ln -s "/usr/share/themes/${theme}/gnome-shell" "${pkgdir}/usr/share/gnome-shell/theme/${theme}"
 	done
 	install -dm755 "${pkgdir}/usr/share/gnome-shell/modes"
 	cp -a src/modes/* "${pkgdir}/usr/share/gnome-shell/modes/"
