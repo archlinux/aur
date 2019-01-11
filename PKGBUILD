@@ -9,7 +9,7 @@ url="http://superpowers-html5.com/"
 license=('ISC')
 depends=('nodejs' 'gtk2' 'libxtst' 'python' 'alsa-lib' 'libnotify' 'gcc-libs-multilib' 'gconf' 'nss')
 source=("https://github.com/superpowers/superpowers-app/releases/download/v${pkgver}/superpowers-v${pkgver}-linux-x64.zip")
-md5sums=('f17dcc608494b0d18e128efc5d80e7c4')
+md5sums=('70d3062a75122462ef9af434e2a3a4b8')
 
 package() {
   mkdir -p "${pkgdir}/opt"
