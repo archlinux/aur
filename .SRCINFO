@@ -1,6 +1,6 @@
 pkgbase = krita-minimal
 	pkgdesc = Edit and paint images (less KDE dependencies)
-	pkgver = 4.1.7
+	pkgver = 4.1.7.101
 	pkgrel = 1
 	url = https://krita.org
 	arch = x86_64
@@ -46,12 +46,9 @@ pkgbase = krita-minimal
 	conflicts = calligra-krita
 	conflicts = krita-l10n
 	conflicts = krita
-	source = https://download.kde.org/stable/krita/4.1.7/krita-4.1.7.tar.gz
-	source = https://download.kde.org/stable/krita/4.1.7/krita-4.1.7.tar.gz.sig
+	source = https://download.kde.org/stable/krita/4.1.7/krita-4.1.7.101.tar.gz
 	source = replace-code.patch
-	validpgpkeys = 05D00A8B73A686789E0A156858B9596C722EA3BD
-	sha256sums = c16ec0dd23cdf20e9dd4d34ebabcf5bdb06a825bd6fe2c7196d6777279bdabd0
-	sha256sums = SKIP
+	sha256sums = 5bc95baa3980b7d75eb6bf103f72344014eac7733fd8a0780a7ec87dc2826f5f
 	sha256sums = 3cf0c0b134687e784d66c6103b2bf78a559a0b698e746b5803a6d7419098315f
 
 pkgname = krita-minimal

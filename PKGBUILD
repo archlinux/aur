@@ -2,7 +2,8 @@
 
 _pkgname=krita
 pkgname="${_pkgname}-minimal"
-pkgver=4.1.7
+_pkgver=4.1.7
+pkgver=$_pkgver.101
 pkgrel=1
 pkgdesc='Edit and paint images (less KDE dependencies)'
 arch=(x86_64)
@@ -19,14 +20,12 @@ optdepends=('poppler-qt5: PDF filter'
             "krita-plugin-gmic: G'MIC plugin"
             'python-pyqt5: for the Python plugins'
             'libheif: HEIF filter')
-provides=("${_pkgname}=${pkgver}")
+provides=("${_pkgname}=${_pkgver}")
 conflicts=(calligra-krita krita-l10n "${_pkgname}")
-source=("https://download.kde.org/stable/krita/$pkgver/${_pkgname}-$pkgver.tar.gz"{,.sig}
+source=("https://download.kde.org/stable/krita/$_pkgver/${_pkgname}-$pkgver.tar.gz"
         'replace-code.patch')
-sha256sums=('c16ec0dd23cdf20e9dd4d34ebabcf5bdb06a825bd6fe2c7196d6777279bdabd0'
-            'SKIP'
+sha256sums=('5bc95baa3980b7d75eb6bf103f72344014eac7733fd8a0780a7ec87dc2826f5f'
             '3cf0c0b134687e784d66c6103b2bf78a559a0b698e746b5803a6d7419098315f')
-validpgpkeys=('05D00A8B73A686789E0A156858B9596C722EA3BD') # Boudewijn Rempt <foundation@krita.org>
 
 prepare() {
   mkdir -p build
