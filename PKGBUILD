@@ -5,20 +5,28 @@
 # Contributor: Alessio Sergi <asergi@archlinux.us>
 
 pkgname=lib32-libsodium
-pkgver=1.0.16
+pkgver=1.0.17
 pkgrel=1
-pkgdesc='P(ortable|ackageable) NaCl-based crypto library'
-arch=('x86_64')
+pkgdesc='A modern, portable, easy to use crypto library'
+arch=(x86_64)
 url='https://github.com/jedisct1/libsodium'
-license=('custom:ISC')
-depends=('lib32-glibc' 'libsodium')
-source=("https://download.libsodium.org/libsodium/releases/libsodium-${pkgver}.tar.gz"{,.sig})
-validpgpkeys=('54A2B8892CC3D6A597B92B6C210627AABA709FE1') # Frank Denis
-sha256sums=('eeadc7e1e1bcef09680fb4837d448fbdf57224978f865ac1c16745868fbd0533'
-            'SKIP')
+license=(custom:ISC)
+depends=(
+  lib32-glibc
+  libsodium
+)
+makedepends=(git)
+source=(git+ihttps://github.com/jedisct1/libsodium.git#tag=${pkgver})
+sha256sums=(SKIP)
+
+prepare() {
+  cd libsodium
+
+  ./autogen.sh
+}
 
 build() {
-  cd libsodium-${pkgver}
+  cd libsodium
 
   export CC='gcc -m32'
   export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
@@ -30,7 +38,7 @@ build() {
 }
 
 package() {
-  cd libsodium-${pkgver}
+  cd libsodium
 
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/{etc,usr/{bin,lib,include,share}}
