@@ -73,6 +73,9 @@ package() {
   # vim syntax
   install -Dm644 'contrib/syntax/vim/syntax/dockerfile.vim' "$pkgdir/usr/share/vim/vimfiles/syntax/dockerfile.vim"
   install -Dm644 'contrib/syntax/vim/ftdetect/dockerfile.vim' "$pkgdir/usr/share/vim/vimfiles/ftdetect/dockerfile.vim"
+
+  # nano syntax
+  install -Dm644 'contrib/syntax/nano/Dockerfile.nanorc' "$pkgdir/usr/share/nano/Dockerfile.nanorc"
 }
 
 # vim:set ts=2 sw=2 et:
