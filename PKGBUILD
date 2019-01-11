@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=27.0.50.r134999
+pkgver=27.0.50.r135045
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'm17n-lib' 'libxrandr' 'acl'
 makedepends=('git' 'texlive-core')
 conflicts=('emacs')
 options=('docs' '!emptydirs')
-provides=('emacs')
+provides=('emacs' 'emacs-seq')
 source=("git://git.savannah.gnu.org/emacs.git")
 sha256sums=('SKIP')
 

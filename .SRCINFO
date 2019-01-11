@@ -1,6 +1,6 @@
 pkgbase = emacs-lucid-git
 	pkgdesc = GNU Emacs. Official git master.
-	pkgver = 27.0.50.r134999
+	pkgver = 27.0.50.r135045
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = i686
@@ -24,6 +24,7 @@ pkgbase = emacs-lucid-git
 	depends = libmagick6
 	depends = desktop-file-utils
 	provides = emacs
+	provides = emacs-seq
 	conflicts = emacs
 	options = docs
 	options = !emptydirs
