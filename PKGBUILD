@@ -1,7 +1,7 @@
 # Maintainer: Tomas Groth <second@tgc.dk>
 pkgbase='pysword'
 pkgname=('python-pysword' 'python2-pysword')
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='A native Python2/3 reader module for the SWORD Project Bible Modules'
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL2')
 url='https://gitlab.com/tgc-dk/pysword'
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("${pkgbase}-${pkgver}.tar.gz::https://gitlab.com/tgc-dk/pysword/repository/archive.tar.gz?ref=${pkgver}")
-sha256sums=('b8f85448190858b361ac565c00efaafa0eb85bb47e6aa09ef23782076a26726e')
+sha256sums=('93978e4efdf5f1985f24ff1c62de4217be4c163d7e30678306887b6cf1fb275a')
 
 
 # Link ${pkgbase}-${pkgver} to the extracted folder
