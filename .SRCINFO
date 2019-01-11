@@ -1,11 +1,11 @@
 pkgbase = bro-aux
-	pkgdesc = Small auxiliary tools for Bro.
+	pkgdesc = Small auxiliary tools for Zeek.
 	pkgver = 0.42
-	pkgrel = 1
-	url = https://www.bro.org
+	pkgrel = 2
+	url = https://www.zeek.org/manual/release/components/bro-aux/README.html
 	arch = any
-	license = GPL
-	source = https://www.bro.org/downloads/bro-aux-0.42.tar.gz
+	license = BSD
+	source = https://www.zeek.org/downloads/bro-aux-0.42.tar.gz
 	sha512sums = f8fa31e953c1d9e4722dc7cc48c469c1bc687b53e18c2f6682b3ca95209638633ed5e499f701030546ba72fa75de32d332cd8ef42cd9bc00b754099fcb5046a5
 
 pkgname = bro-aux
