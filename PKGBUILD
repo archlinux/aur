@@ -1,7 +1,7 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=taurus
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI port scanner"
 arch=('x86_64')
 md5sums=('956971bed1cdb1953bd6344162177804')
@@ -38,10 +38,12 @@ package() {
 	mv $pkgname-$pkgver $pkgname
 	cp -r $pkgname ~/Documents
 	rm -rf $pkgname		
+	if [ ! -f ~/.local/share/applications ]; then
+		mkdir ~/.local/share/applications
+	fi
 	echo "${shortcut}" > ~/.local/share/applications/taurus.desktop
 	if [ -f ~/.zshrc ]; then
 		echo "alias taurus=${applocation}/taurus" >> ~/.zshrc
-
 	else
 		echo "alias taurus=${applocation}/taurus" >> ~/.bashrc	
 	fi	
