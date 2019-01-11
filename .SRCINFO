@@ -1,7 +1,7 @@
 pkgbase = ipmicfg
 	pkgdesc = Supermicro IPMI configuration tool
 	pkgver = 1.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.supermicro.com/products/nfo/ipmi.cfm
 	arch = x86_64
 	license = custom:"Super Micro Computer"

@@ -4,7 +4,7 @@
 pkgname=ipmicfg
 pkgver=1.29.0
 _pkghash=181029
-pkgrel=1
+pkgrel=2
 pkgdesc="Supermicro IPMI configuration tool"
 makedepends=('unzip')
 depends=("glibc")
@@ -20,7 +20,7 @@ package() {
 
 	cp -dpr --no-preserve=ownership "${srcdir}/IPMICFG_${pkgver}_build.${_pkghash}/Linux/64bit/"* ${pkgdir}/usr/lib/ipmicfg
 	chmod a+rx ${pkgdir}/usr/lib/ipmicfg/IPMICFG-Linux.x86_64
-	ln -s /opt/ipmicfg/IPMICFG-Linux.x86_64 ${pkgdir}/usr/bin/ipmicfg
+	ln -s /usr/lib/ipmicfg/IPMICFG-Linux.x86_64 ${pkgdir}/usr/bin/ipmicfg
 }
 
 
