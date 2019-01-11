@@ -2,7 +2,7 @@
 pkgdesc='Flexible terminal-based text editor'
 pkgname=mle
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 url='https://github.com/adsr/mle'
 license=(Apache)
 arch=(x86_64)
@@ -25,7 +25,13 @@ build () {
 	make prefix=/usr
 }
 
+check () {
+	cd "${pkgname}-${pkgver}"
+	make test
+}
+
 package () {
 	cd "${pkgname}-${pkgver}"
 	make prefix=/usr DESTDIR="${pkgdir}" install
+	install -Dm644 mle.1 "${pkgdir}/usr/share/man/man1/mle.1"
 }
