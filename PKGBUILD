@@ -9,12 +9,12 @@ pkgver=3.13
 pkgrel=1
 pkgdesc="Toolkit for digital imaging"
 arch=('i686' 'x86_64')
-url="http://www.tecgraf.puc-rio.br/im/"
+url="https://www.tecgraf.puc-rio.br/im/"
 makedepends=('lsb-release' 'lua' 'lua51' 'lua52')
 license=('MIT')
 source=(
-  "http://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Sources.tar.gz"
-  "http://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Docs.pdf"
+  "https://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Sources.tar.gz"
+  "https://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Docs.pdf"
 )
 md5sums=('a243c416f0d62424c0b76bf7a8eaaf51'
          '1de67424a448ccb52955fbdb9f6e128e')
