@@ -1,7 +1,7 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=gemini
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical audio player"
 arch=('x86_64')
 md5sums=('fd0aa4cbc708a218bec4dd85eff2ee7c')
@@ -39,12 +39,13 @@ package() {
 	mv $pkgname-$pkgver $pkgname
 	cp -r $pkgname ~/Documents
 	rm -rf $pkgname
+	if [ ! -f ~/.local/share/applications ]; then
+		mkdir ~/.local/share/applications		
+	fi
 	echo "${shortcut}" > ~/.local/share/applications/gemini.desktop
 	if [ -f ~/.zshrc ]; then
 		echo "alias gemini=${applocation}/Gemini" >> ~/.zshrc
-
 	else
 		echo "alias gemini=${applocation}/Gemini" >> ~/.bashrc	
 	fi	
 }
-
