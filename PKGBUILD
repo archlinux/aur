@@ -3,7 +3,7 @@
 
 pkgname=io
 pkgver=2017.06.08
-pkgrel=2
+pkgrel=3
 pkgdesc='IO programming language'
 arch=('x86_64')
 url='http://iolanguage.com/'
