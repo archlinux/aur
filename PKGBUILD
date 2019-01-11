@@ -17,9 +17,9 @@ source=(
   'background-img-use-color.patch'
   'font-width-fix.patch'
   'line-spacing-fix.patch'
-  'https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch'
+  'sgr-mouse-mode.patch'
   '256color.patch'
-  'https://raw.githubusercontent.com/blueyed/PKGBUILD-rxvt-unicode-wide/master/enable-wide-glyphs.patch'
+  'enable-wide-glyphs.patch'
 )
 md5sums=('93782dec27494eb079467dacf6e48185'
          '9e2ccfa07aafa6aeaf1dbdd005437af7'
@@ -28,7 +28,7 @@ md5sums=('93782dec27494eb079467dacf6e48185'
          '9f3248bc397ee76b008375f2ab0f201a'
          'f8325b0a33999db4d5d1eeac4f320156'
          'fb78c2ecf87626962734320cc2bb7ab1'
-         '68fa093594f76e7337438f91c0ef1012')
+         'fa7e51d6a521605ff1b18470510156b0')
 
 prepare() {
   cd $_pkgname-$pkgver
