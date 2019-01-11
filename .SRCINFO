@@ -1,7 +1,7 @@
 pkgbase = cperl
 	pkgdesc = A highly capable, feature-rich programming language
 	pkgver = 5.28.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/perl11/cperl
 	arch = x86_64
 	arch = i686

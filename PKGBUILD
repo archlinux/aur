@@ -7,7 +7,7 @@ INSTALLMANS=0 # disable because most are already provided by Perl
 pkgname=cperl
 pkgver=5.28.1
 _baseversion="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly capable, feature-rich programming language"
 arch=(x86_64 i686)
 license=('GPL' 'PerlArtistic')
@@ -99,10 +99,10 @@ package() {
 
   # Profile script to set paths to perl scripts.
   install -D -m644 "${srcdir}/perlbin.sh" \
-                   "${pkgdir}/etc/profile.d/cperlbin.sh"
+                   "${pkgdir}/etc/profile.d/zzz-cperlbin.sh"
   # Profile script to set paths to perl scripts on csh. (FS#22441)
   install -D -m644 "${srcdir}/perlbin.csh" \
-                  "${pkgdir}/etc/profile.d/cperlbin.csh"
+                  "${pkgdir}/etc/profile.d/zzz-cperlbin.csh"
   # Profile script to set paths to perl scripts on fish. (FS#51191)
   install -D -m 755 "${srcdir}/perlbin.fish" \
                   "${pkgdir}/usr/share/fish/vendor_conf.d/cperlbin.fish"
