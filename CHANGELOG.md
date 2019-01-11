@@ -12,13 +12,17 @@
 - wait for tasks to finish before shutting down 
 - about window layout in non-hidpi mode 
 - 'data files not found' problem 
-### Build system
+### Build System
 
 - remove run command echo, rearrange version logging 
 - fix installer-img not found 
 ### Code Refactoring
 
 - topmost render method rewritten to avoid conditionals 
+### Documentation
+
+- fix build system title case 
+- update changelog 
 ### Features
 
 - data download dialog details 
@@ -38,7 +42,7 @@
 - width of tabs in prefs window lo-dpi mode 
 - integer snapping in downl. mgr + part. effect 
 - add cubemap edge fix to particle group 
-### Build system
+### Build System
 
 - update server datasets descriptor 
 - minor issues 
@@ -80,7 +84,7 @@
 ### Bug Fixes
 
 - null pointer when unloading stars [#322](https://github.com/langurmonkey/gaiasky/issues/322) 
-### Build system
+### Build System
 
 - remove rpm deps as they depend on distro 
 - update build scripts to install4j 7.0.8 
@@ -122,7 +126,7 @@
 - multiple scroll focus objects [#319](https://github.com/langurmonkey/gaiasky/issues/319) 
 - octree generator 
 - emission shader code 
-### Build system
+### Build System
 
 - add xorg-xrandr as dep in aur pkg 
 ### Features
@@ -192,7 +196,7 @@
 - macOS -XstartOnFirstThread flag 
 - global key bindings affect invisible GUIs [#311](https://github.com/langurmonkey/gaiasky/issues/311) 
 - fix `p` double-mapping [#310](https://github.com/langurmonkey/gaiasky/issues/310) 
-### Build system
+### Build System
 
 - installer detects and removes previous versions 
 - new gradle 5 compile dep format 
@@ -275,7 +279,7 @@
 - fix previous fix of search dialog [#307](https://github.com/langurmonkey/gaiasky/issues/307) 
 - search dialog crash if starts with number [#307](https://github.com/langurmonkey/gaiasky/issues/307) 
 - fix error loading lens dirt hi res texture 
-### Build system
+### Build System
 
 - new changelog generator in release script 
 - add changelog generator script 
