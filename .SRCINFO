@@ -1,7 +1,7 @@
 pkgbase = wechat-devtools
 	pkgdesc = WeChat Devtools Linux version.
 	pkgver = 1.02.1812271
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = wechat-devtools
 	source = logo.svg
 	md5sums = 82f20fe9081201db81652eb066c29f9b
 	md5sums = 761567d8ee715c99009ca34ff4f520f0
-	md5sums = 053311e215658614cb885b81ff5d746d
+	md5sums = c87aedb94fdb27085b00fd7851a21945
 	md5sums = de6f2f282e6d813100474d75d8abfeb9
 
 pkgname = wechat-devtools

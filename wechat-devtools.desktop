@@ -9,3 +9,4 @@ Icon=wechat-devtools
 Type=Application
 Terminal=false
 StartupWMClass=crx_ikhdnebglabgeplgnhnjgldiemdflddf
+MimeType=x-scheme-handler/wechatide
