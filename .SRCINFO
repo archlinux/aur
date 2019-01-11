@@ -1,7 +1,7 @@
 pkgbase = orca-git
 	pkgdesc = Screen reader for individuals who are blind or visually impaired (development version)
 	pkgver = r8671+g65086715d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/orca.git
 	install = orca-git.install
 	arch = any
