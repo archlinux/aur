@@ -1,0 +1,44 @@
+pkgbase = gnome-software-git
+	pkgdesc = GNOME Software Tools
+	pkgver = 3.31.1+155+g18c9764d
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Software/
+	arch = x86_64
+	license = GPL2
+	makedepends = appstream-glib
+	makedepends = gnome-desktop
+	makedepends = libpackagekit-glib
+	makedepends = flatpak
+	makedepends = fwupd
+	makedepends = ostree
+	makedepends = docbook-xsl
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gspell
+	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = valgrind
+	source = git+https://gitlab.gnome.org/GNOME/gnome-software.git
+	sha256sums = SKIP
+
+pkgname = gnome-software-git
+	groups = gnome
+	depends = appstream-glib
+	depends = gnome-desktop
+	depends = gsettings-desktop-schemas
+	depends = gspell
+	depends = libpackagekit-glib
+	optdepends = flatpak: Flatpak support plugin
+	optdepends = fwupd: fwupd support plugin
+	optdepends = ostree: OSTree support plugin
+	provides = gnome-software
+	conflicts = gnome-software
+
+pkgname = gnome-software-packagekit-plugin-git
+	pkgdesc = PackageKit support plugin for GNOME Software
+	depends = archlinux-appstream-data
+	depends = gnome-software
+	depends = packagekit
+	provides = gnome-software-packagekit-plugin-git
+	conflicts = gnome-software-packagekit-plugin-git
+
