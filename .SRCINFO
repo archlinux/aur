@@ -1,16 +1,16 @@
 pkgbase = deepin.com.thunderspeed
 	pkgdesc = Deepin Wine Thunderspeed
-	pkgver = 7.10.35.366deepin17
-	pkgrel = 2
+	pkgver = 7.10.35
+	pkgrel = 1
 	url = http://dl.xunlei.com/
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
 	depends = deepin-wine
-	noextract = deepin.com.thunderspeed_7.10.35.366deepin17_i386.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.thunderspeed/deepin.com.thunderspeed_7.10.35.366deepin17_i386.deb
-	md5sums = SKIP
+	noextract = deepin.com.thunderspeed_7.10.35.366deepin18_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.thunderspeed/deepin.com.thunderspeed_7.10.35.366deepin18_i386.deb
+	md5sums = 8b6894e19d625844da4a6a85ab1c40ff
 
 pkgname = deepin.com.thunderspeed
 
