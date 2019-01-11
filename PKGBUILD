@@ -3,7 +3,7 @@
 _pyname=nikola
 _gitname=nikola
 pkgname=nikola-git
-pkgver=8.0.0b3.r0.gd7dcb552
+pkgver=8.0.1.r40.g1d544a5ae
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator. (git version)'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=('python-jinja: for Jinja2 themes'
             'python-phpserialize: for WordPress imports'
             'python-aiohttp: for nikola auto'
             'python-watchdog: for nikola auto'
-            'python-pyyaml: for YAML metadata and datafiles'
+            'python-yaml: for YAML metadata and datafiles'
             'python-toml: for TOML metadata and datafiles')
 makedepends=('git')
 source=("git+https://github.com/getnikola/${_gitname}.git" "make_tab_completion.py")
