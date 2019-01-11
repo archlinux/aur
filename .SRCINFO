@@ -1,0 +1,42 @@
+pkgbase = linux-xanmod-lts414
+	pkgver = 4.14.90
+	pkgrel = 1
+	url = http://www.xanmod.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = python-sphinx
+	makedepends = graphviz
+	options = !strip
+	source = https://github.com/xanmod/linux/archive/4.14.90-xanmod54.tar.gz
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux-xanmod-lts414.preset
+	source = choose-gcc-optimization.sh
+	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch?h=packages/linux-lts&id=fb67d4a886adf352f0f1287a7bf7ba298b1d0606
+	source = 0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-drm-i915-edp-Only-use-the-alternate-fixed-mode-if-it.patch?h=packages/linux-lts&id=fb67d4a886adf352f0f1287a7bf7ba298b1d0606
+	sha256sums = 0729e61a3a08041f3ba3ecb31339e3cd01c7c59bbf2a85494c25f0e804a2c008
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5
+	sha256sums = 36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98
+	sha256sums = 6364edabad4182dcf148ae7c14d8f45d61037d4539e76486f978f1af3a090794
+
+pkgname = linux-xanmod-lts414
+	pkgdesc = The Linux kernel and modules with Xanmod patches
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-xanmod-lts414.preset
+
+pkgname = linux-xanmod-lts414-headers
+	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
+
