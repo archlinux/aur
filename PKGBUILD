@@ -20,6 +20,7 @@ source=(git+https://github.com/tarantool/tarantool.git#commit=$_commit
         git+https://github.com/tarantool/small.git
         git+https://github.com/tarantool/zstd.git
         git+https://github.com/tarantool/luarocks.git#branch=tarantool-1.7
+        libcurl-7.62.patch
         tarantool.sysusers)
 sha1sums=('SKIP'
           'SKIP'
@@ -30,6 +31,7 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
+          '8308459e0d3832cbdf37b8aa678fde37ed627fce'
           '9021b3d50e45f719f0304ab529627cac69a7a149')
 
 pkgver() {
@@ -39,6 +41,10 @@ pkgver() {
 
 prepare() {
   cd tarantool
+
+  # https://github.com/tarantool/tarantool/commit/02da15f710
+  patch -Np1 -i ../libcurl-7.62.patch
+
   git submodule init
   git config -f .gitmodules 'submodule.third_party/luajit.url' "$srcdir/luajit"
   git config -f .gitmodules 'submodule.src/lib/msgpuck.url' "$srcdir/msgpuck"
