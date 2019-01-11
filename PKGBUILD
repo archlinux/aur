@@ -1,12 +1,12 @@
 _pkgname=resvg
 pkgname=${_pkgname}-git
-pkgver=0.5.0.r1.g9d3eb6f
+pkgver=0.5.0.r6.gec7f425
 pkgrel=1
 pkgdesc='SVG rendering library and CLI'
 arch=(i686 x86_64)
 url="https://github.com/RazrFalcon/$_pkgname"
 license=(MPL2)
-makedepends=(cargo qt5-base pango)
+makedepends=(cargo qt5-base pango git gdk-pixbuf2)
 conflicts=(resvg)
 provides=(resvg)
 source=("git+${url}.git#branch=master")
