@@ -1,19 +1,23 @@
 # Collaborator: Vlad M. <vlad@archlinux.net>
-# Maintainer: Jian Zeng <anonymousknight96+aur AT gmail.com>
+# Maintainer: Jian Zeng <anonymousknight96+aur AT gmail.com>, Alexandre Bury <alexandre.bury+aur AT gmail.com>
 
 pkgname=cargo-outdated
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A cargo subcommand for displaying when Rust dependencies are out of date"
 url="https://github.com/kbknapp/cargo-outdated"
 depends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
-source=("$pkgname-$pkgver.crate::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('3dfd9bf724f19c30dc9cb933a967746113e1c8283ab195ce44dd7ac9a8579180')
+# Use crates.io download when available (at this time 0.8.0 is not published)
+#source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
+source=("https://github.com/kbknapp/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+
+
+sha256sums=('6e07552706cdebceaf5b03bcd022082cdafca70e8e095a74ace95c767e39d509')
 
 prepare() {
-    tar xf $pkgname-$pkgver.crate
+    tar xf $pkgname-$pkgver.tar.gz
 }
 
 build() {
