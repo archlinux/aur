@@ -24,7 +24,7 @@ pkgname=(
     'clang-tools-extra-git'
 )
 _pkgname='llvm'
-pkgver=8.0.0_r173651.9597cfd242c
+pkgver=8.0.0_r307160.40cd4b77e9a
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -49,26 +49,12 @@ makedepends=(
 options=('staticlibs' '!strip')
 
 source=(
-    "${_pkgname}::git+https://git.llvm.org/git/llvm.git"
-    'clang::git+https://git.llvm.org/git/clang.git'
-    'clang-tools-extra::git+https://git.llvm.org/git/clang-tools-extra.git'
-    'compiler-rt::git+https://git.llvm.org/git/compiler-rt.git'
-    'lld::git+https://git.llvm.org/git/lld.git'
-    'lldb::git+https://git.llvm.org/git/lldb.git'
-    'polly::git+https://git.llvm.org/git/polly.git'
+    "${_pkgname}::git+https://github.com/llvm/llvm-project.git"
     'llvm-Config-llvm-config.h'
 )
 
-sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
-)
+sha256sums=('SKIP'
+            '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
 
 #
 # BEGIN INTERNAL VARIABLES AND FUNCTIONS
@@ -141,7 +127,7 @@ _install_licenses() {
 #
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}/${_pkgname}"
 
     # This will almost match the output of `llvm-config --version` when the
     # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
@@ -154,22 +140,12 @@ pkgver() {
     echo "${_pkgver//svn}"
 }
 
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-
-    # Anything added here and packaged separately should be pruned in _install_licenses() above.
-    mkdir -pv tools/{clang/tools/extra,lld,lldb,polly} projects/compiler-rt
-    git --git-dir="${srcdir}"/clang/.git archive master|tar -xp -C tools/clang
-    git --git-dir="${srcdir}"/clang-tools-extra/.git archive master|tar -xp -C tools/clang/tools/extra
-    git --git-dir="${srcdir}"/compiler-rt/.git archive master|tar -xp -C projects/compiler-rt
-    git --git-dir="${srcdir}"/lld/.git archive master|tar -xp -C tools/lld
-    git --git-dir="${srcdir}"/lldb/.git archive master|tar -xp -C tools/lldb
-    git --git-dir="${srcdir}"/polly/.git archive master|tar -xp -C tools/polly
-
-    mkdir -p "${srcdir}/build"
-}
 
 build() {
+    cd "${srcdir}/${_pkgname}"
+
+    mkdir -p "${srcdir}/build"
+
     cd "${srcdir}/build"
 
     # Building with any already installed on the system LLVM OCaml bindings is very error-prone.
@@ -211,7 +187,7 @@ build() {
         -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
         -DCMAKE_C_FLAGS="$CFLAGS" \
         -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
-        "../${_pkgname}"
+        "../${_pkgname}/${_pkgname}"
 
     make
     make ocaml_doc

@@ -2,10 +2,4 @@ src
 pkg
 *.pkg.*
 *.log
-clang-tools-extra
-clang
-compiler-rt
-lld
-lldb
 llvm
-polly
