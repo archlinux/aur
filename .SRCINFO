@@ -1,16 +1,16 @@
 pkgbase = eslint-plugin-promise
 	pkgdesc = Enforce best practices for JavaScript promises
-	pkgver = 3.5.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/xjamundx/eslint-plugin-promise
 	arch = any
-	license = MIT
+	license = ISC
 	makedepends = npm
 	depends = nodejs
 	depends = eslint
-	noextract = eslint-plugin-promise-3.5.0.tgz
-	source = http://registry.npmjs.org/eslint-plugin-promise/-/eslint-plugin-promise-3.5.0.tgz
-	md5sums = e0526395be6a321788040d8a9ffcf10e
+	noextract = eslint-plugin-promise-4.0.1.tgz
+	source = http://registry.npmjs.org/eslint-plugin-promise/-/eslint-plugin-promise-4.0.1.tgz
+	md5sums = ba79ae6fd2334c3ff241a6fad9b82320
 
 pkgname = eslint-plugin-promise
 

@@ -1,25 +1,22 @@
-# Maintainer: Adrian Sinclair <adrian@transloadit.com>
+# Maintainer: Anderew Steinke <rkcf@rkcf.me>
+# Contributor: Adrian Sinclair <adrian@transloadit.com>
 
 pkgname=eslint-plugin-promise
-pkgver=3.5.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='Enforce best practices for JavaScript promises'
 arch=('any')
 url='https://github.com/xjamundx/eslint-plugin-promise'
-license=('MIT')
+license=('ISC')
 depends=('nodejs' 'eslint')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-md5sums=('e0526395be6a321788040d8a9ffcf10e')
+md5sums=('ba79ae6fd2334c3ff241a6fad9b82320')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
-  rm -r "$pkgdir"/usr/etc
+	npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
 
-  # Fix permissions
-  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
-
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s ../../../lib/node_modules/$pkgname/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	# Fix permissions
+	find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 }
