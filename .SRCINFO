@@ -40,7 +40,7 @@ pkgbase = gazebo
 	optdepends = simbody: Simbody support
 	optdepends = urdfdom: Load URDF files
 	source = https://bitbucket.org/osrf/gazebo/get/gazebo9_9.6.0.tar.bz2
-	sha256sums = 8a42cf1e5c9cd358fd03e71cf8e00651af8d0ff15793a6942d387d555525c423
+	sha256sums = ebfc99ae8256492ba1ab23b77a59e2149da8a968f9b1c2132a42cd9c8225db57
 
 pkgname = gazebo
 

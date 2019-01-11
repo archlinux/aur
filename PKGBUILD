@@ -30,7 +30,7 @@ optdepends=('bullet: Bullet support'
 makedepends=('cmake' 'doxygen' 'ignition-cmake')
 install="${pkgname}.install"
 source=("https://bitbucket.org/osrf/gazebo/get/gazebo9_${pkgver}.tar.bz2")
-sha256sums=('8a42cf1e5c9cd358fd03e71cf8e00651af8d0ff15793a6942d387d555525c423')
+sha256sums=('ebfc99ae8256492ba1ab23b77a59e2149da8a968f9b1c2132a42cd9c8225db57')
 
 prepare() {
     cd "${srcdir}/osrf-${pkgname}-04a40b564570"
