@@ -37,22 +37,22 @@ prepare() {
 }
 
 build() {
-  unset npm_config_prefix
-  source /usr/share/nvm/init-nvm.sh
-  nvm install ${_node_version}
-  nvm use ${_node_version}
+    unset npm_config_prefix
+    source /usr/share/nvm/init-nvm.sh
+    nvm install ${_node_version}
+    nvm use ${_node_version}
 
-  cp $(which node) node
+    cp $(which node) node
 
-  cd ${srcdir}/wechat_devtools/\$APPDATA/Tencent/微信web开发者工具/package.nw
-  sed -ri -e 's/f\.isMac\?"node-sync-ipc":"node-sync-ipc-nwjs"/"node-sync-ipc"/g' ./js/*.js
-  sed -i 's#-load-extension=\./js#-load-extension=./package.nw/js#' package.json
+    cd ${srcdir}/wechat_devtools/\$APPDATA/Tencent/微信web开发者工具/package.nw
+    sed -ri -e 's/f\.isMac\?"node-sync-ipc":"node-sync-ipc-nwjs"/"node-sync-ipc"/g' ./js/*.js
+    sed -i 's#-load-extension=\./js#-load-extension=./package.nw/js#' package.json
 
-  # rebuild node-sync-ipc
-  cd ./node_modules/node-sync-ipc
-  npm run install
+    # rebuild node-sync-ipc
+    cd ./node_modules/node-sync-ipc
+    npm run install
 
-  nvm deactivate
+    nvm deactivate
 }
 
 package() {
