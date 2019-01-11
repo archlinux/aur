@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = pacman-mirrorlist
+
+[Action]
+Depends = pacman-contrib
+Description = Ranking mirrorlist...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/mirrorlist-rankmirrors

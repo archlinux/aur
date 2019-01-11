@@ -1,0 +1,7 @@
+post_install() {
+	if [ -f "/etc/pacman.d/mirrorlist-rankmirrors.conf.pacsave" ]; then
+		mv -v "/etc/pacman.d/mirrorlist-rankmirrors.conf.pacsave" "/etc/pacman.d/mirrorlist-rankmirrors.conf"
+	else
+		echo -e "\033[1;34mInfo:\033[0m you need to configure \033[1m/etc/pacman.d/mirrorlist-rankmirrors.conf\033[0m file."
+	fi
+}

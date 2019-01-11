@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!mirrorlist-rankmirrors.conf
+!mirrorlist-rankmirrors.hook
+!mirrorlist-rankmirrors-hook.install
+!mirrorlist-rankmirrors.sh
