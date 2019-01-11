@@ -5,8 +5,8 @@
 pkgbase=libcd
 pkgname=('libcd' 'lua-cd' 'lua51-cd' 'lua52-cd')
 pkgdesc="Canvas Draw - 2D vector graphics library"
-pkgver=5.11.1
-pkgrel=2
+pkgver=5.12
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/cd/"
 makedepends=('glu' 'lsb-release' 'lua' 'lua51' 'lua52' 'lua-im' 'lua51-im' 'lua52-im')
@@ -17,9 +17,9 @@ source=(
   "http://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/ftgl-${_ftglver}_Sources.tar.gz"
   "http://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Docs.pdf"
 )
-md5sums=('939e7b40461cc6da02904ae65aaaccd7'
-         '8086c3a80f80f4937f2e1322f03a4c58'
-         '13c527a5bbad9d745bf99dac17239796')
+md5sums=('578d4609719cb8060b3b7f722ec8f7e4'
+         '2874f6a26c86757894a20d2189f91fde'
+         '05e5c870d00a6f5a58e242b1fb6d1ead')
 
 prepare() {
   # Statically link internal ftgl library. It contains Tecgraf's extensions needed by libcdgl.so
