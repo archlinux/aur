@@ -2,7 +2,7 @@
 
 pkgname=miniterm-git
 _pkgname=miniterm
-pkgver=v1.4.1.0.g17d5760
+pkgver=v1.4.2.0.ga2b179e
 pkgrel=1
 pkgdesc="Lightweight VTE terminal emulator with colorscheme support (fork of tinyterm)"
 arch=('i386' 'x86_64')
@@ -22,7 +22,7 @@ build() {
   cd "$_pkgname"
   mkdir -p Release
   cd Release
-  cmake -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
