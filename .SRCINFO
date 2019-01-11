@@ -1,0 +1,13 @@
+pkgbase = emacs-seq
+	pkgdesc = Sequence manipulation functions, included in emacs 27
+	pkgver = 2.20
+	pkgrel = 1
+	url = http://elpa.gnu.org/packages/seq.html
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = https://elpa.gnu.org/packages/seq-2.20.tar
+	sha256sums = 1634947f0944908c7dbfb3b11c7c899b6d486b7ceadb79bd7e60496fade9376f
+
+pkgname = emacs-seq
+
