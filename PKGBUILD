@@ -7,7 +7,7 @@ pkgname='ros-kinetic-catkin'
 pkgver='0.7.11'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=()
@@ -34,8 +34,15 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="catkin-release-release-kinetic-catkin-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/catkin-release/archive/release/kinetic/catkin/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('54cba1b4b0d1ec74d168004e44a002e2f0a6d3794f455605c466f8f8ef911d20')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/catkin-release/archive/release/kinetic/catkin/${pkgver}-${_pkgver_patch}.tar.gz"
+        "cmake-fix.patch"::"https://github.com/ros/catkin/commit/28efc5584d5df89b990b9deb247e794ad55455ca.patch")
+sha256sums=('54cba1b4b0d1ec74d168004e44a002e2f0a6d3794f455605c466f8f8ef911d20'
+            '64a38284f056d48341611bf231f12ba56e155d9f03f551458ff9f07dc0831e3f')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch -p1 -i "${srcdir}/cmake-fix.patch"
+}
 
 build() {
   # Use ROS environment variables
