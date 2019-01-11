@@ -2,7 +2,7 @@
 # Contributor: Pat Brisbin <pbrisbin@gmail.com>
 pkgname='gitsh'
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='An interactive shell for git'
 arch=('i686' 'x86_64')
 url="https://github.com/thoughtbot/gitsh"
