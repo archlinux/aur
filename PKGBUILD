@@ -3,7 +3,7 @@
 
 pkgname=java-openjfx-ea-bin
 _majorver=12
-_buildver=7
+_buildver=8
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} Early-Access Build."
@@ -13,8 +13,8 @@ license=('GPL2')
 depends=('java-openjdk-ea-bin' 'gstreamer' 'libxtst' 'webkit2gtk' 'ffmpeg' 'qt5-base')
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-jmods.zip")
-sha256sums=('7d328f43e4545f34405bad2e8c223aecaa0e8d526b882a21c7036269832f57c6'
-            'cdef95710823c45817f319a787a82dd3823132e242e003b010a78579edffe026')
+sha256sums=('44087786f6955540ea51b5235d55aa3b86ecba2bf0b6d553b57ba7e47dd33e77'
+            '069742789dcb56eded4e667823de628a77de1ebb64213c753e4e201580edb3bc')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
