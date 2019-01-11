@@ -1,4 +1,4 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: jiangxq <jiangxueqian at gmail dot com>
 # Contributor: zh99998 <zh99998@gmail.com>
 # Contributor: 4679kun <admin at 4679 dot us>
@@ -25,7 +25,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  
   patch -p1 -i debian/patches/0001-Use-libcork-dev-in-system.patch
 }
 
