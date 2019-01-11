@@ -6,16 +6,16 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=2.4.0.r167.g9ad1b86
+pkgver=3.0.0.r164.g455959ae
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
 arch=('i686' 'x86_64' 'arm')
 url="http://fishshell.com"
-license=("GPL" "LGPL" "BSD" "MIT")
-depends=('bc' 'pcre2')
+license=("GPL2")
+depends=('ncurses')
 optdepends=('python: fish_update_completions and other tools' 
-            'pkgfile: for command-not-found handler')
+			'xsel: clipboard integration')
 makedepends=('doxygen' 'git' 'ncurses')
 provides=('fish' 'fish-shell')
 conflicts=('fish' 'fish-shell')
