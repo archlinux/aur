@@ -1,7 +1,7 @@
 # Maintainer: Stefan Agner <stefan@agner.ch>
 
 pkgname=qemu-user-static
-pkgdesc="Static build of qemu with user emulation useful for containers/chroot"
+pkgdesc="Statically linked binaries of Qemu with user emulation. Useful for containers/chroot environment with binfmt."
 pkgver=3.1.0
 pkgrel=1
 arch=(x86_64)
