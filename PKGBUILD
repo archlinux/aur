@@ -3,7 +3,7 @@
 
 pkgname='etc-update'
 pkgdesc="CLI to interactively merge .pacnew in /etc"
-pkgver=2.3.53
+pkgver=2.3.55
 pkgrel=1
 arch=('any')
 url="https://wiki.gentoo.org/wiki/Handbook:X86/Portage/Tools#etc-update"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('bash')
 makedepends=('git')
 source=("https://github.com/gentoo/portage/archive/portage-${pkgver}.tar.gz")
-md5sums=('bff59b9562bbf375428be795ce001db3')
+md5sums=('2d5a7cbb20337581c71c435e0f99052b')
 
 package() {
   install -Dm 0755 "portage-portage-${pkgver}/bin/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
