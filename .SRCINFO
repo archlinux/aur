@@ -4,7 +4,6 @@ pkgbase = ipmiview
 	pkgrel = 2
 	url = http://www.supermicro.com/products/nfo/ipmi.cfm
 	arch = x86_64
-	arch = i686
 	license = custom:"Super Micro Computer"
 	makedepends = tar
 	depends = glibc
@@ -13,8 +12,6 @@ pkgbase = ipmiview
 	sha256sums = 41d5fa089912ee10d476a0f6aa3c12765861c1a71cf4f811efaf2e47c4ce9351
 	source_x86_64 = https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_2.14.0_build.180213_bundleJRE_Linux_x64.tar.gz
 	sha256sums_x86_64 = 90f08a8ccb38b4ccc048010dd93f73cc3360cc259331d08b589a567d2a17e2f2
-	source_i686 = https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_2.14.0_build.180213_bundleJRE_Linux.tar.gz
-	sha256sums_i686 = 37b6d1deb21960a75b077b6b87c640c211276dbc0fc8f217cf48dfba460c918b
 
 pkgname = ipmiview
 
