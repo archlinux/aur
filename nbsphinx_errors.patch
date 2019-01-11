@@ -1,0 +1,19 @@
+--- a/docs/source/conf.py	2018-12-27 08:00:03.000000000 +0800
++++ b/docs/source/conf.py	2019-01-11 14:34:00.707392204 +0800
+@@ -121,6 +121,7 @@
+ # See https://github.com/jupyter/nbconvert/issues/878#issuecomment-419655951
+ # Should not be needed after nbconvert 5.5 is out
+ nbsphinx_kernel_name = "python3"
++nbsphinx_allow_errors = True
+ 
+ def setup(app):
+     # https://docs.readthedocs.io/en/latest/guides/adding-custom-css.html
+@@ -133,7 +134,7 @@
+     nbsphinx_execute = 'always'
+ 
+     # Controls when a cell will time out (defaults to 30; use -1 for no timeout):
+-    nbsphinx_timeout = 60
++    nbsphinx_timeout = -1
+ 
+ # -- Options for HTML output ----------------------------------------------
+ 
