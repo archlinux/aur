@@ -2,10 +2,11 @@
 pkgdesc='Flexible terminal-based text editor'
 pkgname=mle
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 url='https://github.com/adsr/mle'
 license=(Apache)
 arch=(x86_64)
+conflicts=(mle-git)
 depends=(pcre termbox lua)
 makedepends=(uthash)
 source=("${url}/archive/v${pkgver}.tar.gz")
