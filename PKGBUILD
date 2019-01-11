@@ -24,7 +24,7 @@
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
 pkgver=18.0rc4
-pkgrel=1
+pkgrel=2
 _codename=Leia
 _tag="$pkgver-$_codename"
 # Found on their respective github release pages. One can check them against
@@ -39,10 +39,10 @@ _tag="$pkgver-$_codename"
 # fmt and crossguid can be found http://mirrors.kodi.tv/build-deps/sources/
 #
 _rtype=Alpha
-_ffmpeg_version="4.0.3-$_codename-Beta"5
-_libdvdcss_version="1.4.2-$_codename-Beta"-5
-_libdvdnav_version="6.0.0-$_codename-$_rtype"-3
-_libdvdread_version="6.0.0-$_codename-$_rtype"-3
+_ffmpeg_version="4.0.3-$_codename-RC5"
+_libdvdcss_version="1.4.2-$_codename-Beta-5"
+_libdvdnav_version="6.0.0-$_codename-$_rtype-3"
+_libdvdread_version="6.0.0-$_codename-$_rtype-3"
 _fmt_version="5.1.0"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
