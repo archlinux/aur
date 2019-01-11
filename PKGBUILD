@@ -3,7 +3,7 @@
 pkgname=bitwarden_rs
 _pkgbase=bitwarden_rs
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/dani-garcia/bitwarden_rs"
@@ -29,6 +29,14 @@ build() {
 	cd "$srcdir/$_src"
 	patch -N -p1 -i "$srcdir/0001-Disable-Vault.patch"
 	cargo build --release
+}
+
+# for aarch64, disable yubikey support (https://github.com/dani-garcia/bitwarden_rs/issues/262)
+build_aarch64() {
+	#build bitwarden_rs
+	cd "$srcdir/$_src"
+	patch -N -p1 -i "$srcdir/0001-Disable-Vault.patch"
+	cargo build --release --no-default-features
 }
 
 package() {
