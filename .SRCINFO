@@ -1,15 +1,15 @@
 pkgbase = gitsh
 	pkgdesc = An interactive shell for git
-	pkgver = 0.12
-	pkgrel = 2
+	pkgver = 0.13
+	pkgrel = 1
 	url = https://github.com/thoughtbot/gitsh
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = ruby
 	depends = readline
-	source = https://github.com/thoughtbot/gitsh/releases/download/v0.12/gitsh-0.12.tar.gz
-	sha512sums = 7f8485a150e2b410e41021f415cfadbd5c7d1e65c149cee9d7b77ec5f5caf34dfd21ba140bedd5ce1474ade75716ffb70b39cc7ed6102a6d61c2a5e70fc37dc7
+	source = https://github.com/thoughtbot/gitsh/releases/download/v0.13/gitsh-0.13.tar.gz
+	sha512sums = 201c8d4145e854f94fc9ead957c221f1d367ddc56a6650947f26d5ff38522042644a331b5ee2e795fce995aa6e0ccb52c1083bb46d8ba90f55aaaeeca44889fa
 
 pkgname = gitsh
 
