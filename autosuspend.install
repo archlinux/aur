@@ -1,4 +1,0 @@
-post_upgrade() {
-    echo ">> The script has been renamed from autosuspend.py to autosuspend."
-    echo ">> Provided systemd services are updated."
-}
