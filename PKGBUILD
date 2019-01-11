@@ -1,18 +1,18 @@
 # Maintainer: Ronny Lorenz <ronny at tbi dot univie dot ac dot at>
 
 pkgname=treekin
-pkgver=0.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Efficient computation of RNA folding dynamics"
 arch=('x86_64' 'i686')
 license=('Custom')
 url="http://www.tbi.univie.ac.at/RNA/Treekin"
-depends=('blas' 'lapack')
+depends=('blas' 'lapack' 'lapacke' 'mlapack>=0.8.1')
 optdepends=('barriers: Compute generated transition rate matrices')
-makedepends=()
+makedepends=('gcc-fortran')
 provides=()
 source=(http://www.tbi.univie.ac.at/RNA/packages/source/Treekin-${pkgver}.tar.gz)
-sha256sums=('2c19e08c8aa2089d1be6141119a4d8d1d62f7375c4341d2c8fe29ec3d51cc159')
+sha256sums=('e4e707134c4396e37f11206be6ab2d79799447118702e97a02de68d1cf02e66c')
 
 build() {
   cd "${srcdir}/Treekin-${pkgver}"
@@ -24,4 +24,3 @@ package() {
   cd "${srcdir}/Treekin-${pkgver}"
   make DESTDIR="${pkgdir}" install || return 1
 }
-
