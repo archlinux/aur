@@ -111,9 +111,9 @@ _lua_iup_package_helper() {
 
   # install files
   install -m755 -d "${pkgdir}/usr/bin"
-  install -m755 "${srcdir}/iup/bin/Linux*_??/Lua${_lua_ver_nodot}/*" "${pkgdir}/usr/bin"
+  install -m755 "${srcdir}"/iup/bin/Linux*_??/Lua${_lua_ver_nodot}/* "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib/lua/${_lua_ver}/"
-  install -Dm755 "${srcdir}/iup/lib/Linux*_??/Lua${_lua_ver_nodot}/*.so" "${pkgdir}/usr/lib/lua/${_lua_ver}/"
+  install -Dm755 "${srcdir}"/iup/lib/Linux*_??/Lua${_lua_ver_nodot}/*.so "${pkgdir}/usr/lib/lua/${_lua_ver}/"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 "${srcdir}/iup/COPYRIGHT" "${pkgdir}/usr/share/licenses/${pkgname}"
 
