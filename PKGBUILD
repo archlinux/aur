@@ -3,8 +3,8 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
 pkgver=9.22
-pkgrel=11
-pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt), with various fixes'
+pkgrel=12
+pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt) (opinionated build)'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
@@ -19,6 +19,7 @@ source=(
   'line-spacing-fix.patch'
   'https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch'
   '256color.patch'
+  'https://raw.githubusercontent.com/blueyed/PKGBUILD-rxvt-unicode-wide/master/enable-wide-glyphs.patch'
 )
 md5sums=('93782dec27494eb079467dacf6e48185'
          '9e2ccfa07aafa6aeaf1dbdd005437af7'
@@ -26,7 +27,8 @@ md5sums=('93782dec27494eb079467dacf6e48185'
          'fef588d6bfe52304bf80e8f1771577b6'
          '9f3248bc397ee76b008375f2ab0f201a'
          'f8325b0a33999db4d5d1eeac4f320156'
-         'fb78c2ecf87626962734320cc2bb7ab1')
+         'fb78c2ecf87626962734320cc2bb7ab1'
+         '68fa093594f76e7337438f91c0ef1012')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -41,6 +43,9 @@ prepare() {
 
   # From https://aur.archlinux.org/packages/rxvt-unicode-256xresources/
   patch -p0 -i ../256color.patch
+
+  # from https://aur.archlinux.org/packages/rxvt-unicode-cvs-patched-wideglyphs/
+  patch -p1 -i ../enable-wide-glyphs.patch
 }
 
 build() {
@@ -69,6 +74,7 @@ build() {
     --disable-transparency \
     --enable-unicode3 \
     --enable-utmp \
+    --enable-wide-glyphs \
     --enable-wtmp \
     --enable-xft \
     --disable-xim \
