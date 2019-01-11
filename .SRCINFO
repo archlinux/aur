@@ -19,7 +19,7 @@ pkgbase = systemtap-git
 	optdepends = sqlite
 	provides = systemtap=4.0
 	conflicts = systemtap
-	source = git+git://sourceware.org/git/systemtap.git
+	source = git+https://sourceware.org/git/systemtap.git
 	source = remove-install-exec-hook.patch
 	md5sums = SKIP
 	md5sums = 6db56245ab316134c9a487e16ea52084

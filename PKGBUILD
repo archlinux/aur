@@ -2,7 +2,7 @@
 # Maintainer: Shang Yuanchun <idealities@gmail.com>
 
 pkgname=systemtap-git
-pkgver=4.0.84.g68bd23fd0
+pkgver=4.0.86.g3a29a2eef
 pkgrel=1
 pkgdesc="provides infrastructure to simplify the gathering of information about the running Linux system."
 url="http://sourceware.org/systemtap/"
@@ -13,7 +13,7 @@ makedepends=('git' 'python-setuptools' 'xmlto' 'cpio')
 optdepends=('sqlite')
 provides=(systemtap=4.0)
 conflicts=(systemtap)
-_gitroot=git://sourceware.org/git/systemtap.git
+_gitroot=https://sourceware.org/git/systemtap.git
 _gitname=systemtap
 source=("git+$_gitroot"
         remove-install-exec-hook.patch)
