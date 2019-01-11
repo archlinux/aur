@@ -54,7 +54,18 @@ build() (
     --disable-libxml2 \
     --disable-vde \
     --disable-sdl \
+    --disable-opengl \
     --disable-xen \
+    --disable-kvm \
+    --disable-fdt \
+    --disable-vhost-net \
+    --disable-vhost-crypto \
+    --disable-vhost-user \
+    --disable-vhost-vsock \
+    --disable-vhost-scsi \
+    --disable-tpm \
+    --disable-qom-cast-debug \
+    --disable-capstone \
     --static
 
   make ARFLAGS="rc"
