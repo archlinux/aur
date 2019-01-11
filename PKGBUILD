@@ -2,7 +2,7 @@
 
 pkgname=bitwarden_rs-git
 _pkgbase=bitwarden_rs
-pkgver=1.3.0.r0.ge061462
+pkgver=1.6.0.r2.g6f52104
 pkgrel=1
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -24,8 +24,8 @@ source=('git+https://github.com/dani-garcia/bitwarden_rs.git'
 noextract=()
 sha512sums=('SKIP'
             '399e63002acb764895bbcf3b983642c8858343b36909eeeb73133de1a9740a3d81232bc206ff6bf3daed50f72354c5e6fd5314d0d044acd9f1cb23a933b1dd74'
-            '773dc0830b4eaf3a1d4134a52a6157e6a94265c6212ae8cc24b9584f9c444b9a0f822325f487ce9c23c363f743f1f64f269352f030e98e336816aee0a68048f6'
-            'a9ed56a349ba6243fbb5aa775681feecbf5dff62acb301e0f214455eb0e55b9c9d01ef8c19432b6b204bc0bc9be43adb2f33d0c48712419d4030182b13931754')
+            '4ce188956f6fe7cfdb711b1505f6344ed2775751ea112a0506dc96455c2705ab8529ec442e4747d7810fc3535b4ca78d1864e874dab5b5306373587097e02658'
+            'a6f2361c7aa83e63b9a557500406b0cd660e0d7f8b16345f859faa3f96e22bdcecd7589711960486fa0401896291f7d46f66882744c69117fc146056f4a49028')
 
 
 pkgver() {
@@ -43,11 +43,19 @@ build() {
 	cargo build --release
 }
 
+# for aarch64, disable yubikey support (https://github.com/dani-garcia/bitwarden_rs/issues/262)
+build_aarch64() {
+	#build bitwarden_rs
+	cd "$srcdir/$_pkgbase"
+	patch -N -p1 -i "$srcdir/0001-Disable-Vault.patch"
+	cargo build --release --no-default-features
+}
+
 package() {
 	# setup systemd service
 	install -D -m 0644 "$srcdir/bitwarden_rs.service" "$pkgdir/usr/lib/systemd/system/bitwarden_rs.service"
 	# copy default config file
-	install -D -m 0644 "$srcdir/$_pkgbase/.env" "$pkgdir/etc/bitwarden_rs.env"
+	install -D -m 0644 "$srcdir/$_pkgbase/.env.template" "$pkgdir/etc/bitwarden_rs.env"
 	# copy binary
 	install -D -m0755 "$srcdir/$_pkgbase/target/release/bitwarden_rs" "$pkgdir/usr/bin/bitwarden_rs"
 }
