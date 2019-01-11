@@ -11,20 +11,20 @@
 # java-runtime suffices.
 
 pkgname=splitter
-pkgver=r592
+pkgver=592
 pkgrel=1
 pkgdesc='Utility for splitting OpenStreetMap maps into tiles.'
 url='http://www.mkgmap.org.uk/'
 license=(GPL)
 arch=(any)
 depends=(java-runtime=8 sh libcups)
-source=("http://www.mkgmap.org.uk/download/${pkgname}-${pkgver}.zip"
+source=("http://www.mkgmap.org.uk/download/${pkgname}-r${pkgver}.zip"
         "${pkgname}")
 sha256sums=('1a9194470b0798bfcdccd80e06dfa51c9449f324224e7e94a84759af54f0c5f4'
             '40f984bc54a946678eeb3d554a84fad32d6a41038d42990d5336d4b1bdfbc63d')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-r${pkgver}"
 
   # Install the executable and jar file.
   install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
