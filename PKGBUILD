@@ -5,8 +5,8 @@
 
 pkgname=home-assistant
 pkgdesc='Open-source home automation platform running on Python 3'
-pkgver=0.84.6
-pkgrel=2
+pkgver=0.85.0
+pkgrel=1
 url="https://home-assistant.io/"
 license=('APACHE')
 arch=('any')
@@ -14,7 +14,7 @@ replaces=('python-home-assistant')
 makedepends=('python-setuptools')
 # NB: this package will install additional python packages in /var/lib/hass/lib depending on components present in the configuration files.
 depends=('python'
-         'python-aiohttp>=3.4.4'
+         'python-aiohttp>=3.5.1'
          'python-aiohttp-cors>=0.5.3'
          'python-astral>=1.7.1'
          'python-async-timeout>=3.0.1'
@@ -24,13 +24,15 @@ depends=('python'
          'python-chardet>=3.0.4'
          'python-cryptography>=2.3.1'
          'python-distro>=1.3.0'
+	 'python-idna>=2.7'
          'python-jinja>=2.10'
          'python-pyjwt>=1.6.4'
          'python-netifaces'
          'python-pip>=8.0.3'
-         'python-pytz>=2018.04'
-         'python-requests>=2.20.1'
-	 'python-ruamel-yaml>=0.15.80'
+         'python-pytz>=2018.07'
+         'python-requests>=2.21.0'
+	 'python-ruamel-yaml>=0.15.81'
+	 'python-slugify>=1.2.6'
          'python-sqlalchemy>=1.2.11'
          'python-vincenty'
          'python-voluptuous>=0.11.5'
@@ -46,7 +48,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
         "home-assistant.sysusers"
         "home-assistant-tmpfile.conf"
         "hass.install")
-sha512sums=('21fb1d5a4993ff85860afa0bbb66a3c54246c2d6ae2d554106f58eb79b3649276dbca47fc8b6037b26ce1c40c586ed493b5b30e992e50de05466ac2417587963'
+sha512sums=('f1afe0ff3188e373da723246669fbfdc2c0ca9199bd4079d58aab1073ec180873cdaddb1a4585360cc17fbbbb084deaed72828ef06830a9352a89019a9b88892'
             'fe96bd3df3ba666fd9f127c466d1dd1dd7314db2e57826a2b319c8a0bfad7aedeac398e748f93c6ecd9c2247ebbae196b8b0e7263b8681e2b7aeab6a8bfeab80'
             '100665ac35370c3ccec65d73521568de21cebf9e46af364124778861c94e338e32ad9abb675d3917f97d351dd7867e3ab2e80c26616330ae7cf0d9dc3f13369b'
             '3e93118c84954f829767dc71ce534c5d02c1c95fc8748714c7a2df28a3a297f59962f8fb7cddf721987eb97d62feabb25acda5d38209e365646ca4a4ef4356e3'

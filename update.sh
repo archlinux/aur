@@ -14,14 +14,12 @@ sed -i -re "s/^pkgver=.*$/pkgver=$VERSION/" PKGBUILD
 # Reset release to 1
 sed -i -re "s/^pkgrel=.*$/pkgrel=1/" PKGBUILD
 
-makepkg --verifysource || echo "Will now update checksums"
-
 updpkgsums
 
 makepkg --printsrcinfo > .SRCINFO
 
 # install all dependencies
-#cat .SRCINFO |grep -E "\s(make)?depends" | sed -re 's/.* = (.*)(>|<|$).*/\1/' | xargs pacaur -S --needed --noedit --noconfirm
+#cat .SRCINFO |grep -E "\s(make)?depends" | sed -re 's/.* = (.*)(>|<|$).*/\1/' | xargs yay -S --needed --nodiffmenu --noeditmenu --nocleanmenu --noupgrademenu
 
 makepkg -si --noconfirm
 
