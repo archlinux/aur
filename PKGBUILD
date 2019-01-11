@@ -4,12 +4,12 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
 pkgver=1.4.1
 pkgrel=1
-pkgdesc="https://sphinx-click.readthedocs.io"
+pkgdesc="Sphinx extension that automatically documents click applications"
 arch=('i686' 'x86_64')
-url="https://github.com/click-contrib/sphinx-click"
+url="https://sphinx-click.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-sphinx')
-checkdepends=('python-coverage' 'python2-coverage' 'python-click-5.1' 'python2-click-5.1')
+checkdepends=('python-coverage' 'python2-coverage' 'python2-sphinx' 'python-click-5.1' 'python2-click-5.1')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('0c1d3c14d90f38cab7355098e61a6d75')
 
