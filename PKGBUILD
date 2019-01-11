@@ -2,8 +2,8 @@
 
 _name=tldr
 pkgname=tldr-cpp-client
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc='C++ client for tldr: a simplified and community-driven man pages'
 arch=('i686' 'x86_64')
 # url="https://github.com/tldr-pages/${pkgname}"
@@ -15,7 +15,7 @@ provides=("${_name}=${pkgver}")
 conflicts=('nodejs-tldr')
 replaces=('nodejs-tldr')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('79fe03c67d05fd79d0743c5934108a76041b82ece29a0422e60e9d6adb40414d')
+sha256sums=('db7a5674ecb80cd7f60c577a2b976c90ecdb340df300230d3b0878f0029e5d37')
 
 build() {
   make -C "${srcdir}/${pkgname}-${pkgver}"
