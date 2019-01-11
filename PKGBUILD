@@ -7,9 +7,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt       # Build kernel with a different name
-_srcver=4.19.10-arch1
-_rtpatchver=rt8
-_pkgver=${_srcver//-arch1/}
+_pkgver=4.19.13
+_rtpatchver=rt10
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=(x86_64)
@@ -17,11 +16,13 @@ url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
-_srcname=archlinux-linux
+_srcname=linux-${_pkgver}
 source=(
-  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=v$_srcver"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_pkgver}.tar.xz"
+  "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_pkgver}.tar.sign"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch
   config         # the main kernel config file
   60-${pkgbase}.hook  # pacman hook for depmod
@@ -36,11 +37,13 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('SKIP'
-            '5a281c91eb3afb8df9b3c5debc3b5b1a0f4076daf3b080e5ec2b6c1a615ebecd'
+sha256sums=('f50a77fc40e13fc406791346fa91926394205874cd50246c7c2374006bacc0c2'
             'SKIP'
+            '7b4d463d0ab872b5d003e39237edca6934fded8ae6c70b747c45a098479b5dba'
+            'SKIP'
+            '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06'
-            '59c7fb7512eb52a088eb32169ec6d538cb68ccad901a338bb3a050d02cd15619'
+            '464d6682d4b30e153d66c17c43894d3bd083366ae2d0b72538f63992947485ce'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -55,10 +58,10 @@ prepare() {
   msg "applying patch-${_pkgver}-${_rtpatchver}.patch"
   patch -Np1 -i ../patch-${_pkgver}-${_rtpatchver}.patch
 
-#  msg2 "Setting version..."
-#  scripts/setlocalversion --save-scmversion
-#  echo "-$pkgrel" > localversion.10-pkgrel
-#  echo "$_kernelname" > localversion.20-pkgname
+  msg2 "Setting version..."
+  scripts/setlocalversion --save-scmversion
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "$_kernelname" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
@@ -71,12 +74,8 @@ prepare() {
 
   msg2 "Setting config..."
   cp ../config .config
-  sed -e "/^CONFIG_LOCALVERSION =/s/=.*/=-${pkgrel}${_kernelname}/" -i .config
-  sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
-  touch .scmversion
-
   make olddefconfig
-#  make menuconfig
+  #make menuconfig # CLI menu for configuration
 
   make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
