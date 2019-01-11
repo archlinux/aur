@@ -7,7 +7,7 @@
 
 pkgname=gazebo
 pkgver=9.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -32,12 +32,14 @@ install="${pkgname}.install"
 source=("https://bitbucket.org/osrf/gazebo/get/gazebo9_${pkgver}.tar.bz2")
 sha256sums=('ebfc99ae8256492ba1ab23b77a59e2149da8a968f9b1c2132a42cd9c8225db57')
 
+_rev="371a247d23f7"
+
 prepare() {
-    cd "${srcdir}/osrf-${pkgname}-04a40b564570"
+    cd "${srcdir}/osrf-${pkgname}-${_rev}"
 }
 
 build() {
-  cd "${srcdir}/osrf-${pkgname}-04a40b564570"
+  cd "${srcdir}/osrf-${pkgname}-${_rev}"
 
   mkdir -p build && cd build
 
@@ -51,6 +53,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/osrf-${pkgname}-04a40b564570/build"
+  cd "${srcdir}/osrf-${pkgname}-${_rev}/build"
   make DESTDIR="${pkgdir}" install
 }
