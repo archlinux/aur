@@ -1,6 +1,6 @@
 pkgbase = gnuradio-git
 	pkgdesc = General purpose DSP and SDR toolkit, with drivers for usrp and fcd.
-	pkgver = 3.8tech.preview.212.g529531fa7
+	pkgver = 3.8tech.preview.229.g121706288
 	pkgrel = 1
 	url = https://github.com/gnuradio/gnuradio
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = gnuradio-git
 	makedepends = boost
 	makedepends = cmake
 	makedepends = python-cairo
+	makedepends = python-yaml
 	makedepends = python-cheetah
 	makedepends = glu
 	makedepends = swig
