@@ -1,0 +1,17 @@
+post_install() {
+    post_upgrade
+
+    echo '-------------------------------------------------------------------------------'
+    echo 'Once you have added Organizr to your web server configuration, browse to'
+    echo '<Your Organizer URL>/check.php to see if you need to enable any PHP extensions.'
+    echo
+    echo 'The directory /var/lib/organizr was created to store your Organizr database.'
+    echo 'Specify this directory as the Database Path when visiting the main site for the'
+    echo 'first time.'
+    echo '-------------------------------------------------------------------------------'
+}
+
+post_upgrade() {
+    chown -R http:http /usr/share/webapps/organizr
+    chown -R http:http /var/lib/organizr
+}
