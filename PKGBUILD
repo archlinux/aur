@@ -8,14 +8,14 @@ pkgdesc="Canvas Draw - 2D vector graphics library"
 pkgver=5.12
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://www.tecgraf.puc-rio.br/cd/"
+url="https://www.tecgraf.puc-rio.br/cd/"
 makedepends=('glu' 'lsb-release' 'lua' 'lua51' 'lua52' 'lua-im' 'lua51-im' 'lua52-im')
 license=('MIT')
 _ftglver=2.1.5
 source=(
-  "http://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Sources.tar.gz"
-  "http://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/ftgl-${_ftglver}_Sources.tar.gz"
-  "http://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Docs.pdf"
+  "https://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Sources.tar.gz"
+  "https://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/ftgl-${_ftglver}_Sources.tar.gz"
+  "https://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Docs.pdf"
 )
 md5sums=('578d4609719cb8060b3b7f722ec8f7e4'
          '2874f6a26c86757894a20d2189f91fde'
