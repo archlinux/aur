@@ -3,8 +3,8 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname=blast+
-pkgver=2.7.1
-pkgrel=2
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)"
 arch=('i686' 'x86_64')
 url="http://blast.ncbi.nlm.nih.gov/"
@@ -15,7 +15,7 @@ conflicts=('blast' 'blast+-bin' 'ncbi-blast' 'cddlib' 'proj')
 provides=('blast' 'blast+-bin''ncbi-blast')
 replaces=('ncbi-blast')
 source=("https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-src.tar.gz")
-sha512sums=('e4b3914f51165ae4c82051068ed9d3470687a4e0f1df6274018c0ba14b241666a570d72265c7d167b8ce2a9075652744244a00e3e95c00c4252da0fbd80d17c6')
+sha256sums=('e03dd1a30e37cb8a859d3788a452c5d70ee1f9102d1ee0f93b2fbd145925118f')
 
 prepare() {
     cd "$srcdir"/ncbi-blast-"$pkgver"+-src/c++ || exit
