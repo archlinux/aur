@@ -1,4 +1,5 @@
-# Maintainer: Jonathan Kotta <jpkotta@gmail.com>
+# Maintainer: Sebastian Lau <lauseb644@gmail.com>
+# Contributor: Jonathan Kotta <jpkotta@gmail.com>
 # Contributor: Andras Biro <bbandi86@gmail.com>
 # Contributor: Alex Forencich <alex at alexforencich dot com>
 # Contributor: schuay <jakob.gruber@gmail.com>
@@ -8,11 +9,11 @@
 
 pkgname=avr-binutils-atmel
 pkgver=2.26
-_atmelver=3.5.4
-pkgrel=1
+_atmelver=3.6.1
+pkgrel=2
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the AVR architecture (from Atmel)"
 url="http://www.atmel.com/tools/ATMELAVRTOOLCHAINFORLINUX.aspx"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('GPL')
 depends=('glibc>=2.17' 'zlib')
 provides=('avr-binutils')
