@@ -2,7 +2,7 @@
 
 _pkgname='linux-gpib'
 pkgname=("$_pkgname-svn")
-pkgver=r1758
+pkgver=r1764
 pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware -- built from the svn source tree'
 arch=('x86_64')
