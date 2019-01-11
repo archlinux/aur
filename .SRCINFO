@@ -1,30 +1,14 @@
 pkgbase = emacs-bookmarkplus
 	pkgdesc = Bookmark+ package, which enhances vanilla Emacs bookmarks in many ways
-	pkgver = 2018.09.21
-	pkgrel = 1
+	pkgver = 2018.10.17
+	pkgrel = 2
 	url = http://www.emacswiki.org/emacs/BookmarkPlus
 	arch = any
 	license = GPL3
-	makedepends = awk
+	makedepends = git
 	depends = emacs
-	provides = emacs-bookmarkplus-mode
-	conflicts = emacs-bookmarkplus-mode
-	source = http://www.emacswiki.org/emacs/download/bookmark+.el
-	source = http://www.emacswiki.org/emacs/download/bookmark+-mac.el
-	source = http://www.emacswiki.org/emacs/download/bookmark+-bmu.el
-	source = http://www.emacswiki.org/emacs/download/bookmark+-1.el
-	source = http://www.emacswiki.org/emacs/download/bookmark+-key.el
-	source = http://www.emacswiki.org/emacs/download/bookmark+-lit.el
-	source = http://www.emacswiki.org/emacs/download/bookmark+-doc.el
-	source = http://www.emacswiki.org/emacs/download/bookmark+-chg.el
-	md5sums = a489d11cc953fd1c5fbc142406129f47
-	md5sums = 3f5454fb622fa72d7ac966332cb455d3
-	md5sums = e8291fdeef6da229c31fa75f05377748
-	md5sums = d2e299a523fb0baacf9abcbb239d188f
-	md5sums = 87a7714bbfa2a8af221a47a403e14010
-	md5sums = 1ec51bb03315722d2fd6e039de8a6fbb
-	md5sums = 7a855f04203da76e4bb2547f1dc53044
-	md5sums = b940a68fd9619ddd270a99dded0ae4d1
+	source = emacs-bookmarkplus::git+https://github.com/emacsmirror/bookmark-plus.git#commit=971114b9a271847bcc495b2254f74e9039ca4be0
+	md5sums = SKIP
 
 pkgname = emacs-bookmarkplus
 
