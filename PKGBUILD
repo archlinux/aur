@@ -1,8 +1,8 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=minikube
-pkgver=0.31.0
-pkgrel=2
+pkgver=0.32.0
+pkgrel=1
 pkgdesc="Minikube is a tool that makes it easy to run Kubernetes locally"
 url="https://github.com/kubernetes/minikube"
 license=('Apache')
