@@ -1,7 +1,7 @@
 pkgbase = lyra
 	pkgdesc = A wonderful 3D cryptocurrency analyzer
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blooser/lyra
 	arch = x86_64
 	license = MIT
