@@ -12,8 +12,8 @@ pkgbase = avr-binutils-atmel
 	options = staticlibs
 	options = !distcc
 	options = !ccache
-	source = http://distribute.atmel.no/tools/opensource/Atmel-AVR-GNU-Toolchain/3.6.1/avr-binutils.tar.bz2
-	md5sums = 2929edd12f24c774f90cb109fc45630b
+	source = avr-binutils-v3.6.1.tar.bz2::http://distribute.atmel.no/tools/opensource/Atmel-AVR-GNU-Toolchain/3.6.1/avr-binutils.tar.bz2
+	md5sums = a4def5b7f4923a5e61d0c34e33165434
 
 pkgname = avr-binutils-atmel
 

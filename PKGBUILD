@@ -19,8 +19,8 @@ depends=('glibc>=2.17' 'zlib')
 provides=('avr-binutils')
 conflicts=('avr-binutils')
 options=('staticlibs' '!distcc' '!ccache')
-source=("http://distribute.atmel.no/tools/opensource/Atmel-AVR-GNU-Toolchain/${_atmelver}/avr-binutils.tar.bz2")
-md5sums=('2929edd12f24c774f90cb109fc45630b')
+source=("avr-binutils-v$_atmelver.tar.bz2::http://distribute.atmel.no/tools/opensource/Atmel-AVR-GNU-Toolchain/${_atmelver}/avr-binutils.tar.bz2")
+md5sums=('a4def5b7f4923a5e61d0c34e33165434')
 
 _builddir=build
 
