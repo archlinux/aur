@@ -1,0 +1,14 @@
+pkgbase = i3title
+	pkgdesc = Outputs window titles in i3 or sway
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jtsymon/i3title
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = i3ipc-python
+	source = git+https://github.com/jtsymon/i3title.git
+	md5sums = SKIP
+
+pkgname = i3title
+
