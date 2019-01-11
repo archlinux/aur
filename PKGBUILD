@@ -1,34 +1,42 @@
-# Maintainer: hexchain <i at hexchain dot org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: jiangxq <jiangxueqian at gmail dot com>
+# Contributor: zh99998 <zh99998@gmail.com>
+# Contributor: 4679kun <admin at 4679 dot us>
 
-_pkgname="simple-obfs"
-pkgname="simple-obfs-git"
-pkgdesc="A simple obfusacting tool, designed as plugin server of shadowsocks."
-pkgver=v0.0.2.r14.g6956a6a
+pkgname=simple-obfs-git
+pkgver=v0.0.5.r39.g5cbfdcc
 pkgrel=1
-arch=(x86_64)
-license=("GPL3")
-url="https://github.com/shadowsocks/simple-obfs"
-source=("git+https://github.com/shadowsocks/simple-obfs.git")
-depends=('libsodium' 'libev' 'udns')
-provides=("simple-obfs")
-conflicts=("simple-obfs")
+pkgdesc='A simple obfusacting tool designed as plugin server of shadowsocks (git version)'
+arch=('x86_64')
+url='https://github.com/shadowsocks/simple-obfs'
+license=('GPL')
+depends=('libev' 'libcork')
+makedepends=('asciidoc' 'xmlto')
+conflicts=('simple-obfs')
+source=("$pkgname::git+https://github.com/shadowsocks/simple-obfs.git")
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    ( set -o pipefail
-      git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+  cd "$pkgname"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long --tags | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+
+prepare() {
+  cd $pkgname
+  
+  patch -p1 -i debian/patches/0001-Use-libcork-dev-in-system.patch
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
-    ./autogen.sh
-    ./configure --prefix=/usr --enable-shared --enable-system-shared-lib
+  cd $pkgname
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    make DESTDIR="$pkgdir/" install
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
 }
-sha256sums=('SKIP')
