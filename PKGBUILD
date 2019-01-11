@@ -1,7 +1,7 @@
 # Maintainer: Saphire ROYET <saphire.royet@protonmail.com>
 # Contributor: Fabien JUIF <fabien.juif@gmail.com>
 pkgname=superpowers
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="2D+3D game making for indies."
 arch=('x86_64')

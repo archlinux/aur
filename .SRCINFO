@@ -1,6 +1,6 @@
 pkgbase = superpowers
 	pkgdesc = 2D+3D game making for indies.
-	pkgver = 5.2.0
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = http://superpowers-html5.com/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = superpowers
 	depends = gcc-libs-multilib
 	depends = gconf
 	depends = nss
-	source = https://github.com/superpowers/superpowers-app/releases/download/v5.2.0/superpowers-v5.2.0-linux-x64.zip
+	source = https://github.com/superpowers/superpowers-app/releases/download/v5.3.0/superpowers-v5.3.0-linux-x64.zip
 	md5sums = f17dcc608494b0d18e128efc5d80e7c4
 
 pkgname = superpowers
