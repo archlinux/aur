@@ -1,3 +1,4 @@
+index 90aad7df..95ceff61 100644
 --- a/src/app/services/services.module.ts
 +++ b/src/app/services/services.module.ts
 @@ -120,20 +120,16 @@ const notificationsService = new NotificationsService(userService, syncService,
@@ -25,3 +26,30 @@
          apiService.setUrls({
              base: isDev ? null : window.location.origin,
              api: isDev ? 'http://localhost:4000' : null,
+index 5c114af5..70e7cb12 100644
+--- a/src/scss/styles.scss
++++ b/src/scss/styles.scss
+@@ -1,5 +1,23 @@
+ @import "../css/webfonts.css";
+ 
++/**** START Bitwarden_RS CHANGES ****/
++/* Hide any link pointing to billing */
++a[href$="/settings/billing"] {display: none !important; }
++
++/* Hide Two-Factor menu in Organization settings */
++app-org-settings a[href$="/settings/two-factor"] { display: none !important; }
++
++/* Hide 2FA Duo button */
++ul.list-group.list-group-2fa > li:nth-child(3) button { display: none !important; }
++
++/* Hide 2FA Email button */
++ul.list-group.list-group-2fa > li:nth-child(5) button { display: none !important; }
++
++/* Hide organization plans */
++app-create-organization > form > div.form-check { display: none !important; }
++app-create-organization > form > h2.mt-5 { display: none !important; }
++/**** END Bitwarden_RS CHANGES ****/
++
+ $primary: #3c8dbc;
+ $primary-accent: #286090;
+ $secondary: #ced4da;
