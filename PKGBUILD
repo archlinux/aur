@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Dave Reisner <dreisner@archlinux.org>
 # Maintainer: Aaron Griffin <aaron@archlinux.org>
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
@@ -11,7 +10,7 @@
 
 pkgname=shadow-selinux
 pkgver=4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('x86_64')
 url='https://github.com/shadow-maint/shadow'
@@ -27,7 +26,7 @@ backup=(etc/login.defs
         etc/pam.d/{chpasswd,newusers,groupadd,groupdel,groupmod}
         etc/pam.d/{chgpasswd,groupmems}
         etc/default/useradd)
-options=(strip debug)
+options=(strip)
 install='shadow.install'
 validpgpkeys=('D5C2F9BFCA128BBA22A77218872F702C4D6E25A8')  # Christian Perrier
 source=("git+https://github.com/shadow-maint/shadow.git#tag=$pkgver"
@@ -39,9 +38,7 @@ source=("git+https://github.com/shadow-maint/shadow.git#tag=$pkgver"
         newusers
         passwd
         shadow.{timer,service}
-        useradd.defaults
-        xstrdup.patch
-        shadow-strncpy-usage.patch)
+        useradd.defaults)
 sha1sums=('SKIP'
           '33a6cf1e44a1410e5c9726c89e5de68b78f5f922'
           '4ad0e059406a305c8640ed30d93c2a1f62c2f4ad'
@@ -52,9 +49,7 @@ sha1sums=('SKIP'
           '611be25d91c3f8f307c7fe2485d5f781e5dee75f'
           'a154a94b47a3d0c6c287253b98c0d10b861226d0'
           'b5540736f5acbc23b568973eb5645604762db3dd'
-          'c173208c5cf34528602f9931468a67b7f68abad3'
-          '6010fffeed1fc6673ad9875492e1193b1a847b53'
-          '21e12966a6befb25ec123b403cd9b5c492fe5b16')
+          'c173208c5cf34528602f9931468a67b7f68abad3')
 
 pkgver() {
   cd "${pkgname/-selinux}"
@@ -65,9 +60,18 @@ pkgver() {
 prepare() {
   cd "${pkgname/-selinux}"
 
-  # need to offer these upstream
-  patch -Np1 <"$srcdir/xstrdup.patch"
-  patch -Np1 <"$srcdir/shadow-strncpy-usage.patch"
+  local backports=(
+    # Fix usermod crash
+    73a876a05612c278da747faeaeea40c3b8d34a53
+    # usermod: prevent a segv
+    48dcf7852e51b9d8e7926737cc7f7823978b7d7d
+    # https://github.com/shadow-maint/shadow/issues/125
+    10e388efc2c786d1ec4ed007891bfefa8826b6fd
+  )
+
+  for commit in "${backports[@]}"; do
+    git cherry-pick -n "$commit"
+  done
 
   autoreconf -v -f --install
 
