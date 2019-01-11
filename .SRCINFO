@@ -16,7 +16,7 @@ pkgbase = python-pyfmi
 	makedepends = python-lxml
 	makedepends = python2-lxml
 	source = https://pypi.io/packages/source/P/PyFMI/PyFMI-2.5.tar.gz
-	source = unzip_dir_encoding_fix.patch
+	source = PR11.patch
 	sha256sums = f0485f786a40448c8ffb9e2b03a587d84cd1fe403c1056f50ab787de18f8ba0b
 	sha256sums = SKIP
 

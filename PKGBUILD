@@ -7,15 +7,15 @@ url="http://www.pyfmi.org"
 arch=('i686' 'x86_64')
 license=('LGPL')
 makedepends=('python-setuptools' 'python2-setuptools' 'fmilib' 'cython' 'cython2' 'python-assimulo' 'python2-assimulo' 'python-lxml' 'python2-lxml')
-source=("https://pypi.io/packages/source/P/PyFMI/PyFMI-${pkgver}.tar.gz" unzip_dir_encoding_fix.patch)
+source=("https://pypi.io/packages/source/P/PyFMI/PyFMI-${pkgver}.tar.gz" PR11.patch)
 sha256sums=('f0485f786a40448c8ffb9e2b03a587d84cd1fe403c1056f50ab787de18f8ba0b' SKIP)
 
 prepare() {
   cd "${srcdir}"/PyFMI-${pkgver}
   rm src/pyfmi/*.c
 
-  # bug in https://github.com/modelon/PyFMI/commit/decbb8340620c13c08e2acb5c4ae52ee2008462c
-  patch -p1 -i "${srcdir}"/unzip_dir_encoding_fix.patch
+  # https://github.com/modelon/PyFMI/issues/10 
+  patch -p1 -i "${srcdir}"/PR11.patch
 }
 
 build() {
