@@ -23,6 +23,5 @@ build() {
 
 package() {
   cd "${srcdir}/BeamerPresenter"
-  install -Dm644 UNLICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 beamerpresenter "$pkgdir/usr/bin/beamerpresenter"
 }
