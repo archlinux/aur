@@ -1,0 +1,23 @@
+pkgbase = termpdf-git
+	pkgdesc = barebones graphical pdf/djvu/cbr/image viewer that works inside some terminals, e.g. kitty
+	pkgver = r147.4616797
+	pkgrel = 1
+	url = https://github.com/dsanson/termpdf
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bc
+	depends = poppler
+	depends = djvulibre
+	depends = ghostscript
+	depends = libtiff
+	depends = unrar
+	depends = imagemagick
+	depends = kitty
+	depends = terminal_dimensions-git
+	optdepends = libsixel: support for terminals besides kitty, if they are libsixel compatible
+	source = git+https://github.com/dsanson/termpdf.git
+	md5sums = SKIP
+
+pkgname = termpdf-git
+
