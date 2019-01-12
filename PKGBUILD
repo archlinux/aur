@@ -39,6 +39,14 @@ prepare() {
   printf '%s\n' >>Doxyfile.in \
     HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
 
+  # Fix compatibility with autoconf-archive v2019.01.06
+  # https://gitlab.freedesktop.org/dbus/dbus/issues/249
+  echo 'm4_pattern_allow(AX_CHECK_GNU_MAKE_HEADLINE)' >> configure.ac
+
+  # Remove incompatible @CODE_COVERAGE_RULES@ from Makefiles
+  # Otherwise this macro is kept in generated Makefiles
+  sed 's/^@CODE_COVERAGE_RULES@$//' -i Makefile.am ./*/Makefile.am
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
