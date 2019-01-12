@@ -1,7 +1,7 @@
 pkgbase = mimosa
 	pkgdesc = Download manager
 	pkgver = 1.1.1
-	pkgrel = 4
+	pkgrel = 1
 	url = https://github.com/blooser/mimosa
 	arch = x86_64
 	license = MIT
