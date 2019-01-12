@@ -1,0 +1,28 @@
+pkgbase = gnome-disk-utility-git
+	pkgdesc = Disk Management Utility for GNOME
+	pkgver = 3.31.2+13+g7f750593
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-disk-utility
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = docbook-xsl
+	makedepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	depends = udisks2
+	depends = gtk3
+	depends = libsecret
+	depends = libpwquality
+	depends = libcanberra
+	depends = libdvdread
+	depends = libnotify
+	depends = parted
+	depends = libsystemd
+	provides = gnome-disk-utility
+	conflicts = gnome-disk-utility
+	source = git+https://gitlab.gnome.org/GNOME/gnome-disk-utility.git
+	sha256sums = SKIP
+
+pkgname = gnome-disk-utility-git
+
