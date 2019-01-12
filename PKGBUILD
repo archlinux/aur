@@ -3,7 +3,7 @@
 
 _gemname=fastlane
 pkgname=$_gemname
-pkgver=2.109.1
+pkgver=2.113.0
 pkgrel=1
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
@@ -11,44 +11,45 @@ url='https://fastlane.tools'
 license=(MIT)
 depends=(
   ruby
-  'ruby-addressable<3' 'ruby-addressable>=2.3'
-  'ruby-babosa<2' 'ruby-babosa>=1.0.2'
-  'ruby-bundler<2' 'ruby-bundler>=1.12'
+  'ruby-addressable>=2.3' 'ruby-addressable<3'
+  'ruby-babosa>=1.0.2' 'ruby-babosa<2'
+  'ruby-bundler>=1.12' 'ruby-bundler<3'
   'ruby-cfpropertylist>=2.3' 'ruby-cfpropertylist<4'
   ruby-colored
-  'ruby-commander-fastlane<5' 'ruby-commander-fastlane>=4.4.6'
-  'ruby-dotenv<3' 'ruby-dotenv>=2.1.1'
+  'ruby-commander-fastlane>=4.4.6' 'ruby-commander-fastlane<5'
+  'ruby-dotenv>=2.1.1' 'ruby-dotenv<3'
   # 'ruby-emoji_regex>=0.1' 'ruby-emoji_regex<1'
   ruby-emoji_regex-0
-  'ruby-excon<1' 'ruby-excon>=0.45'
-  'ruby-faraday<1' 'ruby-faraday>=0.9'
+  'ruby-excon>=0.45' 'ruby-excon<1'
+  'ruby-faraday>=0.9' 'ruby-faraday<1'
   'ruby-faraday-cookie_jar>=0.0.6' 'ruby-faraday-cookie_jar<0.1'
-  'ruby-faraday-middleware<1' 'ruby-faraday-middleware>=0.9'
+  'ruby-faraday-middleware>=0.9' 'ruby-faraday-middleware<1'
   'ruby-fastimage>=2.1' 'ruby-fastimage<3'
-  'ruby-gh_inspector<2' 'ruby-gh_inspector>=1.1.2'
+  'ruby-gh_inspector>=1.1.2' 'ruby-gh_inspector<2'
   'ruby-google-api-client>=0.21.2' 'ruby-google-api-client<0.24'
+  'ruby-google-cloud-storage>=1.15' 'ruby-google-cloud-storage<2'
   # 'ruby-highline<2' 'ruby-highline>=1.7.2'
   ruby-highline-1
   'ruby-json<3'
   # 'ruby-mini_magick<4.6' 'ruby-mini_magick>=4.5.1'
   ruby-mini_magick-4.5
   ruby-multi_json
-  'ruby-multipart-post<2.1' 'ruby-multipart-post>=2'
-  'ruby-multi_xml<1' 'ruby-multi_xml>=0.5'
-  'ruby-plist<4' 'ruby-plist>=3.1'
-  # 'ruby-public_suffix>=2' 'ruby-public_suffix<3'
+  'ruby-multipart-post>=2' 'ruby-multipart-post<2.1'
+  'ruby-multi_xml>=0.5' 'ruby-multi_xml<1'
+  'ruby-plist>=3.1' 'ruby-plist<4'
+  # 'ruby-public_suffix>=2' 'ruby-public_suffix<2.1'
   ruby-public_suffix-2
-  'ruby-rubyzip<2' 'ruby-rubyzip>=1.2.2'
+  'ruby-rubyzip>=1.2.2' 'ruby-rubyzip<2'
   'ruby-security=0.1.3'
   'ruby-simctl>=1.6.3' 'ruby-simctl<1.7'
-  'ruby-slack-notifier<3' 'ruby-slack-notifier>=2'
-  # 'ruby-terminal-notifier<2' 'ruby-terminal-notifier>=1.6.2'
+  'ruby-slack-notifier>=2' 'ruby-slack-notifier<3'
+  # 'ruby-terminal-notifier>=1.6.2' 'ruby-terminal-notifier<2'
   ruby-terminal-notifier-1
-  'ruby-terminal-table<2' 'ruby-terminal-table>=1.4.5'
+  'ruby-terminal-table>=1.4.5' 'ruby-terminal-table<2'
   'ruby-tty-screen>=0.6.3' 'ruby-tty-screen<1'
   'ruby-tty-spinner>=0.8' 'ruby-tty-spinner<1'
-  'ruby-word_wrap<1.1' 'ruby-word_wrap>=1'
-  'ruby-xcodeproj>=1.6.0' 'ruby-xcodeproj<2'
+  'ruby-word_wrap>=1' 'ruby-word_wrap<1.1'
+  'ruby-xcodeproj>=1.6' 'ruby-xcodeproj<2'
   'ruby-xcpretty>=0.3' 'ruby-xcpretty<0.4'
   'ruby-xcpretty-travis-formatter>=0.0.3'
 )
@@ -56,7 +57,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('a80a9147483df656df516751c0b33a9551f5d4ba')
+sha1sums=('4cde6b349e8d867185caf9fc52e88e9cafe7648e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

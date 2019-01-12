@@ -1,76 +1,78 @@
 pkgbase = fastlane
 	pkgdesc = The easiest way to automate beta deployments and releases for your iOS and Android apps
-	pkgver = 2.109.1
+	pkgver = 2.113.0
 	pkgrel = 1
 	url = https://fastlane.tools
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
-	depends = ruby-addressable<3
 	depends = ruby-addressable>=2.3
-	depends = ruby-babosa<2
+	depends = ruby-addressable<3
 	depends = ruby-babosa>=1.0.2
-	depends = ruby-bundler<2
+	depends = ruby-babosa<2
 	depends = ruby-bundler>=1.12
+	depends = ruby-bundler<3
 	depends = ruby-cfpropertylist>=2.3
 	depends = ruby-cfpropertylist<4
 	depends = ruby-colored
-	depends = ruby-commander-fastlane<5
 	depends = ruby-commander-fastlane>=4.4.6
-	depends = ruby-dotenv<3
+	depends = ruby-commander-fastlane<5
 	depends = ruby-dotenv>=2.1.1
+	depends = ruby-dotenv<3
 	depends = ruby-emoji_regex-0
-	depends = ruby-excon<1
 	depends = ruby-excon>=0.45
-	depends = ruby-faraday<1
+	depends = ruby-excon<1
 	depends = ruby-faraday>=0.9
+	depends = ruby-faraday<1
 	depends = ruby-faraday-cookie_jar>=0.0.6
 	depends = ruby-faraday-cookie_jar<0.1
-	depends = ruby-faraday-middleware<1
 	depends = ruby-faraday-middleware>=0.9
+	depends = ruby-faraday-middleware<1
 	depends = ruby-fastimage>=2.1
 	depends = ruby-fastimage<3
-	depends = ruby-gh_inspector<2
 	depends = ruby-gh_inspector>=1.1.2
+	depends = ruby-gh_inspector<2
 	depends = ruby-google-api-client>=0.21.2
 	depends = ruby-google-api-client<0.24
+	depends = ruby-google-cloud-storage>=1.15
+	depends = ruby-google-cloud-storage<2
 	depends = ruby-highline-1
 	depends = ruby-json<3
 	depends = ruby-mini_magick-4.5
 	depends = ruby-multi_json
-	depends = ruby-multipart-post<2.1
 	depends = ruby-multipart-post>=2
-	depends = ruby-multi_xml<1
+	depends = ruby-multipart-post<2.1
 	depends = ruby-multi_xml>=0.5
-	depends = ruby-plist<4
+	depends = ruby-multi_xml<1
 	depends = ruby-plist>=3.1
+	depends = ruby-plist<4
 	depends = ruby-public_suffix-2
-	depends = ruby-rubyzip<2
 	depends = ruby-rubyzip>=1.2.2
+	depends = ruby-rubyzip<2
 	depends = ruby-security=0.1.3
 	depends = ruby-simctl>=1.6.3
 	depends = ruby-simctl<1.7
-	depends = ruby-slack-notifier<3
 	depends = ruby-slack-notifier>=2
+	depends = ruby-slack-notifier<3
 	depends = ruby-terminal-notifier-1
-	depends = ruby-terminal-table<2
 	depends = ruby-terminal-table>=1.4.5
+	depends = ruby-terminal-table<2
 	depends = ruby-tty-screen>=0.6.3
 	depends = ruby-tty-screen<1
 	depends = ruby-tty-spinner>=0.8
 	depends = ruby-tty-spinner<1
-	depends = ruby-word_wrap<1.1
 	depends = ruby-word_wrap>=1
-	depends = ruby-xcodeproj>=1.6.0
+	depends = ruby-word_wrap<1.1
+	depends = ruby-xcodeproj>=1.6
 	depends = ruby-xcodeproj<2
 	depends = ruby-xcpretty>=0.3
 	depends = ruby-xcpretty<0.4
 	depends = ruby-xcpretty-travis-formatter>=0.0.3
-	noextract = fastlane-2.109.1.gem
+	noextract = fastlane-2.113.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fastlane-2.109.1.gem
-	sha1sums = a80a9147483df656df516751c0b33a9551f5d4ba
+	source = https://rubygems.org/downloads/fastlane-2.113.0.gem
+	sha1sums = 4cde6b349e8d867185caf9fc52e88e9cafe7648e
 
 pkgname = fastlane
 
