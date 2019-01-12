@@ -17,7 +17,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell)
 conflicts=(gnome-shell)
-source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=50c28714df987eafdb6dfad8f5a36303cbd26572")
+source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
