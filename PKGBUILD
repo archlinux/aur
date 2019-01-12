@@ -70,6 +70,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
+  "PR15235-unfuck-mysql-updates.patch::https://github.com/xbmc/xbmc/pull/15235.patch"
   'cheat-sse-build.patch'
   'cpuinfo'
 )
@@ -92,6 +93,7 @@ sha256sums=('b4ade8c266666e53b700739a15f3cab3f79c386763aa8fe14cb8f5c7413c562b'
             '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
+            '51f29119be98ddd71980d51b513f5c6a2bd80b0a15d751993026e43bcb63e583'
             '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
 
@@ -102,9 +104,10 @@ prepare() {
   cd "xbmc-$_tag"
 
   # detect if building in arch chroot
-  if [[ "$srcdir" =~ ^\/build.* ]]; then
-    patch -Np1 -i "$srcdir/cheat-sse-build.patch"
-  fi
+  [[ "$srcdir" =~ ^\/build.* ]] && patch -Np1 -i ../cheat-sse-build.patch
+
+  # https://github.com/xbmc/xbmc/pull/15235
+  patch -Np1 -i ../PR15235-unfuck-mysql-updates.patch
 }
 
 build() {
