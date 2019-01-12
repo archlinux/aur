@@ -1,7 +1,7 @@
 # Maintainer: Brian Clemens <brian@tiuxo.com>
 
 pkgname=zerotier-one-git
-pkgver=1.2.12
+pkgver=pkgver
 pkgrel=1
 pkgdesc="Creates virtual Ethernet networks of almost unlimited size."
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://www.zerotier.com/index.html"
 license=('GPL3')
 depends=('gcc-libs' 'libnatpmp' 'miniupnpc')
 makedepends=('ruby-ronn')
-conflicts=('zerotier-one')
-source=("git+git://github.com/zerotier/ZeroTierOne.git")
+conflics=('zerotier-one')
+source=("git+git://github.com/zerotier/ZeroTierOne.git#branch=dev")
 sha512sums=('SKIP')
 
 prepare() {
@@ -35,3 +35,7 @@ package() {
   install -Dm644 debian/zerotier-one.service "$pkgdir"/usr/lib/systemd/system/zerotier-one.service
 }
 
+pkgver() {
+  cd ZeroTierOne
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
