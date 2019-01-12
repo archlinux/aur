@@ -2,13 +2,13 @@
 
 pkgname=kicad-git
 pkgver=r12145.f5144eb5c
-pkgrel=2
+pkgrel=3
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
 license=('GPL')
-depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python'
-         'glm' 'curl' 'swig' 'wxpython' 'opencascade' 'ngspice>=27')
+depends=('glew' 'wxgtk3' 'desktop-file-utils' 'boost-libs' 'python'
+         'glm' 'curl' 'swig' 'python-wxpython' 'opencascade' 'ngspice>=27')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost' 'clang')
 optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
@@ -35,8 +35,11 @@ build() {
     -DBUILD_GITHUB_PLUGIN=ON \
     -DKICAD_SCRIPTING=ON \
     -DKICAD_SCRIPTING_MODULES=ON \
-    -DKICAD_SCRIPTING_WXPYTHON=OFF \
-    -DKICAD_SCRIPTING_ACTION_MENU=ON
+    -DKICAD_SCRIPTING_ACTION_MENU=ON \
+    -DKICAD_SCRIPTING_PYTHON3=ON \
+    -DKICAD_SCRIPTING_WXPYTHON=ON \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
+    -DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON
 
   make
 }
