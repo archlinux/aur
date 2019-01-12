@@ -1,6 +1,6 @@
 pkgbase = artegeek-planner-git
 	pkgdesc = Task and project manager, designed for Pantheon Shell
-	pkgver = latest
+	pkgver = r124.a9a8972
 	pkgrel = 1
 	url = https://github.com/alainm23/planner
 	arch = i686

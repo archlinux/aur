@@ -4,7 +4,7 @@
 _gitname=planner
 _author=alainm23
 pkgname=("artegeek-${_gitname}-git")
-pkgver=latest
+pkgver=r124.a9a8972
 pkgrel=1
 pkgdesc="Task and project manager, designed for Pantheon Shell"
 arch=('i686' 'x86_64')
