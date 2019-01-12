@@ -1,7 +1,7 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=gemini
-pkgver=1.8.1
-pkgrel=3
+pkgver=1.8.3
+pkgrel=4
 pkgdesc="Graphical audio player"
 arch=('x86_64')
 md5sums=('fd0aa4cbc708a218bec4dd85eff2ee7c')
