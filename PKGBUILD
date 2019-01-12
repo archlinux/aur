@@ -10,7 +10,7 @@ pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
 url="https://home.flightgear.org"
 license=('GPL')
-depends=('libxmu' 'libxi' 'zlib' 'libxrandr' 'glu' 'glew' 'openal' 'openscenegraph' 'subversion' 'simgear-git' 'qt5-base' 'qt5-declarative' 'qt5-tools' 'qt5-svg')
+depends=('libxmu' 'libxi' 'zlib' 'libxrandr' 'glu' 'glew' 'openal' 'openscenegraph34' 'subversion' 'simgear-git' 'qt5-base' 'qt5-declarative' 'qt5-tools' 'qt5-svg')
 makedepends=('boost' 'cmake' 'mesa' 'sharutils')
 optdepends=('flightgear-data-git')
 provides=('flightgear=2018.4.0')
