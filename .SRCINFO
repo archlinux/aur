@@ -1,13 +1,14 @@
 pkgbase = notify-send.sh
 	pkgdesc = notify-send drop-in replacement with more features
-	pkgver = 0.2
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/vlevit/notify-send.sh
 	arch = any
 	license = GPL3
 	depends = glib2
-	source = https://github.com/vlevit/notify-send.sh/archive/v0.2.tar.gz
-	md5sums = 8d1473fad15e7ec9cae8d048af4d1f8b
+	source = https://github.com/vlevit/notify-send.sh/archive/v1.0.tar.gz
+	md5sums = 341e6712086b4843b44d663528dcc68a
+	sha256sums = ec06365be9d66b2a2ec57f1867529a20c6b56f40c8c0379eb9af95eebb006b6b
 
 pkgname = notify-send.sh
 
