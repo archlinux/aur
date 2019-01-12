@@ -3,7 +3,7 @@
 # Contributor: Thomas Glamsch <thomas.glamsch@gmail.com>
 # Contributor: Alexander Kratzsch <alexander-kratzsch at web dot de>
 
-_revision=3048
+_revision=3050
 pkgname=koma-script
 pkgver=3.25.${_revision}
 pkgrel=1
@@ -13,7 +13,7 @@ url="http://www.komascript.de/"
 license=('LPPL')
 depends=('texlive-core' 'texlive-latexextra')
 source=("http://sourceforge.net/projects/koma-script/files/KOMA-Script/koma-script-${_revision}.zip")
-sha512sums=('980fa096862d78341996965f0b16e1cf62e3a56d0e5554cce2cc11291c5e6274719c6a09d501d1fb8df4c5e280051693512aa86c8ce735e223cf1f8bfbb8dc48')
+sha512sums=('2e97e291cd83b8db6ae7f1c09808789694ea7a85ff8861857a1c5082cc9ef6108b09473f2d9a6545136f255c9a12e2e5313ebe1722dfa20666abcef2c450390b')
 install=texlive.install
 
 package() {
