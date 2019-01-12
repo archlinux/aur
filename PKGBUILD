@@ -1,8 +1,8 @@
 # Maintainer: Kirill Goncharov <kdgoncharov at gmail dot com>
 pkgname=wasabi-wallet-bin
 _pkgname=wasabi-wallet
-pkgver=1.0.5
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Privacy focused, ZeroLink compliant Bitcoin wallet"
 arch=('x86_64')
 options=(!strip staticlibs)
@@ -18,7 +18,7 @@ source=(
 	"wasabi.png"
 	"LICENSE.md"
 )
-sha256sums=('c1d3ef22541a4565a9cc790daa90e550041d767cb9771abaea6399bb9a5d2f0c'
+sha256sums=('3a2cad9594f1c688b1e44d12dfeaaa00d22d7c19248473ec866f5933bdc783bd'
             'SKIP'
             '4d633e1b310eb2666e314b39a336031facd164f227a2ad595e8a0b8ba4b962ee'
             '861064b9019ac8d0294d46c298dd2f552e078dc2d0f2b52ffb1e9e09a20278a3'
