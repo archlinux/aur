@@ -1,7 +1,7 @@
 pkgbase = rust-src
 	pkgdesc = rustc source
 	pkgver = 1.31.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rust-lang.org
 	arch = any
 	license = Apache
