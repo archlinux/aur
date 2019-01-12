@@ -2,7 +2,7 @@
 
 pkgname=kicad-footprints-git
 _pkgname=kicad-footprints
-pkgver=r2019.01.12.cbc9f8c
+pkgver=r2975.cbc9f8cc
 pkgrel=1
 pkgdesc="KiCad footprint libraries from the official git repo"
 arch=('any')
@@ -12,23 +12,12 @@ makedepends=('cmake' 'git')
 options=('!strip')
 conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library' 'kicad-footprints')
 provides=('kicad-footprints')
-source=()
-md5sums=()
-
-prepare(){
-  if [ -d ${_pkgname} ]; then
-    cd ${_pkgname}
-    git fetch --depth 1
-    git checkout master
-  else
-    git clone --depth 1 https://github.com/KiCad/kicad-footprints.git
-  fi
-}
+source=("git://github.com/KiCad/kicad-footprints.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  _DATE=$(date -d @`git log -1 --format="%at"` --rfc-3339='date')
-  printf "r%s.%s" "${_DATE//-/.}" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
