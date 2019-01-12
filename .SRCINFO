@@ -1,6 +1,6 @@
 pkgbase = redmine
 	pkgdesc = A flexible project management web application. Written using the Ruby on Rails, it is cross-platform and cross-database.
-	pkgver = 3.4.6
+	pkgver = 4.0.0
 	pkgrel = 0
 	url = https://www.redmine.org
 	arch = any
