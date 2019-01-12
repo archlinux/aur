@@ -3,12 +3,12 @@
 pkgname=minetest-mods-dmobs-git
 _gitname=${pkgname%-git}
 pkgver=73.0e43362
-pkgrel=2
+pkgrel=3
 #epoch=
 pkgdesc="D00Med mobs mod, some animals and monsters, ie. butterfly, nyancat, golem or skeleton."
 arch=('any')
 url="https://github.com/danielmeek32/animals"
-license=('LGPL,CCPL')
+license=('LGPL' 'CCPL')
 #groups=()
 depends=('minetest-mod-mobs_redo-git')
 makedepends=('git')
@@ -33,6 +33,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_gitname"
-	mkdir -p "$pkgdir/usr/share/minetest/mods/${_gitname#*mod-}"
-	cp -r * "$pkgdir/usr/share/minetest/mods/${_gitname#*mod-}"
+	mkdir -p "$pkgdir/usr/share/minetest/mods/${_gitname#*mods-}"
+	cp -r * "$pkgdir/usr/share/minetest/mods/${_gitname#*mods-}"
 }
