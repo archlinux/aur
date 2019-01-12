@@ -1,6 +1,6 @@
 pkgbase = linphone-git
 	pkgdesc = A Voice-over-IP phone library and CLI
-	pkgver = 3.12.0.r2949.g175375918
+	pkgver = 3.12.0.r3175.gc8ccaeca5
 	pkgrel = 1
 	url = http://www.linphone.org
 	install = linphone.install
@@ -18,6 +18,7 @@ pkgbase = linphone-git
 	depends = belr-git
 	depends = bzrtp-git
 	depends = ffmpeg
+	depends = lime-git
 	depends = libnotify
 	depends = libpulse
 	depends = libsoup

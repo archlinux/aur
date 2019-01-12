@@ -5,15 +5,15 @@
 
 pkgname=linphone-git
 _pkgname=linphone
-pkgver=3.12.0.r2949.g175375918
+pkgver=3.12.0.r3175.gc8ccaeca5
 pkgrel=1
 pkgdesc="A Voice-over-IP phone library and CLI"
 arch=('x86_64')
 url="http://www.linphone.org"
 license=('GPL')
 depends=('alsa-lib' 'bctoolbox-git' 'belcard-git' 'belle-sip-git' 'belr-git'
-    'bzrtp-git' 'ffmpeg' 'libnotify' 'libpulse' 'libsoup' 'libv4l' 'libxv'
-    'mediastreamer-git' 'ortp-git' 'soci-git' 'speex' 'v4l-utils' 'xsd')
+    'bzrtp-git' 'ffmpeg' 'lime-git' 'libnotify' 'libpulse' 'libsoup' 'libv4l'
+    'libxv' 'mediastreamer-git' 'ortp-git' 'soci-git' 'speex' 'v4l-utils' 'xsd')
 makedepends=('cmake' 'doxygen' 'graphviz' 'pkg-config' 'python-pystache')
 optdepends=('pulseaudio')
 options=('!emptydirs')
