@@ -1,6 +1,6 @@
 pkgbase = marblemarcher
 	pkgdesc = A Fractal Physics Game
-	pkgver = 20190109
+	pkgver = 20190112
 	pkgrel = 1
 	url = https://github.com/HackerPoet/MarbleMarcher
 	arch = x86_64

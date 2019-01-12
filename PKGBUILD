@@ -1,6 +1,6 @@
 # Maintainer: Mutantoe <mutantoe+aur@mailbox.org>
 pkgname=marblemarcher
-pkgver=20190109
+pkgver=20190112
 pkgrel=1
 pkgdesc="A Fractal Physics Game"
 arch=(x86_64)
