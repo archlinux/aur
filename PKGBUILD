@@ -4,7 +4,7 @@
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns
 
 pkgname=plymouth-git
-pkgver=0.9.3.r24.g2b5b27c
+pkgver=0.9.4.r44.gc8f1256
 pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="http://www.freedesktop.org/wiki/Software/Plymouth/"
@@ -36,7 +36,6 @@ source=("git+http://anongit.freedesktop.org/git/plymouth"
 	'plymouth.initcpio_install'
 	'sd-plymouth.initcpio_install'
 	'plymouth-quit.service.in.patch'
-	'plymouth-set-default-theme.in.patch'
 	'plymouth-update-initrd.patch')
 
 md5sums=('SKIP'
@@ -55,7 +54,6 @@ md5sums=('SKIP'
          'c17e915b19a469198a37dd7376a846c7'
          'af3c3eadc80e240416d11b2d5983dfb5'
          '69f16be8d44b25c199eb53c436884b07'
-         'bcd03754af1833376d5e8c5722586a89'
          '98c20619291ee7c5a1c5f24b50e92db8')
 
 pkgver() {
@@ -66,7 +64,6 @@ pkgver() {
 
 prepare() {
 	cd plymouth
-	patch -p1 -i $srcdir/plymouth-set-default-theme.in.patch
 	patch -p1 -i $srcdir/plymouth-update-initrd.patch
 	patch -p1 -i $srcdir/plymouth-quit.service.in.patch
 }
