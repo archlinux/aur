@@ -1,6 +1,7 @@
-#Maintainer: Lubosz <lubosz@gmail.com>
+#Maintainer: junglerobba <tobias.langendorf@gmail.com>
+#Contributor: Lubosz <lubosz@gmail.com>
 #Contributor: helq <linuxero789@gmail.com>
-#Contributor: junglerobba <tobias.langendorf@gmail.com>
+
 
 pkgname=gsettings-desktop-schemas-dev
 _realpkgname=gsettings-desktop-schemas
