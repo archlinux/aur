@@ -1,6 +1,6 @@
 pkgbase = bzrtp-git
 	pkgdesc = Opensource implementation of ZRTP keys exchange protocol
-	pkgver = 1.0.6.r22.gc4625d0
+	pkgver = 1.0.6.r36.gc01c277
 	pkgrel = 1
 	url = https://github.com/BelledonneCommunications/bzrtp
 	arch = x86_64
