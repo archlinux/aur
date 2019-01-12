@@ -26,7 +26,7 @@ optdepends=('rvm: a command line tool to easily manage multiple Ruby environment
             'mercurial: Mercurial repository browsing'
             'cvs: CVS repository browsing'
             'imagemagick: Image export support for Gantt'
-            'rails-ruby: alternative Ruby on Rails instalation')
+            'ruby-rails: alternative Ruby on Rails instalation')
 backup=('usr/share/webapps/redmine/config/configuration.yml'
        'usr/share/webapps/redmine/config/additional_environment.rb'
        'usr/share/webapps/redmine/config/database.yml')
