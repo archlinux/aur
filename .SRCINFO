@@ -1,0 +1,18 @@
+pkgbase = phgen
+	pkgdesc = Pattern-based random phrase generation using WordNet
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/AbsurdlySuspicious/PhraseGen
+	arch = x86_64
+	arch = i686
+	license = Apache
+	depends = java-environment
+	provides = phgen
+	conflicts = phgen-git
+	source = phgen-bin
+	source = https://github.com/AbsurdlySuspicious/PhraseGen/releases/download/1.0/phgen-1.0.jar
+	sha256sums = 29cecf4462abc2d92cf0153af8892902c8768d582f14c659715b5a0dfba5a6e4
+	sha256sums = 52794e20c21f7e5efa559e0576db01bdeab4cf7e4449261418b2f220ab4a42e3
+
+pkgname = phgen
+
