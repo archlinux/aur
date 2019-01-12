@@ -7,6 +7,7 @@ pkgbase = proxychains-ng-git
 	license = GPL
 	depends = glibc
 	provides = proxychains
+	provides = proxychains-ng
 	conflicts = proxychains
 	replaces = proxychains
 	backup = etc/proxychains.conf
