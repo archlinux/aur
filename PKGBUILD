@@ -3,7 +3,7 @@
 
 pkgname=bcmatroska2-git
 _pkgname=libmatroska-c
-pkgver=0.23.r2.g85e73f9
+pkgver=0.23.r11.gd2e052b
 pkgrel=1
 pkgdesc="A C library for working with matroska files"
 arch=('i686' 'x86_64')
