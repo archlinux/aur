@@ -1,0 +1,21 @@
+pkgbase = bpftrace
+	pkgdesc = High-level tracing language for Linux eBPF
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/iovisor/bpftrace
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = llvm
+	depends = libelf
+	depends = zlib
+	depends = llvm-libs
+	depends = clang
+	provides = bpftrace
+	conflicts = bpftrace-git
+	source = https://github.com/iovisor/bpftrace/archive/v0.8.tar.gz
+	sha512sums = 7428c2bdcfb60d30f933d0b27fd49512a227f989b20edf2f8f86368eb5ddc89a7e58c671731858795f83efcc843c8830596843672e8690c54d35ec79218f4439
+
+pkgname = bpftrace
+
