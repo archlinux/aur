@@ -1,6 +1,6 @@
 pkgbase = imagination
 	pkgdesc = Imagination is a lightweight and simple DVD slideshow maker in GTK+2.
-	pkgver = 3.1
+	pkgver = 3.4
 	pkgrel = 1
 	url = http://imagination.sourceforge.net/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = imagination
 	depends = ffmpeg
 	depends = sox
 	provides = imagination
-	source = http://downloads.sourceforge.net/imagination/imagination-3.1.tar.bz2
-	sha256sums = 96f53656eae043e061e35fa09e81386c04a9edef9fff75f047f880553e1777a8
+	source = http://downloads.sourceforge.net/imagination/imagination-3.4.tar.bz2
+	sha256sums = 1c7cceb54a2316586c39149364110fb1a15f0a580be130847e78a256529d55e4
 
 pkgname = imagination
 

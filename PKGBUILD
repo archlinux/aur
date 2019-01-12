@@ -3,7 +3,7 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[dot]com>
 #
 pkgname="imagination"
-pkgver="3.1"
+pkgver="3.4"
 pkgrel="1"
 pkgdesc="Imagination is a lightweight and simple DVD slideshow maker in GTK+2."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('gtk2' 'ffmpeg' 'sox')
 makedepends=('intltool' 'docbook-xsl')
 provides=('imagination')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('96f53656eae043e061e35fa09e81386c04a9edef9fff75f047f880553e1777a8')
+sha256sums=('1c7cceb54a2316586c39149364110fb1a15f0a580be130847e78a256529d55e4')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
