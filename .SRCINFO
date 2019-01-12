@@ -1,16 +1,16 @@
-pkgbase = minetest-mod-dmobs-git
+pkgbase = minetest-mods-dmobs-git
 	pkgdesc = D00Med mobs mod, some animals and monsters, ie. butterfly, nyancat, golem or skeleton.
 	pkgver = 73.0e43362
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danielmeek32/animals
 	arch = any
 	license = LGPL,CCPL
 	makedepends = git
 	depends = minetest-mod-mobs_redo-git
 	optdepends = minetest-usrdir_patch
-	provides = minetest-mod-dmobs
-	source = minetest-mod-dmobs::git+git://github.com/D00Med/dmobs
+	provides = minetest-mods-dmobs
+	source = minetest-mods-dmobs::git+git://github.com/D00Med/dmobs
 	md5sums = SKIP
 
-pkgname = minetest-mod-dmobs-git
+pkgname = minetest-mods-dmobs-git
 
