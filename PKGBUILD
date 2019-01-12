@@ -2,7 +2,7 @@
 
 pkgname=kicad-symbols-git
 _pkgname=kicad-symbols
-pkgver=r2799.f354247
+pkgver=r3885.a12491ad
 pkgrel=1
 pkgdesc="KiCad schematic symbol libraries from the official git repo"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('cmake' 'git')
 conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library' 'kicad-symbols')
 provides=('kicad-symbols')
-source=("git://github.com/KiCad/kicad-symbols.git")
+source=("git+https://github.com/KiCad/kicad-symbols.git")
 md5sums=('SKIP')
 
 pkgver() {
