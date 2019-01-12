@@ -2,7 +2,7 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
 pkgname=rofimoji-git
 _pkgname=rofimoji
-pkgver=1.3.0.r1.ga84847f
+pkgver=2.0.0.r0.g96dcd6b
 pkgrel=1
 pkgdesc="A simple emoji picker for rofi"
 depends=('rofi' 'python3' 'xdotool')
