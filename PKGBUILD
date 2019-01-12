@@ -2,8 +2,8 @@
 
 pkgname=kicad-footprints-git
 _pkgname=kicad-footprints
-pkgver=r2391.2d650a05
-pkgrel=1
+pkgver=r1.104707f
+pkgrel=2
 pkgdesc="KiCad footprint libraries from the official git repo"
 arch=('any')
 url="https://github.com/KiCad/kicad-footprints"
@@ -12,8 +12,12 @@ makedepends=('cmake' 'git')
 options=('!strip')
 conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library' 'kicad-footprints')
 provides=('kicad-footprints')
-source=("git://github.com/KiCad/kicad-footprints.git")
-md5sums=('SKIP')
+source=()
+md5sums=()
+
+prepare() {
+  git clone --depth 1 https://github.com/KiCad/kicad-footprints.git
+}
 
 pkgver() {
   cd "$srcdir/$_pkgname"
