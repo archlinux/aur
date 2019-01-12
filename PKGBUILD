@@ -8,7 +8,7 @@ _nginxver=1.15.8
 
 pkgdesc='nchan nginx module'
 arch=('i686' 'x86_64')
-depends=("nginx-mainline==${_nginxver}")
+depends=("nginx-mainline=${_nginxver}")
 url="https://nchan.io/"
 license=('MIT')
 
