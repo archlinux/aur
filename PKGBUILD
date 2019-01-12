@@ -4,7 +4,7 @@
 
 pkgbase=mariadb-10.3
 pkgname=('libmariadbclient-10.3' 'mariadb-clients-10.3' 'mytop-10.3' 'mariadb-10.3')
-pkgver=10.3.10
+pkgver=10.3.11
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
@@ -15,7 +15,7 @@ validpgpkeys=('199369E5404BD5FC7D2FE43BCBCB082A1BB943DB') # MariaDB Package Sign
 
 source=("https://mirrors.ukfast.co.uk/sites/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc}
         fix_libmariadb_ignored_host.patch)
-sha256sums=('57767c048982811c7ab21d8527f6f36aa897386e8c7235f11b5505a924d68eda'
+sha256sums=('211655b794c9d5397ba3be6c90737eac02e882f296268299239db47ba328f1b2'
             'SKIP'
             'fd186c795c393b6898f28d731390bb14ea8444230c8340a5f4cfbccb16ea10e9')
 
@@ -160,6 +160,9 @@ package_mariadb-10.3() {
 
   mkdir etc/my.cnf.d
 
+  # Arch Linux uses systemd
+  rm -r etc/mysql/init.d/
+
   mv usr/lib/sysusers.d/{sysusers,mariadb}.conf
   mv usr/lib/tmpfiles.d/{tmpfiles,mariadb}.conf
 
@@ -182,7 +185,8 @@ package_mariadb-10.3() {
   rm usr/lib/mysql/plugin/{auth_gssapi_client.so,dialog.so,mysql_clear_password.so,sha256_password.so}
   rm usr/share/man/man1/mysql_config.1
   rm -r usr/include/
-  rm -r usr/share/mysql/{aclocal,pkgconfig}
+  rm -r usr/share/mysql/aclocal
+  rm -r usr/lib/pkgconfig
 
   # provided by mariadb-clients
   rm usr/bin/{mysql,mysql_plugin,mysql_upgrade,mysqladmin,mysqlbinlog,mysqlcheck,mysqldump,mysqlimport,mysqlshow,mysqlslap,mysqltest}
