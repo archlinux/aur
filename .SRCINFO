@@ -1,12 +1,13 @@
 pkgbase = wpa-cute
 	pkgdesc = A graphical wpa_supplicant front end
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/loh-tar/wpa-cute
 	install = wpa-cute.install
 	arch = x86_64
 	license = BSD
 	depends = qt5-base
+	depends = qt5-svg
 	depends = wpa_supplicant
 	source = wpa-cute-0.8.1.tar.gz::https://github.com/loh-tar/wpa-cute/archive/v0.8.1.tar.gz
 	md5sums = 38eef48b4d70c51063c0d8f230cbb703
