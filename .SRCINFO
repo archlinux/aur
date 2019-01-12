@@ -1,0 +1,19 @@
+pkgbase = gnome-font-viewer-git
+	pkgdesc = A font viewer utility for GNOME
+	pkgver = 3.30.0+38+g85c4210
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-font-viewer
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = gnome-desktop
+	provides = gnome-font-viewer
+	conflicts = gnome-font-viewer
+	source = git+https://gitlab.gnome.org/GNOME/gnome-font-viewer.git
+	sha256sums = SKIP
+
+pkgname = gnome-font-viewer-git
+
