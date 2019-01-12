@@ -2,8 +2,8 @@
 
 pkgname=kicad-footprints-git
 _pkgname=kicad-footprints
-pkgver=r1.104707f
-pkgrel=2
+pkgver=r2019.01.12.cbc9f8c
+pkgrel=1
 pkgdesc="KiCad footprint libraries from the official git repo"
 arch=('any')
 url="https://github.com/KiCad/kicad-footprints"
@@ -15,13 +15,20 @@ provides=('kicad-footprints')
 source=()
 md5sums=()
 
-prepare() {
-  git clone --depth 1 https://github.com/KiCad/kicad-footprints.git
+prepare(){
+  if [ -d ${_pkgname} ]; then
+    cd ${_pkgname}
+    git fetch --depth 1
+    git checkout master
+  else
+    git clone --depth 1 https://github.com/KiCad/kicad-footprints.git
+  fi
 }
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _DATE=$(date -d @`git log -1 --format="%at"` --rfc-3339='date')
+  printf "r%s.%s" "${_DATE//-/.}" "$(git rev-parse --short HEAD)"
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = kicad-footprints-git
 	pkgdesc = KiCad footprint libraries from the official git repo
-	pkgver = r1078.bdb3d3cd
+	pkgver = r2019.01.12.cbc9f8c
 	pkgrel = 1
 	url = https://github.com/KiCad/kicad-footprints
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = kicad-footprints-git
 	conflicts = kicad-library-3d
 	conflicts = kicad-library
 	conflicts = kicad-footprints
-	source = git://github.com/KiCad/kicad-footprints.git
-	md5sums = SKIP
+	options = !strip
 
 pkgname = kicad-footprints-git
 
