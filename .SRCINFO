@@ -1,0 +1,17 @@
+pkgbase = ruby-google-cloud-core
+	pkgdesc = google-cloud-core is the internal shared library for google-cloud-ruby.
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://rubygems.org/gems/google-cloud-core
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-google-cloud-env>=1
+	depends = ruby-google-cloud-env<2
+	noextract = google-cloud-core-1.2.7.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/google-cloud-core-1.2.7.gem
+	sha256sums = 8798149e8f06ec2afcea3e3b9b88f3636771aa4b475a78ec7133429968d6d107
+
+pkgname = ruby-google-cloud-core
+
