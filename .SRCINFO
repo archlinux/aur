@@ -1,0 +1,14 @@
+pkgbase = mimosa
+	pkgdesc = Download manager
+	pkgver = 1.1.1
+	pkgrel = 4
+	url = https://github.com/blooser/mimosa
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = qt5-base
+	source = https://github.com/blooser/mimosa/archive/v1.1.1.tar.gz
+	md5sums = b0cdb9921560264d423d26f3777a3d29
+
+pkgname = mimosa
+
