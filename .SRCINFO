@@ -1,7 +1,7 @@
 pkgbase = xiphos
 	pkgdesc = Bible study tool for GTK+
 	pkgver = 4.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://xiphos.org/
 	arch = i686
 	arch = x86_64
@@ -18,11 +18,12 @@ pkgbase = xiphos
 	depends = gtkhtml4
 	depends = biblesync<=2.0.0
 	depends = enchant1.6
-	depends = gconf
 	provides = gnomesword
 	conflicts = gnomesword
 	source = xiphos-4.1.0.tar.gz::https://github.com/crosswire/xiphos/archive/4.1.0.tar.gz
+	source = http://deb.debian.org/debian/pool/main/x/xiphos/xiphos_4.1.0.1+dfsg1-1.debian.tar.xz
 	sha512sums = f2da65a0cf10cda5ca471a09d351be8e2e5601857b4cb363ba45865e4595bebbc9b8cfa47660a1106b1521b4059d341c7e8c04c0c712387b913bdf994d1c6400
+	sha512sums = 7438bc523b8a6d50a2474e43d9057081667436b8292eef9164a5478471e8dc3380f75a84c736ff95ce4ba29bc99588f1a48cf9dfbf5c7c431dd0d53374bfeeb6
 
 pkgname = xiphos
 
