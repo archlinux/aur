@@ -27,7 +27,7 @@ prepare(){
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  _DATE=$(date --rfc-3339='date')
+  _DATE=$(date -d @`git log -1 --format="%at"` --rfc-3339='date')
   printf "r%s.%s" "${_DATE//-/.}" "$(git rev-parse --short HEAD)"
 }
 
