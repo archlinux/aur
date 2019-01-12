@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Kosteley <zzismd@gmail.com>
 _pkgname=screenshotgun
 pkgname=$_pkgname-git
-pkgver=0.17_20180409_2
+pkgver=0.18_20190112_5
 pkgrel=1
 pkgdesc="Open cross-platform screenshoter with cloud support and server part"
 arch=(any)
@@ -9,7 +9,7 @@ url="http://screenshotgun.com"
 license=('GPL')
 groups=()
 depends=('qt5-base')
-makedepends=('git' 'cmake>=3.3')
+makedepends=('cmake>=3.5.1' 'git')
 optdepends=()
 provides=()
 conflicts=()
@@ -25,14 +25,14 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  git checkout tags/v0.17-20180409-2
+  git checkout tags/v0.18-20190112-5
 }
 
 build() {
   mkdir "$srcdir/build-$_pkgname"
   cd "$srcdir/build-$_pkgname"
 
-  cmake "$srcdir/$_pkgname" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/$_pkgname"
   cmake --build .
 }
 
