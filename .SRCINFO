@@ -1,0 +1,15 @@
+pkgbase = digikey-kicad-library-git
+	pkgdesc = An atomic parts library for Ki-Cad. From Digi-Key.
+	pkgver = r168.6de9241
+	pkgrel = 1
+	url = https://github.com/digikey/digikey-kicad-library
+	arch = any
+	license = CC-BY-SA 4.0
+	makedepends = git
+	provides = digikey-kicad-library
+	conflicts = digikey-kicad-library
+	source = git+https://github.com/digikey/digikey-kicad-library.git
+	md5sums = SKIP
+
+pkgname = digikey-kicad-library-git
+

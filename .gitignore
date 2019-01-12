@@ -1,0 +1,5 @@
+digikey-kicad-library/
+pkg/
+src/
+*.tar.gz
+*.tar.xz
