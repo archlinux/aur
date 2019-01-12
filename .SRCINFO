@@ -1,6 +1,6 @@
 pkgbase = lychee
 	pkgdesc = Lychee is an easy to use and great looking photo-management-system.
-	pkgver = 3.1.6
+	pkgver = 3.2.8
 	pkgrel = 1
 	url = http://lychee.electerious.com/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = lychee
 	options = !strip
 	options = emptydirs
 	backup = etc/webapps/lychee/apache.example.conf
-	source = lychee-3.1.6.tar.gz::https://github.com/electerious/Lychee/archive/v3.1.6.tar.gz
+	source = lychee-3.2.8.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v3.2.8-fixed.tar.gz
 	source = apache.example.conf
-	sha256sums = 721087e3b451300445f3845d39e5921541ea0a8e7ab0462a2ea24942869ab1b1
+	sha256sums = 61dced7b48e75ff7de8f3155bec5b9ed2089b6f82f5c8481b87fb1a20eb5f2c8
 	sha256sums = fe1400a1be9b60c4c8b6759b588638536188a73307cd061789877cd5fd491557
 
 pkgname = lychee

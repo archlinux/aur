@@ -1,7 +1,7 @@
 
 
 pkgname=lychee
-pkgver=3.1.6
+pkgver=3.2.8
 pkgrel=1
 pkgdesc="Lychee is an easy to use and great looking photo-management-system."
 arch=('any')
@@ -12,13 +12,13 @@ optdepends=('php-apache: to use the Apache web server')
 makedepends=()
 options=('!strip' emptydirs)
 backup=('etc/webapps/lychee/apache.example.conf')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/electerious/Lychee/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v$pkgver-fixed.tar.gz"
 	'apache.example.conf')
-sha256sums=('721087e3b451300445f3845d39e5921541ea0a8e7ab0462a2ea24942869ab1b1'
+sha256sums=('61dced7b48e75ff7de8f3155bec5b9ed2089b6f82f5c8481b87fb1a20eb5f2c8'
             'fe1400a1be9b60c4c8b6759b588638536188a73307cd061789877cd5fd491557')
 
 pkgver() {
-    curl -Is https://github.com/electerious/Lychee/releases/latest | awk -F'/' '/^Location/ {print $NF}' | sed 's/v//' |sed 's/[^[:print:]]//'
+    curl -Is https://github.com/LycheeOrg/Lychee/releases/latest | awk -F'/' '/^Location/ {print $NF}' | sed 's/v//' | sed 's/-fixed//' | sed 's/[^[:print:]]//'
 
 }
 
@@ -26,7 +26,7 @@ pkgver() {
 package() {
   # install project
   install -d ${pkgdir}/usr/share/webapps/
-  cp -a ${srcdir}/Lychee-$pkgver ${pkgdir}/usr/share/webapps/${pkgname}
+  cp -a ${srcdir}/Lychee-$pkgver-fixed ${pkgdir}/usr/share/webapps/${pkgname}
 
   # install apache config file
   install -d  ${pkgdir}/etc/webapps/${pkgname}
