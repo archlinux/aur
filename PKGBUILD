@@ -1,7 +1,7 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=lyra
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A wonderful 3D cryptocurrency analyzer"
 arch=('x86_64')
 md5sums=('6a231b32052b5bbc9cd3d0c71a7b9351')
@@ -44,11 +44,12 @@ package() {
 		mkdir ~/.local/share/applications
 	fi
 	echo "${shortcut}" > ~/.local/share/applications/lyra.desktop
-	if [ -f ~/.zshrc ]; then
-		echo "alias lyra=${applocation}/run.sh" >> ~/.zshrc
-
-	else
-		echo "alias lyra=${applocation}/run.sh" >> ~/.bashrc	
+	if type "lyra" > /dev/null; then	
+		if [ -f ~/.zshrc ]; then
+			echo "alias lyra=${applocation}/run.sh" >> ~/.zshrc
+		else
+			echo "alias lyra=${applocation}/run.sh" >> ~/.bashrc	
+		fi
 	fi	
 }
 
