@@ -1,7 +1,7 @@
 pkgbase = termpdf-git
 	pkgdesc = barebones graphical pdf/djvu/cbr/image viewer that works inside some terminals, e.g. kitty
 	pkgver = r147.4616797
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dsanson/termpdf
 	arch = any
 	license = MIT

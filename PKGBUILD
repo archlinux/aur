@@ -1,7 +1,7 @@
 # Maintainer: Kevin Klement <klement@philos.umass.edu>
 pkgname=termpdf-git
 pkgver='r147.4616797'
-pkgrel=1
+pkgrel=2
 pkgdesc="barebones graphical pdf/djvu/cbr/image viewer that works inside some terminals, e.g. kitty"
 arch=('any')
 url="https://github.com/dsanson/termpdf"
@@ -19,4 +19,5 @@ pkgver() {
 
 package() {
     install -D "$srcdir/${pkgname%-git}/termpdf" "$pkgdir/usr/bin/termpdf"
+    install -D "$srcdir/${pkgname%-git}/tpdfc" "$pkgdir/usr/bin/tpdfc"
 }
