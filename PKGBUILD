@@ -9,11 +9,11 @@ _pkgname=cinelerra-gg
 _pkgver=5.1
 
 pkgname=cin-git
-pkgver=5.1.20181031
+pkgver=5.1.20181231
 pkgrel=1
 pkgdesc="Cinelerra maintained by Good Guy (git version)"
 arch=('x86_64')
-url="https://cinelerra-cv.org"
+url="https://www.cinelerra-gg.org"
 license=('GPL')
 depends=('alsa-lib'
          'dvdauthor'
@@ -61,7 +61,7 @@ makedepends=('yasm'
              'libxml2'
              'perl-xml-libxml'
              'perl-xml-parser')
-source=("${_pkgname}::git+git://git.cinelerra-cv.org/goodguy/cinelerra.git"
+source=("${_pkgname}::git+git://git.cinelerra-gg.org/goodguy/cinelerra.git"
         "dep.patch")
 sha256sums=('SKIP'
             'ef8e25d0bee3b495c4dda3add81090731932d35ab60eca4f744a2e885ad1ce37')
