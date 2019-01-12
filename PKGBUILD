@@ -4,25 +4,19 @@
 
 pkgname=borg-git
 _pkgname=borg
-pkgver=1.0.3.r224.g5fa5275
+pkgver=1.2.0dev0.r737.g4d29747f
 pkgrel=1
-pkgdesc="Deduplicating backup program with compression and authenticated encryption"
-url="https://borgbackup.github.io/"
+pkgdesc='Deduplicating backup program with compression and authenticated encryption'
+url='https://borgbackup.github.io/'
 license=('BSD')
-arch=('i686' 'x86_64')
-depends=('acl'
-         'lz4'
-         'openssl'
-         'python-msgpack'
-         'python-setuptools'
-         'xz')
+arch=('x86_64')
+depends=('acl' 'lz4' 'openssl' 'python-msgpack' 'python-setuptools' 'xz' 'zstd')
 optdepends=('openssh: repositories on remote hosts'
-            'python-llfuse: mounting backups as a FUSE filesystem')
-makedepends=('cython'
-             'git'
-             'python-sphinx')
-provides=('borg' 'borgbackup-git')
-conflicts=('borg' 'borgbackup-git')
+            'python-llfuse: mounting backups as a FUSE file system')
+makedepends=('cython' 'python-sphinx' 'python-guzzle-sphinx-theme')
+checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-benchmark' 'python-mock')
+provides=('borg' 'borgbackup')
+conflicts=('borg' 'borgbackup')
 source=("${_pkgname}::git+https://github.com/borgbackup/${_pkgname}.git")
 sha256sums=('SKIP')
 
@@ -32,16 +26,28 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "$srcdir/$_pkgname"
   python setup.py build
-  cd docs
-  make man
+}
+
+check() {
+  cd "$srcdir/$_pkgname/build/lib.linux-$CARCH-3".*/
+  LANG=en_US.UTF-8 PYTHONPATH="$PWD:$PYTHONPATH" py.test --cov=borg \
+    --benchmark-skip --pyargs borg.testsuite -v \
+    -k 'not test_non_ascii_acl'
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "$srcdir/$_pkgname"
 
-  install -Dm644 "docs/_build/man/borg.1" "$pkgdir/usr/share/man/man1/borg.1"
+  python setup.py install --root="$pkgdir" --optimize=1
+
+  install -Dm644 scripts/shell_completions/bash/borg \
+    "$pkgdir/usr/share/bash-completion/completions/borg"
+  install -Dm644 scripts/shell_completions/fish/borg.fish \
+    "$pkgdir/usr/share/fish/vendor_completions.d/borg.fish"
+  install -Dm644 scripts/shell_completions/zsh/_borg "$pkgdir/usr/share/zsh/site-functions/_borg"
+
+  install -Dm644 -t "$pkgdir/usr/share/man/man1/" "docs/man/"*.1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  python setup.py -q install --root="$pkgdir" --optimize=1
 }
