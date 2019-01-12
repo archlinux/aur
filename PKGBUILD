@@ -17,7 +17,6 @@ makedepends=('python-setuptools' 'gnome-desktop')
 checkdepends=('xorg-server-xvfb' 'xterm' 'python-nose-cover3' 'wine')
 optdepends=('wine: Run windows games'
             'wine-staging: Run windows games - Staging patches')
-makedepends=('python-setuptools')
 provides=('lutris')
 conflicts=('lutris')
 source=("$url/archive/v${_pkgver}.tar.gz")
