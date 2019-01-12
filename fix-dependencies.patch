@@ -1,0 +1,45 @@
+From 5c2a8f2c08c8c5bdc6789be5c64e37397cec9a7c Mon Sep 17 00:00:00 2001
+From: Fabian Maurer <dark.shadow4@web.de>
+Date: Sat, 12 Jan 2019 13:18:07 +0100
+Subject: [PATCH] fix dependencies
+
+---
+ cmake/Packages/FindEmbree.cmake | 4 ++--
+ src/CMakeLists.txt              | 1 +
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/Packages/FindEmbree.cmake b/cmake/Packages/FindEmbree.cmake
+index 6ff74ca..c2e6b51 100644
+--- a/cmake/Packages/FindEmbree.cmake
++++ b/cmake/Packages/FindEmbree.cmake
+@@ -14,13 +14,13 @@
+ ## limitations under the License.                                           ##
+ ## ======================================================================== ##
+ 
+-FIND_PATH(EMBREE_INCLUDE_PATH embree2/rtcore.h
++FIND_PATH(EMBREE_INCLUDE_PATH embree3/rtcore.h
+ 	/usr/include
+ 	/usr/local/include
+ 	/opt/local/include
+ 	${EMBREE_ROOT}/include)
+ 
+-FIND_LIBRARY(EMBREE_LIBRARY NAMES embree libembree.so.2 PATHS 
++FIND_LIBRARY(EMBREE_LIBRARY libembree3.so
+ 	/usr/lib 
+ 	/usr/local/lib 
+ 	/opt/local/lib
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 4043b68..e9041a7 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -143,6 +143,7 @@ ELSE(APPLE)
+ 	ADD_EXECUTABLE(luxmark ${LUXMARK_SRCS})
+ 
+ 	TARGET_LINK_LIBRARIES(luxmark ${LUXCORE_LIBRARY} ${SLG_LIBRARY} ${LUXRAYS_LIBRARY} ${EMBREE_LIBRARY} ${Boost_LIBRARIES} ${QT_LIBRARIES} ${QT_QTNETWORK_LIBRARIES} ${GLEW_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_gl_LIBRARY} ${OPENCL_LIBRARIES} ${OPENIMAGEIO_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES})
++	TARGET_LINK_LIBRARIES(luxmark tbb bcd.a openvdb.a boost_iostreams)
+ 	
+ 	# This instructs FREEGLUT to emit a pragma for the static version
+ 	SET_TARGET_PROPERTIES(luxmark PROPERTIES COMPILE_DEFINITIONS FREEGLUT_STATIC)
+-- 
+2.20.1
+
