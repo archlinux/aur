@@ -5,7 +5,7 @@ _author=tkashkin
 _gitname=GameHub
 _auxname=gamehub
 pkgname=("${_auxname}-git")
-pkgver=latest
+pkgver=r344.1537eed
 pkgrel=1
 pkgdesc="All your games in one place. Games manager/downloader/library written in Vala designed for Pantheon Shell. Supports GOG, Steam and Humble Bundle"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('lib32-json-glib')
 makedepends=('git' 'meson' 'ninja')
 provides=("${_auxname}")
 conflicts=("${_auxname}")
-source=("git+${url}.git")
+source=("git+${url}.git#branch=dev")
 md5sums=('SKIP')
 
 pkgver() {
@@ -32,6 +32,9 @@ pkgver() {
 build() {
     cd "${_gitname}/"
     meson . _build --prefix=/usr --buildtype=debug -Ddistro=arch
+    unset CFLAGS
+	unset CXXFLAGS
+	unset CPPFLAGS
     ninja -C _build
 }
 
