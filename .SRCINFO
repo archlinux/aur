@@ -1,0 +1,17 @@
+pkgbase = proxychains-ng-git
+	pkgdesc = A hook preloader that allows to redirect TCP traffic of existing dynamically linked programs through one or more SOCKS or HTTP proxies
+	pkgver = 4.13.r10.g1198857
+	pkgrel = 1
+	url = https://github.com/rofl0r/proxychains
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = proxychains
+	conflicts = proxychains
+	replaces = proxychains
+	backup = etc/proxychains.conf
+	source = git+https://github.com/rofl0r/proxychains-ng.git
+	sha512sums = SKIP
+
+pkgname = proxychains-ng-git
+
