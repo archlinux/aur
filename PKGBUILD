@@ -4,13 +4,13 @@
 # Contributor: Dr-Shadow <kerdiles.robin@gmail.com>
 
 pkgname=mingw-w64-python
-pkgver=3.7.0
+pkgver=3.7.2
 _pybasever=3.7
-pkgrel=2
+pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (mingw-w64)"
 arch=('any')
 license=('PSF')
-url="http://www.python.org/"
+url="https://www.python.org/"
 depends=('mingw-w64-crt'
          'mingw-w64-expat'
          'mingw-w64-bzip2'
@@ -28,12 +28,15 @@ depends=('mingw-w64-crt'
 makedepends=('mingw-w64-configure' 'mingw-w64-wine' 'python')
 optdepends=('mingw-w64-wine: runtime support')
 options=('staticlibs' '!buildflags' '!strip')
-source=("http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
-        'patches.tar.gz'
+source=("https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
+        'patches.tar.xz'
         "wine-python.sh")
-sha1sums=('653cffa5b9f2a28150afe4705600d2e55d89b564'
-          '62f705a61edc4d212053485db7c357d292e53f49'
+sha1sums=('c3dc6928516bcb934cf4740461044c79c7c35494'
+          '6c8d7eda26e78578a01ea76943893ddf535c1579'
           'a024e7fd7eea7984a0d050164a4a015dea762da7')
+sha512sums=('6cd2d6d8455558783b99d55985cd7b22d67b98f41a09b4fdd96f680a630a4e035220d2b903f8c59ed513aa5ffe6730fa947ddb55bb72ce36f0e945ef8af5d971'
+            '773bcf9dc5cae9ac281a5e844e11c3a8d8aabd4d24bfb40406d3281801d0575e636ebb722764e862bf9b090d664e52c3aed33e0ce91ef875ff0984c31a4e89b8'
+            'd0fb7f0e1a3d98a170ebea301226ad8caa7ffab9fc0bee224abc31c22875c892b43d3468dffbdd15eb71ca1b5260e039d0fceb21ecc92341b9bb6949d7e9be6a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -185,12 +188,14 @@ prepare() {
   apply_patch_with_msg \
     1810-3.7-mpdec-mingw.patch \
     1830-mingw-implement-setenv-for-PY_COERCE_C_LOCALE.patch \
-    1840-fix-building-core-modules.patch \
     1850-disable-readline.patch \
     1860-fix-isselectable.patch
 
   apply_patch_with_msg 2000-warnings-fixes.patch
-  
+
+  # https://github.com/python/cpython/pull/9258
+  apply_patch_with_msg 1900-ctypes-dont-depend-on-internal-libffi.patch
+
   # fix case
   sed -e "s|MSTcpIP.h|mstcpip.h|g" -i ${srcdir}/Python-${pkgver}/Modules/socketmodule.h
   sed -e "s|Windows.h|windows.h|g" -i ${srcdir}/Python-${pkgver}/Modules/_io/_iomodule.c
@@ -224,24 +229,24 @@ build() {
     CXXFLAGS+=" -fwrapv -D__USE_MINGW_ANSI_STDIO=1 -D_WIN32_WINNT=0x0601"
     CPPFLAGS+=" -I/usr/${_arch}/include/ncursesw "
 
-  declare -a _extra_config
-  if check_option "strip" "y"; then
-    LDFLAGS+=" -s "
-  fi
-  if check_option "debug" "n"; then
-    CFLAGS+=" -DNDEBUG "
-    CXXFLAGS+=" -DNDEBUG "
-  else
-    plain " -DDEBUG -DPy_DEBUG -D_DEBUG does not work unfortunately .."
-    #    CFLAGS+=" -DDEBUG -DPy_DEBUG -D_DEBUG "
-    #    CXXFLAGS+=" -DDEBUG -DPy_DEBUG -D_DEBUG "
-    CFLAGS+=" -O0 -ggdb"
-    CXXFLAGS+=" -O0 -ggdb"
-    _extra_config+=("--with-pydebug")
-  fi
+    declare -a _extra_config
+    if check_option "strip" "y"; then
+      LDFLAGS+=" -s "
+    fi
+    if check_option "debug" "n"; then
+      CFLAGS+=" -DNDEBUG "
+      CXXFLAGS+=" -DNDEBUG "
+    else
+      plain " -DDEBUG -DPy_DEBUG -D_DEBUG does not work unfortunately .."
+      #    CFLAGS+=" -DDEBUG -DPy_DEBUG -D_DEBUG "
+      #    CXXFLAGS+=" -DDEBUG -DPy_DEBUG -D_DEBUG "
+      CFLAGS+=" -O0 -ggdb"
+      CXXFLAGS+=" -O0 -ggdb"
+      _extra_config+=("--with-pydebug")
+    fi
 
-  # Workaround for conftest error on 64-bit builds
-  export ac_cv_working_tzset=no
+    # Workaround for conftest error on 64-bit builds
+    export ac_cv_working_tzset=no
 
     # export LIBFFI_INCLUDEDIR=`${_arch}-pkg-config libffi --cflags-only-I | sed "s|\-I||g"`
     CFLAGS+="-I/usr/${_arch}/include" \
@@ -257,12 +262,12 @@ build() {
       --without-ensurepip \
       "${_extra_config[@]}" \
       OPT=""
-    
+
     # append ${_arch} to windres
     sed -e "s|windres|${_arch}-windres|g" -i ${srcdir}/Python-${pkgver}/build-${_arch}/Makefile
     
     make
-    
+
     # wrappers
     sed "s|@TRIPLE@|${_arch}|g;s|@PYVER@|${_pybasever}|g" "${srcdir}"/wine-python.sh > ${_arch}-python${_pybasever}
     sed "s|@TRIPLE@|${_arch}|g;s|@PYVER@|${_pybasever}|g" "${srcdir}"/wine-python.sh > ${_arch}-python3
