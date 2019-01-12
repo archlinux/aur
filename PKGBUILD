@@ -5,7 +5,7 @@
 # Contributor: Mateus Rodrigues Costa <charles [dot] costar [at] gmail [dot] com>
 
 pkgname=chrome-remote-desktop
-pkgver=71.0.3578.36
+pkgver=72.0.3626.12
 pkgrel=1
 pkgdesc="Access other computers or allow another user to access your computer securely over the Internet"
 arch=("x86_64")
@@ -16,7 +16,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.deb::http://dl.google.com/linux/direct/${pkgname}_current_amd64.deb"
         "${pkgname}.service" 
         "crd")
-sha256sums=("e6ec5831a4ab09b7afee71a48627646828b4f2545988539a908d0d6108e87fb5"
+sha256sums=("2db2d2b643afda0731323dc261c87d5101bddfe0fd6409e04d3a6e0de48f3773"
             "e5da5ae89b5bc599f72f415d1523341b25357931b0de46159fce50ab83615a4b"
             "27dee2d383e6bd993fe0557d5c222fa80ab6d16d43775dedff6218713c7a1c06")
 
