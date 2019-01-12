@@ -4,7 +4,7 @@
 
 pkgbase=mariadb-10.3
 pkgname=('libmariadbclient-10.3' 'mariadb-clients-10.3' 'mytop-10.3' 'mariadb-10.3')
-pkgver=10.3.11
+pkgver=10.3.12
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
@@ -15,7 +15,7 @@ validpgpkeys=('199369E5404BD5FC7D2FE43BCBCB082A1BB943DB') # MariaDB Package Sign
 
 source=("https://mirrors.ukfast.co.uk/sites/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc}
         fix_libmariadb_ignored_host.patch)
-sha256sums=('211655b794c9d5397ba3be6c90737eac02e882f296268299239db47ba328f1b2'
+sha256sums=('f7449a34c25e0455928d7983dae83fd2069fe1f16c4c5f4aeed9ed9d3f081ff6'
             'SKIP'
             'fd186c795c393b6898f28d731390bb14ea8444230c8340a5f4cfbccb16ea10e9')
 
@@ -182,7 +182,7 @@ package_mariadb-10.3() {
   # provided by libmariadbclient
   rm usr/bin/{mysql,mariadb}_config
   rm usr/lib/lib{mysql,mariadb}*
-  rm usr/lib/mysql/plugin/{auth_gssapi_client.so,dialog.so,mysql_clear_password.so,sha256_password.so}
+  rm usr/lib/mysql/plugin/{auth_gssapi_client,dialog,mysql_clear_password,sha256_password,caching_sha2_password}.so
   rm usr/share/man/man1/mysql_config.1
   rm -r usr/include/
   rm -r usr/share/mysql/aclocal
