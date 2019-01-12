@@ -2,7 +2,7 @@
 
 pkgname=gpib-utils
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="GPIB instrument support utilities"
 url="https://github.com/garlick/gpib-utils"
 arch=('x86_64' 'i686')
@@ -14,7 +14,8 @@ sha1sums=('14619a1e7ca95ffc28ce5bb400b2ae126c6c4d25')
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./autogen.sh
-  ./configure --prefix=${pkgdir}/usr
+  ./configure CPPFLAGS="-I/usr/include/tirpc" \
+    --prefix=${pkgdir}/usr
 }
 
 build() {
