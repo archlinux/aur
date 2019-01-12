@@ -2,7 +2,7 @@
 # Contributor: hexchain <i at hexchain.org>
 pkgname=tpm2-abrmd
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Trusted Platform Module 2.0 Access Broker and Resource Management Daemon'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-abrmd'
@@ -30,6 +30,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
+	rm -r "$pkgdir/usr/lib/systemd/system-preset"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	echo 'u tss - "tpm2-abrmd sandbox user"' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
