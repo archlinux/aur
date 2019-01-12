@@ -38,9 +38,6 @@ package() {
 	mv $pkgname-$pkgver $pkgname
 	cp -r $pkgname ~/Documents
 	rm -rf $pkgname		
-	if [ -f ~/.local/share/applications ]; then
-		mkdir ~/.local/share/applications
-	fi
 	echo "${shortcut}" > ~/.local/share/applications/taurus.desktop
 	if type "taurus" > /dev/null; then
 		if [ -f ~/.zshrc ]; then
