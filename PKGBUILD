@@ -1,20 +1,22 @@
 # Maintainer: Neal Miller <ac9qd@protonmail.com>
 
 pkgname=wsjtx-superbuild-git
-pkgver=r32.bce3bea
+pkgver=r35.491536f
 pkgrel=1
 pkgdesc='Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - Superbuild/git version, hamlib not required'
 arch=('i686' 'x86_64')
 url='http://physics.princeton.edu/pulsar/k1jt/wsjtx.html'
 license=('GPL-3')
 depends=('qt5-base' 'qt5-multimedia' 'qt5-serialport' 'libusb' 'libusb-compat' 'fftw' 'gcc-fortran')
-makedepends=('cmake' 'git' 'asciidoc')
+makedepends=('cmake' 'git' 'asciidoc' 'asciidoctor')
 provides=('wsjtx')
 conflicts=('wsjtx')
 source=('git+https://git.code.sf.net/p/wsjt/wsjtx-superbuild/'
-        'wsjtx.patch')
+        'wsjtx.patch'
+        'repo.patch')
 md5sums=('SKIP'
-         'c5a2c0b91c2709e070d7ebcb75621354')
+         'c5a2c0b91c2709e070d7ebcb75621354'
+         'd7446a4c8d44880b1c772493a7f170c6')
 #set branch to build with WSJTX_TAG variable, or a specific version eg. wsjtx-1.9.0
 _wsjtx_tag=master
 
@@ -24,6 +26,7 @@ pkgver() {
 }
 
 build() {
+    patch -p1 -i repo.patch
     cp wsjtx.patch "$srcdir/${pkgname%-git}"
 	mkdir -p "$srcdir/${pkgname%-git}/build"
 	cd "$srcdir/${pkgname%-git}/build"

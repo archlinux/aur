@@ -1,0 +1,11 @@
+--- /wsjtx-superbuild/CMakeLists.txt	2019-01-11 19:45:51.092696936 -0600
++++ /wsjtx-superbuild/CMakeLists.txt	2019-01-11 19:40:06.127327712 -0600
+@@ -50,7 +50,7 @@
+   # one day this needs to change to the hamlib git master
+   set (hamlib_repo git://git.code.sf.net/u/bsomervi/hamlib)
+ 
+-  set (wsjtx_repo git@bitbucket.org:k1jt/wsjtx.git)
++  set (wsjtx_repo git://git.code.sf.net/p/wsjt/wsjtx)
+ 
+   # one day this needs to change to master or some agreed stable SHA
+   set (hamlib_TAG integration)
