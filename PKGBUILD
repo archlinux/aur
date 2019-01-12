@@ -2,7 +2,7 @@
 
 pkgname=kicad-packages3d-git
 _pkgname=kicad-packages3D
-pkgver=r999.da79a97b
+pkgver=r2019.01.12.9fe47cc
 pkgrel=1
 pkgdesc="KiCad component 3D model libraries from the official git repo"
 arch=('any')
@@ -12,12 +12,23 @@ options=('!strip')
 makedepends=('cmake' 'git')
 conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library' 'kicad-packages' 'kicad-packages3d')
 provides=('kicad-packages3d')
-source=("git://github.com/KiCad/kicad-packages3D.git")
-md5sums=('SKIP')
+source=()
+md5sums=()
+
+prepare(){
+  if [ -d ${_pkgname} ]; then
+    cd ${_pkgname}
+    git fetch --depth 1
+    git checkout master
+  else
+    git clone --depth 1 https://github.com/KiCad/kicad-packages3D.git
+  fi
+}
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _DATE=$(date --rfc-3339='date')
+  printf "r%s.%s" "${_DATE//-/.}" "$(git rev-parse --short HEAD)"
 }
 
 build() {
