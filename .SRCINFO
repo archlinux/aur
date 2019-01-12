@@ -1,0 +1,17 @@
+pkgbase = python-campdown
+	pkgdesc = Bandcamp track and album downloader
+	pkgver = 1.40
+	pkgrel = 1
+	url = https://github.com/catlinman/campdown/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-mutagen
+	depends = python-requests
+	depends = python-docopt
+	source = https://files.pythonhosted.org/packages/ba/76/4b110c02aa0f907d2cf514319670e49a4b981d9ce945aba47013c4b12c92/campdown-1.40.tar.gz
+	sha256sums = e168c0957621de2d0ef37123f6acb09bb1de30fed8a382ac4b0e2606b9ce9b2f
+
+pkgname = python-campdown
+
