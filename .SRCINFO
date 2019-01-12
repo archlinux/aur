@@ -1,7 +1,7 @@
 pkgbase = buildstream
 	pkgdesc = Framework for modelling build pipelines in a declarative YAML format
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://buildstream.build/
 	arch = any
 	license = LGPL
@@ -15,7 +15,7 @@ pkgbase = buildstream
 	depends = python-pluginbase
 	depends = python-protobuf
 	depends = python-psutil
-	depends = python-ruamel-yaml0.15.52
+	depends = python-ruamel-yaml0.15.51
 	depends = bzr
 	depends = git
 	depends = lzip
