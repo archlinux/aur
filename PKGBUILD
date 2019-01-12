@@ -12,7 +12,7 @@ url="www.github.com/awersching/wedder"
 source=("git+https://github.com/awersching/wedder.git")
 license=("MIT")
 
-makedepends=("git" "rust")
+makedepends=("rust")
 md5sums=("SKIP")
 
 build() {
