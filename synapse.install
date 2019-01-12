@@ -1,30 +1,6 @@
 #!/bin/bash
 
-DATA_DIR="/var/lib/synapse"
-
-ask_report_stats() {
-	cat <<-EOF
-	==> Please opt in or out of reporting anonymized homeserver usage statistics, by
-	    setting the report_stats key in your config file
-	    (/etc/synapse/homeserver.yaml) to either True or False.
-	    We would really appreciate it if you could help our project out by reporting
-	    anonymized usage statistics from your homeserver. Only very basic aggregate
-	    data (e.g. number of users) will be reported, but it helps us to track the
-	    growth of the Matrix community, and helps us to make Matrix a success,
-	    as well as to convince other networks that they should peer with us.
-	    Thank you.
-
-	==> Note that the homeserver won't start unless you make the choice.
-	EOF
-}
-
-post_upgrade() {
-	if (( $(vercmp "$2" "0.10.1.rc1-3") < 0 )); then
-		ask_report_stats
-	fi
-}
-
-## arg 1:  the new package version
+# arg 1:  the new package version
 post_install() {
 	if [[ ! -e /etc/synapse/homeserver.yaml ]]; then
 		cat <<-EOF
@@ -37,15 +13,13 @@ post_install() {
 		      --server-name my.domain.name \\
 		      --config-path /etc/synapse/homeserver.yaml \\
 		      --generate-config \\
-		      --report-stats=(yes|no)
+		      --report-stats=yes
 
 		    N.B.: The default synapse config enables the webclient feature.
 		    Unless you have python2-matrix-angular-sdk installed this will make
 		    synapse fail to start.  Either disable it, or install
 		    python2-matrix-angular-sdk.
 		EOF
-		echo
-		ask_report_stats
 		install -dm700 -o 198 -g 198 /var/lib/synapse
 	fi
 }

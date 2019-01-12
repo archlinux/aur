@@ -1,0 +1,35 @@
+From 3afc953a1b7447ae19a563269b316a86afa38215 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Johannes=20L=C3=B6thberg?= <johannes@kyriasis.com>
+Date: Tue, 8 Jan 2019 20:09:50 +0100
+Subject: [PATCH] Bump python_dependencies
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Johannes Löthberg <johannes@kyriasis.com>
+---
+ synapse/python_dependencies.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/synapse/python_dependencies.py b/synapse/python_dependencies.py
+index 69c5f9fe2..68bae2398 100644
+--- a/synapse/python_dependencies.py
++++ b/synapse/python_dependencies.py
+@@ -53,12 +53,12 @@ REQUIREMENTS = [
+     "sortedcontainers>=1.4.4",
+     "psutil>=2.0.0",
+     "pymacaroons-pynacl>=0.9.3",
+-    "msgpack-python>=0.4.2",
++    "msgpack>=0.4.2",
+     "phonenumbers>=8.2.0",
+     "six>=1.10",
+     # prometheus_client 0.4.0 changed the format of counter metrics
+     # (cf https://github.com/matrix-org/synapse/issues/4001)
+-    "prometheus_client>=0.0.18,<0.4.0",
++    "prometheus_client>=0.0.18,<0.6.0",
+     # we use attr.s(slots), which arrived in 16.0.0
+     "attrs>=16.0.0",
+     "netaddr>=0.7.18",
+-- 
+2.20.1
+
