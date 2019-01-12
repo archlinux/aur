@@ -1,0 +1,11 @@
+post_install() {
+  echo ""
+  echo "cdemu-autostart is disabled by default. To enable, run as normal user:"
+  echo ""
+  echo "	systemctl --user enable dbus-pre"
+  echo ""
+}
+
+post_upgrade() {
+  post_install $1
+}

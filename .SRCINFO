@@ -1,8 +1,9 @@
 pkgbase = cdemu-autostart-git
 	pkgdesc = Keep mounted images after restart
-	pkgver = 20190111.r3.gd77215a
+	pkgver = 20190111.r4.gf3d3606
 	pkgrel = 1
 	url = https://github.com/basinilya/cdemu-autostart
+	install = cdemu-autostart-git.install
 	arch = any
 	license = custom
 	makedepends = git
