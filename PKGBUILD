@@ -2,7 +2,7 @@
 # Contributor: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=sam-ba
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Atmel SAM Boot Assistant"
 arch=('i686' 'x86_64')
 url="https://github.com/atmelcorp/sam-ba"
@@ -17,7 +17,7 @@ source=("https://github.com/atmelcorp/sam-ba/archive/v$pkgver.tar.gz"
 md5sums=('dc116aab099685b01653f00aa6a6ac00'
          '6b29a65bbc96b608d7628e8a25ae1f50'
          '1fd871ae02809fcbc3095c169f59ce01'
-         'dc451b95c0d86788d11dab17a813a863')
+         'd6cccea0c35eb4f5e0852e1ce0d816c6')
 
 prepare() {
   cd "${srcdir}/sam-ba-$pkgver"
