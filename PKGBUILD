@@ -39,10 +39,7 @@ package() {
 	chmod +x $pkgname-$pkgver/run.sh
 	mv $pkgname-$pkgver $pkgname
 	cp -r $pkgname ~/Documents
-	rm -rf $pkgname	
-	if [ ! -f ~/.local/share/applications ]; then
-		mkdir ~/.local/share/applications
-	fi
+	rm -rf $pkgname		
 	echo "${shortcut}" > ~/.local/share/applications/lyra.desktop
 	if type "lyra" > /dev/null; then	
 		if [ -f ~/.zshrc ]; then
