@@ -1,10 +1,10 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=mimosa
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Download manager"
 arch=('x86_64')
-md5sums=('b0cdb9921560264d423d26f3777a3d29')
+md5sums=('620184c969713282aab4097273547c0e')
 url="https://github.com/blooser/mimosa"
 license=('MIT')
 depends=('qt5-base')
@@ -46,4 +46,5 @@ package() {
 	fi	
 
 }
+
 
