@@ -23,8 +23,8 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.0rc4
-pkgrel=2
+pkgver=18.0rc5
+pkgrel=1
 _codename=Leia
 _tag="$pkgver-$_codename"
 # Found on their respective github release pages. One can check them against
@@ -38,11 +38,10 @@ _tag="$pkgver-$_codename"
 #
 # fmt and crossguid can be found http://mirrors.kodi.tv/build-deps/sources/
 #
-_rtype=Alpha
 _ffmpeg_version="4.0.3-$_codename-RC5"
 _libdvdcss_version="1.4.2-$_codename-Beta-5"
-_libdvdnav_version="6.0.0-$_codename-$_rtype-3"
-_libdvdread_version="6.0.0-$_codename-$_rtype-3"
+_libdvdnav_version="6.0.0-$_codename-Alpha-3"
+_libdvdread_version="6.0.0-$_codename-Alpha-3"
 _fmt_version="5.1.0"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
@@ -83,8 +82,8 @@ noextract=(
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
 )
-sha256sums=('90f7a8c32e571654d2503a4e97e438b597ff19ae7876e926aaa06b8de516b72b'
-            'f25559d4b803321483b28ac9b513671200bdc8e3531c02f0affdd622846a9c5e'
+sha256sums=('b4ade8c266666e53b700739a15f3cab3f79c386763aa8fe14cb8f5c7413c562b'
+            '9a971662e44353c120f2ccf87655571998956e699a2dd800ec708b8b928a53c8'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
