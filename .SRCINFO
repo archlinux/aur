@@ -1,0 +1,13 @@
+pkgbase = terminal_dimensions-git
+	pkgdesc = cli tool to report terminal dimensions in both cells and pixels
+	pkgver = r2.8e34b6f
+	pkgrel = 1
+	url = https://github.com/dsanson/terminal_dimensions
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/dsanson/terminal_dimensions.git
+	md5sums = SKIP
+
+pkgname = terminal_dimensions-git
+
