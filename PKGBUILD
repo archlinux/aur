@@ -3,8 +3,8 @@
 
 _gemname=pango
 pkgname=ruby-$_gemname
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.3.1
+pkgrel=1
 pkgdesc='Ruby/Pango is a Ruby binding of pango-1.x.'
 arch=(x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
@@ -13,7 +13,7 @@ depends=(ruby pango ruby-cairo gobject-introspection ruby-cairo-gobject=$pkgver 
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('828889daf0bf5b58300614bdf15fdd3bf5b01f36')
+sha1sums=('1edde6c92736ec1ab4a9a6c9a7e173f27c9514a4')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
