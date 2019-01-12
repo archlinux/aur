@@ -1,0 +1,31 @@
+pkgbase = eog-git
+	pkgdesc = Eye of Gnome: An image viewing and cataloging program
+	pkgver = 3.31.3+1+ga78d3b5b
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/EyeOfGnome
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = gnome-common
+	makedepends = git
+	makedepends = meson
+	depends = gnome-desktop
+	depends = libexif
+	depends = lcms2
+	depends = exempi
+	depends = libpeas
+	depends = librsvg
+	depends = dconf
+	optdepends = eog-plugins: Additional features
+	provides = eog
+	conflicts = eog
+	options = !emptydirs
+	source = git+https://gitlab.gnome.org/GNOME/eog.git
+	sha256sums = SKIP
+
+pkgname = eog-git
+
