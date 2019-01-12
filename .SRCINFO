@@ -33,16 +33,8 @@ pkgname = linux-xanmod-lts
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux
-	provides = linux-xanmod-git
-	conflicts = linux-xanmod-git
-	replaces = linux-xanmod-git
 	backup = etc/mkinitcpio.d/linux-xanmod-lts.preset
 
 pkgname = linux-xanmod-lts-headers
 	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
-	provides = linux-headers
-	provides = linux-xanmod-git-headers
-	conflicts = linux-xanmod-git-headers
-	replaces = linux-xanmod-git-headers
 
