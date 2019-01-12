@@ -1,7 +1,7 @@
 pkgbase = mikutter
 	pkgdesc = a moest twitter client
 	pkgver = 3.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mikutter.hachune.net/
 	arch = i686
 	arch = x86_64
