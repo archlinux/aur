@@ -1,21 +1,21 @@
-# Maintainer: Adrian Sinclair <adrian@transloadit.com>
+# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Contributor: Adrian Sinclair <adrian@transloadit.com>
 
 pkgname=eslint-plugin-import
-pkgver=2.2.0
+pkgver=2.14.0
 pkgrel=1
-pkgdesc='Import with safety (eslint)'
+pkgdesc='ESLint plugin with rules that help validate proper imports.'
 arch=('any')
 url='https://github.com/benmosher/eslint-plugin-import'
 license=('MIT')
-depends=('nodejs' 'eslint')
+depends=('eslint')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-md5sums=('7d94b1cd89f2f4eacd01e823d44e3f16')
+md5sums=('3ab00c77854c7889c2bba12c207da798')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
-  rm -r "$pkgdir"/usr/etc
 
   # Fix permissions
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
