@@ -1,0 +1,16 @@
+pkgbase = zerotier-one-git
+        pkgdesc = Creates virtual Ethernet networks of almost unlimited size.
+        pkgver = 1.2.12
+        pkgrel = 1
+        url = https://www.zerotier.com/index.html
+        arch = x86_64
+        license = GPL3
+        makedepends = ruby-ronn
+        depends = gcc-libs
+        depends = libnatpmp
+        depends = miniupnpc
+        conflicts = zerotier-one
+        source = git+git://github.com/zerotier/ZeroTierOne.git
+        sha512sums = SKIP
+
+pkgname = zerotier-one-git
