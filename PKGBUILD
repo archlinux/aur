@@ -5,7 +5,7 @@ _name="luxcorerender"
 
 pkgname=blender-plugin-${_name}
 pkgver=2.1
-epoch=0
+epoch=1
 pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
