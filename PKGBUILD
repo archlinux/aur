@@ -14,7 +14,7 @@ makedepends=(intltool gobject-introspection git egl-wayland)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=9a12befd22bff7bfd3afb12f2a774b3bcdf771ba")
+source=("git+https://gitlab.gnome.org/GNOME/mutter.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
