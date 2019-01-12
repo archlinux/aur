@@ -1,0 +1,18 @@
+pkgbase = libbcd
+	pkgdesc = Bayesian Collaborative Denoiser for Monte Carlo Rendering
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/superboubek/bcd
+	arch = x86_64
+	license = BSD
+	depends = zlib
+	depends = eigen
+	depends = nlohmann-json
+	depends = openexr
+	source = https://github.com/superboubek/bcd/archive/v1.1.tar.gz
+	source = fix-dependencies.patch
+	md5sums = 582b77cc22088ad42123f626b3190aee
+	md5sums = 2ab37640c1e6658d3241136f0ad7c1c3
+
+pkgname = libbcd
+

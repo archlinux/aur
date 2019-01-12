@@ -1,0 +1,224 @@
+From 8b26d009b45b2f1d3953cb5b0b33abf6223633da Mon Sep 17 00:00:00 2001
+From: Fabian Maurer <dark.shadow4@web.de>
+Date: Sat, 12 Jan 2019 08:33:55 +0100
+Subject: [PATCH] Fix dependencies
+
+---
+ ext/CMakeLists.txt               | 80 --------------------------------
+ include/bcd/core/DenoisingUnit.h |  4 +-
+ src/cli/main.cpp                 |  2 +-
+ src/core/CMakeLists.txt          |  1 -
+ src/core/SamplesAccumulator.cpp  |  1 +
+ src/core/SpikeRemovalFilter.cpp  |  1 +
+ src/io/CMakeLists.txt            |  4 +-
+ src/io/ParametersIO.cpp          |  3 +-
+ src/io/exr/io_exr.cpp            | 12 ++---
+ 9 files changed, 15 insertions(+), 93 deletions(-)
+
+diff --git a/ext/CMakeLists.txt b/ext/CMakeLists.txt
+index 843d197..8b13789 100644
+--- a/ext/CMakeLists.txt
++++ b/ext/CMakeLists.txt
+@@ -1,81 +1 @@
+ 
+-ADD_SUBDIRECTORY(zlib)
+-TARGET_INCLUDE_DIRECTORIES(zlibstatic INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/zlib)
+-TARGET_INCLUDE_DIRECTORIES(zlibstatic INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/zlib)
+-
+-SET(BUILD_TESTING OFF CACHE BOOL "" FORCE)
+-
+-MESSAGE(STATUS "Entering subdirectory 'eigen'")
+-ADD_SUBDIRECTORY(eigen)
+-
+-SET(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+-
+-
+-if(POLICY CMP0026)
+-	cmake_policy(PUSH)
+-	cmake_policy(SET CMP0026 OLD) # to avoid some cmake warnings
+-	SET(saved_policy_default_CMP0026 "${CMAKE_POLICY_DEFAULT_CMP0026}")
+-	SET(CMAKE_POLICY_DEFAULT_CMP0026 OLD)
+-	MESSAGE(STATUS "Policy CMP0026 set to OLD for IlmBase to avoid warnings")
+-endif()
+-
+-MESSAGE(STATUS "Entering subdirectory 'IlmBase'")
+-ADD_SUBDIRECTORY(openexr/IlmBase)
+-
+-if(POLICY CMP0026)
+-	SET(CMAKE_POLICY_DEFAULT_CMP0026 ${saved_policy_default_CMP0026})
+-	cmake_policy(POP)
+-endif()
+-
+-
+-
+-
+-TARGET_INCLUDE_DIRECTORIES(Half INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/openexr/IlmBase/Half)
+-TARGET_INCLUDE_DIRECTORIES(IlmThread INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/openexr/IlmBase/IlmThread)
+-TARGET_INCLUDE_DIRECTORIES(IlmThread INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/openexr/IlmBase/config)
+-TARGET_INCLUDE_DIRECTORIES(Imath INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/openexr/IlmBase/Imath)
+-TARGET_INCLUDE_DIRECTORIES(Iex INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/openexr/IlmBase/Iex)
+-ADD_LIBRARY(Iex-2_2 ALIAS Iex)
+-ADD_LIBRARY(IlmThread-2_2 ALIAS IlmThread)
+-ADD_LIBRARY(Imath-2_2 ALIAS Imath)
+-
+-MESSAGE(STATUS "Entering subdirectory 'OpenEXR'")
+-ADD_SUBDIRECTORY(openexr/OpenEXR)
+-
+-TARGET_INCLUDE_DIRECTORIES(dwaLookups PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/openexr/IlmBase/Imath)
+-TARGET_INCLUDE_DIRECTORIES(IlmImf INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/openexr/OpenEXR/IlmImf)
+-TARGET_INCLUDE_DIRECTORIES(IlmImf INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/openexr/OpenEXR/config)
+-
+-ADD_LIBRARY(OpenExr INTERFACE)
+-TARGET_LINK_LIBRARIES(OpenExr INTERFACE Half Iex Imath IlmImf IlmThread)
+-
+-
+-IF(BCD_BUILD_GUI)
+-	MESSAGE(STATUS "Entering subdirectory 'nanogui'")
+-	SET(NANOGUI_BUILD_EXAMPLE OFF CACHE BOOL "" FORCE)
+-	SET(NANOGUI_BUILD_PYTHON OFF CACHE BOOL "" FORCE)
+-	SET(NANOGUI_BUILD_SHARED OFF CACHE BOOL "" FORCE)
+-	SET(NANOGUI_INSTALL OFF CACHE BOOL "" FORCE)
+-	ADD_SUBDIRECTORY(nanogui)
+-
+-	ADD_LIBRARY(NanoguiTarget INTERFACE)
+-
+-#	message(AUTHOR_WARNING "in ext: NANOGUI_EXTRA_LIBS = '${NANOGUI_EXTRA_LIBS}'")
+-#	message(AUTHOR_WARNING "in ext: NANOGUI_EXTRA_INCS = '${NANOGUI_EXTRA_INCS}'")
+-#	message(AUTHOR_WARNING "in ext: NANOGUI_EXTRA_DEFS = '${NANOGUI_EXTRA_DEFS}'")
+-
+-	TARGET_LINK_LIBRARIES(NanoguiTarget INTERFACE nanogui)
+-	TARGET_LINK_LIBRARIES(NanoguiTarget INTERFACE ${NANOGUI_EXTRA_LIBS})
+-
+-	TARGET_INCLUDE_DIRECTORIES(NanoguiTarget INTERFACE ${NANOGUI_EXTRA_INCS})
+-	TARGET_INCLUDE_DIRECTORIES(NanoguiTarget INTERFACE nanogui/include)
+-
+-	TARGET_COMPILE_DEFINITIONS(NanoguiTarget INTERFACE ${NANOGUI_EXTRA_DEFS})
+-
+-ELSE(BCD_BUILD_GUI)
+-	MESSAGE(STATUS "skipping building of NanoGUI")
+-ENDIF(BCD_BUILD_GUI)
+-
+-ADD_LIBRARY(Json INTERFACE)
+-TARGET_INCLUDE_DIRECTORIES(Json INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/json/src)
+-
+diff --git a/include/bcd/core/DenoisingUnit.h b/include/bcd/core/DenoisingUnit.h
+index 66b3ff2..8b5527a 100644
+--- a/include/bcd/core/DenoisingUnit.h
++++ b/include/bcd/core/DenoisingUnit.h
+@@ -18,8 +18,8 @@
+ #include "Chronometer.h"
+ #endif
+ 
+-#include "Eigen/Eigenvalues"
+-#include "Eigen/Dense"
++#include "eigen3/Eigen/Eigenvalues"
++#include "eigen3/Eigen/Dense"
+ 
+ #include <vector>
+ #include <array>
+diff --git a/src/cli/main.cpp b/src/cli/main.cpp
+index 2648f6f..3058675 100644
+--- a/src/cli/main.cpp
++++ b/src/cli/main.cpp
+@@ -23,7 +23,7 @@
+ #include "Chronometer.h"
+ #include "Utils.h"
+ 
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ 
+ #include <iostream>
+ #include <ctime>
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index 7ad4cfe..c2b3f25 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -98,7 +98,6 @@ TARGET_INCLUDE_DIRECTORIES(${target_name} PUBLIC ${bcd_core_include_folder})
+ 
+ SET_TARGET_PROPERTIES(${target_name} PROPERTIES CXX_STANDARD 11)
+ TARGET_LINK_LIBRARIES(${target_name} PUBLIC OpenMP)
+-TARGET_LINK_LIBRARIES(${target_name} PRIVATE eigen)
+ 
+ INSTALL(TARGETS ${target_name} ARCHIVE DESTINATION lib)
+ 
+diff --git a/src/core/SamplesAccumulator.cpp b/src/core/SamplesAccumulator.cpp
+index 70095a0..f47c70d 100644
+--- a/src/core/SamplesAccumulator.cpp
++++ b/src/core/SamplesAccumulator.cpp
+@@ -8,6 +8,7 @@
+ 
+ #include "SamplesAccumulator.h"
+ #include "CovarianceMatrix.h"
++#include <math.h>
+ 
+ 
+ #include <cassert>
+diff --git a/src/core/SpikeRemovalFilter.cpp b/src/core/SpikeRemovalFilter.cpp
+index 59c12ad..a7e6db7 100644
+--- a/src/core/SpikeRemovalFilter.cpp
++++ b/src/core/SpikeRemovalFilter.cpp
+@@ -7,6 +7,7 @@
+ // BSD-style license that can be found in the LICENSE.txt file.
+ 
+ #include "SpikeRemovalFilter.h"
++#include <math.h>
+ 
+ #include "DeepImage.h"
+ 
+diff --git a/src/io/CMakeLists.txt b/src/io/CMakeLists.txt
+index 44d5718..6113c40 100644
+--- a/src/io/CMakeLists.txt
++++ b/src/io/CMakeLists.txt
+@@ -72,8 +72,8 @@ TARGET_INCLUDE_DIRECTORIES(${target_name} PRIVATE ${exr_folder})
+ 
+ SET_TARGET_PROPERTIES(${target_name} PROPERTIES CXX_STANDARD 11)
+ TARGET_LINK_LIBRARIES(${target_name} PUBLIC ${lib_bcd_core})
+-TARGET_LINK_LIBRARIES(${target_name} PRIVATE OpenExr)
+-TARGET_LINK_LIBRARIES(${target_name} PRIVATE Json)
++TARGET_LINK_LIBRARIES(${target_name} PUBLIC Half)
++TARGET_LINK_LIBRARIES(${target_name} PUBLIC IlmImf)
+ 
+ INSTALL(TARGETS ${target_name} ARCHIVE DESTINATION lib)
+ 
+diff --git a/src/io/ParametersIO.cpp b/src/io/ParametersIO.cpp
+index b91cc45..18d9b85 100644
+--- a/src/io/ParametersIO.cpp
++++ b/src/io/ParametersIO.cpp
+@@ -10,9 +10,10 @@
+ 
+ #include "Utils.h"
+ 
+-#include <json.hpp>
++#include <nlohmann/json.hpp>
+ #include <iostream>
+ #include <fstream>
++#include <iomanip>
+ 
+ using namespace std;
+ 
+diff --git a/src/io/exr/io_exr.cpp b/src/io/exr/io_exr.cpp
+index 2e4b8e2..0bcc6b1 100644
+--- a/src/io/exr/io_exr.cpp
++++ b/src/io/exr/io_exr.cpp
+@@ -24,12 +24,12 @@
+ 
+ /*VERSION 02.08.13*/
+ 
+-#include <ImfInputFile.h>
+-#include <ImfOutputFile.h>
+-#include <ImfRgbaFile.h>
+-#include <ImfChannelList.h>
+-#include <ImfFrameBuffer.h>
+-#include <half.h>
++#include <OpenEXR/ImfInputFile.h>
++#include <OpenEXR/ImfOutputFile.h>
++#include <OpenEXR/ImfRgbaFile.h>
++#include <OpenEXR/ImfChannelList.h>
++#include <OpenEXR/ImfFrameBuffer.h>
++#include <OpenEXR/half.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
+-- 
+2.20.1
+
