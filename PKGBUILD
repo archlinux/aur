@@ -24,6 +24,7 @@
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
 pkgver=18.0rc5
+# diffs: https://github.com/xbmc/xbmc/compare/18.0rc4-Leia..18.0rc5-Leia
 pkgrel=1
 _codename=Leia
 _tag="$pkgver-$_codename"
