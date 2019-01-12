@@ -14,8 +14,10 @@ backup=('etc/postsrsd/postsrsd')
 url="https://github.com/roehling/postsrsd"
 install=postsrsd.install
 license=(GPL2)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/roehling/postsrsd/archive/${pkgver}.tar.gz")
-md5sums=('e33826a7d1055080854ff7db71641fb8')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/roehling/postsrsd/archive/${pkgver}.tar.gz"
+        "postsrsd.conf")
+md5sums=('e33826a7d1055080854ff7db71641fb8'
+         '81a5eea5b84f3a2de9ad4713512175f0')
 
 build() {
   cd "$srcdir/postsrsd-$pkgver"

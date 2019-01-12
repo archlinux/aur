@@ -13,7 +13,9 @@ pkgbase = postsrsd
 	depends = glibc
 	backup = etc/postsrsd/postsrsd
 	source = postsrsd-1.5.tar.gz::https://github.com/roehling/postsrsd/archive/1.5.tar.gz
+	source = postsrsd.conf
 	md5sums = e33826a7d1055080854ff7db71641fb8
+	md5sums = 81a5eea5b84f3a2de9ad4713512175f0
 
 pkgname = postsrsd
 
