@@ -1,7 +1,7 @@
 # Maintainer: absrdspc <repom2[at]airmail[dot]cc>
 
 pkgname=phgen-git
-pkgver=r28.a93816e0
+pkgver=r28.a93816e
 pkgrel=1
 pkgdesc="Pattern-based random phrase generation using WordNet (git version)"
 arch=('x86_64' 'i686')
@@ -13,10 +13,13 @@ makedepends=('sbt' 'git')
 provides=('phgen')
 conflicts=('phgen')
 
-source=("git+https://github.com/AbsurdlySuspicious/PhraseGen.git")
-md5sums=('SKIP')
+source=("phgen-bin"
+        "git+https://github.com/AbsurdlySuspicious/PhraseGen.git")
 
-_gitname=phgen
+sha256sums=('29cecf4462abc2d92cf0153af8892902c8768d582f14c659715b5a0dfba5a6e4'
+            'SKIP')
+
+_gitname=PhraseGen
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -30,7 +33,7 @@ build() {
 }
 
 package() {
-  install -Dm755 -t "$pkgdir/usr/bin" 'phgen'
+  install -Dm755 -T "$srcdir/phgen-bin" "$pkgdir/usr/bin/phgen"
   install -Dm644 -t "$pkgdir/usr/share/java/phgen" "$srcdir/$_gitname/target/scala-2.12/phgen.jar"
 }
 
