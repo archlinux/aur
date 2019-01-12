@@ -1,7 +1,7 @@
 pkgbase = python-aioxmpp
 	pkgdesc = An XMPP library for use with Python 3.4 asyncio
-	pkgver = 0.10.2
-	pkgrel = 2
+	pkgver = 0.10.3
+	pkgrel = 1
 	url = https://github.com/horazont/aioxmpp
 	arch = any
 	license = LGPL3
@@ -21,8 +21,8 @@ pkgbase = python-aioxmpp
 	depends = python-pyopenssl
 	depends = python-sortedcollections
 	depends = python-tzlocal
-	source = https://files.pythonhosted.org/packages/source/a/aioxmpp/aioxmpp-0.10.2.tar.gz
-	sha256sums = b92362f7dfcc4d9940f833a62c87a4505fdffbeeb81beacfff52f9d90118ebd4
+	source = https://files.pythonhosted.org/packages/source/a/aioxmpp/aioxmpp-0.10.3.tar.gz
+	sha256sums = 5291c5ee39e081640b727847e6c2729e126ba16effb4fa55eaee11123c956f96
 
 pkgname = python-aioxmpp
 
