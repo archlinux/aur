@@ -1,0 +1,17 @@
+pkgbase = gdtoa-desktop-git
+	pkgdesc = Binary-decimal floating-point conversion library by David M. Gay
+	pkgver = r22.96aac69
+	pkgrel = 1
+	url = https://github.com/10110111/gdtoa-desktop
+	arch = i686
+	arch = x86_64
+	license = Lucent
+	makedepends = cmake
+	depends = git
+	provides = gdtoa-desktop
+	conflicts = gdtoa-desktop
+	source = gdtoa-desktop-git::git+https://github.com/10110111/gdtoa-desktop
+	sha256sums = SKIP
+
+pkgname = gdtoa-desktop-git
+
