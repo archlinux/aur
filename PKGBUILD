@@ -1,21 +1,24 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=aws-sdk-cpp-git
-pkgver=1.7.28.r0.g7bc5b426e8
+pkgver=1.7.33.r0.gc64f092956
 pkgrel=1
 pkgdesc="AWS SDK for C++"
-arch=(any)
+arch=('x86_64')
 url="https://github.com/aws/aws-sdk-cpp"
-license=('BSD')
+license=('Apache')
 depends=('cmake')
 makedepends=('openssl' 'curl' 'zlib' 'libutil-linux')
-source=("${pkgname}::git+https://github.com/aws/aws-sdk-cpp")
+_gitcommit='c18f2daa64d5968861bbb58a437fd06a9475e294'
+source=("${pkgname}::git+https://github.com/aws/aws-sdk-cpp#commit=${_gitcommit}")
+#source=("${pkgname}::git+https://github.com/aws/aws-sdk-cpp")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd ${pkgname}
-
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+# disable until aws engineers can settle on their fucking build process
+#pkgver() {
+#	cd ${pkgname}
+#
+#	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 build() {
 	cd ${pkgname}
