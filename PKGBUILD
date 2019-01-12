@@ -3,7 +3,7 @@
 pkgname=kubernetes-bin
 pkgver=1.13.2
 _contribver=0.7.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Production-Grade Container Scheduling and Management - binary version."
 optdepends=('etcd: etcd cluster required to run Kubernetes')
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
@@ -33,7 +33,7 @@ provides=('kubernetes'
 	  'kube-scheduler')
 conflicts=('kubernetes' 'kubeadm-git' 'kubectl' 'kubectl-bin' 'kubeadm-bin' 'kubelet-bin' )
 install=kubernetes.install
-sha512sums=('7b6a81c9f1b852b1e889c1b62281569a4b8853c79e5675b0910d941dfa7863c97f244f6d607aae3faf60bccd596dedb9d136b7fffeae199876e780904fd9f31e'
+sha512sums=('fe1c30efaffb70b4102879580470031baf78f11c94fc37773bd69568a3aca9a93a0350d067faa2fa0f25f3e85005fe5944cecd7a33d48326f55c60d0c0408004'
             '51ab778583bd3d33a89d6fdfd17231ec8e1fe5983c043c21c03421d71403b8e76b52d86b05b05651ab8da1bdb5b47b8aa85f275badefe82344bac15b9d86cde6'
             '19d70634252932e7835bb5db4af75c530fe843386ca688267caca0fb3b4fb1ad7019025ea9d59926ceac8817580e9dfad9396c327f2da955146a302f22b2d5ce')
 sha512sums_x86_64=('e2d2f02f76578c5a1c04a9a417e9f1dc16abcc28daab688c50554a1bf64bb75dfbf5aae6d6f3e5c4463b214034e0220884727e314fa563f6e2199b9a3e4147a9')
