@@ -1,12 +1,12 @@
 pkgname=glib2-static
 pkgver=2.58.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Low level core library. Static library."
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
 arch=(x86_64)
 depends=(pcre libffi)
-makedepends=(libffi zlib shared-mime-info python libelf git util-linux meson dbus)
+makedepends=(libffi zlib shared-mime-info python libelf git util-linux meson dbus libxslt docbook-xsl)
 checkdepends=(desktop-file-utils dbus)
 optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
             'libelf: gresource inspection tool')
