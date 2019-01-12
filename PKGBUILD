@@ -51,8 +51,8 @@ package_gnome-software-git() {
 }
 
 package_gnome-software-packagekit-plugin-git() {
-  provides=('gnome-software-packagekit-plugin-git')
-  conflicts=('gnome-software-packagekit-plugin-git')
+  provides=('gnome-software-packagekit-plugin')
+  conflicts=('gnome-software-packagekit-plugin')
   pkgdesc="PackageKit support plugin for GNOME Software"
   depends=(archlinux-appstream-data gnome-software packagekit)
 
