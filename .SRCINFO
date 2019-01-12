@@ -1,7 +1,7 @@
 pkgbase = supertuxkart-git
 	pkgdesc = A kart racing game featuring Tux and his friends - development version
-	pkgver = 20235+17844
-	pkgrel = 2
+	pkgver = 20687+17942
+	pkgrel = 1
 	url = http://supertuxkart.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = supertuxkart-git
 	makedepends = subversion
 	makedepends = cmake
 	makedepends = bluez-libs
-	makedepends = libvpx=1.6
+	makedepends = libvpx
 	depends = libvorbis
 	depends = freealut
 	depends = libgl

@@ -1,14 +1,14 @@
 # Maintainer: Michal Donat <donny579@gmail.com>
 
 pkgname=supertuxkart-git
-pkgver=20235+17844
-pkgrel=2
+pkgver=20687+17942
+pkgrel=1
 pkgdesc="A kart racing game featuring Tux and his friends - development version"
 url="http://supertuxkart.sourceforge.net/"
 license=("cc-by-sa-3.0")
 arch=('i686' 'x86_64')
 
-makedepends=("git" "subversion" "cmake" "bluez-libs" "libvpx=1.6")  # libvpx-1.6 is hotfix
+makedepends=("git" "subversion" "cmake" "bluez-libs" "libvpx")
 
 depends=("libvorbis" "freealut" "libgl" "glut" "fribidi" "glew" "libopenglrecorder" "libjpeg-turbo" "libpng" "freetype2")
 
@@ -56,5 +56,8 @@ package() {
     cd "${pkgdir}/usr/share/pixmaps"
     if [ ! -f supertuxkart.png ]; then
         ln -s supertuxkart{_128,}.png
+    fi
+    if [ -d "${pkgdir}/usr/lib64" ]; then
+      mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
     fi
 }
