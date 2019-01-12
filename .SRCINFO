@@ -1,0 +1,25 @@
+pkgbase = gnome-characters-git
+	pkgdesc = A character map application
+	pkgver = 3.30.0+20+ga4ac93e
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-characters
+	arch = x86_64
+	groups = gnome
+	license = GPL2
+	makedepends = meson
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = appstream-glib
+	makedepends = git
+	makedepends = gperf
+	depends = gjs
+	depends = gtk3
+	depends = libunistring
+	depends = gnome-desktop
+	provides = gnome-characters
+	conflicts = gnome-characters
+	source = git+https://gitlab.gnome.org/GNOME/gnome-characters.git
+	sha256sums = SKIP
+
+pkgname = gnome-characters-git
+
