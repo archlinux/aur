@@ -1,6 +1,6 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter
-pkgver=r19.5849ebb
+pkgver=r20.c7fc597
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
@@ -10,6 +10,7 @@ depends=('poppler-qt5' 'qt5-multimedia')
 makedepends=('git')
 source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
 md5sums=('SKIP')
+backup=("etc/${pkgname}/${pkgname}.conf")
 
 pkgver() {
   cd "${srcdir}/BeamerPresenter"
@@ -23,5 +24,6 @@ build() {
 
 package() {
   cd "${srcdir}/BeamerPresenter"
-  install -Dm755 beamerpresenter "$pkgdir/usr/bin/beamerpresenter"
+  install -Dm755 beamerpresenter "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 beamerpresenter.conf "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
 }
