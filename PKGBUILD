@@ -1,7 +1,7 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=mimosa
 pkgver=1.1.1
-pkgrel=4
+pkgrel=1
 pkgdesc="Download manager"
 arch=('x86_64')
 md5sums=('b0cdb9921560264d423d26f3777a3d29')
