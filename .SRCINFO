@@ -1,0 +1,21 @@
+pkgbase = hexyl-git
+	pkgdesc = A command-line hex viewer
+	pkgver = 0.3.1.54
+	pkgrel = 1
+	url = https://github.com/sharkdp/hexyl
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = rust
+	depends = cargo
+	optdepends = rust-src: rust std source code
+	provides = hexyl
+	conflicts = hexyl
+	source = hexyl-git::git+https://github.com/sharkdp/hexyl
+	sha256sums = SKIP
+
+pkgname = hexyl-git
+
