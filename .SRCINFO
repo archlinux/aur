@@ -1,6 +1,6 @@
 pkgbase = kubernetes-bin
 	pkgdesc = Production-Grade Container Scheduling and Management - binary version.
-	pkgver = 1.13.1
+	pkgver = 1.13.2
 	pkgrel = 0
 	url = http://kubernetes.io/
 	install = kubernetes.install
@@ -31,20 +31,20 @@ pkgbase = kubernetes-bin
 	backup = etc/kubernetes/kubelet
 	backup = etc/kubernetes/proxy
 	backup = etc/kubernetes/scheduler
-	source = v1.13.1.tar.gz::https://dl.k8s.io/v1.13.1/kubernetes.tar.gz
+	source = v1.13.2.tar.gz::https://dl.k8s.io/v1.13.2/kubernetes.tar.gz
 	source = https://github.com/kubernetes/contrib/archive/0.7.0.tar.gz
 	source = kubernetes.install
 	sha512sums = 7b6a81c9f1b852b1e889c1b62281569a4b8853c79e5675b0910d941dfa7863c97f244f6d607aae3faf60bccd596dedb9d136b7fffeae199876e780904fd9f31e
 	sha512sums = 51ab778583bd3d33a89d6fdfd17231ec8e1fe5983c043c21c03421d71403b8e76b52d86b05b05651ab8da1bdb5b47b8aa85f275badefe82344bac15b9d86cde6
 	sha512sums = 19d70634252932e7835bb5db4af75c530fe843386ca688267caca0fb3b4fb1ad7019025ea9d59926ceac8817580e9dfad9396c327f2da955146a302f22b2d5ce
-	source_x86_64 = kubernetes-bin-1.13.1.tar.gz::https://dl.k8s.io/v1.13.1/kubernetes-server-linux-amd64.tar.gz
-	sha512sums_x86_64 = e0e48825c5fe33a3f82b1b74847d9bfb8c5716c4313c5e4e6f46be0580e20a1e396a669b8ca446cfa581e3eb75698813249bbfcfc79c8a90793880eb5c177921
-	source_armv7l = kubernetes-bin-1.13.1.tar.gz::https://dl.k8s.io/v1.13.1/kubernetes-server-linux-arm.tar.gz
-	sha512sums_armv7l = 7ff4856e7959cf14eba0e1ab274c0bf0d3193391e7034a936697f0c4813e81d8dda4a019d3185677bee9d1345a6433db3fd6e55f644a0f73d076e0b2014ed172
-	source_armv7h = kubernetes-bin-1.13.1.tar.gz::https://dl.k8s.io/v1.13.1/kubernetes-server-linux-arm.tar.gz
-	sha512sums_armv7h = 7ff4856e7959cf14eba0e1ab274c0bf0d3193391e7034a936697f0c4813e81d8dda4a019d3185677bee9d1345a6433db3fd6e55f644a0f73d076e0b2014ed172
-	source_aarch64 = kubernetes-bin-1.13.1.tar.gz::https://dl.k8s.io/v1.13.1/kubernetes-server-linux-arm64.tar.gz
-	sha512sums_aarch64 = b8c2356002e675bd3de5ee9c2337a12e2a1bbfa2478f8e3b91065a578dfa8d50f596fd606d9f0232b06b8263867a7ca5cc7c04150718b8e40b49ae7d46001c30
+	source_x86_64 = kubernetes-bin-1.13.2.tar.gz::https://dl.k8s.io/v1.13.2/kubernetes-server-linux-amd64.tar.gz
+	sha512sums_x86_64 = e2d2f02f76578c5a1c04a9a417e9f1dc16abcc28daab688c50554a1bf64bb75dfbf5aae6d6f3e5c4463b214034e0220884727e314fa563f6e2199b9a3e4147a9
+	source_armv7l = kubernetes-bin-1.13.2.tar.gz::https://dl.k8s.io/v1.13.2/kubernetes-server-linux-arm.tar.gz
+	sha512sums_armv7l = 6f4a331fd78157866238dd9b8d986d33bfce6548ae503d0c9f4fb42854b0793df659298f95577103994047d01a6b613140b0eece3ae8c294bb0fe8ace84cdea1
+	source_armv7h = kubernetes-bin-1.13.2.tar.gz::https://dl.k8s.io/v1.13.2/kubernetes-server-linux-arm.tar.gz
+	sha512sums_armv7h = 6f4a331fd78157866238dd9b8d986d33bfce6548ae503d0c9f4fb42854b0793df659298f95577103994047d01a6b613140b0eece3ae8c294bb0fe8ace84cdea1
+	source_aarch64 = kubernetes-bin-1.13.2.tar.gz::https://dl.k8s.io/v1.13.2/kubernetes-server-linux-arm64.tar.gz
+	sha512sums_aarch64 = 50fc95da2598775029b828f31978f6e2a98eceee890bd575122e7697dc7805f1fb9de060998999f3f9d8bc76f5d534b25f64f9b340c70a58503172ae2818d98a
 
 pkgname = kubernetes-bin
 
