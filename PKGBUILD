@@ -8,14 +8,14 @@
 pkgname=intel-opencl
 _pkgver=5.0-63503
 pkgver="${_pkgver/-/.r}"
-pkgrel=1
-pkgdesc="OpenCL(TM) 2.0 Driver for Intel(R) HD, Iris(TM), and Iris(TM) Pro Graphics for Linux"
+pkgrel=2
+pkgdesc="Legacy OpenCL(TM) 2.0 Driver for Intel(R) HD, Iris(TM), and Iris(TM) Pro Graphics for Linux (pre-Broadwell)"
 arch=('x86_64')
-url="https://software.intel.com/en-us/articles/opencl-drivers#latest_linux_driver"
+url="https://software.intel.com/en-us/articles/legacy-opencl-drivers#latest_linux_driver"
 license=('custom:intel')
 depends=('zlib' 'libdrm')
 optdepends=('intel-opencl-sdk: Intel SDK for OpenCL Applications')
-provides=('opencl')
+provides=('opencl-driver')
 source=("${pkgname}-${pkgver}-linux64.zip::http://registrationcenter-download.intel.com/akdlm/irc_nas/11396/SRB5.0_linux64.zip")
 sha256sums=('a3989a7a00f216b1a50bad37dc49629c3f7ce65104a2ca665e59d8c699bf7443')
 
