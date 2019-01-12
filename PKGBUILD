@@ -1,18 +1,18 @@
 # Maintainer: b10n <b10n@dittes.nl>
 pkgname=powermate-git
 pkgver=v5.r20.g3f6459f
-pkgrel=1
+pkgrel=2
 pkgdesc="A small Linux userspace driver for the Griffin PowerMate."
-arch=('x86_64')
+arch=("x86_64")
 url="https://github.com/stefansundin/powermate-linux"
-license=('GPL3')
-depends=('libpulse')
+license=("GPL3")
+depends=("libpulse")
 source=("git+https://github.com/stefansundin/powermate-linux.git"
 		"git+https://github.com/cktan/tomlc99.git")
-md5sums=('SKIP' 'SKIP')
+md5sums=("SKIP" "SKIP")
 
 prepare() {
-	cd powermate-linux
+	cd "$srcdir/powermate-linux"
 	git submodule init
 	git config submodule.tomlc99.url "$srcdir/tomlc99"
 	git submodule update
