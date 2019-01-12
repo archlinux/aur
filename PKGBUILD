@@ -1,15 +1,15 @@
 # Maintainer: twchen aur@twchen.cc
 
 pkgname=joplin-appimage
-pkgver=1.0.119
+pkgver=1.0.120
 pkgrel=1
 pkgdesc="The latest released AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
 url="https://github.com/laurent22/joplin"
 license=('MIT')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
-source=('https://github.com/laurent22/joplin/releases/download/v1.0.119/Joplin-1.0.119-x86_64.AppImage')
-sha512sums=('51ce1d1f5e8f7d59145c3eabdf92adde7d7984fd73845882f3dc04eb56ba6da972fa1565c306fbc8a15bdf54bf3d505983ef39a4e7a651e6ab08bab209492902')
+source=('https://github.com/laurent22/joplin/releases/download/v1.0.120/Joplin-1.0.120-x86_64.AppImage')
+sha512sums=('7001d93db289bd47afe634285775d4acccba4732cb620051e34d6f284d2ea12e43ebe8bfae4a57236b17fbdb5bc4bb395fa0b5163d588626e37943337d88fbed')
 _filename=Joplin-$pkgver-x86_64.AppImage
 
 package() {
