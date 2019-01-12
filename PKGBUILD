@@ -1,8 +1,8 @@
 # Maintainer: Claudio Cocciarelli <claudiococciarelli at gmail dot com>
 
 pkgname=gnome-shell-dev
-pkgver=3.31.2
-pkgrel=3
+pkgver=3.31.4
+pkgrel=1
 pkgdesc="Next generation desktop shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
 arch=(x86_64)
