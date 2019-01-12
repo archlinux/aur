@@ -1,6 +1,6 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 pkgname=gandi.cli
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Gandi command line interface"
 arch=('any')
@@ -19,7 +19,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/Gandi/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('e6a28a26cfa16ad4d369958146152b293b4a0e68df6e9cfbfc2d07f84fbaa5e7')
+sha256sums=('81333e6982b45c27938ae9e1ae4612ace1145bab69abf36373d2ac23dbd0090b')
 
 build() {
   # Building the manpage
