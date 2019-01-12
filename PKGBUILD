@@ -2,9 +2,9 @@
 
 pkgname=libmodule
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C linux library to build simple and modular projects"
-arch=(x86_64)
+arch=('i686' 'x86_64')
 url="https://github.com/FedeDP/${pkgname}"
 license=(GPL)
 depends=()
