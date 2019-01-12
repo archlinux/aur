@@ -10,7 +10,7 @@ pkgdesc="Shared GSettings schemas for the desktop"
 arch=(i686 x86_64)
 url="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
 license=('GPL')
-depends=(glib2 intltool)
+depends=(glib2-git intltool)
 makedepends=(git meson gobject-introspection)
 
 provides=("${_realpkgname}")
