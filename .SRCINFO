@@ -1,21 +1,20 @@
-pkgbase = gsettings-desktop-schemas-git
+pkgbase = gsettings-desktop-schemas-dev
 	pkgdesc = Shared GSettings schemas for the desktop
-	pkgver = 3.8.0.5.gca797db
+	pkgver = 3.31.0.1
 	pkgrel = 1
-	url = http://live.gnome.org/
-	install = gsettings-desktop-schemas.install
+	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = glib2-git
+	makedepends = meson
+	makedepends = gobject-introspection
+	depends = glib2
 	depends = intltool
 	provides = gsettings-desktop-schemas
 	conflicts = gsettings-desktop-schemas
-	options = makeflags
-	options = !emptydirs
-	source = git://git.gnome.org/gsettings-desktop-schemas
+	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#tag=3.31.0.1
 	sha256sums = SKIP
 
-pkgname = gsettings-desktop-schemas-git
+pkgname = gsettings-desktop-schemas-dev
 
