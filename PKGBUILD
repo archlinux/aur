@@ -4,7 +4,6 @@ pkgbase=libpod
 pkgname=(
 	"libpod"
 	"libpod-docker"
-	"libpod-python"
 )
 pkgver=0.12.1.2
 pkgrel=2
@@ -21,7 +20,6 @@ makedepends=(
 	"iptables"
 	"libseccomp"
 	"ostree"
-	"python-setuptools"
 	"runc"
 )
 source=("https://github.com/containers/libpod/archive/v${pkgver}.tar.gz")
@@ -99,21 +97,3 @@ package_libpod-docker() {
 	make install.docker DESTDIR="${pkgdir}" PREFIX="${pkgdir}/usr"
 }
 
-package_libpod-python() {
-	pkgdesc="CLI for podman written in python."
-	depends+=(
-		"libpod"
-		"python"
-	)
-	provides+=(
-		"pypodman"
-	)
-	conflicts+=(
-		"pypodman"
-	)
-
-	export GOPATH="${srcdir}/go"
-	cd "${GOPATH}/src/github.com/containers/${pkgbase}"
-
-	make install.python DESTDIR="${pkgdir}" PREFIX="${pkgdir}/usr"
-}
