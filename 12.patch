@@ -1,0 +1,58 @@
+From 524fee120765fb43a141c3109bb39cadd7fb79fc Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Fri, 11 Jan 2019 14:18:01 +0100
+Subject: [PATCH] meson: Generate and install org.gnome.desktop.enums.xml file
+
+We were failing to generate it on meson. Avoid gnome.mkenums() since it
+becomes rather awkward to use (optimized for c/h files output). Probably
+worth revisiting if https://github.com/mesonbuild/meson/issues/1687 gets
+better.
+
+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/issues/6
+---
+ headers/meson.build | 15 +++++++++++++++
+ meson.build         |  2 ++
+ 2 files changed, 17 insertions(+)
+
+diff --git a/headers/meson.build b/headers/meson.build
+index f80f2bb..3ce8b61 100644
+--- a/headers/meson.build
++++ b/headers/meson.build
+@@ -4,6 +4,21 @@ headers = files(
+ 
+ install_headers(headers, subdir: gsettings_desktop_schemas_name)
+ 
++enums_xml = custom_target(
++  'org.gnome.desktop.enums.xml',
++  input: headers,
++  output: 'org.gnome.desktop.enums.xml',
++  command: [glib_mkenums,
++            '--comments', '<!-- @comment@ -->',
++            '--fhead', '<schemalist>',
++            '--vhead', '<@type@ id="org.gnome.desktop.@EnumName@">',
++            '--vprod', '    <value nick="@valuenick@" value="@valuenum@"/>',
++            '--vtail', '  </@type@>',
++            '--ftail', '</schemalist>', '@INPUT@'],
++  capture: true,
++  install: true,
++  install_dir: schemasdir)
++
+ if not meson.is_cross_build() and get_option('introspection')
+   noinst_lib = shared_library('noinst',
+                               headers,
+diff --git a/meson.build b/meson.build
+index 057c569..cc577b4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -37,6 +37,8 @@ pkg.generate(name: gsettings_desktop_schemas_name,
+              version: gsettings_desktop_schemas_version,
+              description: 'Shared GSettings schemas for the desktop, including helper headers')
+ 
++glib_mkenums = find_program('glib-mkenums')
++
+ subdir('headers')
+ subdir('schemas')
+ subdir('po')
+-- 
+2.18.1
+
