@@ -1,7 +1,7 @@
 pkgbase = sam-ba
 	pkgdesc = Atmel SAM Boot Assistant
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atmelcorp/sam-ba
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = sam-ba
 	md5sums = dc116aab099685b01653f00aa6a6ac00
 	md5sums = 6b29a65bbc96b608d7628e8a25ae1f50
 	md5sums = 1fd871ae02809fcbc3095c169f59ce01
-	md5sums = dc451b95c0d86788d11dab17a813a863
+	md5sums = d6cccea0c35eb4f5e0852e1ce0d816c6
 
 pkgname = sam-ba
 
