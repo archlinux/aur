@@ -9,7 +9,7 @@ arch=('any')
 url="https://www.redmine.org"
 license=('GPL2')
 #makedepends=('glibc' 'dialog')
-depends=('ruby>=1.9.3')
+depends=('ruby>=2.2.2')
 optdepends=('rvm: a command line tool to easily manage multiple Ruby environments'
             'rbenv: another command line tool to easily manage multiple Ruby environments'
             'apache: a supported application server'

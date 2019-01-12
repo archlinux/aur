@@ -5,7 +5,7 @@ pkgbase = redmine
 	url = https://www.redmine.org
 	arch = any
 	license = GPL2
-	depends = ruby>=1.9.3
+	depends = ruby>=2.2.2
 	optdepends = rvm: a command line tool to easily manage multiple Ruby environments
 	optdepends = rbenv: another command line tool to easily manage multiple Ruby environments
 	optdepends = apache: a supported application server
