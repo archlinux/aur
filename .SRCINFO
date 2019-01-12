@@ -1,7 +1,7 @@
 pkgbase = libbcd
 	pkgdesc = Bayesian Collaborative Denoiser for Monte Carlo Rendering
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/superboubek/bcd
 	arch = x86_64
 	license = BSD

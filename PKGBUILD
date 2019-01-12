@@ -1,7 +1,7 @@
 # Maintainer: Fabian Maurer <dark.shadow4@web.de>
 pkgname=libbcd
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bayesian Collaborative Denoiser for Monte Carlo Rendering "
 arch=('x86_64')
 url="https://github.com/superboubek/bcd"
@@ -28,6 +28,7 @@ build() {
 package() {
   cd "$srcdir/bcd-$pkgver"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -dr --no-preserve=ownership include "$pkgdir/usr/"
 
-  install -d "$pkgdir/usr/share/libbcd"
+  make DESTDIR="$pkgdir" install
 }
