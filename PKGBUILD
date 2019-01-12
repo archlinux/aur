@@ -4,7 +4,7 @@ _gemname=salticid
 
 pkgname=salticid
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Run commands over SSH, with Ruby magic.'
 url='https://github.com/aphyr/salticid'
 arch=('any')

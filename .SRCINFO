@@ -1,7 +1,7 @@
 pkgbase = salticid
 	pkgdesc = Run commands over SSH, with Ruby magic.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aphyr/salticid
 	arch = any
 	license = MIT
