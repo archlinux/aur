@@ -1,9 +1,9 @@
 # Maintainer: Thomas Benko <tombenkmo@gmail.com>
 
-pkgname=minetest-mod-dmobs-git
+pkgname=minetest-mods-dmobs-git
 _gitname=${pkgname%-git}
 pkgver=73.0e43362
-pkgrel=1
+pkgrel=2
 #epoch=
 pkgdesc="D00Med mobs mod, some animals and monsters, ie. butterfly, nyancat, golem or skeleton."
 arch=('any')
