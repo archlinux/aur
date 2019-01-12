@@ -2,7 +2,7 @@
 
 pkgname=linphone-desktop-git
 _pkgname=linphone-desktop
-pkgver=4.1.1.r584.g48077f0c
+pkgver=4.1.1.r654.g6931c43d
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
 arch=('x86_64')
