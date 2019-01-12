@@ -2,7 +2,7 @@
 pkgname=vpacman
 pkgver=1.3.0
 pkgrel=1
-pkgdesc="A programme to view and manage the pacman database - built with Tcl/Tk"
+pkgdesc="A Graphical front end for pacman and the AUR"
 arch=('any')
 url="https://github.com/fdservices/vpacman"
 license=('GPL')
