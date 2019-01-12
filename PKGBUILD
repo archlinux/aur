@@ -1,6 +1,6 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter
-pkgver=r20.c7fc597
+pkgver=r22.b1c1dc3
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
@@ -24,6 +24,8 @@ build() {
 
 package() {
   cd "${srcdir}/BeamerPresenter"
+  gzip beamerpresenter.1
   install -Dm755 beamerpresenter "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 beamerpresenter.conf "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
+  install -Dm644 beamerpresenter.1.gz "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }
