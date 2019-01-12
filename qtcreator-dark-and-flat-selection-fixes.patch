@@ -169,21 +169,27 @@ index 9a881e9e64..f350bf0ca2 100644
          FancyTabWidgetDisabledUnselectedTextColor,
          FancyTabWidgetEnabledSelectedTextColor,
 diff --git a/src/plugins/coreplugin/fancytabwidget.cpp b/src/plugins/coreplugin/fancytabwidget.cpp
-index 31ef98704c..677ff22e3a 100644
+index 31ef98704c..1156eeb1d1 100644
 --- a/src/plugins/coreplugin/fancytabwidget.cpp
 +++ b/src/plugins/coreplugin/fancytabwidget.cpp
-@@ -349,7 +349,13 @@ void FancyTabBar::paintTab(QPainter *painter, int tabIndex) const
+@@ -315,6 +315,11 @@ static void paintIconAndText(QPainter *painter, const QRect &rect,
+     }
+ 
+     painter->setOpacity(1.0); //FIXME: was 0.7 before?
++    if (selected && creatorTheme()->flag(Theme::FlatToolBars)) {
++        QRect accentRect = rect;
++        accentRect.setWidth(2);
++        painter->fillRect(accentRect, creatorTheme()->color(Theme::IconsBaseColor));
++    }
+     if (enabled) {
+         painter->setPen(
+             selected ? creatorTheme()->color(Theme::FancyTabWidgetEnabledSelectedTextColor)
+@@ -349,7 +354,7 @@ void FancyTabBar::paintTab(QPainter *painter, int tabIndex) const
      if (selected) {
          if (creatorTheme()->flag(Theme::FlatToolBars)) {
              // background color of a fancy tab that is active
 -            painter->fillRect(rect, creatorTheme()->color(Theme::FancyToolButtonSelectedColor));
-+            int selectedWidth = std::min(5, rect.width());
-+            int selectedBackgroundWidth = rect.width() - selectedWidth;
-+            const QRect selectedRect = QRect(rect.topLeft(), QSize(selectedWidth, rect.height()));
-+            const QRect selectedBackgroundRect = QRect(QPoint(rect.x() + selectedWidth, rect.y()),
-+                                                       QSize(selectedBackgroundWidth, rect.height()));
-+            painter->fillRect(selectedRect, creatorTheme()->color(Theme::FancyToolButtonSelectedColor));
-+            painter->fillRect(selectedBackgroundRect, creatorTheme()->color(Theme::FancyTabBarSelectedBackgroundColor));
++            painter->fillRect(rect, creatorTheme()->color(Theme::FancyTabBarSelectedBackgroundColor));
          } else {
              paintSelectedTabBackground(painter, rect);
          }
