@@ -1,48 +1,34 @@
-# Maintainer: oliver < a t >  first . in-berlin . de
+# Maintainer: Tambet Arak <tambetarak+nospam@gmail.com>
+# Contributor: oliver < a t >  first . in-berlin . de
 # Contributor: charlesthehawk at yahoo dot com
 # Contributor:  Serge Zirukin <ftrvxmtrx@gmail.com>
 
 pkgname=ocaml-sqlite3
 _pkgname=sqlite3-ocaml
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
-pkgdesc="SQLite3 bindings for OCaml"
-arch=('i686' 'x86_64')
-url="https://github.com/mmottl/sqlite3-ocaml"
+arch=('x86_64')
 license=('MIT')
-makedepends=('ocaml' 'ocaml-findlib' 'sqlite3' 'ocamlbuild' 'jbuilder' 'opam')
-source=(https://github.com/mmottl/sqlite3-ocaml/archive/${pkgver}.tar.gz)
-md5sums=('2956d5696d45229a470e0f6e7409c876')
-options=('!makeflags' 'staticlibs')
+pkgdesc='SQLite3 bindings for OCaml'
+url='https://github.com/mmottl/sqlite3-ocaml'
+depends=('ocaml' 'ocaml-base' 'ocaml-stdio' 'sqlite3')
+makedepends=('ocaml-findlib' 'dune')
+options=()
+source=("https://github.com/mmottl/sqlite3-ocaml/archive/${pkgver}.tar.gz")
+md5sums=('70ffbf667411876e13071e85d6f20ca7')
 
-_pkgdir="$_pkgname-$pkgver"
-
-build () {
-  echo ${srcdir}/${_pkgname}-${pkgver}
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  opam init -n --comp 4.07.0
-  eval `opam config env`
-  opam install base
-  opam install stdio
-  opam install configurator
-
-  make all
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  dune build @install
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  cd _build/install/default/lib/sqlite3
+  cd "$srcdir/$_pkgname-$pkgver"
 
-  INSTALLDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  echo Install-Dir: ${INSTALLDIR}
-  mkdir -p "$INSTALLDIR"
-  chmod 755 "$INSTALLDIR"
+  mkdir -p "$pkgdir/usr"
+  mkdir -p "$pkgdir/$(ocamlfind printconf destdir)"
 
-  # src/sqlite3-ocaml-4.4.0/_build/install/default/lib/sqlite3/
-
-  env DESTDIR=${pkgdir} \
-    OCAMLFIND_DESTDIR=${pkgdir}$(ocamlfind printconf destdir) \
-    OCAMLFIND_LDCONF=ignore \
-        ocamlfind install sqlite3 *
+  dune install --prefix="$pkgdir/usr" \
+    --libdir="$pkgdir/$(ocamlfind printconf destdir)"
 }
 
