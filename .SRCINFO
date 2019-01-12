@@ -1,6 +1,6 @@
 pkgbase = mediastreamer-git
 	pkgdesc = A modular sound and video processing and streaming library
-	pkgver = 2.16.1.r363.g222e1f6b
+	pkgver = 2.16.1.r514.gfcba9a96
 	pkgrel = 1
 	url = https://github.com/BelledonneCommunications/mediastreamer2
 	arch = x86_64
