@@ -1,13 +1,14 @@
 pkgbase = powermate-git
 	pkgdesc = A small Linux userspace driver for the Griffin PowerMate.
-	pkgver = v5.r8.gc6ff4c1
+	pkgver = v5.r20.g3f6459f
 	pkgrel = 1
 	url = https://github.com/stefansundin/powermate-linux
 	arch = x86_64
 	license = GPL3
-	makedepends = libnotify
 	depends = libpulse
 	source = git+https://github.com/stefansundin/powermate-linux.git
+	source = git+https://github.com/cktan/tomlc99.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = powermate-git
