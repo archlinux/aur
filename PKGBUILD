@@ -1,6 +1,6 @@
 # Maintainer: Matteljay <matteljay at pm dot me>
 pkgname=clipcommander
-pkgver=2018.12.11
+pkgver=2019.01.12
 pkgrel=1
 pkgdesc='Clipboard selection monitor youtube-dl GUI front-end'
 arch=('any')
