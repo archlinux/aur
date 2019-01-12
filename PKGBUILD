@@ -57,7 +57,6 @@ package_libpod() {
 	)
 	optdepends+=(
 		"libpod-docker: docker cli"
-		"libpod-python: pypodman"
 	)
 	provides+=(
 		"podman"
@@ -96,4 +95,3 @@ package_libpod-docker() {
 
 	make install.docker DESTDIR="${pkgdir}" PREFIX="${pkgdir}/usr"
 }
-
