@@ -12,23 +12,20 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git
-pkgver=0.22.99.23255.g2a7312d2b
+pkgver=0.22.99.23505.gd68cb82a3
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.enlightenment.org"
 license=('BSD')
 depends=('efl-git' 'xcb-util-keysyms' 'udisks2' 'wayland'
-         'xorg-server-xwayland')
+         'xorg-server-xwayland' 'bluez' 'pulseaudio' 'connman' 'bc')
   [[ ! $(pacman -T bluez-libs) ]] && depends+=('bluez-libs') #l2ping support in enlightenment_sys is detected at build time
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot')
-optdepends=('acpid: power events on laptop lid close'
-            'bc: calculator in everything module'
-            'bluez4: bluetooth module'
-            'connman: network module'
-            'gdb: create backtraces on crash'
-            'geoclue2: geolocation module'
-            'packagekit: packagekit module')
+optdepends=('acpid: power events on laptop lid close - almost essential for any ACPI based system like intel'
+            'gdb: create backtraces on crash - needed for getting backtraces at crash time in ~/.e-crashdump.txt'
+            'geoclue2: needed for geolocation module'
+            'packagekit: needed for packagekit module')
 provides=("$_pkgname=$pkgver" 'notification-daemon')
 conflicts=("$_pkgname")
 backup=('etc/enlightenment/sysactions.conf'
