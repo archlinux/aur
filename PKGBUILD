@@ -5,8 +5,8 @@ pkgname=(
 	"libpod"
 	"libpod-docker"
 )
-pkgver=0.12.1.2
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="A library used to create container pods."
 arch=("x86_64")
 url="https://github.com/containers/libpod"
@@ -23,7 +23,7 @@ makedepends=(
 	"runc"
 )
 source=("https://github.com/containers/libpod/archive/v${pkgver}.tar.gz")
-sha256sums=('bcde54cad3d08c84af7d18f5a5ef192121bf8e562b6e6cd8a75762c1664ac9c0')
+sha256sums=('f7a462563dd587208eff3c3c0689bc4d01071a8f7933bec2a13126be123f63a8')
 
 prepare() {
 	export GOPATH="${srcdir}/go"
