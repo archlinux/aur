@@ -5,12 +5,12 @@
 
 pkgname=activdriver
 pkgver=5.17.14
-pkgrel=1
+pkgrel=2
 pkgdesc="The kernel mode and X11 drivers for Promethean ActivBoard and ActivHub."
 arch=('i686' 'x86_64')
 url="https://support.prometheanworld.com/product/activdriver"
 license=('unknown')
-makedepends=(linux-headers)
+makedepends=(linux-lts414-headers)
 optdepends=('activinspire: activboard presentation'
             'activtools: hardware calibration')
 install=$pkgname.install
