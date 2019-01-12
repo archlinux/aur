@@ -2,15 +2,16 @@
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 
 pkgname=mono-basic
-pkgver=4.7
+pkgver=4.8
 pkgrel=1
 pkgdesc="Mono Visual Basic.NET compiler"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL')
 url="http://www.mono-project.com/"
 depends=('mono')
-source=("https://github.com/mono/mono-basic/archive/${pkgver}.tar.gz")
-sha384sums=('4f916f37e2a00655cf5533886f3259431abdcdec37d5a18c3a7d056316867605055e5afd1adf792091fca674cb3d5cfa')
+source=("${pkgname}-${pkgver}::git+https://github.com/mono/mono-basic.git#commit=e31cb702937a0adcc853250a0989c5f43565f9b8")
+#source=("https://github.com/mono/mono-basic/archive/${pkgver}.tar.gz")
+sha384sums=('SKIP')
 
 build() {
   # get rid of that .wapi errors; thanks to brice
