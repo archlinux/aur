@@ -1,13 +1,13 @@
 # Maintainer: Claudio Cocciarelli <claudiococciarelli at gmail dot com>
 
 pkgname=mutter-dev
-pkgver=3.31.2
-pkgrel=4
+pkgver=3.31.4
+pkgrel=1
 pkgdesc="A window manager for GNOME."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
-depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
+depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas-dev libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
          gnome-settings-daemon libgudev libinput pipewire)
 makedepends=(intltool gobject-introspection git egl-wayland)
@@ -17,22 +17,11 @@ groups=(gnome)
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#tag=$pkgver")
 sha256sums=('SKIP')
 
-prepare() {
-  cd mutter
-  NOCONFIGURE=1 ./autogen.sh
-}
-
-
 build() {
-  cd mutter
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-      --libexecdir=/usr/lib --disable-static \
-      --disable-schemas-compile --enable-compile-warnings=minimum \
-      --enable-gtk-doc --enable-egl-device --enable-remote-desktop
-  make
+  arch-meson mutter build
+  ninja -C build
 }
 
 package() {
-  cd mutter
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
