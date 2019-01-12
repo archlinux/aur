@@ -1,0 +1,18 @@
+pkgbase = minetest-mod-scifi_nodes-git
+	pkgdesc = D00Med's sci-fi node collection
+	pkgver = 42.83a1a8c
+	pkgrel = 1
+	url = https://github.com/danielmeek32/scifi_nodes
+	arch = any
+	license = LGPL
+	license = CCPL
+	makedepends = git
+	optdepends = minetest-usrdir_patch
+	optdepends = mesecons-git
+	optdepends = minetest-mod-moreblocks-git
+	provides = minetest-mod-scifi_nodes
+	source = minetest-mod-scifi_nodes::git+git://github.com/D00Med/scifi_nodes
+	md5sums = SKIP
+
+pkgname = minetest-mod-scifi_nodes-git
+
