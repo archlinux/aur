@@ -1,0 +1,7 @@
+#!/bin/bash
+
+post_install() {
+    cat<<INSTALLEOF
+You need to run secureboot --init to initialize secureboot keys
+INSTALLEOF
+}
