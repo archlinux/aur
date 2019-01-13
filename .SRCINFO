@@ -1,0 +1,17 @@
+pkgbase = python-injector-git
+	pkgdesc = Python dependency injection framework, inspired by Guice
+	pkgver = 0.14.1.r3.5d041fd
+	pkgrel = 1
+	url = https://github.com/alecthomas/injector
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-pypandoc
+	depends = python
+	provides = python-injector
+	conflicts = python-injector
+	source = git+https://github.com/alecthomas/injector.git
+	sha256sums = SKIP
+
+pkgname = python-injector-git
+
