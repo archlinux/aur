@@ -1,6 +1,6 @@
 pkgbase = rpmlint
 	pkgdesc = A tool for checking common errors in rpm packages.
-	pkgver = 1.10
+	pkgver = 1.11
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/rpmlint
 	arch = any
@@ -12,8 +12,11 @@ pkgbase = rpmlint
 	depends = desktop-file-utils
 	depends = python
 	depends = rpm-org
-	source = https://github.com/rpm-software-management/rpmlint/archive/rpmlint-1.10.tar.gz
-	md5sums = e2fb194390e983712bb4e92cb2a6e962
+	optdepends = appstream-glib: for AppData file validation
+	optdepends = python-magic: for file type detection
+	optdepends = python-pyenchant: for spell checking
+	source = https://github.com/rpm-software-management/rpmlint/archive/rpmlint-1.11.tar.gz
+	md5sums = 2642bb6f08f6e2a2f2c0fe9f07634d49
 
 pkgname = rpmlint
 

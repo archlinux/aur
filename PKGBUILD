@@ -2,7 +2,7 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=rpmlint
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc='A tool for checking common errors in rpm packages.'
 arch=('any')
@@ -11,8 +11,11 @@ license=('GPL2')
 depends=('cpio' 'desktop-file-utils' 'python' 'rpm-org')
 makedepends=('bash-completion')
 checkdepends=('flake8' 'python-pytest')
+optdepends=('appstream-glib: for AppData file validation'
+            'python-magic: for file type detection'
+            'python-pyenchant: for spell checking')
 source=("$url/archive/$pkgname-$pkgver.tar.gz")
-md5sums=('e2fb194390e983712bb4e92cb2a6e962')
+md5sums=('2642bb6f08f6e2a2f2c0fe9f07634d49')
 
 prepare() {
 	mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
@@ -24,10 +27,9 @@ build() {
 	make COMPILE_PYC=1
 }
 
-# Tests work better with a non-empty RPM database on the system
+# Tests need a non-empty RPM database on the system
 #check() {
 #	cd "$pkgname-$pkgver"
-#	# flake8 report violations making tests fail
 #	make FLAKE8=true check
 #}
 
