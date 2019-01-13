@@ -1,6 +1,6 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 pkgname=vdr-softhdcuvid
-pkgver=v1.1.0.r10.g8682ab0
+pkgver=1.1.0.r10.g8682ab0
 _gitver=8682ab01c440346212d65a91c5c4639a65d6473d
 _vdrapi=2.4.0
 pkgrel=1
@@ -20,7 +20,7 @@ sha512sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/vdr-plugin-${_plugname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
