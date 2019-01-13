@@ -1,18 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ppp-git
-pkgver=2.4.7.r28.ga3f379b
-pkgrel=2
+pkgver=2.4.7.r40.g5c765a6
+pkgrel=1
 pkgdesc="A package which implements the Point-to-Point Protocol"
 arch=('i686' 'x86_64')
 url="https://ppp.samba.org/"
 license=('BSD' 'GPL')
-depends=('glibc' 'libpcap')
+depends=('glibc' 'pam' 'libpcap')
 makedepends=('git')
 provides=('ppp')
 conflicts=('ppp')
 source=("git+https://github.com/paulusmack/ppp.git"
-        "ppp-2.4.6-makefiles.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ppp-2.4.6-makefiles.patch?h=packages/ppp"
         "CVE-2015-3310.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2015-3310.patch?h=packages/ppp"
         "options::https://git.archlinux.org/svntogit/packages.git/plain/trunk/options?h=packages/ppp"
         "ip-up::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-up?h=packages/ppp"
@@ -33,14 +32,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 
 
 prepare() {
   cd "ppp"
 
-  patch -p1 -i "$srcdir/ppp-2.4.6-makefiles.patch"
   patch -p1 -i "$srcdir/CVE-2015-3310.patch"
 }
 
@@ -58,6 +55,7 @@ build() {
   sed -i 's:^#HAVE_INET6=y:HAVE_INET6=y:' "pppd/Makefile"  # enable ipv6 support
   sed -i 's:^#CBCP=y:CBCP=y:' "pppd/Makefile"  # enable Microsoft proprietary CallBack Control Protocol
   sed -i 's:^#USE_PAM=y:USE_PAM=y:' "pppd/Makefile"
+  sed -i 's:^#SYSTEMD=y:SYSTEMD=y:' "pppd/Makefile"
 
   make
 }
@@ -66,6 +64,8 @@ package() {
   cd "ppp"
 
   make DESTDIR="$pkgdir/usr" install
+
+  mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
 
   install -D -m644 "$srcdir/options" "$pkgdir/etc/ppp/options"
   install -D -m755 "$srcdir/ip-up"   "$pkgdir/etc/ppp/ip-up"

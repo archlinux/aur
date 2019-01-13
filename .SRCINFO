@@ -1,7 +1,7 @@
 pkgbase = ppp-git
 	pkgdesc = A package which implements the Point-to-Point Protocol
-	pkgver = 2.4.7.r28.ga3f379b
-	pkgrel = 2
+	pkgver = 2.4.7.r40.g5c765a6
+	pkgrel = 1
 	url = https://ppp.samba.org/
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = ppp-git
 	license = GPL
 	makedepends = git
 	depends = glibc
+	depends = pam
 	depends = libpcap
 	provides = ppp
 	conflicts = ppp
 	source = git+https://github.com/paulusmack/ppp.git
-	source = ppp-2.4.6-makefiles.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ppp-2.4.6-makefiles.patch?h=packages/ppp
 	source = CVE-2015-3310.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2015-3310.patch?h=packages/ppp
 	source = options::https://git.archlinux.org/svntogit/packages.git/plain/trunk/options?h=packages/ppp
 	source = ip-up::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-up?h=packages/ppp
@@ -24,7 +24,6 @@ pkgbase = ppp-git
 	source = ip-down.d.dns.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-down.d.dns.sh?h=packages/ppp
 	source = ipv6-up.d.iface-config.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-up.d.iface-config.sh?h=packages/ppp
 	source = ppp.systemd::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ppp.systemd?h=packages/ppp
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
