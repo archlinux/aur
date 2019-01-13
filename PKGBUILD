@@ -13,7 +13,7 @@ conflicts=('python-catkin_pkg' 'python2-catkin-pkg')
 makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/c/catkin-pkg/catkin-pkg-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/c/catkin_pkg/catkin_pkg-${pkgver}.tar.gz")
 md5sums=('0c8752ab98ab06481a2ea7d037ac3878')
 
 build() {
