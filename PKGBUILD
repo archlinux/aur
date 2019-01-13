@@ -12,11 +12,14 @@ pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://github.com/lutris/lutris'
 license=('GPL3')
-depends=('python-gobject' 'python-yaml' 'python-evdev' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unrar' 'unzip' 'p7zip' 'curl' 'xorg-xrandr')
-makedepends=('python-setuptools' 'gnome-desktop')
+depends=('python-gobject' 'python-yaml' 'python-evdev' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unrar' 'unzip' 'p7zip' 'curl' 'xorg-xrandr' 'gnome-desktop')
+makedepends=('python-setuptools')
 checkdepends=('xorg-server-xvfb' 'xterm' 'python-nose-cover3' 'wine')
 optdepends=('wine: Run windows games'
-            'wine-staging: Run windows games - Staging patches')
+            'wine-staging: Run windows games - Staging patches'
+	    'python-evdev: Detecting connected joypads.'
+  	    'python-pyinotify: Enhanced Steam integration.'
+	   )
 provides=('lutris')
 conflicts=('lutris')
 source=("$url/archive/v${_pkgver}.tar.gz")
