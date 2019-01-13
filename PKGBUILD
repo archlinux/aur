@@ -61,10 +61,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _major=4.20
-pkgver=4.20.1
+pkgver=4.20.2
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -100,7 +100,7 @@ source=(# mainline kernel patches
          # standard config files for mkinitcpio ramdisk
         'linux.preset')
 
-sha256sums=('45096f1ffbfbb4cdeef6eecfa6ca7eabbf534f04645fd0d849564a58ddd2198f'
+sha256sums=('eb49b89833c548cf0c61d824f6e6e327dfe28877a7301d3bad97641064078669'
             'SKIP'
             '9f7177679c8d3f8d699ef0566a51349d828436dba04603bc2223f98c60d2d178'
             '4e56951100f920e1120474119e6565f9436125bb8553048144fe228ca42768b1'
