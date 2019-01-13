@@ -2,7 +2,7 @@
 
 _npmname=git-stats-html
 pkgname=nodejs-git-stats-html
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Turn git-stats result into HTML output. "
 arch=('any')
@@ -18,5 +18,5 @@ package() {
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
 }
-sha256sums=('aa8b2245b2151481d02ba06586dec01ce5cb09c9e1b708e41f33121a417e5b46')
+sha512sums=('cf2d59d3fdb6c53242def456ea0d64577efa3072ab370eb28276f77e2f81d46994808da6fd48cb84aa1b7d480036b0ebf4ecafc4dcec2588e93332372a03975f')
 # vim:set ts=2 sw=2 et:
