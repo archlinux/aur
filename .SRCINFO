@@ -1,0 +1,16 @@
+pkgbase = emacs-company-irony-c-headers-git
+	pkgdesc = Company-mode backend for C/C++ header files that works with irony-mode.
+	pkgver = 1.0.0.r2.g72c386a
+	pkgrel = 1
+	url = https://github.com/hotplx/company-irony-c-headers
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs-company-mode
+	depends = irony-mode
+	provides = emacs-company-irony-c-headers
+	source = git+https://github.com/hotplx/company-irony-c-headers.git
+	sha256sums = SKIP
+
+pkgname = emacs-company-irony-c-headers-git
+
