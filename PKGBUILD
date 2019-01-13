@@ -1,14 +1,14 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=gitit
 pkgver=0.12.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A wiki backed by a git, darcs, or mercurial filestore"
 arch=(i686 x86_64)
 url=https://hackage.haskell.org/package/gitit
 license=(GPL)
-depends=(libffi gmp mailcap zlib)
+depends=(gmp mailcap numactl zlib)
 optdepends=("git: git support" "mercurial: mercurial support")
-makedepends=(cabal-install ncurses5-compat-libs numactl)
+makedepends=(cabal-install libffi ncurses5-compat-libs)
 source=(haskell-ConfigFile-1.1.4.tar.gz::https://hackage.haskell.org/package/ConfigFile-1.1.4/ConfigFile-1.1.4.tar.gz
         haskell-Diff-0.3.4.tar.gz::https://hackage.haskell.org/package/Diff-0.3.4/Diff-0.3.4.tar.gz
         haskell-Glob-0.9.3.tar.gz::https://hackage.haskell.org/package/Glob-0.9.3/Glob-0.9.3.tar.gz
@@ -401,7 +401,7 @@ EOF
 
 build() {
     unset CABAL_SANDBOX_CONFIG CABAL_SANDBOX_PACKAGE_PATH GHC_PACKAGE_PATH
-    cabal --config=.cabal/config v1-install --enable-relocatable --force-reinstalls --datadir='$prefix/share/gitit' --docdir='$prefix/share/doc/$abi/$pkgid' --ghc-options=-rtsopts gitit
+    cabal --config=.cabal/config v1-install --enable-relocatable --force-reinstalls -f-plugins --datadir='$prefix/share/gitit' --docdir='$prefix/share/doc/$abi/$pkgid' --ghc-options=-rtsopts gitit
 }
 
 package() {
