@@ -4,7 +4,7 @@
 pkgname=curecoind-git
 pkgver=v2.0.0.1.r1.gb307e32
 pkgrel=2
-pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
+pkgdesc="Headless daemon for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
 license=('MIT')
