@@ -2,41 +2,40 @@
 
 pkgname=musescore-dev
 _pkgname=MuseScore
-pkgver=r14198.795912da2
+pkgver=r14890.5f7747303
 _branch=master
 pkgrel=1
 pkgdesc='Development branch of the sheet music editor MuseScore'
 arch=('i686' 'x86_64')
 url='https://github.com/musescore/MuseScore'
 license=('GPL')
-depends=('desktop-file-utils'
-    'gtk-update-icon-cache'
-    'libpulse'
-    'portaudio'
-    'portmidi'
-    'qt5-quickcontrols'
-    'qt5-svg'
-    'qt5-tools'
-    'qt5-webengine'
-    'qt5-webkit'
-    'shared-mime-info')
-makedepends=('cmake'
-	'doxygen'
-	'git'
-	'lame'
-	'qt5-script'
-	'texlive-core')
+depends=(
+  alsa-lib
+  libpulse
+  libsndfile
+  libvorbisfile.so
+  portaudio
+  portmidi
+  qt5-base
+  qt5-declarative
+  qt5-svg
+  qt5-tools
+  qt5-webengine
+  qt5-xmlpatterns
+  zlib
+)
+makedepends=(
+  cmake
+  doxygen
+  git
+  lame
+  qt5-script
+  texlive-core
+)
 optdepends=('lame: MP3 export')
 install=musescore.install
-source=("git+$url.git#branch=$_branch"
-    'fix_qt_install_path.patch')
-md5sums=('SKIP'
-         'cc54bc4072ace47c35af7c2478e0d1fc')
-
-prepare() {
-    cd $_pkgname
-    patch -p1 -i $srcdir/fix_qt_install_path.patch
-}
+source=("git+$url.git#branch=$_branch")
+md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
