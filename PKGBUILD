@@ -5,7 +5,7 @@ url='http://http://wiki.ros.org/hector_gazebo_plugins'
 
 
 pkgname='ros-kinetic-hector-gazebo-plugins'
-pkgver='0.5.0'
+pkgver='0.5.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,12 +22,14 @@ ros_makedepends=(ros-kinetic-catkin
                  ros-kinetic-tf
                  ros-kinetic-dynamic-reconfigure
                  ros-kinetic-message-generation
+                 ros-kinetic-gazebo-plugins
                  )
 makedepends=('cmake' 'ros-build-tools' 'gazebo'
   ${ros_makedepends[@]})
 
 ros_depends=(  ros-kinetic-roscpp
   ros-kinetic-gazebo-ros
+  ros-kinetic-gazebo-plugins
   ros-kinetic-std-msgs
   ros-kinetic-std-srvs
   ros-kinetic-geometry-msgs
