@@ -1,5 +1,5 @@
 pkgbase = st-alpha
-	pkgdesc = A simple virtual terminal emulator for X - with alpha patch (custom opacity)
+	pkgdesc = A simple virtual terminal emulator for X - with alpha, scrollback & scrollback-mouse patches
 	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://st.suckless.org
@@ -17,9 +17,13 @@ pkgbase = st-alpha
 	source = https://dl.suckless.org/st/st-0.8.1.tar.gz
 	source = config.h
 	source = https://st.suckless.org/patches/alpha/st-alpha-0.8.1.diff
+	source = https://st.suckless.org/patches/scrollback/st-scrollback-0.8.diff
+	source = https://st.suckless.org/patches/scrollback/st-scrollback-mouse-0.8.diff
 	sha256sums = c4fb0fe2b8d2d3bd5e72763e80a8ae05b7d44dbac8f8e3bb18ef0161c7266926
-	sha256sums = bd630b1515be2a51b074720c37e39a6e7fc54cad59807064311cfc9cda0318c9
+	sha256sums = 9218189801a81e2429bb5efa3f1b032380ddf40ec5d8b895fe4ccea3b8c3bfd2
 	sha256sums = 7bf61cb8a505891574f3ad0a5420334d3e965b9f7d0067df3819eeef72ce1358
+	sha256sums = 8279d347c70bc9b36f450ba15e1fd9ff62eedf49ce9258c35d7f1cfe38cca226
+	sha256sums = 3fb38940cc3bad3f9cd1e2a0796ebd0e48950a07860ecf8523a5afd0cd1b5a44
 
 pkgname = st-alpha
 
