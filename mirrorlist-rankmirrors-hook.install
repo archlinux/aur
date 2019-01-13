@@ -2,6 +2,8 @@ post_install() {
 	if [ -f "/etc/pacman.d/mirrorlist-rankmirrors.conf.pacsave" ]; then
 		mv -v "/etc/pacman.d/mirrorlist-rankmirrors.conf.pacsave" "/etc/pacman.d/mirrorlist-rankmirrors.conf"
 	else
-		echo -e "\033[1;34mInfo:\033[0m you need to configure \033[1m/etc/pacman.d/mirrorlist-rankmirrors.conf\033[0m file."
+		echo -ne "In order to make \033[4mmirrorlist-rankmirrors-hook\033[24m package works as expected, "
+		echo -e "you need to configure \033[1m/etc/pacman.d/mirrorlist-rankmirrors.conf\033[0m file."
+		echo -e "If you want to manually trigger the hook, run \033[1m/usr/share/libalpm/scripts/mirrorlist-rankmirrors\033[0m script."
 	fi
 }
