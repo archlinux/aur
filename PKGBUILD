@@ -190,7 +190,7 @@ cd ppolicy/
     # SQL section
     if [ -d ./contrib/sql ] ; then
       mkdir -p ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ppolicy-schema/
-      cp ../../fusiondirectory-${pkgver}/{AUTHORS,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ppolicy-schema/   
+      cp ../../fusiondirectory-${pkgver}/{AUTHORS.md,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ppolicy-schema/   
  
       # Directories
       for cur_sql in $(find ./contrib/sql -mindepth 1 -maxdepth 1 -type d) ; do
@@ -209,7 +209,7 @@ cd ppolicy/
 
   # Docs
   mkdir -p ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ppolicy/
-  cp ../../fusiondirectory-${pkgver}/{AUTHORS,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ppolicy/ 
+  cp ../../fusiondirectory-${pkgver}/{AUTHORS.md,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ppolicy/ 
  
     # Openldap section
   if [ -d ./contrib/openldap ] ; then
