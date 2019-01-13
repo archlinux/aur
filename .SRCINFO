@@ -1,0 +1,16 @@
+pkgbase = emacs-company-irony-git
+	pkgdesc = Provides a company-mode asynchronous completion backend for the C, C++ and Objective-C languages.
+	pkgver = 1.1.0.r0.g52aca45
+	pkgrel = 1
+	url = https://github.com/sarcasm/company-irony
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs-company-mode
+	depends = irony-mode
+	provides = emacs-company-irony
+	source = git+https://github.com/sarcasm/company-irony.git
+	sha256sums = SKIP
+
+pkgname = emacs-company-irony-git
+
