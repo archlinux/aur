@@ -1,6 +1,6 @@
 # Maintainer: J. Scheurich <mufti11@web.de>
 pkgname=white_dune
-pkgver=0.99pl1276
+pkgver=0.99pl1278
 pkgrel=1
 epoch=
 pkgdesc="white_dune X3D/VRML97 tool"
@@ -58,7 +58,7 @@ install=
 changelog=
 source=("$url")
 noextract=()
-md5sums=('7b1ec4ccd3a30e06d28b8f9502890c0e')
+md5sums=('10c114e7b2576ea6d85db941da1bc947')
 validpgpkeys=()
 
 prepare() {
