@@ -2,7 +2,7 @@
 pkgname=blackchocobo
 conflicts=('blackchocobo-git')
 pkgver=1.9.91
-pkgrel=1
+pkgrel=2
 pkgdesc="Final Fantasy 7 Save Editor"
 arch=('i686' 'x86_64')
 url="http://www.blackchocobo.com/"
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('qt5-base' 'openssl') #Qt5)
 #optdepends=('otf-ipafont: font for displaying japanese')
 install=$pkgname.install
-source=("https://github.com/sithlord48/blackchocobo/releases/download/v1.9.91/blackchocobo-1.9.91.tar.gz")
-sha256sums=('d7d7be5db34c18368a39455f5f45f97bc234744702b899c81b32a0f1ee4768b6')
+source=("https://github.com/sithlord48/blackchocobo/archive/v1.9.91.tar.gz")
+sha256sums=('37abc85e2d7e0cce8aa8bdc81ca14682c69da0eda36a4d9bd339b851fffab09b')
 
 build() {
   cd "blackchocobo-1.9.91"
