@@ -1,6 +1,6 @@
 pkgbase = grv
 	pkgdesc = terminal interface for viewing git repositories
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/rgburke/grv
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = grv
 	depends = go
 	provides = grv
 	conflicts = grv
-	source = https://github.com/rgburke/grv/releases/download/v0.3.0/grv_v0.3.0_linux64
-	sha512sums = af798127246081631f63f43d6e4d796345cdf04af2aa2eaab79b008b8ec914be881b469c99e98abd1cbe21e40ae41f64586d56b6fdea623db90bbb48e638e990
+	source = https://github.com/rgburke/grv/releases/download/v0.3.1/grv_v0.3.1_linux64
+	sha512sums = f7ddde2aafb4a831d34c398f76283d1c6496c5264c0fc12c1073daf1d75fb724248d18469f2a734046a4a67ae9331bc5f4b92b4a94d144ab185dcd9855e33121
 
 pkgname = grv
 
