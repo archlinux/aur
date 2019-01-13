@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-pagmo2
+	pkgdesc = Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model (mingw-w64)
+	pkgver = 2.10
+	pkgrel = 1
+	url = https://github.com/esa/pagmo2
+	arch = any
+	license = GPLv3
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-boost
+	optdepends = mingw-w64-gsl: Mathematical operations (symbolic)
+	optdepends = mingw-w64-blas: GSL CBLAS functions
+	optdepends = mingw-w64-nlopt: Nonlinear optimization algorithms
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/esa/pagmo2/archive/v2.10.tar.gz
+	sha512sums = 87417c105bc887439a7a089d3569e7df942584bf4af4c3fe2df738498bf17be99e450e02ef3d0bf1fdfab5d37cd7a2218aed39492215ed49d9a029a19d143794
+
+pkgname = mingw-w64-pagmo2
+
