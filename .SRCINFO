@@ -9,6 +9,7 @@ pkgbase = sequeler-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = libfixposix
 	depends = gtk3
 	depends = vala
 	depends = granite
