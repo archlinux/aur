@@ -5,7 +5,7 @@
 pkgbase=python-biopython
 pkgname=('python-biopython' 'python2-biopython')
 _pkgname=biopython
-pkgver=1.72
+pkgver=1.73
 pkgrel=1
 pkgdesc="Freely available Python tools for computational molecular biology"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 depends=('python-numpy' 'python2-numpy')
 source=(http://www.biopython.org/DIST/${_pkgname}-${pkgver}.tar.gz)
 changelog=ChangeLog
-sha512sums=('e2ce74f4533c9c779c8fbafb73ed562c890209a4318fc9d8616ec98670ee5e97649b8c1b0207c91454b923faecf375f20bd6a0aaff52ccc73268fb0b1ea0b44c')
+sha512sums=('d067330ef8e25ca6881b56f4e5e89e16a816c89760473e2f32a6236ab202f805294650aa944f0b098987425bcb65727317da7a26deb4d4937f02b00123ea9a8f')
 
 prepare() {
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
@@ -38,7 +38,7 @@ package_python-biopython() {
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE.rst" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-biopython() {
@@ -49,6 +49,6 @@ package_python2-biopython() {
 
   cd "${srcdir}/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --root="${pkgdir}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE.rst" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
