@@ -7,10 +7,18 @@ pkgdesc="A tool for gathering e-mail accounts, subdomain names, virtual hosts, o
 arch=('any')
 url="https://github.com/laramies/theHarvester"
 license=('GPL2')
-depends=('bash' 'python2' 'python2-requests')
+depends=(
+		'bash'
+		'python'
+		'python-requests'
+		'python-plotly'
+		'python-pytest'
+		'python-texttable'
+		'python-shodan')
 makedepends=('git' 'bash')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
+install="theHarvester.install"
 source=("$pkgname::git+https://github.com/laramies/theHarvester.git")
 md5sums=('SKIP')
 
@@ -25,7 +33,7 @@ prepare() {
 	cd "$srcdir/$pkgname"
 	cat <<__EOF__ > run.sh
 #!/bin/bash
-PYTHONPATH="\$PYTHONPATH:/opt/$pkgname/" /usr/bin/env python2 /opt/$pkgname/theHarvester.py "\$@"
+PYTHONPATH="\$PYTHONPATH:/opt/$pkgname/" /usr/bin/env python /opt/$pkgname/theHarvester.py "\$@"
 __EOF__
 }
 
@@ -35,9 +43,13 @@ package() {
 	
 	cp -r "$srcdir/$pkgname/discovery" "$pkgdir/opt/$pkgname/"
 	cp -r "$srcdir/$pkgname/lib" "$pkgdir/opt/$pkgname/"
-	install "$srcdir/$pkgname/myparser.py" "$pkgdir/opt/$pkgname/"
+	cp -r "$srcdir/$pkgname/parsers" "$pkgdir/opt/$pkgname/"
+	cp -r "$srcdir/$pkgname/tests" "$pkgdir/opt/$pkgname/"
+	cp -r "$srcdir/$pkgname/wordlists" "$pkgdir/opt/$pkgname/"
+	install "$srcdir/$pkgname/stash.py" "$pkgdir/opt/$pkgname/"
 	install "$srcdir/$pkgname/theHarvester.py" "$pkgdir/opt/$pkgname/"
 	install "$srcdir/$pkgname/run.sh" "$pkgdir/opt/$pkgname/"
 	
 	ln -s "/opt/$pkgname/run.sh" "$pkgdir/usr/bin/theharvester"
+	
 }
