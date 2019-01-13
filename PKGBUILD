@@ -2,23 +2,16 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=gnome-internet-radio-locator
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Easily find live radio programs based on geographical location of radio broadcasters on the Internet"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/InternetRadioLocator"
 license=(GPL3)
-depends=('libchamplain' 'geocode-glib' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good')
-makedepends=('intltool' 'itstool' 'python' 'gtk-doc' 'yelp-tools')
+depends=('libchamplain' 'geocode-glib' 'gst-plugins-base' 'gst-plugins-bad')
+makedepends=('intltool' 'itstool' 'python')
 source=(https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('fd6ce280afc89cfad3ed864f90c3dd8892b9c75811b7805cbc3dbacf78d78524')
-
-prepare() {
-  cd $pkgname-$pkgver
-    # disable pkgconfig for gst-plugins-good, as it currently doesn't have .pc file
-  sed -i '/gstreamer-plugins-good-1.0 \\/d' configure.ac
-  autoreconf
-}
+sha256sums=('5d98bbbc6f1b028cbd9d6ae840ec9e47b8548cdf2cf091aa9e75902d8b684a09')
 
 build() {
   cd $pkgname-$pkgver
