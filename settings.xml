@@ -1,0 +1,3 @@
+<settings>
+	<localRepository>${env.MAVENCACHE}/maptoncache</localRepository>
+</settings>
