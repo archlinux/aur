@@ -190,7 +190,7 @@ cd ldapmanager/
     # SQL section
     if [ -d ./contrib/sql ] ; then
       mkdir -p ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ldapmanager-schema/
-      cp ../../fusiondirectory-${pkgver}/{AUTHORS,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ldapmanager-schema/   
+      cp ../../fusiondirectory-${pkgver}/{AUTHORS.md,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ldapmanager-schema/   
  
       # Directories
       for cur_sql in $(find ./contrib/sql -mindepth 1 -maxdepth 1 -type d) ; do
@@ -209,6 +209,6 @@ cd ldapmanager/
 
 	# Docs
 	mkdir -p ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ldapmanager/
-	cp ../../fusiondirectory-${pkgver}/{AUTHORS,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ldapmanager/ 
+	cp ../../fusiondirectory-${pkgver}/{AUTHORS.md,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ldapmanager/ 
  
 }
