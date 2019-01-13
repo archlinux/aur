@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="Enables darker-than-dark Desktop dimming for your displays."
 arch=("x86_64")
 url="https://github.com/sidneys/${pkgname}"
-license=("MIT")
+license=('Custom:CC0-1.0')
 source=("https://github.com/sidneys/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.pacman"
         LICENSE::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt)
 md5sums=('bd4370ee7d3e11ba8c5114481f8ddb7b'
