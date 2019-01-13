@@ -5,12 +5,12 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="emerald"
-_pkgver=0.8.14
+_pkgver=0.8.16
 _micro=""
 
 pkgname=emerald
 pkgver="${_pkgver}${_micro}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Emerald window decorator"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/compiz/${_upstream}/"
@@ -39,4 +39,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('f7a6678c90d8e8cf3adecf1223650d4964d4b09c53e699650b0bc60ecd515e3d')
+sha256sums=('9c299ca06c9d898fcd86e49f6a4d9104299fdcd11217dd4df28117cc95882961')
