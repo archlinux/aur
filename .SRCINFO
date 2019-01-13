@@ -1,0 +1,21 @@
+pkgbase = swayidle-git
+	pkgdesc = Sway's idle management daemon
+	pkgver = r36.1fe7145
+	pkgrel = 1
+	url = https://swaywm.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	depends = wayland
+	provides = swayidle
+	options = debug
+	options = !strip
+	source = swayidle::git+https://github.com/swaywm/swayidle.git
+	sha1sums = SKIP
+
+pkgname = swayidle-git
+
