@@ -3,7 +3,7 @@
 
 _pkgname=frida
 pkgname=python2-$_pkgname
-pkgver=12.2.28
+pkgver=12.2.29
 pkgrel=1
 pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 2 version from PyPi."
 arch=('i686' 'x86_64')
