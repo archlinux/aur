@@ -4,7 +4,7 @@
 
 pkgname=sddm
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='QML based X11 and Wayland display manager'
 arch=('x86_64')
 url='http://github.com/sddm/sddm'
@@ -29,6 +29,7 @@ build() {
   cmake ../${pkgname}-${pkgver} \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
+        -DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
         -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
         -DBUILD_MAN_PAGES=ON
   make
