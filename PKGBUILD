@@ -10,9 +10,12 @@
 _makenconfig=
 
 # Optionally select a sub architecture by number if building in a clean chroot
-# Leaving this entry blank will require user interaction during the build 
+# Leaving this entry blank will require user interaction during the build
 # which will cause a failure to build if using makechrootpkg. Note that the
 # generic (default) option is 26.
+#
+# Note - the march=native option is unavailable by this method, use the nconfig
+# and manually select it.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -40,22 +43,11 @@ _makenconfig=
 #  24. Intel Cannon Lake (MCANNONLAKE)
 #  25. Intel Ice Lake (MICELAKE)
 #  26. Generic-x86-64 (GENERIC_CPU)
-#  27. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
-# NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
-# actually run slower with NUMA enabled. Most users will want to set this option
-# to enabled ... in other words, do not use NUMA on a single CPU system.
-#
-# It has been reported that users of CUDA require NUMA to be enabled, therefore
-# if you require CUDA support, be sure the variable below is set to a null
-# See: https://bbs.archlinux.org/viewtopic.php?id=239174
-_NUMAdisable=y
-
 # Compile ONLY probed modules
-# As of mainline 2.6.32, running with this option will only build the modules
-# that you currently have probed in your system VASTLY reducing the number of
-# modules built and the build time to do it.
+# Build in only the modules that you currently have probed in your system VASTLY
+# reducing the number of modules built and the build time.
 #
 # WARNING - ALL modules must be probed BEFORE you begin making the pkg!
 #
@@ -69,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=4.20.1-arch1
+_srcver=4.20.2-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -94,9 +86,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('45096f1ffbfbb4cdeef6eecfa6ca7eabbf534f04645fd0d849564a58ddd2198f'
+sha256sums=('eb49b89833c548cf0c61d824f6e6e327dfe28877a7301d3bad97641064078669'
             'SKIP'
-            '5229409c61e545697c09a7a877f6d20033cf8658dff286790295dd895df5299c'
+            '40f4d5d3ba7a926f00a77236b6096dee8ffa97ed11120454a03fa9e115695324'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -132,21 +124,6 @@ prepare() {
 
   msg2 "Setting config..."
   cp ../config .config
-
-  ### Optionally disable NUMA
-  if [ -n "$_NUMAdisable" ]; then
-    msg2 "Disabling NUMA from kernel config..."
-    sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-      -i -e '/CONFIG_AMD_NUMA=y/d' \
-      -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-      -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-      -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-      -i -e '/CONFIG_NODES_SHIFT=6/d' \
-      -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-      -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-      -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-      -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
-  fi
 
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
