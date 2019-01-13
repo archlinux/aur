@@ -1,8 +1,8 @@
-# Contributor: Loui Chang <base64: bG91aXBjLmlzdEBnbWFpbC5jb20=>
+# Contributor: louipc <base64:bG91aXBjQGdteC5jb20=>
 
 _pkgname=mutt
-pkgname="${_pkgname}-hg"
-pkgver=6901.7c0e7a0769e4
+pkgname="${_pkgname}-git"
+pkgver=6959.42e2d07a
 pkgrel=1
 pkgdesc="A small but very powerful text-based mail client"
 url="http://www.mutt.org/"
@@ -13,16 +13,17 @@ depends=('gdbm' 'gpgme' 'libidn' 'mime-types' 'ncurses' 'zlib')
 # Uncomment if enabling imap, pop, or smtp
 #depends+=('krb5' 'libsasl' 'openssl')
 
-makedepends=('mercurial' 'gnupg' 'libxslt')
+makedepends=('git' 'gnupg' 'libxslt')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+replaces=("${_pkgname}-hg")
 
-source=("hg+https://dev.mutt.org/hg/mutt#branch=default")
+source=("git+https://gitlab.com/muttmua/mutt.git")
 md5sums=(SKIP)
 
 pkgver() {
     cd "$srcdir/${_pkgname}"
-    printf "%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
