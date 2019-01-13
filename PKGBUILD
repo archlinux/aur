@@ -7,11 +7,15 @@ pkgdesc="Cursors similliar to Windows 8 cursor"
 arch=('any')
 url="http://gnome-look.org/content/show.php/?content=155025"
 license=("GPL")
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1460735137/s/e6598df800b1e29b5b3f045dfdc69dda/t/1516944582/u//155025-win8.tar.gz")
-sha1sums=('SKIP')
+source=("https://github.com/Zerophase/windows8-cursor/archive/master.zip")
+sha1sums=('85088eaab90f8ca9413ffc951dd68bfd8bba29d1')
 
 package()
 {
+	unzip -oq  master.zip
+
+	cd ./windows8-cursor-master/
+
 	tar -xzf  155025-win8.tar.gz
 
 	cd win8
