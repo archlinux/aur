@@ -2,19 +2,19 @@
 
 pkgbase=python-git-up
 pkgname=('python-git-up' 'python2-git-up')
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A python implementation of git up"
 arch=('any')
 url="http://github.com/msiemens/PyGitUp"
 license=('MIT')
-makedepends=('python-setuptools' 'python-termcolor' 'python-colorama' 'python-docopt' 'python-gitpython'
-             'python2-setuptools' 'python2-termcolor' 'python2-colorama' 'python2-docopt' 'python2-gitpython')
+makedepends=('python-setuptools' 'python-termcolor' 'python-colorama' 'python-docopt' 'python-gitpython' 'python-click'
+             'python2-setuptools' 'python2-termcolor' 'python2-colorama' 'python2-docopt' 'python2-gitpython' 'python2-click')
 source=($pkgname-$pkgver.tar.gz::https://github.com/msiemens/PyGitUp/archive/v$pkgver.tar.gz)
-sha256sums=('e826b2dadff42048868da259f367455fb6ef27fdaa110b39b6447bf0210c1464')
+sha256sums=('f93376f8cdf497238609ee16e8565bc92bd88498ed8e23ac908b3ac440a9664a')
 
 package_python-git-up() {
-  depends=('python-termcolor' 'python-colorama' 'python-docopt' 'python-gitpython')
+  depends=('python-termcolor' 'python-colorama' 'python-docopt' 'python-gitpython' 'python-click')
 
   cd "${srcdir}"/PyGitUp-$pkgver
   python setup.py install --root="${pkgdir}" --optimize=1
@@ -24,7 +24,7 @@ package_python-git-up() {
 }
 
 package_python2-git-up() {
-  depends=('python2-termcolor' 'python2-colorama' 'python2-docopt' 'python2-gitpython')
+  depends=('python2-termcolor' 'python2-colorama' 'python2-docopt' 'python2-gitpython' 'python2-click')
 
   cd "${srcdir}"/PyGitUp-$pkgver
   python2 setup.py install --root="${pkgdir}" --optimize=1
