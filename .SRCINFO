@@ -1,6 +1,6 @@
 pkgbase = edex-ui
 	pkgdesc = A science fiction desktop running everywhere. Awesome.
-	pkgver = 1.1.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/GitSquared/edex-ui
 	install = edex-ui.install
@@ -15,8 +15,8 @@ pkgbase = edex-ui
 	depends = libxss
 	depends = nss
 	provides = edex-ui
-	source = https://github.com/GitSquared/edex-ui/archive/v1.1.2.tar.gz
-	sha256sums = 10430772194a43efcaf4b3c8b1a0ca0f40bc3241d033ab8e70b035c3d3c8873d
+	source = https://github.com/GitSquared/edex-ui/archive/v2.0.0.tar.gz
+	sha256sums = 6d20012e6db822bd80609c8f7349466d7baf79ed940c10c2b4613cf6a36f3e02
 
 pkgname = edex-ui
 
