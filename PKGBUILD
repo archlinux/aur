@@ -6,8 +6,8 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=0.162.1
-pkgrel=2
+pkgver=0.164.0
+pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
 url="https://github.com/openSUSE/osc"
@@ -24,17 +24,14 @@ optdepends=('obs-build: required to run local builds'
 conflicts=('osc-git' 'osc-bash-completion' 'zsh-completion-osc')
 replaces=('osc-bash-completion' 'zsh-completion-osc')
 source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
-        "_osc"
-       '0001-Disable-ssl-session-resumption.patch' )
-sha256sums=('529d627bf10117f43f52f6e6db09e9663474ae984b7be93cae9a686b52bd932c'
-            '2b045e03d2fdce12683ceb9792d491a32f00b256045456412e7bc18c8726218a'
-            '7f01860ac98f5b817ff4d835f60fc940300b5d9b83629a6e9950ed7e6ddb087f')
+        "_osc")
+sha256sums=('a8ea3e2ab6703061685a4ae08e232e70728022e8f9308fc3b626d21c8584da55'
+            '2b045e03d2fdce12683ceb9792d491a32f00b256045456412e7bc18c8726218a')
 
 prepare() {
   # Add 'Arch_Core' and 'Arch_Extra' as osc build targets
   sed -i "s|SLE_11_SP2|SLE_11_SP2 Arch_Core Arch_Extra|" _osc
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}"/0001-Disable-ssl-session-resumption.patch 
 }
 
 build() {
