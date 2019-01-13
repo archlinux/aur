@@ -12,11 +12,13 @@ sha1sums=('SKIP')
 
 package()
 {
+	tar -xzf  155025-win8.tar.gz
+
 	cd win8
 
 	install -d -m 755 "$pkgdir/usr/share/icons/Windows8-cursor/cursors"
 
-    cp -a cursors/* "$pkgdir/usr/share/icons/Windows8-cursor/cursors"
-	install -D -m 644 index.theme "$pkgdir/usr/share/icons/Windows8-cursor/index.theme"   
+	cp -a cursors/* "$pkgdir/usr/share/icons/Windows8-cursor/cursors"
+	install -D -m 644 index.theme "$pkgdir/usr/share/icons/Windows8-cursor/index.theme"
 
 }
