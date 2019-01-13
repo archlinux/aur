@@ -28,7 +28,7 @@ diff --git a/src/sage/rings/polynomial/polynomial_element.pyx b/src/sage/rings/p
 index 2b5504a..8bd32dd 100644
 --- a/src/sage/rings/polynomial/polynomial_element.pyx
 +++ b/src/sage/rings/polynomial/polynomial_element.pyx
-@@ -4364,8 +4364,7 @@ cdef class Polynomial(CommutativeAlgebraElement):
+@@ -4363,8 +4363,7 @@ cdef class Polynomial(CommutativeAlgebraElement):
              sage: G.prod() == g
              True
          """

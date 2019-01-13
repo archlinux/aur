@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.6.beta0.r0.g2639857771
+pkgver=8.6.rc1.r0.g62fe3948ea
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -44,12 +44,11 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-threejs.patch
         sagemath-cremona.patch
         sagemath-sphinx-1.8.patch
-        sagemath-networkx-2.2.patch
         sagemath-cypari2.patch
         sagemath-singular-4.1.1.p4.patch
         sagemath-ecl-sigfpe.patch)
 sha256sums=('SKIP'
-            'f26ab0f22d7d916a621f02b9d9fc806eb6825f8d34cdf45accb0e2601c82f049'
+            'de6e38462ef1848778fbc23a63529fbee9229dbb245bb653f58a0d834a634c04'
             '960afe4fcbffe2762b66119b8f14355386ced0d8ee52b535d0dac1dba90d365b'
             'ef265f88ceb6caf4aac2d86ea74850861d99a63d11c94fc52b2ce88053c26d1e'
             'bd2744c6564bbf71bd6ea3cd7b9031e2126cc1423bcdc1fcc258d90d750a129d'
@@ -58,10 +57,9 @@ sha256sums=('SKIP'
             'f6b48abf34f64ea3fc092b0f0179e89633f7d3ecc0d62c2acacbfa1217751d63'
             '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
             '22f5e44a42c8276025b8512f45cac1c36d576c29c7fd9d36fde8b19ff87867d8'
-            '6ff08c4cdf468179618dd2d5428bcb8575308bc69dab2550c277d0beb2419f4f'
-            '1677bcaa3fe19bf978b6ffaae7b64b7ec32df63fa3d0e28b179cfa831fcfa896'
+            '73e31973893f99d112249df1db6e0784fc4c5b0b0c3513139f0994d60369fb40'
             '482887fe43d89cef3270e89300ab9e2238fa74cd5b7c875688b68fb1b10c4fdf'
-            '87bf055de0a233e9599c59a86f64b4502be31fda53ba0a426f94f25f17ca76df')
+            'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938')
 
 pkgver() {
   cd sage
@@ -92,8 +90,6 @@ prepare(){
   patch -p1 -i ../fes02.patch
 # use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825
   patch -p1 -i ../sagemath-cremona.patch
-# Fix graph generators with networkx 2.2 https://trac.sagemath.org/ticket/26326
-  patch -p1 -i ../sagemath-networkx-2.2.patch
 # Fix build with cypari 2.0 https://trac.sagemath.org/ticket/26442
   patch -p1 -i ../sagemath-cypari2.patch
 # Fixes for singular 4.1.1p4 https://trac.sagemath.org/ticket/25993

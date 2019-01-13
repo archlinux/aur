@@ -90,7 +90,7 @@
  export SAGE_DOC="$SAGE_SHARE/doc/sage"
  
  if [ -z "${SAGE_ORIG_PATH_SET}" ]; then
-@@ -403,29 +403,8 @@
+@@ -409,29 +409,8 @@
      export SAGE_STARTUP_FILE
  fi
  
@@ -122,7 +122,7 @@
  LDFLAGS="-L$SAGE_LOCAL/lib -Wl,-rpath,$SAGE_LOCAL/lib $LDFLAGS"
  export LDFLAGS
  
-@@ -489,8 +489,6 @@
+@@ -495,8 +495,6 @@
      fi
  fi
 
@@ -131,7 +131,7 @@
  
  PERL5LIB="$SAGE_LOCAL/lib/perl5:$PERL5LIB" && export PERL5LIB
  
-@@ -601,9 +601,6 @@
+@@ -607,9 +607,6 @@
      LD_LIBRARY_PATH="$SAGE_LOCAL/bin:$LD_LIBRARY_PATH" && export LD_LIBRARY_PATH
  fi
  
