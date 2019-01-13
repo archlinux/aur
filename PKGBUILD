@@ -4,12 +4,12 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="emerald-themes"
-_pkgver=0.8.14
+_pkgver=0.8.16
 _micro=""
 
 pkgname=emerald-themes
 pkgver="${_pkgver}${_micro}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Themes for emerald"
 arch=('any')
 url="https://gitlab.com/compiz/${_upstream}/"
@@ -32,4 +32,4 @@ package() {
   make DESTDIR="${pkgdir}" install 
 }
 
-sha256sums=('786d2b3ba9378229fde7fed151730c674ca059ad51c4cea3dd9c1cc54f89e3ee')
+sha256sums=('5e5cb2e2ebdbcbe44d03cf48caa8460c3e9b18ca78b0583946a824e1548b75e7')
