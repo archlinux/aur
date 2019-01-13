@@ -1,0 +1,15 @@
+pkgbase = mdloader-bin
+	pkgdesc = Massdrop Firmware Loader
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/Massdrop/mdloader
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = https://github.com/Massdrop/mdloader/releases/download/1.0.3/applet-flash-samd51j18a.bin
+	source = https://github.com/Massdrop/mdloader/releases/download/1.0.3/mdloader_linux
+	md5sums = c9a793fade06ef949bd426c2ad620367
+	md5sums = f4c586a3f7ed07419eb4b535d6d0f650
+
+pkgname = mdloader-bin
+
