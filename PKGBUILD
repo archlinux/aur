@@ -22,7 +22,7 @@ cd applications/
     if [ -d ./contrib/openldap ] ; then
       mkdir -p ${pkgdir}/etc/openldap/schema/fusiondirectory/
       mkdir -p ${pkgdir}/usr/share/doc/fusiondirectory-plugin-applications-schema/
-      cp ../../fusiondirectory-${pkgver}/{AUTHORS,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-applications-schema/   
+      cp ../../fusiondirectory-${pkgver}/{AUTHORS.md,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-applications-schema/   
  
       # Directories
       for cur_openldap in $(find ./contrib/openldap -mindepth 1 -maxdepth 1 -type d) ; do
