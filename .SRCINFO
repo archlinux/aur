@@ -1,7 +1,7 @@
 pkgbase = wmfocus
 	pkgdesc = Visually focus window by label
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/svenstaro/wmfocus
 	arch = x86_64
 	license = MIT

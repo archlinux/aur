@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=wmfocus
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Visually focus window by label"
 url="https://github.com/svenstaro/wmfocus"
 arch=("x86_64")
@@ -13,7 +13,7 @@ sha512sums=('fb68355ad7cc5e34fca193b2a0ca5a2606c1d46c839be2a783b0d494dba2e374c01
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release --features i3
+    cargo build --locked --release --features i3
 }
 package() {
     cd "$srcdir/$pkgname-$pkgver"
