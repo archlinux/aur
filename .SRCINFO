@@ -1,12 +1,12 @@
 pkgbase = debhelper-sphinx
 	pkgdesc = debhelper scripts for sphinx docs: sphinxdoc.pm
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://packages.debian.org/sid/all/sphinx-common
 	arch = any
 	license = BSD
-	source = https://deb.debian.org/debian/pool/main/s/sphinx/sphinx-common_1.8.2-1_all.deb
-	sha512sums = 44803e524968f3cde41d8178be7eb70e8536344c97c0a1f9a762920196baadd5d5d5f6272839795a6c38c80ef24e3803bcf05750fe5cbed168a1e8abfd0d3d97
+	source = https://deb.debian.org/debian/pool/main/s/sphinx/sphinx-common_1.8.3-1_all.deb
+	sha512sums = 51a620e0a04251847bfd8cecd74e337fad9461c3c767986652c12fa9ad428520f61a85100b6704c0cb8fafa38bbf680c3b9df203b3c053f3390a52969dffdf06
 
 pkgname = debhelper-sphinx
 
