@@ -9,7 +9,7 @@ pkgver=4.1.0
 _pkgver_release=$pkgver.RELEASE
 _eclipse_pkgver=e4.10.0
 _eclipse_pkgver_short=e4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The Spring Tool Suite (STS) from SpringSource"
 arch=('x86_64')
 url="https://spring.io/tools"
@@ -23,7 +23,7 @@ source_x86_64=(
     "${pkgname}.desktop"
 )
 sha256sums_x86_64=('7265f23672b51a8883aae30ffb0c56e5059352fb97b42ac4cd6113c5d1871cb4'
-                   'a8f45ab4a86b7ad01b9050be2ebaa44d4be437371ffab2d136c960149aa0b7fd')
+                   'c55540d7c32bdbcf3de2aae2184799b875672c5ea888361107bcb388c5868c83')
 
 package() {
     # install eclipse

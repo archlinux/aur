@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=SpringSource Tool Suite
+StartupWMClass=Spring Tool Suite
 Icon=spring-tool-suite
 Exec=STS
 Terminal=false
