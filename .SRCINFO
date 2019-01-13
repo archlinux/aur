@@ -1,6 +1,6 @@
 pkgbase = mpnotd-git
 	pkgdesc = MPD Notification Daemon
-	pkgver = r4.613c1f4
+	pkgver = r10.daf63c2
 	pkgrel = 1
 	url = https://github.com/jeffmhubbard/mpnotd
 	install = mpnotd.install
@@ -14,7 +14,8 @@ pkgbase = mpnotd-git
 	depends = python-mpd2
 	depends = python-notify2
 	depends = python-beautifulsoup4
-	optdepends = dunst: Display notifications
+	depends = python-pillow
+	optdepends = dunst: display notifications
 	source = mpnotd::git+https://github.com/jeffmhubbard/mpnotd.git
 	md5sums = SKIP
 

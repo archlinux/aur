@@ -2,7 +2,7 @@ post_install() {
     echo "For config, run: mpnotd --writeini"
 	if [[ $(pidof systemd) ]]; then
         echo "Systemd service installed, to enable type:"
-		echo "sudo systemctl --user enable mpnotd.service"
+		echo "systemctl --user enable mpnotd"
 	fi
 }
 
