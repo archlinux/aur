@@ -2,7 +2,7 @@
 
 _npmname=triton
 pkgname=nodejs-$_npmname
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="triton is a CLI tool for working with the CloudAPI for Joyent's Triton Public Cloud and Private Cloud"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MPL')
 depends=('nodejs')
 makedepends=('npm')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/joyent/node-triton/archive/$pkgver.tar.gz")
-md5sums=('f09e2bfafe1ec1c59cdf43c6b02500a1')
+md5sums=('6570a1bd25bb06373e66d6602571b15c')
 
 build() {
   cd node-$_npmname-$pkgver

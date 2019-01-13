@@ -1,14 +1,14 @@
 pkgbase = nodejs-triton
 	pkgdesc = triton is a CLI tool for working with the CloudAPI for Joyent's Triton Public Cloud and Private Cloud
-	pkgver = 6.2.0
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://github.com/joyent/node-triton
 	arch = any
 	license = MPL
 	makedepends = npm
 	depends = nodejs
-	source = nodejs-triton-6.2.0.tar.gz::https://github.com/joyent/node-triton/archive/6.2.0.tar.gz
-	md5sums = f09e2bfafe1ec1c59cdf43c6b02500a1
+	source = nodejs-triton-6.3.0.tar.gz::https://github.com/joyent/node-triton/archive/6.3.0.tar.gz
+	md5sums = 6570a1bd25bb06373e66d6602571b15c
 
 pkgname = nodejs-triton
 
