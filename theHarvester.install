@@ -1,7 +1,7 @@
 post_install() {
-    echo "Add your keys to /opt/theharvester-git/discovery/constants.py\n
-    googleCSE: API key and CSE ID\n
-    hunter: API key\n
-    securitytrails: API key\n
+    echo "Add your keys to /opt/theharvester-git/discovery/constants.py
+    googleCSE: API key and CSE ID
+    hunter: API key
+    securitytrails: API key
     shodan: API key"
 }
