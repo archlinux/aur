@@ -2,18 +2,18 @@
 
 pkgname=octoprint
 pkgver=1.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(x86_64 armv6h armv7h)
 url="http://octoprint.org/"
 license=('AGPL3')
 depends=(
 		python2-argh
+		python2-babel
 		python2-backports.ssl_match_hostname
 		python2-blinker
 		python2-certifi
 		python2-chardet
-		python2-click
 		python2-feedparser
 		python2-frozendict
 		python2-idna
@@ -36,8 +36,6 @@ depends=(
 		python2-speaklater
 		python2-tornado
 		python2-urllib3
-		python2-watchdog
-		python2-wrapt
 		)
 makedepends=('python2-virtualenv')
 optdepends=('ffmpeg: timelapse support'
