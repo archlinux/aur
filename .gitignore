@@ -1,5 +1,4 @@
 *
 !PKGBUILD
 !.SRCINFO
-!revert-gsettings-desktop-schemas-version.patch
 !.gitignore
