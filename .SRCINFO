@@ -1,6 +1,6 @@
 pkgbase = gnome-games-git
 	pkgdesc = Simple game launcher for GNOME
-	pkgver = 3.31.3.r11.g56650a82
+	pkgver = 3.31.4.r12.g63006052
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Games
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = gnome-games-git
 	depends = libmanette
 	depends = retro-gtk
 	depends = tracker
+	provides = gnome-games
+	conflicts = gnome-games
 	source = git+https://gitlab.gnome.org/GNOME/gnome-games.git
 	sha256sums = SKIP
 
