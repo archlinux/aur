@@ -2,7 +2,7 @@
 pkgname=(bsf-git bsf-git-docs)
 pkgbase=bsf-git
 _pkgname=bsf
-pkgver=r4658.97855424b
+pkgver=r4677.7c5792cff
 pkgrel=1
 epoch=
 pkgdesc="A C++ library that aims to provide a unified foundation for the development of real-time graphical applications, whether games, engines or tools"
