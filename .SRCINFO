@@ -1,14 +1,14 @@
 pkgbase = emojify-pl
 	pkgdesc = Emoji on the command line.
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/heziode/emojify
 	arch = any
 	license = MIT
 	depends = perl
 	conflicts = emojify
-	source = emojify-pl-1.2.0.tar.gz::https://github.com/heziode/emojify/archive/1.2.0.tar.gz
-	md5sums = 2e656ea98f314482e1f9fdc1cbcb9633
+	source = emojify-pl-1.3.0.tar.gz::https://github.com/heziode/emojify/archive/1.3.0.tar.gz
+	md5sums = 0035b06e0e1bc6fd13eb24417a526976
 
 pkgname = emojify-pl
 
