@@ -1,14 +1,14 @@
 pkgbase = qgnomeplatform
 	pkgdesc = Qt Platform Theme aimed to accomodate as much of GNOME settings as possible
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/MartinBriza/QGnomePlatform
 	arch = x86_64
 	license = LGPL2.1
 	depends = qt5-base
 	depends = gtk3
-	source = qgnomeplatform-0.4.tar.gz::https://github.com/MartinBriza/QGnomePlatform/archive/0.4.tar.gz
-	sha256sums = 1001415150d0c7a84743f078002e396583f8d04346a8d5870f2ac5024a671175
+	source = qgnomeplatform-0.5.tar.gz::https://github.com/MartinBriza/QGnomePlatform/archive/0.5.tar.gz
+	sha256sums = b835b700625ff5fe4eb6c6cc1ddcd333b6e6a32d3cc5e52b82046226b2d9b6ca
 
 pkgname = qgnomeplatform
 
