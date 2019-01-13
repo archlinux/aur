@@ -4,12 +4,12 @@
 _pkgname=php-cs-fixer
 pkgname=${_pkgname}
 pkgver=2.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible)."
 url="http://cs.sensiolabs.org/"
 license=("MIT")
 arch=("any")
-depends=("php>=5.6" "php<7.3")
+depends=("php>=5.6" "php>=7")
 makedepends=("php-box" "php-composer" "git")
 source=("${_pkgname}"::"git+https://github.com/FriendsOfPHP/PHP-CS-Fixer#tag=v${pkgver}")
 md5sums=('SKIP')
