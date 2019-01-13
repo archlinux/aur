@@ -1,6 +1,6 @@
 pkgbase = python2-rosdistro
 	pkgdesc = A tool to work with rosdistro files
-	pkgver = 0.6.9
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = http://wiki.ros.org/rosdistro
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python2-rosdistro
 	depends = python2-rospkg
 	depends = python2-yaml
 	conflicts = python-rosdistro
-	source = https://files.pythonhosted.org/packages/source/r/rosdistro/rosdistro-0.6.9.tar.gz
-	md5sums = 2fe56c85936c0f944e405d6e5f025f5d
+	source = https://files.pythonhosted.org/packages/source/r/rosdistro/rosdistro-0.7.1.tar.gz
+	md5sums = be7364bc4d7c87104dfaccac019fbc1f
 
 pkgname = python2-rosdistro
 
