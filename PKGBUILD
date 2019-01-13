@@ -14,6 +14,7 @@ url='https://lutris.net/'
 license=('GPL3')
 depends=('python-gobject' 'python-yaml' 'python-evdev' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unrar' 'unzip' 'p7zip' 'curl' 'xorg-xrandr' 'gnome-desktop')
 makedepends=('git' 'python-setuptools')
+checkdepends=('xorg-server-xvfb' 'xterm' 'python-nose-cover3' 'wine')
 optdepends=(
   'wine: Run windows games'
   'wine-staging: Run windows games - Staging patches'
