@@ -12,7 +12,7 @@ pkgbase = mutter-dev
 	makedepends = egl-wayland
 	depends = dconf
 	depends = gobject-introspection-runtime
-	depends = gsettings-desktop-schemas-dev
+	depends = gsettings-desktop-schemas
 	depends = libcanberra
 	depends = startup-notification
 	depends = zenity
@@ -27,7 +27,9 @@ pkgbase = mutter-dev
 	provides = mutter
 	conflicts = mutter
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git#tag=3.31.4
+	source = revert-gsettings-desktop-schemas-version.patch
 	sha256sums = SKIP
+	sha256sums = 77655e709343e4eaa3793675a6df4504c4e32e492f0f66cc8559b346751ff70f
 
 pkgname = mutter-dev
 
