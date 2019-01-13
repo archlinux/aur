@@ -2,13 +2,13 @@
 
 _realname=CPU-X
 pkgname=cpu-x-git
-pkgver=3.1.0.r0.29bfcf2
+pkgver=3.2.4.r0.g66f6ce0
 pkgrel=1
 pkgdesc="A Free software that gathers information on CPU, motherboard and more"
 arch=('i686' 'x86_64')
 url="http://X0rg.github.io/CPU-X/"
 license=('GPL3')
-depends=('gtk3' 'ncurses' 'curl' 'libcpuid' 'pciutils' 'procps-ng')
+depends=('gtk3' 'ncurses' 'curl' 'json-c' 'libcpuid' 'pciutils' 'procps-ng')
 makedepends=('cmake' 'nasm')
 provides=('cpu-x')
 conflicts=('cpu-x')
