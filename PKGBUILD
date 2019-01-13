@@ -4,13 +4,13 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="compiz-bcop"
-_pkgver=0.8.14
+_pkgver=0.8.16
 _micro=""
 
 pkgname=compiz-bcop
 _pkgname=bcop
 pkgver="${_pkgver}${_micro}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Compiz option code generator"
 arch=('any')
 url="https://gitlab.com/compiz/${_upstream}/"
@@ -34,4 +34,4 @@ package()
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('034e5ac98adac1d0de88d7fc0770c27712550ed81b26df08cf7a60e46eb15e79')
+sha256sums=('0695a46f02f6238bf9a478124a562f71da32354b83c6e5c7ec97cfd49d9882d4')
