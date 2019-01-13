@@ -3,7 +3,7 @@
 
 pkgname=curecoind-git
 pkgver=v2.0.0.1.r1.gb307e32
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
@@ -29,16 +29,11 @@ prepare() {
   cd "${srcdir}/CurecoinSource"
   # Fix compilation error with miniupnpc v 1.9 and new boost
   patch -p1 <"${srcdir}/boost.patch"
-
-  #cd "${srcdir}/CurecoinSource/src"
-  # Switch to OpenSSL 1.0
-  #echo "INCLUDEPATH += /usr/include/openssl-1.0" >> "makefile.unix"
-  #echo "LIBS += -L/usr/lib/openssl-1.0 -lcrypto -lz" >> "makefile.unix"
 }
 
 build() {
   cd "${srcdir}/CurecoinSource/src"
-  make -f makefile.unix OPENSSL_INCLUDE_PATH='/usr/include/openssl-1.0' OPENSSL_LIB_PATH='/usr/lib/openssl-1.0 -lcrypto -lz' ${MAKEFLAGS}
+  make -f makefile.unix OPENSSL_INCLUDE_PATH='/usr/include/openssl-1.0' OPENSSL_LIB_PATH='/usr/lib/openssl-1.0 -lcrypto -lz'
 }
 
 package() {
