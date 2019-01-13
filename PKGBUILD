@@ -1,7 +1,7 @@
 # Maintainer: Heziode <Heziode@protonmail.com>
 
 pkgname=emojify-pl
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Emoji on the command line.'
 arch=('any')
