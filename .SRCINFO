@@ -1,7 +1,7 @@
 pkgbase = mirrorlist-rankmirrors-hook
 	pkgdesc = Pacman hook to automatically rank new mirrors
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	install = mirrorlist-rankmirrors-hook.install
 	arch = any
 	depends = pacman-contrib
