@@ -5,29 +5,37 @@
 pkgname=mingw-w64-python2
 pkgver=2.7.15
 _pybasever=2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A high-level scripting language (mingw-w64)"
 arch=('any')
 license=('PSF')
-url="http://www.python.org/"
+url="https://www.python.org/"
 depends=('mingw-w64-crt'
          'mingw-w64-expat'
-	       'mingw-w64-bzip2'
-	       'mingw-w64-ncurses'
-	       'mingw-w64-openssl'
-	       'mingw-w64-libffi'
+         'mingw-w64-bzip2'
+         'mingw-w64-ncurses'
+         'mingw-w64-openssl'
+         'mingw-w64-libffi'
          'mingw-w64-tcl'
          'mingw-w64-tk'
-	       'mingw-w64-zlib'
-         'mingw-w64-wine')
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-configure' "python2>=${pkgver}" 'mingw-w64-wine')
+         'mingw-w64-zlib')
+
+makedepends=('mingw-w64-pkg-config' 'mingw-w64-configure' "python2>=${pkgver}" 'mingw-w64-wine')
+optdepends=('mingw-w64-wine: runtime support')
 options=('staticlibs' '!buildflags' '!strip')
-source=("http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
-        'patches.tar.gz'
-        'descr_ref.patch')
+source=("Python-${pkgver}.tar.xz::https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
+        'patches.tar.xz'
+        'descr_ref.patch'
+        "wine-python.sh")
 sha1sums=('f99348a095ec4a6411c84c0d15343d11920c9724'
-          'ecc4f9469bb16c03d860ae1a6f4cc1f6d1ee3bcb'
-          '8cc6ac63e909063eb16bbdabc0f0eac7d24ff0c1')
+          '54891e03b3ce179055f6c5da046848d7b130bf8e'
+          '8cc6ac63e909063eb16bbdabc0f0eac7d24ff0c1'
+          'a024e7fd7eea7984a0d050164a4a015dea762da7')
+sha512sums=('27ea43eb45fc68f3d2469d5f07636e10801dee11635a430ec8ec922ed790bb426b072da94df885e4dfa1ea8b7a24f2f56dd92f9b0f51e162330f161216bd6de6'
+            '028a40fecc940ebd895b7bcfe50717cc836c24d35323f5e1c8994dca66382bb2163002c923ca59977e0f531bffaa515903e488700eece3243573f03f80091f16'
+            '2e16eb23eb402dbe921c09bce99b400c10939114b4a1ded0e94a744d8cb66427947bc8d07c4fb054f9fe0906d10d1da509fc2273fd136225c0f019cc43dd045d'
+            'd0fb7f0e1a3d98a170ebea301226ad8caa7ffab9fc0bee224abc31c22875c892b43d3468dffbdd15eb71ca1b5260e039d0fceb21ecc92341b9bb6949d7e9be6a')
+
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 # Helper macros to help make tasks easier #
@@ -178,8 +186,8 @@ prepare() {
   # like with the official CPython build.
   apply_patch_with_msg \
     2701-disable-broken-gdbm-module.patch
-    
-  # Fix winsock2 include in timemodule.c
+
+  # Fix winsock2 include in timemodule.c and readline.c
   apply_patch_with_msg \
     python-2.7.15-add-missing-winsock2-include.patch
 
@@ -187,7 +195,7 @@ prepare() {
   sed -i "s|\\\$(PGEN) \\\$(GRAMMAR_INPUT)|wine \\\$(PGEN) \\\$(GRAMMAR_INPUT)|g" Makefile.pre.in
 
   autoreconf -vfi
-  
+
   # Temporary workaround for FS#22322
   # See http://bugs.python.org/issue10835 for upstream report
   sed -i "/progname =/s/python/python${_pybasever}/" Python/pythonrun.c
@@ -200,7 +208,7 @@ prepare() {
 
   sed -i "s/python2.3/python2/g" Lib/distutils/tests/test_build_scripts.py \
      Lib/distutils/tests/test_install_scripts.py Tools/scripts/gprof2html.py
-  
+
   touch Include/graminit.h
   touch Python/graminit.c
   touch Parser/Python.asdl
@@ -209,17 +217,17 @@ prepare() {
   touch Include/Python-ast.h
   touch Python/Python-ast.c
   echo \"\" > Parser/pgen.stamp
-  
+
   # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
   # rather than copies shipped in the tarball
   rm -r Modules/expat
   rm -r Modules/zlib
   rm -r Modules/_ctypes/{darwin,libffi}*
-  
+
   # clean up #!s
   find . -name '*.py' | \
     xargs sed -i "s|#[ ]*![ ]*/usr/bin/env python$|#!/usr/bin/env python2|"
-    
+
   # Workaround asdl_c.py/makeopcodetargets.py errors after we touched the shebangs
   touch Include/Python-ast.h Python/Python-ast.c Python/opcode_targets.h
 
@@ -232,34 +240,34 @@ build() {
   cd "${srcdir}/Python-${pkgver}"
   unset LDFLAGS
   for _arch in ${_architectures}; do
-  
-  declare -a extra_config
 
-  CFLAGS+=" -fwrapv -D__USE_MINGW_ANSI_STDIO=1 "
-  CXXFLAGS+=" -fwrapv -D__USE_MINGW_ANSI_STDIO=1 "
-  CPPFLAGS+=" -I/usr/${_arch}/include/ncursesw "
+    declare -a extra_config
 
-  if check_option "strip" "y"; then
-    LDFLAGS+=" -s "
-  fi
+    CFLAGS+=" -fwrapv -D__USE_MINGW_ANSI_STDIO=1 "
+    CXXFLAGS+=" -fwrapv -D__USE_MINGW_ANSI_STDIO=1 "
+    CPPFLAGS+=" -I/usr/${_arch}/include/ncursesw "
 
-    # Most of this is unnecessary, perhaps just
-    # the extra_config bit?
-  if check_option "debug" "n"; then
-    CFLAGS+=" -DNDEBUG "
-    CXXFLAGS+=" -DNDEBUG "
-  else
-    CFLAGS+=" -DDEBUG -DPy_DEBUG -D_DEBUG "
-    CXXFLAGS+=" -DDEBUG -DPy_DEBUG -D_DEBUG "
-    extra_config+=("--with-pydebug")
-  fi
+    if check_option "strip" "y"; then
+      LDFLAGS+=" -s "
+    fi
 
-  # Workaround for conftest error on 64-bit builds
+      # Most of this is unnecessary, perhaps just
+      # the extra_config bit?
+    if check_option "debug" "n"; then
+      CFLAGS+=" -DNDEBUG "
+      CXXFLAGS+=" -DNDEBUG "
+    else
+      CFLAGS+=" -DDEBUG -DPy_DEBUG -D_DEBUG "
+      CXXFLAGS+=" -DDEBUG -DPy_DEBUG -D_DEBUG "
+      extra_config+=("--with-pydebug")
+    fi
+
+    # Workaround for conftest error on 64-bit builds
     export ac_cv_working_tzset=no
-    
+
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     export LIBFFI_INCLUDEDIR=`${_arch}-pkg-config libffi --cflags-only-I | sed "s|\-I||g"` 
-    
+
     CFLAGS+=" -I/usr/${_arch}/include" \
     CXXFLAGS+=" -I/usr/${_arch}/include" \
     CPPFLAGS+=" -I/usr/${_arch}/include" \
@@ -277,6 +285,10 @@ build() {
       OPT=""
       #--with-dbmliborder='gdbm:ndbm'
     make
+
+    # wrappers
+    sed "s|@TRIPLE@|${_arch}|g;s|@PYVER@|${_pybasever}|g" "${srcdir}"/wine-python.sh > ${_arch}-python${_pybasever}
+    sed "s|@TRIPLE@|${_arch}|g;s|@PYVER@|${_pybasever}|g" "${srcdir}"/wine-python.sh > ${_arch}-python2
     popd
   done
 }
@@ -285,53 +297,61 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/Python-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
-  mv "${pkgdir}/usr/${_arch}"/bin/smtpd.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/
+    mv "${pkgdir}/usr/${_arch}"/bin/smtpd.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/
 
-  [[ -d "${pkgdir}/usr/${_arch}"/share/gdb/python2/ ]] || mkdir -p "${pkgdir}/usr/${_arch}"/share/gdb/python2/
-  cp -f python.exe-gdb.py "${pkgdir}/usr/${_arch}"/share/gdb/python2/python_gdb.py
-  
-  rm "${pkgdir}/usr/${_arch}"/bin/2to3
-  
-  # Copy python import library to $prefix/lib because some programs can't find it in other locations
-  cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config/libpython${_pybasever}.dll.a "${pkgdir}/usr/${_arch}"/lib/libpython${_pybasever}.dll.a
+    [[ -d "${pkgdir}/usr/${_arch}"/share/gdb/python2/ ]] || mkdir -p "${pkgdir}/usr/${_arch}"/share/gdb/python2/
+    cp -f python.exe-gdb.py "${pkgdir}/usr/${_arch}"/share/gdb/python2/python_gdb.py
+    
+    for file in 2to3 python{.exe,-config{'',{'',-u}.sh}}; do
+      rm "${pkgdir}/usr/${_arch}"/bin/$file
+    done
+    rm "${pkgdir}/usr/${_arch}"/lib/pkgconfig/python.pc
+    
+    # Copy python import library to $prefix/lib because some programs can't find it in other locations
+    cp -f "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config/libpython${_pybasever}.dll.a "${pkgdir}/usr/${_arch}"/lib/libpython${_pybasever}.dll.a
 
-  # some useful "stuff"
-  install -dm755 "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/Tools/{i18n,scripts}
-  install -m755 "${srcdir}/Python-${pkgver}"/Tools/i18n/{msgfmt,pygettext}.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/Tools/i18n/
-  install -m755 "${srcdir}/Python-${pkgver}"/Tools/scripts/{README,*py} "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/Tools/scripts/
+    # some useful "stuff"
+    install -dm755 "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/Tools/{i18n,scripts}
+    install -m755 "${srcdir}/Python-${pkgver}"/Tools/i18n/{msgfmt,pygettext}.py "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/Tools/i18n/
+    install -m755 "${srcdir}/Python-${pkgver}"/Tools/scripts/{README,*py} "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/Tools/scripts/
 
-  # clean up #!s
-  find "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/ -name '*.py' | \
-    xargs sed -i "s|#[ ]*![ ]*/usr/bin/env python$|#!/usr/bin/env python2|"
+    # clean up #!s
+    find "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/ -name '*.py' | \
+      xargs sed -i "s|#[ ]*![ ]*/usr/bin/env python$|#!/usr/bin/env python2|"
 
-  # clean-up reference to build directory
-  sed -i "s#${srcdir}/Python-${pkgver}:##" "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config/Makefile
+    # clean-up reference to build directory
+    sed -i "s#${srcdir}/Python-${pkgver}:##" "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/config/Makefile
 
-  for fscripts in idle pydoc; do
-    sed -e "s|/usr/${_arch}/bin/|/usr/bin/env |g" -i "${pkgdir}/usr/${_arch}"/bin/$fscripts
-  done
+    for fscripts in idle pydoc; do
+      sed -i "s|#!/usr/bin/python|#!/usr/bin/env python|" "${pkgdir}/usr/${_arch}"/bin/$fscripts
+      mv "${pkgdir}/usr/${_arch}/bin/${fscripts}" "${pkgdir}/usr/${_arch}/bin/${fscripts}2"
+    done
 
-  sed -i "s|#!${pkgdir}/usr/${_arch}/bin/python${_pybasever}.exe|#!/usr/bin/env python${_pybasever}.exe|" "${pkgdir}/usr/${_arch}"/bin/python${_pybasever}-config
-  sed -i "s|#!${pkgdir}/usr/${_arch}/bin/python${_pybasever}.exe|#!/usr/bin/env python${_pybasever}.exe|" "${pkgdir}/usr/${_arch}"/bin/python2-config
-  sed -i "s|#!${pkgdir}/usr/${_arch}/bin/python${_pybasever}.exe|#!/usr/bin/env python${_pybasever}.exe|" "${pkgdir}/usr/${_arch}"/bin/python-config
+    sed -i "s|#!/usr/${_arch}/bin/|#!/usr/bin/env |" "${pkgdir}/usr/${_arch}"/bin/python${_pybasever}-config
+    sed -i "s|#!/usr/${_arch}/bin/|#!/usr/bin/env |" "${pkgdir}/usr/${_arch}"/bin/python2-config
 
-  # fix permissons
-  find ${pkgdir}/usr/${_arch} -type f \( -name "*.dll" \) | xargs chmod 0755
-  find ${pkgdir}/usr/${_arch} -type f \( -name "*.exe" \) | xargs chmod 0755
-  find ${pkgdir}/usr/${_arch} -type f \( -name "*.a" \) | xargs chmod 0755
+    # fix permissons
+    find ${pkgdir}/usr/${_arch} -type f \( -name "*.dll" \) | xargs chmod 0755
+    find ${pkgdir}/usr/${_arch} -type f \( -name "*.exe" \) | xargs chmod 0755
+    find ${pkgdir}/usr/${_arch} -type f \( -name "*.a" \) | xargs chmod 0755
 
-  # replace paths in sysconfig
-  sed -i "s|${pkgdir}/usr/${_arch}|/usr/${_arch}|g" \
-    "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata.py \
-    "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/smtpd.py
+    # replace paths in sysconfig
+    sed -i "s|${pkgdir}/usr/${_arch}|/usr/${_arch}|g" \
+      "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/_sysconfigdata.py \
+      "${pkgdir}/usr/${_arch}"/lib/python${_pybasever}/smtpd.py
 
-  # Create python executable with windows subsystem
-  cp -f "${pkgdir}/usr/${_arch}"/bin/python2.exe "${pkgdir}/usr/${_arch}"/bin/python2w.exe
-  /usr/${_arch}/bin/objcopy --subsystem windows "${pkgdir}/usr/${_arch}"/bin/python2w.exe
-  
-  # Strip libraries, dlls and executables
-  ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
-  ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-  ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    # Create python executable with windows subsystem
+    cp -f "${pkgdir}/usr/${_arch}"/bin/python2.exe "${pkgdir}/usr/${_arch}"/bin/python2w.exe
+    /usr/${_arch}/bin/objcopy --subsystem windows "${pkgdir}/usr/${_arch}"/bin/python2w.exe
+
+    # Strip libraries, dlls and executables
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+
+    # install wrappers
+    mkdir -p ${pkgdir}/usr/bin
+    install -m755 ${_arch}-python${_pybasever} "${pkgdir}"/usr/bin/${_arch}-python${_pybasever}
+    install -m755 ${_arch}-python2 "${pkgdir}"/usr/bin/${_arch}-python2
   done
 }
