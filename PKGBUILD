@@ -190,7 +190,7 @@ cd freeradius/
     # SQL section
     if [ -d ./contrib/sql ] ; then
       mkdir -p ${pkgdir}/usr/share/doc/fusiondirectory-plugin-freeradius-schema/
-      cp ../../fusiondirectory-${pkgver}/{AUTHORS,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-freeradius-schema/   
+      cp ../../fusiondirectory-${pkgver}/{AUTHORS.md,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-freeradius-schema/   
  
       # Directories
       for cur_sql in $(find ./contrib/sql -mindepth 1 -maxdepth 1 -type d) ; do
@@ -209,6 +209,6 @@ cd freeradius/
 
 	# Docs
 	mkdir -p ${pkgdir}/usr/share/doc/fusiondirectory-plugin-freeradius/
-	cp ../../fusiondirectory-${pkgver}/{AUTHORS,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-freeradius/ 
+	cp ../../fusiondirectory-${pkgver}/{AUTHORS.md,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-freeradius/ 
  
 }
