@@ -5,12 +5,12 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="ccsm"
-_pkgver=0.8.14
+_pkgver=0.8.16
 _micro=""
 
 pkgname=ccsm-gtk3
 pkgver="${_pkgver}${_micro}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Compizconfig Settings Manager in Python2"
 arch=('any')
 url="https://gitlab.com/compiz/${_upstream}/"
@@ -28,4 +28,4 @@ package() {
   python ./setup.py install --prefix=/usr --with-gtk=3.0 --root="${pkgdir}"
 }
 
-sha256sums=('63d8a672a63dfda05a556ec1b5df0b9406602b82825d2910f8870bf1cb3300d8')
+sha256sums=('7c579402255f48f19b1b20824ed5364b423ef973603284ef0632ac612f7da3bc')
