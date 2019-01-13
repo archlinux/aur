@@ -3,9 +3,9 @@
 # Contributor: Christian Hesse <mail@eworm.de>
 
 pkgbase=mariadb-10.3
-pkgname=('libmariadbclient-10.3' 'mariadb-clients-10.3' 'mytop-10.3' 'mariadb-10.3')
+pkgname=('libmariadb-10.3' 'mariadb-clients-10.3' 'mytop-10.3' 'mariadb-10.3')
 pkgver=10.3.12
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('GPL')
 url='http://mariadb.org/'
@@ -35,6 +35,9 @@ prepare() {
   # Fix that libmariadb ignores the host from .my.cnf files
   # More info: https://jira.mariadb.org/browse/CONC-359
   patch -p0 < ../fix_libmariadb_ignored_host.patch
+
+  # fix path to our config
+  sed -i 's|my.cnf.d|mysql/my.cnf.d|' support-files/rpm/{my.cnf,enable_encryption.preset}
 }
 
 build() {
@@ -47,7 +50,7 @@ build() {
     -DBUILD_CONFIG=mysql_release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DMYSQL_DATADIR=/var/lib/mysql \
-    -DMYSQL_UNIX_ADDR=/run/mysqld/mysqld.sock \
+    -DINSTALL_UNIX_ADDRDIR=/run/mysqld/mysqld.sock \
     -DDEFAULT_CHARSET=utf8mb4 \
     -DDEFAULT_COLLATION=utf8mb4_unicode_ci \
     -DENABLED_LOCAL_INFILE=ON \
@@ -57,7 +60,7 @@ build() {
     -DINSTALL_PLUGINDIR=lib/mysql/plugin \
     -DINSTALL_SCRIPTDIR=bin \
     -DINSTALL_SYSCONFDIR=/etc/mysql \
-    -DINSTALL_SYSCONF2DIR=/etc/mysql \
+    -DINSTALL_SYSCONF2DIR=/etc/mysql/my.cnf.d \
     -DINSTALL_INCLUDEDIR=include/mysql \
     -DINSTALL_SUPPORTFILESDIR=share/mysql \
     -DINSTALL_MYSQLSHAREDIR=share/mysql \
@@ -83,18 +86,19 @@ build() {
     -DWITHOUT_FEDERATED_STORAGE_ENGINE=1 \
     -DWITHOUT_PBXT_STORAGE_ENGINE=1 \
     -DCMAKE_EXE_LINKER_FLAGS='-ljemalloc' \
-    -DCMAKE_C_FLAGS="-fPIC $CFLAGS -fno-strict-aliasing -DBIG_JOINS=1 -fomit-frame-pointer -fno-delete-null-pointer-checks" \
-    -DCMAKE_CXX_FLAGS="-fPIC $CXXFLAGS -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-rtti -fno-delete-null-pointer-checks" \
+    -DCMAKE_C_FLAGS="-fPIC $CFLAGS -fno-strict-aliasing -fomit-frame-pointer -fno-delete-null-pointer-checks" \
+    -DCMAKE_CXX_FLAGS="-fPIC $CXXFLAGS -fno-strict-aliasing -felide-constructors -fno-rtti -fno-delete-null-pointer-checks" \
     -DWITH_MYSQLD_LDFLAGS="-pie ${LDFLAGS},-z,now"
 
   make
 }
 
-package_libmariadbclient-10.3() {
+package_libmariadb-10.3() {
   pkgdesc='MariaDB client libraries'
   depends=('bzip2' 'libaio' 'lz4' 'lzo' 'openssl' 'xz' 'zlib')
-  conflicts=('libmysqlclient' 'libmariadbclient')
-  provides=("libmariadbclient=$pkgver")
+  conflicts=('libmysqlclient' 'libmariadbclient' 'libmariadbclient-10.3' 'libmariadb')
+  replaces=('libmariadbclient-10.3')
+  provides=("libmariadb=$pkgver")
 
   cd build
 
@@ -102,8 +106,7 @@ package_libmariadbclient-10.3() {
     make -C $dir DESTDIR="$pkgdir" install
   done
 
-  install -D -m0755 scripts/mysql_config "$pkgdir"/usr/bin/mysql_config
-  install -D -m0644 "$srcdir"/${pkgbase%-10.3}-$pkgver/man/mysql_config.1 "$pkgdir"/usr/share/man/man1/mysql_config.1
+  ln -s mariadb_config "$pkgdir"/usr/bin/mysql_config
 
   install -D -m0644 support-files/mariadb.pc "$pkgdir"/usr/share/pkgconfig/mariadb.pc
   install -D -m0644 "$srcdir"/${pkgbase%-10.3}-$pkgver/support-files/mysql.m4 "$pkgdir"/usr/share/aclocal/mysql.m4
@@ -116,7 +119,7 @@ package_libmariadbclient-10.3() {
 
 package_mariadb-clients-10.3() {
   pkgdesc='MariaDB client tools'
-  depends=("libmariadbclient-10.3=${pkgver}" 'jemalloc')
+  depends=("libmariadb-10.3=${pkgver}" 'jemalloc')
   conflicts=('mysql-clients' 'mariadb-clients')
   provides=("mysql-clients=$pkgver" "mariadb-clients=$pkgver")
 
@@ -138,30 +141,27 @@ package_mytop-10.3() {
 
   cd build
 
-  install -Dm0755 scripts/mytop "$pkgdir"/usr/bin/mytop
+  install -D -m0755 scripts/mytop "$pkgdir"/usr/bin/mytop
 }
 
 package_mariadb-10.3() {
   pkgdesc='Fast SQL database server, drop-in replacement for MySQL'
-  backup=('etc/mysql/my.cnf')
+  backup=('etc/mysql/my.cnf'
+          'etc/mysql/my.cnf.d/client.cnf'
+          'etc/mysql/my.cnf.d/mysql-clients.cnf'
+          'etc/mysql/my.cnf.d/server.cnf')
   install=mariadb.install
   depends=("mariadb-clients-10.3=${pkgver}" 'inetutils' 'libsystemd' 'libxml2')
   optdepends=('galera: for MariaDB cluster with Galera WSREP'
               'perl-dbd-mysql: for mysqlhotcopy, mysql_convert_table_format and mysql_setpermission')
   conflicts=('mysql' 'mariadb')
   provides=("mysql=$pkgver" "mariadb=$pkgver")
-  options=('emptydirs')
 
   cd build
 
   make DESTDIR="$pkgdir" install
 
   cd "$pkgdir"
-
-  mkdir etc/my.cnf.d
-
-  # Arch Linux uses systemd
-  rm -r etc/mysql/init.d/
 
   mv usr/lib/sysusers.d/{sysusers,mariadb}.conf
   mv usr/lib/tmpfiles.d/{tmpfiles,mariadb}.conf
@@ -177,9 +177,10 @@ package_mariadb-10.3() {
   rm -r usr/share/mysql/systemd/
 
   # left over from sysvinit
+  rm -r etc/mysql/{init.d,logrotate.d}
   rm usr/bin/rcmysql
 
-  # provided by libmariadbclient
+  # provided by libmariadb
   rm usr/bin/{mysql,mariadb}_config
   rm usr/lib/lib{mysql,mariadb}*
   rm usr/lib/mysql/plugin/{auth_gssapi_client,dialog,mysql_clear_password,sha256_password,caching_sha2_password}.so

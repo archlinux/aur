@@ -1,6 +1,6 @@
 pkgbase = mariadb-10.3
 	pkgver = 10.3.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mariadb.org/
 	arch = x86_64
 	license = GPL
@@ -23,7 +23,7 @@ pkgbase = mariadb-10.3
 	sha256sums = SKIP
 	sha256sums = fd186c795c393b6898f28d731390bb14ea8444230c8340a5f4cfbccb16ea10e9
 
-pkgname = libmariadbclient-10.3
+pkgname = libmariadb-10.3
 	pkgdesc = MariaDB client libraries
 	depends = bzip2
 	depends = libaio
@@ -32,13 +32,16 @@ pkgname = libmariadbclient-10.3
 	depends = openssl
 	depends = xz
 	depends = zlib
-	provides = libmariadbclient=10.3.12
+	provides = libmariadb=10.3.12
 	conflicts = libmysqlclient
 	conflicts = libmariadbclient
+	conflicts = libmariadbclient-10.3
+	conflicts = libmariadb
+	replaces = libmariadbclient-10.3
 
 pkgname = mariadb-clients-10.3
 	pkgdesc = MariaDB client tools
-	depends = libmariadbclient-10.3=10.3.12
+	depends = libmariadb-10.3=10.3.12
 	depends = jemalloc
 	provides = mysql-clients=10.3.12
 	provides = mariadb-clients=10.3.12
@@ -66,6 +69,8 @@ pkgname = mariadb-10.3
 	provides = mariadb=10.3.12
 	conflicts = mysql
 	conflicts = mariadb
-	options = emptydirs
 	backup = etc/mysql/my.cnf
+	backup = etc/mysql/my.cnf.d/client.cnf
+	backup = etc/mysql/my.cnf.d/mysql-clients.cnf
+	backup = etc/mysql/my.cnf.d/server.cnf
 
