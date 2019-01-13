@@ -1,5 +1,5 @@
 pkgname=fusiondirectory-plugin-ldapmanager
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Simple LDAP backup and insertion tasks"
 arch=("any")
@@ -8,9 +8,9 @@ license=("GPL")
 depends=("fusiondirectory>=$pkgver")
 
 install=fusiondirectory-plugin-ldapmanager.install
-source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
-"http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('7fef67005c308da8a20918a5220d29b2' '839d334fd2fb9817c070e855cc9f1a37')
+source=("https://repos.fusiondirectory.org/sources/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
+"https://repos.fusiondirectory.org/sources/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
+md5sums=('2a67d8454cfeed2b7805e96b5cf1b48a' '36b18a7f82f6e796ce20f815b449eab4')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
