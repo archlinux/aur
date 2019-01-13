@@ -5,12 +5,12 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="compiz-plugins-experimental"
-_pkgver=0.8.14
+_pkgver=0.8.16
 _micro=""
 
 pkgname=compiz-fusion-plugins-experimental
 pkgver="${_pkgver}${_micro}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Compiz Experimental plugins"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/compiz/${_upstream}/"
@@ -35,4 +35,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('867e0e5b2f85a812cfecd384d16360129b5ef49e1da75d4e119d3c744bbcf4f1')
+sha256sums=('47c47ee4300de46f04d86d8099aeaae5ad8c6ba56e747d5d0839447dc62eae55')
