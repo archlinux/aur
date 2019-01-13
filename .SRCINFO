@@ -1,6 +1,6 @@
 pkgbase = python-aiomonitor
 	pkgdesc = aiomonitor adds monitor and python REPL capabilities for asyncio application
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/aio-libs/aiomonitor
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-aiomonitor
 	depends = python-aioconsole
 	depends = python-terminaltables
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/a/aiomonitor/aiomonitor-0.4.1.tar.gz
-	md5sums = 29ba62220f0428176bc4e28fafeb3546
+	source = https://files.pythonhosted.org/packages/source/a/aiomonitor/aiomonitor-0.4.2.tar.gz
+	md5sums = 04eff1d4dfe9aaab35778cb595d4537a
 
 pkgname = python-aiomonitor
 
