@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 pkgname=trellis-git
-pkgver=r437.de035a6
+pkgver=r460.3df0e3d
 pkgrel=1
 pkgdesc='Tools and scripts which allow you to document the bit-stream format of Lattice ECP5 series FPGAs'
 arch=('i686' 'x86_64')
@@ -40,18 +40,6 @@ package() {
   cd "$srcdir/trellis/libtrellis"
   make DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/trellis/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-
-  # nextpnr requires these files by they aren't installed by `make install`
-  install -Dm644 pytrellis.so "$pkgdir/usr/share/trellis/libtrellis/pytrellis.so"
-
-  install -d "$pkgdir/usr/share/trellis/timing/util"
-  install -m644 "$srcdir/trellis/timing/util/"*.py "$pkgdir/usr/share/trellis/timing/util"
-
-  install -d "$pkgdir/usr/share/trellis/util/common"
-  install -m644 "$srcdir/trellis/util/common/"*.py "$pkgdir/usr/share/trellis/util/common"
-
-  install -d "$pkgdir/usr/share/trellis/util/fuzz"
-  install -m644 "$srcdir/trellis/util/fuzz/"*.py "$pkgdir/usr/share/trellis/util/fuzz"
 
   # used by the examples to convert the bitstreams to SVF files for programming
   install -D "$srcdir/trellis/tools/bit_to_svf.py" "$pkgdir/usr/share/trellis/tools/bit_to_svf.py"
