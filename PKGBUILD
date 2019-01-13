@@ -2,7 +2,7 @@
 # Contributor: mickele <mimocciola@yahoo.com>
 pkgname=gmsh-docs
 _pkgname=gmsh
-pkgver=4.0.7
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="TXT, HMTL and PDF doc for Gmsh"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://gmsh.info/"
 license=('GPL2')
 makedepends=('cmake' 'texlive-core')
 source=("${url}src/${_pkgname}-${pkgver}-source.tgz")
-sha256sums=('c6572320d0ffdf7d2488e113861bc4bd9c38a29f7fc5b67957f6fbcb63fbdbd5')
+sha256sums=('35c603770bd051197fecb1e8ea579bcc80b913086a8e95e154915548b499a34c')
 
 build(){
    cd "${srcdir}/${_pkgname}-${pkgver}-source"
