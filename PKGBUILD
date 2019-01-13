@@ -10,7 +10,7 @@ depends=('perl')
 conflicts=('emojify')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('2e656ea98f314482e1f9fdc1cbcb9633')
+md5sums=('0035b06e0e1bc6fd13eb24417a526976')
 
 package() {
     install -Dm755 "${srcdir}/emojify-${pkgver}/emojify" "${pkgdir}/usr/bin/emojify"
