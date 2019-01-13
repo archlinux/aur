@@ -1,20 +1,20 @@
 # Maintainer: gborzi <gborzi@ieee.org>
 # Contributor: mickele <mimocciola@yahoo.com>
 pkgname=gmsh
-pkgver=4.0.7
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="An automatic 3D finite element mesh generator with pre and post-processing facilities."
 arch=('x86_64')
 url="http://gmsh.info/"
 license=('custom')
-depends=('fltk' 'lapack' 'med' 'opencascade' 'cairo')
+depends=('fltk' 'lapack' 'med=3.3.1' 'opencascade' 'cairo')
 makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig')
 optdepends=('gmsh-docs: docs for gmsh'
             'python2: for onelab.py'
             'python: for onelab.py')
 options=(!emptydirs)
 source=("${url}src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
-sha256sums=('c6572320d0ffdf7d2488e113861bc4bd9c38a29f7fc5b67957f6fbcb63fbdbd5'
+sha256sums=('35c603770bd051197fecb1e8ea579bcc80b913086a8e95e154915548b499a34c'
             '43a8ca33ac917ee7196fdae305ff2c8cb9ae1072569ee546c0ce8ff580c966ae'
             '11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef')
 
