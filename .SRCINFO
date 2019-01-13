@@ -1,11 +1,12 @@
 pkgbase = ghc-pristine
-	pkgdesc = Symlinks to GHC with only boot libs, useful for building static binaries
+	pkgdesc = Symlinks to GHC with only boot libs, useful for building static binaries (see PKGBUILD for details)
 	pkgver = 8.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.haskell.org/ghc/
 	arch = any
 	license = custom
 	depends = ghc
+	optdepends = ghc-static: needed to build static binaries
 
 pkgname = ghc-pristine
 
