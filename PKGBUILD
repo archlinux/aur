@@ -1,4 +1,5 @@
 # Maintainer: Michael Herzberg <{firstname}@{firstinitial}{lastname}.de>
+# Contributor: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Christian Hesse <mail@eworm.de>
 
@@ -28,6 +29,9 @@ prepare() {
   sed -i -e '/^Alias/d' \
     -e '/^PrivateTmp/c PrivateTmp=true' \
     support-files/mariadb{,@}.service.in
+
+  # Disable networking by default for security reasons and use only the socket
+  sed -i '/\[server\]/ a skip-networking' support-files/rpm/server.cnf
 
   # let's create the datadir from tmpfiles
   echo 'd @MYSQL_DATADIR@ 0700 @MYSQLD_USER@ @MYSQLD_USER@ -' >> support-files/tmpfiles.conf.in
@@ -74,7 +78,7 @@ build() {
     -DWITH_SSL=system \
     -DWITH_PCRE=bundled \
     -DWITH_LIBWRAP=OFF \
-    -DWITH_JEMALLOC=ON \
+    -DWITH_JEMALLOC=yes \
     -DWITH_EXTRA_CHARSETS=complex \
     -DWITH_EMBEDDED_SERVER=ON \
     -DWITH_ARCHIVE_STORAGE_ENGINE=1 \
@@ -112,6 +116,7 @@ package_libmariadb-10.3() {
   install -D -m0644 "$srcdir"/${pkgbase%-10.3}-$pkgver/support-files/mysql.m4 "$pkgdir"/usr/share/aclocal/mysql.m4
 
   ln -s libmariadb.so.3 "$pkgdir"/usr/lib/libmysqlclient.so.18
+  ln -s libmariadb.so.3 "$pkgdir"/usr/lib/libmariadb.so.2
 
   # remove static libraries
   rm "$pkgdir"/usr/lib/*.a
@@ -178,6 +183,7 @@ package_mariadb-10.3() {
 
   # left over from sysvinit
   rm -r etc/mysql/{init.d,logrotate.d}
+  rm usr/share/mysql/{binary-configure,mysql.server,mysqld_multi.server}
   rm usr/bin/rcmysql
 
   # provided by libmariadb
