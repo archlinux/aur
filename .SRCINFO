@@ -9,7 +9,9 @@ pkgbase = qt-flif-plugin
 	makedepends = qt5-base
 	depends = flif
 	source = git+https://github.com/spillerrec/qt-flif-plugin.git#commit=9272881133c48d55d44e8a08cdafecff3f37315c
+	source = include.patch
 	sha512sums = SKIP
+	sha512sums = 891e787f65738c47ae788b5ca7fe15fe056b911f77dbe6d741c4c7b0a25dd2cda5ba0e6b22d1ff534912cf0deb670d6403a02d2dc6a3a3f3e0a0e898d974d23f
 
 pkgname = qt4-flif
 	pkgdesc = Enables FLIF support in Qt4 applications

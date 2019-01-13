@@ -1,0 +1,17 @@
+diff --git a/src/Flif++.hpp b/src/Flif++.hpp
+index b719e2a..5505077 100644
+--- a/src/Flif++.hpp
++++ b/src/Flif++.hpp
+@@ -19,9 +19,9 @@
+ #define FLIFPP_HPP
+ 
+ #include <memory>
+-#include <FLIF/flif.h>
+-#include <FLIF/flif_dec.h>
+-#include <FLIF/flif_enc.h>
++#include <flif.h>
++#include <flif_dec.h>
++#include <flif_enc.h>
+ 
+ class FlifImage{
+ 	public: //TODO: fix

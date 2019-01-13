@@ -9,8 +9,15 @@ url="https://github.com/spillerrec/qt-flif-plugin"
 license=('GPL')
 depends=('flif')
 makedepends=('qt4' 'qt5-base')
-source=('git+https://github.com/spillerrec/qt-flif-plugin.git#commit=9272881133c48d55d44e8a08cdafecff3f37315c')
-sha512sums=('SKIP')
+source=('git+https://github.com/spillerrec/qt-flif-plugin.git#commit=9272881133c48d55d44e8a08cdafecff3f37315c'
+        'include.patch')
+sha512sums=('SKIP'
+            '891e787f65738c47ae788b5ca7fe15fe056b911f77dbe6d741c4c7b0a25dd2cda5ba0e6b22d1ff534912cf0deb670d6403a02d2dc6a3a3f3e0a0e898d974d23f')
+
+prepare() {
+	cd "$srcdir/$pkgbase"
+	git apply -3 "$srcdir"/include.patch
+}
 
 build() {
 	mkdir -p build-qt4 build-qt5
