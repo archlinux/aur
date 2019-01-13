@@ -1,8 +1,8 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=writefreely
-pkgver=0.7.0
-pkgrel=4
+pkgver=0.7.1
+pkgrel=1
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
@@ -23,13 +23,12 @@ sha256sums=('6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10'
             '142fcf18320a418b73ed0678acea58ae69287e47760d6abb5283376c21092dec'
             '6946f0211b25743451954d2c155222df2aeaf7f49c3fafcb9183c6fc62a95ef9'
             '009c083488511d92b489337f7feb8bd17631a104907959d21b1f9b5df3ce0a70'
-            'a99d4fdc6fb3a52426f4b99fe1c18180ea35544d2267ec8ef82d868da5017fc9')
+            'e9700e751d7d2a71a19ed9313be93247e4f865e193de5b3d3d9d81bea2148be4')
 
 prepare() {
   export GO111MODULE=on
   cd "${srcdir}/${pkgname}-${pkgver}/"
 
-  # See: https://github.com/writeas/writefreely/pull/64
   patch -p1 <../64.patch
 
   rm -rf go.mod
