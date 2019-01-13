@@ -1,6 +1,6 @@
 pkgbase = belr-git
 	pkgdesc = A library for working with vCards
-	pkgver = 0.1.3.r30.g6dc5d2f
+	pkgver = 0.1.3.r54.g1584d38
 	pkgrel = 1
 	url = http://www.linphone.org/
 	arch = i686

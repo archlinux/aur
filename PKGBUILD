@@ -4,7 +4,7 @@
 
 pkgname=belr-git
 _pkgname=belr
-pkgver=0.1.3.r30.g6dc5d2f
+pkgver=0.1.3.r54.g1584d38
 pkgrel=1
 pkgdesc="A library for working with vCards"
 arch=('i686' 'x86_64')
