@@ -4,12 +4,12 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="compizconfig-python"
-_pkgver=0.8.14
+_pkgver=0.8.16
 _micro=""
 
 pkgname=compizconfig-python
 pkgver="${_pkgver}${_micro}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Compizconfig bindings for python"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/compiz/${_upstream}/"
@@ -36,4 +36,4 @@ package()
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('49a084a09836cdc4e82e12572411478d34918de07c3d797dfcc2b5c73aa1b654')
+sha256sums=('18d1271b33cc9b64c38670aa20eea531f702c2010fc5a018475cb0c9ff751382')
