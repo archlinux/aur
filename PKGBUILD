@@ -89,8 +89,8 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _pkgvermajmin="5.12"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="beta4"
-pkgrel=4
+_dev_suffix=""
+pkgrel=5
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -116,9 +116,11 @@ case ${_piver} in
   #_float=true
 ;;
 2)
-  _toolchain_name=armv7-rpi2-linux-gnueabihf
-  _toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
-  _mkspec="linux-rpi${_piver}-g++"
+  #_toolchain_name=armv7-rpi2-linux-gnueabihf
+  _toolchain_name=arm-cortexa9_neon-linux-gnueabihf
+  _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
+  _mkspec="linux-rpi${_piver}-vc4-g++"
+  _use_mesa=true
 ;;
 3)
   _toolchain_name=aarch64-rpi3-linux-gnu
@@ -294,7 +296,7 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-_tar_xz_sha256="a6714664ed21e745954a72293231058128341808a93fa6db4a91c6f1c678a053"
+_tar_xz_sha256="356f42d9087718f22f03d13d0c2cdfb308f91dc3cf0c6318bed33f2094cd9d6c"
 
 if ! $_build_from_head; then
   source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
