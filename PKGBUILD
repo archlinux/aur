@@ -190,7 +190,7 @@ cd user-reminder/
     # SQL section
     if [ -d ./contrib/sql ] ; then
       mkdir -p ${pkgdir}/usr/share/doc/fusiondirectory-plugin-user-reminder-schema/
-      cp ../../fusiondirectory-${pkgver}/{AUTHORS,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-user-reminder-schema/   
+      cp ../../fusiondirectory-${pkgver}/{AUTHORS.md,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-user-reminder-schema/   
  
       # Directories
       for cur_sql in $(find ./contrib/sql -mindepth 1 -maxdepth 1 -type d) ; do
@@ -209,6 +209,6 @@ cd user-reminder/
 
 	# Docs
 	mkdir -p ${pkgdir}/usr/share/doc/fusiondirectory-plugin-user-reminder/
-	cp ../../fusiondirectory-${pkgver}/{AUTHORS,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-user-reminder/ 
+	cp ../../fusiondirectory-${pkgver}/{AUTHORS.md,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-user-reminder/ 
  
 }
