@@ -4,7 +4,7 @@
 
 pkgname=waterfox-kde
 pkgver=56.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -63,7 +63,7 @@ prepare() {
   # Fix openSUSE's patches for Waterfox
   #sed -i 's/Firefox/Waterfox/g' $srcdir/mozilla-kde-$_patchrev.patch
   #sed -i 's/KMOZILLAHELPER/KWATERFOXHELPER/g' $srcdir/mozilla-kde-$_patchrev.patch
-  #sed -i 's|/usr/lib/mozilla/kmozillahelper|/opt/waterfox/kwaterfoxhelper|g' $srcdir/mozilla-kde-$_patchrev.patch
+  #sed -i 's|/usr/lib/mozilla/kmozillahelper|/usr/lib/waterfox/kwaterfoxhelper|g' $srcdir/mozilla-kde-$_patchrev.patch
   #sed -i 's/kmozillahelper/kwaterfoxhelper/g' $srcdir/mozilla-kde-$_patchrev.patch
   sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde-$_patchrev.patch
 
@@ -192,7 +192,7 @@ package() {
 
   DESTDIR="$pkgdir" ./mach install
 
-  _vendor_js="$pkgdir/opt/waterfox/browser/defaults/preferences/vendor.js"
+  _vendor_js="$pkgdir/usr/lib/waterfox/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendor_js" <<END
 // Disable default browser checking
 pref("browser.shell.checkDefaultBrowser", false);
@@ -213,7 +213,7 @@ pref("distribution.searchplugins.defaultLocale", "en-US");
 
 END
 
-  install -Dm644 "$srcdir/kde.js" "$pkgdir/opt/waterfox/browser/defaults/preferences/kde.js"
+  install -Dm644 "$srcdir/kde.js" "$pkgdir/usr/lib/waterfox/browser/defaults/preferences/kde.js"
 
   for i in 16 22 24 32 48 256; do
     install -Dm644 browser/branding/unofficial/default$i.png \
@@ -235,24 +235,24 @@ END
     "$pkgdir/usr/share/man/man1/waterfox.1"
 
   install -Dm644 $srcdir/distribution.ini \
-    "$pkgdir/opt/waterfox/distribution/distribution.ini"
+    "$pkgdir/usr/lib/waterfox/distribution/distribution.ini"
 
   # Use system-provided dictionaries
-  if [ -d $pkgdir/opt/waterfox/dictionaries ]; then
-    rm -r "$pkgdir"/opt/waterfox/dictionaries
+  if [ -d $pkgdir/usr/lib/waterfox/dictionaries ]; then
+    rm -r "$pkgdir"/usr/lib/waterfox/dictionaries
   fi
 
-  ln -Ts /usr/share/hunspell "$pkgdir/opt/waterfox/dictionaries"
-  ln -Ts /usr/share/hyphen "$pkgdir/opt/waterfox/hyphenation"
+  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/waterfox/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/waterfox/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/waterfox" <<END
 #!/bin/sh
-exec /opt/waterfox/waterfox "\$@"
+exec /usr/lib/waterfox/waterfox "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srf "$pkgdir/usr/bin/waterfox" \
-    "$pkgdir/opt/waterfox/waterfox-bin"
+    "$pkgdir/usr/lib/waterfox/waterfox-bin"
 }
