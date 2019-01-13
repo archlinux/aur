@@ -6,8 +6,8 @@
 
 pkgname=fusion-icon
 epoch=1
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="Simple tray icon for Compiz 0.8"
 arch=('any')
 url="http://www.compiz.org/"
@@ -46,4 +46,4 @@ package() {
   "${_python}" setup.py install --root="${pkgdir}" --optimize=1
 }
 
-sha256sums=('6b609b4b6c8b81175ddafae4aa7b3d905938443dbb1db10523e428b6aba0d521')
+sha256sums=('0ebc6df6a9e839a50073221bb051400b3f472b707cac094766ccee8787812297')
