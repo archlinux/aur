@@ -1,6 +1,6 @@
 pkgbase = cpu-x
 	pkgdesc = A Free software that gathers information on CPU, motherboard and more
-	pkgver = 3.2.3
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = http://X0rg.github.io/CPU-X/
 	arch = i686
@@ -11,11 +11,12 @@ pkgbase = cpu-x
 	depends = gtk3
 	depends = ncurses
 	depends = curl
+	depends = json-c
 	depends = libcpuid
 	depends = pciutils
 	depends = procps-ng
-	source = cpu-x-3.2.3.tar.gz::https://github.com/X0rg/CPU-X/archive/v3.2.3.tar.gz
-	sha512sums = fef2de82872169b9bd23f6c3eb464fc59e61037085d204a61f3c787e371b66f6e416cabc30402e835e08d93e8391c7f628699eb1d494de8c13155f127c8cbceb
+	source = cpu-x-3.2.4.tar.gz::https://github.com/X0rg/CPU-X/archive/v3.2.4.tar.gz
+	sha512sums = 67b3d9f3fe29f1164bfb4ffcd686196974300feebf702b4c4bf45490a0c5107b7d32f5800a279fc7d570c9830cf8881df15c09e5ce5389fdf1e947a3c877fa0c
 
 pkgname = cpu-x
 
