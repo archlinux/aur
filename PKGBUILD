@@ -1,6 +1,7 @@
 # Maintainer: Claudio Cocciarelli <claudiococciarelli at gmail dot com>
 
 pkgname=gnome-shell-dev
+_pkgname=gnome-shell
 pkgver=3.31.4
 pkgrel=1
 pkgdesc="Next generation desktop shell"
@@ -21,7 +22,7 @@ source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
-  arch-meson gnome-shell build -D gtk_doc=true
+  arch-meson "$_pkgname" build -D gtk_doc=true
   ninja -C build
 }
 
