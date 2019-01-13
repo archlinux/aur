@@ -13,7 +13,7 @@ pkgbase = python-catkin_pkg
 	provides = python-catkin-pkg
 	conflicts = python2-catkin_pkg
 	conflicts = python-catkin-pkg
-	source = https://files.pythonhosted.org/packages/source/c/catkin-pkg/catkin-pkg-0.4.10.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/catkin_pkg/catkin_pkg-0.4.10.tar.gz
 	md5sums = 0c8752ab98ab06481a2ea7d037ac3878
 
 pkgname = python-catkin_pkg
