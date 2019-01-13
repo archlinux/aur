@@ -5,12 +5,12 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="compiz-plugins-main"
-_pkgver=0.8.14
+_pkgver=0.8.16
 _micro=""
 
 pkgname=compiz-fusion-plugins-main
 pkgver="${_pkgver}${_micro}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Compiz Main plugins"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/compiz/${_upstream}/"
@@ -38,4 +38,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('9a3aa53316e609f4cd5cffc10fba0a8cd53117ab8f6717eadb22a63691baed86')
+sha256sums=('b639d67543f018dbbb3bea9d2404b157f63c1bed2705de19cf496e24edc29ab4')
