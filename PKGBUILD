@@ -6,12 +6,12 @@
 # Maintainer: easymodo <easymodofrf@gmail.com>
 pkgname=qimgv-git
 _pkgname=qimgv
-pkgver=0.7.1.r0.g7dd7e08
+pkgver=0.7.2.r0.g2649d9d
 pkgrel=1
 #epoch=
-pkgdesc="Simple image viewer written in qt. Supports webm playback."
+pkgdesc="Qt5 image viewer. Fast, configurable, easy to use. Optionally supports video playback."
 arch=('i686' 'x86_64')
-url="http://github.com/easymodo/qimgv"
+url="https://github.com/easymodo/qimgv"
 license=('GPL3')
 #groups=()
 depends=('qt5-base' 'qt5-imageformats' 'qt5-svg' 'mpv')
@@ -31,7 +31,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
