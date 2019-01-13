@@ -29,11 +29,11 @@ ros_makedepends=(ros-melodic-eigen-stl-containers
   ros-melodic-std-msgs
   ros-melodic-shape-msgs
   ros-melodic-tf2-eigen
-  ros-melodic-fcl
   ros-melodic-moveit-resources)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen
+  fcl
   urdfdom-headers
   assimp
   console-bridge
