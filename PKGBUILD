@@ -7,8 +7,8 @@ pkgdesc="Find and recover deleted files on block devices"
 arch=('i686' 'x86_64')
 url="http://freshmeat.net/projects/magicrescue/"
 license=('GPL')
-source=(http://www.itu.dk/people/jobr/$pkgname/release/$pkgname-$pkgver.tar.gz)
-md5sums=('093ac491bc5f70c4b050e57e3437ab07')
+source=(http://deb.debian.org/debian/pool/main/m/$pkgname/${pkgname}_${pkgver}.orig.tar.gz)
+sha256sums=('a920b174efd664afe9760a43700588c9c5e6182cb13d7421e07ab613bceeb3c7')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
