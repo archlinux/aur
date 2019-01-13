@@ -17,14 +17,14 @@
 #
 pkgbase="zfs-linux-vfio-git"
 pkgname=("zfs-linux-vfio-git" "zfs-linux-vfio-git-headers")
-_commit='06f3fc2a4b097545259935d54634c5c6f49ed20f'
-_zfsver="2018.12.26.r4871.g06f3fc2a4"
+_commit='d611989fdc176ccb54c24df99fd6c81b1cfff833'
+_zfsver="2019.01.13.r4900.gd611989fd"
 _kernelver="4.20.arch1-1"
 _extramodules="4.20.0-arch1-1-vfio"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
-makedepends=("linux-vfio-headers=${_kernelver}" "git")
+makedepends=("linux-vfio-headers=${_kernelver}" "git" "python")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}"
