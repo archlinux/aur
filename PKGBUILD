@@ -3,8 +3,8 @@
 # Contributor: George Rawlinson
 
 pkgname=plasma5-applets-plasma-pass-git
-pkgver=r30.f0ffe06
-pkgrel=2
+pkgver=r52.049822b
+pkgrel=1
 pkgdesc='Plasma applet for pass'
 url="https://cgit.kde.org/scratch/dvratil/plasma-pass.git"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('pass' 'plasma-framework' 'kitemmodels')
 makedepends=('extra-cmake-modules' 'git')
 provides=('plasma5-applets-plasma-pass')
 conflicts=('plasma5-applets-plasma-pass')
-source=("git+https://anongit.kde.org/scratch/dvratil/plasma-pass.git")
+source=("git+https://anongit.kde.org/plasma-pass.git")
 sha256sums=('SKIP')
 
 pkgver() {
