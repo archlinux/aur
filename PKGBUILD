@@ -11,7 +11,7 @@ checkdepends=('python-nose' 'python-selenium' 'geckodriver')
 depends=('python' 'python-jinja')
 options=(!emptydirs)
 source=("https://github.com/python-visualization/branca/archive/v$pkgver.tar.gz")
-sha256sums=('0d0e784e120036f92cd9fafdb9a45763f787735d7af65cdfbbcb7df73ba81e31')
+sha256sums=('87b9b294d7e15dc02f66fce23311a36b0ea3b6fba4874fb9ba9da64220bb156a')
 
 check() {
     cd "$srcdir/$_pkgname-$pkgver"
