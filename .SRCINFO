@@ -1,13 +1,13 @@
 pkgbase = binfmt-qemu-static
 	pkgdesc = Register qemu-static interpreters for various binary formats
-	pkgver = 20181118
-	pkgrel = 3
+	pkgver = 20190112
+	pkgrel = 4
 	url = http://www.freedesktop.org/software/systemd/man/binfmt.d.html
 	arch = any
 	license = GPL
 	optdepends = qemu-user-static
 	source = qemu-static.conf
-	md5sums = 16d2fdf5cbd499b3c3e7c2fd0b75bc20
+	md5sums = 6f738b87377817076bd7cf0692069850
 
 pkgname = binfmt-qemu-static
 
