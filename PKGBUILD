@@ -23,9 +23,9 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.0rc5
-# diffs: https://github.com/xbmc/xbmc/compare/18.0rc4-Leia..18.0rc5-Leia
-pkgrel=2
+pkgver=18.0rc5.2
+# diffs: https://github.com/xbmc/xbmc/compare/18.0rc5-Leia..18.0rc5.2-Leia
+pkgrel=1
 _codename=Leia
 _tag="$pkgver-$_codename"
 # Found on their respective github release pages. One can check them against
@@ -70,7 +70,6 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
-  "PR15235-unfuck-mysql-updates.patch::https://github.com/xbmc/xbmc/pull/15235.patch"
   'cheat-sse-build.patch'
   'cpuinfo'
 )
@@ -84,7 +83,7 @@ noextract=(
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
 )
-sha256sums=('b4ade8c266666e53b700739a15f3cab3f79c386763aa8fe14cb8f5c7413c562b'
+sha256sums=('e8ec83659339491286bf7d9f65037f18c0a4e21d5479808474ef5ca98ff691bb'
             '9a971662e44353c120f2ccf87655571998956e699a2dd800ec708b8b928a53c8'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
@@ -93,7 +92,6 @@ sha256sums=('b4ade8c266666e53b700739a15f3cab3f79c386763aa8fe14cb8f5c7413c562b'
             '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
-            '51f29119be98ddd71980d51b513f5c6a2bd80b0a15d751993026e43bcb63e583'
             '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
 
@@ -105,9 +103,6 @@ prepare() {
 
   # detect if building in arch chroot
   [[ "$srcdir" =~ ^\/build.* ]] && patch -Np1 -i ../cheat-sse-build.patch
-
-  # https://github.com/xbmc/xbmc/pull/15235
-  patch -Np1 -i ../PR15235-unfuck-mysql-updates.patch
 }
 
 build() {
