@@ -102,7 +102,7 @@ package_libmariadb-10.3() {
   depends=('bzip2' 'libaio' 'lz4' 'lzo' 'openssl' 'xz' 'zlib')
   conflicts=('libmysqlclient' 'libmariadbclient' 'libmariadbclient-10.3' 'libmariadb')
   replaces=('libmariadbclient-10.3')
-  provides=("libmariadb=$pkgver")
+  provides=("libmariadb=$pkgver" "libmariadbclient=$pkgver")
 
   cd build
 

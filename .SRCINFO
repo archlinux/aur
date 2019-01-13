@@ -33,6 +33,7 @@ pkgname = libmariadb-10.3
 	depends = xz
 	depends = zlib
 	provides = libmariadb=10.3.12
+	provides = libmariadbclient=10.3.12
 	conflicts = libmysqlclient
 	conflicts = libmariadbclient
 	conflicts = libmariadbclient-10.3
