@@ -1,0 +1,16 @@
+pkgbase = emacs-flycheck-irony-git
+	pkgdesc = provides a flycheck checker for the C, C++ and Objective-C languages.
+	pkgver = r10.42dbecd
+	pkgrel = 1
+	url = https://github.com/sarcasm/flycheck-irony
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs-flycheck
+	depends = irony-mode
+	provides = emacs-flycheck-irony
+	source = git+https://github.com/sarcasm/flycheck-irony.git
+	sha256sums = SKIP
+
+pkgname = emacs-flycheck-irony-git
+
