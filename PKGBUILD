@@ -62,8 +62,8 @@ msg "If you want to disable an applet, edit pkgbuild variables _disable_[applet]
 _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
@@ -103,6 +103,7 @@ package_vala-panel-appmenu-xfce-git() {
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
   cd "${srcdir}/${_pkgbase}"
+  make -C "applets" DESTDIR="${pkgdir}" install
   make -C "lib" DESTDIR="${pkgdir}" install
   make -C "data" DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/lib/vala-panel"
@@ -124,6 +125,7 @@ package_vala-panel-appmenu-valapanel-git() {
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
   cd "${srcdir}/${_pkgbase}"
+  make -C "applets" DESTDIR="${pkgdir}" install
   make -C "lib" DESTDIR="${pkgdir}" install
   make -C "data" DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/lib/xfce4"
@@ -144,6 +146,7 @@ package_vala-panel-appmenu-mate-git() {
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
   cd "${srcdir}/${_pkgbase}"
+  make -C "applets" DESTDIR="${pkgdir}" install
   make -C "lib" DESTDIR="${pkgdir}" install
   make -C "data" DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/lib/vala-panel"
@@ -164,6 +167,7 @@ package_vala-panel-appmenu-budgie-git() {
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
   cd "${srcdir}/${_pkgbase}"
+  make -C "applets" DESTDIR="${pkgdir}" install
   make -C "lib" DESTDIR="${pkgdir}" install
   make -C "data" DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/lib/xfce4"
