@@ -9,13 +9,13 @@ _use_marco=0
 _use_gtk3=0
 
 _upstream="compiz-core"
-_pkgver=0.8.14
-_micro=""
+_pkgver=0.8.16
+_micro=".1"
 
 pkgbase=compiz-core
 pkgname=(compiz-core compiz-gtk)
 pkgver="${_pkgver}${_micro}"
-pkgrel=6
+pkgrel=1
 pkgdesc="This is the latest stable release of Compiz without DE deps"
 url="https://gitlab.com/compiz/${_upstream}/"
 license=('GPL' 'LGPL' 'MIT')
@@ -136,4 +136,4 @@ package_compiz-gtk()
   done
 }
 
-sha256sums=('7d6b27be0f49abdf6a8ff064e7bc96f01815ec86d0453b94d5b9240587e91089')
+sha256sums=('4910b6a0a8ad49f04c3ec0472f12dc962b0205e427d0a3ac2a91520e9649fdb7')
