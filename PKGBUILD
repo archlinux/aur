@@ -2,14 +2,14 @@
 
 pkgname=qcalcfilehash
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculator hash (SHA1, SHA-224, SHA-256, SHA-384, SHA-512, MD5, CRC32, CRC8)"
 arch=('x86_64')
 url="https://bitbucket.org/admsasha/qcalcfilehash"
 license=('custom')
-depends=('qt5-base' 'openssl' 'glibc' 'gcc-libs')
+depends=('qt5-base' 'openssl' 'glibc' 'gcc-libs' 'hicolor-icon-theme')
 replaces=('qcalcfilehash')
-makedepends=('qt5-tools')
+makedepends=('qt5-tools' 'icoutils')
 conflicts=()
 source=("https://bitbucket.org/admsasha/qcalcfilehash/downloads/QCalcFileHash_v"${pkgver}".tar.gz")
 
@@ -22,6 +22,8 @@ build() {
 	lupdate ./QCalcFileHash.pro
 	lrelease ./QCalcFileHash.pro
 	make
+
+	icotool -x QCalcFileHash.ico
 
 	echo "[Desktop Entry]" >> "${pkgname}".desktop
 	echo "Name=QCalcFileHash" >> "${pkgname}".desktop
@@ -40,7 +42,8 @@ package(){
 	install -d "${pkgdir}/usr/share/qcalcfilehash"
 	cp -r *.qm "${pkgdir}"/usr/share/qcalcfilehash/
 	install -D -m644 "${srcdir}/QCalcFileHash/README.md" "${pkgdir}"/usr/share/doc/"${pkgname}"/README.md
-	install -D -m644 "${srcdir}/QCalcFileHash/QCalcFileHash.ico" "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/"${pkgname}".png
+	install -D -m644 "${srcdir}/QCalcFileHash/QCalcFileHash_2_32x32x32.png" "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/"${pkgname}".png
+	install -D -m644 "${srcdir}/QCalcFileHash/QCalcFileHash_1_16x16x32.png" "${pkgdir}"/usr/share/icons/hicolor/16x16/apps/"${pkgname}".png
 	install -D -m755 "${srcdir}/QCalcFileHash/Bin/qcalcfilehash" "${pkgdir}"/usr/bin/"${pkgname}"
 
 }
