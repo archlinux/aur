@@ -1,7 +1,7 @@
 # Maintainer: Christian Bundy <christianbundy@fraction.io> 
 pkgname=patchbay
 pkgver=7.15.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative Secure Scuttlebutt client interface that is fully compatible with Patchwork"
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchbay"
@@ -23,7 +23,12 @@ md5sums=('51d38e7e27643a8616e0d9331c13d9fa'
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    npm ci --only=production
+    npm ci --only=production --ignore-scripts
+    npm rebuild \
+      --runtime=electron \
+      --target=$(electron2 -v) \
+      --abi=$(electron2 --abi) \
+      --disturl=https://atom.io/download/atom-shell
 }
 
 package() {
