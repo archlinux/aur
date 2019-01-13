@@ -32,7 +32,7 @@ package() {
 
 	# Copy docs
 	mkdir -p $pkgdir/usr/share/doc/$pkgname/
-	cp ./AUTHORS ./Changelog ./COPYING $pkgdir/usr/share/doc/$pkgname/
+	cp ./AUTHORS.md ./Changelog ./COPYING $pkgdir/usr/share/doc/$pkgname/
 
 	# Move the schemas
 	mkdir -p $pkgdir/etc/openldap/schema/fusiondirectory/
