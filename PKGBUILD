@@ -1,17 +1,17 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=lib32-libclc
-pkgver=0.2.0+506+96d10f2
-pkgrel=2
+pkgver=0.2.0+539+dabae5a
+pkgrel=1
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
 url="http://libclc.llvm.org/"
 license=('MIT')
-makedepends=('clang' 'llvm' 'git')
-depends=('lib32-clang' 'lib32-llvm' 'lib32-python2' 'libclc')
+makedepends=('clang' 'llvm' 'git' 'python2')
+depends=('lib32-clang' 'lib32-llvm' 'libclc')
 options=('staticlibs')
-source=('git+http://llvm.org/git/libclc.git#commit=96d10f2')
-md5sums=('SKIP')
+source=('git+http://llvm.org/git/libclc.git#commit=dabae5a')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/libclc
@@ -41,7 +41,7 @@ build() {
 package() {
   cd ${srcdir}/libclc
   
-  make install DESTDIR="$pkgdir"
+  make install DESTDIR="${pkgdir}"
   rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
 
