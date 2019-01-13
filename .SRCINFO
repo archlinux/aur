@@ -1,14 +1,12 @@
 pkgbase = hub-git
 	pkgdesc = cli interface for Github
-	pkgver = v2.4.0.r10.g98f153f3
+	pkgver = v2.7.0.r31.gddf0d825
 	pkgrel = 1
 	url = https://hub.github.com
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = go
-	makedepends = groff
-	makedepends = ruby-bundler
 	depends = git
 	provides = hub
 	conflicts = hub
