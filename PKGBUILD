@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/spillerrec/qt-flif-plugin"
 license=('GPL')
 depends=('flif')
-makedepends=('qt4' 'qt5-base')
+makedepends=('git' 'qt4' 'qt5-base')
 source=('git+https://github.com/spillerrec/qt-flif-plugin.git#commit=9272881133c48d55d44e8a08cdafecff3f37315c'
         'include.patch')
 sha512sums=('SKIP'

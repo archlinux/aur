@@ -5,6 +5,7 @@ pkgbase = qt-flif-plugin
 	url = https://github.com/spillerrec/qt-flif-plugin
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = qt4
 	makedepends = qt5-base
 	depends = flif
