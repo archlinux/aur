@@ -1,0 +1,16 @@
+post_install() {
+	post_upgrade;
+}
+
+post_upgrade() {
+echo ""
+echo "Restarting CUPS to load the new files..."
+bash sudo systemctl restart org.cups.cupsd.service
+echo "You can now register your new printer using the web interface at:"
+echo "  http://localhost:631/"
+echo ""
+echo "If adding a network printer choose LPD/LPR queue"
+echo "You might have to manually configure your printer's IP adress"
+echo "To access the network scanner install brscan3 from AUR and read:"
+echo "   https://wiki.archlinux.org/index.php/SANE/Scanner-specific_problems#Brother"
+}
