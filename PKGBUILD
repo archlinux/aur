@@ -1,10 +1,11 @@
 # Maintainer: Daniel Ruiz de Alegria <daniruizdealegria@gmail.com>
 
 pkgname="flat-remix-gnome-git"
-pkgver=r165.8970d8a
+pkgver=r167.95466ce
 pkgrel=1
 pkgdesc="Flat Remix GNOME theme is a pretty simple shell theme inspired on material design following a modern design using "flat" colors with high contrasts and sharp borders."
 arch=('any')
+install=flat-remix-gnome.install
 url="https://drasite.com/flat-remix-gnome"
 license=('CC-BY-SA-4.0')
 source=("${pkgname}::git+https://github.com/daniruiz/Flat-Remix-GNOME-theme.git")
@@ -27,8 +28,8 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/gnome-shell/modes"
 	cp -a src/modes/* "${pkgdir}/usr/share/gnome-shell/modes/"
 	install -dm755 "${pkgdir}/usr/share/xsessions"
-	cp -a src/sessions/* "${pkgdir}/usr/share/xsessions/"
+	cp -a src/sessions/xsessions/* "${pkgdir}/usr/share/xsessions/"
 	install -dm755 "${pkgdir}/usr/share/wayland-sessions"
-	cp -a src/sessions/* "${pkgdir}/usr/share/wayland-sessions/"
+	cp -a src/sessions/wayland-sessions/* "${pkgdir}/usr/share/wayland-sessions/"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
