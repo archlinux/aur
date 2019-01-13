@@ -1,0 +1,23 @@
+pkgbase = curecoind-git
+	pkgdesc = GUI client (wallet) for CureCoin cryptocurrency
+	pkgver = v2.0.0.1.r1.gb307e32
+	pkgrel = 1
+	url = https://curecoin.net/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = boost
+	makedepends = db
+	makedepends = git
+	depends = miniupnpc
+	depends = boost-libs
+	depends = openssl-1.0
+	provides = curecoind
+	conflicts = curecoind
+	source = git+https://github.com/cygnusxi/CurecoinSource.git#branch=master
+	source = boost.patch
+	sha256sums = SKIP
+	sha256sums = 3a984b6236e60cd34d31f24935e4c8cc92b5b725bd2f4159b8de375b3e0bb77a
+
+pkgname = curecoind-git
+
