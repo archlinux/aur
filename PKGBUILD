@@ -1,13 +1,14 @@
 # Maintainer: Peter Hoeg <firstname at lastname dot com>
 
 pkgname=tensor-git
-pkgver=r295.d01b8b8
+pkgver=r296.f3f3056
 pkgrel=1
 pkgdesc='Cross-platform Qt5/QML-based Matrix client'
 arch=('x86_64' 'i686')
 url='https://github.com/davidar/tensor'
 license=('GPL3')
 depends=('qt5-quickcontrols')
+makedepends=(git)
 source=('git+https://github.com/davidar/tensor.git'
         'git+https://github.com/Fxrh/libqmatrixclient.git'
         'tensor.desktop')
