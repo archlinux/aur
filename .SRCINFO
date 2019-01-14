@@ -1,0 +1,26 @@
+pkgbase = swaylock-git
+	pkgdesc = Screen locker for Wayland
+	pkgver = r152.aab44df
+	pkgrel = 1
+	url = https://swaywm.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = wlroots-git
+	depends = pango
+	depends = cairo
+	depends = pam
+	optdepends = gdk-pixbuf2: For background images other than PNG
+	provides = swaylock
+	options = debug
+	options = !strip
+	source = swaylock::git+https://github.com/swaywm/swaylock.git
+	sha1sums = SKIP
+
+pkgname = swaylock-git
+
