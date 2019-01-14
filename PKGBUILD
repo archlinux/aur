@@ -2,8 +2,8 @@
 # Maintainer: Mark Weiman <markzz@archlinux.net>
 
 pkgbase=linux-vfio-lts
-_srcname=linux-4.14
-pkgver=4.14.87
+_srcname=linux-4.19
+pkgver=4.19.15
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -25,19 +25,17 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'add-acs-overrides.patch'
         'i915-vga-arbiter.patch'
         0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-        0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 )
-sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
+sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '97cbe10d147350af335a42ab1f9f78ec36202cecfdcbe8f43c3b2a23bb105345'
-            '5517c9eece1d6b725464b4b3429ab794eed4ced57aa19573d8f938250ed7621f'
+            '051507958d5ed9b2eac34abdc49f5fa1600646bf804076cda448aacb93019b98'
+            '2aa5cde5c40ca06ea0a10b9a212bd9b96deb548d58c0a55386f0e8ae5fc0edf5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
             '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
-            'c238969a3c3a44b41c868a883880d8c4dc475e457427e91c649e9f24170b2c7d'
-            'eaf70cd805cdb43cf6227d354a6d54f67645b6df99e06136a8055d7494d7439c'
-            '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98'
-            'b6c56ff2dffebe164941ac3428351e158c9c059e884057ecfc215eeea12e76eb')
+            'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1'
+            'afb4c025d1180c1c8d9419910910f44755a4aefc711c2f0d4fee374d6b33e0d5'
+            '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -59,9 +57,6 @@ prepare() {
 
   # disable USER_NS for non-root users by default
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-
-  # https://bugs.archlinux.org/task/56711
-  patch -Np1 -i ../0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
 
   # patches for vga arbiter fix in intel systems
   patch -p1 -i "${srcdir}/i915-vga-arbiter.patch"
