@@ -5,18 +5,18 @@
 
 pkgbase=python-numpy
 pkgname=('python-numpy' 'python2-numpy')
-pkgver=1.15.4
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
 license=('custom')
 url="http://www.numpy.org/"
-makedepends=('cblas' 'lapack' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'gcc-fortran'
-             'python-nose' 'python2-nose' 'cython' 'cython2')
+makedepends=('cblas' 'lapack' 'python' 'python2' 'python-setuptools' 'python2-setuptools'
+             'gcc-fortran' 'python-nose' 'python2-nose' 'cython' 'cython2')
 checkdepends=('python-pytest' 'python2-pytest')
 options=('staticlibs')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz")
-sha512sums=('2cb375b5cec4b9fbf6f65fb79eb81429af3e1e6aefa5e39cafeee7d9ecd8046647ccc97129170069e583327601b9cfba562be3720dc5cb2bdc2216ac6eb6d690')
+sha512sums=('fb1ef9c4e9d664b3c5db47dfd261dcaaaad7ee8b4eb48eb167812de893de88ca0b9a984a56a039958f03184dbc369bcd58e03f89447ef71cf61294bb1fd6eb7f')
 
 prepare() {
   cp -a numpy-$pkgver{,-py2}
@@ -72,4 +72,6 @@ package_python2-numpy() {
 
   install -m755 -d "${pkgdir}/usr/share/licenses/python2-numpy"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-numpy/"
+
+  mv "$pkgdir"/usr/bin/f2py{,2}
 }
