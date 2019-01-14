@@ -25,7 +25,7 @@ pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
 pkgver=18.0rc5.2
 # diffs: https://github.com/xbmc/xbmc/compare/18.0rc5-Leia..18.0rc5.2-Leia
-pkgrel=1
+pkgrel=2
 _codename=Leia
 _tag="$pkgver-$_codename"
 # Found on their respective github release pages. One can check them against
@@ -102,7 +102,9 @@ prepare() {
   cd "xbmc-$_tag"
 
   # detect if building in arch chroot
-  [[ "$srcdir" =~ ^\/build.* ]] && patch -Np1 -i ../cheat-sse-build.patch
+  if [[ "$srcdir" =~ ^\/build.* ]]; then
+    patch -Np1 -i ../cheat-sse-build.patch
+  fi
 }
 
 build() {
