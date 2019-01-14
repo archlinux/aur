@@ -17,4 +17,3 @@ pkgbase = goreleaser
 	sha256sums_aarch64 = 9225ecf1b5117f0b9934707442eff33f364a8136866c32f01861f41e238c3625
 
 pkgname = goreleaser
-
