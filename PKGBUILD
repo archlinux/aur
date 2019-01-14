@@ -27,9 +27,8 @@ _1k_HZ_ticks=y
 _NUMAdisable=y
 
 # Compile ONLY probed modules
-# As of mainline 2.6.32, running with this option will only build the modules
-# that you currently have probed in your system VASTLY reducing the number of
-# modules built and the build time to do it.
+# Build in only the modules that you currently have probed in your system VASTLY
+# reducing the number of modules built and the build time.
 #
 # WARNING - ALL modules must be probed BEFORE you begin making the pkg!
 #
@@ -52,13 +51,13 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=4.19
-_minor=13
-_rtver=10
+_minor=15
+_rtver=12
 pkgver=${_major}.${_minor}.${_rtver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
 _rtpatchver=rt${_rtver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -387,9 +386,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('a855357da8ab245cd70d78fbb8ab4ee4c0e359f2673c48b8c7b9f52b07444e460076d44e1aec92e81dea513832c46795cb9fd26c35b356bfd94a7953ba492ee3'
+sha512sums=('b8aa5fd721bbab880a530cce3bb242afdf4d6fa51464d14790f1f3eef7124d7101cafd7cfa170b5dc2aba1947b56c95f419357ae24d913ff4c4fd3664696d907'
             'SKIP'
-            '236d1b2a3b36c5b1374e0dbe20f564d8f023c837856ac4a2d8d2b9fd5f38f1ccac221c1d3635e56fb70a1facffdc83f6236e56aa7ed75eaf62e4bc50f2e485e4'
+            '11fa1d97e1014adbf956ae8906043ae17947cdba045a850aef3dfb2098a5e56ef0ac315e0b3b0192cf8c896c7d32f947a0eaaa3afbf85c78cdae3403dd4bb144'
             'SKIP'
             '5834e533a7096cb81a1f04faca3f90368a97fb03ae34c2f509cd2a86cb7b179f4db1665ceabb8af0171462addd71e720631af13c003fc54754cc0b021f72aded'
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
