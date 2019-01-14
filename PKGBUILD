@@ -2,8 +2,8 @@
 
 pkgname=intellij-jdk
 _major=8
-_minor=152
-_build=1402.1
+_minor=202
+_build=1467.2
 pkgver=${_major}u${_minor}b${_build}
 pkgrel=1
 pkgdesc="OpenJDK Java 8 development kit with some fixes and enhancements by JetBrains"
@@ -15,7 +15,7 @@ provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "ja
           "java-runtime-openjdk=$_major" "java-runtime-headless-jre=$_major" "java-environment-openjdk=$_major")
 _zipname="jbsdk${pkgver}_linux_x64.tar.gz"
 source=("https://dl.bintray.com/jetbrains/intellij-jdk/${_zipname}")
-sha256sums=('ed79f9c79c2f0b2abda67fd9b6fbb52ceb7edc5e8b9c65f8da8b4e26280d95de')
+sha256sums=('83969f461fb3cfb416630f24f73d5f085e3ba22d3afb189a01fae98ba392906a')
 
 package() {
 	rm "$srcdir/$_zipname"
@@ -24,4 +24,3 @@ package() {
 	cp -a "$srcdir" "$pkgdir/usr/lib/jvm/$pkgname"
 	ln -sf /etc/ssl/certs/java/cacerts "$pkgdir/usr/lib/jvm/$pkgname/jre/lib/security/cacerts"
 }
-
