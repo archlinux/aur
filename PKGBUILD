@@ -1,7 +1,7 @@
 # Maintainer: Boris Momčilović <boris.momcilovic@gmail.com>
 
 pkgname=php-componere-git
-pkgver=1.3.0.r123.g8d37409
+pkgver=1.3.0.r142.gea20d97
 pkgrel=1
 pkgdesc="Complex Type Composition and Manipulation http://docs.php.net/intro.componere"
 arch=('i686' 'x86_64')
