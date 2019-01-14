@@ -1,9 +1,10 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=luxcorerender
 pkgver=2.1
-_rel="beta3"
-[ -n ${_rel} ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}"
-pkgrel=4
+#_rel="beta3"
+[ -n "${_rel}" ] && _pkgver+=${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
+pkgrel=5
+epoch=1
 pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
@@ -19,7 +20,7 @@ source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${_pkgver}
         "python.patch"
         "glfw.patch"
         )
-md5sums=('2a31b72365744ae84eaffd677840aa9b'
+md5sums=('04f51b65e99a9979befae3298206cdac'
          '21b963e5f66d2c8c6a50bebcf9f0fe07'
          '624f2be4cb431f6a4cfcc968d6263ac2')
 
