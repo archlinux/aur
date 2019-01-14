@@ -5,7 +5,7 @@
 
 pkgname=postsrsd
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
 arch=('i686' 'x86_64' 'armv7h')
 depends=('glibc')
