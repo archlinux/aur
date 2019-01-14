@@ -4,7 +4,7 @@
 # Contributor: 4679kun <admin at 4679 dot us>
 
 pkgname=simple-obfs-git
-pkgver=v0.0.5.r39.g5cbfdcc
+pkgver=v0.0.5.r41.g6261a92
 pkgrel=1
 pkgdesc='A simple obfusacting tool designed as plugin server of shadowsocks (git version)'
 arch=('x86_64')
