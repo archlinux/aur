@@ -4,7 +4,7 @@ pkgname=allegro-blasteroids-git
 pkgver=v1.1
 depends=('allegro')
 makedepends=('cmake')
-pkgrel=0
+pkgrel=1
 arch=(x86_64)
 pkgdesc="A game inspired on blasteroids started from the last proposed exercise of Head First C"
 license=("custom")
@@ -26,4 +26,6 @@ package() {
     cp blasteroids $DESTINATION
     cp blasteroids_font.ttf $DESTINATION
     cp ../AllegroBlasteroids.desktop $pkgdir/usr/share/applications
+    mkdir -p $pkgdir/usr/bin
+    cp ../ablasteroids $pkgdir/usr/bin
 }
