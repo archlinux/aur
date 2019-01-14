@@ -1,12 +1,13 @@
 pkgbase = wcalc
 	pkgdesc = A flexible command-line scientific calculator
 	pkgver = 2.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://w-calc.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = mpfr>=4.0.0
+	depends = readline>=8.0.0
 	source = http://downloads.sourceforge.net/w-calc/wcalc-2.5.tar.bz2
 	sha256sums = 0e2c17c20f935328dcdc6cb4c06250a6732f9ee78adf7a55c01133960d6d28ee
 
