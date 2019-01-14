@@ -1,0 +1,4 @@
+pkg/
+src/
+mate-i3-applet-*.pkg.tar*
+?.?.?.tar.gz
