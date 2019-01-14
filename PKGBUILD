@@ -6,11 +6,11 @@ pkgver=1.6
 pkgrel=3
 pkgdesc="A GTK2 bitmap font editor"
 arch=(i686 x86_64)
-url="http://www.math.nmsu.edu/~mleisher/Software/gbdfed/"
+url="http://sofia.nmsu.edu/~mleisher/Software/gbdfed/"
 license=('MIT')
 depends=(gtk2)
-source=(http://www.math.nmsu.edu/~mleisher/Software/gbdfed/$pkgname-$pkgver.tbz2 \
-	http://www.math.nmsu.edu/~mleisher/Software/gbdfed/gbdfed48x48.png \
+source=(http://sofia.nmsu.edu/~mleisher/Software/gbdfed/$pkgname-$pkgver.tar.bz2 \
+	http://sofia.nmsu.edu/~mleisher/Software/gbdfed/gbdfed48x48.png \
 	gbdfed.desktop \
 	num_signals.patch)
 md5sums=('2a2e1cbfe8566db6d302f0b9ab79b8dd'
