@@ -3,7 +3,7 @@
 
 pkgname='sile'
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver='0.9.5'
+pkgver='0.9.5.1'
 _libtexpdf_ver='50f0d788c358eb6e1953185f91817f885dc19649'
 pkgrel='1'
 arch=('i386' 'x86_64')
@@ -22,7 +22,7 @@ depends=('fontconfig'
          'lua-sec'
          'lua-zlib'
          'ttf-gentium-plus')
-sha512sums=('2f6dbdb38eb25d5db9363fa1d8c8aa6c02aec5bec2fd2752c4b51eebc37c781876fe06b511c93c4a76cdfa3fe02373f5280aab88a4e6f33cf07902aeabd0e63f'
+sha512sums=('724bde7735ba21e40f645b276600c8638ca22cab17e35bbe1e8ce7d141291ecc58471140ab5b9db79e54b14e3c6c9dab7503a4fc6bd334c6b14275b011ea5301'
             '4dd2df1ff4027634f8c5e4ccbfb661229c0f6bf7e4f8e739dcb737f0af0d30570d92321781ab34e61a2f660c225715e569506b825a83744c244dfe9a956c8727')
 
 prepare () {
