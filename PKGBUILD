@@ -10,7 +10,7 @@ _raw_url="https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v${pkgver}/patc
 license=('MIT')
 depends=('fontconfig' 'xorg-font-utils')
 install="${pkgname}.install"
-md5sums=("SKIP")
+md5sums=('341ee7b3c67f4b873be5157cc4627b93')
 source=(
   "Noto-Sans-Regular-Nerd-Font-Complete.ttf::${_raw_url}/Noto/Sans/complete/Noto%20Sans%20Regular%20Nerd%20Font%20Complete.ttf"
 )
