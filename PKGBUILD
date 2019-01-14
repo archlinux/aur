@@ -1,6 +1,6 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=jqassistant
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Scan, explore and validate your Java application in a few minutes"
 arch=('any')
@@ -17,9 +17,9 @@ backup=()
 options=()
 install="${pkgname}.install"
 changelog=()
-source=('https://jqassistant.org/wp-content/uploads/2018/10/jqassistant-commandline-neo4jv3-1.5.0-distribution.zip' 'launcher.sh')
+source=('https://jqassistant.org/wp-content/uploads/2018/10/jqassistant-commandline-neo4jv3-1.6.0-distribution.zip' 'launcher.sh')
 noextract=()
-md5sums=('bbb647ef7a2e6dd7bd756cb72399618b' 'fa9d3e0628cda8818ddf572a6bc394b5')
+md5sums=('64f14337fb7a0c06ae2f05e73295abd8' 'fa9d3e0628cda8818ddf572a6bc394b5')
 
 package() {
     install -d ${pkgdir}/opt/${pkgname}
