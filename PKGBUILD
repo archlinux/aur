@@ -7,6 +7,7 @@ pkgdesc="bcachefs filesystem utilities"
 url="https://evilpiepirate.org/git/bcachefs-tools.git/"
 arch=("x86_64")
 license=("GPL2")
+install="${pkgname}.install"
 
 provides=("bcachefs-tools")
 makedepends=("git" "libscrypt" "libsodium" "attr" "libutil-linux" "keyutils" "pkgconf" "zlib" "liburcu")
