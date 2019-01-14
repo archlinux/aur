@@ -2,10 +2,10 @@
 
 pkgname=python-ipympl
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'jupyterlab')
 license=('BSD')
 arch=(any)
 source=("https://files.pythonhosted.org/packages/f3/ed/f7d73a5e35ca3423e65ef70a7de0f640bc24919ec4fc57d5f0c1b831f5ff/ipympl-0.2.1.tar.gz")
