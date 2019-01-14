@@ -7,10 +7,27 @@ Increate the data buffers so that the terminating NUL fits. Use strlen
 instead of sizeof to cope with the buffers size increase and to make
 the code future-proof.
 ---
+ ChangeLog          |  7 +++++++
  telnetd/telnetd.c  |  6 +++---
  telnetd/termstat.c | 34 +++++++++++++++++-----------------
  3 files changed, 27 insertions(+), 20 deletions(-)
 
+# changelog patch elimianted. It interferes with all future versions.
+#diff --git a/ChangeLog b/ChangeLog
+#index ea93a846..99157ea1 100644
+#--- a/ChangeLog
+#+++ b/ChangeLog
+@@ -1,3 +1,10 @@
++2017-07-11  Guillem Jover  <guillem@hadrons.org>
++
++	* telnetd/telnetd.c (telnetd_run): Increate the data buffer so that
++	the terminating NUL fits. Use strlen instead of sizeof to cope with
++	the buffer size increase and make the code future-proof.
++	* telnetd/termstat.c (localstat, flowstat, clientstat): Likewise.
++
+ 2017-07-10  Omer Anson <oaanson@gmail.com>  (tiny change)
+ 
+ 	* src/hostname.c (parse_file): Free name and allocate one extra
 diff --git a/telnetd/telnetd.c b/telnetd/telnetd.c
 index 5e13e23d..917a3355 100644
 --- a/telnetd/telnetd.c

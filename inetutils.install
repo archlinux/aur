@@ -1,32 +1,9 @@
-infodir='usr/share/info'
-filelist=('inetutils.info.gz')
-
 post_install() {
   setcap cap_net_bind_service=+ep 'usr/bin/rcp'    2>/dev/null || chmod +s 'usr/bin/rcp'
   setcap cap_net_bind_service=+ep 'usr/bin/rlogin' 2>/dev/null || chmod +s 'usr/bin/rlogin'
   setcap cap_net_bind_service=+ep 'usr/bin/rsh'    2>/dev/null || chmod +s 'usr/bin/rsh'
-
-  if [ -x 'usr/bin/install-info' ]; then
-    local file
-    for file in "${filelist[@]}"; do
-      install-info "${infodir}/${file}" "${infodir}/dir" 2>/dev/null
-    done
-  fi
-  systemctl daemon-reload
 }
 
 post_upgrade() {
   post_install $1
-}
-
-pre_remove() {
-  if [ -x 'usr/bin/install-info' ]; then
-    for file in "${filelist[@]}"; do
-      install-info --delete "${infodir}/${file}" "${infodir}/dir" 2>/dev/null
-    done
-  fi
-}
-
-post_remove() {
-  systemctl daemon-reload
 }
