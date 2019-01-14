@@ -1,6 +1,6 @@
 pkgbase = pacman-git
 	pkgdesc = A library-based package manager with dependency support
-	pkgver = 5.1.1.r75.g5fc3056e
+	pkgver = 5.1.1.r115.g10bcf66d
 	pkgrel = 1
 	url = https://www.archlinux.org/pacman/
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = pacman-git
 	depends = libarchive
 	depends = pacman-mirrorlist
 	optdepends = pacman-contrib: various helper utilities
+	optdepends = xdelta3: delta support in repo-add
 	provides = pacman=5.1.1
 	conflicts = pacman
 	options = emptydirs
@@ -38,7 +39,7 @@ pkgbase = pacman-git
 	sha256sums = 0c087d26e80333267391a6e9e34b95a2ffb103cb9391cb53cc5d97ad954af774
 	sha256sums = c5a3ec55f9d1bc52e5e5b127f76b7b16b79738268691a3e1d842359033e460da
 	sha256sums = 2d17478fd607c75e396fe10ef2add8bc9fcc12054810fb6f4409dfb70e01989e
-	sha256sums = 2d66473febac0e142eb5b5b2b2c6341687b1afaa89c76ca4e6803499b60636f1
+	sha256sums = 3159b78d6112f4e8906945d1adc1f33b6186d566b54a5976e3a684597c082942
 
 pkgname = pacman-git
 
