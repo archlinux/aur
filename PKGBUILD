@@ -4,7 +4,7 @@ _srcname=zimports
 
 pkgname=python-zimports
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="yet another import fixing tool"
 arch=('any')
 url="https://github.com/sqlalchemyorg/zimports"
@@ -17,10 +17,17 @@ makedepends=('python' 'python-setuptools')
 options=(!emptydirs)
 source=(
   "https://files.pythonhosted.org/packages/17/9e/ff7223a7ead8c064435b6200267b1abb5b34c71822ad2ea6d4eaaed8862e/zimports-${pkgver}.tar.gz"
+  'without-tests.patch'
 )
 sha256sums=(
   '1297e0ecfc80dfe746cef3142ae9614eab1bf56ef75176fdea75a0915ab073e7'
+  'a174aa9b52935d37febe6f6d6a358cf9773c7adc7aa771cb49dc32bf2a699fd9'
 )
+
+prepare() {
+  cd "${srcdir}/${_srcname}-${pkgver}"
+  patch -p0 -i ../without-tests.patch
+}
 
 build() {
   cd "${srcdir}/${_srcname}-${pkgver}"
