@@ -7,19 +7,9 @@
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
-# actually run slower with NUMA enabled. Most users will want to set this option
-# to enabled ... in other words, do not use NUMA on a single CPU system.
-#
-# It has been reported that users of CUDA require NUMA to be enabled, therefore
-# if you require CUDA support, be sure the variable below is set to a null
-# See: https://bbs.archlinux.org/viewtopic.php?id=239174
-_NUMAdisable=
-
 # Compile ONLY probed modules
-# As of mainline 2.6.32, running with this option will only build the modules
-# that you currently have probed in your system VASTLY reducing the number of
-# modules built and the build time to do it.
+# Build in only the modules that you currently have probed in your system VASTLY
+# reducing the number of modules built and the build time.
 #
 # WARNING - ALL modules must be probed BEFORE you begin making the pkg!
 #
@@ -33,7 +23,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=4.20.1-arch1
+_srcver=4.20.2-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _pdsversion=099k
@@ -59,7 +49,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('16472f08f69dcca48a412132b9b2c96371aaeddafd7bd4bb97cba8a7a97988e0'
+sha256sums=('3bf442636714f8e6f21686d00fe12361c21a2adb2142bbd8887cf5225cf48932'
             'c79a4aeb206dd0578978c04364faba88f39e73f3bee361b9731d0cc0b481012d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -89,21 +79,6 @@ prepare() {
 
   msg2 "Setting config..."
   cp ../config .config
-
-  ### Optionally disable NUMA
-  if [ -n "$_NUMAdisable" ]; then
-    msg2 "Disabling NUMA from kernel config..."
-    sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-      -i -e '/CONFIG_AMD_NUMA=y/d' \
-      -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-      -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-      -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-      -i -e '/CONFIG_NODES_SHIFT=6/d' \
-      -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-      -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-      -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-      -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
-  fi
 
   # https://github.com/graysky2/kernel_gcc_patch
   msg2 "Patching to enabled additional gcc CPU optimizatons..."
