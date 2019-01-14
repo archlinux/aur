@@ -1,0 +1,18 @@
+pkgbase = prometheus-sphinx-exporter
+	pkgdesc = Prometheus exporter for Sphinx search
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/foxdalas/sphinx_exporter
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = https://github.com/foxdalas/sphinx_exporter/archive/0.0.6.tar.gz
+	source = prometheus-sphinx-exporter.service
+	sha256sums = 58109db34786759920a384909abafde0e4714a0a0dad304b3fdfe94a8fc6644d
+	sha256sums = 735282734fcf7dacd516ebb4433cc4c4cb1a42c64f3db7289c0bea27d9ceafa7
+
+pkgname = prometheus-sphinx-exporter
+

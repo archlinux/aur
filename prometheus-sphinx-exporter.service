@@ -1,0 +1,10 @@
+[Unit]
+Description=Prometheus exporter for Sphinx
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/prometheus_sphinx_exporter --sphinx.address="%i"
+User=nobody
+
+[Install]
+WantedBy=multi-user.target
