@@ -12,7 +12,7 @@ _buildtoolver=90
 pkgrel=1
 pkgdesc="CraftBukkit, Spigot, and vanilla Minecraft servers"
 arch=(any)
-url="http://www.spigotmc.org/"
+url="https://www.spigotmc.org/"
 license=("GPL3")
 depends=("java-runtime-headless<=11" fontconfig)
 makedepends=(git)
