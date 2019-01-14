@@ -3,7 +3,7 @@
 
 pkgname=snapper
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('x86_64')
 url="http://snapper.io"
@@ -26,6 +26,9 @@ prepare() {
 
   # fix pam plugin install location
   sed -i -e 's@shell echo /@shell echo /usr/@g' pam/Makefile.am
+
+  # dbus policy files in /usr/share/dbus-1
+  sed -i -e 's@/etc/dbus-1/@/usr/share/dbus-1/@' data/Makefile.am
 
   # all in /usr/bin
   sed -i -e 's@/usr/sbin@/usr/bin@g' data/org.opensuse.Snapper.service
