@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="Transfer files from android to your local machine"
 arch=('any')
 url="https://github.com/noffle/${_name}"
+depends=('nodejs')
 makedepends=('npm' 'git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
