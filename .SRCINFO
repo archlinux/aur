@@ -1,0 +1,17 @@
+pkgbase = blocklist
+	pkgdesc = Command-line tool for download and write blocklists
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Joffr3y/blocklist
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	depends = python-setuptools
+	source = blocklist-0.1.1.tar.gz::https://files.pythonhosted.org/packages/source/b/blocklist/blocklist-0.1.1.tar.gz
+	sha256sums = 062c390358560ea29c57372cb916a0e95c27714551b21cad80f7ba96056b83f5
+
+pkgname = blocklist
+
