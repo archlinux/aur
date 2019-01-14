@@ -1,6 +1,6 @@
 pkgbase = firefox-ubuntu-bin
 	pkgdesc = Standalone web browser from mozilla.org with Ubuntu patches (binary)
-	pkgver = 63.0
+	pkgver = 64.0
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = firefox-ubuntu-bin
 	provides = firefox-ubuntu
 	conflicts = firefox
 	conflicts = firefox-ubuntu
-	source = http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_63.0+build2-0ubuntu0.18.04.2_amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_64.0+build3-0ubuntu0.18.10.1_amd64.deb
 	sha256sums = d7743cf46a066e7c22da87b468ad81b83d68645830125cdacd6bf551801de09b
 
 pkgname = firefox-ubuntu-bin
