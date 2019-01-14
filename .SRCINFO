@@ -1,0 +1,17 @@
+pkgbase = grin
+	pkgdesc = Minimal implementation of the MimbleWimble protocol
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/mimblewimble/grin
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = clang
+	makedepends = git
+	makedepends = rust
+	depends = ncurses
+	source = git+https://github.com/mimblewimble/grin.git#commit=60d3ee3c441af7036994a2a7bba8e47285ae70b0
+	sha256sums = SKIP
+
+pkgname = grin
+
