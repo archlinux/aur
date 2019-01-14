@@ -35,7 +35,7 @@ package() {
 	cd $pkgname-$pkgver
 	make clean
 	cd ..
-	mv $pkgname-$pkgver $pkgname
+	mv $pkgname-$pkgver ~/$pkgname
 	echo "${shortcut}" > ~/.local/share/applications/taurus.desktop
 	if [ -f ~/.zshrc ]; then
 		echo "alias taurus=${applocation}/taurus" >> ~/.zshrc
