@@ -10,7 +10,7 @@ pkgbase = prometheus-sphinx-exporter
 	makedepends = go
 	depends = glibc
 	source = https://github.com/foxdalas/sphinx_exporter/archive/0.0.6.tar.gz
-	source = prometheus-sphinx-exporter.service
+	source = prometheus-sphinx-exporter@.service
 	sha256sums = 58109db34786759920a384909abafde0e4714a0a0dad304b3fdfe94a8fc6644d
 	sha256sums = 735282734fcf7dacd516ebb4433cc4c4cb1a42c64f3db7289c0bea27d9ceafa7
 

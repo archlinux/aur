@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("https://github.com/foxdalas/sphinx_exporter/archive/${pkgver}.tar.gz"
-        "prometheus-sphinx-exporter.service")
+        "prometheus-sphinx-exporter@.service")
 sha256sums=('58109db34786759920a384909abafde0e4714a0a0dad304b3fdfe94a8fc6644d'
             '735282734fcf7dacd516ebb4433cc4c4cb1a42c64f3db7289c0bea27d9ceafa7')
 
@@ -34,6 +34,6 @@ package() {
   cd "${srcdir}/sphinx_exporter-${pkgver}"
 
   install -Dm755 "sphinx_exporter" "${pkgdir}/usr/bin/prometheus_sphinx_exporter"
-  install -Dm644 "${srcdir}/prometheus-sphinx-exporter.service" \
-    "${pkgdir}/usr/lib/systemd/system/prometheus-sphinx-exporter.service"
+  install -Dm644 "${srcdir}/prometheus-sphinx-exporter@.service" \
+    "${pkgdir}/usr/lib/systemd/system/prometheus-sphinx-exporter@.service"
 }
