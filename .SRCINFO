@@ -1,0 +1,14 @@
+pkgbase = nerd-fonts-noto-sans-regular-complete
+	pkgdesc = Noto Sans Regular Nerd Font complete
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	install = nerd-fonts-noto-sans-regular-complete.install
+	arch = any
+	license = MIT
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = Noto-Sans-Regular-Nerd-Font-Complete.ttf::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.0.0/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Regular%20Nerd%20Font%20Complete.ttf
+
+pkgname = nerd-fonts-noto-sans-regular-complete
+
