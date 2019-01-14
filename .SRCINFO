@@ -1,0 +1,17 @@
+pkgbase = chili-sddm-theme
+	pkgdesc = Chili theme for SDDM
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/MarianArlt/sddm-chili
+	install = chili-sddm-theme.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
+	depends = sddm
+	source = https://github.com/MarianArlt/sddm-chili/archive/0.1.5.tar.gz
+	sha256sums = a3c0607bf70f448fff0a271624e3bc15af978894c04c98355d00a57431e49a0f
+
+pkgname = chili-sddm-theme
+
