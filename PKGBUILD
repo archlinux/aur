@@ -10,7 +10,7 @@ arch=('x86_64')
 url='http://gcc.gnu.org'
 license=('GPL' 'LGPL')
 depends=('lib32-gcc-libs')
-makedepends=('gcc-multilib' 'binutils')
+makedepends=('gcc-multilib' 'binutils' 'bash')
 options=('!makeflags')
 source=(
   "ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-"{core,g++}"-${pkgver}.tar.bz2"
@@ -69,6 +69,7 @@ build(){
   export CFLAGS='-march=i686 -m32 -O2 -pipe'
   export CPPFLAGS='-march=i686 -m32 -O2 -pipe'
   export CXXFLAGS='-march=i686 -m32 -O2 -pipe'
+  export SHELL='/usr/bin/bash' # doesn't work with fish
 
   mkdir -p 'gcc-build'
   cd 'gcc-build'
