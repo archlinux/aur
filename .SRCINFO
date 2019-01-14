@@ -1,0 +1,12 @@
+pkgbase = naotu
+	pkgdesc = simple mind map tool from baidu
+	pkgver = 3.2.1
+	pkgrel = 2
+	url = https://github.com/NaoTu/DesktopNaotu
+	arch = x86_64
+	license = GPL2.0
+	source = https://github.com/NaoTu/DesktopNaotu/releases/download/v3.2.1-Bata/DesktopNaotu-linux-x64.zip
+	sha1sums = e10168d2b1a5bdae18e480cd95012669fa51cec5
+
+pkgname = naotu
+
