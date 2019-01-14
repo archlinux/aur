@@ -18,11 +18,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/spellcheck-ko/hunspell-
 sha1sums=('e93dd247b629acb3c33e062fa0153bb3188c9b86')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/hunspell-dict-ko-$pkgver"
   make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX=/usr
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/hunspell-dict-ko-$pkgver"
   make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX=/usr
 }
