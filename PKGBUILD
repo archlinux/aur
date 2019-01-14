@@ -1,13 +1,15 @@
 # Contributor: kreed <kreed@kreed.org>
 # Contributor: rayman2200
+# Maintainer: Eric Anderson <ejona86@gmail.com>
+
 pkgname=mcrcon
 pkgver=0.0.5
 pkgrel=1
 pkgdesc="Console based remote console (rcon) client for Minecraft servers"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/mcrcon/"
+url="https://sourceforge.net/projects/mcrcon/"
 license=('ZLIB')
-source=(http://sourceforge.net/projects/mcrcon/files/${pkgver}/mcrcon-${pkgver}-src.zip)
+source=(https://sourceforge.net/projects/mcrcon/files/${pkgver}/mcrcon-${pkgver}-src.zip)
 noextract=('mcrcon-0.0.5-src.zip')
 makedepends=('unzip')
 
