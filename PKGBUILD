@@ -32,7 +32,7 @@ package() {
   cd "$srcdir/postsrsd-$pkgver/build"
   make DESTDIR="$pkgdir/" install
 
-  install -Dm644 "$srcdir/postsrsd.conf" "$pkgdir/etc/sysusers.d/postsrsd.conf"
+  install -Dm644 "$srcdir/postsrsd.conf" "$pkgdir/usr/lib/sysusers.d/postsrsd.conf"
 
   #rm -rf $pkgdir/usr/lib
   mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
