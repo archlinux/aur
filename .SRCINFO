@@ -1,6 +1,6 @@
 pkgbase = fff-git
 	pkgdesc = A simple file manager written in bash
-	pkgver = r124.6e2c29b
+	pkgver = r295.fd6d7e1
 	pkgrel = 1
 	url = https://github.com/dylanaraps/fff
 	arch = any

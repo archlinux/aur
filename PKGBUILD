@@ -1,7 +1,7 @@
 # Maintainer: Crestwave <crest.wave@yahoo.com>
 
 pkgname=fff-git
-pkgver=r124.6e2c29b
+pkgver=r295.fd6d7e1
 pkgrel=1
 pkgdesc="A simple file manager written in bash"
 arch=('any')
@@ -22,5 +22,5 @@ package() {
   install -Dm755 fff "$pkgdir/usr/bin/fff"
   install -Dm644 fff.1 "$pkgdir/usr/share/man/man1/fff.1"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.md"
-  install -Dm644 {CONTRIBUTING,README}.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
