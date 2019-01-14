@@ -6,7 +6,7 @@
 set -u
 _pkgname='inetutils'
 pkgname="${_pkgname}-git"
-pkgver=1.9.4.r38.g91960071
+pkgver=1.9.4.r42.ga4a331b7
 pkgrel=1
 _srcdir="${_pkgname}"
 pkgdesc='A collection of common network programs'
@@ -42,7 +42,7 @@ done
 unset _src _archlink
 sha256sums=('SKIP'
             'SKIP'
-            '1eacb0bdb4496f12e7a0593278aa4ae1eadf271a263bf27285acb1c03015c4de'
+            '263489599727020041cdeffe5ec0eae3b17b24e4b6b9f04d8ebda1079b5ff2fb'
             'f1b9b4e57f484070366444a649f1be151d01d5bc965b9b192c242e4b7cc4beeb'
             '428367b148033c7fa865e92bdd73b06cb58e6909488649adebf8d2253a022f1f'
             '6112bcdb595937a8c7940dc158a97fd48b8cce6526a9fb017f347f614b9d6548'
@@ -77,7 +77,7 @@ prepare() {
   sed -e 's:if (pty_read () <= 0):if (pty_read () < 0):g' -i 'telnetd/telnetd.c'
 
   # http://lists.gnu.org/archive/html/bug-inetutils/2017-07/msg00005.html
-  patch -Nbup1 < '../0001-telnetd-Fix-buffer-overflows.patch'
+  patch -Nbup1 -i "${srcdir}/0001-telnetd-Fix-buffer-overflows.patch"
   set +u
 }
 
@@ -139,6 +139,7 @@ package() {
     *.xinetd)           install -Dpm644 "${srcdir}/${_src}" "${pkgdir}/etc/xinetd.d/${_src%.xinetd}";;
     *.pam)              install -Dpm644 "${srcdir}/${_src}" "${pkgdir}/etc/pam.d/${_src%.pam}";;
     *.service|*.socket) install -Dpm644 "${srcdir}/${_src}" -t "${pkgdir}/usr/lib/systemd/system/";;
+    *) echo "Don't know where to write ${_src}"; false;;
     esac
   done
   set +u
