@@ -6,6 +6,7 @@ pkgbase = emacs-ghub
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = texlive-core
 	depends = emacs
 	depends = emacs-dash
 	depends = emacs-graphql

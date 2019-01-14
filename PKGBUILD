@@ -10,7 +10,7 @@ arch=('any')
 url="http://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
 depends=('emacs' 'emacs-dash' 'emacs-graphql' 'emacs-treepy')
-makedepends=('git')
+makedepends=('git' 'texlive-core')
 provides=('emacs-ghub')
 source=("git+https://github.com/${_github_org}/${_github_repo}.git#tag=v${pkgver}")
 md5sums=('SKIP')
