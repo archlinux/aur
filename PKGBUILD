@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/${_github_repo}"
-  make LOAD_PATH="-L /usr/share/emacs/site-lisp -L /usr/share/emacs/site-lisp/dash -L /usr/share/emacs/site-lisp/graphql -L ${srcdir}/magit/lisp" \
+  make LOAD_PATH="-L /usr/share/emacs/site-lisp -L /usr/share/emacs/site-lisp/dash -L /usr/share/emacs/site-lisp/graphql -L /usr/share/emacs/site-lisp/treepy -L ${srcdir}/magit/lisp" \
        lisp docs
 }
 
