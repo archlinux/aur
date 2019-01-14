@@ -2,7 +2,7 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
 pkgname=lzlib
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc="A library providing in-memory LZMA compression and decompression functions"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 options=('!emptydirs')
 source=(http://download.savannah.gnu.org/releases/lzip/$pkgname/$pkgname-$pkgver.tar.gz{,.sig})
 validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742') # Antonio Diaz Diaz
-sha256sums=('1d6ab7800a5b43e56fd20607fd2cfda9e550350dc95f5beb6a4ce14f85b41043'
+sha256sums=('6c5c5f8759d1ab7c4c3c53788ea2d9daad04aeddcf338226893f8ff134914d36'
             'SKIP')
 
 build() {
