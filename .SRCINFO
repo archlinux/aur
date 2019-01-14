@@ -1,0 +1,17 @@
+pkgbase = gflags-static
+	pkgdesc = C++ Library for commandline flag processing
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/schuhschuh/gflags
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = gcc-libs
+	provides = gflags
+	conflicts = gflags
+	options = staticlibs
+	source = gflags-static-2.2.2.tar.gz::https://github.com/schuhschuh/gflags/archive/v2.2.2.tar.gz
+	sha512sums = 98c4703aab24e81fe551f7831ab797fb73d0f7dfc516addb34b9ff6d0914e5fd398207889b1ae555bac039537b1d4677067dae403b64903577078d99c1bdb447
+
+pkgname = gflags-static
+
