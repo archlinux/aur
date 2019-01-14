@@ -30,7 +30,7 @@ pkgbase = firefox-ubuntu-bin
 	conflicts = firefox
 	conflicts = firefox-ubuntu
 	source = http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_64.0+build3-0ubuntu0.18.10.1_amd64.deb
-	sha256sums = d7743cf46a066e7c22da87b468ad81b83d68645830125cdacd6bf551801de09b
+	sha256sums = 14755c8ec83ed6e76d9a40d707f0a60a99cb0730c0982472e71d0fe03a4c64d8
 
 pkgname = firefox-ubuntu-bin
 
