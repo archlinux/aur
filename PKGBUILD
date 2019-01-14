@@ -3,7 +3,7 @@
 # Contributor: Duvan Felipe Suarez <duvanera@gmail.com>
 
 pkgname=oranchelo-icon-theme
-pkgver=0.7.9
+pkgver=0.8.0.1
 pkgrel=1
 pkgdesc='Oranchelo is a flat-design icon theme for XFCE4 based on Super Flat Remix and inspired by "Corny icons" by Patryk Goworowski.'
 arch=(any)
@@ -14,7 +14,7 @@ license=('GPL3')
 groups=('gnome' 'xfce')
 conflicts=('oranchelo-icon-theme')
 provides=('oranchelo-icon-theme')
-source=('git+https://github.com/Madh93/oranchelo-icon-theme.git')
+source=("git+https://github.com/Madh93/oranchelo-icon-theme.git")
 md5sums=('SKIP')
 
 package() {
