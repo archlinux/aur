@@ -5,7 +5,7 @@ pkgbase=mariadb-mainline-noconflict
 _pkgbase=mariadb
 pkgname=('mariadb-mainline-noconflict' 'libmariadbclient-mainline-noconflict' 'mariadb-clients-mainline-noconflict' 'mytop-mainline-noconflict')
 pkgver=10.3.12
-pkgrel=1
+pkgrel=2
 pkgdesk="MariaDB mainline version with libmysqlclient.so.18 (mariadb 10.1 compatible)"
 arch=('x86_64')
 license=('GPL')
@@ -185,7 +185,7 @@ package_mariadb-mainline-noconflict() {
   rm usr/bin/{mariadb_config,mysql_config}
   rm usr/lib/{libmysql*,libmariadb.so*,libmariadbd.so*}
   rm usr/lib/pkgconfig/libmariadb.pc
-  rm usr/lib/mysql/plugin/{auth_gssapi_client.so,dialog.so,mysql_clear_password.so,sha256_password.so}
+  rm usr/lib/mysql/plugin/{auth_gssapi_client.so,dialog.so,mysql_clear_password.so,sha256_password.so,caching_sha2_password.so}
   rm usr/share/man/man1/mysql_config.1
   rm -r usr/include/
   rm -r usr/share/mysql/{aclocal,pkgconfig}
