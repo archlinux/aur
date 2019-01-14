@@ -54,6 +54,7 @@ fi
 if [[ -f static ]]; then
   _static_build=true
   _uber_minimal=true
+  _debug=false
   #_float=true
 fi
 
@@ -90,7 +91,7 @@ _pkgvermajmin="5.12"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
-pkgrel=5
+pkgrel=6
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -170,7 +171,6 @@ if $_static_build; then
 fi
 
 if $_building && $_uber_minimal; then
-  _debug=false
   _minimal=true
   _skip_qtwidgets=true
 fi
