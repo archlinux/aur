@@ -10,7 +10,7 @@ license=(GPL3)
 source=("git+https://github.com/unbrice/$_pkgname.git")
 sha256sums=(SKIP)
 depends=(lib32-glibc)
-makedepends=(gcc-multilib git)
+makedepends=(gcc-multilib git cmake)
 
 cdgit() { cd -- "$_pkgname"; }
 
