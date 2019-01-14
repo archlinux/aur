@@ -7,7 +7,7 @@ pkgbase = emacs-magit-popup
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = emacs>=24.4
+	depends = emacs
 	depends = emacs-dash>=2.13.0
 	depends = emacs-async>=1.9.2
 	provides = emacs-magit-popup

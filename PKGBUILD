@@ -9,7 +9,7 @@ pkgdesc="A generic interface for toggling switches and setting options and then 
 arch=('any')
 url="http://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
-depends=('emacs>=24.4' 'emacs-dash>=2.13.0' 'emacs-async>=1.9.2')
+depends=('emacs' 'emacs-dash>=2.13.0' 'emacs-async>=1.9.2')
 makedepends=('git')
 provides=('emacs-magit-popup')
 conflicts=('emacs-magit<=2.11.0')
