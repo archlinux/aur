@@ -1,9 +1,9 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tss-git
-pkgver=2.0.0.r152.311acb02
+pkgver=2.0.0.r161.17a670dd
 pkgrel=1
-pkgdesc='Implementation of the Trusted Platform Module 2.0 Software Stack (TSS2)'
+pkgdesc='Implementation of the TCG Trusted Platform Module 2.0 Software Stack (TSS2)'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tss'
 license=('BSD')
@@ -29,13 +29,13 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	./configure --prefix=/usr --with-udevrulesprefix=60-
+	(( CHECKFUNC )) && opts=('--enable-unit' '--enable-integration')
+	./configure --prefix=/usr --with-udevrulesprefix=60- "${opts[@]}"
 	make
 }
 
 check() {
 	cd "${pkgname%-git}"
-	./configure --prefix=/usr --with-udevrulesprefix=60- --enable-unit --enable-integration
 	make check
 }
 
@@ -43,5 +43,5 @@ package() {
 	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir" install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	echo 'u tss - "tpm2-tss udev rules"' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	echo 'u tss - "tss user for tpm2"' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }

@@ -1,6 +1,6 @@
 pkgbase = tpm2-tss-git
-	pkgdesc = Implementation of the Trusted Platform Module 2.0 Software Stack (TSS2)
-	pkgver = 2.0.0.r152.311acb02
+	pkgdesc = Implementation of the TCG Trusted Platform Module 2.0 Software Stack (TSS2)
+	pkgver = 2.0.0.r161.17a670dd
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-tss
 	arch = x86_64
