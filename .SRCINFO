@@ -7,7 +7,7 @@ pkgbase = emacs-magit
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = emacs>=24.4
+	depends = emacs
 	depends = git>=1.9.4
 	depends = emacs-dash>=2.14.1
 	depends = emacs-ghub>=2.0.1
