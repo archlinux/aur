@@ -1,0 +1,22 @@
+pkgbase = dnsviz-git
+	pkgdesc = Tool suite for analysis and visualization of DNS and DNSSEC
+	pkgver = v0.6.5.r162.82aa568
+	pkgrel = 1
+	url = https://github.com/dnsviz/dnsviz
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python
+	depends = python-dnspython
+	depends = python-pygraphviz
+	depends = python-m2crypto
+	optdepends = python-libnacl: verify ed25519 signatures
+	optdepends = bind: needed for some options involving zone files
+	provides = dnsviz
+	conflicts = dnsviz
+	options = !emptydirs
+	source = git+https://github.com/dnsviz/dnsviz.git
+	md5sums = SKIP
+
+pkgname = dnsviz-git
+
