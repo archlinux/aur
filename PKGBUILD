@@ -10,7 +10,7 @@ url='https://github.com/tarka/xcp'
 license=('GPL-3.0')
 depends=('gcc-libs')
 makedepends=('git' 'rust' 'cargo')
-source=("$pkgname-$_tagname::https://github.com/tarka/xcp/archive/$pkgver$_tagname.tar.gz")
+source=("$pkgname-$_tagname::https://github.com/tarka/xcp/archive/$_tagname.tar.gz")
 sha512sums=('fa82c42ae7aa4d62bfe1a27c1b23f9b3e81fb87805112c71c06e6aca731852734402c6241b687797b46e2908ec90e8c08ef1fb2092c2424c410931f6a3c1016c')
 
 build() {
