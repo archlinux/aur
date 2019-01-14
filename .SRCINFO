@@ -6,6 +6,7 @@ pkgbase = emacs-magit
 	install = emacs-magit.install
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = emacs>=24.4
 	depends = git>=1.9.4
 	depends = emacs-dash>=2.14.1

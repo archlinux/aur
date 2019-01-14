@@ -9,6 +9,7 @@ _github_org="magit"
 _github_repo="magit"
 url="http://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
+makedepends=('git')
 depends=('emacs>=24.4' 'git>=1.9.4' 'emacs-dash>=2.14.1' 'emacs-ghub>=2.0.1' 'emacs-magit-popup>=2.12.3' 'emacs-with-editor>=2.7.3')
 provides=('emacs-magit')
 conflicts=('emacs-magit-git')
