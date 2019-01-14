@@ -1,14 +1,14 @@
 pkgbase = jqassistant
 	pkgdesc = Scan, explore and validate your Java application in a few minutes
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jqassistant.org/
 	install = jqassistant.install
 	arch = any
 	license = GPL3
 	depends = bash
 	depends = java-environment
-	source = https://jqassistant.org/wp-content/uploads/2018/10/jqassistant-commandline-neo4jv3-1.6.0-distribution.zip
+	source = https://jqassistant.org/wp-content/uploads/2018/12/jqassistant-commandline-neo4jv3-1.6.0-distribution.zip
 	source = launcher.sh
 	md5sums = 64f14337fb7a0c06ae2f05e73295abd8
 	md5sums = fa9d3e0628cda8818ddf572a6bc394b5
