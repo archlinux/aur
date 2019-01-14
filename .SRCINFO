@@ -10,7 +10,7 @@ pkgbase = google-glog-static
 	conflicts = google-glog
 	options = staticlibs
 	source = glog-0.3.5.tar.gz::https://github.com/google/glog/archive/v0.3.5.tar.gz
-	sha512sums = a54a3b8b4b7660d7558ba5168c659bc3c8323c30908a4f6a4bbc6f9cd899350f3243aabc720daebfdeb799b276b51ba1eaa1a0f83149c4e1a038d552ada1ed72
+	sha256sums = 7580e408a2c0b5a89ca214739978ce6ff480b5e7d8d7698a2aa92fadc484d1e0
 
 pkgname = google-glog-static
 

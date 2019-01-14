@@ -13,22 +13,23 @@ options=('staticlibs')
 source=("glog-$pkgver.tar.gz::https://github.com/google/glog/archive/v$pkgver.tar.gz")
 provides=('google-glog')
 conflicts=('google-glog')
-sha512sums=('a54a3b8b4b7660d7558ba5168c659bc3c8323c30908a4f6a4bbc6f9cd899350f3243aabc720daebfdeb799b276b51ba1eaa1a0f83149c4e1a038d552ada1ed72')
+sha256sums=('7580e408a2c0b5a89ca214739978ce6ff480b5e7d8d7698a2aa92fadc484d1e0')
 
 build() {
   cd glog-$pkgver
-
-  ./configure --prefix=/usr
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
-  cd glog-$pkgver
+  cd glog-$pkgver/build
 
   make DESTDIR="$pkgdir" install
 
   # Lazy way of dealing with conflicting man and info pages...
   rm -rf "$pkgdir"/usr/share
 
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 ../COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
