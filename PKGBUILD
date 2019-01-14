@@ -1,7 +1,7 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=cygnus
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="RSS reader"
 arch=('x86_64')
 md5sums=('26cfda2c5b20496debe039d94207404d')
@@ -9,7 +9,7 @@ url="https://github.com/blooser/cygnus"
 license=('MIT')
 depends=('python3')
 makedepends=('python-setuptools')
-applocation=~/Documents/$pkgname
+applocation=~/$pkgname
 shortcut="
 [Desktop Entry]
 Encoding=UTF-8
@@ -37,15 +37,11 @@ build() {
 package() {
 	echo "${runscript}" > $pkgname-$pkgver/run.sh	
 	chmod +x $pkgname-$pkgver/run.sh
-	mv $pkgname-$pkgver $pkgname 
-	cp -r $pkgname ~/Documents
-	rm -rf $pkgname	
+	mv $pkgname-$pkgver ~/$pkgname 
 	echo "${shortcut}" > ~/.local/share/applications/cygnus.desktop
-	if type "cygnus" > /dev/null; then
-		if [ -f ~/.zshrc ]; then
-			echo "alias cygnus=${applocation}/run.sh" >> ~/.zshrc
-		else
-			echo "alias cygnus=${applocation}/run.sh" >> ~/.bashrc	
-		fi	
-	fi
+	if [ -f ~/.zshrc ]; then
+		echo "alias cygnus=${applocation}/run.sh" >> ~/.zshrc
+	else
+		echo "alias cygnus=${applocation}/run.sh" >> ~/.bashrc	
+	fi	
 }
