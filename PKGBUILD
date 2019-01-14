@@ -2,7 +2,7 @@
 # Contributor: Philipp 'TamCore' B. <philipp at tamcore dot eu>
 
 pkgname=stressapptest
-pkgver=1.0.8
+pkgver=1.0.9
 _pkgver=v${pkgver}
 pkgrel=1
 pkgdesc="Stressful Application Test (or stressapptest, its unix name)"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=('gcc-libs' 'libaio')
 makedepends=()
 source=("https://github.com/${pkgname}/${pkgname}/archive/${_pkgver}.tar.gz")
-md5sums=('f1c266b6aa657273a36d9e68c5c5d052')
+md5sums=('d3a526c174c049dd7a1068dc74a62be2')
 
 build() {
   cd "${srcdir}"/"${pkgname}-${pkgver}"
