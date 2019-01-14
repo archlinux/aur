@@ -1,12 +1,12 @@
 pkgbase = macos-sierra-ct-icon-theme
 	pkgdesc = macOs Sierra icon pack by zayronxio
-	pkgver = v0.9.4.8
+	pkgver = v0.9.5
 	pkgrel = 1
 	url = https://github.com/zayronxio/Macos-sierra-CT
 	arch = any
 	license = GPL3
-	source = macos-sierra-ct-icon-theme-v0.9.4.8.zip::https://github.com/zayronxio/Macos-sierra-CT/archive/v0.9.4.8.zip
-	sha512sums = 4ba331a714bf1e8c86679d4576e7387dd44bbb8b3e388b1a7720f9723637d41e649aac97b39bc4f0b1ee27b9cd2bf2f7052eb5271f48732f5339812adadeb58a
+	source = macos-sierra-ct-icon-theme-v0.9.5.zip::https://github.com/zayronxio/Macos-sierra-CT/archive/v0.9.5.zip
+	sha512sums = b416d5fc1244c4d2a33530dc17a1302924aee31224df2d8ba2c09b2e81002a861896f020a6df2a05548af27cf447c639774fdc7785749bfed74846c578567bd2
 
 pkgname = macos-sierra-ct-icon-theme
 
