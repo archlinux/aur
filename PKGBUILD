@@ -37,8 +37,7 @@ provides=('firefox' 'firefox-ubuntu')
 conflicts=('firefox' 'firefox-ubuntu')
 
 source=("http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_$_ubuntuver.deb")
-sha256sums=('d7743cf46a066e7c22da87b468ad81b83d68645830125cdacd6bf551801de09b')
-
+sha256sums=('14755c8ec83ed6e76d9a40d707f0a60a99cb0730c0982472e71d0fe03a4c64d8')
 prepare() {
 	# Don't extract copyright files, which are included in the licenses package
 	tar -xvf data.tar.xz --exclude=usr/share/doc
@@ -51,3 +50,4 @@ package() {
 	cp -r etc "$pkgdir/"
 	cp -r usr "$pkgdir/"
 }
+
