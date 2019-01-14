@@ -15,7 +15,7 @@ _USE_CMAKE=1
 ##### End
 
 pkgname=magma
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems (with CUDA)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ makedepends=('gcc-fortran'
              'cmake')
 options=('staticlibs')
 source=("http://icl.cs.utk.edu/projectsfiles/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4eb839b1295405fd29c8a6f5b4ed578476010bf976af46573f80d1169f1f9a4f')
+sha256sums=('4fd45c7e46bd9d9124253e7838bbfb9e6003c64c2c67ffcff02e6c36d2bcfa33')
 
 build() {
   cd "${srcdir}/magma-${pkgver}"
