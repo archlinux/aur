@@ -1,17 +1,18 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='apache-orc'
-pkgver=1.5.1
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="A columnar storage for Hadoop workloads."
 arch=('x86_64')
 url="https://orc.apache.org"
 license=('Apache')
 depends=()
+options=('staticlibs')
 optdepends=()
-makedepends=('cmake' 'lz4-static' 'protobuf-static' 'snappy-static' 'zlib-static')
+makedepends=('cmake' 'lz4-static' 'protobuf' 'snappy-static' 'zlib-static')
 source=("orc-$pkgver.tar.gz::https://github.com/apache/orc/archive/rel/release-$pkgver.tar.gz")
-sha256sums=('41b4f06ab425c875987b4b6fc9e347b2b434dcc768d0537708a310bb5e6277ce')
+sha256sums=('e0026e6702b126b04724c4ac3a672273d2eeca9769c1f1d5d7306bd6fe072827')
 
 prepare() {
   cd "$srcdir"
