@@ -1,6 +1,6 @@
 # Maintainer: Mark Weiman <mark.weiman@markzz.com>
 pkgname=ovmf-git
-pkgver=r23046.f13f306b3b
+pkgver=r25361.514c55c185
 epoch=1
 pkgrel=1
 arch=('any')
@@ -25,6 +25,8 @@ prepare() {
   # edk2 uses python everywhere, but expects python2
   mkdir bin
   ln -s /usr/bin/python2 bin/python
+  cd edk2
+  git submodule update --init --recursive
 }
 
 build() {
