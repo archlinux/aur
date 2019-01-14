@@ -1,6 +1,6 @@
 pkgbase = sile-git
 	pkgdesc = Modern typesetting system inspired by TeX
-	pkgver = 0.9.5.r1.ga9b651d
+	pkgver = 0.9.5.1.r1.g6533566
 	pkgrel = 1
 	url = http://www.sile-typesetter.org/
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = sile-git
 	depends = ttf-gentium-plus
 	provides = sile
 	conflicts = sile
-	source = git://github.com/alerque/sile.git#branch=master
+	source = git://github.com/alerque/sile.git#branch=testing
 	sha512sums = SKIP
 
 pkgname = sile-git
