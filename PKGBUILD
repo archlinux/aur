@@ -4,9 +4,9 @@
 
 pkgname=firefox-ubuntu-bin
 _pkgname=firefox
-pkgver=63.0
+pkgver=64.0
 pkgrel=1
-_ubuntuver="$pkgver+build2-0ubuntu0.18.04.2_amd64"
+_ubuntuver="$pkgver+build3-0ubuntu0.18.10.1_amd64"
 pkgdesc="Standalone web browser from mozilla.org with Ubuntu patches (binary)"
 arch=("x86_64")
 url="https://www.mozilla.org/firefox/"
