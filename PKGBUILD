@@ -5,7 +5,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=64.0
+pkgver=64.0.2
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -23,7 +23,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'hunspell-en_US: Spell checking, American English')
 provides=("firefox=$pkgver")
 conflicts=("firefox")
-options=(!emptydirs !makeflags !strip)
+options=(!emptydirs !makeflags)
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         $_pkgname.desktop firefox-symbolic.svg
@@ -49,7 +49,7 @@ prepare() {
   mkdir mozbuild
   cd mozilla-unified
 
-  # actual appmenu patch from ubuntu repos
+# actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
 
   echo -n "$_google_api_key" >google-api-key
@@ -114,7 +114,7 @@ build() {
   # LTO needs more open files
   ulimit -n 4096
 
-  ./mach build
+  xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   ./mach buildsymbols
 }
 
