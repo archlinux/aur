@@ -2,14 +2,11 @@
 # Contributor: OctopusET
 pkgname=hunspell-ko
 pkgver=0.7.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Korean dictionary for hunspell"
 arch=('any')
 url='http://code.google.com/p/spellcheck-ko'
-license=('LGPL3')
-license=('MPL')
-license=('GPL')
-license=('CC BY-SA 4.0')
+license=('LGPL3' 'MPL' 'GPL' 'CC BY-SA 4.0')
 depends=('hunspell>=1.3.1')
 makedepends=(
   'python>=3.5'
