@@ -1,12 +1,12 @@
 # Maintainer: Score_Under <seejay.11@gmail.com>
 _pkgname=ksm_preload
 pkgname=lib32-$_pkgname-git
-pkgver=0.10.4.r254cc3b
-pkgrel=2
+pkgver=0.10.9.r459df0e
+pkgrel=1
 pkgdesc='Library which allows legacy applications to use Kernel Same-page Merging'
 url=http://vleu.net/ksm_preload/
 arch=(x86_64)
-license=GPL3
+license=(GPL3)
 source=("git+https://github.com/unbrice/$_pkgname.git")
 sha256sums=(SKIP)
 depends=(lib32-glibc)
@@ -28,8 +28,7 @@ build() {
     export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
     cdgit
-    autoreconf -is
-    ./configure --prefix=/usr --libdir=/usr/lib32
+    cmake .
     make
 }
 
