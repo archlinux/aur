@@ -1,0 +1,20 @@
+pkgbase = vise-git
+	pkgdesc = A keyboard driven web browser with tabs in a tree
+	pkgver = r444.0e34dd4
+	pkgrel = 1
+	url = https://github.com/kovidgoyal/vise
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = rapydscript-ng-git
+	depends = python-apsw
+	depends = qt5-base>=5.7.1
+	depends = qt5-webengine
+	depends = python-pyqt5
+	depends = libsodium
+	depends = python-yaml
+	source = git+https://github.com/kovidgoyal/vise.git
+	md5sums = SKIP
+
+pkgname = vise-git
+
