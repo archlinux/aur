@@ -1,7 +1,7 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=lyra
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A wonderful 3D cryptocurrency analyzer"
 arch=('x86_64')
 md5sums=('6a231b32052b5bbc9cd3d0c71a7b9351')
@@ -9,7 +9,7 @@ url="https://github.com/blooser/lyra"
 license=('MIT')
 depends=('python3')
 makedepends=('python-setuptools')
-applocation=~/Documents/$pkgname
+applocation=~/$pkgname
 shortcut="
 [Desktop Entry]
 Encoding=UTF-8
@@ -37,16 +37,11 @@ build() {
 package() {
 	echo "${runscript}" > $pkgname-$pkgver/run.sh	
 	chmod +x $pkgname-$pkgver/run.sh
-	mv $pkgname-$pkgver $pkgname
-	cp -r $pkgname ~/Documents
-	rm -rf $pkgname		
+	mv $pkgname-$pkgver ~/$pkgname
 	echo "${shortcut}" > ~/.local/share/applications/lyra.desktop
-	if type "lyra" > /dev/null; then	
-		if [ -f ~/.zshrc ]; then
-			echo "alias lyra=${applocation}/run.sh" >> ~/.zshrc
-		else
-			echo "alias lyra=${applocation}/run.sh" >> ~/.bashrc	
-		fi
-	fi	
+	if [ -f ~/.zshrc ]; then
+		echo "alias lyra=${applocation}/run.sh" >> ~/.zshrc
+	else
+		echo "alias lyra=${applocation}/run.sh" >> ~/.bashrc	
+	fi
 }
-
