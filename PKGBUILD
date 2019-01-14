@@ -2,8 +2,8 @@
 
 pkgname=ipe
 _dirver=7.2
-pkgver=7.2.7
-pkgrel=2
+pkgver=7.2.8
+pkgrel=1
 pkgdesc="The extensible drawing editor"
 url="http://tclab.kaist.ac.kr/ipe/"
 depends=('lua' 'qt5-base' 'freetype2' 'zlib' 'poppler' 'python2')
@@ -54,7 +54,7 @@ package() {
 }
 
 # vim: ft=sh syn=sh et ts=2 sw=2
-md5sums=('0898173099e7f623cf6fa130abdb1273'
+md5sums=('b4aa88d2531d5c8911b77156ec0712eb'
          '95158c047f0a9b0916b688af1faed779'
          '694f0d5402655901be385647e5d8d6e3'
          'd4e289bce01302a8b76a0df294c7de40')
