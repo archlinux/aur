@@ -1,7 +1,7 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=mimosa
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Download manager"
 arch=('x86_64')
 md5sums=('620184c969713282aab4097273547c0e')
@@ -9,7 +9,7 @@ url="https://github.com/blooser/mimosa"
 license=('MIT')
 depends=('qt5-base')
 makedepends=('cmake')
-applocation=~/Documents/$pkgname
+applocation=~/$pkgname
 shortcut="
 [Desktop Entry]
 Encoding=UTF-8
@@ -36,8 +36,6 @@ package() {
 	make clean
 	cd ..
 	mv $pkgname-$pkgver $pkgname
-	cp -r $pkgname ~/Documents
-	rm -rf $pkgname		
 	echo "${shortcut}" > ~/.local/share/applications/mimosa.desktop
 	if [ -f ~/.zshrc ]; then
 		echo "alias mimosa=${applocation}/mimosa" >> ~/.zshrc
