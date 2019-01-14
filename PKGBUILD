@@ -5,9 +5,9 @@ pkgver='0.4.2'
 pkgrel=1
 pkgdesc='The /efont/ Unicode Bitmap Fonts'
 arch=(any)
-url='http://openlab.jp/efont/unicode/'
+url='https://web.archive.org/web/20150906103224/http://openlab.ring.gr.jp/efont/unicode/index.html.en'
 license=('BSD')
-source=("http://openlab.jp/efont/dist/unicode-bdf/$pkgname-$pkgver.tar.bz2")
+source=("https://web.archive.org/web/20150906103224/http://openlab.jp/efont/dist/unicode-bdf/$pkgname-$pkgver.tar.bz2")
 md5sums=('0c0acbb40e44d899472001302b1c9e48')
 
 package() {
