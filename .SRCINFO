@@ -1,7 +1,7 @@
 pkgbase = emacs-magit
 	pkgdesc = It's Magit! A Emacs mode for Git.
 	pkgver = 2.13.1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://github.com/magit/magit
 	install = emacs-magit.install
 	arch = any
