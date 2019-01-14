@@ -1,7 +1,7 @@
 # Maintainer: Peter Mayr <petermayr@ymail.com>
 
 pkgname=lunzip
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc='For extracting and viewing files in .lzip archives'
 url='http://www.nongnu.org/lzip/lunzip.html'
@@ -21,4 +21,3 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR=${pkgdir} install
 }
-
