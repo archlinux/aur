@@ -1,7 +1,7 @@
 pkgbase = docker-bin
 	pkgdesc = Pack, ship and run any application as a lightweight container, using official binaries
 	pkgver = 18.09.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.docker.com/
 	arch = x86_64
 	license = Apache

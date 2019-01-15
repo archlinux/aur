@@ -3,7 +3,7 @@
 
 pkgname=docker-bin
 pkgver=18.09.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
