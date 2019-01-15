@@ -1,7 +1,7 @@
 # Maintainer:  TEL.RED LLC <linux_at_tel_d0t_red>
 
 pkgname=sky
-pkgver=2.1.7332.1
+pkgver=2.1.7347.1
 pkgrel=1
 pkgdesc="Lync and Skype for Business client on Linux"
 
@@ -38,7 +38,7 @@ makedepends=(
 )
 
 source_x86_64=("https://tel.red/repos/archlinux/sky-archlinux-${pkgver%.*}-${pkgver##*.}-${CARCH}.pkg.tar.xz")
-sha256sums_x86_64=('21f940c4cca340f79f5f43fa2d025ae5302b5c48292460d51147df0257e65699')
+sha256sums_x86_64=('679b66ecaf602ddb87f0cce14fde775bf8d3826ca2e04f0219a6d7aa95a32f5f')
 
 package() {
 	local _sky_libdir="/usr/lib/sky/lib64"
