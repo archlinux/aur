@@ -1,0 +1,33 @@
+diff -ura remake.orig/CMakeLists.txt remake.new/CMakeLists.txt
+--- remake.orig/CMakeLists.txt	2019-01-15 05:40:55.323781864 -0500
++++ remake.new/CMakeLists.txt	2019-01-15 05:50:53.809416181 -0500
+@@ -30,29 +30,3 @@
+   ps
+   html
+ )
+-
+-remake_pack_deb(
+-  ARCH all
+-  DEPENDS "cmake (>= 2.6.2)" groff
+-  RECOMMENDS pkg-config
+-)
+-remake_pack_deb(
+-  ARCH all
+-  COMPONENT doc
+-  DESCRIPTION "documentation"
+-)
+-
+-remake_distribute_deb(
+-  DISTRIBUTION precise
+-  SECTION devel
+-  UPLOAD ppa:kralf/asl
+-  DEPENDS groff
+-  PASS CMAKE_BUILD_TYPE REMAKE_GIT_REVISION
+-)
+-remake_distribute_deb(
+-  DISTRIBUTION trusty
+-  SECTION devel
+-  UPLOAD ppa:kralf/asl
+-  DEPENDS groff
+-  PASS CMAKE_BUILD_TYPE REMAKE_GIT_REVISION
+-)
