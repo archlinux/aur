@@ -1,14 +1,14 @@
 # Maintainer: Lenovsky <lenovsky@pm.me>
 
 pkgname=telegram-desktop-git
-pkgver=1.5.6.r3.g8306e58b7
+pkgver=1.5.7.r0.g51b5b14de
 pkgrel=1
 pkgdesc="Official desktop version of Telegram messaging app (dev branch)"
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('desktop-file-utils' 'ffmpeg' 'minizip' 'openal' 'qt5-base')
-makedepends=('cmake' 'git' 'gyp' 'libappindicator-gtk3' 'python' 'range-v3' 'qt5-imageformats')
+depends=('desktop-file-utils' 'ffmpeg' 'minizip' 'openal' 'qt5-imageformats')
+makedepends=('cmake' 'git' 'gyp' 'libappindicator-gtk3' 'python' 'range-v3')
 optdepends=('libnotify: desktop notifications'
             'ttf-opensans: default Open Sans font family')
 provides=("${pkgname%-git}")
