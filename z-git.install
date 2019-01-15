@@ -1,4 +1,4 @@
 post_install() {
-echo "Place The follwing: . /path/to/z.sh"
-echo "In your ~/.bashrc or ~/.zshrc file accordingly."
+  echo 'To use, add the following command to ~/.bashrc or /etc/bash.bashrc or ~/.zshrc:'
+  echo '[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh'
 }

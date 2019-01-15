@@ -9,7 +9,7 @@ pkgver=1.11.7.g9d5a3fe
 pkgrel=1
 pkgdesc="z keeps track of where you've been and provides a convenient \
 way to jump to directory that you actually use (git version)"
-url="http://github.com/rupa/z"
+url="https://github.com/rupa/z"
 arch=('any')
 license=('WTFPL')
 depends=('sh')
@@ -29,6 +29,8 @@ pkgver() {
 package() {
   cd $_pkgname
 
-  install -vDm755 z.sh   "$pkgdir/usr/lib/z.sh"
-  install -vDm644 z.1    "$pkgdir/usr/share/man/man1/z.1"
+  # update path in manpage
+  sed -i z.1 -e "s:/path/to/z.sh:/usr/share/z/z.sh:g"
+  install -Dm 644 z.1    "$pkgdir/usr/share/man/man1/z.1"
+  install -Dm 644 z.sh   "$pkgdir/usr/share/z/z.sh"
 }
