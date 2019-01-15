@@ -4,7 +4,7 @@
 
 _target=aarch64-linux-gnu
 pkgname=$_target-gcc-openmp
-pkgver=8.2.1
+pkgver=8.2.0
 _islver=0.18
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target with OpenMP'
