@@ -1,11 +1,12 @@
 pkgbase = xoreos-tools
 	pkgdesc = Tools to help with xoreos development
 	pkgver = 0.0.5.r0.gaed64a2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xoreos.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = zlib
 	depends = libxml2
 	depends = boost
