@@ -1,6 +1,6 @@
 pkgbase = webkit2gtk-unstable
 	pkgdesc = GTK+ Web content engine library
-	pkgver = 2.23.2
+	pkgver = 2.23.3
 	pkgrel = 1
 	url = https://webkitgtk.org/
 	arch = i686
@@ -10,10 +10,8 @@ pkgbase = webkit2gtk-unstable
 	makedepends = gperf
 	makedepends = gobject-introspection
 	makedepends = ruby
-	makedepends = gtk-doc
 	makedepends = cmake
 	makedepends = python
-	makedepends = python2
 	makedepends = ninja
 	depends = libxt
 	depends = libxslt
@@ -34,8 +32,8 @@ pkgbase = webkit2gtk-unstable
 	provides = webkit2gtk
 	conflicts = webkit2gtk
 	options = !emptydirs
-	source = http://webkitgtk.org/releases/webkitgtk-2.23.2.tar.xz
-	sha1sums = fc90f496d96e6386070e2c785b06f5fb8682d7a2
+	source = http://webkitgtk.org/releases/webkitgtk-2.23.3.tar.xz
+	sha1sums = 8da9ee2d87a1dd6c7f9fbb63f37adec610e66edf
 
 pkgname = webkit2gtk-unstable
 
