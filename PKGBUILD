@@ -3,7 +3,7 @@
 
 pkgname=agetpkg
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc='Arch Linux Archive Get Package'
 arch=('any')
 url='https://github.com/seblu/agetpkg'
