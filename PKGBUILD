@@ -1,9 +1,9 @@
-# Maintainer: twa022 <twa022 at gmail dot com>
+# Maintainer: AzazKamaz <san.crot@yandex.ru>
 
 _pkgname=android-studio
 pkgname=${_pkgname}-launcher
 epoch=1
-pkgver=1.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Wrap android-sdk directory in UnionFS to be \"writeable\" for Android Studio"
 arch=('any')
