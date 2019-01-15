@@ -2,28 +2,28 @@
 
 pkgname="emojicode"
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
-license=("custom:ArtisticLicense2")
+license=("custom: Artistic License 2")
 depends=(
     "ncurses"
     "zlib"
 )
-optdepends=(
-    "yarn: for package support and allegro"
-    "allegro: for graphics support"
-)
 makedepends=(
     "llvm6"
-    "llvm-libs"
+    "llvm6-libs"
     "cmake>=3.5.1"
     "ninja"
     "gcc>=7.2"
     "python>=3.5.2"
 )
 checkdepends=("python>=3.5.2")
+optdepends=(
+    "yarn: for package support and allegro"
+    "allegro: for graphics support"
+)
 source=("${pkgname}::git+https://github.com/emojicode/emojicode#tag=v${pkgver}")
 md5sums=("SKIP")
 
@@ -38,7 +38,7 @@ build() {
 }
 
 check() {
-    read -n 1 -t 5 -p "Do you want to run checks? (answer in 5 seconds) [y/N] " runchecks
+    read -n 1 -p "Do you want to run checks? [y/N] " runchecks
 
     echo
 
