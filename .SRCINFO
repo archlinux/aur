@@ -1,7 +1,7 @@
 pkgbase = python-designateclient
 	pkgdesc = Python client library for Designate
-	pkgver = 2.10.0
-	pkgrel = 1
+	pkgver = 2.11.0
+	pkgrel = 2
 	url = https://docs.openstack.org/developer/python-designateclient
 	arch = any
 	license = Apache
@@ -36,8 +36,8 @@ pkgbase = python-designateclient
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/python-designateclient#tag=2.10.0
-	sha512sums = SKIP
+	source = https://github.com/openstack/python-designateclient/archive/2.11.0.tar.gz
+	sha512sums = 8ddb35695fd4997819ee6c1afbf1099d54591563871a2f9f831c34e357b4607cd3045404616f39b8710a73e2436ffac932a7e04f669054f55d266c7381770a13
 
 pkgname = python-designateclient
 	depends = python-cliff
