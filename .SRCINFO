@@ -1,6 +1,6 @@
 pkgbase = fotoxx-git
 	pkgdesc = A program for improving image files made with a digital camera, test-version
-	pkgver = 19.0.1.g5f30264
+	pkgver = 20.0.test.2019.01.13
 	pkgrel = 1
 	url = http://www.kornelix.net/fotoxx/fotoxx.html
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = fotoxx-git
 	provides = fotoxx
 	conflicts = fotoxx
 	options = !makeflags
-	source = git+https://gitlab.com/fotoxx/fotoxx.git
+	source = git+https://gitlab.com/fotoxx/fotoxx.git#branch=fotoxx-200
 	sha256sums = SKIP
 
 pkgname = fotoxx-git
