@@ -1,11 +1,11 @@
 pkgname=serviio
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free DLNA media server"
 arch=('any')
 url="http://www.serviio.org/"
 license=('custom')
-depends=('java-runtime-headless=8' 'ffmpeg')
+depends=('java-runtime-headless>=8' 'ffmpeg')
 source=(http://download.serviio.org/releases/serviio-${pkgver}-linux.tar.gz
         $pkgname.sh
         $pkgname.service
