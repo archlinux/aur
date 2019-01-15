@@ -1,7 +1,7 @@
 pkgbase = discord
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
-	pkgver = 0.0.5
-	pkgrel = 5
+	pkgver = 0.0.6
+	pkgrel = 1
 	url = https://discordapp.com/
 	install = Discord.install
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = discord
 	optdepends = ttf-symbola: Font for emoji support.
 	optdepends = noto-fonts-cjk: Font for special characters such as /shrug face.
 	source = LICENSE
-	source = https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.tar.gz
+	source = https://dl.discordapp.net/apps/linux/0.0.6/discord-0.0.6.tar.gz
 	md5sums = 26b3229c74488c64d94798e48bc49fcd
-	md5sums = 18a8e7f86d26a1472dbfff060e1671e4
+	md5sums = 4bfd875266791bb99fc818221e140ca1
 
 pkgname = discord
 
