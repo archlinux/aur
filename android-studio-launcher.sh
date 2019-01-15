@@ -16,6 +16,6 @@ else
 	echo "==> Please be sure to have android-studio installed in your path"
 fi
 
-android-studio "$@"
+ANDROID_HOME=$(realpath $MOUNT_DIR) android-studio "$@"
 
 fusermount -u ~/.AndroidStudio_sdk
