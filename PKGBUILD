@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-neutronclient' 'python2-neutronclient')
-pkgver='6.9.0'
-pkgrel='2'
+pkgver='6.11.0'
+pkgrel='1'
 pkgdesc='Python client library for Neutron'
 arch=('any')
 url="https://docs.openstack.org/developer/${pkgname}/"
@@ -30,33 +30,34 @@ checkdepends=('python-mock' 'python2-mock'
               'python-requests-mock' 'python2-requests-mock'
               'python-testtools' 'python2-testtools'
               'python-tempest')
-source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}"
+source=("https://github.com/openstack/${pkgname}/archive/${pkgver}.tar.gz"
         'skip-failing-py37-tests.patch')
-sha512sums=('SKIP'
+sha512sums=('961422f7c5ff762a110dec9aef7e24f46a5aea9918c00b557fd9061de8e6008d1af4e800fcb13415013f52eaeca482b8028d5391abfc195bd0e55940a3b3cbcc'
             '20e04c08e3eb37dc9f841ddeb276a26a4283de94d9aa803e6017f8f03b5771234e107743d8e839e4c51e392fccf6c812ebd695f5eabb849555f379c82a6f7dac')
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   sed -i '/simplejson/d' requirements.txt
   patch -p1 -i "${srcdir}/skip-failing-py37-tests.patch"
-  cp -a "${srcdir}/${pkgname}"{,-py2}
+  cp -a "${srcdir}/${pkgname}-${pkgver}"{,-py2}
+  export PBR_VERSION=$pkgver
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}/${pkgname}-py2"
+  cd "${srcdir}/${pkgname}-${pkgver}-py2"
   python2 setup.py build
 }
 
-check() {
-  # Disable for now due to Python 3 test issues
-  cd "${srcdir}/${pkgname}"
-  python setup.py testr
 
-  cd "${srcdir}/${pkgname}-py2"
-  PYTHON=python2 python2 setup.py testr
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  stestr run
+
+  cd "${srcdir}/${pkgname}-${pkgver}-py2"
+  PYTHON=python2 stestr2 run
 }
 
 package_python-neutronclient() {
@@ -66,7 +67,7 @@ package_python-neutronclient() {
            'python-os-client-config' 'python-keystoneauth1'
            'python-keystoneclient' 'python-requests'
            'python-six' 'python-babel')
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
   install -D --mode 644 "tools/neutron.bash_completion" "${pkgdir}/usr/share/bash-completion/completions/neutron"
 }
@@ -78,7 +79,7 @@ package_python2-neutronclient() {
            'python2-os-client-config' 'python2-keystoneauth1'
            'python2-keystoneclient' 'python2-requests'
            'python2-six' 'python2-babel')
-  cd "${srcdir}/python-neutronclient-py2"
+  cd "${srcdir}/python-neutronclient-${pkgver}-py2"
   python2 setup.py install --root="${pkgdir}" --optimize=1
   mv "${pkgdir}"/usr/bin/neutron{,2}
   install -D --mode 644 "tools/neutron.bash_completion" "${pkgdir}/usr/share/bash-completion/completions/neutron2"
