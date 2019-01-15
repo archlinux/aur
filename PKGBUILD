@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-octaviaclient' 'python2-octaviaclient')
-pkgver='1.6.0'
-pkgrel='2'
+pkgver='1.7.0'
+pkgrel='1'
 pkgdesc='OpenStack Client plugin for Octavia, an OpenStack Load Balancing project'
 arch=('any')
 url="https://docs.openstack.org/developer/${pkgname}/"
@@ -41,26 +41,27 @@ checkdepends=('python-requests-mock' 'python2-requests-mock'
               'python-mock' 'python2-mock'
               'python-oslotest' 'python2-oslotest'
               'python-stestr' 'python2-stestr')
-source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
-sha512sums=('SKIP')
+source=("https://github.com/openstack/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('221b12fcbbdc247e932ab52545dad9acb2e21ffdfc01eb2943a530652587c274f4a599a68b50e4f030745bd6aa79c3f2388a8dbabef54618aa639fb4bf18c77a')
 
 prepare() {
-  cp -a "${srcdir}/${pkgname}"{,-py2}
+  cp -a "${srcdir}/${pkgname}-${pkgver}"{,-py2}
+  export PBR_VERSION=$pkgver
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}/${pkgname}-py2"
+  cd "${srcdir}/${pkgname}-${pkgver}-py2"
   python2 setup.py build
 }
 
 check() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   stestr run
 
-  cd "${srcdir}/${pkgname}-py2"
+  cd "${srcdir}/${pkgname}-${pkgver}-py2"
   PYTHON=python2 stestr2 run
 }
 
@@ -74,7 +75,7 @@ package_python-octaviaclient() {
            'python-pyparsing' 'python-pytz' 'python-yaml' 'python-requests'
            'python-requestsexceptions' 'python-simplejson' 'python-six'
            'python-stevedore' 'python-wrapt')
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
@@ -89,7 +90,7 @@ package_python2-octaviaclient() {
            'python2-pytz' 'python2-yaml' 'python2-requests'
            'python2-requestsexceptions' 'python2-simplejson' 'python2-six'
            'python2-stevedore' 'python2-unicodecsv' 'python2-wrapt')
-  cd "${srcdir}/python-octaviaclient-py2"
+  cd "${srcdir}/python-octaviaclient-${pkgver}-py2"
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
