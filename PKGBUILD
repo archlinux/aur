@@ -2,7 +2,7 @@
 
 pkgname="emojicode"
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
@@ -38,7 +38,9 @@ build() {
 }
 
 check() {
-    read -p "Do you want to run checks? [y/N] " runchecks
+    read -n 1 -t 5 -p "Do you want to run checks? (answer in 5 seconds) [y/N] " runchecks
+
+    echo
 
     if [[ "$runchecks" == y* ]] || [[ "$runchecks" == Y* ]]; then
         cd "${srcdir}/${pkgname}/build"
