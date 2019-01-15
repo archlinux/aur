@@ -1,7 +1,7 @@
 pkgbase = cmake-remake-git
 	pkgdesc = A set of CMake macros for restructuring GNU Automake/Autoconf projects.
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kralf/remake
 	arch = any
 	license = LGPL
