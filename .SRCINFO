@@ -1,0 +1,13 @@
+pkgbase = newadwaita-gtk-theme
+	pkgdesc = New Adwaita GTK theme
+	pkgver = 20190112
+	pkgrel = 1
+	url = https://download.gnome.org/misc/testing/Adwaita/
+	arch = any
+	license = GPL
+	depends = gtk3
+	source = https://download.gnome.org/misc/testing/Adwaita/NewAdwaita-1.tar.xz
+	md5sums = a79a8e2d3f87246584c786bc30c1fd25
+
+pkgname = newadwaita-gtk-theme
+
