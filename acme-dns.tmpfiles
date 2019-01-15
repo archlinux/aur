@@ -1,4 +1,4 @@
-d /var/lib/telegraf   0755 telegraf telegraf
-d /etc/telegraf       0755 telegraf telegraf
-x /var/lib/telegraf/*
-x /etc/telegraf/*
+d /var/lib/acme-dns   0755 acme-dns acme-dns
+d /etc/acme-dns       0755 acme-dns acme-dns
+x /var/lib/acme-dns/*
+x /etc/acme-dns/*
