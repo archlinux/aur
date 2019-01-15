@@ -2,7 +2,7 @@
 
 pkgname=xdg-desktop-portal-kde-git
 _pkgname=xdg-desktop-portal-kde
-pkgver=20181223.9f0c704
+pkgver=20190109.011ae60
 pkgrel=1
 pkgdesc='A backend implementation for xdg-desktop-portal that is using Qt/KDE.'
 url='https://github.com/KDE/xdg-desktop-portal-kde'
@@ -13,7 +13,7 @@ depends=('xdg-desktop-portal')
 source=('git://github.com/KDE/xdg-desktop-portal-kde.git')
 sha1sums=('SKIP')
 conflicts=('xdg-desktop-portal-kde')
-provides=('xdg-desktop-portal-kde')
+provides=('xdg-desktop-portal-impl' 'xdg-desktop-portal-kde')
 install=install
 
 pkgver() {
