@@ -2,8 +2,8 @@
 # Sat Dec 31 17:47:51 UTC 2016
 pkgbase = android-studio-launcher
 	pkgdesc = Wrap android-sdk directory in UnionFS to be "writeable" for Android Studio
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgver = 1.0.2
+	pkgrel = 1
 	epoch = 1
 	install = android-studio-launcher.install
 	arch = any
