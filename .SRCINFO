@@ -1,6 +1,6 @@
 pkgbase = ttk-themes
 	pkgdesc = A group of themes for the ttk extenstions for Tkinter gathered together by RedFantom and created by various authors.
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/RedFantom/ttkthemes
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ttk-themes
 	depends = tcl
 	depends = tk
 	optdepends = ttk-theme-chooser
-	source = https://github.com/RedFantom/ttkthemes/archive/2.2.0.tar.gz
-	md5sums = 9cbf8afe3dce3d83f5ee32022856d6aa
+	source = https://github.com/RedFantom/ttkthemes/archive/2.3.0.tar.gz
+	md5sums = 0b7b0c06325258bef7abff352db40959
 
 pkgname = ttk-themes
 
