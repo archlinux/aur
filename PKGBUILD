@@ -8,7 +8,7 @@ pkgdesc='Library and utilities for interfacing with the Seek Thermal Camera'
 url='https://github.com/ethz-asl/libseekthermal'
 arch=('any')
 license=('LGPL')
-makedepends=('git')
+makedepends=('git' 'cmake-remake')
 source=("${_pkgname}::git+https://github.com/ethz-asl/${_pkgname}.git" ${_pkgname}.patch)
 md5sums=('SKIP'
          '756a2b25aef0456d0f585b21c18a5090')
