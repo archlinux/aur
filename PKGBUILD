@@ -4,7 +4,7 @@
 
 pkgname=dokku
 pkgver=0.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
 url="https://github.com/dokku/dokku"
@@ -26,7 +26,7 @@ source=(
   "${pkgname}.install"
 )
 sha256sums=('39c4ba9c8a84f60f21bbf4cadd80a9af76e348ee01b0a0843ef614a1253e9674'
-            '65175269313c2afcabec038d3994d940b7e60db91be270da11bfefc3febb9452')
+            '391a0a4ee19fabff11e6ea73425c6ebfe8a9a1f240d228891b97d4b3207a6851')
 install="${pkgname}.install"
 
 package() {
