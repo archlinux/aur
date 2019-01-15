@@ -1,7 +1,7 @@
 pkgbase = dokku
 	pkgdesc = Docker powered mini-Heroku in around 100 lines of Bash.
 	pkgver = 0.14.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dokku/dokku
 	install = dokku.install
 	arch = any

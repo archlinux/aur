@@ -4,7 +4,7 @@
 
 pkgname=dokku
 pkgver=0.14.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
 url="https://github.com/dokku/dokku"
@@ -41,6 +41,8 @@ prepare() {
 }
 
 package() {
+  export GOPATH="${srcdir}/gopath"
+
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Install executable
