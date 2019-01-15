@@ -1,7 +1,7 @@
 pkgbase = python-ceilometerclient
 	pkgdesc = Python client library for Ceilometer
 	pkgver = 2.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://docs.openstack.org/developer/python-ceilometerclient/
 	arch = any
 	license = Apache
@@ -32,11 +32,10 @@ pkgbase = python-ceilometerclient
 	checkdepends = python-tempest
 	checkdepends = python-testrepository
 	checkdepends = python2-testrepository
-	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/python-ceilometerclient#tag=2.9.0
-	md5sums = SKIP
+	source = https://github.com/openstack/python-ceilometerclient/archive/2.9.0.tar.gz
+	sha512sums = 9955f683a07a2a5d7a65abe0a5100a2773f7938b69613a7ce24edcf7f42cd22d5e8a232ea5fe720715d8a344d16abf07c5288a9820f208c4815956cffd4f2702
 
 pkgname = python-ceilometerclient
 	depends = python-pbr

@@ -3,13 +3,12 @@
 pkgname=('python-ceilometerclient'
          'python2-ceilometerclient')
 pkgver='2.9.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Python client library for Ceilometer'
 arch=('any')
 url="http://docs.openstack.org/developer/${pkgname}/"
 license=('Apache')
-makedepends=('git'
-             'python-setuptools'
+makedepends=('python-setuptools'
              'python2-setuptools')
 checkdepends=('python-pbr' 'python2-pbr'
               'python-iso8601' 'python-iso8601'
@@ -25,26 +24,27 @@ checkdepends=('python-pbr' 'python2-pbr'
               'python-subunit' 'python2-subunit'
               'python-tempest'
               'python-testrepository' 'python2-testrepository')
-source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
-md5sums=('SKIP')
+source=("https://github.com/openstack/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('9955f683a07a2a5d7a65abe0a5100a2773f7938b69613a7ce24edcf7f42cd22d5e8a232ea5fe720715d8a344d16abf07c5288a9820f208c4815956cffd4f2702')
 
 prepare() {
-  cp -a "${srcdir}/${pkgname}"{,-py2}
+  cp -a "${srcdir}/${pkgname}-${pkgver}"{,-py2}
+  export PBR_VERSION=$pkgver
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}/${pkgname}-py2"
+  cd "${srcdir}/${pkgname}-${pkgver}-py2"
   python2 setup.py build
 }
 
 check() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py testr
 
-  cd "${srcdir}/${pkgname}-py2"
+  cd "${srcdir}/${pkgname}-${pkgver}-py2"
   PYTHON=python2 python2 setup.py testr
 }
 
@@ -59,7 +59,7 @@ package_python-ceilometerclient() {
            'python-requests'
            'python-six'
            'python-stevedore')
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
@@ -74,7 +74,7 @@ package_python2-ceilometerclient() {
            'python2-requests'
            'python2-six'
            'python2-stevedore')
-  cd "${srcdir}/python-ceilometerclient-py2"
+  cd "${srcdir}/python-ceilometerclient-${pkgver}-py2"
   python2 setup.py install --root="${pkgdir}" --optimize=1
   mv "${pkgdir}"/usr/bin/ceilometer{,2}
 }
