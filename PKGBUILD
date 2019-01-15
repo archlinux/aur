@@ -2,13 +2,13 @@
 
 pkgname=phaethon
 pkgver=0.0.5.r0.g9d84683
-pkgrel=1
+pkgrel=2
 pkgdesc="A resource explorer for BioWare's Aurora engine games"
 arch=('i686' 'x86_64')
 url="https://xoreos.org/"
 license=('GPL3')
 depends=('zlib' 'xz' 'boost' 'boost-libs' 'openal' 'libmad' 'libogg' 'libvorbis' 'faad2' 'xvidcore' 'qt5-base')
-makedepends=()
+makedepends=('git')
 source=('git://github.com/xoreos/phaethon.git#tag=v0.0.5')
 md5sums=('SKIP')
 
