@@ -1,5 +1,5 @@
 pkgbase = swaylock-blur-git
-	pkgdesc = Tiny script to run swaylock and set the image to a blurred screenshot of the desktop
+	pkgdesc = A script that runs swaylock and sets the image to a blurred screenshot of the desktop
 	pkgver = r3.cb1df3d
 	pkgrel = 1
 	url = https://github.com/cjbassi/swaylock-blur
