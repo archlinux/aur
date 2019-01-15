@@ -1,7 +1,7 @@
 pkgbase = social-engineer-toolkit
 	pkgdesc = The Social-Engineer Toolkit (SET)
 	pkgver = 7.7.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trustedsec/social-engineer-toolkit
 	arch = any
 	license = custom
