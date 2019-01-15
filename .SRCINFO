@@ -1,6 +1,6 @@
 pkgbase = fluid-git
 	pkgdesc = Components for Qt Quick applications with Material Design
-	pkgver = v0.11.0.r271.g1ff823df
+	pkgver = v0.11.0.r271.g1ff823d
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
