@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=grin-git
-pkgver=r1382.ecb102e4
+pkgver=r1797.8a76b374
 pkgrel=1
 pkgdesc='Minimal implementation of the MimbleWimble protocol'
 arch=('i686' 'x86_64')
@@ -9,6 +9,8 @@ url='https://github.com/mimblewimble/grin'
 license=('Apache')
 depends=('ncurses')
 makedepends=('clang' 'git' 'rust')
+conflicts=('grin')
+provides=('grin')
 source=('git+https://github.com/mimblewimble/grin.git')
 sha256sums=('SKIP')
 

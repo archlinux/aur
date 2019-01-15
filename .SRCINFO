@@ -1,6 +1,6 @@
 pkgbase = grin-git
 	pkgdesc = Minimal implementation of the MimbleWimble protocol
-	pkgver = r1382.ecb102e4
+	pkgver = r1797.8a76b374
 	pkgrel = 1
 	url = https://github.com/mimblewimble/grin
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = grin-git
 	makedepends = git
 	makedepends = rust
 	depends = ncurses
+	provides = grin
+	conflicts = grin
 	source = git+https://github.com/mimblewimble/grin.git
 	sha256sums = SKIP
 
