@@ -10,7 +10,7 @@ _scalaver=2.12
 _appver=2.1.0
 pkgver=${_scalaver}_${_appver}
 _pkgver=${pkgver/_/-}
-pkgrel=0
+pkgrel=1
 pkgdesc='A high-throughput distributed messaging system'
 arch=('any')
 url='https://kafka.apache.org/'
@@ -41,7 +41,7 @@ source=(${_closest}/${_app_path}
 
 sha256sums=('a70b44a682f5082f5c69182d4596e7ded2df38629f09b50a629070ddb1ef4f86'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
-            'e1a5ad12c4f0873740f4c34817bd6733a9b1541c68f2bb3aab3ac1be591f1fde'
+	    '7bce01a573dd7d78d8a5a0c3ef5a4381f9f556e9a6e44c3bb22d68146255aed5'
             'dc1f3f94662339bcfb5cd4d058c06431f0e3d37e59f8c66a870e8fb02d9b5079'
             'a2258d4a06c0fcf7f7d5367c616b0a220bbd3d35256dfb3d5f790e61ac9a98f5')
 

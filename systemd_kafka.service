@@ -10,17 +10,13 @@ SyslogIdentifier=kafka
 ExecStart=/usr/bin/java \
   -Xmx1G -Xms1G -server \
   -XX:+UseCompressedOops \
-  -XX:+UseParNewGC \
-  -XX:+UseConcMarkSweepGC \
+  -XX:+UseG1GC \
   -XX:+CMSClassUnloadingEnabled \
   -XX:+CMSScavengeBeforeRemark \
   -XX:+DisableExplicitGC \
   -Djava.awt.headless=true \
-  -Xloggc:/var/log/kafka/kafkaServer-gc.log \
+  -Xlog:gc:/var/log/kafka/kafkaServer-gc.log \
   -verbose:gc \
-  -XX:+PrintGCDetails \
-  -XX:+PrintGCDateStamps \
-  -XX:+PrintGCTimeStamps \
   -Dcom.sun.management.jmxremote \
   -Dcom.sun.management.jmxremote.authenticate=false \
   -Dcom.sun.management.jmxremote.ssl=false \
