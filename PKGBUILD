@@ -12,7 +12,7 @@ depends=('android-studio' 'unionfs-fuse')
 optdepends=('android-sdk: Use AUR android-sdk packages with Android Studio.')
 source=("${pkgname}".sh "${pkgname}".desktop)
 install="${pkgname}.install"
-sha256sums=('a1dc718fc70673af16a721aa0f8d6980798f7b4575db683e78621bfad408733c'
+sha256sums=('fa45d3dbb26a58ba8ef85942b7cfc35a0bcc6580460de4615c73a5e65fdd06f6'
             '9df9c25e1048b80aba69047fd60b6ca32e223b2fb070b31240581a3b2f0101bc')
 
 package() {
