@@ -3,7 +3,7 @@
 
 pkgname=networkmanager-openvpn
 pkgver=1.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
@@ -34,7 +34,7 @@ build() {
 
 package() {
   cd NetworkManager-openvpn
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install dbusservicedir=/usr/share/dbus-1/system.d
   echo 'u nm-openvpn - "NetworkManager OpenVPN"' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
