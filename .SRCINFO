@@ -1,20 +1,20 @@
 pkgbase = gambit
-	pkgdesc = Tools for doing computation in game theory - git version
+	pkgdesc = Tools for doing computation in game theory
 	pkgver = 15.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.gambit-project.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = gcc6
 	makedepends = cython2
 	depends = wxgtk
+	depends = python2
 	options = !makeflags
 	source = https://sourceforge.net/projects/gambit/files/gambit15/15.1.1/gambit-15.1.1.tar.gz
-	source = ludecomp.diff
-	md5sums = db47a02f66644806dbd43f77dc41ebeb
-	md5sums = 4086c9c74892440e00c9be7f8ace4bce
+	source = shared_ptr.diff
+	sha256sums = 7ede51739dc868242886815bb875307f5e11bb3789f22c546d3c83194fe75a1c
+	sha256sums = f0e2c746379c18b7643ca60565e355a8d2a95efb8823d2f4a63c3ac1f3bde076
 
 pkgname = gambit
 

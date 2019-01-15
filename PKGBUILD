@@ -2,17 +2,22 @@
 
 pkgname=gambit
 pkgver=15.1.1
-pkgrel=4
-pkgdesc="Tools for doing computation in game theory - git version"
+pkgrel=5
+pkgdesc="Tools for doing computation in game theory"
 arch=('i686' 'x86_64')
 url="http://www.gambit-project.org"
 license=('GPL')
-depends=('wxgtk')
-makedepends=('git' 'gcc6' 'cython2')
-source=("https://sourceforge.net/projects/$pkgname/files/gambit15/$pkgver/$pkgname-$pkgver.tar.gz" ludecomp.diff)
-md5sums=('db47a02f66644806dbd43f77dc41ebeb'
-         '4086c9c74892440e00c9be7f8ace4bce')
+depends=('wxgtk' 'python2')
+makedepends=('git' 'cython2')
+source=("https://sourceforge.net/projects/$pkgname/files/gambit15/$pkgver/$pkgname-$pkgver.tar.gz" shared_ptr.diff)
+sha256sums=('7ede51739dc868242886815bb875307f5e11bb3789f22c546d3c83194fe75a1c'
+            'f0e2c746379c18b7643ca60565e355a8d2a95efb8823d2f4a63c3ac1f3bde076')
 options=('!makeflags')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -Np1 < "$srcdir"/shared_ptr.diff
+}
 
 build() {
   cd "$pkgname-$pkgver"
@@ -20,10 +25,10 @@ build() {
   libtoolize
   automake --add-missing
   autoconf
-  CXX=g++-6 CPP=cpp-6 ./configure --prefix=/usr --disable-enumpoly
+  ./configure --prefix=/usr --disable-enumpoly
   make
   cd src/python
-  CC=gcc-6 python2 setup.py build
+  python2 setup.py build
 }
 
 package() {
