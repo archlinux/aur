@@ -1,7 +1,7 @@
 pkgbase = magma
 	pkgdesc = Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems (with CUDA)
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://icl.cs.utk.edu/magma/
 	arch = x86_64
 	license = custom

@@ -9,14 +9,12 @@
 #_GPU_TARGET=Pascal
 #_GPU_TARGET=Volta
 # Can also be one of these: sm_20 sm_30 sm_50 sm_60 sm_70 etc.
-_GPU_TARGET=sm_30
-# Set _USE_CMAKE=1 to use CMake
-_USE_CMAKE=1
+#_GPU_TARGET=sm_30
 ##### End
 
 pkgname=magma
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems (with CUDA)"
 arch=('x86_64')
 url="http://icl.cs.utk.edu/magma/"
@@ -31,38 +29,37 @@ options=('staticlibs')
 source=("http://icl.cs.utk.edu/projectsfiles/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('4fd45c7e46bd9d9124253e7838bbfb9e6003c64c2c67ffcff02e6c36d2bcfa33')
 
+_CMAKE_FLAGS=(\
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
+  -DCMAKE_INSTALL_PREFIX=/opt/magma \
+)
+
+if [[ -n "${_GPU_TARGET}" ]] ; then 
+  _CMAKE_FLAGS+=(-DGPU_TARGET=${_GPU_TARGET})
+fi
+
+if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
+  _CMAKE_FLAGS+=( \
+    -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
+    -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc-7 \
+  )
+fi
+
 build() {
   cd "${srcdir}/magma-${pkgver}"
   mkdir build-shared && pushd build-shared
   cmake \
-    -DCMAKE_BUILD_TYPE=Release \
+    ${_CMAKE_FLAGS[@]} \
     -DBUILD_SHARED_LIBS:BOOL=ON \
-    -DGPU_TARGET=${_GPU_TARGET} \
-    -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
-    -DCMAKE_INSTALL_PREFIX=/opt/magma \
     ..
-  if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
-    cmake \
-      -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
-      -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc-7 \
-      ..
-  fi
   make magma magma_sparse
   popd
   mkdir build-static && pushd build-static
   cmake \
-    -DCMAKE_BUILD_TYPE=Release \
+    ${_CMAKE_FLAGS[@]} \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
-    -DGPU_TARGET=${_GPU_TARGET} \
-    -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
-    -DCMAKE_INSTALL_PREFIX=/opt/magma \
     ..
-  if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
-    cmake \
-      -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
-      -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc-7 \
-      ..
-  fi
   make magma magma_sparse
   popd
 }
