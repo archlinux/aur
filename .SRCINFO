@@ -1,7 +1,7 @@
 pkgbase = python-shade
 	pkgdesc = Simple client library for interacting with OpenStack clouds
 	pkgver = 1.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docs.openstack.org/infra/shade
 	arch = any
 	license = Apache
@@ -60,8 +60,8 @@ pkgbase = python-shade
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack-infra/shade#tag=1.30.0
-	sha512sums = SKIP
+	source = https://github.com/openstack-infra/shade/archive/1.30.0.tar.gz
+	sha512sums = d2b0690a76362a1a98729b0c7efe24627cf1d2b4d3420b9c7ba4fde962f3f321e329a5f73182853384a6b0aa4a75ed4e8248fca04bf6758464f2b693a56a6cfc
 
 pkgname = python-shade
 	depends = python-pbr
