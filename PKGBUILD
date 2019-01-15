@@ -3,7 +3,7 @@
 _pkgname=android-studio
 pkgname=${_pkgname}-launcher
 epoch=1
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Wrap android-sdk directory in UnionFS to be \"writeable\" for Android Studio"
 arch=('any')
