@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-cmake-shared-git
-pkgver=r34.0ad790f
+pkgver=r35.655e4a9
 pkgrel=1
 pkgdesc="Additional macros and functions for CMake"
 arch=('any')

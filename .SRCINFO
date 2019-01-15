@@ -1,6 +1,6 @@
 pkgbase = liri-cmake-shared-git
 	pkgdesc = Additional macros and functions for CMake
-	pkgver = r34.0ad790f
+	pkgver = r35.655e4a9
 	pkgrel = 1
 	url = https://liri.io
 	arch = any
