@@ -2,10 +2,10 @@
 
 pkgname=steam-fonts
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Fonts to fix scrambled or missing text in steam menus"
 depends=('fontconfig' 'xorg-font-utils')
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://support.steampowered.com/kb_article.php?ref=1974-YFKL-4947"
 license=('custom')
 source=("https://support.steampowered.com/downloads/1974-YFKL-4947/SteamFonts.zip")
