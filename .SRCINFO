@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-overbitenx
 	pkgdesc = Add gopher support to Firefox (beta)
 	pkgver = 0.9.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/classilla/overbitenx
 	arch = x86_64
 	groups = firefox-addons
