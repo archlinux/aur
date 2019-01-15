@@ -482,7 +482,7 @@ diff -ur tests/acceptance_tests/test_histograms.py tests/acceptance_tests/test_h
 diff -ur tests/acceptance_tests/test_model_equivalence.py tests/acceptance_tests/test_model_equivalence.py
 --- a/tests/acceptance_tests/test_model_equivalence.py
 +++ b/tests/acceptance_tests/test_model_equivalence.py
-@@ -323,7 +323,7 @@
+@@ -322,7 +322,7 @@
              pass
          # prepare for a local compilation
          
