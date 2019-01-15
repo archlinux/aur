@@ -2,7 +2,7 @@
 # Contributor wenLiangcan <boxeed at gmail dot com>
 
 pkgname=keeweb-git
-pkgver=1.7.2+6+g0c7210b
+pkgver=1.7.3+19+g903d6dc
 pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases. (develop branch)"
 arch=('any')
@@ -11,6 +11,7 @@ license=('MIT')
 depends=('electron')
 makedepends=(
 	'asar'
+	'git'
 	'npm'
 	'libsass'
 )
@@ -20,14 +21,14 @@ provides=('keeweb' 'keeweb-desktop')
 source=(
 	"${pkgname}::git+https://github.com/keeweb/keeweb.git#branch=develop"
 	'hide-menubar.patch'
-	'package.json.patch.js'
 	'keeweb.sh'
+	'package.json.patch.js'
 )
 
 sha1sums=('SKIP'
           'a55c2ed276c6073b7954452cdc88209633d51ace'
-          'f5ceba9e7c6c9d93c50279c524a286eca4d52804'
-          'a2ab033d06abfe7616d2615d8edf7931f29efc96')
+          'a2ab033d06abfe7616d2615d8edf7931f29efc96'
+          '914afdd9651e71091d4b927cabd25d75786ec7d4')
 
 pkgver() {
 	cd "${pkgname}"
@@ -59,8 +60,10 @@ prepare() {
 build() {
 	cd "${pkgname}"
 
-	export SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=1
+	export SASS_FORCE_BUILD=1
 	export LIBSASS_EXT=auto
+	export npm_config_nodedir=/usr
+	export npm_config_optional=false
 
 	npm install
 

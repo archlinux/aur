@@ -9,12 +9,15 @@ const data = JSON.parse(fs.readFileSync(PATCHABLE_FILE));
 const removePkg = [
 	/^electron$/,
 	/^eslint/,
+	/^grunt-concurrent$/,
 	/^grunt-contrib-compress$/,
 	/^grunt-contrib-deb$/,
-	/^grunt-contrib-watch$/,
 	/^grunt-contrib-uglify$/,
+	/^grunt-contrib-watch$/,
 	/^grunt-electron$/,
 	/^grunt-eslint$/,
+	/^stats-webpack-plugin$/,
+	/^sumchecker$/,
 	/^webpack-dev-server/,
 ];
 
