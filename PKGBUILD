@@ -3,7 +3,7 @@
 pkgname=swaylock-blur-git
 _pkgname=${pkgname%-git}
 pkgver=r3.cb1df3d
-pkgrel=1
+pkgrel=2
 pkgdesc="A script that runs swaylock and sets the image to a blurred screenshot of the desktop"
 arch=("any")
 url="https://github.com/cjbassi/swaylock-blur"
