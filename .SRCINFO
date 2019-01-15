@@ -1,11 +1,12 @@
 pkgbase = xoreos
 	pkgdesc = A reimplementation of BioWare's Aurora engine
-	pkgver = 0.0.5.r0.g9d99a45
-	pkgrel = 1
+	pkgver = 0.0.5.r0.g00042460
+	pkgrel = 2
 	url = https://xoreos.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = zlib
 	depends = xz
 	depends = libxml2
