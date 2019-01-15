@@ -1,0 +1,47 @@
+--- a/get_pythia8_version.py
++++ b/get_pythia8_version.py
+@@ -29,14 +29,14 @@
+ version = None
+ 
+ def get_version_from_xml():
+-    if not os.path.exists(pjoin(pythia8_path,'share','Pythia8','xmldoc','Version.xml')):
++    if not os.path.exists(pjoin(pythia8_path,'share','pythia','xmldoc','Version.xml')):
+         print "Error in 'get_pythia8_version.py': could not get Pyhtia8 file \n  '%s'\n storing the version number"% \
+-               pjoin(local_path,'share','Pythia8','xmldoc','Version.xml') 
++               pjoin(local_path,'share','pythia','xmldoc','Version.xml') 
+         return None
+ 
+     versionfinder = re.compile('^\s*\<parmfix\s*name\=\"Pythia:versionNumber\"\s*default=\"(?P<version>[\d\.]+)\"\>')
+ 
+-    for line in open(pjoin(pythia8_path,'share','Pythia8','xmldoc','Version.xml')):
++    for line in open(pjoin(pythia8_path,'share','pythia','xmldoc','Version.xml')):
+         match = versionfinder.match(line)
+         if match:
+             version = match.group('version')
+
+--- a/compile.py
++++ b/compile.py
+@@ -103,17 +103,17 @@
+
+ # Now proceed with the installation
+
+-if not os.path.exists(pjoin(pythia8_path,'share','Pythia8','examples','Makefile.inc')):
++if not os.path.exists(pjoin(pythia8_path,'share','pythia','examples','Makefile.inc')):
+     print "Error in MG5aMC_PY8_interface installer. Could not find file:\n   %s"%\
+-                       pjoin(pythia8_path,'share','Pythia8','examples','Makefile.inc')
++                       pjoin(pythia8_path,'share','pythia','examples','Makefile.inc')
+     sys.exit(error_exit_code)
+-shutil.copy(pjoin(pythia8_path,'share','Pythia8','examples','Makefile.inc'),
++shutil.copy(pjoin(pythia8_path,'share','pythia','examples','Makefile.inc'),
+                                                  pjoin(local_path,'Makefile.inc'))
+-if not os.path.exists(pjoin(pythia8_path,'share','Pythia8','examples','Makefile')):
++if not os.path.exists(pjoin(pythia8_path,'share','pythia','examples','Makefile')):
+     print "Error in MG5aMC_PY8_interface installer. Could not find file:\n   %s"%\
+-                           pjoin(pythia8_path,'share','Pythia8','examples','Makefile')
++                           pjoin(pythia8_path,'share','pythia','examples','Makefile')
+     sys.exit(error_exit_code)
+-shutil.copy(pjoin(pythia8_path,'share','Pythia8','examples','Makefile'),
++shutil.copy(pjoin(pythia8_path,'share','pythia','examples','Makefile'),
+                                                      pjoin(local_path,'Makefile'))
+
+ if _use_original_PY8_makefile:

@@ -2,7 +2,7 @@
 
 pkgname=madgraph-pythia8-interface
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="MadGraph Pythia8 interface"
 url="http://madgraph.hep.uiuc.edu/"
 arch=('i686' 'x86_64')
@@ -13,14 +13,21 @@ depends=(
     'pythia'
     'python2'
 )
-source=("http://madgraph.physics.illinois.edu/Downloads/MG5aMC_PY8_interface/MG5aMC_PY8_interface_V${pkgver}.tar.gz"
-        "python2.patch")
-sha256sums=('86368b7021bacf955a6e44ecce6197a5269a73577e71af034abf68b2c1db1b80'
-            '632adc73e951df4341709adeafd3a7c72da1752f8af61037eae2b87a08ca9a64')
+source=(
+    "http://madgraph.physics.illinois.edu/Downloads/MG5aMC_PY8_interface/MG5aMC_PY8_interface_V${pkgver}.tar.gz"
+    "python2.patch"
+    "pythia.patch"
+)
+sha256sums=('5d9ee638ca3b736fb51979da7c83181dea61f0d7dc53ed0a836d3934d0d0c476'
+            '632adc73e951df4341709adeafd3a7c72da1752f8af61037eae2b87a08ca9a64'
+            '09bfa3f3335c533e9962a958409cd8e807924a5c4cc9482e5a2c09b2ff004543')
 
 prepare() {
     msg2 "Fixing python references for python2"
     patch -p 1 < python2.patch
+
+    msg2 "Fixing Pythia location"
+    patch -p 1 < pythia.patch
 }
 
 build() {
