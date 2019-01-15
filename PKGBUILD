@@ -15,7 +15,7 @@ _micro=".1"
 pkgbase=compiz-core
 pkgname=(compiz-core compiz-gtk)
 pkgver="${_pkgver}${_micro}"
-pkgrel=1
+pkgrel=2
 pkgdesc="This is the latest stable release of Compiz without DE deps"
 url="https://gitlab.com/compiz/${_upstream}/"
 license=('GPL' 'LGPL' 'MIT')
@@ -87,6 +87,7 @@ package_compiz-core() {
     "${pkgdir}/usr/bin/gtk-window-decorator"
     "${pkgdir}/usr/share/glib-2.0/schemas/org.compiz-0.gwd.gschema.xml"
     "${pkgdir}/usr/share/icons/hicolor/"*"/apps/gtk-decorator."*
+    # "${pkgdir}/usr/share/applications/compiz.desktop"
   )
   # Believe it or not, you CAN fill an array using wildcards in bash
 
@@ -125,7 +126,6 @@ package_compiz-gtk()
   local REMOVE_THESE=(
     "${pkgdir}/usr/share/icons/hicolor/"*"/apps/compiz."*
     "${pkgdir}/usr/share/compiz/"*.png
-    "${pkgdir}/usr/share/applications/compiz.desktop"
   )
   # Believe it or not, you CAN fill an array using wildcards in bash
 
