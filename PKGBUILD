@@ -6,7 +6,7 @@
 
 pkgbase=bind-rl
 pkgname=(bind-rl bind-rl-tools)
-_pkgver=9.13.3
+_pkgver=9.13.5
 pkgver=${_pkgver//-/.}
 pkgrel=1
 url='https://www.isc.org/software/bind/'
@@ -27,8 +27,9 @@ source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         'localhost.zone'
         'localhost.ip6.zone'
         '127.0.0.zone'
-        'empty.zone')
-sha1sums=('eed41fd32887bd163935fe14b94afad4a8b287c2'
+        'empty.zone'
+        '01-fs60913.patch')
+sha1sums=('8c01018e6928e9117cd8e0cdd464efe3b68894c5'
           'SKIP'
           'c5a2bcd9b0f009ae71f3a03fbdbe012196962a11'
           '9537f4835a1f736788d0733c7996a10db2d4eee4'
@@ -37,7 +38,8 @@ sha1sums=('eed41fd32887bd163935fe14b94afad4a8b287c2'
           '6704303a6ed431a29b1d8fe7b12decd4d1f2f50f'
           '52da8f1c0247a11b16daa4e03d920e8f09315cbe'
           '9c33726088342207ad06d33b2c13408290a0c8ad'
-          '4f4457b310cbbeadca2272eced062a9c2b2b42fe')
+          '4f4457b310cbbeadca2272eced062a9c2b2b42fe'
+          'a71c39b6073be96589e3c0a8cc7430f0e22ebe9c')
 
 prepare() {
   msg2 'Getting a fresh version of root DNS'
