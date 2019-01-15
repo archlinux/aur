@@ -1,9 +1,8 @@
 pkgbase = gsettings-desktop-schemas-dev
 	pkgdesc = Shared GSettings schemas for the desktop
-	pkgver = 3.31.0.1
+	pkgver = 3.31.0.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -13,10 +12,8 @@ pkgbase = gsettings-desktop-schemas-dev
 	depends = intltool
 	provides = gsettings-desktop-schemas
 	conflicts = gsettings-desktop-schemas
-	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#tag=3.31.0.1
-	source = 12.patch
+	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#tag=3.31.0.2
 	sha256sums = SKIP
-	sha256sums = fefcf993c0908ab53bcb4ad1cf4f46b8bd99c71d588c6117b1f16993d2250424
 
 pkgname = gsettings-desktop-schemas-dev
 
