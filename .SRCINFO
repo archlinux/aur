@@ -1,0 +1,15 @@
+pkgbase = jsonrpc_server-git
+	pkgdesc = JSON-RPC 2.0 request handler library written in C11 based on Jansson
+	pkgver = 0.0.1.r0.g6fff5d5
+	pkgrel = 1
+	url = https://github.com/mikroskeem/jsonrpc_server
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = jansson
+	source = git+https://github.com/mikroskeem/jsonrpc_server.git
+	sha256sums = SKIP
+
+pkgname = jsonrpc_server-git
+
