@@ -6,7 +6,7 @@ _target=aarch64-linux-gnu
 pkgname=$_target-gcc-openmp
 pkgver=8.2.0
 _islver=0.18
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target with OpenMP'
 arch=(i686 x86_64)
 url='http://gcc.gnu.org/'
@@ -75,7 +75,7 @@ build() {
 package() {
   cd gcc-build
 
-  make DESTDIR="$pkgdir" install-gcc install-gfortran install-target-libgcc install-target-libstdc++-v3 install-target-libgomp install-target-libgfortran install-target-libquadmath
+  make DESTDIR="$pkgdir" install-gcc install-target-libgcc install-target-libstdc++-v3 install-target-libgomp install-target-libgfortran install-target-libquadmath
 
   # strip target binaries
   find "$pkgdir"/usr/lib/gcc/$_target/ "$pkgdir"/usr/$_target/lib -type f -and \( -name \*.a -or -name \*.o \) -exec $_target-objcopy -R .comment -R .note -R .debug_info -R .debug_aranges -R .debug_pubnames -R .debug_pubtypes -R .debug_abbrev -R .debug_line -R .debug_str -R .debug_ranges -R .debug_loc '{}' \;
