@@ -3,7 +3,7 @@
 _pkgname=remake
 pkgname=cmake-${_pkgname}-git
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='A set of CMake macros for restructuring GNU Automake/Autoconf projects.'
 url='https://github.com/kralf/remake'
 arch=('any')
