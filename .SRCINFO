@@ -1,7 +1,7 @@
 pkgbase = python-saharaclient
 	pkgdesc = Python client library for Sahara
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docs.openstack.org/developer/python-saharaclient/
 	arch = any
 	license = Apache
@@ -42,8 +42,8 @@ pkgbase = python-saharaclient
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/python-saharaclient#tag=2.0.0
-	sha512sums = SKIP
+	source = https://github.com/openstack/python-saharaclient/archive/2.0.0.tar.gz
+	sha512sums = 176c77d215bb27508bc4b6ee7bf2b8e11e3ddb6f8c7caee085bae3944ea0a3e0c170d238b74551c1549e4e0ee1d1bc17e4d618476be32641c2ad34526d8df8c8
 
 pkgname = python-saharaclient
 	depends = python-pbr
