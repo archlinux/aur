@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tss-git
-pkgver=2.0.0.r161.17a670dd
+pkgver=2.0.0.r162.d1106347
 pkgrel=1
 pkgdesc='Implementation of the TCG Trusted Platform Module 2.0 Software Stack (TSS2)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 prepare() {
 	cd "${pkgname%-git}"
 	sed --in-place 's|@CODE_COVERAGE_RULES@|include $(top_srcdir)/aminclude_static.am|' Makefile.am
-	./bootstrap --include=/usr/share/gnulib-git/m4
+	ACLOCAL_PATH=/usr/share/gnulib-git/m4 ./bootstrap
 }
 
 build() {
