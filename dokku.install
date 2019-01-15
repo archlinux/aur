@@ -43,9 +43,6 @@ post_install() {
     fi
   done
   find -L $DOKKU_LIB_ROOT -type l -delete
-
-  echo "Install all core plugins"
-  dokku plugin:install --core
   chown dokku:dokku -R "$DOKKU_LIB_ROOT/plugins" "$DOKKU_LIB_ROOT/core-plugins"
 
   echo "Ensure proper sshcommand path"
@@ -56,6 +53,9 @@ post_install() {
     sed -i.bak 's#/usr/local/bin/dokku#/usr/bin/dokku#' "$DOKKU_ROOT/.ssh/authorized_keys"
     rm "$DOKKU_ROOT/.ssh/authorized_keys"
   fi
+
+  echo "Install all core plugins"
+  dokku plugin:install --core
 
   echo "Update version file"
   rm -f "$DOKKU_ROOT/VERSION"
