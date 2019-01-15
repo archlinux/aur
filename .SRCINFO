@@ -1,7 +1,7 @@
 pkgbase = python-hatch
 	pkgdesc = A modern project, package, and virtual env manager
 	pkgver = 0.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ofek/hatch
 	arch = any
 	license = MIT

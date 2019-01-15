@@ -4,7 +4,7 @@ _srcname=hatch
 
 pkgname=python-hatch
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern project, package, and virtual env manager"
 arch=('any')
 url="https://github.com/ofek/hatch"
