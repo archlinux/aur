@@ -5,7 +5,7 @@
 pkgbase=amdgpu-pro-installer
 pkgname=(amdgpu-pro amdgpu-pro-dkms amdgpu-pro-gst-omx amdgpu-pro-libdrm amdgpu-pro-libgl amdgpu-pro-mesa-omx amdgpu-pro-opencl amdgpu-pro-vdpau amdgpu-pro-vulkan lib32-amdgpu-pro lib32-amdgpu-pro-gst-omx lib32-amdgpu-pro-libdrm lib32-amdgpu-pro-libgl lib32-amdgpu-pro-mesa-omx lib32-amdgpu-pro-opencl lib32-amdgpu-pro-vdpau lib32-amdgpu-pro-vulkan xf86-video-amdgpu-pro)
 pkgver=17.40.492261
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
@@ -13,7 +13,10 @@ makedepends=('wget')
 
 DLAGENTS='https::/usr/bin/wget --referer https://support.amd.com/en-us/kb-articles/Pages/AMDGPU-PRO-Install.aspx -N %u'
 
-source=(https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-17.40-492261.tar.xz
+major=17.40
+minor=492261
+
+source=(https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-${major}-${minor}.tar.xz
 	0001-disable-firmware-copy.patch
 	0003-add-archlinux-as-build-option.patch)
 sha256sums=(b0645157577c9ff175dc02487c4c682ded2624c8c2cfd6aa603960962e1d07b0
@@ -57,24 +60,24 @@ package_amdgpu-pro () {
 	pkgdesc="The AMDGPU Pro driver package"
 	install=amdgpu-pro-core.install
 	arch=('x86_64')
-	depends=('binfmt-support' 'libedit>=2.11-20080614' 'libffi>=3.0.9' 'libx11' 'libxext' 'libxfixes' 'ncurses' 'ncurses5-compat-libs>=6' 'zlib>=1.2.0')
+	depends=("binfmt-support" "libedit>=2.11-20080614" "libffi>=3.0.9" "libx11" "libxext" "libxfixes" "ncurses" "ncurses5-compat-libs>=6" "zlib>=1.2.0")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./amdgpu-pro_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./amdgpu-pro-core_17.40-492261_all.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./amdgpu-pro-lib32_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./ids-amdgpu-pro_1.0.0-492261_all.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgbm1-amdgpu-pro_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgbm1-amdgpu-pro-base_17.40-492261_all.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgbm1-amdgpu-pro-dev_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgl1-amdgpu-pro-dri_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libllvm5.0-amdgpu-pro_5.0-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro_5.0-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro-5.0_5.0-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro-5.0-dev_5.0-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro-5.0-doc_5.0-492261_all.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro-5.0-runtime_5.0-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro-dev_5.0-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro-runtime_5.0-492261_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./amdgpu-pro_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./amdgpu-pro-core_${major}-${minor}_all.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./amdgpu-pro-lib32_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./ids-amdgpu-pro_1.0.0-${minor}_all.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgbm1-amdgpu-pro_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgbm1-amdgpu-pro-base_${major}-${minor}_all.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgbm1-amdgpu-pro-dev_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgl1-amdgpu-pro-dri_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libllvm5.0-amdgpu-pro_5.0-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro_5.0-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro-5.0_5.0-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro-5.0-dev_5.0-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro-5.0-doc_5.0-${minor}_all.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro-5.0-runtime_5.0-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro-dev_5.0-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro-runtime_5.0-${minor}_amd64.deb
 
 	move_libdir "${pkgdir}/lib"
 
@@ -90,15 +93,15 @@ package_amdgpu-pro () {
 package_amdgpu-pro-dkms () {
 	pkgdesc="amdgpu-pro driver in DKMS format."
 	arch=('any')
-	depends=('amdgpu-pro=17.40.492261-1' 'dkms>=1.95')
+	depends=("amdgpu-pro=${major}.${minor}-${pkgrel}" "dkms>=1.95")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./amdgpu-pro-dkms_17.40-492261_all.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./amdgpu-pro-dkms_${major}-${minor}_all.deb
 
 	move_libdir "${pkgdir}/lib"
 
 	# extra_commands:
 	msg 'Applying patches...'
-	(cd ${pkgdir}/usr/src/amdgpu-17.40-492261;
+	(cd ${pkgdir}/usr/src/amdgpu-${major}-${minor};
 		sed -i 's/\/extra/\/extramodules/' dkms.conf
 			msg2 '0001-disable-firmware-copy.patch'
 		patch -p1 -i "${srcdir}/0001-disable-firmware-copy.patch";
@@ -111,9 +114,9 @@ package_amdgpu-pro-dkms () {
 package_amdgpu-pro-gst-omx () {
 	pkgdesc="GStreamer OpenMAX plugins for AMDGPU Pro"
 	arch=('x86_64')
-	depends=('glib2>=2.37.3' 'gst-plugins-base>=1.6.0' 'gstreamer>=1.0.0' 'libomxil-bellagio')
+	depends=("glib2>=2.37.3" "gst-plugins-base>=1.6.0" "gstreamer>=1.0.0" "libomxil-bellagio")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./gst-omx-amdgpu-pro_1.0.0.1-492261_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./gst-omx-amdgpu-pro_1.0.0.1-${minor}_amd64.deb
 
 	move_libdir "${pkgdir}/lib"
 
@@ -125,13 +128,13 @@ package_amdgpu-pro-libdrm () {
 	arch=('x86_64')
 	provides=('libdrm')
 	conflicts=('libdrm')
-	depends=('amdgpu-pro=17.40.492261-1' 'bcunit')
+	depends=("amdgpu-pro=${major}.${minor}-${pkgrel}" "bcunit")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libdrm-amdgpu-pro-amdgpu1_2.4.82-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libdrm-amdgpu-pro-dev_2.4.82-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libdrm-amdgpu-pro-radeon1_2.4.82-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libdrm-amdgpu-pro-utils_2.4.82-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libdrm2-amdgpu-pro_2.4.82-492261_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libdrm-amdgpu-pro-amdgpu1_2.4.82-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libdrm-amdgpu-pro-dev_2.4.82-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libdrm-amdgpu-pro-radeon1_2.4.82-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libdrm-amdgpu-pro-utils_2.4.82-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libdrm2-amdgpu-pro_2.4.82-${minor}_amd64.deb
 
 	move_libdir "${pkgdir}/lib"
 
@@ -143,13 +146,13 @@ package_amdgpu-pro-libgl () {
 	arch=('x86_64')
 	provides=('libgl')
 	conflicts=('libgl')
-	depends=('amdgpu-pro-libdrm=17.40.492261-1' 'amdgpu-pro=17.40.492261-1' 'libx11' 'libx11>=1.4.99.1' 'libxcb' 'libxcb>=1.8' 'libxcb>=1.9.2' 'libxdamage>=1.1' 'libxext' 'libxfixes' 'libxshmfence' 'libxxf86vm')
+	depends=("amdgpu-pro-libdrm=${major}.${minor}-${pkgrel}" "amdgpu-pro=${major}.${minor}-${pkgrel}" "libx11" "libx11>=1.4.99.1" "libxcb" "libxcb>=1.8" "libxcb>=1.9.2" "libxdamage>=1.1" "libxext" "libxfixes" "libxshmfence" "libxxf86vm")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libegl1-amdgpu-pro_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgl1-amdgpu-pro-appprofiles_17.40-492261_all.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgl1-amdgpu-pro-ext_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgl1-amdgpu-pro-glx_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgles2-amdgpu-pro_17.40-492261_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libegl1-amdgpu-pro_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgl1-amdgpu-pro-appprofiles_${major}-${minor}_all.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgl1-amdgpu-pro-ext_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgl1-amdgpu-pro-glx_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgles2-amdgpu-pro_${major}-${minor}_amd64.deb
 
 	move_libdir "${pkgdir}/lib"
 
@@ -159,9 +162,9 @@ package_amdgpu-pro-libgl () {
 package_amdgpu-pro-mesa-omx () {
 	pkgdesc="Mesa OpenMAX video drivers for AMDGPU Pro"
 	arch=('x86_64')
-	depends=('amdgpu-pro-libdrm=17.40.492261-1' 'amdgpu-pro=17.40.492261-1' 'libomxil-bellagio' 'libx11' 'libxcb' 'libxcb>=1.8' 'ncurses5-compat-libs>=6' 'zlib>=1.2.0')
+	depends=("amdgpu-pro-libdrm=${major}.${minor}-${pkgrel}" "amdgpu-pro=${major}.${minor}-${pkgrel}" "libomxil-bellagio" "libx11" "libxcb" "libxcb>=1.8" "ncurses5-compat-libs>=6" "zlib>=1.2.0")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./mesa-amdgpu-pro-omx-drivers_17.0.1-492261_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./mesa-amdgpu-pro-omx-drivers_17.0.1-${minor}_amd64.deb
 
 	move_libdir "${pkgdir}/lib"
 
@@ -172,23 +175,23 @@ package_amdgpu-pro-opencl () {
 	pkgdesc="The AMDGPU Pro OpenCL implementation"
 	arch=('x86_64')
 	provides=('opencl-driver')
-	depends=('amdgpu-pro=17.40.492261-1' 'pciutils>=3.3.1-1')
+	depends=("amdgpu-pro=${major}.${minor}-${pkgrel}" "pciutils>=3.3.1-1")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./clinfo-amdgpu-pro_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./hsa-ext-amdgpu-pro-finalize_1.1.6-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./hsa-ext-amdgpu-pro-image_1.1.6-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./hsa-runtime-tools-amdgpu-pro_1.1.6-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./hsa-runtime-tools-amdgpu-pro-dev_1.1.6-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libopencl1-amdgpu-pro_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./opencl-amdgpu-pro-icd_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./rocm-amdgpu-pro_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./rocm-amdgpu-pro-icd_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./rocm-amdgpu-pro-opencl_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./rocm-amdgpu-pro-opencl-dev_17.40-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./rocr-amdgpu-pro_1.1.6-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./rocr-amdgpu-pro-dev_1.1.6-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./roct-amdgpu-pro_1.0.6-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./roct-amdgpu-pro-dev_1.0.6-492261_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./clinfo-amdgpu-pro_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./hsa-ext-amdgpu-pro-finalize_1.1.6-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./hsa-ext-amdgpu-pro-image_1.1.6-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./hsa-runtime-tools-amdgpu-pro_1.1.6-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./hsa-runtime-tools-amdgpu-pro-dev_1.1.6-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libopencl1-amdgpu-pro_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./opencl-amdgpu-pro-icd_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./rocm-amdgpu-pro_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./rocm-amdgpu-pro-icd_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./rocm-amdgpu-pro-opencl_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./rocm-amdgpu-pro-opencl-dev_${major}-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./rocr-amdgpu-pro_1.1.6-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./rocr-amdgpu-pro-dev_1.1.6-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./roct-amdgpu-pro_1.0.6-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./roct-amdgpu-pro-dev_1.0.6-${minor}_amd64.deb
 
 	move_libdir "${pkgdir}/lib"
 
@@ -198,9 +201,9 @@ package_amdgpu-pro-opencl () {
 package_amdgpu-pro-vdpau () {
 	pkgdesc="The AMDGPU Pro VDPAU driver"
 	arch=('x86_64')
-	depends=('amdgpu-pro-libdrm=17.40.492261-1' 'amdgpu-pro=17.40.492261-1' 'libvdpau>=1.1' 'libxcb' 'libxcb>=1.8' 'ncurses5-compat-libs>=6' 'zlib>=1.2.0')
+	depends=("amdgpu-pro-libdrm=${major}.${minor}-${pkgrel}" "amdgpu-pro=${major}.${minor}-${pkgrel}" "libvdpau>=1.1" "libxcb" "libxcb>=1.8" "ncurses5-compat-libs>=6" "zlib>=1.2.0")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libvdpau-amdgpu-pro_17.0.1-492261_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libvdpau-amdgpu-pro_17.0.1-${minor}_amd64.deb
 
 	move_libdir "${pkgdir}/lib"
 
@@ -216,9 +219,9 @@ package_amdgpu-pro-vulkan () {
 	pkgdesc="The AMDGPU Pro Vulkan driver"
 	arch=('x86_64')
 	provides=('vulkan-driver')
-	depends=('amdgpu-pro=17.40.492261-1')
+	depends=("amdgpu-pro=${major}.${minor}-${pkgrel}")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./vulkan-amdgpu-pro_17.40-492261_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./vulkan-amdgpu-pro_${major}-${minor}_amd64.deb
 
 	move_libdir "${pkgdir}/lib"
 
@@ -233,19 +236,19 @@ package_amdgpu-pro-vulkan () {
 package_lib32-amdgpu-pro () {
 	pkgdesc="Meta package to install amdgpu Pro components. (32bit libraries)"
 	arch=('x86_64')
-	depends=('binfmt-support' 'lib32-libedit>=2.11-20080614' 'lib32-libffi>=3.0.9' 'lib32-libx11' 'lib32-libxext' 'lib32-libxfixes' 'lib32-ncurses' 'lib32-ncurses5-compat-libs>=6' 'lib32-zlib>=1.2.0')
+	depends=("binfmt-support" "lib32-libedit>=2.11-20080614" "lib32-libffi>=3.0.9" "lib32-libx11" "lib32-libxext" "lib32-libxfixes" "lib32-ncurses" "lib32-ncurses5-compat-libs>=6" "lib32-zlib>=1.2.0")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./amdgpu-pro_17.40-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgbm1-amdgpu-pro_17.40-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgbm1-amdgpu-pro-dev_17.40-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgl1-amdgpu-pro-dri_17.40-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libllvm5.0-amdgpu-pro_5.0-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro_5.0-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro-5.0_5.0-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro-5.0-dev_5.0-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro-5.0-runtime_5.0-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro-dev_5.0-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./llvm-amdgpu-pro-runtime_5.0-492261_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./amdgpu-pro_${major}-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgbm1-amdgpu-pro_${major}-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgbm1-amdgpu-pro-dev_${major}-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgl1-amdgpu-pro-dri_${major}-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libllvm5.0-amdgpu-pro_5.0-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro_5.0-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro-5.0_5.0-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro-5.0-dev_5.0-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro-5.0-runtime_5.0-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro-dev_5.0-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./llvm-amdgpu-pro-runtime_5.0-${minor}_i386.deb
 
 	move_libdir "${pkgdir}/lib" "usr/lib32"
 
@@ -266,9 +269,9 @@ package_lib32-amdgpu-pro () {
 package_lib32-amdgpu-pro-gst-omx () {
 	pkgdesc="GStreamer OpenMAX plugins for AMDGPU Pro (32bit libraries)"
 	arch=('x86_64')
-	depends=('lib32-glib2>=2.37.3' 'lib32-gst-plugins-base>=1.6.0' 'lib32-gstreamer>=1.0.0' 'lib32-libomxil-bellagio')
+	depends=("lib32-glib2>=2.37.3" "lib32-gst-plugins-base>=1.6.0" "lib32-gstreamer>=1.0.0" "lib32-libomxil-bellagio")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./gst-omx-amdgpu-pro_1.0.0.1-492261_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./gst-omx-amdgpu-pro_1.0.0.1-${minor}_i386.deb
 
 	move_libdir "${pkgdir}/lib" "usr/lib32"
 
@@ -285,12 +288,12 @@ package_lib32-amdgpu-pro-libdrm () {
 	arch=('x86_64')
 	provides=('lib32-libdrm')
 	conflicts=('lib32-libdrm')
-	depends=('amdgpu-pro-libdrm=17.40.492261-1' 'amdgpu-pro=17.40.492261-1')
+	depends=("amdgpu-pro-libdrm=${major}.${minor}-${pkgrel}" "amdgpu-pro=${major}.${minor}-${pkgrel}")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libdrm-amdgpu-pro-amdgpu1_2.4.82-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libdrm-amdgpu-pro-dev_2.4.82-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libdrm-amdgpu-pro-radeon1_2.4.82-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libdrm2-amdgpu-pro_2.4.82-492261_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libdrm-amdgpu-pro-amdgpu1_2.4.82-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libdrm-amdgpu-pro-dev_2.4.82-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libdrm-amdgpu-pro-radeon1_2.4.82-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libdrm2-amdgpu-pro_2.4.82-${minor}_i386.deb
 
 	move_libdir "${pkgdir}/lib" "usr/lib32"
 
@@ -307,12 +310,12 @@ package_lib32-amdgpu-pro-libgl () {
 	arch=('x86_64')
 	provides=('lib32-libgl')
 	conflicts=('lib32-libgl')
-	depends=('amdgpu-pro-libdrm=17.40.492261-1' 'amdgpu-pro-libgl=17.40.492261-1' 'amdgpu-pro=17.40.492261-1' 'lib32-libx11' 'lib32-libx11>=1.4.99.1' 'lib32-libxcb' 'lib32-libxcb>=1.8' 'lib32-libxcb>=1.9.2' 'lib32-libxdamage>=1.1' 'lib32-libxext' 'lib32-libxfixes' 'lib32-libxshmfence' 'lib32-libxxf86vm')
+	depends=("amdgpu-pro-libdrm=${major}.${minor}-${pkgrel}" "amdgpu-pro-libgl=${major}.${minor}-${pkgrel}" "amdgpu-pro=${major}.${minor}-${pkgrel}" "lib32-libx11" "lib32-libx11>=1.4.99.1" "lib32-libxcb" "lib32-libxcb>=1.8" "lib32-libxcb>=1.9.2" "lib32-libxdamage>=1.1" "lib32-libxext" "lib32-libxfixes" "lib32-libxshmfence" "lib32-libxxf86vm")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libegl1-amdgpu-pro_17.40-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgl1-amdgpu-pro-ext_17.40-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgl1-amdgpu-pro-glx_17.40-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libgles2-amdgpu-pro_17.40-492261_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libegl1-amdgpu-pro_${major}-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgl1-amdgpu-pro-ext_${major}-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgl1-amdgpu-pro-glx_${major}-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libgles2-amdgpu-pro_${major}-${minor}_i386.deb
 
 	move_libdir "${pkgdir}/lib" "usr/lib32"
 
@@ -329,9 +332,9 @@ package_lib32-amdgpu-pro-libgl () {
 package_lib32-amdgpu-pro-mesa-omx () {
 	pkgdesc="Mesa OpenMAX video drivers for AMDGPU Pro (32bit libraries)"
 	arch=('x86_64')
-	depends=('amdgpu-pro-libdrm=17.40.492261-1' 'amdgpu-pro=17.40.492261-1' 'lib32-libomxil-bellagio' 'lib32-libx11' 'lib32-libxcb' 'lib32-libxcb>=1.8' 'lib32-ncurses5-compat-libs>=6' 'lib32-zlib>=1.2.0')
+	depends=("amdgpu-pro-libdrm=${major}.${minor}-${pkgrel}" "amdgpu-pro=${major}.${minor}-${pkgrel}" "lib32-libomxil-bellagio" "lib32-libx11" "lib32-libxcb" "lib32-libxcb>=1.8" "lib32-ncurses5-compat-libs>=6" "lib32-zlib>=1.2.0")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./mesa-amdgpu-pro-omx-drivers_17.0.1-492261_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./mesa-amdgpu-pro-omx-drivers_17.0.1-${minor}_i386.deb
 
 	move_libdir "${pkgdir}/lib" "usr/lib32"
 
@@ -349,10 +352,10 @@ package_lib32-amdgpu-pro-opencl () {
 	pkgdesc="The AMDGPU Pro OpenCL implementation"
 	arch=('x86_64')
 	provides=('lib32-opencl-driver')
-	depends=('amdgpu-pro=17.40.492261-1')
+	depends=("amdgpu-pro=${major}.${minor}-${pkgrel}")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libopencl1-amdgpu-pro_17.40-492261_i386.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./opencl-amdgpu-pro-icd_17.40-492261_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libopencl1-amdgpu-pro_${major}-${minor}_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./opencl-amdgpu-pro-icd_${major}-${minor}_i386.deb
 
 	move_libdir "${pkgdir}/lib" "usr/lib32"
 
@@ -367,9 +370,9 @@ package_lib32-amdgpu-pro-opencl () {
 package_lib32-amdgpu-pro-vdpau () {
 	pkgdesc="The AMDGPU Pro VDPAU driver (32bit libraries)"
 	arch=('x86_64')
-	depends=('amdgpu-pro-libdrm=17.40.492261-1' 'amdgpu-pro=17.40.492261-1' 'lib32-libvdpau>=1.1' 'lib32-libxcb' 'lib32-libxcb>=1.8' 'lib32-ncurses5-compat-libs>=6' 'lib32-zlib>=1.2.0')
+	depends=("amdgpu-pro-libdrm=${major}.${minor}-${pkgrel}" "amdgpu-pro=${major}.${minor}-${pkgrel}" "lib32-libvdpau>=1.1" "lib32-libxcb" "lib32-libxcb>=1.8" "lib32-ncurses5-compat-libs>=6" "lib32-zlib>=1.2.0")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./libvdpau-amdgpu-pro_17.0.1-492261_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./libvdpau-amdgpu-pro_17.0.1-${minor}_i386.deb
 
 	move_libdir "${pkgdir}/lib" "usr/lib32"
 
@@ -390,9 +393,9 @@ package_lib32-amdgpu-pro-vulkan () {
 	pkgdesc="The AMDGPU Pro Vulkan driver (32bit libraries)"
 	arch=('x86_64')
 	provides=('lib32-vulkan-driver')
-	depends=('amdgpu-pro=17.40.492261-1')
+	depends=("amdgpu-pro=${major}.${minor}-${pkgrel}")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./vulkan-amdgpu-pro_17.40-492261_i386.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./vulkan-amdgpu-pro_${major}-${minor}_i386.deb
 
 	move_libdir "${pkgdir}/lib" "usr/lib32"
 
@@ -415,10 +418,10 @@ package_xf86-video-amdgpu-pro () {
 	provides=('xf86-video-amdgpu')
 	conflicts=('xf86-video-amdgpu' 'xorg-server<1.19.0' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24')
 	groups=('xorg-drivers')
-	depends=('amdgpu-pro-libdrm=17.40.492261-1' 'amdgpu-pro=17.40.492261-1' 'libsystemd>=183')
+	depends=("amdgpu-pro-libdrm=${major}.${minor}-${pkgrel}" "amdgpu-pro=${major}.${minor}-${pkgrel}" "libsystemd>=183")
 
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./xserver-xorg-video-amdgpu-pro_1.3.99-492261_amd64.deb
-	extract_deb "${srcdir}"/amdgpu-pro-17.40-492261/./xserver-xorg-video-modesetting-amdgpu-pro_1.19.0-492261_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./xserver-xorg-video-amdgpu-pro_1.3.99-${minor}_amd64.deb
+	extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/./xserver-xorg-video-modesetting-amdgpu-pro_1.19.0-${minor}_amd64.deb
 
 	move_libdir "${pkgdir}/lib"
 
