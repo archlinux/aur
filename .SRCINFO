@@ -1,0 +1,16 @@
+pkgbase = firefox-extension-overbitenx
+	pkgdesc = Add gopher support to Firefox (beta)
+	pkgver = 0.9.2.0
+	pkgrel = 1
+	url = https://github.com/classilla/overbitenx
+	arch = x86_64
+	groups = firefox-addons
+	license = custom
+	noextract = overbitenx-0.9.2.0.xpi
+	source = overbitenx-0.9.2.0.tar.gz::https://github.com/classilla/overbitenx/archive/0.9.2.0.tar.gz
+	source = overbitenx-0.9.2.0.xpi::https://addons.mozilla.org/firefox/downloads/file/1012346/overbitenx-0.1-an+fx-linux.xpi
+	sha256sums = bf3fa2cf5baaf8503d4ce15bae21071d10f3bd265937e1660765ae0e6f21f56c
+	sha256sums = 708dd95cd62be2d89e18a613254c4de7ed49d23532ca0b9f728f19ad3280be8e
+
+pkgname = firefox-extension-overbitenx
+
