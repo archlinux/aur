@@ -64,6 +64,7 @@ package() {
 
   cd $srcdir/docker-ce-$pkgver/components/packaging
   # systemd
+  install -Dm644 'systemd/docker.socket' "$pkgdir/usr/lib/systemd/system/docker.socket"
   install -Dm644 'systemd/docker.service' "$pkgdir/usr/lib/systemd/system/docker.service"
   install -Dm644 "$srcdir/docker.sysusers" "$pkgdir/usr/lib/sysusers.d/docker.conf"
 
