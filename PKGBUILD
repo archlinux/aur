@@ -3,7 +3,7 @@
 # Contributor: Anatol Pomozov < anatol dot pomozov at gmail dot com > (aarch64-linux-gnu-gcc)
 
 _target=aarch64-linux-gnu
-pkgname=$_target-gcc
+pkgname=$_target-gcc-openmp
 pkgver=8.2.1
 _islver=0.18
 pkgrel=1
