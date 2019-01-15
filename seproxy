@@ -1,3 +1,3 @@
 #!/bin/sh
 cd /usr/share/setoolkit
-exec python2 setoolkit
+exec python2 seproxy

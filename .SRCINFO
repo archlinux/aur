@@ -1,7 +1,7 @@
 pkgbase = social-engineer-toolkit
 	pkgdesc = The Social-Engineer Toolkit (SET)
 	pkgver = 7.7.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trustedsec/social-engineer-toolkit
 	arch = any
 	license = custom
@@ -19,9 +19,17 @@ pkgbase = social-engineer-toolkit
 	source = social-engineer-toolkit-7.7.9.tar.gz::https://github.com/trustedsec/social-engineer-toolkit/archive/7.7.9.tar.gz
 	source = setoolkit
 	source = setoolkit.sig
+	source = seproxy
+	source = seproxy.sig
+	source = seautomate
+	source = seautomate.sig
 	validpgpkeys = 7A194E3F7A8F867BEA8A5339023F078862ACFE50
 	sha512sums = f9226428f14fb15328a83719d6636c356b331e1d9d92fd0f22438ed6c3119fe9e464e8a5838cba9fe5c1dda1d955266facc93f4325c73127085099783a7b4d77
-	sha512sums = 130df5c3be2a75466933c086a10194a8e276b699698389af1528d2aa0f445d1dd41a82bf27e01749d59481df3d1071ac37605c4ee3e57c8bf99dd2410dd23a0b
+	sha512sums = 0439fe057f0fca9e2534c8c7406fde714218fb30612a1fc4e5a341aa315b52d66475f90850613cd782e4c75009fef17d1f4050818b277bd0ee3196a18156af03
+	sha512sums = SKIP
+	sha512sums = c0de47865d3ee9258d0731cd7122b2714c4dacba0e70370af77d3cf5a883bf59b458b284531222ab54ceee1315f890c977059365d34874a0291473d023d90d0a
+	sha512sums = SKIP
+	sha512sums = 938dd7dc1ddfb9ffed44a35211112ff0beb95dcf81113d16c44e522a1b693ede1c2d517b94aa24bb8725b3ef274af27591c1b1853bb2a56c5b9d75fdf98322c2
 	sha512sums = SKIP
 
 pkgname = social-engineer-toolkit
