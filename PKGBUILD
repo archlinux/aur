@@ -2,8 +2,8 @@
 
 _pkgname=libseekthermal
 pkgname=${_pkgname}-git
-pkgver=20150309.59d286f
-pkgrel=1
+pkgver=1
+pkgrel=2
 pkgdesc='Library and utilities for interfacing with the Seek Thermal Camera'
 url='https://github.com/ethz-asl/libseekthermal'
 arch=('any')
