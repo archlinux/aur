@@ -2,18 +2,18 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=fbthrift
-pkgver=2018.10.08.00
+pkgver=2019.01.14.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server."
 arch=('i686' 'x86_64')
 url="https://github.com/facebook/fbthrift"
 license=('Apache')
-depends=('folly' 'krb5' 'numactl' 'gflags' 'google-glog' 'mstch' 'fizz' 'wangle')
+depends=('folly' 'krb5' 'numactl' 'gflags' 'google-glog' 'mstch' 'fizz' 'wangle' 'bison')
 conflicts=('thrift')
 provides=('thrift')
 makedepends=('cmake' 'zstd' 'libunwind')
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('b958e96a55963557263ddc66eccd477e9a0711947e4c15a186706a90890c887f')
+sha256sums=('cc8c6c41b2c1f6e70e70fafa0dff04b7914ece0b4f6214cb0537127bfb9ec156')
 
 prepare() {
     cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = fbthrift
 	pkgdesc = Facebook's branch of Apache Thrift, including a new C++ server.
-	pkgver = 2018.10.08.00
+	pkgver = 2019.01.14.00
 	pkgrel = 1
 	url = https://github.com/facebook/fbthrift
 	arch = i686
@@ -17,10 +17,11 @@ pkgbase = fbthrift
 	depends = mstch
 	depends = fizz
 	depends = wangle
+	depends = bison
 	provides = thrift
 	conflicts = thrift
-	source = https://github.com/facebook/fbthrift/archive/v2018.10.08.00.tar.gz
-	sha256sums = b958e96a55963557263ddc66eccd477e9a0711947e4c15a186706a90890c887f
+	source = https://github.com/facebook/fbthrift/archive/v2019.01.14.00.tar.gz
+	sha256sums = cc8c6c41b2c1f6e70e70fafa0dff04b7914ece0b4f6214cb0537127bfb9ec156
 
 pkgname = fbthrift
 
