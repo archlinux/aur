@@ -1,6 +1,6 @@
 _pkgname=weidu
 pkgname=$_pkgname-git
-pkgver=git
+pkgver=1
 pkgrel=1
 
 makedepends=("ocaml")
@@ -14,13 +14,13 @@ pkgdesc="WeiDU is a program used to develop, distribute and install modification
 license=("GPLv2")
 
 source=("git+https://github.com/WeiDUorg/elkhound"
-        "git+https://github.com/WeiDUorg/weidu")
+        "git+https://github.com/WeiDUorg/weidu#branch=devel")
 
 sha256sums=("SKIP" "SKIP")
 
 pkgver() {
     cd "$srcdir/weidu"
-    git describe --always
+    git describe --always | sed "s|-|.|g"
 }
 
 prepare() {
