@@ -3,21 +3,21 @@
 
 pkgname=mu-editor
 epoch=1
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='A simple Python editor for beginner programmers'
 arch=('any')
 url='https://codewith.mu/'
 license=('GPL3')
 depends=('python-appdirs' 'python-gpiozero' 'python-guizero' 'python-matplotlib' 'python-nudatus'
-         'python-pigpio' 'python-pgzero' 'python-pycodestyle' 'python-pyflakes' 'python-pyqtchart'
-         'python-pyserial' 'python-qscintilla-qt5' 'python-qtconsole' 'python-requests'
-         'python-semver' 'qt5-serialport')
+         'python-pigpio' 'python-pgzero' 'python-pycodestyle' 'python-pyflakes'
+         'python-pyqtchart>=5.11.3' 'python-pyserial' 'python-qscintilla-qt5' 'python-qtconsole'
+         'python-requests' 'python-semver' 'qt5-serialport')
 makedepends=('gendesk' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mu-editor/mu/archive/$pkgver.tar.gz"
         'webbrowser-issue31014.diff')
-sha256sums=('41abc6415ba8c51d62ad6e465dbefec4b0382d586c60d602ebb3d9e373fc5710'
-            'ee2b9210ddb25ccc29ff857e450646d7b3cd7336a8532de29c76cd2176cc980e')
+sha256sums=('77f59e2697c30393dc0ae460994ccde150f69174dc8c3603887c54be068f6516'
+            '6f2ebf536883ae182ec6a8118b049d7ff039b23d55f846eb7541a2ff0ae1849f')
 
 
 prepare() {
