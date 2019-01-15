@@ -2,7 +2,7 @@
 # PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 
 pkgname=arduino-builder
-pkgver=1.4.1
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A command line tool for compiling Arduino sketches"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('go-pie' 'git' 'unzip')
 optdepends=('arduino-avr-core: AVR core with upstream avr-gcc and avrdude')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/arduino/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"
 		"${pkgname}-${pkgver}.tar.xz.asc::https://github.com/arduino/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz.asc")
-sha512sums=('add5007dd91170a9a65fb3ec88edc9642f3e6037b1598583d726dd2cb41db6ccda64a96f370fe0bce38fe3685f1d274cddb34787cb86a476f29cc28a1e24ce90'
+sha512sums=('7625cf063e54d7157585807e3d63d4540e0c4a92b2b6a7a8cbd44c4f60e81a96c1e36750baa0a3dce2a506db91a8367c6da594baf0bb491cb43f42c41fa4af33'
             'SKIP')
 validpgpkeys=('326567C1C6B288DF32CB061A95FA6F43E21188C4') # Arduino Packages <support@arduino.cc>
 
