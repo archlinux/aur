@@ -2,8 +2,8 @@
 
 _pkgname=remake
 pkgname=cmake-${_pkgname}-git
-pkgver=20160126.3217998
-pkgrel=1
+pkgver=1
+pkgrel=2
 pkgdesc='A set of CMake macros for restructuring GNU Automake/Autoconf projects.'
 url='https://github.com/kralf/remake'
 arch=('any')
@@ -13,8 +13,8 @@ source=("${_pkgname}::git+https://github.com/kralf/${_pkgname}.git" remove_debia
 md5sums=('SKIP'
          '5e25c8aba4976390a2b401e8732dec5a')
 
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("cmake-${_pkgname}")
+conflicts=("cmake-${_pkgname}")
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
