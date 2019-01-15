@@ -1,60 +1,39 @@
+# Maintainer: erik-pro <aarnaarn2@gmail.com>
+# Maintainer: vantu5z <vantu5z@mail.ru>
+# Contributor: der_fenix <derfenix@gmail.com>
+
 pkgname=rhvoice-git
-pkgver=20181112
+pkgver=0.7.1.r14.92c9eec
 pkgrel=1
-pkgdesc="Free and open source speech synthesizer for Russian and other languages. Git version with client/server enabled."
-arch=('i686' 'x86_64')
+pkgdesc="Free and open source speech synthesizer for Russian and other languages. Git version"
+arch=('x86_64')
 url="https://github.com/Olga-Yakovleva/RHVoice"
 license=('GPL3')
-depends=('libpulse' 'libao' 'portaudio' 'glibmm')
+depends=('libpulse')
 makedepends=('git' 'scons')
-optdepends=('alsa-utils: for using aplay'
-            'rhvoice-dictionary-git: extended russian dictionary')
+optdepends=('rhvoice-dictionary-git: extended russian dictionary'
+	'speech-dispatcher: for speech-dispatcher module support'
+	'portaudio: for portaudio backend'
+	'libao: for ao backend')
 provides=('rhvoice')
-replaces=('rhvoice')
+conflicts=('rhvoice')
 backup=('etc/RHVoice/RHVoice.conf')
+source=('git+https://github.com/Olga-Yakovleva/RHVoice.git')
+md5sums=('SKIP')
 
-_gitroot='https://github.com/Olga-Yakovleva/RHVoice.git'
-_gitname='RHVoice'
+pkgver() {
+	cd "$srcdir/RHVoice"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
 
 build() {
-    cd "$srcdir"
-    msg "Connecting to GIT server...."
-
-    if [[ -d "$_gitname" ]]; then
-        cd "$_gitname" && git checkout SConstruct && git pull origin
-        msg "The local files are updated."
-    else
-        git clone --depth 1 "$_gitroot" "$_gitname"
-    fi
-
-    msg "GIT checkout done or server timeout"
-
-    msg2 "Patching source, enable client/server capabilytis"
-    cd "${srcdir}"
-	for p in ../*.patch; do
-      msg2 "Applying patch: $p"
-      patch -p1 -i "$p" --binary
-    done
-
-    msg "Starting build..."
-    cd "$srcdir/$_gitname"
-
-    scons prefix="/usr" sysconfdir="/etc" || return 1
+	cd "$srcdir/RHVoice"
+	scons prefix="/usr" sysconfdir="/etc"
 }
 
 package() {
-  echo "Installing package"
-  cd "$srcdir/$_gitname"
-  mkdir -p ${pkgdir}{/usr/bin/,/etc/RHVoice,/usr/lib/,/usr/include,/usr/share/RHVoice,/usr/lib/speech-dispatcher-modules}
-  install -D build/linux/service/RHVoice{-service,-client} "${pkgdir}/usr/bin/"
-  install -D build/linux/test/RHVoice-test "${pkgdir}/usr/bin/"
-  install -D build/linux/sd_module/sd_rhvoice "${pkgdir}/usr/lib/speech-dispatcher-modules/"
-  install -D -m 644 config/RHVoice.conf "${pkgdir}/etc/RHVoice/"
-  cp -R config/dicts/ "$pkgdir/etc/RHVoice/"
-  install -m 644 build/linux/lib/libRHVoice.so "${pkgdir}/usr/lib"
-  install -m 644 build/linux/core/libRHVoice_core.so "${pkgdir}/usr/lib"
-  install -m 644 build/linux/audio/libRHVoice_audio.so "${pkgdir}/usr/lib"
-  install -m 644 src/include/RHVoice.h "${pkgdir}/usr/include/"
-  cp -R data/*  "${pkgdir}/usr/share/RHVoice"
-  rm "${pkgdir}/usr/share/RHVoice/SConscript"
+	cd "$srcdir/RHVoice"
+	mkdir -p "${pkgdir}/usr/lib/speech-dispatcher-modules"
+	scons install DESTDIR="${pkgdir}" prefix="/usr" sysconfdir="/etc"
+	ln -s "/usr/bin/sd_rhvoice" "${pkgdir}/usr/lib/speech-dispatcher-modules/sd_rhvoice"
 }
