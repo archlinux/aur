@@ -1,7 +1,7 @@
 # Maintainer: Mutantoe <mutantoe+aur@mailbox.org>
 pkgname=marblemarcher
 pkgver=20190112
-pkgrel=1
+pkgrel=2
 pkgdesc="A Fractal Physics Game"
 arch=(x86_64)
 url="https://github.com/HackerPoet/MarbleMarcher"
@@ -25,19 +25,18 @@ sha256sums=('SKIP'
 
 build() {
   cd "$pkgname"
-  mkdir build && cd build
+  mkdir -p build && cd build
   cmake ..
   cd ..
   cmake --build build
 }
 
 package() {
-  mkdir -p "$pkgdir/opt/$pkgname"
-  mkdir -p "$pkgdir/usr/local/bin"
-  cp marblemarcher.sh "$pkgdir/usr/local/bin/marblemarcher"
+  install -Dm755 marblemarcher.sh "$pkgdir/usr/bin/marblemarcher"
+  mkdir -p "$pkgdir/usr/share/$pkgname"
 
   cd "$pkgname"
   
-  cp build/MarbleMarcher "$pkgdir/opt/$pkgname"
-  cp -r assets "$pkgdir/opt/$pkgname"
+  install -Dm755 build/MarbleMarcher "$pkgdir/usr/share/$pkgname"
+  cp -r assets "$pkgdir/usr/share/$pkgname"
 }
