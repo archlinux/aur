@@ -1,0 +1,18 @@
+[Unit]
+Description=Grin server
+After=network.target
+
+[Service]
+User=grin
+Group=grin
+DynamicUser=on
+LogsDirectory=grin
+RuntimeDirectory=grin
+StateDirectory=grin
+
+ExecStart=/usr/bin/grin server --config_file=/etc/grin/server.toml run
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

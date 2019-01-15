@@ -1,0 +1,202 @@
+
+# Generated Server Configuration File for Grin
+#
+# When running the grin executable without specifying any command line
+# arguments, it will look for this file in two places, in the following
+# order:
+#
+# -The working directory
+# -[user home]/.grin
+#
+
+#########################################
+### SERVER CONFIGURATION              ###
+#########################################
+
+#Server connection details
+[server]
+
+#the directory, relative to current, in which the grin blockchain
+#is stored
+db_root = "/var/lib/grin/main/chain_data"
+
+#path of TLS certificate file, self-signed certificates are not supported
+#tls_certificate_file = ""
+#private key for the TLS certificate
+#tls_certificate_key = ""
+
+#the address on which services will listen, e.g. Transaction Pool
+api_http_addr = "127.0.0.1:3413"
+
+#path of the secret token used by the API to authenticate the calls
+#comment it to disable basic auth
+api_secret_path = "/var/lib/grin/main/.api_secret"
+
+#The chain type, which defines the genesis block and the set of cuckoo
+#parameters used for mining as well as wallet output coinbase maturity. Can be:
+#AutomatedTesting - For CI builds and instant blockchain creation
+#UserTesting - For regular user testing (cuckoo 16)
+#Floonet - For the long term Floonet test network
+chain_type = "Mainnet"
+
+#the chain validation mode, defines how often (if at all) we
+#want to run a full chain validation. Can be:
+#"EveryBlock" - run full chain validation when processing each block (except during sync)
+#"Disabled" - disable full chain validation (just run regular block validation)
+chain_validation_mode = "Disabled"
+
+#run the node in "full archive" mode (default is fast-sync, pruned node)
+archive_mode = false
+
+#skip waiting for sync on startup, (optional param, mostly for testing)
+skip_sync_wait = false
+
+#whether to run the ncurses TUI. Ncurses must be installed and this
+#will also disable logging to stdout
+run_tui = false
+
+#Whether to run a test miner. This is only for developer testing (chaintype
+#usertesting) at cuckoo 16, and will only mine into the default wallet port.
+#real mining should use the standalone grin-miner
+run_test_miner = false
+
+#test miner wallet URL (burns if this doesn't exist)
+#test_miner_wallet_url = "http://127.0.0.1:3415"
+
+#########################################
+### SERVER P2P CONFIGURATION          ###
+#########################################
+#The P2P server details (i.e. the server that communicates with other
+[server.p2p_config]
+
+#The interface on which to listen.
+#0.0.0.0 will listen on all interfaces, allowing others to interact
+#127.0.0.1 will listen on the local machine only
+host = "0.0.0.0"
+
+#The port on which to listen.
+port = 3414
+
+#how to seed this server, can be None, List or DNSSeed
+seeding_type = "DNSSeed"
+
+#If the seeding type is List, the list of peers to connect to can
+#be specified as follows:
+#seeds = ["192.168.0.1:3414","192.168.0.2:3414"]
+
+#hardcoded peer lists for allow/deny
+#will *only* connect to peers in allow list
+#peers_allow = ["192.168.0.1:3414", "192.168.0.2:3414"]
+#will *never* connect to peers in deny list
+#peers_deny = ["192.168.0.3:3414", "192.168.0.4:3414"]
+#a list of preferred peers to connect to
+#peers_preferred = ["192.168.0.1:3414","192.168.0.2:3414"]
+
+#how long a banned peer should stay banned
+#ban_window = 10800
+
+#maximum number of peers
+#peer_max_count = 25
+
+#preferred minimum number of peers (we'll actively keep trying to add peers
+#until we get to at least this number
+#peer_min_preferred_count = 8
+
+# 15 = Bit flags for FULL_NODE
+#This structure needs to be changed internally, to make it more configurable
+
+# A preferred dandelion_peer, mainly used for testing dandelion
+# dandelion_peer = "10.0.0.1:13144"
+
+[server.p2p_config.capabilities]
+bits = 15
+
+
+#########################################
+### MEMPOOL CONFIGURATION             ###
+#########################################
+[server.pool_config]
+
+#base fee that's accepted into the pool
+accept_fee_base = 1000000
+
+#maximum number of transactions allowed in the pool
+max_pool_size = 50000
+
+#maximum number of transactions allowed in the stempool
+max_stempool_size = 50000
+
+#maximum total weight of transactions that can get selected to build a block
+mineable_max_weight = 39976
+
+
+#########################################
+### DANDELION CONFIGURATION           ###
+#########################################
+[server.dandelion_config]
+
+#dandelion relay time (choose new relay peer every n secs)
+relay_secs = 600
+
+#fluff and broadcast after embargo expires if tx not seen on network
+embargo_secs = 180
+
+#run dandelion stem/fluff processing every n secs (stem tx aggregation in this window)
+patience_secs = 10
+
+#dandelion stem probability (stem 90% of the time, fluff 10% of the time)
+stem_probability = 90
+
+
+################################################
+### STRATUM MINING SERVER CONFIGURATION      ###
+################################################
+[server.stratum_mining_config]
+
+#whether stratum server is enabled
+enable_stratum_server = false
+
+#what port and address for the stratum server to listen on
+stratum_server_addr = "127.0.0.1:3416"
+
+#the amount of time, in seconds, to attempt to mine on a particular
+#header before stopping and re-collecting transactions from the pool
+attempt_time_per_block = 15
+
+#the minimum acceptable share difficulty to request from miners
+minimum_share_difficulty = 1
+
+#the wallet receiver to which coinbase rewards will be sent
+wallet_listener_url = "http://127.0.0.1:3415"
+
+#whether to ignore the reward (mostly for testing)
+burn_reward = false
+
+
+#########################################
+### LOGGING CONFIGURATION             ###
+#########################################
+[logging]
+
+#whether to log to stdout
+log_to_stdout = true
+
+#log level for stdout: Error, Warning, Info, Debug, Trace
+stdout_log_level = "Warning"
+
+#whether to log to a file
+log_to_file = true
+
+#log level for file: Error, Warning, Info, Debug, Trace
+file_log_level = "Debug"
+
+#log file path
+log_file_path = "/var/log/grin/main/server.log"
+
+#whether to append to the log file (true), or replace it on every run (false)
+log_file_append = true
+
+#maximum log file size in bytes before performing log rotation
+#comment it to disable log rotation
+log_max_size = 16777216
+
