@@ -1,0 +1,17 @@
+pkgbase = gdcc
+	pkgdesc = Game Data Compiler Collection
+	pkgver = 0.14.4
+	pkgrel = 1
+	url = http://github.com/DavidPH/GDCC
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = asciidoc
+	depends = gmp
+	source = gdcc::git+https://github.com/DavidPH/GDCC.git#tag=v0.14.4
+	sha256sums = SKIP
+
+pkgname = gdcc
+
