@@ -1,6 +1,6 @@
 pkgbase = python-heatclient
 	pkgdesc = Python client library for Heat
-	pkgver = 1.16.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = http://docs.openstack.org/developer/python-heatclient/
 	arch = any
@@ -48,11 +48,10 @@ pkgbase = python-heatclient
 	checkdepends = python2-requests-mock
 	checkdepends = python-testrepository
 	checkdepends = python2-testrepository
-	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/python-heatclient#tag=1.16.1
-	sha512sums = SKIP
+	source = https://github.com/openstack/python-heatclient/archive/1.17.0.tar.gz
+	sha512sums = fb16f17e1313d1897291fdb4f72641a5e288283a96d88813421f12546e540ffe3a184cd0ec39f9f5acf9aa2f036dc3449ead0269b916c571ee1ec00c152202f9
 
 pkgname = python-heatclient
 	depends = python-babel

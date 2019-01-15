@@ -2,14 +2,13 @@
 
 pkgname=('python-heatclient'
          'python2-heatclient')
-pkgver='1.16.1'
+pkgver='1.17.0'
 pkgrel='1'
 pkgdesc='Python client library for Heat'
 arch=('any')
 url="http://docs.openstack.org/developer/${pkgname}/"
 license=('Apache')
-makedepends=('git'
-             'python-setuptools'
+makedepends=('python-setuptools'
              'python2-setuptools')
 checkdepends=('python-babel' 'python2-babel' 
               'python-pbr' 'python2-pbr'
@@ -33,27 +32,28 @@ checkdepends=('python-babel' 'python2-babel'
               'python-os-testr'
               'python-requests-mock' 'python2-requests-mock'
               'python-testrepository' 'python2-testrepository')
-source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
-sha512sums=('SKIP')
+source=("https://github.com/openstack/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('fb16f17e1313d1897291fdb4f72641a5e288283a96d88813421f12546e540ffe3a184cd0ec39f9f5acf9aa2f036dc3449ead0269b916c571ee1ec00c152202f9')
 
 prepare() {
-  cp -a "${srcdir}/${pkgname}"{,-py2}
+  cp -a "${srcdir}/${pkgname}-${pkgver}"{,-py2}
+  export PBR_VERSION=$pkgver
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}/${pkgname}-py2"
+  cd "${srcdir}/${pkgname}-${pkgver}-py2"
   python2 setup.py build
 }
 
 check() {
-  cd "${srcdir}/${pkgname}"
-  python setup.py testr
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  stestr run
 
-  cd "${srcdir}/${pkgname}-py2"
-  PYTHON=python2 python2 setup.py testr
+  cd "${srcdir}/${pkgname}-${pkgver}-py2"
+  PYTHON=python2 stestr2 run
 }
 
 package_python-heatclient() {
@@ -71,7 +71,7 @@ package_python-heatclient() {
            'python-yaml'
            'python-requests'
            'python-six')
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
@@ -90,7 +90,7 @@ package_python2-heatclient() {
            'python2-yaml'
            'python2-requests'
            'python2-six')
-  cd "${srcdir}/python-heatclient-py2"
+  cd "${srcdir}/python-heatclient-${pkgver}-py2"
   python2 setup.py install --root="${pkgdir}" --optimize=1
   mv "${pkgdir}"/usr/bin/heat{,2}
 }
