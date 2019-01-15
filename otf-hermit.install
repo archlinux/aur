@@ -10,8 +10,11 @@ post_upgrade() {
     # Renamed "hermit.otf" to "Hermit.otf" for coherence with the font name.
     rm -f /usr/share/fonts/OTF/hermit.otf
 
-    # Moved "Hermit.otf" to "Hermit-medium.otf"
+    # Renamed "Hermit.otf" to "Hermit-medium.otf"
     rm -f /usr/share/fonts/OTF/Hermit.otf
+
+    # Renamed "Hermit-medium.otf" to "Hermit-Regular.otf"
+    rm -f /usr/share/fonts/OTF/Hermit-medium.otf
 
     post_install
 }
