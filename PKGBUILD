@@ -1,8 +1,8 @@
-# Maintainer: dude <brrtsm-AT-gmail-DOT-com>
-# Contributor: buzz <buzz-AT-l4m1-DOT-de>
+# Maintainer: buzz
+# Contributor: dude <brrtsm-AT-gmail-DOT-com>
 pkgname=twitch-indicator
 _gitname=twitch-indicator
-pkgver=0.26.r4.g14a49ae
+pkgver=0.27.r0.g7d74866
 pkgrel=1
 pkgdesc="Twitch.tv indicator for Linux. Tracks your followed channels and notifies when they go live."
 arch=("any")
