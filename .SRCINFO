@@ -1,0 +1,17 @@
+pkgbase = vim-rainbow-parentheses-improved-git
+	pkgdesc = Better Rainbow Parentheses (Improved) (git version)
+	pkgver = 3.3.1+43.gd7bb89e6a6
+	pkgrel = 1
+	url = https://github.com/luochen1990/rainbow
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	provides = vim-rainbow-parentheses-improved
+	conflicts = vim-rainbow-parentheses-improved
+	source = https://github.com/luochen1990/rainbow
+	sha256sums = SKIP
+
+pkgname = vim-rainbow-parentheses-improved-git
+
