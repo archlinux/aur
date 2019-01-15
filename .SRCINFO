@@ -1,7 +1,7 @@
 pkgbase = libseekthermal-git
-	pkgdesc = A set of CMake macros for restructuring GNU Automake/Autoconf projects.
-	pkgver = 20150309.59d286f
-	pkgrel = 1
+	pkgdesc = Library and utilities for interfacing with the Seek Thermal Camera
+	pkgver = 1
+	pkgrel = 2
 	url = https://github.com/ethz-asl/libseekthermal
 	arch = any
 	license = LGPL
