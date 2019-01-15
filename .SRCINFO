@@ -1,7 +1,7 @@
 pkgbase = python-yaql
 	pkgdesc = YAQL - Yet Another Query Language
 	pkgver = 1.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://yaql.readthedocs.io
 	arch = any
 	license = Apache
@@ -24,8 +24,8 @@ pkgbase = python-yaql
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/yaql#tag=1.1.3
-	md5sums = SKIP
+	source = https://github.com/openstack/yaql/archive/1.1.3.tar.gz
+	sha512sums = a4c5e8311d181d64f17db9b01cb6ce6cc28bc4ca91f9ddfd539c2fb58f1f989d7d091f7d4e74d51d70d44c71ea223276b7e6c03e83802a468b2db0d486c62d86
 
 pkgname = python-yaql
 	depends = python-six
