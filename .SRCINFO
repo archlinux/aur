@@ -1,6 +1,6 @@
 pkgbase = jackal-git
 	pkgdesc = An XMPP/Jabber server
-	pkgver = v0.4.0_4_g726d4cbb81e0
+	pkgver = v0.4.5_0_gffecee5985cc
 	pkgrel = 1
 	url = https://github.com/ortuman/jackal
 	install = jackal.install

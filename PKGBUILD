@@ -2,7 +2,7 @@
 
 _pkgname=jackal
 pkgname=${_pkgname}-git
-pkgver=v0.4.0_4_g726d4cbb81e0
+pkgver=v0.4.5_0_gffecee5985cc
 pkgrel=1
 pkgdesc='An XMPP/Jabber server'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -46,7 +46,7 @@ package() {
 
   install -D jackal.yml "${pkgdir}/etc/jackal/jackal.yml"
   install -Dm444 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/jackal/"
-  install -Dm444 "${srcdir}/${_pkgname}/sql/mysql.sql" "${pkgdir}/usr/share/jackal/"
+  cp -r "${srcdir}/${_pkgname}/sql/" "${pkgdir}/usr/share/jackal/"
   install -Dm755 "${srcdir}/${_pkgname}/jackal" "${pkgdir}/usr/bin/jackal"
 
   install -Dm644 ${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
