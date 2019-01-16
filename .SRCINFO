@@ -1,0 +1,27 @@
+pkgbase = sacad-git
+	pkgdesc = Smart Automatic Cover Art Downloader
+	pkgver = 2.1.8.r5.g835fe12
+	pkgrel = 1
+	url = https://github.com/desbma/sacad
+	arch = any
+	license = MPL2
+	makedepends = python-pip
+	depends = python
+	depends = python-setuptools
+	depends = python-aiohttp
+	depends = python-appdirs
+	depends = python-bitarray
+	depends = python-cssselect
+	depends = python-lxml
+	depends = python-mutagen
+	depends = python-pillow
+	depends = python-tqdm
+	provides = sacad
+	provides = sacad-git
+	conflicts = sacad
+	conflicts = sacad-git
+	source = git+https://github.com/desbma/sacad
+	md5sums = SKIP
+
+pkgname = sacad-git
+
