@@ -15,7 +15,7 @@ source=("${pkgname}.tar.gz::http://static.tibia.com/download/tibia.x64.tar.gz"
         "01_openssl102.patch"
         "02_freetype.patch")
 
-sha256sums=('47ae3dc80e892bf57c2729e507eecadf2ff73263eca46c5edc860b43b772ac4f'
+sha256sums=('SKIP'
             '1200d3d5a77c8408a79a92c2fb4bdb5fa123b928aa036a32d2951e2459f0f7d9'
             'e9e6cdd4e2954ae0838dc427a92871bb9cacdacb0523598c60287a05f8568d1f'
             '3cdf107369e4366aa5fc6d1b90ba0b41bd3d19abeb418fb85a693d74c3ece736')
