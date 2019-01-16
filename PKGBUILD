@@ -2,7 +2,7 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=mondo-generator
-pkgver=0.1.4
+pkgver=2019.01.16.1
 pkgrel=1
 pkgdesc='a theme template manager and generator'
 arch=('any')
@@ -19,12 +19,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/budlabs/mondo/archive/v.$pkgver.tar.gz")
+source=("https://github.com/budlabs/mondo/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('efb08de7992f21c6d7d77a8feff92e9ed22e94a4619b647558bd0aadb59e4f85')
+sha256sums=('35b57fcf2f171673895288c34b90cd434eb341bcb4cbd833418146c232360648')
 
 package() {
-  cd "mondo-v.$pkgver"
+  ls
+  cd "mondo-$pkgver"
 
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 
