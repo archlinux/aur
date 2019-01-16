@@ -1,0 +1,25 @@
+pkgbase = engelsystem
+	pkgdesc = tool for coordinating helpers and shifts on large events
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://engelsystem.de/index_en.html
+	install = engelsystem.install
+	arch = any
+	license = GPL2
+	makedepends = yarn
+	makedepends = nodejs
+	depends = php
+	depends = mariadb
+	depends = php-gettext-enabler
+	depends = composer
+	depends = npm
+	optdepends = nginx: a supported application server
+	optdepends = apache: a supported application server
+	backup = usr/share/webapps/engelsystem/config/config.php
+	source = engelsystem-3.0.0.tar.gz::https://github.com/engelsystem/engelsystem/archive/v3.0.0.tar.gz
+	source = engelsystem.install
+	sha512sums = 1508ea888eda23b3f5e8d600c2793556942b9849c75b1341d9c5c17db4a4db207f7c5840363150f12dfd11751307738f8856b7b911dd55d0bb63618af9113474
+	sha512sums = SKIP
+
+pkgname = engelsystem
+

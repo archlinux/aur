@@ -1,0 +1,22 @@
+post_install() {
+	echo "enabling the PDO-MySQL module in php"
+	sed -i -e 's/;extension=pdo_mysql/extension=pdo_mysql/' /etc/php/php.ini
+
+	install -dm775 /usr/share/webapps/engelsystem/import
+	chown http:http /usr/share/webapps/engelsystem/import
+	install -dm775 /usr/share/webapps/engelsystem/storage
+	chown http:http /usr/share/webapps/engelsystem/storage
+}
+
+pre_remove() {
+  cp -r /usr/share/webapps/engelsystem /usr/share/webapps/engelsystem_backup
+  echo 'Your Engelsystem folder was backed up to /usr/share/webapps/engelsystem_backup'
+}
+
+post_remove() {
+  rm -rf /usr/share/webapps/engelsystem
+}
+
+post_upgrade() {
+  echo 'Engelsystem was placed in /usr/share/webapps'
+}
