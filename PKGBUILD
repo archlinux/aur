@@ -3,7 +3,7 @@
 # Contributor:: Daniel Egeberg <daniel.egeberg@gmail.com>
 
 pkgname="sonarr-phantom"
-pkgver="3.0.0.348"
+pkgver="3.0.1.358"
 pkgrel=1
 pkgdesc="TV download automation for usenet and torrents."
 arch=(any)
@@ -22,13 +22,13 @@ optdepends=('sabnzbd: usenet downloader'
 provides=('sonarr')
 conflicts=('sonarr' 'sonarr-develop')
 
-source=("https://download.sonarr.tv/v3/phantom/${pkgver}/Sonarr.phantom.${pkgver}.linux.tar.gz"
+source=("https://download.sonarr.tv/v3/phantom-develop/${pkgver}/Sonarr.phantom-develop.${pkgver}.linux.tar.gz"
         "sonarr.service"
         "sonarr.sysusers"
         "sonarr.tmpfiles")
 
 noextract=()
-sha256sums=('d7f35035d39ada0d3c9468eda1672ed29460f1d659ebf179aa9a215e63d9f17e'
+sha256sums=('3a9191aa9a3dc2507aba06e39edf5f46fe3c114356395586dedda6b3d2e1f78a'
             'b16e72fc8556aa2708adf81cec6ef44cefd207cfb07fe069790131829c672c39'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             'a436a979ca3a9e78bdc410bd0027d97956bfa8d2d4f2b7bdf3f7d2ed199dd6a8')
