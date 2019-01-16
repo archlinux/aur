@@ -2,7 +2,7 @@
 # Contributor: Thomas Robinson <robinsthom |a| gmail |.| com>
 #              Visa Jokelainen <visaj |a| iki |.| fi>
 pkgname=robotframework
-pkgver=3.0.4
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A keyword-driven test automation framework"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python')
 optdepends=('jython: for using robotframework with Java (must be installed before running PKGBUILD)')
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('74acaf2138423f4c1d840bc83b79e242')
+md5sums=('2d8a3fea24c43fdf2f710ed82497639c')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
