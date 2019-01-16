@@ -11,7 +11,7 @@ pkgbase = httplab
 	provides = httplab
 	conflicts = httplab
 	replaces = httplab
-	source = httplab::https://github.com/gchaincl/httplab/releases/download/v0.4.0/httplab_{0.4.0}_linux_amd64.tar.gz
+	source = httplab::https://github.com/gchaincl/httplab/releases/download/v0.4.0/httplab_0.4.0_linux_amd64.tar.gz
 	md5sums = 0b00487b6d52c67713170dc3fa868a08
 
 pkgname = httplab

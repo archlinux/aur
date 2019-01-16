@@ -11,7 +11,7 @@ provides=('httplab')
 conflicts=('httplab')
 replaces=('httplab')
 install=
-source=("$pkgname"::"https://github.com/gchaincl/httplab/releases/download/v${pkgver}/httplab_{$pkgver}_linux_amd64.tar.gz")
+source=("$pkgname"::"https://github.com/gchaincl/httplab/releases/download/v${pkgver}/httplab_${pkgver}_linux_amd64.tar.gz")
 md5sums=(
 	'0b00487b6d52c67713170dc3fa868a08'
 )
