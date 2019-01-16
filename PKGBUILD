@@ -1,7 +1,7 @@
 # Maintainer: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
 pkgname=siril
-pkgver=0.9.9
-pkgrel=2
+pkgver=0.9.10
+pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('i686' 'x86_64')
 license=('GPLv3')
@@ -14,22 +14,22 @@ optdepends=('libpng: PNG import'
 'libraw: DSLR RAW images import'
 'ffms2: films native support as image sequences and import'
 'libcurl-gnutls: check for updates'
+'gnuplot: photometry graphs creation'
 )
 
 _pkgname="${pkgname}-${pkgver}"
-source=("https://free-astro.org/download/${_pkgname}.tar.bz2" "glibc.patch")
+source=("https://free-astro.org/download/${_pkgname}.tar.bz2")
 
-sha1sums=('2f7b1ebb204c02662ea0c12ea0bc16a4d04484fa' '132af313b770ff7c20a3858ae767d69cca2a516c')
+sha1sums=('5be59d908fd76a73fd8e544cd46c3bfe54dd19d8')
 
 build() {
-	cd "${_pkgname}"
-	patch -p0 < ../glibc.patch
+	cd "${pkgname}"
 	./autogen.sh --prefix=/usr
 	make
 }
 
 package() {
-	cd "${_pkgname}"
+	cd "${pkgname}"
 	make DESTDIR="${pkgdir}" install
 	install -v -d ${pkgdir}/usr/share/applications/
 	install -v -d ${pkgdir}/usr/share/mime/packages/
