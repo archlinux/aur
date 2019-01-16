@@ -1,0 +1,21 @@
+pkgbase = parole-git
+	pkgdesc = A modern simple media player based on the GStreamer framework
+	pkgver = 1.0.1.130.gd6e5380
+	pkgrel = 1
+	url = http://goodies.xfce.org/projects/applications/parole
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = xfce4-dev-tools-git
+	depends = desktop-file-utils
+	depends = gst-plugins-good
+	depends = libnotify
+	depends = libxfce4ui-git
+	provides = parole=1.0.1.130.gd6e5380
+	conflicts = parole
+	source = parole-git::git://git.xfce.org/apps/parole
+	sha256sums = SKIP
+
+pkgname = parole-git
+
