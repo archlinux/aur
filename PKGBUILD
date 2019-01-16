@@ -19,8 +19,16 @@ optdepends=('net-snmp: for SNMP checking'
 provides=('nagios-plugins')
 conflicts=('nagios-plugins')
 replaces=('nagios-plugins')
-source=(https://www.monitoring-plugins.org/download/$pkgname-$pkgver.tar.gz)
-md5sums=('549e243ba1fb5c5b3be3a86961de40a7')
+source=("https://www.monitoring-plugins.org/download/$pkgname-$pkgver.tar.gz"
+        '0001-mariadb.patch')
+sha256sums=('296a538f00a9cbef7f528ff2d43af357a44b384dc98a32389a675b62a6dd3665'
+            '2e478c220563c194f61d68860cfbb56cf9ce1179b2590343c679a1609a5fba6d')
+
+prepare() {
+  cd $pkgname-$pkgver
+
+  patch -Np1 < ../0001-mariadb.patch
+}
 
 build() {
   cd $pkgname-$pkgver
