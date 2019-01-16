@@ -1,13 +1,13 @@
 pkgbase = libcrystalhd
 	pkgdesc = Broadcom Crystal HD library
 	pkgver = 20131127
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agx/libcrystalhd
 	arch = i686
 	arch = x86_64
 	license = LGPLv2.1
 	source = libcrystalhd-20131127.zip::https://github.com/agx/libcrystalhd/archive/master.zip
-	md5sums = 5f4832657340acaa411aabfc20ca1499
+	sha256sums = a52154ae3278c5418032a6882f20103747514be25d1abab78c357725d48949e4
 
 pkgname = libcrystalhd
 
