@@ -4,17 +4,17 @@
 # Contributor: Sebastien Piccand <sebcactus gmail com>
 
 pkgname=('handbrake-fdkaac' 'handbrake-cli-fdkaac')
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
-makedepends=('intltool' 'python2' 'yasm' 'wget' 'cmake' 'bzip2' 'gcc-libs'
+makedepends=('intltool' 'python2' 'nasm' 'wget' 'cmake' 'bzip2' 'gcc-libs' 'xz'
              'zlib' 'libnotify' 'gst-plugins-base' 'gtk3' 'dbus-glib' 'libass'
              'lame' 'libxml2' 'opus' 'libvorbis' 'libtheora' 'libsamplerate'
-             'x264' 'jansson' 'librsvg' 'libgudev')
+             'speex' 'x264' 'jansson' 'librsvg' 'libgudev')
 source=(https://download.handbrake.fr/releases/$pkgver/HandBrake-$pkgver-source.tar.bz2)
-sha256sums=('ba9a4a90a7657720f04e4ba0a2880ed055be3bd855e99c0c13af944c3904de2e')
+sha256sums=('113b398a50147d48c8777e6ff2c4de6825af5f1079b3822e41bf0eacec9c940d')
 
 build() {
   cd "$srcdir/HandBrake-$pkgver"
@@ -30,8 +30,8 @@ package_handbrake-fdkaac() {
   pkgdesc="Multithreaded video transcoder"
   conflicts=('handbrake')
   depends=('bzip2' 'gcc-libs' 'zlib' 'gst-plugins-base' 'libnotify' 'dbus-glib'
-           'gtk3' 'libass' 'lame' 'libxml2' 'opus' 'libvorbis' 'libtheora'
-           'libsamplerate' 'x264' 'jansson' 'librsvg' 'libgudev'
+           'gtk3' 'xz' 'libass' 'lame' 'libxml2' 'opus' 'libvorbis' 'libtheora'
+           'libsamplerate' 'speex' 'x264' 'jansson' 'librsvg' 'libgudev'
            'desktop-file-utils' 'hicolor-icon-theme')
   optdepends=('gst-plugins-good: for video previews'
               'gst-libav: for video previews'
@@ -46,8 +46,8 @@ package_handbrake-fdkaac() {
 package_handbrake-cli-fdkaac() {
   pkgdesc="Multithreaded video transcoder (CLI)"
   conflicts=('handbrake-cli')
-  depends=('bzip2' 'gcc-libs' 'zlib' 'libass' 'lame' 'libxml2' 'opus'
-           'libvorbis' 'libtheora' 'libsamplerate' 'x264' 'jansson')
+  depends=('bzip2' 'gcc-libs' 'zlib' 'xz' 'libass' 'lame' 'libxml2' 'opus'
+           'libvorbis' 'libtheora' 'libsamplerate' 'speex' 'x264' 'jansson')
   optdepends=('libdvdcss: for decoding encrypted DVDs')
 
   cd "$srcdir/HandBrake-$pkgver/build"
