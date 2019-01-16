@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 164237 2012-07-28 03:14:33Z stephane $
-# Maintainer: Ilya Elenskiy <elenskiy.ilya@gmail.com>
+# Maintainer: Vladimir Khodygo <khodygo == at == gmail.com>
+# Contributor: Ilya Elenskiy <elenskiy.ilya@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
@@ -8,7 +9,7 @@ pkgbase="python-numpy-mkl"
 pkgname="python-numpy-mkl"
 true && pkgname=('python-numpy-mkl' 'python2-numpy-mkl')
 #pkgname=('python-numpy')
-pkgver=1.15.4
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Scientific tools for Python compiled with intel mkl"
 arch=('i686' 'x86_64')
@@ -21,7 +22,7 @@ makedepends=('python-setuptools' 'python2-setuptools' 'intel-compiler-base' 'int
 source=(https://github.com/numpy/numpy/archive/v${pkgver}.tar.gz
 	'site64.cfg' 'site32.cfg')
 
-sha256sums=('3b1744b96ce41fff1c7e19144ca85cbbfb11e4b4e0e13080ca374df212801dbb'
+sha256sums=('c95533f25e01aaedf21d0212f8101801a56b41a0de4038d2c24dd5a2e0393854'
             '86cd68a695a5e1d76f8e53cda70c888c4ed04349f15c8096d4492e346e7187e1'
             '882f2717deca0fd6a2e2384aac2dc7973c566f9cd2ba46777c3b5ffdffa814df')
 
