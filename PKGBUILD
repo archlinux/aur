@@ -91,7 +91,7 @@ package()
   install -Dm 644 ${srcdir}/odoo.service ${pkgdir}/usr/lib/systemd/system/odoo.service
   install -Dm 644 ${srcdir}/odoo.conf ${pkgdir}/etc/odoo/odoo.conf
 }
-md5sums=('5fea1ccae450acc1bac6dcf40f5ed4c4'
+md5sums=('a067207372ed70dd2b59542dcdb38ef9'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '5bddcc6edbdefdd07cae945165c63604'
          '863418f31f0fb982cde0008fa63f35f0')
