@@ -1,31 +1,27 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=bp-nfoview
-pkgver=0.2.5
-pkgrel=2
+pkgver=0.2.6
+pkgrel=1
 pkgdesc="A Simple NFO-Viewer by brainpower"
 arch=('i686' 'x86_64')
 url="https://github.com/brainpower/bp-nfoview"
 license=('GPL')
 depends=('qt5-base')
-makedepends=('cmake' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brainpower/bp-nfoview/archive/v${pkgver}.tar.gz")
-sha256sums=('b6f67443cafa8cccfc0fe9a172e0067b159d6ba6a4d88bc7b63f317edb702ff3')
+makedepends=('meson' 'git')
+source=("https://github.com/brainpower/bp-nfoview/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('5a5606a7ae21f1518b2c56e957e3842b9778930d69849c5a5405ed403a214ab2')
 
 build(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-  mkdir -p build/
-  cd build/
+	arch-meson builddir
 
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
-
-  make ${MAKEFLAGS}
+	ninja -v -C builddir
 }
 
 package(){
-  cd "${srcdir}/${pkgname}-${pkgver}/build/"
-	make DESTDIR="${pkgdir}" install
+	cd "${srcdir}/${pkgname}-${pkgver}/builddir"
+
+	DESTDIR="${pkgdir}" ninja install
 }
