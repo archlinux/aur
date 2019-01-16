@@ -5,8 +5,8 @@
 # Maintainer: jooch <jooch AT gmx DOT com>
 
 pkgname=freefilesync
-pkgver=10.5
-pkgrel=2
+pkgver=10.8
+pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="http://www.freefilesync.org/"
@@ -15,25 +15,33 @@ depends=(wxgtk webkit2gtk boost-libs)
 makedepends=(boost)
 source=(
 	"FreeFileSync_${pkgver}_Source.zip::https://www.freefilesync.org/download_redirect.php?file=FreeFileSync_${pkgver}_Source.zip"		#ffs
+	revert_resources_path.patch
+	revert_xdg_config_path.patch
 	FreeFileSync.desktop
 	ffsicon.png
 	RealTimeSync.desktop
 	rtsicon.png
 	)
 
-sha256sums=(
-	 '5c6f96d85dac1c6cd0ee511e7f7062b71ec271f0aa70c779af76498948391740'	#ffs source
-	 'b381bb9dbda25c3c08a67f18072a2761abe34339ddf3318e1758eb7c349f1a3b'	#FreeFileSync.desktop
-	 '31df3fa1f1310de14bbd379f891d4f8ed2df5b0d68913eb52c88b3be682933fb'	#ffsicon.png
-	 '1502efdbf1638856a18ab9916e0431bf6a53471792cb2daa380345bac33f67c4'	#RealTimeSync.desktop
-	 'f28042587dbe99cf5d6bef2c1be4b026488e418e4ba8332b3016d246b7053a4e'	#rtsicon.png
-	 )
+sha256sums=('ac33e69d1e2be65fdea60e056d43eef7db26c34ee4e0491f90db487f33674388'	#ffs source
+            '052ef5bf5eb11730499f4b81cd7e70f990fff3cfcc2f7059b84981e7ededc361'	#revert_resources_path.patch
+            'fef8aa099a27c277b76f1229651ed2324355528482c8f115e09c39269bbf4bdd'	#revert_xdg_config_path.patch
+            'b381bb9dbda25c3c08a67f18072a2761abe34339ddf3318e1758eb7c349f1a3b'	#FreeFileSync.desktop
+            '31df3fa1f1310de14bbd379f891d4f8ed2df5b0d68913eb52c88b3be682933fb'	#ffsicon.png
+            '1502efdbf1638856a18ab9916e0431bf6a53471792cb2daa380345bac33f67c4'	#RealTimeSync.desktop
+            'f28042587dbe99cf5d6bef2c1be4b026488e418e4ba8332b3016d246b7053a4e'	#rtsicon.png
+            )
 	 
-DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -A Mozilla -o %o %u')
+DLAGENTS=('https::/usr/bin/curl -fLC - --retry 5 --retry-delay 3 -A Mozilla -o %o')
 
 prepare() {
 # wxgtk < 3.1.0
     sed -i 's/m_listBoxHistory->GetTopItem()/0/g'		FreeFileSync/Source/ui/main_dlg.cpp
+    # Revert to classic config path
+    patch --binary -p1 -i revert_xdg_config_path.patch
+
+# Revert change to resources path of portable version
+    patch --binary -p1 -i revert_resources_path.patch
 
 # gcc 6.3.1
     sed -i 's!static_assert!//static_assert!'			zen/scope_guard.h
@@ -70,6 +78,7 @@ build() {
     echo "compiler g++ $VER $MAC"
 
 ### FFS
+    mkdir -p "${srcdir}/FreeFileSync/Build/Bin"
     cd ${srcdir}/FreeFileSync/Source
     make
 
