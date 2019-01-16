@@ -1,8 +1,9 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Cyberpunk <apocalipsisfull-2011@outlook.com>
 
 pkgname=webcamstudio-git
-pkgver=20150307
+pkgver=20170108
 pkgrel=2
 pkgdesc="Webcam desktop recording suite for producing professional looking broadcasts"
 arch=('i686' 'x86_64')
@@ -60,6 +61,25 @@ build() {
   msg2 'Building...'
   ant clean jar
 }
+
+prepare() {
+  cd ${pkgname%-git}
+  # copied from Gentoo ebuild
+  sed -i -e "s?=/usr/share/java/jna.jar?=libraries/jna.jar?" \
+	 -e "s?=libraries/jna-3.0...jar?=libraries/jna.jar?" \
+	 -e "s?absolutelayout.classpath=libraries/jna.jar?absolutelayout.classpath=libraries/jna.jar:libraries/absolutelayout.jar?" nbproject/project.properties
+  sed -i -e "s?#video=gst-launch-0.10?video=gst-launch-0.10?" 
+         -e "s?#audio=gst-launch-0.10?audio=gst-launch-0.10?" \
+         -e "s?video=avconv?#video=avconv?" \
+         -e "s?audio=avconv?#audio=avconv?" src/webcamstudio/externals/linux/sources/webcam.properties 
+
+  sed -i -e "s?=gst-launch-0.10?=/usr/bin/gst-launch-0.10?" \
+         -e "s?=avconv?=/usr/bin/ffmpeg?" \
+         -e "s?=ffmpeg?=/usr/bin/ffmpeg?" \
+         src/webcamstudio/externals/linux/*.properties \
+         src/webcamstudio/externals/linux/*/*.properties
+}
+
 
 package() {
   cd ${pkgname%-git}
