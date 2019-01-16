@@ -1,0 +1,14 @@
+pkgbase = openpolicyagent-bin
+	pkgdesc = General Purpose Policy Engine with Unified, Context-aware Policy Enforcement
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://openpolicyagent.org
+	arch = x86_64
+	license = Apache
+	provides = openpolicyagent
+	conflicts = openpolicyagent
+	source = https://github.com/open-policy-agent/opa/releases/download/v0.10.2/opa_linux_amd64
+	sha256sums = 60f8247509f4a0e32739cd6d997f1600d644eed4b27e9a4d1489479cc5eb570f
+
+pkgname = openpolicyagent-bin
+
