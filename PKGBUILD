@@ -1,10 +1,12 @@
 # Maintainer: Daniel Ruiz de Alegria <daniruizdealegria@gmail.com>
 
 pkgname="flat-remix-gnome-git"
-pkgver=r167.95466ce
+pkgver=r172.aa88b18
 pkgrel=1
 pkgdesc="Flat Remix GNOME theme is a pretty simple shell theme inspired on material design following a modern design using "flat" colors with high contrasts and sharp borders."
 arch=('any')
+makedepends=(git)
+depends=(gnome-shell)
 install=flat-remix-gnome.install
 url="https://drasite.com/flat-remix-gnome"
 license=('CC-BY-SA-4.0')
