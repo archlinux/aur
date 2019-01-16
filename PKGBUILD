@@ -7,7 +7,7 @@
 pkgname='bluez-utils-compat'
 _pkgbase='bluez'
 pkgver=5.50
-pkgrel=2
+pkgrel=3
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 license=('GPL2')
