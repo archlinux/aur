@@ -1,0 +1,16 @@
+pkgbase = nixio-git
+	pkgdesc = Neuroscience information exchange format (master branch)
+	pkgver = 1.5.dev
+	pkgrel = 1
+	url = http://g-node.github.io/nix/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = hdf5
+	depends = boost
+	conflicts = nixio
+	source = nixio::git+https://github.com/G-Node/nix
+	sha512sums = SKIP
+
+pkgname = nixio-git
+
