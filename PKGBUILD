@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-additionalinfo-chaps-bus
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2018_11_6
+pkgver=2019_1_11
 pkgrel=1
 pkgdesc="Floor plans of some Czech bus stations/ stops, to be used with the timetable search engines by CHAPS."
 arch=('any')
