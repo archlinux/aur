@@ -8,7 +8,7 @@ pkgdesc='IO programming language'
 arch=('x86_64')
 url='http://iolanguage.com/'
 license=('BSD')
-depends=('pcre' 'libsndfile' 'libxmu' 'freetype2' 'libedit' 'libxml2' 'libtiff' 'libevent' 'yajl' 'libmariadbclient' 'lzo' 'libpng' 'python2' 'util-linux' 'freeglut' 'libjpeg-turbo' 'libtheora' 'python')
+depends=('pcre' 'libsndfile' 'libxmu' 'freetype2' 'libedit' 'libxml2' 'libtiff' 'libevent' 'yajl' 'mariadb-libs' 'lzo' 'libpng' 'python2' 'util-linux' 'freeglut' 'libjpeg-turbo' 'libtheora' 'python')
 makedepends=('cmake' 'git')
 options=('!makeflags' '!buildflags')
 source=("git+https://github.com/stevedekorte/io#commit=5fffec7cbe9679632ff793befacedd92f79d7f0f")
