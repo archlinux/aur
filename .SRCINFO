@@ -1,0 +1,40 @@
+pkgbase = firefox-kde-manjaro
+	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE from Manjaro repos
+	pkgver = 64.0
+	pkgrel = 1
+	url = https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox
+	arch = x86_64
+	license = GPL
+	license = MPL
+	license = LGPL
+	depends = mozilla-common
+	depends = libxt
+	depends = startup-notification
+	depends = mime-types
+	depends = dbus-glib
+	depends = hicolor-icon-theme
+	depends = libvpx
+	depends = icu
+	depends = libevent
+	depends = nss>=3.28.3
+	depends = nspr>=4.10.6
+	depends = hunspell
+	depends = sqlite
+	depends = libnotify
+	depends = kmozillahelper
+	depends = ffmpeg
+	depends = gtk3
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = speech-dispatcher: Text-to-Speech
+	provides = firefox=64.0
+	conflicts = firefox
+	conflicts = firefox-kde-opensuse
+	noextract = firefox-kde-opensuse-64.0-1-x86_64.pkg.tar.xz
+	source = http://mirror.ufam.edu.br/manjaro/stable/community/x86_64/firefox-kde-opensuse-64.0-1-x86_64.pkg.tar.xz
+	source = http://mirror.ufam.edu.br/manjaro/stable/community/x86_64/firefox-kde-opensuse-64.0-1-x86_64.pkg.tar.xz.sig
+	validpgpkeys = E4CDFE50A2DA85D58C8A8C70CAA6A59611C7F07E
+	md5sums = ed4947df3fec01d624cd93709d74cff7
+	md5sums = SKIP
+
+pkgname = firefox-kde-manjaro
+
