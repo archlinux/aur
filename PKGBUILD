@@ -3,7 +3,7 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=xlog
-pkgver=2.0.15
+pkgver=2.0.17
 pkgrel=1
 pkgdesc="Ham Radio general purpose logging program."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('gtk2>=2.12.0' 'hamlib')
 optdepends=(	'cwdaemon: as external keyer'
 		'glabels: print log'
 		'hamradio-menus: XDG compliant menuing')
-makedepends=('pkg-config>=0.9.0' 'libgnomeprint')
+makedepends=('pkg-config' 'libgnomeprint')
 source=(http://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz)
 
 prepare() {
@@ -42,5 +42,5 @@ package() {
 	rm $pkgdir/usr/share/applications/mimeinfo.cache
 	rm $pkgdir/usr/share/pixmaps/gnome-mime-text-x-xlog.png
 }
-md5sums=('447a037373ada0d55975cc13de69f206')
-sha256sums=('52f0866530b7902128990318b713efe2c213164bd5466c11bffc0f8ef940c82a')
+md5sums=('360b93e32ad530e3bb0dc40a8de1e8ad')
+sha256sums=('54ef23290987c6126c6082f8ba25f8a03be4406d0886bb6a98f8cc8f4241b66e')
