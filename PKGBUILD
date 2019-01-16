@@ -1,49 +1,58 @@
-pkgname=go-dep-git
-pkgver=20171222.2849_d9ce240c
+# Maintainer: Sam Whited <sam@samwhited.com>
+
+_pkgname=dep
+pkgname=go-${_pkgname}-git
+pkgver=v0.5.0_15_g22125cfaa6dd
 pkgrel=1
-pkgdesc="Go dependency management tool"
-arch=('i686' 'x86_64')
-license=('Custom')
-depends=(
-)
-makedepends=(
-	'go'
-	'git'
-)
+pkgdesc='Legacy dependency management tool for Go'
+arch=(i686 x86_64)
+url='https://golang.github.io/dep/'
+license=(BSD)
+depends=(glibc)
+makedepends=("go>=1.11")
+conflicts=('go-dep')
+provides=('go-dep')
+source=("git+https://github.com/golang/dep.git")
+sha256sums=('SKIP')
 
-source=(
-	"git://github.com/golang/dep.git"
-)
-
-md5sums=(
-	'SKIP'
-)
-
-backup=(
-)
-
-conflicts=(
-)
+export GO111MODULE=on
 
 pkgver() {
-	cd "$srcdir/dep"
-	local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
-	local count=$(git rev-list --count HEAD)
-	local commit=$(git rev-parse --short HEAD)
-	echo "$date.${count}_$commit"
+  cd "${_pkgname}"
+  git describe --tags --long | sed s/-/_/g
+}
+
+prepare() {
+  cd "${_pkgname}"
+  export GOCACHE="${srcdir}/cache"
+
+  # Copy dependencies from the Gopkg.toml to bootstrap using Go Modules.
+  rm -f go.mod go.sum
+  go mod init github.com/golang/dep
+  go mod vendor
 }
 
 build() {
-	GOPATH=$srcdir
-	GOBIN=$srcdir/bin/
-	mkdir -p $srcdir/src/github.com/golang
-	ln -sf $srcdir/dep $srcdir/src/github.com/golang
-	cd $srcdir/src/github.com/golang/dep
-	go install -v ./...
+  cd "${_pkgname}"
+  export GOCACHE="${srcdir}/cache"
+
+  go build \
+    -gcflags "all=-trimpath=$PWD" \
+    -asmflags "all=-trimpath=$PWD" \
+    -ldflags "-extldflags $LDFLAGS" \
+    -o $_pkgname ./cmd/dep
 }
 
 package() {
-	find "$srcdir/bin/" -type f -executable | while read filename; do
-		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
-	done
+  cd "${_pkgname}"
+
+  install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin/"
+  install -d "$pkgdir/usr/share/doc/$pkgname"
+  cp -r docs/* "$pkgdir/usr/share/doc/$pkgname"
+
+  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
+  install -Dm644 CONTRIBUTORS "$pkgdir/usr/share/licenses/$pkgname/CONTRIBUTORS"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: ts=2 sw=2 et:

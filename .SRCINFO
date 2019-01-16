@@ -1,14 +1,17 @@
 pkgbase = go-dep-git
-	pkgdesc = Go dependency management tool
-	pkgver = 20171222.2849_d9ce240c
+	pkgdesc = Legacy dependency management tool for Go
+	pkgver = v0.5.0_15_g22125cfaa6dd
 	pkgrel = 1
+	url = https://golang.github.io/dep/
 	arch = i686
 	arch = x86_64
-	license = Custom
-	makedepends = go
-	makedepends = git
-	source = git://github.com/golang/dep.git
-	md5sums = SKIP
+	license = BSD
+	makedepends = go>=1.11
+	depends = glibc
+	provides = go-dep
+	conflicts = go-dep
+	source = git+https://github.com/golang/dep.git
+	sha256sums = SKIP
 
 pkgname = go-dep-git
 

@@ -1,4 +1,6 @@
-*
-!.gitignore
-!PKGBUILD
-!.SRCINFO
+dep/
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+*.zip
