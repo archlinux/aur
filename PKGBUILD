@@ -3,7 +3,7 @@
 
 pkgname=openscap
 pkgver=1.2.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Security Compliance Solution"
 
 # i686 is theoretically bulitable, if anyone needs it
@@ -17,10 +17,10 @@ license=('GPL')
 # packege missing: libselinux-devel
 depends=('swig' 'python' 'acl' 'libcap' 'curl' 'libgcrypt' 'libxml2' 'libxslt'
          'libldap' 'pcre' 'bzip2' 'procps-ng' 'gconf' 'perl' 'perl-xml-parser' 'perl-xml-xpath')
-
 optdepends=()
+makedepends=('doxygen' 'automake' 'acl')
 source=("https://github.com/OpenSCAP/openscap/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('e9a6c329d97dd687c1ec52070aabb4d0')
+md5sums=('56d11d9bd3d61b6edf7368636344ff72')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	CPPFLAGS="-I/usr/include/python3.5m" ./configure --disable-valgrind --disable-python --enable-python3 --prefix=/usr 
+	CPPFLAGS="-I/usr/include/python3.7m" ./configure --disable-valgrind --disable-python --enable-python3 --prefix=/usr 
 	make # -j4
 }
 
