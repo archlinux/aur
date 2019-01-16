@@ -5,7 +5,7 @@
 # Contributor: Anthony Anderson <aantony4122@gmail.com>
 
 pkgname='discord-ptb'
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
@@ -23,8 +23,9 @@ optdepends=(
 install="DiscordPTB.install"
 source=(LICENSE
 		"https://dl-ptb.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+
 md5sums=('26b3229c74488c64d94798e48bc49fcd'
-         'cb67e85a36cfa929868dd1fcd7087b8c')
+         'b3aa27ac648afb4e43885714b38e4b4a')
 
 #This is always latest build, right now I do not know of a version param.
 
