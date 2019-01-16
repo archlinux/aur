@@ -5,7 +5,7 @@
 
 pkgname=weston-eglstream
 pkgver=5.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Reference implementation of a Wayland compositor with EGLStream support'
 arch=('i686' 'x86_64')
 url='https://wayland.freedesktop.org/'
@@ -24,7 +24,8 @@ source=("https://wayland.freedesktop.org/releases/weston-$pkgver.tar.xz"
           '0004-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch'
           '0005-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch'
           '0006-compositor-Process-stream-attach-requests-with-wl_eg.patch'
-          '0007-simple-egl-Do-not-set-EGL-up-until-XDG-setup-is-comp.patch')
+          '0007-simple-egl-Do-not-set-EGL-up-until-XDG-setup-is-comp.patch'
+          '0008-gl-renderer-Use-mailbox-streams-for-scanout.patch')
 sha256sums=('15a23423bcfa45e31e1dedc0cd524ba71e2930df174fde9c99b71a537c4e4caf'
             '467c25f7158e54736ed7e9d071c8524e0f83509defcea49a7b053b11be1e9f93'
             'b60522d00263f1e67e4d4ca823550c1c90f30be450facd9a95fca7a91376b160'
@@ -32,7 +33,8 @@ sha256sums=('15a23423bcfa45e31e1dedc0cd524ba71e2930df174fde9c99b71a537c4e4caf'
             '4845734de15fa99dbfc7e58b364996a72f63cf3632793d57eca7f696d3d6186e'
             '037632c607638d98cf04cb5f1d5754842b77670671358ef34629c8c9dc2d9d19'
             'd1197824dda263bdde19312095125295a87d773e46fae62d68297d38a810e7f6'
-            '7d756c6e091eb6933aa49d7bb822e3a10abfdab5466f7c3763e7bff3ce60090f')
+            '7d756c6e091eb6933aa49d7bb822e3a10abfdab5466f7c3763e7bff3ce60090f'
+            'ca1af82fddca20ed2256bff8abad2c726380f0c244c0d7bd75cc1def8e07493b')
 prepare() {
 	cd weston-$pkgver
 
@@ -43,6 +45,7 @@ prepare() {
 	patch -Np1 -i "${srcdir}/0005-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch"
 	patch -Np1 -i "${srcdir}/0006-compositor-Process-stream-attach-requests-with-wl_eg.patch"
 	patch -Np1 -i "${srcdir}/0007-simple-egl-Do-not-set-EGL-up-until-XDG-setup-is-comp.patch"
+	patch -Np1 -i "${srcdir}/0008-gl-renderer-Use-mailbox-streams-for-scanout.patch"
 }
 
 build() {
