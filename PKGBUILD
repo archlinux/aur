@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r4818.183a4b0d
+pkgver=r5522.70637b40
 pkgrel=1
 license=("MIT")
 pkgdesc="i3-compatible Wayland compositor"
@@ -14,6 +14,8 @@ optdepends=(
 	"rxvt-unicode: Default terminal emulator."
 	"dmenu: Default for launching applications."
 	"i3status: To display system information with a bar."
+        "swayidle-git: Idle management daemon for Sway."
+        "swaylock-git: Screen locker for Sway."
 )
 arch=("i686" "x86_64")
 url="https://swaywm.org"
