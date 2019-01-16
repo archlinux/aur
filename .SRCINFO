@@ -1,0 +1,16 @@
+pkgbase = mokutil
+	pkgdesc = Shim.efi Machine Owner Key management tool
+	pkgver = 0.3.0.r25.gfb6250f
+	pkgrel = 1
+	url = https://github.com/lcp/mokutil
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = efivar
+	depends = openssl
+	source = git+https://github.com/lcp/mokutil#commit=fb6250f23a1dda24000522f1994f70c73407c402
+	sha256sums = SKIP
+
+pkgname = mokutil
+
