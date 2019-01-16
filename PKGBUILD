@@ -4,7 +4,7 @@
 _pkgname=ogre
 pkgname=ogre3d
 pkgrel=1
-pkgver=1.10.11
+pkgver=1.11.5
 pkgdesc='An Open-Source 3D Game Engine written in C++'
 url="https://www.ogre3d.org/"
 
@@ -12,8 +12,8 @@ arch=('any')
 license=('MIT')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OGRECave/ogre/archive/v${pkgver}.tar.gz")
-md5sums=('3a7ec7cbdf36b7a204832bd3763683b2')
-sha1sums=('a77756423960a44db8260db67a82589e979e1081')
+md5sums=('1b4328a3317dbc857d9f969af3bf1b9d')
+sha1sums=('230ce0ea3ee07f9cb4994d505636de592dc449b2')
 
 makedepends=("make" "cmake")
 depends=("freetype2" "sdl2" "libxext" "zlib" "freeimage")
