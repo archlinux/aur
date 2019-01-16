@@ -5,13 +5,13 @@
 
 _basever=1.3.0.alpha
 pkgname=mypaint-git
-pkgver=1.3.0.alpha.r4990.c32bd422
+pkgver=1.3.0.alpha.r5011.57685af8
 pkgrel=1
 pkgdesc="Simple drawing & painting program that works well with graphics tablets (git)."
 arch=('i686' 'x86_64')
 url="http://mypaint.org/"
 license=('GPL2')
-depends=('desktop-file-utils' 'gtk3' 'json-c' 'lcms2' 'librsvg' 'python-cairo' 'python-gobject' 'python-numpy' 'libmypaint-git')
+depends=('desktop-file-utils' 'gtk3' 'json-c' 'lcms2' 'librsvg' 'python-cairo' 'python-gobject' 'python-numpy' 'mypaint-brushes-git')
 makedepends=('git' 'swig' 'pygobject-devel' 'python' 'python-setuptools')
 provides=("mypaint=${_basever}")
 conflicts=('mypaint')
