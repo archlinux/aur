@@ -4,8 +4,8 @@
 _watch=('https://www.realvnc.com/en/connect/download/vnc/linux/' 'VNC-Server-(\d[\d.]*\d+)-Linux-x64\.deb')
 
 pkgname=realvnc-vnc-server
-pkgver=6.3.2
-pkgrel=2
+pkgver=6.4.0
+pkgrel=1
 pkgdesc='VNC remote desktop server software by RealVNC'
 arch=('x86_64' 'i686' 'armv7h' 'armv7' 'armv8' 'aarch64')
 url='https://www.realvnc.com/'
@@ -20,12 +20,12 @@ source_armv7=("https://www.realvnc.com/download/file/vnc.files/VNC-Server-${pkgv
 source_armv7h=("https://www.realvnc.com/download/file/vnc.files/VNC-Server-${pkgver}-Linux-ARM.deb")
 source_armv8=("https://www.realvnc.com/download/file/vnc.files/VNC-Server-${pkgver}-Linux-ARM.deb")
 source_aarch64=("https://www.realvnc.com/download/file/vnc.files/VNC-Server-${pkgver}-Linux-ARM.deb")
-md5sums_x86_64=('7dc7647808756f6a195ad885731dd9f5')
-md5sums_i686=('c245659d08bc9e7bb4546716bc3c1484')
-md5sums_armv7h=('cee850b8c138fe137609cc141677aaec')
-md5sums_armv7=('cee850b8c138fe137609cc141677aaec')
-md5sums_armv8=('cee850b8c138fe137609cc141677aaec')
-md5sums_aarch64=('cee850b8c138fe137609cc141677aaec')
+md5sums_x86_64=('b5c56b249fec14472ed461ff82ef74ba')
+md5sums_i686=('2868258f5295996b14205ac3b8637bb2')
+md5sums_armv7h=('aa38b52acf54858dead46320ce6f9a3e')
+md5sums_armv7=('aa38b52acf54858dead46320ce6f9a3e')
+md5sums_armv8=('aa38b52acf54858dead46320ce6f9a3e')
+md5sums_aarch64=('aa38b52acf54858dead46320ce6f9a3e')
 
 package() {
     bsdtar -xv -C "${pkgdir}" -f "${srcdir}/"data.tar.*
