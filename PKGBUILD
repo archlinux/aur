@@ -1,57 +1,61 @@
-# $Id$
-# Maintainer: Realex
-# Based on cinnamon-control-center PKGBUILD
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Alexandre Filgueira <alexfilgueira@cinnarch.com>
+# Based on gnome-control-center:
+# Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Jan de Groot <jgc@archlinux.org>
 
-_pkgname=cinnamon-control-center
-pkgname=${_pkgname}-git
-pkgver=337.9677670
+pkgname=cinnamon-control-center-git
+pkgver=4.0.1.r0.ga34d4dd
 pkgrel=1
 pkgdesc="The Control Center for Cinnamon"
 arch=('i686' 'x86_64')
-depends=('cinnamon-settings-daemon-git' 'cinnamon-translations-git' 'cinnamon-menus-git' 'libgnomekbd' 'network-manager-applet')
-optdepends=('gnome-color-manager: for color management tasks')
-makedepends=('intltool' 'gnome-common' 'docbook-xsl' 'git')
-url="https://github.com/linuxmint/cinnamon-control-center"
-install=${pkgname}.install
+url="https://github.com/linuxmint/${pkgname%-git}"
 license=('GPL')
+depends=('cinnamon-settings-daemon' 'cinnamon-menus' 'colord'
+         'libgnomekbd' 'libmm-glib' 'nm-connection-editor')
+optdepends=('cinnamon-translations: i18n'
+            'gnome-color-manager: for color management tasks'
+            'gnome-online-accounts: for the online accounts module')
+makedepends=('git' 'gnome-online-accounts' 'intltool' 'python')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 options=('!emptydirs')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/linuxmint/${_pkgname}.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+    cd "${srcdir}"/${pkgname%-git}
+
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}"/${pkgname%-git}
+
+    NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}"/${pkgname%-git}
 
-./autogen.sh --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-static \
-      --enable-systemd \
-      --disable-update-mimedb
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --localstatedir=/var \
+                --enable-systemd
 
-  #https://bugzilla.gnome.org/show_bug.cgi?id=656229
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
-
-  make
+    #https://bugzilla.gnome.org/show_bug.cgi?id=656229
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
+    make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}"/${pkgname%-git}
 
-  make DESTDIR="$pkgdir" install
+    # https://github.com/linuxmint/Cinnamon/pull/7382#issuecomment-374894901
+    # /usr/bin/cinnamon-control-center is not meant for users, it is a development troubleshooting tool.
+    # Just install the shell libs/headers.
+    make -C shell  DESTDIR="${pkgdir}" install-{libcinnamon_control_center_includeHEADERS,libLTLIBRARIES,pkgconfigDATA}
+    make -C panels DESTDIR="${pkgdir}" install
 
-  # Remove unused stuff
-  make -C panels/sound DESTDIR="$pkgdir" uninstall
-  make -C panels/sound/data DESTDIR="$pkgdir" install
-  make -C shell DESTDIR="$pkgdir" uninstall-binPROGRAMS uninstall-directoryDATA uninstall-uiDATA
-  rm -R "$pkgdir"/usr/share/applications/cinnamon-{control-center,datetime-panel,region-panel,sound-panel}.desktop
-  rm -R "$pkgdir/etc"
-
-  # Fix a warning
-  chown 102:0 "$pkgdir/usr/share/polkit-1/rules.d"
-  chmod 700 "$pkgdir/usr/share/polkit-1/rules.d"
+    install -d -o root -g 102 -m 750 "${pkgdir}"/usr/share/polkit-1/rules.d
 }
