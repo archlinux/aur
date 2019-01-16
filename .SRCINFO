@@ -1,7 +1,7 @@
 pkgbase = odoo10
 	pkgdesc = Web-based Open Source Business Apps
 	pkgver = 10.0
-	pkgrel = 22
+	pkgrel = 23
 	url = http://odoo.com/
 	install = odoo.install
 	arch = any
@@ -63,7 +63,7 @@ pkgbase = odoo10
 	conflicts = odoo
 	replaces = openerp
 	backup = etc/odoo/odoo.conf
-	source = http://nightly.odoo.com/10.0/nightly/src/odoo_10.0.20180720.tar.gz
+	source = http://nightly.odoo.com/10.0/nightly/src/odoo_10.0.20190116.tar.gz
 	source = odoo.confd
 	source = odoo.service
 	source = odoo.conf
