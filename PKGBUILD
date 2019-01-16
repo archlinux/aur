@@ -1,8 +1,8 @@
 # Author: Tom Payne <twpayne@gmail.com>
 # Maintainer:  <godeater@gmail.com>
 pkgname=chezmoi
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.1.0
+pkgrel=3
 epoch=
 pkgdesc="Multi-machine dotfile management system"
 arch=('i686' 'x86_64')
@@ -14,13 +14,13 @@ makedepends=(
   'go-pie'
 )
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('daa58d7f310200ea8118bd947855fc0263f6e2ba75cdb80f396397b7a9a5fab4')
+sha256sums=('12ff50c1307fd74e2346797ccf208dbfaed5fe74846ce9fc087f0e559cb95530')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  extraldflags=" -X github.com/twpayne/chezmoi/cmd.version=1.0.0 \
-  		   -X github.com/twpayne/chezmoi/cmd.commit=ff3f055 \
-		   -X github.com/twpayne/chezmoi/cmd.date=20190113"
+  extraldflags=" -X github.com/twpayne/chezmoi/cmd.version=1.1.0 \
+  		   -X github.com/twpayne/chezmoi/cmd.commit=3f93dda \
+		   -X github.com/twpayne/chezmoi/cmd.date=20190116"
 
   go build \
      -gcflags "all=-trimpath=$PWD" \
@@ -36,4 +36,3 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
