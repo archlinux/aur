@@ -10,7 +10,7 @@ pkgname="python-numpy-mkl"
 true && pkgname=('python-numpy-mkl' 'python2-numpy-mkl')
 #pkgname=('python-numpy')
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python compiled with intel mkl"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -66,9 +66,9 @@ build() {
 		export FFLAGS="-fopenmp -m64 -mtune=native -O3"
 	fi
 
-	if [ "$use_intel_cc" = true ]; then
-		export __INTEL_PRE_CFLAGS="$__INTEL_PRE_CFLAGS -D__PURE_INTEL_C99_HEADERS__ -D_Float32=float -D_Float64=double -D_Float128=\"long double\" -D_Float32x=_Float64 -D_Float64x=_Float128"
-	fi
+	#if [ "$use_intel_cc" = true ]; then
+	#	export __INTEL_PRE_CFLAGS="$__INTEL_PRE_CFLAGS -D__PURE_INTEL_C99_HEADERS__ -D_Float32=float -D_Float64=double -D_Float128=\"long double\" -D_Float32x=_Float64 -D_Float64x=_Float128"
+	#fi
 
 	echo "Building Python2"
 	cd "${srcdir}"
@@ -116,9 +116,7 @@ package_python2-numpy-mkl() {
 		-e "s|#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
 		$(find ${pkgdir} -name '*.py')
 
-	#for _exe in conv-template f2py from-template; do
-	#	mv "$pkgdir"/usr/bin/"$_exe"{,2}
-	#done
+	mv "$pkgdir"/usr/bin/f2py{,2}
 }
 
 package_python-numpy-mkl() {
