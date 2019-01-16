@@ -1,6 +1,6 @@
 pkgbase = zebra
 	pkgdesc = A high-performance, general-purpose structured text indexing and retrieval engine.
-	pkgver = 2.1.2
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = http://www.indexdata.com/zebra/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = zebra
 	depends = perl
 	depends = yaz>=3.0.47
 	depends = zlib
-	source = http://ftp.indexdata.dk/pub/zebra/idzebra-2.1.2.tar.gz
-	sha512sums = 13896c6f9666a28c55863de29eb7e12bb5f19ad0bd5da0968ae3832afc44d375ccff36fe5a14843d2a73af6c28fa5fa515075682ff4da1b42ad8e0ea6b87e16b
+	source = http://ftp.indexdata.dk/pub/zebra/idzebra-2.1.4.tar.gz
+	sha512sums = da5d473e504acb8dc90c02e36560b48477e331fb9480cff5dc322a7f27344a933d80f2559978bb860cb8225559ad5eed5597beaa4f3b5deb6b4a7672ab607a99
 
 pkgname = zebra
 
