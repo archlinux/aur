@@ -1,7 +1,6 @@
 # Maintainer: shulhan <ms@kilabit.info>
 pkgname=rescached-git
-pkgver=2.0.0rc2.96.b727ff3
-_pkgver=2.0.0rc2
+pkgver=2.0.0.r0.g56ddcf9
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -20,7 +19,6 @@ sha1sums=(
 	'SKIP'
 )
 
-install=rescached-git.install
 backup=(
 	'etc/rescached/rescached.cfg'
 	'etc/rescached/hosts.d/hosts.block'
@@ -28,7 +26,7 @@ backup=(
 
 pkgver() {
 	cd "$pkgname"
-	printf "%s.%s.%s" "$_pkgver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

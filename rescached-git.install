@@ -1,4 +1,0 @@
-post_upgrade() {
-	## Remove old cache
-	[[ -f /var/cache/rescached/rescached.vos ]] && rm -f /var/cache/rescached/rescached.vos
-}
