@@ -1,0 +1,20 @@
+pkgbase = nautilus-tmsu-rs-git
+	pkgdesc = Nautilus extension to support TMSU
+	pkgver = v0.5.0.r0.4320690
+	pkgrel = 1
+	url = https://github.com/talklittle/tmsu-nautilus-rs
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = tmsu
+	depends = gtk3
+	depends = nautilus
+	depends = libnautilus-extension
+	provides = nautilus-tmsu-rs
+	conflicts = nautilus-tmsu-rs
+	source = nautilus-tmsu-rs::git+https://github.com/talklittle/tmsu-nautilus-rs.git
+	md5sums = SKIP
+
+pkgname = nautilus-tmsu-rs-git
+
