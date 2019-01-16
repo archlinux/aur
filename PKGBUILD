@@ -3,7 +3,7 @@
 pkgname=go-dep
 _pkgname=${pkgname#go-}
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Legacy dependency management tool for Go'
 arch=(i686 x86_64)
 url='https://golang.github.io/dep/'
@@ -40,8 +40,8 @@ package() {
   cd "${_pkgname}-${pkgver}/"
 
   install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin/"
-  install -d "$pkgdir/usr/share/doc/$_pkgname"
-  cp -r docs/* "$pkgdir/usr/share/doc/$_pkgname"
+  install -d "$pkgdir/usr/share/doc/$pkgname"
+  cp -r docs/* "$pkgdir/usr/share/doc/$pkgname"
 
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
   install -Dm644 CONTRIBUTORS "$pkgdir/usr/share/licenses/$pkgname/CONTRIBUTORS"
