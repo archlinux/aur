@@ -1,20 +1,20 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=yubioath-desktop
 pkgname=yubico-${_pkgname}
-pkgver=4.3.4
+pkgver=4.3.5
 pkgrel=1
 pkgdesc="Crossplatform graphical user interface to generate one-time passwords."
 arch=('x86_64')
 url="https://developers.yubico.com/yubioath-desktop/"
 license=('BSD')
 depends=('pcsclite' 'ccid' 'python-pyotherside' 'yubikey-manager>=0.7.0' 'qt5-quickcontrols')
-makedepends=('swig' 'qt5-svg' 'libffi' 'openssl' 'qt5-base')
+makedepends=('swig' 'qt5-svg' 'libffi' 'openssl' 'qt5-base' 'git')
 validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3' # Dag Heyman <dag@yubico.com>
+              '5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' # Emil Lundberg <emil@yubico.com>
               '57A9DEED4C6D962A923BB691816F3ED99921835E' # Emil Lundberg <emil@yubico.com>
               )
-source=("https://github.com/Yubico/${_pkgname}/releases/download/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('0d8c0d0f4672dfac24a142c34dc49a52a75241f62897f6917e518b01c2916741'
-            'SKIP')
+source=("git+https://github.com/Yubico/${_pkgname}.git#tag=${_pkgname}-${pkgver}?signed")
+sha256sums=('SKIP')
 conflicts=('yubico-yubioath-desktop-git')
 
 build() {
