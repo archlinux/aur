@@ -2,11 +2,12 @@
 _pkgname=wootility
 pkgname=${_pkgname}-appimage
 pkgver=2.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
 arch=('x86_64')
 url='https://wooting.io/wootility'
 license=('unknown')
+makedepends=('p7zip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
@@ -18,12 +19,14 @@ sha512sums=('d751a6c9172be6b1c838ac867ac3c64d41f8fab9cdaaf911c156c1939d262db1c47
             '3eddcccc40a6ddc924777ced27e757f966889bf789b312ec87c7ba76e69362f14231a5559b86259eb641e5cf1d14333c23fb344a3d278870ba6843fc5dff6579')
 
 prepare() {
-	bsdcpio --extract --make-directories --insecure 'wootility.desktop' '.DirIcon' 'usr/share/icons' < "${_appimage}"
+	7z x "${_appimage}" 'wootility.desktop' 'usr/share/icons' > /dev/null
 }
 
 build() {
 	sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" wootility.desktop
-	chmod -R g-w,o-w usr/share/icons
+	# .AppImage permissions are 700 for all directories
+	chmod -R 755 usr
+	chmod -x usr/share/icons/default/*x*/apps/*
 }
 
 package() {
