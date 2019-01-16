@@ -3,10 +3,10 @@
 pkgname=antigravitaattori
 arch=('i686' 'x86_64')
 pkgver=0.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc="a multiplayer flying saucer racing game"
 license=('GPL-2')
-url="http://luolamies.org/software/antigrav/"
+url="https://github.com/callaa/antigravitaattori"
 depends=('libpng' 'sdl' 'mesa' 'freealut')
 source=("https://github.com/callaa/antigravitaattori/archive/master.zip" "antigrav.desktop")
 md5sums=('33f83adefa1b2912e655042cd320c20f'
