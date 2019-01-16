@@ -1,6 +1,6 @@
 pkgbase = gnustep-gui
 	pkgdesc = The GNUstep GUI class library
-	pkgver = 0.26.2
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = http://www.gnustep.org/
 	arch = x86_64
@@ -19,8 +19,11 @@ pkgbase = gnustep-gui
 	optdepends = flite1: required for speech synthesis
 	conflicts = gnustep-gui-svn
 	options = !makeflags
-	source = https://github.com/gnustep/libs-gui/releases/download/gui-0_26_2/gnustep-gui-0.26.2.tar.gz
-	sha256sums = 09ab2ac10f4bf98f1254c6c525c752d1f7b13bf0e6cd95530452c504fae7b4db
+	source = https://github.com/gnustep/libs-gui/releases/download/gui-0_27_0/gnustep-gui-0.27.0.tar.gz
+	source = https://github.com/gnustep/libs-gui/releases/download/gui-0_27_0/gnustep-gui-0.27.0.tar.gz.sig
+	validpgpkeys = 83AAE47CE829A4146EF83420CA868D4C99149679
+	sha256sums = 7991e435944d389366069888eb65b1ef08c5ab39f12b27e804bb372b941bd3d4
+	sha256sums = SKIP
 
 pkgname = gnustep-gui
 
