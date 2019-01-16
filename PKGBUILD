@@ -3,7 +3,7 @@
 
 pkgname=asix-ax88179-dkms
 pkgver=1.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A kernel module for ASIX AX88178A AX88179 USB 3.0 network adapters"
 arch=('i686' 'x86_64')
 
@@ -23,14 +23,16 @@ _modname='ax88179_178a'
 source=(
     "https://www.asix.com.tw/FrootAttach/driver/${_filename}.tar.bz2"
     "${pkgname}.conf"
-    "0001-No-date-time.patch"
-    "0002-b2b128.patch"
+    '0001-No-date-time.patch'
+    '0002-b2b128.patch'
+    '0003-linux-4.20.patch'
 )
 sha512sums=(
     '4868203e7a2574fc1760c604dc0f6d8a6890e4d65912bfc1e47bcef2fd72f422e791441cd65e58737b10edb5e04a40cf1e10585ae8b9f385adc729fb34b7fb8a'
     'c22d3ec8bea598580681c6a9e2ae6b3d2118547a739ee717d4576653426ace7ec2406012d162ec6424244c360a2b9b7a185dbf3eebba6c0065efedfb54de23ba'
     '74a730f2ccfabf54c600391ee9a54ad3977b730c141c9ca9e7b1740c0d93161595a71312b4e3067411bde2f7d7f2a1cb9fb9e982a6ccfc0a4fbfa86829f6c346'
     'a31cab0b3e0fa027acbf629aec7294d591d6dd01928de800bd915e78c75be7be0fe7603b6c69ed90f5a6fefe30ecf6a953fa154cccb03b9cb3e070e7566394f8'
+    '74e5b9bfe73e6ff2a4a370ddf690462d3490e4d996ef1fe1f63bf5093ce70f63e309b60256e46d6085b694c2c5a6f8a811556497deba98292cd85708e5066589'
 )
 
 prepare() {
@@ -45,6 +47,9 @@ prepare() {
     # devices based on the same ASIX chipset as this one or to solve bugs with
     # specific versions of the kernel.
     patch -p1 < "${srcdir}/0002-b2b128.patch"
+
+    # Linux kernel internals changed since Linux 4.20.
+    patch -p1 < "${srcdir}/0003-linux-4.20.patch"
 
     # Use a DKMS build against the right kernel release
     sed -i "${srcdir}/${_filename}/Makefile" \

@@ -1,0 +1,15 @@
+*** a/ax88179_178a.c	2018-01-02 09:37:42.000000000 +0100
+--- b/ax88179_178a.c	2019-01-16 12:00:01.200486283 +0100
+***************
+*** 813,820 ****
+--- 813,822 ----
+  	.set_wol		= ax88179_set_wol,
+  	.get_eeprom_len		= ax88179_get_eeprom_len,
+  	.get_eeprom		= ax88179_get_eeprom,
++ #if LINUX_VERSION_CODE < KERNEL_VERSION(4,20,0)
+  	.get_settings		= ax88179_get_settings,
+  	.set_settings		= ax88179_set_settings,
++ #endif /* LINUX_VERSION_CODE < KERNEL_VERSION(4,20,0) */
+  #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 3, 0)
+  	.set_tx_csum		= ax88179_set_tx_csum,
+  	.get_tx_csum		= ax88179_get_tx_csum,
