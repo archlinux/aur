@@ -10,6 +10,8 @@ url='http://np1.github.io/pafy'
 arch=('any')
 license=('GPL3')
 provides=('python2-pafy')
+
+makedepends=('git')
 depends=('python2')
 conflicts=('python2-pafy')
 
