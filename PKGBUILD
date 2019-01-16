@@ -1,7 +1,7 @@
 # Maintainer: Viech <viech unvanquished net>
 
 pkgname=crunch-unv-git
-pkgver=daemon.17.g95415e8
+pkgver=unvanquished.0.51.1.0.g559a1b0
 pkgrel=1
 pkgdesc='DXTn texture compression tool. Modified version from Unvanquished Development.'
 arch=('x86_64' 'i686')
@@ -13,8 +13,7 @@ source=("crunch::git+https://github.com/DaemonEngine/crunch.git")
 
 pkgver() {
 	cd "${srcdir}/crunch/"
-	local ver="$(git describe --tags --long)"
-	printf "%s" "${ver//-/.}"
+	git describe --tags --long | sed 's,[-/],.,g'
 }
 
 build() {
