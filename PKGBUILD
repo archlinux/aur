@@ -9,7 +9,7 @@ url="https://github.com/blooser/cygnus"
 license=('MIT')
 depends=('python3')
 makedepends=('python-setuptools')
-applocation=~/$pkgname
+applocation=~/.local/share/$pkgname
 shortcut="
 [Desktop Entry]
 Encoding=UTF-8
@@ -37,7 +37,7 @@ build() {
 package() {
 	echo "${runscript}" > $pkgname-$pkgver/run.sh	
 	chmod +x $pkgname-$pkgver/run.sh
-	mv $pkgname-$pkgver ~/$pkgname 
+	mv $pkgname-$pkgver $pkgname && mv $pkgname ~/.local/share 
 	echo "${shortcut}" > ~/.local/share/applications/cygnus.desktop
 	if [ -f ~/.zshrc ]; then
 		echo "alias cygnus=${applocation}/run.sh" >> ~/.zshrc
