@@ -1,30 +1,26 @@
-# Maintainer: Salvador Pardiñas <darkfm@vera.com.uy>
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
+# Contributor: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=blastem
-pkgver=0.5.1
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Fast and accurate Sega Genesis/Mega Drive emulator"
 arch=('x86_64' 'i686')
 url="https://www.retrodev.com/blastem/changes.html"
 license=('GPL3')
-groups=()
 depends=('sdl2' 'glew')
 makedepends=('python2-pillow')
 optdepends=('vasm: game selection menu (must rebuild)'
 	    'xcftools: game selection menu (must rebuild)')
 provides=("${pkgname}")
 conflicts=("${pkgname}-hg")
-replaces=()
-backup=()
-options=()
-install=
 source=(
-	'https://www.retrodev.com/repos/blastem/archive/3d48cb0c28be.tar.gz'
+	'https://www.retrodev.com/repos/blastem/archive/357b4951d9b2.tar.gz'
 	'menu.patch'
 	)
 noextract=()
 
 prepare() {
-	mv "$srcdir/blastem-3d48cb0c28be" "$srcdir/blastem"
+	mv "$srcdir/blastem-357b4951d9b2" "$srcdir/blastem"
 	cd "$srcdir/${pkgname}"
 	patch -Np1 -i "${srcdir}/menu.patch"
 	chmod a+x menumake.sh install.sh
@@ -53,5 +49,5 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/blastem/blastem" "$pkgdir/usr/bin/blastem"
 }
-md5sums=('64082a41973a219f92d6ff98040333d7'
+md5sums=('0a5658e761c1ab389da3f3bdd0abed37'
          'b01d07f2630bb2c31ffda48dddc85785')
