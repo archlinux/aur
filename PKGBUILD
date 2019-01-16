@@ -1,5 +1,5 @@
-# Maintainer:  twa022 <twa022 at gmail dot com>
-# Contributor: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer:  Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: twa022 <twa022 at gmail dot com>
 # Contributor: Stein Krauz <steinkrauz@yahoo.com>
 # Contributor: Jan Jezek <honzin.jezek@gmail.com>
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
@@ -8,7 +8,7 @@
 _pkgname=squeeze
 pkgname=${_pkgname}-git
 epoch=1
-pkgver=0.4.90.r460.gdc87aa3
+pkgver=0.4.90.r592.g993cdd6
 pkgrel=1
 pkgdesc="Archive manager for the Xfce Desktop Environment (git checkout)"
 arch=('i686' 'x86_64')
