@@ -1,0 +1,3 @@
+post_install() {
+	sed -i -e 's/;extension=gettext/extension=gettext/' /etc/php/php.ini
+}
