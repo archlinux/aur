@@ -1,7 +1,7 @@
 pkgbase = asix-dkms
 	pkgdesc = A kernel module for ASIX AX88760 AX88772 AX88772A AX88772B AX88772C AX88178 USB 2.0 network adapters
 	pkgver = 4.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.asix.com.tw/
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,12 @@ pkgbase = asix-dkms
 	provides = asix-dkms
 	provides = asix-module
 	conflicts = asix-module
-	source = https://www.asix.com.tw/FrootAttach/driver/AX88772C_772B_772A_760_772_178_LINUX_DRIVER_v4.23.0_Source.tar.gz
+	source = https://www.asix.com.tw/FrootAttach/driver/AX88772C_772B_772A_760_772_178_Linux_Driver_v4.23.0_Source.tar.bz2
 	source = asix-dkms.conf
+	source = 0001-linux-4.20.patch
 	sha512sums = 7c43eed69e948f2d921b758c2dab1236540832c7ce48b7308b6e3fa5ee1e4f4bc9f190e1497ea85d7a953959bd86f00461ae81c0bbd710959c7dafba6c4c2688
 	sha512sums = ded1bed08f61ce207e394fc4f49345f0ea50639f53fb797907402b3503feecc485ba85fb799f2b3bc9c22cd4a250509c5eb99d4b36d42228a9475a9e7d67b293
+	sha512sums = e9e7025e8157d6950200a45a07d35de99c1342a60f02fa1701753e589cfa1964de86c136e8ce26f51d284cd716f75fe9953b1ee09381e9f1599aa89c8e61db8f
 
 pkgname = asix-dkms
 

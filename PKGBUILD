@@ -4,7 +4,7 @@
 
 pkgname=asix-dkms
 pkgver=4.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module for ASIX AX88760 AX88772 AX88772A AX88772B AX88772C AX88178 USB 2.0 network adapters"
 arch=('i686' 'x86_64')
 
@@ -22,11 +22,20 @@ _filename="AX88772C_772B_772A_760_772_178_Linux_Driver_v${pkgver}_Source"
 source=(
     "https://www.asix.com.tw/FrootAttach/driver/${_filename}.tar.bz2"
     'asix-dkms.conf'
+    '0001-linux-4.20.patch'
 )
 sha512sums=(
     '7c43eed69e948f2d921b758c2dab1236540832c7ce48b7308b6e3fa5ee1e4f4bc9f190e1497ea85d7a953959bd86f00461ae81c0bbd710959c7dafba6c4c2688'
     'ded1bed08f61ce207e394fc4f49345f0ea50639f53fb797907402b3503feecc485ba85fb799f2b3bc9c22cd4a250509c5eb99d4b36d42228a9475a9e7d67b293'
+    'e9e7025e8157d6950200a45a07d35de99c1342a60f02fa1701753e589cfa1964de86c136e8ce26f51d284cd716f75fe9953b1ee09381e9f1599aa89c8e61db8f'
 )
+
+prepare() {
+    cd "${srcdir}/${_filename}"
+
+    # Linux kernel internals changed since Linux 4.20.
+    patch -p1 < "${srcdir}/0001-linux-4.20.patch"
+}
 
 package() {
     # We are in the source directory ./src/
