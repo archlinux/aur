@@ -14,7 +14,7 @@ url="https://swaywm.org"
 source=("${pkgname%-*}::git+https://github.com/swaywm/swayidle.git")
 sha1sums=("SKIP")
 provides=("swayidle")
-#conflicts=("swayidle")
+conflicts=("swayidle")
 options=(debug !strip)
 
 pkgver() {
