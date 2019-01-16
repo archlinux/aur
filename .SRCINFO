@@ -1,0 +1,23 @@
+pkgbase = orage-git
+	pkgdesc = A simple calendar application with reminders for Xfce
+	pkgver = orage.4.12.1.r319.g11aa2e5f
+	pkgrel = 1
+	url = http://www.xfce.org
+	arch = i686
+	arch = x86_64
+	groups = xfce4-git
+	license = GPL2
+	makedepends = git
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = xfce4-dev-tools-git
+	depends = hicolor-icon-theme
+	depends = xfce4-panel-git
+	depends = libnotify
+	provides = orage
+	conflicts = orage
+	source = orage::git://git.xfce.org/apps/orage
+	md5sums = SKIP
+
+pkgname = orage-git
+
