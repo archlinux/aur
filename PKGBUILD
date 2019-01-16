@@ -1,13 +1,14 @@
+# Maintainer: Cyrinux <pkgbuilds AT levis DOT name>
 # Maintainer: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 pkgname=openscap
-pkgver=1.2.10
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="Open Source Security Compliance Solution"
 
 # i686 is theoretically bulitable, if anyone needs it
 arch=('x86_64')
-url="www.open-scap.org"
+url="https://www.open-scap.org/"
 license=('GPL')
 
 # The official site suggested the dependencies in terms of Fedora's rpm.
