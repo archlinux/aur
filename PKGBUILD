@@ -21,9 +21,8 @@ depends=(
         'libxdmcp'
 )
 makedepends=('unzip')
-source=(http://warmplace.ru/soft/sunvox/sunvox-$pkgver.zip)
-md5sums=('10bbeed0e3efe9345d17127fdf7751ef')
-
+source=(./sunvox-1-9.4c.tar.gz)
+sha256sums=('4fbf1351c358cf292a0fa2cb7a6152f1b3dd46b9acf1e9aa2f0b5096b6e52e84')
 package() {
         install -dm755 "${pkgdir}/opt/sunvox"
         install -dm755 "${pkgdir}/usr/share/licenses/sunvox"
