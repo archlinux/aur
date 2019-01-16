@@ -1,7 +1,7 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=jackal
-pkgver=0.4.0
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='An XMPP/Jabber server'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ source=(https://github.com/ortuman/jackal/archive/v${pkgver}.tar.gz
         jackal.sysusers
         jackal.tmpfiles
         jackal.yml)
-sha512sums=('b25065f21dbc674c8d43ffa389fcf7e16b27bdd72186e3ce56412654de6321f9a6c75ee1df1ff320b3d8770e0ee907fdd2310ec696f11ccd88f474464fcc9268'
+sha512sums=('e1bf876e25d9f243da6a90b387c823167647a224f29d9fa1120153874a8f1288bee771f283316cd91467b55aec0d359336d396e74e3a69f34779813422c167c7'
             'd7025628d82371c6ef7a942a918d8970ca54f01ddd513e2577474a31d880355045415c131cf68b8df6f1cc3b19b17135a8d955815f6b4f91d6ce77a70d982f7e'
             '470ec8c5958658e3f264f2186ccfb14a2b9cd6760da86116a89ecfbf147ef38310fb767ae1bb79a0fb6ae3881de399322a52540da7f4b21f4bd791d54cf47b11'
             '8eb4c15f63d1f4028d3dbe8a0861ffa514f6643c8fa918fc54c1fda4d6380d914b12d6cf1a199ee0929c966b311645aa482825f6d8ea29173865da29530bb711'
@@ -39,7 +39,7 @@ package() {
 
   install -D jackal.yml "${pkgdir}/etc/jackal/jackal.yml"
   install -Dm444 "${srcdir}/jackal-${pkgver}/README.md" "${pkgdir}/usr/share/doc/jackal/"
-  install -Dm444 "${srcdir}/jackal-${pkgver}/sql/mysql.sql" "${pkgdir}/usr/share/jackal/"
+  cp -r "${srcdir}/jackal-${pkgver}/sql/" "${pkgdir}/usr/share/jackal/"
   install -Dm755 "${srcdir}/jackal-${pkgver}/jackal" "${pkgdir}/usr/bin/jackal"
 
   install -Dm644 ${pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
