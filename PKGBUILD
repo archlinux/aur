@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=teaftp
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Simple, read-only TFTP server'
 arch=(x86_64)
