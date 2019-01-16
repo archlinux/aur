@@ -1,0 +1,12 @@
+pkgbase = musikwave-git
+	pkgdesc = Desktop MusikWave client using electron
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://www.musikwave.com
+	arch = x86_64
+	license = MIT
+	source = https://gitlab.com/cscs/musikwavedesktop/-/archive/master/musikwavedesktop-master.tar.gz
+	md5sums = SKIP
+
+pkgname = musikwave-git
+
