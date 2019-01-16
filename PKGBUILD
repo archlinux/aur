@@ -1,4 +1,4 @@
-# Maintainer: Hauke Rehfeld <archlinux@haukerehfeld.de>
+# Maintainer: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
 pkgname=nautilus-tmsu-rs-git
 pkgver=v0.5.0.r0.4320690
 pkgrel=1
