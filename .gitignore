@@ -1,5 +1,6 @@
 /gn/
 /pkg/
 /src/
+/*.log
 /*.tar
 /*.tar.*
