@@ -1,0 +1,16 @@
+pkgbase = nixio
+	pkgdesc = Neuroscience information exchange format
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = http://g-node.github.io/nix/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = hdf5
+	depends = boost
+	conflicts = nixio-git
+	source = https://github.com/G-Node/nix/archive/1.4.3.tar.gz
+	sha512sums = b019e51636e4331ce4438289dbd00b350ef42e9046f4df2c66d8acf294b57c73da1bdc9b1bbf91476aaefe20a193c5e9e29f1551deb387f7c66b105b4908590a
+
+pkgname = nixio
+
