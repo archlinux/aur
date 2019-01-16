@@ -5,7 +5,7 @@ pkgbase=gtk-theme-shades-of-gray-git
 _gitname=Shades-of-gray-theme
 pkgname=gtk-theme-shades-of-gray-git
 
-pkgver=1.1.3.r4.g0530f86
+pkgver=1.1.4.r0.ge1cae1a
 pkgrel=1
 pkgdesc='A dark GTK-theme (GNOME, Cinnamon, Xfce, Openbox) in 7 color variants (Git-version)'
 arch=('any')
@@ -30,6 +30,7 @@ pkgver() {
 package() {
   cd "$srcdir/$_gitname"
   rm {LICENSE,README.md}
+  rm -r ".git"
   DESTDIR="$pkgdir/usr/share/themes"
   mkdir -p "$DESTDIR"
     mv Shades-of-gray "$DESTDIR/"
