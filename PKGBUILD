@@ -4,7 +4,7 @@
 # Contributor: Sebastian Sareyko <public@nooms.de>
 
 pkgname=gnustep-gui
-pkgver=0.26.2
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="The GNUstep GUI class library"
 arch=('x86_64')
@@ -16,11 +16,10 @@ optdepends=('flite1: required for speech synthesis')
 conflicts=('gnustep-gui-svn')
 groups=('gnustep-core')
 options=('!makeflags')
-source=(https://github.com/gnustep/libs-gui/releases/download/gui-${pkgver//./_}/gnustep-gui-${pkgver}.tar.gz)
-#{,.sig}) # Upstream Signature wasn't correctly created
-sha256sums=('09ab2ac10f4bf98f1254c6c525c752d1f7b13bf0e6cd95530452c504fae7b4db')
-#            'SKIP')
-#validpgpkeys=('83AAE47CE829A4146EF83420CA868D4C99149679')
+source=(https://github.com/gnustep/libs-gui/releases/download/gui-${pkgver//./_}/gnustep-gui-$pkgver.tar.gz{,.sig})
+sha256sums=('7991e435944d389366069888eb65b1ef08c5ab39f12b27e804bb372b941bd3d4'
+            'SKIP')
+validpgpkeys=('83AAE47CE829A4146EF83420CA868D4C99149679')
 
 prepare() {
   cd "$srcdir"/$pkgname-$pkgver
