@@ -9,7 +9,7 @@ url="https://github.com/blooser/mimosa"
 license=('MIT')
 depends=('qt5-base')
 makedepends=('cmake')
-applocation=~/$pkgname
+applocation=~/.local/share/$pkgname
 shortcut="
 [Desktop Entry]
 Encoding=UTF-8
@@ -17,7 +17,7 @@ Version=${pkgver}
 Name[en_US]=Mimosa
 GenericName=Download manager
 Exec=${applocation}/mimosa
-Icon[en_US]=${applocation}/icons/mimosa.png
+Icon[en_US]=${applocation}/mimosa.png
 Type=Application
 Categories=Application;Network
 Comment[en_US]=Take a glance at your downloads from the Internet
@@ -34,8 +34,10 @@ build() {
 package() {
 	cd $pkgname-$pkgver
 	make clean
+	mkdir -p ${applocation} && cp mimosa ${applocation}
+	cp icons/mimosa.png ${applocation}
 	cd ..
-	mv $pkgname-$pkgver ~/$pkgname
+	rm -rf $pkgname-$pkgver 
 	echo "${shortcut}" > ~/.local/share/applications/mimosa.desktop
 	if [ -f ~/.zshrc ]; then
 		echo "alias mimosa=${applocation}/mimosa" >> ~/.zshrc
@@ -44,5 +46,4 @@ package() {
 	fi	
 
 }
-
 
