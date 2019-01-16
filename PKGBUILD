@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=teaftp
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Simple, read-only TFTP server'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/xyproto/teaftp'
-license=('MIT')
-makedepends=('go' 'git')
-source=("git+https://github.com/xyproto/teaftp#tag=v$pkgver")
+license=(MIT)
+makedepends=(git go)
+source=("git+$url#tag=v$pkgver")
 md5sums=('SKIP')
 
 build() {
