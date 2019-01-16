@@ -1,7 +1,7 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=envchain
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Set environment variables with D-Bus secret service'
 arch=('i686' 'x86_64')
 url='https://github.com/sorah/envchain'
