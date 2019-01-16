@@ -1,6 +1,6 @@
 pkgbase = orage-git
 	pkgdesc = A simple calendar application with reminders for Xfce
-	pkgver = orage.4.12.1.r319.g11aa2e5f
+	pkgver = 4.12.1.r319.g11aa2e5f
 	pkgrel = 1
 	url = http://www.xfce.org
 	arch = i686

@@ -4,7 +4,7 @@
 
 _pkgname=orage
 pkgname=${_pkgname}-git
-pkgver=orage.4.12.1.r319.g11aa2e5f
+pkgver=4.12.1.r319.g11aa2e5f
 pkgrel=1
 pkgdesc="A simple calendar application with reminders for Xfce"
 arch=("i686" "x86_64")
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long | sed 's/^orage-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
