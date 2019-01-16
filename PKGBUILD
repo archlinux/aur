@@ -1,13 +1,13 @@
 # Maintainer: Brandon Clifford <brandon099 at gmail dot com>
 _pkgname=siji
 pkgname=${_pkgname}-git
-pkgver=r21.95369af
+pkgver=r22.9d88311
 pkgrel=1
 pkgdesc='Iconic bitmap font based on stlarch with additional glyphs'
 arch=('any')
 url='https://github.com/stark/siji'
 license=('GPLv2')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-font-utils' 'xorg-xset')
 optdepends=('xorg-xfd: use view.sh script to view glyphs')
 makedepends=('git')
 provides=("${_pkgname}")
