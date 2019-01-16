@@ -18,7 +18,7 @@ source=(
     "python2.patch"
     "pythia.patch"
 )
-sha256sums=('5d9ee638ca3b736fb51979da7c83181dea61f0d7dc53ed0a836d3934d0d0c476'
+sha256sums=('688526f2e1d829fe6862fdbdf83bc7e718feae3461145db03d9540f45a54e45c'
             '632adc73e951df4341709adeafd3a7c72da1752f8af61037eae2b87a08ca9a64'
             '09bfa3f3335c533e9962a958409cd8e807924a5c4cc9482e5a2c09b2ff004543')
 
