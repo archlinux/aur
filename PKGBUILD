@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=27.0.50.r135041
+pkgver=27.0.50.r135069
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'texlive-core')
 conflicts=('emacs')
 options=('docs' '!emptydirs')
 provides=('emacs' 'emacs-seq')
-source=("git://git.savannah.gnu.org/emacs.git#commit=c342b26371480316024e1e5d63cd8b3f035dda69")
+source=("git://git.savannah.gnu.org/emacs.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -44,8 +44,6 @@ build() {
     --without-pop \
     --with-gameuser=:games \
     --disable-build-details
-  # if available use texinfo parser written in C
-  [[ $(makeinfo --version|awk '/texi2any/ {print $4}') -ge 6.5.90 ]] && export TEXINFO_XS_PARSER=1
   make
   make pdf
 }
