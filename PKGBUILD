@@ -3,7 +3,7 @@
 
 pkgname=openscap
 pkgver=1.2.17
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Security Compliance Solution"
 
 # i686 is theoretically bulitable, if anyone needs it
@@ -22,16 +22,6 @@ makedepends=('doxygen' 'automake' 'acl')
 source=("https://github.com/OpenSCAP/openscap/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('56d11d9bd3d61b6edf7368636344ff72')
 
-prepare() {
-	cd "$pkgname-$pkgver"
-
-	# This is for Red Hat/Fedora family, we don't need it.
-	sed -e "s/^.*default_cpe.*$/\\\/" -i $srcdir/$pkgname-$pkgver/tests/API/XCCDF/Makefile.am
-
-	# The upstream has fixed some of the issues, but more check needed
-	# patch -f -p1 -i "$srcdir/fails_and_fix.patch"
-	# patch -f -p2 -i "$srcdir/xpath.patch"
-}
 
 build() {
 	cd "$pkgname-$pkgver"
