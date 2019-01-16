@@ -5,21 +5,31 @@
 _pkgname=jre
 pkgname=bin32-jre
 _major=8
-_minor=192
-_build=b12
-_hash=750e1c8617c5452694857ad95c3ee230
+_minor=202
+_build=b08
+_hash=1961070e4c9b4e26a04e7f5a083f551e
 pkgver=${_major}u${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Enviroment (32-bit)"
 arch=('x86_64')
 url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
 license=('custom:Oracle')
-depends=('ca-certificates-java' 'hicolor-icon-theme' 'java32-runtime-common' 'lib32-gcc-libs'
-         'lib32-libxrender' 'lib32-libxtst' 'lib32-nss' 'xdg-utils')
+depends=('ca-certificates-java'
+		 'hicolor-icon-theme'
+		 'java32-runtime-common'
+		 'lib32-gcc-libs'
+		 'lib32-libxrender'
+		 'lib32-libxtst'
+		 'lib32-nss'
+		 'xdg-utils')
 optdepends=('lib32-alsa-lib: for basic sound support'
             'lib32-gtk2: for Gtk+ look and feel (desktop)')
-provides=("java32-runtime=$_major" "java32-runtime-headless=$_major" "java32-web-start=$_major"
-          "java32-runtime-jre=$_major" "java32-runtime-headless-jre=$_major" "java32-web-start-jre=$_major"
+provides=("java32-runtime=$_major"
+		  "java32-runtime-headless=$_major"
+		  "java32-web-start=$_major"
+          "java32-runtime-jre=$_major"
+		  "java32-runtime-headless-jre=$_major"
+		  "java32-web-start-jre=$_major"
           "java32-openjfx=$_major")
 
 # Variables
@@ -46,7 +56,7 @@ install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_hash/$_pkgname-$pkgver-linux-i586.tar.gz"
         "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "policytool32-$_jname.desktop")
-md5sums=('0798a5661d0d100caeb12b5d5619e90c'
+md5sums=('8622893d3af9a1431afd0eb8f3e2be9c'
          'b3c7031bc65c28c2340302065e7d00d3'
          '271b97a9b95d809a99999ec5fb74313c')
 
