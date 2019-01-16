@@ -2,8 +2,8 @@
 # Contributor: Black_Codec <orso.f.regna@gmail.com>
 
 pkgname=guacamole-server
-pkgver=0.9.14
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://guacamole.sourceforge.net/"
@@ -23,7 +23,7 @@ install=$pkgname.install
 source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${pkgver}/source/${pkgname}-${pkgver}.tar.gz"
         'guacd.service' libavcodec.patch)
  
-md5sums=('cadc90e526ccf63e01c65017c8881717'
+md5sums=('dc4a7775d8b676fa23c06e811d7a536d'
          'dfaa29349d2e73af6dac75d6cafbd762'
          '6cf58f3148d0ea3f24b4fa362ca79807')
  
