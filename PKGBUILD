@@ -2,10 +2,10 @@
 _pkgname=wootility
 pkgname=${_pkgname}-appimage
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
 arch=('x86_64')
-url='https://www.wooting.nl/wootility'
+url='https://wooting.io/wootility'
 license=('unknown')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
