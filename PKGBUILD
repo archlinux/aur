@@ -25,7 +25,7 @@ source=(http://warmplace.ru/soft/sunvox/sunvox-$pkgver.zip)
 md5sums=('10bbeed0e3efe9345d17127fdf7751ef')
 
 package() {
-        install -dm755 "${pkgdir}/opt/${pkgname}"
+        install -dm755 "${pkgdir}/opt/sunvox"
         install -dm755 "${pkgdir}/usr/share/licenses/sunvox"
         if [ "$CARCH" = "x86_64" ]; then
                 install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86_64/sunvox" "${pkgdir}/usr/bin/sunvox"
@@ -35,7 +35,7 @@ package() {
                 install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86/sunvox_no_simd" "${pkgdir}/usr/bin/sunvox_no_simd"
         fi
         cp -a "${srcdir}/sunvox/examples" "${pkgdir}/opt/sunvox/examples"
-        cp -a "${srcdir}/sunvox/instruments" "${pkgdir}/opt/${pkgname}/instruments"
+        cp -a "${srcdir}/sunvox/instruments" "${pkgdir}/opt/sunvox/instruments"
         cp -a "${srcdir}/sunvox/effects" "${pkgdir}/opt/sunvox/effects"
         install -Dm644 "${srcdir}/sunvox/docs/license/SunVox.txt"  "${pkgdir}/usr/share/licenses/sunvox/LICENSE"
 }
