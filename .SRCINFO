@@ -1,16 +1,16 @@
 pkgbase = ndi-sdk
 	pkgdesc = NewTek NDI SDK
-	pkgver = 3.20181217.r99822
+	pkgver = 3.20181221.r100036
 	pkgrel = 1
 	url = https://www.newtek.com/ndi/sdk/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = avahi
-	noextract = InstallNDISDK_v3.20181217.r99822_Linux.sh
+	noextract = InstallNDISDK_v3.20181221.r100036_Linux.sh
 	options = !strip
-	source = InstallNDISDK_v3.20181217.r99822_Linux.sh::http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v3_Linux.sh
-	sha256sums = 3088c7d03fd92ec5094bbe6c596a32498d06c39d00e1df6f20d089076f48f559
+	source = InstallNDISDK_v3.20181221.r100036_Linux.sh::http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v3_Linux.sh
+	sha256sums = 8face05e356ffed5de9660ba4a5232699faa2bf0c9858d5ed88fac6d138c23a0
 
 pkgname = ndi-sdk
 
