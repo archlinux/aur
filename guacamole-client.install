@@ -3,5 +3,5 @@ colorize
 
 post_upgrade() {
 	msg "War deployed to /var/lib/tomcat8/webapps/guacamole.war"
-        warning "Since version 0.9.10, webapp is named \'guacamole-incubating\'. Change your URI accordingly."
+        warning "Since version 1.0.0, webapp is named \'guacamole\'. Change your URI accordingly."
 }
