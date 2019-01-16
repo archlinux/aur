@@ -8,8 +8,8 @@ arch=(x86_64)
 url="http://www.kexi-project.org/"
 license=(GPL2)
 depends=(kcoreaddons)
-makedepends=(extra-cmake-modules python libmariadbclient postgresql qt5-tools doxygen)
-optdepends=('libmariadbclient: MySQL plugin' 'postgresql: PostgreSQL plugin')
+makedepends=(extra-cmake-modules python mariadb-libs postgresql qt5-tools doxygen)
+optdepends=('mariadb-libs: MySQL plugin' 'postgresql: PostgreSQL plugin')
 source=("https://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('175645a149ae4d758ff2746900f6eabe4734b2bdac4d8c95893c650be4f929f2'
             'SKIP')
