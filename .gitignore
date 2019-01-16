@@ -1,0 +1,4 @@
+swayidle*.tar*
+src/
+pkg/
+swayidle/
