@@ -5,7 +5,7 @@ _name=gtfparse
 pkgbase='python-gtfparse'
 pkgname=('python-gtfparse' 'python2-gtfparse')
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for parsing GTF files"
 arch=('any')
 url="https://pypi.python.org/pypi/gtfparse"
@@ -36,12 +36,12 @@ package_python2-gtfparse() {
   depends=('python2' 'python2-numpy' 'python2-pandas')
 
   cd "${srcdir}/${_name}-${pkgver}-py2"
-  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python-gtfparse() {
   depends=('python' 'python-numpy' 'python-pandas')
 
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }

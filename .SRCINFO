@@ -1,7 +1,7 @@
 pkgbase = python-gtfparse
 	pkgdesc = Python library for parsing GTF files
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/gtfparse
 	arch = any
 	license = Apache
