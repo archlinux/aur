@@ -1,6 +1,6 @@
 pkgbase = mlpack
 	pkgdesc = a scalable c++ machine learning library
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = http://www.mlpack.org
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = mlpack
 	depends = cython>=0.24
 	depends = python-numpy
 	depends = python-pandas>=0.15.0
-	source = http://www.mlpack.org/files/mlpack-3.0.3.tar.gz
-	sha256sums = b6128e7eb700c69873c3cd5c3a78c79e9f5b7d92bc8d962670733c677d905d90
+	source = http://www.mlpack.org/files/mlpack-3.0.4.tar.gz
+	sha256sums = d02a84fdc7a3b07064f2dcb925b6a1d109f5e99eed990a4552c50ab7a9fd69cc
 
 pkgname = mlpack
 
