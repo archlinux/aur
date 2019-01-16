@@ -13,7 +13,7 @@
 #
 pkgname=zebra
 _dlname=idzebra
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="A high-performance, general-purpose structured text indexing and retrieval engine."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ url="http://www.indexdata.com/zebra/"
 license=('GPL')
 depends=('bzip2' 'expat' 'perl' 'yaz>=3.0.47' 'zlib')
 source=("http://ftp.indexdata.dk/pub/zebra/${_dlname}-${pkgver}.tar.gz")
-sha512sums=('13896c6f9666a28c55863de29eb7e12bb5f19ad0bd5da0968ae3832afc44d375ccff36fe5a14843d2a73af6c28fa5fa515075682ff4da1b42ad8e0ea6b87e16b')
+sha512sums=('da5d473e504acb8dc90c02e36560b48477e331fb9480cff5dc322a7f27344a933d80f2559978bb860cb8225559ad5eed5597beaa4f3b5deb6b4a7672ab607a99')
 
 prepare() {
     cd "$_dlname-$pkgver"
@@ -34,7 +34,6 @@ build() {
     ./configure --prefix=/usr \
         --with-yaz=/usr/bin \
         --without-docbook-dtd --without-docbook-dsssl --without-docbook-xsl \
-        --without-htmlhelp.xsl \
         --without-tclconfig \
         --with-iconv --with-expat
     make
