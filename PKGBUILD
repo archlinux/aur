@@ -3,7 +3,8 @@
 pkgname=go-dep
 _pkgname=${pkgname#go-}
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
+pkgdesc='Legacy dependency management tool for Go'
 arch=(i686 x86_64)
 url='https://golang.github.io/dep/'
 license=(BSD)
@@ -42,9 +43,9 @@ package() {
   install -d "$pkgdir/usr/share/doc/$_pkgname"
   cp -r docs/* "$pkgdir/usr/share/doc/$_pkgname"
 
-  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$1/AUTHORS"
-  install -Dm644 CONTRIBUTORS "$pkgdir/usr/share/licenses/$1/CONTRIBUTORS"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$1/LICENSE"
+  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
+  install -Dm644 CONTRIBUTORS "$pkgdir/usr/share/licenses/$pkgname/CONTRIBUTORS"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:

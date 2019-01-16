@@ -1,6 +1,7 @@
 pkgbase = go-dep
+	pkgdesc = Legacy dependency management tool for Go
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://golang.github.io/dep/
 	arch = i686
 	arch = x86_64
