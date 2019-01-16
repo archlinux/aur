@@ -1,6 +1,6 @@
 pkgbase = twa
 	pkgdesc = Tiny web auditor with strong opinions
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/trailofbits/twa
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = twa
 	depends = bind-tools
 	depends = curl
 	depends = netcat
-	source = https://github.com/trailofbits/twa/archive/1.7.0/twa-1.7.0.tar.gz
-	sha512sums = d5e954701569376162994ce7c4cbd6f35922befea4e59798873e3886b223d2020884466f1cee80585207c7a1b5822861d35caf35cf5fb651e99c50e041e57d97
+	source = https://github.com/trailofbits/twa/archive/1.7.1/twa-1.7.1.tar.gz
+	sha512sums = 993e2217ee232ff756e9e8cfe3bf94f386ab06a399fb675f1c90fc06c349e30587ca796ffcf10d2d5cec284a94d4fbf738146f396ffdcbb7284352e8fbb970ae
 
 pkgname = twa
 
