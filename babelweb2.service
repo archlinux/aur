@@ -1,0 +1,20 @@
+[Unit]
+Description=Yet Another Monitoring Tool for the Babel routing daemon
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/usr/bin/babelweb2 -static /usr/share/babelweb2/static/
+Restart=on-failure
+
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+[Install]
+WantedBy=multi-user.target
+
