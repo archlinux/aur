@@ -1,15 +1,15 @@
 # Maintainer: Francesco Orofino <ivanhoe1024@gmail.com>
 pkgname=datawarrior
-pkgver=4.7.1
-_pkgver=471
+pkgver=5.0.0
+_pkgver=500
 pkgrel=1
 pkgdesc="Open-source data visualization and analysis program with embedded chemical intelligence"
 arch=('any')
 url="http://www.openmolecules.org/datawarrior/index.html"
 license=('GPL')
 depends=('java-runtime>=8' 'java-openjfx' 'hicolor-icon-theme')
-source=("https://www.dropbox.com/s/wjy1xhtobakbjad/$pkgname${_pkgver}_linux.tar.gz")
-md5sums=('ac559a7a8b443e168257657a9c156c48')
+source=("https://www.dropbox.com/s/isozhwfbewpkaty/$pkgname${_pkgver}_linux.tar.gz")
+md5sums=('1abebc4a3489c03e0c770416c889376b')
 
 package() {
 	cd "${pkgname}_linux"
