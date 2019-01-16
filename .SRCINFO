@@ -7,7 +7,7 @@ pkgbase = turtlecoin-bin
     arch = x86_64
     license = LGPLv3
     conflicts = turtlecoin-git
-    source = https://github.com/turtlecoin/turtlecoin/releases/download/v0.10.0/turtlecoin-v0.10.0-linux.tar.gz
-    sha256sums = b5457ab6b3c637ca9ef25f404f0c4f6e7a563d635c19d5f5a60cbdbe963d1384
+    source = https://github.com/turtlecoin/turtlecoin/releases/download/v0.12.0/turtlecoin-v0.12.0-linux.tar.gz
+    sha256sums = 32eae225807f4a18e255c5d26250c46467b8d7503fda6094b4198d64463ca498
 
 pkgname = turtlecoin-bin
