@@ -14,7 +14,7 @@ depends=('python2-psutil'
 )
 package()
 {
-	cd "$srcdir/Nvidiux-2.0.2"
+	cd "$srcdir/Nvidiux-2.1"
 	cp -r usr $pkgdir
 }
 source=(https://github.com/RunGp/Nvidiux/archive/2.1.tar.gz)
