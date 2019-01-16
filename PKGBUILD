@@ -1,7 +1,7 @@
 # Maintainer: gilbus <aur(AT)tinkershell.eu>
 pkgname=swaylock-git
 _pkgname=swaylock
-pkgver=r152.aab44df
+pkgver=r164.762e3f3
 pkgrel=1
 license=("MIT")
 pkgdesc="Screen locker for Wayland "
@@ -17,7 +17,7 @@ url="https://swaywm.org"
 source=("${pkgname%-*}::git+https://github.com/swaywm/swaylock.git")
 sha1sums=("SKIP")
 provides=("swaylock")
-#conflicts=("swaylock")
+conflicts=("swaylock")
 options=(debug !strip)
 
 pkgver() {
