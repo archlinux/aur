@@ -22,6 +22,7 @@ pkgbase = stremio-beta
 	depends = openssl
 	provides = stremio-beta
 	conflicts = stremio-beta
+	conflicts = stremio-legacy
 	source = stremio::git+https://github.com/Stremio/stremio-shell.git#branch=master
 	md5sums = SKIP
 

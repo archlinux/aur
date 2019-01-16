@@ -12,7 +12,7 @@ groups=()
 depends=("nodejs" "ffmpeg" "qt5-webengine" "qt5-webchannel" "qt5-declarative" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-translations" "mpv" "openssl")
 makedepends=("git" "wget" "qt5-tools" "librsvg")
 provides=("${pkgname}")
-conflicts=("${pkgname}")
+conflicts=("${pkgname}" "stremio-legacy")
 
 install=${_pkgname}.install
 
