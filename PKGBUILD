@@ -2,7 +2,7 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='xmrig'
-pkgver='2.8.3'
+pkgver='2.9.2'
 pkgrel='1'
 pkgdesc='High Perf CryptoNote CPU Miner (Monero, Aeon)'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ source=("${pkgname}.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1c4fa2898b1252507e885c4bfa2d8d5b20bce2069cb5f703bb084066d560a770'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6'
-            'ddf0c273fcf71889989c971c2a27b81a05aa2352a4bc03481730576583de4696')
+            'eb03b60397e548b9d4d92c7636830df6faa9834b3593deb266454ea965cfcfea')
 prepare() {
   cd "${pkgname}-${pkgver}"
   mkdir build
