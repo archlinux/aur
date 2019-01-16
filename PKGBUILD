@@ -2,7 +2,7 @@
 # Maintainer:  David Latorre <david@latorredev.com>
 # Contributor: zwergnase <zwergnase@posteo.de>
 
-pkgname=sunvox
+pkgname=sunvox-1.x
 pkgver=1.9.4c
 pkgrel=1
 pkgdesc="Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker)."
