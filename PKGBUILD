@@ -1,22 +1,20 @@
 # Maintainer: Vladimir Borisov <vladimir@stremio.com>
+# Contributor: Prasad Kumar
 _pkgname=stremio
-pkgname=${_pkgname}
+pkgname=${_pkgname}-beta
 pkgver=4.4.25
 pkgrel=1
-pkgdesc="The next generation media center"
-arch=($(uname -m))
+pkgdesc="Watch videos, movies, TV series and TV channels instantly. (Beta Version)"
+arch=(any)
 url="https://www.stremio.com"
 license=("MIT")
 groups=()
 depends=("nodejs" "ffmpeg" "qt5-webengine" "qt5-webchannel" "qt5-declarative" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-translations" "mpv" "openssl")
 makedepends=("git" "wget" "qt5-tools" "librsvg")
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-replaces=("stremio-git")
-backup=()
-options=()
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 
-install=stremio.install
+install=${_pkgname}.install
 
 source=("${_pkgname}::git+https://github.com/Stremio/stremio-shell.git#branch=master")
 noextract=()
