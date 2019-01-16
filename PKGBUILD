@@ -1,7 +1,7 @@
 # Contributor: tuftedocelot@fastmail.fm
 
 pkgname=nifi
-pkgver=1.5.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='An easy to use, powerful, and reliable system to process and distribute data.'
 arch=(x86_64)
@@ -14,7 +14,7 @@ source=(
   'nifi.service'
   'nifi.install'
 )
-sha256sums=('93712c73e2981228f3b2cdcb56024d4e99a4a2559d6a22fb22e85a616dbf20a3'
+sha256sums=('11561e8d505e76af5060a8b039d7ba1ecfe966722e5b824b4d4eed60ea796071'
             'f4ee42958c0f2cd67bba472f96f99b6e8ad06b38222e8ec888c33c92b3f95ec2'
             '20888fc83333b81a90a227cfc6b1517b36b7312f5018bfdb5868caf4197c95a2')
 
