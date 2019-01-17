@@ -1,16 +1,14 @@
 pkgbase = td-agent
 	pkgdesc = Open-Source Log Collector
-	pkgver = 2.3.5
+	pkgver = 3.2.1
 	pkgrel = 1
-	url = http://www.fluentd.org/
+	url = https://www.fluentd.org/
 	install = td-agent.install
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source = https://packages.treasuredata.com/2/ubuntu/xenial/pool/contrib/t/td-agent/td-agent_2.3.5-0_amd64.deb
-	source = td-agent.service
-	sha256sums = 02c1a541429dd4bd8bafea0a8ad54e801ae7c202903153b09dc2a0b57e8e6436
-	sha256sums = a1202a84c8618b7b0e005037f24492fe82aef2ffeb2925e4e4637dbd56e994c0
+	source = https://packages.treasuredata.com/3/ubuntu/bionic/pool/contrib/t/td-agent/td-agent_3.2.1-0_amd64.deb
+	sha512sums = d13219ad4f9a245400d74f49066c840283303cd409fb1aef3e50de1e15a2fbb5386c4b1869c04df4a5b15f9272dff19685234fe49c70e0d714793be7099ca91f
 
 pkgname = td-agent
 
