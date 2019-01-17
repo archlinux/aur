@@ -1,0 +1,18 @@
+pkgbase = gladtex2
+	pkgdesc = A utility for writing LaTeX equations within HTML - Python rewrite
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://humenda.github.io/GladTeX/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = pandoc
+	depends = python>=3.4
+	depends = texlive-bin
+	depends = texlive-latexextra
+	conflicts = gladtex
+	source = https://github.com/humenda/GladTeX/archive/v3.0.0.tar.gz
+	sha256sums = 319b5f1741f6635f0cc542527626def47578989af84d3fbce1413d24cefc89ce
+
+pkgname = gladtex2
+
