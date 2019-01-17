@@ -4,14 +4,14 @@ pkgname='palns-git'
 pkgdesc='Header-only C++ library for the Parallel Adaptive Neighbourhood Search metaheuristic.'
 
 pkgver=r10.751c36f
-pkgrel=1
+pkgrel=2
 
 arch=('x86_64')
 url='https://github.com/alberto-santini/adaptive-large-neighbourhood-search'
 license=('GPL3')
 depends=()
 optdepends=()
-ckeckdepends=(s)
+ckeckdepends=()
 source=("git+https://github.com/alberto-santini/adaptive-large-neighbourhood-search.git")
 sha256sums=('SKIP')
 
