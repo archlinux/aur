@@ -3,7 +3,7 @@
 
 name=cloudcompare
 pkgname=${name}-git
-pkgver=2.9.1.r434.g04569d08
+pkgver=2.10.1.r33.gf84d3cd4
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
@@ -13,12 +13,15 @@ depends=('qt5-base' 'qt5-tools' 'qt5-svg' 'glu' 'glew' 'mesa' 'vxl' 'ffmpeg' 'cg
 makedepends=('git' 'cmake' 'pcl' 'libharu' 'proj' 'python' 'doxygen' 'laz-perf')
 optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git"
+        "constexpr.patch"
         )
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '46bbc5406f18045433ad2bead593294c')
 
 prepare() {
   cd ${srcdir}/${name}
   git submodule update --init --recursive
+  git apply ${srcdir}/constexpr.patch
 }
 
 pkgver() {
