@@ -2,13 +2,13 @@
 
 pkgname=bp-nfoview
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple NFO-Viewer by brainpower"
 arch=('i686' 'x86_64')
 url="https://github.com/brainpower/bp-nfoview"
 license=('GPL')
 depends=('qt5-base')
-makedepends=('meson' 'git')
+makedepends=('meson' 'git' 'qt5-tools')
 source=("https://github.com/brainpower/bp-nfoview/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('5a5606a7ae21f1518b2c56e957e3842b9778930d69849c5a5405ed403a214ab2')
 
@@ -17,7 +17,7 @@ build(){
 
 	arch-meson builddir
 
-	ninja -v -C builddir
+	ninja -C builddir
 }
 
 package(){
