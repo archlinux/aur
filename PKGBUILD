@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=cvechecker-git
-pkgver=v3.9.r10.ge5a9969
+pkgver=v3.9.r13.g1e751b9
 pkgrel=1
 pkgdesc="a local CVE checker tool"
 arch=('i686' 'x86_64')
