@@ -1,8 +1,8 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 pkgname=python-download-npo
 _module='download-npo'
-pkgver=2.9
-pkgrel=4
+pkgver=2.9.1
+pkgrel=1
 pkgdesc="Download videos from the Dutch npo.nl site."
 url="http://arp242.net/code/download-npo"
 depends=('python' 'hicolor-icon-theme')
@@ -11,9 +11,9 @@ optdepends=('tk: Graphical frontend'
             'python-mutagen: Update metada of downloaded files')
 license=('MIT')
 arch=('any')
-source=('https://pypi.python.org/packages/23/cc/586465c1ac371cfbde35e2cc2a4cf3bee79745df2cd4ac110e61ffeba21e/download-npo-2.9.tar.gz'
+source=("https://github.com/Carpetsmoker/download-npo/archive/version-${pkgver}.tar.gz"
         'LICENSE')
-sha256sums=('b1819f9c536d90588f4cf8a02651d925600957c2d86e6c6817b2dcae6f023a10'
+sha256sums=('b7a69f55b31750f1f12842cbb4f133442986abba4b3a2533a522d6c5af42bc68'
             '6976e1dd59a0e0fb1b0e32a8a53eb6502485550be941560bcacb78901e5cd096')
 
 build() {
