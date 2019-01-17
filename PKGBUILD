@@ -7,7 +7,7 @@ pkgdesc='An IDE built around Neovim'
 arch=(x86_64)
 url="https://github.com/onivim/oni"
 license=('MIT')
-depends=('neovim' 'nodejs' 'gconf' 'libxss')
+depends=('neovim<=0.3.1' 'nodejs' 'gconf' 'libxss')
 makedepends=('tar')
 source=("https://github.com/onivim/${pkgname}/releases/download/v${pkgver}/Oni-${pkgver}-x64-linux.tar.gz"
         "oni.sh"
