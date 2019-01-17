@@ -1,6 +1,6 @@
 pkgbase = mythplugins
 	pkgver = 30.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.mythtv.org
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = mythplugins
 	makedepends = perl-soap-lite
 	makedepends = perl-xml-simple
 	makedepends = perl-xml-xpath
+	makedepends = libhdhomerun
 	makedepends = python2-pillow
 	makedepends = python2-pycurl
 	makedepends = python2-oauth
@@ -57,6 +58,7 @@ pkgname = mythplugins-mythgallery
 pkgname = mythplugins-mythgame
 	pkgdesc = Game emulator plugin for MythTV
 	depends = mythtv
+	depends = minizip
 
 pkgname = mythplugins-mythmusic
 	pkgdesc = Music playing plugin for MythTV
