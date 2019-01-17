@@ -4,10 +4,10 @@ pkgname=phgen
 pkgver=1.0
 pkgrel=1
 pkgdesc="Pattern-based random phrase generation using WordNet"
-arch=('x86_64' 'i686')
+arch=('any')
 url="https://github.com/AbsurdlySuspicious/PhraseGen"
 license=('Apache')
-depends=('java-environment')
+depends=('java-environment' 'bash')
 provides=('phgen')
 conflicts=('phgen-git')
 
