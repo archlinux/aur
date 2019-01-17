@@ -1,5 +1,5 @@
 pkgbase = origin-client
-	pkgdesc = Openshift client binary
+	pkgdesc = Openshift client
 	pkgver = 3.11.0
 	pkgrel = 2
 	url = https://github.com/openshift/origin

@@ -1,5 +1,5 @@
 pkgname=origin-client
-pkgdesc="Openshift client binary"
+pkgdesc="Openshift client"
 pkgver=3.11.0
 pkgrel=2
 arch=('x86_64')
