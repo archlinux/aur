@@ -1,0 +1,23 @@
+pkgbase = uranium-beta-git
+	pkgdesc = A Python framework for building Desktop applications.
+	pkgver = 4.0
+	pkgrel = 2
+	url = https://github.com/Ultimaker/Uranium
+	arch = any
+	license = LGPL3
+	makedepends = cmake
+	makedepends = git
+	depends = python
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = pyqt5-common
+	depends = python-pyqt5
+	depends = python-numpy
+	depends = arcus-beta-git
+	conflicts = uranium
+	conflicts = uranium-git
+	source = git+https://github.com/Ultimaker/Uranium#branch=4.0
+	sha256sums = SKIP
+
+pkgname = uranium-beta-git
+
