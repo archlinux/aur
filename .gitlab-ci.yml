@@ -1,4 +1,4 @@
-jobs:
+makepkg:
   image: martynas/archlinux:latest
   script:
   - namcap PKGBUILD
