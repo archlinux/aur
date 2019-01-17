@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=KeY
+GenericName=KeY
+Comment=Java Software Verification Tool
+Exec=key %U
+Icon=key
+Terminal=false
+Categories=Development
+MimeType=text/x-arduino;
+Keywords=java;verification
