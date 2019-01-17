@@ -1,8 +1,6 @@
 # Maintainer: Sajaysurya Ganesh <sajay.surya@gmail.com>
 
 pkgname="python-pycolab-git"
-pkgver="1"
-pkgrel=1
 pkgdesc="DeepMind pycolab"
 arch=('any')
 url="https://github.com/deepmind/pycolab"
