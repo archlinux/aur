@@ -22,5 +22,7 @@ pkgbase = masari
     optdepends = ldns
     checkdepends = gtest
 	source = https://github.com/masari-project/masari/archive/v0.2.4.5.tar.gz
+    source = boost.patch
 	md5sums = 88e405bcfd58c9166cbdd9bbca908a33
+    md5sums = 31bd8669529a3bc4f372731a01501ca6
 pkgname = masari
