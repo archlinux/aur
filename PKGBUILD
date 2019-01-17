@@ -8,19 +8,16 @@ url="http://hennigbuam.de/georg/gimp.html"
 license=('GPL')
 depends=('gimp' 'gsl' 'fftw')
 makedepends=('perl-xml-parser')
-source=("http://www.hennigbuam.de/georg/downloads/$pkgname-$pkgver.tar.bz2"
- 'stop-declare-strndup.patch')
-md5sums=('5a70dcd8699790497ff45451c9c4071f' SKIP)
+source=("http://www.hennigbuam.de/georg/downloads/$pkgname-$pkgver.tar.bz2")
+md5sums=('5a70dcd8699790497ff45451c9c4071f')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-#  patch -p1 -i "$srcdir/stop-declare-strndup.patch"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-#  make LIBS='-lm'
   make
 }
 
