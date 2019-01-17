@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!slack-desktop.patch
+!darkify_slack.js
+!.SRCINFO

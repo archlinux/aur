@@ -1,7 +1,7 @@
 pkgbase = slack-desktop-dark
 	pkgdesc = Slack Desktop (Beta) for Linux, with dark theme patch
-	pkgver = 3.3.3
-	pkgrel = 2
+	pkgver = 3.3.7
+	pkgrel = 1
 	url = https://slack.com/downloads
 	arch = x86_64
 	license = custom
@@ -16,11 +16,11 @@ pkgbase = slack-desktop-dark
 	depends = glibc>=2.28-4
 	optdepends = gnome-keyring
 	conflicts = slack-desktop
-	noextract = slack-desktop-3.3.3-amd64.deb
-	source = https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.3-amd64.deb
+	noextract = slack-desktop-3.3.7-amd64.deb
+	source = https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.7-amd64.deb
 	source = darkify_slack.js
 	source = slack-desktop-dark.patch
-	sha256sums = d12dcc09f75af35b949068dd2b46c4e2a1990b8c7d3b3fdd4fc40b539755a407
+	sha256sums = 17310bc323eafcef86c134c7aea9b53a82f8394aa30a886ac419f9a5a23168e0
 	sha256sums = c14c22fd39a6cca72669a8a470f8b193e96757477c515f66506bd36f62b5af10
 	sha256sums = c952eb32dd59beff9fc5374853b04acde4a60ed8c39934fcd0b66829455d594d
 
