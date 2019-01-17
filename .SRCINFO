@@ -1,6 +1,6 @@
 pkgbase = nativescript
 	pkgdesc = CLI for building NativeScript apps
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://www.npmjs.com/package/nativescript
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = nativescript
 	makedepends = npm
 	depends = nodejs
 	conflicts = nativescript-cli
-	noextract = nativescript-5.1.0.tgz
+	noextract = nativescript-5.1.1.tgz
 	options = !emptydirs
-	source = https://registry.npmjs.org/nativescript/-/nativescript-5.1.0.tgz
-	sha512sums = 35ffca78fe0ced2f2a23b96e5cf740e7865f83986c7bbbc9b61545045d019258aa483f3015020f5bd3775c098d24edf3987be302574588ffe1418704cd79d91c
+	source = https://registry.npmjs.org/nativescript/-/nativescript-5.1.1.tgz
+	sha512sums = 3d2e942464ea8482939305f86ee1d7dbaa40ea50027a391587879aac15a090680786ffbc6c4e064842f04437d03ae7f1a6167735d4950b8f696e67f6ef55f934
 
 pkgname = nativescript
 
