@@ -2,7 +2,7 @@
 
 pkgname=mesen-git
 _pkgname=Mesen
-pkgver=0.9.7.r94.ga489716a
+pkgver=0.9.7.r144.g9b684738
 pkgrel=1
 pkgdesc='A cross-platform NES/Famicom emulator'
 arch=('x86_64')
