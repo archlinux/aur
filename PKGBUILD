@@ -1,9 +1,10 @@
 # $Id$
 # Maintainer: Sergej Pupykin <arch+pub@sergej.pp.ru>
+# Contributor: sulaweyo <sledge.sulaweyo@gmail.com>
 
 pkgname=gerbera
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="UPnP Media Server"
 arch=(i686 x86_64 armv7h)
 url="https://github.com/v00d00/gerbera"
@@ -24,7 +25,9 @@ sha256sums=('a64fe5820aced590bcdc22600596dc8a41c0baf68d7c0ec5baf7a561ade820df'
 
 build() {
 	cd "$pkgname-$pkgver"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+	sed -i 's/libupnp-1.8 libupnp/libupnp-1.8/g' cmake/FindLibUpnp.cmake
+	# config options can be found here: https://github.com/gerbera/gerbera/blob/master/CMakeLists.txt
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DWITH_MYSQL=1 .
 	make
 }
 
