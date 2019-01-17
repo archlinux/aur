@@ -6,8 +6,8 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-light
-pkgver=0.20.23
-_majorver=0.20
+pkgver=0.21.4
+_majorver=0.21
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient and zziplib support.'
 url='https://www.musicpd.org/'
@@ -15,53 +15,68 @@ license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('audiofile' 'libmad' 'curl' 'faad2' 'sqlite' 'libmms' 'libid3tag' 'libmpdclient'
          'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'libgme')
-makedepends=('doxygen' 'boost')
+makedepends=('boost' 'meson' 'python-sphinx')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
 replaces=('mpd')
 source=("https://www.musicpd.org/download/mpd/${_majorver}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha256sums=('503e5f9f237290f568ff7956ab2f9aed563594bf749f19b8fe994fb21434afea'
+sha256sums=('247112eabf1b818a4052db7f0f5917ab00831ebc60a1ec3bf1154da4dc16a5c7'
             'c1683ba35774c85e16c70e89f7e2ed1c09619512b1a273daabbd5e34d40439bd'
             'e213c108cd0e076b5cc07091707ef75d74d9ac8c779d0c0128cd0aa69617f8a0')
 backup=('etc/mpd.conf')
 install=mpd.install
 
-build() {
+prepare() {
 	cd "${srcdir}/mpd-${pkgver}"
 
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--enable-libmpdclient \
-		--disable-ao \
-		--disable-ffmpeg \
-		--disable-jack \
-		--disable-modplug \
-		--disable-pulse \
-		--disable-shout \
-		--disable-sidplay \
-		--disable-soundcloud \
-		--disable-wavpack \
-		--disable-zzip \
-		--with-zeroconf=no \
-		--disable-smbclient \
-		--with-systemdsystemunitdir=/usr/lib/systemd/system
+	install -d build
+}
 
-	make
+build() {
+	cd "${srcdir}/mpd-${pkgver}/build"
+	_opts=('-Ddocumentation=true'
+	       '-Dchromaprint=disabled' # appears not to be used for anything
+	       '-Dsidplay=disabled' # unclear why but disabled in the past
+	       '-Dlibwrap=disabled' # twentieth century's over
+	       '-Dadplug=disabled' # not in an official repo
+	       '-Dsndio=disabled' # interferes with detection of alsa devices
+	       '-Dshine=disabled' # not in an official repo
+	       '-Dao=disabled'
+	       '-Dffmpeg=disabled'
+	       '-Djack=disabled'
+	       '-Dmodplug=disabled'
+	       '-Dpulse=disabled'
+	       '-Dshout=disabled'
+	       '-Dsidplay=disabled'
+	       '-Dsoundcloud=disabled'
+	       '-Dwavpack=disabled'
+	       '-Dzzip=disabled'
+	       '-Dzeroconf=disabled'
+	       '-Dsmbclient=disabled'
+	)
+	arch-meson --auto-features auto  .. ${_opts[@]}
+	ninja
 }
 
 package() {
-	cd "${srcdir}/mpd-${pkgver}"
+	cd "${srcdir}/mpd-${pkgver}/build"
 	
-	make DESTDIR="${pkgdir}" install
+	DESTDIR="${pkgdir}" ninja install
+	install -Dm644 ../doc/mpdconf.example "${pkgdir}"/usr/share/doc/mpd/mpdconf.example
+	install -Dm644 ../doc/mpd.conf.5 "${pkgdir}"/usr/share/man/man5/mpd.conf.5
+	install -Dm644 ../doc/mpd.1 "${pkgdir}"/usr/share/man/man1/mpd.1
 
-	install -Dm644 ../mpd.conf "${pkgdir}"/etc/mpd.conf
-	install -Dm644 ../mpd.tmpfile "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
+	install -Dm644 "${srcdir}"/mpd.conf "${pkgdir}"/etc/mpd.conf
+	install -Dm644 "${srcdir}"/mpd.tmpfile "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
 	install -d -g 45 -o 45 "${pkgdir}"/var/lib/mpd{,/playlists}
 
-	install -Dm644 "${pkgdir}"/usr/lib/systemd/{system,user}/mpd.service
-	sed '/\[Service\]/a User=mpd' -i "${pkgdir}"/usr/lib/systemd/system/mpd.service
-	sed '/WantedBy=/c WantedBy=default.target' -i "${pkgdir}"/usr/lib/systemd/{system,user}/mpd.service
+	# Now service file installs only when libsystemd package was found
+	if [ -e "${pkgdir}"/usr/lib/systemd/system/mpd.service ]; then 
+		sed \
+			-e '/\[Service\]/a User=mpd' \
+			-e '/WantedBy=/c WantedBy=default.target' \
+			-i "${pkgdir}"/usr/lib/systemd/system/mpd.service
+	fi
 }
