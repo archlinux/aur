@@ -27,7 +27,7 @@ makedepends=('dvdauthor' 'dvd+rw-tools' 'ffmpeg' 'libexif' 'mesa-libgl' "mythtv=
 source=("mythtv-$pkgver.tar.gz::https://github.com/MythTV/mythtv/archive/v$pkgver.tar.gz"
         "mythweb-$pkgver.tar.gz::https://github.com/MythTV/mythweb/archive/v$pkgver.tar.gz"
 )
-sha256sums=('3c3f702b7d62046e43eb2f20036e39ef42856621c0641b57f0c749c46f1bbb6d'
+sha256sums=('7f7ae9b8927659616f181afc12d7ddc26b0a4b0d13982e2586985f4770640b43'
             'b0569bdd6f5e6fed959d98ff883912142da42e3ee6ea3984ece116f09a5dc01c')
 
 prepare() {
