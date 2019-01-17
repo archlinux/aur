@@ -1,8 +1,8 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=keeweb
-pkgver=1.7.3
-pkgrel=2
+pkgver=1.7.4
+pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/keeweb/keeweb"
@@ -26,7 +26,7 @@ source=(
 sha1sums=('SKIP'
           'a55c2ed276c6073b7954452cdc88209633d51ace'
           'a2ab033d06abfe7616d2615d8edf7931f29efc96'
-          '3b55c89a4045a6efbafc0984e37ef57f16e6072e')
+          '914afdd9651e71091d4b927cabd25d75786ec7d4')
 
 prepare() {
 	cd "${pkgname}"
@@ -53,7 +53,7 @@ prepare() {
 build() {
 	cd "${pkgname}"
 
-	export SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=1
+	export SASS_FORCE_BUILD=1
 	export LIBSASS_EXT=auto
 	export npm_config_nodedir=/usr
 	export npm_config_optional=false
