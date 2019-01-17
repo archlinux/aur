@@ -1,7 +1,7 @@
 # Maintainer: Evgeny Kurnevsky <kurnevsky@gmail.com>
 
 pkgname=tox-node-rs-git
-pkgver=v0.0.5.r7.ga77cce2
+pkgver=v0.0.6.r13.g2e21027
 pkgrel=1
 pkgdesc="A server application to run tox node written in pure Rust"
 arch=('i686' 'x86_64')
@@ -25,9 +25,13 @@ build() {
     cargo build --release
 }
 
-package() {
+check() {
   cd "$srcdir/$pkgname"
   SODIUM_USE_PKG_CONFIG=1 \
-    cargo install --root "$pkgdir/usr"
-  rm -f "$pkgdir/usr/.crates.toml"
+    cargo test --release
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  install -Dm755 target/release/tox-node $pkgdir/usr/bin/tox-node
 }
