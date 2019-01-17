@@ -1,6 +1,6 @@
 pkgbase = mariadb-10.3
 	pkgver = 10.3.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mariadb.org/
 	arch = x86_64
 	license = GPL
@@ -18,10 +18,12 @@ pkgbase = mariadb-10.3
 	source = https://mirrors.ukfast.co.uk/sites/mariadb/mariadb-10.3.12/source/mariadb-10.3.12.tar.gz
 	source = https://mirrors.ukfast.co.uk/sites/mariadb/mariadb-10.3.12/source/mariadb-10.3.12.tar.gz.asc
 	source = fix_libmariadb_ignored_host.patch
+	source = fix_cmake_compiler_flag_tests.patch
 	validpgpkeys = 199369E5404BD5FC7D2FE43BCBCB082A1BB943DB
 	sha256sums = f7449a34c25e0455928d7983dae83fd2069fe1f16c4c5f4aeed9ed9d3f081ff6
 	sha256sums = SKIP
 	sha256sums = fd186c795c393b6898f28d731390bb14ea8444230c8340a5f4cfbccb16ea10e9
+	sha256sums = 80594a8427106aa99186d0e2af3d8d37c49a4d4cf811d049d1ebb0e4a75fcdb0
 
 pkgname = libmariadb-10.3
 	pkgdesc = MariaDB client libraries

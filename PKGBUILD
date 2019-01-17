@@ -6,7 +6,7 @@
 pkgbase=mariadb-10.3
 pkgname=('libmariadb-10.3' 'mariadb-clients-10.3' 'mytop-10.3' 'mariadb-10.3')
 pkgver=10.3.12
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('GPL')
 url='http://mariadb.org/'
@@ -15,10 +15,12 @@ makedepends=('boost' 'bzip2' 'cmake' 'jemalloc' 'libaio' 'libxml2' 'lz4' 'lzo'
 validpgpkeys=('199369E5404BD5FC7D2FE43BCBCB082A1BB943DB') # MariaDB Package Signing Key <package-signing-key@mariadb.org>
 
 source=("https://mirrors.ukfast.co.uk/sites/mariadb/mariadb-$pkgver/source/mariadb-$pkgver.tar.gz"{,.asc}
-        fix_libmariadb_ignored_host.patch)
+        fix_libmariadb_ignored_host.patch
+        fix_cmake_compiler_flag_tests.patch)
 sha256sums=('f7449a34c25e0455928d7983dae83fd2069fe1f16c4c5f4aeed9ed9d3f081ff6'
             'SKIP'
-            'fd186c795c393b6898f28d731390bb14ea8444230c8340a5f4cfbccb16ea10e9')
+            'fd186c795c393b6898f28d731390bb14ea8444230c8340a5f4cfbccb16ea10e9'
+            '80594a8427106aa99186d0e2af3d8d37c49a4d4cf811d049d1ebb0e4a75fcdb0')
 
 prepare() {
   cd ${pkgbase%-10.3}-$pkgver/
@@ -39,6 +41,10 @@ prepare() {
   # Fix that libmariadb ignores the host from .my.cnf files
   # More info: https://jira.mariadb.org/browse/CONC-359
   patch -p0 < ../fix_libmariadb_ignored_host.patch
+
+  # Fix a cmake error on non-english systems
+  # More info: https://jira.mariadb.org/browse/MDEV-18273
+  patch -p1 < ../fix_cmake_compiler_flag_tests.patch
 
   # fix path to our config
   sed -i 's|my.cnf.d|mysql/my.cnf.d|' support-files/rpm/{my.cnf,enable_encryption.preset}
