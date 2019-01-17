@@ -1,20 +1,19 @@
 pkgbase = tox-weechat-git
 	pkgdesc = Tox protocol plugin for WeeChat
-	pkgver = r260.210a644
+	pkgver = r348.424eacc
 	pkgrel = 1
-	url = https://github.com/haavardp/tox-weechat
-	install = tox-weechat-git.install
+	url = https://github.com/haavard/tox-weechat
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
 	depends = toxcore
-	depends = weechat>=1.0.1
+	depends = weechat
 	provides = tox-weechat
 	conflicts = tox-weechat
-	source = tox-weechat-git::git+https://github.com/haavardp/tox-weechat.git
-	md5sums = SKIP
+	source = tox-weechat-git::git+https://github.com/haavard/tox-weechat.git
+	sha256sums = SKIP
 
 pkgname = tox-weechat-git
 
