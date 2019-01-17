@@ -1,6 +1,6 @@
 pkgbase = libc++
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libcxx.llvm.org/
 	arch = i686
 	arch = x86_64
@@ -35,12 +35,14 @@ pkgbase = libc++
 
 pkgname = libc++
 	pkgdesc = LLVM C++ standard library.
-	depends = libc++abi=7.0.1-1
+	depends = libc++abi=7.0.1-2
+	options = staticlibs
 
 pkgname = libc++abi
 	pkgdesc = Low level support for the LLVM C++ standard library.
+	options = staticlibs
 
 pkgname = libc++experimental
 	pkgdesc = LLVM C++ experimental library.
-	depends = libc++=7.0.1-1
+	depends = libc++=7.0.1-2
 
