@@ -1,6 +1,6 @@
 pkgbase = amarok
 	pkgdesc = The powerful music player for KDE
-	pkgver = 2.9.0.r337.eb9706eaee
+	pkgver = 2.9.0.r351.0362c32b7a
 	pkgrel = 1
 	url = http://amarok.kde.org/
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = amarok
 	depends = threadweaver
 	optdepends = ifuse: support for Apple iPod Touch and iPhone
 	optdepends = loudmouth: backend needed by mp3tunes for syncing
-	source = amarok-2.9.0.r337.eb9706eaee.tar.gz::https://github.com/KDE/amarok/archive/eb9706eaee14e07d894cf2ad442268a6f62d915a.tar.gz
+	source = amarok-2.9.0.r351.0362c32b7a.tar.gz::https://github.com/KDE/amarok/archive/eb9706eaee14e07d894cf2ad442268a6f62d915a.tar.gz
 	sha256sums = 83e1039a98e8185d3c4c81fcb296f4e35a1e31df2c993df961f8579399a63da4
 
 pkgname = amarok
