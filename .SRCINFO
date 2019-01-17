@@ -1,15 +1,16 @@
 pkgbase = pmcli-git
 	pkgdesc = Command line client for Plex Media Server
-	pkgver = r50.b3a038f
+	pkgver = r153.e1f9e72
 	pkgrel = 1
 	url = https://github.com/Aanok/pmcli
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = lua
+	depends = lua>=5.3
 	depends = lua-http
-	depends = lua-dkjson
+	depends = lua-expat
 	depends = mpv
+	depends = lua-lpeg-patterns<0.5
 	provides = pmcli
 	source = git+https://github.com/Aanok/pmcli.git
 	md5sums = SKIP

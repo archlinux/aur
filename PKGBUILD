@@ -1,12 +1,12 @@
 # Maintainer: Aanok <aanok.aur@gmail.com>
 pkgname=pmcli-git
-pkgver=r50.b3a038f
+pkgver=r153.e1f9e72
 pkgrel=1
 pkgdesc="Command line client for Plex Media Server"
 arch=('x86_64')
 url="https://github.com/Aanok/pmcli"
 license=('MIT')
-depends=('lua' 'lua-http' 'lua-dkjson' 'mpv')
+depends=('lua>=5.3' 'lua-http' 'lua-expat' 'mpv' 'lua-lpeg-patterns<0.5')
 makedepends=('git')
 provides=("${pkgname%-git}")
 source=('git+https://github.com/Aanok/pmcli.git')
