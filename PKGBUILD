@@ -1,6 +1,6 @@
 # Maintainer: Alif <alive4ever at live.com>
 pkgname=wimboot-git
-pkgver=v2.6.0.r2.55cfe8a
+pkgver=v2.6.0.r3.91be50c
 pkgrel=1
 pkgdesc="iPXE kernel to boot wim images from network for both UEFI and BIOS system"
 arch=(any)
@@ -10,10 +10,8 @@ makedepends=('git' 'pesign' 'gcab')
 optdepends=("ipxe-git: iPXE network boot program"
 	"ipxe-netboot: Alternative iPXE network boot program, with Archlinux network install support")
 install=$pkgname.install
-source=('wimboot::git+https://git.ipxe.org/wimboot.git'
-	'01-efireloc.diff')
-sha256sums=('SKIP'
-            '6f8184d75ff2c30a19f9192a8d6f159a390a677e6fd110fd4aea79ac14e9f31d')
+source=('wimboot::git+https://git.ipxe.org/wimboot.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -21,8 +19,6 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	patch -p1 < "$srcdir/01-efireloc.diff"
 	cd "$srcdir/${pkgname%-git}/src"
 	make
 }	
