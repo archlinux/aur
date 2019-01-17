@@ -2,7 +2,7 @@
 
 pkgname=python-pynamodb
 _pkgname=PynamoDB
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="A pythonic interface to Amazon's DynamoDB"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-setuptools)
 depends=(python-botocore python-dateutil python-six)
 checkdepends=(python-blinker python-mock python-pytest-mock python-requests)
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/pynamodb/PynamoDB/archive/$pkgver.tar.gz")
-sha256sums=('9065613eb25e8951e94e0f10ba7053faf8929cf5582df30166e068a7915bd8de')
+sha256sums=('477080bc3e690a42966d0ac0220682ce016eebefabd0cdaf1aa267bd99a58445')
 
 build() {
   cd $_pkgname-$pkgver
