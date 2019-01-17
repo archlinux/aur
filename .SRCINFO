@@ -1,0 +1,29 @@
+pkgbase = cura-beta-git
+	pkgdesc = A software solution for 3D printing aimed at RepRaps and the Ultimaker.
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://ultimaker.com/en/products/cura-software
+	arch = x86_64
+	license = LGPL3
+	makedepends = qt5-tools
+	makedepends = cmake
+	depends = python-pyqt5
+	depends = qt5-svg
+	depends = python-scipy
+	depends = python-pyserial
+	depends = python-numpy
+	depends = uranium-beta-git
+	depends = curaengine-beta-git
+	depends = cura-binary-data
+	depends = cura-resources-materials
+	depends = libsavitar
+	depends = python-shapely
+	optdepends = python-zeroconf: network printing support
+	provides = cura
+	conflicts = cura
+	conflicts = cura-git
+	source = git+https://github.com/Ultimaker/Cura#branch=4.0
+	sha1sums = SKIP
+
+pkgname = cura-beta-git
+
