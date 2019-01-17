@@ -14,7 +14,7 @@ pkgname=('mythplugins-mytharchive'
          'mythplugins-mythweb'
          'mythplugins-mythzoneminder')
 pkgver=30.0
-pkgrel=2
+pkgrel=3
 epoch=1
 arch=('x86_64')
 url="http://www.mythtv.org"
@@ -23,7 +23,7 @@ makedepends=('dvdauthor' 'dvd+rw-tools' 'ffmpeg' 'libexif' 'mesa-libgl' "mythtv=
              'perl-datetime-format-iso8601' 'perl-date-manip' 'perl-image-size' 'perl-cgi'
              'perl-json' 'perl-libwww' 'perl-soap-lite' 'perl-xml-simple' 'perl-xml-xpath' 'libhdhomerun'
              'python2-pillow' 'python2-pycurl' 'python2-oauth' 'gdb' 'libmariadbclient' 'minizip'
-             'python2-lxml' 'mysql-python' 'urlgrabber' 'python2-future' 'libxnvctrl' 'perl-xml-xpath')
+             'python2-lxml' 'mysql-python' 'urlgrabber' 'python2-future' 'perl-xml-xpath')
 source=("mythtv-$pkgver.tar.gz::https://github.com/MythTV/mythtv/archive/v$pkgver.tar.gz"
         "mythweb-$pkgver.tar.gz::https://github.com/MythTV/mythweb/archive/v$pkgver.tar.gz"
 )
