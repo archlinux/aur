@@ -1,7 +1,7 @@
 pkgbase = feedthebeast
 	pkgdesc = Feed The Beast offers many different styles of Minecraft modpacks to the community, catering to all tastes.
 	pkgver = 1.4.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://feed-the-beast.com/
 	arch = any
 	license = Apache
@@ -17,7 +17,7 @@ pkgbase = feedthebeast
 	source = feedthebeast.desktop
 	sha256sums = 35ebb0e4fc8a581c2aa6e939527f238800f4059bb5253c67eb3d478c463010b0
 	sha256sums = f2ec575e3ffd92bac87caf8b306fc22d4ba78b19bf9577a2d915e9dedab2c030
-	sha256sums = acbbe21a131432fb5f59ea5d9573479d3187fdf2475b4826f0baefbdf257d5ff
+	sha256sums = 4dc05fcbad49c8d6d8d3143969c8f9c7e26d22ad72979f73c2d3c2b3a23a426d
 
 pkgname = feedthebeast
 

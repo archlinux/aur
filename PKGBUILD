@@ -2,7 +2,7 @@
 
 pkgname=feedthebeast
 pkgver=1.4.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Feed The Beast offers many different styles of Minecraft modpacks to the community, catering to all tastes."
 arch=('any')
 url='http://feed-the-beast.com/'
@@ -16,7 +16,7 @@ source=("$pkgname"
 noextract=("${pkgname}-$pkgver.jar")
 sha256sums=('35ebb0e4fc8a581c2aa6e939527f238800f4059bb5253c67eb3d478c463010b0'
             'f2ec575e3ffd92bac87caf8b306fc22d4ba78b19bf9577a2d915e9dedab2c030'
-            'acbbe21a131432fb5f59ea5d9573479d3187fdf2475b4826f0baefbdf257d5ff')
+            '4dc05fcbad49c8d6d8d3143969c8f9c7e26d22ad72979f73c2d3c2b3a23a426d')
 
 package() {
     install -Dm755 "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
