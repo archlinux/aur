@@ -3,7 +3,7 @@
 
 pkgname=latte-dock-git
 _gitname=latte-dock
-pkgver=0.7.96.r140.g0cd33727
+pkgver=0.7.96.r308.ga066ec00
 pkgrel=1
 pkgdesc='Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('libunity: quicklists, counters, and progress bars for apps using li
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'python' 'ruby' 'subversion')
 conflicts=('latte-dock')
 provides=('latte-dock')
-source=("git+git://anongit.kde.org/latte-dock.git")
+source=("git://anongit.kde.org/latte-dock.git")
 sha256sums=('SKIP')
 
 pkgver() {
