@@ -30,6 +30,7 @@ build() {
 package() {
   cd "$pkgname-33"
   make DESTDIR="$pkgdir" install
+  echo "Name=Chess" >> "$pkgdir/usr/lib/GNUstep/Applications/$_pkgname.app/Resources/$_pkgname.desktop"
   sed -i "s/Applications.app/Applications\/Chess.app/" "$pkgdir/usr/lib/GNUstep/Applications/$_pkgname.app/Resources/$_pkgname.desktop"
   sed -i "s/ChessApp.tiff/chess.icns/" "$pkgdir/usr/lib/GNUstep/Applications/$_pkgname.app/Resources/$_pkgname.desktop"
 install -Dm644 "$pkgdir/usr/lib/GNUstep/Applications/$_pkgname.app/Resources/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
