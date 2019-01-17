@@ -1,7 +1,7 @@
 # Package build description for coursier [![ci-badge][]][ci]
 
-[ci]:         https://circleci.com/gh/2m/coursier-pkgbuild 
-[ci-badge]:   https://circleci.com/gh/2m/coursier-pkgbuild.svg?style=shield
+[ci]:         https://gitlab.com/2m/coursier-pkgbuild/-/jobs
+[ci-badge]:   https://img.shields.io/gitlab/pipeline/2m/coursier-pkgbuild.svg
 
 This repository holds instructions for building an Arch Linux package for [coursier](http://get-coursier.io/).
 
