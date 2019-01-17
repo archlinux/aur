@@ -6,12 +6,16 @@ pkgbase = arcus-beta-git
 	arch = x86_64
 	license = LGPL3
 	makedepends = cmake
+	makedepends = git
 	makedepends = sip
 	depends = python
 	depends = protobuf
 	depends = python-sip
+	provides = arcus
+	provides = libarcus
 	conflicts = arcus
-	conflicts = libarcus-git
+	conflicts = libarcus
+	conflicts = arcus-beta
 	source = git+https://github.com/Ultimaker/libArcus#branch=4.0
 	md5sums = SKIP
 

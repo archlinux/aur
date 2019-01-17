@@ -7,13 +7,13 @@ pkgname=arcus-beta-git
 pkgver=4.0
 pkgrel=1
 pkgdesc="Communication library between internal components for Ultimaker software"
-url="https://github.com/Ultimaker/libArcus"
 arch=('x86_64')
+url="https://github.com/Ultimaker/libArcus"
 license=('LGPL3')
-conflicts=('arcus' 'libarcus-git')
-makedepends=('cmake' 'sip')
 depends=('python' 'protobuf' 'python-sip')
-source=("git+https://github.com/Ultimaker/libArcus#branch=${pkgver}")
+makedepends=('cmake' 'git' 'sip')
+conflicts=('arcus' 'libarcus-git' 'arcus-beta')
+source=("git+$(url)#branch=${pkgver}")
 md5sums=('SKIP')
 
 build() {
