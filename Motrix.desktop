@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Motrix
+Comment=download manager
+Keywords=
+Exec=/opt/motrix/motrix
+TryExec=
+Terminal=false
+Icon=/usr/share/icons/motrix.png
+Type=Applications
+Categories=
+MimeType=
+StartupNotify=false
+StartupWMClass=
+OnlyShowIn=
+Actions=
