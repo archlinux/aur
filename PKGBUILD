@@ -2,7 +2,7 @@
 # Based on PKGBUILD from darkcoin-git maintained by Viliam Kubis <viliam dot kubis at gmail dot com>
 
 pkgname='dashcore'
-pkgver=0.12.3.3
+pkgver=0.13.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.dash.org/"
@@ -25,8 +25,8 @@ sha256sums=(
   '41f83cb53ecf33688d899f83e09bd52f9aa8e6d7b9b0f30810f192988b26079a'
   'b5290c16b194d488265f3af37a7ab74cb9fecea2de97b910670cefa4e0909853'
 )
-sha256sums_i686=('9e1fdeb3867d7ae4d603bc82260174ed096d7cfa004a077c8a7d34668c953566')
-sha256sums_x86_64=('19191193a8eaf5a10be08eaa3f33ea60c6a2b8848cd8cfeb8aa2046c962b32bd')
+sha256sums_i686=('6745ddac6451acf5e5935d06fb37140a0acd2a26e111fd76cde942f093fd628c')
+sha256sums_x86_64=('99b4309c7f53b2a93d4b60a45885000b88947af2f329e24ca757ff8cf882ab18')
 
 package() {
   install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/bin/dash-qt" "$pkgdir/usr/bin/dash-qt"
