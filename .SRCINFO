@@ -1,7 +1,7 @@
 pkgbase = neoleo-git
 	pkgdesc = Lightweight curses spreadsheet based on GNU oleo
 	pkgver = 7.0.0.370.gbe216cb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blippy/neoleo
 	arch = i686
 	arch = x86_64

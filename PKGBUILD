@@ -3,7 +3,7 @@
 
 pkgname=neoleo-git
 pkgver=7.0.0.370.gbe216cb
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight curses spreadsheet based on GNU oleo"
 arch=('i686' 'x86_64')
 url="https://github.com/blippy/neoleo"
@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
   cd ${pkgname%-git}
-  git apply "$srcdir"/manman.patch
+  git apply "$srcdir"/return_values.patch
 }
 
 build() {
