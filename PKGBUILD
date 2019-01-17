@@ -33,7 +33,7 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  make PREFIX="$pkgdir/usr" install
+  make DESTDIR="$pkgdir/usr" PREFIX="/usr" install
 }
 
 check() {
