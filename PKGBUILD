@@ -9,8 +9,8 @@ provides=('festival')
 conflicts=('festival')
 pkgver=2.4
 _suffix=release
-pkgrel=4
-pkgdesc="A general multi-lingual speech synthesis system. With HTS compatibility and GCC 4.7 patches to support HTS 2.1 voices."
+pkgrel=5
+pkgdesc="Multi-lingual speech synthesis system (with HTS 2.1 compatibility patches)"
 arch=('i686' 'x86_64')
 url="http://www.cstr.ed.ac.uk/projects/festival/"
 license=('BSD' 'GPL' 'custom')
@@ -67,12 +67,12 @@ build() {
   # Build Speech Tools first
   cd "$srcdir/speech_tools"
   ./configure --prefix=/usr --sysconfdir=/etc
-  make OPTIMISE_CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing" OPTIMISE_CCFLAGS="${CFLAGS} -fno-strict-aliasing"
+  make OPTIMISE_CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing -fno-delete-null-pointer-checks -std=gnu++98 -fPIC" OPTIMISE_CCFLAGS="${CFLAGS} -fno-strict-aliasing"
 
   # Build Festival itself
   cd "$srcdir/festival"
   ./configure --prefix=/usr --sysconfdir=/etc
-  make OPTIMISE_CXXFLAGS="${CXXFLAGS}" OPTIMISE_CCFLAGS="${CFLAGS}"
+  make OPTIMISE_CXXFLAGS="${CXXFLAGS} -fno-delete-null-pointer-checks -std=gnu++98 -fPIC" OPTIMISE_CCFLAGS="${CFLAGS}"
 }
 
 package() {
