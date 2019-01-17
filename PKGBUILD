@@ -4,10 +4,10 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com>
 
 pkgname=spotify-stable
-pkgver=1.0.94.262
-_commit=g3d5c231c
-_ver_x86_64=9
-#_ver_i686=9
+pkgver=1.0.96.181
+_commit=gf6bc1b6b
+_ver_x86_64=12
+#_ver_i686=12
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
@@ -40,10 +40,10 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://repository-origin.spoti
 sha512sums=('e637d4e211caf1a7ee7bf3e39b7f4cb9c66ba141bc66c6d3b59660a4ab8c1bf9444045b12bc730e7a96d0b7c554fb35cf56a56b564d3e69c667ef6a70f912d23'
             '999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
-            'd671ae41549c56f72bf434b92cd82ae5dfe50f7ee0eca84eeb600d6e8e2bdb47d98b1b76d1a2475670f4483876cfa92b561eac322af5f6ecf529d2d86f93783d'
+            '6a2bd376f7d3f194ca8f57108e5f9654591c7df8fca6facacb0ca224ddd679297f0274e57e51d0263828ce8300c565e8302dad5d3b54d2c476ff4658b60c0772'
             'SKIP')
-sha512sums_x86_64=('e6aa650a207fb636cd789055d4b17bc9c0fec1f6421877e4e80d3d5239f1a1bb881c5bfa4788a6cbe7748175e6c731af66a3395d2089d2d9a94dabfe5d07b09f'
-                   '105d42c3d04bfad4c7f7d15b39f96207b8b97f146a0f81bc568683f1b66deb8e36923b17103b5016e11b87cac764ed1881cfbedbe933ab15c7442877e5491d97')
+sha512sums_x86_64=('8ecff0657849058863deb8fce9304d4c9aa5a511f8043a0ba52d138a29979d3217da7568ab2058271f3e448206406fc0e1651ba7d438f677b1a2036ecb5937e2'
+                   'e302e4021b83855258f6de99609343b81e1fbd82fa3be7981dd747d2875c64bcaf9b82d8bfedd94d479f513aa1751d3ab5a321dfb2f91221e35222def1173618')
 # Old key: 0DF731E45CE24F27EEEB1450EFDC8610341D9410
 # Old key (17.12.2018): 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 validpgpkeys=('931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90') # Spotify <tux@spotify.com>
