@@ -1,7 +1,7 @@
 # Maintainer: KingofToasters <themanhimself at sgregoratto dot me>
 pkgname=sfeed-git
 pkgver=0.9.7.r0.ge59ad05
-pkgrel=1
+pkgrel=2
 pkgdesc='RSS and Atom parser'
 url='https://git.codemadness.org/sfeed'
 license=('ISC')
@@ -12,7 +12,7 @@ depends=('curl')
 source=("${pkgname%-git}::git+git://git.codemadness.org/sfeed"
         "sfeed-git.patch")
 sha256sums=('SKIP'
-            '9057f4b96368207c382a2a4b022a5a2f5bcac733f55225347b6b6dbc46fa6edb')
+            'facc036a5025d52f1ae10aa9b096a86e79072854bfb7e5ab9f5dc5d4d30c20e8')
 
 pkgver() {
   cd "${pkgname%-git}"
