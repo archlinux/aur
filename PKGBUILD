@@ -63,7 +63,7 @@ _major=4.20
 pkgver=4.20.3
 _srcpatch="${pkgver}"
 _srcname="linux-${pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -105,7 +105,7 @@ sha256sums=('b9c1bd128404a8e73b57f764256fcaca8eb09f9a892e292856dbeffafa187f45'
             '4e56951100f920e1120474119e6565f9436125bb8553048144fe228ca42768b1'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
             'f7cc42c0ea00aec3debc72a62a1f29f9a267bcba3decb5becb47da5d4741ac79'
-            '3265b0ba233879f84b832b10ece9d0ea25869d451aaece62cf4c88b18c3dcaae'
+            'cdd585dc4e6ad714ca9761aa8b4c1d965ae952e74d057a884ef509190e9f5a8a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37'
