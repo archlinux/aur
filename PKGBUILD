@@ -1,7 +1,7 @@
 # Maintainer: gilbus <aur(AT)tinkershell.eu>
 pkgname=swaylock-git
 _pkgname=swaylock
-pkgver=r164.762e3f3
+pkgver=r171.0c1f193
 pkgrel=1
 license=("MIT")
 pkgdesc="Screen locker for Wayland "
@@ -27,6 +27,8 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
+	# Fix ticket FS#31544, sed line taken from gentoo
+	sed -i -e 's:login:system-auth:' pam/swaylock.linux
 	meson -Dwerror=false --prefix /usr "$srcdir/build"
 }
 
