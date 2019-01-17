@@ -1,7 +1,7 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=libzc
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Tool and library for cracking zip files"
 url="https://github.com/mferland/libzc"
@@ -23,4 +23,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('348001bf26516f089c74f20ac8b3f906')
+md5sums=('2f4dec4660959d4a0bda7838737ed8b5')
