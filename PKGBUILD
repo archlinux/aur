@@ -16,12 +16,13 @@ depends=('arcus-beta-git')
 # Package polyclipping in the repos
 makedepends=('cmake' 'git')
 checkdepends=('cppunit')
-conflicts=('curaengine' 'curaengine-git' 'curaengine-beta')
-source=("git+$(url)#branch=${pkgver}")
+provides=('curaengine')
+conflicts=('curaengine' 'curaengine-beta')
+source=("git+${url}#branch=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-  cd curaengine
+  cd CuraEngine
   mkdir -p build
   cd build
 
@@ -34,12 +35,12 @@ build() {
 }
 
 check() {
-  cd curaengine/build
+  cd CuraEngine/build
   make test
 }
 
 package() {
-  cd curaengine/build
+  cd CuraEngine/build
   make DESTDIR="${pkgdir}" install
 }
 
