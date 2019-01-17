@@ -9,7 +9,6 @@ pkgbase = hawkeye-quicklook-git
 	depends = evince
 	depends = python-markdown
 	depends = python-argparse
-	optdepends = python-markdown: Markdown support
 	source = git://github.com/brpaz/hawkeye.git
 	md5sums = SKIP
 
