@@ -4,7 +4,7 @@
 # Author: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Maintainer: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=oscam-git
-pkgver=11445
+pkgver=11472
 pkgrel=1
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
@@ -30,10 +30,6 @@ pkgver() {
 
 build() {
   cd "$SRCDEST/$pkgname"
-
-  make defconfig
-
-  ./config.sh --disable CARDREADER_DB2COM
 
   make CONF_DIR=/var/lib/oscam \
        USE_SSL=1 \
