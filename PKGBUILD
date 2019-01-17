@@ -3,7 +3,7 @@
 pkgname=t230c2-git
 _pkgname=t230c2-git
 pkgver=r1122.f77791e
-pkgrel=1
+pkgrel=2
 pkgdesc="CrazyCat Geniatech T230C2 DVB-T/T2/C kernel modules"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/CrazyCat/media_build"
@@ -32,12 +32,11 @@ build() {
 	  echo "cannot find $_v"
 	  exit 1
 	fi
-	export KERNELRELEASE="$(cat "$_v")"
+
+	cp ../config v4l/.config
 	make -C linux download
 	make -C linux untar
-	make -C v4l distclean
-	cp ../config v4l/.config
-	make -C v4l
+	make KERNELRELEASE="$(cat "$_v")" -C v4l
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = t230c2-git
 	pkgdesc = CrazyCat Geniatech T230C2 DVB-T/T2/C kernel modules
 	pkgver = r1122.f77791e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/CrazyCat/media_build
 	arch = i686
 	arch = x86_64
