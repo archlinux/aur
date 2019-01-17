@@ -1,14 +1,14 @@
 # Maintainer: Maxs <max dot van dot den dot branden @t gmail dot com>
 pkgname="solarus-quest-editor"
 pkgver="1.6.0"
-pkgrel="1"
+pkgrel="2"
 epoch=
 pkgdesc="A graphical user interface to create and modify quests for the Solarus engine."
 arch=("i686" "x86_64")
 url="http://www.solarus-games.org/"
 license=("GPL" "custom")
 groups=()
-depends=("solarus" "qt5-base" "qt5-tools")
+depends=("solarus" "qt5-base" "qt5-tools" "glm")
 makedepends=("cmake" "zip")
 checkdepends=()
 optdepends=()
