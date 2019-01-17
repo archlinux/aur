@@ -12,8 +12,9 @@ url="https://github.com/Ultimaker/libArcus"
 license=('LGPL3')
 depends=('python' 'protobuf' 'python-sip')
 makedepends=('cmake' 'git' 'sip')
-conflicts=('arcus' 'libarcus-git' 'arcus-beta')
-source=("git+$(url)#branch=${pkgver}")
+provides=('arcus' 'libarcus')
+conflicts=('arcus' 'libarcus' 'arcus-beta')
+source=("git+${url}#branch=${pkgver}")
 md5sums=('SKIP')
 
 build() {
