@@ -1,0 +1,16 @@
+pkgbase = vk-dumper
+	pkgdesc = Utility for saving your messages and media from vk.com to JSON format
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/AbsurdlySuspicious/vk-dumper
+	arch = any
+	license = Apache
+	depends = java-environment
+	depends = bash
+	source = vkdumper-bin
+	source = https://github.com/AbsurdlySuspicious/vk-dumper/releases/download/1.0/vkdumper-1.0.jar
+	sha256sums = 2f0e179c9368f92da7b182b122e83564f11dc5e980843a65d6690f830267f081
+	sha256sums = 116f42c03f3340c710b1378d200da47af70f3a3272f4bf102beb0d81bb93d542
+
+pkgname = vk-dumper
+
