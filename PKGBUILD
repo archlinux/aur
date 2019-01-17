@@ -12,13 +12,15 @@ url="https://github.com/Ultimaker/Uranium"
 license=('LGPL3')
 depends=('arcus-beta-git'
          'pyqt5-common'
+         'python'
          'python-numpy'
          'qt5-quickcontrols'
          'qt5-quickcontrols2'
          'python-pyqt5')
 makedepends=('cmake' 'git')
-conflicts=('uranium' 'uranium-git' 'uranium-beta')
-source=("git+$(url)#branch=${pkgver}")
+provides=('uranium')
+conflicts=('uranium' 'uranium-beta')
+source=("git+${url}#branch=${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {

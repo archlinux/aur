@@ -9,6 +9,7 @@ pkgbase = uranium-beta-git
 	makedepends = git
 	depends = arcus-beta-git
 	depends = pyqt5-common
+	depends = python
 	depends = python-numpy
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
