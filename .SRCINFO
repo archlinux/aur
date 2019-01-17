@@ -1,0 +1,24 @@
+pkgbase = chamfer-git
+	pkgdesc = Compositing tiling window manager
+	pkgver = r146
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vulkan-headers
+	makedepends = shaderc-git
+	depends = xcb-util-keysyms
+	depends = xcb-util-wm
+	depends = vulkan-icd-loader
+	depends = boost
+	depends = python
+	depends = python-xlib
+	depends = python-psutil
+	source = chamfer::git+https://github.com/jaelpark/chamferwm.git
+	md5sums = SKIP
+
+pkgname = chamfer-git
+
