@@ -3,6 +3,7 @@ pkgbase = bcachefs-tools-git
 	pkgver = 414
 	pkgrel = 1
 	url = https://evilpiepirate.org/git/bcachefs-tools.git/
+	install = bcachefs-tools-git.install
 	arch = x86_64
 	license = GPL2
 	makedepends = git
