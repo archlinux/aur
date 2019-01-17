@@ -3,22 +3,22 @@ _version=1.1.0-M10
 
 pkgname=coursier
 pkgver="${_version/-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure Scala Artifact Fetching"
 arch=('any')
 url="http://get-coursier.io"
 license=('Apache')
 depends=('java-runtime-headless>=8' 'bash')
 
-source=("https://github.com/coursier/coursier/raw/v${_version}/coursier")
+source=("builder-$pkgver::https://github.com/coursier/coursier/raw/v${_version}/coursier")
 sha256sums=('c817d0d9860e2abc7420d6bde1800fb7d74dc4612d9a1480aca0b67dc2013892')
-noextract=('coursier')
+noextract=("builder-$pkgver")
 
 build() {
   cd "${srcdir}"
   mkdir -p cache bin
   export COURSIER_CACHE="${srcdir}/cache"
-  sh ./coursier bootstrap \
+  sh ./builder-$pkgver bootstrap \
     --intransitive "io.get-coursier::coursier-cli:${_version}" \
     --classifier standalone \
     --artifact-type jar \
