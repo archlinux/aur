@@ -1,15 +1,13 @@
 pkgbase = myrescue
 	pkgdesc = A hard disk recovery tool that reads undamaged regions first
-	pkgver = 0.9.4
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = http://myrescue.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://downloads.sourceforge.net/project/myrescue/myrescue/myrescue-0.9.4/myrescue-0.9.4.tar.gz
-	source = myrescue-printf-sizes.diff
-	md5sums = b45fd12e45d5681d3e98dc1134a3a209
-	md5sums = d5c6dab0f67682a1d1f757b1ab4df6b2
+	source = http://downloads.sourceforge.net/project/myrescue/myrescue/myrescue-0.9.8/myrescue-0.9.8.tar.gz
+	sha1sums = fc605fc8559bff7296081131faee94d5103f3933
 
 pkgname = myrescue
 
