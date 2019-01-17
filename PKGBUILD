@@ -4,7 +4,7 @@
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=avahi-nosystemd
-pkgver=0.7+16+g1cc2b8e
+pkgver=0.7+18+g1b5f401
 pkgrel=1
 pkgdesc='Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour'
 url='https://github.com/lathiat/avahi'
@@ -32,22 +32,22 @@ backup=('etc/avahi/hosts'
         'etc/avahi/avahi-autoipd.action'
         'etc/avahi/avahi-dnsconfd.action'
         'usr/lib/avahi/service-types.db')
-_commit=1cc2b8e8d62e939b8bd683f795794878863931af  # master
+_commit=1b5f401f64d7bed40c4335b0327acf4125da3086  # pull/115/merge~2
 source=("git+https://github.com/lathiat/avahi#commit=$_commit"
         avahi-daemon.rc
-        avahi-dnsconfd.rc
-        0001-build-Attempt-GDBM-1.15-compatibility.patch)
+        avahi-dnsconfd.rc)
 sha512sums=('SKIP'
             '6e9d7bcebd69325ed9e131f68077779c45dc3a6018d4d069b9d57553d89bf3a5201e483e8c114f8c02fb3b37678f3decfc6a259b22c32bb0ed5956bd9d4d2312'
-            'b4f45f6dcb1e9f2406d1dac4c51999d764855f61f5f8f0b45677606b1aa74d712273270747961591fa166f03abb11913018bee42cb2437c246170557acbe9b41'
-            '1547211c7253999fd07a0a16bb17c85c2a111caf4763390d6e54b39ee1b2530f022d29d42bb0ed750a5c5b630c86bffbc0d4429c64bf2b59097a00e36cf98cb2')
+            'b4f45f6dcb1e9f2406d1dac4c51999d764855f61f5f8f0b45677606b1aa74d712273270747961591fa166f03abb11913018bee42cb2437c246170557acbe9b41')
 
 install=avahi.install
 
 prepare() {
 	cd avahi
 
-	patch -Np1 -i ../0001-build-Attempt-GDBM-1.15-compatibility.patch
+	# CVE-2017-6519 CVE-2018-100084
+	git cherry-pick -n e111def44a7df4624a4aa3f85fe98054bffb6b4f
+
 	NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -62,6 +62,7 @@ build() {
 		--sysconfdir=/etc \
 		--localstatedir=/var \
 		--sbindir=/usr/bin \
+		with_dbus_sys=/usr/share/dbus-1/system.d \
 		--disable-monodoc \
 		--enable-compat-libdns_sd \
 		--with-distro=archlinux \
