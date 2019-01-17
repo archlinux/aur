@@ -2,7 +2,7 @@
 
 pkgname=zafiro-icon-theme-git
 pkgver=v0.8.4.r0.ga39884d
-pkgrel=1
+pkgrel=2
 pkgdesc="Icon pack flat with light colors"
 arch=('any')
 url="https://github.com/zayronxio/Zafiro-icons"
@@ -25,5 +25,5 @@ package() {
 
 	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname%%-git}/LICENSE"
 
-	cp -a "${srcdir}/${pkgname}" "${pkgdir}/usr/share/icons/${pkgname%%-git}"
+	cp -a "${srcdir}/${pkgname}" "${pkgdir}/usr/share/icons/Zafiro"
 }
