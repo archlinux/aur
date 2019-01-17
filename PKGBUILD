@@ -1,10 +1,11 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor: Det <nimetonmaili g-mail>
 
 pkgname=jdk-demos
 _major=8
-_minor=192
-_build=b12
-_hash=750e1c8617c5452694857ad95c3ee230
+_minor=202
+_build=b08
+_hash=1961070e4c9b4e26a04e7f5a083f551e
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Demos and samples of common tasks and new functionality in Oracle Java $_major Development Kit"
@@ -15,7 +16,7 @@ depends=("java-environment>=$_major")
 optdepends=('gradle: Compile examples')
 options=('!strip')
 source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/$_hash/jdk-$pkgver-linux-x64-demos.tar.gz")
-md5sums=('7429db61c77239eed0ea4cc505546aff')
+sha256sums=('9c4d2a5c7a7f3d993b2ff14674704aad6c3912b274cc2c2fa1f554cff3b07fc5')
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
@@ -39,3 +40,4 @@ package() {
   rm "$pkgdir"/usr/lib/jvm/java-$_major-jdk/demos/sample/README
   rm "$pkgdir"/usr/lib/jvm/java-$_major-jdk/demos/sample/SAMPLES_LICENSE
 }
+# vim:set ts=2 sw=2 et:
