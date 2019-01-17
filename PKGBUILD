@@ -1,7 +1,7 @@
 # Maintainer: Vitrum <wqdxosty1yhj@bk.ru>
 
 pkgname=keyman
-pkgver=11.0.101
+pkgver=11.0.105
 pkgrel=1
 pkgdesc="IBus engine supporting over 1,000 layouts (former KMFL)"
 arch=('i686' 'x86_64')
@@ -9,9 +9,11 @@ url="https://keyman.com/"
 license=('GPL')
 depends=('ibus')
 makedepends=('meson' 'help2man')
+optdepends=('keyman-onboard: on-screen keyboard')
 replaces=('kmflcomp' 'libkmfl' 'ibus-kmfl')
+conflicts=('kmflcomp' 'libkmfl' 'ibus-kmfl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/keymanapp/keyman/archive/linux-release-beta-$pkgver.tar.gz")
-md5sums=('06965fc5182601aea3a8e6d094c9c683')
+sha256sums=('f402030686c9d6b124c47637447fd80f54c13f3eee9c34ade754ea675216dd2b')
 
 prepare() {
     _basedir="$srcdir/keyman-linux-release-beta-$pkgver/linux"
@@ -96,6 +98,22 @@ package() {
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     install -Dm644 --target-directory="$pkgdir/usr/share/keyman/icons" keyman_config/icons/*
     install -Dm644 --target-directory="$pkgdir/usr/share/man/man1" debian/man/*.1
+    # icons app
+    install -Dm644 --target-directory="$pkgdir/usr/share/icons/hicolor/24x24/apps" icons/24/km-config.png
+    install -Dm644 --target-directory="$pkgdir/usr/share/icons/hicolor/32x32/apps" icons/32/km-config.png
+    install -Dm644 --target-directory="$pkgdir/usr/share/icons/hicolor/48x48/apps" icons/48/km-config.png
+    install -Dm644 --target-directory="$pkgdir/usr/share/icons/hicolor/64x64/apps" icons/64/km-config.png
+    install -Dm644 --target-directory="$pkgdir/usr/share/icons/hicolor/128x128/apps" icons/128/km-config.png
+    # icons mime
+    install -Dm644 --target-directory="$pkgdir/usr/share/icons/hicolor/16x16/mimetypes" icons/16/application-x-kmp.png
+    install -Dm644 --target-directory="$pkgdir/usr/share/icons/hicolor/24x24/mimetypes" icons/24/application-x-kmp.png
+    install -Dm644 --target-directory="$pkgdir/usr/share/icons/hicolor/32x32/mimetypes" icons/32/application-x-kmp.png
+    install -Dm644 --target-directory="$pkgdir/usr/share/icons/hicolor/48x48/mimetypes" icons/48/application-x-kmp.png
+    install -Dm644 --target-directory="$pkgdir/usr/share/icons/hicolor/64x64/mimetypes" icons/64/application-x-kmp.png
+    # desktop
+    install -Dm644 --target-directory="$pkgdir/usr/share/applications" debian/km-config.desktop
+    # mime
+    install -Dm644 debian/keyman.sharedmimeinfo "$pkgdir/usr/share/mime/packages/keyman.xml"
 }
 
 #post_install() {
