@@ -1,7 +1,7 @@
 pkgbase = python-requests-futures
 	pkgdesc = Asynchronous Python HTTP for Humans.
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ross/requests-futures
 	arch = any
 	license = Apache
