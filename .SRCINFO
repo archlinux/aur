@@ -9,9 +9,10 @@ pkgbase = curaengine-beta-git
 	makedepends = cmake
 	makedepends = git
 	depends = arcus-beta-git
+	provides = curaengine
 	conflicts = curaengine
-	conflicts = curaengine-git
-	source = git+https://github.com/Ultimaker/curaengine#branch=4.0
+	conflicts = curaengine-beta
+	source = git+https://github.com/Ultimaker/CuraEngine#branch=4.0
 	sha256sums = SKIP
 
 pkgname = curaengine-beta-git

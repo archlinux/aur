@@ -7,17 +7,17 @@ pkgname=curaengine-beta-git
 pkgver=4.0
 pkgrel=1
 pkgdesc="Engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers."
-url="https://github.com/Ultimaker/CuraEngine"
 arch=('x86_64')
+url="https://github.com/Ultimaker/CuraEngine"
 license=('AGPL')
 depends=('arcus-beta-git')
 # Below TODO from curaengine in community
 # TODO: https://github.com/Ultimaker/CuraEngine/blob/master/CMakeLists.txt#L26
 # Package polyclipping in the repos
-checkdepends=('cppunit')
 makedepends=('cmake' 'git')
-source=("git+https://github.com/Ultimaker/curaengine#branch=${pkgver}")
-conflicts=('curaengine' 'curaengine-git')
+checkdepends=('cppunit')
+conflicts=('curaengine' 'curaengine-git' 'curaengine-beta')
+source=("git+$(url)#branch=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
