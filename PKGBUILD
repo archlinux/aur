@@ -1,7 +1,7 @@
-# Maintainer: cafehaine <cafehaine at gmail doc com>
+# Maintainer: Kilian Guillaume "cafehaine" <kilian dot guillaume at gmail dot com>
 pkgname=coffeestatus-git
 _realname=coffeestatus
-pkgrel=1
+pkgrel=2
 pkgver=r42.69f9181
 pkgdesc='A simple status generator for i3 written in lua, meant to be modular.'
 arch=('any')
