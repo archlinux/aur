@@ -13,7 +13,7 @@
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
 pkgver=4.2.9.23626
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.scootersoftware.com'
 license=('custom')
