@@ -3,12 +3,12 @@
 
 pkgname=tuned-git
 pkgver=2.10.0.r75.g26db89d
-pkgrel=3
+pkgrel=4
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url='https://github.com/redhat-performance/tuned'
 license=('GPL')
-depends=('ethtool' 'python-configobj' 'python-pyudev' 'python-gobject' 'python-decorator' 'python-dbus' 'python-schedutils' 'python-linux-procfs' 'python-perf' 'hdparm' 'polkit' 'hicolor-icon-theme')
+depends=('ethtool' 'python-configobj' 'python-pyudev' 'python-gobject' 'python-decorator' 'python-dbus' 'python-schedutils' 'python-linux-procfs' 'perf' 'hdparm' 'polkit' 'hicolor-icon-theme')
 optdepends=('virt-what' 'systemtap' 'python-dmidecode' 'x86_energy_perf_policy')
 makedepends=('git' 'desktop-file-utils')
 provides=('tuned')

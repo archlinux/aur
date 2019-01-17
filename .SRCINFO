@@ -1,7 +1,7 @@
 pkgbase = tuned-git
 	pkgdesc = Daemon that performs monitoring and adaptive configuration of devices in the system
 	pkgver = 2.10.0.r75.g26db89d
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/redhat-performance/tuned
 	install = tuned.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = tuned-git
 	depends = python-dbus
 	depends = python-schedutils
 	depends = python-linux-procfs
-	depends = python-perf
+	depends = perf
 	depends = hdparm
 	depends = polkit
 	depends = hicolor-icon-theme
