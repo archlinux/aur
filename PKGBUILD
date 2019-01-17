@@ -20,21 +20,22 @@
 ###
 
 pkgname="auto-07p"
+_pkgver=0.9.1
 pkgver=0.9.1+r1764
-pkgrel=2
+pkgrel=3
 pkgdesc="Software for continuation and bifurcation problems in ordinary differential equations. Release 07P. Environment variables controlling build (default to 'no', see PKGBUILD): _BUILD_DOC, _WITH_PLAUT04, _PLAUT04_WITH_QT, AUTO_DEBUG, _WITH_OPENMP, _WITH_MPI."
 arch=('i686' 'x86_64')
 url='http://cmvl.cs.concordia.ca/auto/'
 options=('libtool' 'staticlibs')
 depends=(
          'bash'
-         # 'gcc-fortran' # Fails to build with gcc8 (see http://sourceforge.net/p/auto-07p/bugs/9/).
+         # 'gcc-fortran' # May fail to build with gcc8 (see http://sourceforge.net/p/auto-07p/bugs/9/).
          'g95' # Use 'g95' (Fortran compiler from GCC 4.0.3) instead of 'gcc-fortran'.
          'gcc'
          'python2'
         ) # A fortran compiler is needed during runtime for compilation of input files. 'gcc' is also needed, if the input files are C-files.
 makedepends=(
-             # 'gcc-fortran' # Fails to build with gcc8 (see http://sourceforge.net/p/auto-07p/bugs/9/).
+             # 'gcc-fortran' # May fail to build with gcc8 (see http://sourceforge.net/p/auto-07p/bugs/9/).
              'g95' # Use 'g95' (Fortran compiler from GCC 4.0.3) instead of 'gcc-fortran'.
              'gcc'
             )
@@ -58,8 +59,8 @@ license=(
          'GPL2'
         )
 source=(
-        "auto-07p::git+git://github.com/andram/auto-07p.git#branch=python3fixes" # "auto-07p.tar.gz::http://sourceforge.net/projects/auto-07p/files/auto07p/0.9/auto07p-${pkgver}.tar.gz" # "auto-07p::git+http://salsa.debian.org/science-team/auto-07p.git" # "auto-07p::http://http.debian.net/debian/pool/main/a/auto-07p/auto-07p_${pkgver}+dfsg.orig.tar.gz"
-        "auto-07p_debian.tar.xz::http://http.debian.net/debian/pool/main/a/auto-07p/auto-07p_${pkgver}+dfsg-6.debian.tar.xz" # Debian patches.
+        "auto-07p::git+git://github.com/andram/auto-07p.git#branch=python3fixes" # "auto-07p.tar.gz::http://sourceforge.net/projects/auto-07p/files/auto07p/0.9/auto07p-${_pkgver}.tar.gz" # "auto-07p::git+http://salsa.debian.org/science-team/auto-07p.git" # "auto-07p::http://http.debian.net/debian/pool/main/a/auto-07p/auto-07p_${_pkgver}+dfsg.orig.tar.gz"
+        "auto-07p_debian.tar.xz::http://http.debian.net/debian/pool/main/a/auto-07p/auto-07p_${_pkgver}+dfsg-7.debian.tar.xz" # Debian patches.
         "auto-07p-session.bash"
         "xpdf-dummy"
         "makepkg.sh" # Just a dummy script for reference purposes. It is _not_ run with this PKGBUILD, but it can be used to build this package with makepkg.
@@ -67,7 +68,7 @@ source=(
 
 sha256sums=(
             'SKIP' # '8f306751521a491113f89ffbd8b20b68d72aeac42833fa196f2158f3bef35bca'
-            'bbc783b88432a482117ab42429e33c590e91d390d6b2cce7bbe4e839be50e98e'
+            '68b1f06bda460f7d4c563b8a67063d181adf18b528ddf645cb5ce49623f66096'
             '14d272315859abb260208cfc0a437ff41d66b22960180cfa9c80161e7dded3f4'
             'cc83e032003bd9b79eaaee2bd91f77767caf55741ce02e9556dd49142ee1e911'
             '73bef420fdebb6b86b358bcd0f3d86e86f6963e76c7ae281391ec76a940c7644'
@@ -98,9 +99,9 @@ sha256sums=(
 }
 
 # set the fortran compiler to use.
-# FC='gfortran' # Fails to build with gcc8 (see http://sourceforge.net/p/auto-07p/bugs/9/).
+FC='gfortran' # May Fail to build with gcc8 (see http://sourceforge.net/p/auto-07p/bugs/9/).
 # FC='gfortran-6'
-FC='g95'
+# FC='g95'
 export FC
 
 if [ "${_AUTO_DEBUG}x" == "yesx" ]; then
@@ -118,7 +119,8 @@ else
   _OPT_FLAGS="-O3"
 fi
 
-FFLAGS+=" ${_FDEBUG_FLAGS}"
+# FFLAGS+=" ${_FDEBUG_FLAGS} -std=legacy" # '-std=legacy': See https://sourceforge.net/p/auto-07p/bugs/9/ # This is for 'new' gfortran.
+FFLAGS+=" ${_FDEBUG_FLAGS}" # This is for g95.
 CFLAGS+=" ${_CDEBUG_FLAGS}"
 CXXFLAGS+=" ${_CXXDEBUG_FLAGS}"
 
