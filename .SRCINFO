@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 240.9
+	pkgver = 240.222
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -106,10 +106,10 @@ pkgname = systemd-git
 	optdepends = systemd-sysvcompat-git: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
-	provides = systemd=240.9
+	provides = systemd=240.222
 	provides = nss-myhostname
-	provides = systemd-tools=240.9
-	provides = udev=240.9
+	provides = systemd-tools=240.222
+	provides = udev=240.222
 	conflicts = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
