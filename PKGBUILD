@@ -5,7 +5,7 @@
 # Contributor: Link Dupont <link@subpop.net>
 #
 pkgname=dbus-nosystemd
-pkgver=1.12.10
+pkgver=1.12.12
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -13,7 +13,7 @@ arch=(i686 x86_64)
 license=('GPL' 'custom')
 groups=('eudev-base')
 # dep on shadow for install scriptlet FS#29341
-depends=('expat' 'coreutils' 'filesystem' 'shadow')
+depends=('expat' 'coreutils' 'filesystem' 'shadow' 'audit')
 makedepends=('libx11' 'autoconf-archive' 'graphviz')
 optdepends=('libx11: dbus-launch support'
             'dbus-openrc: dbus openrc initscript'
@@ -22,8 +22,8 @@ provides=('dbus-core' "dbus=${pkgver}" "libdbus=${pkgver}")
 conflicts=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 replaces=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 install=dbus-nosystemd.install
-_commit=f98e784bb6f18b4c28feca6a6e9d12b7bf021a00  # tags/dbus-1.12.10^0
-source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit"
+_commit=d4f8423bbff9b3c5fca2d8009c28d1cff4652788  # tags/dbus-1.12.12^0
+source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=$_commit"
 	30-dbus.sh dbus.rc)
 md5sums=('SKIP'
          '6683a05bd749929ef9442816c22c3268'
