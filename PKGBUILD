@@ -8,17 +8,24 @@ pkgver=4.0
 pkgrel=1
 _sdkver=6.0.0
 pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker."
-depends=('python-pyqt5' 'qt5-svg' 'python-scipy' 'python-pyserial' 'python-numpy' 'uranium-beta-git'
-         'curaengine-beta-git' 'cura-binary-data' 'cura-resources-materials' 'libsavitar' 'python-shapely')
-makedepends=('qt5-tools' 'cmake')
-optdepends=('python-zeroconf: network printing support')
-provides=('cura')
+arch=('any')
 url="https://ultimaker.com/en/products/cura-software"
 license=('LGPL3')
-arch=('x86_64')
-conflicts=('cura' 'cura-git')
-source=("git+https://github.com/Ultimaker/Cura#branch=${pkgver}")
-#source=($pkgname-$pkgver.tar.gz::https://github.com/Ultimaker/Cura/archive/${pkgver}.tar.gz)
+depends=('curaengine-beta-git'
+         'cura-binary-data'
+         'cura-resources-materials'
+         'libsavitar'
+         'python-pyqt5'
+         'python-pyserial'
+         'python-scipy'
+         'python-shapely'
+         'qt5-svg'
+         'uranium-beta-git' )
+optdepends=('python-zeroconf: network printing support')
+makedepends=('cmake' 'git' 'qt5-tools')
+provides=('cura')
+conflicts=('cura' 'cura-git' 'cura-beta')
+source=("git+https://github.com/Ultimaker/Cura#branch=$(pkgver)")
 sha1sums=('SKIP')
 
 # Build order
