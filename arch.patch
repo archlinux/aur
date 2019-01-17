@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5cfbeef1a..f0cf9a33b 100644
+index c99a6c7af..352d72f24 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -102,7 +102,7 @@ if(NOT CMAKE_BUILD_TYPE)
+@@ -99,7 +99,7 @@ if(NOT CMAKE_BUILD_TYPE)
  endif()
  
  
@@ -12,11 +12,11 @@ index 5cfbeef1a..f0cf9a33b 100644
  set(UNFUCK_GCC_FLAGS "")
  set(UNFUCK_GXX_FLAGS "")
 diff --git a/source/in_sdl.cpp b/source/in_sdl.cpp
-index 3c0787a65..9a3e1744b 100644
+index c0024a8ed..363db9197 100644
 --- a/source/in_sdl.cpp
 +++ b/source/in_sdl.cpp
-@@ -22,7 +22,7 @@
- //**  GNU General Public License for more details.
+@@ -24,7 +24,7 @@
+ //**  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  //**
  //**************************************************************************
 -#include <SDL.h>
@@ -24,12 +24,25 @@ index 3c0787a65..9a3e1744b 100644
  #include "gamedefs.h"
  #include "drawer.h"
  #include "ui/ui.h"
+diff --git a/source/neoui/neoui_main.cpp b/source/neoui/neoui_main.cpp
+index d7aa78e37..bcd1e77cd 100644
+--- a/source/neoui/neoui_main.cpp
++++ b/source/neoui/neoui_main.cpp
+@@ -26,7 +26,7 @@
+ #include "../gamedefs.h"
+ 
+ #ifdef CLIENT
+-#include <SDL.h>
++#include <SDL2/SDL.h>
+ #ifdef USE_GLAD
+ # include "glad.h"
+ #else
 diff --git a/source/render/hwgl/gl_sdl.cpp b/source/render/hwgl/gl_sdl.cpp
-index c1067f64d..03d4d8884 100644
+index 6d1993889..bdf9f9585 100644
 --- a/source/render/hwgl/gl_sdl.cpp
 +++ b/source/render/hwgl/gl_sdl.cpp
-@@ -22,7 +22,7 @@
- //**  GNU General Public License for more details.
+@@ -24,7 +24,7 @@
+ //**  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  //**
  //**************************************************************************
 -#include <SDL.h>
@@ -38,10 +51,10 @@ index c1067f64d..03d4d8884 100644
  
  
 diff --git a/source/sys_sdl.cpp b/source/sys_sdl.cpp
-index f0be647bc..d63078b62 100644
+index b737bab95..ed9f1f6d3 100644
 --- a/source/sys_sdl.cpp
 +++ b/source/sys_sdl.cpp
-@@ -30,7 +30,7 @@
+@@ -31,7 +31,7 @@
  #include <unistd.h>
  #include <signal.h>
  #include <dirent.h>
@@ -51,10 +64,10 @@ index f0be647bc..d63078b62 100644
  # include <execinfo.h>
  #elif defined(__SWITCH__)
 diff --git a/vccrun/modules/sdlgl/mod_sdlgl.cpp b/vccrun/modules/sdlgl/mod_sdlgl.cpp
-index c805a6192..aa1992f7b 100644
+index b648891c5..f5dc0db52 100644
 --- a/vccrun/modules/sdlgl/mod_sdlgl.cpp
 +++ b/vccrun/modules/sdlgl/mod_sdlgl.cpp
-@@ -32,7 +32,7 @@
+@@ -34,7 +34,7 @@
  
  #include <sys/time.h>
  
@@ -64,7 +77,7 @@ index c805a6192..aa1992f7b 100644
  #include <GL/glext.h>
  static SDL_Window *hw_window = nullptr;
 diff --git a/vccrun/modules/sdlgl/mod_sdlgl.h b/vccrun/modules/sdlgl/mod_sdlgl.h
-index 82589ae04..d9aca8540 100644
+index 24b769202..d779a01c9 100644
 --- a/vccrun/modules/sdlgl/mod_sdlgl.h
 +++ b/vccrun/modules/sdlgl/mod_sdlgl.h
 @@ -30,7 +30,7 @@
