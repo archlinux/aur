@@ -2,7 +2,7 @@
 
 pkgname=vg-git
 _pkgname=vg
-pkgver=v0.8.0.r14.gcdcc9a2
+pkgver=v0.9.0.r4.g1bbb7d0
 pkgrel=1
 pkgdesc='Easy and powerful workspace based development for go'
 arch=(x86_64)
