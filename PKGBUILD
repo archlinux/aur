@@ -6,7 +6,7 @@ pkgdesc="Command line client for Plex Media Server"
 arch=('x86_64')
 url="https://github.com/Aanok/pmcli"
 license=('MIT')
-depends=('lua>=5.3' 'lua-http' 'lua-expat' 'mpv' 'lua-lpeg-patterns<0.5')
+depends=('lua>=5.3' 'lua-http' 'lua-expat' 'mpv')
 makedepends=('git')
 provides=("${pkgname%-git}")
 source=('git+https://github.com/Aanok/pmcli.git')

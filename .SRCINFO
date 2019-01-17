@@ -10,7 +10,6 @@ pkgbase = pmcli-git
 	depends = lua-http
 	depends = lua-expat
 	depends = mpv
-	depends = lua-lpeg-patterns<0.5
 	provides = pmcli
 	source = git+https://github.com/Aanok/pmcli.git
 	md5sums = SKIP
