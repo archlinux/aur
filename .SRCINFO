@@ -1,6 +1,6 @@
 pkgbase = zrythm-git
 	pkgdesc = Free GNU/Linux music production system (DAW)
-	pkgver = master
+	pkgver = r160.19293d0
 	pkgrel = 1
 	url = https://gitlab.com/alextee/zrythm
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = zrythm-git
 	provides = zrythm
 	conflicts = zrythm
 	source = zrythm::git+https://gitlab.com/alextee/zrythm.git
+	source = git+https://github.com/KDE/breeze-icons.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = zrythm-git
