@@ -1,5 +1,4 @@
-# Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
-# Contributor: mawcomw <mawcomw@gmail.com>
+# Maintainer: Federico Cuello <fedux@fedux.com.ar>
 
 pkgname=redmine
 pkgver=4.0.0
