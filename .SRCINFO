@@ -1,7 +1,7 @@
 pkgbase = as-git
 	pkgdesc = Header-only C++ library with utilities for Operational Research projects.
 	pkgver = r53.1ebb0e3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alberto-santini/as
 	arch = x86_64
 	license = GPL3
