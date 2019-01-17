@@ -1,6 +1,6 @@
 pkgbase = python-pycolab-git
 	pkgdesc = DeepMind pycolab
-	pkgver = 1
+	pkgver = r21.1d808c2
 	pkgrel = 1
 	url = https://github.com/deepmind/pycolab
 	arch = any
