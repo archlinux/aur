@@ -1,7 +1,7 @@
 # Maintainer: absrdspc <repom2[at]airmail[dot]cc>
 
 pkgname=phgen-git
-pkgver=r28.a93816e
+pkgver=r30.17d23f1
 pkgrel=1
 pkgdesc="Pattern-based random phrase generation using WordNet (git version)"
 arch=('any')
