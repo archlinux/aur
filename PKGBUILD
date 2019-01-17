@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-libgpg-error
-pkgver=1.33
+pkgver=1.34
 pkgrel=1
 pkgdesc="Support library for libgcrypt (mingw-w64)"
 arch=(any)
@@ -15,7 +15,7 @@ source=("ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"
         "02-fix-symbollist-on.mingw.patch"
         "05-w32-gen.all.patch"
         "07-windows-build.patch")
-sha256sums=('5d38826656e746c936e7742d9cde072b50baa3c4c49daa168a56813612bf03ff'
+sha256sums=('0680799dee71b86b2f435efb825391eb040ce2704b057f6bd3dcc47fbc398c81'
             'SKIP'
             '252349e58d418adfec5621af1e09753db52b1bf39983aa3bc398d636afb9b495'
             '364da17febff3f6eeffee5a5f1e3ed1b644adeb5ca48a972c5c4675c10238a91'
@@ -26,12 +26,12 @@ validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'  # Werner Koch
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-	cd "${srcdir}/libgpg-error-${pkgver}"
-	patch -p1 -i ${srcdir}/01-mingw32-fix-potomo.mingw.patch
-	patch -p1 -i ${srcdir}/02-fix-symbollist-on.mingw.patch
-	patch -p1 -i ${srcdir}/05-w32-gen.all.patch
+  cd "${srcdir}/libgpg-error-${pkgver}"
+  patch -p1 -i ${srcdir}/01-mingw32-fix-potomo.mingw.patch
+  patch -p1 -i ${srcdir}/02-fix-symbollist-on.mingw.patch
+  patch -p1 -i ${srcdir}/05-w32-gen.all.patch
   patch -p1 -i ${srcdir}/07-windows-build.patch
-  autoreconf -fi
+  autoreconf -fiv
 }
 
 build() {
@@ -52,6 +52,6 @@ package() {
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm "${pkgdir}/usr/${_arch}/share/info/dir"
+    rm -rf "${pkgdir}/usr/${_arch}/share/info/dir"
   done
 }
