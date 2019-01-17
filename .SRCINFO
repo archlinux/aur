@@ -1,0 +1,13 @@
+pkgbase = thelounge-theme-zenburn
+	pkgdesc = Dark & low-contrast theme based on Vim's Zenburn color scheme
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/thelounge/thelounge-theme-zenburn
+	arch = any
+	license = MIT
+	makedepends = npm
+	source = http://registry.npmjs.org/thelounge-theme-zenburn/-/thelounge-theme-zenburn-1.0.2.tgz
+	md5sums = cdc23fc34917dcbee468803bb8434a30
+
+pkgname = thelounge-theme-zenburn
+
