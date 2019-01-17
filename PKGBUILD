@@ -8,7 +8,7 @@ pkgdesc='A command line GTK Application that allow to quickly open PDFs, Markkow
 arch=('any')
 url='https://github.com/brpaz/hawkeye'
 license=('MIT')
-depends=('gtk3' 'evince')
+depends=('gtk3' 'evince' 'python-markdown' 'python-argparse')
 optdepends=('python-markdown: Markdown support')
 source=('git://github.com/brpaz/hawkeye.git')
 md5sums=('SKIP')
@@ -17,4 +17,4 @@ md5sums=('SKIP')
 package() {
     cd "${srcdir}/${_gitname}"
     python3 setup.py -q install --root="$pkgdir" --optimize=1
-} 
+}
