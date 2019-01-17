@@ -3,7 +3,7 @@
 pkgname=poezio-git
 _pkgname=poezio
 pkgrel=1
-pkgver=20170108.806485d
+pkgver=20190104.7d6cd695
 pkgdesc="A full-featured command-line irc-like (muc-centered) jabber client (git)"
 arch=('i686' 'x86_64')
 url="http://poez.io"
@@ -18,7 +18,7 @@ optdepends=('pure-python-otr-git: OTR plugin'
             'figlet: ASCII art plugin'
             'python-aiohttp: file upload')
 
-source=("git://git.poez.io/poezio/")
+source=("git+https://lab.louiz.org/poezio/poezio.git")
 md5sums=('SKIP')
 
 pkgver() {
