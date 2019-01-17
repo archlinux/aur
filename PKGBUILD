@@ -2,7 +2,7 @@
 
 pkgname=boston-icon-theme-git
 pkgver=r4.bc80c4b
-pkgrel=1
+pkgrel=2
 pkgdesc="Boston is a highly minimalist icon theme, with a sober color palette inspired on basic hues."
 arch=('any')
 url="https://github.com/tonylambiris/boston-icons"
@@ -25,5 +25,5 @@ package() {
 
 	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	cp -a "${srcdir}/${pkgname}" "${pkgdir}/usr/share/icons/${pkgname%%-git}"
+	cp -a "${srcdir}/${pkgname}" "${pkgdir}/usr/share/icons/Boston"
 }
