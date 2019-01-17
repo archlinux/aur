@@ -24,8 +24,8 @@ depends=('curaengine-beta-git'
 optdepends=('python-zeroconf: network printing support')
 makedepends=('cmake' 'git' 'qt5-tools')
 provides=('cura')
-conflicts=('cura' 'cura-git' 'cura-beta')
-source=("git+https://github.com/Ultimaker/Cura#branch=$(pkgver)")
+conflicts=('cura' 'cura-beta')
+source=("git+https://github.com/Ultimaker/Cura#branch=${pkgver}")
 sha1sums=('SKIP')
 
 # Build order
