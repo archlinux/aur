@@ -6,7 +6,7 @@ pkgbase = oni
 	arch = x86_64
 	license = MIT
 	makedepends = tar
-	depends = neovim
+	depends = neovim<=0.3.1
 	depends = nodejs
 	depends = gconf
 	depends = libxss
