@@ -1,5 +1,5 @@
 # Maintainer: weearc <q19981121@163.com>
-pkgname=motrix-source-git
+pkgname=motrix
 _pkgname=Motrix
 pkgver=git20190112
 pkgrel=1

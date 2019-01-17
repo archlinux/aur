@@ -1,4 +1,4 @@
-pkgbase = motrix-source-git
+pkgbase = motrix
 	pkgdesc = elegent downloading tool frontend for aria2c,using vue
 	pkgver = git20190112
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = motrix-source-git
 	source = Motrix.desktop
 	md5sums = SKIP
 
-pkgname = motrix-source-git
+pkgname = motrix
 
