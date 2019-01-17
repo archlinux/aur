@@ -2,7 +2,7 @@
 
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=r160.19293d0
+pkgver=r161.f6a97a6
 pkgrel=1
 pkgdesc="Free GNU/Linux music production system (DAW)"
 arch=('x86_64')
@@ -38,6 +38,6 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 }
 
