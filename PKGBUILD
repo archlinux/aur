@@ -11,7 +11,7 @@ sha512sums=('732de52ad7dcb39c111edb596c1c915922e88c55d0c2f4c108a111fa1fe13e54eea
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	make vampire_rel
+	make vampire_rel BRANCH= COM_CNT=
 }
 
 package() {
