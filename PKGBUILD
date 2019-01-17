@@ -8,23 +8,13 @@ arch=('any')
 url="https://www.redmine.org"
 license=('GPL2')
 depends=('ruby>=2.2.2')
-optdepends=('rvm: a command line tool to easily manage multiple Ruby environments'
-            'rbenv: another command line tool to easily manage multiple Ruby environments'
-            'apache: a supported application server'
-            'nginx: a supported application server'
-            'tomcat7: a supported application server'
-            'tomcat8: a supported application server'
-            'mariadb: MariaDB database support'
+optdepends=('apache: A supported application server'
+            'nginx: A supported application server'
             'mysql: MySQL database support'
             'postgresql: PostgreSQL database support'
-            'git: Git repository browsing'
-            'subversion: Subversion repository browsing'
-            'darcs: Darcs repository browsing'
-            'bzr: Bazaar repository browsing'
-            'mercurial: Mercurial repository browsing'
-            'cvs: CVS repository browsing'
-            'imagemagick: Image export support for Gantt'
-            'ruby-rails: alternative Ruby on Rails instalation')
+            'sqlite: SQLite database support'
+            'ruby-rmagick: For Gantt export to PNG image and thumbnails generation'
+            'ruby-rails: Alternative Ruby on Rails instalation')
 source=("$url/releases/$pkgname-$pkgver.tar.gz")
 sha512sums=('8ea38803c03b239b0a617619197fb1c553a7512f7c90acf33ae1b1b605cc2556b402b9f033677bdad4ba4efeb3c18bf3855f749a4d5fb82b07e846b9b0acecde')
 
