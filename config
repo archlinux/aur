@@ -1,0 +1,550 @@
+#
+# Automatically generated file; DO NOT EDIT.
+# V4L/DVB menu
+#
+CONFIG_BPF_SYSCALL=y
+CONFIG_SERIO=m
+CONFIG_HAS_IOMEM=y
+CONFIG_DEBUG_FS=y
+CONFIG_GENERIC_PHY=y
+CONFIG_MTD_COMPLEX_MAPPINGS=y
+CONFIG_MMC=m
+CONFIG_USB_ACM=m
+CONFIG_GPIOLIB=y
+CONFIG_SYSFS=y
+CONFIG_X86=y
+CONFIG_FB_CFB_COPYAREA=y
+CONFIG_INPUT_EVDEV=m
+CONFIG_I2C_ALGOBIT=m
+CONFIG_FIREWIRE=m
+CONFIG_PM=y
+CONFIG_FW_LOADER=y
+CONFIG_HAVE_CLK=y
+CONFIG_OF=y
+CONFIG_I2C_GPIO=m
+CONFIG_SONY_LAPTOP=m
+CONFIG_ACPI=y
+CONFIG_SND_FM801=m
+CONFIG_COMMON_CLK=y
+CONFIG_PNP=y
+CONFIG_RATIONAL=y
+CONFIG_LEDS_CLASS_FLASH=m
+CONFIG_SND=m
+CONFIG_SND_SOC_SI476X=m
+CONFIG_CROS_EC_PROTO=y
+CONFIG_HAS_DMA=y
+CONFIG_USB=y
+CONFIG_MODULES=y
+CONFIG_GENERIC_ALLOCATOR=y
+CONFIG_SPI=y
+CONFIG_SPI_MASTER=y
+CONFIG_FB_CFB_FILLRECT=y
+CONFIG_PCI=y
+CONFIG_PWM=y
+CONFIG_REGMAP_MMIO=y
+CONFIG_TI_ST=m
+CONFIG_FONT_SUPPORT=y
+CONFIG_BITREVERSE=y
+CONFIG_TTY=y
+CONFIG_FB=y
+CONFIG_INPUT=y
+CONFIG_FB_CFB_IMAGEBLIT=y
+CONFIG_VIRT_TO_BUS=y
+CONFIG_I2C=y
+CONFIG_MFD_SYSCON=y
+CONFIG_MFD_WL1273_CORE=m
+CONFIG_LEDS_CLASS=y
+CONFIG_NET=y
+CONFIG_REGMAP=y
+CONFIG_MULTIPLEXER=m
+CONFIG_ISA_DMA_API=y
+CONFIG_MTD=m
+CONFIG_REGULATOR=y
+CONFIG_MFD_SI476X_CORE=m
+CONFIG_SND_PCM=m
+CONFIG_USB_ARCH_HAS_HCD=y
+CONFIG_PREEMPT=y
+CONFIG_CRC32=y
+CONFIG_REGMAP_I2C=y
+CONFIG_MFD_CROS_EC=m
+CONFIG_HDMI=y
+CONFIG_FONT_8x16=y
+CONFIG_PCI_MSI=y
+CONFIG_MMU=y
+CONFIG_NEW_LEDS=y
+CONFIG_I2C_MUX=m
+CONFIG_INET=y
+CONFIG_CHROME_PLATFORMS=y
+CONFIG_SND_SOC=m
+CONFIG_RFKILL=m
+CONFIG_RPMSG=m
+CONFIG_PINCTRL=y
+CONFIG_DMA_SHARED_BUFFER=y
+CONFIG_MFD_CORE=y
+CONFIG_SERIO_SERPORT=m
+# CONFIG_VIDEO_KERNEL_VERSION is not set
+CONFIG_RC_CORE=m
+# CONFIG_RC_MAP is not set
+# CONFIG_LIRC is not set
+# CONFIG_RC_DECODERS is not set
+# CONFIG_RC_DEVICES is not set
+CONFIG_MEDIA_SUPPORT=m
+
+#
+# Multimedia core support
+#
+# CONFIG_MEDIA_CAMERA_SUPPORT is not set
+CONFIG_MEDIA_ANALOG_TV_SUPPORT=y
+CONFIG_MEDIA_DIGITAL_TV_SUPPORT=y
+CONFIG_MEDIA_RADIO_SUPPORT=y
+CONFIG_MEDIA_SDR_SUPPORT=y
+# CONFIG_MEDIA_CEC_SUPPORT is not set
+# CONFIG_MEDIA_CONTROLLER is not set
+CONFIG_VIDEO_DEV=m
+CONFIG_VIDEO_V4L2=m
+# CONFIG_VIDEO_ADV_DEBUG is not set
+# CONFIG_VIDEO_FIXED_MINOR_RANGES is not set
+CONFIG_DVB_CORE=m
+# CONFIG_DVB_MMAP is not set
+CONFIG_DVB_NET=y
+CONFIG_DVB_MAX_ADAPTERS=16
+CONFIG_DVB_DYNAMIC_MINORS=y
+# CONFIG_DVB_DEMUX_SECTION_LOSS_LOG is not set
+# CONFIG_DVB_ULE_DEBUG is not set
+
+#
+# Media drivers
+#
+CONFIG_MEDIA_USB_SUPPORT=y
+
+#
+# Analog TV USB devices
+#
+# CONFIG_VIDEO_PVRUSB2 is not set
+# CONFIG_VIDEO_HDPVR is not set
+# CONFIG_VIDEO_USBVISION is not set
+# CONFIG_VIDEO_STK1160_COMMON is not set
+# CONFIG_VIDEO_GO7007 is not set
+
+#
+# Analog/digital TV USB devices
+#
+# CONFIG_VIDEO_AU0828 is not set
+# CONFIG_VIDEO_CX231XX is not set
+# CONFIG_VIDEO_TM6000 is not set
+
+#
+# Digital TV USB devices
+#
+CONFIG_DVB_USB=m
+# CONFIG_DVB_USB_DEBUG is not set
+# CONFIG_DVB_USB_A800 is not set
+# CONFIG_DVB_USB_DIBUSB_MB is not set
+# CONFIG_DVB_USB_DIBUSB_MC is not set
+# CONFIG_DVB_USB_DIB0700 is not set
+# CONFIG_DVB_USB_UMT_010 is not set
+CONFIG_DVB_USB_CXUSB=m
+# CONFIG_DVB_USB_M920X is not set
+# CONFIG_DVB_USB_DIGITV is not set
+# CONFIG_DVB_USB_VP7045 is not set
+# CONFIG_DVB_USB_VP702X is not set
+# CONFIG_DVB_USB_GP8PSK is not set
+# CONFIG_DVB_USB_NOVA_T_USB2 is not set
+# CONFIG_DVB_USB_TTUSB2 is not set
+# CONFIG_DVB_USB_DTT200U is not set
+# CONFIG_DVB_USB_OPERA1 is not set
+# CONFIG_DVB_USB_AF9005 is not set
+# CONFIG_DVB_USB_PCTV452E is not set
+# CONFIG_DVB_USB_DW2102 is not set
+# CONFIG_DVB_USB_CINERGY_T2 is not set
+# CONFIG_DVB_USB_DTV5100 is not set
+# CONFIG_DVB_USB_AZ6027 is not set
+# CONFIG_DVB_USB_TECHNISAT_USB2 is not set
+# CONFIG_DVB_USB_TBSQBOX is not set
+# CONFIG_DVB_USB_TBSQBOX2 is not set
+# CONFIG_DVB_USB_TBSQBOX22 is not set
+# CONFIG_DVB_USB_TBS5922SE is not set
+# CONFIG_DVB_USB_TBSQBOXS2 is not set
+# CONFIG_DVB_USB_TBSQBOX2CI is not set
+# CONFIG_DVB_USB_TBS5925 is not set
+# CONFIG_DVB_USB_TBS5880 is not set
+# CONFIG_DVB_USB_TBS5220 is not set
+# CONFIG_DVB_USB_TBS5881 is not set
+# CONFIG_DVB_USB_TBS5520 is not set
+# CONFIG_DVB_USB_TBS5927 is not set
+# CONFIG_DVB_USB_TBS5520SE is not set
+# CONFIG_DVB_USB_TBS5580 is not set
+# CONFIG_DVB_USB_CYCITV is not set
+# CONFIG_DVB_USB_V2 is not set
+# CONFIG_DVB_TTUSB_BUDGET is not set
+# CONFIG_DVB_TTUSB_DEC is not set
+# CONFIG_SMS_USB_DRV is not set
+# CONFIG_DVB_B2C2_FLEXCOP_USB is not set
+# CONFIG_DVB_AS102 is not set
+
+#
+# Webcam, TV (analog/digital) USB devices
+#
+# CONFIG_VIDEO_EM28XX is not set
+
+#
+# Software defined radio USB devices
+#
+# CONFIG_USB_AIRSPY is not set
+# CONFIG_USB_HACKRF is not set
+# CONFIG_USB_MSI2500 is not set
+# CONFIG_MEDIA_PCI_SUPPORT is not set
+# CONFIG_DVB_PLATFORM_DRIVERS is not set
+# CONFIG_SDR_PLATFORM_DRIVERS is not set
+
+#
+# Supported MMC/SDIO adapters
+#
+# CONFIG_SMS_SDIO_DRV is not set
+# CONFIG_RADIO_ADAPTERS is not set
+
+#
+# Supported FireWire (IEEE 1394) Adapters
+#
+# CONFIG_DVB_FIREDTV is not set
+# CONFIG_CYPRESS_FIRMWARE is not set
+
+#
+# Media ancillary drivers (tuners, sensors, i2c, spi, frontends)
+#
+# CONFIG_MEDIA_SUBDRV_AUTOSELECT is not set
+CONFIG_MEDIA_ATTACH=y
+CONFIG_VIDEO_IR_I2C=m
+
+#
+# I2C Encoders, decoders, sensors and other helper chips
+#
+
+#
+# Audio decoders, processors and mixers
+#
+# CONFIG_VIDEO_TVAUDIO is not set
+# CONFIG_VIDEO_TDA7432 is not set
+# CONFIG_VIDEO_TDA9840 is not set
+# CONFIG_VIDEO_TEA6415C is not set
+# CONFIG_VIDEO_TEA6420 is not set
+# CONFIG_VIDEO_MSP3400 is not set
+# CONFIG_VIDEO_CS3308 is not set
+# CONFIG_VIDEO_CS5345 is not set
+# CONFIG_VIDEO_CS53L32A is not set
+# CONFIG_VIDEO_TLV320AIC23B is not set
+# CONFIG_VIDEO_UDA1342 is not set
+# CONFIG_VIDEO_WM8775 is not set
+# CONFIG_VIDEO_WM8739 is not set
+# CONFIG_VIDEO_VP27SMPX is not set
+# CONFIG_VIDEO_SONY_BTF_MPX is not set
+
+#
+# RDS decoders
+#
+# CONFIG_VIDEO_SAA6588 is not set
+
+#
+# Video decoders
+#
+# CONFIG_VIDEO_ADV7183 is not set
+# CONFIG_VIDEO_BT819 is not set
+# CONFIG_VIDEO_BT856 is not set
+# CONFIG_VIDEO_BT866 is not set
+# CONFIG_VIDEO_KS0127 is not set
+# CONFIG_VIDEO_ML86V7667 is not set
+# CONFIG_VIDEO_SAA7110 is not set
+# CONFIG_VIDEO_SAA711X is not set
+# CONFIG_VIDEO_TVP514X is not set
+# CONFIG_VIDEO_TVP5150 is not set
+# CONFIG_VIDEO_TVP7002 is not set
+# CONFIG_VIDEO_TW2804 is not set
+# CONFIG_VIDEO_TW9903 is not set
+# CONFIG_VIDEO_TW9906 is not set
+# CONFIG_VIDEO_TW9910 is not set
+# CONFIG_VIDEO_VPX3220 is not set
+
+#
+# Video and audio decoders
+#
+# CONFIG_VIDEO_SAA717X is not set
+# CONFIG_VIDEO_CX25840 is not set
+
+#
+# Video encoders
+#
+# CONFIG_VIDEO_SAA7127 is not set
+# CONFIG_VIDEO_SAA7185 is not set
+# CONFIG_VIDEO_ADV7170 is not set
+# CONFIG_VIDEO_ADV7175 is not set
+# CONFIG_VIDEO_ADV7343 is not set
+# CONFIG_VIDEO_ADV7393 is not set
+# CONFIG_VIDEO_AK881X is not set
+# CONFIG_VIDEO_THS8200 is not set
+
+#
+# Camera sensor devices
+#
+# CONFIG_VIDEO_MT9M111 is not set
+
+#
+# Flash devices
+#
+
+#
+# Video improvement chips
+#
+# CONFIG_VIDEO_UPD64031A is not set
+# CONFIG_VIDEO_UPD64083 is not set
+
+#
+# Audio/Video compression chips
+#
+# CONFIG_VIDEO_SAA6752HS is not set
+
+#
+# SDR tuner chips
+#
+# CONFIG_SDR_MAX2175 is not set
+
+#
+# Miscellaneous helper chips
+#
+# CONFIG_VIDEO_THS7303 is not set
+# CONFIG_VIDEO_M52790 is not set
+# CONFIG_VIDEO_I2C is not set
+
+#
+# Sensors used on soc_camera driver
+#
+
+#
+# SPI helper chips
+#
+
+#
+# Media SPI Adapters
+#
+# CONFIG_CXD2880_SPI_DRV is not set
+CONFIG_MEDIA_TUNER=m
+
+#
+# Customize TV tuners
+#
+# CONFIG_MEDIA_TUNER_SIMPLE is not set
+# CONFIG_MEDIA_TUNER_TDA18250 is not set
+# CONFIG_MEDIA_TUNER_TDA8290 is not set
+# CONFIG_MEDIA_TUNER_TDA827X is not set
+# CONFIG_MEDIA_TUNER_TDA18271 is not set
+# CONFIG_MEDIA_TUNER_TDA18273 is not set
+# CONFIG_MEDIA_TUNER_TDA9887 is not set
+# CONFIG_MEDIA_TUNER_TEA5761 is not set
+# CONFIG_MEDIA_TUNER_TEA5767 is not set
+# CONFIG_MEDIA_TUNER_MSI001 is not set
+# CONFIG_MEDIA_TUNER_MT20XX is not set
+# CONFIG_MEDIA_TUNER_MT2060 is not set
+# CONFIG_MEDIA_TUNER_MT2063 is not set
+# CONFIG_MEDIA_TUNER_MT2266 is not set
+# CONFIG_MEDIA_TUNER_MT2131 is not set
+# CONFIG_MEDIA_TUNER_QT1010 is not set
+# CONFIG_MEDIA_TUNER_XC2028 is not set
+# CONFIG_MEDIA_TUNER_XC5000 is not set
+# CONFIG_MEDIA_TUNER_XC4000 is not set
+# CONFIG_MEDIA_TUNER_MXL5005S is not set
+# CONFIG_MEDIA_TUNER_MXL5007T is not set
+# CONFIG_MEDIA_TUNER_MC44S803 is not set
+# CONFIG_MEDIA_TUNER_MAX2165 is not set
+# CONFIG_MEDIA_TUNER_TDA18218 is not set
+# CONFIG_MEDIA_TUNER_FC0011 is not set
+# CONFIG_MEDIA_TUNER_FC0012 is not set
+# CONFIG_MEDIA_TUNER_FC0013 is not set
+# CONFIG_MEDIA_TUNER_TDA18212 is not set
+# CONFIG_MEDIA_TUNER_E4000 is not set
+# CONFIG_MEDIA_TUNER_FC2580 is not set
+# CONFIG_MEDIA_TUNER_M88RS6000T is not set
+# CONFIG_MEDIA_TUNER_TUA9001 is not set
+CONFIG_MEDIA_TUNER_SI2157=m
+# CONFIG_MEDIA_TUNER_IT913X is not set
+# CONFIG_MEDIA_TUNER_R820T is not set
+# CONFIG_MEDIA_TUNER_MXL301RF is not set
+# CONFIG_MEDIA_TUNER_QM1D1C0042 is not set
+# CONFIG_MEDIA_TUNER_QM1D1B0004 is not set
+# CONFIG_MEDIA_TUNER_AV201X is not set
+# CONFIG_MEDIA_TUNER_STV6120 is not set
+# CONFIG_MEDIA_TUNER_R848 is not set
+
+#
+# Customise DVB Frontends
+#
+
+#
+# Multistandard (satellite) frontends
+#
+# CONFIG_DVB_STB0899 is not set
+# CONFIG_DVB_STB6100 is not set
+# CONFIG_DVB_STV090x is not set
+# CONFIG_DVB_STV0910 is not set
+# CONFIG_DVB_STV6110x is not set
+# CONFIG_DVB_STV6111 is not set
+# CONFIG_DVB_MXL5XX is not set
+# CONFIG_DVB_M88DS3103 is not set
+# CONFIG_DVB_TAS2101 is not set
+# CONFIG_DVB_STV091X is not set
+# CONFIG_DVB_MXL58X is not set
+# CONFIG_DVB_AVL6882 is not set
+# CONFIG_DVB_SI2183 is not set
+# CONFIG_DVB_STID135 is not set
+
+#
+# Multistandard (cable + terrestrial) frontends
+#
+# CONFIG_DVB_DRXK is not set
+# CONFIG_DVB_TDA18271C2DD is not set
+# CONFIG_DVB_SI2165 is not set
+# CONFIG_DVB_MN88472 is not set
+# CONFIG_DVB_MN88473 is not set
+
+#
+# DVB-S (satellite) frontends
+#
+# CONFIG_DVB_CX24110 is not set
+# CONFIG_DVB_CX24123 is not set
+# CONFIG_DVB_MT312 is not set
+# CONFIG_DVB_ZL10036 is not set
+# CONFIG_DVB_ZL10039 is not set
+# CONFIG_DVB_S5H1420 is not set
+# CONFIG_DVB_STV0288 is not set
+# CONFIG_DVB_STB6000 is not set
+# CONFIG_DVB_STV0299 is not set
+# CONFIG_DVB_STV6110 is not set
+# CONFIG_DVB_STV0900 is not set
+# CONFIG_DVB_TDA8083 is not set
+# CONFIG_DVB_TDA10086 is not set
+# CONFIG_DVB_TDA8261 is not set
+# CONFIG_DVB_VES1X93 is not set
+# CONFIG_DVB_TUNER_ITD1000 is not set
+# CONFIG_DVB_TUNER_CX24113 is not set
+# CONFIG_DVB_TDA826X is not set
+# CONFIG_DVB_TUA6100 is not set
+# CONFIG_DVB_CX24116 is not set
+# CONFIG_DVB_CX24117 is not set
+# CONFIG_DVB_CX24120 is not set
+# CONFIG_DVB_SI21XX is not set
+# CONFIG_DVB_TS2020 is not set
+# CONFIG_DVB_DS3000 is not set
+# CONFIG_DVB_DS3K is not set
+# CONFIG_DVB_MB86A16 is not set
+# CONFIG_DVB_TDA10071 is not set
+
+#
+# DVB-T (terrestrial) frontends
+#
+# CONFIG_DVB_SP8870 is not set
+# CONFIG_DVB_SP887X is not set
+# CONFIG_DVB_CX22700 is not set
+# CONFIG_DVB_CX22702 is not set
+# CONFIG_DVB_S5H1432 is not set
+# CONFIG_DVB_DRXD is not set
+# CONFIG_DVB_L64781 is not set
+# CONFIG_DVB_TDA1004X is not set
+# CONFIG_DVB_NXT6000 is not set
+# CONFIG_DVB_MT352 is not set
+# CONFIG_DVB_ZL10353 is not set
+# CONFIG_DVB_DIB3000MB is not set
+# CONFIG_DVB_DIB3000MC is not set
+# CONFIG_DVB_DIB7000M is not set
+# CONFIG_DVB_DIB7000P is not set
+# CONFIG_DVB_DIB9000 is not set
+# CONFIG_DVB_TDA10048 is not set
+# CONFIG_DVB_AF9013 is not set
+# CONFIG_DVB_EC100 is not set
+# CONFIG_DVB_STV0367 is not set
+# CONFIG_DVB_CXD2820R is not set
+# CONFIG_DVB_CXD2841ER is not set
+# CONFIG_DVB_RTL2830 is not set
+# CONFIG_DVB_RTL2832 is not set
+# CONFIG_DVB_RTL2832_SDR is not set
+CONFIG_DVB_SI2168=m
+# CONFIG_DVB_ZD1301_DEMOD is not set
+# CONFIG_DVB_CXD2880 is not set
+
+#
+# DVB-C (cable) frontends
+#
+# CONFIG_DVB_VES1820 is not set
+# CONFIG_DVB_TDA10021 is not set
+# CONFIG_DVB_TDA10023 is not set
+# CONFIG_DVB_STV0297 is not set
+
+#
+# ATSC (North American/Korean Terrestrial/Cable DTV) frontends
+#
+# CONFIG_DVB_NXT200X is not set
+# CONFIG_DVB_OR51211 is not set
+# CONFIG_DVB_OR51132 is not set
+# CONFIG_DVB_BCM3510 is not set
+# CONFIG_DVB_LGDT330X is not set
+# CONFIG_DVB_LGDT3305 is not set
+# CONFIG_DVB_LGDT3306A is not set
+# CONFIG_DVB_LG2160 is not set
+# CONFIG_DVB_S5H1409 is not set
+# CONFIG_DVB_AU8522_DTV is not set
+# CONFIG_DVB_AU8522_V4L is not set
+# CONFIG_DVB_S5H1411 is not set
+
+#
+# ISDB-T (terrestrial) frontends
+#
+# CONFIG_DVB_S921 is not set
+# CONFIG_DVB_DIB8000 is not set
+# CONFIG_DVB_MB86A20S is not set
+
+#
+# ISDB-S (satellite) & ISDB-T (terrestrial) frontends
+#
+# CONFIG_DVB_TC90522 is not set
+# CONFIG_DVB_MN88443X is not set
+
+#
+# Digital terrestrial only tuners/PLL
+#
+# CONFIG_DVB_PLL is not set
+CONFIG_DVB_TUNER_DIB0070=m
+# CONFIG_DVB_TUNER_DIB0090 is not set
+
+#
+# SEC control devices for DVB-S
+#
+# CONFIG_DVB_DRX39XYJ is not set
+# CONFIG_DVB_LNBH25 is not set
+# CONFIG_DVB_LNBP21 is not set
+# CONFIG_DVB_LNBP22 is not set
+# CONFIG_DVB_ISL6405 is not set
+# CONFIG_DVB_ISL6421 is not set
+# CONFIG_DVB_ISL6422 is not set
+# CONFIG_DVB_ISL6423 is not set
+# CONFIG_DVB_A8293 is not set
+# CONFIG_DVB_LGS8GL5 is not set
+# CONFIG_DVB_LGS8GXX is not set
+# CONFIG_DVB_ATBM8830 is not set
+# CONFIG_DVB_TDA665x is not set
+# CONFIG_DVB_IX2505V is not set
+# CONFIG_DVB_M88RS2000 is not set
+# CONFIG_DVB_AF9033 is not set
+# CONFIG_DVB_HORUS3A is not set
+# CONFIG_DVB_ASCOT2E is not set
+# CONFIG_DVB_HELENE is not set
+
+#
+# Common Interface (EN50221) controller drivers
+#
+# CONFIG_DVB_CXD2099 is not set
+# CONFIG_DVB_SP2 is not set
+
+#
+# Tools to develop new frontends
+#
+# CONFIG_DVB_DUMMY_FE is not set
+# CONFIG_AUDIO_SUPPORT is not set
+# CONFIG_MISC_DEVICES is not set
+# CONFIG_STAGING is not set
