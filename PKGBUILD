@@ -1,5 +1,5 @@
 # Maintainer: Martynas Mickevičius <self at 2m dot lt>
-_version=1.1.0-M8
+_version=1.1.0-M10
 
 pkgname=coursier
 pkgver="${_version/-/_}"
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('java-runtime-headless>=8' 'bash')
 
 source=("https://github.com/coursier/coursier/raw/v${_version}/coursier")
-sha256sums=('6c7be5eaab67a80fcb40473633650aa982360e94ee1834666b11c2f052612545')
+sha256sums=('c817d0d9860e2abc7420d6bde1800fb7d74dc4612d9a1480aca0b67dc2013892')
 noextract=('coursier')
 
 build() {
@@ -21,13 +21,13 @@ build() {
   sh ./coursier bootstrap \
     --intransitive "io.get-coursier::coursier-cli:${_version}" \
     --classifier standalone \
-    -A jar \
-    -J "-noverify" \
+    --artifact-type jar \
+    --java-opt "-noverify" \
     --no-default \
     -r central \
     -r sonatype:releases \
     -f -o "bin/coursier" \
-    -s
+    --standalone
 }
 
 package() {
