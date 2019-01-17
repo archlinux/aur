@@ -3,7 +3,7 @@
 _pkgname=chibi-scheme
 pkgname=chibi-scheme-git
 pkgver=0.7.3.r82.gda84503
-pkgrel=1
+pkgrel=2
 pkgdesc="minimal R7RS scheme implementation for use as an extension language"
 arch=('x86_64' 'i686')
 url="https://github.com/ashinn/chibi-scheme"
