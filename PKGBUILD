@@ -15,7 +15,8 @@ makedepends=('git' 'python-sphinx')
 optdepends=('pure-python-otr-git: OTR plugin'
             'gnupg: GPG plugin'
             'python-pyinotify: screen/tmux detach plugin'
-            'figlet: ASCII art plugin')
+            'figlet: ASCII art plugin'
+            'python-aiohttp: file upload')
 
 source=("git://git.poez.io/poezio/")
 md5sums=('SKIP')
