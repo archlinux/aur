@@ -7,6 +7,10 @@ pkgbase = python-nazca
 	license = AGPLv3+
 	depends = python
 	depends = python-pyclipper
+	depends = python-pandas
+	depends = python-matplotlib
+	depends = python-pillow
+	depends = ipython
 	source = https://nazca-design.org/dist/nazca-0.4.3.zip
 	sha256sums = 51980706f8e4051d7ed2af9511a28eaf6e05acbcdaa782afb116a26a8509344b
 
