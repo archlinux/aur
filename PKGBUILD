@@ -7,13 +7,18 @@ pkgname=uranium-beta-git
 pkgver=4.0
 pkgrel=2
 pkgdesc="A Python framework for building Desktop applications."
-url="https://github.com/Ultimaker/Uranium"
 arch=('any')
+url="https://github.com/Ultimaker/Uranium"
 license=('LGPL3')
-depends=('python' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'pyqt5-common' 'python-pyqt5' 'python-numpy' 'arcus-beta-git')
+depends=('arcus-beta-git'
+         'pyqt5-common'
+         'python-numpy'
+         'qt5-quickcontrols'
+         'qt5-quickcontrols2'
+         'python-pyqt5')
 makedepends=('cmake' 'git')
-conflicts=('uranium' 'uranium-git')
-source=("git+https://github.com/Ultimaker/Uranium#branch=${pkgver}")
+conflicts=('uranium' 'uranium-git' 'uranium-beta')
+source=("git+$(url)#branch=${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {

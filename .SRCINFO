@@ -7,15 +7,15 @@ pkgbase = uranium-beta-git
 	license = LGPL3
 	makedepends = cmake
 	makedepends = git
-	depends = python
+	depends = arcus-beta-git
+	depends = pyqt5-common
+	depends = python-numpy
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
-	depends = pyqt5-common
 	depends = python-pyqt5
-	depends = python-numpy
-	depends = arcus-beta-git
+	provides = uranium
 	conflicts = uranium
-	conflicts = uranium-git
+	conflicts = uranium-beta
 	source = git+https://github.com/Ultimaker/Uranium#branch=4.0
 	sha256sums = SKIP
 
