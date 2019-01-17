@@ -1,0 +1,21 @@
+Chunk 1:	Change PREFIX and MANPREFIX variables
+Chunk 2:	Append local (C|CXX|LD)FLAGS, change _BSD_SOURCE define
+		to _DEFAULT_SOURCE
+diff -ura sfeed.orig/config.mk sfeed.new/config.mk
+--- sfeed.orig/config.mk	2019-01-17 23:01:44.402627527 +1100
++++ sfeed.new/config.mk	2019-01-17 23:14:29.356401258 +1100
+@@ -14,11 +14,11 @@
+ #LDFLAGS =
+
+ # optimized
+-CFLAGS = -O2 -std=c99
+-LDFLAGS = -s
++CFLAGS  += -O2 -std=c99
++LDFLAGS += -s
+ 
+ # optimized static
+ #CFLAGS = -static -O2 -std=c99
+ #LDFLAGS = -static -s
+ 
+-CPPFLAGS = -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -D_BSD_SOURCE
++CPPFLAGS += -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -D_DEFAULT_SOURCE
