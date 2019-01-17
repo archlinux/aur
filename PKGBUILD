@@ -4,7 +4,7 @@ pkgname='as-git'
 pkgdesc='Header-only C++ library with utilities for Operational Research projects.'
 
 pkgver=r53.1ebb0e3
-pkgrel=1
+pkgrel=2
 
 arch=('x86_64')
 url='https://github.com/alberto-santini/as'
@@ -49,7 +49,7 @@ package() {
   install -dm755 "$pkgdir/usr/include/as"
   install -m644 "$srcdir/as/src/"*.h "$pkgdir/usr/include/as"
 
-  if [[ "$_doc_build" = "1" ]]; then
+  if [[ "$_doc_built" = "1" ]]; then
     install -dm755 "$pkgdir/usr/share/doc/as"
     cp -R "$srcdir/as/doc/"* "$pkgdir/usr/share/doc/as"
   fi
