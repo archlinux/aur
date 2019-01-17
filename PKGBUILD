@@ -1,6 +1,9 @@
 # Maintainer: metiis <aur at metiis dot com>
+# Maintainer: bubuntux <address at domain dot tld>
+# Maintainer: Martoko <mbastholm at gmail dot com>
+
 pkgname=nordvpn-bin
-pkgver=2.2.0_0
+pkgver=2.2.0_1
 pkgrel=1
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64')
@@ -10,7 +13,7 @@ depends=('net-tools' 'libxslt' 'iptables' 'procps')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn')
 source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_amd64.deb")
-sha256sums=('d02661dd3f28501210b67d91a571d439146d4d2be9e1d3469f3582b067bf956c')
+sha256sums=('77c8540b9fe7a055840b27e1d0f4fd29d61d753a4db2c8a51cac0db9a5696c34')
 
 package() {
     bsdtar -O -xf "nordvpn_${pkgver//_/-}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
