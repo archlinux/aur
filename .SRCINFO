@@ -7,7 +7,7 @@ pkgbase = lemonade-git
 	arch = i686
 	license = MIT
 	makedepends = go
-	source = lemonade::git+https://github.com/pocke/lemonade.git
+	source = lemonade-git::git+https://github.com/pocke/lemonade.git
 	sha256sums = SKIP
 
 pkgname = lemonade-git
