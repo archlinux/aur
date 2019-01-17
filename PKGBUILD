@@ -4,7 +4,7 @@ _name=mal
 _tag=v0.4.0
 pkgname=python-mal-git
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MyAnimeList command line interface"
 arch=(any)
 url="http://lerax.me/MAL/"
@@ -13,11 +13,6 @@ depends=('python' 'python-requests' 'python-appdirs' 'python-decorating')
 makedepends=('git')
 source=("git+https://github.com/ryukinix/${_name}.git#tag=${_tag}")
 md5sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/${_name}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
   cd "$srcdir/${_name}"

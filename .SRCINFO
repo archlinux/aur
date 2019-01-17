@@ -1,7 +1,7 @@
 pkgbase = python-mal-git
 	pkgdesc = MyAnimeList command line interface
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://lerax.me/MAL/
 	arch = any
 	license = GPL3
