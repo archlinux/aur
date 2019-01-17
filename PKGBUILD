@@ -1,10 +1,10 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=cygnus
-pkgver=1.3
+pkgver=1.3.2
 pkgrel=4
 pkgdesc="RSS reader"
 arch=('x86_64')
-md5sums=('26cfda2c5b20496debe039d94207404d')
+md5sums=('f04eaf92bf9d246262ef0c70b79c181f')
 url="https://github.com/blooser/cygnus"
 license=('MIT')
 depends=('python3')
@@ -45,3 +45,4 @@ package() {
 		echo "alias cygnus=${applocation}/run.sh" >> ~/.bashrc	
 	fi	
 }
+
