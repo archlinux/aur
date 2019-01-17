@@ -16,7 +16,7 @@ pkgname=('vmware-horizon-client'
 pkgver=4.10.0
 _build=11053294
 _cart='CART19FQ4'
-pkgrel=1
+pkgrel=2
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('x86_64')
 url='https://www.vmware.com/go/viewclients'
@@ -30,7 +30,7 @@ source=("${pkgbase}-${pkgver}-${_build}-x86_64.bundle::https://download3.vmware.
 sha256sums=('21617d8223aad7d282967b07dbf09ec5d5dd389d706063c0b791b20bdfe425bb'
             'd8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163'
             '008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f'
-            'f0944ca74a44292e7f853792335d3bbd1a89a1d4964d6d74a7e9485a8b068b0b'
+            'a897c1b9e8928fc222880ebbfc7bb6aff940bff4acf4e4e0cd4002fff81c7226'
             'e47e770a1e19ed321de7c2765b2d682f59ac466aef92b2e4ea5e65cacf56de36')
 
 # VMware bundles old versions of openssl. Usually we can use system openssl.

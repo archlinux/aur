@@ -1,7 +1,7 @@
 pkgbase = vmware-horizon-client
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop
 	pkgver = 4.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vmware.com/go/viewclients
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = vmware-horizon-client
 	sha256sums = 21617d8223aad7d282967b07dbf09ec5d5dd389d706063c0b791b20bdfe425bb
 	sha256sums = d8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163
 	sha256sums = 008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f
-	sha256sums = f0944ca74a44292e7f853792335d3bbd1a89a1d4964d6d74a7e9485a8b068b0b
+	sha256sums = a897c1b9e8928fc222880ebbfc7bb6aff940bff4acf4e4e0cd4002fff81c7226
 	sha256sums = e47e770a1e19ed321de7c2765b2d682f59ac466aef92b2e4ea5e65cacf56de36
 
 pkgname = vmware-horizon-client
