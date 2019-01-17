@@ -9,16 +9,16 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=3.30.0.r18.g2447be653b
+pkgver=3.37.0.r49.ge4b3f75c27
 pkgrel=1
-_mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
+_mathjax_commit=2.7.5
 pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
 license=('GPL3')
 depends=('chmlib' 'icu' 'jxrlib' 'libmtp' 'libusbx' 'libwmf' 'mtdev' 'optipng' 'podofo'
          'poppler' 'python2-apsw' 'python2-cssselect'
-         'python2-cssutils' 'python2-dateutil' 'python2-dbus' 'python2-dnspython'
+         'python2-css-parser' 'python2-dateutil' 'python2-dbus' 'python2-dnspython'
          'python2-dukpy' 'python2-html5-parser' 'python2-mechanize' 'python2-msgpack'
          'python2-netifaces' 'python2-unrardll' 'python2-pillow' 'python2-psutil'
          'python2-pygments' 'python2-pyqt5' 'python2-regex' 'qt5-svg' 'qt5-webkit')
@@ -29,11 +29,11 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/kovidgoyal/${pkgname%-git}.git?signed"
         "git+https://github.com/kovidgoyal/${pkgname%-git}-translations.git?signed"
-        "MathJax-${_mathjax_commit}.tar.gz::https://github.com/kovidgoyal/MathJax/archive/${_mathjax_commit}.tar.gz"
+        "MathJax-${_mathjax_commit}.tar.gz::https://github.com/mathjax/MathJax/archive/${_mathjax_commit}.tar.gz"
         "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
-            'be89d68cde2d996e82b813d83704ed6dceed5a86467285be6ed37f0a20bb65b4'
+            'a25e5736553eef7b05ba00df133ad36d8f7b3b967f1e32d2f7505ac77427946f'
             'b6da5e354a167f000462cf7964132c6e0749e16588249ef75ab31a62230561b8')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
