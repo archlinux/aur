@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=slit-git
-pkgver=1.2.0.r10.g88bec40
+pkgver=1.2.0.r11.g4d4f92b
 pkgrel=1
 pkgdesc='A modern PAGER for viewing logs, get more than most in less time'
 arch=(x86_64)
