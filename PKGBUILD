@@ -1,7 +1,7 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=ngraph-gtk
-pkgver=6.07.06
+pkgver=6.08.00
 pkgrel=1
 pkgdesc="A tool for creating scientific 2-dimensional graphs"
 url="http://hito.music.coocan.jp/ngraph/ngraph-gtk.html"
@@ -34,4 +34,4 @@ package() {
   install -Dm644 ngraph.applications "${pkgdir}/usr/share/application-registry/ngraph.applications"
 }
 
-md5sums=('a76a97dca46cfdabb1de052581cebf99')
+md5sums=('aac9b91dd7abfc3495cd8d123bcf7d9f')
