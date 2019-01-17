@@ -24,7 +24,7 @@ _makenconfig=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver=4.20.2-arch1
+_srcver=4.20.3-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -48,7 +48,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '2fdd5eca98e7c5dcc217302813f42c818e75cb0d8313c684d3593e5534fef669'
+            '828a1411c41f9fa47af90f8e0ae9742866de16dff2cadb2dbb06f41009ac8201'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
