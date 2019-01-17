@@ -1,15 +1,15 @@
 # Maintainer: Jeff M. Hubbard <jeffmhubbard@gmail.com>
 _pkgname=playfetch
 pkgname=${_pkgname}-git
-pkgver=r14.b35d24d
+pkgver=r16.1d0aa97
 pkgrel=1
 pkgdesc="Fetch playlists from GMusicProxy"
 arch=('any')
 url="https://github.com/jeffmhubbard/playfetch"
 license=('MIT')
 depends=('python' 'python-mpd2' 'python-requests')
-makedepends=('git' 'sed' 'grep')
-optdepends=('gmusicproxy: Google Play Music proxy' 'mpd: Play some playlists')
+makedepends=('git')
+optdepends=('gmusicproxy: google play music proxy' 'mpd: play some playlists' 'mpnotd-git: display song info and album art')
 conflicts=()
 source=("${_pkgname}::git+${url}.git")
 md5sums=("SKIP")
