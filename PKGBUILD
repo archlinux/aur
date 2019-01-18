@@ -1,15 +1,16 @@
-# Maintainer: ajs124 < aur AT ajs124 DOT de >
+# Maintainer: suthernfriend <public@janpeterkoenig.com>
+# Contributor: ajs124 < aur AT ajs124 DOT de >
 # Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
 pkgname=perl-ipc-sharelite
 _cpanname="IPC-ShareLite"
 pkgver=0.17
-pkgrel=4
+pkgrel=5
 pkgdesc="Lightweight interface to shared memory"
-arch=('i686' 'x86_64' 'armv6h')
+arch=('x86_64')
 url="http://search.cpan.org/~andya/$_cpanname-$pkgver/"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.5.0')
+depends=('glibc')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/A/AN/ANDYA/$_cpanname-$pkgver.tar.gz")
 sha512sums=('f796f6766df11205755de4672ff8a586690545ccaa2f91c3fc65f106f3b61e1cbd86ee3e97dadf787809e3be32f503670cb67dafc9b18eee30d59d8be03b5ee9')
@@ -34,15 +35,16 @@ build() {
 
 check() {
 	prepareEnvironment
-    cd "$srcdir/$_cpanname-$pkgver"
+	cd "$srcdir/$_cpanname-$pkgver"
 	make test
 }
 
 package() {
 	prepareEnvironment
-    cd "$srcdir/$_cpanname-$pkgver"
+	cd "$srcdir/$_cpanname-$pkgver"
 	make install
 
 	# Remove "perllocal.pod" and ".packlist".
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" -type f -iname \*.so -exec strip {} \;
 }
