@@ -1,6 +1,6 @@
 pkgname=glib2-static
 pkgver=2.58.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Low level core library. Static library."
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
@@ -13,9 +13,11 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
 options=('!docs' '!libtool' '!emptydirs' '!strip' 'staticlibs')
 _commit=97bcbcb8c2aa0aeee5afd9939efbadbae0c8a8fa  # tags/2.58.2^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
-        noisy-glib-compile-schemas.diff)
+        noisy-glib-compile-schemas.diff
+        fix-static-build-589.diff)
 sha256sums=('SKIP'
-            '81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531')
+            '81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531'
+            'f4790fc845f2b4811ce5df5ef3a7dfcc23a1593ec4e19ae9173bb799a045d00f')
 
 pkgver() {
   cd glib
@@ -27,6 +29,7 @@ prepare() {
 
   # Suppress noise from glib-compile-schemas.hook
   patch -Np1 -i ../noisy-glib-compile-schemas.diff
+  patch -Np1 -i ../fix-static-build-589.diff
 }
 
 build() {
