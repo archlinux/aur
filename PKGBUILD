@@ -3,19 +3,19 @@
 
 set -u
 pkgname='lrun'
-pkgver='1.1.4'
+pkgver='1.2.1'
 pkgrel='1'
 pkgdesc='Run command on Linux with resources limited.'
-url="https://github.com/quark-zju/${pkgname}"
 arch=('i686' 'x86_64')
+url="https://github.com/quark-zju/${pkgname}"
 license=('MIT')
 depends=('linux>=2.6.26')
 optdepends=('libseccomp>=2.0')
-makedepends=('gcc>=4.4' 'pkg-config' 'ruby')
-_verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quark-zju/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5365af8fffa0eba0155ef0b6e9467a8c8aa26c5e1737b47d959396eb8b96deb8')
+makedepends=('gcc>=4.4' 'pkg-config' 'ruby' 'ruby-rake')
 install="${pkgname}.install"
+_verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('9ca62d797f7f828011ca695fa2687f545f433b20208396782b03a482a6151ec3')
 
 prepare() {
   set -u
