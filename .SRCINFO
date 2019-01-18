@@ -1,6 +1,6 @@
 pkgbase = gnuplot-svg
 	pkgdesc = Plotting package. Only SVG terminal support (for web-servers)
-	pkgver = 5.2.5
+	pkgver = 5.2.6
 	pkgrel = 1
 	url = http://www.gnuplot.info
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = gnuplot-svg
 	depends = gnutls
 	provides = gnuplot
 	conflicts = gnuplot
-	source = https://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-5.2.5.tar.gz
-	sha1sums = 6c0e43968ec19f813241b91cbcf15e44f6ad5c73
+	source = https://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-5.2.6.tar.gz
+	sha1sums = e39a58addf5d69814cd6631a2aff24c5a5206c05
 
 pkgname = gnuplot-svg
 

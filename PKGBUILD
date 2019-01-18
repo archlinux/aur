@@ -5,7 +5,7 @@
 
 _pkgname=gnuplot
 pkgname=gnuplot-svg
-pkgver=5.2.5
+pkgver=5.2.6
 pkgrel=1
 pkgdesc="Plotting package. Only SVG terminal support (for web-servers)" 
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('readline' 'gnutls')
 provides=('gnuplot')
 conflicts=('gnuplot')
 source=("https://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha1sums=('6c0e43968ec19f813241b91cbcf15e44f6ad5c73')
+sha1sums=('e39a58addf5d69814cd6631a2aff24c5a5206c05')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -26,8 +26,6 @@ prepare() {
   sed -i -e 's|/usr/X11R6/lib/X11/fonts/Type1|/usr/share/fonts/Type1|' \
   -e 's|$(X11ROOT)/X11R6/lib/X11/fonts/Type1|$(X11ROOT)/usr/share/fonts/Type1|' \
   src/variable.c
-
-  patch -p1 < "$srcdir"/lua53_compat.patch
 }
 
 build() {
