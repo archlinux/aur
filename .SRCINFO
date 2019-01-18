@@ -1,6 +1,6 @@
 pkgbase = sonarr-phantom
 	pkgdesc = TV download automation for usenet and torrents.
-	pkgver = 3.0.1.358
+	pkgver = 3.0.1.359
 	pkgrel = 1
 	url = http://www.sonarr.tv
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = sonarr-phantom
 	provides = sonarr
 	conflicts = sonarr
 	conflicts = sonarr-develop
-	source = https://download.sonarr.tv/v3/phantom-develop/3.0.1.358/Sonarr.phantom-develop.3.0.1.358.linux.tar.gz
+	source = https://download.sonarr.tv/v3/phantom-develop/3.0.1.359/Sonarr.phantom-develop.3.0.1.359.linux.tar.gz
 	source = sonarr.service
 	source = sonarr.sysusers
 	source = sonarr.tmpfiles
