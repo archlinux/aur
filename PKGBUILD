@@ -13,10 +13,11 @@
 # limitations under the License.
 
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
+# Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 pkgname=hotdoc
-pkgver=0.8.101
-pkgrel=2
+pkgver=0.8.103
+pkgrel=1
 epoch=
 pkgdesc="HotDoc: the tastiest API documentation system"
 arch=('any')
@@ -25,14 +26,24 @@ license=('LGPL2')
 groups=()
 depends=(
     'python'
-    'python-sqlalchemy'
-    'python-yaml'
-    'python-schema'
-    'python-toposort'
+    'python-cchardet'
+    'python-dbus-deviation'
+    'python-decorator'
     'python-lxml'
+    'python-networkx-1.11'
+    'python-pkgconfig-1.1.0'
+    'python-schema'
+    'python-setuptools'
+    'python-sqlalchemy'
+    'python-toposort'
     'python-wheezy'
+    'python-yaml'
 )
-makedepends=('npm')
+makedepends=(
+    'npm'
+    'cmake'
+    'flex'
+)
 checkdepends=()
 optdepends=()
 provides=()
@@ -46,6 +57,11 @@ source=("git+https://github.com/${pkgname}/${pkgname}.git#tag=${pkgver}")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
+
+prepare() {
+  cd "$pkgname"
+  sed -r 's|print (".*\])|print (\1)|' -i hotdoc/hotdoc_dep_printer.py
+}
 
 build() {
   cd "$pkgname"
