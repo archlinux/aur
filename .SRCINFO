@@ -1,6 +1,6 @@
 pkgbase = termnote-git
 	pkgdesc = Terminal Notes Application
-	pkgver = 1.1.0.r0.8c1b94f
+	pkgver = 1.2.2.r0.a5b5605
 	pkgrel = 1
 	url = https://github.com/Terodom/termNote
 	arch = x86_64
