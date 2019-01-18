@@ -1,11 +1,11 @@
 pkgbase = python-btrfs
 	pkgdesc = Python Btrfs
-	pkgver = 9.1
+	pkgver = 10
 	pkgrel = 1
 	url = https://github.com/knorrie/python-btrfs
 	arch = any
 	license = GPL2
-	source = python-btrfs::git://github.com/knorrie/python-btrfs.git#tag=v9.1
+	source = python-btrfs::git://github.com/knorrie/python-btrfs.git#tag=v10
 	md5sums = SKIP
 
 pkgname = python-btrfs
