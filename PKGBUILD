@@ -1,46 +1,58 @@
+# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
+# Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 # Contributor: Chebotarev Sergey <sachebotarev@gmail.com>
 # Contributor: Aurélien Desbrières <ice.cube@gmx.com>
-# Maintainer: Stefan Husmann <Stefan-Husmann@t-online.de>
+# Contributor: Stefan Husmann <Stefan-Husmann@t-online.de>
 
-pkgname=fontmatrix-git
-pkgver=1177.33cc6af
-pkgrel=2
+set -u
+pkgname='fontmatrix-git'
+pkgver=0.6.0.r174.g8108e6e
+pkgrel=1
 pkgdesc='Font manager for Linux'
 arch=('i686' 'x86_64')
-url='http://oep-h.com/fontmatrix/'
+#url='http://oep-h.com/fontmatrix/'
+url="https://github.com/${pkgname}/${pkgname}"
 license=('GPL')
 depends=('qtwebkit')
-conflicts=('fontmatrix')
-provides=('fontmatrix')
 makedepends=('cmake' 'git' 'mesa')
-source=('git+https://github.com/popolon/fontmatrix.git')
+provides=("fontmatrix=${pkgver%%.r*}")
+conflicts=('fontmatrix')
+_srcdir="${pkgname%-*}"
+#source=('git+https://github.com/popolon/fontmatrix.git')
+source=('git+https://github.com/fontmatrix/fontmatrix.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-*}
-  printf "$(git rev-list --count HEAD) $(git rev-parse --short HEAD)"|sed 's+ +.+g'
+  set -u
+  cd "${_srcdir}"
+  local _ver="$(git describe --long | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g')"
+  _ver="${_ver#v}"
+  printf '%s' "${_ver}"
+  set +u
 }
 
 build() {
-  cd ${pkgname%-*}
+  set -u
+  cd "${_srcdir}"
 
-  [[ $CARCH == 'i686' ]] && _bits='32'
-  [[ $CARCH == 'x86_64' ]] && _bits='64'
-  export QTDIR=/usr
-  export QMAKESPEC=/usr/share/qt/mkspecs/linux-g++-${_bits}
+  rm -rf 'build'
+  mkdir -p 'build'
+  cd 'build'
 
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build && cd build
-
+  declare -A _bits=([i686]='32' [x86_64]='64')
+  QTDIR='/usr' \
+  QMAKESPEC="/usr/share/qt/mkspecs/linux-g++-${_bits[${CARCH}]}" \
   cmake .. -DCMAKE_BUILD_TYPE='Release' -DCMAKE_INSTALL_PREFIX='/usr'
   make
+  set +u
 }
 
 package() {
-  cd ${pkgname%-*}/build
+  set -u
+  cd "${_srcdir}/build"
 
   make DESTDIR="${pkgdir}" install
+  set +u
 }
+set +u
