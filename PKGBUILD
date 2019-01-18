@@ -3,7 +3,7 @@
 _lua_version=5.3
 
 pkgname=fennel
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="A Lua Lisp language"
@@ -24,7 +24,7 @@ install=
 changelog=
 source=("fennel-${pkgver}.tar.gz::https://github.com/bakpakin/Fennel/archive/${pkgver}.tar.gz")
 noextract=()
-md5sums=('07bb2529aa858ff7263cad665320bec2')
+md5sums=('b4bf314df6d63a15cab583a6b93e23e9')
 validpgpkeys=()
 
 package() {
