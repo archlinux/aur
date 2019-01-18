@@ -1,5 +1,5 @@
 pkgbase = arandr-gtk3-git
-	pkgdesc = Provide a simple visual front end for XRandR 1.2.
+	pkgdesc = Provide a simple visual front end for XRandR 1.2. GTK3 port.
 	pkgver = 0.1.r0.gaf211d1
 	pkgrel = 1
 	url = https://github.com/actionless/arandr
