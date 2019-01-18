@@ -3,16 +3,21 @@
 pkgbase=('statcode')
 pkgname=('statcode')
 _module='statcode'
-pkgver='1.0.0'
-pkgrel=4
-pkgdesc="Like man pages, but for HTTP status codes"
-url="https://github.com/shobrook/statcode"
-depends=('python' 'python-urwid' 'python-yaml')
+pkgver='2.0.0'
+pkgrel=1
+pkgdesc='Man pages for HTTP status codes'
+url='https://github.com/shobrook/statcode'
+depends=(
+    'python'
+    'python-urwid'
+    'python-yaml'
+)
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/s/statcode/statcode-${pkgver}.tar.gz")
-sha256sums=('973bcf53ef9beedbb6d334dea5536af28b4fd02b5a2ed4b91cf2a256860dabe3')
+source=('https://files.pythonhosted.org/packages/source/s/statcode/statcode-2.0.0.tar.gz')
+sha256sums=('cc22f598c2fb6e585d8718010c0e9d24716738ff64f0490830ec0c121372d58e')
+
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"

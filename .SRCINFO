@@ -1,7 +1,7 @@
 pkgbase = statcode
-	pkgdesc = Like man pages, but for HTTP status codes
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgdesc = Man pages for HTTP status codes
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/shobrook/statcode
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = statcode
 	depends = python
 	depends = python-urwid
 	depends = python-yaml
-	source = https://files.pythonhosted.org/packages/source/s/statcode/statcode-1.0.0.tar.gz
-	sha256sums = 973bcf53ef9beedbb6d334dea5536af28b4fd02b5a2ed4b91cf2a256860dabe3
+	source = https://files.pythonhosted.org/packages/source/s/statcode/statcode-2.0.0.tar.gz
+	sha256sums = cc22f598c2fb6e585d8718010c0e9d24716738ff64f0490830ec0c121372d58e
 
 pkgname = statcode
 	depends = python
