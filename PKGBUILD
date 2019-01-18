@@ -23,9 +23,10 @@ provides=("${pkgname%%-*}=${pkgver}")
 conflicts=("${pkgname%%-*}")
 options=('!strip')
 install='sdlmame.install'
-source=("https://github.com/mamedev/mame/releases/download/mame${pkgver//./}/mame${pkgver//./}s.zip"
-        'sdlmame.sh'
-        'extras.tar.gz'
+source=(
+  "https://github.com/mamedev/mame/releases/download/mame${pkgver//./}/mame${pkgver//./}s.zip"
+  'sdlmame.sh'
+  'extras.tar.gz'
 )
 if [ "${pkgver/u//}" != "${pkgver}" ]; then
   source[0]="https://github.com/mamedev/mame/archive/mame${pkgver//./}.zip"
@@ -48,8 +49,9 @@ prepare() {
   bsdtar -xf "${srcdir}/extras.tar.gz"
   #find . -type 'f' -not -name '*.png' | xargs perl -pi -e 's/\r\n?/\n/g'
   #find . -type 'f' -not -name 'uismall.png' | xargs perl -pi -e 's/\r\n?/\n/g'
-  sed -i 's/-Werror//' 'makefile'
-  #sed -i 's/LDFLAGS = -Wl,--warn-common/LDFLAGS = -Wl,--warn-common -Wl,-zmuldefs/' 'makefile'
+  sed -e 's/-Werror//' \
+      -e '#s/LDFLAGS = -Wl,--warn-common/LDFLAGS = -Wl,--warn-common -Wl,-zmuldefs/' \
+    -i 'makefile'
   set +u
 }
 
@@ -61,17 +63,17 @@ build() {
   case "${CARCH}" in
   'x86_64')
     echo 'Compiling for AMD64...'
-    make -j "${_nproc}" AMD64=1 PTR64=1 CC="gcc-${_gcver}" LD="g++-${_gcver}"
+    nice make -j "${_nproc}" AMD64=1 PTR64=1 CC="gcc-${_gcver}" LD="g++-${_gcver}"
     make tools AMD64=1 PTR64=1 CC="gcc-${_gcver}" LD="g++-${_gcver}"
     ;;
   'i686')
     echo 'Compiling for i686...'
-    make -j "${_nproc}" I686=1 CC="gcc-${_gcver}" LD="g++-${_gcver}"
+    nice make -j "${_nproc}" I686=1 CC="gcc-${_gcver}" LD="g++-${_gcver}"
     make tools I686=1 CC="gcc-${_gcver}" LD="g++-${_gcver}"
     ;;
   *)
     echo 'Compiling for i386...'
-    make -j "${_nproc}" PM=1 CC="gcc-${_gcver}" LD="g++-${_gcver}"
+    nice make -j "${_nproc}" PM=1 CC="gcc-${_gcver}" LD="g++-${_gcver}"
     make tools PM=1 CC="gcc-${_gcver}" LD="g++-${_gcver}"
     ;;
   esac
