@@ -12,7 +12,7 @@ arch=('x86_64')
 url='https://github.com/disks86/VK9'
 license=('zlib')
 options=(!strip !buildflags staticlibs)
-makedepends=('ninja' 'meson>=0.43' 'git' 'wine>=3.5' 'shaderc' 'mingw-w64-eigen')
+makedepends=('ninja' 'mingw-w64-meson' 'git' 'wine' 'shaderc' 'mingw-w64-eigen')
 source=($project::'git+https://github.com/Guy1524/VK9.git')
 sha256sums=('SKIP')
 
@@ -34,7 +34,7 @@ build() {
     [64]=x86_64
   )
   for arch in '64' '32'; do
-    CROSS_FILE="$pwd/build-win${arch}.txt" \
+    CROSS_FILE="$PWD/build-win${arch}.txt" \
     ${real_arch[$arch]}-w64-mingw32-meson \
         --buildtype 'release' \
         --unity off \

@@ -6,9 +6,9 @@ pkgbase = vk9-git
 	arch = x86_64
 	license = zlib
 	makedepends = ninja
-	makedepends = meson>=0.43
+	makedepends = mingw-w64-meson
 	makedepends = git
-	makedepends = wine>=3.5
+	makedepends = wine
 	makedepends = shaderc
 	makedepends = mingw-w64-eigen
 	options = !strip
