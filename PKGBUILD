@@ -2,7 +2,7 @@
 # Maintainer: Terje Larsen <terlar@gmail.com>
 pkgname=oni
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc='An IDE built around Neovim'
 arch=(x86_64)
 url="https://github.com/onivim/oni"
