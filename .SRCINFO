@@ -1,0 +1,22 @@
+pkgbase = blueberry-python3
+	pkgdesc = Bluetooth configuration tool - Python 3 instead of 2
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/linuxmint/blueberry
+	arch = any
+	license = GPL
+	depends = bluez-tools
+	depends = gnome-bluetooth
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-setproctitle
+	depends = rfkill
+	provides = blueberry
+	conflicts = blueberry
+	source = blueberry-1.2.5.tar.gz::https://github.com/linuxmint/blueberry/archive/1.2.5.tar.gz
+	source = https://github.com/linuxmint/blueberry/pull/66.patch
+	sha256sums = f9bb29a0b3db27c3d1e4d9d82c4b8656422a4ab12d07808cca6b0caaae35550f
+	sha256sums = 287e7956fc61f5dea56c282620579a26d0fbd9eec273b9f10c4c46723c32d831
+
+pkgname = blueberry-python3
+
