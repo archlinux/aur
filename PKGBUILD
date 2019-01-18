@@ -7,7 +7,7 @@ pkgdesc='An IDE built around Neovim'
 arch=(x86_64)
 url="https://github.com/onivim/oni"
 license=('MIT')
-depends=('neovim<=0.3.1' 'nodejs' 'gconf' 'libxss')
+depends=('neovim' 'nodejs' 'gconf' 'libxss')
 makedepends=('tar')
 source=("https://github.com/onivim/${pkgname}/releases/download/v${pkgver}/Oni-${pkgver}-x64-linux.tar.gz"
         "oni.sh"
@@ -19,8 +19,13 @@ sha256sums=('417dad56e06dc42edbae21591da06f381769c5efd042ac89784f90e7f90fe9ea'
             '9b09686c82ac5670ece59608288ab2124ee3147d404b77ac58c6ba332a6a148a')
 
 package() {
+  # See: https://github.com/onivim/oni/issues/2704
   install -d ${pkgdir}/opt/${pkgname}
+
   cp -R ${srcdir}/Oni-${pkgver}-x64-linux/* ${pkgdir}/opt/${pkgname}
+
+  sed -i -e 's/--embed/--embed","--headless/g' ${pkgdir}/opt/${pkgname}/resources/app/lib/browser/vendor.bundle.js
+
   install -Dm755 $srcdir/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
 
   install -Dm644 oni.desktop "$pkgdir/usr/share/applications/oni.desktop"
