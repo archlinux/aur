@@ -1,14 +1,14 @@
 pkgbase = joliebulle
 	pkgdesc = Brewing assistant and beer recipe design
 	pkgver = 3.7.3
-	pkgrel = 1
-	url = http://joliebulle.org/
+	pkgrel = 2
+	url = https://joliebulle.org/
 	arch = any
 	license = GPL3
 	depends = python
 	depends = python-pyqt5
 	depends = qt5-webkit
-	source = http://joliebulle.org/repository/joliebulle3.7.3/joliebulle-3.7.3.tar.gz
+	source = https://github.com/314r/joliebulle/releases/download/3.7.3/joliebulle-3.7.3.tar.gz
 	sha256sums = 6627f13b9e4a1cef04dd6c4b08bde3842acf473d862bf6fe9b862a668fa86a2a
 
 pkgname = joliebulle
