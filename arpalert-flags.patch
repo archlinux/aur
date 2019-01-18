@@ -1,0 +1,12 @@
+diff -Naur arpalert-2.0.12.orig/Makefile.in arpalert-2.0.12/Makefile.in
+--- arpalert-2.0.12.orig/Makefile.in	2019-01-17 19:35:48.937561658 -0500
++++ arpalert-2.0.12/Makefile.in	2019-01-17 19:37:23.018024626 -0500
+@@ -28,7 +28,7 @@
+           -Wall -O2  \
+           -DCONFIG_FILE=\"$(config_dir)/arpalert.conf\" \
+           -DPID_FILE=\"$(lock_dir)/arpalert.pid\"
+-LDFLAGS = -Wl,--export-dynamic
++LDFLAGS += -Wl,--export-dynamic
+ LIBS = @LIBS@
+ OBJECT_LIST = \
+ 	$(src_dir)/arpalert.o \
