@@ -2,8 +2,8 @@
 
 _pkgname=chibi-scheme
 pkgname=chibi-scheme-git
-pkgver=0.7.3.r82.gda84503
-pkgrel=2
+pkgver=0.7.3.r658.g677ccdce
+pkgrel=1
 pkgdesc="minimal R7RS scheme implementation for use as an extension language"
 arch=('x86_64' 'i686')
 url="https://github.com/ashinn/chibi-scheme"
@@ -33,7 +33,7 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir/usr" PREFIX="/usr" install
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
 
 check() {
