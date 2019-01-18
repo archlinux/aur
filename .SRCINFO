@@ -1,6 +1,6 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 0.34.1.1.r16.g34b25dcc8
+	pkgver = 0.34.1.1.r33.g25dd56ace
 	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
@@ -28,7 +28,7 @@ pkgbase = matrix-synapse-git
 	depends = python-unpaddedbase64
 	depends = python-canonicaljson
 	depends = python-signedjson
-	depends = python-pymacaroons-pynacl
+	depends = python-pymacaroons
 	depends = python-service-identity
 	depends = python-msgpack
 	depends = python-phonenumbers
@@ -56,7 +56,7 @@ pkgbase = matrix-synapse-git
 	md5sums = SKIP
 	md5sums = 276a99050f40601089255ea168bb7620
 	md5sums = ecd9f66fb57fe1a2e1e2df07a460a35b
-	md5sums = 6a7ed53d1891acd37b13422b78f1cfbb
+	md5sums = a5637f061caca1e55cc895daf238adfc
 
 pkgname = matrix-synapse-git
 
