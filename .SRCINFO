@@ -1,0 +1,15 @@
+pkgbase = nvman
+	pkgdesc = nvman - NVIDIA Manager for Optimus
+	pkgver = 1.0
+	pkgrel = 1
+	install = nvman.install
+	arch = any
+	license = GPL
+	depends = bumblebee
+	depends = primus
+	depends = optimus-manager
+	source = https://github.com/lans98/nvman/archive/1.0.tar.gz
+	md5sums = ced7000e6610a98c6996debdab4a9dd8
+
+pkgname = nvman
+
