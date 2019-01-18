@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=granite-git
-pkgver=5.2.2.r7.e15c7f5b
+pkgver=5.2.2.r12.7d6cae50
 pkgrel=1
 pkgdesc='Library that extends Gtk+'
 arch=(x86_64)
@@ -37,7 +37,8 @@ pkgver() {
 }
 
 build() {
-  arch-meson granite build
+  arch-meson granite build \
+    -D b_pie='false'
   ninja -C build
 }
 
