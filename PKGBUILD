@@ -2,13 +2,13 @@
 
 pkgname=openhardwaremonitor-git
 pkgver=0.8.0.r8.ge199e0c
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source program that monitors temperature sensors, fan speeds, voltages, load and clock speeds of a computer."
 arch=('any')
 url="http://openhardwaremonitor.org/"
 license=('custom')
 depends=('mono')
-makedepends=('unzip' 'msbuild')
+makedepends=('unzip')
 optdepends=()
 provides=('openhardwaremonitor')
 conflicts=('openhardwaremonitor')
@@ -20,7 +20,7 @@ source=("${pkgname}::git+https://github.com/openhardwaremonitor/openhardwaremoni
 sha256sums=('SKIP'
             '31bcfc30d137158244766d52431c0f454f3508c258cd7baa34bffe4781579d42'
             'ff9c551e5f175a751ac49a0dbb591a213f9180adf88da88cd777bb110aa2241f'
-            '49656f04924a90fff203eb8f7cb94456b2bc5fa4458c85104c811ea932fcb2f9'
+            '182a37eb59edb4f4578a6db2a06c4796b50102ab30e762223ebbe049088a8958'
             '7b4a03c97797fe5b10475a2b01f434085175bf9599c00c30beb310206b97c92a')
 
 pkgver() {
@@ -39,7 +39,7 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}"
 
-	msbuild OpenHardwareMonitor.sln /p:Configuration=Release "/p:Platform=Any CPU"
+	xbuild OpenHardwareMonitor.sln /p:Configuration=Release "/p:Platform=Any CPU"
 }
 
 package() {
