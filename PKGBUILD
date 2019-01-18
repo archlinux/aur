@@ -1,6 +1,6 @@
 # Maintainer: axionl <axionl@aosc.io>
 pkgname=minieap-gzhu-git
-pkgver=r133.b6bc7c9
+pkgver=r147.445e77e
 pkgrel=1
 pkgdesc="An open source client for ruijie on gzhu."
 arch=('x86_64')
