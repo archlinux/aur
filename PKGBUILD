@@ -2,7 +2,7 @@
 pkg="nazca"
 pkgname="python-$pkg"
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Nazca module for photonic integrated circuit design."
 arch=(any)
 url="https://nazca-design.org/"

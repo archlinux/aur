@@ -1,7 +1,7 @@
 pkgbase = python-nazca
 	pkgdesc = Nazca module for photonic integrated circuit design.
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nazca-design.org/
 	arch = any
 	license = AGPLv3+
