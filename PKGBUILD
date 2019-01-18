@@ -1,17 +1,17 @@
-# Maintainer: Christoph Vigano <mail@cvigano.de>
+# Maintainer: Arvedui <arvedui@posteo.de>
+# Contributor: Christoph Vigano <mail@cvigano.de>
 pkgname=passdmenu
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A dmenu frontend to pass with clipboard and autotype functionality for user and password."
 arch=(any)
 url="https://github.com/klaasb/passdmenu"
-license=('custom')
-provides=('passdmenu')
+license=('ISC')
 conflicts=('passdmenu-git')
 depends=('python' 'xclip' 'dmenu')
 optdepends=('xdotool: autotype functionality')
-source=("https://github.com/klaasb/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5e521b330ff6f5a4f3e2746d4bf245f1f2264044f04d783bd8f135eb16ec8b76')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/klaasb/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('879d984d28b24b3335ddcae204e7b8b9430a3b5e05ba332e53c94de7d9cb6d74')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -24,5 +24,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('5e521b330ff6f5a4f3e2746d4bf245f1f2264044f04d783bd8f135eb16ec8b76')
-sha256sums=('640bc56e7ac9a77362455a24d26dbfa825c97c163b94ec096f71ed979d21b93d')
