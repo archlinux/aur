@@ -1,0 +1,18 @@
+pkgbase = lingot-git
+	pkgdesc = LINGOT is a musical instrument tuner
+	pkgver = 1
+	pkgrel = 1
+	url = http://nongnu.org/lingot/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = intltool
+	depends = gtk3
+	provides = lingot
+	conflicts = lingot
+	source = git+https://git.savannah.nongnu.org/git/lingot.git
+	md5sums = SKIP
+
+pkgname = lingot-git
+
