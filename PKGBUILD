@@ -2,7 +2,7 @@
 _pkgname=page
 pkgname=${_pkgname}-git
 pkgrel=1
-pkgver=1.9.0
+pkgver=v1.9.0
 pkgdesc='Advanced, fast pager powered by neovim and inspired by neovim-remote'
 arch=('i686' 'x86_64')
 url="https://github.com/I60R/page"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
     checkout_project_root
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags --abbrev=0
 }
 
 package() {
