@@ -3,7 +3,7 @@
 
 _pkgname='2048term'
 pkgname="${_pkgname}-git"
-pkgver=20170730.8d361aa
+pkgver=20181213.00a8ee1
 pkgrel=1
 pkgdesc='Console version of the game "2048"'
 url='https://github.com/alewmoose/2048-in-terminal.git'
@@ -33,6 +33,6 @@ check() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	install -Dm755 2048 "${pkgdir}/usr/bin/2048t"
+	install -Dm755 build/2048-in-terminal "${pkgdir}/usr/bin/2048t"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
