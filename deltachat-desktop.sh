@@ -1,4 +1,4 @@
 #!/bin/bash
 
-electron /opt/DeltaChat/electron_app "$@"
+cd /opt/DeltaChat/electron_app && ./node_modules/electron/cli.js . "$@"
 
