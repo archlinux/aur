@@ -2,7 +2,7 @@
 pkgname=python-papis-rofi-git
 _name=${pkgname#python-}
 _name=${_name//-git}
-provides=python-papis-rofi
+provides=('python-papis-rofi')
 pkgver=0.1.1.r1.1aca0dc
 pkgrel=1
 pkgdesc="Create simple GUIs using the Rofi application (fork for papis)"
