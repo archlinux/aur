@@ -1,6 +1,6 @@
-# Maintainer: itsagoodbrain1 <itsrottenisay@gmail.com>
+# Maintainer: itsagoodbrain <itsrottenisay@gmail.com>
 
-pkgname=zettlr
+pkgname=zettlr-bin
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
