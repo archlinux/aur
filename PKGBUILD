@@ -4,7 +4,7 @@
 
 pkgname=rspamd
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=(x86_64 i686 armv7h)
@@ -98,7 +98,7 @@ backup=('etc/logrotate.d/rspamd'
 
 install=rspamd.install
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
 		"${pkgname}.tmpfile"
 		"${pkgname}.sysuser"
 		"${pkgname}.logrotate"
