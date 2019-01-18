@@ -129,7 +129,7 @@ package() {
   make -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
-  rm -rf "${pkgdir}/usr"/{share,include}/
+  rm -r "${pkgdir}/usr/share/" # include is needed for g++ compiles
   #find "${pkgdir}/" -name '*iberty*' -exec rm '{}' '+'
 
   # Move potentially conflicting stuff to version specific subdirectory
