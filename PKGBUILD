@@ -2,7 +2,7 @@
 
 pkgname=libretro-px68k-git
 pkgver=241.c36fafd
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable SHARP X68000 Emulator for PSP, Android and other platforms"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/px68k-libretro"
@@ -13,13 +13,13 @@ makedepends=('git')
 
 _libname=px68k_libretro
 _gitname=px68k-libretro
-source=("git+https://github.com/libretro/${_gitname}.git")
+source=("git+https://github.com/libretro/${_gitname}.git#commit=c36fafd35094df918f037bea333d7707e656128a")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
+#pkgver() {
+#  cd "${_gitname}"
+#  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+#}
 
 build() {
   cd "${_gitname}"
