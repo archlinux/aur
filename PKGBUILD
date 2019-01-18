@@ -7,7 +7,7 @@ pkgdesc="Utility for saving your messages and media from vk.com to JSON format"
 arch=('any')
 url="https://github.com/AbsurdlySuspicious/vk-dumper"
 license=('Apache')
-depends=('java-environment' 'bash')
+depends=('java-runtime>=8' 'bash')
 
 source=("vkdumper-bin"
         "https://github.com/AbsurdlySuspicious/vk-dumper/releases/download/$pkgver/vkdumper-$pkgver.jar")
