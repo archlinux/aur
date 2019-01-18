@@ -1,0 +1,15 @@
+pkgbase = nodejs-gitlab-ci-variables-cli
+	pkgdesc = CLI tool to set/get pipeline variables on Gitlab CI.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/temando/gitlab-ci-variables-cli#readme
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = gitlab-ci-variables-cli-3.0.0.tgz
+	source = https://registry.npmjs.org/gitlab-ci-variables-cli/-/gitlab-ci-variables-cli-3.0.0.tgz
+	sha1sums = 2ab853389e3fb184c2ac253c12b95e26c50c8db4
+
+pkgname = nodejs-gitlab-ci-variables-cli
+
