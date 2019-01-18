@@ -1,0 +1,21 @@
+pkgbase = arandr-gtk3-git
+	pkgdesc = Provide a simple visual front end for XRandR 1.2.
+	pkgver = 0.1.r0.gaf211d1
+	pkgrel = 1
+	url = https://github.com/actionless/arandr
+	install = arandr-gtk3-git.install
+	arch = any
+	license = GPL3
+	makedepends = docutils
+	makedepends = git
+	depends = python-gobject
+	depends = desktop-file-utils
+	depends = xorg-xrandr
+	provides = arandr
+	conflicts = arandr
+	conflicts = arandr-git
+	source = git+https://github.com/actionless/arandr
+	md5sums = SKIP
+
+pkgname = arandr-gtk3-git
+
