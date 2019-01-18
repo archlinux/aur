@@ -1,26 +1,14 @@
 pkgbase = bloop
-	pkgdesc = Scala build server and command-line tool for faster developer workflows
-	pkgver = 1.0.0
+	pkgdesc = Scala build server and command-line tool for fast developer workflows
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://scalacenter.github.io/bloop/
 	arch = any
 	license = Apache
 	depends = scala
 	depends = python
-	source = bloop-coursier::https://github.com/alexarchambault/coursier/raw/v1.1.0-M3/coursier
-	source = bloop-nailgun::https://raw.githubusercontent.com/scalacenter/nailgun/0c8b937b/pynailgun/ng.py
-	source = bloop-zsh::https://raw.githubusercontent.com/scalacenter/bloop/v1.0.0/etc/zsh/_bloop
-	source = bloop-bash::https://raw.githubusercontent.com/scalacenter/bloop/v1.0.0/etc/bash/bloop
-	source = https://raw.githubusercontent.com/scalacenter/bloop/v1.0.0/etc/systemd/bloop.service
-	source = https://raw.githubusercontent.com/scalacenter/bloop/v1.0.0/etc/xdg/bloop.desktop
-	source = https://raw.githubusercontent.com/scalacenter/bloop/v1.0.0/etc/xdg/bloop.png
-	md5sums = 8028c8a28e2aae9e43d22dcfd9d186c9
-	md5sums = b4052f86e77f27e6bc073b80ab8d3fe5
-	md5sums = f882aec92adcb905881f2c472c95f7e9
-	md5sums = b35d784c7c37dba285ac7162db8a7119
-	md5sums = 272426035e8579c9d45feb13c7e6c86b
-	md5sums = 63f8a33f8493642037b0c6d0f851bbf8
-	md5sums = 763e573c631a10759974e7ac8c6c443f
+	source = https://github.com/scalacenter/bloop/releases/download/v1.2.3/install.py
+	md5sums = 784a5b8cbfdb8df1cee1b7e7b3f28a41
 
 pkgname = bloop
 
