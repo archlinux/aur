@@ -2,16 +2,16 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 # Contributor: Yamakaky <yamakaky@yamaworld.fr>
 
-pkgname='rust-src'
-pkgver=1.31.1
-pkgrel=2
+pkgname=rust-src
+pkgver=1.32.0
+pkgrel=1
 pkgdesc='rustc source'
 arch=('any')
 url='http://rust-lang.org'
 license=('Apache' 'MIT')
 options=(!strip)
 source=("rust-${pkgver}.tar.gz::https://github.com/rust-lang/rust/archive/${pkgver}.tar.gz")
-sha256sums=('954342974ed53f366bfdd39c9b59d02beb949364985fd0dcf9a1b5919ed52341')
+sha256sums=('3c1286650a9f15b41c3fe03e7f0b49ca92ce0f9383f9a5dfdf4f2e4ce768ac16')
 
 prepare() {
   cd "rust-${pkgver}"
