@@ -1,7 +1,7 @@
 pkgbase = zettlr
 	pkgdesc = A markdown editor for writing academic texts and taking notes
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL
