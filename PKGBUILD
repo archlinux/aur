@@ -40,7 +40,7 @@ package() {
   mv "$pkgdir"/usr/lib/bloop/zsh/_bloop "$pkgdir"/usr/share/zsh/site-functions/
   mv "$pkgdir"/usr/lib/bloop/bash/bloop "$pkgdir"/etc/bash_completion.d/
 
-  # copy systemd service
+  # install systemd service
   mkdir -p "$pkgdir"/usr/lib/systemd/user
   mv "$pkgdir"/usr/lib/bloop/systemd/bloop.service "$pkgdir"/usr/lib/systemd/user/
 
