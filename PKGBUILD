@@ -90,7 +90,10 @@ build(){
       --prefix='/usr'
   fi
   local _mflags=()
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  local _nproc="$(nproc)"
+  if [ "${_nproc}" -gt 8 ]; then
+    _nproc=8
+  fi
   if [ -z "${MAKEFLAGS:=}" ] || [ "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
     _mflags+=('-j' "${_nproc}")
   fi
