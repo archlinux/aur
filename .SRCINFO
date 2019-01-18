@@ -1,0 +1,25 @@
+pkgbase = openhardwaremonitor-git
+	pkgdesc = An open source program that monitors temperature sensors, fan speeds, voltages, load and clock speeds of a computer.
+	pkgver = 0.8.0.r8.ge199e0c
+	pkgrel = 1
+	url = http://openhardwaremonitor.org/
+	arch = any
+	license = custom
+	makedepends = unzip
+	makedepends = msbuild
+	depends = mono
+	provides = openhardwaremonitor
+	conflicts = openhardwaremonitor
+	source = openhardwaremonitor-git::git+https://github.com/openhardwaremonitor/openhardwaremonitor.git
+	source = fix-copy-commands.patch
+	source = LICENSE
+	source = openhardwaremonitor.desktop
+	source = openhardwaremonitor.png
+	sha256sums = SKIP
+	sha256sums = 31bcfc30d137158244766d52431c0f454f3508c258cd7baa34bffe4781579d42
+	sha256sums = ff9c551e5f175a751ac49a0dbb591a213f9180adf88da88cd777bb110aa2241f
+	sha256sums = 49656f04924a90fff203eb8f7cb94456b2bc5fa4458c85104c811ea932fcb2f9
+	sha256sums = 7b4a03c97797fe5b10475a2b01f434085175bf9599c00c30beb310206b97c92a
+
+pkgname = openhardwaremonitor-git
+

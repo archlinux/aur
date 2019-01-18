@@ -1,0 +1,14 @@
+diff --git a/OpenHardwareMonitor.csproj b/OpenHardwareMonitor.csproj
+index 35e749b..8a177f4 100644
+--- a/OpenHardwareMonitor.csproj
++++ b/OpenHardwareMonitor.csproj
+@@ -301,7 +301,7 @@
+   <PropertyGroup>
+     <PreBuildEvent>
+     </PreBuildEvent>
+-    <PostBuildEvent>copy "$(ProjectDir)External\*.*" "$(TargetDir)"
+-copy "$(ProjectDir)Licenses\*.*" "$(TargetDir)"</PostBuildEvent>
++    <PostBuildEvent>cp "$(ProjectDir)External"/* "$(TargetDir)"
++cp "$(ProjectDir)Licenses"/* "$(TargetDir)"</PostBuildEvent>
+   </PropertyGroup>
+ </Project>

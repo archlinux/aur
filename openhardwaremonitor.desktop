@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Open Hardware Monitor
+Comment=Program that monitors temperature sensors, fan speeds, voltages, load and clock speeds of a computer.
+Exec=mono /opt/openhardwaremonitor/OpenHardwareMonitor.exe %u
+Icon=/opt/openhardwaremonitor/openhardwaremonitor.png
+Terminal=false
+Type=Application
+Categories=System;
