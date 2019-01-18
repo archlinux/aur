@@ -3,7 +3,8 @@
 pkgbase=python-requests-html
 _pyname=requests-html
 pkgname=('python-requests-html')
-depends=('python' 'python-requests' 'python-pyquery' 'python-fakeuseragent' 'python-parse' 'python-beautifulsoup4' 'python-w3lib' 'python-pyppeteer')
+depends=('python' 'python-requests' 'python-pyquery' 'python-fake-useragent' 
+'python-parse' 'python-beautifulsoup4' 'python-w3lib' 'python-pyppeteer')
 makedepends=('python-setuptools')
 pkgver=0.9.0
 pkgrel=1
@@ -19,7 +20,6 @@ package() {
   python setup.py install -O1 --root="${pkgdir}"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
-
 }
 
 # vim:set et sw=2 ts=2 tw=79:
