@@ -1,0 +1,29 @@
+pkgbase = rosie-git
+	pkgdesc = Rosie Pattern Language (RPL) and the Rosie Pattern Engine.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/rosie-pattern-language/rosie
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = readline
+	provides = rosie
+	source = git+https://gitlab.com/rosie-pattern-language/rosie
+	source = git+https://github.com/mpeterv/argparse.git#commit=412e6aca393e365f92c0315dfe50181b193f1ace
+	source = git+https://gitlab.com/rosie-pattern-language/lua.git#commit=afa03c0331e8907edc47fa75d26c338b22c136ad
+	source = git+https://gitlab.com/rosie-pattern-language/lua-cjson.git#commit=1428c9c1aaad56a6342e6e8b65245a56bc10ef71
+	source = git+https://gitlab.com/rosie-pattern-language/lua-modules.git#commit=8ac06333311ea07f9b4ec59f6a1997156fe631a6
+	source = git+https://gitlab.com/rosie-pattern-language/lua-readline.git#commit=4aedcbdb991055d00505752dca86f57fff90bd95
+	source = git+https://gitlab.com/rosie-pattern-language/rosie-lpeg.git#commit=8f6cf926ffc6c63dcd97240a055acc4340637a46
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rosie-git
+
