@@ -3,7 +3,7 @@
 
 pkgname=java-openjdk-ea-bin
 _majorver=12
-_buildver=27
+_buildver=28
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJDK ${_majorver} Early-Access Build."
@@ -20,7 +20,7 @@ provides=(
   "java-runtime-headless-openjdk=${_majorver}"
 )
 source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-x64_bin.tar.gz")
-sha256sums=('9fc017547c3113abea34433ec9b1d6f1710712442939ef4b690c1e502de2d2cb')
+sha256sums=('c08d03b70016ee526c61aad1c455449381b6a2fde613e1407ec368c7a29a223f')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
