@@ -1,6 +1,6 @@
-# Maintainer : Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
-# Contributor : Mark Coolen <mark ddoott coolen aatt gmail ddoott ccoomm nniiccee!>
-# Contributor : Florian Freund <florian 88 freund aatt gmail ddoott ccoomm>
+# Maintainer: Florian Freund <florian 88 freund aatt gmail ddoott ccoomm>
+# Contributor: Mark Coolen <mark ddoott coolen aatt gmail ddoott ccoomm nniiccee!>
+# Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
