@@ -1,0 +1,28 @@
+pkgbase = python-pymacaroons
+	pkgdesc = Macaroon library for Python
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pymacaroons-pynacl/
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-six
+	makedepends = python-pynacl
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = python2-six
+	makedepends = python2-pynacl
+	source = https://pypi.io/packages/source/p/pymacaroons/pymacaroons-0.13.0.tar.gz
+	sha256sums = 1e6bba42a5f66c245adf38a5a4006a99dcc06a0703786ea636098667d42903b8
+
+pkgname = python-pymacaroons
+	depends = python
+	depends = python-pynacl
+	depends = python-six
+
+pkgname = python2-pymacaroons
+	depends = python2
+	depends = python2-pynacl
+	depends = python2-six
+
