@@ -1,7 +1,7 @@
 # Maintainer: Raimar Buehmann (raimar)
 
 pkgname=lxpanel-git
-pkgver=0.9.3.r2441.20180305
+pkgver=0.9.3.r2443.20190113
 pkgrel=1
 pkgdesc='Lightweight X11 desktop panel for LXDE'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=('lxpanel')
 conflicts=('lxpanel')
 optdepends=('wireless_tools: netstat plugin')
 source=(
-	$pkgname::git+http://git.lxde.org/git/lxde/lxpanel.git
+	$pkgname::git+https://git.lxde.org/git/lxde/lxpanel.git
 #	$pkgname::git+http://git.lxde.org/git/lxde/lxpanel.git#commit=66b35a6e2d9d52a4bf9be326c132e41e34eda71e
 #	$pkgname::git+git://git.lxde.org/git/lxde/lxpanel.git
 #	lxpanel-volumealsa-volume-mapping.patch
