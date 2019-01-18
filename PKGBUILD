@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=oomox-git
-pkgver=1.10
+pkgver=1.10.r45.gd9475317
 pkgrel=1
 pkgdesc="Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
@@ -25,8 +25,10 @@ source=(
 	"git+https://github.com/themix-project/base16_mirror.git#branch=master"
 	"git+https://github.com/numixproject/numix-icon-theme.git#branch=master"
 	"git+https://github.com/numixproject/numix-folders.git#branch=master"
+	"git+https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git#branch=master"
 )
 md5sums=(
+	"SKIP"
 	"SKIP"
 	"SKIP"
 	"SKIP"
@@ -55,7 +57,7 @@ depends=(
 	'zip'  # oomoxify
 	'polkit'  # oomoxify
 	'imagemagick'  # gnome-colors
-	'parallel'  # materia, arc
+	'parallel'  # materia
 	'optipng'  # materia, arc
 	'python-pillow'  # import_pil
 	'python-pystache'  #  base16_format
@@ -109,6 +111,7 @@ prepare(){
 	git config submodule.base16_mirror.url $srcdir/base16_mirror
 	git config submodule.numix-folders.url $srcdir/numix-folders
 	git config submodule.numix-icon-theme.url $srcdir/numix-icon-theme
+	git config submodule.papirus-icon-theme.url $srcdir/papirus-icon-theme
 	git submodule update
 }
 
