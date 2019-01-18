@@ -2,7 +2,7 @@
 
 pkgname=pacman-kernel-install-git
 pkgver=r1.79dfc1c
-pkgrel=3
+pkgrel=4
 pkgdesc='pacman hooks for kernel-install'
 url='https://github.com/crazyh/pacman-kernel-install'
 license=('GPL')
@@ -20,5 +20,7 @@ pkgver() {
 }
 
 package() {
-	install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" "${srcdir}/*.hook"
+	cd "${pkgname%-git}"
+
+	install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" *.hook
 }
