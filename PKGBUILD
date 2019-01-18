@@ -17,7 +17,7 @@
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 pkgname=hotdoc
 pkgver=0.8.103
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="HotDoc: the tastiest API documentation system"
 arch=('any')
@@ -33,13 +33,13 @@ depends=(
     'python-networkx-1.11'
     'python-pkgconfig-1.1.0'
     'python-schema'
-    'python-setuptools'
     'python-sqlalchemy'
     'python-toposort'
     'python-wheezy'
     'python-yaml'
 )
 makedepends=(
+    'python-setuptools'
     'npm'
     'cmake'
     'flex'
