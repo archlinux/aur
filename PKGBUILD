@@ -3,45 +3,42 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=orca-git
-pkgver=r8737+ga8748b197
+pkgver=3_31_4.r2.g95154f3a9
 pkgrel=1
 pkgdesc="Screen reader for individuals who are blind or visually impaired (development version)"
 arch=(any)
 license=('LGPL')
-url="https://gitlab.gnome.org/GNOME/orca.git"
-source=(${pkgname}::'git+https://gitlab.gnome.org/GNOME/orca.git')
-install=orca-git.install
-options=('!libtool')
+url="https://wiki.gnome.org/Projects/Orca"
 depends=('gtk3'
 	'at-spi2-atk'
-	'python-atspi' # -git
+	'python-atspi'
 	'python-dbus'
 	'python-xdg'
 	'speech-dispatcher'
 	'liblouis'
 	'brltty'
 	'xorg-xmodmap'
-	'hicolor-icon-theme'
-	'gsettings-desktop-schemas')
+	'gsettings-desktop-schemas'
+	'gst-plugins-base'
+	'gst-plugins-good')
 makedepends=('git'
-	'gnome-common'
-	'pkgconfig'
 	'itstool'
 	'intltool'
-	'gnome-doc-utils'
 	'yelp-tools')
 provides=('orca')
 conflicts=('orca')
+source=(${pkgname}::'git+https://gitlab.gnome.org/GNOME/orca.git')
 md5sums=('SKIP')
 
 pkgver() {
 	cd ${pkgname}
-	echo r$(git rev-list --count HEAD)+g$(git rev-parse --short HEAD)
+	# cutting off 'ORCA_' prefix that presents in the git tag	
+	printf "%s" "$(git describe --long | sed 's/^ORCA_//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	PYTHON=/usr/bin/python ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+	./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 }
 
