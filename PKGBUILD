@@ -101,6 +101,7 @@ build() {
       --enable-clocale='gnu' \
       --enable-languages='c,c++,fortran,objc,obj-c++' \
       --enable-shared \
+      --enable-version-specific-runtime-libs \
       --infodir='/usr/share/info' \
       --libdir='/usr/lib' \
       --libexecdir='/usr/lib' \
@@ -129,16 +130,13 @@ package() {
   make -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
-  rm -r "${pkgdir}/usr/share/" # include is needed for g++ compiles
-  #find "${pkgdir}/" -name '*iberty*' -exec rm '{}' '+'
+  rm -rf "${pkgdir}/usr/share/man/man7"
+  rm -rf "${pkgdir}/usr/share/locale"
+  rmdir "${pkgdir}/usr/include" "${pkgdir}/usr/share/info"
 
-  # Move potentially conflicting stuff to version specific subdirectory
-  #case "${CARCH}" in
-  #'x86_64') mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" ;;
-  #esac
-  mv "${pkgdir}/usr/lib"/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
+  mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
 
-  # Create links for gcc- build environment (useful for CUDA)
+  # Create links for gcc build environment (useful for CUDA)
   mkdir -p "${pkgdir}/opt/gcc-${_pkgver}"
   ln -s "/usr/bin/gcc-${_pkgver}" "${pkgdir}/opt/gcc-${_pkgver}/gcc"
   ln -s "/usr/bin/g++-${_pkgver}" "${pkgdir}/opt/gcc-${_pkgver}/g++"
