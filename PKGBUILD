@@ -1,18 +1,19 @@
 # Contributor: 
 
 pkgname=v2ray-plugin
-pkgver=20190114
+pkgver=1.0
 pkgrel=1
+_commit_ver=8cea1a3
 pkgdesc='Yet another SIP003 plugin for shadowsocks, based on v2ray'
 arch=('x86_64')
 url='https://github.com/shadowsocks/v2ray-plugin'
 license=('MIT')
 #depends=('' '')
-makedepends=('go')
+#makedepends=('go')
 conflicts=('v2ray-plugin-git')
-source=("https://github.com/shadowsocks/v2ray-plugin/releases/download/v$pkgver/v2ray-plugin-linux-amd64-$pkgver.tar.gz"
+source=("https://github.com/shadowsocks/v2ray-plugin/releases/download/v$pkgver/v2ray-plugin-linux-amd64-$_commit_ver.tar.gz"
         "https://raw.githubusercontent.com/shadowsocks/v2ray-plugin/master/LICENSE")
-sha256sums=('c0b07d577e271738ac51e68ddeb3fc724adad645f09c92ecdc3ea97faaaeb74a'
+sha256sums=('03085f4b20437c289e1c901fe394891ad329e3bfada5465abbda2ec58ffc70ef'
             '846f705610ae389786d42d92b09f5c5d9a14b144eb52b358fdb3e3051dbb00b2')
 package() {
   install -Dm755 v2ray-plugin_linux_amd64  ${pkgdir}/usr/bin/v2ray-plugin
