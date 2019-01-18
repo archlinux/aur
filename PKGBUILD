@@ -7,7 +7,7 @@ depends=('python' 'python-requests' 'python-pyquery' 'python-fake-useragent'
 'python-parse' 'python-beautifulsoup4' 'python-w3lib' 'python-pyppeteer')
 makedepends=('python-setuptools')
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML Parsing for Humans"
 arch=('any')
 url="http://html.python-requests.org/"
