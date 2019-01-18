@@ -3,7 +3,7 @@
 
 pkgname=fselect-git
 pkgrel=1
-pkgver=0.5.2.r0.gd354cff
+pkgver=0.5.2.r5.g487c03c
 url="https://github.com/jhspetersson/fselect"
 license=("MIT")
 arch=(i686 x86_64)
