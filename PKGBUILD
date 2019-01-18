@@ -20,5 +20,5 @@ pkgver() {
 }
 
 package() {
-	install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" *.hook
+	install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" "${srcdir}/*.hook"
 }
