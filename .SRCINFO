@@ -1,0 +1,19 @@
+pkgbase = abrus-gtk-theme
+	pkgdesc = Abrus is a stylish Design theme for GTK 3, GTK 2 and Gnome-Shell
+	pkgver = 30.90db2d5
+	pkgrel = 1
+	url = https://vinceliuice.github.io/theme-abrus.html
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = patch
+	depends = gtk3
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	source = Install.patch
+	source = git+https://github.com/vinceliuice/Abrus-gtk-theme.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = abrus-gtk-theme
+
