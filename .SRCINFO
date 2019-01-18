@@ -1,0 +1,21 @@
+pkgbase = peldd-git
+	pkgdesc = A tool for listing shared object dependencies of a portable executable (PE)
+	pkgver = r19.5b07cb3
+	pkgrel = 1
+	url = https://github.com/gsauthof/pe-util
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = boost
+	provides = peldd
+	conflicts = peldd
+	source = peldd::git://github.com/gsauthof/pe-util
+	source = git://github.com/trailofbits/pe-parse
+	source = 0001-Fix-search-paths-for-Arch.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 892f4cbac38d0c9edcb6342f260a6002
+
+pkgname = peldd-git
+

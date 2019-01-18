@@ -1,0 +1,29 @@
+From 303d06dabe472bbdaeda6b70740b34baffd8f8d1 Mon Sep 17 00:00:00 2001
+From: Mikhail Rudenko <mike.rudenko@gmail.com>
+Date: Fri, 18 Jan 2019 17:59:19 +0300
+Subject: [PATCH] Fix search paths for Arch
+
+---
+ peldd.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/peldd.cc b/peldd.cc
+index d8ba233..87c517b 100644
+--- a/peldd.cc
++++ b/peldd.cc
+@@ -258,10 +258,10 @@ struct Arguments {
+   deque<string> search_path;
+   bool no_default_search_path {false};
+   const array<const char*, 1> mingw64_search_path = {{
+-    "/usr/x86_64-w64-mingw32/sys-root/mingw/bin"
++    "/usr/x86_64-w64-mingw32/bin"
+   }};
+   const array<const char*, 1> mingw64_32_search_path = {{
+-    "/usr/i686-w64-mingw32/sys-root/mingw/bin"
++    "/usr/i686-w64-mingw32/bin"
+   }};
+   unordered_set<string> whitelist;
+   const array<const char*, 36> default_whitelist = {{
+-- 
+2.20.1
+
