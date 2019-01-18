@@ -2,7 +2,7 @@
 
 pkgname=pacman-kernel-install-git
 pkgver=r1.79dfc1c
-pkgrel=2
+pkgrel=3
 pkgdesc='pacman hooks for kernel-install'
 url='https://github.com/crazyh/pacman-kernel-install'
 license=('GPL')

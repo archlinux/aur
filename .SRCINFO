@@ -1,7 +1,7 @@
 pkgbase = pacman-kernel-install-git
 	pkgdesc = pacman hooks for kernel-install
 	pkgver = r1.79dfc1c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/crazyh/pacman-kernel-install
 	arch = any
 	license = GPL
