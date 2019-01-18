@@ -1,0 +1,16 @@
+pkgbase = hadolint
+	pkgdesc = Dockerfile linter, validate inline bash, written in Haskell
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://github.com/hadolint/hadolint/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = stack
+	conflicts = hadolint-bin
+	conflicts = hadolint-git
+	source = git+https://github.com/lukasmartinelli/hadolint.git#tag=v1.15.0
+	sha256sums = SKIP
+
+pkgname = hadolint
+
