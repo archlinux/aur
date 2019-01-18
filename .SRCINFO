@@ -1,13 +1,14 @@
 pkgbase = python-pyqtchart
 	pkgdesc = Python bindings for the Qt Charts library
 	pkgver = 5.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.riverbankcomputing.com/software/pyqtchart/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = python-pyqt5
 	depends = qt5-charts
+	depends = sip
 	source = https://sourceforge.net/projects/pyqt/files/PyQtChart/PyQtChart-5.11.3/PyQtChart_gpl-5.11.3.tar.gz
 	sha256sums = 89abf5e48c79c4db42a01f80433bb97d64b117f801be5e4cb0b9839efc99472f
 

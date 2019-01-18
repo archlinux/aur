@@ -3,10 +3,10 @@
 
 pkgname=python-pyqtchart
 pkgver=5.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the Qt Charts library"
 url="https://www.riverbankcomputing.com/software/pyqtchart/"
-depends=('python-pyqt5' 'qt5-charts')
+depends=('python-pyqt5' 'qt5-charts' 'sip')
 license=('GPL3')
 arch=('i686' 'x86_64')
 source=(
