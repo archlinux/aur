@@ -7,7 +7,7 @@ pkgbase = phgen-git
 	license = Apache
 	makedepends = sbt
 	makedepends = git
-	depends = java-environment
+	depends = java-runtime>=8
 	depends = bash
 	provides = phgen
 	conflicts = phgen
