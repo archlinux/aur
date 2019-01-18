@@ -7,7 +7,7 @@ pkgdesc="Pattern-based random phrase generation using WordNet"
 arch=('any')
 url="https://github.com/AbsurdlySuspicious/PhraseGen"
 license=('Apache')
-depends=('java-environment' 'bash')
+depends=('java-runtime>=8' 'bash')
 provides=('phgen')
 conflicts=('phgen-git')
 

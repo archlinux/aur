@@ -5,7 +5,7 @@ pkgbase = phgen
 	url = https://github.com/AbsurdlySuspicious/PhraseGen
 	arch = any
 	license = Apache
-	depends = java-environment
+	depends = java-runtime>=8
 	depends = bash
 	provides = phgen
 	conflicts = phgen-git
