@@ -5,6 +5,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="nvman - NVIDIA Manager for Optimus"
 arch=('any')
+url=https://github.com/lans98/nvman
 license=('GPL')
 depends=('bumblebee' 'primus' 'optimus-manager')
 optdepends=()
