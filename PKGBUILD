@@ -1,7 +1,7 @@
 # Maintainer: Marcs <aur (at) mg.odd.red>
 # Contributor: OmeGa <omega [U+0040] mailoo [.] org>
 # Contributor: Vinycius Maia <suportevg@uol.com.br>
-# Contributor: GI_Jack <iamjacksemail@hackermail.com>
+# Contributor: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=firefox-extension-greasemonkey
 _file=965808
