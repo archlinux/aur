@@ -1,0 +1,33 @@
+# Maintainer: Iker <ikersanditrejo@gmail.com>
+# Maintainer: Tucker Boniface <tucker@boniface.tech>
+# Maintainer: Jguer <joaogg3@gmail.com>
+pkgname="yay-powerpill-git"
+_pkgname="yay-powerpill"
+pkgver=9.0.1.r0.gd3a9082
+pkgrel=1
+pkgdesc="Yet another yogurt. Pacman (powerpill) wrapper and AUR helper written in go. (development version)"
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url="https://github.com/Jguer/yay"
+license=('GPL')
+options=('!strip' '!emptydirs')
+depends=('pacman>=5.1' 'git' 'sudo' 'powerpill')
+makedepends=('go')
+conflicts=('yay')
+provides=('yay')
+source=("yay-powerpill::git+https://github.com/IkerST/yay.git#branch=master")
+md5sums=("SKIP")
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$srcdir/$_pkgname"
+  make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX=/usr
+}
+
+package() {
+  cd "$srcdir/$_pkgname"
+  make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX=/usr install
+}
