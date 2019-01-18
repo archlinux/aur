@@ -1,6 +1,6 @@
 pkgbase = omniorbpy
 	pkgdesc = omniORB is a CORBA object request broker for C++ and Python.
-	pkgver = 4.2.0
+	pkgver = 4.2.3
 	pkgrel = 1
 	url = http://omniorb.sourceforge.net/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = omniorbpy
 	provides = pyorbit
 	conflicts = omniorbpy-omg
 	conflicts = pyorbit
-	source = http://downloads.sourceforge.net/omniorb/omniORBpy-4.2.0.tar.bz2
-	md5sums = 50ecde547c865aad2074d30224779412
+	source = http://downloads.sourceforge.net/omniorb/omniORBpy-4.2.3.tar.bz2
+	sha256sums = 5c601888e57c7664324357a1be50f2739c468057b46fba29821a25069fc0aee5
 
 pkgname = omniorbpy
 
