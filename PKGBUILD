@@ -1,8 +1,9 @@
 # Maintainer: itsagoodbrain1 <itsrottenisay@gmail.com>
+# Co-Maintainer: therojam <archlinux@therojam.xyz>
 
 pkgname=zettlr
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url="https://www.zettlr.com"
@@ -15,5 +16,3 @@ package() {
 	mv $srcdir/opt $pkgdir/opt
 	mv $srcdir/usr $pkgdir/usr
 }
-
-
