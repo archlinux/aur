@@ -5,14 +5,14 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.6.macOS.alpha1.53.gfc887771
+pkgver=1.0.6.macOS.alpha1.126.g07e03f00
 pkgrel=1
-pkgdesc="C++ re-write of tablet notetaking app Xournal"
+pkgdesc='Xournal++ is a handwriting Notetaking software with PDF annotation support. Written in C++ with plattform independent GTK, supporting Linux, e.g. Ubuntu, Debian, Arch, Suse, macOS and Windows 10. Supports Pen input like Wacom Tablets.'
 arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL-2.0')
 makedepends=('git' 'cmake' 'gettext')
-depends=('texlive-core' 'gtk3' 'glib2' 'desktop-file-utils' 'poppler-glib' 'libxml2')
+depends=('texlive-bin' 'gtk3' 'glib2' 'desktop-file-utils' 'poppler-glib' 'libxml2')
 optdepends=('curl: recording support'
             'vlc: recording support'
             'alsa-utils: recording support')
@@ -37,7 +37,7 @@ prepare() {
 	else
 		configdir="$XDG_CONFIG_HOME"
 	fi
-	cmake -DENABLE_MATHTEX="ON" -DCMAKE_INSTALL_PREFIX="/usr/" -DDEV_CONFIG_DIR="$configdir/xournalpp"  ..
+	cmake -DENABLE_TEX="ON" -DCMAKE_INSTALL_PREFIX="/usr/" -DDEV_CONFIG_DIR="$configdir/xournalpp" ..
 }
 
 build() {

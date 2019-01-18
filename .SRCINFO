@@ -1,6 +1,6 @@
 pkgbase = xournalpp-git
 	pkgdesc = C++ re-write of tablet notetaking app Xournal
-	pkgver = 1.0.6.macOS.alpha1.53.gfc887771
+	pkgver = 1.0.6.macOS.alpha1.126.g07e03f00
 	pkgrel = 1
 	url = https://github.com/xournalpp/xournalpp
 	install = xournalpp.install
@@ -10,7 +10,7 @@ pkgbase = xournalpp-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = gettext
-	depends = texlive-core
+	depends = texlive-bin
 	depends = gtk3
 	depends = glib2
 	depends = desktop-file-utils
