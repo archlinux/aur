@@ -4,7 +4,7 @@
 
 _gitname='sigrok-cli'
 pkgname="${_gitname}-git"
-pkgver=0.5.0.r86.g15a14bf
+pkgver=0.6.0.r58.gb5c8f3a
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, CLI client (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -21,7 +21,7 @@ pkgver() {
   cd "${srcdir}/${_gitname}"
   (
     set -o pipefail
-    git describe --long 2>/dev/null | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/sigrok.cli.//" ||
+    git describe --long --exclude sigrok-cli-unreleased 2>/dev/null | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/sigrok.cli.//" ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }

@@ -1,6 +1,6 @@
 pkgbase = sigrok-cli-git
 	pkgdesc = Client software that supports various hardware logic analyzers, CLI client (git version)
-	pkgver = 0.5.0.r86.g15a14bf
+	pkgver = 0.6.0.r58.gb5c8f3a
 	pkgrel = 1
 	url = http://www.sigrok.org/wiki/Sigrok-cli
 	arch = armv6h
