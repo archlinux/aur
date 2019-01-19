@@ -8,6 +8,7 @@ pkgbase = kakoune-git
 	license = custom:unlicense
 	makedepends = git
 	depends = ncurses
+	optdepends = aspell: spell checking support
 	optdepends = clang: add command for C/CPP insert mode completion support
 	optdepends = ranger: provides file explorer functionality
 	optdepends = tmux: tabbing support

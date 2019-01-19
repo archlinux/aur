@@ -10,6 +10,7 @@ depends=(
   'ncurses'
 )
 optdepends=(
+  'aspell: spell checking support'
   'clang: add command for C/CPP insert mode completion support'
   'ranger: provides file explorer functionality'
   'tmux: tabbing support'
