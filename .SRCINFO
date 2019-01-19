@@ -1,9 +1,8 @@
 pkgbase = headmaster-git
 	pkgdesc = translate c header files to another language
-	pkgver = 0.28.r7.geab9670
+	pkgver = 0.28.r15.g96c3387
 	pkgrel = 1
 	url = https://github.com/ytomino/headmaster
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git

@@ -1,10 +1,10 @@
 pkgname=headmaster-git
-pkgver=0.28.r7.geab9670
+pkgver=0.28.r15.g96c3387
 pkgrel=1
 
 pkgdesc='translate c header files to another language'
 url='https://github.com/ytomino/headmaster'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('BSD')
 
 # XXX -jN where N > 1 causes race condition failures
@@ -41,8 +41,7 @@ build() {
 }
 
 package() {
-    cd headmaster
-    install -Dm0755 main/bin/main.native "$pkgdir"/usr/bin/headmaster
-    install -Dm0644 main/man1/headmaster.1 "$pkgdir"/usr/share/man/man1/headmaster.1
-    install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+    cd headmaster/main
+    make BINDIR="$pkgdir"/bin MANDIR="$pkgdir"/share/man install
+    install -Dm0644 "$srcdir"/headmaster/LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
