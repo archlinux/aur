@@ -1,10 +1,11 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Contributor: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _gituser="pitkali"
 _gitrepo="pos-tip"
 
 pkgname=emacs-pos-tip-git
-pkgver=r34.051e08f
+pkgver=0.4.6.8.g051e08f
 pkgrel=1
 pkgdesc="Show tooltip at point"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -19,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe --tags | tr - .
 }
 
 build() {
@@ -29,6 +30,6 @@ build() {
 
 package() {
   cd "$_gitrepo"
-  install -d  "$pkgdir"/usr/share/emacs/site-lisp/${_gitrepo}/
-  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/${_gitrepo}/
+  install -d  "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp
 }
