@@ -133,9 +133,7 @@ case ${_piver} in
 ;;
 4)
   # yuck; here lies tinkerboard until I find a better way of generalizing this
-  _toolchain_name=armv7-rpi2-linux-gnueabihf
-  _toolchain="/opt/gcc-linaro-7.1.1-2017.08-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
-  #_toolchain="/opt/gcc-arm-8.2-2018.08-x86_64-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
+  _toolchain="/opt/gcc-arm-8.2-2019.01-x86_64-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
   _use_mesa=true
   _mkspec="linux-tinker-g++"
 ;;
