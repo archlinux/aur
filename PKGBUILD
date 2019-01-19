@@ -2,7 +2,7 @@
 
 pkgname=kicad-packages3d-git
 _pkgname=kicad-packages3D
-pkgver=r2019.01.12.9fe47cc
+pkgver=r2019.01.18.430092b
 pkgrel=1
 pkgdesc="KiCad component 3D model libraries from the official git repo"
 arch=('any')
