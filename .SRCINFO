@@ -1,6 +1,6 @@
 pkgbase = vim-jellybeans-git
 	pkgdesc = A colorful, dark color scheme, inspired by ir_black and twilight.
-	pkgver = v1.5.29.gf931895
+	pkgver = 1.6.18.gddf78cf
 	pkgrel = 1
 	url = https://github.com/nanotech/jellybeans.vim
 	arch = any

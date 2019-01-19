@@ -2,7 +2,7 @@
 
 pkgname='vim-jellybeans-git'
 _repository='jellybeans.vim'
-pkgver=v1.5.29.gf931895 # see pkgver()
+pkgver=1.6.18.gddf78cf # see pkgver()
 pkgrel=1
 pkgdesc='A colorful, dark color scheme, inspired by ir_black and twilight.'
 arch=('any')
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_repository}"
-  git describe --always | sed 's/-/./g'
+  git describe --always | sed 's/^v//' | sed 's/-/./g'
 }
 
 package() {
