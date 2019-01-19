@@ -3,7 +3,7 @@
 _pkgbase="rtmidi"
 pkgbase="python-${_pkgbase}"
 pkgname=(${pkgbase} python2-${_pkgbase})
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 arch=('i686' 'x86_64' 'arm')
 url="https://github.com/SpotlightKid/python-rtmidi"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('jack')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgbase::1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('8e7a50fff1b0bab16b71e19af17dfc91aad580d46ceb0bf36307555413a44d06')
+sha256sums=('024a7a466c5b97f8fbbbcb2a6c968f10f4344f348a318188c3c0a7ae5f3e1b19')
 
 
 prepare() {
