@@ -3,7 +3,7 @@
 
 pkgname=mpdris2-py3
 pkgver=0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="MPRIS2 support for MPD using python 3"
 url="https://github.com/eonpatapon/mpDris2"
 arch=('any')
@@ -16,7 +16,7 @@ provides=('mpdris2')
 conflicts=('mpdris2')
 makedepends=('intltool')
 optdepends=(
-  'mutagen: read covers from music files'
+  'python-mutagen: read covers from music files'
   'python-gobject: Gnome notifications and media keys'
 )
 source=("https://github.com/eonpatapon/mpDris2/archive/${pkgver}.tar.gz")
