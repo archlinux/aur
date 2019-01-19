@@ -1,11 +1,11 @@
 pkgbase = fontypython
 	pkgdesc = Manage, view and find your fonts.
 	pkgver = 0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://savannah.nongnu.org/projects/fontypython
 	arch = any
 	license = GPL3
-	depends = wxpython
+	depends = python2-wxpython3
 	depends = python2-pillow
 	source = http://download.savannah.nongnu.org/releases/fontypython/fontypython-0.5.tar.gz
 	sha256sums = 46f5304f9ec790b0b870f66a37b5fd47103a9300d0e0ed98e8799bd59bb4ec1b
