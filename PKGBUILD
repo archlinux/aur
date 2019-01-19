@@ -5,7 +5,7 @@
 
 pkgbase=lightdm-git
 pkgname=('lightdm-git' 'liblightdm-qt4-git' 'liblightdm-qt5-git')
-pkgver=1.26.0.r6.gbeffa263
+pkgver=1.28.0.r7.g7241fd81
 pkgrel=1
 pkgdesc='A lightweight display manager'
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
             'e8c4c5fd3b801a390d201166fd1fb9730e78a5c62928768103b870b6bd980ea0'
             '33e3c3d6e16c8d30756754ea3f31f5457c5be0343686aad287692be34958984a'
             'a89566307e1c81c24f037d854cbd472d2f94f8a4b759877a01563a332319f7d6'
-            'f1c4d1f29ac9f8aabe957d48a41be54d3a81c90360530b1061cbd13a6591315f'
+            '6cd0b5502f30cc6166b9755b92ee3d77bd839e48b3139197ac6874799f28415b'
             '7fb85a1b54406032a922e8fd6f45d869fcfe5681df630e74e8e50c040b786ee4')
 
 pkgver() {

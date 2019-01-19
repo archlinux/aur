@@ -1,7 +1,18 @@
-diff -rupN lightdm.orig/data/lightdm.conf lightdm/data/lightdm.conf
---- lightdm.orig/data/lightdm.conf	2015-01-26 09:13:52.171349086 +0100
-+++ lightdm/data/lightdm.conf	2015-01-26 09:19:19.614233921 +0100
-@@ -101,7 +101,7 @@
+From 9eea64bdf6d01e2a652beac2f7f43934f30f103c Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Sat, 19 Jan 2019 18:24:10 -0500
+Subject: [PATCH] lightdm default config
+
+---
+ data/lightdm.conf | 2 +-
+ data/users.conf   | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/data/lightdm.conf b/data/lightdm.conf
+index 16b80f7e..824c13d4 100644
+--- a/data/lightdm.conf
++++ b/data/lightdm.conf
+@@ -108,7 +108,7 @@
  #allow-user-switching=true
  #allow-guest=true
  #guest-session=
@@ -10,9 +21,10 @@ diff -rupN lightdm.orig/data/lightdm.conf lightdm/data/lightdm.conf
  #greeter-wrapper=
  #guest-wrapper=
  #display-setup-script=
-diff -rupN lightdm.orig/data/users.conf lightdm/data/users.conf
---- lightdm.orig/data/users.conf	2015-01-26 09:13:52.171349086 +0100
-+++ lightdm/data/users.conf	2015-01-26 09:19:50.269899299 +0100
+diff --git a/data/users.conf b/data/users.conf
+index 5c019931..5257f87e 100644
+--- a/data/users.conf
++++ b/data/users.conf
 @@ -9,6 +9,6 @@
  # hidden-shells = Shells that indicate a user cannot login
  #
@@ -20,5 +32,8 @@ diff -rupN lightdm.orig/data/users.conf lightdm/data/users.conf
 -minimum-uid=500
 +minimum-uid=1000
  hidden-users=nobody nobody4 noaccess
--hidden-shells=/bin/false /usr/sbin/nologin
-+hidden-shells=/bin/false /usr/bin/nologin
+-hidden-shells=/bin/false /usr/sbin/nologin /sbin/nologin
++hidden-shells=/bin/false /usr/bin/nologin /bin/nologin
+-- 
+2.20.1
+
