@@ -8,7 +8,7 @@ pkgdesc="Replacement for both pacman -Ss and pacman -Si"
 arch=('x86_64')
 url="https://github.com/KLZ-0/pacman-esearch"
 license=('MIT')
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=("git+https://github.com/KLZ-0/pacman-esearch#branch=master")
 
 md5sums=('SKIP')
