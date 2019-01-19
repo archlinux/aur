@@ -1,6 +1,6 @@
 pkgbase = plymouth-theme-arch-solarized-git
 	pkgdesc = A Plymouth theme with a solarized-dark arch linux logo.
-	pkgver = r5.1459c85
+	pkgver = r6.72c069a
 	pkgrel = 1
 	url = https://github.com/kylesferrazza/plymouth-theme-arch-solarized/
 	arch = any
