@@ -1,0 +1,20 @@
+pkgbase = minizip2-git
+	pkgdesc = Mini zip and unzip based on bzip2, libbsd and zlib. Version 2.x.
+	pkgver = 2.8.2+r1449.20190108.2ca7f39
+	pkgrel = 1
+	url = https://github.com/nmoinvaz/minizip
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = bzip2
+	depends = glibc
+	depends = libbsd
+	depends = zlib
+	provides = minizip2=2.8.2+r1449.20190108.2ca7f39
+	conflicts = minizip2
+	source = minizip2::git+git://github.com/nmoinvaz/minizip.git
+	sha256sums = SKIP
+
+pkgname = minizip2-git
+
