@@ -1,6 +1,6 @@
 pkgbase = octave-hg
 	pkgdesc = A high-level language, primarily intended for numerical computations.
-	pkgver = 5.0.1r26522.d6a4237a26b4
+	pkgver = 5.0.1r26576.49eae759a3e2
 	pkgrel = 1
 	epoch = 2
 	url = http://www.octave.org
@@ -40,7 +40,7 @@ pkgbase = octave-hg
 	depends = portaudio
 	optdepends = texinfo: for help-support in octave
 	optdepends = gnuplot: alternative plotting
-	provides = octave=5.0.1r26522.d6a4237a26b4
+	provides = octave=5.0.1r26576.49eae759a3e2
 	conflicts = octave
 	options = !emptydirs
 	source = hg+https://hg.savannah.gnu.org/hgweb/octave
