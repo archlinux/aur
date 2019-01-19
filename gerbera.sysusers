@@ -1,1 +1,2 @@
-u gerbera   -      "gerbera server" /var/lib/gerbera
+u gerbera   -      "Gerbera daemon user" /var/lib/gerbera
+m gerbera video
