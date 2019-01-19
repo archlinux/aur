@@ -1,0 +1,26 @@
+As the driver provided by Brother is written in 32 bits, 
+first install lib32-libstdc++5 from aur :
+
+1. With git:
+    $ git clone https://aur.archlinux.org/lib32-libstdc++5.git
+    $ cd lib32-libstdc ++ 5
+    $ makepkg -si
+
+2. With curl:
+    $ curl -L -O https://aur.archlinux.org/cgit/aur.git/snapshot/lib32-libstdc++5.tar.gz
+    $ rm "lib32-libstdc ++ 5.tar.gz"
+    $ cd lib32-libstdc ++ 5
+    $ makepkg -si "
+
+3. With wget:
+    $ wget "https://aur.archlinux.org/cgit/aur.git/snapshot/lib32-libstdc++5.tar.gz"
+    $ tar vxf "lib32-libstdc ++ 5.tar.gz"
+    $ rm "lib32-libstdc ++ 5.tar.gz"
+    $ cd lib32-libstdc ++ 5
+    $ makepkg -si "
+
+NOTES:
+Install the brother-dcpj140w driver by one of the methods above.
+
+The scanner driver for this printer is available in aur:
+https://aur.archlinux.org/packages/brscan4/

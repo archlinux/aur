@@ -1,0 +1,26 @@
+Le pilote fourni par Brother étant écrit en 32 bits, 
+installez d’abord lib32-libstdc ++ 5 depuis aur:
+
+1. Avec git :
+   $ git clone https://aur.archlinux.org/lib32-libstdc++5.git
+   $ cd lib32-libstdc ++ 5
+   $ makepkg -si
+
+2. Avec curl :
+   $ curl -L -O https://aur.archlinux.org/cgit/aur.git/snapshot/lib32-libstdc++5.tar.gz
+   $ rm "lib32-libstdc++5.tar.gz"
+   $ cd lib32-libstdc++5
+   $ makepkg -si"
+
+3. avec wget :
+   $ wget "https://aur.archlinux.org/cgit/aur.git/snapshot/lib32-libstdc++5.tar.gz"
+   $ tar vxf "lib32-libstdc++5.tar.gz"
+   $ rm "lib32-libstdc++5.tar.gz"
+   $ cd lib32-libstdc++5
+   $ makepkg -si"
+
+REMARQUES :
+Installez le pilote brother-dcpj140w par l'une des méthodes ci-dessus.
+
+Le pilote du scanner de cette imprimante est disponible dans aur :
+https://aur.archlinux.org/packages/brscan4/
