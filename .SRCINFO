@@ -1,0 +1,21 @@
+pkgbase = rtsp-server
+	pkgdesc = Lightweight RTSP/RTP streaming media server
+	pkgver = 0.04.18.g4870105
+	pkgrel = 1
+	url = https://github.com/revmischa/rtsp-server
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = git
+	depends = perl
+	depends = perl-uri
+	depends = perl-socket6
+	depends = perl-anyevent
+	depends = perl-moose
+	depends = perl-moosex-getopt
+	options = !emptydirs
+	source = rtsp-server::git+https://github.com/revmischa/rtsp-server
+	md5sums = SKIP
+
+pkgname = rtsp-server
+
