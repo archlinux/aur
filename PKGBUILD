@@ -1,7 +1,7 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
 
 pkgname=securefs
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A better transparent encryption filesystem"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('fuse' 'gcc-libs')
 makedepends=('cmake')
 source=("https://github.com/netheril96/securefs/archive/${pkgver}.tar.gz")
-sha1sums=('63b1413552e9fb4be28e891f12fa8f08a7926ad9')
+sha1sums=('b8c645d9ce210ed729be572c0b4b71bead05de76')
 
 build() {
     cd "$pkgname-${pkgver}"
