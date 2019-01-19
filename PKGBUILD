@@ -1,13 +1,13 @@
 # Maintainer: gilbus <aur(AT)tinkershell.eu>
 pkgname=swaylock-git
 _pkgname=swaylock
-pkgver=r171.0c1f193
+pkgver=r187.4e72a36
 pkgrel=1
 license=("MIT")
 pkgdesc="Screen locker for Wayland "
 makedepends=("meson" "git" "scdoc" "wayland-protocols")
 depends=(
-	"wayland" "wlroots-git" "pango" "cairo" "pam"
+	"wayland" "libxkbcommon" "pango" "cairo" "pam"
 )
 optdepends=(
 	"gdk-pixbuf2: For background images other than PNG"

@@ -1,6 +1,6 @@
 pkgbase = swaylock-git
 	pkgdesc = Screen locker for Wayland
-	pkgver = r171.0c1f193
+	pkgver = r187.4e72a36
 	pkgrel = 1
 	url = https://swaywm.org
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = swaylock-git
 	makedepends = scdoc
 	makedepends = wayland-protocols
 	depends = wayland
-	depends = wlroots-git
+	depends = libxkbcommon
 	depends = pango
 	depends = cairo
 	depends = pam
