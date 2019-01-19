@@ -2,7 +2,7 @@
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=wireshark-git
-pkgver=2.5.1rc0+544+g1ac90d5254
+pkgver=2.9.1rc0+426+g5eb8edf1cb
 pkgrel=1
 pkgdesc="A free network protocol analyzer for Unix/Linux. GIT version"
 arch=('i686' 'x86_64')
@@ -20,11 +20,8 @@ depends=(
         'qt5-multimedia'
         'qt5-tools'
         'qt5-svg'               # for SVG icons in the Qt GUI
-        # wireshark-gtk (deprecated) depedencies
-        #'portaudio'
-        # shared between the GUI (for post-installation hook)
+        # for post-installation hook
         'desktop-file-utils'
-        'hicolor-icon-theme'
 
         # optional dependencies for improved dissection or features
         'gnutls'                # for SSL decryption using RSA keys
@@ -50,8 +47,10 @@ install=$pkgname.install
 # clone --mirror", it pulls 830MB including all draft patches... As a
 # workaround, use the Github mirror which should pull in "only" 424M.
 #source=("git+https://code.wireshark.org/git/wireshark")
-source=("git+https://github.com/wireshark/wireshark")
-sha256sums=('SKIP')
+source=("git+https://github.com/wireshark/wireshark"
+        wireshark.sysusers)
+sha512sums=('SKIP'
+            '3956c1226e64f0ce4df463f80b55b15eed06ecd9b8703b3e8309d4236a6e1ca84e43007336f3987bc862d8a5e7cfcaaf6653125d2a34999a0f1357c52e7c4990')
 
 
 pkgver() {
@@ -67,7 +66,8 @@ build() {
   cmake .. -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DENABLE_BCG729=OFF
   ninja
 }
 
@@ -76,6 +76,7 @@ package() {
   DESTDIR="${pkgdir}" ninja install
 
   # GID for wireshark is 150
+  install -Dm644 "${srcdir}/wireshark.sysusers" "${pkgdir}/usr/lib/sysusers.d/wireshark.conf"
   chgrp 150 "${pkgdir}/usr/bin/dumpcap"
   chmod 754 "${pkgdir}/usr/bin/dumpcap"
 }
