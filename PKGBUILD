@@ -1,4 +1,5 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _pkgsrcname=pos-tip
 _pkgmaintainer=pitkali
@@ -17,12 +18,12 @@ sha256sums=('5934257ec49c587681cc37f9d3f774053124f147d623a500a667ca6d8477588a')
 install=${pkgname}.install
 
 build() {
-  cd "${srcdir}/${_pkgsrcname}-${pkgver}"
+  cd ${_pkgsrcname}-${pkgver}
   emacs -q --no-splash -batch -L . -f batch-byte-compile *.el
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrcname}-${pkgver}"
-  mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
-  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
+  cd ${_pkgsrcname}-${pkgver}
+  mkdir -p "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/
 }
