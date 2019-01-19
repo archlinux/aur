@@ -5,7 +5,7 @@
 
 pkgname=libctl
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/Libctl"
 pkgdesc="A free Guile-based library implementing flexible control files for scientific simulations."
@@ -18,7 +18,7 @@ options=('!libtool')
 build() {
   cd $pkgname-$pkgver
   ./autogen.sh
-  ./configure --prefix=/usr LIBS="-lm" 
+  ./configure --prefix=/usr LIBS="-lm" CFLAGS=" -fPIC"
   make 
 }
 package() {

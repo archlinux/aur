@@ -1,7 +1,7 @@
 pkgbase = libctl
 	pkgdesc = A free Guile-based library implementing flexible control files for scientific simulations.
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ab-initio.mit.edu/wiki/index.php/Libctl
 	arch = i686
 	arch = x86_64
