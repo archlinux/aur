@@ -1,6 +1,6 @@
 # Maintainer: Lorenzo Fontana <lo@linux.com>
 pkgname=coredns-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="CoreDNS is a DNS server that chains plugins (official binary version)"
 arch=('x86_64')
