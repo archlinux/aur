@@ -11,7 +11,7 @@ depends=()
 optdepends=('ttf-roboto: recommended font'
             'noto-fonts: recommended font'
             'gtk-engine-murrine: for gtk2 themes')
-source=("https://github.com/ivankra/$pkgname/releases/download/3.94.0.149-colorpack/${pkgname}_${pkgver}.tar")
+source=("https://github.com/ivankra/$pkgname/releases/download/$pkgver-colorpack/${pkgname}_${pkgver}.tar")
 md5sums=(6f17b20e1e5c6e6557eb6f56afd3be59)
 
 package() {
