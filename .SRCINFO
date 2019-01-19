@@ -6,6 +6,7 @@ pkgbase = mapton
 	arch = any
 	license = Apache
 	makedepends = git
+	makedepends = jdk8-openjdk
 	makedepends = maven
 	depends = java-runtime>=8
 	depends = java-openjfx

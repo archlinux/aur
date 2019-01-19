@@ -8,7 +8,7 @@ arch=(any)
 url="https://mapton.org"
 license=('Apache')
 depends=('java-runtime>=8' 'java-openjfx')
-makedepends=('git' 'maven')
+makedepends=('git' 'jdk8-openjdk' 'maven')
 
 _commit=ba1ca79f23ffc96404997e4ae1cbe8dffab0c732
 source=(git+https://github.com/trixon/mapton.git#commit=$_commit
