@@ -1,7 +1,7 @@
 pkgbase = v2cmod-z
 	pkgdesc = A 2ch/5ch and Twitter browser
 	pkgver = 2.19.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://v2c.s50.xrea.com/
 	arch = any
 	license = custom

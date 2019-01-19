@@ -3,7 +3,7 @@ pkgname=v2cmod-z
 pkgver=2.19.1
 _reldate=20190113
 _b11ver=B11.25.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A 2ch/5ch and Twitter browser"
 arch=("any")
 url="http://v2c.s50.xrea.com/"
@@ -24,7 +24,7 @@ prepare() {
 	cd "${srcdir}/v2c/launcher"
 	cp -f "${srcdir}/V2CMOD-Z_${pkgver}(R${_reldate})/V2C_R20131210.jar" "./"
 	cp -f "${srcdir}/v2c_api_patch_${_b11ver}_poverty_Patch/v2c_api_patch_B11.jar" "./"
-	sed -e "s/V2C_R20131210.jar/v2c_api_patch_B11.jar/" "v2cjar.txt"
+	sed -ie "s/V2C_R20131210.jar/v2c_api_patch_B11.jar/" "v2cjar.txt"
 }
 
 package() {
