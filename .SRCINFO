@@ -1,5 +1,5 @@
 pkgbase = kakoune-git
-	pkgdesc = Code editor heavily inspired by Vim
+	pkgdesc = Multiple-selection, UNIX-flavored modal editor
 	pkgver = r7139.8587ecae
 	pkgrel = 1
 	url = https://github.com/mawww/kakoune
