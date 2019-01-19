@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=dmidecode-git
-pkgver=r531.cff11af
+pkgver=r594.74dfb85
 pkgrel=1
 pkgdesc="Desktop Management Interface table related utilities"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ build() {
 	cd "${srcdir}/dmidecode"
 
 	sed -i "s:sbin:bin:g" Makefile
-	make prefix=/usr
+	make prefix=/usr CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 package() {
@@ -34,4 +34,3 @@ package() {
 
 	make prefix=/usr DESTDIR="${pkgdir}" install
 }
-

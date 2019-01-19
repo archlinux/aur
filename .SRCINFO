@@ -1,6 +1,6 @@
 pkgbase = dmidecode-git
 	pkgdesc = Desktop Management Interface table related utilities
-	pkgver = r531.cff11af
+	pkgver = r594.74dfb85
 	pkgrel = 1
 	url = http://www.nongnu.org/dmidecode
 	arch = i686
