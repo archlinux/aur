@@ -1,0 +1,13 @@
+pkgbase = slim-theme-arch-solarized-git
+	pkgdesc = Solarized Spiral theme for SLiM using the Arch Linux logo
+	pkgver = r1.42a9589
+	pkgrel = 1
+	url = https://github.com/kylesferrazza/slim-theme-arch-solarized
+	arch = any
+	license = GPL
+	depends = slim
+	source = slim-theme-arch-solarized::git+https://github.com/kylesferrazza/slim-theme-arch-solarized.git
+	md5sums = SKIP
+
+pkgname = slim-theme-arch-solarized-git
+
