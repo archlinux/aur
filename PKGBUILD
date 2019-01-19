@@ -57,6 +57,6 @@ build() {
 package() {
     cd rosie
     mkdir "$pkgdir/usr"
-    make install DESTDIR="$pkgdir/usr"
+    make install DESTDIR="$pkgdir/usr" ROSIE_HOME="/usr/lib/rosie"
 }
 
