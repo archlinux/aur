@@ -1,6 +1,6 @@
 pkgbase = kakoune-git
 	pkgdesc = Code editor heavily inspired by Vim
-	pkgver = r6969.6271d0d9
+	pkgver = r7139.8587ecae
 	pkgrel = 1
 	url = https://github.com/mawww/kakoune
 	arch = x86_64

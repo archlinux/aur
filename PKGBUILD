@@ -1,6 +1,6 @@
 _ref=""
 pkgname=kakoune-git
-pkgver=r6969.6271d0d9
+pkgver=r7139.8587ecae
 pkgrel=1
 pkgdesc='Code editor heavily inspired by Vim'
 arch=('x86_64' 'armv7h')
@@ -32,7 +32,7 @@ pkgver() {
 
 check() {
   cd "${srcdir}/${pkgname}/src"
-  make test
+  debug=no make test
 }
 
 build() {
