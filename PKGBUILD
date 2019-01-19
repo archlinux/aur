@@ -2,7 +2,7 @@
 pkgname=motrix
 _pkgname=Motrix
 pkgver=git20190120
-pkgrel=2
+pkgrel=4
 epoch=
 pkgdesc="elegent downloading tool frontend for aria2c,using vue"
 arch=("x86_64")
@@ -22,9 +22,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("Motrix.desktop")
+source=("Motrix.desktop"
+	"aria2.conf"
+	"package.json")
 noextract=()
-md5sums=(SKIP)
+md5sums=('SKIP'
+	'SKIP'
+	'SKIP')
 validpgpkeys=()
 
 prepare() {
@@ -32,6 +36,7 @@ prepare() {
 	npm config set registry 'https://registry.npm.taobao.org'
 	export ELECTRON_MIRROR='https://npm.taobao.org/mirrors/electron/'
 	export SASS_BINARY_SITE='https://npm.taobao.org/mirrors/node-sass'
+	rm $_pkgname/package.json && mv ${srcdir}/package.json $_pkgname/.
 	
 }
 
@@ -50,5 +55,7 @@ package() {
 	echo -e "#!/bin/bash \n /opt/motrix/motrix" > ${pkgdir}/usr/bin/motrix
 	chmod a+x ${pkgdir}/usr/bin/motrix
 	install -Dm 644 ${srcdir}/Motrix.desktop ${pkgdir}/usr/share/applications
+#	rm ${pkgdir}/opt/motrix/resources/engine/aria2.conf	
+	install -Dm 644 ${srcdir}/aria2.conf ${pkgdir}/opt/motrix/resources/engine/aria2.conf
 	rm -rf ${srcdir}
 }
