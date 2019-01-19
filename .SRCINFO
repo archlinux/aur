@@ -1,0 +1,18 @@
+pkgbase = p3x-onenote
+	pkgdesc = Linux Electron Onenote - A Linux compatible version of OneNote
+	pkgver = 2019.1.18.1
+	pkgrel = 1
+	url = https://github.com/patrikx3/onenote
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = electron
+	source = git+https://github.com/patrikx3/onenote.git#tag=v2019.1.18-1
+	source = p3x-onenote.sh
+	source = p3x-onenote.desktop
+	md5sums = SKIP
+	md5sums = ef34fda1179a804e31b9684788e2ed25
+	md5sums = ff11d699c2aeac0caebf1a9d8533e664
+
+pkgname = p3x-onenote
+

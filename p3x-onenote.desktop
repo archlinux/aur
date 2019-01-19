@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=P3X Onenote
+Icon=p3x-onenote
+Exec=p3x-onenote
+Comment=Linux Electron Onenote
+Categories=Office;
+Terminal=false

@@ -1,0 +1,5 @@
+pkg
+src
+onenote
+npm_cache
+*.pkg.tar.xz
