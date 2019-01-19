@@ -51,8 +51,8 @@ package() {
 	install -d ${pkgdir}/usr/share/icons
 	install -d ${pkgdir}/usr/share/applications
 	mv ${srcdir}/$_pkgname/release/linux-unpacked/ ${pkgdir}/opt/motrix
-	install -Dm 644 ${srcdir}/$_pkgname/build/256x256.png ${pkgdir}/usr/share/icons/motrix.png
-	echo -e "#!/bin/bash \n /opt/motrix/motrix" > ${pkgdir}/usr/bin/motrix
+	install -m ${srcdir}/$_pkgname/build/256x256.png ${pkgdir}/usr/share/icons/$_pkgname.png
+	echo -e "#!/bin/bash \n /opt/motrix/motrix" >> ${pkgdir}/usr/bin/motrix
 	chmod a+x ${pkgdir}/usr/bin/motrix
 	install -Dm 644 ${srcdir}/Motrix.desktop ${pkgdir}/usr/share/applications
 #	rm ${pkgdir}/opt/motrix/resources/engine/aria2.conf	
