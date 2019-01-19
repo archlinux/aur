@@ -1,7 +1,7 @@
 # Maintainer: tioguda <guda.flavio@gmail.com>
 
 pkgname=divulga
-pkgver=18.9.7
+pkgver=18.10.03
 pkgrel=1
 pkgdesc="Divulgação de Resultado das Eleições"
 arch=('any')
@@ -10,7 +10,7 @@ license=(custom)
 depends=('jdk8-openjdk')
 source=("http://divulga.tse.jus.br/downloads/divulga-LINUX.zip"
          'divulga.desktop')
-md5sums=('2ab5c3c390d5e3fead91b2a7f92e21b4'
+md5sums=('78822b0f416da903414bc6fe32291171'
          '616e69af315a54381ec79a6158d63734')
 
 package() {
