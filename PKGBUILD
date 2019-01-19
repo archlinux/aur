@@ -1,4 +1,5 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _pkgsrcname=flycheck-pos-tip
 _pkgmaintainer=flycheck
@@ -23,6 +24,6 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}"
-  mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
-  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
+  install -d "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp
 }
