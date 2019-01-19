@@ -4,19 +4,20 @@
 # Contributor: Mario Rodas
 # Contributor: Oozyslug <oozyslug at gmail dot com>
 # Contributor: koral <koral at mailoo dot org>
+# Contributor: Anders Bennehag
 
 pkgname=nix
-pkgver=2.1.3
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://nixos.org/nix"
 license=('LGPL')
-depends=('gc' 'libsodium' 'boost' 'brotli')
+depends=('gc' 'libsodium' 'boost' 'brotli' 'readline')
 makedepends=('bzip2' 'gc' 'openssl')
 install=nix.install
 source=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver.tar.xz")
-sha256sums=('5d22dad058d5c800d65a115f919da22938c50dd6ba98c5e3a183172d149840a4')
+sha256sums=('85f8d3518060803e44e51b1a9ada1a39cea904b36a632ba1844043a0b63be515')
 
 
 prepare() {
@@ -25,6 +26,8 @@ prepare() {
 
 build () {
   cd "$pkgname-$pkgver"
+  export EDITLINE_CFLAGS="-DREADLINE"
+  export EDITLINE_LIBS="/usr/lib/libreadline.so"
   ./configure --prefix=/usr \
               --libexecdir="/usr/lib/$pkgname" \
               --sysconfdir=/etc \
