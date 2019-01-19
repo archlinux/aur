@@ -1,6 +1,6 @@
 pkgbase = obs-linuxbrowser
 	pkgdesc = Browser source plugin for obs-studio based on CEF. Alternative to obs-qtwebkit.
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/bazukas/obs-linuxbrowser
 	arch = i686
