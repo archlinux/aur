@@ -16,11 +16,14 @@ makedepends=(git clang gtest ruby cmake ninja go)
 conflicts=(android-tools)
 replaces=(android-tools)
 provides=(android-tools)
-_boringssl_commit=ea52ec98a56a40879b37493f3d1da1a1679e1fba # keep it in sync with android https://android.googlesource.com/platform/external/boringssl/+/master/BORINGSSL_REVISION
+# keep it in sync with android https://android.googlesource.com/platform/external/boringssl/+/master/BORINGSSL_REVISION
+_boringssl_commit=41c10e2b5f37edce8b9f292f7f3bacb7e30e25c4
 source=(git+https://android.googlesource.com/platform/system/core
         git+https://android.googlesource.com/platform/system/extras
         git+https://android.googlesource.com/platform/external/selinux
         git+https://android.googlesource.com/platform/external/f2fs-tools
+        git+https://android.googlesource.com/platform/external/e2fsprogs
+        git+https://android.googlesource.com/platform/external/avb
         git+https://boringssl.googlesource.com/boringssl#commit=$_boringssl_commit
         generate_build.rb
         fix_build_core.patch
@@ -28,6 +31,8 @@ source=(git+https://android.googlesource.com/platform/system/core
         bash_completion.fastboot)
         # Bash completion file was taken from https://github.com/mbrubeck/android-completion
 sha1sums=('SKIP'
+          'SKIP'
+          'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
