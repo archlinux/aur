@@ -1,0 +1,19 @@
+pkgbase = ruby-roo
+	pkgdesc = OpenOffice, LibreOffice, Excel, CSV reader
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://github.com/roo-rb/roo
+	arch = any
+	license = MIT
+	makedepends = ruby-pkg-config
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-nokogiri
+	depends = ruby-rubyzip
+	noextract = roo-2.8.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/roo-2.8.0.gem
+	sha256sums = 05644f37e8404320831e69bfe8e7ba8352fd87689c7b600b8f9e05d238d6b65c
+
+pkgname = ruby-roo
+
