@@ -9,6 +9,7 @@ pkgbase = pvs-studio
 	license = unknown
 	optdepends = how-to-use-pvs-studio-free: for adding special comments to a source code
 	optdepends = bash-completion: for bash completion
+	optdepends = strace: for analyzing via using strace logs
 	options = !strip
 	source = http://files.viva64.com/pvs-studio-6.27.28939.741-x86_64.tgz
 	sha256sums = 860f4bf7c040f1ada3ee0d98d4fbd575bd7afb0abe82d1c2155c881a2b69144b

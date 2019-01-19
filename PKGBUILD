@@ -9,7 +9,8 @@ url=http://www.viva64.com/en/$pkgname
 license=('unknown')
 depends_i686=('qemu-headless-arch-extra')
 optdepends=('how-to-use-pvs-studio-free: for adding special comments to a source code'
-            'bash-completion: for bash completion')
+            'bash-completion: for bash completion'
+            'strace: for analyzing via using strace logs')
 options=('!strip')
 install=$pkgname.install
 source=(http://files.viva64.com/$pkgname-$pkgver-${arch[1]}.tgz)
