@@ -1,8 +1,8 @@
 # Maintainer: weearc <q19981121@163.com>
 pkgname=motrix
 _pkgname=Motrix
-pkgver=git20190112
-pkgrel=1
+pkgver=git20190120
+pkgrel=2
 epoch=
 pkgdesc="elegent downloading tool frontend for aria2c,using vue"
 arch=("x86_64")
@@ -50,4 +50,5 @@ package() {
 	echo -e "#!/bin/bash \n /opt/motrix/motrix" > ${pkgdir}/usr/bin/motrix
 	chmod a+x ${pkgdir}/usr/bin/motrix
 	install -Dm 644 ${srcdir}/Motrix.desktop ${pkgdir}/usr/share/applications
+	rm -rf ${srcdir}
 }
