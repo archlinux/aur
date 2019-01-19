@@ -1,8 +1,8 @@
 # Maintainer: Joost Bremmer <toost dot b at gmail dot com>
 
 pkgname=mackup
-pkgver=0.8.18
-pkgrel=2
+pkgver=0.8.22
+pkgrel=1
 pkgdesc="a small Python utitlity to keep your application settings in sync."
 arch=('any')
 url="https://github.com/lra/mackup"
@@ -15,7 +15,7 @@ makedepends=(
             'python-setuptools')
 
 source=("https://github.com/lra/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b4cbc729213717e5343371c682e098518fbd0be2209366a7f1b22c9ba6d1afa4')
+sha256sums=('277471d41b89d0cd43846c2bdb52b1fe020afcc3cb974e8639a42f29bbbf8ec0')
 
 
 package() {
