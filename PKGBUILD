@@ -2,7 +2,7 @@
 # Contributor: Robin Baumgartner <robin@baumgartners.ch>
 # Contributor: Tucos <baspape@gmail.com>
 
-pkgname=panda3d
+pkgname=panda3d-python2
 pkgver=1.10.0
 pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."

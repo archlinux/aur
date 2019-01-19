@@ -1,4 +1,4 @@
-pkgbase = panda3d
+pkgbase = panda3d-python2
 	pkgdesc = A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d.
 	pkgver = 1.10.0
 	pkgrel = 1
@@ -58,5 +58,5 @@ pkgbase = panda3d
 	md5sums = 9eb28f8b98e909aed201014991255df8
 	md5sums = 057269173f3c1987953302519bc744fa
 
-pkgname = panda3d
+pkgname = panda3d-python2
 
