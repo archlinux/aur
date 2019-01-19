@@ -1,6 +1,6 @@
 pkgname=headmaster-git
 pkgver=0.28.r15.g96c3387
-pkgrel=1
+pkgrel=2
 
 pkgdesc='translate c header files to another language'
 url='https://github.com/ytomino/headmaster'
@@ -42,6 +42,6 @@ build() {
 
 package() {
     cd headmaster/main
-    make BINDIR="$pkgdir"/bin MANDIR="$pkgdir"/share/man install
+    make BINDIR="$pkgdir"/usr/bin MANDIR="$pkgdir"/usr/share/man install
     install -Dm0644 "$srcdir"/headmaster/LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
