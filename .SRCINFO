@@ -1,6 +1,6 @@
 pkgbase = grin-miner-git
 	pkgdesc = Standalone miner for grin
-	pkgver = r58.bffce19
+	pkgver = r211.8a2c2d7
 	pkgrel = 1
 	url = https://github.com/mimblewimble/grin-miner
 	arch = i686
@@ -9,8 +9,10 @@ pkgbase = grin-miner-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = rust
-	depends = ncurses
+	depends = openssl
 	source = git+https://github.com/mimblewimble/grin-miner.git
+	source = git+https://github.com/tromp/cuckoo.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = grin-miner-git
