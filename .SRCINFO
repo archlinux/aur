@@ -1,0 +1,14 @@
+pkgbase = adapta-gtk-theme-colorpack
+	pkgdesc = Adapta GTK Theme Colorpack
+	pkgver = 3.94.0.149
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1190851/
+	arch = any
+	license = GPL
+	depends = gtk-engine-murrine
+	optdepends = ttf-roboto: recommended ui font
+	source = https://github.com/ivankra/adapta-gtk-theme-colorpack/releases/download/3.94.0.149-colorpack/adapta-gtk-theme-colorpack_3.94.0.149.tar
+	md5sums = 6f17b20e1e5c6e6557eb6f56afd3be59
+
+pkgname = adapta-gtk-theme-colorpack
+
