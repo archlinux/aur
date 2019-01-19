@@ -2,8 +2,8 @@
 # Co-maintainer/contributor: Caleb Bassi <calebjbassi@gmail.com>
 
 pkgname=gotop
-pkgver=1.7.1
-pkgrel=4
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='A terminal based graphical activity monitor inspired by gtop and vtop'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/cjbassi/gotop"
