@@ -58,7 +58,8 @@ pkgver() {
 }
 
 build() {
-  arch-meson gala build
+  arch-meson gala build \
+    -D b_pie='false'
   ninja -C build
 }
 
