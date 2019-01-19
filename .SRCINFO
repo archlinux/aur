@@ -1,7 +1,7 @@
 pkgbase = linux-apparmor
-	pkgver = 4.20.arch1
+	pkgver = 4.20.1.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v4.20-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v4.20.1-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -13,7 +13,7 @@ pkgbase = linux-apparmor
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v4.20-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v4.20.1-arch1
 	source = config
 	source = config.fragment
 	source = 60-linux.hook
@@ -23,7 +23,7 @@ pkgbase = linux-apparmor
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 3f72b50a40e98737a6195b6d2b3c8c301007d40730bc4ec37fdf9e57dceb6fb9
+	sha256sums = 72be7e1240975218dd370a9ce7e10f0b77e7fd9585ae8cdec0deab1800b307fe
 	sha256sums = 728ea88383ce6c542e2969246036f454395d5412779ffb5299639610b82b21f1
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
