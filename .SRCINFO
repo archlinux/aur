@@ -1,12 +1,12 @@
 pkgbase = resvg-git
 	pkgdesc = SVG rendering library and CLI
-	pkgver = 0.5.0.r6.gec7f425
+	pkgver = 0.5.0.r9.g8245a68
 	pkgrel = 1
 	url = https://github.com/RazrFalcon/resvg
 	arch = i686
 	arch = x86_64
 	license = MPL2
-	makedepends = cargo
+	makedepends = rust
 	makedepends = qt5-base
 	makedepends = pango
 	makedepends = git
