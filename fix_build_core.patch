@@ -1,16 +1,42 @@
+diff --git a/adb/adb.cpp b/adb/adb.cpp
+index 06e4c50859..2909c3c884 100644
+--- a/adb/adb.cpp
++++ b/adb/adb.cpp
+@@ -44,8 +44,6 @@
+ #include <android-base/parsenetaddress.h>
+ #include <android-base/stringprintf.h>
+ #include <android-base/strings.h>
+-#include <build/version.h>
+-#include <platform_tools_version.h>
+ 
+ #include "adb_auth.h"
+ #include "adb_io.h"
+@@ -66,10 +64,10 @@ std::string adb_version() {
+     // Don't change the format of this --- it's parsed by ddmlib.
+     return android::base::StringPrintf(
+         "Android Debug Bridge version %d.%d.%d\n"
+-        "Version %s-%s\n"
++        "Version %s\n"
+         "Installed as %s\n",
+         ADB_VERSION_MAJOR, ADB_VERSION_MINOR, ADB_SERVER_VERSION,
+-        PLATFORM_TOOLS_VERSION, android::build::GetBuildNumber().c_str(),
++        PLATFORM_TOOLS_VERSION,
+         android::base::GetExecutablePath().c_str());
+ }
+ 
 diff --git a/adb/client/usb_libusb.cpp b/adb/client/usb_libusb.cpp
-index 81201995a..cfd60fce9 100644
+index f2ca63ba3c..95b27c998b 100644
 --- a/adb/client/usb_libusb.cpp
 +++ b/adb/client/usb_libusb.cpp
-@@ -21,6 +21,7 @@
- #include <stdint.h>
+@@ -22,6 +22,7 @@
+ #include <stdlib.h>
  
  #include <atomic>
 +#include <condition_variable>
  #include <chrono>
+ #include <condition_variable>
  #include <memory>
- #include <mutex>
-@@ -28,7 +29,7 @@
+@@ -30,7 +31,7 @@
  #include <thread>
  #include <unordered_map>
  
@@ -20,7 +46,7 @@ index 81201995a..cfd60fce9 100644
  #include <android-base/file.h>
  #include <android-base/logging.h>
 diff --git a/adb/sysdeps/posix/network.cpp b/adb/sysdeps/posix/network.cpp
-index 45da5af4a..516c716d9 100644
+index 33ddb4e816..e604a759e2 100644
 --- a/adb/sysdeps/posix/network.cpp
 +++ b/adb/sysdeps/posix/network.cpp
 @@ -16,6 +16,7 @@
@@ -29,10 +55,22 @@ index 45da5af4a..516c716d9 100644
  
 +#include <cstring>
  #include <errno.h>
+ #include <netdb.h>
  #include <netinet/in.h>
- #include <sys/socket.h>
+diff --git a/adb/types.h b/adb/types.h
+index 0090c98782..6920af4d6a 100644
+--- a/adb/types.h
++++ b/adb/types.h
+@@ -22,6 +22,7 @@
+ #include <type_traits>
+ #include <utility>
+ #include <vector>
++#include <cstring>
+ 
+ #include <android-base/logging.h>
+ 
 diff --git a/base/errors_unix.cpp b/base/errors_unix.cpp
-index 296995efe..48269b675 100644
+index 296995efe2..48269b6750 100644
 --- a/base/errors_unix.cpp
 +++ b/base/errors_unix.cpp
 @@ -17,6 +17,7 @@
@@ -44,10 +82,10 @@ index 296995efe..48269b675 100644
  namespace android {
  namespace base {
 diff --git a/base/file.cpp b/base/file.cpp
-index 2f697a1cc..81aef5758 100644
+index 2f4a517589..9049216913 100644
 --- a/base/file.cpp
 +++ b/base/file.cpp
-@@ -22,6 +22,7 @@
+@@ -26,6 +26,7 @@
  #include <sys/stat.h>
  #include <sys/types.h>
  #include <unistd.h>
@@ -56,38 +94,79 @@ index 2f697a1cc..81aef5758 100644
  #include <memory>
  #include <mutex>
 diff --git a/base/logging.cpp b/base/logging.cpp
-index 75078e50e..e7bfc229d 100644
+index f89168c0fc..da522019dc 100644
 --- a/base/logging.cpp
 +++ b/base/logging.cpp
-@@ -23,6 +23,7 @@
- #include <fcntl.h>
+@@ -24,6 +24,7 @@
+ #include <inttypes.h>
  #include <libgen.h>
  #include <time.h>
 +#include <string.h>
  
  // For getprogname(3) or program_invocation_short_name.
  #if defined(__ANDROID__) || defined(__APPLE__)
-diff --git a/libsparse/sparse_read.cpp b/libsparse/sparse_read.cpp
-index 437963527..67975fbdf 100644
---- a/libsparse/sparse_read.cpp
-+++ b/libsparse/sparse_read.cpp
-@@ -18,6 +18,7 @@
- #define _LARGEFILE64_SOURCE 1
+diff --git a/fastboot/fastboot.cpp b/fastboot/fastboot.cpp
+index d753f0f822..a8987d3024 100644
+--- a/fastboot/fastboot.cpp
++++ b/fastboot/fastboot.cpp
+@@ -58,9 +58,7 @@
+ #include <android-base/stringprintf.h>
+ #include <android-base/strings.h>
+ #include <android-base/unique_fd.h>
+-#include <build/version.h>
+ #include <liblp/liblp.h>
+-#include <platform_tools_version.h>
+ #include <sparse/sparse.h>
+ #include <ziparchive/zip_archive.h>
  
- #include <algorithm>
-+#include <cstring>
- #include <inttypes.h>
- #include <fcntl.h>
- #include <stdarg.h>
-diff --git a/libziparchive/zip_archive.cc b/libziparchive/zip_archive.cc
-index 6da5c99bd..0922ace32 100644
---- a/libziparchive/zip_archive.cc
-+++ b/libziparchive/zip_archive.cc
-@@ -31,6 +31,7 @@
+@@ -1655,7 +1653,7 @@ int FastBootTool::Main(int argc, char* argv[]) {
+                 setvbuf(stdout, nullptr, _IONBF, 0);
+                 setvbuf(stderr, nullptr, _IONBF, 0);
+             } else if (name == "version") {
+-                fprintf(stdout, "fastboot version %s-%s\n", PLATFORM_TOOLS_VERSION, android::build::GetBuildNumber().c_str());
++                fprintf(stdout, "fastboot version %s\n", PLATFORM_TOOLS_VERSION);
+                 fprintf(stdout, "Installed as %s\n", android::base::GetExecutablePath().c_str());
+                 return 0;
+ #if !defined(_WIN32)
+diff --git a/fs_mgr/liblp/reader.cpp b/fs_mgr/liblp/reader.cpp
+index 24c6b2c314..e0db7d9efa 100644
+--- a/fs_mgr/liblp/reader.cpp
++++ b/fs_mgr/liblp/reader.cpp
+@@ -21,6 +21,7 @@
  #include <unistd.h>
  
- #include <memory>
-+#include <string_view>
- #include <vector>
+ #include <functional>
++#include <cstring>
  
  #include <android-base/file.h>
+ #include <android-base/unique_fd.h>
+diff --git a/fs_mgr/liblp/writer.cpp b/fs_mgr/liblp/writer.cpp
+index 54a1883bf1..1e5daceb0f 100644
+--- a/fs_mgr/liblp/writer.cpp
++++ b/fs_mgr/liblp/writer.cpp
+@@ -20,6 +20,7 @@
+ #include <unistd.h>
+ 
+ #include <string>
++#include <cstring>
+ 
+ #include <android-base/file.h>
+ #include <android-base/unique_fd.h>
+@@ -32,7 +33,7 @@ namespace fs_mgr {
+ 
+ std::string SerializeGeometry(const LpMetadataGeometry& input) {
+     LpMetadataGeometry geometry = input;
+-    memset(geometry.checksum, 0, sizeof(geometry.checksum));
++    std::memset(geometry.checksum, 0, sizeof(geometry.checksum));
+     SHA256(&geometry, sizeof(geometry), geometry.checksum);
+ 
+     std::string blob(reinterpret_cast<const char*>(&geometry), sizeof(geometry));
+@@ -72,7 +73,7 @@ std::string SerializeMetadata(const LpMetadata& input) {
+     SHA256(tables.data(), tables.size(), header.tables_checksum);
+ 
+     // Compute header checksum.
+-    memset(header.header_checksum, 0, sizeof(header.header_checksum));
++    std::memset(header.header_checksum, 0, sizeof(header.header_checksum));
+     SHA256(&header, sizeof(header), header.header_checksum);
+ 
+     std::string header_blob =

@@ -21,7 +21,7 @@ def compile(sources, cflags)
       lang_flags = '-std=gnu11 $CFLAGS $CPPFLAGS'
     when '.cpp', '.cc'
       cc = 'cxx'
-      lang_flags = '-std=gnu++17 $CXXFLAGS $CPPFLAGS'
+      lang_flags = '-std=gnu++2a $CXXFLAGS $CPPFLAGS'
     else
         raise "Unknown extension #{ext}"
     end
@@ -74,26 +74,18 @@ adbdfiles = %w(
   adb_listeners.cpp
   adb_trace.cpp
   adb_utils.cpp
-  bugreport.cpp
-  line_printer.cpp
   sockets.cpp
   transport.cpp
   transport_local.cpp
   transport_usb.cpp
-  transport_mdns_unsupported.cpp
   fdevent.cpp
-  adb_auth_host.cpp
   shell_service_protocol.cpp
 )
-libadbd = compile(expand('core/adb', adbdfiles), '-DADB_VERSION="\"$PKGVER\"" -DADB_HOST=1 -Icore/include -Icore/base/include -Icore/adb -Icore/libcrypto_utils/include -Iboringssl/include')
+libadbd = compile(expand('core/adb', adbdfiles), '-DPLATFORM_TOOLS_VERSION="\"$PKGVER\"" -DADB_HOST=1 -Icore/include -Icore/base/include -Icore/adb -Icore/libcrypto_utils/include -Iboringssl/include -Icore/diagnose_usb/include')
 
 adbfiles = %w(
-  console.cpp
   socket_spec.cpp
-  commandline.cpp
-  adb_client.cpp
   services.cpp
-  file_sync_client.cpp
   sysdeps_unix.cpp
   sysdeps/errno.cpp
   sysdeps/posix/network.cpp
@@ -107,6 +99,8 @@ libadb = compile(expand('core/adb', adbfiles), '-D_GNU_SOURCE -DADB_HOST=1 -Icor
 basefiles = %w(
   file.cpp
   logging.cpp
+  threads.cpp
+  mapped_file.cpp
   parsenetaddress.cpp
   stringprintf.cpp
   strings.cpp
@@ -116,18 +110,17 @@ basefiles = %w(
 libbase = compile(expand('core/base', basefiles), '-DADB_HOST=1 -Icore/base/include -Icore/include')
 
 logfiles = %w(
-  log_event_write.c
-  fake_log_device.c
-  log_event_list.c
-  logger_write.c
-  config_write.c
-  config_read.c
-  logger_lock.c
-  local_logger.c
-  fake_writer.c
-  logger_name.c
-  stderr_write.c
-  logprint.c
+  log_event_write.cpp
+  fake_log_device.cpp
+  log_event_list.cpp
+  logger_write.cpp
+  config_write.cpp
+  config_read.cpp
+  logger_lock.cpp
+  fake_writer.cpp
+  logger_name.cpp
+  stderr_write.cpp
+  logprint.cpp
 )
 liblog = compile(expand('core/liblog', logfiles), '-DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Icore/log/include -Icore/include')
 
@@ -147,7 +140,7 @@ libcutils = compile(expand('core/libcutils', cutilsfiles), '-D_GNU_SOURCE -Icore
 diagnoseusbfiles = %w(
   diagnose_usb.cpp
 )
-libdiagnoseusb = compile(expand('core/adb', diagnoseusbfiles), '-Icore/include -Icore/base/include')
+libdiagnoseusb = compile(expand('core/diagnose_usb', diagnoseusbfiles), '-Icore/base/include -Icore/diagnose_usb/include')
 
 libcryptofiles = %w(
   android_pubkey.c
@@ -162,10 +155,10 @@ link('adb', libbase + liblog + libcutils + libadbd + libadb + libdiagnoseusb + l
 
 
 fastbootfiles = %w(
-  protocol.cpp
-  engine.cpp
+  main.cpp
   bootimg_utils.cpp
   fastboot.cpp
+  fastboot_driver.cpp
   util.cpp
   fs.cpp
   usb_linux.cpp
@@ -173,15 +166,24 @@ fastbootfiles = %w(
   tcp.cpp
   udp.cpp
 )
-libfastboot = compile(expand('core/fastboot', fastbootfiles), '-DFASTBOOT_VERSION="\"$PKGVER\"" -D_GNU_SOURCE -D_XOPEN_SOURCE=700 -DUSE_F2FS -Icore/base/include -Icore/include -Icore/adb -Icore/libsparse/include -Icore/mkbootimg -Iextras/ext4_utils/include -Iextras/f2fs_utils -Icore/libziparchive/include')
+libfastboot = compile(expand('core/fastboot', fastbootfiles), '-DPLATFORM_TOOLS_VERSION="\"$PKGVER\"" -D_GNU_SOURCE -D_XOPEN_SOURCE=700 -DUSE_F2FS -Icore/base/include -Icore/include -Icore/adb -Icore/libsparse/include -Icore/mkbootimg/include/bootimg -Icore/fs_mgr/liblp/include -Icore/diagnose_usb/include -Icore/mkbootimg -Iextras/ext4_utils/include -Iextras/f2fs_utils -Icore/libziparchive/include')
+
+liblp = %w(
+  images.cpp
+  reader.cpp
+  writer.cpp
+  partition_opener.cpp
+  utility.cpp
+)
+liblp = compile(expand('core/fs_mgr/liblp', liblp), '-Icore/base/include -Icore/fs_mgr/liblp/include -Icore/libsparse/include -Iextras/ext4_utils/include')
 
 sparsefiles = %w(
-  backed_block.c
-  output_file.c
-  sparse.c
+  backed_block.cpp
+  output_file.cpp
+  sparse.cpp
   sparse_read.cpp
-  sparse_crc32.c
-  sparse_err.c
+  sparse_crc32.cpp
+  sparse_err.cpp
 )
 libsparse = compile(expand('core/libsparse', sparsefiles), '-Icore/libsparse/include -Icore/base/include')
 
@@ -200,16 +202,7 @@ utilfiles = %w(
 libutil = compile(expand('core/libutils', utilfiles), '-Icore/include')
 
 ext4files = %w(
-  make_ext4fs.c
-  ext4fixup.c
   ext4_utils.c
-  allocate.c
-  contents.c
-  extent.c
-  indirect.c
-  sha1.c
-  wipe.c
-  crc16.c
   ext4_sb.c
 )
 libext4 = compile(expand('extras/ext4_utils', ext4files), '-D_GNU_SOURCE -Icore/libsparse/include -Icore/include -Iselinux/libselinux/include -Iextras/ext4_utils/include')
@@ -244,6 +237,7 @@ libselinux = compile(expand('selinux/libselinux/src', selinuxfiles), '-DAUDITD_L
 
 libsepolfiles = %w(
   policydb_public.c
+  kernel_to_common.c
   genbools.c
   debug.c
   policydb.c
@@ -269,4 +263,4 @@ libsepolfiles = %w(
 )
 libsepol = compile(expand('selinux/libsepol/src', libsepolfiles), '-Iselinux/libsepol/include')
 
-link('fastboot', libsparse + libzip + libcutils + liblog + libutil + libbase + libext4 + f2fs + libselinux + libsepol + libfastboot + libdiagnoseusb, '-lz -lpcre2-8 -lpthread -ldl')
+link('fastboot', libsparse + libzip + libcutils + liblog + libutil + libbase + libext4 + f2fs + libselinux + libsepol + libfastboot + libdiagnoseusb + liblp + boringssl, '-lz -lpcre2-8 -lpthread -ldl')
