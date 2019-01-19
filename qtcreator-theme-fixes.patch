@@ -1,37 +1,59 @@
 diff --git a/share/qtcreator/themes/dark.creatortheme b/share/qtcreator/themes/dark.creatortheme
-index 5da67fa236..43130e2630 100644
+index ef19fc9fa6..41439ff22a 100644
 --- a/share/qtcreator/themes/dark.creatortheme
 +++ b/share/qtcreator/themes/dark.creatortheme
-@@ -9,7 +9,7 @@ text=ffe7e7e7
+@@ -7,8 +7,10 @@ DefaultTextEditorColorScheme=dark.xml
+ shadowBackground=ff232323
+ text=ffe7e7e7
  textDisabled=7fffffff
- textHighlighted=ffe7e7e7
++textHighlighted=ffe7e7e7
  hoverBackground=18ffffff
 -selectedBackground=66000000
 +selectedBackground=aa1f75cc
- selectedBackgroundText=aa1f75cc
++selectedBackgroundText=aa1f75cc
  normalBackground=ff333333
  alternateBackground=ff515151
-@@ -50,9 +50,10 @@ DoubleTabWidget2ndTabInactiveTextColor=textDisabled
+ error=ffd84044
+@@ -48,6 +50,7 @@ DoubleTabWidget2ndTabInactiveTextColor=textDisabled
  EditorPlaceholderColor=normalBackground
  FancyToolBarSeparatorColor=43ffffff
  FancyTabBarBackgroundColor=shadowBackground
 +FancyTabBarSelectedBackgroundColor=88000000
  FancyTabWidgetDisabledSelectedTextColor=textDisabled
  FancyTabWidgetDisabledUnselectedTextColor=textDisabled
--FancyTabWidgetEnabledSelectedTextColor=text
-+FancyTabWidgetEnabledSelectedTextColor=ffffffff
- FancyTabWidgetEnabledUnselectedTextColor=text
- FancyToolButtonHoverColor=35ffffff
- FancyToolButtonSelectedColor=selectedBackground
-@@ -205,7 +206,7 @@ PaletteBrightText=ffff0000
+ FancyTabWidgetEnabledSelectedTextColor=text
+@@ -118,7 +121,7 @@ SplitterColor=splitterColor
+ TextColorDisabled=textDisabled
+ TextColorError=ffff4040
+ TextColorHighlight=ffff0000
+-TextColorHighlightBackground=555500
++TextColorHighlightBackground=7a6f1c
+ TextColorLink=textColorLink
+ TextColorLinkVisited=textColorLinkVisited
+ TextColorNormal=text
+@@ -143,7 +146,7 @@ OutputPanes_TestWarnTextColor=ffc8c800
+ OutputPanes_TestFatalTextColor=ffb42828
+ OutputPanes_TestDebugTextColor=ff329696
+ OutputPaneButtonFlashColor=error
+-OutputPaneToggleButtonTextColorChecked=text
++OutputPaneToggleButtonTextColorChecked=textHighlighted
+ OutputPaneToggleButtonTextColorUnchecked=text
+ 
+ Debugger_LogWindow_LogInput=ff00acac
+@@ -203,10 +206,10 @@ PaletteBrightText=ffff0000
  PaletteText=text
  PaletteButtonText=text
  PaletteButtonTextDisabled=textDisabled
 -PaletteToolTipBase=selectedBackground
+-PaletteHighlight=selectedBackground
 +PaletteToolTipBase=66000000
- PaletteHighlight=selectedBackgroundText
++PaletteHighlight=selectedBackgroundText
  PaletteDark=shadowBackground
- PaletteHighlightedText=textHighlighted
+-PaletteHighlightedText=ffffffff
++PaletteHighlightedText=textHighlighted
+ PaletteToolTipText=text
+ PaletteLink=textColorLink
+ PaletteLinkVisited=textColorLinkVisited
 diff --git a/share/qtcreator/themes/design.creatortheme b/share/qtcreator/themes/design.creatortheme
 index 8db109f313..cd90ad49de 100644
 --- a/share/qtcreator/themes/design.creatortheme
@@ -73,105 +95,137 @@ index 8db109f313..cd90ad49de 100644
  
  
 diff --git a/share/qtcreator/themes/flat-dark.creatortheme b/share/qtcreator/themes/flat-dark.creatortheme
-index e73d10b0ff..8e13d541d5 100644
+index 0c01aa1707..e79a96056d 100644
 --- a/share/qtcreator/themes/flat-dark.creatortheme
 +++ b/share/qtcreator/themes/flat-dark.creatortheme
-@@ -5,6 +5,7 @@ DefaultTextEditorColorScheme=creator-dark.xml
+@@ -4,15 +4,17 @@ PreferredStyles=Fusion
+ DefaultTextEditorColorScheme=creator-dark.xml
  
  [Palette]
- shadowBackground=ff404244
-+darkBackground=66000000
+-shadowBackground=ff404244
++shadowBackground=ff404142
  text=ffd0d0d0
  textDisabled=60a4a6a8
- textHighlighted=fff0f0f0
-@@ -13,7 +14,7 @@ toolBarItemDisabled=60a4a6a8
+-toolBarItem=b6fbfdff
+-toolBarItemDisabled=60a4a6a8
++textHighlighted=fff0f0f0
++toolBarItem=bcfbfdff
++toolBarItemDisabled=56a5a6a7
  fancyBarsNormalTextColor=ffd0d0d0
  fancyBarsBoldTextColor=b6fbfdff
- hoverBackground=22ffffff
+-hoverBackground=22ffffff
 -selectedBackground=66000000
-+selectedBackground=ff1d545c
- selectedBackgroundText=ff1d545c
++hoverBackground=28ffffff
++selectedBackground=7a000000
++selectedBackgroundText=ff1d545c
  normalBackground=ff2E2F30
  alternateBackground=ff353637
-@@ -54,9 +55,10 @@ DoubleTabWidget2ndTabInactiveTextColor=text
+ error=ffdf4f4f
+@@ -52,6 +54,7 @@ DoubleTabWidget2ndTabInactiveTextColor=text
  EditorPlaceholderColor=normalBackground
  FancyToolBarSeparatorColor=toolBarItemDisabled
  FancyTabBarBackgroundColor=shadowBackground
-+FancyTabBarSelectedBackgroundColor=darkBackground
++FancyTabBarSelectedBackgroundColor=selectedBackground
  FancyTabWidgetDisabledSelectedTextColor=toolBarItemDisabled
  FancyTabWidgetDisabledUnselectedTextColor=toolBarItemDisabled
--FancyTabWidgetEnabledSelectedTextColor=fancyBarsBoldTextColor
-+FancyTabWidgetEnabledSelectedTextColor=fancyBarsNormalTextColor
- FancyTabWidgetEnabledUnselectedTextColor=fancyBarsBoldTextColor
- FancyToolButtonHoverColor=hoverBackground
- FancyToolButtonSelectedColor=selectedBackground
-@@ -223,7 +225,7 @@ PaletteBrightText=ffff3333
+ FancyTabWidgetEnabledSelectedTextColor=fancyBarsBoldTextColor
+@@ -122,7 +125,7 @@ SplitterColor=splitter
+ TextColorDisabled=textDisabled
+ TextColorError=ffff4040
+ TextColorHighlight=ffff0000
+-TextColorHighlightBackground=8a7f2c
++TextColorHighlightBackground=7a6f1c
+ TextColorLink=textColorLink
+ TextColorLinkVisited=textColorLinkVisited
+ TextColorNormal=text
+@@ -147,7 +150,7 @@ OutputPanes_TestWarnTextColor=ffc8c800
+ OutputPanes_TestFatalTextColor=ffc82828
+ OutputPanes_TestDebugTextColor=ff329696
+ OutputPaneButtonFlashColor=error
+-OutputPaneToggleButtonTextColorChecked=fancyBarsNormalTextColor
++OutputPaneToggleButtonTextColorChecked=textHighlighted
+ OutputPaneToggleButtonTextColorUnchecked=fancyBarsNormalTextColor
+ 
+ Debugger_LogWindow_LogInput=ff00acac
+@@ -221,10 +224,10 @@ PaletteBrightText=ffff3333
  PaletteText=text
  PaletteButtonText=text
  PaletteButtonTextDisabled=textDisabled
 -PaletteToolTipBase=selectedBackground
+-PaletteHighlight=selectedBackground
 +PaletteToolTipBase=darkBackground
- PaletteHighlight=selectedBackgroundText
++PaletteHighlight=selectedBackgroundText
  PaletteDark=shadowBackground
- PaletteHighlightedText=textHighlighted
+-PaletteHighlightedText=ffffffff
++PaletteHighlightedText=textHighlighted
+ PaletteToolTipText=text
+ PaletteLink=textColorLink
+ PaletteLinkVisited=textColorLinkVisited
 diff --git a/share/qtcreator/themes/flat-light.creatortheme b/share/qtcreator/themes/flat-light.creatortheme
-index 29edca63fd..eae67298dc 100644
+index 29edca63fd..f6b726762c 100644
 --- a/share/qtcreator/themes/flat-light.creatortheme
 +++ b/share/qtcreator/themes/flat-light.creatortheme
-@@ -4,6 +4,7 @@ PreferredStyles=
- 
- [Palette]
- shadowBackground=ffe4e4e4
-+lightBackground=a8ffffff
- text=ff000000
- textDisabled=55000000
- toolBarItem=a0010508
-@@ -11,7 +12,7 @@ toolBarItemDisabled=38000000
- fancyBarsNormalTextColor=ff000000
- fancyBarsBoldTextColor=a0010508
- hoverBackground=1a000000
--selectedBackground=a8ffffff
-+selectedBackground=553daee9
- normalBackground=ffffffff
- alternateBackground=ff515151
- stop_error=ffec7373
-@@ -50,9 +51,10 @@ DoubleTabWidget2ndTabInactiveTextColor=ff000000
+@@ -50,6 +50,7 @@ DoubleTabWidget2ndTabInactiveTextColor=ff000000
  EditorPlaceholderColor=fff4f4f4
  FancyToolBarSeparatorColor=toolBarItemDisabled
  FancyTabBarBackgroundColor=shadowBackground
-+FancyTabBarSelectedBackgroundColor=lightBackground
++FancyTabBarSelectedBackgroundColor=selectedBackground
  FancyTabWidgetDisabledSelectedTextColor=toolBarItemDisabled
  FancyTabWidgetDisabledUnselectedTextColor=toolBarItemDisabled
--FancyTabWidgetEnabledSelectedTextColor=fancyBarsBoldTextColor
-+FancyTabWidgetEnabledSelectedTextColor=fancyBarsNormalTextColor
- FancyTabWidgetEnabledUnselectedTextColor=fancyBarsBoldTextColor
- FancyToolButtonHoverColor=hoverBackground
- FancyToolButtonSelectedColor=selectedBackground
+ FancyTabWidgetEnabledSelectedTextColor=fancyBarsBoldTextColor
 diff --git a/share/qtcreator/themes/flat.creatortheme b/share/qtcreator/themes/flat.creatortheme
-index ab0189528f..91cf2a69cc 100644
+index ab0189528f..0f057d80c0 100644
 --- a/share/qtcreator/themes/flat.creatortheme
 +++ b/share/qtcreator/themes/flat.creatortheme
-@@ -11,7 +11,7 @@ toolBarItemDisabled=60a4a6a8
+@@ -3,15 +3,15 @@ ThemeName=Flat
+ PreferredStyles=
+ 
+ [Palette]
+-shadowBackground=ff404244
++shadowBackground=ff404142
+ text=ff000000
+ textDisabled=55000000
+-toolBarItem=b6fbfdff
+-toolBarItemDisabled=60a4a6a8
++toolBarItem=bcfbfdff
++toolBarItemDisabled=56a5a6a7
  fancyBarsNormalTextColor=ffffffff
  fancyBarsBoldTextColor=b6fbfdff
- hoverBackground=22ffffff
+-hoverBackground=22ffffff
 -selectedBackground=66000000
-+selectedBackground=aa3daee9
++hoverBackground=28ffffff
++selectedBackground=7a000000
  normalBackground=ffffffff
  alternateBackground=ff515151
  error=ffdf4f4f
-@@ -48,9 +48,10 @@ DoubleTabWidget2ndTabInactiveTextColor=ff000000
+@@ -48,6 +48,7 @@ DoubleTabWidget2ndTabInactiveTextColor=ff000000
  EditorPlaceholderColor=ffdddddd
  FancyToolBarSeparatorColor=toolBarItemDisabled
  FancyTabBarBackgroundColor=shadowBackground
-+FancyTabBarSelectedBackgroundColor=66000000
++FancyTabBarSelectedBackgroundColor=selectedBackground
  FancyTabWidgetDisabledSelectedTextColor=toolBarItemDisabled
  FancyTabWidgetDisabledUnselectedTextColor=toolBarItemDisabled
--FancyTabWidgetEnabledSelectedTextColor=fancyBarsBoldTextColor
-+FancyTabWidgetEnabledSelectedTextColor=fancyBarsNormalTextColor
- FancyTabWidgetEnabledUnselectedTextColor=fancyBarsBoldTextColor
- FancyToolButtonHoverColor=hoverBackground
- FancyToolButtonSelectedColor=selectedBackground
+ FancyTabWidgetEnabledSelectedTextColor=fancyBarsBoldTextColor
+diff --git a/src/libs/utils/icon.cpp b/src/libs/utils/icon.cpp
+index dc7625aae3..f7edbd8614 100644
+--- a/src/libs/utils/icon.cpp
++++ b/src/libs/utils/icon.cpp
+@@ -139,13 +139,13 @@ static QPixmap masksToIcon(const MasksAndColors &masks, const QPixmap &combinedM
+     if (style & Icon::DropShadow && creatorTheme()->flag(Theme::ToolBarIconShadow)) {
+         const QPixmap shadowMask = maskToColorAndAlpha(combinedMask, Qt::black);
+         p.setCompositionMode(QPainter::CompositionMode_DestinationOver);
+-        p.setOpacity(0.05);
++        p.setOpacity(0.08);
+         p.drawPixmap(QPointF(0, -0.501), shadowMask);
+         p.drawPixmap(QPointF(-0.501, 0), shadowMask);
+         p.drawPixmap(QPointF(0.5, 0), shadowMask);
+         p.drawPixmap(QPointF(0.5, 0.5), shadowMask);
+         p.drawPixmap(QPointF(-0.501, 0.5), shadowMask);
+-        p.setOpacity(0.2);
++        p.setOpacity(0.3);
+         p.drawPixmap(0, 1, shadowMask);
+     }
+ 
 diff --git a/src/libs/utils/theme/theme.h b/src/libs/utils/theme/theme.h
 index 9a881e9e64..f350bf0ca2 100644
 --- a/src/libs/utils/theme/theme.h
@@ -185,7 +239,7 @@ index 9a881e9e64..f350bf0ca2 100644
          FancyTabWidgetDisabledUnselectedTextColor,
          FancyTabWidgetEnabledSelectedTextColor,
 diff --git a/src/plugins/coreplugin/fancytabwidget.cpp b/src/plugins/coreplugin/fancytabwidget.cpp
-index 31ef98704c..eba8f0c203 100644
+index 4fad26bc12..3df5112be2 100644
 --- a/src/plugins/coreplugin/fancytabwidget.cpp
 +++ b/src/plugins/coreplugin/fancytabwidget.cpp
 @@ -288,6 +288,13 @@ static void paintIcon(QPainter *painter, const QRect &rect,
@@ -223,3 +277,32 @@ index 31ef98704c..eba8f0c203 100644
          } else {
              paintSelectedTabBackground(painter, rect);
          }
+diff --git a/src/plugins/coreplugin/locator/locatorwidget.cpp b/src/plugins/coreplugin/locator/locatorwidget.cpp
+index 7276685d20..2421bd776a 100644
+--- a/src/plugins/coreplugin/locator/locatorwidget.cpp
++++ b/src/plugins/coreplugin/locator/locatorwidget.cpp
+@@ -87,6 +87,7 @@ public:
+     LocatorModel(QObject *parent = nullptr)
+         : QAbstractListModel(parent)
+         , mBackgroundColor(Utils::creatorTheme()->color(Utils::Theme::TextColorHighlightBackground))
++        , mForegroundColor(Utils::creatorTheme()->color(Utils::Theme::TextColorNormal))
+     {}
+ 
+     void clear();
+@@ -100,6 +101,7 @@ private:
+     mutable QList<LocatorFilterEntry> mEntries;
+     bool hasExtraInfo = false;
+     QColor mBackgroundColor;
++    QColor mForegroundColor;
+ };
+ 
+ class CompletionDelegate : public HighlightingItemDelegate
+@@ -224,6 +226,8 @@ QVariant LocatorModel::data(const QModelIndex &index, int role) const
+     }
+     case int(HighlightingItemRole::Background):
+         return mBackgroundColor;
++    case int(HighlightingItemRole::Foreground):
++        return mForegroundColor;
+     }
+ 
+     return QVariant();

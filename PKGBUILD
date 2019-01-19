@@ -10,9 +10,9 @@
 # Contributor: delor <bartekpiech gmail com>
 
 pkgname=qtcreator-fixed-themes
-pkgver=4.8.0
+pkgver=4.8.1
 _clangver=7.0.1
-pkgrel=11
+pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment, with fixes applied for various themes and other bug fixes'
 arch=(x86_64)
 url='http://qt-project.org'
@@ -33,20 +33,14 @@ optdepends=('qt5-doc: integrated Qt documentation'
             'valgrind: analyze support')
 source=("http://download.qt.io/official_releases/qtcreator/${pkgver%.*}/$pkgver/qt-creator-opensource-src-$pkgver.tar.xz"
         qtcreator-clang-plugins.patch
-        qtcreator-dark-theme-fixes.patch
-        qtcreator-dark-and-flat-selection-fixes.patch
-		qtcreator-exit-debugger-fix.patch
-		qtcreator-occurrences-fix.patch
-		qtcreator-breakpoint-fix.patch
-		qtcreator-debugger-columns-fix.patch)
-sha256sums=('aec7b4595e17f5536eb2eef4331057f2d0fa4ba0a46f4968cc06959a1d589b43'
+        qtcreator-theme-fixes.patch
+        qtcreator-occurrences-fix.patch
+        qtcreator-debugger-columns-fix.patch)
+sha256sums=('8f691de9b30b99dd44e010525ba9bf3054142a1082dc5273c46c533b91c07bd9'
             '6f19fc9d83964a5460d224b3d44ce580553847960181fe0364e2ce26e1efd2e6'
-            '9cd55729e76505ef35fe3059ddbaa86b1071f9f0075b4313f3ccbb8593094681'
-            '810c956dd8d8c1c0ee364b34f7447f417af5df863cb77fe1a51fd703e6e150e5'
-			'f938a72cc79c9ed8de07da8af79b170f67448a74dbd3228dd3de7e4855ed633d'
-			'ba6a48156cc14935a0dea12e8282bdfb1936e0c67216c660eef41bd5b5a44d4b'
-			'12dad35519cfc62119b0af21b31a96149081ae1ee6d6e7cb65ee80f3774ff06f'
-			'cf378a8b591a10646ad89d101375d8b04844c76a83d6c9c960036ba6a3b122e3')
+            'bf0f8e88d0fa628d24f59eaf1f359873926998dde442e3bcbd56afcdd6eec7fa'
+            'ba6a48156cc14935a0dea12e8282bdfb1936e0c67216c660eef41bd5b5a44d4b'
+            'cf378a8b591a10646ad89d101375d8b04844c76a83d6c9c960036ba6a3b122e3')
 
 prepare() {
   mkdir -p build
@@ -61,14 +55,8 @@ prepare() {
   # and https://bugs.archlinux.org/task/59492
   patch -p1 -i ../qtcreator-clang-plugins.patch
   # Theme fixes
-  patch -p1 -i ../qtcreator-dark-theme-fixes.patch
-  patch -p1 -i ../qtcreator-dark-and-flat-selection-fixes.patch
+  patch -p1 -i ../qtcreator-theme-fixes.patch
   patch -p1 -i ../qtcreator-occurrences-fix.patch
-  # Bonus patches!
-  # Fix exiting debugger on program exit.
-  patch -p1 -i ../qtcreator-exit-debugger-fix.patch
-  # Fix infinite looping breakpoints.
-  patch -p1 -i ../qtcreator-breakpoint-fix.patch
   # Fix broken sizing for debugger columns.
   patch -p1 -i ../qtcreator-debugger-columns-fix.patch
 }
