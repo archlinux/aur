@@ -5,7 +5,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open-source home automation platform running on Python 3'
-pkgver=0.85.0
+pkgver=0.85.1
 pkgrel=1
 url="https://home-assistant.io/"
 license=('APACHE')
@@ -48,7 +48,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
         "home-assistant.sysusers"
         "home-assistant-tmpfile.conf"
         "hass.install")
-sha512sums=('f1afe0ff3188e373da723246669fbfdc2c0ca9199bd4079d58aab1073ec180873cdaddb1a4585360cc17fbbbb084deaed72828ef06830a9352a89019a9b88892'
+sha512sums=('cb7fb5f5944c696ec1d90523d315144876209650ad605cbbd3e4295ab05bec6aa2320e170b0a66c0db0b2b48f1777e2f4f9c5da03a52b7362fc8b35ed0217478'
             'fe96bd3df3ba666fd9f127c466d1dd1dd7314db2e57826a2b319c8a0bfad7aedeac398e748f93c6ecd9c2247ebbae196b8b0e7263b8681e2b7aeab6a8bfeab80'
             '100665ac35370c3ccec65d73521568de21cebf9e46af364124778861c94e338e32ad9abb675d3917f97d351dd7867e3ab2e80c26616330ae7cf0d9dc3f13369b'
             '3e93118c84954f829767dc71ce534c5d02c1c95fc8748714c7a2df28a3a297f59962f8fb7cddf721987eb97d62feabb25acda5d38209e365646ca4a4ef4356e3'
