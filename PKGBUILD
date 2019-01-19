@@ -1,40 +1,37 @@
-# Maintainer: Silvio Fricke <silvio.fricke@gmail.com>
-# based-from: Christoph Drexler <chrdr at gmx dot at>
-
+#Maintainer: Frederic Bezies <fredbezies at gmail dot com> 
+#Contributor: Maël Leclair <mael.leclair@gmail.com>
 pkgname=grisbi-git
-pkgver=1.0.0.216.gfaf4df2
+_pkgname=grisbi
+pkgver=1.1.95.r62.g22aa8142
 pkgrel=1
 pkgdesc="Personal financial management program"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.grisbi.org"
 license=('GPL')
-depends=('desktop-file-utils' 'goffice')
-makedepends=('gettext' 'grep' 'intltool')
+depends=('gtk3' 'libgsf')
 optdepends=('libofx: for OFX support')
-options=(!libtool)
-install=grisbi.install
-source=("git://git.code.sf.net/p/grisbi/code")
+makedepends=('git' 'intltool')
+provides=('grisbi')
+conflicts=('grisbi')
+replaces=('grisbi')
+source=(git://github.com/grisbi/grisbi.git)
 sha256sums=('SKIP')
 
 pkgver() {
-	cd code
-	desc="$(git describe)"
-	desc=${desc//upstream_version_/}
-	desc=${desc//_/.}
-	desc=${desc//-/.}
-	printf "${desc}"
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/upstream_version_//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
 }
 
+
 build() {
-	cd code
-	./autogen.sh
-	./configure \
-		--disable-frenchdoc \
-		--prefix=/usr
-	make
+  
+  cd "$_pkgname"
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd code
-	make DESTDIR="${pkgdir}" install
+  cd "$_pkgname"
+  make DESTDIR="$pkgdir/" install
 }
