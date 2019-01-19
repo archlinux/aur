@@ -1,25 +1,25 @@
 pid_path: data/jackal.pid
 
-debug:
-  port: 6060
+# debug:
+#   port: 6060
 
 logger:
   level: debug
   log_path: jackal.log
 
 storage:
-  type: mysql
-  mysql:
-    host: 127.0.0.1:3306
+  type: pgsql
+  pgsql:
+    host: 127.0.0.1:5432
     user: jackal
     password: password
     database: jackal
     pool_size: 16
 
-cluster:
-  name: node1
-  port: 5010
-  hosts: [127.0.0.1:5009, 127.0.0.1:5011]
+# cluster:
+#   name: node1
+#   port: 5010
+#   hosts: [127.0.0.1:5009, 127.0.0.1:5011]
 
 router:
   hosts:
@@ -75,19 +75,18 @@ c2s:
     max_stanza_size: 65536
     resource_conflict: replace  # [override, replace, reject]
 
-    transport:
-      type: socket # websocket
-      bind_addr: 0.0.0.0
-      port: 5222
-      keep_alive: 120
-      # url_path: /xmpp/ws
+    # transport:
+    #   type: socket # websocket
+    #   bind_addr: 0.0.0.0
+    #   port: 5222
+    #   keep_alive: 120
+    #   url_path: /xmpp/ws
 
-    compression:
-      level: default
+    # compression:
+    #   level: default
 
     sasl:
       - plain
-      - digest_md5
       - scram_sha_1
       - scram_sha_256
 

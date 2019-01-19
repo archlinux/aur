@@ -1,4 +1,2 @@
-d /var/lib/jackal 0750
 Z /var/lib/jackal - jackal jackal
-z /etc/jackal 0755 root jackal
-z /etc/jackal/jackal.yml 0640 root jackal
+Z /etc/jackal     - jackal jackal
