@@ -1,22 +1,30 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-dolphin-git
-pkgver=r28913.1c0e3ef438
+pkgver=r29719.7796f12fbf
 pkgrel=1
 pkgdesc='Nintendo GC/Wii core'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/libretro/dolphin'
-license=('GPL2')
-groups=('libretro-unstable')
+license=(GPL2)
+groups=(libretro-unstable)
 depends=(
-  'libretro-core-info'
-  'libcurl.so' 'libusb-1.0.so'
+  libretro-core-info
+  libcurl.so
+  libusb-1.0.so
+  libxi
+  libxrandr
+  zlib
 )
-makedepends=('cmake' 'git' 'mesa')
-provides=('libretro-dolphin')
-conflicts=('libretro-dolphin')
-source=('libretro-dolphin::git+https://github.com/libretro/dolphin.git')
-sha256sums=('SKIP')
+makedepends=(
+  cmake
+  git
+  mesa
+)
+provides=(libretro-dolphin)
+conflicts=(libretro-dolphin)
+source=(libretro-dolphin::git+https://github.com/libretro/dolphin.git)
+sha256sums=(SKIP)
 
 pkgver() {
   cd libretro-dolphin
