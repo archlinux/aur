@@ -6,7 +6,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=eagle
-pkgver=9.2.2
+pkgver=9.3.0
 pkgrel=1
 pkgdesc="Powerful suite for schematic capture and printed circuit board design (aka eaglecad)"
 arch=('x86_64')
@@ -19,11 +19,11 @@ source=(# Official source according to website:
         # Currently, versions are only distributed via circuits.io:
         # https://eagle-updates.circuits.io/downloads/latest.html
         "https://eagle-updates.circuits.io/downloads/${pkgver//./_}/Autodesk_EAGLE_${pkgver}_English_Linux_64bit.tar.gz"
-        lsa18.html::"http://download.autodesk.com/us/FY18/Suites/LSA/en-US/lsa.html"
+        lsa19.html::"http://download.autodesk.com/us/FY19/Suites/LSA/en-US/lsa.html"
         "$pkgname.desktop"
         "$pkgname.xml")
-sha256sums=('eac60d22978611e65c2bc5bd0823c07129b2b8e60c56eef07b4703d7c2788f70'
-            '5598259c2a952560ebd039909a08db2dfa8056ef83461857ad0347036ba68c0a'
+sha256sums=('94d84cedf653cc383cb303927860d42fd00fb76f53c3c3fb2a40f05cb0c74c0c'
+            'd8f8adf45c8c136030f877975aed22ec97c6e26f6aa2218905c7b14b51bc1334'
             '40e5a40cea787c0e823946271031744fdd9c755363da97d6dd4bea1eee7ee6b6'
             '293ef717030e171903ba555a5c698e581f056d2a33884868018ab2af96a94a06')
 
@@ -44,7 +44,7 @@ package() {
           "$pkgdir/usr/share/pixmaps/eagle.png"
 
   # install license
-  install -Dm644 "$srcdir/lsa18.html" \
+  install -Dm644 "$srcdir/lsa19.html" \
                  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # copy man page
