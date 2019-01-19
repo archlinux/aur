@@ -1,7 +1,7 @@
 # Maintainer: Giusy Margarita <kurmikon at libero dot it>
 
 pkgname=korla-icon-theme
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='Korla icon theme suitable for every desktop environment – made by bikass'
 arch=('any')
