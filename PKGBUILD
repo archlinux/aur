@@ -2,7 +2,7 @@
 # Contributor: Simon Thorpe <simon@hivetechnology.com.au>
 
 pkgname=pianoteq-standard-trial-bin
-pkgver=6.3.1
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 # Define the target archive filename:
 _downfname=pianoteq_linux_trial_v${pkgver//./}.7z
 # Define its checksum:
-_downsha256sum=dc1dbe9305cb2d3b564dfabe81286c0e2024b5e35b1c6cb94db1333e593d1a9c
+_downsha256sum=3730ae5badf78c12cc7d2506a8e21e50a77d99e148cea244f57c81155d11c2e0
 
 prepare(){
 	# The archive download link needs to be retrieved. Retrieve download page source:
