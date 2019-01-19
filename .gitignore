@@ -1,4 +1,4 @@
 pkg/
 src/
-*.xz
+*.tar
 plymouth-theme-arch-solarized/
