@@ -3,8 +3,8 @@
 # Contributor: Tucos <baspape@gmail.com>
 
 pkgname=panda3d
-pkgver=1.9.4
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('desktop-file-utils' 'shared-mime-info' 'xorg-server' 'libgl'
          'openssl' 'libjpeg' 'libpng' 'libtiff' 'freetype2' 'gtk2'
          'openal' 'libxrandr' 'libxcursor' 'libxxf86dga')
-makedepends=('python2' 'bison' 'cmake')
+makedepends=('python' 'bison' 'cmake' 'flex')
 
 # NOTICE: please read http://www.panda3d.org/manual/index.php/Dependencies for
 # more information. Optdepends you want your package to support, need to be
@@ -27,8 +27,7 @@ optdepends=(# Pretty much required
             'xorg-server: X11 support'
             'libgl: OpenGL support for X11'
             # Recommended
-            'python2: python2 bindings'
-            'python: Experimental python 3 bindings'
+            'python: Python 3 bindings'
             'openssl: Provides some networking and encryption support'
             'ffmpeg: Required to load and play video textures'
             'libjpeg: Required to read and write jpeg images'
@@ -41,18 +40,22 @@ optdepends=(# Pretty much required
             'openal: OpenAL audio'
             'zlib: Compression support'
             'libxxf86dga: Relative mouse mode'
+            'libvorbis: Used to load .ogg files encoded with Vorbis.'
+            'openexp: OpenEXR image format support'
             # Optional
+            'assimp: Open Asset Import'
+            'opus: Read .opus audio files'
             'bullet: Support for the physics engine'
             'eigen: Optimised linear algebra library'
             'fmodex: FMod audio'
             'libxcursor: Custom cursor icons'
             'libxrandr: Resolution switching'
-            'librocket: Librocket GUI support'
+            #'librocket: Librocket GUI support'
             'libsquish: DXT support (AUR)'
             'artoolkit: library for augmented reality (AUR)'
             'opencv: alternative to ffmpeg for video texture support'
             'fcollada: used for dae2egg and for loading dae files directly into Panda (unavailable)'
-            'vrpn: support for virtual reality trackers (unavailable)'
+            'vrpn-git: support for virtual reality trackers.'
             # ARM stuff, not really applicable, stated for completeness
             # NOTE: if you have libgles, you _must_ install libegl for this package to compile
             'libgles: OpenGL ES support'
@@ -60,16 +63,16 @@ optdepends=(# Pretty much required
             )
 
 install='panda3d.install'
-source=("$url/download/panda3d-$pkgver/panda3d-$pkgver.tar.gz"
+source=("https://github.com/panda3d/panda3d/archive/v$pkgver.tar.gz"
         'panda3d.install')
 
 JOBS=$(nproc)
 
 build() {
   cd "$srcdir/panda3d-$pkgver"
-  LD_LIBRARY_PATH=/usr/lib/openssl-1.0-compat/
+  #LD_LIBRARY_PATH=/usr/lib/openssl-1.0-compat/
   # disable broken extensions
-  python2 makepanda/makepanda.py --everything --no-opencv --no-opencv --no-maya2012 --no-fmodex --no-gles --no-gles2 --no-openssl ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
+  python makepanda/makepanda.py --everything --no-opencv --no-opencv --no-maya2012 --no-fmodex --no-gles --no-gles2 --no-openssl --no-egl ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
 }
 
 package() {
@@ -78,5 +81,5 @@ package() {
   install -D -m644 "$srcdir/panda3d-$pkgver/doc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }
-md5sums=('7490512af90e003228fb8fb5e89a2371'
+md5sums=('9eb28f8b98e909aed201014991255df8'
          '057269173f3c1987953302519bc744fa')
