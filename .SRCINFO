@@ -1,7 +1,7 @@
 pkgbase = plplot510
 	pkgdesc = A cross-platform software package for creating scientific plots
 	pkgver = 5.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://plplot.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = plplot510
 	source = http://downloads.sourceforge.net/sourceforge/plplot/plplot-5.10.0.tar.gz
 	source = plplot.patch
 	md5sums = ece8c0b4d5cd815968a6d56bed0fbe7b
-	md5sums = 9a50d8aa4c088bd29355076f6fc91f31
+	md5sums = 03c47ad0933fbc127c80df823ba756c3
 
 pkgname = plplot510
 
