@@ -1,6 +1,6 @@
 pkgbase = emacs-flycheck-pos-tip-git
 	pkgdesc = Flycheck errors display in tooltip
-	pkgver = r60.9091139
+	pkgver = 0.3.6.g9091139
 	pkgrel = 1
 	url = https://github.com/flycheck/flycheck-pos-tip
 	arch = any
