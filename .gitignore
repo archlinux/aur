@@ -1,0 +1,6 @@
+writefreely/
+pkg/
+src/
+*.zip
+*.tar.xz
+*.tar.gz

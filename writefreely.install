@@ -1,0 +1,5 @@
+post_install() {
+  cd /var/lib/writefreely
+  sudo -u writefreely /usr/bin/writefreely -c /etc/writefreely/config.ini -gen-keys
+  sudo -u writefreely /usr/bin/writefreely -c /etc/writefreely/config.ini -init-db
+}
