@@ -10,7 +10,7 @@ User=writefreely
 Group=writefreely
 Type=simple
 WorkingDirectory=/var/lib/writefreely
-ExecStart=/usr/bin/writefreely
+ExecStart=/usr/bin/writefreely -c config.ini
 Restart=always
 RestartSec=2s
 CapabilityBoundingSet=
@@ -29,8 +29,6 @@ MemoryDenyWriteExecute=true
 RestrictRealtime=true
 SystemCallArchitectures=native
 SystemCallFilter=@system-service
-StandardOutput=syslog
-StandardError=syslog
 
 [Install]
 WantedBy=multi-user.target

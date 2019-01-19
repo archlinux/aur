@@ -1,0 +1,277 @@
+From 53a51be578458960f23c62711740d97ba1043237 Mon Sep 17 00:00:00 2001
+From: Matt Baer <matt@write.as>
+Date: Fri, 18 Jan 2019 18:57:04 -0500
+Subject: [PATCH 1/2] Support configuring resource directories
+
+This adds new configuration values that specify the parent directory of
+application resources:
+
+- templates_parent_dir
+- static_parent_dir
+- pages_parent_dir
+- keys_parent_dir
+
+For any values not specified, the application will default to the
+current directory.
+
+This closes T560
+---
+ app.go           |  7 +++---
+ config/config.go |  5 +++++
+ keys.go          | 12 +++++++++++
+ templates.go     | 56 ++++++++++++++++++++++++------------------------
+ 4 files changed, 49 insertions(+), 31 deletions(-)
+
+diff --git a/app.go b/app.go
+index 9fc04a9..af7fa72 100644
+--- a/app.go
++++ b/app.go
+@@ -19,6 +19,7 @@ import (
+ 	"net/url"
+ 	"os"
+ 	"os/signal"
++	"path/filepath"
+ 	"regexp"
+ 	"strings"
+ 	"syscall"
+@@ -41,7 +42,7 @@ import (
+ )
+ 
+ const (
+-	staticDir       = "static/"
++	staticDir       = "static"
+ 	assumedTitleLen = 80
+ 	postsPerPage    = 10
+ 
+@@ -336,7 +337,7 @@ func Serve() {
+ 	isSingleUser = app.cfg.App.SingleUser
+ 	app.cfg.Server.Dev = *debugPtr
+ 
+-	initTemplates()
++	initTemplates(app.cfg)
+ 
+ 	// Load keys
+ 	log.Info("Loading encryption keys...")
+@@ -395,7 +396,7 @@ func Serve() {
+ 	}
+ 
+ 	// Handle static files
+-	fs := http.FileServer(http.Dir(staticDir))
++	fs := http.FileServer(http.Dir(filepath.Join(app.cfg.Server.StaticParentDir, staticDir)))
+ 	shttp.Handle("/", fs)
+ 	r.PathPrefix("/").Handler(fs)
+ 
+diff --git a/config/config.go b/config/config.go
+index 2acf763..ffecc72 100644
+--- a/config/config.go
++++ b/config/config.go
+@@ -30,6 +30,11 @@ type (
+ 		TLSCertPath string `ini:"tls_cert_path"`
+ 		TLSKeyPath  string `ini:"tls_key_path"`
+ 
++		TemplatesParentDir string `ini:"templates_parent_dir"`
++		StaticParentDir    string `ini:"static_parent_dir"`
++		PagesParentDir     string `ini:"pages_parent_dir"`
++		KeysParentDir      string `ini:"keys_parent_dir"`
++
+ 		Dev bool `ini:"-"`
+ 	}
+ 
+diff --git a/keys.go b/keys.go
+index 92a9ad5..ccc872e 100644
+--- a/keys.go
++++ b/keys.go
+@@ -38,16 +38,28 @@ func initKeys(app *app) error {
+ 	var err error
+ 	app.keys = &keychain{}
+ 
++	emailKeyPath = filepath.Join(app.cfg.Server.KeysParentDir, emailKeyPath)
++	if debugging {
++		log.Info("  %s", emailKeyPath)
++	}
+ 	app.keys.emailKey, err = ioutil.ReadFile(emailKeyPath)
+ 	if err != nil {
+ 		return err
+ 	}
+ 
++	cookieAuthKeyPath = filepath.Join(app.cfg.Server.KeysParentDir, cookieAuthKeyPath)
++	if debugging {
++		log.Info("  %s", cookieAuthKeyPath)
++	}
+ 	app.keys.cookieAuthKey, err = ioutil.ReadFile(cookieAuthKeyPath)
+ 	if err != nil {
+ 		return err
+ 	}
+ 
++	cookieKeyPath = filepath.Join(app.cfg.Server.KeysParentDir, cookieKeyPath)
++	if debugging {
++		log.Info("  %s", cookieKeyPath)
++	}
+ 	app.keys.cookieKey, err = ioutil.ReadFile(cookieKeyPath)
+ 	if err != nil {
+ 		return err
+diff --git a/templates.go b/templates.go
+index d03fb0d..802856f 100644
+--- a/templates.go
++++ b/templates.go
+@@ -11,10 +11,10 @@
+ package writefreely
+ 
+ import (
+-	"fmt"
+ 	"github.com/dustin/go-humanize"
+ 	"github.com/writeas/web-core/l10n"
+ 	"github.com/writeas/web-core/log"
++	"github.com/writeas/writefreely/config"
+ 	"html/template"
+ 	"io"
+ 	"io/ioutil"
+@@ -54,53 +54,53 @@ func showUserPage(w http.ResponseWriter, name string, obj interface{}) {
+ 	}
+ }
+ 
+-func initTemplate(name string) {
++func initTemplate(parentDir, name string) {
+ 	if debugging {
+-		log.Info("  %s%s%s.tmpl", templatesDir, string(filepath.Separator), name)
++		log.Info("  " + filepath.Join(parentDir, templatesDir, name+".tmpl"))
+ 	}
+ 
+ 	files := []string{
+-		filepath.Join(templatesDir, name+".tmpl"),
+-		filepath.Join(templatesDir, "include", "footer.tmpl"),
+-		filepath.Join(templatesDir, "base.tmpl"),
++		filepath.Join(parentDir, templatesDir, name+".tmpl"),
++		filepath.Join(parentDir, templatesDir, "include", "footer.tmpl"),
++		filepath.Join(parentDir, templatesDir, "base.tmpl"),
+ 	}
+ 	if name == "collection" || name == "collection-tags" {
+ 		// These pages list out collection posts, so we also parse templatesDir + "include/posts.tmpl"
+-		files = append(files, filepath.Join(templatesDir, "include", "posts.tmpl"))
++		files = append(files, filepath.Join(parentDir, templatesDir, "include", "posts.tmpl"))
+ 	}
+ 	if name == "collection" || name == "collection-tags" || name == "collection-post" || name == "post" {
+-		files = append(files, filepath.Join(templatesDir, "include", "post-render.tmpl"))
++		files = append(files, filepath.Join(parentDir, templatesDir, "include", "post-render.tmpl"))
+ 	}
+ 	templates[name] = template.Must(template.New("").Funcs(funcMap).ParseFiles(files...))
+ }
+ 
+-func initPage(path, key string) {
++func initPage(parentDir, path, key string) {
+ 	if debugging {
+-		log.Info("  %s", key)
++		log.Info("  [%s] %s", key, path)
+ 	}
+ 
+ 	pages[key] = template.Must(template.New("").Funcs(funcMap).ParseFiles(
+ 		path,
+-		filepath.Join(templatesDir, "include", "footer.tmpl"),
+-		filepath.Join(templatesDir, "base.tmpl"),
++		filepath.Join(parentDir, templatesDir, "include", "footer.tmpl"),
++		filepath.Join(parentDir, templatesDir, "base.tmpl"),
+ 	))
+ }
+ 
+-func initUserPage(path, key string) {
++func initUserPage(parentDir, path, key string) {
+ 	if debugging {
+-		log.Info("  %s", key)
++		log.Info("  [%s] %s", key, path)
+ 	}
+ 
+ 	userPages[key] = template.Must(template.New(key).Funcs(funcMap).ParseFiles(
+ 		path,
+-		filepath.Join(templatesDir, "user", "include", "header.tmpl"),
+-		filepath.Join(templatesDir, "user", "include", "footer.tmpl"),
++		filepath.Join(parentDir, templatesDir, "user", "include", "header.tmpl"),
++		filepath.Join(parentDir, templatesDir, "user", "include", "footer.tmpl"),
+ 	))
+ }
+ 
+-func initTemplates() error {
++func initTemplates(cfg *config.Config) error {
+ 	log.Info("Loading templates...")
+-	tmplFiles, err := ioutil.ReadDir(templatesDir)
++	tmplFiles, err := ioutil.ReadDir(filepath.Join(cfg.Server.TemplatesParentDir, templatesDir))
+ 	if err != nil {
+ 		return err
+ 	}
+@@ -109,20 +109,16 @@ func initTemplates() error {
+ 		if !f.IsDir() && !strings.HasPrefix(f.Name(), ".") {
+ 			parts := strings.Split(f.Name(), ".")
+ 			key := parts[0]
+-			initTemplate(key)
++			initTemplate(cfg.Server.TemplatesParentDir, key)
+ 		}
+ 	}
+ 
+ 	log.Info("Loading pages...")
+ 	// Initialize all static pages that use the base template
+-	filepath.Walk(pagesDir, func(path string, i os.FileInfo, err error) error {
++	filepath.Walk(filepath.Join(cfg.Server.PagesParentDir, pagesDir), func(path string, i os.FileInfo, err error) error {
+ 		if !i.IsDir() && !strings.HasPrefix(i.Name(), ".") {
+-			parts := strings.Split(path, string(filepath.Separator))
+ 			key := i.Name()
+-			if len(parts) > 2 {
+-				key = fmt.Sprintf("%s%s%s", parts[1], string(filepath.Separator), i.Name())
+-			}
+-			initPage(path, key)
++			initPage(cfg.Server.PagesParentDir, path, key)
+ 		}
+ 
+ 		return nil
+@@ -130,14 +126,18 @@ func initTemplates() error {
+ 
+ 	log.Info("Loading user pages...")
+ 	// Initialize all user pages that use base templates
+-	filepath.Walk(filepath.Join(templatesDir, "user"), func(path string, f os.FileInfo, err error) error {
++	filepath.Walk(filepath.Join(cfg.Server.TemplatesParentDir, templatesDir, "user"), func(path string, f os.FileInfo, err error) error {
+ 		if !f.IsDir() && !strings.HasPrefix(f.Name(), ".") {
+-			parts := strings.Split(path, string(filepath.Separator))
++			corePath := path
++			if cfg.Server.TemplatesParentDir != "" {
++				corePath = corePath[len(cfg.Server.TemplatesParentDir)+1:]
++			}
++			parts := strings.Split(corePath, string(filepath.Separator))
+ 			key := f.Name()
+ 			if len(parts) > 2 {
+ 				key = filepath.Join(parts[1], f.Name())
+ 			}
+-			initUserPage(path, key)
++			initUserPage(cfg.Server.TemplatesParentDir, path, key)
+ 		}
+ 
+ 		return nil
+
+From 5c19d249b67a3d550cf58e5263a46af553f60d0e Mon Sep 17 00:00:00 2001
+From: Matt Baer <matt@write.as>
+Date: Fri, 18 Jan 2019 19:17:10 -0500
+Subject: [PATCH 2/2] Log and exit when templates init fails
+
+---
+ app.go | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/app.go b/app.go
+index af7fa72..ddb6e20 100644
+--- a/app.go
++++ b/app.go
+@@ -337,11 +337,15 @@ func Serve() {
+ 	isSingleUser = app.cfg.App.SingleUser
+ 	app.cfg.Server.Dev = *debugPtr
+ 
+-	initTemplates(app.cfg)
++	err := initTemplates(app.cfg)
++	if err != nil {
++		log.Error("load templates: %s", err)
++		os.Exit(1)
++	}
+ 
+ 	// Load keys
+ 	log.Info("Loading encryption keys...")
+-	err := initKeys(app)
++	err = initKeys(app)
+ 	if err != nil {
+ 		log.Error("\n%s\n", err)
+ 	}
