@@ -7,6 +7,7 @@ pkgbase = kakoune-git
 	arch = armv7h
 	license = custom:unlicense
 	makedepends = git
+	makedepends = pkg-config
 	depends = ncurses
 	optdepends = aspell: spell checking support
 	optdepends = clang: add command for C/CPP insert mode completion support
