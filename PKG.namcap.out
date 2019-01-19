@@ -1,0 +1,2 @@
+php-transip-api E: unknown is not a common license (it's not in /usr/share/licenses/common/)
+php-transip-api W: Dependency included and not needed ('php')
