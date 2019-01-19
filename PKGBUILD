@@ -4,7 +4,7 @@
 
 pkgname=panda3d-python2
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('desktop-file-utils' 'shared-mime-info' 'xorg-server' 'libgl'
          'openssl' 'libjpeg' 'libpng' 'libtiff' 'freetype2' 'gtk2'
          'openal' 'libxrandr' 'libxcursor' 'libxxf86dga')
-makedepends=('python2' 'bison' 'cmake')
+makedepends=('python2' 'bison' 'cmake' 'flex')
 
 # NOTICE: please read http://www.panda3d.org/manual/index.php/Dependencies for
 # more information. Optdepends you want your package to support, need to be
@@ -41,7 +41,10 @@ optdepends=(# Pretty much required
             'openal: OpenAL audio'
             'zlib: Compression support'
             'libxxf86dga: Relative mouse mode'
+            'openexp: OpenEXR image format support'
             # Optional
+            'assimp: Open Asset Import'
+            'opus: Read .opus audio files'
             'bullet: Support for the physics engine'
             'eigen: Optimised linear algebra library'
             'fmodex: FMod audio'
@@ -52,7 +55,7 @@ optdepends=(# Pretty much required
             'artoolkit: library for augmented reality (AUR)'
             'opencv: alternative to ffmpeg for video texture support'
             'fcollada: used for dae2egg and for loading dae files directly into Panda (unavailable)'
-            'vrpn: support for virtual reality trackers (unavailable)'
+            'vrpn-git: support for virtual reality trackers (unavailable)'
             # ARM stuff, not really applicable, stated for completeness
             # NOTE: if you have libgles, you _must_ install libegl for this package to compile
             'libgles: OpenGL ES support'
