@@ -3,7 +3,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin
-pkgver=10.0.1
+pkgver=10.0.2
 # Check at https://github.com/jellyfin/jellyfin/tree/v**PKGVER**/ThirdParty
 _taglib_sharp_commit=ee5ab21742b71fd1b87ee24895582327e9e04776
 pkgrel=1
@@ -12,14 +12,14 @@ arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
 depends=('ffmpeg' 'imagemagick' 'dotnet-sdk' 'sqlite')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin/archive/v10.0.1.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin/archive/v$pkgver.tar.gz"
         "taglib-sharp-$_taglib_sharp_commit.tar.gz::https://github.com/mono/taglib-sharp/archive/$_taglib_sharp_commit.tar.gz"
         'jellyfin.conf'
         'jellyfin.service'
         'jellyfin.sysusers'
         'jellyfin.tmpfiles')
 backup=('etc/conf.d/jellyfin')
-sha256sums=('28943b990a0c73f3eb9f650107a09782907cee423b60bf3dcd8d7d52c12608e1'
+sha256sums=('46b30aa62845c1ced7a52113007d4c56ba1a2c20f6bd6d2588327a18dda0882d'
             'a0d32a20ba31609bb16def46723fcf937b42aa65442e1b363f85343b95a491c6'
             'ff3c81ddfd716f179fec8149ea6c2db379e05cd20bd0ffa8ce3ff3a609ca9749'
             '61febaa0bbe71235d724f236223c7315da393b8b481e4bbed86489a343bca51f'
@@ -35,6 +35,8 @@ prepare() {
 build(){
   cd $pkgname-$pkgver
 
+  # Disable dotnet telemetry
+  export DOTNET_CLI_TELEMETRY_OPTOUT=1
   dotnet build --configuration Release MediaBrowser.sln
   # dotnet doesn't like fakeroot
   dotnet publish --configuration Release MediaBrowser.sln --output "$PWD"/build
