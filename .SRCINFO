@@ -1,0 +1,17 @@
+pkgbase = python-asgiref1
+	pkgdesc = ASGI in-memory channel layer (v1)
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/django/asgiref
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/django/asgiref/archive/1.1.2.tar.gz
+	sha256sums = 4b00936710ee10c72b656eb90e47c0000d353d0741961df8ce9b3c8bbed49020
+
+pkgname = python-asgiref1
+	checkdepends = python-six
+
+pkgname = python2-asgiref1
+	checkdepends = python2-six
