@@ -1,13 +1,13 @@
 pkgbase = spdlog
 	pkgdesc = Very fast, header only, C++ logging library
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/gabime/spdlog
 	arch = any
 	license = MIT
 	makedepends = cmake
-	source = spdlog-1.3.0.tar.gz::https://github.com/gabime/spdlog/archive/v1.3.0.tar.gz
-	sha256sums = 78786c641ca278388107e30f1f0fa0307e7e98e1c5279c3d29f71a143f9176b6
+	source = spdlog-1.3.1.tar.gz::https://github.com/gabime/spdlog/archive/v1.3.1.tar.gz
+	sha256sums = 160845266e94db1d4922ef755637f6901266731c4cb3b30b45bf41efa0e6ab70
 
 pkgname = spdlog
 
