@@ -1,0 +1,42 @@
+--- a/setup.py	2018-12-15 04:45:58.000000000 +0800
++++ b/setup.py	2019-01-19 23:43:53.493115239 +0800
+@@ -121,24 +121,20 @@
+                    xpaio.c
+                    """.split()
+ 
+-    XPA_SOURCES = [os.path.join(XPALIB_DIR, c) for c in XPA_FILES]
+-    XPALIB_DEFINES = [("HAVE_CONFIG_H", "1")]
++    XPA_SOURCES = []
++    XPALIB_DEFINES = []
+     XPA_SOURCES.append(CYTHON_SOURCE)
+ 
+     xpa_module = Extension("xpa",
+                            sources=XPA_SOURCES,
+-                           include_dirs=[XPALIB_DIR],
+                            define_macros=XPALIB_DEFINES,
+-                           depends=[CONF_H_NAME],
++                           libraries=['xpa'],
+                            )
+     if use_cython:
+         ext = cythonize(xpa_module)
+ 
+         class my_clean(clean):
+             def run(self):
+-                import subprocess
+-                subprocess.call(["make", "clean"],
+-                                cwd=XPALIB_DIR)
+                 if os.access(CONF_H_NAME, os.F_OK):
+                     os.remove(CONF_H_NAME)
+                 os.remove("wrappers/xpa.c")
+@@ -147,11 +143,6 @@
+ 
+         class build_ext_with_configure(build_ext):
+             def build_extensions(self):
+-                import subprocess
+-                subprocess.call(["make", "-f", "Makefile", "clean"],
+-                                cwd=XPALIB_DIR)
+-                subprocess.call(["sh", "./configure"], cwd=XPALIB_DIR)
+-                subprocess.call(["make", "-f", "Makefile"], cwd=XPALIB_DIR)
+                 build_ext.build_extensions(self)
+ 
+         cmdclass.update({'build_ext': build_ext_with_configure,
