@@ -1,0 +1,37 @@
+pkgbase = jre10
+	pkgdesc = Oracle Java Runtime Environment (public release - end of support)
+	pkgver = 10.0.2
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = jre10.install
+	arch = x86_64
+	license = custom:Oracle
+	depends = ca-certificates-java
+	depends = hicolor-icon-theme
+	depends = java-runtime-common
+	depends = nss
+	depends = xdg-utils
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for Gtk+ look and feel (desktop)
+	provides = java-runtime=10
+	provides = java-runtime-headless=10
+	provides = java-web-start=10
+	provides = java-runtime-jre=10
+	provides = java-runtime-headless-jre=10
+	provides = java-web-start-jre=10
+	provides = java-openjfx=10
+	provides = jre
+	conflicts = java-runtime-jre=10
+	backup = etc/java-jre10/management/jmxremote.access
+	backup = etc/java-jre10/management/management.properties
+	backup = etc/java-jre10/security/java.policy
+	backup = etc/java-jre10/security/java.security
+	backup = etc/java-jre10/security/javaws.policy
+	backup = etc/java-jre10/logging.properties
+	backup = etc/java-jre10/net.properties
+	backup = etc/java-jre10/sound.properties
+	source = http://url.muflone.com/jre-10.0.2_linux-x64_bin.tar.gz
+	sha256sums = 7d2909a597574f1821903790bb0f31aaa57ab7348e3ae53639c850371450845d
+
+pkgname = jre10
+
