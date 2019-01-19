@@ -27,7 +27,7 @@
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.4.r545.gac9350d37
+pkgver=v0.6.5.RC1.r0.gd143f761c
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
