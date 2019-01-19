@@ -2,16 +2,17 @@
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 
 pkgname=gambit-c
-pkgver=4.9.1
+pkgver=4.9.2
 pkgrel=1
-pkgdesc='Scheme R5RS interpreter and compiler'
-arch=('x86_64')
-url='http://gambitscheme.org/'
-license=('LGPL' 'Apache')
-options=('staticlibs')
-makedepends=('git')
-source=("https://www.iro.umontreal.ca/~${pkgname%-c}/download/${pkgname%-c}/v${pkgver%.*}/source/${pkgname/-c/-v}${pkgver//./_}-devel.tgz")
-sha256sums=('87d7630115f866bc62ba8eabf191891c14be038080f702bf4db7c6874cd97f82')
+pkgdesc='Efficient implementation of the Scheme programming language'
+arch=(x86_64)
+# http://gambitscheme.org/ is down sometimes
+url='https://github.com/gambit/gambit'
+license=(LGPL Apache)
+options=(staticlibs)
+makedepends=(git)
+source=("$pkgname-$pkgver.tgz::https://www.iro.umontreal.ca/~${pkgname%-c}/download/${pkgname%-c}/v${pkgver%.*}/source/${pkgname/-c/-v}${pkgver//./_}-devel.tgz")
+sha256sums=('bbcb47ce1075607b8560bd249f636056746eee588b9af1801d92f71beaa8f2f6')
 
 build() {
   cd "${pkgname/-c/-v}${pkgver//./_}-devel"
