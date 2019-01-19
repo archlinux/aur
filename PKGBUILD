@@ -2,7 +2,7 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='stratisd'
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Easy to use local storage management for Linux.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('asciidoc' 'cargo' 'rust')
 depends=('dbus')
 optdepends=('stratis-cli: command line interface')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratisd/archive/v${pkgver}.tar.gz")
-sha256sums=('a41beebcdfefc67f87e8aee4df0322fa52cc19c374788836e454f83e627aafca')
+sha256sums=('27e8dcae06b5bbb89ed4e798435f004fd86964400da7162fa2a56742cb4e9bc3')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -40,7 +40,7 @@ package() {
   install -D -m755 "target/${CARCH}-unknown-linux-gnu/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -D -m644 stratisd.service "${pkgdir}/usr/lib/systemd/system/stratisd.service"
   install -D -m644 org.storage.stratis1.service "${pkgdir}/usr/share/dbus-1/system-services/org.storage.stratis1.service"
-  install -D -m644 stratisd.conf "${pkgdir}/etc/dbus-1/system.d/stratisd.conf"
+  install -D -m644 stratisd.conf "${pkgdir}/usr/share/dbus-1/system.d/stratisd.conf"
   install -D -m644 docs/stratisd.8 "${pkgdir}/usr/share/man/man8/stratisd.8"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
