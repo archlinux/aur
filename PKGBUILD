@@ -7,10 +7,10 @@ pkgdesc="An unidentifiable mechanism that helps you bypass GFW"
 arch=('x86_64')
 url="https://github.com/trojan-gfw/trojan"
 license=('GPL3')
-depends=('boost-libs' 'openssl' 'mariadb-libs')
+depends=('boost-libs' 'openssl' 'libmariadbclient')
 optdepends=('ca-certificates: server certificate verification'
             'mariadb: advanced user management')
-makedepends=('git' 'cmake' 'boost' 'openssl' 'mariadb-libs')
+makedepends=('git' 'cmake' 'boost' 'openssl' 'libmariadbclient')
 checkdepends=('openssl' 'python' 'curl')
 conflicts=('trojan')
 provides=('trojan')
