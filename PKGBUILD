@@ -1,39 +1,48 @@
-# Maintainer: Det
+# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
+# Contributor: Det
 # Contributor: Ondrej Kucera <ondrej.kucera@centrum.cz>
 # Contributor: Andrea Scarpino <bash.lnx@gmail.com>
 
-pkgname=jdk8-docs
-_major=8
-_minor=192
-_build=b12
-_hash=750e1c8617c5452694857ad95c3ee230
-pkgver=${_major}u${_minor}
-pkgrel=2
-pkgdesc="Documentation for Oracle Java $_major Development Kit"
+set -u
+_major='8'
+pkgname="jdk${_major}-docs"
+_minor='202'; _build='b07'; _hash='1961070e4c9b4e26a04e7f5a083f551e'
+pkgver="${_major}u${_minor}"
+pkgrel='1'
+pkgdesc="Documentation for Oracle Java ${_major} Development Kit"
 arch=('any')
-url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
+url='http://www.oracle.com/technetwork/java/javase/downloads/index.html'
 license=('custom:Oracle')
-depends=("java-environment>=$_major")
+depends=("java-environment>=${_major}")
 options=('!strip')
-source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/jdk-${pkgver}-docs-all.zip"
-        "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor}-b10/${_hash}/javafx-${pkgver}-apidocs.zip"
-        'LICENSE-Documentation.txt'
-        'LICENSE-Oracle-Legal-Notices.txt')
-md5sums=('6ffc6a5ff3e01acae17b5b1e99059399'
-         '43e7c48ceb1096d612413e94ef695b45'
+source=(
+  "http://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/jdk-${pkgver}-docs-all.zip"
+  "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor}-${_build}/${_hash}/javafx-${pkgver}-apidocs.zip"
+  'LICENSE-Documentation.txt'
+  'LICENSE-Oracle-Legal-Notices.txt'
+)
+md5sums=('2144909fb37ddd8ffb16871904cc342c'
+         '719931e920b6ebb4e7058a7024bcc91d'
          '4d54057ca75b691366977dab2277e869'
          '3137397f4dba13f4a79157819af583a3')
+sha256sums=('c036b8daf867925cc7eb59dfd2f50a72c66f88128a9c174d98bafeb907e56e74'
+            '01c164a03ff5046dc06d0d3ea30dd9f0e969eda52bd774ff145c2b1c381fe22b'
+            '14dc1953902010f7b48891e795183b39c048b19881815eec6a57cf3d62631ab7'
+            '99e666088f11baacfe1816747e69441a7002e024ac0d7a4ca4092c6cb2658c9f')
 
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
+DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
 
-package() {  
+package() {
+  set -u
   # Create Dirs
-  install -d "$pkgdir"/usr/share/doc/java$_major/javafx/
+  install -d "${pkgdir}/usr/share/doc/java${_major}/javafx/"
 
   # Install
-  mv docs/* "$pkgdir"/usr/share/doc/java$_major/
-  mv api "$pkgdir"/usr/share/doc/java$_major/javafx/
+  mv docs/* "${pkgdir}/usr/share/doc/java${_major}/"
+  mv api "${pkgdir}/usr/share/doc/java${_major}/javafx/"
 
   # License
-  install -Dm644 LICENSE-Oracle-Legal-Notices.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dpm644 'LICENSE-Oracle-Legal-Notices.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  set +u
 }
+set +u
