@@ -4,15 +4,15 @@
 
 _name=PyChromecast
 pkgname=python-pychromecast
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc='Library for Python 3 to communicate with the Google Chromecast'
 arch=('any')
 url=https://github.com/balloob/pychromecast
 license=('MIT')
 depends=('python' 'python-protobuf' 'python-requests' 'python-zeroconf' 'python-six' 'python-setuptools' 'python-casttube')
 source=("https://files.pythonhosted.org/packages/source/p/pychromecast/$_name-$pkgver.tar.gz")
-sha512sums=('44a2cb80e5a3a3c8c5ca3dd6cb55bf50c4c536afc4828f9d7c14c9792ec59bf5bb88988448aeaf33b5d5472f60d7f6ca39f0ea5f4f3896d5188654b962065abe')
+sha512sums=('2ba721f4c017cf288377b6cf8e137a38618d8f5ebded9d860f372f44deb9fe2ac15df065f72f0a279a62a3b7203549408aa60e1b3c75a626a2fed7a9e6638114')
 
 build() {
   cd $_name-$pkgver
