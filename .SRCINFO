@@ -1,6 +1,6 @@
 pkgbase = bcachefs-tools-git
 	pkgdesc = bcachefs filesystem utilities
-	pkgver = 414
+	pkgver = 415
 	pkgrel = 1
 	url = https://evilpiepirate.org/git/bcachefs-tools.git/
 	install = bcachefs-tools-git.install
@@ -15,6 +15,7 @@ pkgbase = bcachefs-tools-git
 	makedepends = pkgconf
 	makedepends = zlib
 	makedepends = liburcu
+	makedepends = libaio
 	provides = bcachefs-tools
 	source = git+https://evilpiepirate.org/git/bcachefs-tools
 	source = ad41c2fb76a96f772d75f3b4b7687fcd29aa0574.patch

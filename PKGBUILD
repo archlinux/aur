@@ -1,7 +1,7 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 
 pkgname=bcachefs-tools-git
-pkgver=414
+pkgver=415
 pkgrel=1
 pkgdesc="bcachefs filesystem utilities"
 url="https://evilpiepirate.org/git/bcachefs-tools.git/"
@@ -10,7 +10,7 @@ license=("GPL2")
 install="${pkgname}.install"
 
 provides=("bcachefs-tools")
-makedepends=("git" "libscrypt" "libsodium" "attr" "libutil-linux" "keyutils" "pkgconf" "zlib" "liburcu")
+makedepends=("git" "libscrypt" "libsodium" "attr" "libutil-linux" "keyutils" "pkgconf" "zlib" "liburcu" "libaio")
 
 source=("git+https://evilpiepirate.org/git/bcachefs-tools"
         "ad41c2fb76a96f772d75f3b4b7687fcd29aa0574.patch")
