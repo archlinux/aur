@@ -2,14 +2,14 @@
 
 pkgname=arandr-gtk3-git
 _realname=arandr
-pkgver=0.1.r0.gaf211d1
+pkgver=0.1.10.r1.gab92f21
 pkgrel=1
 pkgdesc="Provide a simple visual front end for XRandR 1.2. GTK3 port."
 arch=('any')
 url="https://github.com/actionless/arandr"
 license=('GPL3')
 depends=('python-gobject' 'desktop-file-utils' 'xorg-xrandr')
-makedepends=('docutils' 'git')
+makedepends=('git' 'python-docutils')
 conflicts=('arandr' 'arandr-git')
 provides=('arandr')
 install=$pkgname.install
