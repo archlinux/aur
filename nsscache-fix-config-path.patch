@@ -1,0 +1,13 @@
+diff -ura nsscache.orig/nsscache-version-0.37/nss_cache/caches/files.py nsscache.new/nsscache-version-0.37/nss_cache/caches/files.py
+--- nsscache.orig/nsscache-version-0.37/nss_cache/caches/files.py	2018-10-31 13:27:27.000000000 -0500
++++ nsscache.new/nsscache-version-0.37/nss_cache/caches/files.py	2019-01-18 19:55:57.707376798 -0600
+@@ -52,8 +52,7 @@
+       i = i[14:] 
+     parser.read(i)
+   else:
+-    # Config in nsscache folder
+-    parser.read('nsscache.conf')
++    parser.read('/etc/nsscache.conf')
+ prefix = parser.get('suffix', 'prefix')
+ suffix = parser.get('suffix', 'suffix')
+ 

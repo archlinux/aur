@@ -1,0 +1,18 @@
+pkgbase = nsscache
+	pkgdesc = Asynchronously synchronise local NSS databases with remote directory services
+	pkgver = 0.37
+	pkgrel = 1
+	url = https://github.com/google/nsscache
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = python2-pycurl
+	depends = python2-ldap
+	optdepends = python2-boto3
+	source = https://github.com/google/nsscache/archive/version/0.37.tar.gz
+	source = nsscache-fix-config-path.patch
+	sha256sums = fab735cabb6ea6e46ce2c52e2c9ea9c2938057fa9e3992b3509f31cf5948fff4
+	sha256sums = 1212644452638f75fc6a3ea16c7eb8209d93ba608c9dc34e898fafd3df0630a9
+
+pkgname = nsscache
+
