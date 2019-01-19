@@ -4,7 +4,7 @@
 # Contributor: Eric Belanger <eric@archlinux.org>
 pkgname=plplot510
 pkgver=5.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform software package for creating scientific plots"
 arch=('i686' 'x86_64')
 url="http://plplot.sourceforge.net/"
@@ -47,4 +47,4 @@ package() {
     install -D -m644 ../Copyright ${pkgdir}/usr/share/licenses/${pkgname%510}/LICENSE
 }
 md5sums=('ece8c0b4d5cd815968a6d56bed0fbe7b' \
-    '9a50d8aa4c088bd29355076f6fc91f31')
+    '03c47ad0933fbc127c80df823ba756c3')

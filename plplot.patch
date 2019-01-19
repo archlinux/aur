@@ -74,13 +74,13 @@
  
  # Enable testing framework for examples
 --- ./cmake/modules/pkg-config.cmake.old  2014-02-06 05:06:07.000000000 +0000
-+++ ./cmake/modules/pkg-config.cmake      2015-02-11 18:23:57.654766094 +0000
++++ ./cmake/modules/pkg-config.cmake      2019-01-16 22:41:05.000000000 +0000
 @@ -94,7 +94,8 @@
      set(_xprefix ${_prefix})
    endif(FORCE_EXTERNAL_STATIC)
    
 -  _pkg_check_modules_internal(0 0 ${_prefix} "${_package}")
-+  _pkg_check_modules_internal(0 0 0 0 ${_prefix} "${_package}")
++  _pkg_check_modules_internal(0 0 0 0 0 ${_prefix} "${_package}")
 +
    if(${_prefix}_FOUND)
      cmake_link_flags(${_link_FLAGS} "${${_xprefix}_LDFLAGS}")
