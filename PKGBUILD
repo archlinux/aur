@@ -3,7 +3,7 @@ pkgname=v2cmod-z
 pkgver=2.19.1
 _reldate=20190113
 _b11ver=B11.25.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2ch/5ch and Twitter browser"
 arch=("any")
 url="http://v2c.s50.xrea.com/"
@@ -29,6 +29,7 @@ prepare() {
 
 package() {
 	install -d "${pkgdir}/opt/v2cmod-z"
+	chmod a+w "${pkgdir}/opt/v2cmod-z"
 	cp -r "${srcdir}/v2c/"{launcher,v2cicon.png} "${pkgdir}/opt/v2cmod-z"
 	install "${srcdir}/v2c/"{mkdticon,rmdticon,v2c} "${pkgdir}/opt/v2cmod-z"
 
