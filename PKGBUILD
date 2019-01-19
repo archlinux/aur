@@ -34,16 +34,16 @@ pkgver() {
 
 check() {
   cd "${srcdir}/${pkgname}/src"
-  debug=no make test
+  make debug=no test
 }
 
 build() {
   cd "${srcdir}/${pkgname}/src"
-  debug=no make
+  make debug=no
 }
 
 package() {
   cd "${srcdir}/${pkgname}/src"
-  debug=no make install-strip DESTDIR="${pkgdir}" PREFIX=/usr
+  make debug=no install-strip DESTDIR="${pkgdir}" PREFIX=/usr
   install -D ../UNLICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
