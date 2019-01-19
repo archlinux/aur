@@ -4,7 +4,7 @@
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
 pkgver=1.14.4
-pkgrel=2
+pkgrel=3
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -22,11 +22,11 @@ makedepends=(autoconf-archive git gobject-introspection lib32-gtk3 lib32-librsvg
              python vulkan-headers lib32-vulkan-validation-layers)
 _commit=566e4ecc223b18fce8bd932f5e4885f41f746dd4  # tags/1.14.4^0
 source=("git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad#commit=$_commit"
-        "gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common"
-        missing-includes.diff)
+        'gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common'
+        'gst-fdkaac2.patch::https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/merge_requests/77.patch')
 sha256sums=('SKIP'
             'SKIP'
-            'acf625d58611372532bc76e7276dacd69d2a9f7dee88ed9e2e8ecae0881476a3')
+            '273e8935061be3c951da81231deece84325311f896a7edf985bbf3716c559801')
 
 pkgver() {
     cd $_basename
@@ -37,8 +37,8 @@ pkgver() {
 prepare() {
     cd $_basename
 
-    # error: ‘CV_RGB’ was not declared in this scope
-    patch -Np1 -i ../missing-includes.diff
+    # libfdk-aac 2.0.0
+    patch -Np1 -i ../gst-fdkaac2.patch
 
     git submodule init
     git config --local submodule.common.url "$srcdir/gst-common"
