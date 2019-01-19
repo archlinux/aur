@@ -4,6 +4,7 @@ After=syslog.target
 After=network.target
 After=mysqld.service
 After=mariadb.service
+After=postgresql.service
 
 [Service]
 RestartSec=1s

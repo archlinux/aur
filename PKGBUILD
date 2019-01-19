@@ -2,7 +2,7 @@
 
 pkgname=jackal
 pkgver=0.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc='An XMPP/Jabber server'
 arch=('x86_64' 'i686')
 url='https://github.com/ortuman/jackal'
@@ -19,9 +19,9 @@ source=(https://github.com/ortuman/jackal/archive/v${pkgver}.tar.gz
         jackal.tmpfiles
         jackal.yml)
 sha256sums=('1c6c8827d905802a35f42bac73476eead768cf8a5540334403e3ee241c2162e2'
-            '537ff4d0a3467f0b4ed64c677fcdb0d160bdc38af9ded2e2e33783a88c9e8f3b'
+            '0a9a9065957e5b0576e5443b29bf0cae81281194664376569a91c51f85e7d7ff'
             '5fec4f4053ac15cd597bb32ba03c35d85f52438204fd801edf333403ec2c4bf3'
-            '6692334f0d5157d8da200e1d1e3817805a321342c02677cb0a97236c68cf465e'
+            '20b7e5a5fee727e72fdbac54182b594a838340c0625036ca9d117e2a9d710045'
             'e7e0b6d701c4e0c7b76fb3b446e01926368325e70aff04fa33eb5f9e88f392be')
 install=jackal.install
 
