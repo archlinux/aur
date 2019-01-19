@@ -2,10 +2,10 @@
 
 _pkgname=jackal
 pkgname=${_pkgname}-git
-pkgver=v0.4.5_0_gffecee5985cc
+pkgver=v0.4.6_1_g8be4ba9049ea
 pkgrel=1
 pkgdesc='An XMPP/Jabber server'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686')
 url='https://github.com/ortuman/jackal'
 license=('GPL3')
 depends=('glibc')
@@ -19,11 +19,11 @@ source=(git+https://github.com/ortuman/jackal.git
         jackal.sysusers
         jackal.tmpfiles
         jackal.yml)
-sha512sums=('SKIP'
-            'd7025628d82371c6ef7a942a918d8970ca54f01ddd513e2577474a31d880355045415c131cf68b8df6f1cc3b19b17135a8d955815f6b4f91d6ce77a70d982f7e'
-            '470ec8c5958658e3f264f2186ccfb14a2b9cd6760da86116a89ecfbf147ef38310fb767ae1bb79a0fb6ae3881de399322a52540da7f4b21f4bd791d54cf47b11'
-            '8eb4c15f63d1f4028d3dbe8a0861ffa514f6643c8fa918fc54c1fda4d6380d914b12d6cf1a199ee0929c966b311645aa482825f6d8ea29173865da29530bb711'
-            'c8445899ab3708bd11754e4c1cc74069c8586521d4e9d41c8cc93a7738889817a5502f19484685f3d1b5e658eb40eea1bd1b61c1fc447c5c3e4569faf1b82664')
+sha256sums=('SKIP'
+            '537ff4d0a3467f0b4ed64c677fcdb0d160bdc38af9ded2e2e33783a88c9e8f3b'
+            '5fec4f4053ac15cd597bb32ba03c35d85f52438204fd801edf333403ec2c4bf3'
+            '6692334f0d5157d8da200e1d1e3817805a321342c02677cb0a97236c68cf465e'
+            '490d8da615e0f2517bb4493cb42bfa3de902fdd47b0e8e9f289bd2da12846be4')
 install=jackal.install
 
 pkgver() {
