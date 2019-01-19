@@ -3,7 +3,7 @@
 
 pkgname=gotop
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal based graphical activity monitor inspired by gtop and vtop'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/cjbassi/gotop"
@@ -12,7 +12,7 @@ provides=(gotop)
 conflicts=(gotop)
 makedepends=("go>=1.11.0")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cjbassi/gotop/archive/${pkgver}.tar.gz")
-sha256sums=('0041d36e664870d0b461b80bba4a2fb5120af1030230f09e3e9887a67c117363')
+sha256sums=('50c823b6f774a73bea284172cd1dacc776fe64db6e5b7d20a9f4c0f2456f1dd3')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
