@@ -1,5 +1,6 @@
 # This example config is neither production-ready
-# nor secure. Please consult the official docs:
+# nor secure. Please consult the official docs
+# for full configuration instructions:
 # https://www.nomadproject.io/docs/agent/config.html
 
 bind_addr = "0.0.0.0"

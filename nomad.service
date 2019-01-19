@@ -1,5 +1,5 @@
 [Unit]
-Description=Nomad agent
+Description=Nomad cluster scheduling agent
 Documentation=https://www.nomadproject.io/docs/agent/
 Requires=network-online.target
 After=network-online.target
