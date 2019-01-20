@@ -1,0 +1,24 @@
+pkgbase = xsensors-gtk2
+	pkgdesc = X11 interface to lm_sensors (gtk2)
+	pkgver = 0.70
+	pkgrel = 7
+	url = http://www.linuxhardware.org/xsensors/
+	changelog = xsensors.changelog
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = imagemagick
+	makedepends = gendesk
+	depends = gtk2
+	depends = lm_sensors
+	provides = xsensors=0.70
+	conflicts = xsensors
+	source = http://www.linuxhardware.org/xsensors/xsensors-0.70.tar.gz
+	source = remove-unused-variables.patch
+	source = replace-deprecated-gtk.patch
+	sha512sums = 34f038b192f3cecb2e7587e19c4837b795a2705e6d0e9ea2bd3ead6d3259a1dded364fcfc70fa5e37d64f32c879e1dd9c6e43dcf32fa9aeb73ee5cc49bf290a4
+	sha512sums = ec81d48f16fb0b9b425247e3e2c56ef6f71acb8da5228bc72438aa33da86e2beb8d4d88c6e1ea8aa95e9db4b19a8939410b6693be61eba4e469686e20108adff
+	sha512sums = 008ea330c74b7f373cd637e3fc57e8ce2a9e8271f517d569be251c86f87593db081622b6df3f2970b741f407d51f4f348fe0dc102927d7289b0309288c3a70f6
+
+pkgname = xsensors-gtk2
+
