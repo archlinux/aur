@@ -19,8 +19,8 @@ package() {
   gcc spdynUpdater.c -o spdynu
   sudo cp -r spdynu /usr/spdynu
   sudo chmod u+x /usr/spdynu
+  mkdir -p "${srcdir}/tmp"
+  cd "${srcdir}/tmp"
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.conf
-  wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.service
-  wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.timer
   sudo cp -r spdynu.conf "${pkgdir}/etc/spdynu.conf"
 }
