@@ -12,6 +12,7 @@ arch=(any)
 url="https://github.com/impallari/Dosis"
 license=('custom:OFL')
 groups=("${_group}-fonts")
+makedepends=('git')
 depends=('fontconfig' 'xorg-font-utils')
 install=updatefont.install
 source=("git+git://github.com/impallari/Dosis")

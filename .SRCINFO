@@ -7,6 +7,7 @@ pkgbase = ttf-impallari-dosis
 	arch = any
 	groups = impallari-fonts
 	license = custom:OFL
+	makedepends = git
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = git+git://github.com/impallari/Dosis
