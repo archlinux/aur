@@ -1,18 +1,18 @@
 pkgbase = motoko
 	pkgdesc = Based on Go modules, update a dependency to a major version.
-	pkgver = v0.1.0
+	pkgver = v0.1.1
 	pkgrel = 1
 	url = https://github.com/ldez/motoko
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = APACHE
-	source_x86_64 = https://github.com/ldez/motoko/releases/download/v0.1.0/motoko_v0.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = c2f2885946628ebe2dccb8382d457ec5b3f985fd863f342c060e97ca9cc8009e
-	source_i686 = https://github.com/ldez/motoko/releases/download/v0.1.0/motoko_v0.1.0_linux_386.tar.gz
-	sha256sums_i686 = d2577df76e9a0529aaa6558f353ea837fd70631b2785374ef39af83584a8e1eb
-	source_aarch64 = https://github.com/ldez/motoko/releases/download/v0.1.0/motoko_v0.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = ca63879fa1c7be9fc511c90fb9c41a350ce35f0bdce4fe73b42a731f3cc7646d
+	source_x86_64 = https://github.com/ldez/motoko/releases/download/v0.1.1/motoko_v0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = b941c350b063ef5ba77f7c6baed0bfa10ded0f2bf8ebc74bc06d6e211420e0e8
+	source_i686 = https://github.com/ldez/motoko/releases/download/v0.1.1/motoko_v0.1.1_linux_386.tar.gz
+	sha256sums_i686 = ef74b6e5c5c09a605a9bdeb2625eb804d04de8a2e5a5303e58a4441c7e1bfbe4
+	source_aarch64 = https://github.com/ldez/motoko/releases/download/v0.1.1/motoko_v0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 27cd24fe787b996b452e107cf0328a3cc25db752154192c9591b777fb81a77ef
 
 pkgname = motoko
 
