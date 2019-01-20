@@ -51,6 +51,7 @@ puts "CC = #{ENV['CC'] || 'clang'}"
 puts "CXX = #{ENV['CXX'] || 'clang++'}\n\n"
 puts "CFLAGS = #{ENV['CFLAGS']}"
 puts "CXXFLAGS = #{ENV['CXXFLAGS']}"
+puts "CPPFLAGS = #{ENV['CPPFLAGS']}"
 puts "LDFLAGS = #{ENV['LDFLAGS']}"
 puts "PKGVER = #{ENV['PKGVER']}\n\n"
 

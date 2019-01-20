@@ -4,13 +4,13 @@
 # Contributor: Alucryd <alucryd at gmail dot com>
 
 pkgname=android-tools-git
-pkgver=r43981.763bac7826
+pkgver=r43987.ad6a5c565c
 pkgrel=1
 pkgdesc='Android platform tools'
 arch=(i686 x86_64)
 url='http://tools.android.com/'
 license=(Apache MIT)
-depends=(pcre2 libusb)
+depends=(pcre2 libusb libc++)
 optdepends=('python: for mkbootimg script')
 makedepends=(git clang gtest ruby cmake ninja go)
 conflicts=(android-tools)
@@ -38,7 +38,7 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          '721c8f7ec0e491edd3c251b72db45dbd521020ec'
+          '69e1b3adb6386016620a71c9c2d0dfd95ed261e0'
           '620b194520f827ba4642ceedcc7605260649d736'
           'ec473160d7445f97bccabd1c32ac0ae2f77900c1'
           '41608052bff69632d1cc5a6e2efb92cf4ad857e6'
@@ -51,8 +51,6 @@ pkgver() {
 }
 
 prepare() {
-  PKGVER=$pkgver LDFLAGS='-Wl,-z,relro,-z,now' ./generate_build.rb > build.ninja
-
   cd $srcdir/core
   patch -p1 < ../fix_build_core.patch
 
@@ -65,11 +63,16 @@ prepare() {
   cd $srcdir/avb
   sed -i 's|/usr/bin/env python$|/usr/bin/env python2|g' avbtool
 
-  mkdir -p $srcdir/boringssl/build && cd $srcdir/boringssl/build && cmake -GNinja ..; ninja
+  mkdir -p $srcdir/boringssl/build
 }
 
 build() {
-  ninja
+  env
+  PKGVER=$pkgver CXXFLAGS="$CXXFLAGS -stdlib=libc++" ./generate_build.rb > build.ninja
+
+  cd $srcdir/boringssl/build && cmake -GNinja ..; ninja
+
+  cd $srcdir && ninja
 }
 
 package(){
