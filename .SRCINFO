@@ -1,0 +1,14 @@
+pkgbase = pass-pwned-git
+	pkgdesc = Password-Store extension for Have I Been Pwned? Pwned Passwords v2 API
+	pkgver = r11.884856e
+	pkgrel = 1
+	url = https://github.com/alzeih/pass-pwned
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = pass
+	source = pass-pwned::git+https://github.com/alzeih/pass-pwned
+	md5sums = SKIP
+
+pkgname = pass-pwned-git
+
