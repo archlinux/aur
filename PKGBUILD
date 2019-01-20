@@ -1,13 +1,13 @@
 # Maintainer: ferreum <code.danielk at gmail com>
 pkgname=i3-match-git
 pkgver=0.1.36.rbb6a6f4
-pkgrel=3
+pkgrel=4
 pkgdesc="Match and query i3 window properties and events"
 arch=('i686' 'x86_64')
 url='https://gitlab.com/ferreum/i3-match'
 license=('BSD')
 depends=('xcb-util' 'yajl')
-makedepends=('i3-wm')
+makedepends=('i3-wm' 'git')
 source=('git+https://gitlab.com/ferreum/i3-match.git')
 sha1sums=('SKIP')
 
