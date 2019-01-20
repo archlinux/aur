@@ -39,7 +39,7 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           '69e1b3adb6386016620a71c9c2d0dfd95ed261e0'
-          '620b194520f827ba4642ceedcc7605260649d736'
+          'abfe045280ec6342e2d3f9d9030138d0c53e4d26'
           'ec473160d7445f97bccabd1c32ac0ae2f77900c1'
           '41608052bff69632d1cc5a6e2efb92cf4ad857e6'
           '7004dbd0c193668827174880de6f8434de8ceaee')
@@ -70,6 +70,7 @@ build() {
   env
   PKGVER=$pkgver CXXFLAGS="$CXXFLAGS -stdlib=libc++" ./generate_build.rb > build.ninja
 
+  # TODO: make BoringSSL build a subninja of the main build file
   cd $srcdir/boringssl/build && cmake -GNinja ..; ninja
 
   cd $srcdir && ninja

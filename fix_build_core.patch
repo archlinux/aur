@@ -129,7 +129,7 @@ index d753f0f822..a8987d3024 100644
                  return 0;
  #if !defined(_WIN32)
 diff --git a/fs_mgr/liblp/reader.cpp b/fs_mgr/liblp/reader.cpp
-index 24c6b2c314..e0db7d9efa 100644
+index dcee6d2d86..df7c26d8be 100644
 --- a/fs_mgr/liblp/reader.cpp
 +++ b/fs_mgr/liblp/reader.cpp
 @@ -21,6 +21,7 @@
@@ -141,7 +141,7 @@ index 24c6b2c314..e0db7d9efa 100644
  #include <android-base/file.h>
  #include <android-base/unique_fd.h>
 diff --git a/fs_mgr/liblp/writer.cpp b/fs_mgr/liblp/writer.cpp
-index 54a1883bf1..1e5daceb0f 100644
+index bffcb7e6e1..66f447df96 100644
 --- a/fs_mgr/liblp/writer.cpp
 +++ b/fs_mgr/liblp/writer.cpp
 @@ -20,6 +20,7 @@
@@ -170,3 +170,16 @@ index 54a1883bf1..1e5daceb0f 100644
      SHA256(&header, sizeof(header), header.header_checksum);
  
      std::string header_blob =
+diff --git a/liblog/logger_write.cpp b/liblog/logger_write.cpp
+index af8cb2d24a..8ae3257acd 100644
+--- a/liblog/logger_write.cpp
++++ b/liblog/logger_write.cpp
+@@ -15,7 +15,7 @@
+  */
+ 
+ #include <errno.h>
+-#include <stdatomic.h>
++#include <atomic> /* https://reviews.llvm.org/D45470 */
+ #include <stdlib.h>
+ #include <string.h>
+ #include <sys/time.h>
