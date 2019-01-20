@@ -1,7 +1,9 @@
 # Maintainer: Adrian Petrescu <apetresc at gmail dot com>
+# Contributor: algebro <algebro at tuta dot io>
+
 pkgname=leela-zero-git
 _pkgname=leela-zero
-pkgver=625
+pkgver=766
 pkgrel=1
 pkgdesc="Go engine with no human-provided knowledge, modeled after the AlphaGo Zero paper."
 arch=('x86_64')
