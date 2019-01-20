@@ -19,9 +19,9 @@ gcc spdynUpdater.c -o spdynu
 }
 
 package() {
-  cp "${srcdir}/spdynu" "${pkgdir}/usr/spdynu"
+  cp -r "${srcdir}/spdynu" "${pkgdir}/usr/spdynu"
   chmod u+x "${pkgdir}/usr/spdynu"
-  cp "${srcdir}/spdynu.conf" "${pkgdir}/etc/spdynu.conf"
-  cp "${srcdir}/spdynu.service" "${pkgdir}/etc/systemd/system/spdynu.service"
-  cp "${srcdir}/spdynu.timer" "${pkgdir}/etc/systemd/system/spdynu.timer"
+  cp -r "${srcdir}/spdynu.conf" "${pkgdir}/etc/spdynu.conf"
+  cp -r "${srcdir}/spdynu.service" "${pkgdir}/etc/systemd/system/spdynu.service"
+  cp -r "${srcdir}/spdynu.timer" "${pkgdir}/etc/systemd/system/spdynu.timer"
 }
