@@ -1,7 +1,7 @@
 pkgbase = libseekthermal-git
 	pkgdesc = Library and utilities for interfacing with the Seek Thermal Camera
 	pkgver = 20180327.e4f8eaa
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/maartenvds/libseekthermal
 	arch = any
 	license = LGPL

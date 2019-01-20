@@ -3,7 +3,7 @@
 _pkgname=libseekthermal
 pkgname=${_pkgname}-git
 pkgver=20180327.e4f8eaa
-pkgrel=1
+pkgrel=3
 pkgdesc='Library and utilities for interfacing with the Seek Thermal Camera'
 url='https://github.com/maartenvds/libseekthermal'
 arch=('any')
