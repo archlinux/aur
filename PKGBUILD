@@ -1,9 +1,9 @@
 _pkgname=weidu
 pkgname=$_pkgname-git
-pkgver=1
+pkgver=git
 pkgrel=1
 
-makedepends=("ocaml")
+makedepends=("ocaml" "elkhound-git")
 arch=("x86_64")
 
 conflicts=("weidu-bin" "weidu")
@@ -13,10 +13,9 @@ pkgdesc="WeiDU is a program used to develop, distribute and install modification
 
 license=("GPLv2")
 
-source=("git+https://github.com/WeiDUorg/elkhound"
-        "git+https://github.com/WeiDUorg/weidu#branch=devel")
+source=("git+https://github.com/WeiDUorg/weidu#branch=devel")
 
-sha256sums=("SKIP" "SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
     cd "$srcdir/weidu"
@@ -24,21 +23,13 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/elkhound/src"
-    ./configure
-
     cd "$srcdir/weidu"
     cp sample.Configuration Configuration
 }
 
 build() {
-    cd "$srcdir/elkhound/src"
-    make -j1
 
-    cd "$srcdir/weidu"
-    export PATH="$srcdir/elkhound/src/elkhound:$PATH"
-    export OCAMLPARAM="safe-string=0,_"
-    
+    cd "$srcdir/weidu" 
     make -j1
 }
 
