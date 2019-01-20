@@ -44,15 +44,11 @@ fi
 
 function switch_to_amd() {
 
-    ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 /usr/lib/libGL.so
-    ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 /usr/lib/libGL.so.1
     ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 /usr/lib/libGL.so.1.2.0
     ldconfig /usr/lib
 
   #lib32 switch
     if [ -e /usr/lib32/fglrx/fglrx-libGL.so.1.2 ]; then
-      ln -snf /usr/lib32/fglrx/fglrx-libGL.so.1.2 /usr/lib32/libGL.so
-      ln -snf /usr/lib32/fglrx/fglrx-libGL.so.1.2 /usr/lib32/libGL.so.1
       ln -snf /usr/lib32/fglrx/fglrx-libGL.so.1.2 /usr/lib32/libGL.so.1.2.0
       ldconfig /usr/lib32
     fi
@@ -61,15 +57,11 @@ function switch_to_amd() {
 
 function switch_to_intel() {
 
-    ln -snf /usr/lib/mesa/libGL.so.1.2.0 /usr/lib/libGL.so
-    ln -snf /usr/lib/mesa/libGL.so.1.2.0 /usr/lib/libGL.so.1
     ln -snf /usr/lib/mesa/libGL.so.1.2.0 /usr/lib/libGL.so.1.2.0
     ldconfig /usr/lib
 
   #lib32 switch
     if [ -e /usr/lib32/mesa/libGL.so.1.2.0 ]; then
-      ln -snf /usr/lib32/mesa/libGL.so.1.2.0 /usr/lib32/libGL.so
-      ln -snf /usr/lib32/mesa/libGL.so.1.2.0 /usr/lib32/libGL.so.1
       ln -snf /usr/lib32/mesa/libGL.so.1.2.0 /usr/lib32/libGL.so.1.2.0
       ldconfig /usr/lib32
     fi
@@ -78,10 +70,10 @@ function switch_to_intel() {
 
 function get_current_driver() {
 
-    LIB_LINK="`readlink /usr/lib/libGL.so 2>/dev/null`"
+    LIB_LINK="`readlink /usr/lib/libGL.so.1.2.0 2>/dev/null`"
     if [[ "${LIB_LINK}" = "/usr/lib/fglrx/fglrx-libGL.so.1.2" || "${LIB_LINK}" = "fglrx/fglrx-libGL.so.1.2" ]]; then
         echo "amd"
-    elif [[ "${LIB_LINK}" = "/usr/lib/mesa/libGL.so.1.2.0" ||  "${LIB_LINK}" = "/usr/lib/mesa/libGL.so.1" || "${LIB_LINK}" = "/usr/lib/mesa/libGL.so" ]]; then
+    elif [[ "${LIB_LINK}" = "/usr/lib/mesa/libGL.so.1.2.0" || "${LIB_LINK}" = "mesa/libGL.so.1.2.0" ]]; then
         echo "intel"
     else
         echo "unknown"

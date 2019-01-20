@@ -118,16 +118,10 @@ function switch_to_intel() {
 }
 
 function get_current_driver() {
-
-    LIB_LINK="`readlink /usr/lib/libGL.so 2>/dev/null`"
-    if [[ "${LIB_LINK}" = "/usr/lib/fglrx/fglrx-libGL.so.1.2" || "${LIB_LINK}" = "fglrx/fglrx-libGL.so.1.2" ]]; then
-        echo "amd (catalyst)"
-    elif [[ "${LIB_LINK}" = "/usr/lib/mesa/libGL.so.1" || "${LIB_LINK}" = "/usr/lib/mesa/libGL.so.1.2.0" || "${LIB_LINK}" = "/usr/lib/mesa/libGL.so" ]]; then
-        echo "intel (or oss radeon)"
-    else
-        echo "unknown"
-    fi
-
+    echo "libGL"
+    /usr/lib/fglrx/switchlibGL query
+    echo "libglx"
+    /usr/lib/fglrx/switchlibglx query
 }
 
 

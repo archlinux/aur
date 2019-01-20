@@ -1,0 +1,28 @@
+--- archive_files/common/lib/modules/fglrx/build_mod/2.6.x/Makefile
++++ archive_files/common/lib/modules/fglrx/build_mod/2.6.x/Makefile
+@@ -27,7 +27,6 @@
+ LIBIP_PREFIX	?= ..
+ 
+ obj-m           += fglrx.o
+-fglrx-libs      += libfglrx_ip.a
+ 
+ fglrx-c-objs    += firegl_public.o      \
+                    kcl_acpi.o           \
+@@ -41,7 +40,7 @@ fglrx-c-objs    += firegl_public.o      \
+                    kcl.o                \
+                    kcl_wait.o
+ 
+-fglrx-objs      += $(fglrx-c-objs) $(fglrx-libs)
++fglrx-objs      += $(fglrx-c-objs)
+ 
+ fglrx-hdrs      += firegl_public.h      \
+                    fglrxko_pci_ids.h    \
+@@ -70,6 +69,8 @@ EXTRA_CFLAGS    += \
+                 -DPAGE_ATTR_FIX=$(PAGE_ATTR_FIX) \
+                 -DCOMPAT_ALLOC_USER_SPACE=$(COMPAT_ALLOC_USER_SPACE) \
+ 
++EXTRA_LDFLAGS      := /usr/lib/fglrx/libfglrx_ip.a_shipped
++
+ ifeq ($(KERNELRELEASE),)
+ # on first call from remote location we get into this path
+ # whilst on second call all is managed by the embedding kernel makefile

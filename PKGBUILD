@@ -24,13 +24,13 @@
 # Contributor: aslmaswd (acpi main script)
 # Contributor: npfeiler (libcl/opencl-icd-loader cleaning)
 # Contributor: sling00 (4.10 kernel patch)
-# Contributor: npfeiler (4.11, 4.12, 4.13, 4.14, 4.15.5 and 4.17 kernel patch)
+# Contributor: npfeiler (4.11, 4.12, 4.13, 4.14, 4.15.5, 4.17 and 4.20 kernel patch)
 
 _old_control=n #for pre-GCN users who has problems with default config, pick =y to use control file and opencl runtime from catalyst 15.9
 
 pkgname=catalyst-test
 pkgver=15.12
-pkgrel=27
+pkgrel=28
 # _betano=1.0
 _amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons are optionally supported"
@@ -38,7 +38,7 @@ arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip')
-depends=('dkms' 'linux>=3.0' 'linux<4.20' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
+depends=('dkms' 'linux>=3.0' 'linux<4.21' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	'opencl-headers: headers necessary for OpenCL development'
@@ -109,45 +109,47 @@ source=(
 	4.13-npfeiler-wait_queue_t.patch
 	4.14-npfeiler-task_struct-mm_segment_t.patch
 	4.14.21_4.15.5-npfeiler-flush_tlb_one_kernel.patch
-	4.17-npfeiler-pci_get_domain_bus_and_slot.patch)
+	4.17-npfeiler-pci_get_domain_bus_and_slot.patch
+	4.20-npfeiler-libfglrx_ip.patch)
 
 md5sums=('39808c8a9bcc9041f1305e3531b60622'
-	'af7fb8ee4fc96fd54c5b483e33dc71c4'
-	'bdafe749e046bfddee2d1c5e90eabd83'
-	'9d9ea496eadf7e883d56723d65e96edf'
-	'b79e144932616221f6d01c4b05dc9306'
-	'9e2a7ded987b7d2b2cfffc7281ebd8a5'
-	'3e19c2285c76f4cb92108435a1e9c302'
-	'b3ceefeb97c609037845f65d0956c4f0'
-	'3e1b82bd69774ea808da69c983d6a43b'
-	'394bc493fdf493a5093f9e2095096d02'
-	'3226230592fa3c91ff22389114fc5dc7'
-	'9e706c272feb167be55ba7201dfa8d51'
-	'0e6d963436dd23dbb45ae0f4fc9b661c'
-	'2c22bb4d4f828cb8b024f670c1ae7e45'
-	'5184b94a2a40216a67996999481dd9ee'
-	'c5156eddf81c8a1719b160d05a2e8d67'
-	'ef97fc080ce7e5a275fe0c372bc2a418'
-	'0e0666e95d1d590a7a83192805679485'
-	'98828e3eeaec2b3795e584883cc1b746'
-	'6cdbaf5f71d867d225721a0369413616'
-	'd9bea135ae3e1b3ca87c5bbe6dcf8e72'
-	'8941e91fc58cb44ce21ab9bda135754e'
-	'11b7c2e0dc4794801005d66b0e7608a3'
-	'23d569abfdd7de433d76e003e4b3ccf9'
-	'10829e3b992b3e80a6e78c8e27748703'
-	'37eef5103a11d8136979463e7bc31091'
-	'194cb44e9e2ab0e65b6267aca66d0400'
-	'e98e50bebe96b08ca680aed6ca505356'
-	'05f6364db877d9c4bdf1592deda905b7'
-	'8e53ba65a0aad42eb2ff771c1ace6609'
-	'f090e47160403e4ba65d1e0de69973c9'
-	'782769206ed12ded10c347be3e476729'
-	'cb25bc7fbb7d5cb1c07d2f3fa5fda826'
-	'0a725f40bc980d578cbed3e57a05b765'
-	'5ba3bf9f58aa63c1849b056cf23022c9'
-	'10af58c21e4e972115dda6dbd8279594'
-	'7ed6e1cf3a9719e6a9874e6a18f29bfb')
+         'af7fb8ee4fc96fd54c5b483e33dc71c4'
+         'bdafe749e046bfddee2d1c5e90eabd83'
+         '9d9ea496eadf7e883d56723d65e96edf'
+         'b79e144932616221f6d01c4b05dc9306'
+         '9e2a7ded987b7d2b2cfffc7281ebd8a5'
+         '3e19c2285c76f4cb92108435a1e9c302'
+         'b3ceefeb97c609037845f65d0956c4f0'
+         '3e1b82bd69774ea808da69c983d6a43b'
+         'cb89e8621b47dc476dcc52df6c12a8c5'
+         '3226230592fa3c91ff22389114fc5dc7'
+         '0d3d706bc3e4608515f04fa77eb281d1'
+         '0e6d963436dd23dbb45ae0f4fc9b661c'
+         '2c22bb4d4f828cb8b024f670c1ae7e45'
+         '5184b94a2a40216a67996999481dd9ee'
+         'c5156eddf81c8a1719b160d05a2e8d67'
+         'ef97fc080ce7e5a275fe0c372bc2a418'
+         '0e0666e95d1d590a7a83192805679485'
+         '98828e3eeaec2b3795e584883cc1b746'
+         '6cdbaf5f71d867d225721a0369413616'
+         'd9bea135ae3e1b3ca87c5bbe6dcf8e72'
+         '8941e91fc58cb44ce21ab9bda135754e'
+         '11b7c2e0dc4794801005d66b0e7608a3'
+         '23d569abfdd7de433d76e003e4b3ccf9'
+         '10829e3b992b3e80a6e78c8e27748703'
+         '37eef5103a11d8136979463e7bc31091'
+         '194cb44e9e2ab0e65b6267aca66d0400'
+         'e98e50bebe96b08ca680aed6ca505356'
+         '05f6364db877d9c4bdf1592deda905b7'
+         '8e53ba65a0aad42eb2ff771c1ace6609'
+         'f090e47160403e4ba65d1e0de69973c9'
+         '782769206ed12ded10c347be3e476729'
+         'cb25bc7fbb7d5cb1c07d2f3fa5fda826'
+         '0a725f40bc980d578cbed3e57a05b765'
+         '5ba3bf9f58aa63c1849b056cf23022c9'
+         '10af58c21e4e972115dda6dbd8279594'
+         '7ed6e1cf3a9719e6a9874e6a18f29bfb'
+         '3ca961ceefbc4ddc0eb21452cba79c6c')
 
 if [ "${_old_control}" = "y" ]; then
 	source+=(https://www2.ati.com/drivers/linux/amd-catalyst-15.9-linux-installer-15.201.1151-x86.x86_64.zip)
@@ -189,6 +191,7 @@ prepare() {
 	patch -Np1 -i ../4.14-npfeiler-task_struct-mm_segment_t.patch
 	patch -Np1 -i ../4.14.21_4.15.5-npfeiler-flush_tlb_one_kernel.patch
 	patch -Np1 -i ../4.17-npfeiler-pci_get_domain_bus_and_slot.patch
+	patch -Np1 -i ../4.20-npfeiler-libfglrx_ip.patch
 
 	cd ${srcdir}/archive_files/common
 	patch -Np2 -i ${srcdir}/arch-fglrx-authatieventsd_new.patch
@@ -205,7 +208,6 @@ package() {
 	install -m755 -d ${pkgdir}/etc/security/console.apps
 	install -m755 -d ${pkgdir}/etc/OpenCL/vendors
 
-	install -m755 -d ${pkgdir}/usr/lib/xorg/modules/dri
 	install -m755 -d ${pkgdir}/usr/lib/xorg/modules/drivers
 	install -m755 -d ${pkgdir}/usr/lib/xorg/modules/extensions
 	install -m755 -d ${pkgdir}/usr/lib/xorg/modules/extensions/fglrx
@@ -236,7 +238,7 @@ package() {
 	install -m755 drivers/*.so ${pkgdir}/usr/lib/xorg/modules/drivers
 	install -m755 linux/*.so ${pkgdir}/usr/lib/xorg/modules/linux
 	install -m755 extensions/fglrx/fglrx-libglx.so ${pkgdir}/usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so
-	ln -snf /usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so ${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so
+	ln -s /usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so ${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so
 
 	# Controlcenter / libraries
 	if [ "${CARCH}" = "i686" ]; then
@@ -253,17 +255,18 @@ package() {
 	install -m755 sbin/* ${pkgdir}/usr/bin
 	install -m755 X11R6/${_lib}/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/fglrx
 	install -m755 X11R6/${_lib}/libAMDXvBA.so.1.0 ${pkgdir}/usr/lib
-	ln -snf libAMDXvBA.so.1.0 ${pkgdir}/usr/lib/libAMDXvBA.so.1
-	ln -snf libAMDXvBA.so.1.0 ${pkgdir}/usr/lib/libAMDXvBA.so
+	ln -s libAMDXvBA.so.1.0 ${pkgdir}/usr/lib/libAMDXvBA.so.1
+	ln -s libAMDXvBA.so.1.0 ${pkgdir}/usr/lib/libAMDXvBA.so
 	install -m755 X11R6/${_lib}/libatiadlxx.so ${pkgdir}/usr/lib
 	install -m755 X11R6/${_lib}/libfglrx_dm.so.1.0 ${pkgdir}/usr/lib
 	install -m755 X11R6/${_lib}/libXvBAW.so.1.0 ${pkgdir}/usr/lib
-	ln -snf libXvBAW.so.1.0 ${pkgdir}/usr/lib/libXvBAW.so.1
-	ln -snf libXvBAW.so.1.0 ${pkgdir}/usr/lib/libXvBAW.so
-	ln -snf /usr/lib/libXvBAW.so.1.0 ${pkgdir}/usr/lib/dri/fglrx_drv_video.so #omega 14.12
+	ln -s libXvBAW.so.1.0 ${pkgdir}/usr/lib/libXvBAW.so.1
+	ln -s libXvBAW.so.1.0 ${pkgdir}/usr/lib/libXvBAW.so
+	ln -s /usr/lib/libXvBAW.so.1.0 ${pkgdir}/usr/lib/dri/fglrx_drv_video.so #omega 14.12
 	install -m644 X11R6/${_lib}/*.a ${pkgdir}/usr/lib
 	install -m644 X11R6/${_lib}/*.cap ${pkgdir}/usr/lib
-	install -m755 X11R6/${_lib}/modules/dri/*.so ${pkgdir}/usr/lib/xorg/modules/dri
+	install -m755 X11R6/${_lib}/modules/dri/*.so ${pkgdir}/usr/lib/dri
+	ln -s /usr/lib/dri ${pkgdir}/usr/lib/xorg/modules/dri
 	install -m755 ${_lib}/*.so* ${pkgdir}/usr/lib
 
 	if [ "${_old_control}" = "y" ]; then
@@ -277,31 +280,31 @@ package() {
 	#      install -m755 -d ${pkgdir}/usr/share/ati/${_lib}
 	#      install -m755 share/ati/${_lib}/*.so* ${pkgdir}/usr/share/ati/${_lib}
 
-	ln -snf /usr/lib/xorg/modules/dri/fglrx_dri.so ${pkgdir}/usr/lib/dri/fglrx_dri.so
-	ln -snf libfglrx_dm.so.1.0 ${pkgdir}/usr/lib/libfglrx_dm.so.1
-	ln -snf libfglrx_dm.so.1.0 ${pkgdir}/usr/lib/libfglrx_dm.so
-	ln -snf libatiuki.so.1.0 ${pkgdir}/usr/lib/libatiuki.so.1
-	ln -snf libatiuki.so.1.0 ${pkgdir}/usr/lib/libatiuki.so
+	ln -s libfglrx_dm.so.1.0 ${pkgdir}/usr/lib/libfglrx_dm.so.1
+	ln -s libfglrx_dm.so.1 ${pkgdir}/usr/lib/libfglrx_dm.so
+	ln -s libatiuki.so.1.0 ${pkgdir}/usr/lib/libatiuki.so.1
+	ln -s libatiuki.so.1 ${pkgdir}/usr/lib/libatiuki.so
 
-	ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/fglrx/libGL.so.1.2.0
-	ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/fglrx/libGL.so.1
-	ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/fglrx/libGL.so
-	ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/libGL.so.1.2.0
-	ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/libGL.so.1
-	ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/libGL.so
+	ln -s fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/fglrx/libGL.so.1.2.0
+	ln -s libGL.so.1.2.0 ${pkgdir}/usr/lib/fglrx/libGL.so.1
+	ln -s libGL.so.1 ${pkgdir}/usr/lib/fglrx/libGL.so
+
+	ln -s fglrx/libGL.so.1.2.0 ${pkgdir}/usr/lib/libGL.so.1.2.0
+	ln -s libGL.so.1.2.0 ${pkgdir}/usr/lib/libGL.so.1
+	ln -s libGL.so.1 ${pkgdir}/usr/lib/libGL.so
 
 	# We have to provide symlinks to mesa, as catalyst doesn't ship them
-	ln -s /usr/lib/mesa/libEGL.so.1.0.0 ${pkgdir}/usr/lib/libEGL.so.1.0.0
+	ln -s mesa/libEGL.so.1.0.0 ${pkgdir}/usr/lib/libEGL.so.1.0.0
 	ln -s libEGL.so.1.0.0 ${pkgdir}/usr/lib/libEGL.so.1
-	ln -s libEGL.so.1.0.0 ${pkgdir}/usr/lib/libEGL.so
+	ln -s libEGL.so.1 ${pkgdir}/usr/lib/libEGL.so
 
-	ln -s /usr/lib/mesa/libGLESv1_CM.so.1.1.0 ${pkgdir}/usr/lib/libGLESv1_CM.so.1.1.0
-	ln -s libGLESv1_CM.so.1.1.0 ${pkgdir}/usr/lib/libGLESv1_CM.so.1
-	ln -s libGLESv1_CM.so.1.1.0 ${pkgdir}/usr/lib/libGLESv1_CM.so
+	ln -s mesa/libGLESv1_CM.so.1.0.0 ${pkgdir}/usr/lib/libGLESv1_CM.so.1.0.0
+	ln -s libGLESv1_CM.so.1.0.0 ${pkgdir}/usr/lib/libGLESv1_CM.so.1
+	ln -s libGLESv1_CM.so.1 ${pkgdir}/usr/lib/libGLESv1_CM.so
 
-	ln -s /usr/lib/mesa/libGLESv2.so.2.0.0 ${pkgdir}/usr/lib/libGLESv2.so.2.0.0
+	ln -s mesa/libGLESv2.so.2.0.0 ${pkgdir}/usr/lib/libGLESv2.so.2.0.0
 	ln -s libGLESv2.so.2.0.0 ${pkgdir}/usr/lib/libGLESv2.so.2
-	ln -s libGLESv2.so.2.0.0 ${pkgdir}/usr/lib/libGLESv2.so
+	ln -s libGLESv2.so.2 ${pkgdir}/usr/lib/libGLESv2.so
 
 	cd ${srcdir}/archive_files/common
 	install -m644 etc/ati/* ${pkgdir}/etc/ati
@@ -367,7 +370,7 @@ package() {
 	
 	#fix laptops wake on 4.15+
 	install -m755 -d ${pkgdir}/usr/X11R6/lib64/modules/dri
-	ln -snf /usr/lib/xorg/modules/dri/fglrx_dri.so ${pkgdir}/usr/X11R6/lib64/modules/dri/fglrx_dri.so
+	ln -s /usr/lib/dri/fglrx_dri.so ${pkgdir}/usr/X11R6/lib64/modules/dri/fglrx_dri.so
 
 	##catalyst-dkms section
 	cd ${srcdir}/archive_files
@@ -387,6 +390,7 @@ package() {
 		${pkgdir}/usr/src/fglrx-${pkgver}
 	install -m644 arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a \
 		${pkgdir}/usr/src/fglrx-${pkgver}
+	install -m644 arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a ${pkgdir}/usr/lib/fglrx/libfglrx_ip.a_shipped
 
 	# copy dkms.conf and set version
 	cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/fglrx-${pkgver}/
@@ -400,7 +404,6 @@ package() {
 		install -dm755 ${pkgdir}/usr/lib32
 		install -dm755 ${pkgdir}/usr/lib32/fglrx
 		install -dm755 ${pkgdir}/usr/lib32/dri
-		install -dm755 ${pkgdir}/usr/lib32/xorg/modules/dri
 		#	install -dm755 ${pkgdir}/usr/lib32/hsa		#removed in 14.1
 		install -m755 lib/*.so* ${pkgdir}/usr/lib32
 		if [ "${_old_control}" = "y" ]; then
@@ -414,38 +417,38 @@ package() {
 		install -m755 X11R6/lib/libatiadlxx.so ${pkgdir}/usr/lib32
 		install -m755 X11R6/lib/libfglrx_dm.so.1.0 ${pkgdir}/usr/lib32
 		install -m755 X11R6/lib/libXvBAW.so.1.0 ${pkgdir}/usr/lib32
-		install -m755 X11R6/lib/modules/dri/*.so ${pkgdir}/usr/lib32/xorg/modules/dri
-		ln -snf /usr/lib32/xorg/modules/dri/fglrx_dri.so ${pkgdir}/usr/lib32/dri/fglrx_dri.so
+
+		install -m755 X11R6/lib/modules/dri/*.so ${pkgdir}/usr/lib32/dri
 
 		cd $pkgdir/usr/lib32
-		ln -sf /usr/lib32/libfglrx_dm.so.1.0 ${pkgdir}/usr/lib32/libfglrx_dm.so.1
-		ln -sf /usr/lib32/libfglrx_dm.so.1.0 ${pkgdir}/usr/lib32/libfglrx_dm.so
-		ln -sf /usr/lib32/libAMDXvBA.so.1.0 ${pkgdir}/usr/lib32/libAMDXvBA.so.1
-		ln -sf /usr/lib32/libAMDXvBA.so.1.0 ${pkgdir}/usr/lib32/libAMDXvBA.so
-		ln -sf /usr/lib32/libXvBAW.so.1.0 ${pkgdir}/usr/lib32/libXvBAW.so.1
-		ln -sf /usr/lib32/libXvBAW.so.1.0 ${pkgdir}/usr/lib32/libXvBAW.so
-		ln -sf /usr/lib32/libatiuki.so.1.0 ${pkgdir}/usr/lib32/libatiuki.so.1
-		ln -sf /usr/lib32/libatiuki.so.1.0 ${pkgdir}/usr/lib32/libatiuki.so
+		ln -s libfglrx_dm.so.1.0 ${pkgdir}/usr/lib32/libfglrx_dm.so.1
+		ln -s libfglrx_dm.so.1 ${pkgdir}/usr/lib32/libfglrx_dm.so
+		ln -s libAMDXvBA.so.1.0 ${pkgdir}/usr/lib32/libAMDXvBA.so.1
+		ln -s libAMDXvBA.so.1 ${pkgdir}/usr/lib32/libAMDXvBA.so
+		ln -s libXvBAW.so.1.0 ${pkgdir}/usr/lib32/libXvBAW.so.1
+		ln -s libXvBAW.so.1 ${pkgdir}/usr/lib32/libXvBAW.so
+		ln -s libatiuki.so.1.0 ${pkgdir}/usr/lib32/libatiuki.so.1
+		ln -s libatiuki.so.1 ${pkgdir}/usr/lib32/libatiuki.so
 
-		ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx/libGL.so.1.2.0
-		ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx/libGL.so.1
-		ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx/libGL.so
-		ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/libGL.so.1.2.0
-		ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/libGL.so.1
-		ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/libGL.so
+		ln -s fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx/libGL.so.1.2.0
+		ln -s libGL.so.1.2.0 ${pkgdir}/usr/lib32/fglrx/libGL.so.1
+		ln -s libGL.so.1 ${pkgdir}/usr/lib32/fglrx/libGL.so
+		ln -s fglrx/libGL.so.1.2.0 ${pkgdir}/usr/lib32/libGL.so.1.2.0
+		ln -s libGL.so.1.2.0 ${pkgdir}/usr/lib32/libGL.so.1
+		ln -s libGL.so.1 ${pkgdir}/usr/lib32/libGL.so
 
 		# We have to provide symlinks to lib32-mesa, as catalyst doesn't ship them
-		ln -s /usr/lib32/mesa/libEGL.so.1.0.0 ${pkgdir}/usr/lib32/libEGL.so.1.0.0
+		ln -s mesa/libEGL.so.1.0.0 ${pkgdir}/usr/lib32/libEGL.so.1.0.0
 		ln -s libEGL.so.1.0.0 ${pkgdir}/usr/lib32/libEGL.so.1
-		ln -s libEGL.so.1.0.0 ${pkgdir}/usr/lib32/libEGL.so
+		ln -s libEGL.so.1 ${pkgdir}/usr/lib32/libEGL.so
 
-		ln -s /usr/lib32/mesa/libGLESv1_CM.so.1.1.0 ${pkgdir}/usr/lib32/libGLESv1_CM.so.1.1.0
-		ln -s libGLESv1_CM.so.1.1.0 ${pkgdir}/usr/lib32/libGLESv1_CM.so.1
-		ln -s libGLESv1_CM.so.1.1.0 ${pkgdir}/usr/lib32/libGLESv1_CM.so
+		ln -s mesa/libGLESv1_CM.so.1.0.0 ${pkgdir}/usr/lib32/libGLESv1_CM.so.1.0.0
+		ln -s libGLESv1_CM.so.1.0.0 ${pkgdir}/usr/lib32/libGLESv1_CM.so.1
+		ln -s libGLESv1_CM.so.1 ${pkgdir}/usr/lib32/libGLESv1_CM.so
 
-		ln -s /usr/lib32/mesa/libGLESv2.so.2.0.0 ${pkgdir}/usr/lib32/libGLESv2.so.2.0.0
+		ln -s mesa/libGLESv2.so.2.0.0 ${pkgdir}/usr/lib32/libGLESv2.so.2.0.0
 		ln -s libGLESv2.so.2.0.0 ${pkgdir}/usr/lib32/libGLESv2.so.2
-		ln -s libGLESv2.so.2.0.0 ${pkgdir}/usr/lib32/libGLESv2.so
+		ln -s libGLESv2.so.2 ${pkgdir}/usr/lib32/libGLESv2.so
 
 		# OpenCL
 		install -m755 -d ${pkgdir}/etc/OpenCL/vendors

@@ -57,10 +57,16 @@ pre_upgrade(){
     fi
     # remove hook fglrx
     sed '/^HOOKS/s/ *fglrx//' -i etc/mkinitcpio.conf
-    systemctl stop catalyst-hook.service
-    systemctl disable catalyst-hook.service
+    if systemctl is-active -q catalyst-hook; then
+        systemctl stop catalyst-hook.service
+    fi
+    if systemctl is-enabled -q catalyst-hook > /dev/null 2>&1; then
+        systemctl disable catalyst-hook.service
+    fi
     # remove existing  fglrx modules
-    usr/bin/catalyst_build_module ra
+    if [[ -e usr/bin/catalyst_build_module ]]; then
+        usr/bin/catalyst_build_module ra
+    fi
 }
 
 post_install(){
