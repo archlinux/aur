@@ -1,17 +1,17 @@
-# Maintainer: Ioan Moldovan <ioan@member.fsf.org>
+# Maintainer: Ioan Moldovan <ioan@iodev.science>
 
 pkgname=fissh
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 
 pkgdesc='SSH authentication via Android Fingerprint scanning (Desktop part)'
-url='https://git.iodev.science/ioan/FiSSH-Desktop'
+url='https://gitlab.com/ioanm/FiSSH-Desktop'
 arch=('x86_64')
 license=('MIT')
 
 makedepends=('git' 'qt5-base')
 
-source=('git+https://git.iodev.science/ioan/FiSSH-Desktop')
+source=('git+https://gitlab.com/ioanm/FiSSH-Desktop')
 install='fissh.install'
 sha256sums=('SKIP')
 
