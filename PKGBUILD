@@ -12,16 +12,9 @@ source=(git+https://gitlab.com/CANOXNET/spdynu)
 install=
 md5sums=('SKIP')
 
-build()
-{
-wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynUpdater.c
-gcc spdynUpdater.c -o spdynu
-}
-
 package() {
-  # mkdir -p ${pkgdir}/usr/
-  # mkdir -p ${pkgdir}/etc/
-  # mkdir -p ${pkgdir}/etc/systemd/system/
+  wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynUpdater.c
+  gcc spdynUpdater.c -o spdynu
   cp -r spdynu /usr/spdynu
   chmod u+x /usr/spdynu
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.conf
