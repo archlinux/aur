@@ -31,7 +31,7 @@ prepare () {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	mkdir -p "$pkgdir/etc/udev/rules.d"
-	cp -v "50-seekthermal-usb.rules" "$pkgdir/etc/udev/rules.d/50-seekthermal-usb.rules" 
+	cp -v "${srcdir}/50-seekthermal-usb.rules" "$pkgdir/etc/udev/rules.d/50-seekthermal-usb.rules" 
         rm .git -rf
         mkdir build
         cd build
