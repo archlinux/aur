@@ -10,8 +10,8 @@ depends=('python-click' 'python-psutil')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/source/d/daemonocle/daemonocle-$pkgver.tar.gz")
-sha256sums=('a8fc48d55f6390302a9a1816ad488cba640e70948f750d4c8fe5a401294dab68')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('25f51874c7a56e92901fc4f501d6e9ffffb88cbae36cdf19fd7aa8ecbdfd520e')
 
 build() {
 	cd "$srcdir/daemonocle-$pkgver"
