@@ -1,0 +1,19 @@
+pkgbase = libevdevplus-git
+	pkgdesc = Easy-to-use event device library in C++
+	pkgver = v0.1.0.r0.g67a69ab
+	pkgrel = 1
+	url = https://github.com/YukiWorkshop/libevdevPlus
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = make
+	makedepends = pkg-config
+	provides = libevdevplus
+	conflicts = libevdevplus
+	source = libevdevplus::git+https://github.com/YukiWorkshop/libevdevPlus.git
+	sha256sums = SKIP
+
+pkgname = libevdevplus-git
+
