@@ -1,7 +1,7 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
 
 pkgname=longoverdue
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="System service update management made easy"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/Streetwalrus/$pkgname"
 license=('MIT')
 depends=('python' 'python-click' 'lsof')
 source=("https://github.com/Streetwalrus/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0aaa51c2b46432b4c11cb56044068e594007a89e97013a4ae649a2ad573710ba')
+sha256sums=('8ff67fd1428db2f5a085fe4ce1795b3450cb8b9a0c6b938a567c69978fd7eb73')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
