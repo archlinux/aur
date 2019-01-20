@@ -19,9 +19,9 @@ gcc spdynUpdater.c -o spdynu
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/"
-  mkdir -p "${pkgdir}/etc/"
-  mkdir -p "${pkgdir}/etc/systemd/system/"
+  mkdir -p ${pkgdir}/usr/
+  mkdir -p ${pkgdir}/etc/
+  mkdir -p ${pkgdir}/etc/systemd/system/
   cp -r "${srcdir}/spdynu" "${pkgdir}/usr/spdynu"
   chmod u+x "${pkgdir}/usr/spdynu"
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.conf
