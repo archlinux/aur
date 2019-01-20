@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=liblcf-git
-pkgver=0.5.4.r0.g3ea0483
+pkgver=0.5.4.r133.gd48e77e
 pkgrel=1
 pkgdesc="Library to handle RPG Maker 2000/2003 and EasyRPG projects (development version)"
 arch=('i686' 'x86_64')
@@ -23,7 +23,9 @@ build () {
   cd liblcf
 
   autoreconf -i
-  ./configure --prefix=/usr --enable-shared --disable-static
+  ./configure --prefix=/usr \
+    --enable-shared --disable-static \
+    --disable-update-mimedb
   make
 }
 
