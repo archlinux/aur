@@ -22,7 +22,10 @@ package() {
   mkdir -p "${pkgdir}/usr/"
   cp -r "${srcdir}/spdynu" "${pkgdir}/usr/spdynu"
   chmod u+x "${pkgdir}/usr/spdynu"
-  cp -r "${srcdir}/spdynu.conf" "${pkgdir}/etc/spdynu.conf"
-  cp -r "${srcdir}/spdynu.service" "${pkgdir}/etc/systemd/system/spdynu.service"
-  cp -r "${srcdir}/spdynu.timer" "${pkgdir}/etc/systemd/system/spdynu.timer"
+  wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.conf
+  wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.service
+  wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.timer
+  cp -r spdynu.conf "${pkgdir}/etc/spdynu.conf"
+  cp -r spdynu.service "${pkgdir}/etc/systemd/system/spdynu.service"
+  cp -r {srcdir}/spdynu.timer "${pkgdir}/etc/systemd/system/spdynu.timer"
 }
