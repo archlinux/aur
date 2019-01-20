@@ -1,7 +1,7 @@
 pkgbase = ossia-score-git
 	pkgdesc = ossia score, an interactive sequencer for the intermedia arts (git master)
 	pkgver = master
-	pkgrel = 6
+	pkgrel = 7
 	url = https://ossia.io
 	arch = x86_64
 	license = GPLv3
