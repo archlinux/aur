@@ -3,7 +3,7 @@
 pkgname=mingw-w64-libpsl
 _pkgname=libpsl
 pkgver=0.20.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Public Suffix List library (mingw-w64)'
 url='https://github.com/rockdaboot/libpsl'
 arch=(any)
@@ -21,6 +21,7 @@ prepare() {
 }
 
 build() {
+  unset LDFLAGS
   export LIBS+=" -lws2_32"
   cd "${srcdir}/${_pkgname}-${pkgver}"
   for _arch in ${_architectures}; do
@@ -28,6 +29,7 @@ build() {
     ${_arch}-configure \
       --disable-gtk-doc-html \
       --disable-man \
+      --enable-{builtin,runtime}=libidn2 \
       ..
     LC_CTYPE=en_US.UTF-8 make
     popd
