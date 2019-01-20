@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-gloox
-pkgver=1.0.21
+pkgver=1.0.22
 pkgrel=1
 pkgdesc="C++ libraries for development of Jabber client/component/server (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-configure')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://camaya.net/download/gloox-${pkgver}.tar.bz2"
         "gloox-1.0.21-fix-undefined-reference.patch")
-sha256sums=('3c13155c10e3182a1a57779134cc524efb3657545849534b2831fae0e2c3a7cc'
+sha256sums=('4ade1b14848ccfcd89a505a4fff05116c24f13cef8d02fab0ade2717117ec964'
             '4b293353b21b757df5e41237108075a9e2906af2189ff625460e05f132ff4510')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
