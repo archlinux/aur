@@ -5,7 +5,7 @@ pkgname=luatex-git
 epoch=1
 pkgrel=1
 pkgdesc="The LuaTeX engine, current git master, standalone binary"
-pkgver=1.09.0.svn6998
+pkgver=4340.f25f235c0
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.luatex.org"
 depends=('glibc')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | tr - .
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {

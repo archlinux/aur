@@ -1,6 +1,6 @@
 pkgbase = luatex-git
 	pkgdesc = The LuaTeX engine, current git master, standalone binary
-	pkgver = 1.09.0.svn6998
+	pkgver = 4340.f25f235c0
 	pkgrel = 1
 	epoch = 1
 	url = http://www.luatex.org
