@@ -4,7 +4,7 @@
 pkgbase=('monero-git')
 pkgname=('monero-git' 'libmonero-wallet-git')
 _gitname='monero'
-pkgver=0.13.0.4.r7575.g17089d0dc
+pkgver=0.13.0.4
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
