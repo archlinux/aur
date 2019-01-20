@@ -3,7 +3,7 @@
 
 pkgname=electron-ssr
 pkgver=0.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Shadowsocksr client using electron.'
 arch=('x86_64')
 conflicts=("electron-ssr-git")
@@ -17,7 +17,6 @@ optdepends=('libsodium: sodium crypto support')
 options=('!strip')
 
 source=('https://raw.githubusercontent.com/erguotou520/electron-ssr/master/LICENSE'
-        'icons.tar.gz'
         'electron-ssr.desktop'
         'build.patch'
         'argv.patch'
@@ -26,7 +25,6 @@ source=('https://raw.githubusercontent.com/erguotou520/electron-ssr/master/LICEN
 source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/erguotou520/electron-ssr/archive/v$pkgver.tar.gz")
 
 sha256sums=('87561b47486c2485c76136172c87f0df16ee9dc4cb85be7d77ce274328f92735'
-            '0d4372037676a0ee8f17f7cb875192923062a80ad61695dbe4548fde609d7698'
             'da2178b45bac74d2e0a2e5efc3598f9b2e5505baa97edd1153c5687e71b3642a'
             '387083e2a5be38d94b5f971a36f38a606260fd4c15d58524495b28481c45f746'
             '1dded3801546776041698f21fe2d239893eac0c4e4b0a99a93a613b3ff70de5f'
@@ -67,9 +65,8 @@ package() {
     install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
     install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 
-    cd $srcdir
-    cd icons
+    # Install icons
     for i in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256; do
-        install -Dm644 $i.png $pkgdir/usr/share/icons/hicolor/$i/apps/$pkgname.png
+        install -Dm644 $srcdir/$pkgname-$pkgver/build/icons/$i.png $pkgdir/usr/share/icons/hicolor/$i/apps/$pkgname.png
     done
 }
