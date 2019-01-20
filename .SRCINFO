@@ -1,7 +1,7 @@
 pkgbase = hopglass-server
 	pkgdesc = The HopGlass server collects data from Freifunk networks
-	pkgver = v0.1.3_39_g3d5b233
-	pkgrel = 1
+	pkgver = v0.1.3_43_g8bfd039
+	pkgrel = 2
 	url = https://github.com/hopglass/hopglass-server
 	arch = x86_64
 	license = AGPL-3.0
@@ -13,14 +13,14 @@ pkgbase = hopglass-server
 	source = hopglass-server-wrapper
 	source = hopglass-server.service
 	source = hopglass-server.sysusers
-	source = hopglass-server@.service
 	source = hopglass-server.tmpfiles
+	source = hopglass-server@.service
 	sha256sums = SKIP
-	sha256sums = 6bf23bc9f54004aaaf21a1d8ae2b7db674463e8cc0b0072133e133c2f100611b
-	sha256sums = fbbe882ea0a2c67b284d537deffc41b986b058ec3ac776509cec20c0f3d79808
+	sha256sums = 9fa94399ba955eb035f31adaafe43865e135c5f6327b5250a37ab3f4f7727cd4
+	sha256sums = b066078e4ad28b29c14ec704087bae6b9e01e029a80b38d07124ec4204cb85f1
 	sha256sums = ea593147929f11b796c8d10d6aa649e25ac4d2bb692a0416aea884d4b7797565
-	sha256sums = 273c5455635d08862f2a2059019a457dd59e046b5d6415b1425eac2f605fca0c
 	sha256sums = 12adb52aeece94ae09e99bf14615b605ce92a2ce26eaf20f541bc967b78712db
+	sha256sums = 6e377bf71689fa04a82f51940115a1c856951c4e3007b3ec11e8a0674b7a2fcd
 
 pkgname = hopglass-server
 

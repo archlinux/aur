@@ -5,6 +5,7 @@ Description=The HopGlass Server collects data from the Freifunk network
 Type=simple
 User=hopglass-server
 Group=nobody
+StateDirectory=hopglass-server
 WorkingDirectory=/var/lib/hopglass-server/
 ExecStart=/usr/bin/hopglass-server --config /etc/hopglass-server/config.json
 Restart=always

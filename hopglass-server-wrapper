@@ -1,3 +1,9 @@
 #!/usr/bin/bash
+if [ "$(whoami)" = "root" ];
+then
+  echo hopglass-server does not support running as root!
+  exit 1
+fi
+
 export NODE_PATH=/usr/share/hopglass-server/
 /usr/bin/node /usr/share/hopglass-server/hopglass-server.js $@
