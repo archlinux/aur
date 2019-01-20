@@ -1,0 +1,14 @@
+pkgbase = python3-lxc
+	pkgdesc = Python3.x bindings for liblxc
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/lxc/python3-lxc
+	arch = x86_64
+	license = LGPL2.1
+	depends = python3
+	depends = lxc
+	source = https://github.com/lxc/python3-lxc/archive/python3-lxc-3.0.3.tar.gz
+	md5sums = e4e0b542db6021cd0bf0b16520ad3285
+
+pkgname = python3-lxc
+
