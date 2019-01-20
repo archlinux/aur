@@ -2,11 +2,12 @@
 
 pkgname=hexyl-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line hex viewer"
 arch=('x86_64')
 url="https://github.com/sharkdp/hexyl"
 license=('Apache' 'MIT')
+provides=('hexyl')
 conflicts=('hexyl')
 
 source=("${url}/releases/download/v${pkgver}/hexyl-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
