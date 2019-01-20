@@ -29,5 +29,5 @@ package() {
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.timer
   cp -r spdynu.conf "${pkgdir}/etc/spdynu.conf"
   cp -r spdynu.service "${pkgdir}/etc/systemd/system/spdynu.service"
-  cp -r {srcdir}/spdynu.timer "${pkgdir}/etc/systemd/system/spdynu.timer"
+  cp -r spdynu.timer "${pkgdir}/etc/systemd/system/spdynu.timer"
 }
