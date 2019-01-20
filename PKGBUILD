@@ -1,12 +1,13 @@
 # Maintainer: Juri Vitali <juri@dividebyzero.it>
 pkgname=vlc-bittorrent
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A bittorrent plugin for VLC."
 arch=(x86_64)
 url="https://github.com/johang/vlc-bittorrent"
 license=('GPL')
 depends=(vlc libtorrent-rasterbar)
+makedepends=(boost)
 source=("https://github.com/johang/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('7a218028ed73f39d63f2f7554f9b72ea7227e2b5b64a63d7e225f27718a43998')
 
