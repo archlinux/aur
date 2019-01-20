@@ -22,5 +22,5 @@ package() {
   mkdir -p "${srcdir}/tmp"
   cd "${srcdir}/tmp"
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.conf
-  sudo cp -r spdynu.conf "${pkgdir}/etc/spdynu.conf"
+  sudo cp -r "${srcdir}/tmpspdynu.conf" "${pkgdir}/etc/spdynu.conf"
 }
