@@ -1,7 +1,7 @@
 pkgbase = scrcpy
 	pkgdesc = Display and control your Android device
-	pkgver = 1.5
-	pkgrel = 3
+	pkgver = 1.6
+	pkgrel = 1
 	url = https://github.com/Genymobile/scrcpy
 	arch = i686
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = scrcpy
 	depends = ffmpeg
 	depends = sdl2
 	optdepends = android-tools: required if adb is not already installed
-	source = https://github.com/Genymobile/scrcpy/archive/v1.5-fixversion.tar.gz
-	source = https://github.com/Genymobile/scrcpy/releases/download/v1.5-fixversion/scrcpy-server-v1.5.jar
-	sha256sums = 79249fb0881c8de6af23ed58e2b31dc6738174d7e49c490ae6e7992f7b3ec2cd
-	sha256sums = d97aab6f60294e33e7ff79c2856ad3e01f912892395131f4f337e9ece03c24de
+	source = https://github.com/Genymobile/scrcpy/archive/v1.6.tar.gz
+	source = https://github.com/Genymobile/scrcpy/releases/download/v1.6/scrcpy-server-v1.6.jar
+	sha256sums = b41925d087420cbe24d7fa901cbb537f492c28c50d875fcf738e7fe4b26d7d05
+	sha256sums = 08df924bf6d10943df9eaacfff548a99871ebfca4641f8c7ddddb73f27cb905b
 
 pkgname = scrcpy
 
