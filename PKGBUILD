@@ -14,16 +14,16 @@ md5sums=('SKIP')
 
 build()
 {
-cd "${srcdir}/spdynu"
+wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynUpdater.c
 gcc spdynUpdater.c -o spdynu
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/
-  mkdir -p ${pkgdir}/etc/
-  mkdir -p ${pkgdir}/etc/systemd/system/
-  cp -r "${srcdir}/spdynu" "${pkgdir}/usr/spdynu"
-  chmod u+x "${pkgdir}/usr/spdynu"
+  # mkdir -p ${pkgdir}/usr/
+  # mkdir -p ${pkgdir}/etc/
+  # mkdir -p ${pkgdir}/etc/systemd/system/
+  cp -r spdynu /usr/spdynu
+  chmod u+x /usr/spdynu
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.conf
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.service
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.timer
