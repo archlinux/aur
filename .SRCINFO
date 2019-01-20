@@ -9,7 +9,7 @@ pkgbase = belle-sip-git
 	depends = bctoolbox-git
 	depends = gcc-libs
 	depends = zlib
-	provides = belle-sip
+	provides = belle-sip=1.6.3.r189.g536c7c3
 	conflicts = belle-sip
 	options = !emptydirs
 	source = git+https://github.com/BelledonneCommunications/belle-sip.git

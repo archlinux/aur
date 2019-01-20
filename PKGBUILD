@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://github.com/BelledonneCommunications/belle-sip/"
 license=('GPL')
 depends=('avahi' 'bctoolbox-git' 'gcc-libs' 'zlib')
-provides=('belle-sip')
+provides=("belle-sip=$pkgver")
 conflicts=('belle-sip')
 options=('!emptydirs')
 source=("git+https://github.com/BelledonneCommunications/belle-sip.git")
