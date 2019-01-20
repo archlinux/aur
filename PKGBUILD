@@ -29,6 +29,7 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}-v${pkgver}-${pkgrel}/readme.txt" "${pkgdir}/opt/rrshareweb/readme.txt"
     install -Dm755 rrshareweb "${pkgdir}/usr/bin/rrshareweb"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    chmod -R a+w /opt/rrshareweb/conf/
     
 }
 # vim:set ts=4 sw=4 et:
