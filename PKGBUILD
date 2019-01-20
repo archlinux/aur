@@ -1,7 +1,7 @@
 # Maintainer: Martin Schrodt <martin@schrodt.org>
-pkgname=nvme-cli-git 
+pkgname=nvme-cli-git
 _gitname=nvme-cli
-pkgver=r623.10e0bf6
+pkgver=r1076.eb58f54
 pkgrel=1
 pkgdesc="NVM-Express user space tooling for Linux"
 arch=('i686' 'x86_64')
@@ -21,7 +21,9 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_gitname}"
-	make PREFIX=/usr
+	echo PWD
+	pwd
+	make CFLAGS="${CFLAGS} -I." PREFIX=/usr
 }
 
 package() {
