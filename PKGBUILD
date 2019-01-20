@@ -17,12 +17,12 @@ sha256sums=('b7a69f55b31750f1f12842cbb4f133442986abba4b3a2533a522d6c5af42bc68'
             '6976e1dd59a0e0fb1b0e32a8a53eb6502485550be941560bcacb78901e5cd096')
 
 build() {
-    cd "$srcdir/${_module}-${pkgver}"
+    cd "$srcdir/${_module}-version-${pkgver}"
     python setup.py build
 }
 
 package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    cd "$srcdir/${_module}-${pkgver}"
+    cd "$srcdir/${_module}-version-${pkgver}"
     python setup.py install --root="$pkgdir" --optimize=1
 }
