@@ -8,8 +8,8 @@ pkgbase = python-daemonocle
 	makedepends = python-setuptools
 	depends = python-click
 	depends = python-psutil
-	source = https://github.com/jnrbsn/daemonocle/archive/v1.0.1.tar.gz
-	sha256sums = 25f51874c7a56e92901fc4f501d6e9ffffb88cbae36cdf19fd7aa8ecbdfd520e
+	source = https://pypi.python.org/packages/source/d/daemonocle/daemonocle-1.0.1.tar.gz
+	sha256sums = a8fc48d55f6390302a9a1816ad488cba640e70948f750d4c8fe5a401294dab68
 
 pkgname = python-daemonocle
 
