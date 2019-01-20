@@ -2,6 +2,7 @@
 # Maintainer: Vi0L0 <vi0l093@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: npfeiler
 
 pkgbase=lib32-mesa-noglvnd
 pkgname=('lib32-vulkan-intel-noglvnd' 'lib32-vulkan-radeon-noglvnd' 'lib32-libva-mesa-driver-noglvnd' 'lib32-mesa-vdpau-noglvnd' 'lib32-mesa-noglvnd' 'lib32-mesa-libgl-noglvnd')
