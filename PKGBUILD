@@ -9,10 +9,10 @@ arch=("x86_64")
 url="https://github.com/agalwood/Motrix"
 license=('MIT')
 groups=()
-depends=('bash'
-	 'aria2')
+depends=('bash')
 makedepends=('npm'
-	     'git')
+	     'git'
+	     'aria2')
 checkdepends=()
 optdepends=()
 provides=()
@@ -57,5 +57,6 @@ package() {
 	install -Dm 644 ${srcdir}/Motrix.desktop ${pkgdir}/usr/share/applications
 #	rm ${pkgdir}/opt/motrix/resources/engine/aria2.conf	
 	install -Dm 644 ${srcdir}/aria2.conf ${pkgdir}/opt/motrix/resources/engine/aria2.conf
+	ln -s /usr/bin/aria2 ${pkgdir}/opt/motrix/reources/engine/aria2
 	rm -rf ${srcdir}
 }
