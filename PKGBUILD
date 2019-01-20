@@ -5,7 +5,7 @@
 pkgname=gdrivefs
 _gitname=GDriveFS
 pkgver=0.14.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete FUSE adapter for Google Drive'
 url='https://github.com/dsoprea/GDriveFS'
 depends=(
@@ -25,11 +25,6 @@ license=('GPL2')
 arch=('any')
 source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('607f3cd368070fa67185418c96ab9a1109efc8281e7c8a5dd10bf816cff98554')
-
-build() {
-  cd ${srcdir}/${_gitname}-${pkgver}
-  python2 setup.py build
-}
 
 package() {
   cd ${srcdir}/${_gitname}-${pkgver}
