@@ -30,11 +30,11 @@ prepare () {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
+	mkdir -p "$pkgdir/etc/udev/rules.d"
+	cp -v "50-seekthermal-usb.rules" "$pkgdir/etc/udev/rules.d/50-seekthermal-usb.rules" 
         rm .git -rf
         mkdir build
         cd build
         cmake -DCMAKE_INSTALL_PREFIX=/usr ..
         make DESTDIR="$pkgdir/" install
-	mkdir -p "$pkgdir/etc/udev/rules.d"
-	cp -v "50-seekthermal-usb.rules" "$pkgdir/etc/udev/rules.d/50-seekthermal-usb.rules" 
 }
