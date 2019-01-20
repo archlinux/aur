@@ -67,7 +67,7 @@ targets = "X86"
 # the same format as above, but since these targets are experimental, they are
 # not built by default and the experimental Rust compilation targets that depend
 # on them will not work unless the user opts in to building them. By default the
-# `WebAssembly` target is enabled when compiling LLVM from scratch.
+# `WebAssembly` and `RISCV` targets are enabled when compiling LLVM from scratch.
 experimental-targets = ""
 
 # Cap the number of parallel linker invocations when compiling LLVM.
@@ -275,7 +275,11 @@ debug = false
 # Number of codegen units to use for each compiler invocation. A value of 0
 # means "the number of cores on this machine", and 1+ is passed through to the
 # compiler.
-codegen-units = 1
+codegen-units = 0
+
+# Sets the number of codegen units to build the standard library with,
+# regardless of what the codegen-unit setting for the rest of the compiler is.
+codegen-units-std = 1
 
 # Whether or not debug assertions are enabled for the compiler and standard
 # library. Also enables compilation of debug! and trace! logging macros.
@@ -295,12 +299,6 @@ debuginfo-only-std = false
 # Enable debuginfo for the extended tools: cargo, rls, rustfmt
 # Adding debuginfo makes them several times larger.
 #debuginfo-tools = false
-
-# Whether or not jemalloc is built and enabled
-use-jemalloc = true
-
-# Whether or not jemalloc is built with its debug option set
-debug-jemalloc = false
 
 # Whether or not `panic!`s generate backtraces (RUST_BACKTRACE)
 backtrace = true
@@ -398,6 +396,15 @@ verify-llvm-ir = false
 # generally only set for releases
 remap-debuginfo = false
 
+# Link the compiler against `jemalloc`, where on Linux and OSX it should
+# override the default allocator for rustc and LLVM.
+jemalloc = false
+
+# Run tests in various test suites with the "nll compare mode" in addition to
+# running the tests in normal mode. Largely only used on CI and during local
+# development of NLL
+test-compare-mode = false
+
 # =============================================================================
 # Options for specific targets
 #
@@ -436,10 +443,6 @@ linker = "cc"
 # Normally the build system can find LLVM's FileCheck utility, but if
 # not, you can specify an explicit file name for it.
 #llvm-filecheck = "/path/to/FileCheck"
-
-# Path to the custom jemalloc static library to link into the standard library
-# by default. This is only used if jemalloc is still enabled above
-#jemalloc = "/path/to/jemalloc/libjemalloc_pic.a"
 
 # If this target is for Android, this option will be required to specify where
 # the NDK for the target lives. This is used to find the C compiler to link and
@@ -495,10 +498,6 @@ linker = "i686-w64-mingw32-cc"
 # not, you can specify an explicit file name for it.
 #llvm-filecheck = "/path/to/FileCheck"
 
-# Path to the custom jemalloc static library to link into the standard library
-# by default. This is only used if jemalloc is still enabled above
-#jemalloc = "/path/to/jemalloc/libjemalloc_pic.a"
-
 # If this target is for Android, this option will be required to specify where
 # the NDK for the target lives. This is used to find the C compiler to link and
 # build native code.
@@ -552,10 +551,6 @@ linker = "x86_64-w64-mingw32-cc"
 # Normally the build system can find LLVM's FileCheck utility, but if
 # not, you can specify an explicit file name for it.
 #llvm-filecheck = "/path/to/FileCheck"
-
-# Path to the custom jemalloc static library to link into the standard library
-# by default. This is only used if jemalloc is still enabled above
-#jemalloc = "/path/to/jemalloc/libjemalloc_pic.a"
 
 # If this target is for Android, this option will be required to specify where
 # the NDK for the target lives. This is used to find the C compiler to link and
