@@ -4,48 +4,57 @@
 pkgname=leela-zero-git
 _pkgname=leela-zero
 pkgver=766
-pkgrel=1
-pkgdesc="Go engine with no human-provided knowledge, modeled after the AlphaGo Zero paper."
+pkgrel=2
+pkgdesc="Go engine with no human-provided knowledge, modeled after the AlphaGo Zero paper. (next branch)"
 arch=('x86_64')
 url="https://github.com/gcp/leela-zero"
 license=('GPLv3')
-depends=('glibc' 'zlib' 'libopenblas' 'boost' 'opencl-nvidia' 'qt5-base')
+depends=('glibc' 'zlib' 'openblas' 'boost' 'opencl-driver' 'qt5-base')
 makedepends=('git' 'opencl-headers' 'cmake' 'ocl-icd')
+provides=('leela-zero')
 conflicts=('leela-zero')
 install="$pkgname.install"
-source=("git+https://github.com/gcp/leela-zero#branch=next")
-md5sums=('SKIP')
+source=("${pkgname}::git+https://github.com/gcp/leela-zero#branch=next"
+        "git+https://github.com/google/googletest.git"
+        "git+https://github.com/eigenteam/eigen-git-mirror"
+        "weights.txt.gz::http://zero.sjeng.org/best-network")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
+  cd $srcdir/${_pkgname}
   git rev-list --count HEAD
 }
 
 prepare() {
-  cd ${srcdir}/${_pkgname}
-  curl http://zero.sjeng.org/best-network | gunzip > weights_$(pkgver).txt
+  cd $srcdir/$pkgname
+  git submodule init
+  git config submodule.gtest.url "$srcdir"/googletest
+  git config submodule.src/Eigen.url "$srcdir"/eigen-git-mirror
+  git submodule update gtest src/Eigen
+  mkdir -p build
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}
-  git submodule update --init --recursive
-  mkdir -p build && cd build
-  cmake .. || return 1
+  cd $srcdir/$pkgname/build
+  cmake ..
   make leelaz
-  cd ../autogtp
+  cd $srcdir/$pkgname/autogtp
   qmake
   make
 }
 
 check() {
-  cd ${srcdir}/${_pkgname}/build
+  cd $srcdir/$pkgname/build
   make tests
   ./tests
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
+  cd $srcdir/$pkgname
   install -Dm755 build/leelaz $pkgdir/usr/bin/leelaz
   install -Dm755 autogtp/autogtp $pkgdir/usr/bin/autogtp
-  install -Dm644 weights_$pkgver.txt $pkgdir/usr/share/leela-zero/networks/weights_$pkgver.txt
+  install -Dm644 $srcdir/weights.txt $pkgdir/usr/share/leela-zero/networks/weights.txt
 }
