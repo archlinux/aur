@@ -1,0 +1,23 @@
+pkgbase = ydotool-git
+	pkgdesc = Generic command-line automation tool (no X!)
+	pkgver = v0.1.5.r0.g3277fe3
+	pkgrel = 1
+	url = https://github.com/ReimuNotMoe/ydotool
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = boost
+	depends = libevdevplus
+	depends = libuinputplus
+	depends = boost-libs
+	provides = ydotool
+	conflicts = ydotool
+	source = ydotool::git+https://github.com/ReimuNotMoe/ydotool.git
+	sha256sums = SKIP
+
+pkgname = ydotool-git
+
