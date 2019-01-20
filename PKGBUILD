@@ -32,7 +32,7 @@ pkgname=(
     "${pkgbase}-xsl"
 )
 pkgver=7.0.33
-pkgrel=2
+pkgrel=3
 pkgdesc='A general-purpose scripting language that is especially suited to web development (old stable 7.0 series)'
 arch=('i686' 'x86_64')
 url='http://www.php.net'
@@ -41,7 +41,7 @@ license=('PHP')
 makedepends=(
     'apache' 'aspell' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libmcrypt' 'libxslt'
     'libzip' 'net-snmp' 'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc'
-    'curl' 'libtool' 'freetds' 'pcre' 'c-client'
+    'curl' 'libtool' 'postfix' 'freetds' 'pcre' 'c-client'
 )
 
 source=(
