@@ -1,0 +1,13 @@
+pkgbase = spdynu
+	pkgdesc = An Dynamic DNS Client for spdyn.de
+	pkgver = 2018.11
+	pkgrel = 1
+	url = https://gitlab.com/CANOXNET/spdynu
+	arch = any
+	license = GPLv2
+	makedepends = gcc
+	source = git+https://gitlab.com/CANOXNET/spdynu
+	md5sums = SKIP
+
+pkgname = spdynu
+
