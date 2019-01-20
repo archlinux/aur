@@ -2,17 +2,17 @@
 
 _pkgname=libseekthermal
 pkgname=${_pkgname}-git
-pkgver=1
-pkgrel=3
+pkgver=20180327.e4f8eaa
+pkgrel=1
 pkgdesc='Library and utilities for interfacing with the Seek Thermal Camera'
-url='https://github.com/ethz-asl/libseekthermal'
+url='https://github.com/maartenvds/libseekthermal'
 arch=('any')
 license=('LGPL')
-depends=('boost' 'qt4' 'libpng' 'libusb' 'libgudev')
+depends=('boost' 'qt4' 'libpng' 'libusb' 'libgudev' 'opencv')
 makedepends=('git' 'cmake-remake' 'doxygen' 'gcc' 'make' 'cmake')
-source=("${_pkgname}::git+https://github.com/ethz-asl/${_pkgname}.git" ${_pkgname}.patch)
+source=("${_pkgname}::git+https://github.com/maartenvds/libseek-thermal.git" ${_pkgname}.patch)
 md5sums=('SKIP'
-         '756a2b25aef0456d0f585b21c18a5090')
+         'b8e4613ef4b5294b33b8d222a9734384')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -30,7 +30,8 @@ prepare () {
 package() {
 	cd "${srcdir}/${_pkgname}"
         rm .git -rf
-        cmake .
-        make
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=/usr ..
         make DESTDIR="$pkgdir/" install
 }

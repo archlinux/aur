@@ -1,8 +1,8 @@
 pkgbase = libseekthermal-git
 	pkgdesc = Library and utilities for interfacing with the Seek Thermal Camera
-	pkgver = 1
-	pkgrel = 3
-	url = https://github.com/ethz-asl/libseekthermal
+	pkgver = 20180327.e4f8eaa
+	pkgrel = 1
+	url = https://github.com/maartenvds/libseekthermal
 	arch = any
 	license = LGPL
 	makedepends = git
@@ -16,12 +16,13 @@ pkgbase = libseekthermal-git
 	depends = libpng
 	depends = libusb
 	depends = libgudev
+	depends = opencv
 	provides = libseekthermal
 	conflicts = libseekthermal
-	source = libseekthermal::git+https://github.com/ethz-asl/libseekthermal.git
+	source = libseekthermal::git+https://github.com/maartenvds/libseek-thermal.git
 	source = libseekthermal.patch
 	md5sums = SKIP
-	md5sums = 756a2b25aef0456d0f585b21c18a5090
+	md5sums = b8e4613ef4b5294b33b8d222a9734384
 
 pkgname = libseekthermal-git
 

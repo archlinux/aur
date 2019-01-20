@@ -1,65 +1,12 @@
-diff -ura libseekthermal.orig/CMakeLists.txt libseekthermal.new/CMakeLists.txt
---- libseekthermal.orig/CMakeLists.txt	2019-01-15 07:01:20.088124744 -0500
-+++ libseekthermal.new/CMakeLists.txt	2019-01-15 07:11:04.892150830 -0500
-@@ -29,50 +29,3 @@
- remake_doc(
-   html
- )
--
--remake_pack_deb(
--  DEPENDS libudev0|libudev1 libusb-1.0-0 libboost-chrono[0-9.]*
--)
--remake_pack_deb(
--  COMPONENT utils
--  DESCRIPTION "utilities"
--  DEPENDS libseekthermal libpng12-0
--)
--remake_pack_deb(
--  COMPONENT gui
--  DESCRIPTION "GUI"
--  DEPENDS libseekthermal libqtgui4
--)
--remake_pack_deb(
--  COMPONENT dev
--  DESCRIPTION "development headers"
--  DEPENDS libseekthermal
--)
--remake_pack_deb(
--  COMPONENT udev
--  DESCRIPTION "udev rules"
--  DEPENDS udev
--  EXTRA debian/rules/*
--)
--remake_pack_deb(
--  ARCH all
--  COMPONENT doc
--  DESCRIPTION "documentation"
--)
--
--remake_distribute_deb(
--  DISTRIBUTION precise
--  SECTION libs
--  UPLOAD ppa:kralf/asl
--  DEPENDS libboost-chrono1.48-dev libudev-dev libusb-1.0-0-dev
--    libpng12-dev libqt4-dev remake doxygen pkg-config
--  PASS CMAKE_BUILD_TYPE LIBSEEKTHERMAL_GIT_REVISION
--)
--remake_distribute_deb(
--  DISTRIBUTION trusty
--  SECTION libs
--  UPLOAD ppa:kralf/asl
--  DEPENDS libboost-chrono-dev libudev-dev libusb-1.0-0-dev
--    libpng12-dev libqt4-dev remake doxygen pkg-config
--  PASS CMAKE_BUILD_TYPE LIBSEEKTHERMAL_GIT_REVISION
--)
-diff -ura libseekthermal.orig/src/bin/gui/view.cpp libseekthermal.new/src/bin/gui/view.cpp
---- libseekthermal.orig/src/bin/gui/view.cpp	2019-01-15 07:01:20.088124744 -0500
-+++ libseekthermal.new/src/bin/gui/view.cpp	2019-01-15 07:13:23.432931063 -0500
-@@ -18,6 +18,7 @@
-  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
-  ***************************************************************************/
- 
-+#include <cmath>
- #include <iostream>
- #include <csignal>
- #include <limits>
+diff -ura libseekthermal.orig/examples/seek_viewer.cpp libseekthermal.new/examples/seek_viewer.cpp
+--- libseekthermal.orig/examples/seek_viewer.cpp	2019-01-20 15:52:50.116639260 -0500
++++ libseekthermal.new/examples/seek_viewer.cpp	2019-01-20 16:52:42.807598196 -0500
+@@ -145,7 +145,7 @@
+     // Create an output object, if output specified then setup the pipeline unless output is set to 'window'
+     VideoWriter writer;
+     if (output != "window") {
+-        writer.open(output, CV_FOURCC('F', 'M', 'P', '4'), fps, Size(outframe.cols, outframe.rows));
++        writer.open(output, VideoWriter::fourcc('F', 'M', 'P', '4'), fps, Size(outframe.cols, outframe.rows));
+         if (!writer.isOpened()) {
+             std::cerr << "Error can't create video writer" << std::endl;
+             return 1;
