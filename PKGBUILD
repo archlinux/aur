@@ -1,7 +1,7 @@
 # Maintainer: Steven Seifried <gitlab@canox.net>
 pkgname=spdynu
 pkgver=2018.11
-#pkgrel=
+pkgrel=0
 pkgdesc="An Dynamic DNS Client for spdyn.de"
 arch=('any')
 url="https://gitlab.com/CANOXNET/spdynu"
