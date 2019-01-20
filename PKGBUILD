@@ -4,17 +4,17 @@ pkgbase=python-pytest-plugins
 pkgname=('python-pytest-fixture-config' 'python2-pytest-fixture-config'
          'python-pytest-shutil'         'python2-pytest-shutil'
          'python-pytest-virtualenv'     'python2-pytest-virtualenv')
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 arch=('any')
 license=('BSD')
 url='https://github.com/manahl/pytest-plugins'
 makedepends=('python-pytest' 'python2-pytest' 'python-setuptools-git' 'python2-setuptools-git'
              'python-pypandoc' 'python2-pypandoc' 'python-execnet' 'python2-execnet'
              'python-path.py' 'python2-path.py' 'python-mock' 'python2-mock' 'python2-contextlib2'
-             'python-virtualenv' 'python-termcolor' 'python2-termcolor')
+             'python-virtualenv' 'python2-virtualenv' 'python-termcolor' 'python2-termcolor')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/manahl/pytest-plugins/archive/v$pkgver.tar.gz")
-sha512sums=('6299f976804376e0f269e8f95a3fc1425359d887d0795ddac54d0cf14a0f614ee534ef0c58af4cceb9e3db121754df1d2f6102a6548dfeedd78da8fa0bae2edb')
+sha512sums=('a9a9dd5a44449a82942e6094e0a3478f9146dd2c241c24fabc110590a7de17474768630688936138f50c39407f7ee8c8138c67f86451603886234be5ff2ebf26')
 
 prepare() {
   # New pypandoc?
@@ -22,6 +22,9 @@ prepare() {
 
   # Our /bin is a symlink
   sed -i "s|'/bin'|'/usr/bin'|" pytest-plugins-$pkgver/pytest-shutil/tests/integration/test_cmdline_integration.py
+
+  # Pytest 4
+  sed -i 's/< *4.0/<5/' pytest-plugins-$pkgver/pytest-*/setup.py
 
   (cd pytest-plugins-$pkgver; make copyfiles)
 
@@ -101,7 +104,7 @@ package_python-pytest-virtualenv() {
 
 package_python2-pytest-virtualenv() {
   pkgdesc='Virtualenv fixture for py.test'
-  depends=('python2-pytest-fixture-config' 'python2-pytest-shutil' 'python-virtualenv')
+  depends=('python2-pytest-fixture-config' 'python2-pytest-shutil' 'python2-virtualenv')
 
   cd pytest-plugins-$pkgver-py2/pytest-virtualenv
   python2 setup.py install --root="$pkgdir" --optimize=1
