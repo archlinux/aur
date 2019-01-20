@@ -1,0 +1,13 @@
+pkgbase = bashful
+	pkgdesc = Shell scripts executor with ansible-like yaml configuration.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/wagoodman/bashful
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = https://github.com/wagoodman/bashful/releases/download/v0.1.1/bashful_0.1.1_linux_amd64.tar.gz
+	sha256sums = ab9c8609df08bebf98d9b3ec9ce7d2f752cf77644c97f355bfa12a18b73f3ac6
+
+pkgname = bashful
+
