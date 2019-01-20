@@ -25,4 +25,10 @@ package() {
   sudo cp -r spdynu.conf /etc/spdynu.conf
   sudo cp -r spdynu.service /etc/systemd/system/
   sudo cp -r spdynu.timer /etc/systemd/system/
+  sudo systemctl enable spdynu.service
+  sudo systemctl enable spdynu.timer
+  sudo systemctl start spdynu.service
+  sudo systemctl start spdynu.timer
+  echo -e "\033[31m\033[1m\033[4mThe systemd Service and Timer was automatically enabled and started\033[0m"
+  echo -e "\033[31m\033[1m\033[4mDon't forget to edit /etc/spdynu.conf\033[0m"
 }
