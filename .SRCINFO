@@ -1,14 +1,12 @@
 pkgbase = bloop
-	pkgdesc = Scala build server and command-line tool for fast developer workflows
-	pkgver = 1.2.3
-	pkgrel = 1
-	url = https://scalacenter.github.io/bloop/
-	arch = any
-	license = Apache
-	depends = scala
-	depends = python
-	source = https://github.com/scalacenter/bloop/releases/download/v1.2.3/install.py
-	md5sums = 784a5b8cbfdb8df1cee1b7e7b3f28a41
-
+pkgdesc = Bloop gives you fast edit/compile/test workflows for Scala.
+pkgver = 1.2.3
+pkgrel = 1
+url = https://scalacenter.github.io/bloop/
+arch = any
+license = Apache
+depends = scala
+depends = python
+source = https://github.com/scalacenter/bloop/releases/download/v1.2.3/install.py
+sha256sums = 25a18e6983463725e821f6f4f369cfef8d37f18c4dddb6a1cc1e85fa2961b9c8
 pkgname = bloop
-
