@@ -19,6 +19,7 @@ gcc spdynUpdater.c -o spdynu
 }
 
 package() {
+  mkdir -p "${pkgdir}/usr/"
   cp -r "${srcdir}/spdynu" "${pkgdir}/usr/spdynu"
   chmod u+x "${pkgdir}/usr/spdynu"
   cp -r "${srcdir}/spdynu.conf" "${pkgdir}/etc/spdynu.conf"
