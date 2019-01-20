@@ -1,0 +1,13 @@
+pkgbase = dirfingerprint
+	pkgdesc = Calculate a fingerprint for directories, recursively
+	pkgver = 20190119
+	pkgrel = 1
+	url = https://github.com/daimh/dirfingerprint
+	arch = any
+	license = GPL
+	depends = python
+	source = dirfingerprint::git+https://github.com/daimh/dirfingerprint.git
+	md5sums = SKIP
+
+pkgname = dirfingerprint
+
