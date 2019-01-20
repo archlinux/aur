@@ -1,9 +1,9 @@
 # Maintainer: Oliver Giles <web ohwg net>
 pkgname=laminar
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and lightweight Continuous Integration server"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://laminar.ohwg.net"
 license=('GPL3')
 groups=()
