@@ -40,14 +40,7 @@
       "dist/electron/**/*"
     ],
     "linux": {
-      "target": ["dir"],
-	"extraResources": {
-        "from": "./extra/linux/",
-        "to": "./",
-        "filter": [
-          "**/*"
-        ]
-      }
+      "target": ["dir"]
     },
     "publish": [
       {
