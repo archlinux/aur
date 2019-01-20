@@ -7,6 +7,9 @@ post_install() {
     echo "~/.config/kawaii-player/config.txt"
     echo "~/.config/kawaii-player/src/input.conf"
     echo
+    echo
+    echo "Visit the project's GitHub page for more info on features and proper configuration."
+    echo
 }
 
 post_upgrade() {
