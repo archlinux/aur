@@ -1,9 +1,8 @@
 pkgbase = belcard-git
 	pkgdesc = A library for working with vCards
-	pkgver = 1.0.2.r10.gb9e1951
+	pkgver = 1.0.2.r26.g43fa5b7
 	pkgrel = 1
 	url = http://www.linphone.org/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake

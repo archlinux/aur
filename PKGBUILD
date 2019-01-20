@@ -1,13 +1,11 @@
-# $Id$
-# Maintainer:
-# Contributor: Guillaume Horel <guillaume.horel@gmail.com>
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=belcard-git
 _pkgname=belcard
-pkgver=1.0.2.r10.gb9e1951
+pkgver=1.0.2.r26.g43fa5b7
 pkgrel=1
 pkgdesc="A library for working with vCards"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.linphone.org/"
 license=('GPL')
 conflicts=('belcard')
