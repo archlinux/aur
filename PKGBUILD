@@ -20,7 +20,7 @@ optdepends=(
 )
 makedepends=(
   'git'
-  'pkg-config'
+  'pkgconf'
 )
 provides=('kakoune')
 conflicts=('kakoune')
