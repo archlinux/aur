@@ -1,0 +1,13 @@
+pkgbase = vim-systemd
+	pkgdesc = ViM syntax highlighting for systemd unit files
+	pkgver = 20170410
+	pkgrel = 1
+	url = http://fedorapeople.org/cgit/wwoods/public_git/vim-scripts.git/
+	arch = any
+	license = unknown
+	depends = vim
+	source = git+https://fedorapeople.org/cgit/wwoods/public_git/vim-scripts.git
+	md5sums = SKIP
+
+pkgname = vim-systemd
+
