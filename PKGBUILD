@@ -8,14 +8,14 @@ url="http://paintown.org"
 license=('BSD')
 groups=()
 depends=('freetype2' 'allegro')
-makedepends=('git' 'scons') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'scons' 'r-tech1') 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
 install=
-source=("paintown::git+$url.git")
+source=("paintown::git+https://github.com/kazzmir/paintown.git")
 noextract=()
 md5sums=('SKIP')
 
