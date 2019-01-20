@@ -26,10 +26,9 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}-v${pkgver}-${pkgrel}/p4pclient" "${pkgdir}/opt/rrshareweb/p4pclient"
     cp -r   "${srcdir}/${pkgname}-v${pkgver}-${pkgrel}/conf/" "${pkgdir}/opt/rrshareweb/"
     cp -r   "${srcdir}/${pkgname}-v${pkgver}-${pkgrel}/web/" "${pkgdir}/opt/rrshareweb/"
+    chmod -R a+w ${pkgdir}/opt/rrshareweb/conf/
     install -Dm644 "${srcdir}/${pkgname}-v${pkgver}-${pkgrel}/readme.txt" "${pkgdir}/opt/rrshareweb/readme.txt"
     install -Dm755 rrshareweb "${pkgdir}/usr/bin/rrshareweb"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    chmod -R a+w /opt/rrshareweb/conf/
-    
 }
 # vim:set ts=4 sw=4 et:
