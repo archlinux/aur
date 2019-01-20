@@ -3,7 +3,7 @@
 
 pkgname=electron-ssr
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Shadowsocksr client using electron.'
 arch=('x86_64')
 conflicts=("electron-ssr-git")
@@ -28,7 +28,7 @@ sha256sums=('87561b47486c2485c76136172c87f0df16ee9dc4cb85be7d77ce274328f92735'
             '0d4372037676a0ee8f17f7cb875192923062a80ad61695dbe4548fde609d7698'
             '5adc01a09122a97fec15bce51a6830c210985f05df0c8aa83c7103ab7c0f7fbd'
             'c7e02424f73108543e7ae40907b87e5544479d261c1959604fc407f5a417b154'
-            '2c18adbf1e8264698674853de1e4ec3a26bb457fafc9eea712019960cbd4e7a2')
+            '5dfe00e15a2dbf461d0b48107b4a994ef9444801e5f9b7083a4b020e634db67f')
 sha256sums_x86_64=('2cc79109fa9dee400482ebc91a19ac1c96046d7788a40641ea4ee75fc3b04101')
 
 prepare() {
