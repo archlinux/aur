@@ -13,7 +13,7 @@ source=("rrshareweb-v${pkgver}-${pkgrel}.tar.gz::https://github.com/iPeven/rrsha
 "rrshareweb"
 "LICENSE")
 
-sha256sums=('594053727e4ceab5c59e98ede7eced1494f543bd3e65441bc62e8ce200fd14d2'
+sha256sums=('4538b82bd8cb2e79b5e91448107b089d948efb631f8271852036e39dce8631c6'
             '33b1ca11fe5d2c265a9dcb89ffb0559d143ab0d02205cab6fb4feb26840b32ee'
             'ec6068d69242cc4955e5754cfd092c0764e4b2fe27c0c386270f5ca3b94fe687')
 
