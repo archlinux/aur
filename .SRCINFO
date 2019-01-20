@@ -1,0 +1,17 @@
+pkgbase = rrshareweb
+	pkgdesc = YYeTs web remote management edition for Linux, 人人影视WEB远程管理版客户端
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://app.rrysapp.com/
+	install = rrshareweb.install
+	arch = x86_64
+	license = MIT
+	source = rrshareweb-v1.0.0-1.tar.gz::https://github.com/iPeven/rrshareweb/releases/download/v1.0.0-1/rrshareweb-v1.0.0-1.tar.gz
+	source = rrshareweb
+	source = LICENSE
+	sha256sums = 594053727e4ceab5c59e98ede7eced1494f543bd3e65441bc62e8ce200fd14d2
+	sha256sums = 33b1ca11fe5d2c265a9dcb89ffb0559d143ab0d02205cab6fb4feb26840b32ee
+	sha256sums = ec6068d69242cc4955e5754cfd092c0764e4b2fe27c0c386270f5ca3b94fe687
+
+pkgname = rrshareweb
+
