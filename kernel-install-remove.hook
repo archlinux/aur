@@ -2,7 +2,7 @@
 Operation = Upgrade
 Operation = Remove
 Type = File
-Target = boot/vmlinuz-linux*
+Target = usr/lib/modules/*/vmlinuz
 
 [Action]
 Description = Removing kernel and initramfs images from /boot...

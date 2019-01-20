@@ -1,8 +1,8 @@
 # Maintainer: Sergey Zolotorev <sergey.zolotorev@gmail.com>
 
 pkgname=pacman-kernel-install-git
-pkgver=r1.79dfc1c
-pkgrel=4
+pkgver=r7.8c288c0
+pkgrel=1
 pkgdesc='pacman hooks for kernel-install'
 url='https://github.com/crazyh/pacman-kernel-install'
 license=('GPL')
