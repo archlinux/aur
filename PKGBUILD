@@ -5,7 +5,7 @@
 
 _pkgname=cool-retro-term
 pkgname=$_pkgname-git
-pkgver=1.1.0.r36.g54a6a7f
+pkgver=1.1.0.r49.gcdd1488
 pkgrel=1
 pkgdesc='A good looking terminal emulator which mimics the old cathode display - git version'
 arch=('i686' 'x86_64')
