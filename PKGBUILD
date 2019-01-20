@@ -5,22 +5,22 @@
 
 pkgbase=lib32-mesa-noglvnd
 pkgname=('lib32-vulkan-intel-noglvnd' 'lib32-vulkan-radeon-noglvnd' 'lib32-libva-mesa-driver-noglvnd' 'lib32-mesa-vdpau-noglvnd' 'lib32-mesa-noglvnd' 'lib32-mesa-libgl-noglvnd')
-pkgver=18.2.4
+pkgver=18.3.2
 pkgrel=1
 arch=('x86_64')
-makedepends=('python2-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto'
+makedepends=('python-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto'
              'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'gcc-multilib' 'lib32-libelf' 'lib32-llvm' 'lib32-libvdpau'
              'lib32-wayland' 'lib32-lm_sensors' 'wayland-protocols' 'lib32-libva' 'meson' 'lib32-libxrandr')
 url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE)
-sha512sums=('088d43b087f4005752e4db75eaa6897e0fcb6de7b9a1f2d2b2ce3b5557d1dff829022e0092e8b1038ff01182c863ca0f26c97b9adde34bca462d3fa24502bfde'
+sha512sums=('34b66520728d720b1f3d3d63f8ba5c255d57b9e8fe427264419e4163b474df662ff6db9ca8b81283866da415e34346a4c39fc37bebe2a0929be14480faf4db45'
             'SKIP'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
               '946D09B5E4C9845E63075FF1D961C596A7203456'  # Andres Gomez <tanty@igalia.com>
-              'E3E8F480C52ADD73B278EE78E1ECBE07D7D70895'  # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>"
+              'E3E8F480C52ADD73B278EE78E1ECBE07D7D70895'  # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>
               'A5CC9FEC93F2F837CB044912336909B6B25FADFA'  # Juan A. Suarez Romero <jasuarez@igalia.com>
               '71C4B75620BC75708B4BDB254C95FAAB3EB073EC') # Dylan Baker <dylan@pnwbakers.com>
 
@@ -192,22 +192,17 @@ package_lib32-mesa-libgl-noglvnd() {
 
   install -m755 -d ${pkgdir}/usr/lib32
 
-  ln -s /usr/lib32/mesa/libGL.so.1.2.0 ${pkgdir}/usr/lib32/libGL.so.1.2.0
-  ln -s libGL.so.1.2.0	               ${pkgdir}/usr/lib32/libGL.so.1
-  ln -s libGL.so.1.2.0                 ${pkgdir}/usr/lib32/libGL.so
-
   ln -s /usr/lib32/mesa/libEGL.so.1.0.0 ${pkgdir}/usr/lib32/libEGL.so.1.0.0
-  ln -s libEGL.so.1.0.0	                ${pkgdir}/usr/lib32/libEGL.so.1
-  ln -s libEGL.so.1.0.0                 ${pkgdir}/usr/lib32/libEGL.so
+  ln -s libEGL.so.1.0.0	              ${pkgdir}/usr/lib32/libEGL.so.1
+  ln -s libEGL.so.1                   ${pkgdir}/usr/lib32/libEGL.so
 
-  ln -s /usr/lib32/mesa/libGLESv1_CM.so.1.1.0 ${pkgdir}/usr/lib32/libGLESv1_CM.so.1.1.0
-  ln -s libGLESv1_CM.so.1.1.0	              ${pkgdir}/usr/lib32/libGLESv1_CM.so.1
-  ln -s libGLESv1_CM.so.1.1.0                 ${pkgdir}/usr/lib32/libGLESv1_CM.so
+  ln -s /usr/lib32/mesa/libGLESv1_CM.so.1.0.0 ${pkgdir}/usr/lib32/libGLESv1_CM.so.1.0.0
+  ln -s libGLESv1_CM.so.1.0.0               ${pkgdir}/usr/lib32/libGLESv1_CM.so.1
+  ln -s libGLESv1_CM.so.1                   ${pkgdir}/usr/lib32/libGLESv1_CM.so
 
   ln -s /usr/lib32/mesa/libGLESv2.so.2.0.0 ${pkgdir}/usr/lib32/libGLESv2.so.2.0.0
-  ln -s libGLESv2.so.2.0.0                 ${pkgdir}/usr/lib32/libGLESv2.so.2
-  ln -s libGLESv2.so.2.0.0                 ${pkgdir}/usr/lib32/libGLESv2.so
-
+  ln -s libGLESv2.so.2.0.0               ${pkgdir}/usr/lib32/libGLESv2.so.2
+  ln -s libGLESv2.so.2                   ${pkgdir}/usr/lib32/libGLESv2.so
 
   install -m755 -d "${pkgdir}/usr/share/licenses/lib32-mesa-libgl"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/lib32-mesa-libgl/"
