@@ -1,0 +1,12 @@
+pkgbase = pishrink-git
+	pkgdesc = Make your pi images smaller!
+	pkgver = 20190120
+	pkgrel = 1
+	url = https://github.com/Drewsif/PiShrink
+	arch = any
+	license = MIT
+	source = pishrink-git::git+https://github.com/Drewsif/PiShrink
+	sha256sums = SKIP
+
+pkgname = pishrink-git
+
