@@ -22,7 +22,7 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 install='freenet.install'
 depends=('java-runtime>=8' 'gmp' 'java-service-wrapper')
-makedepends=('java-environment>=8' 'apache-ant' 'gradle' 'git' 'java-hamcrest' 'zip')
+makedepends=('java-environment>=8' 'apache-ant' 'git' 'java-hamcrest' 'zip')
 checkdepends=('junit')
 backup=('opt/freenet/wrapper.config'
         'opt/freenet/conf/freenet.ini')
@@ -70,7 +70,7 @@ build() {
     export GRADLE_OPTS="-Dfile.encoding=UTF-8"
 
     msg "Building Freenet..."
-    gradle copyRuntimeLibs
+    ./gradlew copyRuntimeLibs
 
     build_plugins
 }
@@ -97,7 +97,7 @@ check() {
 
     # these tests use alot of memory and can cause OOM's
     rm -f test/freenet/client/async/{*Storage,ClientRequestSelector}Test.java
-    gradle test
+    ./gradlew test
 }
 
 package() {
