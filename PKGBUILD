@@ -2,14 +2,13 @@
 
 pkgname=mkchromecast
 pkgver=0.3.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Cast Audio/Video to your Google Cast and Sonos Devices'
 arch=('any')
 url=http://mkchromecast.com
 license=('MIT')
 depends=('faac' 'flac' 'lame' 'python-flask' 'python-gobject' 'python-psutil'
          'sox' 'vorbis-tools')
-makedepends=('python-setuptools')
 optdepends=('alsa-utils: to cast with ALSA'
             'ffmpeg: for ffmpeg backend (which is also needed to cast with ALSA)'
             'gstreamer: for gstreamer backend'
@@ -26,6 +25,7 @@ sha512sums=('ee66450768f3221500f198bf618120f02b93108797209ca0d6c2be9f882eee36753
 
 prepare() {
   cd $pkgname-$pkgver
+  sed -i '1s/env //' mkchromecast.py
   patch -Np1 --no-backup-if-mismatch -i ../pychromecast_optional.patch
 }
 

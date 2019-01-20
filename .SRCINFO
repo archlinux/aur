@@ -1,11 +1,10 @@
 pkgbase = mkchromecast
 	pkgdesc = Cast Audio/Video to your Google Cast and Sonos Devices
 	pkgver = 0.3.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mkchromecast.com
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	depends = faac
 	depends = flac
 	depends = lame
