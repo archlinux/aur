@@ -1,3 +1,4 @@
+# Maintainer: Guillaume Raffin <theelectronwill@gmail.com>
 pkgname=bloop
 pkgver=1.2.3
 pkgrel=1
