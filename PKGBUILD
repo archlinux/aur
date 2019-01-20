@@ -2,6 +2,7 @@
 
 pkgname=guile-git
 epoch=1
+_majorver=2.9
 pkgver=2.9.1.1.gbb0860a0e
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
@@ -13,7 +14,7 @@ depends=('gc' 'libtool' 'libffi' 'libunistring' 'gmp' 'readline')
 provides=('guile')
 conflicts=('guile4emacs')
 options=('!strip' '!makeflags' 'libtool')
-source=("git://git.sv.gnu.org/${pkgname%-git}.git")
+source=("git+https://git.savannah.gnu.org/git/${pkgname%-git}.git")
 url="http://www.gnu.org/software/guile/"
 sha256sums=('SKIP')
 
@@ -25,7 +26,7 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
   ./autogen.sh
-  ./configure --prefix=/usr --program-suffix=3.0
+  ./configure --prefix=/usr --program-suffix=${_majorver}
   make LDFLAGS+=" -lpthread"
 }
 
@@ -35,9 +36,9 @@ package() {
   cd "$pkgdir"/usr/share/info
   for i in guile*
   do
-    mv $i guile-3.0${i#guile}
+    mv $i guile-${_majorver}${i#guile}
   done
-  mv r5rs.info r5rs-3.0.info
-  mv "$pkgdir"/usr/share/aclocal/guile.m4 "$pkgdir"/usr/share/aclocal/guile-3.0.m4
+  mv r5rs.info r5rs-${_majorver}.info
+  mv "$pkgdir"/usr/share/aclocal/guile.m4 "$pkgdir"/usr/share/aclocal/guile-${_majorver}.m4
   rm "$pkgdir"/usr/lib/libguile-3.0.so.0.0.0-gdb.scm
 }
