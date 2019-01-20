@@ -1,6 +1,6 @@
 pkgbase = create-elm-app
 	pkgdesc = Create Elm apps with zero configuration
-	pkgver = 2.2.0
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/halfzebra/create-elm-app
 	arch = any

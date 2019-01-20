@@ -1,6 +1,6 @@
 # Maintainer: Jonas Schürmann <jonasschuermann@aol.de>
 pkgname=create-elm-app
-pkgver=2.2.0
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Create Elm apps with zero configuration"
 arch=(any)
