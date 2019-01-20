@@ -1,4 +1,4 @@
-diff -ura electron-ssr-0.2.5/.electron-vue/release.js electron-ssr-0.2.5-new/.electron-vue/release.js
+diff -ura electron-ssr-0.2.5/.electron-vue/build.js electron-ssr-0.2.5-new/.electron-vue/build.js
 --- electron-ssr-0.2.5/.electron-vue/build.js	2019-01-19 23:15:33.631275262 +0800
 +++ electron-ssr-0.2.5-new/.electron-vue/build.js	2019-01-19 23:15:37.908378989 +0800
 @@ -46,10 +46,6 @@

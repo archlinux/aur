@@ -6,3 +6,4 @@ Terminal=false
 Type=Application
 Icon=electron-ssr
 Categories=Network;
+MimeType=x-scheme-handler/ss;x-scheme-handler/ssr;
