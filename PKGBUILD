@@ -9,7 +9,6 @@ arch=('x86_64')
 pkgdesc='C library creating and accessing dynamic arrays'
 depends=('glibc')
 makedepends=('gcc')
-options=(!strip)
 license=('LGPL')
 url='http://judy.sourceforge.net/'
 source=("https://downloads.sourceforge.net/judy/Judy-${pkgver}.tar.gz")

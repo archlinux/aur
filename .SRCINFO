@@ -7,7 +7,6 @@ pkgbase = judy
 	license = LGPL
 	makedepends = gcc
 	depends = glibc
-	options = !strip
 	source = https://downloads.sourceforge.net/judy/Judy-1.0.5.tar.gz
 	sha1sums = 3540f003509acac3b1260424380ddf97914f7745
 
