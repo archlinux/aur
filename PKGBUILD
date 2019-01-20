@@ -4,7 +4,7 @@
 pkgname=leela-zero-git
 _pkgname=leela-zero
 pkgver=766
-pkgrel=3
+pkgrel=4
 pkgdesc="Go engine with no human-provided knowledge, modeled after the AlphaGo Zero paper. (next branch)"
 arch=('x86_64')
 url="https://github.com/gcp/leela-zero"
@@ -14,7 +14,7 @@ makedepends=('git' 'opencl-headers' 'cmake' 'ocl-icd')
 provides=('leela-zero')
 conflicts=('leela-zero')
 install="$pkgname.install"
-source=("${pkgname}::git+https://github.com/gcp/leela-zero#branch=next"
+source=("${_pkgname}::git+https://github.com/gcp/leela-zero#branch=next"
         "git+https://github.com/google/googletest.git"
         "git+https://github.com/eigenteam/eigen-git-mirror"
         "weights.txt.gz::http://zero.sjeng.org/best-network")
