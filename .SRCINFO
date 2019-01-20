@@ -21,8 +21,10 @@ pkgbase = libseekthermal-git
 	conflicts = libseekthermal
 	source = libseekthermal::git+https://github.com/maartenvds/libseek-thermal.git
 	source = libseekthermal.patch
-	md5sums = SKIP
-	md5sums = b8e4613ef4b5294b33b8d222a9734384
+	source = 50-seekthermal-usb.rules
+	sha512sums = SKIP
+	sha512sums = 3ff92da3d07f943995bf4f003b1c3676ed78c759ddebbda91c0d38adb9eefce20742b024ab9f87f6819d2e1e71405dfeaadca15bddf31dee00d0fcdb25d41169
+	sha512sums = a7261364b5de749a54da28fdcd8e91293a682a9a1d47362d44d1547454ac34bb85174c9ae03d7295eda1ca4803e581223a151dcaa80682f9582aaaa15bbc8327
 
 pkgname = libseekthermal-git
 
