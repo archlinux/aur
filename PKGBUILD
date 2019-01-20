@@ -1,4 +1,5 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: Saeid Ahmed <itsaeid7@gmail.com>
+# Contributor: Det <nimetonmaili g-mail>
 # Based on google-earth: https://aur.archlinux.org/packages/google-earth/
 
 pkgname=google-earth6
