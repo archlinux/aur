@@ -1,0 +1,14 @@
+pkgbase = elkhound-git
+	pkgdesc = Elkhound, née Elsa/Elkhound, as used by WeiDU
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/WeiDUorg/elkhound
+	arch = x86_64
+	license = custom
+	conflicts = elkhound-bin
+	conflicts = elkhound
+	source = git+https://github.com/WeiDUorg/elkhound
+	sha256sums = SKIP
+
+pkgname = elkhound-git
+
