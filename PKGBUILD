@@ -13,6 +13,8 @@ install=
 md5sums=('SKIP')
 
 package() {
+  mkdir -p "${srcdir}/tmp"
+  cp "${srcdir}/tmp"
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynUpdater.c
   gcc spdynUpdater.c -o spdynu
   cp -r spdynu /usr/spdynu
