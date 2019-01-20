@@ -1,0 +1,19 @@
+pkgbase = tray_mixer_plus
+	pkgdesc = Small tray sound volume control based tray_mixer project by Claudio Matsuoka and other authors.
+	pkgver = 0.0.5
+	pkgrel = 1
+	epoch = 1
+	url = http://forum.altlinux.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gtk2
+	makedepends = gtk2+extra
+	makedepends = alsa-lib
+	depends = xterm
+	depends = alsa-utils
+	source = http://altlinuxclub.ru/arhiv/tray_mixer_plus-0.0.5.tar.gz
+	md5sums = c54b88a45db8b1c9b0395c1c918305be
+
+pkgname = tray_mixer_plus
+
