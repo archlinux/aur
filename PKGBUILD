@@ -21,8 +21,6 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_gitname}"
-	echo PWD
-	pwd
 	make CFLAGS="${CFLAGS} -I." PREFIX=/usr
 }
 
