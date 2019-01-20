@@ -3,7 +3,7 @@
 # Upstream: https://github.com/Thann/play-with-mpv
 
 pkgname=play-with-mpv-git
-pkgver=0.0.8+aafb8b1
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Chrome extension and python server that allows you to play videos in webpages with MPV instead.'
 arch=('any')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  echo "$(python setup.py --version | tail -n1)+$(git rev-parse --short HEAD)"
+  echo "$(python setup.py --version | tail -n1)"
 }
 
 package() {
