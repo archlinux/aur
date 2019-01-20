@@ -1,6 +1,6 @@
 pkgbase = libgpuarray-git
 	pkgdesc = Library to manipulate tensors on the GPU
-	pkgver = 0.6.1.4.g56b2df4
+	pkgver = 0.7.6.8.g23f30c2
 	pkgrel = 2
 	url = https://github.com/Theano/libgpuarray
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = libgpuarray-git
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
+	depends = python
 	provides = libgpuarray
 	source = git+https://github.com/Theano/libgpuarray.git
 	md5sums = SKIP
