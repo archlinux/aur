@@ -1,0 +1,2 @@
+d /var/lib/hopglass-server 0755
+Z /var/lib/hopglass-server - hopglass-server nobody

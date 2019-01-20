@@ -1,0 +1,26 @@
+pkgbase = hopglass-server
+	pkgdesc = The HopGlass server collects data from Freifunk networks
+	pkgver = v0.1.3_39_g3d5b233
+	pkgrel = 1
+	url = https://github.com/hopglass/hopglass-server
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = yarn
+	depends = nodejs
+	backup = etc/hopglass-server/aliases.json
+	backup = etc/hopglass-server/config.json
+	source = git+https://github.com/hopglass/hopglass-server
+	source = hopglass-server-wrapper
+	source = hopglass-server.service
+	source = hopglass-server.sysusers
+	source = hopglass-server@.service
+	source = hopglass-server.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 6bf23bc9f54004aaaf21a1d8ae2b7db674463e8cc0b0072133e133c2f100611b
+	sha256sums = fbbe882ea0a2c67b284d537deffc41b986b058ec3ac776509cec20c0f3d79808
+	sha256sums = ea593147929f11b796c8d10d6aa649e25ac4d2bb692a0416aea884d4b7797565
+	sha256sums = 273c5455635d08862f2a2059019a457dd59e046b5d6415b1425eac2f605fca0c
+	sha256sums = 12adb52aeece94ae09e99bf14615b605ce92a2ce26eaf20f541bc967b78712db
+
+pkgname = hopglass-server
+

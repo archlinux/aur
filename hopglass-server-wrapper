@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+export NODE_PATH=/usr/share/hopglass-server/
+/usr/bin/node /usr/share/hopglass-server/hopglass-server.js $@
