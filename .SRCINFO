@@ -1,7 +1,7 @@
 pkgbase = gzdoom-legacy
 	pkgdesc = Advanced Doom source port with OpenGL support (legacy version)
-	pkgver = 3.7.1
-	pkgrel = 2
+	pkgver = 3.7.2
+	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = gzdoom-legacy
 	optdepends = xorg-xmessage: crash dialog (other)
 	provides = gzdoom
 	conflicts = gzdoom
-	source = gzdoom::git://github.com/drfrag666/gzdoom.git#tag=g3.7.1_legacy
+	source = gzdoom::git://github.com/drfrag666/gzdoom.git#tag=g3.7.2_legacy
 	source = gzdoom.desktop
 	source = 0001-Fix-soundfont-search-path.patch
 	sha256sums = SKIP
