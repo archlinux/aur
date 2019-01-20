@@ -4,7 +4,7 @@
 pkgname=leela-zero-git
 _pkgname=leela-zero
 pkgver=766
-pkgrel=2
+pkgrel=3
 pkgdesc="Go engine with no human-provided knowledge, modeled after the AlphaGo Zero paper. (next branch)"
 arch=('x86_64')
 url="https://github.com/gcp/leela-zero"
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 prepare() {
-  cd $srcdir/$pkgname
+  cd $srcdir/${_pkgname}
   git submodule init
   git config submodule.gtest.url "$srcdir"/googletest
   git config submodule.src/Eigen.url "$srcdir"/eigen-git-mirror
@@ -38,22 +38,22 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/$pkgname/build
+  cd $srcdir/${_pkgname}/build
   cmake ..
   make leelaz
-  cd $srcdir/$pkgname/autogtp
+  cd $srcdir/${_pkgname}/autogtp
   qmake
   make
 }
 
 check() {
-  cd $srcdir/$pkgname/build
+  cd $srcdir/${_pkgname}/build
   make tests
   ./tests
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd $srcdir/${_pkgname}
   install -Dm755 build/leelaz $pkgdir/usr/bin/leelaz
   install -Dm755 autogtp/autogtp $pkgdir/usr/bin/autogtp
   install -Dm644 $srcdir/weights.txt $pkgdir/usr/share/leela-zero/networks/weights.txt
