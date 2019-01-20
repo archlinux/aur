@@ -1,7 +1,7 @@
 pkgbase = gdrivefs
 	pkgdesc = A complete FUSE adapter for Google Drive
-	pkgver = 0.14.9
-	pkgrel = 4
+	pkgver = 0.14.12
+	pkgrel = 1
 	url = https://github.com/dsoprea/GDriveFS
 	arch = any
 	license = GPL2
@@ -16,8 +16,8 @@ pkgbase = gdrivefs
 	depends = python2-oauth2client
 	depends = python2-six
 	depends = python2-wsgiref
-	source = https://github.com/dsoprea/GDriveFS/archive/0.14.9.tar.gz
-	sha256sums = eacc6633716823d93ca4a3ac5e1aaeeaa49513051136d6f8df681667cbc882d5
+	source = https://github.com/dsoprea/GDriveFS/archive/0.14.12.tar.gz
+	sha256sums = 607f3cd368070fa67185418c96ab9a1109efc8281e7c8a5dd10bf816cff98554
 
 pkgname = gdrivefs
 
