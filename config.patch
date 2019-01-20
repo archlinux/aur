@@ -1,7 +1,6 @@
-diff -rupN RetroArch.orig/retroarch.cfg RetroArch/retroarch.cfg
---- RetroArch.orig/retroarch.cfg	2018-08-31 11:42:23.948303726 +0200
-+++ RetroArch/retroarch.cfg	2018-08-31 11:46:13.736652832 +0200
-@@ -621,7 +621,7 @@
+--- RetroArch.orig/retroarch.cfg	2019-01-20 20:13:47.669304709 +0300
++++ RetroArch/retroarch.cfg	2019-01-20 20:20:02.188091209 +0300
+@@ -625,7 +625,7 @@
  # menu_show_online_updater = true
  
  # If disabled, will hide the ability to update cores (and core info files) inside the menu.
@@ -10,7 +9,7 @@ diff -rupN RetroArch.orig/retroarch.cfg RetroArch/retroarch.cfg
  
  # If disabled, the libretro core will keep running in the background when we
  # are in the menu.
-@@ -750,7 +750,7 @@
+@@ -754,7 +754,7 @@
  
  # Assets directory. This location is queried by default when menu interfaces try to look for
  # loadable assets, etc.
@@ -19,7 +18,7 @@ diff -rupN RetroArch.orig/retroarch.cfg RetroArch/retroarch.cfg
  
  # Dynamic wallpapers directory. The place to store the wallpapers dynamically
  # loaded by the menu depending on context.
-@@ -763,10 +763,10 @@
+@@ -767,10 +767,10 @@
  # rgui_browser_directory =
  
  # Core directory for libretro core implementations.
@@ -32,20 +31,3 @@ diff -rupN RetroArch.orig/retroarch.cfg RetroArch/retroarch.cfg
  
  # Path to content database directory.
  # content_database_path =
-@@ -778,13 +778,13 @@
- # cheat_database_path =
- 
- # Defines a directory where CPU-based video filters are kept.
--# video_filter_dir =
-+video_filter_dir = /usr/lib/retroarch/filters/video
- 
- # Directory where DSP plugins are kept.
--# audio_filter_dir =
-+audio_filter_dir = /usr/lib/retroarch/filters/audio
- 
- # Defines a directory where shaders (Cg, CGP, GLSL) are kept for easy access.
--# video_shader_dir =
-+ video_shader_dir = /usr/share/libretro/shaders
- 
- # Recording output directory. Where recordings are saved.
- # recording_output_directory =

@@ -1,0 +1,13 @@
+[Unit]
+Description = Starts an instance of Retroarch
+After = remote-fs.target
+
+[Service]
+User = retroarch
+Group = retroarch
+Type = simple
+ExecStart = /usr/bin/retroarch
+Restart = on-failure
+
+[Install]
+WantedBy = multi-user.target

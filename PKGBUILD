@@ -1,21 +1,8 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: Themaister <maister@archlinux.us>
-# Contributor: lifning <definelightning@gmail.com>
-
-# ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
-#  - enable GLES
-
-# Sergey Slipchenko <faergeek@gmail.com>
-#  - add videocore paths to PKG_CONFIG_PATH
-#  - enable neon
-#  - enable floathard
-#  - enable videocore
-
-buildarch=4
+# Maintainer: Sergey Slipchenko <faergeek@gmail.com>
 
 pkgname=retroarch-rbp
 pkgver=1.7.5
-pkgrel=1.1
+pkgrel=2
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi)'
 arch=('armv7h')
 url='http://www.libretro.com/'
@@ -23,57 +10,65 @@ license=('GPL')
 groups=('libretro')
 provides=('retroarch')
 conflicts=('retroarch')
-depends=('alsa-lib' 'gcc-libs' 'glibc' 'libdrm' 'libgl' 'libpulse' 'libx11'
-         'libxcb' 'libxext' 'libxinerama' 'libxkbcommon' 'libxv' 'libxxf86vm'
-         'raspberrypi-firmware'  'openal' 'qt5-base' 'sdl2' 'v4l-utils' 'wayland' 'zlib'
+depends=('alsa-lib' 'gcc-libs' 'glibc' 'libdrm' 'libgl'
+         'raspberrypi-firmware'  'openal' 'v4l-utils' 'zlib'
          'libass.so' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
          'libfreetype.so' 'libswresample.so' 'libswscale.so' 'libudev.so'
          'libusb-1.0.so')
-makedepends=('git' 'vulkan-icd-loader')
+makedepends=('vulkan-icd-loader')
 optdepends=('libretro-overlays: Collection of overlays'
             'libretro-shaders: Collection of shaders'
             'python: retroarch-cg2glsl'
             'retroarch-assets-xmb: XMB menu assets')
 backup=('etc/retroarch.cfg')
-source=("git+https://github.com/libretro/RetroArch.git#tag=v${pkgver}"
-        'retroarch-config.patch')
-sha256sums=('SKIP'
-            'd79c542c126b74a1b221fcc1acbe053b95f76c6c9a6ccefd10b8f459ceee94dd')
+source=("https://github.com/libretro/RetroArch/archive/v${pkgver}.tar.gz"
+        'config.patch'
+        'service'
+        'sysusers.conf'
+        'tmpfiles.conf')
+sha256sums=('89dae3646e4979b8685cae987eaa09816ac94bfb10d2636a2e7a8eede5fcbfa3'
+            'b8e0909c4cdfc4dd22dd48631ba95cc1838398da853d442f0ac486d69cba6fd6'
+            '2e0fd9b160f66ed69630d562ecc0c7db06802d6373305e951f5ffecbdfc93cfb'
+            'd4e4a5ac6c961eafb3edfc28186f75e471dc81e308791d57cfccae4f43de4dae'
+            'e6055a91ca94379f63ff4e8437c085f8f64896a6ce2dd242c36954e48b60d29c')
 
 prepare() {
-  cd RetroArch
+  cd RetroArch-${pkgver}
 
-  #patch -Np0 -i ../retroarch-config.patch
+  patch -Np1 -i ../config.patch
 }
 
 build() {
-  cd RetroArch
+  cd RetroArch-${pkgver}
 
-  export PKG_CONFIG_PATH="/opt/vc/lib/pkgconfig:$PKG_CONFIG_PATH"
+  export PKG_CONFIG_PATH="/opt/vc/lib/pkgconfig:${PKG_CONFIG_PATH}"
 
   ./configure \
-    --prefix='/usr' \
+    --prefix=/usr \
     --disable-cg \
     --disable-jack \
     --disable-oss \
+    --disable-pulse \
+    --disable-qt \
     --disable-sdl \
+    --disable-sdl2 \
+    --disable-vg \
+    --disable-wayland \
+    --disable-x11 \
+    --enable-dispmanx \
     --enable-opengles \
     --enable-neon \
     --enable-floathard \
     --enable-videocore
 
   make
-  make -C libretro-common/audio/dsp_filters
-  make -C gfx/video_filters
 }
 
 package() {
-  cd RetroArch
+  cd RetroArch-${pkgver}
 
-  make DESTDIR="${pkgdir}" install
-
-  install -Dm 644 libretro-common/audio/dsp_filters/*.{dsp,so} -t "${pkgdir}"/usr/lib/retroarch/filters/audio/
-  install -Dm 644 gfx/video_filters/*.{filt,so} -t "${pkgdir}"/usr/lib/retroarch/filters/video/
+  make DESTDIR=${pkgdir} install
+  install -Dm 644 ${srcdir}/service ${pkgdir}/usr/lib/systemd/system/retroarch.service
+  install -Dm 644 ${srcdir}/sysusers.conf ${pkgdir}/usr/lib/sysusers.d/retroarch.conf
+  install -Dm 644 ${srcdir}/tmpfiles.conf ${pkgdir}/usr/lib/tmpfiles.d/retroarch.conf
 }
-
-# vim: ts=2 sw=2 et:
