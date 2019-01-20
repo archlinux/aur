@@ -2,9 +2,9 @@
 
 pkgname=hopglass-server
 pkgver=v0.1.3_43_g8bfd039
-pkgrel=2
+pkgrel=3
 pkgdesc="The HopGlass server collects data from Freifunk networks"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/hopglass/hopglass-server"
 license=('AGPL-3.0')
 depends=('nodejs')
