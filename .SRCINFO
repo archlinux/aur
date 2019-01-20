@@ -6,7 +6,7 @@ pkgbase = spdynu
 	arch = any
 	license = GPLv2
 	makedepends = gcc
-	source = git+https://gitlab.com/CANOXNET/spdynu
+	source = https://gitlab.com/CANOXNET/spdynu
 	md5sums = SKIP
 
 pkgname = spdynu

@@ -8,7 +8,7 @@ url="https://gitlab.com/CANOXNET/spdynu"
 license=('GPLv2')
 #depends=('')
 makedepends=('gcc')
-source=(git+https://gitlab.com/CANOXNET/spdynu)
+source=(https://gitlab.com/CANOXNET/spdynu)
 install=
 md5sums=('SKIP')
 
