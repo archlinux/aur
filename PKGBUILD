@@ -5,7 +5,7 @@
 pkgbase=glib2-git
 _pkgname=glib2
 pkgname=(glib2-git glib2-docs-git)
-pkgver=2.57.1.325.gc40e8a55b
+pkgver=2.59.0.92.g3fe6f2a44
 pkgrel=1
 pkgdesc="Low Level Core Library"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
      pcre libffi libutil-linux zlib
 )
 makedepends=(
-     gettext gtk-doc shared-mime-info python libelf git util-linux dbus
+     gettext  gtk-doc shared-mime-info python libelf git util-linux meson dbus
 )
 checkdepends=(
      desktop-file-utils
@@ -45,37 +45,30 @@ prepare() {
     cd $srcdir/glib
     # Suppress noise from glib-compile-schemas.hook
     patch -Np1 -i ../0001-noisy-glib-compile-schemas.patch
-    NOCONFIGURE=1 ./autogen.sh
 
   }
 
 build () {
-     local debug=minimum
-     check_option debug y && debug=yes
+    arch-meson glib build \
+    -Dgtk_doc=true \
+    -Dman=true \
+    -Dselinux=disabled
 
-    cd "$srcdir/glib"
-    ./configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
-    --sysconfdir=/etc \
-    --with-pcre=system \
-    --enable-debug=$debug \
-    --enable-gtk-doc \
-    --disable-fam
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    ninja -C build
 }
 
-#check() {internal_pcre
-#    cd "$srcdir/glib"
-#    make check
+#check() {
+#    meson test -C build
 #}
 
 package_glib2-git() {
-    cd "$srcdir/glib"
-    DESTDIR="$pkgdir" make install
+     DESTDIR="$pkgdir" meson install -C build
 
     mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
     install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 $srcdir/*.hook
+
+    python -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
+  python -O -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
 }
 
 package_glib2-docs-git() {
