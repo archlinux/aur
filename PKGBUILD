@@ -17,12 +17,12 @@ package() {
   cd "${srcdir}/tmp"
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynUpdater.c
   gcc spdynUpdater.c -o spdynu
-  cp -r spdynu /usr/spdynu
-  chmod u+x /usr/spdynu
+  sudo cp -r spdynu /usr/spdynu
+  sudo chmod u+x /usr/spdynu
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.conf
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.service
   wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.timer
-  cp -r spdynu.conf "${pkgdir}/etc/spdynu.conf"
-  cp -r spdynu.service "${pkgdir}/etc/systemd/system/spdynu.service"
-  cp -r spdynu.timer "${pkgdir}/etc/systemd/system/spdynu.timer"
+  sudo cp -r spdynu.conf "${pkgdir}/etc/spdynu.conf"
+  sudo cp -r spdynu.service "${pkgdir}/etc/systemd/system/spdynu.service"
+  sudo cp -r spdynu.timer "${pkgdir}/etc/systemd/system/spdynu.timer"
 }
