@@ -1,10 +1,10 @@
 # Maintainer: pingplug <pingplug@foxmail.com>
 
 _pkgname=rust
-_cargo=0.32.0
+_cargo=0.33.0
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.31.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (PLEASE READ COMMENTS FIRST) (official build, mingw-w64)"
 arch=('x86_64')
@@ -25,15 +25,15 @@ source=("https://static.rust-lang.org/dist/cargo-${_cargo}-x86_64-unknown-linux-
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.gz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.gz"{,.asc})
-sha256sums=('c69aa6a7c5b6822e40c60852fee8656c4c335d3268234538adb8295fc4ff8ba6'
+sha256sums=('9dd7f79a0ab882ed7c892731514a4aed6435f7bc8a20381a8346b471c8a14209'
             'SKIP'
-            '5c4581f0fc05f0f5076db6231b0c1a4d27eb61c0b36bfb42d97243ad8f4e43a0'
+            '75c31f32e19548c1608611d08b82b87560e02f15caac7b2663a8189a4609977c'
             'SKIP'
-            'fe67a62c7a63acbf2458a36d7689ef41903187a472f0c28850f1fca7ea478da8'
+            '9f2705a3ed3217c13fd55569406c52f590030752f57520312e135223ae930caf'
             'SKIP'
-            'ada44ca77ff2d7332251893cb4827cd0f1bcb2230727c3cf08dd72812f9104d6'
+            '06ddc4a24314ca2edc264e39ddebe545cb5bc1170bc69575c01de60e14acc00a'
             'SKIP'
-            '8f089ac0500afdfa0e0ddff53b2a297e1d5cfb1a5dafcf3a84234383cbc00235'
+            'cad5f1454d591c13eeb3657f1c9dbfeb30e648f59680bd0765b94c63e7afc49e'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
@@ -79,8 +79,8 @@ package() {
   rm -r "${pkgdir}/opt/${_pkgname}/"{etc,share}
   rm "${pkgdir}/opt/${_pkgname}/lib/rustlib/"{manifest-*,install.log,uninstall.sh,components,rust-installer-version}
   rm "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/codegen-backends/librustc_codegen_llvm-emscripten.so"
-  rm "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib/"{arena,fmt_macros,graphviz,proc_macro,rustc,serialize,syntax}*.dll
-  rm "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-pc-windows-gnu/lib/"{arena,fmt_macros,graphviz,proc_macro,rustc,serialize,syntax}*.dll
+  rm "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib/"{arena,fmt_macros,graphviz,rustc,serialize,syntax}*.dll
+  rm "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-pc-windows-gnu/lib/"{arena,fmt_macros,graphviz,rustc,serialize,syntax}*.dll
 
   # link shared libraries
   pushd "${pkgdir}/opt/${_pkgname}/lib"
