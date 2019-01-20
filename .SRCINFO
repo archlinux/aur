@@ -1,7 +1,7 @@
 pkgbase = freenet
 	pkgdesc = An encrypted network without censorship
 	pkgver = 0.7.5.1483
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freenetproject.org
 	install = freenet.install
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = freenet
 	checkdepends = junit
 	makedepends = java-environment>=8
 	makedepends = apache-ant
-	makedepends = gradle
 	makedepends = git
 	makedepends = java-hamcrest
 	makedepends = zip
