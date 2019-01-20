@@ -1,17 +1,7 @@
-diff --git a/configure b/configure
-index c5f25a4..6c15e46 100755
---- a/configure
-+++ b/configure
-@@ -19813,7 +19813,7 @@ _ACEOF
- 	*) test -f "$ac_im_incroot/X11/Xos.h" && ac_x_includes=$ac_im_incroot;;
-     esac
-     case $ac_im_usrlibdir in
--	/usr/lib | /usr/lib64 | /lib | /lib64) ;;
-+	/usr/lib | /usr/lib | /lib | /lib) ;;
- 	*) test -d "$ac_im_usrlibdir" && ac_x_libraries=$ac_im_usrlibdir ;;
-     esac
-   fi
-@@ -24802,7 +24802,7 @@ fi
+diff -Naur vice-3.3/configure vice-3.3-patched/configure
+--- vice-3.3/configure	2018-12-19 22:25:02.000000000 +0100
++++ vice-3.3-patched/configure	2019-01-20 21:04:33.832700685 +0100
+@@ -21918,7 +21918,7 @@
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
@@ -20,15 +10,13 @@ index c5f25a4..6c15e46 100755
         if false; then
    ALTERNATE_DOCDIR_TRUE=
    ALTERNATE_DOCDIR_FALSE='#'
-diff --git a/configure.ac b/configure.ac
-index 73f5b22..842e246 100755
---- a/configure.ac
-+++ b/configure.ac
-@@ -2954,12 +2954,7 @@ if test x"$enable_lame" != "xno" ; then
- 
+diff -Naur vice-3.3/configure.ac vice-3.3-patched/configure.ac
+--- vice-3.3/configure.ac	2018-12-19 22:24:58.000000000 +0100
++++ vice-3.3-patched/configure.ac	2019-01-20 21:05:54.666069624 +0100
+@@ -3013,11 +3013,7 @@
  fi
  
--AC_PATH_PROGS(FCCACHE, fc-cache, false)
+ AC_PATH_PROGS(FCCACHE, fc-cache, false)
 -if test x"$FCCACHE" = "xfalse"; then
 -  AM_CONDITIONAL(HAVE_FC_CACHE, false)
 -else
@@ -37,8 +25,8 @@ index 73f5b22..842e246 100755
 +AM_CONDITIONAL(HAVE_FC_CACHE, false)
  
  if test x"$is_amigaos4" = "xyes"; then
-   if test x"$enable_sdlui" != "xyes" -a x"$enable_sdlui2" != "xyes"; then
-@@ -4636,7 +4631,7 @@ case "$host_os" in
+   dnl for AmigaOS4 native resid needs to be configured without dependency tracking
+@@ -4060,7 +4056,7 @@
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
@@ -47,15 +35,13 @@ index 73f5b22..842e246 100755
        AM_CONDITIONAL(ALTERNATE_DOCDIR, false)
      else
        VICEDIR="$PREFIX/lib/vice"
-diff --git a/configure.proto b/configure.proto
-index 73f5b22..842e246 100755
---- a/configure.proto
-+++ b/configure.proto
-@@ -2954,12 +2954,7 @@ if test x"$enable_lame" != "xno" ; then
- 
+diff -Naur vice-3.3/configure.proto vice-3.3-patched/configure.proto
+--- vice-3.3/configure.proto	2018-12-19 22:21:25.000000000 +0100
++++ vice-3.3-patched/configure.proto	2019-01-20 21:07:05.822779938 +0100
+@@ -3013,11 +3013,7 @@
  fi
  
--AC_PATH_PROGS(FCCACHE, fc-cache, false)
+ AC_PATH_PROGS(FCCACHE, fc-cache, false)
 -if test x"$FCCACHE" = "xfalse"; then
 -  AM_CONDITIONAL(HAVE_FC_CACHE, false)
 -else
@@ -64,8 +50,8 @@ index 73f5b22..842e246 100755
 +AM_CONDITIONAL(HAVE_FC_CACHE, false)
  
  if test x"$is_amigaos4" = "xyes"; then
-   if test x"$enable_sdlui" != "xyes" -a x"$enable_sdlui2" != "xyes"; then
-@@ -4636,7 +4631,7 @@ case "$host_os" in
+   dnl for AmigaOS4 native resid needs to be configured without dependency tracking
+@@ -4060,7 +4056,7 @@
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
