@@ -1,0 +1,19 @@
+pkgbase = libuinputplus-git
+	pkgdesc = Easy-to-use uinput library in C++
+	pkgver = v0.1.3.r0.gd8f8650
+	pkgrel = 1
+	url = https://github.com/YukiWorkshop/libuInputPlus
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = make
+	makedepends = pkg-config
+	provides = libuinputplus
+	conflicts = libuinputplus
+	source = libuinputplus::git+https://github.com/YukiWorkshop/libuInputPlus.git
+	sha256sums = SKIP
+
+pkgname = libuinputplus-git
+
