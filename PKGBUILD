@@ -2,7 +2,7 @@
 # Maintainer: Aaron Ali <t0nedef@causal.ca>
 
 pkgname=klayout
-pkgver=0.25.6
+pkgver=0.25.7
 pkgrel=1
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files."
 arch=('i686' 'x86_64')
@@ -13,7 +13,6 @@ source=(
 	http://www.klayout.org/downloads/source/klayout-${pkgver}.tar.gz
 	klayoutEditor.desktop
 	klayoutViewer.desktop
-	missingOp.patch
 )
 #noextract=("klayout-${pkgver}.tar.gz")
 #prepare() {
@@ -25,11 +24,6 @@ build() {
 	build_opt="-qmake /usr/bin/qmake
 		-ruby /usr/bin/ruby
 		-python /usr/bin/python"
-	# apply patch
-	cd ./src/db/db
-	cat ../../../../../missingOp.patch | patch
-	cd ../../../
-	#
 	./build.sh $build_opt
 }
 package() {
@@ -48,7 +42,6 @@ package() {
 	done
 }
 #
-md5sums=('96893939ca409a13e6435fd89568bc0d'
+md5sums=('5d877934682b0f4fddfdda39928a69cf'
          'e790f7fca3c1138e21068d7927fb8ff4'
-         'e6b98e9146c476a5cb76162999964aa8'
-         '553b08ddcf6c2338115a8c85ff1c948c')
+         'e6b98e9146c476a5cb76162999964aa8')
