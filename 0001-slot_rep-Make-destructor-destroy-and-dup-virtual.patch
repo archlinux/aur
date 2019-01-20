@@ -1,0 +1,264 @@
+From a4609655535148e5e8766737125175fba0d19358
+From: Kjell Ahlstedt <kjell.ahlstedt@bredband.net>
+Date: Mon, 13 Feb 2017 19:00:41 +0100
+Subject: [PATCH] slot_rep: Make destructor, destroy() and dup() virtual
+
+* sigc++/functors/slot_base.h:
+* sigc++/functors/slot.h: Make ~slot_rep(), slot_rep::destroy() and
+slot_rep::dup() virtual. Bug 777618
+---
+
+Cebtenzzre: Modified patch to apply to a much older version of libsigc++.
+
+diff -Naur a/sigc++/functors/slot_base.cc b/sigc++/functors/slot_base.cc
+--- a/sigc++/functors/slot_base.cc	2019-01-19 22:40:31.602141215 -0500
++++ b/sigc++/functors/slot_base.cc	2019-01-19 22:41:18.853321720 -0500
+@@ -41,8 +41,14 @@
+ class dummy_slot_rep : public sigc::internal::slot_rep
+ {
+ public:
+-  dummy_slot_rep() : slot_rep(nullptr, nullptr, &clone) {}
+-  static void* clone(void*) { return new dummy_slot_rep(); }
++  dummy_slot_rep() : slot_rep(nullptr) {}
++
++  void destroy() override
++  {
++    call_ = nullptr;
++  }
++  
++  slot_rep* dup() const override { return new dummy_slot_rep(); }
+ };
+ } // anonymous namespace
+ 
+diff -Naur a/sigc++/functors/slot_base.h b/sigc++/functors/slot_base.h
+--- a/sigc++/functors/slot_base.h	2019-01-19 22:40:31.602141215 -0500
++++ b/sigc++/functors/slot_base.h	2019-01-19 22:41:18.856655137 -0500
+@@ -71,28 +71,17 @@
+    */
+   hook call_;
+ 
+-  /// Callback that detaches the slot_rep object from referred trackables and destroys it.
+-  /* This could be a replaced by a virtual dtor. However since this struct is
+-   * crucual for the efficiency of the whole library we want to avoid this.
+-   */
+-  hook destroy_;
+-
+-  /** Callback that makes a deep copy of the slot_rep object.
+-   * @return A deep copy of the slot_rep object.
+-   */
+-  hook dup_;
+-
+   /** Callback of parent_. */
+   hook cleanup_;
+ 
+   /** Parent object whose callback cleanup_ is executed on notification. */
+   void* parent_;
+ 
+-  inline slot_rep(hook call__, hook destroy__, hook dup__) noexcept
+-    : call_(call__), destroy_(destroy__), dup_(dup__), cleanup_(nullptr), parent_(nullptr) {}
++  inline slot_rep(hook call__) noexcept
++    : call_(call__), cleanup_(nullptr), parent_(nullptr) {}
+ 
+-  inline ~slot_rep()
+-    { destroy(); }
++  virtual ~slot_rep()
++    {}
+ 
+   // only MSVC needs this to guarantee that all new/delete are executed from the DLL module
+ #ifdef SIGC_NEW_DELETE_IN_LIBRARY_ONLY
+@@ -102,14 +91,12 @@
+ 
+   /** Destroys the slot_rep object (but doesn't delete it).
+    */
+-  inline void destroy()
+-    { if (destroy_) (*destroy_)(this); }
++  virtual void destroy() = 0;
+ 
+   /** Makes a deep copy of the slot_rep object.
+    * @return A deep copy of the slot_rep object.
+    */
+-  inline slot_rep* dup() const
+-    { return reinterpret_cast<slot_rep*>((*dup_)(const_cast<slot_rep*>(this))); }
++  virtual slot_rep* dup() const = 0;
+ 
+   /** Set the parent with a callback.
+    * slots have one parent exclusively.
+diff -Naur a/sigc++/functors/slot.h b/sigc++/functors/slot.h
+--- a/sigc++/functors/slot.h	2019-01-19 22:40:31.602141215 -0500
++++ b/sigc++/functors/slot.h	2019-01-20 15:35:47.152759393 -0500
+@@ -50,54 +50,53 @@
+ template <class T_functor>
+ struct typed_slot_rep : public slot_rep
+ {
+-  typedef typed_slot_rep<T_functor> self;
+-
+   /* Use an adaptor type so that arguments can be passed as const references
+    * through explicit template instantiation from slot_call#::call_it() */
+   typedef typename adaptor_trait<T_functor>::adaptor_type adaptor_type;
+ 
+   /** The functor contained by this slot_rep object. */
+-  adaptor_type functor_;
++  adaptor_type *functor_;
+ 
+   /** Constructs an invalid typed slot_rep object.
+    * The notification callback is registered using visit_each().
+    * @param functor The functor contained by the new slot_rep object.
+    */
+   inline typed_slot_rep(const T_functor& functor)
+-    : slot_rep(nullptr, &destroy, &dup), functor_(functor)
+-    { sigc::visit_each_type<trackable*>(slot_do_bind(this), functor_); }
++    : slot_rep(nullptr), functor_(new adaptor_type(functor))
++    { sigc::visit_each_type<trackable*>(slot_do_bind(this), *functor_); }
+ 
+   inline typed_slot_rep(const typed_slot_rep& cl)
+-    : slot_rep(cl.call_, &destroy, &dup), functor_(cl.functor_)
+-    { sigc::visit_each_type<trackable*>(slot_do_bind(this), functor_); }
++    : slot_rep(cl.call_), functor_(new adaptor_type(*cl.functor_))
++    { sigc::visit_each_type<trackable*>(slot_do_bind(this), *functor_); }
+ 
+   typed_slot_rep& operator=(const typed_slot_rep& src) = delete;
+ 
+   typed_slot_rep(typed_slot_rep&& src) = delete;
+   typed_slot_rep& operator=(typed_slot_rep&& src) = delete;
+ 
+-  inline ~typed_slot_rep()
++  ~typed_slot_rep() override
+     {
+-      call_ = nullptr;
+-      destroy_ = nullptr;
+-      sigc::visit_each_type<trackable*>(slot_do_unbind(this), functor_);
++      // Call destroy() non-virtually.
++      // It's unwise to make virtual calls in a constructor or destructor.
++      typed_slot_rep::destroy();
+     }
+ 
+   /** Detaches the stored functor from the other referred trackables and destroys it.
+    * This does not destroy the base slot_rep object.
+    */
+-  static void* destroy(void* data)
++  void destroy() override
+     {
+-      self* self_ = static_cast<self*>(reinterpret_cast<slot_rep*>(data));
+-      self_->call_ = nullptr;
+-      self_->destroy_ = nullptr;
+-      sigc::visit_each_type<trackable*>(slot_do_unbind(self_), self_->functor_);
+-      self_->functor_.~adaptor_type();
++      call_ = nullptr;
++      if (functor_)
++      {
++        sigc::visit_each_type<trackable*>(slot_do_unbind(this), *functor_);
++        delete functor_;
++        functor_ = nullptr;
++      }
+       /* don't call disconnect() here: destroy() is either called
+        * a) from the parent itself (in which case disconnect() leads to a segfault) or
+        * b) from a parentless slot (in which case disconnect() does nothing)
+        */
+-      return nullptr;
+     }
+ 
+   /** Makes a deep copy of the slot_rep object.
+@@ -105,11 +104,8 @@
+    * slot_rep object is registered in the referred trackables.
+    * @return A deep copy of the slot_rep object.
+    */
+-  static void* dup(void* data)
+-    {
+-      slot_rep* a_rep = reinterpret_cast<slot_rep*>(data);
+-      return static_cast<slot_rep*>(new self(*static_cast<self*>(a_rep)));
+-    }
++  slot_rep* dup() const override
++  { return new typed_slot_rep(*this); }
+ };
+ 
+ /** Abstracts functor execution.
+@@ -133,7 +129,7 @@
+     {
+       typedef typed_slot_rep<T_functor> typed_slot;
+       typed_slot *typed_rep = static_cast<typed_slot*>(rep);
+-      return (typed_rep->functor_)();
++      return (*typed_rep->functor_)();
+     }
+ 
+   /** Forms a function pointer from call_it().
+@@ -166,7 +162,7 @@
+     {
+       typedef typed_slot_rep<T_functor> typed_slot;
+       typed_slot *typed_rep = static_cast<typed_slot*>(rep);
+-      return (typed_rep->functor_).SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>>
++      return (typed_rep->functor_)->SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>>
+                (a_1);
+     }
+ 
+@@ -202,7 +198,7 @@
+     {
+       typedef typed_slot_rep<T_functor> typed_slot;
+       typed_slot *typed_rep = static_cast<typed_slot*>(rep);
+-      return (typed_rep->functor_).SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>, type_trait_take_t<T_arg2>>
++      return (typed_rep->functor_)->SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>, type_trait_take_t<T_arg2>>
+                (a_1, a_2);
+     }
+ 
+@@ -240,7 +236,7 @@
+     {
+       typedef typed_slot_rep<T_functor> typed_slot;
+       typed_slot *typed_rep = static_cast<typed_slot*>(rep);
+-      return (typed_rep->functor_).SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>, type_trait_take_t<T_arg2>, type_trait_take_t<T_arg3>>
++      return (typed_rep->functor_)->SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>, type_trait_take_t<T_arg2>, type_trait_take_t<T_arg3>>
+                (a_1, a_2, a_3);
+     }
+ 
+@@ -280,7 +276,7 @@
+     {
+       typedef typed_slot_rep<T_functor> typed_slot;
+       typed_slot *typed_rep = static_cast<typed_slot*>(rep);
+-      return (typed_rep->functor_).SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>, type_trait_take_t<T_arg2>, type_trait_take_t<T_arg3>, type_trait_take_t<T_arg4>>
++      return (typed_rep->functor_)->SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>, type_trait_take_t<T_arg2>, type_trait_take_t<T_arg3>, type_trait_take_t<T_arg4>>
+                (a_1, a_2, a_3, a_4);
+     }
+ 
+@@ -322,7 +318,7 @@
+     {
+       typedef typed_slot_rep<T_functor> typed_slot;
+       typed_slot *typed_rep = static_cast<typed_slot*>(rep);
+-      return (typed_rep->functor_).SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>, type_trait_take_t<T_arg2>, type_trait_take_t<T_arg3>, type_trait_take_t<T_arg4>, type_trait_take_t<T_arg5>>
++      return (typed_rep->functor_)->SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>, type_trait_take_t<T_arg2>, type_trait_take_t<T_arg3>, type_trait_take_t<T_arg4>, type_trait_take_t<T_arg5>>
+                (a_1, a_2, a_3, a_4, a_5);
+     }
+ 
+@@ -366,7 +362,7 @@
+     {
+       typedef typed_slot_rep<T_functor> typed_slot;
+       typed_slot *typed_rep = static_cast<typed_slot*>(rep);
+-      return (typed_rep->functor_).SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>, type_trait_take_t<T_arg2>, type_trait_take_t<T_arg3>, type_trait_take_t<T_arg4>, type_trait_take_t<T_arg5>, type_trait_take_t<T_arg6>>
++      return (typed_rep->functor_)->SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>, type_trait_take_t<T_arg2>, type_trait_take_t<T_arg3>, type_trait_take_t<T_arg4>, type_trait_take_t<T_arg5>, type_trait_take_t<T_arg6>>
+                (a_1, a_2, a_3, a_4, a_5, a_6);
+     }
+ 
+@@ -412,7 +408,7 @@
+     {
+       typedef typed_slot_rep<T_functor> typed_slot;
+       typed_slot *typed_rep = static_cast<typed_slot*>(rep);
+-      return (typed_rep->functor_).SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>, type_trait_take_t<T_arg2>, type_trait_take_t<T_arg3>, type_trait_take_t<T_arg4>, type_trait_take_t<T_arg5>, type_trait_take_t<T_arg6>, type_trait_take_t<T_arg7>>
++      return (typed_rep->functor_)->SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg1>, type_trait_take_t<T_arg2>, type_trait_take_t<T_arg3>, type_trait_take_t<T_arg4>, type_trait_take_t<T_arg5>, type_trait_take_t<T_arg6>, type_trait_take_t<T_arg7>>
+                (a_1, a_2, a_3, a_4, a_5, a_6, a_7);
+     }
+ 
+@@ -447,7 +443,7 @@
+     {
+       using typed_slot = typed_slot_rep<T_functor>;
+       typed_slot *typed_rep = static_cast<typed_slot*>(rep);
+-      return (typed_rep->functor_).SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg>...>
++      return (typed_rep->functor_)->SIGC_WORKAROUND_OPERATOR_PARENTHESES<type_trait_take_t<T_arg>...>
+                (a_...);
+     }
+ 
+@@ -480,7 +476,7 @@
+     {
+       using typed_slot = typed_slot_rep<T_functor>;
+       typed_slot *typed_rep = static_cast<typed_slot*>(rep);
+-      return (typed_rep->functor_)();
++      return (*typed_rep->functor_)();
+     }
+ 
+   /** Forms a function pointer from call_it().

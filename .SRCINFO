@@ -1,0 +1,26 @@
+pkgbase = libsigc++-patched
+	pkgdesc = A full callback system for use in widget libraries - V2 (with fixed slot_rep)
+	pkgver = 2.10.1
+	pkgrel = 1
+	url = http://libsigc.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-libs
+	makedepends = git
+	makedepends = mm-common
+	makedepends = doxygen
+	makedepends = libxslt
+	makedepends = graphviz
+	depends = gcc-libs
+	provides = libsigc++=2.10.1
+	provides = libsigc++2.0=2.10.1
+	conflicts = libsigc++
+	conflicts = libsigc++2.0
+	options = !emptydirs
+	source = git+https://github.com/libsigcplusplus/libsigcplusplus#commit=df5857af447d473d5c843c4383fa8b7982c6242a
+	source = 0001-slot_rep-Make-destructor-destroy-and-dup-virtual.patch
+	sha256sums = SKIP
+	sha256sums = 56d3e4ca0394bdc427fe204cde12a34af7f9df31e2c81e332ad6776a4ae39990
+
+pkgname = libsigc++-patched
+
