@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/diovudau/Patroneo"
 license=('GPL')
 groups=()
-depends=('python' 'calfbox-git' 'python-pyqt5')
+depends=('python' 'python-pyqt5')
 makedepends=('git' 'nuitka')
 optdepends=('non-session-manager: required to run Patroneo'
             'raysession-git: alternative to non-session-manager')

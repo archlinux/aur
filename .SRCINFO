@@ -8,7 +8,6 @@ pkgbase = patroneo-git
 	makedepends = git
 	makedepends = nuitka
 	depends = python
-	depends = calfbox-git
 	depends = python-pyqt5
 	optdepends = non-session-manager: required to run Patroneo
 	optdepends = raysession-git: alternative to non-session-manager
