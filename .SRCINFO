@@ -1,6 +1,6 @@
 pkgbase = vim-hemisu-git
 	pkgdesc = A color scheme with dark and light variants, by Noah Frederick.
-	pkgver = v3.4.4.g37ea6aa
+	pkgver = 3.4.4.g37ea6aa
 	pkgrel = 1
 	url = https://github.com/noahfrederick/vim-hemisu.git
 	arch = any
