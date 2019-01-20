@@ -8,7 +8,7 @@ _major=6
 _minor=45
 _build=b06
 pkgver=${_major}u${_minor}
-pkgrel=6
+pkgrel=7
 pkgdesc="Oracle Java $_major Development Kit (public release - end of support)"
 arch=('i686' 'x86_64')
 url=https://www.java.com/en/download/faq/java_6.xml
@@ -163,7 +163,7 @@ package() {
   ln -sf /usr/share/licenses/java$_major-$pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
 
   # Java Cryptography Extension (JCE) Unlimited Strength files
-  rename -- ".jar" "-limited.jar" jre/lib/security/*
+  rename -- ".jar" "-limited.jar" jre/lib/security/*.jar
   install -Dm644 "$srcdir"/jce/* jre/lib/security/
 
   # Do the move
