@@ -4,7 +4,7 @@
 pkgbase=('monero-git')
 pkgname=('monero-git' 'libmonero-wallet-git')
 _gitname='monero'
-pkgver=0.13.0.4
+pkgver=0.13.0.4.r7575.g17089d0dc
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
@@ -47,6 +47,7 @@ prepare() {
 CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=$_buildtype "
 CMAKE_FLAGS+=" -DCMAKE_INSTALL_PREFIX=/usr "
 CMAKE_FLAGS+=" -DBUILD_GUI_DEPS=ON "
+CMAKE_FLAGS+=" -DUSE_DEVICE_TREZOR=ON "
 CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
 
 build() {
