@@ -4,9 +4,9 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}"
-pkgver=1.5.1_linux1
+pkgver=1.6.0_linux1
 gitname="release-${pkgver//_/-}"
-pkgrel=2
+pkgrel=1
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
