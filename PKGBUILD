@@ -1,7 +1,7 @@
 # Contributor: Kevin Guan <KevinGuan.gm@gmail.com>
 
 pkgname=iptux
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="software for sharing in LAN"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/iptux-src/iptux/"
 depends=(gtk3 gstreamer gst-plugins-good)
 makedepends=(cmake)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/iptux-src/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('37fd2618e888d44b3ddcc21e2d497f0a8dcbdb2adcb23fd137fb8e56d2d46919')
+sha256sums=('c4da730c50d3c5a69d437b72bdc25e4fba0b3b931f250e62cf50456fe8748caf')
 
 prepare() {
   mkdir -p build
