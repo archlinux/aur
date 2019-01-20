@@ -1,0 +1,17 @@
+pkgbase = r-tech1-git
+	pkgdesc = low level libraries C++ wrappers for game development
+	pkgver = r1603.df3f5f8
+	pkgrel = 1
+	url = https://github.com/kazzmir/r-tech1
+	arch = x86_64
+	makedepends = git
+	makedepends = scons
+	depends = freetype2
+	depends = allegro
+	provides = r-tech1
+	conflicts = r-tech1
+	source = r-tech1::git+https://github.com/kazzmir/r-tech1.git
+	md5sums = SKIP
+
+pkgname = r-tech1-git
+
