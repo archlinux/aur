@@ -1,0 +1,17 @@
+pkgbase = paintown-git
+	pkgdesc = side scrolling game
+	pkgver = r7291.ec5824f2
+	pkgrel = 1
+	url = https://github.com/kazzmir/paintown
+	arch = x86_64
+	makedepends = git
+	makedepends = scons
+	depends = freetype2
+	depends = allegro
+	provides = paintown
+	conflicts = paintown
+	source = paintown::git+https://github.com/kazzmir/paintown.git
+	md5sums = SKIP
+
+pkgname = paintown-git
+
