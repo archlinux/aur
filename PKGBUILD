@@ -10,7 +10,7 @@ license=('Apache')
 depends=()
 options=('staticlibs')
 optdepends=()
-makedepends=('cmake' 'lz4-static' 'protobuf' 'snappy-static' 'zlib-static')
+makedepends=('cmake' 'lz4-static' 'protobuf-static' 'snappy-static' 'zlib-static')
 source=("orc-$pkgver.tar.gz::https://github.com/apache/orc/archive/rel/release-$pkgver.tar.gz")
 sha256sums=('e0026e6702b126b04724c4ac3a672273d2eeca9769c1f1d5d7306bd6fe072827')
 
