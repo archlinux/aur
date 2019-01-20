@@ -1,0 +1,13 @@
+pkgbase = ts-player
+	pkgdesc = A terminal recorder that produces files capable of efficient random access
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/micromaomao/ts-player
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = ts-player-src::git+https://github.com/micromaomao/ts-player.git
+	sha256sums = SKIP
+
+pkgname = ts-player
+
