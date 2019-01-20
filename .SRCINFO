@@ -1,0 +1,18 @@
+pkgbase = yubikey-full-disk-encryption-git
+	pkgdesc = Use YubiKey to unlock a LUKS partition
+	pkgver = r82.a2843e1
+	pkgrel = 1
+	url = https://github.com/agherzan/yubikey-full-disk-encryption
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = yubikey-personalization
+	depends = cryptsetup
+	depends = udisks2
+	depends = expect
+	backup = etc/ykfde.conf
+	source = git+https://github.com/agherzan/yubikey-full-disk-encryption.git
+	sha256sums = SKIP
+
+pkgname = yubikey-full-disk-encryption-git
+
