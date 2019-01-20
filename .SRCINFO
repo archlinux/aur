@@ -1,6 +1,6 @@
 pkgbase = beamerpresenter
 	pkgdesc = Simple dual screen pdf presentation software
-	pkgver = r22.b1c1dc3
+	pkgver = r28.e26ab0d
 	pkgrel = 1
 	url = https://github.com/stiglers-eponym/BeamerPresenter
 	arch = x86_64
@@ -8,7 +8,9 @@ pkgbase = beamerpresenter
 	makedepends = git
 	depends = poppler-qt5
 	depends = qt5-multimedia
+	optdepends = wmctrl
 	backup = etc/beamerpresenter/beamerpresenter.conf
+	backup = etc/beamerpresenter/pid2wid.sh
 	source = git://github.com/stiglers-eponym/BeamerPresenter.git
 	md5sums = SKIP
 
