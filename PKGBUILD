@@ -10,7 +10,8 @@ pkgdesc='A kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://mb.srb2.org/showthread.php?t=43708'
-depends=('lib32-sdl2' 'lib32-sdl2_mixer' 'lib32-libpng' 'lib32-libgme' "srb2-data=$_dataver")
+depends=('lib32-sdl2' 'lib32-sdl2_mixer' 'lib32-libpng' 'lib32-libgme' 
+"srb2kart-data=$_dataver")
 makedepends=('mesa' 'glu' 'nasm')
 makedepends_i686=('nasm')
 source=("git+https://github.com/STJr/Kart-Public.git#tag=v$pkgver"

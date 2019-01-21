@@ -13,7 +13,7 @@ pkgbase = srb2kart
 	depends = lib32-sdl2_mixer
 	depends = lib32-libpng
 	depends = lib32-libgme
-	depends = srb2-data=1.0.2
+	depends = srb2kart-data=1.0.2
 	source = git+https://github.com/STJr/Kart-Public.git#tag=v1.0.2
 	source = https://github.com/STJr/Kart-Public/releases/download/v1.0.2/srb2kart-v102-patch.zip
 	source = srb2kart.desktop
