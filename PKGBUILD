@@ -6,7 +6,7 @@
 # Contributor: jht <stefano@inventati.org>
 
 pkgname=wxglade
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='GUI designer for wxWidgets that can generate Python, C++, Perl, Lisp and XRC code'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('gendesk' 'imagemagick')
 install="$pkgname.install"
 source=("https://github.com/wxGlade/wxGlade/archive/v$pkgver.tar.gz"
         'wxglade.sh')
-sha256sums=('7e8ee31f120de74af09d7e87c951a711bffc53334c8498f1cee88a7297c1c108'
+sha256sums=('f4e2ce40e5dbe5d7b659df1f68bf1b8019bea49ddd90653b526a302825366f27'
             '4549c2034453475f06265fa1c845db3b4c006ab9b17d0386aecd2a276577a6e0')
 
 prepare() {
