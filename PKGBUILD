@@ -3,7 +3,7 @@
 pkgname=venom
 _pkgname=Venom
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='a modern Tox client for the Linux desktop'
 url='https://github.com/naxuroqa/venom'
 arch=(x86_64)
@@ -19,7 +19,7 @@ check() {
 }
 
 build() {
-  arch-meson $_pkgname-$pkgver build
+  arch-meson $_pkgname-$pkgver build -D b_pie='false'
   ninja -C build
 }
 
