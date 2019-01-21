@@ -1,7 +1,7 @@
 # Maintainer: pullmoll
 pkgname=ems-collector-git
 pkgver=r300.20dbf38
-pkgrel=3
+pkgrel=6
 pkgdesc="Buderus EMS heating control data collection daemon"
 arch=(x86_64)
 url="https://github.com/maniac103/ems-collector"
@@ -15,9 +15,11 @@ replaces=()
 backup=()
 options=()
 install=
-source=('mqtt-compilation-fix-for-asio.diff' 'ems-collector.conf.sample' 'ems-collector.service')
+source=('mqtt-topic-fix.diff' 'mqtt-compilation-fix-for-asio.diff' 'boost-1.69.0-compilation-fix.diff' 'ems-collector.conf.sample' 'ems-collector.service')
 noextract=()
-md5sums=('9366b3490583dc6915f687f7118fc31c'
+md5sums=('fb19990d31dc019ef7c90a68706cdacf'
+         '9366b3490583dc6915f687f7118fc31c'
+         '3cebf9af4152f43377056effeea9999e'
          '2456a8bfe6034a2434945a2ae05808ad'
          'ac3dea26402c63bfcafd7ba7184e8cc9')
 
@@ -64,6 +66,12 @@ build() {
 
   # Patch for MQTT compilation fix with boost-libs=1.64.0, mqtt_cpp=1.07 #20 <https://github.com/maniac103/ems-collector/issues/20>
   patch -i $srcdir/mqtt-compilation-fix-for-asio.diff
+
+  # Patch for removing leading slash in topic
+  patch -i $srcdir/mqtt-topic-fix.diff
+
+  # Patch for boost-1.69.0 compilation
+  patch -i $srcdir/boost-1.69.0-compilation-fix.diff
 
   # Enable MySQL
 #  sed -i 's/# SRCS += Database.cpp/SRCS += Database.cpp/g' Makefile

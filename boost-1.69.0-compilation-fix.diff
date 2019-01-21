@@ -1,0 +1,24 @@
+diff -rupN ems-collector-build-orig/collector/ApiCommandParser.h ems-collector-build-fix/collector/ApiCommandParser.h
+--- ems-collector-build-orig/collector/ApiCommandParser.h	2019-01-21 21:20:07.302097410 +0100
++++ ems-collector-build-fix/collector/ApiCommandParser.h	2019-01-21 21:27:59.718136700 +0100
+@@ -24,7 +24,7 @@
+ #include "CommandScheduler.h"
+ #include "ValueCache.h"
+ 
+-class ApiCommandParser : public boost::noncopyable
++class ApiCommandParser
+ {
+     public:
+ 	typedef boost::function<void (const std::string& line)> OutputCallback;
+diff -rupN ems-collector-build-orig/collector/CommandScheduler.h ems-collector-build-fix/collector/CommandScheduler.h
+--- ems-collector-build-orig/collector/CommandScheduler.h	2019-01-21 21:20:07.302097410 +0100
++++ ems-collector-build-fix/collector/CommandScheduler.h	2019-01-21 21:27:08.677498891 +0100
+@@ -31,7 +31,7 @@ class EmsCommandClient
+ 	virtual void onTimeout() = 0;
+ };
+ 
+-class EmsCommandSender : public boost::noncopyable
++class EmsCommandSender
+ {
+     public:
+ 	typedef boost::shared_ptr<EmsMessage> MessagePtr;
