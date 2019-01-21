@@ -1,0 +1,13 @@
+pkgbase = jannal-git
+	pkgdesc = A desktop-software for creating presentations like prezi and a mindmapping tool
+	pkgver = 54
+	pkgrel = 1
+	url = https://tambi-soft.github.io
+	arch = any
+	makedepends = git
+	depends = qt5-base
+	source = jannal::git+https://github.com/tambi-soft/jannal.git
+	sha256sums = SKIP
+
+pkgname = jannal-git
+
