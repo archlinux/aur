@@ -1,0 +1,14 @@
+pkgbase = mgrep
+	pkgdesc = print lines that match millions of strings efficiently
+	pkgver = 20190121
+	pkgrel = 1
+	url = http://brainarray.mbni.med.umich.edu/mgrep/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = gcc-libs
+	source = mgrep::git+https://github.com/daimh/mgrep.git
+	md5sums = SKIP
+
+pkgname = mgrep
+
