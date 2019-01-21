@@ -1,7 +1,7 @@
 pkgbase = v2cmod-z
 	pkgdesc = A 2ch/5ch and Twitter browser
 	pkgver = 2.19.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://v2c.s50.xrea.com/
 	arch = any
 	license = custom
@@ -11,11 +11,13 @@ pkgbase = v2cmod-z
 	source = V2CMOD-Z.desktop
 	source = v2cmod-z.sh
 	source = https://www.dropbox.com/s/cvmbdghcf9pumlt/V2CMOD-Z_2.19.1(R20190113).zip
+	source = https://www.dropbox.com/s/wkhbmllflilkpsw/v2c_api_patch_B11.25.1_20190114.zip
 	source = https://www.dropbox.com/s/8peqlatop8ay2n8/v2c_api_patch_B11.25.1.2_poverty_Patch.zip
 	md5sums = 7e8915c4052eae46ffbee572b641deac
 	md5sums = da63137c36fc702722a0ac6800e60c50
 	md5sums = a67e56c497d030550e03f56e232f18d7
 	md5sums = 1ce8457bfc604210cbff81baa449aa8a
+	md5sums = 780362a88822b6f66c64cc1abcbd4558
 	md5sums = 400bc9e17fba7b89f27aee0c145965e2
 
 pkgname = v2cmod-z
