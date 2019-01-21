@@ -1,19 +1,19 @@
 # Maintainer: Mark Carter <alt.mcarter@gmail.com>
 pkgname=neoleo
-pkgver=7.0.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Lightweight curses spreadsheet based on GNU oleo"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/blippy/neoleo"
 license=('GPL')
 depends=('ncurses')
 source=(https://github.com/blippy/neoleo/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('093e63f0bd460c5ab147ac4db673eb4b')
+md5sums=('a2d72f1cd0ecfc5318735cb7a4600636')
 
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr 	
+	./configure --prefix=/usr 
 	make
 }
 
