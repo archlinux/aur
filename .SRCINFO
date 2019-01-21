@@ -1,7 +1,7 @@
 pkgbase = minizip2-git
 	pkgdesc = Mini zip and unzip based on bzip2, libbsd and zlib. Newest version (currently 2.x).
 	pkgver = 2.8.2+r1449.20190108.2ca7f39
-	pkgrel = 2
+	pkgrel = 4
 	url = http://github.com/nmoinvaz/minizip
 	arch = x86_64
 	license = custom
@@ -16,7 +16,9 @@ pkgbase = minizip2-git
 	conflicts = minizip2
 	conflicts = libminizip2
 	source = minizip::git+git://github.com/nmoinvaz/minizip.git
+	source = minizip.pc.rename-minizip2.patch::http://ix.io/1yQu
 	sha256sums = SKIP
+	sha256sums = 0700dfdb6c637b1a36cf15018a5d4d3ee92cb51d637e33341f4aaae3d4f480ad
 
 pkgname = minizip2-git
 
