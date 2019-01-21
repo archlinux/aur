@@ -7,7 +7,7 @@ pkgdesc="Memory Overcommitment Manager, for virtual machines"
 arch=('x86_64')
 url="https://gerrit.ovirt.org/#/admin/projects/mom"
 license=("GPL2")
-depends=('python2')
+depends=('python2' 'libvirt-python2')
 makedepends=('git')
 source=("git+https://gerrit.ovirt.org/mom#tag=v${pkgver}"
         "momd@.service"
