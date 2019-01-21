@@ -1,5 +1,5 @@
 pkgname=termtosvg-git
-pkgver=0.6.0.r3.g9b8cd11
+pkgver=0.8.0.r2.g8e4b269
 pkgrel=1
 
 pkgdesc='record terminal sessions as svg animations'
@@ -8,7 +8,7 @@ arch=('any')
 license=('BSD')
 
 depends=('python-pyte' 'python-lxml')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'pandoc')
 
 provides=('termtosvg')
 conflicts=('termtosvg')
@@ -24,15 +24,25 @@ pkgver() {
 
 build() {
     cd termtosvg
+    # There is a Makefile but seems to be intended as a development aid rather
+    # than a build tool
     python setup.py build
+
+    # Manually generate the man pages and skip the needless tarballing done in
+    # the Makefile
+    pandoc man/termtosvg.md -st man > man/termtosvg.man.1
+    pandoc man/termtosvg-templates.md -st man > man/termtosvg-templates.man.5
+}
+
+check() {
+    cd termtosvg
+    python setup.py test
 }
 
 package() {
     cd termtosvg
     python setup.py install --root="$pkgdir" --optimize=1
-
     install -Dm0644 man/termtosvg.man.1 "$pkgdir"/usr/share/man/man1/termtosvg.1
     install -Dm0644 man/termtosvg-templates.man.5 "$pkgdir"/usr/share/man/man5/termtosvg-templates.5
-
     install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
