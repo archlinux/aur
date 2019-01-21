@@ -1,7 +1,7 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
 pkgname=hashclash-git
-pkgver=r45.c1159e9
-pkgrel=3
+pkgver=r46.d833657
+pkgrel=1
 pkgdesc="Project HashClash - MD5 & SHA-1 cryptanalysis "
 arch=(x86_64)
 url="https://github.com/cr-marcstevens/hashclash"
@@ -10,18 +10,8 @@ depends=(boost-libs)
 makedepends=('git' 'boost')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/cr-marcstevens/hashclash"
-		"cuda.patch")
-md5sums=('SKIP'
-         'e50c821804f404ed10ccecc790382f8f')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	patch -p1 < "$srcdir/cuda.patch"
-}
+source=("${pkgname%-git}::git+https://github.com/cr-marcstevens/hashclash")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
