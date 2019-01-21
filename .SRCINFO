@@ -1,13 +1,13 @@
 pkgbase = libssh-gnutls
 	pkgdesc = Library for accessing ssh client services through C libraries - compiled with gnutls (libgcrypt), documentation for libssh
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.libssh.org/
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
 	makedepends = cmocka
-	makedepends = doxygen
+	makedepends = doxygen<=1.8.14
 	makedepends = python
 	source = https://www.libssh.org/files/0.8/libssh-0.8.6.tar.xz
 	source = https://www.libssh.org/files/0.8/libssh-0.8.6.tar.xz.asc
