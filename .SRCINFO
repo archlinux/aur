@@ -5,6 +5,7 @@ pkgbase = elkhound-git
 	url = https://github.com/WeiDUorg/elkhound
 	arch = x86_64
 	license = custom
+	makedepends = bison
 	conflicts = elkhound-bin
 	conflicts = elkhound
 	source = git+https://github.com/WeiDUorg/elkhound

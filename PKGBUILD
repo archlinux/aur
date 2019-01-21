@@ -10,6 +10,7 @@ conflicts=("elkhound-bin" "elkhound")
 
 url="https://github.com/WeiDUorg/elkhound"
 pkgdesc="Elkhound, née Elsa/Elkhound, as used by WeiDU"
+makedepends=("bison")
 
 license=("custom")
 
