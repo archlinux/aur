@@ -1,7 +1,7 @@
 # Maintainer: Christophe Robin <crobin at nekoo a-dot com>
 
 pkgname=couchbase-server-community
-pkgver=5.0.1
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="A document database featuring a powerful query language and unrivaled performance at scale."
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
 )
 install=couchbase-server.install
 depends=(glibc gcc-libs sqlite openssl zlib python2)
-conflicts=(couchbase3-server-community couchbase4-server-community)
+conflicts=(couchbase3-server-community couchbase4-server-community couchbase5-server-community)
 
 package() {
   msg2 "Extracting the data.tar.gz file"
@@ -27,4 +27,4 @@ package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/lib"
 }
 
-md5sums=('efd890ccaea2a83020c11746315a404f')
+md5sums=('77f33dc0c72b337e10ddb0afe359c1f9')
