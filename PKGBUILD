@@ -83,16 +83,13 @@ prepare() {
 
 pkgver() {
     cd grub
-    ( set -o pipefail
-      git describe --long --tags 2>/dev/null | sed 's/^grub.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    git describe --long --tags | sed 's/^grub.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd grub
     export GRUB_CONTRIB="$srcdir"/grub-extras
-	./autogen.sh
+    ./autogen.sh
 
     # Undefined references to __stack_chk_fail
     CFLAGS=${CFLAGS/-fstack-protector-strong}
