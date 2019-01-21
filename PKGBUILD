@@ -33,7 +33,7 @@ optdepends=('dosfstools: For grub-mkrescue FAT FS and EFI support'
             'os-prober: To detect other OSes when generating grub.cfg in BIOS systems')
 
 if [[ "${_grub_emu_build}" == "1" ]]; then
-	depends+=('sdl')
+    depends+=('sdl')
     makedepends+=('libusb')
     optdepends+=('libusb: For grub-emu USB support')
 fi
@@ -55,38 +55,38 @@ sha256sums=('SKIP'
             '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82')
  
 prepare() {
-	cd grub
+    cd grub
 
-	# Patch grub-mkconfig to detect Arch Linux initramfs images.
-	patch -Np1 -i "$srcdir"/10_linux-detect-archlinux-initramfs.patch
+    # Patch grub-mkconfig to detect Arch Linux initramfs images.
+    patch -Np1 -i "$srcdir"/10_linux-detect-archlinux-initramfs.patch
 
-	# Patch to enable GRUB_COLOR_* variables in grub-mkconfig.
-	# Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
-	patch -Np1 -i "$srcdir"/add-GRUB_COLOR_variables.patch
+    # Patch to enable GRUB_COLOR_* variables in grub-mkconfig.
+    # Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
+    patch -Np1 -i "$srcdir"/add-GRUB_COLOR_variables.patch
 
-	# Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme.
-	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
+    # Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme.
+    sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
 
-	# Modify grub-mkconfig behaviour to silence warnings FS#36275
-	sed 's| ro | rw |g' -i "util/grub.d/10_linux.in"
+    # Modify grub-mkconfig behaviour to silence warnings FS#36275
+    sed 's| ro | rw |g' -i "util/grub.d/10_linux.in"
 
-	# Modify grub-mkconfig behaviour so automatically generated entries read 'Arch Linux' FS#33393
-	sed 's|GNU/Linux|Linux|' -i "util/grub.d/10_linux.in"
+    # Modify grub-mkconfig behaviour so automatically generated entries read 'Arch Linux' FS#33393
+    sed 's|GNU/Linux|Linux|' -i "util/grub.d/10_linux.in"
 
-	# Pull in latest language files
-	./linguas.sh
+    # Pull in latest language files
+    ./linguas.sh
 	
-	# Remove lua module from grub-extras as it is incompatible with changes to grub_file_open   
-	# http://git.savannah.gnu.org/cgit/grub.git/commit/?id=ca0a4f689a02c2c5a5e385f874aaaa38e151564e
-	rm -rf "$srcdir"/grub-extras/lua
+    # Remove lua module from grub-extras as it is incompatible with changes to grub_file_open   
+    # http://git.savannah.gnu.org/cgit/grub.git/commit/?id=ca0a4f689a02c2c5a5e385f874aaaa38e151564e
+    rm -rf "$srcdir"/grub-extras/lua
 }
 
 pkgver() {
-  cd grub
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^grub.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+    cd grub
+    ( set -o pipefail
+      git describe --long --tags 2>/dev/null | sed 's/^grub.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
