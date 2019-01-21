@@ -1,8 +1,8 @@
-# Maintainer: Jonathan Biegert <azrdev@googlemail.com>
+# Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
+# Contributor: Jonathan Biegert <azrdev@googlemail.com>
 # Contributor: Tobias Breitwieser <tobias@breitwieser.biz>
 # Contributor: Stefan Betz <info@stefan-betz.net>
 
-# Version control of PKGBUILD: https://github.com/azrdev/peervpn-archlinux/
 pkgname=peervpn
 pkgver=0.044
 _pkgver=${pkgver//./-}
