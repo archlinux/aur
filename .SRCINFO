@@ -1,7 +1,7 @@
 pkgbase = peervpn
 	pkgdesc = An open source peer-to-peer VPN
 	pkgver = 0.044
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.peervpn.net
 	arch = i686
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = peervpn
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	depends = openssl-1.0
+	depends = openssl
 	backup = etc/peervpn/peervpn.conf
 	source = http://www.peervpn.net/files/peervpn-0-044.tar.gz
 	source = peervpn@.service
-	source = openssl-1.0.patch
-	sha1sums = 91b237943370aec2cadcc74d4c725e8f19aca15a
-	sha1sums = SKIP
-	sha1sums = SKIP
+	source = openssl-1.1.patch
+	sha256sums = 4402d5ce956d95ff85b8aeb455d984b9eb9c2e6a058d2580c8e90da12fed8392
+	sha256sums = 9acf8c1e69817e2eaf2f8b1f2ee61419d3b6bc9684b643bfccb9c0440d01dc8b
+	sha256sums = 09f25292ac6ed183306d2b6ccffe218744baf7e80457b5a091903c301dcef26a
 
 pkgname = peervpn
 
