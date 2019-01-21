@@ -1,15 +1,16 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=gotop-git
+_pkgname=${pkgname%-git}
 pkgver=1.7.1.r34.gf68eba9
-pkgrel=2
+pkgrel=3
 pkgdesc='A terminal based graphical activity monitor inspired by gtop and vtop'
 arch=(x86_64)
 url='https://github.com/cjbassi/gotop'
 license=(AGPL3)
 makedepends=(go)
-conflicts=(gotop-bin)
-provides=(gotop-bin)
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 source=("${pkgname}::git+https://github.com/cjbassi/gotop")
 sha256sums=('SKIP')
 
