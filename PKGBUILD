@@ -1,6 +1,6 @@
 # Maintainer: Attenuation <ouyangjun1999@gmail.com>
 pkgname=hexyl
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A command-line hex viewer'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('APACHE' 'MIT')
 makedepends=('rust')
 depends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7a6b8c6058fa887105dcd5f85b2808b2e0e7557f13b28d6fe802ce5609ff473e')
+sha256sums=('7450d8e0d382a9f78c5fa6de562359749586824d74c708c983da5a9c032bfd43')
 
 build() {
   cd "$pkgname-$pkgver"
