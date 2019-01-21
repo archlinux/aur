@@ -1,7 +1,7 @@
 # Maintainer: bobi
 
 pkgname=germinal
-pkgver=22
+pkgver=23
 pkgrel=1
 pkgdesc="Minimalist terminal emulator based on vte and tmux"
 
@@ -16,7 +16,7 @@ depends=('glib2' 'vte3' 'pango' 'tmux' 'pcre2')
 install=$pkgname.install
 
 arch=('i686' 'x86_64')
-md5sums=('00a25a285c6ea4055a83ae6449509770')
+md5sums=('c928f82a370fa396d31a30917685901c')
 
 build () {
     cd "$srcdir/$pkgname-$pkgver"
