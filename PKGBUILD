@@ -1,5 +1,5 @@
 # Maintainer: Manhong Dai <daimh@umich.edu>
-pkgname=mgrep
+pkgname=mgrep-trie
 pkgver=20190121
 pkgrel=1
 pkgdesc="print lines that match millions of strings efficiently"
@@ -24,13 +24,13 @@ build() {
 	cd $pkgname
 	./configure
 	make
-	rm -f man/$pkgname.1.gz
-	gzip man/$pkgname.1
+	rm -f man/mgrep.1.gz
+	gzip man/mgrep.1
 }
 check() {
-	$pkgname/src/$pkgname --version
+	$pkgname/src/mgrep --version
 }
 package() {
-	install -Dm755 $pkgname/src/$pkgname "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 $pkgname/man/$pkgname.1.gz "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
+	install -Dm755 $pkgname/src/mgrep "$pkgdir/usr/bin/mgrep"
+	install -Dm644 $pkgname/man/mgrep.1.gz "$pkgdir/usr/share/man/man1/mgrep.1.gz"
 }

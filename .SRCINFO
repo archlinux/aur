@@ -1,4 +1,4 @@
-pkgbase = mgrep
+pkgbase = mgrep-trie
 	pkgdesc = print lines that match millions of strings efficiently
 	pkgver = 20190121
 	pkgrel = 1
@@ -7,8 +7,8 @@ pkgbase = mgrep
 	license = GPL
 	makedepends = gcc
 	depends = gcc-libs
-	source = mgrep::git+https://github.com/daimh/mgrep.git
+	source = mgrep-trie::git+https://github.com/daimh/mgrep.git
 	md5sums = SKIP
 
-pkgname = mgrep
+pkgname = mgrep-trie
 
