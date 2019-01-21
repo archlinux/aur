@@ -1,20 +1,16 @@
 # Maintainer: gborzi <gborzi@ieee.org>
 # Contributor: mickele <mimocciola@yahoo.com>
-pkgname=gmsh
-pkgver=4.1.0
+pkgname=('gmsh' 'gmsh-docs')
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="An automatic 3D finite element mesh generator with pre and post-processing facilities."
 arch=('x86_64')
 url="http://gmsh.info/"
 license=('custom')
-depends=('fltk' 'lapack' 'med=3.3.1' 'opencascade' 'cairo')
-makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig')
-optdepends=('gmsh-docs: docs for gmsh'
-            'python2: for onelab.py'
-            'python: for onelab.py')
+makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig' 'texlive-core')
 options=(!emptydirs)
 source=("${url}src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
-sha256sums=('35c603770bd051197fecb1e8ea579bcc80b913086a8e95e154915548b499a34c'
+sha256sums=('07f6276505db765e87e6e34935a21380778c711cff9fd1e87dd5d3f522696d7e'
             '43a8ca33ac917ee7196fdae305ff2c8cb9ae1072569ee546c0ce8ff580c966ae'
             '11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef')
 
@@ -40,9 +36,14 @@ build() {
       -DENABLE_PETSC=FALSE .. 
 
    make
+   LC_ALL=C make doc
 }
 
-package() {
+package_gmsh() {
+   depends=('fltk' 'lapack' 'med=3.3.1' 'opencascade' 'cairo')
+   optdepends=('gmsh-docs: docs for gmsh'
+            'python2: for onelab.py'
+            'python: for onelab.py')
 
    cd "${srcdir}/${pkgname}-${pkgver}-source/build"
    make DESTDIR=${pkgdir} install
@@ -64,4 +65,21 @@ package() {
    install -D -m644 $srcdir/gmsh.completion $pkgdir/etc/bash_completion.d/gmsh
 
    rm -rf ${pkgdir}/usr/share/doc
+}
+
+package_gmsh-docs() {
+   pkgdesc="TXT, HMTL and PDF doc for Gmsh"
+   arch=('any')
+   license=('GPL2')
+
+   cd "${srcdir}/${pkgbase}-${pkgver}-source/build"
+
+   bsdtar -xf ${pkgbase}-${pkgver}-*.tgz
+
+   cd "doc/texinfo"
+
+   install -D -m644 gmsh.html "${pkgdir}/usr/share/doc/gmsh/gmsh.html"
+   install -D -m644 gmsh.txt "${pkgdir}/usr/share/doc/gmsh/gmsh.txt"
+   install -D -m644 gmsh.pdf "${pkgdir}/usr/share/doc/gmsh/gmsh.pdf"
+   install -D -m644 gmsh.info "${pkgdir}/usr/share/info/gmsh.info"
 }
