@@ -4,21 +4,20 @@
 pkgname=php-pear
 epoch=1
 pkgver=1.10.9
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='PHP Extension and Application Repository'
 url='https://pear.php.net/'
 depends=('php')
-makedepends=('git')
 license=('PHP')
-source=('git+https://github.com/pear/pearweb_phars.git#commit=d9de1f192eefbbedbc56eba23168deb6c8515059')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pear/pearweb_phars/archive/v${pkgver}.tar.gz")
 backup=('etc/php/pear.conf')
-sha256sums=('SKIP')
+sha256sums=('011a8c721f00fed7ce0dad734ac91e1f80e4b4bba110b0bb92f0553c5ed54bdd')
 
 package() {
 	PHP_PEAR_SYSCONF_DIR=/etc/php \
 	INSTALL_ROOT=$pkgdir \
-		php -n ${srcdir}/pearweb_phars/install-pear-nozlib.phar \
+		php -n ${srcdir}/pearweb_phars-${pkgver}/install-pear-nozlib.phar \
 			-d /usr/share/pear \
 			-b /usr/bin
 

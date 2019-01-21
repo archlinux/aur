@@ -1,16 +1,15 @@
 pkgbase = php-pear
 	pkgdesc = PHP Extension and Application Repository
 	pkgver = 1.10.9
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://pear.php.net/
 	arch = any
 	license = PHP
-	makedepends = git
 	depends = php
 	backup = etc/php/pear.conf
-	source = git+https://github.com/pear/pearweb_phars.git#commit=d9de1f192eefbbedbc56eba23168deb6c8515059
-	sha256sums = SKIP
+	source = php-pear-1.10.9.tar.gz::https://github.com/pear/pearweb_phars/archive/v1.10.9.tar.gz
+	sha256sums = 011a8c721f00fed7ce0dad734ac91e1f80e4b4bba110b0bb92f0553c5ed54bdd
 
 pkgname = php-pear
 
