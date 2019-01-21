@@ -3,7 +3,7 @@ Description=Sanoid timer
 
 [Timer]
 OnBootSec=0min
-OnCalendar=*:0/1
+OnCalendar=minutely
 
 [Install]
 WantedBy=timers.target

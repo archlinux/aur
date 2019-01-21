@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/jimsalterjrs/sanoid/archive
 
 sha256sums=('e28bd2ee372d777cd58e3a2ddd9c5c04210d07323b648c6c21030d0f7a22a464'
             'a1f53363c2814a797ed4b19533b31db87e36bf9ffd41487c036570e80f498f76'
-            '69f216772f852e2f7ed90633799d2ad8fa04cb0166c2e54eddcf6654047a4beb')
+            'de506f8deab9cf9920a5efd598bf4bf4806bc6dd24756b1380705f293171da17')
 
 package() {
   cd "${pkgname}-${pkgver}"
