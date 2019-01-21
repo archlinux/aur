@@ -1,6 +1,6 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=clipper
-pkgver=2.1.20180526
+pkgver=2.1.20180802
 _url=http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/
 pkgrel=1
 pkgdesc="A set of object-oriented libraries for the organisation of crystallographic data"
@@ -11,7 +11,7 @@ makedepends=('gcc-fortran')
 depends=('libccp4' 'mmdb2' 'fftw2-float' 'libssm')
 source=(https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/$pkgname-$pkgver.tar.gz)
 
-sha256sums=('7b77d5c79078eb0ce94ea503c0346c799c44a2872dfd14b09abc404025003c4b')
+sha256sums=('7c7774f224b59458e0faa104d209da906c129523fa737e81eb3b99ec772b81e0')
 
 build() {
   cd "$srcdir/$pkgname-2.1"
@@ -34,4 +34,4 @@ package() {
   cd "$srcdir/$pkgname-2.1"
 
   make DESTDIR="$pkgdir/" install
-} 
+}
