@@ -41,7 +41,7 @@ pkgbase = linux-hardened-ccs-apparmor
 	sha256sums = SKIP
 
 pkgname = linux-hardened-ccs-apparmor
-	pkgdesc = The Linux-hardened-ccs-apparmor kernel and modules
+	pkgdesc = The Linux kernel with hardened and TOMOYO 1.8.x (CCS) patches applied and AppArmor enabled
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
