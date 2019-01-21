@@ -21,6 +21,7 @@ build() {
 
 package_python-dill() {
     depends=('python')
+    optdepends=('python-pyreadline' 'python-objgraph')
     cd "$srcdir/dill-dill-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -28,6 +29,7 @@ package_python-dill() {
 
 package_python2-dill() {
     depends=('python2')
+    optdepends=('python2-pyreadline' 'python2-objgraph')
     install=python2-dill.install
     cd "$srcdir/dill-dill-$pkgver"
     find . -name "*.py" -exec sed -i 's#/usr/bin/env python#/usr/bin/env python2#' {} \;
