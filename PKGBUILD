@@ -1,6 +1,6 @@
 pkgname=pandoc-crossref-bin
-pkgver=0.3.4.0
-_pandoc_pkgver=24
+pkgver=0.3.4.0a
+_pandoc_pkgver=25
 _ghc_pkgver=86
 pkgrel=1
 pkgdesc="Pandoc Cross References - executable only, without 750MB Haskell depends/makedepends"
@@ -15,7 +15,7 @@ depends=('pandoc')
 source=(
     "pandoc-crossref-${pkgver}-ghc${_ghc_pkgver}.tar.gz::https://github.com/lierdakil/pandoc-crossref/releases/download/v${pkgver}/linux-ghc${_ghc_pkgver}-pandoc${_pandoc_pkgver}.tar.gz"
 )
-sha256sums=('858417df29e5e006ba287a454f6eed9dbff2be26a9c730c316e1d91b6558bf28')
+sha256sums=('0f12c21cf08677a20a9d73f7550edb93c56ba66a34b3a5d07470a5622d644f4c')
 
 package() {
     cd "${srcdir}"
