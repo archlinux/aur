@@ -32,7 +32,7 @@ source=("https://github.com/elementary/code/archive/${pkgver}.tar.gz")
 sha256sums=('a504957d7eb1a9925dbb9c73dbb3053484100191c0b919f2dd02c3b3bed42d80')
 
 build() {
-    arch-meson code-${pkgver} build
+    arch-meson code-${pkgver} build -Db_pie=false
     ninja -C build
 }
 
