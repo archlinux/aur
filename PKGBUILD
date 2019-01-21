@@ -5,11 +5,11 @@
 
 _pkgname=openssl-1.0
 pkgname=${_pkgname}-chacha20
-_ver=1.0.2l
+_ver=1.0.2q
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=2
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with Chacha20 cipher'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -25,14 +25,14 @@ source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"
         'no-rpath.patch'
         'ssl3-test-failure.patch'
         'ca-dir.patch'
-	'openssl-1.0-versioned-symbols.patch'
+        'openssl-1.0-versioned-symbols.patch'
         'openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch')
-sha256sums=('ce07195b659e75f4e1db43552860070061f156a98bb37b672b101ba6e3ddf30c'
+sha256sums=('5744cfcbcec2b1b48629f7354203bc1e5e9b5466998bbccc5b5fcde3b18eb684'
             'SKIP'
             '754d6107a306311e15a1db6a1cc031b81691c8b9865e8809ac60ca6f184c957c'
             'c54ae87c602eaa1530a336ab7c6e22e12898e1941012349c153e52553df64a13'
             '9e8126f3a748f4c1d6fe34d4436de72b16a40e97a6d18234d2e88caa179d50c4'
-            'd4299fa99405b875106ada34ce303237e7a55286d755e4daeb646a493ed98db3'
+            '5ffb7d9d966bc6dbd3f4882796ee9c8613422c63431f2f793903005e54310e44'
             'd6f9427d5cb63c7299563c201cd8708c7166e0f8c98b57a1fee69767362bf0f7')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
@@ -46,7 +46,7 @@ prepare() {
     patch -p1 -i $srcdir/ssl3-test-failure.patch
 
     # add symbol versioning to prevent conflicts with openssl 1.1 symbols (Debian)
-    patch -p1 -i "$srcdir"/openssl-1.0-versioned-symbols.patch
+    #patch -p1 -i "$srcdir"/openssl-1.0-versioned-symbols.patch
 
     # set ca dir to /etc/ssl by default
     patch -p0 -i $srcdir/ca-dir.patch
