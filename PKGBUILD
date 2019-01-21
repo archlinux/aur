@@ -1,78 +1,38 @@
-# Maintainer: Achilleas Pipinellis <axilleas archlinux info>
+# Maintainer: Achilleas Pipinellis <axil archlinux gr>
+
 pkgname=facette-bin
 _pkgname=facette
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Time series data visualization and graphing software"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://facette.io/"
 license=('BSD')
-depends=('rrdtool<1.5.0')
-backup=('etc/facette/facette.json')
+depends=('rrdtool' 'nodejs')
 install=facette.install
-
 source=(
+  "https://github.com/$_pkgname/$_pkgname/releases/download/$pkgver/${_pkgname}_${pkgver}_linux-amd64.tar.xz"
   "${_pkgname}.tmpfiles.d"
   "${_pkgname}.install"
   "${_pkgname}.service"
 )
 
-source_x86_64=("https://github.com/$_pkgname/$_pkgname/releases/download/$pkgver/$_pkgname-$pkgver-linux-amd64.tar.gz")
-source_i686=("https://github.com/$_pkgname/$_pkgname/releases/download/$pkgver/$_pkgname-$pkgver-linux-386.tar.gz")
-
-sha256sums=(
-  '580068d3206220e2d7d716b46bc2ee88fb7046a9c135c4ae7ec25d83458b6534'
-  '3c94a461bb104c948dfc2d582fb844300ea6ea41f60ef627aaa73d56f9458ee1'
-  '996246e98468a2848ef1c605ab49c569dc057299f847e166422595c5deda5b6f'
-)
-sha256sums_x86_64=('cf7041bad90cd68dee30edc3508a351d85f9308bb93cd8827fb6c54634bf9bfb')
-sha256sums_i686=('15a210ec3976f3a9f43c08c3ae44dcbc5076f8ae2c0726fc5faa0e2b723288f9')
-
-prepare() {
-
-  if [ $CARCH == "x86_64" ]; then
-    cd "${srcdir}/${_pkgname}-linux-amd64"
-  elif [ $CARCH == "i686" ]; then
-    cd "${srcdir}/${_pkgname}-linux-386"
-  fi
-
-  # Replace /usr/local with /usr in config file
-  sed -i 's#/usr/local#/usr#g' "share/facette/examples/facette.json"
-}
-
 package() {
-
   # Create directory structure
   install -d "${pkgdir}"/usr/bin/
-  install -d "${pkgdir}"/usr/share/facette/
-  install -d "${pkgdir}"/usr/share/man/man1/
-  install -d "${pkgdir}"/usr/share/man/man8/
-
-  if [ $CARCH == "x86_64" ]; then
-    cd "${srcdir}/${_pkgname}-linux-amd64"
-  elif [ $CARCH == "i686" ]; then
-    cd "${srcdir}/${_pkgname}-linux-386"
-  fi
 
   # Install binaries
-  install -Dm755 bin/facette "${pkgdir}/usr/bin/facette"
-  install -Dm755 bin/facettectl "${pkgdir}/usr/bin/facettectl"
+  install -Dm755 facette "${pkgdir}/usr/bin/facette"
+  install -Dm755 facettectl "${pkgdir}/usr/bin/facettectl"
 
-  # Install man pages
-  install -Dm644 "share/man/facette.1" "${pkgdir}/usr/share/man/man1/facette.1"
-  install -Dm644 "share/man/facettectl.8" "${pkgdir}/usr/share/man/man8/facettectl.8"
-
-  # Install config and example providers
-  install -Dm644 "share/facette/examples/facette.json"             "${pkgdir}/etc/facette/facette.json"
-  install -Dm644 "share/facette/examples/providers/collectd.json"  "${pkgdir}/etc/facette/providers/collectd.json"
-  install -Dm644 "share/facette/examples/providers/graphite.json"  "${pkgdir}/etc/facette/providers/graphite.json"
-  install -Dm644 "share/facette/examples/providers/influxdb.json"  "${pkgdir}/etc/facette/providers/influxdb.json"
-  install -Dm644 "share/facette/examples/providers/kairosdb.json"  "${pkgdir}/etc/facette/providers/kairosdb.json"
-
-  # Install static and template directories
-  cp -r share/facette/{static,template}/ "${pkgdir}/usr/share/facette/"
+  # Install license
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Install systemd service and tmpfiles
-  install -Dm644 "${srcdir}/facette.service"     "${pkgdir}/usr/lib/systemd/system/facette.service"
-  install -Dm644 "${srcdir}/facette.tmpfiles.d"  "${pkgdir}/usr/lib/tmpfiles.d/facette.conf"
+  install -Dm644 facette.service     "${pkgdir}/usr/lib/systemd/system/facette.service"
+  install -Dm644 facette.tmpfiles.d  "${pkgdir}/usr/lib/tmpfiles.d/facette.conf"
 }
+sha512sums=('1542d7f8d06a3197e0e632eb7b61d0a489b973243207ae34b656627f82686c64a644f6f5967039892ecc57909babd79c79080cf573f6d328a34032c93966cbdf'
+            '175a07e268c323c0ee3d8c770d811ad3b2a2ee1a10afdcb882c5591680fe2c633a2cbd1136ac6150d47549b3dec905748c98dea3dd3ef77cf9f1a15dd6cab322'
+            '551dc7db9f8d6f5b332f4d88be8951275d337193ab289c97bbdb17735bde5201bca87dd24c469e099cea67c5f17e08ac3465ab70cbabd5355d656db3e3329903'
+            'bfa91531eda0eae6f5ae5e120d1c30d8641039ea1a6b1b317a9f7c2deee228a824eccd8589178388ea58f834b2862ab76fd668ef3c6a85c7118f825b23e82c9a')

@@ -1,6 +1,6 @@
 pkgbase = facette-bin
 	pkgdesc = Time series data visualization and graphing software
-	pkgver = 0.3.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://facette.io/
 	install = facette.install
@@ -9,16 +9,14 @@ pkgbase = facette-bin
 	license = BSD
 	depends = rrdtool<1.5.0
 	backup = etc/facette/facette.json
+	source = https://github.com/facette/facette/releases/download/0.4.1/facette_0.4.1_linux-amd64.tar.xz
 	source = facette.tmpfiles.d
 	source = facette.install
 	source = facette.service
-	sha256sums = 580068d3206220e2d7d716b46bc2ee88fb7046a9c135c4ae7ec25d83458b6534
-	sha256sums = 7590eb723a7a57a907984d0cc6795b78f76688080c165c424cfdc969fb34b5b8
-	sha256sums = 996246e98468a2848ef1c605ab49c569dc057299f847e166422595c5deda5b6f
-	source_i686 = https://github.com/facette/facette/releases/download/0.3.0/facette-0.3.0-linux-386.tar.gz
-	sha256sums_i686 = 15a210ec3976f3a9f43c08c3ae44dcbc5076f8ae2c0726fc5faa0e2b723288f9
-	source_x86_64 = https://github.com/facette/facette/releases/download/0.3.0/facette-0.3.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = cf7041bad90cd68dee30edc3508a351d85f9308bb93cd8827fb6c54634bf9bfb
+	sha512sums = 1542d7f8d06a3197e0e632eb7b61d0a489b973243207ae34b656627f82686c64a644f6f5967039892ecc57909babd79c79080cf573f6d328a34032c93966cbdf
+	sha512sums = 175a07e268c323c0ee3d8c770d811ad3b2a2ee1a10afdcb882c5591680fe2c633a2cbd1136ac6150d47549b3dec905748c98dea3dd3ef77cf9f1a15dd6cab322
+	sha512sums = 551dc7db9f8d6f5b332f4d88be8951275d337193ab289c97bbdb17735bde5201bca87dd24c469e099cea67c5f17e08ac3465ab70cbabd5355d656db3e3329903
+	sha512sums = bfa91531eda0eae6f5ae5e120d1c30d8641039ea1a6b1b317a9f7c2deee228a824eccd8589178388ea58f834b2862ab76fd668ef3c6a85c7118f825b23e82c9a
 
 pkgname = facette-bin
 
