@@ -3,7 +3,7 @@
 _gemname=kramdown
 pkgname=ruby-kramdown-1
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, pure Ruby Markdown superset converter, using a strict syntax definition (Version 1.xx)'
 url='https://kramdown.gettalong.org/'
 arch=('any')
@@ -11,6 +11,8 @@ license=('MIT')
 depends=('ruby')
 makedepends=('ruby-rdoc' 'ruby-rake')
 options=('!emptydirs')
+conflicts=('ruby-kramdown')
+replaces=('ruby-kramdown')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/gettalong/kramdown/archive/REL_${pkgver//./_}.tar.gz)
 sha256sums=('3f2071848a0cf2283ed52e346061f05d3fca9cfec513bef5d73bdeb3bc7b97d9')
 sha512sums=('bf9ab87c1245cd0b920aa22b3107d595b4f55ff44f364076a3da86d3d830e895344270b457c6c38bdf3eaaef88e11ac895d9570e58f5c582e74b8f2288e390d7')

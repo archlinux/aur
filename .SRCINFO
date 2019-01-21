@@ -1,13 +1,15 @@
 pkgbase = ruby-kramdown-1
 	pkgdesc = Fast, pure Ruby Markdown superset converter, using a strict syntax definition (Version 1.xx)
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kramdown.gettalong.org/
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	makedepends = ruby-rake
 	depends = ruby
+	conflicts = ruby-kramdown
+	replaces = ruby-kramdown
 	options = !emptydirs
 	source = ruby-kramdown-1-1.17.0.tar.gz::https://github.com/gettalong/kramdown/archive/REL_1_17_0.tar.gz
 	sha256sums = 3f2071848a0cf2283ed52e346061f05d3fca9cfec513bef5d73bdeb3bc7b97d9
