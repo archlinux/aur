@@ -1,6 +1,6 @@
 pkgbase = elementary-code-git
 	pkgdesc = Code editor designed for elementary OS
-	pkgver = 3.0.r1.gef9cd754
+	pkgver = 3.0.2.r72.g8a19ff3f
 	pkgrel = 1
 	url = https://github.com/elementary/code
 	arch = i686

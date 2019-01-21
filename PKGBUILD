@@ -2,7 +2,7 @@
 
 _pkgname=elementary-code
 pkgname=$_pkgname-git
-pkgver=3.0.r1.gef9cd754
+pkgver=3.0.2.r72.g8a19ff3f
 pkgrel=1
 pkgdesc="Code editor designed for elementary OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -39,8 +39,7 @@ pkgver() {
 }
 
 build() {
-    rm -rf build
-    arch-meson code build
+    arch-meson code build -Db_pie=false
     ninja -v -C build
 }
 
