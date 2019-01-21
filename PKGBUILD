@@ -1,7 +1,7 @@
 # Maintainer: Pascal Mehnert <gargoil@posteo.de>
 
 pkgname=nvimpager-git
-pkgver=0.5.1.r94.g836962f
+pkgver=0.5.1.r99.gb3f40d8
 pkgrel=1
 pkgdesc="Use nvim as a pager to view manpages, diffs, etc with nvim's syntax highlighting"
 arch=('any')
