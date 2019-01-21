@@ -2,7 +2,7 @@
 # Contributor : Ivo Nunes <ivoavnunes at gmail dot com>
 _pkgname="birdie"
 pkgname="${_pkgname}-git"
-pkgver=1.1+git.96.gee6112a
+pkgver=1.1+git.99.g89a63d3
 pkgrel=1
 pkgdesc="Twitter client for Linux"
 arch=('i686' 'x86_64')
@@ -23,7 +23,8 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}"
-	arch-meson build
+	arch-meson build \
+    -Db_pie=false
 	ninja -C build
 }
 
