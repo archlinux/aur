@@ -1,6 +1,6 @@
 pkgbase = ruby-roo
 	pkgdesc = OpenOffice, LibreOffice, Excel, CSV reader
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/roo-rb/roo
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = ruby-roo
 	depends = ruby
 	depends = ruby-nokogiri
 	depends = ruby-rubyzip
-	noextract = roo-2.8.0.gem
+	noextract = roo-2.8.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/roo-2.8.0.gem
-	sha256sums = 05644f37e8404320831e69bfe8e7ba8352fd87689c7b600b8f9e05d238d6b65c
+	source = https://rubygems.org/downloads/roo-2.8.1.gem
+	sha256sums = d2918b92d12b33229359c189d48696bfe9d50d6aabaf250ce98cb7d5ffe2eb1b
 
 pkgname = ruby-roo
 
