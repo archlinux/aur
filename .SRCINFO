@@ -1,7 +1,7 @@
 pkgbase = minizip2-2.3.3
 	pkgdesc = Mini zip and unzip based on libbsd and zlib. Version 2.3.3 (specific version).
 	pkgver = 2.3.3
-	pkgrel = 2
+	pkgrel = 5
 	url = http://github.com/nmoinvaz/minizip
 	arch = x86_64
 	license = custom
@@ -14,7 +14,9 @@ pkgbase = minizip2-2.3.3
 	conflicts = minizip2
 	conflicts = libminizip2
 	source = minizip-2.3.3.tar.gz::https://github.com/nmoinvaz/minizip/archive/2.3.3.tar.gz
+	source = minizip.pc.rename-minizip2.patch::http://ix.io/1yQu
 	sha256sums = 8c74530d3095891525f53cda6aabe1df138255ef53d0f294791cb57c2cb5710c
+	sha256sums = 0700dfdb6c637b1a36cf15018a5d4d3ee92cb51d637e33341f4aaae3d4f480ad
 
 pkgname = minizip2-2.3.3
 
