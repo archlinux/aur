@@ -2,13 +2,13 @@
 
 pkgname=gotop-git
 _pkgname=${pkgname%-git}
-pkgver=1.7.1.r34.gf68eba9
-pkgrel=4
+pkgver=2.0.0.r3.gcf00920
+pkgrel=1
 pkgdesc='A terminal based graphical activity monitor inspired by gtop and vtop'
 arch=(x86_64)
 url='https://github.com/cjbassi/gotop'
 license=(AGPL3)
-makedepends=(go git)
+makedepends=("go>=1.11.0" "git")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${pkgname}::git+https://github.com/cjbassi/gotop")
@@ -16,28 +16,14 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	cd "$srcdir/$pkgname"
-
-	install -m755 -d "$srcdir/go/src/github.com/cjbassi"
-	cp -a "$srcdir/$pkgname" "$srcdir/go/src/github.com/cjbassi/gotop"
-}
-
 build() {
-	cd "$srcdir/go/src/github.com/cjbassi/gotop"
-
-	export GOPATH="$srcdir/go"
-
-	go get -v github.com/cjbassi/gotop
-	make dist/gotop
+	cd "$srcdir/$pkgname"
+	go build
 }
 
 package() {
-	cd "$srcdir/go/src/github.com/cjbassi/gotop"
-
-	install -Dm755 dist/gotop $pkgdir/usr/bin/gotop
+	install -Dm755 "$srcdir/$pkgname/gotop" "$pkgdir/usr/bin/gotop"
 }
