@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=fragments-git
-pkgver=1.2.r12.gab673a2
+pkgver=1.3.r0.g30eafee
 pkgrel=1
 pkgdesc="A GTK3 BitTorrent client following the GNOME Human Interface Guidelines"
 arch=(i686 x86_64 armv6h armv7h)
@@ -61,7 +61,7 @@ prepare() {
 }
 
 build() {
-    arch-meson Fragments build
+    arch-meson Fragments build -Db_pie=false
     ninja -C build
 }
 

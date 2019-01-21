@@ -1,6 +1,6 @@
 pkgbase = fragments-git
 	pkgdesc = A GTK3 BitTorrent client following the GNOME Human Interface Guidelines
-	pkgver = 1.2.r12.gab673a2
+	pkgver = 1.3.r0.g30eafee
 	pkgrel = 1
 	url = https://gitlab.gnome.org/haecker-felix/Fragments
 	arch = i686
