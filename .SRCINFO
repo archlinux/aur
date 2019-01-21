@@ -1,11 +1,11 @@
 pkgbase = bide
 	pkgdesc = BIDE, Basic IDE by Zezombye
 	pkgver = 4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.planet-casio.com/Fr/logiciels/voir_un_logiciel_casio.php?showid=118
 	arch = any
 	license = GPL
-	depends = jre8-openjdk
+	depends = java-runtime=8
 	provides = bide
 	source = https://www.planet-casio.com/Fr/logiciels/dl_logiciel.php?id=118&file=1
 	source = bide.desktop
