@@ -1,7 +1,7 @@
 pkgbase = taglib-sharp-git
 	pkgdesc = Library for reading and writing metadata in media files for Mono - source from git for working opus files
-	pkgver = 2.1.0.0.r168.gab86113
-	pkgrel = 1
+	pkgver = 2.1.0.0.r248.g60e7588
+	pkgrel = 2
 	url = https://github.com/mono/taglib-sharp
 	arch = i686
 	arch = x86_64

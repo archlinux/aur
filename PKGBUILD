@@ -5,8 +5,8 @@
 
 _pkgbase=taglib-sharp
 pkgname=$_pkgbase-git
-pkgver=2.1.0.0.r168.gab86113
-pkgrel=1
+pkgver=2.1.0.0.r248.g60e7588
+pkgrel=2
 pkgdesc="Library for reading and writing metadata in media files for Mono - source from git for working opus files"
 arch=('i686' 'x86_64')
 url="https://github.com/mono/taglib-sharp"
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgbase"
-#  git reset --hard 2ab021d38a561e09e95d85212765cbec141bbd7f
+  git reset --hard 60e7588b53868a2b37dd0bc92868b740da2eeded
   patch src/Makefile.am "$srcdir/sign.patch"
 }
 
