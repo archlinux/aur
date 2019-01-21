@@ -2,11 +2,11 @@
 
 pkgname=gotop-git
 pkgver=1.7.1.r34.gf68eba9
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal based graphical activity monitor inspired by gtop and vtop'
 arch=(x86_64)
 url='https://github.com/cjbassi/gotop'
-license=(AGPL)
+license=(AGPL3)
 makedepends=(go)
 conflicts=(gotop-bin)
 provides=(gotop-bin)
@@ -31,7 +31,7 @@ build() {
 
 	export GOPATH="$srcdir/go"
 
-	go get -v github.com/cjbassi/gotop 
+	go get -v github.com/cjbassi/gotop
 	make dist/gotop
 }
 
