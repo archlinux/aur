@@ -1,0 +1,16 @@
+pkgbase = raleigh-reloaded-git
+	pkgdesc = A GTK theme aiming to revive the classic Raleigh theme
+	pkgver = v1.1.r4.89ce481
+	pkgrel = 1
+	url = https://github.com/vlastavesely/raleigh-reloaded
+	arch = any
+	license = GPL2
+	depends = gtk3
+	provides = raleigh-reloaded
+	conflicts = raleigh-reloaded
+	options = !strip
+	source = raleigh-reloaded::git+https://github.com/vlastavesely/raleigh-reloaded.git
+	md5sums = SKIP
+
+pkgname = raleigh-reloaded-git
+
