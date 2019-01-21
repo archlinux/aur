@@ -1,5 +1,6 @@
 # Maintainer: Rich Li <rich@dranek.com>
 pkgname='python2-xarray'
+_name=${pkgname#python2-}
 pkgver=0.11.2
 pkgrel=1
 pkgdesc="N-D labeled arrays and datasets in Python"
@@ -17,12 +18,10 @@ optdepends=('python2-netcdf4: NetCDF4 support'
             # 'python2-dask: Enable out-of-core parallel computation') # (doesn't exist in AUR)
 checkdepends=('python2-pytest')
 replaces=('python2-xray')
-#source=(https://pypi.python.org/packages/source/x/xarray/xarray-"$pkgver".tar.gz)
-# I'm using the Github source instead of the PyPI source since the Github source includes the data files used for testing
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pydata/xarray/archive/v$pkgver.tar.gz")
-md5sums=('1b7b72632520e334b4bb3684c1b6f7b3')
-sha1sums=('bed354712d7bf0fc1af68583e6854523bfa28413')
-sha256sums=('12659ca2f70c91dc16c5f0cb1b5333a4d749ab869933a0a9a3cf69edffd3d985')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+md5sums=('7434e72ef89182aa5eabd58a36f1b357')
+sha1sums=('744376e8fbd737ca65c814288ba435a72ea49fc4')
+sha256sums=('af7147152629701f11e424caf8e4fbf5ea1dc2d03ed7a5ca31b83dd64387cfb2')
 
 build() {
   cd "$srcdir/xarray-$pkgver"
