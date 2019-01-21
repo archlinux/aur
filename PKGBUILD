@@ -7,7 +7,7 @@ pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
-pkgver=240.222
+pkgver=240.285
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -96,8 +96,8 @@ build() {
     -Dlz4=true
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
-    # TODO(dreisner): consider changing this to unified
     -Ddefault-hierarchy=hybrid
+    -Ddefault-locale=C
     -Ddefault-kill-user-processes=false
     -Dfallback-hostname='archlinux'
     -Dntp-servers="${_timeservers[*]}"
@@ -206,7 +206,8 @@ package_libsystemd-git() {
   pkgdesc="systemd client libraries (git version)"
   depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
   license=('GPL2')
-  provides=('libsystemd.so' 'libudev.so' 'libsystemd')
+  provides=('libsystemd' 'libsystemd.so' 'libudev.so')
+  replaces=('libsystemd')
   conflicts=('libsystemd')
 
   install -d -m0755 "$pkgdir"/usr
@@ -217,8 +218,9 @@ package_systemd-resolvconf-git() {
   pkgdesc='systemd resolvconf replacement (git version)'
   license=('GPL2')
   depends=("${pkgbase}")
-  provides=('openresolv' 'resolvconf' 'systemd-resolvconf')
-  conflicts=('openresolv' 'systemd-resolvconf')
+  provides=('systemd-resolvconf' 'openresolv' 'resolvconf')
+  replaces=('systemd-resolvconf')
+  conflicts=('systemd-resolvconf' 'openresolv')
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s resolvectl "$pkgdir"/usr/bin/resolvconf
@@ -232,7 +234,8 @@ package_systemd-sysvcompat-git() {
   pkgdesc='sysvinit compat for systemd (git version)'
   license=('GPL2')
   provides=('systemd-sysvcompat')
-  conflicts=('sysvinit' 'systemd-sysvcompat')
+  replaces=('systemd-sysvcompat')
+  conflicts=('systemd-sysvcompat' 'sysvinit')
   depends=("${pkgbase}")
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
