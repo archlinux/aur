@@ -15,7 +15,7 @@ source=("git+https://gerrit.ovirt.org/mom#tag=v${pkgver}"
 md5sums=('SKIP'
          'c2b7bf62ee32aee64e127f4384767235'
          'cf66caf6eec15c39381abf28235aa0ed')
-backup=('/etc/mom')
+backup=('etc/mom')
 
 prepare() {
     cd mom
