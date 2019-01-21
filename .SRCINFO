@@ -1,0 +1,18 @@
+pkgbase = chai
+	pkgdesc = Copy-hiding array abstraction to automatically migrate data between memory spaces
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://raja.readthedocs.io/en/master/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = cuda
+	depends = gcc-libs
+	depends = gcc-fortran
+	depends = openmpi
+	source = git+https://github.com/LLNL/CHAI.git
+	md5sums = SKIP
+
+pkgname = chai
+
