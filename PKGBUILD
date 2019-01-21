@@ -3,13 +3,13 @@
 
 pkgname=proftpd
 pkgver=1.3.6
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='High-performance, scalable FTP server'
 arch=('x86_64' 'i686')
 url='http://www.proftpd.org/'
 license=('GPL')
-depends=('libmariadbclient' 'postgresql-libs' 'libcap' 'pam' 'hiredis')
+depends=('mariadb-libs' 'postgresql-libs' 'libcap' 'pam' 'hiredis')
 backup=('etc/proftpd.conf')
 options=('!emptydirs')
 source=("ftp://ftp.proftpd.org/distrib/source/${pkgname}-${pkgver}.tar.gz"
