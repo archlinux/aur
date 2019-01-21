@@ -1,7 +1,7 @@
 # Maintainer: Dominik Schrempf <dominik dot schrempf at gmail dot com>
 pkgname=marvell-msu
 pkgver=4.1.0.2032
-pkgrel=2
+pkgrel=3
 pkgdesc="Marvell storage utility drivers and software for SATA controller 88SE9230 (e.g., HPE ProLiant MicroServer Gen10)"
 arch=(x86_64)
 url="https://www.marvell.com/storage/system-solutions/"
@@ -30,7 +30,7 @@ noextract=()
 build() {
   echo "Extracting RPM."
   rpmfldr=Marvell_MSU_Linux_v${pkgver}
-  rpmfn=MSU-${pkgver}-${pkgrel}.${arch}.rpm
+  rpmfn=MSU-${pkgver}-1.${arch}.rpm
   bsdtar -xf $srcdir/$rpmfldr/$rpmfn
 }
 

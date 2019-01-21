@@ -1,7 +1,7 @@
 pkgbase = marvell-msu
 	pkgdesc = Marvell storage utility drivers and software for SATA controller 88SE9230 (e.g., HPE ProLiant MicroServer Gen10)
 	pkgver = 4.1.0.2032
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.marvell.com/storage/system-solutions/
 	arch = x86_64
 	license = unknown
