@@ -3,26 +3,27 @@
 
 _pkgbase=r8101
 pkgname=r8101-dkms
-pkgver=1.032.04
+pkgver=1.033.00
 pkgrel=4
-pkgdesc="r8101 realtek lan drivers (DKMS)"
+pkgdesc="RTL810xE Fast Ethernet Driver (DKMS) (MANUAL DOWNLOAD)"
 arch=('i686' 'x86_64')
-url="http://www.realtek.com.tw/"
+url="https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100m-fast-ethernet-pci-express-software"
 license=('GPL2')
 depends=('dkms>=2.2.0.3+git151023-5')
 optdepends=('ethtool: device configuration')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 
-source=("http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0008-${_pkgbase}-${pkgver}.tar.bz2"
-        'linux-4.15.patch'
+# Modify this array so that it points to the manually downloaded file
+# The current setting is NOT a valid URL
+source=("${url}/0010-${_pkgbase}-${pkgver}.tar.bz2"
         'dkms.conf')
 
-prepare() {
-  cd "r8101-$pkgver"
-  
-  patch -p1 -i "../linux-4.15.patch"
-}
+#prepare() {
+#  cd "r8101-$pkgver"
+#  
+#  patch -p1 -i "../linux-4.15.patch"
+#}
 
 package() {
 
@@ -38,6 +39,5 @@ package() {
   cp -r ${_pkgbase}-${pkgver}/src ${_pkgbase}-${pkgver}/Makefile \
         "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 }
-sha256sums=('cb73c2bae347709009db0de657f7bd0e4a293abf6e8e60a07a97a47867f7b5f7'
-            '53f8fcb27ec16a3b29721339184f2f84a4ead26490bf5a9cafedc5edb0524abf'
+sha256sums=('587146b9fd651ec3df5d8b99ee39a6587784627d8d6245185e5d188bc755560c'
             '2846e89fe3fd68c64c71a0f1150873a061571acc63e65cca6d825df7985ad7b5')
