@@ -5,7 +5,9 @@
 
 pkgname=buildbot
 pkgdesc='The Continuous Integration Framework'
-pkgver=1.7.0
+pkgver=1.8.0
+# `git rev-parse v$pkgver`
+_tag_rev=5b1106e9e2898cff174e7dd4f03dfd80a5c79f16
 pkgrel=1
 arch=(any)
 url='https://buildbot.net'
@@ -24,20 +26,19 @@ optdepends=(
   'python-treq: for using HTTP requests as steps'
   'python-txrequests: for using HTTP requests as steps'
 )
-source=(https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz{,.sig})
-sha256sums=('e22f51b693f7fb293b6a111072cada00bc227fcdc2575bcb1c45f10fa25f5738'
-            'SKIP')
+source=("git+https://github.com/buildbot/buildbot?signed#tag=$_tag_rev")
+sha256sums=('SKIP')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com>
 )
 
 build() {
-  cd buildbot-$pkgver/master
+  cd buildbot/master
   python setup.py build
 }
 
 check() {
-  cd buildbot-$pkgver/master
+  cd buildbot/master
 
   # https://github.com/spulec/moto/issues/1924
   export AWS_SECRET_ACCESS_KEY=foobar_secret
@@ -51,6 +52,6 @@ check() {
 }
 
 package() {
-  cd buildbot-$pkgver/master
+  cd buildbot/master
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
