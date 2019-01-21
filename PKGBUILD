@@ -8,21 +8,27 @@ pkgdesc="A free to use program that lets you create and perform real-time audio 
 arch=('i686' 'x86_64')
 url="http://www.vsxu.com/"
 license=('GPL' 'custom')
-depends=('desktop-file-utils' 'glew' 'opencv' 'sdl2' 'xdg-utils')
+depends=('desktop-file-utils' 'glew' 'opencv' 'xdg-utils')
 makedepends=('alsa-lib' 'cmake' 'git' 'jack' 'pulseaudio')
-optdepends=(
-  'alsa-lib: ALSA support.'
-  'jack: JACK support'
-  'pulseaudio: PulseAudio support')
-_commit=5404800f9309f852b8fec6e40e90cb11fa0bbbf9  # tags/v0.6.3
-source=("${pkgname}::git+https://github.com/vovoid/vsxu#commit=$_commit"
-        "dependencies::git+https://github.com/vovoid/vsxu-dependencies.git"
-        "cal3d::git+https://github.com/vovoid/cal3d.git"
-        "freetype2::git+https://github.com/vovoid/freetype2.git"
-        "ftgl::git+https://github.com/vovoid/ftgl.git"
-        "lodepng::git+https://github.com/vovoid/lodepng.git"
-        "lzham-sdk::git+https://github.com/vovoid/lzham_codec.git"
-        "lzma-sdk::git+https://github.com/vovoid/LZMA-SDK.git")
+optdepends=('alsa-lib: ALSA support.'
+            'jack: JACK support'
+            'pulseaudio: PulseAudio support')
+_vsxu_commit=5404800f9309f852b8fec6e40e90cb11fa0bbbf9  # tags/v0.6.3
+_dependencies_commit=f0db876f0da43636ec9c25facbdd6a84771ef1fc
+_cal3d_commit=ce1a74f6638ff147ce9790c52f6c741bf8c8e342
+_freetype2_commit=f5f0a0ece4f299a465d130c6a98691112ebd30e9
+_ftgl_commit=bceab5929f62a8adf5ddf68401d45ebe790260da
+_lodepng_commit=c9e609b45606a257c4a258dbfbc46622efc2bfbe
+_lzham_commit=a2eb6567bfd87b319e6e4eb407bb84b0ba1c9670
+_lzma_commit=ca0d0199adea3677ba25cf9b086e89d5ecf76772
+source=("${pkgname}::git+https://github.com/vovoid/vsxu#commit=$_vsxu_commit"
+        "dependencies::git+https://github.com/vovoid/vsxu-dependencies#commit=$_dependencies_commit"
+        "cal3d::git+https://github.com/vovoid/cal3d#commit=$_cal3d_commit"
+        "freetype2::git+https://github.com/vovoid/freetype2#commit=$_freetype2_commit"
+        "ftgl::git+https://github.com/vovoid/ftgl#commit=$_ftgl_commit"
+        "lodepng::git+https://github.com/vovoid/lodepng#commit=$_lodepng_commit"
+        "lzham-sdk::git+https://github.com/vovoid/lzham_codec#commit=$_lzham_commit"
+        "lzma-sdk::git+https://github.com/vovoid/LZMA-SDK#commit=$_lzma_commit")
 sha512sums=('SKIP'
             'SKIP'	
             'SKIP'
@@ -34,7 +40,7 @@ sha512sums=('SKIP'
 
 prepare() {
   cd "${pkgname}"
-  [[ -d build ]] || mkdir build
+  mkdir -p build
   git submodule init
   git config submodule.dependencies.url "${srcdir}/dependencies"
   git config submodule.lib/compression/thirdparty/lzma-sdk.url "${srcdir}/lzma-sdk"
