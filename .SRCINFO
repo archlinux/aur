@@ -1,7 +1,7 @@
 pkgbase = glueviz
 	pkgdesc = Linked Data Visualizations Across Multiple Files
-	pkgver = 0.13.3
-	pkgrel = 2
+	pkgver = 0.14.0
+	pkgrel = 1
 	url = http://glueviz.org/
 	arch = i386
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = glueviz
 	depends = python
 	depends = python-glue-core
 	depends = python-glue-vispy-viewers
-	source = https://files.pythonhosted.org/packages/f9/57/917928d18cd6d55c8cdb1098aba5d1cb2bc25a4505933f5f83bd51adf423/glueviz-0.13.3.tar.gz
-	sha256sums = 80e617608e5937409a87ffe95285f338eee8824dbff1b3692c9733f7d76d752b
+	source = https://files.pythonhosted.org/packages/d0/2f/4da66f6905fec451dd210cf5158db894feb02202828d12d896e112dd75d0/glueviz-0.14.0.tar.gz
+	sha256sums = 8b084f94e429048074f8f2e26243c104a2ce64e2d501529e431a09fdedf66e83
 
 pkgname = glueviz
 
