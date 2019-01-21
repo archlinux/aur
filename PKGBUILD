@@ -2,14 +2,14 @@ pkgbase=libvlc
 pkgname=('libvlc' 'libvlccore')
 _pkgname=vlc
 pkgver=5.6.0
-_pkgver=3.0.4-4
-pkgrel=5
+_pkgver=3.0.6-1
+pkgrel=6
 pkgdesc="The VLC library not bundled with VLC so one can use things depending on the lib without installing VLC"
 arch=('x86_64')
 url='https://www.videolan.org/LibVLC/'
 license=('LGPL2.1')
 source=("https://archive.archlinux.org/packages/v/${_pkgname}/${_pkgname}-${_pkgver}-x86_64.pkg.tar.xz")
-md5sums=('db8e24f6792a9e30f85a11e1e6c115f0')
+sha512sums=('c1181609c92f8e919b70deda1db07ce871894b22c317b72c85d0753f1e3b6bb0a933a91d1e5b374ad97c6eb54e8c1b109bfdc8b0048ed221a2fa74df6828864f')
 
 package_libvlc() {
 	depends=('libvlccore')
