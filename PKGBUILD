@@ -1,8 +1,8 @@
 # Maintainer: ghostbuster <aur@sieverdingbeck.com>
 _pkgname=nagstamon
-_pkgver='3.3.20190105'
+_pkgver='3.3.20190120'
 pkgname=nagstamon-beta
-pkgver='3.3.0.20190105'
+pkgver='3.3.0.20190120'
 pkgrel=1
 pkgdesc="Nagios status monitor for the desktop"
 depends=('python-pyqt5' 'qt5-multimedia' 'qt5-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus')
@@ -15,10 +15,10 @@ source=(
         "https://nagstamon.ifw-dresden.de/files/unstable/${_pkgname}-${_pkgver}.fedora29-1.src.rpm"
 )
 md5sums=(
-        'f48351989ba9d46fc9d0d55d0fe82781'
+        '0baa703dd24367e8824d6384e7723d35'
 )
 sha256sums=(
-        '7afc90fde53f9f883e7ae8c1b3d3ac639ef6596023afb022ba91baa88a43c232'
+        '2d371634bf3c1bd5f714772a6b5472fae284c4fff991a4d97383ef2e9792c7d7'
 )
 
 prepare() {
