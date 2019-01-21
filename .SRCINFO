@@ -1,7 +1,7 @@
 pkgbase = ruby-yajl-ruby
 	pkgdesc = Ruby C bindings to the excellent Yajl JSON stream-based parser library.
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/brianmario/yajl-ruby
 	arch = x86_64
 	arch = i686
