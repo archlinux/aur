@@ -1,5 +1,5 @@
 pkgname=elm-live
-pkgver=2.7.5
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="A flexible dev server for Elm"
 arch=(any)
