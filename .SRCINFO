@@ -1,7 +1,7 @@
 pkgbase = minizip2-2.3.3
-	pkgdesc = Mini zip and unzip based on libbsd and zlib. Version 2.x.
+	pkgdesc = Mini zip and unzip based on libbsd and zlib. Version 2.3.3 (specific version).
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/nmoinvaz/minizip
 	arch = x86_64
 	license = custom

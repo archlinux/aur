@@ -4,10 +4,10 @@
 _pkgorigname=minizip
 _pkgname="${_pkgorigname}2"
 pkgname="${_pkgname}-2.3.3"
-pkgdesc="Mini zip and unzip based on libbsd and zlib. Version 2.x."
+pkgdesc="Mini zip and unzip based on libbsd and zlib. Version 2.3.3 (specific version)."
 _pkgver=2.3.3
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 url="http://github.com/nmoinvaz/minizip"
