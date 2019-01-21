@@ -23,7 +23,7 @@ pkgbase = vsxu
 	source = dependencies::git+https://github.com/vovoid/vsxu-dependencies#commit=f0db876f0da43636ec9c25facbdd6a84771ef1fc
 	source = cal3d::git+https://github.com/vovoid/cal3d#commit=ce1a74f6638ff147ce9790c52f6c741bf8c8e342
 	source = freetype2::git+https://github.com/vovoid/freetype2#commit=f5f0a0ece4f299a465d130c6a98691112ebd30e9
-	source = ftgl::git+https://github.com/vovoid/ftgl#commit=bceab5929f62a8adf5ddf68401d45ebe790260da
+	source = ftgl::git+https://github.com/vovoid/ftgl#commit=a461cfb42546fa909627bd1aeb5fed580b8ba293
 	source = lodepng::git+https://github.com/vovoid/lodepng#commit=c9e609b45606a257c4a258dbfbc46622efc2bfbe
 	source = lzham-sdk::git+https://github.com/vovoid/lzham_codec#commit=a2eb6567bfd87b319e6e4eb407bb84b0ba1c9670
 	source = lzma-sdk::git+https://github.com/vovoid/LZMA-SDK#commit=ca0d0199adea3677ba25cf9b086e89d5ecf76772
