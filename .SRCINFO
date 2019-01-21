@@ -15,7 +15,6 @@ pkgbase = vsxu-git
 	depends = desktop-file-utils
 	depends = glew
 	depends = opencv
-	depends = sdl2
 	depends = xdg-utils
 	optdepends = alsa-lib: ALSA support.
 	optdepends = jack: JACK support

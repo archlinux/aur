@@ -8,12 +8,11 @@ pkgdesc="A free to use program that lets you create and perform real-time audio 
 arch=('i686' 'x86_64')
 url="http://www.vsxu.com/"
 license=('GPL' 'custom')
-depends=('desktop-file-utils' 'glew' 'opencv' 'sdl2' 'xdg-utils')
+depends=('desktop-file-utils' 'glew' 'opencv' 'xdg-utils')
 makedepends=('alsa-lib' 'cmake' 'git' 'jack' 'pulseaudio')
-optdepends=(
-  'alsa-lib: ALSA support.'
-  'jack: JACK support'
-  'pulseaudio: PulseAudio support')
+optdepends=('alsa-lib: ALSA support.'
+            'jack: JACK support'
+            'pulseaudio: PulseAudio support')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+https://github.com/vovoid/vsxu.git"
@@ -32,12 +31,10 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
-_branch=master
 
 prepare() {
   cd "${pkgname%-*}"
-  [[ -d build ]] || mkdir build
-  git checkout ${_branch}
+  mkdir -p build
   git submodule init
   git config submodule.dependencies.url "${srcdir}/dependencies"
   git config submodule.lib/compression/thirdparty/lzma-sdk.url "${srcdir}/lzma-sdk"
