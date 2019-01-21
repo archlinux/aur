@@ -6,7 +6,7 @@
 set -u
 _major='8'
 pkgname="jdk${_major}-docs"
-_minor='202'; _build='b07'; _hash='1961070e4c9b4e26a04e7f5a083f551e'
+_minor='202'; _buildjd='b08'; _buildfx='b07'; _hash='1961070e4c9b4e26a04e7f5a083f551e'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Documentation for Oracle Java ${_major} Development Kit"
@@ -16,8 +16,8 @@ license=('custom:Oracle')
 depends=("java-environment>=${_major}")
 options=('!strip')
 source=(
-  "http://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/jdk-${pkgver}-docs-all.zip"
-  "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor}-${_build}/${_hash}/javafx-${pkgver}-apidocs.zip"
+  "https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_buildjd}/${_hash}/jdk-${pkgver}-docs-all.zip"
+  "https://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor}-${_buildfx}/${_hash}/javafx-${pkgver}-apidocs.zip"
   'LICENSE-Documentation.txt'
   'LICENSE-Oracle-Legal-Notices.txt'
 )
