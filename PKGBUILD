@@ -1,14 +1,14 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
-# Maintainer:  Achilleas Pipinellis <axilleas archlinux info>
+# Maintainer:  Achilleas Pipinellis <axilleas archlinux gr>
 
 pkgname=supermin
-pkgver=5.1.11
+pkgver=5.1.20
 pkgrel=1
 pkgdesc="Tool for creating supermin appliances"
 arch=('i686' 'x86_64')
 url="http://people.redhat.com/~rjones/supermin/"
 license=('GPL')
-makedepends=('ocaml' 'ocaml-findlib' 'prelink' 'cpio')
+makedepends=('ocaml' 'ocaml-findlib' 'cpio')
 depends=('e2fsprogs')
 # Does not provide febootstrap because supermin is not compatible with it
 provides=()
@@ -21,24 +21,9 @@ build() {
   make
 }
 
-check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  # Check was failing when building in chroot
-  # make check
-}
-
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
-
-  # From Fedora's spec file:
-  #   supermin-helper is marked as requiring an executable stack.  This
-  #   happens because we use objcopy to create one of the component object
-  #   files from a data file.  The program does not in fact require an
-  #   executable stack.  The easiest way to fix this is to clear the flag
-  #   here.
-  execstack -c "${pkgdir}/usr/bin/supermin"
 }
 
-# vim:set ts=2 sw=2 et:
-md5sums=('5843cd7016022d4944227c3019c8b225')
+sha512sums=('ccc9ada98593f91399b323f0beb027185874f82547a1df4274c1206a9b6d4465e98b7aef5618274d41fb902747f6843fd2cc6192a4ea8526811261ac5a16848e')
