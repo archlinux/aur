@@ -1,0 +1,20 @@
+pkgbase = xilinx-vivado-dummy
+	pkgdesc = Install dependencies to prepare for manual ./xsetup installation
+	pkgver = 2018.3
+	pkgrel = 1
+	url = https://www.xilinx.com/products/design-tools/vivado.html
+	arch = x86_64
+	license = custom
+	depends = ncurses5-compat-libs
+	depends = libpng12
+	depends = lib32-libpng12
+	depends = gtk2
+	depends = fxload
+	depends = digilent.adept.runtime
+	depends = digilent.adept.utilities
+	depends = xterm
+	provides = vivado
+	provides = xilinx-vivado
+
+pkgname = xilinx-vivado-dummy
+
