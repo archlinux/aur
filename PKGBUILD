@@ -19,9 +19,9 @@ replaces=('python-xray')
 #source=(https://pypi.python.org/packages/source/x/xarray/xarray-"$pkgver".tar.gz)
 # I'm using the Github source instead of the PyPI source since the Github source includes the data files used for testing
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pydata/xarray/archive/v$pkgver.tar.gz")
-md5sums=('ef65b6140d42a7d83debb310713869df')
-sha1sums=('eec9a96b6482151c1123b728a656462ab1361d4f')
-sha256sums=('f171df10e818ce0c7b73fda0e1739176a5c85a4a54a9e39d74e060f3b1593643')
+md5sums=('1b7b72632520e334b4bb3684c1b6f7b3')
+sha1sums=('bed354712d7bf0fc1af68583e6854523bfa28413')
+sha256sums=('12659ca2f70c91dc16c5f0cb1b5333a4d749ab869933a0a9a3cf69edffd3d985')
 
 build() {
   cd "$srcdir/xarray-$pkgver"
