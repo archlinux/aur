@@ -7,7 +7,8 @@ arch=('x86_64' 'i686')
 url="https://github.com/starcraftman/zsh-git-prompt.git"
 license=('MIT')
 depends=('python>=2.7.1')
-instdir=/etc/${pkgname%-git}
+conflicts=("zsh-git-prompt")
+instdir=/usr/lib/${pkgname%-git}
 
 [[ $CARCH == 'x86_64' ]] && _arch='x64' || _arch='ia32'
 

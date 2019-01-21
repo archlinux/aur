@@ -7,6 +7,7 @@ pkgbase = zsh-git-prompt-git
 	arch = i686
 	license = MIT
 	depends = python>=2.7.1
+	conflicts = zsh-git-prompt
 	source = zsh-git-prompt::git+https://github.com/starcraftman/zsh-git-prompt.git#branch=master
 	sha256sums = SKIP
 
