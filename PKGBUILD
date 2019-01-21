@@ -2,7 +2,7 @@
 
 pkgname=mom
 pkgver=0.5.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Memory Overcommitment Manager, for virtual machines"
 arch=('x86_64')
 url="https://gerrit.ovirt.org/#/admin/projects/mom"
@@ -15,6 +15,7 @@ source=("git+https://gerrit.ovirt.org/mom#tag=v${pkgver}"
 md5sums=('SKIP'
          'c2b7bf62ee32aee64e127f4384767235'
          'cf66caf6eec15c39381abf28235aa0ed')
+backup=('/etc/mom')
 
 prepare() {
     cd mom
