@@ -18,7 +18,8 @@ set -u
 #_ubver='18.4'; _libgee='libgee>=0.18.0'
 #_ubver='18.6.1'; _libgee='libgee>=0.18.0'
 #_ubver='18.8'; _libgee='libgee>=0.18.0'
-_ubver='18.9.1'; _libgee='libgee>=0.18.0'
+#_ubver='18.9.1'; _libgee='libgee>=0.18.0'
+_ubver='19.01'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver}"
 pkgrel='1'
@@ -45,7 +46,7 @@ _github='teejee2008'
 _verwatch=("https://github.com/${_github}/${pkgname}/releases.atom" '\s\+<title>Timeshift v\([0-9\.]\+\)</title>.*' 'f')
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}_v${pkgver}.tgz::https://github.com/${_github}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('18b10e10938cadf34df14b7aa2b81bd9382daed50b830613a58b6802de595b37')
+sha256sums=('557223cf0b9ab0c4848455e1cc4d9068c607b9f5492a2de4935a2f40393e3c5f')
 #sha256sums[0]='SKIP'
 
 build() {
