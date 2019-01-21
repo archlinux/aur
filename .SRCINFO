@@ -1,6 +1,6 @@
 pkgbase = raja
 	pkgdesc = A collection of C++ software abstractions that enable architecture portability for HPC applications
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = http://raja.readthedocs.io/en/master/
 	arch = i686
