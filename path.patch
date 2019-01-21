@@ -1,0 +1,29 @@
+diff -ura electron-ssr-0.2.5/src/main/bootstrap.js electron-ssr-0.2.5-new/src/main/bootstrap.js
+--- electron-ssr-0.2.5/src/main/bootstrap.js	2018-12-26 18:29:32.000000000 +0800
++++ electron-ssr-0.2.5-new/src/main/bootstrap.js	2019-01-21 22:10:10.157584848 +0800
+@@ -36,6 +36,7 @@
+   logger.error(`Unhandled Rejection at: Promise ${p}, reason: ${reason}`)
+ })
+ 
++app.setPath('userData', path.join(app.getPath('appData'), 'electron-ssr'))
+ // 应用配置存储目录
+ export const appConfigDir = app.getPath('userData')
+ // 应用配置存储路径
+
+diff -ura electron-ssr-0.2.5/src/main/logger.js electron-ssr-0.2.5-new/src/main/logger.js
+--- electron-ssr-0.2.5/src/main/logger.js   2018-12-26 18:29:32.000000000 +0800
++++ electron-ssr-0.2.5-new/src/main/logger.js 2019-01-21 22:29:14.657347146 +0800
+@@ -3,11 +3,13 @@
+ import { join } from 'path'
+ import { ensureDirSync } from 'fs-extra'
+ import * as Sentry from '@sentry/electron'
++import path from 'path'
+ 
+ if (process.env.NODE_ENV === 'production') {
+   Sentry.init({ dsn: 'https://39bffe7372d14000bd5d30e50a27c388@sentry.io/1359858' })
+ }
+ 
++app.setPath('userData', path.join(app.getPath('appData'), 'electron-ssr'))
+ const userPath = app.getPath('userData')
+ const logFolder = join(userPath, 'logs')
+ ensureDirSync(logFolder)
