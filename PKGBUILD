@@ -2,7 +2,7 @@
 
 pkgname=kubernetes-helm-bin
 pkgver=2.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Kubernetes Package Manager"
 url="https://github.com/kubernetes/helm"
 license=('Apache')
@@ -20,5 +20,5 @@ package() {
   install -d 755 "$pkgdir/usr/share/bash-completion/completions"
   install -d 755 "$pkgdir/usr/share/zsh/site-functions"
   "$pkgdir/usr/bin/helm" completion bash > "$pkgdir/usr/share/bash-completion/completions/helm"
-  "$pkgdir/usr/bin/helm" completion zsh >  "$pkgdir/usr/share/zsh/site-functions/_helm"
+  "$pkgdir/usr/bin/helm" completion zsh | sed -e 's/aliashash\["\(\w\+\)"\]/aliashash[\1]/g' > "$pkgdir/usr/share/zsh/site-functions/_helm"
 }
