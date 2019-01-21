@@ -9,7 +9,7 @@
 
 pkgname=lastpass-pocket
 pkgver=4.1.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup and offline access for LastPass"
 arch=('x86_64')
 url="https://lastpass.com"
