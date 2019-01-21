@@ -4,7 +4,7 @@
 _branch=master
 
 pkgname=fisher-git
-pkgver=3.2.1.r4.g2c7197b
+pkgver=3.2.5.r0.g6401d18
 pkgrel=1
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=("any")
@@ -32,7 +32,6 @@ package() {
     # install Fisherman into the global fish directory
     cd "fisher"
     install -Dm 644 fisher.fish "${fishpath}/vendor_functions.d/fisher.fish"
-    # README and LICENSE
-    install -Dm 644 LICENSE.md "${sharepath}/licenses/${pkgname}/LICENSE.md"
+    # README 
     install -Dm 644 README.md "${sharepath}/doc/${pkgname}/README"
 }
