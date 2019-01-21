@@ -23,7 +23,7 @@ source=(
 	'fix-utf8.patch'
 )
 sha256sums=('51a2424c8ed80e60bdb9a896806e7adaf24a58253b326fbad10f80a6d06f2214'
-            '541bade4ce71fc139594a7e025923916ec37a7fdbf5e4aec4b86abedf439395c'
+            '4970774d5c0b43c48634b01c1eabf7604dc3c98177fb5fed5585dc5be71183b4'
             '8095c3ed80658019f8976ff7e298ac80939b3c2814dfdd372d63c04a285d419e')
 
 prepare() {
