@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thecalculator
-pkgver=2.0
+pkgver=2.1
 pkgrel=0
 pkgdesc="Calculator"
 arch=("x86_64")

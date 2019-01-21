@@ -1,6 +1,6 @@
 pkgbase = thecalculator
 	pkgdesc = Calculator
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 0
 	url = https://github.com/vicr123/thecalculator
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = thecalculator
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = the-libs
-	source = thecalculator-2.0::git+https://github.com/vicr123/thecalculator#branch=master
+	source = thecalculator-2.1::git+https://github.com/vicr123/thecalculator#branch=master
 	md5sums = SKIP
 
 pkgname = thecalculator
