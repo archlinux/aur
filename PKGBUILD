@@ -14,7 +14,7 @@ arch=('x86_64')
 url="http://jackaudio.org/"
 license=('GPL')
 groups=('pro-audio')
-makedepends=('python2' 'celt' 'opus' 'libsamplerate' 'git' 'libffado')
+makedepends=('python' 'celt' 'opus' 'libsamplerate' 'git' 'libffado')
 optdepends=('a2jmidid: Expose legacy ALSA sequencer applications in JACK MIDI'
             'realtime-privileges: Acquire realtime privileges')
 source=("${pkgname}::git+https://github.com/jackaudio/jack2")
@@ -33,7 +33,7 @@ pkgver() {
 build() {
   cd ${pkgname[0]}
   # configure jack2
-  python2 waf configure --prefix=/usr \
+  python waf configure --prefix=/usr \
                         --htmldir="/usr/share/doc/${pkgbase}/" \
                         --freebob=no \
                         --classic \
@@ -41,17 +41,17 @@ build() {
 
   # configure jack2-dbus
   cd "${srcdir}/${pkgname[1]}"
-  python2 waf configure --prefix=/usr \
+  python waf configure --prefix=/usr \
                         --htmldir="/usr/share/doc/${pkgbase}/" \
                         --freebob=no \
                         --dbus
 
   # build jack2
   cd "${srcdir}/${pkgname[0]}"
-  python2 waf build
+  python waf build
   # build jack2-dbus
   cd "${srcdir}/${pkgname[1]}"
-  python2 waf build
+  python waf build
 }
 
 package_jack2-git() {
@@ -61,7 +61,7 @@ package_jack2-git() {
   provides=('jack')
 
   cd ${pkgname}
-  python2 waf install --destdir="$pkgdir"
+  python waf install --destdir="$pkgdir"
 }
 
 package_jack2-dbus-git() {
@@ -71,7 +71,7 @@ package_jack2-dbus-git() {
   provides=('jack' 'jack2')
 
   cd ${pkgname}
-  python2 waf install --destdir="$pkgdir"
+  python waf install --destdir="$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
