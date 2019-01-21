@@ -1,23 +1,42 @@
 # Maintainer: dreieck
 # Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 
-_pkgname=minizip2
+_pkgorigname=minizip
+_pkgname="${_pkgorigname}2"
 pkgname="${_pkgname}-git"
-pkgdesc="Mini zip and unzip based on bzip2, libbsd and zlib. Version 2.x."
+pkgdesc="Mini zip and unzip based on bzip2, libbsd and zlib. Newest version (currently 2.x)."
 pkgver=2.8.2+r1449.20190108.2ca7f39
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
-url="https://github.com/nmoinvaz/minizip"
-depends=('bzip2' 'glibc' 'libbsd' 'zlib')
-makedepends=('git' 'cmake')
-provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}::git+git://github.com/nmoinvaz/minizip.git")
-sha256sums=('SKIP')
+url="http://github.com/nmoinvaz/minizip"
+depends=(
+  'bzip2'
+  'glibc'
+  'libbsd'
+  'zlib'
+)
+makedepends=(
+  'cmake'
+  'git'
+)
+provides=(
+  "${_pkgname}=${pkgver}"
+  "lib${_pkgname}=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
+  "lib${_pkgname}"
+)
+source=(
+  "${_pkgorigname}::git+git://github.com/nmoinvaz/${_pkgorigname}.git"
+)
+sha256sums=(
+  'SKIP'
+)
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgorigname}"
 
   _ver="$(git describe --tags)"
   _rev="$(git rev-list --count HEAD)"
@@ -30,7 +49,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgorigname}"
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib/minizip2 \
@@ -49,7 +68,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgorigname}"
 
   make DESTDIR="${pkgdir}" install
 
