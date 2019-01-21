@@ -1,0 +1,17 @@
+pkgbase = libobjwriter-git
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+	depends = git
+	depends = clang
+	depends = llvm
+	depends = cmake
+	depends = python3
+	provides = libobjwriter
+	source = git+https://github.com/llvm-mirror/llvm.git#branch=release_50
+	source = git+https://github.com/dotnet/corert
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libobjwriter-git
+
