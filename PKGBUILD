@@ -35,7 +35,7 @@ options=('!strip')
 _gcc_more_v='20180509'
 _srcname=bcachefs
 source=(
-  "$_srcname::git+https://evilpiepirate.org/git/bcachefs.git#commit=303e27810eaf58a0f52518681c90422e50113d63"
+  "$_srcname::git+https://evilpiepirate.org/git/bcachefs.git"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
