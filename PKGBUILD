@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('perl')
 changelog=
 install="${pkgname}.install"
-source=("http://userpages.uni-koblenz.de/~krienke/ftp/noarch/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://userpages.uni-koblenz.de/~krienke/ftp/noarch/geteltorito/${pkgname}-${pkgver}.tar.gz")
 noextract=(${pkgname}.pl)
 sha256sums=('bb4fab8d4bedee1250762940b9f5d20fc7ac29fb2b5e9767c6af0a0955aa6bbe')
 

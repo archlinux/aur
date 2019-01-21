@@ -8,7 +8,7 @@ pkgbase = geteltorito
 	license = GPL2
 	depends = perl
 	noextract = geteltorito.pl
-	source = http://userpages.uni-koblenz.de/~krienke/ftp/noarch/geteltorito/geteltorito-0.6.tar.gz
+	source = https://userpages.uni-koblenz.de/~krienke/ftp/noarch/geteltorito/geteltorito-0.6.tar.gz
 	sha256sums = bb4fab8d4bedee1250762940b9f5d20fc7ac29fb2b5e9767c6af0a0955aa6bbe
 
 pkgname = geteltorito
