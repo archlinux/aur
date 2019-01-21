@@ -18,5 +18,5 @@ depends=('ncurses5-compat-libs'
 provides=('vivado'
 	        'xilinx-vivado')
 package() {
-	mkdir -p "$pkgdir"/opt/Xilinx
+	echo
 }
