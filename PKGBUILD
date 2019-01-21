@@ -5,7 +5,7 @@ _reldate=20190113
 _b11ver=B11.25.1
 _b11reldate=20190114
 _b11povertyver=B11.25.1.2
-pkgrel=7
+pkgrel=8
 pkgdesc="A 2ch/5ch and Twitter browser"
 arch=("any")
 url="http://v2c.s50.xrea.com/"
@@ -27,7 +27,7 @@ md5sums=("7e8915c4052eae46ffbee572b641deac"
 prepare() {
 	cd "${srcdir}/v2c/launcher"
 	cp -f "${srcdir}/V2CMOD-Z_${pkgver}(R${_reldate})/V2C_R20131210.jar" "./"
-	cp -f "${srcdir}/v2c_api_patch_${_b11ver}_${_b11reldate}/launcher/{ReplaceStr_B11.txt,{bcprov-jdk15on,js-engine,rhino}.jar,cacerts,readcgi{,_aux}.js}" "./"
+	cp -f "${srcdir}/v2c_api_patch_${_b11ver}_${_b11reldate}/launcher/"{ReplaceStr_B11.txt,{bcprov-jdk15on,js-engine,rhino}.jar,cacerts,readcgi{,_aux}.js} "./"
 	cp -f "${srcdir}/v2c_api_patch_${_b11povertyver}_poverty_Patch/v2c_api_patch_B11.jar" "./"
 	sed -ie "s/V2C_R20131210.jar/v2c_api_patch_B11.jar/" "v2cjar.txt"
 }
