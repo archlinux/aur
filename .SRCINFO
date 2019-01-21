@@ -1,0 +1,13 @@
+pkgbase = tuxedo-plymouth-one
+	pkgdesc = TUXEDO style plymouth theme
+	pkgver = 1.0.1.4
+	pkgrel = 0
+	url = https://github.com/tuxedocomputers/tuxedo-plymouth-one
+	arch = any
+	license = GPLv2
+	depends = plymouth
+	source = git+https://github.com/tuxedocomputers/tuxedo-plymouth-one
+	md5sums = SKIP
+
+pkgname = tuxedo-plymouth-one
+
