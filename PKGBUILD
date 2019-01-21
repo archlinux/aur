@@ -20,10 +20,13 @@ provides=(android-tools)
 _boringssl_commit=41c10e2b5f37edce8b9f292f7f3bacb7e30e25c4
 source=(git+https://android.googlesource.com/platform/system/core
         git+https://android.googlesource.com/platform/system/extras
+        git+https://android.googlesource.com/platform/frameworks/base
+        git+https://android.googlesource.com/platform/frameworks/native
         git+https://android.googlesource.com/platform/external/selinux
         git+https://android.googlesource.com/platform/external/f2fs-tools
         git+https://android.googlesource.com/platform/external/e2fsprogs
         git+https://android.googlesource.com/platform/external/avb
+        git+https://android.googlesource.com/platform/external/mdnsresponder
         git+https://boringssl.googlesource.com/boringssl#commit=$_boringssl_commit
         generate_build.rb
         fix_build_core.patch
@@ -38,7 +41,10 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          '69e1b3adb6386016620a71c9c2d0dfd95ed261e0'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          '277650afb54a713494a7416931b68e1e5cab99bc'
           'abfe045280ec6342e2d3f9d9030138d0c53e4d26'
           'ec473160d7445f97bccabd1c32ac0ae2f77900c1'
           '41608052bff69632d1cc5a6e2efb92cf4ad857e6'
@@ -67,8 +73,7 @@ prepare() {
 }
 
 build() {
-  env
-  PKGVER=$pkgver CXXFLAGS="$CXXFLAGS -stdlib=libc++" ./generate_build.rb > build.ninja
+  PKGVER=$pkgver CFLAGS="$CFLAGS -flto" CXXFLAGS="$CXXFLAGS -stdlib=libc++ -flto" LDFLAGS="$LDFLAGS -stdlib=libc++ -flto" ./generate_build.rb > build.ninja
 
   # TODO: make BoringSSL build a subninja of the main build file
   cd $srcdir/boringssl/build && cmake -GNinja ..; ninja
@@ -78,6 +83,7 @@ build() {
 
 package(){
   install -m755 -d "$pkgdir"/usr/bin
-  install -m755 -t "$pkgdir"/usr/bin fastboot adb mke2fs.android e2fsdroid ext2simg core/mkbootimg/mkbootimg avb/avbtool
-  install -Dm 644 bash_completion.fastboot "$pkgdir"/usr/share/bash-completion/completions/fastboot
+  install -m755 -t "$pkgdir"/usr/bin fastboot adb mke2fs.android e2fsdroid ext2simg avb/avbtool
+  install -m755 core/mkbootimg/mkbootimg.py "$pkgdir"/usr/bin/mkbootimg 
+  install -Dm644 bash_completion.fastboot "$pkgdir"/usr/share/bash-completion/completions/fastboot
 }
