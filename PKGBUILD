@@ -1,12 +1,12 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=caire
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Content aware image resize library based on Seam Carving"
 arch=('x86_64' 'i686')
 url="https://github.com/esimov/caire"
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/esimov/$pkgname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/esimov/$pkgname/archive/v$pkgver.tar.gz")
 makedepends=('go')
 
 build() {
@@ -21,4 +21,4 @@ package() {
   install -m755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
-sha256sums=('cfb409c7e8cd4807b6a8861daa05b06be2ae21df58bf46220b6ba63e1e1f9181')
+sha256sums=('3557c3511cb776ddda9b5285a8a72a9d40f6db94629f60e210e71e055f80593f')
