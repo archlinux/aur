@@ -1,4 +1,5 @@
-# Maintainer: ahrs <Forward dot to at hotmail dot co dot uk>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+#Contributor: ahrs <Forward dot to at hotmail dot co dot uk>
 
 # Special thanks to the following people that provided the
 # original PKGBUILD from hyper (https://aur.archlinux.org/packages/hyper/)
@@ -7,26 +8,17 @@
 # Contributer: auk
 
 pkgname=hyper-git
-pkgver=r958.3015855
+pkgver=3.0.0.canary.5.r0.g28282734
 pkgrel=1
-epoch=
 pkgdesc="A terminal built on web technologies"
 arch=('any')
 url="https://hyper.is/"
 license=('MIT')
-groups=()
 depends=('nodejs' 'electron' 'gconf')
 makedepends=('git' 'npm' 'yarn' 'python2')
-checkdepends=()
-optdepends=()
-provides=()
-
 conflicts=('hyperterm')
 replaces=('hyperterm')
 backup=()
-options=()
-install=
-changelog=
 
 # You can set HYPER_BRANCH to master (or another branch) e.g
 # export HYPER_BRANCH=master
@@ -44,11 +36,10 @@ noextract=()
 md5sums=('SKIP'
          'f3481e14cba331160339b3b5ab78872b'
          '74cb7ba38e37332aa8300e4b6ba9c61c')
-validpgpkeys=()
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
