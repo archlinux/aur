@@ -4,7 +4,7 @@
 
 _target="sh4eb-nofpu-elf"
 pkgname=${_target}-gcc
-pkgver=8.1.0
+pkgver=8.2.1+20181127
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
@@ -12,18 +12,18 @@ license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
 depends=("${_target}-binutils" 'libmpc' 'elfutils')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
-sha256sums=('1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153')
+source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz)
+sha256sums=('6f64ffda2839e96a8551b767bf4f92be4e7a09377ea40058355b4eeb13bc3800')
 
 prepare() {
-  cd "${srcdir}/gcc-${pkgver}"
+  cd "${srcdir}/gcc-${pkgver/+/-}"
 
   [[ -d gcc-build ]] && rm -rf gcc-build
   mkdir gcc-build
 }
 
 build() {
-  cd "${srcdir}/gcc-${pkgver}"
+  cd "${srcdir}/gcc-${pkgver/+/-}"
 
   export CFLAGS="-O2 -pipe -s -fomit-frame-pointer -ffunction-sections -fdata-sections"
   export CXXFLAGS=$CFLAGS
@@ -63,7 +63,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/gcc-${pkgver}/gcc-build"
+  cd "${srcdir}/gcc-${pkgver/+/-}/gcc-build"
 
   make DESTDIR="${pkgdir}" install-gcc install-target-libgcc
 
