@@ -1,13 +1,13 @@
 pkgbase = devd
 	pkgdesc = devd: a web daemon for developers
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/cortesi/devd
 	arch = x86_64
 	license = MIT
 	provides = devd
-	source = https://github.com/cortesi/devd/releases/download/v0.8/devd-0.8-linux64.tgz
-	md5sums = 639f5bf28055c9970346dee36b90f768
+	source = https://github.com/cortesi/devd/releases/download/v0.9/devd-0.9-linux64.tgz
+	sha256sums = a8f47477ae479717c6f5ebe80674e6daa4b9f98ef0220cbe28f072130b8f20ad
 
 pkgname = devd
 
