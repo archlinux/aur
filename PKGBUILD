@@ -18,9 +18,9 @@ conflicts=(
   'vivaldi-ffmpeg-codecs'
 )
 source=(http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-${pkgrel}ubuntu${ubuntuver}_arm64.deb
-		vivaldi-codecs-ffmpeg-extra-bin.install)
+        vivaldi-codecs-ffmpeg-extra-bin.install)
 sha256sums=('0f4852a861de67a14c5b06357207c555cc42c8b28f597c2b20d3c51a3a66ce89'
-			'c48d913c6080dbc6477d1d0a099c8ef5eda3959ed4abd6311dc93a338ce0a012'
+            'c48d913c6080dbc6477d1d0a099c8ef5eda3959ed4abd6311dc93a338ce0a012'
 )
 install=vivaldi-codecs-ffmpeg-extra-bin.install
 
