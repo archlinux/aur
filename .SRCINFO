@@ -1,7 +1,7 @@
 pkgbase = seafile-server
 	pkgdesc = Seafile server core
 	pkgver = 6.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seafile-server
 	changelog = ChangeLog
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = seafile-server
 	depends = libevhtp-seafile
 	depends = libarchive
 	conflicts = seafile
-	source = https://github.com/haiwen/seafile-server/archive/v6.3.4-server.tar.gz
+	source = seafile-server-6.3.4.tar.gz::https://github.com/haiwen/seafile-server/archive/v6.3.4-server.tar.gz
 	source = fix_pids-folder-out-of-seafile-data.diff
 	source = fix_seafile-admin.diff
 	source = fix_mysql_support.diff
