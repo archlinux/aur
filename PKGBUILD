@@ -1,6 +1,6 @@
 # Maintainer: Bryce <onyxdelta@hotmail.com>
 pkgname="trilium-bin"
-pkgver=0.28.2
+pkgver=0.28.3
 pkgrel=1
 pkgdesc="A hierarchical note taking application built on modern technologies."
 depends=('python' 'make' 'gconf' 'libxss' 'nss' 'lib32-gcc-libs' 'gtk3')
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/zadam/trilium"
 license=('AGPL')
 source=("https://github.com/zadam/trilium/releases/download/v$pkgver/trilium-linux-x64-$pkgver.tar.xz")
-sha512sums=('1bca6d87fd62f95f9bce1204c310c885e800486d972819aa1f5b66ba65d4c255cfbbf9a21582c66771163c588950f55137a395659ec3372cf4567b65d8a9d30a')
+sha512sums=('5f78bc6d123c7f99a1561717a9a0f8d52b40f92c30ac1f557401796c3eb497f5544f50607b0544d102b6716f346fc91e7963878cc4474ee407d8eddc22a5c3ed')
 
 package()
 {
@@ -30,7 +30,7 @@ Name=Trilium
 GenericName=Note Taking Application
 Comment=A hierarchical note taking application built on modern technologies.
 Exec=trilium %f
-Icon=/opt/trilium/resources/app/src/public/images/app-icons/win/icon.ico
+Icon=/opt/trilium/icon.png
 Terminal=false
 Type=Application
 Categories=Office
