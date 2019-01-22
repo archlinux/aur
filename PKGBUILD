@@ -2,15 +2,15 @@
 
 _basename=libnice
 pkgname=lib32-libnice
-pkgver=0.1.14+70+gfb2f1f7
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="An implementation of the IETF's draft ICE (for p2p UDP data streams) (32-bit)"
 url="https://nice.freedesktop.org"
 arch=(x86_64)
 license=(LGPL)
-depends=(lib32-gnutls lib32-gstreamer libnice)
-makedepends=(git gtk-doc lib32-gstreamer)
-_commit=fb2f1f77a31baa91968fc81c205f980b6913f403  # master
+depends=(lib32-gstreamer lib32-gupnp-igd libnice)
+makedepends=(git gobject-introspection meson)
+_commit=e25c3e5113c7b7002a78bcca2ecf058bbf7de6d4  # tags/0.1.15^0
 source=("git+https://anongit.freedesktop.org/git/libnice/libnice#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -20,39 +20,21 @@ pkgver() {
     git describe --tags | sed 's/-/+/g'
 }
 
-prepare() {
-    cd $_basename
-
-    NOCONFIGURE=1 ./autogen.sh
-}
-
 build() {
-    cd $_basename
-
     export CC='gcc -m32'
     export CXX='g++ -m32'
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-    ./configure \
-        --build=i686-pc-linux-gnu \
-        --prefix=/usr \
-        --libdir=/usr/lib32 \
-        --with-gstreamer-0.10=no \
-        --disable-gtk-doc-html \
-        --disable-static \
-        --enable-compile-warnings=maximum
+    arch-meson libnice build \
+        --libdir='/usr/lib32' \
+        -Dtests=disabled \
+        -Dgtk_doc=disabled
 
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-    make
+    ninja -C build
 }
 
 package() {
-    cd $_basename
+    DESTDIR="${pkgdir}" ninja -C build install
 
-    make DESTDIR="$pkgdir" install
-
-    cd "$pkgdir"/usr
-
-    rm -r bin include
+    rm -rf "${pkgdir}"/usr/{bin,include,share}
 }

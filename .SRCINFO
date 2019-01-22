@@ -1,17 +1,17 @@
 pkgbase = lib32-libnice
 	pkgdesc = An implementation of the IETF's draft ICE (for p2p UDP data streams) (32-bit)
-	pkgver = 0.1.14+70+gfb2f1f7
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://nice.freedesktop.org
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	makedepends = gtk-doc
-	makedepends = lib32-gstreamer
-	depends = lib32-gnutls
+	makedepends = gobject-introspection
+	makedepends = meson
 	depends = lib32-gstreamer
+	depends = lib32-gupnp-igd
 	depends = libnice
-	source = git+https://anongit.freedesktop.org/git/libnice/libnice#commit=fb2f1f77a31baa91968fc81c205f980b6913f403
+	source = git+https://anongit.freedesktop.org/git/libnice/libnice#commit=e25c3e5113c7b7002a78bcca2ecf058bbf7de6d4
 	sha256sums = SKIP
 
 pkgname = lib32-libnice
