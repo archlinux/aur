@@ -5,12 +5,12 @@
 _gemname=method_source
 pkgname=ruby-$_gemname
 pkgver=0.9.2
-pkgrel=1
+pkgrel=4
 pkgdesc='retrieve the sourcecode for a method'
-arch=(any)
-url='http://banisterfiend.wordpress.com'
-license=()
-depends=(ruby)
+arch=('any')
+url='https://github.com/banister/method_source'
+license=('MIT')
+depends=('ruby')
 makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
