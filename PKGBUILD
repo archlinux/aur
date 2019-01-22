@@ -2,7 +2,7 @@
 # Contributor: James Duley <jagduley gmail>
 
 
-pkgname=librepilot
+pkgname=librepilot-rpm
 pkgver=16.09
 pkgrel=1
 pkgdesc="A ground control station and firmware for UAV flight controllers"
