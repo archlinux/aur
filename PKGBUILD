@@ -1,8 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=terminus-terminal
 _pkgname=terminus
-_pkgver=1.0.1
-pkgver=1.0.1
+pkgver=1.0.69
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -10,7 +9,7 @@ url="https://eugeny.github.io/terminus/"
 license=('MIT')
 depends=('nodejs' 'fontconfig')
 makedepends=('git' 'npm' 'yarn' 'python2')
-source=("git+https://github.com/Eugeny/terminus.git#tag=v${_pkgver}")
+source=("git+https://github.com/Eugeny/terminus.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build(){
