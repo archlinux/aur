@@ -1,7 +1,7 @@
 # Maintainer: Simon Brulhart <simon@brulhart.me>
 
 pkgname='python-taxi-zebra'
-pkgver=1.4.1
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Zebra backend for Taxi"
 arch=('any')
@@ -13,7 +13,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/sephii/taxi-zebra/archive/$pkgver.tar.gz"
   "https://raw.githubusercontent.com/sephii/taxi/master/LICENSE"
 )
-sha512sums=('ad8d747be2d894741b049311c5a11036748c03104db6ea10e68000649ad229aafe2f7ae1bed55438af40912fbb41a1ab671faa68a17240243b21e3521a96562b'
+sha512sums=('47c22c7d220b0f80e6b1abbcc23e60551306a9d45838cf0f28514abbcd83bc33bda1c8a0667fe87a9c6d4f7ef6ec7c2533c34d6f22e6c9e8f4fadfd2d423e405'
             '87e4e0e9f65b92db1a3f84823427b0870ae01675fa6e631a8c2e2d89eb12ee19d6011b4f4e74f6d4ca30868010206ef0ddd0b24a814c24b84bc41a5e68864dd4')
 
 build() {
