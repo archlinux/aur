@@ -7,7 +7,7 @@ pkgdesc="A C++ toolkit for superposition of macromolecules"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ssm"
 license=('LGPL')
-depends=('mmdb2>=2.0.19' 'libccp4')
+depends=('mmdb2>=2.0.19-1' 'libccp4>=6.5.1-6')
 replaces=('ssmlib')
 source=(ftp://ftp.ccp4.ac.uk/opensource/$_pkgname-$pkgver.tar.gz
         ssm-configure.ac.patch
