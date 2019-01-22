@@ -2,7 +2,7 @@
 
 pkgname=referencer
 pkgver=1.2.2
-pkgrel=6
+pkgrel=7
 pkgdesc="a Gnome application to organise documents or references, and ultimately generate a BibTeX bibliography file"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/referencer/"
