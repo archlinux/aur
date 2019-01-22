@@ -1,7 +1,8 @@
-# Maintainer: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+#Contributor: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 
 pkgname=opkg-git
-pkgver=v0.3.1
+pkgver=v0.4.0
 pkgrel=1
 pkgdesc="Opkg is a lightweight package management system based upon ipkg"
 arch=(x86_64)
@@ -9,7 +10,7 @@ url="https://git.yoctoproject.org/cgit/cgit.cgi/opkg"
 license=('GPL')
 depends=('curl' 'libarchive' 'gpgme')
 source=("${url}/snapshot/${pkgname%-git}-${pkgver}.tar.gz")
-sha256sums=('994182896ce8fdaa60f8af07a0c7e29ef770f20a69742fb606cb3b450e02aeaf')
+sha256sums=('2582aff962d4b65db750b8acdacd99127ed22112f38b65f38fde2cef1039c776')
 
 prepare() {
 	cd ${pkgname%-git}-${pkgver}
