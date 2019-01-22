@@ -1,5 +1,5 @@
---- src/jackal-0.4.7/example.jackal.yml	2019-01-22 14:05:33.000000000 -0600
-+++ example.jackal.yml	2019-01-22 14:58:11.695532598 -0600
+--- a/example.jackal.yml
++++ b/example.jackal.yml
 @@ -1,18 +1,18 @@
  # jackal default configuration file
  
