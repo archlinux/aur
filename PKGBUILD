@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-cudnn-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Caffe 1.0 with triNNity extensions (CUDNN backend)"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -21,18 +21,13 @@ optdepends=('openblas: OpenBLAS for backend linear algebra ops',
 makedepends=('cmake')
 provides=('caffe')
 conflicts=()
-source=("${_srcname}"::"git+https://bitbucket.org/STG-TCD/trinnity-caffe.git"
-        'dependencies.patch')
-sha256sums=('SKIP'
-            '7ddb59109d7df3889641eaa4769e6b9e82f96f623b200ecfd8ade7ecfe04f95f')
+source=("${_srcname}"::"git+https://bitbucket.org/STG-TCD/trinnity-caffe.git")
+sha256sums=('SKIP')
 
 prepare() {
     cd "${_srcname}"
     git checkout master
     cd -
-
-    # This patch makes cmake find libboost_python3 (it normally only looks for libboost_python_py3 etc.)
-    patch "${_srcname}"/cmake/Dependencies.cmake < dependencies.patch
 
     mkdir -p build
     cd build
