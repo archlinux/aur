@@ -1,8 +1,8 @@
 # Maintainer: Kujiu <kujiu+arch@kujiu.org>
 
 pkgname=bitlbee-mastodon-git
-pkgrel=1
-pkgver=r8.ff9e4fd
+pkgrel=2
+pkgver=r151.cf2c48a
 pkgdesc='Mastodon protocol plugin for BitlBee'
 arch=('i686' 'x86_64')
 url='https://github.com/kensanata/bitlbee-mastodon'
@@ -29,6 +29,8 @@ build() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   make DESTDIR="$pkgdir" install
+  mkdir -p "$pkgdir/usr/share/bitlbee"
+  cp "doc/mastodon-help.txt" "$pkgdir/usr/share/bitlbee"
 }
 
 # vim:set ts=2 sw=2 et:

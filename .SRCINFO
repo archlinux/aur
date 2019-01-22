@@ -1,7 +1,7 @@
 pkgbase = bitlbee-mastodon-git
 	pkgdesc = Mastodon protocol plugin for BitlBee
-	pkgver = r8.ff9e4fdr
-	pkgrel = 1
+	pkgrel = 2
+	pkgver = r151.cf2c48a
 	url = https://github.com/kensanata/bitlbee-mastodon
 	arch = i686
 	arch = x86_64
