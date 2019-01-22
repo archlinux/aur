@@ -1,6 +1,6 @@
 pkgbase = lutris-beta-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.0.beta2.r147.ge1490b5b
+	pkgver = 0.5.0beta3.r0.g9c0642ac
 	pkgrel = 1
 	url = https://lutris.net/
 	arch = any
@@ -24,6 +24,8 @@ pkgbase = lutris-beta-git
 	depends = curl
 	depends = xorg-xrandr
 	depends = gnome-desktop
+	depends = python-requests
+	depends = python-pillow
 	optdepends = wine: Run windows games
 	optdepends = wine-staging: Run windows games - Staging patches
 	optdepends = python-evdev: Detecting connected joypads.
