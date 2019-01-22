@@ -10,7 +10,7 @@ url="https://exodus.io/eden"
 license=('custom:"Copyright © 2018 Exodus"')
 depends=('gconf' 'gtk2' 'nss' 'libxss' 'glibc>=2.28-4')
 source=("https://exodusbin.azureedge.net/releases/eden/exodus-eden-linux-x64-${pkgver//_/-}.zip"
-	"http://marceloneil.com/exodus-icons/eden-icons.zip"
+	"https://marceloneil.com/exodus-icons/eden-icons.zip"
 	"${pkgname}.desktop")
 sha256sums=('a96980c80bf05ce019d1fed59970a8f66b97cd3b82c42dd2fee4525f2cacc286'
             '531447b0b49a27a4169fcd2639fa793135acf2776b05f52f36557b384bace7cb'
