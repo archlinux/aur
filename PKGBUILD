@@ -13,7 +13,7 @@ source=("vkdumper-bin"
         "https://github.com/AbsurdlySuspicious/vk-dumper/releases/download/$pkgver/vkdumper-$pkgver.jar")
 
 sha256sums=('2f0e179c9368f92da7b182b122e83564f11dc5e980843a65d6690f830267f081'
-            '116f42c03f3340c710b1378d200da47af70f3a3272f4bf102beb0d81bb93d542')
+            '5f2815216182287f807fd6b61b19bec01fef69a660d96d9f1b69a0f66370dc32')
 
 package() {
   install -Dm755 -T "$srcdir/vkdumper-bin" "$pkgdir/usr/bin/vkdumper"
