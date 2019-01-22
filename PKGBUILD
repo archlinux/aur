@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=samhain-server
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="file integrity / intrusion detection system"
 arch=(x86_64 armv7h)
