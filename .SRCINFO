@@ -1,7 +1,7 @@
 pkgbase = python-glue-core
 	pkgdesc = Linked Data Visualizations Across Multiple Files -- core library
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://glueviz.org/
 	arch = i386
 	arch = x86_64

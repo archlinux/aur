@@ -3,7 +3,7 @@
 pkgname=python-glue-core
 _pyname=glue-core
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Linked Data Visualizations Across Multiple Files -- core library"
 arch=('i386' 'x86_64')
 url="http://glueviz.org/"
@@ -18,5 +18,7 @@ package() {
   python setup.py install -O1 --root="${pkgdir}"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm 644 glue/icons/app_icon.png "${pkgdir}/usr/share/icons/glueviz.png"
+  desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "glueviz.desktop"
 }
 
