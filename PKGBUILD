@@ -6,7 +6,7 @@
 
 pkgname=wine-stable
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/4.0/wine-$pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
@@ -33,21 +33,22 @@ depends=(desktop-file-utils fontconfig freetype2 gettext glu lcms2
 makedepends=(alsa-lib fontforge giflib gnutls gst-plugins-base-libs
   libgl libldap libpng libpulse libxcomposite libxinerama libxmu
   libxslt libxxf86vm mesa mpg123 ncurses ocl-icd openal opencl-headers
-  samba v4l-utils vulkan-headers vulkan-icd-loader lib32-alsa-lib
-  lib32-giflib lib32-gnutls lib32-gst-plugins-base-libs lib32-libgl
-  lib32-libldap lib32-libpng lib32-libpulse lib32-libxcomposite
-  lib32-libxinerama lib32-libxmu lib32-libxslt lib32-libxxf86vm
-  lib32-mesa lib32-mpg123 lib32-ncurses lib32-ocl-icd lib32-openal
-  lib32-v4l-utils lib32-vulkan-icd-loader)
+  samba v4l-utils vkd3d vulkan-headers vulkan-icd-loader
+  lib32-alsa-lib lib32-giflib lib32-gnutls lib32-gst-plugins-base-libs
+  lib32-libgl lib32-libldap lib32-libpng lib32-libpulse
+  lib32-libxcomposite lib32-libxinerama lib32-libxmu lib32-libxslt
+  lib32-libxxf86vm lib32-mesa lib32-mpg123 lib32-ncurses lib32-ocl-icd
+  lib32-openal lib32-v4l-utils lib32-vkd3d lib32-vulkan-icd-loader)
 
 optdepends=(alsa-lib alsa-plugins cups dosbox giflib gnutls
   gst-plugins-base-libs libjpeg-turbo libldap libpng libpulse
   libxcomposite libxinerama libxslt mpg123 ncurses ocl-icd openal
-  samba v4l-utils lib32-alsa-lib lib32-alsa-plugins lib32-giflib
-  lib32-gnutls lib32-gst-plugins-base-libs lib32-libjpeg-turbo
-  lib32-libldap lib32-libpng lib32-libpulse lib32-libxcomposite
-  lib32-libxinerama lib32-libxslt lib32-mpg123 lib32-ncurses
-  lib32-ocl-icd lib32-openal lib32-v4l-utils)
+  samba v4l-utils vkd3d vulkan-icd-loader lib32-alsa-lib
+  lib32-alsa-plugins lib32-giflib lib32-gnutls
+  lib32-gst-plugins-base-libs lib32-libjpeg-turbo lib32-libldap
+  lib32-libpng lib32-libpulse lib32-libxcomposite lib32-libxinerama
+  lib32-libxslt lib32-mpg123 lib32-ncurses lib32-ocl-icd lib32-openal
+  lib32-v4l-utils lib32-vkd3d lib32-vulkan-icd-loader)
 
 provides=("wine=$pkgver")
 conflicts=("wine")
