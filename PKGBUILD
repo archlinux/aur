@@ -2,8 +2,8 @@
 # Contributor: Egor Kovetskiy <e.kovetskiy@office.ngs.ru>
 
 pkgname=go-tools-git
-pkgver=v0.0.0_20190110015856_aa033095749b
-pkgrel=1
+pkgver=v0.0.0_20190121143147_24cd39ecf745
+pkgrel=2
 pkgdesc='Developer tools for the Go programming language'
 arch=(x86_64)
 url='https://godoc.org/golang.org/x/tools/'
