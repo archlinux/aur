@@ -2,12 +2,12 @@
 # Contributor: Det <nimetonmaili g-mail>
 
 pkgname=jdk
-pkgver=11.0.1
-_build=13
-_hash=90cf5d8f270a4347a95050320eef3fb7
+pkgver=11.0.2
+_build=9
+_hash=f51449fcd52f4d52b93a989c5c56ed3c
 _majver="${pkgver%%.*}"
 _next="$((_majver + 1))"
-pkgrel=3
+pkgrel=1
 pkgdesc='Oracle Java Development Kit'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
@@ -21,7 +21,7 @@ source=("https://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_has
         'jshell.desktop'
         'java_16.png'
         'java_48.png')
-sha256sums=('e7fd856bacad04b6dbf3606094b6a81fa9930d6dbb044bbd787be7ea93abc885'
+sha256sums=('7b4fd8ffcf53e9ff699d964a80e4abf9706b5bdb5644a765c2b96f99e3a2cdc8'
             '1052634cdcbf50ca14b864b58f3afa53de1706bdc9c593667c29974146212c54'
             '9a84d1b4dd969e867b2dbb6df0d0c44814729e0f1d0c61ab6c54d676eae83b3b'
             '73d686fd6e478a887a51451d7ada7c045f31ce299f65f45e50a793820ee99d85'
