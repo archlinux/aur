@@ -6,7 +6,7 @@ index 5ee74ed..0c0d9d8 100644
  	scr_dump(filename);
  	//clear();
  	endwin();
--	system("man man");
+-	(void) system("man man");
 +int i=	system("man man");
  	reset_prog_mode();
  	scr_restore(filename);
