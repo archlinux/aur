@@ -1,4 +1,4 @@
-# Contributor: Sam Whited <sam@samwhited.com>
+# Maintainer: Sam Whited <sam@samwhited.com>
 # Contributor: Brian Clemens <brian@tiuxo.com>
 # Contributor: Přemysl Janouch <p.janouch@gmail.com>
 
