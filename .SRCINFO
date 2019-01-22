@@ -1,6 +1,6 @@
 pkgbase = vlc-git
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)
-	pkgver = 4.0.0.r4647.gcbe42e44ee
+	pkgver = 4.0.0.r6195.gb3eaf5a239
 	pkgrel = 1
 	url = https://www.videolan.org/vlc/
 	arch = i686
@@ -64,6 +64,9 @@ pkgbase = vlc-git
 	makedepends = chromaprint
 	makedepends = git
 	makedepends = aribb24
+	makedepends = aom
+	makedepends = srt
+	makedepends = vulkan-headers
 	depends = a52dec
 	depends = libdvbpsi
 	depends = libxpm
@@ -94,6 +97,7 @@ pkgbase = vlc-git
 	depends = gnutls
 	depends = libplacebo
 	depends = wayland-protocols
+	depends = libidn
 	optdepends = avahi: service discovery using bonjour protocol
 	optdepends = gst-plugins-base-libs: for libgst plugins
 	optdepends = libdvdcss: decoding encrypted DVDs
@@ -155,7 +159,9 @@ pkgbase = vlc-git
 	optdepends = libnotify: notification plugin
 	optdepends = gtk3: notification plugin
 	optdepends = aribb24: ARIB Subtitles support
-	provides = vlc=4.0.0.r4647.gcbe42e44ee
+	optdepends = aom: AOM AV1 codec
+	optdepends = srt: SRT input/output plugin
+	provides = vlc=4.0.0.r6195.gb3eaf5a239
 	conflicts = vlc
 	conflicts = vlc-dev
 	conflicts = vlc-plugin
