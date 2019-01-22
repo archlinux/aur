@@ -1,5 +1,5 @@
 # Maintainer: goll <adrian.goll+aur[at]gmail>
-# Maintauber: Michael Lass <bevan@bi-co.net>
+# Maintainer: Michael Lass <bevan@bi-co.net>
 
 pkgname=sslyze
 pkgver=2.0.3
