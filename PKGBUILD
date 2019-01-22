@@ -5,18 +5,17 @@
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
 pkgname=wine-stable
-pkgver=3.0.4
+pkgver=4.0
 pkgrel=1
 
-source=(https://dl.winehq.org/wine/source/3.0/wine-$pkgver.tar.xz{,.sign}
+source=(https://dl.winehq.org/wine/source/4.0/wine-$pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
 	wine-binfmt.conf)
-sha512sums=('e1ce33bbc165a9c640a38965a229b757b67746f2150d545eb0e29ba6d21cdf150bd8eb9a450d8dd71733fbea3b2ac24839dd8e381b7da9cd15ddf98c59304198'
+sha512sums=('7607fa7a3d5f7bcd3d8c4c9e7bb6e1987466110bbfc672782ebe57c6d9da348c58e76abf40b0a70c725dfd703163db6e194ee0e3db11a47b6b60e225163308dd'
             'SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
-validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
-              DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
+validpgpkeys=(DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
 pkgdesc="A compatibility layer for running Windows programs"
 url="http://www.winehq.com"
@@ -34,11 +33,12 @@ depends=(desktop-file-utils fontconfig freetype2 gettext glu lcms2
 makedepends=(alsa-lib fontforge giflib gnutls gst-plugins-base-libs
   libgl libldap libpng libpulse libxcomposite libxinerama libxmu
   libxslt libxxf86vm mesa mpg123 ncurses ocl-icd openal opencl-headers
-  samba v4l-utils gcc lib32-alsa-lib lib32-giflib lib32-gnutls
-  lib32-gst-plugins-base-libs lib32-libgl lib32-libldap lib32-libpng
-  lib32-libpulse lib32-libxcomposite lib32-libxinerama lib32-libxmu
-  lib32-libxslt lib32-libxxf86vm lib32-mesa lib32-mpg123 lib32-ocl-icd
-  lib32-openal lib32-v4l-utils)
+  samba v4l-utils vulkan-headers vulkan-icd-loader lib32-alsa-lib
+  lib32-giflib lib32-gnutls lib32-gst-plugins-base-libs lib32-libgl
+  lib32-libldap lib32-libpng lib32-libpulse lib32-libxcomposite
+  lib32-libxinerama lib32-libxmu lib32-libxslt lib32-libxxf86vm
+  lib32-mesa lib32-mpg123 lib32-ncurses lib32-ocl-icd lib32-openal
+  lib32-v4l-utils lib32-vulkan-icd-loader)
 
 optdepends=(alsa-lib alsa-plugins cups dosbox giflib gnutls
   gst-plugins-base-libs libjpeg-turbo libldap libpng libpulse
@@ -63,6 +63,10 @@ prepare() {
       patch -d wine -p1 -i "../$patch"
     fi
   done
+
+  # https://bugs.winehq.org/show_bug.cgi?id=43530
+  export CFLAGS="${CFLAGS/-fno-plt/}"
+  export LDFLAGS="${LDFLAGS/,-z,now/}"
 
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i wine/configure*
 
