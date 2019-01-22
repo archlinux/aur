@@ -1,8 +1,8 @@
 post_install(){
 	groupadd -f visdom
 	chown -R :visdom /usr/lib/python2.7/site-packages/visdom
-    chmod -R g+w /usr/lib/python2.7/site-packages/visdom
-	echo "Add yourself into visdom group"
+        chmod -R g+w /usr/lib/python2.7/site-packages/visdom
+	echo -e "Add yourself into visdom group"
 }
 
 post_remove(){
