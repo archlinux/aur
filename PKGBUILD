@@ -1,7 +1,7 @@
-# Maintainer: Phil Schaf <flying-sheep@web.de>
+# Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=scanpy
-pkgver=1.3.3
+pkgver=1.3.7
 pkgrel=1
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
@@ -30,7 +30,7 @@ optdepends=(
 )
 _wheel="$pkgname-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('35db9437d042441f75252a8e8dfaca4e6577fb7d6ace264ab9c57ccb5ce3e3bc')
+sha256sums=('e9125f0c5758485a7e0cdd13a9b463bae939457f6aa5125d48ab4e3248bdd5b1')
 noextract=("$_wheel")
 
 package() {
