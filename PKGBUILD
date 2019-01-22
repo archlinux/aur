@@ -7,17 +7,17 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=3.0.3
-pkgrel=2
+pkgver=3.0.6
+pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua'
+depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua' 'libidn'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libarchive' 'freetype2' 'fribidi' 'harfbuzz' 'fontconfig' 'libxml2'
-         'gnutls' 'libplacebo')
+         'gnutls' 'libplacebo' 'aribb24')
 makedepends=('live-media' 'libbluray' 'flac' 'libdc1394' 'libavc1394' 'libcaca'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
              'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
@@ -26,8 +26,10 @@ makedepends=('live-media' 'libbluray' 'flac' 'libdc1394' 'libavc1394' 'libcaca'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
              'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
              'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
-             'lirc' 'libgoom2' 'projectm' 'chromaprint')
+             'lirc' 'libgoom2' 'projectm' 'chromaprint' 'aom' 'srt' 'dav1d')
 optdepends=('avahi: service discovery using bonjour protocol'
+            'aom: AOM AV1 codec'
+            'dav1d: dav1d AV1 decoder'
             'libdvdcss: decoding encrypted DVDs'
             'libavc1394: devices using the 1394ta AV/C'
             'libdc1394: IEEE 1394 access plugin'
@@ -71,6 +73,7 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libkate: Kate codec'
             'libtiger: Tiger rendering for Kate streams'
             'sdl_image: SDL image support'
+            'srt: SRT input/output plugin'
             'aalib: ASCII art video output'
             'libcaca: colored ASCII art video output'
             'libpulse: PulseAudio audio output'
@@ -89,18 +92,15 @@ replaces=('vlc' 'vlc-plugin' 'vlc-git')
 options=('!emptydirs')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         update-vlc-plugin-cache.hook
-        aom-remove-unsupported-pixel-formats.patch
         lua53_compat.patch)
-sha512sums=('1569cefa6623b2631a832679bc9a63ebeba222901e5221d254e896a68d2ee467054da8de9eda566924e80a11bb29a673a9f0c4243793845547d8027b58a238ab'
+sha512sums=('7c72e98f30ce5c5a94d74e097fa9960442f89240079b042a729f8a33dd7fedee2538c86c99738ccef2eb27f29055f0221d4c70316e3312c5ebba9565eaa15c52'
             '80357bae69e32b353d3784932d854e294906798e14faffb87c3383c3b6f6bdc57cbabb9c6e3f3c1adf0f8ddbb24153e72104c963cf1934970c2983c96daef9df'
-            '5757a6f35e106883072c31d137fd247c65a544f730cf736ca2e81a31357305b5c002b52349337d8e1667fbe68628bc253ec69eee727f268aee7902a5bef82dce'
             '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f')
 
 prepare() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
-  patch -Np1 < "${srcdir}/aom-remove-unsupported-pixel-formats.patch"
   patch -Np1 < "${srcdir}/lua53_compat.patch"
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
@@ -204,7 +204,11 @@ build() {
               --disable-update-check \
               --disable-notify \
               --enable-libplacebo \
-              --enable-vlc
+              --enable-vlc \
+              --enable-aribsub \
+              --enable-aom \
+              --enable-srt
+              #--enable-dav1d
   make
 }
 
