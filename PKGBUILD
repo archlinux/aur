@@ -2,17 +2,17 @@
 
 pkgname=libupnp18
 _pkgname=libupnp
-pkgver=1.8.3
+pkgver=1.8.4
 _pkgver=1.8
-pkgrel=5
+pkgrel=1
 pkgdesc='A separate installation of libupnp 1.8 branch'
 url='http://pupnp.sourceforge.net/'
 arch=('x86_64')
 license=('BSD')
-depends=('glibc')
-makedepends=('pkgconfig')
+depends=('glibc' 'libupnp<=1.8')
+makedepends=('pkgconfig' 'make' 'gcc' 'binutils' 'autoconf' 'automake' 'fakeroot')
 source=(https://downloads.sourceforge.net/sourceforge/pupnp/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('9afa0b09faa9ebd9e8a6425ddbfe8d1d856544c49b1f86fde221219e569a308d')
+sha256sums=('188d3f786d92fe14191f17634d2d87847eee7d2b568a5257ea23262fec9973d6')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -23,6 +23,7 @@ build() {
   cd ${_pkgname}-${pkgver}
   ./configure \
     --prefix=/usr \
+    --enable-reuseaddr \
     --libdir=/usr/lib/libupnp-${_pkgver} \
     --includedir=/usr/include/${_pkgname}-${_pkgver}
   make
@@ -38,7 +39,7 @@ package() {
   install -dm755 ${pkgdir}/etc/ld.so.conf.d/
   echo "/usr/lib/${_pkgname}-${_pkgver}" > ${pkgdir}/etc/ld.so.conf.d/${_pkgname}-${_pkgver}.conf
 
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}-${_pkgver}"
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${_pkgname}-${_pkgver}"
 }
 
 
