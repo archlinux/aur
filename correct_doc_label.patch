@@ -1,0 +1,8 @@
+--- a/docs/format_online.rst	2013-07-05 17:46:04.000000000 +0800
++++ b/docs/format_online.rst	2019-01-23 00:34:05.497605940 +0800
+@@ -1,4 +1,4 @@
+-.. _format_hdf5:
++.. _format_online:
+ 
+ ==============
+ Online queries
