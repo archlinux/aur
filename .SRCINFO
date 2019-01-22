@@ -1,6 +1,6 @@
 pkgbase = python-pythran
 	pkgdesc = Ahead of Time compiler for numeric kernels
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://pythran.readthedocs.io/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = python-pythran
 	makedepends = python2-numpy
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = python-pythran-0.9.0.tar.gz::https://github.com/serge-sans-paille/pythran/archive/0.9.0.tar.gz
-	sha256sums = f9947cd62ed43ef948e69086f25ea24eac02a6227e9744a90aecc0b40b411c5a
+	source = python-pythran-0.9.1.tar.gz::https://github.com/serge-sans-paille/pythran/archive/0.9.1.tar.gz
+	sha256sums = 29fafb51639f87576b95975efe4b98c370c58fe51df8fd0dde41c600419f0b82
 
 pkgname = python-pythran
 	depends = python

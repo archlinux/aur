@@ -3,7 +3,7 @@
 
 pkgbase=python-pythran
 pkgname=('python-pythran' 'python2-pythran')
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Ahead of Time compiler for numeric kernels"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://pythran.readthedocs.io/"
 license=('BSD')
 makedepends=('python-numpy' 'python2-numpy' 'python-setuptools' 'python2-setuptools')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/serge-sans-paille/pythran/archive/$pkgver.tar.gz")
-sha256sums=('f9947cd62ed43ef948e69086f25ea24eac02a6227e9744a90aecc0b40b411c5a')
+sha256sums=('29fafb51639f87576b95975efe4b98c370c58fe51df8fd0dde41c600419f0b82')
 
 prepare() {
   cp -a pythran-$pkgver{,-py2}
