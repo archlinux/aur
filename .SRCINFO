@@ -1,6 +1,6 @@
 pkgbase = sh3eb-elf-gcc
 	pkgdesc = The GNU Compiler Collection for the sh3eb-elf target.
-	pkgver = 8.1.0
+	pkgver = 8.2.1+20181127
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = sh3eb-elf-gcc
 	options = zipman
 	options = docs
 	options = !strip
-	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-8.1.0/gcc-8.1.0.tar.xz
-	sha256sums = 1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153
+	source = https://sources.archlinux.org/other/gcc/gcc-8.2.1-20181127.tar.xz
+	sha256sums = 6f64ffda2839e96a8551b767bf4f92be4e7a09377ea40058355b4eeb13bc3800
 
 pkgname = sh3eb-elf-gcc
 
