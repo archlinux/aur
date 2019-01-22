@@ -1,12 +1,12 @@
 # Maintainer: Mirko Scholz <srtlg>
 pkgname=objcryst-fox
 pkgver=2017.2.29
-pkgrel=1
+pkgrel=2
 pkgdesc='A program for the ab initio structure determination from powder diffraction'
 arch=('i686' 'x86_64')
 url='http://fox.vincefn.net/FoxWiki'
 depends=('glu' 'freeglut' 'wxgtk2' 'fftw')
-makedepends=('libmariadbclient' 'newmat' 'rsync')
+makedepends=('mariadb-libs' 'newmat' 'rsync')
 license=('GPL2')
 #_objcryst_ver=v${pkgver}
 _objcryst_ver=05954fd9c2e0fb80571a3d63fbd7ab8666655ee9
