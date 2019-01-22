@@ -1,2 +1,4 @@
-*.plgx
-*.pkg.tar*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
