@@ -1,6 +1,6 @@
 pkgbase = fisher
 	pkgdesc = A blazing fast, modern plugin manager for fish
-	pkgver = 3.2.5
+	pkgver = 3.2.6
 	pkgrel = 1
 	url = https://github.com/jorgebucaran/fisher
 	install = fisher.install
@@ -13,8 +13,8 @@ pkgbase = fisher
 	conflicts = fisherman
 	conflicts = fisherman-git
 	conflicts = fisher-git
-	source = https://github.com/jorgebucaran/fisher/archive/3.2.5.tar.gz
-	sha512sums = abcb32d38f85ce1a2b48dc2a2eb03902aae8a72e21ffc17859d8d9f86f5309c0158ceda92ab2cc4a6c6a5c0411d2765761f5b318f74c95d3118d17ea27791f72
+	source = https://github.com/jorgebucaran/fisher/archive/3.2.6.tar.gz
+	sha512sums = 06a364feab6acd3029c562e4ddec9b5efb40b5d773b94cf5c9d7f5ecd11ef91197b76dead8756032df7b380497737fa8065ca86d9a5710deb20c4597ca0c1b03
 
 pkgname = fisher
 
