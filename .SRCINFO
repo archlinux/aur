@@ -1,10 +1,11 @@
 pkgbase = social-engineer-toolkit-git
 	pkgdesc = The Social-Engineer Toolkit (SET) - Development Version
 	pkgver = 7.7.9.r3.75158666e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trustedsec/social-engineer-toolkit
 	arch = any
 	license = custom
+	makedepends = git
 	makedepends = python2
 	depends = python2-pexpect
 	depends = python2-crypto
