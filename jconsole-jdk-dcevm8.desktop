@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/usr/lib/jvm/java-8-jdk-dcevm/bin/jconsole
+Exec=/usr/lib/jvm/java-8-jdk/bin/jconsole
 Icon=sun-java-jdk8
 Name=Java 8 Monitoring and Management Console
 StartupNotify=true

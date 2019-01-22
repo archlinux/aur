@@ -1,33 +1,29 @@
 pkgbase = jdk-dcevm
-	pkgdesc = Oracle Java Development Kit with DCEVM patches
-	pkgver = 8u181
+	pkgdesc = Oracle Java 8 Development Kit with DCEVM patches
+	pkgver = 8u202
 	pkgrel = 1
 	url = https://dcevm.github.io/
 	install = jdk-dcevm.install
 	arch = x86_64
-	license = custom
+	license = custom:Oracle
 	depends = ca-certificates-java
-	depends = desktop-file-utils
 	depends = hicolor-icon-theme
-	depends = java-environment-common
 	depends = java-runtime-common
-	depends = libx11
-	depends = libxrender
-	depends = libxslt
-	depends = libxtst
-	depends = shared-mime-info
+	depends = nss
 	depends = xdg-utils
+	depends = java-environment-common
 	optdepends = alsa-lib: for basic sound support
-	optdepends = eclipse: to use "Oracle Java Mission Control" plugins in Eclipse
+	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
 	optdepends = gtk2: for Gtk+ look and feel (desktop)
-	optdepends = ttf-font: fonts
 	provides = java-runtime=8
 	provides = java-runtime-headless=8
-	provides = java-environment=8
+	provides = java-web-start=8
 	provides = java-runtime-jre=8
 	provides = java-runtime-headless-jre=8
-	provides = java-environment-jdk=8
+	provides = java-web-start-jre=8
 	provides = java-openjfx=8
+	provides = java-environment-jdk=8
+	provides = java-environment=8
 	options = !strip
 	backup = etc/java-jdk-dcevm8/amd64/jvm.cfg
 	backup = etc/java-jdk-dcevm8/images/cursors/cursors.properties
@@ -44,20 +40,27 @@ pkgbase = jdk-dcevm
 	backup = etc/java-jdk-dcevm8/psfont.properties.ja
 	backup = etc/java-jdk-dcevm8/psfontj2d.properties
 	backup = etc/java-jdk-dcevm8/sound.properties
-	source = http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz
-	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
+	source = https://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
+	source = https://download.oracle.com/otn-pub/java/jdk/8u202-b08/1961070e4c9b4e26a04e7f5a083f551e/jdk-8u202-linux-x64.tar.gz
 	source = http://github.com/dcevm/dcevm/releases/download/light-jdk8u181/DCEVM-8u181-installer.jar
 	source = jconsole-jdk-dcevm8.desktop
 	source = jmc-jdk-dcevm8.desktop
 	source = jvisualvm-jdk-dcevm8.desktop
 	source = policytool-jdk-dcevm8.desktop
-	md5sums = ef599e322eee42f6769991dd3e3b1a31
 	md5sums = b3c7031bc65c28c2340302065e7d00d3
+	md5sums = 0029351f7a946f6c05b582100c7d45b7
 	md5sums = fe5d0074ba0478897b04a95056a7f624
-	md5sums = 307b5ce85882e6c6649486df51dab00c
-	md5sums = 4c428dc81d51e9d294ec9c26827f1adc
-	md5sums = 973181e4a4cfdc79c43b297a6b821354
-	md5sums = 3519db1ad1455746126f092ad6d850e4
+	md5sums = 8a66f50efdc867ffd6a27168bc93b210
+	md5sums = 1cbde70639abd98db4bace284dbf2bc4
+	md5sums = f0b39865361437f3778ecbe6ffbc0a06
+	md5sums = 89704501aff8efe859c31968d8d168e6
+	sha256sums = f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
+	sha256sums = 9a5c32411a6a06e22b69c495b7975034409fa1652d03aeb8eb5b6f59fd4594e0
+	sha256sums = SKIP
+	sha256sums = 65282603bd0804d162f3f7da47bc7f3c91373e87504297d6a6fd6f2f8a1ec4ee
+	sha256sums = 8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1
+	sha256sums = 144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870
+	sha256sums = 635433e9c78ff58af65c316232ac9907d289a324428923788ea0f82ae7f8083b
 
 pkgname = jdk-dcevm
 

@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/usr/lib/jvm/java-8-jdk-dcevm/bin/jvisualvm
+Exec=/usr/lib/jvm/java-8-jdk/bin/jvisualvm
 GenericName=Java 8 Monitoring and Performance Monitoring Tool
 Icon=sun-java-jdk8
 Name=Java 8 VisualVM
