@@ -1,0 +1,16 @@
+pkgbase = libcyaml-git
+	pkgdesc = C library for reading and writing YAML
+	pkgver = master
+	pkgrel = 1
+	url = https://gitlab.com/alextee/libcyaml
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = libyaml
+	provides = libcyaml
+	conflicts = libcyaml
+	source = libcyaml:git+https://gitlab.com/alextee/libcyaml.git
+	md5sums = SKIP
+
+pkgname = libcyaml-git
+
