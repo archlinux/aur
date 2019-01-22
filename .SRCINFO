@@ -1,14 +1,14 @@
 pkgbase = python-colr
 	pkgdesc = Easy terminal colors, with chainable methods.
-	pkgver = 0.8.1
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/Colr/
 	arch = any
 	license = MIT
 	depends = python
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/C/Colr/Colr-0.8.1.tar.gz
-	sha512sums = 2e357a9dcdbc219ead4856391c2c46d21b1b0aed50d9340c756533b66e699a3ee1e79766ab24257235af1766fbddedfe309d01680a7e676026ff625700a7b7bf
+	source = https://files.pythonhosted.org/packages/source/C/Colr/Colr-0.8.3.tar.gz
+	sha512sums = ec07e6cc14dd9b58be73ea03a78497f4197373941d9d01029154d60022b24b8f7e3821aaa7b394f0fe0c17883604275f70fc0d57e174e12cca0a4583105ccb8f
 
 pkgname = python-colr
 

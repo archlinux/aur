@@ -2,7 +2,7 @@
 
 _name=Colr
 pkgname=python-colr
-pkgver=0.8.1
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Easy terminal colors, with chainable methods."
 arch=('any')
@@ -11,11 +11,12 @@ license=('MIT')
 depends=('python')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('2e357a9dcdbc219ead4856391c2c46d21b1b0aed50d9340c756533b66e699a3ee1e79766ab24257235af1766fbddedfe309d01680a7e676026ff625700a7b7bf')
+sha512sums=('ec07e6cc14dd9b58be73ea03a78497f4197373941d9d01029154d60022b24b8f7e3821aaa7b394f0fe0c17883604275f70fc0d57e174e12cca0a4583105ccb8f')
 
 package() {
-  cd "$srcdir/$_name-$pkgver"
+  cd "$_name-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
 
 # vim:set ts=2 sw=2 et:
