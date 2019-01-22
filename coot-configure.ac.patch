@@ -1,0 +1,28 @@
+--- configure.ac.orig	2016-12-30 12:57:26.843081999 -0500
++++ configure.ac	2016-12-30 12:58:11.963460565 -0500
+@@ -45,11 +45,11 @@
+ 
+ # AC_PROG_INTLTOOL, no, not today.  Mac compilation problems, no perl/ XML or something.
+ # BL says Lets do some testing and use old style if needed
+-AC_MSG_CHECKING([which libtool initialization strategy to adopt])
+-AC_MSG_RESULT([m4_ifset([LT_INIT],[LT-INIT],[AC-PROG-LIBTOOL])])
+-m4_ifset([LT_INIT],
+-[LT_INIT],
+-[AC_PROG_LIBTOOL])
++# AC_MSG_CHECKING([which libtool initialization strategy to adopt])
++# AC_MSG_RESULT([m4_ifset([LT_INIT],[LT-INIT],[AC-PROG-LIBTOOL])])
++# m4_ifset([LT_INIT],
++# [LT_INIT],
++# [AC_PROG_LIBTOOL])
+ 
+ GNOME_COMPILE_WARNINGS
+ GNOME_CXX_WARNINGS
+@@ -148,7 +148,7 @@
+ AM_WITH_GUILE(, [echo optional guile\?],,)
+ if test x$coot_guile = xtrue ; then
+    GUILE_FLAGS
+-   AM_GUILE_LIB
++   # AM_GUILE_LIB
+    # guile-gui depends on a gui interface being present.  If it is, force check for guile-gui
+    if test x$with_guile_gtk != x ; then
+       AM_GUILE_GUI

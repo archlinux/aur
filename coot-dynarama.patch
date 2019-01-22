@@ -1,0 +1,20 @@
+--- src/dynarama-main.cc.orig	2018-07-10 13:29:01.850708482 +0200
++++ src/dynarama-main.cc	2018-04-01 02:17:29.000000000 +0200
+@@ -23,8 +23,6 @@
+ 
+ #ifdef HAVE_GOOCANVAS
+ 
+-#include <gtk/gtk.h>
+-
+ #ifdef __GNU_LIBRARY__
+ #include "compat/coot-getopt.h"
+ #else
+@@ -35,6 +33,8 @@
+ 
+ #include <sys/stat.h>
+ 
++#include <gtk/gtk.h>
++
+ #ifdef HAVE_GOOCANVAS
+ #include <goocanvas.h>
+ #endif

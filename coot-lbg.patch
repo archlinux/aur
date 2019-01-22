@@ -1,0 +1,11 @@
+--- lbg/lbg.cc_orig	2016-11-09 21:27:32.074363190 -0500
++++ lbg/lbg.cc	2016-11-09 21:27:47.836327788 -0500
+@@ -4873,7 +4873,7 @@
+       } 
+    } else {
+ 
+-      PyObject *pName = PyString_FromString("lidia.fetch");
++      PyObject *pName = PyString_FromString("coot.lidia.fetch");
+       PyObject *pModule = PyImport_Import(pName);
+       if (pModule == NULL) {
+ 	 std::cout << "NULL pModule" << std::endl;

@@ -1,0 +1,22 @@
+--- pyrogen/pyrogen.in.old	2016-06-29 05:00:18.000000000 +0200
++++ pyrogen/pyrogen.in	2017-06-15 22:11:34.872817885 +0200
+@@ -7,11 +7,11 @@
+ 
+ systype=$(uname)
+ 
+-if [ $systype = Darwin ] ; then 
++if [ $systype = Darwin ] ; then
+    prfx=$(dirname "$current_exe_dir")
+    if [ -z "$DYLD_FALLBACK_LIBRARY_PATH" ] ;  then
+ 	DYLD_FALLBACK_LIBRARY_PATH=$prfx/lib
+-   else 
++   else
+ 	DYLD_FALLBACK_LIBRARY_PATH=$prfx/lib:${DYLD_FALLBACK_LIBRARY_PATH}
+    fi
+    export DYLD_FALLBACK_LIBRARY_PATH
+@@ -22,4 +22,4 @@
+ 
+ export PATH=$prfx/bin:$PATH
+
+-python -m pyrogen "${@}"
++python2 -m pyrogen "${@}"

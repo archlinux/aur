@@ -1,0 +1,27 @@
+--- macros/guile_orig.m4	2013-07-31 00:25:19.715073145 -0700
++++ macros/guile.m4	2013-07-31 00:27:01.763927099 -0700
+@@ -72,21 +72,21 @@
+ # The variables are marked for substitution, as by @code{AC_SUBST}.
+ #
+ AC_DEFUN([GUILE_PROGS],
+- [AC_PATH_PROG(GUILE,guile)
++ [AC_PATH_PROG(GUILE,guile1.8)
+   if test x$with_guile = xyes ; then 
+      if test "$GUILE" = "" ; then
+ 	AC_MSG_ERROR([guile required but not found])
+      fi
+   fi
+   AC_SUBST(GUILE)
+-  AC_PATH_PROG(GUILE_CONFIG,guile-config)
++  AC_PATH_PROG(GUILE_CONFIG,guile-config1.8)
+   if test x$with_guile = xyes ; then 
+      if test "$GUILE_CONFIG" = "" ; then
+         AC_MSG_ERROR([guile-config required but not found])
+      fi
+   fi
+   AC_SUBST(GUILE_CONFIG)
+-  AC_PATH_PROG(GUILE_TOOLS,guile-tools)
++  AC_PATH_PROG(GUILE_TOOLS,guile-tools1.8)
+   AC_SUBST(GUILE_TOOLS)
+  ])
+ 

@@ -1,0 +1,35 @@
+--- src/Makefile.am_orig	2016-11-09 16:13:53.942706012 -0500
++++ src/Makefile.am	2016-11-09 16:15:08.263956290 -0500
+@@ -457,7 +457,9 @@
+    EXTRA_DIST += coot_wrap_python_pre.cc 
+ endif
+ if COOT_USE_PYTHON
+-   dist_python_PYTHON = coot.py coot.pth
++   # dist_python_PYTHON = coot.py coot.pth
++   pythondir = $(pkgdatadir)/python
++   dist_pkgpython_SCRIPTS = coot.py
+ endif
+ 
+ 
+--- lbg/Makefile.am_orig	2016-11-09 16:46:09.161705178 -0500
++++ lbg/Makefile.am	2016-11-09 21:51:45.630944576 -0500
+@@ -73,8 +73,8 @@
+ # I don't understand.  Maybe the setting of wl should be done in configure?  But then
+ # I have to force the output of libtool.  Bleugh.  Hmm...
+ # Anyway, thankyou Gary Vaughan.
+-wl=-Wl,
+-lidia_LDFLAGS = $(EXPORT_DYNAMIC_FLAG_SPEC)
++# wl=-Wl,
++# lidia_LDFLAGS = $(EXPORT_DYNAMIC_FLAG_SPEC)
+ 
+ # res spec output operator means we include libcoot-coord-utils
+ # (if that is annoying, then remove it and expand it by hand)
+@@ -106,7 +106,7 @@
+ test_srs_standalone_SOURCES = test-srs-standalone.cc
+ test_srs_standalone_LDADD = $(CCP4SRS_LIBS) $(MMDB_LIBS)
+ 
+-pkgpythondir=$(pythondir)/lidia
++pkgpythondir=$(pythondir)/coot/lidia
+ 
+ dist_pkgpython_PYTHON = \
+     __init__.py fetch.py

@@ -1,0 +1,64 @@
+#!/bin/sh
+# -*-shell-script-*-
+# coot wrapper script
+# Copyright 2004, 2005, 2006, 2007 University of York
+# written by Paul Emsley
+
+COOT_PREFIX="/usr"
+current_exe_dir="/usr/libexec"
+
+coot_real=$current_exe_dir/coot-bin
+# echo coot-real is at $coot_real
+
+# ----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
+# If the COOT_PREFIX is correct, then these should not need modification
+# i.e.  nothing below here need be changed.
+# ----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
+#
+prefix=$COOT_PREFIX
+
+SYMINFO=$COOT_PREFIX/share/coot/syminfo.lib
+COOT_SCHEME_DIR=$COOT_PREFIX/share/coot/scheme
+COOT_STANDARD_RESIDUES=$COOT_PREFIX/share/coot/standard-residues.pdb
+COOT_PIXMAPS_DIR=$COOT_PREFIX/share/coot/pixmaps
+COOT_DATA_DIR=$COOT_PREFIX/share/coot
+COOT_RESOURCES_FILE=$COOT_PREFIX/share/coot/cootrc
+COOT_REF_STRUCTS=$COOT_PREFIX/share/coot/reference-structures
+COOT_PYTHON_DIR=
+COOT_REFMAC_LIB_DIR=
+LC_ALL=C
+
+PYTHONPATH=${PYTHONPATH:+"${PYTHONPATH}:"}$COOT_PYTHON_DIR
+
+GUILE_WARN_DEPRECATED=no
+
+if [ -n "$LOCAL_GUILE_LOAD_PATH_EXTRAS" ] ; then
+    GUILE_LOAD_PATH=${LOCAL_GUILE_LOAD_PATH_EXTRAS}:$GUILE_LOAD_PATH
+    export GUILE_LOAD_PATH
+fi
+
+# echo GUILE_LOAD_PATH is now $GUILE_LOAD_PATH
+
+export SYMINFO
+export COOT_PREFIX
+export COOT_STANDARD_RESIDUES
+export COOT_REFMAC_LIB_DIR
+export COOT_PYTHON_DIR
+export PYTHONPATH
+export COOT_SCHEME_DIR
+export COOT_REF_STRUCTS
+export COOT_RESOURCES_FILE
+export COOT_PIXMAPS_DIR
+export COOT_DATA_DIR
+
+export LC_ALL
+
+echo $coot_real $*
+$coot_real $*
+status=$?
+
+if [ $status != 0 ] ; then
+    /usr/bin/guile1.8 -s $COOT_PREFIX/share/coot/scheme/coot-crash-catcher.scm $coot_real
+fi
