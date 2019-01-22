@@ -1,0 +1,13 @@
+[Unit]
+Description=airtime-playout daemon
+After=local-fs.target remote-fs.target network.target
+
+[Service]
+Type=simple
+User=http
+Group=http
+ExecStart=/usr/bin/airtime-playout
+ExecReload=/usr/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,42 @@
+post_install() {
+	if type -P systemd-tmpfiles &> /dev/null; then
+    systemd-tmpfiles --create airtime.conf
+  fi
+  echo ">>> In order to get Airtime working, here's what to do."
+  echo ">>> Please refer to Arch Linux wiki for php56 and httpd basic setup."
+  echo ""
+  echo ">> In /etc/httpd/conf/httpd.conf"
+  echo "> uncomment" 
+  echo "LoadModule deflate_module modules/mod_deflate.so"
+  echo ""
+  echo "> add the lines:"
+  echo "# Airtime"
+  echo "Include conf/extra/httpd-airtime.conf"
+  echo ""
+  echo ">> In /etc/php/php.ini"
+  echo "> enable the following modules:"
+  echo "bcmath pgsql pdo_pgsql gd posix"
+  echo "> select your timezone:" 
+  echo "ex.  date.timezone = Europe/Rome"
+  echo ""
+  echo ">> Start rabbitmq"
+  echo "systemctl start rabbitmq"
+  echo ""
+  echo ">> Enable airtime user and vhost on rabbitmq:"
+  echo "sudo -u rabbitmq rabbitmqctl add_user airtime airtime"
+  echo "sudo -u rabbitmq rabbitmqctl add_vhost /airtime"
+  echo "sudo -u rabbitmq rabbitmqctl set_permissions -p /airtime airtime \".*\" \".*\" \".*\""
+  echo ""
+  echo ">> Start PostgreSql as described in Arch Linux Wiki and create an user for airtime"
+  echo ""
+  echo ">> Start Apache"
+  echo "systemctl start httpd"
+  echo ""
+  echo "Follow the steps at http://127.0.0.1:80"
+}
+
+post_upgrade() {
+	if type -P systemd-tmpfiles &> /dev/null; then
+		systemd-tmpfiles --create airtime.conf
+ 	fi
+}
