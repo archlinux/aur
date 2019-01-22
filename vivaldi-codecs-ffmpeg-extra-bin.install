@@ -1,0 +1,19 @@
+copy_ffmpeg() {
+  codec=/opt/vivaldi/lib/libffmpeg.so
+
+  if [ ! -f "${codec}.orig" -a -f "${codec}" ]; then
+    echo Backing up original libffmpeg.so
+    sudo mv $codec "${codec}.orig"
+  fi
+
+  echo Installing new libffmpeg.so...
+  sudo mv /usr/share/vivaldi-codecs/libffmpeg.so $codec
+}
+
+post_install() {
+  copy_ffmpeg
+}
+
+post_upgrade() {
+  copy_ffmpeg
+}
