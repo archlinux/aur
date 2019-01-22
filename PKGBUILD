@@ -6,7 +6,7 @@ _opts=(
 	-DCMAKE_INSTALL_LIBEXECDIR=lib
 )
 
-makedepends=('cmake' 'vala' 'gtk3' 'vala-panel>=0.4.62' 'libwnck')
+makedepends=('cmake' 'vala' 'gtk3' 'vala-panel>=0.4.62' 'libwnck3')
 pkgname=(
 'vala-panel-applets-xembed-git'
 'vala-panel-applets-icontasks-git'
@@ -15,7 +15,7 @@ pkgbase=vala-panel-applets-gpl-git
 _pkgbase=vala-panel-applets-gpl
 _cmakename=cmake-vala
 pkgver=r9.875f24f
-pkgrel=2
+pkgrel=3
 pkgdesc="Cyclically spawns a script/program, captures its output and displays the resulting string in the panel"
 url="https://gitlab.com/vala-panel-project/vala-panel-applets-gpl"
 arch=('i686' 'x86_64')
