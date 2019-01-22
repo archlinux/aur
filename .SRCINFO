@@ -1,6 +1,6 @@
 pkgbase = inkdrop
 	pkgdesc = Note-taking App with Robust Markdown Editor
-	pkgver = 3.25.2
+	pkgver = 3.25.3
 	pkgrel = 1
 	url = https://www.inkdrop.info/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = inkdrop
 	source = inkdrop.desktop
 	md5sums = 7958b69a1fc0f069fde15b334314c2aa
 	md5sums = af55c435a39d56a0b9e6ffe03683d340
-	source_x86_64 = inkdrop-3.25.2.zip::https://d3ip0rje8grhnl.cloudfront.net/v3.25.2/Inkdrop-3.25.2-Linux.zip
-	md5sums_x86_64 = 91a73ee79f4dfd5ce45cf3bed2b2cb5a
+	source_x86_64 = inkdrop-3.25.3.zip::https://d3ip0rje8grhnl.cloudfront.net/v3.25.3/Inkdrop-3.25.3-Linux.zip
+	md5sums_x86_64 = 71db3b565d96d022df5c1f124ea87a58
 
 pkgname = inkdrop
 
