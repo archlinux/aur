@@ -1,4 +1,5 @@
-src/
-pkg/
-plex-media-player/
-plex-media-player-*.tar*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!plex-media-player.desktop
