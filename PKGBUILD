@@ -24,7 +24,7 @@ pkgver() {
   cd "${pkgname}"
   # Until they start versioning this repo, use the Go Modules special version
   # format.
-  git show --abbrev-commit --abbrev=12 --pretty=format:v0.0.0_%cd_%h --no-patch HEAD
+  git show --abbrev-commit --abbrev=12 --date='format:%G%m%d%H%M%S' --pretty=format:v0.0.0_%cd_%h --no-patch HEAD
 }
 
 
