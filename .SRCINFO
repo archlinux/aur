@@ -1,6 +1,6 @@
 pkgbase = systemtap-git
 	pkgdesc = provides infrastructure to simplify the gathering of information about the running Linux system.
-	pkgver = 4.0.84.g68bd23fd0
+	pkgver = 4.0.86.g3a29a2eef
 	pkgrel = 1
 	url = http://sourceware.org/systemtap/
 	install = systemtap.install
@@ -16,6 +16,8 @@ pkgbase = systemtap-git
 	depends = python
 	depends = json-c
 	depends = avahi
+	depends = readline
+	depends = nspr
 	optdepends = sqlite
 	provides = systemtap=4.0
 	conflicts = systemtap
