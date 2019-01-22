@@ -3,7 +3,7 @@
 pkgname=keepass-plugin-hibpofflinecheck
 _pluginname=HIBPOfflineCheck
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Keepass plugin that performs offline checks against the haveibeenpwned passwords file"
 depends=('keepass')
 arch=('any')
@@ -14,7 +14,7 @@ sha256sums=('05363fc33ddd8b383da2ba70d5515c30388c5210ec6a9de391cea5cb442c1811')
 prepare() {
   cd "${srcdir}/${_pluginname}-${pkgver}"
   mkdir build
-  cp -r Properties *.cs *.resx *.csproj *.sln build/
+  cp -r Properties Resources *.cs *.resx *.csproj *.sln build/
 }
 
 build() {
