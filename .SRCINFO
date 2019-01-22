@@ -1,0 +1,13 @@
+pkgbase = glitchcat-git
+	pkgdesc = A cat-like program with glitch animation
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/kuviman/glitchcat
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = git+https://github.com/kuviman/glitchcat
+	md5sums = SKIP
+
+pkgname = glitchcat-git
+
