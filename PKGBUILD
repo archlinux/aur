@@ -1,8 +1,8 @@
-# Contributor: piernov <piernov@piernov.org
+# Contributor: feanor1397 <feanor1397@gmail.com>
 
 pkgname=rtlwifi_new-extended-dkms
 _pkgname=rtlwifi_new
-pkgver=r257.fc08be6
+pkgver=r266.6f99b49
 pkgrel=1
 pkgdesc='Newest Realtek rtlwifi codes, extended branch'
 arch=('i686' 'x86_64')
