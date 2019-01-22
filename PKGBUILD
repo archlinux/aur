@@ -1,7 +1,7 @@
 pkgname=('python-liquidctl')
 _module='liquidctl'
 pkgver='1.1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices"
 url="https://github.com/jonasmalacofilho/liquidctl"
 depends=('python' 'libusb' 'python-pyusb' 'python-docopt')
