@@ -5,7 +5,7 @@
 # Contributor: Earnest <zibeon@gmail.com>
 
 pkgname=spin
-pkgver=6.4.8
+pkgver=6.4.9
 pkgrel=1
 pkgdesc='Tool for the formal verification of distributed software systems'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('tcl: ispin graphical interface'
             'modex: extract verification models from implementation C code'
             'ispin: GUI for Spin')
 source=(https://github.com/freswa/spin/archive/v${pkgver}.tar.gz)
-sha512sums=('92855d3b75a1b6f4ae50235215afca1e74a761081e6793c4006052cd38c6a567b3847926122991274b4aac5b53ce76c424bd353ed966416af8890caa0243ba37')
+sha512sums=('0a69001de2f16815a804f5c8df214ca93f5f47b5e5fcd9335191b4daaff56e4cbe3ec39d797b58de35cc0eda564cb21fbf8ba3c83acc02ea2aedb876c736712f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/Src${pkgver}"
