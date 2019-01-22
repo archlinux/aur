@@ -1,6 +1,6 @@
 pkgbase = crusta-browser-git
 	pkgdesc = Fast, secure, and free web browser built for the modern web.
-	pkgver = 1.4.1.r7.gc73381f
+	pkgver = 1.4.3.1.r38.gf1ee08b
 	pkgrel = 1
 	url = http://www.crustabrowser.com/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = crusta-browser-git
 	depends = qt5-webengine
 	provides = crusta-browser
 	conflicts = crusta-browser
-	source = git+https://github.com/CrustaBrowser/CrustaBrowser.git
+	source = git+https://github.com/CrustaBrowser/CrustaBrowser.git#branch=v1
 	sha256sums = SKIP
 
 pkgname = crusta-browser-git
