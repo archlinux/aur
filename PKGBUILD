@@ -2,8 +2,8 @@
 
 _pkgname=alltomp3
 pkgname=alltomp3-bin
-_pkgver=51
-_LOver=0.3.7
+_pkgver=55
+_LOver=0.3.8
 pkgver=${_LOver}.${_pkgver}
 pkgrel=1
 arch=('x86_64')
@@ -13,7 +13,7 @@ pkgdesc="Download YouTube videos in MP3 with tags and lyrics"
 depends=('gconf' 'libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' 'ffmpeg' 'chromaprint' 'python2-pathlib')
 
 source=("${_pkgname}_${_LOver}-${_pkgver}_amd64.deb::https://packagecloud.io/AllToMP3/alltomp3/packages/ubuntu/yakkety/${_pkgname}_${_LOver}-${_pkgver}_amd64.deb/download.deb")
-sha256sums=('978ec74661c993aa1f53f0f321e8eafdce66ef80c13c7d973835b19b43a8b80d')
+sha256sums=('0d43d090521b40d390cc597dcfc18707bb1884c8038f95d4bf33b3fd81d35127')
 
 package() {
 	# Extract package data
