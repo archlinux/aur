@@ -1,4 +1,4 @@
-src/
-pkg/
-protonvpn-cli/
-protonvpn-cli-git-*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
