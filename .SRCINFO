@@ -41,6 +41,7 @@ pkgbase = vivaldi-arm64
 	depends = qmmp
 	depends = ttf-liberation
 	depends = xdg-utils>=1.0.2
+	optdepends = vivaldi-codecs-ffmpeg-extra-bin-arm64: playback of proprietary video/audio
 	provides = www-browser
 	options = !strip
 	options = !emptydirs
