@@ -1,4 +1,5 @@
-# Maintainer: Kyle Terrien <kyleterrien at gmail dot com>
+# Maintainer:  Geballin - Guillaume Ballin <macniaque at free dot fr>
+# Contributor: Kyle Terrien <kyleterrien at gmail dot com>
 # Contributor: tigrmesh <tigrmesh at aol dot com>
 # Contributor: lang2 <wenzhi.liang@gmail.com>
 
