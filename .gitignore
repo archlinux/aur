@@ -1,4 +1,5 @@
-Lazyman.bundle/
-pkg/
-src/
-*.pkg.tar*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!lazyman-plex-git.install
