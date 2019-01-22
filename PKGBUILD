@@ -15,7 +15,7 @@ pkgbase=vala-panel-applets-gpl-git
 _pkgbase=vala-panel-applets-gpl
 _cmakename=cmake-vala
 pkgver=r9.875f24f
-pkgrel=1
+pkgrel=2
 pkgdesc="Cyclically spawns a script/program, captures its output and displays the resulting string in the panel"
 url="https://gitlab.com/vala-panel-project/vala-panel-applets-gpl"
 arch=('i686' 'x86_64')
@@ -53,7 +53,7 @@ package_vala-panel-applets-xembed-git(){
 
 package_vala-panel-applets-icontasks-git(){
 	pkgdesc="Budgie's icontasks for vala-panel"
-	depends=('gtk3' 'vala-panel>=0.4.62' 'libwnck')
+	depends=('gtk3' 'vala-panel>=0.4.62' 'libwnck3')
 	cd "${srcdir}/${_pkgbase}"
 	make -C "icontasks" DESTDIR="${pkgdir}" install
 }
