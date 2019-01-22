@@ -1,6 +1,6 @@
 pkgbase = jellyfin-git
 	pkgdesc = The Free Software Media Browser
-	pkgver = r14852.f25b526ae
+	pkgver = 10.0.2.r266.g9714b62fdd
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin
 	arch = i686
@@ -15,12 +15,14 @@ pkgbase = jellyfin-git
 	provides = jellyfin
 	conflicts = jellyfin
 	backup = etc/conf.d/jellyfin
-	source = git+https://github.com/jellyfin/jellyfin.git
+	source = git+https://github.com/jellyfin/jellyfin.git#branch=dev
+	source = git+https://github.com/jellyfin/jellyfin-web.git
 	source = git+https://github.com/mono/taglib-sharp.git
 	source = jellyfin.conf
 	source = jellyfin.service
 	source = jellyfin.sysusers
 	source = jellyfin.tmpfiles
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ff3c81ddfd716f179fec8149ea6c2db379e05cd20bd0ffa8ce3ff3a609ca9749
