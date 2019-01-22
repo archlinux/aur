@@ -4,7 +4,7 @@
 
 _target=sh4eb-nofpu-elf
 pkgname=${_target}-binutils
-pkgver=2.30
+pkgver=2.31.1
 pkgrel=1
 pkgdesc="GNU binary utilities for the ${_target} target."
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=('zlib' 'flex')
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-sha256sums=('efeade848067e9a03f1918b1da0d37aaffa0b0127a06b5e9236229851d9d0c09')
+sha256sums=('ffcc382695bf947da6135e7436b8ed52d991cf270db897190f19d6f9838564d0')
 
 prepare() {
   cd "${srcdir}/binutils-${pkgver}"
