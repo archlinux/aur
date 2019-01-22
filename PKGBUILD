@@ -6,7 +6,7 @@
 #
 
 pkgname=nethack-git
-pkgver=3.6.0.r728.gf715224
+pkgver=3.6.1.r977.ga14752ab
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url='http://www.nethack.org/index.html'
 license=('custom')
 depends=('ncurses' 'gzip')
 install=nethack.install
-source=('git://git.code.sf.net/p/nethack/NetHack#branch=NetHack-3.6.0')
+source=('git://git.code.sf.net/p/nethack/NetHack#branch=NetHack-3.6.2-beta01')
 md5sums=('SKIP')
 conflicts=('nethack')
 provides=('nethack')
