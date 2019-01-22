@@ -1,6 +1,6 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld_fr>
 pkgname=safeeyes
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="A Free and Open Source tool for Linux users to reduce and prevent repetitive strain injury (RSI)."
 arch=("any")
@@ -19,7 +19,7 @@ depends=("alsa-utils"
 makedepends=("python-setuptools")
 optdepends=("xprintidle: better idle timer")
 source=(safeeyes-$pkgver.tar.gz::"https://github.com/slgobinath/SafeEyes/archive/v$pkgver.tar.gz")
-sha1sums=('d8331d90397a6d8edf93a6e9f27018673e44613f')
+sha1sums=('9199045ba7b1e95d73af4645b2df9e80c8be1c6b')
 
 package() {
     cd "$srcdir/SafeEyes-$pkgver"
