@@ -21,7 +21,7 @@ sha512sums=('ac43a3cb71a53deb55e3693653847cf20bf6f5d9056f224e6956c96d63bc59ebee9
             'SKIP'
             '92e8d28f329e9a8cce296f0fddd88324198f722db3a748bb2164b28ae8eca6047c89ed1e70af00bbedd93ce4285b2ab1e0307a65b88dc60e581eebfd6cbd2038'
             'SKIP')
-validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com> (.1 releases)              # Hans Wennborg <hans@chromium.org> (.0 releases)
+validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com> (.1 releases)
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org> (.0 releases)
  
 prepare() {
