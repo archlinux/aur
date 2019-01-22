@@ -1,19 +1,19 @@
 #!/bin/sh
 . /etc/conf.d/xash3d
 
+DEFAULT_LIBPATH=/usr/lib32
+
 if [ ! -d "$XASH3D_BASEDIR" ]; then
 	echo "$XASH3D_BASEDIR not found"
 	exit 1
 fi
 
 if [ ! -f "$XASH3D_BASEDIR/valve/dlls/hl.so" ]; then
-	if [ $(uname -m) == "x86_64" ]; then
-		ln -sr /usr/lib32/valve/dlls/hl.so "$XASH3D_BASEDIR"/valve/dlls/hl.so
-		ln -sr /usr/lib32/valve/cl_dlls/client.so "$XASH3D_BASEDIR"/valve/cl_dlls/client.so
-		/usr/lib32/xash3d/xash3d
-	else
-		ln -sr /usr/lib/valve/dlls/hl.so "$XASH3D_BASEDIR"/valve/dlls/hl.so
-		ln -sr /usr/lib/valve/cl_dlls/client.so "$XASH3D_BASEDIR"/valve/cl_dlls/client.so
-		/usr/lib/xash3d/xash3d
+	if [ $(uname -m) != "x86_64" ]; then
+		DEFAULT_LIBPATH=/usr/lib
 	fi
+	ln -sr $DEFAULT_LIBPATH/valve/dlls/hl.so "$XASH3D_BASEDIR"/valve/dlls/hl.so
+	ln -sr $DEFAULT_LIBPATH/valve/cl_dlls/client.so "$XASH3D_BASEDIR"/valve/cl_dlls/client.so
 fi
+
+$DEFAULT_LIBPATH/xash3d/xash3d "$@"

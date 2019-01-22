@@ -1,4 +1,11 @@
 #!/bin/sh
 . /etc/conf.d/xash3d
-/usr/lib32/xash3d/xash
 
+DEFAULT_LIBPATH=/usr/lib32
+
+if [ ! -d "$XASH3D_BASEDIR" ]; then
+	echo "$XASH3D_BASEDIR not found"
+	exit 1
+fi
+
+$DEFAULT_LIBPATH/xash3d/xash "$@"
