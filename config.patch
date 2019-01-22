@@ -1,0 +1,55 @@
+--- src/jackal-0.4.7/example.jackal.yml	2019-01-22 14:05:33.000000000 -0600
++++ example.jackal.yml	2019-01-22 14:58:11.695532598 -0600
+@@ -1,18 +1,18 @@
+ # jackal default configuration file
+ 
+-pid_path: jackal.pid
++pid_path: data/jackal.pid
+ 
+-debug:
+-  port: 6060
++# debug:
++#   port: 6060
+ 
+ logger:
+   level: debug
+   log_path: jackal.log
+ 
+ storage:
+-  type: mysql
+-  mysql:
+-    host: 127.0.0.1:3306
++  type: pgsql
++  pgsql:
++    host: 127.0.0.1:5432
+     user: jackal
+     password: password
+     database: jackal
+@@ -67,19 +67,18 @@
+     max_stanza_size: 65536
+     resource_conflict: replace  # [override, replace, reject]
+ 
+-    transport:
+-      type: socket # websocket
+-      bind_addr: 0.0.0.0
+-      port: 5222
+-      keep_alive: 120
+-      # url_path: /xmpp/ws
++    # transport:
++    #   type: socket # websocket
++    #   bind_addr: 0.0.0.0
++    #   port: 5222
++    #   keep_alive: 120
++    #   # url_path: /xmpp/ws
+ 
+-    compression:
+-      level: default
++    # compression:
++    #   level: default
+ 
+     sasl:
+       - plain
+-      - digest_md5
+       - scram_sha_1
+       - scram_sha_256
+       - scram_sha_512

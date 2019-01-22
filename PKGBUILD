@@ -1,8 +1,8 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=jackal
-pkgver=0.4.6
-pkgrel=3
+pkgver=0.4.7
+pkgrel=1
 pkgdesc='An XMPP/Jabber server'
 arch=('x86_64' 'i686')
 url='https://github.com/ortuman/jackal'
@@ -17,13 +17,17 @@ source=(https://github.com/ortuman/jackal/archive/v${pkgver}.tar.gz
         jackal.service
         jackal.sysusers
         jackal.tmpfiles
-        jackal.yml)
-sha256sums=('1c6c8827d905802a35f42bac73476eead768cf8a5540334403e3ee241c2162e2'
+        config.patch)
+sha256sums=('9db6b00f8a8ea38d6c067fcef238b21740a6a534138f6c5e038eb842e95f0976'
             '0a9a9065957e5b0576e5443b29bf0cae81281194664376569a91c51f85e7d7ff'
             '5fec4f4053ac15cd597bb32ba03c35d85f52438204fd801edf333403ec2c4bf3'
             '20b7e5a5fee727e72fdbac54182b594a838340c0625036ca9d117e2a9d710045'
-            'e7e0b6d701c4e0c7b76fb3b446e01926368325e70aff04fa33eb5f9e88f392be')
+            '8186bba156ef45d5c994172cb29b01f6f56c27fcdcb0fa236c3248c8bf30c114')
 install=jackal.install
+
+prepare() {
+  patch -p1 < ../config.patch
+}
 
 build() {
   cd jackal-${pkgver}
@@ -38,7 +42,7 @@ package() {
   install -dm 775 "${pkgdir}/usr/share/doc/jackal/"
   install -dm 775 "${pkgdir}/usr/share/jackal/"
 
-  install -D jackal.yml "${pkgdir}/etc/jackal/jackal.yml"
+  install -D "${srcdir}/jackal-${pkgver}/example.jackal.yml" "${pkgdir}/etc/jackal/jackal.yml"
   install -Dm444 "${srcdir}/jackal-${pkgver}/README.md" "${pkgdir}/usr/share/doc/jackal/"
   cp -r "${srcdir}/jackal-${pkgver}/sql/" "${pkgdir}/usr/share/jackal/"
   install -Dm755 "${srcdir}/jackal-${pkgver}/jackal" "${pkgdir}/usr/bin/jackal"
