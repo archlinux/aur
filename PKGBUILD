@@ -4,12 +4,12 @@
 _gemname=websocket-extensions
 pkgname=ruby-$_gemname
 pkgver=0.1.3
-pkgrel=3
+pkgrel=5
 pkgdesc='Generic extension manager for WebSocket connections'
-arch=(any)
-url='https://github.com/faye/websocket-extensions-ruby'
-license=(MIT)
-depends=(ruby)
+arch=('any')
+url="https://github.com/faye/websocket-extensions-ruby"
+license=('MIT')
+depends=('ruby')
 makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)

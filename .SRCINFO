@@ -1,7 +1,7 @@
 pkgbase = ruby-websocket-extensions
 	pkgdesc = Generic extension manager for WebSocket connections
 	pkgver = 0.1.3
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/faye/websocket-extensions-ruby
 	arch = any
 	license = MIT
