@@ -2,7 +2,7 @@
 # Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
 pkgroot=ucsf-chimera
 pkgname=ucsf-chimera
-pkgver=1.13
+pkgver=1.13.1
 pkgrel=1
 pkgdesc='Extensible molecular modeling system'
 url='https://rbvi.ucsf.edu/chimera/'
@@ -50,3 +50,4 @@ package() {
 }
 
 # vim: ft=sh ts=2 sw=2 et
+
