@@ -9,7 +9,7 @@ pkgname=('leap-motion-driver' 'leap-motion-sdk')
 _major=2.3.1
 _build=31549
 pkgver=${_major}
-pkgrel=5
+pkgrel=6
 pkgdesc="The Leap Motion Developer SDK"
 arch=('i686' 'x86_64')
 url="https://developer.leapmotion.com/downloads"
@@ -37,7 +37,7 @@ package_leap-motion-sdk() {
   cp -r LeapSDK/include/* ${pkgdir}/usr/include/
 
   # copy libs
-  mkdir -p ${pkgdir}/usr/lib/Leap
+  mkdir -p ${pkgdir}/usr/lib/Leap/
 
   cp LeapSDK/lib/{LeapJava.jar,Leap.py} ${pkgdir}/usr/lib/Leap
 
@@ -83,7 +83,12 @@ package_leap-motion-driver() {
   cp -r lib ${pkgdir}/usr/
 
 # move libs in /usr/bin/ to /usr/lib/Leap/
-  mv ${pkgdir}/usr/bin/{libfreebl3.so,libnssdbm3.so,libnssutil3.so,libplc4.so,libplds4.so,libsoftokn3.so,libsqlite3.so,libnspr4.so} ${pkgdir}/usr/lib/Leap/
+  mv ${pkgdir}/usr/bin/{libfreebl3.so,libnssdbm3.so,libnssutil3.so,libplc4.so,libplds4.so,libsoftokn3.so,libsqlite3.so,libnspr4.so} ${pkgdir}/usr/lib/Leap
+  mv ${pkgdir}/usr/bin/Playground_Data/ ${pkgdir}/usr/share/Leap
+  mv ${pkgdir}/usr/bin/Playground ${pkgdir}/usr/share/Leap
+
+# Symlink Playground to bin
+  ln -s "/usr/share/Leap/Playground" "${pkgdir}/usr/bin/leap-playground"
 
 # Install systemd service
   install -Dm644 "${srcdir}/leapd.service" "${pkgdir}/usr/lib/systemd/system/leapd.service"

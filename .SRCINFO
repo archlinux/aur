@@ -1,7 +1,7 @@
 pkgbase = leap-motion
 	pkgdesc = The Leap Motion Developer SDK
 	pkgver = 2.3.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://developer.leapmotion.com/downloads
 	arch = i686
 	arch = x86_64
