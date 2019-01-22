@@ -1,0 +1,51 @@
+pkgbase = vivaldi-arm64
+	pkgdesc = A new browser for our friends. Vivaldi browser is made with power users in mind by people who love the Web.
+	pkgver = 2.2.1388.37
+	pkgrel = 1
+	url = https://vivaldi.com
+	arch = aarch64
+	license = custom
+	makedepends = w3m
+	depends = alsa-lib>=1.0.16
+	depends = atk>=1.12.4
+	depends = at-spi2-atk>=2.5.3
+	depends = at-spi2-core>=2.9.90
+	depends = bash-completion
+	depends = ca-certificates
+	depends = cairo>=1.6.0
+	depends = dbus>=1.0.2
+	depends = desktop-file-utils
+	depends = expat>=2.0.1
+	depends = gdk-pixbuf2>=2.22.0
+	depends = glib2>=2.31.8
+	depends = gtk3>=3.9.10
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
+	depends = libcups>=1.4.0
+	depends = libutil-linux>=2.16
+	depends = libx11>=1.4.99.1
+	depends = libxcb>=1.6
+	depends = libxcomposite>=0.3
+	depends = libxcursor>1.1.2
+	depends = libxdamage>=1.1
+	depends = libxext
+	depends = libxfixes
+	depends = libxi>=1.2.99.4
+	depends = libxrandr>=1.2.99.3
+	depends = libxrender
+	depends = libxss
+	depends = libxtst
+	depends = nspr>=4.9
+	depends = nss>=3.22
+	depends = pango
+	depends = qmmp
+	depends = ttf-liberation
+	depends = xdg-utils>=1.0.2
+	provides = www-browser
+	options = !strip
+	options = !emptydirs
+	source = https://downloads.vivaldi.com/stable/vivaldi-stable_2.2.1388.37-1_arm64.deb
+	sha256sums = c63659de1233346833f155fae73bf7fc60e61d6b3bb1c08d46c6d717d56d778d
+
+pkgname = vivaldi-arm64
+
