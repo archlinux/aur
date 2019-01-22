@@ -1,0 +1,17 @@
+pkgbase = ttf-haeck
+	pkgdesc = Hæck is the Hack fork with programming ligatures.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ignatov/haack
+	install = ttf-haeck.install
+	arch = any
+	license = unknown
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = ttf-inconsolata-g
+	conflicts = ttf-inconsolata-g
+	source = https://github.com/ignatov/Haack/releases/download/0.1/Haeck-Regular.ttf
+	md5sums = 248aaf093d99ffa5cbb933f68e7e986a
+
+pkgname = ttf-haeck
+
