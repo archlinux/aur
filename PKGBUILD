@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=samhain-client
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="file integrity / intrusion detection system"
 arch=(x86_64 armv7h)
@@ -11,7 +11,7 @@ license=('GPL')
 install=samhain.install
 source=("http://www.la-samhna.de/samhain/samhain-current.tar.gz"
         "samhain.service")
-sha256sums=('d4dcedc6bc579c935de7972d23675e94654391c3a1bd19c06ec38e57f7faf1f2'
+sha256sums=('0582864ef56ab796031e8e611ed66c48adeb3a30ec34e1a8d0088572442035fc'
             '7e53bee6bb9ba15db6e741ed3520491c747e57bb58ffc0da6c5d7e235ac720c9')
 validpgpkeys=('EF6CEF54701A0AFDB86AF4C31AAD26C80F571F6C') 
 
