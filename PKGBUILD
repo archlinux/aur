@@ -1,40 +1,39 @@
-# Maintainer: Julian Sanin <sanin89julian@gmail.com>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Julian Sanin <sanin89julian@gmail.com>
 
 pkgname=liberasurecode
-pkgver=1.2.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Erasure Code API library written in C with pluggable Erasure Code backends"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('BSD')
 url="https://github.com/openstack/liberasurecode"
+depends=('zlib')
 makedepends=('doxygen')
-source=("${url}/archive/${pkgver}.tar.gz"
-        "disable-sse.patch"
+source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz"
         "disable-doc-full-path-names.patch")
-md5sums=('5c69a112c872267db2af8d3fc3bbc1d1'
-         '7dd209992c2d9390e2ebcad67fc5e785'
-         '961c0db9f9d1bb23ceee9b28480f42c5')
+sha256sums=('37f36f49f302a47253c7756e13fd7d28028542efbad5acadbf432c1a55a7e085'
+            'c64e3fd34c17ad929feaba016bb3284151fc0ab8c1fc2a5554a8fb617a491112')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
-  patch -p1 <../disable-sse.patch
-  patch -p1 <../disable-doc-full-path-names.patch
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i "${srcdir}/disable-doc-full-path-names.patch"
+  ./autogen.sh
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
-  ./autogen.sh
-  ./configure --prefix=/usr
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr --disable-mmi
   make
 }
 
 check() {
-  cd ${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make test
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
-  install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
