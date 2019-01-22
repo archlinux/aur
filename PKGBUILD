@@ -3,9 +3,10 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Mihai Militaru <mihai.militaru@gmx.com>
 # Contributor: scippio <scippio@berounet.cz>
+# Contributor: Haakon McKay <hagar@iinet.net.au>
 
 pkgname=mingw-w64-freeimage
-pkgver=3.17.0
+pkgver=3.18.0
 pkgrel=1
 pkgdesc="Library project for developers who would like to support popular graphics image formats (mingw-w64)"
 arch=(any)
@@ -14,10 +15,8 @@ url="http://freeimage.sourceforge.net/"
 depends=(mingw-w64-crt)
 makedepends=(mingw-w64-gcc)
 options=(!strip !buildflags staticlibs)
-source=("http://downloads.sourceforge.net/sourceforge/freeimage/FreeImage${pkgver//./}.zip"
-         gcc5.patch)
-md5sums=('459e15f0ec75d6efa3c7bd63277ead86'
-         'ea0a75f431a09ce8fbd539bb9a969679')
+source=("http://downloads.sourceforge.net/sourceforge/freeimage/FreeImage${pkgver//./}.zip")
+md5sums=('f8ba138a3be233a3eed9c456e42e2578')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -27,7 +26,6 @@ prepare() {
   rm Source/LibJXR/common/include/guiddef.h
   sed -i "s,WIN32_CFLAGS =,WIN32_CFLAGS = -fpermissive -D__MINGW64_TOOLCHAIN__," Makefile.mingw
   sed -i -e "s,#ifdef __GNUC__,#ifdef WHATEVER," -e "s,_MSC_VER,WINVER," Source/OpenEXR/IlmImf/ImfSystemSpecific.h
-  patch -p1 -i ../gcc5.patch
 }
 
 build() {
