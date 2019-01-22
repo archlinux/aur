@@ -9,14 +9,13 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=3.37.0.r49.ge4b3f75c27
+pkgver=3.38.1.r17.gd7d7810a44
 pkgrel=1
-_mathjax_commit=2.7.5
 pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
 license=('GPL3')
-depends=('chmlib' 'icu' 'jxrlib' 'libmtp' 'libusbx' 'libwmf' 'mtdev' 'optipng' 'podofo'
+depends=('chmlib' 'icu' 'jxrlib' 'libmtp' 'libusbx' 'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo'
          'poppler' 'python2-apsw' 'python2-cssselect'
          'python2-css-parser' 'python2-dateutil' 'python2-dbus' 'python2-dnspython'
          'python2-dukpy' 'python2-html5-parser' 'python2-mechanize' 'python2-msgpack'
@@ -29,11 +28,9 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/kovidgoyal/${pkgname%-git}.git?signed"
         "git+https://github.com/kovidgoyal/${pkgname%-git}-translations.git?signed"
-        "MathJax-${_mathjax_commit}.tar.gz::https://github.com/mathjax/MathJax/archive/${_mathjax_commit}.tar.gz"
         "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
-            'a25e5736553eef7b05ba00df133ad36d8f7b3b967f1e32d2f7505ac77427946f'
             'b6da5e354a167f000462cf7964132c6e0749e16588249ef75ab31a62230561b8')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
@@ -71,7 +68,7 @@ build() {
   LANG='en_US.UTF-8' python2 setup.py iso3166
   LANG='en_US.UTF-8' python2 setup.py translations
   LANG='en_US.UTF-8' python2 setup.py gui
-  LANG='en_US.UTF-8' python2 setup.py resources
+  LANG='en_US.UTF-8' python2 setup.py resources --path-to-mathjax /usr/share/mathjax --system-mathjax
 
   # manpages simply don't build at the moment:
   # https://github.com/sphinx-doc/sphinx/issues/5150
@@ -81,7 +78,6 @@ build() {
   # recently-generated copy to allow offline builds.
   cp ../user-agent-data.json resources/
   LANG='en_US.UTF-8' python2 setup.py recent_uas || true
-  LANG='en_US.UTF-8' python2 setup.py mathjax --path-to-mathjax="${srcdir}/MathJax-${_mathjax_commit}"
 }
 
 check() {
