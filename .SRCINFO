@@ -1,0 +1,36 @@
+pkgbase = python-visdom-git
+	pkgver = r209.2ef12d4
+	pkgrel = 1
+	url = https://github.com/facebookresearch/visdom
+	arch = any
+	license = CCPL:by-nc
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = git+https://github.com/facebookresearch/visdom.git
+	sha256sums = SKIP
+
+pkgname = python-visdom-git
+	install = visdom.install
+	depends = python-websocket-client
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-requests
+	depends = python-tornado
+	depends = python-pyzmq
+	depends = python-six
+	depends = python-torchfile
+	provides = python-visdom
+
+pkgname = python2-visdom-git
+	install = visdom2.install
+	depends = python2-websocket-client
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-requests
+	depends = python2-tornado
+	depends = python2-pyzmq
+	depends = python2-six
+	depends = python2-torchfile
+	provides = python2-visdom
+
