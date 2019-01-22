@@ -1,7 +1,7 @@
 pkgbase = dokku
 	pkgdesc = Docker powered mini-Heroku in around 100 lines of Bash.
-	pkgver = 0.14.2
-	pkgrel = 4
+	pkgver = 0.14.3
+	pkgrel = 1
 	url = https://github.com/dokku/dokku
 	install = dokku.install
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = dokku
 	depends = procfile-util
 	depends = rsyslog
 	depends = sshcommand
-	source = https://github.com/dokku/dokku/archive/v0.14.2.zip
+	source = https://github.com/dokku/dokku/archive/v0.14.3.zip
 	source = dokku.install
-	sha256sums = 39c4ba9c8a84f60f21bbf4cadd80a9af76e348ee01b0a0843ef614a1253e9674
+	sha256sums = 2fe1c89fef393982e5715c7123052fea290ba2a9c856dba0be276d610e0c5c4f
 	sha256sums = c2d7561e5e9931b13421af629672fe417ab36db0f803cadacbf3614507cc0601
 
 pkgname = dokku
