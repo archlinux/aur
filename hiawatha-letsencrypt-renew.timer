@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily renewal of Let's Encrypt's certificates
+
+[Timer]
+OnCalendar=daily
+# Be kind to the Let's Encrypt servers: add a random delay of 12 hours
+RandomizedDelaySec=12h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
