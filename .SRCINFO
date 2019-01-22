@@ -1,0 +1,22 @@
+pkgbase = pism
+	pkgdesc = Parallel Ice Sheet Model (PISM)
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.pism-docs.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake>=3.1
+	depends = fftw>=3.1
+	depends = gsl>=1.15
+	depends = netcdf
+	depends = openmpi
+	depends = petsc>=3.5
+	depends = proj
+	depends = udunits
+	source = https://github.com/pism/pism/archive/v1.1.tar.gz
+	md5sums = c8caa9e70ca44b179da0a25d0e65832b
+
+pkgname = pism
+
