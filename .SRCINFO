@@ -1,0 +1,21 @@
+pkgbase = printer-driver-indexbraille-git
+	pkgdesc = CUPS filter/driver for Index Braille Embossers. Includes support for Index-direct-Braille (idB)
+	pkgver = r125.2995b05
+	pkgrel = 1
+	url = https://www.indexbraille.com
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	depends = glibc
+	depends = cups
+	depends = libcups
+	conflicts = printer-driver-indexbraille
+	source = git+https://github.com/IndexBraille/linux-driver.git#branch=master
+	md5sums = SKIP
+
+pkgname = printer-driver-indexbraille-git
+
