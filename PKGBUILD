@@ -2,7 +2,7 @@
 
 pkgname=raja
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of C++ software abstractions that enable architecture portability for HPC applications"
 arch=('i686' 'x86_64')
 url="http://raja.readthedocs.io/en/master/"
@@ -25,7 +25,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
-    -DENABLE_MPI=On \
+    -DENABLE_MPI=Off \
     -DENABLE_CHAI=Off \
     -DENABLE_FT=On \
     -DENABLE_FRUIT=On \
@@ -41,8 +41,7 @@ build() {
 
 check() {
   cd ${srcdir}/build
-  # currently fails due to https://github.com/LLNL/RAJA/issues/569
-  #make test
+  make test
 }
 
 package() {
