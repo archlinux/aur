@@ -1,0 +1,13 @@
+pkgbase = dollar
+	pkgdesc = Omit the $ from commands
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/editicalu/dollar
+	arch = any
+	license = custom:unlicense
+	conflicts = dollar-sign
+	source = https://github.com/editicalu/dollar/archive/1.tar.gz
+	sha512sums = 55f1566297afa0edcda3116ab4752eaa2e74f43bf9e3ef1f4650a9aa6c76e08d7e71bbf24e05da607c81b8a5b6bb2b4d9263303974cad87bc5070438d3756bae
+
+pkgname = dollar
+
