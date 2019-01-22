@@ -1,13 +1,13 @@
 pkgbase = btmenu
 	pkgdesc = Control bluetooth devices with dmenu
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://github.com/cdown/btmenu
 	arch = any
 	license = ISC
 	depends = dmenu
-	source = https://github.com/cdown/btmenu/archive/1.1.2.zip
-	md5sums = 9516f21f26018fde999ae8393be0560b
+	source = https://github.com/cdown/btmenu/archive/1.2.0.zip
+	md5sums = d03939177e9a92484447fa4da7d742ad
 
 pkgname = btmenu
 
