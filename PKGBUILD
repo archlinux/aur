@@ -1,7 +1,7 @@
-# Maintainer: Jorge Araya Navarro <jorge@esavara.cr>
+# Maintainer: Jorge Araya Navarro <jorgejavieran@yahoo.com.mx>
 pkgname=goimapnotify
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 pkgdesc="Execute scripts on IMAP mailbox changes (new/deleted/updated messages) using IDLE, golang version."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/shackra/goimapnotify"
@@ -10,8 +10,8 @@ makedepends=('go')
 options=('!strip' '!emptydirs')
 source=("https://gitlab.com/shackra/goimapnotify/repository/v${pkgver}/archive.tar.gz"
         "goimapnotify@.service")
-md5sums=('9ce70cfea305bbdbe0f76586de53c125'
-         '068b407bddb24fab44f01cf780622634')
+sha256sums=('366d30c926b4615e79d55871eac7c3ed744fbc1aa9bd82852e738faba34d3efd'
+            'a6796c2b1ae3a03d096ad7755eaeb07ae33a5aa8ff32cca8b906fe0bbd67ba83')
 
 prepare() {
   _dir=`find "$PWD" -iname "${pkgname}-v${pkgver}-*" -type d`
