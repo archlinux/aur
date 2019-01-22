@@ -1,6 +1,6 @@
 # Contributor: Martin Grønlien Pejcoch <mpejcoch@gmail.com>
 pkgname=ecflow-ui
-pkgver=4.11.1
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="ECMWF GUI client for ecFlow"
 arch=(i686 x86_64)
@@ -17,13 +17,14 @@ options=()
 install=
 source=(https://software.ecmwf.int/wiki/download/attachments/8650755/ecFlow-${pkgver}-Source.tar.gz)
 noextract=()
-sha256sums=('b3bcc1255939f87b9ba18d802940e08c0cf6379ca6aeec1fef7bd169b0085d6c')
+sha256sums=('566b797e8d78e3eb93946b923ef540ac61f50d4a17c9203d263c4fd5c39ab1d1')
 
 build() {
   cd ecFlow-${pkgver}-Source
+  awk -i inplace '/AbstractClientEnv.hpp/ { print; print "#include <iostream>"; next }1' Base/src/cts/CtsCmdRegistry.cpp
   mkdir -p build && cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_FLAGS=-w -DENABLE_SERVER=off -DENABLE_PYTHON=off -DENABLE_UI=on -DENABLE_GUI=off \
+    -DCMAKE_CXX_FLAGS=-w -DENABLE_SERVER=off -DENABLE_PYTHON=off -DENABLE_UI=on -DENABLE_GUI=off \ #-DENABLE_SSL=on -DENABLE_SECURE_USER=off \
     -DBOOST_ROOT=/usr \
     -DECF_NO_PYTHON=1 ..
 }
@@ -34,7 +35,7 @@ package()
   echo "$pkgdir"
   make DESTDIR="$pkgdir" -j$(grep processor /proc/cpuinfo | wc -l) install ecflow_ui.x || return 1
   cd ${pkgdir}/usr/bin/
-  rm ecflow_logsvr.pl  ecflow_logserver.sh ecflow_start.sh  ecflow_stop.sh  ecflow_test_ui.sh noconnect.sh
+  rm ecflow_logsvr.pl  ecflow_logserver.sh ecflow_start.sh  ecflow_stop.sh  ecflow_test_ui.sh noconnect.sh ecflow_fuse.py  ecflow_standalone  ecflow_ui_log  ecflow_ui_log.x  ecflow_ui_node_state_diag.sh
   rm -rf ${pkgdir}/usr/share/ecflow/cmake
 }
 
