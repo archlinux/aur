@@ -1,4 +1,5 @@
 pkgbase = python-visdom-git
+	pkgdesc = Visualization tool for Pytorch by Facebook
 	pkgver = r209.2ef12d4
 	pkgrel = 1
 	url = https://github.com/facebookresearch/visdom
@@ -19,7 +20,7 @@ pkgname = python-visdom-git
 	depends = python-tornado
 	depends = python-pyzmq
 	depends = python-six
-	depends = python-torchfile
+	depends = python-torchfile-git
 	provides = python-visdom
 
 pkgname = python2-visdom-git
@@ -31,6 +32,6 @@ pkgname = python2-visdom-git
 	depends = python2-tornado
 	depends = python2-pyzmq
 	depends = python2-six
-	depends = python2-torchfile
+	depends = python2-torchfile-git
 	provides = python2-visdom
 

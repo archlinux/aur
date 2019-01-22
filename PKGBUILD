@@ -10,6 +10,7 @@ pkgver=r209.2ef12d4
 pkgrel=1
 arch=(any)
 url='https://github.com/facebookresearch/visdom'
+pkgdesc='Visualization tool for Pytorch by Facebook'
 license=(CCPL:by-nc)
 makedepends=(
   'python-setuptools'
@@ -25,7 +26,7 @@ pkgver() {
 }
 
 package_python-visdom-git() {
-depends=('python-websocket-client' 'python-numpy' 'python-scipy' 'python-requests' 'python-tornado' 'python-pyzmq' 'python-six' 'python-torchfile')
+depends=('python-websocket-client' 'python-numpy' 'python-scipy' 'python-requests' 'python-tornado' 'python-pyzmq' 'python-six' 'python-torchfile-git')
 provides=('python-visdom')
 install='visdom.install'
   cd "${srcdir}/visdom"
@@ -35,7 +36,7 @@ install='visdom.install'
 }
 
 package_python2-visdom-git() {
-depends=('python2-websocket-client' 'python2-numpy' 'python2-scipy' 'python2-requests' 'python2-tornado' 'python2-pyzmq' 'python2-six' 'python2-torchfile')
+depends=('python2-websocket-client' 'python2-numpy' 'python2-scipy' 'python2-requests' 'python2-tornado' 'python2-pyzmq' 'python2-six' 'python2-torchfile-git')
 provides=('python2-visdom')
 install='visdom2.install'
   cd "${srcdir}/visdom"
