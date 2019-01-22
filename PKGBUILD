@@ -8,7 +8,7 @@ pkgdesc="provides infrastructure to simplify the gathering of information about 
 url="http://sourceware.org/systemtap/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('elfutils' 'nss' 'python' 'json-c' 'avahi')
+depends=('elfutils' 'nss' 'python' 'json-c' 'avahi' 'readline' 'nspr')
 makedepends=('git' 'python-setuptools' 'xmlto' 'cpio')
 optdepends=('sqlite')
 provides=(systemtap=4.0)
