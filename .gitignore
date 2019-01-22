@@ -1,2 +1,7 @@
-powerpanel-*.tar.gz
-*.pkg.tar*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!pwrstatd.service
+!hibernate.sh
+!shutdown.sh
