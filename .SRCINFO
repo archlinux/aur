@@ -1,6 +1,6 @@
 pkgbase = st-scrollback-git
 	pkgdesc = Simple virtual terminal emulator for X, patched with scrollback patches
-	pkgver = 0.8.1.r20.ge23acb9
+	pkgver = 0.8.1.r22.g3be4cf1
 	pkgrel = 1
 	url = https://st.suckless.org/
 	arch = i686
@@ -13,11 +13,11 @@ pkgbase = st-scrollback-git
 	provides = st
 	conflicts = st
 	source = git://git.suckless.org/st
-	source = https://st.suckless.org/patches/scrollback/st-scrollback-20181224-096b125.diff
+	source = https://st.suckless.org/patches/scrollback/st-scrollback-20190122-3be4cf1.diff
 	source = https://st.suckless.org/patches/scrollback/st-scrollback-mouse-0.8.diff
 	source = https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20190106-e23acb9.diff
 	sha1sums = SKIP
-	sha1sums = dc2f1a848528342624aa28a061ceb7444bb9c7c7
+	sha1sums = 0be8cf5c0098569e4b4d862183014c0a052dc704
 	sha1sums = 46e92d9d3f6fd1e4f08ed99bda16b232a1687407
 	sha1sums = c355ec41f2fcc129d866e6ae2433309b40d673e5
 

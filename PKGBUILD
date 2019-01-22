@@ -4,7 +4,7 @@
 # Contributor: Scytrin dai Kinthra <scytrin@gmail.com>
 
 pkgname=st-scrollback-git
-pkgver=0.8.1.r20.ge23acb9
+pkgver=0.8.1.r22.g3be4cf1
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X, patched with scrollback patches'
 url='https://st.suckless.org/'
@@ -12,13 +12,13 @@ arch=('i686' 'x86_64')
 license=('MIT')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
-_patches=('https://st.suckless.org/patches/scrollback/st-scrollback-20181224-096b125.diff'
+_patches=('https://st.suckless.org/patches/scrollback/st-scrollback-20190122-3be4cf1.diff'
           'https://st.suckless.org/patches/scrollback/st-scrollback-mouse-0.8.diff'
           'https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20190106-e23acb9.diff')
 source=('git://git.suckless.org/st'
         ${_patches[@]})
 sha1sums=('SKIP'
-          'dc2f1a848528342624aa28a061ceb7444bb9c7c7'
+          '0be8cf5c0098569e4b4d862183014c0a052dc704'
           '46e92d9d3f6fd1e4f08ed99bda16b232a1687407'
           'c355ec41f2fcc129d866e6ae2433309b40d673e5')
 
@@ -36,7 +36,7 @@ prepare() {
 
     for patch in ${_patches[@]}; do
         echo "Applying patch ${patch##*/}..."
-        git apply "${srcdir}/${patch##*/}"
+        git apply -v "${srcdir}/${patch##*/}"
     done
 
     echo 'Copying config.def.h to $startdir...'
