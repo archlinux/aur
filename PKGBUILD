@@ -5,7 +5,7 @@ pkgname=srb2kart
 pkgver=1.0.2
 _dataver=1.0.2
 _patchver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2, based on a modified version of Doom Legacy.'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -36,7 +36,10 @@ prepare() {
 build() {
   cd Kart-Public/src
 
-  # do not upx binary (optional: show warnings, be verbose)
+  # clear out CPPFLAGS ( -D_FORTIFY_SOURCE doesn't like kart )
+  CPPFLAGS=""
+
+  # do not use upx binary (optional: show warnings, be verbose)
   CC="cc -m32" make LINUX=1 NOUPX=1 #WARNINGMODE=1 #ECHO=1
 }
 
