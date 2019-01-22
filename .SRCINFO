@@ -1,6 +1,6 @@
 pkgbase = ttf-google-fonts-git
 	pkgdesc = TrueType fonts from the Google Fonts project (git version)
-	pkgver = r1333.ef5baa48
+	pkgver = r1377.1ebe5dcf
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/google/fonts
@@ -70,6 +70,7 @@ pkgbase = ttf-google-fonts-git
 	conflicts = ttf-source-sans-pro-ibx
 	conflicts = ttf-vollkorn-ibx
 	conflicts = ttf-arabeyes-fonts
+	conflicts = ttf-google-fonts-typewolf
 	source = git+https://github.com/google/fonts.git
 	sha512sums = SKIP
 
