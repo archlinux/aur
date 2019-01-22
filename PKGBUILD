@@ -6,7 +6,7 @@ pkgdesc="Protein X-ray crystallography toolkit - Libraries"
 arch=('i686' 'x86_64')
 url="http://www.ccp4.ac.uk/"
 license=('GPL')
-depends=('mmdb2>=2.0.19')
+depends=('mmdb2>=2.0.19-1')
 makedepends=('gcc-fortran')
 conflicts=('libccp4-bzr')
 source=(ftp://ftp.ccp4.ac.uk/opensource/$pkgname-$pkgver.tar.gz)
