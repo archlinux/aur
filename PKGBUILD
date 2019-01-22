@@ -1,12 +1,12 @@
 pkgname=osvr-core-git
-pkgver=0.2.r3045.g2d6e9cbf
+pkgver=0.2.r3053.gb2fbb44e
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
 url="https://github.com/OSVR/OSVR-Core"
 #license=('GPL')
 makedepends=('git' 'cmake')
-depends=('jsoncpp' 'markdown' 'boost' 'opencv' 'osvr-libfunctionality-git' 'libuvc') #TODO: add more deps
+depends=('jsoncpp' 'markdown' 'boost' 'opencv2-opt' 'osvr-libfunctionality-git' 'libuvc') #TODO: add more deps
 source=("osvr-core::git+https://github.com/OSVR/OSVR-Core.git"
 	"json-schemas::git+https://github.com/OSVR/OSVR-JSON-Schemas.git"
 	"vendor-discount-windows-bins::git+https://github.com/OSVR/discount.git"
@@ -23,7 +23,6 @@ pkgver() {
 
 prepare() {
   cd osvr-core
-  #find . -name CMakeLists.txt -exec sed -i 's/jsoncpp_lib/jsoncpp/g' {} \;
 
   git submodule init
   git config submodule.json-schemas.url "$srcdir/json-schemas"
@@ -33,8 +32,6 @@ prepare() {
   git submodule update --init --recursive
 
   mkdir -p "$srcdir/osvr-core-build/"
-
-  #git cherry-pick 3b5e3a6f3132afbdaf251161ba3b3d03c790f45f #disable ignored-attributes warning on gcc
 }
 
 build() {
@@ -42,7 +39,16 @@ build() {
   git submodule init
   git submodule update
   cd "$srcdir/osvr-core-build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DOSVR_UTIL_DEV_VERBOSE=0 -DBUILD_TESTING=0 -DBUILD_HEADER_DEPENDENCY_TESTS=0 -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_CXX_FLAGS='-Wno-ignored-attributes' ../osvr-core
+  cmake	\
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DOSVR_UTIL_DEV_VERBOSE=0 \
+    -DBUILD_TESTING=0 \
+    -DBUILD_HEADER_DEPENDENCY_TESTS=0 \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_CXX_FLAGS='-Wno-ignored-attributes' \
+    -DOpenCV_DIR=/opt/opencv2/share/opencv2 \
+    ../osvr-core
   make
 }
 
