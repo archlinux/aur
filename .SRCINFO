@@ -1,14 +1,18 @@
 pkgbase = xcursor-dmz
 	pkgdesc = Style neutral, scalable cursor theme
-	pkgver = 0.4.4
-	pkgrel = 2
+	pkgver = 0.4.5
+	pkgrel = 1
 	url = https://packages.debian.org/sid/dmz-cursor-theme
 	arch = any
 	groups = x11
 	license = MIT
 	makedepends = xorg-xcursorgen
-	source = http://cdn.debian.net/debian/pool/main/d/dmz-cursor-theme/dmz-cursor-theme_0.4.4.tar.gz
-	md5sums = 06fbab13df89c5770ce61b0e3e31e5f6
+	source = http://cdn.debian.net/debian/pool/main/d/dmz-cursor-theme/dmz-cursor-theme_0.4.5.tar.xz
+	source = http://cdn.debian.net/debian/pool/main/d/dmz-cursor-theme/dmz-cursor-theme_0.4.5.dsc
+	source = LICENSE
+	sha256sums = b719a64ed9c51905743105e5a50b15492695929ab2d6fca2cea760d52ccd1f5c
+	sha256sums = e214d75442fc040d53b74c108a798239dfffa641173475a07ea43bd7e0f56311
+	sha256sums = 40dfbfc2cbe54d70a3c9de047d4aa8e8c7ebb4f41a5b0290d4bb36e2a2a5326f
 
 pkgname = xcursor-dmz
 
