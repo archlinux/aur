@@ -3,14 +3,14 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=v12.0.10.r57.g09d91b099
+pkgver=v12.0.10.r93.gb98f6878b
 pkgrel=1
 pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
 install=codelite-git.install
-makedepends=('pkgconfig' 'cmake' 'clang')
+makedepends=('pkgconfig' 'cmake' 'clang' 'git')
 depends=(
   'wxgtk'
   'libedit'
