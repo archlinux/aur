@@ -2,8 +2,8 @@
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 
 pkgname=onlyoffice-bin
-pkgver=5.2.4
-pkgrel=2
+pkgver=5.2.8
+pkgrel=1
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
@@ -25,7 +25,7 @@ _srcfile='onlyoffice-desktopeditors_amd64.deb'
 _srcurl="https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-${pkgver}/${_srcfile}"
 source=("onlyoffice-desktopeditors-${pkgver}_amd64.deb"::"$_srcurl")
 noextract=("onlyoffice-desktopeditors-${pkgver}_amd64.deb")
-sha256sums=('f64972c458f74641f6bb8fcbda3e95609c1e3311bd410842cc23e953e67d19c3')
+sha256sums=('63807be5cc43462e3b3554301fd22ab41e1a084eeb5b4eead73b5c9d844c43b1')
 
 prepare() {
     mkdir -p "onlyoffice-${pkgver}"
