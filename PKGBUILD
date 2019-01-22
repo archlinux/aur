@@ -1,14 +1,14 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rsound-git
 pkgver=0.6.r699.g5148cde
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A multi-platform, simple PCM audio server and client."
 arch=('i686' 'x86_64')
 url="https://github.com/Themaister/RSound"
 license=('GPLv3')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=('alsa-lib' 'oss' 'libao' 'portaudio' 'openal' 'pulseaudio' 'jack')
 checkdepends=()
