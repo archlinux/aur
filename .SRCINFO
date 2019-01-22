@@ -1,6 +1,6 @@
 pkgbase = klayout-git
 	pkgdesc = High Performance Layout Viewer And Editor. Support of GDS and OASIS files.
-	pkgver = v0.25.4.r47.g9dd603bb
+	pkgver = v0.25.4.r517.g51ea5398
 	pkgrel = 1
 	url = http://www.klayout.org/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = klayout-git
 	depends = qt5-multimedia
 	depends = qt5-xmlpatterns
 	depends = qt5-svg
-	depends = ruby2.3
+	depends = ruby
 	depends = python
 	source = klayout::git+https://github.com/klayoutmatthias/klayout#branch=master
 	source = klayoutEditor.desktop
