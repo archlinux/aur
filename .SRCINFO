@@ -1,7 +1,7 @@
 pkgbase = deluge-git
 	pkgdesc = A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)
 	pkgver = 2.0.0b2.dev313.gb2e19561e
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://deluge-torrent.org/
 	arch = any
@@ -29,6 +29,7 @@ pkgbase = deluge-git
 	depends = xdg-utils
 	optdepends = librsvg: gtk ui
 	optdepends = pygtk: gtk ui
+	optdepends = python2-gobject: gtk ui
 	optdepends = python2-mako: web ui
 	optdepends = python2-notify: libnotify notifications
 	optdepends = python2-pygame: audible notifications

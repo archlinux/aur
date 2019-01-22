@@ -7,7 +7,7 @@
 pkgname=deluge-git
 _srcname=deluge
 pkgver=2.0.0b2.dev313.gb2e19561e
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)"
 arch=('any')
@@ -26,6 +26,7 @@ makedepends=(
 )
 optdepends=('librsvg: gtk ui'
             'pygtk: gtk ui'
+            'python2-gobject: gtk ui'
             'python2-mako: web ui'
             'python2-notify: libnotify notifications'
             'python2-pygame: audible notifications'
@@ -64,7 +65,7 @@ build() {
 package() {
     cd "$_srcname"
     
-    python2 setup.py install --prefix='/usr' --root="$pkgdir" --optimize='1'
+    python2 setup.py install --prefix='/usr' --root="$pkgdir" --skip-build --optimize='1'
     
     install -D -m644 "${srcdir}/deluged.service"    "${pkgdir}/usr/lib/systemd/system/deluged.service"
     install -D -m644 "${srcdir}/deluge-web.service" "${pkgdir}/usr/lib/systemd/system/deluge-web.service"
