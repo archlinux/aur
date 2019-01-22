@@ -10,7 +10,7 @@ url="https://gitlab.com/alextee/zrythm"
 license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('gtk3' 'lv2' 'lilv' 'suil' 'jack' 'libsndfile' 'libsmf' 'libdazzle')
+depends=('gtk3' 'lv2' 'lilv' 'suil' 'jack' 'libsndfile' 'libsmf' 'libdazzle' 'breeze-icons')
 makedepends=('git')
 source=("$_pkgname::git+https://gitlab.com/alextee/zrythm.git"
         "git+https://github.com/KDE/breeze-icons.git")
