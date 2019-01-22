@@ -9,7 +9,7 @@ pkgbase = libcyaml-git
 	depends = libyaml
 	provides = libcyaml
 	conflicts = libcyaml
-	source = libcyaml:git+https://gitlab.com/alextee/libcyaml.git
+	source = libcyaml::git+https://gitlab.com/alextee/libcyaml.git
 	md5sums = SKIP
 
 pkgname = libcyaml-git

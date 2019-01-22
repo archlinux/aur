@@ -12,7 +12,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('libyaml')
 makedepends=('git')
-source=("$_pkgname:git+https://gitlab.com/alextee/$_pkgname.git")
+source=("$_pkgname::git+https://gitlab.com/alextee/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver () {
@@ -26,10 +26,11 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	make --prefix=/usr
+  make
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
-	make DESTDIR="$pkgdir" install
+  mkdir -p $pkgdir/usr/lib/pkgconfig $pkgdir/usr/include
+	make DESTDIR="$pkgdir" PREFIX=/usr install
 }
