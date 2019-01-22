@@ -1,6 +1,6 @@
 pkgbase = hyperledger-indy-anoncreds
 	pkgdesc = A python implementation of the anonymous credentials ideas developed by IBM Research
-	pkgver = 1.0.45
+	pkgver = 1.0.46
 	pkgrel = 1
 	url = https://github.com/hyperledger/indy-anoncreds
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = hyperledger-indy-anoncreds
 	license = APACHE
 	makedepends = python
 	depends = python
-	source = https://github.com/hyperledger/indy-anoncreds/archive/1.0.45-master.tar.gz
-	md5sums = e3645355a1d2829be4814d5114ce8516
+	source = https://github.com/hyperledger/indy-anoncreds/archive/1.0.46-master.tar.gz
+	md5sums = 7e4a4ed43d768953e541371ca9490452
 
 pkgname = hyperledger-indy-anoncreds
 

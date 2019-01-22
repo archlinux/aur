@@ -2,7 +2,7 @@
 
 _pkgname=indy-anoncreds
 pkgname=hyperledger-${_pkgname}
-pkgver=1.0.45
+pkgver=1.0.46
 pkgrel=1
 pkgdesc="A python implementation of the anonymous credentials ideas developed by IBM Research"
 arch=(i686 x86_64)
@@ -18,4 +18,4 @@ package() {
 	python setup.py install -O1 --root="$pkgdir"
 }
 
-md5sums=('e3645355a1d2829be4814d5114ce8516')
+md5sums=('7e4a4ed43d768953e541371ca9490452')
