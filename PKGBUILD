@@ -2,7 +2,7 @@
 
 pkgname=vk-dumper
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for saving your messages and media from vk.com to JSON format"
 arch=('any')
 url="https://github.com/AbsurdlySuspicious/vk-dumper"

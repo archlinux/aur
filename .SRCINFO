@@ -1,7 +1,7 @@
 pkgbase = vk-dumper
 	pkgdesc = Utility for saving your messages and media from vk.com to JSON format
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AbsurdlySuspicious/vk-dumper
 	arch = any
 	license = Apache
