@@ -10,7 +10,7 @@ pkgdesc="Prebuilt ffmpeg-codecs package for vivaldi for rpi"
 arch=('aarch64')
 url="https://packages.ubuntu.com/zesty/armhf/chromium-codecs-ffmpeg-extra/download"
 license=('LGPL')
-#depends=('vivaldi-arm64')
+depends=('vivaldi-arm64')
 provides=(
   'vivaldi-ffmpeg-codecs'
 )
