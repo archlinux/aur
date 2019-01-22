@@ -6,7 +6,7 @@
 pkgname=lutris-beta
 _pkgname=lutris
 pkgver=0.5.0b3
-_pkgver=0.5.0-beta3
+_pkgver=0.5.0beta3
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
