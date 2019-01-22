@@ -11,7 +11,7 @@ license=('GPL')
 install=samhain.install
 source=("http://www.la-samhna.de/samhain/samhain-current.tar.gz"
         "yule.service")
-sha256sums=('d4dcedc6bc579c935de7972d23675e94654391c3a1bd19c06ec38e57f7faf1f2'
+sha256sums=('0582864ef56ab796031e8e611ed66c48adeb3a30ec34e1a8d0088572442035fc'
             'f8c579fd60b1004272351f257374615d99adab43249b746f557abf0f91cd4c90')
 validpgpkeys=('EF6CEF54701A0AFDB86AF4C31AAD26C80F571F6C') 
 
