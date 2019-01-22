@@ -1,13 +1,13 @@
 pkgbase = pmbootstrap
 	pkgdesc = Sophisticated chroot/build/flash tool to develop and install postmarketOS
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://postmarketos.org
 	arch = any
 	license = GPL3
 	depends = python-setuptools
-	source = https://gitlab.com/postmarketOS/pmbootstrap/-/archive/1.2.0/pmbootstrap-1.2.0.tar.gz
-	sha256sums = fb9f31d87302f9b2502c9524f8e1f1c2774d054e1d53f022fb7774b347c1f8e9
+	source = https://gitlab.com/postmarketOS/pmbootstrap/-/archive/1.3.0/pmbootstrap-1.3.0.tar.gz
+	sha256sums = bf744d573f5dcc35b0156d14687fcc6ff5d9483e3c803285c8f17eb73daed686
 
 pkgname = pmbootstrap
 
