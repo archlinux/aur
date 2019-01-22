@@ -1,10 +1,8 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=terminus-terminal-bin
 _pkgname=terminus
-_pkgver=1.0.65
-pkgver=1.0.65
+pkgver=1.0.69
 pkgrel=1
-alpha=65
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
 url="https://github.com/Eugeny/terminus"
@@ -15,7 +13,7 @@ provides=("terminus-terminal")
 conflicts=("terminus-terminal")
 replaces=('terminus-terminal')
 source=("$url/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
-sha256sums=('7e02f2b6e1b804ea6097f9abe31eb38692a1b2013e3f0934728de0c118083c43')
+sha256sums=('3766c57c0b0752419b3f5bbb2ccd54d0cfc8d24838af49e72b711b1df520504d')
 
 
 package() {

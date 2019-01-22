@@ -1,6 +1,6 @@
 pkgbase = terminus-terminal-bin
 	pkgdesc = A terminal for a more modern age
-	pkgver = 1.0.65
+	pkgver = 1.0.69
 	pkgrel = 1
 	url = https://github.com/Eugeny/terminus
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = terminus-terminal-bin
 	provides = terminus-terminal
 	conflicts = terminus-terminal
 	replaces = terminus-terminal
-	source = https://github.com/Eugeny/terminus/releases/download/v1.0.65/terminus-1.0.65-linux.deb
-	sha256sums = 7e02f2b6e1b804ea6097f9abe31eb38692a1b2013e3f0934728de0c118083c43
+	source = https://github.com/Eugeny/terminus/releases/download/v1.0.69/terminus-1.0.69-linux.deb
+	sha256sums = 3766c57c0b0752419b3f5bbb2ccd54d0cfc8d24838af49e72b711b1df520504d
 
 pkgname = terminus-terminal-bin
 
