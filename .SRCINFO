@@ -1,6 +1,6 @@
 pkgbase = lutris-beta
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.0b2
+	pkgver = 0.5.0b3
 	pkgrel = 1
 	url = https://github.com/lutris/lutris
 	arch = any
@@ -23,13 +23,15 @@ pkgbase = lutris-beta
 	depends = curl
 	depends = xorg-xrandr
 	depends = gnome-desktop
+	depends = python-requests
+	depends = python-pillow
 	optdepends = wine: Run windows games
 	optdepends = wine-staging: Run windows games - Staging patches
 	optdepends = python-evdev: Detecting connected joypads.
 	optdepends = python-pyinotify: Enhanced Steam integration.
 	provides = lutris
 	conflicts = lutris
-	source = https://github.com/lutris/lutris/archive/v0.5.0-beta2.tar.gz
+	source = https://github.com/lutris/lutris/archive/v0.5.0-beta3.tar.gz
 	sha512sums = SKIP
 
 pkgname = lutris-beta

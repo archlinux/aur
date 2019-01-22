@@ -5,14 +5,14 @@
 
 pkgname=lutris-beta
 _pkgname=lutris
-pkgver=0.5.0b2
-_pkgver=0.5.0-beta2
+pkgver=0.5.0b3
+_pkgver=0.5.0-beta3
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://github.com/lutris/lutris'
 license=('GPL3')
-depends=('python-gobject' 'python-yaml' 'python-evdev' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unrar' 'unzip' 'p7zip' 'curl' 'xorg-xrandr' 'gnome-desktop')
+depends=('python-gobject' 'python-yaml' 'python-evdev' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unrar' 'unzip' 'p7zip' 'curl' 'xorg-xrandr' 'gnome-desktop' 'python-requests' 'python-pillow')
 makedepends=('python-setuptools')
 checkdepends=('xorg-server-xvfb' 'xterm' 'python-nose-cover3' 'wine')
 optdepends=('wine: Run windows games'
