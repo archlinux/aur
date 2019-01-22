@@ -5,6 +5,7 @@
 
 pkgbase=python-torchfile-git
 _pkgbase="${pkgbase#python-}"
+pkgdesc="Serialization of torch data"
 pkgname=(python-torchfile-git python2-torchfile-git)
 pkgver=r33.20b3e13
 pkgrel=1
