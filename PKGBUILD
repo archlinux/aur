@@ -3,7 +3,7 @@
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 
 pkgname=chessx-svn
-pkgver=1.4.8.2442
+pkgver=1.4.8.2464
 pkgrel=1
 pkgdesc="A free chess database"
 arch=(i686 x86_64)
