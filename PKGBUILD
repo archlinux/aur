@@ -2,8 +2,8 @@
 
 pkgname=cxx
 pkgver=3.0.5
-pkgrel=1
-pkgdesc='Easy build system for modern C++ that uses SCons and GNU Make'
+pkgrel=2
+pkgdesc='Build system for modern C++ that uses SCons and GNU Make'
 arch=('x86_64')
 url='https://github.com/xyproto/cxx'
 license=('MIT')
