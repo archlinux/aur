@@ -1,7 +1,7 @@
 
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname="vivado-boards-git"
-pkgver=1
+pkgver=r117.1066a74
 pkgrel=1
 pkgdesc="Vivado Board Files for Digilent Boards"
 arch=('any')
