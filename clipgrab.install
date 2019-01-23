@@ -1,0 +1,7 @@
+post_install() {
+  echo "New version 3.8.0 of Clipgrab is finally Qt5 version, please use package 'clipgrab' instead."
+}
+
+post_upgrade() {
+  echo "New version 3.8.0 of Clipgrab is finally Qt5 version, please use package 'clipgrab' instead."
+}
