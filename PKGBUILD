@@ -2,7 +2,7 @@
 
 _pkgname=('jannal')
 pkgname=('jannal-git')
-pkgver=54
+pkgver=55
 pkgrel=1
 pkgdesc='A desktop-software for creating presentations like prezi and a mindmapping tool (early alpha)'
 arch=('any')
