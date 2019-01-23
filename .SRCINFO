@@ -1,14 +1,14 @@
 pkgbase = lyra
 	pkgdesc = A wonderful 3D cryptocurrency analyzer
-	pkgver = 1.5
-	pkgrel = 4
+	pkgver = 1.6
+	pkgrel = 1
 	url = https://github.com/blooser/lyra
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = python3
-	source = https://github.com/blooser/lyra/archive/v1.5.tar.gz
-	md5sums = 6a231b32052b5bbc9cd3d0c71a7b9351
+	source = https://github.com/blooser/lyra/archive/v1.6.tar.gz
+	md5sums = 4685f0c5fde344727392a724e801f8c4
 
 pkgname = lyra
 
