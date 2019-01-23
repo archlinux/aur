@@ -1,7 +1,7 @@
 
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname="basys-3-abacus-git"
-pkgver=1
+pkgver=v2018.2.3.r0.bee091f
 pkgrel=1
 pkgdesc="Basys 3 Abacus Demo"
 arch=('any')
