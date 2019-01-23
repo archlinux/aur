@@ -1,0 +1,15 @@
+pkgbase = digilent-xdc-git
+	pkgdesc = A collection of Master XDC board constraints files for Digilent FPGA and Zynq boards
+	pkgver = 1
+	pkgrel = 1
+	url = https://reference.digilentinc.com/learn/software/tutorials/vivado-xdc-file
+	arch = any
+	license = unknown
+	depends = xilinx-vivado-dummy
+	provides = digilent-xdc
+	conflicts = digilent-xdc
+	source = digilent-xdc::git+https://github.com/Digilent/digilent-xdc.git
+	md5sums = SKIP
+
+pkgname = digilent-xdc-git
+
