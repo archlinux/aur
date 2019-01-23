@@ -4,7 +4,7 @@
 _gemname=typhoeus
 pkgname=ruby-$_gemname-0.6
 pkgver=0.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel HTTP library on top of libcurl multi.'
 arch=(any)
 url='https://github.com/typhoeus/typhoeus'

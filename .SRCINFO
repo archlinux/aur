@@ -1,7 +1,7 @@
 pkgbase = ruby-typhoeus-0.6
 	pkgdesc = Parallel HTTP library on top of libcurl multi.
 	pkgver = 0.6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/typhoeus/typhoeus
 	arch = any
 	license = MIT
