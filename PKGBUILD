@@ -4,7 +4,7 @@
 _gemname=net-http-persistent
 pkgname=ruby-${_gemname}
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8"
 arch=('any')
 url="https://github.com/drbrain/net-http-persistent"
