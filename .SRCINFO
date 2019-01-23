@@ -1,6 +1,6 @@
 pkgbase = pqr
 	pkgdesc = A pretty quick version of R. Can be installed side-by-side with vanilla R.
-	pkgver = 20190111
+	pkgver = 20190122
 	pkgrel = 1
 	url = http://www.pqr-project.org/
 	install = pqr.install
@@ -19,9 +19,9 @@ pkgbase = pqr
 	optdepends = texlive-bin: latex sty files
 	options = !makeflags
 	options = !emptydirs
-	source = pqR-2019-01-11.tar.gz::http://www.pqr-project.org/pqR-2019-01-11.tar.gz
+	source = pqR-2019-01-22.tar.gz::http://www.pqr-project.org/pqR-2019-01-22.tar.gz
 	source = pqr.desktop
-	sha256sums = 9e565c345a0fd25f9aab4b49115bf9b894322d47e735054324495cfd84d11baf
+	sha256sums = 97af96f06ddea2062d2f59e7dd9ff6b989e8fdcf0b308525b6306681a58ed2fa
 	sha256sums = f6fb587f2ca78d896de86ae279d5513bdf4d7c82507c541bc96c27fb79370a9f
 
 pkgname = pqr
