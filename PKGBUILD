@@ -3,7 +3,7 @@
 pkgname=digilent-meta
 pkgver=1
 pkgrel=1
-pkgdesc="Meta-package for some of Digilent's GitHub repos)"
+pkgdesc="Meta-package for some of Digilent's GitHub repos"
 arch=('any')
 url="https://github.com/Digilent"
 license=('unknown' 'custom:MIT')
