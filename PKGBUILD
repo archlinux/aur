@@ -9,7 +9,7 @@ license=('MIT')
 make_depends=('meson')
 depends=('gtk3' 'rust')
 source=("https://github.com/Cogitri/gxi/releases/download/v$pkgver/gxi-$pkgver.tar.xz")
-sha256sums=('SKIP')
+md5sums=('52a0f333feced2a2ad529b581a22bbff')
 
 # prepare() {
 #   cd $pkgname

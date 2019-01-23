@@ -8,7 +8,7 @@ pkgbase = gxi
 	depends = gtk3
 	depends = rust
 	source = https://github.com/Cogitri/gxi/releases/download/v0.4.2/gxi-0.4.2.tar.xz
-	sha256sums = SKIP
+	md5sums = 52a0f333feced2a2ad529b581a22bbff
 
 pkgname = gxi
 
