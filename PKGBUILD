@@ -1,14 +1,14 @@
 # Maintainer: Nev Delap <nevdelap at gmail dot com>
 pkgname="ned"
-pkgver="1.2.5"
+pkgver="1.2.6"
 pkgrel=1
-pkgdesc="Is like grep, but with powerful replace capabilities, and more powerful than sed, as it isn't restricted to line oriented editing."
+pkgdesc="Like grep but with a powerful replace, unlike sed, it's not only line oriented."
 arch=("x86_64")
 url="https://github.com/nevdelap/ned"
 license=("GPL3")
 makedepends=("rust")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nevdelap/ned/archive/release.$pkgver.tar.gz")
-md5sums=('9300b3df3c2f7637e577f0bfb0bb4097')
+md5sums=('dcdd68a7abcd4622b8c7f26eff7e8b28')
 
 build() {
 	cd "ned-release.$pkgver"
@@ -21,6 +21,5 @@ check() {
 }
 
 package() {
-	install -d "$pkgdir/usr/bin"
-	install "ned-release.$pkgver/target/release/ned" "$pkgdir/usr/bin/ned"
+	install -Dm755 "ned-release.$pkgver/target/release/ned" "$pkgdir/usr/bin/ned"
 }
