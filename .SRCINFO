@@ -1,7 +1,7 @@
 pkgbase = ruby-pusher-client
 	pkgdesc = Client for consuming WebSockets from http://pusher.com
 	pkgver = 0.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/pusher/pusher-ruby-client
 	arch = any
 	license = MIT
