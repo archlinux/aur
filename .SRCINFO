@@ -1,10 +1,9 @@
 pkgbase = clickable-git
 	pkgdesc = Compile, build, and deploy Ubuntu Touch click packages all from the command line.
-	pkgver = 5.0.0.r8.gabd7ca3
+	pkgver = 5.4.0.r0.g459f284
 	pkgrel = 1
 	url = https://gitlab.com/clickable/clickable
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python-cookiecutter
