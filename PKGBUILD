@@ -2,7 +2,7 @@
 
 pkgname=haskell-largeword
 _hkgname=largeword
-pkgver=1.2.3
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Provides Word128, Word192 and Word256 and a way of producing other large words if required."
 url="https://hackage.haskell.org/package/largeword"
@@ -12,15 +12,16 @@ makedepends=('ghc')
 depends=('haskell-base')
 options=('strip' 'staticlibs')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('960e341af0de950db4e7c47a987bb0789f7759bb27c801ac26e89a28add5acd1')
+sha256sums=('00b3b06d846649bf404f52a725c88349a38bc8c810e16c99f3100c4e1e9d7d46')
 install="${pkgname}.install"
 
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     
-    runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \
-        --prefix=/usr --docdir=/usr/share/doc/${pkgname} \
-        --libsubdir=\$compiler/site-local/\$pkgid
+    runhaskell Setup configure -O --enable-shared --disable-library-vanilla \
+               --enable-executable-dynamic \
+               --prefix=/usr --docdir=/usr/share/doc/"${pkgname}" \
+               --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
     runhaskell Setup build
     runhaskell Setup haddock
     runhaskell Setup register --gen-script
