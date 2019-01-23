@@ -14,13 +14,13 @@ pkgbase=mesa-intel-iris-git
 pkgname="${pkgbase}"
 _branch=iris
 pkgdesc="Mesa with Intel Iris (Gallium) Driver, git version"
-pkgver=19.0.0_devel.107561.b1f82ee743f
+pkgver=19.0.0_devel.107729.45ee9d2fe98
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'llvm-svn' 'clang-svn' 'xorgproto'
              'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
              'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson')
-depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
+depends=('libdrm-git' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'llvm-libs-svn' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa-git' 'mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-mesa' 'opengl-driver' 'opencl-driver')
