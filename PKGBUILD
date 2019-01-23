@@ -1,7 +1,7 @@
 # Maintainer: Mr. Outis <mroutis@protonmail.com>
 pkgname=dvc
 pkgver=0.23.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
 url="https://github.com/iterative/${pkgname}"
@@ -14,7 +14,7 @@ depends=('python3' 'python-setuptools' 'python-pyaml'
          'python-gitpython' 'python-requests' 'python-colorama'
          'python-pyasn1' 'python-future' 'python-pillow'
          'python-boto3' 'python-paramiko' 'python-wcwidth'
-         'python-distro')
+         'python-distro' 'python-pyfiglet')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'https://files.pythonhosted.org/packages/source/g/grandalf/grandalf-0.6.tar.gz'

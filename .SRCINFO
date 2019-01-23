@@ -1,7 +1,7 @@
 pkgbase = dvc
 	pkgdesc = Open-source version control system for data science projects
 	pkgver = 0.23.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iterative/dvc
 	arch = any
 	license = Apache
@@ -22,6 +22,7 @@ pkgbase = dvc
 	depends = python-paramiko
 	depends = python-wcwidth
 	depends = python-distro
+	depends = python-pyfiglet
 	source = dvc-0.23.2.tar.gz::https://github.com/iterative/dvc/archive/0.23.2.tar.gz
 	source = https://files.pythonhosted.org/packages/source/g/grandalf/grandalf-0.6.tar.gz
 	source = https://files.pythonhosted.org/packages/source/j/jsonpath-rw/jsonpath-rw-1.4.0.tar.gz
