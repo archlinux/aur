@@ -13,7 +13,7 @@ arch=('x86_64')
 depends=('acl' 'lz4' 'openssl' 'python-msgpack' 'python-setuptools' 'xz' 'zstd')
 optdepends=('openssh: repositories on remote hosts'
             'python-llfuse: mounting backups as a FUSE file system')
-makedepends=('cython' 'python-sphinx' 'python-guzzle-sphinx-theme')
+makedepends=('cython' 'python-sphinx' 'python-guzzle-sphinx-theme' 'git')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-benchmark' 'python-mock')
 provides=('borg' 'borgbackup')
 conflicts=('borg' 'borgbackup')
