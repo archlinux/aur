@@ -1,0 +1,12 @@
+[Unit]
+Description=Spectrum 2 Legacy IM Network Connector
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/spectrum2_manager start
+ExecStop=/usr/bin/spectrum2_manager stop
+Environment=PURPLE_LEAKCHECK_HELP=1 G_SLICE=always-malloc PURPLE_VERBOSE_DEBUG=1
+
+[Install]
+WantedBy=multi-user.target

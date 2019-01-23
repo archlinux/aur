@@ -1,0 +1,47 @@
+pkgbase = spectrum2-git
+	pkgdesc = an open source instant messaging transport
+	pkgver = 2.0.9
+	pkgrel = 1
+	url = http://spectrum.im
+	arch = any
+	license = GPL
+	makedepends = protobuf
+	makedepends = swiften>=4
+	makedepends = libpqxx
+	makedepends = libpurple
+	makedepends = avahi
+	makedepends = boost
+	makedepends = cmake
+	makedepends = cppunit
+	makedepends = expat
+	makedepends = libcommuni
+	makedepends = libidn
+	makedepends = sqlite
+	makedepends = log4cxx
+	makedepends = libevent
+	makedepends = libmariadbclient
+	makedepends = popt
+	makedepends = libev
+	makedepends = dbus-glib
+	makedepends = curl
+	makedepends = gconf
+	depends = curl
+	depends = log4cxx
+	depends = popt
+	depends = sqlite
+	optdepends = swiften: XMPP backend support
+	optdepends = libpqxx: PostgreSQL support
+	optdepends = libmariadbclient: MariaDB support
+	optdepends = libcommuni: IRC backend support
+	optdepends = qt5: IRC backend support
+	optdepends = protobuf: IRC backend support
+	optdepends = libpurple: LibPurple backend support
+	optdepends = gconf: LibPurple backend support
+	optdepends = libev: LibPurple backend support - libev eventloop
+	source = git+https://github.com/SpectrumIM/spectrum2.git
+	source = spectrum2.service
+	sha256sums = SKIP
+	sha256sums = 8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1
+
+pkgname = spectrum2-git
+
