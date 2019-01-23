@@ -1,15 +1,15 @@
 pkgbase = ruby-ddmetrics
 	pkgdesc = Non-timeseries measurements for Ruby programs
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/ddfreyne/ddmetrics
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = ddmetrics-1.0.0.gem
+	noextract = ddmetrics-1.0.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ddmetrics-1.0.0.gem
-	sha1sums = 17a1379072fc03379cf2917ceaf7004ca02cdcb2
+	source = https://rubygems.org/downloads/ddmetrics-1.0.1.gem
+	sha1sums = 5020a29c4fc5af9b702d0114efd61f8be4ac9366
 
 pkgname = ruby-ddmetrics
 

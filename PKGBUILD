@@ -3,7 +3,7 @@
 
 _gemname=ddmetrics
 pkgname=ruby-$_gemname
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Non-timeseries measurements for Ruby programs'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('17a1379072fc03379cf2917ceaf7004ca02cdcb2')
+sha1sums=('5020a29c4fc5af9b702d0114efd61f8be4ac9366')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
