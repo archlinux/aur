@@ -1,7 +1,7 @@
 pkgbase = ruby-net-http-pipeline
 	pkgdesc = An HTTP/1.1 pipelining implementation atop Net::HTTP
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://docs.seattlerb.org/net-http-pipeline
 	arch = any
 	makedepends = ruby-rdoc
