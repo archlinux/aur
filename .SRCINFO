@@ -15,9 +15,11 @@ pkgbase = gallium-nine
 pkgname = gallium-nine
 	depends = mesa
 	provides = gallium-nine
+	conflicts = gallium-nine-git
 
 pkgname = lib32-gallium-nine
 	depends = gallium-nine
 	depends = lib32-mesa
 	provides = lib32-gallium-nine
+	conflicts = lib32-gallium-nine-git
 

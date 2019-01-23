@@ -57,6 +57,7 @@ _package_gallium-nine() {
 
 package_gallium-nine() {
     provides=("gallium-nine")
+    conflicts=("gallium-nine-git")
     depends=('mesa')
 
     _package_gallium-nine 64
@@ -68,6 +69,7 @@ package_gallium-nine() {
 
 package_lib32-gallium-nine() {
     provides=("lib32-gallium-nine")
+    conflicts=("lib32-gallium-nine-git")
     depends=('gallium-nine' 'lib32-mesa')
 
     _package_gallium-nine 32
