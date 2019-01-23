@@ -1,7 +1,7 @@
 pkgbase = habitctl-git
 	pkgdesc = Minimalist command line tool you can use to track and examine your habits.
-	pkgver = r23.b19ee5c
-	pkgrel = 1
+	pkgver = r29.77c2a92
+	pkgrel = 2
 	url = https://github.com/blinry/habitctl
 	arch = x86_64
 	license = GPL

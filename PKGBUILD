@@ -1,7 +1,7 @@
 # Maintainer: Manuel Groß <mgr@irimi.one>
 pkgname=habitctl-git
-pkgver=r23.b19ee5c
-pkgrel=1
+pkgver=r29.77c2a92
+pkgrel=2
 pkgdesc="Minimalist command line tool you can use to track and examine your habits."
 arch=('x86_64')
 url="https://github.com/blinry/habitctl"
