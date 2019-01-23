@@ -1,0 +1,13 @@
+pkgbase = cinf
+	pkgdesc = Command line tool to view namespaces and cgroups
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/mhausenblas/cinf
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = https://github.com/mhausenblas/cinf/archive/v0.4.0-alpha.tar.gz
+	sha512sums = bd73ed979c1456de51f934257b7071e7fa3a8ae6466800c37c3f84b3c95f69fc9b8989e906831c452cca9e78139a98a9e3152656b8e513aec0619408b81ba43c
+
+pkgname = cinf
+
