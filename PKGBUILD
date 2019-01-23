@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theshell
-pkgver=8.0
+pkgver=8.0.1
 pkgrel=0
 pkgdesc="Desktop Shell that gets out of your way"
 arch=("x86_64")
