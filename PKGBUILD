@@ -1,19 +1,19 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-pyvisa-py
-pkgver=0.2
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A pure python backend for PyVISA"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-pyvisa')
+conflicts=('python-pyvisa-py-git')
 
-_gituser='hgrecco'
 _gitproject='pyvisa-py'
 
-source=(https://github.com/${_gituser}/${_gitproject}/archive/${pkgver}.tar.gz)
-md5sums=('518b7e0a79d5d841ec22d665e1c6fd12')
-url="https://github.com/${_gituser}/${_gitproject}"
+source=(https://github.com/pyvisa/pyvisa-py/archive/${pkgver}.tar.gz)
+md5sums=('56b8d305a33b3b0965554f6f66dcb6c8')
+url="https://github.com/pyvisa/pyvisa-py"
 
 package() {
   cd ${_gitproject}-${pkgver}
