@@ -4,7 +4,7 @@
 
 _pkgname=evolution-on
 pkgname="$_pkgname-git"
-pkgver=v3.24.2.r0.g4794055
+pkgver=v3.24.2.r6.g5f77162
 pkgrel=1
 pkgdesc='Plugin to put evolution in system tray.'
 arch=('i686' 'x86_64')
