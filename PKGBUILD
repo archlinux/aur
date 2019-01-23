@@ -3,7 +3,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin-git
-pkgver=10.0.2.r266.g9714b62fdd
+pkgver=10.0.2.r311.g4658cab6a8
 pkgrel=1
 pkgdesc='The Free Software Media Browser'
 arch=('i686' 'x86_64' 'armv6h')
@@ -15,14 +15,12 @@ provides=('jellyfin')
 conflicts=('jellyfin')
 source=('git+https://github.com/jellyfin/jellyfin.git#branch=dev'
         'git+https://github.com/jellyfin/jellyfin-web.git'
-        'git+https://github.com/mono/taglib-sharp.git'
         'jellyfin.conf'
         'jellyfin.service'
         'jellyfin.sysusers'
         'jellyfin.tmpfiles')
 backup=('etc/conf.d/jellyfin')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'ff3c81ddfd716f179fec8149ea6c2db379e05cd20bd0ffa8ce3ff3a609ca9749'
             '61febaa0bbe71235d724f236223c7315da393b8b481e4bbed86489a343bca51f'
@@ -38,13 +36,15 @@ pkgver() {
 prepare() {
   cd jellyfin
   git submodule init
-  git config submodule.ThirdParty/taglib-sharp.url $srcdir/taglib-sharp
   git config submodule.MediaBrowser.WebDashboard/jellyfin-web.url $srcdir/jellyfin-web
   git submodule update
 }
 
 build(){
   cd jellyfin
+
+  # Disable dotnet telemetry
+  export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
   dotnet build --configuration Release Jellyfin.Server
   # Ideally, this would be run in package() with the --output variable pointing
@@ -62,10 +62,10 @@ package() {
   mkdir -p "$pkgdir"/usr/lib
   cp -dr --no-preserve='ownership' jellyfin/publish "$pkgdir"/usr/lib/jellyfin
 
-  install -Dm 644 jellyfin.service -t "${pkgdir}"/usr/lib/systemd/system/
-  install -Dm 644 jellyfin.sysusers "${pkgdir}"/usr/lib/sysusers.d/jellyfin.conf
-  install -Dm 644 jellyfin.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/jellyfin.conf
-  install -Dm 644 jellyfin.conf "${pkgdir}"/etc/conf.d/jellyfin
+  install -Dm 644 jellyfin.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -Dm 644 jellyfin.sysusers "$pkgdir"/usr/lib/sysusers.d/jellyfin.conf
+  install -Dm 644 jellyfin.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/jellyfin.conf
+  install -Dm 644 jellyfin.conf "$pkgdir"/etc/conf.d/jellyfin
 }
 
 # vim: ts=2 sw=2 et:
