@@ -1,9 +1,9 @@
 pkgbase = gdal-hdf4
 	pkgdesc = A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)
-	pkgver = 2.3.1
-	pkgrel = 5
+	pkgver = 2.3.2
+	pkgrel = 8.0
 	url = http://www.gdal.org/
-	changelog = gdal.changelog
+	changelog = gdal-hdf4.changelog
 	arch = x86_64
 	license = custom
 	makedepends = perl
@@ -22,32 +22,33 @@ pkgbase = gdal-hdf4
 	depends = libspatialite
 	depends = libtiff
 	depends = netcdf
-	depends = hdf4-nonetcdf
-	depends = hdf4-nonetcdf
+	depends = hdf4
 	depends = openjpeg2
 	depends = poppler
 	depends = cfitsio
 	depends = sqlite
-	depends = libmariadbclient
+	depends = mariadb-libs
 	depends = postgresql-libs
 	depends = xerces-c
 	depends = json-c
 	optdepends = postgresql: postgresql database support
 	optdepends = mariadb: mariadb database support
 	optdepends = perl: perl binding support
+	provides = gdal
+	conflicts = gdal
 	options = !emptydirs
-	source = https://download.osgeo.org/gdal/2.3.1/gdal-2.3.1.tar.xz
-	source = gdal-perl-vendor.patch
-	sha256sums = 9c4625c45a3ee7e49a604ef221778983dd9fd8104922a87f20b99d9bedb7725a
+	source = https://download.osgeo.org/gdal/2.3.2/gdal-2.3.2.tar.xz
+	source = gdal-poppler-0.69.0.patch::https://github.com/OSGeo/gdal/commit/69e0701253.patch
+	source = gdal-perl-vendor.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/gdal-perl-vendor.patch?h=packages/gdal
+	sha256sums = 3f6d78fe8807d1d6afb7bed27394f19467840a82bc36d65e66316fa0aa9d32a4
+	sha256sums = cc63ee56e2c62c994a65723d4124171ce9b4e3499c0958be710c04bf82fd4cf5
 	sha256sums = a41a0129a878a0d09b8ecf24b8a0b473856d929d52f535afdf4dca95ddd347d3
 
 pkgname = gdal-hdf4
-	provides = gdal
-	conflicts = gdal
 
 pkgname = python-gdal-hdf4
 	pkgdesc = Python bindings for GDAL, with support to HDF4 format
-	depends = gdal=2.3.1
+	depends = gdal-hdf4=2.3.2
 	depends = python-numpy
 	optdepends = 
 	provides = python-gdal
@@ -55,7 +56,7 @@ pkgname = python-gdal-hdf4
 
 pkgname = python2-gdal-hdf4
 	pkgdesc = Python 2 bindings for GDAL, with support to HDF4 format
-	depends = gdal=2.3.1
+	depends = gdal-hdf4=2.3.2
 	depends = python2-numpy
 	optdepends = 
 	provides = python2-gdal

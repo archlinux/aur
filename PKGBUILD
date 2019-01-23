@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
@@ -6,30 +5,40 @@
 # Contributor: Luigi Ranghetti <ggranga@gmail.com>
 
 pkgbase=gdal-hdf4
-pkgname=(gdal-hdf4 python-gdal-hdf4 python2-gdal-hdf4)
 _pkgbase=gdal
-_pkgname=(gdal python-gdal python2-gdal)
-pkgver=2.3.1
-pkgrel=5
+provides=('gdal')
+conflicts=('gdal')
+pkgname=('gdal-hdf4' 'python-gdal-hdf4' 'python2-gdal-hdf4')
+pkgver=2.3.2
+pkgrel=8.0
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
 arch=('x86_64')
 url="http://www.gdal.org/"
 license=('custom')
-depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf' 'hdf4-nonetcdf' 'hdf4-nonetcdf'
-         'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'libmariadbclient' 'postgresql-libs' 'xerces-c' 'json-c')
+depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf' 'hdf4'
+         'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'mariadb-libs' 'postgresql-libs' 'xerces-c' 'json-c')
 makedepends=('perl' 'swig' 'chrpath' 'doxygen' 'python-numpy' 'python2-numpy')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'perl:  perl binding support')
 options=('!emptydirs')
-changelog=$_pkgbase.changelog
+changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
-        gdal-perl-vendor.patch)
-sha256sums=('9c4625c45a3ee7e49a604ef221778983dd9fd8104922a87f20b99d9bedb7725a'
+        gdal-poppler-0.69.0.patch::https://github.com/OSGeo/gdal/commit/69e0701253.patch
+        gdal-perl-vendor.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/gdal-perl-vendor.patch?h=packages/gdal)
+sha256sums=('3f6d78fe8807d1d6afb7bed27394f19467840a82bc36d65e66316fa0aa9d32a4'
+            'cc63ee56e2c62c994a65723d4124171ce9b4e3499c0958be710c04bf82fd4cf5'
             'a41a0129a878a0d09b8ecf24b8a0b473856d929d52f535afdf4dca95ddd347d3')
 
 prepare() {
   cd "${srcdir}"/$_pkgbase-$pkgver
+
+# Fix build with poppler >= 0.69.0
+  patch -Np2 -i ../gdal-poppler-0.69.0.patch
+# Fix build with poppler 0.72
+  find frmts/pdf -type f | xargs sed -e 's|GBool|bool|g' -e 's|gFalse|false|g' -e 's|getCString|c_str|g' -i
+# Fix build with poppler 0.73
+  sed -e 's|#include <goo/gtypes.h>|typedef unsigned char Guchar;|' -i frmts/pdf/pdfsdk_headers.h
 
 # Fix mandir
   sed -i "s|^mandir=.*|mandir='\${prefix}/share/man'|" configure
@@ -42,19 +51,19 @@ build() {
   cd "${srcdir}"/$_pkgbase-$pkgver
   export CFLAGS="$CFLAGS -fno-strict-aliasing"
 
+# Ignore const-related errors (remove once fixed upstream)
+  CXXFLAGS+=' -fpermissive'
+
 # bug #23654
   export LDFLAGS="$LDFLAGS -Wl,--as-needed"
 
   ./configure --prefix=/usr --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
-              --with-mysql --with-curl --with-hdf5 --with-hdf4 --with-perl --with-geos \
+              --with-mysql --with-curl --with-hdf5 --with-hdf4=/opt/hdf4 --with-perl --with-geos \
               --with-png --with-poppler --with-spatialite --with-openjpeg
 
 # workaround for bug #13646
   sed -i 's/PY_HAVE_SETUPTOOLS=1/PY_HAVE_SETUPTOOLS=/g' ./GDALmake.opt
   sed -i 's/EXE_DEP_LIBS/KILL_EXE_DEP_LIBS/' apps/GNUmakefile
-
-# bug: http://osgeo-org.1560.x6.nabble.com/gdal-dev-jpeg2000-jasper-error-compiling-gdal-2-1-from-git-release-branch-td5299100.html
-  sed -i -e 's@uchar@unsigned char@' frmts/jpeg2000/jpeg2000_vsil_io.cpp
 
   make
   make man
@@ -65,9 +74,6 @@ build() {
 }
 
 package_gdal-hdf4 () {
-  provides=(gdal)
-  conflicts=(gdal)
-
   cd "${srcdir}"/$_pkgbase-$pkgver
 
   make DESTDIR="${pkgdir}" install
@@ -89,10 +95,10 @@ package_gdal-hdf4 () {
 }
 
 package_python-gdal-hdf4 () {
-  provides=(python-gdal)
-  conflicts=(python-gdal)
   pkgdesc="Python bindings for GDAL, with support to HDF4 format"
-  depends=("gdal=$pkgver" 'python-numpy')
+  provides=("python-gdal")
+  conflicts=("python-gdal")
+  depends=("gdal-hdf4=$pkgver" 'python-numpy')
   optdepends=()
 
   cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
@@ -100,14 +106,14 @@ package_python-gdal-hdf4 () {
   install -Dm755 -t "${pkgdir}"/usr/bin scripts/*.py
 
   install -dm755 "${pkgdir}"/usr/share/licenses
-  ln -s $_pkgbase "${pkgdir}"/usr/share/licenses/$_pkgname
+  ln -s $_pkgbase "${pkgdir}"/usr/share/licenses/$pkgname
 }
 
 package_python2-gdal-hdf4 () {
-  provides=(python2-gdal)
-  conflicts=(python2-gdal)
   pkgdesc="Python 2 bindings for GDAL, with support to HDF4 format"
-  depends=("gdal=$pkgver" 'python2-numpy')
+  provides=("python2-gdal")
+  conflicts=("python2-gdal")
+  depends=("gdal-hdf4=$pkgver" 'python2-numpy')
   optdepends=()
 
   cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
@@ -122,5 +128,5 @@ package_python2-gdal-hdf4 () {
   for file in "${pkgdir}"/usr/bin/*; do mv "${file}" "${file%.py}2.py"; done
 
   install -dm755 "${pkgdir}"/usr/share/licenses
-  ln -s $_pkgbase "${pkgdir}"/usr/share/licenses/$_pkgname
+  ln -s $_pkgbase "${pkgdir}"/usr/share/licenses/$pkgname
 }
