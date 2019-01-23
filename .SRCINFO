@@ -1,7 +1,7 @@
 pkgbase = ruby-json
 	pkgdesc = This is a JSON implementation as a Ruby extension in C
 	pkgver = 2.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://json-jruby.rubyforge.org/
 	arch = x86_64
 	license = Ruby
