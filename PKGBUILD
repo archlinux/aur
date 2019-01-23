@@ -2,14 +2,15 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgbase='ovirt-guest-agent'
-pkgname=("${pkgbase}" "${pkgbase}-common")
-_mainver='1.0.15'
-pkgver="${_mainver}"
-pkgrel='1'
+pkgname=("${pkgbase}")
+pkgver="1.0.15"
+pkgrel='2'
 pkgdesc='The oVirt Guest Agent'
 arch=('x86_64')
 url="https://ovirt.org/develop/developer-guide/vdsm/guest-agent"
 makedepends=('pam' 'libtool' 'python2' 'python2-pycodestyle' 'patch' 'autoconf')
+depends=('qemu-guest-agent' 'python2' 'python2-dbus' 'python2-gobject2' 'dbus-glib' 'python2-ethtool' 'usermode')
+pkgdesc='The oVirt Guest Agent'
 license=('ASL 2.0')
 install="${pkgbase}.install"
 source=("https://github.com/oVirt/${pkgbase}/archive/${pkgver}.tar.gz"
@@ -62,11 +63,7 @@ build() {
   make
 }
 
-package_ovirt-guest-agent() {
-  depends=('qemu-guest-agent' 'python2-dbus' 'python2-gobject2' 'dbus-glib' 'python2-ethtool')
-  pkgdesc='The oVirt Guest Agent'
-  conflicts=("${pkgbase}-common")
-
+package() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
@@ -76,20 +73,10 @@ package_ovirt-guest-agent() {
   install -Dm0644 "${srcdir}/39-ovirt-memory-hotplug.rules" "${pkgdir}/usr/lib/udev/rules.d/39-ovirt-memory-hotplug.rules"
   mv "${pkgdir}/etc/udev/rules.d/"* "${pkgdir}/usr/lib/udev/rules.d/"
   rm -rf "${pkgdir}/etc/udev"
-}
 
-package_ovirt-guest-agent-common() {
-  depends=('qemu-guest-agent' 'python2' 'python2-dbus' 'python2-gobject2' 'dbus-glib' 'python2-ethtool' 'usermode')
-  pkgdesc='The oVirt Guest Agent (with X support)'
-  conflicts=("${pkgbase}")
-
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
-
-  install -Dm0644 "${srcdir}/${pkgbase}.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}.service"
-  install -Dm0644 "${srcdir}/${pkgbase}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
-  install -Dm0644 "${srcdir}/${pkgbase}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}.conf"
-  install -Dm0644 "${srcdir}/39-ovirt-memory-hotplug.rules" "${pkgdir}/usr/lib/udev/rules.d/39-ovirt-memory-hotplug.rules"
-  mv "${pkgdir}/etc/udev/rules.d/"* "${pkgdir}/usr/lib/udev/rules.d/"
-  rm -rf "${pkgdir}/etc/udev"
+# EL7 Magic
+  cp "${srcdir}/console.apps_diskmapper" "${pkgdir}/etc/security/console.apps/diskmapper"
+  cp "${srcdir}/pam.d_diskmapper" "${pkgdir}/etc/pam.d/diskmapper"
+  mv "${pkgdir}/usr/share/${pkgbase}/diskmapper" "${pkgdir}/usr/share/${pkgbase}/diskmapper.script"
+  ln -s "/usr/bin/consolehelper" "${pkgdir}/usr/share/${pkgbase}/diskmapper"
 }
