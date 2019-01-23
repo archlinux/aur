@@ -1,6 +1,6 @@
 pkgbase = jannal-git
-	pkgdesc = A desktop-software for creating presentations like prezi and a mindmapping tool
-	pkgver = 54
+	pkgdesc = A desktop-software for creating presentations like prezi and a mindmapping tool (early alpha)
+	pkgver = 55
 	pkgrel = 1
 	url = https://tambi-soft.github.io
 	arch = any
