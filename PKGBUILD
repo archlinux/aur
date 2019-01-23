@@ -45,7 +45,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/FreeCAD"
-    cmake \
+    cmake . \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="/usr/lib/freecad" \
         -DCMAKE_INSTALL_DOCDIR="/usr/share/freecad/doc" \
