@@ -1,0 +1,15 @@
+pkgbase = basys-3-xadc-git
+	pkgdesc = Basys 3 XADC Demo
+	pkgver = 1
+	pkgrel = 1
+	url = https://reference.digilentinc.com/learn/programmable-logic/tutorials/basys-3-xadc/start
+	arch = any
+	license = unknown
+	depends = xilinx-vivado-dummy
+	provides = basys-3-xadc
+	conflicts = basys-3-xadc
+	source = basys-3-xadc::git+https://github.com/Digilent/basys-3-xadc.git
+	md5sums = SKIP
+
+pkgname = basys-3-xadc-git
+
