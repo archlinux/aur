@@ -1,7 +1,7 @@
 pkgbase = gallium-nine-git
 	pkgdesc = Gallium Nine Standalone
-	pkgver = 0.r121.136dca6
-	pkgrel = 3
+	pkgver = 0.r137.13e9b40
+	pkgrel = 1
 	url = https://github.com/dhewg/nine
 	arch = x86_64
 	license = LGPL2
@@ -15,9 +15,11 @@ pkgbase = gallium-nine-git
 pkgname = gallium-nine-git
 	depends = mesa
 	provides = gallium-nine
+	conflicts = gallium-nine
 
 pkgname = lib32-gallium-nine-git
 	depends = gallium-nine
 	depends = lib32-mesa
 	provides = lib32-gallium-nine
+	conflicts = lib32-gallium-nine
 

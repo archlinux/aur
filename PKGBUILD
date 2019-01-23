@@ -3,8 +3,8 @@
 
 pkgbase=gallium-nine-git
 pkgname=('gallium-nine-git' 'lib32-gallium-nine-git')
-pkgver=0.r121.136dca6
-pkgrel=3
+pkgver=0.r137.13e9b40
+pkgrel=1
 pkgdesc="Gallium Nine Standalone"
 arch=('x86_64')
 url="https://github.com/dhewg/nine"
@@ -63,6 +63,7 @@ _package_gallium-nine-git() {
 
 package_gallium-nine-git() {
     provides=("gallium-nine")
+    conflicts=("gallium-nine")
     depends=('mesa')
 
     _package_gallium-nine-git 64
@@ -74,6 +75,7 @@ package_gallium-nine-git() {
 
 package_lib32-gallium-nine-git() {
     provides=("lib32-gallium-nine")
+    conflicts=("lib32-gallium-nine")
     depends=('gallium-nine' 'lib32-mesa')
 
     _package_gallium-nine-git 32
