@@ -3,9 +3,8 @@
 
 pkgbase='ovirt-guest-agent'
 pkgname=("${pkgbase}" "${pkgbase}-common")
-_mainver='1.0.14'
-_subrel=''
-pkgver="${_mainver}${_subrel}"
+_mainver='1.0.15'
+pkgver="${_mainver}"
 pkgrel='1'
 pkgdesc='The oVirt Guest Agent'
 arch=('x86_64')
@@ -13,7 +12,7 @@ url="https://ovirt.org/develop/developer-guide/vdsm/guest-agent"
 makedepends=('pam' 'libtool' 'python2' 'python2-pycodestyle' 'patch' 'autoconf')
 license=('ASL 2.0')
 install="${pkgbase}.install"
-source=("http://resources.ovirt.org/pub/src/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"
+source=("https://github.com/oVirt/${pkgbase}/archive/${pkgver}.tar.gz"
 	"python2-arch.patch"
 	"${pkgbase}-1.0.13_arch_pycodestyle.patch"
 	"39-ovirt-memory-hotplug.rules"
@@ -22,7 +21,7 @@ source=("http://resources.ovirt.org/pub/src/${pkgbase}/${pkgbase}-${pkgver}.tar.
 	"${pkgbase}.tmpfiles"
 	"${pkgbase}.sysusers"
 	"${pkgbase}.service")
-sha256sums=('7ecd4c06c6be59b4266996c0f6d9bd76921e3a9997d3f4ded67db76cceb24e29'
+sha256sums=('c3cbcd6da85a50099b9d7a3df9a9f8be97d646616c6c20fe7151e84eba855f5a'
             '95c162b584dd137296bcec70d14079d4b93d10d8542a87bd8f1cd6ad01e4b140'
             'ebe724b39b78a3bc21a998884b188e0efdaa2fc3ea3416fb4e4e273629394e24'
             '78994d3cfe8f293aab84692c9d181b2c20caeb47e9854bb9377f2199b45984fb'
@@ -93,10 +92,4 @@ package_ovirt-guest-agent-common() {
   install -Dm0644 "${srcdir}/39-ovirt-memory-hotplug.rules" "${pkgdir}/usr/lib/udev/rules.d/39-ovirt-memory-hotplug.rules"
   mv "${pkgdir}/etc/udev/rules.d/"* "${pkgdir}/usr/lib/udev/rules.d/"
   rm -rf "${pkgdir}/etc/udev"
-
-# EL7 Magic
-  cp "${srcdir}/console.apps_diskmapper" "${pkgdir}/etc/security/console.apps/diskmapper"
-  cp "${srcdir}/pam.d_diskmapper" "${pkgdir}/etc/pam.d/diskmapper"
-  mv "${pkgdir}/usr/share/${pkgbase}/diskmapper" "${pkgdir}/usr/share/${pkgbase}/diskmapper.script"
-  ln -s "/usr/bin/consolehelper" "${pkgdir}/usr/share/${pkgbase}/diskmapper"
 }
