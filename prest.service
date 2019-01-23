@@ -1,0 +1,15 @@
+[Unit]
+Description=RESTful API Server for PostgreSQL
+Documentation=https://postgres.rest/
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/prest
+WorkingDirectory=/etc
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

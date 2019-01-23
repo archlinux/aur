@@ -1,0 +1,25 @@
+# migrations = "/var/lib/prest/migrations"
+
+[http]
+port = 3000
+
+[jwt]
+default = false
+# key = "secret"
+# algo = "HS256"
+
+[pg]
+# host = "127.0.0.1"
+database = "postgres"
+user = "postgres"
+# pass = "mypass"
+# port = 5432
+
+# or
+# URL = "postgresql://user:pass@localhost/mydatabase/?sslmode=disable"
+
+# [ssl]
+# mode = "disable"
+# sslcert = "./PATH"
+# sslkey = "./PATH"
+# sslrootcert = "./PATH"
