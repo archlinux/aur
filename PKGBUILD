@@ -10,11 +10,10 @@ source=("${pkgname}-${pkgver}.tar.gz::http://www-db.in.tum.de/~neumann/cppmake/c
 sha256sums=('587815c9a95678d6971bdec743f9ccf2202576239699fe68721a4425530d30b9')
 
 build() {
-  cd "src"
   make
 }
 
 package() {
-  cd "src"
+  mkdir -p "$pkgdir/usr/bin"
   install -m755 bin/cppmake "$pkgdir/usr/bin"
 }
