@@ -2,7 +2,7 @@
 
 _tag=$(git ls-remote -t --refs https://gitlab.com/mbunkus/mkvtoolnix.git | awk '{print $2}' | LC_ALL=C sort -bfV | tail -n1 | sed -n -e 's/^.*tags\///p')
 pkgname=mkvtoolnix-stable-git
-pkgver=27.0.0.r0.g2a7d98715
+pkgver=30.1.0.r0.g61cf09e47
 pkgrel=1
 pkgdesc="MKVToolnix latest stable release with unit tests"
 arch=(x86 x86_64)
