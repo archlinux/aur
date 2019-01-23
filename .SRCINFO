@@ -1,7 +1,7 @@
 pkgbase = ruby-travis
 	pkgdesc = CLI and Ruby client library for Travis CI
 	pkgver = 1.8.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/travis-ci/travis.rb
 	arch = any
 	license = MIT
