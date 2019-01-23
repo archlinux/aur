@@ -4,38 +4,45 @@
 # Contributor: David Manouchehri <d@32t.ca>
 
 pkgname=dropbox
-pkgver=64.4.141
-pkgrel=1
+pkgver=65.4.177
+pkgrel=2
 pkgdesc="A free service that lets you bring your photos, docs, and videos anywhere and share them easily."
 arch=("i686" "x86_64")
 url="https://www.dropbox.com"
 license=(custom)
 depends=("libsm" "libxslt" "libxmu" "libxdamage" "libxrender" "libxxf86vm" "libxcomposite" "fontconfig" "dbus")
+makedepends=("gendesk")
 optdepends=(
     'ufw-extras: ufw rules for dropbox'
     'perl-file-mimeinfo: opening dropbox folder on some desktop environments'
     'xdg-utils: for "Launch Dropbox Website" and file manager integration'
 )
-conflicts=("dropbox-experimental")
 options=('!strip')
 
-source=("dropbox.png" "dropbox.desktop" "terms.txt" "dropbox.service" "dropbox@.service")
+# The SVG link is retrieved from https://www.dropbox.com/branding
+source=("dropbox-svg.zip"::"https://www.dropbox.com/scl/fo/0eu2dsn07fy5k0gt5fy74/AABelaoobzsW8ZKJ2u9vnINGa/Glyph/Dropbox/SVG?dl=1"
+        "terms.txt" "dropbox.service" "dropbox@.service")
 source_i686=("https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-$pkgver.tar.gz"{,.asc})
 source_x86_64=("https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-$pkgver.tar.gz"{,.asc})
 
-sha256sums=('e7d245f5d1a3d5322614b61400ae2913a8caef44bc86717ff7d8197a15dd7f01'
-            '541f2fd2de0d601a08cde7853e404062f542af21e6e7106825b5e68177168e0f'
+sha256sums=('e53a2e006f7bd0421fec0b2d0eb31e88ca59bad7c9f640c4b126d462e674c3ed'
             '34605b2f36fe6b4bde9b858da3f73ac1505986af57be78bbb1c2c9cf1a611578'
             '6c67a9c8c95c08fafafd2f1d828074b13e3347b05d2e4f4bf4e62746115d7477'
             '98581e65a91ae1f19ed42edcdaaa52e102298b5da0d71b50089393d364474d3d')
-sha256sums_i686=('919bf7ad92c8dcc8bd48b2762aed53044d0b147dfadcf0bbcf8cccc79757b34b'
+sha256sums_i686=('9d1c0d77f31098ee157aa4186a7720599222d3b448250d7f767e177c5b6615c3'
                  'SKIP')
-sha256sums_x86_64=('7dbbce2e9aa92884a2d7cfb80f0e1c579515238c9336b74a30dc88e1f6f18a37'
+sha256sums_x86_64=('f7b46f47597541cc37b2975c84554db8d27f060d078affc56663d2ca2422af73'
                    'SKIP')
 # The PGP key fingerprint should match the one on https://www.dropbox.com/help/desktop-web/linux-commands
 validpgpkeys=(
   '1C61A2656FB57B7E4DE0F4C1FC918B335044912E'  # Dropbox Automatic Signing Key <linux@dropbox.com>
 )
+
+prepare() {
+  gendesk --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories=Network PKGBUILD
+  # workaround https://bugreports.qt.io/browse/QTBUG-69378
+  sed -i 's#<style>#<style type="text/css">#' DropboxGlyph_Blue.svg
+}
 
 package() {
 	if [ "$CARCH" = "x86_64" ]; then
@@ -45,18 +52,14 @@ package() {
 	fi
 
 	install -d "$pkgdir"/opt
-	cp -R "$srcdir"/.dropbox-dist/dropbox-lnx.$_source_arch-$pkgver "$pkgdir"/opt/dropbox
-
-	find "$pkgdir"/opt/dropbox/ -type f -exec chmod 644 {} \;
-	chmod 755 "$pkgdir"/opt/dropbox/dropboxd
-	chmod 755 "$pkgdir"/opt/dropbox/dropbox
+	cp -dr --no-preserve=ownership "$srcdir"/.dropbox-dist/dropbox-lnx.$_source_arch-$pkgver "$pkgdir"/opt/dropbox
 
 	install -d "$pkgdir"/usr/bin
 	ln -s ../../opt/dropbox/dropbox "$pkgdir"/usr/bin/dropbox
 
-	install -Dm644 "$srcdir"/dropbox.desktop "$pkgdir"/usr/share/applications/dropbox.desktop
-	install -Dm644 "$srcdir"/dropbox.png "$pkgdir"/usr/share/pixmaps/dropbox.png
-	install -Dm644 "$srcdir"/terms.txt "$pkgdir"/usr/share/licenses/$pkgname/terms.txt
-	install -Dm644 "$srcdir"/dropbox.service "$pkgdir"/usr/lib/systemd/user/dropbox.service
-	install -Dm644 "$srcdir"/dropbox@.service "$pkgdir"/usr/lib/systemd/system/dropbox@.service
+	install -Dm644 "$srcdir"/dropbox.desktop -t "$pkgdir"/usr/share/applications
+	install -Dm644 "$srcdir"/DropboxGlyph_Blue.svg "$pkgdir"/usr/share/pixmaps/dropbox.svg
+	install -Dm644 "$srcdir"/terms.txt -t "$pkgdir"/usr/share/licenses/$pkgname
+	install -Dm644 "$srcdir"/dropbox.service -t "$pkgdir"/usr/lib/systemd/user
+	install -Dm644 "$srcdir"/dropbox@.service -t "$pkgdir"/usr/lib/systemd/system
 }
