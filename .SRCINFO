@@ -1,0 +1,15 @@
+pkgbase = basys-3-gpio-git
+	pkgdesc = Basys 3 General Input/Output Demo
+	pkgver = 1
+	pkgrel = 1
+	url = https://reference.digilentinc.com/learn/programmable-logic/tutorials/basys-3-general-io/start
+	arch = any
+	license = unknown
+	depends = xilinx-vivado-dummy
+	provides = basys-3-gpio
+	conflicts = basys-3-gpio
+	source = basys-3-gpio::git+https://github.com/Digilent/basys-3-gpio.git
+	md5sums = SKIP
+
+pkgname = basys-3-gpio-git
+
