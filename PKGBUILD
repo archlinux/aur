@@ -3,12 +3,15 @@
 pkgname=python-glue-core
 _pyname=glue-core
 pkgver=0.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Linked Data Visualizations Across Multiple Files -- core library"
 arch=('i386' 'x86_64')
 url="http://glueviz.org/"
 license=('CUSTOM')
-depends=('python' 'python-numpy' 'python-matplotlib' 'python-pandas' 'python-astropy' 'python-pyqt5' 'ipython' 'python-ipykernel' 'python-qtconsole' 'python-dill' 'python-h5py' 'python-mpl-scatter-density')
+depends=('python' 'python-numpy' 'python-matplotlib' 'python-pandas' 'python-astropy' 
+         'python-qtpy' 'ipython' 'python-ipykernel' 'python-qtconsole' 
+         'python-dill' 'python-xlrd' 'python-h5py' 'python-bottleneck' 
+         'python-mpl-scatter-density')
 makedepends=('python-setuptools')
 source=(https://files.pythonhosted.org/packages/b6/52/94338f1b3c04baf4e865f7621b5372553eec7ad246dc48939e62bc3957f1/${_pyname}-${pkgver}.tar.gz)
 sha256sums=('a5c174ffbaec3fbbd299d69791f3330e173c071050135ff2ec584da90d274c12')
