@@ -1,0 +1,13 @@
+--- a/docs/examples.rst	2018-09-13 07:31:40.000000000 +0800
++++ b/docs/examples.rst	2019-01-22 20:54:07.258029841 +0800
+@@ -40,8 +40,8 @@
+    Radio NH3 - fit N hyperfines with no temperature <nh3_tau>
+    Radio N2H+ <example_n2hp>
+    Radio N2H+ cube <example_n2hp_cube>
+-   Radio ortho-NH2D <example_o-n2hp>
+-   Radio para-NH2D <example_p-n2hp>
++   Radio ortho-NH2D <example_o-nh2d>
++   Radio para-NH2D <example_p-nh2d>
+    Radio HCN: shows hyperfine with varying amplitude & width <example_hcn>
+    Radio HCO+ <example_hcop>
+    Near IR cube <example_NIR_cube>
