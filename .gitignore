@@ -1,0 +1,4 @@
+pkg/
+src/
+sshfsmux-*.tar.xz
+sshfsmux-*.tar.gz

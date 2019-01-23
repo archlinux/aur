@@ -1,0 +1,13 @@
+pkgbase = sshfsmux
+	pkgdesc = Multiplexer client based on the Secure Shell FileSystem
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://code.google.com/archive/p/sshfsmux/
+	arch = x86_64
+	license = GPL
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/sshfsmux/sshfsmux-1.2.tar.gz
+	validpgpkeys = 1E9E2C1BCF7639B219FBE159903A00FC06CC137B
+	md5sums = 7aaaa74c2b7d06266ed3c25bc5971b28
+
+pkgname = sshfsmux
+
