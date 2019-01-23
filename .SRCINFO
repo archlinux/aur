@@ -1,7 +1,7 @@
 pkgbase = ruby-gh
 	pkgdesc = layered github client
 	pkgver = 0.15.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/travis-ci/gh
 	arch = any
 	license = MIT
