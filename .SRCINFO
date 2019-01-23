@@ -11,6 +11,7 @@ pkgbase = lc0-cudnn-git
 	makedepends = ninja
 	depends = cuda
 	depends = cudnn
+	depends = protobuf
 	source = lc0-cudnn::git+https://github.com/LeelaChessZero/lc0.git#branch=master
 	md5sums = SKIP
 
