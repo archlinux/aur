@@ -1,0 +1,12 @@
+diff -Naur re-0.6.0.orig/Makefile re-0.6.0/Makefile
+--- re-0.6.0.orig/Makefile	2019-01-22 21:09:25.991849231 -0500
++++ re-0.6.0/Makefile	2019-01-22 21:11:11.580636432 -0500
+@@ -65,7 +65,7 @@
+ 
+ $(SHARED): $(OBJS)
+ 	@echo "  LD      $@"
+-	@$(LD) $(LFLAGS) $(SH_LFLAGS) $^ $(LIBS) -o $@
++	@$(LD) $(LDFLAGS) $(LFLAGS) $(SH_LFLAGS) $^ $(LIBS) -o $@
+ 
+ 
+ $(STATIC): $(OBJS)
