@@ -1,7 +1,7 @@
 pkgbase = ruby-websocket
 	pkgdesc = Universal Ruby library to handle WebSocket protocol
 	pkgver = 1.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/imanel/websocket-ruby
 	arch = any
 	license = MIT
