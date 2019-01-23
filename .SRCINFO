@@ -1,0 +1,15 @@
+pkgbase = basys3-git
+	pkgdesc = Basys 3 demos
+	pkgver = 1
+	pkgrel = 1
+	url = https://reference.digilentinc.com/learn/software/tutorials/vivado-projects-from-digilent-github/start
+	arch = any
+	license = unknown
+	depends = xilinx-vivado-dummy
+	provides = basys3
+	conflicts = basys3
+	source = basys3::git+https://github.com/Digilent/basys3.git
+	md5sums = SKIP
+
+pkgname = basys3-git
+
