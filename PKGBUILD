@@ -1,28 +1,37 @@
-# Maintainer: Hugo Barrera <hugo@barrera.io>
+# Maintainer: suthernfriend <public@janpeterkoenig.com>
+# Contributor: RPDiep
+# Contributor: Hugo Barrera <hugo@barrera.io>
 # Contributor: liberodark
 
 pkgname=tusk
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.21.0
+pkgrel=0
 pkgdesc="Refined Evernote desktop app"
 arch=('x86_64')
-url="https://github.com/champloohq/tusk"
+url="https://github.com/klaussinani/tusk"
 license=('MIT')
-depends=('xdg-utils')
-source=("https://github.com/champloohq/tusk/releases/download/v${pkgver}/tusk_${pkgver}_amd64.deb"
+makedepends=('nodejs' 'npm')
+depends=('xdg-utils' 'dbus' 'glib2')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/klaussinani/tusk/archive/v${pkgver}.tar.gz"
         $pkgname.desktop
         $pkgname.png)
-sha512sums=('46a92855835b0155a2ea69d9f9c8644770027959770afdc0de4dade8745bf3d4b4f7b3a21e45ce8a28e7d7603256dc5ebf77491de7bfc9777792a998a3ad56b1'
-            '33332116be04baff7111b8b10dfb49511649e6f3a6ee9c63af314ad6571d02d4de369691499b6b34aefda2a871467b4a9a517afb699e6d9ae878a445b10b67f0'
-            '46afc3aad7d1a518df8abcebe75d7576c9fda3a10f8b046d9e7399ce76e2035e0c1db5abbedc62ff259d10c16630062d74dca93d42f1c3b5b9787146393b76f4')
+sha256sums=('c7db7d3ef890dbc39fe13239eb6078f085d99153649c37bec99feed511135b32'
+            'b72cfcd35a727cb982f82d9f97f9e4330e81fbc70af47d1bc7f5baa7837a29f3'
+            '2e8e1f13a86bd4a8fdbd2a4a69cde6b09e035b31352ad60f5a81d61a7abfe5bf')
 
 package() {
-  cd $srcdir
-  tar xvf data.tar.xz
-  cp -r opt $pkgdir
+  cd $srcdir/$pkgname-$pkgver
+  install -vDm644 ./license.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  npm install
+  node ./node_modules/electron-builder/out/cli/cli.js build -l dir --x64
+  cd ./dist/linux-unpacked
+  install -vDm644 -t "$pkgdir/usr/lib/$pkgname" ./*.pak ./*.dat ./*.bin
+  install -vDm644 -t "$pkgdir/usr/lib/$pkgname/locales" ./locales/*
+  install -vDm644 -t "$pkgdir/usr/lib/$pkgname/resources" ./resources/*
+  install -vDm755 -t "$pkgdir/usr/lib/$pkgname" ./*.so tusk
+  install -vdm755 "$pkgdir/usr/bin"
+  ln -sf /usr/lib/tusk/tusk "$pkgdir/usr/bin/tusk"
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" ./LICENSE*
   install -vDm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
   install -vDm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
-
-  mkdir -p "$pkgdir/usr/bin/"
-  ln -sf "/opt/Tusk/tusk-app" "$pkgdir/usr/bin/tusk-app"
 }
