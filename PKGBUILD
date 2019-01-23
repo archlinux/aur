@@ -1,29 +1,32 @@
-# Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Contributor: Mariusz Szczepańczyk <mszczepanczyk@gmail.com>
 # Contributor: Daniel Funke <mr.daniel.funke@gmail.com>
 
 pkgname=libejdb
-pkgver=1.2.10
+pkgver=1.2.12
 pkgrel=1
 pkgdesc="Embedded JSON Database engine"
 arch=('i686' 'x86_64')
 url="http://ejdb.org"
 license=('LGPL')
-depends=('zlib')
+depends=('zlib' 'bzip2' 'xz' 'lzo')
+makedepends=('cmake')
 provides=('libtcejdb')
-source=("https://github.com/Softmotions/ejdb/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Softmotions/ejdb/archive/v${pkgver}.tar.gz")
+sha256sums=('858b58409a2875eb2b0c812ce501661f1c8c0378f7756d2467a72a1738c8a0bf')
 
 build() {
     cd "${srcdir}/ejdb-${pkgver}"
 
-    mkdir -p build
-    cd build
+    mkdir -p build && cd build
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DBUILD_SAMPLES=OFF \
         -DPACKAGE_TGZ=OFF \
-        ../
+        ..
 
     make
 }
@@ -32,9 +35,6 @@ package() {
     cd "${srcdir}/ejdb-${pkgver}/build"
 
     make DESTDIR="${pkgdir}" install
-
-    mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
 }
 
 # vim:set ts=4 sw=4 et:
-md5sums=('85a825c1c880a51a869fadba11a7e52a')
