@@ -1,7 +1,7 @@
 
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname="basys3-git"
-pkgver=1
+pkgver=r6.97c14a4
 pkgrel=1
 pkgdesc="Basys 3 demos"
 arch=('any')
