@@ -2,7 +2,7 @@
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi-codecs-ffmpeg-extra-bin/
 
 pkgname=vivaldi-codecs-ffmpeg-extra-bin-rpi
-pkgver=63.0.3239.84
+pkgver=71.0.3578.98
 pkgrel=1
 pkgdesc="Prebuilt ffmpeg-codecs package for vivaldi for rpi"
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -16,11 +16,9 @@ conflicts=(
   'vivaldi-ffmpeg-codecs'
 )
 source=(
-  "http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-0ubuntu0.17.10.${pkgrel}_armhf.deb"
+  "http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-0ubuntu0.18.10.${pkgrel}_armhf.deb"
 )
-md5sums=(
- "6755d43b3322bc65935e954b195c40fe"
-)
+md5sums=('b3a36bb8e036855f219d2b82a54a2691')
 install=vivaldi-codecs-ffmpeg-extra-bin.install
 
 prepare() {
