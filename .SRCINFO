@@ -1,6 +1,6 @@
 pkgbase = radium
 	pkgdesc = A graphical music editor. A next generation tracker.
-	pkgver = 5.9.22
+	pkgver = 5.9.30
 	pkgrel = 1
 	url = https://users.notam02.no/~kjetism/radium
 	arch = i686
@@ -30,15 +30,15 @@ pkgbase = radium
 	optdepends = calf-ladspa: Default chorus plugin
 	optdepends = ladspa-plugins: Package group for default radium plugins incl in binary releases
 	options = !strip
-	source = https://github.com/kmatheussen/radium/archive/5.9.22.tar.gz
+	source = https://github.com/kmatheussen/radium/archive/5.9.30.tar.gz
 	source = use-libtirpc-headers.patch
 	source = use-system-libxcb.patch
 	source = use-system-vstsdk.patch
 	source = use-static-llvm40.patch
-	sha256sums = 9c9f669d0ae52e0b024968ce50941e1ab072685375c9c1b4e9e3700f6a8ffc59
+	sha256sums = 9bb14114e8445623b0ac362d93b945f46d7e87388bc859657ee37fc6e01de591
 	sha256sums = f2596261f9ebd859f9850cbfc97edb7fd5d45cf8768ce47d0721cbf4b2d80c7e
 	sha256sums = 94de9befbe6530c721917445ee3a0c0202371e1b2229784b2ea6e0c0efaf7808
-	sha256sums = 3bb159419b12c56ab53e044b3a44d3152267951c311ffdf39be637ef32ed939a
+	sha256sums = 2ec5e24af44f07afd507b1ef52f6d47d754ee336d89f384cd9181fbde2f7d13a
 	sha256sums = f4f35f6d0abb59f7db685f7e4e4d5e4c875fef83ed43672b4abad4da7f8989df
 
 pkgname = radium

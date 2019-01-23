@@ -3,7 +3,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.9.22
+pkgver=5.9.30
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -44,10 +44,10 @@ source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch"
         "use-static-llvm40.patch")
-sha256sums=('9c9f669d0ae52e0b024968ce50941e1ab072685375c9c1b4e9e3700f6a8ffc59'
+sha256sums=('9bb14114e8445623b0ac362d93b945f46d7e87388bc859657ee37fc6e01de591'
             'f2596261f9ebd859f9850cbfc97edb7fd5d45cf8768ce47d0721cbf4b2d80c7e'
             '94de9befbe6530c721917445ee3a0c0202371e1b2229784b2ea6e0c0efaf7808'
-            '3bb159419b12c56ab53e044b3a44d3152267951c311ffdf39be637ef32ed939a'
+            '2ec5e24af44f07afd507b1ef52f6d47d754ee336d89f384cd9181fbde2f7d13a'
             'f4f35f6d0abb59f7db685f7e4e4d5e4c875fef83ed43672b4abad4da7f8989df')
 
 prepare() {
@@ -85,7 +85,7 @@ package() {
   # Create startup script according to bin/packages/README
   mkdir -p "${pkgdir}/usr/bin"
   echo '#!/bin/bash' > "${pkgdir}/usr/bin/radium"
-  echo LADSPA_PATH=/usr/lib/ladspa \
+  echo LADSPA_PATH="$LADSPA_PATH:/usr/lib/ladspa" \
     QT_QPA_PLATFORM_PLUGIN_PATH="$($(RADIUM_QT_VERSION=5 ./find_moc_and_uic_paths.sh qmake) -query QT_INSTALL_PLUGINS)" \
     /opt/radium/radium >> "${pkgdir}/usr/bin/radium"
   chmod +x "${pkgdir}/usr/bin/radium"
