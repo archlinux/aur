@@ -2,8 +2,8 @@
 
 pkgname=cxx
 pkgver=3.0.4
-pkgrel=1
-pkgdesc='Build system for executables written in C++17 or C++20'
+pkgrel=2
+pkgdesc='Easy build system for modern C++ that uses SCons and GNU Make'
 arch=('x86_64')
 url='https://github.com/xyproto/cxx'
 license=('MIT')
