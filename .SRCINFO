@@ -1,0 +1,19 @@
+pkgbase = pocket-qdesktop
+	pkgdesc = Get pocket web-app based on qtws
+	pkgver = 0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qtws-base
+	source = pocket.qtws
+	source = pocket.svg
+	source = pocket.desktop
+	source = pocket
+	md5sums = d8680788badee8f5171773941caaf516
+	md5sums = 3f96abae2159da1a336e1a586340f1a4
+	md5sums = a30b4df5389d1e5e8c984173d780ed5c
+	md5sums = b8e272f5aa2d74414dc840919f474758
+
+pkgname = pocket-qdesktop
+

@@ -1,0 +1,9 @@
+{
+        "name": "Pocket",
+        "scope": ["getpocket.com/"],
+        "plugins": [],
+        "home": "https://getpocket.com/a/queue/",
+        "icon": "/usr/share/pixmaps/get-pocket.svg",
+        "saveSession": true,
+        "multimedia": true
+}

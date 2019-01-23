@@ -1,0 +1,3 @@
+#! /bin/bash
+
+qtws /usr/share/qtws-apps/pocket/pocket.qtws --disable-seccomp-filter-sandbox --register-pepper-plugins="/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so; application/x-ppapi-widevine-cdm"
