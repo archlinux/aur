@@ -3,7 +3,7 @@
 
 pkgname=spectrum2
 pkgver=2.0.9
-pkgrel=2
+pkgrel=3
 #epoch=
 pkgdesc="an open source instant messaging transport"
 arch=('any')
@@ -32,13 +32,20 @@ options=()
 install=
 changelog=
 source=("https://github.com/hanzz/$pkgname/archive/$pkgver.tar.gz"
-        'spectrum2.service')
+        'spectrum2.service'
+	'boost.patch')
 sha256sums=('e536a65ef86aafdc6d87f3c6b5bce919a67054dd01f757a2dbc82acbbdd0fa87'
-            '8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1')
+            '8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1'
+            'e73973fdc07b448170c1ce7d252af900fd8c68defe67f0876693d2ea8b4ba97c')
 
 noextract=()
 validpgpkeys=()
 
+
+prepare() {
+	cd "$srcdir"
+	patch -p1 -d "$pkgname-$pkgver" < boost.patch
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

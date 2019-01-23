@@ -1,0 +1,22 @@
+From dca109b1f3a688f1d0ce2d2be54d5598c59bf6fb Mon Sep 17 00:00:00 2001
+From: Vitaly Takmazov <vitalyster@gmail.com>
+Date: Wed, 23 Jan 2019 15:10:00 +0300
+Subject: [PATCH] CMake: no need to find boost signals
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9411d274..5680fc0a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -88,7 +88,7 @@ if (WIN32)
+ 	add_definitions(-DBOOST_ALL_NO_LIB)
+ endif(WIN32)
+ 	set(Boost_FIND_QUIETLY ON)
+-	find_package(Boost COMPONENTS program_options date_time system filesystem regex thread signals locale REQUIRED)
++	find_package(Boost COMPONENTS program_options date_time system filesystem regex thread locale REQUIRED)
+ 
+ message( STATUS "Found Boost: ${Boost_VERSION}, ${Boost_LIBRARIES}, ${Boost_INCLUDE_DIR}")
+ 
