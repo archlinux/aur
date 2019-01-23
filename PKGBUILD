@@ -1,8 +1,8 @@
 # Maintainer: "purplerhino" Douglas Hitchcock <clarkaddison(at)gmail(dot)com>
 
 pkgname=sococo
-pkgver=6.4.0_19486
-pkgrel=2
+pkgver=6.4.0_20587
+pkgrel=1
 pkgdesc="Sococo for Linux"
 arch=('x86_64')
 url="https://app.sococo.com/a/download"
@@ -13,7 +13,7 @@ source_x86_64=(
 )
 
 sha256sums_x86_64=(
-	'0fbb4bda1e8665d82a8da9811dcf9ec875b10125a7e74192e728fd843951dedd'
+	'1d7bb05a29119671b81592c59784aeae9fccca5fb7e27fd617eb92f6bca92df8'
 )
 
 package() {
