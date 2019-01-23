@@ -2,10 +2,10 @@
 
 pkgname=pyznap
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ZFS snapshot tool written in Python"
 url="https://github.com/yboetz/pyznap"
-depends=('python' 'python-paramiko' 'python-configparser')
+depends=('python' 'python-paramiko' )
 makedepends=('python3' )
 license=('GPLv3')
 arch=('any')
