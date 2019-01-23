@@ -1,33 +1,31 @@
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=libxml2
-pkgver=2.9.8
-pkgrel=8
-pkgdesc="XML parsing library, version 2"
-url="http://www.xmlsoft.org/"
+pkgver=2.9.9
+pkgrel=1
+pkgdesc='XML parsing library, version 2'
+url='http://www.xmlsoft.org/'
 arch=(x86_64)
 license=(MIT)
 depends=(zlib readline ncurses xz icu)
 makedepends=(python2 python git)
-_commit=18890f471c420411aa3c989e104d090966ec9dbf  # tags/v2.9.8^0
-source=(git+https://git.gnome.org/browse/libxml2#commit=$_commit
+_commit=f8a8c1f59db355b46962577e7b74f1a1e8149dc6  # tags/v2.9.9^0
+source=("git+https://git.gnome.org/browse/libxml2#commit=$_commit"
         https://www.w3.org/XML/Test/xmlts20130923.tar.gz)
 sha256sums=('SKIP'
             '9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-rc/rc/;s/^v//;s/-/+/g'
+  git describe --always --tags | sed 's/-rc/rc/;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   mkdir build-py{2,3}
-
   cd $pkgname
-  git cherry-pick -n 2240fbf5912054af025fb6e01e26375100275e74
-
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -58,5 +56,7 @@ check() {
 package() {
   make -C build-py2 DESTDIR="$pkgdir" install
   make -C build-py3/python DESTDIR="$pkgdir" install
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 build-py2/COPYING
+  install -Dm 644 build-py2/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+# vim: ts=2 sw=2 et:
