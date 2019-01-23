@@ -1,0 +1,14 @@
+diff --git a/doc/examples/CMakeLists.txt b/doc/examples/CMakeLists.txt
+index 28a9962d..c164cc4a 100644
+--- a/doc/examples/CMakeLists.txt
++++ b/doc/examples/CMakeLists.txt
+@@ -55,9 +55,6 @@ TARGET_LINK_LIBRARIES(sun ${METEOIO_LIBRARIES})
+ ADD_EXECUTABLE(time time.cc)
+ TARGET_LINK_LIBRARIES(time ${METEOIO_LIBRARIES})
+ 
+-ADD_EXECUTABLE(random_numbers random_numbers.cc)
+-TARGET_LINK_LIBRARIES(random_numbers ${METEOIO_LIBRARIES})
+-
+ #####################################################################
+ # add a distclean target
+ ADD_CUSTOM_TARGET(distclean make clean
