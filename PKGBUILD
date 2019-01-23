@@ -4,7 +4,7 @@
 #Maintainer: onny <onny@project-insanity.org>
 
 pkgname=wfuzz
-pkgver=2.3.1
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="Utility to bruteforce web applications to find their not linked resources"
 url="https://github.com/xmendez/wfuzz"
@@ -16,8 +16,8 @@ conflicts=()
 replaces=()
 backup=()
 source=("https://github.com/xmendez/wfuzz/archive/v$pkgver.tar.gz")
-md5sums=('52c41b801f1976497567d13c2d403759')
-sha256sums=('4c111d9189463599b69a810c14b9c7b4fccd83b2969616d4d0c83d48ac5bfd3d')
+md5sums=('74817cc7aa14efda785c1727622e4539')
+sha256sums=('87ff36d866cb173389f90cf026136758d3af73079a6199961de12ed86568be51')
 
 
 package() {
