@@ -1,5 +1,5 @@
 pkgbase = linux-bcachefs-git
-	pkgver = 4.20.3.arch1
+	pkgver = 4.20.4.arch1
 	pkgrel = 1
 	url = https://evilpiepirate.org/git/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = linux-bcachefs-git
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = bcachefs::git+https://evilpiepirate.org/git/bcachefs.git#commit=303e27810eaf58a0f52518681c90422e50113d63
+	source = bcachefs::git+https://evilpiepirate.org/git/bcachefs.git
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = config
 	source = 60-linux.hook
