@@ -4,7 +4,7 @@
 # Contributor: sumt <sumt at sci dot fi>
 
 pkgname=palemoon-bin
-pkgver=28.3.0
+pkgver=28.3.1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -27,9 +27,9 @@ source_x86_64=("https://linux.palemoon.org/datastore/release/palemoon-$pkgver.li
 
 validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC') # T. Wine
 sha256sums=('c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e')
-sha256sums_i686=('6f51abf9cca133d1b822d3b41b927c40396c9c8b7277051f3a48352f3ae64b84'
+sha256sums_i686=('4b47189e80cde5adb680300ec78d9656c4f1d4010dbaf1deea7c0254dcd63a62'
                  'SKIP')
-sha256sums_x86_64=('1dd8bb653e6c4f47a6be22827807b951b40e7e9bca778c9c919f220f9e9635e8'
+sha256sums_x86_64=('9854eb5d570950235f9239c61d4b694db4df23baf0861e668699abe6f55bcc6d'
                    'SKIP')
 
 package() {
