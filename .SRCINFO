@@ -1,6 +1,6 @@
 pkgbase = basys-3-xadc-git
 	pkgdesc = Basys 3 XADC Demo
-	pkgver = 1
+	pkgver = v2018.2.3.r0.fdfff92
 	pkgrel = 1
 	url = https://reference.digilentinc.com/learn/programmable-logic/tutorials/basys-3-xadc/start
 	arch = any
