@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=cxx
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='Build system for executables written in C++17 or C++20'
 arch=('x86_64')
