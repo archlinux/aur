@@ -1,7 +1,7 @@
 
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname="basys-3-gpio-git"
-pkgver=1
+pkgver=v2018.2.3.r0.7d5c241
 pkgrel=1
 pkgdesc="Basys 3 General Input/Output Demo"
 arch=('any')
