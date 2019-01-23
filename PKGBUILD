@@ -2,7 +2,7 @@
 # Contributor: Brian Douglass <https://github.com/bhdouglass/, http://bhdouglass.com/>
 
 _pkgname=clickable
-pkgname=$_pkgname-git
+pkgname=clickable-git
 pkgver=5.0.0.r8.gabd7ca3
 pkgrel=1
 pkgdesc='Compile, build, and deploy Ubuntu Touch click packages all from the command line.'
@@ -11,7 +11,8 @@ url='https://gitlab.com/clickable/clickable'
 license=('GPL3')
 depends=('python-cookiecutter' 'docker' 'android-tools')
 optdepends=('lxd: use lxd instead of docker (deprecated)'
-            'xorg-xhost: for running on the desktop')
+            'xorg-xhost: for running on the desktop'
+            'nvidia-docker-1.0.1: use clickable'\''s desktop mode with proprietary Nvidia drivers')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")

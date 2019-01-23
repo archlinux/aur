@@ -12,6 +12,7 @@ pkgbase = clickable-git
 	depends = android-tools
 	optdepends = lxd: use lxd instead of docker (deprecated)
 	optdepends = xorg-xhost: for running on the desktop
+	optdepends = nvidia-docker-1.0.1: use clickable's desktop mode with proprietary Nvidia drivers
 	provides = clickable
 	conflicts = clickable
 	source = git+https://gitlab.com/clickable/clickable.git
