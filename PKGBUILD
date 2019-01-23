@@ -1,5 +1,5 @@
 pkgname=vgmstream-kode54-git
-pkgver=r1020.r2136.gac28ccc5
+pkgver=r1050.r2028.gac28ccc5
 pkgrel=1
 pkgdesc="Library for playback of various streamed audio formats used in video games (kode54's fork)"
 arch=(x86_64)
