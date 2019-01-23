@@ -1,7 +1,7 @@
 
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname="digilent-vivado-scripts-git"
-pkgver=1
+pkgver=r58.fd7ce6b
 pkgrel=1
 pkgdesc="Tcl/python3 scripts to convert between git repos and Vivado/Xilinx SDK projects"
 arch=('any')
