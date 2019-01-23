@@ -3,7 +3,7 @@
 # Co-Maintainer: Nils Czernia <nils at czserver dot de>
 
 pkgname=matomo
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="real time web analytics platform"
 arch=("any")
@@ -17,17 +17,19 @@ optdepends=("mysql>=5.5: database server"
 install="$pkgname.install"
 source=("https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz"
         "https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz.asc")
-backup=("usr/share/webapps/${pkgname}/piwik.js")
-sha256sums=("1876d4c3cf03b65e1ffbeda9e876e006dd4aedea6e86875f5c22ec9c3873afa5"
-            "94ef554fc4af76090d0a38f135696c0cb55376cd77ed8895fa1f5d0c256ec91b")
+backup=("usr/share/webapps/${pkgname}/piwik.js" "usr/share/webapps/${pkgname}/matomo.js")
+sha256sums=("423f47904ba2b6df02369258f8bcd3b1bc2d8a48c2f0439ef4e4f1bb4a62db03"
+            "557846cdfefcb8190de96d9d1b5ef89d2a63470038ffbf2671fd3ddde900d4da")
 
 validpgpkeys=("814E346FA01A20DBB04B6807B5DBD5925590A237")
 
 package() {
   install -d "${pkgdir}/usr/share/webapps"
   cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/share/webapps/${pkgname}"
-  # Some extensions want to append to piwik.js, so we relectantly let them.
+  # Some extensions want to append to piwik.js (matomo.js from 3.8.0 onwards),
+  # so we relectantly let them.
   chmod g+w "${pkgdir}/usr/share/webapps/${pkgname}/piwik.js"
+  chmod g+w "${pkgdir}/usr/share/webapps/${pkgname}/matomo.js"
 
   # While installing matomo, it insists on being able to write to the config directory,
   # because it creates config.ini.php. After it’s installed, you can make it read-only,
