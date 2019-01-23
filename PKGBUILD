@@ -2,16 +2,16 @@
 pkgbase=python-sphinx-click
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.4.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Sphinx extension that automatically documents click applications"
 arch=('i686' 'x86_64')
 url="https://sphinx-click.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-sphinx')
-checkdepends=('python-coverage' 'python2-coverage' 'python2-sphinx' 'python-click-5.1' 'python2-click-5.1')
+checkdepends=('python-coverage' 'python2-coverage' 'python2-sphinx' 'python-click' 'python2-click')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0c1d3c14d90f38cab7355098e61a6d75')
+md5sums=('7462fd92de0a866456b2ac7a208effc3')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -65,7 +65,7 @@ package_python-sphinx-click() {
 
 package_python-sphinx-click-doc() {
     pkgdesc="Documentation for sphinx-click"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+    cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
