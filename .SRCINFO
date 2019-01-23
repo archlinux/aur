@@ -1,0 +1,15 @@
+pkgbase = basys-3-abacus-git
+	pkgdesc = Basys 3 Abacus Demo
+	pkgver = 1
+	pkgrel = 1
+	url = https://reference.digilentinc.com/learn/programmable-logic/tutorials/basys-3-abacus/start
+	arch = any
+	license = unknown
+	depends = xilinx-vivado-dummy
+	provides = basys-3-abacus
+	conflicts = basys-3-abacus
+	source = basys-3-abacus::git+https://github.com/Digilent/basys-3-abacus.git
+	md5sums = SKIP
+
+pkgname = basys-3-abacus-git
+
