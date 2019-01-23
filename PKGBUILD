@@ -1,14 +1,14 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=dwb-belllabs-git
 pkgver=20150517.r25.gd20c709
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A fork of the original Documenter's Workbench Release 3.3."
 arch=('i686' 'x86_64')
 url="https://github.com/n-t-roff/DWB3.3"
 license=('EPL')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
