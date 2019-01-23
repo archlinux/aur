@@ -1,0 +1,13 @@
+pkgbase = python-statsd
+	pkgdesc = A simple statsd client.
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/jsocol/pystatsd
+	arch = any
+	license = MIT
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/statsd/statsd-3.3.0.tar.gz
+	md5sums = b397ccf880f37cf099e775907ebf7a46
+
+pkgname = python-statsd
+
