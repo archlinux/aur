@@ -3,11 +3,12 @@
 # Contributor: Florian Jacob <projects+arch AT florianjacob )DOT( de>
 # Contributor: mareex <marcus [dot] behrendt [dot] 86 [at] gmail [dot] com>
 
+SUMO_HOME='/usr/share/sumo'
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
 pkgver=1.1.0
 _pkgver="${pkgver//./_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
 arch=('i686' 'x86_64')
 url="http://sumo.dlr.de"
@@ -63,7 +64,7 @@ package_sumo() {
 cat <<EOF > "${pkgdir}/etc/profile.d/sumo.sh"
 #!/bin/sh
 
-export SUMO_HOME="/usr/lib/sumo"
+export SUMO_HOME="$SUMO_HOME"
 EOF
 
     install -Dm644 data/logo/sumo-128x138.png ${pkgdir}/usr/share/pixmaps/${pkgbase}.png

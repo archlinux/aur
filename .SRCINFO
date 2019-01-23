@@ -1,7 +1,7 @@
 pkgbase = sumo
 	pkgdesc = Traffic simulation modelling road vehicles, public transport and pedestrians.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sumo.dlr.de
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = sumo
 
 pkgname = sumo
 	optdepends = java-runtime-common: for executing Jar files like TraCI4J
-	optdepends = python2: for executing various python scripts in /usr/lib/sumo/tools
+	optdepends = python2: for executing various python scripts in /usr/share/sumo/tools
 
 pkgname = sumo-doc
 
