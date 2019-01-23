@@ -6,6 +6,7 @@ pkgbase = python-statsd
 	arch = any
 	license = MIT
 	depends = python
+	depends = python-setuptools
 	source = https://files.pythonhosted.org/packages/source/s/statsd/statsd-3.3.0.tar.gz
 	md5sums = b397ccf880f37cf099e775907ebf7a46
 
