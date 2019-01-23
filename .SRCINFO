@@ -1,0 +1,13 @@
+pkgbase = lz4json
+	pkgdesc = C decompress tool for mozilla lz4json format
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/andikleen/lz4json
+	arch = x86_64
+	license = unknown
+	depends = lz4
+	source = https://github.com/andikleen/lz4json/archive/v2/lz4json-v2.tar.gz
+	sha512sums = 325653fb70b80bf5b37eb0b831caa22654cdc3d2bb5ba2afe7498580c2bb80e9983c5982902784905d9bfa41d85656d403a3096acf4809a6fec38fd6ec092493
+
+pkgname = lz4json
+
