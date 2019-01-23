@@ -5,7 +5,7 @@
 
 pkgname=syslog-ng-nosystemd
 pkgver=3.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -36,7 +36,7 @@ source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver
         syslog-ng.logrotate
         syslog-ng.rc)
 sha256sums=('5cf931a9d7bead0e6d9a2c65eee8f6005a005878f59aa280f3c4294257ed5178'
-            '190ecfe8ee5a4b74fe86d7b32713583302a7ebf7afa570ce4803441f20dabb5e'
+            '0610bc3900453329c1ea68f3ad5a4ef49b8f4d2199e1a380389adcc760babf34'
             'fe6ebe5c281b34bad201d9206e607857db9a5a78f03bb4dc4440584dca610f61'
             '93c935eca56854011ea9e353b7a1da662ad40b2e8452954c5b4b5a1d5b2d5317'
             'c55c1d78d81f7cda543b8391aa5aaa786224071707b924d43b80749678daf452')
