@@ -1,0 +1,16 @@
+pkgbase = evilginx
+	pkgdesc = Standalone man-in-the-middle attack framework used for phishing login credentials along with session cookies, allowing for the bypass of 2-factor authentication
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/kgretzky/evilginx2
+	arch = x86_64
+	license = GPL3
+	makedepends = go-pie
+	makedepends = git
+	makedepends = dep
+	depends = glibc
+	source = evilginx-2.3.0.tar.gz::https://github.com/kgretzky/evilginx2/archive/2.3.0.tar.gz
+	sha512sums = 385926bbd0a37568a4fa9fc9e500bd622a14209ecf0d60ff8b93e6e45b3d59b0649fe9f0c5571f6eade58e025d25a84f24bce9b64a63163939eabdea937bac69
+
+pkgname = evilginx
+
