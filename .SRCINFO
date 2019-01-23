@@ -1,7 +1,7 @@
 pkgbase = magico
 	pkgdesc = A minimalist AUR Helper
 	pkgver = r3.6b1bc0d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archlinux-br-dev/magico
 	arch = x86_64
 	license = GPL
