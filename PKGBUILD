@@ -47,5 +47,8 @@ check() {
 package() {
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
+  if [ -d "$pkgdir"/usr/lib64 ]; then
+    mv "$pkgdir"/usr/lib64 "$pkgdir"/usr/lib
+  fi
 }
 
