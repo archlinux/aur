@@ -1,6 +1,6 @@
 pkgbase = linux-usermode
 	pkgdesc = User mode Linux kernel and modules
-	pkgver = 4.19.5
+	pkgver = 4.20.4
 	pkgrel = 1
 	url = http://user-mode-linux.sourceforge.net/
 	arch = x86_64
@@ -9,16 +9,16 @@ pkgbase = linux-usermode
 	makedepends = inetutils
 	makedepends = gcc7
 	depends = coreutils
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.5.xz
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.20.tar.xz
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.20.tar.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.20.4.xz
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1
+	sha256sums = ad0823183522e743972382df0aa08fb5ae3077f662b125f1e599b0b2aaa12438
 	sha256sums = SKIP
-	sha256sums = 31d7d1981b1a510e02d26ae09eee334d53df3964b7c49a92adb62fb5c22c6cc0
-	sha256sums = 2c00aae90b09536093c48f99540045dc48bfc8114d1d6d0b781cd25c5344ed57
+	sha256sums = 24ee94fbbf9c356ace420e7eedfff4c9d3f2e8645011bc8947c22421dea5a8ba
+	sha256sums = 0c6ca2df8b072b1fa1c13d290e2c1f0c97d872419f4bf8c2fd813a29e79c5626
 
 pkgname = linux-usermode
 
