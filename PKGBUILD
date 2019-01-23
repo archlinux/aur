@@ -5,7 +5,7 @@
 
 pkgname=tusk
 pkgver=0.21.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Refined Evernote desktop app"
 arch=('x86_64')
 url="https://github.com/klaussinani/tusk"

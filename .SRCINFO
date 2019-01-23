@@ -1,7 +1,7 @@
 pkgbase = tusk
 	pkgdesc = Refined Evernote desktop app
 	pkgver = 0.21.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/klaussinani/tusk
 	arch = x86_64
 	license = MIT
