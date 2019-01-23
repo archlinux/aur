@@ -4,8 +4,8 @@
 pkgname=odoo10
 _pkgname=odoo
 pkgver=10.0
-_pkgsubver=20190116
-pkgrel=23
+_pkgsubver=20190123
+pkgrel=24
 pkgdesc="Web-based Open Source Business Apps"
 url=http://odoo.com/
 arch=('any')
@@ -91,7 +91,7 @@ package()
   install -Dm 644 ${srcdir}/odoo.service ${pkgdir}/usr/lib/systemd/system/odoo.service
   install -Dm 644 ${srcdir}/odoo.conf ${pkgdir}/etc/odoo/odoo.conf
 }
-md5sums=('a067207372ed70dd2b59542dcdb38ef9'
+md5sums=('4330a6934e735f6145800557a5ae3f86'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '5bddcc6edbdefdd07cae945165c63604'
          '863418f31f0fb982cde0008fa63f35f0')
