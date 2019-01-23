@@ -1,7 +1,7 @@
 
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname="vivado-library-git"
-pkgver=1
+pkgver=v2018.2.1.r4.7ec155b
 pkgrel=1
 pkgdesc="free-to-use IP cores and interface definitions compatible with Xilinx Vivado IP Catalog"
 arch=('any')
