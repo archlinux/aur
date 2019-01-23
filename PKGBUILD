@@ -1,7 +1,7 @@
 pkgname=keepass-plugin-traytotp
 _pluginname=TrayTotp
 pkgver=2.0.0.5
-pkgrel=2
+pkgrel=4
 pkgdesc="Plugin adding TOTP to KeePass2 tray menu, entry list and auto-type."
 license=('GPL3')
 depends=('keepass')
