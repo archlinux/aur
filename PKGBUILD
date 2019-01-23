@@ -2,7 +2,7 @@
 pkgbase=python-soupsieve
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="A modern CSS selector implementation for BeautifulSoup"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-pytest' 'python2-pytest' 'python2-beautifulsoup4' 'python-beautifulsoup4' 'python2-html5lib' 'python-html5lib' 'python2-backports.functools_lru_cache')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('dca4dd9bd29a25a9e48b6c3f2a71e7d7')
+md5sums=('586675875ebfb1c4ad8627c72ea56006')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
