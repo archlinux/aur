@@ -1,0 +1,23 @@
+pkgbase = gallium-nine
+	pkgdesc = Gallium Nine Standalone
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/dhewg/nine
+	arch = x86_64
+	license = LGPL2
+	makedepends = git
+	makedepends = wine
+	makedepends = mesa
+	makedepends = meson
+	source = https://github.com/dhewg/nine/archive/v0.1.tar.gz
+	sha512sums = c1ef8d1cb7f35802f92012fd18258cd59c0218f78d7bf43bf0073cc47a51f99e8649177b163a85b4bcdf6379ca96db09249df90a5f13f0371814e6d18ee36a9b
+
+pkgname = gallium-nine
+	depends = mesa
+	provides = gallium-nine
+
+pkgname = lib32-gallium-nine
+	depends = gallium-nine
+	depends = lib32-mesa
+	provides = lib32-gallium-nine
+
