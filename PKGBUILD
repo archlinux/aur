@@ -1,7 +1,7 @@
 
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname="basys-3-xadc-git"
-pkgver=1
+pkgver=v2018.2.3.r0.fdfff92
 pkgrel=1
 pkgdesc="Basys 3 XADC Demo"
 arch=('any')
