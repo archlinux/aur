@@ -2,7 +2,7 @@ pkgbase = evolution-on-git
 	pkgdesc = Plugin to put evolution in system tray.
 	pkgver = v3.24.2.r0.g4794055
 	pkgrel = 1
-	url = https://github.com/acidrain42/evolution-on
+	url = https://github.com/zsugabubus/evolution-on
 	install = evolution-on-git.install
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = evolution-on-git
 	conflicts = evolution-tray-arch
 	replaces = evolution-tray
 	replaces = evolution-tray-arch
-	source = evolution-on::git+https://github.com/acidrain42/evolution-on.git
+	source = evolution-on::git+https://github.com/zsugabubus/evolution-on.git
 	md5sums = SKIP
 
 pkgname = evolution-on-git
