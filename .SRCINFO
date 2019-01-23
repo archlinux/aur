@@ -1,6 +1,6 @@
 pkgbase = git-ssh-git
 	pkgdesc = A wrapper around git to work with multiple SSH keys
-	pkgver = r227.bbe6609
+	pkgver = r230.a6b4145
 	pkgrel = 1
 	url = https://github.com/pyamsoft/git-ssh.git
 	install = git-ssh.install
