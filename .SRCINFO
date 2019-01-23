@@ -1,15 +1,13 @@
 pkgbase = tusk
 	pkgdesc = Refined Evernote desktop app
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/klaussinani/tusk
 	arch = x86_64
 	license = MIT
-	makedepends = nodejs
 	makedepends = npm
 	depends = xdg-utils
-	depends = dbus
-	depends = glib2
+	depends = electron
 	source = tusk-0.21.0.tar.gz::https://github.com/klaussinani/tusk/archive/v0.21.0.tar.gz
 	source = tusk.desktop
 	source = tusk.png
