@@ -4,7 +4,7 @@
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
 pkgver=1.14.4
-pkgrel=4
+pkgrel=5
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -23,11 +23,9 @@ makedepends=(autoconf-archive git gobject-introspection lib32-gtk3 lib32-libtige
              vulkan-headers lib32-vulkan-validation-layers)
 _commit=566e4ecc223b18fce8bd932f5e4885f41f746dd4  # tags/1.14.4^0
 source=("git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad#commit=$_commit"
-        'gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common'
-        'gst-fdkaac2.patch::https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/merge_requests/77.patch')
+        'gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common')
 sha256sums=('SKIP'
-            'SKIP'
-            '273e8935061be3c951da81231deece84325311f896a7edf985bbf3716c559801')
+            'SKIP')
 
 pkgver() {
     cd $_basename
@@ -39,7 +37,9 @@ prepare() {
     cd $_basename
 
     # libfdk-aac 2.0.0
-    patch -Np1 -i ../gst-fdkaac2.patch
+    git cherry-pick -n \
+        f4fdb9770c76113f38515245fecc5f11b3ace20d \
+        19d34f6b5e1633d5ec4bb2832c58470f0c829cab
 
     git submodule init
     git config --local submodule.common.url "$srcdir/gst-common"
