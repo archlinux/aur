@@ -1,0 +1,15 @@
+pkgbase = genreport
+	pkgdesc = Provides tools to check the DNS protocol compliance of the servers.
+	pkgver = 20190122
+	pkgrel = 1
+	url = https://gitlab.isc.org/isc-projects/DNS-Compliance-Testing
+	arch = x86_64
+	license = custom:Mozilla Public License v2.0
+	makedepends = gcc
+	makedepends = make
+	makedepends = autoconf
+	source = https://gitlab.isc.org/isc-projects/DNS-Compliance-Testing/-/archive/4e996109d6b54d61e0bafe76c40f186a4777a100/DNS-Compliance-Testing-4e996109d6b54d61e0bafe76c40f186a4777a100.tar.gz
+	sha256sums = 88ce320c6e5a58377f278ef1f029372d0d9370aaebc4f24a8eec420453f1716b
+
+pkgname = genreport
+
