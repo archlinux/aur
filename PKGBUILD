@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=shinjiru-git
 _pkgname=Shinjiru
-pkgver=v.3.3.2.r3.g7c4b99a
+pkgver=3.3.3.r2.gcf4f3b4
 pkgrel=1
 pkgdesc="Shinjiru is an anime list management tool built with Qt designed to automatically update your progress to AniList and act an desktop manager for AniList."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
