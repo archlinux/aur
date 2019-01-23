@@ -1,8 +1,8 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=cxx
-pkgver=3.0.4
-pkgrel=2
+pkgver=3.0.5
+pkgrel=1
 pkgdesc='Easy build system for modern C++ that uses SCons and GNU Make'
 arch=('x86_64')
 url='https://github.com/xyproto/cxx'
@@ -17,7 +17,7 @@ optdepends=('lldb: For debugging'
             'gprof2dot: For visualizing profiling information'
             'graphviz: For visualizing profiling information'
             'kcachegrind: For visualizing profiling information')
-source=("git+https://github.com/xyproto/cxx#tag=$pkgver")
+source=("git+$url#tag=$pkgver")
 md5sums=('SKIP')
 
 package() {
