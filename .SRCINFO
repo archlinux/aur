@@ -1,0 +1,20 @@
+pkgbase = digilent-meta
+	pkgdesc = Meta-package for some of Digilent's GitHub repos)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Digilent
+	arch = any
+	license = unknown
+	license = custom:MIT
+	depends = vivado-library
+	depends = vivado-boards
+	depends = digilent-xdc
+	depends = digilent-vivado-scripts
+	depends = basys3
+	depends = basys-3-abacus
+	depends = basys-3-gpio
+	depends = basys-3-keyboard
+	depends = basys-3-xadc
+
+pkgname = digilent-meta
+
