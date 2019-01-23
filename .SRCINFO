@@ -1,7 +1,7 @@
 pkgbase = faangband
 	pkgdesc = An Angband variant set in the First Age of Tolkien's Silmarillion world
 	pkgver = 1.4.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://angband.oook.cz/faangband/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = faangband
 	depends = sdl_mixer
 	depends = sdl_ttf
 	source = https://github.com/NickMcConnell/FAangband/archive/master.zip
-	md5sums = efc81e8bcf5f733e0ca253715ab0b2c7
+	md5sums = bf68586492f110487b152f29842bad14
 
 pkgname = faangband
 
