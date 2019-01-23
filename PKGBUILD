@@ -1,7 +1,7 @@
 # Maintainer: Philipp Fent <philipp@fent.de>
 pkgname=cppmake
 pkgver=2016.03.31
-pkgrel=2
+pkgrel=3
 pkgdesc="cppmake. A small make tool that is largely GNU make compatible, but faster."
 arch=('x86_64')
 url="https://db.in.tum.de/~neumann/cppmake/"
