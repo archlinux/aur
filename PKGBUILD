@@ -2,12 +2,12 @@
 
 pkgname=mts-utils
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='MPEG Transport Stream Utilities (tstools fork, includes tsplay)'
 arch=(x86_64)
 url='https://github.com/xyproto/mts-utils'
 license=(MPL)
-makedepends=('cxx>=3.0.5' git)
+makedepends=('cxx' git)
 source=("git+$url#tag=$pkgver")
 md5sums=('SKIP')
 
