@@ -3,33 +3,39 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin
-pkgver=10.0.2
+pkgver=10.1.0
 # Check at https://github.com/jellyfin/jellyfin/tree/v**PKGVER**/ThirdParty
-_taglib_sharp_commit=ee5ab21742b71fd1b87ee24895582327e9e04776
+_taglib_sharp_commit=60e7588b53868a2b37dd0bc92868b740da2eeded
+# Check at https://github.com/jellyfin/jellyfin/tree/v**PKGVER**/MediaBrowser.WebDashboard
+_jellyfin_web_commit=094c1deae91c51b8bbf8ebb16a55758af110f04d
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-depends=('ffmpeg' 'imagemagick' 'dotnet-sdk' 'sqlite')
+depends=('dotnet-runtime' 'ffmpeg' 'imagemagick' 'sqlite')
+makedepends=('dotnet-sdk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin/archive/v$pkgver.tar.gz"
         "taglib-sharp-$_taglib_sharp_commit.tar.gz::https://github.com/mono/taglib-sharp/archive/$_taglib_sharp_commit.tar.gz"
+        "jellyfin-web-$_jellyfin_web_commit.tar.gz::https://github.com/jellyfin/jellyfin-web/archive/$_jellyfin_web_commit.tar.gz"
         'jellyfin.conf'
         'jellyfin.service'
         'jellyfin.sysusers'
         'jellyfin.tmpfiles')
 backup=('etc/conf.d/jellyfin')
-sha256sums=('46b30aa62845c1ced7a52113007d4c56ba1a2c20f6bd6d2588327a18dda0882d'
-            'a0d32a20ba31609bb16def46723fcf937b42aa65442e1b363f85343b95a491c6'
-            'ff3c81ddfd716f179fec8149ea6c2db379e05cd20bd0ffa8ce3ff3a609ca9749'
-            '61febaa0bbe71235d724f236223c7315da393b8b481e4bbed86489a343bca51f'
-            '9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228'
-            'aa87d52386dde4a2ea4663de2f08249415b2babfefd98d348a96df35dfc36bc0')
+sha512sums=('6de013160354175a7e03e7a93fee86a25dca5170fa5efd2194dcd3a0fe86917151903cbd05273d522e1b70f2e4741d9c78966ff7672a88aec2945e0f6372e1d6'
+            '4571d2bec9fc9585283103fa6b7e3ed2f369df9fdb429e379904e9f3c63864b534d8179c03675dea62dd16550e2f091ad1b7abb6207c096cf464b2dcfb572224'
+            '2e054ea0df918df098fc03500a5a9b0eb2c2cad94bbf72dbc96464cd724b1c642c21b7cbfa775b160b799406cfc05da31e711116ab881b8ceb2a7ece04885130'
+            '3a4178268be34d6735c0f86d1300158a17d05cdeaca14807db382aa03e91e8901997f273064a8a7e3f0ccfe7e7c83a32cfd4a95c431678477a79ab12b127ba2f'
+            '3ff147dba3625d91d5f3f7e030c473b8d03171cd33693af2e8f3aad852d4914b93bdff678e2c4365a34db94622c3f3bb21c42388abe3c387750fca0dfc5cc372'
+            '6fc2638e6ec4b1ee0240e17815c91107b694e5fde72c1bc7956c83067bbeacb632de899b86837e47a0ec04288131b15c20746373b45e0669c8976069a55d627a'
+            '20ff19a4697a93fccdf0dfeae74ab49d74fbe5dbe242e4f169c4d4af0955750befc9abd276d9f07f685793dd5ef69d7908761ff934ae3b47b3c3108a7de56438')
 
 prepare() {
   cd $pkgname-$pkgver
 
   cp -r "$srcdir"/taglib-sharp-$_taglib_sharp_commit/. ThirdParty/taglib-sharp
+  cp -r "$srcdir"/jellyfin-web-$_jellyfin_web_commit/. MediaBrowser.WebDashboard/jellyfin-web
 }
 
 build(){
@@ -37,21 +43,27 @@ build(){
 
   # Disable dotnet telemetry
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
-  dotnet build --configuration Release MediaBrowser.sln
-  # dotnet doesn't like fakeroot
-  dotnet publish --configuration Release MediaBrowser.sln --output "$PWD"/build
-  # TODO: Clean up the runtimes folder, Mono.Posix.NETStandard.dll is required from it though
-  # rm -rf build/runtimes
+
+  dotnet build --configuration Release Jellyfin.Server
+  # Ideally, this would be run in package() with the --output variable pointing
+  # to "$pkgdir"/usr/lib/jellyfin, but this step fails in fakeroot.
+  # The makepkg output looks like
+  #   Restore completed in 56.84 ms for /aur/jellyfin-git/src/jellyfin/Jellyfin.Server/Jellyfin.Server.csproj.
+  #   ==> ERROR: A failure occurred in package().
+  # without indicating any sort of failure.
+  dotnet publish --configuration Release Jellyfin.Server --output "$PWD"/publish
+  # Clean up the runtimes folder (keep linux-*)
+  rm -rfv publish/runtimes/{alpine-*,osx*,tizen-*,win*}
 }
 
 package() {
   mkdir -p "$pkgdir"/usr/lib
-  cp -dr --no-preserve='ownership' $pkgname-$pkgver/build "$pkgdir"/usr/lib/jellyfin
+  cp -dr --no-preserve='ownership' $pkgname-$pkgver/publish "$pkgdir"/usr/lib/jellyfin
 
-  install -Dm 644 jellyfin.service -t "${pkgdir}"/usr/lib/systemd/system/
-  install -Dm 644 jellyfin.sysusers "${pkgdir}"/usr/lib/sysusers.d/jellyfin.conf
-  install -Dm 644 jellyfin.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/jellyfin.conf
-  install -Dm 644 jellyfin.conf "${pkgdir}"/etc/conf.d/jellyfin
+  install -Dm 644 jellyfin.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -Dm 644 jellyfin.sysusers "$pkgdir"/usr/lib/sysusers.d/jellyfin.conf
+  install -Dm 644 jellyfin.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/jellyfin.conf
+  install -Dm 644 jellyfin.conf "$pkgdir"/etc/conf.d/jellyfin
 }
 
 # vim: ts=2 sw=2 et:
