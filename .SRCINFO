@@ -1,6 +1,6 @@
 pkgbase = spectrum2-git
 	pkgdesc = an open source instant messaging transport
-	pkgver = 2.0.9
+	pkgver = r2042.3fb32baf
 	pkgrel = 1
 	url = http://spectrum.im
 	arch = any

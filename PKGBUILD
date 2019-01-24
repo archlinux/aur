@@ -2,7 +2,7 @@
 
 
 pkgname=spectrum2-git
-pkgver=2.0.9
+pkgver=r2042.3fb32baf
 pkgrel=1
 #epoch=
 pkgdesc="an open source instant messaging transport"
