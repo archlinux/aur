@@ -2,12 +2,12 @@
 pkgname=python-pyparser
 _name=${pkgname#python-}
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="pyparser is a collection of classes to make it easier to parse text data in a pythonic way."
 arch=('any')
 url="https://pypi.org/project/pyparser/"
 license=('GPL')
-depends=('python')
+depends=('python' 'python-parse')
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
