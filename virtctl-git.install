@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+#post_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	echo ">>> In order for the systemd service to work, virtual machine"
+    echo ">>> domains must be defined in /srv/kvm. A helper script"
+    echo ">>> is included with this package.  After installation"
+    echo ">>> is finished run virtctl_create_domain_symlinks"
+    echo ">>> to create symlinks for these domains."
+}
+
+## arg 1:  the old package version
+#pre_remove() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#post_remove() {
+	# do something here
+#}

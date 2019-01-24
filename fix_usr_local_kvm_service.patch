@@ -1,0 +1,25 @@
+diff --git a/kvm@.service b/kvm@.service
+index 57c43ed..65d021d 100644
+--- a/kvm@.service
++++ b/kvm@.service
+@@ -17,13 +17,13 @@ RequiresMountsFor=/srv/kvm/work /srv/%p/%i
+ 
+ [Service]
+ Type=forking
+-EnvironmentFile=/usr/local/etc/virtctl.conf
++EnvironmentFile=/etc/virtctl/virtctl.conf
+-PIDFile=/run/libvirt/qemu/%p%i.pid
++PIDFile=/run/libvirt/qemu/%i.pid
+-ExecStart=/usr/local/sbin/virtctl start %p %i
+-ExecStartPre=/usr/local/sbin/virtctl start_pre %p %i
+-ExecStartPost=/usr/local/sbin/virtctl start_post %p %i
+-ExecStop=/usr/local/sbin/virtctl stop %p %i
+-ExecStopPost=/usr/local/sbin/virtctl stop_post %p %i
++ExecStart=/usr/bin/virtctl start %p %i
++ExecStartPre=/usr/bin/virtctl start_pre %p %i
++ExecStartPost=/usr/bin/virtctl start_post %p %i
++ExecStop=/usr/bin/virtctl stop %p %i
++ExecStopPost=/usr/bin/virtctl stop_post %p %i
+ Restart=on-success
+ SuccessExitStatus=1
+ 

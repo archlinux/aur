@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+BASE_DIR="/etc/libvirt/qemu"
+DEST="/srv/kvm"
+
+sudo mkdir -p $DEST
+
+for domain_xml in $BASE_DIR/*.xml; do
+    BASE_NAME=$(basename ${domain_xml%.*})
+    sudo mkdir -p /srv/kvm/$BASE_NAME
+    sudo ln -svf $domain_xml /srv/kvm/$BASE_NAME/kvm$BASE_NAME.xml
+done

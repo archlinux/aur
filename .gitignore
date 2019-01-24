@@ -1,0 +1,10 @@
+pkg
+src
+test
+virtctl*
+*.xz
+*.sign
+*.src.tar.gz
+*.log
+*.part
+*.sig

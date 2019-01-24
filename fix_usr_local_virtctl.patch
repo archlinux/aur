@@ -1,0 +1,13 @@
+diff --git a/virtctl b/virtctl
+index a56ce20..1e9fb85 100755
+--- a/virtctl
++++ b/virtctl
+@@ -23,7 +23,7 @@
+ # (This is for completeness sake; systemd has its own timeouts as well.)
+ #
+ 
+-CONFIG=/usr/local/etc/virtctl.conf
++CONFIG=/etc/virtctl/virtctl.conf
+ 
+ if [ -f $CONFIG ]; then
+    . $CONFIG
