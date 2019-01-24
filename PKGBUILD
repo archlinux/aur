@@ -1,7 +1,7 @@
 # Maintainer: Stijn Seghers <stijnseghers at gmail dot com>
 
 pkgname=stylelint
-pkgver=9.3.0
+pkgver=9.10.1
 pkgrel=1
 pkgdesc='A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('stylelint-config-standard')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('bb9f6959396b7708eaae226d4ef3b56b4c112b599f6d0429ee32eddbb497e339761e6b551ce33f235c1de37c474ef5096432a9d4f4cea6a4406a6537805be638')
+sha512sums=('f54887c5984e007120790ee82c6c2bc280d1f2f72504a9525fbaf87c7d22baed127cfc0568b91bd5ced0da3d5caa0f4fec80d77805764ef40c2ff7d143318105')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
