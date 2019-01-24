@@ -1,20 +1,24 @@
 # Maintainer: Mr. Outis <mroutis@protonmail.com>
 pkgname=dvc
-pkgver=0.23.2
-pkgrel=2
+pkgver=0.24.0
+pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
 url="https://github.com/iterative/${pkgname}"
 license=('Apache')
 
-makedepends=('git')
+makedepends=('git' 'python-setuptools' 'python-pyasn1')
 
-depends=('python3' 'python-setuptools' 'python-pyaml'
-         'python-configobj' 'python-ply' 'python-zc.lockfile'
-         'python-gitpython' 'python-requests' 'python-colorama'
-         'python-pyasn1' 'python-future' 'python-pillow'
-         'python-boto3' 'python-paramiko' 'python-wcwidth'
-         'python-distro' 'python-pyfiglet')
+depends=('python3' 'python-pyaml' 'python-configobj'
+         'python-ply' 'python-zc.lockfile' 'python-gitpython'
+         'python-requests' 'python-colorama' 'python-future'
+         'python-pillow' 'python-wcwidth' 'python-distro'
+         'python-pyfiglet' 'python-networkx')
+
+optdepends=('python-boto3: support for AWS S3 remote'
+            'python-paramiko: support for SSH remote'
+            'python-azure-storage: support for Azure remote'
+            'hadoop: support for HDFS remote')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'https://files.pythonhosted.org/packages/source/g/grandalf/grandalf-0.6.tar.gz'
@@ -22,21 +26,17 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'https://files.pythonhosted.org/packages/source/n/ntfsutils/ntfsutils-0.1.4.tar.gz'
         'https://files.pythonhosted.org/packages/source/n/nanotime/nanotime-0.5.2.tar.gz'
         'https://files.pythonhosted.org/packages/source/s/schema/schema-0.6.8.tar.gz'
-        'https://files.pythonhosted.org/packages/source/n/networkx/networkx-2.1.zip'
         'https://files.pythonhosted.org/packages/source/c/configparser/configparser-3.5.0.tar.gz'
-        'asciimatics-1.10.0::git+https://github.com/peterbrittain/asciimatics.git#branch=v1.10'
-        )
+        'https://files.pythonhosted.org/packages/source/a/asciimatics/asciimatics-1.10.0.tar.gz')
 
-sha256sums=('1e4dd7a2ecf38a0324d985c1d4161287126181762b95507fa79a668c67f42639'
+sha256sums=('9e15af911610ef0c34f800c3d9cc33b5f663a30a26aa6f0871d3bc01850f5d47'
             '7471db231bd7338bc0035b16edf0dc0c900c82d23060f4b4d0c4304caedda6e4'
             '05c471281c45ae113f6103d1268ec7a4831a2e96aa80de45edc89b11fac4fbec'
             '50c058ce3371a819606ff29e914e6555c4d6c2527bff0cd0ed20af5947703118'
             'c7cc231fc5f6db401b448d7ab51c96d0a4733f4b69fabe569a576f89ffdf966b'
             'fa1a53fe5f3b6929725a4e81688c250f46838e25d8c1885a10a590c8c01a7b74'
-            '64272ca418972b70a196cb15d9c85a5a6041f09a2f32e0d30c0255f25d458bb1'
             '5308b47021bc2340965c371f0f058cc6971a04502638d4244225c49d80db273a'
-            'SKIP'
-            )
+            '9101b0b6885542f324980bbe13a772475cd6a12678f601228eaaea412db919ab')
 
 package() {
   # Dependencies
@@ -53,9 +53,6 @@ package() {
   python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=0
 
   cd "${srcdir}/schema-0.6.8"
-  python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=0
-
-  cd "${srcdir}/networkx-2.1"
   python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=0
 
   cd "${srcdir}/configparser-3.5.0"
