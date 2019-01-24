@@ -1,19 +1,20 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-tss-engine-git
-pkgver=r33.c9061a7
-pkgrel=2
+pkgver=r47.e008159
+pkgrel=1
 pkgdesc='OpenSSL engine for Trusted Platform Module 2.0 devices'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tss-engine'
 license=('BSD')
 depends=('openssl' 'tpm2-tss')
-makedepends=('git' 'autoconf-archive' 'pandoc')
+makedepends=('git' 'autoconf-archive' 'cmocka' 'pandoc')
 checkdepends=('expect' 'ibm-sw-tpm2' 'tpm2-tools-git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git")
-sha512sums=('SKIP')
-BUILDENV+=('!check') # see warning below before enabling tests
+source=("git+$url.git"
+        'tpm2-tss-engine-git_check.sh')
+sha512sums=('SKIP'
+            'e6c9f852ec508d78817a091b2a63fe82457ee952d86e1b5325c75bf7c80a8fa42fd99d217e4ec55a5825e92faf29ff95b88f2e436530a94ad288f629a8f355a7')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -28,25 +29,13 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	./configure --prefix=/usr --sysconfdir=/etc
+	./configure --prefix=/usr --sysconfdir=/etc --enable-tctienvvar
 	make
 }
 
-# WARNING: currently tests are disabled by default because they use an available hardware TPM
-# for some operations, see https://github.com/tpm2-software/tpm2-tss-engine#development-prefixes
-# This would cause some tests to fail, so do not enable them on systems with a TPM
-# or build in a clean chroot that does not have access to the device.
 check() {
 	cd "${pkgname%-git}"
-
-	# Start TPM simulator
-	tpm_server >/dev/null &
-	tpm_server_pid="$!"
-	tpm2_clear --tcti=mssim
-
-	make --jobs=1 check
-
-	kill "$tpm_server_pid" || true
+	"$srcdir/tpm2-tss-engine-git_check.sh"
 }
 
 package() {
