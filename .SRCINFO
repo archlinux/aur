@@ -1,0 +1,24 @@
+pkgbase = venom-git
+	pkgdesc = a modern Tox client for the Linux desktop
+	pkgver = r1188.e2d9fe4
+	pkgrel = 1
+	url = https://github.com/naxuroqa/venom
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	makedepends = meson
+	depends = libgee
+	depends = toxcore
+	depends = gspell
+	depends = xdg-desktop-portal
+	depends = sqlcipher
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	provides = venom
+	conflicts = venom
+	source = venom-git::git+https://github.com/naxuroqa/Venom#branch=develop
+	sha512sums = SKIP
+
+pkgname = venom-git
+
