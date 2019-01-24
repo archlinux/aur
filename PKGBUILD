@@ -1,6 +1,6 @@
 pkgname=pycharm-community-eap
-_buildver=183.5429.27
-_pkgver=2018.3.4
+_buildver=191.4212.43
+_pkgver=2019.1
 _eap=y
 pkgver=$_pkgver.$_buildver
 pkgrel=1
@@ -15,12 +15,12 @@ makedepends=(python-setuptools python2-setuptools)
 provides=(pycharm-community-edition)
 conflicts=(pycharm-community-edition)
 if [[ $_eap = y ]]; then
-    source=("https://download.jetbrains.com/python/pycharm-community-$_buildver.tar.gz"{,.sha256})
-    sha256sums=($(cut -f1 -d' ' "pycharm-community-$_buildver.tar.gz.sha256") SKIP)
+    _filever=$_buildver
 else
-    source=("https://download.jetbrains.com/python/pycharm-community-$_pkgver.tar.gz"{,.sha256})
-    sha256sums=($(cut -f1 -d' ' "pycharm-community-$_pkgver.tar.gz.sha256") SKIP)
+    _filever=$_filever
 fi
+source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz"{,.sha256})
+sha256sums=($(cut -f1 -d' ' "pycharm-community-$_filever.tar.gz.sha256") SKIP)
 
 prepare() {
 	cat >"$srcdir/$pkgname.desktop" <<-EOF
@@ -39,14 +39,14 @@ prepare() {
 }
 
 build() {
-	python2 "$srcdir/pycharm-community-$_pkgver/helpers/pydev/setup_cython.py" build_ext --inplace
-	python3 "$srcdir/pycharm-community-$_pkgver/helpers/pydev/setup_cython.py" build_ext --inplace
+	python2 "$srcdir/pycharm-community-$_filever/helpers/pydev/setup_cython.py" build_ext --inplace
+	python3 "$srcdir/pycharm-community-$_filever/helpers/pydev/setup_cython.py" build_ext --inplace
 }
 
 package() {
 	cd "$srcdir"
 	mkdir -p "$pkgdir/opt/$pkgname"
-	cp -R "pycharm-community-$_pkgver/"* "$pkgdir/opt/$pkgname/"
+	cp -R "pycharm-community-$_filever/"* "$pkgdir/opt/$pkgname/"
 
 	local _vmoptfile=pycharm64
 	if [[ $CARCH = 'i686' ]]; then
