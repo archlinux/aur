@@ -10,6 +10,7 @@ pkgbase = lutris-beta
 	checkdepends = python-nose-cover3
 	checkdepends = wine
 	makedepends = python-setuptools
+	makedepends = webkit2gtk
 	depends = python-gobject
 	depends = python-yaml
 	depends = python-evdev
