@@ -1,0 +1,15 @@
+pkgbase = 8bit-league
+	pkgdesc = League of Legends client in your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/molenzwiebel/8bit-league
+	arch = any
+	license = MIT
+	makedepends = jq
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.org/8bit-league/-/8bit-league-1.0.0.tgz
+	sha256sums = 38f1ead691f69247ce0914efcb2bb339aef0b27ec97cb904990139c40e01d25b
+
+pkgname = 8bit-league
+
