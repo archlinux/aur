@@ -1,0 +1,17 @@
+pkgbase = libnavajo-git
+	pkgdesc = Framework to develop easily web interfaces for C++ application
+	pkgver = v1.5.r38.1180842
+	pkgrel = 1
+	url = https://github.com/titi38/libnavajo
+	arch = any
+	license = CeCILL-C
+	makedepends = git
+	makedepends = cmake
+	depends = openssl
+	provides = libnavajo
+	conflicts = libnavajo
+	source = git+https://github.com/titi38/libnavajo.git
+	md5sums = SKIP
+
+pkgname = libnavajo-git
+
