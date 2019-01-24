@@ -1,9 +1,9 @@
 # Maintainer: Bart Verhagen <bart at verhagenconsultancy dot be>
 pkgname=('rapidcheck')
 pkgbase='rapidcheck'
-pkgver=0.0.0
+pkgver=r983.3eb9b4f
 pkgrel=1
-epoch=983
+epoch=
 pkgdesc="QuickCheck clone for C++ with the goal of being simple to use with as little boilerplate as possible."
 arch=('any')
 url="https://github.com/emil-e/rapidcheck"
@@ -13,7 +13,7 @@ depends=()
 makedepends=(cmake)
 checkdepends=()
 optdepends=()
-provides=('rapidcheck=0.0.0')
+provides=('rapidcheck=r983.3eb9b4f')
 conflicts=()
 replaces=()
 backup=()
