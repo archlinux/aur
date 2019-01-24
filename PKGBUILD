@@ -5,11 +5,11 @@ pkgname=keybase-git-arm
 pkgdesc='the Keybase Go client, filesystem, and GUI (built for arm)'
 license=('BSD')
 url='https://keybase.io'
-pkgver=1.0.27+15115.8169d666e
+pkgver=3.0.0+29116.3552b8044a
 pkgver() {
   "$srcdir/client/packaging/linux/arch/keybase_git_version.sh"
 }
-pkgrel=0
+pkgrel=1
 arch=('armv7h' 'aarch64')
 depends=(fuse gconf libxss gtk2) # don't change this without changing the SRCINFO template too
 makedepends=(go yarn npm git rsync patch)
@@ -47,7 +47,7 @@ index b7b7e1d16..999636177 100755
 -else
 -  echo SKIPPING 32-bit build
 -fi
-+export GOARCH=arm
++export GOARCH=arm64
 +export debian_arch=arm64
 +export electron_arch=arm64
 +build_one_architecture' | (cd client && patch -p1)
