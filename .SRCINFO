@@ -1,9 +1,9 @@
 pkgbase = xfce4-cpufreq-plugin-git
-	pkgdesc = CPU frequency plugin for the Xfce4 panel
-	pkgver = 1450.05848bb
+	pkgdesc = CPU frequency plugin for the Xfce4 panel (git checkout)
+	pkgver = 1.2.1.r7.ga6a515f
 	pkgrel = 1
+	epoch = 1
 	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-cpufreq-plugin
-	install = xfce4-cpufreq-plugin.install
 	arch = i686
 	arch = x86_64
 	groups = xfce4-goodies
@@ -13,16 +13,13 @@ pkgbase = xfce4-cpufreq-plugin-git
 	makedepends = xfce4-dev-tools
 	makedepends = autoconf
 	makedepends = libtool
-	depends = xfce4-panel>=4.7.4
-	depends = libxfcegui4
+	depends = xfce4-panel-git
 	depends = hicolor-icon-theme
 	provides = xfce4-cpufreq-plugin
 	conflicts = xfce4-cpufreq-plugin
 	options = !libtool
 	source = git://git.xfce.org/panel-plugins/xfce4-cpufreq-plugin
-	source = xfce4-cpufreq-plugin.install
 	sha256sums = SKIP
-	sha256sums = 72645ae7d2dfdc919becbda9e38c2c26e8d8047716fb324e46aa3f2cb3162473
 
 pkgname = xfce4-cpufreq-plugin-git
 

@@ -4,27 +4,25 @@
 
 pkgname=xfce4-cpufreq-plugin-git
 _gitname=xfce4-cpufreq-plugin
-pkgver=1450.05848bb
+pkgver=1.2.1.r7.ga6a515f
 pkgrel=1
-pkgdesc="CPU frequency plugin for the Xfce4 panel"
+epoch=1
+pkgdesc="CPU frequency plugin for the Xfce4 panel (git checkout)"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://goodies.xfce.org/projects/panel-plugins/xfce4-cpufreq-plugin"
 groups=('xfce4-goodies')
-depends=('xfce4-panel>=4.7.4' 'libxfcegui4' 'hicolor-icon-theme')
+depends=('xfce4-panel-git' 'hicolor-icon-theme')
 makedepends=('intltool' 'git' 'xfce4-dev-tools' 'autoconf' 'libtool')
 provides=('xfce4-cpufreq-plugin')
 conflicts=('xfce4-cpufreq-plugin')
 options=('!libtool')
-install=${_gitname}.install
-source=('git://git.xfce.org/panel-plugins/xfce4-cpufreq-plugin'
-        ${_gitname}.install)
-sha256sums=('SKIP'
-            '72645ae7d2dfdc919becbda9e38c2c26e8d8047716fb324e46aa3f2cb3162473')
+source=('git://git.xfce.org/panel-plugins/xfce4-cpufreq-plugin')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
-  git describe --always | sed 's|-|.|g'
+  git describe --long | sed 's/^xfce4.cpufreq.plugin-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
