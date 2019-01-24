@@ -1,4 +1,5 @@
-# Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
+# Maintainer: Jan Kohnert <bughunter at jan-kohnert.de>
+# Contributor: Miguel de Val-Borro <miguel at archlinux dot net>
 # Contributor: James Tappin <jtappinatgmaildotcom>
 # Contributor: Gergely Imreh <imrehgATgmailDOTcom>
 # Contributor: Eric Belanger <eric@archlinux.org>
