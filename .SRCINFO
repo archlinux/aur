@@ -1,8 +1,9 @@
 pkgbase = qdep
 	pkgdesc = A very basic yet simple to use dependency management tool for qmake based projects.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Skycoder42/qdep
+	install = qdep.install
 	arch = any
 	license = BSD
 	depends = qt5-base

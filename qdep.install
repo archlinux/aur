@@ -1,0 +1,15 @@
+post_install () {
+  qdep prfgen
+}
+
+pre_upgrade() {
+  post_remove "$@"
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+post_remove() {
+  rm -f "$(qmake -query QT_HOST_DATA)/mkspecs/features/qdep.prf"
+}
