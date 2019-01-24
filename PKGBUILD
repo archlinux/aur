@@ -7,14 +7,14 @@ pkgver=0.40
 pkgrel=3
 pkgdesc='Razer mouse configuration tool'
 arch=('x86_64')
-url=https://bues.ch/h/razercfg
+url=https://bues.ch/cms/hacking/razercfg
 license=('GPL')
 depends=('hicolor-icon-theme' 'libusb' 'python')
 makedepends=('cmake')
 optdepends=('python-pyqt5: for the graphical qrazercfg tool')
 provides=('razerd')
 backup=('etc/razer.conf')
-source=("http://bues.ch/razercfg/razercfg-$pkgver.tar.bz2"{,.asc}
+source=("https://bues.ch/razercfg/razercfg-$pkgver.tar.bz2"{,.asc}
         'tmpfile.conf')
 sha512sums=('42c3e7a34a348982fb2c1022c85dd3ec6d875dec387492eb4f6aece82423a1fd5984c4efb79926084aac880944a9e139a424487ab277d8c1a56c4f9c0a7c9d6e'
             'SKIP'
