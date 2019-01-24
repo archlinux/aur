@@ -1,13 +1,13 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=mts-utils
-pkgver=2.1.0
+pkgver=2.1.6
 pkgrel=1
 pkgdesc='MPEG Transport Stream Utilities (tstools fork, includes tsplay)'
 arch=(x86_64)
 url='https://github.com/xyproto/mts-utils'
 license=(MPL)
-makedepends=(cxx git)
+makedepends=(cxx git parallel)
 source=("git+$url#tag=$pkgver")
 md5sums=(SKIP)
 
@@ -16,7 +16,7 @@ build() {
 }
 
 check() {
-  make -C "$pkgname" check
+  make -C "$pkgname" test
 }
 
 package() {
