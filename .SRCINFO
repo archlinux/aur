@@ -1,0 +1,57 @@
+pkgbase = python-postpic
+	pkgdesc = The open source particle-in-cell post processor.
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/skuschel/postpic
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python>=3.7
+	makedepends = python<3.8
+	makedepends = python2>=2.7
+	makedepends = python2<2.8
+	makedepends = python-matplotlib
+	makedepends = python-numpy>=1.7
+	makedepends = python-scipy
+	makedepends = python-future
+	makedepends = python-urllib3
+	makedepends = python-numexpr
+	makedepends = python2-matplotlib
+	makedepends = python2-numpy>=1.7
+	makedepends = python2-scipy
+	makedepends = python2-future
+	makedepends = python2-urllib3
+	makedepends = python2-numexpr
+	makedepends = python-setuptools
+	makedepends = cython
+	makedepends = python-h5py
+	makedepends = python2-setuptools
+	makedepends = cython2
+	makedepends = python2-h5py
+	source = python-postpic-0.4.tar.gz::https://github.com/skuschel/postpic/archive/v0.4.tar.gz
+	sha512sums = 4f3d9ed4ae70f0fb8ae4e2e690aa9dc683cb92c78b1daef2dd251ada9653b94d7b5bf688dae64e998f808ff812650c32d8a5570224a1d72d6b0123a803bb21ac
+
+pkgname = python-postpic
+	depends = python>=3.7
+	depends = python<3.8
+	depends = python-matplotlib
+	depends = python-numpy>=1.7
+	depends = python-scipy
+	depends = python-future
+	depends = python-urllib3
+	depends = python-numexpr
+	optdepends = python-h5py: h5 reader for openPMD support
+	optdepends = python-sdf: sdf support for EPOCH reader
+
+pkgname = python2-postpic
+	depends = python2>=2.7
+	depends = python2<2.8
+	depends = python2-matplotlib
+	depends = python2-numpy>=1.7
+	depends = python2-scipy
+	depends = python2-future
+	depends = python2-urllib3
+	depends = python2-numexpr
+	optdepends = python2-h5py: h5 reader for openPMD support
+	optdepends = python2-sdf: sdf support for EPOCH reader
+
