@@ -1,6 +1,6 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=feedreader-git
-pkgver=2.6.1.r2792
+pkgver=2.6.2.r2796
 pkgrel=1
 pkgdesc="FeedReader is a modern desktop application designed to complement existing web-based RSS accounts."
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ prepare() {
 build() {
   mkdir -p "$srcdir/FeedReader/build"
   cd "$srcdir/FeedReader/build"
-  arch-meson
+  arch-meson -Db_pie=false
   ninja
 }
 
