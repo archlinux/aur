@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-barbicanclient' 'python2-barbicanclient')
-pkgver='4.8.0'
+pkgver='4.8.1'
 pkgrel='1'
 pkgdesc='Client library for the Barbican Key Management API'
 arch=('any')
@@ -26,7 +26,7 @@ checkdepends=('python-fixtures' 'python2-fixtures'
               'python-oslo-config' 'python2-oslo-config'
               'python-openstackclient' 'python2-openstackclient')
 source=("https://github.com/openstack/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('134fdb35c30abab53845c804096ac9d31d1a115a74a81dc5ceee97d80b1f81b3a69f4689c7102755aed0e38222b21691ccde747952b2c05ef3aad9c48403c81f')
+sha512sums=('4a99a32d8950957ab2548353a3b4275b95bc830f1b479c1d5592e884af4263ed937080e8ec9ce21dddfe3c42f2370d3278babd9332a318ac43c1c387404ca592')
 
 prepare() {
   cp -a "${srcdir}/${pkgname}-${pkgver}"{,-py2}
