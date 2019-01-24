@@ -3,18 +3,24 @@
 
 pkgname=katriawm
 pkgver=18.09
-pkgrel=1
+pkgrel=2
 pkgdesc="A non-reparenting, dynamic window manager for X11 with decorations"
 arch=("i686" "x86_64")
 url="https://www.uninformativ.de/git/katriawm/file/README.html"
 license=("MIT")
 makedepends=("git")
 depends=("libx11" "libxft" "libxrandr")
-source=("git+https://www.uninformativ.de/git/katriawm.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("git+https://www.uninformativ.de/git/katriawm.git#tag=v${pkgver}"
+        "set_prefix.patch")
+sha256sums=('SKIP'
+            'a9de73fa43affa7c32d0f678c21eb30aa9173d9e51eb8e170a0389db82f3bf8c')
+
 
 prepare() {
-  cd "${srcdir}/${pkgname}/src"
+  cd "${pkgname}/src"
+
+  # Set prefix
+  patch -Np2 -i "${srcdir}/set_prefix.patch"
 
   # Read custom config headers from $XDG_CONFIG_HOME/katria{wm,bi}-config.h
 
@@ -32,13 +38,13 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/src"
-  make PREFIX=/usr
+  cd "${pkgname}/src"
+  make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/src"
-  make DESTDIR=${pkgdir} PREFIX=/usr MANPREFIX=/usr/share/man install
+  cd "${pkgname}/src"
+  make DESTDIR=${pkgdir} install
   install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 ../README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
