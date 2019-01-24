@@ -9,7 +9,7 @@ url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
 provides=(mutter)
-conflicts=(mutter)
+conflicts=(mutter mutter-dev)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas-git libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
          gnome-settings-daemon libgudev libinput pipewire)

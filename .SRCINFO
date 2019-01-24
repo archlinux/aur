@@ -27,6 +27,7 @@ pkgbase = mutter-git
 	depends = pipewire
 	provides = mutter
 	conflicts = mutter
+	conflicts = mutter-dev
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git
 	sha256sums = SKIP
 
