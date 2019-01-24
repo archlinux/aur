@@ -10,7 +10,7 @@ url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL2)
 provides=(gnome-shell)
-conflicts=(gnome-shell)
+conflicts=(gnome-shell gnome-shell-dev)
 depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-settings-daemon
          gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libcroco libgdm libsecret
          mutter-git nm-connection-editor unzip gstreamer libibus)

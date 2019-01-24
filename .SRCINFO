@@ -36,6 +36,7 @@ pkgbase = gnome-shell-git
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
 	conflicts = gnome-shell
+	conflicts = gnome-shell-dev
 	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
