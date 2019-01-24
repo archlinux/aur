@@ -1,0 +1,20 @@
+pkgbase = navicat121_premium_cs_x64
+	pkgdesc = Navicat Premium is a multi-connection database development tool. (Chinese Simplified)
+	pkgver = 12.1.12
+	pkgrel = 1
+	url = http://www.navicat.com
+	arch = any
+	license = GPL3
+	depends = wine
+	provides = navicat
+	source = http://dn.navicat.com/download/navicat121_premium_cs_x64.tar.gz
+	source = navicat.desktop
+	source = navicat
+	source = Navicat_Premium.png
+	md5sums = 771268bcf9f8e60a38aea41f57912045
+	md5sums = 42dc2916a53578e05c9c4bcd619ade21
+	md5sums = 20fa59790eb7acaeeeaf4b86cdd0551f
+	md5sums = 595f2ae611d7ebb183e83d712232b0e2
+
+pkgname = navicat121_premium_cs_x64
+
