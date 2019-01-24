@@ -1,7 +1,8 @@
 post_install() {
+    echo "IMPORTANT: The location of API keys has changed!"
     echo "Add your keys to /opt/theharvester-git/api-keys.yaml"
-    googleCSE: API key and CSE ID
-    hunter: API key
-    securitytrails: API key
-    shodan: API key"
+    echo ">>>googleCSE: API key and CSE ID"
+    echo ">>>hunter: API key"
+    echo ">>>securitytrails: API key"
+    echo ">>>shodan: API key"
 }
