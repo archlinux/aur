@@ -1,0 +1,32 @@
+---
+ nano/node/CMakeLists.txt   | 1 -
+ nano/secure/CMakeLists.txt | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/nano/node/CMakeLists.txt b/nano/node/CMakeLists.txt
+index 86da82d4..ef7bd9be 100644
+--- a/nano/node/CMakeLists.txt
++++ b/nano/node/CMakeLists.txt
+@@ -60,7 +60,6 @@ target_link_libraries (node
+ 	Boost::log
+ 	Boost::log_setup
+ 	Boost::program_options
+-	Boost::system
+ 	Boost::thread
+ 	Boost::boost
+ 	${CMAKE_DL_LIBS}
+diff --git a/nano/secure/CMakeLists.txt b/nano/secure/CMakeLists.txt
+index 38f4385c..2c7340a8 100644
+--- a/nano/secure/CMakeLists.txt
++++ b/nano/secure/CMakeLists.txt
+@@ -44,7 +44,6 @@ target_link_libraries(secure
+ 	rai_lib
+ 	lmdb
+ 	Boost::boost
+-	Boost::system
+ 	Boost::filesystem)
+ 
+ target_compile_definitions(secure PUBLIC
+-- 
+2.20.1
+
