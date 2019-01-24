@@ -1,6 +1,6 @@
 pkgbase = nodejs-jdrive
 	pkgdesc = Google Drive sync daemon
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://gitlab.com/mrvik/jdrive
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = nodejs-jdrive
 	makedepends = python2
 	depends = nodejs>=10
 	noextract = jdrive.tgz
-	source = jdrive.tgz::https://gitlab.com/mrvik/jdrive/-/jobs/artifacts/v1.1.1/raw/jdrive.tgz?job=Build%20npm%20tarball
-	sha512sums = 695e3e350ea78b569da17d4d0a09bbe587b6420f374d59776f65fb6049b0f99ae1d93be5868a8903b90d2ae8002d52667bda9caec07d026fd1f6e099a0e4ec45
+	source = jdrive.tgz::https://gitlab.com/mrvik/jdrive/-/jobs/artifacts/v1.2.0/raw/jdrive.tgz?job=Build%20npm%20tarball
+	sha512sums = cbf3a96ef97f29b8a0f98dc00f4604a8e0d48e09f917dfd28703db6e763007e6baa1c6489da8e65cb007bf22c3a8a1cb5d3f2c39e4412d8ba34356abfd06bcf5
 
 pkgname = nodejs-jdrive
 
