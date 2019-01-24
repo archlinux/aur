@@ -9,6 +9,9 @@ pkgbase = python-ueberzug-git
 	depends = python
 	depends = python-xlib
 	depends = python-docopt
+	depends = python-psutil
+	depends = python-pillow
+	depends = python-attrs
 	provides = python-ueberzug=gb89ff85
 	conflicts = python-ueberzug
 	source = git+https://github.com/seebye/ueberzug.git#branch=master

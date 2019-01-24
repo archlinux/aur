@@ -8,7 +8,7 @@ pkgdesc="ueberzug is an python script which aims to replace w3mimgdisplay"
 arch=('any')
 url="https://github.com/seebye/${_pkgname}"
 license=('GPL3')
-depends=("python" "python-xlib" "python-docopt")
+depends=("python" "python-xlib" "python-docopt" "python-psutil" "python-pillow" "python-attrs")
 makedepends=("python")
 source=("git+${url}.git#branch=master")
 md5sums=('SKIP')
