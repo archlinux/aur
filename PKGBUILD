@@ -9,12 +9,13 @@
 
 pkgname=pinentry-dmenu
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A pinentry program with the charm of dmenu"
 url="https://github.com/ritze/pinentry-dmenu"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('sh' 'libconfig'  'libxinerama' 'libxft')
+provides=('pinentry')
 source=(https://github.com/ritze/pinentry-dmenu/archive/$pkgver.zip)
 sha256sums=('440757f80b7157bf6ed3414f4bfa09100b468b37d6eed7e769b392e04b0aa1cf')
 
