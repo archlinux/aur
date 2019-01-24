@@ -7,10 +7,10 @@ epoch=983
 pkgdesc="QuickCheck clone for C++ with the goal of being simple to use with as little boilerplate as possible."
 arch=('any')
 url="https://github.com/emil-e/rapidcheck"
-license=('BSD2')
+license=('BSD')
 groups=()
 depends=()
-makedepends=()
+makedepends=(cmake)
 checkdepends=()
 optdepends=(catch2 google-test boost)
 provides=('rapidcheck=0.0.0')
