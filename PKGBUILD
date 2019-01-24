@@ -8,8 +8,8 @@ license=('GPL')
 makedepends=('unzip')
 source=("http://www.ssw.uni-linz.ac.at/Research/Projects/Coco/CPP/CocoSourcesCPP.zip"
         "http://www.ssw.uni-linz.ac.at/Research/Projects/Coco/Doc/license.txt")
-md5sums=('39bef530693d5372ef15af3062f11f8b'
-         '70ff85f9908c38e9542a0bae936e36f6')
+sha256sums=('fa968179d063b3ee6a0047ca70f5948f2f572f82a9194731ad0252ff8c1f7223'
+            'd78f94c8894f8fa8811f00b1c13ab82a0cfc0aa000b6494049464654bd90ecd3')
 noextract=("CocoSourcesCPP.zip")
 
 build() {
