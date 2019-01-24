@@ -1,5 +1,5 @@
 pkgname=nanocurrency
-pkgver=17.0
+pkgver=17.1
 _tag="V$pkgver"
 pkgrel=1
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://nano.org/"
 license=('BSD 2-clause')
 makedepends=('cmake')
-depends=('qt5-base'  'boost>=1.66.0' 'boost-libs>=1.66.0')
+depends=('qt5-base'  'boost>=1.69.0' 'boost-libs>=1.69.0')
 provides=(raiblocks nanocurrency)
 conflicts=("raiblocks" "raiblocks-git" "raiblocks-node-git" "nanocurrency-node-git")
 install=install
@@ -15,6 +15,7 @@ install=install
 source=(nanowallet.desktop
   nanowallet128.png
   nano-node.service
+  boost-1.69.patch
   "git+https://github.com/nanocurrency/nano-node.git#tag=${_tag}"
   git+https://github.com/weidai11/cryptopp.git
   "git+https://github.com/nanocurrency/lmdb.git#branch=lmdb_0_9_21"
@@ -24,6 +25,7 @@ source=(nanowallet.desktop
 sha256sums=('6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91'
             '27179351dbc3e000d54b5b13f0c2326b4c4bd06e93b1d0b2ea1849609aeadc2e'
             'c219c91db98f33097e7d96ef0f0c95e4b9d6226ac2ab90e30be7f955c43bfa35'
+            '64b3be81b0616120be239a01ad12971277a6fbb4d1b07eb00580c3c10c0f5880'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -32,6 +34,12 @@ sha256sums=('6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91'
 
 prepare() {
   cd "$srcdir/nano-node"
+
+  
+  if `grep Boost::system ./rai/node/CMakeLists.txt -q`; then
+    echo "patching for Boost 1.69 compatibility"
+    patch -p1 < $srcdir/boost-1.69.patch
+  fi
   
   git submodule init
 
