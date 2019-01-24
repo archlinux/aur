@@ -6,6 +6,7 @@ arch=('any')
 url="https://github.com/dehesselle/virtctl"
 license=('MIT')
 depends=('libvirt')
+description="virtctl is a helper script for starting/stopping libvirt-based virtual machines and the infrastructure around it to integrate it with systemd. If you're looking for a small and simple framework to start and stop your VMs with systemd, you might want to take a look."
 source=(
     "$pkgname::git+https://github.com/dehesselle/virtctl.git"
     'fix_usr_local_virtctl.patch'
