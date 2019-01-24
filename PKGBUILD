@@ -1,8 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
-_pkgname=bazarr
-pkgname=$_pkgname-git
-pkgver=r564.22d85d7
+pkgname=bazarr-git
+pkgver=r858.35daaeb
 pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
@@ -26,7 +25,8 @@ depends=('python2'
          'python2-tzlocal'
          'python2-urllib3'
          'python2-waitress'
-         'python2-webtest')
+         'python2-webtest'
+         'python2-gevent')
 
 makedepends=('git')
 provides=('bazarr')
@@ -34,15 +34,17 @@ conflicts=('bazarr')
 source=('git+https://github.com/morpheus65535/bazarr'
         'bazarr.service'
         'bazarr.sysusers'
-        'bazarr.tmpfiles')
+        'bazarr.tmpfiles'
+        'bazarr.install')
 
 sha256sums=('SKIP'
-            'e3c57f1a1d9ddd87d097efe2df5148f10de79c445fe6eee158f64b4335f3e174'
+            'b9e739e66eeabe5e9768db791d0d930e7f3cbaba6d2253a5973f8034ca12a8e7'
             '92fd48cbd7e5fe3a0388bbe756a52098fc461ef2dc87d9e886452e4f15acdcdc'
-            '7f75f2c2634524e90b1dea7649fceceb57949efa9db365cfa9e29e58690def4e')
+            '3aa2ebbf4083301d331f36486edcb81fcd094767a0ea404a89d870217d4f6632'
+            '573beeac951d427e980332ce4d8645ae2299082e6c9c04f96e2a41a98c3acc60')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "bazarr"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
