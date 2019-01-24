@@ -1,13 +1,13 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
 pkgname=crow-translate-git
-pkgver=1.0.1.r1.g327fb6c
+pkgver=2.1.0.r11.ge4bbef1
 pkgrel=1
 pkgdesc="A simple and lightweight translator that allows to translate and say selected text using the Google Translate API and much more"
 arch=('x86_64')
 url="https://github.com/Shatur95/crow-translate"
 license=('GPL3')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-x11extras' 'gst-plugins-good' 'openssl')
+depends=('qt5-base' 'qt5-svg' 'qt5-multimedia' 'qt5-x11extras' 'gst-plugins-good' 'openssl')
 makedepends=('qt5-tools' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
