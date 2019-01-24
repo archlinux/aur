@@ -14,7 +14,7 @@ source=(http://dn.navicat.com/download/navicat121_premium_en_x64.tar.gz
         Navicat_Premium.png)
     
 md5sums=('SKIP'
-         'fb447234a045c63b0f048b12714731bf'
+         '0b9b9533ac454b9ee8ad49e6e487bbfd'
          '20fa59790eb7acaeeeaf4b86cdd0551f'
          '595f2ae611d7ebb183e83d712232b0e2')
 

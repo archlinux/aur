@@ -2,8 +2,8 @@
 Name=Navicat Premium(en)
 Comment=Database GUI
 Exec=/usr/bin/navicat
-Icon=/opt/navicat/Navicat/help/img/icon_navicat.png
-Terminal=0
+Icon=/usr/share/icons/hicolor/256x256/apps/Navicat_Premium.png
+Terminal=false
 Type=Application
 Encoding=UTF-8
-Categories=Network;Application;
+Categories=Development;Database;Application;
