@@ -25,7 +25,7 @@ pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
 pkgver=18.0rc5.2
 # diffs: https://github.com/xbmc/xbmc/compare/18.0rc5-Leia..18.0rc5.2-Leia
-pkgrel=4
+pkgrel=5
 _codename=Leia
 _tag="$pkgver-$_codename"
 # Found on their respective github release pages. One can check them against
@@ -71,6 +71,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   '00-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch'
+  '01-GLContextEGL-properly.guard.members.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15313.patch'
   'cheat-sse-build.patch'
   'cpuinfo'
 )
@@ -94,6 +95,7 @@ sha256sums=('e8ec83659339491286bf7d9f65037f18c0a4e21d5479808474ef5ca98ff691bb'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
             '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb'
+            '6e443a1d0e9b1bd0e60575917c79dc92a6d5ce52a6e9c6ddb14a6b3385e2cb80'
             '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
 
@@ -109,6 +111,7 @@ prepare() {
   fi
 
   patch -Np1 -i ../00-fix.building.with.mariadb.patch
+  patch -Np1 -i ../01-GLContextEGL-properly.guard.members.patch
 }
 
 build() {
