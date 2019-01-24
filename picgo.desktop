@@ -5,7 +5,7 @@ Exec=env DESKTOPINTEGRATION=no "/opt/appimages/picgo.AppImage" %U
 Terminal=false
 Type=Application
 Icon=picgo
-X-AppImage-Version=1.6.2.28
-X-AppImage-BuildId=fc9b38b0-9ad6-11a8-00b8-c7a86f31b32d
+X-AppImage-Version=2.0.2
+X-AppImage-BuildId=1d6b527a-0ab1-42f8-8f83-95c539186de6
 Categories=Utility;
 Name[zh_CN.utf8]=picgo.desktop
