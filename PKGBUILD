@@ -1,7 +1,7 @@
 # Maintainer: naniwakun <radio.naniwa[atmark]gmail.com>
 pkgname=jd-gtk3
 pkgver=r2350.b873831c
-pkgrel=4
+pkgrel=5
 pkgdesc="A 2channel browser written in C++ using gtkmm3 (patched). This is beta version by experimental support."
 arch=('i686' 'x86_64')
 url="https://github.com/ma8ma/JD/tree/gtk3-preview"
@@ -9,6 +9,7 @@ license=('GPL2')
 makedepends=('git')
 depends=('gnutls' 'libsm' 'gtkmm3' 'autoconf-archive')
 conflicts=('jd' 'jd-svn' )
+replaces=('jdim-git' )
 source=('git://github.com/ma8ma/JD.git#branch=gtk3-preview')
 sha256sums=('SKIP')
 
