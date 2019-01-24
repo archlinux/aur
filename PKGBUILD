@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=mts-utils
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc='MPEG Transport Stream Utilities (tstools fork, includes tsplay)'
 arch=(x86_64)
@@ -16,11 +16,11 @@ build() {
 }
 
 check() {
-  make -C "$pkgname" test
+  make -s -C "$pkgname" test
 }
 
 package() {
-  PREFIX=/usr DESTDIR="$pkgdir" make -C "$pkgname" install
+  DESTDIR="$pkgdir" make -C "$pkgname" install
 }
 
 # vim: ts=2 sw=2 et:
