@@ -14,8 +14,8 @@ pkgdesc="A distributed anonymous network (daily mtn->git sync)"
 url="https://geti2p.net"
 license=('GPL2')
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
-depends=('java-runtime>=9' 'gmp' 'java-service-wrapper')
-makedepends=('apache-ant' 'git' 'java-environment>=9')
+depends=('java-runtime>=11' 'gmp' 'java-service-wrapper')
+makedepends=('apache-ant' 'git' 'java-environment>=11')
 [[ "$LG2" != 'en' ]] && makedepends+=('gettext')
 #optdepends=('gtk2: for rrd graphs')
 conflicts=('i2p' 'i2p-bin')
