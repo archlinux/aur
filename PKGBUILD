@@ -1,8 +1,8 @@
 # Maintainer: Shengyu Zhang <la@archlinuxcn.org>
 
 pkgname=srain-dev
-pkgver=1.0.0rc1.1073.1e1993c
-_pkgver=1.0.0rc1
+pkgver=1.0.0rc2.1112.1c367df
+_pkgver=1.0.0rc2
 pkgrel=1
 pkgdesc="Modern IRC client, develop and debug version"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=(
     )
 conflicts=('srain')
 provides=('srain')
-source=("git+https://github.com/SilverRainZ/srain.git#branch=dev/1.0")
+source=("git+https://github.com/SrainApp/srain.git#branch=dev/1.0")
 sha256sums=('SKIP')
 options=('!strip')
 
