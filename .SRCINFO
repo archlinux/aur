@@ -1,14 +1,14 @@
 pkgbase = pylama_pylint
 	pkgdesc = Pylint support for pylama
-	pkgver = 3.0.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/klen/pylama_pylint
 	arch = any
 	license = BSD
 	depends = pylama>=6.3.3
 	depends = python-pylint>=1.6.4
-	source = https://github.com/klen/pylama_pylint/archive/3.0.1.tar.gz
-	sha256sums = fbe76cb219b6c45e47c9b723702d7c5a830bc41c5ae6e03f8cd69a05ae457229
+	source = https://github.com/klen/pylama_pylint/archive/3.1.2.tar.gz
+	sha256sums = 5e11b21112f01e1c6feb505c493abbf6ba0d8c199234e88c21aa5267d1c3b23b
 
 pkgname = pylama_pylint
 
