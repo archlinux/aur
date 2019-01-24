@@ -1,0 +1,29 @@
+diff --git a/src/plugins/cmakeprojectmanager/cmakebuildstep.cpp b/src/plugins/cmakeprojectmanager/cmakebuildstep.cpp
+index 21556ce0fd..f319af05d4 100644
+--- a/src/plugins/cmakeprojectmanager/cmakebuildstep.cpp
++++ b/src/plugins/cmakeprojectmanager/cmakebuildstep.cpp
+@@ -115,8 +115,10 @@ CMakeRunConfiguration *CMakeBuildStep::targetsActiveRunConfiguration() const
+     return qobject_cast<CMakeRunConfiguration *>(target()->activeRunConfiguration());
+ }
+ 
+-void CMakeBuildStep::handleBuildTargetChanges()
++void CMakeBuildStep::handleBuildTargetChanges(bool success)
+ {
++    if (!success)
++        return; // Do not change when parsing failed.
+     if (isCurrentExecutableTarget(m_buildTarget))
+         return; // Do not change just because a different set of build targets is there...
+     if (!static_cast<CMakeProject *>(project())->buildTargetTitles().contains(m_buildTarget))
+diff --git a/src/plugins/cmakeprojectmanager/cmakebuildstep.h b/src/plugins/cmakeprojectmanager/cmakebuildstep.h
+index cfae9c9aab..91dab9b455 100644
+--- a/src/plugins/cmakeprojectmanager/cmakebuildstep.h
++++ b/src/plugins/cmakeprojectmanager/cmakebuildstep.h
+@@ -101,7 +101,7 @@ private:
+     void runImpl(QFutureInterface<bool> &fi);
+     void handleProjectWasParsed(QFutureInterface<bool> &fi, bool success);
+ 
+-    void handleBuildTargetChanges();
++    void handleBuildTargetChanges(bool success);
+     CMakeRunConfiguration *targetsActiveRunConfiguration() const;
+ 
+     QMetaObject::Connection m_runTrigger;

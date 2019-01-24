@@ -12,7 +12,7 @@
 pkgname=qtcreator-fixed-themes
 pkgver=4.8.1
 _clangver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight, cross-platform integrated development environment, with fixes applied for various themes and other bug fixes'
 arch=(x86_64)
 url='http://qt-project.org'
@@ -35,12 +35,16 @@ source=("http://download.qt.io/official_releases/qtcreator/${pkgver%.*}/$pkgver/
         qtcreator-clang-plugins.patch
         qtcreator-theme-fixes.patch
         qtcreator-occurrences-fix.patch
-        qtcreator-debugger-columns-fix.patch)
+        qtcreator-debugger-columns-fix.patch
+        qtcreator-cmake-fail-target-fix.patch
+        qtcreator-cmake-edit-fix.patch)
 sha256sums=('8f691de9b30b99dd44e010525ba9bf3054142a1082dc5273c46c533b91c07bd9'
             '6f19fc9d83964a5460d224b3d44ce580553847960181fe0364e2ce26e1efd2e6'
             'bf0f8e88d0fa628d24f59eaf1f359873926998dde442e3bcbd56afcdd6eec7fa'
-            'ba6a48156cc14935a0dea12e8282bdfb1936e0c67216c660eef41bd5b5a44d4b'
-            'cf378a8b591a10646ad89d101375d8b04844c76a83d6c9c960036ba6a3b122e3')
+            '640c4c1607f9ee867e2445ad576697b9b0d3c9a64ae6589c1b99ea4f1d7e3481'
+            'cf378a8b591a10646ad89d101375d8b04844c76a83d6c9c960036ba6a3b122e3'
+            'df22bfe38bf6dd54b64d9ec0e78873a43e570eb490faf2a247aae7fd44e3d05e'
+            '5f002e93717d99a23ed94842567caa35f5cddfac317bddf29e7a677fb6db61a3')
 
 prepare() {
   mkdir -p build
@@ -59,6 +63,9 @@ prepare() {
   patch -p1 -i ../qtcreator-occurrences-fix.patch
   # Fix broken sizing for debugger columns.
   patch -p1 -i ../qtcreator-debugger-columns-fix.patch
+  # Fixes for CMake integration
+  patch -p1 -i ../qtcreator-cmake-fail-target-fix.patch
+  patch -p1 -i ../qtcreator-cmake-edit-fix.patch
 }
 
 build() {

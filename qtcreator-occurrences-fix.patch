@@ -1,33 +1,104 @@
-diff --git a/src/plugins/cppeditor/cppuseselectionsupdater.cpp b/src/plugins/cppeditor/cppuseselectionsupdater.cpp
-index fc6123b94b..d78b33f17e 100644
---- a/src/plugins/cppeditor/cppuseselectionsupdater.cpp
-+++ b/src/plugins/cppeditor/cppuseselectionsupdater.cpp
-@@ -168,6 +168,12 @@ CppUseSelectionsUpdater::toExtraSelections(const CursorInfo::Ranges &ranges,
-                                            TextEditor::TextStyle style)
- {
-     CppUseSelectionsUpdater::ExtraSelections selections;
-+
-+    // Skip if unset
-+    const TextEditor::Format &format = m_editorWidget->textDocument()->fontSettings().formatFor(style);
-+    if (!format.background().isValid())
-+        return selections;
-+
-     selections.reserve(ranges.size());
+diff --git a/src/plugins/texteditor/fontsettings.cpp b/src/plugins/texteditor/fontsettings.cpp
+index bc8d8c4d1a..a7203e8973 100644
+--- a/src/plugins/texteditor/fontsettings.cpp
++++ b/src/plugins/texteditor/fontsettings.cpp
+@@ -143,6 +143,14 @@ uint qHash(const TextStyle &textStyle)
+     return ::qHash(quint8(textStyle));
+ }
  
-     for (const CursorInfo::Range &range : ranges) {
-diff --git a/src/plugins/qmljseditor/qmljseditor.cpp b/src/plugins/qmljseditor/qmljseditor.cpp
-index bb9c70f768..74ec2c58e1 100644
---- a/src/plugins/qmljseditor/qmljseditor.cpp
-+++ b/src/plugins/qmljseditor/qmljseditor.cpp
-@@ -338,6 +338,11 @@ void QmlJSEditorWidget::updateUses()
-     if (m_qmlJsEditorDocument->isSemanticInfoOutdated()) // will be updated when info is updated
++static bool isOverlayCategory(TextStyle category)
++{
++    return category == C_OCCURRENCES
++           || category == C_OCCURRENCES_RENAME
++           || category == C_SEARCH_RESULT
++           || category == C_PARENTHESES_MISMATCH;
++}
++
+ /**
+  * Returns the QTextCharFormat of the given format category.
+  */
+@@ -166,18 +174,18 @@ QTextCharFormat FontSettings::toTextCharFormat(TextStyle category) const
+                                                   "Unused variable"));
+     }
+ 
+-    if (f.foreground().isValid()
+-            && category != C_OCCURRENCES
+-            && category != C_OCCURRENCES_RENAME
+-            && category != C_SEARCH_RESULT
+-            && category != C_PARENTHESES_MISMATCH)
++    if (f.foreground().isValid() && !isOverlayCategory(category))
+         tf.setForeground(f.foreground());
+-    if (f.background().isValid() && (category == C_TEXT || f.background() != m_scheme.formatFor(C_TEXT).background()))
+-        tf.setBackground(f.background());
+-
+-    // underline does not need to fill without having background color
+-    if (f.underlineStyle() != QTextCharFormat::NoUnderline && !f.background().isValid())
+-        tf.setBackground(QBrush(Qt::BrushStyle::NoBrush));
++    if (f.background().isValid()) {
++        if (category == C_TEXT || f.background() != m_scheme.formatFor(C_TEXT).background())
++            tf.setBackground(f.background());
++    } else if (isOverlayCategory(category)) {
++        // overlays without a background schouldn't get painted
++        tf.setBackground(QColor());
++    } else if (f.underlineStyle() != QTextCharFormat::NoUnderline) {
++        // underline does not need to fill without having background color
++        tf.setBackground(Qt::BrushStyle::NoBrush);
++    }
+ 
+     tf.setFontWeight(f.bold() ? QFont::Bold : QFont::Normal);
+     tf.setFontItalic(f.italic());
+diff --git a/src/plugins/texteditor/texteditoroverlay.cpp b/src/plugins/texteditor/texteditoroverlay.cpp
+index 60fe5cc99e..a33ca13810 100644
+--- a/src/plugins/texteditor/texteditoroverlay.cpp
++++ b/src/plugins/texteditor/texteditoroverlay.cpp
+@@ -323,9 +323,7 @@ void TextEditorOverlay::paintSelection(QPainter *painter,
+     const QColor &bg = selection.m_bg;
+ 
+ 
+-    if (begin.isNull()
+-        || end.isNull()
+-        || begin.position() > end.position())
++    if (begin.isNull() || end.isNull() || begin.position() > end.position() || !bg.isValid())
          return;
  
-+    // Skip if unset
-+    const Format &format = textDocument()->fontSettings().formatFor(C_OCCURRENCES);
-+    if (!format.background().isValid())
-+        return;
-+
-     QList<QTextEdit::ExtraSelection> selections;
-     foreach (const AST::SourceLocation &loc,
-              m_qmlJsEditorDocument->semanticInfo().idLocations.value(wordUnderCursor())) {
+     QPainterPath path = createSelectionPath(begin, end, m_editor->viewport()->rect());
+@@ -339,25 +337,21 @@ void TextEditorOverlay::paintSelection(QPainter *painter,
+ 
+     QRectF pathRect = path.controlPointRect();
+ 
+-    if (bg.isValid()) {
+-        if (!m_alpha || begin.blockNumber() != end.blockNumber()) {
+-            // gradients are too slow for larger selections :(
+-            QColor col = bg;
+-            if (m_alpha)
+-                col.setAlpha(50);
+-            painter->setBrush(col);
+-        } else {
+-            QLinearGradient linearGrad(pathRect.topLeft(), pathRect.bottomLeft());
+-            QColor col1 = fg.lighter(150);
+-            col1.setAlpha(20);
+-            QColor col2 = fg;
+-            col2.setAlpha(80);
+-            linearGrad.setColorAt(0, col1);
+-            linearGrad.setColorAt(1, col2);
+-            painter->setBrush(QBrush(linearGrad));
+-        }
++    if (!m_alpha || begin.blockNumber() != end.blockNumber()) {
++        // gradients are too slow for larger selections :(
++        QColor col = bg;
++        if (m_alpha)
++            col.setAlpha(50);
++        painter->setBrush(col);
+     } else {
+-        painter->setBrush(QBrush());
++        QLinearGradient linearGrad(pathRect.topLeft(), pathRect.bottomLeft());
++        QColor col1 = fg.lighter(150);
++        col1.setAlpha(20);
++        QColor col2 = fg;
++        col2.setAlpha(80);
++        linearGrad.setColorAt(0, col1);
++        linearGrad.setColorAt(1, col2);
++        painter->setBrush(QBrush(linearGrad));
+     }
+ 
+     painter->setRenderHint(QPainter::Antialiasing);
