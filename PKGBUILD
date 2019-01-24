@@ -1,7 +1,7 @@
 # Contributor: Leonidas <marek@xivilization.net>
 _gemname=homesick
 pkgname=${_gemname}
-pkgver=1.1.3
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Your home directory is your castle. Don't leave your dotfiles behind."
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-thor git)
 makedepends=(rubygems)
 source=(https://rubygems.org/downloads/${pkgname}-${pkgver}.gem)
 noextract=(${pkgname}-${pkgver}.gem)
-sha512sums=('7431060c5773b8c462eefbc1902158fd94ec8ded91b00fd8efef164a449c3b2003ac4a3553408c9aef4c5e72148a2397cf962825cf1f829b84ed911b68f39aaa')
+sha512sums=('c1a341a4b170e67dc4496742d4009aad3e3a38f13aa63d1bf95d9e25708d6cd87bfe543d8f18a9923dae1c7b7af6fc8dead2f45270a673d82028e5da0a826e24')
 
 package() {
   cd "${srcdir}"
