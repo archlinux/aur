@@ -1,39 +1,40 @@
-# Maintainer: Janne Heß <jannehess@gmail.com>
+# Maintainer: Lex Black <autumn-wind@web.de>
+# Contributor: Janne Heß <jannehess@gmail.com>
 
 pkgname=archivemount-git
-pkgver=0.8.7.gbb2faa8
+pkgver=r63.104a314
 pkgrel=1
 pkgdesc="FUSE filesystem using libarchive"
-url="http://www.cybernoi.de/software/${pkgname%-git}/"
+url="https://www.cybernoia.de/software/${pkgname%-git}.html"
+arch=("i686" "x86_64")
 license=("GPL2")
 depends=("fuse" "libarchive")
-makedepends=("automake" "autoconf" "make")
-provides=("${pkgname%-git}")
+makedepends=("git")
 conflicts=("${pkgname%-git}")
-source=("${pkgname}::git+http://www.cybernoia.de/software/${pkgname%-git}/git")
+provides=("${pkgname%-git}")
+source=("${pkgname}::git+https://github.com/cybernoid/archivemount.git")
 sha512sums=('SKIP')
-arch=("i686" "x86_64")
+
 
 pkgver() {
 	cd "${pkgname}"
-	git describe --tags --always | sed 's/-[[:digit:]]*-/./g'
+	#git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	# Until Tags are available again
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "${pkgname}"
+	autoreconf -i
 }
 
 build() {
 	cd "${pkgname}"
-	aclocal
-	autoheader
-	automake --add-missing
-	autoconf
-	./configure
+	./configure --prefix="/usr"
 	make
 }
 
 package() {
 	cd "${pkgname}"
-	install -Dm755 "${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
-	make PREFIX="/usr" DESTDIR="${pkgdir}/" install-man
-	mv "${pkgdir}/usr/local/share" "${pkgdir}/usr"
-	rmdir "${pkgdir}/usr/local"
+	make DESTDIR="${pkgdir}/" install install-man
 }
-
