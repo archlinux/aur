@@ -1,4 +1,5 @@
 # Maintainer:  Moritz Lüdecke <ritze@skweez.net>
+# Contributor: Maxim 'maximbaz' Baz
 # Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -35,5 +36,4 @@ build(){
 package() {
 	cd $pkgname-$pkgver
 	make PREFIX=/usr DESTDIR="$pkgdir" install
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
