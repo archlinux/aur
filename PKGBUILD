@@ -29,7 +29,7 @@ build() {
 package() {
   cd "${_pkgname/-/_}"
 
-  install -Dm644 libnv_vulkan_wrapper.so "$pkgdir"/usr/lib32/libnv_vulkan_wrapper.so
-  install -Dm644 libprimus_vk.so "$pkgdir"/usr/lib32/libprimus_vk.so
+  install -Dm755 libnv_vulkan_wrapper.so "$pkgdir"/usr/lib32/libnv_vulkan_wrapper.so
+  install -Dm755 libprimus_vk.so "$pkgdir"/usr/lib32/libprimus_vk.so
 }
 
