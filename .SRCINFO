@@ -1,0 +1,23 @@
+pkgbase = coreutils-kondo
+	pkgdesc = The basic file, shell and text manipulation utilities of the GNU operating system, with extra joy.
+	pkgver = 8.30
+	pkgrel = 1
+	url = https://www.gnu.org/software/coreutils/
+	arch = x86_64
+	groups = base
+	license = GPL3
+	depends = glibc
+	depends = acl
+	depends = attr
+	depends = gmp
+	depends = libcap
+	depends = openssl
+	provides = coreutils
+	conflicts = coreutils
+	source = https://ftp.gnu.org/gnu/coreutils/coreutils-8.30.tar.xz
+	source = 0001-Marie-Kondo.patch
+	md5sums = ab06d68949758971fe744db66b572816
+	md5sums = SKIP
+
+pkgname = coreutils-kondo
+
