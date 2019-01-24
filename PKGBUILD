@@ -1,4 +1,5 @@
 # Maintainer: Keybase <code@keybase.io>
+# Contributor: Jack O'Connor <oconnor663@gmail.com>
 
 pkgname=keybase-git
 pkgdesc='the Keybase Go client, filesystem, and GUI'
