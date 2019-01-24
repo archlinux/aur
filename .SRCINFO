@@ -1,6 +1,6 @@
 pkgbase = prm
 	pkgdesc = Pull Request Manager for Maintainers
-	pkgver = v2.4.0
+	pkgver = v2.4.1
 	pkgrel = 1
 	url = https://github.com/ldez/prm
 	arch = x86_64
@@ -12,14 +12,14 @@ pkgbase = prm
 	provides = prm
 	conflicts = prm
 	conflicts = prm-git
-	source_x86_64 = https://github.com/ldez/prm/releases/download/v2.4.0/prm_v2.4.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 043ad137dd495358e9f647597ebe7a608a3ae2d7f25771e10480771c69cd8135
-	source_i686 = https://github.com/ldez/prm/releases/download/v2.4.0/prm_v2.4.0_linux_386.tar.gz
-	sha256sums_i686 = 5b5b809b11cdd9b372514fd016674a029fcfb451af0048db247551608932398f
-	source_armv7h = https://github.com/ldez/prm/releases/download/v2.4.0/prm_v2.4.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 42f0486f2f617363f0c3e3a8588953116a76ccec471409fe93e3431a9d3ebc0f
-	source_aarch64 = https://github.com/ldez/prm/releases/download/v2.4.0/prm_v2.4.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = fb16b3ed1a720695eb30e65178348855a862e51eb0f96b7552a62bc474a2621e
+	source_x86_64 = https://github.com/ldez/prm/releases/download/v2.4.1/prm_v2.4.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 023be9cc6b7d76e5f81f41e1a59eeab26bff971b6dffee7617b01f91d0e90f34
+	source_i686 = https://github.com/ldez/prm/releases/download/v2.4.1/prm_v2.4.1_linux_386.tar.gz
+	sha256sums_i686 = 68b05521064890b69edadeae79f1ee308efac1116b1c9eb361bb8ebb10802722
+	source_armv7h = https://github.com/ldez/prm/releases/download/v2.4.1/prm_v2.4.1_linux_armv7.tar.gz
+	sha256sums_armv7h = ffa160b87a472a9c25dfb8d0b26f37d0d272c04fd4126a629d48d754e9a623af
+	source_aarch64 = https://github.com/ldez/prm/releases/download/v2.4.1/prm_v2.4.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9f7abe913214c8c20ab7a15f1ca5834b8c89bd0d9f91f2f0988050e3d477e3e0
 
 pkgname = prm
 
