@@ -8,9 +8,6 @@ pkgbase = rapidcheck
 	arch = any
 	license = BSD
 	makedepends = cmake
-	optdepends = catch2
-	optdepends = google-test
-	optdepends = boost
 	provides = rapidcheck=0.0.0
 	source = rapidcheck::git+https://github.com/emil-e/rapidcheck.git#commit=3eb9b4ff69f4ff2d9932e8f852c2b2a61d7c20d3
 	md5sums = SKIP
