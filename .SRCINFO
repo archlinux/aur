@@ -1,9 +1,8 @@
 pkgbase = djv
 	pkgdesc = Movie playback and image processing software for the film and computer animation industries
-	pkgver = 1.1.0
-	pkgrel = 3
+	pkgver = 1.2.5
+	pkgrel = 1
 	url = http://djv.sourceforge.net/
-	install = djv.install
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -20,11 +19,9 @@ pkgbase = djv
 	depends = openexr
 	depends = qt5-base
 	options = !docs
-	source = git://git.code.sf.net/p/djv/git#commit=44a063755e627c70498d948478e29ffc1d3f105d
-	source = ffmpeg.patch
+	source = git://git.code.sf.net/p/djv/git#tag=1.2.5
 	source = djv_view.desktop
 	md5sums = SKIP
-	md5sums = 9544548cd8bd762233398b0cb8ea91cd
 	md5sums = 2668ad2635036f33ba615b5dc538b1cf
 
 pkgname = djv
