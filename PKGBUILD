@@ -1,7 +1,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='lego'
-pkgver=v2.0.1
+pkgver=v2.1.0
 pkgrel=1
 pkgdesc='Lets Encrypt client and ACME library written in Go'
 url='https://github.com/xenolf/lego'
@@ -13,25 +13,26 @@ conflicts=("${pkgname}" "${pkgname}-git")
 depends=()
 makedepends=()
 
-_source="${url}/releases/download/${pkgver}/${pkgname}_${pkgver}_linux"
+_basedownloadurl="${url}/releases/download/${pkgver}"
+_basearchive="${pkgname}_${pkgver}_linux"
 
-source_x86_64=("${_source}_amd64.tar.gz")
-sha256sums_x86_64=('49014850c2aa8e96dc2d60a19b0e6152c09183737033c194f6c2cd88f0f00459')
+source_x86_64=("${_basedownloadurl}/${_basearchive}_amd64.tar.gz")
+sha256sums_x86_64=('99c147885e453f18dbf9702425e1f04d1fe324c138d303eb6a59a7bc5d40c33b')
 
-source_i686=("${_source}_386.tar.gz")
-sha256sums_i686=('8d76247f0214deca401bfc084377ae5ec8e2a2eef1e53714bf67de796493555e')
+source_i686=("${_basedownloadurl}/${_basearchive}_386.tar.gz")
+sha256sums_i686=('4631658c7c67a8901d04415ca7d01ba72f73118fa3dd56b5633e9d29c5e62d7e')
 
-source_armv7h=("${_source}_armv7.tar.gz")
-sha256sums_armv7h=('a08fbad0953dba8182dd79dd4c9497c5b87f901721c425ae4893b3a2549c2033')
+source_armv7h=("${_basedownloadurl}/${_basearchive}_armv7.tar.gz")
+sha256sums_armv7h=('9b9f3a74a315faebc67188ef6728d2818fc9304a04b758fda98a4509f85faf6b')
 
-source_aarch64=("${_source}_arm64.tar.gz")
-sha256sums_aarch64=('29cfac5e7f36b41870a349ad1f85a0871bf67ac499410528778dbe77b57270b1')
+source_aarch64=("${_basedownloadurl}/${_basearchive}_arm64.tar.gz")
+sha256sums_aarch64=('e0030bae3a0c9df4e232e80a3ab962422883c6ada380b0e2b33e6cebe9ad057a')
 
 package() {
-  # Bin
+	# Bin
 	rm -f "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	# License
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
