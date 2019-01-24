@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
 pkgbase=theharvester-git
 pkgname=theharvester-git
-pkgver=r470.759992d
+pkgver=3.0.6.r220.gefe73e2
 pkgrel=1
 pkgdesc="A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)."
 arch=('any')
@@ -14,7 +14,8 @@ depends=(
 		'python-plotly'
 		'python-pytest'
 		'python-texttable'
-		'python-shodan')
+		'python-shodan'
+		'python-beautifulsoup4')
 makedepends=('git' 'bash')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -23,10 +24,8 @@ source=("$pkgname::git+https://github.com/laramies/theHarvester.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  ( set -o pipefail
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+	cd "$pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'	
 }
 
 prepare() {
@@ -46,10 +45,9 @@ package() {
 	cp -r "$srcdir/$pkgname/parsers" "$pkgdir/opt/$pkgname/"
 	cp -r "$srcdir/$pkgname/tests" "$pkgdir/opt/$pkgname/"
 	cp -r "$srcdir/$pkgname/wordlists" "$pkgdir/opt/$pkgname/"
-	install "$srcdir/$pkgname/stash.py" "$pkgdir/opt/$pkgname/"
+	install "$srcdir/$pkgname/api-keys.yaml" "$pkgdir/opt/$pkgname/"
 	install "$srcdir/$pkgname/theHarvester.py" "$pkgdir/opt/$pkgname/"
 	install "$srcdir/$pkgname/run.sh" "$pkgdir/opt/$pkgname/"
-	
-	ln -s "/opt/$pkgname/run.sh" "$pkgdir/usr/bin/theharvester"
-	
+
+	ln -s "/opt/$pkgname/run.sh" "$pkgdir/usr/bin/theharvester"	
 }
