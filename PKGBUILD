@@ -10,8 +10,8 @@
 pkgname=davinci-resolve
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=15.2.2
-pkgrel=2
+pkgver=15.2.3
+pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -21,7 +21,7 @@ depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl
          'qt5-webengine' 'qt5-websockets' 'xdg-user-dirs')
 options=('!strip')
 conflicts=('davinci-resolve-beta' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
-
+install=${pkgname}.install
 # Trying to make the user's life easier ;o)
 msg2 "Trying to fetch the archive file if available..."
 DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
@@ -34,17 +34,32 @@ if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
 		msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/products/davinciresolve/"
 		msg2 "Please remember to put a downloaded package DaVinci_Resolve_${pkgver}_Linux.zip into the build directory ${PWD} or $DOWNLOADS_DIR"
 		msg2 ""
+		exit 1
 	fi
 fi
 
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('4330673cbe62f1ce2292d0357e20503233124bbb5a1b7752ce83b4befcf29497')
+sha256sums=('d0123739c68b3b03565a1478625a3ebafbb067eb5631a7c7b0a41726f5d5c854')
+
+prepare()
+{
+	# Remove udev rules (The official installer does not remove these files. This leads to the conflict "exists in the file system".)
+	confiles=$(find /usr/lib/udev/rules.d -name 75-davincipanel.rules -o -name 75-sdx.rules 2> /dev/null | awk -F/ '{print $NF}'
+               find /opt/resolve/configs -name log-conf.xml -o -name config.dat 2> /dev/null | awk -F/ '{print $NF}'
+               )
+	if [ "${confiles}" ]; then
+		msg2 "The file(s) $(echo ${confiles} | xargs | sed 's/ /, /g') already exist in your filesystem."
+		msg2 "This can lead to a conflict and the installation will fail."
+		msg2 "Please restart the installation with the --overwrite option."
+	fi
+}
 
 package()
 {
 	msg2 "Creating missing folders..."
-	mkdir -p -m 0775 "${pkgdir}/opt/${_pkgname}/"{configs,DolbyVision,easyDCP,Fairlight,logs,Media,"Resolve Disk Database",.crashreport,.license,.LUT}
-	mkdir -p "${pkgdir}/usr/share/"{applications,desktop-directories}
+	mkdir -p -m 0775 "${pkgdir}/opt/${_pkgname}/"{configs,DolbyVision,easyDCP,Fairlight,GPUCache,logs,Media,"Resolve Disk Database",.crashreport,.license,.LUT}
+	mkdir -p "${pkgdir}/usr/share/"{applications,desktop-directories,icons/hicolor,mime/packages}
+#	mkdir -p "${pkgdir}/tmp/${_pkgname}/"{logs,GPUCache}
 	mkdir -p "${pkgdir}/usr/lib/udev/rules.d"
 	mkdir -p "${pkgdir}/etc/xdg/menus"
 
@@ -74,14 +89,35 @@ package()
 		sed -i "s|RESOLVE_INSTALL_LOCATION|/opt/${_pkgname}|g" $_file
 	done
 
+	# This will help adding the app to favorites and prevent glitches on many desktops.
+	echo "StartupWMClass=resolve" >> "${pkgdir}/usr/share/applications/${resolve_app_name}.desktop"
+
 	msg2 "Creating and installing udev rules..."
 	echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="096e", MODE="0666"' > "${pkgdir}/usr/lib/udev/rules.d/75-davincipanel.rules"
 	echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1edb", MODE="0666"' > "${pkgdir}/usr/lib/udev/rules.d/75-sdx.rules"
 	chmod 644 "${pkgdir}/usr/lib/udev/rules.d/"{75-davincipanel.rules,75-sdx.rules}
 
-	msg2 "Any final tweaks..."
-	ln -s "/tmp/${_pkgname}/logs" "${pkgdir}/opt/${_pkgname}/logs"
-	ln -s "/tmp/${_pkgname}/GPUCache" "${pkgdir}/opt/${_pkgname}/GPUCache"
+#	Not sure we need it
+#	msg2 "Any final tweaks..."
+#	ln -s "/tmp/${_pkgname}/logs" "${pkgdir}/opt/${_pkgname}/logs"
+#	ln -s "/tmp/${_pkgname}/GPUCache" "${pkgdir}/opt/${_pkgname}/GPUCache"
+
+	msg2 "Installing Application icons..."
+	# Obviously not working without root rights.
+#	XDG_DATA_DIRS="${pkgdir}/usr/share/icons/hicolor" xdg-icon-resource install --size 64 "${pkgdir}/opt/${_pkgname}/graphics/DV_Resolve.png" DaVinci-Resolve 2>&1 >> /dev/null
+#	XDG_DATA_DIRS="${pkgdir}/usr/share/icons/hicolor" xdg-icon-resource install --size 64 "${pkgdir}/opt/${_pkgname}/graphics/DV_ResolveProj.png" DaVinci-ResolveProj 2>&1 >> /dev/null
+#	XDG_DATA_DIRS="${pkgdir}/usr/share/icons/hicolor" xdg-icon-resource install --size 64 --context mimetypes "${pkgdir}/opt/${_pkgname}/graphics/DV_ResolveProj.png" application-x-resolveproj 2>&1  >> /dev/null
+#	XDG_DATA_DIRS="${pkgdir}/usr/share/mime/packages" xdg-mime install --novendor "${pkgdir}/opt/${_pkgname}/share/resolve.xml" 2>&1  >> /dev/null
+	install -D -m644 graphics/DV_Resolve.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/DV_Resolve.png"
+	install -D -m644 graphics/DV_ResolveProj.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/DV_ResolveProj.png"
+
+	install -D -m644 share/resolve.xml "${pkgdir}/usr/share/mime/packages/resolve.xml"
+	
+	msg2 "Setting the right permissions..."
+	_user=$(logname)
+	_group=$(id -g -n ${_user})
+	chown -R ${_user}:${_group} "${pkgdir}/opt/${_pkgname}/"{*,.*}
+	chown -R ${_user}:root "${pkgdir}/opt/${_pkgname}/"{configs,DolbyVision,easyDCP,Fairlight,logs,Media,'Resolve Disk Database',.crashreport,.license,.LUT}
 
 	msg2 "Done!"
 }

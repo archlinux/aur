@@ -1,20 +1,20 @@
-pre_install()
-{
-	echo "Removing old files..."
-	DIRS_TO_REMOVE=(
-		"Onboarding"
-		"libs"
-		"plugins"
-		"UI_Resource")
+#	These are fragments from the original code.
+#	I do not see any need for it yet, but maybe I will be able to find out later.
 
-	if [[ -d ${/opt/${_pkgname}} ]]; then
-		echo "Removing old files"
-		for dir in "${DIRS_TO_REMOVE[@]}"; do
-			rm -rf "$/opt/${_pkgname}/$dir"
-		done
-	fi
+#	echo "Removing old files..."
+#	DIRS_TO_REMOVE=(
+#		"Onboarding"
+#		"libs"
+#		"plugins"
+#		"UI_Resource")
 
-# TODO: We should talk to the BMD developers about it. Pretty sensitive subject systemd @_@
+#	if [[ -d ${/opt/${_pkgname}} ]]; then
+#		echo "Removing old files"
+#		for dir in "${DIRS_TO_REMOVE[@]}"; do
+#			rm -rf "/opt/${_pkgname}/$dir"
+#		done
+#	fi
+
 #if [[ $EUID -ne 0 ]]; then
 #	# Script being run as non-root user
 #	USER_UID=$EUID
@@ -31,6 +31,7 @@ pre_install()
 
 #USER_HOME=`awk -v val=$USER_UID -F ":" '\$3==val{print \$6;exit}' /etc/passwd`
 
+# TODO: We should talk to the BMD developers about it. Pretty sensitive subject systemd @_@
 #	if [[ -d ${/opt/${_pkgname}} && ${/opt/${_pkgname}} == /home/resolve* ]]; then
 #		chown $USER_UID "$/opt/${_pkgname}"
 #	else
@@ -50,32 +51,21 @@ pre_install()
 #		mkdir -m 0775 -p "$/opt/${_pkgname}"
 #		chown $USER_UID "$/opt/${_pkgname}" -R
 #	fi
-}
 
 post_install()
 {
-	echo "Installing Application icons..."
-	xdg-icon-resource install --size 64 "${pkgdir}/graphics/DV_Resolve.png" DaVinci-Resolve 2>&1 >> /dev/null
-	xdg-icon-resource install --size 64 "${pkgdir}/graphics/DV_ResolveProj.png" DaVinci-ResolveProj 2>&1 >> /dev/null
-
-	xdg-icon-resource install --size 64 --context mimetypes "${pkgdir}/graphics/DV_ResolveProj.png" application-x-resolveproj 2>&1  >> /dev/null
-	xdg-mime install --novendor "${pkgdir}/share/resolve.xml" 2>&1  >> /dev/null
-
 	echo "Updating icon cache..."
 	gtk-update-icon-cache "share/icons/hicolor" -f 2>&1  >> /dev/null
 	update-mime-database "share/mime/" 2>&1  >> /dev/null
 	
 	echo "Installing the default app associations..."
-	# $1 is .desktop
-	# $2 is mime/type
-
-	DEFAULT_MIME_FILE="/usr/share/applications/defaults.list"
-	grep -v "application/x-resolveproj=" $DEFAULT_MIME_FILE > ${DEFAULT_MIME_FILE}.new 2> /dev/null
-	if ! grep "[Default Applications]" ${DEFAULT_MIME_FILE}.new > /dev/null; then
-	   echo "[Default Applications]" >> ${DEFAULT_MIME_FILE}.new
+	if [ ! "$(grep -ir 'application/x-resolveproj=com.blackmagicdesign.resolve.desktop' /usr/share/applications/defaults.list)" ]; then
+		echo "application/x-resolveproj=com.blackmagicdesign.resolve.desktop" /usr/share/applications/defaults.list
 	fi
-	echo application/x-resolveproj=${resolve_app_name}.desktop >> ${DEFAULT_MIME_FILE}.new
-	mv ${DEFAULT_MIME_FILE}.new $DEFAULT_MIME_FILE
+
+	if [ ! "$(grep -ir 'application/x-resolveproj=com.blackmagicdesign.resolve.desktop;' /usr/share/applications/mimeinfo.cache)" ]; then
+		echo "/application\/x-resolveproj=com.blackmagicdesign.resolve.desktop;/d" /usr/share/applications/mimeinfo.cache
+	fi
 
 	# reload the udev rules
 	udevadm control --reload-rules 2>&1
@@ -90,11 +80,6 @@ post_install()
 	done
 }
 
-pre_upgrade()
-{
-	pre_install
-}
-
 post_remove()
 {
 	# Remove entry from /usr/share/applications/defaults.list
@@ -106,8 +91,10 @@ post_remove()
 	if [ "$(grep -ir 'application/x-resolveproj=com.blackmagicdesign.resolve.desktop;' /usr/share/applications/mimeinfo.cache)" ]; then
 		sed -i '/application\/x-resolveproj=com.blackmagicdesign.resolve.desktop;/d' /usr/share/applications/mimeinfo.cache
 	fi
-	
+
 	# Remove udev rules
-	rm -rf /usr/lib/udev/rules.d/75-davincipanel.rules
-	rm -rf /usr/lib/udev/rules.d/75-sdx.rules
+	for rules in /usr/lib/udev/rules.d/75-davincipanel.rules /usr/lib/udev/rules.d/75-sdx.rules
+	do
+		[[ -f $rules ]] && rm -rf $rules
+	done
 }
