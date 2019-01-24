@@ -6,8 +6,8 @@
 
 pkgname=lxd
 _pkgname=lxd
-pkgver=3.8
-pkgrel=2
+pkgver=3.9
+pkgrel=1
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC."
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
