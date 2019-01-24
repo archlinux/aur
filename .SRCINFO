@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-arch-update
 	pkgdesc = Convenient indicator for Arch Linux updates in GNOME Shell.
-	pkgver = 28
+	pkgver = 29
 	pkgrel = 1
 	url = https://github.com/RaphaelRochet/arch-update
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = gnome-shell-extension-arch-update
 	depends = gnome-shell>=3.18
 	depends = pacman-contrib
 	conflicts = gnome-shell-extensions-git
-	source = gnome-shell-extension-arch-update-28.tar.gz::https://github.com/RaphaelRochet/arch-update/archive/v28.tar.gz
-	sha512sums = cd31c3a79a200d774605c3be5d9aa9a321ac3a38e0765891e400309715cca68c6155b5a7ee4354e2074d4cbe86c39c51b2b166db7e2f66aa687e4fadafb245ce
+	source = gnome-shell-extension-arch-update-29.tar.gz::https://github.com/RaphaelRochet/arch-update/archive/v29.tar.gz
+	sha512sums = c1f85606bff1d8e6196a5f40c3a3da7ed91d49f45b0390444cad670147af69ba49328b72d300da87343c0fbc60c71ac38e3205681b99248e675c3e1de98a017d
 
 pkgname = gnome-shell-extension-arch-update
 
