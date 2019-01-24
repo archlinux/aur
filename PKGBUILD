@@ -2,7 +2,7 @@
 # Contributor: Eric Forgeot < http://anamnese.online.fr >
 
 pkgname=pharo
-pkgver=6.0.543
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="a fork of Squeak, an implementation of the object-oriented, dynamically typed, reflective programming language Smalltalk"
 arch=(x86_64)
@@ -10,21 +10,19 @@ url="http://www.pharo-project.org/"
 license=('MIT')
 depends=('alsa-lib' 'libvorbis' 'pango' 'mesa' 'nas' 'dbus' 'libxml2')
 
-_imageversion=${pkgver//./}
-_vmversion="201808291622-d952580"
+_imageversion="7.0.1-0-64bit-b882595"
+_vmversion="201901231209-a4b2dfa"
 
 source=(http://files.pharo.org/vm/pharo-spur64/linux/pharo-linux-x86_64threaded-${_vmversion}.zip \
-	http://files.pharo.org/image/60/${_imageversion}-64.zip\
+	http://files.pharo.org/image/70/Pharo7.0.1-0.build.142.sha.b882595.arch.64bit.zip
 	http://files.pharo.org/media/logo/icon-512x512.png\
-	http://files.pharo.org/sources/PharoV60.sources.zip\
 	$pkgname.sh
 	 $pkgname.desktop)
 
-sha256sums=('9212189b822325f801699a878e68c1363dce5e3c6a4f6f251d1fb62429cf289a'
-            '6971b268205a168231c5626bbfc8656ba8577ed06821646963fc600497f076a6'
+sha256sums=('2878087f97e8b62df89c514cc8b3aa35314e653dc3c64bcff33a3240393c1d2b'
+            'a612e85bb0ea0f2016189d9a4fe0510f1d8008776eaf106362cdd0c3b96f963c'
             '5a6f40722264a2befc9aea1dace399f2491cd45a98987458660f8a39d4e6887e'
-            '4a7ca4ecf26fcbff1cc4a38a4457bd405021e0fcc67711c8fb62f99c8e896d75'
-            '1cb3cc70da68096fa03e5f261cdfc169b3c97f7d26e17919aed1fef5e07df9fe'
+            'bd07726f9ee4a503eedeaa576c0a3af10177724f446e1bf2569a55d3c5584412'
             'ad37a9c7d05b72a1d0375de7b7056dfcb220e2bef6358a99b6075ae6f66905f6')
 
 package() {
@@ -41,9 +39,9 @@ package() {
 	cp -R bin $pkgdir/opt/pharo
 	cp -R lib $pkgdir/opt/pharo
 	install $pkgname.sh $pkgdir/opt/pharo/pharo
-	install -m777 Pharo64-${_imageversion}.changes $pkgdir/opt/pharo/shared/Pharo6.0.changes
-	install Pharo64-${_imageversion}.image $pkgdir/opt/pharo/shared/Pharo6.0.image
-	install PharoV60.sources $pkgdir/opt/pharo/shared/PharoV60.sources
+	install -m777 Pharo${_imageversion}.changes $pkgdir/opt/pharo/shared/Pharo7.0.changes
+	install Pharo${_imageversion}.image $pkgdir/opt/pharo/shared/Pharo7.0.image
+	install Pharo7.0-32bit-b882595.sources $pkgdir/opt/pharo/shared/
 	install -m777 -d $pkgdir/opt/pharo/shared/pharo-local
 
 	ln -s /opt/pharo/pharo $pkgdir/usr/bin/pharo

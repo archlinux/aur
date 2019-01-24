@@ -21,7 +21,7 @@ if [ "$1" == "" ]; then
 	if which zenity &>/dev/null && [ "$image_count"  -ne 1 ]; then
 		image=`zenity --title 'Select an image' --file-selection --filename "$RESOURCES/" --file-filter '*.image' --file-filter '*'`
 	else
-		image="$RESOURCES/Pharo6.0.image"		
+		image="$RESOURCES/Pharo7.0.image"
 	fi
 else
 	image=$*
