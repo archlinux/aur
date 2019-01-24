@@ -3,7 +3,7 @@
 pkgname=rambox-os-bin
 _pkgname=rambox-os
 pkgver=0.5.18
-pkgrel=4
+pkgrel=5
 pkgdesc='Forked Free and Open Source messaging and emailing app that combines common web applications into one'
 arch=('x86_64')
 depends=('alsa-lib' 'bash' 'desktop-file-utils' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'libxss' 'nss')
@@ -16,6 +16,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://ci.appveyor.com/api/projects/TheGodde
 sha256sums=('5887f7cf42c0aff6e694ecb464ac7c1f60dcd3950ca54104a151d8e81fda5be7'
             '7a12969771bb16b8afb1a0755558c3692a90b97a16ae9ddcea46f9757d5af169'
             '0bf4d0c849ad6151f77b346fea0424fab910f434378f9890b16fd15a32a10064')
+
 package() {
     install -d ${pkgdir}/{opt/rambox-os,usr/{bin,share/pixmaps}}
     cp -R ${srcdir}/Rambox-${pkgver}/* ${pkgdir}/opt/${_pkgname}/
