@@ -1,7 +1,7 @@
 # Maintainer: sgar <swhaat in github>
 
 pkgname=veyon
-pkgver=4.1.6
+pkgver=4.1.7
 pkgrel=1
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
