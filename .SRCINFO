@@ -1,4 +1,5 @@
 pkgbase = virtctl-git
+	pkgdesc = virtctl is a script and framework for libvirt to integrate it with systemd.
 	pkgver = r22.07354f1
 	pkgrel = 5
 	url = https://github.com/dehesselle/virtctl
