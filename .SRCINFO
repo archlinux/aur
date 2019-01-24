@@ -8,12 +8,10 @@ pkgbase = plymouth-lite-rbp-git
 	makedepends = git
 	provides = plymouth-lite-rbp
 	conflicts = plymouth-lite-rbp
-	source = plymouth-lite-rbp::git+https://github.com/T4d3o/Plymouth-lite.git
-	source = 01-change-systemd-unit.patch
+	source = git+https://github.com/T4d3o/Plymouth-lite.git
 	source = initcpio_hook
 	source = initcpio_install
 	md5sums = SKIP
-	md5sums = 709d24411c2fcd62b2eccbfc98010b25
 	md5sums = 86dcab222ab4be45fc96d2792ff91809
 	md5sums = e13f4e22ee8e28eef85028c9307bfc3f
 
