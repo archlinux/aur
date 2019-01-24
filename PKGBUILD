@@ -1,6 +1,6 @@
 # Maintainer: Mr. Outis <mroutis@protonmail.com>
 pkgname=dvc
-pkgver=0.24.1
+pkgver=0.24.2
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
@@ -29,7 +29,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'https://files.pythonhosted.org/packages/source/c/configparser/configparser-3.5.0.tar.gz'
         'https://files.pythonhosted.org/packages/source/a/asciimatics/asciimatics-1.10.0.tar.gz')
 
-sha256sums=('044c15eb885d5607fb55471a7b1327449b5216434e8609cded0dffecb6917876'
+sha256sums=('47f54781d28648181b9a6b95fe5e2002ddea11281bd041d077967d142ad32450'
             '7471db231bd7338bc0035b16edf0dc0c900c82d23060f4b4d0c4304caedda6e4'
             '05c471281c45ae113f6103d1268ec7a4831a2e96aa80de45edc89b11fac4fbec'
             '50c058ce3371a819606ff29e914e6555c4d6c2527bff0cd0ed20af5947703118'
