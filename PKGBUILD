@@ -25,7 +25,7 @@ depends=(
     # AUR:
         'chromaprint-fftw' 'codec2' 'dav1d-git' 'davs2' 'flite1-patched' 'libilbc'
         'libklvanc-git' 'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc'
-        'xavs' 'xavs2-git' 'ndi-sdk' 'libmysofa'
+        'xavs' 'xavs2' 'ndi-sdk' 'libmysofa-git'
 )
 makedepends=(
     # official repositories:
