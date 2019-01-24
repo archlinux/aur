@@ -1,17 +1,18 @@
 pkgbase = pvpn
 	pkgdesc = VPN over SSH
-	pkgver = 0.2.1
+	pkgver = 0.2.1.r11.g7b93132
 	pkgrel = 1
 	url = https://github.com/halhen/pvpn
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = asciidoc
-	depends = bash
 	depends = iproute2
 	depends = openssh
-	depends = dnsutils
+	depends = bind-tools
 	depends = ppp
+	source = git+https://github.com/takeshixx/pvpn.git
+	md5sums = SKIP
 
 pkgname = pvpn
 
