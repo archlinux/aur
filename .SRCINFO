@@ -1,0 +1,19 @@
+pkgbase = daisync
+	pkgdesc = an rsync-based time-machine backup tool
+	pkgver = 20190124
+	pkgrel = 1
+	url = https://github.com/daimh/daisync
+	arch = any
+	license = GPL
+	depends = coreutils
+	depends = bc
+	depends = mlocate
+	depends = util-linux
+	depends = rsync
+	depends = psmisc
+	optdepends = gnuplot: plotting support
+	source = daisync::git+https://github.com/daimh/daisync.git
+	md5sums = SKIP
+
+pkgname = daisync
+
