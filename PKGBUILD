@@ -4,9 +4,9 @@
 
 pkgname=t-prot
 pkgver=3.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Filter to improve readability of email/usenet by hiding annoyances'
-url='http://www.escape.de/~tolot/mutt/'
+url='https://www.escape.de/~tolot/mutt/'
 license=(BSD)
 
 depends=(gettext perl perl-locale-gettext)
@@ -14,7 +14,7 @@ depends=(gettext perl perl-locale-gettext)
 arch=(any)
 # LICENSE text from t-prot.1
 source=(
-	"http://www.escape.de/~tolot/mutt/t-prot/downloads/t-prot-$pkgver.tar.gz"
+	"https://www.escape.de/~tolot/mutt/t-prot/downloads/t-prot-$pkgver.tar.gz"
 	LICENSE
 )
 md5sums=(
