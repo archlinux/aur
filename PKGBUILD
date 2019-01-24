@@ -24,8 +24,8 @@ optdepends=('swiften: XMPP backend support'
             'libpurple: LibPurple backend support'
 	    'gconf: LibPurple backend support'
             'libev: LibPurple backend support - libev eventloop')
-provides=()
-conflicts=()
+provides=('spectrum2')
+conflicts=('spectrum2')
 replaces=()
 backup=()
 options=()
