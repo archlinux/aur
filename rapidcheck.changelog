@@ -1,0 +1,1451 @@
+Changelog
+=========
+
+
+0.0.0
+------------
+- Merge pull request #224 from stolyaroleh/master. [emil-e]
+
+  Allow aggregate initialization in gen::construct and gen::makeUnique
+- Allow aggregate initialization in gen::construct and gen::makeUnique.
+  [Oleh Stolyar]
+- Merge pull request #218 from janisozaur/catch-2_4_2. [emil-e]
+
+  Update Catch to v2.4.2
+- Update Catch to v2.4.2. [Michał Janiszewski]
+
+  GCC warns about catching exceptions by value, which is fixed in newer
+  Catch release. v2.4.2 is the newest release to date. Additionally,
+  update to Catch2's newer structure and use the provided cmake project.
+- Merge pull request #220 from kveretennicov/patch-1. [emil-e]
+
+  Fix typo
+- Fix typo. [Konstantin Veretennicov]
+- Merge pull request #217 from annius/annius/float-equality. [emil-e]
+
+  Address float equality warning
+- Address float equality warning. [Prasenjit Sengupta]
+- Merge pull request #215 from Thorius/cmake-revert-explicit-lib-type.
+  [emil-e]
+
+  Remove RC_SHARED_OR_STATIC option and document use of canonical BUILD_SHARED_LIBS
+- Update usage comment for BUILD_SHARED_LIBS. [Stefan Ivanov]
+
+  Changing the description for BUILD_SHARED_LIBS from "internal" to
+  "global" to avoid confusion. Also, fix a typo in the CMakeList.txt file.
+- Add documentation for the use of BUILD_SHARED_LIBS for future
+  contributers and users of the library. [Stefan Ivanov]
+- Revert "Add an explicit option for building RapidCheck as either a
+  static or a shared libary" [Stefan Ivanov]
+
+  This is not the most standard way to choose whether a library should be dynamic or static. It is better to use BUILD_SHARED_LIBS as that is built into CMake. An extranal project including RapidCheck can simply set the variable BUILD_SHARED_LIBS externally and the library will build as normal.
+
+  This reverts commit a195151261e3480fd22a8878097213054181c7d8.
+- Merge pull request #212 from Thorius/improve-cmake-install. [emil-e]
+
+  Improve CMake installation
+- Add an explicit option for building RapidCheck as either a static or a
+  shared libary. [Stefan Ivanov]
+- Export configuration file instead of target files. [Stefan Ivanov]
+- Improve CMake installation experience. [Stefan Ivanov]
+
+  The installation of RapidCheck and it subsequent usage as an external package (for example, through find_package)
+  which is a typical approach when using a package manager is not optimal. Firstly, the include directory is not very
+  well specified as one has to go one directory back if the installation include directories of the rapidcheck CMake
+  target should be used in the config file. Moreover, none of the integrations are installed which means that RapidCheck
+  cannot optimally be used as an external library. For example, one cannot use the Catch integration easily without
+  the need to manually copy around files.
+
+  With this commit, RapidCheck can more easily be integrated with numerous CMake-based (and even other) package managers
+  which are gaining popularity in C++. For examples, the addition of RapidCheck to VCPKG should be trivial after the
+  bellow changes are applied.
+
+  This commit does the following:
+   - Fixes the installation include path of the rapidcheck target.
+   - Adds installations of all integrations.
+   - Adds the option RC_INSTALL_ALL_EXTRAS to make it simpler to add all the integrations without the need to
+     define any of the targets found in the folder ext.
+   - Some white space and reordering changes
+- Merge pull request #211 from Thorius/fix-clang-8-compilation. [emil-e]
+
+  Fix warnings when compiling with clang 8
+- Fix warnings when compiling with clang 8. [Stefan Ivanov]
+
+  Because RapidCheck builds with the werror flag, warnings appearing with newer compilers might cause some issues. It is possible to hit this when building with clang 8. The error -Wself-assign-overloaded is
+  reported in some of the test cases for the project, which actually  test for self-assignment. To continue building with no warnings, we can add a small indirection where we just take a local reference and perform the self-assignment using it. This reduces the need to use pragmas or the need to modify the with warning flags for the test files.
+
+  Additionally, a deprecation warning is reported in ExecCommandsTests.cpp because a pragma that disables the warning locally is used only when compiling with gcc. That check should be extended to also handle clang since the same code works for clang as well.
+- Merge pull request #210 from Tocic/patch-1. [emil-e]
+
+  Fix typos
+- Update generators.md. [Tocic]
+
+  fix typo
+- Update state.md. [Tocic]
+
+  fix typo
+- Update state.md. [Tocic]
+
+  fix typo
+- Merge pull request #213 from Thorius/lint-md-files. [emil-e]
+
+  Apply a linter to the documentation
+- Apply a linter to the documentation. [Stefan Ivanov]
+
+  The same way we have errors for our compiled code, it is nice to also apply the same techniques to the documentation. As such,
+  I ran markdownlint (https://github.com/DavidAnson/markdownlint) to the documentation files. Most of the suggestions were trivial but
+  actually, make the file structure a bit more reasonable to maintain. In addition to this, there were a couple of typos that I fixed while going through the documentation.
+
+  In general, I think this makes the "dev" part of the documentation a bit more consistent and nicer.
+- Merge pull request #208 from janisozaur/boost-1_68_0. [emil-e]
+
+  Update to boost 1.68
+- Update to boost 1.68. [Michał Janiszewski]
+- Merge pull request #207 from janisozaur/unused-v2. [emil-e]
+
+  Remove unused variables
+- Update Meta.h. [Michał Janiszewski]
+- Remove unused variables. [Michał Janiszewski]
+- Merge pull request #206 from janisozaur/patch-4. [emil-e]
+
+  Use ccache on travis
+- Use ccache on travis. [Michał Janiszewski]
+- Merge pull request #202 from vargad/fix_docs. [emil-e]
+
+  Minor docs fix: example uses wrong method
+- Minor docs fix: example uses wrong method. [Dániel Varga]
+- Merge pull request #152 from a4z/cmakeinstall. [emil-e]
+
+  add make install target
+- Add make install target. [Harald]
+- Merge pull request #200 from yairchu/patch-1. [emil-e]
+
+  fix build on macOS
+- Fix build on macOS. [Yair Chuchem]
+
+  Without the `-stdlib=libc++` option the build fails with:
+
+      [  5%] Building CXX object CMakeFiles/rapidcheck.dir/src/Check.cpp.o
+      In file included from /Users/yairchu/dev/rapidcheck/src/Check.cpp:1:
+      In file included from /Users/yairchu/dev/rapidcheck/include/rapidcheck/Check.h:21:
+      In file included from /Users/yairchu/dev/rapidcheck/include/rapidcheck/Check.hpp:5:
+      /Users/yairchu/dev/rapidcheck/include/rapidcheck/detail/Configuration.h:3:10: fatal error: 'cstdint' file not found
+- Merge pull request #179 from MHeasell/master. [emil-e]
+
+  Use system time as the random seed when compiled with MinGW
+- Merge branch 'master' of https://github.com/emil-e/rapidcheck.
+  [Michael Heasell]
+- Fix always using same seed on Windows with MinGW. [Michael Heasell]
+- Merge pull request #193 from milleniumbug/promotion-fix. [emil-e]
+
+  Fix left shift of negative value caused by integral promotion
+- Fix left shift of negative value caused by integral promotion.
+  [milleniumbug]
+- Merge pull request #186 from janisozaur/project-cxx. [emil-e]
+
+  Mark CMake project as pure C++
+- Mark CMake project as pure C++ [Michał Janiszewski]
+
+  This skips any C-compiler-related checks
+- Merge pull request #180 from gjasny/vs-15.5-workaround. [emil-e]
+
+  Apply Visual Studio 15.5 work-around
+- Apply Visual Studio 15.5 work-around. [Gregor Jasny]
+
+  Fixes #176
+- Merge pull request #177 from objectx/fix/explicit-scope. [emil-e]
+
+  chore: Explicitly specify namespace
+- Chore: Explicitly specify namespace. [Masashi Fujita]
+
+  To help CLion's syntax checker.
+- Merge pull request #175 from janisozaur/override. [emil-e]
+
+  Mark some methods with `override`
+- Mark some methods with `override` [Michał Janiszewski]
+- Merge pull request #173 from janisozaur/boost-1_65_1. [emil-e]
+
+  Update boost to 1.65.1
+- Update boost to 1.65.1. [Michał Janiszewski]
+- Merge pull request #171 from janisozaur/various-fixes. [emil-e]
+
+  Various fixes
+- Use anonymous namespaces rather than static. [Michał Janiszewski]
+- Add noreturn specifier. [Michał Janiszewski]
+- Remove unused code. [Michał Janiszewski]
+- Remove superfluous semicolons. [Michał Janiszewski]
+- Prevent shadowing of local variable. [Michał Janiszewski]
+- Cast value to templated type. [Michał Janiszewski]
+
+  This quiets the warning about extending double to long double
+- Mark functions as static. [Michał Janiszewski]
+- Use nullptr rather than 0 for pointers. [Michał Janiszewski]
+- Merge pull request #167 from janisozaur/test-updates. [emil-e]
+
+  Test and Travis updates
+- Reorder Travis jobs for better utilisation. [Michał Janiszewski]
+- Update Catch to 1.9.7, latest released version. [Michał Janiszewski]
+- Merge pull request #169 from janisozaur/unused. [emil-e]
+
+  Remove unused code
+- Remove unused code. [Michał Janiszewski]
+- Merge pull request #168 from janisozaur/algorithm. [emil-e]
+
+  Include algorithm where required
+- Include algorithm where required. [Michał Janiszewski]
+
+  Previously it was implicitly included from Catch
+- Merge pull request #165 from janisozaur/patch-1. [emil-e]
+
+  Update required CMake version
+- Update required CMake version. [Michał Janiszewski]
+
+  Fixes #163
+- Merge pull request #158 from bretthall/master. [emil-e]
+
+  Warning fixes when using Boost.Test and VS2015
+- Fixed formatting. [Brett Hall]
+- Removed compiler warning when using VS2015. [Brett Hall]
+- Fixed warnings (both compile time and run time) when integrating with
+  Boost.Test. [Brett Hall]
+- Merge pull request #138 from pmalek/master. [emil-e]
+
+  Fixing typos in docs/
+- Fixing typos in docs/ [Patryk Małek]
+- Merge pull request #159 from nikola-benes/master. [emil-e]
+
+  Fix some more unused parameter warnings
+- Fix some more unused parameter warnings. [Nikola Beneš]
+- Merge pull request #149 from Timmmm/patch-1. [emil-e]
+
+  Use NEW settings for CMP0063 policy
+- Use NEW settings for CMP0063 policy. [Tim]
+
+  This removes warnings when using CMake >= 3.3 if you have symbol visibility set.
+- Merge pull request #142 from TheOnlyRew/undefined_behavior. [emil-e]
+
+  Avoid undefined behavior
+- Simplify a pair of test cases. [Drew Pirrone-Brusse]
+- Clarify the bitMask semantics. [Drew Pirrone-Brusse]
+
+  * Corrected a comment (I had neglected to update the comment after
+    changing the ording of the cast and bitwise negation.
+  * Use `<` rather than `!=` for the conditional.
+- Include <limits> for std::numeric_limits. [Drew Pirrone-Brusse]
+
+  osx, y u auto-include that? Stop helping.
+- Another whitespace fixup. [Drew Pirrone-Brusse]
+- Avoid undefined behavior in BitStream tests. [Drew Pirrone-Brusse]
+
+  Potential shift issues were present in the "does not return more bits"
+  BitStream tests. Simplest solution was to add explicit tests for
+  stream.next<T>(0) and avoid any `n==0` edge cases in the existing tests.
+- Fixup a comment and whitespace in Utility.h's bitMask. [Drew Pirrone-
+  Brusse]
+- Simplify and more clearify casting in Utility.h. [Drew Pirrone-Brusse]
+- Use `numBits` rather than `sizeof` in BitStream.hpp. [Drew Pirrone-
+  Brusse]
+- Update BitStream tests. [Drew Pirrone-Brusse]
+- Remove the last of the undefined behavior from bitMask. [Drew Pirrone-
+  Brusse]
+- Try to correct the bitMask logic when nbit==0. [Drew Pirrone-Brusse]
+- Stop using typedef, start using using. [Drew Pirrone-Brusse]
+- Resolve a signed/unsiged missmatch. [Drew Pirrone-Brusse]
+- Remove the branch from Utility.h's bitMask. [Drew Pirrone-Brusse]
+
+  Also (hopefully?) remove the C++17 code.
+- Correctly check for a positive integer. [Drew Pirrone-Brusse]
+- Avoid right-shifting past the width a type. [Drew Pirrone-Brusse]
+- Avoid left-shifting negative numbers. [Drew Pirrone-Brusse]
+- Merge pull request #144 from modelorganism/clang-build. [emil-e]
+
+  let clang build on Windows
+- Fix memory leak. [Christopher Ian Stern]
+
+  Fix memory leak introduced by last change.
+- Fix Window/clang build. [chriss]
+
+  Allow building with clang compiler under Windows.
+  Remove unused variables (cmake file has /WX - warnings are errors) and
+  put in one stage of a 2 stage type conversion (char* -> std::string ->
+  Maybe) all in one function.
+- Merge pull request #135 from KingDuckZ/master. [emil-e]
+
+  Fix warnings about unused parameters.
+- Fix warnings about unused parameters. [Michele Santullo]
+- Merge pull request #136 from emil-e/dev. [emil-e]
+
+  Switch to using Google Test/Mock as submodule
+- Switch to using Google Test/Mock as submodule. [Emil Eriksson]
+
+  The old zip was gone.
+- Merge pull request #115 from emil-e/dev. [emil-e]
+
+  Dev
+- Fix MSVC build error. [Emil Eriksson]
+- Deduce return type in gen::commands. [Emil Eriksson]
+
+  You can do it from the arguments, actually.
+  Fixes #93
+- Merge pull request #117 from emil-e/check_preconditions. [emil-e]
+
+  Check preconditions
+- Fix incorrect error message. [Emil Eriksson]
+
+  Fixed #92
+- Fix some weirdness in ChronoTests. [Emil Eriksson]
+
+  Fixes #113
+- Rename preconditions to checkPreconditions. [Emil Eriksson]
+- Merge pull request #112 from emil-e/dev. [emil-e]
+
+  Dev
+- Make hack for GCC crash. [Emil Eriksson]
+- Remove useless std::move. [Emil Eriksson]
+- Disable warnings about auto_ptr for GCC. [Emil Eriksson]
+- Document a GCC hack. [Emil Eriksson]
+- Build only master. [Emil Eriksson]
+- Warn about asserting preconditions in apply(...) [Emil Eriksson]
+- Move tests for ExecCommands to separate file. [Emil Eriksson]
+- Update docs. [Emil Eriksson]
+- Fix more non-copyable model stuff. [Emil Eriksson]
+- Fix execOneOfWithArgs. [Emil Eriksson]
+- Add support for non-copyable models. [Emil Eriksson]
+- Update documentation. [Emil Eriksson]
+- Add some missing tests for state framework. [Emil Eriksson]
+- Such refactor. [Emil Eriksson]
+- Use ints instead of strings in state tests. [Emil Eriksson]
+
+  Strings are sloooow. Ints are snappy.
+  Fixes #100
+- Cache commands for speed. [Emil Eriksson]
+- Separate precondition from applying. [Emil Eriksson]
+
+  This will be needed for supporting move-only models.
+- Fix doc typo. [emil-e]
+- Merge pull request #109 from emil-e/dev. [emil-e]
+
+  Dev
+- Don't encourage use of exec in examples. [Emil Eriksson]
+- Add documentation on generator naming. [Emil Eriksson]
+- Make generator name visible in counterexample. [Emil Eriksson]
+- Split Any::describe into showType and showValue. [Emil Eriksson]
+- Add generator naming. [Emil Eriksson]
+- Clean up GenTests. [Emil Eriksson]
+- Merge pull request #105 from emil-e/nocoveralls. [emil-e]
+
+  Disable Coveralls for now
+- Remove coveralls badge. [emil-e]
+- Disable Coveralls for now. [emil-e]
+- Merge pull request #104 from emil-e/winfixes. [emil-e]
+
+  Winfixes
+- Use only char, not int in MapParser code. [Emil Eriksson]
+- Constexpr -> static for jump tables in Variant. [Emil Eriksson]
+- Merge pull request #89 from emil-e/dev. [emil-e]
+
+  Dev
+- Stricter warnings and fixes for them. [Emil Eriksson]
+- Moar compilers. [Emil Eriksson]
+- Merge pull request #91 from emil-e/variant_tables. [emil-e]
+
+  Make jump tables in Variant constexpr
+- Make jump tables in Variant constexpr. [Emil Eriksson]
+
+  Fixes #81
+- Don't include <set> in front page example. [emil-e]
+
+  Fixes #55
+- Merge pull request #90 from furuholm/exception_macros. [emil-e]
+
+  Add exception checking macros
+- Make message optional for unconditional macros. [Emil Eriksson]
+
+  Fixes #87
+- Make unconditional messages also show assertion name. [Emil Eriksson]
+
+  Fixes #88
+- Don't use compiler reserved macro names. [Emil Eriksson]
+- Use RC_ASSERT_THROWS(_AS) in appropriate places. [Emil Eriksson]
+- Add exception checking macros. [Tobias Furuholm]
+- Merge pull request #84 from emil-e/coverage. [emil-e]
+
+  Add code coverage reporting
+- Add code coverage reporting. [Emil Eriksson]
+
+  Fixes #52
+- Merge pull request #83 from emil-e/dev. [emil-e]
+
+  Dev
+- Fix MSVC build errors. [Emil Eriksson]
+- Switch to Clang 3.5 for Travis. [Emil Eriksson]
+- Switch to Travis container based infrastructure. [Emil Eriksson]
+- Split SerializationTests for less memory usage. [Emil Eriksson]
+- Fix compiler errors on various platforms. [Emil Eriksson]
+- Correct misspelled flag in CI configs. [Emil Eriksson]
+- Make it possible to disable shrinking in reproduce mode. [Emil
+  Eriksson]
+- Clarify reproduce test with comments. [Emil Eriksson]
+- Add documentation for reproduce mode. [Emil Eriksson]
+- Verify no tests run for reproduceProperty. [Emil Eriksson]
+- Add actual test case reproduction to checkTestable \o/ [Emil Eriksson]
+- Add ReproduceListener to default test listener. [Emil Eriksson]
+- Add ReproduceListener. [Emil Eriksson]
+- Add reproduce field to Configuration. [Emil Eriksson]
+- Supply test metadata in Google Test integration. [Emil Eriksson]
+- Supply test metadata in Boost Test integration. [Emil Eriksson]
+- Add suite to Boost Test integration example. [Emil Eriksson]
+- Move default TestListener creation and add tests for it. [Emil
+  Eriksson]
+- Add string serialization of Reproduce maps. [Emil Eriksson]
+- Add std::unordered_map serialization. [Emil Eriksson]
+- Add serialization for std::strings. [Emil Eriksson]
+- Make Serialization doc comments less repetetive. [Emil Eriksson]
+- Fix bug in Random serialization and add tests. [Emil Eriksson]
+- Add MulticastTestListener. [Emil Eriksson]
+- Keep call count in MockTestListener. [Emil Eriksson]
+- Add Variant generator. [Emil Eriksson]
+- Move LogTestListener to private sources. [Emil Eriksson]
+- Instantiate singleton listener instead of reconstructing for every
+  test. [Emil Eriksson]
+- Don't use implicit params for Configuration. [Emil Eriksson]
+- Pass TestMetadata to onTestFinished. [Emil Eriksson]
+- Add TestMetadata struct. [Emil Eriksson]
+- Add Reproduce serialization. [Emil Eriksson]
+- Add Reproduce type tests. [Emil Eriksson]
+- Bring some order to Result.cpp. [Emil Eriksson]
+- Deduplicate serialization test code. [Emil Eriksson]
+- Add Random serialization. [Emil Eriksson]
+- Use exceptions in serialization because it's awesome. [Emil Eriksson]
+- Add serializeN/deserializeN. [Emil Eriksson]
+- Add serialize/deserialize for integers. [Emil Eriksson]
+- Added compact serialization of integer ranges. [Emil Eriksson]
+- Add serializeCompact/deserializeCompact. [Emil Eriksson]
+- Add Base64 encoding/decoding. [Emil Eriksson]
+- Move ParseException to separate file. [Emil Eriksson]
+- Add reproduceProperty function. [Emil Eriksson]
+- Add Error option to TestResult. [Emil Eriksson]
+- Move checkTestable properties to TestingTests. [Emil Eriksson]
+- Move checkProperty to Testing.cpp for testability. [Emil Eriksson]
+- Expose reproduction parameters in test failures. [Emil Eriksson]
+- Expose Random and size of failure from searchProperty. [Emil Eriksson]
+- Expose shrinkPath instead of numShrinks on failure. [Emil Eriksson]
+- Make shrinkTestCase return path instead of num shrinks. [Emil
+  Eriksson]
+- Fix CaseDescription operators breaking on missing example. [Emil
+  Eriksson]
+- Add shrinkable::walkPath. [Emil Eriksson]
+- Merge pull request #82 from emil-e/rc_log. [emil-e]
+
+  Introduce RC_LOG macro
+- Fix GMock code. [Emil Eriksson]
+- Introduce RC_LOG macro. [Emil Eriksson]
+- Merge pull request #79 from emil-e/dev. [emil-e]
+
+  Fix double fixture instantiation with Gtest integration
+- Fix double fixture instantiation with Gtest integration. [Emil
+  Eriksson]
+
+  Fixes #78
+- Merge pull request #75 from emil-e/dev. [emil-e]
+
+  Dev
+- Fix typo in test case description. [Emil Eriksson]
+- Fix build errors for MSVC 32-bit. [Emil Eriksson]
+
+  Fixes #74
+- Add x86 build config for MSVC. [Emil Eriksson]
+- Merge pull request #73 from emil-e/dev. [emil-e]
+
+  Dev
+- Move all the test meta stuff to util/Meta.h. [Emil Eriksson]
+- No recursion in forEachType. [Emil Eriksson]
+
+  Fixes #68
+- More elegant implementation for AllIs. [Emil Eriksson]
+
+  Fixes #69
+- Merge pull request #67 from emil-e/dev. [emil-e]
+
+  Fix env var name being returned instead of value (silly)
+- Fix env var name being returned instead of value (silly) [Emil
+  Eriksson]
+- Merge pull request #66 from emil-e/dev. [emil-e]
+
+  Dev
+- Declare support for VS2015. [Emil Eriksson]
+
+  Fixes #10
+- Add AppVeyor build status badge. [Emil Eriksson]
+- Add AppVeyor configuration. [Emil Eriksson]
+- Merge pull request #65 from emil-e/dev. [emil-e]
+
+  Dev
+- Change mirror for Boost download. [Emil Eriksson]
+- Fix broken operator<< for CaseDescription. [Emil Eriksson]
+- Add missing include. [Emil Eriksson]
+- Merge pull request #64 from emil-e/msvc. [emil-e]
+
+  Msvc
+- Fix build system issues for MSVC. [Emil Eriksson]
+- Upgrade to boost 1.59 to support VS 2015. [Emil Eriksson]
+- Undef min/max for MSVC. [Emil Eriksson]
+- Switch to curl instead of wget in get scripts. [Emil Eriksson]
+- Fix MSVC warnings and enable warnings-as-errors. [Emil Eriksson]
+- Implement hacky name cleanup in MSVC demangle(...) [Emil Eriksson]
+- Fix breakage on Clang. [Emil Eriksson]
+- Fix incorrect bin size calc in histogram tests. [Emil Eriksson]
+- Fixup! Use locale versions of character operations. [Emil Eriksson]
+- Replace macro solution with explicit in Container.hpp. [Emil Eriksson]
+
+  That solution doesn't work with MSVC :(
+- Fix misc MSVC errors and warnings. [Emil Eriksson]
+- Always declare Arbitrary as struct. [Emil Eriksson]
+- Replace usage of CopyGuard with Logger. [Emil Eriksson]
+
+  MSVC gets mysterious <struct at NULL> with CopyGuard sometimes
+- Add missing includes. [Emil Eriksson]
+- Add dummy throw to stop MSVC from complaining about rethrow ptr. [Emil
+  Eriksson]
+- Use locale versions of character operations. [Emil Eriksson]
+- Add Platform.h/cpp for platform specific stuff. [Emil Eriksson]
+- Fix CMakeLists.txt for MSVC. [Emil Eriksson]
+- Update README.md. [emil-e]
+- Merge pull request #63 from emil-e/dev. [emil-e]
+
+  More sophisticated expression capture that does not evaluate expressi…
+- More sophisticated expression capture that does not evaluate
+  expression twice. [Emil Eriksson]
+
+  Also, lots of tests for assertions finally.
+- Merge pull request #61 from emil-e/dev. [emil-e]
+
+  Dev
+- Change the semantics of command generation and shrinking. [Emil
+  Eriksson]
+
+  It's slightly (every so slightly) more cumbersome to write tests but
+  shrinking is potentially much better now.
+- Add fixture support for Boost Test integration. [Emil Eriksson]
+
+  Fixes #57
+- Add fixture support for GTest integration. [Emil Eriksson]
+
+  Fixes #56
+- Update gmock.md. [emil-e]
+- Merge pull request #59 from emil-e/dev. [emil-e]
+
+  Dev
+- Move User Guide up to the top of README to make it easier to find.
+  [Emil Eriksson]
+- Add Boost Test integration. [Emil Eriksson]
+
+  Fixes #12
+- Enable Google Test in .travis.yml. [Emil Eriksson]
+- Merge pull request #58 from emil-e/dev. [emil-e]
+
+  Dev
+- Remove extra new line in distribution printing. [Emil Eriksson]
+- Don't use double underscores in macro names. [Emil Eriksson]
+- Add Google Test integration. [Emil Eriksson]
+
+  Fixes #51
+- Merge pull request #53 from emil-e/dev. [emil-e]
+
+  Fix GCC 5 support
+- Fix GCC 5 support. [Emil Eriksson]
+
+  Part of #20
+- Merge pull request #49 from emil-e/dev. [emil-e]
+
+  Dev
+- Add support for std::chrono::(duration|time_point) [Emil Eriksson]
+
+  Fixes #24
+- Compare against value of T instead of int in predicate generators.
+  [Emil Eriksson]
+- Add catch.hpp as include in rapidcheck/catch.h. [Emil Eriksson]
+- Add Maybe to list of supported types. [Emil Eriksson]
+- Merge pull request #46 from emil-e/dev. [emil-e]
+
+  Dev
+- Move predicate related stuff to Predicate.(h|cpp) [Emil Eriksson]
+
+  Fixes #22
+- Add basic support for long double. [Emil Eriksson]
+
+  Fixes #7
+- Document and formalize beforeMinimalTestCase. [Emil Eriksson]
+
+  Fixes #25
+- Merge pull request #45 from emil-e/dev. [emil-e]
+
+  Dev
+- Add rvalue ref overload for (Maybe|Variant)::operator* [Emil Eriksson]
+
+  Fixes #39
+- Add const qualifiers for methods in Logger. [Emil Eriksson]
+- Make example in CaseDescription lazy. [Emil Eriksson]
+
+  This removes unnecessary generation on successful cases.
+  Fixes #27
+- Merge pull request #44 from furuholm/doc-fixes. [emil-e]
+
+  Fix documentation
+- Fix documentation. [Tobias Furuholm]
+- Merge pull request #42 from emil-e/dev. [emil-e]
+
+  Dev
+- Split ContainerTests so that Travis doesn't run out of memory. [Emil
+  Eriksson]
+
+  Oh C++...
+- Document RC_ASSERT_FALSE. [Emil Eriksson]
+
+  Fixes #19
+- Make clear that RapidCheck API is not stable yet. [Emil Eriksson]
+
+  Fixes #30
+- Fixed incorrect factory used in gen::unique test. [Emil Eriksson]
+- Give up if not enough elements can be generated for gen::container.
+  [Emil Eriksson]
+
+  Fixes #40
+- Merge pull request #41 from emil-e/dev. [emil-e]
+
+  Dev
+- Add docs for state testing framework. [Emil Eriksson]
+- Some cleanup of terminology in state testing framework. [Emil
+  Eriksson]
+- Update generators_ref.md. [emil-e]
+- Merge pull request #38 from pereckerdal/remove-unused-code. [emil-e]
+
+  Remove some unused code
+- Remove some unused code. [Per Eckerdal]
+
+  It causes errors when I try to compile the library.
+- Merge pull request #37 from emil-e/dev. [emil-e]
+
+  Dev
+- Rename incorrectly named test. [Emil Eriksson]
+- Fix compiler warnings (and thus errors) for Clang 3.6. [Emil Eriksson]
+- Move CMake option declarations. [Emil Eriksson]
+- Move Catch integration to extras. [Emil Eriksson]
+
+  Fixes #33
+- Don's use Catch for counter example. [Emil Eriksson]
+- Merge pull request #36 from emil-e/dev. [emil-e]
+
+  Dev
+- Change implementation of anyCommands slightly. [Emil Eriksson]
+- Move state::gen::comands test file to correct location. [Emil
+  Eriksson]
+- Move state testing framework to rapidcheck/state.h. [Emil Eriksson]
+- Move commands generator to public API. [Emil Eriksson]
+- Split StateTests apart to match implementation structure. [Emil
+  Eriksson]
+- Get rid of the useless Commands class. [Emil Eriksson]
+- Improve SFINAE traits some. [Emil Eriksson]
+- Merge pull request #32 from emil-e/hack_week. [emil-e]
+
+  Hack week
+- Merge branch 'post_hack_week' into hack_week. [Emil Eriksson]
+- Only require generators in gen::build to be convertible. [Emil
+  Eriksson]
+
+  Fixes #31
+- Don't use Catch.hpp REQUIRE in RC properties. [Emil Eriksson]
+- Fix broken test in StateTests. [Emil Eriksson]
+- Add 'noshrink' config param to disable shrinking. [Emil Eriksson]
+
+  Fixes #28
+- Further reduce the verbosity of download scripts. [Emil Eriksson]
+- Reduce verbosity from wget in download scripts. [Emil Eriksson]
+- Improve CMake build files. [Emil Eriksson]
+- Fix case typo in include. [Emil Eriksson]
+- Use CTest for running tests in Travis. [Emil Eriksson]
+- Add Spotify thanks notice to README. [Emil Eriksson]
+- Better Boost support. [Emil Eriksson]
+- Don't catch fatal Gmock failures. [Emil Eriksson]
+
+  Also, don't print line numbers if we have no file name.
+- Some fixes for gmock integration CMake files. [Emil Eriksson]
+- Add showValue overload for Commands that apparently is needed
+  sometimes. [Emil Eriksson]
+- New ImplicitScope in ExecHandler. [Emil Eriksson]
+- Add nextState helper method to Command. [Emil Eriksson]
+- Modify command generation semantics to be stricter and more intuitive.
+  [Emil Eriksson]
+
+  Also add some tests.
+- Catch ConfigurationException, print message and exit. [Emil Eriksson]
+- Add the ability to set verbose progress/shrinking from config. [Emil
+  Eriksson]
+
+  Fixes #26
+- Some refactoring of Configuration. [Emil Eriksson]
+- Add options and tests to LogTestListener. [Emil Eriksson]
+
+  Part of #26
+- Add test for onTestFinished. [Emil Eriksson]
+
+  Part of #26
+- Add tests for shrinkTestCase. [Emil Eriksson]
+- Add some tests to Testing, some of them stolen from Check. [Emil
+  Eriksson]
+- Break apart Check.cpp into smaller tools used by Check.cpp. [Emil
+  Eriksson]
+- Add TestListener interface for reporting testing progress. [Emil
+  Eriksson]
+
+  Part of #26
+- Flesh out CaseDescription related functions. [Emil Eriksson]
+- Add gen::unique and gen::uniqueBy. [Emil Eriksson]
+- Refactor ContainerTests. [Emil Eriksson]
+- Don't use default params in CheckTests. [Emil Eriksson]
+- Refactor Container.hpp. [Emil Eriksson]
+- Add reference counting for Gen. [Emil Eriksson]
+- Clang-format: Align trailing commas. [Emil Eriksson]
+- Don't build Gmock if we don't build tests. [Emil Eriksson]
+- Fix missing namespace qualification in classify macros. [Emil
+  Eriksson]
+- Add gen::shrink. [Emil Eriksson]
+- Add shrinkable::postShrink. [Emil Eriksson]
+- Add boost extras library. [Emil Eriksson]
+- Move Nothing/NothingType to separate and enable it for Seq as well.
+  [Emil Eriksson]
+- Add rounding to BitStream bit count calculation. [Emil Eriksson]
+- Repair scaleInteger, it was broken. [Emil Eriksson]
+
+  Also make it rounding instead of truncating.
+- Merge pull request #23 from emil-e/dev. [emil-e]
+
+  Dev
+- Fix some CMakeLists.txt issues. [Emil Eriksson]
+- Make Travis build gmock integration and test it. [Emil Eriksson]
+- Add Gmock integration. Fixes #16. [Emil Eriksson]
+- Support CATCH_ prefix in rapidcheck-catch.h. [Emil Eriksson]
+- Make PropertyContext tell whether report was handled. [Emil Eriksson]
+
+  Part of #16
+- Add gen::apply. Fixes #6. [Emil Eriksson]
+- Add missing break. [Emil Eriksson]
+- Improve naming of Property related stuff. [Emil Eriksson]
+- Add the ability to report failures without throwing exceptions. [Emil
+  Eriksson]
+
+  Halfway to #16
+- Non-static constexpr should not be static. [Emil Eriksson]
+- Merge pull request #18 from emil-e/doc. [emil-e]
+
+  Documentation
+- Cosmetic. [Emil Eriksson]
+- Complete generator reference. [Emil Eriksson]
+- Even more generator reference docs. [Emil Eriksson]
+- More generator reference documentation. [Emil Eriksson]
+- Add docs on makeUnique and makeShared. [Emil Eriksson]
+- Add start of docs for generators. [Emil Eriksson]
+- Make building tests and examples optional. Fixes #17. [Emil Eriksson]
+- Rename nextState to apply. [Emil Eriksson]
+- Take state by non-const ref in commands. Fixes #15. [Emil Eriksson]
+- Move type and value showing from State.hpp to appropriate places.
+  [Emil Eriksson]
+- Move CommandsGen to separate header file. [Emil Eriksson]
+- Move state::Commands to separate file. [Emil Eriksson]
+- Move state::Command to separate file. [Emil Eriksson]
+- Update docs with assertion macro names in output. [Emil Eriksson]
+- Use detail::scaleInteger in SizedElementOfGen. [Emil Eriksson]
+- Make gen::inRange respect size and shrink. Fixes #4. [Emil Eriksson]
+- Increase size in searchGen on each failure. [Emil Eriksson]
+- Fix missing seed in TestParams output. [Emil Eriksson]
+- Slowly increase size when tests cases are discarded. [Emil Eriksson]
+- Add assertion macro name to failure output. Fixes #5. [Emil Eriksson]
+- Test gen::exec and gen::mapcat equivalence. [Emil Eriksson]
+- Better message for exceptions in property. Partly solves #5. [Emil
+  Eriksson]
+- Don't generate empty argument tuples. Fixes #13. [Emil Eriksson]
+- Add empty definition for TypeList so it can be constructed. [Emil
+  Eriksson]
+- Remove TODO.md, use GitHub issues. [Emil Eriksson]
+- Don't use classify() in tests. [Emil Eriksson]
+- Add missing include in Results.cpp. [Emil Eriksson]
+- Add classify example. [Emil Eriksson]
+- Add docs about distribution reporting. [Emil Eriksson]
+- Add printing of distribution to catch.hpp integration. [Emil Eriksson]
+- Fix spelling error. [Emil Eriksson]
+- Fix bug in FailureResult generator. [Emil Eriksson]
+- Add distribution reporting to Check.cpp. [Emil Eriksson]
+- Add support for tags to toProperty. [Emil Eriksson]
+- Add classification macros. [Emil Eriksson]
+- Add distribution to SuccessResult. [Emil Eriksson]
+- Add PropertyContext interface. [Emil Eriksson]
+- Add the possibility to use any kind of container with gen::elemntOf &
+  co. [Emil Eriksson]
+- Add gen::sizedOneOf. [Emil Eriksson]
+- Fix some SelectTests. [Emil Eriksson]
+- Fix bug in SizedElementOfGen. [Emil Eriksson]
+- Add gen::sizedElement. [Emil Eriksson]
+- Simplify SelectTests a bit. [Emil Eriksson]
+- Add more missing includes. [Emil Eriksson]
+- Add gen::sizedElementOf. [Emil Eriksson]
+- Add gen::nonEmpty and also use it where possible. [Emil Eriksson]
+- Add missing include. [Emil Eriksson]
+- Make database example a bit more intricate. [Emil Eriksson]
+- Add database example. [Emil Eriksson]
+- Fix bug in State.hpp and add regression test. [Emil Eriksson]
+- Add MapParser example. [Emil Eriksson]
+- Add gen::weightedOneOf. [Emil Eriksson]
+- Change wording in gen::mapcat property. [Emil Eriksson]
+- Add gen::join. [Emil Eriksson]
+- Add gen::mapcat. [Emil Eriksson]
+- Callable -> Mapper in shrinkable::mapcat for consistency. [Emil
+  Eriksson]
+- Add shrinkable::mapcat. [Emil Eriksson]
+- Add SeqIterator. [Emil Eriksson]
+- Add missing include in FrequencyMao. [Emil Eriksson]
+- Add gen::weightedElement. [Emil Eriksson]
+- Add FrequencyMap class. [Emil Eriksson]
+- Fix uninitialized value in seq::concat. [Emil Eriksson]
+- Use custom Seq implementation for seq::concat. [Emil Eriksson]
+- Fix some warnings that may appear on some compilers. [Emil Eriksson]
+- Add gen::maybe and replace the old hack. [Emil Eriksson]
+- Fix some include order stuff. [Emil Eriksson]
+- Use gen::build in Generators.h. [Emil Eriksson]
+- Make gen::build support unique_ptr and shared_ptr. [Emil Eriksson]
+- Fix section description. [Emil Eriksson]
+- Work around internal compiler error on GCC. [Emil Eriksson]
+- Force deduction to std::initializer_list in gen::build. [Emil
+  Eriksson]
+- Add gen::makeShared. [Emil Eriksson]
+- Add gen::makeUnique. [Emil Eriksson]
+- Move generators in gen::build. [Emil Eriksson]
+- Add gen::build. [Emil Eriksson]
+- Add RC_ASSERT_FALSE. [Emil Eriksson]
+- Add gen::construct. [Emil Eriksson]
+- Add feature list in docs. [Emil Eriksson]
+- Add section on "Why RapidCheck?" [Emil Eriksson]
+- Add docs on configuration. [Emil Eriksson]
+- Add comment about assertion macro selection. [Emil Eriksson]
+- Add docs for assertions. [Emil Eriksson]
+- Add docs for displaying values. [Emil Eriksson]
+- Add more docs on generators. [Emil Eriksson]
+- Flesh out the documentation skeleton a bit. [Emil Eriksson]
+- Fix formatting in generators.md. [Emil Eriksson]
+- Remove bad add_subdirectory in examples CMakeLists.txt. [Emil
+  Eriksson]
+- Add more documentation about generators. [Emil Eriksson]
+- No more control statements without braces. [Emil Eriksson]
+- Fix size generation and add tests for it. [Emil Eriksson]
+- Update README.md. [emil-e]
+- Update README.md. [emil-e]
+- Add lots of docs even though they are still in progress. [Emil
+  Eriksson]
+- Add license (BSD 2-clause) [Emil Eriksson]
+- Missed some source files when reformatting. [Emil Eriksson]
+- Change clang-format style slightly. [Emil Eriksson]
+- Replace typedefs with type aliases (using) [Emil Eriksson]
+- Format ALL the things with clang-format. [Emil Eriksson]
+- Update .dir-locals for new coding style. [Emil Eriksson]
+- Add .clang-format. [Emil Eriksson]
+- Add test for Shrinkable move constructor. [Emil Eriksson]
+- Switch from //! style doc comments to /// style. [Emil Eriksson]
+- Update README.md. [Emil Eriksson]
+- Fix errors in docs. [Emil Eriksson]
+- Fix type in README.md. [emil-e]
+- Update README.md. [Emil Eriksson]
+- Add colon after file/line in assertion message. [Emil Eriksson]
+- Add rc::check for standalone operation. [Emil Eriksson]
+- Refactor message printing and add some tests for it. [Emil Eriksson]
+- Move Check.cpp out of detail/ [Emil Eriksson]
+- Fix shrink-to-integer tests for shrink::real. [Emil Eriksson]
+- Fixed bug in shrink::integral where infinite shrink loops could occur.
+  [Emil Eriksson]
+- Fix issue in gen::inRange where values outside of the range could be
+  generated. [Emil Eriksson]
+- Fix issue where out-of-range character could be passed to
+  std::islower. [Emil Eriksson]
+- Fix incorrect type for TestParams seed and add regression test. [Emil
+  Eriksson]
+- Upgrade Travis to GCC 4.9. [Emil Eriksson]
+- Fix for GCC+Catch. [Emil Eriksson]
+- Update docs for new framework. [Emil Eriksson]
+- Fix compilation error on GCC. [Emil Eriksson]
+- Custom reference counting implementation for Shrinkable. [Emil
+  Eriksson]
+- Explicit instantiations of numeric generators. [Emil Eriksson]
+- Improve compile times slightly with fewer nested templates. [Emil
+  Eriksson]
+- Remove outdated tests for Shrinkable. [Emil Eriksson]
+- Variant improvements. [Emil Eriksson]
+- Fix various minor warnings from different compilers. [Emil Eriksson]
+- Fixed regression in ShrinkValueIterator. [Emil Eriksson]
+- Fixes for GCC compatibility. [Emil Eriksson]
+- Add AlignedUnion class since GCC 4.9 does not have it. [Emil Eriksson]
+- Test strong exception guarantee in Maybe. [Emil Eriksson]
+- Improve Variant with more safety and looser requirements on types.
+  [Emil Eriksson]
+- Test self-assignment. [Emil Eriksson]
+- Remove last remnant of old RapidCheck: IsCopyConstructible. [Emil
+  Eriksson]
+- Remove Any copyability. [Emil Eriksson]
+- Finally clean out a bit in TODO. [Emil Eriksson]
+- New Variant implementation that does not allocate on stack. [Emil
+  Eriksson]
+- Make Logger noexcept. [Emil Eriksson]
+- Add All traits. [Emil Eriksson]
+- Add extra test for shrink::towards. [Emil Eriksson]
+- Add custom string generator gen::string. [Emil Eriksson]
+- Break apart common generators in util/ into h/cpp files. [Emil
+  Eriksson]
+- Remove new-prefixes everywhere. [Emil Eriksson]
+- Remove ALL of the old-style RapidCheck code! Woohoo! [Emil Eriksson]
+- Move some leftovers to new framework and fix some errors that weren't
+  caught before. [Emil Eriksson]
+- Add NewArbitrary for Maybe. [Emil Eriksson]
+- Move ImplicitParamTests to new state framework. [Emil Eriksson]
+- Remove old debugging printout from ShrinkTests. [Emil Eriksson]
+- Fix bug in arbitrary real generation. [Emil Eriksson]
+- Fix newgen::container std::array size restriction test. [Emil
+  Eriksson]
+- Add state checking framework, built on newgen. [Emil Eriksson]
+- Rename typedefs in State.h. [Emil Eriksson]
+- Modify tests for seq::indexes a bit. [Emil Eriksson]
+- Break sub range sequence into seq::subranges. [Emil Eriksson]
+- Seq::indexes should be inline, not static inline. [Emil Eriksson]
+- Move ShrinkableTests to new framework. [Emil Eriksson]
+- Move ShowTests to new framework. [Emil Eriksson]
+- Move SeqTests to new framework. [Emil Eriksson]
+- Move RandomTests to new framework. [Emil Eriksson]
+- Move GenTests to new framework. [Emil Eriksson]
+- Move most CheckTests to new framework. [Emil Eriksson]
+- Move shrinkable/TransformTests to new framework. [Emil Eriksson]
+- Move shrinkable/OperationsTests to new framework. [Emil Eriksson]
+- Move shrinkable/CreateTests to new framework. [Emil Eriksson]
+- Move (most) ShrinkTests to new framework. [Emil Eriksson]
+- Fix real generation a bit. [Emil Eriksson]
+- Move seq/TransformTests to new framework. [Emil Eriksson]
+- Move seq/OperationsTests to new framework. [Emil Eriksson]
+- Move seq/CreateTests to new framework. [Emil Eriksson]
+- Add NewArbitrary for CopyGuard. [Emil Eriksson]
+- Move PredicatesTests to new framework. [Emil Eriksson]
+- Add NewArbitrary for Fruit. [Emil Eriksson]
+- Move TupleTests to new framework. [Emil Eriksson]
+- Move TransformTests to new framework. [Emil Eriksson]
+- Move TextTests to new framework. [Emil Eriksson]
+- Move SelectTests to new framework. [Emil Eriksson]
+- Move NumericTests to new framework. [Emil Eriksson]
+- Move ExecTests to new framework. [Emil Eriksson]
+- Move DistinctTests to new framework. [Emil Eriksson]
+- Move CreateTests to new framework. [Emil Eriksson]
+- Move ContainerTests to new framework. [Emil Eriksson]
+- Add onAnyPath for new framework. [Emil Eriksson]
+- Add templatedProp for new framework. [Emil Eriksson]
+- Const-away in ExecRawTests. [Emil Eriksson]
+- Improve ExecRawTests. [Emil Eriksson]
+- Catch Shrinkable exceptions when creating counter example. [Emil
+  Eriksson]
+- Move ShrinkValueIteratorTests to new framework. [Emil Eriksson]
+- Move RecipeTests to new framework. [Emil Eriksson]
+- Add NewArbitrary for Seq and Shrinkable. [Emil Eriksson]
+- Add newgen::lazy. [Emil Eriksson]
+- Use GenParams in CreateTests. [Emil Eriksson]
+- Move ExecRawTests to new framework. [Emil Eriksson]
+- Move CommonTests to new framework. [Emil Eriksson]
+- Move ResultTests to new framework. [Emil Eriksson]
+- Add NewArbitrary for result types. [Emil Eriksson]
+- Fix signature for shrinkable::filter. [Emil Eriksson]
+- Add newgen::withSize. [Emil Eriksson]
+- Move RandomEngineTests to new framework. [Emil Eriksson]
+- Move NewPropertyTests to new framework. [Emil Eriksson]
+- Add clarifying comment for static_assert in DefaultArbitrary. [Emil
+  Eriksson]
+- Add NewArbitrary for Random. [Emil Eriksson]
+- Add NewArbitrary for GenParams. [Emil Eriksson]
+- Add NewArbitrary for CaseResult. [Emil Eriksson]
+- Fix incomplete doc comment in Configuration.h. [Emil Eriksson]
+- Add support for std::array in new framework. [Emil Eriksson]
+- Move ExpressionCaptorTests to new framework. [Emil Eriksson]
+- Add NewArbitrary instance for Box. [Emil Eriksson]
+- Move ConfigurationTests to new framework. [Emil Eriksson]
+- Add versions of TemplateProps.h for new framework. [Emil Eriksson]
+- Move BitStreamTests to new framework. [Emil Eriksson]
+- Move MapParserTests to new framework. [Emil Eriksson]
+- Add next gen headers to rapidcheck.h. [Emil Eriksson]
+- Add some missing includes. [Emil Eriksson]
+- Defer exception thrown in Gen generation function. [Emil Eriksson]
+- Treat exception in Shrinkable::shrinks() as empty shrinks. [Emil
+  Eriksson]
+- Treat exceptions in Seq::next() as end of Seq. [Emil Eriksson]
+- Add new-style checking functions! Finally! [Emil Eriksson]
+- Improve GenUtils a bit. [Emil Eriksson]
+- Add newgen::character and std::basic_string arbitrary instance. [Emil
+  Eriksson]
+- Add newgen::oneOf. [Emil Eriksson]
+- Fix newgen::element tests a bit. [Emil Eriksson]
+- Add newgen::distinctFrom. [Emil Eriksson]
+- Add basic numeric generators. [Emil Eriksson]
+- Added newgen::element and newgen::elementOf. [Emil Eriksson]
+- Add newgen::noShrink. [Emil Eriksson]
+- Add newgen::scale. [Emil Eriksson]
+- Add newgen::resize. [Emil Eriksson]
+- Remove superfluous move in Container.hpp. [Emil Eriksson]
+- Add some TODOs about shrink tests. [Emil Eriksson]
+- Add generation of fixed size containers. [Emil Eriksson]
+- Fix bug in newgen::container where the non-split random was used.
+  [Emil Eriksson]
+- Refactor Container.hpp a bit. [Emil Eriksson]
+- Add newgen::exec. [Emil Eriksson]
+- Use Decay for mapping functions in case lambda returns are deduced to
+  something we don't like. [Emil Eriksson]
+- Test that execRaw works with non-copyables. [Emil Eriksson]
+- Where possible, have callable argument last. [Emil Eriksson]
+- Fix some property descriptions. [Emil Eriksson]
+- Make seq::zipWith and seq::map be separate. [Emil Eriksson]
+- Add size test for newgen::suchThat. [Emil Eriksson]
+- Add newgen::suchThat. [Emil Eriksson]
+- Improve tests for newgen::map. [Emil Eriksson]
+- Add overload for newgen::map which defaults to newgen::arbitrary.
+  [Emil Eriksson]
+- Forward declare newgen::map in Gen.hpp. [Emil Eriksson]
+- Use custom struct for property generated type. [Emil Eriksson]
+- Add newgen::inRange. [Emil Eriksson]
+- Factored out TestParams to separate file. [Emil Eriksson]
+- Add NewProperty. [Emil Eriksson]
+- Counterexample pair vector as Counterexample. [Emil Eriksson]
+- Replace StdFunction with FunctionType, it's more general. [Emil
+  Eriksson]
+- Add STL container generators, finally. [Emil Eriksson]
+- Add ShrinkValueIterator. [Emil Eriksson]
+- Tests for newgen/Transform. [Emil Eriksson]
+- Disallow comparison between Seqs of different types. [Emil Eriksson]
+- Clarify property description in TupleTests. [Emil Eriksson]
+- Update GenUtils a bit. [Emil Eriksson]
+- Use Decay for elements in tuple NewArbitrary. [Emil Eriksson]
+- Add std::pair generator. [Emil Eriksson]
+- Add some more type macros. [Emil Eriksson]
+- Impl object of Shrinkable is now shared_ptr instead. [Emil Eriksson]
+- Make newgen::arbitrary able to return other types than just T. [Emil
+  Eriksson]
+- Add macro to declare SFINAE based traits. [Emil Eriksson]
+- Clarify doc comment about shrinkable::map. [Emil Eriksson]
+- Add shrinkable::immediateShrinks. [Emil Eriksson]
+- Add an extra test for shrinkable::filter. [Emil Eriksson]
+- Add shrinkable::pair. [Emil Eriksson]
+- Remove extra unused template parameter for shrinkable::lambda. [Emil
+  Eriksson]
+- Add std::hash and operator< for Random. [Emil Eriksson]
+- Add newRemoveChunks and newEachElement. [Emil Eriksson]
+- Newgen::tuple recursive shrink test. [Emil Eriksson]
+- Shrink test for newgen Numeric. [Emil Eriksson]
+- Move some numeric tests to a separate section. [Emil Eriksson]
+- Add shrinkable::findLocalMin. [Emil Eriksson]
+- Add some TODO stuff. [Emil Eriksson]
+- Add newgen numeric generators. [Emil Eriksson]
+- Don't Decay all the things in ExecRaw. [Emil Eriksson]
+- Add missin anon namespace in ExecRawTests. [Emil Eriksson]
+- Fix RandomTests distribution test a bit. [Emil Eriksson]
+- Have two versions of BitStream factory, one ref and one copy. [Emil
+  Eriksson]
+- Default Gen size parameter to gen::kNominalSize. [Emil Eriksson]
+- Show all char types as integers. [Emil Eriksson]
+- Fix RandomTests. [Emil Eriksson]
+- Factor out some shrinking stuff from old style generators. [Emil
+  Eriksson]
+- Switch to custom type erasure for Gen. [Emil Eriksson]
+- Add execRaw. [Emil Eriksson]
+- Factor out some GenUtils. [Emil Eriksson]
+- NewArbitrary specialization for Predictable. [Emil Eriksson]
+- NewArbitrary specialization for tuples. [Emil Eriksson]
+- Add NewArbitrary. [Emil Eriksson]
+- Add FunctionTraits TMP utilities. [Emil Eriksson]
+- Add TypeList TMP utilities. [Emil Eriksson]
+- Move some test utils to a separate header. [Emil Eriksson]
+- Add empty shrink version of shrinkable::lambda. [Emil Eriksson]
+- Test that newgen::tuple works with noncopyables. [Emil Eriksson]
+- Add some const goodness. [Emil Eriksson]
+- Add newgen::just. [Emil Eriksson]
+- Add newgen::tuple. [Emil Eriksson]
+- Add default constructor for Random. [Emil Eriksson]
+- Use make_tuple instead of initializer list return in ApplyTupleTests.
+  [Emil Eriksson]
+- Use applyTuple in seq::map. [Emil Eriksson]
+- Fix bug in applyTuple. [Emil Eriksson]
+- Add applyTuple. [Emil Eriksson]
+- Rename Meta.h to IntSequence.h. [Emil Eriksson]
+- Add Recipe. [Emil Eriksson]
+- Use explicit operator bool() where appropriate. [Emil Eriksson]
+- Add seq::at. [Emil Eriksson]
+- Add seq::any. [Emil Eriksson]
+- Don't allow empty range in gen::ranged. [Emil Eriksson]
+- Add Gen class. [Emil Eriksson]
+- Noexcept default move constructors. [Emil Eriksson]
+- Add some missing includes. [Emil Eriksson]
+- Move Random generators to separate file from RandomTests.cpp. [Emil
+  Eriksson]
+- Fix bug in shrinkable/Create.h. [Emil Eriksson]
+- Add shrinkable::filter. [Emil Eriksson]
+- Add enable_if guard to not obsruct copy constructor in fn::constant.
+  [Emil Eriksson]
+- Add shrinkable::mapShrinks. [Emil Eriksson]
+- Add shrinkable::all. [Emil Eriksson]
+- Remove implicit bool conversion for Nothing. [Emil Eriksson]
+- Fix some inconsistencies in Seq TransformTests. [Emil Eriksson]
+- Add seq::mapMaybe. [Emil Eriksson]
+- Clarify seq::mapcat docs. [Emil Eriksson]
+- Fix Seq docs. [Emil Eriksson]
+- Add shrinkable::map. [Emil Eriksson]
+- Test shrinkable creation with CopyGuard. [Emil Eriksson]
+- Don't Decay return types of callables in shrinkable/Create.h. [Emil
+  Eriksson]
+- Add shrinkable::shrink and shrinkable::shrinkRecur. [Emil Eriksson]
+- Fortify some tests in CreateTests.cpp. [Emil Eriksson]
+- Clarify docs on fn::constant. [Emil Eriksson]
+- Add Shrinkable type. [Emil Eriksson]
+- Add fn::constant. [Emil Eriksson]
+- Use default move/copy constructors for Logger subclasses. [Emil
+  Eriksson]
+- Use default move constructors explicitly where possible. [Emil
+  Eriksson]
+- Move and rename Any implementation details. [Emil Eriksson]
+- More features for BitStream. [Emil Eriksson]
+- Add BitStream class. [Emil Eriksson]
+- Add bitMask utility function. [Emil Eriksson]
+- Replace usage of Xorshift with splittable randoms. [Emil Eriksson]
+- Add ability to use 64-bit seeds in Random. [Emil Eriksson]
+- Test Random keys. [Emil Eriksson]
+- Newshrink -> shrink. [Emil Eriksson]
+- Fix bugs and harden tests for Random. [Emil Eriksson]
+- Add missing header file. [Emil Eriksson]
+- Add splitable randoms! [Emil Eriksson]
+- Fix std::vector<bool> generation. [Emil Eriksson]
+- Fix IntSequence for GCC. [Emil Eriksson]
+- Add some TODO. [Emil Eriksson]
+- Replace shrink::Iterator with Seq. [Emil Eriksson]
+- Add some missing includes. [Emil Eriksson]
+- Add stream insertion for Any. [Emil Eriksson]
+- Add seq::cast. [Emil Eriksson]
+- Clarify seq::last docs a bit. [Emil Eriksson]
+- Add seq::all. [Emil Eriksson]
+- Made Seq template constructor explicit. [Emil Eriksson]
+- Add implementations corresponding to Shrink.h for Seq. [Emil Eriksson]
+- Add some missing override specifiers. [Emil Eriksson]
+- Seq::contains and seq::last. [Emil Eriksson]
+- Move value in seq::forEach. [Emil Eriksson]
+- Change the order of template params for seq::* [Emil Eriksson]
+- Add seq::mapcat. [Emil Eriksson]
+- Add seq::range and seq::index. [Emil Eriksson]
+- Add clarifying comment for assertEqualCopies. [Emil Eriksson]
+- Use seq::repeat for implementing seq::cycle. [Emil Eriksson]
+- Add seq::repeat. [Emil Eriksson]
+- Add seq::cycle. [Emil Eriksson]
+- Add seq::concat. [Emil Eriksson]
+- Add seq::join. [Emil Eriksson]
+- Add seq::filter. [Emil Eriksson]
+- Break out assertEqualCopies to separate file and use that for
+  CreateTests as well. [Emil Eriksson]
+- Tiny optimizations for seq::drop and seq::take. [Emil Eriksson]
+- Bugfixes for Maybe. [Emil Eriksson]
+- Add DestructNotifier test utility. [Emil Eriksson]
+- Add seq::map. [Emil Eriksson]
+- Reduce code duplication in TransformTests. [Emil Eriksson]
+- Fix constructor bug in Maybe. [Emil Eriksson]
+- Add stream insertion operator for Maybe. [Emil Eriksson]
+- Add integer sequence TMP utilities. [Emil Eriksson]
+- Add seq::takeWhile. [Emil Eriksson]
+- Sanity check for seq::dropWhile. [Emil Eriksson]
+- Add seq::dropWhile. [Emil Eriksson]
+- Add stream insertion for Seq for debugging. [Emil Eriksson]
+- Harden TransformTests a bit. [Emil Eriksson]
+- Add seq::take. [Emil Eriksson]
+- Add sanity check test for seq::drop. [Emil Eriksson]
+- Some more tests for seq::drop. [Emil Eriksson]
+- Static inline showValue for CopyGuard. [Emil Eriksson]
+- Make seq::drop lazy. [Emil Eriksson]
+- Add seq::drop. [Emil Eriksson]
+- Add seq::fromIteratorRange. [Emil Eriksson]
+- Add makeSeq function for in-place construction of Seqs. [Emil
+  Eriksson]
+- Rewrite Seq<T> to instead return a stream of Maybe<T> [Emil Eriksson]
+- Add Nothing initialization for Maybe. [Emil Eriksson]
+- Add TODO stuff. [Emil Eriksson]
+- Add Maybe template class. [Emil Eriksson]
+- Clarify Any exception semantics. [Emil Eriksson]
+- Noexcept default constructor for Any. [Emil Eriksson]
+- Factor out the logging part of LoggingSeqImpl to separate class. [Emil
+  Eriksson]
+- Added seq::iterate. [Emil Eriksson]
+- Add seq::forEach. [Emil Eriksson]
+- Add seq::length. [Emil Eriksson]
+- Add TODO comment about weirdness. [Emil Eriksson]
+- Add show() for bool and fix show for integrals. [Emil Eriksson]
+- More Seq stuff. [Emil Eriksson]
+- Modify TypeListMacros some more. [Emil Eriksson]
+- Split container type list macros into ordered/unordered. [Emil
+  Eriksson]
+- Rename DecayT to Decay and move to rc:: [Emil Eriksson]
+- Add Seq class and tests. [Emil Eriksson]
+- Add some Show tests. [Emil Eriksson]
+- Make assertions use ExpressionCaptor. [Emil Eriksson]
+- Fix Show. [Emil Eriksson]
+- Don't print "Property failed:" in rapidcheck-catch. [Emil Eriksson]
+- Give CaseResult some constructors. [Emil Eriksson]
+- Use isArbitraryPredictable in InvokeTests instead of predictableValue.
+  [Emil Eriksson]
+- ShowValue(Box) must be inline. [Emil Eriksson]
+- Fix some terminology in ShowTests.cpp. [Emil Eriksson]
+- Remove useless declaration from Show.hpp. [Emil Eriksson]
+- Move Box test util class to separate header file. [Emil Eriksson]
+- Fix compile error. [Emil Eriksson]
+- Add RC__CAPTURE macro and some tests for it. [Emil Eriksson]
+- Change incorrect test descriptino in ExpressionCaptorTests. [Emil
+  Eriksson]
+- Use RC__ prefix for internal macros. [Emil Eriksson]
+- Add ExpressionCaptor class. [Emil Eriksson]
+- Move test files to mirror source files. [Emil Eriksson]
+- Update of state testing framework with tests and all. [Emil Eriksson]
+- Make give-up semantics of suchThat a bit clearer. [Emil Eriksson]
+- Make show(...) use SFINAE to only choose template overload as last-
+  resort. [Emil Eriksson]
+- Move ShowType test utils to separate header. [Emil Eriksson]
+- Make non-conditional assertion macros no-return. [Emil Eriksson]
+- ShowType: Add support for basic_string<...> [Emil Eriksson]
+- Move compilation unit local test utils to anon namespace. [Emil
+  Eriksson]
+- Add Travis status icon to README. [Emil Eriksson]
+- Add ShowType specialization for unique_ptr and shared_ptr. [Emil
+  Eriksson]
+- Add static_assert for clearer error message when have non-const ref
+  param for property. [Emil Eriksson]
+- Replace some usages of suchThat with distinctFrom. [Emil Eriksson]
+- Split IsCopyConstructible out from Traits.h. [Emil Eriksson]
+- Update .travis.yml. [Emil Eriksson]
+- Update .travis.yml. [Emil Eriksson]
+- Update .travis.yml. [Emil Eriksson]
+- Add some noexcept. [Emil Eriksson]
+- Rose: Disable copying. [Emil Eriksson]
+- Add gen::distinctFrom. [Emil Eriksson]
+- Add missing PredicatesTests.cpp. [Emil Eriksson]
+- Added gen::element. [Emil Eriksson]
+- Test with NonDefaultConstructible for shrink::filter. [Emil Eriksson]
+- Rename test/gen/Predicates to test/gen/PredicatesTests. [Emil
+  Eriksson]
+- Use aligned_storage instead of heap allocation for shrink::filter.
+  [Emil Eriksson]
+- Add gen::elementOf. [Emil Eriksson]
+- Almost fix gen::sample() [Emil Eriksson]
+- Move type list macros to TypeListMacros.h. [Emil Eriksson]
+- Implement Numerics using predicates and SuchThat instead. [Emil
+  Eriksson]
+- Cosmetic. [Emil Eriksson]
+- Add predicates and predicates tests. [Emil Eriksson]
+- Add missing includes for arbiatrary/Collection. [Emil Eriksson]
+- Add more operators to Predictable. [Emil Eriksson]
+- Apple and Orange moved to separate file and implemented with templates
+  instead. [Emil Eriksson]
+- Fix .travis.yml. [Emil Eriksson]
+- Update .travis.yml. [Emil Eriksson]
+- Split ArbitraryTests.cpp. [Emil Eriksson]
+- Split GeneratorTests.cpp to match corresponding impl files. [Emil
+  Eriksson]
+- Retructuring of Generator.h(pp) and Arbitrary.hpp. [Emil Eriksson]
+- Add missing includes (+1 squashed commit) Squashed commits: [80a5bd7]
+  Add some missing includes. [Emil Eriksson]
+- # This is a combination of 3 commits. # The first commit's message is:
+  Update .travis.yml (+4 squashed commits) Squashed commits: [df7101d]
+  Update .travis.yml [ecd9f4b] Update .travis.yml [eaab08d] Update
+  .travis.yml [da6bb81] Update .travis.yml. [Emil Eriksson]
+
+  # This is the 2nd commit message:
+
+  Update .travis.yml
+
+  # This is the 3rd commit message:
+
+  Update .travis.yml
+- Add Travis CI configuration. [Emil Eriksson]
+- Remove GCC fix that is not needed. [Emil Eriksson]
+- Added missing ValueDescription removal. [Emil Eriksson]
+- Fix GCC:isms. [Emil Eriksson]
+- TODO: Update it. [Emil Eriksson]
+- Gitignore: Ignore all folders beginning with "build" [Emil Eriksson]
+- Predictable: noexcept for move constructors. [Emil Eriksson]
+- Util/Generators: Don't use lambda in parameter pack expansions (GCC
+  bug) [Emil Eriksson]
+- ConfigurationTests: Don't expect exception on negative seed. [Emil
+  Eriksson]
+- Demangle: Don't rely on buffer length for content length. [Emil
+  Eriksson]
+- RoseNode: Remove old debugging functions. [Emil Eriksson]
+- Replace use of ValueDescription with a simple std::pair. [Emil
+  Eriksson]
+- Show: Add toString function. [Emil Eriksson]
+- ShowType: Improved implementation and also tests(!) [Emil Eriksson]
+- Rename SupportsOstreamOperator to IsStreamInstertible. [Emil Eriksson]
+- Any/Variant: Implement operator==/operator!= in Variant only (+1
+  squashed commit) Squashed commits: [bf0a26f] fixup. [Emil Eriksson]
+- CollectionBuilder: Change to more "automatic" design. [Emil Eriksson]
+- Remove stale TODO comment. [Emil Eriksson]
+- TODO: Add stuff. [Emil Eriksson]
+- Fix broken gen::ranged tests. [Emil Eriksson]
+- Generator: Make anyInvocation tests work even when invoked an
+  arbitrary number of times. [Emil Eriksson]
+- Shrink: Add empty shrink test for shrink::towards. [Emil Eriksson]
+- Shrink: Fix overflow bug in shrink::towards. [Emil Eriksson]
+- Cosmetic fixes. [Emil Eriksson]
+- Configuration: Read from env RC_PARAMS. [Emil Eriksson]
+- Configuration: Test for operator<< [Emil Eriksson]
+- Configuration: Always specify seed. [Emil Eriksson]
+- Configuration: Defaults can be passed to configFromString. [Emil
+  Eriksson]
+- MapParser: Cosmetic fixes. [Emil Eriksson]
+- Configuration: Functions for going to and from string repr. [Emil
+  Eriksson]
+- Remove outdated TODO comment. [Emil Eriksson]
+- Add MapParser. [Emil Eriksson]
+- TODO: Add some stuff, I guess. [Emil Eriksson]
+- Lots and lots of fixes... sorry for the mess. [Emil Eriksson]
+- ImplicitParam: Formalized and rebuilt the way it works + tests. [Emil
+  Eriksson]
+- TODO: Add stuff. [Emil Eriksson]
+- Cosmetic changes. [Emil Eriksson]
+- Show: Fix some bugs and add some tests. [Emil Eriksson]
+- Check: Allow TestParams to be passed as a parameter. [Emil Eriksson]
+- TODO: Add some stuff. [Emil Eriksson]
+- Fix a test which broke because of new RandomEngine. [Emil Eriksson]
+- RandomEngine: New implementation using Xorshift128+ [Emil Eriksson]
+- TODO: Add some stuff. [Emil Eriksson]
+- ImplicitParam: Separate header and implementation file. [Emil
+  Eriksson]
+- TODO: Add stuff. [Emil Eriksson]
+- ImplicitParam: Change behavior of -> operator. [Emil Eriksson]
+- Move pick() to detail namespace and instead expose deref operator on
+  Generator. [Emil Eriksson]
+- TODO: Add some stuff. [Emil Eriksson]
+- Check: Add some tests and fix some bugs that were discovered as a
+  result. [Emil Eriksson]
+- RoseTests: Make example tests a bit more thorough. [Emil Eriksson]
+- Add CTest support for RapidCheck tests. [Emil Eriksson]
+- Cosmetic: Sort lines in CMakeLists.txt. [Emil Eriksson]
+- Catch support. Move more details to Check.h. [Emil Eriksson]
+- Better structure. [Emil Eriksson]
+- Add example tests. [Emil Eriksson]
+- Rose: Update docs. [Emil Eriksson]
+- RoseTests: Speed up slow test by reducing size. [Emil Eriksson]
+- Sometimes, there's just too much, you know. [Emil Eriksson]
+- Modify TODO. [Emil Eriksson]
+- Get rid of untyped nonsense. [Emil Eriksson]
+- Non-copyable AnyImpl. [Emil Eriksson]
+- Add missing destructor for AnyImpl. [Emil Eriksson]
+- Fix Rose. [Emil Eriksson]
+- Add test for Any::get as move source. [Emil Eriksson]
+- Remove templating in RoseNode and use Any instead. [Emil Eriksson]
+- Add some stuff to TODO. [Emil Eriksson]
+- Bump catch.hpp version. [Emil Eriksson]
+- Added ErasedGenerator. [Emil Eriksson]
+- Removed useless define. [Emil Eriksson]
+- No longer pass generators by value, pass by reference to enable
+  putting pick on Generator<T> instead. [Emil Eriksson]
+- Remove superfluous move-disabling. [Emil Eriksson]
+- Fix Variant a bit. [Emil Eriksson]
+- Add Any class. [Emil Eriksson]
+- Update TODO. [Emil Eriksson]
+- Updated TODO. [Emil Eriksson]
+- Support for std::array. [Emil Eriksson]
+- More TODO cleanup. [Emil Eriksson]
+- Cleanup TODO. [Emil Eriksson]
+- Fix '!' in assertion messages. [Emil Eriksson]
+- Removed leftover debugging code. [Emil Eriksson]
+- ShowType for pretty printing of common types. [Emil Eriksson]
+- Fix missing implicit params in Rose. [Emil Eriksson]
+- Remove Show traits class, only use overloaded function. [Emil
+  Eriksson]
+- Arbitrary tests for collections. [Emil Eriksson]
+- Added GeneratedT typedef. [Emil Eriksson]
+- Documentation! [Emil Eriksson]
+- Rename kReferenceSize to kNominalSize. [Emil Eriksson]
+- Cleanup TODO.org. [Emil Eriksson]
+- Added a property to gen::noShrink. [Emil Eriksson]
+- More Rose tests. [Emil Eriksson]
+- Stateful tests for Rose. [Emil Eriksson]
+- Stateful testing framework. [Emil Eriksson]
+- Created Rose wrapper around RoseNode for encapsulation. [Emil
+  Eriksson]
+- Default values for ImplicitParam. [Emil Eriksson]
+- Cleaned up tests and removed use of testEnv, use noShrink selectively
+  instead. [Emil Eriksson]
+- Gen::vector and also general test improvements. [Emil Eriksson]
+- Rewrite of RoseNode to be much more consistent. [Emil Eriksson]
+- Fixed bug in shrink::RemoveChunks. [Emil Eriksson]
+- Changed size_t to int in size test. [Emil Eriksson]
+- Use int instead of size_t for size. [Emil Eriksson]
+- Replaced operator()() for generators with generate() [Emil Eriksson]
+- Added std::string and std::wstring to collection tests. [Emil
+  Eriksson]
+- Testing of gen::pairOf. [Emil Eriksson]
+- Tests for shrink::filter. [Emil Eriksson]
+- Lots of tests for collections and stuff. [Emil Eriksson]
+- Halway through implementing every collection type. [Emil Eriksson]
+- Arbitrary instances inherit instead of instantiate. [Emil Eriksson]
+- Tuple shrinking. [Emil Eriksson]
+- Tuple generation now works for non-copyables. [Emil Eriksson]
+- Basic tuple generation. [Emil Eriksson]
+- More tests and more fixes. [Emil Eriksson]
+- More tests. [Emil Eriksson]
+- Changed quantifier so that order of argument generation is defined.
+  [Emil Eriksson]
+- More tests. [Emil Eriksson]
+- Require CMake 2.8.12. [Emil Eriksson]
+- More tests and better testing tools. [Emil Eriksson]
+- Move CurrentNode param and others to GenerationParams.h. [Emil
+  Eriksson]
+- Use catch.hpp instead of internal framework. [Emil Eriksson]
+- Assertions and thus also testing of void functions. [Emil Eriksson]
+- No longer header-only. [Emil Eriksson]
+- A little test framework. [Emil Eriksson]
+- Shrinking of non-copyable objects. [Emil Eriksson]
+- Added TODO list. [Emil Eriksson]
+- Generation of reals. [Emil Eriksson]
+- Added missing namespace qualification. [Emil Eriksson]
+- Moved shrink stuff to rc::shrink. [Emil Eriksson]
+- Moved generators to rc::gen namespace. [Emil Eriksson]
+- Removed dead code. [Emil Eriksson]
+- Sort of improved shrink, faster anyway. [Emil Eriksson]
+- Added Show.hpp which was forgotten in earlier commit. [Emil Eriksson]
+- More readable output from RoseNode::print. [Emil Eriksson]
+- ImplicitParam now uses a std::vector based stack. [Emil Eriksson]
+- Better output. [Emil Eriksson]
+- Added sample() function. [Emil Eriksson]
+- Changed default max successes to 100. [Emil Eriksson]
+- Gave Show.hpp a header file. [Emil Eriksson]
+- Added support for testing functions and not just functors. [Emil
+  Eriksson]
+- Fixed lots of stuff, too much for one commit (sorry) [Emil Eriksson]
+- NoShrink function for disabling shrinking for a generator. [Emil
+  Eriksson]
+
+  Added this functionality to ranged(), don't wanna shrink that
+- Shrink disabling, haven't tested it though. [Emil Eriksson]
+- Added tags files to .gitignore. [Emil Eriksson]
+- Some more refactoring. [Emil Eriksson]
+- Some refactoring in RoseNode. [Emil Eriksson]
+- Collection shrinking! [Emil Eriksson]
+- Now shrinking REALLY works this time. [Emil Eriksson]
+- Generic UnfoldIterator can be used to implement many types. [Emil
+  Eriksson]
+- Shrinking actually sort of works now. [Emil Eriksson]
+- Big restructuring of files. Also, anyInvocation! [Emil Eriksson]
+- RoseTree seems to work fine now. [Emil Eriksson]
+- Merge branch 'master' of github.com:emil-e/rapidcheck. [Emil Eriksson]
+
+  Conflicts:
+  	rapidcheck/Generators.hpp
+- Fix typo. [emil-e]
+- New rose tree architecture is taking shape. [Emil Eriksson]
+- Shrinking implemented, somewhat. Needs to be better, though. [Emil
+  Eriksson]
+- Actual testing! [Emil Eriksson]
+- It's a start! [Emil Eriksson]
+- Create README.md. [emil-e]
+- Initial import. [Emil Eriksson]
+
+
