@@ -1,9 +1,9 @@
 # Maintainer: Shengyu Zhang <la@archlinuxcn.org>
 
 pkgname=srain-git
-pkgver=1.0.0rc1.1067.0542dd1
-_pkgver=1.0.0rc1
-pkgrel=2
+pkgver=1.0.0rc2.1113.1032312
+_pkgver=1.0.0rc2
+pkgrel=1
 pkgdesc="Modern IRC client, git version"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -15,7 +15,7 @@ optdepends=(
     )
 conflicts=('srain')
 provides=('srain')
-source=("git+https://github.com/SilverRainZ/srain.git#branch=master")
+source=("git+https://github.com/SrainApp/srain.git#branch=master")
 sha256sums=('SKIP')
 
 _prefix='/usr'
