@@ -13,7 +13,7 @@ url='https://github.com/TheGoddessInari/rambox'
 license=('GPL3')
 source=("$_pkgname-$pkgver.tar.gz::https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-$pkgver.tar.gz?job=Image%3A%20Ubuntu&branch=master"
 	"${_pkgname}.desktop" "${_pkgname}.png")
-sha256sums=('5887f7cf42c0aff6e694ecb464ac7c1f60dcd3950ca54104a151d8e81fda5be7'
+sha256sums=('ae5e3b9eef01d67e853217049b41e33b3bbec5be03269c2765538836f9bf30d1'
             '7a12969771bb16b8afb1a0755558c3692a90b97a16ae9ddcea46f9757d5af169'
             '0bf4d0c849ad6151f77b346fea0424fab910f434378f9890b16fd15a32a10064')
 
