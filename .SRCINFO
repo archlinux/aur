@@ -1,0 +1,21 @@
+pkgbase = jdim-git
+	pkgdesc = A 2channel browser written in C++ using gtkmm3. This is public beta version.
+	pkgver = r2367.46c1c2e8
+	pkgrel = 1
+	url = https://github.com/ma8ma/JDim/tree/gtk3-preview
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gnutls
+	depends = libsm
+	depends = gtkmm3
+	depends = autoconf-archive
+	conflicts = jd
+	conflicts = jd-svn
+	conflicts = jd-gtk3
+	source = git://github.com/ma8ma/JDim.git#branch=gtk3-preview
+	sha256sums = SKIP
+
+pkgname = jdim-git
+
