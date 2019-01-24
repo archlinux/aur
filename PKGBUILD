@@ -1,7 +1,7 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=openboard
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
@@ -13,7 +13,7 @@ source=("https://github.com/OpenBoard-org/OpenBoard/archive/v$pkgver.tar.gz"
         qchar.patch
         qwebkit.patch
         openboard.desktop)
-md5sums=('fc8b5a3a90e4f85965158135ad3a9c0e'
+md5sums=('12942db4dd84699921a460dccb45d00b'
          'fa1ff089f0bcc15d2a510bb90cdd3002'
          '9dbccb56e4079b75c606dc40c3e77f00'
          'bf2c524f3897cfcfb4315bcd92d4206e'
