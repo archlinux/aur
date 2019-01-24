@@ -7,7 +7,7 @@ export LG2=en
 ###########################################################
 
 pkgname=i2p-dev
-pkgver=0.9.37.1
+pkgver=0.9.38.0
 pkgrel=1
 epoch=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
@@ -44,9 +44,9 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_gitname"
     sed -i build.properties \
-        -e 's:javac.version=.*:javac.version=1.9:'
+        -e 's:javac.version=.*:javac.version=11:'
     sed -i {router,core}/java/build.xml \
-        -e 's:1.7:1.9:'
+        -e 's:1.7:11:'
 }
 
 build_jbigi() {
