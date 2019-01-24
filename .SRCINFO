@@ -1,6 +1,6 @@
 pkgbase = android-tools-git
 	pkgdesc = Android platform tools
-	pkgver = r43987.ad6a5c565c
+	pkgver = r44069.be38989da0
 	pkgrel = 1
 	url = http://tools.android.com/
 	arch = i686

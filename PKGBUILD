@@ -4,7 +4,7 @@
 # Contributor: Alucryd <alucryd at gmail dot com>
 
 pkgname=android-tools-git
-pkgver=r43987.ad6a5c565c
+pkgver=r44069.be38989da0
 pkgrel=1
 pkgdesc='Android platform tools'
 arch=(i686 x86_64)
