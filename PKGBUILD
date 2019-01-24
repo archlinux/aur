@@ -8,8 +8,8 @@
 # Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
 
 pkgname=pinentry-dmenu
-pkgver=0.2
-pkgrel=3
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A pinentry program with the charm of dmenu"
 url="https://github.com/ritze/pinentry-dmenu"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ license=('GPL2')
 depends=('sh' 'libconfig'  'libxinerama' 'libxft')
 provides=('pinentry')
 source=(https://github.com/ritze/pinentry-dmenu/archive/$pkgver.zip)
-sha256sums=('440757f80b7157bf6ed3414f4bfa09100b468b37d6eed7e769b392e04b0aa1cf')
+sha256sums=('c3150ef052ab3362155a0f69da91221fe5ec27a2cddafe0ce1298a026acab63e')
 
 prepare() {
 	cd $pkgname-$pkgver

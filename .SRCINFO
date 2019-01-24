@@ -1,16 +1,18 @@
 pkgbase = pinentry-dmenu
 	pkgdesc = A pinentry program with the charm of dmenu
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/ritze/pinentry-dmenu
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = sh
+	depends = libconfig
 	depends = libxinerama
 	depends = libxft
-	source = https://github.com/ritze/pinentry-dmenu/archive/0.2.zip
-	sha256sums = 440757f80b7157bf6ed3414f4bfa09100b468b37d6eed7e769b392e04b0aa1cf
+	provides = pinentry
+	source = https://github.com/ritze/pinentry-dmenu/archive/0.2.1.zip
+	sha256sums = c3150ef052ab3362155a0f69da91221fe5ec27a2cddafe0ce1298a026acab63e
 
 pkgname = pinentry-dmenu
 
