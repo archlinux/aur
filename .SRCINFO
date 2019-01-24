@@ -1,7 +1,7 @@
 pkgbase = signal
 	pkgdesc = Signal Private Messenger for the Desktop
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/signalapp/Signal-Desktop
 	arch = i686
 	arch = x86_64
@@ -22,10 +22,12 @@ pkgbase = signal
 	source = signal.sh
 	source = signal.desktop
 	source = signal-tray.desktop
+	source = openssl-linking.patch
 	sha512sums = SKIP
 	sha512sums = 5cd854481c21720a18c3cf743a8dcccdcc4792151106889096c5b51d55740477084be313ec3fbbf1f5876e8aba29c2acdc23acb13a62d43e16ad5a6eb79c9dc6
 	sha512sums = a264bfc7a4a7aac747daa588a2acbf1eddfd201bc795f0fbc18460a9b25f4460f364124e227a527fec22631cd84bc9e190f9f4978069e9c119eb556b9ff2d327
 	sha512sums = ced228d19303abe951c55f7874004cb9e4cd062dbda48c7ea80b0a6fb9adf5716a37164c01c9921a91f00653b0737fed80e3c5e684b0f3bcec375c265d6d8e5c
+	sha512sums = 05efc65a78b2006f3ffdd728dd5a96923ee9c909a3707833f8d55935c18e507051aabdbefff270bb2c58d7f151147966b550c9bbc2a115dae177f51955720482
 
 pkgname = signal
 
