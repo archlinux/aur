@@ -2,7 +2,7 @@
 pkgbase=python-sphinx-click
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Sphinx extension that automatically documents click applications"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-sphinx')
 checkdepends=('python-coverage' 'python2-coverage' 'python2-sphinx' 'python-click' 'python2-click')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7462fd92de0a866456b2ac7a208effc3')
+md5sums=('1aec59ae38e34fb6e058fddda70da90b')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
