@@ -15,6 +15,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd aGrUM-$pkgver
+  # https://gitlab.com/agrumery/aGrUM/issues/24
+  curl -L https://gitlab.com/agrumery/aGrUM/merge_requests/175.patch | patch -p1
 }
 
 build() {
