@@ -3,9 +3,9 @@
 
 pkgname=yash
 pkgver=2.48
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another SHell is a POSIX-compliant command line shell"
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 url="http://sourceforge.jp/projects/yash/"
 license=('GPL')
 depends=('ncurses')

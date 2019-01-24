@@ -1,10 +1,11 @@
 pkgbase = yash
 	pkgdesc = Yet Another SHell is a POSIX-compliant command line shell
 	pkgver = 2.48
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.jp/projects/yash/
 	install = yash.install
 	arch = x86_64
+	arch = armv7h
 	license = GPL
 	depends = ncurses
 	source = https://osdn.net/dl/yash/yash-2.48.tar.xz
