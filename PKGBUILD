@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=mts-utils
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
 pkgdesc='MPEG Transport Stream Utilities (tstools fork, includes tsplay)'
 arch=(x86_64)
