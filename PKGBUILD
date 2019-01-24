@@ -4,7 +4,7 @@
 
 _pkgname=arcanist
 pkgname=$_pkgname-git
-pkgver=6.r1194.g25c23819
+pkgver=2018.51
 pkgrel=1
 pkgdesc='The command-line frontend to Phabricator, commonly called arc'
 arch=('any')
@@ -14,12 +14,12 @@ depends=('libphutil-git' 'python')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git+https://secure.phabricator.com/diffusion/ARC/arcanist.git")
+source=(git://github.com/phacility/arcanist.git#branch=stable)
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --tags --always | sed 's/^conduit-//;s/-/.r/;s/-/./'
+  git log -1 --pretty=%B | sed 's/Week/./g' | tr -d -c 0-9.
 }
 
 package() {
