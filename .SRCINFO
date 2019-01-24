@@ -1,12 +1,13 @@
 pkgbase = magico
 	pkgdesc = A minimalist AUR Helper
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archlinux-br-dev/magico
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = jq
+	depends = jshon
 	source = magico::git+https://github.com/archlinux-br-dev/magico.git
 	md5sums = SKIP
 
