@@ -29,8 +29,7 @@ build() {
 package() {
   cd "${_pkgname/-/_}"
 
-  install -D libnv_vulkan_wrapper.so "$pkgdir"/usr/lib32/libnv_vulkan_wrapper.so
-	install -D libprimus_vk.so "$pkgdir"/usr/lib32/libprimus_vk.so
+  install -Dm644 libnv_vulkan_wrapper.so "$pkgdir"/usr/lib32/libnv_vulkan_wrapper.so
+  install -Dm644 libprimus_vk.so "$pkgdir"/usr/lib32/libprimus_vk.so
 }
 
-# vim:set ts=2 sw=2 et:
