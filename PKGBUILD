@@ -1,22 +1,39 @@
+# Maintainer: Chris Hobbs (RX14) <chris@rx14.co.uk>
+
 pkgname=mcstatus
-pkgver=git
+pkgver=2.2
 pkgrel=1
-pkgdesc="A Minecraft server status probing library"
-arch=('x86_64' 'i686')
-url="https://github.com/MoeLeak/mcstatus"
-license=('MIT')
-depends=('cmake' 'boost' 'clang')
-#install=mcstatus.install
-source=("$pkgname::git+https://github.com/MoeLeak/mcstatus.git")
-md5sums=('SKIP')
+pkgdesc="Provides an easy way to query Minecraft servers for any information they can expose."
+arch=(any)
+url="https://github.com/Dinnerbone/mcstatus"
+license=('Apache')
+depends=(python python-six python-click python-dnspython)
+makedepends=(python-setuptools)
+checkdepends=(python-mock python-nose)
+source=("https://github.com/Dinnerbone/mcstatus/archive/release-${pkgver}.tar.gz")
+sha256sums=('489b85ea4ff49efdd94d890b6408368556f63df9bc9f0a4d5dced13ece64e265')
+
+prepare() {
+  cd "${srcdir}/mcstatus-release-${pkgver}"
+
+  sed -i 's/dnspython3/dnspython/' setup.py
+}
+
 
 build() {
-    cd $pkgname
-    cmake .
-    make
+  cd "${srcdir}/mcstatus-release-${pkgver}"
+
+  python setup.py build
+}
+
+check() {
+  cd "${srcdir}/mcstatus-release-${pkgver}"
+
+  nosetests
 }
 
 package() {
-    cd $pkgname
-    make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/mcstatus-release-${pkgver}"
+
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
