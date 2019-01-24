@@ -1,7 +1,7 @@
 pkgbase = keybase-git-arm
 	pkgdesc = the Keybase Go client, filesystem, and GUI (built for arm)
-	pkgver = 1.0.27+15115.8169d666e
-	pkgrel = 0
+	pkgver = 3.0.0+29116.3552b8044a
+	pkgrel = 1
 	url = https://keybase.io
 	arch = armv7h
 	arch = aarch64
