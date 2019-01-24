@@ -1,7 +1,7 @@
 pkgname=pycharm-community-eap
-_buildver=183.5153.39
-_pkgver=2018.3.3
-_eap=
+_buildver=183.5429.27
+_pkgver=2018.3.4
+_eap=y
 pkgver=$_pkgver.$_buildver
 pkgrel=1
 epoch=2
