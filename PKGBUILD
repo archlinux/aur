@@ -4,14 +4,14 @@ pkgname=libupnp18
 _pkgname=libupnp
 pkgver=1.8.4
 _pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc='A separate installation of libupnp 1.8 branch'
 url='http://pupnp.sourceforge.net/'
 arch=('x86_64')
 license=('BSD')
 depends=('glibc')
 makedepends=('pkgconfig' 'make' 'gcc' 'binutils' 'autoconf' 'automake' 'fakeroot')
-conflicts=('libupnp>=1.8')
+provides=( libupnp=${pkgver} )
 source=(https://downloads.sourceforge.net/sourceforge/pupnp/${_pkgname}-${pkgver}.tar.bz2)
 sha256sums=('188d3f786d92fe14191f17634d2d87847eee7d2b568a5257ea23262fec9973d6')
 
