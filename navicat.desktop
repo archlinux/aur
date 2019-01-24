@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Navicat Premium(en)
+Comment=Database GUI
+Exec=/usr/bin/navicat
+Icon=/opt/navicat/Navicat/help/img/icon_navicat.png
+Terminal=0
+Type=Application
+Encoding=UTF-8
+Categories=Network;Application;
