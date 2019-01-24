@@ -11,8 +11,8 @@ arch=('any')
 license=('BSD')
 makedepends=('python-setuptools' 'python-flask' 'python-htmlmin'
              'python2-setuptools' 'python2-flask' 'python2-htmlmin')
-checkdepends=('python-pytest' 'python-pytest-cov'
-              'python2-pytest' 'python2-pytest-cov')
+checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-runner'
+              'python2-pytest' 'python2-pytest-cov' 'python2-pytest-runner')
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/hamidfzm/Flask-HTMLmin/archive/v${pkgver}.tar.gz)
 sha256sums=('3c4bd8a3d12f66e1ff59a7b72df8e6e6b81c562ea8dbb34577e577ea66bfffa2')
 sha512sums=('71aaa80fdae5084758b2ede071ba455dc2572a1cbc29e0bc92ceaecc410400759ce369fc9eca5d083eeafb30957c7641b441fefaa885c871df624e01a7a0f839')
