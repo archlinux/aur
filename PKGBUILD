@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=ironpython-git
-pkgver=2.7.9.r17.g3071442ad
+pkgver=2.7.9.r24.g5c594f32b
 pkgrel=1
 pkgdesc="Python implementation for the .NET framework"
 arch=("any")
@@ -12,7 +12,7 @@ options=('!strip' 'emptydirs' 'libtool')
 source=($pkgname::git+https://github.com/IronLanguages/ironpython2.git
         package.patch)
 sha256sums=('SKIP'
-            'dac312b21732555742dbb4bf1b7225e98ad2c1ee260d684b3f259369d32b3cd7')
+            'b57180aa2eacdf668e87dd605181867928b4363a3d9a1abf5186e8c21d6e560d')
 
 pkgver() {
   cd "$srcdir/$pkgname"

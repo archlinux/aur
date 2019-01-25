@@ -1,6 +1,6 @@
 pkgbase = ironpython-git
 	pkgdesc = Python implementation for the .NET framework
-	pkgver = 2.7.9.r17.g3071442ad
+	pkgver = 2.7.9.r24.g5c594f32b
 	pkgrel = 1
 	url = http://ironpython.net
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ironpython-git
 	source = ironpython-git::git+https://github.com/IronLanguages/ironpython2.git
 	source = package.patch
 	sha256sums = SKIP
-	sha256sums = dac312b21732555742dbb4bf1b7225e98ad2c1ee260d684b3f259369d32b3cd7
+	sha256sums = b57180aa2eacdf668e87dd605181867928b4363a3d9a1abf5186e8c21d6e560d
 
 pkgname = ironpython-git
 
