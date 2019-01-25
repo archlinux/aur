@@ -25,7 +25,7 @@ source=("git+https://git.torproject.org/tor.git#branch=${_branch}"
 
 sha256sums=('SKIP'
             '413bc43b5c51ff1672b426034598c1d47d5fb94474762cda06668cb28ca9250d'
-            '11c1aedb8cdc80529f6843bb8f0b38d2bc493d1957ea4f046d49676120e538dc'
+            '7f98569aefffead72e8712c1ad27de3fc2095575da003691b2513ca54042efbb'
             'ffef89a0eb10614e2350b4271ff83f92caa2301bfb97746b94dc7ab7f21d702b'
             '4282c8a4f1471b3be345b2024491af89f5eeaac071884f2a55988aef94a2054b')
 
