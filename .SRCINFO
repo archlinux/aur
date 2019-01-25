@@ -15,6 +15,7 @@ pkgbase = zrythm-git
 	depends = libsmf
 	depends = libdazzle
 	depends = breeze-icons
+	depends = libcyaml-git
 	provides = zrythm
 	conflicts = zrythm
 	source = zrythm::git+https://gitlab.com/alextee/zrythm.git
