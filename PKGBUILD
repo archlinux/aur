@@ -2,11 +2,11 @@
 
 _plug=mvtools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v19.3.g17af517
+pkgver=v20.0.g876dfb1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url="http://forum.doom9.org/showthread.php?t=171207"
+url="https://forum.doom9.org/showthread.php?t=171207"
 license=('GPL')
 depends=('vapoursynth'
          'fftw'
@@ -18,7 +18,7 @@ makedepends=('git'
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -27,18 +27,18 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+}
 
+build() {
   cd build
   arch-meson "../${_plug}" \
     --libdir /usr/lib/vapoursynth
 
-}
-
-build() {
-  ninja -C build
+  ninja
 }
 
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
+
   install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
