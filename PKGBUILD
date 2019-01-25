@@ -2,7 +2,7 @@
 # Maintainer: Fabio Loli <lolix@disroot.org>
 
 pkgname=flare-game-git
-pkgver=1.09.01.r1.g65747f39
+pkgver=1.09.01.r13.g8d02acb8a
 pkgrel=1
 pkgdesc="Fantasy action RPG using the FLARE engine - Git version"
 url="http://www.flarerpg.org/"
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/flare-game"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DDATADIR=share/flare
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DDATADIR=share/flare
     make
 }
 
