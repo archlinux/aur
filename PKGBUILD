@@ -10,7 +10,7 @@ pkgrel=3
 pkgdesc="X.Org Openchrome drivers"
 arch=(x86_64)
 license=('custom')
-url="http://www.freedesktop.org/wiki/Openchrome/"
+url="https://www.freedesktop.org/wiki/Openchrome/"
 depends=('libdrm' 'libxvmc' 'libsystemd')
 optdepends=('unichrome-dri')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'systemd')
