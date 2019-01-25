@@ -1,12 +1,13 @@
 pkgbase = djv
 	pkgdesc = Movie playback and image processing software for the film and computer animation industries
 	pkgver = 1.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://djv.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	makedepends = glm
 	makedepends = portaudio
 	makedepends = qt5-tools
 	depends = desktop-file-utils
