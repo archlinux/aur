@@ -1,15 +1,15 @@
 pkgbase = libemf
 	pkgdesc = Library implementation of ECMA-234 API for the generation of enhanced metafiles
-	pkgver = 1.0.9
-	pkgrel = 3
+	pkgver = 1.0.11
+	pkgrel = 1
 	url = http://libemf.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	depends = gcc-libs
-	source = https://sourceforge.net/projects/libemf/files/libemf/1.0.9/libemf-1.0.9.tar.gz
-	sha256sums = dcc1f7dc09597a7e20fa808fbef03f0c5cbdd99d65a4fddd981d7f1dd6e28b81
+	source = https://sourceforge.net/projects/libemf/files/libemf/1.0.11/libemf-1.0.11.tar.gz
+	sha256sums = 741a611ce1e9636b4f22e1cc4436b6e08c972b1464affa85b46ebd7d9441b6c4
 
 pkgname = libemf
 

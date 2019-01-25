@@ -2,15 +2,15 @@
 # Contributor: lily wilson <hotaru@thinkindifferent.net>
 
 pkgname=libemf
-pkgver=1.0.9
-pkgrel=3
+pkgver=1.0.11
+pkgrel=1
 pkgdesc='Library implementation of ECMA-234 API for the generation of enhanced metafiles'
 arch=('i686' 'x86_64')
 url='http://libemf.sourceforge.net/'
 license=('GPL' 'LGPL')
 depends=('gcc-libs')
 source=("https://sourceforge.net/projects/libemf/files/libemf/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('dcc1f7dc09597a7e20fa808fbef03f0c5cbdd99d65a4fddd981d7f1dd6e28b81')
+sha256sums=('741a611ce1e9636b4f22e1cc4436b6e08c972b1464affa85b46ebd7d9441b6c4')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -28,9 +28,7 @@ build() {
 check() {
     cd "${pkgname}-${pkgver}"
     
-    # the test 'docheck2' may randonly fail when using multiple jobs
-    # https://sourceforge.net/p/libemf/bugs/4/
-    make -j1 check
+    make check
 }
 
 package() {
