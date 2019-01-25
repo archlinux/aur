@@ -1,6 +1,6 @@
 # Maintainer: Logan Koester <logan@logankoester.com>
 pkgname=cljcv-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Produce a nicely formatted curriculum vitae or résumé in various formats."
 arch=('any')
@@ -25,12 +25,7 @@ validpgpkeys=()
 pkgver() {
   cd "$srcdir/$pkgname"
   # Use the tag of the last commit
-  git describe | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-gittag() {
-  cd "$srcdir/$pkgname"
-  git tag
+  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
