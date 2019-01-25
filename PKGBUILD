@@ -9,7 +9,7 @@ _pkgname=openblas
 pkgver=0.3.4
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.8.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -49,10 +49,10 @@ package(){
   make ${_config} DESTDIR="${pkgdir}" install
 
   # Install license
-  install -Dm644 LICENSE "${pkgdir}/usr/aarch64-linux-gnu/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/aarch64-linux-gnu/share/licenses/${pkgname}/LICENSE"
 
   # Symlink to provide cblas
-  cd "${pkgdir}/usr/aarch64-linux-gnu/usr/lib/"
+  cd "${pkgdir}/usr/aarch64-linux-gnu/lib/"
   # CBLAS
   ln -sf libopenblas.so libcblas.so
   ln -sf libopenblas.so libcblas.so.${_lapackver:0:1}
