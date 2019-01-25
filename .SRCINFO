@@ -1,6 +1,6 @@
 pkgbase = ruby-nokogiri
 	pkgdesc = HTML, XML, SAX, and Reader parser
-	pkgver = 1.8.4
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = http://nokogiri.org
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = ruby-nokogiri
 	depends = libxslt
 	depends = ruby
 	depends = ruby-mini_portile2
-	noextract = nokogiri-1.8.4.gem
+	noextract = nokogiri-1.10.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/nokogiri-1.8.4.gem
-	sha256sums = ecad8473fbaebaadd060eec15a872fb67c4bd7c6d64904ebbe15d40113ad36c1
+	source = https://rubygems.org/downloads/nokogiri-1.10.1.gem
+	sha256sums = 0405d84a87d7dbc057eb9a2d0fcef5795e23992db516b83d37b91f69d8a1f427
 
 pkgname = ruby-nokogiri
 
