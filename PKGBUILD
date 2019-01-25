@@ -2,7 +2,7 @@
 _pkgbasename=openmusic
 pkgname=${_pkgbasename}-bin
 pkgver=6.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A visual programming language designed for music composition"
 arch=("x86_64")
 url="http://repmus.ircam.fr/openmusic/"
@@ -17,7 +17,7 @@ conflicts=("${_pkgbasename}")
 options=(!strip)
 install="${_pkgbasename}.install"
 source=("http://forge.ircam.fr/p/OM/downloads/get/OM_${pkgver}.tar.bz2")
-sha256sums=("d37aceae008ed451f7de79ec41dac6f906260bd752dd10dab1131985fd3e5c51")
+sha256sums=("74b438a9b5536208afac4530d54b0ebaef65d08da7360496cd3ad9c9169189bb")
 
 package() {
 	cd "$srcdir/OM_${pkgver}"
