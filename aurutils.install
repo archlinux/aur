@@ -1,5 +1,5 @@
 post_upgrade() {
-    if (( $(vercmp '2.0.0-1' "$2") )); then
+    if (( $(vercmp '2.0.0-1' "$2") == 1 )); then
         cat >&2 <<-EOF
 As of 2.0.0, aurutils no longer supports repose. If you have repose installed,
 please rebuild your local repository using repo-add. See:
