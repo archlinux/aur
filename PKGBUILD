@@ -3,7 +3,7 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
-pkgver=56.2.6+ff4597172229
+pkgver=56.2.6+6a1ad121f0f1
 pkgrel=1
 pkgdesc="64-Bit optimized Firefox fork, no data collection, allows unsigned extensions"
 arch=('i686' 'x86_64')
