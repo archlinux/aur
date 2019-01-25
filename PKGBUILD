@@ -3,7 +3,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin-git
-pkgver=10.0.2.r311.g4658cab6a8
+pkgver=10.1.0.r57.ge0315b5695
 pkgrel=1
 pkgdesc='The Free Software Media Browser'
 arch=('i686' 'x86_64' 'armv6h')
@@ -13,7 +13,7 @@ depends=('ffmpeg' 'imagemagick' 'dotnet-sdk' 'sqlite')
 makedepends=('git')
 provides=('jellyfin')
 conflicts=('jellyfin')
-source=('git+https://github.com/jellyfin/jellyfin.git#branch=dev'
+source=('git+https://github.com/jellyfin/jellyfin.git'
         'git+https://github.com/jellyfin/jellyfin-web.git'
         'jellyfin.conf'
         'jellyfin.service'

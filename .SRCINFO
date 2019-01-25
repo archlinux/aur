@@ -1,6 +1,6 @@
 pkgbase = jellyfin-git
 	pkgdesc = The Free Software Media Browser
-	pkgver = 10.0.2.r311.g4658cab6a8
+	pkgver = 10.1.0.r57.ge0315b5695
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = jellyfin-git
 	provides = jellyfin
 	conflicts = jellyfin
 	backup = etc/conf.d/jellyfin
-	source = git+https://github.com/jellyfin/jellyfin.git#branch=dev
+	source = git+https://github.com/jellyfin/jellyfin.git
 	source = git+https://github.com/jellyfin/jellyfin-web.git
 	source = jellyfin.conf
 	source = jellyfin.service
