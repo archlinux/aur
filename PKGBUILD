@@ -3,7 +3,7 @@
 
 pkgname=flare-engine
 pkgver=1.09.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Free/Libre Action Roleplaying Engine"
 url="http://www.flarerpg.org/"
 license=(GPL3)

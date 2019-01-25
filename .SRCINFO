@@ -1,7 +1,7 @@
 pkgbase = flare-engine
 	pkgdesc = Free/Libre Action Roleplaying Engine
 	pkgver = 1.09.01
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.flarerpg.org/
 	arch = i686
 	arch = x86_64
