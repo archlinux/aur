@@ -9,7 +9,7 @@ _pkgname=openblas
 pkgver=0.3.4
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.8.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -22,12 +22,12 @@ options=(!emptydirs)
 source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
 sha256sums=('SKIP')
 
-_config="HOSTCC=gcc CC=aarch64-linux-gnu-gcc CROSS=1 TARGET=ARMV8 BINARY=64 \
-  USE_OPENMP=1 USE_THREAD=1 \
-  USE_COMPILER_TLS=0 \
-  NO_LAPACK=1 \
-  NO_LAPACKE=1 \
-  MAKE_NB_JOBS=2"
+_ncpus=$(eval "cat /proc/cpuinfo | grep MHz | wc -l")
+
+_config="BINARY=64 CC=aarch64-linux-gnu-gcc FC=aarch64-linux-gnu-gfortran HOSTCC=gcc TARGET=ARMV8 \
+  USE_OPENMP=1 USE_THREAD=1 USE_COMPILER_TLS=0 \
+  MAKE_NB_JOBS=${_ncpus} \
+  PREFIX=/usr/aarch64-linux-gnu "
 
 build(){
   cd "${srcdir}/${_PkgName}-${pkgver}"
@@ -46,7 +46,7 @@ check(){
 package(){
   cd "${srcdir}/${_PkgName}-${pkgver}"
 
-  make ${_config} PREFIX=/usr/aarch64-linux-gnu/ DESTDIR="${pkgdir}" install
+  make ${_config} DESTDIR="${pkgdir}" install
 
   # Install license
   install -Dm644 LICENSE "${pkgdir}/usr/aarch64-linux-gnu/usr/share/licenses/${pkgname}/LICENSE"
