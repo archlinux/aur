@@ -31,6 +31,8 @@ prepare() {
 build() {
     cd "${srcdir}/mypaint"
     python setup.py clean --all
+    # https://github.com/mypaint/mypaint/commit/57685af8dbd65719d7874bc501094bade85d94e7
+    python setup.py build_config
     python setup.py build
 }
 
