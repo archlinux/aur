@@ -3,18 +3,17 @@
 
 webappname=pocket
 pkgname=${webappname}-qdesktop
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Get pocket web-app based on qtws'
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('qtws-base')
 source=("$webappname.qtws" "$webappname.svg" "$webappname.desktop" "$webappname")
-md5sums=('d8680788badee8f5171773941caaf516'
+md5sums=('3adaae8407237c6aff731a6a8d1c6487'
          '3f96abae2159da1a336e1a586340f1a4'
-         'a30b4df5389d1e5e8c984173d780ed5c'
+         '56bc1a5efc94cfa1d07085c897024277'
          'b8e272f5aa2d74414dc840919f474758')
-
 
 package() {
     mkdir -p ${pkgdir}/usr/share/qtws-apps/$webappname
@@ -25,4 +24,3 @@ package() {
     install -Dm644 ${srcdir}/$webappname.svg ${pkgdir}/usr/share/pixmaps/$webappname-desktop.svg
     install -Dm755 ${srcdir}/$webappname ${pkgdir}/usr/bin/$webappname
 }
- 
