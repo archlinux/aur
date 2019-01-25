@@ -1,0 +1,16 @@
+pkgbase = ruby-backport
+	pkgdesc = A pure Ruby library for event-driven IO
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/castwide/backport
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = backport-0.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/backport-0.3.0.gem
+	sha256sums = 57ee72dbfad85caebd9bdecfecbed21b58da825510020b69cc3389fdf99e1378
+
+pkgname = ruby-backport
+
