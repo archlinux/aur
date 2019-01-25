@@ -6,11 +6,11 @@
 
 pkgname=wine-stable
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 
 source=(https://dl.winehq.org/wine/source/4.0/wine-$pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
-	wine-binfmt.conf)
+        wine-binfmt.conf)
 sha512sums=('7607fa7a3d5f7bcd3d8c4c9e7bb6e1987466110bbfc672782ebe57c6d9da348c58e76abf40b0a70c725dfd703163db6e194ee0e3db11a47b6b60e225163308dd'
             'SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
@@ -33,22 +33,23 @@ depends=(desktop-file-utils fontconfig freetype2 gettext glu lcms2
 makedepends=(alsa-lib fontforge giflib gnutls gst-plugins-base-libs
   libgl libldap libpng libpulse libxcomposite libxinerama libxmu
   libxslt libxxf86vm mesa mpg123 ncurses ocl-icd openal opencl-headers
-  samba v4l-utils vkd3d vulkan-headers vulkan-icd-loader
+  samba sdl2 v4l-utils vkd3d vulkan-headers vulkan-icd-loader
   lib32-alsa-lib lib32-giflib lib32-gnutls lib32-gst-plugins-base-libs
   lib32-libgl lib32-libldap lib32-libpng lib32-libpulse
   lib32-libxcomposite lib32-libxinerama lib32-libxmu lib32-libxslt
   lib32-libxxf86vm lib32-mesa lib32-mpg123 lib32-ncurses lib32-ocl-icd
-  lib32-openal lib32-v4l-utils lib32-vkd3d lib32-vulkan-icd-loader)
+  lib32-openal lib32-sdl2 lib32-v4l-utils lib32-vkd3d
+  lib32-vulkan-icd-loader)
 
 optdepends=(alsa-lib alsa-plugins cups dosbox giflib gnutls
   gst-plugins-base-libs libjpeg-turbo libldap libpng libpulse
   libxcomposite libxinerama libxslt mpg123 ncurses ocl-icd openal
-  samba v4l-utils vkd3d vulkan-icd-loader lib32-alsa-lib
+  samba sdl2 v4l-utils vkd3d vulkan-icd-loader lib32-alsa-lib
   lib32-alsa-plugins lib32-giflib lib32-gnutls
   lib32-gst-plugins-base-libs lib32-libjpeg-turbo lib32-libldap
   lib32-libpng lib32-libpulse lib32-libxcomposite lib32-libxinerama
   lib32-libxslt lib32-mpg123 lib32-ncurses lib32-ocl-icd lib32-openal
-  lib32-v4l-utils lib32-vkd3d lib32-vulkan-icd-loader)
+  lib32-sdl2 lib32-v4l-utils lib32-vkd3d lib32-vulkan-icd-loader)
 
 provides=("wine=$pkgver")
 conflicts=("wine")
