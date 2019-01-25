@@ -1,0 +1,13 @@
+pkgbase = python-mat4py
+	pkgdesc = Load and save data in the Matlab (TM) MAT-file format.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/nephics/mat4py
+	arch = x86_64
+	license = MIT
+	makedepends = python-pip
+	source = https://files.pythonhosted.org/packages/py2.py3/m/mat4py/mat4py-0.4.2-py2.py3-none-any.whl
+	sha256sums = debb03a4c054998fda303a3576ae624b7668e33168de95cf7a153645990f7d8d
+
+pkgname = python-mat4py
+
