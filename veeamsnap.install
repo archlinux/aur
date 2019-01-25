@@ -1,0 +1,23 @@
+post_install() {
+    echo "post install"
+    dkms install veeamsnap/${1%%-*}
+    echo "."
+}
+
+pre_upgrade() {
+    echo "pre update"
+    pre_remove ${2%%-*}
+    echo "."
+}
+
+post_upgrade() {
+    echo "port updrade"
+    post_install ${1%%-*}
+    echo "."
+}
+
+pre_remove() {
+    echo "pre remove"
+    dkms remove veeamsnap/${1%%-*} --all
+    echo "."
+}

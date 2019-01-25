@@ -1,0 +1,18 @@
+pkgbase = veeamsnap
+	pkgdesc = Veeam Agent for Linux kernel modules (DKMS)
+	pkgver = 3.0.0.865
+	pkgrel = 1
+	url = https://www.github.com/veeam/veeamsnap
+	install = veeamsnap.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	conflicts = veeamsnap
+	source = https://www.github.com/veeam/veeamsnap/archive/master.zip
+	source = dkms.conf
+	md5sums = 825d985806cd0796a84d14d41c024093
+	md5sums = c5ca0388f175e9ed8df5ebaaf0b917c2
+
+pkgname = veeamsnap
+
