@@ -1,7 +1,7 @@
 # Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
 pkgname=magico
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalist AUR Helper"
 arch=('x86_64')
 url="https://github.com/archlinux-br-dev/magico"
