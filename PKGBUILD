@@ -6,7 +6,7 @@
 
 pkgname=python2-gdl
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface for the GNU Data Language(GDL)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
@@ -16,6 +16,7 @@ makedepends=('cmake')
 options=('!makeflags')
 source=("http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}.tgz"
         'gdl-tirpc.patch'
+        'gdl-updates.patch'
 #       'gdl-python3.patch'
         'gdl.profile')
 md5sums=('451532f1263bbaa8745a4ca8978533c0'
@@ -27,7 +28,8 @@ prepare() {
     cd ${srcdir}/gdl-${pkgver}
 
     patch -p1 < ../gdl-tirpc.patch
-  # patch -Np1 -i "${srcdir}/gdl-python3.patch"
+    patch -p1 < ../gdl-updates.patch
+#   patch -Np1 -i "${srcdir}/gdl-python3.patch"
 }
 
 build() {
