@@ -55,18 +55,6 @@ index 2b2b141..d39a885 100644
  
  # Fetch edge releases before they reach the stable branch. No effect without auto_update.
  download_edge = false
-diff --git lib/system/linux/index.js lib/system/linux/index.js
-index c68f3c2..0d8216d 100644
---- lib/system/linux/index.js
-+++ lib/system/linux/index.js_new
-@@ -39,6 +39,6 @@ exports.process_running = function(process_name, callback){
- 
- // restarts NetworkManager so it reconnects
- exports.reconnect = function(callback){
--  var cmd = "service NetworkManager restart";
-+  var cmd = "systemctl restart NetworkManager.service";
-   exec(cmd, callback);
- };
 diff --git lib/conf/gui/linux/prey-config.py lib/conf/gui/linux/prey-config.py
 index 66549ef..a7f4730 100755
 --- lib/conf/gui/linux/prey-config.py
