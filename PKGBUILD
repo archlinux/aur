@@ -3,7 +3,7 @@
 _gemname=solargraph
 pkgname=ruby-solargraph
 pkgver=0.31.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Ruby language server"
 arch=("any")
 depends=(
@@ -13,7 +13,7 @@ depends=(
   ruby-coderay
   ruby-htmlentities
   ruby-jaro_winkler
-  ruby-kramdown
+  ruby-kramdown-1
   ruby-nokogiri
   ruby-mini_portile2
   ruby-parallel

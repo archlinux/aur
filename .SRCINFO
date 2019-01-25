@@ -1,7 +1,7 @@
 pkgbase = ruby-solargraph
 	pkgdesc = A Ruby language server
 	pkgver = 0.31.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://solargraph.org/
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = ruby-solargraph
 	depends = ruby-coderay
 	depends = ruby-htmlentities
 	depends = ruby-jaro_winkler
-	depends = ruby-kramdown
+	depends = ruby-kramdown-1
 	depends = ruby-nokogiri
 	depends = ruby-mini_portile2
 	depends = ruby-parallel
