@@ -1,0 +1,14 @@
+pkgbase = fish-xsession
+	pkgdesc = fish -l as xsession from your display manager
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	provides = fish-xsession
+	source = fish-xsession
+	source = fish.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = fish-xsession
+

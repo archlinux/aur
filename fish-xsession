@@ -1,0 +1,3 @@
+#!/bin/sh
+export FISH_XSESSION=1
+exec fish -l

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=fish
+Comment=run fish -l
+Exec=fish-xsession
+TryExec=fish-xsession
+Type=Application
