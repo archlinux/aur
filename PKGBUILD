@@ -3,14 +3,14 @@
 
 pkgname=fisher
 pkgver=3.2.6
-pkgrel=1
-pkgdesc="A blazing fast, modern plugin manager for fish"
+pkgrel=2
+pkgdesc="A package manager for the fish shell"
 arch=("any")
 url="https://github.com/jorgebucaran/fisher"
 license=("MIT")
 depends=("fish>=2.3.0" "curl" "git")
 makedepends=("git")
-conflicts=("fisherman" "fisherman-git" "fisher-git")
+conflicts=("fisherman-git" "fisher-git")
 install=fisher.install
 source=(
     "https://github.com/jorgebucaran/fisher/archive/${pkgver}.tar.gz"

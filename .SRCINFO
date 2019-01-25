@@ -1,7 +1,7 @@
 pkgbase = fisher
-	pkgdesc = A blazing fast, modern plugin manager for fish
+	pkgdesc = A package manager for the fish shell
 	pkgver = 3.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorgebucaran/fisher
 	install = fisher.install
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = fisher
 	depends = fish>=2.3.0
 	depends = curl
 	depends = git
-	conflicts = fisherman
 	conflicts = fisherman-git
 	conflicts = fisher-git
 	source = https://github.com/jorgebucaran/fisher/archive/3.2.6.tar.gz
