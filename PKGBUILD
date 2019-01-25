@@ -2,7 +2,7 @@
 pkgname=imgur-uploader-git
 pkgver=r31.225dba7
 pkgrel=3
-pkgdesc="A script that uploads an image to imgur and copies the image URL to the clipboard"
+pkgdesc='A script that uploads an image to imgur and copies the image URL to the clipboard'
 arch=('any')
 _gitname='Imgur-Uploader'
 url="https://github.com/tangphillip/${_gitname}"
@@ -15,12 +15,12 @@ source=("git+https://github.com/tangphillip/${_gitname}")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${_gitname}"
+    cd "${srcdir}/${_gitname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "$srcdir/${_gitname}"
+    cd "${srcdir}/${_gitname}"
     install -Dm 755 -t "${pkgdir}/usr/bin" imgur
     install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
