@@ -2,7 +2,7 @@
 
 _plug=eedi3cl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.1.gd2599ba
+pkgver=r4.1.gefcba5f
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ depends=('vapoursynth'
 makedepends=('git'
              'opencl-headers'
              'boost'
+             'meson'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}"
@@ -28,22 +29,19 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}"
-  ./autogen.sh
+  mkdir -p build
 }
 
 build() {
-  cd "${_plug}"
-  ./configure \
-    --prefix=/usr \
-    --libdir=/usr/lib/vapoursynth \
-    --enable-opencl
+  cd build
+  arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
 
-  make
+  ninja
 }
 
 package(){
-  cd "${_plug}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  DESTDIR="${pkgdir}" ninja -C build install
+
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
