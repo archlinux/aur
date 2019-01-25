@@ -1,6 +1,6 @@
 # Maintainer: Sascha Wunderlich <archlinux at saschawunderlich dot de>
 pkgname=prismmodelchecker-git
-pkgver=r3365.a8999396
+pkgver=r3619.06bba360
 pkgrel=1
 pkgdesc="PRISM is a probabilistic model checker, a tool for formal modelling and analysis of systems that exhibit random or probabilistic behaviour"
 arch=(i686 x86_64)
@@ -9,8 +9,8 @@ license=('GPL2')
 groups=()
 conflicts=('prismmodelchecker')
 provides=('prismmodelchecker')
-depends=(java-environment python)
-makedepends=()
+depends=(java-environment)
+makedepends=(git)
 source=("prismmodelchecker-git::git+https://github.com/prismmodelchecker/prism.git")
 md5sums=('SKIP')
 
