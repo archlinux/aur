@@ -1,12 +1,12 @@
-# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 # Maintainer: Marcel O'Neil <marcel@marceloneil.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: RunningDroid <runningdroid AT zoho.com>
 # Contributor: Sebastian Lindqvist <dunpin@gmail.com>
+# Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=3.3.4
+pkgver=3.3.5
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -47,7 +47,7 @@ optdepends=(
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver/.0}.tar.gz")
-sha256sums=('a29ae85744e40795b4a3b756893e62322078c6c0f87560e19f71442bc1d17321')
+sha256sums=('aa0500a133d93cb24612297b83c7227ee9a66028b2b4e92ea134c69fd9a81623')
 
 build() {
   cd "Electron-Cash-${pkgver/.0}"
