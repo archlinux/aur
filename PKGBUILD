@@ -10,7 +10,7 @@ license=('BSD')
 groups=()
 depends=(alsa-lib readline)
 source=("http://www.midish.org/$pkgname.tar.gz")
-md5sums=('39a704e0d927a1de0d30867850a7a07c')
+md5sums=('f79362a2d71de54ba9d996615b486f36')
 
 build() {
 	cd "$pkgname"

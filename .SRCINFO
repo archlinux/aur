@@ -9,7 +9,7 @@ pkgbase = midish
 	depends = alsa-lib
 	depends = readline
 	source = http://www.midish.org/midish.tar.gz
-	md5sums = 39a704e0d927a1de0d30867850a7a07c
+	md5sums = f79362a2d71de54ba9d996615b486f36
 
 pkgname = midish
 
