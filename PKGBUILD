@@ -2,14 +2,14 @@
 # Contributor: Philipp A. <flying-sheep@web.de>
 # Contributor: theSander <aur@sandervanbalen.be>
 pkgname=rambox-os-git
-pkgver=r1017.f345f80
+pkgver=r1020.92c1c48
 pkgrel=1
 pkgdesc="Free and Open Source messaging and emailing app that combines common web applications into one."
 arch=(i686 x86_64)
 url="https://github.com/TheGoddessInari/rambox"
 license=('GPL3')
 depends=(electron)
-makedepends=('git' 'desktop-file-utils' 'ruby' 'npm' 'sencha-cmd-6')
+makedepends=('jre8-openjdk' 'git' 'desktop-file-utils' 'ruby' 'npm' 'sencha-cmd-6')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "rambox" "rambox-bin")
 replaces=()
@@ -37,7 +37,7 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	npm install
-	npm run repack:linux64
+	env PATH="/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH" npm run repack:linux64
 }
 
 package() {
@@ -46,7 +46,6 @@ package() {
 
 	cp -r "$srcdir/${pkgname%-git}/dist/linux-unpacked" "$pkgdir/usr/lib/${pkgname%-git}"
 	
-	#install -Dm755 "$srcdir/${pkgname%-git}.js" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -Dm644 "$srcdir/${pkgname%-git}/resources/Icon.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 	ln -s "/usr/lib/${pkgname%-git}/rambox" "${pkgdir}/usr/bin/${pkgname%-git}"
 	desktop-file-install "$srcdir/${pkgname%-git}.desktop" --dir "$pkgdir/usr/share/applications/"
