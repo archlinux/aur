@@ -9,7 +9,7 @@ _pkgname=openblas
 pkgver=0.3.4
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.8.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -18,7 +18,7 @@ depends=('gcc-libs')
 makedepends=('perl')
 provides=('aarch64-linux-gnu-openblas' "aarch64-linux-gnu-cblas=${_lapackver}")
 conflicts=()
-options=(!emptydirs)
+options=(!emptydirs !strip)
 source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
 sha256sums=('SKIP')
 
