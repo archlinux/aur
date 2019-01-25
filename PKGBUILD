@@ -9,7 +9,7 @@ _pkgname=openblas
 pkgver=0.3.4
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.8.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -32,7 +32,7 @@ _config="BINARY=64 CC=aarch64-linux-gnu-gcc FC=aarch64-linux-gnu-gfortran HOSTCC
 build(){
   cd "${srcdir}/${_PkgName}-${pkgver}"
 
-  make ${_config} CFLAGS="-mtune=generic -I /usr/aarch64/include -L /usr/aarch64/lib -L /usr/aarch64/lib64" libs netlib shared static
+  make ${_config} CFLAGS="-mtune=generic -I /usr/aarch64/include -L /usr/aarch64/lib -L /usr/aarch64/lib64" libs netlib shared
 }
 
 check(){
