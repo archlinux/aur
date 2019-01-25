@@ -1,0 +1,17 @@
+pkgbase = cljcv-git
+	pkgdesc = Produce a nicely formatted curriculum vitae or résumé in various formats.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/logankoester/cljcv
+	arch = any
+	license = MIT
+	makedepends = clojure
+	depends = java-runtime
+	conflicts = cljcv
+	source = cljcv-git::git+https://github.com/logankoester/cljcv.git
+	source = cljcv.run
+	md5sums = SKIP
+	md5sums = 5cd733e466e2ff9e4ac23961cc64115d
+
+pkgname = cljcv-git
+
