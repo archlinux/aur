@@ -1,9 +1,27 @@
 {
         "name": "Pocket",
-        "scope": ["getpocket.com/"],
+        "scope": ["https?:\/\/getpocket\.com\/a\/(*)"],
         "plugins": [],
-        "home": "https://getpocket.com/a/queue/",
+        "home": "https://getpocket.com/a/queue/list",
         "icon": "/usr/share/pixmaps/pocket-desktop.svg",
         "saveSession": true,
-        "multimedia": true
+        "multimedia": true,
+        "permissions" : [],
+
+        "menu": [
+        	{
+        		"title": "My List",
+        		"action": "https://getpocket.com/a/queue/list"
+        	},
+
+        	{
+        		"title": "Favorites",
+        		"action": "https://getpocket.com/a/favorites/list/"
+        	},
+
+        	{
+        		"title": "Archive",
+        		"action": "https://getpocket.com/a/archive/list/"
+        	}
+        ]
 }
