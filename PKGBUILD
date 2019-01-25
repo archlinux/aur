@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname=gxi-git
-pkgver=r171.ed1d803
+pkgver=r175.f4aa05a
 pkgrel=1
 pkgdesc="GTK frontend, written in Rust, for the xi editor."
 arch=("x86_64")

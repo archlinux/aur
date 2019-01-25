@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+gxi-git
+pkg
+src
