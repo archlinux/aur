@@ -4,15 +4,15 @@
 _branch=master
 
 pkgname=fisher-git
-pkgver=3.2.5.r0.g6401d18
-pkgrel=2
-pkgdesc="A blazing fast, modern plugin manager for fish"
+pkgver=3.2.6.r1.gae878a8
+pkgrel=1
+pkgdesc="A package manager for the fish shell"
 arch=("any")
 url="https://github.com/jorgebucaran/fisher"
 license=("MIT")
 depends=("fish>=2.3.0" "curl" "git")
 makedepends=("git")
-conflicts=("fisherman" "fisherman-git" "fisher")
+conflicts=("fisherman-git" "fisher")
 install=fisher-git.install
 source=(
     "git+https://github.com/jorgebucaran/fisher.git#branch=${_branch}"
