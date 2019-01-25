@@ -1,18 +1,18 @@
-# Maintainer: Miguel de Val-Borro <miguel@archlinux.net>
+# Maintainer: Jan Kohnert <bughunter at jan-kohnert.de>
+# Contributor: Miguel de Val-Borro <miguel@archlinux.net>
 # Contributor: James Tappin <jtappinatgmaildotcom>
 # Contributor: Orlando Garcia Feal <rodland at gmail dot com>
-# Contributor: Jan Kohnert <kohni.jk at gmail dot com>
 
 pkgname=gnudatalanguage
 pkgver=0.9.8
-pkgrel=4
+pkgrel=5
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
 license=('GPL')
 depends=('python2'
          'python2-numpy'
-         'plplot'
+         'plplot510'
          'gsl'
          'readline'
          'hdf4'
@@ -22,7 +22,7 @@ depends=('python2'
          'wxgtk'
          'fftw'
          'pslib'
-         'grib_api'
+         'eccodes'
          'udunits'
          'eigen3'
          'libtirpc'
@@ -31,17 +31,20 @@ makedepends=('cmake')
 options=('!makeflags')
 source=("http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}.tgz"
         'gdl-tirpc.patch'
+        'gdl-updates.patch'
 #       'gdl-python3.patch'
         'gdl.profile')
-md5sums=('451532f1263bbaa8745a4ca8978533c0'
-         'cad6430a812e906ee7f1e15b4589dcac'
-#        '9f85693d9fc9e838cba1fe03ae45f7cb'
-         '40aa5fd8278cd8e80425c62a577563cc')
+sha256sums=('86d3aacd1de3994755dc917c732ee3360e4e7e4f16156f1eea47de048d138281'
+            '905d6b2d464e136a2c7d5fccbede8839ad7c277c417e9dd6cd8d82795fd7e686'
+            '56774a6bb7ee6e84412f17b5479a31036ac73991d438864aef9f1543d9ed420e'
+#           'eacacc47fae91e418115bb0845ab585d819151d63bd7f99b43374e72a9cefd0c'
+            '8df4d0676ffcece07a6884c2836523cdda0bd7668b9491a96ef816bb993e6a2b')
 
 prepare() {
     cd ${srcdir}/gdl-${pkgver}
 
     patch -p1 < ../gdl-tirpc.patch
+    patch -p1 < ../gdl-updates.patch
 #   patch -Np1 -i "${srcdir}/gdl-python3.patch"
 }
 

@@ -1,0 +1,198 @@
+diff -U 3 -dHrN -x build -x gdl-0.9.8.kdev4 -x launchtest.c -- gdl-0.9.8_old/CMakeModules/FindGrib.cmake gdl-0.9.8/CMakeModules/FindGrib.cmake
+--- gdl-0.9.8_old/CMakeModules/FindGrib.cmake	2018-03-26 11:57:27.000000000 +0200
++++ gdl-0.9.8/CMakeModules/FindGrib.cmake	2019-01-25 00:23:20.555415966 +0100
+@@ -9,7 +9,7 @@
+ #
+ 
+ 
+-find_library(GRIB_LIBRARIES NAMES grib_api)
++find_library(GRIB_LIBRARIES NAMES eccodes grib_api)
+ find_path(GRIB_INCLUDE_DIR NAMES grib_api.h)
+ include(FindPackageHandleStandardArgs)
+ # since there's no grib_api.pc let's check if this installation of grib required jasper and jpeg
+diff -U 3 -dHrN -x build -x gdl-0.9.8.kdev4 -x launchtest.c -- gdl-0.9.8_old/src/basic_fun.cpp gdl-0.9.8/src/basic_fun.cpp
+--- gdl-0.9.8_old/src/basic_fun.cpp	2018-03-26 11:57:27.000000000 +0200
++++ gdl-0.9.8/src/basic_fun.cpp	2019-01-16 00:26:01.294919440 +0100
+@@ -4419,6 +4419,7 @@
+         }
+       }
+     }
++    return NULL; //pacifies dumm compilers.
+   }
+ // uses MergeSort
+   // 2 parts in the code: without "width" or with "width" (limited to 1D and 2D)
+@@ -6110,8 +6111,8 @@
+   }
+   
+   BaseGDL* ishft_fun(EnvT* e) {
+-    Guard<BaseGDL>ga;
+-    Guard<BaseGDL>gb;
++    Guard<BaseGDL>ga = NULL;
++    Guard<BaseGDL>gb = NULL;
+     
+     DType typ = (e->GetParDefined(0))->Type();
+     //types are norally correct, so do not loose time looking for wrong types
+@@ -6514,7 +6515,7 @@
+   }
+ 
+   BaseGDL* obj_isa(EnvT* e) {
+-    DString className;
++    DString className = NULL;
+     e->AssureScalarPar<DStringGDL>(1, className);
+     className = StrUpCase(className);
+ 
+@@ -8327,6 +8328,7 @@
+ 	  } 
+       }
+     e->Throw("Expecting string or byte array as a first parameter");
++    return NULL; //pacify dumb compilers
+   }
+ 
+   BaseGDL* get_drive_list(EnvT* e)
+@@ -8363,8 +8365,8 @@
+ 
+     if (debug) cout << "actIx : " << actIx << endl;
+ 
+-    string tmp, filename;
+-    int lineNumber;
++    string tmp = NULL, filename = NULL;
++    int lineNumber = 0;
+ 
+     if (!structureKW) {
+ 
+diff -U 3 -dHrN -x build -x gdl-0.9.8.kdev4 -x launchtest.c -- gdl-0.9.8_old/src/basic_pro_jmg.cpp gdl-0.9.8/src/basic_pro_jmg.cpp
+--- gdl-0.9.8_old/src/basic_pro_jmg.cpp	2018-03-26 11:57:27.000000000 +0200
++++ gdl-0.9.8/src/basic_pro_jmg.cpp	2019-01-13 23:08:52.613701009 +0100
+@@ -294,7 +294,7 @@
+   
+   BaseGDL* call_external( EnvT* e)
+   {
+-    DString image, entry;
++    DString image = NULL, entry = NULL;
+     static std::string s;
+     SizeT myAlign      = defaultAlign;
+     DType myReturnType = GDL_UNDEF;
+diff -U 3 -dHrN -x build -x gdl-0.9.8.kdev4 -x launchtest.c -- gdl-0.9.8_old/src/graphicsdevice.hpp gdl-0.9.8/src/graphicsdevice.hpp
+--- gdl-0.9.8_old/src/graphicsdevice.hpp	2018-03-26 11:57:27.000000000 +0200
++++ gdl-0.9.8/src/graphicsdevice.hpp	2019-01-10 08:51:11.647970146 +0100
+@@ -220,8 +220,8 @@
+   virtual void MaxXYSize(DLong *xsize, DLong *ysize) {
+ 							*xsize=1200, *ysize=800; return;}
+   virtual DLong GetDecomposed()                       { return -1;}
+-  virtual BaseGDL* GetFontnames()                     { ThrowGDLException("DEVICE: Keyword GET_FONTNAMES not allowed for call to: DEVICE" );}//{return NULL;}
+-  virtual DLong GetFontnum()                          { ThrowGDLException("DEVICE: Keyword GET_FONTNUM not allowed for call to: DEVICE" );}//{return -1;}
++  virtual BaseGDL* GetFontnames()                     { ThrowGDLException("DEVICE: Keyword GET_FONTNAMES not allowed for call to: DEVICE" ); return NULL;}
++  virtual DLong GetFontnum()                          { ThrowGDLException("DEVICE: Keyword GET_FONTNUM not allowed for call to: DEVICE" ); return -1;}
+   virtual bool SetFont(DString f)                 {static int warning_sent=1; if (warning_sent) {Warning("SET_FONT not active for this device (FIXME)."); warning_sent=0;} return true;}
+   virtual DString GetCurrentFont()                 {return NULL;}
+   virtual DLong GetGraphicsFunction()                 { return -1;}
+@@ -360,8 +360,8 @@
+   bool UnsetFocus();
+   bool Decomposed(bool value);
+   DLong GetDecomposed();
+-  BaseGDL* GetFontnames(){ ThrowGDLException("DEVICE: Keyword GET_FONTNAMES not allowed for call to: DEVICE" );}//{return NULL;}
+-  DLong GetFontnum(){ ThrowGDLException("DEVICE: Keyword GET_FONTNUM not allowed for call to: DEVICE" );}//{return -1;}
++  BaseGDL* GetFontnames(){ ThrowGDLException("DEVICE: Keyword GET_FONTNAMES not allowed for call to: DEVICE" );return NULL;}
++  DLong GetFontnum(){ ThrowGDLException("DEVICE: Keyword GET_FONTNUM not allowed for call to: DEVICE" );return -1;}
+   bool SetFont(DString f) {fontname=f; return true;}
+   DString GetCurrentFont() {return fontname;}
+   bool SetBackingStore(int value);
+diff -U 3 -dHrN -x build -x gdl-0.9.8.kdev4 -x launchtest.c -- gdl-0.9.8_old/src/gzstream.hpp gdl-0.9.8/src/gzstream.hpp
+--- gdl-0.9.8_old/src/gzstream.hpp	2018-03-26 11:57:27.000000000 +0200
++++ gdl-0.9.8/src/gzstream.hpp	2019-01-10 00:44:12.119496743 +0100
+@@ -75,9 +75,9 @@
+     std::streampos pubseekoff(std::streamoff off, std::ios_base::seekdir way, std::ios_base::openmode which=std::ios_base::in|std::ios_base::out);
+     //hacks for not being lost with input gzipped streams
+     std::streampos getPosition(){return position;}
+-    std::streampos setPosition(long pos){position=pos;} 
+-    std::streampos incrementPosition(long pos=1){position+=pos;}
+-    std::streampos decrementPosition(long pos=1){position-=pos;}
++    void setPosition(long pos){position=pos;} 
++    void incrementPosition(long pos=1){position+=pos;}
++    void decrementPosition(long pos=1){position-=pos;}
+ };
+ 
+ class gzstreambase : virtual public std::ios {
+diff -U 3 -dHrN -x build -x gdl-0.9.8.kdev4 -x launchtest.c -- gdl-0.9.8_old/src/hdf_fun.cpp gdl-0.9.8/src/hdf_fun.cpp
+--- gdl-0.9.8_old/src/hdf_fun.cpp	2018-03-26 11:57:27.000000000 +0200
++++ gdl-0.9.8/src/hdf_fun.cpp	2019-01-13 17:39:48.271789911 +0100
+@@ -102,10 +102,8 @@
+ 
+     static int readIx=e->KeywordIx("READ");
+     static int writeIx=e->KeywordIx("WRITE");
+-    if (e->KeywordSet( readIx ))
+-      return new DLongGDL( Vattach(hdf_id, vg_ref, "r"));
+-    else if (e->KeywordSet( writeIx ))
+-      return new DLongGDL( Vattach(hdf_id, vg_ref, "w"));
++    if (e->KeywordSet( readIx )) return new DLongGDL( Vattach(hdf_id, vg_ref, "r"));
++    return new DLongGDL( Vattach(hdf_id, vg_ref, "w")); //other cases.
+   }
+ 
+ 
+diff -U 3 -dHrN -x build -x gdl-0.9.8.kdev4 -x launchtest.c -- gdl-0.9.8_old/src/hdf_pro.cpp gdl-0.9.8/src/hdf_pro.cpp
+--- gdl-0.9.8_old/src/hdf_pro.cpp	2018-03-26 11:57:27.000000000 +0200
++++ gdl-0.9.8/src/hdf_pro.cpp	2019-01-13 17:44:17.257946042 +0100
+@@ -34,7 +34,7 @@
+   using namespace std;
+ 
+   template< typename T>
+-  BaseGDL* hdf_sd_getdata_template( EnvT* e, dimension dim, int32 sds_id,
++  void hdf_sd_getdata_template( EnvT* e, dimension dim, int32 sds_id,
+ 				    int32 start[], int32 edges[], int32 stride[],
+ 				    DLongGDL* strideKW)
+   {
+@@ -622,7 +622,7 @@
+   }
+ 
+   template< typename T>
+-  BaseGDL* hdf_sd_getdscl_template(EnvT* e, DLong dim_size, int32 dim_id)
++  void hdf_sd_getdscl_template(EnvT* e, DLong dim_size, int32 dim_id)
+   {
+     T* data = new T(dimension(dim_size), BaseGDL::NOZERO);
+     SDgetdimscale(dim_id, data->DataAddr());
+diff -U 3 -dHrN -x build -x gdl-0.9.8.kdev4 -x launchtest.c -- gdl-0.9.8_old/src/math_fun_ng.cpp gdl-0.9.8/src/math_fun_ng.cpp
+--- gdl-0.9.8_old/src/math_fun_ng.cpp	2018-03-26 11:57:27.000000000 +0200
++++ gdl-0.9.8/src/math_fun_ng.cpp	2019-01-13 23:20:22.931809398 +0100
+@@ -292,7 +292,7 @@
+     //dym=static_cast<DDoubleGDL*>(dymO);
+     //dyt=static_cast<DDoubleGDL*>(dytO);
+     //---------------------------- Init Call function -------------------------------------//
+-    DString RK_Diff;
++    DString RK_Diff = NULL;
+     e->AssureScalarPar<DStringGDL>( 4, RK_Diff);	
+ 
+     // this is a function name -> convert to UPPERCASE
+diff -U 3 -dHrN -x build -x gdl-0.9.8.kdev4 -x launchtest.c -- gdl-0.9.8_old/src/plotting_convert_coord.cpp gdl-0.9.8/src/plotting_convert_coord.cpp
+--- gdl-0.9.8_old/src/plotting_convert_coord.cpp	2019-01-25 00:58:41.005863238 +0100
++++ gdl-0.9.8/src/plotting_convert_coord.cpp	2019-01-25 00:58:32.525730522 +0100
+@@ -222,7 +222,7 @@
+   BaseGDL* convert_coord( EnvT* e)
+   {
+     DDoubleGDL* xVal, *yVal, *zVal;
+-    Guard<DDoubleGDL> xval_guard, yval_guard, zval_guard;
++    Guard<DDoubleGDL> xval_guard = NULL, yval_guard = NULL, zval_guard = NULL;
+     SizeT xEl, yEl, zEl, minEl, xDim, yDim, zDim;
+ 
+     //behaviour: 1 argument: needs to be [2,*] or [3,*] else 2 args: X,vector, Y vector 1 (z=vector zero). else 3 args, 3 vectors.
+diff -U 3 -dHrN -x build -x gdl-0.9.8.kdev4 -x launchtest.c -- gdl-0.9.8_old/src/saverestore.cpp gdl-0.9.8/src/saverestore.cpp
+--- gdl-0.9.8_old/src/saverestore.cpp	2018-03-26 11:57:27.000000000 +0200
++++ gdl-0.9.8/src/saverestore.cpp	2019-01-13 18:31:01.242699802 +0100
+@@ -164,6 +164,7 @@
+   
+   uint32_t writeEnd(XDR *xdrs) {
+     uint32_t cur=writeNewRecordHeader(xdrs, 6);
++    return cur;
+   }
+ 
+   int getVersion(XDR* xdrs) {
+diff -U 3 -dHrN -x build -x gdl-0.9.8.kdev4 -x launchtest.c -- gdl-0.9.8_old/src/widget.cpp gdl-0.9.8/src/widget.cpp
+--- gdl-0.9.8_old/src/widget.cpp	2019-01-25 01:00:25.137407512 +0100
++++ gdl-0.9.8/src/widget.cpp	2019-01-25 01:12:58.808672141 +0100
+@@ -45,6 +45,7 @@
+   if (the_units==0) return wxRealPoint(1,1);
+   if (the_units==1) return wxRealPoint(sx*25.4,sy*25.4);
+   if (the_units==2) return wxRealPoint(sx*10.0,sy*10.0);
++  return wxRealPoint(0,0); //never reached -- pacifier.
+ }
+ 
+ void GDLWidget::ChangeUnitConversionFactor( EnvT* e)
