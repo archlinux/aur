@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=troff-git
-pkgver=r78.593565b
+pkgver=r80.9fe4661
 pkgrel=1
 epoch=
 pkgdesc="A port of Plan9 troff tools to Linux, contains troff, tr2ps (dpost), eqn, tbl, pic, and grap."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://repo.or.cz/w/troff.git"
 license=('Lucent Public License' 'custom')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
@@ -29,7 +29,7 @@ pkgver() {
 
 ## Choose prefix:
 #prefix="/usr"
-prefix="/usr/plan9"
+prefix="/usr/troff"
 #prefix="/opt/$pkgname"
 
 libdir="lib/troff"
