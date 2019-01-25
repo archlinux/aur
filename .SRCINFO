@@ -1,0 +1,15 @@
+pkgbase = python-google-cloud-core
+	pkgdesc = Google Cloud API client core library
+	pkgver = 0.29.1
+	pkgrel = 1
+	url = https://pypi.org/project/google-cloud-core/
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-google-api-core>=1.0.0
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/8f/79/aba910c76b12c13e31be779bb580556757b47ee331efc10e30c4785a2156/google-cloud-core-0.29.1.tar.gz
+	sha256sums = d85b1aaaf3bad9415ad1d8ee5eadce96d7007a82f13ce0a0629a003a11e83f29
+
+pkgname = python-google-cloud-core
+
