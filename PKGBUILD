@@ -2,7 +2,7 @@
 
 _plug=bm3d
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r6.0.gc955d0a
+pkgver=r8.0.g7b3d8dd
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -11,28 +11,33 @@ license=('MIT')
 depends=('vapoursynth'
          'fftw'
          )
-makedepends=('git')
+makedepends=('git'
+             'meson'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-BM3D.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
 
+prepare() {
+  mkdir -p build
+}
+
 build() {
-  cd "${_plug}"
-  ./configure \
-    --install="${pkgdir}/usr/lib/vapoursynth" \
-    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-    --extra-ldflags="${LDFLAGS}"
-  make
+  cd build
+  arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
+
+  ninja
 }
 
 package(){
-  cd "${_plug}"
-  make install
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  DESTDIR="${pkgdir}" ninja -C build install
+
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
