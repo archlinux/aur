@@ -7,6 +7,8 @@ Requires=libvirtd.service
 [Service]
 Type=simple
 ExecStart=/usr/bin/momd -c /etc/mom/mom.conf -r /etc/mom/%i.rules
+Restart=always
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
