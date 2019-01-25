@@ -1,12 +1,12 @@
 pkgbase = spectrum2
 	pkgdesc = an open source instant messaging transport
-	pkgver = 2.0.9
-	pkgrel = 3
+	pkgver = 2.0.10
+	pkgrel = 1
 	url = http://spectrum.im
 	arch = any
 	license = GPL
 	makedepends = protobuf
-	makedepends = swiften>=3
+	makedepends = swiften>=4
 	makedepends = libpqxx
 	makedepends = libpurple
 	makedepends = avahi
@@ -24,7 +24,6 @@ pkgbase = spectrum2
 	makedepends = libev
 	makedepends = dbus-glib
 	makedepends = curl
-	makedepends = qt4
 	makedepends = gconf
 	depends = curl
 	depends = log4cxx
@@ -34,17 +33,14 @@ pkgbase = spectrum2
 	optdepends = libpqxx: PostgreSQL support
 	optdepends = libmariadbclient: MariaDB support
 	optdepends = libcommuni: IRC backend support
-	optdepends = qt4: IRC backend support
 	optdepends = protobuf: IRC backend support
 	optdepends = libpurple: LibPurple backend support
 	optdepends = gconf: LibPurple backend support
 	optdepends = libev: LibPurple backend support - libev eventloop
-	source = https://github.com/hanzz/spectrum2/archive/2.0.9.tar.gz
+	source = https://github.com/SpectrumIM//spectrum2/archive/2.0.10.tar.gz
 	source = spectrum2.service
-	source = boost.patch
-	sha256sums = e536a65ef86aafdc6d87f3c6b5bce919a67054dd01f757a2dbc82acbbdd0fa87
+	sha256sums = 92cf8754b03e9b085190c76ab2f5a4d938319c80ef25f064981598a240e77ea8
 	sha256sums = 8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1
-	sha256sums = e73973fdc07b448170c1ce7d252af900fd8c68defe67f0876693d2ea8b4ba97c
 
 pkgname = spectrum2
 
