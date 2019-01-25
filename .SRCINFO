@@ -1,0 +1,22 @@
+pkgbase = python-pypinfo
+	pkgdesc = View PyPI download statistics with ease.
+	pkgver = 15.0.0
+	pkgrel = 1
+	url = https://github.com/ofek/pypinfo
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python>=3.5
+	depends = python-appdirs
+	depends = python-binary
+	depends = python-click
+	depends = python-google-cloud-bigquery>=0.29.0
+	depends = python-tinydb
+	depends = python-tinyrecord
+	options = !emptydirs
+	source = https://github.com/ofek/pypinfo/archive/15.0.0.tar.gz
+	sha256sums = 64de011de2e8fd61f57a555124b6b462f595cd0c08a239d009e397a1525d1ac4
+
+pkgname = python-pypinfo
+
