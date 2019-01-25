@@ -2,7 +2,7 @@
 
 _pkgname=writefreely
 pkgname=writefreely-git
-pkgver=v0.7.1_7_gcb1bd37f64ab
+pkgver=v0.8.0_0_ge682824be51e
 pkgrel=1
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
