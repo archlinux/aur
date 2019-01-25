@@ -19,7 +19,7 @@ makedepends=('git'
              'ffms2'
              )
 source=('git+https://github.com/avxsynth/avxsynth.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd avxsynth
@@ -28,6 +28,9 @@ pkgver() {
 
 prepare() {
   cd avxsynth
+
+  sed -i 's|(pbyA \&\& pbyR \&\& pbyG \&\& pbyB == false)|(!(pbyA \&\& pbyR \&\& pbyG \&\& pbyB))|' avxsynth/builtinfunctions/src/filters/convolution.cpp
+
   autoreconf -if
 }
 
@@ -37,6 +40,7 @@ build() {
     --prefix=/usr \
     --enable-silent-rules \
     --disable-ffms2
+
   make
 }
 
