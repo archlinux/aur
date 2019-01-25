@@ -13,7 +13,8 @@ pkgbase = zrythm
 	depends = libsndfile
 	depends = libsmf
 	depends = libdazzle
-	source = https://gitlab.com/alextee/zrythm/-/archive/master/zrythm-master.tar.gz
+	depends = libcyaml-git
+	source = https://git.zrythm.org/alextee/zrythm/-/archive/master/zrythm-master.tar.gz
 	md5sums = SKIP
 
 pkgname = zrythm
