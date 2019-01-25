@@ -1,14 +1,14 @@
 pkgbase = bwping
 	pkgdesc = bandwidth measurement tool over icmp
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 1
 	url = http://bwping.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	license = BSD
-	source = http://downloads.sourceforge.net/project/bwping/bwping/1.9/bwping-1.9.tar.gz
-	sha256sums = 3827f9256e9da5c22c62530d800438f0111986a8f1fad84c7bdb924d630f0090
+	source = http://downloads.sourceforge.net/project/bwping/bwping/1.10/bwping-1.10.tar.gz
+	sha256sums = 2953e29501ec17684fd5b564bc0f8474b116676d79bb903019203af3a1e8eb25
 
 pkgname = bwping
 
