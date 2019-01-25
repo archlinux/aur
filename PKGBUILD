@@ -1,8 +1,8 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=writefreely
-pkgver=0.7.1
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
@@ -20,21 +20,18 @@ source=(writefreely-sysusers.conf
         writefreely.service
         config.ini
         64.patch
-        69.patch
         "https://github.com/writeas/writefreely/archive/v${pkgver}.tar.gz")
 sha256sums=('6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10'
             '60d4b49872523a2aed3e0e6a55513dfefe5ae6cbec43f2fcc65db894fb3bd2a3'
             'e357b687bd0eab95996711276216b6f2dc534ba9214ae094172d6d7a6b1fdae5'
             '009c083488511d92b489337f7feb8bd17631a104907959d21b1f9b5df3ce0a70'
-            '3a8adb0c6c559801e5ffcea89c06a787fdff5e8d0b7ffd4d5ff4261f168912fa'
-            'e9700e751d7d2a71a19ed9313be93247e4f865e193de5b3d3d9d81bea2148be4')
+            '6564a2c9e9646c53882ef55834c6cc964e654988fa7efce41072ee0f62bebed4')
 
 prepare() {
   export GO111MODULE=on
   cd "${srcdir}/${pkgname}-${pkgver}/"
 
   patch -p1 <../64.patch
-  patch -p1 <../69.patch
 
   rm -rf go.mod
   go mod init github.com/writeas/writefreely
