@@ -15,7 +15,7 @@ sha1sums=('f221e5c4a71c72a01694cf3407082f1d8066d9fb')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DBINDIR=bin -DDATADIR=share/flare
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DBINDIR=bin -DDATADIR=share/flare
 	make
 }
 
