@@ -3,10 +3,15 @@ Description=Anonymizing overlay network for TCP
 After=syslog.target network.target nss-lookup.target
 
 [Service]
-Type=forking
+Type=notify
+NotifyAccess=all
+ExecStartPre=/usr/bin/tor -f /etc/tor/torrc --verify-config
 ExecStart=/usr/bin/tor -f /etc/tor/torrc
-ExecReload=/bin/kill -HUP $MAINPID
+ExecReload=/bin/kill -HUP ${MAINPID}
 KillSignal=SIGINT
+TimeoutSec=60
+Restart=on-failure
+WatchdogSec=1m
 LimitNOFILE=32768
 
 # Hardening
