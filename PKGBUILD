@@ -1,4 +1,5 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: Ivan Semkin (ivan at semkin dot ru)
 # Contributor: Martin Weinelt <hexa@darmstadt.ccc.de>
  
 appname=Quaternion
@@ -6,8 +7,8 @@ _pkgname=quaternion
 pkgname=quaternion-git
 libname=libQMatrixClient
 _libname=libqmatrixclient
-pkgver=0.0.9.3.r23.fe88819
-_libqmatrixclient_pkgver=0.4.0
+pkgver=0.0.9.3.r159.59d41e2
+_libqmatrixclient_pkgver=0.5.0
 pkgrel=1
 pkgdesc='Qt5-based IM client for the Matrix protocol'
 url='https://matrix.org/docs/projects/client/quaternion.html'
@@ -59,8 +60,8 @@ package() {
 
   # The lib
   mkdir ${pkgdir}/usr/lib
-  mv build_dir/lib/${libname}.so.0.4.0 ${pkgdir}/usr/lib/
-  ln -s /usr/lib/${libname}.so.0.4.0 ${pkgdir}/usr/lib/${libname}.so.0
-  ln -s /usr/lib/${libname}.so.0.4.0 ${pkgdir}/usr/lib/${libname}.so
+  mv build_dir/lib/${libname}.so.0.5.0 ${pkgdir}/usr/lib/
+  ln -s /usr/lib/${libname}.so.0.5.0 ${pkgdir}/usr/lib/${libname}.so.0
+  ln -s /usr/lib/${libname}.so.0.5.0 ${pkgdir}/usr/lib/${libname}.so
 }
 # vim:set ts=2 sw=2 et:
