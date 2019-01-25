@@ -1,0 +1,20 @@
+pkgbase = drawing-git
+	pkgdesc = Drawing application for the GNOME desktop
+	pkgver = r102.c81c3de
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Tweaks
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = python
+	depends = gtk3
+	depends = python
+	provides = drawing
+	provides = com.github.maoschanz.Drawing
+	conflicts = drawing
+	source = git+https://github.com/maoschanz/drawing.git
+	sha256sums = SKIP
+
+pkgname = drawing-git
+
