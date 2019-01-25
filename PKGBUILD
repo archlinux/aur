@@ -2,9 +2,9 @@
 pkgname=abchr
 pkgver=0.5b
 pkgrel=3
-pkgdesc="Tool to do ABC/HR or ABX blind tests on audio files"
+pkgdesc='Tool to do ABC/HR or ABX blind tests on audio files'
 arch=('any')
-url="http://www.rarewares.org/others.php#java-abc-hr"
+url='http://www.rarewares.org/others.php#java-abc-hr'
 license=('LGPL')
 depends=('bash' 'java-runtime>=6')
 optdepends=('faad2: AAC (MP4, M4A) decoding support'
@@ -16,7 +16,7 @@ optdepends=('faad2: AAC (MP4, M4A) decoding support'
             'vorbis-tools: Vorbis (OGG) decoding support'
             'wavpack: WavPack (WV) decoding support')
 
-source=(http://www.rarewares.org/files/others/$pkgname-java-$pkgver.zip
+source=("http://www.rarewares.org/files/others/${pkgname}-java-${pkgver}.zip"
         'abchr'
         'clicodecs.cfg.patch')
 sha512sums=('322b3ba473dd39ed3c75a82d932ba67f8d651492e7a2adb2ea8d106372e79ac4b002452e06da56fa36ebfd5282d7bd2986d8f5bf079695bbfb2992011aaea889'
@@ -30,8 +30,8 @@ prepare() {
 
 package() {
     cd "abchr-java"
-    install -Dm 644 -t "${pkgdir}/usr/share/java/$pkgname" *.jar
-    install -Dm 644 -t "${pkgdir}/usr/share/$pkgname" clicodecs.cfg
+    install -Dm 644 -t "${pkgdir}/usr/share/java/${pkgname}" *.jar
+    install -Dm 644 -t "${pkgdir}/usr/share/${pkgname}" clicodecs.cfg
 
     cd "${srcdir}"
     install -Dm 755 -t "${pkgdir}/usr/bin" abchr
