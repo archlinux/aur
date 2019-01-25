@@ -2,7 +2,7 @@
 pkgname=r128gain
 pkgver=0.7.1
 pkgrel=1
-pkgdesc="Fast audio loudness (ReplayGain / R128) scanner & tagger"
+pkgdesc='Fast audio loudness (ReplayGain / R128) scanner & tagger'
 arch=('any')
 url="https://github.com/desbma/${pkgname}"
 license=('LGPL')
