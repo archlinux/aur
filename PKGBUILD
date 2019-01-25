@@ -5,8 +5,8 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v4.0.g886d4b7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url='http://forum.doom9.org/showthread.php?t=172721'
+arch=('x86_64')
+url='https://forum.doom9.org/showthread.php?t=172721'
 license=('GPL2')
 depends=('vapoursynth')
 makedepends=('git'
@@ -24,15 +24,14 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+}
 
+build() {
   cd build
   arch-meson "../${_plug}" \
     --libdir /usr/lib/vapoursynth
 
-}
-
-build() {
-  ninja -C build
+  ninja
 }
 
 package(){
