@@ -2,7 +2,7 @@
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 
 # You'll need to download the package archive from
-# https://www.blackmagicdesign.com/products/davinciresolve
+# https://www.blackmagicdesign.com/support/
 
 # Hardware support is limited. Nvidia cards should work fine.
 # If you're running a hybrid setup, try with primusrun/optirun.
@@ -13,15 +13,16 @@ resolve_app_name=com.blackmagicdesign.resolve
 pkgver=15.2.3
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
-arch=('x86_64')
-url="https://www.blackmagicdesign.com/"
+arch=('any')
+url="https://www.blackmagicdesign.com/products/davinciresolve"
 license=('Commercial')
 depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0'
-         'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'libisoburn'
-         'qt5-webengine' 'qt5-websockets' 'xdg-user-dirs')
+         'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
+makedepends=('libarchive' 'xdg-user-dirs')
 options=('!strip')
 conflicts=('davinci-resolve-beta' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
 install=${pkgname}.install
+
 # Trying to make the user's life easier ;o)
 msg2 "Trying to fetch the archive file if available..."
 DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
@@ -64,8 +65,9 @@ package()
 	mkdir -p "${pkgdir}/etc/xdg/menus"
 
 	msg2 "Extracting from bundle..."
+	msg "Please wait, this take a while"
 	cd "${srcdir}" || exit
-	xorriso -osirrox on -indev DaVinci_Resolve_${pkgver}_Linux.run -extract / "${pkgdir}/opt/${_pkgname}"
+	bsdtar x -f DaVinci_Resolve_${pkgver}_Linux.run -C "${pkgdir}/opt/${_pkgname}"
 
 	msg2 "Add lib symlinks..."
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
