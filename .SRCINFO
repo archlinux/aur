@@ -11,11 +11,8 @@ pkgbase = qemu-launcher
 	depends = glade-perl
 	depends = perl-locale-gettext
 	depends = xdg-utils
-	source = http://download.gna.org/qemulaunch/1.7.x/qemu-launcher_1.7.4.tar.gz
-	source = http://download.gna.org/qemulaunch/1.7.x/qemu-launcher_1.7.4.tar.gz.sig
-	validpgpkeys = 11C1A43D19DBB486D98A9752CED39EF66A2FFF2E
+	source = qemu-launcher_1.7.4.tar.gz::https://launchpad.net/debian/+archive/primary/+sourcefiles/qemu-launcher/1.7.4-1/qemu-launcher_1.7.4.orig.tar.gz
 	sha256sums = 6d55c6e15b1733ca5d580a8eca7505124acb0a15948429b99dc8f700bb05efe6
-	sha256sums = SKIP
 
 pkgname = qemu-launcher
 
