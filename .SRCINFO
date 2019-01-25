@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-doctrina
 	pkgdesc = The library of Software Peronista
-	pkgver = 0.1.10
+	pkgver = 0.1.11.1
 	pkgrel = 1
 	url = https://git.softwareperonista.com.ar/cdp/doctrina
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = mingw-w64-doctrina
 	makedepends = mingw-w64-meson
 	makedepends = vala
 	depends = mingw-w64-gtk3
-	source = https://git.softwareperonista.com.ar/cdp/doctrina/archive/0.1.10.tar.gz
-	sha256sums = 8ed73e6e543792b9efd1524d98199adf32792fbfb26fcfe5657f1e8b78e8a80c
+	source = https://git.softwareperonista.com.ar/cdp/doctrina/archive/0.1.11.1.tar.gz
+	sha256sums = 52f38aa495129876ad11523f96afb392ef829b6783d7272422b4e33335f36380
 
 pkgname = mingw-w64-doctrina
 
