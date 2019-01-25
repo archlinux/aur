@@ -2,7 +2,8 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-pkgver=4.20.3
+gitver=v4.20.4
+pkgver=4.20.4
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -31,7 +32,7 @@ pkgver() {
 prepare() {
   cd "${_srcname}"
   #We want to base this on the release
-  git checkout tags/v$pkgver
+  git checkout tags/$gitver
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
