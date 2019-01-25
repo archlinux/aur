@@ -13,8 +13,10 @@ pkgbase = haxe-git
 	makedepends = ocaml
 	makedepends = sed
 	makedepends = zlib
+	makedepends = pcre
 	makedepends = neko>=2.0.0
 	makedepends = help2man
+	makedepends = camlp4
 	depends = neko>=2.0.0
 	provides = haxe
 	conflicts = haxe
