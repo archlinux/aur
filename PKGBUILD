@@ -5,22 +5,22 @@
 # Contributor: <gucong43216@gmail.com>
 
 pkgname=openfoam-esi
-pkgver=v1806
+pkgver=v1812
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="The open source CFD toolbox (ESI-OpenCFD version)"
 arch=('i686' 'x86_64')
 url="http://www.openfoam.com/"
 license=('GPL')
 depends=('gcc' 'cgal' 'cmake' 'fftw' 'boost' 'openmpi' 'paraview')
 
-source=("https://newcontinuum.dl.sourceforge.net/project/openfoamplus/${pkgver}/${_dist}.tgz"
-        "https://sourceforge.net/projects/openfoamplus/files/${pkgver}/ThirdParty-${pkgver}.tgz"
+source=("https://sourceforge.net/projects/openfoamplus/files/v1812/OpenFOAM-v1812.tgz"
+        "https://sourceforge.net/projects/openfoamplus/files/v1812/ThirdParty-v1812.tgz"
         "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz")
 
-md5sums=('bb244a3bde7048a03edfccffc46c763f'
-         '3c06cb20d08ab564b70f9df5186ec936'
+md5sums=('6a315687b3601eeece7ff7c7aed3d9a5'
+         '60b8ea139c2aed75f0cb0de1661a1986'
          '5465e67079419a69e0116de24fce58fe')
 
 prepare() {
@@ -40,8 +40,8 @@ prepare() {
   echo "export ParaView_QT=qt-system" >> ${srcdir}/prefs.sh
   cp ${srcdir}/prefs.sh ${srcdir}/${_distname}-${pkgver}/etc
 
-  # get paraview-5.5 directories
-  # paraview-5.5
+  # get paraview-5.6 directories
+  # paraview-5.6
   para_dir=`pacman -Q -l paraview | grep "include" | head -n3 | tail -n1 | sed -e 's!p.*/p!p!g' | sed -e 's!/.*!!g'`
   # /usr/include
   para_include_dir=`pacman -Q -l paraview | grep "include" | head -n3 | tail -n1 | awk '{print $2}' | sed 's!/paraview.*!!g'`
@@ -57,12 +57,12 @@ prepare() {
   [ ! -d "$arbitrary_dir" ] && mkdir $arbitrary_dir
 
   # this is needed for compiling paraFoam
-  echo "export ParaView_DIR=\$WM_THIRD_PARTY_DIR/paraview" > ${srcdir}/system_paraview
-  echo "export ParaView_INCLUDE_DIR=$para_include_dir/$para_dir" >> ${srcdir}/system_paraview
   echo "export PV_PLUGIN_PATH=\$FOAM_LIBBIN/$para_dir" >> ${srcdir}/system_paraview
   echo "export PATH=$para_bin_dir:\$PATH" >> ${srcdir}/system_paraview
   echo "export LD_LIBRARY_PATH=$para_lib_dir/$para_dir:\$LD_LIBRARY_PATH" >> ${srcdir}/system_paraview
   echo "unset ParaView_VERSION" >> ${srcdir}/system_paraview
+  echo "unset ParaView_DIR" >> ${srcdir}/system_paraview
+
   cp ${srcdir}/system_paraview ${srcdir}/${_distname}-${pkgver}/etc/config.sh
 
   cd ${srcdir}/${_distname}-${pkgver}/etc/config.sh
@@ -95,10 +95,12 @@ build() {
 
   echo -e "\e[92mCompilation will take several hours."
   echo -e " "
-  echo -e "Give write access to cmake directory using chmod."
+  echo -e "Give write access to cmake directory using chmod,"
+  echo -e "and create symbolic link /usr/lib/libembree3.so.3.2.4"
   echo -e "This is needed to compile paraFoam."
   echo -e "\e[0m "
   sudo chmod 757 /usr/lib/cmake/paraview*/Modules
+  sudo ln -s /usr/lib/libembree3.so /usr/lib/libembree3.so.3.2.4
 
   cd "$srcdir/$_dist"
   ./Allwmake -j `nproc` 2>&1 | tee log.wmake
