@@ -23,24 +23,20 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}"
-  mkdir build
-  cd build
-  meson .. \
-   --prefix="${EPREFIX}/usr" \
-   --buildtype=plain
+  mkdir -p build
 }
 
 build() {
-  cd "${_plug}/build"
+  cd build
+  arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
 
-  ninja -v
+  ninja
 }
 
 package(){
-  cd "${_plug}/build"
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 
-  install -Dm644 ../README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
-  install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
