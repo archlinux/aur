@@ -1,12 +1,12 @@
-# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 # Maintainer: Marcel O'Neil <marcel@marceloneil.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: RunningDroid <runningdroid AT zoho.com>
 # Contributor: Sebastian Lindqvist <dunpin@gmail.com>
+# Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=3.3.5.dev.r3.gb5797ff8
+pkgver=3.3.5.r1.g74d5fe7e
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
