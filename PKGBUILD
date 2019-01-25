@@ -13,7 +13,7 @@ depends=('lib32-gcc-libs')
 makedepends=('gcc-multilib' 'binutils' 'bash')
 options=('!makeflags')
 source=(
-  "ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-"{core,g++}"-${pkgver}.tar.bz2"
+  "https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-"{core,g++}"-${pkgver}.tar.bz2"
   'gcc-3.4.3-no_multilib_amd64.patch'
 )
 md5sums=('18c52e6fb8966b7700665dca289d077f'
