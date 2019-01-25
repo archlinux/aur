@@ -4,10 +4,10 @@
 # Contributor: Surefire <surefire at cryptomile.net>
 
 pkgname=gnome-shell-extension-appindicator-git
-pkgver=21+4+gcce5579
+pkgver=21+15+g7bd97d4
 pkgrel=1
 epoch=1
-pkgdesc="Integrates AppIndicators into GNOME Shell."
+pkgdesc="Integrates AppIndicators into GNOME Shell"
 arch=('any')
 url="https://github.com/ubuntu/gnome-shell-extension-appindicator"
 conflicts=('gnome-shell-extension-appindicator')

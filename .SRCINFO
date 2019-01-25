@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-appindicator-git
-	pkgdesc = Integrates AppIndicators into GNOME Shell.
-	pkgver = 21+4+gcce5579
+	pkgdesc = Integrates AppIndicators into GNOME Shell
+	pkgver = 21+15+g7bd97d4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ubuntu/gnome-shell-extension-appindicator
