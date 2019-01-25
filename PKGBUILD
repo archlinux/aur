@@ -2,7 +2,7 @@
 # Contributor: Siôn le Roux <sinisterstuf@gmail.com>
 
 pkgname=reg
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Docker registry v2 command line client and repo listing generator with security checks"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=(
 	'go'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('099d33931d8606c179d40fb8cd27f1990fc55bd245e0c25c6abbab3dcad7391c9b1f4b5ccfbe45b88f6bc68cfca4e1dbb545b70bccf8446ffa3ec9d02177f914')
+sha512sums=('1e4d936e406998ffaa176e7834b28970b594f88a339fd8447bef2f944efa9b51c1d35bf71b384b3ed1b3e84be08db6d7fd487f4a3c65aa2de0308d6128cf0070')
 
 build() {
 	mkdir -p "${srcdir}/go/src/github.com/genuinetools"
