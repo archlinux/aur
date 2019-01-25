@@ -2,7 +2,7 @@
 
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.1.1.r533.36bb2b1
+pkgver=1.1.1.r551.fbb60ec
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -28,14 +28,13 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-   cd build
-   arch-meson "../${_plug}"
-
 }
 
 build() {
-  ninja -C build
+  cd build
+  arch-meson "../${_plug}"
+
+  ninja
 }
 
 package(){
