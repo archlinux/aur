@@ -1,6 +1,6 @@
 pkgbase = python-async-timeout-gns3
 	pkgdesc = Asyncio-compatible timeout class (GNS3)
-	pkgver = 2.0.1
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/aio-libs/async-timeout
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-async-timeout-gns3
 	depends = python
 	provides = python-async-timeout
 	conflicts = python-async-timeout
-	source = python-async-timeout-gns3-2.0.1.tar.gz::https://github.com/aio-libs/async-timeout/archive/v2.0.1.tar.gz
-	sha256sums = 75a300199bb1bc11bb79a9ba7525a547ea0d3109000660e4ca57d4069b4544c3
+	source = python-async-timeout-gns3-3.0.1.tar.gz::https://github.com/aio-libs/async-timeout/archive/v3.0.1.tar.gz
+	sha256sums = d0a7a927ed6b922835e1b014dfcaa9982caccbb25131320582cc660af7c93949
 
 pkgname = python-async-timeout-gns3
 

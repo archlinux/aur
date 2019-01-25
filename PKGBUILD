@@ -3,7 +3,7 @@
 
 _pkgname=async-timeout
 pkgname=python-"$_pkgname"-gns3
-pkgver=2.0.1
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Asyncio-compatible timeout class (GNS3)'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 provides=("python-$_pkgname")
 conflicts=("python-$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aio-libs/async-timeout/archive/v$pkgver.tar.gz")
-sha256sums=('75a300199bb1bc11bb79a9ba7525a547ea0d3109000660e4ca57d4069b4544c3')
+sha256sums=('d0a7a927ed6b922835e1b014dfcaa9982caccbb25131320582cc660af7c93949')
 
 build() {
     cd "$_pkgname-$pkgver"
