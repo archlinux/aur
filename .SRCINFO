@@ -1,7 +1,7 @@
 pkgbase = openfoam-esi
 	pkgdesc = The open source CFD toolbox (ESI-OpenCFD version)
-	pkgver = v1806
-	pkgrel = 2
+	pkgver = v1812
+	pkgrel = 1
 	url = http://www.openfoam.com/
 	arch = i686
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = openfoam-esi
 	depends = boost
 	depends = openmpi
 	depends = paraview
-	source = https://newcontinuum.dl.sourceforge.net/project/openfoamplus/v1806/OpenFOAM-v1806.tgz
-	source = https://sourceforge.net/projects/openfoamplus/files/v1806/ThirdParty-v1806.tgz
+	source = https://sourceforge.net/projects/openfoamplus/files/v1812/OpenFOAM-v1812.tgz
+	source = https://sourceforge.net/projects/openfoamplus/files/v1812/ThirdParty-v1812.tgz
 	source = http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz
-	md5sums = bb244a3bde7048a03edfccffc46c763f
-	md5sums = 3c06cb20d08ab564b70f9df5186ec936
+	md5sums = 6a315687b3601eeece7ff7c7aed3d9a5
+	md5sums = 60b8ea139c2aed75f0cb0de1661a1986
 	md5sums = 5465e67079419a69e0116de24fce58fe
 
 pkgname = openfoam-esi
