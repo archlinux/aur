@@ -1,6 +1,6 @@
 # Maintainer: Alad Wenter <alad@archlinux.org>
 pkgname=aurutils
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
@@ -14,7 +14,7 @@ optdepends=('bash-completion: bash completion'
             'devtools: aur-chroot'
             'vifm: build file interaction'
             'xdelta3: generate delta files')
-sha256sums=('90424fe8fe6792fdd9b470f2dae83ef4b4c4f480c525b0c6a6c4fa79ca9440b3'
+sha256sums=('253795fef90bb00fa927d0472c4926bf87090ed089b7d77ff0568f166c738b60'
             'SKIP')
 validpgpkeys=('DBE7D3DD8C81D58D0A13D0E76BC26A17B9B7018A') # Alad Wenter <alad@archlinux.org>
 
