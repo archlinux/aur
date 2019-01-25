@@ -7,9 +7,9 @@ pkgrel=2
 pkgdesc='A complete 8086 assembler and loader'
 arch=('x86_64')
 license=('GPL')
-url='http://v3.sk/~lkundrak/dev86/'
+url='https://v3.sk/~lkundrak/dev86/'
 depends=('glibc')
-source=("http://v3.sk/~lkundrak/dev86/$pkgname-$pkgver.tar.gz"
+source=("https://v3.sk/~lkundrak/dev86/$pkgname-$pkgver.tar.gz"
         'bin86-0.16.17-x86_64-1.patch')
 sha1sums=('35a1222350adce5b6d62dd56f3477d9416c59174'
           '2c967c062fbee4e40ca1bf55feec2033e132e0a9')
