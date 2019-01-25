@@ -1,6 +1,6 @@
 pkgbase = asn1c-git
 	pkgdesc = An ASN.1 compiler
-	pkgver = r2410.4cc779fd
+	pkgver = r2419.2e2cb790
 	pkgrel = 1
 	url = http://lionet.info/asn1c/blog/
 	arch = i686
