@@ -6,11 +6,11 @@ pkgver=20190123
 pkgrel=1
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
-url="http://www.iti.gov.br/repositorio/repositorio-ac-raiz"
+url="https://www.iti.gov.br/repositorio/repositorio-ac-raiz"
 license=('unknown')
 depends=('ca-certificates-utils')
 makedepends=('unzip')
-source=("icpbr_certs-${pkgver}-${pkgrel}.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
+source=("icpbr_certs-${pkgver}-${pkgrel}.zip::https://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
 sha512sums=('1ca7ecbc2d4999ea079edcaa1057e96dcb4346507cace7d5c5b58cddf833c666c0f7995dc7b359793ffe8fb7996097f4c356448098c83681df584ebf40cd3f97')
 
 package() {
