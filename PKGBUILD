@@ -2,13 +2,13 @@
 # Maintainer: nisk1 <esqueleto_bajo[it_looks_like_a_snail]outlook[dot]com>
 
 # Uncomment any of below lines to build additional plugins:
-_build_vlc="yes"
-_build_moc="yes"
-_build_xmms="yes"
+#_build_vlc="yes"
+#_build_moc="yes"
+#_build_xmms="yes"
 
 pkgname=asap
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Another Slight Atari Player - library and players for 8-bit Atari music format"
 url="http://asap.sourceforge.net"
 arch=('i686' 'x86_64')
@@ -20,20 +20,21 @@ sha256sums=('7612dc0251c13345bd17dbec46cdecd794a50cab5d4b7840471a6bed41933640')
 
 if [[ "$_build_vlc" = "yes" ]]; then
   makedepends+=('vlc')
-fi 
+fi
+
 if [[ "$_build_moc" = "yes" ]]; then
-  makedepends+=('audacious')
+  makedepends+=('moc')
   source+=('http://ftp.daper.net/pub/soft/moc/stable/moc-2.5.2.tar.bz2')
   sha256sums+=('f3a68115602a4788b7cfa9bbe9397a9d5e24c68cb61a57695d1c2c3ecf49db08')
 fi
 
 if [[ "$_build_xmms" = "yes" ]]; then
   makedepends+=('xmms')
-fi 
+fi
 
 build() {
 	cd $srcdir/$pkgname-$pkgver/
-	make 
+	make
 
 	if [[ "$_build_vlc" = "yes" ]]; then
 		make asap-vlc
@@ -54,7 +55,7 @@ build() {
 package() {
 	cd $srcdir/$pkgname-$pkgver/
 	make DESTDIR="${pkgdir}" prefix="/usr" install-asapconv install
-	
+
 	if [[ "$_build_vlc" = "yes" ]]; then
 		make DESTDIR="${pkgdir}" prefix="/usr" install-vlc
 	fi
