@@ -1,0 +1,14 @@
+pkgbase = maptool-nerps-bin
+	pkgdesc = An open source virtual tabletop program, now infused with Nerps!
+	pkgver = 1.4.5.4
+	pkgrel = 1
+	url = https://maptool.nerps.net
+	arch = x86_64
+	license = AGPL3
+	provides = maptool
+	conflicts = maptool
+	source = https://github.com/JamzTheMan/MapTool/releases/download/1.4.5.4/maptool-1.4.5.4.deb
+	sha256sums = d0474fa117ad876c732f07b69f55caae86897ea86479b0c9f5d30717117bb5c7
+
+pkgname = maptool-nerps-bin
+
