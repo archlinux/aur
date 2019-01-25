@@ -1,7 +1,7 @@
 # Maintainer: Ysblokje <ysblokje at gmail dot com>
 pkgname=('gamemode')
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS."
 arch=('x86_64')
 url="https://github.com/FeralInteractive/gamemode.git"
@@ -21,6 +21,6 @@ build() {
 package() {
   DESTDIR=$pkgdir ninja -C build install
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" ${pkgname}-${pkgver}/LICENSE.txt
-  install -m644 -Dt "${pkgdir}/usr/share/${pkgname}" ${pkgname}-${pkgver}/example/gamemode.ini
+  install -m644 -Dt "${pkgdir}/usr/share/doc/${pkgname}/example" ${pkgname}-${pkgver}/example/gamemode.ini
 }
 
