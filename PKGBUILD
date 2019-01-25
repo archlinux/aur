@@ -1,6 +1,8 @@
-# Maintainer: Tom Bebbington <tophattedcoder@gmail.com>
+# Maintainer: Jacob Pfeiffer <jacob@pfeiffer.codes>
+# Contributor: Tom Bebbington <tophattedcoder@gmail.com> 
+
 pkgname=haxe-git
-pkgver=11145
+pkgver=16771
 pkgrel=1
 pkgdesc="An open-source high-level multiplatform programming language and compiler that can produce applications and source code for many different platforms from a single code-base"
 arch=('i686' 'x86_64')
@@ -8,12 +10,13 @@ url="https://github.com/HaxeFoundation/haxe"
 license=('GPL2' 'MIT')
 groups=('devel')
 depends=('neko>=2.0.0')
-makedepends=('git' 'ocaml' 'sed' 'zlib' 'neko>=2.0.0' 'help2man')
+makedepends=('git' 'ocaml' 'sed' 'zlib' 'pcre' 'neko>=2.0.0' 'help2man' 'camlp4')
 provides=('haxe')
 conflicts=('haxe')
 options=('!strip' 'emptydirs' '!makeflags')
 install=haxe.install
-source=('haxe.sh' "haxe::git+https://github.com/HaxeFoundation/haxe")
+source=('haxe.sh' 
+	"haxe::git+https://github.com/HaxeFoundation/haxe")
 md5sums=('2744426baf31e3602473bcb8397947e3'
          'SKIP')
 _gitmod=haxe
@@ -23,12 +26,20 @@ pkgver() {
 	git rev-list HEAD --count
 }
 
+prepare() {
+	cd $srcdir/$_gitmod
+        msg "Initialising submodules"
+        git submodule init
+        msg "Updating submodules"
+        git submodule update --init --recursive
+  
+        msg "Installing opam dependencies..."
+	make opam_install
+        msg2 "done."
+}
+
 build() {
 	cd $srcdir/$_gitmod
-	msg "Initialising submodules"
-	git submodule init
-	msg "Updating submodules"
-	git submodule update
 	msg "Starting build..."
 	
 	#
@@ -39,10 +50,7 @@ build() {
 	msg2 "done."
 	
 	msg "Git commit # is ${pkgver}. Starting build..."
-	sed --in-place=.orig -e "s/\\(Haxe Compiler %d\.%d\.%d\\) -/\\1 [Git commit $pkgver] -/" main.ml 
 	msg "Building haxe..." && make || return 1
-	msg2 "done."
-	msg "Building tools..." && make tools || return 1
 	msg2 "done."
 	msg "Generating Manual page..." && help2man haxe -v -version -h -help --no-discard-stderr -o ../haxe-manual || return 1
 	msg2 "done."
@@ -56,7 +64,7 @@ package() {
 	cd $srcdir/$_gitmod
 	mkdir -p $pkgdir/usr/bin
 	mkdir -p $pkgdir/usr/lib
-	env HAXE_STD_PATH=$srcdir/$_gitmod/std make INSTALL_DIR="$pkgdir/usr" install install_tools
+	env HAXE_STD_PATH=$srcdir/$_gitmod/std make INSTALL_DIR="$pkgdir/usr" install
 	mkdir -p $pkgdir/etc/profile.d
 	cp $srcdir/haxe.sh $pkgdir/etc/profile.d
 	mkdir -p $pkgdir/usr/share/licenses/haxe-git
