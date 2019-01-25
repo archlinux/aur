@@ -4,7 +4,7 @@
 
 _pkgname="micropython"
 pkgname="${_pkgname}-git"
-pkgver=1.9.4.405.g7067ac357
+pkgver=1.10.3e25d611e
 pkgrel=1
 epoch=1
 pkgdesc="A Python 3 implementation for microcontrollers and constrained environments (Unix version)."
@@ -24,17 +24,17 @@ md5sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   PYTHONPATH='py' python -c \
-    'import makeversionhdr; v=makeversionhdr.get_version_info_from_git()[0]; print(v.lstrip("v").replace("-", "."))'
+    'import makeversionhdr, re; v=makeversionhdr.get_version_info_from_git(); print("%s.%s" % (re.sub("-.*$", "", v[0].lstrip("v")), re.sub("-.*$", "", v[1])))'
 }
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+  sed -i -e 's|gnu\.org/r|nongnu.org/git|' .gitmodules
   git submodule update --init
 }
 
 build() {
   cd "${srcdir}/${_pkgname}/ports/unix"
-  make CWARN="-Wall -Werror -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=unused-const-variable -Wno-error=array-bounds" axtls
   make
 }
 
