@@ -2,10 +2,10 @@
 
 _plug=fixtelecinedfades
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r5.28.g36c3423
+pkgver=r5.30.ge70d7fb
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=174151'
 license=('GPL2')
 depends=('vapoursynth')
@@ -24,28 +24,23 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}"
-
-  rm -fr VapourSynth.h VSHelper.h
+  rm -fr "${_plug}/VapourSynth.h" "${_plug}/VSHelper.h"
 
   sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-      -i Shared.hpp
+      -i "${_plug}/Shared.hpp"
 
-  mkdir build
-  cd build
-  meson .. \
-   --prefix="${EPREFIX}/usr" \
-   --buildtype=plain
+  mkdir -p build
 }
 
 build() {
-  cd "${_plug}/build"
+  cd build
+  arch-meson "../${_plug}" \
+    --libdir /usr/lib
 
-  ninja -v
+  ninja
 }
 
 package(){
-  cd "${_plug}/build"
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
