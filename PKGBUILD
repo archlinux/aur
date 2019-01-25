@@ -12,12 +12,8 @@ depends=('vapoursynth'
          'opencv'
          )
 makedepends=('git')
-source=("${_plug}::git+https://github.com/invisiblearts/VapourSynth-Inpaint.git"
-        'patch.patch'
-        )
-sha256sums=('SKIP'
-            'f2454d793377b7f6a955d2f939dd83be7005a91025bfdca3b6867e49c172cd1c'
-            )
+source=("${_plug}::git+https://github.com/invisiblearts/VapourSynth-Inpaint.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -29,10 +25,11 @@ prepare(){
   cd "${_plug}"
   rm -fr VSHelper.h VapourSynth.h
 
-  patch -p1 -i "${srcdir}/patch.patch"
+  sed 's|<vapoursynth.h>|<VapourSynth.h>|g' \
+      -i Inpaint.h
 
   echo "all:
-	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o Inpaint.o Inpaint.cpp
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) $(pkg-config --cflags opencv4) -o Inpaint.o Inpaint.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so Inpaint.o" > Makefile
 }
 
