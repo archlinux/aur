@@ -29,6 +29,7 @@ pkgver() {
 prepare() {
   cd avxsynth
 
+  # https://github.com/avxsynth/avxsynth/issues/117
   sed -i 's|(pbyA \&\& pbyR \&\& pbyG \&\& pbyB == false)|(!(pbyA \&\& pbyR \&\& pbyG \&\& pbyB))|' avxsynth/builtinfunctions/src/filters/convolution.cpp
 
   autoreconf -if
