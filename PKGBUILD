@@ -24,15 +24,14 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+}
 
+build() {
   cd build
   arch-meson "../${_plug}" \
     --libdir /usr/lib/vapoursynth
 
-}
-
-build() {
-  ninja -C build
+  ninja
 }
 
 package(){
