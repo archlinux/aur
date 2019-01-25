@@ -1,0 +1,16 @@
+pkgbase = sentry-watcher
+	pkgdesc = Build/Runs your crystal application, watches files, and rebuilds on file changes
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/samueleaton/sentry
+	arch = x86_64
+	license = MIT
+	makedepends = crystal
+	depends = gc
+	depends = libevent
+	depends = pcre
+	source = https://github.com/samueleaton/sentry/archive/v0.3.1.tar.gz
+	md5sums = bfdd1af0d4631a4819c74edb817f74b8
+
+pkgname = sentry-watcher
+
