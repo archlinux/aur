@@ -2,16 +2,15 @@
 
 _name=emoji
 pkgname=python2-$_name
-pkgver=0.3.9
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Emoji for Python"
 url="https://github.com/carpedm20/emoji/"
 depends=('python2' )
 license=('New BSD')
 arch=('any')
-
-source=("https://files.pythonhosted.org/packages/47/e7/cf76e0774b13459e61ffe16a042a35f42e292aeebba060b919c05b0854ab/$_name-$pkgver.tar.gz")
-sha256sum=('001b92b9c8a157e1ca49187745fa450513bc8b31c87328dfd83d674b9d7dfa63')
+source=("https://files.pythonhosted.org/packages/41/5a/5b2cbaf1f8936e54a3756c4f0587cbe0615cd50c6b31340214ea61f92782/$_name-$pkgver.tar.gz")
+sha256sums=('a9e9c08be9907c0042212c86dfbea0f61f78e9897d4df41a1d6307017763ad3e')
 
 build() {
     cd $srcdir/emoji-$pkgver
