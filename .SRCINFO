@@ -1,0 +1,13 @@
+pkgbase = swatchtime-git
+	pkgdesc = displays Swatch Internet Time in a formatted manner
+	pkgver = v0.9.r0.g610666c
+	pkgrel = 1
+	url = https://github.com/henry-malinowski/SwatchTime
+	arch = any
+	license = MIT
+	depends = python
+	source = git://github.com/henry-malinowski/SwatchTime.git
+	sha256sums = SKIP
+
+pkgname = swatchtime-git
+
