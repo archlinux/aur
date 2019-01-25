@@ -3,7 +3,7 @@
 
 pkgname=flare-game
 pkgver=1.09.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Fantasy action RPG using the FLARE engine"
 url="http://www.flarerpg.org/"
 license=('CCPL:cc-by-sa')
@@ -15,7 +15,7 @@ sha1sums=('a369c2e7e6950ea2e241fd69f21ca47836667ed5')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DDATADIR=share/flare
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DDATADIR=share/flare
 	make
 }
 
