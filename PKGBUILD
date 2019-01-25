@@ -2,7 +2,7 @@
 
 _plug=decross
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.g39485ce
+pkgver=v1.4.g889fd9c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -24,18 +24,18 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+}
 
+build() {
   cd build
   arch-meson "../${_plug}" \
     --libdir /usr/lib/vapoursynth
 
-}
-
-build() {
-  ninja -C build
+  ninja
 }
 
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
+
   install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
