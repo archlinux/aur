@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=libplacebo-git
-pkgver=v0.4.0.44.g63d1bec
+pkgver=v1.7.0.33.g6ac417a
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://github.com/haasn/libplacebo'
@@ -14,30 +14,32 @@ makedepends=('git'
              'ninja'
              'vulkan-headers'
              )
+provides=('libplacebo')
+conflicts=('libplacebo')
 source=(git+https://github.com/haasn/libplacebo.git)
 sha256sums=('SKIP')
 
 pkgver() {
   cd libplacebo
-  echo "$(git describe --long --tags |tr - .)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
   mkdir -p build
-
-  cd build
-  arch-meson ../libplacebo \
-    -D tests=true \
-    -D vulkan=true
 }
 
 build() {
-  ninja -C build
+  cd build
+  arch-meson ../libplacebo \
+    -D tests=true \
+    -D vulkan=enabled
+
+  ninja
 }
 
-check() {
-  ninja -C build test
-}
+# check() {
+#   ninja -C build test
+# }
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
