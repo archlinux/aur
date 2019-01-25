@@ -13,10 +13,8 @@ conflicts=("$_pkgname")
 depends=('gtk3' 'lv2' 'lilv' 'suil' 'jack' 'libsndfile' 'libsmf' 'libdazzle' 'breeze-icons'
          'libcyaml-git')
 makedepends=('git')
-source=("$_pkgname::git+https://gitlab.com/alextee/zrythm.git"
-        "git+https://github.com/KDE/breeze-icons.git")
-md5sums=('SKIP'
-         'SKIP')
+source=("$_pkgname::git+https://git.zrythm.org/alextee/zrythm.git")
+md5sums=('SKIP')
 
 pkgver () {
   cd "$srcdir/$_pkgname"
@@ -25,9 +23,9 @@ pkgver () {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  git submodule init
-  git config submodule."ext/breeze-icons".url "$srcdir/breeze-icons"
-  git submodule update
+  #git submodule init
+  #git config submodule."ext/breeze-icons".url "$srcdir/breeze-icons"
+  #git submodule update
 }
 
 build() {

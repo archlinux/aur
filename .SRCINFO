@@ -18,9 +18,7 @@ pkgbase = zrythm-git
 	depends = libcyaml-git
 	provides = zrythm
 	conflicts = zrythm
-	source = zrythm::git+https://gitlab.com/alextee/zrythm.git
-	source = git+https://github.com/KDE/breeze-icons.git
-	md5sums = SKIP
+	source = zrythm::git+https://git.zrythm.org/alextee/zrythm.git
 	md5sums = SKIP
 
 pkgname = zrythm-git
