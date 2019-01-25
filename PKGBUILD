@@ -25,19 +25,15 @@ pkgver() {
 prepare(){
   mkdir -p build
 
-  cd "${_plug}"
-
   sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-    -i Common.h
+    -i "${_plug}/Common.h"
 }
 
 build() {
   cd build
-  meson \
-    "../${_plug}" \
-    --prefix=/usr \
-    --buildtype=release
+  arch-meson "../${_plug}" \
+    --prefix=/usr
 
   ninja
 }
