@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-dav-ext
-pkgver=0.1.0
-pkgrel=19
+pkgver=3.0.0
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.15.8
@@ -24,7 +24,7 @@ validpgpkeys=(
 
 sha256sums=('a8bdafbca87eb99813ae4fcac1ad0875bf725ce19eb265d28268c309b2b40787'
             'SKIP'
-            '6b004eed8ea16ad8de4d304027bf0413cc323a95914e58625a7dc066481aae3a')
+            'd2499d94d82d4e4eac8425d799e52883131ae86a956524040ff2fd230ef9f859')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
