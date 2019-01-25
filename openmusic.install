@@ -1,4 +1,5 @@
 post_install() {
+  echo 'Please switch to AUR package openmusic-bin as this package will be abandoned in the near future.'
   update-desktop-database -q
 }
 
