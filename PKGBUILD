@@ -1,41 +1,27 @@
-# Maintainer: Siôn le Roux <sinisterstuf@gmail.com>
+# Maintainer: Knut Ahlers <knut at ahlers dot me>
+# Contributor: Siôn le Roux <sinisterstuf@gmail.com>
+
 pkgname=reg
-_pkgname=reg-linux-amd64
-pkgver=0.13.0
+pkgver=0.15.0
 pkgrel=1
-pkgdesc="Docker registry v2 command line client"
-arch=('x86_64')
-url="https://github.com/genuinetools/${pkgname}"
+pkgdesc="Docker registry v2 command line client and repo listing generator with security checks"
+arch=('i686' 'x86_64')
+url="https://github.com/genuinetools/$pkgname"
 license=('MIT')
-groups=()
-depends=()
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=(
-  "https://github.com/genuinetools/${pkgname}/releases/download/v${pkgver}/${_pkgname}"
-  "https://raw.githubusercontent.com/genuinetools/${pkgname}/master/LICENSE"
+makedepends=(
+	'go'
 )
-md5sums=(
-  '88b90e7d3d7ac99c880cf3c804440d15'
-  '48ef0979a2bcc3fae14ff30b8a7f5dbf'
-)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('099d33931d8606c179d40fb8cd27f1990fc55bd245e0c25c6abbab3dcad7391c9b1f4b5ccfbe45b88f6bc68cfca4e1dbb545b70bccf8446ffa3ec9d02177f914')
 
 build() {
-  # make binary executable
-  chmod +x "${srcdir}/${_pkgname}"
+	mkdir -p "${srcdir}/go/src/github.com/genuinetools"
+	ln -sf "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/go/src/github.com/genuinetools/${pkgname}"
+	cd "${srcdir}/go/src/github.com/genuinetools/${pkgname}"
+	GOPATH="${srcdir}/go" make install
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin/"
-  cp "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  cp "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm755 "${srcdir}/go/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:
