@@ -1,6 +1,6 @@
 pkgbase = kakoune-git
 	pkgdesc = Multiple-selection, UNIX-flavored modal editor
-	pkgver = r7139.8587ecae
+	pkgver = r7175.3e89148d
 	pkgrel = 1
 	url = https://github.com/mawww/kakoune
 	arch = x86_64
