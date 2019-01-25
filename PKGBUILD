@@ -2,7 +2,7 @@
 
 pkgname=rtl8821ce-dkms-git
 _pkgbase=rtl8821ce
-pkgver=1.0.1.r16.g3d9dd1f
+pkgver=1.0.2.r16.g3d9dd1f
 pkgrel=1
 pkgdesc="rtl8821CE driver with firmware"
 arch=('i686' 'x86_64')
