@@ -7,7 +7,7 @@ pkgver=17.10.0
 pkgrel=2
 arch=(any)
 pkgdesc='A web micro-framework built on werkzeug and twisted.web'
-url='http://github.com/twisted/klein'
+url='https://github.com/twisted/klein'
 license=(MIT)
 makedepends=(python-setuptools python-incremental python-six python-twisted python-werkzeug
              python2-setuptools python2-incremental python2-six python2-twisted python2-werkzeug)
