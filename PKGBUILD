@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nomad
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="A Distributed, Highly Available, Datacenter-Aware Scheduler"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=(https://github.com/hashicorp/nomad/archive/v$pkgver/$pkgname-$pkgver.tar
         nomad-{server,client}.{service,conf}
         lxc-version-check.patch
 		golang-crypto.patch)
-sha256sums=('e69b447dcc2caeb3d5ecf904cf3c8f327a5185a84442ee4241a796d89f96e143'
+sha256sums=('f74eac627de69190e586358b1956573a0ae1a40d0755ecdee163016949f9c7fe'
             '52b0a22c3c0c72c642a8728cb48bd8797f4f6a12990e11bbb2342edcc2a9a206'
             'da475bc4aa3b1493eb62f09e7f99dcc171e8ce6d74df3da30514cfdfe72a5714'
             '4c8fb7c18c67ca20e3ee07f25cf2f0c82b66c4c173275ae8d643c91cce3c0ceb'
