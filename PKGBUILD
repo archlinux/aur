@@ -9,7 +9,7 @@ pkgname=('eiskaltdcpp-core-git'
          'eiskaltdcpp-cli-git'
          'eiskaltdcpp-data-git'
          )
-pkgver=v2.2.10.275.gc4936c5a
+pkgver=v2.2.10.284.ga1fdeb86
 pkgrel=1
 pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT Version)"
 license=('GPL3')
@@ -35,6 +35,7 @@ makedepends=('git'
              'qt5-tools'
              'qt5-script'
              'qt5-quick1'
+             'qt5-xmlpatterns'
              'gtk3'
              'libnotify'
              'perl-json'
@@ -53,6 +54,9 @@ prepare() {
 
   # Fix php dependency
   find . -type f -name '*.php' -exec sed 's|php5|php|g' -i '{}' \;
+}
+
+build() {
 
   cd build
   cmake ../eiskaltdcpp \
@@ -79,10 +83,8 @@ prepare() {
     -DUSE_CLI_JSONRPC=ON \
     -DLOCAL_JSONCPP=OFF \
     -DLOCAL_BOOST=OFF
-}
 
-build() {
-  make -C build
+  make
 }
 
 package_eiskaltdcpp-core-git() {
