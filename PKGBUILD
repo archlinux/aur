@@ -9,16 +9,18 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gdb
-pkgver=8.1.1
+pkgver=8.2.1
 pkgrel=1
 pkgdesc="The GNU Project Debugger (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://www.gnu.org/software/gdb/"
 depends=("${_target}-binutils>=2.29-1" "${_target}-gcc" 'zlib' 'guile2.0')
-source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
+source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz"
+        "http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz.sig")
         
-sha256sums=('97dcc3169bd430270fc29adb65145846a58c1b55cdbb73382a4a89307bdad03c')
+sha256sums=(SKIP SKIP)
+validpgpkeys=(F40ADB902B24264AA42E50BF92EDB04BFF325CF3)
 
 prepare() {
   cd ${srcdir}/gdb-${pkgver}
@@ -34,8 +36,8 @@ build() {
 
   ../gdb-${pkgver}/configure --prefix=/usr \
     --target=${_target} \
-	--disable-multilib \
-	--with-cpu=${_target_cpu} \
+    --disable-multilib \
+    --with-cpu=${_target_cpu} \
     --with-guile="guile-2.0"
 
   make
