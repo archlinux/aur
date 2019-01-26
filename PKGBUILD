@@ -14,7 +14,7 @@ license=(GPL)
 url="https://www.digikam.org/"
 makedepends=(extra-cmake-modules libkipi libksane liblqr opencv doxygen lensfun eigen boost kdoctools marble-common
              kfilemetadata akonadi-contacts qtav threadweaver kcalcore knotifyconfig libmediawiki libkvkontakte glu qt5-xmlpatterns)
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
+source=("https://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
         kdebug-395875.patch::"https://cgit.kde.org/digikam.git/patch/core?id=486e34a0"
         digikam-opencv4.patch)
 sha256sums=('660d32eedcfd6fe1a75170a651fab068ae62f7f092ae710771a2f32a1c550d1b'
