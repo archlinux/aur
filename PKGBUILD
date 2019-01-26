@@ -9,6 +9,7 @@ url="http://www.impa.br/~diego/software/luasocket"
 license=('MIT')
 depends=('lua')
 makedepends=('luarocks')
+provides=('lua-luasocket')
 conflicts=()
 source=("$pkgname::git+https://github.com/diegonehab/luasocket.git#branch=master")
 md5sums=('SKIP')
