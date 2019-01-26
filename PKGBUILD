@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20171222
+pkgver=20180703
 pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
@@ -41,20 +41,20 @@ check() {
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm755 "${pkgname%-git}" $pkgdir/usr/bin/"${pkgname%-git}"
-  install -Dm644 "${pkgname%-git}".sty $pkgdir/usr/share/texmf/tex/plain/"${pkgname%-git}".sty
-  install -Dm644 "${pkgname%-git}".tex $pkgdir/usr/share/texmf/tex/plain/"${pkgname%-git}".tex
+  install -Dm755 "${pkgname%-git}" "$pkgdir"/usr/bin/"${pkgname%-git}"
+  install -Dm644 "${pkgname%-git}".sty "$pkgdir"/usr/share/texmf/tex/plain/"${pkgname%-git}".sty
+  install -Dm644 "${pkgname%-git}".tex "$pkgdir"/usr/share/texmf/tex/plain/"${pkgname%-git}".tex
   # for texinfo sources
-  install -Dm644 texi2p.tex $pkgdir/usr/share/texmf/tex/plain/texi2p.tex
+  install -Dm644 texi2p.tex "$pkgdir"/usr/share/texmf/tex/plain/texi2p.tex
   # manpage
-  install -Dm644 "man/man1/${pkgname%-git}".1 $pkgdir/usr/share/man/man1/"${pkgname%-git}".1
+  install -Dm644 "man/man1/${pkgname%-git}".1 "$pkgdir"/usr/share/man/man1/"${pkgname%-git}".1
   # bibtex file 
   install -Dm644 "${pkgname%-git}".bib \
-	  $pkgdir/usr/share/texmf/bibtex/bib/"${pkgname%-git}"/"${pkgname%-git}".bib
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+	  "$pkgdir"/usr/share/texmf/bibtex/bib/"${pkgname%-git}"/"${pkgname%-git}".bib
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
   # installing documentation other than manpage 
   for _i in index* lambda* mpexample*
   do
-    install -Dm644 $_i $pkgdir/usr/share/doc/$pkgname/$_i
+    install -Dm644 $_i "$pkgdir"/usr/share/doc/$pkgname/$_i
   done
 }
