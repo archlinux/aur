@@ -3,7 +3,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=lib32-zeromq
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc='Fast messaging system built on sockets'
 arch=(x86_64)
@@ -22,7 +22,7 @@ makedepends=(
   xmlto
 )
 source=(git+https://github.com/zeromq/libzmq.git#tag=v${pkgver})
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 prepare() {
   cd libzmq
