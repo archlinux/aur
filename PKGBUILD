@@ -3,8 +3,8 @@
 # Contributor: 網軍總司令
 
 pkgname=librime
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 epoch=1
 pkgdesc="Rime input method engine"
 arch=('x86_64')
@@ -15,14 +15,15 @@ optdepends=('plum: preset input schemas'
             'plum-extra: extra input schemas')
 makedepends=('cmake' 'boost' 'gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rime/librime/archive/$pkgver.tar.gz")
-sha512sums=('c646b6c801798fcc000a5d08afc7f53498a108929f67dd1a1db98e5377c0e2e3339e3851f100c641287ba84d2d2dc20acfa9033d12df7b164534d8a160558a77')
+sha512sums=('da68983638c6f25d994060a607f2ccab8917a71dbf10b9c6f1140c87c9ef4124e29a1d0ef16bbd0edc9a3a22bd5845aa894888d678607db372750f300638f562')
 
 build() {
   cd $pkgname-$pkgver
-  make
+  cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname-$pkgver/build
   make DESTDIR="$pkgdir" install
 }
