@@ -5,9 +5,9 @@
 pkgname=qt5-doc
 _qtver=5.12.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('any')
-url='http://qt-project.org/'
+url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework (Documentation)'
 depends=('qt5-base')
@@ -15,7 +15,7 @@ makedepends=('qt5-tools' 'python2' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr'
              'gperf' 'nss' 'clang')
 groups=('qt' 'qt5')
 _pkgfqn="qt-everywhere-src-${_qtver}"
-source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_pkgfqn}.tar.xz")
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_pkgfqn}.tar.xz")
 sha256sums=('356f42d9087718f22f03d13d0c2cdfb308f91dc3cf0c6318bed33f2094cd9d6c')
 
 prepare() {
