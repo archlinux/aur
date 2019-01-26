@@ -6,14 +6,14 @@ _qtver=5.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
-url='http://qt-project.org/'
+url='https://www.qt.io'
 license=('GPL3')
 pkgdesc='Virtual keyboard framework'
 depends=('qt5-declarative' 'qt5-svg' 'hunspell')
 makedepends=()
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
 sha256sums=('db93b89ba13ec1a688850f456be9f10037033cebf7b4deb151ed9f5322d0d6da')
 
 prepare() {
