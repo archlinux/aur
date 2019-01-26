@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.6.rc1.r0.g62fe3948ea
+pkgver=8.7.beta0.r0.g5389d8dc87
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -15,7 +15,7 @@ url="http://www.sagemath.org"
 license=(GPL)
 depends=(ipython2 ppl palp brial cliquer maxima-ecl gfan sympow nauty python2-rpy2 python2-fpylll python2-psutil python2-cypari2
   python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-future gap flintqs lcalc lrcalc arb
-  eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox m4rie rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
+  eclib zn_poly gd python2-cvxopt pynac linbox m4rie rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
   libgiac libhomfly libbraiding three.js openblas)
 optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cython code'
@@ -46,7 +46,8 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-sphinx-1.8.patch
         sagemath-cypari2.patch
         sagemath-singular-4.1.1.p4.patch
-        sagemath-ecl-sigfpe.patch)
+        sagemath-ecl-sigfpe.patch
+        sagemath-numpy-1.16.patch)
 sha256sums=('SKIP'
             'de6e38462ef1848778fbc23a63529fbee9229dbb245bb653f58a0d834a634c04'
             '960afe4fcbffe2762b66119b8f14355386ced0d8ee52b535d0dac1dba90d365b'
@@ -57,9 +58,10 @@ sha256sums=('SKIP'
             'f6b48abf34f64ea3fc092b0f0179e89633f7d3ecc0d62c2acacbfa1217751d63'
             '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
             '22f5e44a42c8276025b8512f45cac1c36d576c29c7fd9d36fde8b19ff87867d8'
-            '73e31973893f99d112249df1db6e0784fc4c5b0b0c3513139f0994d60369fb40'
+            'ca47248d2ed5edfe663ea02e261ddbb26a7cb03bef67928dbec690d9b9a8f129'
             '482887fe43d89cef3270e89300ab9e2238fa74cd5b7c875688b68fb1b10c4fdf'
-            'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938')
+            'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
+            'd483b1dc78eb83e3cd1620e3d44214ca0704065e1d27d7a257976e56c85f2d5b')
 
 pkgver() {
   cd sage
@@ -96,6 +98,8 @@ prepare(){
   patch -p1 -i ../sagemath-singular-4.1.1.p4.patch
 # Fix SIGFPE crashes with ecl 16.1.3 https://trac.sagemath.org/ticket/22191
   patch -p1 -i ../sagemath-ecl-sigfpe.patch
+# Fix inline fortran with numpy 1.16 https://trac.sagemath.org/ticket/27061
+  patch -p1 -i ../sagemath-numpy-1.16.patch
 
 # use python2
   sed -e 's|sage-python23|python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
