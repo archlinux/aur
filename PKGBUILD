@@ -1,6 +1,6 @@
 pkgname=virtctl-git
 pkgver=r22.07354f1
-pkgrel=5
+pkgrel=6
 arch=('any')
 url="https://github.com/dehesselle/virtctl"
 license=('MIT')
@@ -9,12 +9,12 @@ pkgdesc="virtctl is a script and framework for libvirt to integrate it with syst
 source=(
     "$pkgname::git+https://github.com/dehesselle/virtctl.git"
     'fix_usr_local_virtctl.patch'
-    'fix_usr_local_kvm_service.patch'
+    'archify_kvm@_service.patch'
     'virtctl_create_domain_symlinks'
 )
 md5sums=('SKIP'
          '03f443ffa18dc0529b5c2fc555bb2fee'
-         'a05241fc5cc736a3d15164a2438dbdb1'
+         '2741d1206c41c1ebd1c750734f35ce2f'
          'daaf947f2e9687c532984e747a136371')
 
 pkgver() {
@@ -26,7 +26,7 @@ prepare() {
   cd "$pkgname"
   
   patch -p1 -i "$srcdir/fix_usr_local_virtctl.patch"
-  patch -p1 -i "$srcdir/fix_usr_local_kvm_service.patch"
+  patch -p1 -i "$srcdir/archify_kvm@_service.patch"
 }
 
 package() {
@@ -35,7 +35,7 @@ package() {
   mkdir -p "$pkgdir/usr/lib/systemd/system"
   mkdir -p "$pkgdir/etc/virtctl"
 
-  for systemd_file in hypervisor.target kvm@.service; do
+  for systemd_file in kvm@.service; do
     cp -a $systemd_file "$pkgdir/usr/lib/systemd/system"
   done
 
