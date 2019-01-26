@@ -1,14 +1,14 @@
 # Maintainer: Patrick Desaulniers <desaulniers dot patrick at carrefour dot cegepvicto dot ca>
 
 pkgname=wolf-spectrum-git
-pkgver=0.1.2.r3.g7dec897
+pkgver=0.1.1.r6.g1a648ab
 pkgrel=1
 pkgdesc="Spectrogram plugin"
 arch=('i686' 'x86_64')
 url="https://github.com/pdesaulniers/wolf-spectrum"
 license=('GPL')
 depends=()
-makedepends=('jack' 'git' 'pkg-config' 'libx11' 'liblo' 'libgl' 'fftw')
+makedepends=('jack' 'git' 'pkg-config' 'libx11' 'liblo' 'libgl' 'freetype2')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git://github.com/pdesaulniers/wolf-spectrum")

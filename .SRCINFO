@@ -1,6 +1,6 @@
 pkgbase = wolf-spectrum-git
 	pkgdesc = Spectrogram plugin
-	pkgver = 0.1.2.r3.g7dec897
+	pkgver = 0.1.1.r6.g1a648ab
 	pkgrel = 1
 	url = https://github.com/pdesaulniers/wolf-spectrum
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = wolf-spectrum-git
 	makedepends = libx11
 	makedepends = liblo
 	makedepends = libgl
-	makedepends = fftw
+	makedepends = freetype2
 	provides = wolf-spectrum
 	conflicts = wolf-spectrum
 	source = wolf-spectrum::git://github.com/pdesaulniers/wolf-spectrum
