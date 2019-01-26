@@ -4,8 +4,8 @@
 
 _pkgbase=thunar
 pkgname=(${_pkgbase}-gtk2)
-pkgver=1.6.15
-pkgrel=2
+pkgver=1.6.16
+pkgrel=1
 pkgdesc="Modern file manager for Xfce (GTK2 version)"
 arch=('x86_64')
 url="http://thunar.xfce.org"
@@ -23,7 +23,7 @@ optdepends=('gvfs: for trash support, mounting with udisk and remote filesystems
             'thunar-archive-plugin-gtk2: create and deflate archives'
             'thunar-media-tags-plugin: view/edit id3/ogg tags')
 source=(https://archive.xfce.org/src/xfce/thunar/${pkgver%.*}/Thunar-$pkgver.tar.bz2)
-sha256sums=('e81291a8519f495e0a059ff1f2d29608bc6d37c0be83b1f38f3c9aa25f8d252d')
+sha256sums=('cb9fc2a8005494124a8d412eff7d7cb8032f7ff91b3d254fcff2d0a0d2790d20')
 
 build() {
   cd "$srcdir/Thunar-$pkgver"

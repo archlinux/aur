@@ -1,7 +1,7 @@
 pkgbase = thunar-gtk2
 	pkgdesc = Modern file manager for Xfce (GTK2 version)
-	pkgver = 1.6.15
-	pkgrel = 2
+	pkgver = 1.6.16
+	pkgrel = 1
 	url = http://thunar.xfce.org
 	arch = x86_64
 	groups = xfce4
@@ -27,8 +27,8 @@ pkgbase = thunar-gtk2
 	optdepends = thunar-media-tags-plugin: view/edit id3/ogg tags
 	provides = thunar
 	conflicts = thunar
-	source = https://archive.xfce.org/src/xfce/thunar/1.6/Thunar-1.6.15.tar.bz2
-	sha256sums = e81291a8519f495e0a059ff1f2d29608bc6d37c0be83b1f38f3c9aa25f8d252d
+	source = https://archive.xfce.org/src/xfce/thunar/1.6/Thunar-1.6.16.tar.bz2
+	sha256sums = cb9fc2a8005494124a8d412eff7d7cb8032f7ff91b3d254fcff2d0a0d2790d20
 
 pkgname = thunar-gtk2
 
