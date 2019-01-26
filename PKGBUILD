@@ -8,7 +8,7 @@ _use_gh_api=true
 wl_project=${_pkgname}
 wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_pkgname,,}-git
-pkgver=7.1.r1378.ab9e40d4
+pkgver=7.1.r1381.5c3fd087
 pkgrel=1
 pkgdesc='GPS log file viewer and analyzer'
 arch=('i686' 'x86_64')
@@ -75,19 +75,12 @@ build() {
   cd ${_pkgname}-${_branch}
 
   lrelease gpxsee.pro
-  qmake gpxsee.pro
+  qmake PREFIX=/usr gpxsee.pro
   make
 }
 
 package() {
   cd ${_pkgname}-${_branch}
 
-  install -Dm755 gpxsee ${pkgdir}/usr/bin/${pkgname//-git}
-  install -Dm644 pkg/csv/* -t ${pkgdir}/usr/share/${pkgname//-git}/csv
-  install -Dm644 pkg/maps/* -t ${pkgdir}/usr/share/${pkgname//-git}/maps
-  install -Dm644 lang/*.qm -t ${pkgdir}/usr/share/${pkgname//-git}/translations
-  install -Dm644 icons/gpxsee.png ${pkgdir}/usr/share/pixmaps/${pkgname//-git}.png
-  install -Dm644 pkg/gpxsee.desktop ${pkgdir}/usr/share/applications/${pkgname//-git}.desktop
-  install -Dm644 pkg/gpxsee.xml ${pkgdir}/usr/share/mime/packages/${pkgname//-git}.xml
-  install -Dm644 pkg/appdata.xml ${pkgdir}/usr/share/metainfo/${pkgname//-git}.appdata.xml
+  make INSTALL_ROOT="${pkgdir}" install
 }
