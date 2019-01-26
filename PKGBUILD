@@ -53,7 +53,8 @@ _instdir="/opt/${pkgname}"
 prepare() {
   # Create desktop file using system's libstdc++ and libfreetype for CJK font
   gendesk -f -n --pkgname "${pkgname}" \
-    --pkgdesc "${pkgdesc}" \
+    --name "MATLAB R2018a" \
+    --comment "${pkgdesc}" \
     --categories "Development;Education;Science;Mathematics;IDE" \
     --exec "env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6 ${_instdir}/bin/matlab -desktop"
 
