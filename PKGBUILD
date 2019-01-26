@@ -11,7 +11,7 @@ pkgname=davinci-resolve
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
 pkgver=15.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('any')
 url="https://www.blackmagicdesign.com/products/davinciresolve"
@@ -27,15 +27,14 @@ install=${pkgname}.install
 msg2 "Trying to fetch the archive file if available..."
 DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 
-if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
+if [ ! -f ${PWD}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
 	if [ -f $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-		ln -sfn $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
+		ln -sfn $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ${PWD}
 	else
 		msg2 ""
 		msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/products/davinciresolve/"
 		msg2 "Please remember to put a downloaded package DaVinci_Resolve_${pkgver}_Linux.zip into the build directory ${PWD} or $DOWNLOADS_DIR"
 		msg2 ""
-		exit 1
 	fi
 fi
 

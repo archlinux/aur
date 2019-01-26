@@ -1,7 +1,7 @@
 pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
 	pkgver = 15.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.blackmagicdesign.com/products/davinciresolve
 	install = davinci-resolve.install
 	arch = any
