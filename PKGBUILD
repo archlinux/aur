@@ -12,7 +12,7 @@ depends=(
 	'python-pyqt5'
 )
 backup=(
-	'/etc/udev/rules.d/80-fluffy-switch.rules'
+	'etc/udev/rules.d/80-fluffy-switch.rules'
 )
 source=("Fluffy-${pkgver}.tar.gz::https://github.com/fourminute/Fluffy/archive/v${pkgver}.tar.gz")
 sha256sums=('ffb6cbd6f8d3cb95f9e10eb2e2493a554899a4256e3bf7ca90b2c9c77a317291')
