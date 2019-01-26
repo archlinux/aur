@@ -1,5 +1,5 @@
-# Maintainer: Alex Zappa <reatlat@gmail.com>
 # Maintainer: Bernardo Kuri <aur@bkuri.com>
+# Contributor: Alex Zappa <reatlat@gmail.com>
 
 pkgname=wavebox-bin-beta
 pkgver=4.5.11
