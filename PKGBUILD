@@ -3,8 +3,8 @@
 pkgname=tunneltanks-git
 _pkgname=tunneltanks
 pkgver=r74.44cf228
-pkgrel=1
-pkgdesc="SL remake of the early 90's tank game Tunneler"
+pkgrel=2
+pkgdesc="SDL remake of the early 90's tank game Tunneler"
 url="https://github.com/raydog/tunneltanks"
 depends=('sdl')
 makedepends=('git' 'gendesk')
