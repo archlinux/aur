@@ -1,6 +1,6 @@
 pkgbase = musikcube
 	pkgdesc = A terminal-based cross-platform music player, audio engine, metadata indexer, and server
-	pkgver = 0.61.0
+	pkgver = 0.62.2
 	pkgrel = 1
 	url = https://github.com/clangen/musikcube
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = musikcube
 	depends = ffmpeg
 	depends = taglib
 	conflicts = musikcube-git
-	source = https://github.com/clangen/musikcube/archive/0.61.0.tar.gz
-	sha256sums = 6042ee35897fed16a30b00afc6a62b0d5b9b77d3526dab648599755231916aaf
+	source = https://github.com/clangen/musikcube/archive/0.62.2.tar.gz
+	sha256sums = ccb0310c88766be25cc90d5ab6faa17e26ffdb1b3c7eca9362b2808c40f98cd3
 
 pkgname = musikcube
 
