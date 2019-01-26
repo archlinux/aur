@@ -1,0 +1,12 @@
+[Unit]
+Description=Don't Starve Together Dedicated Server
+After=local-fs.target network.target dst-server-steamcmd.service
+Requires=local-fs.target network.target dst-server-steamcmd.service
+
+[Service]
+User=dstds
+WorkingDirectory=/var/lib/dstds/Steam/steamapps/common/Don't Starve Together Dedicated Server/bin
+ExecStart=env "./dontstarve_dedicated_server_nullrenderer"
+
+[Install]
+WantedBy=multi-user.target
