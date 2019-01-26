@@ -1,0 +1,19 @@
+pkgbase = fusee-launcher-git
+	pkgdesc = work-in-progress launcher for one of the Tegra X1 bootROM exploits
+	pkgver = r30.265e8f3
+	pkgrel = 1
+	url = https://github.com/Cease-and-DeSwitch/fusee-launcher
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = arm-none-eabi-gcc
+	depends = python-pyusb
+	provides = fusee-launcher
+	conflicts = fusee-launcher
+	source = git+https://github.com/Cease-and-DeSwitch/fusee-launcher.git
+	source = runner.sh
+	md5sums = SKIP
+	md5sums = 1d81a0959d6f81c94caca58d3496ba7b
+
+pkgname = fusee-launcher-git
+
