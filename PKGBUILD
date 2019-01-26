@@ -1,9 +1,9 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-_commit=9a543202c93ef903b07b293463650d78002ae866
-pkgver=2.0.4.r497
-pkgrel=4
+_commit=dbbd93171374323cef95e2bcde9767bca77143b2
+pkgver=2.1.1.r193
+pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
@@ -20,7 +20,6 @@ source=(git+https://github.com/tarantool/tarantool.git#commit=$_commit
         git+https://github.com/tarantool/small.git
         git+https://github.com/tarantool/zstd.git
         git+https://github.com/tarantool/luarocks.git#branch=tarantool-1.7
-        libcurl-7.62.patch
         tarantool.sysusers)
 sha1sums=('SKIP'
           'SKIP'
@@ -31,7 +30,6 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          '8308459e0d3832cbdf37b8aa678fde37ed627fce'
           '9021b3d50e45f719f0304ab529627cac69a7a149')
 
 pkgver() {
@@ -41,9 +39,6 @@ pkgver() {
 
 prepare() {
   cd tarantool
-
-  # https://github.com/tarantool/tarantool/commit/02da15f710
-  patch -Np1 -i ../libcurl-7.62.patch
 
   git submodule init
   git config -f .gitmodules 'submodule.third_party/luajit.url' "$srcdir/luajit"
@@ -74,7 +69,8 @@ build() {
     -DENABLE_BUNDLED_LIBYAML:BOOL=OFF \
     -DENABLE_BACKTRACE:BOOL=ON \
     -DWITH_SYSTEMD:BOOL=ON \
-    -DENABLE_DIST:BOOL=ON
+    -DENABLE_DIST:BOOL=ON \
+    .
   make
 }
 
