@@ -1,13 +1,14 @@
+# Maintainer: Bernardo Kuri <aur@bkuri.com>
 # Maintainer: Rasmus Steinke <rasi at xssn dot at>
 
 pkgname=rofi-surfraw-git
-pkgver=44.e59c541
+pkgver=81.8c5717e
 pkgrel=1
 pkgdesc="Universal tool to search the internet"
 arch=('any')
 url='https://github.com/carnager/rofi-scripts'
 license=('GPL')
-depends=('rofi-git' 'surfraw')
+depends=('rofi' 'surfraw')
 
 install=rofi-surfraw.install
 makedepends=('git')
