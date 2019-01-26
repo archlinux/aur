@@ -1,0 +1,12 @@
+diff -Naur tuxracer-0.61/src/ui_mgr.c tuxracer-0.61-my/src/ui_mgr.c
+--- tuxracer-0.61/src/ui_mgr.c	2001-01-13 23:09:51.000000000 +0100
++++ tuxracer-0.61-my/src/ui_mgr.c	2019-01-26 12:55:40.318446087 +0100
+@@ -35,7 +35,7 @@
+ static hash_table_t widget_draw_cbs;
+ static bool_t initialized = False;
+ static bool_t needs_redraw = True;
+-static char key_buffer[12]; /* enough to hold a pointer in hex */
++static char key_buffer[sizeof(void*) * 3]; /* enough to hold a pointer in hex */
+ static point2d_t cursor_pos = { 0, 0 };
+ static bool_t left_mouse_button_down = False;
+ static bool_t middle_mouse_button_down = False;
