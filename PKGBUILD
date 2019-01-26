@@ -1,11 +1,11 @@
 # Maintainer: James Groom <OSSYoshiRulz at gmail dot com>
 pkgname=libquicknes-dll
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BizHawk's alternate Famicom/NES emulator core."
 arch=("x86_64")
 url="https://gitlab.com/TASVideos/libquicknes"
-license=("LGPL2.1")
+license=("unknown")
 depends=("gcc-libs")
 source=("https://gitlab.com/TASVideos/libquicknes/-/archive/$pkgver/libquicknes-$pkgver.tar.gz")
 sha512sums=("2d537db42fd5b65b70e6c17524ab2d196bae62d077d93b0ecfaeb3409d16be0bbca8d7b3f0caa48c411cc87d8047d6d4e2e1f3f2549febdeeec68fb368f292ea")
