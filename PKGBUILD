@@ -7,9 +7,8 @@ pkgname=openblas-lapack-openmp
 _PkgName=OpenBLAS
 _pkgname=openblas
 pkgver=0.3.4
-# grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.8.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -18,15 +17,17 @@ depends=('gcc-libs')
 makedepends=('perl' 'gcc-fortran')
 provides=('openblas' "blas=${_lapackver}" "lapack=${_lapackver}" "cblas=${_lapackver}" "lapacke=${_lapackver}")
 conflicts=('openblas' 'blas' 'lapack' 'cblas' 'lapacke')
-options=(!emptydirs)
+options=(!emptydirs !strip)
 source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
 sha256sums=('SKIP')
 
-_config="FC=gfortran USE_OPENMP=1 USE_THREAD=1 \
-  USE_COMPILER_TLS=0 \
-  NO_LAPACK=0 BUILD_LAPACK_DEPRECATED=1" \
-  MAKE_NB_JOBS=`cat /proc/cpuinfo | grep processor | wc -l` \
+_ncpus=$(eval "cat /proc/cpuinfo | grep MHz | wc -l")
 
+_config="CC=gcc FC=gfortran \
+  USE_OPENMP=1 USE_THREAD=1 USE_COMPILER_TLS=0 \
+  NO_LAPACK=0 BUILD_LAPACK_DEPRECATED=1 \
+  MAKE_NB_JOBS=${_ncpus} \
+  PREFIX=/usr/ "
 
 build(){
   cd "${srcdir}/${_PkgName}-${pkgver}"

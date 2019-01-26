@@ -1,7 +1,7 @@
 pkgbase = openblas-lapack-openmp
 	pkgdesc = Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)
 	pkgver = 0.3.4
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.openblas.net/
 	arch = any
 	license = BSD
@@ -19,6 +19,7 @@ pkgbase = openblas-lapack-openmp
 	conflicts = cblas
 	conflicts = lapacke
 	options = !emptydirs
+	options = !strip
 	source = OpenBLAS-0.3.4.tar.gz::https://github.com/xianyi/OpenBLAS/archive/v0.3.4.tar.gz
 	sha256sums = SKIP
 
