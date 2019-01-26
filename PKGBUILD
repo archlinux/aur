@@ -2,16 +2,17 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=arcctl
-pkgver=1.50.0
-_buildver=170105
+pkgver=1.15.8
+pkgrel=1
+_buildver=180529
 pkgrel=1
 pkgdesc="CLI tools to manage Areca's ARC11xx/ARC12xx/ARC16xx/ARC18xx RAID controllers"
 arch=('i686' 'x86_64')
-url="http://www.areca.com.tw/support/s_linux/linux.htm"
+url="https://www.areca.us/support/s_linux/linux.htm"
 license=('custom')
 depends=('gcc-libs')
-source=(http://www.areca.us/support/s_linux/driver/cli/linuxcli_V${pkgver}_${_buildver}.zip)
-sha256sums=('0fa4025e81d631bc668aff3ff084a6984a7f7b3c7f6b5271bbdaeb4efc143ee2')
+source=(https://www.areca.us/support/s_linux/driver/cli/linuxcli_V${pkgver}_${_buildver}.zip)
+sha256sums=('c73a1e80cc0e23d0940259c1a3efd2aad7d906c93b5c7556277623bf394323d2')
 
 package() {
   if [ $CARCH == x86_64 ]; then
