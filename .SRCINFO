@@ -1,0 +1,15 @@
+pkgbase = nsh
+	pkgdesc = A minimal and fast shell.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://gitlab.com/xacrimon/nsh
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	source = https://files.nebulanet.cc/nsh/release/nsh-v0.1.2.tar
+	md5sums = 672f879232b49305e1458f71ff8b7001
+
+pkgname = nsh
+
