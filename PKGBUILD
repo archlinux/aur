@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-tslib
 _pkgname=tslib
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 pkgdesc="Touchscreen Access Library (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/kergoth/tslib/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('986cce6d8ed896c0eba68d78acd788c7860ffe8a2165a9f631954e7f2889958b')
+sha256sums=('efe1fef16a00dc818f1d8e402877184dadf331f1b0dd1fbfeeb2698ee8647f4d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
