@@ -3,8 +3,8 @@
 pkgname=lib32-munt-git
 _pkgname=munt
 pkgdesc="Software synthesiser emulating pre-GM MIDI devices, such as the Roland MT-32"
-pkgver=1977.aa2a2f2
-pkgrel=2
+pkgver=1979.9bb289a
+pkgrel=1
 arch=(x86_64)
 url="http://munt.sourceforge.net"
 license=(LGPL2.1)
@@ -23,7 +23,7 @@ build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  cmake -DCMAKE_INSTALL_PREFIX='/usr'\
+  cmake . -DCMAKE_INSTALL_PREFIX='/usr'\
 	-Dmunt_WITH_MT32EMU_QT='FALSE'\
 	-Dmunt_WITH_MT32EMU_SMF2WAV='FALSE'
   make
