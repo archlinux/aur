@@ -1,7 +1,7 @@
 # Maintainer: robus <RobusGrobus95@gmail.com>
 _pkgname=nvidia-xrun
 pkgname=$_pkgname"-git"
-pkgver=0.3
+pkgver=0.3.40.gb8bd592
 pkgrel=1
 epoch=
 pkgdesc="Script to run dedicated X server with discrete nvidia graphics (git version)"
@@ -9,7 +9,7 @@ arch=("x86_64")
 url="https://github.com/Witko/nvidia-xrun"
 license=('GPL')
 groups=()
-depends=('xorg-server' 'xorg-xinit' 'xorg-xrandr' 'nvidia' 'mesa-libgl' 'bbswitch')
+depends=('xorg-server' 'xorg-xinit' 'xorg-xrandr' 'nvidia' 'mesa-libgl')
 makedepends=('git')
 checkdepends=()
 optdepends=()
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("git+https://github.com/Witko/$_pkgname.git")
 noextract=()
-md5sums=()
+md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
@@ -38,5 +38,4 @@ package() {
 	install -dm 555 "$pkgdir/etc/X11/xinit/nvidia-xinitrc.d"
 	install -dm 555 "$pkgdir/etc/X11/nvidia-xorg.conf.d"
 }
-md5sums=('SKIP')
 
