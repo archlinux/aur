@@ -25,7 +25,7 @@ pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
 pkgver=18.0rc5.2
 # diffs: https://github.com/xbmc/xbmc/compare/18.0rc5-Leia..18.0rc5.2-Leia
-pkgrel=6
+pkgrel=7
 _codename=Leia
 _tag="$pkgver-$_codename"
 # Found on their respective github release pages. One can check them against
@@ -150,7 +150,7 @@ build() {
 package_kodi-devel() {
   pkgdesc="Alpha, Beta, or RC versions of the software media player and entertainment hub for digital media"
   depends=(
-    'bluez-libs' 'desktop-file-utils' 'freetype2' 'fribidi'
+    'bluez-libs' 'curl' 'desktop-file-utils' 'freetype2' 'fribidi'
     'hicolor-icon-theme' 'libass' 'libcdio' 'libjpeg-turbo' 'mariadb-libs'
     'libmicrohttpd' 'libpulse' 'libssh' 'libva' 'libvdpau' 'libxrandr' 'libcec' 'libnfs'
     'libxslt' 'lirc' 'lzo' 'mesa' 'python2-pillow' 'python2-simplejson' 'smbclient'
