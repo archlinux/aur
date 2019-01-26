@@ -1,8 +1,9 @@
-# Maintainer: Frederick Gnodtke <fgnodtke at cronosx dot de>
+# Maintainer: Bernardo Kuri <aur@bkuri.com>
+# Contributor: Frederick Gnodtke <fgnodtke at cronosx dot de>
 
 pkgname=i3-easyfocus-git
-pkgver=r34.461b6c6
-pkgrel=2
+pkgver=r46.3631d5a
+pkgrel=1
 pkgdesc='Focus and select windows in i3.'
 arch=('x86_64')
 url='https://github.com/cornerman/i3-easyfocus'
