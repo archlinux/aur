@@ -6,13 +6,13 @@ _qtver=5.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
-url='http://qt-project.org/'
+url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='QPA plugin for running an application via a browser using streamed WebGL commands'
 depends=(qt5-websockets qt5-declarative)
 groups=(qt qt5)
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
 sha256sums=('65223ad13a46e38343a621459a60ea25bc9e74d6549bf62a2d54d839c66b652e')
 
 prepare() {
