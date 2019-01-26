@@ -5,7 +5,6 @@ pkgbase = electrum-ltc
 	url = https://electrum-ltc.org/
 	arch = any
 	license = MIT
-	makedepends = python-requests
 	depends = desktop-file-utils
 	depends = libsecp256k1
 	depends = python-aiohttp_socks

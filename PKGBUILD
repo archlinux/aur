@@ -23,7 +23,6 @@ depends=(desktop-file-utils
          python-scrypt
          python-websocket-client
          zbar)
-makedepends=(python-requests)
 source=("https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz")
 sha256sums=(5adb4f08c822741e51a5b83908851b68f7d1cac0b6c13ccf906b8cd9040c202b)
 
