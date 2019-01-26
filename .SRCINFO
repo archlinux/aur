@@ -1,7 +1,7 @@
 pkgbase = python2-yle-dl
 	pkgdesc = Download video and audio from YLE Areena.
 	pkgver = 20181221
-	pkgrel = 1
+	pkgrel = 2
 	url = http://aajanki.github.io/yle-dl/
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = python2-yle-dl
 	depends = ffmpeg
 	depends = python2-attrs>=18.1.0
 	depends = python2-attrs<18.3.0
-	depends = python2-configargparse
+	depends = python2-configargparse=0.13.0
 	depends = python2-future
 	depends = python2-lxml
 	depends = python2-mini-amf
