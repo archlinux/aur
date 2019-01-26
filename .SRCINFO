@@ -1,7 +1,7 @@
 pkgbase = libquicknes-dll
 	pkgdesc = BizHawk's alternate Famicom/NES emulator core.
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/TASVideos/libquicknes
 	arch = x86_64
 	license = unknown
