@@ -4,26 +4,27 @@
 # Contributor: Artem Sereda <overmind88@gmail.com>
 
 pkgname=kde-thumbnailer-apk
-pkgver=1.0
-pkgrel=3
-pkgdesc="Preview image generator plugin for Android Application Package files."
+pkgver=1.1
+pkgrel=1
+pkgdesc="Preview image generator plugin for Android Application Package files"
 arch=('i686' 'x86_64')
-url="https://store.kde.org/p/1081013/"
+url="https://github.com/z3ntu/kde-thumbnailer-apk"
 license=('GPL')
-depends=('kdelibs')
-makedepends=('cmake' 'automoc4')
-source=("${pkgname}-${pkgver}.tar.bz2::https://dl.opendesktop.org/api/files/download/id/1460972065/156421-${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('aefb7296a5207e13c4f3624acb6fd3ea359972fbee7f618686f970036067f476')
+depends=('kio')
+makedepends=('cmake' 'extra-cmake-modules')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/z3ntu/kde-thumbnailer-apk/archive/v1.1.tar.gz")
+sha512sums=('6754e77491f7b2b6b4eb37cea3743f56622f93ce914c0c2cdfbcf642c02f32b5b9fe3b737387013a3465a008898db72c41450a2303eb20c116667d4301f2e6fd')
 
 build() {
-  cd $srcdir/$pkgname
+  mkdir -p $pkgname-$pkgver/build
+  cd $pkgname-$pkgver/build
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DAutomoc4_DIR=/usr/lib/automoc4
+        -DCMAKE_INSTALL_LIBDIR=lib ..
   make
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd $pkgname-$pkgver/build
   make DESTDIR="$pkgdir" install
 }
 
