@@ -1,6 +1,6 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 # Test URL: https://www.isign.io/chrome-extension-verify
-pkgname=dokobit-chrome-signing
+pkgname=dokobit-plugin
 pkgver=1.3.1.0
 pkgrel=1
 pkgdesc="Google Chrome & Mozilla native smartcard plugin for Dokobit (previously isign.io & app.digidoc.ee)"
