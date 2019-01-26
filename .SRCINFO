@@ -1,6 +1,6 @@
 pkgbase = marble-marcher-git
 	pkgdesc = A Fractal Physics Game.
-	pkgver = 0.0.0.g23ac1f8
+	pkgver = 0.0.0.g8503931
 	pkgrel = 1
 	url = https://codeparade.itch.io/marblemarcher
 	arch = i686

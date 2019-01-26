@@ -3,7 +3,7 @@
 # Upstream: https://github.com/HackerPoet/MarbleMarcher
 
 pkgname=marble-marcher-git
-pkgver=0.0.0.g23ac1f8
+pkgver=0.0.0.g8503931
 pkgrel=1
 pkgdesc='A Fractal Physics Game.'
 arch=('i686' 'x86_64')
