@@ -2,7 +2,7 @@
 
 _pkgbase='macreg'
 pkgname="${_pkgbase}-git"
-pkgver=latest
+pkgver=r89.ac3050c
 pkgrel=1
 pkgdesc='Micro web service to allow local users to register MAC addresses'
 arch=('any')
@@ -43,6 +43,7 @@ package() {
     local UWSGI="${pkgdir}/etc/uwsgi"
     install -m 755 -d "${UWSGI}"
     install -m 644 -t "${UWSGI}" macreg.ini
+    install -Dm 755 macregctl "${pkgdir}/usr/bin/macregctl"
     popd || exit 1
 
     # Install HML front end.
