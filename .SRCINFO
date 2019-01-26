@@ -1,6 +1,6 @@
 pkgbase = brlcad
 	pkgdesc = An extensive 3D solid modeling system.
-	pkgver = 7.26.4
+	pkgver = 7.28.0
 	pkgrel = 0
 	url = https://brlcad.org
 	install = brlcad.install
@@ -14,9 +14,9 @@ pkgbase = brlcad
 	depends = libxft
 	depends = libxi
 	source = build.patch
-	source = http://downloads.sourceforge.net/sourceforge/brlcad/brlcad-7.26.4.tar.bz2
+	source = http://downloads.sourceforge.net/sourceforge/brlcad/brlcad-7.28.0.tar.bz2
 	sha256sums = SKIP
-	sha256sums = 1fbf2551b9dd8b1b97beca9eb26bb2db9aa270017cc17329ba3a7518bab30440
+	sha256sums = c6df320117fd50ecada5745a6f4c079b361df240915ed9c536aa1b697548a466
 
 pkgname = brlcad
 
