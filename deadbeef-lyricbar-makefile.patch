@@ -1,0 +1,20 @@
+diff -u -r -N deadbeef-lyricbar/Makefile deadbeef-lyricbar-patched/Makefile
+--- deadbeef-lyricbar/Makefile	2019-01-26 07:15:48.094070816 +0100
++++ deadbeef-lyricbar-patched/Makefile	2019-01-26 07:23:44.715782959 +0100
+@@ -1,5 +1,5 @@
+-CFLAGS+=-std=c99 -Wall -O2 -D_GNU_SOURCE -fPIC -fvisibility=hidden -flto
+-CXXFLAGS+=-std=c++14 -Wall -O2 -fPIC -fvisibility=hidden -flto
++CFLAGS+=-std=c99 -Wall $(COPTS) -D_GNU_SOURCE -fPIC -fvisibility=hidden -flto
++CXXFLAGS+=-std=c++14 -Wall $(CXXOPTS) -fPIC -fvisibility=hidden -flto
+ LIBFLAGS=`pkg-config --cflags libxml++-3.0 $(GTKMM) $(GTK)`
+ LIBS=`pkg-config --libs libxml++-3.0 $(GTKMM) $(GTK)`
+ 
+@@ -32,7 +32,7 @@
+ install:
+ 	install -d $(prefix)/lib/deadbeef
+ 	install -d $(prefix)/share/locale/ru/LC_MESSAGES
+-	install -m 666 -D *.so $(prefix)/lib/deadbeef
++	install -m 0755 -D *.so $(prefix)/lib/deadbeef
+ 	msgfmt gettext/ru/deadbeef-lyricbar.po -o $(prefix)/share/locale/ru/LC_MESSAGES/deadbeef-lyricbar.mo
+ 
+ clean:
