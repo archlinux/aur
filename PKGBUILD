@@ -13,7 +13,7 @@ pkgver=8.2.0
 _mpfrver=4.0.1
 _mpcver=1.1.0
 _gmpver=6.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection. Bootstrap for toolchain building (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -21,16 +21,20 @@ url="http://gcc.gnu.org"
 depends=("${_target}-binutils>=2.29-1" 'zlib')
 options=('!emptydirs' '!distcc' '!strip')
 source=("http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
+        "http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz.sig"
         "http://ftp.gnu.org/gnu/mpfr/mpfr-${_mpfrver}.tar.xz"
+        "http://ftp.gnu.org/gnu/mpfr/mpfr-${_mpfrver}.tar.xz.sig"
         "http://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz"
-        "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz")
-
+        "http://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz.sig"
+        "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz"
+        "http://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz.sig")
 
         
-sha256sums=('196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080'
-            '67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e'
-            '6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e'
-            '87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912')
+sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06
+              07F3DBBECC1A39605078094D980C197698C3739D
+              AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3
+              343C2FF0FBEE5EC2EDBEF399F3599FF828C67298)
 
 prepare() {
   cd ${srcdir}/gcc-${pkgver}
