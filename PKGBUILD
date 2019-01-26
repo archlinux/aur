@@ -6,8 +6,8 @@ _target=aarch64-linux-gnu
 pkgname=$_target-gcc-openmp
 pkgver=8.2.0
 _islver=0.18
-pkgrel=3
-pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target with OpenMP'
+pkgrel=4
+pkgdesc='The GNU Compiler Collection - cross compiler for ARMV8 target with OpenMP'
 arch=(i686 x86_64)
 url='http://gcc.gnu.org/'
 license=(GPL LGPL FDL)
@@ -22,6 +22,7 @@ sha512sums=('SKIP'
             '85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94')
 
 _basedir=gcc-$pkgver
+_ncpus=$(eval "cat /proc/cpuinfo | grep MHz | wc -l")
 
 prepare() {
   cd $_basedir
@@ -69,7 +70,7 @@ build() {
       --disable-multilib \
       --enable-checking=release
 
-  make -j2
+  make -j${_ncpus}
 }
 
 package() {

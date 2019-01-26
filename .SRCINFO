@@ -1,7 +1,7 @@
 pkgbase = aarch64-linux-gnu-gcc-openmp
-	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target with OpenMP
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARMV8 target with OpenMP
 	pkgver = 8.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gcc.gnu.org/
 	arch = i686
 	arch = x86_64
