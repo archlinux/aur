@@ -7,7 +7,7 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=1.10.1
+pkgver=1.11.2
 pkgrel=1
 pkgdesc='Small but very powerful text-based mail client - slang version'
 url='http://www.mutt.org/'
@@ -17,11 +17,11 @@ license=('GPL')
 backup=('etc/Muttrc')
 arch=('x86_64')
 optdepends=('smtp-forwarder: to send mail')
-depends=('gpgme' 'slang' 'openssl' 'libsasl' 'gdbm' 'libidn' 'mime-types' 'krb5')
-source=("http://ftp.mutt.org/pub/mutt/${_pkgbase}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('734a3883158ec3d180cf6538d8bd7f685ce641d2cdef657aa0038f76e79a54a0'
-            'SKIP')
+depends=('gpgme' 'slang' 'openssl' 'libsasl' 'gdbm' 'libidn2' 'mime-types' 'krb5')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
+source=("http://ftp.mutt.org/pub/mutt/${_pkgbase}-${pkgver}.tar.gz"{,.asc})
+sha256sums=('da5cd4c39f228914d3933d8cf3a017c8271fdd9b9d81c6e4fc42ad22e1a28723'
+            'SKIP')
 
 build() {
 	cd "${srcdir}/${_pkgbase}-${pkgver}"
@@ -35,11 +35,10 @@ build() {
 		--enable-hcache \
 		--enable-sidebar \
 		--with-slang=/usr \
-		--with-regex \
 		--with-gss=/usr \
 		--with-ssl=/usr \
 		--with-sasl \
-		--with-idn \
+		--with-idn2 \
 
 	make
 }
