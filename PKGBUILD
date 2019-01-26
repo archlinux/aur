@@ -6,13 +6,13 @@ pkgver=master
 pkgrel=1
 pkgdesc="C library for reading and writing YAML"
 arch=('x86_64')
-url="https://gitlab.com/alextee/libcyaml"
+url="https://git.zrythm.org/zrythm/libcyaml"
 license=('ISC')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('libyaml')
 makedepends=('git')
-source=("$_pkgname::git+https://gitlab.com/alextee/$_pkgname.git")
+source=("$_pkgname::git+https://git.zrythm.org/zrythm/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver () {
