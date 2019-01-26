@@ -1,0 +1,27 @@
+pkgbase = arm-linux-gnueabihf-gcc-openmp
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARMV7 target with OpenMP
+	pkgver = 8.2.0
+	pkgrel = 1
+	url = http://gcc.gnu.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = gmp
+	makedepends = mpfr
+	depends = arm-linux-gnueabihf-binutils
+	depends = arm-linux-gnueabihf-glibc
+	depends = libmpc
+	depends = zlib
+	provides = aarch64-linux-gnu-gcc
+	conflicts = aarch64-linux-gnu-gcc
+	options = !emptydirs
+	options = !strip
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-8.2.0/gcc-8.2.0.tar.xz
+	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
+	sha512sums = SKIP
+	sha512sums = 85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94
+
+pkgname = arm-linux-gnueabihf-gcc-openmp
+
