@@ -11,7 +11,7 @@ pkgrel=4
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
-url="http://www.digikam.org/"
+url="https://www.digikam.org/"
 makedepends=(extra-cmake-modules libkipi libksane liblqr opencv doxygen lensfun eigen boost kdoctools marble-common
              kfilemetadata akonadi-contacts qtav threadweaver kcalcore knotifyconfig libmediawiki libkvkontakte glu qt5-xmlpatterns)
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz"
