@@ -1,12 +1,12 @@
 # Maintainer: NexAdn <nexadn@yandex.com>
 pkgname=cef-standard
-pkgver=3.3578.1864.gfa073f3
+pkgver=3.3578.1866.g8121366
 pkgrel=1
 pkgdesc="Chromium Embedded Framework standard release"
 arch=("i686" "x86_64")
 url="https://bitbucket.org/chromiumembedded/cef"
 license=("BSD")
-depends=("nss" "alsa-lib" "atk" "pango" "libxrandr" "libxcursor" "libxss" "libxtst" "libxcomposite" "libglvnd" "dbus")
+depends=("nss" "alsa-lib" "at-spi2-atk" "pango" "libxrandr" "libxcursor" "libxss" "libxtst" "libxcomposite" "libglvnd" "dbus")
 makedepends=("cmake" "make")
 provides=("cef" "cef-minimal")
 conflicts=("cef-minimal" "cef-git")
@@ -16,8 +16,8 @@ source_i686=(
 source_x86_64=(
     "http://opensource.spotify.com/cefbuilds/cef_binary_${pkgver}_linux64.tar.bz2"
 )
-sha1sums_i686=('74fa3ca711b73a865ad3983177cd75901f836a32')
-sha1sums_x86_64=('058a7fb37bbab6b93322079c4893f884eea9f3eb')
+sha1sums_i686=('d616ae36854ca468f038919684ae88df08617474')
+sha1sums_x86_64=('c4d505933243791aa7bb4bcada2f9eba0a1f5caf')
 [[ "$CARCH" = "i686" ]] && _arch="32"
 [[ "$CARCH" = "x86_64" ]] && _arch="64"
 build() {
