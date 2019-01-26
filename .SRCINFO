@@ -1,6 +1,6 @@
 pkgbase = linphone-desktop-git
 	pkgdesc = A Voice-over-IP phone
-	pkgver = 4.1.1.r654.g6931c43d
+	pkgver = 4.1.1.r655.g95245907
 	pkgrel = 1
 	url = http://www.linphone.org
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = linphone-desktop-git
 	depends = libpulse
 	depends = libxv
 	depends = mediastreamer-git
-	depends = minizip-git
+	depends = minizip2=2.3.3
 	depends = ortp-git
 	depends = libsoup
 	depends = libnotify
@@ -31,7 +31,9 @@ pkgbase = linphone-desktop-git
 	conflicts = linphone-desktop
 	options = !emptydirs
 	source = git+https://github.com/BelledonneCommunications/linphone-desktop.git
+	source = linker.patch
 	sha256sums = SKIP
+	sha256sums = 02c3d9dd31f7369cdbb2871c11cc46c7c86867b2b220c6ca1390ead320b6dcd0
 
 pkgname = linphone-desktop-git
 
