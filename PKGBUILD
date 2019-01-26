@@ -2,16 +2,21 @@
 
 pkgname=osmo-trx-git
 _pkgname=osmo-trx
-pkgver=3214
+pkgver=1.0.0.5.g158ea5b
 pkgrel=1
 pkgdesc="OpenBTS transceiver retro-fit"
 arch=('any')
-url="http://openbsc.osmocom.org/trac/wiki/OsmoTRX"
+url="https://osmocom.org/projects/osmotrx/wiki/OsmoTRX"
 license=(GPL)
-depends=('libuhd')
+depends=('boost' 'libuhd')
 optdepends=('gnuradio: legacy support for USRP1')
 source=("git://git.osmocom.org/${_pkgname}")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  echo $(git describe --always | sed 's/-/./g')
+}
 
 build() {
   cd "${srcdir}/${_pkgname}"
