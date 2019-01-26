@@ -6,7 +6,7 @@ _qtver=5.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
-url='http://qt-project.org/'
+url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Inter-process communication (IPC) module developed for Qt'
 depends=(qt5-base)
@@ -14,7 +14,7 @@ makedepends=(qt5-declarative)
 optdepends=('qt5-declarative: QML bindings')
 groups=(qt qt5)
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
 sha256sums=('0940d0a4a961b64f38c52a2e5638c2b3341fe46bd6bd88d1c638707f42159d5f')
 
 prepare() {
