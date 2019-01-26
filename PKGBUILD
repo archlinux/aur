@@ -9,8 +9,8 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-newlib
-pkgver=3.0.0
-_srcdate=20180802
+pkgver=3.1.0
+_srcdate=20181231
 pkgrel=4
 pkgdesc="C library for bare metal systems (${_target})."
 arch=(any)
@@ -20,7 +20,7 @@ groups=(devel)
 depends=("${_target}-gcc-bootstrap" "${_target}-binutils")
 options=('!makeflags' '!strip' 'staticlibs' '!libtool')
 source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.${_srcdate}.tar.gz")
-sha256sums=('85444b42f1379678d1c9f295813bc81d12f7f5a648f0c9a872fe7c24568263f6')
+sha256sums=('9e12fea7297648b114434033ed4458755afe7b9b6c7d58123389e82bd37681c0')
 
 prepare() {
   mkdir ${srcdir}/newlib-build
