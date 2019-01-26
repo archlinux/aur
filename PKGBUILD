@@ -1,33 +1,42 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=cerbere-git
-pkgver=r117.e44a9dd
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='The Pantheon Watchdog'
-arch=('x86_64')
-url='https://github.com/elementary/cerbere'
-license=('GPL2')
-groups=('pantheon-unstable')
-depends=('dconf' 'glib2' 'glibc' 'libgee')
-makedepends=('git' 'meson' 'vala')
-provides=('cerbere')
-conflicts=('cerbere')
-source=('git+https://github.com/elementary/cerbere.git')
-sha256sums=('SKIP')
+arch=(x86_64)
+url=https://github.com/elementary/cerbere
+license=(GPL2)
+groups=(pantheon-unstable)
+depends=(
+  dconf
+  glib2
+  libgee
+)
+makedepends=(
+  git
+  meson
+  vala
+)
+provides=(cerbere)
+conflicts=(cerbere)
+source=(git+https://github.com/elementary/cerbere.git)
+sha256sums=(SKIP)
 
 pkgver() {
   cd cerbere
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/-/.r/; s/-g/./'
 }
 
 build() {
-  arch-meson cerbere build
+  arch-meson cerbere build \
+    -D b_pie=false
   ninja -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" meson install -C build
 }
 
 # vim: ts=2 sw=2 et:
