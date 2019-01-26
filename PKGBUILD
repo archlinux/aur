@@ -2,8 +2,8 @@
 # Original Theme by: Andrés Rodríguez <https://gitlab.com/mixedCase>
 
 pkgname=sddm-lain-wired-theme
-pkgver=0.9
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc='A sddm theme inspired by Serial experiments lain'
 arch=('any')
 url='https://github.com/lll2yu/sddm-lain-wired-theme'
@@ -17,7 +17,7 @@ source=(
 )
 
 sha512sums=(
-	'66f07cd8f087d97bb4c0edfadd4b9a92d4e4d8249d7b4ef06dfe2ff0c142c1f8757d18a88f9686f3b09d273a4d0df69a6b868292593182bd865b63c68726c79a'
+	'1c01eb3f4859ad4aa96076f9c917835a76b2c29ab1fde274bedacdb744058960363221f69b405a6646d65bcd4154e2e2d1ab3ca34b577a176644f72a044c70ac'
 )
 
 package() {
