@@ -1,5 +1,5 @@
 # Maintainer: Bernardo Kuri <aur@bkuri.com>
-# Maintainer: Rasmus Steinke <rasi at xssn dot at>
+# Contributor: Rasmus Steinke <rasi at xssn dot at>
 
 pkgname=rofi-surfraw-git
 pkgver=81.8c5717e
