@@ -12,3 +12,4 @@ pkgbase = luxtrust-middleware
 	sha256sums_x86_64 = 487c5f60a8dbb6212e24c41f9b80bf7d845bb13b29f129c96a7c3d070006cb80
 
 pkgname = luxtrust-middleware
+

@@ -32,8 +32,9 @@ package() {
   cp -a opt "$pkgdir"/
 
   cd "$pkgdir"
+  echo "$pkgdir"
 
-  install -D -m 644 opt/LuxTrustMiddleware.desktop \
+  install -D -m 644 opt/LuxTrustMiddleware/LuxTrustMiddleware.desktop \
                     "$pkgdir"/usr/share/applications/LuxTrustMiddleware.desktop
 }
 
