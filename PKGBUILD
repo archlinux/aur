@@ -2,7 +2,7 @@
 
 _pkgbase='macreg'
 pkgname="${_pkgbase}-git"
-pkgver=r89.ac3050c
+pkgver=r94.276de85
 pkgrel=1
 pkgdesc='Micro web service to allow local users to register MAC addresses'
 arch=('any')
@@ -21,6 +21,7 @@ provides=("python-${_pkgbase}" "${_pkgbase}")
 conflicts=("python-${_pkgbase}" "${_pkgbase}")
 source=("${_pkgbase}::git+${url}.git")
 md5sums=('SKIP')
+backup=('etc/macreg.conf')
 pkgdir='pkg'
 srcdir='src'
 
@@ -43,6 +44,7 @@ package() {
     local UWSGI="${pkgdir}/etc/uwsgi"
     install -m 755 -d "${UWSGI}"
     install -m 644 -t "${UWSGI}" macreg.ini
+    install -m 644 macreg.conf.sample "${pkgdir}/etc/macreg.conf"
     install -Dm 755 macregctl "${pkgdir}/usr/bin/macregctl"
     popd || exit 1
 
