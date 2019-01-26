@@ -1,6 +1,6 @@
 pkgbase = rofi-surfraw-git
 	pkgdesc = Universal tool to search the internet
-	pkgver = 44.8c5717e
+	pkgver = 81.8c5717e
 	pkgrel = 1
 	url = https://github.com/carnager/rofi-scripts
 	install = rofi-surfraw.install
