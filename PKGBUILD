@@ -1,15 +1,15 @@
 # Maintainer: Muhkoenig
 
 pkgname=libvips
-pkgver=8.7.0
+_pkgname=vips
+pkgver=8.7.3
 pkgrel=1
 pkgdesc="A free image processing system"
 arch=('i686' 'x86_64')
-license=('LGPL 2.1+')
-url="https://jcupitt.github.io/libvips/"
+license=('LGPL 2.1')
+url="https://libvips.github.io/libvips/"
 depends=('libxml2')
 makedepends=(
-	'swig'
 	'gtk-doc'
 	'gobject-introspection'
 )
@@ -25,11 +25,11 @@ optdepends=(
 provides=('libvips')
 conflicts=('libvips-git')
 options=('!libtool')
-source=("https://github.com/jcupitt/libvips/archive/v${pkgver}.tar.gz")
-sha256sums=('79be1d48be6d7426ca41724f920ab6754721449b6bd4ec963ebc3fb4312216b4')
+source=("https://github.com/libvips/libvips/releases/download/v${pkgver}/vips-${pkgver}.tar.gz")
+sha256sums=('03e0ed90d63b4e2d7d60ea5bd97283d0f5b1388c6c363e27ec9d34b624b6f5aa')
 
 build() {
-	cd "$srcdir"/$pkgname-$pkgver
+	cd "$srcdir"/$_pkgname-$pkgver
 
 	./autogen.sh
 	./configure --prefix=/usr
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir"/$pkgname-$pkgver
+	cd "$srcdir"/$_pkgname-$pkgver
 
 	make DESTDIR="$pkgdir" install
 }

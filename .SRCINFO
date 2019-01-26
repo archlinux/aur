@@ -1,12 +1,11 @@
 pkgbase = libvips
 	pkgdesc = A free image processing system
-	pkgver = 8.7.0
+	pkgver = 8.7.3
 	pkgrel = 1
-	url = https://jcupitt.github.io/libvips/
+	url = https://libvips.github.io/libvips/
 	arch = i686
 	arch = x86_64
-	license = LGPL
-	makedepends = swig
+	license = LGPL 2.1
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
 	depends = libxml2
@@ -17,9 +16,11 @@ pkgbase = libvips
 	optdepends = lcms2: transforming images with ICC profiles
 	optdepends = libwebp: for WebP image support
 	optdepends = openexr: for OpenEXR image support(only read)
+	provides = libvips
+	conflicts = libvips-git
 	options = !libtool
-	source = https://github.com/jcupitt/libvips/archive/v8.7.0.tar.gz
-	sha256sums = 79be1d48be6d7426ca41724f920ab6754721449b6bd4ec963ebc3fb4312216b4
+	source = https://github.com/libvips/libvips/releases/download/v8.7.3/vips-8.7.3.tar.gz
+	sha256sums = 03e0ed90d63b4e2d7d60ea5bd97283d0f5b1388c6c363e27ec9d34b624b6f5aa
 
 pkgname = libvips
 
