@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://www.codesynthesis.com/products/xsd"
 license=('GPL2')
 depends=('xerces-c')
-source=("http://www.codesynthesis.com/download/${pkgname}/4.0/${pkgname}-${_pkgver}.tar.bz2"
+source=("https://www.codesynthesis.com/download/${pkgname}/4.0/${pkgname}-${_pkgver}.tar.bz2"
         "xsdcxx.patch")
 sha256sums=('eca52a9c8f52cdbe2ae4e364e4a909503493a0d51ea388fc6c9734565a859817'
             '93f2e6a9dc942cf1fcab7edbe9c38fc102cbaf86f8b667b70aad4e8e2d1e2fd3')
