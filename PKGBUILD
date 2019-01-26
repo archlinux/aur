@@ -1,42 +1,27 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
-# Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
+# Maintainer: Stephen Smith <stephen304@gmail.com>
 
-pkgname=(lua-luafilesystem lua52-luafilesystem lua51-luafilesystem)
-pkgver=1.7.0
+pkgname=lua-luafilesystem
+_rockname=luafilesystem
+pkgver=1.7.0_2
 _tag=${pkgver//./_}
-pkgrel=2
-pkgdesc="A lua library to access the underlying directory structure and file attributes"
-arch=(i686 x86_64)
-url="http://keplerproject.github.io/luafilesystem/"
+_srcver=1.7.0-2
+pkgrel=1
+pkgdesc="File System Library for the Lua Programming Language"
+arch=('i686' 'x86_64')
+url="https://keplerproject.github.io/luafilesystem/"
 license=('MIT')
-depends=(lua)
-makedepends=(make gcc)
-install=
-changelog=
-source=("luafilesystem-${_tag}.tar.gz::https://github.com/keplerproject/luafilesystem/archive/v${_tag}.tar.gz")
-sha256sums=('854ef99b6a4eb48af00c304e26fc4429094a8612003a7a81ba22014f32e85db3')
+depends=('lua')
+makedepends=('luarocks')
+conflicts=()
+source=("${_rockname}-${_tag}.tar.gz::https://github.com/keplerproject/luafilesystem/archive/v${_tag}.tar.gz")
+md5sums=('5166c00df1599a54dc97e84852be7f0c')
 
 build() {
-	cd "luafilesystem-${_tag}"
-	make
+  cd "$_rockname-$_tag"
+  luarocks make --pack-binary-rock --deps-mode=none "rockspecs/$_rockname-$_srcver.rockspec"
 }
 
 package() {
-	_luaver=$1
-	cd "luafilesystem-${_tag}"
-	export PREFIX=${pkgdir}/usr
-	export LUA_LIBDIR=${PREFIX}/lib/lua/${_luaver}
-	make -e install
-}
-
-package_lua-luafilesystem() {
-	package 5.3
-}
-
-package_lua52-luafilesystem() {
-	package 5.2
-}
-
-package_lua51-luafilesystem() {
-	package 5.1
+  luarocks install --tree="$pkgdir/usr/" --deps-mode=none "$_rockname-$_tag"/*.rock
+  find "$pkgdir/usr" -name manifest -delete
 }
