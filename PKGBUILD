@@ -8,6 +8,7 @@ pkgdesc="CGILua is a tool for creating dynamic HTML pages and manipulating input
 arch=('i686' 'x86_64')
 url="http://keplerproject.github.com/cgilua"
 license=('MIT')
+provides=('lua-cgilua')
 depends=('lua' 'lua-luafilesystem')
 makedepends=('luarocks')
 conflicts=()
