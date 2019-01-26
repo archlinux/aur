@@ -3,7 +3,7 @@
 pkgname="python-imageio"
 _pkgname="imageio"
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a Python library that provides an easy interface to read and write a wide range of image data"
 arch=('x86_64')
 _github="imageio/imageio"
@@ -26,6 +26,9 @@ package() {
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+
+  # remove utilities for downloading binary dependencies
+  rm $pkgdir/usr/bin/{imageio_download_bin,imageio_remove_bin}
 }
 
 # vim:set ts=2 sw=2 et:<Paste>
