@@ -1,0 +1,9 @@
+post_install() {
+  echo "Now adding dockremap user and group"
+  useradd dockremap
+}
+
+post_remove() {
+  echo "Removing user and group dockremap"
+  userdel dockremap
+}

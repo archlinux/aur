@@ -1,0 +1,18 @@
+pkgbase = docker-userspace
+	pkgdesc = Docker in Username Space better isolation and security in case of file conflict you have to do it manually
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.tuxnvape.fr/
+	install = docker-userspace.install
+	arch = x86_64
+	license = GPL3
+	depends = docker
+	source = subuid
+	source = subgid
+	source = docker-userspace.service
+	sha256sums = 1eea5693d1ab5ad1d39440085ccea344b54da3a3a1826c91d9153b305d648c14
+	sha256sums = 1eea5693d1ab5ad1d39440085ccea344b54da3a3a1826c91d9153b305d648c14
+	sha256sums = d1e98c9c250c5f7b42e4f824ecdca45fab557f6cce1bc00ce3c7cbc6aea998fa
+
+pkgname = docker-userspace
+
