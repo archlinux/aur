@@ -1,5 +1,5 @@
 pkgbase = dokobit-plugin
-	pkgdesc = Google Chrome & Mozilla native smartcard plugin for Dokobit (previously isign.io & app.digidoc.ee)
+	pkgdesc = Google Chrome & Mozilla native smartcard plugin for Dokobit (previously called isign-chrome-signing)
 	pkgver = 1.3.1.0
 	pkgrel = 1
 	url = https://www.dokobit.com/downloads
@@ -7,6 +7,9 @@ pkgbase = dokobit-plugin
 	arch = x86_64
 	depends = openssl-1.0
 	depends = qt5-base
+	provides = isign-chrome-signing=1.3.1.0
+	conflicts = isign-chrome-signing
+	replaces = isign-chrome-signing
 	source_i686 = https://www.dokobit.com/repo/1.3.1/dokobit-plugin-en-32_1.3.1.0.deb
 	sha256sums_i686 = e84e10af1ff99bd0b63ca8b00e8b090d202c121fb7347a6d86f90ffd59b22aa1
 	source_x86_64 = https://www.dokobit.com/repo/1.3.1/dokobit-plugin-en_1.3.1.0.deb
