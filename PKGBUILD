@@ -12,7 +12,7 @@ url="https://github.com/jorgebucaran/fisher"
 license=("MIT")
 depends=("fish>=2.3.0" "curl" "git")
 makedepends=("git")
-conflicts=("fisherman-git" "fisher")
+conflicts=("fisher")
 install=fisher-git.install
 source=(
     "git+https://github.com/jorgebucaran/fisher.git#branch=${_branch}"

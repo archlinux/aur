@@ -10,7 +10,6 @@ pkgbase = fisher-git
 	depends = fish>=2.3.0
 	depends = curl
 	depends = git
-	conflicts = fisherman-git
 	conflicts = fisher
 	source = git+https://github.com/jorgebucaran/fisher.git#branch=master
 	sha512sums = SKIP
