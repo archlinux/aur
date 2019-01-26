@@ -1,5 +1,5 @@
 pkgname=electrum-ltc
-pkgver=3.3.2.1
+pkgver=3.3.3.1
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
@@ -24,31 +24,21 @@ depends=(desktop-file-utils
          python-websocket-client
          zbar)
 makedepends=(python-requests)
-source=(
-  "electrum-ltc-$pkgver.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/$pkgver"
-)
-sha256sums=(cf77a9dd6e06d991e24ded1230a81172fa236228ed94c1ca971a0f6733b4a33c)
+source=("https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz")
+sha256sums=(5adb4f08c822741e51a5b83908851b68f7d1cac0b6c13ccf906b8cd9040c202b)
 
 prepare() {
-  sed -e 's/Exec=.*electrum-ltc %u"/Exec=electrum-ltc %u/' \
-      -e 's/Exec=.*electrum-ltc --testnet %u"/Exec=electrum-ltc --testnet %u/' \
-      -i electrum-ltc-$pkgver/electrum-ltc.desktop
+  sed -E 's/sh.*(electrum.*)"/\1/' -i Electrum-LTC-$pkgver/electrum-ltc.desktop
 }
 
 build() {
-  cd electrum-ltc-$pkgver
-  pyrcc5 icons.qrc >electrum_ltc/gui/qt/icons_rc.py
-  protoc --proto_path=electrum_ltc --python_out=electrum_ltc electrum_ltc/paymentrequest.proto
-  contrib/make_locale
+  cd Electrum-LTC-$pkgver
   ./setup.py build
 }
 
 package() {
-  cd electrum-ltc-$pkgver
-
+  cd Electrum-LTC-$pkgver
   ./setup.py install -O1 --root="$pkgdir" --skip-build
-
   install -Dm644 AUTHORS README.rst RELEASE-NOTES -t "$pkgdir"/usr/share/doc/electrum-ltc
-
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
