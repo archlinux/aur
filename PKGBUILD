@@ -1,10 +1,10 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=lyra
-pkgver=1.6
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A wonderful 3D cryptocurrency analyzer"
 arch=('x86_64')
-md5sums=('4685f0c5fde344727392a724e801f8c4')
+md5sums=('3881b0c5d7ed92d4976a6179f161612a')
 url="https://github.com/blooser/lyra"
 license=('MIT')
 depends=('python3')
@@ -45,4 +45,5 @@ package() {
 		echo "alias lyra=${applocation}/run.sh" >> ~/.bashrc	
 	fi
 }
+
 
