@@ -1,0 +1,20 @@
+pkgbase = hdf4-static
+	pkgdesc = General purpose library and file format for storing scientific data (version including the FORTRAN interfaces)
+	pkgver = 4.2.14
+	pkgrel = 1
+	url = https://portal.hdfgroup.org/display/support/HDF+4.2.14
+	arch = x86_64
+	license = custom
+	makedepends = gcc-fortran
+	depends = libaec
+	depends = zlib
+	depends = libjpeg-turbo
+	depends = libtirpc
+	options = staticlibs
+	source = https://support.hdfgroup.org/ftp/HDF/releases/HDF4.2.14/src/hdf-4.2.14.tar.bz2
+	source = config.patch
+	md5sums = 3f3bd5da84015e9221d26fb5a80094b4
+	md5sums = e17d14ac1d27012c1ea9ac03f783d355
+
+pkgname = hdf4-static
+
