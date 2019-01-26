@@ -20,4 +20,4 @@ package() {
   cd ${pkgname}-${pkgver}
   install -Dm 755 "target/release/${pkgname}" -t "$pkgdir/usr/bin"
 }
-sha256sums=('82819f5099785da4af27bd48aba1943dfed3fd90e07f3a068c77779f01867c55')
+
