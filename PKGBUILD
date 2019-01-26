@@ -1,10 +1,10 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-totp-git
-pkgver=r8.f9822b9
-pkgrel=2
+pkgver=r7.65fa75c
+pkgrel=1
 pkgdesc='Attest the trustworthiness of a device against a human using time-based one-time passwords'
 arch=('x86_64')
-url='https://github.com/AndreasFuchsSIT/tpm2-totp'
+url='https://github.com/tpm2-software/tpm2-totp'
 license=('BSD')
 depends=('qrencode' 'tpm2-tss')
 makedepends=('git' 'autoconf-archive' 'oath-toolkit' 'pandoc')
