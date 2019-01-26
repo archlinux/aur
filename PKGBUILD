@@ -2,7 +2,7 @@
 
 pkgname=blugon
 pkgdesc="simple, highly configurable Blue Light Filter for X"
-pkgver=1.8.1
+pkgver=1.9
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/jumper149/blugon"
