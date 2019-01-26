@@ -1,13 +1,13 @@
 pkgbase = python-radon
-	pkgver = 2.4.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://radon.readthedocs.org/
 	arch = any
 	license = MIT
 	makedepends = python-sphinx
 	makedepends = python2-sphinx
-	source = https://files.pythonhosted.org/packages/source/r/radon/radon-2.4.0.tar.gz
-	sha256sums = 38e495a4aa4c1d7293d3c1733393961fb52209c9bc2d75163c3ba8124d8bbbaa
+	source = https://files.pythonhosted.org/packages/source/r/radon/radon-3.0.0.tar.gz
+	sha256sums = ef5b38ee6c9994032a4cb3de0f6689e0046024ae3ff3b16944d72a4dce99650e
 
 pkgname = python-radon
 	pkgdesc = A tool that computes various metrics for Python source code
