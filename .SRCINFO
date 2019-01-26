@@ -1,6 +1,6 @@
 pkgbase = code-git
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor - git latest
-	pkgver = 1.16.0.r19258.g54fb49cdc5
+	pkgver = 1.16.0.r22053.g4fe1cdc4df
 	pkgrel = 1
 	url = https://github.com/Microsoft/vscode
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = code-git
 	license = MIT
 	makedepends = npm
 	makedepends = gulp
+	makedepends = python
 	makedepends = python2
 	makedepends = git
 	makedepends = yarn

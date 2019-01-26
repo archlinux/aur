@@ -4,13 +4,13 @@
 
 pkgname=code-git
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - git latest'
-pkgver=1.16.0.r19258.g54fb49cdc5
+pkgver=1.16.0.r22053.g4fe1cdc4df
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/Microsoft/vscode'
 license=('MIT')
 depends=('electron' 'libsecret' 'libxkbfile')
-makedepends=('npm' 'gulp' 'python2' 'git' 'yarn' 'nodejs-lts-carbon')
+makedepends=('npm' 'gulp' 'python' 'python2' 'git' 'yarn' 'nodejs-lts-carbon')
 conflicts=('visual-studio-code-git')
 provides=('visual-studio-code-git')
 
