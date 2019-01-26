@@ -1,6 +1,6 @@
 pkgbase = jiri-git
 	pkgdesc = A tool for multi-repo development similar to Android repo
-	pkgver = r1423
+	pkgver = r1437
 	pkgrel = 1
 	url = https://fuchsia.googlesource.com/jiri
 	arch = i686

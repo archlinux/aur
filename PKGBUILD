@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=jiri-git
-pkgver=r1423
+pkgver=r1437
 pkgrel=1
 pkgdesc='A tool for multi-repo development similar to Android repo'
 arch=(i686 x86_64)
