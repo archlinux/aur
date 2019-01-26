@@ -1,7 +1,7 @@
 pkgbase = clightd
 	pkgdesc = Bus interface to change screen brightness and capture frames from webcam.
-	pkgver = 3.1
-	pkgrel = 2
+	pkgver = 3.2
+	pkgrel = 1
 	url = https://github.com/FedeDP/Clightd
 	arch = i686
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = clightd
 	depends = polkit
 	depends = libxss
 	depends = ddcutil
-	depends = libmodule>=3.1.0
+	depends = libmodule>=4.0.0
 	optdepends = clight: user service to automagically change screen backlight matching ambient brightness.
 	provides = clightd
 	conflicts = clightd-git
-	source = Clightd-3.1.tar.gz::https://github.com/FedeDP/Clightd/archive/3.1.tar.gz
-	sha256sums = 8631af4ed385bd752c17462a77f43abfb9932941780d8312a15cc76d7f0e4ebe
+	source = Clightd-3.2.tar.gz::https://github.com/FedeDP/Clightd/archive/3.2.tar.gz
+	sha256sums = af64622a5c5f441f43956a64c94860bf32f81beef8885f92a90f4752433d632c
 
 pkgname = clightd
 
