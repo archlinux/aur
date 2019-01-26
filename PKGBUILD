@@ -31,7 +31,7 @@ python3 main.py
 source=("https://github.com/blooser/cygnus/archive/v${pkgver}.tar.gz")
 
 build() {
-	sudo pip install PyQt5 pygame feedparser pillow 		
+	sudo pip install PyQt5 feedparser pillow 		
 }
 
 package() {
