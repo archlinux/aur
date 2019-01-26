@@ -1,7 +1,7 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 pkgname=nrsc5-git 
-pkgver=r101.320784d
-pkgrel=1
+pkgver=r233.6c64409
+pkgrel=2
 pkgdesc="NRSC-5 (HD Radio) receiver for rtl-sdr"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/theori-io/nrsc5"
@@ -39,7 +39,7 @@ build() {
 		_neon="OFF"
 	fi
 
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_NEON="${_neon}" -DUSE_SSE="${_sse3}"
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_NEON="${_neon}" -DUSE_SSE="${_sse3}" .
 	make
 }
 
