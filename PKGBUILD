@@ -7,7 +7,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=230.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -26,27 +26,37 @@ sha256sums=(
 )
 
 prepare() {
-  msg2 "Checking for newer upstream release"
+  if command ping -c 1 dl.google.com > /dev/null 2>&1; then
+    msg2 "Checking for newer upstream release"
 
-  _latest=$(\
-    curl -s https://dl.google.com/dl/cloudsdk/release/sha256.txt |\
-    egrep "google-cloud-sdk_.*\.orig\.tar\.gz" |\
-    awk -e 'BEGIN{FS="/"}{print $4}' |\
-    sed 's/[^0-9]*\(\([[:digit:]]\+.\?\)\{2\}[^.]\+\).*/\1/')
-      # [^0-9]* :: matches any non-digit character 0-n times
-      # \( :: begins group 1
-      #   \([[:digit:]]\+.\?\)\{2\}
-      #     :: captures the major and minor parts of the version, with dot
-      #     :: capture group 2 is created to facilitate repeating with \{2\}
-      #   [^.]\+ :: matches the patch without the dot
-      # \) :: terminates group 1
-      # .* :: matches any character 0-n times
-      # /\1/ :: replaces the entire string with the contents of group 1
+    _latest=$(\
+      curl -s https://dl.google.com/dl/cloudsdk/release/sha256.txt |\
+      egrep "google-cloud-sdk_.*\.orig\.tar\.gz" |\
+      awk -e 'BEGIN{FS="/"}{print $4}' |\
+      sed 's/[^0-9]*\(\([[:digit:]]\+.\?\)\{2\}[^.]\+\).*/\1/')
+        # [^0-9]* :: matches any non-digit character 0-n times
+        # \( :: begins group 1
+        #   \([[:digit:]]\+.\?\)\{2\}
+        #     :: captures the major and minor parts of the version, with dot
+        #     :: capture group 2 is created to facilitate repeating with \{2\}
+        #   [^.]\+ :: matches the patch without the dot
+        # \) :: terminates group 1
+        # .* :: matches any character 0-n times
+        # /\1/ :: replaces the entire string with the contents of group 1
 
-  msg2 "This AUR release: ${pkgver}"
-  msg2 "Latest upstream release: ${_latest}"
-  if [ "${_latest}" != "${pkgver}" ]; then
-    msg2 "** Please flag out-of-date at https://aur.archlinux.org/packages/${pkgname}"
+    msg2 "This AUR release: ${pkgver}"
+    msg2 "Latest upstream release: ${_latest}"
+    if [ "${_latest}" != "${pkgver}" ]; then
+      msg2 "** THIS PACKAGE IS OUT OF DATE"
+      msg2 "** Please flag this package out-of-date:"
+      msg2 "     https://aur.archlinux.org/packages/${pkgname}"
+      msg2 "** Alternatively, submit an issue and/or patch:"
+      msg2 "     https://github.com/sudoforge/pkgbuilds"
+    else
+      msg2 "Everything up to date :)"
+    fi
+  else
+    msg2 "Unable to reach dl.google.com, cannot determine latest upstream release"
   fi
 }
 
