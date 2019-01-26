@@ -2,7 +2,7 @@
 
 pkgname=('python-ffmpeg')
 _pkgname='ffmpeg-python'
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="Python bindings for FFmpeg - with complex filtering support"
 arch=(any)
@@ -11,7 +11,7 @@ license=('Apache')
 options=(!emptydirs)
 depends=("ffmpeg" "python-future")
 source=("https://github.com/kkroening/ffmpeg-python/archive/${pkgver}.tar.gz")
-sha256sums=('344039ef8d44a1f88741066e0560b2cacc7e7396201df839d0a702e929e9e05d')
+sha256sums=('834a7820e23e85a2df1751910b9a20466a33051df4c9c613bfb440cd0fead885')
 makedepends=('git' 'python-setuptools' 'python-pytest-runner')
 
 

@@ -1,6 +1,6 @@
 pkgbase = python-ffmpeg
 	pkgdesc = Python bindings for FFmpeg - with complex filtering support
-	pkgver = 0.1.16
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/kkroening/ffmpeg-python
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-ffmpeg
 	depends = ffmpeg
 	depends = python-future
 	options = !emptydirs
-	source = https://github.com/kkroening/ffmpeg-python/archive/0.1.16.tar.gz
-	sha256sums = 344039ef8d44a1f88741066e0560b2cacc7e7396201df839d0a702e929e9e05d
+	source = https://github.com/kkroening/ffmpeg-python/archive/0.1.17.tar.gz
+	sha256sums = 834a7820e23e85a2df1751910b9a20466a33051df4c9c613bfb440cd0fead885
 
 pkgname = python-ffmpeg
 
