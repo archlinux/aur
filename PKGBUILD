@@ -2,8 +2,8 @@
 _pkgname=linux_media
 _gitname=media_build
 pkgname="tbs-$_pkgname-git"
-pkgver=r1127.4735369_4.18.10_arch1_1_ARCH
-_extramodules=extramodules-ARCH
+pkgver=r1149.639c351_4.20.4_arch1_1_ARCH
+_updatedmodules="$(uname -r)/updates"
 pkgrel=1
 pkgdesc="TBS linux open source drivers"
 arch=('x86_64')
@@ -44,12 +44,12 @@ package() {
 
     cd "$srcdir/$_gitname"
 
-    mkdir -p "$pkgdir"/usr/lib/modules/"${_extramodules}"/tbs
+    mkdir -p "$pkgdir"/usr/lib/modules/"${_updatedmodules}"/tbs
 
-    find "$srcdir/$_gitname" -name '*.ko' -exec cp "{}" "$pkgdir"/usr/lib/modules/"${_extramodules}"/tbs \;
+    find "$srcdir/$_gitname" -name '*.ko' -exec cp "{}" "$pkgdir"/usr/lib/modules/"${_updatedmodules}"/tbs \;
     msg "Compressing modules, this will take awhile..."
     find "$pkgdir" -name '*.ko' -print0 | xargs -0 -P"$(nproc)" -n10 gzip -9
 
-    chmod 0644 "$pkgdir"/usr/lib/modules/"${_extramodules}"/tbs/*.ko.gz
+    chmod 0644 "$pkgdir"/usr/lib/modules/"${_updatedmodules}"/tbs/*.ko.gz
 
 }
