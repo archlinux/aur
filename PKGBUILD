@@ -8,7 +8,7 @@ _use_gh_api=true
 wl_project=${_pkgname}
 wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_pkgname,,}-git
-pkgver=7.1.r1312.35309ef4
+pkgver=7.1.r1378.ab9e40d4
 pkgrel=1
 pkgdesc='GPS log file viewer and analyzer'
 arch=('i686' 'x86_64')
@@ -82,7 +82,7 @@ build() {
 package() {
   cd ${_pkgname}-${_branch}
 
-  install -Dm755 GPXSee ${pkgdir}/usr/bin/${pkgname//-git}
+  install -Dm755 gpxsee ${pkgdir}/usr/bin/${pkgname//-git}
   install -Dm644 pkg/csv/* -t ${pkgdir}/usr/share/${pkgname//-git}/csv
   install -Dm644 pkg/maps/* -t ${pkgdir}/usr/share/${pkgname//-git}/maps
   install -Dm644 lang/*.qm -t ${pkgdir}/usr/share/${pkgname//-git}/translations
