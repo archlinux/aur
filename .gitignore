@@ -1,4 +1,5 @@
-pkg
-src
-Wavebox_*.tar.gz
-wavebox-bin-*.pkg.tar.xz
+/*
+!/.SRCINFO
+!/.gitignore
+!/PKGBUILD
+!/wavebox.desktop
