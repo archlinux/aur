@@ -5,7 +5,6 @@ pkgrel=1
 pkgdesc="Gemalto PKCS#11 driver"
 url="https://www.luxtrust.lu/en/simple/225"
 arch=(i686 x86_64)
-license('custom')
 depends=(
   'libclassicclient>=7.2.0_b04'
 )
