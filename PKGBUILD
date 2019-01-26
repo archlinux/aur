@@ -6,7 +6,7 @@ _qtver=5.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
-url='http://qt-project.org/'
+url='https://www.qt.io'
 license=(LGPL)
 pkgdesc='Enables the use of Qt5 APIs in Python applications'
 depends=(python-shiboken2 qt5-base)
@@ -30,7 +30,7 @@ conflicts=(python-pyside2)
 provides=(python-pyside2)
 replaces=(python-pyside2)
 _pkgfqn=pyside-setup-everywhere-src-${_qtver}
-source=("http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz")
+source=("https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz")
 sha256sums=('890149628a6c722343d6498a9f7e1906ce3c10edcaef0cc53cd682c1798bef51')
 
 prepare() {
