@@ -1,10 +1,11 @@
 pkgbase = wiredtiger-git
 	pkgdesc = High performance, scalable, production quality, NoSQL, Open Source extensible platform for data management
 	pkgver = 3.1.0r19536
-	pkgrel = 1
+	pkgrel = 2
 	url = http://source.wiredtiger.com/
 	arch = x86_64
 	license = GPL
+	license = custom
 	makedepends = git
 	depends = glibc
 	provides = wiredtiger
