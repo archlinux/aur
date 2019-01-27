@@ -16,38 +16,35 @@ pkgver() {
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
+_package_helper() {
+  _lua_ver=$1
+  _lua_ver_nodot=${_lua_ver//.}
+
+  mkdir -p "$_lua_ver"
+  cd "$pkgbase"
+  luarocks-${_lua_ver} make --pack-binary-rock --deps-mode=none luasocket-scm-0.rockspec
+  mv *.rock ../${_lua_ver}/
+  luarocks-${_lua_ver} install --tree="$pkgdir/usr/" --deps-mode=none ../${_lua_ver}/*.rock
+  find "$pkgdir/usr" -name manifest -delete
+}
+
 package_lua51-socket-git() {
   depends=('lua51' 'luarocks5.1')
   provides=('lua51-socket')
 
-  mkdir -p 5.1
-  cd "$pkgbase"
-  luarocks-5.1 make --pack-binary-rock --deps-mode=none luasocket-scm-0.rockspec
-  mv *.rock ../5.1/
-  luarocks-5.1 install --tree="$pkgdir/usr/" --deps-mode=none ../5.1/*.rock
-  find "$pkgdir/usr" -name manifest -delete
+  _package_helper "5.1"
 }
 
 package_lua52-socket-git() {
   depends=('lua52' 'luarocks5.2')
   provides=('lua52-socket')
 
-  mkdir -p 5.2
-  cd "$pkgbase"
-  luarocks-5.2 make --pack-binary-rock --deps-mode=none luasocket-scm-0.rockspec
-  mv *.rock ../5.2/
-  luarocks-5.2 install --tree="$pkgdir/usr/" --deps-mode=none ../5.2/*.rock
-  find "$pkgdir/usr" -name manifest -delete
+  _package_helper "5.2"
 }
 
 package_lua-socket-git() {
   depends=('lua' 'luarocks')
   provides=('lua-socket')
 
-  mkdir -p 5.3
-  cd "$pkgbase"
-  luarocks-5.3 make --pack-binary-rock --deps-mode=none luasocket-scm-0.rockspec
-  mv *.rock ../5.3/
-  luarocks install --tree="$pkgdir/usr/" --deps-mode=none ../5.3/*.rock
-  find "$pkgdir/usr" -name manifest -delete
+  _package_helper "5.3"
 }
