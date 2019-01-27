@@ -1,7 +1,7 @@
 pkgbase = qqsp
 	pkgdesc = QT Quest Soft Player is a interactive fiction stories and games player (compatible fork of qsp.su)
-	pkgver = 1.7
-	pkgrel = 2
+	pkgver = 1.8
+	pkgrel = 1
 	url = https://gitlab.com/Sonnix1/Qqsp
 	arch = x86
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = qqsp
 	depends = qsp-common
 	depends = qt5-webengine
 	depends = qt5-multimedia
-	source = Qqsp::git+https://gitlab.com/Sonnix1/Qqsp.git#tag=v1.7
+	source = Qqsp::git+https://gitlab.com/Sonnix1/Qqsp.git#tag=v1.8
 	source = Qqsp.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
