@@ -15,7 +15,7 @@ license=('MIT')
 source=("git+https://github.com/sigmaSd/$_pkgname.git")
 sha256sums=('SKIP')
 
-5() {
+pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
