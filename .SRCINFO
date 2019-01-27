@@ -1,5 +1,5 @@
 pkgbase = cfiles
-	pkgdesc = A ncurses file manager writeen in C
+	pkgdesc = A ncurses file manager written in C
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/mananapr/cfiles/

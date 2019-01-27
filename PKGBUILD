@@ -3,7 +3,7 @@
 pkgname=cfiles
 pkgver=1.0
 pkgrel=1
-pkgdesc="A ncurses file manager writeen in C"
+pkgdesc="A ncurses file manager written in C"
 arch=('any')
 url="https://github.com/mananapr/cfiles/"
 license=('MIT')
