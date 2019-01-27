@@ -1,0 +1,17 @@
+diff --git a/data/fprintd.service.in b/data/fprintd.service.in
+index 5f46810..a308ee3 100644
+--- a/data/fprintd.service.in
++++ b/data/fprintd.service.in
+@@ -8,12 +8,9 @@ BusName=net.reactivated.Fprint
+ ExecStart=@libexecdir@/fprintd
+ 
+ # Filesystem lockdown
+-ProtectSystem=strict
+ ProtectKernelTunables=true
+ ProtectControlGroups=true
+-ReadWritePaths=@localstatedir@/lib/fprint
+ ProtectHome=true
+-PrivateTmp=true
+ 
+ # Network
+ PrivateNetwork=true
