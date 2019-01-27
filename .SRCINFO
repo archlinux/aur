@@ -6,7 +6,6 @@ pkgbase = masterpdfeditor-free
 	arch = i686
 	arch = x86_64
 	license = custom
-	conflicts = masterpdfeditor
 	conflicts = masterpdfeditor-qt4
 	source = masterpdfeditor.desktop
 	sha1sums = 5b3a0392390e49d4f7f4e478dd336476436f5cfa
@@ -19,5 +18,6 @@ pkgname = masterpdfeditor-free
 	depends = gcc-libs
 	depends = glibc
 	depends = qt5-base
+	depends = qt5-svg
 	depends = sane
 
