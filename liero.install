@@ -1,0 +1,20 @@
+post_install() {
+  chgrp games /usr/share/liero/liero.cfg
+  chmod g+w /usr/share/liero/liero.cfg
+
+  echo "Add user to group games - this game is not multiuser friendly."
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
