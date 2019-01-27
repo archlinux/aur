@@ -1,6 +1,6 @@
 pkgbase = linux-amd-wip-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 4.21.799074.364c6471cc8c
+	pkgver = 5.1.810520.5daa9c4d3d3c
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = linux-amd-wip-git
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = linux-amd-wip-git::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-4.21-wip
+	source = linux-amd-wip-git::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-5.1-wip
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook

@@ -9,10 +9,10 @@
 pkgbase=linux-amd-wip-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=${pkgbase}
-_kernel_rel=4.21
+_kernel_rel=5.1
 _branch=drm-next-${_kernel_rel}-wip
 _kernelname=${pkgbase#linux}
-pkgver=4.21.799074.364c6471cc8c
+pkgver=5.1.810520.5daa9c4d3d3c
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
