@@ -1,0 +1,17 @@
+pkgbase = ical
+	pkgdesc = ical is an old but popular calendar package written in Tcl by Sanjay Ghemawat for Unix systems.
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://launchpad.net/ical-tcl
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = gcc
+	makedepends = make
+	depends = tcl
+	depends = tk
+	source = https://launchpad.net/ical-tcl/3.x/3.0.3/+download/ical-3.0.3.tar.gz
+	md5sums = 0aa41a0501a7db8d4eb31867f68aa36b
+
+pkgname = ical
+
