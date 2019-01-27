@@ -1,17 +1,17 @@
 pkgbase = nodejs-sharp-cli
 	pkgdesc = CLI for sharp
-	pkgver = 1.7.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/vseventer/sharp-cli
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	depends = glib2
 	depends = expat
-	noextract = sharp-cli-1.7.1.tgz
-	source = https://registry.npmjs.org/sharp-cli/-/sharp-cli-1.7.1.tgz
-	sha256sums = 67984fb02c84a38b04fa473e0a6c877c804d81989b3d68c98e619f7faa955a74
+	depends = libcroco
+	noextract = sharp-cli-1.9.0.tgz
+	source = https://registry.npmjs.org/sharp-cli/-/sharp-cli-1.9.0.tgz
+	sha256sums = a64528a0733f3ba53bbb97d86c9de201fad6f69f51a949a2f92b583f85006996
 
 pkgname = nodejs-sharp-cli
 

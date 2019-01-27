@@ -2,17 +2,17 @@
 
 _npmname=sharp-cli
 pkgname=nodejs-sharp-cli
-pkgver=1.7.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='CLI for sharp'
 arch=('x86_64')
 url='https://github.com/vseventer/sharp-cli'
 license=('MIT')
-depends=('nodejs' 'glib2' 'expat')
+depends=('nodejs' 'expat' 'libcroco')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=("$_npmname-$pkgver.tgz")
-sha256sums=('67984fb02c84a38b04fa473e0a6c877c804d81989b3d68c98e619f7faa955a74')
+sha256sums=('a64528a0733f3ba53bbb97d86c9de201fad6f69f51a949a2f92b583f85006996')
 
 package() {
   cd $srcdir
