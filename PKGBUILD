@@ -21,7 +21,7 @@ build(){
 }
 
 package() {
-  cd "pywal-${pkgver}"
+  cd "cfiles-${pkgver}"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 cfiles "$pkgdir/usr/local/bin/cfiles"
   install -Dm644 scripts/displayimg "$pkgdir/usr/local/bin/displayimg"
