@@ -1,0 +1,21 @@
+pkgbase = serialplot-hg
+	pkgdesc = Small and simple software for plotting data from serial port in realtime
+	pkgver = 788+.0fba5e1a3d2e+
+	pkgrel = 1
+	url = https://bitbucket.org/hyOzd/serialplot
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = mercurial
+	makedepends = cmake
+	depends = qwt
+	depends = qt5-base
+	depends = qt5-serialport
+	depends = hicolor-icon-theme
+	provides = serialplot
+	conflicts = serialplot
+	source = hg+https://bitbucket.org/hyOzd/serialplot
+	md5sums = SKIP
+
+pkgname = serialplot-hg
+
