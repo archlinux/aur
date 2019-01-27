@@ -11,11 +11,11 @@
 pkgbase=linux-drm-intel-testing-git
 pkgdesc='Linux kernel with patches for Intel graphics'
 _srcname=$pkgbase
-_kernel_rel=4.20
+_kernel_rel=5.0
 _branch=drm-intel-testing
 _kernelname=${pkgbase#linux}
-pkgver=4.20.798032.98966a91be48
-pkgrel=2
+pkgver=5.0.798032.98966a91be48
+pkgrel=1
 arch=('x86_64')
 url='https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html'
 license=(GPL2)

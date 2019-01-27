@@ -1,7 +1,7 @@
 pkgbase = linux-drm-intel-testing-git
 	pkgdesc = Linux kernel with patches for Intel graphics
-	pkgver = 4.20.798032.98966a91be48
-	pkgrel = 2
+	pkgver = 5.0.798032.98966a91be48
+	pkgrel = 1
 	url = https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html
 	arch = x86_64
 	license = GPL2
