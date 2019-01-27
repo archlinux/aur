@@ -1359,3 +1359,35 @@ Fri Jan 4 02:14:03 2019 +0100
      2018-12-26 83503b16 actionless feat(presets_list): add hotkeys Left and Right arrows to expand/collapse and F5 to refresh
      2018-12-26 37729347 actionless chore(plugins: oomox): update submodule (fix sidebar list styling)
      2018-12-26 faa0b635 Vlada Makhonina Create new palette folder WoopWoop
+
+
+Sun Jan 27 17:21:46 2019 +0100
+-------------------------------------------------
+1.11            Release 1.11
+    
+    Most imporant update:
+     Support for Papirus icons
+    
+    Other notable changes:
+     2019-01-27 78bf927b actionless chore(colors): February theme
+     2019-01-25 c3f01d59 actionless chore(plugins: base16): update submodule (add QOwnNotes template and themes updates)
+     2019-01-21 549c38af actionless fix(main: save): don't raise save question when forking factory preset
+     2019-01-21 ce13f2ea actionless fix(plugins: theme: arc: preview): checkbox check color
+     2019-01-20 8982ebd9 Sergei Eremenko Improve icons_papirus plugin
+     2019-01-19 ebe26ca6 nana-4 Rename "Caret" to "Textbox Caret"
+     2019-01-18 23120204 nana-4 Move all theme colors to colors section
+     2019-01-18 6e91f8c3 Sergei Eremenko Added plugin for papirus-icon-theme (#205)
+     2019-01-16 08e07f41 actionless chore(plugins: base16, oomox): update submodules (gtk3:  background of inavtive progressbar with gradient-ed themes)
+     2019-01-15 9bb6b565 actionless chore(colors: modern): add oodwaita-tng
+     2019-01-12 cb5e1051 Vlada Makhonina WoopWoop: add new palette
+     2019-01-11 b02d60a1 actionless chore(colors): add orville theme
+     2019-01-11 4b2a3bd0 nana-4 Fix Arc's blurry checkbox in preview
+     2019-01-11 64106552 actionless chore(plugins: oomox): update submodule: feat(gtk320: button, entry): unify left/right padding and make it depend on roundness to make text readable on the sides in case of too big border radius
+     2019-01-08 200801b1 actionless chore(plugins: icons: gnome-colors): update submodule (flush destination dir before copying built icons)
+     2019-01-08 19fbef79 actionless feat(main): prevent computer from poweroff/logout while theme is not saved
+     2019-01-05 e2a00f7d actionless chore(colors: modern): fix arc-dark and add arc-darker
+     2019-01-05 260f7df6 actionless feat(plugin_api; plugins: base16): display user plugin-presets separately from factory ones
+     2019-01-05 2ec333e7 actionless fix(preview: gtk): remove headerbar rounding since it's not displayed properly
+     2019-01-04 c191f4aa actionless refactor: bring back python3.4 support
+     2019-01-04 81b1bb3b LaurentTreguier chore(dockerfile): add python 3.4 centos 7
+     2019-01-04 291b486a actionless feat(preset_list): group plugin presets by first-level dirs

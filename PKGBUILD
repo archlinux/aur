@@ -2,12 +2,12 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=oomox-git
-pkgver=1.10.r45.gd9475317
+pkgver=1.11
 pkgrel=1
 pkgdesc="Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
-ArchDroid, Gnome-Colors, Numix icon themes,
+ArchDroid, Gnome-Colors, Numix, Papirus icon themes,
 and terminal palettes.
 Have a hack for HiDPI in GTK2."
 arch=('x86_64' 'i686')
