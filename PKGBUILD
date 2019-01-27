@@ -1,9 +1,10 @@
 # Maintainer: Lucas Malandrino <lucas.malandrino@gmail.com>
+# Co-maintainer & author of the original software: Gabriel "Squared" Saillard <squared@codebrew.fr>
 pkgname='edex-ui-git'
 _pkgname='edex-ui'
-pkgver=1.1.2.r8.gdad81fa
+pkgver=2.0.1.pre.bdd152b
 pkgrel=1
-pkgdesc="A science fiction desktop running everywhere. Awesome."
+pkgdesc="A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/GitSquared/edex-ui'
 license=('GPL3')
