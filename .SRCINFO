@@ -9,7 +9,8 @@ pkgbase = gled-git
 	makedepends = go
 	depends = libusb
 	provides = gled
-	source = gled-git::git+https://github.com/karlovskiy/gled.git
+	conflicts = gled
+	source = git+https://github.com/karlovskiy/gled.git
 	md5sums = SKIP
 
 pkgname = gled-git
