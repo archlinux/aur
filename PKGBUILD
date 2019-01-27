@@ -1,5 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de> 
 # Contributors: SpepS, Guillem Rieu, Dan Serban
+# Maintainer: Holger Rauch
 
 pkgname=textroom
 pkgver=0.8.2
