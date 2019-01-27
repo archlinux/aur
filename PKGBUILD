@@ -1,5 +1,3 @@
-# Maintainer: AndyRTR <andyrtr@archlinux.org>
-
 pkgname=mingw-w64-xorgproto
 _name=xorgproto
 pkgver=2018.4
