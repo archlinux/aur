@@ -9,7 +9,7 @@ url='http://mackerell.umaryland.edu/charmm_ff.shtml#gromacs'
 license=("GPL")
 arch=('any')
 depends=("gromacs-5.0-complete=${_gromacs_ver}")
-source=(http://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/charmm36-nov2014.ff.tgz)
+source=(http://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/charmm36-nov2018.ff.tgz)
 sha1sums=('b953246b458cc6f4ed5bf5ebb761adf5807f6356')
 
 
