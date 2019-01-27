@@ -3,14 +3,14 @@
 
 pkgname=xiphos
 pkgver=4.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A Bible study tool for GTK3"
 arch=('i686' 'x86_64')
 url="http://xiphos.org"
 pkgdesc="Bible study tool for GTK+"
 url="http://xiphos.org/"
-depends=('sword>=1.8.1' 'webkit2gtk' 'libgsf' 'gtkhtml4' 'biblesync<=2.0.0' 'enchant1.6')
-makedepends=('gnome-common' 'gnome-doc-utils' 'intltool' 'python2' 'dbus-glib' 'docbook-utils')
+depends=('sword>=1.8.1' 'webkit2gtk' 'libgsf' 'gtkhtml4' 'biblesync<=2.0.0' 'dbus-glib')
+makedepends=('gnome-common' 'gnome-doc-utils' 'intltool' 'python2' 'docbook-utils')
 license=('GPL')
 provides=('gnomesword')
 conflicts=('gnomesword')
