@@ -5,7 +5,7 @@
 pkgbase=openxcom-git
 pkgname=('openxcom-git' 'openxcom-docs-git')
 _gitname=OpenXcom
-pkgver=1.0_2491_gc7204b174
+pkgver=1.0_r2757_g4251ab7c8
 pkgrel=1
 pkgdesc="An open-source reimplementation of the famous X-COM game (git-version)"
 arch=('i686' 'x86_64')
@@ -19,12 +19,15 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
-  git describe --tags | sed -e 's:v::' -e 's:-:_:g'
+  git describe --long --tags | sed -e 's:^v::;s:\([^-]*-g\):r\1:;s:-:_:g'
+}
+prepare() {
+  mkdir -p ${_gitname}/build
 }
 
 build() {
-  cd ${_gitname}
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release" -DDEV_BUILD="Off"
+  cd ${_gitname}/build
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release" -DDEV_BUILD="Off" ..
   make
 
   # Make documentation
@@ -41,7 +44,7 @@ package_openxcom-git() {
   conflicts=('openxcom')
   install="${pkgname}.install"
 
-  cd ${_gitname}
+  cd ${_gitname}/build
 
   make DESTDIR="${pkgdir}" install
 }
@@ -49,7 +52,7 @@ package_openxcom-git() {
 package_openxcom-docs-git() {
   pkgdesc="Documentation for the open-source reimplementation of the famous X-COM game (git-version)"
   arch=('any')
-  cd ${_gitname}/docs
+  cd ${_gitname}/build/docs
   install -dm755 "${pkgdir}/usr/share/doc/openxcom/"
   cp -a html "${pkgdir}/usr/share/doc/openxcom/"
 }
