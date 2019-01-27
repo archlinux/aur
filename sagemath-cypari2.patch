@@ -10,7 +10,7 @@ index bc3af7c..5dd2a8e 100644
  
  cpdef _lift_crt(Matrix_integer_dense M, residues, moduli=*)
 diff --git a/src/sage/matrix/matrix_integer_dense.pyx b/src/sage/matrix/matrix_integer_dense.pyx
-index 4f0b0e6..87e3391 100644
+index effbb9e..ebc0519 100644
 --- a/src/sage/matrix/matrix_integer_dense.pyx
 +++ b/src/sage/matrix/matrix_integer_dense.pyx
 @@ -87,11 +87,11 @@ from .args cimport SparseEntry, MatrixArgs_init
@@ -39,7 +39,7 @@ index 4f0b0e6..87e3391 100644
          elif algorithm == 'ntl':
              if nr != nc:
                  raise ValueError("ntl only computes HNF for square matrices of full rank.")
-@@ -5664,6 +5661,7 @@ cdef class Matrix_integer_dense(Matrix_dense):
+@@ -5676,6 +5673,7 @@ cdef class Matrix_integer_dense(Matrix_dense):
          matrices.
  
          EXAMPLES::
@@ -47,7 +47,7 @@ index 4f0b0e6..87e3391 100644
              sage: matrix(ZZ,3,[1..9])._rank_pari()
              2
          """
-@@ -5674,16 +5672,12 @@ cdef class Matrix_integer_dense(Matrix_dense):
+@@ -5686,16 +5684,12 @@ cdef class Matrix_integer_dense(Matrix_dense):
  
      def _hnf_pari(self, int flag=0, bint include_zero_rows=True):
          """
@@ -66,7 +66,7 @@ index 4f0b0e6..87e3391 100644
  
          - ``include_zero_rows`` -- boolean. if False, do not include
            any of the zero rows at the bottom of the matrix in the
-@@ -5733,98 +5727,13 @@ cdef class Matrix_integer_dense(Matrix_dense):
+@@ -5745,98 +5739,13 @@ cdef class Matrix_integer_dense(Matrix_dense):
              sage: pari('mathnf(Mat([0,1]), 4)')
              [Mat(1), [1, 0; 0, 1]]
          """
@@ -170,7 +170,7 @@ index 4f0b0e6..87e3391 100644
  
      def p_minimal_polynomials(self, p, s_max=None):
          r"""
-@@ -5966,7 +5875,27 @@ cdef inline GEN pari_GEN(Matrix_integer_dense B):
+@@ -5978,7 +5887,27 @@ cdef inline GEN pari_GEN(Matrix_integer_dense B):
      return A
  
  
@@ -199,7 +199,7 @@ index 4f0b0e6..87e3391 100644
  
  cdef _clear_columns(Matrix_integer_dense A, pivots, Py_ssize_t n):
      # Clear all columns
-@@ -5990,11 +5919,6 @@ cdef _clear_columns(Matrix_integer_dense A, pivots, Py_ssize_t n):
+@@ -6002,11 +5931,6 @@ cdef _clear_columns(Matrix_integer_dense A, pivots, Py_ssize_t n):
      fmpz_clear(t)
      sig_off()
  
@@ -211,181 +211,11 @@ index 4f0b0e6..87e3391 100644
  
  cpdef _lift_crt(Matrix_integer_dense M, residues, moduli=None):
      """
-diff --git a/src/sage/modular/modform/eis_series_cython.pyx b/src/sage/modular/modform/eis_series_cython.pyx
-index f7e944c..3557c6b 100644
---- a/src/sage/modular/modform/eis_series_cython.pyx
-+++ b/src/sage/modular/modform/eis_series_cython.pyx
-@@ -3,7 +3,7 @@ Eisenstein Series (optimized compiled functions)
- """
- 
- from cysignals.memory cimport check_allocarray, sig_free
--from cysignals.signals cimport sig_on, sig_off
-+from cysignals.signals cimport sig_check
- 
- from sage.rings.rational_field import QQ
- from sage.rings.power_series_ring import PowerSeriesRing
-@@ -161,8 +161,7 @@ cpdef eisenstein_series_poly(int k, int prec = 10) :
-     """
-     cdef mpz_t *val = <mpz_t *>check_allocarray(prec, sizeof(mpz_t))
-     cdef mpz_t one, mult, term, last, term_m1, last_m1
--    cdef unsigned long int expt
--    cdef long ind, ppow, int_p
-+    cdef long ind
-     cdef int i
-     cdef Fmpz_poly res = Fmpz_poly.__new__(Fmpz_poly)
- 
-@@ -173,8 +172,6 @@ cpdef eisenstein_series_poly(int k, int prec = 10) :
-     if (prec == 0):
-         return Fmpz_poly.__new__(Fmpz_poly)
- 
--    sig_on()
--
-     mpz_init(one)
-     mpz_init(term)
-     mpz_init(last)
-@@ -182,33 +179,33 @@ cpdef eisenstein_series_poly(int k, int prec = 10) :
-     mpz_init(term_m1)
-     mpz_init(last_m1)
- 
--    for i from 0 <= i < prec :
--        mpz_init(val[i])
--        mpz_set_si(val[i], 1)
-+    for i in range(prec):
-+        mpz_init_set_si(val[i], 1)
- 
-     mpz_set_si(one, 1)
- 
--    expt = <unsigned long int>(k - 1)
--    a0 = - bernoulli(k) / (2*k)
-+    cdef unsigned long expt = k - 1
-+    a0 = -bernoulli(k) / (2*k)
- 
--    for p in primes(1,prec) :
--        int_p = int(p)
--        ppow = <long int>int_p
-+    cdef long p, ppow
-+    for p in primes(1, prec) :
-+        ppow = p
- 
--        mpz_set_si(mult, int_p)
-+        mpz_set_si(mult, p)
-         mpz_pow_ui(mult, mult, expt)
-         mpz_mul(term, mult, mult)
-         mpz_set(last, mult)
- 
--        while (ppow < prec):
-+        while ppow < prec:
-+            sig_check()
-             ind = ppow
-             mpz_sub(term_m1, term, one)
-             mpz_sub(last_m1, last, one)
--            while (ind < prec):
-+            while ind < prec:
-                 mpz_mul(val[ind], val[ind], term_m1)
-                 mpz_fdiv_q(val[ind], val[ind], last_m1)
-                 ind += ppow
--            ppow *= int_p
-+            ppow *= p
-             mpz_set(last, term)
-             mpz_mul(term, term, mult)
- 
-@@ -228,6 +225,4 @@ cpdef eisenstein_series_poly(int k, int prec = 10) :
- 
-     sig_free(val)
- 
--    sig_off()
--
-     return res
-diff --git a/src/sage/plot/complex_plot.pyx b/src/sage/plot/complex_plot.pyx
-index 758fb70..f499a3e 100644
---- a/src/sage/plot/complex_plot.pyx
-+++ b/src/sage/plot/complex_plot.pyx
-@@ -19,7 +19,7 @@ Complex Plots
- from __future__ import absolute_import
- 
- # TODO: use NumPy buffers and complex fast_callable (when supported)
--from cysignals.signals cimport sig_on, sig_off
-+from cysignals.signals cimport sig_on, sig_off, sig_check
- 
- cimport numpy as cnumpy
- 
-@@ -381,12 +381,18 @@ def complex_plot(f, xrange, yrange, **options):
-         pass
- 
-     cdef double x, y
--    ignore, ranges = setup_for_eval_on_grid([], [xrange, yrange], options['plot_points'])
--    xrange,yrange=[r[:2] for r in ranges]
--    sig_on()
--    z_values = [[  f(new_CDF_element(x, y)) for x in srange(*ranges[0], include_endpoint=True)]
--                                            for y in srange(*ranges[1], include_endpoint=True)]
--    sig_off()
-+    _, ranges = setup_for_eval_on_grid([], [xrange, yrange], options['plot_points'])
-+    xrange = ranges[0]
-+    yrange = ranges[1]
-+    cdef list z_values = []
-+    cdef list row
-+    for y in srange(*yrange, include_endpoint=True):
-+        row = []
-+        for x in srange(*xrange, include_endpoint=True):
-+            sig_check()
-+            row.append(f(new_CDF_element(x, y)))
-+        z_values.append(row)
-+
-     g = Graphics()
-     g._set_extra_kwds(Graphics._extract_kwds_for_show(options, ignore=['xmin', 'xmax']))
-     g.add_primitive(ComplexPlot(complex_to_rgb(z_values), xrange, yrange, options))
-diff --git a/src/sage/rings/asymptotic/asymptotic_expansion_generators.py b/src/sage/rings/asymptotic/asymptotic_expansion_generators.py
-index 84fa0e4..18f8e90 100644
---- a/src/sage/rings/asymptotic/asymptotic_expansion_generators.py
-+++ b/src/sage/rings/asymptotic/asymptotic_expansion_generators.py
-@@ -1095,7 +1095,7 @@ class AsymptoticExpansionGenerators(SageObject):
-             sage: asymptotic_expansions.ImplicitExpansion('Z', phi=lambda u: 1 + 2*u + u^2, tau=2, precision=5)
-             Traceback (most recent call last):
-             ...
--            ZeroDivisionError: Symbolic division by zero
-+            ZeroDivisionError: symbolic division by zero
-             sage: asymptotic_expansions.ImplicitExpansion('Z', phi=lambda u: 1 + 2*u + u^2, tau=3, precision=5)
-             3 - 4*I*sqrt(3)*Z^(-1/2) + 6*I*sqrt(3)*Z^(-3/2) + O(Z^(-2))
- 
-diff --git a/src/sage/rings/finite_rings/element_pari_ffelt.pyx b/src/sage/rings/finite_rings/element_pari_ffelt.pyx
-index ff73a1f..2fcd3a1 100644
---- a/src/sage/rings/finite_rings/element_pari_ffelt.pyx
-+++ b/src/sage/rings/finite_rings/element_pari_ffelt.pyx
-@@ -869,7 +869,8 @@ cdef class FiniteFieldElement_pari_ffelt(FinitePolyExtElement):
-             Univariate Polynomial Ring in beta over Finite Field of size 3
-         """
-         sig_on()
--        return self._parent.polynomial_ring(name)(new_gen(FF_to_FpXQ_i(self.val)))
-+        pol = new_gen(FF_to_FpXQ(self.val))
-+        return self._parent.polynomial_ring(name)(pol)
- 
-     def minpoly(self, var='x'):
-         """
-@@ -887,7 +888,8 @@ cdef class FiniteFieldElement_pari_ffelt(FinitePolyExtElement):
-             y^2 + 1
-         """
-         sig_on()
--        return self._parent.polynomial_ring(var)(new_gen(FF_minpoly(self.val)))
-+        pol = new_gen(FF_minpoly(self.val))
-+        return self._parent.polynomial_ring(var)(pol)
- 
-     def charpoly(self, var='x'):
-         """
-@@ -905,7 +907,8 @@ cdef class FiniteFieldElement_pari_ffelt(FinitePolyExtElement):
-             y^2 + 1
-         """
-         sig_on()
--        return self._parent.polynomial_ring(var)(new_gen(FF_charpoly(self.val)))
-+        pol = new_gen(FF_charpoly(self.val))
-+        return self._parent.polynomial_ring(var)(pol)
- 
-     def is_square(self):
-         """
 diff --git a/src/sage/rings/integer.pyx b/src/sage/rings/integer.pyx
-index 17e62f3..9e99bde 100644
+index f5345c4..87f02c2 100644
 --- a/src/sage/rings/integer.pyx
 +++ b/src/sage/rings/integer.pyx
-@@ -6806,6 +6806,7 @@ cdef class Integer(sage.structure.element.EuclideanDomainElement):
+@@ -6815,6 +6815,7 @@ cdef class Integer(sage.structure.element.EuclideanDomainElement):
              ....:         (2^100).binomial(2^22, algorithm='pari')
              ....:     except AlarmInterrupt:
              ....:         pass
@@ -407,10 +237,10 @@ index 1727c13..5717227 100644
  
  class NameChangeMap(NumberFieldIsomorphism):
 diff --git a/src/sage/rings/polynomial/polynomial_element.pyx b/src/sage/rings/polynomial/polynomial_element.pyx
-index a711e94..20895c0 100644
+index f956927..ae42664 100644
 --- a/src/sage/rings/polynomial/polynomial_element.pyx
 +++ b/src/sage/rings/polynomial/polynomial_element.pyx
-@@ -4363,8 +4363,7 @@ cdef class Polynomial(CommutativeAlgebraElement):
+@@ -4372,8 +4372,7 @@ cdef class Polynomial(CommutativeAlgebraElement):
              sage: G.prod() == g
              True
          """
@@ -442,270 +272,4 @@ index e37e0a3..2e03ade 100644
          cdef long l, m
  
          R = self.base_ring()
-diff --git a/src/sage/rings/real_mpfr.pyx b/src/sage/rings/real_mpfr.pyx
-index e273190..3b89f4b 100644
---- a/src/sage/rings/real_mpfr.pyx
-+++ b/src/sage/rings/real_mpfr.pyx
-@@ -3212,7 +3212,6 @@ cdef class RealNumber(sage.structure.element.RingElement):
-         # by using internal interfaces of MPFR, which are documented
-         # as subject-to-change.
- 
--        sig_on()
-         if mpfr_nan_p(self.value) or mpfr_inf_p(self.value):
-             raise ValueError('Cannot convert NaN or infinity to Pari float')
- 
-@@ -3234,6 +3233,7 @@ cdef class RealNumber(sage.structure.element.RingElement):
-         cdef mp_exp_t exponent
-         cdef GEN pari_float
- 
-+        sig_on()
-         if mpfr_zero_p(self.value):
-             pari_float = real_0_bit(-rounded_prec)
-         else:
-@@ -3245,7 +3245,7 @@ cdef class RealNumber(sage.structure.element.RingElement):
-             # Create a PARI REAL
-             pari_float = cgetr(2 + rounded_prec / wordsize)
-             pari_float[1] = evalexpo(exponent + rounded_prec - 1) + evalsigne(mpfr_sgn(self.value))
--            mpz_export(&pari_float[2], NULL, 1, wordsize/8, 0, 0, mantissa)
-+            mpz_export(&pari_float[2], NULL, 1, wordsize // 8, 0, 0, mantissa)
-             mpz_clear(mantissa)
- 
-         return new_gen(pari_float)
-diff --git a/src/sage/symbolic/expression.pyx b/src/sage/symbolic/expression.pyx
-index 586d4ab..c14b9a6 100644
---- a/src/sage/symbolic/expression.pyx
-+++ b/src/sage/symbolic/expression.pyx
-@@ -1273,12 +1273,7 @@ cdef class Expression(CommutativeRingElement):
-             sage: f._convert({'parent':int})
-             0
-         """
--        cdef GEx res
--        sig_on()
--        try:
--            res = self._gobj.evalf(0, kwds)
--        finally:
--            sig_off()
-+        cdef GEx res = self._gobj.evalf(0, kwds)
-         return new_Expression_from_GEx(self._parent, res)
- 
-     def _mpfr_(self, R):
-@@ -2839,11 +2834,7 @@ cdef class Expression(CommutativeRingElement):
-             # constants are wrappers around Sage objects, compare directly
-             if is_a_constant(self._gobj.lhs()) and is_a_constant(self._gobj.rhs()):
-                 return self.operator()(self.lhs().pyobject(), self.rhs().pyobject())
--            sig_on()
--            try:
--                pynac_result = decide_relational(self._gobj)
--            finally:
--                sig_off()
-+            pynac_result = decide_relational(self._gobj)
-             if pynac_result == relational_undecidable:
-                 raise ValueError('undecidable relation: ' + repr(self))
- 
-@@ -3233,27 +3224,23 @@ cdef class Expression(CommutativeRingElement):
-         cdef GEx x
-         cdef Expression _right = <Expression>right
-         cdef operators op
--        sig_on()
--        try:
--            if is_a_relational(left._gobj):
--                if is_a_relational(_right._gobj):
--                    op = compatible_relation(relational_operator(left._gobj),
--                                             relational_operator(_right._gobj))
--                    x = relational(left._gobj.lhs() + _right._gobj.lhs(),
--                                   left._gobj.rhs() + _right._gobj.rhs(),
--                                   op)
--                else:
--                    x = relational(left._gobj.lhs() + _right._gobj,
--                                   left._gobj.rhs() + _right._gobj,
--                                   relational_operator(left._gobj))
--            elif is_a_relational(_right._gobj):
--                x = relational(left._gobj + _right._gobj.lhs(),
--                               left._gobj + _right._gobj.rhs(),
--                               relational_operator(_right._gobj))
-+        if is_a_relational(left._gobj):
-+            if is_a_relational(_right._gobj):
-+                op = compatible_relation(relational_operator(left._gobj),
-+                                         relational_operator(_right._gobj))
-+                x = relational(left._gobj.lhs() + _right._gobj.lhs(),
-+                               left._gobj.rhs() + _right._gobj.rhs(),
-+                               op)
-             else:
--                x = left._gobj + _right._gobj
--        finally:
--            sig_off()
-+                x = relational(left._gobj.lhs() + _right._gobj,
-+                               left._gobj.rhs() + _right._gobj,
-+                               relational_operator(left._gobj))
-+        elif is_a_relational(_right._gobj):
-+            x = relational(left._gobj + _right._gobj.lhs(),
-+                           left._gobj + _right._gobj.rhs(),
-+                           relational_operator(_right._gobj))
-+        else:
-+            x = left._gobj + _right._gobj
-         return new_Expression_from_GEx(left._parent, x)
- 
-     cpdef _sub_(left, right):
-@@ -3289,27 +3276,23 @@ cdef class Expression(CommutativeRingElement):
-         """
-         cdef GEx x
-         cdef Expression _right = <Expression>right
--        sig_on()
--        try:
--            if is_a_relational(left._gobj):
--                if is_a_relational(_right._gobj):
--                    op = compatible_relation(relational_operator(left._gobj),
--                                             relational_operator(_right._gobj))
--                    x = relational(left._gobj.lhs() - _right._gobj.lhs(),
--                                   left._gobj.rhs() - _right._gobj.rhs(),
--                                   op)
--                else:
--                    x = relational(left._gobj.lhs() - _right._gobj,
--                                   left._gobj.rhs() - _right._gobj,
--                                   relational_operator(left._gobj))
--            elif is_a_relational(_right._gobj):
--                x = relational(left._gobj - _right._gobj.lhs(),
--                               left._gobj - _right._gobj.rhs(),
--                               relational_operator(_right._gobj))
-+        if is_a_relational(left._gobj):
-+            if is_a_relational(_right._gobj):
-+                op = compatible_relation(relational_operator(left._gobj),
-+                                         relational_operator(_right._gobj))
-+                x = relational(left._gobj.lhs() - _right._gobj.lhs(),
-+                               left._gobj.rhs() - _right._gobj.rhs(),
-+                               op)
-             else:
--                x = left._gobj - _right._gobj
--        finally:
--            sig_off()
-+                x = relational(left._gobj.lhs() - _right._gobj,
-+                               left._gobj.rhs() - _right._gobj,
-+                               relational_operator(left._gobj))
-+        elif is_a_relational(_right._gobj):
-+            x = relational(left._gobj - _right._gobj.lhs(),
-+                           left._gobj - _right._gobj.rhs(),
-+                           relational_operator(_right._gobj))
-+        else:
-+            x = left._gobj - _right._gobj
-         return new_Expression_from_GEx(left._parent, x)
- 
-     cpdef _mul_(left, right):
-@@ -3457,29 +3440,25 @@ cdef class Expression(CommutativeRingElement):
-         cdef GEx x
-         cdef Expression _right = <Expression>right
-         cdef operators o
--        sig_on()
--        try:
--            if is_a_relational(left._gobj):
--                if is_a_relational(_right._gobj):
--                    op = compatible_relation(relational_operator(left._gobj),
--                                             relational_operator(_right._gobj))
--                    x = relational(left._gobj.lhs() * _right._gobj.lhs(),
--                                   left._gobj.rhs() * _right._gobj.rhs(),
--                                   op)
--                else:
--                    o = relational_operator(left._gobj)
--                    x = relational(left._gobj.lhs() * _right._gobj,
--                                   left._gobj.rhs() * _right._gobj,
--                                   o)
--            elif is_a_relational(_right._gobj):
--                o = relational_operator(_right._gobj)
--                x = relational(left._gobj * _right._gobj.lhs(),
--                               left._gobj * _right._gobj.rhs(),
--                               o)
-+        if is_a_relational(left._gobj):
-+            if is_a_relational(_right._gobj):
-+                op = compatible_relation(relational_operator(left._gobj),
-+                                         relational_operator(_right._gobj))
-+                x = relational(left._gobj.lhs() * _right._gobj.lhs(),
-+                               left._gobj.rhs() * _right._gobj.rhs(),
-+                               op)
-             else:
--                x = left._gobj * _right._gobj
--        finally:
--            sig_off()
-+                o = relational_operator(left._gobj)
-+                x = relational(left._gobj.lhs() * _right._gobj,
-+                               left._gobj.rhs() * _right._gobj,
-+                               o)
-+        elif is_a_relational(_right._gobj):
-+            o = relational_operator(_right._gobj)
-+            x = relational(left._gobj * _right._gobj.lhs(),
-+                           left._gobj * _right._gobj.rhs(),
-+                           o)
-+        else:
-+            x = left._gobj * _right._gobj
-         return new_Expression_from_GEx(left._parent, x)
- 
-     cpdef _div_(left, right):
-@@ -3553,7 +3532,7 @@ cdef class Expression(CommutativeRingElement):
-             sage: x/0
-             Traceback (most recent call last):
-             ...
--            ZeroDivisionError: Symbolic division by zero
-+            ZeroDivisionError: symbolic division by zero
- 
-         Check if Pynac can compute divisions of Python longs (:trac:`13107`)::
- 
-@@ -3563,7 +3542,6 @@ cdef class Expression(CommutativeRingElement):
-         cdef GEx x
-         cdef Expression _right = <Expression>right
-         cdef operators o
--        sig_on()
-         try:
-             if is_a_relational(left._gobj):
-                 if is_a_relational(_right._gobj):
-@@ -3589,11 +3567,9 @@ cdef class Expression(CommutativeRingElement):
-             # TODO: change this to maybe cleverly do something involving Cython C++ exception handling.
-             # See http://docs.cython.org/docs/wrapping_CPlusPlus.html
-             if 'division by zero' in str(msg):
--                raise ZeroDivisionError("Symbolic division by zero")
-+                raise ZeroDivisionError("symbolic division by zero")
-             else:
-                 raise
--        finally:
--            sig_off()
- 
-     def __invert__(self):
-         """
-@@ -5314,11 +5290,7 @@ cdef class Expression(CommutativeRingElement):
-         for k, v in sdict.iteritems():
-             smap.insert(make_pair((<Expression>self.coerce_in(k))._gobj,
-                                   (<Expression>self.coerce_in(v))._gobj))
--        sig_on()
--        try:
--            res = self._gobj.subs_map(smap, 0)
--        finally:
--            sig_off()
-+        res = self._gobj.subs_map(smap, 0)
-         return new_Expression_from_GEx(self._parent, res)
- 
-     subs = substitute
-@@ -7183,12 +7155,7 @@ cdef class Expression(CommutativeRingElement):
-             x^2 + 2*x + 2
-         """
-         cdef Expression r = self.coerce_in(b)
--        cdef GEx x
--        sig_on()
--        try:
--            x = g_gcd(self._gobj, r._gobj)
--        finally:
--            sig_off()
-+        cdef GEx x = g_gcd(self._gobj, r._gobj)
-         return new_Expression_from_GEx(self._parent, x)
- 
-     def gosper_sum(self, *args):
-@@ -8983,12 +8950,7 @@ cdef class Expression(CommutativeRingElement):
-             sage: t = SR(1).zeta(); t
-             Infinity
-         """
--        cdef GEx x
--        sig_on()
--        try:
--            x = g_hold_wrapper(g_zeta, self._gobj, hold)
--        finally:
--            sig_off()
-+        cdef GEx x = g_hold_wrapper(g_zeta, self._gobj, hold)
-         return new_Expression_from_GEx(self._parent, x)
- 
-     def factorial(self, hold=False):
+
