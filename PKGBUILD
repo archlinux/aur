@@ -23,10 +23,11 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=4.20.3-arch1
+_srcver=4.20.5-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _pdsversion=099l
+_uksmversion=4.20
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
@@ -34,6 +35,7 @@ makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
 _srcname=linux-$_srcver
 _psd_patch="v4.20_pds${_pdsversion}.patch"
+_uksm_patch="uksm-${_uksmversion}.patch"
 _gcc_more_v='20180509'
 source=(
   "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
@@ -41,21 +43,23 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" # enable_additional_cpu_optimizations_for_gcc
+  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "$_psd_patch::https://gitlab.com/alfredchen/PDS-mq/raw/master/4.20/${_psd_patch}"
+  "$_uksm_patch::https://raw.githubusercontent.com/dolohow/uksm/master/v4.x/uksm-4.20.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('ec140e45f69e72b62797c0a8b6b9cdefdeb08da93f3ca8e5da9249713073396f'
-            'd34fd22f7bea16cc92a17a4a336eac7e142f1e5909e5f39ff7b87dda261d7c03'
+sha256sums=('cf21ab3f202e2088077e98256c4c4f17bc029ff09d865b21c739ccb15a9dbd3f'
+            'af6c0ae1deeefc222393b9605574b33fea9c0f9889f64f927b9a0b0cac4b973b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            'ebed7ad91b3bcc5f9807b97addaef7dbbcf40cca1ab8d325257af47096505a6f')
+            'ebed7ad91b3bcc5f9807b97addaef7dbbcf40cca1ab8d325257af47096505a6f'
+            '2da4d705fe5be8ac9b5af68c48ddb5b925f2f756cb84c4c66ad05279676503a1')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -117,7 +121,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the PDS-mq CPU scheduler"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the PDS-mq CPU scheduler and UKSM patchset"
   depends=(coreutils linux-firmware kmod mkinitcpio)
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("linux-gc=${pkgver}")
@@ -173,7 +177,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel and UKSM patchset"
   depends=('linux-gc')
   provides=("linux-gc-headers=${pkgver}" "linux-headers=${pkgver}")
 
