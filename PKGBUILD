@@ -2,7 +2,7 @@
 # Contributor: Dominika Solarz <dominikasolarz@gmail.com>
 pkgname=openlierox
 pkgver=0.57_beta2
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely addictive realtime worms shoot-em-up backed by an active gamers community"
 arch=(i686 x86_64)
 license=("GPL")
@@ -11,10 +11,12 @@ depends=("sdl" "sdl_mixer" "sdl_image" "hawknl" "gd" "zlib" "libxml2")
 makedepends=("gendesk")
 source=("http://downloads.sourceforge.net/sourceforge/openlierox/OpenLieroX_${pkgver}.src.tar.bz2"
         "compilesh.patch"
-	"cbytestream.patch")
+	"cbytestream.patch"
+        "options.cfg")
 md5sums=('6985e35d7d1cd7520ccba387c459f333'
          '414db95d3acac00dca935deba6cc7488'
-         '485670d8cdfeef69199ed481acbbe1b3')
+         '485670d8cdfeef69199ed481acbbe1b3'
+         '04d00deb6521b3fbcdba6e9546ae67cf')
 
 prepare() {
 cd $srcdir/OpenLieroX
@@ -34,6 +36,7 @@ install -Dm755 bin/openlierox $pkgdir/usr/bin/openlierox
 chmod -R 644 share/gamedir
 install -dm755 $pkgdir/usr/share/OpenLieroX
 cp -r share/gamedir/* $pkgdir/usr/share/OpenLieroX/
-install -Dm644 OpenLieroX.desktop "$pkgdir/usr/share/applications/OpenLieroX.desktop"
-install -Dm644 share/OpenLieroX.png "$pkgdir/usr/share/pixmaps/OpenLieroX.png"
+install -Dm644 OpenLieroX.desktop "${pkgdir}/usr/share/applications/OpenLieroX.desktop"
+install -Dm644 share/OpenLieroX.png "${pkgdir}/usr/share/pixmaps/OpenLieroX.png"
+install -Dm644 ${srcdir}/options.cfg "${pkgdir}/usr/share/OpenLieroX/cfg/options.cfg"
 }
