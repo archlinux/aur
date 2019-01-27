@@ -4,9 +4,9 @@
 # Maintainer: Gustavo Costa (gusbemacbe)
 
 pkgname=suru-plus-git
-pkgver=20.3.2             
+pkgver=25
 pkgrel=1
-pkgdesc="Suru++ 20 — A cyberpunk, elegant, futuristic and modern third-party icons theme!"
+pkgdesc="Suru++ 25 – A cyberpunk, elegant, futuristic, modern and papirusified third-party icons theme!"
 arch=('any')
 url="https://github.com/gusbemacbe/${pkgname/-git/}"
 license=('GPL3')
