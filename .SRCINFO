@@ -1,6 +1,6 @@
 pkgbase = xnconvert
 	pkgdesc = A powerful batch image-converter and resizer.
-	pkgver = 1.77
+	pkgver = 1.78
 	pkgrel = 1
 	url = https://www.xnview.com/en/xnconvert/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = xnconvert
 	depends = qt5-svg
 	source = xnconvert.desktop
 	md5sums = 3f33af83785546964d6e28ad1e06b642
-	source_x86_64 = XnConvert-linux-x64_1.77.tgz::http://download.xnview.com/XnConvert-linux-x64.tgz
-	md5sums_x86_64 = 908160afa80bc9646bc9f8206843f275
-	source_i686 = XnConvert-linux_1.77.tgz::http://download.xnview.com/XnConvert-linux.tgz
+	source_x86_64 = XnConvert-linux-x64_1.78.tgz::http://download.xnview.com/XnConvert-linux-x64.tgz
+	md5sums_x86_64 = 655a4787504855247808a4195298bec7
+	source_i686 = XnConvert-linux_1.78.tgz::http://download.xnview.com/XnConvert-linux.tgz
 	md5sums_i686 = bd7e065c5588d2e878b8605acddaf683
 
 pkgname = xnconvert
