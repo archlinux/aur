@@ -15,6 +15,7 @@ pkgbase = tldr-git
 	depends = curl
 	depends = libzip
 	provides = tldr
+	conflicts = tldr
 	source = https://github.com/tldr-pages/tldr-cpp-client
 	md5sums = SKIP
 

@@ -11,6 +11,7 @@ depends=('curl' 'libzip')
 makedepends=('git' 'make' 'clang' 'curl' 'libzip')
 source=("git+$url")
 md5sums=('SKIP')
+conflicts=('tldr')
 provides=('tldr')
 
 pkgver() {
