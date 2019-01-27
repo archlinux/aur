@@ -1,0 +1,14 @@
+diff -Naur vdr-sc/Makefile vdr-sc-build/Makefile
+--- vdr-sc/Makefile	2018-04-01 23:41:26.605818847 +0200
++++ vdr-sc-build/Makefile	2018-04-02 02:14:28.601921273 +0200
+@@ -78,8 +78,8 @@
+ MAXCAID := 64
+ 
+ # FFdeCSA
+-PARALLEL   ?= PARALLEL_128_SSE2
+-CSAFLAGS   ?= -fexpensive-optimizations -fomit-frame-pointer -funroll-loops -O3 -mmmx -msse -msse2 -msse3
++PARALLEL   ?= PARALLEL_32_INT
++CSAFLAGS   ?= -fexpensive-optimizations -fomit-frame-pointer -funroll-loops -O3
+ FFDECSADIR  = FFdecsa
+ FFDECSA     = $(FFDECSADIR)/FFdecsa.o
+ DECSALIB    = $(FFDECSA)

@@ -1,0 +1,71 @@
+diff -ruN vdr-sc/cam.c vdr-sc-build/cam.c
+--- vdr-sc/cam.c	2018-03-05 19:08:36.744797044 +0100
++++ vdr-sc-build/cam.c	2018-03-05 19:09:46.336267614 +0100
+@@ -2187,7 +2187,10 @@
+   if(caidTimer.TimedOut() || force || (rebuildcaids && triggerTimer.TimedOut())) {
+     PRINTF(L_CORE_CAIDS,"%s: building caid lists",devId);
+     cChannelList list(devId);
++
++
+     {
++#if VDRVERSNUM >= 20301
+     LOCK_CHANNELS_READ;
+     for(const cChannel *channel=Channels->First(); channel; channel=Channels->Next(channel)) {
+       if(!channel->GroupSep() && channel->Ca()>=CA_ENCRYPTED_MIN && device->ProvidesTransponder(channel)) {
+@@ -2195,7 +2198,18 @@
+         if(ch) list.Add(ch);
+         }
+       }
++#else
++    Channels.Lock(false);
++    for(const cChannel *channel=Channels.First(); channel; channel=Channels.Next(channel)) {
++      if(!channel->GroupSep() && channel->Ca()>=CA_ENCRYPTED_MIN && device->ProvidesTransponder(channel)) {
++        cChannelCaids *ch=new cChannelCaids(channel);
++        if(ch) list.Add(ch);
++        }
++      }
++Channels.Unlock();
++#endif
+     }
++
+     list.Unique(true);
+     list.CheckIgnore();
+     list.Unique(false);
+diff -ruN vdr-sc/cam.h vdr-sc-build/cam.h
+--- vdr-sc/cam.h	2018-03-05 19:08:36.744797044 +0100
++++ vdr-sc-build/cam.h	2018-03-05 19:09:46.336267614 +0100
+@@ -59,6 +59,15 @@
+ 
+ // ----------------------------------------------------------------
+ 
++#ifndef CA_SET_PID /* removed in kernel 4.14 */
++typedef struct ca_pid {
++        unsigned int pid;
++        int index;          /* -1 == disable */
++} ca_pid_t;
++#define CA_SET_PID _IOW('o', 135, struct ca_pid)
++#endif
++
++
+ #ifndef SASC
+ class cCiFrame {
+ private:
+
+diff -ruN vdr-sc/device.h vdr-sc-build/device.h
+--- vdr-sc/device.h	2018-03-05 19:08:36.784792143 +0100
++++ vdr-sc-build/device.h	2018-03-05 19:13:34.758255034 +0100
+@@ -51,6 +51,14 @@
+ #define DVB_DEV_SPEC CardIndex(),0
+ #endif
+ 
++#ifndef CA_SET_PID /* removed in kernel 4.14 */
++typedef struct ca_pid {
++        unsigned int pid;
++        int index;          /* -1 == disable */
++} ca_pid_t;
++#define CA_SET_PID _IOW('o', 135, struct ca_pid)
++#endif
++
+ // ----------------------------------------------------------------
+ 
+ #ifndef SASC
