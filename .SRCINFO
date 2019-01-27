@@ -1,0 +1,15 @@
+pkgbase = haskell-mersenne-random-pure64
+	pkgdesc = A purely functional binding to the 64 bit classic mersenne twister.
+	pkgver = 0.2.2.0
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/mersenne-random-pure64
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-random
+	source = https://hackage.haskell.org/package/mersenne-random-pure64-0.2.2.0/mersenne-random-pure64-0.2.2.0.tar.gz
+	sha512sums = 4329491b2f86dc256f24111ac7ae6ee527113e4fc32ecb3fb81563ca175296cf6fb3844147740845a9d7e6d09f48e2be338bd8e56468075b36c1f00d7c47e331
+
+pkgname = haskell-mersenne-random-pure64
+
