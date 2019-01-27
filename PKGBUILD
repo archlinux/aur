@@ -23,9 +23,9 @@ build(){
 package() {
   cd "cfiles-${pkgver}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 cfiles "$pkgdir/usr/local/bin/cfiles"
-  install -Dm644 scripts/displayimg "$pkgdir/usr/local/bin/displayimg"
-  install -Dm644 scripts/displayimg_uberzug "$pkgdir/usr/local/bin/displayimg_uberzug"
-  install -Dm644 scripts/clearimg "$pkgdir/usr/local/bin/clearimg"
-  install -Dm644 scripts/clearimg_uberzug "$pkgdir/usr/local/bin/clearimg_uberzug"
+  install -Dm755 cfiles "$pkgdir/usr/local/bin/cfiles"
+  install -Dm755 scripts/displayimg "$pkgdir/usr/local/bin/displayimg"
+  install -Dm755 scripts/displayimg_uberzug "$pkgdir/usr/local/bin/displayimg_uberzug"
+  install -Dm755 scripts/clearimg "$pkgdir/usr/local/bin/clearimg"
+  install -Dm755 scripts/clearimg_uberzug "$pkgdir/usr/local/bin/clearimg_uberzug"
 }
