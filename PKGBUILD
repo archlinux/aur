@@ -28,8 +28,8 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	(( CHECKFUNC )) && opts=('--enable-unit' '--enable-integration')
-	./configure --prefix=/usr --with-udevrulesprefix=60- "${opts[@]}"
+	(( CHECKFUNC )) && _opts=('--enable-unit' '--enable-integration')
+	./configure --prefix=/usr --with-udevrulesprefix=60- "${_opts[@]}"
 	make
 }
 
