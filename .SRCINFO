@@ -1,21 +1,22 @@
 pkgbase = shattered-pixel-dungeon
 	pkgdesc = Shattered fork of the popular rogue-like game
-	pkgver = 0.7.1c
+	pkgver = 0.7.1d
 	pkgrel = 1
 	url = http://shatteredpixel.tumblr.com
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = gradle
 	makedepends = java-environment
 	makedepends = jdk8-openjdk
 	depends = java-runtime
 	depends = bash
 	depends = xorg-xrandr
 	conflicts = shattered-pixel-dungeon-git
-	source = https://github.com/00-Evan/shattered-pixel-dungeon-gdx/archive/v0.7.1c.tar.gz
+	source = https://github.com/00-Evan/shattered-pixel-dungeon-gdx/archive/v0.7.1d.tar.gz
 	source = shattered-pixel-dungeon.sh
 	source = shattered-pixel-dungeon.desktop
-	sha512sums = d596e982df7641b7cd610ebf45c057d7cc66fb79fe062d2fc49abc740031728ab29030ba74bc09602efc8fa3ca84aa5ec10cda48701312564dcd52bb8ed9d424
+	sha512sums = 600e1335210b34ea8d16d7bd3bb111c232711b4ab678a383c11ac8024ca96295e864bc3f06f5731daf6c3feac657802afb7b7f6089f671226d5a12a90ef82ca0
 	sha512sums = 88814d1f33eea6bd5656d3ca731ed5a6cfce10ecdae24012252c5b32c4b194ec75fb0e22cac70897802679086c6a32e210d52933ec45ca94ff350ac4ad7c266e
 	sha512sums = 204a7bcedbbc14bdad6586e4b759b326191a7fd2c344dadc7032495d4caa5fe32edac4118d7294229a6fe24f6684416fff37e260bbc9dde9e50846a03ba77db8
 
