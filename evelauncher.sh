@@ -58,7 +58,7 @@ check_wine() {
 	WINECONF=$(find ${WINEINFP%/bin*}/share -name 'wine.inf' 2>/dev/null) || true
 	WINEDATE=$(ls -l --time-style=+%s "$WINECONF" 2>/dev/null | cut -d' ' -f6)
 	if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
-	    launcher_msg "Preparing/Updating wine in $WINEPREFIX"
+	    launcher_msg "Preparing wine in $WINEPREFIX"
 	    env WINEARCH=win32 \
 		WINEPREFIX=$WINEPREFIX \
 		WINEDEBUG=-all \
@@ -70,11 +70,15 @@ check_wine() {
 	    env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg add \
 		'HKEY_CURRENT_USER\Software\Wine\DllOverrides' \
 		/v winemenubuilder.exe /f >/dev/null
-	    if [ "x$($WINEPATH/wine --version | grep -q 3.2 ;echo $?)" != "x0" ] ;then
-		if [ "x$($WINEPATH/wine --version | grep -q 4.0 ;echo $?)" != "x0" ] ;then
-		    env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
-			$(which winetricks) -q winxp >/dev/null
-		fi
+	    WINETRP=$(grep -v winxp $WINEPREFIX/winetricks.log 2>/dev/null | uniq)
+	    if [ "x$WINETRP" != "x" ] ;then
+		rm $WINEPREFIX/winetricks.log
+		env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
+		    $(which winetricks) -q --force $WINETRP >/dev/null
+	    fi
+	    if [ "x$($WINEPATH/wine --version | grep -q 4.0 ;echo $?)" != "x0" ] ;then
+		env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
+		    $(which winetricks) -q winxp >/dev/null
 	    fi
 	fi
     else

@@ -1,7 +1,7 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
 pkgver=1385477
-pkgrel=1
+pkgrel=2
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
@@ -103,8 +103,8 @@ package() {
 }
 
 sha256sums=('f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731'
-            '652b1db2fe8c5aa30779b1002bba2301a6e1532c0b91cc04efef5f540da504e8'
-            '04dd517cf7689eac4e99440ebfc8c890078fd1519281d45918d705307fc09ce1'
+            '01c72f0998722aa8cca81627c15ca05126e121e070f5d210c6dbf8be9f1e293b'
+            'f9262a587b596ed4cd4e2aa4fadfc858424334448d5a5a7f24ca78f5bf58fcb3'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
             'f8988be390204ce645ca37f43cdb8e395970f8d6dd36095acf08c5c7cf72833c'
             'd0225e14dd3f619bf6540df134b5545e13bfb0954616a329c48d5eb768862eda'
