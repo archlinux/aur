@@ -39,6 +39,10 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
 
+  # must re-run CMake in order to populate the list of library files to bundle
+  # see 2175cfb for more information
+  cmake .
+
   make DESTDIR="$pkgdir" install
 
   # install license files
