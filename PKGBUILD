@@ -5,8 +5,8 @@
 # Maintainer: Gustavo Costa <gusbemacbe ar gmail dot com>
 
 pkgname=suru-plus-pack-git
-pkgver=20.4.1
-pkgrel=2
+pkgver=25
+pkgrel=3
 pkgdesc="The complete collection of Suru++ icons themes, based on Sam Hewitt's Suru Icons"
 arch=('any')
 license=('GPL3')

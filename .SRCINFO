@@ -1,7 +1,7 @@
 pkgbase = suru-plus-pack-git
 	pkgdesc = The complete collection of Suru++ icons themes, based on Sam Hewitt's Suru Icons
-	pkgver = 20.4.1
-	pkgrel = 2
+	pkgver = 25
+	pkgrel = 3
 	arch = any
 	license = GPL3
 	makedepends = git
