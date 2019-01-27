@@ -15,5 +15,6 @@ sha256sums=('6b990aa6dd94221ee1db49fbe0954a689a7e3479b94d380d89d4e596e8e9176b')
 
 package() {
     cd "${pkgname}-${pkgver}"
+    sed -i '/^[[:space:]]\+@ln -.*$/s/\$(DESTDIR)//' Makefile
     make install DESTDIR="$pkgdir"
 }
