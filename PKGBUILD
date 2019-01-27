@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tools-git
-pkgver=3.0.2.r863.872076e1
+pkgver=3.0.2.r868.c191fd28
 pkgrel=1
 pkgdesc='Trusted Platform Module 2.0 tools based on tpm2-tss'
 arch=('x86_64')
@@ -29,8 +29,8 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	(( CHECKFUNC )) && opts=('--enable-unit')
-	./configure --prefix=/usr "${opts[@]}"
+	(( CHECKFUNC )) && _opts=('--enable-unit')
+	./configure --prefix=/usr "${_opts[@]}"
 	make
 }
 
