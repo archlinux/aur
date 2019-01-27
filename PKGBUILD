@@ -5,7 +5,7 @@
 #              WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=steamos-compositor-plus
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Compositor used by SteamOS with some added tweaks and fixes"
 arch=('i686' 'x86_64')
 url="https://github.com/alkazar/steamos-compositor"
@@ -14,19 +14,19 @@ depends=('libxfixes' 'libxext' 'libxcomposite' 'libxdamage' 'libxrender' 'libxxf
 makedepends=('mesa')
 conflicts=('steamos-compositor')
 _msver=1.10
-source=("git+https://github.com/alkazar/steamos-compositor#tag=$pkgver"
+source=("https://github.com/alkazar/steamos-compositor/archive/${pkgver}.tar.gz"
         "http://repo.steamstatic.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_${_msver}.tar.xz")
-md5sums=('SKIP'
+md5sums=('6c7d0862c546a81ef2b3b9a62009dca5'
          'ab8b731fb917aff183aa338bf3298495')
 
 prepare() {
-  cd "$srcdir/steamos-compositor"
+  cd "$srcdir/steamos-compositor-$pkgver"
   autoreconf -i
 }
 
 build() {
   export LIBS="-lXext -lXdamage -lXfixes"
-  cd "$srcdir/steamos-compositor"
+  cd "$srcdir/steamos-compositor-$pkgver"
   ./configure --prefix=/usr
   make
   cd "$srcdir/steamos-modeswitch-inhibitor-$_msver"
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/steamos-compositor"
+  cd "$srcdir/steamos-compositor-$pkgver"
   make DESTDIR="$pkgdir/" install
   install -m 755 "usr/bin/steamos-session" "$pkgdir/usr/bin"
   sed -i "s|x86_64-linux-gnu/||g" "$pkgdir/usr/bin/steamos-session"
@@ -46,5 +46,6 @@ package() {
   install -m 644 "usr/share/icons/steam/arrow.png" "$pkgdir/usr/share/icons/steam"
   cd "$srcdir/steamos-modeswitch-inhibitor-$_msver"
   make DESTDIR="$pkgdir/" install
+  rm -rf "$pkgdir/usr/share/doc"
 }
 
