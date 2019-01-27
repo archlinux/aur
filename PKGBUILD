@@ -2,12 +2,12 @@
 
 pkgname=gromacs-4.6-complete
 pkgver=4.6.7
-pkgrel=5
+pkgrel=7
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=('fftw' 'openmotif' 'perl' 'libxml2' 'libsm' 'libx11' 'doxygen')
+depends=('gcc5' 'fftw' 'perl' 'libxml2' 'libsm' 'doxygen')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
         GMXRC.bash.cmakein.patch)
@@ -22,8 +22,8 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
 
 #With gcc5 currently there are less errors in the tests
 # also the compilation is possible in cuda capable machines
-export CC=gcc-5
-export CXX=g++-5
+#export CC=gcc-5
+#export CXX=g++-5
 
 prepare() {
 cd ${srcdir}/gromacs-${pkgver}/scripts/
@@ -31,42 +31,44 @@ ls
 patch -p0 -i ${srcdir}/GMXRC.bash.cmakein.patch
 }
 
+
 build() {
   
   mkdir -p ${srcdir}/{single,double}
 
-  msg2 "Building the single precision files"
-  cd ${srcdir}/single
-  cmake ../gromacs-${pkgver} \
-    -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs/gromacs-${pkgver} \
-    -DBUILD_SHARED_LIBS=ON \
-    -DGMX_DEFAULT_SUFFIX=ON \
-    -DREGRESSIONTEST_DOWNLOAD=ON \
-    -DGMX_OPENMP=ON
-  make
-
   msg2 "Building the double precision files"
   cd ${srcdir}/double
-  cmake ../gromacs-${pkgver} \
+  cmake ../gromacs-${pkgver}/ \
+    -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs/gromacs-${pkgver}/ \
+    -DBUILD_SHARED_LIBS=ON \
+    -DGMX_DEFAULT_SUFFIX=ON \
+    -DGMX_GPU=OFF \
+    -DGMX_DOUBLE=ON \
+    -DGMX_OPENMP=ON
+  make
+  msg2 "Building the single precision files"
+  cd ${srcdir}/single
+  cmake ../gromacs-${pkgver}/ \
     -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs/gromacs-${pkgver} \
     -DBUILD_SHARED_LIBS=ON \
     -DGMX_DEFAULT_SUFFIX=ON \
-    -DREGRESSIONTEST_DOWNLOAD=ON \
-    -DGMX_DOUBLE=ON \
+    -DGMX_GPU=OFF \
     -DGMX_OPENMP=ON
   make
 }
 
 check () {
-  cd ${srcdir}/single
-  make test
+  msg2 "Testing double precision compilation"
   cd ${srcdir}/double
-  make test
+  make check
+  msg2 "Testing single precision compilation"
+  cd ${srcdir}/single
+  make check
 }
 
 package() {
   msg2 "Making the single precision executables"
-  cd ${srcdir}/single 
+  cd ${srcdir}/single
   make DESTDIR=${pkgdir} install
 
   msg2 "Making the double precision executables"
@@ -79,4 +81,3 @@ package() {
   find . -type f -exec chmod 0644 {} \;
   find . -type d -exec chmod 0755 {} \;
 }
-
