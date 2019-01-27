@@ -1,0 +1,15 @@
+pkgbase = haskell-normaldistribution
+	pkgdesc = Produces normally distributed random values with a minimum of fuss.
+	pkgver = 1.1.0.3
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/normaldistribution
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-random
+	source = https://hackage.haskell.org/package/normaldistribution-1.1.0.3/normaldistribution-1.1.0.3.tar.gz
+	sha512sums = 7ec4cb82436fb48663dbbe3e2849d0597f242b72e8d211515451a81cb417e26c19708ea7854a93bcce0185408fd44431349f4ab9435ca49d04f4f3f9c6a3c063
+
+pkgname = haskell-normaldistribution
+
