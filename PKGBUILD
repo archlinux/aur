@@ -2,7 +2,7 @@
 
 pkgname=repl-rs
 _pkgname=repl-rs
-pkgver=r51.accfb34468a96dad1e53b19e7349c1fd62d3544d
+pkgver=53.cde9620
 pkgrel=1
 pkgdesc="Rust Repl"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('MIT')
 source=("git+https://github.com/sigmaSd/$_pkgname.git")
 sha256sums=('SKIP')
 
-pkgver() {
+5() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

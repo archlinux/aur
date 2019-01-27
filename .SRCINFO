@@ -1,6 +1,6 @@
 pkgbase = repl-rs
 	pkgdesc = Rust Repl
-	pkgver = r51.accfb34468a96dad1e53b19e7349c1fd62d3544d
+	pkgver = 53.cde9620
 	pkgrel = 1
 	url = https://github.com/sigmaSd/repl-rs
 	arch = x86_64
