@@ -36,31 +36,31 @@ build() {
   mkdir -p ${srcdir}/{single,double}
 
   msg2 "Building the double precision files"
-  cd ${srcdir}/double	
+  cd ${srcdir}/double
   cmake ../gromacs-${pkgver}/ \
-        -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs/gromacs-${pkgver}/ \
-        -DBUILD_SHARED_LIBS=ON \
-        -DGMX_X11=ON \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DGMX_DOUBLE=ON \
-        -DGMX_GPU=OFF \
-        -DREGRESSIONTEST_DOWNLOAD=ON \
-        -DGMX_BUILD_OWN_FFTW=ON \
-        -DGMX_LIBS_SUFFIX=_d
+    -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs/gromacs-${pkgver}/ \
+    -DBUILD_SHARED_LIBS=ON \
+    -DGMX_X11=ON \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DGMX_DOUBLE=ON \
+    -DGMX_GPU=OFF \
+    -DREGRESSIONTEST_DOWNLOAD=ON \
+    -DGMX_BUILD_OWN_FFTW=ON \
+    -DGMX_LIBS_SUFFIX=_d
   make
 
   msg2 "Building the single precision files"
   cd ${srcdir}/single
   cmake ../gromacs-${pkgver}/ \
-        -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs/gromacs-${pkgver}/ \
-        -DBUILD_SHARED_LIBS=ON \
-        -DGMX_X11=ON \
-        -DREGRESSIONTEST_DOWNLOAD=ON \
-        -DGMX_BUILD_OWN_FFTW=ON \
-        -DGMX_GPU=OFF \
-        -DCMAKE_INSTALL_LIBDIR=lib
-        #For gromacs 5 in combination of CUDA 8
-	#-DCMAKE_CXX_FLAGS="-std=c++11" \
+    -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs/gromacs-${pkgver}/ \
+    -DBUILD_SHARED_LIBS=ON \
+    -DGMX_X11=ON \
+    -DREGRESSIONTEST_DOWNLOAD=ON \
+    -DGMX_BUILD_OWN_FFTW=ON \
+    -DGMX_GPU=OFF \
+    -DCMAKE_INSTALL_LIBDIR=lib
+    #For gromacs 5 in combination of CUDA 8
+    #-DCMAKE_CXX_FLAGS="-std=c++11" \
   make
 }
 
@@ -77,7 +77,7 @@ package() {
 
   msg2 "Making the single precision executables"
   cd ${srcdir}/single
-  make  DESTDIR=${pkgdir} install
+  make DESTDIR=${pkgdir} install
 
   # Cleaning up, kept the csh completion at default location
   msg2 "Making the double precision executables"
