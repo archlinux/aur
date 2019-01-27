@@ -1,5 +1,5 @@
 pkgbase = edex-ui
-	pkgdesc = A science fiction desktop running everywhere. Awesome.
+	pkgdesc = A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support.
 	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/GitSquared/edex-ui
