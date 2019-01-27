@@ -6,7 +6,7 @@
 pkgname=lib32-systemd-git
 _pkgname=lib32-systemd
 _pkgbasename=systemd
-pkgver=240.307
+pkgver=241.rc1.12
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
@@ -31,6 +31,7 @@ pkgver() {
 
   version="$(git describe --abbrev=0 --tags)"
   count="$(git rev-list --count ${version}..)"
+  version="$(echo ${version}| sed 's/-/./')"
   printf '%s.%s' "${version#v}" "${count}"
 }
 
