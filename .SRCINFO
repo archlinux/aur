@@ -1,6 +1,6 @@
 pkgbase = inform
 	pkgdesc = Interactive fiction compiler
-	pkgver = 6.33
+	pkgver = 6.34
 	pkgrel = 1
 	url = http://www.inform-fiction.org/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = inform
 	groups = inform
 	license = custom:"freeware"
 	depends = glibc
-	source = http://www.ifarchive.org/if-archive/infocom/compilers/inform6/source/inform-6.33-6.12.1.tar.gz
-	md5sums = 85a34329badfecd8b586782890aa17bd
+	source = http://www.ifarchive.org/if-archive/infocom/compilers/inform6/source/inform-6.34-6.12.2.tar.gz
+	md5sums = c5ef293adb9d245975ca5aa3af2bdef8
 
 pkgname = inform
 

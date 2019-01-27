@@ -1,9 +1,8 @@
-# Maintainer: Beej <beej@beej.us>
-# Maintainer: Alessandro Schillaci < http://slade.altervista.org >
+# Maintainer: Odel <odelvidyascape@gmail.com>
 # Contributor: Alessandro Schillaci < http://slade.altervista.org >
 pkgname=inform
-pkgver=6.33
-_ilibver=6.12.1
+pkgver=6.34
+_ilibver=6.12.2
 pkgrel=1
 pkgdesc="Interactive fiction compiler"
 arch=(i686 x86_64)
@@ -13,7 +12,7 @@ depends=('glibc')
 groups=(inform)
 source=(http://www.ifarchive.org/if-archive/infocom/compilers/inform6/source/$pkgname-$pkgver-$_ilibver.tar.gz)
 
-md5sums=('85a34329badfecd8b586782890aa17bd')
+md5sums=('c5ef293adb9d245975ca5aa3af2bdef8')
 
 build(){
 	cd $srcdir/$pkgname-$pkgver-$_ilibver
