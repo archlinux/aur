@@ -1,13 +1,14 @@
 # Maintainer: Sean Bartell <yotann@yotann.org>
+# Maintainer: Holger Rauch
 
 pkgname=ttf-dpcustommono2
 pkgver=2.01
-pkgrel=1
+pkgrel=2
 pkgdesc="PGDP font with exaggerated clarity to aid proofreading"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
 url="http://www.pgdp.net/wiki/DPCustomMono2"
-source=(LICENCE http://www.pgdp.net/c/faq/DPCustomMono2.ttf)
+source=(LICENCE https://www.pgdp.net/c/faq/DPCustomMono2.ttf)
 install=$pkgname.install
 license=('custom')
 md5sums=('f5df9c45b5f3b8c8b6d959270b90b3ba'
