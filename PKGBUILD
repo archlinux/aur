@@ -8,7 +8,7 @@ url="https://github.com/Matteljay/$pkgname"
 license=('MIT')
 depends=('python-kivy' 'python-pillow' 'xclip' 'xterm' 'youtube-dl' 'ffmpeg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Matteljay/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('ee5d72d0d7c3c0cbd05ec8d1c979fde0757ee3032d099df91885f947d536fd62')
+sha256sums=('452b1761d630b848470a39788efbd59a3c86b007fac065da264ad023403d2b5d')
 
 package() {
     cd $pkgname-$pkgver
