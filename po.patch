@@ -1,0 +1,1078 @@
+diff -ur old/po/be/minetest.po new/po/be/minetest.po
+--- old/po/be/minetest.po	2019-01-26 23:06:47.563507889 -1000
++++ new/po/be/minetest.po	2019-01-26 23:06:35.090173986 -1000
+@@ -544,29 +544,6 @@
+ msgid "Start Game"
+ msgstr "Гуляць (сервер)"
+ 
+-# Belarusian translation for Minetest.
+-# Copyright (C) 2010 celeron55, Pertu Ahola <celeron55@gmail.com>
+-# This file is distributed under the same license as the Minetest package.
+-# Selat <LongExampleTestName@gmail.com>, 2014.
+-# Viktar Vauchkevich <victorenator@gmail.com>, 2017.
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2017-05-25 17:22+0000\n"
+-"Last-Translator: Viktar Vauchkevich <victorenator@gmail.com>\n"
+-"Language-Team: Belarusian <https://hosted.weblate.org/projects/minetest/"
+-"minetest/be/>\n"
+-"Language: be\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+-"X-Generator: Weblate 2.14.1\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Адрас / Порт"
+diff -ur old/po/ca/minetest.po new/po/ca/minetest.po
+--- old/po/ca/minetest.po	2019-01-26 23:06:47.563507889 -1000
++++ new/po/ca/minetest.po	2019-01-26 23:06:35.096840654 -1000
+@@ -553,27 +553,6 @@
+ msgid "Start Game"
+ msgstr "Ocultar Joc"
+ 
+-# Catalan translations for minetest package.
+-# Copyright (C) 2015 THE minetest'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the minetest package.
+-# Automatically generated, 2015.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2017-08-03 14:54+0000\n"
+-"Last-Translator: Joan Ciprià Moreno Teodoro <joancipria@gmail.com>\n"
+-"Language-Team: Catalan <https://hosted.weblate.org/projects/minetest/"
+-"minetest/ca/>\n"
+-"Language: ca\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 2.16-dev\n"
+ 
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+diff -ur old/po/cs/minetest.po new/po/cs/minetest.po
+--- old/po/cs/minetest.po	2019-01-26 23:06:47.563507889 -1000
++++ new/po/cs/minetest.po	2019-01-26 23:06:35.103507321 -1000
+@@ -544,28 +544,6 @@
+ msgid "Start Game"
+ msgstr "Spustit hru"
+ 
+-# Czech translations for minetest.
+-# Copyright (C) 2011 celeron
+-# This file is distributed under the same license as the minetest.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-11-06 14:54+0000\n"
+-"Last-Translator: Tomáš Bělohlávek <TOMats@email.cz>\n"
+-"Language-Team: Czech <https://hosted.weblate.org/projects/minetest/minetest/"
+-"cs/>\n"
+-"Language: cs\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+-"X-Generator: Weblate 3.3-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Adresa / Port"
+diff -ur old/po/da/minetest.po new/po/da/minetest.po
+--- old/po/da/minetest.po	2019-01-26 23:06:47.563507889 -1000
++++ new/po/da/minetest.po	2019-01-26 23:06:35.110173988 -1000
+@@ -546,28 +546,6 @@
+ msgid "Start Game"
+ msgstr "Vær vært for spil"
+ 
+-# German translations for minetest-c55 package.
+-# Copyright (C) 2011 celeron
+-# This file is distributed under the same license as the minetest-c55 package.
+-# Frederik Helth <Guides@live.dk>, 2011.
+-# 
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: 0.0.0\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-03-24 17:35+0000\n"
+-"Last-Translator: Thomas Wagner Nielsen <thomas@viawords.com>\n"
+-"Language-Team: Danish <https://hosted.weblate.org/projects/minetest/minetest/"
+-"da/>\n"
+-"Language: da\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 2.20-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Adresse/port"
+diff -ur old/po/de/minetest.po new/po/de/minetest.po
+--- old/po/de/minetest.po	2019-01-26 23:06:47.566841222 -1000
++++ new/po/de/minetest.po	2019-01-26 23:06:35.116840654 -1000
+@@ -507,28 +507,6 @@
+ msgid "Start Game"
+ msgstr "Spiel starten"
+ 
+-# German translations for minetest-c55 package.
+-# Copyright (C) 2011 celeron
+-# This file is distributed under the same license as the minetest-c55 package.
+-# Constantin Wenger <constantin.wenger@googlemail.com>, 2011.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: 0.0.0\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-06-21 12:31+0000\n"
+-"Last-Translator: Lejo <Lejo_1@web.de>\n"
+-"Language-Team: German <https://hosted.weblate.org/projects/minetest/minetest/"
+-"de/>\n"
+-"Language: de\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 3.1-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Adresse / Port"
+diff -ur old/po/dv/minetest.po new/po/dv/minetest.po
+--- old/po/dv/minetest.po	2019-01-26 23:06:47.566841222 -1000
++++ new/po/dv/minetest.po	2019-01-26 23:06:35.123507321 -1000
+@@ -515,28 +515,6 @@
+ msgid "Start Game"
+ msgstr "ގޭމް ހޮސްޓްކުރޭ"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the minetest package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-12-30 12:09+0000\n"
+-"Last-Translator: Unknown <abjinah@gmail.com>\n"
+-"Language-Team: Dhivehi <https://hosted.weblate.org/projects/minetest/"
+-"minetest/dv/>\n"
+-"Language: dv\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 3.4-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "އެޑްރެސް / ޕޯޓް"
+diff -ur old/po/eo/minetest.po new/po/eo/minetest.po
+--- old/po/eo/minetest.po	2019-01-26 23:06:47.566841222 -1000
++++ new/po/eo/minetest.po	2019-01-26 23:06:35.126840655 -1000
+@@ -545,28 +545,6 @@
+ msgid "Start Game"
+ msgstr "Gastigi ludon"
+ 
+-# Esperanto translations for minetest package.
+-# Copyright (C) 2015 THE minetest'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the minetest package.
+-# Automatically generated, 2015.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-01-24 12:09+0000\n"
+-"Last-Translator: yellowcrash10 <corini98@gmail.com>\n"
+-"Language-Team: Esperanto <https://hosted.weblate.org/projects/minetest/"
+-"minetest/eo/>\n"
+-"Language: eo\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 2.19-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Adreso / Pordo"
+diff -ur old/po/es/minetest.po new/po/es/minetest.po
+--- old/po/es/minetest.po	2019-01-26 23:06:47.566841222 -1000
++++ new/po/es/minetest.po	2019-01-26 23:06:35.133507322 -1000
+@@ -552,28 +552,6 @@
+ msgid "Start Game"
+ msgstr "Juego anfitrión"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-10-22 11:38+0000\n"
+-"Last-Translator: runs <runspect@yahoo.es>\n"
+-"Language-Team: Spanish <https://hosted.weblate.org/projects/minetest/"
+-"minetest/es/>\n"
+-"Language: es\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 3.3-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Dirección / puerto"
+diff -ur old/po/et/minetest.po new/po/et/minetest.po
+--- old/po/et/minetest.po	2019-01-26 23:06:47.566841222 -1000
++++ new/po/et/minetest.po	2019-01-26 23:06:35.136840655 -1000
+@@ -534,28 +534,6 @@
+ msgid "Start Game"
+ msgstr "Peida mäng"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2016-04-09 13:53+0000\n"
+-"Last-Translator: Jan Harald <kuus29@gmail.com>\n"
+-"Language-Team: Estonian <https://hosted.weblate.org/projects/minetest/"
+-"minetest/et/>\n"
+-"Language: et\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 2.6-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ #, fuzzy
+ msgid "Address / Port"
+diff -ur old/po/fr/minetest.po new/po/fr/minetest.po
+--- old/po/fr/minetest.po	2019-01-26 23:06:47.570174556 -1000
++++ new/po/fr/minetest.po	2019-01-26 23:06:35.143507323 -1000
+@@ -510,28 +510,6 @@
+ msgid "Start Game"
+ msgstr "Démarrer"
+ 
+-# French translations for minetest-c55 package.
+-# Copyright (C) 2011 celeron
+-# This file is distributed under the same license as the minetest-c55 package.
+-# Cyriaque 'Cisoun' Skrapits <cysoun@gmail.com>, 2011
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: 0.0.0\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-08-05 17:44+0000\n"
+-"Last-Translator: Sygix <simon18minecraft@gmail.com>\n"
+-"Language-Team: French <https://hosted.weblate.org/projects/minetest/minetest/"
+-"fr/>\n"
+-"Language: fr\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+-"X-Generator: Weblate 3.1.1\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Adresse / Port :"
+diff -ur old/po/he/minetest.po new/po/he/minetest.po
+--- old/po/he/minetest.po	2019-01-26 23:06:47.570174556 -1000
++++ new/po/he/minetest.po	2019-01-26 23:06:35.146840655 -1000
+@@ -522,28 +522,6 @@
+ msgid "Start Game"
+ msgstr "הסתר משחק"
+ 
+-# Hebrew translations for minetest package.
+-# Copyright (C) 2015 THE minetest'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the minetest package.
+-# Automatically generated, 2015.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2016-05-26 21:01+0000\n"
+-"Last-Translator: yuval hreman <huckvrni@gmail.com>\n"
+-"Language-Team: Hebrew <https://hosted.weblate.org/projects/minetest/minetest/"
+-"he/>\n"
+-"Language: he\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 2.7-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "כתובת / פורט"
+diff -ur old/po/hu/minetest.po new/po/hu/minetest.po
+--- old/po/hu/minetest.po	2019-01-26 23:06:47.570174556 -1000
++++ new/po/hu/minetest.po	2019-01-26 23:06:35.153507323 -1000
+@@ -506,28 +506,6 @@
+ msgid "Start Game"
+ msgstr "Indítás"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-11-25 23:08+0000\n"
+-"Last-Translator: Hatlábú Farkas <hatlabufarkas@gmail.com>\n"
+-"Language-Team: Hungarian <https://hosted.weblate.org/projects/minetest/"
+-"minetest/hu/>\n"
+-"Language: hu\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 3.3-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Cím / Port"
+diff -ur old/po/id/minetest.po new/po/id/minetest.po
+--- old/po/id/minetest.po	2019-01-26 23:06:47.573507889 -1000
++++ new/po/id/minetest.po	2019-01-26 23:06:35.156840657 -1000
+@@ -507,28 +507,6 @@
+ msgid "Start Game"
+ msgstr "Mulai permainan"
+ 
+-# Indonesian translation for minetest-c55 package.
+-# Copyright (C) 2014 srifqi
+-# This file is distributed under the same license as the PACKAGE package.
+-# Muhammad Rifqi Priyo Susanto <muhammadrifqipriyosusanto@gmail.com>, 2014.
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-03-20 15:59+0000\n"
+-"Last-Translator: Muhammad Rifqi Priyo Susanto "
+-"<muhammadrifqipriyosusanto@gmail.com>\n"
+-"Language-Team: Indonesian <https://hosted.weblate.org/projects/minetest/"
+-"minetest/id/>\n"
+-"Language: id\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=1; plural=0;\n"
+-"X-Generator: Weblate 2.20-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Alamat/Porta"
+diff -ur old/po/it/minetest.po new/po/it/minetest.po
+--- old/po/it/minetest.po	2019-01-26 23:06:47.573507889 -1000
++++ new/po/it/minetest.po	2019-01-26 23:06:35.163507323 -1000
+@@ -548,23 +548,6 @@
+ msgstr "Avviare il gioco"
+ 
+ #: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: Italian (Minetest)\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2017-09-29 19:47+0000\n"
+-"Last-Translator: Hamlet <h4mlet@riseup.net>\n"
+-"Language-Team: Italian <https://hosted.weblate.org/projects/minetest/"
+-"minetest/it/>\n"
+-"Language: it\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 2.17-dev\n"
+-
+-#: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Indirizzo / Porta"
+ 
+diff -ur old/po/ja/minetest.po new/po/ja/minetest.po
+--- old/po/ja/minetest.po	2019-01-26 23:06:47.573507889 -1000
++++ new/po/ja/minetest.po	2019-01-26 23:06:35.166840657 -1000
+@@ -525,23 +525,6 @@
+ msgstr "ゲームを開始"
+ 
+ #: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-02-06 00:37+0000\n"
+-"Last-Translator: thatrs <theredstoneblock0@gmail.com>\n"
+-"Language-Team: Japanese <https://hosted.weblate.org/projects/minetest/"
+-"minetest/ja/>\n"
+-"Language: ja\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=1; plural=0;\n"
+-"X-Generator: Weblate 2.19-dev\n"
+-
+-#: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "アドレスとポート"
+ 
+diff -ur old/po/jbo/minetest.po new/po/jbo/minetest.po
+--- old/po/jbo/minetest.po	2019-01-26 23:06:47.573507889 -1000
++++ new/po/jbo/minetest.po	2019-01-26 23:06:35.170173990 -1000
+@@ -520,28 +520,6 @@
+ msgid "Start Game"
+ msgstr "cfari fa lo nu kelci"
+ 
+-# Language jbo translations for minetest package.
+-# Copyright (C) 2015 THE minetest'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the minetest package.
+-# Automatically generated, 2015.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2016-05-08 17:39+0000\n"
+-"Last-Translator: senpi <saikos@openmailbox.org>\n"
+-"Language-Team: Lojban <https://hosted.weblate.org/projects/minetest/minetest/"
+-"jbo/>\n"
+-"Language: jbo\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=1; plural=0;\n"
+-"X-Generator: Weblate 2.7-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ #, fuzzy
+ msgid "Address / Port"
+diff -ur old/po/kn/minetest.po new/po/kn/minetest.po
+--- old/po/kn/minetest.po	2019-01-26 23:06:47.573507889 -1000
++++ new/po/kn/minetest.po	2019-01-26 23:06:35.173507324 -1000
+@@ -508,26 +508,6 @@
+ msgid "Start Game"
+ msgstr ""
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the minetest package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-#, fuzzy
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+-"Language-Team: LANGUAGE <LL@li.org>\n"
+-"Language: \n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr ""
+diff -ur old/po/ko/minetest.po new/po/ko/minetest.po
+--- old/po/ko/minetest.po	2019-01-26 23:06:47.573507889 -1000
++++ new/po/ko/minetest.po	2019-01-26 23:06:35.180173990 -1000
+@@ -544,27 +544,6 @@
+ msgid "Start Game"
+ msgstr "게임 호스트하기"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2017-12-23 19:42+0000\n"
+-"Last-Translator: 김현수 <a34253492@gmail.com>\n"
+-"Language-Team: Korean <https://hosted.weblate.org/projects/minetest/minetest/"
+-"ko/>\n"
+-"Language: ko\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=1; plural=0;\n"
+-"X-Generator: Weblate 2.19-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "주소/포트"
+diff -ur old/po/ky/minetest.po new/po/ky/minetest.po
+--- old/po/ky/minetest.po	2019-01-26 23:06:47.573507889 -1000
++++ new/po/ky/minetest.po	2019-01-26 23:06:35.183507324 -1000
+@@ -530,28 +530,6 @@
+ msgid "Start Game"
+ msgstr "Оюн"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-06-12 17:40+0000\n"
+-"Last-Translator: Ilyas Bakirov <i.bakirov@gmail.com>\n"
+-"Language-Team: Kyrgyz <https://hosted.weblate.org/projects/minetest/minetest/"
+-"ky/>\n"
+-"Language: ky\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 3.0.1\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ #, fuzzy
+ msgid "Address / Port"
+diff -ur old/po/lt/minetest.po new/po/lt/minetest.po
+--- old/po/lt/minetest.po	2019-01-26 23:06:47.573507889 -1000
++++ new/po/lt/minetest.po	2019-01-26 23:06:35.186840657 -1000
+@@ -556,30 +556,6 @@
+ msgid "Start Game"
+ msgstr "Slėpti vidinius"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-06-12 09:40+0000\n"
+-"Last-Translator: Kornelijus <kornelijus.github@gmail.com>\n"
+-"Language-Team: Lithuanian <https://hosted.weblate.org/projects/minetest/"
+-"minetest/lt/>\n"
+-"Language: lt\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
+-"19)) ? 0 : ((n % 10 >= 2 && n % 10 <= 9 && (n % 100 < 11 || n % 100 > 19)) ? "
+-"1 : 2);\n"
+-"X-Generator: Weblate 3.0.1\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ #, fuzzy
+ msgid "Address / Port"
+diff -ur old/po/ms/minetest.po new/po/ms/minetest.po
+--- old/po/ms/minetest.po	2019-01-26 23:06:47.576841223 -1000
++++ new/po/ms/minetest.po	2019-01-26 23:06:35.190173991 -1000
+@@ -505,28 +505,6 @@
+ msgid "Start Game"
+ msgstr "Mulakan Permainan"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the minetest package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-06-30 15:41+0000\n"
+-"Last-Translator: Muhammad Nur Hidayat Yasuyoshi <mnh48mail@gmail.com>\n"
+-"Language-Team: Malay <https://hosted.weblate.org/projects/minetest/minetest/"
+-"ms/>\n"
+-"Language: ms\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=1; plural=0;\n"
+-"X-Generator: Weblate 3.1-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Alamat / Port"
+diff -ur old/po/nb/minetest.po new/po/nb/minetest.po
+--- old/po/nb/minetest.po	2019-01-26 23:06:47.576841223 -1000
++++ new/po/nb/minetest.po	2019-01-26 23:06:35.196840659 -1000
+@@ -543,28 +543,6 @@
+ msgid "Start Game"
+ msgstr "Vær vert for spill"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-11-01 13:23+0000\n"
+-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+-"minetest/minetest/nb/>\n"
+-"Language: nb\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 3.3-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Adresse / port"
+diff -ur old/po/nl/minetest.po new/po/nl/minetest.po
+--- old/po/nl/minetest.po	2019-01-26 23:06:47.576841223 -1000
++++ new/po/nl/minetest.po	2019-01-26 23:06:35.200173992 -1000
+@@ -549,27 +549,6 @@
+ msgid "Start Game"
+ msgstr "Start spel"
+ 
+-# SOME DESCRIPTIVE TITLE. DUTCH TRANSLATION
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-01-25 11:35+0000\n"
+-"Last-Translator: dave90dave <dave.hulst@gmail.com>\n"
+-"Language-Team: Dutch <https://hosted.weblate.org/projects/minetest/minetest/"
+-"nl/>\n"
+-"Language: nl\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 2.19-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Server adres / Poort"
+diff -ur old/po/pl/minetest.po new/po/pl/minetest.po
+--- old/po/pl/minetest.po	2019-01-26 23:06:47.576841223 -1000
++++ new/po/pl/minetest.po	2019-01-26 23:06:35.203507325 -1000
+@@ -509,29 +509,6 @@
+ msgid "Start Game"
+ msgstr "Rozpocznij grę"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-11-01 13:23+0000\n"
+-"Last-Translator: WaldiS <admin@sto.ugu.pl>\n"
+-"Language-Team: Polish <https://hosted.weblate.org/projects/minetest/minetest/"
+-"pl/>\n"
+-"Language: pl\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+-"|| n%100>=20) ? 1 : 2;\n"
+-"X-Generator: Weblate 3.3-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Adres / Port"
+diff -ur old/po/pt/minetest.po new/po/pt/minetest.po
+--- old/po/pt/minetest.po	2019-01-26 23:06:47.576841223 -1000
++++ new/po/pt/minetest.po	2019-01-26 23:06:35.206840659 -1000
+@@ -548,28 +548,6 @@
+ msgid "Start Game"
+ msgstr "Hospedar Jogo"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-12-07 00:08+0000\n"
+-"Last-Translator: Lunovox Heavenfinder <lunovox@disroot.org>\n"
+-"Language-Team: Portuguese <https://hosted.weblate.org/projects/minetest/"
+-"minetest/pt/>\n"
+-"Language: pt\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+-"X-Generator: Weblate 3.4-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Endereço / Porta"
+diff -ur old/po/pt_BR/minetest.po new/po/pt_BR/minetest.po
+--- old/po/pt_BR/minetest.po	2019-01-26 23:06:47.576841223 -1000
++++ new/po/pt_BR/minetest.po	2019-01-26 23:06:35.210173992 -1000
+@@ -549,28 +549,6 @@
+ msgid "Start Game"
+ msgstr "Iniciar o jogo"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-12-10 13:08+0000\n"
+-"Last-Translator: Lunovox Heavenfinder <lunovox@disroot.org>\n"
+-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+-"minetest/minetest/pt_BR/>\n"
+-"Language: pt_BR\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+-"X-Generator: Weblate 3.4-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Endereço / Porta"
+diff -ur old/po/ro/minetest.po new/po/ro/minetest.po
+--- old/po/ro/minetest.po	2019-01-26 23:06:47.576841223 -1000
++++ new/po/ro/minetest.po	2019-01-26 23:06:35.216840659 -1000
+@@ -549,29 +549,6 @@
+ msgid "Start Game"
+ msgstr "Ascunde Joc"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-01-24 12:26+0000\n"
+-"Last-Translator: Maris Radu <marisradu@gmail.com>\n"
+-"Language-Team: Romanian <https://hosted.weblate.org/projects/minetest/"
+-"minetest/ro/>\n"
+-"Language: ro\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+-"20)) ? 1 : 2;\n"
+-"X-Generator: Weblate 2.19-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ #, fuzzy
+ msgid "Address / Port"
+diff -ur old/po/ru/minetest.po new/po/ru/minetest.po
+--- old/po/ru/minetest.po	2019-01-26 23:06:47.580174556 -1000
++++ new/po/ru/minetest.po	2019-01-26 23:06:35.220173993 -1000
+@@ -530,29 +530,6 @@
+ msgid "Start Game"
+ msgstr "Начать игру"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-10-21 20:36+0000\n"
+-"Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
+-"Language-Team: Russian <https://hosted.weblate.org/projects/minetest/"
+-"minetest/ru/>\n"
+-"Language: ru\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+-"X-Generator: Weblate 3.3-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Адрес / Порт"
+diff -ur old/po/sl/minetest.po new/po/sl/minetest.po
+--- old/po/sl/minetest.po	2019-01-26 23:06:47.580174556 -1000
++++ new/po/sl/minetest.po	2019-01-26 23:06:35.223507326 -1000
+@@ -548,29 +548,6 @@
+ msgid "Start Game"
+ msgstr "Gostiteljska igra"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the minetest package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-07-03 13:42+0000\n"
+-"Last-Translator: Matej U <mateju@svn.gnome.org>\n"
+-"Language-Team: Slovenian <https://hosted.weblate.org/projects/minetest/"
+-"minetest/sl/>\n"
+-"Language: sl\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+-"%100==4 ? 2 : 3;\n"
+-"X-Generator: Weblate 3.1-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Naslov / Vrata"
+diff -ur old/po/sr_Cyrl/minetest.po new/po/sr_Cyrl/minetest.po
+--- old/po/sr_Cyrl/minetest.po	2019-01-26 23:06:47.580174556 -1000
++++ new/po/sr_Cyrl/minetest.po	2019-01-26 23:06:35.226840659 -1000
+@@ -550,29 +550,6 @@
+ msgid "Start Game"
+ msgstr "Направи игру"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2017-07-26 21:53+0000\n"
+-"Last-Translator: Stefan Vukanovic <lisacvukhome@gmail.com>\n"
+-"Language-Team: Serbian (cyrillic) <https://hosted.weblate.org/projects/"
+-"minetest/minetest/sr_Cyrl/>\n"
+-"Language: sr_Cyrl\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+-"X-Generator: Weblate 2.16-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Адреса / Порт"
+diff -ur old/po/sv/minetest.po new/po/sv/minetest.po
+--- old/po/sv/minetest.po	2019-01-26 23:06:47.580174556 -1000
++++ new/po/sv/minetest.po	2019-01-26 23:06:35.230173993 -1000
+@@ -545,28 +545,6 @@
+ msgid "Start Game"
+ msgstr "Bilda Spel"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the minetest package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-08-27 08:43+0000\n"
+-"Last-Translator: xerxstirb <xerxstirb@gmail.com>\n"
+-"Language-Team: Swedish <https://hosted.weblate.org/projects/minetest/"
+-"minetest/sv/>\n"
+-"Language: sv\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 3.2-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Adress / Port"
+diff -ur old/po/sw/minetest.po new/po/sw/minetest.po
+--- old/po/sw/minetest.po	2019-01-26 23:06:47.580174556 -1000
++++ new/po/sw/minetest.po	2019-01-26 23:06:35.236840660 -1000
+@@ -552,23 +552,6 @@
+ msgstr "Ficha mchezo"
+ 
+ #: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: Minetest Translate\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2016-10-03 05:13+0000\n"
+-"Last-Translator: Eidy <JulianBiddle@practicalcybernetics.com>\n"
+-"Language-Team: Swahili <https://hosted.weblate.org/projects/minetest/"
+-"minetest/sw/>\n"
+-"Language: sw\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 2.9-dev\n"
+-
+-#: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Kushughulikia / bandari"
+ 
+diff -ur old/po/tr/minetest.po new/po/tr/minetest.po
+--- old/po/tr/minetest.po	2019-01-26 23:06:47.580174556 -1000
++++ new/po/tr/minetest.po	2019-01-26 23:06:35.240173993 -1000
+@@ -504,29 +504,6 @@
+ msgid "Start Game"
+ msgstr "Oyun Başlat"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR mahmutelmas06@gmail.com, 2015.
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: 0.1.2\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-09-29 20:36+0000\n"
+-"Last-Translator: monolifed <monolifed@gmail.com>\n"
+-"Language-Team: Turkish <https://hosted.weblate.org/projects/minetest/"
+-"minetest/tr/>\n"
+-"Language: tr\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+-"X-Generator: Weblate 3.2-dev\n"
+-"X-Poedit-Language: Turkish\n"
+-"X-Poedit-Basepath: \n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Adres / Port"
+diff -ur old/po/uk/minetest.po new/po/uk/minetest.po
+--- old/po/uk/minetest.po	2019-01-26 23:06:47.580174556 -1000
++++ new/po/uk/minetest.po	2019-01-26 23:06:35.243507326 -1000
+@@ -550,29 +550,6 @@
+ msgid "Start Game"
+ msgstr "Грати (сервер)"
+ 
+-# SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+-# This file is distributed under the same license as the PACKAGE package.
+-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+-#
+-#: builtin/mainmenu/tab_online.lua
+-msgid ""
+-msgstr ""
+-"Project-Id-Version: minetest\n"
+-"Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2019-01-06 09:32+0100\n"
+-"PO-Revision-Date: 2018-08-31 17:26+0000\n"
+-"Last-Translator: Олександр <elfes3@gmail.com>\n"
+-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/minetest/"
+-"minetest/uk/>\n"
+-"Language: uk\n"
+-"MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=UTF-8\n"
+-"Content-Transfer-Encoding: 8bit\n"
+-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+-"X-Generator: Weblate 3.2-dev\n"
+-
+ #: builtin/mainmenu/tab_online.lua
+ msgid "Address / Port"
+ msgstr "Адреса / Порт"
