@@ -5,7 +5,7 @@
 _pkgname=deadbeef-lyricbar
 pkgname=deadbeef-plugin-lyricbar-git
 pkgver=r60.ga08374c
-pkgrel=1
+pkgrel=2
 pkgdesc="DeaDBeeF lyric bar plugin"
 arch=('i686' 'x86_64')
 url="https://github.com/C0rn3j/deadbeef-lyricbar"
@@ -34,8 +34,11 @@ prepare() {
 
 build() {
   cd "${_pkgname}"
-  make COPTS="${CFLAGS}" CXXOPTS="${CXXFLAGS}"
   make COPTS="${CFLAGS}" CXXOPTS="${CXXFLAGS}" gtk2
+  mv ddb_lyricbar_gtk2.so ddb_lyricbar_gtk2.so.save
+  make clean
+  make COPTS="${CFLAGS}" CXXOPTS="${CXXFLAGS}"
+  mv ddb_lyricbar_gtk2.so.save ddb_lyricbar_gtk2.so
 }
 
 package() {
