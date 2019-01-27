@@ -12,7 +12,7 @@ pkgbase = cfiles
 	optdepends = atool: for archive previews
 	optdepends = python-ueberzug-git: for image previews
 	optdepends = w3m: for image previews
-	source = cfiles-1.0.tar.gz::https://github.com/mananapr/cfiles/archive/1.0.tar.gz
+	source = cfiles-1.0.tar.gz::https://github.com/mananapr/cfiles/archive/v1.0.tar.gz
 	sha256sums = 1ce74b1c797532fce5bcb256b7b5b35eb119ad23220a2f8615241b68e23dc9c4
 
 pkgname = cfiles

@@ -12,11 +12,11 @@ optdepends=('mediainfo: to see media info'
             'atool: for archive previews'
             'python-ueberzug-git: for image previews'
             'w3m: for image previews')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mananapr/cfiles/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mananapr/cfiles/archive/v${pkgver}.tar.gz")
 sha256sums=('1ce74b1c797532fce5bcb256b7b5b35eb119ad23220a2f8615241b68e23dc9c4')
 
 build(){
-  cd "pywal-${pkgver}"
+  cd "cfiles-${pkgver}"
   make
 }
 
