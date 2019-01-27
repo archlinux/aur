@@ -18,7 +18,6 @@ pkgver() {
 
 _package_helper() {
   _lua_ver=$1
-  _lua_ver_nodot=${_lua_ver//.}
 
   mkdir -p "$_lua_ver"
   cd "$pkgbase"
