@@ -5,7 +5,7 @@
 
 pkgname=openxcom
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="An open-source reimplementation of the famous X-COM game"
 arch=('i686' 'x86_64')
 url="https://openxcom.org/"
@@ -33,7 +33,7 @@ prepare() {
 build() {
   cd OpenXcom-${pkgver}
   ./autogen.sh
-  ./configure --prefix=/usr --without-docs
+  ./configure --prefix=/usr --without-docs --disable-werror
   make
 }
 
