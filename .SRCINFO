@@ -1,0 +1,16 @@
+pkgbase = cli2man-git
+	pkgdesc = Convert command help to mdoc(7) man pages
+	pkgver = r81.b97126b
+	pkgrel = 1
+	url = https://github.com/tobimensch/cli2man
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-docopt
+	options = !strip
+	source = cli2man::git+https://github.com/tobimensch/cli2man
+	sha256sums = SKIP
+
+pkgname = cli2man-git
+
