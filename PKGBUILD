@@ -22,6 +22,7 @@ prepare() {
   curl -L https://github.com/feelpp/feelpp/commit/a10192595eea7895dfc0d9faabff48b8086b6cf7.patch | patch -p1
   curl -L https://github.com/feelpp/feelpp/commit/d0df2512cb56c838e2a27bc6721b63395ada5a21.patch | patch -p1
   curl -L https://github.com/feelpp/feelpp/pull/1251.patch | patch -p1
+  sed -i "s|unit_test_framework signals|unit_test_framework|g" feelpp/cmake/modules/feelpp.dependencies.cmake
 
   # git submodules not included in tarball
   test -f feelpp/contrib/pybind11/CMakeLists.txt || git clone https://github.com/feelpp/pybind11.git feelpp/contrib/pybind11
