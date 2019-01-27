@@ -3,11 +3,13 @@
 pkgname=gromacs-4.6-complete
 pkgver=4.6.7
 pkgrel=7
-pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
+pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
-license=("GPL")
+license=("LGPL")
 arch=('i686' 'x86_64')
-depends=('gcc5' 'fftw' 'perl' 'libxml2' 'libsm' 'doxygen')
+depends=('fftw' 'libxml2' 'libsm')
+optdepends=('perl:  needed for demux.pl and xplor2gmx.pl')
+makedepends=('doxygen')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
         GMXRC.bash.cmakein.patch)
@@ -20,10 +22,6 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format). 
 
-#With gcc5 currently there are less errors in the tests
-# also the compilation is possible in cuda capable machines
-#export CC=gcc-5
-#export CXX=g++-5
 
 prepare() {
 cd ${srcdir}/gromacs-${pkgver}/scripts/
