@@ -24,5 +24,5 @@ pkgver()
 
 package() 
 {
-    make -C ${pkgname/-git/} PREFIX="$pkgdir"/usr install
+    make -C ${pkgname/-git/} DESTDIR="$pkgdir/" install
 }
