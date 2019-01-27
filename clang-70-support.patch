@@ -1,6 +1,189 @@
---- LinuxToolChain.cs	2018-10-10 21:03:32.148896937 -0500
-+++ LinuxToolChain.cs_new	2018-10-10 21:11:47.556037751 -0500
-@@ -137,7 +137,7 @@
+From efa3fd24e2b05d8ca64f342b3fe9dc6940a0b653 Mon Sep 17 00:00:00 2001
+From: Zerophase <mikelojkovic@gmail.com>
+Date: Sat, 5 Jan 2019 01:14:30 -0600
+Subject: [PATCH 1/5] Fix no-pie support for clang
+
+---
+ .../Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs   | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
+index 1cbe22dcb55..46d3559d932 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
+@@ -924,7 +924,7 @@ namespace UnrealBuildTool
+ 			Result += " -Wl,--build-id";
+ 			if (bSuppressPIE && !LinkEnvironment.bIsBuildingDLL)
+ 			{
+-				Result += " -Wl,-nopie";
++				Result += " -Wl,--no-pie";
+ 			}
+ 
+ 			// whether we actually can do that is checked in CanUseLTO() earlier
+-- 
+2.20.1
+
+
+From 55a7d2ae886a037a59d0f20b843e6bdbbec5d3f1 Mon Sep 17 00:00:00 2001
+From: Zerophase <mikelojkovic@gmail.com>
+Date: Sat, 5 Jan 2019 06:40:26 -0600
+Subject: [PATCH 2/5] Fix clang error -Wconstant-logical-operand
+
+---
+ Engine/Source/Runtime/Core/Public/HAL/Platform.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Engine/Source/Runtime/Core/Public/HAL/Platform.h b/Engine/Source/Runtime/Core/Public/HAL/Platform.h
+index 853a9e0512c..edb6497d636 100644
+--- a/Engine/Source/Runtime/Core/Public/HAL/Platform.h
++++ b/Engine/Source/Runtime/Core/Public/HAL/Platform.h
+@@ -822,7 +822,7 @@ namespace TypeTests
+ 	static_assert((!TAreTypesEqual<ANSICHAR, WIDECHAR>::Value), "ANSICHAR and WIDECHAR should be different types.");
+ 	static_assert((!TAreTypesEqual<ANSICHAR, UCS2CHAR>::Value), "ANSICHAR and CHAR16 should be different types.");
+ 	static_assert((!TAreTypesEqual<WIDECHAR, UCS2CHAR>::Value), "WIDECHAR and CHAR16 should be different types.");
+-	static_assert((TAreTypesEqual<TCHAR, ANSICHAR>::Value || TAreTypesEqual<TCHAR, WIDECHAR>::Value), "TCHAR should either be ANSICHAR or WIDECHAR.");
++	static_assert((TAreTypesEqual<TCHAR, ANSICHAR>::Value | TAreTypesEqual<TCHAR, WIDECHAR>::Value), "TCHAR should either be ANSICHAR or WIDECHAR.");
+ 
+ 	static_assert(sizeof(uint8) == 1, "BYTE type size test failed.");
+ 	static_assert(int32(uint8(-1)) == 0xFF, "BYTE type sign test failed.");
+-- 
+2.20.1
+
+
+From b0b12145255abe924236127607e2856b1ff601b4 Mon Sep 17 00:00:00 2001
+From: Zerophase <mikelojkovic@gmail.com>
+Date: Sat, 5 Jan 2019 06:49:25 -0600
+Subject: [PATCH 3/5] Uses move constructor explictly, when values returned by
+ name, to avoid copying
+
+---
+ .../Source/RemoteSession/Private/MessageHandler/Messages.h       | 1 +
+ Engine/Source/Runtime/Engine/Private/Player.cpp                  | 1 +
+ Engine/Source/Runtime/Engine/Private/UnrealExporter.cpp          | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/Engine/Plugins/Experimental/RemoteSession/Source/RemoteSession/Private/MessageHandler/Messages.h b/Engine/Plugins/Experimental/RemoteSession/Source/RemoteSession/Private/MessageHandler/Messages.h
+index f57d3dbd808..d4c9bcaeae9 100644
+--- a/Engine/Plugins/Experimental/RemoteSession/Source/RemoteSession/Private/MessageHandler/Messages.h
++++ b/Engine/Plugins/Experimental/RemoteSession/Source/RemoteSession/Private/MessageHandler/Messages.h
+@@ -5,6 +5,7 @@
+ #include "CoreMinimal.h"
+ #include "Serialization/BufferArchive.h"
+ #include "Serialization/MemoryReader.h"
++#include "Templates/UnrealTemplate.h"
+ 
+ struct NoParamMsg
+ {
+diff --git a/Engine/Source/Runtime/Engine/Private/Player.cpp b/Engine/Source/Runtime/Engine/Private/Player.cpp
+index d082c22e375..19b60d725e0 100644
+--- a/Engine/Source/Runtime/Engine/Private/Player.cpp
++++ b/Engine/Source/Runtime/Engine/Private/Player.cpp
+@@ -16,6 +16,7 @@
+ 
+ #include "GameFramework/CheatManager.h"
+ #include "GameFramework/GameStateBase.h"
++#include "Templates/UnrealTemplate.h"
+ 
+ //////////////////////////////////////////////////////////////////////////
+ // UPlayer
+diff --git a/Engine/Source/Runtime/Engine/Private/UnrealExporter.cpp b/Engine/Source/Runtime/Engine/Private/UnrealExporter.cpp
+index 9cdc271cc18..03d7c83ee2c 100644
+--- a/Engine/Source/Runtime/Engine/Private/UnrealExporter.cpp
++++ b/Engine/Source/Runtime/Engine/Private/UnrealExporter.cpp
+@@ -25,6 +25,7 @@
+ #include "Misc/FeedbackContext.h"
+ #include "AssetExportTask.h"
+ #include "UObject/GCObjectScopeGuard.h"
++#include "Templates/UnrealTemplate.h"
+ 
+ DEFINE_LOG_CATEGORY_STATIC(LogExporter, Log, All);
+ 
+-- 
+2.20.1
+
+
+From af58ce094487ce3f6aaf504d56def813dd5583fc Mon Sep 17 00:00:00 2001
+From: Zerophase <mikelojkovic@gmail.com>
+Date: Mon, 7 Jan 2019 21:58:14 -0600
+Subject: [PATCH 4/5] change --no-pie to -no-pie
+
+---
+ .../Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs   | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
+index 46d3559d932..58f6df1ef14 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
+@@ -924,7 +924,7 @@ namespace UnrealBuildTool
+ 			Result += " -Wl,--build-id";
+ 			if (bSuppressPIE && !LinkEnvironment.bIsBuildingDLL)
+ 			{
+-				Result += " -Wl,--no-pie";
++				Result += " -Wl,-no-pie";
+ 			}
+ 
+ 			// whether we actually can do that is checked in CanUseLTO() earlier
+-- 
+2.20.1
+
+
+From 203ecda2cb48fabcd57ede14655f744f04e78145 Mon Sep 17 00:00:00 2001
+From: Zerophase <mikelojkovic@gmail.com>
+Date: Mon, 7 Jan 2019 23:22:46 -0600
+Subject: [PATCH 5/5] Switches usage of Move to MoveTemp for resolving
+ Wreturn-std-move error
+
+---
+ .../Source/Programs/UnrealHeaderTool/Private/CodeGenerator.cpp   | 1 -
+ .../Programs/UnrealHeaderTool/Private/UnrealSourceFile.cpp       | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/Engine/Source/Programs/UnrealHeaderTool/Private/CodeGenerator.cpp b/Engine/Source/Programs/UnrealHeaderTool/Private/CodeGenerator.cpp
+index e3f6de7aa5a..e80cb179174 100644
+--- a/Engine/Source/Programs/UnrealHeaderTool/Private/CodeGenerator.cpp
++++ b/Engine/Source/Programs/UnrealHeaderTool/Private/CodeGenerator.cpp
+@@ -2617,7 +2617,6 @@ static FString PrivatePropertiesOffsetGetters(const UStruct* Struct, const FStri
+				*PropertyName, *StructCppName, *PropertyName);
+		}
+	}
+-
+-	return Result;
++ return MoveTemp(Result);
+ }
+ 
+diff --git a/Engine/Source/Programs/UnrealHeaderTool/Private/UnrealSourceFile.cpp b/Engine/Source/Programs/UnrealHeaderTool/Private/UnrealSourceFile.cpp
+index c90166540cb..173a2518431 100644
+--- a/Engine/Source/Programs/UnrealHeaderTool/Private/UnrealSourceFile.cpp
++++ b/Engine/Source/Programs/UnrealHeaderTool/Private/UnrealSourceFile.cpp
+@@ -45,7 +45,6 @@ FString FUnrealSourceFile::GetFileId() const
+ 			Out.AppendChar('_');
+ 		}
+ 	}
+-
+-	return Out;
++ return MoveTemp(Out);
+ }
+ 
+-- 
+2.20.1
+
+diff --git a/Engine/Source/Runtime/Engine/Private/TimerManager.cpp b/Engine/Source/Runtime/Engine/Private/TimerManager.cpp
+index a3645ce3d67..cff60942cc3 100644
+--- a/Engine/Source/Runtime/Engine/Private/TimerManager.cpp
++++ b/Engine/Source/Runtime/Engine/Private/TimerManager.cpp
+@@ -42,7 +42,7 @@ namespace
+ 	{
+ 		FStringOutputDevice Output;
+ 		DescribeFTimerDataSafely(Output, Data);
+-		return Output;
++		return MoveTemp(Output);
+ 	}
+ }
+ 
+--- a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs	2019-01-29 18:23:29.935169346 -0600
++++ b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs	2019-01-27 15:09:29.820085074 -0600
+@@ -171,10 +171,10 @@
  				throw new BuildException("Unable to build: no compatible clang version found. Please run Setup.sh");
  			}
  			// prevent unknown clangs since the build is likely to fail on too old or too new compilers
@@ -8,4 +191,137 @@
 +			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 70 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 38)
  			{
  				throw new BuildException(
- 					string.Format("This version of the Unreal Engine can only be compiled with clang 6.0, 5.0, 4.0, 3.9, 3.8. clang {0} may not build it - please use a different version.",
+-					string.Format("This version of the Unreal Engine can only be compiled with clang 6.0, 5.0, 4.0, 3.9, 3.8. clang {0} may not build it - please use a different version.",
++					string.Format("This version of the Unreal Engine can only be compiled with clang 7.0, 6.0, 5.0, 4.0, 3.9, 3.8. clang {0} may not build it - please use a different version.",
+ 						CompilerVersionString)
+ 					);
+ 			}
+--- a/Engine/Plugins/Experimental/RemoteSession/Source/RemoteSession/Private/MessageHandler/Messages.h	2019-01-29 18:39:14.528390396 -0600
++++ b/Engine/Plugins/Experimental/RemoteSession/Source/RemoteSession/Private/MessageHandler/Messages.h	2019-01-27 15:01:57.569942558 -0600
+@@ -1,4 +1,4 @@
+-// Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
++// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+ 
+ #pragma once
+ 
+@@ -20,7 +20,7 @@
+ 	TArray<uint8> AsData()
+ 	{
+ 		FBufferArchive MemAr;
+-		return MemAr;
++		return MoveTemp(MemAr);
+ 	}
+ };
+ 
+@@ -48,7 +48,7 @@
+ 	{
+ 		FBufferArchive MemAr;
+ 		MemAr << Param1 << Param2;
+-		return MemAr;
++		return MoveTemp(MemAr);
+ 	}
+ };
+ 
+@@ -80,7 +80,7 @@
+ 	{
+ 		FBufferArchive MemAr;
+ 		MemAr << Param1 << Param2 << Param3;
+-		return MemAr;
++		return MoveTemp(MemAr);
+ 	}
+ };
+ 
+@@ -116,7 +116,7 @@
+ 	{
+ 		FBufferArchive MemAr;
+ 		MemAr << Param1 << Param2 << Param3 << Param4;
+-		return MemAr;
++		return MoveTemp(MemAr);
+ 	}
+ };
+ 
+@@ -156,6 +156,6 @@
+ 	{
+ 		FBufferArchive MemAr;
+ 		MemAr << Param1 << Param2 << Param3 << Param4 << Param5;
+-		return MemAr;
++		return MoveTemp(MemAr);
+ 	}
+ };
+--- a/Engine/Source/Runtime/Engine/Private/Player.cpp	2019-01-29 18:39:14.528390396 -0600
++++ b/Engine/Source/Runtime/Engine/Private/Player.cpp	2019-01-27 15:04:39.436398242 -0600
+@@ -1,4 +1,4 @@
+-// Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
++// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+ 
+ /*=============================================================================
+ 	Player.cpp: Unreal player implementation.
+@@ -65,7 +65,7 @@
+ 
+ 	if (!bWriteToLog)
+ 	{
+-		return StrOut;
++		return MoveTemp(StrOut);
+ 	}
+ 
+ 	return TEXT("");
+--- a/Engine/Source/Runtime/Engine/Private/UnrealExporter.cpp	2019-01-29 18:39:14.528390396 -0600
++++ b/Engine/Source/Runtime/Engine/Private/UnrealExporter.cpp	2019-01-27 18:31:30.304177510 -0600
+@@ -1,4 +1,4 @@
+-// Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
++// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+ 
+ /*=============================================================================
+ 	UExporter.cpp: Exporter class implementation.
+@@ -870,7 +870,8 @@
+ 	Output.Logf(TEXT("Components for '%s':\r\n"), *Object->GetFullName());
+ 	ExportProperties(NULL, Output, Object->GetClass(), (uint8*)Object, 2, NULL, NULL, Object, PPF_SubobjectsOnly);
+ 	Output.Logf(TEXT("<--- DONE!\r\n"));
+-	return Output;
++
++	return MoveTemp(Output);
+ }
+ 
+ 
+@@ -890,5 +891,5 @@
+ 	const FExportObjectInnerContext Context;
+ 	UExporter::ExportToOutputDevice(&Context, Object, NULL, Archive, TEXT("copy"), 0, PPF_Copy | PPF_DebugDump, false);
+ 
+-	return Archive;
++	return MoveTemp(Archive);
+ }
+--- a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/ViewModels/NiagaraScriptViewModel.cpp	2019-01-29 17:49:54.610116866 -0600
++++ b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/ViewModels/NiagaraScriptViewModel.cpp	2019-01-27 11:17:57.796011354 -0600
+@@ -1,4 +1,4 @@
+-// Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
++// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+ 
+ #include "NiagaraScriptViewModel.h"
+ #include "NiagaraScript.h"
+@@ -298,7 +298,6 @@
+ 		ENiagaraScriptCompileStatus ScriptStatus = Scripts[i]->GetLastCompileStatus();
+ 		if (Scripts[i].IsValid() && Scripts[i]->IsCompilable() && Scripts[i]->GetVMExecutableData().IsValid() && Scripts[i]->GetVMExecutableData().ByteCode.Num() == 0) // This is either a brand new script or failed in the past. Since we create a default working script, assume invalid.
+ 		{
+-			LastCompileStatus = LastCompileStatus;
+ 			Message = TEXT("Please recompile for full error stack.");
+ 			GraphViewModel->SetErrorTextToolTip(Message);
+ 		}
+--- a/Engine/Source/Editor/Kismet/Private/SBlueprintPalette.cpp	2019-01-29 17:49:54.880099978 -0600
++++ b/Engine/Source/Editor/Kismet/Private/SBlueprintPalette.cpp	2019-01-27 11:17:57.986007265 -0600
+@@ -1,4 +1,4 @@
+-// Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
++// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+ 
+ #include "SBlueprintPalette.h"
+ #include "Widgets/IToolTip.h"
+@@ -318,10 +318,6 @@
+ 		{
+ 			ToolTipOut = NodeToolTipText;
+ 		}
+-		else
+-		{
+-			ToolTipOut = ToolTipOut;
+-		}
+ 
+ 		// Ask node for a palette icon
+ 		FLinearColor IconLinearColor = FLinearColor::White;

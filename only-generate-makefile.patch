@@ -1,7 +1,0 @@
---- UnrealEngine/Engine/Build/BatchFiles/Linux/GenerateProjectFiles.sh	2017-09-18 16:43:36.818934026 -0500
-+++ -	2017-09-18 16:54:43.349891714 -0500
-@@ -28,5 +28,5 @@
- 
- # pass all parameters to UBT
--mono "$BASE_PATH/../../../Binaries/DotNET/UnrealBuildTool.exe" -projectfiles "$@"
-+mono "$BASE_PATH/../../../Binaries/DotNET/UnrealBuildTool.exe" -makefile
