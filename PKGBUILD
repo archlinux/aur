@@ -1,28 +1,28 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=alt-ergo
-pkgver=1.01
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='SMT solver for software verification'
 arch=('i686' 'x86_64')
 license=('custom:CeCILL-C')
 url='https://alt-ergo.ocamlpro.com'
-depends=('gtksourceview2' 'zarith')
+depends=('gtksourceview2' 'ocaml-zarith' 'ocaml-zip' 'ocaml-ocplib-simplex-git' 'ocaml-psmt2-frontend-git')
 makedepends=('lablgtk2')
-source=("${pkgname}::https://alt-ergo.ocamlpro.com/download_manager.php?target=alt-ergo-${pkgver}.tar.gz")
-sha256sums=('d51a9833acf265d475408cde04e9beb75f950355580b9c73292ffbfbebf280eb')
+source=("https://github.com/OCamlPro/alt-ergo/archive/${pkgver}.tar.gz")
+sha256sums=('61b09612be666d1f5ac0abcc41d94bae81e036cc07cd74898dd37f7fbf48da06')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    ./configure -prefix /usr
+    cd "$srcdir/$pkgname-$pkgver/sources"
+    autoconf
+    ./configure --prefix=/usr
     make
     make gui
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver/sources"
     make DESTDIR="$pkgdir" install
     make DESTDIR="$pkgdir" install-gui
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set et sw=4 sts=4 et:
