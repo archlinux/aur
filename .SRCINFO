@@ -1,18 +1,19 @@
 pkgbase = wl-clipboard-x11
 	pkgdesc = A wrapper to use wl-clipboard as a drop-in replacement to X11 clipboard tools
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/brunelli/wl-clipboard-x11
 	arch = any
 	license = GPL
-	depends = bash
+	makedepends = make
+	makedepends = sed
 	depends = wl-clipboard
 	provides = xclip
 	provides = xsel
 	conflicts = xclip
 	conflicts = xsel
-	source = wl-clipboard-x11-1.tar.gz::https://github.com/brunelli/wl-clipboard-x11/archive/v1.tar.gz
-	sha256sums = 6b990aa6dd94221ee1db49fbe0954a689a7e3479b94d380d89d4e596e8e9176b
+	source = wl-clipboard-x11-2.tar.gz::https://github.com/brunelli/wl-clipboard-x11/archive/v2.tar.gz
+	sha256sums = 800fb40fa3a47d079610c7ac43eae27f105871b8a926f31b65775d2d0708a379
 
 pkgname = wl-clipboard-x11
 
