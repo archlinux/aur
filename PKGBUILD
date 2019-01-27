@@ -1,19 +1,28 @@
 # Maintainer: Christoph Drexler <chrdr at gmx dot at>
 
 pkgname=grisbi
-pkgver=1.0.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Personal financial management program"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.grisbi.org"
 license=('GPL')
-depends=('desktop-file-utils' 'gtk2')
-makedepends=('gettext' 'grep' 'intltool')
+depends=('desktop-file-utils' 'gtk3' 'libgsf')
+makedepends=('gettext' 'grep' 'imagemagick' 'intltool')
 optdepends=('goffice0.8: for drawing charts' 'libofx: support for the OFX banking standard')
 options=(!libtool)
 install=grisbi.install
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('c6dd95a09da6a4be204c71b95acc0b7ed0f8559af8d87d0a2dffd213378e02e6')
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
+        "bugfix-1898.patch")
+sha256sums=('0befa26390faa3bbb4820ebcdf11bfc4b1046108bd03ffa7c12e1647c2fa423f'
+            'e6c14af8bc4fa77fb8f55bfdefa2f954462f6a7b218eeef663422e9acb6ab2cb')
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+	patch -p1 < "${srcdir}/bugfix-1898.patch"
+	cd pixmaps
+	convert -size 48x48 -background none grisbi.svg grisbi.png
+}
 
 build() {
 	cd "${pkgname}-${pkgver}"
@@ -26,4 +35,6 @@ build() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
+	install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/pixmaps/grisbi.png" \
+		"${pkgdir}/usr/share/pixmaps/grisbi/grisbi.png"
 }
