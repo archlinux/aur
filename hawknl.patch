@@ -1,0 +1,30 @@
+--- src/HawkNL-master/src/makefile.linux.orig	2019-01-27 22:11:42.056593880 +0100
++++ src/HawkNL-master/src/makefile.linux	2019-01-27 22:12:37.612879621 +0100
+@@ -13,7 +13,7 @@
+ STATIC = libNL.a
+ OPTFLAGS = -funroll-all-loops -ffast-math -fomit-frame-pointer -O2 -D_GNU_SOURCE -D_REENTRANT
+ CFLAGS = -Wall -fPIC $(INCLUDE) $(OPTFLAGS)
+-LIBFLAGS = -shared -Wl,-soname,NL.so.$(MAJOR_VERSION).$(MINOR_VERSION) -rdynamic -lpthread
++LIBFLAGS = ${LDFLAGS} -shared -Wl,-soname,libNL.so.$(MAJOR_VERSION).$(MINOR_VERSION) -rdynamic -lpthread
+ OBJECTS = crc.o errorstr.o nl.o sock.o group.o loopback.o err.o hthread.o htmutex.o htcondition.o nltime.o
+ 
+ all: $(OBJECTS)
+@@ -35,13 +35,14 @@
+ ipx.o: nlinternal.h sock.h ipx.c
+ 
+ install:
++	mkdir -p $(LIBDIR) $(INCDIR) ; chmod 755 $(LIBDIR) $(INCDIR)
+ 	cp $(OUTPUT) $(LIBDIR)
+ 	cp $(STATIC) $(LIBDIR)
+ 	chmod 755 $(LIBDIR)/$(OUTPUT)
+-	ln -s $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION).$(MINOR_VERSION)
+-	ln -s $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION)
+-	ln -s $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so
+-	ln -s $(LIBDIR)/$(OUTPUT) $(LIBDIR)/$(LIBNAME).so
++	ln -s $(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION).$(MINOR_VERSION)
++	ln -s $(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION)
++	ln -s $(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so
++	ln -s $(OUTPUT) $(LIBDIR)/$(LIBNAME).so
+ 	cp ../include/nl.h $(INCDIR)/nl.h
+ 	chmod 644 $(INCDIR)/nl.h
+ 	@echo ""

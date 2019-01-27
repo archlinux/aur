@@ -6,7 +6,7 @@
 
 pkgname=hawknl
 pkgver=1.70
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source game oriented network API"
 arch=('i686' 'x86_64')
 url="http://www.hawksoft.com/hawknl/"
@@ -18,6 +18,7 @@ md5sums=('d972d5a697a10734c65f3426480331ad')
 build() {
   cd "$srcdir"/HawkNL-master
 
+  patch -Np2 --binary -i ../${pkgname}.patch
   make -f makefile.linux \
     LIBDIR="$pkgdir"/usr/lib \
     INCDIR="$pkgdir"/usr/include \
