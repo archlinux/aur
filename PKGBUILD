@@ -25,5 +25,5 @@ package() {
     cd "${srcdir}/${_pipname}-${pkgver}"
     python setup.py install --root="$pkgdir/" --optimize=1
 
-    install -D -m644 "LICENSE.txt" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -D -m644 "LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
