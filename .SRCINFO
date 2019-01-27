@@ -1,0 +1,16 @@
+pkgbase = haskell-histogram-fill
+	pkgdesc = A library for histogram filling.
+	pkgver = 0.9.1.0
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/histogram-fill
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-primitive
+	depends = haskell-vector
+	source = https://hackage.haskell.org/package/histogram-fill-0.9.1.0/histogram-fill-0.9.1.0.tar.gz
+	sha512sums = a6d2a4cde30bef39ea35591c8896f035a022cc54f5d9df62310f28394723e04d64c6039168fb4a45f0de17098f9bbb9764648dc156a812b4104415e2dde4d82b
+
+pkgname = haskell-histogram-fill
+
