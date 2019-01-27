@@ -6,12 +6,12 @@
 pkgname=courier-maildrop
 _srcname=maildrop
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="mail delivery agent - procmail like but nicer syntax"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://courier-mta.org/maildrop/"
-depends=('courier-authlib>=0.69.0' 'gamin' 'pcre' 'gdbm' 'courier-unicode>=2.1')
+depends=('courier-authlib>=0.69.0' 'gamin' 'pcre' 'gdbm' 'courier-unicode>=2.1' 'libidn')
 conflicts=('courier-mta')
 options=('!libtool' '!staticlibs')
 source=(http://downloads.sourceforge.net/project/courier/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.bz2)
@@ -25,7 +25,8 @@ build() {
     --localstatedir=/var \
     --mandir=/usr/share/man \
     --with-db=gdbm \
-    --with-devel
+    --with-devel \
+    --enable-dovecotauth
   make LDFLAGS+=-lstdc++
 }
 
