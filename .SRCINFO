@@ -1,0 +1,17 @@
+pkgbase = repl-rs
+	pkgdesc = Rust Repl
+	pkgver = r46.5ee6dd2
+	pkgrel = 1
+	url = https://github.com/sigmaSd/repl-rs
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = cargo
+	depends = rust
+	provides = repl-rs
+	conflicts = repl-rs
+	source = git+https://github.com/sigmaSd/repl-rs.git
+	sha256sums = SKIP
+
+pkgname = repl-rs
+
