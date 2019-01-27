@@ -1,6 +1,6 @@
 pkgname=crosvm-git
 _gitname=crosvm
-pkgver=r459.9357ceab
+pkgver=r616.3082e8e4
 pkgrel=1
 pkgdesc="The Chrome OS Virtual Machine Monitor"
 url="https://chromium.googlesource.com/chromiumos/platform/crosvm"
@@ -8,8 +8,14 @@ depends=('minijail-git' 'gcc-libs')
 makedepends=('cargo')
 arch=('x86_64')
 license=('custom:chromiumos')
-source=("git+https://chromium.googlesource.com/chromiumos/platform/crosvm")
-sha256sums=('SKIP')
+source=("git+https://chromium.googlesource.com/chromiumos/platform/crosvm"
+        "git+https://chromium.googlesource.com/chromiumos/third_party/adhd")
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd "${srcdir}/${_gitname}"
+  sed -i 's#../../third_party/adhd/audio_streams#../adhd/audio_streams#' Cargo.toml
+}
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
