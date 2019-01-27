@@ -1,8 +1,8 @@
-# Maintainer: Brenton Horne (fusion808359) <brentonhorne77 at gmail dot com>
+# Maintainer: Brenton Horne (fusion808369) <brentonhorne77 at gmail dot com>
 
 _pkgname=vim
 pkgname=gvim-gtk2
-pkgver=8.1.0835
+pkgver=8.1.0836
 pkgrel=1
 pkgdesc="Vim, the text editor. CLI version and GTK2 GUI providing majority of features."
 arch=("i686" "x86_64")
@@ -23,9 +23,9 @@ source=("https://github.com/vim/vim/archive/v$pkgver.tar.gz"
         "gvim.desktop")
 backup=('etc/vimrc')
 sha256sums=('SKIP'
-            'b16e85e457397ab2083543a7ee0835a3c84308357c6b4eac157fd0835b721694761f25b3ed5b'
-            '0835cf8b42732111d0835c66c3908358a76d832736e8f8dc3abef81cb083592ddf84cb862ea2'
-            '9f1c08350835aa96458caa2cdfc08352164e58bc08358bcfcbe5aa95dc618d2fc7e1b12b9a12')
+            'b16e85e457397ab2083643a7ee0836a3c84308367c6b4eac157fd0836b721694761f25b3ed5b'
+            '0836cf8b42732111d0836c66c3908368a76d832736e8f8dc3abef81cb083692ddf84cb862ea2'
+            '9f1c08360836aa96458caa2cdfc08362164e58bc08368bcfcbe5aa95dc618d2fc7e1b12b9a12')
 
 prepare() {
     SRC="$srcdir/${_pkgname}-$pkgver"
