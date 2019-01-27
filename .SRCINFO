@@ -1,7 +1,7 @@
 pkgbase = gromacs-2016-complete
 	pkgdesc = A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.
 	pkgver = 2016.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gromacs.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gromacs-2016-complete
 	makedepends = cmake
 	makedepends = libxml2
 	makedepends = hwloc
-	makedepends = gcc6
+	makedepends = gcc7
 	depends = lapack
 	depends = zlib
 	depends = libx11
