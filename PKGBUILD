@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: hexchain <i at hexchain.org>
 pkgname=tpm2-abrmd-git
-pkgver=2.1.0rc0.r1.206d5b0
+pkgver=2.1.0rc1.r0.466c61d
 pkgrel=1
 pkgdesc='Trusted Platform Module 2.0 Access Broker and Resource Management Daemon'
 arch=('x86_64')
@@ -29,11 +29,11 @@ prepare () {
 
 build() {
 	cd "${pkgname%-git}"
-	(( CHECKFUNC )) && opts=('--enable-unit' '--enable-integration')
+	(( CHECKFUNC )) && _opts=('--enable-unit' '--enable-integration')
 	./configure --prefix=/usr \
 	            --sbindir=/usr/bin \
 	            --with-dbuspolicydir=/usr/share/dbus-1/system.d \
-	            "${opts[@]}"
+	            "${_opts[@]}"
 	make
 }
 
