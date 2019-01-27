@@ -4,7 +4,7 @@
 pkgname=perl-ppix-regexp
 _perl_namespace=PPIx
 _perl_module=Regexp
-pkgver=0.062
+pkgver=0.063
 pkgrel=1
 pkgdesc="Represent a regular expression of some sort"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-list-moreutils' 'perl-task-weaken' 'perl-ppi')
 source=("http://cpan.metacpan.org/authors/id/W/WY/WYANT/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('1218fe4c94b3cb9d894c6cd8a69bb4172eac54ce083b70f7a8bf13868a5a0733')
+sha256sums=('23950e68df05bce869766e81dd6b01471e27fb70980737ea1c2286a7ecf948bc')
 options=('!emptydirs')
 
 build() {
