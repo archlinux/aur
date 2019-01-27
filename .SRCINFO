@@ -1,6 +1,6 @@
 pkgbase = lutris-beta
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.0b3
+	pkgver = 0.5.0rc1
 	pkgrel = 1
 	url = https://github.com/lutris/lutris
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = lutris-beta
 	optdepends = python-pyinotify: Enhanced Steam integration.
 	provides = lutris
 	conflicts = lutris
-	source = https://github.com/lutris/lutris/archive/v0.5.0beta3.tar.gz
+	source = https://github.com/lutris/lutris/archive/v0.5.0rc1.tar.gz
 	sha512sums = SKIP
 
 pkgname = lutris-beta
