@@ -3,7 +3,7 @@
 pkgname=repl-rs
 _pkgname=repl-rs
 pkgver=r49.6388514
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust Repl"
 arch=('x86_64')
 url="https://github.com/sigmaSd/repl-rs"
