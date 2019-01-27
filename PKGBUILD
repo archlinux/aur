@@ -22,7 +22,7 @@ build(){
 
 package() {
   cd "cfiles-${pkgver}"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 cfiles "$pkgdir/usr/local/bin/cfiles"
   install -Dm644 scripts/displayimg "$pkgdir/usr/local/bin/displayimg"
   install -Dm644 scripts/displayimg_uberzug "$pkgdir/usr/local/bin/displayimg_uberzug"
