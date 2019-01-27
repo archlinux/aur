@@ -1,16 +1,16 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+_watch=('https://www.hiawatha-webserver.org/latest' '(\d[\d.]*)')
 
 pkgname=hiawatha-letsencrypt
-pkgver=2.0
-_hiawathaver=10.8.3
+pkgver=10.8.3
 pkgrel=1
-pkgdesc="Let's Encrypt script for the Hiawatha webserver"
-url="https://www.hiawatha-webserver.org"
+pkgdesc="Lets Encrypt script for the Hiawatha webserver"
+url='https://www.hiawatha-webserver.org'
 arch=('any')
 license=('GPL2')
 depends=('php' 'hiawatha')
 backup=("etc/letsencrypt/letsencrypt.conf")
-source=("${url}/files/hiawatha-${_hiawathaver}.tar.gz" 
+source=("${url}/files/hiawatha-${pkgver}.tar.gz" 
         "${pkgname}-renew.service"
         "${pkgname}-renew.timer")
 
@@ -19,13 +19,13 @@ md5sums=('e37ea9419d5a516e5c9b0aa80b7776c4'
          '72c4e3c54f6b7fe3b157ae33e79bfdef')
 
 prepare() {
-    cd "${srcdir}/hiawatha-${_hiawathaver}/extra/letsencrypt"
+    cd "${srcdir}/hiawatha-${pkgver}/extra/letsencrypt"
     sed -e 's|/etc/init.d/hiawatha restart|systemctl restart hiawatha.service|' \
     -i letsencrypt.conf
 }
 
 package() {
-    cd "${srcdir}/hiawatha-${_hiawathaver}/extra/letsencrypt"
+    cd "${srcdir}/hiawatha-${pkgver}/extra/letsencrypt"
 
     # configuration file
     install -Dm644 letsencrypt.conf "${pkgdir}/etc/letsencrypt/letsencrypt.conf"

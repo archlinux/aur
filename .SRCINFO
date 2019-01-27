@@ -1,6 +1,6 @@
 pkgbase = hiawatha-letsencrypt
-	pkgdesc = Let's Encrypt script for the Hiawatha webserver
-	pkgver = 2.0
+	pkgdesc = Lets Encrypt script for the Hiawatha webserver
+	pkgver = 10.8.3
 	pkgrel = 1
 	url = https://www.hiawatha-webserver.org
 	arch = any
