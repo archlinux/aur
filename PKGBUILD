@@ -2,7 +2,7 @@
 
 pkgname=gromacs-5.1-complete
 pkgver=5.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -11,7 +11,7 @@ depends=('lapack' 'zlib' 'libx11')
 optdepends=('cuda: Nvidia GPU support'
             'openmotif:  needed for gmx view'
             'perl: needed for demux.pl and xplor2gmx.pl')
-makedepends=('cmake' 'libxml2' 'hwloc')
+makedepends=('cmake' 'libxml2' 'hwloc' 'gcc7')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
         GMXRC.bash.cmakein.patch)
@@ -23,9 +23,9 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format). 
 
-export CC=gcc-6
-export CXX=g++-6
-export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong -fno-plt"
+export CC=gcc-7
+export CXX=g++-7
+export CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
 export CXXFLAGS="${CFLAGS}"
 
 prepare() {
