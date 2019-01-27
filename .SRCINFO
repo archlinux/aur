@@ -1,7 +1,7 @@
 pkgbase = gtkhtml4
 	pkgdesc = A lightweight HTML renderer/editor widget for GTK3
 	pkgver = 4.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnome.org
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = gtkhtml4
 	depends = gtk3
 	depends = enchant
 	depends = iso-codes
-	depends = libsoup
 	source = https://download.gnome.org/sources/gtkhtml/4.10/gtkhtml-4.10.0.tar.xz
+	source = enchant-2.patch
 	sha256sums = ca3b6424fb2c7ac5d9cb8fdafb69318fa2e825c9cf6ed17d1e38d9b29e5606c3
+	sha256sums = 2b78f071f7893e19618959443f3775bd435941a37ea9198b2fe72b596c205891
 
 pkgname = gtkhtml4
 
