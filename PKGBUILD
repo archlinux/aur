@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgname=msgfplus
 pkgver=2019.01.22
-pkgrel=1
+pkgrel=2
 pkgdesc="MS/MS database search tool"
 arch=('any')
 url="https://github.com/MSGFPlus/msgfplus"
@@ -20,7 +20,7 @@ package() {
     cd "$srcdir"
     install -D MSGFPlus.jar "${pkgdir}/usr/share/java/${pkgname}/MSGFPlus.jar"
     mkdir -p "${pkgdir}/usr/share/${pkgname}"
-    cp -r doc/examples "${pkgdir}/usr/share/${pkgname}/"
+    cp -r docs/examples "${pkgdir}/usr/share/${pkgname}/"
     install -D msgf+ "${pkgdir}/usr/bin/msgf+"
     install -D mzid2tsv "${pkgdir}/usr/bin/mzid2tsv"
     install -D LICENSE.txt -t "${pkgdir}/usr/share/licenses/msgfplus/"
