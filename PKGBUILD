@@ -1,6 +1,6 @@
 # Maintainer: svalo <me@valo.space> 
 pkgname=plzip
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="A massively parallel lossless data compressor based on the lzlib compression library"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
     "http://download.savannah.gnu.org/releases/lzip/plzip/$pkgname-$pkgver.tar.gz.sig"
     )
 validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742') # Antonio Diaz Diaz
-sha512sums=('6c9817ee89fb01aa20a051970c0d737f0658cbe18b6d6bef44768a53daa695691f5f768e810ba4a477598b435ce097c101685ddd61a8a61022b4343e238eb68f'
+sha512sums=('e8e822f8ae77e06178538b62075fa1c5d9cbc76c78bee7ad595a4637cd4077f53fd9e3fe61ca3fbddaa8b950e739d97527dc8fbecae04de1ac3ef83d0d5f13b4'
             'SKIP')
 build() {
 	cd "$pkgname-$pkgver"
