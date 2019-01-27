@@ -1,0 +1,11 @@
+diff -ura gnuplot-0.5.5.3.orig/gnuplot.cabal gnuplot-0.5.5.3.new/gnuplot.cabal
+--- gnuplot-0.5.5.3.orig/gnuplot.cabal	2019-01-27 13:43:13.685565343 -0500
++++ gnuplot-0.5.5.3.new/gnuplot.cabal	2019-01-27 13:44:36.060246751 -0500
+@@ -81,7 +81,6 @@
+     data-accessor-transformers >=0.2.1 && <0.3,
+     data-accessor >=0.2.2 && <0.3,
+     transformers >=0.3 && <0.6,
+-    semigroups >=0.1 && <1.0,
+     deepseq >=1.0 && <1.5,
+     process >=1.0 && <1.7,
+     time >=1.5 && <1.9,
