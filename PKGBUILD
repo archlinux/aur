@@ -3,7 +3,7 @@ _watch=('https://www.hiawatha-webserver.org/latest' '(\d[\d.]*)')
 
 pkgname=hiawatha-letsencrypt
 pkgver=10.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Let's Encrypt script for the Hiawatha webserver"
 url='https://www.hiawatha-webserver.org'
 arch=('any')
