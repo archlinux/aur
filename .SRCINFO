@@ -1,6 +1,6 @@
 pkgbase = minijail-git
 	pkgdesc = Tool to run a process in jailed environment
-	pkgver = r1280.f6423bb
+	pkgver = r1383.902a449
 	pkgrel = 1
 	url = https://android.googlesource.com/platform/external/minijail/
 	arch = i686

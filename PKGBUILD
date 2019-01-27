@@ -2,7 +2,7 @@
 
 pkgname=minijail-git
 _gitname=minijail
-pkgver=r1280.f6423bb
+pkgver=r1383.902a449
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Tool to run a process in jailed environment'
