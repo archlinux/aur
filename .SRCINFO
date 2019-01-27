@@ -1,0 +1,20 @@
+pkgbase = haskell-gnuplot
+	pkgdesc = A wrapper to gnuplot which lets you create 2D and 3D plots.
+	pkgver = 0.5.5.3
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/gnuplot
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-data-accessor
+	depends = haskell-data-accessor-transformers
+	depends = haskell-semigroups
+	depends = haskell-temporary
+	depends = haskell-utility-ht
+	depends = gnuplot
+	source = https://hackage.haskell.org/package/gnuplot-0.5.5.3/gnuplot-0.5.5.3.tar.gz
+	sha512sums = 566d0607233a16557201e2ea859c7105ad91007806cf2184a6ee55d517c84681f3fe7623c3497d682232d5b184855bf1f8a838222c4e2abade674b714c7a11de
+
+pkgname = haskell-gnuplot
+
