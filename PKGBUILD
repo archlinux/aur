@@ -6,7 +6,7 @@
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=3.30.2+4
-pkgrel=4
+pkgrel=5
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -23,8 +23,10 @@ provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 _commit=2a36bf52cb61ac1a015bc2150807a8d47c7155e4 # tags/3.30.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
+         https://gitlab.gnome.org/GNOME/gnome-shell/raw/e26de6865dc6bed3af45355aeb4060e4e0f854d7/js/ui/workspaceThumbnail.js
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
+            'ad16e4defb7e93ed26e663da6e19ec26dd0eeafbc86608598e19278360d23fdd'
             'SKIP')
 
 prepare() {
@@ -37,11 +39,11 @@ prepare() {
   git cherry-pick 6a3dd0fa
   git cherry-pick 5aac3f0a
 
-  # js/ui: Use captured-event::instantaneous [performance]
+  # js/ui: Use captured-event::nonmotion [performance]
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/276
   # Requires mutter MR283/commit "clutter-actor: Add detail to captured-event signal [performance]"
   if pacman -Q | grep mutter-781835-workaround; then
-    git cherry-pick d12c86cf || bash
+    git cherry-pick 5a7be719 || bash
     echo "======= mutter-781835-workaround detected, MR276 is applied ======="
     sleep 3
   else
@@ -53,6 +55,15 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/304
   # Fix performance regression with fullscreen apps, merged in master but not in 3.30
   git cherry-pick e5ce3d54
+
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/343
+  # workspaceThumbnail: Clean up porthole/workarea setting and updating
+  mv ../workspaceThumbnail.js js/ui/
+
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/364
+  # Use ClutterImage on StTextureCache
+  git cherry-pick deec0bf2^..3dcb593a
+
 
   # Move the plugin to our custom epiphany-only dir
   sed -i "s/'mozilla'/'epiphany'/g" meson.build
