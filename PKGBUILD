@@ -1,26 +1,27 @@
-# Maintainer: Sigmund Vestergaard <sigmundv at gmail dot com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Sigmund Vestergaard <sigmundv at gmail dot com>
 #
 pkgname=osticket
-pkgver=1.10
+pkgver=1.10.4
 pkgrel=1
 pkgdesc='A widely-used open source support ticket system.'
 arch=('any')
 url='http://www.osticket.com/'
 license=('GPL')
-depends=('php>=4.3.10' 'php-apache>=4.3.10' 'mysql>=4.4.0')
+depends=('php' 'php-apache' 'mariadb')
 makedepends=('unzip')
 install="${pkgname}.install"
-source=("http://osticket.com/sites/default/files/download/osTicket-v$pkgver.zip")
-sha256sums=('68ff411693802e154426d9ec9b2365ff524aad5f6e52ad9422f073ae48e3a46d')
+source=("https://github.com/osTicket/osTicket/releases/download/v$pkgver/osTicket-v$pkgver.zip")
+sha256sums=('dbfdc0159471b68a3f54898a18504b999bfeb03920551e2fb827a74cc69cd928')
 
 package() {
-  install -d ${pkgdir}/srv/http/osticket
+  install -d ${pkgdir}/usr/share/webapps/osticket
   sleep 1
   echo "Extracting files"
   sleep 1
-  unzip -d ${pkgdir}/srv/http/osticket "osTicket-v$pkgver"
+  unzip -d ${pkgdir}/usr/share/webapps/osticket "osTicket-v$pkgver"
 
   # fix permissions (probably needs to get included upstream)
-  find ${pkgdir}/srv/http/$pkgname -type f -exec chmod 0664 {} \; 
-  find ${pkgdir}/srv/http/$pkgname -type d -exec chmod 0775 {} \; 
+  find ${pkgdir}/usr/share/webapps/$pkgname -type f -exec chmod 0664 {} \; 
+  find ${pkgdir}/usr/share/webapps/$pkgname -type d -exec chmod 0775 {} \; 
 }

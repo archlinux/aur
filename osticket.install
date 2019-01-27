@@ -17,7 +17,7 @@ post_install() {
 
 ==> Need help installing osTicket?  
 
- -> Read Documentation at 'http://osticket.com/wiki/Main_Page'
+ -> Read Documentation at 'https://docs.osticket.com/en/latest/'
 
 EOM
 }
