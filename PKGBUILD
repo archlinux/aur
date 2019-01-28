@@ -1,4 +1,5 @@
 # Maintainer: Justin Vreeland <vreeland.justin@gmail.com>
+# Maintainer: Mike Javorski (javmorin) <mike.javorski gmail com>
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgbase=python-debian
 pkgname=('python-debian' 'python2-debian')
