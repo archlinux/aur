@@ -1,6 +1,6 @@
 pkgbase = pubs
 	pkgdesc = Your bibliography on the command line
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/pubs/pubs
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = pubs
 	depends = python-dateutil
 	depends = python-requests
 	provides = pubs
-	source = https://github.com/pubs/pubs/archive/v0.8.1.tar.gz
-	sha256sums = ce9193bc7a761625e6cb57e1ffccc1266ff52d933c89bb4e3fb94f221e0ae797
+	source = https://github.com/pubs/pubs/archive/v0.8.2.tar.gz
+	sha256sums = 757f0855900ce7c53c27cf2a32ef32f73f57210e31e3f6b608e64dab007f5ce9
 
 pkgname = pubs
 
