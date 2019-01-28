@@ -18,14 +18,14 @@ package_python-debian() {
   depends=(python-chardet python-six)
   optdepends=("python-apt: interface to libapt-pkg")
   cd "$srcdir/$pkgbase-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  /usr/bin/python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python2-debian() {
   depends=(python2-chardet python2-six)
   optdepends=("python2-apt: interface to libapt-pkg")
   cd "$srcdir/$pkgbase-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  /usr/bin/python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
