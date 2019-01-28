@@ -35,7 +35,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_pkgname build
+  arch-meson -D b_pie=false $_pkgname build
   ninja -C build
 }
 
