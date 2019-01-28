@@ -1,0 +1,20 @@
+pkgbase = pi2-view
+	pkgdesc = The GUI library for showing the Map of the Praktikum Informatik 2
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.rwth-aachen.de/pi2/pi2-view
+	arch = x86_64
+	license = LGPL3
+	makedepends = boost
+	makedepends = meson
+	makedepends = git
+	depends = boost-libs
+	depends = cairomm
+	depends = gtkmm3
+	options = staticlibs
+	options = strip
+	source = git+https://git.rwth-aachen.de/pi2/pi2-view.git#commit=f3f887b3a53ad73919943252785835ebfcaaf694
+	sha256sums = SKIP
+
+pkgname = pi2-view
+
