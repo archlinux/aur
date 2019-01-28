@@ -1,9 +1,9 @@
-# Maintainer: Vincent Pasquier <vincentpasquier@posteo.net>
+# Maintainer: Yngve Levinsen <yngve AT levinsen DOT gmail>
+# Contributor: Vincent Pasquier <vincentpasquier@posteo.net>
 
-pkgname_=ics
-pkgname=python-${pkgname_}
-pkgver=0.3.1
-pkgrel=2
+pkgname=python-ics
+pkgver=0.4
+pkgrel=1
 pkgdesc='Pythonic and easy iCalendar library'
 arch=('any')
 url='http://pypi.python.org/pypi/ics/'
@@ -11,11 +11,11 @@ license=('Apache')
 depends=('python' 'python-arrow' 'python-dateutil')
 makedepends=('python-setuptools')
 
-source=("https://pypi.python.org/packages/e0/b6/6238912420684e3da7c81c13012e28df6f0c2c978c37e5c57838b9987cc7/${pkgname_}-${pkgver}.tar.gz")
-sha512sums=('3e08c51f81f333983beca7cfb77e072d55e68b333d59143173a3dad5a7e439476b53583563fb300b25c871d121c4a5cbed898b3073a80e4d4efb7f12010340e8')
+source=("https://files.pythonhosted.org/packages/f5/d4/e14e5b17aca858ad53210c0342fe0a4b1f46dffe3e2e31961b34ad7c4fab/ics-${pkgver}.tar.gz")
+sha512sums=('8b716048421a2eb653d220313fb2355781172b219fe7bd99bf1f4084711934874a7f3931cf5cd0852c3c42a725b5219251cb1fb222cf8a37c25921e903c211be')
 
 package() {
-  cd "$pkgname_-${pkgver}"
+  cd "ics-${pkgver}"
   python setup.py install --root=${pkgdir} --optimize=1
 }
 
