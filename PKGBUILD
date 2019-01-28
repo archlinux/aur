@@ -2,8 +2,8 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=vue-cli
-pkgver=3.1.3
-pkgrel=3
+pkgver=3.3.0
+pkgrel=1
 pkgdesc='Standard tooling for Vue.js development'
 arch=(i686 x86_64)
 url=https://cli.vuejs.org
@@ -15,5 +15,5 @@ options=(!strip)
 
 package() {
   npm install -g --prefix="$pkgdir"/usr @vue/cli@$pkgver
-  find "$pkgdir"/usr -type d -exec chmod 755 {} \;
+  find "$pkgdir"/usr -type d -exec chmod 755 {} +
 }
