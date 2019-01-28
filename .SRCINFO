@@ -1,0 +1,17 @@
+pkgbase = terra-bin
+	pkgdesc = A low-level system programming language that is embedded in and meta-programmed by the Lua programming language
+	pkgver = 1.0.0beta1
+	pkgrel = 1
+	url = http://terralang.org/
+	arch = x86_64
+	license = MIT
+	depends = readline
+	depends = ncurses5-compat-libs
+	depends = llvm6-libs
+	provides = terra
+	conflicts = terra
+	source = https://github.com/zdevito/terra/releases/download/release-1.0.0-beta1/terra-Linux-x86_64-2e2032e.zip
+	md5sums = 2200774fe32f1b54d10aee2c23081a86
+
+pkgname = terra-bin
+
