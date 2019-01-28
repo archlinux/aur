@@ -1,0 +1,13 @@
+*** run-mozilla.sh      2011-09-27 19:41:54.215636203 -0300
+--- run-mozilla.sh      2011-09-27 19:47:14.591053402 -0300
+***************
+*** 41,46 ****
+--- 41,48 ----
+  MOZ_APPRUNNER_NAME="./mozilla-bin"
+  MOZ_PROGRAM=""
+  
++ MOZ_PLUGIN_PATH="/opt/mozilla/lib/plugins:/usr/lib32/mozilla/plugins"
++ 
+  exitcode=1
+  #
+  ##

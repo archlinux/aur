@@ -1,0 +1,34 @@
+pkgbase = bin32-firefox-esr52
+	pkgdesc = Firefox 32bit for Arch 64 bit (en-US)
+	pkgver = 52.9.0esr
+	pkgrel = 1
+	url = http://www.mozilla.org/projects/firefox
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = lib32-dbus-glib
+	depends = lib32-gtk3
+	depends = lib32-libxt
+	depends = lib32-alsa-lib
+	depends = lib32-nss
+	depends = desktop-file-utils
+	optdepends = bin32-firefox-i18n: i18n support
+	optdepends = lib32-flashplugin: flash support
+	optdepends = bin32-acroread: adobe reader plugin
+	optdepends = bin32-icedtea-web: java plugin
+	optdepends = lib32-librsvg: svg_loader.so library
+	optdepends = lib32-gtk-engines: libclearlooks.so library
+	optdepends = lib32-ffmpeg: extra codec support (x264)
+	conflicts = bin32-firefox
+	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/52.9.0esr/linux-i686/en-US/firefox-52.9.0esr.tar.bz2
+	source = firefox32.desktop
+	source = firefox32-safe.desktop
+	source = mozplugin.patch
+	md5sums = 9aa18888b7812670208490609d75c9bc
+	md5sums = 467b7e46030ee36d7a0e0752d0fa5480
+	md5sums = 9957b560418ad4baf6c6a0d015df2b15
+	md5sums = 8ef4b2a15b9d5e9d5bd5df323dbf012f
+
+pkgname = bin32-firefox-esr52
+
