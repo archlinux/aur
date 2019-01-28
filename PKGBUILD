@@ -9,7 +9,7 @@ url="https://github.com/pvanek/${pkgname}/"
 license=('GPL')
 depends=('qt5-base')
 makedepends=('cmake' 'ninja' 'qt5-tools')
-source=("${pkgname}-${pkgver}::https://github.com/pvanek/qlipper/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pvanek/qlipper/archive/${pkgver}.tar.gz")
 sha512sums=('196e3a348028d4b0f52362a1c0cfb0c479a31b6b56af5c5423db91af2ecc926eee1c9da385171b2084e1a7b6e919d94d1c1626fa128636b4075a00bbc5351586')
 
 prepare() {
@@ -28,6 +28,4 @@ build() {
 package() {
     cd "${srcdir}/build"
     DESTDIR="${pkgdir}" ninja install
-    install -D -m755 qlipper "${pkgdir}/usr/bin/qlipper"
-    install -Dm644 "${srcdir}/qlipper-${pkgver}/qlipper.desktop" "${pkgdir}/usr/share/applications/qlipper.desktop"
 }
