@@ -1,0 +1,14 @@
+pkgbase = snmpscan
+	pkgdesc = CLI-Tool to monitor ruters and switches by SNMP
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/mafri27/snmpscan
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = ruby
+	source = snmpscan::git+https://github.com/mafri27/snmpscan.git#tag=v1.6.2
+	md5sums = SKIP
+
+pkgname = snmpscan
+
