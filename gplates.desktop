@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/usr/bin/gplates
+Name=GPlates
+Comment=Interactive visualisation of plate-tectonics
+Icon=/usr/share/gplates/icon.png

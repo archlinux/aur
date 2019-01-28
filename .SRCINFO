@@ -1,0 +1,29 @@
+pkgbase = gplates
+	pkgdesc = Desktop software for the interactive visualisation of plate-tectonics
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://www.gplates.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = glu
+	makedepends = glew
+	makedepends = python2
+	makedepends = boost
+	makedepends = mesa
+	makedepends = gdal
+	makedepends = cgal
+	makedepends = proj
+	depends = qt4
+	depends = qwt-qt4
+	source = https://downloads.sourceforge.net/project/gplates/gplates/2.1/gplates-2.1.0-unixsrc.tar.bz2
+	source = no-ansi.patch
+	source = icon.png
+	source = gplates.desktop
+	md5sums = 770758823ac480e40213a5b284d273fc
+	md5sums = 57f9fb5b981456bdc874094d35488763
+	md5sums = 938ef5a002905872a633665637a45d77
+	md5sums = 1127c6a17abfa7500280fd09ce475a15
+
+pkgname = gplates
+
