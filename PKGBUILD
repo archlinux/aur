@@ -19,7 +19,6 @@ _package_helper() {
   cd "$_rockname-$pkgver"
   luarocks-${_lua_ver} make --pack-binary-rock --deps-mode=none "rockspec/$_rockname-$pkgver-1.rockspec"
   mv *.rock ../${_lua_ver}/
-
   luarocks-${_lua_ver} install --tree="$pkgdir/usr/" --deps-mode=none ../${_lua_ver}/*.rock
   find "$pkgdir/usr" -name manifest -delete
 }
