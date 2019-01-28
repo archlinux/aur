@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Socket.io tester
+Comment=An electron app that lets you connect to a socket.io server and subscribe to a certain topic and/or lets you send socket messages to the server
+Exec=socket.io-tester
+Icon=/opt/socket.io-tester/logo.png
+Type=Application

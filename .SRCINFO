@@ -1,0 +1,23 @@
+pkgbase = socket.io-tester
+	pkgdesc = An app that allows one to connect to Socket.io server and send and receive messages for testing purposes.
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = http://appsaloon.github.io/socket.io-tester/
+	arch = x86_64
+	license = GPL2
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	noextract = socket.io-tester-1.2.3-x86_64.zip
+	source = Socket.io-tester.desktop
+	source = https://github.com/AppSaloon/socket.io-tester/raw/master/assets/logo.png
+	sha256sums = 4bcc6998d7601297bd59ce44a0c071f2e1e623d0123468b6761154e424c6e818
+	sha256sums = ec15d9779dec4dc67ed35a41abf5fd8847ca8d5c34b17a4c2873e172772673ed
+	source_x86_64 = socket.io-tester-1.2.3-x86_64.zip::https://github.com/AppSaloon/socket.io-tester/releases/download/v1.2.3/socket-io-tester-linux-x64.zip
+	sha256sums_x86_64 = a13dbf9c9fd5396f92b712fbb982be55987f19b33a44ba7eb4a6dcd11b5fccea
+
+pkgname = socket.io-tester
+
