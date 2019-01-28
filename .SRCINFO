@@ -1,15 +1,15 @@
 pkgbase = nodejs-carto
 	pkgdesc = Mapnik Stylesheet Compiler
-	pkgver = 1.0.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/mapbox/carto
 	arch = any
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = carto-1.0.1.tgz
-	source = http://registry.npmjs.org/carto/-/carto-1.0.1.tgz
-	sha256sums = 5f9a184d1f45d85d4a6ae1e290d511a3ba30833e54fed7ae5f15c8a4d55e4845
+	noextract = carto-1.2.0.tgz
+	source = http://registry.npmjs.org/carto/-/carto-1.2.0.tgz
+	sha256sums = 1d7176e694a04da66834f6cbf80ee6b18d66761a60d12cbd386c5d3fe1cdb6f2
 
 pkgname = nodejs-carto
 
