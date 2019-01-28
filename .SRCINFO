@@ -14,6 +14,7 @@ pkgbase = lucaschess-git
 	depends = python2-chardet
 	depends = python2-pygal
 	depends = python2-pyqt4
+	depends = python2-sip-pyqt4
 	depends = python2-pillow
 	depends = python2-chess
 	depends = python2-scandir

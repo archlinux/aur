@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://lucaschess.pythonanywhere.com/"
 license=('GPL2')
 depends=('python2-pyaudio' 'swig' 'python2-psutil' 'python2-chardet' 'python2-pygal' 
-         'python2-pyqt4' 'python2-pillow' 'python2-chess' 'python2-scandir') 
+         'python2-pyqt4' 'python2-sip-pyqt4' 'python2-pillow' 'python2-chess' 'python2-scandir') 
 makedepends=('git' 'cython2')
 optdepends=('crafty' 'cutechess' 'fairymax' 'fruit' 'gnuchess' 'hoichess' 'pychess'
             'stockfish' 'toga2' 'xboard' 'scid_vs_pc')
@@ -32,6 +32,7 @@ build() {
     bash ./xmk_linux.sh
     cd "$srcdir/${_pkgname}/LCEngine"
     sed -i s/python/python2/g xcython_linux.sh
+    sed -i s/LCEngine2/LCEngine3/g xcython_linux.sh
     bash ./xcython_linux.sh
 }
 
@@ -44,7 +45,7 @@ package() {
     fi
     install -d "${pkgdir}"/usr/{lib,bin}
     install -m777 -d "${pkgdir}/opt/${_pkgname}"
-    install -Dm755 "$srcdir/${_pkgname}"/LCEngine/{LCEngine2,libirina}.so "${pkgdir}/usr/lib"
+    install -Dm755 "$srcdir/${_pkgname}"/LCEngine/{LCEngine3,libirina}.so "${pkgdir}/usr/lib"
     install -Dm755 "$srcdir/${_pkgname}"/Lucas "${pkgdir}/usr/bin"
     install -Dm755 "$srcdir/${_pkgname}"/Lucas.py "${pkgdir}/opt/${_pkgname}"
     install -m777 -d "${pkgdir}/opt/${_pkgname}/Code"
