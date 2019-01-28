@@ -1,6 +1,6 @@
 pkgbase = survex
 	pkgdesc = Cave survey software
-	pkgver = 1.2.36
+	pkgver = 1.2.37
 	pkgrel = 1
 	url = http://survex.com/
 	install = survex.install
@@ -13,9 +13,9 @@ pkgbase = survex
 	depends = ffmpeg
 	depends = proj
 	depends = glu
-	source = http://survex.com/software/1.2.36/survex-1.2.36.tar.gz
+	source = http://survex.com/software/1.2.37/survex-1.2.37.tar.gz
 	source = http://survex.com/software/sample.tar.gz
-	sha512sums = c5b7fbf8a8098bc3a18177cf5acf8ce2fb2ba6b746c88e8f2e12837ec99fa2a776b91a80d2908d0bf4f99b29c14e1e46bc17a20605ad0016f55a2f76e6062344
+	sha512sums = 71df87358e1baea5ceff3704a8dcf09e753d5faa0eb06c5e44a6a1f9696323853c6bd86249451f3b4e1e8c996963937fdea783b0717d7adf41636e14ea31136f
 	sha512sums = af915b8fcd3949160049946b6a195750f4d16689eb7a341dbad1c2c4cfd36d85c955abbf9e6ecb0f26db0ae073ff76e0d9c1cb0591d6d5d9c1b7a8cd80a74da9
 
 pkgname = survex
