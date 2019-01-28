@@ -3,7 +3,7 @@
 
 pkgname=mgmt
 pkgver=0.0.17
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Next generation config management.'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -44,6 +44,7 @@ prepare() {
 
 build() {
     export GOPATH="${srcdir}"
+    export PATH=${GOPATH}/bin:${PATH}
     msg2 'building misc'
     cd "${srcdir}/src/${pkggopath}"
     PATH=$PATH:/usr/lib/go/pkg/tool/linux_amd64 \

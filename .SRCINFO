@@ -1,7 +1,7 @@
 pkgbase = mgmt
 	pkgdesc = Next generation config management.
 	pkgver = 0.0.17
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/purpleidea/mgmt
 	arch = x86_64
