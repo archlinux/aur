@@ -1,7 +1,7 @@
 # Maintainer: Arnoud Willemsen <mail at lynthium dot com>
 
 pkgname=jdupes-git
-pkgver=1.9+2+g1440f7a
+pkgver=1.11.1+18+g8b65531
 pkgrel=1
 pkgdesc="jdupes is a program for identifying duplicate files residing within specified directories"
 arch=('i686' 'x86_64')
