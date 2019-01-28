@@ -1,10 +1,10 @@
 # Maintainer: weearc <q19981121@163.com>
 pkgname=motrix
 _pkgname=Motrix
-pkgver=git20190120
-pkgrel=4
+pkgver=git20190126
+pkgrel=1
 epoch=
-pkgdesc="elegent downloading tool frontend for aria2c,using vue"
+pkgdesc="elegent downloading tool frontend for aria2c,using vue(with personal patches)"
 arch=("x86_64")
 url="https://github.com/agalwood/Motrix"
 license=('MIT')
