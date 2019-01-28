@@ -1,4 +1,5 @@
-# Maintainer: Swift Geek
+# Maintainer: Joan Figueras <ffigue at gmail dot com>
+# Contributor: Swift Geek
 # Contributor: c0nd0r <gcesarmza@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: webjdm <web.jdm@gmail.com>
