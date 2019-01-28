@@ -1,0 +1,11 @@
+--- src/pianobooster-git/src/Draw.h.orig	2019-01-28 14:12:19.686519263 +0100
++++ src/pianobooster-git/src/Draw.h	2019-01-28 14:12:33.636552596 +0100
+@@ -39,7 +39,7 @@
+ #include <QObject>
+ 
+ #define HORIZONTAL_SPACING_FACTOR   (0.75) // defines the speed of the scrolling
+-#define FONT_TTF "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
++#define FONT_TTF "/usr/share/fonts/TTF/DejaVuSans.ttf"
+ #define FONT_SIZE 16
+ 
+ #include "StavePosition.h"
