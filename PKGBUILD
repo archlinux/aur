@@ -8,7 +8,7 @@ arch=('any')
 url="http://jcloisterzone.com/en/"
 license=('AGPL')
 depends=('java-runtime>=8' 'archlinux-java-run')
-source=("http://jcloisterzone.com/builds/JCloisterZone-${pkgver}.tgz"
+source=("http://play.jcloisterzone.com/builds/JCloisterZone-${pkgver}.tgz"
         'jcloisterzone.sh'
         'jcloisterzone.desktop'
         'ico.png')
