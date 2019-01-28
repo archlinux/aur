@@ -2,7 +2,7 @@
 pkgname=snmpscan
 pkgver=1.6.2
 pkgrel=1
-pkgdesc="CLI-Tool to monitor ruters and switches by SNMP"
+pkgdesc="CLI-Tool to monitor routers and switches by SNMP"
 arch=('any')
 url="https://github.com/mafri27/snmpscan"
 depends=('ruby') 
