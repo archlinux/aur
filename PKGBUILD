@@ -2,7 +2,7 @@
 
 pkgname=repl-rs
 _pkgname=repl-rs
-pkgver=r53.cde9620
+pkgver=r56.6bd864b
 pkgrel=1
 pkgdesc="Rust Repl"
 arch=('x86_64')
