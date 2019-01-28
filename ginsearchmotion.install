@@ -1,0 +1,41 @@
+post_install() {
+    pkgname=ginsearchmotion
+
+    # Fixing membership
+    chown http: /var/log/$pkgname
+    chown -R http: /etc/$pkgname
+
+    # Reload systemctl
+    systemctl daemon-reload
+
+    echo "Adding ginsearchmotion in systemctl:"
+    echo "  systemctl enable ginsearchmotion"
+    echo "  systemctl start ginsearchmotion"
+
+    echo "Adding, for example, this rule in iptables:"
+    echo "  iptables -t filter -A INPUT -p tcp --dport 8090 -j ACCEPT"
+
+    true
+}
+
+post_upgrade() {
+    # Reload systemctl
+    systemctl daemon-reload
+
+    echo "You should restart ginsearchmotion"
+    echo "  systemctl restart ginsearchmotion"
+
+    true
+}
+
+pre_remove() {
+    pkgname=ginsearchmotion
+    # Remove symlink in systemd
+    systemctl disable $pkgname
+    # Stop server
+    systemctl stop $pkgname
+    # Reload systemctl
+    systemctl daemon-reload
+
+    true
+}

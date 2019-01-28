@@ -1,0 +1,17 @@
+pkgbase = ginsearchmotion
+	pkgdesc = Gin server to manage search motions
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Chipsterjulien/ginsearchmotion
+	install = ginsearchmotion.install
+	arch = any
+	license = WTFPL
+	makedepends = go
+	optdepends = wiringpi: GPIO support
+	options = !strip
+	backup = etc/ginsearchmotion/ginsearchmotion.toml
+	source = ginsearchmotion-0.0.1.tar.gz
+	sha512sums = fb47cbe792533920a962e48e9a82a72539d3f9d8722c1ef65e81390ddc7407948c3c53721322e2b917ad04dfa3c8c4d7b163a15ded3867b6afeb1ab617b06c00
+
+pkgname = ginsearchmotion
+
