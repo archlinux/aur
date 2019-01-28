@@ -8,7 +8,8 @@ Group=thelounge
 Type=simple
 Environment=THELOUNGE_HOME=/etc/thelounge
 ExecStart=/usr/bin/thelounge start
-ProtectSystem=yes
+ProtectSystem=strict
+ReadWritePaths=/etc/thelounge
 ProtectHome=yes
 NoNewPrivileges=yes
 PrivateTmp=yes
