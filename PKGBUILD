@@ -1,29 +1,33 @@
+# Maintainer: e5ten <e5ten.arch@gmail.com>
 # Contributor: sxe <sxxe@gmx.de>
-pkgname=qlipper
+pkgname='qlipper'
 pkgver=5.1.1
-pkgrel=1
-pkgdesc="Lightweight & cross-platform clipboard history applet based on qt"
+pkgrel=2
+pkgdesc='Lightweight & cross-platform clipboard history applet based on qt'
 arch=('i686' 'x86_64')
-url="https://github.com/pvanek/qlipper/"
-license=("GPL")
-depends=('qt5-base' 'gtk-update-icon-cache')
-makedepends=('cmake' 'qt5-tools')
-source=("https://github.com/pvanek/qlipper/archive/$pkgver.tar.gz")
+url="https://github.com/pvanek/${pkgname}/"
+license=('GPL')
+depends=('qt5-base')
+makedepends=('cmake' 'ninja' 'qt5-tools')
+source=("${pkgname}-${pkgver}::https://github.com/pvanek/qlipper/archive/${pkgver}.tar.gz")
+sha512sums=('196e3a348028d4b0f52362a1c0cfb0c479a31b6b56af5c5423db91af2ecc926eee1c9da385171b2084e1a7b6e919d94d1c1626fa128636b4075a00bbc5351586')
 
-md5sums=('5730a4e8a1cd6b9081135fe317c5a3cd')
+prepare() {
+	mkdir -p "${srcdir}/build"
+}
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    #qmake
-    msg "Starting build process."
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_SYSTEM_QTSA=0 -DCMAKE_BUILD_TYPE=Release -DQT_QMAKE_EXECUTABLE=qmake-qt4
-    make
+    cd "${srcdir}/build"
+    cmake -G "Ninja" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		"../${pkgname}-${pkgver}"
+    ninja
 }
 
 package() {
-    msg2 "Starting packaging."
-    cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
-    install -D -m755 qlipper $pkgdir/usr/bin/qlipper
-    install -Dm644 $srcdir/qlipper-$pkgver/qlipper.desktop $pkgdir/usr/share/applications/qlipper.desktop
+    cd "${srcdir}/build"
+    DESTDIR="${pkgdir}" ninja install
+    install -D -m755 qlipper "${pkgdir}/usr/bin/qlipper"
+    install -Dm644 "${srcdir}/qlipper-${pkgver}/qlipper.desktop" "${pkgdir}/usr/share/applications/qlipper.desktop"
 }
