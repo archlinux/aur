@@ -1,24 +1,28 @@
 pkgbase = eclim
 	pkgdesc = Brings Eclipse functionality to Vim
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://eclim.org/
 	install = eclim.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = apache-ant
+	makedepends = eclipse
+	makedepends = groovy
+	makedepends = java-environment=10
+	makedepends = libnsl
 	makedepends = python2-sphinx
 	makedepends = python2-docutils
-	makedepends = groovy
-	depends = eclipse
-	depends = java-environment=8
-	depends = libnsl
-	depends = vim
+	makedepends = vim
 	optdepends = eclipse-dltk-core
 	conflicts = eclim-git
 	source = https://github.com/ervandew/eclim/releases/download/2.8.0/eclim_2.8.0.tar.gz
 	md5sums = aae873ee270d6c7b21a6ff3bec3f08ad
 
 pkgname = eclim
+	depends = eclipse
+	depends = java-environment
+	depends = libnsl
+	depends = vim
 
