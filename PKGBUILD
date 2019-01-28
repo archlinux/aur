@@ -2,12 +2,12 @@
 
 pkgname=grok-exporter
 _pkgname=grok_exporter
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Export Prometheus metrics from arbitrary unstructured log data (from
 binary release)."
 
-arch=('x86_64')
+arch=('x86_64' 'arm' 'armv7h' 'armv6h')
 url="https://github.com/fstab/grok_exporter"
 license=('Apache')
 depends=('oniguruma>=6.1.1')

@@ -1,9 +1,12 @@
 pkgbase = grok-exporter
 	pkgdesc = Export Prometheus metrics from arbitrary unstructured log data (from binary release).
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/fstab/grok_exporter
 	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
 	license = Apache
 	makedepends = go
 	makedepends = git
@@ -13,7 +16,7 @@ pkgbase = grok-exporter
 	backup = etc/prometheus/grok.yml
 	source = grok-exporter.service
 	source = config.yml
-	source = grok_exporter-0.2.5::git+https://github.com/fstab/grok_exporter#tag=v0.2.5
+	source = grok_exporter-0.2.6::git+https://github.com/fstab/grok_exporter#tag=v0.2.6
 	md5sums = f092982797ca0f1128382a712c1db0da
 	md5sums = 39ae997b03a1a35490c74eb3fcd8c3a4
 	md5sums = SKIP
