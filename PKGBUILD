@@ -1,14 +1,14 @@
 # Maintainer: Fredrick Brennan <copypaste@kittens.ph>
 # Submitter: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=blender-git
-pkgver=70764.f634d4a8a62
+pkgver=84454.690478027bd
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="http://blender.org/"
 depends=('libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
-         'openshadinglanguage' 'libtiff' 'libpng')
+         'openshadinglanguage' 'libtiff' 'libpng' 'python-numpy')
 optdepends=('cuda: CUDA support in Cycles')
 makedepends=('git' 'cmake' 'boost' 'mesa')
 provides=('blender')
@@ -54,6 +54,7 @@ build() {
   cd "$srcdir/blender-build"
 
   cmake "$srcdir/blender" \
+        -DPYTHON_NUMPY_PATH=/usr/lib/python3.7/site-packages \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_INSTALL_PORTABLE=OFF \
         -DWITH_GAMEENGINE=ON \

@@ -1,6 +1,6 @@
 pkgbase = blender-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 70764.f634d4a8a62
+	pkgver = 84454.690478027bd
 	pkgrel = 1
 	url = http://blender.org/
 	install = blender.install
@@ -25,6 +25,7 @@ pkgbase = blender-git
 	depends = openshadinglanguage
 	depends = libtiff
 	depends = libpng
+	depends = python-numpy
 	optdepends = cuda: CUDA support in Cycles
 	provides = blender
 	conflicts = blender
