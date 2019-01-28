@@ -1,7 +1,7 @@
 # Maintainer: Rich Li <rich@dranek.com>
 pkgname='python2-xarray'
 _name=${pkgname#python2-}
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="N-D labeled arrays and datasets in Python"
 url="http://xarray.pydata.org"
@@ -19,9 +19,9 @@ optdepends=('python2-netcdf4: NetCDF4 support'
 checkdepends=('python2-pytest')
 replaces=('python2-xray')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('7434e72ef89182aa5eabd58a36f1b357')
-sha1sums=('744376e8fbd737ca65c814288ba435a72ea49fc4')
-sha256sums=('af7147152629701f11e424caf8e4fbf5ea1dc2d03ed7a5ca31b83dd64387cfb2')
+md5sums=('11144e5f32627867bd0004fea592055b')
+sha1sums=('979edb9aefa0aeaf4957b19530417c1e9025b197')
+sha256sums=('cc3dceb680d67746168c46771e4aa7d2624519a7faf120421f16d6ddfdb984dd')
 
 build() {
   cd "$srcdir/xarray-$pkgver"
