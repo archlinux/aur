@@ -5,7 +5,7 @@
 
 gitname=pdf.js
 pkgname=chromium-pdfjs-git
-pkgver=v2.0.943.70.g6ebdbb244
+pkgver=2.0.943.228.g1f3e7700d
 pkgrel=1
 pkgdesc="PDF viewer in Javascript, packaged as a Chromium extension"
 arch=('any')
@@ -18,7 +18,8 @@ sha512sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${gitname}"
     local ver="$(git describe --tags | sed 's|-|\.|g')"
-    printf "%s" "${ver//-/.}"
+    ver=${ver//-/.}
+    printf "%s" "${ver#v}"
 }
 build() {
     cd "${srcdir}/${gitname}"
