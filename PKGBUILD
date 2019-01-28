@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: hexchain <i at hexchain.org>
 pkgname=tpm2-abrmd-git
-pkgver=2.1.0rc1.r0.466c61d
+pkgver=2.1.0rc1.r2.a93cc0b
 pkgrel=1
 pkgdesc='Trusted Platform Module 2.0 Access Broker and Resource Management Daemon'
 arch=('x86_64')
@@ -39,7 +39,7 @@ build() {
 
 check() {
 	cd "${pkgname%-git}"
-	dbus-run-session -- make check
+	make check
 }
 
 package() {
