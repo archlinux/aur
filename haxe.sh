@@ -1,1 +1,1 @@
-export HAXE_STD_PATH=/usr/lib/haxe/std:.
+export HAXE_STD_PATH=/usr/share/haxe/std
