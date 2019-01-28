@@ -1,14 +1,14 @@
 pkgbase = interception-hideaway
 	pkgdesc = hideaway: a Interception Tools plugin to hide your mouse pointer
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/interception/linux/plugins/hideaway
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = gcc
 	depends = interception-tools
-	source = https://gitlab.com/interception/linux/plugins/hideaway/repository/archive.tar.gz?ref=v0.1.0
+	source = interception-hideaway.tar.gz::https://gitlab.com/interception/linux/plugins/hideaway/repository/archive.tar.gz?ref=v0.1.0
 	md5sums = 48ef1c714f6239fac5af2a7d30f38f56
 
 pkgname = interception-hideaway
