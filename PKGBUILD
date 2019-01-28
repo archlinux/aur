@@ -1,68 +1,31 @@
-# Maintainer:
-# Contrigutor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer: Jonas Witschel <diabonas at gmx dot de>
+# Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Pablo Lezaeta <(prflr 88) (arro'a) (gmail) (puntocom)>
-
-__pkgname="shim"
-_pkgname="${__pkgname}-efi"
-pkgname="${_pkgname}-git"
-
-pkgver=0.9.r51.rgd3884fe
+pkgname=shim-efi-git
+pkgver=15.r36.b3e4d1f
 pkgrel=1
-pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot - GIT Version"
-url="https://github.com/rhinstaller/shim"
+pkgdesc='UEFI shim loader'
 arch=('x86_64')
-license=('GPL')
-options=('!strip')
-
+url='https://github.com/rhboot/shim'
+license=('BSD')
 makedepends=('git' 'gnu-efi-libs')
-depends=('pesign' 'dosfstools' 'efivar' 'efibootmgr')
-optdepends=('mactel-boot: For bless command in Apple Mac systems')
-
-conflicts=("${_pkgname}" 'shim-efi-x86_64' 'shim-efi-x86_64-git')
-provides=("${_pkgname}=${pkgver}" "shim-efi-x86_64=${pkgver}" "shim-efi-x86_64-git=${pkgver}")
-
-source=("shim::git+https://github.com/rhinstaller/shim.git#branch=master")
-sha1sums=('SKIP')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+$url.git")
+sha512sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${__pkgname}/"
-	echo "$(git describe --tags)" | sed -e 's|-|.r|g'
-}
-
-prepare() {
-	
-	cd "${srcdir}/${__pkgname}/"
-	
-	git clean -x -d -f
-	echo
-	
-	sed 's|/usr/lib64/gnuefi|/usr/lib|g' -i "${srcdir}/${__pkgname}/Makefile"
-	sed 's|/usr/lib64|/usr/lib|g' -i "${srcdir}/${__pkgname}/Makefile"
-	
+	cd shim
+	printf '%s' "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-	
-	cd "${srcdir}/${__pkgname}/"
-	
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
-	
-	make
-	echo
-	
+	cd shim
+	make EFI_PATH=/usr/lib ENABLE_HTTPBOOT=1
 }
 
 package() {
-	
-	cd "${srcdir}/${__pkgname}/"
-	
-	install -d "${pkgdir}/usr/lib/shim/"
-	install -D -m0644 "${srcdir}/${__pkgname}/shim"*.efi "${pkgdir}/usr/lib/shim/shimx64.efi"
-	install -D -m0644 "${srcdir}/${__pkgname}/MokManager.efi.signed" "${pkgdir}/usr/lib/shim/MokManager.efi.signed"
-	install -D -m0644 "${srcdir}/${__pkgname}/fallback.efi.signed" "${pkgdir}/usr/lib/shim/fallback.efi.signed"
-	
+	cd shim
+	make DESTDIR="$pkgdir" install-as-data
+	install -Dm644 COPYRIGHT -t "$pkgdir/usr/share/licenses/$pkgname"
 }
