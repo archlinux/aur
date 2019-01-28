@@ -1,0 +1,20 @@
+post_install() {
+  chgrp games /usr/share/lander/lander.hs
+  chmod g+w /usr/share/lander/lander.hs
+
+  echo "Add user to group games to be able to save highscores"
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
