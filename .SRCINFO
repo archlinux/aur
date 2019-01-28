@@ -1,7 +1,7 @@
 pkgbase = libldac-git
 	pkgdesc = AOSP libldac dispatcher
-	pkgver = 2.0.2.r5.2ad4bf1
-	pkgrel = 2
+	pkgver = 2.0.2.2.r0.g7edd608
+	pkgrel = 1
 	url = https://github.com/EHfive/ldacBT
 	arch = i686
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = libldac-git
 	makedepends = cmake>=3.0
 	makedepends = make
 	makedepends = git
-	provides = libldac=2.0.2
-	provides = ldacBT=2.0.2
-	provides = ldacBT_enc.so=2.0.2
-	provides = ldacBT_abr.so=2.0.2
+	provides = libldac
+	provides = ldacBT
+	provides = ldacBT_enc.so
+	provides = ldacBT_abr.so
 	conflicts = libldac
 	source = git+https://github.com/EHfive/ldacBT.git
 	source = git+https://gitlab.com/eh5/libldac.git
