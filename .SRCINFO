@@ -10,6 +10,7 @@ pkgbase = ripgrep-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = asciidoc
+	depends = pcre2
 	provides = ripgrep
 	conflicts = ripgrep
 	source = ripgrep-git::git+https://github.com/BurntSushi/ripgrep
