@@ -1,6 +1,6 @@
 pkgbase = efitools-git
 	pkgdesc = UEFI secure boot toolkit
-	pkgver = v1.9.2.r0.392836a
+	pkgver = 1.9.2.r0.392836a
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git
 	arch = x86_64

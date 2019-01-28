@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=efitools-git
-pkgver=v1.9.2.r0.392836a
+pkgver=1.9.2.r0.392836a
 pkgrel=1
 pkgdesc='UEFI secure boot toolkit'
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
-	printf '%s' "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf '%s' "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
