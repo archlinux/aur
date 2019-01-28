@@ -1,8 +1,8 @@
 # Maintainer: Giusy Margarita <kurmikon at libero dot it>
 
 pkgname=korla-icon-theme
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.8.5
+pkgrel=1
 pkgdesc='Korla icon theme suitable for every desktop environment – made by bikass'
 arch=('any')
 url='https://github.com/bikass/korla'
@@ -12,7 +12,7 @@ optdepends=('hicolor-icon-theme: fallback Freedesktop.org Hicolor icon theme'
     'breeze-icons: fallback Breeze icon theme'
     'gnome-icon-theme: fallback Gnome icon theme')
 source=("https://github.com/bikass/korla/archive/v$pkgver.tar.gz")
-md5sums=('31bc55891ff74a6e085f586e6aaa2054')
+md5sums=('290ad27703ee4c2e50a717e8c2d4f9c8')
 
 package() {
     mkdir -p "$pkgdir/usr/share/icons/"
