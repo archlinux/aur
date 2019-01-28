@@ -12,7 +12,7 @@ makedepends=('cmake' 'ninja')
 depends=('python>=2.7')
 conflicts=('bear')
 provides=('bear')
-source=(https://github.com/rizsotto/$_pkgname/archive/$pkgver.tar.gz)
+source=(bear-$pkgver.tar.gz::https://github.com/rizsotto/$_pkgname/archive/$pkgver.tar.gz)
 md5sums=('879e8093b26ad903a3aa1a2a690e052e')
 
 prepare() {

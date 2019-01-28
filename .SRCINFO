@@ -7,11 +7,11 @@ pkgbase = bear
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = make
+	makedepends = ninja
 	depends = python>=2.7
 	provides = bear
 	conflicts = bear
-	source = https://github.com/rizsotto/Bear/archive/2.3.13.tar.gz
+	source = bear-2.3.13.tar.gz::https://github.com/rizsotto/Bear/archive/2.3.13.tar.gz
 	md5sums = 879e8093b26ad903a3aa1a2a690e052e
 
 pkgname = bear
