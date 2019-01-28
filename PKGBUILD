@@ -1,7 +1,8 @@
 # Maintainer : yaute <yaute74@gmail.com>
 
 pkgname=hattrick_organizer-git
-pkgver=1.436.0.795
+mainver=1.436
+pkgver=${mainver}.1.1027
 pkgrel=1
 pkgdesc="A manager assistent for the online football manager Hattrick "
 arch=(i686 x86_64)
@@ -9,9 +10,9 @@ url="https://github.com/akasolace/HO"
 license=(GPL)
 depends=(java-runtime)
 makedepends=(libarchive)
-source=(https://github.com/akasolace/HO/releases/download/dev/ho_$pkgver.deb)
+source=(https://github.com/akasolace/HO/releases/download/$mainver/HO_$pkgver.deb)
 
-md5sums=('8dd3b011e111b270b94a5a4c0549656c')
+md5sums=('d565529b0636216975c41b867c5187fc')
 
 package() {
 desktopfile=$pkgdir/usr/share/applications/ho.desktop
@@ -22,7 +23,7 @@ shellfile=$pkgdir/usr/bin/ho.sh
 shellfile_git=$pkgdir/usr/bin/ho-git.sh
 
 cd $srcdir
-bsdtar xf  ho_$pkgver.deb || return 1
+bsdtar xf  HO_$pkgver.deb || return 1
 bsdtar xf data.tar.gz -C $pkgdir || return 1
 sed -i "s|Name=HattrickOrganizer.*|Name=HattrickOrganizer beta ${pkgver}|" $desktopfile
 sed -i "s|/usr/lib/ho|/usr/lib/ho-git|" $desktopfile
