@@ -2,7 +2,7 @@
 # Maintainer: Joe Julian
 
 pkgname=mgmt
-pkgver=0.0.15
+pkgver=0.0.17
 pkgrel=2
 epoch=1
 pkgdesc='Next generation config management.'
