@@ -1,13 +1,13 @@
 # Maintainer: Davide Depau <davide@depau.eu>
 
 pkgname=networkmanager-wireguard-git
-pkgver=r54.fc454a8
+pkgver=r80.61646ad
 pkgrel=1
 pkgdesc='NetworkManager VPN plugin for WireGuard - git'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/max-moser/network-manager-wireguard/'
-depends=('networkmanager' 'nm-connection-editor' 'wireguard-dkms' 'wireguard-tools')
+depends=('networkmanager' 'nm-connection-editor' 'WIREGUARD-MODULE' 'wireguard-tools')
 makedepends=('git' 'intltool')
 provides=('networkmanager-wireguard')
 conflicts=('networkmanager-wireguard')
