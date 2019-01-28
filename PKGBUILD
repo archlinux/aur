@@ -3,7 +3,7 @@
 
 pkgname=ddate
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="PERPETUAL DATE CONVERTER FROM GREGORIAN TO POEE CALENDAR"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/bo0ts/ddate"
@@ -16,7 +16,7 @@ md5sums=('154ead3444d60806c97919b4f3d69e19')
 
 build() {
   cd $srcdir/ddate-${pkgver}/
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make PREFIX="/usr"
 }
 
