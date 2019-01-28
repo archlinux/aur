@@ -2,7 +2,7 @@
 # Contributor: pavanjadhaw <pavanjadhaw96@gmail.com>
 _pkgname=betterlockscreen
 pkgname=$_pkgname
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
