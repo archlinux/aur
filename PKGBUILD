@@ -2,7 +2,7 @@
 
 DLAGENTS=('https::/usr/bin/curl -A "Mozilla/4.0" -fLC - -o %o %u')
 pkgname=pycom-firmware-updater
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Pycom firmware updater for WiPy and LoPy IOT boards"
 url="https://www.pycom.io/"
@@ -13,16 +13,16 @@ optdepends=('python2-qscintilla-qt4: gui'
             'python2-pyserial: gui'
 	    'python2-setuptools: gui'
 	    'python2-requests: gui')
-source_x86_64=('https://software.pycom.io/downloads/pycom_firmware_update_1.15.0-amd64.tar.gz'
+source_x86_64=('https://software.pycom.io/downloads/pycom_firmware_update_1.15.1-amd64.tar.gz'
     	       'pycom-fwtool.desktop')
-source_i686=('https://software.pycom.io/downloads/pycom_firmware_update_1.15.0-i386.tar.gz'
+source_i686=('https://software.pycom.io/downloads/pycom_firmware_update_1.15.1-i386.tar.gz'
              'pycom-fwtool.desktop')
 
-md5sums_x86_64=('1ed70a132db954affa431351c70ba3f9'
+md5sums_x86_64=('01c5f506f2c2ca99a658d6faff665806'
                 'b9adb203ada3eb0ba6f1aaa0b74d609a')
-
-md5sums_i686=('4b91a0e06c9d3c7a86dc1dc065e754e4'
+md5sums_i686=('21332a3fe34d51ac7e37b17e7d3c98be'
               'b9adb203ada3eb0ba6f1aaa0b74d609a')
+
 
 prepare() {
   cd $srcdir
@@ -30,12 +30,12 @@ prepare() {
 }
  
 package() {
-  mkdir -p $pkgdir/usr/{share,bin}
-  cd $srcdir
-  cp -r * $pkgdir/usr/share
+  mkdir -p $pkgdir/usr/{share/pyupgrade,bin}
+  cd $srcdir/pyupgrade
+  cp -r * $pkgdir/usr/share/pyupgrade
   ln -s /usr/share/pyupgrade/pycom-fwtool $pkgdir/usr/bin/pycom-fwtool
   ln -s /usr/share/pyupgrade/pycom-fwtool-cli $pkgdir/usr/bin/pycom-fwtool-cli
   ln -s /usr/share/pyupgrade/pycom-update $pkgdir/usr/bin/pycom-update
-  install -Dm644 pycom-fwtool.desktop "$pkgdir"/usr/share/applications/pycom-fwtool.desktop
-  install -Dm644 $srcdir/pyupgrade/res/py.png $pkgdir/usr/share/pixmaps/pycom-fwtool.png
+  install -Dm644 "${srcdir}/pycom-fwtool.desktop" "${pkgdir}"/usr/share/applications/pycom-fwtool.desktop
+  install -Dm644 "${srcdir}/pyupgrade/res/py.png" "${pkgdir}/usr/share/pixmaps/pycom-fwtool.png"
 }
