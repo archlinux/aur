@@ -1,0 +1,43 @@
+--- src/tls.c.orig	2019-01-27 16:51:46.453334095 +0100
++++ src/tls.c	2019-01-27 16:50:38.150000769 +0100
+@@ -228,7 +228,16 @@
+     if ((where & SSL_CB_HANDSHAKE_START) != 0) {
+         if ((cnx == tls_cnx && tls_cnx_handshook != 0) ||
+             (cnx == tls_data_cnx && tls_data_cnx_handshook != 0)) {
+-            die(400, LOG_ERR, "TLS renegociation");
++            const SSL_CIPHER *cipher;
++            const char *cipher_version;
++            if ((cipher = SSL_get_current_cipher(cnx)) == NULL ||
++                (cipher_version = SSL_CIPHER_get_version(cipher)) == NULL) {
++                die(400, LOG_ERR, "No cipher");
++            }
++            if (strcmp(cipher_version, "TLSv1.3") != 0) {
++                die(400, LOG_ERR, "TLS renegociation");
++                return;
++            }
+         }
+         return;
+     }
+@@ -264,10 +273,10 @@
+     OpenSSL_add_all_algorithms();
+ # else
+     OPENSSL_init_ssl(OPENSSL_INIT_LOAD_SSL_STRINGS |
+-		     OPENSSL_INIT_LOAD_CRYPTO_STRINGS, NULL);
++                     OPENSSL_INIT_LOAD_CRYPTO_STRINGS, NULL);
+     OPENSSL_init_crypto(OPENSSL_INIT_ADD_ALL_CIPHERS |
+-			OPENSSL_INIT_ADD_ALL_DIGESTS |
+-			OPENSSL_INIT_LOAD_CONFIG, NULL);
++                        OPENSSL_INIT_ADD_ALL_DIGESTS |
++                        OPENSSL_INIT_LOAD_CONFIG, NULL);
+ # endif
+     while (RAND_status() == 0) {
+         rnd = zrand();
+@@ -288,7 +297,7 @@
+     SSL_CTX_set_options(tls_ctx, SSL_OP_NO_TLSv1);
+ # endif
+ # ifdef SSL_OP_NO_TLSv1_1
+-    SSL_CTX_clear_options(tls_ctx, SSL_OP_NO_TLSv1_1);
++    SSL_CTX_set_options(tls_ctx, SSL_OP_NO_TLSv1_1);
+ # endif
+ # ifdef SSL_OP_NO_TLSv1_2
+     SSL_CTX_clear_options(tls_ctx, SSL_OP_NO_TLSv1_2);

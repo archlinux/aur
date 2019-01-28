@@ -1,6 +1,6 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: kleph <kleph at kleph dot info>
 # Contributor: spapanik21
-# Contributor: kleph
 # Contributor: fila pruda.com
 # Contributor: tuxce <tuxce.net@gmail.com>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
@@ -9,26 +9,33 @@
 
 pkgname=pure-ftpd
 pkgver=1.0.47
-pkgrel=2
+pkgrel=3
 pkgdesc="A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use."
 arch=('i686' 'x86_64')
-url="http://www.pureftpd.org/"
+url="https://www.pureftpd.org/"
 license=('custom')
-depends=('openssl' 'libmariadbclient')
+depends=('openssl' 'mariadb-libs')
 conflicts=('pure-ftpd-db')
 backup=('etc/pure-ftpd/pure-ftpd.conf')
 install=pure-ftpd.install
-source=("http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-${pkgver}.tar.bz2"
+source=("https://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-${pkgver}.tar.bz2"
 	'pure-ftpd.service'
 	'pure-ftpd.logrotate'
 	'welcome.msg'
+	'tls1_3.patch'
 	'pure-ftpd.install' )
 
 md5sums=('a41fa531c0d21bd3416dd524d75495ae'
          '0d0845e17607ffb212eae0112c58e9ff'
          '37a45c88a0f038de37b4a87c6c447534'
          '7e91835f7e7975bd0536648fc99e5a22'
+         '85799b3cce0ca37b035269fef6939c2b'
          'c80cbd3ae1f9915f686f84149f6293e5')
+
+prepare() {
+	cd $pkgname-$pkgver
+	patch -Np0 -i "${srcdir}/tls1_3.patch"
+}
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
