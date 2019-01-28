@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.24.0
+pkgver=1.24.2
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -18,7 +18,7 @@ makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
 optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz")
-sha256sums=('a27bfe361a36271158a1bef7f25dae4803a93c38145a084258db398734235179')
+sha256sums=('aed6a35f8ae6045a0e4ebef95d54cbdc20a23f2f10fc078cc832a5898918084f')
 options=(!emptydirs !makeflags)
 
 prepare() {
@@ -94,6 +94,9 @@ ac_add_options --enable-startup-notification
 ac_add_options --disable-updater
 ac_add_options --disable-gconf
 END
+
+  cd "$srcdir/${_pkgname}-$pkgver"
+  sed -i 's|^./mach build$|xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build|' magic_build_and_package.sh
 }
 
 build() {
