@@ -2,7 +2,7 @@
 
 pkgname=orion-git
 pkgver=1.6.6.r18.gbaeaf01
-pkgrel=1
+pkgrel=2
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
 arch=('x86_64')
 url="https://github.com/alamminsalo/orion/"
