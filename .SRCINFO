@@ -1,0 +1,17 @@
+pkgbase = find-deleted-git
+	pkgdesc = Find deleted files which are still in use, and suggest systemd units to restart.
+	pkgver = r21.1b7f3d2
+	pkgrel = 1
+	url = https://github.com/FauxFaux/find-deleted
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-yaml
+	provides = find-deleted
+	conflicts = find-deleted
+	backup = etc/find-deleted/deleted.yml
+	source = find-deleted::git+https://github.com/FauxFaux/find-deleted
+	sha256sums = SKIP
+
+pkgname = find-deleted-git
+
