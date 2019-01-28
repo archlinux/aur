@@ -1,9 +1,8 @@
 pkgbase = efitools-git
-	pkgdesc = Tools for manipulating UEFI secure boot platforms (git version)
-	pkgver = 1.7.0.3.g791e463
+	pkgdesc = UEFI secure boot toolkit
+	pkgver = v1.9.2.r0.392836a
 	pkgrel = 1
-	url = http://blog.hansenpartnership.com/efitools-1-4-with-linux-key-manipulation-utilities-released/
-	install = efitools.install
+	url = https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1
@@ -13,13 +12,10 @@ pkgbase = efitools-git
 	makedepends = perl-file-slurp
 	makedepends = sbsigntools
 	depends = openssl
-	optdepends = mactel-boot: For bless command in Apple Mac systems
-	provides = efitools=1.7.0.3.g791e463
+	provides = efitools
 	conflicts = efitools
-	options = !strip
-	options = !makeflags
-	source = efitools::git+https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git#branch=master
-	sha1sums = SKIP
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git
+	sha512sums = SKIP
 
 pkgname = efitools-git
 
