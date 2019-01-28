@@ -13,7 +13,7 @@ groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
 #install=updatefont.install
 source=("Cantora_One.zip::https://fonts.google.com/download?family=Cantora%20One")
-md5sums=('4d93b79fe62c2a6aaf0e0f41b1e152e6')
+md5sums=('a33ba0f976aa77df3976e35830844fc0')
 
 package() {
   cd ${srcdir}
