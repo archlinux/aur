@@ -1,7 +1,7 @@
 # Maintainer: Boris Momčilović <boris.momcilovic@gmail.com>
 
 pkgname=php-componere-git
-pkgver=v2.1.2.r23.ge0c32ed
+pkgver=1.3.0.r142.gea20d97
 pkgrel=1
 pkgdesc="Complex Type Composition and Manipulation http://docs.php.net/intro.componere"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/krakjoe/componere"
 license=('PHP')
 depends=('php')
 makedepends=('git')
-source=(git://github.com/krakjoe/componere.git#branch=develop)
+source=("$pkgname"::'git://github.com/krakjoe/componere.git')
 md5sums=('SKIP')
 _ininame="componere.ini"
 _inifile="etc/php/conf.d/$_ininame"
