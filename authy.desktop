@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.7.0
+Type=Application
+Terminal=false
+Exec=/usr/bin/electron --app /usr/lib/authy/app.asar
+Name=Authy
+Comment=Two-Factor Authentication
+Icon=/usr/lib/authy/icon128.png
