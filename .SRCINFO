@@ -1,9 +1,8 @@
 pkgbase = interception-tools
 	pkgdesc = A minimal composable infrastructure on top of libudev and libevdev
 	pkgver = 0.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/interception/linux/tools
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
@@ -11,7 +10,7 @@ pkgbase = interception-tools
 	makedepends = gcc
 	depends = libevdev
 	depends = yaml-cpp
-	source = https://gitlab.com/interception/linux/tools/repository/archive.tar.gz?ref=v0.1.1
+	source = interception-tools.tar.gz::https://gitlab.com/interception/linux/tools/repository/archive.tar.gz?ref=v0.1.1
 	source = udevmon.service
 	md5sums = 033f4c3e81e4d7865314ad2873e3d158
 	md5sums = 45fca55908e2e6e61d83d9074347bcd4

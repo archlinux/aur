@@ -1,32 +1,29 @@
 # Maintainer: Francisco Lopes <francisco@oblita.com>
 pkgname=interception-tools
 pkgver=0.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A minimal composable infrastructure on top of libudev and libevdev'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL3')
 url='https://gitlab.com/interception/linux/tools'
 depends=('libevdev' 'yaml-cpp')
 makedepends=('boost' 'cmake' 'gcc')
-source=("https://gitlab.com/interception/linux/tools/repository/archive.tar.gz?ref=v${pkgver}"
+source=("$pkgname.tar.gz::https://gitlab.com/interception/linux/tools/repository/archive.tar.gz?ref=v${pkgver}"
         'udevmon.service')
 md5sums=('033f4c3e81e4d7865314ad2873e3d158'
          '45fca55908e2e6e61d83d9074347bcd4')
 
 build() {
     cd ${srcdir}/tools-v${pkgver}-*
-    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DCMAKE_BUILD_TYPE=Release
-    make
+    cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
 }
 
 package() {
-    cd ${srcdir}/tools-v${pkgver}-*
-
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -m 444 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}"
+    cd ${srcdir}/tools-v${pkgver}-*/build
 
     mkdir -p "${pkgdir}/usr/lib/systemd/system"
     install -m 644 "${srcdir}/udevmon.service" "${pkgdir}/usr/lib/systemd/system"
 
-    make install
+    make DESTDIR="$pkgdir/" install
 }
