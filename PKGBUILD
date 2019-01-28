@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GoogleContainerTools/${
         "build_info.patch")
 sha256sums=("6e397d7beb808a8e2f27e67606f3ffee1c29e696c281cee0ea1af0fae7cef9fc"
             "39b1e127a29979ef559e0a92cd721b23d6eac4251c703befd882b8667ac9789e")
-_commit="837e53b260a8fbc35765ed8b5f3c41de6a3242b1"
+_commit="a73671cb547a80d3437f78d046bc500269673ea3"
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
