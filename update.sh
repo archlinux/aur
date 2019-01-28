@@ -1,9 +1,19 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 set -e
 shopt -s nocasematch
-source '/usr/share/makepkg/util.sh'
-[[ -t 2 ]] && colorize
+
+if [[ -f '/usr/share/makepkg/util.sh' ]]; then
+    source '/usr/share/makepkg/util.sh'
+    [[ -t 2 ]] && colorize
+else
+    function msg() {
+        echo '=>' "$@"
+    }
+    function msg2() {
+        echo '   ' "$@"
+    }
+fi
 
 msg 'Query list of nightly sources'
 srcurl='http://nightlies.videolan.org/build/source/'
