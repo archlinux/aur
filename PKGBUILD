@@ -5,7 +5,7 @@ pkgdesc='Ledger Hardware Wallet management software'
 pkgbin=ledger-live-desktop
 license=('MIT')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 arch=('x86_64')
 package="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
@@ -16,7 +16,7 @@ options=(!strip)
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${package}"
 )
-sha512sums_x86_64=(0f1877ec1a74e48a143348d89d929b9860a5aa805414989af1c3d991ae8fa0cfd1042e8c4b52aa6e4dfb6f727b97b00114f6eda6ef8f1deb81007616bc4ab758)
+sha512sums_x86_64=(0c9a132c59504915570caca43c1c93abba7f96cbc49fcc65a2911c79aa944052e1b8bd6cdd1ce7afe04a49d6c64245375160e33ca6eb59682112c59667cf7778)
 
 prepare() {
 	gendesk -f -n \
@@ -36,7 +36,7 @@ package() {
 	mv -f "$srcdir/squashfs-root" "$srcdir/$pkgbin"
 
 	# Install Icon
-	install -Dm644 "$srcdir/$pkgbin/usr/share/icons/hicolor/0x0/apps/ledger-live-desktop.png" "$pkgdir/usr/share/pixmaps/$pkgbin.png"
+	install -Dm644 "$srcdir/$pkgbin/usr/share/icons/hicolor/1024x1024/apps/ledger-live-desktop.png" "$pkgdir/usr/share/pixmaps/$pkgbin.png"
 
 	install -d "$pkgdir/opt/$pkgbin"
 	cp -a "$srcdir/$pkgbin/." "$pkgdir/opt/$pkgbin/"
