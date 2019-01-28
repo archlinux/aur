@@ -25,10 +25,10 @@ pkgbase = matlab-r2018a
 	optdepends = gcc6: For MEX support
 	source = local://matlab-r2018a.tar
 	source = local://matlab-r2018a.fik
-	source = matlab-r2018a.png::https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png
+	source = local://matlab-r2018a.png
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = cf28632239db6e02bc09bcca6bf5360f
+	md5sums = c4b8718ec521feb81c21f7bf88bdfa5f
 
 pkgname = matlab-r2018a
 

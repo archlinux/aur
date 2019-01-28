@@ -43,7 +43,7 @@ depends=("gconf"
 optdepends=("gcc6: For MEX support")
 source=("local://${pkgname}.tar"
         "local://${pkgname}.fik"
-        "${pkgname}.png")
+        "local://${pkgname}.png")
 md5sums=("SKIP"
          "SKIP"
          "c4b8718ec521feb81c21f7bf88bdfa5f")
