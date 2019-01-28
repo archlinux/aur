@@ -3,19 +3,19 @@
 
 pkgbase=kata-containers
 pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
-pkgver="1.2.0"
+pkgver="1.5.0"
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers"
 arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
 
-__runtime_suffix="+git.0bcb32f-47.1"
-__proxy_suffix="+git.1796218-32.1"
-__shim_suffix="+git.0a37760-33.1"
-__ksm_throttler_suffix=".git+f232434-32.1"
-__img_suffix="-32.1"
-__linux_container_ver="4.14.51.10-135.1"
+__runtime_suffix="+git.5f7fcd7-24.1"
+__proxy_suffix="+git.9e77a0b-16.1"
+__shim_suffix="+git.efbf3bb-14.1"
+__ksm_throttler_suffix=".git+3dd4c9f-18.1"
+__img_suffix="-15.1"
+__linux_container_ver="4.14.67.22-18.1"
 
 __runtime_rpm="kata-runtime-${pkgver}${__runtime_suffix}.x86_64.rpm"
 __proxy_bin_rpm="kata-proxy-bin-${pkgver}${__proxy_suffix}.x86_64.rpm"
@@ -24,7 +24,7 @@ __ksm_throttler_rpm="kata-ksm-throttler-${pkgver}${__ksm_throttler_suffix}.x86_6
 __img_rpm="kata-containers-image-${pkgver}${__img_suffix}.x86_64.rpm"
 __linux_container_rpm="kata-linux-container-${__linux_container_ver}.x86_64.rpm"
 
-__dlbase="https://downloadcontent.opensuse.org/repositories/home:/katacontainers:/release/Fedora_28/x86_64"
+__dlbase="http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/master/Fedora_29/x86_64/"
 __runtime_src="${__dlbase}/${__runtime_rpm}"
 __proxy_bin_src="${__dlbase}/${__proxy_bin_rpm}"
 __shim_bin_src="${__dlbase}/${__shim_bin_rpm}"
@@ -49,12 +49,12 @@ noextract=(
   $__linux_container_rpm
 )
 
-sha256sums=('e4632dc1fc2ea16a2895ed270cfed38f74424ed73e1b41f92a1a9318e434a289'
-            'd1320b35bf9f5c52563c7403ae5a7d82147eaa10ee1e7497a44af4f7a0c49de1'
-            '12a1eb1423f41a5ff73cc70d7f3bdf7d3add85f1ab14c2ce987e4eb2bae8bd59'
-            '2adbeb3b473d6310dfcff8b01195f8cf24c5d8f56fd349204b9e2438b7e479fb'
-            'de8291257f75d9cfba0aaa169926203eb7a7d8797a3fb7688f3113834174d004'
-            '8b30235d655d487c14ff0130ee845a22221f53901f348becb9522903c5cf0c8a')
+sha256sums=('4748f684761796baaca983d8cd70c93652af27d5f477b78e8c23b2e9df051f0e'
+            '7e4d96b98d95e075c529730b9fe2c9f8d1244d1b7c6b81a239710c8dd3569daa'
+            '2e3d4295dcae7fc608b1dbfa4455002c25ced799f54763a6724890ffd7b67038'
+            'e7899a9683d38c0e633accaf27d1447352e43d0e42fec156b0c49e9bcc3e527a'
+            'd414636f56ea41f2df4ce10c21d08e9186731606169b832743b1ed8b365a4676'
+            '743ff71bea107282fd778819c090f2f540df311ba4bcb120e8415771272401d7')
 
 __extract_into_dir() {
   archive=$1
@@ -108,11 +108,11 @@ package_kata-shim() {
 package_kata-ksm-throttler() {
   pushd $srcdir/kata-ksm-throttler-${pkgver}
   install -D -m 0644 {,$pkgdir/}usr/lib/systemd/system/kata-ksm-throttler.service
-  install -D -m 0644 {,$pkgdir/}usr/lib/systemd/system/vc-throttler.service
+  install -D -m 0644 {,$pkgdir/}usr/lib/systemd/system/kata-vc-throttler.service
   install -D -m 0755 usr/libexec/kata-ksm-throttler/kata-ksm-throttler $pkgdir/usr/lib/kata-ksm-throttler/kata-ksm-throttler
   install -D -m 0755 usr/libexec/kata-ksm-throttler/trigger/virtcontainers/vc $pkgdir/usr/lib/kata-ksm-throttler/trigger/virtcontainers/vc
 
-  sed -i 's/libexec/lib/' $pkgdir/usr/lib/systemd/system/kata-ksm-throttler.service $pkgdir/usr/lib/systemd/system/vc-throttler.service
+  sed -i 's/libexec/lib/' $pkgdir/usr/lib/systemd/system/kata-ksm-throttler.service $pkgdir/usr/lib/systemd/system/kata-vc-throttler.service
   popd
 }
 
