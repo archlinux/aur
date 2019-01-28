@@ -1,13 +1,13 @@
 # Maintainer: archlinux@carstenfeuls.de
 
 pkgname=kde-services
-pkgver="3.0.2"
-pkgrel=1
+pkgver=3.0.2
+pkgrel=2
 pkgdesc="kde-service multifunction"
 arch=('any')
 url="https://opendesktop.org/content/show.php/kde-services?content=147065"
 license=('GPL')
-depends=('kdebase-runtime' 'dmidecode' 'festival' 'poppler' 'ffmpeg' 'transcode' 'ghostscript' 'fuse' 'cdrkit' 'diffutils' 'fuseiso' 'youtube-dl')
+depends=('kdebase-runtime' 'dmidecode' 'festival' 'poppler' 'ffmpeg' 'transcode' 'ghostscript' 'fuse' 'cdrkit' 'diffutils' 'fuseiso' 'youtube-dl' 'polkit-qt4')
 source=("http://downloads.sourceforge.net/project/kde-services/Source-Code/$pkgname-$pkgver.tar.bz2" 
 	"System-Tools_addtoservicemenu.desktop")
 install=${pkgname}.install
