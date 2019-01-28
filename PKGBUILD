@@ -1,7 +1,7 @@
 # Maintainer: Boris Momčilović <boris.momcilovic@gmail.com>
 
 pkgname=php-componere-git
-pkgver=1.3.0.r142.gea20d97
+pkgver=1.3.0.r153.g4383099
 pkgrel=1
 pkgdesc="Complex Type Composition and Manipulation http://docs.php.net/intro.componere"
 arch=('i686' 'x86_64')
@@ -18,14 +18,14 @@ backup=("$_inifile")
 pkgver() {
   cd "$pkgname"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git checkout develop -q | git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  git checkout release
+  git checkout develop
 
   phpize
   ./configure --prefix=/usr
