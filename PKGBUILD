@@ -2,7 +2,7 @@
 # Contributor: Tom Bebbington <tophattedcoder@gmail.com> 
 
 pkgname=haxe-git
-pkgver=16779
+pkgver=git
 pkgrel=1
 pkgdesc="An open-source high-level multiplatform programming language and compiler that can produce applications and source code for many different platforms from a single code-base"
 arch=('i686' 'x86_64')
