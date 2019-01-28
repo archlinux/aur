@@ -1,7 +1,7 @@
 pkgbase = python-fafclient
 	pkgdesc = Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance.
 	pkgver = 0.18.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://www.faforever.com/
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = python-fafclient
 	depends = qt5-webengine
 	depends = qt5-multimedia
 	depends = python-jinja
+	depends = python-sip
 	replaces = python2-fafclient
 	source = git+https://github.com/FAForever/client.git#branch=stable/0.18
 	source = FAForeverPy37.desktop
