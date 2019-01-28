@@ -1,0 +1,7 @@
+pkg
+src
+airnef_*.zip
+python-airnef-*.pkg.tar.xz
+python2-airnef-*.pkg.tar.xz
+python-airnef-*.src.tar.gz
+.AURINFO
