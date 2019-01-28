@@ -1,6 +1,6 @@
 pkgbase = fsleyes-widgets
 	pkgdesc = FSLeyes is the FSL image viewer, widgets is one of its dependent projects
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = fsleyes-widgets
 	makedepends = python-wxpython>=4.0.1-2
 	makedepends = python-deprecation
 	depends = python
-	source = fsleyes-widgets-0.7.2.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/widgets/repository/archive.tar.gz?ref=0.7.2
-	sha256sums = 1baca74720e7dc6ac6c9a58a30772c11c722dbf828a0026341b0a020cce35c18
+	source = fsleyes-widgets-0.7.3.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fsleyes/widgets/repository/archive.tar.gz?ref=0.7.3
+	sha256sums = 7395c4deed048c26c5ceaf6a3e7ee9b0bd3a2303466e3bafb5b2097fe89f9910
 
 pkgname = fsleyes-widgets
 
