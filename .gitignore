@@ -1,0 +1,5 @@
+/libnsq
+/src
+/pkg
+
+*.tar.xz
