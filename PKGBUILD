@@ -22,6 +22,7 @@ prepare () {
   patch -p2 -i "${srcdir}"/debian/patches/kfreebsd-build-fixes.patch
   patch -p2 -i "${srcdir}"/debian/patches/build-flags.patch
   autoreconf
+  CFLAGS="-DALLEGRO_NO_FIX_ALIASES $CFLAGS"
   sh ./configure
   chmod a+x misc/*.sh
   popd
