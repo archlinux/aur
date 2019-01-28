@@ -1,5 +1,4 @@
-*.zip
-*.tar.xz
-LICENSE
-src/
-pkg/
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
