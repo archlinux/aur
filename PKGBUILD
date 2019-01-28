@@ -1,6 +1,6 @@
 # Maintainer: Robin Krahl <robin.krahl@ireas.org>
 pkgname=nitrocli
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Command-line interface for Nitrokey devices"
 arch=('x86_64')
@@ -8,17 +8,22 @@ url="https://github.com/d-e-s-o/nitrocli"
 license=('GPL3')
 depends=('libnitrokey>=3.4.1' 'gnupg')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz"::https://github.com/d-e-s-o/nitrocli/archive/v${pkgver}.tar.gz "use-system-library.patch")
-sha512sums=('3304591001675e3fff3bdf43fb464739308e498e66362b49704c29a8b71104176c6c2401b75a78e951f32007464f13174a9736c7fb90bc89108c38b2f7afcb24'
-            'c4fb3e9db2c599bce900047289a1a9791263d334440af72ed79ba14d3356bfcea9a1356b97bc124fd278735f31d70489625ee06bd77f3700b115505ae5f505f8')
+source=("$pkgname-$pkgver.tar.gz"::https://github.com/d-e-s-o/nitrocli/archive/v${pkgver}.tar.gz)
+sha512sums=('b777fb634961f9c7c677f78743176df32a170da5793c53c8c46f8ff9f62fa51e616ac12b5b589f3531285d194996b130b313d77c02762c2aa97c7919b7b2e0de')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/use-system-library.patch"
+	# Configure cargo not to put the srcdir in the binary
+	mkdir -p .cargo
+	cat <<EOF > .cargo/config
+[build]
+rustflags = ["--remap-path-prefix", "$srcdir=/usr/share/cargo/registry/$pkgname"]
+EOF
 }
 
 build() {
 	cd "$pkgname-$pkgver/nitrocli"
+	export USE_SYSTEM_LIBNITROKEY=1
 	cargo build --release --frozen
 }
 
