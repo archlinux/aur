@@ -43,10 +43,10 @@ depends=("gconf"
 optdepends=("gcc6: For MEX support")
 source=("local://${pkgname}.tar"
         "local://${pkgname}.fik"
-        "${pkgname}.png::https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png")
+        "${pkgname}.png")
 md5sums=("SKIP"
          "SKIP"
-         "cf28632239db6e02bc09bcca6bf5360f")
+         "c4b8718ec521feb81c21f7bf88bdfa5f")
 
 _instdir="/opt/${pkgname}"
 
