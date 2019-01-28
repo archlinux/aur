@@ -1,0 +1,6 @@
+/mongodb-bin-*
+/mongodb-linux-*
+/src/
+/pkg/
+pkg/
+src/
