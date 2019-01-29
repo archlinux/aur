@@ -1,71 +1,38 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 # Contributor: xduugu
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
 
 _author=A/AE/AEPAGE
 _perlmod=Devel-ptkdb
 pkgname=perl-devel-ptkdb
-pkgver=1.1091
-pkgrel=4
+pkgver=1.234
+pkgrel=1
 pkgdesc="Devel::ptkdb - Perl debugger using a Tk GUI"
 arch=('any')
-url="http://search.cpan.org/dist/Devel-ptkdb"
+# url="http://search.cpan.org/dist/Devel-ptkdb"
+url="https://sourceforge.net/projects/ptkdb/files/ptkdb/"
 license=('GPL' 'PerlArtistic')
-groups=()
 depends=(perl-tk)
 makedepends=()
 optdepends=()
 provides=()
 conflicts=()
-replaces=()
-backup=()
 options=(!emptydirs)
-install=
-source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-noextract=()
+# source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/project/ptkdb/ptkdb/$pkgver/Devel-ptkdb-$pkgver.tar.gz")
+sha256sums=('d2a09ec4858d6621b4381cda29c04180f5cc6f4cd6d8b881e73dfad5e2ff801b')
+unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
-  
-  # Setting these env variables overwrites any command-line-options we don't want...
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    /usr/bin/perl Makefile.PL
-    make
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    /usr/bin/perl Build.PL
-    perl Build
-  fi
+  perl Makefile.PL
+  make
 }
 check(){
   cd "$srcdir"/$_perlmod-$pkgver
-
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    make test
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build test
-  fi
+  perl test.pl
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-  
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    make install
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build install
-  fi
-
-  # remove perllocal.pod and .packlist
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-md5sums=('50675b617d0d3c31e5b219d0fc08dce3')
