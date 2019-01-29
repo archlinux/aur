@@ -2,7 +2,7 @@
 
 pkgname=miniflux
 pkgver=2.0.14
-pkgrel=2
+pkgrel=3
 pkgdesc='Minimalist Feed Reader'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://miniflux.app'
@@ -33,9 +33,9 @@ case "$CARCH" in
   x86_64) _target=amd64 ;;
   i686) _target=x86 ;;
   arm) _target=arm5 ;;
-  armv6h) _target=arm6 ;;
-  armv7h) _target=arm7 ;;
-  aarch64) _target=arm8 ;;
+  armv6h) _target=armv6 ;;
+  armv7h) _target=armv7 ;;
+  aarch64) _target=armv8 ;;
   *) return 1 ;;
 esac
 
