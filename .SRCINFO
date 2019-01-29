@@ -1,0 +1,26 @@
+pkgbase = uap-cpp-git
+	pkgdesc = C++ implementation of ua-parser
+	pkgver = r71.87fe432
+	pkgrel = 1
+	url = https://github.com/ua-parser/uap-cpp
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = boost
+	depends = yaml-cpp
+	depends = boost-libs
+	depends = uap-core
+	provides = uap-cpp
+	conflicts = uap-cpp
+	source = git+https://github.com/ua-parser/uap-cpp.git
+	source = cxxflags.patch
+	sha256sums = SKIP
+	sha256sums = aad58cf62a9fea7276b452d99954d86896e096749911efae431edb7bc96f672a
+
+pkgname = uap-cpp-git
+
