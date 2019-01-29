@@ -1,0 +1,12 @@
+pkgbase = mustache
+	pkgdesc = Mustache implementation for modern C++
+	pkgver = 4.0b2
+	pkgrel = 1
+	url = https://github.com/kainjow/Mustache
+	arch = any
+	license = Boost
+	source = https://github.com/kainjow/Mustache/archive/v4.0b2.tar.gz
+	sha256sums = ba7f02a4a3c4559821a13d7566d224c66806b370c82a5a5cf80be5b339fd32d4
+
+pkgname = mustache
+
