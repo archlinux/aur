@@ -1,0 +1,16 @@
+pkgbase = ultimatetapankaikki
+	pkgdesc = Classic 90s shoot-em-up game
+	pkgver = 3.21+sp1
+	pkgrel = 1
+	url = https://github.com/suomipelit/ultimatetapankaikki
+	arch = x86_64
+	license = GPL
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_net
+	source = https://github.com/suomipelit/ultimatetapankaikki/archive/v1.tar.gz
+	md5sums = 13ada798dd70d55c09b440aa68c68a2e
+
+pkgname = ultimatetapankaikki
+
