@@ -2,7 +2,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 pkgname=thelounge
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern self-hosted web IRC client'
 url='https://thelounge.chat/'
 arch=('any')
@@ -20,7 +20,7 @@ source=(
 noextract=("$pkgname-$pkgver.tgz")
 sha256sums=('33786d3f8f8c4906da8cf484642d63d678561a40ed0d0628d0f34bcb5b6f124e'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
-            '055f7e05e9e2528474526ceea864502112e27024c89c997b26ddace86c24dbc6'
+            'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
             '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
             '4060efc92346c7193e699ffe1b802d85dc45daa7b5260ecdf70a6b993c30b01a')
 
