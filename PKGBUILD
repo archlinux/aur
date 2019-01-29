@@ -4,7 +4,7 @@ pkgname=superproductivity
 _pkgname=superProductivity
 _reponame=super-productivity
 _binname=superproductivity
-pkgver=1.999.1000
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='To Do List / Time Tracker with Jira Integration.'
 arch=('x86_64')
@@ -12,9 +12,9 @@ url="http://super-productivity.com/"
 license=('MIT')
 depends=('gtk2' 'libxss' 'gconf' 'nss' 'nspr' 'libnotify' 'libappindicator'
 'libxtst' 'alsa-lib' 'xprintidle')
-makedepends=('npm' 'gulp' 'libicns' 'python3')
+makedepends=('npm' 'gulp' 'yarn' 'libicns' 'python3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johannesjo/super-productivity/archive/v${pkgver}.tar.gz")
-md5sums=('3c8cf6486b364335990365725fd61120')
+md5sums=('0f81ee3baad0cbf87dc6e93a68d6ce9a')
 
 build() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
@@ -44,5 +44,5 @@ package() {
 		install -Dm644 "usr/share/icons/hicolor/${size}/apps/${_binname}.png" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${_binname}.png"
     	done
 
-	install -Dm644 "${srcdir}/${_reponame}-${pkgver}/LICENCE" "${pkgdir}/usr/share/licenses/${_binname}/LICENSE"
+	install -Dm644 "${srcdir}/${_reponame}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${_binname}/LICENSE"
 }
