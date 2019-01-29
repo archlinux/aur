@@ -2,13 +2,13 @@
 # Contributor:
 
 pkgname=znapzupport
-pkgver=0.0.13
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Collection of CLI helpers for ZnapZend'
 arch=('any')
 url='https://github.com/claui/znapzupport'
 license=('custom:ISC')
-depends=('bash' 'coreutils' 'sudo' 'zfs')
+depends=('bash' 'coreutils' 'procmail' 'sudo' 'zfs')
 optdepends=('znapzend')
 options=('!strip')
 
@@ -17,7 +17,7 @@ source=(
 )
 
 sha512sums=(
-  '2fbf81631907e216d4b8292c1b02f0207de5c16b8cf0bd6ce57be670294b995f070818c341b54ba8344755da0d7196b1f183d21cf88d4bc9838c321d04b453ff'
+  '62479379efe76f99faab51ebfab67cc0f3c3639d8f3dd6e6020796bb5adaf8b7f2083c06dd2757051df65debc7eff4125d4b6fa0d41255ef3309080ea5938607'
 )
 
 noextract=("${pkgname}-${pkgver}.tar.gz")
