@@ -12,7 +12,7 @@ provides=(xxd)
 conflicts=(xxd)
 depends=(glibc)
 source=("xxd-${pkgver}.c::https://raw.githubusercontent.com/vim/vim/v${pkgver}/src/xxd/xxd.c"
-        "https://raw.githubusercontent.com/vim/vim/v${pkgver}/runtime/doc/xxd.1"
+        "xxd-${pkgver}.1::https://raw.githubusercontent.com/vim/vim/v${pkgver}/runtime/doc/xxd.1"
         "$pkgname-Makefile::https://raw.githubusercontent.com/vim/vim/master/src/xxd/Makefile"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/xxd-LICENSE")
 md5sums=('304e675b808e350c63f412a145eb3e68'
@@ -31,6 +31,6 @@ build() {
 
 package() {
   install -Dm755 xxd "${pkgdir}/usr/bin/xxd"
-  install -Dm644 xxd.1 "${pkgdir}/usr/share/man/man1/xxd.1"
+  install -Dm644 xxd-${pkgver}.1 "${pkgdir}/usr/share/man/man1/xxd.1"
   install -Dm644 xxd-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
