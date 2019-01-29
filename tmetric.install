@@ -1,7 +1,5 @@
+# Post-installation tasks
 post_install() {
-	cp /usr/share/applications/tmetricdesktop.desktop /etc/xdg/autostart/tmetricdesktop.desktop
-}
-
-post_upgrade() {
-	post_install
+	# Start application on login
+	ln -s -t /etc/xdg/autostart/ /usr/share/applications/tmetricdesktop.desktop
 }
