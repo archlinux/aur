@@ -3,7 +3,7 @@
 _pkgname=system76
 _pkgbase=system76-power
 pkgname=system76-power
-pkgver=113
+pkgver=135
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('rust')
 source=(
-  'system76::git+https://github.com/pop-os/system76-power.git#commit=821cc2374a7eff0a06213cd9dc7a2cef1cb9e281'
+  'system76::git+https://github.com/pop-os/system76-power.git#commit=d861dfd6553e68d214d9cbade99b334e347d0d16'
   'graphics.patch'
   )
 sha1sums=(
