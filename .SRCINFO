@@ -1,33 +1,34 @@
 pkgbase = gamehub-git
-	pkgdesc = All your games in one place. Games manager/downloader/library written in Vala designed for Pantheon Shell. Supports GOG, Steam and Humble Bundle
-	pkgver = r275.a242568
+	pkgdesc = Games manager, downloader, library that supports GOG, Steam and Humble Bundle. Designed for Pantheon Shell
+	pkgver = 0.13.1.1.master.r0.g1f713f3
 	pkgrel = 1
 	url = https://github.com/tkashkin/GameHub
 	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = vala
+	depends = libgranite.so
 	depends = gtk3
-	depends = vala
-	depends = granite
-	depends = file-roller
 	depends = glib2
-	depends = libmanette
 	depends = libgee
 	depends = libsoup
-	depends = libxtst
-	depends = libxml2
-	depends = libx11
 	depends = json-glib
 	depends = sqlite
 	depends = webkit2gtk
-	optdepends = lib32-json-glib
+	depends = libmanette
+	depends = libxtst
 	provides = gamehub
 	conflicts = gamehub
-	source = git+https://github.com/tkashkin/GameHub.git#branch=dev
-	md5sums = SKIP
+	options = !strip
+	options = debug
+	source = git+https://github.com/tkashkin/GameHub.git
+	sha256sums = SKIP
 
 pkgname = gamehub-git
 

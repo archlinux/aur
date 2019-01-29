@@ -1,45 +1,37 @@
-# Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
-# Contributor: 
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Maintainer: tkashkin
+# Maintainer: neuromancer
+# Contributor: friday (github)
+# Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
-_author=tkashkin
-_gitname=GameHub
-_auxname=gamehub
-pkgname=("${_auxname}-git")
-pkgver=r344.1537eed
+pkgname=gamehub-git
+pkgver=0.13.1.1.master.r0.g1f713f3
 pkgrel=1
-pkgdesc="All your games in one place. Games manager/downloader/library written in Vala designed for Pantheon Shell. Supports GOG, Steam and Humble Bundle"
-arch=('i686' 'x86_64')
-url="https://github.com/${_author}/${_gitname}"
-license=('GPL3')
-depends=('gtk3' 'vala' 'granite'
-         'file-roller' 'glib2' 'libmanette' 'libgee' 'libsoup' 'libxtst' 
-         'libxml2' 'libx11' 'json-glib' 'sqlite' 'webkit2gtk')
-optdepends=('lib32-json-glib')
-makedepends=('git' 'meson' 'ninja')
-provides=("${_auxname}")
-conflicts=("${_auxname}")
-source=("git+${url}.git#branch=dev")
-md5sums=('SKIP')
+pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle. Designed for Pantheon Shell"
+arch=(i686 x86_64 armv6h armv7h aarch64)
+url="https://github.com/tkashkin/GameHub"
+license=(GPL3)
+depends=(libgranite.so gtk3 glib2 libgee libsoup json-glib sqlite webkit2gtk libmanette libxtst)
+makedepends=(git meson ninja vala)
+provides=(gamehub)
+conflicts=(gamehub)
+options=(!strip debug)
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${_gitname}"
-    ( set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+  cd "GameHub"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${_gitname}/"
-    meson . _build --prefix=/usr --buildtype=debug -Ddistro=arch
-    unset CFLAGS
-	unset CXXFLAGS
-	unset CPPFLAGS
-    ninja -C _build
+  cd "GameHub"
+  CFLAGS="$CFLAGS -O0" meson . build --prefix=/usr -Ddistro=arch --buildtype=debug
+  ninja -C build
 }
 
 package() {
-    cd "${_gitname}/"
-    DESTDIR="${pkgdir}" ninja -C _build install
+  cd "GameHub"
+  DESTDIR="${pkgdir}" ninja -C build install
+  ln -s /usr/bin/com.github.tkashkin.gamehub "$pkgdir/usr/bin/gamehub"
 }
-
