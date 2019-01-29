@@ -2,14 +2,14 @@
 # Maintainer: Martchus <martchus@gmx.net>
 
 pkgname=nginx-mod-dav-ext
-pkgver=0.1.0
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 _dirname="nginx-dav-ext-module-$pkgver"
 _nginxver=1.14.2
 
 pkgdesc='NGINX WebDAV missing commands support'
 arch=('x86_64')
-depends=("nginx=$_nginxver" "libutil-linux")
+depends=("nginx=$_nginxver" 'libutil-linux' 'libxslt')
 url='http://nginx-rtmp.blogspot.de'
 license=('BSD')
 
@@ -18,9 +18,9 @@ source=(
   "$pkgname-$pkgver::https://github.com/arut/nginx-dav-ext-module/archive/v${pkgver}.tar.gz"
 )
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
-sha256sums=('5d15becbf69aba1fe33f8d416d97edd95ea8919ea9ac519eff9bafebb6022cb5'
+sha256sums=('002d9f6154e331886a2dd4e6065863c9c1cf8291ae97a1255308572c02be9797'
             'SKIP'
-            '6b004eed8ea16ad8de4d304027bf0413cc323a95914e58625a7dc066481aae3a')
+            'd2499d94d82d4e4eac8425d799e52883131ae86a956524040ff2fd230ef9f859')
 
 prepare() {
   cd "$srcdir/$_dirname"
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd "$srcdir"/nginx-$_nginxver
-  ./configure --with-compat --add-dynamic-module="../$_dirname"
+  ./configure --with-compat --with-http_dav_module --add-dynamic-module="../$_dirname"
   make modules
 }
 
