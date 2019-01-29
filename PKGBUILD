@@ -12,7 +12,7 @@ checkdepends=('python-pytest')
 optdepends=()
 makedepends=('cmake' 'cython')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
-sha256sums=('1fb3be75c9fd4afb144360c786bc1ffe77aa4328550eaab107771b4f5f10d444')
+sha256sums=('e2eb87a68d200df5ff405fd7e0ab3d0549ccd5275f3a698439bb202918a000a8')
 
 build(){
   cd "$srcdir/arrow-apache-arrow-$pkgver/python"
