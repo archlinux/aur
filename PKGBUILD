@@ -1,12 +1,11 @@
-# $Id$
 # Maintainer:  James Kolb <jck1089@gmail.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=readline-athame-git
-_basever=7.0
-_patchlevel=003
+_basever=8.0
+_patchlevel=0
 pkgver=${_basever}.${_patchlevel}
 pkgrel=1
 pkgdesc='Readline with Athame(provides full Vim mode)'
@@ -68,12 +67,6 @@ package() {
 
 md5sums=('SKIP'
          'SKIP'
-         '205b03a87fc83dab653b628c59b9fc91'
+         '7e6c1f16aee3244a69aba6e438295ca3'
          'SKIP'
-         '58d54966c1191db45973cb3191ac621a'
-         'e299384458a4cbefaaac3f30e9cc2bba'
-         'SKIP'
-         'f9071a353e2fd52a91d32667b23715d6'
-         'SKIP'
-         '03595464cf0283286a6e07f4f01c4a70'
-         'SKIP')
+         '58d54966c1191db45973cb3191ac621a')
