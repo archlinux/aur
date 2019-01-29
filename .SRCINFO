@@ -1,6 +1,6 @@
 pkgbase = git-standup
 	pkgdesc = Recall what you did on the last working day
-	pkgver = 2.1.9
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/kamranahmedse/git-standup
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = git-standup
 	depends = bash
 	provides = git-standup
 	conflicts = git-standup-git
-	source = git-standup-2.1.9.tar.gz::https://github.com/kamranahmedse/git-standup/archive/2.1.9.tar.gz
-	md5sums = 3da6991b87e0284e5364a6a1924db90d
+	source = git-standup-2.3.1.tar.gz::https://github.com/kamranahmedse/git-standup/archive/2.3.1.tar.gz
+	md5sums = d5862e2922fa4562e388746a318525e2
 
 pkgname = git-standup
 
