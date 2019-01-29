@@ -3,7 +3,7 @@
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-mac
-pkgver=2017.4.18f1
+pkgver=2017.4.19f1
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Mac platform"
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-lts')
 makedepends=('cpio')
-source=("2017.4.18f1.4.18f1.pkg::https://download.unity3d.com/download_unity/a9236f402e28/MacEditorTargetInstaller/UnitySetup-Mac-Support-for-Editor-2017.4.18f1.pkg")
-md5sums=("5e82d50161c818f5aa6a976d5e864411")
+source=("2017.4.19f1.4.19f1.pkg::https://download.unity3d.com/download_unity/47cd37c28be8/MacEditorTargetInstaller/UnitySetup-Mac-Support-for-Editor-2017.4.19f1.pkg")
+md5sums=("f7eff25fe9f5586d0c3e6d55f5a4f17e")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
