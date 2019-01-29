@@ -2,7 +2,7 @@
 _pkgbasename=pipman
 pkgname=$_pkgbasename-git
 pkgrel=1
-pkgver=1.0.r1.gcf58fe5
+pkgver=1.1.r0.g2a4c138
 pkgdesc="Generate PKGBUILD from pip packages"
 arch=('any')
 url="http://github.com/sollidsnake/pipman"
