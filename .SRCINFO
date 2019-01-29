@@ -1,6 +1,6 @@
 pkgbase = cmus-git
 	pkgdesc = A very feature-rich ncurses-based music player
-	pkgver = v2.8.0.rc0.r92.ge7682e4
+	pkgver = v2.8.0.r0.g65d36d5
 	pkgrel = 1
 	url = https://cmus.github.io/
 	arch = i686
