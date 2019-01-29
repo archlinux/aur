@@ -1,6 +1,6 @@
 pkgbase = linx-server
 	pkgdesc = Self-hosted file/code/media sharing website
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/andreimarcu/linx-server
 	install = linx-server.install
@@ -15,12 +15,12 @@ pkgbase = linx-server
 	source = config.ini
 	md5sums = ff2e46fa6491fb58f24294e037092799
 	md5sums = 8c2fe5caef5e0477d0da15cc0d947337
-	source_i686 = linx-server::https://github.com/andreimarcu/linx-server/releases/download/v2.1.1/linx-server-v2.1.1_linux-386
-	md5sums_i686 = 06394211e4e735f72bd35c22a73b6979
-	source_x86_64 = linx-server::https://github.com/andreimarcu/linx-server/releases/download/v2.1.1/linx-server-v2.1.1_linux-amd64
-	md5sums_x86_64 = da629add192ce2781ca3a0aabe119eb7
-	source_arm = linx-server::https://github.com/andreimarcu/linx-server/releases/download/v2.1.1/linx-server-v2.1.1_linux-arm
-	md5sums_arm = ee67ccd9f614563a3c735ce4717ad453
+	source_i686 = linx-server::https://github.com/andreimarcu/linx-server/releases/download/v2.1.2/linx-server-v2.1.2_linux-386
+	md5sums_i686 = 1337b00b980cb021e65d5b92d2716f2a
+	source_x86_64 = linx-server::https://github.com/andreimarcu/linx-server/releases/download/v2.1.2/linx-server-v2.1.2_linux-amd64
+	md5sums_x86_64 = 5305cbb97a034c58c9d7b1baec553320
+	source_arm = linx-server::https://github.com/andreimarcu/linx-server/releases/download/v2.1.2/linx-server-v2.1.2_linux-arm
+	md5sums_arm = 2177ada9b614b7953f2ad05a70dbdd7a
 
 pkgname = linx-server
 
