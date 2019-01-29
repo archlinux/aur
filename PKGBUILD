@@ -57,6 +57,6 @@ package() {
 	install -Dm 644 ${srcdir}/Motrix.desktop ${pkgdir}/usr/share/applications
 #	rm ${pkgdir}/opt/motrix/resources/engine/aria2.conf	
 	install -Dm 644 ${srcdir}/aria2.conf ${pkgdir}/opt/motrix/resources/engine/aria2.conf
-	ln -s /usr/bin/aria2 ${pkgdir}/opt/motrix/reources/engine/aria2
+#	ln -s /usr/bin/aria2c ${pkgdir}/opt/motrix/reources/engine/aria2
 	rm -rf ${srcdir}
 }
