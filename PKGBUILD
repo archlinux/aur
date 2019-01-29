@@ -3,7 +3,7 @@
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-doc
-pkgver=2017.4.18f1
+pkgver=2017.4.19f1
 pkgrel=1
 pkgdesc="Unity User Manual and Scripting API Reference."
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-lts')
 makedepends=('cpio')
-source=("2017.4.18f1.pkg::https://download.unity3d.com/download_unity/a9236f402e28/MacDocumentationInstaller/Documentation.pkg")
-md5sums=("a9d949dd8ea37fd2e808d6b349b156dc")
+source=("2017.4.19f1.pkg::https://download.unity3d.com/download_unity/47cd37c28be8/MacDocumentationInstaller/Documentation.pkg")
+md5sums=("bc3260cc10de75d481957fd2e56bb72c")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
