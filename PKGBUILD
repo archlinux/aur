@@ -3,7 +3,7 @@
 
 pkgname=fisher
 pkgver=3.2.7
-pkgrel=3
+pkgrel=1
 pkgdesc="A package manager for the fish shell"
 arch=("any")
 url="https://github.com/jorgebucaran/fisher"
