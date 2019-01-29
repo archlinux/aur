@@ -45,7 +45,4 @@ package() {
   mv squashfs-root/* "$pkgdir"/usr/lib/ripcord/
   ln -s /usr/lib/ripcord/Ripcord "$pkgdir"/usr/bin/ripcord
 
-  # cleanup
-  rm "$SRCDEST"/"$_file"{'','.asc'}
-  rm -rf "$srcdir"
 }
