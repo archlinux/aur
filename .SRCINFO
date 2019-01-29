@@ -1,0 +1,14 @@
+pkgbase = librefox-cfg
+	pkgdesc = Librefox: Firefox with privacy enhancements (configuration files set)
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/intika/Librefox
+	arch = i686
+	arch = x86_64
+	license = MPL
+	depends = firefox
+	source = https://github.com/intika/Librefox/releases/download/Librefox-v2.1-v64.0.0/Librefox-2.1-Firefox-Linux-64.0.0.zip
+	sha512sums = 32f9f9aca614d8229c3aabcc83b7b433f8966a8ff7be1abb5e5b32b328f5f4dbad780cd8aef02cc80402c6323fed5ae3676f03d17d698597a668777334acb220
+
+pkgname = librefox-cfg
+
