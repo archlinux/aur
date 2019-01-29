@@ -3,7 +3,7 @@
 # Contributor: William Giokas <1007380@gmail.com>
 
 pkgname=i3status-git
-pkgver=2.12
+pkgver=2.12.r81.g1f3fe73
 pkgrel=1
 pkgdesc='Generates status bar to use with dzen2 or wmii'
 arch=('i686' 'x86_64')
@@ -28,17 +28,29 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  make
+
+  autoreconf --force --install
+
+  rm -rf build/
+  mkdir -p build && cd build/
+
+  ../configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --disable-sanitizers
+
+  # See https://lists.archlinux.org/pipermail/arch-dev-public/2013-April/024776.html
+  make CPPFLAGS+="-U_FORTIFY_SOURCE"
 }
 
 package() {
   cd "$_gitname"
-  make DESTDIR="$pkgdir" install
+  cd build/
 
-  install -Dm644 LICENSE \
+  make DESTDIR="$pkgdir/" install
+
+  install -Dm644 ../LICENSE \
     ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-
-  make clean
 }
 
 # vim:set ts=2 sw=2 et:
