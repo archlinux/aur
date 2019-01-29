@@ -1,6 +1,6 @@
 pkgbase = strawberry
 	pkgdesc = A music player aimed at audio enthusiasts and music collectors
-	pkgver = 0.4.2
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://www.strawbs.org/
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = strawberry
 	depends = udisks2
 	depends = dbus
 	depends = alsa-lib
+	depends = taglib
 	depends = libcdio
 	depends = libpulse
 	depends = libimobiledevice
@@ -29,11 +30,11 @@ pkgbase = strawberry
 	depends = libusbmuxd
 	depends = libgpod
 	depends = libmtp
-	optdepends = gst-libav
-	optdepends = gst-plugins-bad
-	optdepends = gst-plugins-ugly
-	source = strawberry-0.4.2.tar.gz::https://github.com/jonaski/strawberry/archive/0.4.2.tar.gz
-	sha256sums = 053397cdb6472eb14f6a56c29e18a9c08591a12e5d6cdd592e0ec74611cf58c9
+	optdepends = gst-libav: additional codecs (i.e. AAC)
+	optdepends = gst-plugins-bad: additional codecs (i.e. AAC)
+	optdepends = gst-plugins-ugly: additional codecs
+	source = strawberry-0.5.2.tar.gz::https://github.com/jonaski/strawberry/archive/0.5.2.tar.gz
+	sha256sums = 7fec87cb54d064bf6d40e0d4ceb21d9752c490b001c3cf28d774dc6105e7c861
 
 pkgname = strawberry
 
