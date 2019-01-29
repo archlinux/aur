@@ -1,8 +1,8 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 pkgname=sensu-go-agent
 _pkgname=sensu-agent
-pkgver=5.1.0
-_pkgver=5.1.0-0ubuntu18.1
+pkgver=5.1.1
+_pkgver=5.1.1-0ubuntu18.1
 pkgrel=1
 pkgdesc="Sensu Go Agent"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 source=("${pkgname}-${_pkgver}_amd64.deb::https://packagecloud.io/sensu/stable/packages/ubuntu/cosmic/${pkgname}_${_pkgver}_amd64.deb/download.deb"
         "sensu.sysusers"
         "sensu.tmpfiles")
-sha1sums=('321a7eb50c67a45675e688a94740db5148efd656'
+sha1sums=('4b29808a2bf6bcd6a352847b4031dc2e4cfa17a8'
           '054c2cfb7b2c4e6900fe79620b40fd060dbc0d8a'
           '9cca06fcbb23d5618382cc14e4ab4cc73c1f91fa')
 
