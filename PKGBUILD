@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=recon-ng
-pkgver=4.9.4
+pkgver=4.9.5
 pkgrel=1
 pkgdesc='A full-featured Web Reconnaissance framework written in Python'
 url='https://bitbucket.org/LaNMaSteR53/recon-ng'
@@ -14,7 +14,7 @@ depends=('python2' 'python2-dicttoxml' 'python2-dnspython'
          'python2-flask' 'python2-unicodecsv')
 source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/LaNMaSteR53/recon-ng/get/v${pkgver}.tar.gz
         opt-in-analytics.patch)
-sha256sums=('f443616351fb9dd119a870b637bdf7be0fb3a9fac6eb5a640b9d5414a63d2160'
+sha256sums=('da8f2fe8e49ede4765660eca93671e0b21044a74bd5f9e89b93ad766a2c9ebec'
             '3208e111fb44e0799272429b6d87544a2a54a6f48ef640524a19a8c0a37d3d00')
 
 prepare() {

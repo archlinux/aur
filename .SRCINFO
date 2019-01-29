@@ -1,6 +1,6 @@
 pkgbase = recon-ng
 	pkgdesc = A full-featured Web Reconnaissance framework written in Python
-	pkgver = 4.9.4
+	pkgver = 4.9.5
 	pkgrel = 1
 	url = https://bitbucket.org/LaNMaSteR53/recon-ng
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = recon-ng
 	depends = python2-pypdf2
 	depends = python2-flask
 	depends = python2-unicodecsv
-	source = recon-ng-4.9.4.tar.gz::https://bitbucket.org/LaNMaSteR53/recon-ng/get/v4.9.4.tar.gz
+	source = recon-ng-4.9.5.tar.gz::https://bitbucket.org/LaNMaSteR53/recon-ng/get/v4.9.5.tar.gz
 	source = opt-in-analytics.patch
-	sha256sums = f443616351fb9dd119a870b637bdf7be0fb3a9fac6eb5a640b9d5414a63d2160
+	sha256sums = da8f2fe8e49ede4765660eca93671e0b21044a74bd5f9e89b93ad766a2c9ebec
 	sha256sums = 3208e111fb44e0799272429b6d87544a2a54a6f48ef640524a19a8c0a37d3d00
 
 pkgname = recon-ng
