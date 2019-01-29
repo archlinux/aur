@@ -1,21 +1,19 @@
 # Maintainer: Bruno Santos <brunomanuelsantos@tecnico.ulisboa.pt>
-#
-# This package now follows a branch since there's no proper release yet. This
-# package will eventually transition to a stable release.
 
-pkgname=hawkmoth
-pkgver=latest
-pkgrel=2
+upstream_name=hawkmoth
+pkgname=python-sphinx-hawkmoth
+pkgver=0.2
+pkgrel=1
 pkgdesc='Sphinx autodoc C extension'
 arch=('i686' 'x86_64')
 url='https://github.com/jnikula/hawkmoth'
 license=('BSD2')
 depends=('python-sphinx' 'clang')
-source=('git+https://github.com/jnikula/hawkmoth')
-md5sums=('SKIP')
+source=('https://github.com/jnikula/hawkmoth/archive/v'$pkgver'.tar.gz')
+md5sums=('2e1b15de86f85ecb4041845ff1f75b39')
 
 package() {
 	dest=$pkgdir/usr/lib/python3.7/site-packages/$pkgname
 	mkdir -p $dest
-	install $srcdir/$pkgname/$pkgname/*.py $dest
+	cp -r $srcdir/$upstream_name-$pkgver/* $dest
 }
