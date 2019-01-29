@@ -7,16 +7,19 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv-git
-pkgver=29+fixes.20181210.362f3829
+pkgver=30+fixes.20190126.f11c5aba
 pkgrel=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
-depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva' 'libiec61883' 'perl-net-upnp' 'urlgrabber'
-         'qt5-webkit' 'x265' 'libx264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr' 'mysql-python')
-makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec' 'x264' 'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww'
-             'perl-dbd-mysql' 'python2-lxml')
+depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva'
+         'libiec61883' 'perl-net-upnp' 'urlgrabber' 'libsamplerate' 'qt5-webkit' 'x265'
+         'x264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr'
+         'mysql-python' 'libxnvctrl' 'libhdhomerun')
+makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec'
+             'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww' 'perl-dbd-mysql'
+             'python2-lxml' 'perl-xml-simple' 'perl-xml-xpath')
 optdepends=('glew: for GPU commercial flagging'
             'libcec: for consumer electronics control capabilities'
             'libxml2: to read blu-ray metadata'
@@ -27,18 +30,18 @@ optdepends=('glew: for GPU commercial flagging'
             'python2-requests-cache: for metadata-lookup / cover art')
 conflicts=('myththemes' 'mythplugins-mythvideo' 'mythtv')
 replaces=('myththemes' 'mythplugins-mythvideo' 'mythtv')
-source=("git+https://github.com/MythTV/mythtv#branch=fixes/29"
+source=("git+https://github.com/MythTV/mythtv#branch=fixes/30"
         'mythbackend.service'
         '99-mythbackend.rules'
         'sysusers.d')
 sha256sums=('SKIP'
-            'ed5ca54de26b7cd8a64e09626eed6e09f35d677daf88c530bb24cc4252bcce6d'
+            '086f573884e4df1ff6e6e8de5a423a9ff900166acfe085abe65b62f32730e4a3'
             'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
             '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae')
 
 pkgver() {
   cd "${srcdir}/mythtv/mythtv"
-  echo -n "29+fixes.$(git show -s --format=%cd --date=short | tr -d -).$(git rev-parse --short=8 HEAD)"
+  echo -n "30+fixes.$(git show -s --format=%cd --date=short | tr -d -).$(git rev-parse --short=8 HEAD)"
 }
 
 prepare() {
