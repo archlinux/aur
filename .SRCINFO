@@ -13,7 +13,7 @@ pkgbase = libpurple-lurch
 	depends = libxml2
 	depends = sqlite
 	depends = libgcrypt
-	optdepends = libpurple-carbons-git: message carbons support
+	optdepends = libpurple-carbons: message carbons support
 	conflicts = libpurple-lurch-git
 	source = git+https://github.com/gkdr/lurch.git#tag=v0.6.8
 	sha512sums = SKIP

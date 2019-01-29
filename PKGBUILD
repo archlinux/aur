@@ -9,7 +9,7 @@ url='https://github.com/gkdr/lurch'
 license=('GPL')
 makedepends=('cmake' 'git')
 depends=('libpurple' 'mxml' 'libxml2' 'sqlite' 'libgcrypt')
-optdepends=('libpurple-carbons-git: message carbons support')
+optdepends=('libpurple-carbons: message carbons support')
 conflicts=('libpurple-lurch-git')
 source=("git+https://github.com/gkdr/lurch.git#tag=v${pkgver}")
 sha512sums=('SKIP')
