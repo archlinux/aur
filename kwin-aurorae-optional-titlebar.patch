@@ -1,0 +1,100 @@
+diff --git a/plugins/kdecorations/aurorae/src/lib/auroraetheme.cpp b/plugins/kdecorations/aurorae/src/lib/auroraetheme.cpp
+index ba8554fe5..889b4120a 100644
+--- a/plugins/kdecorations/aurorae/src/lib/auroraetheme.cpp
++++ b/plugins/kdecorations/aurorae/src/lib/auroraetheme.cpp
+@@ -24,9 +24,14 @@
+ #include <QDebug>
+ #include <QHash>
+ #include <QStandardPaths>
++#include <QDir>
++#include <QFile>
+ // KDE
+ #include <KConfig>
+ #include <KConfigGroup>
++#include <KDecoration2/Decoration>
++#include <KDecoration2/DecoratedClient>
++#include <KWindowInfo>
+ 
+ Q_LOGGING_CATEGORY(AURORAE, "aurorae", QtCriticalMsg)
+ 
+@@ -87,6 +92,24 @@ AuroraeTheme::AuroraeTheme(QObject* parent)
+ {
+     connect(this, SIGNAL(themeChanged()), SIGNAL(borderSizesChanged()));
+     connect(this, SIGNAL(buttonSizesChanged()), SIGNAL(borderSizesChanged()));
++
++    // HACK: Hide title bar for windows whose classes are specified in ~/.aurorae_notitle
++    QFile hideTitleConf(QDir::homePath() + "/.aurorae_notitle");
++    if (hideTitleConf.open(QFile::ReadOnly | QFile::Text)) {
++        QString classes = "\n" + QTextStream(&hideTitleConf).readAll() + "\n";
++        KDecoration2::Decoration* decoration = (KDecoration2::Decoration*) parent;
++        auto client = decoration->client().data();
++        KWindowInfo info(client->windowId(), nullptr, NET::WM2WindowClass);
++        QString window_className(QString::fromUtf8(info.windowClassName()));
++        QString window_classClass(QString::fromUtf8(info.windowClassClass()));
++
++        if ((!window_className.isEmpty() 
++                    && classes.contains("\n" + window_className + "\n"))
++                || (!window_classClass.isEmpty()
++                    && classes.contains("\n" + window_classClass + "\n"))) {
++            this->hideTitleBar = true;
++        }
++    }
+ }
+ 
+ AuroraeTheme::~AuroraeTheme()
+@@ -185,7 +208,7 @@ void AuroraeTheme::borders(int& left, int& top, int& right, int& bottom, bool ma
+                                    d->themeConfig.buttonHeight()*buttonSizeFactor() +
+                                    d->themeConfig.buttonMarginTop());
+     if (maximized) {
+-        const qreal title = titleHeight + d->themeConfig.titleEdgeTopMaximized() + d->themeConfig.titleEdgeBottomMaximized();
++        const qreal title = hideTitleBar ? 0 : (titleHeight + d->themeConfig.titleEdgeTopMaximized() + d->themeConfig.titleEdgeBottomMaximized());
+         switch ((DecorationPosition)d->themeConfig.decorationPosition()) {
+         case DecorationTop:
+             left = right = bottom = 0;
+@@ -240,29 +263,29 @@ void AuroraeTheme::borders(int& left, int& top, int& right, int& bottom, bool ma
+         default:
+             left = right = bottom = top = 0;
+         }
+-        const qreal title = titleHeight + d->themeConfig.titleEdgeTop() + d->themeConfig.titleEdgeBottom();
++        const qreal title = hideTitleBar ? 0 : (titleHeight + d->themeConfig.titleEdgeTop() + d->themeConfig.titleEdgeBottom());
+         switch ((DecorationPosition)d->themeConfig.decorationPosition()) {
+         case DecorationTop:
+             left   += d->themeConfig.borderLeft();
+             right  += d->themeConfig.borderRight();
+             bottom += d->themeConfig.borderBottom();
+-            top     = title;
++            top     = title == 0 ? d->themeConfig.borderBottom() : title;
+             break;
+         case DecorationBottom:
+             left   += d->themeConfig.borderLeft();
+             right  += d->themeConfig.borderRight();
+-            bottom  = title;
++            bottom  = title == 0 ? d->themeConfig.borderTop() : title;
+             top    += d->themeConfig.borderTop();
+             break;
+         case DecorationLeft:
+-            left    = title;
++            left    = title == 0 ? d->themeConfig.borderRight() : title;
+             right  += d->themeConfig.borderRight();
+             bottom += d->themeConfig.borderBottom();
+             top    += d->themeConfig.borderTop();
+             break;
+         case DecorationRight:
+             left   += d->themeConfig.borderLeft();
+-            right   = title;
++            right   = title == 0 ? d->themeConfig.borderLeft() : title;
+             bottom += d->themeConfig.borderBottom();
+             top    += d->themeConfig.borderTop();
+             break;
+diff --git a/plugins/kdecorations/aurorae/src/lib/auroraetheme.h b/plugins/kdecorations/aurorae/src/lib/auroraetheme.h
+index f3f7b9943..cb46754e1 100644
+--- a/plugins/kdecorations/aurorae/src/lib/auroraetheme.h
++++ b/plugins/kdecorations/aurorae/src/lib/auroraetheme.h
+@@ -222,6 +222,7 @@ private:
+     void padding(int &left, int &top, int &right, int &bottom) const;
+ 
+     AuroraeThemePrivate* const d;
++    bool hideTitleBar = false;
+ };
+ 
+ } // namespace

@@ -1,0 +1,19 @@
+pkgbase = kwin-aurorae-optional-titlebar
+	pkgdesc = A hacked version of the KWin theme engine Aurorae that allows skipping title bars for a user-defined set of applications
+	pkgver = 5.14.5_1
+	pkgrel = 1
+	url = https://git.angry.im/PeterCxy/kwin-aurorae-optional-titlebar
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = kwin>=5.14.5
+	source = https://download.kde.org/stable/plasma/5.14.5/kwin-5.14.5.tar.xz
+	source = kwin-aurorae-optional-titlebar.patch
+	source = kwin-aurorae-optional-titlebar.sh
+	md5sums = 996d3477d0016e999d6d517ec072e983
+	md5sums = b314f47c73308e1440344288a75f7c93
+	md5sums = 854459e61a223321d674299a97ec082e
+
+pkgname = kwin-aurorae-optional-titlebar
+
