@@ -1,0 +1,37 @@
+pkgbase = bcrawl-git
+	pkgdesc = Continuation of X-Crawl fork of Dungeon Crawl Stone Soup roguelike with new content (Git version)
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://github.com/b-crawl/bcrawl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = BSD
+	license = MIT
+	license = ZLIB
+	license = APACHE
+	license = custom:CC0
+	license = custom
+	makedepends = git
+	makedepends = bison
+	makedepends = flex
+	makedepends = gendesk
+	makedepends = mesa
+	depends = lua51
+	depends = ncurses
+	depends = sdl2_image
+	depends = sqlite
+	depends = glu
+	depends = freetype2
+	depends = ttf-dejavu
+	optdepends = advancecomp: for recompressing the tilesheets
+	optdepends = pngcrush: for recompressing the tilesheets
+	provides = bcrawl
+	conflicts = crawl
+	conflicts = stone-soup-tile
+	conflicts = bcrawl
+	source = git+https://github.com/b-crawl/bcrawl.git
+	sha256sums = 74481c2694d0ce61b3b196130a85fd681160783418fd6bca71270f105a164b33
+
+pkgname = bcrawl-git
+
