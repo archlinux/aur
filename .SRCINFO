@@ -1,14 +1,14 @@
 pkgbase = transfersh
 	pkgdesc = Unofficial command-line client for https://transfer.sh
-	pkgver = 1.4
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/AlpixTM/transfersh
 	arch = any
 	license = AGPL
 	depends = python
 	depends = python-requests
-	source = https://github.com/AlpixTM/transfersh/archive/v1.4.tar.gz
-	md5sums = b7161f7ea7188ec3ff5570bcac615247
+	source = https://github.com/AlpixTM/transfersh/archive/v1.4.1.tar.gz
+	md5sums = 0a33aec2fda2f2fe791928f722a5dfcd
 
 pkgname = transfersh
 

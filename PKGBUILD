@@ -1,6 +1,6 @@
 #Maintainer: AlpixTM aka Lukas N. <contact@alpix.eu>
 pkgname=transfersh
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Unofficial command-line client for https://transfer.sh"
 arch=('any')
@@ -8,8 +8,8 @@ url="https://github.com/AlpixTM/transfersh"
 license=('AGPL')
 depends=('python' 'python-requests')
 install=
-source=('https://github.com/AlpixTM/transfersh/archive/v1.4.tar.gz')
-md5sums=('b7161f7ea7188ec3ff5570bcac615247')
+source=('https://github.com/AlpixTM/transfersh/archive/v1.4.1.tar.gz')
+md5sums=('0a33aec2fda2f2fe791928f722a5dfcd')
 
 package() {
   cd "$pkgname-$pkgver"
