@@ -1,6 +1,6 @@
 # Maintainer: Martin Fritzsche <aur at mafri dot org>
 pkgname=snmpscan
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="CLI-Tool to monitor routers and switches by SNMP"
 arch=('any')
@@ -13,6 +13,8 @@ md5sums=('SKIP')
 
 package() {
   cd "$pkgname"
+  mkdir -p  "$pkgdir/etc/snmpscan/"
+  install -Dm644 .snmpscan/* "$pkgdir/etc/snmpscan/"
   install -Dm755 snmpscan.rb "$pkgdir/usr/bin/snmpscan"
 }
 
