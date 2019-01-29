@@ -11,6 +11,12 @@
 # depends_x86_64=('cuda') line and 
 # $_cuda \, $_cuvid \, $_libnpp \ lines from PKGBUILD
 #
+# Replace "--disable-libsrt" with "--enable-libsrt"
+# and add 'srt' to depends array if you need the support
+# for Haivision Open SRT (Secure Reliable Transport).
+# Enabling it is known to cause segfaults with OBS, 
+# that's why it's disabled by default.
+# 
 # Add "--enable-decklink \" to configure flags
 # if you have decklink-sdk installed
 # Add "--enable-libndi_newtek \" to configure flags
@@ -19,7 +25,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=4.1
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -34,7 +40,7 @@ depends=('alsa-lib' 'aom' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2' 'davs2' 'fo
          'libxext' 'libwebp' 'libxml2' 'libxv' 'lilv' 'libgl' 'lv2' 'ndi-sdk' 'openal'
          'opencore-amr' 'opencl-driver' 'opencl-icd-loader' 'openh264'
          'openjpeg2' 'libklvanc-git' 'libopenmpt-svn' 'opus' 'rockchip-mpp' 'rubberband'
-         'rtmpdump' 'sdl2' 'speex' 'srt' 'shine' 'tensorflow' 'tesseract'
+         'rtmpdump' 'sdl2' 'speex' 'shine' 'tensorflow' 'tesseract'
          'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vo-amrwbenc' 'xavs2-git'
          'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi' 'libvorbisenc.so' 
          'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so' 'snappy' 'sndio' 'xavs')
@@ -170,7 +176,7 @@ build() {
     --enable-libsnappy \
     --enable-libsoxr \
     --enable-libspeex \
-    --enable-libsrt \
+    --disable-libsrt \
     --enable-libssh \
     --enable-libtensorflow \
     --enable-libtesseract \
