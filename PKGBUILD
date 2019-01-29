@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
 pkgbase=theharvester-git
 pkgname=theharvester-git
-pkgver=3.0.6.r220.gefe73e2
+pkgver=3.0.6.r250.g19eb2a4
 pkgrel=1
 pkgdesc="A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)."
 arch=('any')
@@ -15,7 +15,8 @@ depends=(
 		'python-pytest'
 		'python-texttable'
 		'python-shodan'
-		'python-beautifulsoup4')
+		'python-beautifulsoup4'
+		'python-decorator')
 makedepends=('git' 'bash')
 provides=("${pkgname}")
 conflicts=("${pkgname}")

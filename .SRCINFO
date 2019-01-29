@@ -16,6 +16,7 @@ pkgbase = theharvester-git
 	depends = python-texttable
 	depends = python-shodan
 	depends = python-beautifulsoup4
+	depends = python-decorator
 	provides = theharvester-git
 	conflicts = theharvester-git
 	source = theharvester-git::git+https://github.com/laramies/theHarvester.git
