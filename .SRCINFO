@@ -1,6 +1,6 @@
 pkgbase = dynamips
 	pkgdesc = Cisco router emulator.
-	pkgver = 0.2.18
+	pkgver = 0.2.19
 	pkgrel = 1
 	url = https://github.com/GNS3/dynamips
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = dynamips
 	makedepends = cmake
 	depends = libpcap
 	depends = elfutils
-	source = dynamips-0.2.18.tar.gz::https://github.com/GNS3/dynamips/archive/v0.2.18.tar.gz
-	sha256sums = 39b8ab22f410d56db3161eaf7a16a70cf55aed200a7ac53bb737c71f34decac0
+	source = dynamips-0.2.19.tar.gz::https://github.com/GNS3/dynamips/archive/v0.2.19.tar.gz
+	sha256sums = 4c87d01c59e1c621a5635f1931c08c234b07b6c6a015dc7f4d2da8043e709b6f
 
 pkgname = dynamips
 
