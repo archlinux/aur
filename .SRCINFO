@@ -1,10 +1,13 @@
 pkgbase = qimgv
 	pkgdesc = Qt5 image viewer with experimental webm playback
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/easymodo/qimgv
 	arch = x86_64
 	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = cmake
 	makedepends = qt5-tools
@@ -12,8 +15,8 @@ pkgbase = qimgv
 	depends = qt5-imageformats
 	depends = qt5-svg
 	depends = mpv
-	source = qimgv-0.7.1.tar.gz::https://github.com/easymodo/qimgv/archive/v0.7.1.tar.gz
-	sha256sums = 224987e06b76562caafa31dc5ddacacdf5db465aa2fa3f4b1148aef59e18739b
+	source = qimgv-0.7.2.tar.gz::https://github.com/easymodo/qimgv/archive/v0.7.2.tar.gz
+	sha256sums = b9bba209a36723237cb7df2eff61aabe8c46ad9f20ab7ec15e56f9e0501ff872
 
 pkgname = qimgv
 
