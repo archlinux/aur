@@ -7,7 +7,7 @@ pkgdesc="Compositing tiling window manager"
 arch=("i686" "x86_64")
 license=("GPL")
 depends=(
-	'xcb-util-keysyms' 'xcb-util-wm' 'vulkan-icd-loader' 'boost' 'python' 'python-xlib' 'python-psutil'
+	'xcb-util-keysyms' 'xcb-util-wm' 'vulkan-icd-loader' 'glm' 'boost' 'python' 'python-xlib' 'python-psutil'
 )
 makedepends=(
     'git' 'meson' 'ninja' 'vulkan-headers' 'shaderc-git'
