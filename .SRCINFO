@@ -1,0 +1,25 @@
+pkgbase = brother-hl4140cn
+	pkgdesc = Brother HL-4140CDN CUPS printer driver
+	pkgver = 1.1.1
+	pkgrel = 5
+	url = http://support.brother.com/g/b/downloadlist.aspx?c=de&lang=de&prod=hl4150cdn_all&os=127&flang=English
+	install = brother-hl4140cn.install
+	arch = i686
+	arch = x86_64
+	license = custom:Brother
+	license = GPL
+	makedepends = libarchive
+	depends = a2ps
+	depends = cups
+	source = 0001-brother-hl4140cn.patch
+	source = Brother.license
+	source = https://download.brother.com/welcome/dlf005935/hl4140cnlpr-1.1.1-5.i386.rpm
+	source = https://download.brother.com/welcome/dlf005937/hl4140cncupswrapper-1.1.1-5.i386.rpm
+	sha512sums = e1cc475572b1b613c8f0f33a59bacf4c8d2856f9ea100d6ae189a8c455f07e022fae971af45aa0d105a20a471b9f022bbe7bd05edc4b93b490f231ca32f00c1e
+	sha512sums = 109215f5c3f835b5923d1334ab2812a2faf859a3fa813a214116b44fc3c14a2022deeb0a4a5c6be5a99833cd7b5997cf02b33f2fa13391b7cb02a3cb15e74bb0
+	sha512sums = 84e3b17e1e2bc2789812e98f406f7d68b273821d4414de44a6e375ff2bfa0bb3ad6444a1a6047185cc47147fc16acaec176185df6f14ab4b698cddd44228db1f
+	sha512sums = e1c29693e6a5fecc5685ff5e22dd56a1f506275d7dd432a44809b45e45be73967e35679a30758f412011630a440e65d204a39b0ed4523175c63462fbc77986d8
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-hl4140cn
+

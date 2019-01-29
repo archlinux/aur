@@ -1,0 +1,196 @@
+--- src/usr/local/Brother/Printer/hl4140cn/cupswrapper/cupswrapperhl4140cn	2010-08-04 22:36:49.000000000 -0500
++++ new/usr/local/Brother/Printer/hl4140cn/cupswrapper/cupswrapperhl4140cn	2011-09-29 08:37:00.000000000 -0500
+@@ -17,75 +17,45 @@
+ # this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ # Place, Suite 330, Boston, MA  02111-1307  USA
+ #
++if [ -z "$DRIVER_PREFIX" ]; then
++   DRIVER_PREFIX=/usr/local/Brother
++fi
+ 
+ printer_model=""hl4140cn""
+ printer_name=`echo $printer_model | tr '[a-z]' '[A-Z]'`
+ device_name=`echo $printer_name | eval sed -e 's/MFC/MFC-/' -e 's/DCP/DCP-/' -e 's/FAX/FAX-/'`
+ pcfilename=`echo $printer_name | tr -d '[A-Z]'`
+ device_model="Printer"
+-tmp_filter=/var/tmp/brlpdwrapper${printer_model}
+-if [ "$1" = '-e' ]; then
+-  lpadmin -x ${printer_name}
+-  rm -f /usr/share/cups/model/br${printer_model}.ppd
+-  rm -f /usr/share/ppd/br${printer_model}.ppd
+-  rm -f /usr/lib/cups/filter/brlpdwrapper${printer_model}
+-  rm -f /usr/lib64/cups/filter/brlpdwrapper${printer_model}
+-  rm -f /usr/local/Brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1
+-if [  -e /etc/init.d/cups ]; then
+-   /etc/init.d/cups restart
+-elif [  -e /etc/init.d/cupsys ]; then
+-   /etc/init.d/cupsys restart
+-fi
+-#  /etc/init.d/cups restart
+-  exit 0
+-fi
+-if [ "$1" = "-r" ]; then
+-  lpadmin -x ${printer_name}
+-if [  -e /etc/init.d/cups ]; then
+-   /etc/init.d/cups restart
+-elif [  -e /etc/init.d/cupsys ]; then
+-   /etc/init.d/cupsys restart
+-fi
+-#  /etc/init.d/cups restart
+-  exit 0
+-fi
++tmp_filter=$PKGDIR/brlpdwrapper${printer_model}
++ppd_file_name=$DESTDIR/usr/share/cups/model/$printer_model.ppd
++brotherlpdwrapper=$DESTDIR/usr/lib/cups/filter/brlpdwrapper$printer_model
++brotherlpdwrapper64=$DESTDIR/usr/lib64/cups/filter/brlpdwrapper$printer_model
++
+ if [ "$1" = "help" ] || [ "$1" = "-h" ]; then
+   echo   'option -h : help'
+   echo   '       -i : install'
+   echo   '       -e : uninstall'
+   echo   '       -r : remove printer'
++  echo   '       -s : simple install (Do not touch services)'
+   exit 0
+ fi
+ #mkdir -p /usr/local/Brother/${device_model}/${printer_model}/filter
+ #mkdir -p /usr/lib/cups/filter
++mkdir -p $DESTDIR/usr/lib/cups/filter
++mkdir -p $DESTDIR/usr/share/cups/model
+ 
+-if [ -e "/usr/local/Brother/${device_model}/${printer_model}/lpd/filter${printer_model}" ]; then
++if [ -e "$SRCDIR/usr/local/Brother/${device_model}/${printer_model}/lpd/filter${printer_model}" ]; then
+   :
+ else
+   echo "ERROR : Brother LPD filter is not installed."
+ fi
+-rm -f /usr/share/cups/model/br${printer_model}.ppd
+-if [ -d "/usr/share/cups/model" ]; then
+-  ppd_file_name=/usr/share/cups/model/br${printer_model}.ppd
+-else
+-  ppd_file_name=/usr/share/ppd/br${printer_model}.ppd
+-fi
+ 
+-if [ -e "/usr/local/Brother/${device_model}/${printer_model}/cupswrapper/${printer_model}.ppd" ];	then
+-cp "/usr/local/Brother/${device_model}/${printer_model}/cupswrapper/${printer_model}.ppd" $ppd_file_name
++if [ -e "$SRCDIR/usr/local/Brother/${device_model}/${printer_model}/cupswrapper/${printer_model}.ppd" ];	then
++cp "$SRCDIR/usr/local/Brother/${device_model}/${printer_model}/cupswrapper/${printer_model}.ppd" $ppd_file_name
+ fi
+ 
+ chmod 644 $ppd_file_name
+ 
+-if [ -d /usr/share/ppd ]
+-then
+-if [ -d /usr/share/cups/model ]
+-then
+-	cp $ppd_file_name /usr/share/ppd/br${printer_model}.ppd
+-	chmod 644 /usr/share/ppd/br${printer_model}.ppd
+-fi
+-fi
+-
+ #
+ #	create temporary CUPS Filter
+ #
+@@ -198,25 +168,25 @@
+       cat    > \$INPUT_TEMP_PS
+    fi
+ fi
+-if [ -e "/usr/local/Brother/${device_model}/${printer_model}/lpd/filter${printer_model}" ]; then
++if [ -e "/usr/share/Brother/${device_model}/${printer_model}/lpd/filter${printer_model}" ]; then
+        :
+ else
+-    echo "ERROR: /usr/local/Brother/${device_model}/${printer_model}/lpd/filter${printer_model} does not exist"   >>\$LOGFILE
++    echo "ERROR: /usr/share/Brother/${device_model}/${printer_model}/lpd/filter${printer_model} does not exist"   >>\$LOGFILE
+     errorcode=30
+     exit
+ fi
+ 
+ CUPSOPTION=\`echo "\$5 Copies=\$4" | sed -e 's/PageSize/media/' -e 's/BrSheets/Sheets/' -e 's/multiple-document-handling/Collate/' -e 's/separate-documents-collated-copies/ON/' -e 's/separate-documents-uncollated-copies/OFF/'\`
+-if [ -e "/usr/local/Brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1" ]; then
++if [ -e "/usr/share/Brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1" ]; then
+   if [ \$DEBUG = 0 ]; then
+-     /usr/local/Brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1  ${printer_name}  \$PPDC 0 "\$CUPSOPTION" "${printer_model}">> /dev/null
++     /usr/share/Brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1  ${printer_name}  \$PPDC 0 "\$CUPSOPTION" "${printer_model}">> /dev/null
+   else
+-     /usr/local/Brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1  ${printer_name}  \$PPDC \$LOGCLEVEL "\$CUPSOPTION" "${printer_model}">>\$LOGFILE
++     /usr/share/Brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1  ${printer_name}  \$PPDC \$LOGCLEVEL "\$CUPSOPTION" "${printer_model}">>\$LOGFILE
+   fi
+ fi
+ 
+ if [ \$DEBUG -lt 10 ]; then
+-    cat    \$INPUT_TEMP_PS | /usr/local/Brother/${device_model}/${printer_model}/lpd/filter${printer_model} "\$\$" "CUPS" "USB"
++    cat    \$INPUT_TEMP_PS | /usr/share/Brother/${device_model}/${printer_model}/lpd/filter${printer_model} "\$\$" "CUPS" "USB"
+ 
+     if [ \$LOGLEVEL -gt 2 ];  then
+ 	   if [ \$LOGFILE != "/dev/null" ]; then
+@@ -235,30 +205,27 @@
+ chmod 755 $tmp_filter
+ 
+ #
+-#	check /usr/lib/cups/filter
+-#
+-if [ -d /usr/lib/cups/filter ]; then
+-	brotherlpdwrapper=/usr/lib/cups/filter/brlpdwrapper${printer_model}
+-	rm -f  $brotherlpdwrapper
+-	cp $tmp_filter	$brotherlpdwrapper
+-fi
+-
+-#
+ #	check /usr/lib64/cups/filter
+ #
+-if [ -e /usr/lib64/cups/filter ]; then
+-	brotherlpdwrapper64=/usr/lib64/cups/filter/brlpdwrapper${printer_model}
++if [ -e $DESTDIR/usr/lib64/cups/filter ]; then
++	brotherlpdwrapper64=$DESTDIR/usr/lib64/cups/filter/brlpdwrapper${printer_model}
+ 	rm -f  $brotherlpdwrapper64
+ 	cp $tmp_filter	$brotherlpdwrapper64
+ fi
+ 
++if [ -d $DESTDIR/usr/lib/cups/filter ]; then
++	brotherlpdwrapper=$DESTDIR/usr/lib/cups/filter/brlpdwrapper${printer_model}
++	rm -f  $brotherlpdwrapper
++	cp $tmp_filter	$brotherlpdwrapper
++fi
++
+ #
+ #	remove temporary script file
+ #
+ rm -f  $tmp_filter
+ 
+-chmod a+w /usr/local/Brother/${device_model}/${printer_model}/inf/br${printer_model}rc
+-chmod a+w /usr/local/Brother/${device_model}/${printer_model}/inf
++chmod a+w $DESTDIR/usr/share/Brother/${device_model}/${printer_model}/inf/br${printer_model}rc
++chmod a+w $DESTDIR/usr/share/Brother/${device_model}/${printer_model}/inf
+ if [ -e /etc/init.d/lpd ]; then
+    /etc/init.d/lpd stop
+ fi
+@@ -266,7 +233,6 @@
+    /etc/init.d/lprng stop
+ fi
+ 
+-
+ if [  -e /etc/init.d/cups ]; then
+    /etc/init.d/cups restart
+ elif [  -e /etc/init.d/cupsys ]; then
+@@ -275,22 +241,5 @@
+ 
+ sleep 2s
+ 
+-
+-port2=`lpinfo -v | grep -i 'usb://Brother/${device_name}' | head -1`
+-if [ "$port2" = '' ];then
+-    port2=`lpinfo -v | grep 'usb://Brother' | head -1`
+-fi
+-
+-if [ "$port2" = '' ];then
+-    port2=`lpinfo -v | grep 'usb://' | head -1`
+-fi
+-port=`echo $port2| sed s/direct//g`
+-
+-if [ "$port" = '' ];then
+-    port=usb:/dev/usb/lp0
+-fi
+-#lpadmin -p ${printer_name} -E -v $port -m br${printer_model}.ppd
+-lpadmin -p ${printer_name} -E -v $port -P $ppd_file_name
+-
+ exit 0
+ 

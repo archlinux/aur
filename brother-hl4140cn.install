@@ -1,0 +1,50 @@
+MODEL=hl4140cn
+
+advisorymsg() {
+  cat <<EOM
+  The usblp kernel module must be disabled before CUPS can detect the
+  printer.
+
+  Start CUPS after installation and type the command:
+      lpadmin -p $MODEL -E -v \$URL -P /usr/share/cups/model/$MODEL.ppd
+  where \$URL can be found using the command:
+      lpinfo -v | grep -i 'Brother'
+  You can also register the new printer using web interface at:
+      http://localhost:631/
+
+  You may have to add "$MODEL" to /usr/share/Brother/inf/brPrintList for
+  proper operation and extended printing options.
+EOM
+}
+
+post_install() {
+  _port=`lpinfo -v | grep -i 'usb://Brother/' | head -1 | sed 's/direct //g'`
+
+  if [ "$_port" = '' ];then
+          _port="usb:/dev/usb/lp0"
+  fi
+  echo ""
+  echo "Added $MODEL configuration defaults to /usr/share/Brother/inf/brPrintList"
+  echo ""
+  cat /usr/share/Brother/Printer/hl4140cdn/inf/brhl4140cnrc >> /usr/share/Brother/Printer/hl4140cn/inf/brPrintList
+
+#  echo $MODEL >> /usr/share/Brother/inf/brPrintList
+#  lpadmin -p $MODEL -E -v $_port -P /usr/share/cups/model/$MODEL.ppd
+
+  advisorymsg
+}
+
+post_upgrade() {
+  advisorymsg
+}
+
+pre_remove() {
+  echo "Remember to unregister the $MODEL:"
+  echo "    lpadmin -x $MODEL"
+  echo "Or visit the CUPS web interface at:"
+  echo "    http://localhost:631/"
+  # lpadmin -x $MODEL
+
+  # Reverse this
+  # echo $MODEL >> /usr/share/Brother/inf/brPrintList
+}
