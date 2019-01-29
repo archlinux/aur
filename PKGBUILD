@@ -1,9 +1,8 @@
-# $Id$
 # Maintainer: James Kolb <jck1089@gmail.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=('zsh-athame-git')
-pkgver=5.5.1
+pkgver=5.7
 pkgrel=1
 arch=('x86_64')
 conflicts=('zsh')
@@ -11,18 +10,22 @@ provides=("zsh=${pkgver}")
 url='http://github.com/ardagnir/athame/'
 license=('custom' 'GPL' 'AGPL')
 makedepends=('pcre' 'libcap' 'gdbm' 'git')
-source=("https://www.zsh.org/pub/zsh-${pkgver}"{,-doc}".tar.gz"{,.asc}
+source=("https://www.zsh.org/pub/zsh-${pkgver}"{,-doc}".tar.xz"{,.asc}
         'zprofile'
+        'vcs_info.patch'
         'git://github.com/ardagnir/athame'
         'git://github.com/ardagnir/vimbed')
-sha512sums=('c4f7327a3f5480bd9a169fb07e34812e0106fa9de3b5f7d38bb0db85a3e4d01b9a4a8f35553da03a15d7d819108305cfaa2811c945273e2cac84512219e69ebb'
+sha512sums=('cfef5604d6ff30aeb081ed2a2660c861027c0a90169231cdb6b19093ffa6d63946be7b1fde527769e60e5b14bb6853b590bf4a207b63d6ec66fffd30d9a94958'
             'SKIP'
-            'd121d3e642e15406ea3e570fe67bb023f27b10e3f12a6a8a8ad02b1f7070c88445f0431a411a8e54ff92a237ba7c4334f4d6f9fb3f4bebeade4c02e42bdf1a5e'
+            '4b5f256ed39c0594daf2fdb2f995c60944c70556438b986fcf6f4e40dbfdc58e70eb65691c841d5dbb973a20b30255abe55ed140482b7afd446e1911c4efd395'
             'SKIP'
             'b287e00d8de4dc4cfb1c52bb2aef1d4b191de3512baad4c91dc81e78ddc3e5bb07297f43924b022ac44ff401a348d8a9fa366e19ddc8ea1ea72df311f5ed0034'
+            'f72285f2ddedf1da44f419c13b54dca2a1845027ff36a4b00ea58aadf3e19986aed3568325afbc4ff7b7e92820875ac75263287dce73c2ba1d16409d5def0353'
             'SKIP'
             'SKIP')
-validpgpkeys=('F7B2754C7DE2830914661F0EA71D9A9D4BDB27B3')
+validpgpkeys=('F7B2754C7DE2830914661F0EA71D9A9D4BDB27B3'
+              'E96646BE08C0AF0AA0F90788A5FEEE3AC7937444'
+              '7CA7ECAAF06216B90F894146ACF8146CAE8CBBC4')
 
 prepare() {
 	cd "${srcdir}/athame"
@@ -44,6 +47,8 @@ prepare() {
 		sed "s#\s*Completion/$_fpath/\*/\*##g" -i Src/Zle/complete.mdd
 	done
 	rm Completion/Linux/Command/_{pkgtool,rpmbuild}
+
+  patch -p1 -i "${srcdir}/vcs_info.patch"
 
 	# Remove tests that don't work with the new athame behavior.
 	rm Test/[XY]*.ztst
