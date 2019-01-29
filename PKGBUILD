@@ -1,6 +1,6 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
 pkgname=netctl2iwd
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Convert your netctl wireless profiles to iwd profiles."
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=(gcc-libs)
 makedepends=(cargo)
 checkdepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bertptrs/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('255088792752ea32a48559710a694a26')
+md5sums=('dcbff31d50a3731ce19a3c81e6568706')
 
 build() {
 	cd "$pkgname-$pkgver"
