@@ -4,7 +4,7 @@ _base=dolfin
 _fragment="#branch=master"
 pkgname=${_base}-git
 pkgdesc="the C++ interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations."
-pkgver=20180918
+pkgver=20190128
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/fenics-project/${_base}"
@@ -31,6 +31,8 @@ build() {
   [ -d build ] && rm -rf build
   mkdir build
   cd build
+
+  sed -i -e '/SNESTEST/s/.*/\/\/&/' ../dolfin/nls/PETScSNESSolver.cpp
 
   local py_interp=`python -c "import os,sys; print(os.path.realpath(sys.executable))"`
 
