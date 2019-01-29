@@ -2,7 +2,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r1296.c22d3c9
+pkgver=r1494.09af727
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -10,10 +10,11 @@ license=('GPL3')
 source=('git://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=master')
 depends=(
   'aircrack-ng' 'bash>=4.2' 'coreutils'
-  'gawk' 'iw' 'net-tools'
+  'gawk' 'iproute2' 'iw' 'net-tools'
   'sed' 'wireless_tools' 'xterm'
 )
 optdepends=(
+  'asleap: Actively recover LEAP/PPTP passwords'
   'bettercap: Complete, modular, portable and easily extensible MITM framework'
   'bully: Retrieve WPA/WPA2 passphrase from a WPS enabled access point'
   'ccze: Robust and modular log colorizer with many plugins'
@@ -28,10 +29,12 @@ optdepends=(
   'expect: A tool for automating interactive applications'
   'hashcat: Multithreaded advanced password recovery utility'
   'hostapd: IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator'
+  'hostapd-wpe: Modified hostapd to facilitate AP impersonation attacks'
+  'john: John the Ripper password cracker'
   'iptables: Linux kernel packet control tool'
   'lighttpd: A secure, fast, compliant and very flexible web-server'
   'mdk3: WLAN penetration tool'
-  'pciutils: PCI bus configuration space access library and tools' 
+  'pciutils: PCI bus configuration space access library and tools'
   'pixiewps: Offline bruteforce of the WPS pin exploiting the low or non-existing entropy
     of some APs'
   'reaver: Brute force attack against Wifi Protected Setup'
@@ -68,7 +71,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  sed -i 's|auto_update=1|auto_update=0|' airgeddon.sh
+  sed -i 's|AIRGEDDON_AUTO_UPDATE=true|AIRGEDDON_AUTO_UPDATE=false|' .airgeddonrc
 }
 
 package() {
@@ -83,6 +86,7 @@ package() {
   rm -rf *.md .git* .editor* binaries imgs Dockerfile pindb_checksum.txt
 
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/airgeddon"
+  cp -a --no-preserve=ownership .airgeddonrc "$pkgdir/usr/share/airgeddon"
 
   cat > "$pkgdir/usr/bin/airgeddon" << EOF
 #!/bin/sh
