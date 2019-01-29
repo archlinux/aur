@@ -1,0 +1,19 @@
+pkgbase = scli-git
+	pkgdesc = scli is a simple terminal user interface for Signal
+	pkgver = r11.faf5ca2
+	pkgrel = 1
+	url = https://github.com/isamert/scli
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python-urwid
+	depends = signal-cli
+	optdepends = qrencode: Generate QR codes for linking device
+	provides = scli
+	conflicts = scli
+	source = scli::git+git://github.com/isamert/scli.git
+	sha1sums = SKIP
+
+pkgname = scli-git
+
