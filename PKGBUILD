@@ -2,7 +2,7 @@
 # Maintainer: Shang Yuanchun <idealities@gmail.com>
 
 pkgname=systemtap-git
-pkgver=4.0.86.g3a29a2eef
+pkgver=4.0.88.g905865da1
 pkgrel=1
 pkgdesc="provides infrastructure to simplify the gathering of information about the running Linux system."
 url="https://sourceware.org/systemtap/"
@@ -41,8 +41,8 @@ build() {
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --libdir=/usr/lib/"${_gitname}" \
-    --libexecdir=/usr/lib/"${_gitname}" \
+    --libdir=/usr/lib \
+    --libexecdir=/usr/lib \
     --with-python3 \
     --enable-pie \
     --disable-docs \
