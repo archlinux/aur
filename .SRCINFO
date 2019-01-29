@@ -1,11 +1,12 @@
 pkgbase = purevpn-networkmanager
 	pkgdesc = A script to generate template-based PureVPN configuration files for NetworkManager
-	pkgver = 2019.01.07
+	pkgver = 2019.01.28
 	pkgrel = 1
 	url = https://www.purevpn.com/
 	install = purevpn-networkmanager.install
 	arch = any
 	license = GPL
+	makedepends = curl
 	depends = bash
 	optdepends = networkmanager-openvpn: for the OpenVPN protocol
 	optdepends = networkmanager-pptp: for the PPTP protocol
@@ -15,12 +16,10 @@ pkgbase = purevpn-networkmanager
 	source = template-ovpn
 	source = template-pptp
 	source = purevpn
-	source = vpn-list.csv
 	sha256sums = 0c2fecda247c34003468d35b74438443b47fef0e4debdfa7cb1a6a88d2e93bb9
 	sha256sums = 336a901c88e406c05f1ec6d192bf7461145299b3c631eb203cebdc94b63c26d6
 	sha256sums = eb63f1730a807726e906d6c2e2362ee402f39d3b554bea225d0303a33b19ea58
-	sha256sums = 8de488f0d3de21711afa19f3a2d61c5405d4c6104363d5c7b6516eb892e66dd8
-	sha256sums = 1c8de4640f8f358aaa8df53660516e155f29c1a42fde1f2f7f226b775e77e463
+	sha256sums = e647fee6c5600f05d5f90329f63dbd788df0771c3d92973bd10e87d872c62730
 
 pkgname = purevpn-networkmanager
 

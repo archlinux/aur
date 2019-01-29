@@ -5,73 +5,94 @@ normal=$(tput sgr0)
 
 if [ "$EUID" -ne 0 ]
   then 
-  echo "This script must be run as root."
+  printf "This script must be run as root.\n"
   exit 1
 fi
+
+if [ ! -d "$DIRECTORY" ]; then mkdir -p /etc/purevpn; fi
+if [ ! -f /etc/purevpn/vpn-list.tsv ]; then ln -s /usr/lib/purevpn/vpn-list.tsv /etc/purevpn/; fi
 
 usage() {
   cat <<EOF
 usage: ${0##*/} [OPTION]
 
 Options:
-    -h            Print this help message
-    -l            List the available cities files
+    -h            Print this help message and exit
+    -l            List the available cities files and exit
     -c [city]     Choose a city for which to install the OpenVPN config
-                  (NOTE: just use the city name, the part that is ${bold}bold
-                  ${normal}when you run "purevpn  -l") 
+                  This option can be used multiple times. e.g. -c Lima -c New\ York
+                  (NOTE: just use the city name, the part that is ${bold}bold or
+                  coloured${normal} (if supported) when you run "purevpn  -l") 
     -t [protocol] Choose the protocol to install (either "pptp" or "ovpn")
-    -u [username] Set the username
-    -p [password] Set the password
-    -x            Purge all the PureVPN files in /etc/NetworkManager
+                  This option can be used multiple times. e.g. -t pptp -t ovpn
+    -u [username] Set the username in all PureVPN files in /etc/NetworkManager
+    -p [password] Set the password in all PureVPN files in /etc/NetworkManager
+    -x            Purge all the PureVPN files in /etc/NetworkManager and exit
+    -z            Attempt to update the VPN server list from
+                  https://support.purevpn.com/vpn-servers and exit
 
 If 'OPTION' is unspecified, ${0##*/} will not make any changes.
 
 EOF
 }
 
-list() {
+updlist() {
+  printf "==> Updating the list of VPN servers from https://support.purevpn.com/vpn-servers\n"
+  rm -v /etc/purevpn/vpn-list.tsv
+  
+  ## Lots of credit to: https://stackoverflow.com/a/10189130/6047155
+  curl "https://support.purevpn.com/vpn-servers" 2>/dev/null | \
+    grep -i -e '</\?TABLE\|</\?TD\|</\?TR\|</\?TH' | \
+    sed 's/^[\ \t]*//g' | tr -d '\n' | \
+    sed 's/<\/TR[^>]*>/\n/Ig;s/<\/\?\(TABLE\|TR\)[^>]*>//Ig' | \
+    sed 's/^<T[DH][^>]*>\|<\/\?T[DH][^>]*>$//Ig;s/<\/T[DH][^>]*><T[DH][^>]*>/\t/Ig' | \
+    sed 's/<[^<>]*>//g;s/\s*\t\s*/\t/g;1d' > /etc/purevpn/vpn-list.tsv
+  printf "==> New server list contains $(wc -l < /etc/purevpn/vpn-list.tsv) lines.\n"
+}
 
-  echo "==> The following VPN locations are available"
-  while IFS=, read region country city pptp udp tcp
+list() {
+  printf "==> The following VPN locations are available\n"
+  while IFS=$'\t' read region country city pptp udp tcp
   do
-    echo "$region/$country, ${bold}$city${normal}"
-  done < /usr/lib/purevpn/vpn-list.csv
+    echo "$region/$country, ${bold}\""$city\""${normal}"
+  done < /etc/purevpn/vpn-list.tsv
 }
 
 get_pptp_url() {
-  while IFS=, read region country city pptp udp tcp
+  while IFS=$'\t' read region country city pptp udp tcp
   do
     if [ "${city}" == "${config}" ]; then
-    echo "$pptp"
+    printf "$pptp"
     fi
-  done < /usr/lib/purevpn/vpn-list.csv
+  done < /etc/purevpn/vpn-list.tsv
 }
 
 get_tcp_url() {
-  while IFS=, read region country city pptp udp tcp
+  while IFS=$'\t' read region country city pptp udp tcp
   do
     if [ "${city}" == "${config}" ]; then
-    echo "$tcp"
+    printf "$tcp"
     fi
-  done < /usr/lib/purevpn/vpn-list.csv
+  done < /etc/purevpn/vpn-list.tsv
 }
 
 get_upd_url() {
-  while IFS=, read region country city pptp udp tcp
+  while IFS=$'\t' read region country city pptp udp tcp
   do
     if [ "${city}" == "${config}" ]; then
-    echo "$udp"
+    printf "$udp"
     fi
-  done < /usr/lib/purevpn/vpn-list.csv
+  done < /etc/purevpn/vpn-list.tsv
 }
 
 process_ovpn() {
-  echo "Creating OpenVPN config for $config"
+  printf "Creating OpenVPN config for $config\n"
+  cleanconfig=$(echo $config | tr -d '[:punct:]|[:space:]')
   mkdir -p /tmp/purevpn
   for proto in TCP UDP
   do
-    filename=$(echo "${config}-${proto}" | tr '[:lower:]' '[:upper:]')
-    cp "/usr/lib/purevpn/template-ovpn" "/tmp/purevpn/${filename}-PUREVPN"
+    filename=$(printf "PureVPN-${cleanconfig}-${proto}")
+    cp "/usr/lib/purevpn/template-ovpn" "/tmp/purevpn/${filename}"
     if [ "$proto" == "UDP" ]
     then
       host=$(get_upd_url)
@@ -80,41 +101,42 @@ process_ovpn() {
     then
       host=$(get_tcp_url)
       port=80
-      sed -i '/port=/a \proto-tcp=yes' "/tmp/purevpn/${filename}-PUREVPN"
+      sed -i '/port=/a \proto-tcp=yes' "/tmp/purevpn/${filename}"
     fi
     if [[ $host == "" ]]; then
-      echo "Looks like there is no host for this city and protocol."
+      printf "Looks like there is no host for this city and protocol.\n"
       exit 1
     fi
-    sed -i "s/\bid=/&${filename}/" "/tmp/purevpn/${filename}-PUREVPN" #id
-    sed -i "s/\buuid=/&$(uuidgen)/" "/tmp/purevpn/${filename}-PUREVPN" #uuid
-    sed -i "s/\bport=/&${port}/" "/tmp/purevpn/${filename}-PUREVPN" #port
-    sed -i "s/\bremote=/&$host:${port}/" "/tmp/purevpn/${filename}-PUREVPN" #host
-    chmod 600 "/tmp/purevpn/${filename}-PUREVPN" #permissions
-    mv "/tmp/purevpn/${filename}-PUREVPN" /etc/NetworkManager/system-connections
+    sed -i "s/\bid=/&${filename}/" "/tmp/purevpn/${filename}" #id
+    sed -i "s/\buuid=/&$(uuidgen)/" "/tmp/purevpn/${filename}" #uuid
+    sed -i "s/\bport=/&${port}/" "/tmp/purevpn/${filename}" #port
+    sed -i "s/\bremote=/&$host:${port}/" "/tmp/purevpn/${filename}" #host
+    chmod 600 "/tmp/purevpn/${filename}" #permissions
+    mv "/tmp/purevpn/${filename}" /etc/NetworkManager/system-connections
   done
 }
 
 process_pptp() {
-  echo "Creating PPTP config for $config"
+  printf "Creating PPTP config for $config\n"
   mkdir -p /tmp/purevpn
-  filename=$(echo "${config}-PPTP" | tr '[:lower:]' '[:upper:]')
-    cp "/usr/lib/purevpn/template-pptp" "/tmp/purevpn/${filename}-PUREVPN"
+  cleanconfig=$(echo $config | tr -d '[:punct:]|[:space:]')
+  filename=$(printf "PureVPN-${cleanconfig}-PPTP")
+    cp "/usr/lib/purevpn/template-pptp" "/tmp/purevpn/${filename}"
     host=$(get_pptp_url)
     if [[ $host == "" ]]; then
-      echo "Looks like there is no host for this city and protocol."
+      printf "Looks like there is no host for this city and protocol.\n"
       exit 1
     fi
-    sed -i "s/\bid=/&${filename}/" "/tmp/purevpn/${filename}-PUREVPN" #id
-    sed -i "s/\buuid=/&$(uuidgen)/" "/tmp/purevpn/${filename}-PUREVPN" #uuid
-    sed -i "s/\bgateway=/&$host/" "/tmp/purevpn/${filename}-PUREVPN" #host
-    chmod 600 "/tmp/purevpn/${filename}-PUREVPN" #permissions
-    mv "/tmp/purevpn/${filename}-PUREVPN" /etc/NetworkManager/system-connections
+    sed -i "s/\bid=/&${filename}/" "/tmp/purevpn/${filename}" #id
+    sed -i "s/\buuid=/&$(uuidgen)/" "/tmp/purevpn/${filename}" #uuid
+    sed -i "s/\bgateway=/&$host/" "/tmp/purevpn/${filename}" #host
+    chmod 600 "/tmp/purevpn/${filename}" #permissions
+    mv "/tmp/purevpn/${filename}" /etc/NetworkManager/system-connections
 }
 
 addpass() {
   cd /etc/NetworkManager/system-connections
-  find *-PUREVPN -print0 | while read -d $'\0' file
+  find -iname "*PureVPN*" -print0 | while read -d $'\0' file
   do
     sed -i "s/\bpassword=.*/password=${passw}/g" "$file"
   done
@@ -122,7 +144,7 @@ addpass() {
 
 adduser() {
   cd /etc/NetworkManager/system-connections
-  find *-PUREVPN -print0 | while read -d $'\0' file
+  find -iname "*PureVPN*" -print0 | while read -d $'\0' file
   do
     if [[ $file == *"PPTP"* ]]; then
       sed -i "s/\buser=.*/user=${uname}/g" "$file"
@@ -133,11 +155,11 @@ adduser() {
 }
 
 clean() {
-  echo "Purging all PUREVPN files!"
-  find /etc/NetworkManager/system-connections -name "*PUREVPN" -exec rm -v {} \;
+  printf "Purging all PureVPN files!\n"
+  find /etc/NetworkManager/system-connections -iname "*PureVPN*" -exec rm -v {} \;
 }
 
-while getopts "hlc:t:u:p:x" opt
+while getopts "hlc:t:u:p:xz" opt
   do
     case $opt in
       h) 
@@ -149,19 +171,23 @@ while getopts "hlc:t:u:p:x" opt
         exit 0
         ;;
       c)
-        config=$OPTARG
+        configs+=("${OPTARG}")
         ;;
       t)
-        protoc=$OPTARG
+        protocs+=("${OPTARG}")
         ;;
       u)
         uname=$OPTARG
         ;;
       p) 
         passw=$OPTARG
-	    ;;
+        ;;
       x)
         clean
+        exit 0
+        ;;
+      z)
+        updlist
         exit 0
         ;;
       \?)
@@ -173,42 +199,65 @@ while getopts "hlc:t:u:p:x" opt
 
 ## Main script
 
-if [ -z "$protoc" ];
+if [ -z "$protocs" ];
 then
-  echo "No protocol was specified. No files will be installed."
-  exit 1;
+  if [[ -v uname ]] || [[ -v passw ]];
+  then
+    SKIPCITY="true"
+  else
+    printf "No protocol was specified. No files will be installed.\n"
+    exit 1;
+  fi
 fi
 
-if [ -z "$config" ];
+if [ -z "$configs" ];
 then
-  echo "No city specified. No files will be installed."
-elif list | grep "${config}" > /dev/null; then
-  if [ "$protoc" == "pptp" ];
+  if [[ -v uname ]] || [[ -v passw ]];
   then
-    process_pptp
+    SKIPCITY="true"
   else
-    process_ovpn
+    printf "No city specified. No files will be installed.\n"
+    exit 1;
   fi
-else
-  echo "We couldn't find that city."
-  echo "Try running purevpn -l to list available cities."
-  exit 1;
 fi
-      
+
+if [ -z "$SKIPCITY" ];
+then
+  for config in "${configs[@]}"; do
+    if list | grep "${config}" > /dev/null; then
+      for protoc in "${protocs[@]}"; do
+        if [ "$protoc" == "pptp" ]; then
+          process_pptp
+        elif [ "$protoc" == "ovpn" ]; then
+          process_ovpn
+        else
+          printf "$protoc does not seem to be a valid protocol. Choose pptp or ovpn.\n"
+          warn;
+        fi
+      done
+    else
+      printf "We couldn't find a city called $config.\n"
+      printf "Try running purevpn -l to list available cities.\n"
+      exit 1;
+    fi
+  done
+fi
+
 if [[ -z "$uname" ]]; then 
-  echo "No username was specified"
+  printf "No username was specified.\n"
 else
-  echo "Adding the username to the installed config files."
+  printf "Adding the username to the installed config files.\n"
   adduser
 fi
 
 if [[ -z "$passw" ]]; then 
-  echo "No password was specified."
+  printf "No password was specified.\n"
 else
-  echo "Adding the password to the installed config files."
+  printf "Adding the password to the installed config files.\n"
   addpass
 fi
 
-echo "Restarting NetworkManager"
+printf "Restarting NetworkManager.\n"
 systemctl restart NetworkManager
 
+exit 0
