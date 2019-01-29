@@ -3,15 +3,16 @@
 # https://bbs.archlinux.org/viewtopic.php?id=235884
 
 pkgname=lando-git
-pkgver=3.0.0.rc.1.r52.g3d2d7c23
+pkgver=3.0.0.rc.1.r284.gd76f66f8
 _target_version="3.0.0-rc.1"
 pkgrel=1
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
 url="https://docs.devwithlando.io"
 license=('GPL')
-optdepends=('docker' 'docker-compose')
-makedepends=('npm' 'yarn')
+depends=('docker' 'docker-compose')
+optdepends=('gcc-libs')
+makedepends=('npm' 'yarn' 'git')
 source=("${pkgname}::git+https://github.com/lando/lando.git")
 sha256sums=('SKIP')
 
