@@ -1,6 +1,6 @@
 pkgbase = mantisbt
 	pkgdesc = Web-based issue tracking system
-	pkgver = 2.18.0
+	pkgver = 2.19.0
 	pkgrel = 1
 	url = https://www.mantisbt.org/
 	install = mantisbt.install
@@ -20,8 +20,10 @@ pkgbase = mantisbt
 	backup = etc/webapps/mantisbt/custom_relationships_inc.php
 	backup = etc/webapps/mantisbt/custom_functions_inc.php
 	backup = etc/webapps/mantisbt/custom_constants_inc.php
-	source = https://downloads.sourceforge.net/project/mantisbt/mantis-stable/2.18.0/mantisbt-2.18.0.tar.gz
-	sha512sums = 759202ba99214244f905eed4d7b9b8c526af282690cf707c7c91471552537898f9389b4eda681bf42b0016097e390c8ebe6de0bcfe874110c0a40fdd10bfd3fe
+	source = https://downloads.sourceforge.net/project/mantisbt/mantis-stable/2.19.0/mantisbt-2.19.0.tar.gz
+	source = tmpfiles.conf
+	sha512sums = 5d074bc3605a9aae3c4b738e0ea667c3687e97a04e2702941158301ab9c86c14e8bc83fe8d5b9d34d5d011f5b5041d37b1bd44ea40815c2d1ae91f6130b5a987
+	sha512sums = e0c3fc92a3a61f86f780e5e30ccefe751ef0f16727a44006f8c7dae53951abaa0b8c6e0dc3e807668e0fe78252296996a6123cc5d5bf8427055ae07efe3bd37e
 
 pkgname = mantisbt
 
