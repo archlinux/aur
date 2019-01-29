@@ -1,0 +1,11 @@
+--- src/scangearmp-source-2.00-1/scangearmp/src/scangimp.c	2019-01-24 22:24:18.880375302 +0100
++++ src/scangearmp-source-2.00-1/scangearmp/src/scangimp_new.c	2019-01-24 22:24:46.707170979 +0100
+@@ -43,7 +43,7 @@
+ //#include <string.h>
+ //#include <gtk/gtk.h>
+ #include <libgimp/gimp.h>
+-#include <libgimp/gimpcompat.h>
++//#include <libgimp/gimpcompat.h>
+ #include <dlfcn.h>
+ 
+ #include "cnmstype.h"

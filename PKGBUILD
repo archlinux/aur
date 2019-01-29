@@ -14,7 +14,7 @@ _id=404
 
 pkgname=scangearmp-${_name}
 pkgver=2.00
-pkgrel=3
+pkgrel=4
 _pkgver=2.00-1
 pkgdesc="Canon Scanner Driver (for ${_name} series)"
 url="http://support-my.canon-asia.com/contents/MY/EN/0100470802.html"
@@ -27,11 +27,13 @@ source=(
     http://gdlp01.c-wss.com/gds/8/0100004708/01/scangearmp-source-${_pkgver}.tar.gz
     'libpng15.patch'
     'fix_configure.patch'
+    'gimp2.9.patch'
 )
 md5sums=(
     'ccd538e1333bf34aa83900f093ecd9eb'
     '5fd4f2f00aad11ff108a2c642cf1a7c1'
     '6ff76bfcfa4b4021e47677882772c895'
+    'cedd3b24a29500813f4e0f81f9abca0e'
 )
 
 if [ "$CARCH" == "x86_64" ]; then
@@ -53,6 +55,8 @@ build() {
     # Force the use of system's libtool
     rm -f libtool
     ln -s `which libtool` .
+    # patch for gimp >=2.9
+    patch -p3 --binary -l -i ../../gimp2.9.patch
     # Build package
     make clean || return 1
     make || return 1
