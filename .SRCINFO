@@ -1,7 +1,7 @@
 pkgbase = openlibrary
 	pkgdesc = Set of various toolkits
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/Kicer86/openlibrary
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = openlibrary
 	makedepends = boost
 	makedepends = cmake
 	depends = qt5-base
-	source = https://codeload.github.com/Kicer86/openlibrary/tar.gz/v2.2.0
-	md5sums = 837712af0ec3d71d37090728cd279eb9
+	source = https://codeload.github.com/Kicer86/openlibrary/tar.gz/v2.3.0
+	md5sums = 4a42d4f18b49489886b8d849fcad4ef9
 
 pkgname = openlibrary
 
