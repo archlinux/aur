@@ -1,7 +1,7 @@
 pkgbase = purevpn-networkmanager
 	pkgdesc = A script to generate template-based PureVPN configuration files for NetworkManager
 	pkgver = 2019.01.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.purevpn.com/
 	install = purevpn-networkmanager.install
 	arch = any

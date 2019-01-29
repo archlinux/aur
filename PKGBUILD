@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=purevpn-networkmanager
 pkgver=2019.01.28
-pkgrel=1
+pkgrel=2
 pkgdesc='A script to generate template-based PureVPN configuration files for NetworkManager'
 arch=('any')
 url='https://www.purevpn.com/'
@@ -45,6 +45,6 @@ package() {
   install -D -m 755 "${startdir}/purevpn" "${pkgdir}"/usr/bin
   install -D -m 644 "${startdir}"/{template-ovpn,template-pptp} "${pkgdir}"/usr/lib/purevpn
   cd "${srcdir}"
-  install -Dm600 {OpenVPN_Config_Files/TCP/ca.crt,OpenVPN_Config_Files/TCP/Wdc.key,vpn-list.csv} "${pkgdir}"/usr/lib/purevpn
+  install -Dm600 {OpenVPN_Config_Files/TCP/ca.crt,OpenVPN_Config_Files/TCP/Wdc.key,vpn-list.tsv} "${pkgdir}"/usr/lib/purevpn
 }
 
