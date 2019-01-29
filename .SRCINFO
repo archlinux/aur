@@ -1,7 +1,7 @@
 pkgbase = scalapack
 	pkgdesc = subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers.
 	pkgver = 2.0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.netlib.org/scalapack/
 	install = scalapack.install
 	arch = i686
@@ -18,10 +18,12 @@ pkgbase = scalapack
 	source = http://www.netlib.org/scalapack/manpages.tgz
 	source = Makefile
 	source = example1.f
-	md5sums = 2f75e600a2ba155ed9ce974a1c4b536f
-	md5sums = a536ab4837ec68addff0a3ec99427a10
-	md5sums = 0bef36150ffaf341a6228b474ed800c9
-	md5sums = 4723ad431356431bb193db254b6ee0fb
+	source = cmake3.13.3.patch
+	sha256sums = 0c74aeae690fe5ee4db7926f49c5d0bb69ce09eea75beb915e00bba07530395c
+	sha256sums = a745c9f367d65e3c7611c126597a4681094b002552e47b621964d30a966aac7b
+	sha256sums = 5f7e81c1c76fc010677fd446bfc689c7f6af1a22a51093e8790e8a615159c541
+	sha256sums = d9904ecb69f318c4782c0bd39ff2bff511af31960a2383a9d42d6620a266ea70
+	sha256sums = 3c3b2e60473394e8594854251eab1035fc31643fe17b26f49aa7b31d5b6903c3
 
 pkgname = scalapack
 
