@@ -1,6 +1,6 @@
 pkgbase = python2-pyscf
 	pkgdesc = Python-based Simulations of Chemistry Framework
-	pkgver = 1.5.4
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://sunqm.github.io/pyscf
 	arch = i686
@@ -14,9 +14,10 @@ pkgbase = python2-pyscf
 	depends = xcfun-pyscf
 	depends = libcint-cint3
 	depends = libxc
-	provides = python2-pyscf=1.5.4
+	provides = python2-pyscf=1.6.0
 	conflicts = python2-pyscf-git
-	source = https://github.com/sunqm/pyscf/archive/v1.5.4.tar.gz
+	source = https://github.com/pyscf/pyscf/archive/v1.6.0.tar.gz
+	sha256sums = b6f48fa7da3ef8fca2e78f0a145b595c232ac82001095c097e49c97ce89422d7
 
 pkgname = python2-pyscf
 
