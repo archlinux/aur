@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgbase=micropython
 pkgname=(micropython micropython-lib)
-pkgver=1.9.4
+pkgver=1.10
 _libver=1.9.3
 # stupid submodules
 _axver=1.8.2
@@ -21,7 +21,7 @@ source=("mpy-$pkgver.tgz::https://github.com/micropython/micropython/archive/v$p
         "bdb.tgz::https://github.com/pfalcon/berkeley-db-1.xx/archive/embedded.tar.gz")  # submodule with no releases!
 # What about the lwip submodule?  The repo is GONE.  You didn't need an IP stack anyway.
 # Maybe http://download.savannah.gnu.org/releases/lwip/lwip-2.0.0.zip is it?
-md5sums=('5091802d5d9b7dd47e80ea6fc084ca6c'
+md5sums=('335d51f6f66a8f6dac95f4a53d0af579'
          '1752ce13e851a671a07ce3f7a807b21c'
          'e11da4ef04499030d1eff69b474f34f0'
          '9066486bcab807f7ddaaf2596348c1db'
@@ -53,7 +53,7 @@ prepare() {
 
 build() {
   cd "$srcdir/micropython-$pkgver/ports/unix"
-  make libffi
+  #make libffi
   #make V=1 deplibs
   make
   cd "$srcdir/micropython-lib-$_libver"
@@ -77,6 +77,7 @@ package_micropython-lib() {
   cd "$srcdir/micropython-lib-$_libver"
   for _d in $(find -mindepth 1 -maxdepth 1 -type d); do
     # todo, figure out what provides this
+    # maybe importlib.metadata in python 3.8?
     if grep -qr 'import metadata' ./$_d/*; then
       error "Skipping $_d (bad import)"
       continue
