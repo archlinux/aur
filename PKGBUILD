@@ -3,7 +3,7 @@
 pkgname=tunneltanks-git
 _pkgname=tunneltanks
 pkgver=r74.44cf228
-pkgrel=2
+pkgrel=3
 pkgdesc="SDL remake of the early 90's tank game Tunneler"
 url="https://github.com/raydog/tunneltanks"
 depends=('sdl')
@@ -34,7 +34,7 @@ build() {
 package() {
   cd ${srcdir}/${pkgname}
   make DESTDIR=${pkgdir} install
-  install -Dm644 "${srcdir}/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
