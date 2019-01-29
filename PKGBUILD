@@ -1,40 +1,37 @@
-# Maintainer: Saeid Ahmed <itsaeid@gmail.com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor: Saeid Ahmed <itsaeid@gmail.com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Rob Lynn <rob22uk at gmail dot com>
 # Contributor: DerFlob <derflob at derflob dot de>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 
 pkgname=tilda-git
-_gitname=tilda
-pkgver=tilda.1.4.1
+pkgver=1.4.1.r0.g1607681
 pkgrel=1
-pkgdesc="Linux terminal based on classic terminals from first person shooter games"
-arch=('i686' 'x86_64')
+pkgdesc="A Gtk based drop down terminal for Linux and Unix."
+arch=('x86_64')
 url="https://github.com/lanoxx/tilda"
 license=('GPL')
-depends=('gtk3' 'vte3' 'glib2' 'confuse' 'libglade')
+depends=('confuse' 'vte3')
 makedepends=('git')
-provides=('tilda')
-conflicts=('tilda')
-
-source=('git://github.com/lanoxx/tilda.git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/lanoxx/tilda.git')
 sha1sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/^tilda-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_gitname
+  cd ${pkgname%-git}
   ./autogen.sh --prefix=/usr
   make
 }
 
 package() {
-  cd $_gitname
-  make DESTDIR="$pkgdir/" install
-  sed -i 's|applications/tilda.png|pixmaps/tilda.png|' "$pkgdir/usr/share/applications/tilda.desktop"
+  cd ${pkgname%-git}
+  make DESTDIR="${pkgdir}/" install
 }
-
 # vim:set ts=2 sw=2 et:
