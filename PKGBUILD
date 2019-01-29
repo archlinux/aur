@@ -7,7 +7,7 @@
 
 pkgname=calculix
 pkgver=2.15
-pkgrel=2
+pkgrel=3
 pkgdesc="CalculiX: 3D finite element solver and post-processor (executables)"
 arch=('i686' 'x86_64')
 options=(!makeflags !buildflags)
@@ -24,26 +24,16 @@ checkdepends=('perl')
 source=("http://www.dhondt.de/ccx_${pkgver}.src.tar.bz2"
         "http://www.dhondt.de/ccx_${pkgver}.test.tar.bz2"
       	"http://www.dhondt.de/cgx_${pkgver}.all.tar.bz2"
-        "ccx_2.14_lbfgsb.f"
-        "ccx_2.14_linpack.f"
-        "ccx_2.14_timer.f"
         "calculix_${pkgver}_archlinux.patch")
 
-sha256sums=('5f112598a5f1c1d65a9d213c30fece2481f22987f39e8b36c67aa7bd2d764cbe'
+sha256sums=('bc7dba721935af51b60c1b5aa1529a420476fc6432a7bec5254f8dfabaeb8a34'
             'ee17e477aeae944c35853a663ac245c33b405c3750308c5d77e5ee9a4e609dd5'
             'ce589e777249181e3c15bba6a42ec22ca305ef4e1cfba478d86ae6c775f1712b'
-            'b528f595f6b0969ed7e58339d1be0f09f65bd52a62b449d9d0066c367676bdb9'
-            '58c9131af4bce6649cb4fd19525311df3df52364bd1fe4908be3b770b5b076f6'
-            '8ad2be66b9dc491d20eeb9801aadfd8451439372179ca41cc95bf5acb0de6aac'
             '7cd1b478aab2886b2a2eb590a165f25d6ddade1076ebbe0d3d5f8c4acc120a22')
 
 prepare()
 {
     cd "${srcdir}"
-
-    cp -n ccx_2.14_lbfgsb.f "${srcdir}/CalculiX/ccx_${pkgver}/src/lbfgsb.f"
-    cp -n ccx_2.14_linpack.f "${srcdir}/CalculiX/ccx_${pkgver}/src/linpack.f"
-    cp -n ccx_2.14_timer.f "${srcdir}/CalculiX/ccx_${pkgver}/src/timer.f"
 
     msg "Patching makefiles..."
     rm -rf CalculiX/libSNL
