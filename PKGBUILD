@@ -11,6 +11,5 @@ source=("https://keepass.info/extensions/v2/qrcodegen/QrCodeGenerator-${pkgver}.
 sha256sums=('72f8fc4c85f0db438549b7b830e133b27857c60aecd53eca8476937bfb4bfc51')
 
 package() {
-  cd "$srcdir"
-  install -m644 -D QrCodeGenerator.plgx "${pkgdir}/usr/share/keepass/plugins/QrCodeGenerator.plgx"
+  install -Dm644 "$srcdir/QrCodeGenerator.plgx" "${pkgdir}/usr/share/keepass/plugins/QrCodeGenerator.plgx"
 }
