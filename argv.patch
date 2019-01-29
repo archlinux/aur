@@ -1,6 +1,6 @@
-diff -ura electron-ssr-0.2.5/src/main/index.js electron-ssr-0.2.5-new/src/main/index.js
---- electron-ssr-0.2.5/src/main/index.js	2018-12-26 18:29:32.000000000 +0800
-+++ electron-ssr-0.2.5-new/src/main/index.js	2019-01-20 15:08:44.166253824 +0800
+diff -ura electron-ssr-0.2.6/src/main/index.js electron-ssr-0.2.6-new/src/main/index.js
+--- electron-ssr-0.2.6/src/main/index.js	2018-12-26 18:29:32.000000000 +0800
++++ electron-ssr-0.2.6-new/src/main/index.js	2019-01-20 15:08:44.166253824 +0800
 @@ -28,7 +28,12 @@
    }
    // 如果是通过链接打开的应用，则添加记录

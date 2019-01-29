@@ -1,19 +1,19 @@
-diff -ura electron-ssr-0.2.5/src/main/bootstrap.js electron-ssr-0.2.5-new/src/main/bootstrap.js
---- electron-ssr-0.2.5/src/main/bootstrap.js	2018-12-26 18:29:32.000000000 +0800
-+++ electron-ssr-0.2.5-new/src/main/bootstrap.js	2019-01-21 22:10:10.157584848 +0800
+diff -ura electron-ssr-0.2.6/src/main/bootstrap.js electron-ssr-0.2.6-new/src/main/bootstrap.js
+--- electron-ssr-0.2.6/src/main/bootstrap.js	2018-12-26 18:29:32.000000000 +0800
++++ electron-ssr-0.2.6-new/src/main/bootstrap.js	2019-01-21 22:10:10.157584848 +0800
 @@ -36,6 +36,8 @@
    logger.error(`Unhandled Rejection at: Promise ${p}, reason: ${reason}`)
  })
  
 +app.setPath('userData', path.join(app.getPath('appData'), 'electron-ssr'))
-+app.setVersion('0.2.5')
++app.setVersion('0.2.6')
  // 应用配置存储目录
  export const appConfigDir = app.getPath('userData')
  // 应用配置存储路径
 
-diff -ura electron-ssr-0.2.5/src/main/logger.js electron-ssr-0.2.5-new/src/main/logger.js
---- electron-ssr-0.2.5/src/main/logger.js   2018-12-26 18:29:32.000000000 +0800
-+++ electron-ssr-0.2.5-new/src/main/logger.js 2019-01-21 22:29:14.657347146 +0800
+diff -ura electron-ssr-0.2.6/src/main/logger.js electron-ssr-0.2.6-new/src/main/logger.js
+--- electron-ssr-0.2.6/src/main/logger.js   2018-12-26 18:29:32.000000000 +0800
++++ electron-ssr-0.2.6-new/src/main/logger.js 2019-01-21 22:29:14.657347146 +0800
 @@ -3,11 +3,13 @@
  import { join } from 'path'
  import { ensureDirSync } from 'fs-extra'
