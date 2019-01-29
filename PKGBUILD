@@ -1,4 +1,4 @@
-# Maintainer: Morgana <morganamilo@gmail.com>
+# Maintainer: Anna <morganamilo@gmail.com>
 
 pkgname=superproductivity-git
 _pkgname=superProductivity
