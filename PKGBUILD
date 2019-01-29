@@ -14,11 +14,7 @@ provides=('parquet-cpp')
 conflicts=('parquet-cpp')
 makedepends=('cmake' 'boost' 'brotli' 'double-conversion' 'flatbuffers-static' 'gflags-static' 'google-glog-static' 'lz4-static' 'zlib-static' 'zstd-static' 'snappy-static')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
-sha256sums=('97065e15bf61c47d3f5da9098afb126d536acbc38244d3663cb0f94a998e4997')
-
-prepare(){
-  cd "${srcdir}/$pkgname-apache-$pkgname-$pkgver"
-}
+sha256sums=('e2eb87a68d200df5ff405fd7e0ab3d0549ccd5275f3a698439bb202918a000a8')
 
 build(){
   cd "$srcdir"
