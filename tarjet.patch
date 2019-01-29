@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index 9d8dbd6..922fb35 100755
+--- a/Makefile
++++ b/Makefile
+@@ -34,8 +34,8 @@ EXTRA_LDFLAGS += --strip-debug
+ 
+ ########################## WIFI IC ############################
+ CONFIG_RTL8812A = y
+-CONFIG_RTL8821A = y
+-CONFIG_RTL8814A = y
++CONFIG_RTL8821A = n
++CONFIG_RTL8814A = n
+ ######################### Interface ###########################
+ CONFIG_USB_HCI = y
+ ########################## Features ###########################
