@@ -1,6 +1,6 @@
 pkgbase = compiz-bzr
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)
-	pkgver = 4182
+	pkgver = 4191
 	pkgrel = 1
 	url = https://launchpad.net/compiz
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = compiz-bzr
 	makedepends = cmake
 	makedepends = bzr
 	makedepends = intltool
-	makedepends = cython2
+	makedepends = cython
 	depends = boost
 	depends = xorg-server
 	depends = libxcomposite
@@ -24,15 +24,14 @@ pkgbase = compiz-bzr
 	depends = glibmm
 	depends = libxrender
 	depends = libwnck3
-	depends = pygtk
 	depends = desktop-file-utils
-	depends = pyrex
 	depends = protobuf
 	depends = metacity
 	depends = glu
 	depends = libsm
 	depends = dconf
-	depends = python2-gobject
+	depends = python-gobject
+	depends = python-cairo
 	optdepends = xorg-xprop: grab various window properties for use in window matching rules
 	provides = compiz=0.9.13
 	provides = compiz-core=0.9.13

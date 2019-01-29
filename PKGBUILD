@@ -3,7 +3,7 @@
 # Contributor: Iven Hsu <ivenvd AT gmail>
 
 pkgname=compiz-bzr
-pkgver=4182
+pkgver=4191
 pkgrel=1
 _bzrname=compiz
 _bzrbranch=0.9.13
@@ -11,8 +11,8 @@ pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (development
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
 license=('GPL' 'LGPL' 'MIT')
-depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'metacity' 'glu' 'libsm' 'dconf' 'python2-gobject')
-makedepends=('cmake' 'bzr' 'intltool' 'cython2')
+depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'desktop-file-utils' 'protobuf' 'metacity' 'glu' 'libsm' 'dconf' 'python-gobject' 'python-cairo')
+makedepends=('cmake' 'bzr' 'intltool' 'cython')
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
