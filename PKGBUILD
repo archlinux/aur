@@ -2,8 +2,8 @@
 
 pkgbase=cutechess
 pkgname=(cutechess cutechess-cli libcutechess libcutechess-docs)
-pkgver=0.9.4
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Tools for working with chess engines"
 arch=(i686 x86_64)
 url=http://cutechess.com
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(qt5-svg)
 makedepends=(doxygen)
 source=(https://github.com/$pkgname/$pkgname/archive/gui-$pkgver.tar.gz)
-sha256sums=(315676ce661729e9acabb741ab538196ae85019efab4e3f9e4a08c3410580af8)
+sha256sums=(b85967c225e70eed88c1b64d42542bdb21c8f3f52fd17765200073e390aaba04)
 
 prepare() {
   cd $pkgbase-gui-$pkgver/projects
