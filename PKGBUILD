@@ -1,8 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
-# Maintainer: David Parrish <BM-2cU1Bk3fXVo9VrGpo2YQFJ1it31gSuAy5j>
 
 pkgname=pybitmessage-git
-pkgver=0.6.3.2.r305.g1cdbb90f
+pkgver=0.6.3.2.r312.gee7aa6c2
 pkgrel=1
 pkgdesc="Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers"
 arch=('i686' 'x86_64')
