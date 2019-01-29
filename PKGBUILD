@@ -11,10 +11,8 @@ optdepends=('mpg123: MP3 sounds support'
             'alsa-utils: WAV sounds support')
 url="https://github.com/Bitmessage/PyBitmessage"
 license=('MIT')
-source=("${pkgname}::git+https://github.com/Bitmessage/PyBitmessage.git#branch=v0.6"
-            "pybitmessage.profile")
-sha256sums=('SKIP'
-            '4029157df5179a487107ffb63358fc15c77e1395a765bbd957e89468669b414d')
+source=("${pkgname}::git+https://github.com/Bitmessage/PyBitmessage.git#branch=v0.6")
+sha256sums=('SKIP')
 provides=('pybitmessage')
 
 pkgver() {
@@ -39,10 +37,6 @@ package() {
   # Installing man page
   mkdir -p "$pkgdir/usr/share/man/man1"
   install -m644 man/pybitmessage.1.gz "$pkgdir/usr/share/man/man1"
-
-  # Installing Firejail profile...
-  mkdir -p "$pkgdir/etc/firejail"
-  install -m644 "$srcdir/pybitmessage.profile" "$pkgdir/etc/firejail"
 
   # Installing license
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
