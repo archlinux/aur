@@ -11,7 +11,7 @@ source=("https://github.com/zealot128/ruby-letsencrypt-cli/archive/v${pkgver}.ta
 md5sums=('2c5091b9436d4a0691d2b2b9f65e87fd')
  
 package() {
-    cd "${srcdir}/ruby-$pkgname-$pkgver/"
+    cd "${srcdir}/ruby-acme-cli-$pkgver/"
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
     gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" letsencrypt-cli
 }
