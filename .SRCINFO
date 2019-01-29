@@ -1,17 +1,13 @@
 pkgbase = superproductivity-git
 	pkgdesc = To Do List / Time Tracker with Jira Integration.
-	pkgver = 1.9.2.r0.gd0aca7d
+	pkgver = 1.999.1000.r15.g08bd5c5e
 	pkgrel = 1
 	url = http://super-productivity.com/
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	makedepends = gulp
-	makedepends = bower
-	makedepends = yarn
-	makedepends = chromium
 	makedepends = libicns
-	makedepends = graphicsmagick
 	makedepends = python3
 	depends = gtk2
 	depends = libxss
@@ -25,7 +21,7 @@ pkgbase = superproductivity-git
 	depends = xprintidle
 	provides = superproductivity
 	conflicts = superproductivity
-	source = git+https://github.com/johannesjo/super-productivity#branch=develop
+	source = git+https://github.com/johannesjo/super-productivity
 	md5sums = SKIP
 
 pkgname = superproductivity-git
