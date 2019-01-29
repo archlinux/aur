@@ -3,7 +3,7 @@
 
 pkgbase=pypy-packaging
 pkgname=(pypy-packaging pypy3-packaging)
-pkgver=16.8
+pkgver=19.0
 pkgrel=1
 pkgdesc="Core utilities for Python packages"
 arch=('any')
