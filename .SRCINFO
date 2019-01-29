@@ -10,6 +10,7 @@ pkgbase = theharvester-git
 	makedepends = bash
 	depends = bash
 	depends = python
+	depends = python-yaml
 	depends = python-requests
 	depends = python-plotly
 	depends = python-pytest

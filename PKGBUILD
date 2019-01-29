@@ -10,6 +10,7 @@ license=('GPL2')
 depends=(
 		'bash'
 		'python'
+		'python-yaml'
 		'python-requests'
 		'python-plotly'
 		'python-pytest'
