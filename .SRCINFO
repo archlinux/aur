@@ -1,7 +1,7 @@
 pkgbase = uap-cpp-git
 	pkgdesc = C++ implementation of ua-parser
 	pkgver = r71.87fe432
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ua-parser/uap-cpp
 	arch = x86_64
 	arch = i686
