@@ -3,9 +3,9 @@
 
 pkgname=nginx-mod-upload-progress
 pkgver=0.9.2
-pkgrel=1
+pkgrel=3
 _dirname="nginx-upload-progress-module-$pkgver"
-_nginxver=1.14.0
+_nginxver=1.14.2
 
 pkgdesc='NGINX module implementing an upload progress system, that monitors RFC1867 POST uploads'
 arch=('x86_64')
