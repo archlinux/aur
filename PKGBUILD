@@ -3,9 +3,9 @@
 
 pkgname=nginx-mod-upstream-fair
 pkgver=0.1.3
-pkgrel=1
+pkgrel=3
 _dirname="nginx-upstream-fair-$pkgver"
-_nginxver=1.14.0
+_nginxver=1.14.2
 
 pkgdesc='Fair load balancer module for nginx'
 arch=('x86_64')
