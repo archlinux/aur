@@ -3,13 +3,13 @@
 _pkgname=ueberzug
 pkgname=python-${_pkgname}-git
 pkgver=gb89ff85
-pkgrel=2
+pkgrel=3
 pkgdesc="ueberzug is an python script which aims to replace w3mimgdisplay"
 arch=('any')
 url="https://github.com/seebye/${_pkgname}"
 license=('GPL3')
 depends=("python" "python-xlib" "python-docopt" "python-psutil" "python-pillow" "python-attrs")
-makedepends=("python")
+makedepends=("python" "git" "python-setuptools")
 source=("git+${url}.git#branch=master")
 md5sums=('SKIP')
 conflicts=("python-${_pkgname}")
