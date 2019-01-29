@@ -8,17 +8,17 @@ _brotherrelease=${pkgver:$((${#pkgver}-1))}
 _brotherdrivername=BrGenML1
 pkgdesc="LPR and CUPS driver for various Brother DCP, HL and MFC models."
 arch=('i686' 'x86_64')
-url='http://support.brother.com/g/s/id/linux/en'
+url='https://support.brother.com/g/s/id/linux/en'
 license=('GPL version 2 for CUPS driver, custom:brother commercial license for LPR driver.')
 depends=('cups')
 depends_x86_64=('lib32-glibc')
-source=("http://download.brother.com/welcome/dlf101124/brgenml1lpr-${_brotherpkgver}-${_brotherrelease}.i386.rpm"
-        "http://download.brother.com/welcome/dlf101126/brgenml1cupswrapper-${_brotherpkgver}-${_brotherrelease}.i386.rpm"
+source=("https://download.brother.com/welcome/dlf101124/brgenml1lpr-${_brotherpkgver}-${_brotherrelease}.i386.rpm"
+        "https://download.brother.com/welcome/dlf101126/brgenml1cupswrapper-${_brotherpkgver}-${_brotherrelease}.i386.rpm"
         "lpr-license.txt")
 
 md5sums=('9ab1b4096a3258ef3498377ce0a76d82'
          'cdba9c13be7a39ad75daa575f7cdf76e'
-	 'dbf216d89fbc0c287c569d819a1bca51')
+         'dbf216d89fbc0c287c569d819a1bca51')
 
 prepare() {
 
