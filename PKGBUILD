@@ -1,4 +1,5 @@
 # Maintainer: Sotirios M. Roussis (xToNouSou) <xtonousou@gmail.com>
+# Co-Maintainer: Oscar Alfonso Diaz (OscarAkaElvis) <oscar.alfonso.diaz@gmail.com>
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
