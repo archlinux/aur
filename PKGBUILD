@@ -1,7 +1,7 @@
 # Maintainer: Ian Emnace <igemnace@gmail.com>
 pkgname=circleci-cli
-pkgver=0.1.5245
-pkgrel=2
+pkgver=0.1.5294
+pkgrel=1
 pkgdesc="Use CircleCI from the command line"
 arch=(x86_64)
 url="https://github.com/CircleCI-Public/circleci-cli"
@@ -12,7 +12,7 @@ source=(
 	"https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/v$pkgver/LICENSE"
 )
 sha256sums=(
-	'190213d0458bf76047fd14f39b36599d7fd4e80e21954611aec0c173965eb643'
+	'2883cbbb59068b6e707a9e4a00eb89e718223e147ae5df32d5ba4f9537180ad7'
 	SKIP
 )
 
