@@ -2,8 +2,8 @@
 
 _pkgname=uap-cpp
 pkgname=$_pkgname-git
-pkgver=r71.87fe432
-pkgrel=2
+pkgver=r72.86bae59
+pkgrel=1
 pkgdesc="C++ implementation of ua-parser"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/ua-parser/uap-cpp'
@@ -12,14 +12,8 @@ provides=('uap-cpp')
 conflicts=('uap-cpp')
 makedepends=('git' 'boost')
 depends=('yaml-cpp' 'boost-libs' 'uap-core')
-source=(
-  git+https://github.com/ua-parser/uap-cpp.git
-  cxxflags.patch
-)
-sha256sums=(
-  'SKIP'
-  'aad58cf62a9fea7276b452d99954d86896e096749911efae431edb7bc96f672a'
-)
+source=(git+https://github.com/ua-parser/uap-cpp.git)
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -28,13 +22,11 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  git submodule init
-  git submodule update
+  git submodule update --init
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  patch < "../cxxflags.patch"
   make libuaparser_cpp.a libuaparser_cpp.so
 }
 

@@ -18,9 +18,7 @@ pkgbase = uap-cpp-git
 	provides = uap-cpp
 	conflicts = uap-cpp
 	source = git+https://github.com/ua-parser/uap-cpp.git
-	source = cxxflags.patch
 	sha256sums = SKIP
-	sha256sums = aad58cf62a9fea7276b452d99954d86896e096749911efae431edb7bc96f672a
 
 pkgname = uap-cpp-git
 
