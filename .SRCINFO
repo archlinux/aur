@@ -1,6 +1,6 @@
 pkgbase = fisher-git
 	pkgdesc = A package manager for the fish shell
-	pkgver = 3.2.6.r1.gae878a8
+	pkgver = 3.2.7.r0.gb2cd7ae
 	pkgrel = 1
 	url = https://github.com/jorgebucaran/fisher
 	install = fisher-git.install

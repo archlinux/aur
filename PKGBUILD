@@ -1,10 +1,8 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Daniel Maslowski <info@orangecms.org>
-
 _branch=master
-
 pkgname=fisher-git
-pkgver=3.2.6.r1.gae878a8
+pkgver=3.2.7.r0.gb2cd7ae
 pkgrel=1
 pkgdesc="A package manager for the fish shell"
 arch=("any")
@@ -17,9 +15,7 @@ install=fisher-git.install
 source=(
     "git+https://github.com/jorgebucaran/fisher.git#branch=${_branch}"
 )
-sha512sums=(
-    "SKIP"
-)
+sha512sums=("SKIP")
 
 pkgver() {
     cd "fisher"
@@ -32,6 +28,7 @@ package() {
     # install Fisherman into the global fish directory
     cd "fisher"
     install -Dm 644 fisher.fish "${fishpath}/vendor_functions.d/fisher.fish"
-    # README
+    # README and LICENSE
+    install -Dm 644 LICENSE.md "${sharepath}/licenses/${pkgname}/LICENSE.md"
     install -Dm 644 README.md "${sharepath}/doc/${pkgname}/README"
 }
