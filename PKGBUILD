@@ -16,19 +16,19 @@ _pkgbase=qt5-base
 pkgname=(qt5-base-nostatx qt5-xcb-private-headers-nostatx)
 _qtver=5.12.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
-url='http://qt-project.org/'
+url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework'
 depends=('libjpeg-turbo' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libgl' 'fontconfig' 'xdg-utils'
          'shared-mime-info' 'xcb-util-wm' 'libxrender' 'libxi' 'sqlite' 'xcb-util-image' 'mesa'
          'tslib' 'libinput' 'libxkbcommon-x11' 'libproxy' 'libcups' 'double-conversion')
-makedepends=('libfbclient' 'libmariadbclient' 'sqlite' 'unixodbc' 'postgresql-libs' 'alsa-lib' 'gst-plugins-base-libs'
+makedepends=('libfbclient' 'mariadb-libs' 'sqlite' 'unixodbc' 'postgresql-libs' 'alsa-lib' 'gst-plugins-base-libs'
              'gtk3' 'libpulse' 'cups' 'freetds' 'vulkan-headers')
 optdepends=('qt5-svg: to use SVG icon themes'
             'postgresql-libs: PostgreSQL driver'
-            'libmariadbclient: MariaDB driver'
+            'mariadb-libs: MariaDB driver'
             'unixodbc: ODBC driver'
             'libfbclient: Firebird/iBase driver'
             'freetds: MS SQL driver'
@@ -36,7 +36,7 @@ optdepends=('qt5-svg: to use SVG icon themes'
 conflicts=('qtchooser')
 groups=('qt' 'qt5')
 _pkgfqn="${_pkgbase/5-/}-everywhere-src-${_qtver}"
-source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         qtbug-72844.patch::"https://code.qt.io/cgit/qt/qtbase.git/patch/?id=52e0d9e2")
 sha256sums=('5e03221d780e121aabd734896aab8f331e5d8c9d9b54f1eb04907d0818eaeecb'
             'afdea0787e1d8d4c2e7139770761aba4fe8268f50b7f5d715bdd850cc7017996')
