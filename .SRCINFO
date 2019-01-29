@@ -1,0 +1,21 @@
+pkgbase = bzip2-with-lbzip2-symlinks
+	pkgdesc = bzip2 with binaries symbolically linked to their lbzip2 equivalents
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = http://sources.redhat.com/bzip2
+	arch = x86_64
+	license = custom
+	depends = lbzip2
+	depends = glibc
+	depends = sh
+	provides = bzip2=1.0.6
+	conflicts = bzip2
+	source = https://sources.archlinux.org/other/packages/bzip2/bzip2-1.0.6.tar.gz
+	source = bzip2-1.0.4-bzip2recover.patch
+	source = fix-heap-use-after-free-bzip2recover.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-arch/bzip2/files/bzip2-1.0.6-CVE-2016-3189.patch
+	sha256sums = a2848f34fcd5d6cf47def00461fcb528a0484d8edef8208d6d2e2909dc61d9cd
+	sha256sums = 0585fb92a4b409404147a3f940ed2ca03b3eaed1ec4fb68ae6ad74db668bea83
+	sha256sums = e8792b2c7943486ab35893ffd9e638bbf2edbcab4f9f7b87544519bb3564af41
+
+pkgname = bzip2-with-lbzip2-symlinks
+
