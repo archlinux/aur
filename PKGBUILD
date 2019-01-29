@@ -3,7 +3,7 @@
 _pkgname=uap-cpp
 pkgname=$_pkgname-git
 pkgver=r71.87fe432
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ implementation of ua-parser"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/ua-parser/uap-cpp'
@@ -47,4 +47,5 @@ check() {
 package() {
   install -Dm755 "${srcdir}/${_pkgname}/libuaparser_cpp.so" "${pkgdir}/usr/lib/libuaparser_cpp.so"
   install -Dm644 "${srcdir}/${_pkgname}/libuaparser_cpp.a" "${pkgdir}/usr/lib/libuaparser_cpp.a"
+  install -Dm644 "${srcdir}/${_pkgname}/UaParser.h" "${pkgdir}/usr/include/uap-cpp/UaParser.h"
 }
