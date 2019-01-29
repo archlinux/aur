@@ -1,0 +1,6 @@
+pkg/
+*.xz
+srandrd/
+src/
+updateSRCINFO.sh
+
