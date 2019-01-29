@@ -1,0 +1,11 @@
+diff -ura hmatrix-0.19.0.0.old/hmatrix.cabal hmatrix-0.19.0.0.new/hmatrix.cabal
+--- hmatrix-0.19.0.0.old/hmatrix.cabal	2018-04-22 06:23:58.000000000 -0400
++++ hmatrix-0.19.0.0.new/hmatrix.cabal	2019-01-28 19:59:35.385624665 -0500
+@@ -46,7 +46,6 @@
+                         split,
+                         bytestring,
+                         storable-complex,
+-                        semigroups,
+                         vector >= 0.8
+ 
+     hs-source-dirs:     src
