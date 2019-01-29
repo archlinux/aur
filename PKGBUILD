@@ -5,7 +5,7 @@
 pkgname=hop
 epoch=1
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -15,7 +15,7 @@ conflicts=('hop')
 provides=('hop')
 install=hop.install
 url='http://hop.inria.fr'
-source=("git+https://github.com/manuel-serrano/hop.git#commit=b4c4c3f98c2b4af4f87c4ea5270b09323d50211c")
+source=("git+https://github.com/manuel-serrano/hop.git#commit=dbe67556ea8862343f65f5c0781b4fe61f767b18")
 md5sums=('SKIP')
 options=('!makeflags')
 
