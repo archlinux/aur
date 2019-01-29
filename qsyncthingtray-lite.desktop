@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=QSyncthingTray
 Comment=Desktop wrapper for Syncthing
-Exec=QSyncthingTray %U
+Exec=QSyncthingTray
 Icon=qsyncthingtray
 StartupNotify=false
 Categories=Network;Internet;
