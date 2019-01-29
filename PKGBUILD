@@ -3,7 +3,7 @@
 pkgbase=goland-eap
 _pkgbase=goland
 pkgname=(goland-eap goland-eap-jre)
-pkgver=183.4284.47
+pkgver=191.4212.44
 pkgrel=1
 pkgdesc='Capable and Ergonomic Go IDE'
 arch=('x86_64' 'i686')
