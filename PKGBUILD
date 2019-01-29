@@ -15,12 +15,12 @@
 pkgname=popcorntime-bin
 _pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Stream movies and TV shows from torrents (stable builds)"
 arch=('x86_64')
 url="https://popcorntime.sh"
 license=('GPL3')
-depends=('nss' 'ttf-font' 'libxss' 'gconf' 'gtk2' 'gtk3' 'nodejs')
+depends=('nss' 'ttf-font' 'libxss' 'gconf' 'gtk2' 'gtk3')
 provides=('popcorntime' 'popcorn-time-ce' 'popcorntime-ci-bin' 'popcorntime-stable-bin')
 conflicts=('popcorntime')
 options=('!strip')
