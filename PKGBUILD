@@ -4,12 +4,12 @@
 _hkgname=hmatrix
 pkgname=haskell-hmatrix
 pkgver=0.19.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linear systems, matrix decompositions, and other numerical computations based on BLAS and LAPACK."
 url="https://hackage.haskell.org/package/hmatrix"
 license=("BSD-3")
 arch=('x86_64')
-depends=('ghc-libs' 'haskell-random' 'haskell-split' 'haskell-storable-complex' 'haskell-vector')
+depends=('ghc-libs' 'haskell-random' 'haskell-split' 'haskell-storable-complex' 'haskell-vector' 'lapack' 'blas')
 makedepends=('ghc')
 source=(https://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz
         haskell-hmatrix-semigroups.patch)
