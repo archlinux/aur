@@ -1,0 +1,10 @@
+[Unit]
+Description=Brook Client
+
+[Service]
+EnvironmentFile=/etc/brook/client-config.sh
+ExecStart=/usr/bin/brook client $BROOK_ARGS
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

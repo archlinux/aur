@@ -1,0 +1,21 @@
+pkgbase = brook-systemd-client
+	pkgdesc = Install brook(client) with client systemd
+	pkgver = v20181212
+	pkgrel = 1
+	url = https://github.com/txthinking/brook
+	arch = x86_64
+	license = GPL
+	depends = systemd
+	noextract = brook
+	noextract = brook-client.service,
+	noextract = client-config.sh
+	backup = etc/brook/client-config.sh
+	source = https://github.com/txthinking/brook/releases/download/v20181212/brook
+	source = brook-client.service
+	source = client-config.sh
+	md5sums = c728ec28d2c41f585de0df26ea79c669
+	md5sums = 65e83334eccd0e702ce54d3f08c738e3
+	md5sums = 6e64f843a57d009d5d888ee970208153
+
+pkgname = brook-systemd-client
+
