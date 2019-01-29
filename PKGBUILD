@@ -19,7 +19,7 @@ sha256sums=('1ce74b1c797532fce5bcb256b7b5b35eb119ad23220a2f8615241b68e23dc9c4')
 build(){
   cd "cfiles-${pkgver}"
 
-  if [[ -z "${EDITOR}" ]]; then
+  if [[ ! -z "${EDITOR}" ]]; then
     $EDITOR config.h
   else
     vi config.h
