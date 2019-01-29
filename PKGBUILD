@@ -15,5 +15,5 @@ md5sums=('2e1b15de86f85ecb4041845ff1f75b39')
 package() {
 	dest=$pkgdir/usr/lib/python3.7/site-packages/$pkgname
 	mkdir -p $dest
-	cp -r $srcdir/$upstream_name-$pkgver/* $dest
+	cp -r $srcdir/$upstream_name-$pkgver/$upstream_name/* $dest
 }
