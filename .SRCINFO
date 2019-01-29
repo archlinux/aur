@@ -1,0 +1,19 @@
+pkgbase = namd-multicore-cuda-bin
+	pkgdesc = Parallel molecular dynamics code designed for high-performance simulation of large biomolecular systems.
+	pkgver = 2.13
+	pkgrel = 1
+	url = http://www.ks.uiuc.edu/Research/namd/
+	arch = x86_64
+	license = custom
+	depends = bash
+	optdepends = python: Running additional library scripts.
+	provides = namd-multicore-cuda
+	provides = namd
+	conflicts = namd-multicore-cuda
+	conflicts = namd-multicore-cuda-bin
+	conflicts = namd
+	source = local://NAMD_2.13_Linux-x86_64-multicore-CUDA.tar.gz
+	md5sums = 80f7b3a661f5fd80ccac78b7bc32035c
+
+pkgname = namd-multicore-cuda-bin
+
