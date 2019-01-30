@@ -41,5 +41,5 @@ build() {
 
 package() {
   cd "$srcdir/patroneo"
-	make PREFIX=/usr DESTDIR="$pkgdir/" install
+  make PREFIX=/usr DESTDIR="$pkgdir/" install
 }
