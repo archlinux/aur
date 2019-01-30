@@ -3,13 +3,13 @@
 pkgname=hqplayer-network-audio-daemon
 _debpkgver=3.5.5-39
 pkgver=3.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Signalyst Network Audio Daemon"
 arch=('x86_64')
 url="http://www.signalyst.com/consumer.html"
 license=('custom')
 depends=('alsa-lib' 'gcc-libs' 'glibc')
-source=("https://www.signalyst.eu/bins/naa/linux/xenial/networkaudiod_"$_debpkgver"_amd64.deb" 'networkaudio.service')
+source=("https://www.signalyst.eu/bins/naa/linux/stretch/networkaudiod_"$_debpkgver"_amd64.deb" 'networkaudio.service')
 sha256sums=('SKIP' '75d45b226dcbb78dfb61e941ee5ef2a8f0d88efbf414d2618b42520fe3cb129e')
 
 package() {
