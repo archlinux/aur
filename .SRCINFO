@@ -1,16 +1,16 @@
 pkgbase = maradns
 	pkgdesc = A security-aware DNS server
-	pkgver = 2.0.16
+	pkgver = 2.0.17
 	pkgrel = 1
 	url = http://maradns.org
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = http://www.maradns.org/download/2.0/2.0.16/maradns-2.0.16.tar.bz2
+	source = http://www.maradns.org/download/2.0/2.0.17/maradns-2.0.17.tar.bz2
 	source = maradns.service
 	source = maradns-zoneserver.service
-	md5sums = 149c2f3e032f779a4677524c150db10e
+	md5sums = 9d0ba001ccba43fe46a54322b48a2832
 	md5sums = d9111d9f8b7bb8b29e9327ec9e9fbb00
 	md5sums = c694d032744dafaf6ac755fe4f670438
 

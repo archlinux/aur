@@ -1,13 +1,13 @@
 # Maintainer: h8red <h8red AT yandex.ru>
 
 pkgname=maradns
-pkgver=2.0.16
+pkgver=2.0.17
 pkgrel=1
 pkgdesc="A security-aware DNS server"
 arch=('i686' 'x86_64')
 depends=(glibc)
 source=(http://www.maradns.org/download/2.0/$pkgver/$pkgname-$pkgver.tar.bz2 maradns.service maradns-zoneserver.service)
-md5sums=('149c2f3e032f779a4677524c150db10e'
+md5sums=('9d0ba001ccba43fe46a54322b48a2832'
          'd9111d9f8b7bb8b29e9327ec9e9fbb00'
          'c694d032744dafaf6ac755fe4f670438')
 url="http://maradns.org"
