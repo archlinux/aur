@@ -1,0 +1,63 @@
+pkgbase = husky-tosser-git
+	pkgdesc = Husky Fido Tosser
+	pkgver = 20190108
+	pkgrel = 1
+	url = http://husky.sourceforge.net/hpt.html
+	arch = x86_64
+	license = GPL
+	conflicts = husky-tosser
+	conflicts = husky-msged
+	source = huskymak.cfg
+	source = areastat_makefile
+	source = nltools_makefile
+	source = smapi_makefile
+	source = msged_makefile
+	source = msged_maps_makefile
+	source = hpt::git+https://github.com/huskyproject/hpt.git
+	source = huskylib::git+https://github.com/huskyproject/huskylib.git
+	source = fidoconf::git+https://github.com/huskyproject/fidoconf.git
+	source = smapi::git+https://github.com/huskyproject/smapi.git
+	source = areastat::git+https://github.com/huskyproject/areastat.git
+	source = areafix::git+https://github.com/huskyproject/areafix.git
+	source = bsopack::git+https://github.com/huskyproject/bsopack.git
+	source = sqpack::git+https://github.com/huskyproject/sqpack.git
+	source = nltools::git+https://github.com/huskyproject/nltools.git
+	source = hptkill::git+https://github.com/huskyproject/hptkill.git
+	source = htick::git+https://github.com/huskyproject/htick.git
+	source = hptsqfix::git+https://github.com/huskyproject/hptsqfix.git
+	source = msged::git+https://github.com/huskyproject/msged.git
+	md5sums = 799c230ec374e22abcdb0b5452dce37c
+	md5sums = 0ec212f2bb31d149cd1717ab681f519a
+	md5sums = 48ba1f5f4ded114e500ef83ce1fe407a
+	md5sums = c7238eec644bd1aeaf0a0c993f5dd8fc
+	md5sums = 0d09d7d863f9511d6ab9c49c636a8ad3
+	md5sums = 4c66c7fcb56605e9a691a085c85e1080
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = husky-tosser-git
+	pkgdesc = Husky Fido Tosser: hpt (tosser) and netmail/echomail tools
+	provides = husky-tosser=20190108
+	conflicts = husky-all
+	conflicts = husky-tosser
+	conflicts = husky-all-git
+
+pkgname = husky-msged-git
+	pkgdesc = Husky Fido Tosser: msged (message editor)
+	depends = husky-tosser-git
+	provides = husky-tosser=20190108
+	conflicts = husky-all
+	conflicts = husky-msged
+	conflicts = husky-all-git
+
