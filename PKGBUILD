@@ -2,14 +2,14 @@
 
 pkgname=doctest
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The lightest feature rich C++ single header testing framework'
 arch=('i686' 'x86_64')
 url='https://github.com/onqtam/doctest'
 license=('MIT')
 makedepends=('cmake')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('297717ecde38c5b0c1b416d784ba418178a168ea255fc24da264a1fcaa0934e2')
+sha256sums=('4ea79f2a7d1ee268310e99d4e721fb83bcc63af5ee46583085612fcaf19df446')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
