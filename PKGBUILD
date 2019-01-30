@@ -1,45 +1,37 @@
-# Maintainer: Dan Ziemba <zman0900@gmail.com>
-# Maintainer: Mark Weiman <markzz@archlinux.net>
+# Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
 _srcname=linux-4.19
-pkgver=4.19.15
+pkgver=4.19.18
 pkgrel=1
 arch=('x86_64')
-url="http://www.kernel.org/"
+url="https://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        # the main kernel config files
-        'config'
-        # pacman hook for depmod
-        '60-linux.hook'
-        # pacman hook for initramfs regeneration
-        '90-linux.hook'
-        # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        # patches for pci passthrough
+source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
+        https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
+        'config'         # the main kernel config file
+        '60-linux.hook'  # pacman hook for depmod
+        '90-linux.hook'  # pacman hook for initramfs regeneration
+        'linux.preset'   # standard config files for mkinitcpio ramdisk
         'add-acs-overrides.patch'
         'i915-vga-arbiter.patch'
-        0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-)
+        0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch)
+validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
+              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
+             )
+# https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '051507958d5ed9b2eac34abdc49f5fa1600646bf804076cda448aacb93019b98'
-            '2aa5cde5c40ca06ea0a10b9a212bd9b96deb548d58c0a55386f0e8ae5fc0edf5'
+            'd36fb7380067b9756d7c36cd9149a2084abe815da5adaa3996d48c622d7d2db7'
+            '3d8a9eac86cea6515efdc78e3c2eec5f413f305a2376fa35b161edab94719941'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
             '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
             'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1'
             'afb4c025d1180c1c8d9419910910f44755a4aefc711c2f0d4fee374d6b33e0d5'
             '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98')
-validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
-              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
-             )
 
 _kernelname=${pkgbase#linux}
 
@@ -117,8 +109,12 @@ _package() {
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  ln -sr "${pkgdir}/boot/vmlinuz-${pkgbase}" "${pkgdir}/usr/lib/modules/${_kernver}/vmlinuz"
+
   # make room for external modules
-  local _extramodules="extramodules-${_basekernel}${_kernelname:--ARCH}"
+  local _extramodules="extramodules-${_basekernel}${_kernelname:--lts}"
   ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
 
   # add real version for building modules and running depmod from hook
@@ -177,9 +173,6 @@ _package-headers() {
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/9912
-  install -Dt "${_builddir}/drivers/media/dvb-core" -m644 drivers/media/dvb-core/*.h
-
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
@@ -206,6 +199,9 @@ _package-headers() {
 
   # remove files already in linux-docs package
   rm -r "${_builddir}/Documentation"
+
+  # remove now broken symlinks
+  find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
   # Fix permissions
   chmod -R u=rwX,go=rX "${_builddir}"
@@ -243,5 +239,3 @@ for _p in ${pkgname[@]}; do
     _package${_p#${pkgbase}}
   }"
 done
-
-# vim:set ts=8 sts=2 sw=2 et:
