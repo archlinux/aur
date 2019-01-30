@@ -1,7 +1,7 @@
 pkgbase = pulumi-bin
 	pkgdesc = A multi-language, multi-cloud development platform
 	pkgver = 0.16.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pulumi/pulumi
 	arch = x86_64
 	license = Apache-2.0
