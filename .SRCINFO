@@ -1,6 +1,6 @@
 pkgbase = luks-tpm2
 	pkgdesc = Utility to manage LUKS keys sealed by a TPM 2.0
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/electrickite/luks-tpm2
 	install = luks-tpm2.install
@@ -13,9 +13,9 @@ pkgbase = luks-tpm2
 	depends = util-linux
 	depends = grep
 	backup = etc/default/luks-tpm2
-	source = https://github.com/electrickite/luks-tpm2/archive/1.0.0.tar.gz
+	source = https://github.com/electrickite/luks-tpm2/archive/1.0.1.tar.gz
 	source = luks-tpm2.hook
-	sha1sums = 6aabef9b883576bf46f4387e0f6c3bef3b41e708
+	sha1sums = 8fdb092441d13768653f9f668c05192714e20253
 	sha1sums = 6156622b538d8f78d2930bc85e91d3bfee5ebfb6
 
 pkgname = luks-tpm2
