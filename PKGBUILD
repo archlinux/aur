@@ -3,7 +3,7 @@
 pkgname=pulumi-bin
 _pkgname=pulumi
 pkgver=0.16.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-language, multi-cloud development platform"
 arch=('x86_64')
 license=('Apache-2.0')
