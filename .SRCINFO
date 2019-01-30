@@ -29,7 +29,7 @@ pkgbase = firefox-ubuntu-bin
 	provides = firefox-ubuntu
 	conflicts = firefox
 	conflicts = firefox-ubuntu
-	source = http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_65.0+build2-0ubuntu1._amd64.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_65.0+build2-0ubuntu1_amd64.deb
 	sha256sums = skip
 
 pkgname = firefox-ubuntu-bin
