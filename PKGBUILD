@@ -2,7 +2,7 @@
 # Contributor wenLiangcan <boxeed at gmail dot com>
 
 pkgname=keeweb-git
-pkgver=1.7.3+19+g903d6dc
+pkgver=1.7.4+21+g8cc80db
 pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases. (develop branch)"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('electron')
 makedepends=(
 	'asar'
 	'git'
-	'npm'
 	'libsass'
+	'npm'
 )
 optdepends=('xdotool: for auto-type')
 conflicts=('keeweb' 'keeweb-desktop')
@@ -66,8 +66,6 @@ build() {
 	export npm_config_optional=false
 
 	npm install
-
-	ln -fs normalize.css node_modules/normalize.css/normalize.scss
 
 	npx grunt build-web-app build-desktop-app-content
 
