@@ -1,7 +1,7 @@
 # Maintainer: Blooser <blooser@protonmail.com>
 pkgname=mimosa
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Download manager"
 arch=('x86_64')
 md5sums=('620184c969713282aab4097273547c0e')
@@ -9,15 +9,16 @@ url="https://github.com/blooser/mimosa"
 license=('MIT')
 depends=('qt5-base')
 makedepends=('cmake')
-applocation=~/.local/share/$pkgname
+binlocation=/usr/bin
+resourcelocation=/usr/share/$pkgname
 shortcut="
 [Desktop Entry]
 Encoding=UTF-8
 Version=${pkgver}
 Name[en_US]=Mimosa
 GenericName=Download manager
-Exec=${applocation}/mimosa
-Icon[en_US]=${applocation}/mimosa.png
+Exec=${binlocation}/mimosa
+Icon[en_US]=${resourcelocation}/mimosa.png
 Type=Application
 Categories=Application;Network
 Comment[en_US]=Take a glance at your downloads from the Internet
@@ -34,15 +35,14 @@ build() {
 package() {
 	cd $pkgname-$pkgver
 	make clean
-	mkdir -p ${applocation} && cp mimosa ${applocation}
-	cp icons/mimosa.png ${applocation}
+	sudo cp mimosa ${binlocation} && sudo mkdir -p ${resourcelocation} && sudo cp icons/mimosa.png ${resourcelocation} 
 	cd ..
 	rm -rf $pkgname-$pkgver 
 	echo "${shortcut}" > ~/.local/share/applications/mimosa.desktop
 	if [ -f ~/.zshrc ]; then
-		echo "alias mimosa=${applocation}/mimosa" >> ~/.zshrc
+		echo "alias mimosa=${binlocation}/mimosa" >> ~/.zshrc
 	else
-		echo "alias mimosa=${applocation}/mimosa" >> ~/.bashrc	
+		echo "alias mimosa=${binlocation}/mimosa" >> ~/.bashrc	
 	fi	
 
 }
