@@ -47,17 +47,26 @@ pkgbase = husky-tosser-git
 	md5sums = SKIP
 
 pkgname = husky-tosser-git
-	pkgdesc = Husky Fido Tosser: hpt (tosser) and netmail/echomail tools
+	pkgdesc = Husky Fido Tosser: hpt (tosser) and netmail/echomail tools (git version)
 	provides = husky-tosser=20190108
 	conflicts = husky-all
 	conflicts = husky-tosser
 	conflicts = husky-all-git
 
 pkgname = husky-msged-git
-	pkgdesc = Husky Fido Tosser: msged (message editor)
+	pkgdesc = Husky Fido Tosser: msged (message editor) (git version)
 	depends = husky-tosser-git
 	provides = husky-tosser=20190108
 	conflicts = husky-all
 	conflicts = husky-msged
 	conflicts = husky-all-git
+
+pkgname = husky-all-git
+	pkgdesc = Husky Fido Tosser: Complete bundle (git version)
+	provides = husky-all=20190108
+	conflicts = husky-all
+	conflicts = husky-tosser
+	conflicts = husky-tosser-git
+	conflicts = husky-msged-git
+	conflicts = husky-msged
 
