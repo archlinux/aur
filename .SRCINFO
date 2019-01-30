@@ -1,7 +1,7 @@
 pkgbase = keeweb
 	pkgdesc = Desktop password manager compatible with KeePass databases.
 	pkgver = 1.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keeweb/keeweb
 	arch = any
 	license = MIT

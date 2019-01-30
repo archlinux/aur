@@ -2,7 +2,7 @@
 
 pkgname=keeweb
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/keeweb/keeweb"
@@ -59,8 +59,6 @@ build() {
 	export npm_config_optional=false
 
 	npm install
-
-	ln -fs normalize.css node_modules/normalize.css/normalize.scss
 
 	npx grunt build-web-app build-desktop-app-content
 
