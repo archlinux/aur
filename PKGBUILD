@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/astrofrog/psrecord/archive/
 sha256sums=('334ff9d1ef4d8ab7c770b840ccb90b9b0e5c0fd4f8d2679e9cf579cdb8846f6b')
 
 build() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   python setup.py build
 }
 
@@ -23,7 +23,7 @@ check() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
