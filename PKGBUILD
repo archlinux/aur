@@ -32,7 +32,6 @@ source=("https://github.com/ipfs/ipget/archive/v${pkgver}.tar.gz"
 sha256sums=('19fcea7a4328133bdb7c263e27df4eef6a08365d21991e2344c28345d1f078f0'
             'dc7e1b74f786d1d13461635cc269a1a00acd13dbb530b07823ed82bd31bd8bd8'
             '55766c39cbf9f41e1288df82e25919efe3bdcec236182f9fe28209ae8f1b960c'
-            'd1433452e002367f4edd2b631dd66f7db4b80a8e5e8632a432d469646bffa587'
             '116f5f6a0e3e5694c862bfa7b3f500e22839ca043bb6622e5d202e36905c88e1'
             'dc7821f8b749e46f8bb8c08faf36e7079866ad7d0f9de711ed3dab5ad38118f4'
             '6f4f5989fac82b8bf25a0a5efa6dc36fba7904c8746fb8679205a8f0c73dbb7e'
