@@ -3,8 +3,8 @@
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=2.1
-_pkgver=${pkgver}.0
+pkgver=2.1.2
+_commit=f63e56d4a77e53ff3782b50e7433ed27c490fd1e
 pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='https://picard.musicbrainz.org/'
@@ -14,18 +14,17 @@ depends=('python-pyqt5' 'python-mutagen')
 optdepends=('chromaprint: fingerprinting'
             'python-discid: cd lookup')
 makedepends=('python-discid' 'git' 'python-setuptools')
-source=("http://ftp.musicbrainz.org/pub/musicbrainz/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-#source=("git+https://github.com/metabrainz/picard.git#commit=3a41cebdbcff9af9791575d2e555c59201b55902")
-sha256sums=('cc00d51b8897cfe4a27e5ccd845a48e8eacffcbc96d0fa652a180954f0198a14')
+source=("git+https://github.com/metabrainz/picard.git#commit=$_commit")
+sha256sums=('SKIP')
 
 build() {
-	cd "${srcdir}/picard-release-${_pkgver}"
+	cd "${srcdir}/${pkgname}"
 	sed "s/‘/'/g" -i setup.cfg
 	python setup.py config
 }
 
 package() {
-	cd "${srcdir}/picard-release-${_pkgver}"
+	cd "${srcdir}/${pkgname}"
 	python setup.py install \
 		--root="${pkgdir}" \
 		--disable-autoupdate \
