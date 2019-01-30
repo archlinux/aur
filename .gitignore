@@ -1,0 +1,5 @@
+/src
+/pkg
+/hdfview
+*.tar.gz
+*.tar.xz

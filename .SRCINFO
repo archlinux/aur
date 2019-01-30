@@ -1,0 +1,27 @@
+pkgbase = hdfview-git
+	pkgdesc = a GUI browser for reading hdf5 files from dev git repo
+	pkgver = r346.d6a3bf6
+	pkgrel = 1
+	url = https://www.hdfgroup.org/downloads/hdfview/
+	arch = x86_64
+	license = custom
+	makedepends = ant
+	makedepends = java-environment
+	depends = hdf5-openmpi-java
+	depends = hdf4
+	provides = hdfview
+	conflicts = hdfview-beta
+	conflicts = hdfview
+	replaces = hdfview-beta
+	options = !strip
+	source = git+https://bitbucket.hdfgroup.org/scm/hdfview/hdfview.git
+	source = license
+	source = HDFView.desktop
+	source = HDFView.ico
+	sha512sums = SKIP
+	sha512sums = d831e3211c67480728488e1e2df2596d41381c5ba7b8451ea0f5174d9a34f224133d9cbaa81728cb68560328054663e8940de86db4777de8b46b65f080de9674
+	sha512sums = 42cbf32c91c4bfd3984d2ef130d8357c28269660117ad210039d9599904688853674f6626a7663c17cf0927895e5cbbede719b6766ff19ace43a5447421a4709
+	sha512sums = bc2bb9ffa22140c1b6b5448ed310a8dbb839ddcf802ec327f32f904f0e77e0034bb26fabeb5d9e4e8ce8d334333327a2bd08b8e07f0313e85ef50afe0be41cfe
+
+pkgname = hdfview-git
+
