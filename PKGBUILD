@@ -1,14 +1,20 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=sqlectron-gui-git
-pkgver=1.29.0+3+gd1eb407
-pkgrel=2
+pkgver=1.30.0+10+g3b448ef
+pkgrel=1
 pkgdesc="A simple and lightweight SQL client with cross database and platform support"
 arch=('x86_64')
 url="https://sqlectron.github.io/"
 license=('MIT')
-depends=('electron')
-makedepends=('npm' 'asar' 'git')
+depends=('electron2')
+makedepends=(
+	'asar'
+	'git'
+	'libsass'
+	'nodejs-lts-carbon'
+	'npm'
+)
 conflicts=('sqlectron-gui')
 provides=('sqlectron-gui')
 source=("${pkgname}::git+https://github.com/sqlectron/sqlectron-gui.git"
@@ -16,7 +22,7 @@ source=("${pkgname}::git+https://github.com/sqlectron/sqlectron-gui.git"
 		'sqlectron-gui.desktop')
 
 sha1sums=('SKIP'
-          'e0e7c83e47f368543a3c4505cf035d570e0d645b'
+          '6ad81d34e04c1760d4be27f0e4ec25ff5267deca'
           'b9fb3bc29a17dee5de9295e2fdb2b3025ed51d1f')
 
 pkgver() {
@@ -29,6 +35,7 @@ prepare() {
 
 	# remove extra dependencies
 	sed -i package.json \
+		-e '/"node-sass":/  s/3\.4\.2/4.11.0/' \
 		-e '/"postinstall":/            d' \
 		-e '/"electron":/               d' \
 		-e '/"electron-builder":/       d' \
@@ -41,8 +48,15 @@ prepare() {
 build() {
 	cd "${pkgname}"
 
-	CXXFLAGS+=" -I/usr/include/node" \
-		npm install --build-from-source --nodedir=/usr/include/node
+	export SASS_FORCE_BUILD=1
+	export LIBSASS_EXT=auto
+	export npm_config_optional=false
+
+
+	npm install \
+		--build-from-source \
+		--nodedir=/usr
+
 	npm run compile:browser
 	npm run compile:renderer
 
@@ -54,9 +68,9 @@ build() {
 	npm install \
 		--production \
 		--build-from-source \
-		--nodedir=/usr/lib/electron/node \
+		--nodedir=/usr/lib/electron2/node \
 		--runtime=electron \
-		--target=$(electron -v)
+		--target=$(</usr/lib/electron2/version)
 
 	popd
 	asar p app app.asar
