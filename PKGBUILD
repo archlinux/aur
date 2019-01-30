@@ -6,7 +6,7 @@
 # Contributor: Michel Brabants <michel.linux@tiscali.be>
 pkgname=seahorse-git
 pkgver=3.31.1+33+g4d65c2aa
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME application for managing encryption keys and passwords in the
 GNOME Keyring."
 url="https://wiki.gnome.org/Apps/Seahorse"
@@ -35,7 +35,8 @@ prepare() {
 }
 
 build() {
-  arch-meson seahorse build -D b_pie='false'
+  rm -rf build
+  meson --prefix /usr --buildtype=plain seahorse build
   ninja -C build
 }
 
