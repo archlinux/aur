@@ -13,13 +13,13 @@ pkgbase = digilent.adept.runtime
 	backup = etc/digilent-adept.conf
 	backup = etc/ld.so.conf.d/digilent-adept-libraries.conf
 	backup = etc/udev/rules.d/52-digilent-usb.rules
-	source_i686 = https://files.digilent.com/Software/Adept2+Runtime/2.19.2/digilent.adept.runtime_2.19.2-i386.deb
+	source_i686 = https://digilent.s3.amazonaws.com/Software/Adept2+Runtime/2.19.2/digilent.adept.runtime_2.19.2-i386.deb
 	sha256sums_i686 = 9ea59e3f7e3cc84cea8117f73bef744cf19b5568d160888ce823570683bbcfc6
-	source_x86_64 = https://files.digilent.com/Software/Adept2+Runtime/2.19.2/digilent.adept.runtime_2.19.2-amd64.deb
+	source_x86_64 = https://digilent.s3.amazonaws.com/Software/Adept2+Runtime/2.19.2/digilent.adept.runtime_2.19.2-amd64.deb
 	sha256sums_x86_64 = 7fb2a11a874dc6c93629abceeb6a496bcead651d23e3a65b14ef62b3a4191924
-	source_armv6h = https://files.digilent.com/Software/Adept2+Runtime/2.19.2/digilent.adept.runtime_2.19.2-armhf.deb
+	source_armv6h = https://digilent.s3.amazonaws.com/Software/Adept2+Runtime/2.19.2/digilent.adept.runtime_2.19.2-armhf.deb
 	sha256sums_armv6h = 629b41d66f2953def54d5c60625501653c08cd6250029a76ad2d6c6c52aa3523
-	source_armv7h = https://files.digilent.com/Software/Adept2+Runtime/2.19.2/digilent.adept.runtime_2.19.2-armhf.deb
+	source_armv7h = https://digilent.s3.amazonaws.com/Software/Adept2+Runtime/2.19.2/digilent.adept.runtime_2.19.2-armhf.deb
 	sha256sums_armv7h = 629b41d66f2953def54d5c60625501653c08cd6250029a76ad2d6c6c52aa3523
 
 pkgname = digilent.adept.runtime
