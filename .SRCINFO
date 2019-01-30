@@ -1,7 +1,7 @@
 pkgbase = tor-browser-tr
 	pkgdesc = Tor Browser Bundle: anonymous browsing using Firefox and Tor (tr)
 	pkgver = 8.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.torproject.org/projects/torbrowser.html
 	install = tor-browser.install
 	arch = i686
