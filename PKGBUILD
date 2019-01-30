@@ -1,16 +1,18 @@
-# Maintainer: Yarema aka Knedlyk <yupadmin[at]gmail[dot]com>
+# Maintainer: Christopher Reimer <vdr4arch[at]creimer[dot]net>
 pkgname=vdr-sc
-pkgver=r7.4d1530b
+pkgver=r9.75b4379
 _vdrapi=2.4.0
 pkgrel=1
 pkgdesc="Software CAM emulation"
 url="http://207.44.152.197/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-depends=('libdvbcsa' 'openssl' "vdr>=2.4.0" "vdr-api=${_vdrapi}")
+depends=('libdvbcsa' 'openssl' "vdr>=2.1.0" "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=$(echo $pkgname | sed 's/vdr-//g')
-source=("$pkgname::git+http://github.com/3PO/vdr-plugin-sc"
+source=(#"$pkgname::hg+http://85.17.209.13:6100#revision=$_hgver"
+#        "ftp://ftp.tvdr.de/vdr/Developer/vdr-$_vdrapi.tar.bz2"
+	"$pkgname::git+http://github.com/3PO/vdr-plugin-sc"
         "ftp://ftp.tvdr.de/vdr/vdr-$_vdrapi.tar.bz2"
 #        'http://data.gpo.zugaina.org/vdr-devel/media-plugins/vdr-sc/files/vdr-sc-0.9.3.20120815_vdr-2.1.4_compilefix.diff'
 #        'Add_libdvbcsa_support.diff'
@@ -31,7 +33,7 @@ prepare() {
 
 #  patch -p1 -i "$srcdir/Add_libdvbcsa_support.diff"
 #  patch -p1 -i "$srcdir/vdr-sc-0.9.3.20120815_vdr-2.1.4_compilefix.diff"
-  patch -p1 -i "$srcdir/compile.patch"
+#  patch -p1 -i "$srcdir/compile.patch"
   patch -p1 -i "$srcdir/Makefile.patch"
   #Disable Keyfile support. If you want to watch paytv, pay for it.
 #  ( cd systems
