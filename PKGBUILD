@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-abc-qt
-pkgver=0.18.6
+pkgver=0.18.7
 pkgrel=1
 pkgdesc="Bitcoin ABC with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt"
 arch=('i686' 'x86_64')
@@ -14,15 +14,13 @@ source=(https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v$pkgver.tar.gz
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service
-        bitcoin.install
-        qt.patch)
-sha256sums=('1b79591afcd98687a56576a95c9a3d3dcff5972010af4dcb22afac9780109ab9'
+        bitcoin.install)
+sha256sums=('56eb135960794d092938d5d025eeb56ddf73adf9d577994f3f4a28d0ee7d765d'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
             '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679'
-            '6db7458a85a0b469ab95ad78e431d0a5db078d8809a5f4340ee040f304a9dc0d'
-            'd201f40404fbf4370329d19d9f0f4431b1872a5c761ac38a41f555841bc9a0eb')
+            '6db7458a85a0b469ab95ad78e431d0a5db078d8809a5f4340ee040f304a9dc0d')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-qt')
@@ -46,15 +44,9 @@ build() {
     --with-incompatible-bdb \
     --disable-maintainer-mode \
     --enable-reduce-exports \
-    --disable-gui-tests
+    --disable-gui-tests \
+    --enable-static
   make
-}
-
-prepare() {
-  cd "$srcdir/bitcoin-abc-$pkgver"
-  cat ../qt.patch
-
-  patch -Np1 < ../qt.patch
 }
 
 check() {
