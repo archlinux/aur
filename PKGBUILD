@@ -4,7 +4,7 @@
 # Contributor: Anthony Anderson <aantony4122@gmail.com>
 
 pkgname=discord-canary
-pkgver=0.0.68
+pkgver=0.0.69
 pkgrel=1
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
@@ -19,11 +19,10 @@ optdepends=(
   'noto-fonts-cjk: Font for special characters such as /shrug face.'
 )
 
-install="DiscordCanary.install"
 source=(LICENSE
 "https://dl-canary.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('26b3229c74488c64d94798e48bc49fcd'
-         'fedfb76fa230718d5151bcc608670e40')
+         '257e5887737bc6b2e6b607028af2b8fa')
 
 
 
