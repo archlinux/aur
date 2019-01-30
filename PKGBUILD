@@ -5,7 +5,7 @@ pkgrel=2
 pkgdesc="Record and plot the CPU and memory activity of a process."
 arch=('any')
 url="https://github.com/astrofrog/psrecord"
-license=('BSD custom')
+license=('custom:Simplified BSD')
 depends=('python-psutil')
 makedepends=('python-pytest' 'python-matplotlib')
 optdepends=('python-matplotlib: to generate plots of the data')
@@ -24,6 +24,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-  python setup.py install --root=${pkgdir} --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
