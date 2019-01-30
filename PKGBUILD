@@ -6,7 +6,7 @@
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=3.30.2+4
-pkgrel=5
+pkgrel=6
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -23,11 +23,13 @@ provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 _commit=2a36bf52cb61ac1a015bc2150807a8d47c7155e4 # tags/3.30.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-         https://gitlab.gnome.org/GNOME/gnome-shell/raw/e26de6865dc6bed3af45355aeb4060e4e0f854d7/js/ui/workspaceThumbnail.js
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+	"276.diff"
+	"https://gitlab.gnome.org/GNOME/gnome-shell/raw/e26de6865dc6bed3af45355aeb4060e4e0f854d7/js/ui/workspaceThumbnail.js")
 sha256sums=('SKIP'
-            'ad16e4defb7e93ed26e663da6e19ec26dd0eeafbc86608598e19278360d23fdd'
-            'SKIP')
+            'SKIP'
+            'aee12ef68be36cf8f87e67e00ebd620fe2aa3aac234a16a0ab2b65db1e1fbfdc'
+            'ad16e4defb7e93ed26e663da6e19ec26dd0eeafbc86608598e19278360d23fdd')
 
 prepare() {
   cd $_pkgname
@@ -43,7 +45,7 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/276
   # Requires mutter MR283/commit "clutter-actor: Add detail to captured-event signal [performance]"
   if pacman -Q | grep mutter-781835-workaround; then
-    git cherry-pick 5a7be719 || bash
+    git apply ../../276.diff
     echo "======= mutter-781835-workaround detected, MR276 is applied ======="
     sleep 3
   else

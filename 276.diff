@@ -1,0 +1,65 @@
+diff --git a/js/ui/padOsd.js b/js/ui/padOsd.js
+index 48219026c..9da51c4f2 100644
+--- a/js/ui/padOsd.js
++++ b/js/ui/padOsd.js
+@@ -638,7 +638,7 @@ var PadOsd = new Lang.Class({
+         this._settings = settings;
+         this._imagePath = imagePath;
+         this._editionMode = editionMode;
+-        this._capturedEventId = global.stage.connect('captured-event', this._onCapturedEvent.bind(this));
++        this._capturedEventId = global.stage.connect('captured-event::nonmotion', this._onCapturedEvent.bind(this));
+         this._padChooser = null;
+ 
+         let deviceManager = Clutter.DeviceManager.get_default();
+diff --git a/js/ui/panel.js b/js/ui/panel.js
+index 66588f9c1..6bbf7bc06 100644
+--- a/js/ui/panel.js
++++ b/js/ui/panel.js
+@@ -418,7 +418,7 @@ var ActivitiesButton = new Lang.Class({
+ 
+         this.actor.label_actor = this._label;
+ 
+-        this.actor.connect('captured-event', this._onCapturedEvent.bind(this));
++        this.actor.connect('captured-event::nonmotion', this._onCapturedEvent.bind(this));
+         this.actor.connect_after('key-release-event', this._onKeyRelease.bind(this));
+ 
+         Main.overview.connect('showing', () => {
+diff --git a/js/ui/status/system.js b/js/ui/status/system.js
+index c695f37be..1c61ed87e 100644
+--- a/js/ui/status/system.js
++++ b/js/ui/status/system.js
+@@ -32,7 +32,7 @@ var AltSwitcher = new Lang.Class({
+             this._alternate.connect('clicked',
+                                     () => { this._clickAction.release(); });
+ 
+-        this._capturedEventId = global.stage.connect('captured-event', this._onCapturedEvent.bind(this));
++        this._capturedEventId = global.stage.connect('captured-event::nonmotion', this._onCapturedEvent.bind(this));
+ 
+         this._flipped = false;
+ 
+diff --git a/js/ui/viewSelector.js b/js/ui/viewSelector.js
+index 6a235eccd..4a747c834 100644
+--- a/js/ui/viewSelector.js
++++ b/js/ui/viewSelector.js
+@@ -57,7 +57,7 @@ var TouchpadShowOverviewAction = new Lang.Class({
+     Name: 'TouchpadShowOverviewAction',
+ 
+     _init(actor) {
+-        actor.connect('captured-event', this._handleEvent.bind(this));
++        actor.connect('captured-event::nonmotion', this._handleEvent.bind(this));
+     },
+ 
+     _handleEvent(actor, event) {
+diff --git a/js/ui/windowManager.js b/js/ui/windowManager.js
+index adfee93a9..771391825 100644
+--- a/js/ui/windowManager.js
++++ b/js/ui/windowManager.js
+@@ -477,7 +477,7 @@ var TouchpadWorkspaceSwitchAction = new Lang.Class({
+     _init(actor) {
+         this._dx = 0;
+         this._dy = 0;
+-        actor.connect('captured-event', this._handleEvent.bind(this));
++        actor.connect('captured-event::nonmotion', this._handleEvent.bind(this));
+ 	this._touchpadSettings = new Gio.Settings({schema_id: 'org.gnome.desktop.peripherals.touchpad'});
+     },
+ 

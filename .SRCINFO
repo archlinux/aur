@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches
 	pkgver = 3.30.2+4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
 	groups = gnome
@@ -37,11 +37,13 @@ pkgbase = gnome-shell-performance
 	provides = gnome-shell=3.30.2+4
 	conflicts = gnome-shell
 	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=2a36bf52cb61ac1a015bc2150807a8d47c7155e4
-	source = https://gitlab.gnome.org/GNOME/gnome-shell/raw/e26de6865dc6bed3af45355aeb4060e4e0f854d7/js/ui/workspaceThumbnail.js
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
+	source = 276.diff
+	source = https://gitlab.gnome.org/GNOME/gnome-shell/raw/e26de6865dc6bed3af45355aeb4060e4e0f854d7/js/ui/workspaceThumbnail.js
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = aee12ef68be36cf8f87e67e00ebd620fe2aa3aac234a16a0ab2b65db1e1fbfdc
 	sha256sums = ad16e4defb7e93ed26e663da6e19ec26dd0eeafbc86608598e19278360d23fdd
-	sha256sums = SKIP
 
 pkgname = gnome-shell-performance
 
