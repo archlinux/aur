@@ -2,7 +2,7 @@
 # Contributor: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=blastem
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and accurate Sega Genesis/Mega Drive emulator"
 arch=('x86_64' 'i686')
 url="https://www.retrodev.com/blastem/changes.html"
@@ -49,5 +49,5 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/blastem/blastem" "$pkgdir/usr/bin/blastem"
 }
-md5sums=('0a5658e761c1ab389da3f3bdd0abed37'
+md5sums=('e783af5621c5da196d28c35c07a58e91'
          'b01d07f2630bb2c31ffda48dddc85785')
