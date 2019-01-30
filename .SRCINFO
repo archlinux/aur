@@ -1,7 +1,7 @@
 pkgbase = ruby-gettext
 	pkgdesc = Gettext is a pure Ruby libary and tools to localize messages.
 	pkgver = 3.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ruby-gettext.github.io/
 	arch = any
 	groups = pacgem

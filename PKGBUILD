@@ -9,7 +9,7 @@ _ruby="/usr/bin/ruby"
 _gem="/usr/bin/gem"
 pkgname="ruby-gettext"
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Gettext is a pure Ruby libary and tools to localize messages."
 arch=("any")
 url="http://ruby-gettext.github.io/"
@@ -38,7 +38,7 @@ _gem_install() {
 
   # Install the gem
   install -d -m755 $_bindir $_gemdir
-  $_gem install --no-ri --no-rdoc --ignore-dependencies --no-user-install \
+  $_gem install --no-document --ignore-dependencies --no-user-install \
                 --bindir $_bindir --install-dir $_gemdir "$srcdir/$_gemname-$pkgver.gem"
 }
 
