@@ -15,7 +15,7 @@ pkgbase = patroneo-git
 	provides = patroneo-git
 	conflicts = patroneo
 	conflicts = patroneo-git
-	source = git+https://github.com/diovudau/patroneo
+	source = git+https://laborejo.org/patroneo.git/
 	md5sums = SKIP
 
 pkgname = patroneo-git

@@ -15,21 +15,22 @@ optdepends=('non-session-manager: required to run Patroneo'
 provides=('patroneo' 'patroneo-git')
 conflicts=('patroneo' 'patroneo-git')
 install=
-source=('git+https://github.com/diovudau/patroneo')
+source=('git+https://laborejo.org/patroneo.git/')
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/patroneo"
-
-  # Git, no tags available
-	# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
   cd "$srcdir/patroneo"
+  git submodule init
+  git pull --recurse 
   ./configure --prefix=/usr
 }
 
