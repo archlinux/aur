@@ -1,11 +1,11 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=fragments-git
-pkgver=1.3.r0.g30eafee
+pkgver=1.3.r21.g86346fe
 pkgrel=1
-pkgdesc="A GTK3 BitTorrent client following the GNOME Human Interface Guidelines"
+pkgdesc="BitTorrent client for GNOME"
 arch=(i686 x86_64 armv6h armv7h)
-url="https://gitlab.gnome.org/haecker-felix/Fragments"
+url="https://gitlab.gnome.org/World/Fragments"
 license=(GPL3)
 depends=(curl
          libb64
@@ -21,7 +21,7 @@ makedepends=(git
              vala)
 provides=(fragments)
 conflicts=(fragments)
-source=("git+https://gitlab.gnome.org/haecker-felix/Fragments.git"
+source=("git+https://gitlab.gnome.org/World/Fragments.git"
         "git+https://github.com/transmission/transmission"
         "git+https://github.com/transmission/dht"
         "git+https://github.com/transmission/libb64"
