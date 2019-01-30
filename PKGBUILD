@@ -7,7 +7,7 @@ arch=('x86_64')
 url="http://crd-legacy.lbl.gov/~xiaoye/SuperLU/"
 license=('custom')
 depends=('lapack' 'parmetis' 'combblas')
-makedepends=('cmake')
+makedepends=('cmake' 'gcc-fortran')
 source=(${url}${pkgname}_$pkgver.tar.gz ${url}License.txt
         ${url}ug.pdf)
 
