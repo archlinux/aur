@@ -4,7 +4,7 @@ pkgname=libsafec
 _pkgname=safeclib
 pkgver=30122018
 _gitver=g4d1571
-pkgrel=1
+pkgrel=2
 _pkgver="${pkgver}.0-${_gitver}"
 pkgdesc='Implementtion of C11 Annex K + ISO TR24731 Bounds Checking Interface'
 arch=('i686' 'x86_64')
@@ -37,10 +37,14 @@ package() {
   cd "${srcdir}/${pkgname}-${_pkgver}/"
   make DESTDIR="${pkgdir}" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
   # temp fix
-  mv "${pkgdir}/usr/share/man/man3/towlower.3" "${pkgdir}/usr/share/man/man3/towlower_s.3"
-  mv "${pkgdir}/usr/share/man/man3/towupper.3" "${pkgdir}/usr/share/man/man3/towupper_s.3"
-  mv "${pkgdir}/usr/share/man/man3/wcsstr.3" "${pkgdir}/usr/share/man/man3/wcsstr_s.3"
+  [ -f "${pkgdir}/usr/share/man/man3/towlower.3" ] && \
+    mv "${pkgdir}/usr/share/man/man3/towlower.3" "${pkgdir}/usr/share/man/man3/towlower_s.3"
+  [ -f "${pkgdir}/usr/share/man/man3/towupper.3" ] && \
+    mv "${pkgdir}/usr/share/man/man3/towupper.3" "${pkgdir}/usr/share/man/man3/towupper_s.3"
+  [ -f "${pkgdir}/usr/share/man/man3/wcsstr.3" ] && \
+    mv "${pkgdir}/usr/share/man/man3/wcsstr.3" "${pkgdir}/usr/share/man/man3/wcsstr_s.3"
 }
 
 # vim:set ts=2 sw=2 et:
