@@ -1,31 +1,36 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=r-linux
-pkgver=5.4.165361
+pkgver=5.5
 pkgrel=1
-pkgdesc="Undelete and data recovery software"
+pkgdesc="File recovery utility for the ext2/ext3/ext4 file system"
 arch=('i686' 'x86_64')
-url="http://www.r-tt.com/data_recovery_linux/"
+url="https://www.r-tt.com/data_recovery_linux/"
 license=('custom')
-depends=('sudo' 'xdg-utils')
+depends=('xorg-xhost')
+optdepends=('gksu' 'kdesu' 'polkit')
 source_i686=("https://www.r-tt.com/downloads/RLinux5_i386.deb")
 source_x86_64=("http://www.r-tt.com/downloads/RLinux5_x64.deb")
 source=(rlinux.sh)
-sha512sums=('03096de0361b38195d346d2e5eab31b938daf1a824c3939e10232b769b60ba6f2eaf6cc55d553e76953bb6cadd3a35441fac0d0c6551e114cee970c9746cfccc'
-            '16a3c7e30096066b3ab1640f32c421424bfdefdb2859526d0f03dd5e173bc61450ca8371225fe7491135967ffe7c08b9c92b6d5b39bdf7a8999c85b6d7789c4a')
-sha512sums_i686=('4ca1ce945a2ec66b536b5d136b07166dfb374b0596e6c674d4eca7d6960e81baa6d21ca78088a14e844ec55a1abc7cea16a405b7880f2d8532dbba814318be92')
-sha512sums_x86_64=('b8753711c6f7f1e5f6ef24aa46ac72bac454655a1241cc98ec6ff4608d7bee99fdba963d00ba59dc4c11ee126becd586c2e64507a5e16d04b56da7a2a6b19424')
-sha512sums=('f6630adfd9d2ec1be384f84b53b7d3fff1b93a1ae6f1d34bc06a15eb5e8fd07be28c2c1fcbd6de8d331ac6bda8659eee25e0a03163181f8757f3f15368e72f74')
-        
+sha512sums=('01ea9c642f46a35a9b90896a7b93c3b03a5256100d6a1443286a5da58fcdca0c49447a48a2a6c335ab334cb53965ed4269381ecdda94af39d2f3c8542ce2cbae')
+sha512sums_i686=('fc37b03f04f4bea73204766de3fd29b539f706063b7982b95f6e0522401ab5df1ec199ba59ffe71f3d8464a0e0a38e5b9801bd9d5f3caa95988be7c2c16f7f63')
+sha512sums_x86_64=('db6a9819a1afd81e04ce780b5d95a908d64268e7032ab3bb27d750b215aac898062e2e773056121279cd682ac0a131e4ab15f838a835ad00c757e28036c28a45')
+
+prepare() {
+    bsdtar xf data.tar.gz
+}
+
 package() {
-  cd $srcdir
+  install -d "$pkgdir"/opt
+  install -d "$pkgdir"/usr/share/applications
 
-  tar xvf data.tar.gz
-  cp -r usr $pkgdir
+  install -Dm 755 rlinux.sh "$pkgdir"/usr/bin/rlinux
+  cp -r usr/local/R-Linux "$pkgdir"/opt/
 
-  rm $pkgdir/usr/bin/rlinux
-
-  install -Dm 755 $srcdir/rlinux.sh $pkgdir/usr/bin/rlinux
-  install -Dm 644 $pkgdir/usr/local/R-Linux/share/logo_48.png $pkgdir/usr/share/pixmaps/rtt-rlinux.desktop
-  install -Dm 644 $pkgdir/usr/local/R-Linux/share/rtt-rlinux.desktop $pkgdir/usr/share/applications/rtt-rlinux.desktop
+  cd usr/local/R-Linux/share
+  install -Dm 644 logo_48.png "$pkgdir"/usr/share/pixmaps/rtt-rlinux.png
+  sed 's|Exec=.*|Exec=rlinux|' rtt-rlinux.desktop >"$pkgdir"/usr/share/applications/rtt-rlinux.desktop
+  sed -i 's|/usr/local|/opt|' "$pkgdir"/opt/R-Linux/bin/rlinux
+  install -Dm644 rln_viewer.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
