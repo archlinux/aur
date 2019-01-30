@@ -1,14 +1,13 @@
-pkgbase = python-py3nvml
-	pkgdesc = Bindings for NVML library.
-	pkgver = 0.2.2
+pkgbase = python-timeago
+	pkgdesc = Very simple python library, used to format datetime with `***time ago` statement.
+	pkgver = 1.0.8
 	pkgrel = 1
-	url = https://github.com/fbcotter/py3nvml
+	url = https://github.com/hustcc/timeago
 	arch = any
-	license = BSD
-	makedepends = python-setuptools
-	depends = nvidia
-	source = https://files.pythonhosted.org/packages/source/p/py3nvml/py3nvml-0.2.2.tar.gz
-	sha256sums = 647c0131368d0bdb1d1796d3e10651240bae2c0cc89d193d19a6dccc1a81781d
+	license = MIT
+	makedepends = python-pip
+	source = https://files.pythonhosted.org/packages/py2.py3/t/timeago/timeago-1.0.8-py2.py3-none-any.whl
+	sha256sums = f2acf144a9aabbc1e46a7f84387e6dd17bf41ff5fd87822c878621d06ef6b77c
 
-pkgname = python-py3nvml
+pkgname = python-timeago
 
