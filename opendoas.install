@@ -1,10 +1,16 @@
 post_install() {
-cat <<EOF
-To allow members of the wheel group to run commands as other users, create the
-file /etc/doas.conf with the following content:
+	cat <<EOF
+To allow members of the wheel group to run commands as other users,
+create the file /etc/doas.conf with the following content:
 
-    permit :wheel
+	permit :wheel
 
 Refer to doas(1) and doas.conf(5) for more information.
+
+Note that opendoas is a work in progress. From README.md:
+
+	Please do not deploy yet in a critical environment! Of note,
+	`doas` semantics may yet change, and I haven't performed even
+	a trivial security audit of my additions.
 EOF
 }

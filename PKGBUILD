@@ -1,33 +1,36 @@
-# Maintainer: alive4ever <alive4ever at live.com>
+# Maintainer: Ivy Foster <code@escondida.tk>
+# Contributor: alive4ever <alive4ever at live.com>
 # Contributor: Earnest
 pkgname=opendoas-git
-pkgver=0.3.2.r9.6ed45e5
+pkgver=6.0.r42.gdbac3f3
 pkgrel=1
-pkgdesc="Run commands as super user or another user, alternative to sudo"
-arch=('x86_64' 'i686')
-url="https://github.com/Duncaen/OpenDoas"
-license=('custom:ISC')
-depends=('pam')
-provides=('opendoas')
-makedepends=('git')
+pkgdesc='Run commands as super user or another user'
+arch=(x86_64 i686)
+url='https://github.com/Duncaen/OpenDoas'
+license=(custom:ISC)
+depends=(pam)
+provides=(opendoas)
+conflicts=(opendoas)
+makedepends=(git)
 install=opendoas.install
-source=("${pkgname%-git}::git+https://github.com/Duncaen/OpenDoas.git")
-sha256sums=('SKIP')
+source=(
+	'opendoas::git+https://github.com/Duncaen/OpenDoas.git'
+)
+sha256sums=(SKIP)
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
-
+	cd opendoas
+	git describe --long --tags | sed 's,^v,,; s|-\(.*\)-g|.r\1.g|'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd opendoas
 	./configure --prefix=/usr
-	make V=s
+	make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make V=s DESTDIR="$pkgdir" install
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+	cd opendoas
+	make DESTDIR="$pkgdir" install
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/opendoas-git/LICENSE
 }
