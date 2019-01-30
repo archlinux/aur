@@ -2,7 +2,7 @@
 # Contributors: Det, Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
 
 pkgname=chromium-snapshot-bin
-pkgver=73.0.3632.0
+pkgver=74.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Latest Snapshot)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
             'pepper-flash: for Pepper Flash plugin [AUR]'
-            'ttf-liberation: fix fonts for some PDFs (CRBug #369991)')
+            'ttf-liberation: fix fonts for some PDFs [RBug #369991]')
 provides=('chromium')
 install=$pkgname.install
 _build=$(curl -s "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/LAST_CHANGE")
