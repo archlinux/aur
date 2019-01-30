@@ -1,0 +1,11 @@
+pkgbase = kakwafont
+	pkgdesc = Another 12px monospace bitmap font.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/kakwa/kakwafont
+	arch = any
+	license = SIL Open Font License, Version 1.1
+	depends = xorg-font-utils
+
+pkgname = kakwafont
+
