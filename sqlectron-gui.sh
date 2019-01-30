@@ -1,3 +1,3 @@
 #!/usr/bin/sh
 
-exec electron /usr/lib/sqlectron-gui/app.asar "$@"
+exec electron2 /usr/lib/sqlectron-gui/app.asar "$@"
