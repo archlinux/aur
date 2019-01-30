@@ -17,6 +17,7 @@ pkgbase = gvim-gtk2
 	depends = gtk2
 	depends = tcsh
 	depends = gpm
+	depends = acl
 	optdepends = lua: Lua interpreter
 	optdepends = perl: Perl interpreter
 	optdepends = python: Python 3 interpreter
@@ -43,9 +44,9 @@ pkgbase = gvim-gtk2
 	source = archlinux.vim
 	source = gvim.desktop
 	sha256sums = SKIP
-	sha256sums = b16e85e457397ab2084743a7ee0847a3c84308477c6b4eac157fd0847b721694761f25b3ed5b
-	sha256sums = 0847cf8b42732111d0847c66c3908478a76d832736e8f8dc3abef81cb084792ddf84cb862ea2
-	sha256sums = 9f1c08470847aa96458caa2cdfc08472164e58bc08478bcfcbe5aa95dc618d2fc7e1b12b9a12
+	sha256sums = b16e85e457397ab2043a7ee0a3c84307c6b4eac157fd0b721694761f25b3ed5b
+	sha256sums = 0cf8b42732111d0c66c3908a76d832736e8f8dc3abef81cb092ddf84cb862ea2
+	sha256sums = 9f1c00aa96458caa2cdfc02164e58bc08bcfcbe5aa95dc618d2fc7e1b12b9a12
 
 pkgname = gvim-gtk2
 
