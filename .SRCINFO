@@ -15,13 +15,13 @@ pkgbase = digilent.waveforms
 	depends = shared-mime-info
 	depends = xdg-utils
 	options = !strip
-	source_i686 = https://files.digilent.com/Software/Waveforms2015/3.8.2/digilent.waveforms_3.8.2_i386.deb
+	source_i686 = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.8.2/digilent.waveforms_3.8.2_i386.deb
 	sha256sums_i686 = e323fd5675300c7e2d4e266f32895d3a7b2b6e5ef3df4ab7bc83dfe95aac33d8
-	source_x86_64 = https://files.digilent.com/Software/Waveforms2015/3.8.2/digilent.waveforms_3.8.2_amd64.deb
+	source_x86_64 = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.8.2/digilent.waveforms_3.8.2_amd64.deb
 	sha256sums_x86_64 = c973f26c6b4938437ee685ae02ee280cd0aeebe2f7cf88cc6fb3d9b423f338bf
-	source_armv6h = https://files.digilent.com/Software/Waveforms2015/3.8.2/digilent.waveforms_3.8.2_armhf.deb
+	source_armv6h = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.8.2/digilent.waveforms_3.8.2_armhf.deb
 	sha256sums_armv6h = d1ed9b55e9db63a618105fc2d922ae74c97f2b5429cbf9edb61b6729ea5b278f
-	source_armv7h = https://files.digilent.com/Software/Waveforms2015/3.8.2/digilent.waveforms_3.8.2_armhf.deb
+	source_armv7h = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.8.2/digilent.waveforms_3.8.2_armhf.deb
 	sha256sums_armv7h = d1ed9b55e9db63a618105fc2d922ae74c97f2b5429cbf9edb61b6729ea5b278f
 
 pkgname = digilent.waveforms
