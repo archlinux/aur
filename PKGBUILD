@@ -1,7 +1,7 @@
 # Maintainer: Emanuel Duss <emanuel.duss@gmail.com>
 # Contributor: Nicolas Martyanoff <khaelin@gmail.com>
 pkgname=dumpasn1
-pkgver=20180709
+pkgver=20180714
 pkgrel=1
 pkgdesc="ASN.1 analyze tool"
 url="http://www.cs.auckland.ac.nz/~pgut001"
