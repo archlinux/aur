@@ -1,0 +1,23 @@
+pkgbase = dpkg-git
+	pkgdesc = Debian package management system
+	pkgver = 1.19.4.r5.g42bf88145
+	pkgrel = 1
+	url = https://tracker.debian.org/pkg/dpkg
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = perl-io-string
+	makedepends = perl-timedate
+	depends = glibc
+	depends = bzip2
+	depends = perl
+	depends = xz
+	depends = zlib
+	provides = dpkg
+	conflicts = dpkg
+	source = git+https://git.dpkg.org/git/dpkg/dpkg.git
+	sha256sums = SKIP
+
+pkgname = dpkg-git
+
