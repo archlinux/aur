@@ -1,6 +1,6 @@
 pkgbase = hget-git
 	pkgdesc = Rocket fast, interruptable, resumable download accelerator written in Golang
-	pkgver = r30.03213a9
+	pkgver = r32.8cff5f7
 	pkgrel = 1
 	url = https://github.com/huydx/hget
 	arch = x86_64
