@@ -1,7 +1,7 @@
 # Maintainer: Aidan Coward <aidan -dot- coward -at- gmail -dot- com>
 
 pkgname=xmage
-pkgver=1.4.33V0
+pkgver=1.4.33V1c
 pkgrel=0
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
@@ -16,7 +16,7 @@ optdepends=('wmname: change window manager name for compatibility with certain W
 source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
 
-sha256sums=("d9aee0a1d32645c84d193281e386b7f6ca4a03fa2fe367252f1212bdbef6e79b" 
+sha256sums=("6c328a141f7e3df3b8778e44828abb242f058bf7f62f0f578b1646097e635a6c" 
 	"SKIP")
 
 package() {
