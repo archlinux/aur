@@ -1,7 +1,7 @@
 pkgbase = python-manilaclient
 	pkgdesc = Client library for OpenStack Manila API
-	pkgver = 1.25.0
-	pkgrel = 2
+	pkgver = 1.26.0
+	pkgrel = 1
 	url = http://docs.openstack.org/developer/python-manilaclient
 	arch = any
 	license = Apache
@@ -42,8 +42,8 @@ pkgbase = python-manilaclient
 	checkdepends = python-tempest
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/openstack/python-manilaclient/archive/1.25.0.tar.gz
-	sha512sums = 2b33cbba0376510c25aa9aeaef9009374308af3319052637cd13e153ecd8c3a5f7385b0df0fc8cd19d7ddf3f3a2e5d2cde9fa8b5402b148a25504b18294b82b5
+	source = https://github.com/openstack/python-manilaclient/archive/1.26.0.tar.gz
+	sha512sums = 53e52e226d5eb0256c6a49946ba926135fef5cd96dc9866e7ce35958c0233c3341cc202bf40a493516680f28bd5842d4ed5e25f9e1b5a4cc4a4cefb447edcdd7
 
 pkgname = python-manilaclient
 	depends = python-oslo-config
