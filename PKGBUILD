@@ -2,8 +2,8 @@
 # Reference: PKGBUILD(5)
 
 pkgname=physlock
-pkgver=11
-pkgrel=4
+pkgver=13
+pkgrel=1
 pkgdesc='Lightweight Linux console locking tool'
 url='https://github.com/muennich/physlock'
 license=(GPL2)
@@ -19,7 +19,7 @@ source=(
 )
 # sha256sums provided by packager; grains of salt advised
 sha256sums=(
-	f03031a6f4c6a08d62098457834d04b8835082a76609059451397356a83d4442
+	9ae4716a1e916f141e47a01b439133ca382281ebdcbec1e53f85da6771774bd6
 	de66118684a2ecec18017dd96e50a489f30465510250c007ced16f81fb542ba5
 )
 
