@@ -1,8 +1,8 @@
 # Maintainer: Jacob Mourelos <jacob.mourelos@gmail.com>
 
 pkgname=doconv
-pkgver=0.1.6
-pkgrel=3
+pkgver=0.1.7
+pkgrel=1
 pkgdesc='A tool for document file format conversion'
 arch=('any')
 url='https://github.com/jmourelos/doconv'
@@ -11,7 +11,7 @@ depends=('python2' 'python2-networkx' 'python2-stevedore' 'python2-lxml')
 optdepends=('asciidoc')
 makedepends=('python2-setuptools')
 
-source=("https://pypi.org/packages/source/d/doconv/${pkgname}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/e3/07/8237b170c675406e72ee737521eef3e34624d449796b0f6ab06a15d8543a/${pkgname}-${pkgver}.tar.gz")
 
 package() { 
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -19,4 +19,4 @@ package() {
   python2 setup.py -q install --root="${pkgdir}" --optimize=1
 }
 
-md5sums=('dd78e24c650f1b0a5352b78c784d89c6')
+sha256sums=('23afd8985c971d22621e5df43e582bee9a056ce900e23685dd393c0272d5df0e')

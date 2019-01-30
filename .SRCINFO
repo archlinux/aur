@@ -1,7 +1,7 @@
 pkgbase = doconv
 	pkgdesc = A tool for document file format conversion
-	pkgver = 0.1.6
-	pkgrel = 3
+	pkgver = 0.1.7
+	pkgrel = 1
 	url = https://github.com/jmourelos/doconv
 	arch = any
 	license = BSD
@@ -11,8 +11,8 @@ pkgbase = doconv
 	depends = python2-stevedore
 	depends = python2-lxml
 	optdepends = asciidoc
-	source = https://pypi.org/packages/source/d/doconv/doconv-0.1.6.tar.gz
-	md5sums = dd78e24c650f1b0a5352b78c784d89c6
+	source = https://files.pythonhosted.org/packages/e3/07/8237b170c675406e72ee737521eef3e34624d449796b0f6ab06a15d8543a/doconv-0.1.7.tar.gz
+	sha256sums = 23afd8985c971d22621e5df43e582bee9a056ce900e23685dd393c0272d5df0e
 
 pkgname = doconv
 
