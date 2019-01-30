@@ -1,7 +1,7 @@
 pkgbase = bear
 	pkgdesc = tool to generate compilation database for clang tooling
 	pkgver = 2.3.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rizsotto/Bear
 	arch = i686
 	arch = x86_64
