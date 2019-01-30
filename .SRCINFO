@@ -6,6 +6,7 @@ pkgbase = superlu_dist
 	arch = x86_64
 	license = custom
 	makedepends = cmake
+	makedepends = gcc-fortran
 	depends = lapack
 	depends = parmetis
 	depends = combblas
