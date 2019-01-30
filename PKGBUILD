@@ -98,6 +98,9 @@ build() {
   if [ "$_CLANG" -eq "1" ]; then
     export CC=clang
     export CXX=clang++
+    export AR=llvm-ar
+    export NM=llvm-nm
+    export RANLIB=llvm-ranlib
   fi
 
   # Do PGO
