@@ -1,43 +1,53 @@
-# Maintainer: Lukas Sabota <lukas@lwsabota.com>
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
 # Contributor: Lukas Sabota <lukas@lwsabota.com>
 pkgname=blastem-hg
-pkgver=r682.7ed1dbb48f61
-pkgrel=2
+pkgver=r1693.ba3fb7a3be6b
+pkgrel=1
 pkgdesc="Fast and accurate Sega Genesis/Mega Drive emulator"
 arch=('x86_64')
 url="http://rhope.retrodev.com/files/blastem.html"
 license=('GPLv3')
-groups=()
-depends=('sdl')
-makedepends=('mercurial')
+depends=('sdl2' 'glew')
+makedepends=('mercurial' 'python2-pillow')
 provides=('blastem')
 conflicts=('blastem')
-replaces=()
-backup=()
-options=()
-install=
-source=(blastem::hg+http://rhope.retrodev.com/repos/blastem)
-sha256sums=('SKIP')
+source=(blastem::hg+http://rhope.retrodev.com/repos/blastem
+        'menu.patch')
+sha256sums=('SKIP'
+            '4b8e76103e1d607f2e4117c1a23e1d97b2bdca5f01ac2b5d3b433478a3b211d6')
 _hgrepo="blastem"
 
 pkgver() {
   cd $srcdir/$_hgrepo
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)" | sed s/+//g
 }
 
+prepare() {
+	cd "$srcdir/${pkgname%-hg}"
+	patch -Np1 -i "${srcdir}/menu.patch"
+	chmod a+x menumake.sh install.sh
+}
 
 build() {
-  cd $srcdir
-  rm -rf "$srcdir/$_hgrepo-build"
-  cp -r "$srcdir/$_hgrepo" "$srcdir/$_hgrepo-build"
-  cd "$srcdir/$_hgrepo-build"
-  make blastem
+	cd "$srcdir/${pkgname%-hg}"
+	make blastem
+	./menumake.sh
 }
-
 
 package() {
-  cd "$srcdir/$_hgrepo-build"
-  install -Dm 755 blastem $pkgdir/usr/bin/blastem
+	cd "$srcdir/${pkgname%-hg}"
+	./install.sh
+	mkdir -p "$pkgdir/opt/blastem"
+	install -d -g games "$pkgdir/opt/blastem"
+	install -m 755 -g games -D to_install/* "$pkgdir/opt/blastem"
+	install -m 666 -g games -D default.cfg "$pkgdir/opt/blastem"
+	install -m 666 -g games rom.db gamecontrollerdb.txt "$pkgdir/opt/blastem"
+	install -m 644 -g games -d "$pkgdir/opt/blastem/shaders"
+	install -m 644 -g games -D shaders/* "$pkgdir/opt/blastem/shaders"
+	chmod 755 "$pkgdir/opt/blastem/blastem"
+	chown root:games "$pkgdir/opt/blastem"
+	chown root:games "$pkgdir/opt/blastem/shaders"
+	chmod 755 "$pkgdir/opt/blastem/shaders"
+	mkdir -p "$pkgdir/usr/bin"
+	ln -s "/opt/blastem/blastem" "$pkgdir/usr/bin/blastem"
 }
-
-# vim:set ts=2 sw=2 et:

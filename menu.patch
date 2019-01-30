@@ -1,0 +1,32 @@
+diff -Nura blastem.old/img2tiles.py blastem.new/img2tiles.py
+--- blastem.old/img2tiles.py	2017-06-02 05:44:36.000000000 -0300
++++ blastem.new/img2tiles.py	2017-06-08 00:50:40.400366258 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ from PIL import Image
+ 
+ def gchannel(Val):
+diff -Nura blastem.old/install.sh blastem.new/install.sh
+--- blastem.old/install.sh	1969-12-31 21:00:00.000000000 -0300
++++ blastem.new/install.sh	2017-06-08 00:50:40.403699591 -0300
+@@ -0,0 +1,5 @@
++mkdir "to_install"
++cp blastem to_install/blastem
++if [ -f "./menu.bin" ]; then
++	cp menu.bin to_install/menu.bin
++fi
+diff -Nura blastem.old/menumake.sh blastem.new/menumake.sh
+--- blastem.old/menumake.sh	1969-12-31 21:00:00.000000000 -0300
++++ blastem.new/menumake.sh	2017-06-08 00:52:01.067033096 -0300
+@@ -0,0 +1,10 @@
++#!/bin/bash
++if(pacman -Q vasm >/dev/null); then
++	if(pacman -Q xcftools >/dev/null); then
++		make menu.bin
++	else
++		echo "You need to install vasm and xcftools from AUR to compile the menu"
++	fi
++else
++	echo "You need to install vasm and xcftools from AUR to compile the menu"
++fi
