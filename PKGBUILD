@@ -16,10 +16,6 @@ source=("https://github.com/kbknapp/$pkgname/archive/v$pkgver/$pkgname-$pkgver.t
 
 sha256sums=('6e07552706cdebceaf5b03bcd022082cdafca70e8e095a74ace95c767e39d509')
 
-prepare() {
-    tar xf $pkgname-$pkgver.tar.gz
-}
-
 build() {
   cd "$pkgname-$pkgver"
   cargo build --release
