@@ -1,33 +1,30 @@
-# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+_gitname=Mesen
 
 pkgname=libretro-mesen-git
-pkgver=1968.80f6182d
+pkgver=0.9.7.r227.gefe55a91
 pkgrel=1
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-pkgdesc="Mesen is a cross-platform (Windows & Linux) NES/Famicom emulator built in C++ and C#"
-url="https://github.com/libretro/Mesen"
+pkgdesc='Libretro core for high accuracy Mesen NES/Famicom emulator written in C++.'
+arch=('x86_64')
+url="https://www.mesen.ca/"
 license=('GPL3')
 groups=('libretro')
-depends=('zlib' 'glibc')
-makedepends=('git' 'clang')
-
-_libname=mesen_libretro
-_gitname=mesen
-source=("git+https://github.com/libretro/${_gitname}.git"
-	"https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/mesen_libretro.info")
-sha256sums=('SKIP'
-	'SKIP')
+depends=('libretro-core-info')
+makedepends=('git')
+source=("git+https://github.com/SourMesen/$_gitname.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "$srcdir/$_gitname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${_gitname}"
-  make -j4 -f makefile libretro
+  cd "$srcdir/$_gitname/Libretro"
+  make
 }
 
 package() {
-  install -Dm644 "${_gitname}/Libretro/obj.x64/${_libname}.x64.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+  cd "$srcdir/$_gitname/Libretro"
+  install -Dm644 "$srcdir/$_gitname/Libretro/mesen_libretro.so" "$pkgdir/usr/lib/libretro/mesen_libretro.so"
 }
