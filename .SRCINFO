@@ -1,0 +1,15 @@
+pkgbase = root-tail
+	pkgdesc = Displays a given file (stdin) anywhere on your X11 root window
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://directory.fsf.org/wiki/Root-tail
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = imake
+	source = http://oldhome.schmorp.de/marc/data/root-tail-1.2.tar.gz
+	sha256sums = 08fb829cc0edd533aaf2af7bcf12d877a6ff51d60c59be48ba354c5940b80691
+
+pkgname = root-tail
+
