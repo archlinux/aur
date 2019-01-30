@@ -1,6 +1,6 @@
 pkgbase = dumpasn1
 	pkgdesc = ASN.1 analyze tool
-	pkgver = 20170309
+	pkgver = 20180714
 	pkgrel = 1
 	url = http://www.cs.auckland.ac.nz/~pgut001
 	arch = i686
@@ -9,8 +9,9 @@ pkgbase = dumpasn1
 	source = http://www.cs.auckland.ac.nz/~pgut001/dumpasn1.c
 	source = http://www.cs.auckland.ac.nz/~pgut001/dumpasn1.cfg
 	source = LICENSE
-	sha256sums = f2c0b07c1540c1013df49261c0b707a1452ddd0711d195efb4ce26e3f86e2181
-	sha256sums = 9774ecae122c2e4e68d97489c46871081e04e746c85135288c4a77d04a0544f7
+	sha256sums = d42b7fb8457b9282ee341429baaaaf0ef7b2310cb28fcf2fc41914e07e8b1370
+	sha256sums = 94245ed185e2bdb94b00ba031bb67ab83980748626f532ee4565df886468f196
 	sha256sums = f58dfb06633792773b4e539666f0fac52eb44acf29619175d073b146e22785e4
 
 pkgname = dumpasn1
+
