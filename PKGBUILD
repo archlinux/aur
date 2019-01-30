@@ -5,11 +5,17 @@
 # Contributor: funkyou
 
 # Set this to 'true' to build and install the plugins
-#_plugin_feedreader=true
-#_plugin_voip=true
+#_plugin_feedreader='true'
+#_plugin_voip='true'
+
+# Set this to 'true' to enable the new automatically generated jsaon api
+#_jsonapi='true'
 
 # Set this to 'true' to enable auto login
 #_autologin='true'
+
+# Set this to 'true' to enable wiki functionality (experimental)
+#_wiki='true'
 
 # set this to 'true' to use clang for compiling (experimental)
 #_clang='true'
@@ -17,11 +23,14 @@
 # Unofficial plugins
 #_plugin_lua4rs='true'
 
+# Set this to 'true' to use use archlinux' rapidjson instead of shipped version
+#_systems_rapidjson='true'
+
 ### Nothing to be changed below this line ###
 
 pkgname=retroshare
-pkgver=0.6.4
-pkgrel=4
+pkgver=0.6.5
+pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://retroshare.sourceforge.net/"
@@ -33,37 +42,39 @@ optdepends=('tor: tor hidden node support'
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
-source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz"
-	'https://github.com/RetroShare/RetroShare/commit/4d287d68bc9725f403dc7d952a927d401c5d6c97.patch'
-	'https://github.com/RetroShare/RetroShare/commit/428b331d8efede1e2f39f2fc49216c675d081030.patch')
-sha256sums=('84355c0f3be5ec1dfa7253e327ea1254f76f47739c233cfb8d0983ebd1a61f4a'
-            'd5b775333a351068711dc12bb50d92fde4966fcaaf393039c324b46e2f03f986'
-            'eb2586311e56f2cf3ce42eccc3b1647e4a06cba8042e867f379e7d4601ab5172')
+source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz")
+sha256sums=('2181b406d3ed6c4ce71d9f9dea45c646d9f91cd7029575a5a14278eb94fe1054')
 
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
 [[ "$_plugin_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
+[[ "$_jsonapi" == 'true' ]] && depends=(${depends[@]} 'restbed')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
-[[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libgnome-keyring')
+[[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libsecret')
+[[ "$_systems_rapidjson" == 'true' ]] && makedepends=(${makedepends[@]} 'rapidjson')
 
 # Set options for qmake
+_optJsonapi=''
 _optClang=''
 _optAutol=''
 _optPlugin=''
+_optWiki=''
+[[ "$_jsonapi" == 'true' ]] && _optJsonapi='CONFIG+=rs_jsonapi'
 [[ "$_clang" == 'true' ]] && _optClang='-spec linux-clang CONFIG+=c++11'
 [[ "$_autologin" == 'true' ]] && _optAutol='CONFIG+=rs_autologin'
 ([[ "$_plugin_voip" == 'true' ]] || [[ "$_plugin_feedreader" == 'true' ]] || [[ "$_plugin_lua4rs" == 'true' ]]) && _optPlugin='CONFIG+=retroshare_plugins'
+[[ "$_wiki" == 'true' ]] && _optWiki='CONFIG+=wikipoos'
 
 # Handle unofficial plugins
 if [[ "$_plugin_lua4rs" == 'true' ]] ; then
 	depends=(${depends[@]} 'lua')
-        source=(${source[@]} 'Lua4RS::git+https://github.com/RetroShare/Lua4RS.git')
+    source=(${source[@]} 'Lua4RS::git+https://github.com/RetroShare/Lua4RS.git')
 fi
 
 prepare() {
 	cd "${srcdir}/RetroShare-${pkgver}"
-	patch -p1 -i "${srcdir}"/4d287d68bc9725f403dc7d952a927d401c5d6c97.patch
-	patch -p1 -i "${srcdir}"/428b331d8efede1e2f39f2fc49216c675d081030.patch
+	#patch -p1 -i "${srcdir}"/4d287d68bc9725f403dc7d952a927d401c5d6c97.patch
+	#patch -p1 -i "${srcdir}"/428b331d8efede1e2f39f2fc49216c675d081030.patch
 }
 
 build() {
@@ -80,21 +91,14 @@ build() {
 	[[ "$_plugin_voip" != 'true' ]] && sed -i '/VOIP \\/d' plugins/plugins.pro
 	[[ "$_plugin_feedreader" != 'true' ]] && sed -i '/FeedReader/d' plugins/plugins.pro
 
-	# call version scripts
-	cd libretroshare/src
-	LANG=C ./version_detail.sh
-	cd ../..
-
-	cd retroshare-gui/src
-	LANG=C ./version_detail.sh
-	cd ../..
-
 	qmake   CONFIG-=debug CONFIG+=release \
-		${_optAutol} ${_optClang} ${_optPlugin} \
-		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
-		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
+		${_optJsonapi} ${_optAutol} ${_optClang} \
+		${_optPlugin} ${_optWiki} \
+		QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
+		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
 		RetroShare.pro
-	make
+	# workaround
+	make || make
 }
 
 package() {
