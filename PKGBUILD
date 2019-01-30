@@ -27,9 +27,8 @@ package(){
     cd "$pkgname"
     python2 setup.py install --root=$pkgdir --optimize=1
     install -dm755 ${pkgdir}/usr/share/{bash-completion/completions/,zsh/site-functions,fish/completions}
-    install -m 644 "${srcdir}/$pkgname/cheat/autocompletion/cheat.bash $pkgdir/usr/share/bash-completion/completions/
+    install -m 644 ${srcdir}/$pkgname/cheat/autocompletion/cheat.bash $pkgdir/usr/share/bash-completion/completions/
     install -m 644 "$srcdir/$_gitname/$_gitname/autocompletion/cheat.zsh" "$pkgdir/usr/share/zsh/site-functions/$_gitname"
 	install -m 644 "$srcdir/$_gitname/$_gitname/autocompletion/cheat.fish" "$pkgdir/usr/share/fish/completions/$_gitname"
 }
 
-}
