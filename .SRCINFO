@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-openni-camera
 	pkgdesc = ROS - Drivers for the Microsoft Kinect, Asus Xtion, and Primesense Devices.
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/
 	arch = any
 	license = BSD
