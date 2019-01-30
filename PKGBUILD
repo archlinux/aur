@@ -6,7 +6,7 @@
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=3.30.2+4
-pkgrel=6
+pkgrel=7
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -66,6 +66,9 @@ prepare() {
   # Use ClutterImage on StTextureCache
   git cherry-pick deec0bf2^..3dcb593a
 
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/96/
+  # Fixes and performance improvements to the extension system
+  git cherry-pick 078cfba1^..0c167543
 
   # Move the plugin to our custom epiphany-only dir
   sed -i "s/'mozilla'/'epiphany'/g" meson.build
