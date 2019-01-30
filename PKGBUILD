@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=latex-enumitem
 _pkgname=${pkgname#latex-}
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="Customize the three basic lists (enumerate, itemize and description)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('texlive-core' 'unzip')
 noextract=('enumitem.zip')
 source=("http://mirror.ctan.org/macros/latex/contrib/$_pkgname.zip")
 install="$pkgname.install"
-sha256sums=('9ebcb5e70ff8ee4e1c9d28be8fbd7b5894f98bdefe4342c245980f6a108fcef1')
+sha256sums=('1279d5435f0b1295f90135d8414dbdf6f09879039edea20b72feba7c67f5277d')
 
 package() {
   install -dm755 "$pkgdir"/usr/share/texmf
