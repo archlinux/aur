@@ -1,7 +1,7 @@
 pkgbase = fluffy-switch
 	pkgdesc = Goldtree and Tinfoil GUI for USB install on switch
 	pkgver = 2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fourminute/Fluffy
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = fluffy-switch
 	depends = python-pyusb
 	depends = libusb
 	depends = python-pyqt5
+	depends = tk
 	optdepends = python-qdarkstyle: dark theme toggle in fluffy
 	backup = etc/udev/rules.d/80-fluffy-switch.rules
 	source = Fluffy-2.5.tar.gz::https://github.com/fourminute/Fluffy/archive/v2.5.tar.gz
