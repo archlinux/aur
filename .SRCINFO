@@ -1,0 +1,17 @@
+pkgbase = gzip-with-pigz-symlinks
+	pkgdesc = gzip with binary symlinked to pigz
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://www.gnu.org/software/gzip/
+	arch = x86_64
+	license = GPL3
+	depends = pigz
+	depends = bash
+	depends = less
+	provides = gzip
+	conflicts = gzip
+	source = https://ftp.gnu.org/pub/gnu/gzip/gzip-1.10.tar.xz
+	md5sums = 691b1221694c3394f1c537df4eee39d3
+
+pkgname = gzip-with-pigz-symlinks
+
