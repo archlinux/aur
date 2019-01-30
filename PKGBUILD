@@ -2,12 +2,12 @@
 
 pkgname=opengv-git
 pkgver=r144.306a54e
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient C++ library for calibrated camera pose computation using geometric computer vision algorithms."
 arch=('i686' 'x86_64')
 url="https://laurentkneip.github.io/opengv/"
 license=('BSD')
-depends=('boost-libs' 'eigen>=3' 'python2-numpy')
+depends=('boost-libs' 'eigen>=3' 'python-numpy')
 makedepends=('boost' 'cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
