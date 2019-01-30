@@ -1,8 +1,8 @@
 pkgbase = arandr-gtk3-git
 	pkgdesc = Provide a simple visual front end for XRandR 1.2. GTK3 port.
-	pkgver = 0.1.10.r1.gab92f21
+	pkgver = 0.1.9.r73.gd7f0ece
 	pkgrel = 1
-	url = https://github.com/actionless/arandr
+	url = https://gitlab.com/arandr/arandr
 	install = arandr-gtk3-git.install
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = arandr-gtk3-git
 	provides = arandr
 	conflicts = arandr
 	conflicts = arandr-git
-	source = git+https://github.com/actionless/arandr
+	source = git+https://gitlab.com/arandr/arandr.git#branch=master
 	md5sums = SKIP
 
 pkgname = arandr-gtk3-git
