@@ -1,8 +1,8 @@
 # Maintainer: Mirko Scholz
 
 pkgname=cctbx-bin
-pkgver=1617
-pkgrel=4
+pkgver=1660
+pkgrel=1
 pkgdesc="The Computational Crystallography Toolbox (cctbx)"
 arch=('x86_64')
 url="https://cci.lbl.gov/cctbx_docs/index.html"
@@ -12,7 +12,7 @@ makedepends=(fakechroot)
 _installer="cctbx-installer-dev-$pkgver-intel-linux-2.6-x86_64-centos6"
 source=("http://cci.lbl.gov/cctbx_build/dev-${pkgver}/${_installer}.tar.gz")
 noextract=("${source[@]##*/}")
-sha1sums=('6e66addfa2df9e96c29058a95748eeb792319877')
+sha1sums=('36399b3bb14b2ffeed4b4ec6c7ded23d40505d58')
 options=(!strip)
 
 #
