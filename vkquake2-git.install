@@ -1,0 +1,7 @@
+post_install() {
+    echo ">> Requires retail pak file(s) to play"
+    echo ">> Place in /opt/vkquake2/baseq2"
+    echo ">> and change the owner of that"
+    echo ">> directory from root to yourself"
+    echo ">> or the game won't save config"
+}
