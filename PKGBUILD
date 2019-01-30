@@ -2,7 +2,7 @@
 # Contributor: alive4ever <alive4ever at live.com>
 # Contributor: Earnest
 pkgname=opendoas-git
-pkgver=6.0.r42.gdbac3f3
+pkgver=6.0.r56.g8b2a776
 pkgrel=1
 pkgdesc='Run commands as super user or another user'
 arch=(x86_64 i686)
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
 	cd opendoas
-	./configure --prefix=/usr
+	./configure --prefix=/usr --with-timestamp
 	make
 }
 

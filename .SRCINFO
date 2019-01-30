@@ -1,6 +1,6 @@
 pkgbase = opendoas-git
 	pkgdesc = Run commands as super user or another user
-	pkgver = 6.0.r42.gdbac3f3
+	pkgver = 6.0.r56.g8b2a776
 	pkgrel = 1
 	url = https://github.com/Duncaen/OpenDoas
 	install = opendoas.install
