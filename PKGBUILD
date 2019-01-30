@@ -1,22 +1,24 @@
+# $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=glassfish5
-pkgver=5.0
-pkgrel=2
-pkgdesc="The Open Source Java EE 8 Reference Implementation."
-url="https://javaee.github.io/glassfish/"
-license=("CDDL")
+pkgver=5.1.0
+pkgrel=1
+pkgdesc="The Open Source Jakarta EE 8 (Java EE 8) Reference Implementation."
+url="https://github.com/eclipse-ee4j/glassfish"
+license=("EPL")
 depends=("java-environment>=8")
 arch=("any")
 options=(!strip)
-source=("http://download.oracle.com/glassfish/5.0/release/glassfish-${pkgver}.zip"
-		"glassfish5.service")
+source=("glassfish-${pkgver}.zip::https://www.eclipse.org/downloads/download.php?file=/glassfish/glassfish-${pkgver}.zip&r=1"
+        "${pkgname}.service")
 
-sha256sums=('85450f0cd4875729d64be6bcbf7ed8f61009ea0f23d3be453c6f3d1dbab02420'
+sha256sums=('26f3fa6463d24c5ed3956e4cab24a97e834ca37d7a23d341aadaa78d9e0093ce'
             '9be6b53df62a719e4cac1b54703f0abcc6c22389d1b46e3e85ed38d6f1453cdc')
 
 package() {
-    install -d "$pkgdir/opt"
-    cp -a glassfish5 "$pkgdir/opt/glassfish5"
-    install -D glassfish5.service "$pkgdir/usr/lib/systemd/system/glassfish5.service"
+  install -d ${pkgname} "${pkgdir}/opt/${pkgname}"
+  cp -a glassfish5 "${pkgdir}/opt/"
+  install -D ${pkgname}.service "${pkgdir}/usr/lib/systemd/system/glassfish5.service"
 }
+# vim:set ts=2 sw=2 et:
