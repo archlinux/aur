@@ -10,7 +10,7 @@ _ruby="/usr/bin/ruby"
 _gem="/usr/bin/gem"
 pkgname="ruby-text"
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculates the Levenshtein distance between two byte strings."
 arch=("i686"
       "x86_64")
@@ -32,7 +32,7 @@ _gem_install() {
 
   # Install the gem
   install -d -m755 $_bindir $_gemdir
-  $_gem install --no-ri --no-rdoc --ignore-dependencies --no-user-install \
+  $_gem install --no-document --ignore-dependencies --no-user-install \
                 --bindir $_bindir --install-dir $_gemdir "$srcdir/$_gemname-$pkgver.gem"
 }
 
