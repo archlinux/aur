@@ -55,7 +55,6 @@ prepare() {
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/SetupMono.sh" use-arch-mono.patch
   patch "$srcdir/UnrealEngine/Setup.sh" recompile-version-selector.patch
 
-  #/tmp/makepkg/unreal-engine/src/UnrealEngine /tmp/makepkg/unreal-engine/src
   pushd "$srcdir/UnrealEngine" > /dev/null
   patch -p1 -i ../clang-70-support.patch 
   popd > /dev/null
