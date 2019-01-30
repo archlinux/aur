@@ -4,8 +4,8 @@
 
 pkgname=pantheon-mail
 _gname=mail
-pkgver=1.0.7
-pkgrel=2
+pkgver=1.0.8
+pkgrel=1
 pkgdesc='The Pantheon Mail Client'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/mail'
@@ -17,7 +17,7 @@ makedepends=('cmake' 'git' 'gnome-doc-utils' 'gobject-introspection'
              'granite' 'intltool' 'vala')
 replaces=('pantheon-mail-bzr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ba2750c0297ee4b2e2cee7ba648a6378e6e097cd6906dd94a561b2cda60b8eaa')
+sha256sums=('3a1493832cbde0d004238197f2ddccbedfa8cdb79fe8017d5e32e9ffab7e9ee9')
 
 build() {
   mkdir -p $_gname-$pkgver/build

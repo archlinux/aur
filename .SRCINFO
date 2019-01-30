@@ -1,7 +1,7 @@
 pkgbase = pantheon-mail
 	pkgdesc = The Pantheon Mail Client
-	pkgver = 1.0.7
-	pkgrel = 2
+	pkgver = 1.0.8
+	pkgrel = 1
 	url = https://github.com/elementary/mail
 	arch = i686
 	arch = x86_64
@@ -30,8 +30,8 @@ pkgbase = pantheon-mail
 	depends = sqlite
 	depends = webkitgtk
 	replaces = pantheon-mail-bzr
-	source = pantheon-mail-1.0.7.tar.gz::https://github.com/elementary/mail/archive/1.0.7.tar.gz
-	sha256sums = ba2750c0297ee4b2e2cee7ba648a6378e6e097cd6906dd94a561b2cda60b8eaa
+	source = pantheon-mail-1.0.8.tar.gz::https://github.com/elementary/mail/archive/1.0.8.tar.gz
+	sha256sums = 3a1493832cbde0d004238197f2ddccbedfa8cdb79fe8017d5e32e9ffab7e9ee9
 
 pkgname = pantheon-mail
 
