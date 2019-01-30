@@ -4,7 +4,7 @@
 
 pkgname=cmake
 pkgver=3.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="http://www.cmake.org/"
@@ -34,7 +34,7 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   vimpath="${pkgdir}/usr/share/vim/vimfiles"
-  install -d "${vimpath}"/{help,indent,syntax}
+  install -d "${vimpath}"/{indent,syntax}
   ln -s /usr/share/cmake-${pkgver%.*}/editors/vim/indent/cmake.vim \
     "${vimpath}"/indent/
   ln -s /usr/share/cmake-${pkgver%.*}/editors/vim/syntax/cmake.vim \
@@ -44,6 +44,8 @@ package() {
   emacs -batch -f batch-byte-compile \
     "${pkgdir}"/usr/share/cmake-${pkgver%.*}/editors/emacs/cmake-mode.el
   ln -s /usr/share/cmake-${pkgver%.*}/editors/emacs/cmake-mode.el \
+    "${pkgdir}"/usr/share/emacs/site-lisp/
+  ln -s /usr/share/cmake-${pkgver%.*}/editors/emacs/cmake-mode.elc \
     "${pkgdir}"/usr/share/emacs/site-lisp/
 
   install -Dm644 Copyright.txt \
