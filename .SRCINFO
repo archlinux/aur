@@ -1,0 +1,16 @@
+pkgbase = darksky-git
+	pkgdesc = Command line weather forecasts from darksy.net
+	pkgver = r64.ff4f21e
+	pkgrel = 1
+	url = https://github.com/sieste/darksky
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = python2
+	provides = darksky
+	conflicts = darksky
+	source = git+https://github.com/sieste/darksky.git
+	md5sums = SKIP
+
+pkgname = darksky-git
+
