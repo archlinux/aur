@@ -1,7 +1,7 @@
 pkgbase = bahn-regio-entfernungsrechner
 	pkgdesc = Calculates tariff-kilometres for subscription tickets for DB regio. Upstream name: Entfernungsrechner für Fahrvergünstigungen.
 	pkgver = 3d_20180202
-	pkgrel = 1
+	pkgrel = 3
 	epoch = 1
 	url = https://www.evg-online.org/deine-vorteile/services/service-meldungen/entfernungsrechner-fuer-fahrverguenstigungen/
 	arch = i686
