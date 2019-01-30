@@ -1,6 +1,6 @@
 pkgbase = python-yellowbrick
 	pkgdesc = A suite of visual analysis and diagnostic tools for machine learning
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = http://www.scikit-yb.org
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-yellowbrick
 	depends = python-matplotlib
 	depends = python-scikit-learn
 	depends = python-cycler
-	source = https://files.pythonhosted.org/packages/3f/c0/277a7720218200ae2720f94677ea898771a55298f41e5080d3e6923f4412/yellowbrick-0.8.tar.gz
-	sha256sums = 67cb9dde35fa36c8a4d700ad04b8f7478aece5e236c6785b4383d3cebe0b7e78
+	source = https://files.pythonhosted.org/packages/15/ab/d9d40b35792c19863780abb8e8cfef03f75c643705bd1d4512203f6e01d3/yellowbrick-0.9.tar.gz
+	sha256sums = e4ca98068da958dba27900a315868557c9f6aa759453b25aebbc7e5fda7a61fb
 
 pkgname = python-yellowbrick
 
