@@ -5,8 +5,8 @@
 pkgname=rtl88xxau-aircrack-dkms-git
 _pkgbase=rtl88xxau
 pkgver=r564.87b2f78
-pkgrel=2
-pkgdesc="Aircrack-ng kernel module for Realtek 88XX network cards (8811au, 8812au, 8814au and 8821au drivers) with monitor mode and injection support"
+pkgrel=3
+pkgdesc="Aircrack-ng kernel module for Realtek 88XXau (USB adapters only) network cards (8811au, 8812au, 8814au and 8821au chipsets) with monitor mode and injection support"
 url="https://github.com/aircrack-ng/rtl8812au#branch=v5.2.20"
 license=('GPL')
 arch=('any')
@@ -15,7 +15,9 @@ depends=('dkms')
 replaces=('rtl8812au-aircrack-dkms-git')
 conflicts=('rtl8812au-aircrack-dkms-git'
            'rtl8812au-dkms-git'
-		   'rtl8812au-inject-dkms-git')
+	   'rtl8821au-dkms-git'
+	   'rtl8814au-dkms-git'
+	   'rtl8812au-inject-dkms-git')
 
 source=('rtl88xxau::git+https://github.com/aircrack-ng/rtl8812au.git'
         'dkms.conf')
@@ -36,6 +38,6 @@ package() {
 	
 	# Set name and version
 	sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
-		-e "s/@PKGVER@/${pkgver}/" \
-		-i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+            -e "s/@PKGVER@/${pkgver}/" \
+	    -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
