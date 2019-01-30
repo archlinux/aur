@@ -1,0 +1,18 @@
+pkgbase = bison-epita
+	pkgdesc = The GNU general-purpose parser generator (Tiger compiler version)
+	pkgver = 3.99
+	pkgrel = 1
+	url = http://www.gnu.org/software/bison/bison.html
+	arch = x86_64
+	groups = base-devel
+	license = GPL3
+	depends = glibc
+	depends = m4
+	depends = sh
+	provides = bison
+	conflicts = bison
+	source = https://www.lrde.epita.fr/~tiger/download/bison-3.2.1.52-cd4f7.tar.gz
+	md5sums = 32be135f6f3a8925d88702eb54661856
+
+pkgname = bison-epita
+
