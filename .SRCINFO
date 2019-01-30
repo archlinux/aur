@@ -1,0 +1,18 @@
+pkgbase = sassc-git
+	pkgdesc = Libsass command line driver
+	pkgver = 3.4.8.r9.g59aec3b
+	pkgrel = 1
+	url = https://github.com/sass/sassc
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = libsass
+	provides = sassc
+	conflicts = sassc
+	source = git+https://github.com/sass/sassc.git
+	sha256sums = SKIP
+
+pkgname = sassc-git
+
