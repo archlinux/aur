@@ -1,6 +1,6 @@
 # Maintainer: Mario Blättermann <mario.blaettermann@gmail.com>
 pkgname=glabels-qt-git
-pkgver=r474.c2d024f
+pkgver=r500.549df22
 pkgrel=1
 pkgdesc="Development version of the next major version of gLabels (4.0)."
 arch=('x86_64')
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/jimevins/glabels-qt.git')
+source=('git+https://github.com/mariobl/glabels-qt.git')
 noextract=()
 md5sums=('SKIP')
 
