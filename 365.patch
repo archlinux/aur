@@ -1,0 +1,14 @@
+diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
+index e7dea4292..103a99cd6 100644
+--- a/clutter/clutter/clutter-stage.c
++++ b/clutter/clutter/clutter-stage.c
+@@ -1564,7 +1564,8 @@ _clutter_stage_do_pick_on_view (ClutterStage     *stage,
+        */
+       cogl_push_framebuffer (fb);
+       context->pick_mode = mode;
+-      _clutter_stage_paint_view (stage, view, NULL);
++
++      clutter_stage_do_paint_view (stage, view, NULL);
+       context->pick_mode = CLUTTER_PICK_NONE;
+       priv->cached_pick_mode = mode;
+       cogl_pop_framebuffer ();
