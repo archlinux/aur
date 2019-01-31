@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-ru
 	pkgdesc = Web browser from mozilla.org, nightly build, russian version
-	pkgver = 63.0a1.20180825
+	pkgver = 67.0a1.20190131
 	pkgrel = 1
 	url = http://nightly.mozilla.org/
 	install = firefox-nightly-ru.install
@@ -23,11 +23,11 @@ pkgbase = firefox-nightly-ru
 	source = firefox-nightly.desktop
 	source = firefox-nightly-ru.install
 	source = vendor.js
-	source = 20180825-firefox-63.0a1.ru.linux-x86_64.tar.bz2::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-63.0a1.ru.linux-x86_64.tar.bz2
+	source = 20190131-firefox-67.0a1.ru.linux-x86_64.tar.bz2::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-67.0a1.ru.linux-x86_64.tar.bz2
 	sha512sums = 02bd8c8c717e6796fb1772f51c1bfd78ff3ca7c5355c08b9568dc36cb72b8b84330d20522653eedda12bdec1517cd4074a4bc5d51a8667880121e946b85c11ec
 	sha512sums = bc940986f5acb02706714d5dcbc32e17b167190dc9a30c7d63bf5317a45a1a0ff9da5ea302b9c8efc32acf7b75d2dec1420f542cb0ba08c3e3d59273d18baa96
 	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
-	sha512sums = 6e8f7782070572b4d10a4044a929f10440c9c6c1e1a149813d55af2ee0b9d34ec5edf4e562e15a0bd0f0c549cbc0299742b7ef6d4849042212f9c1c239d6f55e
+	sha512sums = 29bfdbc2f90d958b8de5f1c813e8fc2ca6984a61b10249ad8b9b4dcd147acd3d3c2ea712f61b9bdff89e79b9416688c691bdea653b066d22cbdbed794f96c619
 
 pkgname = firefox-nightly-ru
 
