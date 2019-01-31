@@ -16,6 +16,7 @@ optdepends=('cups: Printer support'
 provides=("${pkgname}" 'brave-beta-browser')
 conflicts=("${pkgname}" 'brave-bin' 'brave-dev-bin')
 source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-v${pkgver}-linux-x64.zip"
+        "$pkgname-$pkgver.deb::https://github.com/brave/brave-browser/releases/download/v$pkgver/brave-browser-beta_${pkgver}_amd64.deb"
         "LICENSE::https://raw.githubusercontent.com/brave/brave-browser/master/LICENSE"
         "$pkgname.sh"
         "$pkgname.desktop"
@@ -27,12 +28,17 @@ sha512sums=('aa55d7f276e7b8fc6e62dec75093dacf8b980d1f250d8e4ee7f470d8624a2e5fa82
             '64e9a81d929d391186059b35fc87c130029d816ff8b3650bc96d53b7496d40b7302ed38530a4bd67253c15b20b30778e06157e60092ae62d7765b06a26daf791'
             '44809972e3980856494659b15d033b02c63dd1743293dc079d90d022904160532bbf82e70686dea20a46431981bf147cc5392ecc483c61378908b4a92a3d7515'
             'd7bef52e336bd908d24bf3a084a1fc480831d27a3c80af4c31872465b6a0ce39bdf298e620ae9865526c974465807559cc75610b835e60b4358f65a8a8ff159e')
-noextract=("$pkgname-$pkgver.zip")
+noextract=("$pkgname-$pkgver.zip"
+           "$pkgname-$pkgver.deb")
 
 prepare() {
   mkdir -p brave
   cat $pkgname-$pkgver.zip | bsdtar -xf- -C brave
   chmod +x brave/brave
+  mkdir -p brave-deb/data
+  cat $pkgname-$pkgver.deb | bsdtar -xf- -C brave-deb
+  cat brave-deb/data.tar.xz | bsdtar -xf- -C brave-deb/data
+  cp -a --reflink=auto $srcdir/brave-deb/data/opt/brave.com/brave-beta/resources $srcdir/brave/resources
 }
 
 _bsdtardir="brave"
