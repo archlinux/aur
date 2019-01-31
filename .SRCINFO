@@ -8,7 +8,7 @@ pkgbase = sbcli-git
 	depends = sbcl
 	depends = quicklisp
 	options = !strip
-	source = git+https://github.com/lucasew/sbcli
+	source = git+https://github.com/hellerve/sbcli
 	sha256sums = SKIP
 
 pkgname = sbcli-git

@@ -3,13 +3,13 @@
 pkgname=sbcli-git
 depends=('sbcl' 'quicklisp')
 pkgrel=1
-pkgver=r24.de774ef
+pkgver=r26.52f56a5
 arch=(any)
 pkgdesc="A better REPL for SBCL"
 license=("gpl3")
 options=(!strip)
 url="https://github.com/hellerve/sbcli"
-source=("git+https://github.com/lucasew/sbcli")
+source=("git+https://github.com/hellerve/sbcli")
 sha256sums=("SKIP")
 
 # if /usr/bin/env: “sbcl --script”: File or directory not found change hellerve to lucasew on source
