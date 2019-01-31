@@ -13,3 +13,6 @@ use the existing cache.
 
 git clone --mirror ~/git/linux-mmots archlinux-linux
 git -C archlinux-linux remote set-url origin https://github.com/cdown/linux-mmots
+
+The "dogfooding" branch is master + any of my patches which are not yet in the
+latest mmots tarball.
