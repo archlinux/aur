@@ -1,6 +1,6 @@
 pkgbase = patroneo-git
 	pkgdesc = Easy Pattern Sequencer - Utilizing Jack Midi and the Non Session Manager
-	pkgver = r67.d2828ca
+	pkgver = v1.1.r7.g5a92f3e
 	pkgrel = 1
 	url = https://github.com/diovudau/Patroneo
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = patroneo-git
 	makedepends = nuitka
 	depends = python
 	depends = python-pyqt5
+	depends = ttf-dejavu
 	optdepends = non-session-manager: required to run Patroneo
 	optdepends = raysession-git: alternative to non-session-manager
 	provides = patroneo
