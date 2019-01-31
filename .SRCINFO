@@ -1,0 +1,15 @@
+pkgbase = sbcli-git
+	pkgdesc = A better REPL for SBCL
+	pkgver = r24.de774ef
+	pkgrel = 1
+	url = https://github.com/hellerve/sbcli
+	arch = any
+	license = gpl3
+	depends = sbcl
+	depends = quicklisp
+	options = !strip
+	source = git+https://github.com/lucasew/sbcli
+	sha256sums = SKIP
+
+pkgname = sbcli-git
+
