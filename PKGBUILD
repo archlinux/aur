@@ -33,6 +33,7 @@ ros_depends=(
 	ros-melodic-nav-msgs
 	ros-melodic-controller-interface
 	ros-melodic-tf
+	ros-melodic-controller-manager
 )
 
 depends=(

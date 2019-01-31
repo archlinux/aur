@@ -20,6 +20,7 @@ pkgbase = ros-melodic-diff-drive-controller
 	depends = ros-melodic-nav-msgs
 	depends = ros-melodic-controller-interface
 	depends = ros-melodic-tf
+	depends = ros-melodic-controller-manager
 	source = ros-melodic-diff-drive-controller-0.14.2-0.tar.gz::https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/diff_drive_controller/0.14.2-0.tar.gz
 	sha256sums = f940c2704f46974e650214aa59fbb8b375ac37b6bac1110995124bffe81656e6
 
