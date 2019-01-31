@@ -1,6 +1,6 @@
 pkgbase = electrum-vtc
 	pkgdesc = A simple, powerful, and secure Vertcoin wallet which has no sync time or long waits for the blockchain to download.
-	pkgver = 3.3.0.rc1
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://electrum.vertcoin.org/
 	arch = any
@@ -28,10 +28,10 @@ pkgbase = electrum-vtc
 	optdepends = python-keepkey: KeepKey hardware wallet support dependency
 	provides = electrum-vtc
 	conflicts = electrum-vtc
-	source = https://github.com/vertcoin-project/electrum-vtc/releases/download/3.3.0-rc1/electrum-vtc-3.3.0-rc1.tar.gz
-	source = https://github.com/vertcoin-project/electrum-vtc/releases/download/3.3.0-rc1/electrum-vtc-3.3.0-rc1.tar.gz.sig
+	source = https://github.com/vertcoin-project/electrum-vtc/releases/download/3.3.1/electrum-vtc-3.3.1.tar.gz
+	source = https://github.com/vertcoin-project/electrum-vtc/releases/download/3.3.1/electrum-vtc-3.3.1.tar.gz.sig
 	validpgpkeys = 64D9042053AA1391D6C0B4A7425776E2F9E5BAB8
-	sha256sums = d54a665cef4d2dc937b3b2a831bcfba0b825461136069b827b2d7ebbaf582be2
+	sha256sums = aabe3b40f1c3fd2ab324bf5edf074fb9726028bcbfb959a36546afd8e46c2a65
 	sha256sums = SKIP
 
 pkgname = electrum-vtc
