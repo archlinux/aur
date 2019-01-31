@@ -1,41 +1,47 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=clair-git
-_pkgname=clair
-pkgver=v2.0.0.r251.g5cd6a8cc
+pkgver=v2.0.0.r267.gaa868294
 pkgrel=1
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=(x86_64)
 url='https://github.com/coreos/clair'
 license=(Apache)
 makedepends=('git' 'go')
-source=("${_pkgname}::git+https://github.com/coreos/clair")
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${pkgname}"
 
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${pkgname}"
 
 	install -m755 -d "${srcdir}/go/src/github.com/coreos/"
-	ln -sf "${srcdir}/${_pkgname}" "${srcdir}/go/src/github.com/coreos/"
+	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/coreos/clair"
+
+	cd "${srcdir}/go/src/github.com/coreos/clair"
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" go get -v -d
 }
 
 build() {
-	cd "${srcdir}/go/src/github.com/coreos/${_pkgname}"
+	cd "${srcdir}/go/src/github.com/coreos/clair"
 
+	mkdir -p build
 	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" go build \
-		-ldflags "-X github.com/coreos/clair/pkg/version.Version=${pkgver}" \
-			github.com/coreos/clair/cmd/clair
+		-ldflags "-s -w -X github.com/coreos/clair/pkg/version.Version=${pkgver}" \
+		-gcflags="all=-trimpath=${GOPATH}/src" \
+		-asmflags="all=-trimpath=${GOPATH}/src" \
+		-o build/clair ./cmd/clair
 }
 
 package() {
-	cd "${srcdir}/go/src/github.com/coreos/${_pkgname}"
+	cd "${srcdir}/go/src/github.com/coreos/clair"
 
-	install -Dm755 "clair" "${pkgdir}/usr/bin/clair"
+	install -Dm755 "build/clair" "${pkgdir}/usr/bin/clair"
 	install -Dm755 "config.yaml.sample" "${pkgdir}/etc/clair/config.yaml"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
