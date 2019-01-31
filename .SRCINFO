@@ -1,0 +1,16 @@
+pkgbase = igg-git
+	pkgdesc = A command line utility for geolocating IP addresses and host names
+	pkgver = 0.1.r1.gf73283a
+	pkgrel = 1
+	url = https://gitlab.com/nxl4/igg
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	provides = igg
+	conflicts = igg
+	source = igg::git+http://gitlab.com/nxl4/igg.git
+	md5sums = SKIP
+
+pkgname = igg-git
+
