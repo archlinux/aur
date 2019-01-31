@@ -2,7 +2,7 @@
 
 pkgname=gobuster-git
 pkgver=v2.0.1.r15.g0e209e5
-pkgrel=1
+pkgrel=2
 pkgdesc="A directory/file & DNS busting tool."
 arch=('x86_64')
 url="https://github.com/OJ/gobuster"
@@ -27,8 +27,8 @@ prepare() {
 
 	cd "${srcdir}/go/src/github.com/OJ/gobuster"
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
-	go get -v -d
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" \
+	go get -v -d ./...
 }
 
 build() {
@@ -36,7 +36,7 @@ build() {
 
 	mkdir -p build
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" \
 	go build -ldflags "-s -w" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
 		-asmflags="all=-trimpath=${GOPATH}/src" \
