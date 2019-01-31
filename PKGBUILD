@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=bookworm-git
-pkgver=1.1.1.r16.g47dc971
+pkgver=1.1.1.r48.g3537e86
 pkgrel=1
 pkgdesc='A simple user centric eBook reader which displays multiple eBooks formats uniformly'
 arch=('x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-    arch-meson ${pkgname%-*} build
+    arch-meson ${pkgname%-*} build -Db_pie=false
     ninja -C build
 }
 
