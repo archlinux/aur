@@ -1,15 +1,15 @@
 # Maintainer: chenjunyu19 <1335546814@qq.com>
 
 pkgname=deepin-dock-plugin-cmdu-git
-pkgver=r29.6043fd3
+pkgver=r31.58d3c4f
 pkgrel=1
 pkgdesc="A plugin for deepin dock, display uptime, CPU usage, RAM usage and netspeed."
 arch=('x86_64')
 url="https://github.com/sonichy/CMDU_DDE_DOCK"
 depends=('deepin-dock')
 makedepends=('git' 'qt5-base' 'qt5-svg')
-source=('git+https://github.com/sonichy/CMDU_DDE_DOCK.git#commit=6043fd37a3bd37accc22f68c3c967e6542ab8b1a' 'cmdu.pro.patch')
-md5sums=('SKIP' 'a502d38d22dea27046f8dc0f380a22d5')
+source=('git+https://github.com/sonichy/CMDU_DDE_DOCK.git' 'cmdu.pro.patch')
+md5sums=('SKIP' '420ef08a46387fff3437638be719199f')
 _gitname=CMDU_DDE_DOCK
 
 pkgver() {
