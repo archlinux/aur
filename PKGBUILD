@@ -1,7 +1,8 @@
 # Maintainer: Boris Momčilović <boris.momcilovic@gmail.com>
 
-pkgname=php-componere-git
-pkgver=1.3.0.r153.g4383099
+_pkgname=componere
+pkgname=php-$_pkgname-git
+pkgver=1.3.0.r165.g6597644
 pkgrel=1
 pkgdesc="Complex Type Composition and Manipulation http://docs.php.net/intro.componere"
 arch=('i686' 'x86_64')
@@ -9,23 +10,19 @@ url="https://github.com/krakjoe/componere"
 license=('PHP')
 depends=('php')
 makedepends=('git')
-source=("$pkgname"::'git://github.com/krakjoe/componere.git')
+source=(git://github.com/krakjoe/componere.git#branch=develop)
 md5sums=('SKIP')
 _ininame="componere.ini"
 _inifile="etc/php/conf.d/$_ininame"
 backup=("$_inifile")
 
 pkgver() {
-  cd "$pkgname"
-  ( set -o pipefail
-    git checkout develop -q | git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  git checkout develop
+  cd "$srcdir/$_pkgname"
 
   phpize
   ./configure --prefix=/usr
@@ -34,7 +31,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   make PREFIX=/usr INSTALL_ROOT="$pkgdir" install
   cat >> "$_ininame" <<EOF
 ;extension=componere.so
