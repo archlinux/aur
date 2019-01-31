@@ -18,6 +18,7 @@ pkgbase = brave-beta-bin
 	provides = brave-beta-browser
 	conflicts = brave-beta-bin
 	conflicts = brave-bin
+	conflicts = brave-dev-bin
 	noextract = brave-beta-bin-0.56.15.zip
 	options = !strip
 	source = brave-beta-bin-0.56.15.zip::https://github.com/brave/brave-browser/releases/download/v0.56.15/brave-v0.56.15-linux-x64.zip
