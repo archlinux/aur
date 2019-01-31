@@ -1,6 +1,6 @@
 pkgbase = python-aletheia
 	pkgdesc = Fight fake news with cryptography & human nature
-	pkgver = 2.0.2
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://pypi.org/project/aletheia/
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python-aletheia
 	depends = python-magic
 	depends = python-requests
 	depends = python-termcolor
-	source = https://files.pythonhosted.org/packages/source/a/aletheia/aletheia-2.0.2.tar.gz
-	sha512sums = 56d5e10f0f9ad3d419d9e866987bc782fd547214d6886947cd49d4d1e55bbbb4773f3e51e83cafb98a89ca3bc8ddb8db50985a33ea06142fa3e09030d8cd04d9
+	source = https://files.pythonhosted.org/packages/source/a/aletheia/aletheia-3.0.0.tar.gz
+	sha512sums = f7085fba15b3c031c4054c151bc1f7929462928568febf4940d032aa85ecde28df31bd20f4cc8431baea3936c272c755db96b7013cbbec773144867668bf50aa
 
 pkgname = python-aletheia
 
