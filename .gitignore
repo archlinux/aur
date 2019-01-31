@@ -1,0 +1,6 @@
+php71*
+pkg/*
+src/*
+xdebug/*
+*.tar.*
+*.t?z

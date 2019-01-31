@@ -1,0 +1,14 @@
+pkgbase = php72-xdebug
+	pkgdesc = Xdebug is an extension for PHP to assist with debugging and development
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = https://xdebug.org/
+	arch = x86_64
+	license = Xdebug
+	depends = php72
+	backup = etc/php72/conf.d/xdebug.ini
+	source = http://pecl.php.net/get/xdebug-2.6.1.tgz
+	md5sums = 35cc0f2e8b7d40556a9ad9afd9c49aee
+
+pkgname = php72-xdebug
+
