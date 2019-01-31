@@ -1,0 +1,16 @@
+pkgbase = ghw-git
+	pkgdesc = Golang hardware discovery/inspection library
+	pkgver = 0.3.r0.g032dfb1
+	pkgrel = 1
+	url = https://github.com/jaypipes/ghw
+	arch = x86_64
+	license = Apache
+	makedepends = go>=1.10
+	makedepends = git
+	provides = ghw
+	conflicts = ghw
+	source = ghw-git::git+https://github.com/jaypipes/ghw
+	sha256sums = SKIP
+
+pkgname = ghw-git
+
