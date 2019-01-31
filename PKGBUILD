@@ -5,7 +5,7 @@
 
 pkgname=brave-beta-bin
 pkgver=0.60.18
-pkgrel=2
+pkgrel=3
 pkgdesc='Web browser that blocks ads and trackers by default (beta binary release).'
 arch=('x86_64')
 url='https://brave.com/download-beta'
