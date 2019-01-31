@@ -9,6 +9,7 @@ pkgbase = coin-or-bonmin
 	license = EPL
 	depends = coin-or-cbc
 	depends = coin-or-ipopt
+	depends = coin-or-bcp
 	source = https://www.coin-or.org/download/source/Bonmin/Bonmin-1.8.6.tgz
 	sha256sums = 7aa132403cd2a15f55f779df51e1f14a7272ed8de22ece0c40403b23819c2b71
 
