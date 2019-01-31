@@ -1,6 +1,6 @@
 pkgbase = vdr-sc
 	pkgdesc = Software CAM emulation
-	pkgver = r7.4d1530b
+	pkgver = r9.75b4379
 	pkgrel = 1
 	url = http://207.44.152.197/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vdr-sc
 	makedepends = git
 	depends = libdvbcsa
 	depends = openssl
-	depends = vdr>=2.4.0
+	depends = vdr>=2.1.0
 	depends = vdr-api=2.4.0
 	backup = etc/vdr/conf.avail/20-sc.conf
 	source = vdr-sc::git+http://github.com/3PO/vdr-plugin-sc

@@ -2,17 +2,18 @@
 pkgname=vdr-sc
 pkgver=r9.75b4379
 _vdrapi=2.4.0
+_gitver=75b4379e4fa3f6fa1f6908591be8e9bbb44dd990
 pkgrel=1
 pkgdesc="Software CAM emulation"
 url="http://207.44.152.197/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-depends=('libdvbcsa' 'openssl' "vdr>=2.1.0" "vdr-api=${_vdrapi}")
+depends=('libdvbcsa' 'openssl' "vdr>=2.4.0" "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=$(echo $pkgname | sed 's/vdr-//g')
 source=(#"$pkgname::hg+http://85.17.209.13:6100#revision=$_hgver"
 #        "ftp://ftp.tvdr.de/vdr/Developer/vdr-$_vdrapi.tar.bz2"
-	"$pkgname::git+http://github.com/3PO/vdr-plugin-sc"
+	"$pkgname::git+http://github.com/3PO/vdr-plugin-sc.git#commit=$_gitver"
         "ftp://ftp.tvdr.de/vdr/vdr-$_vdrapi.tar.bz2"
 #        'http://data.gpo.zugaina.org/vdr-devel/media-plugins/vdr-sc/files/vdr-sc-0.9.3.20120815_vdr-2.1.4_compilefix.diff'
 #        'Add_libdvbcsa_support.diff'
@@ -35,7 +36,8 @@ prepare() {
 #  patch -p1 -i "$srcdir/vdr-sc-0.9.3.20120815_vdr-2.1.4_compilefix.diff"
 #  patch -p1 -i "$srcdir/compile.patch"
   patch -p1 -i "$srcdir/Makefile.patch"
-  #Disable Keyfile support. If you want to watch paytv, pay for it.
+
+#Disable Keyfile support. If you want to watch paytv, pay for it.
 #  ( cd systems
 #    ls | grep -v cardclient | xargs rm -r )
 
@@ -63,7 +65,7 @@ package() {
 #export LDFLAGS="$LDFLAGS -L/usr/lib/openssl-1.0 -lcrypto -lcrypt" 
 
    make  CFLAGS="$(pkg-config vdr --variable=cflags)" \
-     CXXFLAGS="$(pkg-config vdr --variable=cxxflags) -I/usr/include/openssl-1.0 -std=c++98" \
+     CXXFLAGS="$(pkg-config vdr --variable=cxxflags) -I/usr/include/openssl-1.0 -std=c++0x -Wno-narrowing "\
      LDFLAGS="$LDFLAGS -L/usr/lib/openssl-1.0 -lcrypto -lcrypt" \
      VDRDIR="$(pkg-config vdr --variable=pcfiledir)" \
      LIBDIR="$pkgdir/$(pkg-config vdr --variable=libdir)" \
@@ -86,6 +88,6 @@ echo "pkgdir $pkgdir"
 }
 md5sums=('SKIP'
          '12c6a3abeadfa915fcfe736bb047a3ab'
-         '7f95d6bafef697a65b2a1622dd9790ad'
+         'e8ec2e553632a2ab581fbb1d3f2b3bf2'
          '23e9fbdccd207463c1f7d632b58d2a78'
          '397dfba03003ba28c5f95d0855497d78')
