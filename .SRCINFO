@@ -1,6 +1,6 @@
 pkgbase = onehouronelife-latest
 	pkgdesc = One Hour One Life game by Jason Rohrer. Builds the latest release tagged on github
-	pkgver = 60.d_a9e1abf.o_83d4bc6.m_06eb4a5
+	pkgver = 194.d_0ab301c4.o_89af19a8.m_1f584d6
 	pkgrel = 1
 	url = http://onehouronelife.com
 	arch = x86_64

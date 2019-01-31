@@ -1,6 +1,8 @@
-# Maintainer: bobpaul <aurpackage [at] bobpaul 'period' org>
+# Maintainer: ota <code.monke.ota+aur@gmail.com>
+# Contributor: bobpaul <aurpackage [at] bobpaul 'period' org>
+
 pkgname="onehouronelife-latest"
-pkgver=60.d_a9e1abf.o_83d4bc6.m_06eb4a5
+pkgver=194.d_0ab301c4.o_89af19a8.m_1f584d6
 pkgrel=1
 epoch=
 pkgdesc="One Hour One Life game by Jason Rohrer. Builds the latest release tagged on github"
@@ -69,7 +71,7 @@ prepare() {
         git checkout -q ${_orev}
     else
         echo Checkout out OneLife_v$latestTaggedVersionA from OneLife repo
-        git checkout -q OneLife_v$latestTaggedVersionA
+        git checkout -q $latestTaggedVersionA
     fi
     _latestTaggedRevs=$(echo "${_latestTaggedRevs}.o_$(git rev-parse --short HEAD)")
     cd ..
@@ -84,7 +86,7 @@ prepare() {
         git checkout -q ${_mrev}
     else
         echo Checkout out OneLife_v$latestTaggedVersion from minorGems repo
-        git checkout -q OneLife_v$latestTaggedVersion
+        git checkout -q $latestTaggedVersion
     fi
     _latestTaggedRevs=$(echo "${_latestTaggedRevs}.m_$(git rev-parse --short HEAD)")
     cd ..
