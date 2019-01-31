@@ -1,7 +1,7 @@
 pkgbase = cmph
 	pkgdesc = C minimal perfect hashing library
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = http://cmph.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = cmph
 	license = mpl
 	depends = gcc
 	options = staticlibs
-	source = http://downloads.sourceforge.net/cmph/cmph-2.0.tar.gz
-	md5sums = 020946deef7418d9daf4195556ecac12
+	source = http://downloads.sourceforge.net/cmph/cmph-2.0.2.tar.gz
+	md5sums = 51ec5329b47774d251a96eaaafdb409e
 
 pkgname = cmph
 
