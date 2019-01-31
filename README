@@ -1,0 +1,4 @@
+This is *usually* the same as systemd-git, except for when I have patches
+pending, in which case my dogfooding branch also contains those.
+
+s/-git/-cdown-git/ and changing the URL is most of the work.
