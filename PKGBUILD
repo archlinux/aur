@@ -2,7 +2,7 @@
 
 pkgname=python-slixmpp
 _pkgbase=slixmpp
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="An XMPP library written for Python 3.4 (SleekXMPP asyncio fork)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,15 +12,15 @@ depends=('python' 'python-aiodns' 'libidn' 'python-pyasn1' 'python-pyasn1-module
 makedepends=('git' 'cython')
 options=(!emptydirs)
 
-source=("https://dev.louiz.org/attachments/download/127/$_pkgbase-$pkgver.tar.gz")
-sha512sums=('26d7459d2348c50db86bba4f3aae24d22003e0fe2b1e679c7725d480be9185b6f6d95dd94ed46d7b26b5a4b253fe6fc4d735dc56c02f9bc766cefa8f7ab8d198')
+source=("https://lab.louiz.org/poezio/${_pkgbase}/-/archive/slix-${pkgver}/${_pkgbase}-slix-${pkgver}.tar.gz")
+sha512sums=('4220305e2f3d038071732da2e05641d54a0515b2f2ecdc2ed5aaf8c3ca287e9f521be369d9102c57c6891b605a16525d4805f5ab6699ff9f8b5844d4df457169')
 
 build() {
-    cd $_pkgbase-$pkgver
+    cd $_pkgbase-slix-$pkgver
     python setup.py build
 }
 
 package() {
-    cd $_pkgbase-$pkgver
+    cd $_pkgbase-slix-$pkgver
     python setup.py install --skip-build --root="$pkgdir/" --optimize=1
 }
