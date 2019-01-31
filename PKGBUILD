@@ -1,6 +1,6 @@
 # Maintainer: alcubierre-drive
 pkgname=backlight-tooler
-pkgrel=1
+pkgrel=2
 pkgver=r20.dffbad9
 pkgdesc="A lightweight tool to control backlight via webcam."
 arch=('any')
@@ -24,6 +24,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
+    git checkout dffbad977281c98b92b337bb1afae8cc43b39ad7
     make
 }
 
