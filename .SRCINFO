@@ -1,0 +1,15 @@
+pkgbase = swagger2openapi
+	pkgdesc = Convert Swagger 2.0 definitions to OpenApi 3.0 and validate
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://mermade.org.uk/openapi-converter
+	arch = any
+	license = BSD
+	makedepends = npm
+	depends = nodejs
+	noextract = swagger2openapi-5.1.0.tgz
+	source = https://registry.npmjs.org/swagger2openapi/-/swagger2openapi-5.1.0.tgz
+	md5sums = 1d0d27075922b34725172cc48fdad893
+
+pkgname = swagger2openapi
+
