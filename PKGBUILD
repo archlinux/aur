@@ -14,7 +14,7 @@ depends=('gtk3' 'gconf' 'nss' 'alsa-lib' 'libxss' 'libgnome-keyring' 'ttf-font')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=("${pkgname}" 'brave-beta-browser')
-conflicts=("${pkgname}" 'brave-bin')
+conflicts=("${pkgname}" 'brave-bin' 'brave-dev-bin')
 source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-v${pkgver}-linux-x64.zip"
         'MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt'
         "$pkgname.sh"
