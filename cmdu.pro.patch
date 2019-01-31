@@ -1,0 +1,20 @@
+diff --git a/cmdu.pro b/cmdu.pro
+index 061097d..aadf0d0 100644
+--- a/cmdu.pro
++++ b/cmdu.pro
+@@ -1,4 +1,4 @@
+-QT              += widgets
++QT              += widgets svg
+ TEMPLATE         = lib
+ CONFIG          += plugin c++11
+ 
+@@ -13,4 +13,7 @@ SOURCES += \
+     cmduplugin.cpp \
+     cmduwidget.cpp
+ 
+-RESOURCES += res.qrc
+\ No newline at end of file
++RESOURCES += res.qrc
++
++target.path = $${PREFIX}/lib/dde-dock/plugins/
++INSTALLS += target
