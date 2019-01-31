@@ -2,7 +2,7 @@
 
 pkgname=ttf2png
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create a PNG image containing a set of glyphs from a true type font."
 arch=('i686' 'x86_64')
 url="http://www.tdb.fi/ttf2png.shtml"
@@ -13,10 +13,9 @@ options=()
 source=("http://www.tdb.fi/files/$pkgname-$pkgver.tar.gz"
         "Makefile.patch")
 md5sums=('2e67e3745cbf567f7f2317a5bfc3fee3'
-         'f58433bb6f6014894450483026b434fe')
+         '1f93dd6955fa2803f6e503771099c432')
 sha256sums=('435d4ec2f71be8bd75787fb0f449ebc92645bcd61f6bc1826ad06673f95f4703'
-            '8dec2677468311257f8e9668c0cf4438e487ebff499a8dc1969d61908115459c')
-
+            'af392a83057c1cb3696e35672ccbb80cb2d36f49e898a0bb167db958db02e64b')
 
 prepare() {
   patch "$srcdir/$pkgname-$pkgver/Makefile" "$srcdir/Makefile.patch"

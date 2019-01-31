@@ -1,8 +1,8 @@
-1c1
+1,3c1,3
 < CFLAGS := -Wall -Wextra -Werror -std=c89 -pedantic -O2
----
-> CFLAGS := -Wall -Wextra -std=c89 -pedantic -O2
-3c3
+< FREETYPE_FLAGS := $(shell freetype-config --cflags --libs)
 < LIBPNG_FLAGS := $(shell pkg-config --cflags --libs libpng12)
 ---
+> CFLAGS := -Wall -Wextra -std=c89 -pedantic -O2
+> FREETYPE_FLAGS := $(shell pkg-config --cflags --libs freetype2)
 > LIBPNG_FLAGS := $(shell pkg-config --cflags --libs libpng)
