@@ -2,7 +2,7 @@
 
 pkgbase=python-colander
 pkgname=(python-colander python2-colander)
-pkgver=1.5.1
+pkgver=1.6
 pkgrel=1
 pkgdesc="A simple schema-based serialization and deserialization library"
 url="https://docs.pylonsproject.org/projects/colander/en/latest/"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python2-setuptools' 'python-translationstring'
              'python2-translationstring' 'python-iso8601' 'python2-iso8601' 'python2-enum34')
 checkdepends=('python-nose' 'python2-nose')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/Pylons/colander/archive/$pkgver.tar.gz")
-sha512sums=('cb9aa9ddacc3a3bd92aadb260742d85c91419f802c0e0dbd36ed074b8611314fc02d62f73672952c117b5569304794359b49006fb552caf1625846684b154761')
+sha512sums=('3324affb7219e716ceb5fd92cdb0c54983b78a495a754bc6aa096948f943f2b2805f64c455e00f2e1faa55dc773a8f661c5b7a2533be2110f7f5925e60500862')
 
 build() {
   cd colander-$pkgver
