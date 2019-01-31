@@ -2,7 +2,7 @@
 # Contributor: Omar Pakker <omar.pakker@oracle.com>
 
 pkgname=ccminer
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Coin miner using CUDA for nVidia GPUs."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('cuda' 'curl' 'jansson' 'openssl-1.0' 'nvidia-utils')
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/tpruvot/ccminer/archive/${pkgver}-tpruvot.tar.gz")
-sha256sums=('7014267fd0a46763278662a66e3a6b60264751d1893d6d5c9a4715c1f6e1a660')
+sha256sums=('68bb8685ddae40b36af5f8418dfae5782819b8e202f1d723f6e12f8c58e73cd4')
 
 build() {
 	cd "${srcdir}/ccminer-${pkgver}-tpruvot"
