@@ -1,7 +1,7 @@
 pkgbase = leap-motion
 	pkgdesc = The Leap Motion Developer SDK
 	pkgver = 2.3.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://developer.leapmotion.com/downloads
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = leap-motion
 	md5sums = d9facdfed290823d3a5358ca5077e883
 	md5sums = c43a3a834f646efc8f033f75eb80cc7e
 	md5sums = 78a4f0934b105397d1f7b17d06e4717c
-	md5sums = 07287e65a3c2a4e2a956b7ba9038d816
+	md5sums = 2d9daf2e5d90857f59039e058d32fdf5
 	md5sums = 0261f47c2d5090681446f6917b1858ba
 	md5sums = 5b85d03f4109203c5f7ecd610a33136d
 

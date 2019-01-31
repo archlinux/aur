@@ -9,7 +9,7 @@ pkgname=('leap-motion-driver' 'leap-motion-sdk')
 _major=2.3.1
 _build=31549
 pkgver=${_major}
-pkgrel=6
+pkgrel=7
 pkgdesc="The Leap Motion Developer SDK"
 arch=('i686' 'x86_64')
 url="https://developer.leapmotion.com/downloads"
@@ -107,6 +107,6 @@ package_leap-motion-driver() {
 md5sums=('d9facdfed290823d3a5358ca5077e883'
          'c43a3a834f646efc8f033f75eb80cc7e'
          '78a4f0934b105397d1f7b17d06e4717c'
-         '07287e65a3c2a4e2a956b7ba9038d816'
+         '2d9daf2e5d90857f59039e058d32fdf5'
          '0261f47c2d5090681446f6917b1858ba'
          '5b85d03f4109203c5f7ecd610a33136d')
