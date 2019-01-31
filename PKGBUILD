@@ -15,7 +15,7 @@ _revert=1
 pkgname=mutter-781835-workaround
 _pkgname=mutter
 pkgver=3.30.2+7
-pkgrel=12
+pkgrel=13
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -58,13 +58,11 @@ prepare() {
   # clutter: Deliver events sooner when possible
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168
   # Disabled as may cause stutter when using mouse with high polling rate
-    #git cherry-pick cd280c30
+  # git cherry-pick cd280c30
 
   # clutter: Fix offscreen-effect painting of clones
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/117/commits
-  git cherry-pick 8655bc5d -Xtheirs || true
-  git rm clutter/tests/conform/meson.build
-  git commit -m "117"
+  git cherry-pick 9a466f28
 
   # Geometric (GPU-less) picking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
