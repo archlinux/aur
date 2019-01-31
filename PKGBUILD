@@ -3,13 +3,12 @@
 # vim: set expandtab ts=2 sw=2:
 
 pkgname=ipget
-pkgver=0.3.0
-pkgrel=4
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="wget for IPFS: retrieve files over IPFS and save them locally."
 arch=('x86_64')
 url="https://github.com/ipfs/ipget"
 license=('MIT')
-makedepends=('go' 'gx' 'gx-go' 'git' 'make')
 makedepends=('go' 'gx' 'gx-go' 'git')
 optdepends=('go-ipfs: to use full potential of IPFS network'
             'go-pie: PIE enabled compilation (makedepend)')
@@ -29,7 +28,7 @@ source=("https://github.com/ipfs/ipget/archive/v${pkgver}.tar.gz"
         "go-multiaddr-net.tar.gz::https://github.com/multiformats/go-multiaddr-net/archive/${_ver_go_multiaddr_net}.tar.gz"
         "go-multipart-files.tar.gz::https://github.com/whyrusleeping/go-multipart-files/archive/${_ver_go_multipart_files}.tar.gz"
         "tar-utils.tar.gz::https://github.com/whyrusleeping/tar-utils/archive/${_ver_tar_utils}.tar.gz")
-sha256sums=('19fcea7a4328133bdb7c263e27df4eef6a08365d21991e2344c28345d1f078f0'
+sha256sums=('0c557abbeadc713fb13892fed498696ec72a6bc9d067beecc80e07c13a0999e4'
             'dc7e1b74f786d1d13461635cc269a1a00acd13dbb530b07823ed82bd31bd8bd8'
             '55766c39cbf9f41e1288df82e25919efe3bdcec236182f9fe28209ae8f1b960c'
             '116f5f6a0e3e5694c862bfa7b3f500e22839ca043bb6622e5d202e36905c88e1'
@@ -42,7 +41,7 @@ prepare() {
     export GOPATH="${srcdir}"
 
     # Patching
-    (cd "ipget-${pkgver}" ; patch -N < ../ipget_aur.patch)
+    #(cd "ipget-${pkgver}" ; patch -N < ../ipget_aur.patch)
 
     # Link the source to the right place for go
     mkdir -p "${srcdir}/src/github.com/ipfs/"
@@ -82,7 +81,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/src/github.com/ipfs/ipget" || exit
-    make install
+    go build
 }
 
 package() {
