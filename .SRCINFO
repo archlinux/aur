@@ -1,7 +1,7 @@
 pkgbase = chromium-vaapi
 	pkgdesc = Chromium with VA-API support to enable hardware acceleration
 	pkgver = 72.0.3626.81
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = chromium.install
 	arch = x86_64
@@ -63,14 +63,14 @@ pkgbase = chromium-vaapi
 	source = chromium-webrtc-missing-header.patch
 	source = chromium-widevine.patch
 	source = chromium-skia-harmony.patch
-	source = chromium-vaapi-r21.patch
+	source = enable-vaapi.patch
 	sha256sums = dfe89fe389008e6d2098099948d10774989d2f3e8dca6ace78ea4ec636dd8006
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
 	sha256sums = e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89
 	sha256sums = 63cbed7d7af327c17878a2066c303f106ff08636372721845131f7ff13d87b44
 	sha256sums = d081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b
 	sha256sums = 5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3
-	sha256sums = f3fffc4c053077b0a2cb584c42882b0d38473bb2762e2daf86bbacc2fe0a7f77
+	sha256sums = 561151f381db44908ab5649f3579049e4cbce04cbed76e32d767b156bf83944d
 
 pkgname = chromium-vaapi
 
