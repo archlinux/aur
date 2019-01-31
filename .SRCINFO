@@ -1,6 +1,6 @@
 pkgbase = rescached-git
 	pkgdesc = Resolver/DNS cache daemon
-	pkgver = 2.0.0.r0.g56ddcf9
+	pkgver = 2.1.0.r0.gdb7a441
 	pkgrel = 1
 	url = https://github.com/shuLhan/rescached-go
 	arch = i686
