@@ -1,7 +1,7 @@
 # Maintainer: YoyPa <yoann dot p dot public at gmail dot com>
 pkgname=fluffy-switch
-pkgver=2.5
-pkgrel=3
+pkgver=2.6
+pkgrel=1
 pkgdesc="Goldtree and Tinfoil GUI for USB install on switch"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/fourminute/Fluffy"
