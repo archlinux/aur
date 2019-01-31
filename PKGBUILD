@@ -5,7 +5,7 @@
 
 pkgname=brave-beta-bin
 pkgver=0.60.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default (beta binary release).'
 arch=('x86_64')
 url='https://brave.com/download-beta'
@@ -18,14 +18,14 @@ conflicts=("${pkgname}" 'brave-bin' 'brave-dev-bin')
 source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-v${pkgver}-linux-x64.zip"
         "$pkgname-$pkgver.deb::https://github.com/brave/brave-browser/releases/download/v$pkgver/brave-browser-beta_${pkgver}_amd64.deb"
         "LICENSE::https://raw.githubusercontent.com/brave/brave-browser/master/LICENSE"
-        "$pkgname.sh"
-        "$pkgname.desktop"
-        "braveAbout.png")
+        "$pkgname.sh::https://raw.githubusercontent.com/whezzel/$pkgname/master/$pkgname.sh"
+        "$pkgname.desktop::https://raw.githubusercontent.com/whezzel/$pkgname/master/$pkgname.desktop"
+        "braveAbout.png::https://raw.githubusercontent.com/whezzel/$pkgname/master/braveAbout.png")
 options=(!strip)
 sha512sums=('aa55d7f276e7b8fc6e62dec75093dacf8b980d1f250d8e4ee7f470d8624a2e5fa82d58f1c5f17e4a0adac6b96d264a4992fed0e7d80905a676df4d64fe2b26db'
             '4f725d9ab48f14f8c9b6a1a42b4f0dcad3f45256bd71edd9236197e0306e798889bfc1b6cdbfe49bbf221957d1017aad35f87923565a95eba663711f735b5cf9'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f'
-            '64e9a81d929d391186059b35fc87c130029d816ff8b3650bc96d53b7496d40b7302ed38530a4bd67253c15b20b30778e06157e60092ae62d7765b06a26daf791'
+            '24a49c1aa6f11fa090e870d75757e0b6e00f5b763d0bc84114c07285a1a8e973e4e40fe347f0fec3c00412197e36c6192d884270e3ee7ba636d8c3bb8d6dead4'
             '44809972e3980856494659b15d033b02c63dd1743293dc079d90d022904160532bbf82e70686dea20a46431981bf147cc5392ecc483c61378908b4a92a3d7515'
             'd7bef52e336bd908d24bf3a084a1fc480831d27a3c80af4c31872465b6a0ce39bdf298e620ae9865526c974465807559cc75610b835e60b4358f65a8a8ff159e')
 noextract=("$pkgname-$pkgver.zip"
