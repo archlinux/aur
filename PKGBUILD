@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=pynrrd
 pkgname=python-$_pkgname
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Simple pure-python module for reading and writing nrrd files"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-numpy')
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://github.com/mhe/pynrrd/archive/v${pkgver}.tar.gz")
-sha256sums=('2dfae5fc58a0451561cd58bff5c4ccca5fec94c8a22414f415ef50585b124c80')
+sha256sums=('7eeed1b0774520d503ea60ac0e1c0ae4ee985b7b6b1850836caabd94e0563ff7')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
