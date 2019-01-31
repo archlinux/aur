@@ -6,7 +6,7 @@
 # Contributor: Gergely Imreh <imrehgATgmailDOTcom>
 
 pkgname=ninja-kitware
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Small build system with a focus on speed - Kitware version with JobServer and Fortran compatibility'
 arch=(x86_64)
@@ -16,9 +16,9 @@ conflicts=(ninja)
 license=(Apache)
 depends=(gcc-libs)
 makedepends=(python2 re2c emacs-nox)
-version_id=g81279
+version_id=gad558
 source=(ninja-$pkgver.$version_id.kitware.dyndep-1.jobserver-1.zip::https://github.com/Kitware/ninja/archive/v$pkgver.$version_id.kitware.dyndep-1.jobserver-1.zip)
-md5sums=('35cf0d20b0d79c664f9637b1cf145cd2')
+md5sums=('014cd869dfc9975ed4a9262682375bb4')
 build() {
   cd ninja-$pkgver.$version_id.kitware.dyndep-1.jobserver-1
 
@@ -48,3 +48,4 @@ package() {
   install -m644 -D misc/bash-completion "$pkgdir/usr/share/bash-completion/completions/ninja"
   install -m644 -D misc/zsh-completion "$pkgdir/usr/share/zsh/site-functions/_ninja"
 }
+md5sums=('014cd869dfc9975ed4a9262682375bb4')

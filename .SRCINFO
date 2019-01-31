@@ -1,6 +1,6 @@
 pkgbase = ninja-kitware
 	pkgdesc = Small build system with a focus on speed - Kitware version with JobServer and Fortran compatibility
-	pkgver = 1.8.2
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/Kitware/ninja
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = ninja-kitware
 	depends = gcc-libs
 	provides = ninja
 	conflicts = ninja
-	source = ninja-1.8.2.g81279.kitware.dyndep-1.jobserver-1.zip::https://github.com/Kitware/ninja/archive/v1.8.2.g81279.kitware.dyndep-1.jobserver-1.zip
-	md5sums = 35cf0d20b0d79c664f9637b1cf145cd2
+	source = ninja-1.9.0.gad558.kitware.dyndep-1.jobserver-1.zip::https://github.com/Kitware/ninja/archive/v1.9.0.gad558.kitware.dyndep-1.jobserver-1.zip
+	md5sums = 014cd869dfc9975ed4a9262682375bb4
 
 pkgname = ninja-kitware
 
