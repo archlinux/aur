@@ -1,37 +1,30 @@
-# Contributor: spider-mario <spidermario@free.fr>
-# Contributor: Daniel Ehlers <danielehlers@mindeye.net>
-
 pkgname=coin-or-vol
-pkgver=1.5.0
+pkgver=1.5.3
 pkgrel=1
-pkgdesc="COIN-OR Volume Algorithm"
+pkgdesc="open-source implementation of a subgradient method that produces primal as well as dual solutions"
 arch=('i686' 'x86_64')
 url="https://projects.coin-or.org/Vol"
 license=('EPL')
 groups=('coin-or')
-depends=('coin-or-osi')
-source=("http://www.coin-or.org/download/source/Vol/Vol-${pkgver}.tgz")
-sha1sums=('e53dd21eb28fb5a60ed39492d054cceafeb39ddf')
+depends=('coin-or-osi' 'coin-or-coinutils')
+makedepends=()
+source=("http://www.coin-or.org/download/source/Vol/Vol-$pkgver.tgz")
+sha256sums=('8b015a01ec44957a30d920e91853984570438ec533d89085f02091a3c6286314')
 
 build() {
-  cd Vol-$pkgver/Vol
+  cd "$srcdir/Vol-$pkgver"
   COIN_SKIP_PROJECTS="Sample" \
   ./configure --prefix=/usr \
               --with-osi-lib="$(pkg-config --libs osi)" \
               --with-osi-incdir="/usr/include/coin/" \
               --with-coinutils-lib="$(pkg-config --libs coinutils)" \
-              --with-coinutils-incdir="/usr/include/coin/" \
-              --enable-dependency-linking
+              --with-coinutils-incdir="/usr/include/coin/"
   make
 }
 
-check() {
-  cd Vol-$pkgver/Vol
-  make test
+package() {
+  cd "$srcdir/Vol-$pkgver"
+  PKG_CONFIG_LIBDIR="${pkgdir}/usr/lib/pkgconfig/" \
+  make DESTDIR="$pkgdir/" install
 }
 
-package() {
-  cd Vol-$pkgver/Vol
-  PKG_CONFIG_LIBDIR="$pkgdir"/usr/lib/pkgconfig/ \
-  make DESTDIR="$pkgdir" install
-}
