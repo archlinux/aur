@@ -30,9 +30,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="ros_comm-release-release-melodic-rosgraph-${pkgver}-${_pkgver_patch}"
+_dir="ros_comm-release-release-melodic-rosgraph"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosgraph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e17c523458f3ae9cd5f463da95034fa8cea78a17fffdf0f1d2921047b812205d')
+sha256sums=('c65b42b152f3e824f7030aa116c262de0a7e3b35cd24a365b1c812da047e6a23')
 
 build() {
 	# Use ROS environment variables.

@@ -12,7 +12,7 @@ pkgbase = ros-melodic-rosgraph
 	depends = python-netifaces
 	depends = python-rospkg
 	source = ros-melodic-rosgraph-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosgraph/1.14.3-0.tar.gz
-	sha256sums = e17c523458f3ae9cd5f463da95034fa8cea78a17fffdf0f1d2921047b812205d
+	sha256sums = c65b42b152f3e824f7030aa116c262de0a7e3b35cd24a365b1c812da047e6a23
 
 pkgname = ros-melodic-rosgraph
 
