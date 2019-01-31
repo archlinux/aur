@@ -1,7 +1,7 @@
 pkgbase = turtl
 	pkgdesc = Turtl lets you take notes, bookmark websites, and store documents for sensitive projects.
-	pkgver = 0.7.1
-	pkgrel = 2
+	pkgver = 0.7.2.5
+	pkgrel = 1
 	url = https://turtlapp.com/
 	arch = i686
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = turtl
 	depends = libxss
 	source = turtl.png
 	md5sums = 9e99b3fe83cb796343b7f1b21959f0d7
-	source_i686 = https://github.com/turtl/desktop/releases/download/v0.7.1/turtl-0.7.1-linux32.tar.bz2
-	md5sums_i686 = 63083c6f914b69cfa3adfdd7533c2e6c
-	source_x86_64 = https://github.com/turtl/desktop/releases/download/v0.7.1/turtl-0.7.1-linux64.tar.bz2
-	md5sums_x86_64 = d2c52f1e008fd64a5914e91be826fe91
+	source_i686 = https://github.com/turtl/desktop/releases/download/v0.7.2.5/turtl-0.7.2.5-linux32.tar.bz2
+	md5sums_i686 = e85d853dccadcb5a8f6a5478cd038690
+	source_x86_64 = https://github.com/turtl/desktop/releases/download/v0.7.2.5/turtl-0.7.2.5-linux64.tar.bz2
+	md5sums_x86_64 = 771ac3060d5e6d13fcd1bb4644772999
 
 pkgname = turtl
 
