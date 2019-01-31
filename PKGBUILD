@@ -19,13 +19,14 @@ optdepends=(
 )
 options=('!strip')
 
-# The SVG link is retrieved from https://www.dropbox.com/branding
-source=("dropbox-svg.zip"::"https://www.dropbox.com/scl/fo/0eu2dsn07fy5k0gt5fy74/AABelaoobzsW8ZKJ2u9vnINGa/Glyph/Dropbox/SVG?dl=1"
-        "terms.txt" "dropbox.service" "dropbox@.service")
+# DropboxGlyph_Blue.svg is downloaded from https://www.dropbox.com/scl/fo/0eu2dsn07fy5k0gt5fy74/AABelaoobzsW8ZKJ2u9vnINGa/Glyph/Dropbox/SVG,
+# and this folder is retrieved from https://www.dropbox.com/branding
+# TODO: find a way to download the icon directly from dropbox.com
+source=("DropboxGlyph_Blue.svg" "terms.txt" "dropbox.service" "dropbox@.service")
 source_i686=("https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-$pkgver.tar.gz"{,.asc})
 source_x86_64=("https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-$pkgver.tar.gz"{,.asc})
 
-sha256sums=('e53a2e006f7bd0421fec0b2d0eb31e88ca59bad7c9f640c4b126d462e674c3ed'
+sha256sums=('9ba76205ec5838db85d822f23cfd7e2112fd2757e8031d8374709f102143c548'
             '34605b2f36fe6b4bde9b858da3f73ac1505986af57be78bbb1c2c9cf1a611578'
             '6c67a9c8c95c08fafafd2f1d828074b13e3347b05d2e4f4bf4e62746115d7477'
             '98581e65a91ae1f19ed42edcdaaa52e102298b5da0d71b50089393d364474d3d')
