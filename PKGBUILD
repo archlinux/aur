@@ -1,6 +1,7 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Jacob Mischka <jacob@mischka.me>
 # Maintainer: Manuel Mazzuola <origin.of@gmail.com>
+# Co-maintainer: whezzel <whezzel at gmail dot com>
 
 pkgname=brave-beta-bin
 pkgver=0.56.15
