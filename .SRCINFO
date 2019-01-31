@@ -1,6 +1,6 @@
 pkgbase = mstream
 	pkgdesc = Music player server with a web-based interface
-	pkgver = 3.9.1
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = http://mstream.io
 	install = mstream.install
@@ -8,12 +8,12 @@ pkgbase = mstream
 	license = GPL3
 	makedepends = npm
 	depends = nodejs
-	noextract = mstream-3.9.1.tgz
+	noextract = mstream-4.0.0.tgz
 	backup = var/lib/mstream/config.json
-	source = https://registry.npmjs.org/mstream/-/mstream-3.9.1.tgz
+	source = https://registry.npmjs.org/mstream/-/mstream-4.0.0.tgz
 	source = mstream.service
 	source = config.json
-	md5sums = 8dd2d06cb0766b9ead4bc31acc733e75
+	md5sums = e7e9271319050db0cfd35bab803b113a
 	md5sums = 6640e102dd29a6da5c4c075e4c4042d7
 	md5sums = 0bf80ec584f8b028628f4c684cdaf283
 
