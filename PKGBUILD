@@ -15,6 +15,7 @@ install=backlight-tooler.install
 
 pkgver() {
     cd "$pkgname"
+    git checkout dffbad977281c98b92b337bb1afae8cc43b39ad7
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
