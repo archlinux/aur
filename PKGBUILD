@@ -13,7 +13,6 @@ sha256sums=('SKIP' SKIP)
 prepare() {
   cd lp_solve_python_3x/extra/Python
   patch -p4 -i "${srcdir}/sitedir.patch"
-  sed -i 's|#include "lp_lib.h"|#include "lpsolve/lp_lib.h"|g' pythonmod.h
 }
 
 build() {
