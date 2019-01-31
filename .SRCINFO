@@ -1,6 +1,6 @@
 pkgbase = libsolv-arch-git
 	pkgdesc = A new approach to package dependency solving (Arch Linux support only)
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/openSUSE/libsolv
 	arch = i686

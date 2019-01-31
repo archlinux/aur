@@ -1,7 +1,7 @@
 # Maintainer: Spyhawk
 
 pkgname=libsolv-arch-git
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="A new approach to package dependency solving (Arch Linux support only)"
 arch=('i686' 'x86_64')
