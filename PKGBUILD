@@ -1,8 +1,8 @@
 # Maintainer: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname='singularity-container'
-pkgver='3.0.2'
-pkgrel='2'
+pkgver='3.0.3'
+pkgrel='1'
 pkgdesc='Container platform focused on supporting "Mobility of Compute".'
 arch=('i686' 'x86_64')
 url='https://www.sylabs.io/singularity/'
@@ -11,7 +11,7 @@ makedepends=('go' 'dep')
 depends=('squashfs-tools' 'libseccomp')
 source=("https://github.com/sylabs/singularity/releases/download/v${pkgver}/singularity-${pkgver}.tar.gz")
 noextract=("singularity-${pkgver}.tar.gz")
-md5sums=('2f49faa5c6685b28e0124959d0e796a2')
+md5sums=('fb5622f254c8725e9fe23e133d9f9fcb')
 
 prepare() {
   export GOPATH="${srcdir}/singularity"
