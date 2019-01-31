@@ -1,7 +1,7 @@
 # Maintainer: geno+dev@fireorbit.de
 
 pkgname=purism-chatty-git
-pkgver=0.0.3.r5.g5866d85
+pkgver=0.0.4.r0.g1ffe759
 pkgrel=1
 pkgdesc="XMPP and SMS messaging via libpurple and Modemmanager"
 url="https://source.puri.sm/Librem5/chatty"
