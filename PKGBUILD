@@ -45,7 +45,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 #                                    Default PKGBUILD Configuration                                       #
 #=========================================================================================================#
 pkgname=vim-youcompleteme-git
-pkgver=r2465.113787cc
+pkgver=r2478.c25e449f
 pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -180,12 +180,12 @@ prepare() {
 
 	msg2 'Setting up Git submodules...'
 
-	local YouCompleteMe=("requests-futures" "ycmd" "python-futures")
-	local YouCompleteMeRequestsDeps=("idna" "certifi" "chardet" "urllib3" "requests")
+	local YouCompleteMe=("requests-futures" "ycmd" "python-future")
+	local YouCompleteMeRequestsDeps=("idna" "python-certifi" "chardet" "urllib3" "requests")
 	gitprepare "YouCompleteMe" "third_party/" "${YouCompleteMe[@]}"
 	gitprepare "YouCompleteMe" "third_party/requests_deps/" "${YouCompleteMeRequestsDeps[@]}"
 
-	local ycmd=("bottle" "regex" "python-frozendict" "jedi" "parso" "python-future" "waitress" "requests")
+	local ycmd=("bottle" "regex" "python-frozendict" "python-future" "waitress")
 
 	if [[ "$_omnisharp" == "y" ]]; then
 		ycmd+=("OmniSharpServer")
@@ -197,9 +197,15 @@ prepare() {
 
 	gitprepare "YouCompleteMe/third_party/ycmd" "third_party/" "${ycmd[@]}"
 
+	local ycmdJediDeps=("jedi" "parso")
+	gitprepare "YouCompleteMe/third_party/ycmd" "third_party/jedi_deps" "${ycmdJediDeps[@]}"
+
+	local ycmdRequestsDeps=("python-certifi" "chardet" "idna" "requests" "urllib3")
+	gitprepare "YouCompleteMe/third_party/ycmd" "third_party/requests_deps" "${ycmdRequestsDeps[@]}"
+
 	if [[ "$_gocode" == "y" ]]; then
-			gitprepare "YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/mdempsky" "" "gocode"
-			gitprepare "YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/rogpeppe" "" "godef"
+                gitprepare "YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/mdempsky" "" "gocode"
+                gitprepare "YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/rogpeppe" "" "godef"
 	fi
 
 	if [[ "$_omnisharp" == "y" ]]; then
@@ -288,7 +294,9 @@ package() {
 		vimfiles_dir=usr/share/nvim/runtime
 	fi
 
-	mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party"
+	mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/requests_deps"
+	mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/jedi_deps"
+
 	mkdir -p "$pkgdir/$vimfiles_dir/third_party/requests_deps"
 
 	cp -r "$srcdir/YouCompleteMe/"{autoload,doc,plugin,python} \
@@ -297,10 +305,15 @@ package() {
 		"$pkgdir/$vimfiles_dir/third_party"
 	cp -r "$srcdir/YouCompleteMe/third_party/requests_deps/"{certifi,chardet,idna,requests,urllib3} \
 		"$pkgdir/$vimfiles_dir/third_party/requests_deps"
-	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,CORE_VERSION,clang_includes} \
+
+	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,CORE_VERSION} \
 		"$pkgdir/$vimfiles_dir/third_party/ycmd"
-	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{bottle,cregex,frozendict,jedi,parso,python-future,requests,waitress} \
+	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{bottle,clang,cregex,frozendict,python-future,waitress} \
 		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party"
+	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/requests_deps/"{certifi,chardet,idna,requests,urllib3} \
+		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/requests_deps"
+	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/jedi_deps/"{jedi,parso} \
+		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/jedi_deps"
 
 	if [[ "$_omnisharp" == "y" ]]; then
 		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Release"
@@ -342,16 +355,11 @@ package() {
 	# Remove all the unnecessary git repositories
 	find "$pkgdir" -name .git -exec rm -fr {} +
 
-	# Remove test files
-	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/ycmd/tests"
-	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/parso/test"
-	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/python-future/tests"
-	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/jedi/test"
-	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/waitress/waitress/tests"
-	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/bottle/test"
+	# Remove tests files
+	find "$pkgdir" -name tests -exec rm -fr {} +
 
 	# Remove unneeded docs
-	rm -r "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/python-future/docs"
+	find "$pkgdir" -name docs -exec rm -fr {} +
 
 	# Finally compile all the python files to bytecode.
 	if [[ "$_use_python2" == "ON" ]]; then
