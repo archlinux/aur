@@ -1,0 +1,7 @@
+/src/
+/pkg/
+/noiz2sa/
+/*.log
+/*.tar
+/*.tar.*
+/*.zip

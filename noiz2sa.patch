@@ -1,0 +1,101 @@
+--- src/attractmanager.c.orig	2019-01-31 01:36:24.130902037 +0100
++++ src/attractmanager.c	2019-01-31 01:40:17.155922935 +0100
+@@ -31,10 +31,29 @@
+ 
+ static HiScore hiScore;
+ 
+-#define PREF_FILE "noiz2sa.prf"
++#define PREF_FILE pref_file_path()
+ #define DEFAULT_HISCORE 100000
+ #define DEFAULT_SCENE_HISCORE 10000
+ 
++static const char* pref_file_path(void) {
++    static int initialized = 0;
++    char file_path[256] = { '\0', };
++
++    if (!initialized) {
++        const char *homedir = getenv("HOME");
++        if (homedir) {
++            strcat(file_path, homedir);
++            strcat(file_path, "/.noiz2sa.prf");
++        } else {
++            strcat(file_path, "/tmp/noiz2sa.prf");
++        }
++
++        initialized = 1;
++    }
++
++    return file_path;
++}
++
+ static void initHiScore() {
+   int i, j;
+   for ( i=0 ; i<STAGE_NUM ; i++ ) {
+--- src/barragemanager.cc.orig	2019-01-31 01:36:24.130902037 +0100
++++ src/barragemanager.cc	2019-01-31 01:39:10.135440056 +0100
+@@ -35,7 +35,7 @@
+ static Barrage *barrage[BARRAGE_MAX];
+ 
+ static const char *BARRAGE_DIR_NAME[] = {
+-  "zako", "middle", "boss"
++  "/usr/share/noiz2sa/zako", "/usr/share/noiz2sa/middle", "/usr/share/noiz2sa/boss"
+ };
+ 
+ static int readBulletMLFiles(const char *dirPath, Barrage brg[]) {
+--- src/screen.c.orig	2019-01-31 01:36:24.130902037 +0100
++++ src/screen.c	2019-01-31 01:38:25.161781641 +0100
+@@ -51,11 +51,11 @@
+ static void loadSprites() {
+   SDL_Surface *img;
+   int i;
+-  char name[32];
++  char name[256];
+   color[0].r = 100; color[0].g = 0; color[0].b = 0;
+   SDL_SetColors(video, color, 0, 1);
+   for ( i=0 ; i<SPRITE_NUM ; i++ ) {
+-    strcpy(name, "images/");
++    strcpy(name, "/usr/share/noiz2sa/images/");
+     strcat(name, spriteFile[i]);
+     img = SDL_LoadBMP(name);
+     if ( img == NULL ) {
+--- src/soundmanager.c.orig	2019-01-31 01:36:24.130902037 +0100
++++ src/soundmanager.c	2019-01-31 01:37:27.658031341 +0100
+@@ -59,10 +59,10 @@
+ 
+ static void loadSounds() {
+   int i;
+-  char name[32];
++  char name[256];
+ 
+   for ( i=0 ; i<MUSIC_NUM ; i++ ) {
+-    strcpy(name, "sounds/");
++    strcpy(name, "/usr/share/noiz2sa/sounds/");
+     strcat(name, musicFileName[i]);
+     if ( NULL == (music[i] = Mix_LoadMUS(name)) ) {
+       fprintf(stderr, "Couldn't load: %s\n", name);
+@@ -71,7 +71,7 @@
+     }
+   }
+   for ( i=0 ; i<CHUNK_NUM ; i++ ) {
+-    strcpy(name, "sounds/");
++    strcpy(name, "/usr/share/noiz2sa/sounds/");
+     strcat(name, chunkFileName[i]);
+     if ( NULL == (chunk[i] = Mix_LoadWAV(name)) ) {
+       fprintf(stderr, "Couldn't load: %s\n", name);
+--- src/foecommand.h.orig	2019-01-31 01:42:38.496935971 +0100
++++ src/foecommand.h	2019-01-31 01:42:53.833712232 +0100
+@@ -36,10 +36,10 @@
+   
+   virtual void doChangeDirection(double d);
+   virtual void doChangeSpeed(double s);
+-  virtual void FoeCommand::doAccelX(double ax);
+-  virtual void FoeCommand::doAccelY(double ay);
+-  virtual double FoeCommand::getBulletSpeedX();
+-  virtual double FoeCommand::getBulletSpeedY();
++  virtual void doAccelX(double ax);
++  virtual void doAccelY(double ay);
++  virtual double getBulletSpeedX();
++  virtual double getBulletSpeedY();
+   
+  private:
+   struct foe *foe;
