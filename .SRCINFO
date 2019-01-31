@@ -1,15 +1,15 @@
 pkgbase = php-alpm
 	pkgdesc = A PHP extension to use Arch Linux's ALPM
-	pkgver = 0.4.3
-	pkgrel = 2
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://labs.markzz.com/markzz/php-alpm
 	install = php-alpm.install
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = php
-	source = php-alpm-0.4.3.tar.gz::https://github.com/markzz/php-alpm/archive/0.4.3.tar.gz
-	md5sums = 64708bef3727f94ecdfc88c524fa4ae3
+	source = php-alpm-0.5.tar.gz::https://github.com/markzz/php-alpm/archive/0.5.tar.gz
+	md5sums = 0baa5e71be184af2ae6936bff9d4c415
 
 pkgname = php-alpm
 	depends = php

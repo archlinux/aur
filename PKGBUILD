@@ -2,8 +2,8 @@
 
 pkgname=php-alpm
 _extname=alpm
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="A PHP extension to use Arch Linux's ALPM"
 arch=('i686' 'x86_64')
 url="https://labs.markzz.com/markzz/php-alpm"
@@ -11,7 +11,7 @@ makedepends=('php')
 license=('LGPL2.1')
 install="${pkgname}.install"
 source=("php-alpm-${pkgver}.tar.gz::https://github.com/markzz/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('64708bef3727f94ecdfc88c524fa4ae3')
+md5sums=('0baa5e71be184af2ae6936bff9d4c415')
 
 build() {
   cd "${pkgname}-${pkgver}"
