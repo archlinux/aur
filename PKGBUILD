@@ -16,7 +16,7 @@ optdepends=('cups: Printer support'
 provides=("${pkgname}" 'brave-beta-browser')
 conflicts=("${pkgname}" 'brave-bin' 'brave-dev-bin')
 source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-v${pkgver}-linux-x64.zip"
-        'MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt'
+        "LICENSE::https://raw.githubusercontent.com/brave/brave-browser/master/LICENSE"
         "$pkgname.sh"
         "$pkgname.desktop"
         "braveAbout.png")
@@ -43,7 +43,7 @@ package() {
     install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/brave-beta"
     install -Dm0644 -t "$pkgdir/usr/share/applications" "$pkgname.desktop"
     install -Dm0644 "braveAbout.png" "$pkgdir/usr/share/pixmaps/brave-beta.png"
-    install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "MPL2"
+    install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE"
     mv "$pkgdir/usr/lib/$pkgname/"{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname"
 
     ln -s /usr/lib/PepperFlash "$pkgdir/usr/lib/pepperflashplugin-nonfree"
