@@ -1,0 +1,15 @@
+This is based on the "linux" pkgbuild, which you can export with `asp export
+linux`.
+
+The only things changed are the source URL, the name, the config, and the
+pkgver.
+
+The config is based on stock -ARCH, but `make localmodconfig` is added to build
+process (after `make olddefconfig`) to speed up compilation.
+
+To speed up initial clone, you might want to do this in this directory so it
+uses the local checkout to start. After that, hopefully yay should be able to
+use the existing cache.
+
+git clone --mirror ~/git/linux-mmots archlinux-linux
+git -C archlinux-linux remote set-url origin https://github.com/cdown/linux-mmots
