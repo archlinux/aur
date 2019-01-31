@@ -1,6 +1,6 @@
 pkgbase = netcap-git
 	pkgdesc = A framework for secure and scalable network traffic analysis
-	pkgver = r143.8e67a07
+	pkgver = v0.3.9.r7.g8e67a07
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/dreadl0ck/netcap
@@ -10,7 +10,7 @@ pkgbase = netcap-git
 	makedepends = go
 	provides = netcap
 	conflicts = netcap
-	source = netcap-git::git+https://github.com/dreadl0ck/netcap.git
+	source = netcap-git::git+https://github.com/dreadl0ck/netcap
 	sha256sums = SKIP
 
 pkgname = netcap-git

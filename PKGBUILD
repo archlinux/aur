@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=netcap-git
-pkgver=r143.8e67a07
+pkgver=v0.3.9.r7.g8e67a07
 pkgrel=1
 epoch=1
 pkgdesc='A framework for secure and scalable network traffic analysis'
@@ -11,35 +11,43 @@ license=('GPL3')
 makedepends=('git' 'go')
 conflicts=('netcap')
 provides=('netcap')
-source=("${pkgname}::git+https://github.com/dreadl0ck/netcap.git")
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
 
 	install -m755 -d "${srcdir}/go/src/github.com/dreadl0ck/"
-	cp -a "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/dreadl0ck/netcap"
+	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/dreadl0ck/netcap"
+
+	cd "${srcdir}/go/src/github.com/dreadl0ck/netcap"
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" \
+	go get -v -d ./...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/dreadl0ck/netcap"
 
 	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
-  go get -v ./...
-  go build -ldflags "-s -w" -o netcapture -i github.com/dreadl0ck/netcap/cmd
+
+	mkdir -p build
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" \
+	go build \
+		-ldflags "-s -w" \
+		-gcflags="all=-trimpath=${GOPATH}/src" \
+		-asmflags="all=-trimpath=${GOPATH}/src" \
+		-o build/netcapture ./cmd
 }
 
 package() {
 	cd "${srcdir}/go/src/github.com/dreadl0ck/netcap"
 
-	install -Dm755 netcapture "${pkgdir}/usr/bin/netcapture"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 "build/netcapture" "${pkgdir}/usr/bin/netcapture"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
