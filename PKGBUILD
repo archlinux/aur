@@ -10,7 +10,7 @@ url="https://github.com/Sangeppato/Nvidia-Optictl"
 arch=('x86_64')
 license=('GPL')
 
-depends=()
+depends=('nvidia')
 makedepends=('git')
 
 source=("git+https://github.com/Sangeppato/Nvidia-Optictl")

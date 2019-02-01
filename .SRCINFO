@@ -6,6 +6,7 @@ pkgbase = nvidia-optictl
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	depends = nvidia
 	provides = nvidia-optictl
 	source = git+https://github.com/Sangeppato/Nvidia-Optictl
 	sha256sums = SKIP
