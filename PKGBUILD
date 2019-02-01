@@ -4,12 +4,12 @@
 
 pkgname=wiredtiger
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance, scalable, production quality, NoSQL, Open Source extensible platform for data management"
 arch=('x86_64')
 url="http://source.wiredtiger.com/"
 license=('GPL')
-depends=('lz4' 'python' 'snappy' 'zlib' 'zstd')
+depends=('gperftools' 'lz4' 'python' 'snappy' 'zlib' 'zstd')
 makedepends=('swig')
 install=wiredtiger.install
 source=("$pkgname.tar.gz::https://github.com/wiredtiger/wiredtiger/archive/$pkgver.tar.gz")
