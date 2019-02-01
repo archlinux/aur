@@ -8,7 +8,7 @@ pkgdesc='Pantheon greeter for LightDM'
 arch=(x86_64)
 url=https://github.com/elementary/greeter
 license=(GPL)
-groups=(pantheon-unstable)
+groups=(pantheon)
 depends=(
   cairo
   clutter-gtk
@@ -29,8 +29,6 @@ makedepends=(
   libxfixes
   vala
 )
-provides=(lightdm-pantheon-greeter)
-conflicts=(lightdm-pantheon-greeter)
 install=lightdm-pantheon-greeter.install
 source=(lightdm-pantheon-greeter::git+https://github.com/elementary/greeter.git#tag=${pkgver})
 sha256sums=(SKIP)
