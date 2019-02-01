@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=libpdfium-nojs
-pkgver=3578.r4.4a3dddbfe8
+pkgver=3626.r0.5a88d16b87
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -23,7 +23,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          '7fbbe2baf9a1fed80ad74278e901fa0e'
-         '126d768d83a44217ce6d702cc64939e8')
+         '30fb763082245a1368aa6c68d61660ab')
 
 pkgver() {
 
@@ -75,7 +75,11 @@ prepare() {
   # Unbundle openjpeg
   cd "$srcdir"
   patch -p2 < "$srcdir/openjpeg.patch"
-
+  
+  # Unbundle zlib in image_diff target (we don't even build this, but gn will complain)
+  cd "$srcdir/pdfium/testing/image_diff"
+  sed -i 's\//third_party/zlib\../../third_party:zlib\g' BUILD.gn
+  
   # Patch BUILD.gn to build a shared library
   cd "$srcdir/pdfium"
   sed -i 's/jumbo_static_library("pdfium")/shared_library("pdfium")/g' BUILD.gn
@@ -112,9 +116,12 @@ build() {
       'use_system_libpng=true'
       'use_custom_libcxx=false'
       'use_gio=false'
+      'pdf_is_standalone = true'
   )
-
+  echo "GN GEN"
   gn gen out/Release --script-executable=/usr/bin/python2 --args="${_flags[*]}"
+  echo "NINJA"
+  ninja -C out/Release image_diff
   ninja -C out/Release pdfium
 
   # set pdfium version in pc file
