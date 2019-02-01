@@ -4,10 +4,10 @@ pkgdesc="ROS - Tools for directing, throttling, selecting, and otherwise messing
 url='http://ros.org/wiki/topic_tools'
 
 pkgname='ros-kinetic-topic-tools'
-pkgver='1.12.13'
+pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-rosunit
@@ -40,7 +40,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-topic_tools-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/topic_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f36fe7134cdaa984eaa1ae25f79c3137255c2a7250c8944fddb1f71c1dd8b330')
+sha256sums=('5577a4043710d9474434ee05b8599eb3276dd1c48fd3df297bfc78cd50945fa9')
 
 build() {
   # Use ROS environment variables
