@@ -2,8 +2,8 @@
 # Contributor: Jordan Knott <jordan at jordanthedev dot com>
 _pkgname=chrono
 pkgname="${_pkgname}-git"
-pkgver=1.0.1
-pkgrel=2
+pkgver=v1.0.1.r11.g01398e0
+pkgrel=3
 pkgdesc='A time tracking tool made with love'
 arch=('x86_64')
 url="https://github.com/gochrono/${_pkgname}"
@@ -22,10 +22,16 @@ pkgver() {
 
 build() {
   cd $_pkgname
+
+  PACKAGE="github.com/gochrono/chrono"
+  EXTLDFLAGS=${LDFLAGS}
+  LDFLAGS="-X ${PACKAGE}/commands.commit=`git rev-parse --short HEAD`
+  -X ${PACKAGE}/commands.version=`git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'`"
+
   go build \
     -gcflags "all=-trimpath=$PWD" \
     -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS" \
+    -ldflags "-extldflags ${EXTLDFLAGS} ${LDFLAGS}" \
     -o $_pkgname .
 }
 
