@@ -5,7 +5,7 @@ pkgver=0.3.0.r206.6654145
 pkgrel=1
 pkgdesc='The Pantheon Window Manager'
 arch=(x86_64)
-url='https://github.com/elementary/gala'
+url=https://github.com/elementary/gala
 license=(GPL3)
 groups=(pantheon-unstable)
 depends=(
@@ -59,7 +59,7 @@ pkgver() {
 
 build() {
   arch-meson gala build \
-    -D b_pie='false'
+    -D b_pie=false
   ninja -C build
 }
 
