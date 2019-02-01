@@ -5,12 +5,10 @@ pkgbase = linvst-stable
 	url = https://github.com/osxmidi/LinVst
 	arch = x86_64
 	license = GPL
-	makedepends = gtk3
 	depends = wine
+	depends = gtk3
 	provides = linvst
 	conflicts = linvst
-	conflicts = linvst-git
-	conflicts = linvst-bin
 	source = https://github.com/osxmidi/LinVst/archive/2.4.tar.gz
 	sha256sums = 8d569804b5d0bbc305283d1f2d8ff7c04f9150bd7208a6d86feabbd17bdd34d7
 
