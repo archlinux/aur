@@ -13,8 +13,7 @@ makedepends=('go>=1.11'
              'sqlite')
 optdepends=('sqlite: For SQLite support',
             'mariadb: For MariaDB support')
-backup=('var/lib/writefreely/config.ini'
-        'etc/writefreely/config.ini')
+backup=('etc/writefreely/config.ini')
 install=writefreely.install
 source=(writefreely-sysusers.conf
         writefreely.service
@@ -39,7 +38,7 @@ prepare() {
   # Temporary manual overrides:
   go get -u github.com/ikeikeikeike/go-sitemap-generator@v1.0.1
   go get -u github.com/writeas/monday@v0.0.0-20181024143321-54a7dd579219
-  go get -u github.com/writeas/saturday@v0.0.0-20190114104921-65cabcb7ce94
+  go get -u github.com/writeas/saturday@v1.6.0
   go mod tidy
 }
 

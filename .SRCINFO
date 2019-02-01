@@ -12,7 +12,6 @@ pkgbase = writefreely
 	depends = glibc
 	optdepends = sqlite: For SQLite support,
 	optdepends = mariadb: For MariaDB support
-	backup = var/lib/writefreely/config.ini
 	backup = etc/writefreely/config.ini
 	source = writefreely-sysusers.conf
 	source = writefreely.service
