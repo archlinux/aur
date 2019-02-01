@@ -1,6 +1,6 @@
 pkgbase = geary-git
 	pkgdesc = A lightweight email client for the GNOME desktop
-	pkgver = r4095.a2350576
+	pkgver = r4113.4d92ed2e
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Geary
 	arch = i686
