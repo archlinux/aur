@@ -1,0 +1,24 @@
+pkgbase = sendxmpp-rs
+	pkgdesc = sendxmpp is the XMPP equivalent of sendmail. It is an alternative to the old sendxmpp written in Perl.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://code.moparisthebest.com/moparisthebest/sendxmpp-rs
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = GPL
+	makedepends = cargo
+	provides = sendxmpp
+	provides = sendxmpp-py
+	conflicts = sendxmpp
+	conflicts = sendxmpp-py
+	backup = etc/sendxmpp/sendxmpp.toml
+	source = sendxmpp-1.0.0.tar.gz::https://crates.io/api/v1/crates/sendxmpp/1.0.0/download
+	source = sendxmpp-1.0.0.tar.gz.asc::https://code.moparisthebest.com/attachments/f627adef-0e6b-48af-b57a-01d353b15e58
+	validpgpkeys = 81F1C22DD41109D4A9C0A7B5B070F8D97D1A0BBA
+	sha256sums = 08cdf3bd4279022c7606f8da6633bea50f968f2761a63268524dbabe9a566e16
+	sha256sums = a0488ab400730e1e21eddd328de90a3eefb4044eeb2c6773ae2c6607303881f7
+
+pkgname = sendxmpp-rs
+
