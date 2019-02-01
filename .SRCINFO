@@ -1,0 +1,14 @@
+pkgbase = nvidia-optictl
+	pkgdesc = A set of simple scripts to control Nvidia Optimus
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Sangeppato/Nvidia-Optictl
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = nvidia-optictl
+	source = git+https://github.com/Sangeppato/Nvidia-Optictl
+	sha256sums = SKIP
+
+pkgname = nvidia-optictl
+
