@@ -5,7 +5,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=64.0.2
+pkgver=65.0
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse sqlite libvpx icu)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen)
+             python nodejs python2-psutil cbindgen nasm)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -31,7 +31,7 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
 sha256sums=('SKIP'
             '2adca824b52ab5bc6e7e4fa486c1ecb47d283832bd4b75d10494b033f1cab911'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            '18d37f79d6919d26c7f581f4c0025b556ced05362749be29af118da05f3cfb51')
+            '7df4129a0edd5c10ff0ff54584cb4c11275b4f019e6e8fc3aae69f444445642a')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -49,7 +49,7 @@ prepare() {
   mkdir mozbuild
   cd mozilla-unified
 
-# actual appmenu patch from ubuntu repos
+  # actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
 
   echo -n "$_google_api_key" >google-api-key
