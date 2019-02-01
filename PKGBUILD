@@ -1,7 +1,7 @@
 # Maintainer: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-2.8-bin
 pkgver=2.80.190201.8a51af7d1c98
-pkgrel=2
+pkgrel=3
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('i686' 'x86_64')
 url="https://www.blender.org"
@@ -21,11 +21,11 @@ md5sums=('SKIP')
 
 _setvars() {
 	cd "$srcdir"
-	local regex="blender-(2.8[^-]*)-([^-]*)-linux-[^-]*-$CARCH.tar.bz2" && [[ $(cat download) =~ $regex ]]
+	local regex="blender-(2.8[^-]*)-([^-]*)-linux-[^-]*-$CARCH.tar.bz2" && [[ $(cat download#$pkgver) =~ $regex ]]
 	_full=${BASH_REMATCH[0]}
 	_upstreamversion=${BASH_REMATCH[1]}
 	_commit=${BASH_REMATCH[2]}
-	local regex="$_full.*?<small>([[:alnum:] ]+), ([[:digit:]:]+) - $_commit" && [[ $(cat download) =~ $regex ]]
+	local regex="$_full.*?<small>([[:alnum:] ]+), ([[:digit:]:]+) - $_commit" && [[ $(cat download#$pkgver) =~ $regex ]]
 	_date=$(date --date="${BASH_REMATCH[1]} ${BASH_REMATCH[2]}" "+%y%m%d")
 }
 
