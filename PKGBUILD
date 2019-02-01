@@ -4,7 +4,7 @@
 pkgname=etesync-dav
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="A CalDAV and CardDAV front-end/proxy for EteSync "
+pkgdesc="A CalDAV and CardDAV adapter for EteSync "
 arch=('any')
 url="https://pypi.python.org/pypi/${pkgname}/"
 license=('GPL')
