@@ -20,11 +20,14 @@ install=${pkgname}.install
 source=('firefox-nightly.desktop'
         'firefox-nightly-ru.install'
         'vendor.js'
-        "${_date}-${_filename}.tar.bz2::${_baseurl}${_filename}.tar.bz2")
+        "${_date}-${_filename}.tar.bz2::${_baseurl}${_filename}.tar.bz2"
+        "${_date}-${_filename}.tar.bz2.asc::${_baseurl}${_filename}.tar.bz2.asc")
 sha512sums=('02bd8c8c717e6796fb1772f51c1bfd78ff3ca7c5355c08b9568dc36cb72b8b84330d20522653eedda12bdec1517cd4074a4bc5d51a8667880121e946b85c11ec'
          'bc940986f5acb02706714d5dcbc32e17b167190dc9a30c7d63bf5317a45a1a0ff9da5ea302b9c8efc32acf7b75d2dec1420f542cb0ba08c3e3d59273d18baa96'
          'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
+         'SKIP'
          'SKIP')
+validpgpkeys=("14F26682D0916CDD81E37B6D61B7B526D98F0353")
 
 pkgver() {
   echo "${_version}.${_date}"
