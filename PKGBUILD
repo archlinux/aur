@@ -9,15 +9,17 @@ _srcname=linux
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
 pkgver=4.14.95
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
 source=("git+https://github.com/raspberrypi/linux.git#branch=rpi-4.14.y"
         'add-nexmon.patch'
         'config'
+	'config.txt'
+	'cmdline.txt'
 	'dmi.patch'
         'linux.preset'
 	'scripts.tar.gz::https://cloud.it-kraut.net/s/zES6dQ9SQyj7PPF/download'
@@ -25,6 +27,8 @@ source=("git+https://github.com/raspberrypi/linux.git#branch=rpi-4.14.y"
 md5sums=('SKIP'
          '7462ced7cee9e33aa7925ea63771f0ad'
          '7170c7bab4fc23bfb2d31340b7ccadb4'
+         'c724d9c086060a17a2170c7d98dae908'
+         '6f4a4da9a6dec38507ff6e3a536f834a'
          'f80e2bf1fda4ff65606afea2939cc4a5'
          '5898b5308f7afb2b9b091de62eb321f3'
          '9912c127f93621dfc7b3e481bd9b1718'
@@ -77,12 +81,12 @@ build() {
 
 _package() {
   pkgdesc="The Linux Kernel and modules - ${_desc}"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  depends=('coreutils' 'raspberrypi-bootloader' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('kernel26' "linux=${pkgver}")
   replaces=('linux-armv8')
   conflicts=('linux')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup=("etc/mkinitcpio.d/${pkgbase}.preset" "boot/config.txt" "boot/cmdline.txt")
   install=${pkgname}.install
 
   cd "${srcdir}/${_srcname}"
@@ -110,6 +114,8 @@ _package() {
 
   # install mkinitcpio preset file for kernel
   install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${srcdir}/config.txt" "${pkgdir}/boot/config.txt"
+  install -D -m644 "${srcdir}/cmdline.txt" "${pkgdir}/boot/cmdline.txt"
   sed \
     -e "1s|'linux.*'|'${pkgbase}'|" \
     -e "s|ALL_kver=.*|ALL_kver=\"${_kernver}\"|" \
