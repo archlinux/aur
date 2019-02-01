@@ -4,7 +4,7 @@ pkgdesc="ROS - rosclean: cleanup filesystem resources (e.g."
 url='http://ros.org/wiki/rosclean'
 
 pkgname='ros-kinetic-rosclean'
-pkgver='1.14.3'
+pkgver='1.14.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros-release-release-kinetic-rosclean-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/kinetic/rosclean/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('75032d8a762cdc3c8ffc7e2c643e56b9f9d82aa2397b315c38a5731e5dd5253d')
+sha256sums=('3d41dc3f31411b8980076618b74c112e026d2df77ceadd5b06da8c2024c5659e')
 
 build() {
   # Use ROS environment variables
