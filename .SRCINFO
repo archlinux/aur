@@ -12,7 +12,7 @@ pkgbase = annie
 	conflicts = annie
 	options = !strip
 	options = !emptydirs
-	source = git+https://github.com/iawia002/annie#tag=0.9.1
+	source = annie::git+https://github.com/iawia002/annie#tag=0.9.1
 	md5sums = SKIP
 
 pkgname = annie

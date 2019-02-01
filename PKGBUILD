@@ -12,7 +12,7 @@ makedepends=('dep')
 depends=('go-pie' 'ffmpeg')
 conflicts=("annie")
 options=('!strip' '!emptydirs')
-source=("git+https://github.com/iawia002/annie#tag=0.9.1")
+source=("annie::git+https://github.com/iawia002/annie#tag=0.9.1")
 
 prepare(){
 	mkdir -p gopath/src/github.com
