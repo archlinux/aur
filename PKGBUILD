@@ -2,10 +2,10 @@
 
 pkgname=dostuff
 pkgver=12.08.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple ToDo manager"
 arch=(any)
-url="http://sourceforge.net/projects/pygmed/"
+url="https://launchpad.net/~ximilian/+archive/ubuntu/ppa"
 license=('GPL')
 depends=('python2' 'dconf' 'libunity')
 source=("http://ppa.launchpad.net/ximilian/ppa/ubuntu/pool/main/d/dostuff/dostuff_${pkgver}.tar.gz")
