@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='http://ros.org/wiki/roscpp'
 
 pkgname='ros-kinetic-roscpp'
-pkgver='1.12.13'
+pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -44,8 +44,15 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-roscpp-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/roscpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('87a23de306e34a771799b7bc1447a7c89248e854f7d0b230378cdb0b2e91c02f')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/roscpp/${pkgver}-${_pkgver_patch}.tar.gz"
+        "remove-boost-signals.patch")
+sha256sums=('4520279b2c32794d79ca4217ab61bc92cb6229d71a04312859b71d95f794e1a0'
+            '5336533800118ae1defcd3a7e9e2da4daa6adcbc2c97759a5a3bff1926f527b8')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch -p3 -i "${srcdir}/remove-boost-signals.patch"
+}
 
 build() {
   # Use ROS environment variables
