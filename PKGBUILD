@@ -5,7 +5,7 @@
 pkgbase=linux-cdown-mmots-git               # Build stock -ARCH kernel
 _srcver=5.0.0-mmots1
 pkgver=${_srcver//-/.}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/cdown/linux-mmots"
 license=(GPL2)
