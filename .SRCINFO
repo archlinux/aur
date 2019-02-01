@@ -1,13 +1,9 @@
 pkgbase = fluffy-switch
 	pkgdesc = Goldtree and Tinfoil GUI for USB install on switch
 	pkgver = 2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fourminute/Fluffy
-	arch = i686
-	arch = x86_64
-	arch = armv7h
-	arch = armv6h
-	arch = aarch64
+	arch = any
 	license = GPL
 	depends = python-pyusb
 	depends = libusb
