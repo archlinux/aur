@@ -1,5 +1,6 @@
 #!/bin/bash
 # Launch script for tinyMediaManager
+set -e
 
 mkdir --parents "$HOME/.tiny-media-manager"
 cd "$HOME/.tiny-media-manager"
