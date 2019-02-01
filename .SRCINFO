@@ -1,0 +1,16 @@
+pkgbase = plasma5-applets-simpleweather-git
+	pkgdesc = Plasmoid for Plasma 5. A minimalistic desktop weather widget based on the default KDE one.
+	pkgver = r25.73464b0
+	pkgrel = 1
+	url = https://github.com/Zren/plasma-applet-simpleweather
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = qt5-graphicaleffects
+	source = git+https://github.com/Zren/plasma-applet-simpleweather.git
+	md5sums = SKIP
+
+pkgname = plasma5-applets-simpleweather-git
+
