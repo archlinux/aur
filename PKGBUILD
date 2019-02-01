@@ -5,7 +5,7 @@
 BUILD_SELINUX=false
 
 pkgname=389-ds-base
-pkgver=1.4.0.20
+pkgver=1.4.1.1
 pkgrel=1
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
@@ -31,7 +31,7 @@ backup=(etc/default/dirsrv
 options=(!libtool)
 source=("https://releases.pagure.org/389-ds-base/${pkgname}-${pkgver}.tar.bz2"
 				'nss.patch')
-sha512sums=('bcd22f64b7e29a0d58dc19c428eaabb3674b5f2a6029f62eeadf4e21346bcb79e689d91e2689d01b625d731cac8b49150343975961a52c1552d2454038598c20'
+sha512sums=('ba32f0923cb9e45f86cc17086ed4d362f274bb7ca49a43e647eb04e78128c3610c881db7426e256ccb082ac0a5dc598436b2437d068212182c0823e2fb3859dc'
             'b34c7125176481791d71cf98a78cc6dbaa658b8398ad7bdd48944612b6078307aee2acbb065011098d21672fd504191f207711e36399edc35b49af9aede64337')
 
 prepare() {
@@ -58,6 +58,7 @@ build() {
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
     --localstatedir=/var \
+		--libexecdir=/usr/lib/${pkgname} \
     --with-tmpfiles-d=/usr/lib/tmpfiles.d \
     --with-systemd \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
@@ -78,6 +79,8 @@ check() {
 package() {
   cd "${pkgname}-${pkgver}"
   make -j1 DESTDIR="${pkgdir}/" install
+
+	sed -i "s/libexec/lib\/${pkgname}/g" "${pkgdir}/usr/lib/systemd/system/dirsrv@.service"
 
   install -dm755 "${pkgdir}"/var/log/${pkgname}/ \
                  "${pkgdir}"/var/lib/${pkgname}/
