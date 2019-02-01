@@ -1,0 +1,19 @@
+pkgbase = innoextract-git
+	pkgdesc = A tool to extract installers created by Inno Setup
+	pkgver = r703.c9dcf5f
+	pkgrel = 1
+	url = https://constexpr.org/innoextract/
+	arch = x86_64
+	license = ZLIB
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	depends = boost-libs
+	depends = xz
+	provides = innoextract
+	conflicts = innoextract
+	source = innoextract-git::git+https://github.com/dscharrer/innoextract.git
+	sha256sums = SKIP
+
+pkgname = innoextract-git
+
