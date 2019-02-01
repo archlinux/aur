@@ -1,7 +1,7 @@
 pkgbase = java-openjfx-ea-bin
 	pkgdesc = Java OpenJFX 12 Early-Access Build.
 	pkgver = 12b10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jdk.java.net/openjfx/
 	arch = x86_64
 	license = GPL2
