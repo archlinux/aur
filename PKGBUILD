@@ -32,7 +32,7 @@ arch=(any)
 url="http://steamcommunity.com/app/3730"
 license=('custom')
 depends=('avp')
-provides=avp-data
+provides=('avp-data')
 DLAGENTS+=('localfile::/usr/bin/echo "Could not find %u. Use the copier.sh script to copy them into this directory"')
 source=(
   "filelist"
@@ -446,7 +446,7 @@ noextract=(
 )
 md5sums=(
   "b5db6ae4c3ac2d10aac80039e4468ea5" #filelist
-  "17f0e57d6840085c2af0bf40c3c792d3" #copier.sh
+  "aa0a54065168d51319827a0d8c7187ff" #copier.sh
   "4267d305ad3f18e6683f86b4eb755665"
   "ff6b892af4665c81082e24a43903e987"
   "fe9a1f4e5caab35e38aabdbbb445aabc"
