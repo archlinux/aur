@@ -4,7 +4,7 @@ pkgdesc="ROS - A Python and C++ implementation of the LZ4 streaming format."
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-roslz4'
-pkgver='1.12.13'
+pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-roslz4-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/roslz4/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e08618bd153c2280c27efa249e01c4001874b9a3cbec54c4e3dd4693bd20984e')
+sha256sums=('275d8be015ab3c017feacca99172fe35d55dd49b7aebc346402b4e5cf7157448')
 
 build() {
   # Use ROS environment variables
