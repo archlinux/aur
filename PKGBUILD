@@ -3,8 +3,8 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=56.2.6
-pkgrel=2
+pkgver=56.2.7
+pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -38,8 +38,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
         jack-system-ports.patch
         "fix_crash_e10s_upload_cancel.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/fix_crash_e10s_upload_cancel.patch"
         no-plt.diff
-        "unity-menubar-$pkgver.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox.xenial/download/1222/unitymenubar.patch-20130215095938-1n6mqqau8tdfqwhg-1/unity-menubar.patch"
-        .gitignore)
+        "unity-menubar-$pkgver.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox.xenial/download/1222/unitymenubar.patch-20130215095938-1n6mqqau8tdfqwhg-1/unity-menubar.patch")
 sha256sums=('SKIP'
             '6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -53,8 +52,7 @@ sha256sums=('SKIP'
             'be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c'
             '73e13bf689838e4b27cdb08f040fbafb308aaf2990f5e1bf193a69a9dd736794'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
-            '5903f99dce010279e2a2f0e56d98e756c5abf9a57e27df5e2239076038868d3d'
-            '5b8c6204e35d2dc020a408e068b5c92afca00be9a6188a92a7dc122c68de6263')
+            '5903f99dce010279e2a2f0e56d98e756c5abf9a57e27df5e2239076038868d3d')
 
 prepare() {
   mkdir path
