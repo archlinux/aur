@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp_traits contains the message traits code as described in Me
 url='http://ros.org/wiki/roscpp_traits'
 
 pkgname='ros-kinetic-roscpp-traits'
-pkgver='0.6.9'
+pkgver='0.6.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-kinetic-roscpp_traits-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/kinetic/roscpp_traits/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d0d96fd416d52096fd6df1d296c5192bbfa5d4c07058fdb79cb5177719b79446')
+sha256sums=('16f0dd90dafd0bb3af9fd26882bdfa60f6c1aa0cd84437f113ed2507d617da3f')
 
 build() {
   # Use ROS environment variables
