@@ -8,8 +8,8 @@ arch=('x86_64' 'i686')
 pkgdesc="A fast, simple and clean video downloader written in Go"
 url="https://github.com/iawia002/annie"
 license=("MIT")
-makedepends=('go' 'dep')
-depends=("ffmpeg")
+makedepends=('dep')
+depends=('go-pie' 'ffmpeg')
 conflicts=("annie")
 options=('!strip' '!emptydirs')
 source=("git+https://github.com/iawia002/annie#tag=0.9.1")
