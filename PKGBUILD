@@ -2,7 +2,7 @@
 # Contributor: Naman Bharadwaj <namanbharadwaj@gmail.com>
 
 pkgname=lean-bin
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc='Lean Theorem Prover'
 arch=('x86_64' 'i386')
@@ -12,11 +12,10 @@ depends=('lua>=5.2')
 optdepends=('emacs: emacs mode')
 conflicts=('lean-git')
 source=("https://github.com/leanprover/lean/releases/download/v${pkgver}/lean-${pkgver}-linux.tar.gz")
-sha256sums=('7f0a0d7a61a79fbe8f136dbfc9f472e2b6694ab214f194d46399c6493aafeb89')
+sha256sums=('ba8a97b3e8f28dad50900a55e488579f2a26923eb0c4c40342120457c136d165')
 
 package() {
-	mkdir -p "$pkgdir/usr"
-    find "lean-$pkgver-linux" -exec chmod 755 {} \;
-    cp -r "lean-$pkgver-linux"/* "$pkgdir/usr"
+    mkdir -p "$pkgdir/usr"
+    cp -r "$srcdir/lean-$pkgver-linux"/* "$pkgdir/usr"
 }
 
