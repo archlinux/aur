@@ -1,13 +1,13 @@
 pkgbase = lemonade-git
 	pkgdesc = Lemonade is a remote utility tool. (copy, paste and open browser) over TCP.
-	pkgver = r74.ddbd6c1
+	pkgver = v1.1.1.r14.gddbd6c1
 	pkgrel = 1
 	url = https://github.com/pocke/lemonade
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = go
-	source = lemonade-git::git+https://github.com/pocke/lemonade.git
+	source = lemonade-git::git+https://github.com/pocke/lemonade
 	sha256sums = SKIP
 
 pkgname = lemonade-git
