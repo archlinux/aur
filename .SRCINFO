@@ -1,6 +1,6 @@
 pkgbase = gisto
 	pkgdesc = Cross-platform gist snippets management desktop application that allows you and your team share code snippets fast and easily. Based on GitHub Gist Infrastructure which means you can use all your existing snippets by connecting your GitHub account.
-	pkgver = 1.10.17
+	pkgver = 1.10.26
 	pkgrel = 1
 	url = http://www.gistoapp.com/
 	install = gisto.install
@@ -10,8 +10,8 @@ pkgbase = gisto
 	depends = gtk3
 	depends = libxss
 	options = !strip
-	source = https://github.com/Gisto/Gisto/releases/download/v1.10.17/Gisto-1.10.17-amd64.deb
-	md5sums = d3c6603991108d6038f19c447e39fc04
+	source = https://github.com/Gisto/Gisto/releases/download/v1.10.26/Gisto-1.10.26-amd64.deb
+	md5sums = cfaad7ca5e109a4daed3dabd32539183
 
 pkgname = gisto
 
