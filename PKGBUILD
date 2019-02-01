@@ -4,7 +4,7 @@ pkgdesc="ROS - roslang is a common package that all ROS client libraries depend 
 url='http://ros.org/wiki/roslang'
 
 pkgname='ros-kinetic-roslang'
-pkgver='1.14.3'
+pkgver='1.14.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-kinetic-roslang-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/kinetic/roslang/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('12c76270d6b081bc225b5c2e9f3bdcbb864e359e18552b57a16a9012524293e4')
+sha256sums=('be96b88224a24d70844c3dccb84253791452f471b17ee8b25ebdc23bf4643f4e')
 
 build() {
   # Use ROS environment variables
