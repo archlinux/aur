@@ -4,7 +4,7 @@ pkgdesc="ROS - rosparam contains the rosparam command-line tool for getting and 
 url='http://ros.org/wiki/rosparam'
 
 pkgname='ros-kinetic-rosparam'
-pkgver='1.12.13'
+pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rosparam-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosparam/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e65a546b005420f179485006b0f88b5be9caf8a3c12ffbffaf8df6d08062b741')
+sha256sums=('484b4d6a3516b81a5a7a76cd0398e52ee072880af13d48095a51a611a4af62aa')
 
 build() {
   # Use ROS environment variables
