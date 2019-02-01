@@ -2,13 +2,13 @@
 pkgname=python-odrive
 _pkgnamepython=odrive
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="python tools for odrive motors"
 arch=('any')
 url="https://github.com/madcowswe/ODrive"
 license=('MIT')
 depends=('ipython' 'python-pyusb' 'python-pyserial' 'python-requests' 'python-intelhex')
-optdepends=('matplotlib: required to run the liveplotter')
+optdepends=('python-matplotlib: required to run the liveplotter')
 
 
 source=("https://files.pythonhosted.org/packages/source/${_pkgnamepython::1}/${_pkgnamepython}/${_pkgnamepython}-${pkgver}.tar.gz")
