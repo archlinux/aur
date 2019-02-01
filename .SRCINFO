@@ -1,13 +1,13 @@
 pkgbase = python-webweb
 	pkgdesc = An easy-to-use network visualization tool.
-	pkgver = 0.0.17
+	pkgver = 0.0.18
 	pkgrel = 1
 	url = https://webwebpage.github.io/
 	arch = i686
 	arch = x86_64
-	license = GPLv3
-	source = https://files.pythonhosted.org/packages/source/w/webweb/webweb-0.0.17.tar.gz
-	sha256sums = 36dc395ac95d2e4fa9f72b4fcd50011790cf01793868063bd1f874aa77041412
+	license = GPLv3+
+	source = https://files.pythonhosted.org/packages/source/w/webweb/webweb-0.0.18.tar.gz
+	sha256sums = 3ff9a4dd08dc4a36879f6b23d162df8be00df8b77948476b7a754472d492053c
 
 pkgname = python-webweb
 
