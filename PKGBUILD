@@ -1,9 +1,8 @@
-# $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
+# Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=java-openjdk-ea-bin
 _majorver=12
-_buildver=29
+_buildver=30
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJDK ${_majorver} Early-Access Build."
@@ -20,7 +19,7 @@ provides=(
   "java-runtime-headless-openjdk=${_majorver}"
 )
 source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-x64_bin.tar.gz")
-sha256sums=('9c6690a0d7d3f82f1edc11de129cc6e1adde67faff08199f70281f8596de8989')
+sha256sums=('edfd94e15194dbaa5f08b995ee98309f9b8bb97a59b232be4e590c4954f4c859')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
