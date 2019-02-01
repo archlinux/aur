@@ -1,7 +1,7 @@
 pkgbase = slic3r-prusa3d
 	pkgdesc = Updated Slic3r by Prusa3D with many bugfixes and new features
 	pkgver = 1.41.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.prusa3d.com/
 	arch = i686
 	arch = x86_64
@@ -41,10 +41,12 @@ pkgbase = slic3r-prusa3d
 	source = Move-Slic3r-data-to-usr-share-slic3r.patch
 	source = https://raw.githubusercontent.com/PointCloudLibrary/pcl/79c184cc4dbe82d296bb37390064e4a0149234ec/cmake/Modules/FindQhull.cmake
 	source = slic3r.desktop
+	source = GCodeSender.hpp.patch
 	md5sums = SKIP
 	md5sums = aceb830f2fbe12ef5659e73164ea733b
 	md5sums = 60163025c9bd3d80f2d51a9566f1deab
 	md5sums = 1941c1ede2f03774ffb77f68a7c33572
+	md5sums = ef9c296e9fc3579979d984f3193ca733
 
 pkgname = slic3r-prusa3d
 

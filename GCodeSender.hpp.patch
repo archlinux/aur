@@ -1,0 +1,12 @@
+*** Slic3r/xs/src/libslic3r/GCodeSender.hpp.orig	2019-01-18 14:44:59.937080503 -0600
+--- Slic3r/xs/src/libslic3r/GCodeSender.hpp	2019-01-18 14:51:05.906064638 -0600
+***************
+*** 8,13 ****
+--- 8,14 ----
+  #include <boost/asio.hpp>
+  #include <boost/bind.hpp>
+  #include <boost/thread.hpp>
++ #include <boost/core/noncopyable.hpp>
+  
+  namespace Slic3r {
+  

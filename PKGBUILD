@@ -1,4 +1,3 @@
-
 # Maintainer: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
 # Contributor: Swift Geek <swifgeek ɐ google m č0m>
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
@@ -7,7 +6,7 @@
 _pkgname=slic3r-prusa3d
 pkgname=${_pkgname}
 pkgver=1.41.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64')
 url="http://www.prusa3d.com/"
@@ -23,21 +22,24 @@ optdepends=('perl-net-dbus: notifications support via any dbus-based notifier'
 source=("git+https://github.com/prusa3d/Slic3r.git#tag=version_${pkgver}"
         "Move-Slic3r-data-to-usr-share-slic3r.patch"
         "https://raw.githubusercontent.com/PointCloudLibrary/pcl/79c184cc4dbe82d296bb37390064e4a0149234ec/cmake/Modules/FindQhull.cmake"
-        'slic3r.desktop')
+        'slic3r.desktop'
+        'GCodeSender.hpp.patch')
 md5sums=('SKIP'
          'aceb830f2fbe12ef5659e73164ea733b'
          '60163025c9bd3d80f2d51a9566f1deab'
-         '1941c1ede2f03774ffb77f68a7c33572')
+         '1941c1ede2f03774ffb77f68a7c33572'
+         'ef9c296e9fc3579979d984f3193ca733')
 
 prepare() {
   cd "${srcdir}/Slic3r"
   patch -p1 -i "$srcdir/Move-Slic3r-data-to-usr-share-slic3r.patch"
+  patch -p1 -b -i "$srcdir/GCodeSender.hpp.patch"
   mkdir -p build
 }
 
 build() {
   cd "${srcdir}/Slic3r"
-  
+
   # Moved this here from prepare(). Because prepare() runs before pkgver() we always set the wrong version.
   sed -i "s/define SLIC3R_VERSION .*/define SLIC3R_VERSION \"$pkgver\"/" xs/src/libslic3r/libslic3r.h
 
