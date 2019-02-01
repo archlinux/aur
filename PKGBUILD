@@ -4,7 +4,7 @@ pkgdesc="ROS - XmlRpc++ is a C++ implementation of the XML-RPC protocol."
 url='http://xmlrpcpp.sourceforge.net'
 
 pkgname='ros-kinetic-xmlrpcpp'
-pkgver='1.12.13'
+pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-xmlrpcpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/xmlrpcpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('cb5e71be2fb845202dbd8501bb6642b95e296666f0f14ae7f58eb34b40ebb700')
+sha256sums=('1fd92e74b5bd909d2850ee9a30d0b814abb4e8fa303661fe7c40be2686c2a66a')
 
 build() {
   # Use ROS environment variables
