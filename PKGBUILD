@@ -1,7 +1,7 @@
 # Maintainer: Marco Steiger <marco1steiger (at) gmail (dot) com>
 pkgname=structorizer
 pkgver=3.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Structorizer is a little tool which you can use to create Nassi-Shneiderman Diagrams (NSD)"
 url="https://structorizer.fisch.lu"
 arch=('x86_64' 'i686')
@@ -9,11 +9,11 @@ license=('custom')
 makedepends=('unzip')
 depends=('java-runtime')
 install=${pkgname}.install
-source=("${pkgname}-${pkgver}.zip::https://github.com/fesch/Structorizer.Desktop/releases/download/${pkgver}/structorizer_${pkgver}.zip"
+source=("${pkgname}-${pkgver}.zip::https://github.com/fesch/Structorizer.Desktop/releases/download/${pkgver}-02/structorizer_${pkgver}-02.zip"
         "${pkgname}.desktop"
         "${pkgname}.png::https://structorizer.fisch.lu/Pictures/structorizer.png"
         "${pkgname}")
-sha256sums=('8492e4625756e63ce877abf70f393accd08f977656f5726aa47e5d56dac9d5ce'
+sha256sums=('c25fb71a5e4f6a39c3a605746d7d8c06ac9dd7a12220ad9b593d90851c54f523'
             'f0daaecd3bcdee10d6f4d2db9c07c98c921f88e3c09754a7badad402be6b8d1d'
             'f03c74f969c100ca843345f9e5ce5de5cfbf8b7a0f05e208f3a17f7ce9b9548b'
             'c8a41c80f336ad0052844a54998c0b9bc6ce169ee17908fb0633fadcda7bc9e7')
