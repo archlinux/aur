@@ -1,6 +1,6 @@
-# Maintainer:  Iyán Méndez Veiga <me@iyanmv.com>
-# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
-# Contributor: damian01w <damian01w@gmail.com>
+# Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: Hyacinthe Cartiaux <hyacinthe (dot) cartiaux (at) free (dot) fr>
+# Contributor: damian01w <damian01w (at) gmail (dot) com>
 
 pkgname=kde-servicemenus-encfs
 _pkgname=kde-service-menu-encfs
