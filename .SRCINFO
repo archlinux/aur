@@ -1,0 +1,21 @@
+pkgbase = sendxmpp-rs-git
+	pkgdesc = sendxmpp is the XMPP equivalent of sendmail. It is an alternative to the old sendxmpp written in Perl.
+	pkgver = 1.0.0.r0.g12ea8c5
+	pkgrel = 1
+	url = https://code.moparisthebest.com/moparisthebest/sendxmpp-rs
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = GPL
+	makedepends = cargo
+	makedepends = git
+	provides = sendxmpp-rs=1.0.0.r0.g12ea8c5
+	conflicts = sendxmpp-rs
+	backup = etc/sendxmpp/sendxmpp.toml
+	source = sendxmpp-rs-git::git+https://code.moparisthebest.com/moparisthebest/sendxmpp-rs.git
+	validpgpkeys = 81F1C22DD41109D4A9C0A7B5B070F8D97D1A0BBA
+	sha256sums = SKIP
+
+pkgname = sendxmpp-rs-git
+
