@@ -9,7 +9,7 @@
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc-working
 pkgver=2.28
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU C Library (${_target})"
 arch=('any')
 url="http://www.gnu.org/software/libc/"
@@ -20,7 +20,7 @@ provides=("${_target}-glibc-headers=${pkgver}" "${_target}-eglibc")
 conflicts=("${_target}-glibc-headers" "${_target}-eglibc")
 replaces=("${_target}-glibc-headers")
 options=(!buildflags !strip staticlibs)
-source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig})
+source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz)
 md5sums=('SKIP')
 
 prepare() {

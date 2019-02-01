@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-glibc-working
 	pkgdesc = GNU C Library (arm-linux-gnueabihf)
 	pkgver = 2.28
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
@@ -17,7 +17,6 @@ pkgbase = arm-linux-gnueabihf-glibc-working
 	options = !strip
 	options = staticlibs
 	source = https://ftp.gnu.org/gnu/glibc/glibc-2.28.tar.xz
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.28.tar.xz.sig
 	md5sums = SKIP
 
 pkgname = arm-linux-gnueabihf-glibc-working
