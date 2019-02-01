@@ -3,7 +3,7 @@
 
 pkgname=socnetv
 _reponame=app
-pkgver=2.2
+pkgver=2.4
 pkgrel=1
 pkgdesc="Social Networks Analysis and Visualisation"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('qt5-base')
 provides=('socnetv')
 conflicts=('socnetv-git')
 source=(https://github.com/$pkgname/app/archive/v$pkgver.tar.gz)
-sha256sums=('d060e1debdd1caa37f69e17f79aefe74689bc4103ad61d6a8aab81ff67d39785')
+sha256sums=('de1ba2b76b356aa8fe90744241797374cffdafa79685bdbd619f5357ad97bca9')
 
 build() {
 	cd "${srcdir}/$_reponame-$pkgver"
