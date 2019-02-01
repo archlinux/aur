@@ -6,7 +6,7 @@ pkgbase = atolm-openbox-theme
 	arch = any
 	license = GPL
 	depends = openbox
-	source = atolm-openbox-theme-20110813.tar.gz::http://box-look.org/CONTENT/content-files/144416-Atolm.obt
+	source = atolm-openbox-theme-20110813.tar.gz::https://dl.opendesktop.org/api/files/download/id/1460768348/s/b78e216c2b4c7fc2b9428db8193b44df41823f5a45efec9a1bfebf74012d08017a33b09f9437e9f40d671e91171ae27fc873695b0cff88dd56566e35065a6827/t/1548983943/u/144416-Atolm.obt
 	md5sums = fe601ae403ef0a4a7f2a5fea12b0f0e6
 
 pkgname = atolm-openbox-theme
