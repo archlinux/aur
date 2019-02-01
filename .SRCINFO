@@ -1,8 +1,8 @@
 pkgbase = vdr-sc
-	pkgdesc = Software CAM emulation
+	pkgdesc = Software CAM emulation. If compilation fails with FAILED COMPARISON OF PACKET please check README.FFdecsa and set appropiate PARALLEL parameter in Makefile.patch
 	pkgver = r9.75b4379
-	pkgrel = 1
-	url = http://207.44.152.197/
+	pkgrel = 2
+	url = https://github.com/3PO/vdr-plugin-sc
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -12,18 +12,14 @@ pkgbase = vdr-sc
 	makedepends = git
 	depends = libdvbcsa
 	depends = openssl
-	depends = vdr>=2.1.0
+	depends = vdr>=2.4.0
 	depends = vdr-api=2.4.0
 	backup = etc/vdr/conf.avail/20-sc.conf
-	source = vdr-sc::git+http://github.com/3PO/vdr-plugin-sc
+	source = vdr-sc::git+http://github.com/3PO/vdr-plugin-sc.git#commit=75b4379e4fa3f6fa1f6908591be8e9bbb44dd990
 	source = ftp://ftp.tvdr.de/vdr/vdr-2.4.0.tar.bz2
-	source = Makefile.patch
-	source = compile.patch
 	source = 20-sc.conf
 	md5sums = SKIP
 	md5sums = 12c6a3abeadfa915fcfe736bb047a3ab
-	md5sums = 7f95d6bafef697a65b2a1622dd9790ad
-	md5sums = 23e9fbdccd207463c1f7d632b58d2a78
 	md5sums = 397dfba03003ba28c5f95d0855497d78
 
 pkgname = vdr-sc

@@ -3,7 +3,7 @@ pkgname=vdr-sc
 pkgver=r9.75b4379
 _vdrapi=2.4.0
 _gitver=75b4379e4fa3f6fa1f6908591be8e9bbb44dd990
-pkgrel=1
+pkgrel=2
 pkgdesc="Software CAM emulation. If compilation fails
  with FAILED COMPARISON OF PACKET please check README.FFdecsa 
  and set appropiate PARALLEL parameter in Makefile.patch"
@@ -20,7 +20,7 @@ backup=("etc/vdr/conf.avail/20-$_plugname.conf")
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD).$pkgrel"
 }
 
 prepare() {
