@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=jdotxt
+GenericName=Tool for managing your todo list
+Comment=Java GUI tool for managing tasks
+Exec=jdotxt %F
+Icon=jdotxt.png
+Terminal=false
+StartupNotify=true
+Categories=Utility;ProjectManagement;
