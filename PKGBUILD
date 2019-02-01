@@ -3,13 +3,13 @@
 # Contributor: Denis Vadimov <me @ bloody.pw>
 
 _version=67.0a1
-_baseurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/"
+_baseurl="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/"
 _date="$(date +%Y%m%d)"
 _filename="firefox-${_version}.ru.linux"
 pkgname=firefox-nightly-ru
 pkgver=67.0a1.20190201093730
 pkgrel=1
-pkgdesc='Web browser from mozilla.org, nightly build, russian version'
+pkgdesc='Standalone Web Browser from Mozilla — Nightly build (ru)'
 arch=('i686' 'x86_64')
 url='http://nightly.mozilla.org/'
 license=('MPL' 'GPL' 'LGPL')
@@ -21,8 +21,10 @@ optdepends=('pulseaudio: audio support'
             'libnotify: notification integration'
             'networkmanager: location detection via available WiFi networks'
             'speech-dispatcher: text-to-speech'
-            'startup-notification: support for FreeDesktop Startup Notification')
+            'startup-notification: support for FreeDesktop Startup Notification'
+            'jq: updater script support')
 conflicts=('firefox-nightly')
+install=${pkgname}.install
 source=('firefox-nightly.desktop'
         'policies.json')
 source_i686=("${_date}-${_filename}.tar.bz2::${_baseurl}${_filename}-i686.tar.bz2"
@@ -45,7 +47,18 @@ package() {
   cp -r firefox "${pkgdir}/opt/firefox-nightly-ru"
   mkdir -p "${pkgdir}/opt/firefox-nightly-ru/distribution/"
   ln -s /opt/firefox-nightly-ru/firefox "${pkgdir}/usr/bin/firefox-nightly"
+
+  # Install .desktop
   install -m644 "${srcdir}/firefox-nightly.desktop" "${pkgdir}/usr/share/applications/"
+
+  # Install icons
   install -m644 "${srcdir}/firefox/browser/chrome/icons/default/default128.png" "${pkgdir}/usr/share/pixmaps/firefox-nightly-icon.png"
+
+  # Disable auto updates
   install -Dm644 "${srcdir}/policies.json" "${pkgdir}/opt/firefox-nightly-ru/distribution"
+
+  # Use system-provided dictionaries
+  rm -rf "${pkgdir}/opt/firefox-nightly-ru/{dictionaries,hyphenation}"
+  ln -sf /usr/share/hunspell "${pkgdir}"/opt/firefox-nightly-ru/dictionaries
+  ln -sf /usr/share/hyphen "${pkgdir}"/opt/firefox-nightly-ru/hyphenation
 }
