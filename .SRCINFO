@@ -24,7 +24,7 @@ pkgbase = ros-melodic-topic-tools
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-message-runtime
 	source = ros-melodic-topic-tools-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/topic_tools/1.14.3-0.tar.gz
-	sha256sums = 11737ac9aee93efcde7615891fd0342a8151e09b03435b1a173ddedef6c91f18
+	sha256sums = c5d7f1f83280d10663846fe557bf905316e92dbf7b7ade73f74ed3f3949bcd40
 
 pkgname = ros-melodic-topic-tools
 
