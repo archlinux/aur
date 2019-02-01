@@ -3,7 +3,7 @@
 
 pkgname=sqlectron-gui
 pkgver=1.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight SQL client with cross database and platform support"
 arch=('x86_64')
 url="https://sqlectron.github.io/"
@@ -12,16 +12,18 @@ depends=('electron2')
 makedepends=(
 	'asar'
 	'libsass'
-	'nodejs-lts-carbon'
 	'npm'
 )
 source=("https://github.com/sqlectron/sqlectron-gui/archive/v${pkgver}.tar.gz"
         'sqlectron-gui.sh'
-		'sqlectron-gui.desktop')
+		'sqlectron-gui.desktop'
+		'node.sh'
+)
 
 sha1sums=('467869f0678cc0e99ca268c9c3d1aafc565c130f'
           '6ad81d34e04c1760d4be27f0e4ec25ff5267deca'
-          'b9fb3bc29a17dee5de9295e2fdb2b3025ed51d1f')
+          'b9fb3bc29a17dee5de9295e2fdb2b3025ed51d1f'
+          'cc8eab72cdc552f58b948bd45f8554a9a7fc8a7c')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -36,18 +38,21 @@ prepare() {
 		-e '/"webpack-dev-middleware":/ d' \
 		-e '/"webpack-dev-server":/     d' \
 		-e '/"webpack-bundle-analyzer":/ s/,$//'
+
+	install -Dm0755 "$srcdir/node.sh" "$srcdir/bin/node"
 }
 
 build() {
 	cd "$pkgname-$pkgver"
 
+	export PATH="$srcdir/bin:$PATH"
 	export SASS_FORCE_BUILD=1
 	export LIBSASS_EXT=auto
 	export npm_config_optional=false
+	export npm_config_nodedir=/usr/lib/electron2/node
+	export npm_config_scripts_prepend_node_path=false
 
-	npm install \
-		--build-from-source \
-		--nodedir=/usr
+	npm install --build-from-source
 
 	npm run compile:browser
 	npm run compile:renderer
@@ -60,11 +65,10 @@ build() {
 	npm install \
 		--production \
 		--build-from-source \
-		--nodedir=/usr/lib/electron2/node \
 		--runtime=electron \
 		--target=$(</usr/lib/electron2/version)
-
 	popd
+
 	asar p app app.asar
 }
 
