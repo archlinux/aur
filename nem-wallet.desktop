@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Nem Wallet
+Comment=Free, open-source, client-side tool for easily & securely interacting with the Nem network
+Icon=nem-wallet
+Exec=xdg-open "/opt/nem-wallet/start.html"
+Categories=Network;
