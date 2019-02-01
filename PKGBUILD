@@ -36,9 +36,9 @@ depends=(
 	python-numpy
 )
 
-_dir="ros_comm-release-release-melodic-rospy-${pkgver}-${_pkgver_patch}"
+_dir="ros_comm-release-release-melodic-rospy"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rospy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3dbd699e3d8cea6b5fc18d98d184a1aedb4171a0eca3cd9ba280f320b3607468')
+sha256sums=('114c5f35bb368343f3a6b8f58374369344bb4ec8aae377ba33fca2ada0a7c07f')
 
 build() {
 	# Use ROS environment variables.
