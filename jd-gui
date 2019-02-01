@@ -1,0 +1,17 @@
+#!/bin/sh
+
+case $(archlinux-java get) in
+  'java-6-openjdk')
+    ;&
+  'java-7-openjdk')
+    ;&
+  'java-8-openjdk')
+    exec java -jar /usr/share/java/jd-gui/jd-gui.jar "$@"
+    ;;
+  *)
+    exec java \
+      --add-opens java.base/jdk.internal.loader=ALL-UNNAMED \
+      --add-opens jdk.zipfs/jdk.nio.zipfs=ALL-UNNAMED \
+      -jar /usr/share/java/jd-gui/jd-gui.jar
+    ;;
+esac
