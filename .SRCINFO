@@ -1,6 +1,6 @@
 pkgbase = linux-minidisc
 	pkgdesc = Free software for accessing MiniDisc devices
-	pkgver = 0.9.15
+	pkgver = 0.9.16
 	pkgrel = 1
 	url = https://wiki.physik.fu-berlin.de/linux-minidisc/doku.php
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = linux-minidisc
 	depends = libid3tag
 	depends = libusbx
 	depends = taglib
-	source = linux-minidisc-0.9.15.tar.gz::https://github.com/glaubitz/linux-minidisc/archive/0.9.15.tar.gz
-	md5sums = 890085b93a0ff94b198df8b16329e751
+	source = linux-minidisc-0.9.16.tar.gz::https://github.com/glaubitz/linux-minidisc/archive/0.9.16.tar.gz
+	md5sums = e4a2a35494220e4f5df6bba28b0b1aaa
 
 pkgname = linux-minidisc
 
