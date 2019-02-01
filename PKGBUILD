@@ -2,7 +2,7 @@
 
 _gemname=roo
 pkgname="ruby-${_gemname}"
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc='OpenOffice, LibreOffice, Excel, CSV reader'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('ruby-pkg-config' 'ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha256sums=('d2918b92d12b33229359c189d48696bfe9d50d6aabaf250ce98cb7d5ffe2eb1b')
+sha256sums=('b641e947665c458d661675fc3119eed895d1504df5d12d2d6a0f28e04efa05e6')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
