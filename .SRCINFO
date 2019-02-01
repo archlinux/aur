@@ -1,0 +1,24 @@
+pkgbase = arm-linux-gnueabihf-glibc-working
+	pkgdesc = GNU C Library (arm-linux-gnueabihf)
+	pkgver = 2.28
+	pkgrel = 1
+	url = http://www.gnu.org/software/libc/
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = gperf
+	depends = arm-linux-gnueabihf-linux-api-headers>=4.16.1-1
+	provides = arm-linux-gnueabihf-glibc-headers=2.28
+	provides = arm-linux-gnueabihf-eglibc
+	conflicts = arm-linux-gnueabihf-glibc-headers
+	conflicts = arm-linux-gnueabihf-eglibc
+	replaces = arm-linux-gnueabihf-glibc-headers
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.28.tar.xz
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.28.tar.xz.sig
+	md5sums = SKIP
+
+pkgname = arm-linux-gnueabihf-glibc-working
+
