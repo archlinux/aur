@@ -4,7 +4,7 @@ pkgdesc="ROS - geometry_msgs provides messages for common geometric primitives s
 url='http://wiki.ros.org/geometry_msgs'
 
 pkgname='ros-kinetic-geometry-msgs'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="common_msgs-release-release-kinetic-geometry_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/kinetic/geometry_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('847bf2b2b881dbbf0f8db67e4692ee685d5c765d061b3c376261e9975d70bc7e')
+sha256sums=('72c6e3da3f14bcd688dd4fd56465d2abb1a32d95aec1ecef94df123dee2c52a5')
 
 build() {
   # Use ROS environment variables
