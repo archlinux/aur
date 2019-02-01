@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=regoth-git
-pkgver=0.4.137.r1431.fdec6d6
+pkgver=0.4.357.r1599.65c72f0
 pkgrel=1
 epoch=
 pkgdesc="OpenSource-Reimplementation of the zEngine, used by the game 'Gothic'"
@@ -42,7 +42,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname/build/bin"
   mkdir -p $pkgdir/usr/{bin,share/${pkgname%-*}/}
-  for i in REGoth altonegen openal-info makehrtf bsincgen; do
+  for i in altonegen makehrtf openal-info REGoth write_sf2; do
     install -Dm755 $i "$pkgdir/usr/share/${pkgname%-*}/$i"
   done
   ln -rs $pkgdir/usr/share/${pkgname%-*}/REGoth $pkgdir/usr/bin/REGoth
