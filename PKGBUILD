@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/geary"
-	printf "r%s.%s" "$(git rev-list --count master)" "$(git rev-parse --short master)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
