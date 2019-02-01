@@ -12,7 +12,7 @@ options=(!strip)
 _appimage="tutanota-desktop-linux.AppImage"
 source=("https://mail.tutanota.com/desktop/tutanota-desktop-linux.AppImage")
 noextract=("${_appimage}")
-sha512sums=('c9d08234c27c27309e63cf31feeacbee2de379bc1987d33580c234e09597ca93c8ab3ca4b03e10e8bd580e43fb90f2da187b165767ef7ad0773012a955f2019b')
+sha512sums=('b3e6e32b960252c6ed18cbcf8d90c08ce2a2192991016395fe17a2d042ba8ea68c90c600ca9c323fc279f652897476f51505f4696e6c18ed4cf3bcde5c7ab9ba')
 
 # extracting icons doesnt work now, this is here for future purposes
 # prepare() {
