@@ -2,7 +2,7 @@
 
 _plug=fft3dfilter
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r73.441b222
+pkgver=R1.0.g441b222
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -21,21 +21,20 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
   mkdir -p build
 
-  sed 's|fftw3f_threads|fftw3f|g' -i "${_plug}/meson.build"
+  sed 's|fftw3f_threads|fftw3f|g' \
+     -i "${_plug}/meson.build"
 }
 
 build() {
   cd build
   CXXFLAGS+=" -lfftw3f_threads"
-  arch-meson "../${_plug}" \
-    --libdir /usr/lib/vapoursynth
+  arch-meson "../${_plug}"
 
   ninja
 }
