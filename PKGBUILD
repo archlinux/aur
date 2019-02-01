@@ -15,5 +15,4 @@ package() {
   cd ${srcdir}/deepin.com.baidu.pan-${pkgver}
   ar -xv deepin.com.baidu.pan_${pkgver}_i386.deb
   tar -xvf data.tar.xz -C ${pkgdir}
-  chmod -x ${pkgdir}/usr/local/share/applications/deepin.com.baidu.pan.desktop
 }
