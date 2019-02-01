@@ -4,7 +4,7 @@ pkgdesc="ROS - rospy is a pure Python client library for ROS."
 url='http://ros.org/wiki/rospy'
 
 pkgname='ros-kinetic-rospy'
-pkgver='1.12.13'
+pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rospy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rospy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5b3b03bb46bff26abe345297367d0b9c5347dc70d39d4f700dfce857fc953f5e')
+sha256sums=('d5277a7bf8319289c41580047fc762ef6a4b6b53305ab79c936f8b0df3e27b02')
 
 build() {
   # Use ROS environment variables
