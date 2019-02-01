@@ -50,9 +50,9 @@ depends=(
 	bzip2
 )
 
-_dir="ros_comm-release-release-melodic-rosbag_storage-${pkgver}-${_pkgver_patch}"
+_dir="ros_comm-release-release-melodic-rosbag_storage"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosbag_storage/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('670edf72be59ce0c5d2fce6df933f1c50895c8351f250f9d192164157c2fc46e')
+sha256sums=('84cc834e6f7cfb6507a8484bcf4ab21949ff56d2921a5041ed52300f100c45aa')
 
 build() {
 	# Use ROS environment variables.
