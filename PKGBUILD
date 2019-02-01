@@ -4,7 +4,7 @@ pkgdesc="ROS - rosgraph contains the rosgraph command-line tool, which prints in
 url='http://ros.org/wiki/rosgraph'
 
 pkgname='ros-kinetic-rosgraph'
-pkgver='1.12.13'
+pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rosgraph-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosgraph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('dd51bad22e606a2e0dafce4708f46e9c97a386e15271340b9d484e71657da64c')
+sha256sums=('d7b45e171ba68481038c4c53cba2e9848acbe1b5a0ab4d7385948c648bffbc5e')
 
 build() {
   # Use ROS environment variables
