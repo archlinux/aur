@@ -1,0 +1,14 @@
+pkgbase = python-netwulf
+	pkgdesc = Interactive visualization of networks based on Ulf Aslak's d3 web app.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/benmaier/netwulf
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python-networkx
+	source = https://files.pythonhosted.org/packages/source/n/netwulf/netwulf-0.0.6.tar.gz
+	sha256sums = 23937aeb0fe69308f521f67a48b7a7caa661a8118689df30642e09bb28b7d423
+
+pkgname = python-netwulf
+
