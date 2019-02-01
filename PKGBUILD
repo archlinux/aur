@@ -42,6 +42,7 @@ pkgver() {
 package() {
   mkdir -p "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
   cp -r firefox "${pkgdir}/opt/firefox-nightly-ru"
+  mkdir -p "${pkgdir}/opt/firefox-nightly-ru/distribution/"
   ln -s /opt/firefox-nightly-ru/firefox "${pkgdir}/usr/bin/firefox-nightly"
   install -m644 "${srcdir}/firefox-nightly.desktop" "${pkgdir}/usr/share/applications/"
   install -m644 "${srcdir}/firefox/browser/chrome/icons/default/default128.png" "${pkgdir}/usr/share/pixmaps/firefox-nightly-icon.png"
