@@ -10,6 +10,10 @@ license=(GPLv3)
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('36dc395ac95d2e4fa9f72b4fcd50011790cf01793868063bd1f874aa77041412')
+prepare () {
+    cd ${_name}-${pkgver}
+    patch -p1 < ../base_path.patch
+}
 build() {
     cd ${_name}-${pkgver}
     python setup.py build
