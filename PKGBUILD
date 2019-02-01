@@ -2,7 +2,7 @@
 
 pkgname=fcitx-qt5
 pkgver=1.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Qt5 IM Module for Fcitx"
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-qt5"
