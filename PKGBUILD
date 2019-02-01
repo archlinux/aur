@@ -1,6 +1,6 @@
 # Maintainer: Thomas P. <tpxp@live.fr>
 pkgname=tomboy-ng-bin
-pkgver=0.18
+pkgver=0.20
 pkgrel=0
 pkgdesc="A complete rewriting of the Tomboy note taking app"
 arch=('x86_64')
@@ -10,10 +10,10 @@ depends=()
 makedepends=('tar')
 optdepends=()
 source=(
-	"https://github.com/tomboy-notes/tomboy-ng/releases/download/v${pkgver}/tomboy-ng_${pkgver}b-${pkgrel}_amd64.deb"
+	"https://github.com/tomboy-notes/tomboy-ng/releases/download/v${pkgver}/tomboy-ng_${pkgver}-${pkgrel}_amd64.deb"
 )
 sha512sums=(
-	'9016218d68b68d3da6872e57c9dc1a82e3ad0a8b2ec97b7e0354843fcaa1ebe8e4c7f7c2cd93f71b53783d1e619a208d8f05b707a51403eb8e23703414787bd0'
+	'c5e90344dbf3b164aafe7e86a66a4a2e49566a26bc6e7d5caf64ee0a1319d107598aef25454c549c04de8d807eaa570e071c4ac47436c50e5e0e6427f76089c1'
 )
 
 package() {
