@@ -1,34 +1,42 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=kazan-git
-pkgver=20170908
-pkgrel=2
+pkgver=20190201
+pkgrel=1
 pkgdesc="Software-rendering Vulkan implementation"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://kazan-3d.org"
 license=('MIT')
-makedepends=('git' 'cmake' 'clang>=4' 'sdl2')
+makedepends=('git' 'sdl2' 'cargo' 'python' 'clang' 'cmake' 'ninja')
 optdepends=('sdl2: for demo program')
 provides=('kazan')
 conflicts=('kazan')
-source=('git+git://github.com/kazan-3d/kazan.git')
+source=('git+https://salsa.debian.org/Kazan-team/kazan.git')
 md5sums=('SKIP')
+
+prepare() {
+  cd "${srcdir}/kazan"
+
+  git submodule update --init --recursive
+}
 
 build() {
   cd "${srcdir}/kazan"
 
-  [[ -d build ]] && rm -r build
-  mkdir build && cd build
-
-  export CC=clang
-  export CXX=clang++
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" ..
-  make
+  cargo build --release
 }
 
 package() {
-  cd "${srcdir}/kazan/build"
+  cd "${srcdir}/kazan/target/release"
 
-  make install DESTDIR=${pkgdir}
+  install -Dm755 libkazan_driver.so "${pkgdir}/usr/lib/libkazan_driver.so"
+  mkdir -p "${pkgdir}"/usr/share/vulkan/icd.d/
+  sed 's/"library_path": ".*"/"library_path": "libkazan_driver.so"/' $(find . -name kazan_driver.json) > "${pkgdir}"/usr/share/vulkan/icd.d/kazan_icd.json
+}
+
+check() {
+  cd "${srcdir}/kazan"
+
+  cargo test
 }
 
 # vim:set ts=2 sw=2 et:
