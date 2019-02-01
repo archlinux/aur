@@ -1,11 +1,11 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-git
-pkgver=r382.dd64ba8
+pkgver=r386.44b5f49
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher'
 arch=(x86_64)
-url='https://github.com/elementary/wingpanel'
+url=https://github.com/elementary/wingpanel
 license=(GPL3)
 groups=(pantheon-unstable)
 depends=(
@@ -38,12 +38,13 @@ pkgver() {
 }
 
 build() {
-  arch-meson wingpanel build
+  arch-meson wingpanel build \
+    -D b_pie=false
   ninja -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" meson install -C build
 }
 
 # vim: ts=2 sw=2 et:
