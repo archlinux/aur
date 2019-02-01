@@ -32,15 +32,17 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="geometry2-release-release-kinetic-tf2-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/kinetic/tf2/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a77e9391ece6f3c2d65fcce807dc9f9c79982e226bb8b75555d38b35abf5d140')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/kinetic/tf2/${pkgver}-${_pkgver_patch}.tar.gz"
+        "deprecated-log-macros.patch::https://github.com/ros/geometry2/commit/0173a538f89c66e2783dc67ee3609660625e16b4.patch"
+        "remove-boost-signals.patch::https://github.com/ros/geometry2/commit/6223549e4d5e1d442a9cfb8e8c7334bcc62c1662.patch")
+sha256sums=('a77e9391ece6f3c2d65fcce807dc9f9c79982e226bb8b75555d38b35abf5d140'
+            '78c2afef26f613c6461c6bd330147c7b75e9bb1d1fac88a2a43dff1f10e7b1a6'
+            '29b1d7bc96363847cd03f504504e4dcca142f05517b126327a2eaac1948a0638')
 
 prepare() {
-  cd ${srcdir}
-  find . \( -iname *.cpp -o -iname *.h \) \
-	  -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
-	  -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \; \
-	  -exec sed -r -i "s/[^_]logDebug/CONSOLE_BRIDGE_logDebug/" {} \;
+  cd "${srcdir}/${_dir}"
+  patch -p2 -i "${srcdir}/deprecated-log-macros.patch"
+  patch -p2 -i "${srcdir}/remove-boost-signals.patch"
 }
 
 build() {
