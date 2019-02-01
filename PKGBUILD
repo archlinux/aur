@@ -6,7 +6,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=2.17.12
+pkgver=2.18.12
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -45,6 +45,7 @@ depends=('python'
          'python-pyparsing>=2.0.3'
          'python-zxcvbn'
          'python-future>=0.15.2'
+         'python-progressbar'
          )
 optdepends=('python-guppy: for memusage plugin' #AUR#
             'python-transmissionrpc: Transmission support' #AUR#
@@ -65,9 +66,6 @@ changelog=ChangeLog
 prepare() {
   cd "${_pkgname}"-"${pkgver}"
 
-  #msg "Patching shebangs to point to python"
-  sed -i '1s/python2/python/' flexget{,/ui}/__init__.py
-
   # Don't use the requirements.txt with pinned deps
   cp requirements.{in,txt}
 
@@ -76,17 +74,12 @@ prepare() {
   sed -i 's/==.*//g' requirements.txt
   sed -i 's/<=.*//g' requirements.txt
   sed -i 's/~=.*//g' requirements.txt
-  sed -i 's/; python_version.*//g' requirements.txt
 
-  # zxcvbn-python has been renamed zxcvbn
+  ## zxcvbn-python has been renamed zxcvbn
   sed -i 's/zxcvbn-python/zxcvbn/' requirements.txt
 
-  # pathlib no longer required since python 3.4
-  sed -i 's/pathlib.*//' requirements.txt
-
-  # disable this parser because python-guessit API changed and upstream
-  # needs to be patched to support it.
-  rm flexget/plugins/parsers/parser_guessit.py
+  # Python distribution of progressbar v3.x.x is named progressbar2
+  sed -i 's/progressbar/progressbar2/' requirements.txt
 }
 
 package() {
@@ -102,7 +95,7 @@ package() {
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
 }
 
-sha256sums=('32354a5db0dc3fb3534b796d1f83001072636f23a71b880cefeda23025ff102d'
+sha256sums=('cc5bba119aa79014e02079b428d44d1c7925e9ad2bc02058e34678bca66e2cc0'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 # vim:set ts=2 sw=2 et:
