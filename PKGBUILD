@@ -5,7 +5,7 @@ pkgver=5.2.2.r15.c1d97d82
 pkgrel=1
 pkgdesc='Library that extends Gtk+'
 arch=(x86_64)
-url='https://github.com/elementary/granite'
+url=https://github.com/elementary/granite
 license=(LGPL3)
 groups=(pantheon-unstable)
 depends=(
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" meson install -C build
 }
 
 # vim: ts=2 sw=2 et:
