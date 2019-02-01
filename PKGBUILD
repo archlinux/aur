@@ -31,7 +31,6 @@ depends=(
 #    'libcgroup'
     'iso-codes'
     'shared-mime-info'
-    'python2-pathlib'
     'asymptote'
     'texlive-core'
     'texlive-fontsextra'
@@ -59,9 +58,10 @@ install=$pkgname.install
 source=(
     'git://github.com/ioi-germany/cms.git#branch=master'
     'git://github.com/ioi-germany/isolate.git'
+    'pgf.patch'
 )
 sha256sums=(
-    'SKIP' 'SKIP'
+    'SKIP' 'SKIP' 'SKIP'
 )
 
 pkgver() {
@@ -91,6 +91,8 @@ package() {
     chmod o-x $pkgdir/usr/bin/isolate
 
     cd ../cms
+    
+    patch cmscontrib/gerpythonformat/templates/lg/graphdrawing.tex ../pgf.patch
 
     # Logs and cache directories
     install -d -m770 $pkgdir/var/log/cms
