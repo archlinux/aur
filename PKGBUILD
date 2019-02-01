@@ -2,11 +2,11 @@
 # Contributor: sh4nks <sh4nks7@gmail.com
 
 pkgname=lightdm-pantheon-greeter-git
-pkgver=3.3.1.r61.58bd2d2
+pkgver=3.3.1.r63.15a69ac
 pkgrel=1
 pkgdesc='Pantheon greeter for LightDM'
 arch=(x86_64)
-url='https://github.com/elementary/greeter'
+url=https://github.com/elementary/greeter
 license=(GPL)
 groups=(pantheon-unstable)
 depends=(
@@ -31,7 +31,7 @@ makedepends=(
 )
 provides=(lightdm-pantheon-greeter)
 conflicts=(lightdm-pantheon-greeter)
-install='lightdm-pantheon-greeter.install'
+install=lightdm-pantheon-greeter.install
 source=(lightdm-pantheon-greeter::git+https://github.com/elementary/greeter.git)
 sha256sums=(SKIP)
 
@@ -43,12 +43,13 @@ pkgver() {
 
 build() {
   arch-meson lightdm-pantheon-greeter build \
-    -Dubuntu-patched-gsd='false'
+    -D b_pie=false \
+    -D ubuntu-patched-gsd=false
   ninja -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" meson install -C build
 }
 
 # vim: ts=2 sw=2 et:
