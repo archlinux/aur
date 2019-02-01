@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=autoconf-archive-git
-pkgver=2017.03.21.r134.g24821df
+pkgver=2019.01.06.r6.gd3b4a9f
 pkgrel=1
 pkgdesc="A collection of freely re-usable Autoconf macros"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://www.gnu.org/software/autoconf-archive/"
 license=('GPL3' 'custom')
 depends=('autoconf')
 optdepends=('automake: macros for use with it')
-makedepends=('git' 'python2')
+makedepends=('git')
 provides=('autoconf-archive')
 conflicts=('autoconf-archive')
 source=("git+https://git.savannah.gnu.org/git/autoconf-archive.git")
@@ -41,6 +41,4 @@ package() {
   cd "autoconf-archive"
 
   make DESTDIR="$pkgdir" install
-
-  rm "$pkgdir/usr/share/autoconf-archive/COPYING"
 }
