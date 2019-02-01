@@ -3,9 +3,9 @@
 # Contributor: Michael Hansen <zrax0111 gmail com>
 
 pkgname=qt5-doc
-_qtver=5.12.0
+_qtver=5.12.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=('any')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -16,7 +16,7 @@ makedepends=('qt5-tools' 'python2' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr'
 groups=('qt' 'qt5')
 _pkgfqn="qt-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_pkgfqn}.tar.xz")
-sha256sums=('356f42d9087718f22f03d13d0c2cdfb308f91dc3cf0c6318bed33f2094cd9d6c')
+sha256sums=('caffbd625c7bc10ff8c5c7a27dbc7d84fa4de146975c0e1ffe904b514ccd6da4')
 
 prepare() {
   cd ${_pkgfqn}
