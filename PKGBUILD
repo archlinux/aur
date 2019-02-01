@@ -7,7 +7,7 @@ pkgname='ros-melodic-joy'
 pkgver='1.12.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-diagnostic-updater
@@ -22,7 +22,8 @@ ros_depends=(ros-melodic-diagnostic-updater
   ros-melodic-roscpp
   ros-melodic-sensor-msgs)
 depends=(${ros_depends[@]}
-  linuxconsole)
+  linuxconsole
+  python-empy)
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/joy/${pkgver}-${_pkgver_patch}
@@ -52,10 +53,10 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-        -DPYTHON_BASENAME=-python2.7 \
+        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
+        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
+        -DPYTHON_BASENAME=.cpython-37m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
