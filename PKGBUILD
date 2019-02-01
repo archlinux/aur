@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('libdvbcsa' 'openssl' "vdr>=2.4.0" "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=$(echo $pkgname | sed 's/vdr-//g')
-source=("$pkgname::git+http://github.com/3PO/vdr-plugin-sc.git#commit=$_gitver"
+source=("$pkgname::git+http://github.com/3PO/vdr-plugin-sc.git#commit=${_gitver}"
         "ftp://ftp.tvdr.de/vdr/vdr-$_vdrapi.tar.bz2"
         "20-$_plugname.conf")
 backup=("etc/vdr/conf.avail/20-$_plugname.conf")
@@ -43,7 +43,7 @@ package() {
   mkdir -p "$pkgdir/usr/lib/vdr/plugins"
 
   make  CFLAGS="$(pkg-config vdr --variable=cflags)" \
-     CXXFLAGS="$(pkg-config vdr --variable=cxxflags) -I/usr/include/openssl-1.0"\
+     CXXFLAGS="$(pkg-config vdr --variable=cxxflags) -I/usr/include/openssl-1.0 -std=c++0x -Wno-narrowing"\
      LDFLAGS="$LDFLAGS -L/usr/lib/openssl-1.0 -lcrypto -lcrypt" \
      VDRDIR="$(pkg-config vdr --variable=pcfiledir)" \
      LIBDIR="$pkgdir/$(pkg-config vdr --variable=libdir)" \
