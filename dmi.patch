@@ -1,0 +1,30 @@
+diff --git a/drivers/firmware/dmi-sysfs.c b/drivers/firmware/dmi-sysfs.c
+index d5de6ee8466d..ecf2eeb5f6f9 100644
+--- a/drivers/firmware/dmi-sysfs.c
++++ b/drivers/firmware/dmi-sysfs.c
+@@ -652,7 +652,7 @@  static int __init dmi_sysfs_init(void)
+ 	int val;
+ 
+ 	if (!dmi_kobj) {
+-		pr_err("dmi-sysfs: dmi entry is absent.\n");
++		pr_debug("dmi-sysfs: dmi entry is absent.\n");
+ 		error = -ENODATA;
+ 		goto err;
+ 	}
+diff --git a/drivers/firmware/dmi_scan.c b/drivers/firmware/dmi_scan.c
+index 783041964439..17a7425063c2 100644
+--- a/drivers/firmware/dmi_scan.c
++++ b/drivers/firmware/dmi_scan.c
+@@ -715,10 +715,8 @@  static int __init dmi_init(void)
+ 	u8 *dmi_table;
+ 	int ret = -ENOMEM;
+ 
+-	if (!dmi_available) {
+-		ret = -ENODATA;
+-		goto err;
+-	}
++	if (!dmi_available)
++		return 0;
+ 
+ 	/*
+ 	 * Set up dmi directory at /sys/firmware/dmi. This entry should stay
