@@ -37,7 +37,7 @@ pkgbase = blender-2.8-bin
 	depends = sdl2
 	provides = blender-2.8
 	conflicts = blender-2.8
-	source = https://builder.blender.org/download
+	source = https://builder.blender.org/download#2.80.190201.8a51af7d1c98
 	md5sums = SKIP
 
 pkgname = blender-2.8-bin
