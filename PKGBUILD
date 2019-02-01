@@ -4,7 +4,7 @@ pkgdesc="ROS - System-wide logging mechanism for messages sent to the /rosout to
 url='http://ros.org/wiki/rosout'
 
 pkgname='ros-kinetic-rosout'
-pkgver='1.12.13'
+pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rosout-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosout/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('27d2c8db568e6ba620d1714e7082857246f55e293bb64001c6f62418501f4ac1')
+sha256sums=('35fe121c2f721cbbf7f457bd727f7ed9db57dee3b49eb5db58908fa7d925d575')
 
 build() {
   # Use ROS environment variables
