@@ -1,6 +1,6 @@
 pkgbase = choqok-git
 	pkgdesc = Microblogging client for KDE with support for Pump.io, GNU social and Twitter.com - git version
-	pkgver = v1.6.0.r99.g4128655e
+	pkgver = v1.6.0.r104.g6e1caf68
 	pkgrel = 1
 	url = http://choqok.gnufolks.org/
 	install = choqok-git.install
