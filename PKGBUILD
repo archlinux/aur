@@ -2,28 +2,39 @@
 # Owner/Cofntributer: Xinzhao Xu <z2d@jifangcheng.com>
 
 pkgname=annie
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="A fast, simple and clean video downloader written in Go"
 url="https://github.com/iawia002/annie"
 license=("MIT")
-makedepends=("go")
+makedepends=('go' 'dep')
 depends=("ffmpeg")
 conflicts=("annie")
 options=('!strip' '!emptydirs')
-_gourl=github.com/iawia002/annie
+source=("git+https://github.com/iawia002/annie#tag=0.9.1")
+
+prepare(){
+	mkdir -p gopath/src/github.com
+	ln -rTsf $pkgname $srcdir/gopath/src/github.com/$pkgname
+	export GOPATH="$srcdir"/gopath
+	cd $GOPATH/src/github.com/$pkgname
+	#dep init
+	dep ensure
+}
 
 build(){
-	GOPATH="$srcdir" go get -v -u ${_gourl}/...
+	export GOPATH=$srcdir/gopath
+	cd gopath/src/github.com/$pkgname
+	go install \
+		-gcflags "all=-trimpath=$GOPATH" \
+		-asmflags "all=-trimpath=$GOPATH" \
+		-ldflags "-extldflags $LDFLAGS" \
+		-v ./...
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
-	install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
-
-	mkdir -p "$pkgdir/$GOPATH"
-	cp -Rv --preserve=timestamps "$srcdir/"{src,pkg} "$pkgdir/$GOPATH"
+	install -Dm755 gopath/bin/$pkgname "$pkgdir"/usr/bin/$pkgname
 
 	for f in LICENSE COPYING LICENSE.* COPYING.*; do
 		if [ -e "$srcdir/src/$_gourl/$f" ]; then
@@ -32,5 +43,4 @@ package() {
 	fi
 	done
 }
-
-# vim:set ts=2 sw=2 et:
+md5sums=('SKIP')
