@@ -6,10 +6,12 @@ pkgbase = textql-git
 	arch = x86_64
 	arch = i686
 	license = MIT
-	makedepends = git
-	depends = go
+	makedepends = dep
+	depends = go-pie
 	options = !strip
 	options = !emptydirs
+	source = textql-git::git+https://github.com/dinedal/textql
+	md5sums = SKIP
 
 pkgname = textql-git
 

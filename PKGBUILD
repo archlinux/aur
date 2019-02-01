@@ -8,34 +8,38 @@ pkgdesc="Execute SQL against structured text like CSV or TSV"
 arch=('x86_64' 'i686')
 url="https://github.com/dinedal/textql"
 license=('MIT')
-depends=('go')
-makedepends=('git')
+depends=('go-pie')
+makedepends=('dep')
 options=('!strip' '!emptydirs')
-_gourl=github.com/dinedal/textql
+source=("textql-git::git+https://github.com/dinedal/textql")
 
-build() {
-  GOPATH="$srcdir" go get -v -u ${_gourl}/...
+prepare(){
+  mkdir -p gopath/src/github.com
+  ln -rTsf $pkgname $srcdir/gopath/src/github.com/$pkgname
+  export GOPATH="$srcdir"/gopath
+  cd $GOPATH/src/github.com/$pkgname
+  dep ensure
 }
 
-check() {
-  echo $GOPATH
-  echo $srcdir
-  GOPATH="$GOPATH:$srcdir" go test -v ${_gourl}/...
+build(){
+  export GOPATH=$srcdir/gopath
+  cd gopath/src/github.com/$pkgname
+  go install \
+    -gcflags "all=-trimpath=$GOPATH" \
+    -asmflags "all=-trimpath=$GOPATH" \
+    -ldflags "-extldflags $LDFLAGS" \
+    -v ./...
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
-
-  mkdir -p "$pkgdir/$GOPATH"
-  cp -Rv --preserve=timestamps "$srcdir/"{src,pkg} "$pkgdir/$GOPATH"
+  install -Dm755 gopath/bin/$pkgname "$pkgdir"/usr/bin/$pkgname
 
   for f in LICENSE COPYING LICENSE.* COPYING.*; do
     if [ -e "$srcdir/src/$_gourl/$f" ]; then
-      install -Dm644 "$srcdir/src/$_gourl/$f" \
-        "$pkgdir/usr/share/licenses/$pkgname/$f"
-    fi
+    install -Dm644 "$srcdir/src/$_gourl/$f" \
+    "$pkgdir/usr/share/licenses/$pkgname/$f"
+  fi
   done
 }
 
-# vim:set ts=2 sw=2 et:
+md5sums=('SKIP')
