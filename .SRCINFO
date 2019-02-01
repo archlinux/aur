@@ -1,0 +1,15 @@
+pkgbase = steamy_cats-git
+	pkgdesc = A Steam game category sorter written in Bash
+	pkgver = v.2.r29.g4cdb8d2
+	pkgrel = 1
+	url = https://github.com/bryanmr/Steamy_Cats
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = jq
+	provides = steamy_cats
+	source = git+https://github.com/bryanmr/Steamy_Cats.git
+	sha256sums = SKIP
+
+pkgname = steamy_cats-git
+
