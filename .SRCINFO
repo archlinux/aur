@@ -1,7 +1,7 @@
 pkgbase = python-vsts-cd-manager
 	pkgdesc = Microsoft Visual Studio Team Services Continuous Delivery Manager
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Microsoft/vsts-cd-manager
 	arch = any
 	license = MIT

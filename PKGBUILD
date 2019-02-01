@@ -1,9 +1,9 @@
 # Maintainer: Luke Street <luke.street@encounterpc.com>
-
+# Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 _name=vsts-cd-manager
 pkgname=python-$_name
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Visual Studio Team Services Continuous Delivery Manager"
 arch=('any')
 url="https://github.com/Microsoft/$_name"
