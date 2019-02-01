@@ -37,9 +37,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="ros_comm-release-release-melodic-roslaunch-${pkgver}-${_pkgver_patch}"
+_dir="ros_comm-release-release-melodic-roslaunch"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/roslaunch/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6332d21a5e4ba14d3cdc2d0a0492eb1ba63615e78c63dfbb828df59c93c87e63')
+sha256sums=('c3e41ac53e46610bcc7b8087c4d4e01fa4551c38f2040959530fb69513c4cfbe')
 
 build() {
 	# Use ROS environment variables.
