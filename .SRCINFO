@@ -6,9 +6,12 @@ pkgbase = python-py3nvml
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = nvidia
+	depends = nvidia-utils
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/p/py3nvml/py3nvml-0.2.2.tar.gz
+	source = https://raw.githubusercontent.com/fbcotter/py3nvml/0.2.2/LICENSE
 	sha256sums = 647c0131368d0bdb1d1796d3e10651240bae2c0cc89d193d19a6dccc1a81781d
+	sha256sums = 9c4e61bb223b54a9f78b4b7c5fdcd777c7782debf577fddc6e07efeaceefcc98
 
 pkgname = python-py3nvml
 
