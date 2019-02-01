@@ -1,14 +1,16 @@
 pkgbase = nem-wallet
 	pkgdesc = Nano Wallet
-	pkgver = 2.3.2
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/NemProject/NanoWallet
 	arch = i686
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source = https://github.com/NemProject/NanoWallet/releases/download/2.3.2/NanoWallet-2.3.2-linux64.zip
-	sha256sums = 8b58ba4304f6d087147ca63e9f197ba8ca1d8d44d6205c6e183aed1713830b02
+	source = https://github.com/NemProject/NanoWallet/releases/download/2.4.2/NEM-Wallet-2.4.2.zip
+	source = nem-wallet.desktop
+	sha256sums = 5d29a3517d3c73afbcfac70550ff7972bb2d90fe65f38b98b9c6806f0fd92596
+	sha256sums = 64f9577edd1cc77115b4e71811f873555d78f89667eed09e409a871e4375a4df
 
 pkgname = nem-wallet
 
