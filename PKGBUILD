@@ -65,6 +65,7 @@ prepare() {
 
 build() {
   cd ${srcdir}/${_pkgname}
+  export GOCACHE="${srcdir}/cache"
   make generate
   EXTRA_GOFLAGS="-gcflags all=-trimpath=${srcdir}/${_pkgname} -asmflags all=-trimpath=${srcdir}/${_pkgname}" \
   make GOFLAGS="-v" TAGS="bindata sqlite pam" build
