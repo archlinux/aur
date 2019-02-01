@@ -1,6 +1,6 @@
 # Maintainer: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-2.8-bin
-pkgver=2.80.190101.4d795cee4938
+pkgver=2.80.190201.8a51af7d1c98
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('i686' 'x86_64')
