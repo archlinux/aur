@@ -1,0 +1,18 @@
+pkgbase = brother-mfc-l3750cdw
+	pkgdesc = LPR and CUPS drivers for the Brother MFC-L3750CDW
+	pkgver = 1.0.2
+	pkgrel = 0
+	url = http://support.brother.com/g/s/id/linux/en/index.html
+	install = brother-mfc-l3750cdw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	license = GPL
+	makedepends = perl
+	makedepends = tar
+	depends = cups
+	source = https://download.brother.com/welcome/dlf103934/mfcl3750cdwpdrv-1.0.2-0.i386.deb
+	md5sums = ef9a24b12cc26e96b70d5cf4a1f7f6f4
+
+pkgname = brother-mfc-l3750cdw
+
