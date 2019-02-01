@@ -1,31 +1,34 @@
 pkgname=cms-germany-git
-pkgver=r3802.4d519c16
-pkgrel=4
+pkgver=r4412.5c5be9dd
+pkgrel=1
 pkgdesc="CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest. This is a fork used for the German IOI team selection process."
 arch=('i686' 'x86_64')
 url="https://github.com/ioi-germany/cms"
 license=('AGPL3')
 depends=(
-    'python2'
-    'python2-tornado'
-    'python2-psycopg2'
-    'python2-sqlalchemy'
-    'python2-netifaces'
-    'python2-crypto'
-    'python2-pytz'
-    'python2-psutil'
-    'python2-six'
-    'python2-requests'
-    'python2-gevent'
-    'python2-werkzeug'
-    'patool-py2'
-    'python2-bcrypt'
-    'python2-chardet'
-    'python2-ipaddress'
-    'python2-yaml'
+    'python'
+    'python-tornado'
+    'python-psycopg2'
+    'python-sqlalchemy'
+    'python-netifaces'
+    'python-crypto'
+    'python-pytz'
+    'python-psutil'
+    'python-six'
+    'python-requests'
+    'python-gevent'
+    'python-werkzeug'
+#    'patool-py3'
+    'python-bcrypt'
+    'python-chardet'
+#    'python-ipaddress'
+    'python-yaml'
+    'python-future'
+    'python-jinja'
+    'python-xdg'
     'postgresql'
     'postgresql-client'
-    'libcgroup'
+#    'libcgroup'
     'iso-codes'
     'shared-mime-info'
     'python2-pathlib'
@@ -46,6 +49,7 @@ optdepends=(
 makedepends=(
     'asciidoc'
     'python2-setuptools'
+    'python-babel'
 )
 
 provides=('cms-germany' 'isolate-germany')
@@ -53,7 +57,7 @@ conflicts=('cms' 'isolate')
 install=$pkgname.install
 
 source=(
-    'git://github.com/ioi-germany/cms.git'
+    'git://github.com/ioi-germany/cms.git#branch=master'
     'git://github.com/ioi-germany/isolate.git'
 )
 sha256sums=(
@@ -103,8 +107,9 @@ package() {
     install -d -m755 $pkgdir/usr/include/cms
     ln -s /usr/include/testlib.h $pkgdir/usr/include/cms/testlib.h
 
-    python2 prerequisites.py build_l10n --as-root
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python3 prerequisites.py --as-root build
+    echo blablabla
+    python3 setup.py install --root="$pkgdir" --optimize=1
 
     install -d $pkgdir/var/local/log
     install -d $pkgdir/var/local/cache
