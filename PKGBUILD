@@ -8,14 +8,15 @@
 
 _pkgname='gitea'
 pkgname=gitea-git
-pkgver=v1.7.0_dev_70_g2d9456137e50
+pkgver=v1.7.0_dev_131_gf9d4bd53e6ac
 pkgrel=1
 pkgdesc='Painless self-hosted Git service. Community managed fork of Gogs.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://gitea.io/'
 license=('MIT')
 depends=('git')
-makedepends=('go' 'go-bindata')
+makedepends=('go>1.11'
+             'go-bindata')
 optdepends=('mariadb: MariaDB support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support'
@@ -26,7 +27,7 @@ optdepends=('mariadb: MariaDB support'
 backup=('etc/gitea/app.ini')
 conflicts=('gitea')
 provides=('gitea')
-source=("git+https://github.com/go-gitea/gitea.git"
+source=(git+https://github.com/go-gitea/gitea.git
         gitea.tmpfiles
         gitea.service
         gitea.sysusers
@@ -59,6 +60,7 @@ prepare() {
   # Make sure we rebuild the mod file from Gopkg.toml to pick up any changes.
   rm -f go.mod
   go mod init || true
+  GOCACHE="${srcdir}/cache" go mod download
 }
 
 build() {
