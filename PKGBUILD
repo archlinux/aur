@@ -7,7 +7,7 @@ _baseurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10
 _date="$(date +%Y%m%d)"
 _filename="firefox-${_version}.ru.linux"
 pkgname=firefox-nightly-ru
-pkgver=67.0a1.20190201
+pkgver=67.0a1.20190201093730
 pkgrel=1
 pkgdesc='Web browser from mozilla.org, nightly build, russian version'
 arch=('i686' 'x86_64')
@@ -36,7 +36,8 @@ sha512sums_x86_64=('SKIP' 'SKIP')
 validpgpkeys=("14F26682D0916CDD81E37B6D61B7B526D98F0353")
 
 pkgver() {
-  echo "${_version}.${_date}"
+  # extract BuildID from firefox application.ini
+  echo "${_version}.$(grep BuildID= $srcdir/firefox/application.ini | cut -d'=' -f2)"
 }
 
 package() {

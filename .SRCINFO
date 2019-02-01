@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-ru
 	pkgdesc = Web browser from mozilla.org, nightly build, russian version
-	pkgver = 67.0a1.20190201
+	pkgver = 67.0a1.20190201093730
 	pkgrel = 1
 	url = http://nightly.mozilla.org/
 	arch = i686
