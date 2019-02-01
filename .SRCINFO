@@ -1,6 +1,6 @@
 pkgbase = freshplayerplugin-git
 	pkgdesc = PPAPI-host NPAPI-plugin adapter.
-	pkgver = 0.3.6.r2.gf550545
+	pkgver = 0.3.9.r6.g58596f4
 	pkgrel = 1
 	url = https://github.com/i-rinat/freshplayerplugin
 	arch = i686

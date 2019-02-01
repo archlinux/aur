@@ -7,7 +7,7 @@
 # Contributor: zman0900 <zman0900@gmail.com>
 
 pkgname=freshplayerplugin-git
-pkgver=0.3.6.r2.gf550545
+pkgver=0.3.9.r6.g58596f4
 pkgrel=1
 pkgdesc='PPAPI-host NPAPI-plugin adapter.'
 arch=('i686' 'x86_64')
@@ -24,16 +24,20 @@ pkgver() {
   git describe --tags | sed -e 's:v::' -e 's:-:.r:' -e 's:-:.:g'
 }
 
+prepare() {
+  mkdir -p ${pkgname}/build
+}
+
 build() {
-  cd "$pkgname"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cd ${pkgname}/build
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd ${pkgname}/build
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 data/freshwrapper.conf.example "${pkgdir}/usr/share/${pkgname}/freshwrapper.conf.example"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ../data/freshwrapper.conf.example "${pkgdir}/usr/share/${pkgname}/freshwrapper.conf.example"
+  install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
