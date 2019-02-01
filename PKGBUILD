@@ -9,7 +9,7 @@ _srcname=linux
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
 pkgver=4.14.95
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -20,14 +20,14 @@ source=("git+https://github.com/raspberrypi/linux.git#branch=rpi-4.14.y"
         'config'
 	'dmi.patch'
         'linux.preset'
+	'scripts.tar.gz::https://cloud.it-kraut.net/s/zES6dQ9SQyj7PPF/download'
         '99-linux.hook')
 md5sums=('SKIP'
          '7462ced7cee9e33aa7925ea63771f0ad'
          '7170c7bab4fc23bfb2d31340b7ccadb4'
-         '61c5ff73c136ed07a7aadbf58db3d96a'
-         '584777ae88bce2c5659960151b64c7d8'
          'f80e2bf1fda4ff65606afea2939cc4a5'
          '5898b5308f7afb2b9b091de62eb321f3'
+         '9912c127f93621dfc7b3e481bd9b1718'
          '60f0317bfdda4cf9fa06f075cd3617c0')
 
 prepare() {
@@ -169,7 +169,7 @@ _package-headers() {
 
   # copy files necessary for later builds, like nvidia and vmware
   cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  cp -a /home/timo/scripts "${pkgdir}"/usr/lib/modules/"${_kernver}"/build/
+  tar xzf "${srcdir}"/scripts.tar.gz  -C "${pkgdir}"/usr/lib/modules/"${_kernver}"/build/
   # fix permissions on scripts dir
   chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
