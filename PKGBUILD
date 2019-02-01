@@ -4,7 +4,7 @@
 
 pkgname=hugo-git
 _pkgname=hugo
-pkgver=v0.53.r1.g8431871201cb
+pkgver=v0.54.0.r1.g5383fe458c0c
 pkgrel=1
 pkgdesc="Fast and Flexible Static Site Generator in Go"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('hugo')
 provides=('hugo')
 options=('!strip')
 license=('Apache')
-depends=('glibc')
+depends=('gcc-libs')
 makedepends=('go' 'git')
 optdepends=('pygmentize: syntax-highlight code snippets')
 source=('git+https://github.com/gohugoio/hugo.git')
@@ -29,7 +29,7 @@ build() {
   # Respect LDFLAGS
   EXTLDFLAGS=${LDFLAGS}
   LDFLAGS="-X github.com/gohugoio/hugo/hugolib.CommitHash=`git rev-parse --short HEAD`"
-  go build --tags extended \
+  GOCACHE="${srcdir}/cache" go build --tags extended \
     -ldflags "-linkmode external -extldflags '${EXTLDFLAGS}' -s -w ${LDFLAGS}"
 
   ./hugo gen man
