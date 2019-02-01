@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=zafiro-icon-theme-git
-pkgver=v0.8.4.r0.ga39884d
-pkgrel=2
+pkgver=v0.8.5.r0.gf60125d
+pkgrel=1
 pkgdesc="Icon pack flat with light colors"
 arch=('any')
 url="https://github.com/zayronxio/Zafiro-icons"
@@ -23,7 +23,7 @@ package() {
 
 	install -dm 755 "${pkgdir}/usr/share/icons"
 
-	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname%%-git}/LICENSE"
+	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	cp -a "${srcdir}/${pkgname}" "${pkgdir}/usr/share/icons/Zafiro"
 }
