@@ -2,7 +2,7 @@
 
 _pkgname=componere
 pkgname=php-$_pkgname-git
-pkgver=1.3.0.r165.g6597644
+pkgver=v3.0.0.r0.g1487d55
 pkgrel=1
 pkgdesc="Complex Type Composition and Manipulation http://docs.php.net/intro.componere"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/krakjoe/componere"
 license=('PHP')
 depends=('php')
 makedepends=('git')
-source=(git://github.com/krakjoe/componere.git#branch=develop)
+source=(git://github.com/krakjoe/componere.git#branch=release)
 md5sums=('SKIP')
 _ininame="componere.ini"
 _inifile="etc/php/conf.d/$_ininame"
