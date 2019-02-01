@@ -1,6 +1,6 @@
 pkgbase = writefreely-git
 	pkgdesc = Federated blogging from write.as
-	pkgver = v0.8.0_0_ge682824be51e
+	pkgver = v0.8.1_0_ge5a00e00f578
 	pkgrel = 1
 	url = https://writefreely.org/
 	install = writefreely.install
@@ -12,7 +12,6 @@ pkgbase = writefreely-git
 	depends = glibc
 	optdepends = sqlite: For SQLite support,
 	optdepends = mariadb: For MariaDB support
-	backup = var/lib/writefreely/config.ini
 	backup = etc/writefreely/config.ini
 	source = writefreely-sysusers.conf
 	source = writefreely.service
