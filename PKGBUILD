@@ -4,27 +4,27 @@ pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
 url='http://www.ros.org/wiki/catkin'
 
 pkgname='ros-kinetic-catkin'
-pkgver='0.7.11'
+pkgver='0.7.14'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=()
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  python2-argparse
+  python2-catkin_pkg
   python2-empy
-  python2-catkin-pkg)
+  python2)
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  python2-argparse
-  python2-empy
-  python2-catkin-pkg
-  gtest
   python2-nose
-  gmock)
+  gmock
+  python2-empy
+  gtest
+  python2-catkin_pkg
+  python2)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/catkin/${pkgver}-${_pkgver_patch}
@@ -36,7 +36,7 @@ depends=(${ros_depends[@]}
 _dir="catkin-release-release-kinetic-catkin-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/catkin-release/archive/release/kinetic/catkin/${pkgver}-${_pkgver_patch}.tar.gz"
         "cmake-fix.patch"::"https://github.com/ros/catkin/commit/28efc5584d5df89b990b9deb247e794ad55455ca.patch")
-sha256sums=('54cba1b4b0d1ec74d168004e44a002e2f0a6d3794f455605c466f8f8ef911d20'
+sha256sums=('a70d5fcc94d1d61e3cb4a93c5b78af89f4ea0ec42506f025fa332729a22e5194'
             '64a38284f056d48341611bf231f12ba56e155d9f03f551458ff9f07dc0831e3f')
 
 prepare() {
