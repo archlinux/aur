@@ -5,6 +5,7 @@ pkgbase = sigasi
 	url = http://www.sigasi.com/
 	arch = x86_64
 	license = custom
+	makedepends = unzip
 	depends = glib2
 	options = !strip
 	source = http://download.sigasi.com/updates/latest/com.sigasi.hdt.product-linux.gtk.x86_64.zip

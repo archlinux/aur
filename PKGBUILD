@@ -10,6 +10,7 @@ license=('custom')
 source=('http://download.sigasi.com/updates/latest/com.sigasi.hdt.product-linux.gtk.x86_64.zip'
         'sigasi.desktop')
 depends=('glib2')
+makedepends=('unzip')
 options=('!strip')
 sha256sums=('0bc95d91d5578a50b02afd442d9c39b7800d7c31c32d5e6b9443e0ae150ab431'
             'a8084b3146904c2accd5946e2aa493e133c56e4f8f0d7f582a0edcb080a7958c')
