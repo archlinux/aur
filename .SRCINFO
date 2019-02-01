@@ -1,13 +1,13 @@
 pkgbase = prometheus-push-gateway-bin
 	pkgdesc = Prometheus push acceptor for ephemeral and batch jobs
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/prometheus/pushgateway
 	arch = x86_64
 	license = Apache
-	source = https://github.com/prometheus/pushgateway/releases/download/v0.6.0/pushgateway-0.6.0.linux-amd64.tar.gz
+	source = https://github.com/prometheus/pushgateway/releases/download/v0.7.0/pushgateway-0.7.0.linux-amd64.tar.gz
 	source = prometheus-push-gateway.service
-	sha256sums = f264fe51ff904f648656ce2cdca4256878de307f40c61d51eb8700aae94390ce
+	sha256sums = 902849c94dc275f157899f7fee1b2f23efbd3bbdb6c3a3c42e503f4439f74ed2
 	sha256sums = fe0ec9b3f18f2f35177fdf8dd8bd5ef0cee3189b65051b4239ad2ba1f5e9961c
 
 pkgname = prometheus-push-gateway-bin
