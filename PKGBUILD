@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-location
-_qtver=5.12.0
+_qtver=5.12.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('qt5-declarative')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('b0a3134df3a00f6045405d3c12e0ea3ae7e640feaf38e238873df85424674449')
+sha256sums=('8b922373e6eefd1b0e2a993dbf3d0b3f3df777bc720d40cad3ccb46e1936bc50')
 
 prepare() {
   mkdir -p build
