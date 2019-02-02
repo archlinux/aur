@@ -1,0 +1,15 @@
+pkgbase = cmdline
+	pkgdesc = Generates a kernel cmdline string from /etc/cmdline and /etc/cmdline.d/
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jrouleau/cmdline
+	arch = any
+	license = MIT
+	depends = sh
+	depends = coreutils
+	depends = sed
+	source = https://github.com/jrouleau/cmdline/archive/v1.0.tar.gz
+	sha256sums = 0d342c6d549d4ff91ec77fcb207ac296104201b185fea0ec9db8f2389b002305
+
+pkgname = cmdline
+
