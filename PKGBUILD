@@ -1,6 +1,6 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
-pkgname=livewallpaper
+pkgname=livewallpaper-bzr
 pkgdesc="OpenGL powered animated wallpapers with configuration utility, autostart, and application indicator."
 url="https://launchpad.net/livewallpaper"
 license=('GPL3')
@@ -16,14 +16,10 @@ depends=(
     'libpeas' 'upower' 'libappindicator-gtk3' 'gobject-introspection'
     'python' 'python-cairo' 'python-opengl' 'glew'
 )
+replaces=('livewallpaper')
 
-source=(
-    "${pkgname}"::'bzr+https://launchpad.net/livewallpaper/trunk'
-)
-
-sha256sums=(
-    'SKIP'
-)
+source=("${pkgname}"::'bzr+https://launchpad.net/livewallpaper/trunk')
+sha1sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"

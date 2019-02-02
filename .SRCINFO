@@ -1,4 +1,4 @@
-pkgbase = livewallpaper
+pkgbase = livewallpaper-bzr
 	pkgdesc = OpenGL powered animated wallpapers with configuration utility, autostart, and application indicator.
 	pkgver = 0.5.0.r333
 	pkgrel = 1
@@ -20,8 +20,9 @@ pkgbase = livewallpaper
 	depends = python-cairo
 	depends = python-opengl
 	depends = glew
-	source = livewallpaper::bzr+https://launchpad.net/livewallpaper/trunk
-	sha256sums = SKIP
+	replaces = livewallpaper
+	source = livewallpaper-bzr::bzr+https://launchpad.net/livewallpaper/trunk
+	sha1sums = SKIP
 
-pkgname = livewallpaper
+pkgname = livewallpaper-bzr
 
