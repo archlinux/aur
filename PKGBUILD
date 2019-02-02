@@ -4,7 +4,7 @@ pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic 
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-kinetic-gazebo-plugins'
-pkgver='2.5.14'
+pkgver='2.5.18'
 _pkgver_patch=1
 arch=('any')
 pkgrel=2
@@ -23,6 +23,7 @@ ros_makedepends=(ros-kinetic-trajectory-msgs
   ros-kinetic-diagnostic-updater
   ros-kinetic-std-msgs
   ros-kinetic-dynamic-reconfigure
+  ros-kinetic-rostest
   ros-kinetic-rosgraph-msgs
   ros-kinetic-image-transport
   ros-kinetic-nav-msgs
@@ -73,13 +74,13 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-kinetic-gazebo_plugins-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_plugins/${pkgver}-${_pkgver_patch}.tar.gz"
-  gazebo_9_fixes.patch)
-sha256sums=('4a36e2f8ddfde9671c23fdaf9d899224483f24dd05d66e5210d879bbee6ba22a'
-            'e5d1984874912db38418d3e37be9bc3d117c47a846fd4f42a108f2b60ccb00cf')
+        opencv-header.patch)
+sha256sums=('e5552128bf39a1db90a01d7163507a5557e58d8cf4e9fe70dc5f503aabe557d3'
+            '5c6f119ad0bbfd5f4f747a292bbbe2eb7b858f49c31c41ef0bb5f7b27cb7906e')
 
 prepare() {
-  cd ${srcdir}
-  patch -p1 < gazebo_9_fixes.patch
+  cd "${srcdir}/${_dir}"
+  patch -p2 -i "${srcdir}/opencv-header.patch"
 }
 
 build() {
@@ -93,6 +94,8 @@ build() {
 
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+
+  export PKG_CONFIG_PATH="/opt/OGRE-1.9/lib/pkgconfig"
 
   # Build project
   cmake ${srcdir}/${_dir} \
