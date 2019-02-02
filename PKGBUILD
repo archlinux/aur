@@ -9,7 +9,7 @@ url="https://github.com/jrouleau/cmdline"
 license=('MIT')
 depends=('sh' 'coreutils' 'sed')
 source=("https://github.com/jrouleau/cmdline/archive/v${pkgver}.tar.gz")
-sha256sums=('0d342c6d549d4ff91ec77fcb207ac296104201b185fea0ec9db8f2389b002305')
+sha256sums=('b54ddcb5eaa463ad30679c48e6d352494bda417dfd4f6854ede21624b5423351')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
