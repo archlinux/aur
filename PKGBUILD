@@ -4,23 +4,22 @@ pkgdesc="ROS - The Kinematics and Dynamics Library (KDL) defines a tree structur
 url='http://ros.org/wiki/kdl_parser_py'
 
 pkgname='ros-kinetic-kdl-parser-py'
-pkgver='1.12.10'
+pkgver='1.12.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-urdf
-  ros-kinetic-rostest
   ros-kinetic-orocos-kdl
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   python2-catkin_pkg)
 
-ros_depends=(ros-kinetic-python-orocos-kdl
+ros_depends=(ros-kinetic-urdf
   ros-kinetic-urdfdom-py
-  ros-kinetic-urdf
+  ros-kinetic-python-orocos-kdl
   ros-kinetic-orocos-kdl)
 depends=(${ros_depends[@]})
 
@@ -33,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="kdl_parser-release-release-kinetic-kdl_parser_py-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/kdl_parser-release/archive/release/kinetic/kdl_parser_py/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('32d2a9fd445cf9b06678df2ececb21ee387a2ea84536ede1fde170934dc41028')
+sha256sums=('16ec5d70f960d7259a99a2354d71fb334f51bd0851ff8e5311bf7d110cded6ea')
 
 build() {
   # Use ROS environment variables
