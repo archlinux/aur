@@ -1,7 +1,7 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=libzypp
-pkgver=17.10.3
+pkgver=17.11.1
 pkgrel=1
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'ninja' 'boost' 'dejagnu' 'graphviz'
              'libxml2' 'expat' 'gnupg' 'rpm-org' 'libproxy' 'asciidoc')
 provides=('libzypp')
 source=("https://github.com/openSUSE/libzypp/archive/${pkgver}.tar.gz")
-sha256sums=('a8a625796b9ddea90d94ae6881485f3740a3dbc5b6a1f5dba4f341b689becf24')
+sha256sums=('c9660508de47fbc135e58d05279ce8addcbd8562060d755feeb70102bbf15635')
 
 build() {
   cd "${pkgname}-${pkgver}"
