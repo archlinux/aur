@@ -13,7 +13,7 @@ conflicts=()
 options=()
 install=$pkgname.install
 source=("https://github.com/lans98/$pkgname/archive/$pkgver.tar.gz")
-md5sums=(ced7000e6610a98c6996debdab4a9dd8)
+md5sums=(046714c66b69d3612619ac51b77fb87d)
 
 package() {
     cd "$pkgname-$pkgver"
