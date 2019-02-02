@@ -2,7 +2,7 @@
 
 pkgname='lego-git'
 _pkgname="${pkgname%-git}"
-pkgver=r741.0574362
+pkgver=r743.0e6e480
 pkgrel=1
 pkgdesc='Lets Encrypt client and ACME library written in Go (master branch / unstable)'
 url='https://github.com/xenolf/lego'
@@ -15,7 +15,8 @@ _xenolfpath=github.com/xenolf
 _legopath="${_xenolfpath}/lego"
 
 depends=()
-makedepends=('git' 'make' 'go')
+makedepends=('git' 'make')
+# makedepends=('git' 'make' 'go')
 
 source=("git+${url}.git")
 sha512sums=('SKIP')
@@ -40,7 +41,7 @@ build() {
 
 package() {
   # Bin
-  install -Dm755  "${srcdir}/${_legopath}/dist/${_pkgname}" "${pkgdir}/usr/bin"
+  install -Dm755  "${srcdir}/${_legopath}/dist/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   # License
   install -Dm644 "${srcdir}/${_legopath}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
