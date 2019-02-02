@@ -1,6 +1,6 @@
 pkgbase = pop-gnome-shell-theme-bin
 	pkgdesc = System76 Pop GNOME Shell Theme
-	pkgver = 4.0.10
+	pkgver = 4.0.12
 	pkgrel = 1
 	url = https://github.com/pop-os/gtk-theme
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = pop-gnome-shell-theme-bin
 	optdepends = ttf-roboto-slab: Recommended font for documents
 	provides = pop-gnome-shell-theme
 	conflicts = pop-gnome-shell-theme
-	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gnome-shell-theme/pop-gnome-shell-theme_4.0.10~1547658215~18.10~7b4db5a_all.deb
-	sha256sums = 8400f168842a0d4bb5d15523f840ab0911ab356f10ddd873eba809c26fdcd046
+	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gnome-shell-theme/pop-gnome-shell-theme_4.0.12~1549054892~18.10~e40c0fc_all.deb
+	sha256sums = 6047e3343d453bae013b995d2ae78cb03349bf91ef9fc2f712ee91d9e4e78846
 
 pkgname = pop-gnome-shell-theme-bin
 
