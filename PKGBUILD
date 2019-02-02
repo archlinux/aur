@@ -2,7 +2,7 @@
 
 pkgname=gwmpd
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Frontend and backend for mpd"
 arch=('any')
 url="https://github.com/Chipsterjulien/gwmpd"
@@ -75,4 +75,4 @@ package() {
     "$pkgdir"/var/www/"$pkgname" || return 1
 }
 
-sha512sums=('9adb65c2a3aa5aa235a5f472833187a599a738b42aaf0994a3ede85e0572835eab8c6abfeb2686a6162b235829a690ebf994f700d68d5acee7e0f96f6c850f0e')
+sha512sums=('d5de13c1da30e12557ecea88c5af7b01e08a4dabd5b10cee982cab44972b20aa096b656af23796d1aa1e0980515e2c7739caef2a888a693a4201c18c01e5b849')
