@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides ROS plugins that offer message and service publishers fo
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-kinetic-gazebo-ros'
-pkgver='2.5.14'
+pkgver='2.5.18'
 _pkgver_patch=1
 arch=('any')
 pkgrel=2
@@ -49,7 +49,7 @@ depends=(${ros_depends[@]}
 _dir="gazebo_ros_pkgs-release-release-kinetic-gazebo_ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_ros/${pkgver}-${_pkgver_patch}.tar.gz"
   gazebo_9_fixes.patch)
-sha256sums=('3fcdfdc2bd190ada621e13747036582a64c1439ddc877181d95f4e5cc1d720b8'
+sha256sums=('cd027c4cafa7dd8f2570af29c7782d19c33d8dca1251e96cc0cbcf2c4b9a63df'
             '2c45807037b7d4c5d3eff0352e37f0408d6d65f65fa85efb8e147b36ff957289')
 
 prepare() {
