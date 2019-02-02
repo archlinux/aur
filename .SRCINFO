@@ -1,6 +1,6 @@
 pkgbase = nodejs-requirejs
 	pkgdesc = Node.js adapter for RequireJS
-	pkgver = 2.3.5
+	pkgver = 2.3.6
 	pkgrel = 1
 	url = http://github.com/jrburke/r.js
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = nodejs-requirejs
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = requirejs-2.3.5.tgz
-	source = http://registry.npmjs.org/requirejs/-/requirejs-2.3.5.tgz
-	md5sums = 449c3a018e1291b365d68920fa338024
+	noextract = requirejs-2.3.6.tgz
+	source = http://registry.npmjs.org/requirejs/-/requirejs-2.3.6.tgz
+	md5sums = 5320e0fcffb9367a4e84d278336556b7
 
 pkgname = nodejs-requirejs
 
