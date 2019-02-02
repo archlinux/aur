@@ -91,7 +91,7 @@ package() {
     chmod o-x $pkgdir/usr/bin/isolate
 
     cd ../cms
-    
+
     patch cmscontrib/gerpythonformat/templates/lg/graphdrawing.tex ../pgf.patch
 
     # Logs and cache directories
@@ -110,7 +110,6 @@ package() {
     ln -s /usr/include/testlib.h $pkgdir/usr/include/cms/testlib.h
 
     python3 prerequisites.py --as-root build
-    echo blablabla
     python3 setup.py install --root="$pkgdir" --optimize=1
 
     install -d $pkgdir/var/local/log
