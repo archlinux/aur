@@ -6,7 +6,7 @@ pkgver=0.95
 pkgrel=1
 pkgdesc="Educational software suite comprising of numerous activities for children aged 2 to 10"
 arch=('x86_64')
-url="http://gcompris.net/"
+url="https://gcompris.net/"
 license=('GPL3')
 depends=('qt5-declarative' 'qt5-multimedia' 'qt5-svg' 'qt5-sensors'
          'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-xmlpatterns'
