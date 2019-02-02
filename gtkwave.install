@@ -1,0 +1,7 @@
+post_install() {
+  echo 'Make sure you copy the /usr/share/gtkwave/examples/gtkwaverc file to'
+  echo 'your home directory (as .gtkwaverc) or to your VCD project directory.'
+  echo 'It contains the prefs for a good configuration that most people find'
+  echo 'ergonomic.  It is not strictly necessary however.'
+}
+
