@@ -4,7 +4,7 @@ pkgdesc="ROS - Assorted shell commands for using ros with bash."
 url='http://www.ros.org/wiki/rosbash'
 
 pkgname='ros-kinetic-rosbash'
-pkgver='1.13.4'
+pkgver='1.14.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-kinetic-rosbash-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/kinetic/rosbash/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6fbe05eade2fadd0dc809e2c85b897b635a88071e53bba5fb97408a3816edd97')
+sha256sums=('b7338397eaf46e3541d533604e4fbe7b6f437ec046df0b4d565e5d3162ce9617')
 
 build() {
   # Use ROS environment variables
