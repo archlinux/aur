@@ -4,27 +4,28 @@ pkgdesc="ROS - The Kinematics and Dynamics Library (KDL) defines a tree structur
 url='http://ros.org/wiki/kdl_parser'
 
 pkgname='ros-kinetic-kdl-parser'
-pkgver='1.12.10'
+pkgver='1.12.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-kinetic-cmake-modules
+ros_makedepends=(ros-kinetic-orocos-kdl
   ros-kinetic-urdf
-  ros-kinetic-orocos-kdl
-  ros-kinetic-roscpp
+  ros-kinetic-cmake-modules
   ros-kinetic-rosconsole
-  ros-kinetic-rostest
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+  ${ros_makedepends[@]}
+  tinyxml
+  urdfdom-headers)
 
-ros_depends=(ros-kinetic-roscpp
-  ros-kinetic-urdf
-  ros-kinetic-rosconsole
-  ros-kinetic-orocos-kdl)
-depends=(${ros_depends[@]})
+ros_depends=(ros-kinetic-urdf
+  ros-kinetic-orocos-kdl
+  ros-kinetic-rosconsole)
+depends=(${ros_depends[@]}
+  tinyxml
+  urdfdom-headers)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/kdl_parser/${pkgver}-${_pkgver_patch}
@@ -35,7 +36,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="kdl_parser-release-release-kinetic-kdl_parser-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/kdl_parser-release/archive/release/kinetic/kdl_parser/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('66649ba2cbbcc1e40be55cef4926380618c1b0a26a383b6e3b2de21ecfb24658')
+sha256sums=('198efeb1ded4f470492830c7ebd382798589a9cce96a86ce0bfc6c7b32617c8e')
 
 build() {
   # Use ROS environment variables
