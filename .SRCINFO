@@ -1,0 +1,12 @@
+pkgbase = ttmath
+	pkgdesc = Library for arithmetic operations with big unsigned integer, big signed integer and big floating point numbers
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://ttmath.org
+	arch = any
+	license = BSD
+	source = http://downloads.sourceforge.net/project/ttmath/ttmath/ttmath-0.9.3/ttmath-0.9.3-src.tar.gz
+	sha256sums = 4a9a7d1d377fc3907fb75facd4817ba6ac9d60bb4837584256467a54705c6fde
+
+pkgname = ttmath
+
