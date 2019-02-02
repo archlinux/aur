@@ -1,13 +1,13 @@
 pkgbase = ned
 	pkgdesc = Like grep but with a powerful replace, unlike sed, it's not only line oriented.
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/nevdelap/ned
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
-	source = ned-1.2.6.tar.gz::https://github.com/nevdelap/ned/archive/release.1.2.6.tar.gz
-	md5sums = dcdd68a7abcd4622b8c7f26eff7e8b28
+	source = ned-1.2.7.tar.gz::https://github.com/nevdelap/ned/archive/release.1.2.7.tar.gz
+	md5sums = b9e85861abb59ee342ad195263c1964b
 
 pkgname = ned
 
