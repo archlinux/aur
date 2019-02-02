@@ -1,6 +1,6 @@
 pkgbase = php-uopz
 	pkgdesc = User Operations for Zend
-	pkgver = 5.1.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://pecl.php.net/package/uopz
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = php-uopz
 	license = PHP
 	depends = php
 	backup = etc/php/conf.d/uopz.ini
-	source = php-uopz-5.1.0.tar.gz::https://github.com/krakjoe/uopz/archive/v5.1.0.tar.gz
+	source = php-uopz-6.0.0.tar.gz::https://github.com/krakjoe/uopz/archive/v6.0.0.tar.gz
 	source = uopz.ini
-	sha256sums = ca3637ff1b8371c952c87ab17465e6957792d716583aadf9c2916e524b77f745
+	sha256sums = c6a3aa12a941cd4ee574ebeaa01ca5b9fd5b0cde15c34e8d68769f8ec62f2804
 	sha256sums = 43af71e84787144f44859f9cf7a13531aea57c8371db5ec95b871bc0bf9772d8
 
 pkgname = php-uopz
