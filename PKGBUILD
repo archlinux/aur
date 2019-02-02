@@ -4,7 +4,7 @@ pkgdesc="ROS - A bond allows two processes, A and B, to know when the other has 
 url='http://www.ros.org/wiki/bond'
 
 pkgname='ros-kinetic-bond'
-pkgver='1.8.1'
+pkgver='1.8.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="bond_core-release-release-kinetic-bond-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/kinetic/bond/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('800c926f8e1ca7d4bd515121ce2e7cf4e6723a90ef1a2f40b64083895c572db6')
+sha256sums=('58fc4390b61bd4282d935884b30d2b84dfab7803f20528b859976e9b068c1eea')
 
 build() {
   # Use ROS environment variables
