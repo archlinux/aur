@@ -1,0 +1,35 @@
+pkgbase = gtkwave-gtk3-tcl
+	pkgdesc = A wave viewer which reads LXT, LXT2, VZT, GHW, FST and VCD/EVCD files (GTK+ 3 version, with Tcl/Tk support)
+	pkgver = 3.3.98
+	pkgrel = 1
+	url = http://gtkwave.sourceforge.net
+	install = gtkwave.install
+	arch = x86_64
+	license = GPL
+	license = custom:MIT
+	license = custom
+	makedepends = gperf
+	depends = bzip2
+	depends = dconf
+	depends = desktop-file-utils
+	depends = glib2
+	depends = gnutls
+	depends = gtk3
+	depends = judy
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libtiff
+	depends = tcl
+	depends = tk
+	depends = xz
+	provides = gtkwave
+	conflicts = gtkwave
+	source = http://gtkwave.sourceforge.net/gtkwave-gtk3-3.3.98.tar.gz
+	source = http://gtkwave.sourceforge.net/gtkwave.pdf
+	source = gtkwave.install
+	md5sums = b049a1633fd7db73f2bb907090e52b41
+	md5sums = 0f2af8e45fd4173c93eb24d0caa69498
+	md5sums = ccbede6bf65569f5688f5254389eec53
+
+pkgname = gtkwave-gtk3-tcl
+
