@@ -1,7 +1,7 @@
 # Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 pkgname=salmon
-pkgver=0.11.3
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments"
 arch=('x86_64')
 url="https://combine-lab.github.io/$pkgname/"
@@ -10,7 +10,7 @@ depends=('bzip2' 'intel-tbb' 'xz')
 makedepends=('boost>=1.55' 'cmake' 'unzip')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/COMBINE-lab/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('99e95233be7f8510bed5c4d0c46a5074')
+md5sums=('2f07447c0070d1e22fb2b3879eaca810')
 
 prepare() {
   # Fix for now segmentation fault when using archlinux jemalloc package
