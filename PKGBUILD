@@ -27,25 +27,27 @@ sha1sums=('9407ea2ee7b2ed649f17a8ddbf1f7b26a7c7b9fb'
           'bc77f03262d0bf423210aaf418d2452324b732ec')
 
 prepare() {
+  mkdir -p ${_basename}-${pkgver}/build
   cd ${_basename}-${pkgver}
   patch -Np1 -i "${srcdir}/slim-1.3.6-fix-libslim-libraries.patch"
 }
 
 build() {
-  cd ${_basename}-${pkgver}
+  cd ${_basename}-${pkgver}/build
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
     -DUSE_PAM=yes \
     -DUSE_CONSOLEKIT=no \
-    -DBUILD_SHARED_LIBS=no
+    -DBUILD_SHARED_LIBS=no \
+    ..
   make
 }
 
 package() {
-  cd ${_basename}-${pkgver}
+  cd ${_basename}-${pkgver}/build
   install -Dm755 slimlock "${pkgdir}/usr/bin/slimlock"
-  install -Dm644 slimlock.conf "${pkgdir}/etc/slimlock.conf"
-  install -Dm644 slimlock.1 "${pkgdir}/usr/share/man/man1/slimlock.1"
+  install -Dm644 ../slimlock.conf "${pkgdir}/etc/slimlock.conf"
+  install -Dm644 ../slimlock.1 "${pkgdir}/usr/share/man/man1/slimlock.1"
 
   install -D -m644 "${srcdir}/slim.conf" "${pkgdir}/usr/share/slimlock/example-slim.conf"
 
