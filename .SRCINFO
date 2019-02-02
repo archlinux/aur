@@ -1,0 +1,17 @@
+pkgbase = cython-git
+	pkgdesc = C-Extensions for Python
+	pkgver = 0.29.4.r213.g0ed473f9f
+	pkgrel = 1
+	url = https://cython.org/
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	depends = python-setuptools
+	provides = cython
+	conflicts = cython
+	source = git+https://github.com/cython/cython.git
+	sha256sums = SKIP
+
+pkgname = cython-git
+
