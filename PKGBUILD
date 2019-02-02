@@ -3,18 +3,18 @@
 
 _pkgname=plasma-applet-volumewin7mixer
 pkgname=plasma5-applets-volumewin7mixer
-pkgver=23
+pkgver=24
 pkgrel=1
 pkgdesc="A fork of the default volume plasmoid with a Windows 7 theme (vertical sliders)"
 arch=('any')
 url="https://github.com/Zren/$_pkgname"
 license=(GPL)
-depends=('plasma-pa' 'qt5-declarative' 'python2')
+depends=('plasma-pa' 'qt5-declarative' 'python' 'python2')
 makedepends=('extra-cmake-modules')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Zren/$_pkgname/archive/v$pkgver.tar.gz"
         'CMakeLists.txt')
-sha256sums=('8f9430d9b8c4050a221f1ba2ae7cc557ccf5e4697366e6794d7024baf83a9ed0'
-            'SKIP')
+sha256sums=('836d5277426a13e4dbc32cf7dcac17229a6548e2ff3becb86203406fd2b849ee'
+            '739432241baaafe87c7c6ee44a2b9b33a0abdf1220576ef253b12c4f8c915871')
 
 prepare() {
     cd "$_pkgname-$pkgver"
