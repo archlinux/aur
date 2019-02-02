@@ -44,8 +44,15 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="geometry-release-release-kinetic-tf-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/kinetic/tf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('145ad3bd3c5ea0b4b1ff224c39eb03ba5b719f016609f6960589658a9687f53f')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/kinetic/tf/${pkgver}-${_pkgver_patch}.tar.gz"
+        "remove-boost-signals.patch::https://github.com/ros/geometry/commit/2eed72cb7b63fc4ee98af695c625d9a741a09897.patch")
+sha256sums=('145ad3bd3c5ea0b4b1ff224c39eb03ba5b719f016609f6960589658a9687f53f'
+            '5ea32d7dbd0e0c224ca13484c8bead320f246899be166d5971a40a6664876079')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch -p2 -i "${srcdir}/remove-boost-signals.patch"
+}
 
 build() {
   # Use ROS environment variables
