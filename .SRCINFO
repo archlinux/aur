@@ -1,14 +1,14 @@
 pkgbase = bashbud
 	pkgdesc = Generate documents and manage projects
-	pkgver = 2019.01.01.0
+	pkgver = 2019.02.02.7
 	pkgrel = 1
 	url = https://github.com/budlabs/bashbud
 	arch = any
 	license = MIT
 	depends = bash>=4.0.0
 	optdepends = go-md2man: generate man page with default template
-	source = https://github.com/budlabs/bashbud/archive/2019.01.01.0.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/budlabs/bashbud/archive/2019.02.02.7.tar.gz
+	sha256sums = 2f437bd1f3190a49a024bd640456ffb128adc3f6def618519d4757582da91e8b
 
 pkgname = bashbud
 
