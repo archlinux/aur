@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qdep
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A very basic yet simple to use dependency management tool for qmake based projects."
 arch=('any')
 url="https://github.com/Skycoder42/qdep"
