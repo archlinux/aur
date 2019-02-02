@@ -5,7 +5,7 @@
 
 _gemname=actionpack
 pkgname=ruby-$_gemname
-pkgver=5.2.1
+pkgver=5.2.2
 pkgrel=1
 pkgdesc='Web-flow and rendering framework putting the VC in MVC (part of Rails).'
 arch=(any)
@@ -15,11 +15,11 @@ depends=(ruby ruby-activesupport ruby-rack ruby-rack-test ruby-actionview ruby-r
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('9f5f0b3444214225c369a3a7a1631ada0b94a7d3')
+sha256sums=('9a73648c98e8b322c72c97f2efe7989832ef18c23c0202704ba33260315e9047')
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
+    local _gemdir="$(ruby -e'puts Gem.default_dir')"
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+    rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+    install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
 }
