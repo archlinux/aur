@@ -40,7 +40,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geographic_info-release-release-kinetic-geodesy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-geographic-info/geographic_info-release/archive/release/kinetic/geodesy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6db3d6f7f95627e5f6f6dc4c282c222b0ceb2d7bb3a804adada313d26313db9d')
+sha256sums=('c298212d2a77911d60cedfde713372bad057fbcb8307aa5f29eb976e3166ed9f')
 
 build() {
   # Use ROS environment variables
