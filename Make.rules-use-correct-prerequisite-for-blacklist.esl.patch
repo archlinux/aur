@@ -1,0 +1,34 @@
+From ecb252d9fd18556d3f7ed4b00aac789e901af9c8 Mon Sep 17 00:00:00 2001
+From: Jonas Witschel <diabonas@gmx.de>
+Date: Mon, 28 Jan 2019 19:21:26 +0100
+Subject: [PATCH] Make.rules: use correct prerequisite for %-blacklist.esl
+
+Fixes occasional errors of the form
+
+./cert-to-efi-sig-list PK.crt PK-blacklist.esl
+make: ./cert-to-efi-sig-list: Command not found
+make: *** [Make.rules:75: PK-blacklist.esl] Error 127
+
+when using parallel jobs.
+
+Signed-off-by: Jonas Witschel <diabonas@gmx.de>
+---
+ Make.rules | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Make.rules b/Make.rules
+index 903a5a4..1c579f0 100644
+--- a/Make.rules
++++ b/Make.rules
+@@ -71,7 +71,7 @@ endif
+ %.hash: %.efi hash-to-efi-sig-list
+ 	./hash-to-efi-sig-list $< $@
+ 
+-%-blacklist.esl: %.crt cert-to-efi-hash-list
++%-blacklist.esl: %.crt cert-to-efi-sig-list
+ 	./cert-to-efi-sig-list $< $@
+ 
+ %-hash-blacklist.esl: %.crt cert-to-efi-hash-list
+-- 
+2.20.1
+
