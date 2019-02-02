@@ -13,7 +13,7 @@ url='http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin'
 license=('GPL2')
 groups=('xfce4-goodies')
 depends=('xfce4-panel' 'lm_sensors' 'libxnvctrl' 'libnotify' 'hicolor-icon-theme')
-makedepends=('intltool' 'hddtemp' 'netcat')
+makedepends=('xfce4-dev-tools' 'intltool' 'hddtemp' 'netcat')
 optdepends=('hddtemp: for monitoring the temperature of hard drives'
             'netcat: for querying the temperature of hard drives from hddtemp configured and running as daemon')
 conflicts=('xfce4-sensors-plugin' 'xfce4-sensors-plugin-nvidia')

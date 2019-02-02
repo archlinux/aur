@@ -6,6 +6,7 @@ pkgbase = xfce4-sensors-plugin-nvidia-hddtemp_through_netcat-current
 	arch = x86_64
 	groups = xfce4-goodies
 	license = GPL2
+	makedepends = xfce4-dev-tools
 	makedepends = intltool
 	makedepends = hddtemp
 	makedepends = netcat
