@@ -1,6 +1,6 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-gtk
-pkgver=0.9.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A timer for the Pomodoro Technique"
 arch=('any')
@@ -12,10 +12,15 @@ depends=('desktop-file-utils'
          'hicolor-icon-theme'
          'python'
          'python-tomate')
+optdependes=('tomate-alarm-plugin: Plays alarm at session end'
+             'tomate-indicator-plugin: Shows session progress in tray area'
+             'tomate-notify-plugin: Plugin that shows screen notifications'
+             'tomate-exec-plugin: Run commands when timer starts, stops or finishes'
+             'tomate-statusicon-plugin: Plugin that shows the session progress in the notification area')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('f0ecc6ee074024819666088682e4387a')
+md5sums=('c162c618b7a91bd0856532ec195910eb')
 install=tomate-gtk.install
 
 package() {
