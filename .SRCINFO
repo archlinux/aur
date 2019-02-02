@@ -1,6 +1,6 @@
 pkgbase = nvman
 	pkgdesc = NVIDIA Manager for Optimus/Bumblebee
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/lans98/nvman
 	install = nvman.install
@@ -9,7 +9,7 @@ pkgbase = nvman
 	depends = bumblebee
 	depends = primus
 	depends = optimus-manager
-	source = https://github.com/lans98/nvman/archive/1.0.tar.gz
+	source = https://github.com/lans98/nvman/archive/1.1.tar.gz
 	md5sums = ced7000e6610a98c6996debdab4a9dd8
 
 pkgname = nvman
