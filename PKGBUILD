@@ -3,7 +3,7 @@
 
 _pkgname=plasma-applet-todolist
 pkgname=plasma5-applets-todolist
-pkgver=7
+pkgver=9
 pkgrel=1
 pkgdesc="Extension of the kdeplasma-applets notes widget, where it's organized as a list"
 url="https://github.com/Zren/$_pkgname"
@@ -13,18 +13,18 @@ makedepends=('extra-cmake-modules')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Zren/$_pkgname/archive/v$pkgver.tar.gz"
         'CMakeLists.txt')
-sha256sums=('e064a4aebd1eca2444b0178b19b55890f6e5eda7dabf55cc4ef099fdc4c0d0e7'
-            'SKIP')
+sha256sums=('fe891a20eff36ecc4a687838be1d966d43380c7490230b18c567dd5ad4aab77d'
+            '94af6eb61a665717e30a8a58d5609dc631149cd5a44d7c3f5f059503bca5b6e9')
 
 prepare() {
-    cd "$_pkgname-$pkgver"/todolist
+    cd "$_pkgname-$pkgver"
     cp "$srcdir"/CMakeLists.txt .
     rm -rf build
     mkdir -p build
 }
 
 build() {
-    cd "$_pkgname-$pkgver"/todolist/build
+    cd "$_pkgname-$pkgver"/build
     cmake .. \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_BUILD_TYPE=Release \
@@ -33,6 +33,6 @@ build() {
 }
 
 package() {
-    cd "$_pkgname-$pkgver"/todolist/build
+    cd "$_pkgname-$pkgver"/build
     make DESTDIR="$pkgdir" install
 }
