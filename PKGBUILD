@@ -40,5 +40,4 @@ package() {
 	mkdir -p "${pkgdir}/usr/bin/"
 	cp "wio_linux_${!_pkg_str}" "${pkgdir}/usr/bin/wio"
 	mkdir -p "${pkgdir}/usr/share/wio"
-	cp -R toolchain "${pkgdir}/usr/share/wio/toolchain"
 }
