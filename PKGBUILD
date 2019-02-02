@@ -4,7 +4,7 @@
 
 pkgname=compiz-bzr
 pkgver=4191
-pkgrel=1
+pkgrel=2
 _bzrname=compiz
 _bzrbranch=0.9.13
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (development version)"
@@ -45,11 +45,6 @@ prepare() {
 
   # Set focus prevention level to off which means that new windows will always get focus
   patch -p1 -i "${srcdir}/focus-prevention-disable.patch"
-
-  # Use Python 2
-  find -type f \( -name 'CMakeLists.txt' -or -name '*.cmake' \) -exec sed -e 's/COMMAND python/COMMAND python2/g' -i {} \;
-  find compizconfig/ccsm -type f -exec sed -e 's|^#!.*python|#!/usr/bin/env python2|g' -i {} \;
-  sed -i "s/find_program(CYTHON_BIN cython)/find_program(CYTHON_BIN cython2)/g" compizconfig/compizconfig-python/CMakeLists.txt
 
   # Fix incorrect extents for GTK+ tooltips, csd etc
   patch -p1 -i "${srcdir}/gtk-extents.patch"
