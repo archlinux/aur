@@ -5,7 +5,7 @@
 
 _gemname=activerecord
 pkgname=ruby-$_gemname
-pkgver=5.2.1
+pkgver=5.2.2
 pkgrel=1
 pkgdesc='Object-relational mapper framework (part of Rails).'
 arch=(any)
@@ -15,11 +15,11 @@ depends=(ruby ruby-activesupport ruby-activemodel ruby-arel)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('9b791bb344490b1080488dee4154a238002391ce')
+sha256sums=('1e8c0fabfd6618e167d125d8d074a1392f4a760b8b16513d179f1765b4d540a5')
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
+    local _gemdir="$(ruby -e'puts Gem.default_dir')"
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+    rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+    install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
 }
