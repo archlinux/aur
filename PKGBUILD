@@ -1,7 +1,7 @@
 # Maintainer: Joel Wejdenstål (acrimon) <joel.wejdenstal@gmail.com>
 
 pkgname=nsh
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A minimal and fast shell."
 arch=("x86_64")
@@ -20,4 +20,4 @@ package() {
     cd "$pkgname-v$pkgver"
     ./install.sh "$pkgdir"
 }
-md5sums=('6190dff6c60be0b89002c0023cd56489')
+md5sums=('549cf6d358bc7623a1d81241c994e93d')
