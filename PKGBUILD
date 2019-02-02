@@ -1,7 +1,7 @@
 # Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 _pkgname=Sniffles
 pkgname=sniffles
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Structural variation caller using third generation sequencing"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cmake')
 options=('!emptydirs')
-source=("$_pkgname-$pkgver.tar.gz"::"https://github.com/fritzsedlazeck/Sniffles/archive/v$pkgver.tar.gz")
-md5sums=('0d952541c9ae0e50af0d20e99cb87f11')
+source=("$_pkgname-$pkgver.tar.gz"::"https://github.com/fritzsedlazeck/Sniffles/archive/$pkgver.tar.gz")
+md5sums=('a35303969680571ad821eeba3cd61541')
 
 build() {
   cd "$_pkgname-$pkgver"
