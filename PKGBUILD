@@ -10,9 +10,11 @@ arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-kinetic-orocos-kdl
+ros_makedepends=(ros-kinetic-cmake-modules
   ros-kinetic-urdf
-  ros-kinetic-cmake-modules
+  ros-kinetic-orocos-kdl
+  ros-kinetic-roscpp
+  ros-kinetic-rostest
   ros-kinetic-rosconsole
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
