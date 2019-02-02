@@ -1,13 +1,15 @@
 pkgbase = ruby-htmlentities
-	pkgdesc = http://htmlentities.rubyforge.org/
+	pkgdesc = A Ruby library to encode named and numerical entities in HTML and XHTML documents
 	pkgver = 4.3.4
-	pkgrel = 1
-	url = http://htmlentities.rubyforge.org/
+	pkgrel = 2
+	url = https://github.com/threedaymonk/htmlentities
 	arch = any
-	license = GPL
+	license = MIT
+	makedepends = rubygems
 	depends = ruby
 	noextract = htmlentities-4.3.4.gem
-	source = http://gems.rubyforge.org/gems/htmlentities-4.3.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/htmlentities-4.3.4.gem
 	sha256sums = 125a73c6c9f2d1b62100b7c3c401e3624441b663762afa7fe428476435a673da
 
 pkgname = ruby-htmlentities
