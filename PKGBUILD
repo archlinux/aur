@@ -1,4 +1,4 @@
-#Maintainer : Robin -ChinaskiJr- Colombier <robin dot colombier at gmail dot com>
+#Maintainer : Robin -ChinaskiJr- Colombier <robin dot colombier at protonmail dot com>
 #The program is a fork from a script wrote by Kory Becker <http://www.primaryobjects.com/kory-becker/>
 pkgname=vpndemon-cli
 pkgver=1.01
