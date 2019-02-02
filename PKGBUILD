@@ -9,11 +9,11 @@ _srcname=linux
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
 pkgver=4.14.95
-pkgrel=4
+pkgrel=5
 arch=('any')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
+makedepends=('xmlto' 'aarch64-linux-gnu-binutils' 'aarch64-linux-gnu-gdb' 'aarch64-linux-gnu-gcc' 'aarch64-linux-gnu-glibc' 'aarch64-linux-gnu-linux-api-headers' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
 source=("git+https://github.com/raspberrypi/linux.git#branch=rpi-4.14.y"
         'add-nexmon.patch'

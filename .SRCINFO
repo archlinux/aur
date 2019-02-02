@@ -1,10 +1,15 @@
 pkgbase = linux-aarch64-raspberrypi-4.14
 	pkgver = 4.14.95
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.kernel.org/
 	arch = any
 	license = GPL2
 	makedepends = xmlto
+	makedepends = aarch64-linux-gnu-binutils
+	makedepends = aarch64-linux-gnu-gdb
+	makedepends = aarch64-linux-gnu-gcc
+	makedepends = aarch64-linux-gnu-glibc
+	makedepends = aarch64-linux-gnu-linux-api-headers
 	makedepends = docbook-xsl
 	makedepends = kmod
 	makedepends = inetutils
