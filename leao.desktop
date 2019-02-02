@@ -1,10 +1,10 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
-Name=Carnê Leão 2016
+Name=Carnê Leão 2019
 Comment=Pagamento mensal de imposto de renda de pessoas físicas
 Exec=leao
 StartupNotify=true
 Icon=irpf
 Terminal=false
 Type=Application
-Categories=Network;
+Categories=Application;
