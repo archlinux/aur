@@ -1,6 +1,6 @@
 pkgbase = wio
 	pkgdesc = An IoT Development Environment
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/wio/wio
 	arch = x86_64
@@ -16,16 +16,16 @@ pkgbase = wio
 	optdepends = avrdude: for uploading to Arduino based boards
 	optdepends = gcc: for compiling natively
 	options = !strip
-	source = wio-0.6.2.tar.gz::https://github.com/wio/wio/releases/download/0.6.2/wio_linux_x86_64.tar.gz
-	source = wio-0.6.2.tar.gz::https://github.com/wio/wio/releases/download/0.6.2/wio_linux_i386.tar.gz
-	source = wio-0.6.2.tar.gz::https://github.com/wio/wio/releases/download/0.6.2/wio_linux_arm5.tar.gz
-	source = wio-0.6.2.tar.gz::https://github.com/wio/wio/releases/download/0.6.2/wio_linux_arm6.tar.gz
-	source = wio-0.6.2.tar.gz::https://github.com/wio/wio/releases/download/0.6.2/wio_linux_arm7.tar.gz
-	sha256sums = 605d16e954cd3f5fb3abf37dbfa407934db5b11ffa74e61161a721db6a5bf311 
-	sha256sums = 650978801af7ea18378300be9beb5ef4b365b1c2598567f4d58189efd8bf208e
-	sha256sums = f192fd1d0f487803514bb5cc243f21c4f386d1ac449c22c195e017a435072702
-	sha256sums = 11bb619171f87f85b1733fa1050b35ddb58fb537c2c4a262f4c78d0d347a9bdc
-	sha256sums = 6dd43369cac40d47ded0935498aab11121d6d1ab5d9b0e335a5df2ef15d5e7bf
+	source = wio-0.7.0.tar.gz::https://github.com/wio/wio/releases/download/0.7.0/wio_linux_x86_64.tar.gz
+	source = wio-0.7.0.tar.gz::https://github.com/wio/wio/releases/download/0.7.0/wio_linux_i386.tar.gz
+	source = wio-0.7.0.tar.gz::https://github.com/wio/wio/releases/download/0.7.0/wio_linux_arm5.tar.gz
+	source = wio-0.7.0.tar.gz::https://github.com/wio/wio/releases/download/0.7.0/wio_linux_arm6.tar.gz
+	source = wio-0.7.0.tar.gz::https://github.com/wio/wio/releases/download/0.7.0/wio_linux_arm7.tar.gz
+	sha256sums = __CS_x86_64__ 
+	sha256sums = __CS_i386__
+	sha256sums = __CS_arm5__
+	sha256sums = __CS_arm6__
+	sha256sums = __CS_arm7__
 
 pkgname = wio
 
