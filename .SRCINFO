@@ -1,7 +1,7 @@
 pkgbase = webkit2gtk-unstable
 	pkgdesc = GTK+ Web content engine library
 	pkgver = 2.23.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webkitgtk.org/
 	arch = i686
 	arch = x86_64

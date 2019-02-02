@@ -1,8 +1,10 @@
 # Maintainer: Adrià Arrufat <adria.arrufat+AUR@protonmail.ch>
+# Contributor: Eric Bélanger <eric@archlinux.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=webkit2gtk-unstable
 pkgver=2.23.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ Web content engine library"
 arch=('i686' 'x86_64')
 url="https://webkitgtk.org/"
