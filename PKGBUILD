@@ -4,7 +4,7 @@
 # Contributor: @xer01ne
 
 pkgname=shellinabox-git
-pkgver=r430.b7a8072
+pkgver=r431.4f0ecc3
 pkgrel=1
 pkgdesc="Implementation of a web server that can export arbitrary command line tools to a web based terminal emulator"
 arch=('any')

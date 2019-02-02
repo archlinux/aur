@@ -1,6 +1,6 @@
 pkgbase = shellinabox-git
 	pkgdesc = Implementation of a web server that can export arbitrary command line tools to a web based terminal emulator
-	pkgver = r430.b7a8072
+	pkgver = r431.4f0ecc3
 	pkgrel = 1
 	url = https://github.com/shellinabox/shellinabox
 	arch = any
