@@ -1,0 +1,15 @@
+pkgbase = otf-sf-mono
+	pkgdesc = The monospaced version of Apple San Francisco font
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://developer.apple.com/fonts/
+	install = otf-sf-mono.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://s3.amazonaws.com/aws.aur.wafflefrisbee/otf-sf-mono/SFMono.tar.xz
+	md5sums = d570cda292256cfc7d4e25078b6a3d23
+
+pkgname = otf-sf-mono
+
