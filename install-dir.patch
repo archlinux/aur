@@ -1,16 +1,16 @@
 diff --git a/Source/CMake/BsEngineConfig.h.in b/Source/CMake/BsEngineConfig.h.in
-index 01a7db342..ff99fdedd 100644
+index 301aaf73f..db89006bf 100644
 --- a/Source/CMake/BsEngineConfig.h.in
 +++ b/Source/CMake/BsEngineConfig.h.in
-@@ -6,18 +6,9 @@
- #define BS_PHYSICS_MODULE "@PHYSICS_MODULE_LIB@"
+@@ -7,18 +7,9 @@
+ #define BS_SCRIPTING_ENABLED @BS_SCRIPTING_ENABLED@
  
- /** Path to the framework root when files haven't been packaged yet (e.g. running from debugger). */
+ /** Path to the framework source directory. */
 -static constexpr const char* RAW_APP_ROOT = "@APP_ROOT_DIR@/"; 
 +static constexpr const char* RAW_APP_ROOT = "@CMAKE_INSTALL_PREFIX@/share/bsf/";
  
- /** Secondary search path to use when looking for built-in assets (after the RAW_APP_ROOT). */
- static constexpr const char* SECONDARY_APP_ROOT = "@SECONDARY_APP_ROOT_DIR@/"; 
+ /** Path to the framework build directory. */
+ static constexpr const char* BUILD_APP_ROOT = "@PROJECT_BINARY_DIR@/";
  
 -/** Path to the binaries when files haven't been packaged yet (e.g. running from debugger). */
 -#if BS_CONFIG == BS_CONFIG_DEBUG
@@ -24,10 +24,10 @@ index 01a7db342..ff99fdedd 100644
 -#endif
 +static constexpr const char* BINARIES_PATH = "@CMAKE_INSTALL_PREFIX@/lib/";
 diff --git a/Source/CMakeLists.txt b/Source/CMakeLists.txt
-index 02ba71c5a..ebaac189c 100644
+index a35dc9bea..87831df61 100644
 --- a/Source/CMakeLists.txt
 +++ b/Source/CMakeLists.txt
-@@ -195,8 +195,8 @@ check_and_update_builtin_assets(bsfCompiled ${BSF_SOURCE_DIR}/../Data Data ${COM
+@@ -220,8 +220,8 @@ endif()
  
  ## Install
  install(

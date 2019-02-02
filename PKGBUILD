@@ -2,7 +2,7 @@
 pkgname=(bsf-git bsf-git-docs)
 pkgbase=bsf-git
 _pkgname=bsf
-pkgver=r4677.7c5792cff
+pkgver=r4710.718f666fc
 pkgrel=1
 epoch=
 pkgdesc="A C++ library that aims to provide a unified foundation for the development of real-time graphical applications, whether games, engines or tools"
@@ -93,7 +93,7 @@ package_bsf-git-docs() {
 }
 
 sha256sums=('SKIP'
-            'ee326f6eb0a97e7b306181a34675b5fadf55ce69bdec1c738600bb9d15908e91'
+            '4301910bd0c17e2747c08b27617fe3b4e5f10f70a78ffb29dcef4f23d52b4e16'
             '871c19f0e652efa2cbdaef34b6960ba9a81378b957cdf3701dc3f8733cb69cd6'
             '100e91e5ae58dd301adc0d5f31c972237a688f12682e0c0f21e200430728bf27'
             '3b5e087e200e786ab1a0b79d6f3cd04d4c70fde9337dc8082a13479f477d1025'
