@@ -1,17 +1,16 @@
 pkgname=mingw-w64-coin-or-clp
-pkgver=1.16.10
+pkgver=1.16.11
 pkgrel=1
 pkgdesc="COIN-OR linear programming solver (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/Clp"
 license=('EPL')
 groups=('coin-or')
-depends=('mingw-w64-coin-or-osi' 'mingw-w64-zlib' 'mingw-w64-bzip2' 'mingw-w64-lapack')
+depends=('mingw-w64-coin-or-osi')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Clp/Clp-${pkgver}.tgz")
-sha1sums=('c74ef781ef050df6a127186f7a0069118cf89b12')
-
+sha256sums=('b525451423a9a09a043e6a13d9436e13e3ee7a7049f558ad41a110742fa65f39')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -25,7 +24,7 @@ build() {
               --with-osi-incdir="/usr/${_arch}/include/coin/" \
               --with-coinutils-lib="$(${_arch}-pkg-config --libs coinutils)" \
               --with-coinutils-incdir="/usr/${_arch}/include/coin/" \
-              -C
+              ..
     make
     popd
   done
