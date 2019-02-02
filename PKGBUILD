@@ -1,6 +1,6 @@
 # Maintainer: Stefans Mezulis <stefans.mezulis@gmail.com>
 pkgname=pipes.c
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Small application to mimic the "pipes" screensaver in a terminal window'
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("https://github.com/pipeseroni/$pkgname/releases/download/v$pkgver/${pkgname//./-}-$pkgver.tar.gz")
 noextract=()
-sha256sums=('b5d7a2bf41089ac86a63011ed9c7c2a178ebfd65651f83d333e7dc6107a85ec6')
+sha256sums=('a9d662280c01de4e7471191b77324674f2e3a736050d4590a2e406573f4f8701')
 
 build() {
   cd "${pkgname//./-}-$pkgver"
