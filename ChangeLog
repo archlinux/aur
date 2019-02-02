@@ -1,3 +1,8 @@
+4.5.5 (2019-02-01 18:10:43)
+
+    Fixes loading of some PDB files,
+    Fixes a performance issue when drawing text containing a breakpoint.
+
 4.5.4 (2019-01-23 19:12:16)
 
     Fixes an issue with arrows in the left column not pointing to the correct address while scrolling,
