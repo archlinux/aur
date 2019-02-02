@@ -5,7 +5,7 @@
 
 _gemname=actionmailer
 pkgname=ruby-$_gemname
-pkgver=5.2.1
+pkgver=5.2.2
 pkgrel=1
 pkgdesc='Email composition, delivery, and receiving framework (part of Rails).'
 arch=(any)
@@ -15,11 +15,11 @@ depends=(ruby ruby-actionpack ruby-actionview ruby-mail ruby-rails-dom-testing)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('163edd4c0feeba5881d3b7d50c05e6b4457d95ec')
+sha256sums=('b6e028994d5fabc71977d3d6ca34a52597921162e2fae5d3bdb3b292345ad769')
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
+    local _gemdir="$(ruby -e'puts Gem.default_dir')"
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+    rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+    install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
 }
