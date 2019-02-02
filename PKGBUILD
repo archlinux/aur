@@ -9,7 +9,7 @@ _srcname=linux
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
 pkgver=4.14.95
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,16 +22,16 @@ source=("git+https://github.com/raspberrypi/linux.git#branch=rpi-4.14.y"
 	'cmdline.txt'
 	'dmi.patch'
         'linux.preset'
-	'scripts.tar.gz::https://cloud.it-kraut.net/s/zES6dQ9SQyj7PPF/download'
+	'scripts.tar.gz::https://cloud.it-kraut.net/s/FDPnGq3ksBifKcA/download'
         '99-linux.hook')
 md5sums=('SKIP'
          '7462ced7cee9e33aa7925ea63771f0ad'
-         '7170c7bab4fc23bfb2d31340b7ccadb4'
+         '20855eddee77088cd54d732d5fd18b61'
          'c724d9c086060a17a2170c7d98dae908'
          '6f4a4da9a6dec38507ff6e3a536f834a'
          'f80e2bf1fda4ff65606afea2939cc4a5'
          '5898b5308f7afb2b9b091de62eb321f3'
-         '9912c127f93621dfc7b3e481bd9b1718'
+         'a9ebd99b39fe2a7a13d1ec353f99d8ad'
          '60f0317bfdda4cf9fa06f075cd3617c0')
 
 prepare() {
@@ -46,9 +46,6 @@ prepare() {
   # add nexmon
   #patch -Np1 -i ../add-nexmon.patch
 
-  # set O3 flags
-  sed -i 's/O2/O3/g' Makefile
-
   # add pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
 
@@ -62,9 +59,9 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
   unset CFLAGS
-  export CFLAGS="-march=armv8-a -O3 -pipe -fstack-protector-strong -fno-plt"
+  export KCFLAGS="-march=armv8-a+crc -mtune=cortex-a53 -O2 -pipe"
   unset CXXFLAGS
-  export CXXFLAGS="-march=armv8-a -O3 -pipe -fstack-protector-strong -fno-plt"
+  export KCXXFLAGS="-march=armv8-a+crc -mtune=cortex-a53 -O2 -pipe"
   unset LDFLAGS
   export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
   unset CPPFLAGS
@@ -76,7 +73,7 @@ build() {
   unset LDFLAGS
   make ${MAKEFLAGS} Image Image.gz modules
   # Generate device tree blobs with symbols to support applying device tree overlays in U-Boot
-  make ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
+  make  ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
 }
 
 _package() {

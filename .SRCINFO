@@ -1,6 +1,6 @@
 pkgbase = linux-aarch64-raspberrypi-4.14
 	pkgver = 4.14.95
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.kernel.org/
 	arch = any
 	license = GPL2
@@ -19,16 +19,16 @@ pkgbase = linux-aarch64-raspberrypi-4.14
 	source = cmdline.txt
 	source = dmi.patch
 	source = linux.preset
-	source = scripts.tar.gz::https://cloud.it-kraut.net/s/zES6dQ9SQyj7PPF/download
+	source = scripts.tar.gz::https://cloud.it-kraut.net/s/FDPnGq3ksBifKcA/download
 	source = 99-linux.hook
 	md5sums = SKIP
 	md5sums = 7462ced7cee9e33aa7925ea63771f0ad
-	md5sums = 7170c7bab4fc23bfb2d31340b7ccadb4
+	md5sums = 20855eddee77088cd54d732d5fd18b61
 	md5sums = c724d9c086060a17a2170c7d98dae908
 	md5sums = 6f4a4da9a6dec38507ff6e3a536f834a
 	md5sums = f80e2bf1fda4ff65606afea2939cc4a5
 	md5sums = 5898b5308f7afb2b9b091de62eb321f3
-	md5sums = 9912c127f93621dfc7b3e481bd9b1718
+	md5sums = a9ebd99b39fe2a7a13d1ec353f99d8ad
 	md5sums = 60f0317bfdda4cf9fa06f075cd3617c0
 
 pkgname = linux-aarch64-raspberrypi-4.14
