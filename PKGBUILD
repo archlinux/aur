@@ -24,21 +24,23 @@ sha1sums=('fc7ba6b860a126de15a6f26c2835a437774161e0'
           '02bee874ade2aa8d679fd593618254e1b9f703c3')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  mkdir -p ${pkgname}-${pkgver}/build
+
+  cd ${pkgname}-${pkgver}
   patch -p1 -i "${srcdir}/use-AV-prefixed-macros.patch"
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}/build
 
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}/build
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 data/freshwrapper.conf.example "${pkgdir}/usr/share/${pkgname}/freshwrapper.conf.example"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ../data/freshwrapper.conf.example "${pkgdir}/usr/share/${pkgname}/freshwrapper.conf.example"
+  install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
