@@ -1,9 +1,9 @@
-# Maintainer: Christopher Reimer <vdr4arch[at]creimer[dot]net>
+# Maintainer: YUP  <yupadmin[at]gmail,com[dot]com>
 pkgname=vdr-sc
 pkgver=r9.75b4379
 _vdrapi=2.4.0
 _gitver=75b4379e4fa3f6fa1f6908591be8e9bbb44dd990
-pkgrel=2
+pkgrel=3
 pkgdesc="Software CAM emulation. If compilation fails
  with FAILED COMPARISON OF PACKET please check README.FFdecsa 
  and set appropiate PARALLEL parameter in Makefile.patch"
@@ -30,10 +30,6 @@ prepare() {
 
   patch -p1 -i "$srcdir/../Makefile.patch"
 
-#Disable Keyfile support. If you want to watch paytv, pay for it.
-#  ( cd systems
-#    ls | grep -v cardclient | xargs rm -r )
-
   sed -i 's/MAXDVBDEVICES/MAXDEVICES/g' device.c
 }
 
@@ -50,19 +46,12 @@ package() {
      LOCDIR="$pkgdir/$(pkg-config vdr --variable=locdir)" \
      MAXCAID=64 \
      LIBDVBCSA=1 
-#     i18n systems
-     
-echo "pkgdir $pkgdir"
-   
-   make DESTDIR=${pkgdir} install
 
-#     VDRDIR="/usr" \ #libsc-dvbhddevice.so libsc-dvbsddevice.so libvdr-$_plugname.so
+  echo "pkgdir $pkgdir"
 
-#  install -Dm755 libsc-dvbhddevice.so "$pkgdir/usr/lib/vdr/plugins/libsc-dvbhddevice.so.$_vdrapi"
-#  install -Dm755 libsc-dvbsddevice.so "$pkgdir/usr/lib/vdr/plugins/libsc-dvbsddevice.so.$_vdrapi"
-#  install -Dm755 libvdr-$_plugname.so "$pkgdir/usr/lib/vdr/plugins/libvdr-$_plugname.so.$_vdrapi"
+  make DESTDIR=${pkgdir} install
 
-  install -Dm644 "$srcdir/20-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/20-$_plugname.conf"
+  install -Dm644 "$srcdir/20-${_plugname}.conf" "$pkgdir/etc/vdr/conf.avail/20-$_plugname.conf"
 }
 md5sums=('SKIP'
          '12c6a3abeadfa915fcfe736bb047a3ab'

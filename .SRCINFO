@@ -1,7 +1,7 @@
 pkgbase = vdr-sc
 	pkgdesc = Software CAM emulation. If compilation fails with FAILED COMPARISON OF PACKET please check README.FFdecsa and set appropiate PARALLEL parameter in Makefile.patch
 	pkgver = r9.75b4379
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/3PO/vdr-plugin-sc
 	arch = x86_64
 	arch = i686
