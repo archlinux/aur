@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="unique_identifier-release-release-kinetic-unique_id-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-geographic-info/unique_identifier-release/archive/release/kinetic/unique_id/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('48e23c6379268830a23651a257f525a1bfe7a2ba85d798415612447a65fe9779')
+sha256sums=('385c2f12bab41aab7f36c1fabaee41ecc8496bd6804f3e201d0cc797736d0bcf')
 
 build() {
   # Use ROS environment variables
