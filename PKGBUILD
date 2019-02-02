@@ -4,7 +4,7 @@ pkgdesc="ROS - roswtf is a tool for diagnosing issues with a running ROS system.
 url='http://ros.org/wiki/roswtf'
 
 pkgname='ros-kinetic-roswtf'
-pkgver='1.12.13'
+pkgver='1.12.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-roswtf-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/roswtf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9dab7ecf6cf0a01746e6825f7d63e3f7551c245a3e098a0bb70fd1b789c69ab9')
+sha256sums=('0d3d052af6249ebd27dc854ecc4987eaf1fb15ab6b29800c9616bbb89413d721')
 
 build() {
   # Use ROS environment variables
