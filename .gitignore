@@ -1,0 +1,9 @@
+# Blacklist:
+*
+
+# Whitelist:
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!gog-transistor.desktop
+!gog-transistor
