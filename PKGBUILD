@@ -2,9 +2,9 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=6.6.0
+pkgver=6.6.1
 _pkgver=6.6
-minorver=0
+minorver=1
 pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
@@ -27,7 +27,7 @@ source=(https://www.orfeo-toolbox.org/packages/OTB-$pkgver.tar.gz
 		git://github.com/jmichel-otb/GKSVM.git)
 noextract=()
 
-md5sums=('0c5cf6ab4d41db83489eb2dd05a833b1'
+md5sums=('b6733fa17e312e0f55d9cfe09607485c'
          'SKIP')
 
 
@@ -44,10 +44,10 @@ build() {
   msg "Extracting archive..."
   msg "starting make..."
  
-  if  [ -d "$srcdir/build/" ]; then
-    rm -rf $srcdir/build/
-   fi
-  mkdir $srcdir/build/
+#  if  [ -d "$srcdir/build/" ]; then
+#    rm -rf $srcdir/build/
+#   fi
+#  mkdir $srcdir/build/
  
    cd $srcdir/build
  
@@ -64,15 +64,15 @@ build() {
           -DPYTHON_LIBRARIES=/usr/lib/libpython2.7.so \
           -DPYTHON_INCLUDE_PATH=/usr/include/python2.7/ \
           -DOTB_INSTALL_PYTHON_DIR=/usr/lib/python2.7/site-packages/ \
-          -DITK_DIR=/usr/lib64/cmake/ITK-4.8 \
           -DBUILD_SHARED_LIBS=ON \
-          -DOTB_USE_QT4=ON \
+          -DOTB_USE_QT=ON \
           -DOTB_USE_MAPNIK=OFF \
-          -DOTB_USE_OPENCV=ON \
+          -DOTB_USE_OPENCV=OFF \
           -DOTB_USE_MUPARSER=ON \
           -DOTB_USE_LIBKML=ON \
-          -DOTB_USE_LIBSVM=ON \
-          -DOTB_DATA_USE_LARGEINPUT=ON
+          -DOTB_USE_LIBSVM=OFF \
+          -DOTB_DATA_USE_LARGEINPUT=ON \
+          -DOTB_USE_OPENMP=ON
          
   make
  
