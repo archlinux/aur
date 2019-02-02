@@ -8,7 +8,7 @@ pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.13.0
 pkgrel=5
 arch=('x86_64')
-url="http://pidgin.im/"
+url="https://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'libgadu' 'python' 'hicolor-icon-theme' 'farstream' 'tk'
