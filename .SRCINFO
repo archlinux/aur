@@ -1,14 +1,14 @@
 pkgbase = pharo-launcher
 	pkgdesc = Pharo Launcher helps you manage your Pharo images
-	pkgver = 1.5
-	pkgrel = 1
+	pkgver = 1.6
+	pkgrel = 0
 	epoch = 1
 	url = http://www.pharo-project.org/
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
-	source = http://files.pharo.org/pharo-launcher/1.5.1/PharoLauncher-linux-1.5.1-x64.zip
-	md5sums = c87794d2c8e86823463204cee9752345
+	source = http://files.pharo.org/pharo-launcher/1.6/PharoLauncher-linux-1.6-x64.zip
+	md5sums = 73851e30345089b233d128766b44af81
 
 pkgname = pharo-launcher
 
