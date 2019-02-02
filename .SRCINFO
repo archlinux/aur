@@ -1,0 +1,24 @@
+pkgbase = wingpanel-indicator-namarupa-git
+	pkgdesc = Unofficial Ayatana compatibility layer for wingpanel
+	pkgver = r11.c168028
+	pkgrel = 1
+	url = https://github.com/donadigo/wingpanel-indicator-namarupa
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = granite
+	depends = libindicator-gtk3-ubuntu
+	depends = libwingpanel-2.0.so
+	conflicts = wingpanel-indicator-ayatana
+	source = git+https://github.com/donadigo/wingpanel-indicator-namarupa.git
+	sha256sums = SKIP
+
+pkgname = wingpanel-indicator-namarupa-git
+
