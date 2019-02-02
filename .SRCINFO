@@ -7,12 +7,12 @@ pkgbase = hydrapaper-git
 	license = GPL3
 	makedepends = git
 	makedepends = meson
-	depends = gtk3>=3.24
+	depends = gtk3
 	depends = python
 	depends = python-pillow
 	depends = libwnck3
-	depends = python-gmconfig
-	depends = python-gmgtk
+	depends = python-gmconfig-git
+	depends = python-gmgtk-git
 	provides = hydrapaper
 	conflicts = hydrapaper
 	source = hydrapaper::git+https://gitlab.com/gabmus/hydrapaper
