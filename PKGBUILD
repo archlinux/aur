@@ -4,7 +4,7 @@ pkgdesc="ROS - This package defines messages for commonly used sensors, includin
 url='http://ros.org/wiki/sensor_msgs'
 
 pkgname='ros-kinetic-sensor-msgs'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="common_msgs-release-release-kinetic-sensor_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/kinetic/sensor_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b0348b7ef45479675debe668718fe0e7433f61348a3d1eb2b8f1a566258aa8e2')
+sha256sums=('c6dc7550aa24eb95abdd0a98e55de8bc0e20f693648c572f2648fdd7f97cc518')
 
 build() {
   # Use ROS environment variables
