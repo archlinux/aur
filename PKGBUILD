@@ -7,13 +7,13 @@ pkgname=gog-bastion
 # pkgver was once 2.0.0.1
 epoch=2
 pkgver='1.50436.29.08.2018.23317'
-pkgrel=1
+pkgrel=2
 pkgdesc='An action role-playing game set in a lush imaginative world. (GOG version)'
 url='https://www.gog.com/game/bastion'
 license=('custom')
 groups=('games' 'gog')
 arch=('i686' 'x86_64')
-source=("local://bastion_${pkgver//./_}.sh"
+source=("local:///bastion_${pkgver//./_}.sh"
         "${pkgname}.desktop"
         "$pkgname")
 sha256sums=('e8b35a29dbe0e941232eea3c63ad2ae75f3d605868dfab5acdae85254e73b79a'
