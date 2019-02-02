@@ -3,7 +3,7 @@
 
 pkgname=ruby-htmlentities
 _pkgname=htmlentities
-pkgver=4.3.3
+pkgver=4.3.4
 pkgrel=1
 pkgdesc='http://htmlentities.rubyforge.org/'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('ruby')
 source=("http://gems.rubyforge.org/gems/$_pkgname-$pkgver.gem")
 noextract=("$_pkgname-$pkgver.gem")
-sha256sums=('178c50f656077512d33e0786f924cb0a2281881c3fcd3e1b8e070a6cec15956c')
+sha256sums=('125a73c6c9f2d1b62100b7c3c401e3624441b663762afa7fe428476435a673da')
 
 package() {
   cd "$srcdir"
