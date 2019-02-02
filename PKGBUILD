@@ -4,20 +4,20 @@ pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
 pkgver=0.93
 srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="http://www.xnview.com/en/xnviewmp/"
 
 arch=('x86_64' 'i686')
 license=('custom')
 depends=('qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras' 'qtav' 'desktop-file-utils')
-optdepends=('gvfs: support for moving files to trash')
+optdepends=('glib2: support for moving files to trash')
 conflicts=('xnviewmp')
 
-source=('xnviewmp.desktop')
+source=('xnviewmp.desktop' 'gvfs-trash')
 source_x86_64=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz")
 source_i686=("XnViewMP-linux_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux.tgz")
-md5sums=('24f44d5a881b94daf48775213a57e4ec')
+md5sums=('24f44d5a881b94daf48775213a57e4ec' '0c749b6334e8c4cf55cec56281458214')
 md5sums_x86_64=('fcf4929e5f69847ee44a1cab0771c4ce')
 md5sums_i686=('17e8ab2a1de48c8d9bd5f4a42bfac83e')
 
@@ -55,6 +55,15 @@ package() {
   for dir in "styles"; do
     ln -s "/usr/lib/qt/plugins/${dir}" "${pkgdir}/opt/${_pkgname}/lib/"
   done
+
+  # XnView uses gvfs-trash to move files to the trash, unfortunately gvfs does
+  # not provide this command any more; it has been replaced by gio trash,
+  # provided by glib2. As a workaround, use a wrapper and add it to PATH in
+  # xnview.sh.
+  install -d -m755 "${pkgdir}/opt/${_pkgname}/bin"
+  install -m755 "${srcdir}/gvfs-trash" "${pkgdir}/opt/${_pkgname}/bin"
+  sed -i '/LD_LIBRARY_PATH/ i \
+export PATH="$dirname/bin:$PATH"' "${pkgdir}/opt/${_pkgname}/xnview.sh"
 }
 
 # vim:set ts=2 sw=2 et:
