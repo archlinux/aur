@@ -1,0 +1,16 @@
+pkgbase = plasma-theme-helium-git
+	pkgdesc = A translucent theme for Plasma 5
+	pkgver = 8.7.1
+	pkgrel = 1
+	url = https://github.com/mcder3/Helium-Plasma-Theme
+	arch = any
+	license = Creative Commons
+	makedepends = git
+	provides = plasma-theme-helium
+	conflicts = plasma-theme-helium
+	options = !strip
+	source = plasma-theme-helium-git::git+https://github.com/mcder3/Helium-Plasma-Theme.git
+	sha256sums = SKIP
+
+pkgname = plasma-theme-helium-git
+
