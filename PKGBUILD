@@ -4,7 +4,7 @@ pkgdesc="ROS - This package defines messages for defining robot trajectories."
 url='http://wiki.ros.org/trajectory_msgs'
 
 pkgname='ros-kinetic-trajectory-msgs'
-pkgver='1.12.5'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="common_msgs-release-release-kinetic-trajectory_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/kinetic/trajectory_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('77bd10ccb752011c27c31647a847432616ff3be60e334ff8f4e1dbaaed3cdc20')
+sha256sums=('353fdb38ae42360f5d134583ddf045c36c6bb959b3406c46257f3e2b0774f5e7')
 
 build() {
   # Use ROS environment variables
