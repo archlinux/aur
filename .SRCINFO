@@ -1,15 +1,17 @@
 pkgbase = binfmt-support
-	pkgdesc = register interpreters for various binary formats
-	pkgver = 2.1.8
-	pkgrel = 2
-	url = https://packages.debian.org/en/sid/binfmt-support
+	pkgdesc = Arbitraty executable file format kernel extension
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://git.savannah.gnu.org/cgit/binfmt-support.git/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = libpipeline
-	options = emptydirs
-	source = http://http.debian.net/debian/pool/main/b/binfmt-support/binfmt-support_2.1.8.orig.tar.gz
-	sha256sums = ebad04db8444d2275d042b5074fa3e160bcf3e2c23ee9b660e75f5acd73618a2
+	makedepends = make
+	makedepends = gcc
+	depends = autoconf
+	depends = automake
+	source = https://git.savannah.gnu.org/cgit/binfmt-support.git/snapshot/binfmt-support-2.2.0.tar.gz
+	sha512sums = b35238fa96f7e3201f7c9a70172ecd2c6b0be66e4735ff96c17ae2167f670a67c856d0fc1b0d50bf3c14f4a35c5e9927a848814791ea9be928dff82426cb0da4
 
 pkgname = binfmt-support
 
