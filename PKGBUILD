@@ -1,51 +1,49 @@
-# Maintainer: Patrice Peterson <runiq@archlinux.us>
-# Thanks to: Ainola for the base PKGBUILD (gog-undertale)
+# Maintainer: Jeremy Audet <jerebear@protonmail.com>
+# Contributor: Patrice Peterson <runiq@archlinux.us>
+# shellcheck shell=bash
+# shellcheck disable=SC2034,SC2154
 
 pkgname=gog-bastion
-pkgver=2.0.0.1
+# pkgver was once 2.0.0.1
+epoch=2
+pkgver='1.50436.29.08.2018.23317'
 pkgrel=1
-pkgdesc="An action role-playing game set in a lush imaginative world (GOG version)"
-url="http://www.supergiantgames.com/games/bastion"
+pkgdesc='An action role-playing game set in a lush imaginative world. (GOG version)'
+url='https://www.gog.com/game/bastion'
 license=('custom')
+groups=('games' 'gog')
 arch=('i686' 'x86_64')
-# If Firejail is installed, this application will be sandboxed automatically.
-optdepends=('firejail: Automatically sandbox this application from your OS')
-source=(
-    "gog://${pkgname//-/_}_${pkgver}.sh"
-    "${pkgname}.desktop"
-    "$pkgname")
-sha256sums=('8c5e08d8a22d24b928b06472bb12ac2c039e1dec1931cef89999c305e96478f6'
-            'fafd66b2441bf8e889ad7331bdc162efb6989b5999bb4235f2ba07fef9f6c718'
-            'b18220f78b29d6a1f9eb92a9def50021f217784eeaf447b7564b99e11a24ad40')
+source=("local://bastion_${pkgver//./_}.sh"
+        "${pkgname}.desktop"
+        "$pkgname")
+sha256sums=('e8b35a29dbe0e941232eea3c63ad2ae75f3d605868dfab5acdae85254e73b79a'
+            '79c2b1c4e8d00c3b0f9dfc2b700929b6dc85b332047533e418fd0eb5cd41465b'
+            '306723d271f33e32d3e057b7b1c69bc0075223364c136898557b24e4ae035a1c')
 
-# You need to download the gog.com installer file manually or with lgogdownloader.
-DLAGENTS+=("gog::/usr/bin/echo %u Download the GOG file to \"$PWD\" or set up a gog:// DLAGENT.")
-
-# Prevent compressing final package
-PKGEXT=".pkg.tar"
+# ABS automagically figures out how to extract this game file. If said magic
+# starts failing in the future, see prepare() in gog-pyre.
 
 package(){
-    cd "${srcdir}"
+  # game files
+  install -d "${pkgdir}/opt/${pkgname}"
+  cp -rt "${pkgdir}/opt/${pkgname}" "${srcdir}/data/noarch/"*
 
-    # Install game
-    install -d "${pkgdir}/opt/${pkgname}/"
-    install -d "${pkgdir}/opt/${pkgname}/support"
-    install -d "${pkgdir}/usr/bin/"
-    cp -r "data/noarch/game/" "${pkgdir}/opt/${pkgname}/"
-    
+  # launcher
+  chmod 755 "${pkgdir}/opt/${pkgname}/start.sh"
+  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-    find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
-    install -Dm755 "data/noarch/start.sh"               \
-        "${pkgdir}/opt/${pkgname}/"
-    install -Dm755 data/noarch/support/*.{sh,shlib} -t  \
-        "${pkgdir}/opt/${pkgname}/support"
+  # desktop environment integration
+  install -Dm644 \
+    "${srcdir}/data/noarch/support/icon.png" \
+    "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 \
+    "${srcdir}/${pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    # Desktop integration
-    install -Dm 644 "data/noarch/support/icon.png" \
-        "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "data/noarch/docs/End User License Agreement.txt" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "${srcdir}/${pkgname}.desktop" \
-        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  # license
+  install -Dm644 \
+    "${srcdir}/data/noarch/docs/End User License Agreement.txt" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+# vim: ts=2 sw=2 et:

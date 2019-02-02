@@ -1,13 +1,5 @@
-#! /bin/sh
+#!/usr/bin/bash
 
-run="/opt/gog-bastion/start.sh"
-# The launcher fails unless in its dir.
-cd "$(dirname "$run")" || exit 1
-
-if which firejail >/dev/null 2>&1 && [ -z "$FIREJAIL_IGNORE" ]; then
-  echo "Firejail detected. Enforcing a sandbox"
-  echo "To bypass Firejail enforcement, run FIREJAIL_IGNORE=1 $run."
-  firejail --caps.drop=all "$run"
-else
-  "$run"
-fi
+# Setting TERM prevents the application from crashing with "System.Exception:
+# Magic number is wrong: 542." See: https://github.com/mono/mono/issues/11557
+TERM=xterm /opt/gog-bastion/start.sh

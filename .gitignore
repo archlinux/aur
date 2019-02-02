@@ -1,0 +1,9 @@
+# Blacklist:
+*
+
+# Whitelist:
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!gog-bastion.desktop
+!gog-bastion

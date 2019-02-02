@@ -6,5 +6,4 @@ Icon=gog-bastion
 Type=Application
 Terminal=false
 StartupNotify=true
-Categories=Game;AudioVideo;
-Encoding=UTF-8
+Categories=Game
