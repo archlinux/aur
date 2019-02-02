@@ -1,0 +1,12 @@
+diff -ru icu.orig/source/i18n/uspoof.cpp icu/source/i18n/uspoof.cpp
+--- icu.orig/source/i18n/uspoof.cpp	2013-01-11 00:22:42.000000000 +0000
++++ icu/source/i18n/uspoof.cpp	2019-02-02 13:55:41.791638667 +0000
+@@ -369,7 +369,7 @@
+         // u_strToUTF8() in preflight mode is an easy way to do it.
+         U_ASSERT(position16 <= len16);
+         u_strToUTF8(NULL, 0, position, text16, position16, status);
+-        if (position > 0) {
++        if (position != NULL) {
+             // position is the required buffer length from u_strToUTF8, which includes
+             // space for a terminating NULL, which we don't want, hence the -1.
+             *position -= 1;

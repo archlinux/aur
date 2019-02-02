@@ -10,7 +10,7 @@ _libdir='/usr/lib'
 
 pkgname=${_pkgbase}${_pkgmajor}
 pkgver=${_pkgmajor}.${_pkgminor}.${_pkgpatch}
-pkgrel=1
+pkgrel=2
 pkgdesc='International Components for Unicode library'
 url='http://site.icu-project.org/'
 license=('custom:icu')
@@ -19,10 +19,12 @@ arch=('i686' 'x86_64')
 depends=('gcc-libs>=4.7.1-5' 'sh')
 source=("http://download.icu-project.org/files/${_pkgbase}4c/${pkgver}/${_pkgbase}4c-${pkgver//./_}-src.tgz"
         'icu.8198.revert.icu5431.patch'
-        'icu-testtwodigityear.patch')
+        'icu-testtwodigityear.patch'
+        'icu-positionNULLcheck.patch')
 md5sums=('beb98aa972219c9fcd9c8a71314943c9'
          'ebd5470fc969c75e52baf4af94a9ee82'
-         '8d14652aee347adba25886cd14af1637')
+         '8d14652aee347adba25886cd14af1637'
+         'c2ead5292460c386818d75b2b6a69a5f')
 
 prepare() {
   cd ${srcdir}/${_pkgbase}/source
@@ -34,6 +36,9 @@ prepare() {
   # patch taken from CentOS 7 source package
   # http://vault.centos.org/7.2.1511/os/Source/SPackages/icu-50.1.2-15.el7.src.rpm
   patch -p2 -i ${srcdir}/icu-testtwodigityear.patch
+
+  # fix position pointer being checked against > 0
+  patch -p2 -i ${srcdir}/icu-positionNULLcheck.patch
 }
 
 build() {
