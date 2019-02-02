@@ -4,7 +4,7 @@ pkgdesc="ROS - nav_msgs defines the common messages used to interact with the na
 url='http://wiki.ros.org/nav_msgs'
 
 pkgname='ros-kinetic-nav-msgs'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="common_msgs-release-release-kinetic-nav_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/kinetic/nav_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2fe03aa4cc28febaa67dbe797f6a5956bc831ce36293cd9974f445a916cbc01b')
+sha256sums=('986a5654829d3abf8df823f456b2a2df589af13fe74e77e469395f2ad186c300')
 
 build() {
   # Use ROS environment variables
