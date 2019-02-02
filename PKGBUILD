@@ -4,10 +4,10 @@ pkgdesc="ROS - Message and service data structures for interacting with Gazebo f
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-kinetic-gazebo-msgs'
-pkgver='2.5.14'
+pkgver='2.5.18'
 _pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-trajectory-msgs
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-kinetic-gazebo_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/kinetic/gazebo_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('8f76ee256b97ab68b4470572282e662ec94a0d3324dfb9093b7a2688c5c61910')
+sha256sums=('ff8423a09d8dca2220e39b4a03f4c1b60011fca24ee7a40e90b388e45fa59dc5')
 
 build() {
   # Use ROS environment variables
