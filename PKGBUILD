@@ -5,51 +5,46 @@ pkgdesc="OpenGL powered animated wallpapers with configuration utility, autostar
 url="https://launchpad.net/livewallpaper"
 license=('GPL3')
 
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.5.0.r333
+pkgrel=1
 arch=('x86_64' 'i686')
 
-makedepends=('intltool' 'xcftools' 'cmake' 'vala')
+makedepends=(
+    'bzr' 'cmake' 'ninja' 'vala' 'intltool' 'xcftools'
+)
 depends=(
     'libpeas' 'upower' 'libappindicator-gtk3' 'gobject-introspection'
     'python' 'python-cairo' 'python-opengl' 'glew'
 )
 
 source=(
-    'https://launchpad.net/livewallpaper/0.5/0.5.0/+download/livewallpaper-0.5.0.tar.gz'
-    'livewallpaper.patch'
+    "${pkgname}"::'bzr+https://launchpad.net/livewallpaper/trunk'
 )
 
 sha256sums=(
-    'f4ce97a721015b135eb675915eb306c1fb256e680d480fe13e4fe6ca81c7e04e'
-    '09945264707109bbebca632b40a7607b3ef882fe2fadd15d235f18ef0763a279'
+    'SKIP'
 )
 
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    # Patches:
-    # * Please use python3
-    # * Fix ref
-    # * Fix old API (fromstring/tostring to frombytes/tobytes)
-    # * CMake : remove debian dir
-    # * CMake : disable doc generation (needs gtk-doc)
-    patch -p1 -l -i "${srcdir}/livewallpaper.patch"
+pkgver() {
+  cd "${pkgname}"
+  bzr tags | sort -n -k1 | sed 's/.*-//g'| awk -v REV="$(bzr revno)" 'END { printf("%s.r%s\n", $1, REV-$3) }'
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    rm -rf "build"
-    mkdir  "build"
-    pushd  "build" >/dev/null
+    cd "${pkgname}"
+    mkdir "build" -p
+    cd    "build"
 
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-    make DESTDIR="${pkgdir}"
+    cmake -GNinja \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        ..
+
+    ninja
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    pushd "build" >/dev/null
+    cd "${pkgname}"
+    cd "build"
 
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja install
 }
