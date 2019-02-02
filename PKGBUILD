@@ -3,9 +3,9 @@
 pkgname=python-justbytes
 _pkgname=justbytes
 pkgver=0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="computing with and displaying bytes"
-url="http://pythonhosted.org/justbytes/"
+url="https://pypi.org/project/justbytes/"
 depends=('python' 'python-justbases')
 checkdepends=('python-nose' 'python-hypothesis' 'python-pylint')
 makedepends=('python-setuptools')
@@ -18,6 +18,7 @@ check() {
     cd $srcdir/${_pkgname}-$pkgver
     nosetests
 }
+
 build() {
     cd $srcdir/${_pkgname}-$pkgver
     python setup.py build
