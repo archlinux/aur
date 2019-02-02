@@ -2,35 +2,21 @@
 
 _name=etesync
 pkgname=python-etesync
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Python API to interact with an EteSync server."
 arch=('any')
 url="https://pypi.python.org/pypi/etesync/"
 license=('LGPL')
-depends=('python-appdirs'
-         'python-asn1crypto'
-         'python-cffi'
-         'python-coverage'
-         'python-cryptography'
-         'python-furl'
-         'python-idna'
-         'python-orderedmultidict'
-         'python-packaging'
-         'python-peewee'
-         'python-py'
-         'python-pyasn1'
-         'python-pycparser'
-         'python-pyparsing'
-         'python-dateutil'
-         'python-requests'
-         'python-scrypt'
-         'python-six'
-         'python-vobject')
+depends=('python-appdirs' 'python-asn1crypto' 'python-cffi' 'python-coverage'
+'python-cryptography' 'python-furl' 'python-idna' 'python-orderedmultidict'
+'python-packaging' 'python-peewee' 'python-py' 'python-pyasn1'
+'python-pycparser' 'python-pyparsing' 'python-dateutil' 'python-requests'
+'python-scrypt' 'python-six' 'python-vobject')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('b76e35755476a1c7f7c8729bffcf48a20b2f27281896cc29b93426ef93c36700e9b03b9a8fad5903bb6e25fe0251272883861e189ab67eaf18ec48138a4eee25')
+sha512sums=('d779593e43e08a103c626057c6274dc00d1eef318a08dc052e9360d38132350c15f6dd99e607834590878e745efad153357348c2199d13d5ee22c9fd2485d3a2')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
@@ -45,7 +31,13 @@ check() {
   cd "${pkgname}-${pkgver}"
   # only run relevant tests:
   # https://github.com/etesync/pyetesync/issues/5
-  pytest tests/{test_collections.py,test_crypto.py}
+  # disable intermingled integration tests
+  # https://github.com/etesync/pyetesync/issues/12
+  pytest -k 'not test_crud \
+            and not test_content_crud \
+            and not test_syncing \
+            and not test_unicode' \
+    tests/{test_collections.py,test_crypto.py}
 }
 
 package() {
