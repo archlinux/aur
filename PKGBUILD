@@ -1,14 +1,14 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=websocat-git
-pkgver=1.2.0.r31.g45523d8
+pkgver=1.2.0.r37.g5beb7e6
 pkgrel=1
 pkgdesc="Command-line client for WebSockets"
 arch=(x86_64)
-url='https://github.com/vi/websocat/'
+url="https://github.com/vi/websocat"
 license=(MIT)
 makedepends=(git rustup)
-source=("${pkgname}::git+https://github.com/vi/websocat.git")
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

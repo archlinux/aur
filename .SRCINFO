@@ -1,13 +1,13 @@
 pkgbase = websocat-git
 	pkgdesc = Command-line client for WebSockets
-	pkgver = 1.2.0.r31.g45523d8
+	pkgver = 1.2.0.r37.g5beb7e6
 	pkgrel = 1
-	url = https://github.com/vi/websocat/
+	url = https://github.com/vi/websocat
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = rustup
-	source = websocat-git::git+https://github.com/vi/websocat.git
+	source = websocat-git::git+https://github.com/vi/websocat
 	sha256sums = SKIP
 
 pkgname = websocat-git
