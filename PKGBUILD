@@ -1,6 +1,6 @@
 # Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 pkgname=open-stage-control
-pkgver=0.37.2
+pkgver=0.41.4
 pkgrel=1
 pkgdesc='A libre desktop OSC bi-directional control surface application'
 arch=(i686 x86_64 armv7h)
@@ -12,7 +12,7 @@ depends_x86_64=('gcc-libs-multilib')
 optdepends=('python-pyrtmidi: send and receive midi messages')
 makedepends=('npm')
 source=("https://github.com/jean-emmanuel/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f6d2eb80515d1e0bda66a65284fd9826ec475279cff8ed64ad5ad5191eb03fa7')
+sha256sums=('ec280e372fb11073edd2695048f21bb92de4dddc8a886974a6efa46188fdc470')
 _platform=linux
 case "$CARCH" in
   i686)
@@ -39,6 +39,7 @@ build() {
 
   # Make sure to run this inside build() with non-fakeroot privileges
   npm install # --cache 'node_modules' --production
+  npm run build
 }
 
 package() {
