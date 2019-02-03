@@ -1,6 +1,6 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=xtl
-pkgver=0.4.15
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="QuantStack tools library - Basic tools (containers, algorithms) used by other quantstack packages"
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=('gcc')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QuantStack/xtl/archive/${pkgver}.tar.gz")
-sha512sums=('821c1b98f9aa83f93b102948af2e6e88aad37fd12a13a9f4c8a3f3f5806c9edf19bf2a595e47b3f8293e7bd5b681ab4965f8ad3675c4f344bbfff19b219f22ee')
+sha512sums=('6181334dda9a2afce4ce2809572605c2f911770f7805a8328e14fa94d4572475c7725f2ead54daec00e62933df6a4c22616a247798c5b7f1f3bd4290945776c8')
 
 build() {
 	cd "${pkgname}-${pkgver}"

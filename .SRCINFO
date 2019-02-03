@@ -1,14 +1,14 @@
 pkgbase = xtl
 	pkgdesc = QuantStack tools library - Basic tools (containers, algorithms) used by other quantstack packages
-	pkgver = 0.4.15
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/QuantStack/xtl
 	arch = any
 	license = BSD-3-Clause
 	makedepends = cmake
 	depends = gcc
-	source = xtl-0.4.15.tar.gz::https://github.com/QuantStack/xtl/archive/0.4.15.tar.gz
-	sha512sums = 821c1b98f9aa83f93b102948af2e6e88aad37fd12a13a9f4c8a3f3f5806c9edf19bf2a595e47b3f8293e7bd5b681ab4965f8ad3675c4f344bbfff19b219f22ee
+	source = xtl-0.5.4.tar.gz::https://github.com/QuantStack/xtl/archive/0.5.4.tar.gz
+	sha512sums = 6181334dda9a2afce4ce2809572605c2f911770f7805a8328e14fa94d4572475c7725f2ead54daec00e62933df6a4c22616a247798c5b7f1f3bd4290945776c8
 
 pkgname = xtl
 
