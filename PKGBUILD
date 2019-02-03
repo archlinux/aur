@@ -3,7 +3,7 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
-pkgver=56.2.6+6a1ad121f0f1
+pkgver=56.2.7+f367fd24ba20
 pkgrel=1
 pkgdesc="64-Bit optimized Firefox fork, no data collection, allows unsigned extensions"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
 provides=("waterfox=$pkgver")
 conflicts=('waterfox' 'waterfox-bin')
 install=waterfox.install
-options=('!emptydirs' '!makeflags')
+options=('!emptydirs' '!makeflags' '!strip')
 source=(git://github.com/MrAlex94/Waterfox
         mozconfig
         waterfox.desktop
@@ -31,7 +31,7 @@ source=(git://github.com/MrAlex94/Waterfox
 		default32.png
 		default48.png)
 sha512sums=('SKIP'
-            '480f59c7fa43fc18b996fbbfcf0f318b95e9cc9cd4a475c21038480dafd465724a46b50158081dc612445810fc4ebb80bfaccfeabadc438c5e6bb3fc9a6a7ef2'
+            '0eb1c5a89b17585126e3cd374c0b61970f97bb2d3c3d63052cf6b632b71ac5a2aa852dc86ac07a3a5b7dfe5e9177014fc5746e0281eb2f71061465279a32eda9'
             '93937770fa66d63f69c6283ed1f19ac83b9c9c4f5cc34e79d11ac31676462be9f7f37bcd35e785ceb8c7d234a09236d1f26b21e551b622854076fb21bcda44d3'
             '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
             'c17dceeefd58447917e27a33d6688a28158b919c41867909b11478d8be7f155b61ae8fda2e0381c14210583f1c6ecf678dfb469c4826f34e24b8ee0b96a8aaa5'
@@ -41,7 +41,8 @@ sha512sums=('SKIP'
             'a038a805a41e55c89cd601a07e6ae756e7017f4eb9eb65525f6cb9d86e2f94bda559961b6ab1e66a0dfa7436db6f1da166c2fc84bfc6cad5fcaec6a82ffb0a96'
             '33afbb1ec2eb62412965bc698bdf1cc3c177645c51369397e92bdba7a7891709ccf1f3d2f9e234866e7c452a3ae8bfe289e0cbfd6047ec5efa1c7c568b9e7888'
             '64f9e8b812d00d39239f9aa00aa51c937113fa3833652d2da318ae8c9627ac7b0372bffc2c1c0a2c1ea69ec97a3dc11fafee58175cbdab503aef299543f3fd90'
-            'e5000a4e25bf6a15eae99a1e9b3cc4f9a1712b7aacc783eb0c25b20d04d8bbc9e9e80e95ce8c709aba595f699aa2dc4ba6104ea0f0375b00ff2cc2353d93c8f1')            
+            'e5000a4e25bf6a15eae99a1e9b3cc4f9a1712b7aacc783eb0c25b20d04d8bbc9e9e80e95ce8c709aba595f699aa2dc4ba6104ea0f0375b00ff2cc2353d93c8f1')
+            
 # don't compress the package - we're just going to uncompress during install in a moment
 PKGEXT='.pkg.tar'   
 

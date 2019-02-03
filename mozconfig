@@ -1,14 +1,16 @@
 . $topsrcdir/browser/config/mozconfig
 export CC=clang
 export CXX=clang++
-export LDFLAGS="-Wl,-z,norelro,-O3,--sort-common,--as-needed,--relax,-z,combreloc,-z,global,--no-omagic"
 
-ac_add_options --enable-optimize="-O3 -msse2 -mfpmath=sse -march=native -mtune=native -fcolor-diagnostics -w"
+export CPPFLAGS=""
+export CXXFLAGS=""
+export CFLAGS=""
+
+# a bit of extra hardening and optimization, edit to your tastes
+export LDFLAGS="-Wl,-O3,--no-omagic,--sort-common,--as-needed,--relax,-z,norelro,-z,combreloc,-z,global,-z,noexecstack,-z,now"
+ac_add_options --enable-optimize="-O3 -msse2 -mfpmath=sse -march=native -mtune=native -fcolor-diagnostics -w -fstack-protector-strong -fcf-protection=full -Wp,-D_GLIBCXX_ASSERTIONS -fno-plt"
+
 ac_add_options --target=x86_64-pc-linux-gnu
-
-ac_add_options --disable-pulseaudio
-ac_add_options --enable-alsa
-
 mk_add_options AUTOCLOBBER=1
 mk_add_options MOZ_MAKE_FLAGS=-j6
 
@@ -17,9 +19,11 @@ ac_add_options --enable-strip
 ac_add_options --prefix=/usr
 ac_add_options --libdir=/opt
 
+ac_add_options --enable-rust-simd # on x86 requires SSE2
 ac_add_options --enable-release
 ac_add_options --enable-application=browser
 ac_add_options --enable-eme=widevine
+
 ac_add_options --with-app-name=waterfox
 ac_add_options --with-app-basename=Waterfox
 ac_add_options --with-branding=browser/branding/unofficial
@@ -27,6 +31,7 @@ ac_add_options --with-distribution-id=org.waterfoxproject
 
 ac_add_options --enable-startup-notification
 ac_add_options --enable-pulseaudio
+ac_add_options --enable-alsa
 
 # library and chrome format
 ac_add_options --enable-chrome-format=omni
