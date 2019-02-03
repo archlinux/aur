@@ -3,7 +3,7 @@
 
 pkgname=minetest-git
 _pkgname=minetest
-pkgver=20190127.c2dabcff6
+pkgver=20190203.809cb9fc0
 pkgrel=1
 pkgdesc='Voxel game engine and Infiniminer/Minecraft-inspired game'
 url='http://www.minetest.net/'
@@ -13,11 +13,9 @@ makedepends=('git' 'cmake')
 depends=('bzip2' 'freetype2' 'irrlicht' 'jsoncpp' 'leveldb' 'libjpeg'
          'libpng' 'libvorbis' 'luajit' 'mesa' 'openal' 'sqlite')
 source=('git://github.com/minetest/minetest.git'
-        'git://github.com/minetest/minetest_game.git'
-         'po.patch')
+        'git://github.com/minetest/minetest_game.git')
 sha256sums=('SKIP'
-            'SKIP'
-            'd5dc5196d83b7bb76cfa24b185950bd8dcaffcb8f617f782c820a7d6ddaa6dce')
+            'SKIP')
 
 conflicts=("${_pkgname}"{,-common,-server})
 provides=("${_pkgname}"{,-common,-server})
@@ -31,8 +29,6 @@ pkgver() {
 prepare() {
 	cd "${srcdir}"
 	cp -a minetest_game minetest/games
-	cd minetest
-	patch -p1 -i ../po.patch
 }
 
 build() {
