@@ -1,13 +1,13 @@
 # Author: futpib <futpib@gmail.com>
 
 pkgname=papeaks-git
-pkgver=1.0.0.r0.g4fa9d2b
+pkgver=1.0.0.r1.g6c79142
 pkgrel=1
 pkgdesc="PulseAudio volume peaks on standard output"
 arch=('any')
 url='https://github.com/futpib/papeaks'
 license=('GPL')
-depends=()
+depends=('libpulse')
 makedepends=('git' 'rust')
 provides=('papeaks')
 conflicts=('papeaks')
