@@ -1,9 +1,9 @@
 pkgbase = papeaks-git
 	pkgdesc = PulseAudio volume peaks on standard output
-	pkgver = 1.0.0.r1.g6c79142
+	pkgver = 1.0.0.r3.g9f35743
 	pkgrel = 1
 	url = https://github.com/futpib/papeaks
-	arch = any
+	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = rust
