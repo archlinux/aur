@@ -6,13 +6,13 @@
 
 pkgname=compiz
 pkgver=0.9.13.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
 license=('GPL' 'LGPL' 'MIT')
-depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'metacity' 'glu' 'libsm' 'dconf')
-makedepends=('cmake' 'intltool')
+depends=('boost-libs' 'xorg-server' 'fuse2' 'glibmm' 'libwnck3' 'pygtk' 'pyrex' 'protobuf' 'metacity' 'glu')
+makedepends=('boost' 'cmake' 'intltool')
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
@@ -38,6 +38,7 @@ prepare() {
   patch -p1 -i "${srcdir}/reverse-unity-config.patch"
 
   # Fix decorator start command
+  # This MUST be run AFTER reverse-unity-config.patch. Otherwise it has no effect at all
   sed -i 's/exec \\"${COMPIZ_BIN_PATH}compiz-decorator\\"/exec \/usr\/bin\/compiz-decorator/g' plugins/decor/decor.xml.in
 
   # Set focus prevention level to off which means that new windows will always get focus
@@ -76,7 +77,7 @@ build() {
     -DBUILD_KDE4=Off \
     -DCOMPIZ_BUILD_TESTING=Off \
     -DCOMPIZ_WERROR=Off \
-    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall,ccp" \
+    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall,ccp"
 
     make
 }
@@ -100,4 +101,11 @@ package() {
     install -dm755 "${pkgdir}/usr/share/glib-2.0/schemas/"
     install -m644 generated/glib-2.0/schemas/*.gschema.xml "${pkgdir}/usr/share/glib-2.0/schemas/"
   fi
+
+  # Install licenses
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 "${srcdir}/${pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 "${srcdir}/${pkgname}-${pkgver}/COPYING.GPL" "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 "${srcdir}/${pkgname}-${pkgver}/COPYING.LGPL" "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 "${srcdir}/${pkgname}-${pkgver}/COPYING.MIT" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
