@@ -3,6 +3,7 @@ pkgbase = linvst-stable
 	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst
+	install = linvst-stable.install
 	arch = x86_64
 	license = GPL
 	depends = wine
