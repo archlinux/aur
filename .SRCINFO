@@ -1,6 +1,6 @@
 pkgbase = proaudio-meta
 	pkgdesc = Metapackage for most useful audio production software
-	pkgver = 2019.01.17
+	pkgver = 2019.02.03
 	pkgrel = 1
 	url = https://github.com/Bleuzen/archlinux-packages
 	install = proaudio-meta.install
@@ -17,6 +17,7 @@ pkgbase = proaudio-meta
 	depends = lmms
 	depends = pulseeffects
 	depends = helm
+	depends = zynaddsubfx
 	depends = drumkv1
 	depends = padthv1
 	depends = samplv1
