@@ -3,50 +3,47 @@
 # Contributor: tracer <jcdenton513 gmail com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=orpie
-pkgver=1.5.2
-pkgrel=11
+pkgver=1.6.0
+pkgrel=1
 epoch=
-pkgdesc="https://github.com/pelzlpj/orpie"
+pkgdesc="Curses-based RPN calculator"
 arch=('i686' 'x86_64')
-url="http://pessimization.com/software/orpie/"
-license=('GPL')
+url="https://github.com/pelzlpj/orpie"
+license=('GPL3')
 groups=()
 depends=('ncurses' 'gsl')
-makedepends=('ocaml' 'gsl' 'camlp4')
+makedepends=('ocaml' 'ocaml-gsl' 'camlp5' 'dune' 'ocaml-curses' 'ocaml-num')
 checkdepends=()
 optdepends=()
 provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=("!emptydirs")
 install=
 changelog=
-source=("https://github.com/pelzlpj/${pkgname}/releases/download/release-${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        'mlgsl_sf.patch')
+source=("https://github.com/pelzlpj/orpie/archive/release-${pkgver}.tar.gz"
+        "install-prefix.patch")
 noextract=()
-md5sums=('1fd02e75549cca954cebbd13271ea7f5'
-         'e54c939635e1aec69f887297dcb3427a')
-sha1sums=('9786df20fb272fd36f87868bed04cab504602282'
-          'f497570215395340ea8899677d2e828e2a0822b2')
-sha256sums=('de557fc7f608c6cb1f44a965d3ae07fc6baf2b02a0d7994b89d6a0e0d87d3d6d'
-            '5647572b6cf3b7b12a7ae2727df65ee100f416e33e967e1a4ced62cba878a43e')
+sha256sums=('bd0f38847a28d465a9149055e7da78cca82ec25dd91d55e51503c1b0a462c718'
+            '27607076408ad164f91a142eebbefa845eecec6ff9b0783b336deaaed0ed9d12')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver/gsl"
-  patch mlgsl_sf.c $srcdir/mlgsl_sf.patch
+  cd "$srcdir/${pkgname}-release-${pkgver}"
+  patch -uNp1 -i ../install-prefix.patch || return 1
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc
+  cd "$srcdir/${pkgname}-release-${pkgver}"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 doc/manual.pdf $pkgdir/usr/share/doc/$pkgname/manual.pdf
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+  cd "$srcdir/${pkgname}-release-${pkgver}"
+  dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
+  mkdir -p "${pkgdir}/etc" "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/etc/orpie/orpierc" "${pkgdir}/etc"
+  mv "${pkgdir}/usr/man" "${pkgdir}/usr/share"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share"
 }
 
