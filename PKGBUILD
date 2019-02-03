@@ -1,6 +1,6 @@
 # Maintainer: David Flemström <david.flemstrom@gmail.com>
 pkgname=record-query-git
-pkgver=v0.6.0.r7.ge70579c
+pkgver=v0.10.4.r50.gd84d4d8
 pkgrel=1
 epoch=
 pkgdesc="A tool for doing record analysis and transformation"
@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url=""
 license=('Apache-2.0')
 groups=()
-depends=(v8)
-makedepends=(rust)
+depends=()
+makedepends=(wget rust)
 checkdepends=()
 optdepends=()
 provides=()
@@ -30,6 +30,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
+  TARGET=x86_64-unknown-linux-gnu
+  wget "https://s3-eu-west-1.amazonaws.com/record-query/v8/$TARGET/5.7.441.1/v8-build.tar.gz"
+  tar xvf v8-build.tar.gz
+  export V8_LIBS=$PWD/v8-build/lib/libv8uber.a
+  export V8_SOURCE=$PWD/v8-build
   cargo build --release
 }
 
