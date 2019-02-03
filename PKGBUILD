@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=qimgv
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Qt5 image viewer with experimental webm playback"
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(qt5-base qt5-imageformats qt5-svg mpv)
 makedepends=(cmake qt5-tools)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/easymodo/qimgv/archive/v${pkgver}.tar.gz")
-sha256sums=('b9bba209a36723237cb7df2eff61aabe8c46ad9f20ab7ec15e56f9e0501ff872')
+sha256sums=('f5c9e4dfdc0e9842c6cec5d2d546e6f77b2c33312f5cb416eaf50a29a0dc65a1')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,7 +21,8 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DVIDEO_SUPPORT=ON
   make
 }
 
