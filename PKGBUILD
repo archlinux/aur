@@ -1,9 +1,9 @@
 #Maintainer: Lothar_m <lothar_m at riseup dot net>
 
-_pkgname=kraken-wsclient
+_pkgname=kraken-wsclient-py
 __pkgname=python-$_pkgname
-pkgname=$__pkgname-git
-pkgver=1
+pkgname=python-$_pkgname-git
+pkgver=2
 pkgrel=1
 pkgdesc="Sample Kraken WebSockets client in Python. This client was created for demonstration purposes only."
 arch=("any")
@@ -33,21 +33,21 @@ depends=("python"
 		 "python-txaio"
 		 "python-zope-schema")
 makedepends=("python-setuptools")
-source=("https://github.com/krakenfx/kraken-wsclient-py.git")
+source=("git+https://github.com/krakenfx/kraken-wsclient-py.git")
 sha256sums=('SKIP')
 
-#build() {
-#    cd "$srcdir/$_pkgname-$pkgver"
-#    python setup.py build
-#}
+build() {
+    cd "$srcdir/$_pkgname"
+    python setup.py build
+}
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$_pkgname"
     python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 check() {
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$_pkgname"
     python setup.py test
 }
 
