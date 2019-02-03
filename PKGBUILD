@@ -2,7 +2,7 @@
 
 pkgname=tt-rss-theme-feedly-git
 _gitname=tt-rss-feedly-theme
-pkgver=r412.a3211e7
+pkgver=r416.0b58291
 pkgrel=1
 pkgdesc="Feedly theme for Tiny Tiny RSS"
 arch=('any')
