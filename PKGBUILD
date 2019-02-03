@@ -5,7 +5,7 @@
 
 pkgbase=network-manager-applet-git
 pkgname=(network-manager-applet-git nm-connection-editor-git libnm-gtk-git libnma-git)
-pkgver=1.8.19.dev.r20.g2005bb08
+pkgver=1.8.19.dev.r65.gd7a03bb4
 pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
@@ -85,7 +85,8 @@ package_network-manager-applet-git() {
 
 package_nm-connection-editor-git() {
   pkgdesc="NetworkManager GUI connection editor and widgets"
-  provides=("libnma" "libnm-gtk=$pkgver-$pkgrel" "nm-connection-editor")
+  provides=("nm-connection-editor")
+  depends=("libnma" "libnm-gtk")
   conflicts=(nm-connection-editor)
   replaces=(nm-connection-editor)
    mv nm-connection-editor/* "$pkgdir"
@@ -95,12 +96,15 @@ package_libnma-git() {
     pkgdesc="NetworkManager GUI client library"
     depends=(libnm gcr gtk3 iso-codes mobile-broadband-provider-info)
      provides=("libnma")
+     conflicts=("libnma")
     mv libnma/* "$pkgdir"
 }
 
 package_libnm-gtk-git() {
   pkgdesc="NetworkManager GUI client library (legacy)"
   depends=(libnm-glib gtk3 iso-codes libgudev)
+  provides=("libnm-gtk")
+  conflicts=("libnm-gtk")
   mv libnm-gtk/* "$pkgdir"
 }
 
