@@ -2,7 +2,7 @@
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko-git
-pkgver=0.7.19.r0.gfedad9f37
+pkgver=0.7.19.r35.gdfdaad73f
 pkgrel=1
 pkgdesc="Free implementation of the card game Doppelkopf (git version)"
 arch=('x86_64')
@@ -29,6 +29,9 @@ prepare() {
 
 build() {
   cd FreeDoko
+
+  export CXXFLAGS+=' -std=c++17'
+
   make compile
   make documentation
 }
