@@ -8,7 +8,7 @@
 # Contributor: hero <erdetb at web dot de>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=llpp-git
-pkgver=27.r61.gba24cbd
+pkgver=30.r22.g6905dbc
 pkgrel=1
 pkgdesc='A graphical PDF viewer which aims to superficially resemble less(1).'
 arch=('i686' 'x86_64')
@@ -56,35 +56,25 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  sed -i -e 's@-I \$mudir/include -I \$mudir/thirdparty/freetype/include@-I /usr/include/freetype2@' build.bash
-  sed -i -e 's@-lmupdfthird@-lmupdfthird -lz -lfreetype -ljpeg -ljbig2dec -lopenjp2@' build.bash
-  sed -i -e 's@-L\$mudir/build/native @@' build.bash
-
   # /usr/lib/libharfbuzz.so.0: error adding symbols: DSO missing from command line
   sed -i -e 's@-lmupdf@-lmupdf -lharfbuzz@' build.bash
 }
 
 build() {
   cd "$srcdir/$pkgname"
+  mkdir build && sh misc/getmupdf.sh build/mupdf
   ./build.bash build
-  cd misc/completions/
-  make
 }
 
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 build/llpp $pkgdir/usr/bin/llpp
-  install -Dm644 misc/llpp.desktop $pkgdir/usr/share/applications/llpp.desktop
+  #install -Dm644 misc/llpp.desktop $pkgdir/usr/share/applications/llpp.desktop
   install -Dm644 README $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
-
-  # man pages
-  for f in llpp.man llppac.man llpphtml.man; do
-    install -Dm644 man/$f "$pkgdir/usr/share/man/man1/${f%.man}.1"
-  done
 
   # helper scripts
   cd misc/
-  for i in dicx dllpp llpp.inotify llppac llpphtml; do
+  for i in cutrel llpp.inotify llppac llpphtml; do
     install -Dm755 $i $pkgdir/usr/bin/$i
   done
 
@@ -92,7 +82,7 @@ package() {
   install -Dm644 keys.txt "$pkgdir/usr/share/${pkgname%-*}/keys.txt"
 
   # CSS styles
-  for i in epub.css prince.css; do
+  for i in prince.css; do
     install -Dm644 $i "$pkgdir/usr/share/${pkgname%-*}/$i"
   done
 
@@ -102,9 +92,7 @@ package() {
 
   # shell completion
   cd completions/
-  install -Dm644 bash/llpp "$pkgdir/usr/share/bash-completion/completions/llpp"
-  install -Dm644 bash/llppac "$pkgdir/usr/share/bash-completion/completions/llppac"
-  install -Dm644 zsh/llpp "$pkgdir/usr/share/zsh/site-functions/_llpp"
-  install -Dm644 zsh/llppac "$pkgdir/usr/share/zsh/site-functions/_llppac"
+  install -Dm644 zsh/_llpp "$pkgdir/usr/share/zsh/site-functions/_llpp"
+  install -Dm644 zsh/_llppac "$pkgdir/usr/share/zsh/site-functions/_llppac"
 }
 
