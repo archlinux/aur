@@ -1,16 +1,16 @@
 pkgbase = gallium-nine
 	pkgdesc = Gallium Nine Standalone
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
-	url = https://github.com/dhewg/nine
+	url = https://github.com/iXit/wine-nine-standalone
 	arch = x86_64
 	license = LGPL2
 	makedepends = git
 	makedepends = wine
 	makedepends = mesa
 	makedepends = meson
-	source = https://github.com/dhewg/nine/archive/v0.1.tar.gz
-	sha512sums = c1ef8d1cb7f35802f92012fd18258cd59c0218f78d7bf43bf0073cc47a51f99e8649177b163a85b4bcdf6379ca96db09249df90a5f13f0371814e6d18ee36a9b
+	source = https://github.com/iXit/wine-nine-standalone/archive/v0.2.tar.gz
+	sha512sums = 9eb687b68da875cb36298f7487c9f720c119b8be023577580e8829c241dedfb86ef516b3ef96c2fddd1412a05873c349390bd6e3ddc801bb20530c61f165cda6
 
 pkgname = gallium-nine
 	depends = mesa

@@ -2,18 +2,18 @@
 
 pkgbase=gallium-nine
 pkgname=('gallium-nine' 'lib32-gallium-nine')
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Gallium Nine Standalone"
 arch=('x86_64')
-url="https://github.com/dhewg/nine"
+url="https://github.com/iXit/wine-nine-standalone"
 license=('LGPL2')
 makedepends=('git' 'wine' 'mesa' 'meson')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('c1ef8d1cb7f35802f92012fd18258cd59c0218f78d7bf43bf0073cc47a51f99e8649177b163a85b4bcdf6379ca96db09249df90a5f13f0371814e6d18ee36a9b')
+sha512sums=('9eb687b68da875cb36298f7487c9f720c119b8be023577580e8829c241dedfb86ef516b3ef96c2fddd1412a05873c349390bd6e3ddc801bb20530c61f165cda6')
 
 build() {
-    cd ${srcdir}/nine-${pkgver}
+    cd ${srcdir}/wine-nine-standalone-${pkgver}
     
     sed -i "s#^BASE=.*#BASE=/usr/share/nine#g" "tools/nine-install.sh"
 
@@ -29,7 +29,7 @@ build() {
       --cross-file "tools/cross-wine64" \
       --buildtype "release" \
       --prefix "/usr/share/nine" \
-	  --bindir bin64 \
+      --bindir bin64 \
       --libdir lib64 \
       "build64"
 
@@ -39,7 +39,7 @@ build() {
       --cross-file "tools/cross-wine32" \
       --buildtype "release" \
       --prefix "/usr/share/nine" \
-	  --bindir bin32 \
+      --bindir bin32 \
       --libdir lib32 \
       "build32"
 
@@ -49,7 +49,7 @@ build() {
 
 _package_gallium-nine() {
 
-    cd ${srcdir}/nine-${pkgver}
+    cd ${srcdir}/wine-nine-standalone-${pkgver}
 
     DESTDIR="$pkgdir" ninja -C "build$1" install
 
