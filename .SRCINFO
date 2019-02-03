@@ -1,11 +1,12 @@
 pkgbase = gwe
 	pkgdesc = A system utility for controlling NVIDIA GPUs
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/leinardi/gwe
 	arch = any
 	license = GPL3
 	makedepends = meson
+	depends = gobject-introspection
 	depends = libdazzle
 	depends = libappindicator3
 	depends = python

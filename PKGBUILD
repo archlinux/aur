@@ -2,12 +2,12 @@
 
 pkgname=gwe
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A system utility for controlling NVIDIA GPUs"
 arch=('any')
 url="https://gitlab.com/leinardi/gwe"
 license=('GPL3')
-depends=('libdazzle' 'libappindicator3' 'python' 'python-cairo' 'python-gobject' 'python-injector' 'python-matplotlib' 'python-peewee' 'python-py3nvml' 'python-requests' 'python-rx' 'python-xdg')
+depends=('gobject-introspection' 'libdazzle' 'libappindicator3' 'python' 'python-cairo' 'python-gobject' 'python-injector' 'python-matplotlib' 'python-peewee' 'python-py3nvml' 'python-requests' 'python-rx' 'python-xdg')
 makedepends=('meson')
 provides=()
 _xlib_commit='67ef8a5b3951396752746d7e103500d098ec1bf1'
