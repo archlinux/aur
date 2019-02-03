@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=headset-bin
-pkgver=2.0.5
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="An Electron-based music player for the busy ones"
 arch=(x86_64)
@@ -13,7 +13,7 @@ conflicts=(headset)
 source_x86_64=("https://github.com/headsetapp/headset-electron/releases/download/v${pkgver}/headset_${pkgver}_amd64.deb")
 source=("$pkgname-MIT::https://github.com/headsetapp/headset-electron/raw/master/LICENSE")
 sha256sums=('721aa17f2b130970b6d149fa6373c4350118d85e46fae0820304af7317eb2405')
-sha256sums_x86_64=('39c1348ff6ad5854ecba39e6c2279ba4e02a72f9e0aa423a6feb3c8d62c2027c')
+sha256sums_x86_64=('8c5ebb2535f7f9909075edb0e1ab14a9914e5446cbcba34c3c5cad0cad5f31e2')
 PKGEXT='.pkg.tar'
 
 package() {
