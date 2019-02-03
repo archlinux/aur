@@ -25,7 +25,7 @@ md5sums=('SKIP')
 build() {
   cd "$_pkgname"
 
-  cargo build --all --release
+  CARGO_INCREMENTAL=0 cargo build --all --release
 }
 
 package() {
