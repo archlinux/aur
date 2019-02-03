@@ -1,0 +1,26 @@
+pkgbase = bipscript
+	pkgdesc = A scripting language for interactive music
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://www.bipscript.org
+	arch = i686
+	arch = x86_64
+	groups = pro-audio
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = lv2
+	depends = boost-libs
+	depends = fftw
+	depends = lilv
+	depends = liblo
+	depends = portsmf
+	provides = bipscript
+	conflicts = bipscript
+	source = https://github.com/bipscript/bipscript/archive/v0.4.tar.gz
+	source = bipscript-v0.4.patch
+	md5sums = 73ecad2eca761dbbe40e92ae2484066a
+	md5sums = c775c269b2b654289b93e34858a85699
+
+pkgname = bipscript
+
