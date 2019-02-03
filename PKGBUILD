@@ -3,23 +3,23 @@
 
 pkgbase=gallium-nine-git
 pkgname=('gallium-nine-git' 'lib32-gallium-nine-git')
-pkgver=0.r137.13e9b40
+pkgver=0.r167.4380a4c
 pkgrel=1
 pkgdesc="Gallium Nine Standalone (Git Version)"
 arch=('x86_64')
-url="https://github.com/dhewg/nine"
+url="https://github.com/iXit/wine-nine-standalone"
 license=('LGPL2')
 makedepends=('git' 'wine' 'mesa' 'meson')
-source=("git+https://github.com/dhewg/nine.git")
+source=("git+https://github.com/iXit/wine-nine-standalone.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd nine
+    cd wine-nine-standalone
     printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd ${srcdir}/nine
+    cd ${srcdir}/wine-nine-standalone
     
     sed -i "s#^BASE=.*#BASE=/usr/share/nine#g" "tools/nine-install.sh"
 
@@ -55,7 +55,7 @@ build() {
 
 _package_gallium-nine-git() {
 
-    cd ${srcdir}/nine
+    cd ${srcdir}/wine-nine-standalone
 
     DESTDIR="$pkgdir" ninja -C "build$1" install
 
