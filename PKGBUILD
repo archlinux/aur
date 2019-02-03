@@ -7,26 +7,26 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc
-pkgver=2.27
-pkgrel=3
+pkgver=2.28
+pkgrel=5
 pkgdesc="GNU C Library (${_target})"
 arch=('any')
 url="http://www.gnu.org/software/libc/"
 license=(GPL LGPL)
-depends=("${_target}-linux-api-headers>=4.16.1-1")
-makedepends=("${_target}-gcc-stage2>=8.1.0-1" gperf)
+depends=("${_target}-linux-api-headers>=4.17.11-1")
+makedepends=("${_target}-gcc-stage2>=8.2.1+20181127" gperf)
 provides=("${_target}-glibc-headers=${pkgver}" "${_target}-eglibc")
 conflicts=("${_target}-glibc-headers" "${_target}-eglibc")
 replaces=("${_target}-glibc-headers")
 options=(!buildflags !strip staticlibs)
-_commit=23158b08a0908f381459f273a984c6fd328363cb
+_commit=5a74abda201907cafbdabd1debf98890313ff71e
 #source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
-        bz20338.patch)
+        glibc-${_commit}.patch)
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8) # Carlos O'Donell
-md5sums=('898cd5656519ffbc3a03fe811dd89e82'
+md5sums=('c81d2388896379997bc359d4f2084239'
          'SKIP'
-         'dc0d3ad59aeaaf591b085a77de6e03e9')
+         'b64d9921601d1e25cca2c802f15d6dcf')
 
 prepare() {
   mkdir -p glibc-build
