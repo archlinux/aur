@@ -1,6 +1,6 @@
 pkgbase = waifu2x-git
 	pkgdesc = Image rescaling and noise reduction using the power of convolutional neural networks
-	pkgver = 0.13.1.r39.g7dad4bc
+	pkgver = 0.13.2.r171.g4313ace
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/nagadomi/waifu2x
@@ -33,7 +33,7 @@ pkgbase = waifu2x-git
 	source = 0001-Use-absolute-path-to-models-directory.patch
 	md5sums = SKIP
 	md5sums = f6e182a8278a4dd9b4a9168200d7666b
-	md5sums = 0942efd456a6f6a83bff9c21759876e6
+	md5sums = ce4a5d5b581b32614a7b3e8f5ea87de4
 
 pkgname = waifu2x-git
 

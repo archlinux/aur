@@ -1,9 +1,10 @@
-# Maintainer: Andrei Alexeyev <akari@alienslab.net>
+# Maintainer: Christopher Hasse <hasse.christopher@gmail.com>
+# Contributor: Andrei Alexeyev <akari@alienslab.net>
 # Contributor: Frantic1048 <archer@frantic1048.com>
 # Contributor: Fredrick Brennan <admin@8chan.co>
 
 pkgname=waifu2x-git
-pkgver=0.13.1.r39.g7dad4bc
+pkgver=0.13.2.r171.g4313ace
 pkgrel=1
 epoch=1
 pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks"
@@ -51,8 +52,12 @@ source=(
 noextract=()
 md5sums=('SKIP'
          'f6e182a8278a4dd9b4a9168200d7666b'
-         '0942efd456a6f6a83bff9c21759876e6'
-)
+         'ce4a5d5b581b32614a7b3e8f5ea87de4')
+
+pkgver() {
+    cd "$pkgname"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
     cd waifu2x
