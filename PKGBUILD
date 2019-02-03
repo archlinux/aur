@@ -2,7 +2,7 @@
 pkgname=precached-git
 _pkgname=precached
 pkgver=1.5.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
@@ -62,6 +62,7 @@ package() {
   install -m 644 "support/rules/10-cache-on-login.rules" "$pkgdir/etc/precached/rules.d/"
   install -m 644 "support/rules/99-ping-logger.rules" "$pkgdir/etc/precached/rules.d/"
   install -m 644 "support/systemd/precached.service" "$pkgdir/usr/lib/systemd/system/"
+  install -m 644 "support/systemd/precached-trigger.service" "$pkgdir/usr/lib/systemd/user/"
   install -m 644 "support/systemd/precached-prime-caches.service" "$pkgdir/usr/lib/systemd/system/"
   install -m 644 "support/systemd/precached-prime-caches.timer" "$pkgdir/usr/lib/systemd/system/"
   install -m 644 "support/dbus/org.precached.precached1.conf" "$pkgdir/etc/dbus-1/system.d/"
