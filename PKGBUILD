@@ -3,7 +3,7 @@
 pkgname=brother-hll9200cdw-cups-bin
 pkgver=1.1.3
 pkgrel=1
-pkgdesc="CUPS wrapper for Brother HL-L9200CDW printer"
+pkgdesc="CUPS wrapper for Brother HL-L9200CDW(T) printer"
 arch=("i686" "x86_64")
 url="https://support.brother.com/g/b/producttop.aspx?c=ca&lang=en&prod=hll9200cdw_us_as_cn"
 license=("EULA")
