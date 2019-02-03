@@ -7,7 +7,7 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
-pkgver=2.30
+pkgver=2.31.1
 pkgrel=4
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=(i686 x86_64)
@@ -17,15 +17,26 @@ depends=(glibc zlib)
 checkdepends=(dejagnu bc)
 options=(staticlibs !distcc !ccache)
 source=(http://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig}
-        0001-PR22741-objcopy-segfault-on-fuzzed-COFF-object.patch
-        0002-PR22829-objcopy-strip-removes-PT_GNU_RELRO-from-lld-.patch
-        0003-PR22836-r-s-doesnt-work-with-g3-using-GCC-7.patch)
+        0001-PR23428-x86-Add-a-GNU_PROPERTY_X86_ISA_1_USED-note-if-needed.patch
+        0002-PR23460-Close-resource-leaks-in-the-BFD-library-s-plugin-han.patch
+        0003-PR23460-Add-a-testcase-for-PR-binutils-23460.patch
+        0004-PR23486-Properly-merge-GNU_PROPERTY_X86_ISA_1_USED-x86_64.patch
+        0005-PR23486-x86-Properly-merge-GNU_PROPERTY_X86_ISA_1_USED.patch
+        0006-PR23428-x86-Properly-add-X86_ISA_1_NEEDED-property.patch
+        0007-PR23919-Handle-ELF-compressed-header-alignment.patch
+        0008-PR23919-gold-Get-alignment-of-uncompressed-section.patch
+)
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
-md5sums=('ffc476dd46c96f932875d1b2e27e929f'
+md5sums=('5b7c9d4ce96f507d95c1b9a255e52418'
          'SKIP'
-         '469164f3c93a0e92a697537b60c9806c'
-         '0c679b37e90fb23de60a4d28329b956a'
-         '53b5682e09c0a27e9994c3efdfe01d29')
+         'f2d4f2aee9ec2e25210eb132acdcf1d9'
+         '496e7e2d71fe558b3b85cdc27fb4638e'
+         'dd2284134542efe8e38137f5c829a371'
+         '5e4aecddbea729fd045d001e8e8db14e'
+         '02247a5f1c06f8a9ade689b7e68629ce'
+         '2764b8760bdc8d5c20698202d22b7fcf'
+         '5db54b24fb9de56d66111f63aea3b809'
+         '201036d5806b7b037eb53bf796219525')
 
 prepare() {
   mkdir -p binutils-build
@@ -33,17 +44,24 @@ prepare() {
   #cd binutils-gdb
   cd binutils-$pkgver
 
+  # https://sourceware.org/bugzilla/show_bug.cgi?id=23428
+  # https://sourceware.org/bugzilla/show_bug.cgi?id=23486
+  patch -Np1 -i ../0001-PR23428-x86-Add-a-GNU_PROPERTY_X86_ISA_1_USED-note-if-needed.patch
+  patch -Np1 -i ../0004-PR23486-Properly-merge-GNU_PROPERTY_X86_ISA_1_USED-x86_64.patch
+  patch -Np1 -i ../0005-PR23486-x86-Properly-merge-GNU_PROPERTY_X86_ISA_1_USED.patch
+  patch -Np1 -i ../0006-PR23428-x86-Properly-add-X86_ISA_1_NEEDED-property.patch
+
+  # https://sourceware.org/bugzilla/show_bug.cgi?id=23460
+  patch -Np1 -i ../0002-PR23460-Close-resource-leaks-in-the-BFD-library-s-plugin-han.patch
+  patch -Np1 -i ../0003-PR23460-Add-a-testcase-for-PR-binutils-23460.patch
+
+  # FS#61151
+  # https://sourceware.org/bugzilla/show_bug.cgi?id=23919
+  patch -Np1 -i ../0007-PR23919-Handle-ELF-compressed-header-alignment.patch
+  patch -Np1 -i ../0008-PR23919-gold-Get-alignment-of-uncompressed-section.patch
+
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
-
-  # https://sourceware.org/bugzilla/show_bug.cgi?id=22741
-  patch -p1 -i "$srcdir/0001-PR22741-objcopy-segfault-on-fuzzed-COFF-object.patch"
-
-  # https://sourceware.org/bugzilla/show_bug.cgi?id=22829
-  patch -p1 -i "$srcdir/0002-PR22829-objcopy-strip-removes-PT_GNU_RELRO-from-lld-.patch"
-
-  # https://sourceware.org/bugzilla/show_bug.cgi?id=22836
-  patch -p1 -i "$srcdir/0003-PR22836-r-s-doesnt-work-with-g3-using-GCC-7.patch"
 }
 
 build() {
