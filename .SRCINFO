@@ -1,0 +1,15 @@
+pkgbase = ts2kt
+	pkgdesc = Converter of TypeScript definition files to Kotlin declarations
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/Kotlin/ts2kt
+	arch = any
+	license = Apache-2.0
+	depends = nodejs
+	depends = npm
+	noextract = ts2kt-0.1.3.tgz
+	source = https://registry.npmjs.org/ts2kt/-/ts2kt-0.1.3.tgz
+	sha1sums = 91f566839d319de2dee4d25065573cce81be6abf
+
+pkgname = ts2kt
+
