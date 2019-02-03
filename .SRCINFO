@@ -2,13 +2,19 @@ pkgbase = record-query-git
 	pkgdesc = A tool for doing record analysis and transformation
 	pkgver = v0.10.4.r50.gd84d4d8
 	pkgrel = 1
-	arch = i686
+	url = https://github.com/dflemstr/rq
 	arch = x86_64
-	license = Apache-2.0
-	makedepends = wget
+	license = Apache
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
 	makedepends = rust
+	makedepends = wget
+	depends = gcc-libs
 	source = record-query-git::git+https://github.com/dflemstr/rq.git
+	source = https://s3-eu-west-1.amazonaws.com/record-query/v8/x86_64-unknown-linux-gnu/5.7.441.1/v8-build.tar.gz
 	md5sums = SKIP
+	md5sums = 134eb4e842a26f193ae5532d6cd4960a
 
 pkgname = record-query-git
 

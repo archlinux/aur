@@ -4,12 +4,12 @@ pkgver=v0.10.4.r50.gd84d4d8
 pkgrel=1
 epoch=
 pkgdesc="A tool for doing record analysis and transformation"
-arch=('i686' 'x86_64')
-url=""
-license=('Apache-2.0')
+arch=('x86_64')
+url="https://github.com/dflemstr/rq"
+license=('Apache')
 groups=()
-depends=()
-makedepends=(wget rust)
+depends=(gcc-libs)
+makedepends=(cargo clang git rust wget)
 checkdepends=()
 optdepends=()
 provides=()
@@ -19,9 +19,15 @@ backup=()
 options=()
 install=
 changelog=
-source=($pkgname::git+https://github.com/dflemstr/rq.git)
+source=(
+  $pkgname::git+https://github.com/dflemstr/rq.git
+  https://s3-eu-west-1.amazonaws.com/record-query/v8/x86_64-unknown-linux-gnu/5.7.441.1/v8-build.tar.gz
+)
 noextract=()
-md5sums=(SKIP)
+md5sums=(
+  SKIP
+  134eb4e842a26f193ae5532d6cd4960a
+)
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -29,12 +35,9 @@ pkgver() {
 }
 
 build() {
+  export V8_LIBS=$srcdir/v8-build/lib/libv8uber.a
+  export V8_SOURCE=$srcdir/v8-build
   cd "$srcdir/$pkgname"
-  TARGET=x86_64-unknown-linux-gnu
-  wget "https://s3-eu-west-1.amazonaws.com/record-query/v8/$TARGET/5.7.441.1/v8-build.tar.gz"
-  tar xvf v8-build.tar.gz
-  export V8_LIBS=$PWD/v8-build/lib/libv8uber.a
-  export V8_SOURCE=$PWD/v8-build
   cargo build --release
 }
 
