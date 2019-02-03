@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e328925d..5da8fcda 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,6 +43,7 @@ include(DefaultCompilerStandards)
+ 
+ # Define options
+ #
++set(DOXYGEN_LATEX_MAKEINDEX_CMD makeindex)
+ set(PROJECT_PREFIX "kim-api" CACHE STRING "Project prefix string")
+ mark_as_advanced(KIM_API_PROJECT_PREFIX)
+ #
