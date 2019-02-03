@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=pology-svn
-pkgver=1495839
+pkgver=1534626
 pkgrel=1
 pkgdesc='A framework for custom processing of PO files.'
 arch=('any')
@@ -35,12 +35,13 @@ prepare() {
 
 build() {
   cd ${srcdir}/pology
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
+  mkdir build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
-  cd ${srcdir}/pology
+  cd ${srcdir}/pology/build
   make DESTDIR="${pkgdir}" install
 
   install -d ${pkgdir}/usr/share/apps/katepart/syntax

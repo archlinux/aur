@@ -1,3 +1,7 @@
+2019-02-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 1534626-1 :
+	  fix cmake compilation error
+
 2017-08-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 	* 1495812-1 :
 	  python2-pyenchant moved to dependencies
