@@ -1,6 +1,6 @@
 pkgbase = clyrics
 	pkgdesc = An extensible lyrics fetcher, with daemon support for cmus and mocp.
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://github.com/trizen/clyrics
 	install = readme.install
@@ -11,8 +11,8 @@ pkgbase = clyrics
 	depends = perl-lwp-protocol-https
 	optdepends = moc: daemon support for moc player
 	optdepends = cmus: daemon support for cmus player
-	source = clyrics-0.10.tar.gz::https://github.com/trizen/clyrics/archive/0.10.tar.gz
-	sha256sums = 96cb84b994ec66234aacff452f5bc0a5e0edd7567149301f435b5aa78c780cd0
+	source = clyrics-0.11.tar.gz::https://github.com/trizen/clyrics/archive/0.11.tar.gz
+	sha256sums = 221d746c9c60249c56d2637f10890609bb14a97316016d98ebdf0db57acf22e8
 
 pkgname = clyrics
 
