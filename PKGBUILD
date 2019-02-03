@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=goproxy
 pkgver=6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance HTTP, HTTPS, websocket, TCP, UDP, Secure DNS, Socks5 proxy server"
 arch=('x86_64')
 url="https://github.com/snail007/goproxy"
@@ -19,17 +19,13 @@ prepare() {
   dep ensure -v
 }
 
-check() {
-  export GOPATH="$srcdir/_go"
-  cd "$GOPATH/src/$_importpath"
-  # see https://github.com/snail007/goproxy/issues/156
-  #go test $(go list ./...)
-}
-
 build() {
   export GOPATH="$srcdir/_go"
   cd "$GOPATH/src/$_importpath"
-  go build
+  go build \
+    -gcflags "all=-trimpath=${PWD}" \
+    -asmflags "all=-trimpath=${PWD}" \
+    -ldflags "-extldflags ${LDFLAGS}"
 }
 
 package() {

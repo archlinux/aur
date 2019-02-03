@@ -1,7 +1,7 @@
 pkgbase = goproxy
 	pkgdesc = A high performance HTTP, HTTPS, websocket, TCP, UDP, Secure DNS, Socks5 proxy server
 	pkgver = 6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snail007/goproxy
 	arch = x86_64
 	license = GPL3
