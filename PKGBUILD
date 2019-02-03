@@ -3,13 +3,13 @@
 _pkgname=plumbum
 pkgname=python2-plumbum
 pkgver=1.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Shell combinators library."
 arch=('any')
 url="https://pypi.python.org/pypi/plumbum"
 license=('MIT')
 groups=()
-depends=('python2' 'python2-six')
+depends=('python2')
 makedepends=()
 provides=()
 conflicts=()
