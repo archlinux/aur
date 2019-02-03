@@ -1,6 +1,6 @@
 pkgbase = rsget-git
 	pkgdesc = A download tool for streams on websites.
-	pkgver = r107.f762f6a
+	pkgver = r120.5e92730
 	pkgrel = 1
 	url = https://github.com/Erk-/rsget
 	arch = x86_64
