@@ -1,7 +1,8 @@
 pkgbase = armips-git
-	pkgdesc = MIPS/ARM assembler
-	pkgver = 20150903.8bd93be
+	pkgdesc = An assembler for various ARM and MIPS platforms
+	pkgver = 0.10.0.r28.g7885552
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/Kingcom/armips
 	arch = i686
 	arch = x86_64
@@ -10,9 +11,7 @@ pkgbase = armips-git
 	makedepends = cmake
 	provides = armips
 	conflicts = armips
-	source = git+https://github.com/Kingcom/tinyformat
-	source = git+https://github.com/Kingcom/armips.git
-	sha256sums = SKIP
+	source = git+https://github.com/Kingcom/armips
 	sha256sums = SKIP
 
 pkgname = armips-git
