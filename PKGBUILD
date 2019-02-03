@@ -27,11 +27,6 @@ makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-${pkgver}.tar.gz")
 sha256sums=('81c3096162657d3d8e9e9a2b4d277261b8be4c8696a31505b1f9b6352cf9996f')
 
-prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 -i "${srcdir}/configargparse.patch"
-}
-
 build() {
   cd $pkgname-$pkgver
   python setup.py build
