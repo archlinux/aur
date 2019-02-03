@@ -1,31 +1,25 @@
 # Maintainer: Beej Jorgensen <beej@beej.us>
-# Contributor: Beej Jorgensen <beej@beej.us>
-
-# I'm not sure what the canonical URL for Umoria 5.6 is.
-# This source was originally from this URL:
-# http://ftp.de.debian.org/debian/pool/main/m/moria/moria_5.6.orig.tar.gz
-# but that has been mirrored at the location below for safe keeping.
-
 pkgname=umoria
 pkgver=5.6
-pkgrel=2
+pkgrel=4
 pkgdesc="Rogue-like dungeon crawler"
 arch=('i686' 'x86_64')
-url="http://www-math.bgsu.edu/~grabine/moria.html"
-license=('GPL3')
+url="http://free-moria.sourceforge.net/"
+license=('GPL')
 depends=('ncurses' 'termcap')
 makedepends=('gzip')
 backup=("usr/share/${pkgname}/files/scores")
 source=(
   "${pkgname}-${pkgver}-aur.patch"
-  "http://beej.us/moria/files/source/moria_${pkgver}.tar.gz"
+  ${pkgname}-${pkgver}.tar.gz::https://github.com/HunterZ/${pkgname}/archive/${pkgver}.tar.gz
 )
 install=${pkgname}.install
-md5sums=('66beb16532261ce7967680bb205944d8'
-         '09fd637948e3486730c88e8e15eb42fa')
+sha512sums=('65c264ce47c24d428aa956865ec46b90eb343703cb80ed62b5eababe7329f4ee81f61a035a0cca0573b8537eab9bc41804bd66473d489821477e4c11cfba2bee'
+            'd73fa55bc8609d1bb6727b59affb8f1461e6439d2f97de0b45e8f56e01d95a2b500ed4d86ac2690d831ff7e9492e604bcd3dcc47c253b44ab70d3f5da5457067')
 
 prepare() {
-  cd "$srcdir/moria-$pkgver"
+  echo ">>>>>>> " $srcdir
+  cd "$srcdir/${pkgname}-$pkgver"
   patch -Np1 < ../${pkgname}-${pkgver}-aur.patch
 
   cd source
@@ -33,12 +27,12 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/moria-$pkgver/source"
+  cd "$srcdir/${pkgname}-$pkgver/source"
   make -f Makefile.unix
 }
 
 package() {
-  cd "$srcdir/moria-$pkgver"
+  cd "$srcdir/${pkgname}-$pkgver"
 
   # binary
   install -D -m0755 source/moria "${pkgdir}/usr/bin/moria"
