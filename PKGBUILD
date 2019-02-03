@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=abduco-git
-pkgver=0.r174.8f80aa8
+pkgver=0.6.27.g8f80aa8
 pkgrel=1
 pkgdesc="A session management and attach/detach functionality (to use together with dvtm(1))."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$pkgname
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s" "$(git describe | cut -c2- |tr - .)"
 }
 
 build() {
