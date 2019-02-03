@@ -1,4 +1,4 @@
-pkg/
-src/
-*.AppImage
-*.pkg.tar*
+/*.tar.xz
+/*.AppImage
+/pkg
+/src

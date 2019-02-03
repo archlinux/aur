@@ -1,40 +1,35 @@
-# Maintainer: Martin Kröning <m dot kroening at hotmail dot germantld>
+# Maintainer: Martin Kröning <m dot kroening at hotmail dot de>
 # Contributor: Jan-Erik Rediger <badboy at archlinux dot us>
 pkgname=sync-my-l2p
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
-pkgdesc="Sync the L2P of RWTH Aachen University"
+pkgdesc="Sync the L2P and moodle instance of RWTH Aachen University"
 arch=('x86_64')
 url="https://github.com/RobertKrajewski/Sync-my-L2P"
 license=('LGPL3')
-depends=('qt5-base' 'hicolor-icon-theme')
+depends=('hicolor-icon-theme' 'qt5-base')
 options=('!strip')
-source=("$url/releases/download/v$pkgver/SyncMyL2P-$pkgver-linux.AppImage"
-'sync-my-l2p.desktop.diff')
-noextract=('SyncMyL2P-$pkgver-linux.AppImage'
-'sync-my-l2p.desktop.diff')
-sha256sums=('b1fb5fb354864a59be09837e4d44c6e213ec61fa41b0e6df4c3a7229fbccfd1a'
-            '9fa15afce0c4c367341935f2ff1731b9cbac0e0a32df931356a15a3711f4a82d')
+source=("$url/releases/download/v$pkgver/SyncMyL2P-$pkgver-linux.AppImage")
+sha256sums=('4cd7e7b75a1b6b3d186171553610ab3bf89633270ecafe6dbb19369109223ee2')
 
 prepare() {
-	# Extract Appimage
+	# Extract binary, desktop entry and icons from the AppImage
 	chmod +x SyncMyL2P-$pkgver-linux.AppImage
-	./SyncMyL2P-$pkgver-linux.AppImage --appimage-extract &> /dev/null
-	
-	# Patch desktop file
-	patch squashfs-root/Sync-my-L2P.desktop sync-my-l2p.desktop.diff > /dev/null
+	for pattern in {usr/bin/Sync-my-L2P,Sync-my-L2P.desktop,hicolor}; do
+	  ./SyncMyL2P-$pkgver-linux.AppImage --appimage-extract $pattern > /dev/null
+	done
 }
 
 package() {
-	# Install desktop file
-	install -Dm755 squashfs-root/Sync-my-L2P.desktop "$pkgdir"/usr/share/applications/sync-my-l2p.desktop
+	cd squashfs-root
 
-	# Install icons
-	for size in 16 32 48 128; do
-		install -Dm755 squashfs-root/hicolor/${size}x${size}/apps/sync-my-L2P.png \
-			"$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/sync-my-l2p.png
-	done
+	# Binary
+	install -Dm755 usr/bin/Sync-my-L2P "$pkgdir"/usr/bin/Sync-my-L2P
 
-	# Install bin
-	install -Dm755 squashfs-root/usr/bin/Sync-my-L2P "$pkgdir"/usr/bin/sync-my-l2p
+	# Desktop entry
+	install -Dm644 Sync-my-L2P.desktop "$pkgdir"/usr/share/applications/Sync-my-L2P.desktop
+
+	# Icons
+	mkdir --parents "$pkgdir"/usr/share/icons && cp --recursive hicolor "$pkgdir"/usr/share/icons/
+	chmod --recursive 755 "$pkgdir"/usr/share/icons/hicolor
 }
