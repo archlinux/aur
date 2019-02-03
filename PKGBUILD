@@ -2,16 +2,21 @@
 
 pkgname="gtk-theme-ambiance-ds-blue-sb12"
 pkgver=2.51
-pkgrel=1
+pkgrel=2
 pkgdesc="A theme based on Ambiance (gtk2, gtk3, gnome-shell, metacity, unity)"
 arch=(any)
-url="http://gnome-look.org/content/show.php/Ambiance+DS+BlueSB12?content=154519"
+#url="http://gnome-look.org/content/show.php/Ambiance+DS+BlueSB12?content=154519"
+url="https://www.gnome-look.org/p/1013664/"
 license=('GPL')
 depends=('gtk-engine-unico' 'gtk-engine-murrine')
 conflicts=()
 
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1524565560/s/f2f1386029187c0f9f5f19366d4790d5/t/1525529821/u/32657/AmbianceDSBlueSB12.tar.xz")
-md5sums=('e323c4f2ca201634367e0bc40e8db409')
+# Hash and Timestamp
+_p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
+read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
+
+source=("https://dl.opendesktop.org/api/files/downloadfile/id/1524565560/s/$_s/t/$_t/u//AmbianceDSBlueSB12.tar.xz")
+md5sums=('cb0e9d251304afdab8f1575dc2e9b5b0')
 install=()
 
 package() {
