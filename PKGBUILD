@@ -4,7 +4,7 @@
 
 pkgname=nftables-git
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Netfilter tables userspace tools'
 arch=(i686 x86_64)
 url='https://netfilter.org/projects/nftables/'
