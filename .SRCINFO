@@ -1,15 +1,14 @@
 pkgbase = zegrapher
 	pkgdesc = mathematical objects plotting software
-	pkgver = 3.0.0
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://www.zegrapher.com
 	arch = x86_64
-	arch = i686
 	license = GPL
 	depends = qt5-base
 	conflicts = zegrapher
-	source = https://github.com/AdelKS/ZeGrapher/archive/v3.0.zip
-	md5sums = 82cc38fa4904f1a506038462398c6e3d
+	source = https://github.com/AdelKS/ZeGrapher/archive/v3.0.2.tar.gz
+	md5sums = a8440300bbf4d178e1469ebce1eb8403
 
 pkgname = zegrapher
 
