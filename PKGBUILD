@@ -3,7 +3,7 @@
 # Contributor: Hussam Al-Tayeb <hussam at visp dot net dot lb>
 pkgname=htpdate
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A client for time synchronisation"
 arch=(i686 x86_64)
 url="http://www.vervest.org/htp/"
@@ -11,7 +11,7 @@ license=(GPL2)
 depends=('glibc')
 source=("http://www.vervest.org/htp/archive/c/${pkgname}-${pkgver}.tar.xz" "htpdate.service")
 md5sums=('9d5ca69be06edf5d535b52b5f790da4e'
-         'fd11d26ebff84d9538ce9ab6238fae73')
+         'ed9c9b1222e90e6ee0751f8f88772606')
 build() {
   cd ${pkgname}-${pkgver}
   make
