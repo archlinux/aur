@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname=gxi
-pkgver=0.4.4
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="GTK frontend, written in Rust, for the xi editor."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=('MIT')
 make_depends=('meson')
 depends=('gtk3' 'rust')
 source=("https://github.com/Cogitri/gxi/releases/download/v$pkgver/gxi-$pkgver.tar.xz")
-md5sums=('f4cb944a54f9cc72154591521ac95c54')
+md5sums=('f74f3bf701e3d0101803d4afe846477c')
 
 # prepare() {
 #   cd $pkgname
