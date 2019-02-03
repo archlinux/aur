@@ -3,8 +3,8 @@
 # Contributor: ZaZam <zazaamm ät gmail dt com>
 
 pkgname=yle-dl
-pkgver=20181221
-pkgrel=3
+pkgver=20190203
+pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
 url="http://aajanki.github.io/yle-dl/"
@@ -18,17 +18,14 @@ depends=('ffmpeg'
        'python-mini-amf'
        'python-pycryptodomex'
        'python-requests'
-       'wget'
 )
 optdepends=('php: for downloading live TV and certain news broadcasts'
-            'rtmpdump: for downloading Areena audio streams'
-	    'youtube-dl: an alternative downloader backend to AdobeHDS.php')
+            'rtmpdump: for downloading some  Elävä Arkisto streams'
+	    'youtube-dl: an alternative downloader backend to AdobeHDS.php'
+            'wget: for some rare streams')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-${pkgver}.tar.gz"
-        'configargparse.patch'
-)
-sha256sums=('8970960816151d0e296c0ab15b9371c0feea444567c59a7b2917bdf5f0de06fd'
-            'cfdf7268d945e1f03d5911acdf54900672083f08574cc1e887e134ae097e45d8')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-${pkgver}.tar.gz")
+sha256sums=('81c3096162657d3d8e9e9a2b4d277261b8be4c8696a31505b1f9b6352cf9996f')
 
 prepare() {
   cd $pkgname-$pkgver
