@@ -1,7 +1,7 @@
 pkgbase = aur-out-of-date
 	pkgdesc = Determines out-of-date AUR packages
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simon04/aur-out-of-date
 	arch = x86_64
 	arch = i686

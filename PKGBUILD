@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=aur-out-of-date
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Determines out-of-date AUR packages"
 arch=('x86_64' 'i686')
 url="https://github.com/simon04/aur-out-of-date"
@@ -21,7 +21,10 @@ check() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  go build
+  go build \
+    -gcflags "all=-trimpath=${PWD}" \
+    -asmflags "all=-trimpath=${PWD}" \
+    -ldflags "-extldflags ${LDFLAGS}"
 }
 
 package() {
