@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=19.05.0.0pre1.r364.gd583c9ed3b
+pkgver=18.08.5.2.r881.g2aeba922c6
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64' 'armv7h')
