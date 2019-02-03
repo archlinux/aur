@@ -2,7 +2,7 @@
 pkgname=precached-git
 _pkgname=precached
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
@@ -37,6 +37,7 @@ package() {
   mkdir -p "$pkgdir/var/lib/precached/iotrace"
   mkdir -p "$pkgdir/usr/share/doc/precached/examples"
   mkdir -p "$pkgdir/usr/lib/systemd/system/"
+  mkdir -p "$pkgdir/usr/lib/systemd/user/"
   mkdir -p "$pkgdir/etc/dbus-1/system.d/"
   mkdir -p "$pkgdir/etc/xdg/autostart/"
   mkdir -p "$pkgdir/usr/share/man/man8/"
