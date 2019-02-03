@@ -1,14 +1,11 @@
 pkgbase = vpndemon-cli
-	pkgdesc = Monitor a VPN connection on Linux and kill a process upon disconnect, command line interface (CLI) version
+	pkgdesc = Monitor a VPN connection on Linux Network Manager and kill a process upon disconnect, command line interface (CLI) version
 	pkgver = 1.01
 	pkgrel = 1
 	url = https://github.com/chinaskijr/vpndemon-cli
 	arch = any
 	license = MIT
 	depends = networkmanager
-	depends = dbus
-	depends = openvpn
-	depends = networkmanager-openvpn
 	source = vpndemon-cli-1.01.tar.gz::https://github.com/chinaskijr/vpndemon-cli/archive/1.01.tar.gz
 	sha512sums = c47000c2fb010b37329e39ddb57a892b2b10523aa8bdda77431a2ed8c8d9df82016aad9c2ef705f75caafa80b3b90ce86f45307b0b8073cce7940f762148403e
 
