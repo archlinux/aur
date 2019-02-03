@@ -1,7 +1,7 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
 # Useful: https://gitlab.com/gitlab-org/gitlab-ce/issues/29963
 pkgname=gitlab-pages
-pkgver=0.9.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='GitLab Pages daemon used to serve static websites for GitLab users'
 url='https://gitlab.com/gitlab-org/gitlab-pages'
@@ -14,8 +14,8 @@ source=("$pkgname-v$pkgver.tar.gz::https://gitlab.com/gitlab-org/gitlab-pages/re
 	'gitlab-pages.service'
 	'service.env')
 backup=('etc/gitlab-pages/config.cfg')
-sha256sums=('90e3c873382e42caccce0f4ab1b1a3bfef510849500eab28409f72661a557e16'
-            '558e9f5ec85fbf4ef7380016e64bcf00f09498596044f76a8eb87b6ef4154ce4'
+sha256sums=('52af7ace4d5146738db30b5b5c9337059a0babca803468ccaf9fbf6e61de5e61'
+            '26f9ffde23377b0f83006f8441f31697acb15e0fabe1a63ae4c815faf544b6f2'
             'ae62235f0fd66eaed7ad74048daf21b92058aba90e40fc2d3e7a684e9883c32e'
             'fd8f9b60e2247077ad00765904237b6b1c36b11a952cd3b1ad88e74417b82a96')
 
