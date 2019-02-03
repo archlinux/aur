@@ -10,7 +10,7 @@ _lib32=0
 
 pkgbase=nvidia-full-beta-all
 pkgname=('nvidia-full-beta-all' 'nvidia-utils-full-beta-all' 'nvidia-egl-wayland-full-beta-all' 'nvidia-libgl-full-beta-all' 'opencl-nvidia-full-beta-all')
-pkgver=415.27
+pkgver=418.30
 pkgrel=1
 pkgdesc='Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)'
 arch=('x86_64')
@@ -32,13 +32,13 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-full-beta-all.sysusers'
         'linux-4.16.patch')
-sha256sums=('0882f8e8fb3110c180edffeca23b49600bf11dd62ef72eb5db1cf9acb4fa8ccf'
+sha256sums=('da5ff351869694561bdf53260f8212dde76e885333d8967e7d633084e032cf1f'
             '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
-[ "$_pkg" = "NVIDIA-Linux-${CARCH}-${pkgver}" ] && sha256sums[0]='c82b76a62035033dbfef4b9759c2b0544508e1180c8c7c1e68f35d1e6070d48b'
+[ "$_pkg" = "NVIDIA-Linux-${CARCH}-${pkgver}" ] && sha256sums[0]='c1ade253080a049ea38149b9ceb8f20549b5b17164eeae114d6c058e01e23958'
 
-_eglver=1.1.0
+_eglver=1.1.2
 
 # create missing soname links
 _create_links() {
@@ -190,9 +190,6 @@ package_nvidia-utils-full-beta-all() {
     ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.1"  # X doesn't find glx otherwise
     ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so"    # X doesn't find glx otherwise
     
-    # X wrapped software rendering
-    install -D -m755 "libnvidia-wfb.so.${pkgver}" -t "${pkgdir}/usr/lib"
-    
     # libGL & OpenGL
     install -D -m755  libGL.so.1.7.0                    -t "${pkgdir}/usr/lib/nvidia"
     install -D -m755  libGLdispatch.so.0                -t "${pkgdir}/usr/lib"
@@ -262,6 +259,9 @@ package_nvidia-utils-full-beta-all() {
     
     # OptiX ray tracing engine
     install -D -m755 "libnvoptix.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    
+    # Optical Flow
+    install -D -m755 "libnvidia-opticalflow.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     _create_links
     
@@ -455,6 +455,9 @@ package_lib32-nvidia-utils-full-beta-all() {
     # helper libs for approved partners GRID remote apps
     install -D -m755 "libnvidia-ifr.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     install -D -m755 "libnvidia-fbc.so.${pkgver}" -t "${pkgdir}/usr/lib32"
+    
+    # Optical Flow
+    install -D -m755 "libnvidia-opticalflow.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     
     _create_links
     
