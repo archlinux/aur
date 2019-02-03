@@ -1,6 +1,6 @@
-diff -Naur moria-5.6/source/config.h moria-5.6-aur/source/config.h
---- moria-5.6/source/config.h	2008-10-13 16:44:36.000000000 -0700
-+++ moria-5.6-aur/source/config.h	2014-10-14 00:22:12.121012390 -0700
+diff -Naur umoria-5.6/source/config.h umoria-5.6-aur/source/config.h
+--- umoria-5.6/source/config.h	2015-02-13 20:12:51.000000000 -0800
++++ umoria-5.6-aur/source/config.h	2019-02-03 14:15:12.669986292 -0800
 @@ -240,6 +240,7 @@
  
  /* Generic UNIX */
@@ -28,10 +28,60 @@ diff -Naur moria-5.6/source/config.h moria-5.6-aur/source/config.h
  
  #endif
  #endif
-diff -Naur moria-5.6/source/files.c moria-5.6-aur/source/files.c
---- moria-5.6/source/files.c	2008-10-13 16:44:36.000000000 -0700
-+++ moria-5.6-aur/source/files.c	2014-10-14 00:22:16.457384250 -0700
-@@ -126,19 +126,19 @@
+diff -Naur umoria-5.6/source/death.c umoria-5.6-aur/source/death.c
+--- umoria-5.6/source/death.c	2015-02-13 20:12:51.000000000 -0800
++++ umoria-5.6-aur/source/death.c	2019-02-03 14:28:26.730764222 -0800
+@@ -20,6 +20,7 @@
+ 
+ /* Must read this before externs.h, as some global declarations use FILE. */
+ #include <stdio.h>
++#include <unistd.h>
+ 
+ #include "config.h"
+ #include "constant.h"
+@@ -63,7 +64,7 @@
+ #else
+ #ifdef unix
+ #ifdef USG
+-unsigned short getuid(), getgid();
++//unsigned short getuid(), getgid();
+ #else
+ #ifndef SECURE
+ #ifdef BSD4_3
+diff -Naur umoria-5.6/source/externs.h umoria-5.6-aur/source/externs.h
+--- umoria-5.6/source/externs.h	2015-02-13 20:12:51.000000000 -0800
++++ umoria-5.6-aur/source/externs.h	2019-02-03 14:27:25.080958861 -0800
+@@ -342,7 +342,7 @@
+ 
+ /* io.c */
+ #ifdef SIGTSTP
+-int suspend(void);
++void suspend(int);
+ #endif
+ void init_curses(void);
+ void moriaterm(void);
+@@ -848,7 +848,7 @@
+ 
+ /* io.c */
+ #ifdef SIGTSTP
+-int suspend();
++void suspend(int);
+ #endif
+ void init_curses();
+ void moriaterm();
+diff -Naur umoria-5.6/source/files.c umoria-5.6-aur/source/files.c
+--- umoria-5.6/source/files.c	2015-02-13 20:12:51.000000000 -0800
++++ umoria-5.6-aur/source/files.c	2019-02-03 14:21:45.638705566 -0800
+@@ -7,6 +7,8 @@
+    included in all such copies. */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
+ 
+ #if 0
+ /* moved to externs.h to avoid VMS 'psect' problem */
+@@ -126,19 +128,19 @@
  	if (strlen(in_line) > 3)
  	  {
  	    if (!strncmp(in_line, "SUN:", 4))
@@ -58,10 +108,38 @@ diff -Naur moria-5.6/source/files.c moria-5.6-aur/source/files.c
  	  }
        (void) fclose(file1);
      }
-diff -Naur moria-5.6/source/io.c moria-5.6-aur/source/io.c
---- moria-5.6/source/io.c	2008-10-13 16:44:36.000000000 -0700
-+++ moria-5.6-aur/source/io.c	2014-10-14 00:22:21.280389695 -0700
-@@ -1569,6 +1569,8 @@
+diff -Naur umoria-5.6/source/io.c umoria-5.6-aur/source/io.c
+--- umoria-5.6/source/io.c	2015-02-13 20:12:51.000000000 -0800
++++ umoria-5.6-aur/source/io.c	2019-02-03 14:26:29.717800645 -0800
+@@ -19,6 +19,10 @@
+    along with Umoria.  If not, see <http://www.gnu.org/licenses/>. */
+ 
+ #include <stdio.h>
++#include <sys/wait.h>
++
++typedef void (*sighandler_t)(int);
++sighandler_t sysv_signal(int signum, sighandler_t handler);
+ 
+ #include "config.h"
+ 
+@@ -249,7 +253,7 @@
+    Handle the stop and start signals. This ensures that the log
+    is up to date, and that the terminal is fully reset and
+    restored.  */
+-int suspend()
++void suspend(int s)
+ {
+ #ifdef USG
+   /* for USG systems with BSDisms that have SIGTSTP defined, but don't
+@@ -280,7 +284,6 @@
+   (void) wrefresh(curscr);
+   py.misc.male &= ~2;
+ #endif
+-  return 0;
+ }
+ #endif
+ #endif
+@@ -1569,6 +1572,8 @@
  
  void bell()
  {
@@ -70,7 +148,7 @@ diff -Naur moria-5.6/source/io.c moria-5.6-aur/source/io.c
    put_qio();
  
    /* The player can turn off beeps if he/she finds them annoying.  */
-@@ -1578,7 +1580,7 @@
+@@ -1578,7 +1583,7 @@
  #ifdef MAC
    mac_beep();
  #else
@@ -78,4 +156,62 @@ diff -Naur moria-5.6/source/io.c moria-5.6-aur/source/io.c
 +  dummy = write(1, "\007", 1);
  #endif
  }
+ 
+diff -Naur umoria-5.6/source/main.c umoria-5.6-aur/source/main.c
+--- umoria-5.6/source/main.c	2015-02-13 20:12:51.000000000 -0800
++++ umoria-5.6-aur/source/main.c	2019-02-03 14:20:13.572335190 -0800
+@@ -67,6 +67,7 @@
+ 
+ #include	<stdio.h>
+ #include	<stdlib.h>
++#include  <unistd.h>
+  
+ #include "config.h"
+ #include "constant.h"
+@@ -111,7 +112,7 @@
+ #ifndef AMIGA
+ #ifdef USG
+ #if !defined(MSDOS) && !defined(ATARIST_TC)
+-unsigned short getuid(), getgid();
++//unsigned short getuid(), getgid();
+ #endif
+ #else
+ #ifndef SECURE
+diff -Naur umoria-5.6/source/save.c umoria-5.6-aur/source/save.c
+--- umoria-5.6/source/save.c	2015-02-13 20:12:51.000000000 -0800
++++ umoria-5.6-aur/source/save.c	2019-02-03 14:32:12.460054172 -0800
+@@ -26,6 +26,9 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <unistd.h>
++#include <fcntl.h>
++#include <sys/stat.h>
+ 
+ #ifdef __TURBOC__
+ #include	<io.h>
+diff -Naur umoria-5.6/source/signals.c umoria-5.6-aur/source/signals.c
+--- umoria-5.6/source/signals.c	2015-02-13 20:12:51.000000000 -0800
++++ umoria-5.6-aur/source/signals.c	2019-02-03 14:31:16.010231408 -0800
+@@ -24,6 +24,10 @@
+ /* To find out what system we're on.  */
+ 
+ #include <stdio.h>
++#include <unistd.h>
++
++typedef void (*sighandler_t)(int);
++sighandler_t sysv_signal(int signum, sighandler_t handler);
+ 
+ #include "config.h"
+ #include "constant.h"
+@@ -126,9 +130,8 @@
+ #if defined(__TURBOC__) || defined(AMIGA)
+ static void signal_handler(sig)
+ #else
+-static int signal_handler(sig)
++static void signal_handler(int sig)
+ #endif
+-int sig;
+ {
+ #endif
  
