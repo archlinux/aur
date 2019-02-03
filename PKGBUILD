@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=xe-git
-pkgver=0.6.1.r3.g947081d
-pkgrel=2
+pkgver=0.11.r2.ga3fd526
+pkgrel=1
 epoch=
 pkgdesc="Simple xargs and apply replacement"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/chneukirchen/xe"
 license=('custom:public domain')
 categories=()
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
@@ -36,7 +36,7 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname"
-  ./tests
+  make check
 }
 
 package() {
