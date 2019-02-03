@@ -1,9 +1,9 @@
-# Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 # Contributor: sekret
 
 _pkgname=clyrics
 pkgname=$_pkgname-git
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 
 pkgdesc="An extensible lyrics fetcher, with daemon support for cmus and mocp."
