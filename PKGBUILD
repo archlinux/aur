@@ -6,29 +6,32 @@
 
 _target="arm-linux-gnueabihf"
 pkgname="${_target}-gcc"
-pkgver=8.1.0
+pkgver=8.2.1+20181127
 _majorver=${pkgver:0:1}
-_islver=0.18
+_islver=0.20
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
-depends=("${_target}-binutils>=2.30-4" "${_target}-glibc>=2.27-3" libmpc elfutils zlib)
+depends=("${_target}-binutils>=2.31.1-4" "${_target}-glibc>=2.28-5" libmpc elfutils zlib)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs !distcc !strip)
 conflicts=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 replaces=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 provides=("${_target}-gcc-stage1=${pkgver}" "${_target}-gcc-stage2=${pkgver}")
-#source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
-source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
+#source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
+source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
-sha256sums=('1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153'
-            '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b')
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
-              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # richard.guenther@gmail.com
+              86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
+              33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
+sha256sums=('6f64ffda2839e96a8551b767bf4f92be4e7a09377ea40058355b4eeb13bc3800'
+            'SKIP'
+            'b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2')
 
-_svnrev=259195
+_svnrev=264010
 _svnurl=svn://gcc.gnu.org/svn/gcc/branches/gcc-${_majorver}-branch
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 
