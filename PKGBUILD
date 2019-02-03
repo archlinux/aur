@@ -2,7 +2,7 @@
 
 pkgname=(phonon-qt5-mpv)
 pkgdesc="Phonon MPV backend for Qt5"
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/OpenProgger/phonon-mpv'
@@ -11,7 +11,7 @@ depends=(mpv phonon-qt5)
 provides=(phonon-qt5-backend)
 makedepends=(extra-cmake-modules)
 source=("https://github.com/OpenProgger/phonon-mpv/archive/v$pkgver.tar.gz")
-sha256sums=('429e5eceee01161a5d20063a443f0d7b025c97e68d3bf44ee6851cb46d95104e')
+sha256sums=('05558ffecba6e684e77281681f33a92b6965c23378587fff017792adaed82321')
 
 prepare() {
   mkdir -p build
