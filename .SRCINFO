@@ -1,0 +1,17 @@
+pkgbase = xrootgif
+	pkgdesc = A simple program to display GIFs as X root, targeting performance
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/VipeOut23/XRootGIF
+	arch = x86_64
+	license = custom:MIT
+	makedepends = gcc
+	makedepends = make
+	depends = libx11
+	depends = giflib
+	depends = imlib2
+	source = xrootgif-1.0::git+https://github.com/VipeOut23/xrootgif.git#branch=release-1.0?signed
+	md5sums = SKIP
+
+pkgname = xrootgif
+
