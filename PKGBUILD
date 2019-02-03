@@ -5,7 +5,7 @@
 
 pkgname=selinux-refpolicy-git
 _policyname=refpolicy-git
-pkgver=RELEASE_2_20180701.r14.g3899825c1cde
+pkgver=RELEASE_2_20190201.r0.g10e0106e825b
 pkgrel=1
 pkgdesc="Modular SELinux reference policy including headers and docs"
 arch=('any')
