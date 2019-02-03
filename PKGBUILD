@@ -40,6 +40,6 @@ build() {
 
 package() {
   cd "CMake-${_pkgname}-${pkgver}/build"
-  sed -i "s;Java_JAVADOC_EXECUTABLE:FILEPATH=/usr/bin/javadoc;Java_JAVADOC_EXECUTABLE:FILEPATH=/usr/bin/true;" 
+  sed -i "s;Java_JAVADOC_EXECUTABLE:FILEPATH=/usr/bin/javadoc;Java_JAVADOC_EXECUTABLE:FILEPATH=/usr/bin/true;" CMakeCache.txt  
   make -j1 DESTDIR=${pkgdir} install
 }
