@@ -1,0 +1,20 @@
+pkgbase = apache-nifi
+	pkgdesc = An easy to use, powerful, and reliable system to process and distribute data
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://nifi.apache.org
+	install = apache-nifi.install
+	arch = any
+	license = Apache
+	depends = java-environment
+	source = https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=nifi/1.8.0/nifi-1.8.0-bin.tar.gz
+	source = apache-nifi.service
+	source = apache-nifi.sysusers
+	source = apache-nifi.tmpfiles
+	sha512sums = c1ff65955e12f0a8792bc1709e95d3ba6d1a852037468075e42e851c324708e3185dcf4457af011f617648b7df277b0f6d3a151936cd0df83f852ff6609de5f6
+	sha512sums = 9b2f02ae477e47330c9c3c07e6942c49cf7722b40c09b94a347656de46e9ed497cfb30d8581764ccdb6046e3672676faead32fbb8a5dae46f0d01103c6410a48
+	sha512sums = 97bfcc0e3accd513bcb519776a175d0174a36a2593f536dd0430c9819e809886b966669f3f7e44e4f73ce83a78ab27ab94edbbefc62c39e4f93fdbdd97bbac71
+	sha512sums = 0559c4751624e0b39bf013ee26191622ee015a9065b513cffac2adc4d871eb47c73b52474a41c4d7337d8d4728cc87048f32fba98c8a663586626563da0d8a6d
+
+pkgname = apache-nifi
+

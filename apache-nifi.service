@@ -1,0 +1,15 @@
+[Unit]
+Description=Apache NiFi Daemon
+After=network.target
+
+[Service]
+Type=forking
+User=apache-nifi
+Group=apache-nifi
+#Environment=NIFI_HOME=/opt/apache-nifi
+ExecStart=/opt/apache-nifi/bin/nifi.sh start
+ExecStop=/opt/apache-nifi/bin/nifi.sh stop
+ExecReload=/opt/apache-nifi/bin/nifi.sh restart
+
+[Install]
+WantedBy=multi-user.target

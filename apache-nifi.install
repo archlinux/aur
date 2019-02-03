@@ -1,0 +1,20 @@
+post_install() {
+    systemd-sysusers apache-nifi.conf
+
+    for dir in "/opt/apache-nifi" "/var/run/apache-nifi" "/var/log/apache-nifi" "/var/lib/apache-nifi"; do
+        if [ ! -d "$dir" ]; then
+            mkdir -p "$dir"
+        fi
+
+        chown -R "apache-nifi:apache-nifi" "$dir"
+    done
+}
+
+post_remove() {
+    if getent passwd apache-nifi >/dev/null 2>&1; then
+        userdel -f apache-nifi
+    fi
+    if getent group apache-nifi >/dev/null 2>&1; then
+        groupdel -f apache-nifi
+    fi
+}

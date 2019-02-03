@@ -1,0 +1,2 @@
+d /var/log/apache-nifi 0755 apache-nifi apache-nifi
+d /var/run/apache-nifi 0755 apache-nifi apache-nifi
