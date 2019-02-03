@@ -28,8 +28,8 @@ source=("adchpp::hg+http://hg.code.sf.net/p/adchpp/code"
         'adchpp.sysuser'
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp/files/adchpp-2.8.0-fix_config_paths.patch'
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp/files/adchpp-2.11.0-fix_cflags.patch'
-        'adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch::https://sl1pkn07.wtf/paste/view/raw/9b86555d'
-        'adchpp-2.9.0-fix_log_path.patch::https://sl1pkn07.wtf/paste/view/raw/9e06ad93'
+        'adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch'
+        'adchpp-2.9.0-fix_log_path.patch'
         )
 sha256sums=('SKIP'
             '408dace5cbe39f93b814b517250ba0ca5729f2d01e2183a467c5acdbbefb78f2'
