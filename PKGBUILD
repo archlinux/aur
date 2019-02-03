@@ -4,7 +4,7 @@
 pkgname=scala-ide
 pkgver=4.7.0
 pkgrel=3
-pkgdesc="Scala IDE for Eclipse, stand-alone version"
+pkgdesc="Scala IDE, the official IDE, stand-alone Eclipse-based version"
 arch=('x86_64')
 url="http://www.scala-ide.org/"
 license=('custom')
