@@ -5,7 +5,7 @@
 
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 
 arch=('any')
@@ -54,7 +54,7 @@ source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"{,.asc}
 
 validpgpkeys=('8A11B79A5D0D749A66F0A030102C2C17498D6B9E'
               'E9BEABB07E7B9CC3F56E62C91425F8CE5EBA0E07')
-sha512sums=('f0a0aa9f6c57001c0c5326d941aa81cd49ec79abd15b217b121750c405a8f5bd6ab965e5eaf15c8be3d681aa711bac0405ff13f2b0a1d58b03c44be4335ed8e3'
+sha512sums=('6821bb56c30b52f357ae55f5db45f056883c457eae62a0751a2b654519a07bca9edccb7678b29fa380379f059c9d8899d9e7b06ceccca5ec26962e6f83bb8578'
             'SKIP')
 
 prepare() {
