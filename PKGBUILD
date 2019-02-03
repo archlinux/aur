@@ -11,7 +11,7 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-glib-git libnm-git)
-pkgver=1.13.0.r20464.g372c0eb3e
+pkgver=1.15.2.r22048.g027ef98cd
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
@@ -95,7 +95,6 @@ build() {
         --with-crypto=nss \
         --with-dbus-sys-dir=/usr/share/dbus-1/system.d \
         --with-dhclient=/usr/bin/dhclient \
-        --with-dhcpcd-supports-ipv6 \
         --with-dhcpcd=/usr/bin/dhcpcd \
         --with-dnsmasq=/usr/bin/dnsmasq \
         --with-dnssec-trigger=/usr/lib/dnssec-trigger/dnssec-trigger-script \
