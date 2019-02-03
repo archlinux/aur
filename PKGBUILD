@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=gxe
 pkgver=1.29
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Hybrid Editor XE, for working on both main-frame (SPF editor) and PC."
 arch=('i686' 'x86_64')
@@ -21,9 +21,14 @@ install=
 changelog=
 source=("http://www.geocities.jp/sakachin2/$pkgname-${pkgver}.tar.gz")
 noextract=()
-md5sums=('adb2e190b6ac61a0aeb370534891fa48')
-sha1sums=('aedb6ad4c357a4b16c31c7f97755402311f8fe3a')
-sha256sums=('244c592f1b19f1ca390d532bc3bf114cba89083c6bb46570ca78a73f04f43800')
+md5sums=('6eb7e0dc8bf0f974989b9d47f01f032d')
+sha1sums=('9f81dc7ff35b468f7551fb52d12dc89740c2d0b3')
+sha256sums=('8e3d4164f5ae9bc9faa9ba1e0c7cc41a6e751f0f6e867569df4e13eebbe19c80')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  sed -i '6127s@ncursesw/@@' configure
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
