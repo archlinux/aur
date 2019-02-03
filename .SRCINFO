@@ -1,0 +1,36 @@
+pkgbase = python-kraken-wsclient-git
+	pkgdesc = Sample Kraken WebSockets client in Python. This client was created for demonstration purposes only.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/krakenfx/kraken-wsclient-py
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-asn1crypto
+	depends = python-attrs
+	depends = python-autobahn
+	depends = python-automat
+	depends = python-cffi
+	depends = python-constantly
+	depends = python-cryptography
+	depends = python-hyperlink
+	depends = python-idna
+	depends = python-incremental
+	depends = python-pyasn1
+	depends = python-pyasn1-modules
+	depends = python-pycparser
+	depends = python-pyhamcrest
+	depends = python-pyopenssl
+	depends = python-service-identity
+	depends = python-six
+	depends = python-twisted
+	depends = python-txaio
+	depends = python-zope-schema
+	provides = python-kraken-wsclient
+	conflicts = python-kraken-wsclient
+	source = https://github.com/krakenfx/kraken-wsclient-py.git
+	sha256sums = SKIP
+
+pkgname = python-kraken-wsclient-git
+
