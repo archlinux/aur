@@ -5,7 +5,7 @@
 
 pkgname=emacs-org-mode
 _srcname=org
-pkgver=9.2
+pkgver=9.2.1
 pkgrel=1
 pkgdesc="Emacs Org Mode"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('java-runtime: For using ditaa.jar in the contrib directory'
 license=('GPL')
 install=emacs-org-mode.install
 source=("http://orgmode.org/$_srcname-$pkgver.tar.gz")
-sha256sums=('b918ba9819f1faa6182d89672bfe9080d338d32b65d257e4749430d797a08b8e')
+sha256sums=('0e39ad06c3ac3dd74b11d0313bf7afff298c91fd24f6220cd07e4af2a6145d06')
 
 build() {
   cd "$_srcname-$pkgver"
