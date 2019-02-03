@@ -1,5 +1,6 @@
 # Maintainer: X3n0m0rph59 <x3n0m0rph59@gmail.com>
 pkgname=precached-git
+_pkgname=precached
 pkgver=1.5.1
 pkgrel=0
 pkgdesc="A Linux process monitor and pre-caching daemon"
@@ -19,16 +20,16 @@ install=
 changelog=
 source=("git+https://gitlab.com/X3n0m0rph59/precached.git")
 noextract=()
-md5sums=() #autofill using updpkgsums
+md5sums=('SKIP') 
 
 build() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   cargo build --all --release
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/etc/precached"

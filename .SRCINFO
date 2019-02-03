@@ -14,6 +14,7 @@ pkgbase = precached-git
 	depends = zeromq
 	conflicts = precached
 	source = git+https://gitlab.com/X3n0m0rph59/precached.git
+	md5sums = SKIP
 
 pkgname = precached-git
 
