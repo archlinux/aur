@@ -4,16 +4,16 @@ pkgname=hdfview-git
 _pkgname=HDFView
 pkgver=r346.d6a3bf6
 _pkgver="99.99.99"
-pkgrel=2
+pkgrel=3
 pkgdesc="a GUI browser for reading hdf5 files from dev git repo"
 arch=('x86_64')
 url="https://www.hdfgroup.org/downloads/hdfview/"
 license=('custom')
-depends=('hdf5' 'hdf4')
+depends=('hdf5-java' 'hdf4')
 replaces=('hdfview-beta')
 conflicts=('hdfview-beta' 'hdfview')
 provides=('hdfview')
-makedepends=('ant' 'java-environment')
+makedepends=('ant' 'java-environment-openjdk=11')
 options=(!strip)
 source=("git+https://bitbucket.hdfgroup.org/scm/hdfview/hdfview.git"
         license
