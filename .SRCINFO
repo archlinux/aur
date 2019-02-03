@@ -1,18 +1,21 @@
 pkgbase = kodi-addon-inputstream-rtmp-git
-	pkgdesc = librtmp support for Kodi 17+
-	pkgver = r37.6c1af46
+	pkgdesc = librtmp support for Kodi 18+
+	pkgver = 2.0.4.Leia.r0.gce7f559
 	pkgrel = 1
-	url = https://github.com/notspiff/inputstream.rtmp
+	url = https://github.com/xbmc/inputstream.rtmp
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	license = GPL2
-	makedepends = kodi-dev
+	makedepends = kodi-dev>=18
 	makedepends = cmake
+	makedepends = git
+	depends = kodi>=18
 	depends = rtmpdump
+	depends = p8-platform
 	provides = kodi-addon-inputstream-rtmp
 	conflicts = kodi-addon-inputstream-rtmp
-	source = kodi-addon-inputstream-rtmp-git::git+https://github.com/notspiff/inputstream.rtmp.git#commit=6c1af46
+	source = kodi-addon-inputstream-rtmp-git::git+https://github.com/xbmc/inputstream.rtmp.git
 	md5sums = SKIP
 
 pkgname = kodi-addon-inputstream-rtmp-git
