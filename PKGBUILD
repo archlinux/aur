@@ -3,7 +3,7 @@
 pkgbase='python-rosdep'
 pkgname=('python-rosdep')
 _module='rosdep'
-pkgver='0.13.0'
+pkgver='0.15.0'
 pkgrel=1
 pkgdesc="rosdep package manager abstraction tool for ROS"
 url="http://wiki.ros.org/rosdep"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/r/rosdep/rosdep-${pkgver}.tar.gz")
-md5sums=('2860f096f327717a7473be98983a0a80')
+md5sums=('2b3e1dc000a6c8c08c3fbb327e79a4de')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
