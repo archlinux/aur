@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.5.8
+pkgver=1.5.11
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -15,7 +15,8 @@ license=('GPL3')
 depends=(desktop-file-utils ffmpeg hicolor-icon-theme minizip openal openssl
          qt5-base qt5-imageformats)
 makedepends=(cmake git gyp libappindicator-gtk3 python range-v3)
-optdepends=('libnotify: desktop notifications')
+optdepends=('libnotify: desktop notifications'
+            'ttf-opensans: default Open Sans font family')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
 _commit="tag=v$pkgver"
@@ -33,8 +34,8 @@ source=(
     # case, they will be updated in place and untracked temporarily.
     "CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop"
     "tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
-    "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
     "no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop"
+    "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
     "demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop"
     "Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop"
 )
@@ -46,9 +47,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'f37f7827e10557d1e74b58b81eb0d17102e1c0f193d129e6e8edbbf7284f5867'
-            'bb04b1eea47370d5f1e45ac851bed81c728e4b52890efd94d511ed59847c9a61'
-            '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
+            '088cbdb71bd96684cf8a60469ba3707b70ed4d606b96b7352f614ec674b9aa8d'
             '95efc9cd84c2c26bddd832ef8c88637353ed9ba9d9068f183b7ee48ba25d1cc7'
+            '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
             '3f23161f8239893e82d2a4f655cb80523a558a4e7869a6683802c2f434b68bbf'
             '2457746d9b963c77decd5d8b08498035dc1003fbcbc95d4dfdb11bf524954f13')
 
