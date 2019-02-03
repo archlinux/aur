@@ -1,14 +1,14 @@
 pkgbase = mkcert
 	pkgdesc = A simple tool for making locally-trusted development certificates
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/FiloSottile/mkcert
 	arch = x86_64
 	license = BSD
 	makedepends = go
 	makedepends = git
-	source = mkcert-1.2.0.tar.gz::https://github.com/FiloSottile/mkcert/archive/v1.2.0.tar.gz
-	sha256sums = 5889775924122e196235ced42434c8c58d101188b725154a3424d1c8a4d10d14
+	source = mkcert-1.3.0.tar.gz::https://github.com/FiloSottile/mkcert/archive/v1.3.0.tar.gz
+	sha256sums = 2ac56e023a6f5a7d4bf949897338c333da0ce551cd45a50c01054987dd7e257b
 
 pkgname = mkcert
 
