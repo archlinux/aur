@@ -1,0 +1,11 @@
+--- adchpp/LogManager.cpp	2013-05-21 14:12:26.028801359 +0200
++++ adchpp/LogManager.cpp-new	2013-05-21 14:55:19.793611710 +0200
+@@ -44,7 +44,7 @@
+ 	dcdebug("Logging: %s\n", msg.c_str());
+ 	signalLog_(msg);
+ 	if(getEnabled()) {
+-		string logFile = Util::formatTime(File::makeAbsolutePath(core.getConfigPath(), getLogFile()));
++		string logFile = Util::formatTime(File::makeAbsolutePath(getLogFile()));
+ 		FastMutex::Lock l(mtx);
+ 		try {
+ 			File f(logFile, File::WRITE, File::OPEN | File::CREATE);

@@ -7,4 +7,5 @@
 !adchpp.sysuser
 !adchpp.tmpfile
 !adchpp.sh
-
+!adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch
+!adchpp-2.9.0-fix_log_path.patch

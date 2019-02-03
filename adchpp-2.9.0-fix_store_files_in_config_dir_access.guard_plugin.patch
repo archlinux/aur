@@ -1,0 +1,20 @@
+--- plugins/Script/examples/access.guard.lua	2012-10-23 18:29:12.000000000 +0200
++++ plugins/Script/examples/access.guard.lua-new	2013-05-21 13:58:43.667172013 +0200
+@@ -56,7 +56,7 @@
+ local li_settings_file = adchpp.Util_getCfgPath() .. "li_settings.txt"
+ local en_settings_file = adchpp.Util_getCfgPath() .. "en_settings.txt"
+ local fldb_folder = "FL_DataBase"
+-local script_path = base.scriptPath .. '/'
++local script_path = adchpp.Util_getCfgPath() .. '/'
+ local fldb_path = script_path .. fldb_folder .. '/'
+ local fldb_path = string.gsub(fldb_path, '\\', '/')
+ local fldb_path = string.gsub(fldb_path, '//+', '/')
+@@ -166,7 +166,7 @@
+ 	local file = io.open(tmpbanstats_file, "r")
+ 	if not file then
+ 		log('The folder '.. fldb_path .. ' was not found, creating it ...')
+-		fldb_folder_exist = os.execute("mkdir ".. fldb_folder)
++		fldb_folder_exist = os.execute("mkdir ".. fldb_path)
+ 	else
+ 		file:close()
+ 	end
