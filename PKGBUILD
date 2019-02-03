@@ -5,7 +5,7 @@
 # Contributor: Andrew Kravchuk <awkravchuk at gmail dot com>
 #
 pkgname="aarchup"
-pkgver=1.8.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
 url="https://github.com/inglor/aarchup"
@@ -13,27 +13,27 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 provides=("${pkgname}")
 depends=('libnotify' 'gtk2')
-makedepends=('libnotify' 'autoconf' 'gzip')
+makedepends=('libnotify' 'cmake' 'ninja' 'gzip')
 optdepends=('auracle: AUR support(--aur)')
-install='aarchup.install'
-source=("${pkgname}-${pkgver}.zip::${url}/archive/${pkgver}.zip")
-sha256sums=('1e5440ea6ce8ddded31f6d9ab9f62743c99ba9b56f65fd8f92a965d7970ead3e')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('51adb6e1ebf500281c2874dbf624a869f83c927c7aac6e19645fdc0e64cddec7')
+
 
 prepare() {
-    mv "${pkgname}-${pkgver}"/src/* "${pkgname}-${pkgver}"
-    rmdir "${pkgname}-${pkgver}"/src
+    mkdir "${pkgname}-${pkgver}/build"
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    autoconf
-    ./configure --prefix=/usr
-    make
+    cd "${pkgname}-${pkgver}/build"
+    cmake .. -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    ninja all
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
+    cd "${pkgname}-${pkgver}/build"
+    DESTDIR="$pkgdir" ninja install
 }
 
 # vim: set ts=4 sw=4 et syn=sh ft=sh:
