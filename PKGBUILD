@@ -1,7 +1,7 @@
 # Maintainer: Matt Parnell <parwok@gmail.com>
 
 pkgname=vpn-slice-git
-pkgver=v0.4.2.1.gd1c2578
+pkgver=v0.5.2.g69476c5
 pkgrel=1
 pkgdesc="Python based vpnc-script replacement for easy and secure split-tunnel VPN setup"
 arch=('any')
