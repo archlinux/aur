@@ -1,13 +1,13 @@
 pkgbase = hdfview-git
 	pkgdesc = a GUI browser for reading hdf5 files from dev git repo
 	pkgver = r346.d6a3bf6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hdfgroup.org/downloads/hdfview/
 	arch = x86_64
 	license = custom
 	makedepends = ant
 	makedepends = java-environment
-	depends = hdf5-openmpi-java
+	depends = hdf5
 	depends = hdf4
 	provides = hdfview
 	conflicts = hdfview-beta
