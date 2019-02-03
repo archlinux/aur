@@ -1,0 +1,19 @@
+pkgbase = hdf-java-fix
+	pkgdesc = The hdf5 Java Native Interfaces (JNI) for 32-bit object ids (files created with versions up to 1.8) build fix
+	pkgver = 3.3.2
+	pkgrel = 1
+	url = https://support.hdfgroup.org/products/java/
+	arch = x86_64
+	license = custom
+	makedepends = java-environment
+	makedepends = cmake
+	makedepends = apache-ant
+	provides = hdf-java
+	conflicts = hdf-java
+	source = http://www.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfjni-3.3.2/src/CMake-hdfjava-3.3.2.tar.gz
+	source = FindXDR.patch
+	md5sums = 9fdbb55f2292092f0e6b46078109d54a
+	md5sums = 97b03ee821863fd80b4c50aa75c9d791
+
+pkgname = hdf-java-fix
+
