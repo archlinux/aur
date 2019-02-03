@@ -1,0 +1,21 @@
+pkgbase = svgcleaner-gui
+	pkgdesc = main GUI for svgcleaner
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/RazrFalcon/svgcleaner-gui
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = qt5-tools
+	makedepends = qt5-svg
+	depends = qt5-base
+	depends = svgcleaner
+	source = svgcleaner-gui-0.9.5.tar.gz::https://github.com/RazrFalcon/svgcleaner-gui/archive/v0.9.5.tar.gz
+	sha256sums = 71b325614407bd5dd137b3c71cc352777e81621b14f730ac68cbc2cbd1950c39
+
+pkgname = svgcleaner-gui
+
