@@ -6,7 +6,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
-pkgver=415.27
+pkgver=418.30
 pkgrel=1
 pkgdesc='NVIDIA driver utilities and libraries (beta version)'
 arch=('x86_64')
@@ -17,11 +17,11 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-beta.sysusers')
-sha256sums=('0882f8e8fb3110c180edffeca23b49600bf11dd62ef72eb5db1cf9acb4fa8ccf'
+sha256sums=('da5ff351869694561bdf53260f8212dde76e885333d8967e7d633084e032cf1f'
             '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167')
 
-_eglver=1.1.0
+_eglver=1.1.2
 
 # create missing soname links
 _create_links() {
@@ -144,9 +144,6 @@ package_nvidia-utils-beta() {
     ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.1"  # X doesn't find glx otherwise
     ln -s "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so"    # X doesn't find glx otherwise
     
-    # X wrapped software rendering
-    install -D -m755 "libnvidia-wfb.so.${pkgver}" -t "${pkgdir}/usr/lib"
-    
     # libGL & OpenGL
     install -D -m755  libGL.so.1.7.0                    -t "${pkgdir}/usr/lib/nvidia"
     install -D -m755  libGLdispatch.so.0                -t "${pkgdir}/usr/lib"
@@ -216,6 +213,9 @@ package_nvidia-utils-beta() {
     
     # OptiX ray tracing engine
     install -D -m755 "libnvoptix.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    
+    # Optical Flow
+    install -D -m755 "libnvidia-opticalflow.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     _create_links
     
