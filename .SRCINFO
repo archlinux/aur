@@ -1,6 +1,6 @@
 pkgbase = newadwaita-gtk-theme
 	pkgdesc = New Adwaita GTK theme
-	pkgver = 20190128
+	pkgver = 3
 	pkgrel = 1
 	url = https://blog.gtk.org/2019/01/14/theme-changes-in-gtk-3/
 	arch = any
