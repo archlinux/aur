@@ -3,7 +3,7 @@
 pkgname=brother-hll9200cdw-lpr-bin
 pkgver=1.1.2
 pkgrel=1
-pkgdesc="LPR driver for Brother HL-L9200CDW printer"
+pkgdesc="LPR driver for Brother HL-L9200CDW(T) printer"
 arch=("i686" "x86_64")
 url="https://support.brother.com/g/b/producttop.aspx?c=ca&lang=en&prod=hll9200cdw_us_as_cn"
 license=("EULA")
