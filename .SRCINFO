@@ -1,6 +1,6 @@
 pkgbase = enpass-bin
 	pkgdesc = A multiplatform password manager
-	pkgver = 6.0.3.263
+	pkgver = 6.0.4.281
 	pkgrel = 1
 	url = http://enpass.io/
 	install = enpass-bin.install
@@ -10,8 +10,8 @@ pkgbase = enpass-bin
 	depends = lsof
 	provides = enpass
 	options = !strip
-	source = https://apt.enpass.io/pool/main/e/enpass/enpass_6.0.3.263_amd64.deb
-	sha256sums = ad53f6c7c281ee3aecb1cabcf0e8849de05f0bb9b8d3362f0dfad8ad582cab87
+	source = https://apt.enpass.io/pool/main/e/enpass/enpass_6.0.4.281_amd64.deb
+	sha256sums = 9680f54f9df6dd4e00f3dd0a0d24372b7bedc31c0e5bd57eb926505a6e559f15
 
 pkgname = enpass-bin
 
