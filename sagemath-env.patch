@@ -90,7 +90,7 @@
  export SAGE_DOC="$SAGE_SHARE/doc/sage"
  
  if [ -z "${SAGE_ORIG_PATH_SET}" ]; then
-@@ -409,29 +409,8 @@
+@@ -409,28 +409,8 @@
      export SAGE_STARTUP_FILE
  fi
  
@@ -118,10 +118,9 @@
 -    >&2 echo "Warning: PYTHONHOME must not be set when running Sage, clearing env..."
 -    unset PYTHONHOME
 -fi
--
+ 
  LDFLAGS="-L$SAGE_LOCAL/lib -Wl,-rpath,$SAGE_LOCAL/lib $LDFLAGS"
  export LDFLAGS
- 
 @@ -495,8 +495,6 @@
      fi
  fi
@@ -141,22 +140,3 @@
  # Handle parallel building/testing/...
  # See Trac Ticket #12016
  # First, figure out the right values for SAGE_NUM_THREADS (default
---- src/sage/env.py.orig       2017-12-07 19:51:25.554281539 +0000
-+++ src/sage/env.py    2017-12-07 19:51:42.787654650 +0000
-@@ -117,13 +117,13 @@
- _add_variable_or_fallback('LOCAL_IDENTIFIER','$HOSTNAME.%s'%os.getpid())
- 
- # bunch of sage directories and files
--_add_variable_or_fallback('SAGE_ROOT',       None)
--_add_variable_or_fallback('SAGE_LOCAL',      None)
-+_add_variable_or_fallback('SAGE_ROOT',       '')
-+_add_variable_or_fallback('SAGE_LOCAL',      '/usr')
- _add_variable_or_fallback('SAGE_ETC',        opj('$SAGE_LOCAL', 'etc'))
- _add_variable_or_fallback('SAGE_INC',        opj('$SAGE_LOCAL', 'include'))
- _add_variable_or_fallback('SAGE_SHARE',      opj('$SAGE_LOCAL', 'share'))
- 
--_add_variable_or_fallback('SAGE_SRC',        opj('$SAGE_ROOT', 'src'))
-+_add_variable_or_fallback('SAGE_SRC',        opj('$SAGE_LOCAL', 'lib', 'python2.7', 'site-packages'))
- 
- try:
-     sitepackages_dirs = site.getsitepackages()

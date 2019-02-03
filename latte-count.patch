@@ -51,7 +51,7 @@ diff --git a/src/sage/interfaces/latte.py b/src/sage/interfaces/latte.py
 index 066cedd401..302b39910d 100644
 --- a/src/sage/interfaces/latte.py
 +++ b/src/sage/interfaces/latte.py
-@@ -93,7 +93,7 @@ def count(arg, ehrhart_polynomial=False, multivariate_generating_function=False,
+@@ -94,7 +94,7 @@ def count(arg, ehrhart_polynomial=False, multivariate_generating_function=False,
          sage: n = count(cddin, cdd=True, verbose=True, raw_output=True)  # optional - latte_int
          This is LattE integrale ...
          ...
@@ -60,7 +60,7 @@ index 066cedd401..302b39910d 100644
          ...
          Total Unimodular Cones: ...
          Maximum number of simplicial cones in memory at once: ...
-@@ -112,7 +112,7 @@ def count(arg, ehrhart_polynomial=False, multivariate_generating_function=False,
+@@ -113,7 +113,7 @@ def count(arg, ehrhart_polynomial=False, multivariate_generating_function=False,
      # Check that LattE is present
      Latte().require()
  

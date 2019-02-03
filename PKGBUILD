@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.7.beta1.r0.g0cb494282d
+pkgver=8.7.beta2.r0.ga6cab5b519
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -44,20 +44,18 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-threejs.patch
         sagemath-cremona.patch
         sagemath-sphinx-1.8.patch
-        sagemath-cypari2.patch
         sagemath-singular-4.1.1.p4.patch
         sagemath-ecl-sigfpe.patch)
 sha256sums=('SKIP'
-            'de6e38462ef1848778fbc23a63529fbee9229dbb245bb653f58a0d834a634c04'
+            '5ce8d222eb54511b42b6eb90b55871d1e15f3bdd812704a96e066bf183a25a38'
             '960afe4fcbffe2762b66119b8f14355386ced0d8ee52b535d0dac1dba90d365b'
-            'ef265f88ceb6caf4aac2d86ea74850861d99a63d11c94fc52b2ce88053c26d1e'
+            'b66d5bb692159910cec83c80262c43a687d3a678010c7ae4c7070f7cf3a0d5cb'
             'bd2744c6564bbf71bd6ea3cd7b9031e2126cc1423bcdc1fcc258d90d750a129d'
             'f12bd2a53ad51549015093aacc89978f4d796d9ab5bcd3d737aa0d57a5815b54'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             'f6b48abf34f64ea3fc092b0f0179e89633f7d3ecc0d62c2acacbfa1217751d63'
             '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
             '22f5e44a42c8276025b8512f45cac1c36d576c29c7fd9d36fde8b19ff87867d8'
-            '9e49c7c1820ff952daf52658270aa8e404f949f1a15aee90355f78a07c6a89fe'
             '482887fe43d89cef3270e89300ab9e2238fa74cd5b7c875688b68fb1b10c4fdf'
             'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938')
 
@@ -90,8 +88,6 @@ prepare(){
   patch -p1 -i ../fes02.patch
 # use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825
   patch -p1 -i ../sagemath-cremona.patch
-# Fix build with cypari 2.0 https://trac.sagemath.org/ticket/26442
-  patch -p1 -i ../sagemath-cypari2.patch
 # Fixes for singular 4.1.1p4 https://trac.sagemath.org/ticket/25993
   patch -p1 -i ../sagemath-singular-4.1.1.p4.patch
 # Fix SIGFPE crashes with ecl 16.1.3 https://trac.sagemath.org/ticket/22191
