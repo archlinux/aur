@@ -26,8 +26,8 @@ source=("http://downloads.sourceforge.net/project/adchpp/Releases/ADCH%2B%2B%202
         'adchpp.sysuser'
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp/files/adchpp-2.8.0-fix_config_paths.patch'
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp/files/adchpp-2.11.0-fix_cflags.patch'
-        'adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch::https://sl1pkn07.wtf/paste/view/raw/9b86555d'
-        'adchpp-2.9.0-fix_log_path.patch::https://sl1pkn07.wtf/paste/view/raw/9e06ad93'
+        'adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch'
+        'adchpp-2.9.0-fix_log_path.patch'
         )
 sha256sums=('ee839daa4d392e01da204475d625f92050ba3370a3a20c5288d8d37e7dcbcbb6'
             '408dace5cbe39f93b814b517250ba0ca5729f2d01e2183a467c5acdbbefb78f2'

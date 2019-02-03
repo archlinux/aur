@@ -1,0 +1,84 @@
+diff -ru adchpp_2.8.0_source.orig//etc/Script.xml adchpp_2.8.0_source//etc/Script.xml
+--- adchpp_2.8.0_source.orig//etc/Script.xml	2012-02-24 07:15:25.529177571 +0100
++++ adchpp_2.8.0_source//etc/Script.xml	2012-02-24 08:11:11.750184714 +0100
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+ <!--Ensure that you load the scripts in this order so that they work correctly.-->
+ <ScriptPlugin>
+-	<Engine language="lua" scriptPath="Scripts/">
++	<Engine language="lua" scriptPath="%%ADCHPPSHARE%%/scripts/">
+ 		<Script>access.lua</Script>
+ 		<Script>access.bans.lua</Script>
+ 		<Script>access.guard.lua</Script>
+diff -ru adchpp_2.8.0_source.orig//etc/adchpp.xml adchpp_2.8.0_source//etc/adchpp.xml
+--- adchpp_2.8.0_source.orig//etc/adchpp.xml	2012-02-24 07:15:25.529177571 +0100
++++ adchpp_2.8.0_source//etc/adchpp.xml	2012-02-24 08:11:11.750184714 +0100
+@@ -20,7 +20,7 @@
+ 			 through strftime with the current time (see any standard c library reference
+ 			 to find out what works...). There's not much logging done at all btw, but
+ 			 plugins can use the logs as well... -->
+-		<LogFile type="string">logs/adchpp%Y%m.log</LogFile>
++		<LogFile type="string">%%ADCHPPLOG%%/adchpp%Y%m.log</LogFile>
+ 
+ <!-- Advanced connection settings (don't change unless you at least think you know what you're doing) -->
+ 
+@@ -61,7 +61,7 @@
+ 
+ 		To create secure connections, set TLS="1" and define the following (preferably absolute)
+ 		paths: Certificate, PrivateKey, TrustedPath, DHParams. An example secure server setting:
+-		<Server Port="2780" TLS="1" Certificate="certs/cacert.pem" PrivateKey="certs/privkey.pem" TrustedPath="certs/trusted/" DHParams="certs/dhparam.pem"/>
++		<Server Port="2780" TLS="1" Certificate="%%ADCHPPETC%%/certs/cacert.pem" PrivateKey="%%ADCHPPETC%%/certs/privkey.pem" TrustedPath="%%ADCHPPETC%%/certs/trusted/" DHParams="%%ADCHPPETC%%/certs/dhparam.pem"/>
+ 
+ 		Simple OpenSSL commands to generate files used for secure connections:
+ 		openssl genrsa -out privkey.pem 2048
+@@ -82,9 +82,7 @@
+ 		 if someone's written a script plugin for it. You must specify the path to your
+ 		 plugins in linux default place it looks for the plugin path is /home/<username>/adchpp/ -->
+ 		 
+-	<!--Plugins Path="~/adchpp/"-->
+-	
+-	<Plugins>
++	<Plugins Path="%%ADCHPPLIB%%/">
+ 		<!-- This plugins provides the scripting support. -->
+ 		<Plugin>Script</Plugin>
+ 		<!-- Bloom filter plugin, helps save upload bandwidth at a slight expense of memory and download bandwidth -->
+diff -ru adchpp_2.8.0_source.orig//pyutil/adchpp.py adchpp_2.8.0_source//pyutil/adchpp.py
+--- adchpp_2.8.0_source.orig//pyutil/adchpp.py	2012-02-24 07:15:25.533177571 +0100
++++ adchpp_2.8.0_source//pyutil/adchpp.py	2012-02-24 08:18:11.909185610 +0100
+@@ -1,6 +1,5 @@
+ import sys,os
+-sys.path.append(os.path.abspath('../build/debug-default/bin/'))
+-sys.path.append(os.path.abspath('../build/debug-mingw/bin/'))
++sys.path.append(os.path.abspath('%%ADCHPPLIB%%'))
+ 
+ import pyadchpp as a
+ 
+@@ -18,7 +17,7 @@
+ nicks = dict([(x.nick, x) for x in users if x.nick])
+ cids = dict([(x.cid, x) for x in users if x.cid])
+ 
+-configPath = os.path.abspath('../etc/') + os.sep
++configPath = os.path.abspath('%%ADCHPPETC%%') + os.sep
+ core = a.Core.create(configPath)
+ 
+ def findUser(nick, cid):
+diff -ru adchpp_2.8.0_source.orig//rbutil/adchpp.rb adchpp_2.8.0_source//rbutil/adchpp.rb
+--- adchpp_2.8.0_source.orig//rbutil/adchpp.rb	2012-02-24 07:15:25.533177571 +0100
++++ adchpp_2.8.0_source//rbutil/adchpp.rb	2012-02-24 08:14:33.845185144 +0100
+@@ -1,6 +1,5 @@
+ 
+-$:.unshift(File.expand_path('../build/debug-default/bin/'))
+-$:.unshift(File.expand_path('../build/release-default/bin/'))
++$:.unshift(File.expand_path('%%ADCHPPLIB%%'))
+ 
+ puts "Loading module..."
+ 
+@@ -8,7 +7,7 @@
+ 
+ a = Rbadchpp
+ 
+-config_path = File.expand_path("../etc/") + '/'
++config_path = File.expand_path("%%ADCHPPETC%%") + '/'
+ puts "Configuration path is #{config_path}..."
+ 
+ core = a::Core.create(config_path)

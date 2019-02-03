@@ -7,3 +7,7 @@
 !adchpp.service
 !adchpp.tmpfile
 !adchpp.sysuser
+!adchpp-2.8.0-fix_config_paths.patch
+!adchpp-2.9.0-fix_log_path.patch
+!adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch
+!adchpp-2.11.0-fix_cflags.patch
