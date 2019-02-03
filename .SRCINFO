@@ -1,0 +1,13 @@
+pkgbase = awp-blob
+	pkgdesc = AWP: an obscure lib from IDEMIA needed for new ESTEID cards issued since 12/18 (blob from official deb, no source currently exists)
+	pkgver = 5.3.0.18.04.75
+	pkgrel = 1
+	url = www.idemia.com
+	arch = x86_64
+	license = unknown
+	provides = awp
+	source = https://installer.id.ee/media/ubuntu/pool/main/a/awp/awp_5.3.0.18.04.75_amd64.deb
+	md5sums = 88c2944280bb91af60bfd80dd74c3310
+
+pkgname = awp-blob
+
