@@ -3,7 +3,7 @@
 pkgbase = oracle-sqldeveloper
 	pkgdesc = A graphical tool for database development
 	pkgver = 18.4.0.376.1900
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html
 	arch = any
 	license = custom:OTN
@@ -12,7 +12,7 @@ pkgbase = oracle-sqldeveloper
 	depends = perl
         depends = java-openjfx
 	optdepends = ksh
-	source = manual://sqldeveloper-18.4.0.376.1900-no-jre.zip
+	source = manual://sqldeveloper-18.4.0-376.1900-no-jre.zip
 	source = oracle-sqldeveloper.desktop
 	source = oracle-sqldeveloper.sh
 	source = LICENSE

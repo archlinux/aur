@@ -9,15 +9,17 @@
 # what the heck
 
 pkgname=oracle-sqldeveloper
-pkgver=18.4.0.376.1900
-pkgrel=1
+pkgver1=18.4.0
+pkgver2=376.1900
+pkgver=$pkgver1.$pkgver2
+pkgrel=2
 pkgdesc="A graphical tool for database development"
 arch=('any')
 url="http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html"
 license=('custom:OTN')
 depends=('java-environment=8' 'bash' 'perl' 'java-openjfx')
 optdepends=('ksh')
-source=(manual://sqldeveloper-$pkgver-no-jre.zip
+source=(manual://sqldeveloper-$pkgver1-$pkgver2-no-jre.zip
         oracle-sqldeveloper.desktop
         oracle-sqldeveloper.sh
         LICENSE
