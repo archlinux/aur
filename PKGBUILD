@@ -9,7 +9,7 @@
 
 pkgbase=lib32-nvidia-utils-beta
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
-pkgver=415.27
+pkgver=418.30
 pkgrel=1
 pkgdesc='NVIDIA driver utilities and libraries (beta version) (32-bit)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ license=('custom:NVIDIA')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run")
-sha256sums=('c82b76a62035033dbfef4b9759c2b0544508e1180c8c7c1e68f35d1e6070d48b')
+sha256sums=('c1ade253080a049ea38149b9ceb8f20549b5b17164eeae114d6c058e01e23958')
 
 # create missing soname links
 _create_links() {
@@ -155,6 +155,9 @@ package_lib32-nvidia-utils-beta() {
     # helper libs for approved partners GRID remote apps
     install -D -m755 "libnvidia-ifr.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     install -D -m755 "libnvidia-fbc.so.${pkgver}" -t "${pkgdir}/usr/lib32"
+    
+    # Optical Flow
+    install -D -m755 "libnvidia-opticalflow.so.${pkgver}" -t "${pkgdir}/usr/lib32"
     
     _create_links
     
