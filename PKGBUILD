@@ -3,8 +3,8 @@
 # Contributor: Shizeeg Unadequatov <shizeeque @ gmail DOT com>
 
 pkgname=yetris-git
-pkgver=20141010
-pkgrel=5
+pkgver=20150103
+pkgrel=1
 pkgdesc="Customizable Tetris(tm) for the terminal - unstable development version"
 arch=('x86_64' 'i686')
 url="http://www.github.com/alexdantas/yetris/"
