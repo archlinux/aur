@@ -36,10 +36,10 @@ makedepends=("python-setuptools")
 source=("https://github.com/krakenfx/kraken-wsclient-py.git")
 sha256sums=('SKIP')
 
-build() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py build
-}
+#build() {
+#    cd "$srcdir/$_pkgname-$pkgver"
+#    python setup.py build
+#}
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
