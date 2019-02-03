@@ -1,10 +1,9 @@
 pkgbase = fcitx-shuoxie-git
 	pkgdesc = Input with speaking or handwriting (Simplified Chinese Only)
 	pkgver = current
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitee.com/hebinq/shuoxie
 	arch = x86_64
-	arch = i686
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
