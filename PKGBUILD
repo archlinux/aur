@@ -3,7 +3,7 @@
 pkgbase='python2-rosdistro'
 pkgname=('python2-rosdistro')
 _module='rosdistro'
-pkgver='0.7.1'
+pkgver='0.7.2'
 pkgrel=1
 pkgdesc="A tool to work with rosdistro files"
 url="http://wiki.ros.org/rosdistro"
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/r/rosdistro/rosdistro-${pkgver}.tar.gz")
-md5sums=('be7364bc4d7c87104dfaccac019fbc1f')
+md5sums=('dfc33ea084fcc020410b0cfb4ee147d0')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
