@@ -85,6 +85,8 @@ depends=(
 	tinyxml2
 	urdfdom-headers
 	qt5-base
+	sip
+	python-sip
 )
 
 _dir="rviz-release-release-melodic-rviz-${pkgver}-${_pkgver_patch}"
@@ -95,6 +97,9 @@ build() {
 	# Use ROS environment variables.
 	source /usr/share/ros-build-tools/clear-ros-env.sh
 	[ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+
+	# Fixes OGRE Path issue
+	PKG_CONFIG_PATH=/opt/OGRE-1.9/lib/pkgconfig:$PKG_CONFIG_PATH
 
 	# Create the build directory.
 	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build

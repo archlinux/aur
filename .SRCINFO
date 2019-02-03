@@ -68,6 +68,8 @@ pkgbase = ros-melodic-rviz
 	depends = tinyxml2
 	depends = urdfdom-headers
 	depends = qt5-base
+	depends = sip
+	depends = python-sip
 	source = ros-melodic-rviz-1.13.1-0.tar.gz::https://github.com/ros-gbp/rviz-release/archive/release/melodic/rviz/1.13.1-0.tar.gz
 	sha256sums = 2c457a91f490ceb954760c23f8cc8d8edab3089cae59fa3b335191d96802ae0d
 
