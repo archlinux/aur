@@ -1,6 +1,6 @@
 pkgbase = python-chaospy
 	pkgdesc = Toolbox for performing uncertainty quantification
-	pkgver = 2.3.3
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/jonathf/chaospy
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-chaospy
 	makedepends = python-setuptools
 	depends = python-networkx
 	depends = python-scikit-learn
-	source = https://github.com/jonathf/chaospy/archive/v2.3.3.tar.gz
-	sha256sums = 0fc918583053f3573edbb95885b568d097f60b279b0754e91f5f4dbf927ac338
+	source = https://github.com/jonathf/chaospy/archive/v3.0.0.tar.gz
+	sha256sums = 9448d87ba7ffc3028e3c13e759bb6dd049f134a0d771e3d6ffd0e34c02e2d600
 
 pkgname = python-chaospy
 
