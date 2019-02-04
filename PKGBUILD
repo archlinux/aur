@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-bcp
-pkgver=1.4.0
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="COIN-OR parallel branch-cut-price algorithms for mixed-integer linear programs (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-coin-or-cgl' 'mingw-w64-coin-or-clp')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Bcp/Bcp-${pkgver}.tgz")
-sha1sums=('addf63bda07f85ea6a6b16ff32088afd08a3b56e')
+sha256sums=('5e7a2871033f9d5e8dda69b5fc19ff37853f24f4bdd42fb0b97f904e3a7c856e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -19,7 +19,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     COIN_SKIP_PROJECTS="Sample" \
-    ${_arch}-configure \
+    ${_arch}-configure --disable-shared \
                 --with-osi-lib="$(${_arch}-pkg-config --libs osi)" \
                 --with-osi-incdir="/usr/${_arch}/include/coin/" \
                 --with-clp-lib="$(${_arch}-pkg-config --libs clp)" \
@@ -29,7 +29,8 @@ build() {
                 --with-vol-lib="$(${_arch}-pkg-config --libs vol)" \
                 --with-vol-incdir="/usr/${_arch}/include/coin/" \
                 --with-coinutils-lib="$(${_arch}-pkg-config --libs coinutils)" \
-                --with-coinutils-incdir="/usr/${_arch}/include/coin/" -C
+                --with-coinutils-incdir="/usr/${_arch}/include/coin/" \
+                ..
     make
     popd
   done
