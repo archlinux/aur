@@ -1,39 +1,49 @@
-# Maintainer: Jonathan Liu <net147@gmail.com>
-_pkgname=qt5-charts
-pkgname=$_pkgname-git
-pkgver=5.8.0.r2800.d27b6b2
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Jonathan Liu <net147@gmail.com>
+
+pkgname=qt5-charts-git
+pkgver=5.12.1.r21.g9e943f14
 pkgrel=1
 pkgdesc="Provides a set of easy to use chart components"
 arch=('i686' 'x86_64')
-url="https://code.qt.io/cgit/qt/qtcharts.git"
+url="https://www.qt.io/"
 license=('GPL3')
-depends=('qt5-declarative')
-makedepends=('git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+https://code.qt.io/qt/qtcharts.git#branch=dev")
-md5sums=('SKIP')
+depends=('qt5-base')
+makedepends=('git' 'qt5-declarative')
+provides=('qt5-charts')
+conflicts=('qt5-charts')
+source=("git+https://code.qt.io/qt/qtcharts.git#branch=dev")
+sha256sums=('SKIP')
 
-pkgver() {
-  cd "$_pkgname"
-  module_version="$(sed -n 's/^MODULE_VERSION\s*=\s*\(.*\)/\1/p' .qmake.conf)"
-  printf "$module_version.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
-  mkdir -p build
+  cd "$srcdir"
+
+  mkdir -p "_build"
+}
+
+pkgver() {
+  cd "qtcharts"
+
+  _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/v//p}')
+  _rev=$(git rev-list --count v$_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
 }
 
 build() {
-  cd build
-  qmake "../$_pkgname"
+  cd "_build"
+
+  qmake ../qtcharts
   make
 }
 
 package() {
-  cd build
-  make INSTALL_ROOT="$pkgdir" install
-  sed -i '/^QMAKE_PRL_BUILD_DIR =/d' "$pkgdir/usr/lib"/*.prl
-}
+  cd "_build"
 
-# vim:set ts=2 sw=2 et:
+  make INSTALL_ROOT="$pkgdir" install
+
+  # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+  find "$pkgdir/usr/lib" -type f -name '*.prl' \
+    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+}
