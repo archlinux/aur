@@ -25,7 +25,7 @@ pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
 pkgver=18.1rc1pre2
 _major=18.0
-pkgrel=1
+pkgrel=2
 _codename=Leia
 _tag="$_major-$_codename"
 # Found on their respective github release pages. One can check them against
@@ -70,7 +70,6 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
-  'cheat-sse-build.patch'
   'cpuinfo'
   '00-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch'
   # closed milestone patches go here
@@ -120,7 +119,6 @@ sha256sums=('ac5d64d59c6f4811b41a869538506e56c342b530fac97ad9dc9715f3d480e633'
             '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
-            '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
             '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb'
             '4676b603e0c170f2d627e305560622b72dbdee51c0a221058c350841a814dc39'
@@ -155,9 +153,9 @@ prepare() {
 
   cd "xbmc-$_tag"
 
-  # detect if building in arch chroot
+  # detect if building in arch chroot using $pkgname rather than hard coping it into a patch
   if [[ "$srcdir" =~ ^\/build.* ]]; then
-    patch -Np1 -i ../cheat-sse-build.patch
+    sed s"|exec_program(cat ARGS \"/proc/cpuinfo\" OUTPUT_VARIABLE CPUINFO)|exec_program(cat ARGS \"/build/$pkgname/src/cpuinfo\" OUTPUT_VARIABLE CPUINFO)|" cmake/modules/FindSSE.cmake
   fi
 
   local src
