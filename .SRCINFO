@@ -1,6 +1,6 @@
 pkgbase = tt-rss-videoframes-git
 	pkgdesc = TT-RSS plugin to enable embedded videos in feeds
-	pkgver = v0.3.31.g58bcc5a
+	pkgver = v0.4
 	pkgrel = 1
 	url = https://github.com/tribut/ttrss-videoframes
 	arch = any
