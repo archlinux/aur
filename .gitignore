@@ -16,3 +16,4 @@
 /pkg
 *.kate-swp
 *.py
+update_odrive.sh
