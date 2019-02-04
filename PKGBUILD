@@ -1,8 +1,11 @@
 # Maintainer: Holger Rauch <holger dot rauch at posteo dot de>
 
-pkgname=payara5-micro
-pkgver=5.182
-pkgrel=1
+pkgver=5.184
+_pkgmajver=$(echo $pkgver | cut -f1 -d.)
+pkgrel=2
+_pkgvar=micro
+_prodname=payara
+pkgname=${_prodname}${pkgmajver}-${_pkgvar}
 pkgdesc="A Java EE application server, derived from GlassFish Open Source Edition. (Micro Edition)"
 url="http://www.payara.fish/"
 license=("CDDL" "GPL2")
@@ -11,14 +14,14 @@ conflicts=("$pkgname" "payara51")
 depends=("java-environment>=8")
 arch=("any")
 options=(!strip)
-source=("payara-${pkgver}-micro.zip::https://info.payara.fish/cs/c/?cta_guid=21e00628-5d9e-400a-9805-1fc99fe0de87&placement_guid=0c1037e0-adaf-4401-b888-05088602db6a&portal_id=334594&redirect_url=APefjpHl6OFpYkrA2fSOjKKox_15up4bGrXmRTDxqXeDriYTCemsa3QOKpI_m61vAcWvPDB2WzeDtbkELlkcCK2U-LXCELFwojuT6JFInAF2cXDzV0-rpSPdTU_w8-Ycwr1sKW_uKjIcpgsr_htpC3sHqrmSVdrJibTLG-jEf99YsxEQFRdHKHChrj6HuI9EdPT4y6Xf7BXVMXMNBsasdG_SVutZDL8Z3lMSVMKPrXuAcAhiNOxhK9z2-UYVBbobNXx-W1ozIaGh&hsutk=ce9c20bff94221fd231baf88a9f6dba6&canon=https%3A%2F%2Fwww.payara.fish%2Fdownloads&click=28b80d6f-ac3e-4ac1-b64f-2d0100a482c9&utm_referrer=https%3A%2F%2Fwww.payara.fish%2F&__hstc=229474563.ce9c20bff94221fd231baf88a9f6dba6.1530483205899.1530483205899.1530483205899.1&__hssc=229474563.2.1530483205900&__hsfp=439309316"
+source=("payara-${pkgver}-micro.zip::https://search.maven.org/remotecontent?filepath=fish/${_prodname}/extras/${pkgname}/$pkgver/$pkgname-$pkgver.jar"
         "payara5-micro.service")
 
-sha256sums=('ea4f3fd745dad9a219a25dd83d56f035ae7f2de427548802e008977c9893e969'
-            'be71a959519aa009dcee2f1f6422acb47710099651d6c778391ea736cbc22873')
+sha256sums=('891a4d5d06e6dcaed8a34be9cc2e8538869dacaca6c1890f19ebbd491be2e011'
+            '9276630a47942e37756e23355ef60ce003bba93c712c4f04be62667494da17ff')
 
-sha512sums=('ede2528dfdd9e7879cd3001469ac3b66b92db698aff1ce81c27aa98409e26114c75104dd1146800904619a26c3edadb5f4ecfd559763c2edcc1b19bc99f49dd1'
-            '3449a64d3c3dcee6e035b45198deb077520c7fc6b963fcf7468430f15514ddabc68ae2f2f8c20ce2a55d58bbb6203b34bacf543fc5e31b4df2642666c26aa3bb')
+sha512sums=('652f2f2b379c184287b8b4103970d08f1635c3265db2ce1baa0e6b8df472552a512689cdff7f0ce1283f3c313400e5589133b77538035dba96f7573e39a70def'
+            '0a29479dd5dd11ba69383554d64fad35d438678e63274e107da2ab959c78be8809e4f8ca837f88a880dc69f09de330c253f00c4acbd6e70e5dac7b72826fe0bf')
 
 package() {
     mkdir -p $pkgdir/opt/$pkgname
