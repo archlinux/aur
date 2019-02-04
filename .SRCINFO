@@ -1,6 +1,6 @@
 pkgbase = mtm-git
 	pkgdesc = Perhaps the smallest useful terminal multiplexer in the world.
-	pkgver = r52.7432d00
+	pkgver = r332.688b883
 	pkgrel = 1
 	url = https://github.com/deadpixi/mtm
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = mtm-git
 	license = GPL
 	makedepends = git
 	depends = ncurses
+	provides = mtm
 	source = git+https://github.com/deadpixi/mtm.git
 	md5sums = SKIP
 
