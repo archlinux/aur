@@ -1,7 +1,7 @@
 pkgbase = qt5-svg-git
-	pkgdesc = Classes for displaying the contents of SVG files
+	pkgdesc = Qt5 SVG module
 	pkgver = 5.12.1.r11.g2ae3c52
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.qt.io/
 	arch = i686
 	arch = x86_64
