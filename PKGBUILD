@@ -1,39 +1,49 @@
-# Maintainer: Jonathan Liu <net147@gmail.com>
-_pkgname=qt5-datavis3d
-pkgname=$_pkgname-git
-pkgver=5.8.0.r1391.13a8c4e
-pkgrel=1
-pkgdesc="Provides multiple graph types to visualize data in 3D space both with C++ and Qt Quick 2"
-arch=('i686' 'x86_64')
-url="https://code.qt.io/cgit/qt/qtdatavis3d.git"
-license=('GPL3')
-depends=('qt5-declarative' 'qt5-multimedia')
-makedepends=('git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+https://code.qt.io/qt/qtdatavis3d.git#branch=dev")
-md5sums=('SKIP')
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Jonathan Liu <net147@gmail.com>
 
-pkgver() {
-  cd "$_pkgname"
-  module_version="$(sed -n 's/^MODULE_VERSION\s*=\s*\(.*\)/\1/p' .qmake.conf)"
-  printf "$module_version.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+pkgname=qt5-datavis3d-git
+pkgver=5.12.1.r11.gc6e1dd50
+pkgrel=1
+pkgdesc="Qt5 data visualization module"
+arch=('i686' 'x86_64')
+url="https://www.qt.io/"
+license=('GPL3')
+depends=('qt5-declarative')
+makedepends=('git')
+provides=('qt5-datavis3d')
+conflicts=('qt5-datavis3d')
+source=("git+https://code.qt.io/qt/qtdatavis3d.git#branch=dev")
+sha256sums=('SKIP')
+
 
 prepare() {
-  mkdir -p build
+  cd "$srcdir"
+
+  mkdir -p "_build"
+}
+
+pkgver() {
+  cd "qtdatavis3d"
+
+  _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/v//p}')
+  _rev=$(git rev-list --count v$_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
 }
 
 build() {
-  cd build
-  qmake "../$_pkgname"
+  cd "_build"
+
+  qmake ../qtdatavis3d
   make
 }
 
 package() {
-  cd build
-  make INSTALL_ROOT="$pkgdir" install
-  sed -i '/^QMAKE_PRL_BUILD_DIR =/d' "$pkgdir/usr/lib"/*.prl
-}
+  cd "_build"
 
-# vim:set ts=2 sw=2 et:
+  make INSTALL_ROOT="$pkgdir" install
+
+  # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+  find "$pkgdir/usr/lib" -type f -name '*.prl' \
+    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+}
