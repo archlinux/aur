@@ -13,7 +13,7 @@ _kernel_rel=5.1
 _branch=drm-intel-next
 _kernelname=${pkgbase#linux}
 pkgver=5.1.810808.46c0cd8c562b
-pkgrel=1
+pkgrel=3
 arch=(x86_64)
 url='https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html'
 license=(GPL2)
@@ -26,7 +26,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm-intel#branch=${_branc
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '14a0a61d373bc14e0fb920fe3c86ebfd1da76a5937bb6423a6bd0c42c4598d03'
+            '545ee719fa978da1fe931f9e6a24cd0914ca7cbebbce602f331944e886f1108a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
