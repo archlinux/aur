@@ -86,7 +86,7 @@ echo "Performing system update"
 sudo pacman -Syu
 
 echo "Performing repository sync"
-aursync --sign --repo "$repo_name" --root "$local_repo" -u $@
+aur sync --sign --database "$repo_name" --root "$local_repo" -u $@
 
 (
     cd "$local_repo"

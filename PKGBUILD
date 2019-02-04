@@ -1,12 +1,12 @@
 # Maintainer: Paul Davis <paul@dangersalad.com>
 pkgname=reposync
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 arch=('any')
 license=('MIT')
 source=(reposync.sh)
 pkgdesc="Wrapper for aursync"
-sha256sums=('8a4c0f79b4180f36c1cd62f394f0d2f236a2282fb49476dad8a0854d832a230d')
+sha256sums=('ed37a3a0a49662f4260a76d651c967580c209ddd4e2fd8434a10434dae23f12e')
 depends=('aurutils' 'sudo' 'bash' 's3fs-fuse')
 
 package () {
