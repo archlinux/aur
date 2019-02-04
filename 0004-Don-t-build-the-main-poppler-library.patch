@@ -1,17 +1,17 @@
-From 2572d6812cb492abec9ed228e5e9b0c53f532fcd Mon Sep 17 00:00:00 2001
+From 2910a658852a3c76a270a8dba26cf2a2be62ba57 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 20 Oct 2009 18:32:35 +0100
-Subject: [PATCH 4/5] Don't build the main poppler library.
+Subject: [PATCH 4/4] Don't build the main poppler library.
 
 ---
  CMakeLists.txt | 17 -----------------
  1 file changed, 17 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index fa86ea22..0dbcb4b0 100644
+index 8a0ca5cc..be28d65b 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -478,23 +478,6 @@ if(TIFF_FOUND)
+@@ -479,23 +479,6 @@ if(TIFF_FOUND)
    set(poppler_LIBS ${poppler_LIBS} ${TIFF_LIBRARIES})
  endif()
  
@@ -21,8 +21,8 @@ index fa86ea22..0dbcb4b0 100644
 -else()
 -add_library(poppler ${poppler_SRCS})
 -endif()
--set_target_properties(poppler PROPERTIES VERSION 83.0.0 SOVERSION 83)
--if(MINGW)
+-set_target_properties(poppler PROPERTIES VERSION 84.0.0 SOVERSION 84)
+-if(MINGW AND BUILD_SHARED_LIBS)
 -    get_target_property(POPPLER_SOVERSION poppler SOVERSION)
 -    set_target_properties(poppler PROPERTIES SUFFIX "-${POPPLER_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
 -endif()
@@ -32,7 +32,7 @@ index fa86ea22..0dbcb4b0 100644
 -endif()
 -install(TARGETS poppler RUNTIME DESTINATION bin LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 -
- if(ENABLE_XPDF_HEADERS)
+ if(ENABLE_UNSTABLE_API_ABI_HEADERS)
    install(FILES
      poppler/Annot.h
 -- 

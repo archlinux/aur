@@ -1,7 +1,7 @@
-From 37343838d358f4719eb8ad8e8bfebaaaadf51ac8 Mon Sep 17 00:00:00 2001
+From afec9cf5f3d6135e086111a1d0471db3a4fcf717 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
-Subject: [PATCH 3/5] Apply subpixel rendering in Cairo Backend
+Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
 
 Source:
 https://github.com/zhou13/poppler-subpixel/blob/master/poppler/poppler-subpixel.patch
@@ -74,10 +74,10 @@ index 78d24bb5..d482ceb5 100644
          g_timer_stop (timer);
  
 diff --git a/glib/poppler-page.cc b/glib/poppler-page.cc
-index 34a1c77d..4e81a348 100644
+index a635f398..6b80f62d 100644
 --- a/glib/poppler-page.cc
 +++ b/glib/poppler-page.cc
-@@ -2419,3 +2419,13 @@ poppler_page_get_text_attributes_for_area (PopplerPage      *page,
+@@ -2420,3 +2420,13 @@ poppler_page_get_text_attributes_for_area (PopplerPage      *page,
  
    return g_list_reverse(attributes);
  }
@@ -92,7 +92,7 @@ index 34a1c77d..4e81a348 100644
 +  return page->page->supportSubpixelRendering(output_dev);
 +}
 diff --git a/glib/poppler-page.h b/glib/poppler-page.h
-index 487b3656..24216aeb 100644
+index f99f0920..8ff914f4 100644
 --- a/glib/poppler-page.h
 +++ b/glib/poppler-page.h
 @@ -147,6 +147,7 @@ void                   poppler_page_free_text_attributes (GList              *li
@@ -104,10 +104,10 @@ index 487b3656..24216aeb 100644
  /* A rectangle on a page, with coordinates in PDF points. */
  #define POPPLER_TYPE_RECTANGLE             (poppler_rectangle_get_type ())
 diff --git a/poppler/CairoFontEngine.cc b/poppler/CairoFontEngine.cc
-index ad3c39e9..711f1d26 100644
+index e29898a9..314925a8 100644
 --- a/poppler/CairoFontEngine.cc
 +++ b/poppler/CairoFontEngine.cc
-@@ -123,7 +123,7 @@ CairoFont::getSubstitutionCorrection(GfxFont *gfxFont)
+@@ -124,7 +124,7 @@ CairoFont::getSubstitutionCorrection(GfxFont *gfxFont)
  	cairo_matrix_t m;
  	cairo_matrix_init_identity(&m);
  	cairo_font_options_t *options = cairo_font_options_create();
@@ -116,7 +116,7 @@ index ad3c39e9..711f1d26 100644
  	cairo_font_options_set_hint_metrics(options, CAIRO_HINT_METRICS_OFF);
  	cairo_scaled_font_t *scaled_font = cairo_scaled_font_create(cairo_font_face, &m, &m, options);
  
-@@ -181,7 +181,7 @@ _ft_new_face_uncached (FT_Library lib,
+@@ -182,7 +182,7 @@ _ft_new_face_uncached (FT_Library lib,
    }
  
    font_face = cairo_ft_font_face_create_for_ft_face (face,
@@ -125,7 +125,7 @@ index ad3c39e9..711f1d26 100644
  							  FT_LOAD_NO_BITMAP);
    if (cairo_font_face_set_user_data (font_face,
  				     &_ft_cairo_key,
-@@ -350,7 +350,7 @@ _ft_new_face (FT_Library lib,
+@@ -351,7 +351,7 @@ _ft_new_face (FT_Library lib,
    _ft_open_faces = l;
  
    l->font_face = cairo_ft_font_face_create_for_ft_face (tmpl.face,
@@ -135,7 +135,7 @@ index ad3c39e9..711f1d26 100644
    if (cairo_font_face_set_user_data (l->font_face,
  				     &_ft_cairo_key,
 diff --git a/poppler/CairoOutputDev.cc b/poppler/CairoOutputDev.cc
-index 4fc9882c..87e50dd7 100644
+index 02a6f262..b20ca280 100644
 --- a/poppler/CairoOutputDev.cc
 +++ b/poppler/CairoOutputDev.cc
 @@ -205,6 +205,13 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
@@ -191,10 +191,10 @@ index 4fc9882c..87e50dd7 100644
    glyphs = nullptr;
    if (use_show_text_glyphs) {
 diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
-index 9a117569..f62b96cd 100644
+index 8dc2dc93..c3f2355c 100644
 --- a/poppler/Gfx.cc
 +++ b/poppler/Gfx.cc
-@@ -4604,6 +4604,47 @@ void Gfx::doImage(Object *ref, Stream *str, bool inlineImg) {
+@@ -4607,6 +4607,47 @@ void Gfx::doImage(Object *ref, Stream *str, bool inlineImg) {
    error(errSyntaxError, getPos(), "Bad image parameters");
  }
  
@@ -243,10 +243,10 @@ index 9a117569..f62b96cd 100644
    // check the effect of compositing objects as a group:
    // look for ExtGState entries with ca != 1 or CA != 1 or BM != normal
 diff --git a/poppler/Gfx.h b/poppler/Gfx.h
-index f966e8f6..3850bc28 100644
+index 47ae0153..9df0d18d 100644
 --- a/poppler/Gfx.h
 +++ b/poppler/Gfx.h
-@@ -193,6 +193,9 @@ public:
+@@ -192,6 +192,9 @@ public:
    // Get the current graphics state object.
    GfxState *getState() { return state; }
  
@@ -257,7 +257,7 @@ index f966e8f6..3850bc28 100644
  
    void drawForm(Object *str, Dict *resDict, const double *matrix, const double *bbox,
 diff --git a/poppler/Page.cc b/poppler/Page.cc
-index 6d6d8642..b7fb441d 100644
+index 9aa25dfc..285874d0 100644
 --- a/poppler/Page.cc
 +++ b/poppler/Page.cc
 @@ -336,6 +336,19 @@ Dict *Page::getResourceDictCopy(XRef *xrefA) {
