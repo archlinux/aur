@@ -2,13 +2,13 @@
 
 pkgname=qt5-websockets-git
 pkgver=5.12.1.r16.g5f16a5c
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides WebSocket communication compliant with RFC 6455"
 arch=('i686' 'x86_64')
 url="https://www.qt.io/"
-license=('FDL' 'GPL' 'LGPL' 'custom')
+license=('GPL' 'LGPL' 'custom')
 depends=('qt5-base')
-makedepends=('git')
+makedepends=('git' 'qt5-declarative')
 provides=('qt5-websockets')
 conflicts=('qt5-websockets')
 source=("git+https://code.qt.io/qt/qtwebsockets.git#branch=dev")

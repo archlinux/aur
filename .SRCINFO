@@ -1,15 +1,15 @@
 pkgbase = qt5-websockets-git
 	pkgdesc = Provides WebSocket communication compliant with RFC 6455
 	pkgver = 5.12.1.r16.g5f16a5c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io/
 	arch = i686
 	arch = x86_64
-	license = FDL
 	license = GPL
 	license = LGPL
 	license = custom
 	makedepends = git
+	makedepends = qt5-declarative
 	depends = qt5-base
 	provides = qt5-websockets
 	conflicts = qt5-websockets
