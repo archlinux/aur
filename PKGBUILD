@@ -22,6 +22,6 @@ check() {
 
 package() {
 	install -Dm755 "ned-release.$pkgver/target/release/ned" "$pkgdir/usr/bin/ned"
-    gzip < "ned-release.$pkgver/man/ned.1" > "ned-release.$pkgver/man/ned.1.gz"
-    install -Dm 0644 "ned-release.$pkgver/man/ned.1.gz" "$pkgdir/usr/share/man/man1/ned.1.gz"
+	gzip < "ned-release.$pkgver/man/ned.1" > "ned-release.$pkgver/man/ned.1.gz"
+	install -Dm 0644 "ned-release.$pkgver/man/ned.1.gz" "$pkgdir/usr/share/man/man1/ned.1.gz"
 }
