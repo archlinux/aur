@@ -1,8 +1,8 @@
 pkgbase = zrythm
 	pkgdesc = Free GNU/Linux music production system (DAW)
 	pkgver = master
-	pkgrel = 1
-	url = https://gitlab.com/alextee/zrythm
+	pkgrel = 2
+	url = https://git.zrythm.org/zrythm/zrythm
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
@@ -13,8 +13,8 @@ pkgbase = zrythm
 	depends = libsndfile
 	depends = libsmf
 	depends = libdazzle
-	depends = libcyaml-git
-	source = https://git.zrythm.org/alextee/zrythm/-/archive/master/zrythm-master.tar.gz
+	depends = libcyaml
+	source = https://git.zrythm.org/zrythm/zrythm/-/archive/master/zrythm-master.tar.gz
 	md5sums = SKIP
 
 pkgname = zrythm

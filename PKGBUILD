@@ -2,13 +2,13 @@
 
 pkgname=zrythm
 pkgver=master
-pkgrel=1
+pkgrel=2
 pkgdesc="Free GNU/Linux music production system (DAW)"
 arch=('x86_64')
-url="https://gitlab.com/alextee/zrythm"
+url="https://git.zrythm.org/zrythm/zrythm"
 license=('GPL3')
-depends=('gtk3' 'lv2' 'lilv' 'suil' 'jack' 'libsndfile' 'libsmf' 'libdazzle' 'libcyaml-git')
-source=("https://git.zrythm.org/alextee/zrythm/-/archive/$pkgver/zrythm-$pkgver.tar.gz")
+depends=('gtk3' 'lv2' 'lilv' 'suil' 'jack' 'libsndfile' 'libsmf' 'libdazzle' 'libcyaml')
+source=("https://git.zrythm.org/zrythm/zrythm/-/archive/$pkgver/zrythm-$pkgver.tar.gz")
 md5sums=('SKIP')
 
 prepare() {
