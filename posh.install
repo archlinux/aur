@@ -1,0 +1,13 @@
+
+post_install() {
+  grep -q /bin/posh etc/shells || echo /bin/posh >> etc/shells
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  sed -i '/^\/bin\/posh/d' etc/shells
+}
+
