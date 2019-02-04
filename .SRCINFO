@@ -1,13 +1,13 @@
 pkgbase = agedu
 	pkgdesc = Track down wasted disk space
-	pkgver = 20180329
+	pkgver = 20180918
 	pkgrel = 1
 	url = http://www.chiark.greenend.org.uk/~sgtatham/agedu/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-20180329.af641e6.tar.gz
+	source = https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-20180918.80c7beb.tar.gz
 	md5sums = SKIP
 
 pkgname = agedu
