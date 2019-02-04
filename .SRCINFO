@@ -1,0 +1,17 @@
+pkgbase = python-tensorflow-lucid
+	pkgdesc = Collection of infrastructure and tools for research in neural network interpretability.
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/tensorflow/lucid
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = tensorflow
+	source = lucid-0.3.8.tar.gz::https://files.pythonhosted.org/packages/py2.py3///-0.3.8-py2.py3-none-any.whl
+	md5sums = d94daf5c7fc9472d284296ba842f4e1b
+
+pkgname = python-tensorflow-lucid
+	depends = python
+	depends = tensorflow
+
