@@ -1,8 +1,8 @@
 # Maintainer: Yurii Kolesnykov <yurikoles@gmail.com>
 pkgname=dps8m-git
 _pkgname=dps8m
-pkgver=alpha2.0.RC5.r469.g5ab650be
-pkgrel=2
+pkgver=alpha2.0.RC5.r470.g8b4d0018
+pkgrel=1
 pkgdesc='Simulator for the Multics dps-8/m mainframe'
 arch=('x86_64')
 url='http://ringzero.wikidot.com'
