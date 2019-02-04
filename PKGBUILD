@@ -13,6 +13,6 @@ sha256sums=('b8733799800cedbc5459944ce48fbb8bb0b8fa674a865cd7359bfbaa0038fb0c'
             'cc36dd53b88f8c7f138b9708e0c4b598816e4e52c7e252859e67e1e7edbcf117')
 package() {
     install -d ${pkgdir}/usr/share/fonts/OTF/
-    install -m644 "${srcdir}/Inter UI (OTF)/"*.otf ${pkgdir}/usr/share/fonts/OTF/
+    install -m644 "${srcdir}/Inter (OTF)/"*.otf ${pkgdir}/usr/share/fonts/OTF/
     install -D -m644 ${srcdir}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
 }
