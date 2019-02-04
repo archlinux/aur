@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Micro web service to allow local users to register MAC addresses'
 arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"
-license=('GPLv3')
+license=('GPLv3' 'MIT')
 depends=(
     'python'
     'python-peewee'
@@ -53,4 +53,8 @@ package() {
     install -m 755 -d "${FRONTEND}"
     pushd "frontend" || exit 1
     install -m 644 -t "${FRONTEND}" ./*
+    popd || exit 1
+
+    # Install bootstrap's MIT license.
+    install -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/LICENSE.bootstrap.txt"
 }
