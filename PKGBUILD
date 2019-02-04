@@ -1,7 +1,8 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+#  Maintainer: Justin Benge <justinbng36@gmail.com>
+#  Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=electron-forge
-pkgver=5.2.2
+pkgver=5.2.4
 pkgrel=1
 pkgdesc='Tool for creating, publishing, and installing modern Electron applications'
 arch=(i686 x86_64)
@@ -11,7 +12,7 @@ depends=(nodejs)
 makedepends=(npm gulp)
 conflicts=(electron-forge-git)
 source=(https://github.com/electron-userland/$pkgname/archive/v$pkgver.tar.gz)
-sha512sums=('4c48e0c7c837d2dc7879c6ea7d09d31996127626e28d0c9d0a44255b936669e1db02b563df995c419853ee15d2f38dc0c27afb1d6b3ad0cedb5f0ce462cd34f6')
+sha512sums=('20cca6e76ac7239d088930b4b4cc100d8a2051a60d777f68826a64b11c3e662a11a7f0860a5ee9370041bdd828ec2d75c62d3c509b00dd7ea7b8c15cf72aeba2')
 
 build() {
   cd $pkgname-$pkgver
