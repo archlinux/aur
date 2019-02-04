@@ -14,6 +14,7 @@ pkgbase = zrythm
 	depends = libsmf
 	depends = libdazzle
 	depends = libcyaml
+	depends = breeze-icons
 	source = https://git.zrythm.org/zrythm/zrythm/-/archive/master/zrythm-master.tar.gz
 	md5sums = SKIP
 

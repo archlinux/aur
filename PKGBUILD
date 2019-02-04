@@ -7,7 +7,8 @@ pkgdesc="Free GNU/Linux music production system (DAW)"
 arch=('x86_64')
 url="https://git.zrythm.org/zrythm/zrythm"
 license=('GPL3')
-depends=('gtk3' 'lv2' 'lilv' 'suil' 'jack' 'libsndfile' 'libsmf' 'libdazzle' 'libcyaml')
+depends=('gtk3' 'lv2' 'lilv' 'suil' 'jack' 'libsndfile' 'libsmf' 'libdazzle' 'libcyaml'
+         'breeze-icons')
 source=("https://git.zrythm.org/zrythm/zrythm/-/archive/$pkgver/zrythm-$pkgver.tar.gz")
 md5sums=('SKIP')
 
