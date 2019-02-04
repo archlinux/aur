@@ -8,8 +8,8 @@ pkgbase = batmon-git
 	license = custom
 	depends = python
 	options = !strip
-	source = https://github.com/lucasew/batmon/archive/v0.2.zip
-	sha256sums = a5ec86ee7b7cb38acda2b956b039235d451216d256e225ec9b2d0a5849b3a6f4
+	source = batmon::git+https://github.com/lucasew/batmon/
+	sha256sums = PASS
 
 pkgname = batmon-git
 
