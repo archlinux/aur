@@ -13,7 +13,7 @@ _kernel_rel=5.1
 _branch=drm-next-${_kernel_rel}-wip
 _kernelname=${pkgbase#linux}
 pkgver=5.1.810553.f9028b927842
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=(GPL2)
@@ -78,15 +78,17 @@ _package() {
   install=linux.install
 
   local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   cd $_srcname
 
   msg2 "Installing boot image..."
-  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   msg2 "Installing modules..."
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-  mkdir -p "$modulesdir"
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # a place for external modules,
@@ -149,7 +151,6 @@ _package-headers() {
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
-  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/macros.s
 
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
