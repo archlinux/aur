@@ -2,7 +2,7 @@
 pkgname=precached-git
 _pkgname=precached
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
@@ -39,7 +39,6 @@ package() {
   mkdir -p "$pkgdir/usr/lib/systemd/system/"
   mkdir -p "$pkgdir/usr/lib/systemd/user/"
   mkdir -p "$pkgdir/etc/dbus-1/system.d/"
-  mkdir -p "$pkgdir/etc/xdg/autostart/"
   mkdir -p "$pkgdir/usr/share/man/man8/"
   mkdir -p "$pkgdir/usr/share/man/man5/"
   mkdir -p "$pkgdir/usr/share/man/man1/"
@@ -67,8 +66,7 @@ package() {
   install -m 644 "support/systemd/precached-prime-caches.service" "$pkgdir/usr/lib/systemd/system/"
   install -m 644 "support/systemd/precached-prime-caches.timer" "$pkgdir/usr/lib/systemd/system/"
   install -m 644 "support/dbus/org.precached.precached1.conf" "$pkgdir/etc/dbus-1/system.d/"
-  install -m 644 "support/desktop/precached-trigger.desktop" "$pkgdir/etc/xdg/autostart/"
-
+  
   install -m 644 "support/man/precachedtop.1" "$pkgdir/usr/share/man/man1/"
   install -m 644 "support/man/precached-trigger.1" "$pkgdir/usr/share/man/man1/"
   install -m 644 "support/man/precached-debug.8" "$pkgdir/usr/share/man/man8/"
