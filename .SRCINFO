@@ -1,0 +1,18 @@
+pkgbase = slime-forest-demo
+	pkgdesc = Adventure game to fight slimes, save a princess, and learn Japanese
+	pkgver = build189
+	pkgrel = 1
+	url = https://lrnj.com
+	arch = x86_64
+	license = custom
+	depends = sdl2
+	options = !emptydirs
+	source = https://lrnj.com/sfa.tgz
+	source = LICENSE.txt
+	source = run.sh
+	sha256sums = 4174b0cb4b322da5234b6428ebaf6d5d8560c4ee07f92bcb1b9361dbc5aa9c89
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = slime-forest-demo
+

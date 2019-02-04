@@ -1,0 +1,9 @@
+The maintainer of this package
+couldn't find any explicit license message
+in both the sofware and its documentation.
+
+This is a demo version of a proprietary software,
+which should be interpreted as having all rights reserved.
+
+Any questions/concerns regarding this software license
+should be addressed to Darrell Johnson <contact@lrnj.com>.
