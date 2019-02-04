@@ -1,6 +1,6 @@
 pkgbase = python-vdf
 	pkgdesc = Library for working with Valve's VDF text format
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/ValvePython/vdf
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-vdf
 	checkdepends = python2-coverage
 	checkdepends = python2-mock
 	makedepends = python-setuptools
-	source = https://github.com/ValvePython/vdf/archive/v2.3.tar.gz
-	sha256sums = d129edb0ab0cac55f9cd632959f05b8cbbe0babe017cf9671b8b379ec3186148
+	source = https://github.com/ValvePython/vdf/archive/v2.4.tar.gz
+	sha256sums = 094ff32c6622dd2349bba6674e51f548b71969f63a44b29cd23d4b79aaf003f9
 
 pkgname = python-vdf
 	depends = python
