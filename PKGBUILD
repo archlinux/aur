@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
 
-source=("$_module-$pkgver.tar.gz::https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/$_name-$pkgver-py2.py3-none-any.whl")
+source=("$_module-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
 md5sums=('d94daf5c7fc9472d284296ba842f4e1b')
 
 build() {

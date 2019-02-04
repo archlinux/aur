@@ -8,7 +8,7 @@ pkgbase = python-tensorflow-lucid
 	makedepends = python-setuptools
 	depends = python
 	depends = tensorflow
-	source = lucid-0.3.8.tar.gz::https://files.pythonhosted.org/packages/py2.py3///-0.3.8-py2.py3-none-any.whl
+	source = lucid-0.3.8.tar.gz::https://files.pythonhosted.org/packages/source/l/lucid/lucid-0.3.8.tar.gz
 	md5sums = d94daf5c7fc9472d284296ba842f4e1b
 
 pkgname = python-tensorflow-lucid
