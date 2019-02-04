@@ -1,17 +1,19 @@
 pkgbase = qt5-svg-git
-	pkgdesc = A cross-platform application and UI framework (QtSvg)
-	pkgver = v5.5.0.1.g93d77ed
+	pkgdesc = Classes for displaying the contents of SVG files
+	pkgver = 5.12.1.r11.g2ae3c52
 	pkgrel = 1
-	url = https://qt-project.org/
+	url = https://www.qt.io/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL
 	license = LGPL
+	license = FDL
+	license = custom
 	makedepends = git
-	depends = qt5-base-git
+	depends = qt5-base
 	provides = qt5-svg
 	conflicts = qt5-svg
-	source = qt5-svg::git://code.qt.io/qt/qtsvg.git#branch=5.5
+	source = git+https://code.qt.io/qt/qtsvg.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = qt5-svg-git
