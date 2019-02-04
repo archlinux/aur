@@ -2,7 +2,7 @@
 pkgname=precached-git
 _pkgname=precached
 pkgver=1.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
@@ -91,4 +91,10 @@ package() {
   install -m 644 -T "support/shell/completions/en_US/rulesctl.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_rulesctl"
   install -m 644 -T "support/shell/completions/en_US/precached-trigger.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_precached-trigger"
   install -m 644 -T "support/shell/completions/en_US/precached-debug.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_precached-debug"
+}
+
+post_install() {
+	echo "To enable precached on your system run:"  	
+	echo "sudo systemctl enable --now precached.service"
+	echo "systemctl --user enable --now precached-trigger.service"
 }
