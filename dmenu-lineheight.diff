@@ -1,0 +1,76 @@
+diff --git a/config.def.h b/config.def.h
+index a9122f7..6d936b7 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -16,4 +16,5 @@
+ /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
+ static unsigned int lines      = 0;
++static unsigned int lineheight = 0;         /* -h option; minimum height of a menu line     */
+ 
+ /*
+diff --git a/dmenu.1 b/dmenu.1
+index d3ab805..9fe4434 100644
+--- a/dmenu.1
++++ b/dmenu.1
+@@ -50,6 +50,9 @@ dmenu matches menu items case insensitively.
+ .BI \-l " lines"
+ dmenu lists items vertically, with the given number of lines.
+ .TP
++.BI \-h " height"
++dmenu uses a menu line of at least 'height' pixels tall, but no less than 8.
++.TP
+ .BI \-m " monitor"
+ dmenu is displayed on the monitor number supplied. Monitor numbers are starting
+ from 0.
+diff --git a/dmenu.c b/dmenu.c
+index a07f8e3..25832a7 100644
+--- a/dmenu.c
++++ b/dmenu.c
+@@ -130,7 +130,7 @@ drawmenu(void)
+ {
+ 	unsigned int curpos;
+ 	struct item *item;
+-	int x = 0, y = 0, w;
++	int x = 0, y = 0, fh = drw->fonts->h, w;
+ 
+ 	drw_setscheme(drw, scheme[SchemeNorm]);
+ 	drw_rect(drw, 0, 0, mw, mh, 1, 1);
+@@ -146,9 +146,9 @@ drawmenu(void)
+ 	drw_text(drw, x, 0, w, bh, lrpad / 2, text, 0);
+ 
+	curpos = TEXTW(text) - TEXTW(&text[cursor]);
+ 	if ((curpos += lrpad / 2 - 1) < w) {
+ 		drw_setscheme(drw, scheme[SchemeNorm]);
+-		drw_rect(drw, x + curpos, 2, 2, bh - 4, 1, 0);
++		drw_rect(drw, x + curpos, 2 + (bh-fh)/2, 2, fh - 4, 1, 0);
+ 	}
+ 
+ 	if (lines > 0) {
+@@ -676,7 +676,8 @@ setup(void)
+ 	utf8 = XInternAtom(dpy, "UTF8_STRING", False);
+ 
+ 	/* calculate menu geometry */
+ 	bh = drw->fonts->h + 2;
++	bh = MAX(bh,lineheight);	/* make a menu line AT LEAST 'lineheight' tall */
+ 	lines = MAX(lines, 0);
+ 	mh = (lines + 1) * bh;
+ #ifdef XINERAMA
+@@ -754,6 +755,7 @@ setup(void)
+ usage(void)
+ {
+ 	fputs("usage: dmenu [-bfiv] [-l lines] [-p prompt] [-fn font] [-m monitor]\n"
++	      "             [-h height]\n"
+ 	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-w windowid]\n", stderr);
+ 	exit(1);
+ }
+@@ -787,6 +789,10 @@ main(int argc, char *argv[])
+ 			prompt = argv[++i];
+ 		else if (!strcmp(argv[i], "-fn"))  /* font or font set */
+ 			fonts[0] = argv[++i];
++		else if(!strcmp(argv[i], "-h")) { /* minimum height of one menu line */
++			lineheight = atoi(argv[++i]);
++			lineheight = MAX(lineheight,8); /* reasonable default in case of value too small/negative */
++		}
+ 		else if (!strcmp(argv[i], "-nb"))  /* normal background color */
+ 			normbgcolor = argv[++i];
+ 		else if (!strcmp(argv[i], "-nf"))  /* normal foreground color */
