@@ -1,7 +1,7 @@
 pkgbase = monodevelop-stable-bin
 	pkgdesc = An IDE primarily designed for C# and other .NET languages
-	pkgver = 7.8.0.338
-	pkgrel = 2
+	pkgver = 7.8.0.1471
+	pkgrel = 1
 	url = http://www.monodevelop.com
 	arch = x86_64
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = monodevelop-stable-bin
 	conflicts = monodevelop
 	replaces = monodevelop-debugger-gdb
 	options = !makeflags
-	source = https://github.com/TechtonicSoftware/archlinux-monodevelop-stable-bin/archive/7.8.0.338.tar.gz
+	source = https://github.com/TechtonicSoftware/archlinux-monodevelop-stable-bin/archive/7.8.0.1471.tar.gz
 	sha256sums = a203089952c9ee73cda25ff25f64099a0592d33cc86a91b50d98a9f64dd4d85c
 
 pkgname = monodevelop-stable-bin
