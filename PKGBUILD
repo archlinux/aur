@@ -2,8 +2,8 @@
 
 pkgname=qt5-quickcontrols2-git
 pkgver=5.12.1.r25.g1a89fbc5
-pkgrel=1
-pkgdesc="Qt5 Quick Controls module"
+pkgrel=2
+pkgdesc="Qt5 Quick Controls 2 module"
 arch=('i686' 'x86_64')
 url="https://www.qt.io/"
 license=('FDL' 'GPL' 'LGPL')
