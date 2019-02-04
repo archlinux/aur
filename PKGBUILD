@@ -1,27 +1,36 @@
-# Maintainer: Jason Stryker <inbox at jasonstryker dot com>
+# Maintainer: Jason Stryker <public at jasonstryker dot com>
 
 pkgname=protontricks-git
-pkgver=0.r51.1f5ffb7
+pkgver=0.r68.06c86eb
 pkgrel=1
-pkgdesc="A simple wrapper that does winetricks things for Proton enabled games."
+pkgdesc="A simple wrapper that does winetricks things for Proton enabled games. (Git Version)"
 arch=('any')
-url="https://github.com/Sirmentio/protontricks"
+url="https://github.com/Matoking/protontricks"
 license=('GPL3')
-depends=('python' 'winetricks')
+depends=('python' 'python-vdf>=2.4' 'winetricks')
 optdepends=('zenity: GUI for GNOME desktop')
 makedepends=('git')
-source=("git+https://github.com/Sirmentio/protontricks.git")
-sha256sums=('SKIP')
+provides=("protontricks")
+conflicts=('protontricks')
+source=("git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd protontricks
+  cd "${srcdir}/protontricks"
+  
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  cd protontricks
+build() {
+  cd "${srcdir}/protontricks"
 
-  install -D -m 0755 protontricks "${pkgdir}/usr/bin/protontricks"
+  python3 setup.py build
+}
+
+package() {
+  cd "${srcdir}/protontricks"
+
+  python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
 
   install -D -m 0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
