@@ -11,7 +11,7 @@
 
 pkgname=android-studio-beta
 pkgver=3.4.0.12
-pkgrel=1
+pkgrel=2
 _build=183.5256591
 pkgdesc="The Official Android IDE (Beta branch)"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ if [ "$CARCH" = "i686" ]; then
 fi
 
 package() {
-  cd $srcdir/android-studio
+  cd "${srcdir}/android-studio"
 
   # Change the product name to produce a unique WM_CLASS attribute.
   mkdir -p idea
@@ -42,13 +42,13 @@ package() {
   rm -r idea
 
   # Install the application.
-  install -d $pkgdir/{opt/$pkgname,usr/bin}
-  cp -a bin gradle lib jre plugins $pkgdir/opt/$pkgname
-  ln -s /opt/$pkgname/bin/studio.sh $pkgdir/usr/bin/$pkgname
+  install -d "${pkgdir}"/{opt/"${pkgname}",usr/bin}
+  rsync -a "${srcdir}/android-studio/" "${pkgdir}/opt/${pkgname}/"
+  ln -s "/opt/${pkgname}/bin/studio.sh" "${pkgdir}/usr/bin/${pkgname}"
 
   # Add the icon and desktop file.
-  install -Dm644 bin/studio.png $pkgdir/usr/share/pixmaps/$pkgname.png
-  install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  install -Dm644 bin/studio.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   chmod -R ugo+rX $pkgdir/opt
 }

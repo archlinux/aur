@@ -1,7 +1,7 @@
 pkgbase = android-studio-beta
 	pkgdesc = The Official Android IDE (Beta branch)
 	pkgver = 3.4.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tools.android.com/
 	arch = i686
 	arch = x86_64
