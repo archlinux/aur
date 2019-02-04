@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=lr-git
-pkgver=1.3.r217.fd3d9c2
+pkgver=1.4.r3.g84af038.r222.84af038
 pkgrel=1
 epoch=
 pkgdesc="List files, recursively"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/chneukirchen/lr"
 license=('MIT')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
