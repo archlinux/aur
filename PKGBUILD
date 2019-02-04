@@ -1,6 +1,5 @@
 
-# Maintainer: Ashley Whetter <(firstname) @ awhetter.co.uk>
-# Contributor: Eothred <yngve.levinsen@gmail.com>
+# Maintainer: Henri van de Munt <(firstname) @ gmail.com>
 
 pkgname=modustoolbox
 pkgver=1.0.0.2953
