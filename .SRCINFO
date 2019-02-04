@@ -9,8 +9,6 @@ pkgbase = bison-epita
 	depends = glibc
 	depends = m4
 	depends = sh
-	provides = bison
-	conflicts = bison
 	source = https://www.lrde.epita.fr/~tiger/download/bison-3.2.1.52-cd4f7.tar.gz
 	md5sums = 32be135f6f3a8925d88702eb54661856
 
