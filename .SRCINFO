@@ -1,0 +1,20 @@
+pkgbase = qt5-serialport-git
+	pkgdesc = Provides access to hardware and virtual serial ports
+	pkgver = 5.12.1.r12.ge6a5786
+	pkgrel = 1
+	url = https://www.qt.io/
+	arch = i686
+	arch = x86_64
+	license = FDL
+	license = GPL
+	license = LGPL
+	license = custom
+	makedepends = git
+	depends = qt5-base
+	provides = qt5-serialport
+	conflicts = qt5-serialport
+	source = git+https://code.qt.io/qt/qtserialport.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = qt5-serialport-git
+
