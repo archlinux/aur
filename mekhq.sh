@@ -14,4 +14,6 @@ fi
 
 rsync -avc /usr/lib/mekhq/ "$conf/"
 
-exec env MEGAMEK_CONFPATH="$conf" "$conf/hq.sh"
+cd "$conf"
+
+exec env MEGAMEK_CONFPATH="$conf" "$conf/hq"

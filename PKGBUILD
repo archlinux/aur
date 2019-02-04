@@ -1,6 +1,6 @@
 # Maintainer: Paul Davis <paul@dangersalad.com>
 pkgname=mekhq
-pkgver=0.44.0
+pkgver=0.45.2
 _pkgver=
 pkgrel=1
 epoch=
@@ -17,18 +17,14 @@ conflicts=('megamek')
 source=("https://github.com/MegaMek/mekhq/releases/download/v${pkgver}/${pkgname}-${pkgver}${_pkgver}.tar.gz"
         "mekhq.desktop"
         "megamek.desktop"
-        "mm-startup.patch"
-        "mm-server.patch"
         "mekhq.sh"
         "megamek.sh")
 
-sha256sums=('2e51546d94e58532fcfaf1481f15da862b8d70c741687cb4a149f171cca6f08a'
+sha256sums=('92fe5fa29fea85b5156eb7ea0d364eed4dff059b8328ab9b3f70ffbc77c8a957'
             'a6c0cc72c6f3ad773bdcec24c8036ae7d09dcaea4908f5b6d4e5ac6091cff772'
             'caf5bf3e7294029c7b6dec974eed0253d6caf3804a6a9fcc953edc3c9be98b16'
-            '113d6fe539108d172db238abd6a316be55d6d1af92cf0bcb4555b7cb70427908'
-            'b964aa25672d5311b98f51ae7e895f32501092bcd5382979a4af45ba3436b5ba'
-            '056b528fb478966d32eaa36354335f667a73776975ebf57794f4f992e72f41c3'
-            '7c1988808f166dca21732a6d5679acdeb55520e3bb4babcc0b0b7c1e8b671f52')
+            'fda6e9d542062041e9d9b7f6331069d8a78b9455a290286aa8d214ed66b13fd7'
+            '9ad4d0251ecfe02140c46dfeb67a4ce2b0fe9f123b04a3911139b8e255ff2beb')
 
 package() {
 
@@ -41,17 +37,12 @@ package() {
     install -D "${pkgname}-${pkgver}${_pkgver}/MekHQ.jar" \
             "${pkgdir}/usr/lib/${pkgname}/MekHQ.jar"
 
-    patch "${pkgname}-${pkgver}${_pkgver}/mm-startup.sh" mm-startup.patch
-    patch "${pkgname}-${pkgver}${_pkgver}/mm-server.sh" mm-server.patch
-    
-    install -Dm755 "${pkgname}-${pkgver}${_pkgver}/mm-startup.sh" \
-            "${pkgdir}/usr/lib/${pkgname}/mm-startup.sh"
-    install -Dm755 "${pkgname}-${pkgver}${_pkgver}/mm-server.sh" \
-            "${pkgdir}/usr/lib/${pkgname}/mm-server.sh"
-    install -Dm755 "${pkgname}-${pkgver}${_pkgver}/hq.sh" \
-            "${pkgdir}/usr/lib/${pkgname}/hq.sh"
-    install -Dm755 "${pkgname}-${pkgver}${_pkgver}/lab.sh" \
-            "${pkgdir}/usr/lib/${pkgname}/lab.sh"
+    install -Dm755 "${pkgname}-${pkgver}${_pkgver}/mm-startup" \
+            "${pkgdir}/usr/lib/${pkgname}/mm-startup"
+    install -Dm755 "${pkgname}-${pkgver}${_pkgver}/hq" \
+            "${pkgdir}/usr/lib/${pkgname}/hq"
+    install -Dm755 "${pkgname}-${pkgver}${_pkgver}/lab" \
+            "${pkgdir}/usr/lib/${pkgname}/lab"
 
     cp -r "${pkgname}-${pkgver}${_pkgver}/campaigns" "${pkgdir}/usr/lib/${pkgname}"
 

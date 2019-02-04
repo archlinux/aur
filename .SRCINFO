@@ -1,6 +1,6 @@
 pkgbase = mekhq
 	pkgdesc = MekHQ is a java helper program for the MegaMek game that allows users to load a list of entities from an XML file, perform repairs and customizations, and then save the new entities to another XML file that can be loaded into MegaMek.
-	pkgver = 0.44.0
+	pkgver = 0.45.2
 	pkgrel = 1
 	url = https://github.com/MegaMek/mekhq
 	arch = x86_64
@@ -8,20 +8,16 @@ pkgbase = mekhq
 	depends = jdk10-openjdk
 	provides = megamek
 	conflicts = megamek
-	source = https://github.com/MegaMek/mekhq/releases/download/v0.44.0/mekhq-0.44.0.tar.gz
+	source = https://github.com/MegaMek/mekhq/releases/download/v0.45.2/mekhq-0.45.2.tar.gz
 	source = mekhq.desktop
 	source = megamek.desktop
-	source = mm-startup.patch
-	source = mm-server.patch
 	source = mekhq.sh
 	source = megamek.sh
-	sha256sums = 2e51546d94e58532fcfaf1481f15da862b8d70c741687cb4a149f171cca6f08a
+	sha256sums = 92fe5fa29fea85b5156eb7ea0d364eed4dff059b8328ab9b3f70ffbc77c8a957
 	sha256sums = a6c0cc72c6f3ad773bdcec24c8036ae7d09dcaea4908f5b6d4e5ac6091cff772
 	sha256sums = caf5bf3e7294029c7b6dec974eed0253d6caf3804a6a9fcc953edc3c9be98b16
-	sha256sums = 113d6fe539108d172db238abd6a316be55d6d1af92cf0bcb4555b7cb70427908
-	sha256sums = b964aa25672d5311b98f51ae7e895f32501092bcd5382979a4af45ba3436b5ba
-	sha256sums = 056b528fb478966d32eaa36354335f667a73776975ebf57794f4f992e72f41c3
-	sha256sums = 7c1988808f166dca21732a6d5679acdeb55520e3bb4babcc0b0b7c1e8b671f52
+	sha256sums = fda6e9d542062041e9d9b7f6331069d8a78b9455a290286aa8d214ed66b13fd7
+	sha256sums = 9ad4d0251ecfe02140c46dfeb67a4ce2b0fe9f123b04a3911139b8e255ff2beb
 
 pkgname = mekhq
 
