@@ -9,10 +9,10 @@
 pkgbase=linux-drm-intel-next-git
 pkgdesc='Linux with patches for Intel graphics'
 _srcname="${pkgbase}"
-_kernel_rel=4.21
+_kernel_rel=5.1
 _branch=drm-intel-next
 _kernelname=${pkgbase#linux}
-pkgver=4.21.798085.17960f35f146
+pkgver=5.1.810808.46c0cd8c562b
 pkgrel=1
 arch=(x86_64)
 url='https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html'
