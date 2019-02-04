@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-coin-or-cgl
-pkgver=0.59.9
+pkgver=0.59.10
 pkgrel=1
 pkgdesc="COIN-OR Cut Generation Library (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('mingw-w64-coin-or-clp')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Cgl/Cgl-${pkgver}.tgz")
-sha1sums=('ebe87d6ba1cab31a8223c187fe8e7f7f141989d9')
+sha256sums=('30b4d514c415df89bd8800b3eab4b989aa536a7c04e661fdfdebda0b686351b0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -26,8 +26,7 @@ build() {
                 --with-coinutils-lib="$(${_arch}-pkg-config --libs coinutils)" \
                 --with-coinutils-incdir="/usr/${_arch}/include/coin/" \
                 --with-clp-lib="$(${_arch}-pkg-config --libs clp)" \
-                --with-clp-incdir="/usr/${_arch}/include/coin/" \
-                -C
+                --with-clp-incdir="/usr/${_arch}/include/coin/"
     make
     popd
   done
@@ -40,7 +39,6 @@ package() {
     PKG_CONFIG_PATH_CUSTOM="$pkgdir"/usr/${_arch}/lib/pkgconfig/ \
     make DESTDIR="$pkgdir"/ install
     rm -r "$pkgdir"/usr/${_arch}/share
-    #rm "$pkgdir"/usr/${_arch}/bin/*.exe
     #${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
