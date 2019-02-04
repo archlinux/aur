@@ -1,7 +1,7 @@
 pkgbase = riscv64-unknown-elf-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for 32bit and 64bit RISC-V bare-metal
 	pkgver = 8.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcc.gnu.org/
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = riscv64-unknown-elf-gcc
 	options = !strip
 	source = https://gcc.gnu.org/pub/gcc/releases/gcc-8.2.0/gcc-8.2.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.19.tar.bz2
-	source = https://sourceware.org/pub/newlib/newlib-3.0.0.20180831.tar.gz
+	source = https://sourceware.org/pub/newlib/newlib-3.1.0.20181231.tar.gz
 	sha256sums = 196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080
 	sha256sums = d59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8
-	sha256sums = 3ad3664f227357df15ff34e954bfd9f501009a647667cd307bf0658aefd6eb5b
+	sha256sums = 9e12fea7297648b114434033ed4458755afe7b9b6c7d58123389e82bd37681c0
 
 pkgname = riscv64-unknown-elf-gcc
 

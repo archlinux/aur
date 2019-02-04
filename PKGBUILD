@@ -4,8 +4,8 @@ _target=riscv64-unknown-elf
 pkgname=$_target-gcc
 pkgver=8.2.0
 _islver=0.19
-_newlibver=3.0.0.20180831
-pkgrel=1
+_newlibver=3.1.0.20181231
+pkgrel=2
 #_snapshot=7-20170504
 pkgdesc='The GNU Compiler Collection - cross compiler for 32bit and 64bit RISC-V bare-metal'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "https://sourceware.org/pub/newlib/newlib-$_newlibver.tar.gz")
 sha256sums=('196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080'
             'd59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8'
-            '3ad3664f227357df15ff34e954bfd9f501009a647667cd307bf0658aefd6eb5b')
+            '9e12fea7297648b114434033ed4458755afe7b9b6c7d58123389e82bd37681c0')
 
 if [[ -n "$_snapshot" ]]; then
   _basedir=gcc-$_snapshot
