@@ -2,7 +2,7 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.24
+pkgver=0.9.25
 pkgrel=1
 changelog=.CHANGELOG
 source=("${pkgname}::git+https://github.com/SimonN/LixD.git#tag=v${pkgver}")
@@ -72,7 +72,7 @@ _build()
     dub add-path "${srcdir}"
 
     # ensure with --cache=local dub stays outside the users home directory
-    dub $@ --cache=local || _r="$?"
+    dub $@ --cache=local --parallel || _r="$?"
 
     # remove local dependencies from search path so dub won't find them
     # later again
@@ -100,7 +100,7 @@ build()
 check()
 {
     cd "${srcdir}/${_pkgname}" || exit
-    _build test --parallel
+    _build test
 }
 
 package()
