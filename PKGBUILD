@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-cmake
 pkgver=1
-pkgrel=23.2
+pkgrel=24
 arch=('any')
 pkgdesc="CMake wrapper for MinGW (mingw-w64)"
 depends=('cmake' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
