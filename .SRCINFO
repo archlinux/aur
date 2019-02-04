@@ -1,6 +1,6 @@
 pkgbase = recultis
 	pkgdesc = Return to the cult games. On Linux, with modern, open source engines. Requires the multilib repository to be enabled.
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://makson.gitlab.io/Recultis/
 	install = recultis.install
@@ -15,9 +15,9 @@ pkgbase = recultis
 	depends = mesa
 	depends = openal
 	optdepends = dpkg: alternative to ar.
-	source = https://gitlab.com/makson/Recultis/-/archive/v2.0.1/Recultis-v2.0.1.tar.gz
+	source = https://gitlab.com/makson/Recultis/-/archive/v2.1.0/Recultis-v2.1.0.tar.gz
 	source = recultis.desktop
-	md5sums = c252e15bf3382341819bf1f16603ba82
+	md5sums = 229a1d7a13e4fb3fe976fcff60ac8c24
 	md5sums = 2aa3806d1cdfdaa2513cf777405a8512
 
 pkgname = recultis
