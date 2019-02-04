@@ -1,6 +1,7 @@
-# Maintainer: Ashwin Vishnu <ashuwish+arch at pm D0T me>
+# Maintainer: Ashwin Vishnu <ashwinvis+arch at pm D0T me>
 
-pkgname=textidote
+pkgname=textidote-bin
+_pkgname=textidote
 pkgver=0.7.1
 pkgrel=1
 pkgdesc="Spelling, grammar and style checking on LaTeX documents"
@@ -27,16 +28,16 @@ prepare() {
 
 package() {
   # Create directories
-  install -d "$pkgdir"/{etc/bash.completion.d,usr/bin,usr/share/{man/man1,applications},opt/$pkgname}
+  install -d "$pkgdir"/{etc/bash.completion.d,usr/bin,usr/share/{man/man1,applications},opt/$_pkgname}
 
-  install -Dm644 etc/bash.completion.d/$pkgname "$pkgdir"/etc/bash.completion.d/
-  install -Dm755 usr/local/bin/$pkgname "$pkgdir"/usr/bin/
-  install -D opt/$pkgname/$pkgname.{jar,zsh} "$pkgdir"/opt/$pkgname/
-  install -D usr/share/man/man1/$pkgname.1 "$pkgdir"/usr/share/man/man1/
+  install -Dm644 etc/bash.completion.d/$_pkgname "$pkgdir"/etc/bash.completion.d/
+  install -Dm755 usr/local/bin/$_pkgname "$pkgdir"/usr/bin/
+  install -D opt/$_pkgname/$_pkgname.{jar,zsh} "$pkgdir"/opt/$_pkgname/
+  install -D usr/share/man/man1/$_pkgname.1 "$pkgdir"/usr/share/man/man1/
 
   # Extra command to launch in browser
-  install -Dm755 $pkgname-desktop "${pkgdir}"/usr/bin/
+  install -Dm755 $_pkgname-desktop "${pkgdir}"/usr/bin/
 
   # Add it to desktop
-  install -D $pkgname.desktop "${pkgdir}"/usr/share/applications/
+  install -D $_pkgname.desktop "${pkgdir}"/usr/share/applications/
 }
