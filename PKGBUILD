@@ -1,6 +1,6 @@
 # Maintainer:  <tigersoldi at gmail dot com>
 pkgname=google-java-format
-pkgver=1.5
+pkgver=1.7
 pkgrel=1
 pkgdesc="Reformats Java source code to comply with Google Java Style"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('java-runtime')
 options=()
 source=(https://github.com/google/google-java-format/releases/download/$pkgname-$pkgver/$pkgname-$pkgver-all-deps.jar
         google-java-format)
-md5sums=('f5124dd4ba467fa7d682f483abae34d7'
+md5sums=('d8ef209ab1f4b603089f3fa52c3a03ba'
          'e5b04729b788ccd83df24eaee98a35e6')
 
 package() {
