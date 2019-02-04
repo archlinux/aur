@@ -3,8 +3,8 @@
 
 pkgname=qt5-charts-git
 pkgver=5.12.1.r21.g9e943f14
-pkgrel=1
-pkgdesc="Provides a set of easy to use chart components"
+pkgrel=2
+pkgdesc="Qt5 charts module"
 arch=('i686' 'x86_64')
 url="https://www.qt.io/"
 license=('GPL3')
