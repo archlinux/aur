@@ -1,7 +1,7 @@
 pkgbase = macreg-git
 	pkgdesc = Micro web service to allow local users to register MAC addresses
-	pkgver = r94.276de85
-	pkgrel = 1
+	pkgver = r135.6e079a6
+	pkgrel = 2
 	url = https://github.com/coNQP/macreg
 	arch = any
 	license = GPLv3

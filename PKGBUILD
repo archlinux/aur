@@ -2,8 +2,8 @@
 
 _pkgbase='macreg'
 pkgname="${_pkgbase}-git"
-pkgver=r94.276de85
-pkgrel=1
+pkgver=r135.6e079a6
+pkgrel=2
 pkgdesc='Micro web service to allow local users to register MAC addresses'
 arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"
@@ -56,5 +56,7 @@ package() {
     popd || exit 1
 
     # Install bootstrap's MIT license.
-    install -m 644 -t "${pkgdir}/LICENSE.bootstrap.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
+    local LICENSES="${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m 755 -d "${LICENSES}"
+    install -m 644 LICENSE.bootstrap.txt "${LICENSES}"
 }
