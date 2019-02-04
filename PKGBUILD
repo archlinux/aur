@@ -2,7 +2,7 @@
 # Contributor: Parker Ellertson (rasputin-machine) <parker@rasputinmachine.com>
 # Contributor: therealfarfetchd
 pkgname='ripcord'
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc='Qt-based Discord and Slack client'
 arch=('x86_64')
@@ -11,9 +11,9 @@ url='https://cancel.fm/ripcord/'
 license=('custom')
 validpgpkeys=('ABBAD1CB484F53024CF5868B69332F9203F21F5C')
 
-_file="Ripcord-0.3.9-x86_64.AppImage"
-source=('https://cancel.fm/dl/Ripcord-0.3.9-x86_64.AppImage' 'https://cancel.fm/dl/Ripcord-0.3.9-x86_64.AppImage.asc')
-sha256sums=('5d3be0a762c8c63a89da8eff7dda322a6fc3414f4d527ceda1cbad47aa3121a6' 'SKIP')
+_file="Ripcord-$pkgver-x86_64.AppImage"
+source=("https://cancel.fm/dl/$_file"{,.asc})
+sha256sums=('6d940a438fcfd96ccf912698bf0b025bd114c3ba1c1d95a56095b8ea2f97fca2' 'SKIP')
 
 # !! AppImage is emptied if symbols are stripped away !!
 # But beyond that, the program is deployed with symbols on purpose
@@ -31,18 +31,26 @@ prepare() {
 }
 
 package() {
+  # directories
   install -d "$pkgdir"/usr/bin/
   install -d "$pkgdir"/usr/lib/ripcord/
   install -d "$pkgdir"/usr/share/applications/
   install -d "$pkgdir"/usr/share/icons/
+  install -d "$pkgdir"/usr/share/licenses/"$pkgname"
   
+  # icon
   install -m644 squashfs-root/Ripcord_Icon.png "$pkgdir"/usr/share/icons/
   
+  # .desktop file
   sed -i 's/Exec=Ripcord/Exec=\/usr\/bin\/ripcord/' squashfs-root/Ripcord.desktop
   install -m644 squashfs-root/Ripcord.desktop "$pkgdir"/usr/share/applications
-  
+
+  # license
+  sed -i '1s/^/Copyright 2016 - 2019 Acyclic Systems LLC All Rights Reserved\n\n/' squashfs-root/additional_license_information.txt
+  install -m644 squashfs-root/additional_license_information.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+
+  # application
   chmod 755 -R squashfs-root/lib squashfs-root/plugins squashfs-root/plugins/*
   mv squashfs-root/* "$pkgdir"/usr/lib/ripcord/
   ln -s /usr/lib/ripcord/Ripcord "$pkgdir"/usr/bin/ripcord
-
 }
