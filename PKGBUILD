@@ -7,14 +7,14 @@
 pkgbase=python2-numpy-openblas
 #pkgname=("python2-numpy-openblas" "python-numpy-openblas")
 pkgname=python2-numpy-openblas
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="Scientific tools for Python - built with openblas"
 arch=("i686" "x86_64")
 license=("custom")
 url="http://numpy.scipy.org/"
 source=("python-numpy-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz") 
-sha256sums=('c95533f25e01aaedf21d0212f8101801a56b41a0de4038d2c24dd5a2e0393854')
+sha256sums=('59485e2d172c4c3e27307969ef2c1220b98efcf59cbf373bec41da19f7b69b92')
 
 depends=("python2" "cython2" "openblas-lapack")
 options=('staticlibs')
