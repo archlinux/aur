@@ -1,7 +1,7 @@
 pkgbase = sprycloud-client-git
 	pkgdesc = spryCloud client for Linux
 	pkgver = 2.5.1.spry.r0.r0.g4dccd51c1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.spryservers.net/
 	install = sprycloud-client.install
 	arch = i686
