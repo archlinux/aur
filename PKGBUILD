@@ -2,7 +2,7 @@
 pkgname=precached-git
 _pkgname=precached
 pkgver=1.5.1
-pkgrel=9
+pkgrel=10
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
