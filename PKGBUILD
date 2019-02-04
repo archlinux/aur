@@ -6,7 +6,7 @@
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 
 pkgname=papirus-icon-theme-git
-pkgver=20190106.r0.ga70d64aa0d
+pkgver=20190203.r1.gc70b69a9cc
 pkgrel=1
 epoch=1
 pkgdesc="Papirus icon theme (git version)"
