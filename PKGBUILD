@@ -2,7 +2,7 @@
 
 pkgname=tt-rss-auth-ldap-git
 _gitname=TTRSS-Auth-LDAP
-pkgver=r44.c4a2073
+pkgver=r48.52e452c
 pkgrel=1
 pkgdesc="Tiny Tiny RSS plugin for LDAP authentication"
 arch=('any')
@@ -21,7 +21,8 @@ pkgver() {
 }
 
 package() {
+  _instdir="$pkgdir/usr/share/webapps/tt-rss/plugins.local/auth_ldap/"
   cd "$_gitname"
-  install -d -m755 "$pkgdir/usr/share/webapps/tt-rss/plugins/auth_ldap/"
-  install -D -m644  plugins/auth_ldap/init.php "$pkgdir/usr/share/webapps/tt-rss/plugins/auth_ldap/"
+  install -d -m755 "$_instdir"
+  install -D -m644 plugins/auth_ldap/init.php "$_instdir"
 }
