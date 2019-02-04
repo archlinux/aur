@@ -1,6 +1,6 @@
 pkgbase = heidisql
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases. This package uses the latest nightly build (32bit) on top of the portable version, and uses Wine.
-	pkgver = 9.5.0.5196
+	pkgver = 10.1.0.5473
 	pkgrel = 1
 	url = http://www.heidisql.com/
 	arch = any
@@ -8,17 +8,17 @@ pkgbase = heidisql
 	makedepends = unzip
 	depends = bash
 	depends = wine
-	noextract = HeidiSQL_9.5_Portable.zip
-	source = http://www.heidisql.com/downloads/releases/HeidiSQL_9.5_Portable.zip
-	source = http://www.heidisql.com/builds/heidisql32.r5196.exe
+	noextract = HeidiSQL_10.1_Portable.zip
+	source = http://www.heidisql.com/downloads/releases/HeidiSQL_10.1_32_Portable.zip
+	source = http://www.heidisql.com/builds/heidisql32.r5473.exe
 	source = heidisql.png
 	source = heidisql.desktop
 	source = heidisql.sh
-	md5sums = a4347b83102e1dec1660d58576f8d6eb
-	md5sums = fe5a168f3ecdc4803e7e8bcdc9788f32
+	md5sums = e57bac6d01a7c1c028ef727b19909944
+	md5sums = 9b0c2f871f364556def607c8ec2eace5
 	md5sums = df3673bc694beceb8ed6cfeace6b6c3f
 	md5sums = ea4fc6959a315ef5c2bf8e22c479e22a
-	md5sums = 3cdbca3164df7d3629ffc469d52e53a0
+	md5sums = 4500794df628bc141afa07ae65f85289
 
 pkgname = heidisql
 
