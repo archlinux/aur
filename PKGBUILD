@@ -8,8 +8,8 @@
 set -u
 _pkgname=lynx
 pkgname="${_pkgname}-current"
-_basever='2.8.9'
-pkgver="${_basever}rel.1"
+_basever='2.9.0'
+pkgver="${_basever}dev.1"
 pkgrel='1'
 pkgdesc='A text browser for the World Wide Web (current development version)'
 arch=('i686' 'x86_64')
@@ -25,19 +25,12 @@ _verwatch=("http://invisible-mirror.net/archives/lynx/tarballs/?C=M;O=D" "${_pkg
 #_srcdir="lynx${_basever//./-}"
 _srcdir="lynx${pkgver}"
 source=("http://invisible-mirror.net/archives/lynx/tarballs/${_pkgname}${pkgver}.tar.bz2") #{,.asc})
-sha256sums=('387f193d7792f9cfada14c60b0e5c0bff18f227d9257a39483e14fa1aaf79595')
+sha256sums=('a907afa7c9cfc38cc7c6b4ce5d5ff6d2ae2bfd4497230e831567c0d506caecb9')
 #validpgpkeys=('0AFD1FFEEA2EA063B959ACDA5DDF8FB7688E31A6')
 
-prepare() {
+_configure() {
   set -u
   cd "${_srcdir}"
-  ./configure --prefix='/usr' \
-    --sysconfdir='/etc' \
-    --with-ssl='/usr' \
-    --enable-nls \
-    --enable-ipv6 \
-    --enable-default-colors \
-    --mandir='/usr/share/man'
   sed -e 's:/usr/sbin/:/usr/bin/:g' -i 'lynx.cfg'
   set +u
 }
@@ -45,6 +38,15 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
+  if [ ! -s 'Makefile' ]; then
+    ./configure --prefix='/usr' \
+      --sysconfdir='/etc' \
+      --with-ssl='/usr' \
+      --enable-nls \
+      --enable-ipv6 \
+      --enable-default-colors \
+      --mandir='/usr/share/man'
+  fi
   make -s -j1 # not compatible with threaded make
   set +u
 }
