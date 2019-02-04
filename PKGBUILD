@@ -7,7 +7,7 @@ pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
-pkgver=240.307
+pkgver=241.rc2.23
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -70,6 +70,7 @@ pkgver() {
 
   version="$(git describe --abbrev=0 --tags)"
   count="$(git rev-list --count ${version}..)"
+  version="$(echo ${version}| sed 's/-/./')"
   printf '%s.%s' "${version#v}" "${count}"
 }
 
