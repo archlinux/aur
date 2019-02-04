@@ -1,0 +1,18 @@
+pkgbase = qt5-gamepad-git
+	pkgdesc = Qt5 gamepad module
+	pkgver = 5.12.1.r9.g99cb7b0
+	pkgrel = 1
+	url = https://www.qt.io/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	depends = qt5-declarative
+	provides = qt5-gamepad
+	conflicts = qt5-gamepad
+	source = git+https://code.qt.io/qt/qtgamepad.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = qt5-gamepad-git
+
