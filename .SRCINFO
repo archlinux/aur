@@ -1,0 +1,13 @@
+pkgbase = libcyaml
+	pkgdesc = Free GNU/Linux music production system (DAW)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.zrythm.org/zrythm/libcyaml
+	arch = x86_64
+	license = GPL3
+	depends = libyaml
+	source = https://git.zrythm.org/zrythm/libcyaml/-/archive/0.1.0/libcyaml-0.1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = libcyaml
+
