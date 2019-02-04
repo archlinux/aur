@@ -1,17 +1,19 @@
 pkgbase = qt5-graphicaleffects-git
-	pkgdesc = A cross-platform application and UI framework (QtGraphicalEffects)
-	pkgver = v5.5.0.1.gb4ef5a9
+	pkgdesc = Qt5 graphical effects module
+	pkgver = 5.12.1.r6.g8a6aecd
 	pkgrel = 1
-	url = https://qt-project.org/
+	url = https://www.qt.io/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = FDL
+	license = GPL
 	license = LGPL
+	license = custom
 	makedepends = git
-	depends = qt5-declarative-git
+	depends = qt5-declarative
 	provides = qt5-graphicaleffects
 	conflicts = qt5-graphicaleffects
-	source = qt5-graphicaleffects::git://code.qt.io/qt/qtgraphicaleffects.git#branch=5.5
+	source = git+https://code.qt.io/qt/qtgraphicaleffects.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = qt5-graphicaleffects-git

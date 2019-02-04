@@ -1,38 +1,55 @@
-# Maintainer: Riley Trautman <asonix.dev@gmail.com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Riley Trautman <asonix.dev@gmail.com>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
-_pkgname=qt5-graphicaleffects
-pkgname=$_pkgname-git
-pkgver=git
+pkgname=qt5-graphicaleffects-git
+pkgver=5.12.1.r6.g8a6aecd
 pkgrel=1
-pkgdesc="A cross-platform application and UI framework (QtGraphicalEffects)"
-arch=("i686" "x86_64")
-url="https://qt-project.org/"
-license=("GPL3" "LGPL")
-depends=("qt5-declarative-git")
-makedepends=("git")
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git://code.qt.io/qt/qtgraphicaleffects.git#branch=dev")
-sha256sums=("SKIP")
+pkgdesc="Qt5 graphical effects module"
+arch=('i686' 'x86_64')
+url="https://www.qt.io/"
+license=('FDL' 'GPL' 'LGPL' 'custom')
+depends=('qt5-declarative')
+makedepends=('git')
+provides=('qt5-graphicaleffects')
+conflicts=('qt5-graphicaleffects')
+source=("git+https://code.qt.io/qt/qtgraphicaleffects.git#branch=dev")
+sha256sums=('SKIP')
 
-pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
-}
 
 prepare() {
-	cd "$srcdir/$_pkgname"
-	mkdir -p build
-	cd build
-	qmake ..
-	make
+  cd "$srcdir"
+
+  mkdir -p "_build"
+}
+
+pkgver() {
+  cd "qtgraphicaleffects"
+
+  _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/v//p}')
+  _rev=$(git rev-list --count v$_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
+}
+
+build() {
+  cd "_build"
+
+  qmake ../qtgraphicaleffects
+  make
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	cd build
-	make INSTALL_ROOT="$pkgdir" install
+  cd "_build"
+
+  make INSTALL_ROOT="$pkgdir" install
+
+  # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+  find "$pkgdir/usr/lib" -type f -name '*.prl' \
+    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+
+  cd "$srcdir/qtgraphicaleffects"
+  install -Dm644 "LICENSE.GPL3-EXCEPT" "$pkgdir/usr/share/licenses/qt5-graphicaleffects/LICENSE.GPL3-EXCEPT"
 }
