@@ -1,12 +1,10 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Contributor: Boohbah <boohbah at gmail.com>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
-# Contributor: Jonathan Chan <jyc@fastmail.fm>
-# Contributor: misc <tastky@gmail.com>
-# Contributor: NextHendrix <cjones12 at sheffield.ac.uk>
-# Contributor: Shun Terabayashi <shunonymous at gmail.com>
-# Contributor: Brad McCormack <bradmccormack100 at gmail.com>
+#
+# Based on the linux-mainline package by:
+# Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-drm-intel-testing-git
 pkgdesc='Linux kernel with patches for Intel graphics'
@@ -15,7 +13,7 @@ _kernel_rel=5.0
 _branch=drm-intel-testing
 _kernelname=${pkgbase#linux}
 pkgver=5.0.798032.98966a91be48
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html'
 license=(GPL2)
@@ -80,15 +78,17 @@ _package() {
   install=linux.install
 
   local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   cd $_srcname
 
   msg2 "Installing boot image..."
-  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   msg2 "Installing modules..."
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-  mkdir -p "$modulesdir"
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # a place for external modules,
