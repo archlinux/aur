@@ -2,7 +2,7 @@
 pkgname=precached-git
 _pkgname=precached
 pkgver=1.5.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
@@ -94,7 +94,12 @@ package() {
 }
 
 post_install() {
-	echo "To enable precached on your system run:"  	
-	echo "sudo systemctl enable --now precached.service"
-	echo "systemctl --user enable --now precached-trigger.service"
+	echo "To enable precached on your system, the following commands will need to be run:"  	
+	echo "$ sudo systemctl enable --now precached.service"
+	echo "$ systemctl --user enable --now precached-trigger.service"
 }
+
+post_remove() {
+	rm -fr "/var/lib/precached/"
+}
+
