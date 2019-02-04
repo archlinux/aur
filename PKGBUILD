@@ -7,7 +7,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgbase=linux-selinux
-_srcver=4.20.3-arch1
+_srcver=4.20.6-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
