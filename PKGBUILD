@@ -13,7 +13,7 @@ _kernel_rel=5.1
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
 pkgver=5.1.810556.e1be4cb58380
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=(GPL2)
@@ -26,7 +26,7 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '5ac44ee20cc28d00c4948ca54931b568fb156b27cc25eb2ed205fdd16cca03af'
+            'a115b399bcb0b32317433a838c27efde1009a6d3a2feae49deed86df28fe8d2f'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -78,15 +78,17 @@ _package() {
   install=linux.install
 
   local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   cd $_srcname
 
   msg2 "Installing boot image..."
-  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   msg2 "Installing modules..."
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-  mkdir -p "$modulesdir"
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # a place for external modules,
@@ -149,7 +151,6 @@ _package-headers() {
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
-  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/macros.s
 
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
