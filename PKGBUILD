@@ -49,9 +49,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros_comm-release-release-melodic-ros_comm-${pkgver}-${_pkgver_patch}"
+_dir="ros_comm-release-release-melodic-ros_comm"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/ros_comm/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e50bee6dd4635917c0599d4e97199ac10dbb1e1a8efbb541889076bf10473198')
+sha256sums=('e03aa0bf1d845d33a2a5d9e473ea7d6ddb2b9e0190c9ca98d12e9848560bdff6')
 
 build() {
 	# Use ROS environment variables.
