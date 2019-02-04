@@ -9,6 +9,7 @@ _opt_defaultmode='660' # default: 620
 # Todo: nslinktool Config Driver needs an up down button to reorder entries
 # Todo: TUI firmware updater.
 # Todo: Firmware updater can't update unit set to DHCP.
+# Todo: Firmware updater errors out on old versions: Expected to connect to bootloader after reboot but found DeviceMaster Boot Version 1.20
 # Todo: Comtrol icons for nslinktool and the firmware updater
 # Todo: nslinktool set the mouse pointer to a spinning circle far too long after startup
 # Todo: rm /dev/ttySI* on rmmod nslink
@@ -23,7 +24,7 @@ _opt_defaultmode='660' # default: 620
 
 set -u
 pkgname='nslink'
-pkgver='7.34'
+pkgver='7.35'
 pkgrel='1'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
@@ -49,7 +50,7 @@ source=(
   'http://downloads.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz'
   'dmupdate.py.usage.patch'
 )
-sha256sums=('4434d75078db4c4d8406fc3013bd76dbac2d11133062de9ee1cfff4db533773b'
+sha256sums=('01eb5b23eda9cf3f9911d7af75568c90cce74a80344b6960a6d6b0e868deed4e'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073')
 
