@@ -3,17 +3,17 @@
 # Headless by: K900 <me@0upti.me>
 
 pkgname=qt5-base-headless
-_qtver=5.12.0
+_qtver=5.12.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
-url='http://qt-project.org/'
+url='https://www.qt.io/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework - headless build (no QtGui or QtWidgets)'
 depends=('sqlite' 'libproxy' 'double-conversion' 'pcre2' 'glib2' 'icu')
-makedepends=('libmariadbclient' 'sqlite' 'unixodbc' 'postgresql-libs' 'dbus')
+makedepends=('mariadb-libs' 'sqlite' 'unixodbc' 'postgresql-libs' 'dbus')
 optdepends=('postgresql-libs: PostgreSQL driver'
-            'libmariadbclient: MariaDB driver'
+            'mariadb-libs: MariaDB driver'
             'unixodbc: ODBC driver'
             'freetds: MS SQL driver'
 	    'python: build scripts for Apple platforms'
@@ -21,8 +21,8 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 conflicts=('qtchooser' 'qt5-base')
 provides=('qt5-base')
 _pkgfqn="qtbase-everywhere-src-${_qtver}"
-source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('5e03221d780e121aabd734896aab8f331e5d8c9d9b54f1eb04907d0818eaeecb')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('533078ce02678988576e224cb3844979907950cf83e0fda3364bc1d5701c9049')
 
 prepare() {
   cd ${_pkgfqn}
