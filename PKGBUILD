@@ -2,12 +2,12 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=oomox-git
-pkgver=1.11
-pkgrel=2
+pkgver=1.11.r16.g1daae2d4
+pkgrel=1
 pkgdesc="Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
-ArchDroid, Gnome-Colors, Numix, Papirus, Suru++ icon themes,
+ArchDroid, Gnome-Colors, Numix, Papirus, Suru++ icons,
 and terminal palettes.
 Have a hack for HiDPI in GTK2."
 arch=('x86_64' 'i686')
@@ -93,7 +93,10 @@ prepare(){
 
 	# remove submodule if building package update without flushing the dir:
 	git submodule deinit --all || true
-	git config --get-regexp submodule | cut -d' ' -f1 | xargs -n1 git config --unset || true
+	git config --get-regexp submodule \
+		| cut -d' ' -f1 \
+		| xargs --no-run-if-empty -n1 git config --unset \
+		|| true
 	old_paths=(
 		"$srcdir"/oomox/plugins/import_base16/base16-data
 	)
