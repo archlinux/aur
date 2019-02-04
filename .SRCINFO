@@ -1,7 +1,7 @@
 pkgbase = ivre
 	pkgdesc = Network recon framework
-	pkgver = 0.9.11
-	pkgrel = 2
+	pkgver = 0.9.12
+	pkgrel = 1
 	url = https://ivre.rocks/
 	arch = any
 	license = GPL3
@@ -27,6 +27,7 @@ pkgbase = ivre
 	optdepends = dokuwiki: Web server (notebook)
 	optdepends = nmap: Network scan
 	optdepends = masscan: Network scan
+	optdepends = zmap: Network scan
 	optdepends = bro: Network traffic analysis
 	optdepends = argus: Network traffic analysis
 	optdepends = nfdump: Netflow analysis
@@ -34,10 +35,10 @@ pkgbase = ivre
 	optdepends = phantomjs: HTTP screenshots via Nmap script
 	optdepends = ffmpeg: RTSP Screenshots via Nmap script
 	backup = etc/httpd/conf/extra/ivre.conf
-	source = https://files.pythonhosted.org/packages/source/i/ivre/ivre-0.9.11.tar.gz
-	source = https://raw.githubusercontent.com/cea-sec/ivre/v0.9.11/pkg/apache/ivre.conf
-	sha256sums = 95f456024b101d8a834a5f1a6925cb8b8e4f5067d57fbe02e54f7183555cccef
-	sha256sums = 1befe4daf20ccdf1b1906de244df2de5519843210e95491f3d8fe62ec660848c
+	source = https://files.pythonhosted.org/packages/source/i/ivre/ivre-0.9.12.tar.gz
+	source = https://raw.githubusercontent.com/cea-sec/ivre/v0.9.12/pkg/apache/ivre.conf
+	sha256sums = e0d9df1d61d8483ed266738b70c33366b8860d0cc4a864d04924f91ab8abc4ca
+	sha256sums = 9c7267b7b2bde354e03a0cf683b56c0ca2410296bdd7424a964fb2b4f14c7ee3
 
 pkgname = ivre
 
