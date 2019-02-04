@@ -2,12 +2,12 @@
 
 pkgname=deepin-dock-plugin-cmdu-git
 pkgver=r31.58d3c4f
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin for deepin dock, display uptime, CPU usage, RAM usage and netspeed."
 arch=('x86_64')
 url="https://github.com/sonichy/CMDU_DDE_DOCK"
 depends=('deepin-dock')
-makedepends=('git' 'qt5-base' 'qt5-svg')
+makedepends=('git' 'qt5-base')
 source=('git+https://github.com/sonichy/CMDU_DDE_DOCK.git' 'cmdu.pro.patch')
 md5sums=('SKIP' '420ef08a46387fff3437638be719199f')
 _gitname=CMDU_DDE_DOCK
