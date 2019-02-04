@@ -28,7 +28,7 @@ fi
 
 # If default wineprefix defined - run from it
 if [ -n "$WINEPREFIX" ]; then
-    WINEDEBUG=-all WINEPREFIX="$WINEPREFIX" wine "$progHome/$progBin" "$@"
+    WINEDEBUG=-all WINEPREFIX="$WINEPREFIX" WINEDLLOVERRIDES="d2d1=n" wine "$progHome/$progBin" "$@"
 else
-    WINEDEBUG=-all wine "$progHome/$progBin" "$@"
+    WINEDEBUG=-all WINEDLLOVERRIDES="d2d1=n" wine "$progHome/$progBin" "$@"
 fi
