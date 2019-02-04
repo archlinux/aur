@@ -1,0 +1,21 @@
+pkgbase = bipscript-ide
+	pkgdesc = IDE for the bipscript language
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://www.bipscript.org
+	arch = i686
+	arch = x86_64
+	groups = pro-audio
+	license = GPL
+	makedepends = qt5-tools
+	depends = jack
+	depends = qt5-base
+	provides = bipscript-ide
+	conflicts = bipscript-ide
+	source = https://github.com/bipscript/bipscript-ide/archive/v0.4.tar.gz
+	source = bipscript-ide-v0.4.patch
+	md5sums = bbc9fdbf6fc353bb9184343314085636
+	md5sums = 0d66a2efe623b4ef93e1b43f65ad34ae
+
+pkgname = bipscript-ide
+

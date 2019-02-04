@@ -1,0 +1,24 @@
+diff -ur ./bipscript-ide-0.4/mainwindow.cpp ./bipscript-ide/mainwindow.cpp
+--- ./bipscript-ide-0.4/mainwindow.cpp	2019-01-30 09:43:32.000000000 -0800
++++ ./bipscript-ide/mainwindow.cpp	2019-02-03 13:08:55.929997909 -0800
+@@ -206,7 +206,7 @@
+     QString path(url.path());
+     createOrOpenEditor(path);
+     if(url.hasQuery()) {
+-        int column = QString(url.encodedQuery()).toInt();
++        int column = QString(url.query()).toInt();
+         currentEditor()->focusLine(url.port(), column);
+     } else {
+         currentEditor()->focusLine(url.port());
+diff -ur ./bipscript-ide-0.4/outputwidget.cpp ./bipscript-ide/outputwidget.cpp
+--- ./bipscript-ide-0.4/outputwidget.cpp	2019-01-30 09:43:32.000000000 -0800
++++ ./bipscript-ide/outputwidget.cpp	2019-02-03 13:08:55.929997909 -0800
+@@ -82,7 +82,7 @@
+         href.setHost("[parse]");
+         href.setPort(perrorExp.cap(2).toInt());
+         href.setPath(perrorExp.cap(1));
+-        href.setEncodedQuery(perrorExp.cap(3).toAscii());
++        href.setQuery(perrorExp.cap(3));
+         anchorFormat.setAnchorHref(href.toString());
+         // add link to document
+         QTextCursor cursor(ui->stdoutBrowser->document());
