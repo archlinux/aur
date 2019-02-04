@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-coin-or-vol
 	pkgdesc = COIN-OR Volume Algorithm (mingw-w64)
-	pkgver = 1.5.0
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://projects.coin-or.org/Vol
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-coin-or-vol
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = http://www.coin-or.org/download/source/Vol/Vol-1.5.0.tgz
-	sha1sums = e53dd21eb28fb5a60ed39492d054cceafeb39ddf
+	source = http://www.coin-or.org/download/source/Vol/Vol-1.5.3.tgz
+	sha256sums = 8b015a01ec44957a30d920e91853984570438ec533d89085f02091a3c6286314
 
 pkgname = mingw-w64-coin-or-vol
 
