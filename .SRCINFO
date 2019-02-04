@@ -1,7 +1,7 @@
 pkgbase = batmon-git
 	pkgdesc = Monitores the battery level and saves somewhere for future analysis
-	pkgver = v0.2
-	pkgrel = 0
+	pkgver = r5.2b8ae64
+	pkgrel = 1
 	url = https://github.com/lucasew/batmon
 	install = batmon-git.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = batmon-git
 	depends = python
 	options = !strip
 	source = batmon::git+https://github.com/lucasew/batmon/
-	sha256sums = PASS
+	sha256sums = SKIP
 
 pkgname = batmon-git
 
