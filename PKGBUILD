@@ -1,6 +1,6 @@
 # Maintainer: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
-heidisqlrelease=5196
-shortpkgver=9.5
+heidisqlrelease=5473
+shortpkgver=10.1
 pkgname=heidisql
 pkgver=${shortpkgver}.0.${heidisqlrelease}
 pkgrel=1
@@ -10,22 +10,22 @@ url="http://www.heidisql.com/"
 license=('GPL')
 depends=(bash wine)
 makedepends=(unzip)
-source=("http://www.heidisql.com/downloads/releases/HeidiSQL_${shortpkgver}_Portable.zip"
+source=("http://www.heidisql.com/downloads/releases/HeidiSQL_${shortpkgver}_32_Portable.zip"
         "http://www.heidisql.com/builds/heidisql32.r${heidisqlrelease}.exe"
         "${pkgname}.png"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('a4347b83102e1dec1660d58576f8d6eb'
-         'fe5a168f3ecdc4803e7e8bcdc9788f32'
+md5sums=('e57bac6d01a7c1c028ef727b19909944'
+         '9b0c2f871f364556def607c8ec2eace5'
          'df3673bc694beceb8ed6cfeace6b6c3f'
          'ea4fc6959a315ef5c2bf8e22c479e22a'
-         '3cdbca3164df7d3629ffc469d52e53a0')
+         '4500794df628bc141afa07ae65f85289')
 noextract=("HeidiSQL_${shortpkgver}_Portable.zip")
 
 package() {
   # Unzip files from the .zip file
   install -d -m755 ${pkgdir}/usr/share/$pkgname
-  unzip "$srcdir/HeidiSQL_${shortpkgver}_Portable.zip" -d "$srcdir/unzipped"
+  unzip "$srcdir/HeidiSQL_${shortpkgver}_32_Portable.zip" -d "$srcdir/unzipped"
   
   # Overwrite with nightly build file
   cp "$srcdir/heidisql32.r${heidisqlrelease}.exe" "$srcdir/unzipped/heidisql.exe"
