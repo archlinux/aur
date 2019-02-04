@@ -1,5 +1,6 @@
 [Unit]
 Description=odrive agent
+After=local-fs.target network.target
 
 [Service]
 Type=simple
