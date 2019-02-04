@@ -8,7 +8,7 @@
 # Based on aur/whipper-git PKGBUILD
 
 pkgname=whipper-cdparanoia-git
-pkgver=0.7.0.r27.g542e071
+pkgver=0.7.3.r2.g752b485
 pkgrel=1
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri -- uses cdparanoia instead of libcdio-paranoia"
 arch=('any')
@@ -36,7 +36,7 @@ checkdepends=(
     'python2-twisted'
     )
 provides=('whipper' 'whipper-git')
-conflicts=('whipper-git')
+conflicts=('whipper' 'whipper-git')
 source=("git+${url}.git" "cdparanoia.diff")
 sha256sums=(
     'SKIP'

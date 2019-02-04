@@ -1,6 +1,6 @@
 pkgbase = whipper-cdparanoia-git
 	pkgdesc = A Unix CD ripper aiming for accuracy over speed -- forked from morituri -- uses cdparanoia instead of libcdio-paranoia
-	pkgver = 0.7.0.r27.g542e071
+	pkgver = 0.7.3.r2.g752b485
 	pkgrel = 1
 	url = https://github.com/JoeLametta/whipper
 	arch = any
@@ -22,6 +22,7 @@ pkgbase = whipper-cdparanoia-git
 	depends = sox
 	provides = whipper
 	provides = whipper-git
+	conflicts = whipper
 	conflicts = whipper-git
 	source = git+https://github.com/JoeLametta/whipper.git
 	source = cdparanoia.diff
