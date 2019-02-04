@@ -2,8 +2,8 @@
 
 pkgname=qt5-websockets-git
 pkgver=5.12.1.r16.g5f16a5c
-pkgrel=2
-pkgdesc="Provides WebSocket communication compliant with RFC 6455"
+pkgrel=3
+pkgdesc="Qt5 WebSockets module"
 arch=('i686' 'x86_64')
 url="https://www.qt.io/"
 license=('GPL' 'LGPL' 'custom')
