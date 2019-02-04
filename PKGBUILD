@@ -3,7 +3,7 @@
 # Contributor: teddy_beer_maniac <teddy_beer_maniac at wp dot pl>
 
 pkgname=gnome-common-git
-pkgver=3.14.0.r12.4363223
+pkgver=3.18.0.r2.3f52961
 pkgrel=1
 pkgdesc="Common development macros for GNOME"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("git://git.gnome.org/${pkgname%-*}")
+source=("git+https://gitlab.gnome.org/GNOME/${pkgname%-*}")
 sha256sums=('SKIP')
 
 pkgver() {
