@@ -2,8 +2,8 @@
 
 pkgname=qt5-3d-git
 pkgver=5.12.1.r43.gd51c6983b
-pkgrel=1
-pkgdesc="C++ and QML APIs for easy inclusion of 3D graphics"
+pkgrel=2
+pkgdesc="Qt5 3D module"
 arch=('i686' 'x86_64')
 url="https://www.qt.io/"
 license=('FDL' 'GPL' 'LGPL' 'custom')
