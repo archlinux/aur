@@ -56,5 +56,5 @@ package() {
     popd || exit 1
 
     # Install bootstrap's MIT license.
-    install -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/LICENSE.bootstrap.txt"
+    install -m 644 -t "${pkgdir}/LICENSE.bootstrap.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
