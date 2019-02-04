@@ -1,7 +1,7 @@
 # Maintainer: Ben Ruijl <benruyl@gmail.com> 
 pkgname=form
 _pkgid=${pkgname}
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="Symbolic Manipulation System developed at Nikhef."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('autoconf')
 provides=('form')
 conflicts=('form-git')
 source=("https://github.com/vermaseren/form/releases/download/v${pkgver}/form-${pkgver}.tar.gz")
-md5sums=('dc7bac60eab4d7f5a2436b1cad34f22b')
+md5sums=('5d4357bf60bd3629ef68fbc49a3ef61e')
 
 build(){
 	cd $_pkgid-$pkgver

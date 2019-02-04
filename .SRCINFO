@@ -1,6 +1,6 @@
 pkgbase = form
 	pkgdesc = Symbolic Manipulation System developed at Nikhef.
-	pkgver = 4.2.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://www.nikhef.nl/~form/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = form
 	depends = zlib>=1.2
 	provides = form
 	conflicts = form-git
-	source = https://github.com/vermaseren/form/releases/download/v4.2.0/form-4.2.0.tar.gz
-	md5sums = dc7bac60eab4d7f5a2436b1cad34f22b
+	source = https://github.com/vermaseren/form/releases/download/v4.2.1/form-4.2.1.tar.gz
+	md5sums = 5d4357bf60bd3629ef68fbc49a3ef61e
 
 pkgname = form
 
