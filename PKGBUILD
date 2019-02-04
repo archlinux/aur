@@ -3,10 +3,10 @@
 pkgname=libcyaml
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Free GNU/Linux music production system (DAW)"
+pkgdesc="C library for reading and writing YAML"
 arch=('x86_64')
 url="https://git.zrythm.org/zrythm/libcyaml"
-license=('GPL3')
+license=('ISC')
 depends=('libyaml')
 source=("https://git.zrythm.org/zrythm/libcyaml/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('SKIP')
