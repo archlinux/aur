@@ -1,8 +1,8 @@
 pkgbase = zrythm-git
 	pkgdesc = Free GNU/Linux music production system (DAW)
-	pkgver = r161.f6a97a6
+	pkgver = r200
 	pkgrel = 1
-	url = https://gitlab.com/alextee/zrythm
+	url = https://git.zrythm.org/zrythm/zrythm
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -18,7 +18,7 @@ pkgbase = zrythm-git
 	depends = libcyaml-git
 	provides = zrythm
 	conflicts = zrythm
-	source = zrythm::git+https://git.zrythm.org/alextee/zrythm.git
+	source = zrythm::git+https://git.zrythm.org/zrythm/zrythm.git
 	md5sums = SKIP
 
 pkgname = zrythm-git

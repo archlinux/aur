@@ -2,18 +2,18 @@
 
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=r161.f6a97a6
+pkgver=r200
 pkgrel=1
 pkgdesc="Free GNU/Linux music production system (DAW)"
 arch=('x86_64')
-url="https://gitlab.com/alextee/zrythm"
+url="https://git.zrythm.org/zrythm/zrythm"
 license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('gtk3' 'lv2' 'lilv' 'suil' 'jack' 'libsndfile' 'libsmf' 'libdazzle' 'breeze-icons'
          'libcyaml-git')
 makedepends=('git')
-source=("$_pkgname::git+https://git.zrythm.org/alextee/zrythm.git")
+source=("$_pkgname::git+https://git.zrythm.org/zrythm/zrythm.git")
 md5sums=('SKIP')
 
 pkgver () {
