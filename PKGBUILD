@@ -20,22 +20,22 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     COIN_SKIP_PROJECTS="Sample" \
     ${_arch}-configure \
-              --with-osi-lib="$(pkg-config --libs osi)" \
-              --with-osi-incdir="/usr/include/coin/" \
-              --with-clp-lib="$(pkg-config --libs clp)" \
-              --with-clp-incdir="/usr/include/coin/" \
-              --with-cgl-lib="$(pkg-config --libs cgl)" \
-              --with-cgl-incdir="/usr/include/coin/" \
-              --with-vol-lib="$(pkg-config --libs vol)" \
-              --with-vol-incdir="/usr/include/coin/" \
-              --with-coinutils-lib="$(pkg-config --libs coinutils)" \
-              --with-coinutils-incdir="/usr/include/coin/" \
-              --with-bcp-lib="$(pkg-config --libs bcp)" \
-              --with-bcp-incdir="/usr/include/coin/" \
-              --with-cbc-lib="$(pkg-config --libs cbc)" \
-              --with-cbc-incdir="/usr/include/coin/" \
-              --with-ipopt-lib="$(pkg-config --libs ipopt)" \
-              --with-ipopt-incdir="/usr/include/coin/" \
+              --with-osi-lib="$(${_arch}-pkg-config --libs osi)" \
+              --with-osi-incdir="/usr/${_arch}/include/coin/" \
+              --with-clp-lib="$(${_arch}-pkg-config --libs clp)" \
+              --with-clp-incdir="/usr/${_arch}/include/coin/" \
+              --with-cgl-lib="$(${_arch}-pkg-config --libs cgl)" \
+              --with-cgl-incdir="/usr/${_arch}/include/coin/" \
+              --with-vol-lib="$(${_arch}-pkg-config --libs vol)" \
+              --with-vol-incdir="/usr/${_arch}/include/coin/" \
+              --with-coinutils-lib="$(${_arch}-pkg-config --libs coinutils)" \
+              --with-coinutils-incdir="/usr/${_arch}/include/coin/" \
+              --with-bcp-lib="$(${_arch}-pkg-config --libs bcp)" \
+              --with-bcp-incdir="/usr/${_arch}/include/coin/" \
+              --with-cbc-lib="$(${_arch}-pkg-config --libs cbc)" \
+              --with-cbc-incdir="/usr/${_arch}/include/coin/" \
+              --with-ipopt-lib="$(${_arch}-pkg-config --libs ipopt)" \
+              --with-ipopt-incdir="/usr/${_arch}/include/coin/" \
               ..
     make
     popd
