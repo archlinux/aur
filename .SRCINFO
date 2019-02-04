@@ -1,15 +1,15 @@
 pkgbase = pcgen-git
 	pkgdesc = An RPG Character Generator.
-	pkgver = 6.07.08.ga8acb6c65b
+	pkgver = 6.09.00_DEV.g13a608a30e
 	pkgrel = 1
 	url = http://pcgen.org
 	arch = any
 	license = LGPL2
 	makedepends = git
 	makedepends = gradle
-	makedepends = java-environment
+	makedepends = java-environment>=11
 	depends = sh
-	depends = java-runtime
+	depends = java-runtime>=11
 	depends = gtk-update-icon-cache
 	depends = desktop-file-utils
 	depends = shared-mime-info

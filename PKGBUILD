@@ -3,14 +3,14 @@ _pkgname=pcgen
 pkgname=${_pkgname}-git
 provides=(pcgen)
 pkgrel=1
-pkgver=6.07.08.ga8acb6c65b
+pkgver=6.09.00_DEV.g13a608a30e
 conflicts=(pcgen)
 pkgdesc="An RPG Character Generator."
 arch=(any)
 url=http://pcgen.org
 license=(LGPL2)
-depends=(sh java-runtime gtk-update-icon-cache desktop-file-utils shared-mime-info java-openjfx)
-makedepends=(git gradle java-environment)
+depends=(sh 'java-runtime>=11' gtk-update-icon-cache desktop-file-utils shared-mime-info java-openjfx)
+makedepends=(git gradle 'java-environment>=11')
 source=("${pkgname}"::'git+https://github.com/PCGen/pcgen.git'
         ${_pkgname}.xml
         ${_pkgname}.desktop
@@ -30,8 +30,13 @@ pkgver(){
 }
 
 build(){
-    cd "${srcdir}/${pkgname}"
-    ./gradlew build
+    if archlinux-java get | grep -q java-11 ; then
+        cd "${srcdir}/${pkgname}"
+        gradle build
+    else
+        >&2 echo "PCGen must be built with Java 11, please use archlinux-java to activate it before building."
+        exit 1
+    fi
 }
 
 package(){
@@ -44,7 +49,7 @@ package(){
   install -Dm644 ${pkgname}/output/pcgen-batch-convert.jar "${pkgdir}/usr/share/java/pcgen/pcgen-batch-convert.jar"
   install -Dm644 ${pkgname}/code/src/images/PCGenApp.png \
     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
-  for dir in data docs libs outputsheets plugins preview system; do
+  for dir in data docs outputsheets plugins preview system; do
     cp -a ${pkgname}/$dir ${pkgdir}/usr/share/java/${_pkgname}/
   done
 }
