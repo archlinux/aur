@@ -1,0 +1,19 @@
+pkgbase = kafs
+	pkgdesc = kafs client tools
+	pkgver = r16.0ae929f
+	pkgrel = 1
+	url = https://www.infradead.org/~dhowells/kafs/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = git
+	makedepends = krb5
+	makedepends = openssl
+	provides = kafs
+	conflicts = kafs
+	source = kafs::git://git.infradead.org/users/dhowells/kafs-client.git
+	sha1sums = SKIP
+
+pkgname = kafs
+
