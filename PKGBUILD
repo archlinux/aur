@@ -3,10 +3,10 @@
 
 # Uncomment, if you want tha last release
 #_version=spry_v2.5.0
-_spryrel=2.5.0.spry.r12
+_spryrel=2.5.1.spry.r0
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.5.0.spry.r12.r0.g997fda77d
+pkgver=2.5.1.spry.r0.r0.g4dccd51c1
 pkgrel=1
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
