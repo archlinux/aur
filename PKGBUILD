@@ -1,8 +1,8 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=keeweb
-pkgver=1.7.4
-pkgrel=3
+pkgver=1.7.5
+pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/keeweb/keeweb"
@@ -12,6 +12,7 @@ makedepends=(
 	'asar'
 	'git'
 	'npm'
+	'nodejs>=8.15.0'
 	'libsass>=3.5.5'
 )
 optdepends=('xdotool: for auto-type')
