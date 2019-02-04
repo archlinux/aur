@@ -7,16 +7,16 @@
 
 pkgname=mythtv
 pkgver=30.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
 depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva' 'libiec61883' 'perl-net-upnp' 'urlgrabber' 'libsamplerate'
-         'qt5-webkit' 'x265' 'x264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr' 'mysql-python' 'libxnvctrl')
-makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec' 'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww'
-             'perl-dbd-mysql' 'python2-lxml' 'perl-xml-simple' 'perl-xml-xpath' 'libhdhomerun')
+         'qt5-webkit' 'x265' 'x264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr' 'mysql-python' 'libxnvctrl' 'libhdhomerun')
+makedepends=('git' 'help2man' 'yasm' 'mariadb-libs' 'libxml2' 'libcec' 'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww'
+             'perl-dbd-mysql' 'python2-lxml' 'perl-xml-simple' 'perl-xml-xpath')
 optdepends=('glew: for GPU commercial flagging'
             'libcec: for consumer electronics control capabilities'
             'libxml2: to read blu-ray metadata'
