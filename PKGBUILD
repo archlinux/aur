@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-ipopt
-pkgver=3.12.5
+pkgver=3.12.12
 pkgrel=1
 pkgdesc="Interior Point OPTimizer (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-lapack')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Ipopt/Ipopt-$pkgver.tgz")
-sha1sums=('3f63ddfff517235ead17af6cceb426ca858dda37')
+sha256sums=('7baeb713ef8d1999bed397b938e9654b38ad536406634384455372dd7e4ed61f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -21,7 +21,7 @@ build() {
   #sed -i "s|liblinalg_la_LIBADD =|liblinalg_la_LIBADD = \$(libdir)/liblapack.dll.a \$(libdir)/libblas.dll.a|g" src/LinAlg/Makefile.in
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure --libdir=/usr/${_arch}/lib
+    ${_arch}-configure ..
     make
     popd
   done
