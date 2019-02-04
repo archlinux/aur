@@ -2,8 +2,8 @@
 
 pkgname=qt5-serialport-git
 pkgver=5.12.1.r12.ge6a5786
-pkgrel=1
-pkgdesc="Provides access to hardware and virtual serial ports"
+pkgrel=2
+pkgdesc="Qt5 serial port module"
 arch=('i686' 'x86_64')
 url="https://www.qt.io/"
 license=('FDL' 'GPL' 'LGPL' 'custom')
