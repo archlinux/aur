@@ -1,0 +1,11 @@
+--- src/main.cpp	2019-02-03 22:27:48.869873390 -0500
++++ src/main.cpp	2019-02-03 22:27:56.200051727 -0500
+@@ -25,7 +25,7 @@
+ #else
+ #  include <GL/glew.h>
+ // #  include <GL/gl.h>
+-#  include <GL/glext.h>
++// #  include <GL/glext.h>
+ // #  include <GL/glut.h>
+ #endif
+     #include "SDL/SDL.h"
