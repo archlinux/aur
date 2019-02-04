@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-    _java=$(ls /usr/lib/jvm | grep 8-jdk)
+    _java=$(ls /usr/lib/jvm | grep 8-openjdk)
     export JAVA_HOME=/usr/lib/jvm/$_java
     cd $srcdir/$_pkgname
     sh gradlew build
