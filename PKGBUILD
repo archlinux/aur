@@ -1,10 +1,9 @@
-# $Id$
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Andreas Pieber <anpieber@gmail.com>
 
 set -u
 pkgname='liquibase'
-pkgver='3.6.2'
+pkgver='3.6.3'
 pkgrel='1'
 pkgdesc='VCS source control tailored for database management'
 arch=('any')
@@ -16,7 +15,7 @@ _verwatch=("${_giturl}/releases.atom" '\s\+<link rel="alternate" type="text/html
 options=('!strip')
 source=("https://github.com/liquibase/${pkgname}/releases/download/liquibase-parent-${pkgver}/liquibase-${pkgver}-bin.tar.gz"
         "liquibase.profile")
-sha256sums=('dd6d6c81b7ed6c75ee32d51bb53b3449fe2a695684965e36014ff70ea65c3ea5'
+sha256sums=('ece41287cc8fae585d16222e49df9c49946a470f37cacf55fa40327cdeb6c215'
             '7c1939e5b1aee63db199c86989726bbdf81102784512ed69f8595fddf80c30c0')
 
 package() {
