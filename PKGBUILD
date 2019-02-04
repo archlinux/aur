@@ -7,7 +7,7 @@
 
 pkgname=ninja-kitware
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Small build system with a focus on speed - Kitware version with JobServer and Fortran compatibility'
 arch=(x86_64)
 url='https://github.com/Kitware/ninja'
@@ -15,15 +15,18 @@ provides=(ninja)
 conflicts=(ninja)
 license=(Apache)
 depends=(gcc-libs)
-makedepends=(python2 re2c emacs-nox)
-version_id=gad558
+makedepends=(python2 re2c)
+optdepends=(emacs)
+version_id=g5b44b
 source=(ninja-$pkgver.$version_id.kitware.dyndep-1.jobserver-1.zip::https://github.com/Kitware/ninja/archive/v$pkgver.$version_id.kitware.dyndep-1.jobserver-1.zip)
-md5sums=('014cd869dfc9975ed4a9262682375bb4')
+md5sums=('eb90758262d361d68af1bb6d2de856ca')
 build() {
   cd ninja-$pkgver.$version_id.kitware.dyndep-1.jobserver-1
 
   python2 configure.py --bootstrap
-  emacs -Q --batch -f batch-byte-compile misc/ninja-mode.el
+  if [ -x "$(command -v emacs)" ]; then
+    emacs -Q --batch -f batch-byte-compile misc/ninja-mode.el
+  fi
 }
 
 check() {
@@ -41,11 +44,12 @@ package() {
   install -m644 -D doc/manual.asciidoc "$pkgdir/usr/share/doc/ninja/manual.asciidoc"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/ninja/COPYING"
 
-  install -m644 -D misc/ninja-mode.el "$pkgdir/usr/share/emacs/site-lisp/ninja-mode.el"
-  install -m644 -D misc/ninja-mode.elc "$pkgdir/usr/share/emacs/site-lisp/ninja-mode.elc"
+  if [ -x "$(command -v emacs)" ]; then
+    install -m644 -D misc/ninja-mode.el "$pkgdir/usr/share/emacs/site-lisp/ninja-mode.el"
+    install -m644 -D misc/ninja-mode.elc "$pkgdir/usr/share/emacs/site-lisp/ninja-mode.elc"
+  fi
   install -m644 -D misc/ninja.vim "$pkgdir/usr/share/vim/vimfiles/syntax/ninja.vim"
 
   install -m644 -D misc/bash-completion "$pkgdir/usr/share/bash-completion/completions/ninja"
   install -m644 -D misc/zsh-completion "$pkgdir/usr/share/zsh/site-functions/_ninja"
 }
-md5sums=('014cd869dfc9975ed4a9262682375bb4')

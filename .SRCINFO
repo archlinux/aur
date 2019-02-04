@@ -1,18 +1,18 @@
 pkgbase = ninja-kitware
 	pkgdesc = Small build system with a focus on speed - Kitware version with JobServer and Fortran compatibility
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kitware/ninja
 	arch = x86_64
 	license = Apache
 	makedepends = python2
 	makedepends = re2c
-	makedepends = emacs-nox
 	depends = gcc-libs
+	optdepends = emacs
 	provides = ninja
 	conflicts = ninja
-	source = ninja-1.9.0.gad558.kitware.dyndep-1.jobserver-1.zip::https://github.com/Kitware/ninja/archive/v1.9.0.gad558.kitware.dyndep-1.jobserver-1.zip
-	md5sums = 014cd869dfc9975ed4a9262682375bb4
+	source = ninja-1.9.0.g5b44b.kitware.dyndep-1.jobserver-1.zip::https://github.com/Kitware/ninja/archive/v1.9.0.g5b44b.kitware.dyndep-1.jobserver-1.zip
+	md5sums = eb90758262d361d68af1bb6d2de856ca
 
 pkgname = ninja-kitware
 
