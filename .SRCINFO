@@ -1,0 +1,21 @@
+pkgbase = qt5-3d-git
+	pkgdesc = C++ and QML APIs for easy inclusion of 3D graphics
+	pkgver = 5.12.1.r43.gd51c6983b
+	pkgrel = 1
+	url = https://www.qt.io/
+	arch = i686
+	arch = x86_64
+	license = FDL
+	license = GPL
+	license = LGPL
+	license = custom
+	makedepends = git
+	depends = qt5-declarative
+	depends = assimp
+	provides = qt5-3d
+	conflicts = qt5-3d
+	source = git+https://code.qt.io/qt/qt3d.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = qt5-3d-git
+
