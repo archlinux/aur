@@ -1,10 +1,15 @@
 post_install() {
-	echo "To enable precached on your system, the following commands will need to be run:"  	
-	echo "$ sudo systemctl enable --now precached.service"
-	echo "$ systemctl --user enable --now precached-trigger.service"
+	echo "\n"  	
+	echo "==> To enable precached on your system, the following commands will need to be run:"  	
+	echo "==> $ sudo systemctl enable --now precached.service"
+	echo "==> $ systemctl --user enable --now precached-trigger.service"
+	echo "\n"  	
+
+	#systemctl preset-all
 }
 
 post_remove() {
+	systemctl stop precached.service
 	rm -fr "/var/lib/precached/"
 }
 
