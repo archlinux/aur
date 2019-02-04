@@ -10,7 +10,7 @@
 
 pkgname=davinci-resolve-studio
 _pkgname=resolve
-pkgver=15.2.2
+pkgver=15.2.3
 pkgrel=4
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
@@ -25,11 +25,11 @@ conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio-beta
 install='davinci-resolve-studio.install'
 source=("davinci-resolve-studio.install" "75-davincipanel.rules" "75-sdx.rules" "davinci-resolve-studio.desktop")
 sha256sums=('ced9031d69d98222b9fd16ea4b776e356076a0e9286547ee2a8a5b4d07850799' '364c3b1b0ee39ce009840dba93e22e141e7aadc27f3254dbbf23d1b94c38a641' 
-'5190c0c42d3c84ae4691c73b6fe28e7f471da6a247e7400e7b5181a6c0c81bee' '9e6471ed9e7ef8dbc70ae8f67dd21a2003768d71c566e83bd46719da4ae1e224' )
+'5190c0c42d3c84ae4691c73b6fe28e7f471da6a247e7400e7b5181a6c0c81bee' '5258d48b12915ff23100cf026eafe6bc85ffb2d62ea6b180f3f48bd907224675' )
 
 prepare(){
 	_archive="DaVinci_Resolve_Studio_${pkgver}_Linux.zip"
-    	_archive_sha256sum='e6b0947d48dd702ade93c455bb7c5e82e0be3484e5927ba56741a02b947e3bb2'
+	_archive_sha256sum='53aaaf09603f5262233ac24041ca0f1067f43d7e6556ab620adf677d160d9b6f'
 
 	DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 

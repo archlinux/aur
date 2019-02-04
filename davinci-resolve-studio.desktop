@@ -8,3 +8,4 @@ Name=DaVinci Resolve Studio
 Terminal=false
 Type=Application
 Categories=Multimedia;AudioVideo;Application;
+StartupWMClass=resolve
