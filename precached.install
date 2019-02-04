@@ -8,8 +8,11 @@ post_install() {
 	#systemctl preset-all
 }
 
-post_remove() {
+pre_remove() {
 	systemctl stop precached.service
+}
+
+post_remove() {
 	rm -fr "/var/lib/precached/"
 }
 
