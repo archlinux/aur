@@ -34,7 +34,7 @@ sha512sums=('SKIP'
             '0eb1c5a89b17585126e3cd374c0b61970f97bb2d3c3d63052cf6b632b71ac5a2aa852dc86ac07a3a5b7dfe5e9177014fc5746e0281eb2f71061465279a32eda9'
             '93937770fa66d63f69c6283ed1f19ac83b9c9c4f5cc34e79d11ac31676462be9f7f37bcd35e785ceb8c7d234a09236d1f26b21e551b622854076fb21bcda44d3'
             '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
-            'c17dceeefd58447917e27a33d6688a28158b919c41867909b11478d8be7f155b61ae8fda2e0381c14210583f1c6ecf678dfb469c4826f34e24b8ee0b96a8aaa5'
+            '01f3ada0d121bc8c5a698356aae5f8d5374b3bd5a1023f02ebc9ec6600b4652f4ab7d7ef339df268bfe5054d2a58320d91e79af31e6609b74ba924aef62116e0'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7'
             '625ea754e70793d80da38878e345fefce579416d9daa04439f1c13885aa2a9620307010fe4cf09460677fe2918bd32b62f4ad52b24bab78d82b4e6487cbe5347'
             '02e844d1a97dd756d185f7258a6c18d52cf7433f3366e147e5ef0cc0b6c023d177b3021521403237162782993d2a27d4459fa5d383e7bf8a034e7f5836351f9d'
@@ -47,7 +47,7 @@ sha512sums=('SKIP'
 PKGEXT='.pkg.tar'   
 
 # use pgo?
-# _pgo=0 # even with my patch this results in "error: Could not read profile /media/disk/Linux/makepkg/waterfox-git/src/Waterfox/obj-x86_64-pc-linux-gnu/default.profdata: Invalid instrumentation profile data (bad magic)"      
+_pgo=0
            
 pkgver() {
 	cd Waterfox
@@ -66,11 +66,12 @@ prepare() {
   patch -Np1 -i ../firefox-install-dir.patch
 
   # these fix PGO partially
-  # patch -Np1 -i ../clang-profile.patch
+  patch -Np1 -i ../clang-profile.patch
 
-  #if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
-  #  echo "mk_add_options PROFILE_GEN_SCRIPT='EXTRA_TEST_ARGS=10 \$(MAKE) -C \$(MOZ_OBJDIR) pgo-profile-run'" >>.mozconfig 
-  #fi
+  if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
+    echo "mk_add_options PROFILE_GEN_SCRIPT='EXTRA_TEST_ARGS=10 \$(MAKE) -C \$(MOZ_OBJDIR) pgo-profile-run'" >>.mozconfig 
+	sed -i 's/disable-tests/enable-tests/g' .mozconfig
+  fi
   
   # fix missing icons
   for i in 16 22 24 32 48 256; do
@@ -91,7 +92,9 @@ build() {
 
   if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
     msg2 'PGO build is selected'
-    xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
+    #xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24"
+    # this requires you to build within an X console
+    # you may have to close waterfox when the profile generating version of it loads up
     make -j -f client.mk profiledbuild
   else
     msg2 'Non-PGO build is selected or your architecture is not x86_64'

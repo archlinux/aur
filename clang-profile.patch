@@ -1,7 +1,5 @@
-# adapted from the previous patch by Matt Parnell/ilikenwf <parwok@gmail.com>
-# bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1064049
 diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
-index 3e5a870c33..25ef5053a7 100644
+index 3e5a870c33d3..140f6f9c7de3 100644
 --- a/build/pgo/profileserver.py
 +++ b/build/pgo/profileserver.py
 @@ -37,7 +37,7 @@ if __name__ == '__main__':
@@ -21,7 +19,16 @@ index 3e5a870c33..25ef5053a7 100644
      env["MOZ_CRASHREPORTER_NO_REPORT"] = "1"
      env["XPCOM_DEBUG_BREAK"] = "warn"
  
-@@ -88,5 +89,13 @@ if __name__ == '__main__':
+@@ -72,7 +73,7 @@ if __name__ == '__main__':
+                            binary=build.get_binary_path(where="staged-package"),
+                            cmdargs=['javascript:Quitter.quit()'],
+                            env=env)
+-    runner.start()
++    runner.start(outputTimeout=60) # allow up to 60 seconds to start and create a profile
+     runner.wait()
+ 
+     jarlog = os.getenv("JARLOG_FILE")
+@@ -88,5 +89,15 @@ if __name__ == '__main__':
      runner.start(debug_args=debug_args, interactive=interactive)
      runner.wait()
      httpd.stop()
@@ -30,16 +37,18 @@ index 3e5a870c33..25ef5053a7 100644
 +    # i'm not super up on the current state of the mozilla build system so for other profraws and other profdata
 +    # generated, and for this, it'd be nice to properly get an llvm-profdata search in configure
 +    # and properly add it to the flow... just proof of concept for me - halp please!
++    # also, wouldn't it make sense to add an argument to copy an actual user profile, 
++    # and start up on the blank tab page when possible for a more real-world loadup? todo?
 +    # Matt Parnell/ilikenwf <parwok@gmail.com>
 +    os.chdir(build.topobjdir)
-+    os.system("/usr/bin/llvm-profdata merge -output=default.profdata *.profraw &> /dev/null")
++    os.system("llvm-profdata merge -output=/tmp/default.profdata *.profraw &> /dev/null")
    finally:
      shutil.rmtree(profilePath)
 diff --git a/js/src/old-configure.in b/js/src/old-configure.in
-index c756cd202d..ec2855cb47 100644
+index 70b6a7dc7af9..832010150cab 100644
 --- a/js/src/old-configure.in
 +++ b/js/src/old-configure.in
-@@ -1950,13 +1950,18 @@ else
+@@ -1823,13 +1823,18 @@ else
  fi
  
  dnl ========================================================
@@ -61,7 +70,7 @@ index c756cd202d..ec2855cb47 100644
  
  AC_MSG_CHECKING([whether C compiler supports -fprofile-generate])
  AC_TRY_COMPILE([], [return 0;],
-@@ -1965,11 +1970,15 @@ AC_TRY_COMPILE([], [return 0;],
+@@ -1838,11 +1843,15 @@ AC_TRY_COMPILE([], [return 0;],
  AC_MSG_RESULT([$result])
  
  if test $result = "yes"; then
@@ -70,7 +79,7 @@ index c756cd202d..ec2855cb47 100644
 -  PROFILE_USE_LDFLAGS="-fprofile-use"
 +	if test -n "${CLANG_CC}"; then
 +		PROFILE_GEN_CFLAGS="-fprofile-generate"
-+		PROFILE_USE_CFLAGS='-fprofile-instr-use=$(topobjdir)/default.profdata'
++		PROFILE_USE_CFLAGS='-fprofile-instr-use=/tmp/default.profdata'
 +	else
 +		PROFILE_GEN_LDFLAGS="-fprofile-generate"
 +		PROFILE_USE_CFLAGS="-fprofile-use -fprofile-correction -Wcoverage-mismatch"
@@ -82,10 +91,10 @@ index c756cd202d..ec2855cb47 100644
  
  AC_SUBST(PROFILE_GEN_CFLAGS)
 diff --git a/nsprpub/configure.in b/nsprpub/configure.in
-index 202158b799..c92fdd6aa3 100644
+index 22b4e72245d1..1f565e79d300 100644
 --- a/nsprpub/configure.in
 +++ b/nsprpub/configure.in
-@@ -716,13 +716,18 @@ else
+@@ -750,13 +750,18 @@ else
  fi
  
  dnl ========================================================
@@ -107,7 +116,7 @@ index 202158b799..c92fdd6aa3 100644
  
  AC_MSG_CHECKING([whether C compiler supports -fprofile-generate])
  AC_TRY_COMPILE([], [return 0;],
-@@ -731,11 +736,15 @@ AC_TRY_COMPILE([], [return 0;],
+@@ -765,11 +770,15 @@ AC_TRY_COMPILE([], [return 0;],
  AC_MSG_RESULT([$result])
  
  if test $result = "yes"; then
@@ -116,7 +125,7 @@ index 202158b799..c92fdd6aa3 100644
 -   PROFILE_USE_LDFLAGS="-fprofile-use"
 +	if test -n "${CLANG_CC}"; then
 +		PROFILE_GEN_CFLAGS="-fprofile-generate"
-+		PROFILE_USE_CFLAGS='-fprofile-instr-use=$(topobjdir)/default.profdata'
++		PROFILE_USE_CFLAGS='-fprofile-instr-use=/tmp/default.profdata'
 +	else
 +		PROFILE_GEN_LDFLAGS="-fprofile-generate"
 +		PROFILE_USE_CFLAGS="-fprofile-use -fprofile-correction -Wcoverage-mismatch"
@@ -128,10 +137,10 @@ index 202158b799..c92fdd6aa3 100644
  
  dnl ===============================================================
 diff --git a/old-configure.in b/old-configure.in
-index ada5934ec1..d9eefcb3cc 100644
+index 662d77aaf99f..1ef312e22e6b 100644
 --- a/old-configure.in
 +++ b/old-configure.in
-@@ -5042,13 +5042,18 @@ else
+@@ -4213,13 +4213,18 @@ else
  fi
  
  dnl ========================================================
@@ -153,7 +162,7 @@ index ada5934ec1..d9eefcb3cc 100644
  
  AC_MSG_CHECKING([whether C compiler supports -fprofile-generate])
  AC_TRY_COMPILE([], [return 0;],
-@@ -5057,11 +5062,15 @@ AC_TRY_COMPILE([], [return 0;],
+@@ -4228,11 +4233,15 @@ AC_TRY_COMPILE([], [return 0;],
  AC_MSG_RESULT([$result])
  
  if test $result = "yes"; then
@@ -162,7 +171,7 @@ index ada5934ec1..d9eefcb3cc 100644
 -  PROFILE_USE_LDFLAGS="-fprofile-use"
 +	if test -n "${CLANG_CC}"; then
 +		PROFILE_GEN_CFLAGS="-fprofile-generate"
-+		PROFILE_USE_CFLAGS='-fprofile-instr-use=$(topobjdir)/default.profdata'
++		PROFILE_USE_CFLAGS='-fprofile-instr-use=/tmp/default.profdata'
 +	else
 +		PROFILE_GEN_LDFLAGS="-fprofile-generate"
 +		PROFILE_USE_CFLAGS="-fprofile-use -fprofile-correction -Wcoverage-mismatch"
