@@ -3,7 +3,7 @@
 
 pkgname=photoqt
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
 url="http://photoqt.org/"
