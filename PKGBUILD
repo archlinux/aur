@@ -15,10 +15,10 @@ optdepends=('libmicrohttpd: support for pmwebd'
 	    'perl-xml-tokeparser: support for sar2pcp'
 	    'perl-date-parse: support for sar2pcp')
 install="pcp.install"
-source=("https://bintray.com/artifact/download/pcp/source/pcp-$pkgver.src.tar.gz"
+source=("https://dl.bintray.com/pcp/source/pcp-$pkgver.tar.gz"
         "pcp.install"
         "pcp.tmpfiles")
-sha256sums=('f50706b5b198a9aeeedd8fa05ec7065a4e837e2e297651e4ad0731a0e506846c'
+sha256sums=('022499a92b47564c103c7a97d0ce6492193446d9121baf3809ca07cccd3194b1'
             '590d816edc87dd03e3700d7637f57ca81d24d63802f32f772709e0c33a4ca0b5'
             '48ce114e95ab640bfe6c6c9608c96c22a75b65ccb38dfa89bfa2b12621845f20')
 
