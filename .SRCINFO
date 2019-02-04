@@ -1,0 +1,18 @@
+pkgbase = textidote
+	pkgdesc = Spelling, grammar and style checking on LaTeX documents
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/sylvainhalle/textidote
+	arch = any
+	license = GPL
+	depends = java-runtime-headless>=8
+	provides = textidote
+	source = https://github.com/sylvainhalle/textidote/releases/download/v0.7.1/textidote_0.7.1_all.deb
+	source = textidote-desktop
+	source = textidote.desktop
+	sha256sums = 6ada06a2035cdef33beace162acf81151fb47b630d7bf12653cb3ddbfcdefed4
+	sha256sums = 8c1e1de0ab3d003f7422ef31b84c60678d233070d8828d3a8a94b9cc53ecccb7
+	sha256sums = 2aff8c74126f63bd8ab8e8fb3d69155a233574882ef8f5d1cb887d9ea36f5fcd
+
+pkgname = textidote
+

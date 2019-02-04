@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.7
+Type=Application
+Name=TeXtidote
+Comment=Check text with TeXtidote
+Exec=/usr/bin/textidote-desktop %F
+# Icon=/opt/textidote/textidote-icon.svg
+Path=
+Terminal=false
+StartupNotify=false
