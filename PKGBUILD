@@ -7,8 +7,8 @@
 # Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 
 pkgname=tea
-pkgver=44.1.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=3
 pkgdesc="A Qt-based text editor for Linux and *BSD. With an ultimate small size TEA provides you hundreds of functions."
 arch=('x86_64')
 url="http://semiletov.org/tea/"
@@ -18,13 +18,15 @@ install=tea.install
 DLAGENTS=("http::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=(http://semiletov.org/tea/dloads/tea-$pkgver.tar.bz2
         tea.desktop)
-sha256sums=('28b665a4ab30defa6699f8625a771612c6e0ae3160abf19e0e3d0a3778599890'
+sha256sums=('5fb5c22023edd26ed8d0708a737df2cfdb2a88abe546e2e6f020acfe19d3e764'
             '6bf04a66bce5a2396eadaee9c7ac7972f24670bbadf855c52146dce0e13f1324')
+sha512sums=('c58099b1c2d89e86ec24db40aee129f1936b8ab7f9b2e6628f5473e42954506e6d76169a4bd306953bd0e8d0ad8725e6dafa510a6130f7f42d35ca459e8b7336'
+            'f7fee6a36cf5ef60f6bcac36c1a97f104c84b9fbdc7d6269349137c5e107987b87c4f01e22f32568ec6548916cf92696e72352756cfe7747f8744adbeca3d285')
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i 's|/usr/local|/usr|g' src.pro
-}
+#prepare() {
+#  cd "${srcdir}/${pkgname}-${pkgver}"
+#  sed -i 's|/usr/local|/usr|g' src.pro
+#}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
