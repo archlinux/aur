@@ -1,4 +1,2 @@
 #!/bin/bash
-
-cd /usr/share/actionfps
-actionfps_server "$@"
+/usr/share/actionfps/server.sh "$@"
