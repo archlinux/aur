@@ -1,0 +1,32 @@
+# Maintainer: Robosky <fangyuhao0612@gmail.com>
+
+pkgname=gnome-shell-extension-netspeed-git
+_gitname=NetSpeed
+pkgver=80.c109544
+pkgrel=1
+pkgdesc="Gnome shell extension to display internet speed"
+arch=('any')
+url="https://extensions.gnome.org/extension/104/netspeed"
+license=('GPL2')
+depends=('gnome-shell')
+makedepends=('git' 'zip' 'unzip')
+install=${pkgname}.install
+source=("git+https://github.com/hedayaty/NetSpeed.git")
+md5sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}/${_gitname}"
+    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+	cd "${srcdir}/${_gitname}"
+	make
+}
+
+package() {
+	cd "${srcdir}/${_gitname}"
+	make DESTDIR="${pkgdir}" install
+}
+
+ 

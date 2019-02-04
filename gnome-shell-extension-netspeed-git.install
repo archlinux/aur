@@ -1,0 +1,3 @@
+post_install() {
+	echo "\n===> Do not to forget reload Gnome Shell with Alt-F2 r and enable it with the gnome-tweaks.\n"
+}
