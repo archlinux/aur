@@ -30,7 +30,7 @@ _origmodname='rp2'
 
 set -u
 pkgname='comtrol-rocketport-express-infinity'
-pkgver='2.16'
+pkgver='2.17'
 pkgrel='1'
 pkgdesc='kernel module driver for Comtrol RocketPort Express Infinity Rocketmodem serial RS-232 422 485 port'
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ install="${pkgname}-install.sh"
 _verwatch=('http://downloads.comtrol.com/rport_express/drivers/Linux/' '.*>rocketport_infinity_express-linux-\([0-9\.]\+\)\.tar\.gz.*' 'f')
 _srcdir="rocketport_infinity_express-linux-${pkgver}"
 source=("http://downloads.comtrol.com/rport_express/drivers/Linux/rocketport_infinity_express-linux-${pkgver}.tar.gz")
-sha256sums=('7d46382020f0968339d9806aa3d435de09980600440cb76b031169daad595e34'
+sha256sums=('b6cb363ccebb2e3e5ca0a3f979b2e27e2c059fd063700d7fdb2aa7027c5a677a'
             '2aadc9ba118bd778b2afc1a2f0f006ef5142983a64c8aa522c15d5d78ece6e53')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -81,46 +81,47 @@ _install_check() {
   done
 }
 
+_fn_patch_km() {
+  # Fix permissions
+  find -type 'f' -exec chmod 644 '{}' '+'
+  chmod 755 *.sh
+
+  # Fix umbrella makefile
+  sed -e 's:/lib/:/usr/lib/:g' -i 'Makefile'
+
+  # Branding in dmesg
+  sed -e '/printk/ s@DRV_VERS@& " Arch Linux'" https://aur.archlinux.org/packages/${pkgname}/"'" @g' -i "${_origmodname}.c"
+
+  # Change module name to prevent conflict with built in module
+  if [ "${_modulename}" != "${_origmodname}" ]; then
+    sed -e "s:${_origmodname}:${_modulename}:g" -i 'Makefile'
+    sed -e "s|\"${_origmodname}:|\"${_modulename}:|g" \
+        -e "/DRV_NAME/ s:\"${_origmodname}:\"${_modulename}:g" \
+      -i "${_origmodname}.c"
+    sed -e "s:${_origmodname}:${_modulename}:g" -i 'install.sh'
+    mv "${_origmodname}.c" "${_modulename}.c"
+  fi
+
+  # Make installer package compatible
+  #cp -p 'install.sh' 'install.Arch.sh' # testmode for diff comparison
+  sed -e '1a set -e' -e '1a set -u' -e '#1a set -x' -e '1a DESTDIR=' -i 'install.sh'
+  sed -e '# Fix sbin and lib' \
+      -e 's:/usr/sbin/:/usr/bin/:g' \
+      -e 's:/sbin/:/usr/bin/:g' \
+      -e 's:/lib/:/usr/lib/:g' \
+      -e '# Add DESTDIR' \
+      -e 's:/usr/:"${DESTDIR}"&:g' \
+      -e 's:/etc/:"${DESTDIR}"&:g' \
+      -e 's:""${DESTDIR}":"${DESTDIR}:g' \
+    -i 'install.sh'
+  ! test -s 'install.Arch.sh' || echo "${}"
+}
+
 prepare() {
   set -u
   _install_check
   cd "${_srcdir}"
 
-  _fn_patch_km() {
-    # Fix permissions
-    find -type 'f' -exec chmod 644 '{}' '+'
-    chmod 755 *.sh
-
-    # Fix umbrella makefile
-    sed -e 's:/lib/:/usr/lib/:g' -i 'Makefile'
-
-    # Branding in dmesg
-    sed -e '/printk/ s@DRV_VERS@& " Arch Linux'" https://aur.archlinux.org/packages/${pkgname}/"'" @g' -i "${_origmodname}.c"
-
-    # Change module name to prevent conflict with built in module
-    if [ "${_modulename}" != "${_origmodname}" ]; then
-      sed -e "s:${_origmodname}:${_modulename}:g" -i 'Makefile'
-      sed -e "s|\"${_origmodname}:|\"${_modulename}:|g" \
-          -e "/DRV_NAME/ s:\"${_origmodname}:\"${_modulename}:g" \
-        -i "${_origmodname}.c"
-      sed -e "s:${_origmodname}:${_modulename}:g" -i 'install.sh'
-      mv "${_origmodname}.c" "${_modulename}.c"
-    fi
-
-    # Make installer package compatible
-    #cp -p 'install.sh' 'install.Arch.sh' # testmode for diff comparison
-    sed -e '1a set -e' -e '1a set -u' -e '#1a set -x' -e '1a DESTDIR=' -i 'install.sh'
-    sed -e '# Fix sbin and lib' \
-        -e 's:/usr/sbin/:/usr/bin/:g' \
-        -e 's:/sbin/:/usr/bin/:g' \
-        -e 's:/lib/:/usr/lib/:g' \
-        -e '# Add DESTDIR' \
-        -e 's:/usr/:"${DESTDIR}"&:g' \
-        -e 's:/etc/:"${DESTDIR}"&:g' \
-        -e 's:""${DESTDIR}":"${DESTDIR}:g' \
-      -i 'install.sh'
-    ! test -s 'install.Arch.sh' || echo "${}"
-  }
   _fn_patch_km "${pkgver}"
   if [ ! -z "${_opt_LEGACY_VER}" ]; then
     pushd "${srcdir}/${_srcalt}" > /dev/null
