@@ -2,8 +2,8 @@
 
 pkgname=qt5-serialbus-git
 pkgver=5.12.1.r19.g225c623
-pkgrel=1
-pkgdesc="Qt module for general purpose serial bus access"
+pkgrel=2
+pkgdesc="Qt5 serial bus module"
 arch=('i686' 'x86_64')
 url="https://www.qt.io/"
 license=('FDL' 'GPL' 'LGPL3')
