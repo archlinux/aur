@@ -23,7 +23,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.1rc1pre1
+pkgver=18.1rc1pre2
 _major=18.0
 pkgrel=1
 _codename=Leia
@@ -96,6 +96,10 @@ source=(
   '19-PR15351.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15351.patch'
   '20-PR15399.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15399.patch'
   '21-PR15410.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15410.patch'
+  '22-PR15422.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15422.patch'
+  '23-PR15353.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15353.patch'
+  '24-PR15419.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15419.patch'
+  '25-PR15420.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15420.patch'
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -119,25 +123,31 @@ sha256sums=('ac5d64d59c6f4811b41a869538506e56c342b530fac97ad9dc9715f3d480e633'
             '304d4581ef024bdb302ed0f2dcdb9c8dea03f78ba30d2a52f4a0d1c8fc4feecd'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
             '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb'
-            '026b9fb181bbfab92cd141eebff9458cfe536cf789a748047db0e43685db56c1'
-            'a31e0ebdb1b7f4af1f2772d87dc5c1b83be105b20c2cc2d2659de58529f0b207'
-            '6e3c798913b1a1aaaebd1e0e699c72e78366e681f8b56282aeaa0237d8508a22'
-            '269a0f6df80a045c930f38206dabeb966abe317fd05a3d6d38c02c15ed74d6a9'
-            'b8ee25888ab3e5efbe2e1997180108ac9f2563eeaabecdc83ff981deed079ef6'
-            '090d038f824a2d5571e68ced2377173c371bd2e20996eeb1c2b2d9e5999050d4'
-            'ba525b840f615815892258f74a85c332c9030e8e95988a5463cbb42d35a38a8e'
-            '65f3f4f297f1f5fcc3b91d5f1bbd232d41497a885f2af5480ec72cac3605b76c'
-            '834b542997a21a9c205330ed1b743ec8c430bee9c01a64c0493347756aff4f25'
-            'c9dbeeb0d51e8eaa56981f64ca2c3bc5a58317d613d97eba474d2488fefcb04e'
-            'ad3b9acf718875c15a2d8427a9e8b90cf88b2512404e7305bc9b0a36ca2f0b5e'
-            '3850804d0380db35d651e964b83cbe4d0e3e1e7b1bd85c2dda955fd3974e0737'
-            '50b4a057cc2c1c6a6ada2839eb119d91d42ac14e1bbcb5baf272964412fbc711'
-            '4c73812dca6de51ab896d060508608756dd5051cc53c6ca4cce9031fd8747b3a'
-            'c53ba29065ea3a1a2ed1c6de76b4f5a6b089313a20704f67224233ac1de2971a'
-            'f8966249bc86234a8445109600c24ad926026f179e5bcf65ab3facdfd6acef09'
-            'e27441261d72aaa3f3611638715444b068795d175b0b8c8de8d7612062ca4137'
+            '4676b603e0c170f2d627e305560622b72dbdee51c0a221058c350841a814dc39'
             '3dea58570ec1a59c94513e4c468d232f87d9a71787740b2bc631751e13ce17c1'
-            '4676b603e0c170f2d627e305560622b72dbdee51c0a221058c350841a814dc39')
+            'e27441261d72aaa3f3611638715444b068795d175b0b8c8de8d7612062ca4137'
+            'f8966249bc86234a8445109600c24ad926026f179e5bcf65ab3facdfd6acef09'
+            'c53ba29065ea3a1a2ed1c6de76b4f5a6b089313a20704f67224233ac1de2971a'
+            '4c73812dca6de51ab896d060508608756dd5051cc53c6ca4cce9031fd8747b3a'
+            '50b4a057cc2c1c6a6ada2839eb119d91d42ac14e1bbcb5baf272964412fbc711'
+            '3850804d0380db35d651e964b83cbe4d0e3e1e7b1bd85c2dda955fd3974e0737'
+            'ad3b9acf718875c15a2d8427a9e8b90cf88b2512404e7305bc9b0a36ca2f0b5e'
+            'c9dbeeb0d51e8eaa56981f64ca2c3bc5a58317d613d97eba474d2488fefcb04e'
+            '834b542997a21a9c205330ed1b743ec8c430bee9c01a64c0493347756aff4f25'
+            '65f3f4f297f1f5fcc3b91d5f1bbd232d41497a885f2af5480ec72cac3605b76c'
+            'ba525b840f615815892258f74a85c332c9030e8e95988a5463cbb42d35a38a8e'
+            '090d038f824a2d5571e68ced2377173c371bd2e20996eeb1c2b2d9e5999050d4'
+            'b8ee25888ab3e5efbe2e1997180108ac9f2563eeaabecdc83ff981deed079ef6'
+            '269a0f6df80a045c930f38206dabeb966abe317fd05a3d6d38c02c15ed74d6a9'
+            '6e3c798913b1a1aaaebd1e0e699c72e78366e681f8b56282aeaa0237d8508a22'
+            'a31e0ebdb1b7f4af1f2772d87dc5c1b83be105b20c2cc2d2659de58529f0b207'
+            '026b9fb181bbfab92cd141eebff9458cfe536cf789a748047db0e43685db56c1'
+            'f74d3247ea74d4b1bbc6b7cbe82e56066a7d859be8986e90950250d6178b1361'
+            'e087519deabb93c20409d959542a56156970a0a43fbef05278a0225e07ce31bf'
+            '83ba1ab2afcd45e40987bceb5fb2a7b966cc6d669c6d050f51d3539fe2ec247e'
+            '379dbd50fe2ec514636aa544b519201b01973af4fee2d0ad218ac3605d0cd634'
+            '6aaf1343f41a414ea8e27bfd13bffd37f6e594cf8671f96f754f90fa1dac0cc4'
+            '8a6e0aeb20a74bd9a40bd4a7eb50c64c251c5f5ba625a1e96cc438635fb063aa')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
