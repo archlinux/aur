@@ -12,7 +12,8 @@ pkgrel='1'
 pkgdesc='Pascal to C/C++ translator converter'
 arch=('x86_64')
 #url="http://packages.debian.org/sid/p2c"
-url='https://schneider.ncifcrf.gov/p2c/'
+#url='https://schneider.ncifcrf.gov/p2c/'
+url='http://users.fred.net/tds/lab/p2c/'
 license=('GPL')
 depends=('perl')
 if [ "${_opt_32bit}" -ne 0 ]; then
@@ -22,7 +23,8 @@ fi
 #source=("http://www.ccrnp.ncifcrf.gov/~toms/p2c/p2c-${pkgver}.tar.gz")
 #source=('https://alum.mit.edu/www/toms/p2c/p2c-2.01.tar.gz
 _srcdir="${pkgname}-${pkgver}"
-source=("https://schneider.ncifcrf.gov/p2c/${_srcdir}.tar.gz")
+#source=("https://schneider.ncifcrf.gov/p2c/${_srcdir}.tar.gz")
+source=("https://alum.mit.edu/www/toms/p2c/${_srcdir}.tar.gz")
 source+=('0000-make-install.patch')
 #options=('!strip')
 md5sums=('6f08c45f1adcdc35789340834dd9c084'
