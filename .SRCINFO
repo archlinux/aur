@@ -1,18 +1,19 @@
 pkgbase = qt5-xmlpatterns-git
-	pkgdesc = A cross-platform application and UI framework (QtXmlPatterns)
-	pkgver = v5.5.0.3.g69c5390
+	pkgdesc = Qt5 XML patterns module
+	pkgver = 5.12.1.r17.g683728c
 	pkgrel = 1
-	url = https://qt-project.org/
+	url = https://www.qt.io/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = FDL
+	license = GPL
 	license = LGPL
+	license = custom
 	makedepends = git
-	makedepends = python
-	depends = qt5-base-git
+	depends = qt5-declarative
 	provides = qt5-xmlpatterns
 	conflicts = qt5-xmlpatterns
-	source = qt5-xmlpatterns::git://code.qt.io/qt/qtxmlpatterns.git#branch=5.5
+	source = git+https://code.qt.io/qt/qtxmlpatterns.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = qt5-xmlpatterns-git
