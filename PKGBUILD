@@ -8,7 +8,7 @@
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk
-pkgver=2018.3.1
+pkgver=2018.4.0
 _srcver="${pkgver:2}"
 pkgrel=1
 epoch=1
@@ -23,21 +23,23 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-${_srcver}.tar.gz"
         'intel-media-sdk.conf'
         'intel-media-sdk.sh')
-sha256sums=('46f54f22e5a9cf41f1a6ab55346a0513ed02b2e99d41f9d178c6820d378922e3'
+sha256sums=('259d9b57df4fca316898b6dbe7b4d561ce42160fa953f36e2a4b357e86116bf9'
             '63e76d28140486871a3ffc29ce19c84914583bf243201946c76943bf54df374a'
             '315ea6f304cf2b7b6a8aaabb0b8f71fcd480677c7fb9c8cbfa51c7830bb159bc')
 
+prepare() {
+       mkdir -p "MediaSDK-intel-mediasdk-${_srcver}/build"
+}
+
 build() {
-    cd "MediaSDK-intel-mediasdk-${_srcver}"
-    
-    mkdir -p build
-    cd build
+    cd "MediaSDK-intel-mediasdk-${_srcver}/build"
     
     cmake \
         -DBUILD_ALL:BOOL='ON' \
         -DBUILD_DISPATCHER:BOOL='ON' \
         -DBUILD_RUNTIME:BOOL='ON' \
         -DBUILD_SAMPLES:BOOL='ON' \
+        -DBUILD_TESTS:BOOL='ON' \
         -DBUILD_TOOLS:BOOL='ON' \
         -DENABLE_ALL:BOOL='ON' \
         -DENABLE_ITT:BOOL='OFF' \
@@ -50,6 +52,12 @@ build() {
         ..
         
     make
+}
+
+check() {
+    cd "MediaSDK-intel-mediasdk-${_srcver}/build"
+    
+    make test
 }
 
 package() {
@@ -66,6 +74,14 @@ package() {
     cd "$srcdir"
     install -D -m644 intel-media-sdk.conf -t "${pkgdir}/etc/ld.so.conf.d"
     install -D -m755 intel-media-sdk.sh   -t "${pkgdir}/etc/profile.d"
+    
+    # remove unwanted files
+    rm -r "$pkgdir"/opt/intel/mediasdk/include/{gmock,gtest}
+    rm -r "$pkgdir"/opt/intel/mediasdk/lib64/cmake
+    rm -r "$pkgdir"/opt/intel/mediasdk/lib64/libgmock*.a
+    rm -r "$pkgdir"/opt/intel/mediasdk/lib64/libgtest*.a
+    rm -r "$pkgdir"/opt/intel/mediasdk/lib64/pkgconfig/gmock*.pc
+    rm -r "$pkgdir"/opt/intel/mediasdk/lib64/pkgconfig/gtest*.pc
     
     # license
     cd "${srcdir}/MediaSDK-intel-mediasdk-${_srcver}"

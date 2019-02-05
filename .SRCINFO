@@ -1,6 +1,6 @@
 pkgbase = intel-media-sdk
 	pkgdesc = API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics
-	pkgver = 2018.3.1
+	pkgver = 2018.4.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Intel-Media-SDK/MediaSDK/
@@ -17,10 +17,10 @@ pkgbase = intel-media-sdk
 	depends = wayland
 	depends = intel-media-driver
 	provides = libmfx
-	source = intel-media-sdk-2018.3.1.tar.gz::https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-18.3.1.tar.gz
+	source = intel-media-sdk-2018.4.0.tar.gz::https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-18.4.0.tar.gz
 	source = intel-media-sdk.conf
 	source = intel-media-sdk.sh
-	sha256sums = 46f54f22e5a9cf41f1a6ab55346a0513ed02b2e99d41f9d178c6820d378922e3
+	sha256sums = 259d9b57df4fca316898b6dbe7b4d561ce42160fa953f36e2a4b357e86116bf9
 	sha256sums = 63e76d28140486871a3ffc29ce19c84914583bf243201946c76943bf54df374a
 	sha256sums = 315ea6f304cf2b7b6a8aaabb0b8f71fcd480677c7fb9c8cbfa51c7830bb159bc
 
