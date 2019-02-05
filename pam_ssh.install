@@ -12,7 +12,7 @@ _define _CAVEAT_PRE_2_0 <<-'EOF'
 	. The "keyfiles" option has been removed.  You should edit your /etc/pam.d/???
 	and remove it.
 
-	. If ~/.ssh/id(entity|_(r|d|ecd)sa) exist, those will be used.
+	. If ~/.ssh/id_(ed25519|(r|d|ecd)sa) exist, those will be used.
 
 	. The module now also tries to authenticate against keys located in
 	~/.ssh/login-keys.d/ (can be symlinks to the actual keys).
@@ -27,7 +27,7 @@ _define _CAVEAT_PRE_2_0 <<-'EOF'
 	--------------
 
 	pam_ssh will try to decrypt the traditional SSH keys, that is, files
-	matching $HOME/.ssh/id(entity|_(r|d|ecd)sa).  pam_ssh will also try to
+	matching $HOME/.ssh/id_(ed25519|(r|d|ecd)sa).  pam_ssh will also try to
 	decrypt all keys in the directories $HOME/.ssh/login-keys.d and
 	$HOME/.ssh/session-keys.d, and (if your system administrator has
 	configured your system thus) allow you to log in using any of these login

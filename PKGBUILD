@@ -3,34 +3,32 @@
 # Contributor: Troels Kofoed Jacobsen <tkjacobsen at gmail dot com>
 
 pkgname=pam_ssh
-pkgver=2.1
-pkgrel=5
+pkgver=2.3
+pkgrel=1
 pkgdesc='PAM module providing single sign-on behavior for SSH.'
 arch=('i686' 'x86_64')
 url='http://pam-ssh.sourceforge.net/'
 license=('custom')
-depends=('pam' 'openssl-1.0' 'openssh')
+depends=('pam' 'openssl' 'openssh')
 options=('!libtool')
 install="$pkgname.install"
 source=(
-	"https://sourceforge.net/projects/pam-ssh/files/pam_ssh/2.1/pam_ssh-2.1.tar.xz"{,.asc}
+  "https://sourceforge.net/projects/pam-ssh/files/pam_ssh/$pkgver/pam_ssh-$pkgver.tar.xz"{,.asc}
 )
-sha512sums=(
-	'8252b15efffa5687f740963f7a3c3479b73f99eca26a17155f915a10b9a71362a2778449adf10f01c174cc8545961ce3ea64459338a7c995c242b209529fd640'
-	'SKIP'
-)
+sha512sums=('e3ddcf851ffd8f6fb831e2dee7269c1b89283ae2f8f6aa3487bf7b1bc71d26ac9bcbd2a01c5a67a983b980bbb5151e991402940f4752741286d057843c817895'
+            'SKIP')
 validpgpkeys=(
-	'501B088D8485568B87BB62BE180F6A5B3EDE742E'	# Wolfgang Rosenauer
+  '501B088D8485568B87BB62BE180F6A5B3EDE742E'	# Wolfgang Rosenauer
 )
 
 build () {
-	cd "$srcdir/$pkgname-$pkgver"
-	CPPFLAGS+=' -I /usr/include/openssl-1.0' ./configure --prefix=/usr --with-pam-dir=/usr/lib/security --with-ssl-dir=/usr/lib/openssl-1.0
-	make
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure --prefix=/usr --with-pam-dir=/usr/lib/security
+  make
 }
 
 package () {
-	cd "$srcdir/$pkgname-$pkgver"
-	CPPFLAGS+=' -I /usr/include/openssl-1.0' make DESTDIR="$pkgdir" install
-	install -m 644 -D COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
+  install -m 644 -D COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
