@@ -1,5 +1,5 @@
 pkgbase = chromium-extension-ban-checker-for-steam-git
-	pkgdesc = Chrome/Chromium extension for Steam Databse Extension - git/dev
+	pkgdesc = Chrome/Chromium extension for Ban-Checker-for-Steam - git/dev
 	pkgver = r93.1472a44
 	pkgrel = 1
 	url = https://github.com/ge-ku/Ban-Checker-for-Steam
