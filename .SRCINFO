@@ -3,6 +3,7 @@ pkgbase = jupyter_stata_kernel
 	pkgver = 1.10.5
 	pkgrel = 1
 	url = https://kylebarron.github.io/stata_kernel/
+	install = jupyter_stata_kernel.install
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools

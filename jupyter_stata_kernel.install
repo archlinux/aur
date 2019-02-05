@@ -1,0 +1,11 @@
+post_install() {
+	python3 -m stata_kernel.install
+}
+
+post_upgrade() {
+	python -m stata_kernel.install
+}
+
+post_remove() {
+	jupyter kernelspec uninstall stata -f
+}
