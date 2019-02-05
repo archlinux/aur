@@ -1,7 +1,7 @@
 # Maintainer: Betül Ünlü < betulunlu0018 ~at~ gmail ~dot~ com >
 
 pkgname="emojicode"
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=(
     "zlib"
 )
 makedepends=(
-    "llvm6"
-    "llvm6-libs"
+    "llvm6>=6.0.1"
+    "llvm-libs>=7"
     "cmake>=3.5.1"
     "ninja"
     "gcc>=7.2"
