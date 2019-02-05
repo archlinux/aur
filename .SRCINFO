@@ -1,6 +1,6 @@
 pkgbase = gallery-dl
 	pkgdesc = Command-line program to download image galleries and collections from pixiv, exhentai, danbooru and more
-	pkgver = 1.6.3
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/mikf/gallery-dl
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = gallery-dl
 	optdepends = ffmpeg: Convert Pixiv Ugoira to WebM
 	optdepends = zip: Store downloaded files in a ZIP archive
 	optdepends = youtube-dl: Download videos
-	source = https://github.com/mikf/gallery-dl/releases/download/v1.6.3/gallery_dl-1.6.3.tar.gz
-	source = https://github.com/mikf/gallery-dl/releases/download/v1.6.3/gallery_dl-1.6.3.tar.gz.asc
+	source = https://github.com/mikf/gallery-dl/releases/download/v1.7.0/gallery_dl-1.7.0.tar.gz
+	source = https://github.com/mikf/gallery-dl/releases/download/v1.7.0/gallery_dl-1.7.0.tar.gz.asc
 	validpgpkeys = 3E09F5908333DD83DBDCE7375680CA389D365A88
-	sha512sums = d1d974e39b348d66af3766a57cb225e2fdac7e07ef3109069893b2a1e727ef60e83441af187cc1fb04ca4aacbbf86d8b9932fcba82e5a9c6aa0c1ca69fb04af8
+	sha512sums = 66906e7345fd9847fcd7d4a9af16714decd45704d88a507c9ad33312bce1d80338dc45be4ffa67068f0ecc1fd794a47146d3fa033de0a1cada43c458e0cea534
 	sha512sums = SKIP
 
 pkgname = gallery-dl
