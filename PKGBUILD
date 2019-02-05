@@ -4,13 +4,13 @@
 # Contributor: skunk
 
 pkgname=ultrastardx-git
-pkgver=r832.fd788a21
+pkgver=r868.a9bc06bd
 pkgrel=1
 pkgdesc='Free and open source karaoke game. (GIT)'
 arch=('i686' 'x86_64')
 url="http://usdx.eu/"
 license=('GPL')
-depends=('ffmpeg2.8' 'lua' 'portaudio' 'sdl2' 'sdl2_gfx' 'sdl2_mixer' 'sdl2_net'
+depends=('ffmpeg' 'lua' 'portaudio' 'sdl2' 'sdl2_gfx' 'sdl2_mixer' 'sdl2_net'
          'sdl2_ttf' 'sdl2_image' 'ttf-dejavu' 'ttf-freefont' 'wqy-microhei' 'portmidi'
          'pkg-config' 'autoconf' 'automake')
 makedepends=('git' 'fpc' 'gendesk')
@@ -41,7 +41,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/USDX"
-  PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig" ./configure --prefix=/usr --enable-debug
+  ./configure --prefix=/usr --enable-debug
   make LDFLAGS="-O1 --sort-common --as-needed -z relro"
   gendesk -f -n --pkgname ultrastardx --name "UltraStar Deluxe" --exec "ultrastardx.sh" --pkgdesc "Karaoke game" --categories 'Games'
 }
