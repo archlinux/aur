@@ -1,2 +1,5 @@
+/*.tar
+/*.tar.*
+/gomuks-git/
 /pkg/
 /src/

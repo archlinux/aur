@@ -1,31 +1,44 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=gomuks-git
 pkgdesc='A terminal based Matrix client written in Go'
-pkgver=r270.2fc3378
+pkgver=0.r280
 pkgrel=1
 url='https://github.com/tulir/gomuks'
 license=(GPL3)
 arch=(x86_64 i686)
 depends=(glibc)
-makedepends=(go git)
+makedepends=(go-pie git)
 provides=("${pkgname%-git}")
 conflicts=("${provides[@]}")
+source=("${pkgname}::git+${url}")
+sha512sums=(SKIP)
 
-_gopkg='maunium.net/go/gomuks'
+prepare () {
+	cd "${pkgname}"
+
+	# The Go modules index has some replacements to use locally checked
+	# out modules; so remove those to make sure "go build" below will
+	# ensure that the correct version is always fetched.
+	sed -i -e '/^replace\s/d' go.mod
+}
 
 pkgver () {
-	GOPATH="${srcdir}" go get -v -u -d "${_gopkg}"
-	cd "src/${_gopkg}"
-	( set -o pipefail
-	  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	cd "${pkgname}"
+    echo "0.r$(git rev-list --count HEAD)"
 }
 
 build () {
-	GOPATH="${srcdir}" go get -v "${_gopkg}"
+	cd "${pkgname}"
+	local curdir=$(pwd)
+	go build \
+		-gcflags "all=-trimpath=${curdir}" \
+		-asmflags "all=-trimpath=${curdir}" \
+		-ldflags "-extldflags ${LDFLAGS}" \
+		.
 }
 
 package () {
-	install -Dm755 "${srcdir}/bin/gomuks" "${pkgdir}/usr/bin/gomuks"
+	cd "${pkgname}"
+	install -Dm755 gomuks "${pkgdir}/usr/bin/gomuks"
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
