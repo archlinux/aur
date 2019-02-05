@@ -76,7 +76,6 @@ build() {
     --disable-x11 \
     --enable-dispmanx \
     --enable-opengles \
-    --enable-neon \
     --enable-floathard \
     --enable-videocore
 
