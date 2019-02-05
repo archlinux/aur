@@ -3,13 +3,13 @@
 
 pkgname=avs-device-sdk
 pkgver=1.11
-pkgrel=2
+pkgrel=3
 pkgdesc="SDK for commercial device makers to integrate Alexa directly into connected products"
 arch=('any')
 url="https://github.com/alexa/avs-device-sdk"
 license=('Apache')
 makedepends=('cmake')
-depends=('portaudio' 'gstreamer')
+depends=('portaudio' 'gstreamer' 'gst-plugins-base-libs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexa/avs-device-sdk/archive/v${pkgver}.tar.gz")
 sha512sums=('8ddac6a258c8bc054e4eac3a65da1626294112c88da18e50d7359d980c380b392d0c81f5ac1f5faaceca7d19a72b408708a7f4d247246d5f6f24390b5236b1aa')
 
@@ -30,4 +30,6 @@ build() {
 package() {
 	cd "${srcdir}/build"
 	make DESTDIR="${pkgdir}" install
+	install -Dm 555 "${srcdir}/avs-device-sdk-${pkgver}/tools/Install/genConfig.sh" "${pkgdir}/usr/share/avs-device-sdk/genConfig"
+	install -D "${srcdir}/avs-device-sdk-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
