@@ -1,0 +1,5 @@
+/e3
+/src
+/pkg
+*.tar.xz
+*.tar.gz
