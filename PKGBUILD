@@ -1,4 +1,4 @@
-# Maintainer: lockshaw <lockshaw mastkata3 at yahoo dot com>
+# Maintainer: Colin Unger <mastakata3 at yahoo dot com>
 
 pkgname=python-ana-git
 pkgdesc="A python project to provide easy distributed data storage"
