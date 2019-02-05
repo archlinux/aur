@@ -1,0 +1,18 @@
+pkgbase = python-pdal-git
+	pkgdesc = PDAL Python bindings.
+	pkgver = 2.1.8.r0.g37328e3
+	pkgrel = 1
+	url = https://github.com/PDAL/python
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cython
+	makedepends = python-numpy
+	depends = pdal
+	depends = python
+	provides = python-pdal
+	source = git+https://github.com/PDAL/python
+	sha512sums = SKIP
+
+pkgname = python-pdal-git
+
