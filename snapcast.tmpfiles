@@ -1,0 +1,2 @@
+d /var/lib/snapclient 0755 snapclient audio
+d /var/lib/snapserver 0755 snapserver snapserver

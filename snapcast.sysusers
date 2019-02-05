@@ -1,0 +1,3 @@
+u snapclient - "Snapclient daemon user" /var/lib/snapclient
+m snapclient audio
+u snapserver - "Snapserver daemon user" /var/lib/snapserver
