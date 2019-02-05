@@ -1,0 +1,18 @@
+pkgbase = python-z3-solver-angr
+	pkgdesc = A high-performance theorem prover from Microsoft Research, for use with the angr binary analysis platform
+	pkgver = 4.5.1.0.post2
+	pkgrel = 1
+	url = https://github.com/Z3Prover/z3
+	arch = any
+	license = MIT
+	makedepends = make
+	makedepends = gcc-7
+	makedepends = python-setuptools
+	depends = python
+	provides = python-z3
+	conflicts = python-z3
+	source = python-z3-solver-angr::https://files.pythonhosted.org/packages/source/z/z3-solver/z3-solver-4.5.1.0.post2.tar.gz
+	md5sums = SKIP
+
+pkgname = python-z3-solver-angr
+
