@@ -1,8 +1,8 @@
 pkgbase = linux-aarch64-raspberrypi-4.14
-	pkgver = 4.14.95
-	pkgrel = 5
+	pkgver = 4.14.97
+	pkgrel = 1
 	url = http://www.kernel.org/
-	arch = any
+	arch = aarch64
 	license = GPL2
 	makedepends = xmlto
 	makedepends = aarch64-linux-gnu-binutils
@@ -17,21 +17,23 @@ pkgbase = linux-aarch64-raspberrypi-4.14
 	makedepends = git
 	makedepends = dtc
 	options = !strip
-	source = git+https://github.com/raspberrypi/linux.git#branch=rpi-4.14.y
+	source = git+https://github.com/raspberrypi/linux.git#commit=28c5c6ab2a4a8ae0a4dffae2237da2e56cd943c9
 	source = add-nexmon.patch
 	source = config
 	source = config.txt
 	source = cmdline.txt
 	source = dmi.patch
+	source = cpucache.patch
 	source = linux.preset
 	source = scripts.tar.gz::https://cloud.it-kraut.net/s/FDPnGq3ksBifKcA/download
 	source = 99-linux.hook
 	md5sums = SKIP
 	md5sums = 7462ced7cee9e33aa7925ea63771f0ad
-	md5sums = 20855eddee77088cd54d732d5fd18b61
+	md5sums = a5cc658f5b8115cc1bae8a9586899c55
 	md5sums = c724d9c086060a17a2170c7d98dae908
 	md5sums = 6f4a4da9a6dec38507ff6e3a536f834a
 	md5sums = f80e2bf1fda4ff65606afea2939cc4a5
+	md5sums = 7e546c1c09fd7caf443f2d3441ab8ca7
 	md5sums = 5898b5308f7afb2b9b091de62eb321f3
 	md5sums = a9ebd99b39fe2a7a13d1ec353f99d8ad
 	md5sums = 60f0317bfdda4cf9fa06f075cd3617c0

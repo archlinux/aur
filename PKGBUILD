@@ -8,28 +8,30 @@ pkgname=linux-aarch64-raspberrypi-4.14
 _srcname=linux
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=4.14.95
-pkgrel=5
-arch=('any')
+pkgver=4.14.97
+pkgrel=1
+arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'aarch64-linux-gnu-binutils' 'aarch64-linux-gnu-gdb' 'aarch64-linux-gnu-gcc' 'aarch64-linux-gnu-glibc' 'aarch64-linux-gnu-linux-api-headers' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
-source=("git+https://github.com/raspberrypi/linux.git#branch=rpi-4.14.y"
+source=("git+https://github.com/raspberrypi/linux.git#commit=28c5c6ab2a4a8ae0a4dffae2237da2e56cd943c9"
         'add-nexmon.patch'
         'config'
 	'config.txt'
 	'cmdline.txt'
 	'dmi.patch'
+        'cpucache.patch'
         'linux.preset'
 	'scripts.tar.gz::https://cloud.it-kraut.net/s/FDPnGq3ksBifKcA/download'
         '99-linux.hook')
 md5sums=('SKIP'
          '7462ced7cee9e33aa7925ea63771f0ad'
-         '20855eddee77088cd54d732d5fd18b61'
+         'a5cc658f5b8115cc1bae8a9586899c55'
          'c724d9c086060a17a2170c7d98dae908'
          '6f4a4da9a6dec38507ff6e3a536f834a'
          'f80e2bf1fda4ff65606afea2939cc4a5'
+         '7e546c1c09fd7caf443f2d3441ab8ca7'
          '5898b5308f7afb2b9b091de62eb321f3'
          'a9ebd99b39fe2a7a13d1ec353f99d8ad'
          '60f0317bfdda4cf9fa06f075cd3617c0')
@@ -39,6 +41,9 @@ prepare() {
 
   # firmware: dmi: handle missing DMI data gracefully
   patch -Np1 -i ../dmi.patch
+
+  # cpucache dt patch
+  patch -p0 -i ../cpucache.patch
 
   # add upstream patch
   cat "${srcdir}/config" > ./.config
