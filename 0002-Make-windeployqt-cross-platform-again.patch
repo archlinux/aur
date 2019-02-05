@@ -1,0 +1,45 @@
+From 230f11ae808dbb73b7675030b024fe63e0982397 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 3 Feb 2019 17:40:35 +0100
+Subject: [PATCH 2/2] Make windeployqt cross-platform (again)
+
+---
+ src/windeployqt/main.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/windeployqt/main.cpp b/src/windeployqt/main.cpp
+index 955a3077..2ad1a177 100644
+--- a/src/windeployqt/main.cpp
++++ b/src/windeployqt/main.cpp
+@@ -40,7 +40,12 @@
+ #include <QtCore/QOperatingSystemVersion>
+ #include <QtCore/QSharedPointer>
+ #include <QtCore/QVector>
++
++#ifdef Q_OS_WIN
+ #include <QtCore/qt_windows.h>
++#else
++#define IMAGE_FILE_MACHINE_ARM64 0xaa64
++#endif
+ 
+ #include <algorithm>
+ #include <iostream>
+@@ -1100,6 +1105,7 @@ static QStringList compilerRunTimeLibs(Platform platform, bool isDebug, unsigned
+                 result.append(dllFi.absoluteFilePath());
+     }
+         break;
++#ifdef Q_OS_WIN
+     case WindowsDesktop: { // MSVC/Desktop: Add redistributable packages.
+         QString vcRedistDirName = vcRedistDir();
+         if (vcRedistDirName.isEmpty())
+@@ -1138,6 +1144,7 @@ static QStringList compilerRunTimeLibs(Platform platform, bool isDebug, unsigned
+         }
+         result.append(redistFiles);
+     }
++#endif
+     default:
+         break;
+     }
+-- 
+2.20.1
+

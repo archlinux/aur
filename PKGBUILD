@@ -16,8 +16,8 @@
 
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
-pkgver=5.12.0
-pkgrel=2
+pkgver=5.12.1
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
 depends=('mingw-w64-qt5-declarative')
@@ -28,17 +28,22 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Fix-linguist-macro.patch')
-sha256sums=('574ce34b6e5bcd5dce4020a3947730f3c2223eee65d0396a311099223364dac3'
-            'eb660bed7b18fdbfc3922b0c5b2809ed9cb9a9e22c7b6aa89e8699cc20a2f2ec')
+        '0001-Fix-linguist-macro.patch'
+        '0002-Make-windeployqt-cross-platform-again.patch')
+sha256sums=('ab1da4fbd84a9d3873e4ed212a0ae614c6059b8e7dca2f0a599a6f7e61f6cbf3'
+            'af21681c33589ae384c6582091ac9fe2b09abae33af19c8b0d5eb840c38d20ce'
+            'ce38a762867b988de6b9b4ecea21272a19132c855c1a7438c9754ae2a8b0ee5f')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-# can not use static MySQL plugin because mariadb-connector-c comes with its own pthread implementation
-# which has conflicting symbols with the pthread library Qt uses
+
+# can not use static MySQL and PostgreSQL plugin because mariadb-connector-c and posgresql come with their own pthread implementation
+# which has conflicting symbols with the pthread library Qt uses, e.g. one would get the following error message:
+#/usr/lib/gcc/i686-w64-mingw32/8.2.0/../../../../i686-w64-mingw32/bin/ld: /usr/i686-w64-mingw32/lib/libpthread.a(libwinpthread_la-mutex.o): in function `pthread_mutex_lock':                                                                  /build/mingw-w64-winpthreads/src/mingw-w64-v6.0.0/mingw-w64-libraries/winpthreads/src/mutex.c:187: multiple definition of `pthread_mutex_lock'; /usr/i686-w64-mingw32/lib/libpq.a(pthread-win32.o):(.text+0x70): first defined here
+
 [[ $NO_STATIC_LIBS ]] || \
   makedepends+=('mingw-w64-qt5-base-static') \
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=no_smart_library_merge QTPLUGIN.sqldrivers=qsqlite  QTPLUGIN.sqldrivers+=qsqlpsql QTPLUGIN.sqldrivers+=qsqlodbc CONFIG+=static')
+  _configurations+=('CONFIG+=no_smart_library_merge QTPLUGIN.sqldrivers=qsqlite QTPLUGIN.sqldrivers+=qsqlodbc CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
