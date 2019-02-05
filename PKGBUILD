@@ -1,6 +1,6 @@
 # Maintainer: Jan Ole Zabel <joz@spline.de>
 pkgname=ram
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=0
 pkgdesc="Rust AUR Manager – an AUR manager and pacman wrapper written in rust"
 arch=('x86_64')
