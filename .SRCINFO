@@ -1,0 +1,17 @@
+pkgbase = python-itanium_demangler-git
+	pkgdesc = A python project to provide easy distributed data storage
+	pkgver = 1.0.r8.29c7786
+	pkgrel = 1
+	url = https://github.com/whitequark/python-itanium_demangler
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-itanium_demangler
+	conflicts = python-itanium_demangler
+	source = python-itanium_demangler-git::git+https://github.com/whitequark/python-itanium_demangler.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-itanium_demangler-git
+
