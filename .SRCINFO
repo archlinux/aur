@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-qt5-multimedia
 	pkgdesc = Classes for audio, video, radio and camera functionality (mingw-w64)
-	pkgver = 5.12.0
-	pkgrel = 2
+	pkgver = 5.12.1
+	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
 	groups = mingw-w64-qt5
@@ -18,16 +18,14 @@ pkgbase = mingw-w64-qt5-multimedia
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.12/5.12.0/submodules/qtmultimedia-everywhere-src-5.12.0.tar.xz
+	source = https://download.qt.io/official_releases/qt/5.12/5.12.1/submodules/qtmultimedia-everywhere-src-5.12.1.tar.xz
 	source = 0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch
 	source = 0002-Fix-build-with-ANGLE.patch
-	source = 0003-Prevent-redefinition-of-MFVideoNormalizedRect.patch
-	source = 0004-Link-directshow-plugin-against-libamstrmid.patch
-	sha256sums = 5c4b0cb9c08c57ce1aad3aee267c6f6270d254addfb2a6dd363a272e98e926a9
-	sha256sums = 9b850e7935796703c68031d09b7c58300b53ad7003544fe22a73360c3fc5168c
-	sha256sums = ef112eb53b2dc399a247697b42507c36408dcdc2328ecd64376be8785e04ae33
-	sha256sums = f7acda17ae90e2a099ac6388058b3b34f21fd0b1f6aba39dc9757a7ed36e326f
-	sha256sums = c700a540a7f163802a20d6d5bb822845a7d8e5d1067833e2f3938c97cd45ce6f
+	source = 0003-Link-directshow-plugin-against-libamstrmid.patch
+	sha256sums = 9c5ba11225f57d3a8124f109514443e290a9eb94e063a5b1f78e63edfb5f0b18
+	sha256sums = dfeb1cfac258612f5d7ccf56443722931d0a88d46f98d08b9d8631fd7aa42cea
+	sha256sums = a8056811f803dedcf8175029b9f5e5ea47893faa388c6c398d74461580ce29ef
+	sha256sums = 4571f18a7d48ad1454c2d509c8dc111d67cd3c137011d7709fb04a0e7c280db7
 
 pkgname = mingw-w64-qt5-multimedia
 
