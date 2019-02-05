@@ -3,4 +3,5 @@ Type=Application
 Name=Grappling Hook
 Comment=first-person action puzzle/platform game
 Exec=grappling-hook
+Icon=grappling-hook.png
 Categories=Game;ActionGame;
