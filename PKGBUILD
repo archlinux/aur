@@ -9,7 +9,7 @@
 
 _qt_module=qttranslations
 pkgname="mingw-w64-qt5-translations"
-pkgver=5.12.0
+pkgver=5.12.1
 pkgrel=1
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (translations, mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('5b4f186e0b96703041319b5b131393b6aa829ea74e067697ede548d936327508')
+sha256sums=('7443d70d8572321e810c52fbdd096666e61510e07e17437f1910f0b800cca6a7')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
