@@ -8,24 +8,23 @@ _branch=master
 _pkgname=gogs
 _team=github.com/gogs
 pkgname=${_pkgname}-git
-pkgver=0.11.79.1211+1+f43d21d0a
+pkgver=0.11.86.0130+3+d862c43be
 pkgrel=1
-pkgdesc="Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
+pkgdesc="Self Hosted Git Service in the Go Programming Language. This is the current git version from ${_branch} branch."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://${_pkgname}.io"
 license=('MIT')
-depends=('git' 'pam')
+depends=('git')
 optdepends=("sqlite: SQLite support"
             "mariadb: MariaDB support"
             "postgresql: PostgreSQL support"
             "redis: Redis support"
             "memcached: MemCached support"
-            "openssh: GIT over SSH support"
-            "bash: GIT over SSH support")
-makedepends=('git' 'go' 'go-bindata-git' 'nodejs-less' 'sqlite')
+            "openssh: GIT over SSH support")
+makedepends=('git' 'go' 'go-bindata' 'nodejs-less' 'sqlite')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-options=('!buildflags' '!strip' 'emptydirs')
+options=('!buildflags')
 install=${_pkgname}.install
 source=("${_pkgname}::git+https://${_team}/${_pkgname}.git#branch=${_branch}"
         "${_pkgname}.service"
@@ -36,9 +35,7 @@ prepare() {
     mkdir -p "${srcdir}/src/${_team}"
     mv -v "${srcdir}/${_pkgname}" "${srcdir}/src/${_team}/${_pkgname}"
 
-    cd "$srcdir/src/${_team}/${_pkgname}"
-
-    sed -E -i conf/app.ini \
+    sed -E -i $srcdir/src/${_team}/${_pkgname}/conf/app.ini \
         -e '0,             /^\[/ s/^(RUN_USER)\W.*$/\1 = gogs/' \
         -e '/^\[server\]/, /^\[/ s/^(STATIC_ROOT_PATH)\W.*$/\1 = \/usr\/share\/gogs/' \
         -e '/^\[log\]/,    /^\[/ s/^(ROOT_PATH)\W.*$/\1 = \/var\/log\/gogs/' \

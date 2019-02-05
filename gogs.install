@@ -20,6 +20,7 @@ _disable_if_enabled() {
 }
 
 _gogs_home=/var/lib/gogs
+_CustConf=${_gogs_home}/custom/conf/app.ini
 
 pre_install() {
     if getent passwd gogs >/dev/null; then
@@ -36,14 +37,15 @@ pre_install() {
 
 post_install(){
     systemctl daemon-reload
-    echo "  If you do not have a custom configuration file finish the setup:"
-    echo "    1) start gogs service"
-    echo "    2) open the installation page http://$(uname -n):3000/"
-    echo "  Otherwise:"
-    echo "    Place your custom configuration file in ${_gogs_home}/custom/conf/app.ini"
-    echo ""
-    echo "  Default configuration can be located at:"
-    echo "  /usr/share/gogs/conf/app.ini.default"
+    if [ ! -f ${_CustConf} ] ; then
+        echo "  If you do not have a custom configuration file finish the setup:"
+        echo "   start gogs service and open the installation page http://$(uname -n):3000/"
+        echo "  Otherwise:"
+        echo "    Place your custom configuration file at ${_CustConf}"
+        echo ""
+        echo "  Default configuration can be located at:"
+        echo "  /usr/share/gogs/conf/app.ini.default"
+    fi
 }
 
 pre_upgrade() {
@@ -53,8 +55,6 @@ pre_upgrade() {
 
 post_upgrade() {
     systemctl daemon-reload
-
-    local _CustConf=${_gogs_home}/custom/conf/app.ini
 
     if [ ! -f ${_CustConf} ] ; then
         echo "  Gogs old configuration file must be moved to ${_CustConf} before starting or re-enabling service."
@@ -69,12 +69,7 @@ pre_remove() {
 }
 
 post_remove() {
-    if getent passwd gogs >/dev/null; then
-        userdel gogs
-    fi
-    if getent group gogs >/dev/null; then
-        groupdel gogs
-    fi
-    systemctl daemon-reload
-    echo "  You may need to manually remove an old Gogs home: ${_gogs_home}"
+    echo "  "
+    echo "  You may want to remove an Gogs home directory ${_gogs_home}, user and group"
+    echo "  "
 }
