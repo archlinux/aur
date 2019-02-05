@@ -1,6 +1,6 @@
 pkgbase = jack2-git
 	pkgdesc = The next-generation JACK with SMP support
-	pkgver = 1.9.12.r17.g21f67b38
+	pkgver = 1.9.12.r91.g205e0d7b
 	pkgrel = 1
 	epoch = 1
 	url = http://jackaudio.org/

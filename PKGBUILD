@@ -7,7 +7,7 @@ _name=jack2
 pkgbase=jack2-git
 pkgname=('jack2-git' 'jack2-dbus-git')
 pkgdesc="The next-generation JACK with SMP support"
-pkgver=1.9.12.r17.g21f67b38
+pkgver=1.9.12.r91.g205e0d7b
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -35,7 +35,6 @@ build() {
   # configure jack2
   python waf configure --prefix=/usr \
                         --htmldir="/usr/share/doc/${pkgbase}/" \
-                        --freebob=no \
                         --classic \
                         --dbus
 
@@ -43,7 +42,6 @@ build() {
   cd "${srcdir}/${pkgname[1]}"
   python waf configure --prefix=/usr \
                         --htmldir="/usr/share/doc/${pkgbase}/" \
-                        --freebob=no \
                         --dbus
 
   # build jack2
