@@ -2,13 +2,13 @@
 
 pkgname=papilio-designlab
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="It is an IDE specially designed to get you up and running quickly with Soft Processors on the Papilio FPGA boards"
 arch=('x86_64' 'i686')
 url="http://forum.gadgetfactory.net/index.php?/files/file/236-papilio-designlab-ide/"
 license=('custom')
 groups=()
-options=(!strip staticlibs !upx)
+options=(!strip staticlibs)
 PKGEXT='.pkg.tar'
 depends=('java-runtime')
 source_i686=("DesignLab-${pkgver}-linux32.tgz::http://www.gadgetfactory.net/download/DesignLab/DesignLab-${pkgver}-linux32.tgz")
