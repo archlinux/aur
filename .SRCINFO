@@ -1,0 +1,22 @@
+pkgbase = jupyter_stata_kernel
+	pkgdesc = A Jupyter kernel for Stata. Works with Windows, macOS, and Linux. Preserves program state.
+	pkgver = 1.10.5
+	pkgrel = 1
+	url = https://kylebarron.github.io/stata_kernel/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = jupyter
+	depends = python-pandas
+	depends = python-beautifulsoup4
+	depends = python-packaging
+	depends = python-pillow
+	depends = python-pexpect
+	depends = python-pygments
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/67/86/5979c2b683851f9e6a0a672ceaee3171fe7e18e152554deb0d62101c9879/stata_kernel-1.10.5.tar.gz
+	sha256sums = a57d8520c4aa9c5dfc625033bdfe3530a155a60e2e54c7c39065cb971c1b7c98
+
+pkgname = jupyter_stata_kernel
+
