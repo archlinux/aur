@@ -1,0 +1,17 @@
+pkgbase = python-archinfo-git
+	pkgdesc = Architecture-information specific details for the angr project
+	pkgver = 8.18.10.25.r308.d3eb03b
+	pkgrel = 1
+	url = https://github.com/angr/archinfo
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-archinfo
+	conflicts = python-archinfo
+	source = python-archinfo-git::git+https://github.com/angr/archinfo.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-archinfo-git
+
