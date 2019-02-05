@@ -10,13 +10,13 @@
 #   - deJaVu and GhostScript font directories are the default ones
 #   - Windows font directory is set according to a Wiki example
 
-_commit='db129ba64befba4f285862199c537957604e662b'
+_commit='95e835fabf22fe154d8551d7686bfa19d5437e49'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
 _srcname=ImageMagick
-pkgver=7.0.8.24
+pkgver=7.0.8.26
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
@@ -148,7 +148,7 @@ package_libmagick-full() {
     )
     backup=(etc/"$_etcdir"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
     options=('!emptydirs' 'libtool')
-    provides=('libmagick'
+    provides=("libmagick=${pkgver}"
               "libMagickCore-${pkgver%%.*}.Q${_qdepth}HDRI.so"
               "libMagickWand-${pkgver%%.*}.Q${_qdepth}HDRI.so"
                 "libMagick++-${pkgver%%.*}.Q${_qdepth}HDRI.so")
@@ -180,7 +180,7 @@ package_imagemagick-full() {
         # AUR:
             'imagemagick-full-doc: manual and API docs'
     )
-    provides=('imagemagick')
+    provides=("imagemagick=${pkgver}")
     conflicts=('imagemagick')
     options=('!emptydirs')
     
@@ -198,7 +198,7 @@ package_imagemagick-full-doc() {
     pkgdesc+=' (manual and API docs)'
     arch=('any')
     depends=()
-    provides=('imagemagick-doc')
+    provides=("imagemagick-doc=${pkgver}")
     conflicts=('imagemagick-doc')
     
     cd "$_srcname"
