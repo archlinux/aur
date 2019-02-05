@@ -1,14 +1,14 @@
 pkgbase = signa-browser-ext
 	pkgdesc = Native helper for web login using Lithuanian identity cards (for SoDra, VMI, &c)
-	pkgver = 1.0.r8378.20180911
+	pkgver = 1.0.r8598.20190123
 	pkgrel = 1
 	url = https://www.mitsoft.lt/kontaktai/
 	arch = any
 	license = custom
 	depends = pcsclite>=1.5
 	depends = jre8-openjdk
-	source = https://www.mitsoft.lt/sites/mitsoft/files/SignaBrowserExt_r8378_2018-09-11_Linux.zip
-	sha256sums = 07fc37b4b39aaa7b441b03cff83a2433000af00ce4c9717dc55367a19af525a4
+	source = https://www.mitsoft.lt/sites/mitsoft/files/SignaBrowserExt_r8598_2019-01-23_Linux.zip
+	sha256sums = e2f53dab0b2ef7efcf47f67aa0658f76da872aba8500304a1e47fdb12ac9e1c5
 
 pkgname = signa-browser-ext
 
