@@ -1,0 +1,24 @@
+pkgbase = python-cle-git
+	pkgdesc = A binary loader in python
+	pkgver = 8.19.2.4.r734.050ffe4
+	pkgrel = 1
+	url = https://github.com/angr/cle
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyelftools
+	depends = python-cffi
+	depends = python-idalink
+	depends = python-archinfo-git
+	depends = python-pyvex-git
+	depends = python-pefile
+	depends = python-sortedcontainers
+	provides = python-cle
+	conflicts = python-cle
+	source = python-cle-git::git+https://github.com/angr/cle.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-cle-git
+
