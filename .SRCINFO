@@ -1,0 +1,16 @@
+pkgbase = python-ana-git
+	pkgdesc = A python project to provide easy distributed data storage
+	pkgver = 0.05.r54.48657dc
+	pkgrel = 1
+	url = https://github.com/zardus/ana
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	provides = python-ana
+	conflicts = python-ana
+	source = python-ana-git::git+https://github.com/zardus/ana.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-ana-git
+
