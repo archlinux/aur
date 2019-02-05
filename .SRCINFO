@@ -1,0 +1,17 @@
+pkgbase = python-ailment-git
+	pkgdesc = The angr intermediate language
+	pkgver = 8.19.2.4.r85.bea5c50
+	pkgrel = 1
+	url = https://github.com/angr/ailment
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-ailment
+	conflicts = python-ailment
+	source = python-ailment-git::git+https://github.com/angr/ailment.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-ailment-git
+
