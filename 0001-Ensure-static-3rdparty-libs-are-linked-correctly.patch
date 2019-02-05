@@ -1,4 +1,4 @@
-From 5b603c0f29a881800c7e1144b1439b9666814413 Mon Sep 17 00:00:00 2001
+From 1caa80ef688a4e1c4274ccc825b537fef0564af3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 22 Dec 2016 22:30:59 +0100
 Subject: [PATCH] Ensure static 3rdparty libs are linked correctly
@@ -23,5 +23,5 @@ index dec1149b..ad57a5c5 100644
      plugin.json \
      qmldir
 -- 
-2.19.2
+2.20.1
 
