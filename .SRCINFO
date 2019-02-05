@@ -1,0 +1,18 @@
+pkgbase = python-idalink-git
+	pkgdesc = Remote use of the IDA (the Interactive DisAssembler) Python API
+	pkgver = 0.12.r82.cf68144
+	pkgrel = 1
+	url = https://github.com/zardus/idalink
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-rpyc
+	provides = python-idalink
+	conflicts = python-idalink
+	source = python-idalink-git::git+https://github.com/zardus/idalink.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-idalink-git
+
