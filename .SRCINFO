@@ -1,0 +1,13 @@
+pkgbase = git-commands
+	pkgdesc = Fuzzy search git commands with fzf
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hankchanocd/git-commands
+	arch = any
+	license = MIT
+	depends = fzf
+	source = git-commands-1.0.0.tar.gz::https://github.com/hankchanocd/git-commands/archive/v1.0.0.tar.gz
+	md5sums = be06d8734fd3ec158b015766c69f5ecf
+
+pkgname = git-commands
+
