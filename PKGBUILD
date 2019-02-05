@@ -4,7 +4,7 @@
 pkgbase=mp-5
 pkgname=(mp-5-gtk mp-5-nc mp-5-qt5)
 pkgver=5.30
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.triptico.com/software/mp.html"
 license=('GPL')
@@ -74,7 +74,7 @@ package_mp-5-nc() {
 
 package_mp-5-qt5() {
   pkgdesc="Text editor for programmers (QT5 front-end)"
-  depends=('qt5')
+  depends=('qt5-base')
   _pkgname='mp-5'
   provides=($_pkgname)
   conflicts=($_pkgname)

@@ -1,6 +1,6 @@
 pkgbase = mp-5
 	pkgver = 5.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.triptico.com/software/mp.html
 	arch = x86_64
 	license = GPL
@@ -27,7 +27,7 @@ pkgname = mp-5-nc
 
 pkgname = mp-5-qt5
 	pkgdesc = Text editor for programmers (QT5 front-end)
-	depends = qt5
+	depends = qt5-base
 	provides = 
 	conflicts = 
 
