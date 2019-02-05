@@ -1,0 +1,16 @@
+pkgbase = cxltx-styles
+	pkgdesc = A (hopefully) sensible collection of basic XeLaTeX style sheets.
+	pkgver = 1.4.7
+	pkgrel = 1
+	url = https://github.com/loveencounterflow/cxltx-styles
+	install = cxltx-styles.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = texlive-core
+	provides = cxltx-styles
+	source = https://github.com/loveencounterflow/cxltx-styles/archive/v1.4.7.tar.gz
+	md5sums = 3eef6349554666cda7ec47e2cd1391a7
+
+pkgname = cxltx-styles
+
