@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-qt5-3d
 	pkgdesc = C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)
-	pkgver = 5.12.0
-	pkgrel = 2
+	pkgver = 5.12.1
+	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = mingw-w64-qt5-3d
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.12/5.12.0/submodules/qt3d-everywhere-src-5.12.0.tar.xz
-	sha256sums = a12adc9c14ffa18ff5c4951efb41914d4840a0c2a88486eb8d39a4833e4631da
+	source = https://download.qt.io/official_releases/qt/5.12/5.12.1/submodules/qt3d-everywhere-src-5.12.1.tar.xz
+	sha256sums = ce51ed3fe403672db2c874cbaa60f3a139ec817abd1270dc5e4255d35fd64bf1
 
 pkgname = mingw-w64-qt5-3d
 
