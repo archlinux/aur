@@ -1,7 +1,7 @@
 pkgbase = museekd-git
 	pkgdesc = A replacement for Museek (daemon component).
 	pkgver = r757.7992c04
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.museek-plus.org/
 	arch = x86_64
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = museekd-git
 	makedepends = libxml++2.6
 	depends = libevent
 	depends = libxml2
+	depends = libxml++2.6
 	optdepends = libogg
 	optdepends = libvorbis
 	source = museekd-git::git+https://github.com/eLvErDe/museek-plus
