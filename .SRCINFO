@@ -1,7 +1,7 @@
 pkgbase = freefem++
 	pkgdesc = A PDE oriented language using the finite element method
 	pkgver = 3.62
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freefem.org/index.html
 	arch = x86_64
 	license = LGPL

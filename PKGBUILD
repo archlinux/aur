@@ -2,7 +2,7 @@
 
 pkgname=freefem++
 pkgver=3.62
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDE oriented language using the finite element method'
 arch=('x86_64')
 url="https://freefem.org/index.html"
@@ -15,13 +15,14 @@ options=('!makeflags')
 
 prepare() {
   cd FreeFem-sources-${pkgver}
+  find ./download -name headers-sparsesolver.inc -exec sed -i 's+#\(FFMPIINCLUDE\s*=\).*+\1 -I/usr/include/+' {} \;
   perl download/getall -a
   autoreconf -i
-  ./configure CXXFLAGS=" --std=c++11" \
-	      --prefix=/usr \
+  ./configure --prefix=/usr \
 	      --sysconfdir=/etc \
 	      --enable-download \
-	      --disable-mumps
+	      --enable-mumps \
+	      --with-mpi=openmpi
   
   find . -name Makefile -exec sed -i 's+^gcc+gcc =+' {} \;
   find . -name Makefile -exec sed -i 's+^dir+dir =+' {} \;
