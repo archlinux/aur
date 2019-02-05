@@ -1,6 +1,6 @@
 pkgbase = sd
 	pkgdesc = Intuitive find & replace
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/chmln/sd
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = sd
 	makedepends = cargo
 	makedepends = git
 	conflicts = sd-git
-	source = 0.4.2.tar.gz::https://github.com/chmln/sd/archive/0.4.2.tar.gz
-	sha256sums = aaa4df1105b73fac5dd35610c1466f349ed4b4f50d453b11b2e435fee7e96df8
+	source = 0.4.3.tar.gz::https://github.com/chmln/sd/archive/0.4.3.tar.gz
+	sha256sums = d3d463c36597158cc5a8ac327c1710a73825ae1a960ead707915d98de4dc8732
 
 pkgname = sd
 
