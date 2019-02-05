@@ -5,18 +5,38 @@ After=network.target
 [Service]
 User=litecoin
 Group=litecoin
+ConfigurationDirectory=litecoin
+RuntimeDirectory=litecoin
+StateDirectory=litecoin
+StateDirectoryMode=0700
 
 Type=forking
-PIDFile=/var/lib/litecoind/litecoind.pid
-ExecStart=/usr/bin/litecoind -daemon -pid=/var/lib/litecoind/litecoind.pid \
--conf=/etc/litecoin/litecoin.conf -datadir=/var/lib/litecoind -disablewallet
+PIDFile=litecoin/litecoind.pid
+ExecStart=/usr/bin/litecoind -daemon \
+	-conf=${CONFIGURATION_DIRECTORY}/litecoin.conf \
+	-pid=${RUNTIME_DIRECTORY}/litecoind.pid \
+	-datadir=${STATE_DIRECTORY}
+Restart=on-failure
 
-Restart=always
+# Hardening measures
+####################
+
+# Provide a private /tmp and /var/tmp.
 PrivateTmp=true
-TimeoutStopSec=60s
-TimeoutStartSec=2s
-StartLimitInterval=120s
-StartLimitBurst=5
+
+# Mount /usr, /boot/ and /etc read-only for the process.
+ProtectSystem=full
+
+# Disallow the process and all of its children to gain
+# new privileges through execve().
+NoNewPrivileges=true
+
+# Use a new /dev namespace only populated with API pseudo devices
+# such as /dev/null, /dev/zero and /dev/random.
+PrivateDevices=true
+
+# Deny the creation of writable and executable memory mappings.
+MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target

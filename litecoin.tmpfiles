@@ -1,2 +1,0 @@
-d /var/lib/litecoin 0770 litecoin litecoin - -
-d /etc/litecoin     0770 litecoin litecoin - -

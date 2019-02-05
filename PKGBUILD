@@ -3,9 +3,9 @@
 
 pkgbase=litecoin-git
 pkgname=('litecoin-daemon-git' 'litecoin-cli-git' 'litecoin-qt-git' 'litecoin-tx-git')
-pkgver=0.16.0+0+g514e0681d
+pkgver=0.16.3+6+g82cacfef8
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.litecoin.org/"
 makedepends=('git' 'boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq')
 license=('MIT')
@@ -14,24 +14,27 @@ source=(
   'litecoin-qt.desktop'
   'litecoind.service'
   'litecoin.sysusers'
-  'litecoin.tmpfiles'
 )
 sha256sums=('SKIP'
             'ec2a2669a50fa96147a1d04cacf1cbc3d63238aee97e3b0df3c6f753080dae96'
-            'ca335c82437df8b4587384ae39b35249df314bae39d5ed54d16050e98ce1e8fc'
-            'a722b958a7e9b3468d902efa6c9804e01d78fdf88ead4252c934aee2b1d800db'
-            '9e4506935cbabaa01a74768cfc89435305ec720ab0e4cc36b5608817f40e95eb')
+            '98f5a1b28fe13b9093fa89cfe56bb84af09ff5f0d6e9ca196ec02d6dd826ca88'
+            'a722b958a7e9b3468d902efa6c9804e01d78fdf88ead4252c934aee2b1d800db')
 
 pkgver() {
-    cd "$pkgbase"
-    git describe --long --tags | sed 's/-/+/g; s/^v//'
+  cd "$pkgbase"
+  git describe --long --tags | sed 's/-/+/g; s/^v//'
 }
 
 build() {
   cd "$pkgbase"
   ./autogen.sh
-  ./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb
+  ./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --disable-gui-tests
   make
+}
+
+check() {
+  cd "$pkgbase"
+  make check
 }
 
 package_litecoin-qt-git() {
@@ -68,8 +71,6 @@ package_litecoin-daemon-git() {
     "$pkgdir/usr/lib/systemd/system/litecoind.service"
   install -Dm644 "$srcdir/litecoin.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/litecoin.conf"
-  install -Dm644 "$srcdir/litecoin.tmpfiles" \
-    "$pkgdir/usr/lib/tmpfiles.d/litecoin.conf"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 

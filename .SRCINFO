@@ -1,8 +1,7 @@
 pkgbase = litecoin-git
-	pkgver = 0.16.0+0+g514e0681d
+	pkgver = 0.16.3+6+g82cacfef8
 	pkgrel = 1
 	url = http://www.litecoin.org/
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -18,12 +17,10 @@ pkgbase = litecoin-git
 	source = litecoin-qt.desktop
 	source = litecoind.service
 	source = litecoin.sysusers
-	source = litecoin.tmpfiles
 	sha256sums = SKIP
 	sha256sums = ec2a2669a50fa96147a1d04cacf1cbc3d63238aee97e3b0df3c6f753080dae96
-	sha256sums = ca335c82437df8b4587384ae39b35249df314bae39d5ed54d16050e98ce1e8fc
+	sha256sums = 98f5a1b28fe13b9093fa89cfe56bb84af09ff5f0d6e9ca196ec02d6dd826ca88
 	sha256sums = a722b958a7e9b3468d902efa6c9804e01d78fdf88ead4252c934aee2b1d800db
-	sha256sums = 9e4506935cbabaa01a74768cfc89435305ec720ab0e4cc36b5608817f40e95eb
 
 pkgname = litecoin-daemon-git
 	pkgdesc = Litecoin is a peer-to-peer network based digital currency - daemon
