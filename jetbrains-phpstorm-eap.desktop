@@ -8,4 +8,4 @@ Comment=Lightweight and Smart PHP IDE
 Categories=Development;IDE;
 Terminal=false
 StartupNotify=true
-StartupWMClass=jetbrains-phpstorm
+StartupWMClass=jetbrains-phpstorm-eap
