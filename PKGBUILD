@@ -3,7 +3,7 @@
 pkgname=p4est-deal-ii
 _realname=p4est
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The parallel forest (p4est) library, built to work with deal.II (i.e., the deal-ii package)"
 arch=("i686" "x86_64")
 url="http://www.p4est.org/"
@@ -12,8 +12,8 @@ license=('GPL2' 'MIT')
 options=('libtool')
 # There is no way to disable building with lua if it is detected, so, for the
 # sake of reproducibility, require it.
-depends=('openmpi' 'zlib' 'lua')
-makedepends=()
+depends=('openmpi' 'zlib' 'lua' 'gcc-fortran')
+makedepends=('gcc-fortran')
 source=(https://p4est.github.io/release/p4est-2.0.tar.gz)
 
 sha1sums=('f8148c503969a65230c90844f7a33bbda0f2e1c1')
