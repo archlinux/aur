@@ -1,4 +1,4 @@
-if [[ ($DEVTYPE=="disk" || $DEVTYPE=="partition") && $DEVNAME ]]; then
+if [[ ($DEVTYPE == "disk" || $DEVTYPE == "partition") && $DEVNAME ]]; then
 	test -d /dev/disk || mkdir -p /dev/disk
 	export $(blkid --info -p -o udev /dev/$DEVNAME | grep UUID)
 	[ $ID_FS_UUID ] && {
