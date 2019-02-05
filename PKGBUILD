@@ -2,7 +2,7 @@
 # Ex-Maintainer: Max Falk <gmdfalk at gmail dot com>
 
 pkgname=rocketchat-server
-pkgver=0.74.1
+pkgver=0.74.2
 pkgrel=1
 pkgdesc="An open source web chat platform"
 arch=("any")
@@ -19,7 +19,7 @@ source=("rocketchat-${pkgver}::https://releases.rocket.chat/latest/download"
     "rocketchat-server.conf"
     "rocketchat-user.conf"
 "rocketchat.service")
-sha512sums=('95724da4da3de38d3d337000cf16e2129cc630b21d399effd386eb13af7bdfa26ce72559e1b92599a9899e49b2cbb84e0e783f0ef2da8c8e2cfface93fd58d6a'
+sha512sums=('a4adca1f7be97ac36e889e81c8fe8012e40e3570a72307e42afb996ea3a6e5975ff97e70a2664e69b7173dcce1d27ea3453d90d5dfe4ab002e31e6c2cd9c50f2'
     '6700fae043f59881c0c8821db176a8d9cbbf7f047bd48750dbcd7abd7c531831436f910a28745b40d4d2fcbb7d2081b5512a5ee23ea6355bb065fde3b0672edc'
     '4ff8899a47612a81f73c1c6449fb30a7ddfb0b199756db7f73e0a3078cf818b88e481fd828296b148a348d137ae529ce591d6c2bd6b57ae9278188e715086b59'
     '0086f72f16a594116586d4b6783b104f7bba779e4f8e31e5988c7fa67e1c7d9fc95215d0a04c4f24c72b4183774a9768a29b05c828990125dd4a3379a69aa648'
@@ -28,11 +28,11 @@ sha512sums=('95724da4da3de38d3d337000cf16e2129cc630b21d399effd386eb13af7bdfa26ce
 package() {
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
     cp -dr --no-preserve=ownership ${srcdir}/bundle/* "${pkgdir}/usr/share/${pkgname}"
-    
+
     pushd "${pkgdir}/usr/share/${pkgname}/programs/server"
     npm install --cache "${srcdir}/npm-cache"
     popd
-    
+
     install -Dm644 ${pkgname}.conf "${pkgdir}/etc/rocketchat/${pkgname}.conf"
     install -Dm644 rocketchat.service "${pkgdir}/usr/lib/systemd/system/rocketchat.service"
     install -Dm644 rocketchat-user.conf "${pkgdir}/usr/lib/sysusers.d/rocketchat.conf"
