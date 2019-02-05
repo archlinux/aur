@@ -1,7 +1,7 @@
 pkgbase = tootle
 	pkgdesc = GTK3 client for Mastodon
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bleakgrey/tootle
 	arch = x86_64
 	license = GPL3
@@ -21,6 +21,7 @@ pkgbase = tootle
 	depends = libsoup
 	depends = granite
 	depends = json-glib
+	optdepends = noto-fonts-emoji: color emoji
 	options = !libtool
 	source = https://github.com/bleakgrey/tootle/archive/0.2.0.tar.gz
 	sha256sums = e83c4a0539bf7b4b9d2b81d036ee0e8a69564b11c70f77ded5091955a89d2737
