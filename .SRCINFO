@@ -1,4 +1,4 @@
-pkgbase = payara-micro
+pkgbase = payara5-micro
 	pkgdesc = A Java EE application server, derived from GlassFish Open Source Edition. (Micro Edition)
 	pkgver = 5.184
 	pkgrel = 2
@@ -7,8 +7,8 @@ pkgbase = payara-micro
 	license = CDDL
 	license = GPL2
 	depends = java-environment>=8
-	provides = payara-micro
-	conflicts = payara-micro
+	provides = payara5-micro
+	conflicts = payara5-micro
 	conflicts = payara51
 	options = !strip
 	source = payara-5.184-micro.zip::https://search.maven.org/remotecontent?filepath=fish/payara/extras/payara-micro/5.184/payara-micro-5.184.jar
@@ -18,5 +18,5 @@ pkgbase = payara-micro
 	sha512sums = 652f2f2b379c184287b8b4103970d08f1635c3265db2ce1baa0e6b8df472552a512689cdff7f0ce1283f3c313400e5589133b77538035dba96f7573e39a70def
 	sha512sums = 0a29479dd5dd11ba69383554d64fad35d438678e63274e107da2ab959c78be8809e4f8ca837f88a880dc69f09de330c253f00c4acbd6e70e5dac7b72826fe0bf
 
-pkgname = payara-micro
+pkgname = payara5-micro
 

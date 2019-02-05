@@ -3,9 +3,9 @@ Description = Payara Server 5.1 Micro Edition
 After = syslog.target network.target
 
 [Service]
-ExecStart = /usr/bin/java -jar /opt/payara5/glassfish/lib/client/appserver-cli.jar start-domain
-ExecStop = /usr/bin/java -jar /opt/payara5/glassfish/lib/client/appserver-cli.jar stop-domain
-ExecReload = /usr/bin/java -jar /opt/payara5/glassfish/lib/client/appserver-cli.jar restart-domain
+ExecStart = /usr/bin/java -jar /opt/payara5-micro/glassfish/lib/client/appserver-cli.jar start-domain
+ExecStop = /usr/bin/java -jar /opt/payara5-micro/glassfish/lib/client/appserver-cli.jar stop-domain
+ExecReload = /usr/bin/java -jar /opt/payara5-micro/glassfish/lib/client/appserver-cli.jar restart-domain
 Type = forking
 
 [Install]

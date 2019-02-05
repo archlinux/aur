@@ -3,9 +3,9 @@
 pkgver=5.184
 _pkgmajver=$(echo $pkgver | cut -f1 -d.)
 pkgrel=2
-_pkgvar=micro
+_prodvar=micro
 _prodname=payara
-pkgname=${_prodname}${pkgmajver}-${_pkgvar}
+pkgname=${_prodname}${_pkgmajver}-${_prodvar}
 pkgdesc="A Java EE application server, derived from GlassFish Open Source Edition. (Micro Edition)"
 url="http://www.payara.fish/"
 license=("CDDL" "GPL2")
@@ -14,7 +14,7 @@ conflicts=("$pkgname" "payara51")
 depends=("java-environment>=8")
 arch=("any")
 options=(!strip)
-source=("payara-${pkgver}-micro.zip::https://search.maven.org/remotecontent?filepath=fish/${_prodname}/extras/${pkgname}/$pkgver/$pkgname-$pkgver.jar"
+source=("payara-${pkgver}-micro.zip::https://search.maven.org/remotecontent?filepath=fish/${_prodname}/extras/${_prodname}-${_prodvar}/$pkgver/${_prodname}-${_prodvar}-${pkgver}.jar"
         "payara5-micro.service")
 
 sha256sums=('891a4d5d06e6dcaed8a34be9cc2e8538869dacaca6c1890f19ebbd491be2e011'
