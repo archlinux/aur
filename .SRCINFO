@@ -1,7 +1,7 @@
 pkgbase = riot-web-develop-bin
 	pkgdesc = A glossy Matrix collaboration client for the web (develop branch).
 	pkgver = b4715
-	pkgrel = 1
+	pkgrel = 2
 	url = https://riot.im
 	arch = any
 	license = Apache

@@ -1,11 +1,11 @@
 # Maintainer: Jack O'Sullivan <jackos1998 at gmail dot com>
 
-_pkgbase=riot-web
+_pkgbase=riot
 _pkgver=4715
 _src=riot-8630d0319dcc-react-94f6f65fac95-js-6f17e3e659a0
 pkgname=riot-web-develop-bin
 pkgver=b4715
-pkgrel=1
+pkgrel=2
 pkgdesc="A glossy Matrix collaboration client for the web (develop branch)."
 arch=('any')
 url="https://riot.im"
