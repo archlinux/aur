@@ -1,7 +1,7 @@
 pkgbase = leao
 	pkgdesc = O Carnê-leão é o programa para a tributação do Imposto sobre a Renda das Pessoas Físicas, sob a forma do recolhimento mensal obrigatório, pelo contribuinte, pessoa física, residente no Brasil, que receber rendimentos de outra pessoa física ou do exterior.
 	pkgver = 2019.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.receita.fazenda.gov.br
 	install = leao.install
 	arch = any

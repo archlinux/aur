@@ -3,7 +3,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=leao
 pkgver=2019.1.0
-pkgrel=3
+pkgrel=4
 license=('custom')
  
 arch=(any)
@@ -55,6 +55,7 @@ package() {
         install -Dm755 "$srcdir"/leao "$pkgdir"/usr/bin/
         install -Dm644 offline.png "$pkgdir"/usr/share/leao/
         install -Dm644 online.png "$pkgdir"/usr/share/leao/
+        install -Dm644 pgd-updater.jar "$pkgdir"/usr/share/leao/
        
        
         install -Dm644 "$srcdir"/leao.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/
