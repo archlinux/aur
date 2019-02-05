@@ -1,6 +1,6 @@
 # Maintainer: gilbus <aur(AT)tinkershell.eu>
 pkgname=swayidle
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 license=("MIT")
 pkgdesc="Idle management daemon for Wayland"
@@ -12,7 +12,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/swaywm/swayidle/archive/${pkgver}.tar.gz"
 	"https://github.com/swaywm/swayidle/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.sig"
 )
-sha256sums=('f7b108404892029c736a0b37b43e9c94feede355aea3e4932dd5e36d56fab246'
+sha256sums=('d65533d6f1fd9b105fa3e2c26d593e12fbfb5b24f48af446707d605cd817c758'
             'SKIP')
 validpgpkeys=("9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A") # Drew DeVault
 
