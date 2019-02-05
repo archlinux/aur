@@ -5,11 +5,12 @@ pkgrel=1
 pkgdesc="Yet Another Dotfiles Manager"
 arch=('any')
 url="https://github.com/TheLocehiliosan/yadm"
-license=('GPL')
+license=('GPL3')
 groups=()
 depends=()
 makedepends=('git')
-optdepends=()
+optdepends=('gpg: encrypt/decrypt sensitive files'
+            'python-envtpl-git: use templates with variables')
 provides=('yadm')
 conflicts=('yadm')
 backup=()
@@ -33,4 +34,6 @@ package() {
   cd $srcdir/$pkgname
   install -D -m 755 yadm $pkgdir/usr/bin/yadm
   install -D -m 644 yadm.1 $pkgdir/usr/share/man/man1/yadm.1
+	install -D -m 644 completion/yadm.bash_completion "${pkgdir}/usr/share/bash-completion/completions/yadm"
+	install -D -m 644 completion/yadm.zsh_completion "${pkgdir}/usr/share/zsh/site-functions/_yadm"
 }
