@@ -30,6 +30,7 @@ pkgbase = python-angr-git
 	depends = python-gitpython
 	depends = python-pycparser
 	depends = python-itanium_demangler-git
+	depends = python-psutil
 	provides = python-angr
 	conflicts = python-angr
 	source = python-angr-git::git+https://github.com/angr/angr.git#branch=master
