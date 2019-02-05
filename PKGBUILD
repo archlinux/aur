@@ -1,7 +1,7 @@
 # Maintainer: Michael Seiwald <michael@mseiwald.at>
 pkgname=nfs4-acl-tools
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="commandline ACL utilities for the Linux NFSv4 client"
 arch=('i686' 'x86_64')
 url="http://www.citi.umich.edu/projects/nfsv4/linux/nfs4-acl-tools/"
@@ -23,6 +23,15 @@ md5sums=('ece4d5599c3b8470990ee1adbe22e047')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  sed -i 's/attr_xattr_h/sys_xattr_h/' configure
+  for f in configure libnfs4acl/nfs4_acl_for_path.c libnfs4acl/nfs4_set_acl.c nfs4_setfacl/nfs4_setfacl.c; do
+    sed -i 's/attr\/xattr.h/sys\/xattr.h/' $f
+  done
+
+  sed '35 a #include <attr/attributes.h>' libnfs4acl/nfs4_set_acl.c
+  sed '37 a #include <attr/attributes.h>' libnfs4acl/nfs4_acl_for_path.c
+
 
   ./configure --prefix=/usr
   make

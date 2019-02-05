@@ -1,7 +1,7 @@
 pkgbase = nfs4-acl-tools
 	pkgdesc = commandline ACL utilities for the Linux NFSv4 client
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.citi.umich.edu/projects/nfsv4/linux/nfs4-acl-tools/
 	arch = i686
 	arch = x86_64
