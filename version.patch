@@ -16,10 +16,10 @@
 -        echo "ERROR"
 -        return 1
 +    if [[ "$1" == "pi-hole" ]]; then
-+        echo "4.1"
++        echo "4.2.1"
      else
 -        echo "Untagged"
-+        echo "4.1"
++        echo "4.2.1"
      fi
      return 0
  }
