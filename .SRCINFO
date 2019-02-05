@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-qt5-activeqt
 	pkgdesc = ActiveX integration framework (mingw-w64)
-	pkgver = 5.12.0
-	pkgrel = 2
+	pkgver = 5.12.1
+	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
 	groups = mingw-w64-qt5
@@ -19,12 +19,12 @@ pkgbase = mingw-w64-qt5-activeqt
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.12/5.12.0/submodules/qtactiveqt-everywhere-src-5.12.0.tar.xz
+	source = https://download.qt.io/official_releases/qt/5.12/5.12.1/submodules/qtactiveqt-everywhere-src-5.12.1.tar.xz
 	source = 0001-Don-t-require-windows.h-when-using-native-Linux-gcc.patch
 	source = 0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch
-	sha256sums = a22876b4243cb433042e7f4812974eac05935872f39cc880a3587bc3eae86d3e
-	sha256sums = 2c6278acc994f57afd4cd93bd183b73bf744e504d7ee007d73e8fe1568d760f5
-	sha256sums = a14b931d373cce075318702ec513d829750f3ab2db73d6ed5433db4bd1f577ae
+	sha256sums = a56fbd9aa018b9b91a1de6018db6538f4bc4309bfbdd86c52d437e7297983c45
+	sha256sums = 1b07005fbcccf531475b131f84b6a13bff3f7281e3eb35457e93d2fe7ba7c345
+	sha256sums = ea3a9fbb5bcc3d73832489342fde116347c981bd8668685aa69f88d6a2ceed0a
 
 pkgname = mingw-w64-qt5-activeqt
 

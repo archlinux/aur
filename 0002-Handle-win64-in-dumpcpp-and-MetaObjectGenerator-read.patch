@@ -1,4 +1,4 @@
-From 92e5888ab26ec60efeb1fe28ce3edbba35fec960 Mon Sep 17 00:00:00 2001
+From 6ab1661e2f6781ae219ba65f7981667ad4ed4043 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 17:21:08 +0200
 Subject: [PATCH 2/2] Handle win64 in dumpcpp and
@@ -52,5 +52,5 @@ index 4601aef..65eee94 100644
      }
  
 -- 
-2.19.2
+2.20.1
 
