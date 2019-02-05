@@ -15,7 +15,7 @@ pkgbase = chrome-gnome-shell-git
 	conflicts = gs-chrome-connector
 	conflicts = chrome-gnome-shell
 	replaces = gs-chrome-connector
-	source = git+https://git.gnome.org/browse/chrome-gnome-shell
+	source = git+https://gitlab.gnome.org/GNOME/chrome-gnome-shell
 	md5sums = SKIP
 
 pkgname = chrome-gnome-shell-git

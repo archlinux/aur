@@ -14,7 +14,7 @@ makedepends=('git' 'cmake' 'jq')
 provides=("$_name")
 replaces=('gs-chrome-connector') # Old name
 conflicts=('gs-chrome-connector' "$_name")
-source=("git+https://git.gnome.org/browse/chrome-gnome-shell")
+source=("git+https://gitlab.gnome.org/GNOME/$_name")
 md5sums=('SKIP')
 
 pkgver() {
