@@ -3,8 +3,8 @@
 # Contributor: Cayde Dixon <me@cazzar.net>
 # Contributor: Anthony Anderson <aantony4122@gmail.com>
 
-pkgname=discord-canary
-pkgver=0.0.69
+pkgname='discord-canary'
+pkgver=0.0.71
 pkgrel=1
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
@@ -12,21 +12,14 @@ url='https://discordapp.com/'
 provides=('discord')
 license=('custom')
 depends=('gtk3' 'gconf' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'libc++' 'xdg-utils' 'libcups')
-optdepends=(
-  'libpulse: For pulseaudio support'
-  'noto-fonts-emoji: Google font for emoji support.'
-  'ttf-symbola: Font for emoji support.'
-  'noto-fonts-cjk: Font for special characters such as /shrug face.'
-)
-
-source=(LICENSE
-"https://dl-canary.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('26b3229c74488c64d94798e48bc49fcd'
-         '257e5887737bc6b2e6b607028af2b8fa')
-
-
-
-#This is always latest build, right now I do not know of a version param.
+optdepends=('libpulse: For pulseaudio support'
+            'noto-fonts-emoji: Google font for emoji support.'
+            'ttf-symbola: Font for emoji support.'
+            'noto-fonts-cjk: Font for special characters such as /shrug face.')
+source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        'LICENSE')
+sha512sums=('498bc32e6ab182ef1ac38d2ff1cde59eaba026bfa01d058cfef812993e092c56f0c84aef015344a46baed1dc11445604ba0025c0f4475df6d60afdba3605cdca'
+            '5febdc5fb94739953618e88523780d79225af06b52ebfbfaa85c1ef90861c4f19dd0180f4eb1c0ff20b12e12a79366cab2cd2cd438568caefb9879545c525933')
 
 package() {
   # Install the main files.
@@ -35,7 +28,6 @@ package() {
 
   # Exec bit
   chmod 755 "${pkgdir}/opt/${pkgname}/DiscordCanary"
-
 
   # Desktop Entry
   install -d "${pkgdir}/usr/share/applications"
