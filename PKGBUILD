@@ -1,5 +1,4 @@
 # Maintainer: Trent Palmer trenttdually at gmail
-# deoplete-jedi seems broken with this, but still works fine with https://aur.archlinux.org/packages/deoplete/
 
 ###########################################################################################################
 #                                          Build Options
@@ -14,7 +13,7 @@ _neovim="n"
 
 _name='deoplete'
 pkgname="${_name}-git"
-pkgver=r1607.d228567
+pkgver=r1613.fee9301
 pkgrel=1
 pkgdesc="deoplete completion plugin for neovim"
 # i.e. seems to build and work fine on raspberrypi
