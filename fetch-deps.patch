@@ -1,0 +1,28 @@
+--- scripts/fetch-develop.deps.sh	2019-02-05 20:35:16.903635811 +0000
++++ scripts/fetch-develop.deps.sh.patched	2019-02-05 20:35:12.493542910 +0000
+@@ -55,8 +55,13 @@
+ 
+     echo "$repo set to branch "`git -C "$repo" rev-parse --abbrev-ref HEAD`
+ 
+-    mkdir -p node_modules
+-    npm link "./$repo"  # This does an npm install for us
++    cd "$repo"
++    npm install
++    cd ..
++
++    npm install
++    rm -rf node_modules/"$repo"
++    ln -s "../$repo" node_modules/"$repo"
+ }
+ 
+ ##############################
+@@ -82,7 +87,8 @@
+ #
+ # (note this matches the instructions in the README.)
+ cd matrix-react-sdk
+-npm link ../matrix-js-sdk
++rm -rf node_modules/matrix-js-sdk
++ln -s ../../matrix-js-sdk node_modules/matrix-js-sdk
+ cd ../
+ 
+ echo -en 'travis_fold:end:matrix-react-sdk\r'

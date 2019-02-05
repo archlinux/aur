@@ -1,0 +1,19 @@
+pkgbase = riot-web-develop-git
+	pkgdesc = A glossy Matrix collaboration client for the web (develop branch).
+	pkgver = r6845.8630d031
+	pkgrel = 1
+	url = https://riot.im
+	arch = any
+	license = Apache
+	makedepends = npm
+	makedepends = git
+	provides = vector-web
+	conflicts = riot-web
+	replaces = vector-web
+	source = git+https://github.com/vector-im/riot-web#branch=develop
+	source = fetch-deps.patch
+	sha256sums = SKIP
+	sha256sums = d6428c19067f447a051bedf49a28686c5e60ab3bbb3534065889584e28f61cf5
+
+pkgname = riot-web-develop-git
+
