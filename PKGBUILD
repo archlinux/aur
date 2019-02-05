@@ -9,8 +9,8 @@
 
 _qt_module=qtwinextras
 pkgname="mingw-w64-qt5-winextras"
-pkgver=5.12.0
-pkgrel=2
+pkgver=5.12.1
+pkgrel=1
 arch=('any')
 pkgdesc="Classes and functions that enable you to use Windows-specific functions (mingw-w64)"
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
@@ -20,10 +20,8 @@ groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Revert-Directly-link-to-functions-available-from-Win.patch')
-sha256sums=('c64f5acde4d73d4bf45fab377cf3db7f4cf7044fb8854bb24aabbbbc0109dad0'
-            'f5196035c1e2030e4d6fa1163f487c4edf78df8d168564a05704f8c02d9c5f4e')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('8d312155a7da329df41cc2ea5d265eb632be7dd9cbd789fa3bc0206b4022f557')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -32,15 +30,6 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
-
-prepare() {
-  cd "${srcdir}/${_pkgfqn}"
-
-  # apply patches; further descriptions can be found in patch files itself
-  for patch in "$srcdir/"*.patch; do
-    patch -p1 -i "$patch"
-  done
-}
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
