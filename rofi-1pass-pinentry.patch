@@ -1,0 +1,13 @@
+diff --git a/rofi-1pass b/rofi-1pass
+index b70ed1e..828a164 100755
+--- a/rofi-1pass
++++ b/rofi-1pass
+@@ -3,7 +3,7 @@ set -e
+ set -o pipefail
+ 
+ 
+-: "${PINENTRY_PROGRAM:=pinentry-x11}"
++: "${PINENTRY_PROGRAM:=pinentry-gtk-2}"
+ 
+ login() {
+   if command -v $PINENTRY_PROGRAM; then
