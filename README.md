@@ -1,9 +1,11 @@
-Fix Bluetooth Audio A2DP Sinks
+Workaround fixing no A2DP when BT headphone reconnects automatically (after being paired)
 ===
 
-Fix Bluetooth A2DP using systemd and udev rule
+On my ArchLinux KDE plasma setup, BT headphone will use A2DP only when connected by pairing; after disconnect and reconnect, only HSP/HFP is available
 
-> a rewrite from https://gist.github.com/EHfive/c4f1218a75f95b076f0387403246de78, avoid blocking other BT dev connecting
+this workaround deploys a [`udev-rules`](https://wiki.archlinux.org/index.php/udev) to detect changes of BT dev and [`systemctl start fix-bt-a2dp`](https://wiki.archlinux.org/index.php/systemd) to call `fix-bt-a2dp.rb` in background with correct user
+
+> basically a rewrite from https://gist.github.com/EHfive/c4f1218a75f95b076f0387403246de78, mainly because I want to avoid slowing down connecting of other BT devs
 
 ## Usage
 

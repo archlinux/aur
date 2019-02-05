@@ -2,7 +2,7 @@
 pkgname=fix-bt-a2dp
 pkgver=0.1
 pkgrel=1
-pkgdesc="Fix Bluetooth A2DP using systemd and udev rule"
+pkgdesc="Workaround fixing no A2DP when BT headphone reconnects automatically (after being paired)"
 arch=('any')
 url="https://github.com/pastleo/fix-bt-a2dp"
 license=('MIT')
