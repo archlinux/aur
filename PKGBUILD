@@ -3,7 +3,7 @@
 #   Thomas Haider <t.haider@deprecate.de>
 
 pkgname=postsrsd-git
-pkgver=85.90718d7
+pkgver=127.39f68b5
 pkgrel=1
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
 provides=(postsrsd)
@@ -44,5 +44,5 @@ package() {
 	  -e 's/^\(# is \).*$/\1localhost\.localdomain/'< postsrsd.default > postsrsd.conf
   install -D -m644 "postsrsd.conf" "$pkgdir/etc/postsrsd/postsrsd.conf"
   mkdir -p "$pkgdir/usr/lib/systemd/system"
-  mv "$pkgdir/etc/systemd/system/postsrsd.service" "$pkgdir/usr/lib/systemd/system/"
+  install -D -m644 "postsrsd.systemd" "$pkgdir/usr/lib/systemd/system/"
 }
