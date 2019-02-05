@@ -3,6 +3,7 @@ post_install() {
     echo "Add your keys to /opt/theharvester-git/api-keys.yaml"
     echo "	googleCSE: API key and CSE ID"
     echo "	hunter: API key"
-    echo "	securitytrails: API key"
+    echo "	intelx: API key"
+	echo "	securitytrails: API key"
     echo "	shodan: API key"
 }
