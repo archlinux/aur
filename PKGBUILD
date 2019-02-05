@@ -8,8 +8,8 @@
 
 _qt_module=qtspeech
 pkgname="mingw-w64-qt5-speech"
-pkgver=5.12.0
-pkgrel=2
+pkgver=5.12.1
+pkgrel=1
 arch=('any')
 pkgdesc="Qt module to make text to speech and speech recognition easy (mingw-w64)"
 depends=('mingw-w64-qt5-multimedia')
@@ -24,7 +24,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('1939a2ece528b115e4682dba7fa7138c132c62bb88db7d1f3552c543a1e2a4fb')
+sha256sums=('147524ba6f97c76784beb315ee939614b7a3b4eb1a6417cc0beea662cf0d9121')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
