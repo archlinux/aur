@@ -1,0 +1,40 @@
+find_package(PkgConfig)
+pkg_check_modules(SDK REQUIRED AlexaClientSDK)
+pkg_check_modules(PortAudio REQUIRED portaudio-2.0)
+link_directories(${SDK_LIBRARY_DIRS})
+add_executable(SampleApp
+	main.cpp
+	PortAudioMicrophoneWrapper.cpp
+	InteractionManager.cpp
+	UserInputManager.cpp
+	ConsolePrinter.cpp
+    	ConsoleReader.cpp
+	GuiRenderer.cpp
+	UIManager.cpp
+	KeywordObserver.cpp
+	ConnectionObserver.cpp
+	SampleApplication.cpp
+    	SampleEqualizerModeController.cpp)
+target_link_libraries(SampleApp
+	${SDK_LIBRARIES}
+	${PortAudio_LIBRARIES}
+	rt
+	m
+	pthread
+	asound
+    	EqualizerImplementations
+	MediaPlayer)
+target_include_directories(SampleApp
+	PUBLIC "${SampleApp_SOURCE_DIR}/include"
+	PUBLIC ${SDK_INCLUDE_DIRS}
+	PUBLIC ${PortAudio_INCLUDE_DIRS}
+	PUBLIC "${MediaPlayer_SOURCE_DIR}/include")
+
+if (GSTREAMER_MEDIA_PLAYER)
+    target_include_directories(SampleApp PUBLIC "${MediaPlayer_SOURCE_DIR}/include")
+    target_link_libraries(SampleApp MediaPlayer)
+endif()
+if (PORTAUDIO)
+    list(APPEND SampleApp_SOURCES PortAudioMicrophoneWrapper.cpp)
+endif()
+
