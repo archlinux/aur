@@ -1,7 +1,7 @@
 pkgbase = precached
 	pkgdesc = A Linux process monitor and pre-caching daemon
 	pkgver = 1.5.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://x3n0m0rph59.gitlab.io/precached/
 	install = precached.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = precached
 	makedepends = systemd
 	depends = dbus
 	depends = zeromq
-	source = git+https://gitlab.com/X3n0m0rph59/precached/tree/v1.5
+	source = git+https://gitlab.com/X3n0m0rph59/precached/tree/39c4b11f
 	md5sums = SKIP
 
 pkgname = precached
