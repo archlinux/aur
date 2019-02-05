@@ -1,0 +1,27 @@
+pkgbase = petsc-git
+	pkgdesc = Portable, extensible toolkit for scientific computation
+	pkgver = 20190205
+	pkgrel = 1
+	url = https://www.mcs.anl.gov/petsc/
+	install = petsc.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gcc
+	makedepends = gcc-fortran
+	makedepends = cmake
+	depends = python2
+	depends = openmpi
+	depends = boost
+	depends = lapack
+	depends = fftw
+	depends = hdf5
+	provides = petsc
+	conflicts = petsc
+	source = petsc::git+https://bitbucket.org/petsc/petsc#branch=maint
+	source = patch.diff
+	sha256sums = SKIP
+	sha256sums = fdf016437dd94f33316e734e35858476aeea1ca0f3ab4d0ee36029b016498de7
+
+pkgname = petsc-git
+
