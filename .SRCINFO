@@ -1,0 +1,14 @@
+pkgbase = python-fpdf
+	pkgdesc = Simple PDF generation for Python
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://github.com/reingart/pyfpdf
+	arch = any
+	license = GPL3
+	makedepends = pandoc
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/f/fpdf/fpdf-1.7.2.tar.gz
+	sha256sums = 125840783289e7d12552b1e86ab692c37322e7a65b96a99e0ea86cca041b6779
+
+pkgname = python-fpdf
+
