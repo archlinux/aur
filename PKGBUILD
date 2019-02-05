@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/huanghongxun/HMCL"
 license=('GPL3')
 depends=('java-openjfx>=8')
-makedepends=("git" "jdk-openjdk")
+makedepends=("git" "jdk8-openjdk")
 provides=('hmcl')
 conflicts=('hmcl')
 source=("git://github.com/huanghongxun/$_pkgname.git"
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-    _java=$(ls /usr/lib/jvm | grep openjdk | sort -t - -k 2 -n | tail -n 1)
+    _java=$(ls /usr/lib/jvm | grep 8-openjdk)
     export JAVA_HOME=/usr/lib/jvm/$_java
     cd $srcdir/$_pkgname
     sh gradlew build
