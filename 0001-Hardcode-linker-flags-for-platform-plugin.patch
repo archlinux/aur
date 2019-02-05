@@ -1,4 +1,4 @@
-From 5b16d26c0064099d26cfdf51cfd220948b396e5b Mon Sep 17 00:00:00 2001
+From ccdbd65df73988818b651fb665b640fcc69cbf9e Mon Sep 17 00:00:00 2001
 From: Marius Kittler <mkittler@suse.de>
 Date: Wed, 12 Dec 2018 18:16:54 +0100
 Subject: [PATCH] Hardcode linker flags for platform plugin
@@ -42,5 +42,5 @@ index 7f7227c..45f8f66 100644
  qtHaveModule(quick) {
      QT += quick
 -- 
-2.20.0
+2.20.1
 
