@@ -1,0 +1,21 @@
+pkgbase = stow-git
+	pkgdesc = Manage installation of multiple softwares in the same directory tree, git version
+	pkgver = 20180211
+	pkgrel = 1
+	url = http://www.gnu.org/software/stow/
+	arch = x86_64
+	license = GPL2
+	checkdepends = perl-test-output
+	checkdepends = perl-io-stringy
+	checkdepends = texlive-core
+	makedepends = git
+	makedepends = texi2html
+	makedepends = texinfo
+	depends = perl
+	provides = stow
+	conflicts = stow
+	source = git://git.savannah.gnu.org/stow.git
+	md5sums = SKIP
+
+pkgname = stow-git
+
