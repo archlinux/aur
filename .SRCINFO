@@ -16,7 +16,7 @@ pkgbase = python-angr-git
 	depends = python-cooldict
 	depends = python-dpkt
 	depends = python2-futures
-	depends = python-mulpyplexer
+	depends = python-mulpyplexer-git
 	depends = python-networkx
 	depends = python-progressbar
 	depends = python-rpyc
@@ -29,7 +29,7 @@ pkgbase = python-angr-git
 	depends = python-ailment-git
 	depends = python-gitpython
 	depends = python-pycparser
-	depends = python-itanium_demangler
+	depends = python-itanium_demangler-git
 	provides = python-angr
 	conflicts = python-angr
 	source = python-angr-git::git+https://github.com/angr/angr.git#branch=master
