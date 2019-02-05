@@ -9,8 +9,8 @@
 #                                                                             #
 # API changes between different Kodi versions make it necessary to specify    #
 # the version of Kodi you want to build this package for. You can choose      #
-# between Isengard (15), Jarvis (16), Krypton (17) and git master (99). Do so #
-# in the following line.                                                      #
+# between Krypton (17), Leia (18) and git master (99). Do so in the following #
+# line.                                                                       #
 #                                                                             #
 ###############################################################################
 
@@ -23,24 +23,18 @@ pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/pvr.hts"
 license=('GPL')
-makedepends=('cmake' 'git' 'kodi-platform-git')
-depends=('kodi')
+makedepends=('cmake' 'git' 'kodi-platform-git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
 provides=('kodi-addon-pvr-hts')
 conflicts=('kodi-addon-pvr-hts' 'kodi-pvr-addons')
 source=("${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git")
 md5sums=('SKIP')
 
 case "$API" in
-  15)  depends+=('libplatform-legacy')
-       source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Isengard" ;;
-  16)  depends+=('libplatform-legacy')
-       source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Jarvis" ;;
-  17)  depends+=('p8-platform')
-       makedepends+=('kodi-dev')
-       source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Krypton" ;;
-  99)  depends+=('p8-platform')
-       makedepends+=('kodi-dev') ;;
-  *)   error "Unknown API version. Follow instructions in PKGBUILD." && false
+  17)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Krypton" ;;
+  18)  ;; #source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Leia" ;;
+  99)  ;;
+  *)   echo "Unknown API version. Follow instructions in PKGBUILD." && false
 esac
 
 pkgver() {
