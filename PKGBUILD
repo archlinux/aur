@@ -1,4 +1,4 @@
-# Maintainer: lockshaw <lockshaw mastkata3 at yahoo dot com>
+# Maintainer: Colin Unger <mastakata3 at yahoo dot com>
 
 pkgname=python-cooldict-git
 pkgdesc="Some useful dict-like structures"
@@ -7,7 +7,7 @@ pkgver=1.04.r58.e85d9db
 pkgrel=1
 arch=('any')
 depends=('python' 'python-ana-git')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 license=('BSD')

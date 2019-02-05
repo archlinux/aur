@@ -6,6 +6,7 @@ pkgbase = python-cooldict-git
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-ana-git
 	provides = python-cooldict
