@@ -1,4 +1,4 @@
-From 1ce3e84fdf0b56f477d30acdc8797dedd7330e37 Mon Sep 17 00:00:00 2001
+From c0e9080c8b76a81fb0f5d2cbd920a24b7f17d11e Mon Sep 17 00:00:00 2001
 From: Serge Hallyn <serge.hallyn@canonical.com>
 Date: Fri, 31 May 2013 19:12:12 +0100
 Subject: [PATCH] add sysctl to disallow unprivileged CLONE_NEWUSER by default
@@ -13,10 +13,10 @@ Signed-off-by: Daniel Micay <danielmicay@gmail.com>
  3 files changed, 30 insertions(+)
 
 diff --git a/kernel/fork.c b/kernel/fork.c
-index f0b58479534f..8b2d927125c5 100644
+index e2a5156bc9c3..74d59b69d494 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
-@@ -103,6 +103,11 @@
+@@ -104,6 +104,11 @@
  
  #define CREATE_TRACE_POINTS
  #include <trace/events/task.h>
@@ -28,7 +28,7 @@ index f0b58479534f..8b2d927125c5 100644
  
  /*
   * Minimum number of threads to boot the kernel
-@@ -1649,6 +1654,10 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -1698,6 +1703,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -39,7 +39,7 @@ index f0b58479534f..8b2d927125c5 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -2467,6 +2476,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -2522,6 +2531,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -53,10 +53,10 @@ index f0b58479534f..8b2d927125c5 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index cc02050fd0c4..ce2ad2b92897 100644
+index 5fc724e4e454..bea075b4bb48 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
-@@ -105,6 +105,9 @@ extern int core_uses_pid;
+@@ -106,6 +106,9 @@ extern int core_uses_pid;
  extern char core_pattern[];
  extern unsigned int core_pipe_limit;
  #endif
@@ -66,7 +66,7 @@ index cc02050fd0c4..ce2ad2b92897 100644
  extern int pid_max;
  extern int pid_max_min, pid_max_max;
  extern int percpu_pagelist_fraction;
-@@ -514,6 +517,15 @@ static struct ctl_table kern_table[] = {
+@@ -515,6 +518,15 @@ static struct ctl_table kern_table[] = {
  		.proc_handler	= proc_dointvec,
  	},
  #endif
@@ -97,5 +97,5 @@ index 923414a246e9..6b9dbc257e34 100644
  static DEFINE_MUTEX(userns_state_mutex);
  
 -- 
-2.19.1
+2.20.1
 

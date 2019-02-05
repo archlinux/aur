@@ -1,5 +1,5 @@
 pkgbase = linux-libre
-	pkgver = 4.19.8_gnu
+	pkgver = 4.20_gnu
 	pkgrel = 1
 	url = https://linux-libre.fsfla.org/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = linux-libre
 	options = !strip
 	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/4.19-gnu/linux-libre-4.19-gnu.tar.xz
 	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/4.19-gnu/linux-libre-4.19-gnu.tar.xz.sign
-	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/4.19.8-gnu/patch-4.19-gnu-4.19.8-gnu.xz
-	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/4.19.8-gnu/patch-4.19-gnu-4.19.8-gnu.xz.sign
+	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/4.20-gnu/patch-4.19-gnu-4.20-gnu.xz
+	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/4.20-gnu/patch-4.19-gnu-4.20-gnu.xz.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -33,8 +33,8 @@ pkgbase = linux-libre
 	source = kernel.its
 	source = kernel.keyblock
 	source = kernel_data_key.vbprivk
-	source = https://repo.parabola.nu/other/rcn-libre/patches/4.19.8/rcn-libre-4.19.8-armv7-x11.patch
-	source = https://repo.parabola.nu/other/rcn-libre/patches/4.19.8/rcn-libre-4.19.8-armv7-x11.patch.sig
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.20/rcn-libre-4.20-armv7-x0.patch
+	source = https://repo.parabola.nu/other/rcn-libre/patches/4.20/rcn-libre-4.20-armv7-x0.patch.sig
 	source = 0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
 	source = 0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
 	source = 0003-SMILE-Plug-device-tree-file.patch
@@ -43,7 +43,6 @@ pkgbase = linux-libre
 	source = 0006-set-default-cubietruck-led-triggers.patch
 	source = 0007-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch
 	source = 0008-ARM-dove-enable-ethernet-on-D3Plug.patch
-	source = 0009-usb-dwc2-disable-power_down-on-rockchip-devices.patch
 	source = 0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch
 	source = 0002-fix-Atmel-maXTouch-touchscreen-support.patch
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
@@ -51,7 +50,7 @@ pkgbase = linux-libre
 	validpgpkeys = 6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78
 	sha512sums = 5bc800b3beff43a8c15bd5515f4e0babe2beb5fa600491b7b37110e22d9b739d293f1e38753ed681be289c51390e0e64b3e60ce0db0a3bfe1f94ee5c014579a3
 	sha512sums = SKIP
-	sha512sums = d4de40e6fc7523e9314b89b29cd91af5d9cbbd57bece239e990c5f738ade9ceb53e7cedac30ecbf45009abfb0088a874b6570897dffd52c90e4f39743edd9b0f
+	sha512sums = f250b2fefdc540b5f5727b98a4d3988f3bd57a7d9821f626867c703db627409bb9aeadc932d1ff3d7928c220f3cbb4b5beaf77876c17b47d4e851a14df194be7
 	sha512sums = SKIP
 	sha512sums = 13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3
 	sha512sums = SKIP
@@ -59,29 +58,28 @@ pkgbase = linux-libre
 	sha512sums = SKIP
 	sha512sums = 7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78
 	sha512sums = SKIP
-	sha512sums = c8551c0c8a54b36893a551e1d9a1cbfa1c65e95f4ff34ec705108120db71c01a329f81a0a79b8e6dc75f9dcb606d640402cd8972dfa7538e0dda8e05017e750a
-	sha512sums = 4688945b99d1c47766d485641c3a367d3485d0361b32d21d48dcd00d28a61ffd84a3120b7ff5f02aabb783dc74a919f6aabcc02dfb4a2eabc570facc2711aa0c
-	sha512sums = c602f1edae254d73c45bdbfc46d0d6a52bfb56de0bf0f1e70c0f459c466db7a3cc8deaa15432c6ce40adee2c54d2edd36f04d9220cd2a74fcbded92144efd4c3
+	sha512sums = 482328dd3e74f67f218be82f0596de29f7f721f2ac7ad17432f87ac45563f6d42f132252cc1e60dd596fedd5fa8c29c9fa034f26300802f246da548cfea62d3a
+	sha512sums = f1d80d21ef23c3588343cfd684f5a6b06cb6ebd2dccd61c6b8d639830e492f2a98ba3038c5fe63ac1c8222eb7d27ac2c7381b912d25ce62a6e86394bdc91d94c
+	sha512sums = c8c7456cf7004fa59a7066153496f804d04f62e2e6f8af8ee9c24a42505d6b0e278b4e023e49ab1748a6043bb9fd1ca977cee88a37a5746d5d575f7ffdd04c8d
 	sha512sums = 7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a
 	sha512sums = 2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7
 	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
 	sha512sums = 167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b
 	sha512sums = bb6718984a7357c9b00c37e4788480e5b8b75018c172ecc1441bc3fc5d2d42444eb5d8c7f9d2e3a7d6fed6d03acb565e3c0559486e494c40a7fe6bd0570c9ede
 	sha512sums = 143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232
-	sha512sums = 8e0485049f64c0532e933e864266b043a087b3c91e2eb564cc692ccd5c25f36f902fed4fae1c4b4b896cfab99b8e239e55965c914674dd360dd6ae847c94768a
+	sha512sums = 67fc2b0117ee1bbce2b244475d8f8b394f6f17820b350d6f569c02f430b8ff200e65ccdd21a815a181ffb6d8675e528b852b49b5c8687131e051a09e7de024dd
 	sha512sums = SKIP
-	sha512sums = 60aa432465eb3ac10f565799d3dfecea21aaf08e83909c1161d9359e932626edbd1353e712d616c3d785c65a0f699e9c45df35bd9e86365c25399c6b2d45b9e4
-	sha512sums = 86809feb5ae2759b449ec0cb7a6b3fb457874ed82a72dfda00607e8819c804a0714b5d6a17cbbba44996a36872224af42d1b85f1b3932f43bccb419041d25dc7
-	sha512sums = 746acff348d62b3ed4e62cd9976ddf0af47f87bd3cffda90cbb00a6b57d589ccb681fcd9541ee5bdd179d95dad71d57c77cb1a60faee1c6cef518e4055c3456f
-	sha512sums = c945e871fa456b521ced77cae9081bcdc47d836ecdabe6766e373681fe11fda3e5a7a3c16f70c586be64a1eb5c9136c43b0a44df897298940fd8703b50b0a543
-	sha512sums = 054e98a2d1ea83cece1fe55ae087b282f25593022f252c74612d4aeb2a547f84ea626e3d982098ca798271af55f3b733ac2aea2fc0d9cad031802d2901dfe4ca
-	sha512sums = 4433f9e780a72347313916c8a9cbcbce3a8c40e1b299e887dc748d257879fb5fab8f1683936339f73a4d4b4ef668b1ed6cc0d9a19ed4bd99039a1613ac08610e
-	sha512sums = d1361d23ae79599e3fa94cba206bd40764f9eee0c584e639af13828dabb7f0dfa361792c098b5afae0bb350407b2dc47a1d67580daeade7a4f3e3e55e42c8470
-	sha512sums = c1653f91067d31801a23450175e47968add147477caf20aec6092831739641312f4ad995af43c7e55545007279016b5f62a0720d31e4591b4421a65b8bd5b398
-	sha512sums = a123747792417d3760ca40d7f913c2cdd194da2ea5778352eedebc80097b7b8dce4428a8fe8bd75cab92972f599c25bcf18a740856fc2990351234b0d7ebf9f5
+	sha512sums = 49d0826dea0fde49774e400c921de32d7545aca5fb88b44d939e71bff9afd5c0342dae7213e70b0e162d66960e01b0213d5a6cb9b0f894ef3be5e641fbf7bc63
+	sha512sums = d266690eb495ccd24c4586d8aed30a5eef0acfa5b9af04958802a4fffca5f2e25a050b0bfe8ee5e677b996ab764a2a4a3bfc8eb3c8646f7925b67a005d3f5ab1
+	sha512sums = 4253d7a069ebf30238f845f2e1d98198e71edd39f0ef7be56d2833a38378994d74839b1f7e892fadac3c7fb1d155a381b2de16971fb4fbb8afe00ee0611790d8
+	sha512sums = 52fb6f86deb28295660e34c101fa6b75b370a94b700b1269874e87530324b9b81f69d27eedb2b2c5c591728034804ebcfa95a274e5b465ad6928fe448dfdd367
+	sha512sums = 9d2ca08856b1d2b486f757ccfd209f432513f3720e062814851d175070a6adc5e1c8af85d93e128bda1962b1601e4bb3bffec38f3445078f4abaa00d1d9ac887
+	sha512sums = e09472fa210f404d622f8db68611f2bc229b639d78cc8206741e7f169f387c15f4c166cbe7f716458eee474200e5574904ec2c268c1370b7fb1d4d7abb7722e0
+	sha512sums = 16eea6348982f277afbab251fb5b62ad78e71ba5a4404c1f601c187127cca46f920fefdde7e27156ab4ec51d0cf9a1a7b64ce7c9d380f7f6747547d5e42ac3f4
+	sha512sums = bed721b576bc0c8fb4d39bc52b757f554cc8695ae547fdafe2cf3a20fdb49f9822886eac55f4bb00ce6071f275b5f445d2281d1aed80ca73ad1655ef0c2637cc
 	sha512sums = 02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af
 	sha512sums = b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168
-	sha512sums = ba561ef861c56002de25ec6f63211e758f3d26eaa7ff0e4a16ffd096d5fe7019d9df343658adc0535684303888d022aa816fc0b282da27ac1ca29dfc0b0e2be0
+	sha512sums = 9d24dff68a11aee6b5f1b6b003b27603a8c431e76c3cb638e852cd8c0ccd2a298b1116bbad0dc816e9de7d987dcf329a5d250673067ec125760eee543f65eed5
 	makedepends_armv7h = uboot-tools
 	makedepends_armv7h = vboot-utils
 	makedepends_armv7h = dtc
@@ -94,21 +92,21 @@ pkgname = linux-libre
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=4.19.8
-	provides = LINUX-ABI_VERSION=4.19.8
+	provides = linux=4.20
+	provides = LINUX-ABI_VERSION=4.20
 	conflicts = linux
 	replaces = linux
 	backup = etc/mkinitcpio.d/linux-libre.preset
 
 pkgname = linux-libre-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre kernel
-	provides = linux-headers=4.19.8
+	provides = linux-headers=4.20
 	conflicts = linux-headers
 	replaces = linux-headers
 
 pkgname = linux-libre-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre kernel
-	provides = linux-docs=4.19.8
+	provides = linux-docs=4.20
 	conflicts = linux-docs
 	replaces = linux-docs
 
