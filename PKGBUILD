@@ -2,7 +2,7 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=18.16.1
+pkgver=19.1.6
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
@@ -12,28 +12,30 @@ depends=('ncurses' 'readline' 'unixodbc' 'termcap' 'double-conversion' 'capnprot
 makedepends=('cmake' 'patchelf')
 source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         https://github.com/google/cctz/archive/4f9776a.tar.gz
-        https://github.com/edenhill/librdkafka/archive/7478b5e.tar.gz
+        https://github.com/edenhill/librdkafka/archive/363dcad.tar.gz
+        https://github.com/mfontanini/cppkafka/archive/5204655.tar.gz
         https://github.com/lz4/lz4/archive/c10863b.tar.gz
         https://github.com/facebook/zstd/archive/2555975.tar.gz
         https://github.com/Dead2/zlib-ng/archive/9173b89.tar.gz
         https://github.com/ClickHouse-Extras/poco/archive/fe5505e.tar.gz
         https://github.com/ClickHouse-Extras/boost-extra/archive/6883b40.tar.gz
-        https://github.com/ClickHouse-Extras/ssl/archive/dbbbcdb.tar.gz
+        https://github.com/ClickHouse-Extras/ssl/archive/ba8de79.tar.gz
         https://github.com/jemalloc/jemalloc/archive/cd2931a.tar.gz
         https://github.com/aklomp/base64/archive/a27c565.tar.gz
         https://github.com/ClickHouse-Extras/libhdfs3/archive/bd6505c.tar.gz
         https://github.com/MariaDB/mariadb-connector-c/archive/d85d0e9.tar.gz
         https://github.com/ClickHouse-Extras/protobuf/archive/1273537.tar.gz
         libunwind.patch)
-md5sums=('d05c626a825f7b1253bf65e82df8f8b3'
+md5sums=('8e7c688c46d3366f022171c47df98006'
          '5323f7ba2565a84a80a93edde95eb4fe'
-         '7d9c187a8afedde260fadf2f1d5f46a2'
+         '858f1e9d37c064a1e5ce99f24ed9cf95'
+         '42da4b9aab6cfa7cef00a5889c745ed1'
          '7b92f0554687e6a8949adc5c10aeff78'
          'aaa86ec9f379ef587cc53f7b96bcc0e7'
          '8a7abcc6998e461605ecb2988ff93dfc'
          'aa322f75107a4c8a364a38bfd5c7698f'
          '3e95c80139b4450f3e1505a71d3ea369'
-         '31f887f0dcea406ca589ceb12db8bb93'
+         'bf1ee7e88660616c92592dd4c1036f61'
          '1aad51c731b082d40c15be2804cd0ff3'
          'e98c6b94f39d6947c83eb554aeb618e2'
          '2fa16f04d0d533cbb5797bfd45b058fd'
@@ -47,16 +49,17 @@ prepare() {
   cd ClickHouse-$pkgver-stable
   sed -e 's/mysqlxx common\(.*\) \(\${Z_LIB}\)/mysqlxx \2 common\1/' -i libs/libmysqlxx/CMakeLists.txt
   patch -p1 < ../libunwind.patch
-  mkdir -p contrib/cctz contrib/librdkafka contrib/lz4 contrib/zstd contrib/base64 contrib/libhdfs3 contrib/mariadb-connector-c contrib/protobuf
-  rm -rf contrib/{cctz,librdkafka,lz4,zstd,zlib-ng,poco,boost,ssl,base64,libhdfs3,mariadb-connector-c,jemalloc,protobuf}/*
+  mkdir -p contrib/cctz contrib/librdkafka contrib/cppkafka contrib/lz4 contrib/zstd contrib/base64 contrib/libhdfs3 contrib/mariadb-connector-c contrib/protobuf
+  rm -rf contrib/{cctz,librdkafka,cppkafka,lz4,zstd,zlib-ng,poco,boost,ssl,base64,libhdfs3,mariadb-connector-c,jemalloc,protobuf}/*
   mv ../cctz-4f9776a*/* contrib/cctz/
-  mv ../librdkafka-7478b5e*/* contrib/librdkafka/
+  mv ../librdkafka-363dcad*/* contrib/librdkafka/
+  mv ../cppkafka-5204655*/* contrib/cppkafka/
   mv ../lz4-c10863b*/* contrib/lz4/
   mv ../zstd-2555975*/* contrib/zstd/
   mv ../zlib-ng-9173b89*/* contrib/zlib-ng/
   mv ../poco-fe5505e*/* contrib/poco/
   mv ../boost-extra-6883b40*/* contrib/boost/
-  mv ../ssl-dbbbcdb*/* contrib/ssl/
+  mv ../ssl-ba8de79*/* contrib/ssl/
   mv ../jemalloc-cd2931a*/* contrib/jemalloc/
   mv ../base64-a27c565*/* contrib/base64/
   mv ../libhdfs3-bd6505c*/* contrib/libhdfs3/
