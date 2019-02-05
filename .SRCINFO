@@ -1,0 +1,39 @@
+pkgbase = python-angr-git
+	pkgdesc = A powerful and user-friendly binary analysis platform
+	pkgver = 8.18.10.25.r9156.a67010c8
+	pkgrel = 1
+	url = https://github.com/angr/angr
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = make
+	makedepends = gcc
+	depends = python
+	depends = python-sortedcontainers
+	depends = python-cachetools
+	depends = python-capstone
+	depends = python-cooldict
+	depends = python-dpkt
+	depends = python2-futures
+	depends = python-mulpyplexer
+	depends = python-networkx
+	depends = python-progressbar
+	depends = python-rpyc
+	depends = python-cffi
+	depends = python-unicorn
+	depends = python-archinfo-git
+	depends = python-claripy-git
+	depends = python-cle-git
+	depends = python-pyvex-git
+	depends = python-ailment-git
+	depends = python-gitpython
+	depends = python-pycparser
+	depends = python-itanium_demangler
+	provides = python-angr
+	conflicts = python-angr
+	source = python-angr-git::git+https://github.com/angr/angr.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-angr-git
+
