@@ -8,7 +8,7 @@ pkgbase = riot-web-develop-git
 	makedepends = npm
 	makedepends = git
 	provides = vector-web
-	conflicts = riot-web
+	conflicts = vector-web
 	replaces = vector-web
 	source = git+https://github.com/vector-im/riot-web#branch=develop
 	source = fetch-deps.patch

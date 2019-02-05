@@ -17,7 +17,7 @@ sha256sums=('SKIP'
             'd6428c19067f447a051bedf49a28686c5e60ab3bbb3534065889584e28f61cf5')
 provides=('vector-web')  # @vith
 replaces=('vector-web')  # @vith
-conflicts=('riot-web')
+conflicts=('vector-web')
 
 pkgver() {
   cd "$_pkgname"
