@@ -9,8 +9,8 @@
 #                                                                             #
 # API changes between different Kodi versions make it necessary to specify    #
 # the version of Kodi you want to build this package for. You can choose      #
-# between Isengard (15), Jarvis (16), Krypton (17) and git master (99). Do so #
-# in the following line.                                                      #
+# between Krypton (17), Leia (18) and git master (99). Do so in the following #
+# line.                                                                       #
 #                                                                             #
 ###############################################################################
 
@@ -23,26 +23,20 @@ pkgdesc='Kodi platform support library'
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/xbmc/kodi-platform"
 license=('GPL')
-makedepends=('cmake' 'git')
-depends=('kodi')
+makedepends=('cmake' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
 provides=('kodi-platform')
 conflicts=('kodi-platform')
 source=("${pkgname}::git+https://github.com/xbmc/kodi-platform.git")
 md5sums=('SKIP')
 
 # Corresponding commit IDs are taken from
-# https://github.com/xbmc/xbmc/blob/$BRANCH/project/cmake/addons/depends/common/kodi-platform/kodi-platform.txt
+# https://github.com/xbmc/xbmc/blob/$BRANCH/[project/]cmake/addons/depends/common/kodi-platform/kodi-platform.txt
 case "$API" in
-  15)  depends+=('libplatform-legacy')
-       source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=054a42f66" ;;
-  16)  depends+=('libplatform-legacy')
-       source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=15edaf78d" ;;
-  17)  depends+=('p8-platform')
-       makedepends+=('kodi-dev')
-       source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=c8188d826" ;;
-  99)  depends+=('p8-platform')
-       makedepends+=('kodi-dev') ;;
-  *)   error "Unknown API version. Follow instructions in PKGBUILD." && false
+  17)  source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=c8188d826" ;;
+  18)  source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=e8574b883" ;;
+  99)  ;;
+  *)   echo "Unknown API version. Follow instructions in PKGBUILD." && false
 esac
 
 pkgver() {
