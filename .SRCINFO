@@ -1,0 +1,21 @@
+pkgbase = swtpm
+	pkgdesc = Libtpms-based TPM emulator with socket, character device, and Linux CUSE interface
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/stefanberger/swtpm
+	arch = x86_64
+	license = BSD
+	makedepends = socat
+	depends = glib2
+	depends = fuse2
+	depends = libtpms
+	depends = openssl
+	depends = gnutls
+	depends = net-tools
+	depends = tpm-tools
+	depends = expect
+	source = https://codeload.github.com/stefanberger/swtpm/tar.gz/v0.1.0
+	sha256sums = 6b3a3beb12b9bcd286b07961062c2d03a71889be6eb26967fe13d3de62ad7a05
+
+pkgname = swtpm
+
