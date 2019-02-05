@@ -2,14 +2,14 @@
 
 pkgname=kwin-scripts-krohnkite-git
 _gitname=krohnkite
-pkgver=r147.3e7bdc3
+pkgver=r191.7c0a863
 pkgrel=1
 pkgdesc="A dynamic tiling extension for KWin"
 arch=('any')
 url="https://github.com/esjeon/krohnkite.git"
 license=('MIT')
 depends=('kwin')
-makedepends=('make' 'plasma-framework' 'typescript' 'p7zip')
+makedepends=('make' 'plasma-framework' 'typescript' 'p7zip' 'git')
 provides=("$_gitname")
 conflicts=("$_gitname")
 source=("$_gitname::git+$url")
