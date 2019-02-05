@@ -1,7 +1,7 @@
 pkgbase = chromium-extension-steam-database-extension-git
 	pkgdesc = Chrome/Chromium extension for Steam Databse Extension - git/dev
 	pkgver = r345.f743de7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SteamDatabase/BrowserExtension
 	arch = any
 	license = BSD-3-Clause

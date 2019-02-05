@@ -4,7 +4,7 @@
 pkgsubn=BrowserExtension
 pkgname=chromium-extension-steam-database-extension-git
 pkgver=r345.f743de7
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome/Chromium extension for Steam Databse Extension - git/dev"
 arch=('any')
 url='https://github.com/SteamDatabase/BrowserExtension'
