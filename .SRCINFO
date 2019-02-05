@@ -1,27 +1,33 @@
 pkgbase = mp-5
-	pkgver = 5.2.15
+	pkgver = 5.30
 	pkgrel = 1
 	url = http://www.triptico.com/software/mp.html
 	arch = x86_64
 	license = GPL
-	makedepends = ncurses
-	makedepends = qt4
-	makedepends = kdelibs
 	makedepends = gtk3
-	source = http://triptico.com/download/mp/mp-5.2.15.tar.gz
+	makedepends = ncurses
+	makedepends = qt5-base
+	options = !makeflags
+	source = http://triptico.com/download/mp/mp-5.30.tar.gz
 	source = MinimumProfit.desktop
-	md5sums = 2ee10210028b607883cc1cac3ef1d93e
+	md5sums = 244505cfe62023fe4890492f88cf1298
 	md5sums = 7eae413ded2d6f69fba8347240b8b875
-
-pkgname = mp-5-qt4
-	pkgdesc = Text editor for programmers (QT4 front-end)
-	depends = qt4
-	provides = 
-	conflicts = 
 
 pkgname = mp-5-gtk
 	pkgdesc = Text editor for programmers (GTK front-end)
 	depends = gtk3
+	provides = 
+	conflicts = 
+
+pkgname = mp-5-nc
+	pkgdesc = Text editor for programmers (ncurses front-end)
+	depends = ncurses
+	provides = 
+	conflicts = 
+
+pkgname = mp-5-qt5
+	pkgdesc = Text editor for programmers (QT5 front-end)
+	depends = qt5
 	provides = 
 	conflicts = 
 

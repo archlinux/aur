@@ -2,100 +2,48 @@
 # Contributor: Sebastian Voecking <voeck@web.de>
 
 pkgbase=mp-5
-#pkgname=(mp-5-nc mp-5-qt4 mp-5-kde4 mp-5-gtk)
-pkgname=(mp-5-qt4 mp-5-gtk)
-pkgver=5.2.15
+pkgname=(mp-5-gtk mp-5-nc mp-5-qt5)
+pkgver=5.30
 pkgrel=1
 arch=('x86_64')
 url="http://www.triptico.com/software/mp.html"
 license=('GPL')
-# Note: config.sh auto-detects during the build which libraries are available
-makedepends=('ncurses' 'qt4' 'kdelibs' 'gtk3')     # 'gtk2'
+#'mp_doccer' 'perl-grutatxt'
+makedepends=('gtk3' 'ncurses' 'qt5-base')
+options=(!makeflags)
 source=(http://triptico.com/download/mp/mp-$pkgver.tar.gz
 		MinimumProfit.desktop)
-md5sums=('2ee10210028b607883cc1cac3ef1d93e'
+md5sums=('244505cfe62023fe4890492f88cf1298'
          '7eae413ded2d6f69fba8347240b8b875')
 
 prepare() {
-  #rm -rf mp-5-nc
-  #cp -a mp-$pkgver mp-5-nc
-
-  rm -rf mp-5-qt4
-  cp -a mp-$pkgver mp-5-qt4
-
-  #rm -rf mp-5-kde4
-  #cp -a mp-$pkgver mp-5-kde4
-
   rm -rf mp-5-gtk
-  mv mp-$pkgver mp-5-gtk
+  cp -a mp-$pkgver mp-5-gtk
+
+  rm -rf mp-5-nc
+  cp -a mp-$pkgver mp-5-nc
+
+  rm -rf mp-5-qt5
+  cp -a mp-$pkgver mp-5-qt5
 }
 
+# Note: config.sh detects during the build which libraries are available
 build() {
-  #cd "$srcdir/mp-5-nc"
-  #./config.sh --prefix=/usr --without-gtk --without-qt4 --without-kde4
-  #make
-
-  cd "$srcdir/mp-5-qt4"
-  ./config.sh --prefix=/usr --without-gtk
-  make
-
-  #cd "$srcdir/mp-5-kde4"
-  #./config.sh --prefix=/usr --with-kde4
-  #make
-
   cd "$srcdir/mp-5-gtk"
-  ./config.sh --prefix=/usr --without-qt4 --without-kde4
+  ./config.sh --prefix=/usr --without-curses --without-kde4 --without-qt
+  make
+
+  cd "$srcdir/mp-5-nc"
+  ./config.sh --prefix=/usr --without-gtk --without-kde4 --without-qt
+  make
+
+  cd "$srcdir/mp-5-qt5"
+  ./config.sh --prefix=/usr --without-curses --without-gtk --without-kde4 --without-qt4
   make
 }
-
-#package_mp-5-nc() {
-#  pkgdesc="Text editor for programmers (ncurses front-end)"
-#  depends=('ncurses')
-#  _pkgname='mp-5'
-#  provides=($_pkgname)
-#  conflicts=($_pkgname)
-#
-#  install -Dm644 MinimumProfit.desktop "$pkgdir/usr/share/applications/MinimumProfit.desktop"
-#
-#  cd mp-5-nc
-#  install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
-#  install -dm755 "$pkgdir/usr/bin"
-#  make DESTDIR="$pkgdir" install
-#}
-
-package_mp-5-qt4() {
-  pkgdesc="Text editor for programmers (QT4 front-end)"
-  depends=('qt4')
-  _pkgname='mp-5'
-  provides=($_pkgname)
-  conflicts=($_pkgname)
-
-  install -Dm644 MinimumProfit.desktop "$pkgdir/usr/share/applications/MinimumProfit.desktop"
-
-  cd mp-5-qt4
-  install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
-  install -dm755 "$pkgdir/usr/bin"
-  make DESTDIR="$pkgdir" install
-}
-
-#package_mp-5-kde4() {
-#  pkgdesc="Text editor for programmers (KDE4 front-end)"
-#  depends=('kdelibs')
-#  _pkgname='mp-5'
-#  provides=($_pkgname)
-#  conflicts=($_pkgname)
-#
-#  install -Dm644 MinimumProfit.desktop "$pkgdir/usr/share/applications/MinimumProfit.desktop"
-#
-#  cd mp-5-kde4
-#  install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
-#  install -dm755 "$pkgdir/usr/bin"
-#  make DESTDIR="$pkgdir" install
-#}
 
 package_mp-5-gtk() {
   pkgdesc="Text editor for programmers (GTK front-end)"
-  #depends=('gtk2')
   depends=('gtk3')
   _pkgname='mp-5'
   provides=($_pkgname)
@@ -104,6 +52,36 @@ package_mp-5-gtk() {
   install -Dm644 MinimumProfit.desktop "$pkgdir/usr/share/applications/MinimumProfit.desktop"
 
   cd mp-5-gtk
+  install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
+  install -dm755 "$pkgdir/usr/bin"
+  make DESTDIR="$pkgdir" install
+}
+
+package_mp-5-nc() {
+  pkgdesc="Text editor for programmers (ncurses front-end)"
+  depends=('ncurses')
+  _pkgname='mp-5'
+  provides=($_pkgname)
+  conflicts=($_pkgname)
+
+  install -Dm644 MinimumProfit.desktop "$pkgdir/usr/share/applications/MinimumProfit.desktop"
+
+  cd mp-5-nc
+  install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
+  install -dm755 "$pkgdir/usr/bin"
+  make DESTDIR="$pkgdir" install
+}
+
+package_mp-5-qt5() {
+  pkgdesc="Text editor for programmers (QT5 front-end)"
+  depends=('qt5')
+  _pkgname='mp-5'
+  provides=($_pkgname)
+  conflicts=($_pkgname)
+
+  install -Dm644 MinimumProfit.desktop "$pkgdir/usr/share/applications/MinimumProfit.desktop"
+
+  cd mp-5-qt5
   install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
   install -dm755 "$pkgdir/usr/bin"
   make DESTDIR="$pkgdir" install
