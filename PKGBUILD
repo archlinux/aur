@@ -23,9 +23,9 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients' 'kodi-devel-tools-texturepacker' 'kodi-devel-dev')
-pkgver=18.1rc1pre2
+pkgver=18.1rc1pre3
 _major=18.0
-pkgrel=2
+pkgrel=1
 _codename=Leia
 _tag="$_major-$_codename"
 # Found on their respective github release pages. One can check them against
@@ -99,6 +99,8 @@ source=(
   '23-PR15353.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15353.patch'
   '24-PR15419.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15419.patch'
   '25-PR15420.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15420.patch'
+  '26-PR15358.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15358.patch'
+  '27-PR15425.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/15425.patch'
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -145,7 +147,9 @@ sha256sums=('ac5d64d59c6f4811b41a869538506e56c342b530fac97ad9dc9715f3d480e633'
             '83ba1ab2afcd45e40987bceb5fb2a7b966cc6d669c6d050f51d3539fe2ec247e'
             '379dbd50fe2ec514636aa544b519201b01973af4fee2d0ad218ac3605d0cd634'
             '6aaf1343f41a414ea8e27bfd13bffd37f6e594cf8671f96f754f90fa1dac0cc4'
-            '8a6e0aeb20a74bd9a40bd4a7eb50c64c251c5f5ba625a1e96cc438635fb063aa')
+            '8a6e0aeb20a74bd9a40bd4a7eb50c64c251c5f5ba625a1e96cc438635fb063aa'
+            'ccd551b83ae0911c33584d97bf4a3f4bc26eaebe228b15f1cbe5994bdc156edf'
+            '652df54be641ed23321f795079a2c91f0a8160f5e369f29d26d6caf0689a9c37')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
@@ -153,9 +157,11 @@ prepare() {
 
   cd "xbmc-$_tag"
 
-  # detect if building in arch chroot using $pkgname rather than hard coping it into a patch
+  # detect if building in arch chroot using $pkgname rather than hard coding it into a patch
   if [[ "$srcdir" =~ ^\/build.* ]]; then
-    sed s"|exec_program(cat ARGS \"/proc/cpuinfo\" OUTPUT_VARIABLE CPUINFO)|exec_program(cat ARGS \"/build/$pkgname/src/cpuinfo\" OUTPUT_VARIABLE CPUINFO)|" cmake/modules/FindSSE.cmake
+    local _find="exec_program(cat ARGS \"/proc/cpuinfo\" OUTPUT_VARIABLE CPUINFO)"
+    local _replace="exec_program(cat ARGS \"/build/$pkgname/src/cpuinfo\" OUTPUT_VARIABLE CPUINFO)"
+    sed -i s"|$_find|$_replace|" cmake/modules/FindSSE.cmake
   fi
 
   local src
