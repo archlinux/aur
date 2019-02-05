@@ -1,0 +1,16 @@
+pkgbase = python-fintech
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://github.com/theislab/fintech
+	arch = any
+	license = custom:restricted use
+	makedepends = python-pip
+	depends = python-certifi
+	depends = python-fpdf>=1.7.2
+	depends = python-lxml
+	noextract = fintech-5.2.0-cp37-none-any.whl
+	source = https://files.pythonhosted.org/packages/cp37/f/fintech/fintech-5.2.0-cp37-none-any.whl
+	sha256sums = ff189b7c97f4600d49f25a960e5faf28c3b2dd16efeab494776e2c7a80393e78
+
+pkgname = python-fintech
+
