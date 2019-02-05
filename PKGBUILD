@@ -1,7 +1,7 @@
 # Maintainer: Jan Ole Zabel <joz@spline.de>
 pkgname=ram
 pkgver=0.1.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Rust AUR Manager – an AUR manager and pacman wrapper written in rust"
 arch=('x86_64')
 url="https://gitlab.spline.inf.fu-berlin.de/gordon/ram"
@@ -9,7 +9,7 @@ license=('GPLv3')
 #depends=('gcc-libs')
 makedepends=('cargo')
 source=("https://gitlab.spline.inf.fu-berlin.de/gordon/ram/-/archive/v$pkgver/ram-v$pkgver.tar.gz")
-sha512sums=('1fb1fe394f05765be7a357cc64684ddf55c425ebe0e82e9e538254f9d226588a4801ec7110b8c150515363fbbf2148ab63cef42db6fe0c60aa3c981d8e659499')
+sha512sums=('23499202ef9c582f32c173b89dac9e9e85504791aaeaa17c47c1f7511d3b98a6ad310e8794fcbdac4ea9e4beb3a5307d4f0223fb42180fdb421279ad851e5a19')
 
 build() {
 	cd "ram-v$pkgver"
