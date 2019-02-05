@@ -17,8 +17,9 @@ sha256sums=('a2a27e65904688da3e84f5745d3a71371a6ecba43675d8d824c3774e879281c9'
 
 prepare() {
     cd "${srcdir}/wrapper_${pkgver}_src"
-
-    if [[ $(javac -version |grep -E "1[01].0") ]]; then
+    
+    _ver=$(java -version 2>&1 |awk -F '"' '/version/{print $2}')
+    if [[ "$_ver" =~ ^1[0-2]\. ]]; then
         _target=10
         patch -Np0 -i "$srcdir/java10.patch"
     else
