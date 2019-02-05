@@ -6,6 +6,7 @@ pkgbase = python-mulpyplexer-git
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	provides = python-mulpyplexer
 	conflicts = python-mulpyplexer

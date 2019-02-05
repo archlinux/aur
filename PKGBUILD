@@ -1,4 +1,4 @@
-# Maintainer: lockshaw <lockshaw mastkata3 at yahoo dot com>
+# Maintainer: Colin Unger <mastakata3 at yahoo dot com>
 
 pkgname=python-mulpyplexer-git
 pkgdesc="Multiplexes interactions with lists of python objects"
@@ -7,7 +7,7 @@ pkgver=0.08.r23.98515f1
 pkgrel=1
 arch=('any')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 license=('BSD')
