@@ -1,6 +1,6 @@
 pkgbase = gnatsd
 	pkgdesc = A simple, high performance open source messaging system for cloud native applications, IoT messaging, and microservices architectures.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 0
 	url = http://github.com/nats-io/gnatsd
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = gnatsd
 	license = MIT
 	makedepends = go
 	makedepends = git
-	provides = gnatsd=1.3.0
+	provides = gnatsd=1.4.0
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/nats-io/gnatsd/archive/v1.3.0.tar.gz
-	sha256sums = 2cb9a228acfa1932196652f4c50118e55c9b5ea1b1d6549c0f2cdda7edc1fc10
+	source = https://github.com/nats-io/gnatsd/archive/v1.4.0.tar.gz
+	sha256sums = 193778c9c697823d5a198552236fb2f519d509213fbbbea77cd4341719066bfb
 
 pkgname = gnatsd
 
