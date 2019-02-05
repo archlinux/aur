@@ -1,0 +1,1 @@
+SUBSYSTEM=="bluetooth", ACTION=="add", RUN+="/usr/bin/systemctl start fix-bt-a2dp"

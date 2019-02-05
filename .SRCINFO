@@ -1,0 +1,22 @@
+pkgbase = fix-bt-a2dp
+	pkgdesc = Fix Bluetooth A2DP using systemd and udev rule
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/pastleo/fix-bt-a2dp
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = bluez
+	depends = bluez-utils
+	depends = pulseaudio
+	depends = pulseaudio-bluetooth
+	optdepends = libnotify
+	source = fix-bt-a2dp.rb
+	source = fix-bt-a2dp.service
+	source = fix-bt-a2dp.udev-rules
+	md5sums = f63057d641cb3c2e005653acdd6a4af9
+	md5sums = 24aa8ecab3f87b3cd6f8a318d314b27d
+	md5sums = 53997fa84224bae44cdd1c4b5f88550f
+
+pkgname = fix-bt-a2dp
+

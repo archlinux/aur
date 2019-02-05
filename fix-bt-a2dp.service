@@ -1,0 +1,10 @@
+[Unit]
+Description=Fix Bluetooth A2DP
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/fix-bt-a2dp
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
