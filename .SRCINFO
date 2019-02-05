@@ -1,0 +1,15 @@
+pkgbase = wizardscastle-ncurses
+	pkgdesc = A classic dungeon-crawling game
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/beejjorgensen/Wizards-Castle-Ncurses
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust>=1.31.0
+	depends = ncurses
+	source = wizardscastle-ncurses-1.0.2.tar.gz::https://github.com/beejjorgensen/Wizards-Castle-Ncurses/archive/v1.0.2.tar.gz
+	sha512sums = 636622af578fde45b32bd21f246116497702d2a9f87c79d384cbdaf78620515733050b285c4d54e20db936e69d1324c0d5a674676e572e0b6b0e841cfdf379b3
+
+pkgname = wizardscastle-ncurses
+
