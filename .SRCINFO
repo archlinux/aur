@@ -1,18 +1,20 @@
 pkgbase = qt5-declarative-git
-	pkgdesc = A cross-platform application and UI framework (QtQml, QtQuick)
-	pkgver = v5.5.0.19.ga3f686c
+	pkgdesc = Qt5 declarative module
+	pkgver = 5.12.1.r167.ga32217254
 	pkgrel = 1
-	url = https://qt-project.org/
+	url = https://www.qt.io/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = FDL
+	license = GPL
 	license = LGPL
+	license = custom
 	makedepends = git
 	makedepends = python
-	depends = qt5-xmlpatterns-git
+	depends = qt5-base
 	provides = qt5-declarative
 	conflicts = qt5-declarative
-	source = qt5-declarative::git://code.qt.io/qt/qtdeclarative.git#branch=5.5
+	source = git+https://code.qt.io/qt/qtdeclarative.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = qt5-declarative-git
