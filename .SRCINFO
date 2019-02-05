@@ -1,0 +1,17 @@
+pkgbase = python-cooldict-git
+	pkgdesc = Some useful dict-like structures
+	pkgver = 1.04.r58.e85d9db
+	pkgrel = 1
+	url = https://github.com/zardus/cooldict
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = python-ana-git
+	provides = python-cooldict
+	conflicts = python-cooldict
+	source = python-cooldict-git::git+https://github.com/zardus/cooldict.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-cooldict-git
+
