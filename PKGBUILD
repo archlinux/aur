@@ -1,4 +1,5 @@
-# Maintainer: Mitchell Hentges <mitch9654[at]gmail[dot]com>
+# Maintainer: Fikri Muhammad Iqbal <fikri.miqbal23[at]gmail[dot]com>
+# Past Maintainer: Mitchell Hentges <mitch9654[at]gmail[dot]com>
 # Past Maintainer: Sebastian Krebs <sebastian[at]krebs[dot]one>
 # Contributor: Yakir Sitbon <kingyes1[at]gmail[dot]com>
 # Contributor: Eduard Kracmar <edke.kraken[at]gmail[dot]com>
@@ -8,8 +9,8 @@
 
 pkgbase=phpstorm-eap
 pkgname=(phpstorm-eap phpstorm-eap-jre)
-pkgver=191.4212.35
-_dlver=191.4212.35
+pkgver=191.4738.10
+_dlver=191.4738.10
 pkgrel=1
 pkgdesc="Lightning-smart PHP IDE. Early Access Program."
 arch=('x86_64' 'i686')
@@ -20,7 +21,7 @@ makedepends=('rsync')
 options=('!strip')
 source=(https://download.jetbrains.com/webide/PhpStorm-${_dlver}.tar.gz
         jetbrains-phpstorm-eap.desktop)
-sha256sums=('d2a2634c9f14c626dcef0c8f6e7850dff95f2ab6568e2e9f4a96621ce2195ebc'
+sha256sums=('7095b178c97f7816189c520791ce7c4e6bbf7241f753920be371a25abfaf6a20'
             '4d74831366821e39b13e71da3cc3bb09ae0011e1c33f0917d4c1b99852fd7928')
 
 package_phpstorm-eap() {
