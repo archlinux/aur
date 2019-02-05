@@ -1,6 +1,6 @@
 pkgbase = fdroidcl
 	pkgdesc = F-Droid desktop client
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/mvdan/fdroidcl
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = fdroidcl
 	makedepends = git
 	makedepends = go
 	depends = android-tools
-	source = git+https://github.com/mvdan/fdroidcl#tag=v0.4.0
+	source = git+https://github.com/mvdan/fdroidcl#tag=v0.5.0
 	sha1sums = SKIP
 
 pkgname = fdroidcl
