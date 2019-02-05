@@ -1,0 +1,18 @@
+pkgbase = anbox-bridge
+	pkgdesc = Script to enable network for anbox
+	pkgver = 1
+	pkgrel = 1
+	url = https://anbox.io
+	install = anbox-bridge.install
+	arch = x86_64
+	license = custom
+	depends = anbox-git
+	source = https://raw.githubusercontent.com/anbox/anbox/master/scripts/anbox-bridge.sh
+	source = anbox-bridge.c
+	source = anbox-bridge.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = anbox-bridge
+

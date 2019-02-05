@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=anbox-bridge
+Exec=/usr/bin/anbox-bridge
+Terminal=false
+Categories=System;Utility;
+Comment=Start Anbox Network
+Icon=anbox
+GenericName=Anbox Network
