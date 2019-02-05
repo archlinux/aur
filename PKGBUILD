@@ -8,7 +8,7 @@ pkgver=1.0.96.181
 _commit=gf6bc1b6b
 _ver_x86_64=12
 #_ver_i686=12
-pkgrel=1
+pkgrel=2
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 license=('custom')
@@ -78,7 +78,6 @@ package() {
         install -Dm644 "${pkgdir}/usr/share/spotify/icons/spotify-linux-$size.png" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/spotify.png"
     done
-    rm -r "${pkgdir}/usr/share/spotify/icons/"
 
     # Move spotify binary to its proper location and instal wrapper script
     mkdir -p "${pkgdir}"/opt/spotify
