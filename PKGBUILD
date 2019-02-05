@@ -2,10 +2,10 @@
 
 pkgname=k9s-bin
 pkgver=0.1.0
-pkgrel=1
-pkgdesc='Rancher Kubernetes Engine, an extremely simple, lightning fast Kubernetes installer that works everywhere. '
+pkgrel=2
+pkgdesc='Kubernetes CLI To Manage Your Clusters In Style!'
 arch=('x86_64')
-url='https://github.com/rancher/rke'
+url='https://github.com/derailed/k9s'
 license=('Apache')
 provides=('k9s')
 source=("https://github.com/derailed/k9s/releases/download/${pkgver}/k9s_${pkgver}_Linux_x86_64.tar.gz")

@@ -1,8 +1,8 @@
 pkgbase = k9s-bin
-	pkgdesc = Rancher Kubernetes Engine, an extremely simple, lightning fast Kubernetes installer that works everywhere.
+	pkgdesc = Kubernetes CLI To Manage Your Clusters In Style!
 	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://github.com/rancher/rke
+	pkgrel = 2
+	url = https://github.com/derailed/k9s
 	arch = x86_64
 	license = Apache
 	provides = k9s
