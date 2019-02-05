@@ -1,0 +1,15 @@
+pkgbase = haskell-operational
+	pkgdesc = A wrapper to gnuplot which lets you create 2D and 3D plots.
+	pkgver = 0.2.3.5
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/operational
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-random
+	source = https://hackage.haskell.org/package/operational-0.2.3.5/operational-0.2.3.5.tar.gz
+	sha512sums = 80ddcadc3aaa1b37514d31441f81b7d5e89263921f26ba2d877327a8eeb95da99f858ea54f2e72b6413f08a8e85b3fa54bac9d3327e5a63945ad90a25be51ed4
+
+pkgname = haskell-operational
+
