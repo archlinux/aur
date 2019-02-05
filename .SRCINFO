@@ -1,0 +1,17 @@
+pkgbase = riot-web-develop-bin
+	pkgdesc = A glossy Matrix collaboration client for the web (develop branch).
+	pkgver = b4715
+	pkgrel = 1
+	url = https://riot.im
+	arch = any
+	license = Apache
+	makedepends = npm
+	makedepends = git
+	provides = vector-web
+	conflicts = vector-web
+	replaces = vector-web
+	source = https://matrix.org/jenkins/job/VectorWebDevelop/4715/artifact/dist/riot-8630d0319dcc-react-94f6f65fac95-js-6f17e3e659a0.tar.gz
+	sha256sums = 53e9267f2414d448f32a0200b22e1781520d9b8052490d89c4314ead80c8e754
+
+pkgname = riot-web-develop-bin
+
