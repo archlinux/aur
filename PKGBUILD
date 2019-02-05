@@ -9,7 +9,7 @@ pkgdesc="Chrome/Chromium extension for Steam Databse Extension - git/dev"
 arch=('any')
 url='https://github.com/SteamDatabase/BrowserExtension'
 license=('BSD-3-Clause')
-makedepends=(git unzip)
+makedepends=(git)
 source=("git+https://github.com/SteamDatabase/BrowserExtension.git")
 sha512sums=('SKIP')
 

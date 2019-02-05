@@ -6,7 +6,6 @@ pkgbase = chromium-extension-steam-database-extension-git
 	arch = any
 	license = BSD-3-Clause
 	makedepends = git
-	makedepends = unzip
 	source = git+https://github.com/SteamDatabase/BrowserExtension.git
 	sha512sums = SKIP
 
