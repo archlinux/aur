@@ -1,9 +1,10 @@
 # Maintainer: fenuks
 
-_pkgname=gtk-wave-cleaner
+_pkgver=0.22
+_pkgrel=01
 pkgname=gwc
-pkgver=0.22
-pkgrel=2
+pkgver=${_pkgver}_${_pkgrel}
+pkgrel=1
 pkgdesc="Gtk Wave Cleaner is a digital audio editor to denoise, dehiss and amplify audio files"
 arch=("i686" "x86_64")
 url="http://gwc.sourceforge.net/"
@@ -15,23 +16,23 @@ makedepends=("make")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 # install=$pkgname.install
-source=("http://downloads.sourceforge.net/project/gwc/gwc2/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-)
+source=("https://github.com/AlisterH/gwc/archive/${_pkgver}-${_pkgrel}.tar.gz")
 
-sha256sums=('56e44400082672dc5df655fb1517cfc4af6fb00b75f8930f4c721f1c8c1e6122')
+sha256sums=('97b1cb38640ec866b0b1be73f074296e1ddb7d4749bb288bea61f0813e2d2529')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}"
+    autoreconf -ifv
     ./configure --prefix=/usr
 }
 
 build() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}"
     make
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}"
     make DESTDIR="${pkgdir}/" install
     rm -f "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
 }
