@@ -29,8 +29,8 @@ build() {
     sed -i 's/attr\/xattr.h/sys\/xattr.h/' $f
   done
 
-  sed '35 a #include <attr/attributes.h>' libnfs4acl/nfs4_set_acl.c
-  sed '37 a #include <attr/attributes.h>' libnfs4acl/nfs4_acl_for_path.c
+  sed -i '35 a #include <attr/attributes.h>' libnfs4acl/nfs4_set_acl.c
+  sed -i '37 a #include <attr/attributes.h>' libnfs4acl/nfs4_acl_for_path.c
 
 
   ./configure --prefix=/usr
