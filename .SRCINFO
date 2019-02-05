@@ -1,0 +1,16 @@
+pkgbase = python-mulpyplexer-git
+	pkgdesc = Multiplexes interactions with lists of python objects
+	pkgver = 0.08.r23.98515f1
+	pkgrel = 1
+	url = https://github.com/zardus/mulpyplexer
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	provides = python-mulpyplexer
+	conflicts = python-mulpyplexer
+	source = python-mulpyplexer-git::git+https://github.com/zardus/mulpyplexer.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-mulpyplexer-git
+
