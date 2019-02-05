@@ -15,20 +15,20 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=${pkgname}.install
 changelog=
-source=("git+https://gitlab.com/X3n0m0rph59/precached.git")
+source=("git+https://gitlab.com/X3n0m0rph59/precached/tree/v1.5")
 noextract=()
-md5sums=() #autofill using updpkgsums
+md5sums=('SKIP') 
 
 build() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
-  cargo build --all --release
+  CARGO_INCREMENTAL=0 cargo build --all --release
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/etc/precached"
@@ -36,8 +36,8 @@ package() {
   mkdir -p "$pkgdir/var/lib/precached/iotrace"
   mkdir -p "$pkgdir/usr/share/doc/precached/examples"
   mkdir -p "$pkgdir/usr/lib/systemd/system/"
+  mkdir -p "$pkgdir/usr/lib/systemd/user/"
   mkdir -p "$pkgdir/etc/dbus-1/system.d/"
-  mkdir -p "$pkgdir/etc/xdg/autostart/"
   mkdir -p "$pkgdir/usr/share/man/man8/"
   mkdir -p "$pkgdir/usr/share/man/man5/"
   mkdir -p "$pkgdir/usr/share/man/man1/"
@@ -61,11 +61,11 @@ package() {
   install -m 644 "support/rules/10-cache-on-login.rules" "$pkgdir/etc/precached/rules.d/"
   install -m 644 "support/rules/99-ping-logger.rules" "$pkgdir/etc/precached/rules.d/"
   install -m 644 "support/systemd/precached.service" "$pkgdir/usr/lib/systemd/system/"
+  install -m 644 "support/systemd/precached-trigger.service" "$pkgdir/usr/lib/systemd/user/"
   install -m 644 "support/systemd/precached-prime-caches.service" "$pkgdir/usr/lib/systemd/system/"
   install -m 644 "support/systemd/precached-prime-caches.timer" "$pkgdir/usr/lib/systemd/system/"
   install -m 644 "support/dbus/org.precached.precached1.conf" "$pkgdir/etc/dbus-1/system.d/"
-  install -m 644 "support/desktop/precached-trigger.desktop" "$pkgdir/etc/xdg/autostart/"
-
+  
   install -m 644 "support/man/precachedtop.1" "$pkgdir/usr/share/man/man1/"
   install -m 644 "support/man/precached-trigger.1" "$pkgdir/usr/share/man/man1/"
   install -m 644 "support/man/precached-debug.8" "$pkgdir/usr/share/man/man8/"
@@ -91,3 +91,4 @@ package() {
   install -m 644 -T "support/shell/completions/en_US/precached-trigger.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_precached-trigger"
   install -m 644 -T "support/shell/completions/en_US/precached-debug.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_precached-debug"
 }
+
