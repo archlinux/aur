@@ -11,5 +11,5 @@ source=("https://github.com/isacikgoz/gitin/releases/download/v${pkgver}/gitin_$
 md5sums=('90a010cb45384c8f1687c8ace49ab8c4')
 
 package() {
-    install -m755 -D gitin "$pkgdir"/usr/bin/gitin
+    install -Dm755 gitin "$pkgdir"/usr/bin/gitin
 }
