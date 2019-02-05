@@ -1,0 +1,17 @@
+pkgbase = slack-cleaner
+	pkgdesc = Delete slack message and files
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/sgratzl/slack-cleaner
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-slacker
+	depends = python-colorama
+	options = !emptydirs
+	source = slack-cleaner-0.5.0.tar.gz::https://github.com/sgratzl/slack-cleaner/archive/v0.5.0.tar.gz
+	sha256sums = 1b8ec5e216e7e96078490b1645b7a9e274f001449bb9fa18e1ef00c7f352da7a
+
+pkgname = slack-cleaner
+
