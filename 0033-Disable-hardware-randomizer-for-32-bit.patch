@@ -1,7 +1,7 @@
-From a06c30c0f497e4dcef912b2c316f2d97a6f0f933 Mon Sep 17 00:00:00 2001
+From b26414fad10e9ff16f305b3484670260e07df70e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 May 2018 03:47:14 +0200
-Subject: [PATCH 33/33] Disable hardware randomizer for 32-bit
+Subject: [PATCH 33/34] Disable hardware randomizer for 32-bit
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -19,7 +19,7 @@ during RTL pass: ira
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/corelib/global/qrandom.cpp b/src/corelib/global/qrandom.cpp
-index 23e5e499b2..12030eba08 100644
+index 6195c324e7..480af00ebc 100644
 --- a/src/corelib/global/qrandom.cpp
 +++ b/src/corelib/global/qrandom.cpp
 @@ -90,7 +90,7 @@ DECLSPEC_IMPORT BOOLEAN WINAPI SystemFunction036(PVOID RandomBuffer, ULONG Rando
