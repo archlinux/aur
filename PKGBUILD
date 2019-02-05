@@ -11,8 +11,8 @@
 
 _qt_module=qtvirtualkeyboard
 pkgname="mingw-w64-qt5-virtualkeyboard"
-pkgver=5.12.0
-pkgrel=2
+pkgver=5.12.1
+pkgrel=1
 arch=('any')
 pkgdesc="Virtual keyboard framework (translations, mingw-w64)"
 depends=('mingw-w64-qt5-declarative' 'mingw-w64-pkg-config' 'mingw-w64-qt5-svg')
@@ -23,7 +23,7 @@ license=('GPL3')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('db93b89ba13ec1a688850f456be9f10037033cebf7b4deb151ed9f5322d0d6da')
+sha256sums=('a9e3ed4786d603314144c7ad29a9fdeb6e5c3f2ea5a27f6545cc9777244cd683')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -33,7 +33,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
-_fix_deps_of_static_3rdparty_libs='s:\(-l.*\)-lqt\(openwnn\|pinyin\|tcime\)\(d*\)\(.*\):-lqt\2\3 \1 \4:g'
+_fix_deps_of_static_3rdparty_libs='s:\(-L\/.*\/lib.*\.a\) \(\/.*\/libqt\)\(openwnn\|pinyin\|tcime\)\(d*\.a\)\(.*\):\2\3\4 \1 \5:g'
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
