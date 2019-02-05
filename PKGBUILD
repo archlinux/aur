@@ -2,7 +2,7 @@
 
 pkgname=hawktracer-git
 _srcname=hawktracer
-pkgver=0.6.0.r61.ge5b3052
+pkgver=0.7.0.r7.gd7821a7
 pkgrel=1
 pkgdesc='HawkTracer - a highly portable, low-overhead, configurable profiling tool (git version)'
 arch=('i686' 'x86_64')
@@ -28,6 +28,7 @@ build() {
     cd build
     cmake \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         ..
 
     cmake --build .

@@ -1,6 +1,6 @@
 pkgbase = hawktracer-git
 	pkgdesc = HawkTracer - a highly portable, low-overhead, configurable profiling tool (git version)
-	pkgver = 0.6.0.r61.ge5b3052
+	pkgver = 0.7.0.r7.gd7821a7
 	pkgrel = 1
 	url = https://github.com/loganek/hawktracer
 	arch = i686
