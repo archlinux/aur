@@ -1,0 +1,16 @@
+pkgbase = python-pymonetdb-git
+	pkgdesc = MonetDB Python bindings.
+	pkgver = 1.1.1.r3.g25c0f80
+	pkgrel = 1
+	url = https://github.com/gijzelaerr/pymonetdb
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = monetdb
+	provides = python-pymonetdb
+	source = git+https://github.com/gijzelaerr/pymonetdb
+	sha512sums = SKIP
+
+pkgname = python-pymonetdb-git
+
