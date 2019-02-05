@@ -1,14 +1,14 @@
 pkgbase = packer-builder-arm-image
 	pkgdesc = Packer plugin for ARM images
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/solo-io/packer-builder-arm-image
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
-	license = unknown
+	license = APACHE
 	makedepends = go-pie
 	depends = glibc
 	depends = multipath-tools

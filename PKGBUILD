@@ -1,11 +1,11 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=packer-builder-arm-image
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Packer plugin for ARM images"
 url="https://github.com/solo-io/packer-builder-arm-image"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
-license=(unknown) # https://github.com/solo-io/packer-builder-arm-image/issues/19
+license=('APACHE')
 depends=('glibc' 'multipath-tools' 'qemu-user-static')
 makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/solo-io/packer-builder-arm-image/archive/v${pkgver}.tar.gz")
@@ -28,4 +28,5 @@ build() {
 
 package() {
   install -Dm755 bin/packer-builder-arm-image "${pkgdir}/usr/bin/packer-builder-arm-image"
+  # install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
