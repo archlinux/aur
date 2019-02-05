@@ -1,39 +1,49 @@
-# Maintainer: Jonathan Liu <net147@gmail.com>
-_pkgname=qt5-virtualkeyboard
-pkgname=$_pkgname-git
-pkgver=5.8.0.r359.9bb0f7c
-pkgrel=1
-pkgdesc="Virtual keyboard for Qt"
-arch=('i686' 'x86_64')
-url="https://code.qt.io/cgit/qt/qtvirtualkeyboard.git"
-license=('GPL3')
-depends=('qt5-declarative')
-makedepends=('git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+https://code.qt.io/qt/qtvirtualkeyboard.git#branch=dev")
-md5sums=('SKIP')
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Jonathan Liu <net147@gmail.com>
 
-pkgver() {
-  cd "$_pkgname"
-  module_version="$(sed -n 's/^MODULE_VERSION\s*=\s*\(.*\)/\1/p' .qmake.conf)"
-  printf "$module_version.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+pkgname=qt5-virtualkeyboard-git
+pkgver=5.12.1.r20.g8a9f0cd
+pkgrel=1
+pkgdesc="Qt5 virtual keyboard module"
+arch=('i686' 'x86_64')
+url="https://www.qt.io/"
+license=('GPL3')
+depends=('qt5-declarative' 'qt5-svg' 'hunspell')
+makedepends=('git')
+provides=('qt5-virtualkeyboard')
+conflicts=('qt5-virtualkeyboard')
+source=("git+https://code.qt.io/qt/qtvirtualkeyboard.git#branch=dev")
+sha256sums=('SKIP')
+
 
 prepare() {
-  find . -name '*.cpp' -exec sed -i 's/for (\(.*\) : qAsConst(\([^)]*\)))/foreach (\1, \2)/' {} +
-  mkdir -p build
+  cd "$srcdir"
+
+  mkdir -p "_build"
+}
+
+pkgver() {
+  cd "qtvirtualkeyboard"
+
+  _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/v//p}')
+  _rev=$(git rev-list --count v$_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
 }
 
 build() {
-  cd build
-  qmake "../$_pkgname"
+  cd "_build"
+
+  qmake ../qtvirtualkeyboard
   make
 }
 
 package() {
-  cd build
-  make INSTALL_ROOT="$pkgdir" install
-}
+  cd "_build"
 
-# vim:set ts=2 sw=2 et:
+  make INSTALL_ROOT="$pkgdir" install
+
+  # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+  find "$pkgdir/usr/lib" -type f -name '*.prl' \
+    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+}
