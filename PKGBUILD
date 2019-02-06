@@ -10,9 +10,9 @@
 
 pkgname=opera
 pkgver=58.0.3135.53
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and secure web browser"
-url="http://www.opera.com/"
+url="https://www.opera.com/"
 options=(!strip !zipman)
 license=('custom:opera')
 backup=("etc/$pkgname/default")
