@@ -1,14 +1,13 @@
 pkgbase = keepass-fr
 	pkgdesc = French locale for keepass
-	pkgver = 2.40
+	pkgver = 2.41
 	pkgrel = 1
 	url = http://keepass.info/translations.html
 	arch = any
 	license = GPL2
-	makedepends = unzip
 	depends = keepass
-	source = http://downloads.sourceforge.net/keepass/KeePass-2.40-French.zip
-	md5sums = f36d01574d8ece8e9eb0f7f33632019a
+	source = http://downloads.sourceforge.net/keepass/KeePass-2.41-French.zip
+	md5sums = e38c9c52446c5cdd4b30421211e06195
 
 pkgname = keepass-fr
 
