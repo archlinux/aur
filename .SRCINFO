@@ -1,20 +1,19 @@
 pkgbase = xcircuit-git
 	pkgdesc = A program for drawing publishable-quality electrical circuit schematic diagrams (development version)
-	pkgver = 3.9.38.r0.ga4636c7
+	pkgver = 3.10.12.r0.ge434d21
 	pkgrel = 1
 	url = http://opencircuitdesign.com/xcircuit
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = chrpath
 	makedepends = gendesk
+	makedepends = libxpm
 	depends = tk
-	depends = libxpm
-	depends = zlib
+	depends = cairo
 	provides = xcircuit
 	conflicts = xcircuit
-	source = xcircuit-git::git://opencircuitdesign.com/xcircuit-3.9
+	source = xcircuit-git::git://opencircuitdesign.com/xcircuit-3.10
 	md5sums = SKIP
 
 pkgname = xcircuit-git

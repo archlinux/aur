@@ -2,18 +2,18 @@
 
 pkgname=xcircuit-git
 _pkgname=xcircuit
-pkgver=3.9.38.r0.ga4636c7
+pkgver=3.10.12.r0.ge434d21
 pkgrel=1
 pkgdesc="A program for drawing publishable-quality electrical circuit schematic diagrams (development version)"
 arch=('i686' 'x86_64')
 url="http://opencircuitdesign.com/xcircuit"
 license=('GPL2')
-depends=('tk' 'libxpm' 'zlib')
+depends=('tk' 'cairo')
 provides=($_pkgname)
 conflicts=($_pkgname)
-makedepends=('git' 'chrpath' 'gendesk')
+makedepends=('git' 'gendesk' 'libxpm')
 _categories='Application;Electronics;Engineering'
-source=($pkgname::git://opencircuitdesign.com/xcircuit-3.9)
+source=($pkgname::git://opencircuitdesign.com/xcircuit-3.10)
 md5sums=('SKIP')
 
 pkgver() {
@@ -37,9 +37,8 @@ package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
   mkdir -p "$pkgdir"/usr/share/man/man1
-  mv "$pkgdir"/usr/lib/xcircuit-3.9/man/* "$pkgdir"/usr/share/man/man1/
-  rm -rf "$pkgdir"/usr/lib/xcircuit-3.9/man/
-  chrpath -d "$pkgdir"/usr/lib/xcircuit-3.9/xcircexec
+  mv "$pkgdir"/usr/lib/xcircuit-3.10/man/* "$pkgdir"/usr/share/man/man1/
+  rm -rf "$pkgdir"/usr/lib/xcircuit-3.10/man/
   install -Dm0644 xcircuit.desktop "$pkgdir"/usr/share/applications/xcircuit.desktop
   install -Dm0644 xcircuit.png "$pkgdir"/usr/share/icons/xcircuit.png
 }
