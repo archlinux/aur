@@ -15,8 +15,8 @@ makedepends=('cmake' 'svn')
 source=("${pkgname}.desktop"
         "$pkgname::svn+https://svn.code.sf.net/p/speed-dreams/code/trunk")
 
-md5sums=('9a0a63c897668ee18bcd6c5d65fe2111'
-        "SKIP")
+md5sums=("9a0a63c897668ee18bcd6c5d65fe2111"
+         "SKIP")
 
 prepare() {
     cd "$srcdir/$pkgname"
@@ -29,7 +29,7 @@ prepare() {
     mkdir build
     
     cd build
-    cmake ../
+    cmake ../ -Wno-dev
 }
 
 build() {
@@ -45,6 +45,6 @@ package() {
 
     install -D -m644 "${pkgdir}/usr/local/share/games/speed-dreams-2/data/icons/icon.png" \
         "${pkgdir}/usr/share/pixmaps/speed-dreams-2.png"
-    install -D -m644 "../${pkgname}.desktop" \
+    install -D -m644 "$srcdir/${pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/speed-dreams-svn.desktop"
 }
