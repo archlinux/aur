@@ -11,6 +11,7 @@ license=('GPL2')
 depends=('libunwind' 'openssl-1.0' 'icu')
 optdepends=('sonarr: TV daemon for usenet & torrents'
             'radarr: Movie daemon for usenet & torrents (sonarr fork)'
+            'lidarr: Music daemon for usenet & torrents (sonarr fork)'
             'sickrage: TV daemon for usenet & torrents (sickbeard fork)'
             'couchpotato: Movie daemon for usenet & torrents'
             'plex-media-server: Media server'

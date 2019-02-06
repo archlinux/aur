@@ -12,6 +12,7 @@ pkgbase = ombi
 	depends = icu
 	optdepends = sonarr: TV daemon for usenet & torrents
 	optdepends = radarr: Movie daemon for usenet & torrents (sonarr fork)
+	optdepends = lidarr: Music daemon for usenet & torrents (sonarr fork)
 	optdepends = sickrage: TV daemon for usenet & torrents (sickbeard fork)
 	optdepends = couchpotato: Movie daemon for usenet & torrents
 	optdepends = plex-media-server: Media server
