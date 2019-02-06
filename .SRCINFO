@@ -1,6 +1,6 @@
 pkgbase = dive-git
 	pkgdesc = A tool for exploring each layer in a docker image
-	pkgver = v0.6.0.r0.g54979ae
+	pkgver = v0.6.0.r4.g91d3721
 	pkgrel = 1
 	url = https://github.com/wagoodman/dive
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dive-git
 	provides = dive-bin
 	conflicts = dive
 	conflicts = dive-bin
-	source = dive::git+https://github.com/wagoodman/dive.git
+	source = dive-git::git+https://github.com/wagoodman/dive
 	sha256sums = SKIP
 
 pkgname = dive-git
