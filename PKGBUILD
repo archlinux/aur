@@ -3,7 +3,7 @@
 pkgname=home-assistant-hassio
 pkgdesc='Open-source home automation platform running on Python 3 within Docker'
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 url="https://home-assistant.io/"
 license=('APACHE')
 arch=('any')
@@ -18,4 +18,5 @@ depends=('curl'
 	'networkmanager'
 	'systemd'
          )
+conflicts=('linux-ck','linux-lts-ck')
 install='hassio.install'
