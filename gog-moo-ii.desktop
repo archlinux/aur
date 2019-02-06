@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Master of Orion II: Battle at Antares
+Path=/usr/bin
+Exec=moo-ii
+Icon=gog-moo-ii
+Terminal=false
+Categories=Games;

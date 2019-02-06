@@ -1,0 +1,21 @@
+pkgbase = gog-moo-ii
+	pkgdesc = Master of Orion II: Battle at Antares is a 4X turn-based strategy game set in space
+	pkgver = 2.0.0.6
+	pkgrel = 1
+	url = https://www.gog.com/game/master_of_orion_1_2
+	arch = any
+	license = custom
+	makedepends = lgogdownloader
+	depends = dosbox
+	options = !strip
+	source = gog_master_of_orion_2_2.0.0.6.sh::gogdownloader://master_of_orion_2/en3installer1
+	source = http://www.moo2mod.com/patch/MOO2-1.50.13.zip
+	source = moo-ii
+	source = gog-moo-ii.desktop
+	sha512sums = 2a972b3d8db04f2f52cfae64b8b2e041d0fb2b0084103f35814db123daf5d530e6309e2fe364fe5435d26e893cedcb2592efcb4deb90cd7b1445173e92f82a0b
+	sha512sums = b02480a1eb05b2b93671478f0ada974e20852533e31fabea826e4d32214db5e44267275351743e3efc510fc0d33540e88fdb34b91ae301098ff19b2d38d6fb88
+	sha512sums = 736286b71b2bb3cfd39316d4f46cb3584011e6ab0446225f31fbe52cafa121dea9e9d801038010ea54cc1a94319e91f98002363db19590b5dd456cde4848eedd
+	sha512sums = 27142d7d2f7c0c7d5fd7c042461bf20211188f84bdc54a8fbd95c5a6f8227f6825a702918f89ab07578afde16c4884dadd30fa87ba6bba3896b01515f1879729
+
+pkgname = gog-moo-ii
+

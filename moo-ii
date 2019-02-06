@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [ ! -d "$HOME"/.moo-ii ] ; then
+    mkdir -p "$HOME"/.moo-ii
+    ln -s /usr/share/gog-moo-ii/* "$HOME"/.moo-ii
+
+    rm /home/martoko/.moo-ii/SOUND.LBX
+    cp /usr/share/moo-ii/SOUND.LBX "$HOME"/.moo-ii/SOUND.LBX
+fi
+
+dosbox -c "@echo off" -c "mount c $HOME/.moo-ii/" -c "c:" -c "cls" -c "echo Starting Master of Orion 2..." -c "orion150" -c "exit"
