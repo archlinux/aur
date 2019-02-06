@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=netcap-git
-pkgver=v0.3.9.r7.g8e67a07
+pkgver=v0.3.9.r8.g11bd1ba
 pkgrel=1
 epoch=1
 pkgdesc='A framework for secure and scalable network traffic analysis'
@@ -34,9 +34,8 @@ prepare() {
 build() {
 	cd "${srcdir}/go/src/github.com/dreadl0ck/netcap"
 
-	export GOROOT="/usr/lib/go" GOPATH="${srcdir}/go"
-
 	mkdir -p build
+
 	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" \
 	go build \
 		-ldflags "-s -w" \
