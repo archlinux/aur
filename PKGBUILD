@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=ghw-git
-pkgver=0.3.r0.g032dfb1
+pkgver=0.3.r2.g64063ac
 pkgrel=1
 pkgdesc="Golang hardware discovery/inspection library"
 arch=('x86_64')
