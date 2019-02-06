@@ -1,0 +1,33 @@
+From 00094db4f071c2fef8b853ab7b5d04e6e0f4b6fe Mon Sep 17 00:00:00 2001
+From: Oleg Grenrus <oleg.grenrus@iki.fi>
+Date: Mon, 19 Nov 2018 16:59:09 +0200
+Subject: [PATCH] Make pattern match complete
+
+---
+ chart/Graphics/Rendering/Chart/State.hs | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/chart/Graphics/Rendering/Chart/State.hs b/chart/Graphics/Rendering/Chart/State.hs
+index 2c59a7b..855038c 100644
+--- a/chart/Graphics/Rendering/Chart/State.hs
++++ b/chart/Graphics/Rendering/Chart/State.hs
+@@ -92,14 +92,17 @@ plotRight pm = do
+ -- | Pop and return the next color from the state
+ takeColor :: EC l (AlphaColour Double)
+ takeColor = liftCState $ do
+-  (c:cs) <- use colors
++  (c,cs) <- fromInfiniteList `fmap` use colors
+   colors .= cs
+   return c
+ 
+ -- | Pop and return the next shape from the state
+ takeShape :: EC l PointShape
+ takeShape = liftCState $ do
+-  (c:cs) <- use shapes
++  (c,cs) <- fromInfiniteList `fmap` use shapes
+   shapes .= cs
+   return c
+ 
++fromInfiniteList :: [a] -> (a, [a])
++fromInfiniteList []     = error "fromInfiniteList (takeColor or takeShape): empty list"
++fromInfiniteList (x:xs) = (x, xs)

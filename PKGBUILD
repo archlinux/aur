@@ -1,24 +1,33 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: Jaron Kent-Dobias <jaron@kent-dobias.com>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 
 _hkgname=Chart
 pkgname=haskell-chart
-pkgver=1.3.3
+pkgver=1.9
 pkgrel=1
-pkgdesc="A library for generating 2D Charts and Plots"
-url="http://hackage.haskell.org/package/${_hkgname}"
-license=('custom:BSD3')
-arch=('i686' 'x86_64')
-makedepends=()
-depends=('ghc' 'haskell-array' 'haskell-data-default-class'  'haskell-colour>=2.2.1'
-         'haskell-lens>=3.9' 'haskell-mtl' 'haskell-old-locale' 'haskell-operational'
-         'haskell-time' )
-options=('strip' 'staticlibs')
-source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-install=${pkgname}.install
-md5sums=('3cfc85e393768c609b2accf671615e0e')
+pkgdesc="A library for generating 2D Charts and Plots."
+url="https://hackage.haskell.org/package/${_hkgname}"
+license=('BSD-3')
+arch=('x86_64')
+depends=('ghc-libs' 'haskell-data-default-class'  'haskell-colour'
+         'haskell-lens' 'haskell-old-locale' 'haskell-operational' 'haskell-vector')
+makedepends=('ghc')
+source=(https://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz
+        00094db4f071c2fef8b853ab7b5d04e6e0f4b6fe.patch
+        haskell-chart-lens.patch)
+sha512sums=('ccc78479384792bee5dec369743bcc909416dcc3d7d5d304b81e251c70497c2084e4c36fcf3d70a5c0204c95efc840edbc171dffe8bd98dd4e54176c78e86976'
+            '4bd45567d228d35790d2c9e8db67d588c63e05758e3954552bc31e74fc564f2d35ea35265e60605355c7d5370a47d3e0db965ca5fa2a0669d2f936df93d46353'
+            '9345a8da752a1cfef87dea5620743cd680f8084762db88b48b6fb2fcb74c1b0e64db73d0a3ef677c8174223acfeed20eb6472351e30f133f0f1ecaa1d3da09ee')
+
+prepare() {
+  cd ${_hkgname}-${pkgver}
+  patch -Np1 -i "${srcdir}/haskell-chart-lens.patch"
+  patch -Np2 -i "${srcdir}/00094db4f071c2fef8b853ab7b5d04e6e0f4b6fe.patch"
+}
+
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
-    runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \
+    runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-shared --disable-library-vanilla \
        --prefix=/usr --docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid
     runhaskell Setup build
     runhaskell Setup haddock
@@ -26,6 +35,7 @@ build() {
     runhaskell Setup unregister --gen-script
     sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
+
 package() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     install -D -m744 register.sh   ${pkgdir}/usr/share/haskell/${pkgname}/register.sh
