@@ -1,6 +1,6 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=aurto
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="An AUR tool for managing an auto-updating local 'aurto' package repository using aurutils."
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=()
 makedepends=('cargo')
 install="aurto.install"
 source=("https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e45ed5e191ddf3963abb5646e0c4092f505461f564aad0d38c654d15a09e95c6')
+sha256sums=('82376ced50560fb47f110ac8d825d7cce900330e6ae5a8940b9bbbe61d1ed994')
 backup=('usr/lib/systemd/system/check-aurto-git-trigger.timer'
         'usr/lib/systemd/system/update-aurto.timer'
         'etc/aurto/makepkg-chroot.conf')
