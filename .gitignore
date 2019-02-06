@@ -1,0 +1,5 @@
+pkg/
+src/
+*.jar
+*.pkg.tar.xz
+LICENSE
