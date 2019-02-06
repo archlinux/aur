@@ -2,31 +2,28 @@
 # Contributor: George Eleftheriou <eleftg>
 
 pkgname='feelpp'
-pkgver=0.106.0_beta.2
+pkgver=0.106.0
 pkgrel=1
 pkgdesc="Finite Element Embedded Language and Library in C++"
 arch=('i686' 'x86_64')
 url="https://github.com/feelpp"
 license=('LGPL')
-depends=('cln' 'mumps' 'slepc' 'gmsh' 'fftw' 'ann' 'libbson' 'glpk' 'gsl' 'python' 'ginac')
+depends=('cln' 'mumps' 'petsc' 'slepc' 'gmsh' 'fftw' 'ann' 'libbson' 'glpk' 'gsl' 'python' 'ginac')
 makedepends=('cmake' 'python2')
 source=("https://github.com/feelpp/feelpp/releases/download/v${pkgver}/feelpp-${pkgver}.tar.gz")
 source=(https://github.com/feelpp/feelpp/archive/v${pkgver/_/-}.tar.gz)
-sha256sums=('f95c3c0c10fccb3f95ad9b0279580e7422bd8ef4a0b8339417cdb67415b10fa5')
+sha256sums=('4e5f5a68029244adb3dbbb6337ca06fad549fdbbb36c6b05aec0847ed116e6b5')
 
 prepare() {
   cd $pkgbase-${pkgver/_/-}
 
   # https://github.com/feelpp/feelpp/issues/1247: boost 1.68 support
-  curl -L https://github.com/feelpp/feelpp/commit/f5951158541f664a31d7e8b2d460f3bde7d26e51.patch | patch -p1
-  curl -L https://github.com/feelpp/feelpp/commit/a10192595eea7895dfc0d9faabff48b8086b6cf7.patch | patch -p1
-  curl -L https://github.com/feelpp/feelpp/commit/d0df2512cb56c838e2a27bc6721b63395ada5a21.patch | patch -p1
   curl -L https://github.com/feelpp/feelpp/pull/1251.patch | patch -p1
-  sed -i "s|unit_test_framework signals|unit_test_framework|g" feelpp/cmake/modules/feelpp.dependencies.cmake
 
   # git submodules not included in tarball
   test -f feelpp/contrib/pybind11/CMakeLists.txt || git clone https://github.com/feelpp/pybind11.git feelpp/contrib/pybind11
   test -f feelpp/contrib/nlopt/CMakeLists.txt || git clone https://github.com/feelpp/nlopt.git feelpp/contrib/nlopt
+  test -f feelpp/contrib/kwsys/CMakeLists.txt || git clone https://github.com/feelpp/kwsys.git feelpp/contrib/kwsys
 
   # error: no template named 'unordered_set' in namespace 'std'
   sed -i "40i#include <unordered_set>" feelpp/feel/feelmesh/filters.hpp
