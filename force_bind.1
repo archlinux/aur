@@ -2,9 +2,11 @@
 .SH NAME
 FORCE_BIND
 .SH AUTHOR
-Catali(ux) M. BOIE \- catab at embedromix dot ro
+Catalin(ux) M. BOIE \- catab at embedromix dot ro
 .SH DESCRIPTION
-Force an application to bind on a specific IP and/or port. Works with both IPv4 and IPv6. It is useful if you have a binary application without sources and without the possibility to configure address or port to bind to.
+Force an application to bind on a specific IP and/or port. Plus forcing setsockopt calls on the socket. Works with both IPv4 and IPv6.
+.TP
+It is useful if you have a binary application without sources and without the possibility to configure address or port to bind to.
 .SH LICENSE
 GPLv3
 .SH HOW IT WORKS
@@ -15,6 +17,8 @@ force_bind is a shared object that is loaded with LD_PRELOAD and hooks 'bind' fu
 \fB	export FORCE_NET_VERBOSE=999
 .TP
 \fB	export FORCE_NET_LOG="xxx.log"
+.TP
+\fB	export LD_PRELOAD=${LD_PRELOAD}:/usr/lib/force_bind.so
 .TP
 \fB	your_program_here
 .TP
@@ -122,7 +126,7 @@ force_bind is a shared object that is loaded with LD_PRELOAD and hooks 'bind' fu
 .TP
 \fB	your_program_here
 .TP
-13. Force FWMARK on a connection (only root is allowed):
+13. Force FWMARK on a connection (only root can do it):
 .TP
 \fB	export FORCE_NET_VERBOSE=1
 .TP
