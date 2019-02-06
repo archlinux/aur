@@ -1,0 +1,28 @@
+pkgbase = haskell-diagrams-svg
+	pkgdesc = A modular backend for rendering diagrams created with the diagrams EDSL to SVG files.
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/diagrams-diagrams-svg
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-base64-bytestring
+	depends = haskell-colour
+	depends = haskell-containers
+	depends = haskell-diagrams-core
+	depends = haskell-diagrams-lib
+	depends = haskell-hashable
+	depends = haskell-juicypixels
+	depends = haskell-lens
+	depends = haskell-monoid-extras
+	depends = haskell-optparse-applicative
+	depends = haskell-split
+	depends = haskell-svg-builder
+	source = https://hackage.haskell.org/package/diagrams-svg-1.4.2/diagrams-svg-1.4.2.tar.gz
+	source = haskell-diagrams-svg-semigroups.patch
+	sha512sums = dfbdeffa6ac882b5541efc9ce19956f9b4a96e95c2b7006f7370cd0a93a367d98b41abe9474405df828ce44a1b063d142220ec5ca30ff3e632e572b14f3c223f
+	sha512sums = 59e8859b354d35456b8af43ee0dfa62572d98257e76726f2cd0bd585793c3e7b77e4b8509d3491453f87472f9266586d58e59ac9105bcce46695eb1ef8df823d
+
+pkgname = haskell-diagrams-svg
+
