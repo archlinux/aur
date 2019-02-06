@@ -1,0 +1,14 @@
+pkgbase = python-pickle5
+	pkgdesc = Experimental backport of the pickle 5 protocol (PEP 574)
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/pitrou/pickle5-backport
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.org/packages/source/p/pickle5/pickle5-0.0.6.tar.gz
+	sha256sums = ae0022ad79930cf8cd190eade903ec5041c36a0237bab8ac38a50d2c9d3fc3cb
+
+pkgname = python-pickle5
+
