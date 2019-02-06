@@ -1,4 +1,4 @@
-# Joplin - Arch Linux
+# Nexus CLI - Arch Linux
 
 ## Overview
 
