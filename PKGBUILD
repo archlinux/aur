@@ -4,7 +4,7 @@
 pkgbase=ipython-ipyparallel
 pkgname=('ipython-ipyparallel' 'ipython2-ipyparallel')
 pkgver=6.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive Parallel Computing in Python"
 url="https://github.com/ipython/ipyparallel"
 arch=(any)
@@ -32,6 +32,10 @@ package_ipython-ipyparallel() {
 
   cd "${srcdir}/ipyparallel-$pkgver"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+  install -Dm644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  mv "$pkgdir/usr/etc" "$pkgdir/etc"
 }
 
 package_ipython2-ipyparallel() {
@@ -40,6 +44,10 @@ package_ipython2-ipyparallel() {
 
   cd "${srcdir}/ipyparallel-$pkgver-py2"
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+  install -Dm644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  mv "$pkgdir/usr/etc" "$pkgdir/etc"
   mv "${pkgdir}"/usr/bin/ipcluster "${pkgdir}"/usr/bin/ipcluster2
   mv "${pkgdir}"/usr/bin/ipcontroller "${pkgdir}"/usr/bin/ipcontroller2
   mv "${pkgdir}"/usr/bin/ipengine "${pkgdir}"/usr/bin/ipengine2
