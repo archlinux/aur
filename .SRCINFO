@@ -1,0 +1,16 @@
+pkgbase = haskell-diagrams-solve
+	pkgdesc = Pure Haskell solver routines used by the diagrams project.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/diagrams-solve
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/package/diagrams-solve-0.1.1/diagrams-solve-0.1.1.tar.gz
+	source = haskell-diagrams-solve.patch
+	sha512sums = 00045731820dbc1c2c0226dbfcc5781afc9f464cb4c0ac9a8a8ed01e533720c8cdc783c41c92e146b722ab4b7954af7cc7d012ee3598b4a8833a112f1319030c
+	sha512sums = f5e867e50f131c501bbd94808fcfe329b36459f69e649320056c45ff49d0d77cdd3e4c8aae7c76f2118b70d89bad869235ba8ab96d24422f2d9d8b16ce92a9d1
+
+pkgname = haskell-diagrams-solve
+
