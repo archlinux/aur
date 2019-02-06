@@ -11,6 +11,7 @@ pkgbase = dune-functions
 	makedepends = dune-typetree
 	makedepends = dune-localfunctions
 	makedepends = dune-grid
+	makedepends = git
 	source = git+https://gitlab.dune-project.org/staging/dune-functions.git#tag=v2.6.0
 	md5sums = SKIP
 

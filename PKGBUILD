@@ -8,7 +8,7 @@ url='https://dune-project.org/modules/dune-functions/index.html'
 arch=('any')
 license=('custom')
 source=("git+https://gitlab.dune-project.org/staging/${pkgname}.git#tag=v${pkgver}")
-makedepends=('cmake' "dune-common=${pkgver}" "dune-typetree" "dune-localfunctions" "dune-grid")
+makedepends=('cmake' "dune-common=${pkgver}" "dune-typetree" "dune-localfunctions" "dune-grid" 'git')
 md5sums=('SKIP')
 
 package() {
