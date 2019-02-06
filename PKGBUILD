@@ -1,15 +1,15 @@
 # Maintainer: Victor3D <webmaster@victor3d.com.br>
 pkgname=executor
 pkgver=2
-pkgrel=0
+pkgrel=1
 epoch=
-pkgdesc="old-school Macintosh Emulator "
+pkgdesc="Old-school Macintosh Emulator"
 arch=('x86_64')
 url=""
 license=('GPL')
 groups=()
-depends=("sdl2" "qt5-base")
-makedepends=("cmake" "sdl2")
+depends=("sdl2" "qt5-base" "boost")
+makedepends=("cmake" "sdl2" "boost" "git")
 checkdepends=()
 optdepends=()
 provides=()
@@ -21,19 +21,27 @@ install=
 changelog=
 source=("https://github.com/victor3dptz/executor-packaging/raw/master/arch/executor.tar.gz")
 noextract=()
-md5sums=("ab9650aa5215a569703741b427aab061")
+md5sums=("e3008f80cb44277fd1e5a0873b39d131")
 validpgpkeys=()
 
 prepare() {
 	cd "$pkgname"
-	mkdir build
+	git init
+	git remote add origin https://github.com/autc04/executor.git
+	git pull origin master
+	git submodule init
+	git submodule update
+	sed -i 's/SDL_keycode.h/SDL2\/SDL_keycode.h/g' src/config/front-ends/sdl2/keycode_map.h
+	sed -i 's/SDL.h/SDL2\/SDL.h/g' src/config/front-ends/sdl2/sdl2.cpp
+	sed -i 's/SDL.h/SDL2\/SDL.h/g' src/config/front-ends/sdl2/keycode_map.cpp
 }
 
 build() {
 	cd "$pkgname"
+	mkdir build
 	cd build
-	cmake .. -DFRONT_END=qt
-	cmake --build .
+	cmake ..
+	make
 }
 
 check() {
@@ -53,5 +61,5 @@ package() {
 	mkdir -p "$pkgdir/usr/share/executor"
 	cp -Rp "usr/share/executor/" "$pkgdir/usr/share/"
 	mkdir -p "$pkgdir/usr/bin"
-	cp -Rp "build/src/executor" "$pkgdir/usr/bin/executor-bin"
+	cp -Rp "$pkgdir/build/src/executor" "$pkgdir/usr/bin/executor-bin"
 }
