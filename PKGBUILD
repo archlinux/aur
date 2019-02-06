@@ -17,7 +17,8 @@ url='http://users.fred.net/tds/lab/p2c/'
 license=('GPL')
 depends=('perl')
 if [ "${_opt_32bit}" -ne 0 ]; then
-  depends+=('lib32-gcc-libs')
+  depends+=('lib32-glibc')
+  makedepends+=('lib32-gcc-libs')
 fi
 #  http://ftp.debian.org/debian/pool/main/p/p2c/p2c_${pkgver}-3.diff.gz)
 #source=("http://www.ccrnp.ncifcrf.gov/~toms/p2c/p2c-${pkgver}.tar.gz")
