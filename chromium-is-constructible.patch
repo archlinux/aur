@@ -1,0 +1,13 @@
+diff --git a/base/optional.h b/base/optional.h
+index 84b302e53079..10586d65f225 100644
+--- a/base/optional.h
++++ b/base/optional.h
+@@ -345,7 +345,7 @@ struct IsConvertibleFromOptional
+     : std::integral_constant<
+           bool,
+           std::is_constructible<T, Optional<U>&>::value ||
+-              std::is_constructible<T, const Optional<U>&>::value ||
++              // std::is_constructible<T, const Optional<U>&>::value ||
+               std::is_constructible<T, Optional<U>&&>::value ||
+               std::is_constructible<T, const Optional<U>&&>::value ||
+               std::is_convertible<Optional<U>&, T>::value ||

@@ -1,0 +1,287 @@
+# Maintainer: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Mikhail Vorozhtsov <mikhail.vorozhtsov@gmail.com>
+# Contributor: Nagisa <simonas@kazlauskas.me>
+# Contributor: Misc <andreas.reis@gmail.com>
+# Contributor: Jeagoss <jgoliver@jeago.com>
+# Contributor: Saikrishna Arcot <saiarcot895@gmail.com>
+# Contributor: Steven Newbury <steve@snewbury.org.uk>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+
+pkgname=chromium-ozone-wayland-git
+pkgver=74.0.3694.0+39+27f5faa20d
+pkgrel=1
+_launcher_ver=6
+pkgdesc="Chromium built from the Igalia fork with experimental Wayland support via Ozone"
+arch=('x86_64')
+options=(!strip debug)
+url="https://www.chromium.org/Home"
+license=('BSD')
+depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
+         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
+         'desktop-file-utils' 'hicolor-icon-theme')
+provides=('chromium')
+conflicts=('chromium')
+makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
+             'clang' 'lld' 'gn' 'java-runtime-headless' 'depot-tools-git')
+optdepends=('pepper-flash: support for Flash content'
+            'kdialog: needed for file dialogs in KDE'
+            'gnome-keyring: for storing passwords in GNOME keyring'
+            'kwallet: for storing passwords in KWallet')
+install=chromium.install
+source=(chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        chromium-system-icu.patch
+        chromium-widevine.patch
+        chromium-cmath.patch
+        chromium-is-constructible.patch)
+sha256sums=('04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
+            'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
+            'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
+            '00c9439fd2216693d909a806f11b2260abd0ded4feca79136870c2c136a78515'
+            '2fe35a8eaa6b32285ceaab03235802e9cb3da54b08ef49af0796a4e3c7c3078f')
+
+# Repository and branch/commit to fetch code from
+_gitrepo=https://github.com/Igalia/chromium.git
+_gitref=ozone-wayland-dev
+
+# Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
+# Keys are the names in the above script; values are the dependencies in Arch
+declare -gA _system_libs=(
+  [ffmpeg]=ffmpeg
+  [flac]=flac
+  [fontconfig]=fontconfig
+  [freetype]=freetype2
+  [harfbuzz-ng]=harfbuzz
+  [icu]=icu
+  [libdrm]=
+  [libjpeg]=libjpeg
+  #[libpng]=libpng            # https://crbug.com/752403#c10
+  #[libvpx]=libvpx            # needs unreleased libvpx
+  [libwebp]=libwebp
+  [libxml]=libxml2
+  [libxslt]=libxslt
+  [opus]=opus
+  [re2]=re2
+  [snappy]=snappy
+  [yasm]=
+  [zlib]=minizip
+)
+_unwanted_bundled_libs=(
+  ${!_system_libs[@]}
+  ${_system_libs[libjpeg]+libjpeg_turbo}
+)
+depends+=(${_system_libs[@]})
+
+# Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys.
+_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+_google_default_client_id=413772536636.apps.googleusercontent.com
+_google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
+
+export PATH="/opt/depot_tools:${PATH}"
+
+prepare() {
+  cd "$srcdir"
+
+  gclient config --spec "solutions = [
+    {
+      \"url\": \"${_gitrepo}@${_gitref}\",
+      \"managed\": False,
+      \"name\": \"src\",
+      \"deps_file\": \".DEPS.git\",
+      \"custom_deps\": {},
+    },
+  ]
+  "
+  # Hopefully 1000 is enough to find the last change to chrome/VERSION
+  git clone --depth 1000 "$_gitrepo" src
+  cd src
+  git checkout "$gitref"
+
+  # Download synced projects
+  gclient sync --reset --no-history --nohooks --ignore_locks
+
+  # Allow building against system libraries in official builds
+  sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
+    tools/generate_shim_headers/generate_shim_headers.py
+
+  # https://crbug.com/893950
+  sed -i -e 's/\<xmlMalloc\>/malloc/' -e 's/\<xmlFree\>/free/' \
+    third_party/blink/renderer/core/xml/*.cc \
+    third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
+    third_party/libxml/chromium/libxml_utils.cc
+
+  # Load Widevine CDM if available
+  patch -Np1 -i ../chromium-widevine.patch
+
+  # https://bugs.gentoo.org/661880#c21
+  patch -Np1 -i ../chromium-system-icu.patch
+
+  # https://github.com/Igalia/chromium/issues/525
+  patch -Np1 -i ../chromium-cmath.patch
+  patch -Np1 -i ../chromium-is-constructible.patch ## Absolute dirty hack
+
+  # Remove compiler flags not supported by our system clang
+  # sed -i \
+  #   -e '/"-Wno-defaulted-function-deleted"/d' \
+  #   build/config/compiler/BUILD.gn
+
+  sed -i \
+    -e '/"-fsplit-lto-unit"/d' \
+    build/config/compiler/BUILD.gn
+
+  # Force script incompatible with Python 3 to use /usr/bin/python2
+  sed -i '1s|python$|&2|' \
+    -i third_party/dom_distiller_js/protoc_plugins/*.py
+
+  # Obviously, python code sometimes also calls python itself
+  sed -i "s/'python'/'python2'/g" third_party/binutils/download.py
+
+  # Remove bundled libraries for which we will use the system copies; this
+  # *should* do what the remove_bundled_libraries.py script does, with the
+  # added benefit of not having to list all the remaining libraries
+  local _lib
+  for _lib in ${_unwanted_bundled_libs[@]}; do
+    find "third_party/$_lib" -type f \
+      \! -path "third_party/$_lib/chromium/*" \
+      \! -path "third_party/$_lib/google/*" \
+      \! -path 'third_party/yasm/run_yasm.py' \
+      \! -regex '.*\.\(gn\|gni\|isolate\)' \
+      -delete
+  done
+
+  python2 build/linux/unbundle/replace_gn_files.py \
+    --system-libraries "${!_system_libs[@]}"
+
+  gclient runhooks
+}
+
+pkgver() {
+  cd "$srcdir/src"
+  . "chrome/VERSION"
+  tag_version="$MAJOR.$MINOR.$BUILD.$PATCH"
+  tag_commit=$(git rev-list -1 HEAD -- "chrome/VERSION")
+  commits_since=$(git rev-list ${tag_commit}...HEAD --count)
+  head_commit=$(git rev-list -1 --abbrev-commit HEAD)
+  echo "$tag_version+$commits_since+$head_commit"
+}
+
+build() {
+  make -C chromium-launcher-$_launcher_ver
+
+  cd "$srcdir/src"
+
+  _clang_path="${BUILDDIR}${_builddir}/src/src/third_party/llvm-build/Release+Asserts/bin/"
+
+  export CC="${_clang_path}clang"
+  export CXX="${_clang_path}clang++"
+  export AR=ar
+  export NM=nm
+
+  if check_buildoption ccache y; then
+    # Avoid falling back to preprocessor mode when sources contain time macros
+    export CCACHE_SLOPPINESS=time_macros
+    export CC="ccache $CC"
+    export CXX="ccache $CXX"
+  fi
+
+  local _flags=(
+    'custom_toolchain="//build/toolchain/linux/unbundle:default"'
+    'host_toolchain="//build/toolchain/linux/unbundle:default"'
+    'clang_use_chrome_plugins=true'
+    'is_official_build=true' # implies is_cfi=true on x86_64
+    'treat_warnings_as_errors=false'
+    'fieldtrial_testing_like_official_build=true'
+    'ffmpeg_branding="Chrome"'
+    'proprietary_codecs=true'
+    'link_pulseaudio=true'
+    'use_gnome_keyring=false'
+    'use_sysroot=false'
+    'use_ozone=true'
+    'use_xkbcommon=true'
+    'use_system_minigbm=true'
+    'use_vaapi=true'
+    'linux_use_bundled_binutils=false'
+    'use_custom_libcxx=false'
+    'use_jumbo_build=true'
+    'remove_webcore_debug_symbols=true'
+    'enable_hangout_services_extension=true'
+    'enable_widevine=true'
+    'enable_nacl=false'
+    'enable_swiftshader=false'
+    "google_api_key=\"${_google_api_key}\""
+    "google_default_client_id=\"${_google_default_client_id}\""
+    "google_default_client_secret=\"${_google_default_client_secret}\""
+  )
+
+  # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
+  CFLAGS+='   -Wno-builtin-macro-redefined'
+  CXXFLAGS+=' -Wno-builtin-macro-redefined'
+  CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
+
+  if check_option strip y; then
+    _flags+=('symbol_level=0')
+
+    # Mimic exclude_unwind_tables=true
+    CFLAGS+='   -fno-unwind-tables -fno-asynchronous-unwind-tables'
+    CXXFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
+    CPPFLAGS+=' -DNO_UNWIND_TABLES'
+  else
+    _flags+=('symbol_level=1')
+  fi
+
+  gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python2
+  /usr/bin/ninja -C out/Release chrome chrome_sandbox chromedriver
+}
+
+package() {
+  cd chromium-launcher-$_launcher_ver
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE \
+    "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
+
+  cd "$srcdir/src"
+
+  install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
+  install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
+  ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
+
+  install -Dm644 chrome/installer/linux/common/desktop.template \
+    "$pkgdir/usr/share/applications/chromium.desktop"
+  install -Dm644 chrome/app/resources/manpage.1.in \
+    "$pkgdir/usr/share/man/man1/chromium.1"
+  sed -i \
+    -e "s/@@MENUNAME@@/Chromium/g" \
+    -e "s/@@PACKAGE@@/chromium/g" \
+    -e "s/@@USR_BIN_SYMLINK_NAME@@/chromium/g" \
+    "$pkgdir/usr/share/applications/chromium.desktop" \
+    "$pkgdir/usr/share/man/man1/chromium.1"
+
+  cp \
+    out/Release/{chrome_{100,200}_percent,resources}.pak \
+    out/Release/{*.bin,chromedriver} \
+    "$pkgdir/usr/lib/chromium/"
+  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
+
+  if [[ -z ${_system_libs[icu]+set} ]]; then
+    cp out/Release/icudtl.dat "$pkgdir/usr/lib/chromium/"
+  fi
+
+  for size in 22 24 48 64 128 256; do
+    install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
+  done
+
+  for size in 16 32; do
+    install -Dm644 "chrome/app/theme/default_100_percent/chromium/product_logo_$size.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
+  done
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
+}
+
+# vim:set ts=2 sw=2 et:
