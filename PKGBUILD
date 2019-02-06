@@ -1,11 +1,5 @@
 # Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
-# Notes:
-#   + gog:// DLAGENT:
-#       - A gog:// DLAGENT can be configured in /etc/makepkg.conf to
-#         automatically pull game files from GOG.
-#       - https://github.com/Sude-/lgogdownloader
-
 pkgname='gog-stardew-valley'
 pkgver=1.3.33
 pkgrel=1
