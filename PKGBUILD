@@ -18,7 +18,7 @@ makedepends=('git' 'l-smash' 'nasm')
 provides=('lib32-libx264' 'libx264.so')
 conflicts=('lib32-libx264' 'lib32-libx264-10bit' 'lib32-libx264-all')
 replaces=('lib32-libx264' 'lib32-libx264-10bit' 'lib32-libx264-all')
-_commit='0a84d986e7020f8344f00752e3600b9769cc1e85'
+_commit='545de2ffec6ae9a80738de1b2c8cf820249a2530'
 source=("git+https://git.videolan.org/git/x264.git#commit=${_commit}")
 sha256sums=('SKIP')
 
