@@ -3,8 +3,8 @@
 _hkgname=operational
 pkgname=haskell-operational
 pkgver=0.2.3.5
-pkgrel=1
-pkgdesc='A wrapper to gnuplot which lets you create 2D and 3D plots.'
+pkgrel=2
+pkgdesc='This library makes it easy to implement monads with tricky control flow.'
 url='https://hackage.haskell.org/package/operational'
 license=('BSD-3')
 arch=('x86_64')

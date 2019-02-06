@@ -1,7 +1,7 @@
 pkgbase = haskell-operational
-	pkgdesc = A wrapper to gnuplot which lets you create 2D and 3D plots.
+	pkgdesc = This library makes it easy to implement monads with tricky control flow.
 	pkgver = 0.2.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/operational
 	arch = x86_64
 	license = BSD-3
