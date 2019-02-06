@@ -108,12 +108,13 @@ _lua_iup_package_helper() {
   # $1 ... Lua version ("5.1", "5.2", "5.3", ... or "none")
   _lua_ver="$1"
   _lua_ver_nodot="${_lua_ver//.}"
+  _linux_ver="Linux$(uname -r | awk -v FS='.' -v OFS='' {'print $1,$2'})_64"
 
   # install files
   install -m755 -d "${pkgdir}/usr/bin"
-  install -m755 "${srcdir}"/iup/bin/Linux*_??/Lua${_lua_ver_nodot}/* "${pkgdir}/usr/bin"
+  install -m755 "${srcdir}"/iup/bin/${_linux_ver}/Lua${_lua_ver_nodot}/* "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib/lua/${_lua_ver}/"
-  install -Dm755 "${srcdir}"/iup/lib/Linux*_??/Lua${_lua_ver_nodot}/*.so "${pkgdir}/usr/lib/lua/${_lua_ver}/"
+  install -Dm755 "${srcdir}"/iup/lib/${_linux_ver}/Lua${_lua_ver_nodot}/*.so "${pkgdir}/usr/lib/lua/${_lua_ver}/"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 "${srcdir}/iup/COPYRIGHT" "${pkgdir}/usr/share/licenses/${pkgname}"
 
@@ -141,10 +142,12 @@ package_iup() {
   pkgdesc="C cross platform GUI toolkit"
   depends=('libcd' 'ftgl' 'webkitgtk' 'openmotif' 'libxpm')
 
+  _linux_ver="Linux$(uname -r | awk -v FS='.' -v OFS='' {'print $1,$2'})_64"
+
   install -m755 -d "$pkgdir"/usr/lib
-  install -m755 "$srcdir"/iup/lib/Linux*_??/libiup* "$pkgdir"/usr/lib
+  install -m755 "$srcdir"/iup/lib/${_linux_ver}/libiup* "$pkgdir"/usr/lib
   install -m755 -d "$pkgdir"/usr/bin
-  install -m755 "$srcdir"/iup/bin/Linux*_??/[^Lua]* "$pkgdir"/usr/bin || true
+  install -m755 "$srcdir"/iup/bin/${_linux_ver}/[^Lua]* "$pkgdir"/usr/bin
   install -m755 -d "$pkgdir"/usr/include/iup
   install -m644 "$srcdir"/iup/include/* "$pkgdir"/usr/include/iup
   install -m755 -d "$pkgdir"/usr/share/$pkgname
