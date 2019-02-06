@@ -1,0 +1,4 @@
+pkg/
+src/
+runelite-git/
+*.pkg.tar.xz
