@@ -1,3 +1,5 @@
+ Maintainer: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
+# Contributor: xantares
 
 pkgbase=ipython-ipyparallel
 pkgname=('ipython-ipyparallel' 'ipython2-ipyparallel')
