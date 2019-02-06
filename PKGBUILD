@@ -2,20 +2,20 @@
 pkgbase=qt5-service
 pkgname=(qt5-service qt5-service-doc)
 group=qt5-service-full
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="A platform independent library to easily create system services and use some of their features"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtService"
 license=('BSD')
 depends=('qt5-base' 'libsystemd')
-makedepends=('git' 'qt5-tools' 'qpmx-qpmsource' 'qt5-declarative' 'pkg-config' 'python' 'doxygen' 'graphviz')
+makedepends=('git' 'qt5-tools' 'qdep' 'qt5-declarative' 'pkg-config' 'python' 'doxygen' 'graphviz')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/QtService.git#tag=$pkgver"
 		"$pkgname.rule")
 sha256sums=('SKIP'
-            '4917a8f753880a060abbaa22841b82dbba6d67e0e5177c6e76e643f7ae89d60c')
+            '9be9f1c7e0e16391f01cdbe4d2223745410a28fa8ca9b1b6bc43ede1f8eca083')
 
 prepare() {
   mkdir -p build
@@ -25,9 +25,7 @@ build() {
   cd build
 
   qmake "../$_pkgfqn/"
-  make qmake_all
   make
-  make lrelease
   make doxygen
 }
 

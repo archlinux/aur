@@ -1,14 +1,14 @@
 pkgbase = qt5-service
 	pkgdesc = A platform independent library to easily create system services and use some of their features
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/Skycoder42/QtService
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = qt5-tools
-	makedepends = qpmx-qpmsource
+	makedepends = qdep
 	makedepends = qt5-declarative
 	makedepends = pkg-config
 	makedepends = python
@@ -17,10 +17,10 @@ pkgbase = qt5-service
 	depends = qt5-base
 	depends = libsystemd
 	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = qt5-service-1.1.0::git+https://github.com/Skycoder42/QtService.git#tag=1.1.0
+	source = qt5-service-1.1.1::git+https://github.com/Skycoder42/QtService.git#tag=1.1.1
 	source = qt5-service.rule
 	sha256sums = SKIP
-	sha256sums = 4917a8f753880a060abbaa22841b82dbba6d67e0e5177c6e76e643f7ae89d60c
+	sha256sums = 9be9f1c7e0e16391f01cdbe4d2223745410a28fa8ca9b1b6bc43ede1f8eca083
 
 pkgname = qt5-service
 
