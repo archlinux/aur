@@ -10,8 +10,9 @@ pkgbase = gr-satellites-git
 	makedepends = cmake
 	makedepends = libfec
 	makedepends = swig
+	makedepends = boost
 	depends = gnuradio
-	depends = boost
+	depends = boost-libs
 	depends = python2-construct>=2.8
 	optdepends = feh: For realtime image decoders
 	optdepends = doxygen: For document generation
