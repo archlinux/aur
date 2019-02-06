@@ -2,7 +2,7 @@
 # Maintainer of `lv2`: Ray Rashif <schiv@archlinux.org>
 
 pkgname=mingw-w64-lv2
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Successor to the LADSPA audio plug-in standard (mingw-w64)"
 url="http://lv2plug.in/"
@@ -12,7 +12,7 @@ depends=('mingw-w64-crt')
 optdepends=('mingw-w64-pkg-config' 'mingw-w64-gcc')
 makedepends=('python2')
 source=("http://lv2plug.in/spec/lv2-$pkgver.tar.bz2")
-sha512sums=('6991d848ed9f04a48ca3070efc15af83431f680aa8a8559a02b1666f7b8d43af8e089f78c3b14ad3345dac32fd1c8ad0faf3a3f56dddc07c6f0e0aeef4077498')
+sha512sums=('ead6d590cded5dd7a548d6ffe0f2f9f8efadfa7bb9e8b4fa0aea6664ccdfbb3ca697514bddebe695a9442fba5b62714b5cd45c1bf7d0aaef12ffe50972c2d88c')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
