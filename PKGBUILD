@@ -3,7 +3,7 @@
 
 pkgname=audacity-git
 _pkgname=audacity
-pkgver=2.2.1.r31.gdb4528069
+pkgver=2.3.0.r472.g012d707a8
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
