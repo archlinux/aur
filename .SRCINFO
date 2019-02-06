@@ -1,6 +1,6 @@
 pkgbase = oomd-git
 	pkgdesc = A userspace out-of-memory killer
-	pkgver = 20180811
+	pkgver = 20190207
 	pkgrel = 1
 	url = https://github.com/facebookincubator/oomd
 	arch = x86_64
@@ -11,9 +11,7 @@ pkgbase = oomd-git
 	makedepends = jsoncpp
 	depends = jsoncpp
 	source = oomd::git+https://github.com/facebookincubator/oomd.git
-	source = fix-meson-no-install.patch
 	md5sums = SKIP
-	md5sums = 9b65f349870dd3e9052da6e94212bd4e
 
 pkgname = oomd-git
 

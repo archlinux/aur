@@ -2,7 +2,7 @@
 
 
 pkgname=oomd-git
-pkgver=20180811
+pkgver=20190207
 pkgrel=1
 pkgdesc='A userspace out-of-memory killer'
 arch=('x86_64')
