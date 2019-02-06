@@ -6,7 +6,7 @@
 
 _pkgname=qt5-base
 pkgname=$_pkgname-git
-pkgver=5.8.0.rc1.r1200.g6090c86bd6
+pkgver=5.12.0.r981.g481db443d5
 pkgrel=1
 arch=("i686" "x86_64")
 url='https://qt-project.org/'
@@ -83,8 +83,7 @@ package() {
   cd "$srcdir/$_pkgname"
   make INSTALL_ROOT="$pkgdir" install
 
-  install -D -m644 LGPL_EXCEPTION.txt \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/LGPL_EXCEPTION.txt
+  install -Dm644 LICENSE* -t "${pkgdir}"/usr/share/licenses/${pkgname}
 
   # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
   find "${pkgdir}/usr/lib" -type f -name '*.prl' \
