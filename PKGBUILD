@@ -1,10 +1,10 @@
-# Maintainer: Ainola
+# Maintainer: Ainola <ainola@archlinux.org>
 # Contributor: Ner0
 # Contributor: quantax
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.4.1.15
+pkgver=3.4.3.0
 pkgrel=1
 pkgdesc='A development tool that is primarily used to create graphical adventure games'
 arch=('x86_64')
@@ -12,10 +12,9 @@ url='https://github.com/adventuregamestudio/ags'
 license=('Artistic2.0')
 depends=('dumb-a4' 'libtheora' 'freetype2')
 makedepends=('wxgtk')
-optdepends=('wine: for installing and configuring the game')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.$pkgver.tar.gz"
         'https://github.com/adventuregamestudio/ags/commit/44d954493bb5f3e95a11a4eddbb62bd6110b1b63.patch')
-sha256sums=('9ef4de9ebc417e1c466992c79631d884bfe8f6f1e0db79a7765ca1b438add38b'
+sha256sums=('db95259eb4b602812388b1b95d8c71101c71a5208287ea2dc7f11bb202fd526e'
             '6b7092e5794ae532f79c5c6ad5f5761c217b3ec874da43537152fb8e60b20019')
 
 prepare() {
@@ -36,8 +35,5 @@ build() {
 }
 
 package() {
-    install -Dm755 "$pkgname-$pkgver/Engine/ags" \
-                   "$pkgdir/usr/bin/ags"
+    install -Dm755 "$pkgname-$pkgver/Engine/ags" -t "$pkgdir/usr/bin/"
 }
-
-# vim: ts=2 sw=2 et
