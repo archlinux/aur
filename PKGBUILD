@@ -21,8 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo $(cat VERSION)_$(git rev-parse --short HEAD)
-#  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
