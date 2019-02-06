@@ -1,13 +1,13 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 _pkgname=landslide
 pkgname=${_pkgname}-git
-pkgver=0.4.0.r392.g90b7345
+pkgver=0.4.0.r398.g5a775f1
 pkgrel=1
 pkgdesc="Generate html5 slideshow from Markdown or reStructuredText sources"
 arch=(any)
 url="http://github.com/adamzap/landslide"
 license=('Apache License')
-depends=('python2' 'python2-pygments' 'python2-markdown' 'python2-jinja' 'python2-docutils')
+depends=('python2' 'python2-pygments' 'python2-markdown' 'python2-jinja' 'python2-docutils' 'python2-six')
 makedepends=('python2-distribute')
 optdepends=('princexml')
 conflicts=(landslide)
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   cd ${srcdir}/${_pkgname}
+  sed -i '25,31s/==/>=/' setup.py
   python2 setup.py build
 }
 
