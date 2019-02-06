@@ -1,5 +1,5 @@
 # Maintainer: Mathias Bastholm <mbastholm at gmail dot com>
-pkgname=moo
+pkgname=gog-moo
 pkgver=2.0.0.2
 pkgrel=1
 pkgdesc='Master of Orion is a turn-based, 4X science fiction strategy game'
@@ -19,12 +19,12 @@ sha512sums=('40565687db81402d731c662e050494344d1c65395fc8c5bfd6c369676a19a669963
 
 package() {
   install -d -m755 $pkgdir/usr/share
-  cp -r data/noarch/data $pkgdir/usr/share/$pkgname
+  cp -r data/noarch/data $pkgdir/usr/share/${pkgname#gog-}
   find $pkgdir/usr/share -type f -exec chmod 644 "{}" \;
   find $pkgdir/usr/share -type d -exec chmod 755 "{}" \;
 
-  install -Dm755 moo $pkgdir/usr/bin/moo
-  install -Dm644 data/noarch/support/icon.png $pkgdir/usr/share/icons/hicolor/256x256/apps/moo.png
-  install -Dm644 moo.desktop $pkgdir/usr/share/applications/moo.desktop
-  install -Dm644 data/noarch/docs/End\ User\ License\ Agreement.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm755 ${pkgname#gog-} $pkgdir/usr/bin/${pkgname#gog-}
+  install -Dm644 data/noarch/support/icon.png $pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname#gog-}.png
+  install -Dm644 ${pkgname#gog-}.desktop $pkgdir/usr/share/applications/${pkgname#gog-}.desktop
+  install -Dm644 data/noarch/docs/End\ User\ License\ Agreement.txt $pkgdir/usr/share/licenses/${pkgname#gog-}/LICENSE
 }
