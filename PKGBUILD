@@ -4,8 +4,8 @@
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
-pkgver=1.0.0
-pkgrel=5
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -109,6 +109,8 @@ build() {
   # export CMAKE_PREFIX_PATH=/opt/intel/mkl/include:/opt/intel/mkl/lib/intel64:/opt/magma \
   export CC=gcc-7
   export CXX=g++-7
+  export PYTORCH_BUILD_VERSION=${pkgver}
+  export PYTORCH_BUILD_NUMBER=1
 
   echo "Building without cuda"
   export NO_CUDA=1
