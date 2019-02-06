@@ -1,6 +1,6 @@
 pkgbase = gog-stardew-valley
 	pkgdesc = You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life.
-	pkgver = 1.3.32
+	pkgver = 1.3.33
 	pkgrel = 1
 	epoch = 1
 	url = http://stardewvalley.net/
@@ -8,11 +8,11 @@ pkgbase = gog-stardew-valley
 	license = custom
 	source = gog-stardew-valley
 	source = gog-stardew-valley.desktop
-	source = file://stardew_valley_1_3_32_25307.sh
+	source = local:///stardew_valley_1_3_33_26507.sh
 	source = StardewValley
-	sha256sums = bb34c68f0f161ef9f55c211f08b4d9391c763be7f99b9521dd966241c9d70036
+	sha256sums = 9f51b56b351824493c381731f29175b0897fa0dc4169a9b9160b5a12003883dc
 	sha256sums = ca0fe151f73f5e8b594b226e1b0539655a2d95a7848eb0e43961cb6daa0de2ff
-	sha256sums = 4245c5063442a57852c11a5867e5dfb6db558953c6b85b198cab0b1765fbdfc8
+	sha256sums = 3230f1b94f120b1453c82e011b4650f65b1d8172e6467927edfe67e1b9b278aa
 	sha256sums = 0c6826084d72917748e54f9308b7395f8d3780b4a745860839203e2af428d202
 
 pkgname = gog-stardew-valley
