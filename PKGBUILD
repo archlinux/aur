@@ -2,7 +2,7 @@
 pkgbase=qt5-jsonserializer
 pkgname=(qt5-jsonserializer qt5-jsonserializer-doc)
 group=qt5-jsonserializer-full
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="A library to perform generic seralization and deserialization of QObjects"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/QtJsonSerializer.git#tag=$pkgver"
 		"$pkgname.rule")
 sha256sums=('SKIP'
-            '6f8340ae787707a42d642841b0ae5e20c42fe51e72e5f1a38c6e655d689bbe47')
+            '1b52eef5216017cfb4b399df1775950db544550a68a542053efe00eb8ef34911')
 
 prepare() {
   mkdir -p build
@@ -25,7 +25,6 @@ build() {
   cd build
 
   qmake "../$_pkgfqn/"
-  make qmake_all
   make
   make doxygen
 }
