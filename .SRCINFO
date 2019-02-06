@@ -1,0 +1,9 @@
+pkgbase = sample-pkgbuild-with-backspaces-calls-sudo
+	pkgdesc = Sample PKGBUILD containing backspaces calls sudo
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL-3.0
+
+pkgname = sample-pkgbuild-with-backspaces-calls-sudo
+
