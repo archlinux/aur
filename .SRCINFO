@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-add-on-desktop-git
+	pkgdesc = GNOME Shell extension to add applications launcher on your desktop
+	pkgver = r7.8651303
+	pkgrel = 1
+	url = https://github.com/maoschanz/gnome-shell-extension-add-on-desktop
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/maoschanz/gnome-shell-extension-add-on-desktop.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-add-on-desktop-git
