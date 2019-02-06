@@ -1,0 +1,20 @@
+diff -ura diagrams-core-1.4.1.1/diagrams-core.cabal diagrams-core-1.4.1.1.new/diagrams-core.cabal
+--- diagrams-core-1.4.1.1/diagrams-core.cabal	2018-06-17 22:10:34.000000000 -0400
++++ diagrams-core-1.4.1.1.new/diagrams-core.cabal	2019-02-06 11:18:52.835774444 -0500
+@@ -36,13 +36,12 @@
+                        Diagrams.Core.Types,
+                        Diagrams.Core.V
+ 
+-  Build-depends:       base >= 4.2 && < 4.12,
+-                       containers >= 0.4.2 && < 0.6,
++  Build-depends:       base >= 4.2,
++                       containers,
+                        unordered-containers >= 0.2 && < 0.3,
+-                       semigroups >= 0.8.4 && < 0.19,
+                        monoid-extras >= 0.3 && < 0.6,
+                        dual-tree >= 0.2 && < 0.3,
+-                       lens >= 4.0 && < 4.17,
++                       lens >= 4.0 && < 4.18,
+                        linear >= 1.11.3 && < 1.21,
+                        adjunctions >= 4.0 && < 5.0,
+                        distributive >=0.2.2 && < 1.0,

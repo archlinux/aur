@@ -1,0 +1,24 @@
+pkgbase = haskell-diagrams-core
+	pkgdesc = The core modules underlying diagrams, an embedded domain-specific language for compositional, declarative drawing.
+	pkgver = 1.4.1.1
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/diagrams-core
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-adjunctions
+	depends = haskell-distributive
+	depends = haskell-dual-tree
+	depends = haskell-lens
+	depends = haskell-linear
+	depends = haskell-monoid-extras
+	depends = haskell-profunctors
+	depends = haskell-unordered-containers
+	source = https://hackage.haskell.org/package/diagrams-core-1.4.1.1/diagrams-core-1.4.1.1.tar.gz
+	source = haskell-diagrams-core-semigroups.patch
+	sha512sums = 2f15d9151381e134eaa61e2f0e8551ab43c5171f166692c86e62482821736dc2069b0a4a45a96c6b6664b43868c3a9a46b87aa07aa1a9b0d44bed68aabc91547
+	sha512sums = a5e00bd8a0105e7116efaa4d9153be7f20c4635b3526c902ffed14409a51c91c9678bc02ac707ecff7e553ba88f2a56d66e5f9a79d90a5ade944e91663fe40d7
+
+pkgname = haskell-diagrams-core
+
