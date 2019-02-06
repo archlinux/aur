@@ -1,12 +1,15 @@
 pkgbase = fff-git
 	pkgdesc = A simple file manager written in bash
-	pkgver = r464.6a58b5d
+	pkgver = r509.8de02c8
 	pkgrel = 1
 	url = https://github.com/dylanaraps/fff
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = xdg-utils
+	optdepends = w3m: Image display support
+	optdepends = xdotool: Image display support for X
+	optdepends = fbset: Image display support for the framebuffer
 	conflicts = fff
 	source = git+https://github.com/dylanaraps/fff.git
 	sha256sums = SKIP

@@ -1,7 +1,7 @@
 # Maintainer: Crestwave <crest.wave@yahoo.com>
 
 pkgname=fff-git
-pkgver=r464.6a58b5d
+pkgver=r509.8de02c8
 pkgrel=1
 pkgdesc="A simple file manager written in bash"
 arch=('any')
@@ -9,6 +9,11 @@ url="https://github.com/dylanaraps/fff"
 license=('MIT')
 depends=('xdg-utils')
 makedepends=('git')
+optdepends=(
+  'w3m: Image display support'
+  'xdotool: Image display support for X'
+  'fbset: Image display support for the framebuffer'
+)
 conflicts=('fff')
 source=("git+${url}.git")
 sha256sums=('SKIP')
