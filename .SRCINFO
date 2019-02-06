@@ -1,0 +1,23 @@
+pkgbase = haskell-chart-cairo
+	pkgdesc = Cairo backend for Charts.
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/Chart-cairo
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-cairo
+	depends = haskell-chart
+	depends = haskell-colour
+	depends = haskell-data-default-class
+	depends = haskell-lens
+	depends = haskell-old-locale
+	depends = haskell-operational
+	source = https://hackage.haskell.org/package/Chart-cairo-1.9/Chart-cairo-1.9.tar.gz
+	source = haskell-chart-cairo-lens.patch
+	sha512sums = 73f38490ffb6b29145c22f0cc3f0c648b75e27a5b212f9f05b099de8859b5e7c21100e7a99e0d2314d272398010d1bd5e2773b834a9e2f400eccc999ac07a486
+	sha512sums = a23c5a8391d5171d710cbcc937407b3c0cf063381b9c6ee881da96a61d29a534f755d4cbcf453583acb3e481d8e0c11219524bbec133043b0f0ab0d15a21591a
+
+pkgname = haskell-chart-cairo
+

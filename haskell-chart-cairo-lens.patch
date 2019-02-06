@@ -1,0 +1,12 @@
+diff -ura Chart-cairo-1.9/Chart-cairo.cabal Chart-cairo-1.9.new/Chart-cairo.cabal
+--- Chart-cairo-1.9/Chart-cairo.cabal	2018-06-12 04:36:26.000000000 -0400
++++ Chart-cairo-1.9.new/Chart-cairo.cabal	2019-02-05 20:39:38.837352825 -0500
+@@ -20,7 +20,7 @@
+                , colour >= 2.2.1 && < 2.4
+                , data-default-class < 0.2
+                , operational >= 0.2.2 && < 0.3
+-               , lens >= 3.9 && < 4.17
++               , lens >= 3.9 && < 4.18
+                , Chart >= 1.9 && < 1.10
+ 
+   Exposed-modules:
