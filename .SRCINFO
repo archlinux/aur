@@ -1,7 +1,7 @@
 pkgbase = haskell-chart
 	pkgdesc = A library for generating 2D Charts and Plots.
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/Chart
 	arch = x86_64
 	license = BSD-3
