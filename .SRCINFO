@@ -1,7 +1,7 @@
 pkgbase = h2o-git
 	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
 	pkgver = 2.2.0.2053
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/h2o/h2o
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = h2o-git
 	source = git+https://github.com/h2o/h2o.git
 	source = h2o.service
 	sha256sums = SKIP
-	sha256sums = 8a85462b6798deaaab343b5dae73437e251c5018d70d260a4a4440b9bbb053e6
+	sha256sums = 7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62
 
 pkgname = h2o-git
 
