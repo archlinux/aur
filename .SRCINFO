@@ -1,5 +1,5 @@
 pkgbase = linux-aarch64-raspberrypi
-	pkgver = 4.19.17
+	pkgver = 4.19.19
 	pkgrel = 1
 	url = https://github.com/raspberrypi/linux
 	arch = aarch64
