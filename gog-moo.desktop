@@ -3,6 +3,6 @@ Type=Application
 Name=Master of Orion
 Path=/usr/bin
 Exec=moo
-Icon=moo
+Icon=gog-moo
 Terminal=false
 Categories=Games;
