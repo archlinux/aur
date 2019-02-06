@@ -12,7 +12,7 @@ pkgbase = dbxfs
 	depends = python-appdirs>=1.4
 	depends = python-userspacefs>=1.0.13
 	depends = python-block_tracing>=1.0.1
-	depends = python-privy
+	depends = python-privy-git
 	depends = python-keyrings-alt>=3.1
 	depends = python-sentry_sdk>=0.3
 	replaces = python-dbxfs
