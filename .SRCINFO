@@ -1,7 +1,7 @@
 pkgbase = ipython-ipyparallel
 	pkgdesc = Interactive Parallel Computing in Python
 	pkgver = 6.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ipython/ipyparallel
 	arch = any
 	license = BSD
