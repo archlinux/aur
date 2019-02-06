@@ -1,26 +1,28 @@
-# Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com > 
+#Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com > 
 
 pkgname=molecular-workbench
 pkgdesc='Modeling tool for designing and conducting computational experiments across science.'
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="http://mw.concord.org"
 license=(CCPL)
 depends=('java-environment' 'bash')
-source=("http://mw2.concord.org/public/lib/mw.jar"
-	"mw.sh"
-	"molecular-workbench.desktop")
-
-md5sums=('1ec169630beb8d8b298c850fd6eb3797'
-         '83070b0d60c30a00db87ae7bbf36487a'
+source=("http://mw.concord.org/modeler/cd.zip"
+	"$pkgname.png"
+	"$pkgname"
+	"$pkgname.desktop")
+md5sums=('064455ffeae68820721276f679699dc0'
+         'f75e594817e24d18beadfbc500132ea7'
+         '76f5f16a79562d8a50372acb0280f941'
          '784c824346606bd1c49b5e504b97a118')
 
 package() {
 	cd "$srcdir"
-	install -Dm 0644 mw.jar "$pkgdir/usr/share/java/mw/mw.jar"
-	install -Dm 0644 mw.sh "$pkgdir/usr/bin/molecular-workbench"
+	install -Dm 0644 cd/mw.jar "$pkgdir/usr/share/java/$pkgname/mw.jar"
+	cp -r cd/CC-MW-CD "$pkgdir/usr/share/java/$pkgname/CC-MW-CD"
+	install -Dm 0755 $pkgname "$pkgdir/usr/bin/$pkgname"
 	install -Dm 0644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-#	install -Dm 0644 logo_48x48x32.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm 0644 $pkgname.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 

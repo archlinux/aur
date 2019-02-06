@@ -1,0 +1,3 @@
+#!/bin/sh
+BASE="/usr/share/java/molecular-workbench"
+java -jar -Dmw.cd.mode=true $BASE/mw.jar remote $BASE/CC-MW-CD/cd.cml
