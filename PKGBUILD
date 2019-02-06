@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=homer
-pkgver=4.8
+pkgver=4.10
 pkgrel=1
 pkgdesc="Hypergeometric Optimization of Motif EnRichment"
 url="http://homer.salk.edu/"
@@ -11,9 +11,9 @@ optdepends=('ucsc-kent-genome-tools: for the blat tool, required for removing re
   'ghostscript: required for making motif logos')
 depends=('perl' 'weblogo2' 'wget')
 source=("http://homer.salk.edu/homer/data/software/homer.v${pkgver}.zip" "homer.sh")
-md5sums=('173c9ad0e35d7639b89331de87505928'
+md5sums=('25af6351d2b114237f35abaffd17b521'
          '81a149ed531dcca7f0096901fd88ddeb')
-install=('homer.install')
+install=homer.install
 
 prepare(){
   cd ${srcdir}/cpp
