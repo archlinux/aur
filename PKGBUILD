@@ -1,14 +1,15 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls-git
-pkgver=r128.07cc15c
+pkgver=0.0.1.r4.gee126b3
 pkgrel=1
 pkgdesc="A phone dialer and call handler."
 arch=(i686 x86_64 armv6h armv7h)
 url="https://source.puri.sm/Librem5/calls"
 license=(GPL3)
-depends=(libhandy
-         libmm-glib
+depends=(gsound
+         libhandy
+         libpeas
          modemmanager)
 makedepends=()
 provides=(calls)
@@ -18,7 +19,7 @@ md5sums=(SKIP)
 
 pkgver() {
     cd calls
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
