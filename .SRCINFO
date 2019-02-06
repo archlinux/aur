@@ -1,13 +1,13 @@
 pkgbase = php-codesniffer-wordpress
 	pkgdesc = PHP_CodeSniffer rules (sniffs) to enforce WordPress coding conventions
-	pkgver = 1.2.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
 	arch = any
 	license = MIT
 	depends = php-codesniffer
-	source = php-codesniffer-wordpress-1.2.0.tar.gz::https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/archive/1.2.0.tar.gz
-	sha256sums = 4adf41d78e1ebc1bf23944a94f5471d95ea419e396b6a38ee3f2933068dd7367
+	source = php-codesniffer-wordpress-2.0.0.tar.gz::https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/archive/2.0.0.tar.gz
+	sha256sums = fe0144b5d9482aa7839885f2c270865e0c4985d80ee922ee434d76c86ddd4e3b
 
 pkgname = php-codesniffer-wordpress
 

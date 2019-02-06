@@ -3,7 +3,7 @@
 
 pkgname=php-codesniffer-wordpress
 _pkgname=WordPress-Coding-Standards
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="PHP_CodeSniffer rules (sniffs) to enforce WordPress coding conventions "
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('php-codesniffer')
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('4adf41d78e1ebc1bf23944a94f5471d95ea419e396b6a38ee3f2933068dd7367')
+sha256sums=('fe0144b5d9482aa7839885f2c270865e0c4985d80ee922ee434d76c86ddd4e3b')
 
 package() {
   install -d "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/WordPress"
@@ -23,8 +23,6 @@ package() {
   cp -dr --no-preserve=ownership "${srcdir}/${_pkgname}-${pkgver}/WordPress-Docs/" "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/"
   install -d "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/WordPress-Extra"
   cp -dr --no-preserve=ownership "${srcdir}/${_pkgname}-${pkgver}/WordPress-Extra/" "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/"
-  install -d "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/WordPress-VIP"
-  cp -dr --no-preserve=ownership "${srcdir}/${_pkgname}-${pkgver}/WordPress-VIP/" "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/"
 }
 
 # vim:set ts=2 sw=2 et:
