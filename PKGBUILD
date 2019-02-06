@@ -1,10 +1,11 @@
 # Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
 pkgbase=dune-core
-pkgname=('dune-common' 'dune-geometry' 'dune-localfunctions' 'dune-istl' 'dune-grid' 'dune-uggrid' )
+#pkgname=('dune-common' 'dune-geometry' 'dune-localfunctions' 'dune-istl' 'dune-grid' 'dune-uggrid' 'dune-functions')
+pkgname=('dune-common' 'dune-geometry' 'dune-localfunctions' 'dune-istl' 'dune-grid' 'dune-uggrid')
 
-pkgver=2.5.1
-pkgrel=3
-
+pkgver=2.6.0
+pkgrel=1
+export CPPFLAGS="-I/usr/include/tirpc ${CPPFLAGS}"
 pkgdesc='Core modules of the DUNE framework'
 groups=('dune')
 url='http://www.dune-project.org'
@@ -13,7 +14,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 
 makedepends=('cmake' 'gcc-fortran' 'openmpi' 'gmp' 'lapack' 'boost' 'superlu' 'suitesparse'
-    'parmetis' 'alberta=3.0.1' 'psurface' )
+    'parmetis' 'psurface' )
 
 
 export CFLAGS="-fPIC ${CFLAGS}"
@@ -23,12 +24,12 @@ for _module in "${pkgname[@]}"; do
     source+=("http://www.dune-project.org/download/${pkgver}/${_module}-${pkgver}.tar.gz")
 done
 
-md5sums=('71676b07bd489321d9f67b2d77d9f2d6'
-         '3d0ea46cad71c5087f304f462ccc5068'
-         'a4a6d31714d9a46ac8be2ad8303e4531'
-         'b16be825d8f0c2acdfdebde91894c6ef'
-         '8394d8aa7811f4a548df6449b448796a'
-         '4ce8cf2291fe12454695c3d94e195310')
+md5sums=('fb21de7469a2c2cbff6ec7439891c7d6'
+         '51e531ca30e8ef9b5aa910552ee88310'
+         'e35a5417c4febaef25ab31be135feccc'
+         'b0e37fafc5de204d4750dad18f46dacd'
+         '5902f456197f0b8301b822386ce78260'
+         'c9d2736ce16a9af6296bc83837192ea3')
 
 _dunecontrol="./dune-common-${pkgver}/bin/dunecontrol"
 
@@ -98,3 +99,10 @@ package_dune-alugrid() {
 
     package
 }
+package_dune-functions() {
+    pkgdesc='Needed to build core dune modules'
+    arch=('any')
+
+    package
+}
+
