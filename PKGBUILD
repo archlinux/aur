@@ -1,37 +1,32 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: carstene1ns <arch.carsten@teibes.de>
+# Contributor: David Runge <dave@sleepmap.de>
 
+_name=ladspa
 pkgname=lib32-ladspa
-pkgver=1.13
-pkgrel=6
+pkgver=1.15
+pkgrel=1
 pkgdesc="Linux Audio Developer's Simple Plugin API"
 arch=('x86_64')
-url='http://www.ladspa.org/'
+url="https://www.ladspa.org/"
 license=('LGPL')
-depends=('ladspa' 'lib32-gcc-libs' 'lib32-glibc')
+depends=('ladspa' 'lib32-gcc-libs')
 makedepends=('gcc-multilib')
-source=("https://github.com/OpenMandrivaAssociation/ladspa/raw/master/ladspa_sdk_${pkgver}.tgz"
-        'fallback-ladspa-path.patch'
+source=("https://ladspa.org/download/${_name}_sdk_${pkgver}.tgz"
         'fix-memleak-in-plugin-scanning.patch')
-sha256sums=('b5ed3f4f253a0f6c1b7a1f4b8cf62376ca9f51d999650dd822650c43852d306b'
-            'e1b2dfbb522e9b897048df140e90c972ab383ede849a3b25a472d206eeb5a7c5'
+sha256sums=('4229959b09d20c88c8c86f4aa76427843011705df22d9c28b38359fd1829fded'
             '27be471df55951fa1cc53089631b167e2654436fc5b3a5773f357cb9f9e29005')
 
 prepare() {
-  cd ladspa_sdk/src
-
-  patch -Np2 -i ../../fallback-ladspa-path.patch
-  patch -Np1 -i ../../fix-memleak-in-plugin-scanning.patch
-
-  sed -e "s/mkdirhier/mkdir -p/;
-          s#-O3#${CFLAGS} ${LDFLAGS/,--as-needed/}#" \
-      -i makefile
+  mv -v ${_name}_sdk_${pkgver} ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
+  patch -Np0 -i "../fix-memleak-in-plugin-scanning.patch"
+  # add LDFLAGS for full RELRO
+  sed -e "s#-O2#${CFLAGS} ${LDFLAGS}#" -i src/Makefile
 }
 
 build() {
-  cd ladspa_sdk/src
-
-
+  cd "${pkgname}-${pkgver}/src"
   make \
     CC='gcc -m32' \
     CPP='g++ -m32' \
@@ -40,13 +35,10 @@ build() {
 }
 
 package() {
-  cd ladspa_sdk/src
-
-  make \
-    INSTALL_PLUGINS_DIR="${pkgdir}"/usr/lib32/ladspa/ \
-    INSTALL_INCLUDE_DIR="${pkgdir}"/usr/include/ \
-    INSTALL_BINARY_DIR="${pkgdir}"/usr/bin/ \
-    install
+  cd "${pkgname}-${pkgver}/src"
+  make INSTALL_PLUGINS_DIR="${pkgdir}/usr/lib32/ladspa/" \
+       INSTALL_INCLUDE_DIR="${pkgdir}/usr/include/" \
+       INSTALL_BINARY_DIR="${pkgdir}/usr/bin/" install
   rm -rf "${pkgdir}"/usr/{bin,include}
 }
 
