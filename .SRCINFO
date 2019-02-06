@@ -1,0 +1,14 @@
+pkgbase = nexus-cli-bin
+	pkgdesc = Nexus CLI for Docker Registry v2 - Prebuilt Binary
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mlabouardy/nexus-cli
+	arch = x86_64
+	arch = i686
+	license = MIT
+	provides = nexus-cli
+	source = https://s3.eu-west-2.amazonaws.com/nexus-cli/1.0.0-beta/linux/nexus-cli
+	sha256sums = 942e2d96720e5aba1183f47ecd5f63260e04d4a518d239e662e16fc6e3cb9b2c
+
+pkgname = nexus-cli-bin
+
