@@ -4,7 +4,7 @@
 pkgname=vivaldi-snapshot
 _rpmversion=2.3.1440.37-1
 pkgver=2.3.1440.37
-pkgrel=2
+pkgrel=3
 pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -23,7 +23,9 @@ source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${_rpmversion}.
 sha512sums=('a6739a377d7d34db5ac2eb37be17bc5741bdefad7d5ac36ca4912900d0d1a96fb0d4bcc1ab3cfa1c4236cc53c29d83b1795cc3bab176985256d4a23d5a09eac0')
 
 package() {
-    cp -a {opt,usr/bin,usr/share} "$pkgdir"
+    cp -a opt "$pkgdir"
+    mkdir "$pkgdir/usr"
+    cp -a {usr/bin,usr/share} "$pkgdir/usr"
 
     # suid sandbox
     chmod 4755 "$pkgdir/opt/$pkgname/vivaldi-sandbox"
