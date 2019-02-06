@@ -27,7 +27,7 @@ build() {
 } 
 
 package_ipython-ipyparallel() {
-  depends=('ipython')
+  depends=('ipython' 'python-setuptools')
   conflicts=('ipython2-ipyparallel')
 
   cd "${srcdir}/ipyparallel-$pkgver"
@@ -39,7 +39,7 @@ package_ipython-ipyparallel() {
 }
 
 package_ipython2-ipyparallel() {
-  depends=('ipython2')
+  depends=('ipython2' 'python2-setuptools')
   conflicts=('ipython-ipyparallel')
 
   cd "${srcdir}/ipyparallel-$pkgver-py2"
