@@ -1,25 +1,25 @@
 pkgbase = srb2kart
 	pkgdesc = A kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2, based on a modified version of Doom Legacy.
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://mb.srb2.org/showthread.php?t=43708
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = mesa
 	makedepends = glu
 	makedepends = nasm
-	depends = lib32-sdl2
-	depends = lib32-sdl2_mixer
-	depends = lib32-libpng
-	depends = lib32-libgme
-	depends = srb2kart-data=1.0.2
-	source = git+https://github.com/STJr/Kart-Public.git#tag=v1.0.2
-	source = https://github.com/STJr/Kart-Public/releases/download/v1.0.2/srb2kart-v102-patch.zip
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = libpng
+	depends = libgme
+	depends = srb2kart-data=1.0.3
+	source = git+https://github.com/STJr/Kart-Public.git#tag=v1.0.3
+	source = https://github.com/STJr/Kart-Public/releases/download/v1.0.3/srb2kart-v103-patch.zip
 	source = srb2kart.desktop
 	source = srb2kart-opengl.desktop
 	sha256sums = SKIP
-	sha256sums = eaeb4455aeb83f0e792dd9e4da5f7bc35e509058aeb3ab2c75d89a1118153105
+	sha256sums = 264d1c0a813ae4e3ee959aaf79c7e442903dc2e26397c7dcf2f2aa3065530903
 	sha256sums = fe154805cea950fc792faa266ef7d303cbccab893f802c2a85a2afdd0af51bc6
 	sha256sums = 8082c8bad5bdf102d111d4e4d2eb8c73e9f30c1e54935091cd83f4928b3fc3dd
 	makedepends_i686 = nasm
