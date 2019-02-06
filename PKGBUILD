@@ -3,26 +3,31 @@
 
 pkgname=rsound
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Simple solution for streaming PCM data from client to server in real time.'
 url='http://github.com/Themaister/RSound'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL')
-depends=('libao' 'portaudio' 'openal' 'libpulse')
-optdepends=('alsa-lib' 'pulseaudio' 'jack')
-makedepends=('libao' 'portaudio' 'openal' 'alsa-lib' 'pulseaudio' 'jack')
+depends=('libao'
+         'openal'
+         'libpulse'
+         'portaudio'
+         'jack2'
+         'libsamplerate'
+         )
 source=("https://github.com/Themaister/RSound/archive/v${pkgver}.tar.gz")
 sha256sums=('dd4e32467360c5b49603da9f48bb4e69e4da4f60863a576a9df797091820faf3')
 
 build() {
   cd "RSound-${pkgver}"
-  ./configure --prefix=/usr
+  ./configure \
+    --prefix=/usr
+
   make
 }
 
 package() {
   cd "RSound-${pkgver}"
-  mkdir -p "${pkgdir}/usr/share/man/man1"
-  make DESTDIR="${pkgdir}" install
+  make -j1 DESTDIR="${pkgdir}" install
 }
 
