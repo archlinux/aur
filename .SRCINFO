@@ -1,0 +1,26 @@
+pkgbase = haskell-diagrams-postscript
+	pkgdesc = A modular backend for rendering diagrams created with the diagrams EDSL using Postscript.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/diagrams-diagrams-postscript
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-containers
+	depends = haskell-data-default-class
+	depends = haskell-diagrams-core
+	depends = haskell-diagrams-lib
+	depends = haskell-dlist
+	depends = haskell-hashable
+	depends = haskell-lens
+	depends = haskell-monoid-extras
+	depends = haskell-split
+	depends = haskell-statestack
+	source = https://hackage.haskell.org/package/diagrams-postscript-1.4.1/diagrams-postscript-1.4.1.tar.gz
+	source = haskell-diagrams-postscript.patch
+	sha512sums = 4e9b1e270c60bdd4ae607320f967be636a1dcd5e8df14983f3194fa2c011989ac0a63436b2a3cfb6775d24096991c577e40f42b0b6a954a6d00d6eeb5f86578f
+	sha512sums = aeb9c9624ebce879d3ec6fe1297233e48776ebe36dbafe2b14e61fa1025cdc7b8e9b37bb035f9f51f60ec0835585f7b3af078bc2174999fd56a114c0e4306718
+
+pkgname = haskell-diagrams-postscript
+
