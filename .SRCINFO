@@ -1,0 +1,18 @@
+pkgbase = perl-digest-sri
+	pkgdesc = Calculate and verify Subresource Integrity hashes (SRI)
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/~HAUKEX/Digest-SRI-0.02/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-extutils-cppguess
+	makedepends = perl-test-simple
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/H/HA/HAUKEX/Digest-SRI-0.02.tar.gz
+	md5sums = 0094a6ee422ed8ca8af7ef323c4b55bf
+
+pkgname = perl-digest-sri
+
