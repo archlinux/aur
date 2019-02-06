@@ -5,20 +5,22 @@
 pkgname=pharo-launcher
 epoch=1
 pkgver=1.6
-pkgrel=1
+pkgrel=3
 pkgdesc="Pharo Launcher helps you manage your Pharo images"
 arch=(x86_64)
-source=($pkgname-$pkgver.tar.gz)
+source=($pkgname-$pkgver.tar.gz pharo.conf)
 url="http://www.pharo-project.org/"
 license=('MIT')
 makedepends=('gendesk' 'libcurl-gnutls')
 
 source=(
 	'http://files.pharo.org/pharo-launcher/1.6/PharoLauncher-linux-1.6-x64.zip'
+	'local://pharo.conf'
 )
 
 md5sums=(
 	'73851e30345089b233d128766b44af81'
+	'b2e30a17b522ee265fd57fe7c45592fc'
 )
 
 prepare() {
@@ -54,5 +56,9 @@ package() {
 	cp $srcdir/pharolauncher/icons/pharo-launcher.png	$pkgdir/usr/share/pixmaps/$pkgname.png
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -D -m644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+
+	# fix vm stuff
+	mkdir -p $pkgdir/etc/security/limits.d/
+	cp $srcdir/pharo.conf $pkgdir/etc/security/limits.d/pharo.conf
 
 }
