@@ -8,8 +8,7 @@ url='http://www.dune-project.org/pdelab'
 arch=('any')
 license=('custom')
 source=("git+https://gitlab.dune-project.org/staging/${pkgname}.git#tag=v${pkgver}")
-makedepends=('cmake' "dune-common>=2.6.0")
-makedepends=('cmake')
+makedepends=('cmake' "dune-common>=2.6.0" 'git')
 md5sums=('SKIP')
 
 package() {

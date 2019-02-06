@@ -7,6 +7,8 @@ pkgbase = dune-typetree
 	groups = dune
 	license = custom
 	makedepends = cmake
+	makedepends = dune-common>=2.6.0
+	makedepends = git
 	source = git+https://gitlab.dune-project.org/staging/dune-typetree.git#tag=v2.6.0
 	md5sums = SKIP
 
