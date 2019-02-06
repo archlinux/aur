@@ -4,14 +4,14 @@
 pkgname=threelayout
 _keymap=3l
 pkgver=45.d3c9798
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard layout designed by Jack Rosenthal"
 arch=(any)
 url="https://github.com/jackrosenthal/threelayout"
 license=('MIT')
 install=threelayout.install
 depends=()
-makedepends=('ckbcomp' 'coreutils')
+makedepends=('ckbcomp' 'coreutils' 'git')
 source=('git+https://github.com/jackrosenthal/threelayout.git')
 sha256sums=('SKIP')
 
