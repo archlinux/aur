@@ -1,7 +1,7 @@
 pkgbase = karn
 	pkgdesc = Manage multiple Git identities with ease
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prydonius/karn
 	arch = x86_64
 	arch = i686
