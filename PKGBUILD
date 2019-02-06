@@ -10,6 +10,7 @@ url="https://github.com/RedisLabsModules/$_pkgname"
 license=('AGPL-3.0')
 depends=('redis' 'cmake')
 makedepends=('git')
+conflicts=('redis-graph')
 source=("git+$url")
 install=$pkgname.install
 sha256sums=("SKIP")

@@ -12,6 +12,7 @@ pkgbase = redis-graph-git
 	makedepends = git
 	depends = redis
 	depends = cmake
+	conflicts = redis-graph
 	source = git+https://github.com/RedisLabsModules/redis-graph
 	sha256sums = SKIP
 
