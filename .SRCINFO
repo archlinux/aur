@@ -1,5 +1,5 @@
 pkgbase = python-pyroaring
-	pkgdesc = A Python dict with a merge() method
+	pkgdesc = Fast and lightweight set for unsigned 32 bits integers
 	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://pypi.org/pypi/pyroaring
