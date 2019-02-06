@@ -1,0 +1,24 @@
+pkgbase = rtl8812au-aircrack-ng-dkms-git
+	pkgdesc = rtl8812AU chipset driver maitained by aircrack-ng
+	pkgver = 5.2.20.2.r564.g87b2f78
+	pkgrel = 1
+	url = https://github.com/aircrack-ng/rtl8812au/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = bc
+	depends = libelf
+	optdepends = linux-headers: build modules against the Arch kernel
+	optdepends = linux-lts-headers: build modules against the LTS kernel
+	optdepends = linux-zen-headers: build modules against the ZEN kernel
+	optdepends = linux-hardened-headers: build modules against the HARDENED kernel
+	conflicts = rtl8812au
+	source = git+https://github.com/aircrack-ng/rtl8812au.git#branch=v5.2.20
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 7f2d6df66d1d68baac01e4b1867aa6bc4f6d3cb19bdaa1d43ad58a4243049dcd
+
+pkgname = rtl8812au-aircrack-ng-dkms-git
+
