@@ -1,0 +1,13 @@
+pkgbase = i3gopher
+	pkgdesc = i3 wm helper rodent - focus last focused window per workspace
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/quite/i3gopher
+	arch = x86_64
+	license = BSD
+	makedepends = go-pie
+	source = https://github.com/quite/i3gopher/archive/v0.1.0.tar.gz
+	sha256sums = 4fc8c173c7ad63cb20d036403e275682daebd5553b33b9c5f7bc58363da6125f
+
+pkgname = i3gopher
+
