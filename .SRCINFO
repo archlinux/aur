@@ -1,7 +1,7 @@
 pkgbase = php-32bits-fixes
 	pkgdesc = A general-purpose scripting language that is especially suited to web development, patched version to not error on large files on 32 bits.
-	pkgver = 7.3.1
-	pkgrel = 2
+	pkgver = 7.3.2
+	pkgrel = 1
 	url = https://secure.php.net/
 	arch = x86_64
 	arch = armv7h
@@ -30,14 +30,14 @@ pkgbase = php-32bits-fixes
 	makedepends = freetds
 	makedepends = pcre2
 	makedepends = libnsl
-	provides = php=7.3.1
-	provides = php-ldap=7.3.1
+	provides = php=7.3.2
+	provides = php-ldap=7.3.2
 	conflicts = php
 	conflicts = php-ldap
 	replaces = php
 	replaces = php-ldap
-	source = https://php.net/distributions/php-7.3.1.tar.xz
-	source = https://php.net/distributions/php-7.3.1.tar.xz.asc
+	source = https://php.net/distributions/php-7.3.2.tar.xz
+	source = https://php.net/distributions/php-7.3.2.tar.xz.asc
 	source = apache.patch
 	source = apache.conf
 	source = php-fpm.patch
@@ -47,7 +47,7 @@ pkgbase = php-32bits-fixes
 	source = freetype.patch
 	validpgpkeys = CBAF69F173A0FEA4B537F470D66C9593118BCCB6
 	validpgpkeys = F38252826ACD957EF380D39F2F7956BC5DA04B5D
-	sha256sums = cfe93e40be0350cd53c4a579f52fe5d8faf9c6db047f650a4566a2276bf33362
+	sha256sums = 010b868b4456644ae227d05ad236c8b0a1f57dc6320e7e5ad75e86c5baf0a9a8
 	sha256sums = SKIP
 	sha256sums = 62e5ceea3c90a3c6eab1166488f876e766efcfd7d4e973c44060a9e72d51a98a
 	sha256sums = ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce
