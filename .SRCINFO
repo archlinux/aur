@@ -1,0 +1,14 @@
+pkgbase = r-biobase
+	pkgdesc = S4 generic functions needed by many Bioconductor packages.
+	pkgver = 2.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/release/bioc/html/Biobase.html
+	arch = x86_64
+	license = Artistic-2.0
+	depends = r
+	depends = r-biocgenerics
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Biobase_2.42.0.tar.gz
+	sha1sums = 747eb3eb144a92efd823734efc72969d6a5c939e
+
+pkgname = r-biobase
+
