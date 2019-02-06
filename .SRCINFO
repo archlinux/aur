@@ -1,0 +1,14 @@
+pkgbase = haskell-groups
+	pkgdesc = A monoid with invertibility.
+	pkgver = 0.4.1.0
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/groups
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/package/groups-0.4.1.0/groups-0.4.1.0.tar.gz
+	sha512sums = 35ea37843d26803b0e1b5c515c8117992faee5d891df29b08df29977443547193855a44b198fe632ee5216135d342192072e112ae598ade55dd3bca5cb595927
+
+pkgname = haskell-groups
+
