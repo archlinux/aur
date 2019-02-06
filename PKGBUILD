@@ -3,17 +3,17 @@ _author=OCBNET
 _perlmod=CSS-Sass
 pkgname=perl-css-sass
 pkgver=3.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Compile .scss files using libsass"
 arch=('i686'
       'x86_64')
 url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.i10.0'
+depends=('perl>=5.10.0'
          'perl-linux-inotify2')
 makedepends=('perl-extutils-cppguess')
 options=(!emptydirs)
-source=(https://cpan.metacpan.org/authors/id/C/CH/CHAMAS/${_perlmod}-${pkgver}.tar.gz)
+source=(https://cpan.metacpan.org/authors/id/O/OC/OCBNET/${_perlmod}-${pkgver}.tar.gz)
 md5sums=('d407da50fba8d5c583fc4ae418f52523')
 sha512sums=('742c4d6d0d0dc5ace30313146f57772f3ff0ef0c83d1eab8e54969d12f84bf9392f8875a6985f4b959f20a550db0d517fe30234a5c686b0d7716c8a7d97b5979')
 

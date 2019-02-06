@@ -1,17 +1,17 @@
 pkgbase = perl-css-sass
 	pkgdesc = Compile .scss files using libsass
 	pkgver = 3.4.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/~OCBNET/CSS-Sass-3.4.10/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = PerlArtistic
 	makedepends = perl-extutils-cppguess
-	depends = perl>=5.i10.0
+	depends = perl>=5.10.0
 	depends = perl-linux-inotify2
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/C/CH/CHAMAS/CSS-Sass-3.4.10.tar.gz
+	source = https://cpan.metacpan.org/authors/id/O/OC/OCBNET/CSS-Sass-3.4.10.tar.gz
 	md5sums = d407da50fba8d5c583fc4ae418f52523
 	sha512sums = 742c4d6d0d0dc5ace30313146f57772f3ff0ef0c83d1eab8e54969d12f84bf9392f8875a6985f4b959f20a550db0d517fe30234a5c686b0d7716c8a7d97b5979
 
