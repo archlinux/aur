@@ -1,12 +1,12 @@
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
 _orgname=OpenOrienteering
 _pkgname=mapper
-_branch=master
+_branch=dev
 _use_gh_api=true
 wl_project=${_orgname}
 wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_orgname,,}-${_pkgname}-git
-pkgver=0.8.4.r4767.7024a44e
+pkgver=0.8.4.r5048.7c821e2d
 pkgrel=1
 pkgdesc='Map drawing program from OpenOrienteering'
 arch=('i686' 'x86_64')
