@@ -1,7 +1,7 @@
 # Maintainer: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-2.8-bin
-pkgver=2.80.190201.8a51af7d1c98
-pkgrel=3
+pkgver=2.80.190206.8c87af74409a
+pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('i686' 'x86_64')
 url="https://www.blender.org"
@@ -15,17 +15,19 @@ depends=('libpng' 'libtiff' 'openexr' 'desktop-file-utils'
 makedepends=('wget')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-# use different url per version to trigger rebuilds when package updates
-source=("https://builder.blender.org/download#$pkgver")
+# use different url per version to trigger rebuilds when package updates.
+# using $pkgver instead of $_inc is not possible (see comments on AUR-website)
+_inc=0
+source=("https://builder.blender.org/download#$_inc")
 md5sums=('SKIP')
 
 _setvars() {
 	cd "$srcdir"
-	local regex="blender-(2.8[^-]*)-([^-]*)-linux-[^-]*-$CARCH.tar.bz2" && [[ $(cat download#$pkgver) =~ $regex ]]
+	local regex="blender-(2.8[^-]*)-([^-]*)-linux-[^-]*-$CARCH.tar.bz2" && [[ $(cat download#$_inc) =~ $regex ]]
 	_full=${BASH_REMATCH[0]}
 	_upstreamversion=${BASH_REMATCH[1]}
 	_commit=${BASH_REMATCH[2]}
-	local regex="$_full.*?<small>([[:alnum:] ]+), ([[:digit:]:]+) - $_commit" && [[ $(cat download#$pkgver) =~ $regex ]]
+	local regex="$_full.*?<small>([[:alnum:] ]+), ([[:digit:]:]+) - $_commit" && [[ $(cat download#$_inc) =~ $regex ]]
 	_date=$(date --date="${BASH_REMATCH[1]} ${BASH_REMATCH[2]}" "+%y%m%d")
 }
 
