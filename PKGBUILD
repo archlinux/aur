@@ -18,5 +18,7 @@ depends=('curl'
 	'networkmanager'
 	'systemd'
          )
-conflicts=('linux-ck','linux-lts-ck')
+conflicts=('linux-ck'
+	'linux-lts-ck'
+	)
 install='hassio.install'
