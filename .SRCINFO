@@ -1,0 +1,20 @@
+pkgbase = haskell-active
+	pkgdesc = Abstraction for animated things with finite start and end times.
+	pkgver = 0.2.0.13
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/active
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-lens
+	depends = haskell-linear
+	depends = haskell-semigroupoids
+	depends = haskell-vector
+	source = https://hackage.haskell.org/package/active-0.2.0.13/active-0.2.0.13.tar.gz
+	source = haskell-active-semigroups.patch
+	sha512sums = 862471ad80bf36feb0df8747d7ed964a80d20ca994eac18708b2ced31af44cd6c450d621cfe92b426ace3c3583a7e1d835c357f47885ee800fdbab19a35f239d
+	sha512sums = 66161fef9e1e881507d7f06def9cfadfcc2445cefca2b190d051dd6ec01c6f888fe3cef24eb419bdc22d95b38b396e2eaf87646541dfa03925821acf3657d840
+
+pkgname = haskell-active
+

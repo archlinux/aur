@@ -1,0 +1,18 @@
+diff -ura active-0.2.0.13/active.cabal active-0.2.0.13.new/active.cabal
+--- active-0.2.0.13/active.cabal	2017-05-16 14:58:12.000000000 -0400
++++ active-0.2.0.13.new/active.cabal	2019-02-06 16:33:01.266824803 -0500
+@@ -20,11 +20,10 @@
+ 
+ library
+   exposed-modules:     Data.Active
+-  build-depends:       base >= 4.0 && < 4.11,
++  build-depends:       base >= 4.0,
+                        vector >= 0.10,
+-                       semigroups >= 0.1 && < 0.19,
+-                       semigroupoids >= 1.2 && < 5.3,
+-                       lens >= 4.0 && < 4.16,
++                       semigroupoids >= 1.2,
++                       lens >= 4.0,
+                        linear >= 1.14 && < 1.21
+   hs-source-dirs:      src
+   default-language:    Haskell2010
