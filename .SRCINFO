@@ -1,0 +1,28 @@
+pkgbase = h2o-git
+	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
+	pkgver = 2.2.0.2053
+	pkgrel = 1
+	url = https://github.com/h2o/h2o
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = libtool
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = ruby
+	depends = libuv
+	depends = libyaml
+	depends = zlib
+	provides = h2o
+	provides = libh2o
+	conflicts = h2o
+	conflicts = libh2o
+	backup = etc/h2o.conf
+	source = git+https://github.com/h2o/h2o.git
+	source = h2o.service
+	sha256sums = SKIP
+	sha256sums = 8a85462b6798deaaab343b5dae73437e251c5018d70d260a4a4440b9bbb053e6
+
+pkgname = h2o-git
+
