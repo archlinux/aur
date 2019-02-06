@@ -1,0 +1,16 @@
+pkgbase = libosmo-abis-git
+	pkgdesc = This is the A-bis interface library as used by OsmoBSC/OsmoNITB
+	pkgver = 0.6.0.1.g480073a
+	pkgrel = 1
+	url = https://osmocom.org/projects/libosmo-abis
+	arch = any
+	license = GPL
+	depends = libosmocore
+	depends = ortp
+	provides = libosmo-abis
+	conflicts = libosmo-abis
+	source = git://git.osmocom.org/libosmo-abis
+	sha256sums = SKIP
+
+pkgname = libosmo-abis-git
+
