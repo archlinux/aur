@@ -1,0 +1,15 @@
+pkgbase = python-q2cli
+	pkgdesc = Command line interface for QIIME 2
+	pkgver = 2019.1.0
+	pkgrel = 1
+	url = https://qiime2.org
+	arch = any
+	license = BSD 3-Clause License
+	makedepends = python-setuptools
+	depends = python-qiime2
+	depends = python-click
+	source = https://github.com/qiime2/q2cli/archive/2019.1.0.tar.gz
+	sha256sums = a69b0a16e91d15bcd30233d75a8b0709b93c3f0817a166dd99051353f8c1d3fe
+
+pkgname = python-q2cli
+
