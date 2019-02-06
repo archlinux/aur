@@ -1,0 +1,22 @@
+pkgbase = python-qiime2
+	pkgdesc = the QIIME 2 framework
+	pkgver = 2019.1.0
+	pkgrel = 1
+	url = https://qiime2.org
+	arch = any
+	license = BSD 3-Clause License
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	depends = python-decorator
+	depends = python-tzlocal
+	depends = python-dateutil
+	depends = python-pyparsing
+	depends = python-pyparsing
+	depends = python-pandas
+	depends = python-bibtexparser-git
+	source = https://github.com/qiime2/qiime2/archive/2019.1.0.tar.gz
+	sha256sums = 2c8cb4d6ea4a9dbc5876005b75b0d922ed6c861601002d340c2b991af28097b9
+
+pkgname = python-qiime2
+
