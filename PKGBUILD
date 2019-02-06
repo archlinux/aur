@@ -2,20 +2,20 @@
 pkgbase=qt5-restclient
 pkgname=(qt5-restclient qt5-restclient-doc)
 group=qt5-restclient-full
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtRestClient"
 license=('BSD')
 depends=('qt5-base' 'qt5-jsonserializer>=3.1.0')
-makedepends=('git' 'qt5-tools' 'qt5-declarative' 'qpmx-qpmsource' 'python' 'doxygen' 'graphviz')
+makedepends=('git' 'qt5-tools' 'qt5-declarative' 'qdep' 'python' 'doxygen' 'graphviz')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/QtRestClient.git#tag=$pkgver"
 		"$pkgname.rule")
 sha256sums=('SKIP'
-            '13f2e499671cb094ff244946b733a8e6898152fe60c77cb93bef1e1a19ffbd0e')
+            '2ade1a0114b13c7868eb0057044531aa01bcc854704899772c1c5e010cb1478e')
 
 prepare() {
   mkdir -p build
@@ -25,9 +25,7 @@ build() {
   cd build
 
   qmake "../$_pkgfqn/"
-  make qmake_all
   make
-  make lrelease
   make doxygen
 }
 
