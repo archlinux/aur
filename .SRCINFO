@@ -1,8 +1,8 @@
 pkgbase = drawing-git
 	pkgdesc = Drawing application for the GNOME desktop
-	pkgver = r102.c81c3de
+	pkgver = r134.b748831
 	pkgrel = 1
-	url = https://wiki.gnome.org/Apps/Tweaks
+	url = https://github.com/maoschanz/drawing
 	arch = any
 	license = GPL
 	makedepends = git

@@ -1,10 +1,10 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=drawing-git
-pkgver=r102.c81c3de
+pkgver=r134.b748831
 pkgrel=1
 pkgdesc="Drawing application for the GNOME desktop"
-url="https://wiki.gnome.org/Apps/Tweaks"
+url="https://github.com/maoschanz/drawing"
 arch=(any)
 license=(GPL)
 depends=(gtk3 python)
