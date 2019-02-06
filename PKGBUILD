@@ -1,14 +1,15 @@
 # Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
 pkgname=dune-typetree
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='A template library for statically typed object trees'
 groups=('dune')
 url='http://www.dune-project.org/pdelab'
 arch=('any')
 license=('custom')
-source=("git+https://gitlab.dune-project.org/staging/${pkgname}.git#tag=v2.5.0")
-makedepends=('cmake' "dune-common>=2.5.0")
+source=("git+https://gitlab.dune-project.org/staging/${pkgname}.git#tag=v${pkgver}")
+makedepends=('cmake' "dune-common>=2.6.0")
+makedepends=('cmake')
 md5sums=('SKIP')
 
 package() {
@@ -22,4 +23,3 @@ build() {
 		                dunecontrol configure --enabled-shared
 	    dunecontrol  make
     }
-
