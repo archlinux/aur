@@ -1,19 +1,20 @@
 pkgbase = remotely-git
 	pkgdesc = A GTK3 VNC Client
 	pkgver = r8.8b5f629
-	pkgrel = 1
-	url = https://github.com/haecker-felix/Remotely
+	pkgrel = 2
+	url = https://gitlab.gnome.org/haecker-felix/Remotely
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	license = GPL3
+	makedepends = gtk-vnc
 	makedepends = meson
 	makedepends = vala
-	depends = gtk3
+	depends = gtk-vnc
 	provides = remotely
 	conflicts = remotely
-	source = git+https://github.com/haecker-felix/Remotely.git
+	source = git+https://gitlab.gnome.org/haecker-felix/Remotely.git
 	md5sums = SKIP
 
 pkgname = remotely-git
