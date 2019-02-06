@@ -1,17 +1,17 @@
 pkgbase = dune-functions
 	pkgdesc = Abstractions for functions and discrete function space bases
-	pkgver = 2.5.1
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://dune-project.org/modules/dune-functions/index.html
 	arch = any
 	groups = dune
 	license = custom
 	makedepends = cmake
-	makedepends = dune-common=2.5.1
+	makedepends = dune-common=2.6.0
 	makedepends = dune-typetree
 	makedepends = dune-localfunctions
 	makedepends = dune-grid
-	source = git+https://gitlab.dune-project.org/staging/dune-functions.git#tag=v2.5.1
+	source = git+https://gitlab.dune-project.org/staging/dune-functions.git#tag=v2.6.0
 	md5sums = SKIP
 
 pkgname = dune-functions

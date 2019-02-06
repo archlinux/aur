@@ -1,6 +1,6 @@
 # Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
 pkgname=dune-functions
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Abstractions for functions and discrete function space bases'
 groups=('dune')
