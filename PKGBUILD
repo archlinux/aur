@@ -1,7 +1,7 @@
 # Maintainer: Ryan Davies <ryan@ryandavies.co.nz>
 
 pkgname=home-assistant-hassio
-pkgdesc='Open-source home automation platform running on Python 3 within Docker'
+pkgdesc='Open-source home automation platform running on HASSIO subsystem'
 pkgver=0.1
 pkgrel=3
 url="https://home-assistant.io/"
