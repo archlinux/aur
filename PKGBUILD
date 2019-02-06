@@ -1,8 +1,8 @@
 # Maintainer: heliochronix <heliochronix@gmail.com>
 
 pkgname=gr-satellites-git
-pkgver=r221.c3f8728
-pkgrel=2
+pkgver=r278.0bf6918
+pkgrel=1
 pkgdesc="gr-satellites decoder blocks for GNURadio"
 arch=('x86_64' 'aarch64')
 url="https://github.com/daniestevez/gr-satellites"

@@ -1,7 +1,7 @@
 pkgbase = gr-satellites-git
 	pkgdesc = gr-satellites decoder blocks for GNURadio
-	pkgver = r221.c3f8728
-	pkgrel = 2
+	pkgver = r278.0bf6918
+	pkgrel = 1
 	url = https://github.com/daniestevez/gr-satellites
 	arch = x86_64
 	arch = aarch64
