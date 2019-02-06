@@ -6,6 +6,7 @@ pkgbase = python-biom-format
 	arch = any
 	license = BSD 3-Clause License
 	makedepends = python-setuptools
+	makedepends = cython
 	depends = python-numpy
 	depends = python-click
 	depends = python-future
