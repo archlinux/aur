@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Vibrant Linux
+GenericName=Digital vibrance controller
+Comment=Program-specific digital vibrance controller
+Exec=vibrantLinux
+Icon=vibrantLinux
+Terminal=false
+Type=Application
+Categories=Utility;
