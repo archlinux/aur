@@ -4,18 +4,18 @@
 _pkgname=libcpuid
 pkgname=$_pkgname-git
 epoch=2
-pkgver=0.2.2.r80.g3f51d3c
+pkgver=0.4.1.r0.ga6123e8
 pkgrel=1
-pkgdesc="Provides CPU identification for x86 (and x86_64)"
+pkgdesc="A small C library for x86 CPU detection and feature extraction"
 arch=('i686' 'x86_64')
-url="https://github.com/anrieff/libcpuid"
+url="http://libcpuid.sourceforge.net"
 license=('BSD')
 depends=('glibc')
-makedepends=('git' 'libtool' 'autoconf' 'doxygen')
+makedepends=('git' 'doxygen')
 conflicts=('libcpuid')
 provides=('libcpuid')
-source=("git+https://github.com/anrieff/$_pkgname.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/anrieff/libcpuid.git")
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -42,5 +42,5 @@ package() {
 	make DESTDIR="$pkgdir" install
 
 	msg2 "Install license..."
-	install -Dvm644 "$srcdir/libcpuid/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	install -Dvm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
