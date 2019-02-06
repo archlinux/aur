@@ -1,0 +1,25 @@
+diff -ura monoid-extras-0.5/monoid-extras.cabal monoid-extras-0.5.new/monoid-extras.cabal
+--- monoid-extras-0.5/monoid-extras.cabal	2018-05-14 18:31:06.000000000 -0400
++++ monoid-extras-0.5.new/monoid-extras.cabal	2019-02-06 09:34:08.496864388 -0500
+@@ -35,10 +35,9 @@
+                      Data.Monoid.Split,
+                      Data.Monoid.WithSemigroup
+ 
+-  build-depends:     base >= 4.3 && < 4.12,
++  build-depends:     base >= 4.3,
+                      groups < 0.5,
+-                     semigroups >= 0.8 && < 0.19,
+-                     semigroupoids >= 4.0 && < 5.3
++                     semigroupoids >= 4.0
+ 
+   hs-source-dirs:    src
+ 
+@@ -52,7 +51,6 @@
+   hs-source-dirs: benchmarks
+   main-is: SemiDirectProduct.hs
+   type: exitcode-stdio-1.0
+-  build-depends: base          >= 4.3 &&  < 4.12
+-               , semigroups
++  build-depends: base          >= 4.3
+                , criterion
+                , monoid-extras

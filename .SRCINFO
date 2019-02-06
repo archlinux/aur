@@ -1,0 +1,18 @@
+pkgbase = haskell-monoid-extras
+	pkgdesc = Various extra monoid-related definitions and utilities.
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/monoid-extras
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-groups
+	depends = haskell-semigroupoids
+	source = https://hackage.haskell.org/package/monoid-extras-0.5/monoid-extras-0.5.tar.gz
+	source = haskell-monoid-extras.patch
+	sha512sums = 3e30d3dbddb58ad8093a7ad8d42a662303668006f15bec648ca2d78fcf1637696e889a26109d6652fe27de0e732f86be6b0a29d6df262e305b63915312032ba4
+	sha512sums = 6ea2664836f0f669dbd06d3856d61316adf8e4f83d289574a7ffb3150c022a6e9c098c94f120ce6af5c7e1ed491f622fca114acd8a5dfdf5be089a64a8860e62
+
+pkgname = haskell-monoid-extras
+
