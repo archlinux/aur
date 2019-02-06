@@ -61,5 +61,5 @@ package() {
 	mkdir -p "$pkgdir/usr/share/executor"
 	cp -Rp "usr/share/executor/" "$pkgdir/usr/share/"
 	mkdir -p "$pkgdir/usr/bin"
-	cp -Rp "$pkgdir/build/executor" "$pkgdir/usr/bin/executor-bin"
+	cp -Rp "build/executor" "$pkgdir/usr/bin/executor-bin"
 }
