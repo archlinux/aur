@@ -1,11 +1,12 @@
 pkgbase = plex-media-server-plexpass
 	pkgdesc = Plex Media Server (PlexPass version)
 	pkgver = 1.15.0.647
-	pkgrel = 1
+	pkgrel = 2
 	url = https://plex.tv/
 	install = plex-media-server.install
 	arch = x86_64
 	license = custom
+	depends = libva
 	provides = plex-media-server
 	conflicts = plex-media-server
 	options = !emptydirs
