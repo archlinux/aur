@@ -1,0 +1,19 @@
+pkgbase = moo
+	pkgdesc = Master of Orion is a turn-based, 4X science fiction strategy game
+	pkgver = 2.0.0.2
+	pkgrel = 1
+	url = https://www.gog.com/game/master_of_orion_1_2
+	arch = any
+	license = custom
+	makedepends = lgogdownloader
+	depends = dosbox
+	options = !strip
+	source = gog_master_of_orion_2.0.0.2.sh::gogdownloader://master_of_orion_classic/en3installer1
+	source = moo
+	source = moo.desktop
+	sha512sums = 40565687db81402d731c662e050494344d1c65395fc8c5bfd6c369676a19a66996305a1933994a158c02f78edf4b1e95534f318c854088b7d843cb9454891ae1
+	sha512sums = be7c19eb7a09ff063fb1f941e3c10a65d741d01ee99a53543971f29d5d18be99e43f0f38ccf8381f39f06b6609de4a9404ddab735907320c22a73fa81e37d4c6
+	sha512sums = 8223565f92e51e37eb7f8d43a82d9a9c7edce3bd88611c2e4ece32dc16d15622b90bff8797eb21788e49e390e2abcdc7b33efe3f1e217d43bb56bb525a05cc4a
+
+pkgname = moo
+
