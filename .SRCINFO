@@ -1,0 +1,19 @@
+pkgbase = osmo-hlr-git
+	pkgdesc = The Osmocom Home Location Register (OsmoHLR) is the subscriber database and authentication key store of an Osmocom 2G/3G network.
+	pkgver = 1.0.0.5.g02078b7
+	pkgrel = 1
+	url = https://osmocom.org/projects/osmo-hlr
+	arch = any
+	license = GPL
+	depends = libosmocore
+	depends = libosmo-abis
+	depends = sqlite
+	depends = libdbi
+	depends = libdbi-drivers
+	provides = osmo-hlr
+	conflicts = osmo-hlr
+	source = git://git.osmocom.org/osmo-hlr
+	sha256sums = SKIP
+
+pkgname = osmo-hlr-git
+
