@@ -19,7 +19,7 @@ build() {
 }
 
 package() {
-        cd $pkgname
+        cd $pkgdir
         install -D src/redisgraph.so $pkgdir/usr/lib/redis/redisgraph.so
         install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
