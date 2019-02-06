@@ -11,8 +11,8 @@
 #
 
 pkgname=electrum-git
-pkgver=20190101
-pkgrel=2
+pkgver=20190205
+pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
 depends=('hicolor-icon-theme'
@@ -70,8 +70,8 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
 
-  msg2 'Compiling icons...'
-  pyrcc5 icons.qrc -o electrum/gui/qt/icons_rc.py
+  msg2 'Initializing git submodule...'
+  git submodule init
 
   msg2 'Compiling protobuf description file...'
   protoc \
