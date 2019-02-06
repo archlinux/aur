@@ -1,0 +1,16 @@
+pkgbase = leggie-git
+	pkgdesc = A pretty, legible 6x12, 8/9x14, 8/9x16, 9x18, 12x24 bitmap font with over 1700 glyphs. Perfect for terminals and text editors.
+	pkgver = r35.05aeb28
+	pkgrel = 1
+	url = https://github.com/wiktor-b/leggie
+	arch = any
+	license = CCPL
+	makedepends = git
+	depends = bdf2psf
+	provides = leggie
+	conflicts = leggie
+	source = git+https://github.com/wiktor-b/leggie
+	sha256sums = SKIP
+
+pkgname = leggie-git
+
