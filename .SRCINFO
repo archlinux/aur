@@ -1,0 +1,19 @@
+pkgbase = osmo-sgsn-git
+	pkgdesc = OsmoSGSN is an Open Source implementation of a SGSN (Serving GPRS Support Node).
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://osmocom.org/projects/osmosgsn
+	arch = any
+	license = GPL
+	depends = libosmocore
+	depends = osmo-ggsn
+	depends = osmo-iuh
+	depends = libasn1c
+	depends = c-ares
+	provides = osmo-sgsn
+	conflicts = osmo-sgsn
+	source = git://git.osmocom.org/osmo-sgsn
+	sha256sums = SKIP
+
+pkgname = osmo-sgsn-git
+
