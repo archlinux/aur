@@ -1,6 +1,6 @@
 # Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
 pkgname=dune-alugrid
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Unstructured simplicial and cube DUNE grids'
 groups=('dune')
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('git' 'cmake' 'dune-common' 'dune-grid' 'dune-geometry' 'openmpi'
     'zlib' 'metis' 'parmetis')
 
-source=("git+https://gitlab.dune-project.org/extensions/${pkgname}.git#branch=releases/2.5")
+source=("git+https://gitlab.dune-project.org/extensions/${pkgname}.git#branch=releases/2.6")
 md5sums=('SKIP')
 
 package() {
