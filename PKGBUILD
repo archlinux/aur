@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=orion-git
-pkgver=1.6.6.r18.gbaeaf01
-pkgrel=2
+pkgver=1.6.6.r19.g33fc3e8
+pkgrel=1
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
 arch=('x86_64')
 url="https://github.com/alamminsalo/orion/"
@@ -11,21 +11,13 @@ depends=('mpv' 'qt5-svg' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-graphical
 provides=('orion')
 conflicts=('orion')
 install=orion.install
-source=("${pkgname}::git+https://github.com/alamminsalo/orion.git"
-        "hidpi-autoscale-fix.patch")
-sha256sums=('SKIP'
-            '8aca3e719e4d95ae0d970472b809d93ee117b7f6e8e08ae15a0a924715ab2220')
+source=("${pkgname}::git+https://github.com/alamminsalo/orion.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname}"
 
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "${srcdir}/${pkgname}"
-
-    patch -Np0 -i "$srcdir/hidpi-autoscale-fix.patch"
 }
 
 build() {
