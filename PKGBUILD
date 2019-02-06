@@ -1,7 +1,7 @@
 # Maintainer: Adrian Petrescu <apetresc at gmail dot com>
 
 pkgname=rofi-1pass
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="1Password.com integration for rofi"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('rofi' 'pinentry')
 optdepends=('pinentry-rofi')
 source=("${pkgname}::https://github.com/apetresc/rofi-1pass/archive/${pkgver}.tar.gz"
         "rofi-1pass-pinentry.patch")
-md5sums=('037a2a0a0c7671153a976aeae34c708b'
+md5sums=('1b3b4bbcd8a078ab86bbb183172bcf8a'
          'c8a7e51dd20c5543aaa2cad8cd2968d6')
 
 
