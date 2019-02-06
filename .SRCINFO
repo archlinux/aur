@@ -26,10 +26,10 @@ pkgbase = crystal-git
 	conflicts = crystal
 	source = git+https://github.com/crystal-lang/crystal.git
 	sha256sums = SKIP
-	source_i686 = https://github.com/crystal-lang/crystal/releases/download/0.27.1/crystal-0.27.1-1-linux-i686.tar.gz
-	sha256sums_i686 = 7dd10a8297082368f974f760de54d7ffcd3df267307ae98bc250b628eeab37e8
-	source_x86_64 = https://github.com/crystal-lang/crystal/releases/download/0.27.1/crystal-0.27.1-1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 6fc9bf01f0c74d754e01c68bda8a96d59cebbee49dd09c4dc93050d7a1e967ca
+	source_i686 = https://github.com/crystal-lang/crystal/releases/download/0.27.2/crystal-0.27.2-1-linux-i686.tar.gz
+	sha256sums_i686 = a956f019d13bef191a8ccbb2d7f21ce95c9566a5d0f9f91560f45d63f7fc91c7
+	source_x86_64 = https://github.com/crystal-lang/crystal/releases/download/0.27.2/crystal-0.27.2-1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 55abdc7f047c0eb74f3bb080b8bf013d8ef34fc8794827c8b68f29d1e7e98516
 
 pkgname = crystal-git
 
