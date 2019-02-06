@@ -3,7 +3,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin-git
-pkgver=10.1.0.r57.ge0315b5695
+pkgver=10.0.2.r484.g0ef2b46106
 pkgrel=1
 pkgdesc='The Free Software Media Browser'
 arch=('i686' 'x86_64' 'armv6h')
@@ -22,10 +22,10 @@ source=('git+https://github.com/jellyfin/jellyfin.git'
 backup=('etc/conf.d/jellyfin')
 sha256sums=('SKIP'
             'SKIP'
-            'ff3c81ddfd716f179fec8149ea6c2db379e05cd20bd0ffa8ce3ff3a609ca9749'
-            '61febaa0bbe71235d724f236223c7315da393b8b481e4bbed86489a343bca51f'
+            '9f8dafb06676f972fca88cc1cedf5936518b5a7556628482aeea2c7f2f485678'
+            '476df6e19231ae248d6b93fda7943e9374405bdf7a8107f0a8d8a6395cb307a9'
             '9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228'
-            'aa87d52386dde4a2ea4663de2f08249415b2babfefd98d348a96df35dfc36bc0')
+            'b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a')
 
 pkgver() {
   cd jellyfin
