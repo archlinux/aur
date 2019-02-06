@@ -1,0 +1,11 @@
+post_install() {
+  ln -fs /usr/bin/CubicSDR /usr/bin/cubicsdr
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  rm /usr/bin/cubicsdr
+}

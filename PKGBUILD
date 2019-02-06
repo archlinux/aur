@@ -7,41 +7,61 @@
 
 pkgname=cubicsdr
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-Platform Software-Defined Radio Application"
-arch=('x86_64')
-options=(!strip)
+arch=('i686' 'x86_64')
 url="https://github.com/cjcliffe/CubicSDR"
 license=('GPL')
-depends=()
-optdepends=(
-  'soapyrtlsdr: support for RTL-SDR (RTL2832U) dongles'
-  'soapyairspy-git: support for Airspy R2 and Airspy Mini'
-  'soapysdrplay-git: support for SDRplay RSP'
-  'soapyhackrf-git: support for HackRF'
-  'limesuite: support for LimeSDR'
-  'soapylms7-git: support for LimeSDR'
-  'soapyosmo: support for MiriSDR and RFSpace'
-  'soapyplutosdr-git: support for PlutoSDR'
-  'soapyremote: use any SoapySDR device remotely over network'
+depends=(
+  'libpulse'
+  'wxgtk2-dev'
+  'wxgtk-common-dev'
+  'soapysdr'
+  'liquid-dsp'
 )
-_file="CubicSDR-$pkgver-x86_64.AppImage"
-source=("https://github.com/cjcliffe/CubicSDR/releases/download/$pkgver/$_file" "cubicsdr.desktop" "cubicsdr.png")
-sha256sums=('52294f870659a1586182769446429d87a11b1821a882a67d846ca4a5170a77b4'
-            '98dc7ec85637b44505cb1aa51f06fd4171c0d586968f653758fa216684d73de8'
-            '063b0aeca2cf34f682bc33e9de49a704d5f8a56ba12a1acd75e7d6a2f99fe789')
+optdepends=(
+  'fftw: FFTW support'
+  'soapyrtlsdr: support for RTL-SDR (RTL2832U) dongles'
+  'soapyairspy: support for Airspy R2 and Airspy Mini'
+  'soapysdrplay: support for SDRplay RSP'
+  'soapyhackrf: support for HackRF'
+  'limesuite: support for LimeSDR'
+  'soapyosmo: support for MiriSDR and RFSpace'
+  'soapyplutosdr: support for PlutoSDR'
+  'soapyremote: use any SoapySDR device remotely over network'
+  'hamlib: hamlib support'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'libicns'
+)
+install="${pkgname}.install"
+source=("https://github.com/cjcliffe/CubicSDR/archive/$pkgver.tar.gz")
+sha256sums=('5cb44c110fcbbb70a468b7fa402cf35f84d8901b3dd42d471a90ac3f5db00f4d')
 
 build() {
-	:
+  cd "${srcdir}/CubicSDR-${pkgver}"
+  mkdir -p build
+  cd build
+
+  # Determine if hamlib should be enabled
+  if rigctl -V &>/dev/null; then
+    _hamlib='-DUSE_HAMLIB=1';
+    msg2 "hamlib found and enabled!"
+  else
+    _hamlib='';
+    msg2 "hamlib not found"
+  fi
+
+  cmake ../ -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DwxWidgets_CONFIG_EXECUTABLE=$(which wx-config) \
+    $_hamlib
+  make
 }
 
 package() {
-	cd $pkgdir
-	install -d usr/lib/
-	install -d usr/bin/
-	ln -s /usr/lib/$pkgname/$_file usr/bin/$pkgname
-
-	install -D -m755 $srcdir/$_file usr/lib/$pkgname/$_file
-	install -D -m644 $srcdir/$pkgname.desktop usr/share/applications/$pkgname.desktop
-	install -D -m644 $srcdir/$pkgname.png usr/share/pixmaps/$pkgname.png
+  cd "${srcdir}/CubicSDR-${pkgver}/build"
+  make DESTDIR="${pkgdir}" install
 }
