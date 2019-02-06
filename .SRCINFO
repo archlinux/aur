@@ -14,9 +14,11 @@ pkgbase = kraft
 	depends = python2-reportlab
 	depends = python2-pypdf2
 	source = https://github.com/dragotin/kraft/archive/v0.82.tar.gz
-	source = allow-duplicate-cmake-targets.patch
+	source = 0001-Fix-build-with-Qt-5.12-Strange-include-QtSql-problem.patch
+	source = 0002-Disalbe-nullptr-compiler-warning-which-shadows-real-.patch
 	sha256sums = 85d467118fcf2fe1d4fe171e2de759d4c7d70cf054f646676eb6d703f0fade48
-	sha256sums = 2a98be3f535be36161c16ee1f49baba72eab410f222cfc32697c490cfd412370
+	sha256sums = 16b58ae1a839d35063a79938969f5a70e360bea362ae7275b5ae045fc3c47373
+	sha256sums = 91de8820cefc19230d67009c01157c4e23ee17ad856c280c7244822f151d5c9c
 
 pkgname = kraft
 

@@ -1,9 +1,0 @@
---- CMakeLists.txt	2015-04-05 19:17:44.861807309 +0000
-+++ CMakeLists.txt.new	2015-09-03 12:43:43.194040631 +0000
-@@ -24,4 +24,6 @@
- 
- find_package(Msgfmt REQUIRED)
- find_package(Gettext REQUIRED)
-+
-+set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS true)
- add_subdirectory( po )

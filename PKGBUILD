@@ -13,10 +13,22 @@ license=('GPL')
 depends=('boost' 'akonadi-contacts' 'ctemplate' 'python2-reportlab' 'python2-pypdf2')
 makedepends=('cmake' 'extra-cmake-modules')
 source=("https://github.com/dragotin/kraft/archive/v${pkgver}.tar.gz"
-        'allow-duplicate-cmake-targets.patch')
+        '0001-Fix-build-with-Qt-5.12-Strange-include-QtSql-problem.patch'
+        '0002-Disalbe-nullptr-compiler-warning-which-shadows-real-.patch'
+)
+
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  for s in "${source[@]}"
+  do
+          case "$s" in
+                  (*.patch)
+                          patch -p1 < "${srcdir}/${s}"
+          esac
+  done
+
   rm -rf build
   mkdir -p build
   cd build
@@ -37,4 +49,5 @@ package() {
 }
 
 sha256sums=('85d467118fcf2fe1d4fe171e2de759d4c7d70cf054f646676eb6d703f0fade48'
-            '2a98be3f535be36161c16ee1f49baba72eab410f222cfc32697c490cfd412370')
+            '16b58ae1a839d35063a79938969f5a70e360bea362ae7275b5ae045fc3c47373'
+            '91de8820cefc19230d67009c01157c4e23ee17ad856c280c7244822f151d5c9c')
