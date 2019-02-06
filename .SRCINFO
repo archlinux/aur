@@ -4,7 +4,7 @@ pkgbase = syn68k
 	pkgrel = 1
 	arch = x86_64
 	license = GPL
-	source = http://victor3d.karelia.pro/arch/syn68k.tar.gz
+	source = https://github.com/victor3dptz/executor-packaging/raw/master/arch/syn68k.tar.gz
 	md5sums = 20a822f86b2a841d0bb4757fa8240b95
 
 pkgname = syn68k
