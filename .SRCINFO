@@ -8,7 +8,7 @@ pkgbase = executor
 	makedepends = sdl2
 	depends = sdl2
 	depends = qt5-base
-	source = http://victor3d.karelia.pro/arch/executor.tar.gz
+	source = https://github.com/victor3dptz/executor-packaging/raw/master/arch/executor.tar.gz
 	md5sums = ab9650aa5215a569703741b427aab061
 
 pkgname = executor
