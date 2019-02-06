@@ -1,11 +1,13 @@
 pkgbase = libbaseencode
 	pkgdesc = Library written in C for encoding and decoding data using base32 or base64 (RFC-4648)
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paolostivanin/libbaseencode
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	arch = armv6h
+	arch = armv7h
+	license = APACHE
 	makedepends = cmake
 	options = !strip
 	source = https://github.com/paolostivanin/libbaseencode/archive/v1.0.9.tar.gz
