@@ -6,7 +6,8 @@ pkgdesc="A script and docker image to build packages in a clean container"
 arch=(any)
 url="https://github.com/Thermi/docker-makepkg"
 license=('MIT')
-depends=(docker)
+depends=(iptables docker darkhttpd python python-netifaces python-ipaddress)
+makedepends=()
 source=("https://github.com/Thermi/docker-makepkg/releases/download/${pkgver}/docker-makepkg-${pkgver}.tar.gz"
 		"https://github.com/Thermi/docker-makepkg/releases/download/${pkgver}/docker-makepkg-${pkgver}.tar.gz.asc")
 sha256sums=('60c4d3213490445cb8f1bef11ecbe7fedf20114045290f45f55a8fb72f1bc557'
