@@ -11,7 +11,7 @@
 
 pkgname=android-studio-beta
 pkgver=3.4.0.12
-pkgrel=2
+pkgrel=3
 _build=183.5256591
 pkgdesc="The Official Android IDE (Beta branch)"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ package() {
 
   # Install the application.
   install -d "${pkgdir}"/{opt/"${pkgname}",usr/bin}
-  rsync -a "${srcdir}/android-studio/" "${pkgdir}/opt/${pkgname}/"
+  cp -a "${srcdir}/android-studio"/* "${pkgdir}/opt/${pkgname}/"
   ln -s "/opt/${pkgname}/bin/studio.sh" "${pkgdir}/usr/bin/${pkgname}"
 
   # Add the icon and desktop file.
