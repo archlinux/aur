@@ -10,20 +10,18 @@ url="https://github.com/facebookincubator/oomd"
 license=('GPL2')
 depends=('jsoncpp')
 makedepends=('meson' 'ninja' 'git' 'jsoncpp')
-md5sums=('SKIP'
-         '9b65f349870dd3e9052da6e94212bd4e')
+md5sums=('SKIP')
 
 source=(
     "oomd::git+https://github.com/facebookincubator/oomd.git"
-    "fix-meson-no-install.patch"
 )
 
 
 prepare() {
-    echo "Fix the install patch error"
-    cp fix-meson-no-install.patch $srcdir/oomd/
-    cd $srcdir/oomd/
-    patch -p1 < fix-meson-no-install.patch
+    echo "Prepare do nothing"
+#    cp fix-meson-no-install.patch $srcdir/oomd/
+#    cd $srcdir/oomd/
+#    patch -p1 < fix-meson-no-install.patch
 }
 
 build() {
@@ -34,5 +32,5 @@ build() {
 package() {
     cd $srcdir/oomd
     ninja -C build install
-    install -Dm644 $srcdir/oomd/example/oomd.json $pkgdir/etc/oomd.json.example
+    install -Dm644 $srcdir/oomd/etc/desktop.json $pkgdir/etc/desktop.json.example
 }
