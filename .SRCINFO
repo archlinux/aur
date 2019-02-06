@@ -1,7 +1,7 @@
 pkgbase = yaru
 	pkgdesc = Yaru default ubuntu theme
 	pkgver = 19.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ubuntu/yaru
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = yaru
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://github.com/ubuntu/yaru#tag=r27
+	source = git+https://github.com/ubuntu/yaru#tag=r28
 	sha256sums = SKIP
 
 pkgname = yaru-sound-theme
