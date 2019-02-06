@@ -1,0 +1,15 @@
+pkgbase = haskell-intervals
+	pkgdesc = Library for closed, convex sets of floating point values.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/intervals
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-distributive
+	source = https://hackage.haskell.org/package/intervals-0.8.1/intervals-0.8.1.tar.gz
+	sha512sums = ee6fe3efb3aae4569cfc33c1a2f3e0fdfb87d1a76258cb15c5aaaf1d4a88e304bfa8c439c536baccb4f230777668e54aafdf7bc951e17b6c3f281a1de241f395
+
+pkgname = haskell-intervals
+
