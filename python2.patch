@@ -1,0 +1,69 @@
+diff --git a/Makefile.am b/Makefile.am
+index 36cddaf..4f5ecd3 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -354,7 +354,7 @@ tests/wr_trace2core.test.c: ./tests/auto/scripts/rwspec.py \
+ 			./tests/auto/read-write/states.rwspec \
+ 			./tests/auto/read-write/counters.rwspec \
+ 			./tests/auto/read-write/measurement_intervals.rwspec
+-	python $(srcdir)/tests/auto/scripts/rwspec.py -o $@ $(filter %.rwspec,$^)
++	python2 $(srcdir)/tests/auto/scripts/rwspec.py -o $@ $(filter %.rwspec,$^)
+ 
+ wr_trace2core_test_SOURCES = tests/wr_trace2core.test.c \
+ 	$(UNIT_TEST_SOURCES)
+diff --git a/configure.ac b/configure.ac
+index 2cb03b8..e8d1da9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -93,7 +93,7 @@ PKG_CHECK_MODULES(GTK, [gtk+-2.0 >= 2.0])
+ PKG_CHECK_MODULES(GLIB, [glib-2.0 >= 2.0])
+ PKG_CHECK_MODULES(GLADE, [libglade-2.0 >= 2.0])
+ 
+-CHECK_CUSTOM_PROG(python)
++CHECK_CUSTOM_PROG(python2)
+ AC_PYTHON_MODULE(sets, true)
+ AC_PYTHON_MODULE(sys, true)
+ AC_PYTHON_MODULE(shlex, true)
+diff --git a/m4/python.m4 b/m4/python.m4
+index 58686a0..03c9175 100644
+--- a/m4/python.m4
++++ b/m4/python.m4
+@@ -2,7 +2,7 @@
+ 
+ AC_DEFUN([AC_PYTHON_MODULE],[
+ 	AC_MSG_CHECKING(python module: $1)
+-	python -c "import $1" 2> /dev/null
++	python2 -c "import $1" 2> /dev/null
+ 	if test $? -eq 0;
+ 	then
+ 		AC_MSG_RESULT(yes)
+diff --git a/tests/auto/scripts/rwspec.py b/tests/auto/scripts/rwspec.py
+index eb88706..497dcf4 100755
+--- a/tests/auto/scripts/rwspec.py
++++ b/tests/auto/scripts/rwspec.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ # Copyright (C) 2016 Andi Drebes <andi.drebes@lip6.fr>
+diff --git a/tests/auto/scripts/rwspec_defs.py b/tests/auto/scripts/rwspec_defs.py
+index c2a4777..4a3af09 100644
+--- a/tests/auto/scripts/rwspec_defs.py
++++ b/tests/auto/scripts/rwspec_defs.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ # Copyright (C) 2016 Andi Drebes <andi.drebes@lip6.fr>
+diff --git a/tests/auto/scripts/rwspec_helpers.py b/tests/auto/scripts/rwspec_helpers.py
+index 9744f9a..018ad71 100644
+--- a/tests/auto/scripts/rwspec_helpers.py
++++ b/tests/auto/scripts/rwspec_helpers.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ 
+ # Copyright (C) 2016 Andi Drebes <andi.drebes@lip6.fr>

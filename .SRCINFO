@@ -1,0 +1,19 @@
+pkgbase = aftermath-git
+	pkgdesc = Afetermath: Trace-based performance analysis for OpenMP and OpenStream
+	pkgver = r624.17ed7ce
+	pkgrel = 1
+	url = https://aftermath-tracing.com/
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	license = FDL1.3
+	makedepends = python2-numpy
+	depends = libglade
+	provides = aftermath
+	source = aftermath-git::git://git.drebesium.org/aftermath.git#branch=staging
+	source = python2.patch
+	md5sums = SKIP
+	md5sums = 2a77fafa1220f68da5e879a737677264
+
+pkgname = aftermath-git
+
