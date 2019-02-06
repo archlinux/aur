@@ -1,0 +1,17 @@
+pkgbase = libosmo-sccp-git
+	pkgdesc = Osmocom SCCP + Sigtran (M3UA, SUA) library
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://openbsc.osmocom.org/trac/wiki/libosmo-sccp
+	arch = any
+	license = GPL
+	depends = libosmocore
+	depends = libosmo-netif
+	depends = lksctp-tools
+	provides = libosmo-sccp
+	conflicts = libosmo-sccp
+	source = git://git.osmocom.org/libosmo-sccp
+	sha256sums = SKIP
+
+pkgname = libosmo-sccp-git
+
