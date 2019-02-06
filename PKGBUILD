@@ -8,7 +8,7 @@ pkgdesc="Speed Dreams is a fork of TORCS which aims to implement exciting new fe
 arch=('i686' 'x86_64')
 url="http://speed-dreams.sourceforge.net/"
 license=('GPL2')
-depends=('freealut' 'freeglut' 'libpng' 'libxi' 'libxmu' 'libxrandr' 'plib>=1.8.3' 'libjpeg' 'zlib' 'enet')
+depends=('freealut' 'freeglut' 'libpng' 'libxi' 'libxmu' 'libxrandr' 'plib>=1.8.3' 'libjpeg' 'zlib' 'enet' 'openscenegraph')
 
 makedepends=('cmake' 'svn')
 
@@ -21,7 +21,14 @@ md5sums=('9a0a63c897668ee18bcd6c5d65fe2111'
 prepare() {
     cd "$srcdir/$pkgname"
 
-    mkdir build && cd build
+    if [ -d build ]
+    then
+        rm -rf build
+    fi
+
+    mkdir build
+    
+    cd build
     cmake ../
 }
 
@@ -32,7 +39,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname/build"
 
     make DESTDIR="$pkgdir" install
 

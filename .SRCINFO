@@ -18,6 +18,7 @@ pkgbase = speed-dreams-svn
 	depends = libjpeg
 	depends = zlib
 	depends = enet
+	depends = openscenegraph
 	source = speed-dreams-svn.desktop
 	source = speed-dreams-svn::svn+https://svn.code.sf.net/p/speed-dreams/code/trunk
 	md5sums = 9a0a63c897668ee18bcd6c5d65fe2111
