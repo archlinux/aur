@@ -3,7 +3,7 @@ pkgbase=qt5-jsonserializer
 pkgname=(qt5-jsonserializer qt5-jsonserializer-doc)
 group=qt5-jsonserializer-full
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A library to perform generic seralization and deserialization of QObjects"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtJsonSerializer"
@@ -13,8 +13,10 @@ makedepends=('git' 'qt5-tools' 'python' 'doxygen' 'graphviz')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/QtJsonSerializer.git#tag=$pkgver"
+		"missing-headers.patch"
 		"$pkgname.rule")
 sha256sums=('SKIP'
+            '37e13775a69ead1e6f4a9ce34bccff519c39e929499e5f7728252e0fc115a3e8'
             '1b52eef5216017cfb4b399df1775950db544550a68a542053efe00eb8ef34911')
 
 prepare() {
@@ -22,6 +24,10 @@ prepare() {
 }
 
 build() {
+  cd "$_pkgfqn"
+  git apply ../missing-headers.patch
+  cd ..
+
   cd build
 
   qmake "../$_pkgfqn/"

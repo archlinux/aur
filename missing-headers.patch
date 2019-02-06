@@ -1,0 +1,13 @@
+diff --git a/src/jsonserializer/qjsonserializer.h b/src/jsonserializer/qjsonserializer.h
+index 4e2f54f..3fff0e4 100644
+--- a/src/jsonserializer/qjsonserializer.h
++++ b/src/jsonserializer/qjsonserializer.h
+@@ -21,6 +21,8 @@
+ #include <QtCore/qlinkedlist.h>
+ #include <QtCore/qvector.h>
+ #include <QtCore/qset.h>
++#include <QtCore/qqueue.h>
++#include <QtCore/qstack.h>
+ #include <QtCore/qhash.h>
+ #include <QtCore/qmap.h>
+ 
