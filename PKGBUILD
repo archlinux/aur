@@ -1,18 +1,19 @@
-# Contributor: Sauliusl <luksaulius at gmail>
+# Contributor: Grey Christoforo <first name at last name dot net>
 pkgname=r-biocgenerics
-pkgver=0.20.0
+_bc_name=BiocGenerics
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="S4 generic functions needed by many Bioconductor packages."
-arch=('i686' 'x86_64')
 url="https://bioconductor.org/packages/release/bioc/html/BiocGenerics.html"
+arch=("x86_64")
 license=('Artistic-2.0')
 depends=('r')
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/BiocGenerics_${pkgver}.tar.gz")
-sha1sums=('aa9bd7cc80c8af430badee6b16fc1dd4b91afe6c')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bc_name}_${pkgver}.tar.gz")
+sha1sums=('3af3313dbc08cfbe94f70fdd0313bc45236e20da')
 
 package() {
  mkdir -p $pkgdir/usr/lib/R/library
  cd $srcdir
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./BiocGenerics
+ R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_bc_name}
 }
