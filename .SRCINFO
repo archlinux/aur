@@ -1,0 +1,19 @@
+pkgbase = haskell-svg-builder
+	pkgdesc = Fast, easy to write SVG.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/svg-builder
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-blaze-builder
+	depends = haskell-hashable
+	depends = haskell-unordered-containers
+	source = https://hackage.haskell.org/package/svg-builder-0.1.1/svg-builder-0.1.1.tar.gz
+	source = haskell-svg-builder.patch
+	sha512sums = 847f83c3b67b4a78b28fb66acfde50795d3dc3e691524d8dd27cb103989678721f04cd95dd7416a465784656f30e665b7c6165f783f1debc742b924a429c6ed9
+	sha512sums = 0eadca6c8a9eadfad8996c1993720d2a4d9ac51cab79c94876632184041713354c02a85c84ef5efce0eab3eaaf2ef9d59a379b9bdb7082e0eb56b6c0d2689130
+
+pkgname = haskell-svg-builder
+

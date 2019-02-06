@@ -1,0 +1,12 @@
+diff -ura svg-builder-0.1.1/svg-builder.cabal svg-builder-0.1.1.new/svg-builder.cabal
+--- svg-builder-0.1.1/svg-builder.cabal	2018-05-09 23:09:51.000000000 -0400
++++ svg-builder-0.1.1.new/svg-builder.cabal	2019-02-06 17:24:41.362272914 -0500
+@@ -24,7 +24,7 @@
+                        Graphics.Svg.Path,
+                        Graphics.Svg.Elements,
+                        Graphics.Svg.Attributes
+-  build-depends:       base                  >= 4.5   && < 4.12,
++  build-depends:       base                  >= 4.5,
+                        blaze-builder         >= 0.4   && < 0.5,
+                        bytestring            >= 0.10  && < 0.11,
+                        hashable              >= 1.1   && < 1.3,
