@@ -1,0 +1,1030 @@
+From ea6921f717f21e9a72d321a15c4bf50d47d10310 Mon Sep 17 00:00:00 2001
+From: Aaron Colwell <acolwell@google.com>
+Date: Tue, 29 Jan 2019 16:50:39 +0000
+Subject: [PATCH] Enable ChildProcessSecurityPolicyImpl to access
+ ResourceContext.
+
+This change introduces necessary plumbing to allow future profile
+specific policy decisions to be made using the ResourceContext on the
+IO thread and the BrowserContext on the UI thread.
+
+- Store BrowserContext & ResourceContext in SecurityState so they
+  can be looked up by the child_id.
+- Updated tests to pass in a BrowserContext when they add a
+  child_id to ChildProcessSecurityPolicyImpl.
+- Added BrowserOrResourceContext to content/public so it could be used
+  outside of content/ by code in chrome/ in followup CLs.
+
+Bug: 898281
+Change-Id: I676ba22b618fb3ccddef8d743c7914e878ef0271
+Reviewed-on: https://chromium-review.googlesource.com/c/1356133
+Commit-Queue: Aaron Colwell <acolwell@chromium.org>
+Reviewed-by: Alex Moshchuk <alexmos@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#627038}
+---
+ .../child_process_security_policy_impl.cc     | 84 +++++++++++-----
+ .../child_process_security_policy_impl.h      | 10 +-
+ .../child_process_security_policy_unittest.cc | 54 +++++-----
+ .../session_storage_context_mojo_unittest.cc  |  5 +-
+ ...on_storage_namespace_impl_mojo_unittest.cc |  8 +-
+ .../browser_file_system_helper_unittest.cc    |  7 +-
+ .../browser/isolated_origin_browsertest.cc    |  3 +-
+ .../resource_dispatcher_host_unittest.cc      |  6 +-
+ .../url_loader_factory_impl_unittest.cc       |  3 +-
+ .../network_service_client_unittest.cc        |  5 +-
+ .../renderer_host/render_process_host_impl.cc |  5 +-
+ content/browser/site_instance_impl.cc         | 46 ++++++---
+ content/browser/site_instance_impl.h          | 10 +-
+ .../browser/site_instance_impl_unittest.cc    |  7 +-
+ content/public/browser/BUILD.gn               |  1 +
+ .../browser/browser_or_resource_context.h     | 98 +++++++++++++++++++
+ .../public/test/mock_render_process_host.cc   |  2 +-
+ 17 files changed, 270 insertions(+), 84 deletions(-)
+ create mode 100644 content/public/browser/browser_or_resource_context.h
+
+diff --git a/content/browser/child_process_security_policy_impl.cc b/content/browser/child_process_security_policy_impl.cc
+index a98ab715ed40a..d23513288fd64 100644
+--- a/content/browser/child_process_security_policy_impl.cc
++++ b/content/browser/child_process_security_policy_impl.cc
+@@ -23,10 +23,12 @@
+ #include "content/browser/renderer_host/render_process_host_impl.h"
+ #include "content/browser/site_instance_impl.h"
+ #include "content/public/browser/browser_context.h"
++#include "content/public/browser/browser_or_resource_context.h"
+ #include "content/public/browser/browser_thread.h"
+ #include "content/public/browser/child_process_data.h"
+ #include "content/public/browser/content_browser_client.h"
+ #include "content/public/browser/render_process_host.h"
++#include "content/public/browser/resource_context.h"
+ #include "content/public/browser/site_isolation_policy.h"
+ #include "content/public/browser/storage_partition.h"
+ #include "content/public/common/bindings_policy.h"
+@@ -125,10 +127,12 @@ bool IsRunningOnExpectedThread() {
+ // information.
+ class ChildProcessSecurityPolicyImpl::SecurityState {
+  public:
+-  SecurityState()
+-    : enabled_bindings_(0),
+-      can_read_raw_cookies_(false),
+-      can_send_midi_sysex_(false) { }
++  explicit SecurityState(BrowserContext* browser_context)
++      : enabled_bindings_(0),
++        can_read_raw_cookies_(false),
++        can_send_midi_sysex_(false),
++        browser_context_(browser_context),
++        resource_context_(browser_context->GetResourceContext()) {}
+ 
+   ~SecurityState() {
+     storage::IsolatedContext* isolated_context =
+@@ -355,6 +359,18 @@ class ChildProcessSecurityPolicyImpl::SecurityState {
+     return can_send_midi_sysex_;
+   }
+ 
++  BrowserOrResourceContext GetBrowserOrResourceContext() const {
++    if (BrowserThread::CurrentlyOn(BrowserThread::UI) && browser_context_)
++      return BrowserOrResourceContext(browser_context_);
++
++    if (BrowserThread::CurrentlyOn(BrowserThread::IO) && resource_context_)
++      return BrowserOrResourceContext(resource_context_);
++
++    return BrowserOrResourceContext();
++  }
++
++  void ClearBrowserContext() { browser_context_ = nullptr; }
++
+  private:
+   enum class CommitRequestPolicy {
+     kRequestOnly,
+@@ -421,6 +437,9 @@ class ChildProcessSecurityPolicyImpl::SecurityState {
+   // The set of isolated filesystems the child process is permitted to access.
+   FileSystemMap filesystem_permissions_;
+ 
++  BrowserContext* browser_context_;
++  ResourceContext* resource_context_;
++
+   DISALLOW_COPY_AND_ASSIGN(SecurityState);
+ };
+ 
+@@ -478,9 +497,12 @@ ChildProcessSecurityPolicyImpl* ChildProcessSecurityPolicyImpl::GetInstance() {
+   return base::Singleton<ChildProcessSecurityPolicyImpl>::get();
+ }
+ 
+-void ChildProcessSecurityPolicyImpl::Add(int child_id) {
++void ChildProcessSecurityPolicyImpl::Add(int child_id,
++                                         BrowserContext* browser_context) {
++  DCHECK(browser_context);
++  DCHECK_CURRENTLY_ON(BrowserThread::UI);
+   base::AutoLock lock(lock_);
+-  AddChild(child_id);
++  AddChild(child_id, browser_context);
+ }
+ 
+ void ChildProcessSecurityPolicyImpl::Remove(int child_id) {
+@@ -491,6 +513,8 @@ void ChildProcessSecurityPolicyImpl::Remove(int child_id) {
+   if (state == security_state_.end())
+     return;
+ 
++  state->second->ClearBrowserContext();
++
+   // Moving the existing SecurityState object into a pending map so
+   // that we can preserve permission state and avoid mutations to this
+   // state after Remove() has been called.
+@@ -1191,13 +1215,15 @@ bool ChildProcessSecurityPolicyImpl::CanReadRawCookies(int child_id) {
+   return state->second->can_read_raw_cookies();
+ }
+ 
+-void ChildProcessSecurityPolicyImpl::AddChild(int child_id) {
++void ChildProcessSecurityPolicyImpl::AddChild(int child_id,
++                                              BrowserContext* browser_context) {
++  DCHECK(browser_context);
+   if (security_state_.count(child_id) != 0) {
+     NOTREACHED() << "Add child process at most once.";
+     return;
+   }
+ 
+-  security_state_[child_id] = std::make_unique<SecurityState>();
++  security_state_[child_id] = std::make_unique<SecurityState>(browser_context);
+ }
+ 
+ bool ChildProcessSecurityPolicyImpl::ChildProcessHasPermissionsForFile(
+@@ -1217,26 +1243,37 @@ bool ChildProcessSecurityPolicyImpl::CanAccessDataForOrigin(int child_id,
+ 
+   // Determine the BrowsingInstance ID for calculating the expected process
+   // lock URL.
+-  BrowsingInstanceId browsing_instance_id;
+-
+-  if (security_state)
+-    browsing_instance_id = security_state->lowest_browsing_instance_id();
+-
+-  GURL expected_process_lock = SiteInstanceImpl::DetermineProcessLockURL(
+-      nullptr, IsolationContext(browsing_instance_id), url);
++  GURL expected_process_lock;
++  BrowserOrResourceContext context;
++  if (security_state) {
++    context = security_state->GetBrowserOrResourceContext();
++    if (context) {
++      BrowsingInstanceId browsing_instance_id =
++          security_state->lowest_browsing_instance_id();
++      expected_process_lock = SiteInstanceImpl::DetermineProcessLockURL(
++          context, IsolationContext(browsing_instance_id), url);
++    }
++  }
+ 
+-  bool can_access = security_state && security_state->CanAccessDataForOrigin(
+-                                          expected_process_lock);
++  bool can_access =
++      context && security_state &&
++      security_state->CanAccessDataForOrigin(expected_process_lock);
+   if (!can_access) {
+     // Returning false here will result in a renderer kill.  Set some crash
+     // keys that will help understand the circumstances of that kill.
+     base::debug::SetCrashKeyString(bad_message::GetRequestedSiteURLKey(),
+                                    expected_process_lock.spec());
+ 
++    std::string killed_process_origin_lock;
++    if (!security_state) {
++      killed_process_origin_lock = "(child id not found)";
++    } else if (!context) {
++      killed_process_origin_lock = "(context is null)";
++    } else {
++      killed_process_origin_lock = security_state->origin_lock().spec();
++    }
+     base::debug::SetCrashKeyString(bad_message::GetKilledProcessOriginLockKey(),
+-                                   security_state
+-                                       ? security_state->origin_lock().spec()
+-                                       : "(child id not found)");
++                                   killed_process_origin_lock);
+ 
+     static auto* requested_origin_key = base::debug::AllocateCrashKeyString(
+         "requested_origin", base::debug::CrashKeySize::Size64);
+@@ -1258,9 +1295,10 @@ void ChildProcessSecurityPolicyImpl::LockToOrigin(
+   // Sanity-check that the |gurl| argument can be used as a lock.
+   RenderProcessHost* rph = RenderProcessHostImpl::FromID(child_id);
+   if (rph) {  // |rph| can be null in unittests.
+-    DCHECK_EQ(SiteInstanceImpl::DetermineProcessLockURL(
+-                  rph->GetBrowserContext(), context, gurl),
+-              gurl);
++    DCHECK_EQ(
++        SiteInstanceImpl::DetermineProcessLockURL(
++            BrowserOrResourceContext(rph->GetBrowserContext()), context, gurl),
++        gurl);
+   }
+ #endif
+ 
+diff --git a/content/browser/child_process_security_policy_impl.h b/content/browser/child_process_security_policy_impl.h
+index 93af81e6818fa..994aebf952caf 100644
+--- a/content/browser/child_process_security_policy_impl.h
++++ b/content/browser/child_process_security_policy_impl.h
+@@ -43,6 +43,7 @@ class FileSystemURL;
+ 
+ namespace content {
+ 
++class BrowserContext;
+ class IsolationContext;
+ class SiteInstance;
+ 
+@@ -165,11 +166,11 @@ class CONTENT_EXPORT ChildProcessSecurityPolicyImpl
+   bool IsPseudoScheme(const std::string& scheme);
+ 
+   // Upon creation, child processes should register themselves by calling this
+-  // this method exactly once.
+-  void Add(int child_id);
++  // this method exactly once. This call must be made on the UI thread.
++  void Add(int child_id, BrowserContext* browser_context);
+ 
+   // Upon destruction, child processes should unregister themselves by calling
+-  // this method exactly once.
++  // this method exactly once. This call must be made on the UI thread.
+   //
+   // Note: Pre-Remove() permissions remain in effect on the IO thread until
+   // the task posted to the IO thread by this call runs and removes the entry
+@@ -397,7 +398,8 @@ class CONTENT_EXPORT ChildProcessSecurityPolicyImpl
+   friend struct base::DefaultSingletonTraits<ChildProcessSecurityPolicyImpl>;
+ 
+   // Adds child process during registration.
+-  void AddChild(int child_id) EXCLUSIVE_LOCKS_REQUIRED(lock_);
++  void AddChild(int child_id, BrowserContext* browser_context)
++      EXCLUSIVE_LOCKS_REQUIRED(lock_);
+ 
+   // Determines if certain permissions were granted for a file to given child
+   // process. |permissions| is an internally defined bit-set.
+diff --git a/content/browser/child_process_security_policy_unittest.cc b/content/browser/child_process_security_policy_unittest.cc
+index fbba808b47ab6..9d2a65bd7d439 100644
+--- a/content/browser/child_process_security_policy_unittest.cc
++++ b/content/browser/child_process_security_policy_unittest.cc
+@@ -170,8 +170,11 @@ class ChildProcessSecurityPolicyTest : public testing::Test {
+     EXPECT_FALSE(p->CanDeleteFileSystemFile(kRendererID, url));
+   }
+ 
++  BrowserContext* browser_context() { return &browser_context_; }
++
+  private:
+   TestBrowserThreadBundle thread_bundle_;
++  TestBrowserContext browser_context_;
+   ChildProcessSecurityPolicyTestBrowserClient test_browser_client_;
+   ContentBrowserClient* old_browser_client_;
+ };
+@@ -215,7 +218,7 @@ TEST_F(ChildProcessSecurityPolicyTest, StandardSchemesTest) {
+   ChildProcessSecurityPolicyImpl* p =
+       ChildProcessSecurityPolicyImpl::GetInstance();
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+ 
+   // Safe to request, redirect or commit.
+   EXPECT_TRUE(p->CanRequestURL(kRendererID, GURL("http://www.google.com/")));
+@@ -277,7 +280,7 @@ TEST_F(ChildProcessSecurityPolicyTest, BlobSchemeTest) {
+   ChildProcessSecurityPolicyImpl* p =
+       ChildProcessSecurityPolicyImpl::GetInstance();
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+ 
+   EXPECT_TRUE(
+       p->CanRequestURL(kRendererID, GURL("blob:http://localhost/some-guid")));
+@@ -342,7 +345,7 @@ TEST_F(ChildProcessSecurityPolicyTest, AboutTest) {
+   ChildProcessSecurityPolicyImpl* p =
+       ChildProcessSecurityPolicyImpl::GetInstance();
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+ 
+   EXPECT_TRUE(p->CanRequestURL(kRendererID, GURL("about:blank")));
+   EXPECT_FALSE(p->CanRequestURL(kRendererID, GURL("about:BlAnK")));
+@@ -415,7 +418,7 @@ TEST_F(ChildProcessSecurityPolicyTest, JavaScriptTest) {
+   ChildProcessSecurityPolicyImpl* p =
+       ChildProcessSecurityPolicyImpl::GetInstance();
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+ 
+   EXPECT_FALSE(p->CanRequestURL(kRendererID, GURL("javascript:alert('xss')")));
+   EXPECT_FALSE(p->CanRedirectToURL(GURL("javascript:alert('xss')")));
+@@ -436,7 +439,7 @@ TEST_F(ChildProcessSecurityPolicyTest, RegisterWebSafeSchemeTest) {
+   ChildProcessSecurityPolicyImpl* p =
+       ChildProcessSecurityPolicyImpl::GetInstance();
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+ 
+   // Currently, "asdf" is destined for ShellExecute, so it is allowed to be
+   // requested but not committed.
+@@ -467,7 +470,7 @@ TEST_F(ChildProcessSecurityPolicyTest, CanServiceCommandsTest) {
+   ChildProcessSecurityPolicyImpl* p =
+       ChildProcessSecurityPolicyImpl::GetInstance();
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+ 
+   EXPECT_FALSE(p->CanRequestURL(kRendererID, GURL("file:///etc/passwd")));
+   EXPECT_TRUE(p->CanRedirectToURL(GURL("file:///etc/passwd")));
+@@ -482,7 +485,7 @@ TEST_F(ChildProcessSecurityPolicyTest, CanServiceCommandsTest) {
+ 
+   // We should forget our state if we repeat a renderer id.
+   p->Remove(kRendererID);
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+   EXPECT_FALSE(p->CanRequestURL(kRendererID, GURL("file:///etc/passwd")));
+   EXPECT_TRUE(p->CanRedirectToURL(GURL("file:///etc/passwd")));
+   EXPECT_FALSE(p->CanCommitURL(kRendererID, GURL("file:///etc/passwd")));
+@@ -495,7 +498,7 @@ TEST_F(ChildProcessSecurityPolicyTest, ViewSource) {
+   ChildProcessSecurityPolicyImpl* p =
+       ChildProcessSecurityPolicyImpl::GetInstance();
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+ 
+   // Child processes cannot request view source URLs.
+   EXPECT_FALSE(p->CanRequestURL(kRendererID,
+@@ -560,7 +563,7 @@ TEST_F(ChildProcessSecurityPolicyTest, GrantCommitURLToNonStandardScheme) {
+   ASSERT_TRUE(url::Origin::Create(url2).opaque());
+   RegisterTestScheme("httpxml");
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+ 
+   EXPECT_FALSE(p->CanRequestURL(kRendererID, url));
+   EXPECT_FALSE(p->CanRequestURL(kRendererID, url2));
+@@ -591,7 +594,7 @@ TEST_F(ChildProcessSecurityPolicyTest, SpecificFile) {
+   ChildProcessSecurityPolicyImpl* p =
+       ChildProcessSecurityPolicyImpl::GetInstance();
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+ 
+   GURL icon_url("file:///tmp/foo.png");
+   GURL sensitive_url("file:///etc/passwd");
+@@ -631,7 +634,7 @@ TEST_F(ChildProcessSecurityPolicyTest, FileSystemGrantsTest) {
+   ChildProcessSecurityPolicyImpl* p =
+       ChildProcessSecurityPolicyImpl::GetInstance();
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+   std::string read_id =
+       storage::IsolatedContext::GetInstance()->RegisterFileSystemForVirtualPath(
+           storage::kFileSystemTypeTest, "read_filesystem", base::FilePath());
+@@ -691,7 +694,7 @@ TEST_F(ChildProcessSecurityPolicyTest, FileSystemGrantsTest) {
+   CheckHasNoFileSystemPermission(p, delete_from_id);
+ 
+   // Test having no permissions upon re-adding same renderer ID.
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+   CheckHasNoFileSystemPermission(p, read_id);
+   CheckHasNoFileSystemPermission(p, read_write_id);
+   CheckHasNoFileSystemPermission(p, copy_into_id);
+@@ -713,7 +716,7 @@ TEST_F(ChildProcessSecurityPolicyTest, FilePermissionGrantingAndRevoking) {
+       storage::kFileSystemTypeTest,
+       storage::FILE_PERMISSION_USE_FILE_PERMISSION);
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+   base::FilePath file(TEST_PATH("/dir/testfile"));
+   file = file.NormalizePathSeparators();
+   storage::FileSystemURL url = storage::FileSystemURL::CreateForTest(
+@@ -761,7 +764,7 @@ TEST_F(ChildProcessSecurityPolicyTest, FilePermissionGrantingAndRevoking) {
+   CheckHasNoFileSystemFilePermission(p, file, url);
+ 
+   // Test having no permissions upon re-adding same renderer ID.
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+   CheckHasNoFileSystemFilePermission(p, file, url);
+ 
+   // Cleanup.
+@@ -790,7 +793,7 @@ TEST_F(ChildProcessSecurityPolicyTest, FilePermissions) {
+       ChildProcessSecurityPolicyImpl::GetInstance();
+ 
+   // Grant permissions for a file.
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+   EXPECT_FALSE(p->HasPermissionsForFile(kRendererID, granted_file,
+                                         base::File::FLAG_OPEN));
+ 
+@@ -843,7 +846,7 @@ TEST_F(ChildProcessSecurityPolicyTest, FilePermissions) {
+   p->Remove(kRendererID);
+ 
+   // Grant permissions for the directory the file is in.
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+   EXPECT_FALSE(p->HasPermissionsForFile(kRendererID, granted_file,
+                                         base::File::FLAG_OPEN));
+   GrantPermissionsForFile(p, kRendererID, parent_file,
+@@ -857,7 +860,7 @@ TEST_F(ChildProcessSecurityPolicyTest, FilePermissions) {
+   p->Remove(kRendererID);
+ 
+   // Grant permissions for the directory the file is in (with trailing '/').
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+   EXPECT_FALSE(p->HasPermissionsForFile(kRendererID, granted_file,
+                                         base::File::FLAG_OPEN));
+   GrantPermissionsForFile(p, kRendererID, parent_slash_file,
+@@ -888,8 +891,7 @@ TEST_F(ChildProcessSecurityPolicyTest, FilePermissions) {
+                                         base::File::FLAG_TEMPORARY));
+   p->Remove(kRendererID);
+ 
+-
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+   GrantPermissionsForFile(p, kRendererID, relative_file,
+                              base::File::FLAG_OPEN);
+   EXPECT_FALSE(p->HasPermissionsForFile(kRendererID, relative_file,
+@@ -905,7 +907,7 @@ TEST_F(ChildProcessSecurityPolicyTest, CanServiceWebUIBindings) {
+   const GURL other_url("chrome://not-thumb/");
+   const url::Origin origin = url::Origin::Create(url);
+   {
+-    p->Add(kRendererID);
++    p->Add(kRendererID, browser_context());
+ 
+     EXPECT_FALSE(p->HasWebUIBindings(kRendererID));
+ 
+@@ -942,7 +944,7 @@ TEST_F(ChildProcessSecurityPolicyTest, CanServiceWebUIBindings) {
+     p->Remove(kRendererID);
+   }
+   {
+-    p->Add(kRendererID);
++    p->Add(kRendererID, browser_context());
+ 
+     EXPECT_FALSE(p->HasWebUIBindings(kRendererID));
+ 
+@@ -979,7 +981,7 @@ TEST_F(ChildProcessSecurityPolicyTest, CanServiceWebUIBindings) {
+     p->Remove(kRendererID);
+   }
+   {
+-    p->Add(kRendererID);
++    p->Add(kRendererID, browser_context());
+ 
+     EXPECT_FALSE(p->HasWebUIBindings(kRendererID));
+ 
+@@ -1025,7 +1027,7 @@ TEST_F(ChildProcessSecurityPolicyTest, RemoveRace) {
+   GURL url("file:///etc/passwd");
+   base::FilePath file(TEST_PATH("/etc/passwd"));
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+ 
+   p->GrantCommitURL(kRendererID, url);
+   p->GrantReadFile(kRendererID, file);
+@@ -1065,7 +1067,7 @@ TEST_F(ChildProcessSecurityPolicyTest, RemoveRace_CanAccessDataForOrigin) {
+ 
+   GURL url("file:///etc/passwd");
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+ 
+   base::WaitableEvent ready_for_remove_event;
+   base::WaitableEvent remove_called_event;
+@@ -1179,7 +1181,7 @@ TEST_F(ChildProcessSecurityPolicyTest, CanAccessDataForOrigin) {
+   EXPECT_FALSE(p->CanAccessDataForOrigin(kRendererID, http2_url));
+ 
+   TestBrowserContext browser_context;
+-  p->Add(kRendererID);
++  p->Add(kRendererID, &browser_context);
+ 
+   // Verify unlocked origin permissions.
+   EXPECT_TRUE(p->CanAccessDataForOrigin(kRendererID, file_url));
+@@ -1218,7 +1220,7 @@ TEST_F(ChildProcessSecurityPolicyTest, OriginGranting) {
+   ChildProcessSecurityPolicyImpl* p =
+       ChildProcessSecurityPolicyImpl::GetInstance();
+ 
+-  p->Add(kRendererID);
++  p->Add(kRendererID, browser_context());
+ 
+   GURL url_foo1("chrome://foo/resource1");
+   GURL url_foo2("chrome://foo/resource2");
+diff --git a/content/browser/dom_storage/session_storage_context_mojo_unittest.cc b/content/browser/dom_storage/session_storage_context_mojo_unittest.cc
+index fa416ff999715..f5a6325cef6d4 100644
+--- a/content/browser/dom_storage/session_storage_context_mojo_unittest.cc
++++ b/content/browser/dom_storage/session_storage_context_mojo_unittest.cc
+@@ -27,6 +27,7 @@
+ #include "content/browser/dom_storage/test/storage_area_test_util.h"
+ #include "content/common/dom_storage/dom_storage_types.h"
+ #include "content/public/browser/session_storage_usage_info.h"
++#include "content/public/test/test_browser_context.h"
+ #include "content/public/test/test_utils.h"
+ #include "mojo/core/embedder/embedder.h"
+ #include "mojo/public/cpp/bindings/strong_associated_binding.h"
+@@ -66,7 +67,8 @@ class SessionStorageContextMojoTest : public test::MojoTestWithFileService {
+     mojo::core::SetDefaultProcessErrorCallback(base::BindRepeating(
+         &SessionStorageContextMojoTest::OnBadMessage, base::Unretained(this)));
+ 
+-    ChildProcessSecurityPolicyImpl::GetInstance()->Add(kTestProcessId);
++    ChildProcessSecurityPolicyImpl::GetInstance()->Add(kTestProcessId,
++                                                       &browser_context_);
+   }
+ 
+   void TearDown() override {
+@@ -160,6 +162,7 @@ class SessionStorageContextMojoTest : public test::MojoTestWithFileService {
+   bool bad_message_called_ = false;
+ 
+  private:
++  TestBrowserContext browser_context_;
+   SessionStorageContextMojo::BackingMode backing_mode_ =
+       SessionStorageContextMojo::BackingMode::kRestoreDiskState;
+   base::test::ScopedFeatureList features_;
+diff --git a/content/browser/dom_storage/session_storage_namespace_impl_mojo_unittest.cc b/content/browser/dom_storage/session_storage_namespace_impl_mojo_unittest.cc
+index c04d7275ebf87..a29283d4c2928 100644
+--- a/content/browser/dom_storage/session_storage_namespace_impl_mojo_unittest.cc
++++ b/content/browser/dom_storage/session_storage_namespace_impl_mojo_unittest.cc
+@@ -15,6 +15,7 @@
+ #include "content/browser/dom_storage/session_storage_metadata.h"
+ #include "content/browser/dom_storage/test/storage_area_test_util.h"
+ #include "content/browser/site_instance_impl.h"
++#include "content/public/test/test_browser_context.h"
+ #include "content/public/test/test_browser_thread_bundle.h"
+ #include "content/test/fake_leveldb_database.h"
+ #include "content/test/gmock_util.h"
+@@ -72,9 +73,9 @@ class SessionStorageNamespaceImplMojoTest
+         StdStringToUint8Vector("data1");
+ 
+     auto* security_policy = ChildProcessSecurityPolicyImpl::GetInstance();
+-    security_policy->Add(kTestProcessIdOrigin1);
+-    security_policy->Add(kTestProcessIdAllOrigins);
+-    security_policy->Add(kTestProcessIdOrigin3);
++    security_policy->Add(kTestProcessIdOrigin1, &browser_context_);
++    security_policy->Add(kTestProcessIdAllOrigins, &browser_context_);
++    security_policy->Add(kTestProcessIdOrigin3, &browser_context_);
+     security_policy->AddIsolatedOrigins(
+         {test_origin1_, test_origin2_, test_origin3_});
+     security_policy->LockToOrigin(IsolationContext(), kTestProcessIdOrigin1,
+@@ -159,6 +160,7 @@ class SessionStorageNamespaceImplMojoTest
+ 
+  protected:
+   TestBrowserThreadBundle test_browser_thread_bundle_;
++  TestBrowserContext browser_context_;
+   const std::string test_namespace_id1_;
+   const std::string test_namespace_id2_;
+   const url::Origin test_origin1_;
+diff --git a/content/browser/fileapi/browser_file_system_helper_unittest.cc b/content/browser/fileapi/browser_file_system_helper_unittest.cc
+index 67e528b57bb68..9c12c5a6d2e6f 100644
+--- a/content/browser/fileapi/browser_file_system_helper_unittest.cc
++++ b/content/browser/fileapi/browser_file_system_helper_unittest.cc
+@@ -13,6 +13,7 @@
+ #include "content/browser/child_process_security_policy_impl.h"
+ #include "content/browser/fileapi/browser_file_system_helper.h"
+ #include "content/public/common/drop_data.h"
++#include "content/public/test/test_browser_context.h"
+ #include "content/public/test/test_browser_thread_bundle.h"
+ #include "net/base/filename_util.h"
+ #include "storage/browser/fileapi/external_mount_points.h"
+@@ -35,9 +36,10 @@ TEST(BrowserFileSystemHelperTest,
+   ASSERT_TRUE(temp_dir.CreateUniqueTempDir());
+ 
+   TestBrowserThreadBundle thread_bundle;
++  TestBrowserContext browser_context;
+   ChildProcessSecurityPolicyImpl* p =
+       ChildProcessSecurityPolicyImpl::GetInstance();
+-  p->Add(kRendererID);
++  p->Add(kRendererID, &browser_context);
+ 
+   // Prepare |original_file| FileSystemURL that comes from a |sensitive_origin|.
+   // This attempts to simulate for unit testing the drive URL from
+@@ -139,9 +141,10 @@ TEST(BrowserFileSystemHelperTest, PrepareDropDataForChildProcess_LocalFiles) {
+   ASSERT_TRUE(temp_dir.CreateUniqueTempDir());
+ 
+   TestBrowserThreadBundle thread_bundle;
++  TestBrowserContext browser_context;
+   ChildProcessSecurityPolicyImpl* p =
+       ChildProcessSecurityPolicyImpl::GetInstance();
+-  p->Add(kRendererID);
++  p->Add(kRendererID, &browser_context);
+ 
+   // Prepare content::DropData containing some local files.
+   const base::FilePath kDraggedFile =
+diff --git a/content/browser/isolated_origin_browsertest.cc b/content/browser/isolated_origin_browsertest.cc
+index c4fdd51da21bc..0f2f82865ac91 100644
+--- a/content/browser/isolated_origin_browsertest.cc
++++ b/content/browser/isolated_origin_browsertest.cc
+@@ -15,6 +15,7 @@
+ #include "content/browser/renderer_host/render_process_host_impl.h"
+ #include "content/browser/storage_partition_impl.h"
+ #include "content/browser/web_contents/web_contents_impl.h"
++#include "content/public/browser/browser_or_resource_context.h"
+ #include "content/public/browser/render_frame_host.h"
+ #include "content/public/browser/render_process_host.h"
+ #include "content/public/browser/site_isolation_policy.h"
+@@ -593,7 +594,7 @@ IN_PROC_BROWSER_TEST_F(IsolatedOriginTest, ProcessLimit) {
+                               RenderProcessHost* process, const GURL& url) {
+     GURL site_url(SiteInstance::GetSiteForURL(browser_context, url));
+     GURL lock_url(SiteInstanceImpl::DetermineProcessLockURL(
+-        browser_context, isolation_context, url));
++        BrowserOrResourceContext(browser_context), isolation_context, url));
+     return RenderProcessHostImpl::IsSuitableHost(
+         process, browser_context, isolation_context, site_url, lock_url);
+   };
+diff --git a/content/browser/loader/resource_dispatcher_host_unittest.cc b/content/browser/loader/resource_dispatcher_host_unittest.cc
+index cb6179d207142..617e60354987b 100644
+--- a/content/browser/loader/resource_dispatcher_host_unittest.cc
++++ b/content/browser/loader/resource_dispatcher_host_unittest.cc
+@@ -171,7 +171,8 @@ class TestFilter : public TestFilterSpecifyingChild {
+       : TestFilterSpecifyingChild(
+             browser_context,
+             ChildProcessHostImpl::GenerateChildProcessUniqueId()) {
+-    ChildProcessSecurityPolicyImpl::GetInstance()->Add(child_id());
++    ChildProcessSecurityPolicyImpl::GetInstance()->Add(child_id(),
++                                                       browser_context);
+   }
+ 
+  protected:
+@@ -696,7 +697,8 @@ class ResourceDispatcherHostTest : public testing::TestWithParam<TestMode> {
+ 
+   // testing::Test
+   void SetUp() override {
+-    ChildProcessSecurityPolicyImpl::GetInstance()->Add(0);
++    ChildProcessSecurityPolicyImpl::GetInstance()->Add(0,
++                                                       browser_context_.get());
+     HandleScheme("test");
+     scoped_refptr<SiteInstance> site_instance =
+         SiteInstance::Create(browser_context_.get());
+diff --git a/content/browser/loader/url_loader_factory_impl_unittest.cc b/content/browser/loader/url_loader_factory_impl_unittest.cc
+index 9886900f51a3e..4ad0a60049896 100644
+--- a/content/browser/loader/url_loader_factory_impl_unittest.cc
++++ b/content/browser/loader/url_loader_factory_impl_unittest.cc
+@@ -84,7 +84,8 @@ class URLLoaderFactoryImplTest : public ::testing::TestWithParam<size_t> {
+                 {BrowserThread::IO}))) {
+     // Some tests specify request.report_raw_headers, but the RDH checks the
+     // CanReadRawCookies permission before enabling it.
+-    ChildProcessSecurityPolicyImpl::GetInstance()->Add(kChildId);
++    ChildProcessSecurityPolicyImpl::GetInstance()->Add(kChildId,
++                                                       browser_context_.get());
+     ChildProcessSecurityPolicyImpl::GetInstance()->GrantReadRawCookies(
+         kChildId);
+ 
+diff --git a/content/browser/network_service_client_unittest.cc b/content/browser/network_service_client_unittest.cc
+index a0259c641df76..9e6284aefa304 100644
+--- a/content/browser/network_service_client_unittest.cc
++++ b/content/browser/network_service_client_unittest.cc
+@@ -14,6 +14,7 @@
+ #include "base/test/test_file_util.h"
+ #include "build/build_config.h"
+ #include "content/browser/child_process_security_policy_impl.h"
++#include "content/public/test/test_browser_context.h"
+ #include "content/public/test/test_browser_thread_bundle.h"
+ #include "testing/gtest/include/gtest/gtest.h"
+ 
+@@ -70,7 +71,8 @@ class NetworkServiceClientTest : public testing::Test {
+ 
+   void SetUp() override {
+     ASSERT_TRUE(temp_dir_.CreateUniqueTempDir());
+-    ChildProcessSecurityPolicyImpl::GetInstance()->Add(kRendererProcessId);
++    ChildProcessSecurityPolicyImpl::GetInstance()->Add(kRendererProcessId,
++                                                       &browser_context_);
+   }
+ 
+   void TearDown() override {
+@@ -79,6 +81,7 @@ class NetworkServiceClientTest : public testing::Test {
+ 
+  protected:
+   TestBrowserThreadBundle scoped_task_environment_;
++  TestBrowserContext browser_context_;
+   network::mojom::NetworkServiceClientPtr client_ptr_;
+   NetworkServiceClient client_;
+   base::ScopedTempDir temp_dir_;
+diff --git a/content/browser/renderer_host/render_process_host_impl.cc b/content/browser/renderer_host/render_process_host_impl.cc
+index 55fb2375bfa4c..15871fc3ed838 100644
+--- a/content/browser/renderer_host/render_process_host_impl.cc
++++ b/content/browser/renderer_host/render_process_host_impl.cc
+@@ -155,6 +155,7 @@
+ #include "content/common/view_messages.h"
+ #include "content/common/widget_messages.h"
+ #include "content/public/browser/browser_context.h"
++#include "content/public/browser/browser_or_resource_context.h"
+ #include "content/public/browser/browser_task_traits.h"
+ #include "content/public/browser/content_browser_client.h"
+ #include "content/public/browser/network_service_instance.h"
+@@ -1612,7 +1613,7 @@ RenderProcessHostImpl::RenderProcessHostImpl(
+ 
+   widget_helper_ = new RenderWidgetHelper();
+ 
+-  ChildProcessSecurityPolicyImpl::GetInstance()->Add(GetID());
++  ChildProcessSecurityPolicyImpl::GetInstance()->Add(GetID(), browser_context);
+ 
+   CHECK(!BrowserMainRunner::ExitedMainMessageLoop());
+   RegisterHost(GetID(), this);
+@@ -3981,7 +3982,7 @@ RenderProcessHost* RenderProcessHostImpl::GetSoleProcessHostForURL(
+       SiteInstanceImpl::GetSiteForURL(browser_context, isolation_context, url,
+                                       true /* should_use_effective_urls */);
+   GURL lock_url = SiteInstanceImpl::DetermineProcessLockURL(
+-      browser_context, isolation_context, url);
++      BrowserOrResourceContext(browser_context), isolation_context, url);
+   return GetSoleProcessHostForSite(browser_context, isolation_context, site_url,
+                                    lock_url);
+ }
+diff --git a/content/browser/site_instance_impl.cc b/content/browser/site_instance_impl.cc
+index e1a7560631bd0..b8b2749a3c611 100644
+--- a/content/browser/site_instance_impl.cc
++++ b/content/browser/site_instance_impl.cc
+@@ -16,6 +16,7 @@
+ #include "content/browser/isolation_context.h"
+ #include "content/browser/renderer_host/render_process_host_impl.h"
+ #include "content/browser/storage_partition_impl.h"
++#include "content/public/browser/browser_or_resource_context.h"
+ #include "content/public/browser/content_browser_client.h"
+ #include "content/public/browser/render_process_host_factory.h"
+ #include "content/public/browser/site_isolation_policy.h"
+@@ -194,11 +195,12 @@ void SiteInstanceImpl::SetSite(const GURL& url) {
+   // URL is invalid.
+   has_site_ = true;
+   BrowserContext* browser_context = browsing_instance_->browser_context();
+-  site_ = GetSiteForURL(browser_context, GetIsolationContext(), url,
++  site_ = GetSiteForURL(BrowserOrResourceContext(browser_context),
++                        GetIsolationContext(), url,
+                         true /* should_use_effective_urls */);
+   original_url_ = url;
+-  lock_url_ =
+-      DetermineProcessLockURL(browser_context, GetIsolationContext(), url);
++  lock_url_ = DetermineProcessLockURL(BrowserOrResourceContext(browser_context),
++                                      GetIsolationContext(), url);
+ 
+   // Now that we have a site, register it with the BrowsingInstance.  This
+   // ensures that we won't create another SiteInstance for this site within
+@@ -280,7 +282,8 @@ bool SiteInstanceImpl::HasWrongProcessForURL(const GURL& url) {
+   GURL site_url = SiteInstanceImpl::GetSiteForURL(
+       browsing_instance_->browser_context(), GetIsolationContext(), url);
+   GURL origin_lock = DetermineProcessLockURL(
+-      browsing_instance_->browser_context(), GetIsolationContext(), url);
++      BrowserOrResourceContext(browsing_instance_->browser_context()),
++      GetIsolationContext(), url);
+   return !RenderProcessHostImpl::IsSuitableHost(
+       GetProcess(), browsing_instance_->browser_context(),
+       GetIsolationContext(), site_url, origin_lock);
+@@ -434,6 +437,9 @@ bool SiteInstanceImpl::IsSameWebSite(BrowserContext* browser_context,
+ // static
+ GURL SiteInstance::GetSiteForURL(BrowserContext* browser_context,
+                                  const GURL& url) {
++  DCHECK_CURRENTLY_ON(BrowserThread::UI);
++  DCHECK(browser_context);
++
+   // By default, GetSiteForURL will resolve |real_url| to an effective URL
+   // before computing its site, so set |should_use_effective_urls| to true.
+   //
+@@ -443,24 +449,33 @@ GURL SiteInstance::GetSiteForURL(BrowserContext* browser_context,
+   // where needed.  Eventually, GetSiteForURL should always require an
+   // IsolationContext to be passed in, and this implementation should just
+   // become SiteInstanceImpl::GetSiteForURL.
+-  return SiteInstanceImpl::GetSiteForURL(browser_context, IsolationContext(),
+-                                         url,
+-                                         true /* should_use_effective_urls */);
++  return SiteInstanceImpl::GetSiteForURL(
++      BrowserOrResourceContext(browser_context), IsolationContext(), url,
++      true /* should_use_effective_urls */);
+ }
+ 
+ // static
+ GURL SiteInstanceImpl::DetermineProcessLockURL(
+-    BrowserContext* browser_context,
++    const BrowserOrResourceContext& context,
+     const IsolationContext& isolation_context,
+     const GURL& url) {
+   // For the process lock URL, convert |url| to a site without resolving |url|
+   // to an effective URL.
+-  return SiteInstanceImpl::GetSiteForURL(browser_context, isolation_context,
+-                                         url,
++  return SiteInstanceImpl::GetSiteForURL(context, isolation_context, url,
+                                          false /* should_use_effective_urls */);
+ }
+ 
+-GURL SiteInstanceImpl::GetSiteForURL(BrowserContext* browser_context,
++// static
++GURL SiteInstanceImpl::GetSiteForURL(BrowserContext* context,
++                                     const IsolationContext& isolation_context,
++                                     const GURL& url,
++                                     bool should_use_effective_urls) {
++  DCHECK_CURRENTLY_ON(BrowserThread::UI);
++  return GetSiteForURL(BrowserOrResourceContext(context), isolation_context,
++                       url, should_use_effective_urls);
++}
++
++GURL SiteInstanceImpl::GetSiteForURL(const BrowserOrResourceContext& context,
+                                      const IsolationContext& isolation_context,
+                                      const GURL& real_url,
+                                      bool should_use_effective_urls) {
+@@ -468,8 +483,12 @@ GURL SiteInstanceImpl::GetSiteForURL(BrowserContext* browser_context,
+   if (real_url.SchemeIs(kGuestScheme))
+     return real_url;
+ 
++  if (should_use_effective_urls)
++    DCHECK_CURRENTLY_ON(BrowserThread::UI);
++
+   GURL url = should_use_effective_urls
+-                 ? SiteInstanceImpl::GetEffectiveURL(browser_context, real_url)
++                 ? SiteInstanceImpl::GetEffectiveURL(context.ToBrowserContext(),
++                                                     real_url)
+                  : real_url;
+   url::Origin origin = url::Origin::Create(url);
+ 
+@@ -499,7 +518,7 @@ GURL SiteInstanceImpl::GetSiteForURL(BrowserContext* browser_context,
+     // a proper security principal.
+     if (should_use_effective_urls && url != real_url) {
+       std::string non_translated_site_url(
+-          GetSiteForURL(browser_context, isolation_context, real_url,
++          GetSiteForURL(context, isolation_context, real_url,
+                         false /* should_use_effective_urls */)
+               .spec());
+       GURL::Replacements replacements;
+@@ -573,6 +592,7 @@ GURL SiteInstanceImpl::GetSiteForOrigin(const url::Origin& origin) {
+ // static
+ GURL SiteInstanceImpl::GetEffectiveURL(BrowserContext* browser_context,
+                                        const GURL& url) {
++  DCHECK(browser_context);
+   return GetContentClient()->browser()->GetEffectiveURL(browser_context, url);
+ }
+ 
+diff --git a/content/browser/site_instance_impl.h b/content/browser/site_instance_impl.h
+index da2696d679953..0ab3f787c1b8a 100644
+--- a/content/browser/site_instance_impl.h
++++ b/content/browser/site_instance_impl.h
+@@ -20,6 +20,7 @@
+ 
+ namespace content {
+ class BrowsingInstance;
++class BrowserOrResourceContext;
+ class RenderProcessHostFactory;
+ 
+ class CONTENT_EXPORT SiteInstanceImpl final : public SiteInstance,
+@@ -136,6 +137,13 @@ class CONTENT_EXPORT SiteInstanceImpl final : public SiteInstance,
+   // |should_use_effective_urls| defaults to true and specifies whether to
+   // resolve |url| to an effective URL (via
+   // ContentBrowserClient::GetEffectiveURL()) before determining the site.
++  static GURL GetSiteForURL(const BrowserOrResourceContext& context,
++                            const IsolationContext& isolation_context,
++                            const GURL& url,
++                            bool should_use_effective_urls = true);
++
++  // TODO(acolwell): Remove after all call sites have been updated to use
++  // BrowserOrResourceContext.
+   static GURL GetSiteForURL(BrowserContext* context,
+                             const IsolationContext& isolation_context,
+                             const GURL& url,
+@@ -151,7 +159,7 @@ class CONTENT_EXPORT SiteInstanceImpl final : public SiteInstance,
+   // Returns the URL to which a process should be locked for the given URL.
+   // This is computed similarly to the site URL (see GetSiteForURL), but
+   // without resolving effective URLs.
+-  static GURL DetermineProcessLockURL(BrowserContext* context,
++  static GURL DetermineProcessLockURL(const BrowserOrResourceContext& context,
+                                       const IsolationContext& isolation_context,
+                                       const GURL& url);
+ 
+diff --git a/content/browser/site_instance_impl_unittest.cc b/content/browser/site_instance_impl_unittest.cc
+index 90a2d2ab5ed53..a70a67454dec8 100644
+--- a/content/browser/site_instance_impl_unittest.cc
++++ b/content/browser/site_instance_impl_unittest.cc
+@@ -26,6 +26,7 @@
+ #include "content/browser/web_contents/web_contents_impl.h"
+ #include "content/browser/webui/content_web_ui_controller_factory.h"
+ #include "content/browser/webui/web_ui_controller_factory_registry.h"
++#include "content/public/browser/browser_or_resource_context.h"
+ #include "content/public/common/bindings_policy.h"
+ #include "content/public/common/content_client.h"
+ #include "content/public/common/content_constants.h"
+@@ -425,7 +426,6 @@ TEST_F(SiteInstanceTest, GetSiteForURL) {
+ 
+ // Test that process lock URLs are computed without using effective URLs.
+ TEST_F(SiteInstanceTest, ProcessLockDoesNotUseEffectiveURL) {
+-  TestBrowserContext context;
+   GURL test_url("https://some.app.foo.com/");
+   GURL nonapp_site_url("https://foo.com/");
+   GURL app_url("https://app.com/");
+@@ -440,12 +440,13 @@ TEST_F(SiteInstanceTest, ProcessLockDoesNotUseEffectiveURL) {
+   // URL's site (app.com) and the original URL's site (foo.com).
+   GURL expected_app_site_url(app_url.spec() + "#" + nonapp_site_url.spec());
+   {
++    BrowserOrResourceContext context(browser_context.get());
+     GURL site_url = SiteInstanceImpl::GetSiteForURL(
+-        &context, isolation_context, test_url, false /* use_effective_urls */);
++        context, isolation_context, test_url, false /* use_effective_urls */);
+     EXPECT_EQ(nonapp_site_url, site_url);
+ 
+     site_url = SiteInstanceImpl::GetSiteForURL(
+-        &context, isolation_context, test_url, true /* use_effective_urls */);
++        context, isolation_context, test_url, true /* use_effective_urls */);
+     EXPECT_EQ(expected_app_site_url, site_url);
+   }
+ 
+diff --git a/content/public/browser/BUILD.gn b/content/public/browser/BUILD.gn
+index 0d9061f128d72..517045a039c7d 100644
+--- a/content/public/browser/BUILD.gn
++++ b/content/public/browser/BUILD.gn
+@@ -76,6 +76,7 @@ jumbo_source_set("browser_sources") {
+     "browser_main_runner.h",
+     "browser_message_filter.cc",
+     "browser_message_filter.h",
++    "browser_or_resource_context.h",
+     "browser_plugin_guest_delegate.cc",
+     "browser_plugin_guest_delegate.h",
+     "browser_plugin_guest_manager.cc",
+diff --git a/content/public/browser/browser_or_resource_context.h b/content/public/browser/browser_or_resource_context.h
+new file mode 100644
+index 0000000000000..cacd119a3f6f8
+--- /dev/null
++++ b/content/public/browser/browser_or_resource_context.h
+@@ -0,0 +1,98 @@
++// Copyright 2018 The Chromium Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#ifndef CONTENT_PUBLIC_BROWSER_BROWSER_OR_RESOURCE_CONTEXT_H_
++#define CONTENT_PUBLIC_BROWSER_BROWSER_OR_RESOURCE_CONTEXT_H_
++
++#include <type_traits>
++
++#include "base/logging.h"
++#include "content/public/browser/browser_thread.h"
++
++namespace content {
++
++class BrowserContext;
++class ResourceContext;
++
++// A class holding either a BrowserContext* or a ResourceContext*.
++// This class should hold a BrowserContext* when constructed on the UI thread
++// and a ResourceContext* when constructed on the IO thread. This object must
++// only be accessed on the thread it was constructed and does not allow
++// converting between the two pointer types.
++class BrowserOrResourceContext final {
++ public:
++  BrowserOrResourceContext() {
++    union_.browser_context_ = nullptr;
++    flavour_ = kNullFlavour;
++  }
++
++  // BrowserOrResourceContext is implicitly constructible from either
++  // BrowserContext* or ResourceContext*.  Neither of the constructor arguments
++  // can be null (enforced by DCHECKs and in some cases at compile time).
++  explicit BrowserOrResourceContext(BrowserContext* browser_context) {
++    DCHECK(browser_context);
++    DCHECK_CURRENTLY_ON(BrowserThread::UI);
++    union_.browser_context_ = browser_context;
++    flavour_ = kBrowserContextFlavour;
++  }
++
++  explicit BrowserOrResourceContext(ResourceContext* resource_context) {
++    DCHECK(resource_context);
++    DCHECK_CURRENTLY_ON(BrowserThread::IO);
++    union_.resource_context_ = resource_context;
++    flavour_ = kResourceContextFlavour;
++  }
++  BrowserOrResourceContext(nullptr_t) = delete;
++
++  // BrowserOrResourceContext has a trivial, default destructor.
++  ~BrowserOrResourceContext() = default;
++
++  // BrowserOrResourceContext is trivially copyable.
++  BrowserOrResourceContext(const BrowserOrResourceContext& other) = default;
++  BrowserOrResourceContext& operator=(const BrowserOrResourceContext& other) =
++      default;
++
++  explicit operator bool() const {
++    return (union_.resource_context_ != nullptr &&
++            union_.browser_context_ != nullptr);
++  }
++
++  // To be called only on the UI thread.  In DCHECK-enabled builds will verify
++  // that this object has kBrowserContextFlavour (implying that the returned
++  // BrowserContext* is valid and non-null.
++  BrowserContext* ToBrowserContext() const {
++    DCHECK_CURRENTLY_ON(BrowserThread::UI);
++    CHECK_EQ(kBrowserContextFlavour, flavour_);
++    return union_.browser_context_;
++  }
++
++  // To be called only on the IO thread.  In DCHECK-enabled builds will verify
++  // that this object has kResourceContextFlavour (implying that the returned
++  // ResourceContext* is valid and non-null.
++  ResourceContext* ToResourceContext() const {
++    DCHECK_CURRENTLY_ON(BrowserThread::IO);
++    CHECK_EQ(kResourceContextFlavour, flavour_);
++    return union_.resource_context_;
++  }
++
++ private:
++  union Union {
++    BrowserContext* browser_context_;
++    ResourceContext* resource_context_;
++  } union_;
++
++  enum Flavour {
++    kNullFlavour,
++    kBrowserContextFlavour,
++    kResourceContextFlavour,
++  } flavour_;
++};
++
++static_assert(
++    std::is_trivially_copyable<BrowserOrResourceContext>::value,
++    "BrowserOrResourceContext should be trivially copyable in release builds.");
++
++}  // namespace content
++
++#endif  // CONTENT_PUBLIC_BROWSER_BROWSER_OR_RESOURCE_CONTEXT_H_
+diff --git a/content/public/test/mock_render_process_host.cc b/content/public/test/mock_render_process_host.cc
+index 4be6589c6f11e..d1429ce984526 100644
+--- a/content/public/test/mock_render_process_host.cc
++++ b/content/public/test/mock_render_process_host.cc
+@@ -66,7 +66,7 @@ MockRenderProcessHost::MockRenderProcessHost(BrowserContext* browser_context)
+       weak_ptr_factory_(this) {
+   // Child process security operations can't be unit tested unless we add
+   // ourselves as an existing child process.
+-  ChildProcessSecurityPolicyImpl::GetInstance()->Add(GetID());
++  ChildProcessSecurityPolicyImpl::GetInstance()->Add(GetID(), browser_context);
+ 
+   RenderProcessHostImpl::RegisterHost(GetID(), this);
+ }
