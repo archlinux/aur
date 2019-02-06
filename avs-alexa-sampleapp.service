@@ -1,0 +1,11 @@
+[Unit]
+Description=AVS Alexa Sampleapp
+After=network.target
+
+[Service]
+User=alexa
+Type=simple
+ExecStart=/usr/bin/avs-alexa-sampleapp /var/lib/avs-alexa-sampleapp/AlexaClientSDKConfig.json
+
+[Install]
+WantedBy=multi-user.target
