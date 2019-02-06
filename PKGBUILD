@@ -7,14 +7,14 @@ _pkgname=viking
 _branch=master
 _use_gh_api=true
 pkgname=${_pkgname}-git
-pkgver=1.7.r3369.2a4badeb
+pkgver=1.7.r3375.8deb4058
 pkgrel=1
 pkgdesc='GTK+2 application to manage GPS data'
 arch=('i686' 'x86_64')
 url='https://viking-gps.github.io/'
 license=('GPL2')
 depends=('curl' 'file' 'gpsd' 'gtk2' 'libgexiv2' 'mapnik' 'liboauth')
-makedepends=('boost' 'gnome-doc-utils' 'intltool')
+makedepends=('boost' 'gnome-doc-utils' 'intltool' 'gtk-doc')
 if [ "${_use_gh_api}" = true ]; then
   makedepends+=('python')
 else
