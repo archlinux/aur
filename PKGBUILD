@@ -12,7 +12,7 @@
 
 pkgname=electrum-git
 pkgver=20190205
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
 depends=('hicolor-icon-theme'
@@ -70,19 +70,19 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
 
-  msg2 'Initializing git submodule...'
+  echo 'Initializing git submodule...'
   git submodule init
 
-  msg2 'Compiling protobuf description file...'
+  echo 'Compiling protobuf description file...'
   protoc \
     --proto_path=electrum \
     --python_out=electrum \
     electrum/paymentrequest.proto
 
-  msg2 'Creating translations...'
+  echo 'Creating translations...'
   python contrib/make_locale
 
-  msg2 'Building...'
+  echo 'Building...'
   python setup.py build
 }
 
@@ -93,14 +93,14 @@ check() {
   _pyver="$(python -c \
     'import platform; print("%s%s" % platform.python_version_tuple()[0:2])')"
 
-  msg2 'Testing...'
+  echo 'Testing...'
   tox -e "py$_pyver"
 }
 
 package() {
   cd ${pkgname%-git}
 
-  msg2 'Installing...'
+  echo 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1
 
   install -Dm644 AUTHORS README.rst RELEASE-NOTES -t "$pkgdir"/usr/share/doc/$pkgname
