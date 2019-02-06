@@ -1,0 +1,18 @@
+pkgbase = haskell-dual-tree
+	pkgdesc = Rose trees with cached and accumulating monoidal annotations.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/dual-tree
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-monoid-extras
+	depends = haskell-newtype-generics
+	source = https://hackage.haskell.org/package/dual-tree-0.2.2/dual-tree-0.2.2.tar.gz
+	source = haskell-dual-tree.patch
+	sha512sums = 4f2415763eaa879c80d7682e9a0fa1b237e6fc9eea6b6751c3d0e0aae0031d45fbea82c715adaeb257449d42d20fb8223a42c0861f513300ed118820b42f90ca
+	sha512sums = e62d0ad18b983d6359baca6a686e9fd002aa4b35e25de203bf5d7855b8c2dbc8d7fbcc4626a55d229754d7d40e00c075523edaf0485cd3bb8bd43abfa254c55d
+
+pkgname = haskell-dual-tree
+
