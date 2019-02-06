@@ -1,7 +1,7 @@
 pkgbase = pharo-launcher
 	pkgdesc = Pharo Launcher helps you manage your Pharo images
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 3
 	epoch = 1
 	url = http://www.pharo-project.org/
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = pharo-launcher
 	makedepends = gendesk
 	makedepends = libcurl-gnutls
 	source = http://files.pharo.org/pharo-launcher/1.6/PharoLauncher-linux-1.6-x64.zip
+	source = local://pharo.conf
 	md5sums = 73851e30345089b233d128766b44af81
+	md5sums = b2e30a17b522ee265fd57fe7c45592fc
 
 pkgname = pharo-launcher
 
