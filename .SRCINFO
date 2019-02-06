@@ -1,0 +1,18 @@
+pkgbase = python-pyroaring
+	pkgdesc = A Python dict with a merge() method
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://pypi.org/pypi/pyroaring
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.org/packages/source/p/pyroaring/pyroaring-0.2.6.tar.gz
+	sha256sums = e065a765b51725b39c9efe5cf615e587e23582a4ad236f177ed12992325b2308
+
+pkgname = python-pyroaring
+	depends = python
+
+pkgname = python2-pyroaring
+	depends = python2
+
