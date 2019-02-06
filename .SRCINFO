@@ -1,0 +1,12 @@
+pkgbase = chromium-extension-ban-checker-for-steam
+	pkgdesc = Chrome/Chromium extension for Ban-Checker-for-Steam
+	pkgver = 1.2.2.1
+	pkgrel = 1
+	url = https://github.com/ge-ku/Ban-Checker-for-Steam
+	arch = any
+	license = custom
+	source = https://github.com/ge-ku/Ban-Checker-for-Steam/releases/download/1.2.2.1/Banchecker_Chrome_1.2.2.1.zip
+	md5sums = 7299150b8483063928759cd085fd077f
+
+pkgname = chromium-extension-ban-checker-for-steam
+
