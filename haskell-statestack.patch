@@ -1,0 +1,13 @@
+diff -ura statestack-0.2.0.5/statestack.cabal statestack-0.2.0.5.new/statestack.cabal
+--- statestack-0.2.0.5/statestack.cabal	2016-01-17 21:49:39.000000000 -0500
++++ statestack-0.2.0.5.new/statestack.cabal	2019-02-06 17:39:23.176785440 -0500
+@@ -19,7 +19,7 @@
+ Library
+   Default-language:    Haskell2010
+   Exposed-modules:     Control.Monad.StateStack
+-  Build-depends:       base >= 4.2 && < 4.10,
++  Build-depends:       base >= 4.2,
+                        mtl >= 2.1 && < 2.3,
+                        transformers >= 0.3 && < 0.6,
+-                       transformers-compat >= 0.4 && < 0.6
++                       transformers-compat >= 0.4

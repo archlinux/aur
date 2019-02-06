@@ -1,0 +1,17 @@
+pkgbase = haskell-statestack
+	pkgdesc = Simple State-like monad transformer where states can be saved to and restored from an internal stack.
+	pkgver = 0.2.0.5
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/statestack
+	arch = x86_64
+	license = BSD-3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-transformers-compat
+	source = https://hackage.haskell.org/package/statestack-0.2.0.5/statestack-0.2.0.5.tar.gz
+	source = haskell-statestack.patch
+	sha512sums = 077df22b86e415d773cafd0f21b38ae174b9b7861e5ad08626820d1836b290ddb55822e5389cedcddeef2d723ce17b49849d8c2bb6fd201e73f603ffb9eed262
+	sha512sums = 241df7bab8b5a056400377745c7fda9b337f16b48e0a426aca84870967bc507361ab2de31c0fecb13da7af9f217d75a389d9046ae8591e8522056a2555bb7d57
+
+pkgname = haskell-statestack
+
