@@ -1,6 +1,5 @@
 # Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
 pkgbase=dune-core
-#pkgname=('dune-common' 'dune-geometry' 'dune-localfunctions' 'dune-istl' 'dune-grid' 'dune-uggrid' 'dune-functions')
 pkgname=('dune-common' 'dune-geometry' 'dune-localfunctions' 'dune-istl' 'dune-grid' 'dune-uggrid')
 
 pkgver=2.6.0
