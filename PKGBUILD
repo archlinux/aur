@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python-bleach' 'python-jinja' 'python-werkzeug' 'python-html5lib-9x07' 'python-misaka' 'python-itsdangerous' 'python-six' 'python-cffi' 'sqlite' 'python-setuptools')
 makedepends=('git' 'python')
 backup=('etc/isso.conf')
-source=("isso.tar.gz::https://files.pythonhosted.org/packages/source/i/isso/isso-${pkgver}.tar.gz"
+source=("isso-${pkgver}-pypi.tar.gz::https://files.pythonhosted.org/packages/source/i/isso/isso-${pkgver}.tar.gz"
   "https://raw.githubusercontent.com/posativ/isso/master/LICENSE"
   "isso.service")
 install=$pkgname.install
