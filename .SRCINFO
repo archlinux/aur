@@ -1,17 +1,22 @@
 pkgbase = osmo-bsc-git
-	pkgdesc = OsmoBSC is an Open Source BSC (GSM Base Station Controller) with A-bis/IP and A/IP interface.
-	pkgver = 1.4.0.6.g761fa134a
+	pkgdesc = Open Source BSC (GSM Base Station Controller) with A-bis/IP and A/IP interface
+	pkgver = 1.4.0.15.g7cfdbe727
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmobsc
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL
+	makedepends = git
+	makedepends = talloc
 	depends = libosmocore
 	depends = libosmo-abis
 	depends = libosmo-sccp
 	depends = osmo-mgw
 	provides = osmo-bsc
 	conflicts = osmo-bsc
-	source = git://git.osmocom.org/osmo-bsc
+	source = git+https://git.osmocom.org/osmo-bsc
 	sha256sums = SKIP
 
 pkgname = osmo-bsc-git

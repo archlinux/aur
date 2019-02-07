@@ -1,32 +1,34 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-bsc-git
-_pkgname=osmo-bsc
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-pkgver=1.4.0.6.g761fa134a
+pkgver=1.4.0.15.g7cfdbe727
 pkgrel=1
-pkgdesc="OsmoBSC is an Open Source BSC (GSM Base Station Controller) with A-bis/IP and A/IP interface."
+pkgdesc="Open Source BSC (GSM Base Station Controller) with A-bis/IP and A/IP interface"
 url="https://osmocom.org/projects/osmobsc"
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'libosmo-abis' 'libosmo-sccp' 'osmo-mgw')
-source=("git://git.osmocom.org/${_pkgname}")
+makedepends=('git' 'talloc')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
-	echo $(git describe --always | sed 's/-/./g')
+  cd "${srcdir}/${pkgname%-git}"
+  echo $(git describe --always | sed 's/-/./g')
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	autoreconf -i
-	./configure --prefix=/usr
-	make
+  cd "${srcdir}/${pkgname%-git}"
+  autoreconf -i
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR=${pkgdir} install
 }
+
+# vim:set ts=2 sw=2 et:
