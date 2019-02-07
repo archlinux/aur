@@ -1,11 +1,13 @@
 pkgbase = python-rtmidi
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpotlightKid/python-rtmidi
 	arch = i686
 	arch = x86_64
 	arch = arm
 	license = MIT
+	makedepends = cython
+	makedepends = cython2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	depends = jack
