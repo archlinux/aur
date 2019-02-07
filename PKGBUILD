@@ -4,7 +4,7 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=simgear
-pkgver=2018.3.1
+pkgver=2018.3.2
 _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
@@ -15,7 +15,12 @@ license=("GPL")
 url="http://www.flightgear.org/"
 options=('makeflags' 'staticlibs')
 source=("https://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('294580c8e98044f660d2a9d202856970a4ce9d81ff0107fffcbd701d36daa06a')
+sha256sums=('c8b094a8c5045362848781f72117dbec424472bf6b9dd135dfe43f9b915781a4')
+
+prepare() {
+  cd "$srcdir"/simgear-$pkgver
+  sed -i -e "s|#include <simgear/structure/map.hxx>|#include <simgear/structure/map.hxx>\n#include <boost/utility/enable_if.hpp>|g" simgear/nasal/cppbind/NasalHash.hxx
+}
 
 build() {
   cd "$srcdir"/simgear-$pkgver
