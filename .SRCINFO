@@ -1,11 +1,12 @@
 pkgbase = perl-b-deparsetree
 	pkgdesc = Perl/CPAN Module B::DeparseTree
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/B-DeparseTree
 	arch = any
 	license = GPL
 	makedepends = perl-module-build
+	makedepends = perl-text-diff
 	depends = perl
 	depends = perl-rlib
 	depends = perl-data-printer
