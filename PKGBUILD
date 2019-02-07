@@ -1,15 +1,20 @@
 # Maintainer: Henry78 <henry78@gmx.at>
 pkgname=runrestic
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc='A wrapper script for Restic backup software that inits, creates, prunes and checks backups'
 arch=(any)
 url='https://github.com/andreasnuesslein/runrestic'
 license=('GPL3')
 depends=('python' 'python-toml')
-source=('https://github.com/andreasnuesslein/runrestic/archive/0.2.8.tar.gz')
-md5sums=('5334faa77135db50407511552cb197fa')
+source=('https://github.com/andreasnuesslein/runrestic/archive/0.2.8.tar.gz' 'replace_fastjsonschema_by_jsonschema.patch')
+md5sums=('5334faa77135db50407511552cb197fa'
+         '37f73291464b9eecc7141431fe7fbfeb')
 
+prepare() {
+    cd $pkgname-$pkgver
+    patch -p2 -i "$srcdir/replace_fastjsonschema_by_jsonschema.patch"
+}
 build() {
     cd $pkgname-$pkgver
 	python3 setup.py build

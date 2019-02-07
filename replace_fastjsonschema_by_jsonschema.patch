@@ -1,0 +1,17 @@
+diff -ura src/runrestic-0.2.8/runrestic/config/validate.py src.new/runrestic-0.2.8/runrestic/config/validate.py
+--- src/runrestic-0.2.8/runrestic/config/validate.py	2019-01-15 21:03:59.000000000 +0100
++++ src.new/runrestic-0.2.8/runrestic/config/validate.py	2019-02-07 23:13:30.007566392 +0100
+@@ -1,6 +1,6 @@
+ import json
+ 
+-import fastjsonschema
++import jsonschema
+ import pkg_resources
+ 
+ 
+@@ -12,4 +12,4 @@
+     with open(schema_filename(), 'r') as schema_file:
+         schema = json.load(schema_file)
+ 
+-    fastjsonschema.validate(schema, config)
++    jsonschema.validate(schema, config)
