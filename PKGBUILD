@@ -13,7 +13,7 @@
 
 pkgname=chromium-ozone-wayland-git
 pkgver=74.0.3694.0+39+27f5faa20d
-pkgrel=2
+pkgrel=3
 _launcher_ver=6
 pkgdesc="Chromium built from the Igalia fork with experimental Wayland support via Ozone"
 arch=('x86_64')
@@ -131,9 +131,9 @@ prepare() {
   patch -NRp1 -i ../chromium-browser-resource-context.patch
 
   # Remove compiler flags not supported by our system clang
-  # sed -i \
-  #   -e '/"-Wno-defaulted-function-deleted"/d' \
-  #   build/config/compiler/BUILD.gn
+  sed -i \
+    -e '/"-Wno-defaulted-function-deleted"/d' \
+    build/config/compiler/BUILD.gn
 
   sed -i \
     -e '/"-fsplit-lto-unit"/d' \
@@ -182,8 +182,8 @@ build() {
 
   _clang_path="${BUILDDIR}${_builddir}/src/src/third_party/llvm-build/Release+Asserts/bin/"
 
-  export CC="${_clang_path}clang"
-  export CXX="${_clang_path}clang++"
+  export CC="clang"
+  export CXX="clang++"
   export AR=ar
   export NM=nm
 
@@ -197,7 +197,7 @@ build() {
   local _flags=(
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
-    'clang_use_chrome_plugins=true'
+    'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
