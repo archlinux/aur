@@ -14,9 +14,9 @@
 pkgbase=qt5-base-nostatx
 _pkgbase=qt5-base
 pkgname=(qt5-base-nostatx qt5-xcb-private-headers-nostatx)
-_qtver=5.12.0
+_qtver=5.12.1
 pkgver=${_qtver/-/}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -27,6 +27,7 @@ depends=('libjpeg-turbo' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libgl' 'fontc
 makedepends=('libfbclient' 'mariadb-libs' 'sqlite' 'unixodbc' 'postgresql-libs' 'alsa-lib' 'gst-plugins-base-libs'
              'gtk3' 'libpulse' 'cups' 'freetds' 'vulkan-headers')
 optdepends=('qt5-svg: to use SVG icon themes'
+            'qt5-translations: for some native UI translations'
             'postgresql-libs: PostgreSQL driver'
             'mariadb-libs: MariaDB driver'
             'unixodbc: ODBC driver'
@@ -37,9 +38,11 @@ conflicts=('qtchooser')
 groups=('qt' 'qt5')
 _pkgfqn="${_pkgbase/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        qtbug-72844.patch::"https://code.qt.io/cgit/qt/qtbase.git/patch/?id=52e0d9e2")
-sha256sums=('5e03221d780e121aabd734896aab8f331e5d8c9d9b54f1eb04907d0818eaeecb'
-            'afdea0787e1d8d4c2e7139770761aba4fe8268f50b7f5d715bdd850cc7017996')
+        qt-delayed-highlight.patch::https://code.qt.io/cgit/qt/qtbase.git/patch/?id=f8f0f3ee
+        qtbug-69310.patch::"https://code.qt.io/cgit/qt/qtbase.git/patch/?id=fcba9fa8")
+sha256sums=('533078ce02678988576e224cb3844979907950cf83e0fda3364bc1d5701c9049'
+            '0080b1e208090c729018db1ac224e5940d06a38b9c28c918a892b01f84a82cf9'
+            '2186ce7b8d6310ebc005da9b00dcc88388df3e8b83bff37230fa1bb9253c4970')
 
 prepare() {
   cd ${_pkgfqn}
@@ -51,7 +54,8 @@ prepare() {
   sed -i -e "s|^\(QMAKE_LFLAGS_RELEASE.*\)|\1 ${LDFLAGS}|" \
     mkspecs/common/g++-unix.conf
 
-  patch -p1 -i ../qtbug-72844.patch # Fix drag and drop regression
+  patch -p1 -i ../qt-delayed-highlight.patch # https://codereview.qt-project.org/#/c/249881/
+  patch -p1 -i ../qtbug-69310.patch # https://bugreports.qt.io/browse/QTBUG-69310
 }
 
 build() {
