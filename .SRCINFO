@@ -1,0 +1,13 @@
+pkgbase = r-lambdar
+	pkgdesc = Modeling Data with Functional Programming
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/lambda.r/index.html
+	arch = x86_64
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/lambda.r_1.2.3.tar.gz
+	md5sums = 662f16f71a65366e0492d43ad1523db7
+
+pkgname = r-lambdar
+
