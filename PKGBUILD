@@ -1,11 +1,12 @@
 pkgname=transmission-web-control-git
 pkgver=1.6.0.beta2.r31.g50bcc1d
-pkgrel=1
-pkgdesc='A custom web UI for transmission'
+pkgrel=2
+pkgdesc='A custom web UI for transmission-da'
 arch=(any)
 url='https://github.com/ronggang/transmission-web-control'
 license=('MIT')
 source=("git+${url}")
+makedepends=('git')
 sha1sums=('SKIP')
 
 pkgver() {
