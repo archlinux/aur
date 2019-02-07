@@ -1,4 +1,4 @@
-# Contributor: Sauliusl <luksaulius at gmail>
+# Contributor: Grey Christoforo <first name at last name dot net>
 # Based on r-colorspace PKGBUILD
 pkgname=r-snow
 _cran_name=snow
