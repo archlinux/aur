@@ -7,7 +7,7 @@ pkgdesc="A browser plugin designed for the viewing of premium video content, sta
 pkgver=4.10.1303.0
 _chrome_ver=72.0.3626.81
 _channel=stable
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url='https://www.widevine.com/'
@@ -34,7 +34,7 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 opt/google/chrome/libwidevinecdm.so -t "$pkgdir/opt/google/chrome/"
+  install -Dm644 libwidevinecdm.so -t "$pkgdir/opt/google/chrome/"
   install -Dm644 chrome-eula_text.html -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
