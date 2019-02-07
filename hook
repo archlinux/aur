@@ -1,0 +1,21 @@
+#!/usr/bin/ash
+
+run_earlyhook() {
+    ln -sf /proc/self/fd /dev/fd
+    ln -sf /proc/self/fd/0 /dev/stdin
+    ln -sf /proc/self/fd/1 /dev/stdout
+    ln -sf /proc/self/fd/2 /dev/stderr
+    nldev -r /usr/bin/smdev &
+    echo $! > /run/nldev.pid
+}
+
+run_hook() {
+    msg ":: Triggering uevents..."
+    nltrigger add all
+    sleep 1s
+}
+
+run_cleanuphook() {
+    kill $(cat /run/nldev.pid)
+    rm /run/nldev.pid
+}
