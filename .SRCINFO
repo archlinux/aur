@@ -1,6 +1,6 @@
 pkgbase = ydcv-rs-git
 	pkgdesc = A Rust version of ydcv.
-	pkgver = 0.4.1.131
+	pkgver = 0.4.1.133
 	pkgrel = 1
 	url = https://github.com/farseerfc/ydcv-rs
 	arch = i686
