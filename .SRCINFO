@@ -1,6 +1,6 @@
 pkgbase = runelite
 	pkgdesc = Open source Old School RuneScape client.
-	pkgver = 1.5.10
+	pkgver = 1.5.11
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/runelite/runelite
@@ -13,7 +13,7 @@ pkgbase = runelite
 	optdepends = gvfs: enable links
 	provides = runelite
 	conflicts = runelite-git
-	source = https://github.com/runelite/runelite/archive/runelite-parent-1.5.10.tar.gz
+	source = https://github.com/runelite/runelite/archive/runelite-parent-1.5.11.tar.gz
 	source = runelite
 	source = runelite.desktop
 	source = runelite.png
