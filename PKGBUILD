@@ -3,7 +3,7 @@
 _pkgname=thanos
 pkgname=prometheus-$_pkgname
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly available Prometheus setup with long term storage capabilities. (binary, not built from source)"
 arch=("x86_64")
 url="https://github.com/improbable-eng/thanos"
@@ -16,7 +16,7 @@ source_x86_64=("thanos.service"
                "thanos"
                "https://github.com/improbable-eng/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.linux-amd64.tar.gz")
 sha256sums_x86_64=('f94f769c2af513e8dac3bfdb07e290e68f770e0b68778326206d49793a98b3ee'
-                   '248ec0edb4015f795e24f76a8b14d077cca3509b1709c2d28d18530590ecf2d1'
+                   '55e509a5022df1b3af5316e862f048d4815dbba6589d0227e9c8ffdf4f2adfdc'
                    '5feb8488b81e7869abfd3fa92f92a033f68c627cb8a591f1bcc338fee39833b1')
 
 package() {
