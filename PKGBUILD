@@ -1,31 +1,33 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
 
 pkgname=libasn1c-git
-_pkgname=libasn1c
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 pkgver=0.9.31.3.g5e00d6f
 pkgrel=1
 pkgdesc="runtime library of Lev Walkin's asn1c split out as separate library"
-url="http://cgit.osmocom.org/libasn1c/"
-arch=('any')
+url="http://cgit.osmocom.org/libasn1c"
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
-source=("git://git.osmocom.org/${_pkgname}")
+makedepends=('git' 'talloc')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
-	echo $(git describe --always | sed 's/-/./g')
+  cd "${srcdir}/${pkgname%-git}"
+  echo $(git describe --always | sed 's/-/./g')
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	autoreconf -i
-	./configure --prefix=/usr
-	make
+  cd "${srcdir}/${pkgname%-git}"
+  autoreconf -i
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR=${pkgdir} install
 }
+
+# vim:set ts=2 sw=2 et:
