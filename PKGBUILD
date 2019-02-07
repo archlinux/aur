@@ -3,7 +3,7 @@
 pkgname=cling-nightly-bin
 _pkgname=cling
 pkgver=0.5.20190123
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
 url="https://root.cern.ch/cling"
@@ -12,7 +12,7 @@ provides=("cling")
 conflicts=("cling")
 depends=(libxml2 ncurses)
 optdepends=(
-    'python2.7: support for scan-view, opt-viewer, Jupyter'
+    'python2: support for scan-view, opt-viewer, Jupyter'
     'perl: support for ccc-analyzer, c++-analyzer, scan-build'
 )
 source=(
