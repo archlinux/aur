@@ -22,7 +22,7 @@ source=("https://github.com/oVirt/${pkgbase}/archive/${pkgver}.tar.gz"
 	"${pkgbase}.tmpfiles"
 	"${pkgbase}.sysusers"
 	"${pkgbase}.service")
-sha256sums=('c3cbcd6da85a50099b9d7a3df9a9f8be97d646616c6c20fe7151e84eba855f5a'
+sha256sums=('8c6aecd168f538c7840eba4c6747f079e3422fab3f1ebc21f7c17986a53f74d8'
             '95c162b584dd137296bcec70d14079d4b93d10d8542a87bd8f1cd6ad01e4b140'
             'ebe724b39b78a3bc21a998884b188e0efdaa2fc3ea3416fb4e4e273629394e24'
             '78994d3cfe8f293aab84692c9d181b2c20caeb47e9854bb9377f2199b45984fb'
