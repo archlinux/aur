@@ -14,7 +14,7 @@ makedepends=('karchive' 'qt5-multimedia' 'qt5-tools' 'qt5-svg' 'ninja' 'cmake')
 source=("http://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz")
 sha256sums=('f34a9be3414dca26d059e292e994eaa05932cca70a465a39be9c02067b460140')
 
-_cmakeargs+=('-Wno-dev')
+_cmakeargs+=('-Wno-dev' '-DKIS_TABLET=ON')
 
 build() {
 	cd "${pkgbase}-${pkgver}"
