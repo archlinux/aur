@@ -1,17 +1,22 @@
 pkgbase = osmo-sip-connector-git
-	pkgdesc = This is the modern gateway between the MNCC Interface of OsmoMSC and OsmoNITB and an external SIP trunk.
+	pkgdesc = Gateway between the MNCC Interface of OsmoMSC and OsmoNITB and an external SIP trunk
 	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-sip-conector
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL
+	makedepends = git
 	depends = libosmocore
 	depends = libosmo-abis
 	depends = osmo-msc
 	depends = sofia-sip-bc
 	provides = osmo-sip-connector
 	conflicts = osmo-sip-connector
-	source = git://git.osmocom.org/osmo-sip-connector
+	backup = etc/osmocom/osmo-sip-connector.cfg
+	source = git+https://git.osmocom.org/osmo-sip-connector
 	sha256sums = SKIP
 
 pkgname = osmo-sip-connector-git
