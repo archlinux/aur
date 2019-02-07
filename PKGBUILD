@@ -1,13 +1,13 @@
 # Maintainer: Timothée Ravier <tim@siosm.fr>
 
 pkgname=mozilla-firefox-sync-server-git
-pkgver=1.6.0.r1.gd7bd0cf
+pkgver=1.8.0.r32.gbebd2f3
 pkgrel=1
 pkgdesc="Mozilla Sync Server for built-in Firefox Sync - 1.5+ version for Firefox 29+"
 arch=('i686' 'x86_64')
 url='http://docs.services.mozilla.com/howtos/run-sync-1.5.html'
 license=('GPL')
-depends=('python2' 'python-virtualenv')
+depends=('python2' 'python2-virtualenv')
 makedepends=('git')
 options=(!debug)
 conflicts=('mozilla-firefox-sync-server-hg')
