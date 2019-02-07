@@ -1,9 +1,9 @@
 # Maintainer: Mikkel Oscar Lyderik Larsen <m@moscar.net>
 
 pkgname=kubernetes-bin
-pkgver=1.13.2
+pkgver=1.13.3
 _contribver=0.7.0
-pkgrel=1
+pkgrel=0
 pkgdesc="Production-Grade Container Scheduling and Management - binary version."
 optdepends=('etcd: etcd cluster required to run Kubernetes')
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
@@ -33,13 +33,13 @@ provides=('kubernetes'
 	  'kube-scheduler')
 conflicts=('kubernetes' 'kubeadm-git' 'kubectl' 'kubectl-bin' 'kubeadm-bin' 'kubelet-bin' )
 install=kubernetes.install
-sha512sums=('fe1c30efaffb70b4102879580470031baf78f11c94fc37773bd69568a3aca9a93a0350d067faa2fa0f25f3e85005fe5944cecd7a33d48326f55c60d0c0408004'
+sha512sums=('151af896b72c7fd09c05da1a7685e8b2f167c717adbe5776f80a264171e5f3359a948af93642856e0bfbabb49d3bf9c274085eacf6109c4b972ba5bc9d24b8a7'
             '51ab778583bd3d33a89d6fdfd17231ec8e1fe5983c043c21c03421d71403b8e76b52d86b05b05651ab8da1bdb5b47b8aa85f275badefe82344bac15b9d86cde6'
             '19d70634252932e7835bb5db4af75c530fe843386ca688267caca0fb3b4fb1ad7019025ea9d59926ceac8817580e9dfad9396c327f2da955146a302f22b2d5ce')
-sha512sums_x86_64=('e2d2f02f76578c5a1c04a9a417e9f1dc16abcc28daab688c50554a1bf64bb75dfbf5aae6d6f3e5c4463b214034e0220884727e314fa563f6e2199b9a3e4147a9')
-sha512sums_armv7l=('6f4a331fd78157866238dd9b8d986d33bfce6548ae503d0c9f4fb42854b0793df659298f95577103994047d01a6b613140b0eece3ae8c294bb0fe8ace84cdea1')
+sha512sums_x86_64=('024847f8a370c4edb920a4621904540bf15c3afc0c688a134090ae8503a51296c83ebc402365f5a2be5aff01a8ca89910423874489dd2412608de0e38b455fb5')
+sha512sums_armv7l=('5fc1f6b60102e8830c6946750d0115cf71cdf59ef9878add2fc0edfed7b3396d25f6e1918d51481403ba6694c322ab038e1fc02cfc2192acb57970ce5954a158')
 sha512sums_armv7h=("${sha512sums_armv7l}")
-sha512sums_aarch64=('50fc95da2598775029b828f31978f6e2a98eceee890bd575122e7697dc7805f1fb9de060998999f3f9d8bc76f5d534b25f64f9b340c70a58503172ae2818d98a')
+sha512sums_aarch64=('5cbd4ad922476262eae523c5dddaba9d4af3778b1dd731b7c3c538061d81f0a0913df872c9e34dbfdc5fd57ea5ce33cad1f6377d1a86e966e918af3c27a48fef')
 
 package() {
     cd $srcdir/kubernetes
