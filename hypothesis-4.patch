@@ -1,0 +1,13 @@
+diff -urN python-zstandard-0.10.2-orig/tests/common.py python-zstandard-0.10.2/tests/common.py
+--- python-zstandard-0.10.2-orig/tests/common.py	2018-11-03 16:11:40.000000000 -0400
++++ python-zstandard-0.10.2/tests/common.py	2019-02-07 13:31:23.495095114 -0500
+@@ -143,8 +143,7 @@
+     default_settings = hypothesis.settings()
+     hypothesis.settings.register_profile('default', default_settings)
+ 
+-    ci_settings = hypothesis.settings(max_examples=2500,
+-                                      max_iterations=2500)
++    ci_settings = hypothesis.settings(max_examples=2500)
+     hypothesis.settings.register_profile('ci', ci_settings)
+ 
+     hypothesis.settings.load_profile(
