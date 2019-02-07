@@ -1,15 +1,16 @@
 pkgbase = ttf-impallari-miltonian
 	pkgdesc = Two playful fonts for all your informal needs, from Pablo Impallari
-	pkgver = 1.005
+	pkgver = 1.007
 	pkgrel = 1
-	url = http://www.impallari.com/miltonian/
+	url = https://github.com/impallari/Miltonian
 	install = updatefont.install
 	arch = any
 	groups = impallari-fonts
 	license = custom:OFL
-	makedepends = wget
 	depends = fontconfig
 	depends = xorg-font-utils
+	source = Miltonian-master.zip::https://codeload.github.com/impallari/Miltonian/zip/master
+	md5sums = 3e33d91d524c322c87d5862c1591e5b4
 
 pkgname = ttf-impallari-miltonian
 
