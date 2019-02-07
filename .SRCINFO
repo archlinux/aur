@@ -1,6 +1,6 @@
 pkgbase = virtualbox-svn
-	pkgver = 77065
-	pkgrel = 3
+	pkgver = 77197
+	pkgrel = 1
 	url = http://virtualbox.org
 	arch = x86_64
 	license = GPL
