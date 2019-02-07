@@ -1,32 +1,35 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-sgsn-git
-_pkgname=osmo-sgsn
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 pkgver=1.4.0
 pkgrel=1
-pkgdesc="OsmoSGSN is an Open Source implementation of a SGSN (Serving GPRS Support Node)."
+pkgdesc="Open Source implementation of a SGSN (Serving GPRS Support Node)"
 url="https://osmocom.org/projects/osmosgsn"
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'osmo-ggsn' 'osmo-iuh' 'libasn1c' 'c-ares')
-source=("git://git.osmocom.org/${_pkgname}")
+makedepends=('git' 'talloc')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+backup=('etc/osmocom/osmo-sgsn.cfg')
+source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "${srcdir}/${pkgname%-git}"
   echo $(git describe --always | sed 's/-/./g')
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	autoreconf -i
-	./configure --prefix=/usr --enable-iu
-	make
+  cd "${srcdir}/${pkgname%-git}"
+  autoreconf -i
+  ./configure --prefix=/usr --sysconfdir=/etc --enable-iu
+  make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR=${pkgdir} install
 }
+
+# vim:set ts=2 sw=2 et:
