@@ -1,6 +1,6 @@
 pkgbase = ttf-impallari-hermeusone
 	pkgdesc = Hermeneus is a grecian style font, from Pablo Impallari
-	pkgver = 1.0
+	pkgver = 1.002
 	pkgrel = 1
 	url = http://www.impallari.com/
 	install = updatefont.install
@@ -9,8 +9,8 @@ pkgbase = ttf-impallari-hermeusone
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = http://www.impallari.com/media/uploads/prosources/update-54-source.zip
-	md5sums = b245694e76c6e9091f987d39e67ea9ea
+	source = hermeneus_one.zip::https://dl.dafont.com/dl/?f=hermeneus_one
+	md5sums = 03ab2e294830c9820a5a0e408640ed52
 
 pkgname = ttf-impallari-hermeusone
 
