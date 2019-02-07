@@ -32,8 +32,8 @@ package() {
 	install -Dm644 data/$_pkgname-autostart.desktop $pkgdir/usr/share/$_pkgname/$_pkgname-autostart.desktop
 	install -Dm644 data/icons/$_pkgname.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg
 	for icon_size in 8 16 32 48 96 128 192 256 512 1024; do
-        icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-        install -d $pkgdir/$icons_dir
-        install -Dm644 data/icons/${icon_size}x${icon_size}/$_pkgname.png $pkgdir$icons_dir/$_pkgname.png
+		icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
+		install -d $pkgdir/$icons_dir
+		install -Dm644 data/icons/${icon_size}x${icon_size}/$_pkgname.png $pkgdir$icons_dir/$_pkgname.png
     done
 }
