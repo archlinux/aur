@@ -9,8 +9,8 @@ pkgbase = ttf-impallari-new-rocker
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = http://www.impallari.com/media/uploads/prosources/update-83-source.zip
-	md5sums = 025d3723a7aa1e0b9c2815fa20e08741
+	source = New_Rocker.zip::https://fonts.google.com/download?family=New%20Rocker
+	md5sums = 447c5e7bde1c79d779ea3ff7e1f764d3
 
 pkgname = ttf-impallari-new-rocker
 
