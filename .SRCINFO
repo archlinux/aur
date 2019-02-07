@@ -1,19 +1,19 @@
 pkgbase = mingw-w64-vulkan-headers
 	pkgdesc = Vulkan header files (mingw-w64)
-	pkgver = 1.1.96
+	pkgver = 1.1.99
 	pkgrel = 1
 	url = https://www.khronos.org/vulkan/
 	arch = any
 	groups = mingw-w64-vulkan-devel
-	license = Apache
+	license = APACHE
 	makedepends = mingw-w64-cmake
-	makedepends = git
-	depends = mingw-w64-crt
-	options = !strip
+	provides = mingw-w64-vulkan-hpp=1.1.99
 	options = !buildflags
 	options = staticlibs
-	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git#commit=f54e45b92374b99de8556cacffc3602a03187b68
-	sha256sums = SKIP
+	options = !strip
+	options = !emptydirs
+	source = Vulkan-Headers-1.1.99.tar.gz::https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.1.99.tar.gz
+	sha512sums = ff4880bf75d9fb0edadc6abb68b4a29f95db73120af8fd9b0426c2caf4de002e1a479e72bc1630a5a81e916e7f1b2e2b21ad8bd366f0b1b62b322f216c2eb04f
 
 pkgname = mingw-w64-vulkan-headers
 
