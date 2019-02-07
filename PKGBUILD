@@ -1,32 +1,35 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-iuh-git
-_pkgname=osmo-iuh
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 pkgver=0.4.0.1.g04b5b66
 pkgrel=1
-pkgdesc="An Open Source implenentation of a HNB-GW (HomeNodeB-Gateway), implementing the Iuh, IuCS and IuPS interfaces."
+pkgdesc="Open Source implenentation of a HNB-GW (HomeNodeB-Gateway)"
 url="http://osmocom.org/projects/osmohnbgw"
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'libosmo-netif' 'libosmo-sccp' 'libasn1c' 'lksctp-tools')
-source=("git://git.osmocom.org/${_pkgname}")
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+backup=('etc/osmocom/osmo-hnbgw.cfg')
+source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
-	echo $(git describe --always | sed 's/-/./g')
+  cd "${srcdir}/${pkgname%-git}"
+  echo $(git describe --always | sed 's/-/./g')
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	autoreconf -i
-	./configure --prefix=/usr
-	make
+  cd "${srcdir}/${pkgname%-git}"
+  autoreconf -i
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR=${pkgdir} install
 }
+
+# vim:set ts=2 sw=2 et:
