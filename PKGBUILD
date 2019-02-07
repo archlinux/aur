@@ -2,12 +2,12 @@
 
 pkgname=cuppa
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Comprehensive Upstream Provider Polling Assistant."
 arch=('i686' 'x86_64')
 url="https://github.com/DataDrake/cuppa"
 license=(MIT)
-makedepends=('go-pie' 'make')
+makedepends=('go-pie' 'make' 'git')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("https://github.com/DataDrake/${pkgname}/archive/v${pkgver}.tar.gz")

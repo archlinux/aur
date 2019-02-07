@@ -1,13 +1,14 @@
 pkgbase = cuppa
 	pkgdesc = Comprehensive Upstream Provider Polling Assistant.
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DataDrake/cuppa
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go-pie
 	makedepends = make
+	makedepends = git
 	provides = cuppa
 	conflicts = cuppa-git
 	source = https://github.com/DataDrake/cuppa/archive/v1.0.4.tar.gz
