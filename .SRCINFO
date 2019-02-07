@@ -1,17 +1,18 @@
 pkgbase = librouteros-git
-	pkgdesc = C library to communicate with network devices by MikroTik running their Linux-based operating system RouterOS.
+	pkgdesc = C library to communicate with network devices by MikroTik running RouterOS
 	pkgver = 20180719.c485c77
 	pkgrel = 1
 	url = https://github.com/octo/librouteros
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	arch = armv7h
 	license = ISC
 	makedepends = git
 	depends = gcc-libs
 	provides = librouteros
 	conflicts = librouteros
-	source = git://github.com/octo/librouteros.git
+	source = git+https://github.com/octo/librouteros.git
 	sha256sums = SKIP
 
 pkgname = librouteros-git
