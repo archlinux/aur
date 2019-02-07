@@ -16,6 +16,7 @@ pkgbase = osmo-bsc-git
 	depends = osmo-mgw
 	provides = osmo-bsc
 	conflicts = osmo-bsc
+	backup = etc/osmocom/osmo-bsc.cfg
 	source = git+https://git.osmocom.org/osmo-bsc
 	sha256sums = SKIP
 

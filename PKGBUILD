@@ -11,6 +11,7 @@ depends=('libosmocore' 'libosmo-abis' 'libosmo-sccp' 'osmo-mgw')
 makedepends=('git' 'talloc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+backup=('etc/osmocom/osmo-bsc.cfg')
 source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
