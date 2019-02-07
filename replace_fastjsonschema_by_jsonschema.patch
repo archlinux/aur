@@ -15,3 +15,15 @@ diff -ura src/runrestic-0.2.8/runrestic/config/validate.py src.new/runrestic-0.2
  
 -    fastjsonschema.validate(schema, config)
 +    jsonschema.validate(schema, config)
+diff -ura src/runrestic-0.2.8/setup.py src.new/runrestic-0.2.8/setup.py
+--- src/runrestic-0.2.8/setup.py	2019-01-15 21:03:59.000000000 +0100
++++ src.new/runrestic-0.2.8/setup.py	2019-02-07 23:43:23.197411468 +0100
+@@ -36,7 +36,7 @@
+     },
+     install_requires=(
+         'toml>=0.10.0',
+-        'fastjsonschema>=2.4',
++        'jsonschema>=2.6',
+         'setuptools',
+     ),
+     include_package_data=True,
