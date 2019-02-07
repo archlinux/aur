@@ -3,14 +3,14 @@
 
 pkgname='openvpn-otp'
 pkgver='1.0'
-pkgrel='1'
-pkgdesc='This plug-in adds support for time based OTP (totp) and HMAC based OTP (hotp) tokens (like Google Authenticator) for OpenVPN.'
+pkgrel='2'
+pkgdesc='This plugin adds support for TOTP and HOTP tokens (like Google Authenticator) for OpenVPN.'
 arch=('any')
 url="https://github.com/evgeny-gridasov/${pkgname}"
 license=('BSD')
-depends=('openvpn' 'openssl')
+depends=('openvpn')
 source=("${pkgname}::git+${url}")
-makedepends=('git')
+makedepends=('git' 'openssl')
 sha256sums=('SKIP')
 
 prepare() {
