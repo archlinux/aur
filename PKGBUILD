@@ -8,7 +8,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r506165.89ca00a3e307
+pkgver=r510977.4470bbd6ad9d
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Wayland build of mozilla-unified hg"
 arch=(x86_64)
@@ -18,7 +18,7 @@ depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss sqlite ttf-font libpulse libvpx icu xorg-server-xwayland)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen)
+             python nodejs python2-psutil cbindgen nasm)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'

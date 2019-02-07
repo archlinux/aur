@@ -1,6 +1,6 @@
 pkgbase = firefox-wayland-hg
 	pkgdesc = Standalone web browser from mozilla.org - Wayland build of mozilla-unified hg
-	pkgver = r506165.89ca00a3e307
+	pkgver = r510977.4470bbd6ad9d
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = firefox-wayland-hg
 	makedepends = nodejs
 	makedepends = python2-psutil
 	makedepends = cbindgen
+	makedepends = nasm
 	depends = gtk3
 	depends = mozilla-common
 	depends = libxt
