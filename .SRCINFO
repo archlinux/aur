@@ -1,28 +1,26 @@
 pkgbase = plex-media-server-plexpass
 	pkgdesc = Plex Media Server (PlexPass version)
-	pkgver = 1.15.0.647
-	pkgrel = 2
+	pkgver = 1.15.0.659
+	pkgrel = 1
 	url = https://plex.tv/
 	install = plex-media-server.install
 	arch = x86_64
 	license = custom
-	depends = libva
 	provides = plex-media-server
 	conflicts = plex-media-server
 	options = !emptydirs
-	backup = etc/conf.d/plexmediaserver
 	source = plexmediaserver.conf.d
 	source = plexmediaserver.service
 	source = plex.sysusers
 	source = plex.tmpfiles
 	source = terms.txt
-	sha256sums = 88779d4d04e44de05428754481c2b67a0e2bf47795dce875819bf7308de49025
+	sha256sums = 398ba7958598609453f5289b3d5f2389d2756158b340cf28e83c39d9ed60280b
 	sha256sums = 348075917da3bac9659d047a45c264c556475e66779ecd84cf00d178a5b7bebf
 	sha256sums = c597bee0bcbb59ed791651555a904e5f7e9d2e82f6c6986b6352e5fc38e5b557
 	sha256sums = e3c278315bf325d9bddbedbbdb5680791acdc72ce3d4972935ef27b491518ce5
 	sha256sums = 7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a
-	source_x86_64 = https://downloads.plex.tv/plex-media-server-new/1.15.0.647-67e950f12/redhat/plexmediaserver-1.15.0.647-67e950f12.x86_64.rpm
-	sha256sums_x86_64 = 6ad6d7ce20916c93af030258435e1304da8fb53e869ad88a2f389733f5f1113c
+	source_x86_64 = https://downloads.plex.tv/plex-media-server-new/1.15.0.659-9311f93fd/redhat/plexmediaserver-1.15.0.659-9311f93fd.x86_64.rpm
+	sha256sums_x86_64 = 995b87fc2e4ff3bc3e17602cf52da321534a054431d3671b59f11f6e3ad12456
 
 pkgname = plex-media-server-plexpass
 

@@ -1,4 +1,4 @@
-LD_LIBRARY_PATH=/usr/lib/plexmediaserver
+LD_LIBRARY_PATH=/usr/lib/plexmediaserver/lib
 PLEX_MEDIA_SERVER_HOME=/usr/lib/plexmediaserver
 PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=/var/lib/plex
 PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS=6
