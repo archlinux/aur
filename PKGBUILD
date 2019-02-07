@@ -3,8 +3,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gedit-git
-pkgver=3.31.3.r8.g141e7be53
-pkgrel=2
+pkgver=3.31.90.r8.g1a527b41e
+pkgrel=1
 pkgdesc="GNOME Text Editor"
 url="https://wiki.gnome.org/Apps/Gedit"
 arch=(x86_64)
@@ -31,18 +31,17 @@ prepare() {
   git submodule init
   git config --local submodule.libgd.url "$srcdir/libgd"
   git submodule update
-
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd gedit
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib --disable-updater --disable-schemas-compile --enable-python --enable-gtk-doc
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  arch-meson gedit build -Ddocumentation=true
+  ninja -C build
 }
 
-package(){
-  cd gedit
-  make DESTDIR="$pkgdir" install
+check() {
+  ninja -C build test
+}
+
+package() {
+  DESTDIR="$pkgdir/" ninja -C build install
 }

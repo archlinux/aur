@@ -1,7 +1,7 @@
 pkgbase = gedit-git
 	pkgdesc = GNOME Text Editor
-	pkgver = 3.31.3.r8.g141e7be53
-	pkgrel = 2
+	pkgver = 3.31.90.r8.g1a527b41e
+	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Gedit
 	arch = x86_64
 	groups = gnome
