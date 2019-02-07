@@ -20,9 +20,9 @@ pkgbase = anki20-bin
 	options = !strip
 	source = anki
 	sha256sums = fc2316cf2428af18562cc13c6277ff70f8a974f1e7ef32631b8d7f81af60e0c4
-	source_i686 = https://apps.ankiweb.net/downloads/current/anki-2.0.52-i386.tar.bz2
+	source_i686 = https://apps.ankiweb.net/downloads/archive/anki-2.0.52-i386.tar.bz2
 	sha256sums_i686 = 84a3ff91deb926422ba8cd6de479084bf71b48cab0fd8676e50704c591eb6295
-	source_x86_64 = https://apps.ankiweb.net/downloads/current/anki-2.0.52-amd64.tar.bz2
+	source_x86_64 = https://apps.ankiweb.net/downloads/archive/anki-2.0.52-amd64.tar.bz2
 	sha256sums_x86_64 = 0304869bcc9e966839e3b3408048748be57d645ed0227fbaf0abebe8c18726d0
 
 pkgname = anki20-bin
