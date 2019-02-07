@@ -1,7 +1,7 @@
 pkgbase = ram
 	pkgdesc = Rust AUR Manager – an AUR manager and pacman wrapper written in rust
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.spline.inf.fu-berlin.de/gordon/ram
 	arch = x86_64
 	license = GPLv3

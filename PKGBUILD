@@ -1,7 +1,7 @@
-# Maintainer: Jan Ole Zabel <joz@spline.de>
+# Maintainer: Jan Ole Zabel <joz@spline.de>, Philipp Fleischer <deleaf@spline.de>, Enno Strauß <roxc@spline.de>
 pkgname=ram
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust AUR Manager – an AUR manager and pacman wrapper written in rust"
 arch=('x86_64')
 url="https://gitlab.spline.inf.fu-berlin.de/gordon/ram"
