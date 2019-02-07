@@ -1,8 +1,8 @@
 # Maintainer: Markus Heidelberg <markus dot heidelberg at web dot de>
 
 pkgname=microchip-libraries-for-applications
-pkgver=v2017_03_06
-pkgrel=2
+pkgver=v2018_11_26
+pkgrel=1
 pkgdesc="Microchip Libraries for Applications (Current)"
 arch=('i686' 'x86_64')
 url="http://www.microchip.com/MLA"
@@ -18,7 +18,7 @@ _installer=mla_${pkgver}_linux_installer.run
 source=(http://ww1.microchip.com/downloads/en/softwarelibrary/$_installer
         LICENSE)
 
-md5sums=('fe71f62784eb5c63f5c8bf2a56686573'
+md5sums=('03e25f57d341bc7cd1b843d416aab12c'
          'a79e3095ffcc446517b27707c8a60d7b')
 
 package() {
