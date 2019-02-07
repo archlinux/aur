@@ -1,19 +1,20 @@
 # Contributor: Sauliusl <luksaulius at gmail>
 # Based on r-colorspace PKGBUILD
 pkgname=r-snow
-pkgver=0.3_13
+_cran_name=snow
+pkgver=0.4_3
 pkgrel=1
 pkgdesc="Support for simple parallel computing in R."
-arch=('i686' 'x86_64')
-url="http://cran.r-project.org/web/packages/snow/index.html"
+arch=('x86_64')
+url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
 license=('GPL3')
 depends=('r' 'r-utils')
-source=("http://cran.r-project.org/src/contrib/snow_${pkgver//_/-}.tar.gz")
-md5sums=('c790384d817d050aed5cff19fb2b7473')
+source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver//_/-}.tar.gz")
+md5sums=('8ea060a12258480ee5ccb33bb522894c')
 
 package() {
  mkdir -p $pkgdir/usr/lib/R/library
  cd $srcdir
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./snow
+ R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
 }

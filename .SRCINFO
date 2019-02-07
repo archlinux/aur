@@ -1,15 +1,14 @@
 pkgbase = r-snow
 	pkgdesc = Support for simple parallel computing in R.
-	pkgver = 0.3_13
+	pkgver = 0.4_3
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/snow/index.html
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = r
 	depends = r-utils
-	source = http://cran.r-project.org/src/contrib/snow_0.3-13.tar.gz
-	md5sums = c790384d817d050aed5cff19fb2b7473
+	source = http://cran.r-project.org/src/contrib/snow_0.4-3.tar.gz
+	md5sums = 8ea060a12258480ee5ccb33bb522894c
 
 pkgname = r-snow
 
