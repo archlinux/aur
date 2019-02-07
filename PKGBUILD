@@ -1,15 +1,14 @@
 # Maintainer: Bruno Renié <brutasse@gmail.com>
 pkgname=vaudtax
-pkgver=2017
-_pkgver=1.3.0-production
-pkgrel=2
+pkgver=2018
+_pkgver=1.0.1-production
+pkgrel=1
 pkgdesc="VaudTax"
 url="http://www.vd.ch/themes/etat-droit-finances/impots/vaudtax/"
 depends=('webkitgtk2' 'jre8-openjdk' 'gnome-vfs')
 arch=(i686 x86_64)
 license=('custom')
-source=("$pkgname-$_pkgver.tar.gz::https://vaudtax-dl.vd.ch/vaudtax$pkgver/telechargement/linux/VaudTax_$pkgver.tar.gz"
-'execute_from_usr_share.patch')
+source=("$pkgname-$pkgver-$_pkgver.tar.gz::https://vaudtax-dl.vd.ch/vaudtax$pkgver/telechargement/linux/VaudTax_$pkgver.tar.gz" 'vaudtax')
 _dirname="VaudTax_$pkgver-$_pkgver"
 
 prepare() {
@@ -20,7 +19,9 @@ build() {
 }
 package() {
 	cd "$_dirname"
-	patch -p1 < ../execute_from_usr_share.patch
+
+	# skip provided libwebkitgtk.so
+	rm -rf lib/ubuntu
 
 	_app_home=/usr/share/${pkgname}
 
@@ -30,8 +31,8 @@ package() {
 	cp -r config "${pkgdir}${_app_home}"
 	install -D -m644 version.xml "${pkgdir}${_app_home}/version.xml"
 
-	cp ${pkgname}-${pkgver} "${pkgdir}"${_app_home}/bin/${pkgname}
+	install -m755 ${srcdir}/${pkgname} "${pkgdir}"${_app_home}/bin/${pkgname}
 	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
-md5sums=('5de215e9fa581da2d27e840c099fcc75'
-         'a379a4fdb08eb3ef43f4e0ea8842454c')
+md5sums=('52f439b6e519643a91a3c980b0d21a61'
+         '1b797df588e1d3851c67c7aee1f3f844')

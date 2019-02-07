@@ -1,7 +1,7 @@
 pkgbase = vaudtax
 	pkgdesc = VaudTax
-	pkgver = 2017
-	pkgrel = 2
+	pkgver = 2018
+	pkgrel = 1
 	url = http://www.vd.ch/themes/etat-droit-finances/impots/vaudtax/
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = vaudtax
 	depends = webkitgtk2
 	depends = jre8-openjdk
 	depends = gnome-vfs
-	source = vaudtax-1.3.0-production.tar.gz::https://vaudtax-dl.vd.ch/vaudtax2017/telechargement/linux/VaudTax_2017.tar.gz
-	source = execute_from_usr_share.patch
-	md5sums = 5de215e9fa581da2d27e840c099fcc75
-	md5sums = a379a4fdb08eb3ef43f4e0ea8842454c
+	source = vaudtax-2018-1.0.1-production.tar.gz::https://vaudtax-dl.vd.ch/vaudtax2018/telechargement/linux/VaudTax_2018.tar.gz
+	source = vaudtax
+	md5sums = 52f439b6e519643a91a3c980b0d21a61
+	md5sums = 1b797df588e1d3851c67c7aee1f3f844
 
 pkgname = vaudtax
 

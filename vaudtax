@@ -1,0 +1,11 @@
+# This script starts the application on Linux (like .exe in windows)
+
+#!/bin/bash
+# Unset OS Java-Paths
+unset JAVA_HOME
+unset JDK_HOME
+
+prefix='/usr/share/vaudtax'
+
+classpath='lib/dvbern-lib-update.jar:lib/cryptutil.jar'
+cd $prefix && java -cp $classpath ch.dvbern.lib.update.Launcher
