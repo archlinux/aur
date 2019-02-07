@@ -13,7 +13,7 @@
 
 pkgname=chromium-ozone-wayland-git
 pkgver=74.0.3694.0+39+27f5faa20d
-pkgrel=3
+pkgrel=4
 _launcher_ver=6
 pkgdesc="Chromium built from the Igalia fork with experimental Wayland support via Ozone"
 arch=('x86_64')
@@ -26,7 +26,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
 provides=('chromium')
 conflicts=('chromium')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
-             'clang' 'lld' 'gn' 'java-runtime-headless' 'depot-tools-git')
+             'clang' 'lld' 'gn' 'java-runtime-headless' 'depot-tools-git' 'google-cloud-sdk')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'

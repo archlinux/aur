@@ -1,7 +1,7 @@
 pkgbase = chromium-ozone-wayland-git
 	pkgdesc = Chromium built from the Igalia fork with experimental Wayland support via Ozone
 	pkgver = 74.0.3694.0+39+27f5faa20d
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.chromium.org/Home
 	install = chromium.install
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = chromium-ozone-wayland-git
 	makedepends = gn
 	makedepends = java-runtime-headless
 	makedepends = depot-tools-git
+	makedepends = google-cloud-sdk
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
