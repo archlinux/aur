@@ -6,7 +6,7 @@
 # Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
 
 pkgname=dmenu
-pkgver=4.8
+pkgver=4.9
 pkgrel=1
 pkgdesc='Generic menu for X'
 url='https://tools.suckless.org/dmenu/'
@@ -14,7 +14,7 @@ arch=('x86_64')
 license=('MIT')
 depends=('sh' 'libxinerama' 'libxft' 'freetype2')
 source=(https://dl.suckless.org/tools/dmenu-${pkgver}.tar.gz)
-sha512sums=('fa2700018cfb912a21f867ef3ca771a58a25c2cb8e1fb37acef046bb15d8d8b92dcc5bfce486befae0f143495d0283910988e181a9eb143be3bb1b5be9738d77')
+sha512sums=('c2779209fe012de8ca1cdd72923da6d594f4a8368c85c3c0e0afd4ae489a95fe0e6f05a947d115b6b389aa7170ab14c2c645a2031353b0a08f38327ab461fe65')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -36,3 +36,5 @@ package() {
   make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
+# vim: ts=2 sw=2 et:
