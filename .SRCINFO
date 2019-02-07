@@ -1,0 +1,15 @@
+pkgbase = python-redisgraph
+	pkgdesc = RedisGraph Python Client
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/redislabs/redisgraph-py
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/redisgraph/redisgraph-1.7.tar.gz
+	md5sums = 6de7ea87415911d5cc6bce8279f09f39
+
+pkgname = python-redisgraph
+	depends = python
+
