@@ -1,6 +1,6 @@
 pkgbase = pop-gtk-theme-bin
 	pkgdesc = System76 Pop GTK+ Theme
-	pkgver = 4.1.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://github.com/pop-os/gtk-theme
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = pop-gtk-theme-bin
 	optdepends = ttf-roboto-slab: Recommended font for documents
 	provides = pop-gtk-theme
 	conflicts = pop-gtk-theme
-	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_4.1.0~1547570898~18.10~7fdbe20_all.deb
-	sha256sums = a1d03af344429ca45970c9370314c18ddae9ea15c8521ac037a5f4fb59d4bc05
+	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_4.1.1~1549561776~18.10~20fd8b0_all.deb
+	sha256sums = c0ac1347fc5c9c29074d9abb2a956c702bc8346f85a1b8c8c5f71900267b3a4b
 
 pkgname = pop-gtk-theme-bin
 
