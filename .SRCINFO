@@ -1,6 +1,6 @@
 pkgbase = runelite-git
 	pkgdesc = Open source Old School RuneScape client. (Git Version)
-	pkgver = 0.r6617.6c1f924f6e
+	pkgver = 0.r6626.107f08f5e2
 	pkgrel = 1
 	url = https://github.com/runelite/runelite
 	arch = any
