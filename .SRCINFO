@@ -1,6 +1,6 @@
 pkgbase = bsf-git
 	pkgdesc = A C++ library that aims to provide a unified foundation for the development of real-time graphical applications, whether games, engines or tools
-	pkgver = r4710.718f666fc
+	pkgver = r4723.8fbab8089
 	pkgrel = 1
 	url = https://www.bsframework.io/
 	arch = x86_64
