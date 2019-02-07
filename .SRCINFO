@@ -24,7 +24,7 @@ pkgbase = aircrack-ng-git
 	conflicts = aircrack-ng-scripts
 	replaces = aircrack-ng-svn
 	replaces = aircrack-ng-scripts
-	source = git://github.com/aircrack-ng/aircrack-ng.git
+	source = git+https://github.com/aircrack-ng/aircrack-ng.git
 	sha256sums = SKIP
 
 pkgname = aircrack-ng-git

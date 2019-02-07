@@ -19,7 +19,7 @@ optdepends=('python: dump-join, airgraph-ng, versuck-ng, airdrop-ng')
 provides=("${pkgname%-git}" 'aircrack-ng-scripts')
 conflicts=("${pkgname%-git}" 'aircrack-ng-scripts')
 replaces=('aircrack-ng-svn' 'aircrack-ng-scripts')
-source=("git://github.com/aircrack-ng/aircrack-ng.git")
+source=("git+https://github.com/aircrack-ng/aircrack-ng.git")
 sha256sums=('SKIP')
 
 pkgver() {
