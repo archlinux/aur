@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kopete
-pkgver=18.12.1
+pkgver=18.12.2
 pkgrel=1
 pkgdesc='Instant Messenger'
 url='https://kde.org/applications/internet/kopete/'
@@ -18,7 +18,7 @@ conflicts=(kdenetwork-kopete)
 replaces=(kdenetwork-kopete)
 source=("https://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig} 
         kopete-mediastreamer2.14.patch kopete-srtp2.patch kopete-openssl-1.1.patch kopete-glibc-2.28.patch)
-sha256sums=('1a7f5fe53aa0e91105cc5d717827cfd377d0c2bcda188cfe230c1f24a415068b'
+sha256sums=('48dad416ead50ac69afe822932abccca82cabc2d512c93ca3b7d5d653e38f363'
             'SKIP'
             '8b8e7a5d9f17fafdddb402fab22b0b8d9963039ea8ea9fa749cad67aeeb879ac'
             'ceed663f7007654d186d918cf7a0742972ed5bd319879021e9ba80e395177700'
