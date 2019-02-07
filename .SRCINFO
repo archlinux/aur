@@ -8,7 +8,7 @@ pkgbase = hdf5-java
 	makedepends = cmake
 	makedepends = time
 	makedepends = gcc-fortran
-	makedepends = java-environment-openjdk=11
+	makedepends = java-environment
 	depends = zlib
 	depends = libaec
 	depends = bash

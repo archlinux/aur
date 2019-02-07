@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://www.hdfgroup.org/hdf5"
 license=('custom')
 depends=('zlib' 'libaec' 'bash')
-makedepends=('cmake' 'time' 'gcc-fortran' 'java-environment-openjdk=11')
+makedepends=('cmake' 'time' 'gcc-fortran' 'java-environment')
 replaces=('hdf5-cpp-fortran')
 provides=('hdf5-cpp-fortran' 'hdf5-java' 'hdf5')
 conflicts=('hdf5' 'hdf5-openmpi')
