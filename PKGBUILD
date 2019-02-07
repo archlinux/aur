@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-examples-git
-pkgver=2018.10.r0.g0f292dc
+pkgver=2019.01.r0.g3ade9e6
 pkgrel=1
 pkgdesc="Examples for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
@@ -30,6 +30,7 @@ build() {
         -DWITH_BOX2D_EXAMPLE=ON \
         -DWITH_BULLET_EXAMPLE=ON \
         -DWITH_CUBEMAP_EXAMPLE=ON \
+        -DWITH_IMGUI_EXAMPLE=OFF \
         -DWITH_MOTIONBLUR_EXAMPLE=ON \
         -DWITH_MOUSEINTERACTION_EXAMPLE=ON \
         -DWITH_PRIMITIVES_EXAMPLE=ON \
