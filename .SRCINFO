@@ -8,8 +8,13 @@ pkgbase = libosmo-netif-git
 	arch = aarch64
 	arch = armv7h
 	license = GPL
-	makedepends = libosmo-netif
-	depends = libosmo-netif
+	makedepends = git
+	depends = libosmocore
+	depends = libosmo-abis
+	depends = lksctp-tools
+	depends = ortp
+	provides = libosmo-netif
+	conflicts = libosmo-netif
 	source = git+https://git.osmocom.org/libosmo-netif
 	sha256sums = SKIP
 
