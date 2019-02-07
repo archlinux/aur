@@ -1,6 +1,6 @@
 pkgbase = corrade-git
 	pkgdesc = C++11/C++14 multiplatform utility library (Git version)
-	pkgver = 2018.10.r0.g228ad5e2
+	pkgver = 2019.01.r0.gcadc805b
 	pkgrel = 1
 	url = https://magnum.graphics/corrade/
 	arch = i686
