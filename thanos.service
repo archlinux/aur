@@ -1,0 +1,18 @@
+[Unit]
+Description=Thanos for Prometheus 
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=thanos
+Group=thanos
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/thanos
+ExecStart=/usr/bin/thanos $THANOS_ARGS $CLUSTER_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
