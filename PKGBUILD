@@ -1,6 +1,6 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 pkgname=ethr
-pkgver=0.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Ethr is a Network Performance Measurement Tool for TCP, UDP & HTTP"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=(
   'git'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Microsoft/ethr/archive/v${pkgver}.tar.gz")
-sha256sums=('6b9b3a76a6999c6726b370a9caeef6a18d5b7a6c9b81cfdc7adacc7625ec5edd')
+sha256sums=('05480aec03ab9103786a053cbd25e9d0dc1956149fca65372acda2b5dbd489ae')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
