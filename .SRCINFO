@@ -6,6 +6,8 @@ pkgbase = cubicsdr
 	install = cubicsdr.install
 	arch = i686
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL
 	makedepends = git
 	makedepends = cmake
@@ -25,7 +27,7 @@ pkgbase = cubicsdr
 	optdepends = soapyplutosdr: support for PlutoSDR
 	optdepends = soapyremote: use any SoapySDR device remotely over network
 	optdepends = hamlib: hamlib support
-	source = https://github.com/cjcliffe/CubicSDR/archive/0.2.5.tar.gz
+	source = cubicsdr-0.2.5.tar.gz::https://github.com/cjcliffe/CubicSDR/archive/0.2.5.tar.gz
 	sha256sums = 5cb44c110fcbbb70a468b7fa402cf35f84d8901b3dd42d471a90ac3f5db00f4d
 
 pkgname = cubicsdr

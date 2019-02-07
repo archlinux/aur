@@ -9,35 +9,23 @@ pkgname=cubicsdr
 pkgver=0.2.5
 pkgrel=2
 pkgdesc="Cross-Platform Software-Defined Radio Application"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/cjcliffe/CubicSDR"
 license=('GPL')
-depends=(
-  'libpulse'
-  'wxgtk2-dev'
-  'wxgtk-common-dev'
-  'soapysdr'
-  'liquid-dsp'
-)
-optdepends=(
-  'fftw: FFTW support'
-  'soapyrtlsdr: support for RTL-SDR (RTL2832U) dongles'
-  'soapyairspy: support for Airspy R2 and Airspy Mini'
-  'soapysdrplay: support for SDRplay RSP'
-  'soapyhackrf: support for HackRF'
-  'limesuite: support for LimeSDR'
-  'soapyosmo: support for MiriSDR and RFSpace'
-  'soapyplutosdr: support for PlutoSDR'
-  'soapyremote: use any SoapySDR device remotely over network'
-  'hamlib: hamlib support'
-)
-makedepends=(
-  'git'
-  'cmake'
-  'libicns'
-)
+depends=('libpulse' 'wxgtk2-dev' 'wxgtk-common-dev' 'soapysdr' 'liquid-dsp')
+optdepends=('fftw: FFTW support'
+            'soapyrtlsdr: support for RTL-SDR (RTL2832U) dongles'
+            'soapyairspy: support for Airspy R2 and Airspy Mini'
+            'soapysdrplay: support for SDRplay RSP'
+            'soapyhackrf: support for HackRF'
+            'limesuite: support for LimeSDR'
+            'soapyosmo: support for MiriSDR and RFSpace'
+            'soapyplutosdr: support for PlutoSDR'
+            'soapyremote: use any SoapySDR device remotely over network'
+            'hamlib: hamlib support')
+makedepends=('git' 'cmake' 'libicns')
 install="${pkgname}.install"
-source=("https://github.com/cjcliffe/CubicSDR/archive/$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cjcliffe/CubicSDR/archive/${pkgver}.tar.gz")
 sha256sums=('5cb44c110fcbbb70a468b7fa402cf35f84d8901b3dd42d471a90ac3f5db00f4d')
 
 build() {
@@ -65,3 +53,5 @@ package() {
   cd "${srcdir}/CubicSDR-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
 }
+
+# vim:set ts=2 sw=2 et:
