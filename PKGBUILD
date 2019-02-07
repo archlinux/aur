@@ -2,7 +2,7 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=i3ass
-pkgver=2019.01.30.2
+pkgver=2019.02.07.6
 pkgrel=1
 pkgdesc='A bash-script collection to assist the use of i3-wm.'
 arch=('any')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/budlabs/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('4fb85b73c0855b3c3a288ab19a7131a4d5050e3a73b08ca292fcd6e061ed3528')
+sha256sums=('48fb23c125216e11a23eb78745a693a3dd52c3ec50d32265eea9d201cbf83c57')
 
 package() {
   cd "$pkgname-$pkgver"
