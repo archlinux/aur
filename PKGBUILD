@@ -3,8 +3,8 @@
 # Contributor: dumblob <dumblob@gmail.com>
 
 pkgname=packer-aur-git
-pkgver=325.400c655
-pkgrel=2
+pkgver=327.e86f847
+pkgrel=1
 pkgdesc='Bash wrapper for pacman and aur'
 arch=('any')
 url="https://github.com/gavinhungry/packer"
