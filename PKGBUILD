@@ -2,7 +2,7 @@
 
 pkgname=lib32-rrdtool
 _pkgname=rrdtool
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Data logging and graphing application (32-bit - binaries and libs only)"
 arch=('x86_64')
@@ -12,10 +12,11 @@ depends=('lib32-glibc' 'lib32-libxml2' 'lib32-pango' 'ttf-dejavu')
 makedepends=('intltool')
 options=('!emptydirs' '!makeflags')
 source=(http://oss.oetiker.ch/rrdtool/pub/rrdtool-${pkgver}.tar.gz)
-sha1sums=('15a2009e2ee67eb41a2598d1a0f1f7cf1a651c78') 
+sha1sums=('e70e1241bd5ee286a5903e0714f2afb4070d1c2d')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
+  sed -i 's%etc/%%' etc/Makefile.am
   export CC="gcc -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   aclocal
@@ -30,7 +31,8 @@ build() {
     --disable-perl --disable-perl-site-install \
     --disable-ruby --disable-ruby-site-install --disable-python \
     --disable-lua --disable-lua-site-install --disable-tcl --disable-libwrap \
-    --disable-examples --libdir=/usr/lib32 --disable-docs --disable-nls --disable-librados
+    --disable-examples --libdir=/usr/lib32 --disable-docs --disable-nls --disable-librados \
+    --disable-rrdcached
   make LIBS+="-lglib-2.0"
 }
 
