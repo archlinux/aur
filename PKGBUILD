@@ -1,16 +1,16 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=clutter-gst
-pkgver=3.0.26
+pkgver=3.0.27
 pkgrel=1
 pkgdesc="GStreamer bindings for clutter"
-url="https://git.gnome.org/browse/clutter-gst"
+url="https://gitlab.gnome.org/GNOME/clutter-gst"
 arch=(x86_64)
 license=(LGPL)
-depends=(clutter gst-plugins-base-libs libxdamage libgudev)
+depends=(clutter gst-plugins-base-libs libxdamage libgudev gdk-pixbuf2)
 makedepends=(gobject-introspection gtk-doc git)
-_commit=7e191b675decc87bca263f08c1b01a694c74d44a  # clutter-gst-3.0~1
-source=("git+https://git.gnome.org/browse/clutter-gst#commit=$_commit")
+_commit=01a461da1bdb3b29edd2d198b877ec0765af1f39  # tags/3.0.27^0
+source=("git+https://gitlab.gnome.org/GNOME/clutter-gst.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
