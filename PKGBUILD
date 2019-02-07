@@ -8,7 +8,7 @@ pkgdesc="Dmenu/Rofi frontend for Keepass databases."
 
 arch=('any')
 url="https://github.com/firecat53/keepmenu"
-license=('MIT')
+license=('GPLv3')
 depends=('python' 'python-pykeepass' 'python-pyuserinput-git')
 makedepends=('git')
 optdepends=('dmenu: either dmenu or rofi is required'
@@ -27,7 +27,7 @@ pkgver() {
 
 package() {
   install -Dm755 "$srcdir/$_gitname/keepmenu" "$pkgdir/usr/bin/keepmenu"
-  install -Dm644 "$srcdir/$_gitname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/$_gitname/README.rst" "$pkgdir/usr/share/doc/$pkgname/README.rst"
   install -Dm644 "$srcdir/$_gitname/config.ini.example" "$pkgdir/usr/share/doc/$pkgname/config.ini.example"
 }
