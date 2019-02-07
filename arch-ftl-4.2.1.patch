@@ -1,0 +1,67 @@
+diff -uprN FTL-4.2.1/Makefile FTL-4.2.1.cust/Makefile
+--- FTL-4.2.1/Makefile	2019-02-07 03:36:55.000000000 +0100
++++ FTL-4.2.1.cust/Makefile	2019-02-07 04:53:04.603447112 +0100
+@@ -20,11 +20,11 @@ DNSMASQDEPS = config.h dhcp-protocol.h d
+ DNSMASQOBJ = arp.o dbus.o domain.o lease.o outpacket.o rrfilter.o auth.o dhcp6.o edns0.o log.o poll.o slaac.o blockdata.o dhcp.o forward.o loop.o radv.o tables.o bpf.o dhcp-common.o helper.o netlink.o rfc1035.o tftp.o cache.o dnsmasq.o inotify.o network.o rfc2131.o util.o conntrack.o dnssec.o ipset.o option.o rfc3315.o crypto.o dump.o ubus.o metrics.o
+ 
+ # Get git commit version and date
+-GIT_BRANCH := $(shell git branch | sed -n 's/^\* //p')
++GIT_BRANCH := master
+ GIT_HASH := $(shell git --no-pager describe --always --dirty)
+-GIT_VERSION := $(shell git --no-pager describe --tags --always --dirty)
+-GIT_DATE := $(shell git --no-pager show --date=short --format="%ai" --name-only | head -n 1)
+-GIT_TAG := $(shell git describe --tags --abbrev=0)
++GIT_VERSION := v4.2.1
++GIT_DATE := 2019-02-07
++GIT_TAG := v4.2.1
+ 
+ # -fstack-protector: The program will be resistant to having its stack overflowed
+ # -D_FORTIFY_SOURCE=2 and -O1 or higher: This causes certain unsafe glibc functions to be replaced with their safer counterparts
+@@ -50,8 +50,7 @@ CCFLAGS=-std=gnu11 -I$(IDIR) -Wall -Wext
+ # for FTL we need the pthread library
+ # for dnsmasq we need the nettle crypto library and the gmp maths library
+ # We link the two libraries statically. Althougth this increases the binary file size by about 1 MB, it saves about 5 MB of shared libraries and makes deployment easier
+-#LIBS=-pthread -lnettle -lgmp -lhogweed
+-LIBS=-pthread -Wl,-Bstatic -L/usr/local/lib -lhogweed -lgmp -lnettle  -Wl,-Bdynamic -lrt
++LIBS=-pthread -lnettle -lrt -lgmp -lhogweed
+ # Flags for compiling with libidn : -lidn
+ # Flags for compiling with libidn2: -lidn2
+ 
+diff -uprN FTL-4.2.1/config.c FTL-4.2.1.cust/config.c
+--- FTL-4.2.1/config.c	2019-02-07 03:36:55.000000000 +0100
++++ FTL-4.2.1.cust/config.c	2019-02-07 04:53:04.610113804 +0100
+@@ -31,7 +31,7 @@ void getLogFilePath(void)
+ 	}
+ 
+ 	// Read LOGFILE value if available
+-	// defaults to: "/var/log/pihole-FTL.log"
++	// defaults to: "/run/log/pihole-ftl/pihole-FTL.log"
+ 	buffer = parse_FTLconf(fp, "LOGFILE");
+ 
+ 	errno = 0;
+@@ -39,7 +39,7 @@ void getLogFilePath(void)
+ 	if(buffer == NULL || sscanf(buffer, "%127ms", &FTLfiles.log) != 1)
+ 	{
+ 		// Use standard path if no custom path was obtained from the config file
+-		FTLfiles.log = strdup("/var/log/pihole-FTL.log");
++		FTLfiles.log = strdup("/run/log/pihole-ftl/pihole-FTL.log");
+ 	}
+ 
+ 	// Test if memory allocation was successful
+@@ -293,13 +293,13 @@ void read_FTLconf(void)
+ 		logg("   DBIMPORT: Not importing history from database");
+ 
+ 	// PIDFILE
+-	getpath(fp, "PIDFILE", "/var/run/pihole-FTL.pid", &FTLfiles.pid);
++	getpath(fp, "PIDFILE", "/run/pihole-ftl/pihole-FTL.pid", &FTLfiles.pid);
+ 
+ 	// PORTFILE
+-	getpath(fp, "PORTFILE", "/var/run/pihole-FTL.port", &FTLfiles.port);
++	getpath(fp, "PORTFILE", "/run/pihole-ftl/pihole-FTL.port", &FTLfiles.port);
+ 
+ 	// SOCKETFILE
+-	getpath(fp, "SOCKETFILE", "/var/run/pihole/FTL.sock", &FTLfiles.socketfile);
++	getpath(fp, "SOCKETFILE", "/run/pihole-ftl/FTL.sock", &FTLfiles.socketfile);
+ 
+ 	// WHITELISTFILE
+ 	getpath(fp, "WHITELISTFILE", "/etc/pihole/whitelist.txt", &files.whitelist);
