@@ -9,8 +9,8 @@ pkgbase = ttf-impallari-milonga
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = http://www.impallari.com/media/uploads/prosources/update-82-source.zip
-	md5sums = 2e3fd7458a89a2b05448a2c95a573c27
+	source = Milonga.zip::https://fonts.google.com/download?family=Milonga
+	md5sums = 7dcc574ddbd7a35be07bf7aa1f825e2a
 
 pkgname = ttf-impallari-milonga
 
