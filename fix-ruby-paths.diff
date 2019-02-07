@@ -1,18 +1,18 @@
 diff -ruN sonic-pi-3.1.0-a/app/server/ruby/core.rb sonic-pi-3.1.0-c/app/server/ruby/core.rb
 --- sonic-pi-3.1.0-a/app/server/ruby/core.rb	2018-01-22 23:00:13.000000000 +0100
-+++ sonic-pi-3.1.0-c/app/server/ruby/core.rb	2018-04-10 23:10:47.329683107 +0200
++++ sonic-pi-3.1.0-c/app/server/ruby/core.rb	2019-02-07 21:50:09.761647719 +0100
 @@ -147,7 +147,7 @@
    module Core
      module SPRand
        # Read in same random numbers as server for random stream sync
 -      @@random_numbers = ::WaveFile::Reader.new(File.expand_path("../../../../etc/buffers/rand-stream.wav", __FILE__), ::WaveFile::Format.new(:mono, :float, 44100)).read(441000).samples.freeze
-+      @@random_numbers = ::WaveFile::Reader.new(File.expand_path("../../buffers/rand-stream.wav", __FILE__), ::WaveFile::Format.new(:mono, :float, 44100)).read(441000).samples.freeze
++      @@random_numbers = ::WaveFile::Reader.new(File.expand_path("/usr/share/sonic-pi/buffers/rand-stream.wav", __FILE__), ::WaveFile::Format.new(:mono, :float, 44100)).read(441000).samples.freeze
  
        def self.tl_seed_map(seed, idx=0)
          {:sonic_pi_spider_random_gen_seed => seed,
 diff -ruN sonic-pi-3.1.0-a/app/server/ruby/lib/sonicpi/util.rb sonic-pi-3.1.0-c/app/server/ruby/lib/sonicpi/util.rb
 --- sonic-pi-3.1.0-a/app/server/ruby/lib/sonicpi/util.rb	2018-01-22 23:00:13.000000000 +0100
-+++ sonic-pi-3.1.0-c/app/server/ruby/lib/sonicpi/util.rb	2018-04-10 23:28:08.120969596 +0200
++++ sonic-pi-3.1.0-c/app/server/ruby/lib/sonicpi/util.rb	2019-02-07 21:38:55.994922542 +0100
 @@ -216,11 +216,11 @@
      end
  
@@ -50,7 +50,7 @@ diff -ruN sonic-pi-3.1.0-a/app/server/ruby/lib/sonicpi/util.rb sonic-pi-3.1.0-c/
  
      def app_path
 -      File.absolute_path("#{root_path}/app")
-+      File.absolute_path("#{root_path}")
++      File.absolute_path("/usr/lib/sonic-pi")
      end
  
      def html_public_path

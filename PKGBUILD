@@ -1,21 +1,23 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=sonic-pi
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=('x86_64')
 url="https://sonic-pi.net/"
 license=('CCPL' 'LGPL2.1' 'GPL2' 'GPL3' 'MIT')
 groups=('pro-audio')
-depends=('aubio' 'boost-libs' 'erlang-nox' 'libffi' 'http-parser' 'osmid' 'qscintilla-qt5' 'qwt' 'ruby' 'sc3-plugins' 'supercollider')
-makedepends=('boost' 'cmake' 'lua' 'qt5-tools' 'wkhtmltopdf')
+depends=('aubio' 'boost-libs' 'http-parser' 'osmid' 'qscintilla-qt5' 'qwt'
+'ruby-ffi' 'ruby-minitest' 'ruby-multi_json' 'ruby-rouge' 'ruby-rugged'
+'ruby-sys-proctable' 'sc3-plugins' 'supercollider')
+makedepends=('boost' 'cmake' 'erlang-nox' 'lua' 'qt5-tools' 'wkhtmltopdf')
 checkdepends=('ruby-rake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/samaaron/${pkgname}/archive/v${pkgver}.tar.gz"
         "fix-paths-in-gui.diff"
         "fix-ruby-paths.diff")
 sha512sums=('45373d3e673bc2f45bf5ccea31f6cf5e2003c9bdfc4645dec4b9fec391cb28b9e0b0823a98e9690928e116b8c40f96596bd1c8f5aefbf4f3e43e6c30ab76d41f'
-            'ef3dfe52d05f085f230ee02f84b20ee615a98a0be5ec60edba28075b93a7edbd37668ebbcc30f695126515eb614ebd27cee77ab3145d06ee7ba1c10ffced2471'
-            '1c0238a2cda782de97504c81c47db71b940d89987b7fa6aad1a00c8a095a5627b2d82809d81f48f0e2bee290ad1bbeded634827511d63eed5635bd94806fcccb')
+            'ea827c451a42ea12b7a1ced04978fa3a3eb5368b9802c982a0f815159d5591bedc4dc5b9eed89df3957087352bcb5f778e054abd2cb38cc1e57ab538e73b97f3'
+            '245418d7d3d145a77423350afd2598865395ed5e479fa13922320e6d53c849b01e99c71c460e384f69a8a70d6087899d9e26dcd06d68a13980fc2d6a543b2644')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -23,6 +25,39 @@ prepare() {
   rm -rvf app/server/native
   # TODO: patch app/gui/qt/mainwindow.cpp to set path to external components in /usr/{lib,share}/sonic-pi
   patch -Np1 -i ../fix-paths-in-gui.diff
+  #TODO: devendor ruby-activesupport
+  #TODO: devendor ruby-ast
+  #TODO: devendor ruby-atomic (bin)
+  #TODO: devendor ruby-benchmark-ips
+  #TODO: devendor ruby-blankslate
+  #TODO: devendor ruby-did_you_mean (bin)
+  #TODO: devendor ruby-fast_osc (bin)
+  #TODO: devendor ruby-gettext
+  #TODO: devendor ruby-hamster
+  #TODO: devendor ruby-i18n
+  #TODO: devendor ruby-interception (bin)
+  #TODO: devendor ruby-kramdown (i18n-tool.rb breaks on it)
+  #TODO: devendor ruby-locale
+  #TODO: devendor ruby-memoist
+  #TODO: devendor ruby-metaclass
+  #TODO: devendor ruby-mocha
+  #TODO: devendor ruby-parser
+  #TODO: devendor ruby-parslet
+  #TODO: devendor ruby-rubame
+  #TODO: devendor ruby-aubio-prerelease
+  #TODO: devendor ruby-beautify
+  #TODO: devendor ruby-text
+  #TODO: devendor ruby-thread_safe
+  #TODO: devendor ruby-wavefile
+  #TODO: devendor ruby-websocket
+  # devendor ffi, ruby-prof, rugged
+  sed -e '/rugged/d' \
+      -e '/ffi/d' \
+      -e '/ruby-prof/d' \
+      -i app/server/ruby/bin/compile-extensions.rb
+  rm -rvf app/server/ruby/vendor/{ffi,minitest,multi_json,rouge,rugged,sys-proctable}*
+  # remove unrequired gems, so we don't create any doc for them
+  rm -rvf app/server/ruby/vendor/{narray,ruby-coreaudio,ruby-prof}*
 }
 
 build() {
@@ -146,7 +181,7 @@ package() {
 
   # ruby
   install -vdm 755 "${pkgdir}/usr/share/${pkgname}"
-  cp -av app/server/ruby "${pkgdir}/usr/share/${pkgname}/server"
+  cp -av app/server/ruby "${pkgdir}/usr/lib/${pkgname}/server"
 
   # license
   install -vDm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
