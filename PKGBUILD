@@ -5,10 +5,10 @@ pkgrel=1
 epoch=
 pkgdesc="Old-school Macintosh Emulator"
 arch=('x86_64')
-url=""
+url="http://wiki.victor3d.com.br"
 license=('GPL')
 groups=()
-depends=("sdl2" "qt5-base" "boost")
+depends=("qt5-base")
 makedepends=("cmake" "sdl2" "boost" "git")
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/victor3dptz/executor-packaging/raw/master/arch/executor.tar.gz")
 noextract=()
-md5sums=("e3008f80cb44277fd1e5a0873b39d131")
+md5sums=("868697896b0c51c66d31440f3c59a3fc")
 validpgpkeys=()
 
 prepare() {
@@ -52,8 +52,6 @@ package() {
 	cd "$pkgname"
 	mkdir -p "$pkgdir/usr/share/man"
 	cp -Rp "usr/share/man/" "$pkgdir/usr/share"
-	mkdir -p "$pkgdir/usr/bin"
-	cp -Rp "usr/bin/" "$pkgdir/usr/"
 	mkdir -p "$pkgdir/usr/share/applications"
 	cp -Rp "usr/share/applications/" "$pkgdir/usr/share/"
 	mkdir -p "$pkgdir/usr/share/doc/executor"
@@ -61,5 +59,5 @@ package() {
 	mkdir -p "$pkgdir/usr/share/executor"
 	cp -Rp "usr/share/executor/" "$pkgdir/usr/share/"
 	mkdir -p "$pkgdir/usr/bin"
-	cp -Rp "build/executor" "$pkgdir/usr/bin/executor-bin"
+	cp -Rp "build/executor" "$pkgdir/usr/bin/"
 }
