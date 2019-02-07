@@ -1,6 +1,6 @@
 pkgbase = fman
 	pkgdesc = A modern file manager for power users. Beautiful, fast and extensible
-	pkgver = 1.5.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://fman.io
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = fman
 	depends = qt5-base
 	depends = p7zip
 	optdepends = qt5-svg
-	source = https://fman.io/updates/arch/fman-1.5.5.pkg.tar.xz
-	sha256sums = dd500b28601c8bd25d5eadcdc8ca396a74fa777d1a462c1ebf64e7e233767d70
+	source = https://fman.io/updates/arch/fman-1.5.6.pkg.tar.xz
+	sha256sums = 523e27c1bb9f480acfeb8eb702d51892a7c69bb4f0da061909cbb642d701420b
 
 pkgname = fman
 
