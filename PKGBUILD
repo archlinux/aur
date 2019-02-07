@@ -1,32 +1,34 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-abis-git
-_pkgname=libosmo-abis
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-pkgver=0.6.0.1.g480073a
+pkgver=0.6.0.2.g3a2aa09
 pkgrel=1
 pkgdesc="This is the A-bis interface library as used by OsmoBSC/OsmoNITB"
 url="https://osmocom.org/projects/libosmo-abis"
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'ortp')
-source=("git://git.osmocom.org/${_pkgname}")
+makedepends=('git' 'talloc')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
-	echo $(git describe --always | sed 's/-/./g')
+  cd "${srcdir}/${pkgname%-git}"
+  echo $(git describe --always | sed 's/-/./g')
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	autoreconf -i
-	./configure --prefix=/usr
-	make
+  cd "${srcdir}/${pkgname%-git}"
+  autoreconf -i
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR=${pkgdir} install
 }
+
+# vim:set ts=2 sw=2 et:
