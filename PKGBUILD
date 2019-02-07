@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
 license=('BSD')
@@ -76,6 +76,7 @@ package() {
     mv "$pkgdir/static/usr/${_arch}/lib/"*.a "$pkgdir/usr/${_arch}/lib/"
  
     install -d "$pkgdir"/usr/${_arch}/lib/pkgconfig
+    install -d "$pkgdir"/usr/${_arch}/lib/cmake/opencv4
     # fix paths
     sed -i "s/\/\/usr\/${_arch}\/lib/\/lib/g" ./unix-install/opencv4.pc
     # fix static builds. To be able to static build lapack.pc should be fixed too
@@ -86,6 +87,9 @@ package() {
     sed -i "/^Cflags.*/ s/-I\${includedir_old}//g" ./unix-install/opencv4.pc
     install -m644 ./unix-install/opencv4.pc "$pkgdir"/usr/${_arch}/lib/pkgconfig/
     rm "$pkgdir"/usr/${_arch}/LICENSE
+    # fix cmake INSTALL_PATH
+    sed -i "s/^get_filename_component(OpenCV_INSTALL_PATH.*/get_filename_component(OpenCV_INSTALL_PATH \"\$\{OpenCV_CONFIG_PATH\}\/..\/..\/..\/\" REALPATH)/g" ./unix-install/OpenCVConfig.cmake
+    install -m644 ./unix-install/OpenCVConfig.cmake "$pkgdir"/usr/${_arch}/lib/cmake/opencv4
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     rm -r "$pkgdir/static"
