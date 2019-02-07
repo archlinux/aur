@@ -1,0 +1,12 @@
+pkgbase = dhivehi_fonts
+	pkgdesc = Dhivehi fonts for arch ttf, otf
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://adobe-fonts.github.io/source-code-pro
+	arch = any
+	license = custom
+	source = Dhivehi_fonts.tar.xz::https://github.com/Alix35301/dhivehi_fonts/raw/master/Dhivehi_fonts.tar.xz
+	md5sums = 186A9705470D7F342594E03DA6B9C148
+
+pkgname = dhivehi_fonts
+
