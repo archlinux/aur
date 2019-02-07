@@ -1,8 +1,8 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 
 pkgname=nvm-git
-pkgver=0.34.0.r0.g3d9c31d
-pkgrel=1
+pkgver=0.34.0.r13.ge1bb44f
+pkgrel=2
 pkgdesc="Node Version Manager - Simple bash script to manage multiple active node.js versions (git sources)"
 url="https://github.com/creationix/nvm"
 arch=('any')
@@ -17,7 +17,7 @@ source=("$pkgname::git+https://github.com/creationix/nvm.git"
         "install-nvm-exec")
 sha256sums=('SKIP'
             '692317bfd036557f59543fef9b67ff38de68208d30361fe385291f58d3ac0425'
-            'a0d249e4a906b0406cc5867c86b9860b820a4ad5f29e37f377349c1d5b6eba51')
+            '795d3f6ad3076aa4b0bb9cc48a2e6e79331d121278a887667fb707181a54a10b')
 
 pkgver() {
   cd "$pkgname"
@@ -30,7 +30,7 @@ package() {
   # convenience script
   install -Dm644 init-nvm.sh "$pkgdir/usr/share/nvm/init-nvm.sh"
 
-  # companion script which installs nvm-exec in NVM_DIR where upstream expects it
+  # companion script which installs symlinks in NVM_DIR (see comment in script)
   install -Dm644 install-nvm-exec "$pkgdir/usr/share/nvm/install-nvm-exec"
 
   cd "${pkgname}"
