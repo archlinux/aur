@@ -47,4 +47,6 @@ package() {
         "${pkgdir}/usr/share/pixmaps/speed-dreams-2.png"
     install -D -m644 "$srcdir/${pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/speed-dreams-svn.desktop"
+
+    rm -rf "$pkgdir/usr/local/share/man"
 }
