@@ -31,10 +31,8 @@ makedepends=(
 build() {
  pushd "artifact-${pkgver}"
  if [[ $(command -v rustup) ]]; then
-   rustup run stable cargo update # 2.0.1 has openssl 0.9 which is too old
    rustup run stable cargo build --release
  else
-   rustup run stable cargo update
    cargo build --release
  fi
  popd
