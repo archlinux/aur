@@ -1,5 +1,5 @@
 pkgbase = calls-git
-	pkgdesc = A phone dialer and call handler
+	pkgdesc = Phone dialer and call handler
 	pkgver = 0.0.1.r4.gee126b3
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/calls
