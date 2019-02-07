@@ -1,6 +1,6 @@
 pkgbase = gnu-cobol
 	pkgdesc = The open source GNU COBOL compiler
-	pkgver = 2.2
+	pkgver = 3.0rc1
 	pkgrel = 2
 	url = http://sourceforge.net/projects/open-cobol/
 	arch = i686
@@ -11,10 +11,8 @@ pkgbase = gnu-cobol
 	depends = db
 	depends = gmp
 	options = !libtool
-	source = http://sourceforge.net/projects/open-cobol/files/gnu-cobol/2.2/gnucobol-2.2.tar.xz
-	source = cob-cflags.patch
-	md5sums = a96dd83d0ad96b2013317b66538d5fab
-	md5sums = 1ed5d24c0e51f4825e014546c83984c9
+	source = http://sourceforge.net/projects/open-cobol/files/gnu-cobol/3.0/gnucobol-3.0-rc1.tar.xz
+	md5sums = 83f296c1553cef1b062815ac53ae6a7d
 
 pkgname = gnu-cobol
 
