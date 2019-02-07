@@ -1,8 +1,8 @@
 pkgbase = gitwatch-git
 	pkgdesc = A bash script to watch a file or folder and commit changes to a git repo
-	pkgver = r66.61c1aac
+	pkgver = r111.93a956e
 	pkgrel = 1
-	url = https://github.com/nevik/gitwatch
+	url = https://github.com/gitwatch/gitwatch
 	arch = any
 	license = GPL3
 	depends = git
