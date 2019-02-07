@@ -1,0 +1,13 @@
+pkgbase = r-futileoptions
+	pkgdesc = Futile Options Management
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/futile.options/index.html
+	arch = x86_64
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/futile.options_1.0.1.tar.gz
+	md5sums = 040daac5089839c104ffd0e0fbedb98d
+
+pkgname = r-futileoptions
+
