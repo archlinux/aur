@@ -9,6 +9,8 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'libosmo-abis' 'lksctp-tools' 'ortp')
 makedepends=('git')
+depends=("${pkgname%-git}")
+makedepends=("${pkgname%-git}")
 source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
