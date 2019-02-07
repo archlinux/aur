@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=touchpad-indicator-git
 _pkgname=touchpad-indicator
 _gitname=Touchpad-Indicator
