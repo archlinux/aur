@@ -1,6 +1,6 @@
 pkgbase = android-studio
 	pkgdesc = The official Android IDE (Stable branch)
-	pkgver = 3.3.0.20
+	pkgver = 3.3.1.0
 	pkgrel = 1
 	url = http://tools.android.com/
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = android-studio
 	optdepends = gtk2: GTK+ look and feel
 	optdepends = libgl: emulator support
 	options = !strip
-	source = https://dl.google.com/dl/android/studio/ide-zips/3.3.0.20/android-studio-ide-182.5199772-linux.zip
+	source = https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-linux.zip
 	source = android-studio.desktop
-	sha256sums = 5cb29b768a4c316649cccc87334e89b1f2db2dc6625e61aff2d3ae68d5632a37
+	sha256sums = 82603100f772baf5b6b54532375ada756b4b2dc11854cabae267cd8bd8c4f039
 	sha256sums = 73cd2dde1d0f99aaba5baad1e2b91c834edd5db3c817f6fb78868d102360d3c4
 
 pkgname = android-studio
