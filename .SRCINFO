@@ -10,6 +10,7 @@ pkgbase = executor
 	makedepends = boost
 	makedepends = git
 	depends = qt5-base
+	depends = boost
 	source = https://github.com/victor3dptz/executor-packaging/raw/master/arch/executor.tar.gz
 	md5sums = 868697896b0c51c66d31440f3c59a3fc
 
