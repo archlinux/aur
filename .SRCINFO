@@ -7,9 +7,13 @@ pkgbase = python-redisgraph
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
+	depends = python-ptable
+	depends = python-redis
 	source = https://files.pythonhosted.org/packages/source/r/redisgraph/redisgraph-1.7.tar.gz
 	md5sums = 6de7ea87415911d5cc6bce8279f09f39
 
 pkgname = python-redisgraph
 	depends = python
+	depends = python-ptable
+	depends = python-redis
 
