@@ -2,7 +2,7 @@
 
 pkgname='artifact'
 pkgver="2.1.5"
-pkgrel=1
+pkgrel=2
 pkgdesc='The design doc tool made for developers'
 url='http://vitiral.github.io/artifact/'
 license=(
@@ -30,6 +30,7 @@ makedepends=(
 
 build() {
  pushd "artifact-${pkgver}"
+ cargo-web deploy -p artifact-frontend --release --target=wasm32-unknown-unknown
  if [[ $(command -v rustup) ]]; then
    rustup run stable cargo build --release
  else
