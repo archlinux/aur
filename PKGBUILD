@@ -1,32 +1,35 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-pcu-git
-_pkgname=osmo-pcu
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 pkgver=0.6.0.1.gf0af1b0
 pkgrel=1
-pkgdesc="OsmoPCU is an Open Source GPRS/EGPRS PCU (Packet Control Unit) with Gb/IP interface."
+pkgdesc="Open Source GPRS/EGPRS PCU (Packet Control Unit) with Gb/IP interface"
 url="https://osmocom.org/projects/osmopcu"
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore')
-source=("git://git.osmocom.org/${_pkgname}")
+makedepends=('git' 'talloc')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+backup=('etc/osmocom/osmo-pcu.cfg')
+source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
-	echo $(git describe --always | sed 's/-/./g')
+  cd "${srcdir}/${pkgname%-git}"
+  echo $(git describe --always | sed 's/-/./g')
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	autoreconf -i
-	./configure --prefix=/usr
-	make
+  cd "${srcdir}/${pkgname%-git}"
+  autoreconf -i
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR=${pkgdir} install
 }
+
+# vim:set ts=2 sw=2 et:

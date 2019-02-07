@@ -1,14 +1,20 @@
 pkgbase = osmo-pcu-git
-	pkgdesc = OsmoPCU is an Open Source GPRS/EGPRS PCU (Packet Control Unit) with Gb/IP interface.
+	pkgdesc = Open Source GPRS/EGPRS PCU (Packet Control Unit) with Gb/IP interface
 	pkgver = 0.6.0.1.gf0af1b0
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmopcu
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL
+	makedepends = git
+	makedepends = talloc
 	depends = libosmocore
 	provides = osmo-pcu
 	conflicts = osmo-pcu
-	source = git://git.osmocom.org/osmo-pcu
+	backup = etc/osmocom/osmo-pcu.cfg
+	source = git+https://git.osmocom.org/osmo-pcu
 	sha256sums = SKIP
 
 pkgname = osmo-pcu-git
