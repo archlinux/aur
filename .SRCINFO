@@ -1,12 +1,14 @@
 pkgbase = sane-git
 	pkgdesc = Scanner Access Now Easy
-	pkgver = 20181220.2d14283d
+	pkgver = 20190205.2b0c7a31
 	pkgrel = 1
 	url = http://www.sane-project.org/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	arch = armv7h
 	license = GPL
+	makedepends = git
 	makedepends = texlive-latexextra
 	depends = libtiff>=4.0.0
 	depends = libgphoto2
@@ -100,7 +102,7 @@ pkgbase = sane-git
 	backup = etc/sane.d/xerox_mfp.conf
 	backup = etc/sane.d/v4l.conf
 	backup = etc/xinetd.d/sane
-	source = git+http://gitlab.com/sane-project/backends.git
+	source = git+https://gitlab.com/sane-project/backends.git
 	source = sane.xinetd
 	source = saned.socket
 	source = saned.service
