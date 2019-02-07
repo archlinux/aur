@@ -1,6 +1,6 @@
 pkgbase = cloud-init
 	pkgdesc = The standard for customising cloud instances
-	pkgver = 18.2
+	pkgver = 18.5
 	pkgrel = 1
 	url = https://cloud-init.io
 	arch = any
