@@ -1,17 +1,19 @@
 pkgbase = libosmo-netif-git
-	pkgdesc = This is a network interfacing library intended to abstract all kinds of signalling + user payload interfaces, including Abis/IP (IPA), A/IP (SCCPlite), as well as the Osmux protocol
-	pkgver = 0.4.0.5.ga720365
+	pkgdesc = Osmocom network interface library
+	pkgver = 0.4.0.13.g1a35772
 	pkgrel = 1
 	url = http://osmocom.org/projects/libosmo-netif
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL
+	makedepends = git
 	depends = libosmocore
 	depends = libosmo-abis
 	depends = lksctp-tools
 	depends = ortp
-	provides = libosmo-netif
-	conflicts = libosmo-netif
-	source = git://git.osmocom.org/libosmo-netif
+	source = git+https://git.osmocom.org/libosmo-netif
 	sha256sums = SKIP
 
 pkgname = libosmo-netif-git

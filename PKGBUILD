@@ -1,32 +1,32 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-netif-git
-_pkgname=libosmo-netif
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-pkgver=0.4.0.5.ga720365
+pkgver=0.4.0.13.g1a35772
 pkgrel=1
-pkgdesc="This is a network interfacing library intended to abstract all kinds of signalling + user payload interfaces, including Abis/IP (IPA), A/IP (SCCPlite), as well as the Osmux protocol"
+pkgdesc="Osmocom network interface library"
 url="http://osmocom.org/projects/libosmo-netif"
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore' 'libosmo-abis' 'lksctp-tools' 'ortp')
-source=("git://git.osmocom.org/${_pkgname}")
+makedepends=('git')
+source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
-	echo $(git describe --always | sed 's/-/./g')
+  cd "${srcdir}/${pkgname%-git}"
+  echo $(git describe --always | sed 's/-/./g')
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	autoreconf -i
-	./configure --prefix=/usr
-	make
+  cd "${srcdir}/${pkgname%-git}"
+  autoreconf -i
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR=${pkgdir} install
 }
+
+# vim:set ts=2 sw=2 et:
