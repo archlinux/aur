@@ -5,8 +5,8 @@ pkgdesc='A browser plugin designed for the viewing of premium video content'
 pkgver=4.10.1303.0
 _chrome_ver=72.0.3626.96
 _license_date=$(curl -sI https://www.google.com/intl/en/chrome/privacy/eula_text.html | sed -n '/^last-modified/ s/.*: //p' | date +"%Y%m%d" -f -)
-_license_last=20190124
-pkgrel=1
+_license_last=20190207
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url='https://www.widevine.com/'
@@ -16,7 +16,7 @@ options=('!strip')
 source=("chrome-eula_text-$_license_date.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html"
         "https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${_chrome_ver}-1_amd64.deb"
         get_cdm_version.c)
-sha256sums=('18415ed1eeb7dc54596cda2a22be05866e2017d4c5b22f434bd980788995d870'
+sha256sums=('8eae6937e1894b38082a352e9e80d6ac9aa30a452bdf2fe7c90cb67c5ec74152'
             '5de71bc2a69f3ba5c32c3a5b5a81dc7ad246d1e6e9acb68c0d98a8d1907ae1bf'
             '3fda44a5b8b222434530f27923568de1fda1eb0caa8621b56a8b2a6a2a2e3d5d')
 
