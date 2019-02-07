@@ -35,5 +35,5 @@ package() {
 		icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
 		install -d $pkgdir/$icons_dir
 		install -Dm644 data/icons/${icon_size}x${icon_size}/$_pkgname.png $pkgdir$icons_dir/$_pkgname.png
-    done
+	done
 }
