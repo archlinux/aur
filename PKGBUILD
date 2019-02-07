@@ -2,14 +2,14 @@
 
 pkgname=protontricks
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games."
 arch=('any')
 url="https://github.com/Matoking/protontricks"
 license=('GPL3')
 depends=('python' 'python-vdf>=2.4' 'winetricks')
 optdepends=('zenity: GUI for GNOME desktop')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=("protontricks")
 conflicts=('protontricks-git')
 source=("${url}/archive/${pkgver}.tar.gz")
