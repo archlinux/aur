@@ -2,7 +2,7 @@
 
 pkgname=flowblade-git
 _pkgname=flowblade
-pkgver=1.16.r116.g0af2fad2
+pkgver=2.0.r15.ga3bd40b4
 pkgrel=1
 pkgdesc="multitrack non-linear video editor for Linux"
 arch=('any')
