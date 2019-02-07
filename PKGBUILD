@@ -23,19 +23,20 @@ source=("git://github.com/aircrack-ng/aircrack-ng.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname%-git}"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+  cd "${srcdir}/${pkgname%-git}"
+  git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 build() {
-	cd "${srcdir}/${pkgname%-git}"
-	autoreconf -i
-	./configure --with-experimental --with-ext-scripts --prefix=/usr --sbindir=/usr/bin
-	make
+  cd "${srcdir}/${pkgname%-git}"
+  autoreconf -i
+  ./configure --with-experimental --with-ext-scripts --prefix=/usr --sbindir=/usr/bin
+  make
 }
 
 package() {
-	cd "${srcdir}/${pkgname%-git}"
-	make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR="${pkgdir}" install
 }
 
+# vim:set ts=2 sw=2 et:
