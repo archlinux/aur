@@ -1,7 +1,7 @@
 pkgbase = gnu-cobol
 	pkgdesc = The open source GNU COBOL compiler
 	pkgver = 3.0rc1
-	pkgrel = 2
+	pkgrel = 0
 	url = http://sourceforge.net/projects/open-cobol/
 	arch = i686
 	arch = x86_64

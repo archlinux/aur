@@ -9,8 +9,8 @@ _pkgmin=rc1
 _tarname="gnucobol-${_pkgmaj}-${_pkgmin}"
 
 pkgver="${_pkgmaj}${_pkgmin}"
-pkgrel=2
 pkgdesc="The open source GNU COBOL compiler"
+pkgrel=0
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/open-cobol/"
 license=('GPL')
