@@ -3,7 +3,7 @@
 pkgname=calls
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="A phone dialer and call handler."
+pkgdesc="Phone dialer and call handler"
 arch=(i686 x86_64 armv6h armv7h)
 url="https://source.puri.sm/Librem5/calls"
 license=(GPL3)
