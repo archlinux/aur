@@ -1,32 +1,35 @@
 # Maintainer: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-ggsn-git
-_pkgname=osmo-ggsn
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 pkgver=1.3.0
 pkgrel=1
-pkgdesc="OsmoGGSN is an Open Source implementation of a GGSN (Gateway GPRS Support Node)."
+pkgdesc="Open Source implementation of a GGSN (Gateway GPRS Support Node)"
 url="https://osmocom.org/projects/openggsn"
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore')
-source=("git://git.osmocom.org/${_pkgname}")
+makedepends=('git' 'talloc')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+backup=('etc/osmocom/osmo-ggsn.cfg')
+source=("git+https://git.osmocom.org/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
-	echo $(git describe --always | sed 's/-/./g')
+  cd "${srcdir}/${pkgname%-git}"
+  echo $(git describe --always | sed 's/-/./g')
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	autoreconf -i
-	./configure --prefix=/usr
-	make
+  cd "${srcdir}/${pkgname%-git}"
+  autoreconf -i
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR=${pkgdir} install
 }
+
+# vim:set ts=2 sw=2 et:
