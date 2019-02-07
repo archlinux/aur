@@ -1,12 +1,12 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-plugins-git
-pkgver=2018.10.r0.gb0272ef
+pkgver=2019.01.r0.ga1cc634
 pkgrel=1
 pkgdesc="Plugins for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
 url="https://magnum.graphics"
 license=('MIT')
-depends=('magnum-git' 'devil' 'libpng' 'libjpeg' 'freetype2' 'assimp')
+depends=('magnum-git' 'devil' 'faad2' 'libpng' 'libjpeg' 'freetype2' 'assimp')
 makedepends=('cmake' 'git')
 provides=('magnum-plugins')
 conflicts=('magnum-plugins')
@@ -30,6 +30,7 @@ build() {
         -DWITH_DEVILIMAGEIMPORTER=ON \
         -DWITH_DRFLACAUDIOIMPORTER=ON \
         -DWITH_DRWAVAUDIOIMPORTER=ON \
+        -DWITH_FAAD2AUDIOIMPORTER=ON \
         -DWITH_FREETYPEFONT=ON \
         -DWITH_JPEGIMPORTER=ON \
         -DWITH_JPEGIMAGECONVERTER=ON \
