@@ -15,11 +15,13 @@ pkgbase = mongodb-bin
 	source = mongodb.conf
 	source = mongodb.sysusers
 	source = mongodb.tmpfiles
+	source = LICENSE
 	md5sums = 1639ef8b9545c3120ac2b7cd7714b995
 	md5sums = 96ab4517b48974ce0e566d9746a75a4f
 	md5sums = 4839fe1d638187ca3226e8267b947318
 	md5sums = ff773b723f7bf217c2a8176e3b143498
 	md5sums = c599936e8858aeba31dc06cc3ff88612
+	md5sums = 3a865f27f11f43ecbe542d9ea387dcf1
 
 pkgname = mongodb-bin
 
