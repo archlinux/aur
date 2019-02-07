@@ -2,23 +2,23 @@
 
 _gemname=loofah
 pkgname=ruby-$_gemname
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.3
+pkgrel=1
 pkgdesc='HTML sanitization for Rails applications'
 arch=(any)
 url='https://github.com/flavorjones/loofah'
 license=(MIT)
-depends=(ruby ruby-nokogiri)
+depends=(ruby ruby-crass ruby-nokogiri)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('0e4184f2ad3555094522cd00b7498f3b36e64c28f5298112d36ed1bfb2e74601')
+sha256sums=('4f6ab88add09ed2578706a4f0ee3f9a844ee5520697751236852c93e468b9ab1')
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" \
-    -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
+    local _gemdir="$(ruby -e'puts Gem.default_dir')"
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" \
+        -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+    rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+    install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
 }
 
