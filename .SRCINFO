@@ -6,6 +6,7 @@ pkgbase = protontricks-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-vdf>=2.4
 	depends = winetricks
