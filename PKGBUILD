@@ -1,7 +1,7 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=me_cleaner-git
-pkgver=1.1.r0.g2ff65c1
+pkgver=1.2.r4.g43612a6
 pkgrel=1
 pkgdesc='Tool for partial deblobbing of Intel ME/TXE firmware images'
 arch=('any')
