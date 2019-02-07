@@ -1,26 +1,19 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=formatR
-_cranver=1.5
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+# Contributor: Grey Christoforo <first name at last name dot net>
 pkgname=r-formatr
-pkgver=${_cranver//[:-]/.}
+_cran_name=formatR
+pkgver=1.5
 pkgrel=1
 pkgdesc="Format R Code Automatically"
-arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL')
-depends=('r' )
-
-optdepends=('r-shiny' 'r-testit' 'r-rmarkdown' 'r-knitr')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+arch=('x86_64')
+url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
+license=('GPL3')
+depends=('r')
+source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
 md5sums=('ac735515b8e4c32097154f1b68c5ecc7')
 
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
-}
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+ mkdir -p $pkgdir/usr/lib/R/library
+ cd $srcdir
 
+ R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
+}
