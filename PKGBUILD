@@ -7,7 +7,7 @@ pkgdesc="S4 generic functions needed by many Bioconductor packages."
 url="https://bioconductor.org/packages/release/bioc/html/BiocGenerics.html"
 arch=("x86_64")
 license=('Artistic-2.0')
-depends=('r')
+depends=('r' 'r-utils')
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bc_name}_${pkgver}.tar.gz")
 sha1sums=('3af3313dbc08cfbe94f70fdd0313bc45236e20da')
 
