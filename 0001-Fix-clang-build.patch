@@ -1,6 +1,6 @@
---- a/qtbase/mkspecs/android-clang/qmake.conf	2018-12-03 08:15:26.000000000 -0300
-+++ b/qtbase/mkspecs/android-clang/qmake.conf	2018-12-11 14:07:47.497103671 -0300
-@@ -31,18 +31,19 @@
+--- a/qtbase/mkspecs/android-clang/qmake.conf	2019-02-07 11:03:08.250521061 -0300
++++ b/qtbase/mkspecs/android-clang/qmake.conf	2019-02-07 11:10:50.389466359 -0300
+@@ -31,11 +31,12 @@
 
  QMAKE_CFLAGS += -gcc-toolchain $$NDK_TOOLCHAIN_PATH
  QMAKE_LINK    = $$QMAKE_CXX $$QMAKE_CFLAGS -Wl,--exclude-libs,libgcc.a
@@ -15,7 +15,8 @@
 
  ANDROID_SOURCES_CXX_STL_LIBDIR = $$NDK_ROOT/sources/cxx-stl/llvm-libc++/libs/$$ANDROID_TARGET_ARCH
 
- ANDROID_STDCPP_PATH = $$ANDROID_SOURCES_CXX_STL_LIBDIR/libc++_shared.so
+@@ -44,7 +45,7 @@
+ ANDROID_USE_LLVM = true
 
  exists($$ANDROID_SOURCES_CXX_STL_LIBDIR/libc++.so): \
 -    ANDROID_CXX_STL_LIBS = -lc++
