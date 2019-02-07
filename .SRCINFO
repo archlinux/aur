@@ -1,14 +1,13 @@
 pkgbase = r-methodss3
 	pkgdesc = Methods that simplify the setup of S3 generic functions and S3 methods.
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/R.methodsS3/index.html
-	arch = i686
 	arch = x86_64
 	license = LGPL3
 	depends = r
-	source = http://cran.r-project.org/src/contrib/R.methodsS3_1.7.0.tar.gz
-	md5sums = 3198eccdb5b163bf1c4c94410dad71a3
+	source = http://cran.r-project.org/src/contrib/R.methodsS3_1.7.1.tar.gz
+	md5sums = c88e815837f268affd4f2a39c737d969
 
 pkgname = r-methodss3
 
