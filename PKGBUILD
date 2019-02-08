@@ -2,10 +2,10 @@
 
 _plug=adjust
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.7370577
+pkgver=v1.0.g7370577
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=171956'
 license=('custom:WTFPL')
 depends=('vapoursynth')
@@ -22,8 +22,7 @@ _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; pri
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 package(){
@@ -32,5 +31,5 @@ package(){
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
-  install -Dm644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 "${srcdir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
