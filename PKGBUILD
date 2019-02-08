@@ -2,10 +2,10 @@
 
 _plug=vfrtocfr
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.6.g6c8cd2b
+pkgver=v1.0.9.gd00a374
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=174711'
 license=('BSD')
 depends=('vapoursynth')
@@ -27,7 +27,7 @@ prepare(){
 
   sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-    -i "${_plug}/VFRToCFR.cpp"
+      -i "${_plug}/VFRToCFR.cpp"
 }
 
 build() {
