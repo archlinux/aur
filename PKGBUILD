@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=libzim
 pkgver=4.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Reference implementation of the ZIM specification by the openZIM project"
 license=('GPL2')
 arch=('any')
@@ -20,7 +20,7 @@ build() {
 
 check() {
 	cd "${pkgname}-${pkgver}/build"
-	ninja meson-test
+	SKIP_BIG_MEMORY_TEST=1 ninja meson-test
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = libzim
 	pkgdesc = Reference implementation of the ZIM specification by the openZIM project
 	pkgver = 4.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/openzim/libzim
 	arch = any
 	license = GPL2
