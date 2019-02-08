@@ -2,7 +2,7 @@
 
 _name=etesync
 pkgname=python-etesync
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Python API to interact with an EteSync server."
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-appdirs' 'python-asn1crypto' 'python-cffi' 'python-coverage'
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('d779593e43e08a103c626057c6274dc00d1eef318a08dc052e9360d38132350c15f6dd99e607834590878e745efad153357348c2199d13d5ee22c9fd2485d3a2')
+sha512sums=('d7e626df26ba272d01b9a43c5450a8c861647b27afbba707c8ba8ddcdd52885511891d5c86395128c2d1452ef4091105874999858e3bd4c91a714e07b4f213f9')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
@@ -31,13 +31,7 @@ check() {
   cd "${pkgname}-${pkgver}"
   # only run relevant tests:
   # https://github.com/etesync/pyetesync/issues/5
-  # disable intermingled integration tests
-  # https://github.com/etesync/pyetesync/issues/12
-  pytest -k 'not test_crud \
-            and not test_content_crud \
-            and not test_syncing \
-            and not test_unicode' \
-    tests/{test_collections.py,test_crypto.py}
+  pytest tests/{test_collections.py,test_crypto.py}
 }
 
 package() {
