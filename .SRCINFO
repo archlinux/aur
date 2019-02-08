@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-timepp-git
+	pkgdesc = A todo.txt manager, time tracker, timer, stopwatch, pomodoro, and alarm clock
+	pkgver = 8aa9b59
+	pkgrel = 1
+	url = https://github.com/zagortenay333/timepp__gnome
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-timepp
+	source = git+https://github.com/zagortenay333/timepp__gnome.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-timepp-git
+
