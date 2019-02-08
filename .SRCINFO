@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-babl
 	pkgdesc = Dynamic, any to any, pixel format conversion library (mingw-w64)
-	pkgver = 0.1.60
+	pkgver = 0.1.62
 	pkgrel = 1
 	url = http://gegl.org/babl/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-babl
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://ftp.gtk.org/pub/babl/0.1/babl-0.1.60.tar.bz2
-	sha256sums = a3d1eeccb6057ccbc189dc926ebaca96cd4896f3391f857b86334d2245f0604f
+	source = https://ftp.gtk.org/pub/babl/0.1/babl-0.1.62.tar.bz2
+	sha256sums = dc279f174edbcb08821cf37e4ab0bc02e6949369b00b150c759a6c24bfd3f510
 
 pkgname = mingw-w64-babl
 
