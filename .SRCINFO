@@ -1,0 +1,15 @@
+pkgbase = ruby-certified
+	pkgdesc = Ensure net/https verifies SSL certificates and provides certificate bundle
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://github.com/stevegraham/certified
+	arch = any
+	license = MIT
+	depends = ruby>=1.8.7
+	noextract = certified-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/certified-1.0.0.gem
+	sha256sums = aa4cdf0e90e7ee96f6e0ce3daae39eaa8f0486124e0d92daf64d2105aeb9069c
+
+pkgname = ruby-certified
+
