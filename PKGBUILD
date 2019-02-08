@@ -2,7 +2,7 @@
 # Maintainer: Mark Weiman <markzz@archlinux.net>
 
 pkgbase=linux-vfio
-_srcver=4.20.6-arch1
+_srcver=4.20.7-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
