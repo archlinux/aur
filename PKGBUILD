@@ -8,7 +8,8 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
-depends=('vapoursynth-plugin-vshelpers-git'
+depends=('vapoursynth'
+         'vapoursynth-plugin-vshelpers-git'
          'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-sangnom-hg'
          'vapoursynth-plugin-msmoosh-git'
@@ -17,7 +18,7 @@ depends=('vapoursynth-plugin-vshelpers-git'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}"
-           'vapoursynth-plugin-resamplehq-git')
+           )
 source=("${_plug}::git+https://gist.github.com/3acdb8d90abf78643d4e.git")
 sha256sums=('SKIP')
 
