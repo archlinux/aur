@@ -1,0 +1,19 @@
+pkgbase = opensearchserver
+	pkgdesc = The open-source enterprise class search engine software
+	pkgver = 1.5.14
+	pkgrel = 1
+	url = http://www.opensearchserver.com
+	arch = any
+	license = GPL
+	depends = java-runtime-common
+	source = http://sourceforge.net/projects/opensearchserve/files/Stable_release/1.5.14/opensearchserver-1.5.14-d0d167e.zip
+	source = opensearchserver.service
+	source = start.sh
+	source = stop.sh
+	md5sums = 07104dd4fff4174833e3678c57c04d1b
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = opensearchserver
+
