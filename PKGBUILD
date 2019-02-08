@@ -2,7 +2,7 @@
 
 _plug=smoothuv
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.1.g0671808
+pkgver=v2.0.g0ba81c9
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -26,19 +26,19 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd build
-  arch-meson "../${_plug}" \
-    --libdir /usr/lib/vapoursynth
-
 }
 
 build() {
-  ninja -C build
+  cd build
+    CXXFLAGS+=' -fpeel-loops' arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
+
+  ninja
 }
 
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
+
   install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 
   install -Dm644 "${_plug}/RainbowSmooth.py" "${pkgdir}${_site_packages}/RainbowSmooth.py"
