@@ -3,13 +3,15 @@
 
 _plug=waifu2x-w2xc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r6.9.g4128c53
+pkgver=r7.0.g4128c53
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url="https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Waifu2x-w2xc/"
+arch=('x86_64')
+url='https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Waifu2x-w2xc'
 license=('GPL2')
-depends=('vapoursynth' 'waifu2x-converter-cpp')
+depends=('vapoursynth'
+         'waifu2x-converter-cpp'
+         )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -23,7 +25,9 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+}
 
+build() {
   cd "${_plug}"
   ./autogen.sh
 
@@ -32,10 +36,7 @@ prepare() {
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
 
-}
-
-build() {
-  make -C build
+  make
 }
 
 package(){
