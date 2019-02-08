@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=megabasterd-bin
-pkgver=5.80
+pkgver=5.88
 pkgrel=1
 pkgdesc="Yet another (unofficial) cross-platform MEGA downloader/uploader/streaming suite"
 arch=('any')
@@ -21,6 +21,7 @@ package() {
 	install -Dm644 "images/mbasterd_med.png" "$pkgdir/usr/share/pixmaps/${pkgname%%-bin}.png"
 	install -Dm644 "${pkgname%%-bin}.desktop" "$pkgdir/usr/share/applications/${pkgname%%-bin}.desktop"
 }
-md5sums=('714dc60e89ff296acae6fb9cac694c3f'
-         'f4112d02ba321fbb769be50679d35357'
-         'b746134d9f4c90ae2458177c85041df8')
+
+md5sums=('8ebc4c6dbb9ba1720869f2ef52a9c993'
+	'f4112d02ba321fbb769be50679d35357'
+'b746134d9f4c90ae2458177c85041df8')
