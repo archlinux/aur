@@ -1,14 +1,14 @@
 pkgbase = xtermcontrol
 	pkgdesc = Enables dynamic control of XFree86 xterm properties
-	pkgver = 3.4
+	pkgver = 3.6
 	pkgrel = 1
 	url = http://www.thrysoee.dk/xtermcontrol/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = http://www.thrysoee.dk/xtermcontrol/xtermcontrol-3.4.tar.gz
-	sha256sums = b4e4ffa80b6978c57c48f4a5d18d4cda8c2e42c740262382950f01eb5eda01bd
+	source = https://www.thrysoee.dk/xtermcontrol/xtermcontrol-3.6.tar.gz
+	sha256sums = 7fbe4bf129becf360bcf2e3093dfd429ad20cf45698f4e455e0462a37c7f7c05
 
 pkgname = xtermcontrol
 

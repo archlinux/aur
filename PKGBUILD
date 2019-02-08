@@ -4,15 +4,15 @@
 # Contributor: Damir <damir@archlinux.org>
 
 pkgname=xtermcontrol
-pkgver=3.4
+pkgver=3.6
 pkgrel=1
 pkgdesc="Enables dynamic control of XFree86 xterm properties"
 arch=("i686" "x86_64")
 url="http://www.thrysoee.dk/xtermcontrol/"
 license=("GPL")
 depends=('glibc')
-source=("http://www.thrysoee.dk/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('b4e4ffa80b6978c57c48f4a5d18d4cda8c2e42c740262382950f01eb5eda01bd')
+source=("https://www.thrysoee.dk/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('7fbe4bf129becf360bcf2e3093dfd429ad20cf45698f4e455e0462a37c7f7c05')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
