@@ -4,7 +4,7 @@
 pkgname=linux-thermaltake-rgb
 pkgdesc="Python usb daemon and controller for thermaltake rgb watercooling devices"
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL2')
 depends=('python' 'python-yaml' 'python-gobject' 'python-dbus' 'python-psutil' 'python-pyusb')
@@ -32,11 +32,9 @@ package() {
   python setup.py install --prefix=/usr --root="$pkgdir"
 
   mkdir -p "$pkgdir/etc/udev/rules.d"
-  cp "$pkgdir/usr/share/linux_thermaltake_rgb/90-linux_thermaltake_rgb.rules" "$pkgdir/etc/udev/rules.d/"
-  
+  install -Dm644 "$pkgdir/usr/share/linux_thermaltake_rgb/90-linux_thermaltake_rgb.rules" "$pkgdir/etc/udev/rules.d/"
   mkdir -p "$pkgdir/usr/lib/systemd/user"
-  cp "$pkgdir/usr/share/linux_thermaltake_rgb/linux-thermaltake-rgb.service" "$pkgdir/usr/lib/systemd/user/"
-  
+  install -Dm644 "$pkgdir/usr/share/linux_thermaltake_rgb/linux-thermaltake-rgb.service" "$pkgdir/usr/lib/systemd/user/"
   mkdir -p "$pkgdir/etc/linux_thermaltake_rgb"
-  cp "$pkgdir/usr/share/linux_thermaltake_rgb/config.yml" "$pkgdir/etc/linux_thermaltake_rgb/"
+  install -Dm644 "$pkgdir/usr/share/linux_thermaltake_rgb/config.yml" "$pkgdir/etc/linux_thermaltake_rgb/"
 } 
