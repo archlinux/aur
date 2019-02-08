@@ -1,8 +1,8 @@
 # Maintainer: marazmista <marazmista@gmail.com>
 
 pkgname=radeon-profile-git
-pkgver=20181028.r0.g33af9d3
-pkgrel=4
+pkgver=20190127.r9.ged1a23f
+pkgrel=1
 pkgdesc="App for display info about radeon card"
 url="http://github.com/marazmista/radeon-profile"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ make
 package() {
 cd "$srcdir/radeon-profile/radeon-profile"
 
-install -Dm755 "radeon-profile" "$pkgdir/usr/bin/radeon-profile"
+install -Dm755 "target/radeon-profile" "$pkgdir/usr/bin/radeon-profile"
 
 install -Dm644 "extra/radeon-profile.png" "$pkgdir/usr/share/pixmaps/radeon-profile.png"
 install -Dm644 "extra/radeon-profile.desktop" "$pkgdir/usr/share/applications/radeon-profile.desktop"
