@@ -3,7 +3,7 @@
 
 pkgname=sqlectron-gui
 pkgver=1.30.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple and lightweight SQL client with cross database and platform support"
 arch=('x86_64')
 url="https://sqlectron.github.io/"
@@ -23,7 +23,7 @@ source=("https://github.com/sqlectron/sqlectron-gui/archive/v${pkgver}.tar.gz"
 sha1sums=('467869f0678cc0e99ca268c9c3d1aafc565c130f'
           '6ad81d34e04c1760d4be27f0e4ec25ff5267deca'
           'b9fb3bc29a17dee5de9295e2fdb2b3025ed51d1f'
-          'cc8eab72cdc552f58b948bd45f8554a9a7fc8a7c')
+          'f756fdbfbb244886f4cd907030715f46222207de')
 
 prepare() {
 	cd "$pkgname-$pkgver"
