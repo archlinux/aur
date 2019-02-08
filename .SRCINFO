@@ -1,7 +1,7 @@
 pkgbase = qt5-datasync
 	pkgdesc = A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices
 	pkgver = 4.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Skycoder42/QtDataSync
 	arch = i686
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = qt5-datasync
 	source = qt5-datasync.rule
 	source = subpkg.rule
 	sha256sums = SKIP
-	sha256sums = ba8f2e738359436ad1a4faa8ad6268372441c60a34363c13aa9f0eec5d0378cc
+	sha256sums = 98986bc0cb0ca9f04bf79e5337705b62c31b3a8fdd1c6ba602994ea290bd4907
 	sha256sums = 321d7d24f490983f54acb9e7f58ebc2a170b520cd978c4989e28bc1a76513f3b
 
 pkgname = qt5-datasync

@@ -3,7 +3,7 @@ pkgbase=qt5-datasync
 pkgname=(qt5-datasync qt5-datasync-kwallet-keystore qt5-datasync-secret-keystore qt5-datasync-doc)
 group=qt5-datasync-full
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtDataSync"
@@ -18,7 +18,7 @@ source=("$_pkgfqn::git+https://github.com/Skycoder42/QtDataSync.git#tag=${pkgver
 		"${pkgname}.rule"
 		"subpkg.rule")
 sha256sums=('SKIP'
-            'ba8f2e738359436ad1a4faa8ad6268372441c60a34363c13aa9f0eec5d0378cc'
+            '98986bc0cb0ca9f04bf79e5337705b62c31b3a8fdd1c6ba602994ea290bd4907'
             '321d7d24f490983f54acb9e7f58ebc2a170b520cd978c4989e28bc1a76513f3b')
 backup=('etc/qdsapp.conf')
 
@@ -76,7 +76,7 @@ package_qt5-datasync-secret-keystore() {
   make INSTALL_ROOT="$pkgdir" install
 
   cd "../../../../../$_pkgfqn"
-  install -D -m644 "../subpkg.rule" "$pkgdir/etc/repkg/rules/${pkgname}.rule"
+  install -D -m644 "../subpkg.rule" "$pkgdir/etc/repkg/rules/system/${pkgname}.rule"
 }
 
 package_qt5-datasync-doc() {
