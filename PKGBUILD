@@ -24,11 +24,11 @@ pkgver() {
 
 build() {
     cd "$_gitname"
-    make all
+    make PREFIX=/usr all
 }
 
 package() {
     cd "$_gitname"
-    make DESTDIR="$pkgdir" install
+    make PREFIX=/usr DESTDIR="$pkgdir" install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
