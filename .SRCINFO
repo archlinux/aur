@@ -1,7 +1,7 @@
 pkgbase = ruby-useragent
 	pkgdesc = HTTP User Agent parser
 	pkgver = 0.16.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/gshutler/useragent
 	arch = any
 	license = MIT
