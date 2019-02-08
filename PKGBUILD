@@ -9,14 +9,14 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=3.38.1.r17.gd7d7810a44
+pkgver=3.39.1.r15.g2866c8dcbf
 pkgrel=1
 pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
 license=('GPL3')
 depends=('chmlib' 'icu' 'jxrlib' 'libmtp' 'libusbx' 'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo'
-         'poppler' 'python2-apsw' 'python2-cssselect'
+         'poppler' 'python2-apsw' 'python2-cssselect' 'python2-feedparser' 'python2-markdown'
          'python2-css-parser' 'python2-dateutil' 'python2-dbus' 'python2-dnspython'
          'python2-dukpy' 'python2-html5-parser' 'python2-mechanize' 'python2-msgpack'
          'python2-netifaces' 'python2-unrardll' 'python2-pillow' 'python2-psutil'
@@ -91,20 +91,23 @@ check() {
 package() {
   cd "${srcdir}/${pkgname%-git}"
 
-
   # If these directories don't exist, zsh completion, icons, and desktop files won't install.
   install -d "${pkgdir}/usr/share/zsh/site-functions" \
       "${pkgdir}"/usr/share/{applications,desktop-directories,icons/hicolor}
+
+  install -Dm644 resources/calibre-mimetypes.xml \
+      "${pkgdir}/usr/share/mime/packages/calibre-mimetypes.xml"
 
   XDG_DATA_DIRS="${pkgdir}/usr/share" LANG='en_US.UTF-8' python2 setup.py install \
     --staging-root="${pkgdir}/usr" --prefix=/usr
 
   #cp -a man-pages/ "${pkgdir}/usr/share/man"
 
-  install -Dm644 resources/calibre-mimetypes.xml "${pkgdir}/usr/share/mime/packages/calibre-mimetypes.xml"
-
   sed -i '/^numeric_version = /c\numeric_version = '"$(printf "(%s, %s, %s, '%s', '%s')" ${pkgver//./ })" \
       "${pkgdir}/usr/lib/calibre/calibre/constants.py"
+
+  # not needed at runtime
+  rm -r "${pkgdir}"/usr/share/calibre/rapydscript/
 
   # Compiling bytecode FS#33392
   # This is kind of ugly but removes traces of the build root.
