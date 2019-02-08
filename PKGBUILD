@@ -3,48 +3,49 @@
 
 _number_of_bits=8
 pkgname=microchip-mplabxc${_number_of_bits}-bin
-pkgver=2.00
+pkgver=2.05
 pkgrel=1
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for their PIC10/12/16/18 microcontroller families and their PIC14000 device"
-arch=(i686 x86_64)
+arch=(x86_64)
 url=http://www.microchip.com/mplab/compilers
 license=(custom)
-depends_i688=(gcc-libs)
-depends_x86_64=(lib32-gcc-libs)
-makedepends=(sdx)
-makedepends_x86_64=(lib32-tclkit)
-makedepends_i686=(tclkit)
+depends=(lib32-gcc-libs)
+makedepends=(sdx lib32-tclkit)
 
 options=(!strip docs libtool emptydirs !zipman staticlibs )
-source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run" "bitrock-unpacker.tcl")
+source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v${pkgver}-full-install-linux-installer.run" "bitrock-unpacker.tcl")
 
-md5sums=('e4fb605dd8fe6f3724846929ff6d57ff'
+md5sums=('80678782a0b38e43294ebdd0125019ed'
          '70dedba4c417f8c0bb07c32d19e9d197')
 install=$pkgname.install
 
-instdir="/opt/microchip/xc${_number_of_bits}/v${pkgver}"
+_instdir="opt/microchip/xc${_number_of_bits}/v${pkgver}"
 
 PKGEXT='.pkg.tar'
 
 build() {
   msg2 "Unpacking files from installer"
-  ./bitrock-unpacker.tcl ./xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run ./unpacked.vfs
+  ./bitrock-unpacker.tcl ./xc${_number_of_bits}-v${pkgver}-full-install-linux-installer.run ./unpacked.vfs
 }
 
 package() {
-  mkdir -p "${pkgdir}${instdir}"
-  mv unpacked.vfs/compiler/programfiles*/* "${pkgdir}${instdir}"
-  mv unpacked.vfs/licensecomponent/LinuxLMBin/bin/{roam.lic,xclm} "${pkgdir}${instdir}/bin"
+  mkdir -p "${pkgdir}/${_instdir}"
+  mkdir -p "${pkgdir}/${_instdir}/etc"
+  mv unpacked.vfs/compiler/programfiles*/* "${pkgdir}/${_instdir}"
+  mv unpacked.vfs/licensecomponent/LinuxLMBin/bin/{roam.lic,xclm} "${pkgdir}/${_instdir}/bin"
   sed -i "s/<xclm>/<xclm>\n\t<xclm:LicenseDirectory xclm:path=\"\/opt\/microchip\/xclm\/license\/\" \/>/" \
   unpacked.vfs/licensecomponent/LinuxLMBin/etc/xclm.conf
-  mv unpacked.vfs/licensecomponent/LinuxLMBin/etc/xclm.conf "${pkgdir}${instdir}/etc"
-  mv unpacked.vfs/licensecomponent/LinuxLMBin/docs/* "${pkgdir}${instdir}/docs"
-  mv "${pkgdir}${instdir}"/*License.txt "${pkgdir}${instdir}/docs" 2>/dev/null || true
+  mv unpacked.vfs/licensecomponent/LinuxLMBin/etc/xclm.conf "${pkgdir}/${_instdir}/etc"
+  mv unpacked.vfs/licensecomponent/LinuxLMBin/docs/* "${pkgdir}/${_instdir}/docs"
+  mv "${pkgdir}/${_instdir}"/*License.txt "${pkgdir}/${_instdir}/docs" 2>/dev/null || true
 
-  mkdir -p "$pkgdir/etc/profile.d"
-  echo "export PATH=\"\$PATH\":'${instdir}/bin'" > "${pkgdir}/etc/profile.d/${pkgname}.sh"
-  echo "export XC${_number_of_bits}_TOOLCHAIN_ROOT='${instdir}'" >> "$pkgdir/etc/profile.d/${pkgname}.sh"
+  mkdir -p "${pkgdir}/etc/profile.d"
+  echo "export PATH=\"\$PATH\":'/${_instdir}/bin'" > "${pkgdir}/etc/profile.d/${pkgname}.sh"
+  echo "export XC${_number_of_bits}_TOOLCHAIN_ROOT='/${_instdir}'" >> "${pkgdir}/etc/profile.d/${pkgname}.sh"
 
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s "${instdir}/docs/$(basename "${pkgdir}${instdir}/docs"/*[Ll]icense.txt)" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "/${_instdir}/docs/$(basename "${pkgdir}/${_instdir}/docs"/*[Ll]icense.txt)" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	
+  chmod u+s "${pkgdir}/${_instdir}/bin/xclm"
+  chmod +x "${pkgdir}/${_instdir}/pic/bin/clang"
 }
