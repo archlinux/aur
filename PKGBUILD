@@ -1,6 +1,6 @@
 pkgname=xava-git
 _pkgname=xava
-pkgver=0.6.1.1.r48.gfc6e8ab
+pkgver=0.6.1.2.r56.g6d2e1d0
 pkgrel=1
 pkgdesc='X11 Audio Visualizer for Alsa/Pulseaudio'
 arch=('any')
@@ -28,5 +28,6 @@ package() {
   install -Dm755 build/"$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
   install -Dm644 assets/desktop/"$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
+  install -Dm644 example_files/config "$pkgdir"/usr/share/xava/config
 }
 

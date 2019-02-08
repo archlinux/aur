@@ -20,3 +20,25 @@ pkgbase = xava-git
 
 pkgname = xava-git
 
+pkgbase = xava-git
+	pkgdesc = X11 Audio Visualizer for Alsa/Pulseaudio
+	pkgver = 0.6.1.2.r56.g6d2e1d0
+	pkgrel = 1
+	url = https://github.com/nikp123/xava
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = fftw
+	depends = alsa-lib
+	depends = iniparser
+	depends = libx11
+	depends = sdl2
+	depends = portaudio
+	depends = sndio
+	depends = mesa
+	source = git+https://github.com/nikp123/xava
+	sha1sums = SKIP
+
+pkgname = xava-git
+
