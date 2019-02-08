@@ -11,7 +11,7 @@ pkgdesc='GTK platform backend for Qt'
 arch=('any')
 url='https://github.com/CrimsonAS/gtkplatform'
 license=('LGPL3')
-source=("git://github.com/sirspudd/gtkplatform.git")
+source=("git://github.com/CrimsonAS/gtkplatform.git")
 sha256sums=('SKIP')
 
 pkgver () {
