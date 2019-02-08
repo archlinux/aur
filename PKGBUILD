@@ -3,7 +3,7 @@
 
 pkgname=linux-thermaltake-rgb
 pkgdesc="Python usb daemon and controller for thermaltake rgb watercooling devices"
-pkgver=0.0.12
+pkgver=0.1.0
 pkgrel=1
 arch=('any')
 license=('GPL2')
