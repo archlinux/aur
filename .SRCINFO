@@ -1,7 +1,7 @@
 pkgbase = ruby-gollum-lib
 	pkgdesc = A simple, Git-powered wiki, external library dependencies.
-	pkgver = 4.2.7
-	pkgrel = 2
+	pkgver = 4.2.10
+	pkgrel = 1
 	url = http://github.com/gollum/gollum-lib
 	arch = any
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = ruby-gollum-lib
 	provides = ruby-kramdown=1.9.0
 	provides = ruby-rack=1.6.8
 	provides = ruby-mustache=0.99.8
-	noextract = gollum-lib-4.2.7.gem
+	noextract = gollum-lib-4.2.10.gem
 	noextract = gollum-grit_adapter-1.0.1.gem
 	noextract = mini_portile2-2.1.0.gem
 	noextract = sanitize-2.1.0.gem
@@ -29,7 +29,7 @@ pkgbase = ruby-gollum-lib
 	noextract = rack-1.6.8.gem
 	noextract = mustache-0.99.8.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/gollum-lib-4.2.7.gem
+	source = https://rubygems.org/downloads/gollum-lib-4.2.10.gem
 	source = https://rubygems.org/downloads/gollum-grit_adapter-1.0.1.gem
 	source = https://rubygems.org/downloads/mini_portile2-2.1.0.gem
 	source = https://rubygems.org/downloads/sanitize-2.1.0.gem
@@ -37,7 +37,7 @@ pkgbase = ruby-gollum-lib
 	source = https://rubygems.org/downloads/kramdown-1.9.0.gem
 	source = https://rubygems.org/downloads/rack-1.6.8.gem
 	source = https://rubygems.org/downloads/mustache-0.99.8.gem
-	sha256sums = d809bff03538ec4526845350b175aec099664654e4084cb8a90217e9e4e634ba
+	sha256sums = 6eb75173fbd6ed18621e650f747e0581b53f6c070f8fc995474a389363e42999
 	sha256sums = 8b644bac7bd10f38b7944c324263b3f6d4506a0571e6221d604e853d4c5d9139
 	sha256sums = 0b0e83fe0fc190640a93c48cef0c8e1f1f40f77840d82c160fefc1b07a5345f8
 	sha256sums = c3be075f5b38a1b02404be5778b181e50fba9ab253bac851cb217d9a71375b77
