@@ -1,0 +1,4 @@
+mu/
+pkg/
+src/
+*.pkg.tar.xz
