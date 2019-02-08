@@ -3,21 +3,21 @@
 
 _gemname=charlock_holmes
 pkgname=ruby-$_gemname
-pkgver=0.7.3
+pkgver=0.7.6
 pkgrel=1
 pkgdesc='Character encoding detection, brought to you by ICU'
 arch=(i686 x86_64)
 url='https://github.com/brianmario/charlock_holmes'
 license=(MIT)
 depends=(ruby)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('ac73baf383ddaaaf4dae4b43c79eec0a4d2bb2ee')
+sha1sums=('546b3157f72a80a66627f90053d8e268f29144df')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
 }
