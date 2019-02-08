@@ -1,12 +1,13 @@
 pkgbase = libzim
 	pkgdesc = Reference implementation of the ZIM specification by the openZIM project
 	pkgver = 4.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/openzim/libzim
 	arch = any
 	license = GPL2
 	makedepends = meson
 	makedepends = gtest
+	depends = xapian-core
 	depends = zlib
 	depends = xz
 	depends = icu
