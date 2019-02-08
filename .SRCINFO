@@ -1,0 +1,16 @@
+pkgbase = hbs
+	pkgdesc = A command line utility that searches for files, and tells you how big it all is.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/LovesToCode/hbs-How-Big-Search
+	arch = any
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	provides = hbs
+	conflicts = hbs
+	source = hbs-1.0.0.tar.gz::https://github.com/LovesToCode/hbs-How-Big-Search/archive/v1.0.0.tar.gz
+	md5sums = e82d63e4971406f7ceb093d56b0dc7e4
+
+pkgname = hbs
+
