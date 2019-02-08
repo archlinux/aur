@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-doctorwho-classic-series
 	pkgdesc = Doctor who classic series (1963-1989) fortune cookie file
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://tvtropes.org/pmwiki/pmwiki.php/Quotes/DoctorWhoClassicSeriesDoctors
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = fortune-mod-doctorwho-classic-series
 	license = unknown
 	depends = fortune-mod
 	source = doctorwho-classic-series
-	md5sums = 1362ca8be39abb8055a2ffacde393dfe
+	md5sums = 5a4bd9c1b7a7ca657ad5240a999b5eb5
 
 pkgname = fortune-mod-doctorwho-classic-series
 
