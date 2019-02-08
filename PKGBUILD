@@ -2,7 +2,7 @@
 
 pkgname="redox-games-git"
 pkgver=r143.1e234c6
-pkgrel=1
+pkgrel=2
 pkgdesc="Games for Redox OS (and Linux) in the terminal"
 arch=('x86_64')
 url='https://gitlab.redox-os.org/redox-os/games'
@@ -33,5 +33,5 @@ package() {
     install -Dm755 target/release/{baduk,commie,dem,flappy,h4xx3r,ice,minesweeper,reblox,redoku,rusthello,snake} "$pkgdir/usr/bin"
 
     mkdir -p "$pkgdir/usr/share/license"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_shortname}/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
