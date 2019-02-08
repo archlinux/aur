@@ -1,30 +1,45 @@
-diff -ura sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Dark/cursor.theme sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Dark/cursor.theme
---- sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Dark/cursor.theme	2018-06-30 15:17:18.000000000 +0300
-+++ sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Dark/cursor.theme	2018-07-02 17:35:11.923503565 +0300
+diff -ura thedot.orig/Dot-Dark/cursor.theme thedot.new/Dot-Dark/cursor.theme
+--- thedot.orig/Dot-Dark/cursor.theme	2019-01-17 23:53:42.000000000 +0200
++++ thedot.new/Dot-Dark/cursor.theme	2019-02-04 16:12:33.000000000 +0200
 @@ -1,2 +1,2 @@
  [Icon Theme]
--Inherits=TheDOT 0.3 dark
-+Inherits=TheDOT-0.3-dark
-diff -ura sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Dark/index.theme sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Dark/index.theme
---- sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Dark/index.theme	2018-06-30 15:17:18.000000000 +0300
-+++ sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Dark/index.theme	2018-07-02 17:50:51.850192036 +0300
+-Inherits=TheDOT 0.6 dark
++Inherits=TheDOT-0.6-dark
+diff -ura thedot.orig/Dot-Dark/index.theme thedot.new/Dot-Dark/index.theme
+--- thedot.orig/Dot-Dark/index.theme	2019-01-17 23:53:52.000000000 +0200
++++ thedot.new/Dot-Dark/index.theme	2019-02-04 16:12:31.000000000 +0200
 @@ -1,3 +1,3 @@
  [Icon Theme]
--Name=TheDOT 0.3 dark
+-Name=TheDOT 0.6 dark
 +Name=TheDOT-dark
- Comment=Good white modern-looking theme with a piece of nostalgia
-diff -ura sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Light/cursor.theme sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Light/cursor.theme
---- sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Light/cursor.theme	2018-06-30 15:17:18.000000000 +0300
-+++ sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Light/cursor.theme	2018-07-02 17:36:59.846839409 +0300
+ Comment=Mouse Theme with circles
+diff -ura thedot.orig/Dot-Light/cursor.theme thedot.new/Dot-Light/cursor.theme
+--- thedot.orig/Dot-Light/cursor.theme	2019-01-17 23:54:07.000000000 +0200
++++ thedot.new/Dot-Light/cursor.theme	2019-02-04 16:14:33.000000000 +0200
 @@ -1,2 +1,2 @@
  [Icon Theme]
--Inherits=TheDOT 0.3 light
-+Inherits=TheDOT-0.3-light
-diff -ura sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Light/index.theme sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Light/index.theme
---- sergiy_ilchuk-thedot-0362c13478d3.original/Dot-Light/index.theme	2018-06-30 15:17:18.000000000 +0300
-+++ sergiy_ilchuk-thedot-0362c13478d3.modified/Dot-Light/index.theme	2018-07-02 17:51:02.210192277 +0300
+-Inherits=TheDOT 0.6 light
++Inherits=TheDOT-0.6-light
+diff -ura thedot.orig/Dot-Light/index.theme thedot.new/Dot-Light/index.theme
+--- thedot.orig/Dot-Light/index.theme	2019-01-17 23:54:15.000000000 +0200
++++ thedot.new/Dot-Light/index.theme	2019-02-04 16:14:35.000000000 +0200
 @@ -1,3 +1,3 @@
  [Icon Theme]
--Name=TheDOT 0.3 light
+-Name=TheDOT 0.6 light
 +Name=TheDOT-light
+ Comment=Mouse Theme with circles
+diff -ura thedot.orig/Dot-Transparent/cursor.theme thedot.new/Dot-Transparent/cursor.theme
+--- thedot.orig/Dot-Transparent/cursor.theme	2019-01-17 23:54:33.000000000 +0200
++++ thedot.new/Dot-Transparent/cursor.theme	2019-02-04 16:15:00.000000000 +0200
+@@ -1,2 +1,2 @@
+ [Icon Theme]
+-Inherits=TheDOT 0.6 transparent
++Inherits=TheDOT-0.6-transparent
+diff -ura thedot.orig/Dot-Transparent/index.theme thedot.new/Dot-Transparent/index.theme
+--- thedot.orig/Dot-Transparent/index.theme	2019-01-17 23:54:46.000000000 +0200
++++ thedot.new/Dot-Transparent/index.theme	2019-02-04 16:14:53.000000000 +0200
+@@ -1,3 +1,3 @@
+ [Icon Theme]
+-Name=TheDOT 0.6 transparent
++Name=TheDOT-transparent
  Comment=Good white modern-looking theme with a piece of nostalgia

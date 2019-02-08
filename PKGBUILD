@@ -2,7 +2,7 @@
 
 pkgname=xcursor-thedot
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A mouse theme with circles (fork of the unmaintained original)"
 arch=('any')
 url="https://www.gnome-look.org/p/1244392/"
