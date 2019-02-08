@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-doctorwho-new-series
+	pkgdesc = Doctor who new series (2005-present) fortune cookie file
+	pkgver = 13.0
+	pkgrel = 1
+	url = https://tvtropes.org/pmwiki/pmwiki.php/Quotes/DoctorWhoNewSeriesDoctors
+	arch = any
+	groups = fortune-mods
+	license = unknown
+	depends = fortune-mod
+	source = doctorwho-new-series
+	md5sums = 5cc052eeca8fb6654bc2634cc2b4c9cb
+
+pkgname = fortune-mod-doctorwho-new-series
+
