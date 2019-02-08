@@ -2,8 +2,8 @@
 
 pkgname=aftermath-git
 pkgver=r625.6c0552e
-pkgrel=1
-pkgdesc="Afetermath: Trace-based performance analysis for OpenMP and OpenStream"
+pkgrel=2
+pkgdesc="Aftermath: Trace-based performance analysis for OpenMP and OpenStream"
 arch=('x86_64')
 url="https://aftermath-tracing.com/"
 license=('GPL2' 'LGPL2.1' 'FDL1.3')
