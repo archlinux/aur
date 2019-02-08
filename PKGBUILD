@@ -3,7 +3,7 @@
 
 pkgname=snowboy
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="DNN based hotword and wake word detection toolkit"
 arch=('x86_64')
 url="https://github.com/Kitt-AI/snowboy"
@@ -14,5 +14,8 @@ sha512sums=('3edd3038c11beb9ecc9a7f73f91c7097ec869841eade6715df061987313cdad60d7
 package() {
 	install -D "${srcdir}/${pkgname}-${pkgver}/lib/ubuntu64/libsnowboy-detect.a" "${pkgdir}/usr/lib/libsnowboy-detect.a"
 	install -D "${srcdir}/${pkgname}-${pkgver}/include/snowboy-detect.h" "${pkgdir}/usr/include/snowboy-detect.h"
+	mkdir -p "${pkgdir}/usr/share/${pkgname}"
+	cp -r "${srcdir}/${pkgname}-${pkgver}/resources" "${pkgdir}/usr/share/${pkgname}/"
+	ln -s "/usr/share/${pkgname}/resources/alexa/alexa_02092017.umdl" "${pkgdir}/usr/share/${pkgname}/resources/alexa.umdl"
 	install -D "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
