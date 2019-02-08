@@ -1,16 +1,17 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=sonic-pi
 pkgver=3.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=('x86_64')
 url="https://sonic-pi.net/"
 license=('CCPL' 'LGPL2.1' 'GPL2' 'GPL3' 'MIT')
 groups=('pro-audio')
-depends=('aubio' 'boost-libs' 'http-parser' 'osmid' 'qscintilla-qt5' 'qwt'
-'ruby-ffi' 'ruby-minitest' 'ruby-multi_json' 'ruby-rouge' 'ruby-rugged'
+depends=('aubio' 'boost-libs' 'osmid' 'qscintilla-qt5' 'qwt' 'ruby-ffi'
+'ruby-minitest' 'ruby-multi_json' 'ruby-rouge' 'ruby-rugged'
 'ruby-sys-proctable' 'sc3-plugins' 'supercollider')
-makedepends=('boost' 'cmake' 'erlang-nox' 'lua' 'qt5-tools' 'wkhtmltopdf')
+makedepends=('boost' 'cmake' 'erlang-nox' 'gendesk' 'lua' 'qt5-tools'
+'wkhtmltopdf')
 checkdepends=('ruby-rake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/samaaron/${pkgname}/archive/v${pkgver}.tar.gz"
         "fix-paths-in-gui.diff"
@@ -21,6 +22,11 @@ sha512sums=('45373d3e673bc2f45bf5ccea31f6cf5e2003c9bdfc4645dec4b9fec391cb28b9e0b
 
 prepare() {
   cd "$pkgname-$pkgver"
+  gendesk -n \
+          --pkgname ${pkgname} \
+          --pkgdesc "${pkgdesc}" \
+          --name sonic-pi \
+          --categories "AudioVideo;Audio"
   sed -e 's/lqt5scintilla2/lqscintilla2_qt5/g' -i app/gui/qt/SonicPi.pro
   rm -rvf app/server/native
   # TODO: patch app/gui/qt/mainwindow.cpp to set path to external components in /usr/{lib,share}/sonic-pi
@@ -182,6 +188,13 @@ package() {
   # ruby
   install -vdm 755 "${pkgdir}/usr/share/${pkgname}"
   cp -av app/server/ruby "${pkgdir}/usr/lib/${pkgname}/server"
+  rm -v "${pkgdir}/usr/lib/${pkgname}/server/vendor/"*/ext/*.{o,c}
+  rm -v "${pkgdir}/usr/lib/${pkgname}/server/vendor/"*/ext/*/*.{o,c}
+  rm -v "${pkgdir}/usr/lib/${pkgname}/server/Rakefile"
+  rm -v "${pkgdir}/usr/lib/${pkgname}/server/vendor/"*/Rakefile
+
+  # xdg
+  install -vDm 644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 
   # license
   install -vDm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
