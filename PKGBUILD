@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://bitbucket.org/agalanin/fuse-zip/downloads/$pkgname-$pkgver.tar.gz" "Makefile.patch")
 md5sums=('0075928fd290619111f144b829e941e5'
-         'e289e17557acef9511c15fe0746a0d3d')
+         'e8f30b084dd4ec25127b39077085c32e')
 noextract=()
 validpgpkeys=()
 

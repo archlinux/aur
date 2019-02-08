@@ -12,7 +12,7 @@ pkgbase = fuse-zip
 	source = https://bitbucket.org/agalanin/fuse-zip/downloads/fuse-zip-0.5.0.tar.gz
 	source = Makefile.patch
 	md5sums = 0075928fd290619111f144b829e941e5
-	md5sums = e289e17557acef9511c15fe0746a0d3d
+	md5sums = e8f30b084dd4ec25127b39077085c32e
 
 pkgname = fuse-zip
 
