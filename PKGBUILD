@@ -6,7 +6,7 @@ pkgver=r5.30.ge70d7fb
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url='http://forum.doom9.org/showthread.php?t=174151'
+url='https://forum.doom9.org/showthread.php?t=174151'
 license=('GPL2')
 depends=('vapoursynth')
 makedepends=('git'
@@ -24,13 +24,13 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p build
+
   rm -fr "${_plug}/VapourSynth.h" "${_plug}/VSHelper.h"
 
   sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
       -i "${_plug}/Shared.hpp"
-
-  mkdir -p build
 }
 
 build() {
