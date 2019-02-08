@@ -1,0 +1,24 @@
+pkgbase = xedgewarp
+	pkgdesc = xedgewarp is a window manager agnostic tool for pointer warping between outputs
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Airblader/xedgewarp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = git
+	makedepends = asciidoc
+	depends = libxcb
+	depends = xcb-util
+	depends = libxi
+	depends = libx11
+	depends = libxrandr
+	depends = libxfixes
+	provides = xedgewarp
+	conflicts = xedgewarp-git
+	source = https://github.com/Airblader/xedgewarp/archive/v1.1.tar.gz
+	sha256sums = 61e82e01b00b521a838b3555736fa593fb26c3d6a856eb9654bc7aa17d19d396
+
+pkgname = xedgewarp
+
