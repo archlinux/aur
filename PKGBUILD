@@ -1,4 +1,4 @@
-# Maintainer: Gabriele Russo Russo <gabri.russo17@gmail.com>
+# Maintainer: David Roizenman <david@hmnd.io>
 
 pkgname=todoist
 pkgver=0.13.1
