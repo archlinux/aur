@@ -26,7 +26,7 @@ depends=(
   'libx264.so' 'libx265.so' 'libxvidcore.so'
   'libfdk-aac'
 )
-makedepends=('ffnvcodec-headers' 'git' 'ladspa' 'yasm')
+makedepends=('ffnvcodec-headers' 'git' 'ladspa' 'nasm')
 optdepends=('ladspa: LADSPA filters')
 provides=(
   'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
