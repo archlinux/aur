@@ -1,7 +1,7 @@
 pkgbase = vorta
 	pkgdesc = A GUI for BorgBackup
-	pkgver = 0.6.7
-	pkgrel = 2
+	pkgver = 0.6.8
+	pkgrel = 1
 	url = https://github.com/borgbase/vorta
 	arch = any
 	license = GPL
@@ -18,10 +18,10 @@ pkgbase = vorta
 	depends = python-llfuse
 	depends = python-qdarkstyle
 	options = !emptydirs
-	source = vorta-0.6.7.tar.gz::https://github.com/borgbase/vorta/archive/v0.6.7.zip
+	source = vorta-0.6.8.tar.gz::https://github.com/borgbase/vorta/archive/v0.6.8.zip
 	source = vorta32.png
 	source = vorta.desktop
-	sha256sums = 370f146a2418eac3d688b5107fc0355dbd95d0e848243014ba95c011821fb828
+	sha256sums = 4cd1cde8ff1c1d103eaea1c0a35c88745e96edf040685b6b67d8014f17a816f9
 	sha256sums = ff944c741a291f4d38cac97906376e4afa851f54f46d6de00f6fd92c4ad273f9
 	sha256sums = 6bd09fed495b0173c2fc0bdb42dde417c3ed3f2d4025927afa3826cf1205372d
 
