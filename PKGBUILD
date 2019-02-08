@@ -2,7 +2,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn
-pkgver=1.8.9dev+16+g33c941d
+pkgver=1.8.10
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://wiki.gnome.org/Projects/NetworkManager"
@@ -11,9 +11,11 @@ license=(GPL)
 depends=(libnm libsecret openvpn)
 makedepends=(libnma intltool python git)
 optdepends=('libnma: GUI support')
-_commit=33c941d21002e279d4ac36a641c16a37d114c759  # master
-source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=$_commit")
-sha256sums=('SKIP')
+_commit=ac8a34354ecede5c68812a1c269d712da93afdb1  # tags/1.8.10^0
+source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=$_commit"
+        0001-build-disable-libnm-glib-support-by-default.patch)
+sha256sums=('SKIP'
+            '0c574c0432948d0b66a2cdf22dab9657618fe90a44e74e681e6fd8a57c127773')
 
 pkgver() {
   cd NetworkManager-openvpn
@@ -24,7 +26,7 @@ prepare() {
   cd NetworkManager-openvpn
 
   # Don't build against libnm-glib/gtk
-  git cherry-pick -n b423aa8214b2ef6b97e419d0b0e3e5e68f4b2e5b
+  patch -Np1 -i ../0001-build-disable-libnm-glib-support-by-default.patch
 
   intltoolize --automake --copy
   autoreconf -fvi
