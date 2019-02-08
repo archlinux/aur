@@ -2,8 +2,8 @@
 # Contributor: kevku <kevku@gmx.com>
 
 pkgname=kodi-addon-inputstream-adaptive-18-git
-pkgver=r377.9f3502a
-pkgrel=2
+pkgver=2.3.13.r3.gf782dcc
+pkgrel=1
 pkgdesc="InputStream client for adaptive streams for Kodi 18"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/peak3d/inputstream.adaptive"
@@ -15,18 +15,22 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+https://github.com/peak3d/inputstream.adaptive.git")
 md5sums=('SKIP')
 
+prepare() {
+  mkdir -p "${srcdir}/${pkgname}/build"
+}
+
 pkgver() {
-        cd "${srcdir}/${pkgname}"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${pkgname}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-        cd "${srcdir}/${pkgname}"
-        cmake -DCMAKE_INSTALL_PREFIX=/usr
-        make
+  cd "${srcdir}/${pkgname}/build"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  make
 }
 
 package() {
-        cd "${srcdir}/${pkgname}"
-        make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${pkgname}/build"
+  make DESTDIR="${pkgdir}" install
 }
