@@ -1,0 +1,14 @@
+pkgbase = redox-games-git
+	pkgdesc = Games for Redox OS (and Linux) in the terminal
+	pkgver = r143.1e234c6
+	pkgrel = 1
+	url = https://gitlab.redox-os.org/redox-os/games
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = redox-games-git::git+https://gitlab.redox-os.org/redox-os/games.git
+	sha512sums = SKIP
+
+pkgname = redox-games-git
+
