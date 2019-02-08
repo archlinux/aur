@@ -1,0 +1,13 @@
+pkgbase = r-lattice
+	pkgdesc = Trellis Graphics for R
+	pkgver = 0.20.38
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/lattice/index.html
+	arch = x86_64
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/lattice_0.20-38.tar.gz
+	md5sums = f80724e04f6a18640aea0f18ef2626a9
+
+pkgname = r-lattice
+
