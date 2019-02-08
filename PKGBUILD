@@ -1,7 +1,7 @@
 pkgname='sample-pkgbuild-with-backspaces-calls-sudo'
 pkgver=1
 pkgrel=1
-pkgdesc="Sample PKGBUILD containing backspaces calls sudo"
+pkgdesc="Sample PKGBUILD containing backspaces calls sudos"
 arch=('any')
 license=('GPL-3.0')
 
