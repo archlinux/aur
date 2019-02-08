@@ -3,7 +3,7 @@
 
 
 pkgname=kvmd
-pkgver=0.121
+pkgver=0.122
 pkgrel=1
 pkgdesc="The main Pi-KVM daemon"
 url="https://github.com/pi-kvm/kvmd"
@@ -21,6 +21,7 @@ depends=(
 	python-setproctitle
 	python-systemd
 	python-dbus
+	python-pygments
 	v4l-utils
 )
 makedepends=(python-setuptools)
