@@ -36,6 +36,7 @@ build() {
 }
 
 package(){
-  make -C "${_plug}" install
-  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
+  cd "${_plug}"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
