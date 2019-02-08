@@ -1,7 +1,7 @@
 pkgbase = qt5-base-nostatx
 	pkgdesc = A cross-platform application and UI framework
 	pkgver = 5.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt
@@ -53,9 +53,11 @@ pkgbase = qt5-base-nostatx
 	source = https://download.qt.io/official_releases/qt/5.12/5.12.1/submodules/qtbase-everywhere-src-5.12.1.tar.xz
 	source = qt-delayed-highlight.patch::https://code.qt.io/cgit/qt/qtbase.git/patch/?id=f8f0f3ee
 	source = qtbug-69310.patch::https://code.qt.io/cgit/qt/qtbase.git/patch/?id=fcba9fa8
+	source = qt5-base-nouveau-freeze.patch::http://code.qt.io/cgit/qt/qtbase.git/patch?id=97600d2c
 	sha256sums = 533078ce02678988576e224cb3844979907950cf83e0fda3364bc1d5701c9049
 	sha256sums = 0080b1e208090c729018db1ac224e5940d06a38b9c28c918a892b01f84a82cf9
 	sha256sums = 2186ce7b8d6310ebc005da9b00dcc88388df3e8b83bff37230fa1bb9253c4970
+	sha256sums = e0a7cdda2ebc403e2b3a62b3d104d2dd3f8b4e79d92395cf3c6419ebe6d8b19c
 
 pkgname = qt5-base-nostatx
 	pkgdesc = A cross-platform application and UI framework
