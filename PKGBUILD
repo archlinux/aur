@@ -2,14 +2,16 @@
 
 _plug=yadifmod
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r10.0.g89e70a1
+pkgver=r10.1.0.g8aad01a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=171028'
 license=('GPL')
 depends=('vapoursynth')
-makedepends=('git')
+makedepends=('git'
+             'meson'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Yadifmod.git")
@@ -21,21 +23,19 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}"
-  ./autogen.sh
+  mkdir -p build
 }
 
 build() {
-  cd "${_plug}"
-  ./configure \
-    --prefix=/usr \
-    --libdir=/usr/lib/vapoursynth
+  cd build
+  CXXFLAGS+=' -fpeel-loops' arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
 
-  make
+  ninja
 }
 
 package(){
-  cd "${_plug}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  DESTDIR="${pkgdir}" ninja -C build install
+
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
