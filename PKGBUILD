@@ -2,7 +2,7 @@
 
 pkgname=radeon-profile-daemon-git
 pkgbase=radeon-profile-daemon-git
-pkgver=20161223.r0.gf250559
+pkgver=20190124.r6.g05bdb90
 pkgrel=1
 pkgdesc="System daemon for radeon-profile"
 url="http://github.com/marazmista/radeon-profile-daemon"
@@ -29,11 +29,8 @@ make
 }
  
 package() {
-cd build
-make prefix="${pkgdir}" install
-
-install -Dm644 "$srcdir/build/radeon-profile-daemon" "$pkgdir/usr/bin/radeon-profile-daemon"
+install -Dm644 "$srcdir/build/target/radeon-profile-daemon" "$pkgdir/usr/bin/radeon-profile-daemon"
 chmod +x "$pkgdir/usr/bin/radeon-profile-daemon"
 
-install -Dm644 "$srcdir/radeon-profile-daemon/radeon-profile-daemon/extra/radeon-profile-daemon.service" "$pkgdir/etc/systemd/system/radeon-profile-daemon.service"
+install -Dm644 "$srcdir/radeon-profile-daemon/radeon-profile-daemon/extra/radeon-profile-daemon.service" "$pkgdir/usr/lib/systemd/system/radeon-profile-daemon.service"
 }
