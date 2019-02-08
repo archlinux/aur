@@ -1,10 +1,11 @@
 # Maintainer: Alexander Görtz <aur@nyloc.de>
 # Co-maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Co-maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 # Contributor: stef204 <https://aur.archlinux.org/account/stef204>
 
 pkgname='borgmatic'
-pkgver=1.2.14
-pkgrel=5
+pkgver=1.2.15
+pkgrel=1
 pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
 arch=('any')
 url='https://torsion.org/borgmatic/'
@@ -18,11 +19,9 @@ source=(
   "${pkgname}.install"
   "${pkgname}.service.patch"
 )
-sha256sums=(
-  'b77f8aff75208a69211d2453baf287001b4f54f858c56f8daba240461485d0f8'
-  '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b'
-  'f27cf21c8076d9de96ee7931ec6660f7f5d9e9fcaa6346612701eff32fa5127d'
-)
+sha256sums=('3b50a41f59fdc47d32ab8e67869e2c9346d97b0d122897e07017d3ea0222be8e'
+            '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b'
+            'f27cf21c8076d9de96ee7931ec6660f7f5d9e9fcaa6346612701eff32fa5127d')
 
 _pytestdir="$(mktemp -d)"
 
