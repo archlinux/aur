@@ -3,7 +3,7 @@
 
 _plug=znedi3
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r70.815beb9
+pkgver=r1.7.g815beb9
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('vapoursynth'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/sekrit-twc/znedi3.git"
+source=("${_plug}::git+https://github.com/sekrit-twc/${_plug}.git"
         'git+https://github.com/sekrit-twc/vsxx.git'
         )
 sha256sums=('SKIP'
@@ -24,8 +24,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
@@ -50,7 +49,7 @@ prepare() {
 }
 
 build() {
-  make -C "${_plug}" X86=1
+  make -C "${_plug}" CPPFLAGS="-DNNEDI3_WEIGHTS_PATH=\\\"\"/usr/lib/vapoursynth/nnedi3_weights.bin\"\\\"" X86=1
 }
 
 package(){
