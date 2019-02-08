@@ -21,14 +21,16 @@ depends=(
   bzip2
   fontconfig
   fribidi
-  glibc
   gmp
   gnutls
   gsm
   jack
   lame
+  libass.so
   libavc1394
+  libbluray.so
   libdrm
+  libfreetype.so
   libiec61883
   libmodplug
   libomxil-bellagio
@@ -37,13 +39,23 @@ depends=(
   libsoxr
   libssh
   libtheora
+  libva.so
+  libva-drm.so
+  libva-x11.so
   libvdpau
+  libvidstab.so
+  libvorbisenc.so
+  libvorbis.so
+  libvpx.so
   libwebp
   libx11
+  libx264.so
+  libx265.so
   libxcb
   libxext
   libxml2
   libxv
+  libxvidcore.so
   opencore-amr
   openjpeg2
   opus
@@ -52,19 +64,6 @@ depends=(
   v4l-utils
   xz
   zlib
-  libass.so
-  libbluray.so
-  libfreetype.so
-  libva-drm.so
-  libva.so
-  libva-x11.so
-  libvidstab.so
-  libvorbisenc.so
-  libvorbis.so
-  libvpx.so
-  libx264.so
-  libx265.so
-  libxvidcore.so
   libfdk-aac
 )
 makedepends=(
