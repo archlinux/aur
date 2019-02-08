@@ -7,7 +7,7 @@
 _bldtype=Release
 
 _mozcver=2.23.2815.102
-_dicver=20181126
+_dicver=20190204
 _revision=1
 
 _pkgbase=mozc
@@ -20,7 +20,7 @@ url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
 makedepends=('clang' 'ninja' 'pkg-config' 'python2' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
 
-source=('https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F23%2F23046%2Fmozc-neologd-ut-2.23.2815.102.20181126.1.tar.xz'
+source=('https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F23%2F23743%2Fmozc-neologd-ut-2.23.2815.102.20190204.1.tar.xz'
         # https://github.com/google/mozc/issues/441#issue-321728877
         fix-for-gcc81.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)

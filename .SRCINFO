@@ -1,5 +1,5 @@
-pkgbase = fcitx-mozc-neologd-ut
-	pkgver = 2.23.2815.102.20181126.1
+pkgbase = mozc-neologd-ut
+	pkgver = 2.23.2815.102.20190204.1
 	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = fcitx-mozc-neologd-ut
 	makedepends = glib2
 	makedepends = bzip2
 	makedepends = unzip
-	source = https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F23%2F23046%2Fmozc-neologd-ut-2.23.2815.102.20181126.1.tar.xz
+	source = https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F23%2F23743%2Fmozc-neologd-ut-2.23.2815.102.20190204.1.tar.xz
 	source = fix-for-gcc81.patch
 	source = http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
 	sha1sums = SKIP
@@ -42,7 +42,7 @@ pkgname = fcitx-mozc-neologd-ut
 	pkgdesc = Fcitx engine module for Mozc
 	arch = i686
 	arch = x86_64
-	depends = mozc-neologd-ut=2.23.2815.102.20181126.1
+	depends = mozc-neologd-ut=2.23.2815.102.20190204.1
 	depends = fcitx
 	replaces = fcitx-mozc
 	replaces = fcitx-mozc-ut2
