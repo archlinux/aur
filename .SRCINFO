@@ -1,14 +1,14 @@
 pkgbase = afnix
 	pkgdesc = Multi-threaded functional programming language
-	pkgver = 2.9.2
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = http://www.afnix.org
 	arch = x86_64
 	license = custom
 	depends = ncurses
 	depends = gcc-libs
-	source = http://www.afnix.org/ftp/afnix-src-2.9.2.tgz
-	sha256sums = c222bea3b2c9a69c9881b64df7390153432a146d74da3ff7f32c2b5aaaceb191
+	source = http://www.afnix.org/ftp/afnix-src-2.9.3.tgz
+	sha256sums = a511bd733203209fed4fcdee3b1e4c88208e55c898dd06fc53e2c7c16af09425
 
 pkgname = afnix
 

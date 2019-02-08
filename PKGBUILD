@@ -5,7 +5,7 @@
 # Contributor: Roberto Alsina <ralsina@kde.org>
 
 pkgname=afnix
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc='Multi-threaded functional programming language'
 arch=('x86_64')
@@ -13,7 +13,7 @@ url='http://www.afnix.org'
 license=('custom')
 depends=('ncurses' 'gcc-libs')
 source=("${url}/ftp/afnix-src-${pkgver}.tgz")
-sha256sums=('c222bea3b2c9a69c9881b64df7390153432a146d74da3ff7f32c2b5aaaceb191')
+sha256sums=('a511bd733203209fed4fcdee3b1e4c88208e55c898dd06fc53e2c7c16af09425')
 
 build() {
   cd "${pkgname}-src-${pkgver}"
