@@ -28,8 +28,7 @@ prepare() {
 
 build() {
   cd build
-  arch-meson "../${_plug}" \
-    --libdir /usr/lib/vapoursynth
+  arch-meson "../${_plug}"
 
   ninja
 }
