@@ -1,7 +1,7 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at live dot de>
 pkgname=superlu_dist
 pkgver=6.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of subroutines to solve a sparse linear system (MPI parallel version)"
 arch=('x86_64')
 url="http://crd-legacy.lbl.gov/~xiaoye/SuperLU/"
@@ -34,6 +34,7 @@ build() {
   	-DTPL_ENABLE_BLASLIB=OFF \
   	-DTPL_ENABLE_LAPACKLIB=ON \
   	-DBUILD_SHARED_LIBS=ON \
+	-DCMAKE_BUILD_TYPE=Release \
   	-DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_INCLUDEDIR=include/superlu_dist \
   	-DCMAKE_INSTALL_PREFIX=/usr
