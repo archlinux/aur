@@ -2,7 +2,7 @@
 # Contributor: oozyslug <oozyslug at gmail dot com>
 
 pkgname=neovim-plug
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=3
 pkgdesc="A Neovim plugin manager"
 arch=('any')
