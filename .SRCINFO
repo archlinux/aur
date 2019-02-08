@@ -1,5 +1,5 @@
 pkgbase = sample-pkgbuild-with-backspaces-calls-sudo
-	pkgdesc = Sample PKGBUILD containing backspaces calls sudo (also [5mblinks[0m)<b>test</b>
+	pkgdesc = Sample PKGBUILD containing backspaces calls sudo (also [5mblinks[0m)
 	pkgver = 1
 	pkgrel = 2
 	arch = any
