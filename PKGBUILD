@@ -3,7 +3,7 @@
 
 pkgname=signal-desktop-bin
 pkgver=1.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
 url='https://github.com/signalapp/Signal-Desktop'
@@ -27,4 +27,9 @@ package() {
   # install alias in /usr/bin
   mkdir "${pkgdir}/usr/bin"
   install -D -m755 signal-desktop "${pkgdir}/usr/bin/signal-desktop"
+
+  # second desktop entry for starting in tray only
+  sed -e 's,^\(Name=.*\),\1 (Start in Tray),' -e 's,^\(Exec=.*\)%U,\1--start-in-tray %U,' \
+      "${pkgdir}"/usr/share/applications/signal-desktop.desktop \
+      > "${pkgdir}"/usr/share/applications/signal-desktop-tray.desktop
 }
