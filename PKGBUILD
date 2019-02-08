@@ -31,7 +31,7 @@ build() {
   # should be fixed in the next stable release (if that ever does happen)
   CPPFLAGS+=' -D_GLIBCXX_USE_CXX11_ABI=0'
   cmake ../${pkgbase} -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_SYSTEM_NAME=Linux
-  ninja
+  ninja xmoto_pack
 }
 
 package() {
@@ -39,11 +39,11 @@ package() {
   DESTDIR="${pkgdir}" mandir=/usr/share/man/man6 ninja install
 
   # install desktop file
-  install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/extra/xmoto.desktop" \
+  install -Dm0644 "${srcdir}/${pkgbase}/extra/xmoto.desktop" \
         "${pkgdir}/usr/share/applications/xmoto.desktop"
 
   # install icon for desktop file
-  install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/extra/xmoto.xpm" \
+  install -Dm0644 "${srcdir}/${pkgbase}/extra/xmoto.xpm" \
         "${pkgdir}/usr/share/pixmaps/xmoto.xpm"
 }
 
