@@ -4,13 +4,14 @@
 pkgname=acme-dns-bin
 _pkgname=acme-dns
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Limited DNS server with RESTful HTTP API to handle ACME DNS challenges easily and securely"
 arch=('x86_64' 'i686')
 url="https://github.com/joohoi/acme-dns"
 license=('MIT')
 options=('!strip' '!emptydirs')
 install=acme-dns.install
+conflicts=('acme-dns')
 
 source=('acme-dns.custom.service' 'acme-dns.sysusers' 'acme-dns.tmpfiles')
 source_x86_64=("https://github.com/joohoi/acme-dns/releases/download/v$pkgver/acme-dns_${pkgver}_linux_amd64.tar.gz")

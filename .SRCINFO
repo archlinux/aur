@@ -1,12 +1,13 @@
 pkgbase = acme-dns-bin
 	pkgdesc = Limited DNS server with RESTful HTTP API to handle ACME DNS challenges easily and securely
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joohoi/acme-dns
 	install = acme-dns.install
 	arch = x86_64
 	arch = i686
 	license = MIT
+	conflicts = acme-dns
 	options = !strip
 	options = !emptydirs
 	source = acme-dns.custom.service
