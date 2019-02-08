@@ -3,24 +3,24 @@ pkgname=white_dune
 pkgver=0.99pl1314
 pkgrel=1
 epoch=
-pkgdesc="white_dune X3D/VRML97 tool"
-arch=('86_64')
-url="ftp://ftp.ourproject.org/pub/wdune/$pkgname-$pkgver.tar.bz2"
+pkgdesc="A graphical VRML97/X3D editor, simple NURBS/Superformula 3D modeller, animation tool, and VRML97/X3DV commandline compiler."
+arch=('any')
+url="http://wdune.ourproject.org/"
 license=('GPL')
 groups=()
 depends=()
 makedepends=(gcc
              fakeroot
-             glu 
-             mesa 
-             libx11 
-             libxt 
-             libxmu 
+             glu
+             mesa
+             libx11
+             libxt
+             libxmu
              libxext
              libxi
              libxp
              openmotif
-             libpng 
+             libpng
              libjpeg-turbo
              zlib
              expat
@@ -45,7 +45,7 @@ makedepends=(gcc
              boost
              curl
              freetype2
-             ttf-bitstream-vera             
+             ttf-bitstream-vera
 )
 checkdepends=()
 optdepends=()
@@ -56,19 +56,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("$url")
+source=("ftp://ftp.ourproject.org/pub/wdune/$pkgname-$pkgver.tar.bz2")
 noextract=()
 md5sums=('2df44a1e0d951ef475446e7a43adea2a')
 validpgpkeys=()
 
-prepare() {
-	cd "$pkgname-$pkgver"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
-
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --without-devil --with-uninstallcomment="pacman -R wdune" --with-optimization --with-helpurl="/usr/share/doc/$name/docs" --with-protobaseurl="/usr/share/doc/$name/docs" --with-checkincommand="ci" 
+	./configure --prefix=/usr --without-devil --with-uninstallcomment="pacman -R white_dune" --with-optimization --with-helpurl="/usr/share/doc/$pkgname/docs" --with-protobaseurl="/usr/share/doc/$pkgname/docs" --with-checkincommand="ci"
         make
 }
 
@@ -78,9 +73,9 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-        install -Dm755 bin/dune $pkgdir/usr/bin/dune 
-        mkdir -p "$pkgdir/usr/share/doc/$name/docs"
-        cp -r "docs" "$pkgdir/usr/share/doc/$name/docs"
+        install -Dm755 bin/dune $pkgdir/usr/bin/dune
+        mkdir -p "$pkgdir/usr/share/doc/$pkgname/docs"
+        cp -r "docs" "$pkgdir/usr/share/doc/$pkgname/docs"
         install -Dm644 desktop/kde/dune.desktop $pkgdir/usr/share/applications/dune.desktop
 	install -Dm644 desktop/kde/dune.png $pkgdir/usr/share/pixmaps/dune.png
 	install -Dm644 desktop/kde/dune4kids.desktop $pkgdir/usr/share/applications/dune4kids.desktop
