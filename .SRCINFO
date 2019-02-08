@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-obmin-git
+	pkgdesc = File Sharing Server
+	pkgver = 16.1.r35.g9c9d166
+	pkgrel = 1
+	url = https://github.com/konkor/obmin
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	depends = gjs
+	depends = psmisc
+	conflicts = gnome-shell-extension-obmin
+	source = git+https://github.com/konkor/obmin.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-obmin-git
+
