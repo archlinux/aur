@@ -1,6 +1,6 @@
 pkgbase = libzypp-git
 	pkgdesc = Package, Patch, Pattern, and Product Management
-	pkgver = 17.11.0.10.g9212b07a4
+	pkgver = 17.11.1.8.g9ae24e85e
 	pkgrel = 1
 	url = https://github.com/openSUSE/libzypp
 	arch = i686
