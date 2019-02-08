@@ -3,7 +3,7 @@
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts
-pkgver=2017.4.19f1
+pkgver=2017.4.20f1
 pkgrel=1
 epoch=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -32,12 +32,12 @@ optdepends=("${pkgname}-doc"
             "${pkgname}-windows"
             "${pkgname}-facebook"
             "visual-studio-code-bin")
-source=("2017.4.19f1.tar.xz::https://download.unity3d.com/download_unity/47cd37c28be8/LinuxEditorInstaller/Unity.tar.xz"
+source=("2017.4.20f1.tar.xz::https://download.unity3d.com/download_unity/20968fa45e51/LinuxEditorInstaller/Unity.tar.xz"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}-icon.png"
         "eula.txt")
-md5sums=("2495c35198f326d4a2fdf8fe15ae8ba1"
+md5sums=("158e973501ca27aa8453dacd05d5a3bd"
          '6e2f0e897fe71d99c649f397dce8c0f9'
          '7cf8762a5f84a408286365d23fa00e5e'
          '723f9e556821810682a6d1f4be540a74'
