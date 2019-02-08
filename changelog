@@ -1,3 +1,11 @@
+2019-02-08 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.0.0.5-1:
+    [!] ASF now comes with a plugin system, powerful enough to justify opening a new major ASF V4 version. Despite the version bump, there are no breaking changes compared to V3 and all V3 setups will update to V4 without issues.
+    ASF is now aware of Steam items rarity, therefore features like SteamTradeMatcher or MatchActively will now take them into account and find matches only across the same rarity. This affects MatchableTypes of Emoticon and ProfileBackground.
+    Added SaleItem, Consumable and ProfileModifier Steam item types, which can now be specified e.g. in LootableTypes. This also means that they're no longer Unknown, as per previous ASF releases.
+    Added support for certain normally-broken 2FA deviceIDs that were deemed as invalid in the previous release.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2019-01-08 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 3.4.2.2-1:
     Added warning for running excessive number of bot instances.
