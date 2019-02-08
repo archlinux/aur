@@ -1,0 +1,30 @@
+pkgbase = xmoto-git
+	pkgdesc = A challenging 2D motocross platform game, where physics play an important role.
+	pkgver = 0.5.11
+	pkgrel = 7
+	url = http://xmoto.tuxfamily.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = libjpeg
+	depends = libpng
+	depends = lua52
+	depends = sdl_mixer
+	depends = ode
+	depends = curl
+	depends = sqlite
+	depends = sdl_ttf
+	depends = sdl_net
+	depends = glu
+	depends = libxdg-basedir
+	depends = libxml2
+	provides = xmoto
+	conflicts = xmoto
+	source = xmoto-git::git://github.com/xmoto/xmoto.git
+	sha1sums = SKIP
+
+pkgname = xmoto-git
+
