@@ -1,0 +1,26 @@
+pkgbase = firefox-esr-bin-zh-cn
+	pkgdesc = Standalone web browser from mozilla.org - Extended Support Release
+	pkgver = 60.5.0
+	pkgrel = 1
+	url = http://www.mozilla.org/zh-CN/firefox/organizations/
+	install = firefox-esr.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = gtk2
+	depends = gtk3
+	depends = libxt
+	depends = dbus-glib
+	depends = nss
+	provides = firefox=60
+	source = https://ftp.mozilla.org/pub/firefox/releases/60.5.0esr/linux-x86_64/zh-CN/firefox-60.5.0esr.tar.bz2
+	source = firefox-esr.desktop
+	source = firefox-esr-safe.desktop
+	sha512sums = 2e0077e54138b74e205992003092243b3e4592f9fd0269e84119430054a662cbd9d4b82726857edae3f343ca6a3f21bdd29a8d206914b39308e86d2164b6e651
+	sha512sums = 2c2c70cb48202d47e7d3b376b8181e7398b23bb83f5da7724f6290709fe1ff3dca9d9c5666310982569beeeba39ec2d55a4372819f9914c79c6583de7eec06ba
+	sha512sums = 8942b11a7cb3761de1185491397185743adf49daa27a2806d14a328a2be8e2cb566c71dc6449016549cb3bd0d328cfe15944490be749a4add213194f6153c3d0
+
+pkgname = firefox-esr-bin-zh-cn
+
