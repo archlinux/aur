@@ -24,19 +24,19 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd build
-  arch-meson "../${_plug}" \
-    --libdir /usr/lib/vapoursynth
-
 }
 
 build() {
-  ninja -C build
+  cd build
+  CXXFLAGS+=' -fpeel-loops' arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
+
+  ninja
 }
 
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
+
   install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
 
