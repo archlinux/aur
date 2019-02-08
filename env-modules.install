@@ -1,20 +1,14 @@
 
 post_install() {
-    echo ""
-    echo "WARN: This installs the C-Version of modules as default, which is there for compatibilty reasons."
-    echo "      You might consider to install env-modules-tcl (TCL-Version only), if you don't need the C-Version."
-    echo "      Otherwise you can switch to the TCL Version by changing the symlink in /etc/profile.d/env-modules.{sh,csh}"
-    echo "      or by unsetting the enviroment variable:"
-    echo "      unset MODULES_USE_COMPAT_VERSION"
-    echo ""
-	echo "INFO: ZSH: For the use of module-cmd in a none-login Z-shell enviroment"
-	echo "      the following entry should be added to the zshrc "
-	echo "      (or zshenv if the module-cmd should be available in shell-scripts)"
-	echo ""
-	echo "        (( \${+functions[module]} )) || source /etc/modules/init/zsh"
-	echo ""
-	echo "      Adapt /etc/modules/init/modulerc and add your modulefiles to the specified directories."
-	echo ""
+    echo "    "
+	echo "    ZSH: For the use of module-cmd in a none-login Z-shell enviroment"
+	echo "    the following entry should be added to the zshrc "
+	echo "    (or zshenv if the module-cmd should be available in shell-scripts)"
+	echo "    "
+	echo "      (( \${+functions[module]} )) || source /etc/modules/init/zsh"
+	echo "    "
+	echo "    Adapt /etc/modules/init/modulerc and add your modulefiles to the specified directories."
+	echo "    "
 }
 
 post_upgrade() {
