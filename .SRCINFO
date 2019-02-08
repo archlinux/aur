@@ -1,0 +1,13 @@
+pkgbase = r-mass
+	pkgdesc = Support Functions and Datasets for Venables and Ripley's MAS
+	pkgver = 7.3.51.1
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/MASS/index.html
+	arch = x86_64
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/MASS_7.3-51.1.tar.gz
+	md5sums = 99021939fad36a57ecccd79c3abf4156
+
+pkgname = r-mass
+
