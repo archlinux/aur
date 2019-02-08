@@ -2,18 +2,22 @@
 
 _plug=f3kdb
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.0pre.r412.9f3042e
+pkgver=2.0pre.r414.9b896a6
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=161411'
 license=('GPL3')
 depends=('vapoursynth')
-makedepends=('git' 'python-sphinx')
+makedepends=('git'
+             'python-sphinx'
+             )
 provides=("vapoursynth-plugin-${_plug}")
-conflicts=("vapoursynth-plugin-${_plug}" 'vapoursynth-plugin-flash3kyuu_deband')
+conflicts=("vapoursynth-plugin-${_plug}"
+           'vapoursynth-plugin-flash3kyuu_deband'
+           )
 source=("${_plug}::git+https://github.com/SAPikachu/flash3kyuu_deband.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -23,6 +27,7 @@ pkgver() {
 
 prepare() {
   rm -fr "${_plug}/src/vapoursynth/"{VapourSynth,VSHelper}.h
+
   mkdir -p "${_plug}/docs/source/_static"
 }
 
@@ -34,6 +39,7 @@ build() {
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth \
     configure build
+
   sphinx-build docs/source html
 }
 
