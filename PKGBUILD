@@ -1,7 +1,7 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=keeweb
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
@@ -11,9 +11,9 @@ depends=('electron')
 makedepends=(
 	'asar'
 	'git'
-	'npm'
-	'nodejs>=8.15.0'
 	'libsass>=3.5.5'
+	'nodejs>=8.15.0'
+	'npm'
 )
 optdepends=('xdotool: for auto-type')
 conflicts=('keeweb-desktop')
@@ -49,6 +49,10 @@ prepare() {
 	sed -i \
 		-e '/Exec=/ c \Exec=keeweb %u' \
 	package/deb/usr/share/applications/keeweb.desktop
+
+	sed -i \
+		-e 's/: "[^@]*@github:/: "github:/' \
+	package-lock.json
 }
 
 build() {
