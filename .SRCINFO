@@ -1,6 +1,6 @@
 pkgbase = hyperledger-composer
 	pkgdesc = A framework for building Blockchain business networks
-	pkgver = 0.20.6
+	pkgver = 0.20.7
 	pkgrel = 1
 	url = https://github.com/hyperledger/composer
 	arch = i686
