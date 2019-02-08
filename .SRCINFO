@@ -1,14 +1,14 @@
 pkgbase = 389-admin
 	pkgdesc = 389 Administration Server HTTP agent
 	pkgver = 1.1.46
-	pkgrel = 3
+	pkgrel = 4
 	url = http://directory.fedoraproject.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = 389-adminutil
 	depends = mod_nss
-	source = http://directory.fedoraproject.org/sources/389-admin-1.1.46.tar.bz2
+	source = https://fedorapeople.org/groups/389ds/binaries/389-admin-1.1.46.tar.bz2
 	sha256sums = 6e1da6f8494bc6693cb50f77db448e3c3aa7cd96470f92ef95ed4b784e7b58fe
 
 pkgname = 389-admin

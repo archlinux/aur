@@ -4,13 +4,13 @@
 
 pkgname=389-admin
 pkgver=1.1.46
-pkgrel=3
+pkgrel=4
 pkgdesc="389 Administration Server HTTP agent"
 arch=('i686' 'x86_64')
 url="http://directory.fedoraproject.org/"
 license=('GPL')
 depends=('389-adminutil' 'mod_nss')
-source=("http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2")
+source=("https://fedorapeople.org/groups/389ds/binaries/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('6e1da6f8494bc6693cb50f77db448e3c3aa7cd96470f92ef95ed4b784e7b58fe')
 
 build() {
