@@ -6,7 +6,7 @@
 _gopkgname='github.com/mholt/caddy'
 
 pkgname=caddy
-pkgver=0.11.1
+pkgver=0.11.3
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ url='https://caddyserver.com'
 license=('Apache')
 backup=('etc/caddy/caddy.conf')
 install='caddy.install'
-makedepends=('go>=1.10.5')
+makedepends=('go>=1.11.5')
 source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg'
         'index.html'
@@ -22,7 +22,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'caddy.tmpfiles'
         'caddy.conf'
         'plugins.go')
-sha256sums=('e24ddb1690a265fb3c40efa5bc720964b85b9d2cad8d994ee4ed6271761984bf'
+sha256sums=('b99973614b85f55da309cdf79e5d6c9aae8ad1bd83c425b1f1fd17b21386eab6'
             'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
             '0466a41290db84402ca41cf32c0fc5b66b112a9d85b71d1619ae97b5a3dd2740'
@@ -85,16 +85,14 @@ plugins=(
 #    'http.cors'
 #    'http.datadog'
 #    'http.expires'
-#    'http.filemanager'
+#    'http.filebrowser'
 #    'http.filter'
 #    'http.forwardproxy'
 #    'http.geoip'
 #    'http.git'
 #    'http.gopkg'
 #    'http.grpc'
-#    'http.hugo'
 #    'http.ipfilter'
-#    'http.jekyll'
 #    'http.jwt'
 #    'http.locale'
 #    'http.login'
@@ -108,9 +106,11 @@ plugins=(
 #    'http.reauth'
 #    'http.restic'
 #    'http.s3browser'
+#    'http.supervisor'
 #    'http.upload'
 #    'http.webdav'
 #    'net'
+#    'supervisor'
 #    'tls.dns.auroradns'
 #    'tls.dns.azure'
 #    'tls.dns.cloudflare'

@@ -9,4 +9,7 @@
 *-prepare.log
 
 # packages
-*.pkg.tar.xz
+*.pkg.tar*
+
+pkg
+src
