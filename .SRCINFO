@@ -1,5 +1,5 @@
 pkgbase = jdk8-arm64
-	pkgdesc = Oracle Java 8 Development Kit for Raspberry 3
+	pkgdesc = Oracle Java 8 Development Kit for ARM64 (ex: Raspberry 3)
 	pkgver = 8u191
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
