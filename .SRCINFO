@@ -1,0 +1,17 @@
+pkgbase = aftermath-openmp-git
+	pkgdesc = Openmp tracing tool for Aftermath
+	pkgver = r366.3416578
+	pkgrel = 1
+	url = https://aftermath-tracing.com/
+	arch = x86_64
+	license = BSD
+	depends = aftermath
+	depends = papi
+	depends = llvm
+	depends = clang
+	provides = aftermath-openmp
+	source = aftermath-openmp-git::git://git.drebesium.org/aftermath-openmp.git#branch=staging
+	md5sums = SKIP
+
+pkgname = aftermath-openmp-git
+
