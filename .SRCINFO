@@ -1,7 +1,7 @@
 pkgbase = network-manager-applet-indicator
 	pkgdesc = Latest nm-applet with Appindicator/StatusNotifierItem support from Gnome GitLab
 	pkgver = 1.8.19+dev+17+g57ef36bf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/network-manager-applet-indicator/
 	arch = i686
 	arch = x86_64
@@ -20,15 +20,16 @@ pkgbase = network-manager-applet-indicator
 	depends = mobile-broadband-provider-info
 	depends = iso-codes
 	depends = libappindicator-gtk3
+	conflicts = nm-connection-editor
 	options = !emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/network-manager-applet.git/
 	sha256sums = SKIP
 
 pkgname = nm-connection-editor-indicator
 	pkgdesc = NetworkManager GUI connection editor and widgets, with AppIndicator
-	provides = libnm-gtk=1.8.19+dev+17+g57ef36bf-1
-	provides = libnma=1.8.19+dev+17+g57ef36bf-1
-	provides = nm-connection-editor=1.8.19+dev+17+g57ef36bf-1
+	provides = libnm-gtk=1.8.19+dev+17+g57ef36bf-2
+	provides = libnma=1.8.19+dev+17+g57ef36bf-2
+	provides = nm-connection-editor=1.8.19+dev+17+g57ef36bf-2
 	conflicts = libnm-gtk
 	replaces = libnm-gtk
 
@@ -38,6 +39,6 @@ pkgname = network-manager-applet-indicator
 	depends = libnotify
 	depends = libsecret
 	depends = libappindicator-gtk3
-	provides = network-manager-applet=1.8.19+dev+17+g57ef36bf-1
+	provides = network-manager-applet=1.8.19+dev+17+g57ef36bf-2
 	conflicts = network-manager-applet
 
