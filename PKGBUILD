@@ -2,14 +2,16 @@
 
 _plug=addgrain
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r6.1.g212d2d6
+pkgver=r7.0.g2fb3503
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=171073'
 license=('GPL')
 depends=('vapoursynth')
-makedepends=('git')
+makedepends=('git'
+             'meson'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-AddGrain.git")
@@ -21,23 +23,19 @@ pkgver() {
 }
 
 prepare() {
-  mkdir - build
-
-  cd "${_plug}"
-  ./autogen.sh
-
-  cd ../build
-  ../"${_plug}"/configure \
-     --prefix=/usr \
-     --libdir=/usr/lib/vapoursynth
-
+  mkdir -p build
 }
 
 build() {
-  make -C build
+  cd build
+  arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
+
+  ninja
 }
 
 package(){
-  make -C build DESTDIR="${pkgdir}" install
-  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  DESTDIR="${pkgdir}" ninja -C build install
+
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
