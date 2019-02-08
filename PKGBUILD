@@ -1,7 +1,7 @@
 # Maintainer: Harenome Ranaivoarivony-Razanajato <ranaivoarivony-razanajato@hareno.me>
 
 pkgname=aftermath-git
-pkgver=r624.17ed7ce
+pkgver=r625.6c0552e
 pkgrel=1
 pkgdesc="Afetermath: Trace-based performance analysis for OpenMP and OpenStream"
 arch=('x86_64')
@@ -10,19 +10,8 @@ license=('GPL2' 'LGPL2.1' 'FDL1.3')
 depends=("libglade")
 makedepends=("python2-numpy")
 provides=("aftermath")
-source=(
-    ${pkgname}::git://git.drebesium.org/aftermath.git#branch=staging
-    python2.patch
-)
-md5sums=(
-    'SKIP'
-    '2a77fafa1220f68da5e879a737677264'
-)
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  git apply "${srcdir}/python2.patch"
-}
+source=(${pkgname}::git://git.drebesium.org/aftermath.git#branch=staging)
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -40,6 +29,11 @@ build() {
   autoreconf -fi || autoreconf -fi
   ./configure --prefix=/usr
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}"
+  make check
 }
 
 package() {
