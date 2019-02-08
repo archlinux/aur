@@ -1,7 +1,7 @@
 _npmname=ionic
-_npmver=3.20.0
+_npmver=4.10.2
 pkgname=ionic-cli
-pkgver=3.20.0
+pkgver=4.10.2
 pkgrel=1
 pkgdesc="The Ionic command line interface (CLI) is your go-to tool for developing Ionic apps"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=(7281ecb186a9a90b330600c4d685cc391e0a186d8d3ab753e5c0777c566b7bd9)
+sha256sums=(f7e0134e0530a12b15a4a76bfe09952269f6c122d71574ba7fca4e56f3c13cfb)
 
 package() {
   cd "$srcdir"
