@@ -1,7 +1,7 @@
 pkgbase = freeplane-srcbuild
 	pkgdesc = A free mindmapping and knowledge management tool
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freeplane.sourceforge.net
 	arch = i686
 	arch = x86_64

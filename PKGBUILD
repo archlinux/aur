@@ -3,7 +3,7 @@
 pkgname=freeplane-srcbuild
 _pkgname=freeplane
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A free mindmapping and knowledge management tool"
 arch=('i686' 'x86_64')
 url="http://freeplane.sourceforge.net"
@@ -26,7 +26,7 @@ package() {
     cp -r "$srcdir/freeplane-${pkgver}/BIN" "$pkgdir/usr/share/$_pkgname"
 
     cd "$pkgdir/usr/share/$_pkgname"
-    rm *.exe *.bat
+    #rm *.exe *.bat
 
     mkdir -p "$pkgdir"/usr/bin
 
