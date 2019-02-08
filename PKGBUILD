@@ -1,7 +1,7 @@
 _npmname=nativescript
-_npmver=4.1.0
+_npmver=5.1.1
 pkgname=nativescript-cli # All lowercase
-pkgver=4.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="The NativeScript CLI lets you create, build, and deploy NativeScript-based projects on iOS and Android devices."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=(490d16aafc928c586e9b474070158792a4a2f51241460745844dc61cafd31f7b)
+sha256sums=(bfb16bd4a378209998de84d6f7018842bb7c72dea82e198c4a503a1b63570d22)
 
 package() {
   cd $srcdir
