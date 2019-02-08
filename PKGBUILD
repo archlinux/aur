@@ -2,25 +2,23 @@
 # Thanks to the maintainers and contributors of the mu binary package
 
 pkgname=mu-git
-pkgver=v0.9.16.95.g7585506
+pkgver=1.0.154.g156c4211
 pkgrel=1
-install=mu-git.install
 pkgdesc="mu and mu4e from git"
 arch=('i686' 'x86_64')
 url="http://www.djcbsoftware.nl/code/mu"
-depends=(xapian-core gmime sqlite3)
-makedepends=(git libtool)
-optdepends=('guile: guile support',
-            'emacs: mu4e support')
+depends=('xapian-core' 'guile' 'gmime3' 'json-glib' 'sqlite3')
+makedepends=('git')
+optdepends=('emacs: mu4e support')
 license=('GPL')
 provides=('mu')
 conflicts=('mu')
-
 source=('git+https://github.com/djcb/mu.git')
 md5sums=('SKIP')
+
 pkgver() {
   cd mu
-  printf "%s" "$(git describe --tags|sed 's+-+.+g')"
+  printf "%s" "$(git describe --tags|tr - .|cut -c2-)"
 }
 
 build() {
@@ -32,5 +30,5 @@ build() {
 
 package() {
   cd mu
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
