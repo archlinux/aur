@@ -2,7 +2,7 @@
 
 pkgname=python-halo
 _name=${pkgname#python-}
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 pkgdesc="Beautiful terminal spinners in Python"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-log_symbols' 'python-spinners' 'python-cursor' 'python-termcolor' 'python-six')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('35c42d33ee6a62e0d3bca5dc9a1bc1e1c22464190d8fca4f1205934c80836470')
+sha256sums=('3e5b9fa098cfe331bc324674b44b6b03af181ef9518c092e6405a4eda6f9d59d')
 
 prepare() {
 	cd "$_name-$pkgver"
