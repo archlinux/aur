@@ -1,0 +1,6 @@
+/*.log
+/*.tar
+/*.tar.*
+/deacme-git/
+/pkg/
+/src/

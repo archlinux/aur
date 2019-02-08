@@ -1,0 +1,18 @@
+pkgbase = deacme-git
+	pkgdesc = Fork of acme-client using libcurl and openssl
+	pkgver = r195.754892b
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/deacme
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = curl
+	provides = deacme
+	conflicts = deacme
+	source = deacme-git::git+https://git.sr.ht/~sircmpwn/deacme
+	sha512sums = SKIP
+
+pkgname = deacme-git
+
