@@ -3,29 +3,29 @@
 
 pkgname=amdgpu-fan
 pkgdesc="Python daemon for controlling the fans on amdgpu cards"
-pkgver=0.0.1.r0.g0eeaa8e
+pkgver=0.0.2
 pkgrel=1
 arch=('any')
 license=('GPL2')
 depends=('python' 'python-yaml' 'python-matplotlib' 'python-numpy' 'python-scipy')
 makedepends=('python-setuptools')
 url="https://github.com/chestm007/amdgpu-fan"
-source=("git+https://github.com/chestm007/amdgpu-fan/")
+source=("git+https://github.com/chestm007/amdgpu-fan/#tag=$pkgver")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/amdgpu-fan"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$pkgname"
+  git describe --long --tags | cut -n '-' -f 1
 }
 
 build() {
-  cd "$srcdir/amdgpu-fan"
+  cd "$srcdir/$pkgname"
   sed -i "s/PROJECTVERSION/$pkgver/g" setup.py
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/amdgpu-fan"
+  cd "$srcdir/$pkgname"
   sed -i "s/PROJECTVERSION/$pkgver/g" setup.py
   python setup.py install --prefix=/usr --root="$pkgdir"
   mkdir -p "$pkgdir/usr/lib/systemd/system"
