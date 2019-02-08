@@ -1,7 +1,7 @@
 # Maintainer: Gabriele Russo Russo <gabri.russo17@gmail.com>
 
 pkgname=todoist
-pkgver=0.10.1
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Todoist CLI Client, written in Golang."
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ makedepends=('go' 'git' 'dep')
 optdepends=('peco: for zsh functions script')
 options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sachaos/todoist/archive/v$pkgver.tar.gz")
-md5sums=('a072a9325bd9ba4772ec3f9c52bff268')
+md5sums=('SKIP')
 
 prepare() {
  mkdir -p "$srcdir/go/src/github.com/sachaos"
@@ -21,6 +21,7 @@ prepare() {
 build() {
  export GOPATH="$srcdir/go"
  export PATH="$PATH:$srcdir/go/bin/"
+ export GO111MODULE="on"
  cd "$srcdir/go/src/github.com/sachaos/$pkgname"
  make install
 }
@@ -32,4 +33,3 @@ package() {
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   install -m 0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
-# vim:set ts=2 sw=2 et:
