@@ -9,7 +9,7 @@ url="http://wdune.ourproject.org/"
 license=('GPL')
 groups=()
 depends=()
-makedepends=(gcc
+makedepends=(
              fakeroot
              glu
              mesa
@@ -24,7 +24,6 @@ makedepends=(gcc
              libjpeg-turbo
              zlib
              expat
-             gcc
              flex
              bison
              gawk
