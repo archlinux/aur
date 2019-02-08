@@ -1,6 +1,6 @@
-diff -aur --no-dereference radium-5.9.9.pristine/bin/packages/faust2/compiler/Makefile.unix radium-5.9.9.new/bin/packages/faust2/compiler/Makefile.unix
---- radium-5.9.9.pristine/bin/packages/faust2/compiler/Makefile.unix	2018-10-24 19:47:31.000000000 +0100
-+++ radium-5.9.9.new/bin/packages/faust2/compiler/Makefile.unix	2018-10-24 21:01:11.425278974 +0100
+diff -aur --no-dereference radium-5.9.34.pristine/bin/packages/faust2/compiler/Makefile.unix radium-5.9.34.new/bin/packages/faust2/compiler/Makefile.unix
+--- radium-5.9.34.pristine/bin/packages/faust2/compiler/Makefile.unix	2019-02-07 17:21:55.000000000 +0000
++++ radium-5.9.34.new/bin/packages/faust2/compiler/Makefile.unix	2019-02-08 00:38:30.883774254 +0000
 @@ -26,7 +26,7 @@
  # link a suitable llvm-config to a location somewhere on your PATH, or just
  # set LLVM_CONFIG manually.
@@ -28,10 +28,10 @@ diff -aur --no-dereference radium-5.9.9.pristine/bin/packages/faust2/compiler/Ma
  endif
  
  ifeq ($(system), Darwin)
-diff -aur --no-dereference radium-5.9.9.pristine/build_linux_common.sh radium-5.9.9.new/build_linux_common.sh
---- radium-5.9.9.pristine/build_linux_common.sh	2018-10-24 19:47:31.000000000 +0100
-+++ radium-5.9.9.new/build_linux_common.sh	2018-10-24 21:10:37.075259725 +0100
-@@ -106,19 +106,13 @@
+diff -aur --no-dereference radium-5.9.34.pristine/build_linux_common.sh radium-5.9.34.new/build_linux_common.sh
+--- radium-5.9.34.pristine/build_linux_common.sh	2019-02-07 17:21:55.000000000 +0000
++++ radium-5.9.34.new/build_linux_common.sh	2019-02-08 00:42:18.613767374 +0000
+@@ -107,19 +107,13 @@
  PYTHONLIBPATH=`$PYTHONEXE -c "import sys;print '-L'+sys.prefix+'/lib'"`
  PYTHONLIBNAME=`$PYTHONEXE -c "import sys;print '-lpython'+sys.version[:3]"`
  
@@ -46,7 +46,7 @@ diff -aur --no-dereference radium-5.9.9.pristine/build_linux_common.sh radium-5.
 +LLVM_OPTS=`llvm-config-4.0 --cppflags`
 +LLVMLIBS=`llvm-config-4.0 --link-static --libfiles`
  
- export QSCINTILLA_PATH=`pwd`/bin/packages/QScintilla_gpl-2.10.1
+ export QSCINTILLA_PATH=`pwd`/bin/packages/QScintilla_gpl-2.10.8
  
  if env |grep INCLUDE_FAUSTDEV ; then
 -    FAUSTLDFLAGS="$QSCINTILLA_PATH/Qt4Qt5/libqscintilla2_qt5.a bin/packages/faust2/compiler/libfaust.a `$PKG --libs uuid` `llvm-config --ldflags` $LLVMLIBS -lcrypto -lncurses"
