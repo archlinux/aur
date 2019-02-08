@@ -1,6 +1,6 @@
 pkgbase = ruby-sinatra
 	pkgdesc = Classy web-development dressed in a DSL
-	pkgver = 2.0.3
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = http://www.sinatrarb.com/
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = ruby-sinatra
 	depends = ruby-tilt
 	depends = ruby-rack-protection
 	depends = ruby-mustermann
-	noextract = sinatra-2.0.3.gem
+	noextract = sinatra-2.0.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/sinatra-2.0.3.gem
-	sha1sums = 16b7117ee191df07cde46ad9600030aab4afb655
+	source = https://rubygems.org/downloads/sinatra-2.0.5.gem
+	sha1sums = c16fd081f46c4a600933821bb2d5e15424b9d0df
 
 pkgname = ruby-sinatra
 
