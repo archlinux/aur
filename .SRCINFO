@@ -1,0 +1,13 @@
+pkgbase = gendev
+	pkgdesc = Genesis development environment for Linux
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/kubilus1/gendev
+	arch = any
+	license = BSD
+	depends = texinfo
+	source = https://github.com/kubilus1/gendev/releases/download/0.3.2/gendev_0.3.2.txz
+	md5sums = bee00fcef94169a82cba3c6b6c415777
+
+pkgname = gendev
+
