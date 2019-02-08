@@ -1,25 +1,31 @@
-# Maintainer: Chris Oelmueller <chris.oelmueller@gmail.com>
+# Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
+# Contributor: Chris Oelmueller <chris.oelmueller@gmail.com>
 # Contributor: Thomas Kinnen <thomas.kinnen@gmail.com>
 # Contributor: Biginoz <biginoz _at_ free point fr>
 # Contributor: andy123 < ajs AT online DOT de >
 # Contributor: Deather <deather.jeuxlinux@gmail.com>
 # Contributor: Ronan Rabouin <darkbaboon@gmail.com>
+
 pkgname=unknown-horizons
-pkgver=2017.2
+pkgver=2019.1
 pkgrel=1
 pkgdesc="2D realtime strategy simulation with an emphasis on economy and city building."
 arch=('i686' 'x86_64')
 url="http://www.unknown-horizons.org/"
 license=('GPL' 'CCPL')
-depends=('fife>=0.4.1' 'python2' 'python2-pillow' 'python2-yaml')
+changelog=.CHANGELOG
+depends=('fife' 'python-pillow' 'python-yaml' 'python-future')
 makedepends=('intltool')
-conflicts=('unknown-horizons-svn' 'unknown-horizons-git')
-source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('a99c8858f6cce0b560b97ce74518d007')
-sha256sums=('4d2d3d1d82b9c5bbe4d49a3ee82eff70b8fec6429eb295e86cd6a381345ad7bb')
+conflicts=('unknown-horizons-git')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('87ae37442ee0b80130c7a75c7eeb7c0ef6c50f3e6b2616db32e6381ace5068729ab7086edefc00eefd3b89e85f9a05fb6c4d05f2a2adc46fa928e5c2a29b72db')
 
-package() {
-    cd "$srcdir/$pkgname"
-    python2 setup.py --quiet install --root="$pkgdir" --optimize=1
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python setup.py build --quiet
 }
 
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build --quiet
+}
