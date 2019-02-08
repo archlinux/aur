@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.1.0
+Type=Application
+Name=Zenkit
+#Icon=
+Exec="/opt/zenkit/zenkit" "$@"
+Comment=A platform for collaboration and project management
+Categories=Development;
+Terminal=false

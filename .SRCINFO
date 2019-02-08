@@ -1,0 +1,16 @@
+pkgbase = zenkit
+	pkgdesc = A platform for collaboration and project management
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://zenkit.com
+	arch = x86_64
+	license = Commercial
+	provides = zenkit
+	options = !strip
+	source = https://static.zenkit.com/downloads/zenkit-linux.tar.gz
+	source = zenkit.desktop
+	sha256sums = 539f6237418491ca70954bbea3b2bb272c11c69f1c2fcead2b51e7520e52b85c
+	sha256sums = fcb457439946044f52d03ffe2b8b2cc214f836fb8a53beb0d92c58596517960f
+
+pkgname = zenkit
+
