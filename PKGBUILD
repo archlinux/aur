@@ -27,9 +27,6 @@ prepare() {
 
 build() {
   cd build
-  # Build using the old C++ ABI to fix issue with missing text; the issue
-  # should be fixed in the next stable release (if that ever does happen)
-  CPPFLAGS+=' -D_GLIBCXX_USE_CXX11_ABI=0'
   cmake ../${pkgbase} -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_SYSTEM_NAME=Linux
   ninja xmoto_pack
 }
