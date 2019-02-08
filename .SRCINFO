@@ -1,0 +1,14 @@
+pkgbase = muparserx
+	pkgdesc = A fast math parser library with support for arrays, matrices and complex numbers
+	pkgver = 4.0.8
+	pkgrel = 1
+	url = https://github.com/beltoforion/muparserx
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = gcc-libs
+	source = https://github.com/beltoforion/muparserx/archive/v4.0.8.tar.gz
+	sha512sums = 24ef5e3afedda4a5535fe3fc03ec880493b8d5ecf399de604938401519b20b2dfcbd721d0282bc6bb7c99f9a1dab8b14caf424f28d18db8bd073d97c354ec220
+
+pkgname = muparserx
+
