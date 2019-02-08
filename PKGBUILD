@@ -36,14 +36,11 @@ build() {
 
 package() {
   cd build
-  DESTDIR="${pkgdir}" mandir=/usr/share/man/man6 ninja install
+  DESTDIR="${pkgdir}" ninja install
 
-  # install desktop file
-  install -Dm0644 "${srcdir}/${pkgbase}/extra/xmoto.desktop" \
-        "${pkgdir}/usr/share/applications/xmoto.desktop"
-
-  # install icon for desktop file
-  install -Dm0644 "${srcdir}/${pkgbase}/extra/xmoto.xpm" \
-        "${pkgdir}/usr/share/pixmaps/xmoto.xpm"
+  # install man page
+  mandir=/usr/share/man/man6
+  mkdir -p  ${pkgdir}/${mandir}
+  gzip -c "${srcdir}/${pkgbase}/xmoto.6" > "${pkgdir}/${mandir}/xmoto.6.gz"
 }
 
