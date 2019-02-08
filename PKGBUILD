@@ -1,22 +1,19 @@
-# Maintainer: Alex Branham <alex.branham@gmail.com>
-_cranver=0.6.18
+# Contributor: Grey Christoforo <first name at last name dot net>
 pkgname=r-digest
-pkgver=${_cranver//[:-]/.}
+_cran_name=digest
+pkgver=0.6.18
 pkgrel=1
-pkgdesc='Create Compact Hash Digests of R Objects'
+pkgdesc="Create Compact Hash Digests of R Objects"
 arch=('x86_64')
-url='https://cran.r-project.org/package=digest'
-license=('GPL')
-depends=('r' )
-optdepends=('r-knitr' 'r-rmarkdown')
-source=("https://cran.r-project.org/src/contrib/digest_"$_cranver".tar.gz")
+url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
+license=('GPL3')
+depends=('r')
+source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
 md5sums=('bc8081563e49bf85d1b720b21b938af1')
 
-build(){
-    R CMD INSTALL digest_"$_cranver".tar.gz -l "$srcdir"
-}
 package() {
-    install -dm0755 "$pkgdir"/usr/lib/R/library
-    cp -a --no-preserve=ownership digest "$pkgdir"/usr/lib/R/library
-}
+ mkdir -p $pkgdir/usr/lib/R/library
+ cd $srcdir
 
+ R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
+}
