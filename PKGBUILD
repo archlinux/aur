@@ -5,7 +5,7 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r4.1.gefcba5f
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI3'
 license=('GPL2')
 depends=('vapoursynth'
@@ -16,7 +16,9 @@ makedepends=('git'
              'boost'
              'meson'
              )
-provides=("vapoursynth-plugin-${_plug}")
+provides=("vapoursynth-plugin-${_plug}"
+          'vapoursynth-plugin-eedi3'
+          )
 conflicts=("vapoursynth-plugin-${_plug}"
            'vapoursynth-plugin-eedi3-ocl'
            )
