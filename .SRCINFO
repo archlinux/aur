@@ -1,7 +1,7 @@
 pkgbase = f-engrave
 	pkgdesc = Supports Engraving and V-Carving
 	pkgver = 1.66
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.scorchworks.com/Fengrave/fengrave.html
 	arch = x86_64
 	license = GPLv3
@@ -10,7 +10,7 @@ pkgbase = f-engrave
 	source = http://www.scorchworks.com/Fengrave/F-Engrave-1.66_src.zip
 	source = arch.patch
 	md5sums = 63dbde2b6472d66a847438481208457e
-	md5sums = f1844c9323b52b92f8e12f922ff50965
+	md5sums = 0024e18a0fd00d5fd455b783264e6923
 
 pkgname = f-engrave
 
