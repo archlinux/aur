@@ -2,7 +2,7 @@
 
 pkgname=flamethrower-git
 _pkgname=${pkgname%-git}
-pkgver=0
+pkgver=0.9.r5.20dabbc
 pkgrel=1
 pkgdesc="DNS performance and functional testing utility"
 arch=('i686' 'x86_64')
@@ -12,6 +12,11 @@ depends=('ldns' 'libuv')
 makedepends=('cmake')
 source=("git+https://github.com/DNS-OARC/flamethrower.git")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+}
 
 build() {
     cd "${srcdir}/${_pkgname}"
