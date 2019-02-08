@@ -1,7 +1,7 @@
 # Maintainer: Nathan Monfils <nathan.monfils@hotmail.fr>
 
 pkgname=fortune-mod-doctorwho-new-series
-pkgver=11.0
+pkgver=11.1
 pkgrel=1
 pkgdesc="Doctor who new series (2005-present) fortune cookie file"
 url="https://tvtropes.org/pmwiki/pmwiki.php/Quotes/DoctorWhoNewSeriesDoctors"
@@ -10,7 +10,7 @@ license=('unknown')
 depends=('fortune-mod')
 groups=('fortune-mods')
 source=(doctorwho-new-series)
-md5sums=('5cc052eeca8fb6654bc2634cc2b4c9cb')
+md5sums=('499e9f7e6d6b5f2cb8bec79cf2996f8c')
 
 build() {
   cd "$srcdir"
