@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=resvg
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='SVG rendering library and CLI'
 arch=(i686 x86_64)
 url="https://github.com/RazrFalcon/$pkgname"
@@ -9,9 +9,9 @@ license=(MPL2)
 optdepends=(
 	'qt5-base: For the Qt backend'
 	'cairo: For the cairo backend'
-	'kio: For the dolphin thumbnailer'
+	'dolphin: For the dolphin thumbnailer'
 )
-makedepends=(cargo qt5-base cairo pango cmake extra-cmake-modules)
+makedepends=(cargo qt5-base qt5-tools kio cairo pango cmake extra-cmake-modules)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('f9d0dc31de9b6f516c0c5350f22142ab8af6a2d957a729494bb403cff32ba611')
 
@@ -41,8 +41,8 @@ build() {
 		cd build
 		cmake .. \
 			-DCMAKE_CXX_FLAGS="-L../../../target/release" \
-			-DCMAKE_INSTALL_PREFIX="$pkgdir/$(kf5-config --prefix)" \
-			-DQT_PLUGIN_INSTALL_DIR="$pkgdir/$(kf5-config --qt-plugins)" \
+			-DCMAKE_INSTALL_PREFIX="$pkgdir/$(qtpaths --install-prefix)" \
+			-DQT_PLUGIN_INSTALL_DIR="$pkgdir/$(qtpaths --plugin-dir)" \
 			-DCMAKE_BUILD_TYPE=Release
 		make
 	)
