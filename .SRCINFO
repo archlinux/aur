@@ -1,49 +1,17 @@
 pkgbase = ls_extended
 	pkgdesc = ls with coloring and icons
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Electrux/ls_extended
 	arch = x86_64
 	license = BSD
 	makedepends = ccp4m
 	depends = glibc
 	depends = ttf-nerd-fonts-symbols
+	optdepends = nerd-fonts-complete: for icon support
 	provides = ls
-	source = https://github.com/Electrux/ls_extended/archive/master.tar.gz
-	md5sums = SKIP
-
-pkgname = ls_extended
-
-pkgbase = ls_extended
-	pkgdesc = ls with coloring and icons
-	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/Electrux/ls_extended
-	arch = x86_64
-	license = BSD
-	makedepends = ccp4m
-	depends = glibc
-	depends = ttf-nerd-fonts-symbols
-	provides = ls
-	source = https://github.com/Electrux/ls_extended/archive/master.tar.gz
-	md5sums = SKIP
-
-pkgname = ls_extended
-
-
-pkgbase = ls_extended
-	pkgdesc = ls with coloring and icons
-	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/Electrux/ls_extended
-	arch = x86_64
-	license = BSD
-	makedepends = ccp4m
-	depends = glibc
-	depends = ttf-nerd-fonts-symbols
-	provides = ls
-	source = https://github.com/Electrux/ls_extended/archive/master.tar.gz
-	md5sums = SKIP
+	source = ls_extended-1.0.0.tar.gz::https://github.com/Electrux/ls_extended/archive/v1.0.0.tar.gz
+	md5sums = ccb89d346d86bcd6cce8434ee1ff5a10
 
 pkgname = ls_extended
 

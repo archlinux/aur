@@ -1,8 +1,7 @@
 # Maintainer: Michael Orishich <mishaor2005@ukr.net>
 pkgname=ls_extended
 pkgver=1.0.0
-pkgrel=2
-epoch=
+pkgrel=3
 pkgdesc='ls with coloring and icons'
 arch=('x86_64')
 url="https://github.com/Electrux/ls_extended"
@@ -12,23 +11,17 @@ makedepends=('ccp4m')
 optdepends=('nerd-fonts-complete: for icon support')
 depends=('glibc' 'ttf-nerd-fonts-symbols')
 provides=('ls')
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/Electrux/$pkgname/archive/master.tar.gz")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Electrux/$pkgname/archive/v$pkgver.tar.gz")
+md5sums=('ccb89d346d86bcd6cce8434ee1ff5a10')
 
 build() {
-    cd "$pkgname-master"
+    cd "$pkgname-$pkgver"
     ccp4m project build
     ccp4m project test
 }
 
 package() {
-    cd "$pkgname-master"
-    install -Dm644 LICENSE $pkgdir/usr/share/licenses/ls_extended/license.txt
-    install -D bin/ls_extended $pkgdir/usr/bin/ls_extended
+    cd "$pkgname-$pkgver"
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/ls_extended/license.txt
+    install -D bin/ls_extended "$pkgdir"/usr/bin/ls_extended
 }
