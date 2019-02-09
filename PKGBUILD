@@ -480,7 +480,7 @@ package() {
 
   # attempt to fix Qt 5.12.1's insane complete qualification of linked libraries
   # this still results in other sources of the complete path
-  find ${_installed_dir}/${pkgname}/mkspecs -type f | xargs sed -i "s,${_sysroot}[^ ]*lib\(.*\).so,-l\1,g"
+  find ${_installed_dir}/${pkgname} -type f -regex '.*\(prl\|pc\|pri\)' | xargs sed -i "s,/mnt/pi4/[^ ]*lib\(.[^ ]*\)\.so,-l\1,g"
   # this breaks stuff as gcc does not look inside of sysroots for supposedly qualified paths
   #find ${_installed_dir}/${pkgname}/mkspecs/modules -type f | xargs sed -i "s,${_sysroot}\([^ ]*\.so\),\1,g"
 
