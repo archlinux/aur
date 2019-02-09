@@ -9,8 +9,16 @@ url="http://wdune.ourproject.org/"
 license=('GPL')
 groups=()
 depends=()
-makedepends=(
+makedepends=( 
+# the following are part of base-devel
              fakeroot
+             gcc
+             flex
+             bison
+             gawk
+             m4
+             make
+# end part of base-devel
              glu
              mesa
              libx11
@@ -24,11 +32,6 @@ makedepends=(
              libjpeg-turbo
              zlib
              expat
-             flex
-             bison
-             gawk
-             m4
-             make
              rcs
              firefox
              lxterminal
