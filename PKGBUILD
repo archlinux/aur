@@ -10,7 +10,7 @@
 
 _pkgname=awesome
 pkgname=${_pkgname}-git
-pkgver=4.0.225.gd6412b96
+pkgver=4.3.21.ga5e8cde3
 pkgrel=1
 pkgdesc='Highly configurable framework window manager'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ url='http://awesome.naquadah.org/'
 license=('GPL2')
 depends=('cairo' 'dbus' 'gdk-pixbuf2' 'libxdg-basedir' 'libxkbcommon-x11'
          'lua' 'lua-lgi' 'pango' 'startup-notification' 'xcb-util-cursor'
-         'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util-xrm')
+         'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util-xrm' 'libxfixes')
 makedepends=('asciidoc' 'cmake' 'docbook-xsl' 'git' 'imagemagick' 'ldoc'
              'xmlto')
 optdepends=('rlwrap: readline support for awesome-client'
