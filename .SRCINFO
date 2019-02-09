@@ -1,0 +1,17 @@
+pkgbase = n30f-git
+	pkgdesc = a quick hack to display a png in a borderless and transparent non-wm-managed window
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/sdhand/n30f
+	arch = x86_64
+	license = custom:BSD-3-Clause
+	makedepends = gcc
+	makedepends = git
+	depends = cairo
+	provides = n30f
+	conflicts = n30f
+	source = n30f-git::git+https://github.com/sdhand/n30f.git
+	md5sums = SKIP
+
+pkgname = n30f-git
+
