@@ -1,7 +1,7 @@
 pkgbase = wpewebkit
 	pkgdesc = Web content engine library optimized for embedded devices
-	pkgver = 2.22.3
-	pkgrel = 2
+	pkgver = 2.22.4
+	pkgrel = 1
 	url = https://wpewebkit.org
 	arch = x86_64
 	arch = i686
@@ -21,8 +21,11 @@ pkgbase = wpewebkit
 	depends = harfbuzz-icu
 	depends = woff2
 	depends = libwpe>=1.0.0
-	source = https://wpewebkit.org/releases/wpewebkit-2.22.3.tar.xz
-	sha512sums = 00bedcbcd5aee947e5a415d0acc45ca0e066fd5c0f58ddac5cdba114a7284159f27b67025139f4a5df147e6bedc7ad2ac42b60c63c4ff25de156b02cf8d863ea
+	source = https://wpewebkit.org/releases/wpewebkit-2.22.4.tar.xz
+	md5sums = 6e5c668473c57906bdec1c641bac4579
+	sha1sums = 002b8b25f4fc26bfef68767b3ff1eba1aac53fa5
+	sha256sums = 871e86b7e989de0c1224ac7ab8ed6d8b52756cf793a8c253b56ab8ba8d288c96
+	sha512sums = be6d60661cee393d35a21323ecd5b204dfdd140aa3b2ec6f119a1effd1032701b81c0f20968e7c5c58e3f988cffe16084c52c55e0cde5757128a91b7a44b5bca
 
 pkgname = wpewebkit
 
