@@ -1,0 +1,12 @@
+[Unit]
+Description=Cisco AnyConnect vpnagentd
+After=network.target
+
+[Service]
+Type=forking
+ExecStartPre=/sbin/modprobe tun
+ExecStart=/opt/cisco/anyconnect/bin/vpnagentd
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

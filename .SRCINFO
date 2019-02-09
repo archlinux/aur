@@ -1,0 +1,16 @@
+pkgbase = anyconnect-client
+	pkgdesc = Cisco AnyConnect Secure Mobility Client
+	pkgver = 4.5.04029
+	pkgrel = 1
+	url = https://www.cisco.com/c/en_au/products/security/anyconnect-secure-mobility-client/index.html
+	install = anyconnect-client.install
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = file://anyconnect-linux64-4.5.04029-core-vpn-webdeploy-k9.sh
+	source = vpnagentd.service
+	sha256sums = SKIP
+	sha256sums = 39ea96d1c23ff45619f65e7e0d5bf0e375556ae22fc463f607d58bbb44a22636
+
+pkgname = anyconnect-client
+
