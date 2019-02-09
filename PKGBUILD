@@ -28,10 +28,13 @@ prepare() {
 }
 
 package() {
-    find            ${srcdir}/squashfs-root/app/ -type d -exec chmod 755 {} +
+    find            ${srcdir}/squashfs-root/locales/ -type d -exec chmod 755 {} +
+    find            ${srcdir}/squashfs-root/resources/ -type d -exec chmod 755 {} +
     install -d      ${pkgdir}/opt/beaker-browser
-    cp -r           ${srcdir}/squashfs-root/app/*                       ${pkgdir}/opt/beaker-browser
- 
+    cp -r           ${srcdir}/squashfs-root/*                           ${pkgdir}/opt/beaker-browser
+    rm -r           ${pkgdir}/opt/beaker-browser/usr/
+    rm -r           ${pkgdir}/opt/beaker-browser/swiftshader/
+
     find            ${srcdir}/squashfs-root/usr/share/icons/ -type d -exec chmod 755 {} +
     install -d      ${pkgdir}/usr/share/icons
     cp -r           ${srcdir}/squashfs-root/usr/share/icons/hicolor     ${pkgdir}/usr/share/icons/hicolor              
