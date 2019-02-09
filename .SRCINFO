@@ -2,14 +2,12 @@ pkgbase = r-munsell
 	pkgdesc = Utilities for Using Munsell Colours
 	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://cran.r-project.org/package=munsell
-	arch = any
-	license = MIT
+	url = http://cran.r-project.org/web/packages/munsell/index.html
+	arch = x86_64
+	license = GPL3
 	depends = r
 	depends = r-colorspace
-	optdepends = r-ggplot2
-	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/munsell_0.5.0.tar.gz
+	source = http://cran.r-project.org/src/contrib/munsell_0.5.0.tar.gz
 	md5sums = b287f380a958399cfa12f665232e7f34
 
 pkgname = r-munsell
