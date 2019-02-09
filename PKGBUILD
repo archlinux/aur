@@ -3,12 +3,12 @@
 pkgname=plasma5-applets-system-panel
 pkgver=1.4.0
 pkgdesc="Plasma5 applet that displays a panel with a set of system actions"
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="http://kde-apps.org/content/show.php?content=175309"
 license=(GPL3)
 groups=('kde' 'plasmoid')
-makedepends=(cmake extra-cmake-modules git)
+makedepends=(cmake extra-cmake-modules kdelibs git)
 depends=(plasma-workspace)
 options=()
 source=("git+https://github.com/Musikolo/${pkgname}.git")
