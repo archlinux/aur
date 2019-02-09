@@ -1,17 +1,17 @@
 # Maintainer: Anurag <anuragsingh3@outlook.com>
 _name=n30f
-pkgname=n30f-git
+pkgname=${_name}-git
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a quick hack to display a png in a borderless and transparent non-wm-managed window'
 arch=('x86_64')
 url="https://github.com/sdhand/n30f"
-depends=('cairo')
-makedepends=('gcc' 'git')
+depends=('cairo' 'libxcb')
+makedepends=('gcc')
 license=('custom:BSD-3-Clause')
-provides=("n30f")
+provides=('n30f')
 conflicts=('n30f')
-source=("${pkgname}::git+https://github.com/sdhand/n30f.git")
+source=("${pkgname}::git+${url}.git")
 md5sums=("SKIP")
 
 build() {
