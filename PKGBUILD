@@ -1,20 +1,19 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
-
-_cranname=viridisLite
-_cranver=0.3.0
-pkgname="r-viridislite"
-pkgver="${_cranver}"
-pkgrel=2
+# Contributor: Grey Christoforo <first name at last name dot net>
+pkgname=r-viridislite
+_cran_name=viridisLite
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Default Color Maps from 'matplotlib' (Lite Version)"
-url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
-arch=('i686' 'x86_64')
-license=('MIT')
+arch=('x86_64')
+url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
+license=('GPL3')
 depends=('r')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('780ea12e7c4024d5ba9029f3a107321c74b8d6d9165262f6e64b79e00aa0c2af')
+source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
+md5sums=('3a3fbfd0267589d9b5c12fd9d2eebfc2')
 
 package() {
-    mkdir -p "${pkgdir}/usr/lib/R/library"
-    cd "${srcdir}"
-    R CMD INSTALL "${_cranname}" -l "${pkgdir}/usr/lib/R/library"
+ mkdir -p $pkgdir/usr/lib/R/library
+ cd $srcdir
+
+ R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
 }
