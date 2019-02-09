@@ -1,0 +1,16 @@
+pkgbase = flacco
+	pkgdesc = Simple command line tool to convert, tag and name .wav files from cdparanoia
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/krateng/flacco
+	arch = x86_64
+	license = GPL3
+	depends = flac
+	depends = python
+	optdepends = ffmpeg: use wav files as input instead of converting first
+	optdepends = cdparanoia: use of flacco makes no sense without it
+	source = https://raw.githubusercontent.com/krateng/flacco/master/flacco
+	sha256sums = 15131130ffc2f5a60a194a661f1dc38a8fcdfb7ebf898bb224670fc6a516f8ff
+
+pkgname = flacco
+
