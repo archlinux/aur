@@ -7,12 +7,12 @@
 
 pkgname=namecoin-core-wallet
 pkgver=v0.17.0
-pkgrel=1
+pkgrel=2
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1542235176
+epoch=1549719637
 
 
 # Release commit for 0.17.0
@@ -34,25 +34,18 @@ source=('git://github.com/namecoin/namecoin-core'
         'namecoin.desktop'
         'namecoin1500x1500.png'
         'namecoind.service'
-        'namecoind@.service'
-        'patch.diff')
+        'namecoind@.service')
 sha256sums=('SKIP'
             '0226f5a570bbbde63f332d43d9d712287b316c726280f2ae9e21b1b365b3f0dc'
             'f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04'
             '0a8cb03f33a895ccaed63fb9d946db69bee7188b7a9f41bc92879167c2718dcf'
-            '216bf1642feb5c37cc82a0801faf0717308f98e5aed86d75dac8fafd150a4b68'
-            'c1918615ac36cd265210fe3d6d1c76591aa740fbb8e359b47f5d73d7979896e1')
+            '216bf1642feb5c37cc82a0801faf0717308f98e5aed86d75dac8fafd150a4b68')
 
 
 prepare() {
     mkdir -p "$srcdir/tmp"
     cd "$srcdir/namecoin-core/"
     git checkout "$_commit"
-
-    # Fix Qt GUI start freeze bug
-    # https://bbs.archlinux.org/viewtopic.php?id=240553
-    cd "$srcdir"
-    patch -p0 -i patch.diff
 }
 
 
