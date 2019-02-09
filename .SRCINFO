@@ -1,6 +1,6 @@
 pkgbase = lego
 	pkgdesc = Lets Encrypt client and ACME library written in Go
-	pkgver = v2.1.0
+	pkgver = v2.2.0
 	pkgrel = 1
 	url = https://github.com/xenolf/lego
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = lego
 	provides = lego
 	conflicts = lego
 	conflicts = lego-git
-	source_x86_64 = https://github.com/xenolf/lego/releases/download/v2.1.0/lego_v2.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 99c147885e453f18dbf9702425e1f04d1fe324c138d303eb6a59a7bc5d40c33b
-	source_i686 = https://github.com/xenolf/lego/releases/download/v2.1.0/lego_v2.1.0_linux_386.tar.gz
-	sha256sums_i686 = 4631658c7c67a8901d04415ca7d01ba72f73118fa3dd56b5633e9d29c5e62d7e
-	source_armv7h = https://github.com/xenolf/lego/releases/download/v2.1.0/lego_v2.1.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 9b9f3a74a315faebc67188ef6728d2818fc9304a04b758fda98a4509f85faf6b
-	source_aarch64 = https://github.com/xenolf/lego/releases/download/v2.1.0/lego_v2.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = e0030bae3a0c9df4e232e80a3ab962422883c6ada380b0e2b33e6cebe9ad057a
+	source_x86_64 = https://github.com/xenolf/lego/releases/download/v2.2.0/lego_v2.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d7f43726bab3607ffb731737b2b4f3864d6691ce6ee3f298cbb73fdfd22f7295
+	source_i686 = https://github.com/xenolf/lego/releases/download/v2.2.0/lego_v2.2.0_linux_386.tar.gz
+	sha256sums_i686 = 5430f68967772341ede411447a1bc9c02a4a9bc9be2632a1c3d903dfb72707c0
+	source_armv7h = https://github.com/xenolf/lego/releases/download/v2.2.0/lego_v2.2.0_linux_armv7.tar.gz
+	sha256sums_armv7h = f4c5ca2b58b3f4d53dcae18c56db8535fd20f35536b06179b48cbd6189c88a6d
+	source_aarch64 = https://github.com/xenolf/lego/releases/download/v2.2.0/lego_v2.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1783325831b86d52b93a69a351f9dfd4d4c2039652c78dc70071f7106813bcd1
 
 pkgname = lego
 
