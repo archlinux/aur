@@ -3,15 +3,15 @@
 pkgname=gorm.app
 _pkgname=Gorm
 pkgrel=1
-pkgver=1.2.23
+pkgver=1.2.24
 pkgdesc="GNUstep's easy-to-use interface designer"
 arch=('i686' 'x86_64')
 url="http://www.gnustep.org/experience/Gorm.html"
 license=('GPL')
 depends=('gnustep-base' 'gnustep-gui')
 makedepends=('gcc-objc' 'gnustep-make')
-source=("ftp://ftp.gnustep.org/pub/gnustep/dev-apps/gorm-1.2.23.tar.gz")
-sha256sums=('cbd25abbbc85d81d50111be75da14aabce368337694948c95b68b6fdf74eeea2')
+source=("ftp://ftp.gnustep.org/pub/gnustep/dev-apps/gorm-1.2.24.tar.gz")
+sha256sums=('2e0743d10ec191f08ad413701cf907051bb3f6dec7c5526bd02a1e154bdd87cb')
 
 build() {
   cd "gorm-$pkgver"
