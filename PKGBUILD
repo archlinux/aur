@@ -17,10 +17,15 @@ build() {
   cargo build --release --locked
 }
 
+check() {
+  cd "${pkgname}-${pkgver}"
+  cargo test --release --locked
+}
+
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm644 LICENSE-MIT LICENSE-APACHE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
