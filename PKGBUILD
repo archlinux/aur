@@ -2,10 +2,10 @@
 
 _plug=dotkill
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.30660fe
+pkgver=R1.1.g84a0e13
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=173029'
 license=('GPL')
 depends=('vapoursynth')
@@ -15,8 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare(){
@@ -28,12 +27,12 @@ prepare(){
 }
 
 build() {
-  cd "${_plug}"
-  make
+  make -C "${_plug}"
 }
 
 package() {
   cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
