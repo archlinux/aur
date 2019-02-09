@@ -1,0 +1,22 @@
+diff --git a/cras/client/cras-sys/Cargo.toml b/cras/client/cras-sys/Cargo.toml
+index f71e54088..40f65d22d 100644
+--- a/cras/client/cras-sys/Cargo.toml
++++ b/cras/client/cras-sys/Cargo.toml
+@@ -4,4 +4,4 @@ version = "0.1.0"
+ authors = ["The Chromium OS Authors"]
+ 
+ [dependencies]
+-data_model = { path = "../../../../../platform/crosvm/data_model" } # provided by ebuild
++data_model = { path = "../../../../crosvm/data_model/" }
+diff --git a/cras/client/libcras/Cargo.toml b/cras/client/libcras/Cargo.toml
+index cc2a3e134..b52a26126 100644
+--- a/cras/client/libcras/Cargo.toml
++++ b/cras/client/libcras/Cargo.toml
+@@ -11,5 +11,5 @@ path = "src/libcras.rs"
+ audio_streams = { path = "../../../audio_streams" } # provided by ebuild
+ libc = "*"
+ cras-sys = { path = "../cras-sys" } # provided by ebuild
+-data_model = { path = "../../../../../platform/crosvm/data_model" } # provided by ebuild
+-sys_util = { path = "../../../../../platform/crosvm/sys_util" } # provided by ebuild
++data_model = { path = "../../../../crosvm/data_model" } # provided by ebuild
++sys_util = { path = "../../../../crosvm/sys_util" } # provided by ebuild

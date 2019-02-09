@@ -1,17 +1,22 @@
 pkgbase = crosvm-git
 	pkgdesc = The Chrome OS Virtual Machine Monitor
-	pkgver = r616.3082e8e4
+	pkgver = r640.d39dd9af
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/platform/crosvm
 	arch = x86_64
 	license = custom:chromiumos
-	makedepends = cargo
+	makedepends = rustup
+	makedepends = dtc
 	depends = minijail-git
 	depends = gcc-libs
 	source = git+https://chromium.googlesource.com/chromiumos/platform/crosvm
 	source = git+https://chromium.googlesource.com/chromiumos/third_party/adhd
+	source = crosvm-cargo-paths.patch
+	source = adhd-cargo-paths.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = a5bd453e2cdea1c9d5be96c31cbb37ea2c264dd07398fc631072ca0c8cc09ec5
+	sha256sums = e274be49777c84acc1f8a7c8f7c0ad85add3691c5b80d76ba3757accbb2d27f3
 
 pkgname = crosvm-git
 
