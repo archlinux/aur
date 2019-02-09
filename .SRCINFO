@@ -1,0 +1,16 @@
+pkgbase = cbmem-git
+	pkgdesc = A utility for reading from the CBMEM console on Coreboot systems
+	pkgver = 1.1.f813b844862
+	pkgrel = 1
+	url = https://www.coreboot.org/Cbmem_console
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	provides = cbmem
+	conflicts = cbmem
+	source = git+https://review.coreboot.org/coreboot
+	sha256sums = SKIP
+
+pkgname = cbmem-git
+
