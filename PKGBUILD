@@ -5,8 +5,8 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v1.1.7.g99b10e3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
-url="https://forum.doom9.org/showthread.php?t=166399"
+arch=('x86_64')
+url='https://forum.doom9.org/showthread.php?t=166399'
 license=('LGPL2.1')
 depends=('vapoursynth'
          'libavutil.so'
@@ -16,7 +16,7 @@ depends=('vapoursynth'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("git+https://github.com/dwbuiten/${_plug}.git")
+source=("${_plug}::git+https://github.com/dwbuiten/${_plug}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -29,20 +29,20 @@ prepare() {
 
   cd "${_plug}"
   ./autogen.sh
+}
 
-  cd ../build
+build() {
+  cd build
   ../"${_plug}"/configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
 
-}
-
-build() {
-  make -C build
+  make
 }
 
 package(){
   make -C build DESTDIR="${pkgdir}" install
+
   install -Dm644 "${_plug}/README" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
 
