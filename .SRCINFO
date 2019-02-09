@@ -1,0 +1,12 @@
+pkgbase = gofish-packages
+	pkgdesc = Crossplatform package manager
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://gofi.sh/index.html
+	arch = any
+	license = Apache
+	source = https://gofi.sh/releases/gofish-v0.10.0-linux-amd64.tar.gz
+	md5sums = 253b8d83c664d6764a5a4493e07d9c0e
+
+pkgname = gofish-packages
+
