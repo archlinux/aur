@@ -1,16 +1,16 @@
 # Maintainer: Scott Dickson < scottfoesho@gmail.com >
 
 pkgname=kodi-addon-embyrepobeta
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='This repo contains the Kodi Emby addon along with compatible Kodi skins'
 _reponame=repository.beta.emby.kodi
 arch=('any')
-url='https://github.com/MediaBrowser/plugin.video.emby/wiki/Emby-Repository'
+url='https://github.com/MediaBrowser/plugin.video.emby/wiki'
 license=('GPL2')
 depends=('kodi')
 source=("http://kodi.emby.media/repository.beta.emby.kodi-${pkgver}.zip")
-sha256sums=('c440c21c11bd8845e2ea44de8a10664f831f41cf3be8d72f0dd36d0d2e2d52da')
+sha256sums=('e3d7939c9ccd7918655f2d143113a548620afeb4fffdf134d2aa27144400ae69')
 makedepends=('unzip')
 
 prepare() {
