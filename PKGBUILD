@@ -1,45 +1,44 @@
-# Maintainer: Anton Bazhenov <anton.bazhenov at gmail>
+
+# Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: John McKnight <jmcknight@gmail.com>
 
 pkgname=monkey-bubble
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Puzzle Bobble clone for one or two players"
 arch=('i686' 'x86_64')
 url="http://www.happypenguin.org/show?Monkey%20Bubble"
 license=('GPL')
 depends=('esound' 'gstreamer0.10' 'libgnomeui' 'librsvg')
 makedepends=('gnome-doc-utils' 'perl-xml-parser')
-source=("http://home.gna.org/monkeybubble/downloads/${pkgname}-${pkgver}.tar.gz"
+source=("http://archive.ubuntu.com/ubuntu/pool/universe/m/$pkgname/${pkgname}_$pkgver.orig.tar.gz"
         "desktop-fixes.patch"
         "fix-xml.patch")
-md5sums=('0de8a05c8c15e08326d244534dc30f22'
-         '7c747f07e295e2c20313e920180710f0'
-         'ead203bdc023d3ff69e4355064a2cbea')
+sha256sums=('eb96293a0fadbbfc3cd3ae0bbb557d9bf8a4dd8edccdd8ce1b913e8ba49a1c89'
+            '039a57e7b70f457e80cb8084e8b1c972c491b02d47ab68ab5477ee01ef8ca482'
+            '5c133152fda6446d7fd1d8b6b530056226c72b81c4aa72fe69e43939b622dd20')
 
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+prepare() {
+  cd $pkgname-$pkgver
 
   # Apply Ubuntu patches
   patch -Np1 -i ../desktop-fixes.patch
   patch -Np1 -i ../fix-xml.patch
 
   # Fix compilation error
-  sed -i "s_glib/gthread.h_glib.h_" \
-    src/net/message-handler.c \
-    src/net/simple-server.c \
-    src/ui/main.c
+  sed "s|glib/gthread.h|glib.h|" \
+    -i src/net/message-handler.c src/net/simple-server.c src/ui/main.c
+}
 
-  # Compile
-  ./configure --prefix=/usr \
-              --sysconfdir=/etc \
-              --disable-schemas-install \
-              --disable-scrollkeeper
+build() {
+  cd $pkgname-$pkgver
+
+  ./configure --prefix=/usr --sysconfdir=/etc \
+    --disable-schemas-install --disable-scrollkeeper
   make LDFLAGS="-lm" \
        CFLAGS="-Wno-error=deprecated-declarations -Wno-error=unused-but-set-variable"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  make -C $pkgname-$pkgver DESTDIR="$pkgdir/" install
 }
