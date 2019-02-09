@@ -16,11 +16,6 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "$_gitname"
-    sed -i s/SSL_library_init/OPENSSL_init_ssl/ configure.ac configure
-}
-
 build() {
     cd "$_gitname"
     ./configure --prefix=/usr
