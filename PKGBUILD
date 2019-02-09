@@ -2,7 +2,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=teeworlds-git
-pkgver=0.7.0.86.gbc481d4c
+pkgver=0.7.2.4167.3c165cce0
 pkgrel=1
 pkgdesc='Multiplayer 2D shooter'
 arch=('x86_64')
@@ -21,11 +21,12 @@ md5sums=('SKIP'
 
 pkgver() {
   cd teeworlds
-  git describe | sed 's/-start//;s/-/./g'
+  v=$(grep "GAME_VERSION " src/game/version.h | cut -d\" -f2)
+  printf "$v.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  convert "teeworlds/other/icons/Teeworlds.ico" "$srcdir/teeworlds.png"
+  convert "teeworlds/other/icons/teeworlds.ico" "$srcdir/teeworlds.png"
 
   cd teeworlds
   git submodule init
@@ -43,7 +44,7 @@ package() {
   cd teeworlds
   
   install -dm755 "$pkgdir"/usr/bin \
-                 "$pkgdir"/usr/share/{applications,pixmaps,appdata} \
+                 "$pkgdir"/usr/share/{applications,metainfo} \
                  "$pkgdir"/usr/share/{licenses/teeworlds,teeworlds/data}
   
    # Install data files
@@ -52,10 +53,15 @@ package() {
   install -m755 build/$CARCH/debug/teeworlds     "$pkgdir"/usr/bin/
   install -m755 build/$CARCH/debug/teeworlds_srv "$pkgdir"/usr/bin/
 
-  install -m644 license.txt                 "$pkgdir/usr/share/licenses/teeworlds/"
-  install -m644 other/teeworlds.appdata.xml "$pkgdir/usr/share/appdata/"
-  install -m644 other/teeworlds.desktop     "$pkgdir/usr/share/applications/"
-  install -m644 ../teeworlds-0.png          "$pkgdir/usr/share/pixmaps/teeworlds.png"
+  install -m644 license.txt                   "$pkgdir/usr/share/licenses/teeworlds/"
+  install -m644 other/teeworlds.appdata.xml   "$pkgdir/usr/share/metainfo/"
+  install -m644 other/teeworlds.desktop       "$pkgdir/usr/share/applications/"
 
-  install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
+   # install client and server icon files according to the imagem size
+  for num in 0 1 2 3 4 5; do
+    _s=$(file "$srcdir/teeworlds-$num.png" | cut -d' ' -f5)
+    [[ $_s == ?(-)+([0-9]) ]]  # is it a number?
+    _s=${_s}x${_s}
+    install -Dm644 "$srcdir/teeworlds-$num.png" "$pkgdir/usr/share/icons/hicolor/$_s/apps/teeworlds.png"
+  done
 }
