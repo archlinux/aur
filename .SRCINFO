@@ -1,6 +1,6 @@
 pkgbase = rofimoji-git
 	pkgdesc = A simple emoji picker for rofi
-	pkgver = 2.0.1.r0.gec9b0b6
+	pkgver = 2.1.0.r0.gbedeb4b
 	pkgrel = 1
 	url = https://github.com/fdw/rofimoji
 	arch = any
