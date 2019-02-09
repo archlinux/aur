@@ -2,13 +2,11 @@ pkgbase = r-magrittr
 	pkgdesc = A Forward-Pipe Operator for R
 	pkgver = 1.5
 	pkgrel = 1
-	url = https://cran.r-project.org/package=magrittr
-	arch = any
-	license = MIT
+	url = http://cran.r-project.org/web/packages/magrittr/index.html
+	arch = x86_64
+	license = GPL3
 	depends = r
-	optdepends = r-testthat
-	optdepends = r-knitr
-	source = https://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
+	source = http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
 	md5sums = e74ab7329f2b9833f0c3c1216f86d65a
 
 pkgname = r-magrittr
