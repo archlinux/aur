@@ -1,10 +1,10 @@
-# Maintainer : Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Contributor: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-algorithm-loops'
 pkgver='1.032'
 pkgrel='1'
-pkgdesc="Algorithm::Loops - Looping constructs: NestedLoops, MapCar*, Filter, and NextPermute*"
+pkgdesc="Algorithm::Loops - looping constructs: NestedLoops, MapCar*, Filter, and NextPermute*"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
@@ -39,6 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
+  rm -r "$pkgdir"/usr/lib
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
