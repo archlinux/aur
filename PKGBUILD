@@ -9,7 +9,7 @@ url="http://0pointer.de/lennart/projects/mdns-scan/"
 license=("GPL2")
 depends=("glibc")
 source=("http://0pointer.de/lennart/projects/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=("9f036172ffe9f51c2c6e4db5bb7134df")
+sha256sums=("95d81a99d7ec68b1eda07473d2797685d4ef38e76c3d2c66039d0991fe164270")
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
