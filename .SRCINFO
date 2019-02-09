@@ -1,9 +1,8 @@
 pkgbase = r-pillar
-	pkgdesc = Format columns of data using the full range of colours in modern terminals.
-	pkgver = 1.3.0
+	pkgdesc = Coloured Formatting for Columns
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/pillar/index.html
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = r
@@ -12,8 +11,8 @@ pkgbase = r-pillar
 	depends = r-fansi
 	depends = r-rlang
 	depends = r-utf8
-	source = http://cran.r-project.org/src/contrib/pillar_1.3.0.tar.gz
-	sha256sums = aed845ae4888be9a7340eed57536e3fe6cb46e89d905897fb9b0635797cfcae0
+	source = http://cran.r-project.org/src/contrib/pillar_1.3.1.tar.gz
+	md5sums = fe7ef47df16a5599b20121de28923c32
 
 pkgname = r-pillar
 
