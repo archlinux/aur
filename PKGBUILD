@@ -1,10 +1,10 @@
-# Contributor: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Contributor: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-class-multimethods'
 pkgver='1.701'
 pkgrel='1'
-pkgdesc="Support multimethods and function overloading in Perl"
+pkgdesc="Class::Multimethods - support for multimethods and function overloading in Perl."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
@@ -39,7 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
+  rm -r "$pkgdir"/usr/lib
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
