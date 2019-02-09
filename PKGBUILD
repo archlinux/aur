@@ -2,10 +2,10 @@
 
 _plug=dctfilter
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.0.g5abff85
+pkgver=r2.1.0.g9ffee26
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=171039'
 license=('MIT')
 depends=('vapoursynth')
@@ -26,18 +26,19 @@ prepare() {
   cd "${_plug}"
   ./autogen.sh
 
-  cd ../build
+}
+
+build() {
+  cd build
   ../"${_plug}"/configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
 
-}
-
-build() {
-  make -C build
+  make
 }
 
 package() {
   make -C build DESTDIR="${pkgdir}" install
+
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
