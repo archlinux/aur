@@ -5,7 +5,7 @@ pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v2.2.2.g3082823
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/dubhater/vapoursynth-${_plug}"
 license=('GPL')
 depends=('vapoursynth')
@@ -30,11 +30,13 @@ build() {
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
+
   make
 }
 
 package(){
   cd "${_plug}"
   make DESTDIR="${pkgdir}" install
+
   install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.rst"
 }
