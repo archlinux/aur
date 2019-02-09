@@ -1,0 +1,32 @@
+pkgbase = python-q2-dada2
+	pkgdesc = QIIME 2 plugin wrapping DADA2
+	pkgver = 2019.1.0
+	pkgrel = 1
+	url = https://qiime2.org
+	arch = any
+	license = BSD 3-Clause License
+	makedepends = python-setuptools
+	depends = python-qiime2
+	depends = python-biom-format
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-biocparallel
+	depends = r-biostrings
+	depends = r-dada2
+	depends = r-delayedarray
+	depends = r-genomeinfodb
+	depends = r-genomeinfodbdata
+	depends = r-genomicalignments
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rsamtools
+	depends = r-s4vectors
+	depends = r-shortread
+	depends = r-summarizedexperiment
+	depends = r-xvector
+	depends = r-zlibbioc
+	source = https://github.com/qiime2/q2-dada2/archive/2019.1.0.tar.gz
+	sha256sums = 2cebca1380ea03be53c3a485ed2fb95168cbea115c3dc851c7a02b5ad59a63ac
+
+pkgname = python-q2-dada2
+
