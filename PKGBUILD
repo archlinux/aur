@@ -19,7 +19,8 @@ depends=(python opencv python-beautifulsoup4 python-yaml
 makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
-            'desktop-file-utils: to add Hydrus to your desktop environment menus')
+            'desktop-file-utils: to add Hydrus to your desktop environment menus'
+            'python-matplotlib: bandwidth usage graphs')
 source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=99478235dc05e151c464c47fbdcbea78a0ecc44a"
         paths-in-opt.patch
         hydrus-client
