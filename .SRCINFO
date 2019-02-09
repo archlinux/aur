@@ -1,0 +1,15 @@
+pkgbase = fortune-mod-brooklyn-nine-nine
+	pkgdesc = Brooklyn Nine-Nine fortune cookie file
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://en.wikiquote.org/wiki/Brooklyn_Nine-Nine
+	arch = any
+	groups = fortune-mods
+	license = unknown
+	depends = fortune-mod
+	conflicts = fortune-mod-brooklyn-nine-nine
+	source = brooklyn-nine-nine
+	md5sums = 04c14a2efa262c9b175d0a71dbf41e7d
+
+pkgname = fortune-mod-brooklyn-nine-nine
+
