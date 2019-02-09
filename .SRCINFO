@@ -1,6 +1,6 @@
 pkgbase = jellyfin-git
 	pkgdesc = The Free Software Media Browser
-	pkgver = 10.0.2.r484.g0ef2b46106
+	pkgver = 10.0.2.r508.gf1ef0b0b4c
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin
 	arch = i686

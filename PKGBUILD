@@ -3,7 +3,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin-git
-pkgver=10.0.2.r484.g0ef2b46106
+pkgver=10.0.2.r508.gf1ef0b0b4c
 pkgrel=1
 pkgdesc='The Free Software Media Browser'
 arch=('i686' 'x86_64' 'armv6h')
@@ -35,9 +35,8 @@ pkgver() {
 
 prepare() {
   cd jellyfin
-  git submodule init
-  git config submodule.MediaBrowser.WebDashboard/jellyfin-web.url $srcdir/jellyfin-web
-  git submodule update
+  rm -rf MediaBrowser.WebDashboard/jellyfin-web
+  cp -r "$srcdir"/jellyfin-web MediaBrowser.WebDashboard/
 }
 
 build(){
