@@ -1,6 +1,6 @@
 pkgbase = js8call
 	pkgdesc = Software for ragchewing and message-passing based on WSJT-X
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://groups.io/g/js8call
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = js8call
 	depends = libpulse
 	depends = libpng
 	depends = fftw
-	source = js8call-0.14.0.tar.gz::https://bitbucket.org/widefido/js8call/get/v0.14.0.tar.gz
-	md5sums = ddc4c33793ba380722f5c962a9e885dd
+	source = js8call-0.14.1.tar.gz::https://bitbucket.org/widefido/js8call/get/v0.14.1.tar.gz
+	md5sums = 7cdbadfa2539bc1d75ad0b49f3be127e
 
 pkgname = js8call
 
