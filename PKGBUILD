@@ -6,7 +6,7 @@ pkgver=r3.0.g4c6d972
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url='https://github.com/HomeOfVapourSynthEvolution/VapourSynth-VMAF'
+url='https://forum.doom9.org/showthread.php?t=175862'
 license=('GPL')
 depends=('vapoursynth'
          'vmaf'
