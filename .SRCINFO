@@ -1,6 +1,6 @@
 pkgbase = ocsstore
 	pkgdesc = OCS-Store frontend. Downloading and Managing Linux softwares,fonts,artworks,desktop-themes and so on
-	pkgver = 3.3.1
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://www.opendesktop.org/c/1492685474
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ocsstore
 	noextract = opendesktop-app-${pkgver}-${pkgrel}-${arch.AppImage}
 	options = !strip
 	options = !emptydirs
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1525953341/s/3de7eaed0675b9f4681f756a793f2373/t/1533174840/u/opendesktop-app-3.3.1-1-x86_64.AppImage
+	source = https://dl.opendesktop.org/api/files/downloadfile/id/1525953341/s/302e9bb4dec7728db9ac4c56a75c714e445a59ee2627708290a947cca0f149b48c25c9119e82e51aa16d4807b184448fa1c5aaf173012072afb1abda4c9e48f2/t/1549750629/u/opendesktop-app-3.5.0-1-x86_64.AppImage
 	md5sums = 6a1dc04d5622efe28704422924591365
 
 pkgname = ocsstore

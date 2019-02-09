@@ -1,7 +1,7 @@
 # Maintainer: Michael J. Pento <mjpento@verizon.net>
 
 pkgname=ocsstore
-pkgver=3.3.1
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="OCS-Store frontend. Downloading and Managing Linux softwares,fonts,artworks,desktop-themes and so on"
 arch=('x86_64')
