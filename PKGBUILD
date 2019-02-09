@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=alt
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Command line utility that attempts to find the "alternate path" for the provided path'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=()
 conflicts=('alt-git')
 makedepends=('rust' 'cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b50f35aeff7a812b4e2078edce09692230c9f1ced8bb68342283ce45175d9f9a9b27c1c8eeaef43fd759f48679f04bf5d56ae6203891cb88db36f25ce6ba51c8')
+sha512sums=('b664fd736d70668657bad32230d155ed62b5d60e74d18f73b84433845915dc5d4c386e2c25b9bc1b4011e0caf7cacf5fe32dbbc729a7fb35dd97c94b57be4313')
 
 build() {
   cd "$pkgname-$pkgver"
