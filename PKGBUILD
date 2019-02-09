@@ -307,7 +307,7 @@ options=('!strip')
 
 if ${_use_mesa}; then
   _profiled_gpu_fn=qpi-mesa.sh
-  _additional_configure_flags="$_additional_configure_flags -gbm"
+  _additional_configure_flags="$_additional_configure_flags -gbm -kms"
 else
   if $_building && ([[ -f ${__eglpkgconfigpath} ]] || [[ -f ${__glespkgconfigpath} ]]); then
     echo "Mesa is about to eat our communal poodle; delete egl.pc and glesv2.pc in your sysroot"
@@ -478,7 +478,11 @@ package() {
   cd "${_bindir}"
   INSTALL_ROOT="$pkgdir" make install || exit 1
 
-  find ${_installed_dir}/${pkgname}/mkspecs/modules -type f | xargs sed -i "s,${_sysroot}[^ ]*lib\(.*\).so,-l\1,g"
+  # attempt to fix Qt 5.12.1's insane complete qualification of linked libraries
+  # this still results in other sources of the complete path
+  #find ${_installed_dir}/${pkgname}/mkspecs/modules -type f | xargs sed -i "s,${_sysroot}[^ ]*lib\(.*\).so,-l\1,g"
+  # this breaks stuff as gcc does not look inside of sysroots for supposedly qualified paths
+  #find ${_installed_dir}/${pkgname}/mkspecs/modules -type f | xargs sed -i "s,${_sysroot}\([^ ]*\.so\),\1,g"
 
   cd $(dirname $(dirname ${_installed_dir}))
 
