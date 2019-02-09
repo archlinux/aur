@@ -1,7 +1,7 @@
 pkgbase = mtxclient
 	pkgdesc = Client API library for Matrix, built on top of Boost.Asio<Paste>
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mujx/mtxclient
 	arch = x86_64
 	arch = i686

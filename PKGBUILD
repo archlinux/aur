@@ -2,15 +2,13 @@
 
 pkgname=mtxclient
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Client API library for Matrix, built on top of Boost.Asio<Paste>"
 arch=('x86_64' 'i686')
 url="https://github.com/mujx/mtxclient"
 license=('MIT')
 depends=('libolm' 'libsodium' 'openssl' 'boost-libs')
 makedepends=('cmake' 'nlohmann-json' 'boost')
-checkdepends=()
-optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mujx/mtxclient/archive/v$pkgver.tar.gz")
 sha256sums=('e7638d4a8233c0c763d48111fd13e8ad1dcd5f34e3e641b46eaf1bb920b73482')
 
