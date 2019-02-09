@@ -1,27 +1,20 @@
-# Maintainer: Ward Segers <w@rdsegers.be>
-# Contributor: Alex Branham <branham@utexas.edu>
-
-_cranname=RColorBrewer
-_cranver=1.1-2
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+# Contributor: Grey Christoforo <first name at last name dot net>
 pkgname=r-rcolorbrewer
-pkgver=${_cranver//[:-]/.}
+_cran_name=RColorBrewer
+_pkgver=1.1-2
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="ColorBrewer Palettes"
-arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
-license=('Apache')
+arch=('x86_64')
+url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
+license=('GPL3')
 depends=('r')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-sha512sums=('29eeecae274c57f2af3366d072fb6a61a1e0be64aae9393e10c7e92c3b98473b60b7042b532c49e0ce2f53e6dce1a728ddd6937bbc64cedcb3664a429c3e54da')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
-}
+source=("http://cran.r-project.org/src/contrib/${_cran_name}_${_pkgver}.tar.gz")
+md5sums=('66054d83eade4dff8a43ad4732691182')
 
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+ mkdir -p $pkgdir/usr/lib/R/library
+ cd $srcdir
 
+ R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
+}
