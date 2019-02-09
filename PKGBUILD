@@ -2,10 +2,10 @@
 
 _plug=descale
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.2.gee3ac31
+pkgver=r2.3.gc211f99
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git'
 license=('custom:WTFPL')
 depends=('vapoursynth')
