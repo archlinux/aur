@@ -1,44 +1,38 @@
-# Maintainer: Lin Ruoshui <LinRs at yandex.com>
+# Maintainer: Lin Ruoshui <lin dot ruohshoei plus archlinux at gmail dot com>
 # Contributor: hexchain <i at hexchain.org>
 pkgname=hmcl
+_pkgname=HMCL
 pkgver=3.2.117
 _pkgver=3.2.117
 pkgrel=1
 pkgdesc="Hello Minecraft! Launcher, a powerful Minecraft launcher."
 arch=(any)
 license=('GPL3')
-url="https://github.com/mclauncher/HMCL"
+url="https://github.com/huanghongxun/HMCL"
 makedepends=('unzip' 'imagemagick')
 depends=('java-openjfx>=8' 'hicolor-icon-theme')
-noextract=("HMCL-$pkgver.jar")
+noextract=("$pkgname-$pkgver.jar")
 source=('hmcl-launch-script'
         'hmcl.desktop.in'
-        # "$url/releases/download/v${pkgver%.*}/HMCL-$pkgver.jar")
-	"HMCL-${_pkgver}.jar::https://github.com/huanghongxun/HMCL/releases/download/v${pkgver}/HMCL-${_pkgver}.jar"
-	#"hmcl::git+$url.git#commit=cbb2a1b5755389b751d24730bc93de1011bed119"
+	"${pkgname}-${_pkgver}.jar::${url}/releases/download/v${pkgver}/${_pkgname}-${_pkgver}.jar"
 	)
 
 prepare() {
-    cd "$srcdir"
+#    cd "$srcdir"
     sed "s|@@VERSION@@|1.1|" hmcl.desktop.in > hmcl.desktop
     unzip -o "HMCL-$_pkgver.jar" assets/img/icon.png
 }
 
-#build() {
-#    cd "$srcdir/hmcl"
-#    chmod +x gradlew
-#    ./gradlew clean build
-#}
-
 package() {
-    cd "$srcdir"
+#    cd "$srcdir"
     install -D -m755 "${srcdir}/hmcl-launch-script" "${pkgdir}/usr/bin/hmcl"
     install -D -m644 "${srcdir}/HMCL-${_pkgver}.jar" "${pkgdir}/usr/share/hmcl/HMCL.jar"
     install -D -m644 "${srcdir}/hmcl.desktop" "${pkgdir}/usr/share/applications/hmcl.desktop"
 
     # install icon
-    cd "$srcdir/assets/img/"
+#    cd "$srcdir/assets/img/"
     #install -Dm644 icon-new.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+    cd "assets/img/"
      for size in 16 24 32 48 64 72 128 256 512; do
          target="$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/"
          mkdir -p $target
