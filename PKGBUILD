@@ -1,7 +1,7 @@
 # Maintainer: YoyPa <yoann dot p dot public at gmail dot com>
 pkgname=fluffy-switch
-pkgver=2.6
-pkgrel=4
+pkgver=2.7
+pkgrel=1
 pkgdesc="Goldtree and Tinfoil GUI for USB install on switch"
 arch=('any')
 url="https://github.com/fourminute/Fluffy"
@@ -19,7 +19,7 @@ backup=(
 	'etc/udev/rules.d/80-fluffy-switch.rules'
 )
 source=("Fluffy-${pkgver}.tar.gz::https://github.com/fourminute/Fluffy/archive/v${pkgver}.tar.gz")
-sha256sums=('a35ac4e399ef65c4a2139a79a4be29874ce0c657b8fb3147ab472939e2a4b9cf')
+sha256sums=('0df4f5ab3da2db0dc0ab3fb1c1a4dd03d9ccd8e2413fa7fe527e72300edae989')
 
 # Change .desktop file PATH from /tmp to ~/.config/fluffy (Make fluffy config file persistent)
 prepare() {
@@ -29,7 +29,7 @@ prepare() {
 
 package() {
 	mkdir -p "${pkgdir}$HOME/.config/fluffy"
-	chown $USER:$USER "${pkgdir}$HOME/.config/fluffy"
+	chown $USER:$(id -gn) "${pkgdir}$HOME/.config/fluffy"
 	cd "Fluffy-${pkgver}"
 	install -Dm 644 linux/80-fluffy-switch.rules "${pkgdir}/etc/udev/rules.d/80-fluffy-switch.rules"
 	install -Dm 644 linux/fluffy.desktop "${pkgdir}/usr/share/applications/fluffy.desktop"
