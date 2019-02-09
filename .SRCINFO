@@ -1,0 +1,15 @@
+pkgbase = fortune-mod-portal-game
+	pkgdesc = Portal and Portal 2 fortune cookie file
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://en.wikiquote.org/
+	arch = any
+	groups = fortune-mods
+	license = unknown
+	depends = fortune-mod
+	conflicts = fortune-mod-portal
+	source = portal
+	md5sums = 8fa36b14727d84000930069164de5cf5
+
+pkgname = fortune-mod-portal-game
+
