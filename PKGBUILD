@@ -2,12 +2,12 @@
 # Contributor: Evan Anderson <evananderson@thelinuxman.us>
 pkgname=x32edit
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control and programm Behringer X32 consoles"
 arch=('i686' 'x86_64')
 url="http://www.behringer.com/EN/products/X32.aspx"
 license=('custom:MUSIC Group End User License Agreement')
-depends=('libxext' 'alsa-lib' 'freetype2' 'mesa' 'mesa-libgl' 'hicolor-icon-theme')
+depends=('libxext' 'alsa-lib' 'freetype2' 'mesa' 'mesa-libgl' 'hicolor-icon-theme' 'ttf-liberation')
 install=x32edit.install
 source=("http://www.music-group.com/eurocom/assets/EULA_2012-09-12.pdf"
         "x32edit.desktop"
