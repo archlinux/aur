@@ -2,18 +2,17 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-me176c         # Build kernel with a different name
-pkgver=4.19.14
-pkgrel=1
+pkgver=4.19.20
+pkgrel=0
 arch=(x86_64)
 url="https://github.com/me176c-dev/me176c-archlinux"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz acpica)
+makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
-  #"$_srcname::git+https://github.com/me176c-dev/me176c-kernel.git#branch=arch-4.19"
-  "$_srcname::git+https://github.com/me176c-dev/me176c-kernel.git#tag=arch-$pkgver-$pkgrel"
-  "git+https://github.com/me176c-dev/me176c-acpi.git#commit=18a1fe0c450375c16e17429b429955e068f83945"
+  "$_srcname::git+https://github.com/me176c-dev/me176c-kernel.git#branch=arch-4.19"
+  #"$_srcname::git+https://github.com/me176c-dev/me176c-kernel.git#tag=arch-$pkgver-$pkgrel"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -24,8 +23,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('SKIP'
-            'SKIP'
-            'd95fe61b230c35117d04cc6c8a13684d6b76666d47d275009e4fffb9b213aa04'
+            'a31ab8fb7efe3516af3214194db39d7bfbc36d83de40faf4bd9b54495cad8fe1'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -34,10 +32,6 @@ _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
 
 prepare() {
-  # ME176C: Compile ACPI DSDT table
-  iasl -tc me176c-acpi/dsdt.dsl
-  sed -i s/dsdt_aml_code/AmlCode/ me176c-acpi/dsdt.hex
-
   cd $_srcname
 
   msg2 "Setting version..."
@@ -56,10 +50,6 @@ prepare() {
 
   msg2 "Setting config..."
   cp ../config .config
-
-  # ME176C: Append option for custom DSDT table
-  echo "CONFIG_ACPI_CUSTOM_DSDT_FILE=\"`realpath ../me176c-acpi/dsdt.hex`\"" >> .config
-
   make olddefconfig
 
   make -s kernelrelease > ../version
@@ -68,14 +58,16 @@ prepare() {
 
 build() {
   cd $_srcname
-  make ${MAKEFLAGS} bzImage modules htmldocs
+  make bzImage modules htmldocs
 }
 
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [[ $pkgbase = linux ]] && groups=(base)
   depends=(coreutils linux-firmware kmod mkinitcpio)
-  optdepends=('crda: to set the correct wireless channels of your country')
+  optdepends=('crda: to set the correct wireless channels of your country'
+    'me176c-acpi: for full functionality (touchscreen, battery/charging, ...)'
+    'me176c-firmware: WiFi/Bluetooth firmware')
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 

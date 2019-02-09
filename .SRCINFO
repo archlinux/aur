@@ -1,6 +1,6 @@
 pkgbase = linux-me176c
-	pkgver = 4.19.14
-	pkgrel = 1
+	pkgver = 4.19.20
+	pkgrel = 0
 	url = https://github.com/me176c-dev/me176c-archlinux
 	arch = x86_64
 	license = GPL2
@@ -12,10 +12,8 @@ pkgbase = linux-me176c
 	makedepends = git
 	makedepends = python-sphinx
 	makedepends = graphviz
-	makedepends = acpica
 	options = !strip
-	source = archlinux-linux::git+https://github.com/me176c-dev/me176c-kernel.git#tag=arch-4.19.14-1
-	source = git+https://github.com/me176c-dev/me176c-acpi.git#commit=18a1fe0c450375c16e17429b429955e068f83945
+	source = archlinux-linux::git+https://github.com/me176c-dev/me176c-kernel.git#branch=arch-4.19
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -23,8 +21,7 @@ pkgbase = linux-me176c
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = d95fe61b230c35117d04cc6c8a13684d6b76666d47d275009e4fffb9b213aa04
+	sha256sums = a31ab8fb7efe3516af3214194db39d7bfbc36d83de40faf4bd9b54495cad8fe1
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
@@ -37,6 +34,8 @@ pkgname = linux-me176c
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = me176c-acpi: for full functionality (touchscreen, battery/charging, ...)
+	optdepends = me176c-firmware: WiFi/Bluetooth firmware
 	backup = etc/mkinitcpio.d/linux-me176c.preset
 
 pkgname = linux-me176c-headers
