@@ -1,10 +1,10 @@
-# Contributor: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Contributor: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-bytes-random-secure-tiny'
 pkgver='1.008'
 pkgrel='1'
-pkgdesc="A tiny Perl extension to generate cryptographically-secure random bytes."
+pkgdesc="Bytes::Random::Secure::Tiny - a tiny Perl extension to generate cryptographically-secure random bytes."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
@@ -39,7 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
+  rm -r "$pkgdir"/usr/lib
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
