@@ -1,7 +1,7 @@
 # Maintainer: luspi <luspi@gmx.de>
 pkgname=alsa-utils-transparent
 _pkgname=alsa-utils
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="A patched version of the alsa-utils package to support transparent terminals"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 source=(ftp://ftp.alsa-project.org/pub/utils/$_pkgname-${pkgver}.tar.bz2
         90alsa
         transparency.patch)
-md5sums=('2b88796c6b05520e59eec6049de02f64'
+md5sums=('54d6f9b483144823d0fc0c26e8cea028'
          '529216f6a46e61a546640e08ea7a0879'
          '586f985eea6abf0a6a6c753ea4fa542e')
 conflicts=('alsa-utils')
