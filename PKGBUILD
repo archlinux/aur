@@ -1,7 +1,7 @@
 # Maintainer: Nathan Monfils <nathan.monfils@hotmail.fr>
 
 pkgname=fortune-mod-parks-and-recreation
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Parks and Recreation fortune cookie file"
 url="https://en.wikiquote.org/wiki/Parks_and_Recreation_(season_7)"
@@ -10,7 +10,7 @@ license=('unknown')
 depends=('fortune-mod')
 groups=('fortune-mods')
 source=(parks-and-recreation.1-3 parks-and-recreation.4-7)
-md5sums=('f1f8d7b1892e46b2345550c41452a520' '87bb1fe285d1365b25bb47b4f19d0936')
+md5sums=('df9af1e1bb0ea8f5495337322d59418b' '68f6269ae1ea7d253190beda7f59616b')
 
 build() {
   cd "$srcdir"
