@@ -2,10 +2,10 @@
 
 _plug=autocrop
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.1.4.gaee508a
+pkgver=0.1.5.g418189c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/vapoursynth-autocrop'
 license=('GPL')
 depends=('vapoursynth')
