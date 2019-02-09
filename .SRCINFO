@@ -9,7 +9,6 @@ pkgbase = ls_extended
 	depends = glibc
 	depends = ttf-nerd-fonts-symbols
 	optdepends = nerd-fonts-complete: for icon support
-	provides = ls
 	source = ls_extended-1.0.0.tar.gz::https://github.com/Electrux/ls_extended/archive/v1.0.0.tar.gz
 	sha256sums = c6af08877e889fe0732f25f7e6f850c7816cf7788fee191bcc80dbf1288b3740
 
