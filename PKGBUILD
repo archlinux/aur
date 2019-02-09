@@ -1,26 +1,19 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=withr
-_cranver=2.1.2
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+# Contributor: Grey Christoforo <first name at last name dot net>
 pkgname=r-withr
-pkgver=${_cranver//[:-]/.}
+_cran_name=withr
+pkgver=2.1.2
 pkgrel=1
-pkgdesc="Run Code With Temporarily Modified Global State"
-arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL')
-depends=('r' )
-
-optdepends=('r-testthat' 'r-covr' 'r-dbi' 'r-rsqlite' 'r-knitr' 'r-rmarkdown')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+pkgdesc="Run Code 'With' Temporarily Modified Global State"
+arch=('x86_64')
+url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
+license=('GPL3')
+depends=('r')
+source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
 md5sums=('85e8574fb0a6832c4f275531be6371d6')
 
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
-}
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+ mkdir -p $pkgdir/usr/lib/R/library
+ cd $srcdir
 
+ R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
+}
