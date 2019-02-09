@@ -1,9 +1,10 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: Brandon Taylor (br dot ta dot 2818 at gmail dot com)
+# Contributor: Ivan Semkin (ivan at semkin dot ru)
 
 pkgname=electron-windows95-bin
 _pkgname=windows95
-pkgver=1.3.0
-pkgrel=1
+pkgver=2.0.0
+pkgrel=2
 pkgdesc='Windows 95 in Electron. Runs on macOS, Linux, and Windows.'
 arch=('x86_64')
 url='https://github.com/felixrieseberg/windows95'

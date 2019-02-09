@@ -1,12 +1,12 @@
 pkgbase = electron-windows95-bin
 	pkgdesc = Windows 95 in Electron. Runs on macOS, Linux, and Windows.
-	pkgver = 1.3.0
-	pkgrel = 1
+	pkgver = 2.0.0
+	pkgrel = 2
 	url = https://github.com/felixrieseberg/windows95
 	arch = x86_64
 	license = MIT
 	depends = electron
-	source = https://github.com/felixrieseberg/windows95/releases/download/v1.3.0/windows95-linux-1.3.0.x86_64.rpm
+	source = https://github.com/felixrieseberg/windows95/releases/download/v2.0.0/windows95-linux-2.0.0.x86_64.rpm
 	sha256sums = 15d498ada7edc3a6f7b60fa3243b7e4ea385221e22a7f148856e27e941134ab3
 
 pkgname = electron-windows95-bin
