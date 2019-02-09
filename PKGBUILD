@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=gofish-packages
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform package manager"
 arch=('any')
 url="https://gofi.sh/index.html"
@@ -22,7 +22,7 @@ source=("https://gofi.sh/releases/gofish-v$pkgver-linux-$ARCH.tar.gz"
 md5sums=('253b8d83c664d6764a5a4493e07d9c0e'
 )
 package() {
-    install -Dm755 "$srcdir/linux-$ARCH/gofish" "$pkgdir/usr/local/bin/gofish"
+    install -Dm755 "$srcdir/linux-$ARCH/gofish" "$pkgdir/usr/bin/gofish"
     install -Dm644 "$srcdir/linux-$ARCH/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

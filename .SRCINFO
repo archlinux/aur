@@ -1,7 +1,7 @@
 pkgbase = gofish-packages
 	pkgdesc = Crossplatform package manager
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gofi.sh/index.html
 	arch = any
 	license = Apache
