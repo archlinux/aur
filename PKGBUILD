@@ -7,7 +7,7 @@ pkgdesc="Scale Functions for Visualization"
 arch=('x86_64')
 url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
 license=('GPL3')
-provides=('r-scales')
+provides=("r-scales=${pkgver}")
 conflicts=('r-scales')
 depends=('r' 'r-labeling' 'r-munsell' 'r-r6' 'r-rcpp' 'r-rcolorbrewer')
 source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
