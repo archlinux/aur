@@ -2,10 +2,10 @@
 
 _plug=dfttest
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.24.g3c741f4
+pkgver=r4.1.0.g7184c67
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=171678'
 license=('GPL')
 depends=('vapoursynth'
@@ -39,5 +39,6 @@ build() {
 package(){
   cd "${_plug}"
   make DESTDIR="${pkgdir}" install
+
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
