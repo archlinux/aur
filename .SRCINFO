@@ -1,14 +1,14 @@
 pkgbase = firefox-extension-tab-session-manager
 	pkgdesc = Firefox extension to save and restore the state of windows and tabs
-	pkgver = 4.4.0
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://github.com/sienori/Tab-Session-Manager
 	arch = any
 	license = MPL2
 	depends = firefox
-	noextract = tab_session_manager-4.4.0-fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/859942/tab_session_manager-4.4.0-fx.xpi
-	sha256sums = bca1cbf96a0748167cefb6d9385144dc912d53f91b4deaace5c8ddda030fd87b
+	noextract = tab_session_manager-4.5.1-fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/859942/tab_session_manager-4.5.1-fx.xpi
+	sha256sums = a35e7b7c71d1930cc0fa98176d34836572bbabe60c16b638bc66cbfec81cea7c
 
 pkgname = firefox-extension-tab-session-manager
 
