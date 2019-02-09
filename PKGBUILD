@@ -2,7 +2,7 @@
 
 _plug=deblockpp7
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.1.g22ba745
+pkgver=r4.1.0.g24bf2fc
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -23,19 +23,21 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-  (cd "${_plug}"; ./autogen.sh)
+  cd "${_plug}"
+  ./autogen.sh
+}
+
+build() {
   cd build
     ../"${_plug}"/configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
 
-}
-
-build() {
-  make -C build
+  make
 }
 
 package(){
   make -C build DESTDIR="${pkgdir}" install
+
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
