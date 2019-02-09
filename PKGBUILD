@@ -2,14 +2,14 @@
 
 _pkgname=libqpsd
 pkgname=libqpsd-git
-pkgver=20140927
+pkgver=20190113
 pkgrel=1
 pkgdesc="PSD & PSB Plugin for Qt/C++ (Qt4/Qt5) "
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="https://github.com/Code-ReaQtor/libqpsd"
 license=("LGPL")
 depends=("qt5-base")
-# depends=("qt4")	# use this depends instead the above for Qt4 build
+# depends=("qt4")	# use this depends instead of the above for Qt4 build
 makedepends=("git")
 source=("git://github.com/Code-ReaQtor/libqpsd")
 sha256sums=("SKIP")
