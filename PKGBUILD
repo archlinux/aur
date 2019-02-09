@@ -91,7 +91,7 @@ _pkgvermajmin="5.12"
 _pkgverpatch=".1"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
-pkgrel=6
+pkgrel=1
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -480,7 +480,7 @@ package() {
 
   # attempt to fix Qt 5.12.1's insane complete qualification of linked libraries
   # this still results in other sources of the complete path
-  #find ${_installed_dir}/${pkgname}/mkspecs/modules -type f | xargs sed -i "s,${_sysroot}[^ ]*lib\(.*\).so,-l\1,g"
+  find ${_installed_dir}/${pkgname}/mkspecs -type f | xargs sed -i "s,${_sysroot}[^ ]*lib\(.*\).so,-l\1,g"
   # this breaks stuff as gcc does not look inside of sysroots for supposedly qualified paths
   #find ${_installed_dir}/${pkgname}/mkspecs/modules -type f | xargs sed -i "s,${_sysroot}\([^ ]*\.so\),\1,g"
 
