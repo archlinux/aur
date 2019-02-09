@@ -3,12 +3,12 @@
 
 pkgname=avs-device-sdk
 pkgver=1.11
-pkgrel=4
+pkgrel=5
 pkgdesc="SDK for commercial device makers to integrate Alexa directly into connected products"
 arch=('any')
 url="https://github.com/alexa/avs-device-sdk"
 license=('Apache')
-makedepends=('cmake' 'gcc49')
+makedepends=('cmake' 'gcc6')
 depends=('portaudio' 'gstreamer' 'gst-plugins-base-libs' 'snowboy' 'cblas')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexa/avs-device-sdk/archive/v${pkgver}.tar.gz")
 sha512sums=('8ddac6a258c8bc054e4eac3a65da1626294112c88da18e50d7359d980c380b392d0c81f5ac1f5faaceca7d19a72b408708a7f4d247246d5f6f24390b5236b1aa')
@@ -21,8 +21,8 @@ build() {
 	cd "${srcdir}"
 	mkdir -p build
 	cd build
-	export CC=/usr/bin/gcc-4.9
-	export CXX=/usr/bin/g++-4.9
+	export CC="/usr/bin/gcc-6"
+	export CXX="/usr/bin/g++-6"
 	cmake "../avs-device-sdk-${pkgver}" \
 		-DCMAKE_INSTALL_PREFIX:PATH=/usr \
 		-DKITTAI_KEY_WORD_DETECTOR=ON \
