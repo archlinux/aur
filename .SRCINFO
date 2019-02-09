@@ -1,0 +1,15 @@
+pkgbase = python-ijson
+	pkgdesc = Iterative JSON parser with Pythonic interface
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/isagalaev/ijson
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	depends = yajl
+	source = https://github.com/isagalaev/ijson/archive/2.3.tar.gz
+	sha256sums = 5db72cc5ebad786ee2cf85ae277ae068c14f965e0747fd8b65bf4d8d9c4c8395
+
+pkgname = python-ijson
+
