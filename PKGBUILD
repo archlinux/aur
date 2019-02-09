@@ -9,7 +9,7 @@ url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
 license=('GPL3')
 provides=("r-scales=${pkgver}")
 conflicts=('r-scales')
-depends=('r' 'r-labeling' 'r-munsell' 'r-r6' 'r-rcpp' 'r-rcolorbrewer')
+depends=('r' 'r-labeling' 'r-munsell' 'r-r6' 'r-rcpp' 'r-rcolorbrewer' 'r-viridislite')
 source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
 md5sums=('89eec6d9e176fefb7f26655e1b0aa701')
 

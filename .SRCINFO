@@ -11,6 +11,7 @@ pkgbase = r-scales-fix
 	depends = r-r6
 	depends = r-rcpp
 	depends = r-rcolorbrewer
+	depends = r-viridislite
 	provides = r-scales=1.0.0
 	conflicts = r-scales
 	source = http://cran.r-project.org/src/contrib/scales_1.0.0.tar.gz
