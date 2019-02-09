@@ -1,12 +1,14 @@
 pkgbase = tooru-git
 	pkgdesc = Archive and sync content you want to see twice
-	pkgver = r0.4036963
-	pkgrel = 1
+	pkgver = r0.04a871a
+	pkgrel = 2
 	url = https://github.com/emersion/tooru
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = make
+	depends = youtube-dl
+	depends = wget
 	provides = tooru
 	conflicts = tooru
 	source = git+https://github.com/emersion/tooru.git

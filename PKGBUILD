@@ -2,14 +2,14 @@
 
 pkgname=tooru-git
 _pkgname=${pkgname%-git}
-pkgver=r0.4036963
-pkgrel=1
+pkgver=r0.04a871a
+pkgrel=2
 pkgdesc="Archive and sync content you want to see twice"
 arch=('any')
 url="https://github.com/emersion/tooru"
 license=('MIT')
 groups=()
-depends=()
+depends=('youtube-dl' 'wget')
 makedepends=('git' 'make')
 optdepends=()
 provides=("$_pkgname")
