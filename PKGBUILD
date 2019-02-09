@@ -2,16 +2,16 @@
 # Contributor: Konstantinos Sideris <siderisk at auth dot gr>
 
 pkgname=nheko
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=('x86_64' 'i686')
-url="https://github.com/mujx/nheko"
+url="https://github.com/Nheko-Reborn/nheko"
 license=('GPL3')
 depends=('qt5-multimedia' 'qt5-svg' 'hicolor-icon-theme' 'lmdb' 'cmark' 'mtxclient')
 makedepends=('cmake' 'boost' 'qt5-tools' 'nlohmann-json' 'lmdbxx' 'spdlog' 'tweeny')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mujx/nheko/archive/v$pkgver.tar.gz")
-sha512sums=('dc4f5b8c6e58b5c21b73c8ec7d02d874f6e3ede381df2a2e0c9ecdfca3397f1dcfce5f59a89fe0805da01086c33e05d44faf722bfb3d178aba532cb24b0ff08b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Nheko-Reborn/nheko/archive/v$pkgver.tar.gz")
+sha512sums=('cc4637b9c9e7135367c38f96c14f3ddfef1444e2ad4a916e3431104d4c4a35c1274f4a7dd428edb7a05d8b4c1f99a7fb422d7fd24e78c3409efb72398532688e')
 
 prepare() {
   mkdir -p build
