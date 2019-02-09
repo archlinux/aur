@@ -5,7 +5,7 @@ pkgver=0.1.6
 pkgrel=1
 pkgdesc="A cargo subcommand to manage local registries"
 url="https://github.com/alexcrichton/cargo-local-registry"
-depends=('cargo' 'http-parser' 'curl')
+depends=('cargo')
 arch=('i686' 'x86_64' 'armv6h')
 license=('MIT' 'APACHE')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexcrichton/${pkgname}/archive/${pkgver}.tar.gz")
@@ -16,10 +16,16 @@ build() {
   cargo build --release --locked
 }
 
+check() {
+  cd "${pkgname}-${pkgver}"
+  cargo test --release --locked
+}
+
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm644 LICENSE-MIT LICENSE-APACHE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
