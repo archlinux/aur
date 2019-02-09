@@ -88,7 +88,7 @@ fi
 # vars
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _pkgvermajmin="5.12"
-_pkgverpatch=".0"
+_pkgverpatch=".1"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
 pkgrel=6
@@ -133,7 +133,9 @@ case ${_piver} in
 ;;
 4)
   # yuck; here lies tinkerboard until I find a better way of generalizing this
-  _toolchain="/opt/gcc-arm-8.2-2019.01-x86_64-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
+  #_toolchain="/opt/gcc-arm-8.2-2019.01-x86_64-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
+  _toolchain="/opt/gcc-linaro-7.1.1-2017.08-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
+
   _use_mesa=true
   _mkspec="linux-tinker-g++"
 ;;
@@ -294,7 +296,7 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-_tar_xz_sha256="356f42d9087718f22f03d13d0c2cdfb308f91dc3cf0c6318bed33f2094cd9d6c"
+_tar_xz_sha256="caffbd625c7bc10ff8c5c7a27dbc7d84fa4de146975c0e1ffe904b514ccd6da4"
 
 if ! $_build_from_head; then
   source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
@@ -305,7 +307,7 @@ options=('!strip')
 
 if ${_use_mesa}; then
   _profiled_gpu_fn=qpi-mesa.sh
-  _additional_configure_flags="$_additional_configure_flags -gbm -kms"
+  _additional_configure_flags="$_additional_configure_flags -gbm"
 else
   if $_building && ([[ -f ${__eglpkgconfigpath} ]] || [[ -f ${__glespkgconfigpath} ]]); then
     echo "Mesa is about to eat our communal poodle; delete egl.pc and glesv2.pc in your sysroot"
@@ -475,6 +477,8 @@ package() {
 
   cd "${_bindir}"
   INSTALL_ROOT="$pkgdir" make install || exit 1
+
+  find ${_installed_dir}/${pkgname}/mkspecs/modules -type f | xargs sed -i "s,${_sysroot}[^ ]*lib\(.*\).so,-l\1,g"
 
   cd $(dirname $(dirname ${_installed_dir}))
 
