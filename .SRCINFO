@@ -1,16 +1,14 @@
 pkgbase = fortune-mod-parks-and-recreation
 	pkgdesc = Parks and Recreation fortune cookie file
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://en.wikiquote.org/wiki/Parks_and_Recreation_(season_7)
 	arch = any
 	groups = fortune-mods
 	license = unknown
 	depends = fortune-mod
-	source = parks-and-recreation.1-3
-	source = parks-and-recreation.4-7
-	md5sums = df9af1e1bb0ea8f5495337322d59418b
-	md5sums = 68f6269ae1ea7d253190beda7f59616b
+	source = parks-and-recreation
+	md5sums = afe5beafb90a0ccfdd570f3add836f64
 
 pkgname = fortune-mod-parks-and-recreation
 
