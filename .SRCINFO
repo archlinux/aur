@@ -1,0 +1,13 @@
+pkgbase = r-matrix
+	pkgdesc = Sparse and Dense Matrix Classes and Methods
+	pkgver = 1.2.15
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/Matrix/index.html
+	arch = x86_64
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/Matrix_1.2-15.tar.gz
+	md5sums = 54e25c04f2d940c60af81aa9491e083d
+
+pkgname = r-matrix
+
