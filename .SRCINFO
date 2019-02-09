@@ -1,8 +1,8 @@
 pkgbase = tremc-git
 	pkgdesc = Curses interface for transmission - python3 fork of transmission-remote-cli
-	pkgver = r672.dfbde72
+	pkgver = r692.4d50dab
 	pkgrel = 1
-	url = https://github.com/louipc/tremc
+	url = https://github.com/tremc/tremc
 	arch = any
 	license = GPL3
 	makedepends = git

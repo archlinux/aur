@@ -1,10 +1,10 @@
 pkgname=tremc-git
 _gitname=${pkgname%-git}
-pkgver=r672.dfbde72
+pkgver=r692.4d50dab
 pkgrel=1
 pkgdesc="Curses interface for transmission - python3 fork of transmission-remote-cli"
 arch=('any')
-url="https://github.com/louipc/tremc"
+url="https://github.com/tremc/tremc"
 license=('GPL3')
 depends=('python')
 makedepends=('git')
