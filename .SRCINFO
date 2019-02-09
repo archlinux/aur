@@ -7,6 +7,7 @@ pkgbase = python-q2-dada2
 	license = BSD 3-Clause License
 	makedepends = python-setuptools
 	depends = python-qiime2
+	depends = python-q2-types
 	depends = python-biom-format
 	depends = r-biobase
 	depends = r-biocgenerics
