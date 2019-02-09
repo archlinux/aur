@@ -2,14 +2,14 @@
 # Contributor: Ryan Thomas <ryant0000@gmail.com.
 
 pkgname='xmrig-donateless'
-pkgver='2.8.3'
+pkgver='2.10.0'
 pkgrel='1'
 pkgdesc='High Perf CryptoNote CPU Miner-No Donate Version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/xmrig/xmrig"
-depends=('libuv' 'libmicrohttpd')
+depends=('libuv' 'libmicrohttpd' 'openssl')
 optdepends=('monero: wallet')
-makedepends=('cmake' 'libuv' 'libmicrohttpd')
+makedepends=('cmake')
 conflicts=('xmrig-bin' 'xmrig')
 license=('GPL')
 backup=("etc/xmrig/xmrig.conf")
@@ -18,7 +18,7 @@ source=("xmrig.service"
 	"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1c4fa2898b1252507e885c4bfa2d8d5b20bce2069cb5f703bb084066d560a770'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6'
-            'ddf0c273fcf71889989c971c2a27b81a05aa2352a4bc03481730576583de4696')
+            '72aa168aaa0c21ce50abbf05149280d857420bcdab29c6ac32e9340afdc10392')
 prepare() {
   cd "xmrig-${pkgver}"
   mkdir build
