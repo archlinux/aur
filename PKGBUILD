@@ -1,8 +1,8 @@
 # Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=libphutil
-pkgver=2018.37
-_commit=014e3569b2e01056e69e4c51c2c40b14e3059091
+pkgver=2019.05
+_commit=ad73228f423856353373fe92bfdb6b2d797800da
 pkgrel=1
 pkgdesc='A collection of PHP utility classes'
 arch=('any')
@@ -17,4 +17,3 @@ package() {
   install -d "$pkgdir/usr/share/php/$pkgname"
   cp -a $pkgname/* "$pkgdir/usr/share/php/$pkgname/"
 }
-
