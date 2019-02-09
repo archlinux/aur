@@ -2,7 +2,7 @@
 
 pkgname_=truffleruby
 pkgname=${pkgname_}-bin
-pkgver_=1.0.0-rc11
+pkgver_=1.0.0-rc12
 pkgver=${pkgver_/-/_}
 pkgrel=2
 pkgdesc='Graal based, high-performance implementation of the Ruby language'
@@ -15,7 +15,7 @@ optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver_}/ruby-installable-ce-${pkgver_}-linux-amd64.jar")
-sha256sums=('dbdc64c73c90b437581ab9dfc65044ba0f5154c2d4e1030f0d0e3734cfec423f')
+sha256sums=('84825de215b0162cb222108e9aa0d9250f99cebc40af68e883086d77edf3be82')
 
 package() {
     local file eq permissions mode name target
