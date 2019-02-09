@@ -1,7 +1,7 @@
 pkgbase = perl-perl-tokenizer
-	pkgdesc = A tiny Perl code tokenizer.
+	pkgdesc = Perl::Tokenizer - a tiny Perl code tokenizer.
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Perl-Tokenizer
 	arch = any
 	license = PerlArtistic

@@ -3,8 +3,8 @@
 
 pkgname='perl-perl-tokenizer'
 pkgver='0.10'
-pkgrel='1'
-pkgdesc="A tiny Perl code tokenizer."
+pkgrel='2'
+pkgdesc="Perl::Tokenizer - a tiny Perl code tokenizer."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
@@ -39,7 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
+  rm -r "$pkgdir"/usr/lib
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
