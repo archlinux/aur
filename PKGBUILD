@@ -1,23 +1,19 @@
-# Maintainer: Ilja Kocken <i.j.kocken@uu.nl>
-
-_cranname=fansi
-_cranver=0.4.0
-pkgname="r-${_cranname}"
-pkgver="${_cranver}"
+# Contributor: Grey Christoforo <first name at last name dot net>
+pkgname=r-fansi
+_cran_name=fansi
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="Counterparts to R string manipulation functions that account for the effects of ANSI text formatting control sequences."
-url="https://cran.r-project.org/package=fansi"
-arch=('i686' 'x86_64')
+pkgdesc="ANSI Control Sequence Aware String Functions"
+arch=('x86_64')
+url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
 license=('GPL3')
-conflicts=('r-fansi')
-provides=('r-fansi')
 depends=('r')
-optdepends=('r-unitizer' 'r-knitr' 'r-rmarkdown' 'r-pillar' 'r-cli')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('e104e9d01c7ff8a847f6b332ef544c0ef912859f9c6a514fe2e6f3b34fcfc209')
+source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
+md5sums=('8642a7132e7c2f64ce60a67f2c05304b')
 
 package() {
-    mkdir -p "${pkgdir}/usr/lib/R/library"
-    cd "${srcdir}"
-    R CMD INSTALL "${_cranname}" -l "${pkgdir}/usr/lib/R/library"
+ mkdir -p $pkgdir/usr/lib/R/library
+ cd $srcdir
+
+ R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
 }
