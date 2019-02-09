@@ -1,0 +1,16 @@
+pkgbase = nvramtool-git
+	pkgdesc = A utility for interfacing with CMOS/NVRAM on Coreboot systems
+	pkgver = 2.1.f813b844862
+	pkgrel = 1
+	url = https://www.coreboot.org/Nvramtool
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	provides = nvramtool
+	conflicts = nvramtool
+	source = git+https://review.coreboot.org/coreboot
+	sha256sums = SKIP
+
+pkgname = nvramtool-git
+
