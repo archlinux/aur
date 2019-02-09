@@ -7,7 +7,7 @@
 _commit=76fea495eda10a2a7edef93609d176ac141c648e
 pkgname=shadow-beta
 pkgver=0.9.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Shadow launcher"
 arch=('x86_64')
 url="http://shadow.tech"
