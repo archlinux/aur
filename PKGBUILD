@@ -1,26 +1,19 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=assertthat
-_cranver=0.2.0
-_pkgtar=${_cranname}_${_cranver}.tar.gz
+# Contributor: Grey Christoforo <first name at last name dot net>
 pkgname=r-assertthat
-pkgver=${_cranver//[:-]/.}
+_cran_name=assertthat
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Easy Pre and Post Assertions"
-arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
+arch=('x86_64')
+url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
 license=('GPL3')
-depends=('r' )
-
-optdepends=('r-testthat')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+depends=('r')
+source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
 md5sums=('8134f0072c6a84fd738d3bfc5e7f68ef')
 
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
-}
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+ mkdir -p $pkgdir/usr/lib/R/library
+ cd $srcdir
 
+ R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
+}
