@@ -10,6 +10,7 @@ pkgbase = r-delayedarray
 	depends = r-biocgenerics
 	depends = r-s4vectors
 	depends = r-biocparallel
+	depends = r-matirxstats
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedArray_0.8.0.tar.gz
 	sha1sums = 5e1481fdfbc8d4e4966aed238f750c3e01849863
 

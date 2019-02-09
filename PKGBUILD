@@ -7,7 +7,7 @@ pkgdesc="Delayed operations on array-like objects"
 url="https://bioconductor.org/packages/release/bioc/html/${_bc_name}.html"
 arch=("x86_64")
 license=('Artistic-2.0')
-depends=('r' 'r-iranges' 'r-biocgenerics' 'r-s4vectors' 'r-biocparallel')
+depends=('r' 'r-iranges' 'r-biocgenerics' 'r-s4vectors' 'r-biocparallel' 'r-matirxstats')
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bc_name}_${pkgver}.tar.gz")
 sha1sums=('5e1481fdfbc8d4e4966aed238f750c3e01849863')
 
