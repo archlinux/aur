@@ -5,7 +5,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2019.117.0
+pkgver=2019.131.0_43_g7ec0b4ba7
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64')
@@ -50,7 +50,7 @@ prepare() {
 
 	# Download dependencies
 	export TERM='xterm'
-	dotnet restore
+	dotnet restore osu.sln
 }
 
 build() {
@@ -59,7 +59,7 @@ build() {
 	# Build
 	export MONO_IOMAP='case'
 	export TERM='xterm'
-	dotnet msbuild /property:Configuration=Release
+	dotnet msbuild /property:Configuration=Release osu.sln
 }
 
 package() {
